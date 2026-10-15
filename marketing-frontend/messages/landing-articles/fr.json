@@ -139,5 +139,333 @@
         "Les prix, offres gratuites et limites viennent des pages de tarifs et d'aide de chaque produit, consultées en octobre 2026, en dollars ou en euros selon ce qu'indique chacun, hors taxes. Quand la page d'un produit ne disait pas quelque chose, nous l'avons laissé de côté plutôt que de deviner. Nous faisons TinyFloor : nous l'avons mis en premier et nous disons clairement ce qu'il ne fait pas. Les prix changent : vérifiez la page de l'éditeur avant d'acheter."
       ]
     }
+  ],
+  "virtualOffice": [
+    {
+      "title": "Ce qu'est un bureau virtuel, et ce qu'il n'est pas",
+      "body": [
+        "« Bureau virtuel » désigne deux choses différentes. La première est une adresse professionnelle : un service qui donne à une entreprise une adresse postale et parfois une ligne téléphonique, sans bureau. La seconde, celle dont parle cette page, est un bureau en ligne où une équipe à distance travaille ensemble pendant la journée.",
+        "Ce second type est un espace partagé qui reste ouvert pendant que les gens travaillent. Au lieu d'une grille de visages qui disparaît à la fin de la réunion, chacun a sa place dans le bureau, voit qui est là et commence une conversation comme dans un vrai bâtiment : en allant voir quelqu'un."
+      ]
+    },
+    {
+      "title": "Ce que vous y faites",
+      "items": [
+        {
+          "title": "Voir qui est là",
+          "body": "Tout le monde apparaît dans le bureau, avec un statut. Vous savez qui est à son poste, qui est occupé et qui est en réunion avant de déranger."
+        },
+        {
+          "title": "Parler sans planifier",
+          "body": "Allez voir un collègue et commencez à parler. Une question de deux minutes reste une question de deux minutes, au lieu de devenir une invitation pour demain."
+        },
+        {
+          "title": "Se réunir dans une salle",
+          "body": "Les conversations de groupe ont lieu dans une salle de réunion où vous entrez, avec vidéo et partage d'écran, et d'où vous sortez une fois terminé."
+        },
+        {
+          "title": "Avoir son propre bureau",
+          "body": "Un bureau donne une place à chacun, pour que l'espace ressemble à une équipe plutôt qu'à un hall d'accueil."
+        },
+        {
+          "title": "Discuter à côté",
+          "body": "Les messages et les canaux sont à côté de l'étage, pour tout ce qui n'a pas besoin d'être dit à voix haute."
+        }
+      ]
+    },
+    {
+      "title": "Un bureau virtuel à côté des outils que vous avez déjà",
+      "body": [
+        "Un bureau virtuel ne remplace ni les appels vidéo ni la messagerie d'équipe. Il couvre la partie de la journée pour laquelle aucun des deux n'a été conçu."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Application d'appel vidéo",
+          "Messagerie d'équipe",
+          "Bureau virtuel"
+        ],
+        "rows": [
+          [
+            "Idéal pour",
+            "Les réunions planifiées",
+            "Les points écrits et les fils de discussion",
+            "Être ensemble pendant qu'on travaille"
+          ],
+          [
+            "Une conversation commence quand",
+            "Une réunion démarre",
+            "Quelqu'un répond",
+            "Vous allez voir quelqu'un"
+          ],
+          [
+            "Montre qui est là",
+            "Seulement qui a rejoint l'appel",
+            "En ligne ou absent",
+            "Tout le monde, où il est et ce qu'il fait"
+          ],
+          [
+            "Ouvert toute la journée",
+            "Non, il se termine avec la réunion",
+            "Oui, sous forme de messages",
+            "Oui, sous forme de lieu"
+          ]
+        ],
+        "note": "La plupart des équipes gardent les trois : un bureau virtuel pour la journée, la messagerie pour ce qui doit être écrit, et un appel vidéo pour les réunions avec des personnes extérieures à l'équipe."
+      }
+    },
+    {
+      "title": "Qui en utilise un",
+      "items": [
+        {
+          "title": "Les petites équipes à distance",
+          "body": "De quatre à quinze personnes qui ne partagent pas de locaux et regrettent de ne plus pouvoir se retourner pour poser une question."
+        },
+        {
+          "title": "Les startups",
+          "body": "Des équipes jeunes qui décident vite et ne peuvent pas attendre un jour la prochaine réunion."
+        },
+        {
+          "title": "Les agences et studios",
+          "body": "Des gens qui passent d'un projet client à l'autre toute la journée et doivent se trouver rapidement."
+        },
+        {
+          "title": "Les équipes techniques et design",
+          "body": "Travailler en binôme, relire et montrer son travail à l'écran sans réserver d'appel pour ça."
+        },
+        {
+          "title": "Les équipes qui accueillent quelqu'un",
+          "body": "Une nouvelle recrue voit qui est là et pose sa question, au lieu de deviner à qui elle peut écrire."
+        }
+      ]
+    },
+    {
+      "title": "Ce que ça coûte",
+      "body": [
+        "Ce qu'une équipe de 8 paie par mois sur les bureaux virtuels connus, avec la formule la moins chère qui convient."
+      ],
+      "table": {
+        "head": [
+          "Produit",
+          "Une équipe de 8, par mois",
+          "Mode de tarification"
+        ],
+        "rows": [
+          [
+            "TinyFloor",
+            "29 $",
+            "Un prix pour toute l'équipe ; gratuit jusqu'à 3"
+          ],
+          [
+            "SoWork Basic",
+            "43,20 $ à l'année",
+            "Par membre ; gratuit jusqu'à 10 avec des réunions de 30 minutes"
+          ],
+          [
+            "Gather",
+            "96 $ à l'année",
+            "Par membre ; pas de formule gratuite"
+          ],
+          [
+            "Teamflow",
+            "120 $ à l'année",
+            "Par personne ; gratuit jusqu'à 5"
+          ],
+          [
+            "Kumospace Business",
+            "128 $",
+            "Par utilisateur ; gratuit jusqu'à 5 membres"
+          ]
+        ],
+        "note": "Depuis la page tarifs de chaque produit en octobre 2026, hors taxes."
+      }
+    },
+    {
+      "title": "Le mettre en place en une journée",
+      "items": [
+        {
+          "title": "Créer le bureau",
+          "detail": "Deux minutes",
+          "body": "Donnez-lui le nom de l'équipe. Rien à concevoir : l'étage, les postes et la salle de réunion sont prêts."
+        },
+        {
+          "title": "Inviter tout le monde avec un seul lien",
+          "detail": "Collez-le là où l'équipe discute déjà",
+          "body": "Chacun se connecte avec Google ou un e-mail et entre. Rien à installer, sur ordinateur ou téléphone."
+        },
+        {
+          "title": "Chacun prend un poste",
+          "detail": "Une place à soi",
+          "body": "Dès que chacun est assis quelque part, le bureau ressemble à une équipe et on se trouve facilement."
+        },
+        {
+          "title": "Tenir le prochain point quotidien dans la salle de réunion",
+          "detail": "La première habitude",
+          "body": "Déplacer une réunion quotidienne dans le bureau, c'est ce qui fait revenir les gens le lendemain."
+        },
+        {
+          "title": "Le laisser ouvert une semaine",
+          "detail": "Puis décider",
+          "body": "Il fait ses preuves dans les petits moments : une question réglée en une minute, une conversation entendue qu'on rejoint."
+        }
+      ]
+    },
+    {
+      "title": "Ce qui fait qu'une équipe continue de l'utiliser",
+      "items": [
+        {
+          "title": "Le garder dans un onglet épinglé",
+          "body": "Le bureau fonctionne quand il est là où vous êtes, et pas une chose de plus à ouvrir."
+        },
+        {
+          "title": "Passer, caméra facultative",
+          "body": "La voix seule suffit ; la vidéo est là quand elle aide. Personne ne doit se sentir observé."
+        },
+        {
+          "title": "Ne jamais s'en servir pour surveiller",
+          "body": "Un bureau virtuel sert à se retrouver, pas à pointer. Les équipes qui l'utilisent pour contrôler les gens arrêtent de l'utiliser."
+        },
+        {
+          "title": "Y tenir aussi les réunions",
+          "body": "Si le point quotidien et les questions rapides ont lieu dans le bureau, les gens y reviennent sans qu'on le leur demande."
+        }
+      ]
+    }
+  ],
+  "discord": [
+    {
+      "title": "Pourquoi des équipes utilisent Discord comme bureau",
+      "body": [
+        "Beaucoup de petites équipes, surtout des développeurs, des studios et des startups, passent leur journée sur Discord. Elles créent un serveur, ouvrent un salon vocal, et chacun entre et sort comme dans une pièce commune. C'est gratuit, le son est bon, le partage d'écran marche dans les salons vocaux, et il n'y a rien de nouveau à apprendre pour qui l'utilise déjà.",
+        "Cela montre qu'être à un clic les uns des autres marche mieux que de planifier chaque conversation. Reste à savoir si une application conçue pour les communautés de joueurs est le meilleur endroit pour ça."
+      ]
+    },
+    {
+      "title": "Là où il ne suffit pas pour le travail",
+      "items": [
+        {
+          "title": "C'est personnel, pas à votre entreprise",
+          "body": "Chacun vient avec son propre compte Discord, donc le travail côtoie les serveurs de jeu et les amis, avec toutes les notifications au même endroit."
+        },
+        {
+          "title": "Des salons plutôt qu'un lieu",
+          "body": "Vous voyez qui est dans quel salon vocal, mais pas qui est à son poste et libre une minute. Rejoindre un salon, c'est tout ou rien pour commencer à parler."
+        },
+        {
+          "title": "Pas de vraie salle de réunion",
+          "body": "Une réunion n'est qu'un autre salon vocal. Ça marche, mais on n'a pas l'impression d'entrer dans une salle puis de revenir à son poste."
+        },
+        {
+          "title": "Pensé pour les communautés",
+          "body": "Les rôles, serveurs et bots sont faits pour de grands groupes d'inconnus. Une équipe de huit a besoin de bien moins, et de plus de ce qu'offre un bureau."
+        }
+      ]
+    },
+    {
+      "title": "Discord et TinyFloor, pour une équipe de travail",
+      "table": {
+        "head": [
+          "",
+          "Discord",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Prix",
+            "Gratuit ; Nitro est en supplément pour chaque personne",
+            "Gratuit jusqu'à 3 ; 29 $ par mois pour toute l'équipe"
+          ],
+          [
+            "Comptes",
+            "Le compte Discord personnel de chacun",
+            "Un compte gratuit ; l'équipe entre avec le lien d'invitation du bureau"
+          ],
+          [
+            "Commencer une conversation",
+            "Rejoindre un salon vocal",
+            "Aller voir un collègue"
+          ],
+          [
+            "Voir qui est là",
+            "Une liste de membres et qui est dans chaque salon",
+            "Tout le monde sur un seul étage : postes, statuts et qui est en appel"
+          ],
+          [
+            "Réunions",
+            "Un salon vocal avec partage d'écran",
+            "Une salle de réunion avec vidéo et partage d'écran"
+          ],
+          [
+            "Fonctionne dans",
+            "Le navigateur, des applications de bureau et mobiles",
+            "Le navigateur, sur ordinateur et mobile"
+          ]
+        ],
+        "note": "Informations sur Discord tirées de son propre site, octobre 2026."
+      }
+    },
+    {
+      "title": "Si vous restez sur Discord, organisez-le comme un bureau",
+      "items": [
+        {
+          "title": "Nommer les salons vocaux comme des lieux",
+          "body": "« Postes », « Salle de réunion » et « Concentration » disent ce que veut dire rejoindre, mieux que « Général 1 » et « Général 2 »."
+        },
+        {
+          "title": "Convenir de ce que signifie un statut",
+          "body": "Ne pas déranger veut dire concentré ; inactif veut dire loin de son poste. Des règles communes permettent de passer sans gêne."
+        },
+        {
+          "title": "Un salon textuel par projet",
+          "body": "Le travail reste hors du salon général et se retrouve facilement plus tard."
+        },
+        {
+          "title": "Un serveur séparé pour le travail",
+          "body": "Pour que l'espace de l'équipe ne se mélange pas avec les communautés de chacun."
+        }
+      ]
+    },
+    {
+      "title": "Quand Discord convient mieux",
+      "items": [
+        {
+          "title": "Votre équipe y est déjà et en est contente",
+          "body": "Si ça marche et que rien ne manque à personne, il n'y a aucune raison de changer."
+        },
+        {
+          "title": "Vous animez aussi une communauté",
+          "body": "Si vos clients ou joueurs sont sur le même serveur, Discord est fait exactement pour ça."
+        },
+        {
+          "title": "Le coût doit être nul",
+          "body": "Discord est gratuit pour n'importe quel nombre de personnes ; TinyFloor est gratuit pour 3."
+        }
+      ]
+    },
+    {
+      "title": "Faire passer une équipe de Discord au bureau",
+      "items": [
+        {
+          "title": "Créer un bureau",
+          "detail": "Deux minutes",
+          "body": "Donnez-lui un nom : l'étage, les postes et la salle de réunion sont prêts."
+        },
+        {
+          "title": "Partager le lien d'invitation sur votre Discord",
+          "detail": "Là où tout le monde est déjà",
+          "body": "Chacun se connecte avec Google ou un e-mail et entre depuis le navigateur."
+        },
+        {
+          "title": "Déplacer d'abord le point quotidien",
+          "detail": "Une habitude à la fois",
+          "body": "Tenez-le dans la salle de réunion pendant une semaine, sans rien changer d'autre."
+        },
+        {
+          "title": "Puis décider de ce qui reste",
+          "detail": "Pas de grand basculement",
+          "body": "Beaucoup d'équipes gardent Discord pour leur communauté et utilisent le bureau pour la journée de travail."
+        }
+      ]
+    }
   ]
 }

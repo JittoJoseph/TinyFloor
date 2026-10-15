@@ -917,36 +917,39 @@
     ]
   },
   "gatherPricing": {
-    "label": "Gatherin hinnat",
+    "label": "Gatherin hinta",
     "meta": {
-      "title": "Gatherin hinnat vuonna 2026: mitä 5, 10 tai 25 hengen tiimi maksaa",
-      "description": "Gather maksaa 12 $ jäseneltä kuukaudessa vuosilaskutuksella tai 15 $ kuukausittain, eikä ilmaista pakettia ole. Paljonko se on 5, 10, 25 ja 50 hengen tiimeille ja mitä sama tiimi maksaa muualla."
+      "title": "Gatherin hinta 2026: mitä tiimisi maksaa, vieraat mukaan lukien",
+      "description": "Gather maksaa 12 $ jäseneltä kuukaudessa vuosilaskutuksella tai 15 $ kuukausilaskutuksella, eikä ilmaista pakettia ole ollut syyskuun 2025 jälkeen. Mitä se tekee 4–50 hengen tiimeille, mitä vieraat ja tallenteet kattavat ja mitä sama tiimi maksaa muualla."
     },
     "title": "Paljonko <em>Gather maksaa?</em>",
-    "intro": "Syyskuusta 2025 lähtien Gather on laskuttanut jokaisesta jäsenestä, eikä ilmaista pakettia ole. Tässä on, mitä se tarkoittaa tiimillesi kokoon laskettuna, ja mitä sama tiimi maksaa muissa virtuaalitoimistoissa. Hinnat ovat Gatherin omilta hinta- ja ohjesivuilta, tarkistettu lokakuussa 2026.",
+    "intro": "Gather on 15. syyskuuta 2025 lähtien laskuttanut jokaisesta tiimin jäsenestä, eikä ilmaista pakettia enää ole. Tämä opas laskee, mitä se tekee sinun tiimisi koolla, mitä paketti sisältää ja mitä ei, mikä muuttui Gatheria jo käyttäneille tiimeille ja mitä sama tiimi maksaa muissa virtuaalitoimistoissa. Kaikki Gatherin luvut ovat Gatherin omalta hintasivulta ja ohjekeskuksesta, tarkistettu lokakuussa 2026; hinnat Yhdysvaltain dollareina ilman veroja.",
     "sections": [
       {
         "title": "Gatherin paketit",
         "body": [
-          "Gatherilla on yksi paketti useimmille tiimeille, Essential, ja Custom-paketti suurille organisaatioille."
+          "Gather myy useimmille tiimeille yhtä pakettia, Essentialia, ja suurille organisaatioille Custom-pakettia. Gatherin molemmat versiot, uusi Gather 2.0 ja alkuperäinen, maksavat nyt saman verran henkeä kohden."
         ],
         "items": [
           {
             "title": "Essential",
-            "body": "15 $ jäseneltä kuukaudessa tai 12 $ vuosilaskutuksella. Sisältää kaikki Gatherin ominaisuudet: muokattava virtuaalitoimisto, rajattomat palaverit ja chat, Google Calendar-, GitHub- ja Spotify-integraatiot, vieraat sekä palaverien tallennus ja litterointi kuukausittaisella tuntikiintiöllä."
+            "body": "15 $ jäseneltä kuukaudessa tai 12 $ vuosilaskutuksella. Kaikki Gatherin ominaisuudet: itse suunniteltava virtuaalitoimisto, rajattomat kokoukset ja chat, Google Calendar-, GitHub- ja Spotify-integraatiot sekä tekoälyn kokousmuistiinpanot. Tallenteilla, litteroinneilla ja vierailla on kuukausikiintiöt, alkaen 20 tunnin tallennuksesta, 30 tunnin litteroinnista ja 30 vierastunnista."
           },
           {
             "title": "Custom",
-            "body": "Hinta Gatherin myyntitiimiltä, suurille tiimeille, jotka haluavat ohjatun käyttöönoton ja yritysominaisuudet."
+            "body": "Hinnan päättää Gatherin myyntitiimi. Kaikki Essentialin ominaisuudet sekä kertakirjautuminen (SSO), räätälöity käyttöönotto, isommat toimistot, hybridiratkaisut ja alueelliset hinnat. Jos teidän täytyy kirjautua yrityksen tunnistuspalvelun kautta, tämä on se paketti."
           },
           {
             "title": "Ilmainen kokeilu",
-            "body": "30 päivää ilmaiseksi, sitten Essential. Pysyvää ilmaista pakettia ei ole."
+            "body": "30 päivää enintään 50 hengelle, ilman korttia. Sen jälkeen toimisto tarvitsee Essentialin. Pysyvää ilmaispakettia ei ole. Myöhemmin lisätty henkilö saa oman 14 päivän kokeilunsa ennen kuin hänet lasketaan."
           }
         ]
       },
       {
-        "title": "Paljonko Gather maksaa tiimin koon mukaan",
+        "title": "Mitä Gather maksaa tiimin koon mukaan",
+        "body": [
+          "Gather laskee jäseniä: kaikki, joilla on tili toimistossanne, tulivat he sinä päivänä paikalle tai eivät. Tässä Essential tavallisille tiimikoille."
+        ],
         "table": {
           "head": [
             "Tiimi",
@@ -956,114 +959,241 @@
           ],
           "rows": [
             [
-              "5 henkeä",
-              "75 $",
+              "4 henkeä",
               "60 $",
-              "720 $"
+              "48 $",
+              "576 $"
+            ],
+            [
+              "6 henkeä",
+              "90 $",
+              "72 $",
+              "864 $"
+            ],
+            [
+              "8 henkeä",
+              "120 $",
+              "96 $",
+              "1 152 $"
             ],
             [
               "10 henkeä",
               "150 $",
               "120 $",
-              "1 440 $"
+              "1 440 $"
+            ],
+            [
+              "12 henkeä",
+              "180 $",
+              "144 $",
+              "1 728 $"
+            ],
+            [
+              "15 henkeä",
+              "225 $",
+              "180 $",
+              "2 160 $"
             ],
             [
               "25 henkeä",
               "375 $",
               "300 $",
-              "3 600 $"
+              "3 600 $"
             ],
             [
               "50 henkeä",
               "750 $",
               "600 $",
-              "7 200 $"
+              "7 200 $"
             ]
           ],
-          "note": "Gather laskuttaa jokaisesta jäsenestä, tuli hän sinä päivänä toimistolle tai ei. Hinnat ilman veroja."
+          "note": "Essential 15 $ jäseneltä kuukaudessa tai 12 $ vuosilaskutuksella (Gatherin hintasivu, lokakuu 2026). Ilman veroja."
         }
+      },
+      {
+        "title": "Mitä muuta laskuun vaikuttaa",
+        "items": [
+          {
+            "title": "Vieraat",
+            "body": "Asiakkaat, työnhakijat ja freelancerit voivat tulla vieraina: he eivät maksa jäsenten tavoin, mutta kuluttavat vierastunteja. Jokaisella toimistolla on vähintään 30 vierastuntia kuukaudessa; yli 10 jäsenen toimisto saa 3 tuntia jäsentä kohden, eli 60 tuntia 20 jäsenelle. Tiimiltä, joka ottaa asiakkaita vastaan joka päivä, ne voivat loppua."
+          },
+          {
+            "title": "Tallenteet ja litteroinnit",
+            "body": "Mukana, kuukausikiintiöiden rajoissa, jotka alkavat 20 tunnin tallennuksesta ja 30 tunnin litteroinnista."
+          },
+          {
+            "title": "Jokainen henkilö on paikka",
+            "body": "Osa-aikainen freelancer, kerran viikossa käyvä esihenkilö, lomalla oleva: jokainen on täyden hinnan jäsen niin kauan kuin hän on toimistossa."
+          },
+          {
+            "title": "Alkuperäinen Gather laskee yhä samanaikaisia käyttäjiä",
+            "body": "Alkuperäiseen versioon jäävät toimistot maksavat uuden hinnan samaan aikaan verkossa olevaa henkilöä kohden, eivät jäsentä kohden. Siirtyminen Gather 2.0:aan tarkoittaa uuden toimiston rakentamista Gather Studiossa."
+          },
+          {
+            "title": "Alennukset",
+            "body": "Koulut, yliopistot ja voittoa tavoittelemattomat järjestöt voivat pyytää alennuskoodia Gatherin tuesta. Tapahtumat alkuperäisessä versiossa maksavat 3 $ henkeä kohden päivässä, ja viiden päivän jälkeen kuukausihinta on katto."
+          }
+        ]
       },
       {
         "title": "Mikä muuttui vuonna 2025",
         "body": [
-          "Gather julkaisi 15. syyskuuta 2025 Gather 2.0:n ja siirsi sekä uuden että alkuperäisen version jäsenkohtaiseen hinnoitteluun: 15 $ jäseneltä kuukaudessa tai 12 $ vuosilaskutuksella. Aiemmin tiimit maksoivat sen mukaan, montako henkeä oli toimistolla yhtä aikaa.",
-          "Ilmainen paketti poistui molemmista versioista. Jo maksaneet tiimit saivat lukita vanhan hintansa ennen muutosta. Pienelle tiimille, joka käytti Gatheria ilmaiseksi, tämä oli hetki, jolloin se alkoi maksaa."
+          "Syyskuuhun 2025 asti pienet tiimit saivat käyttää Gatheria ilmaiseksi, ja maksavat tiimit maksoivat 7 $ henkeä kohden kuukaudessa tai 5,95 $ vuosilaskutuksella samaan aikaan verkossa olevien määrän mukaan.",
+          "15. syyskuuta 2025 Gather julkaisi Gather 2.0:n ja siirsi molemmat versiot hintaan 15 $ jäseneltä kuukaudessa tai 12 $ vuosilaskutuksella. Ilmaispaketti loppui: toimistot, jotka eivät siirtyneet maksulliseen pakettiin siihen mennessä, suljettiin.",
+          "Jo maksaneet saivat aikaa sopeutua. Kuukausipaketit pitivät vanhan hintansa vuoden 2025 loppuun ja siirtyivät 15 $:iin ensimmäisessä uusinnassa 1. tammikuuta 2026 jälkeen. Tiimit, jotka lukitsivat vuosipaketin ennen muutosta, pitivät 5,95 $ syyskuuhun 2026 asti, joten moni kohtaa uuden hinnan tämän vuoden uusinnassa."
+        ]
+      },
+      {
+        "title": "Laskuesimerkit",
+        "items": [
+          {
+            "title": "6 hengen tiimi, joka käytti ilmaispakettia",
+            "detail": "0 $:sta 864 $:iin vuodessa",
+            "body": "Kuusi henkeä, jotka käyttivät Gatheria ilmaiseksi, maksavat nyt 72 $ kuukaudessa vuosilaskutuksella (864 $ vuodessa) tai 90 $ kuukaudessa kuukausilaskutuksella."
+          },
+          {
+            "title": "8 hengen tiimi, joka lukitsi vanhan vuosihinnan",
+            "detail": "571 $:sta 1 152 $:iin vuodessa",
+            "body": "Kahdeksan henkeä 5,95 $:lla kuukaudessa maksoi noin 571 $ vuodessa. Uusinnassa syyskuusta 2026 alkaen sama tiimi maksaa 12 $ henkeä kohden kuukaudessa, 1 152 $ vuodessa: suunnilleen kaksinkertaisesti."
+          },
+          {
+            "title": "12 hengen tiimi, joka ottaa asiakkaita vastaan",
+            "detail": "144 $ kuukaudessa, 36 vierastuntia",
+            "body": "Kaksitoista jäsentä vuosilaskutuksella maksaa 144 $ kuukaudessa ja saa 36 vierastuntia kuukaudessa, noin puolitoista tuntia työpäivää kohden. Tunti päivässä asiakkaiden kanssa mahtuu; useampi asiakastapaaminen päivässä ei."
+          }
         ]
       },
       {
         "title": "Sama tiimi muualla",
         "body": [
-          "Näin paljon samat tiimit maksavat kuukaudessa muissa virtuaalitoimistoissa halvimmalla paketilla, johon ne mahtuvat."
+          "Mitä samat tiimit maksavat kuukaudessa muissa virtuaalitoimistoissa halvimmalla sopivalla paketilla."
         ],
         "table": {
           "head": [
             "Tiimi",
-            "Gather, vuosittain",
+            "Gather, vuosilaskutus",
             "TinyFloor",
-            "SoWork Basic, vuosittain",
+            "SoWork Basic, vuosilaskutus",
             "Kumospace Business"
           ],
           "rows": [
             [
-              "5 henkeä",
-              "60 $",
-              "$29",
-              "27 $",
+              "4 henkeä",
+              "48 $",
+              "29 $",
+              "21,60 $",
               "Ilmainen (enintään 5 jäsentä)"
             ],
             [
-              "10 henkeä",
-              "120 $",
-              "$29",
-              "54 $",
-              "160 $"
+              "8 henkeä",
+              "96 $",
+              "29 $",
+              "43,20 $",
+              "128 $"
+            ],
+            [
+              "12 henkeä",
+              "144 $",
+              "29 $",
+              "64,80 $",
+              "192 $"
             ]
           ],
-          "note": "Kunkin tuotteen hintasivulta lokakuussa 2026, ilman veroja. SoWorkin ilmainen paketti kattaa myös enintään 10 jäsentä, palaverit enintään 30 minuuttia, ja WorkAdventuren enintään 10 henkeä yhtä aikaa."
+          "note": "Kunkin tuotteen omalta hintasivulta lokakuussa 2026, ilman veroja. SoWorkin ilmaispaketti kattaa enintään 10 jäsentä ja enintään 30 minuutin kokoukset; WorkAdventuren enintään 10 samanaikaista henkeä. TinyFloor on ilmainen enintään 3 hengelle."
         }
       },
       {
         "title": "Milloin Gather kannattaa",
         "items": [
           {
-            "title": "Haluat suunnitella toimistosi",
-            "body": "Gatherissa rakennat kerrokset, huoneet ja esineet. Useimmat vaihtoehdot antavat valmiin toimiston."
+            "title": "Haluat suunnitella toimiston itse",
+            "body": "Gatherissa sijoittelet kerrokset, huoneet ja yli 200 esinettä. Useimmat vaihtoehdot antavat valmiin toimiston."
           },
           {
             "title": "Tarvitset tallenteita ja litterointeja",
-            "body": "Essential sisältää ne, tuntikiintiöllä joka kuukausi."
+            "body": "Essential sisältää ne kuukausittaisin tuntikiintiöin."
           },
           {
             "title": "Päiväsi pyörii Google Calendarin ja GitHubin ympärillä",
-            "body": "Gatherin integraatiot näyttävät tilasi ja toimintasi toimistossa."
+            "body": "Gatherin integraatiot näyttävät tilasi ja sen, mitä teet, toimistossa."
+          },
+          {
+            "title": "Tarvitset kertakirjautumisen",
+            "body": "Gatherin Custom-paketissa se on; monessa pienemmässä tuotteessa ei."
           },
           {
             "title": "Milloin ei",
-            "body": "Jos tiimisi tarvitsee lähinnä nähdä, kuka on paikalla, jutella ja pitää palavereja, maksat ominaisuuksista, joita et käytä, joka kuukausi, jokaisesta hengestä."
+            "body": "Jos tiimisi tarvitsee lähinnä nähdä, kuka on paikalla, jutella ja pitää kokouksia, maksat ominaisuuksista, joita et käytä, joka kuukausi, jokaisesta henkilöstä."
           }
+        ]
+      },
+      {
+        "title": "Ennen uusintaa",
+        "body": [
+          "Jos vuosipakettisi uusitaan uudella hinnalla, neljä kysymystä kertoo, mitä oikeasti tarvitset."
+        ],
+        "items": [
+          {
+            "title": "Montako ihmistä tulee sisään tavallisena päivänä?",
+            "body": "Gather laskuttaa jokaisesta jäsenestä. Jos puolet tiimistä avaa toimiston harvoin, maksat heistä silti täyden hinnan."
+          },
+          {
+            "title": "Käytättekö tallenteita ja litterointeja?",
+            "body": "Ne ovat iso osa sitä, mitä Essential tuo. Jos kokouksenne pidetään jo Zoomissa tai Google Meetissä omilla tallenteilla, maksatte ehkä kahteen kertaan."
+          },
+          {
+            "title": "Montako vierastuntia käytätte?",
+            "body": "Vertaa 30:een kuukaudessa tai 3:een jokaista 10 ylittävää jäsentä kohden. Paljon asiakastyötä voi ylittää sen."
+          },
+          {
+            "title": "Muutatteko toimistoa vielä?",
+            "body": "Toimiston suunnittelu on Gatherin suurin vahvuus. Jos karttanne ei ole muuttunut kuukausiin, valmis toimisto hoitaa saman työn."
+          }
+        ]
+      },
+      {
+        "title": "Näin tarkistimme",
+        "body": [
+          "Gatherin hinnat, kiintiöt ja pakettien tiedot ovat sivulta gather.town/pricing ja Gatherin ohjekeskuksen artikkelista \"Understanding Gather's pricing changes (2025)\", luettu lokakuussa 2026. Muiden tuotteiden hinnat ovat niiden omilta hintasivuilta samassa kuussa. Kun tuotteen sivu ei kertonut jotain, jätimme sen pois arvaamisen sijaan. Hinnat muuttuvat: tarkista toimittajan sivu ennen ostamista."
         ]
       }
     ],
     "fit": {
       "title": "Mihin TinyFloor sopii",
-      "body": "TinyFloor säilyttää Gatherin ytimen: toimiston, jossa liikut ja puhut menemällä jonkun luo, ja jossa on kokoushuone, chat ja näytön jakaminen. Se maksaa $29 kuukaudessa koko tiimille, yksi hinta koko toimistolle, ja on ilmainen enintään 3 hengelle. Siinä ei ole tallenteita, litterointia eikä toimistoeditoria; jos tarvitset niitä, Gather sopii paremmin."
+      "body": "TinyFloor säilyttää ytimen siitä, mitä Gather tekee: toimiston, jossa liikut ja juttelet menemällä jonkun luo, ja jossa on kokoushuone, chat ja näytön jakaminen. Se maksaa 29 $ kuukaudessa koko tiimille, yksi hinta kutsuitpa kuinka monta tahansa, ja on ilmainen enintään 3 hengelle. Siinä ei ole tallenteita, litterointia, toimistoeditoria eikä kertakirjautumista; jos tarvitset niitä, Gather sopii paremmin."
     },
     "faq": [
       {
         "q": "Paljonko Gather maksaa?",
-        "a": "15 $ jäseneltä kuukaudessa kuukausilaskutuksella tai 12 $ jäseneltä kuukaudessa vuosilaskutuksella Essential-paketissa. Suuremmat organisaatiot voivat pyytää Custom-pakettia."
+        "a": "15 $ jäseneltä kuukaudessa kuukausilaskutuksella tai 12 $ jäseneltä kuukaudessa vuosilaskutuksella Essential-paketissa. Isommat organisaatiot voivat pyytää Custom-pakettia."
       },
       {
         "q": "Onko Gatherilla ilmaista pakettia?",
-        "a": "Ei. Gather lopetti ilmaisen paketin syyskuussa 2025. Sen sijaan tarjolla on 30 päivän ilmainen kokeilu."
+        "a": "Ei. Gather lopetti ilmaispaketin 15. syyskuuta 2025. Sen sijaan tarjolla on 30 päivän ilmainen kokeilu enintään 50 hengelle."
       },
       {
         "q": "Paljonko Gather maksaa 10 hengelle?",
-        "a": "150 $ kuukaudessa kuukausilaskutuksella tai 120 $ kuukaudessa vuosilaskutuksella (1 440 $ vuodessa)."
+        "a": "150 $ kuukaudessa kuukausilaskutuksella tai 120 $ kuukaudessa vuosilaskutuksella (1 440 $ vuodessa)."
+      },
+      {
+        "q": "Laskuttaako Gather vieraista?",
+        "a": "Ei jäseninä. Jokaisella toimistolla on vähintään 30 vierastuntia kuukaudessa, ja yli 10 jäsenen toimistot saavat 3 vierastuntia jäsentä kohden."
+      },
+      {
+        "q": "Lukitsimme Gatherin vanhan hinnan. Mitä nyt?",
+        "a": "Ennen 15. syyskuuta 2025 lukitut vuosipaketit pitivät 5,95 $ henkeä kohden kuukaudessa syyskuuhun 2026; uusinnassa ne siirtyvät hintaan 12 $ vuosilaskutuksella tai 15 $ kuukaudessa."
+      },
+      {
+        "q": "Onko alkuperäinen Gather halvempi kuin Gather 2.0?",
+        "a": "Ei, molemmat maksavat 15 $ henkeä kohden kuukaudessa tai 12 $ vuosilaskutuksella. Alkuperäinen versio laskuttaa samaan aikaan verkossa olevista, Gather 2.0 jäsenistä."
+      },
+      {
+        "q": "Antaako Gather alennuksia?",
+        "a": "Koulut, yliopistot ja voittoa tavoittelemattomat järjestöt voivat pyytää alennuskoodia Gatherin tuesta. Vuosilaskutus on 20 % kuukausilaskutusta edullisempi."
       },
       {
         "q": "Mikä on Gatheria edullisempi vaihtoehto?",
-        "a": "TinyFloor maksaa $29 kuukaudessa koko tiimille ja on ilmainen enintään 3 hengelle. SoWorkin Basic-tilaus maksaa $5,40 jäsentä kohden kuukaudessa vuosilaskutuksella, ja sen ilmainen tilaus kattaa 10 jäsentä 30 minuutin kokouksilla."
+        "a": "TinyFloor maksaa 29 $ kuukaudessa koko tiimille ja on ilmainen enintään 3 hengelle. SoWorkin Basic-paketti maksaa 5,40 $ jäseneltä kuukaudessa vuosilaskutuksella, ja sen ilmaispaketti kattaa 10 jäsentä 30 minuutin kokouksilla."
       }
     ]
   }

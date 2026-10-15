@@ -917,55 +917,82 @@
     ]
   },
   "gatherPricing": {
-    "label": "Gathers priser",
+    "label": "Gathers pris",
     "meta": {
-      "title": "Gathers priser i 2026: hvad et team på 5, 10 eller 25 betaler",
-      "description": "Gather koster 12 $ pr. medlem om måneden ved årlig betaling eller 15 $ månedligt, uden gratisplan. Hvad det bliver for teams på 5, 10, 25 og 50, og hvad det samme team betaler andre steder."
+      "title": "Gathers pris 2026: hvad dit team betaler, gæster medregnet",
+      "description": "Gather koster 12 $ pr. medlem om måneden ved årlig betaling eller 15 $ om måneden, uden gratisplan siden september 2025. Hvad det bliver for teams på 4 til 50, hvad gæster og optagelser omfatter, og hvad det samme team betaler andre steder."
     },
     "title": "Hvad koster <em>Gather?</em>",
-    "intro": "Siden september 2025 har Gather taget betaling for hvert medlem og har ingen gratisplan. Her er, hvad det bliver for dit team, regnet ud efter størrelse, og hvad det samme team betaler hos andre virtuelle kontorer. Priserne kommer fra Gathers egne pris- og hjælpesider, tjekket i oktober 2026.",
+    "intro": "Siden den 15. september 2025 tager Gather betaling for hvert teammedlem og har ikke længere en gratisplan. Denne guide regner ud, hvad det bliver for dit team, hvad planen indeholder og ikke indeholder, hvad der ændrede sig for teams, der allerede brugte Gather, og hvad det samme team betaler på andre virtuelle kontorer. Alle tal om Gather kommer fra Gathers egen prisside og hjælpecenter, tjekket i oktober 2026; priser i amerikanske dollar, uden skat.",
     "sections": [
       {
         "title": "Gathers planer",
         "body": [
-          "Gather har én plan til de fleste teams, Essential, og en Custom-plan til store organisationer."
+          "Gather sælger én plan til de fleste teams, Essential, og en Custom-plan til store organisationer. Begge versioner af Gather, det nye Gather 2.0 og originalen, koster nu det samme pr. person."
         ],
         "items": [
           {
             "title": "Essential",
-            "body": "15 $ pr. medlem om måneden, eller 12 $ ved årlig betaling. Indeholder alle Gathers funktioner: et tilpasset virtuelt kontor, ubegrænsede møder og chat, integrationer med Google Calendar, GitHub og Spotify, gæster, og optagelse og transskription af møder med et antal timer om måneden."
+            "body": "15 $ pr. medlem om måneden, eller 12 $ ved årlig betaling. Alle Gathers funktioner: et virtuelt kontor, du selv indretter, ubegrænsede møder og chat, integrationer med Google Calendar, GitHub og Spotify, og mødenoter med AI. Optagelser, transskriptioner og gæster har månedlige kvoter, fra 20 timers optagelse, 30 timers transskription og 30 gæstetimer."
           },
           {
             "title": "Custom",
-            "body": "Pris via Gathers salgsteam, til store teams, der vil have hjælp til opstart og virksomhedsfunktioner."
+            "body": "Prisen fastsættes af Gathers salgsteam. Alt i Essential plus single sign-on, tilpasset onboarding, større kontorer, hybride opsætninger og regionale priser. Skal I logge ind via firmaets identitetsudbyder, er det denne plan."
           },
           {
             "title": "Gratis prøveperiode",
-            "body": "30 dage gratis, derefter Essential. Der er ingen permanent gratisplan."
+            "body": "30 dage for op til 50 personer, uden kort. Derefter skal kontoret have Essential. Der er ingen permanent gratisplan. Personer, der tilføjes senere, får deres egen 14-dages prøveperiode, før de tæller med."
           }
         ]
       },
       {
         "title": "Hvad Gather koster efter teamstørrelse",
+        "body": [
+          "Gather tæller medlemmer: alle med en konto i jeres kontor, uanset om de kommer ind den dag. Her er Essential for almindelige teamstørrelser."
+        ],
         "table": {
           "head": [
             "Team",
             "Månedlig betaling",
-            "Årlig betaling, om måneden",
-            "Om året, årlig betaling"
+            "Årlig betaling, pr. måned",
+            "Pr. år, årlig betaling"
           ],
           "rows": [
             [
-              "5 personer",
-              "75 $",
+              "4 personer",
               "60 $",
-              "720 $"
+              "48 $",
+              "576 $"
+            ],
+            [
+              "6 personer",
+              "90 $",
+              "72 $",
+              "864 $"
+            ],
+            [
+              "8 personer",
+              "120 $",
+              "96 $",
+              "1.152 $"
             ],
             [
               "10 personer",
               "150 $",
               "120 $",
               "1.440 $"
+            ],
+            [
+              "12 personer",
+              "180 $",
+              "144 $",
+              "1.728 $"
+            ],
+            [
+              "15 personer",
+              "225 $",
+              "180 $",
+              "2.160 $"
             ],
             [
               "25 personer",
@@ -980,73 +1007,160 @@
               "7.200 $"
             ]
           ],
-          "note": "Gather tager betaling for hvert medlem, uanset om de kommer på kontoret den dag eller ej. Priser uden moms."
+          "note": "Essential til 15 $ pr. medlem om måneden, eller 12 $ ved årlig betaling (Gathers prisside, oktober 2026). Uden skat."
         }
+      },
+      {
+        "title": "Hvad der ellers tæller på regningen",
+        "items": [
+          {
+            "title": "Gæster",
+            "body": "Kunder, kandidater og freelancere kan komme ind som gæster; de betaler ikke som medlemmer, men bruger gæstetimer. Hvert kontor har mindst 30 gæstetimer om måneden; et kontor med mere end 10 medlemmer får 3 timer pr. medlem, altså 60 timer ved 20 medlemmer. Et team, der modtager kunder hver dag, kan løbe tør."
+          },
+          {
+            "title": "Optagelser og transskriptioner",
+            "body": "Inkluderet, inden for månedlige kvoter, der starter ved 20 timers optagelse og 30 timers transskription."
+          },
+          {
+            "title": "Hver person er en plads",
+            "body": "En freelancer på deltid, en leder, der kigger forbi en gang om ugen, en på ferie: hver er et medlem til fuld pris, så længe de er i kontoret."
+          },
+          {
+            "title": "Det oprindelige Gather tæller stadig samtidige brugere",
+            "body": "Kontorer, der bliver på den oprindelige version, betaler den nye pris pr. person online på samme tid, ikke pr. medlem. At skifte til Gather 2.0 betyder at bygge et nyt kontor i Gather Studio."
+          },
+          {
+            "title": "Rabatter",
+            "body": "Skoler, universiteter og nonprofitorganisationer kan bede Gathers support om en rabatkode. Events på den oprindelige version koster 3 $ pr. person pr. dag, med månedsprisen som loft efter fem dage."
+          }
+        ]
       },
       {
         "title": "Hvad der ændrede sig i 2025",
         "body": [
-          "Den 15. september 2025 lancerede Gather Gather 2.0 og flyttede både den nye og den oprindelige version over på pris pr. medlem: 15 $ pr. medlem om måneden, eller 12 $ ved årlig betaling. Før betalte teams for, hvor mange der var på kontoret på samme tid.",
-          "Gratisplanen forsvandt for begge versioner. Teams, der allerede betalte, kunne låse deres gamle pris inden skiftet. For et lille team, der brugte Gather gratis, var det her tidspunktet, hvor det begyndte at koste penge."
+          "Indtil september 2025 kunne små teams bruge Gather gratis, og betalende teams betalte 7 $ pr. person om måneden, eller 5,95 $ ved årlig betaling, for antallet af personer online på samme tid.",
+          "Den 15. september 2025 lancerede Gather Gather 2.0 og flyttede begge versioner til 15 $ pr. medlem om måneden, eller 12 $ ved årlig betaling. Gratisplanen stoppede: kontorer, der ikke havde opgraderet inden den dato, blev lukket.",
+          "De, der allerede betalte, fik tid til at omstille sig. Månedlige planer beholdt deres gamle pris til udgangen af 2025 og gik over til 15 $ ved første fornyelse efter 1. januar 2026. Teams, der låste en årlig plan før ændringen, beholdt 5,95 $ til september 2026, så mange af dem møder den nye pris ved årets fornyelse."
+        ]
+      },
+      {
+        "title": "Regneeksempler",
+        "items": [
+          {
+            "title": "Et team på 6, der brugte gratisplanen",
+            "detail": "Fra 0 $ til 864 $ om året",
+            "body": "Seks personer, der brugte Gather gratis, betaler nu 72 $ om måneden med årlig betaling (864 $ om året), eller 90 $ om måneden med månedlig betaling."
+          },
+          {
+            "title": "Et team på 8, der låste den gamle årspris",
+            "detail": "Fra 571 $ til 1.152 $ om året",
+            "body": "Otte personer til 5,95 $ om måneden betalte omkring 571 $ om året. Ved fornyelsen fra september 2026 betaler det samme team 12 $ pr. person om måneden, 1.152 $ om året: omtrent det dobbelte."
+          },
+          {
+            "title": "Et team på 12, der modtager kunder",
+            "detail": "144 $ om måneden, 36 gæstetimer",
+            "body": "Tolv medlemmer med årlig betaling betaler 144 $ om måneden og har 36 gæstetimer om måneden, omkring halvanden time pr. arbejdsdag. En time om dagen med kunder går; flere kundemøder om dagen gør ikke."
+          }
         ]
       },
       {
         "title": "Det samme team andre steder",
         "body": [
-          "Sådan betaler de samme teams om måneden hos andre virtuelle kontorer, på den billigste plan, der har plads til dem."
+          "Hvad de samme teams betaler om måneden på andre virtuelle kontorer, på den billigste plan, der passer."
         ],
         "table": {
           "head": [
             "Team",
-            "Gather, årligt",
+            "Gather, årlig betaling",
             "TinyFloor",
-            "SoWork Basic, årligt",
+            "SoWork Basic, årlig betaling",
             "Kumospace Business"
           ],
           "rows": [
             [
-              "5 personer",
-              "60 $",
-              "$29",
-              "27 $",
+              "4 personer",
+              "48 $",
+              "29 $",
+              "21,60 $",
               "Gratis (op til 5 medlemmer)"
             ],
             [
-              "10 personer",
-              "120 $",
-              "$29",
-              "54 $",
-              "160 $"
+              "8 personer",
+              "96 $",
+              "29 $",
+              "43,20 $",
+              "128 $"
+            ],
+            [
+              "12 personer",
+              "144 $",
+              "29 $",
+              "64,80 $",
+              "192 $"
             ]
           ],
-          "note": "Fra hvert produkts prisside i oktober 2026, uden moms. SoWorks gratisplan dækker også op til 10 medlemmer, med møder på højst 30 minutter, og WorkAdventures op til 10 personer ad gangen."
+          "note": "Fra hvert produkts egen prisside i oktober 2026, uden skat. SoWorks gratisplan dækker op til 10 medlemmer med møder på højst 30 minutter; WorkAdventures op til 10 personer på samme tid. TinyFloor er gratis for op til 3 personer."
         }
       },
       {
         "title": "Hvornår Gather er pengene værd",
         "items": [
           {
-            "title": "Du vil designe dit kontor",
-            "body": "I Gather bygger du etager, rum og genstande. De fleste alternativer giver dig et færdigt kontor."
+            "title": "Du vil selv indrette dit kontor",
+            "body": "I Gather lægger du etager, rum og over 200 objekter ud. De fleste alternativer giver dig et færdigt kontor."
           },
           {
             "title": "Du har brug for optagelser og transskriptioner",
-            "body": "Essential har dem, med et antal timer hver måned."
+            "body": "Essential har dem, med timekvoter hver måned."
           },
           {
-            "title": "Din dag drejer sig om Google Calendar og GitHub",
-            "body": "Gathers integrationer viser din status og aktivitet på kontoret."
+            "title": "Din dag kører på Google Calendar og GitHub",
+            "body": "Gathers integrationer viser din status, og hvad du arbejder på, i kontoret."
           },
           {
-            "title": "Hvornår det ikke er",
-            "body": "Hvis dit team mest har brug for at se, hvem der er der, tale sammen og holde møder, betaler du for funktioner, du ikke bruger, hver måned, for hver person."
+            "title": "Du har brug for single sign-on",
+            "body": "Gathers Custom-plan har det; mange mindre produkter har ikke."
+          },
+          {
+            "title": "Hvornår ikke",
+            "body": "Hvis dit team mest har brug for at se, hvem der er der, snakke og holde møder, betaler du for funktioner, du ikke bruger, hver måned, for hver person."
           }
+        ]
+      },
+      {
+        "title": "Før du fornyer",
+        "body": [
+          "Skal din årlige plan fornyes til den nye pris? Fire spørgsmål viser, hvad du faktisk har brug for."
+        ],
+        "items": [
+          {
+            "title": "Hvor mange kommer ind på en almindelig dag?",
+            "body": "Gather tager betaling for hvert medlem. Hvis halvdelen af teamet næsten aldrig åbner kontoret, betaler du alligevel fuld pris for dem."
+          },
+          {
+            "title": "Bruger I optagelser og transskriptioner?",
+            "body": "De er en stor del af, hvad Essential tilføjer. Hvis jeres møder allerede kører i Zoom eller Google Meet med deres egne optagelser, betaler I måske dobbelt."
+          },
+          {
+            "title": "Hvor mange gæstetimer bruger I?",
+            "body": "Sammenlign med 30 om måneden, eller 3 pr. medlem over 10. Meget kundearbejde kan gå over det."
+          },
+          {
+            "title": "Ændrer I stadig i kontoret?",
+            "body": "Indretningen er Gathers største styrke. Hvis jeres kort ikke har ændret sig i månedsvis, gør et færdigt kontor det samme arbejde."
+          }
+        ]
+      },
+      {
+        "title": "Sådan tjekkede vi",
+        "body": [
+          "Gathers priser, kvoter og plandetaljer kommer fra gather.town/pricing og Gathers hjælpecenterartikel \"Understanding Gather's pricing changes (2025)\", læst i oktober 2026. De andre produkters priser kommer fra deres egne prissider samme måned. Når et produkts side ikke nævnte noget, udelod vi det i stedet for at gætte. Priser ændrer sig: tjek udbyderens side, før du køber."
         ]
       }
     ],
     "fit": {
       "title": "Hvor TinyFloor passer ind",
-      "body": "TinyFloor beholder kernen i det, Gather gør: et kontor, du går rundt i og taler ved at gå hen til nogen, med mødelokale, chat og skærmdeling. Det koster $29 om måneden for hele teamet, én pris for hele kontoret, og det er gratis for op til 3. Det har ingen optagelser, transskription eller kontoreditor; hvis du er afhængig af dem, passer Gather bedre."
+      "body": "TinyFloor beholder kernen i det, Gather gør: et kontor, hvor du går rundt og snakker ved at gå hen til nogen, med mødelokale, chat og skærmdeling. Det koster 29 $ om måneden for hele teamet, én pris, uanset hvor mange du inviterer, og er gratis for op til 3. Det har ingen optagelser, transskription, kontoreditor eller single sign-on; er du afhængig af det, passer Gather bedre."
     },
     "faq": [
       {
@@ -1055,15 +1169,31 @@
       },
       {
         "q": "Har Gather en gratisplan?",
-        "a": "Nej. Gather stoppede med gratisplanen i september 2025. I stedet er der en gratis prøveperiode på 30 dage."
+        "a": "Nej. Gather stoppede gratisplanen den 15. september 2025. I stedet er der en gratis prøveperiode på 30 dage for op til 50 personer."
       },
       {
         "q": "Hvad koster Gather for 10 personer?",
         "a": "150 $ om måneden ved månedlig betaling, eller 120 $ om måneden ved årlig betaling (1.440 $ om året)."
       },
       {
+        "q": "Tager Gather betaling for gæster?",
+        "a": "Ikke som medlemmer. Hvert kontor har mindst 30 gæstetimer om måneden, og kontorer med mere end 10 medlemmer får 3 gæstetimer pr. medlem."
+      },
+      {
+        "q": "Vi låste Gathers gamle pris. Hvad nu?",
+        "a": "Årlige planer låst før den 15. september 2025 beholdt 5,95 $ pr. person om måneden til september 2026; ved fornyelsen går de over til 12 $ ved årlig betaling eller 15 $ om måneden."
+      },
+      {
+        "q": "Er det oprindelige Gather billigere end Gather 2.0?",
+        "a": "Nej, begge koster 15 $ pr. person om måneden, eller 12 $ årligt. Den oprindelige version tager betaling pr. person online på samme tid, Gather 2.0 pr. medlem."
+      },
+      {
+        "q": "Giver Gather rabat?",
+        "a": "Skoler, universiteter og nonprofitorganisationer kan bede Gathers support om en rabatkode. Årlig betaling er 20 % billigere end månedlig."
+      },
+      {
         "q": "Hvad er et billigere alternativ til Gather?",
-        "a": "TinyFloor koster $29 om måneden for hele teamet og er gratis for op til 3. SoWorks Basic-plan koster $5,40 pr. medlem om måneden ved årlig betaling, og gratisplanen dækker 10 medlemmer med møder på 30 minutter."
+        "a": "TinyFloor koster 29 $ om måneden for hele teamet og er gratis for op til 3. SoWorks Basic-plan koster 5,40 $ pr. medlem om måneden ved årlig betaling, og dens gratisplan dækker 10 medlemmer med møder på 30 minutter."
       }
     ]
   }

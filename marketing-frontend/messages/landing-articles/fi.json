@@ -1,1 +1,471 @@
-{}
+{
+  "gather": [
+    {
+      "title": "Gather-vaihtoehdot yhdellä silmäyksellä",
+      "body": [
+        "Mitä 8 hengen tiimi maksaa kuukaudessa halvimmasta sopivasta tilauksesta, ilmaisversio jos sellainen on, ja kenelle kukin tuote sopii parhaiten. Gather on ensimmäisellä rivillä vertailun vuoksi."
+      ],
+      "table": {
+        "head": [
+          "Tuote",
+          "8 hengen tiimi, kuukaudessa",
+          "Ilmaisversio",
+          "Paras kenelle"
+        ],
+        "rows": [
+          [
+            "Gather",
+            "96 $ vuosittain, 120 $ kuukausittain",
+            "Ei, 30 päivän kokeilu",
+            "Tiimeille, jotka suunnittelevat toimistonsa itse"
+          ],
+          [
+            "TinyFloor",
+            "29 $ koko tiimiltä",
+            "Enintään 3 henkeä",
+            "Pienille tiimeille, jotka haluavat yhden hinnan"
+          ],
+          [
+            "SoWork",
+            "43,20 $ vuosittain",
+            "Enintään 10 jäsentä, 30 minuutin kokoukset",
+            "Tiimeille, joiden budjetti on tiukka"
+          ],
+          [
+            "Kumospace",
+            "128 $",
+            "Enintään 5 jäsentä, 1 kerros",
+            "Tiimeille, jotka haluavat tietokone- ja mobiilisovellukset"
+          ],
+          [
+            "WorkAdventure",
+            "Alkaen 64 €",
+            "Enintään 10 henkeä samaan aikaan",
+            "Tiimeille, jotka haluavat avoimen lähdekoodin kartan"
+          ],
+          [
+            "Teamflow",
+            "120 $ vuosittain",
+            "Enintään 5 henkeä, 45 minuutin kokoukset",
+            "Tiimeille, joille tietokonesovellus sopii"
+          ],
+          [
+            "Roam",
+            "Hinta aktiivista jäsentä kohden",
+            "Ei, 14 päivän kokeilu",
+            "Tiimeille, jotka haluavat tekoälytyökalut toimiston rinnalle"
+          ],
+          [
+            "Discord",
+            "Ilmainen",
+            "Kyllä",
+            "Tiimeille, jotka tarvitsevat vain puhekanavia"
+          ]
+        ],
+        "note": "Kunkin tuotteen hintasivulta lokakuussa 2026, ilman veroja. Henkilöhinnat kerrottuna 8:lla; WorkAdventuren Business-tilaus alkaa 8 €:sta käyttäjää kohden."
+      }
+    },
+    {
+      "title": "Miksi tiimit etsivät vaihtoehtoa Gatherille",
+      "body": [
+        "Gather teki virtuaalitoimiston tunnetuksi, ja vuosia pieni tiimi pystyi käyttämään sitä ilmaiseksi. 15. syyskuuta 2025 se loppui: Gather siirtyi hintaan 15 $ jäsentä kohden kuukaudessa, tai 12 $ vuosimaksulla, ja sulki ilmaiset toimistot, joita ei päivitetty maksulliseksi. Tiimit, jotka olivat lukinneet vanhan 5,95 $:n vuosihinnan, pitivät sen syyskuuhun 2026 asti, joten moni kohtaa uuden hinnan tämän vuoden uusinnassa.",
+        "Hinta ei ole ainoa syy. Gather 2.0 on uusi alusta, ja siihen siirtyminen tarkoittaa toimiston rakentamista uudelleen. Moni tiimi myös huomaa käyttävänsä vain murto-osaa siitä, mistä maksaa: he haluavat nähdä, kuka on paikalla, jutella sopimatta aikaa ja kokoontua. Niiden perusteella alla olevat vaihtoehdot arvioidaan."
+      ]
+    },
+    {
+      "title": "Vaihtoehdot yksi kerrallaan",
+      "items": [
+        {
+          "title": "TinyFloor",
+          "detail": "29 $ kuukaudessa koko tiimiltä, ilmainen enintään 3 hengelle",
+          "body": "Pikselitaidetoimisto, joka avautuu selaimen välilehdessä, tietokoneella tai puhelimella. Näet, kuka istuu pöytänsä ääressä, kävelet viereen juttelemaan ja astut neuvotteluhuoneeseen videota ja näytönjakoa varten; mukana on tiimichat ja oma työpöytä. Yksi hinta kattaa kaikki, jotka kutsut. Toimistoeditoria, tallenteita, litterointia tai kertakirjautumista ei ole; tiimien, jotka tarvitsevat niitä, kannattaa katsoa Gatheria tai Kumospacea."
+        },
+        {
+          "title": "SoWork",
+          "detail": "Basic 5,40 $ jäsentä kohden kuukaudessa, vuosittain; ilmainen enintään 10:lle",
+          "body": "Listan halvin tilaus henkeä kohden ja tiimille antoisin ilmaisversio: enintään 10 jäsentä, kokoukset enintään 30 minuuttia. Se laskuttaa jäsentä kohden, joten lasku kasvaa tiimin mukana."
+        },
+        {
+          "title": "Kumospace",
+          "detail": "Business alkaen 16 $ käyttäjää kohden kuukaudessa; ilmainen enintään 5 jäsenelle",
+          "body": "Viimeistelty virtuaalitoimisto, jossa on selaimen lisäksi tietokone- ja mobiilisovellukset. Ilmaisversioon mahtuu 5 jäsentä, 50 vierasta ja yksi kerros. 8 hengen tiimille se on Gatherin kuukausitilauksen jälkeen listan kallein vaihtoehto."
+        },
+        {
+          "title": "WorkAdventure",
+          "detail": "Business alkaen 8 € käyttäjää kohden kuukaudessa; ilmainen enintään 10:lle yhtä aikaa",
+          "body": "Toinen pikselitaidetoimisto, lisäksi avointa lähdekoodia, joten tekninen tiimi voi muokata karttaa. Ilmaisversio laskee samaan aikaan paikalla olevia, enintään 10, ei jäseniä."
+        },
+        {
+          "title": "Teamflow",
+          "detail": "15 $ henkeä kohden kuukaudessa, vuosittain; ilmainen enintään 5:lle",
+          "body": "Virtuaalitoimisto, joka toimii tietokonesovelluksena Macille ja Windowsille, mobiiliversio betassa. Ilmaisversioon mahtuu 5 henkeä 45 minuutin kokouksilla. Vuosimaksulla se maksaa henkeä kohden enemmän kuin Gatherin 12 $."
+        },
+        {
+          "title": "Roam",
+          "detail": "Kuukausihinta aktiivista jäsentä kohden; 14 päivän kokeilu",
+          "body": "Virtuaalitoimisto tekoälytyökaluilla, ladattavassa tietokonesovelluksessa. Se laskuttaa vain aktiivisista jäsenistä, eikä sillä ole ilmaisversiota."
+        },
+        {
+          "title": "Discord",
+          "detail": "Ilmainen",
+          "body": "Ei virtuaalitoimisto, mutta moni pieni tiimi käyttää sen puhekanavia jo näin: tule sisään, juttele, lähde. Se on ilmainen, ja ääni on hyvä. Se on tehty peliyhteisöille, joten siinä ei ole toimistoa, josta näkisi, kuka on paikalla, ja työ on kaiken muun seassa."
+        }
+      ]
+    },
+    {
+      "title": "Näin valitset",
+      "items": [
+        {
+          "title": "Laske, ketkä oikeasti käyttävät sitä",
+          "body": "Ilmaisversiot loppuvat 3–10 henkeen, ja useimmat maksulliset tilaukset laskuttavat henkeä kohden. 4–15 hengen tiimille kiinteä hinta tai riittävä ilmaisversio voittaa usein henkilöhinnan."
+        },
+        {
+          "title": "Selain vai sovellus",
+          "body": "Pelkästään selaimessa toimivia tuotteita ei tarvitse asentaa, ja ne toimivat heti vieraille ja freelancereille. Tietokonesovellukset osaavat enemmän, mutta jokaisen on asennettava ne."
+        },
+        {
+          "title": "Kirjaa ensin välttämättömät",
+          "body": "Jos tarvitset tallenteita, litterointia, itse suunniteltavan toimiston tai kertakirjautumisen, jäljelle jäävät Gather, Kumospace ja muutama muu, hinnasta riippumatta."
+        },
+        {
+          "title": "Kokeile tavallisena työpäivänä",
+          "body": "Nämä työkalut osoittavat arvonsa pienissä hetkissä: nopea kysymys, ajallaan alkava kokous. Viikko oikeaa työtä kertoo enemmän kuin demo."
+        }
+      ]
+    },
+    {
+      "title": "Miten vertailimme",
+      "body": [
+        "Hinnat, ilmaisversiot ja rajat ovat kunkin tuotteen hinta- ja ohjesivuilta, luettu lokakuussa 2026, dollareina tai euroina kuten kukin ne ilmoittaa, ilman veroja. Jos tuotteen sivulla ei mainittu jotain, jätimme sen pois arvailun sijaan. Me teemme TinyFlooria, joten panimme sen ensimmäiseksi ja kerromme selvästi, mitä se ei tee. Hinnat muuttuvat: tarkista toimittajan sivu ennen ostamista."
+      ]
+    }
+  ],
+  "virtualOffice": [
+    {
+      "title": "Mikä virtuaalitoimisto on, ja mikä se ei ole",
+      "body": [
+        "”Virtuaalitoimisto” tarkoittaa kahta eri asiaa. Ensimmäinen on yritysosoite: palvelu, joka antaa yritykselle postiosoitteen ja joskus puhelinnumeron ilman työpöytää. Toinen, josta tämä sivu kertoo, on verkossa toimiva toimisto, jossa etätiimi työskentelee yhdessä päivän aikana.",
+        "Tämä toinen on yhteinen tila, joka pysyy auki niin kauan kuin tehdään töitä. Kokouksen päättyessä katoavan kasvoruudukon sijaan jokaisella on paikka toimistossa, jokainen näkee, kuka muu on paikalla, ja keskustelu alkaa kuten rakennuksessa: menemällä jonkun luo."
+      ]
+    },
+    {
+      "title": "Mitä siellä tehdään",
+      "items": [
+        {
+          "title": "Näe, kuka on paikalla",
+          "body": "Kaikki näkyvät toimistossa tilan kanssa, joten tiedät, kuka istuu pöytänsä ääressä, kuka on kiireinen ja kuka on kokouksessa, ennen kuin keskeytät."
+        },
+        {
+          "title": "Juttele sopimatta aikaa",
+          "body": "Kävele kollegan luo ja ala jutella. Kahden minuutin kysymys pysyy kahden minuutin kysymyksenä eikä muutu huomisen kalenterikutsuksi."
+        },
+        {
+          "title": "Kokoonnu huoneessa",
+          "body": "Ryhmäkeskustelut käydään neuvotteluhuoneessa, johon kävelet sisään, videon ja näytönjaon kanssa, ja josta lähdet, kun olette valmiita."
+        },
+        {
+          "title": "Oma työpöytä",
+          "body": "Työpöytä antaa jokaiselle paikan, joten toimisto näyttää tiimiltä eikä aulalta."
+        },
+        {
+          "title": "Chattaa vieressä",
+          "body": "Viestit ja kanavat ovat kerroksen vieressä kaikelle, mikä ei vaadi keskustelua."
+        }
+      ]
+    },
+    {
+      "title": "Virtuaalitoimisto jo käyttämiesi työkalujen rinnalla",
+      "body": [
+        "Virtuaalitoimisto ei korvaa videopuheluita eikä tiimichattia. Se kattaa sen osan päivästä, jota kumpaakaan ei ole tehty varten."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Videopuhelusovellus",
+          "Tiimichat",
+          "Virtuaalitoimisto"
+        ],
+        "rows": [
+          [
+            "Paras",
+            "Sovittuihin kokouksiin",
+            "Kirjallisiin päivityksiin ja ketjuihin",
+            "Yhdessä olemiseen töiden aikana"
+          ],
+          [
+            "Keskustelu alkaa, kun",
+            "Kokous alkaa",
+            "Joku vastaa",
+            "Kävelet jonkun luo"
+          ],
+          [
+            "Näyttää, kuka on paikalla",
+            "Vain puheluun liittyneet",
+            "Paikalla tai poissa",
+            "Kaikki, missä he ovat ja mitä he tekevät"
+          ],
+          [
+            "Auki koko päivän",
+            "Ei, se päättyy kokoukseen",
+            "Kyllä, viesteinä",
+            "Kyllä, paikkana"
+          ]
+        ],
+        "note": "Useimmat tiimit pitävät kaikki kolme: virtuaalitoimiston päivää varten, chatin sille, mikä pitää kirjata, ja videopuhelun kokouksiin tiimin ulkopuolisten kanssa."
+      }
+    },
+    {
+      "title": "Kuka sitä käyttää",
+      "items": [
+        {
+          "title": "Pienet etätiimit",
+          "body": "Neljästä viiteentoista henkeä, jotka eivät jaa rakennusta ja kaipaavat sitä, että voi kääntyä ja kysyä."
+        },
+        {
+          "title": "Startupit",
+          "body": "Nuoret tiimit, jotka päättävät nopeasti eivätkä voi odottaa päivää seuraavaan kokoukseen."
+        },
+        {
+          "title": "Toimistot ja studiot",
+          "body": "Ihmiset, jotka siirtyvät asiakasprojektista toiseen koko päivän ja joiden pitää löytää toisensa nopeasti."
+        },
+        {
+          "title": "Kehitys- ja suunnittelutiimit",
+          "body": "Pariohjelmointia, katselmointeja ja työn näyttämistä ruudulla ilman, että sitä varten varataan puhelu."
+        },
+        {
+          "title": "Tiimit, joihin tulee uusi jäsen",
+          "body": "Uusi työntekijä näkee, kuka on paikalla, ja kysyy sen sijaan, että arvailisi, kenelle voi kirjoittaa."
+        }
+      ]
+    },
+    {
+      "title": "Mitä se maksaa",
+      "body": [
+        "Mitä 8 hengen tiimi maksaa kuukaudessa suosituista virtuaalitoimistoista halvimmalla sopivalla tilauksella."
+      ],
+      "table": {
+        "head": [
+          "Tuote",
+          "8 hengen tiimi, kuukaudessa",
+          "Miten hinnoitellaan"
+        ],
+        "rows": [
+          [
+            "TinyFloor",
+            "29 $",
+            "Yksi hinta koko tiimille; ilmainen enintään 3:lle"
+          ],
+          [
+            "SoWork Basic",
+            "43,20 $ vuosittain",
+            "Jäsentä kohden; ilmainen enintään 10:lle 30 minuutin kokouksilla"
+          ],
+          [
+            "Gather",
+            "96 $ vuosittain",
+            "Jäsentä kohden; ei ilmaisversiota"
+          ],
+          [
+            "Teamflow",
+            "120 $ vuosittain",
+            "Henkeä kohden; ilmainen enintään 5:lle"
+          ],
+          [
+            "Kumospace Business",
+            "128 $",
+            "Käyttäjää kohden; ilmainen enintään 5 jäsenelle"
+          ]
+        ],
+        "note": "Kunkin tuotteen hintasivulta lokakuussa 2026, ilman veroja."
+      }
+    },
+    {
+      "title": "Käyttöön päivässä",
+      "items": [
+        {
+          "title": "Luo toimisto",
+          "detail": "Kaksi minuuttia",
+          "body": "Nimeä se tiimin mukaan. Suunniteltavaa ei ole: kerros, työpöydät ja neuvotteluhuone ovat valmiina."
+        },
+        {
+          "title": "Kutsu kaikki yhdellä linkillä",
+          "detail": "Liitä se sinne, missä tiimi jo juttelee",
+          "body": "Kollegat kirjautuvat Googlella tai sähköpostilla ja tulevat sisään. Ei asennuksia, tietokoneella tai puhelimella."
+        },
+        {
+          "title": "Jokainen valitsee työpöydän",
+          "detail": "Oma paikka",
+          "body": "Kun kaikki istuvat jossain, toimisto tuntuu tiimiltä ja toiset on helppo löytää."
+        },
+        {
+          "title": "Pidä seuraava standup neuvotteluhuoneessa",
+          "detail": "Ensimmäinen tapa",
+          "body": "Yhden päivittäisen kokouksen siirtäminen toimistoon saa ihmiset palaamaan seuraavana päivänä."
+        },
+        {
+          "title": "Pidä se auki viikon",
+          "detail": "Päätä sitten",
+          "body": "Se osoittaa arvonsa pienissä hetkissä: nopea kysymys vastattuna minuutissa, keskustelu, jonka kuulit ja johon liityit."
+        }
+      ]
+    },
+    {
+      "title": "Mikä saa tiimin jatkamaan käyttöä",
+      "items": [
+        {
+          "title": "Pidä se kiinnitetyssä välilehdessä",
+          "body": "Toimisto toimii, kun se on siellä missä sinäkin, eikä se ole taas yksi avattava asia."
+        },
+        {
+          "title": "Poikkea, kamera vapaaehtoinen",
+          "body": "Pelkkä ääni riittää; video on käytössä, kun siitä on apua. Kenenkään ei pidä tuntea olevansa tarkkailtavana."
+        },
+        {
+          "title": "Älä koskaan käytä sitä ihmisten valvomiseen",
+          "body": "Virtuaalitoimisto on paikka löytää toisensa, ei kellokortti. Tiimit, jotka käyttävät sitä ihmisten tarkkailuun, lopettavat sen käytön."
+        },
+        {
+          "title": "Pidä kokoukset myös siellä",
+          "body": "Jos standup ja nopeat kysymykset hoidetaan toimistossa, ihmiset palaavat sinne pyytämättä."
+        }
+      ]
+    }
+  ],
+  "discord": [
+    {
+      "title": "Miksi tiimit käyttävät Discordia toimistona",
+      "body": [
+        "Moni pieni tiimi, etenkin kehittäjät, studiot ja startupit, viettää työpäivänsä Discordissa. Ne luovat palvelimen, avaavat puhekanavan, ja ihmiset tulevat ja menevät kuin yhteiseen huoneeseen. Se on ilmainen, ääni on hyvä, näytönjako toimii puhekanavilla, eikä sen jo osaavan tarvitse opetella mitään uutta.",
+        "Se osoittaa, että yhden klikkauksen päässä toisistaan oleminen toimii paremmin kuin jokaisen keskustelun aikatauluttaminen. Kysymys on, onko peliyhteisöille tehty sovellus paras koti sille."
+      ]
+    },
+    {
+      "title": "Missä se jää töissä vajaaksi",
+      "items": [
+        {
+          "title": "Se on henkilökohtainen, ei yrityksesi",
+          "body": "Ihmiset liittyvät omilla Discord-tileillään, joten työ on pelipalvelimien ja kavereiden vieressä ja kaikki ilmoitukset samassa paikassa."
+        },
+        {
+          "title": "Kanavia paikan sijaan",
+          "body": "Näet, kuka on millä puhekanavalla, mutta et sitä, kuka istuu pöytänsä ääressä ja ehtii hetken. Kanavalle liittyminen on kaikki tai ei mitään -tapa aloittaa keskustelu."
+        },
+        {
+          "title": "Ei selvää neuvotteluhuonetta",
+          "body": "Kokous on vain yksi puhekanava lisää. Se toimii, mutta siinä ei ole tunnetta siitä, että astuisit huoneeseen ja palaisit sitten pöydällesi."
+        },
+        {
+          "title": "Tehty yhteisöille",
+          "body": "Roolit, palvelimet ja botit on tehty suurille tuntemattomien ryhmille. Kahdeksan hengen tiimi tarvitsee paljon vähemmän, ja enemmän sitä, mitä toimistossa on."
+        }
+      ]
+    },
+    {
+      "title": "Discord ja TinyFloor työtiimille",
+      "table": {
+        "head": [
+          "",
+          "Discord",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Hinta",
+            "Ilmainen; Nitro maksaa erikseen jokaiselta",
+            "Ilmainen enintään 3:lle; 29 $ kuukaudessa koko tiimiltä"
+          ],
+          [
+            "Tilit",
+            "Jokaisen oma Discord-tili",
+            "Ilmainen tili; tiimi liittyy toimiston kutsulinkillä"
+          ],
+          [
+            "Keskustelun aloittaminen",
+            "Liity puhekanavalle",
+            "Kävele kollegan luo"
+          ],
+          [
+            "Kuka on paikalla",
+            "Jäsenluettelo ja kuka on millä kanavalla",
+            "Kaikki yhdessä kerroksessa: työpöydät, tilat ja kuka on puhelussa"
+          ],
+          [
+            "Kokoukset",
+            "Puhekanava näytönjaolla",
+            "Neuvotteluhuone videolla ja näytönjaolla"
+          ],
+          [
+            "Toimii",
+            "Selaimessa, tietokone- ja mobiilisovelluksissa",
+            "Selaimessa, tietokoneella ja mobiilissa"
+          ]
+        ],
+        "note": "Discordin tiedot sen omalta sivustolta, lokakuu 2026."
+      }
+    },
+    {
+      "title": "Jos jäät Discordiin, järjestä se kuin toimisto",
+      "items": [
+        {
+          "title": "Nimeä puhekanavat paikkojen mukaan",
+          "body": "”Työpöydät”, ”Neuvotteluhuone” ja ”Keskittyminen” kertovat, mitä liittyminen tarkoittaa, paremmin kuin ”Yleinen 1” ja ”Yleinen 2”."
+        },
+        {
+          "title": "Sopikaa, mitä tila tarkoittaa",
+          "body": "Älä häiritse tarkoittaa syvää keskittymistä; poissa tarkoittaa, ettei ole pöydän ääressä. Yhteiset säännöt tekevät poikkeamisesta helppoa."
+        },
+        {
+          "title": "Yksi tekstikanava projektia kohden",
+          "body": "Pitää työn poissa yleiseltä kanavalta ja helposti löydettävänä myöhemmin."
+        },
+        {
+          "title": "Erillinen palvelin työlle",
+          "body": "Jotta tiimin tila ei sekoitu kaikkien omiin yhteisöihin."
+        }
+      ]
+    },
+    {
+      "title": "Milloin Discord sopii paremmin",
+      "items": [
+        {
+          "title": "Tiimisi on jo siellä ja tyytyväinen",
+          "body": "Jos se toimii eikä kukaan kaipaa mitään, ei ole syytä vaihtaa."
+        },
+        {
+          "title": "Ylläpidät myös yhteisöä",
+          "body": "Jos asiakkaat tai pelaajat ovat samalla palvelimella, Discord on tehty juuri sitä varten."
+        },
+        {
+          "title": "Hinnan pitää olla nolla",
+          "body": "Discord on ilmainen kuinka monelle tahansa; TinyFloor on ilmainen 3:lle."
+        }
+      ]
+    },
+    {
+      "title": "Tiimin siirtäminen Discordista",
+      "items": [
+        {
+          "title": "Luo toimisto",
+          "detail": "Kaksi minuuttia",
+          "body": "Anna sille nimi, niin kerros, työpöydät ja neuvotteluhuone ovat valmiina."
+        },
+        {
+          "title": "Jaa kutsulinkki Discordissanne",
+          "detail": "Siellä, missä kaikki jo ovat",
+          "body": "Ihmiset kirjautuvat Googlella tai sähköpostilla ja tulevat sisään selaimesta."
+        },
+        {
+          "title": "Siirrä päivittäinen standup ensin",
+          "detail": "Yksi tapa kerrallaan",
+          "body": "Pitäkää se neuvotteluhuoneessa viikon ajan, kun kaikki muu pysyy ennallaan."
+        },
+        {
+          "title": "Päätä sitten, mikä jää",
+          "detail": "Ei suurta vaihtoa",
+          "body": "Moni tiimi pitää Discordin yhteisöään varten ja käyttää toimistoa työpäivän aikana."
+        }
+      ]
+    }
+  ]
+}

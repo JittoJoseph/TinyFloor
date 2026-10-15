@@ -1,1 +1,471 @@
-{}
+{
+  "gather": [
+    {
+      "title": "Alternativer til Gather i korte trekk",
+      "body": [
+        "Hva et team på 8 betaler i måneden på den billigste planen som passer, gratisplanen hvis det finnes en, og hvem hvert produkt passer best for. Gather står på første rad til sammenligning."
+      ],
+      "table": {
+        "head": [
+          "Produkt",
+          "Et team på 8, per måned",
+          "Gratisplan",
+          "Best for"
+        ],
+        "rows": [
+          [
+            "Gather",
+            "96 $ årlig, 120 $ månedlig",
+            "Ingen, 30 dagers prøveperiode",
+            "Team som designer sitt eget kontor"
+          ],
+          [
+            "TinyFloor",
+            "29 $ for hele teamet",
+            "Opptil 3 personer",
+            "Små team som vil ha én pris"
+          ],
+          [
+            "SoWork",
+            "43,20 $ årlig",
+            "Opptil 10 medlemmer, møter på 30 minutter",
+            "Team med stramt budsjett"
+          ],
+          [
+            "Kumospace",
+            "128 $",
+            "Opptil 5 medlemmer, 1 etasje",
+            "Team som vil ha apper for datamaskin og mobil"
+          ],
+          [
+            "WorkAdventure",
+            "Fra 64 €",
+            "Opptil 10 personer samtidig",
+            "Team som vil ha et kart med åpen kildekode"
+          ],
+          [
+            "Teamflow",
+            "120 $ årlig",
+            "Opptil 5 personer, møter på 45 minutter",
+            "Team som gjerne bruker en datamaskinapp"
+          ],
+          [
+            "Roam",
+            "En pris per aktivt medlem",
+            "Ingen, 14 dagers prøveperiode",
+            "Team som vil ha AI-verktøy med kontoret"
+          ],
+          [
+            "Discord",
+            "Gratis",
+            "Ja",
+            "Team som bare trenger talekanaler"
+          ]
+        ],
+        "note": "Fra hvert produkts prisside i oktober 2026, eksklusive avgifter. Priser per person ganger 8; WorkAdventures Business-plan starter på 8 € per bruker."
+      }
+    },
+    {
+      "title": "Hvorfor team leter etter et alternativ til Gather",
+      "body": [
+        "Gather gjorde det virtuelle kontoret kjent, og i årevis kunne et lite team bruke det gratis. 15. september 2025 var det slutt: Gather gikk over til 15 $ per medlem i måneden, eller 12 $ ved årlig betaling, og stengte gratiskontorer som ikke oppgraderte. Team som hadde låst den gamle årsprisen på 5,95 $, beholdt den til september 2026, så mange av dem møter den nye prisen ved årets fornyelse.",
+        "Prisen er ikke den eneste grunnen. Gather 2.0 er en ny plattform, og å bytte betyr å bygge kontoret på nytt. Og mange team merker at de bare bruker en brøkdel av det de betaler for: de vil se hvem som er der, prate uten å avtale tid og møtes. Det er det alternativene nedenfor vurderes etter."
+      ]
+    },
+    {
+      "title": "Alternativene, ett om gangen",
+      "items": [
+        {
+          "title": "TinyFloor",
+          "detail": "29 $ i måneden for hele teamet, gratis for opptil 3",
+          "body": "Et kontor i pikselkunst som åpnes i en nettleserfane, på datamaskin eller mobil. Du ser hvem som sitter ved pulten sin, går bort for å prate og går inn i møterommet for video og skjermdeling; det finnes teamchat og en egen pult. Én pris dekker alle du inviterer. Det finnes ingen kontoreditor, ingen opptak, ingen transkripsjon og ingen enkel pålogging; team som er avhengige av det, bør se på Gather eller Kumospace."
+        },
+        {
+          "title": "SoWork",
+          "detail": "Basic 5,40 $ per medlem i måneden, årlig; gratis opptil 10",
+          "body": "Den billigste planen per person på listen, og den rauseste gratisplanen for et team: opptil 10 medlemmer, med møter på maks 30 minutter. Den tar betalt per medlem, så regningen vokser med teamet."
+        },
+        {
+          "title": "Kumospace",
+          "detail": "Business fra 16 $ per bruker i måneden; gratis opptil 5 medlemmer",
+          "body": "Et gjennomarbeidet virtuelt kontor med apper for datamaskin og mobil i tillegg til nettleseren. Gratisplanen rommer 5 medlemmer, 50 gjester og én etasje. For et team på 8 er det det dyreste alternativet på listen etter Gathers månedsplan."
+        },
+        {
+          "title": "WorkAdventure",
+          "detail": "Business fra 8 € per bruker i måneden; gratis opptil 10 samtidig",
+          "body": "Enda et kontor i pikselkunst, og med åpen kildekode, så et teknisk team kan tilpasse kartet. Gratisplanen teller personer som er pålogget samtidig, opptil 10, ikke medlemmer."
+        },
+        {
+          "title": "Teamflow",
+          "detail": "15 $ per person i måneden, årlig; gratis opptil 5",
+          "body": "Et virtuelt kontor som kjører som datamaskinapp for Mac og Windows, mobil i beta. Gratisplanen rommer 5 personer med møter på 45 minutter. Ved årlig betaling koster det mer per person enn Gathers 12 $."
+        },
+        {
+          "title": "Roam",
+          "detail": "En månedspris per aktivt medlem; 14 dagers prøveperiode",
+          "body": "Et virtuelt kontor med AI-verktøy, i en datamaskinapp du laster ned. Det tar bare betalt for aktive medlemmer og har ingen gratisplan."
+        },
+        {
+          "title": "Discord",
+          "detail": "Gratis",
+          "body": "Ikke et virtuelt kontor, men mange små team bruker allerede talekanalene slik: gå inn, prat, gå ut. Det er gratis og lyden er god. Det er laget for spillmiljøer, så det finnes ikke noe kontor der du ser hvem som er der, og jobben ligger ved siden av alt annet."
+        }
+      ]
+    },
+    {
+      "title": "Slik velger du",
+      "items": [
+        {
+          "title": "Tell hvem som faktisk kommer til å bruke det",
+          "body": "Gratisplaner stopper ved 3 til 10 personer, og de fleste betalte planer tar betalt per person. For et team på 4 til 15 slår en fast pris eller en gratisplan som passer, ofte en pris per hode."
+        },
+        {
+          "title": "Nettleser eller app",
+          "body": "Produkter som bare kjører i nettleseren, trenger ikke installeres og fungerer med en gang for gjester og frilansere. Datamaskinapper kan gjøre mer, men alle må installere dem."
+        },
+        {
+          "title": "Skriv ned det som må være med først",
+          "body": "Trenger du opptak, transkripsjon, et kontor du designer selv eller enkel pålogging, står du igjen med Gather, Kumospace og noen få andre, uansett pris."
+        },
+        {
+          "title": "Prøv det på en vanlig arbeidsdag",
+          "body": "Disse verktøyene viser verdien sin i små øyeblikk: et raskt spørsmål, et møte som starter i tide. En uke med ekte arbeid sier mer enn en demo."
+        }
+      ]
+    },
+    {
+      "title": "Slik sammenlignet vi",
+      "body": [
+        "Priser, gratisplaner og grenser kommer fra hvert produkts pris- og hjelpesider, lest i oktober 2026, i dollar eller euro slik hvert enkelt oppgir dem, eksklusive avgifter. Hvis et produkts side ikke oppga noe, utelot vi det i stedet for å gjette. Vi lager TinyFloor, så vi satte det først og sier tydelig hva det ikke gjør. Priser endrer seg: sjekk leverandørens side før du kjøper."
+      ]
+    }
+  ],
+  "virtualOffice": [
+    {
+      "title": "Hva et virtuelt kontor er, og hva det ikke er",
+      "body": [
+        "«Virtuelt kontor» betyr to forskjellige ting. Den ene er en forretningsadresse: en tjeneste som gir et selskap en postadresse og noen ganger et telefonnummer, uten pult. Den andre, som denne siden handler om, er et kontor på nett der et team som jobber eksternt, jobber sammen i løpet av dagen.",
+        "Den andre sorten er et felles rom som er åpent mens folk jobber. I stedet for et rutenett av ansikter som forsvinner når møtet er over, har alle en plass på kontoret, ser hvem andre som er der, og starter en samtale som i en bygning: ved å gå bort til noen."
+      ]
+    },
+    {
+      "title": "Hva du gjør der",
+      "items": [
+        {
+          "title": "Se hvem som er der",
+          "body": "Alle vises på kontoret med en status, så du vet hvem som sitter ved pulten sin, hvem som er opptatt og hvem som er i et møte før du forstyrrer."
+        },
+        {
+          "title": "Prat uten å avtale tid",
+          "body": "Gå bort til en kollega og begynn å prate. Et spørsmål på to minutter forblir to minutter i stedet for å bli en kalenderinvitasjon til i morgen."
+        },
+        {
+          "title": "Møtes i et rom",
+          "body": "Gruppesamtaler skjer i et møterom du går inn i, med video og skjermdeling, og som du går ut av når dere er ferdige."
+        },
+        {
+          "title": "Ha din egen pult",
+          "body": "En pult gir alle en plass, så kontoret ser ut som et team og ikke som en resepsjon."
+        },
+        {
+          "title": "Chat ved siden av",
+          "body": "Meldinger og kanaler ligger ved siden av gulvet, for det som ikke trenger en samtale."
+        }
+      ]
+    },
+    {
+      "title": "Et virtuelt kontor ved siden av verktøyene du allerede har",
+      "body": [
+        "Et virtuelt kontor erstatter ikke videosamtaler eller teamchat. Det dekker den delen av dagen ingen av dem er laget for."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Videosamtaleapp",
+          "Teamchat",
+          "Virtuelt kontor"
+        ],
+        "rows": [
+          [
+            "Best for",
+            "Planlagte møter",
+            "Skriftlige oppdateringer og tråder",
+            "Å være sammen mens man jobber"
+          ],
+          [
+            "En samtale starter når",
+            "Et møte begynner",
+            "Noen svarer",
+            "Du går bort til noen"
+          ],
+          [
+            "Viser hvem som er der",
+            "Bare de som har blitt med i samtalen",
+            "Pålogget eller borte",
+            "Alle, hvor de er og hva de gjør"
+          ],
+          [
+            "Åpent hele dagen",
+            "Nei, det slutter med møtet",
+            "Ja, som meldinger",
+            "Ja, som et sted"
+          ]
+        ],
+        "note": "De fleste team beholder alle tre: et virtuelt kontor for dagen, chat for det som skal stå skriftlig, og en videosamtale for møter med folk utenfor teamet."
+      }
+    },
+    {
+      "title": "Hvem som bruker et",
+      "items": [
+        {
+          "title": "Små team som jobber eksternt",
+          "body": "Fire til femten personer som ikke deler bygning og savner å kunne snu seg og spørre."
+        },
+        {
+          "title": "Oppstartsselskaper",
+          "body": "Unge team som bestemmer raskt og ikke kan vente en dag på neste møte."
+        },
+        {
+          "title": "Byråer og studioer",
+          "body": "Folk som veksler mellom kundeprosjekter hele dagen og må finne hverandre raskt."
+        },
+        {
+          "title": "Utviklings- og designteam",
+          "body": "Parprogrammering, gjennomganger og å vise arbeid på skjermen uten å booke en samtale for det."
+        },
+        {
+          "title": "Team som tar imot en ny",
+          "body": "En nyansatt ser hvem som er der og spør, i stedet for å gjette hvem som har tid til en melding."
+        }
+      ]
+    },
+    {
+      "title": "Hva det koster",
+      "body": [
+        "Hva et team på 8 betaler i måneden for populære virtuelle kontorer, på den billigste planen som passer."
+      ],
+      "table": {
+        "head": [
+          "Produkt",
+          "Et team på 8, per måned",
+          "Hvordan det prises"
+        ],
+        "rows": [
+          [
+            "TinyFloor",
+            "29 $",
+            "Én pris for hele teamet; gratis for opptil 3"
+          ],
+          [
+            "SoWork Basic",
+            "43,20 $ årlig",
+            "Per medlem; gratis for opptil 10 med møter på 30 minutter"
+          ],
+          [
+            "Gather",
+            "96 $ årlig",
+            "Per medlem; ingen gratisplan"
+          ],
+          [
+            "Teamflow",
+            "120 $ årlig",
+            "Per person; gratis for opptil 5"
+          ],
+          [
+            "Kumospace Business",
+            "128 $",
+            "Per bruker; gratis for opptil 5 medlemmer"
+          ]
+        ],
+        "note": "Fra hvert produkts prisside i oktober 2026, eksklusive avgifter."
+      }
+    },
+    {
+      "title": "Satt opp på én dag",
+      "items": [
+        {
+          "title": "Lag kontoret",
+          "detail": "To minutter",
+          "body": "Gi det navnet til teamet. Det er ingenting å designe: gulvet, pultene og møterommet er klare."
+        },
+        {
+          "title": "Inviter alle med én lenke",
+          "detail": "Lim den inn der teamet allerede prater",
+          "body": "Kollegaene logger inn med Google eller e-post og går inn. Ingen installasjon, på datamaskin eller telefon."
+        },
+        {
+          "title": "Alle tar en pult",
+          "detail": "En egen plass",
+          "body": "Når alle sitter et sted, føles kontoret som et team, og det er lett å finne hverandre."
+        },
+        {
+          "title": "Hold neste standup i møterommet",
+          "detail": "Den første vanen",
+          "body": "Å flytte ett daglig møte inn på kontoret er det som får folk til å komme tilbake neste dag."
+        },
+        {
+          "title": "La det stå åpent i en uke",
+          "detail": "Bestem deg så",
+          "body": "Det viser verdien sin i små øyeblikk: et raskt spørsmål besvart på et minutt, en samtale du hørte og ble med i."
+        }
+      ]
+    },
+    {
+      "title": "Hva som får et team til å fortsette å bruke det",
+      "items": [
+        {
+          "title": "Ha det i en festet fane",
+          "body": "Kontoret fungerer når det er der du er, og ikke enda en ting å åpne."
+        },
+        {
+          "title": "Stikk innom, kamera valgfritt",
+          "body": "Bare lyd er greit; video er der når det hjelper. Ingen skal føle seg overvåket."
+        },
+        {
+          "title": "Bruk det aldri til å overvåke folk",
+          "body": "Et virtuelt kontor er et sted for å finne hverandre, ikke en stemplingsklokke. Team som bruker det til å kontrollere folk, slutter å bruke det."
+        },
+        {
+          "title": "Ha møter der også",
+          "body": "Hvis standupen og de raske spørsmålene skjer på kontoret, kommer folk tilbake uten å bli bedt om det."
+        }
+      ]
+    }
+  ],
+  "discord": [
+    {
+      "title": "Hvorfor team bruker Discord som kontor",
+      "body": [
+        "Mange små team, spesielt utviklere, studioer og oppstartsselskaper, har arbeidsdagen sin i Discord. De lager en server, åpner en talekanal, og folk kommer og går som i et felles rom. Det er gratis, lyden er god, skjermdeling fungerer i talekanaler, og den som allerede bruker det, trenger ikke lære noe nytt.",
+        "Det viser at det fungerer bedre å være ett klikk fra hverandre enn å planlegge hver samtale. Spørsmålet er om en app laget for spillmiljøer er det beste hjemmet for det."
+      ]
+    },
+    {
+      "title": "Der det ikke strekker til for jobb",
+      "items": [
+        {
+          "title": "Det er privat, ikke bedriftens",
+          "body": "Folk blir med med sine egne Discord-kontoer, så jobben ligger ved siden av spillserverne og vennene deres, med alle varsler på ett sted."
+        },
+        {
+          "title": "Kanaler i stedet for et sted",
+          "body": "Du ser hvem som er i hvilken talekanal, men ikke hvem som sitter ved pulten og har et minutt. Å bli med i en kanal er en alt-eller-ingenting-måte å starte en samtale på."
+        },
+        {
+          "title": "Ingen tydelig møterom",
+          "body": "Et møte er bare enda en talekanal. Det fungerer, men det føles ikke som å gå inn i et rom og tilbake til pulten etterpå."
+        },
+        {
+          "title": "Laget for miljøer",
+          "body": "Roller, servere og boter er laget for store grupper av fremmede. Et team på åtte trenger mye mindre, og mer av det et kontor har."
+        }
+      ]
+    },
+    {
+      "title": "Discord og TinyFloor, for et arbeidsteam",
+      "table": {
+        "head": [
+          "",
+          "Discord",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Pris",
+            "Gratis; Nitro koster ekstra per person",
+            "Gratis for opptil 3; 29 $ i måneden for hele teamet"
+          ],
+          [
+            "Kontoer",
+            "Hver persons egen Discord-konto",
+            "En gratis konto; teamet blir med via kontorets invitasjonslenke"
+          ],
+          [
+            "Starte en samtale",
+            "Bli med i en talekanal",
+            "Gå bort til en kollega"
+          ],
+          [
+            "Se hvem som er der",
+            "En medlemsliste og hvem som er i hver kanal",
+            "Alle på ett gulv: pulter, statuser og hvem som er i samtale"
+          ],
+          [
+            "Møter",
+            "En talekanal med skjermdeling",
+            "Et møterom med video og skjermdeling"
+          ],
+          [
+            "Kjører i",
+            "Nettleser, datamaskin- og mobilapper",
+            "Nettleseren, på datamaskin og mobil"
+          ]
+        ],
+        "note": "Opplysninger om Discord fra deres eget nettsted, oktober 2026."
+      }
+    },
+    {
+      "title": "Hvis du blir på Discord, sett det opp som et kontor",
+      "items": [
+        {
+          "title": "Gi talekanaler navn etter steder",
+          "body": "«Pulter», «Møterom» og «Fokus» forteller hva det betyr å bli med, bedre enn «Generelt 1» og «Generelt 2»."
+        },
+        {
+          "title": "Bli enige om hva en status betyr",
+          "body": "Ikke forstyrr betyr full konsentrasjon; inaktiv betyr borte fra pulten. Felles regler gjør det trygt å stikke innom."
+        },
+        {
+          "title": "Én tekstkanal per prosjekt",
+          "body": "Holder jobben ute av den generelle kanalen og lett å finne igjen senere."
+        },
+        {
+          "title": "En egen server for jobb",
+          "body": "Så teamets rom ikke blandes med alles miljøer."
+        }
+      ]
+    },
+    {
+      "title": "Når Discord passer bedre",
+      "items": [
+        {
+          "title": "Teamet ditt er der allerede og er fornøyd",
+          "body": "Hvis det fungerer og ingen savner noe, er det ingen grunn til å bytte."
+        },
+        {
+          "title": "Du driver også et miljø",
+          "body": "Hvis kunder eller spillere er på samme server, er Discord laget akkurat for det."
+        },
+        {
+          "title": "Det kan ikke koste noe",
+          "body": "Discord er gratis for et hvilket som helst antall personer; TinyFloor er gratis for 3."
+        }
+      ]
+    },
+    {
+      "title": "Flytte et team fra Discord",
+      "items": [
+        {
+          "title": "Lag et kontor",
+          "detail": "To minutter",
+          "body": "Gi det et navn, så er gulvet, pultene og møterommet klare."
+        },
+        {
+          "title": "Del invitasjonslenken i Discorden deres",
+          "detail": "Der alle allerede er",
+          "body": "Folk logger inn med Google eller e-post og går inn fra nettleseren."
+        },
+        {
+          "title": "Flytt den daglige standupen først",
+          "detail": "Én vane om gangen",
+          "body": "Hold den i møterommet i en uke mens alt annet blir der det er."
+        },
+        {
+          "title": "Bestem så hva som blir",
+          "detail": "Ikke noe stort bytte",
+          "body": "Mange team beholder Discord for miljøet sitt og bruker kontoret i arbeidsdagen."
+        }
+      ]
+    }
+  ]
+}

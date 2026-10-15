@@ -1,1 +1,471 @@
-{}
+{
+  "gather": [
+    {
+      "title": "Alternatieven voor Gather in één oogopslag",
+      "body": [
+        "Wat een team van 8 per maand betaalt op het goedkoopste passende abonnement, het gratis abonnement als dat er is, en voor wie elk product het best past. Gather staat ter vergelijking op de eerste rij."
+      ],
+      "table": {
+        "head": [
+          "Product",
+          "Een team van 8, per maand",
+          "Gratis abonnement",
+          "Het best voor"
+        ],
+        "rows": [
+          [
+            "Gather",
+            "$ 96 jaarlijks, $ 120 maandelijks",
+            "Geen, proefperiode van 30 dagen",
+            "Teams die hun kantoor zelf ontwerpen"
+          ],
+          [
+            "TinyFloor",
+            "$ 29 voor het hele team",
+            "Tot 3 mensen",
+            "Kleine teams die één prijs willen"
+          ],
+          [
+            "SoWork",
+            "$ 43,20 jaarlijks",
+            "Tot 10 leden, vergaderingen van 30 minuten",
+            "Teams met een krap budget"
+          ],
+          [
+            "Kumospace",
+            "$ 128",
+            "Tot 5 leden, 1 verdieping",
+            "Teams die desktop- en mobiele apps willen"
+          ],
+          [
+            "WorkAdventure",
+            "Vanaf € 64",
+            "Tot 10 mensen tegelijk",
+            "Teams die een opensource-plattegrond willen"
+          ],
+          [
+            "Teamflow",
+            "$ 120 jaarlijks",
+            "Tot 5 mensen, vergaderingen van 45 minuten",
+            "Teams die een desktop-app prima vinden"
+          ],
+          [
+            "Roam",
+            "Een prijs per actief lid",
+            "Geen, proefperiode van 14 dagen",
+            "Teams die AI-tools bij hun kantoor willen"
+          ],
+          [
+            "Discord",
+            "Gratis",
+            "Ja",
+            "Teams die alleen spraakkanalen nodig hebben"
+          ]
+        ],
+        "note": "Van de prijspagina van elk product in oktober 2026, exclusief belasting. Prijzen per persoon maal 8; het Business-abonnement van WorkAdventure begint bij € 8 per gebruiker."
+      }
+    },
+    {
+      "title": "Waarom teams een alternatief voor Gather zoeken",
+      "body": [
+        "Gather maakte het virtuele kantoor bekend, en jarenlang kon een klein team het gratis gebruiken. Op 15 september 2025 was dat voorbij: Gather ging naar $ 15 per lid per maand, of $ 12 bij jaarbetaling, en sloot gratis kantoren die niet overstapten. Teams die de oude jaarprijs van $ 5,95 hadden vastgelegd, hielden die tot september 2026; veel van hen krijgen de nieuwe prijs dus bij de verlenging van dit jaar.",
+        "De prijs is niet de enige reden. Gather 2.0 is een nieuw platform, en overstappen betekent je kantoor opnieuw bouwen. En veel teams merken dat ze maar een fractie gebruiken van waarvoor ze betalen: ze willen zien wie er is, praten zonder af te spreken en samenkomen. Daarop worden de alternatieven hieronder beoordeeld."
+      ]
+    },
+    {
+      "title": "De alternatieven, één voor één",
+      "items": [
+        {
+          "title": "TinyFloor",
+          "detail": "$ 29 per maand voor het hele team, gratis voor maximaal 3",
+          "body": "Een kantoor in pixel art dat opent in een browsertabblad, op een laptop of telefoon. Je ziet wie aan zijn bureau zit, loopt erheen om te praten en stapt de vergaderruimte in voor video en schermdelen; er is teamchat en een eigen bureau. Eén prijs dekt iedereen die je uitnodigt. Er is geen kantooreditor, geen opnames, geen transcriptie en geen single sign-on; teams die daarop rekenen, kunnen beter naar Gather of Kumospace kijken."
+        },
+        {
+          "title": "SoWork",
+          "detail": "Basic $ 5,40 per lid per maand, jaarlijks; gratis tot 10",
+          "body": "Het goedkoopste abonnement per persoon in deze lijst, en het ruimste gratis abonnement voor een team: tot 10 leden, met vergaderingen van maximaal 30 minuten. Er wordt per lid gerekend, dus de rekening groeit mee met het team."
+        },
+        {
+          "title": "Kumospace",
+          "detail": "Business vanaf $ 16 per gebruiker per maand; gratis tot 5 leden",
+          "body": "Een verzorgd virtueel kantoor met desktop- en mobiele apps naast de browser. Het gratis abonnement past bij 5 leden, 50 gasten en één verdieping. Voor een team van 8 is het na het maandabonnement van Gather de duurste optie in deze lijst."
+        },
+        {
+          "title": "WorkAdventure",
+          "detail": "Business vanaf € 8 per gebruiker per maand; gratis tot 10 tegelijk",
+          "body": "Nog een kantoor in pixel art, en opensource, dus een technisch team kan de plattegrond aanpassen. Het gratis abonnement telt mensen die tegelijk online zijn, tot 10, niet leden."
+        },
+        {
+          "title": "Teamflow",
+          "detail": "$ 15 per persoon per maand, jaarlijks; gratis tot 5",
+          "body": "Een virtueel kantoor dat draait als desktop-app voor Mac en Windows, mobiel in bèta. Het gratis abonnement past bij 5 mensen met vergaderingen van 45 minuten. Bij jaarbetaling kost het per persoon meer dan de $ 12 van Gather."
+        },
+        {
+          "title": "Roam",
+          "detail": "Een maandprijs per actief lid; proefperiode van 14 dagen",
+          "body": "Een virtueel kantoor met AI-tools, in een desktop-app die je downloadt. Het rekent alleen voor actieve leden en heeft geen gratis abonnement."
+        },
+        {
+          "title": "Discord",
+          "detail": "Gratis",
+          "body": "Geen virtueel kantoor, maar veel kleine teams gebruiken de spraakkanalen al zo: binnenkomen, praten, weggaan. Het is gratis en het geluid is goed. Het is gemaakt voor gamecommunity's, dus er is geen kantoor waarin je ziet wie er is, en werk staat naast al het andere."
+        }
+      ]
+    },
+    {
+      "title": "Zo kies je",
+      "items": [
+        {
+          "title": "Tel wie het echt gaat gebruiken",
+          "body": "Gratis abonnementen stoppen bij 3 tot 10 mensen, en de meeste betaalde abonnementen rekenen per persoon. Voor een team van 4 tot 15 is een vaste prijs of een passend gratis abonnement vaak beter dan een prijs per hoofd."
+        },
+        {
+          "title": "Browser of app",
+          "body": "Producten die alleen in de browser draaien, hoeven niet geïnstalleerd te worden en werken meteen voor gasten en freelancers. Desktop-apps kunnen meer, maar iedereen moet ze installeren."
+        },
+        {
+          "title": "Schrijf eerst op wat onmisbaar is",
+          "body": "Heb je opnames, transcripties, een zelf ontworpen kantoor of single sign-on nodig, dan blijven Gather, Kumospace en een paar andere over, wat de prijs ook is."
+        },
+        {
+          "title": "Probeer het op een gewone werkdag",
+          "body": "Deze tools bewijzen zich in kleine momenten: een snelle vraag, een vergadering die op tijd begint. Een week echt werk zegt meer dan een demo."
+        }
+      ]
+    },
+    {
+      "title": "Hoe we vergeleken",
+      "body": [
+        "Prijzen, gratis abonnementen en limieten komen van de prijs- en helppagina's van elk product, gelezen in oktober 2026, in dollars of euro's zoals elk ze noemt, exclusief belasting. Als de pagina van een product iets niet vermeldde, lieten we het weg in plaats van te gokken. Wij maken TinyFloor, dus we zetten het bovenaan en zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van de aanbieder voordat je koopt."
+      ]
+    }
+  ],
+  "virtualOffice": [
+    {
+      "title": "Wat een virtueel kantoor is, en wat niet",
+      "body": [
+        "\"Virtueel kantoor\" betekent twee verschillende dingen. Het ene is een zakelijk adres: een dienst die een bedrijf een postadres en soms een telefoonnummer geeft, zonder bureau. Het andere, waar deze pagina over gaat, is een online kantoor waar een remote team overdag samenwerkt.",
+        "Die tweede soort is een gedeelde ruimte die open blijft terwijl mensen werken. In plaats van een raster met gezichten dat stopt als de vergadering stopt, heeft iedereen een plek in het kantoor, ziet wie er nog meer is en begint een gesprek zoals in een gebouw: door naar iemand toe te lopen."
+      ]
+    },
+    {
+      "title": "Wat je erin doet",
+      "items": [
+        {
+          "title": "Zien wie er is",
+          "body": "Iedereen staat in het kantoor, met een status, dus je weet wie aan zijn bureau zit, wie bezig is en wie in een vergadering zit voordat je stoort."
+        },
+        {
+          "title": "Praten zonder afspraak",
+          "body": "Loop naar een collega en begin te praten. Een vraag van twee minuten blijft twee minuten, in plaats van een agenda-uitnodiging voor morgen te worden."
+        },
+        {
+          "title": "Afspreken in een ruimte",
+          "body": "Groepsgesprekken vinden plaats in een vergaderruimte die je binnenloopt, met video en schermdelen, en die je weer verlaat als het klaar is."
+        },
+        {
+          "title": "Een eigen bureau hebben",
+          "body": "Een bureau geeft iedereen een plek, zodat het kantoor eruitziet als een team en niet als een lobby."
+        },
+        {
+          "title": "Ernaast chatten",
+          "body": "Berichten en kanalen staan naast de vloer, voor alles wat geen gesprek nodig heeft."
+        }
+      ]
+    },
+    {
+      "title": "Een virtueel kantoor naast de tools die je al hebt",
+      "body": [
+        "Een virtueel kantoor vervangt geen videogesprekken of teamchat. Het dekt het deel van de dag waarvoor geen van beide gemaakt is."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Videobel-app",
+          "Teamchat",
+          "Virtueel kantoor"
+        ],
+        "rows": [
+          [
+            "Het best voor",
+            "Geplande vergaderingen",
+            "Geschreven updates en threads",
+            "Samen zijn terwijl je werkt"
+          ],
+          [
+            "Een gesprek begint als",
+            "Een vergadering start",
+            "Iemand antwoordt",
+            "Je naar iemand toe loopt"
+          ],
+          [
+            "Laat zien wie er is",
+            "Alleen wie in het gesprek zit",
+            "Online of afwezig",
+            "Iedereen, waar ze zijn en wat ze doen"
+          ],
+          [
+            "De hele dag open",
+            "Nee, het stopt met de vergadering",
+            "Ja, als berichten",
+            "Ja, als plek"
+          ]
+        ],
+        "note": "De meeste teams houden alle drie: een virtueel kantoor voor de dag, chat voor wat op papier moet en een videogesprek voor vergaderingen met mensen buiten het team."
+      }
+    },
+    {
+      "title": "Wie er een gebruikt",
+      "items": [
+        {
+          "title": "Kleine remote teams",
+          "body": "Vier tot vijftien mensen die geen gebouw delen en missen dat ze zich even kunnen omdraaien om iets te vragen."
+        },
+        {
+          "title": "Startups",
+          "body": "Jonge teams die snel beslissen en niet een dag op de volgende vergadering kunnen wachten."
+        },
+        {
+          "title": "Bureaus en studio's",
+          "body": "Mensen die de hele dag tussen klantprojecten schakelen en elkaar snel moeten vinden."
+        },
+        {
+          "title": "Engineering- en designteams",
+          "body": "Pairen, reviewen en werk op het scherm laten zien zonder daar een gesprek voor in te plannen."
+        },
+        {
+          "title": "Teams die iemand inwerken",
+          "body": "Een nieuwe collega ziet wie er is en vraagt het gewoon, in plaats van te raden wie er tijd heeft voor een berichtje."
+        }
+      ]
+    },
+    {
+      "title": "Wat het kost",
+      "body": [
+        "Wat een team van 8 per maand betaalt bij bekende virtuele kantoren, op het goedkoopste passende abonnement."
+      ],
+      "table": {
+        "head": [
+          "Product",
+          "Een team van 8, per maand",
+          "Hoe het geprijsd is"
+        ],
+        "rows": [
+          [
+            "TinyFloor",
+            "$ 29",
+            "Eén prijs voor het hele team; gratis voor maximaal 3"
+          ],
+          [
+            "SoWork Basic",
+            "$ 43,20 jaarlijks",
+            "Per lid; gratis voor maximaal 10 met vergaderingen van 30 minuten"
+          ],
+          [
+            "Gather",
+            "$ 96 jaarlijks",
+            "Per lid; geen gratis abonnement"
+          ],
+          [
+            "Teamflow",
+            "$ 120 jaarlijks",
+            "Per persoon; gratis voor maximaal 5"
+          ],
+          [
+            "Kumospace Business",
+            "$ 128",
+            "Per gebruiker; gratis voor maximaal 5 leden"
+          ]
+        ],
+        "note": "Van de prijspagina van elk product in oktober 2026, exclusief belasting."
+      }
+    },
+    {
+      "title": "In één dag opgezet",
+      "items": [
+        {
+          "title": "Maak het kantoor",
+          "detail": "Twee minuten",
+          "body": "Noem het naar het team. Er valt niets te ontwerpen: de vloer, de bureaus en de vergaderruimte staan klaar."
+        },
+        {
+          "title": "Nodig iedereen uit met één link",
+          "detail": "Plak hem waar het team al praat",
+          "body": "Collega's loggen in met Google of e-mail en lopen binnen. Niets te installeren, op een laptop of telefoon."
+        },
+        {
+          "title": "Iedereen kiest een bureau",
+          "detail": "Een eigen plek",
+          "body": "Zodra iedereen ergens zit, voelt het kantoor als een team en vind je elkaar makkelijk."
+        },
+        {
+          "title": "Houd de volgende standup in de vergaderruimte",
+          "detail": "De eerste gewoonte",
+          "body": "Eén dagelijkse vergadering naar het kantoor verplaatsen is wat mensen de volgende dag terugbrengt."
+        },
+        {
+          "title": "Laat het een week open",
+          "detail": "Beslis dan",
+          "body": "Het bewijst zich in kleine momenten: een snelle vraag die in een minuut beantwoord is, een gesprek dat je opving en waar je bij kwam."
+        }
+      ]
+    },
+    {
+      "title": "Waardoor een team het blijft gebruiken",
+      "items": [
+        {
+          "title": "Houd het in een vastgezet tabblad",
+          "body": "Het kantoor werkt als het is waar jij bent, en niet nog iets om te openen."
+        },
+        {
+          "title": "Kom even langs, camera optioneel",
+          "body": "Alleen spraak is prima; video is er als het helpt. Niemand moet zich bekeken voelen."
+        },
+        {
+          "title": "Gebruik het nooit om mensen te controleren",
+          "body": "Een virtueel kantoor is een plek om elkaar te vinden, geen prikklok. Teams die het gebruiken om mensen te controleren, stoppen ermee."
+        },
+        {
+          "title": "Vergader daar ook",
+          "body": "Als de standup en de snelle vragen in het kantoor gebeuren, komen mensen vanzelf terug."
+        }
+      ]
+    }
+  ],
+  "discord": [
+    {
+      "title": "Waarom teams Discord als kantoor gebruiken",
+      "body": [
+        "Veel kleine teams, vooral developers, studio's en startups, draaien hun werkdag in Discord. Ze maken een server, openen een spraakkanaal en mensen komen en gaan zoals in een gedeelde ruimte. Het is gratis, het geluid is goed, schermdelen werkt in spraakkanalen en wie het al gebruikt, hoeft niets nieuws te leren.",
+        "Het laat zien dat één klik van elkaar af zijn beter werkt dan elk gesprek inplannen. De vraag is of een app voor gamecommunity's daar de beste plek voor is."
+      ]
+    },
+    {
+      "title": "Waar het tekortschiet voor werk",
+      "items": [
+        {
+          "title": "Het is persoonlijk, niet van je bedrijf",
+          "body": "Mensen komen binnen met hun eigen Discord-account, dus werk staat naast hun gameservers en vrienden, met alle meldingen op één plek."
+        },
+        {
+          "title": "Kanalen in plaats van een plek",
+          "body": "Je ziet wie in welk spraakkanaal zit, maar niet wie aan zijn bureau zit en even tijd heeft. Een kanaal binnengaan is een alles-of-niets-manier om een gesprek te beginnen."
+        },
+        {
+          "title": "Geen duidelijke vergaderruimte",
+          "body": "Een vergadering is gewoon weer een spraakkanaal. Het werkt, maar het voelt niet alsof je een ruimte binnenstapt en daarna terugloopt naar je bureau."
+        },
+        {
+          "title": "Gebouwd voor community's",
+          "body": "Rollen, servers en bots zijn gemaakt voor grote groepen onbekenden. Een team van acht heeft veel minder nodig, en meer van wat een kantoor heeft."
+        }
+      ]
+    },
+    {
+      "title": "Discord en TinyFloor, voor een werkteam",
+      "table": {
+        "head": [
+          "",
+          "Discord",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Prijs",
+            "Gratis; Nitro kost extra per persoon",
+            "Gratis voor maximaal 3; $ 29 per maand voor het hele team"
+          ],
+          [
+            "Accounts",
+            "Ieders eigen Discord-account",
+            "Een gratis account; het team komt binnen via de uitnodigingslink van het kantoor"
+          ],
+          [
+            "Een gesprek beginnen",
+            "Een spraakkanaal binnengaan",
+            "Naar een collega toe lopen"
+          ],
+          [
+            "Zien wie er is",
+            "Een ledenlijst en wie in welk kanaal zit",
+            "Iedereen op één vloer: bureaus, statussen en wie in gesprek is"
+          ],
+          [
+            "Vergaderingen",
+            "Een spraakkanaal met schermdelen",
+            "Een vergaderruimte met video en schermdelen"
+          ],
+          [
+            "Werkt in",
+            "Browser, desktop- en mobiele apps",
+            "De browser, op desktop en mobiel"
+          ]
+        ],
+        "note": "Gegevens over Discord van de eigen website, oktober 2026."
+      }
+    },
+    {
+      "title": "Blijf je op Discord, richt het dan in als een kantoor",
+      "items": [
+        {
+          "title": "Geef spraakkanalen namen van plekken",
+          "body": "\"Bureaus\", \"Vergaderruimte\" en \"Focus\" vertellen wat binnengaan betekent, beter dan \"Algemeen 1\" en \"Algemeen 2\"."
+        },
+        {
+          "title": "Spreek af wat een status betekent",
+          "body": "Niet storen betekent geconcentreerd; inactief betekent niet aan het bureau. Gedeelde afspraken maken het makkelijk om even langs te komen."
+        },
+        {
+          "title": "Eén tekstkanaal per project",
+          "body": "Zo blijft werk uit het algemene kanaal en is het later makkelijk terug te vinden."
+        },
+        {
+          "title": "Een aparte server voor werk",
+          "body": "Zodat de ruimte van het team niet door de community's van iedereen loopt."
+        }
+      ]
+    },
+    {
+      "title": "Wanneer Discord beter past",
+      "items": [
+        {
+          "title": "Je team zit er al en is tevreden",
+          "body": "Als het werkt en niemand iets mist, is er geen reden om over te stappen."
+        },
+        {
+          "title": "Je hebt ook een community",
+          "body": "Als klanten of spelers op dezelfde server zitten, is Discord precies daarvoor gemaakt."
+        },
+        {
+          "title": "Het moet niets kosten",
+          "body": "Discord is gratis voor elk aantal mensen; TinyFloor is gratis voor 3."
+        }
+      ]
+    },
+    {
+      "title": "Een team overzetten vanaf Discord",
+      "items": [
+        {
+          "title": "Maak een kantoor",
+          "detail": "Twee minuten",
+          "body": "Geef het een naam, en de vloer, de bureaus en de vergaderruimte staan klaar."
+        },
+        {
+          "title": "Deel de uitnodigingslink in je Discord",
+          "detail": "Waar iedereen al is",
+          "body": "Mensen loggen in met Google of e-mail en lopen binnen vanuit de browser."
+        },
+        {
+          "title": "Verplaats eerst de dagelijkse standup",
+          "detail": "Eén gewoonte tegelijk",
+          "body": "Houd hem een week in de vergaderruimte terwijl al het andere blijft waar het is."
+        },
+        {
+          "title": "Beslis dan wat blijft",
+          "detail": "Geen grote overstap",
+          "body": "Veel teams houden Discord voor hun community en gebruiken het kantoor voor de werkdag."
+        }
+      ]
+    }
+  ]
+}

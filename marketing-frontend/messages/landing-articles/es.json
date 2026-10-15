@@ -139,5 +139,333 @@
         "Los precios, los planes gratuitos y los límites salen de las páginas de precios y de ayuda de cada producto, leídas en octubre de 2026, en dólares o euros según los indica cada uno, sin impuestos. Cuando la página de un producto no decía algo, lo dejamos fuera en lugar de suponerlo. Nosotros hacemos TinyFloor, así que lo pusimos primero y dijimos claramente lo que no hace. Los precios cambian: revisa la página del proveedor antes de comprar."
       ]
     }
+  ],
+  "virtualOffice": [
+    {
+      "title": "Qué es una oficina virtual y qué no",
+      "body": [
+        "«Oficina virtual» significa dos cosas distintas. Una es una dirección comercial: un servicio que da a una empresa una dirección postal y a veces una línea de teléfono, sin escritorio. La otra, la que trata esta página, es una oficina en línea donde un equipo remoto trabaja junto durante el día.",
+        "Ese segundo tipo es un espacio compartido que sigue abierto mientras la gente trabaja. En lugar de una cuadrícula de caras que desaparece al acabar la reunión, cada persona tiene un sitio en la oficina, ve quién más está y empieza una conversación como lo harías en un edificio: acercándote a alguien."
+      ]
+    },
+    {
+      "title": "Qué haces en una",
+      "items": [
+        {
+          "title": "Ver quién está",
+          "body": "Todo el mundo aparece en la oficina, con un estado, así sabes quién está en su mesa, quién está ocupado y quién está en una reunión antes de interrumpir."
+        },
+        {
+          "title": "Hablar sin agendar",
+          "body": "Acércate a un compañero y empieza a hablar. Una pregunta de dos minutos sigue siendo de dos minutos, en vez de convertirse en una invitación para mañana."
+        },
+        {
+          "title": "Reunirse en una sala",
+          "body": "Las conversaciones en grupo ocurren en una sala de reuniones en la que entras, con vídeo y pantalla compartida, y de la que sales al terminar."
+        },
+        {
+          "title": "Tener tu propia mesa",
+          "body": "Una mesa da a cada persona un sitio, para que la oficina parezca un equipo y no una recepción."
+        },
+        {
+          "title": "Chatear al lado",
+          "body": "Los mensajes y canales están junto a la planta, para lo que no hace falta hablar."
+        }
+      ]
+    },
+    {
+      "title": "Una oficina virtual junto a las herramientas que ya tienes",
+      "body": [
+        "Una oficina virtual no sustituye las videollamadas ni el chat del equipo. Cubre la parte del día para la que ninguno de los dos se hizo."
+      ],
+      "table": {
+        "head": [
+          "",
+          "App de videollamadas",
+          "Chat del equipo",
+          "Oficina virtual"
+        ],
+        "rows": [
+          [
+            "Ideal para",
+            "Reuniones programadas",
+            "Novedades por escrito e hilos",
+            "Estar juntos mientras trabajáis"
+          ],
+          [
+            "Una conversación empieza cuando",
+            "Empieza una reunión",
+            "Alguien responde",
+            "Te acercas a alguien"
+          ],
+          [
+            "Muestra quién está",
+            "Solo quién entró en la llamada",
+            "Conectado o ausente",
+            "Todos, dónde están y qué hacen"
+          ],
+          [
+            "Abierta todo el día",
+            "No, termina con la reunión",
+            "Sí, como mensajes",
+            "Sí, como un lugar"
+          ]
+        ],
+        "note": "La mayoría de los equipos se quedan con las tres: una oficina virtual para el día, el chat para lo que debe quedar por escrito y una videollamada para reuniones con gente de fuera del equipo."
+      }
+    },
+    {
+      "title": "Quién usa una",
+      "items": [
+        {
+          "title": "Equipos remotos pequeños",
+          "body": "De cuatro a quince personas que no comparten edificio y echan de menos poder girarse y preguntar."
+        },
+        {
+          "title": "Startups",
+          "body": "Equipos que deciden rápido y no pueden esperar un día a la próxima reunión."
+        },
+        {
+          "title": "Agencias y estudios",
+          "body": "Gente que pasa de un proyecto de cliente a otro todo el día y necesita encontrarse rápido."
+        },
+        {
+          "title": "Equipos de ingeniería y diseño",
+          "body": "Programar en pareja, revisar y enseñar trabajo en pantalla sin reservar una llamada para ello."
+        },
+        {
+          "title": "Equipos que incorporan a alguien",
+          "body": "Una persona nueva ve quién está y pregunta, en vez de adivinar a quién puede escribir."
+        }
+      ]
+    },
+    {
+      "title": "Cuánto cuesta",
+      "body": [
+        "Lo que paga al mes un equipo de 8 en oficinas virtuales conocidas, con el plan más barato que encaja."
+      ],
+      "table": {
+        "head": [
+          "Producto",
+          "Un equipo de 8, al mes",
+          "Cómo se cobra"
+        ],
+        "rows": [
+          [
+            "TinyFloor",
+            "29 $",
+            "Un precio para todo el equipo; gratis para hasta 3"
+          ],
+          [
+            "SoWork Basic",
+            "43,20 $ con facturación anual",
+            "Por miembro; gratis para hasta 10 con reuniones de 30 minutos"
+          ],
+          [
+            "Gather",
+            "96 $ con facturación anual",
+            "Por miembro; sin plan gratuito"
+          ],
+          [
+            "Teamflow",
+            "120 $ con facturación anual",
+            "Por persona; gratis para hasta 5"
+          ],
+          [
+            "Kumospace Business",
+            "128 $",
+            "Por usuario; gratis para hasta 5 miembros"
+          ]
+        ],
+        "note": "De la página de precios de cada producto en octubre de 2026, sin impuestos."
+      }
+    },
+    {
+      "title": "Ponerla en marcha en un día",
+      "items": [
+        {
+          "title": "Crea la oficina",
+          "detail": "Dos minutos",
+          "body": "Ponle el nombre del equipo. No hay nada que diseñar: la planta, las mesas y la sala de reuniones están listas."
+        },
+        {
+          "title": "Invita a todos con un enlace",
+          "detail": "Pégalo donde el equipo ya habla",
+          "body": "Tus compañeros entran con Google o con su correo. Sin instalar nada, en portátil o móvil."
+        },
+        {
+          "title": "Cada uno elige mesa",
+          "detail": "Un sitio propio",
+          "body": "Cuando todos se sientan en algún lugar, la oficina parece un equipo y es fácil encontrarse."
+        },
+        {
+          "title": "Haced la próxima daily en la sala de reuniones",
+          "detail": "El primer hábito",
+          "body": "Llevar una reunión diaria a la oficina es lo que hace que la gente vuelva al día siguiente."
+        },
+        {
+          "title": "Déjala abierta una semana",
+          "detail": "Luego decide",
+          "body": "Se demuestra en los momentos pequeños: una pregunta resuelta en un minuto, una conversación que oíste y a la que te uniste."
+        }
+      ]
+    },
+    {
+      "title": "Qué hace que un equipo la siga usando",
+      "items": [
+        {
+          "title": "Tenla en una pestaña fijada",
+          "body": "La oficina funciona cuando está donde tú estás, no cuando es una cosa más que abrir."
+        },
+        {
+          "title": "Pasa a saludar, cámara opcional",
+          "body": "Solo voz está bien; el vídeo está ahí cuando ayuda. Nadie debería sentirse vigilado."
+        },
+        {
+          "title": "Nunca la uses para vigilar",
+          "body": "Una oficina virtual es un lugar para encontrarse, no un control horario. Los equipos que la usan para vigilar a la gente dejan de usarla."
+        },
+        {
+          "title": "Reuníos allí también",
+          "body": "Si la daily y las preguntas rápidas pasan en la oficina, la gente vuelve sin que se lo pidan."
+        }
+      ]
+    }
+  ],
+  "discord": [
+    {
+      "title": "Por qué hay equipos que usan Discord como oficina",
+      "body": [
+        "Muchos equipos pequeños, sobre todo desarrolladores, estudios y startups, pasan su jornada en Discord. Crean un servidor, abren un canal de voz y la gente entra y sale como en una sala compartida. Es gratis, el audio es bueno, se puede compartir pantalla en los canales de voz y no hay nada nuevo que aprender para quien ya lo usa.",
+        "Demuestra que estar a un clic de distancia funciona mejor que agendar cada conversación. La pregunta es si una app hecha para comunidades de videojuegos es el mejor sitio para ello."
+      ]
+    },
+    {
+      "title": "Dónde se queda corto para trabajar",
+      "items": [
+        {
+          "title": "Es personal, no de tu empresa",
+          "body": "Cada uno entra con su propia cuenta de Discord, así que el trabajo convive con sus servidores de juegos y sus amigos, con todas las notificaciones en el mismo sitio."
+        },
+        {
+          "title": "Canales en vez de un lugar",
+          "body": "Ves quién está en cada canal de voz, pero no quién está en su mesa y libre un minuto. Entrar en un canal es una forma de todo o nada de empezar a hablar."
+        },
+        {
+          "title": "Sin una sala de reuniones clara",
+          "body": "Una reunión es otro canal de voz. Funciona, pero no hay sensación de entrar en una sala y volver después a tu mesa."
+        },
+        {
+          "title": "Hecho para comunidades",
+          "body": "Roles, servidores y bots están pensados para grupos grandes de desconocidos. Un equipo de ocho necesita mucho menos, y más de lo que tiene una oficina."
+        }
+      ]
+    },
+    {
+      "title": "Discord y TinyFloor, para un equipo de trabajo",
+      "table": {
+        "head": [
+          "",
+          "Discord",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Precio",
+            "Gratis; Nitro se paga aparte por persona",
+            "Gratis para hasta 3; 29 $ al mes para todo el equipo"
+          ],
+          [
+            "Cuentas",
+            "La cuenta de Discord de cada persona",
+            "Una cuenta gratuita; el equipo entra con el enlace de invitación de la oficina"
+          ],
+          [
+            "Empezar una conversación",
+            "Entrar en un canal de voz",
+            "Acercarte a un compañero"
+          ],
+          [
+            "Ver quién está",
+            "Una lista de miembros y quién está en cada canal",
+            "Todos en una sola planta: mesas, estados y quién está en llamada"
+          ],
+          [
+            "Reuniones",
+            "Un canal de voz con pantalla compartida",
+            "Una sala de reuniones con vídeo y pantalla compartida"
+          ],
+          [
+            "Funciona en",
+            "Navegador y apps de escritorio y móvil",
+            "El navegador, en ordenador y móvil"
+          ]
+        ],
+        "note": "Datos de Discord de su propia web, octubre de 2026."
+      }
+    },
+    {
+      "title": "Si te quedas en Discord, organízalo como una oficina",
+      "items": [
+        {
+          "title": "Pon a los canales de voz nombres de lugares",
+          "body": "«Mesas», «Sala de reuniones» y «Concentración» dicen qué significa entrar, mejor que «General 1» y «General 2»."
+        },
+        {
+          "title": "Acordad qué significa cada estado",
+          "body": "No molestar significa concentrado; ausente significa lejos de la mesa. Unas reglas compartidas hacen que pasar a saludar sea cómodo."
+        },
+        {
+          "title": "Un canal de texto por proyecto",
+          "body": "Mantiene el trabajo fuera del canal general y fácil de encontrar después."
+        },
+        {
+          "title": "Un servidor aparte para el trabajo",
+          "body": "Para que el espacio del equipo no se mezcle con las comunidades de cada uno."
+        }
+      ]
+    },
+    {
+      "title": "Cuándo encaja mejor Discord",
+      "items": [
+        {
+          "title": "Tu equipo ya está allí y contento",
+          "body": "Si funciona y nadie echa nada de menos, no hay motivo para cambiar."
+        },
+        {
+          "title": "También llevas una comunidad",
+          "body": "Si clientes o jugadores están en el mismo servidor, Discord está hecho justo para eso."
+        },
+        {
+          "title": "El coste tiene que ser cero",
+          "body": "Discord es gratis para cualquier número de personas; TinyFloor es gratis para 3."
+        }
+      ]
+    },
+    {
+      "title": "Llevar un equipo desde Discord",
+      "items": [
+        {
+          "title": "Crea una oficina",
+          "detail": "Dos minutos",
+          "body": "Ponle nombre y la planta, las mesas y la sala de reuniones están listas."
+        },
+        {
+          "title": "Comparte el enlace de invitación en tu Discord",
+          "detail": "Donde ya está todo el mundo",
+          "body": "La gente entra con Google o con su correo desde el navegador."
+        },
+        {
+          "title": "Mueve primero la daily",
+          "detail": "Un hábito cada vez",
+          "body": "Hacedla en la sala de reuniones durante una semana mientras todo lo demás sigue donde está."
+        },
+        {
+          "title": "Luego decide qué se queda",
+          "detail": "Sin un gran cambio",
+          "body": "Muchos equipos mantienen Discord para su comunidad y usan la oficina para la jornada de trabajo."
+        }
+      ]
+    }
   ]
 }

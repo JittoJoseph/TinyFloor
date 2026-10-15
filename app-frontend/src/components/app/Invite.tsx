@@ -4,8 +4,9 @@ import { createContext, useCallback, useContext, useState, type ReactNode } from
 import { useTranslations } from "next-intl";
 import { Check, Copy, Link2, Mail, MessageSquare, Refresh, Share, UserPlus, Zap } from "@/components/ui/icons";
 import { FaceStack } from "@/components/ui/Face";
+import { DoneChip } from "@/components/ui/DoneChip";
 import { Modal } from "@/components/ui/Modal";
-import { withPostHog } from "@/lib/analytics";
+import { track, withPostHog } from "@/lib/analytics";
 import { usePlans } from "@/lib/billing";
 import { resetInviteLink, useInviteLink } from "@/lib/inviteLink";
 import { shareUrl } from "@/lib/links";
@@ -31,7 +32,11 @@ export function useInvite(): (() => void) | null {
 export function InviteProvider({ children }: { children: ReactNode }) {
   const context = useOfficeMaybe();
   const [open, setOpen] = useState(false);
-  const show = useCallback(() => setOpen(true), []);
+  // Opened, against invite_sent: whether the dialog brings the team or loses them.
+  const show = useCallback(() => {
+    setOpen(true);
+    track("invite_opened");
+  }, []);
   return (
     <Context.Provider value={context ? show : null}>
       {children}
@@ -129,15 +134,15 @@ export function InviteActions({ officeId, officeName, className }: { officeId: s
         <span data-ph-mask className="min-w-0 flex-1 truncate ps-1.5 text-[13.5px] text-foreground" dir="ltr">
           {url ? url.replace(/^https?:\/\//, "") : <span className="inline-block h-3 w-40 animate-pulse rounded-full bg-muted" />}
         </span>
-        <button
-          type="button"
-          disabled={!url}
+        {/* The floor's Invite chip: the dot turns green and the label says it's copied. */}
+        <DoneChip
+          done={sent === "link"}
+          icon={<Copy strokeWidth={2.25} />}
+          label={t("copyLink")}
+          doneLabel={t("copied")}
           onClick={() => copy("link")}
-          className="flex h-10 shrink-0 cursor-pointer items-center gap-1.5 rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85 disabled:opacity-50"
-        >
-          {sent === "link" ? <Check className="size-3.5" /> : <Copy className="size-3.5" />}
-          {sent === "link" ? t("copied") : t("copyLink")}
-        </button>
+          disabled={!url}
+        />
       </div>
       <div className="mt-2 flex flex-wrap gap-2">
         <Channel onClick={() => copy("message")} disabled={!url} icon={sent === "message" ? <Check /> : <MessageSquare />}>

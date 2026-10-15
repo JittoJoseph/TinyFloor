@@ -11,7 +11,7 @@ import { tileToPixel } from "@/lib/types";
 import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import { setMeetings, setMeetingUsage } from "./meetings";
 import { deskOf, deskState, setDesks } from "./desks";
-import { myStatus, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
+import { FLOOR_ARRIVED_EVENT, myStatus, sinceFloorRequested, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
 import { track } from "@/lib/analytics";
 
 /** Applies what the room says to the scene and the React overlays. */
@@ -145,8 +145,10 @@ export class MessageHandler {
     if (this.arrived) return this.seats.resit();
     this.arrived = true;
     // Who shows up, and with how many already there: whether a team is on the floor together.
-    track("floor_entered", { people_here: players.length });
+    // And how long they waited for it, from the floor being asked for to here.
+    track("floor_entered", { people_here: players.length, load_ms: sinceFloorRequested() });
     this.scene.tweens.add({ targets: this.scene.cameras.main, alpha: 1, duration: 260, ease: "Cubic.easeOut" });
+    window.dispatchEvent(new Event(FLOOR_ARRIVED_EVENT));
     const desk = deskOf(deskState().desks, this.playerId);
     if (desk) this.seats.walkToDesk(desk.seat);
   }

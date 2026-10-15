@@ -175,9 +175,10 @@ export default function WhiteboardOverlay() {
           />
         </div>
 
+        {/* What a team draws is theirs: never in a recording (lib/analytics). */}
         <canvas
           ref={canvasRef}
-          className="flex-1 min-h-0 w-full touch-none cursor-crosshair bg-card"
+          className="ph-no-capture flex-1 min-h-0 w-full touch-none cursor-crosshair bg-card"
           onPointerDown={(event) => {
             event.currentTarget.setPointerCapture(event.pointerId);
             drawingRef.current = true;

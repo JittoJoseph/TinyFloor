@@ -20,11 +20,13 @@ import { Button } from "@/components/motion/button/base";
 import { Loader } from "@/components/motion/loader";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { PersonPill } from "@/components/ui/Person";
+import { DoneChip } from "@/components/ui/DoneChip";
 import type { RoomTicket } from "@/lib/api";
 import type { ShareResult } from "@/lib/share";
 import { useInvite } from "@/components/app/Invite";
 import { DeskHint, DeskOffer } from "./Desks";
-import { useFloor } from "@/lib/floor";
+import { FLOOR_ARRIVED_EVENT, floorRequested, sinceFloorRequested, useFloor } from "@/lib/floor";
+import { track } from "@/lib/analytics";
 import { EASE_OUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { ROOM_CONNECTION_EVENT, ROOM_ENDED_EVENT, type RoomEnd } from "@/lib/RoomSocket";
@@ -41,10 +43,8 @@ function Connecting() {
   );
 }
 
-const PhaserGame = dynamic(() => import("@/components/PhaserGame"), {
-  ssr: false,
-  loading: () => <Connecting />,
-});
+// The loader over the floor stays until the room has welcomed you (below), not just until this arrives.
+const PhaserGame = dynamic(() => import("@/components/PhaserGame"), { ssr: false });
 
 export interface RoomViewProps {
   title: string;
@@ -72,6 +72,11 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
   const [ended, setEnded] = useState<RoomEnd | null>(null);
   const [attempt, setAttempt] = useState(0);
   const [peopleOpen, setPeopleOpen] = useState(false);
+  // From here until the room's welcome, the code, map, ticket and connection
+  // are still on their way: one loader covers all of it, then the floor fades in.
+  // Which attempt arrived: a retry (Try again) starts covered again.
+  const [arrivedOn, setArrivedOn] = useState(-1);
+  const arrived = arrivedOn === attempt;
   const everyone = useFloor();
   const reduce = useReducedMotion();
   const peopleBox = useRef<HTMLDivElement>(null);
@@ -102,8 +107,37 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
   }, [officeInvite, onInvite]);
 
   useEffect(() => {
+    floorRequested();
+    let settled = false;
+    const onArrived = () => {
+      settled = true;
+      setArrivedOn(attempt);
+    };
+    // Turned away is floor_failed (below), not giving up.
+    const onEnded = () => (settled = true);
+    // Gone before the floor showed (closed the tab, went elsewhere): how long they had waited (docs/analytics.md).
+    const gaveUp = () => {
+      if (!settled) track("floor_abandoned", { waited_ms: sinceFloorRequested() });
+      settled = true;
+    };
+    window.addEventListener(FLOOR_ARRIVED_EVENT, onArrived);
+    window.addEventListener(ROOM_ENDED_EVENT, onEnded);
+    window.addEventListener("pagehide", gaveUp);
+    return () => {
+      gaveUp();
+      window.removeEventListener(FLOOR_ARRIVED_EVENT, onArrived);
+      window.removeEventListener(ROOM_ENDED_EVENT, onEnded);
+      window.removeEventListener("pagehide", gaveUp);
+    };
+  }, [attempt]);
+
+  useEffect(() => {
     const onConnection = (event: Event) => setReconnecting((event as CustomEvent<{ state: string }>).detail.state === "reconnecting");
-    const onEnded = (event: Event) => setEnded((event as CustomEvent<{ reason: RoomEnd }>).detail.reason);
+    const onEnded = (event: Event) => {
+      const { reason } = (event as CustomEvent<{ reason: RoomEnd }>).detail;
+      setEnded(reason);
+      track("floor_failed", { reason });
+    };
 
     window.addEventListener(ROOM_CONNECTION_EVENT, onConnection);
     window.addEventListener(ROOM_ENDED_EVENT, onEnded);
@@ -131,6 +165,13 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
   return (
     <div className="absolute inset-0 overflow-hidden bg-[color-mix(in_oklab,var(--ui-background)_70%,var(--ui-muted))]">
       <PhaserGame key={attempt} name={user.displayName} character={user.character} userId={user.id} ticketFor={ticketFor} />
+      <AnimatePresence>
+        {!arrived && (
+          <motion.div key="connecting" className="absolute inset-0" exit={{ opacity: 0, transition: { duration: 0.26, ease: EASE_OUT } }}>
+            <Connecting />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-3 p-3 sm:p-4">
         {/* Where you are and who is with you. Pressing it lists them. */}
@@ -274,48 +315,15 @@ function RoomEnded({ reason, leaveHref, onRetry }: { reason: RoomEnd; leaveHref:
  */
 function InviteChip({ copied, onClick }: { copied: boolean; onClick: () => void }) {
   const t = useTranslations("room");
-  const reduce = useReducedMotion();
   return (
-    <motion.button
-      type="button"
+    <DoneChip
+      done={copied}
+      icon={<UserPlus strokeWidth={2.25} />}
+      label={t("invite")}
+      doneLabel={t("linkCopied")}
       onClick={onClick}
-      layout={!reduce}
-      whileTap={reduce ? undefined : { scale: 0.96 }}
-      transition={{ type: "spring", stiffness: 520, damping: 34 }}
-      className="pointer-events-auto flex h-10 shrink-0 cursor-pointer items-center gap-2 overflow-hidden rounded-full border border-border bg-card/90 ps-1.5 pe-3.5 text-[13px] font-medium text-foreground shadow-float backdrop-blur-md transition-colors hover:bg-card"
-    >
-      <motion.span
-        layout={!reduce ? "position" : false}
-        className={cn(
-          "flex size-7 items-center justify-center rounded-full transition-colors duration-200",
-          copied ? "bg-ok text-white" : "bg-foreground text-background",
-        )}
-      >
-        <AnimatePresence mode="popLayout" initial={false}>
-          <motion.span
-            key={copied ? "done" : "invite"}
-            initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.5, rotate: -30 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.5 }}
-            transition={{ type: "spring", stiffness: 600, damping: 30 }}
-            className="flex"
-          >
-            {copied ? <Check className="size-3.5" strokeWidth={2.75} /> : <UserPlus className="size-3.5" strokeWidth={2.25} />}
-          </motion.span>
-        </AnimatePresence>
-      </motion.span>
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.span
-          key={copied ? "done" : "invite"}
-          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
-          transition={{ duration: 0.18, ease: EASE_OUT }}
-          className="hidden whitespace-nowrap sm:inline"
-        >
-          {copied ? t("linkCopied") : t("invite")}
-        </motion.span>
-      </AnimatePresence>
-    </motion.button>
+      className="pointer-events-auto bg-card/90 shadow-float backdrop-blur-md hover:bg-card"
+      labelClassName="hidden sm:inline"
+    />
   );
 }

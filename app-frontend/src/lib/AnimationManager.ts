@@ -1,4 +1,5 @@
 import * as Phaser from "phaser";
+import { FLOOR_FILES } from "@/lib/floorWarmup";
 
 export type CharacterName =
   | "Adam"
@@ -81,7 +82,7 @@ export class AnimationManager {
 
   preload() {
     AnimationManager.CHARACTERS.forEach((char) => {
-      this.scene.load.spritesheet(char, `/characters/${char}.png`, {
+      this.scene.load.spritesheet(char, FLOOR_FILES.character(char), {
         frameWidth: FRAME_SIZE,
         frameHeight: FRAME_SIZE,
       });

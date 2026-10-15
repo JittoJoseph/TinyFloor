@@ -4,6 +4,14 @@
 /fonts/*
   Cache-Control: public,max-age=31536000,immutable
 
+# The floor's map and sprites keep their names when they change, so they are
+# kept briefly, then used while being checked again in the background.
+/tilesets/*
+  Cache-Control: public,max-age=600,stale-while-revalidate=86400
+
+/characters/*
+  Cache-Control: public,max-age=600,stale-while-revalidate=86400
+
 /credits.txt
   X-Robots-Tag: noindex
 

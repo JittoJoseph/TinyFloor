@@ -1,7 +1,7 @@
 "use client";
 
 import { RailIcons } from "@/components/app/railIcons";
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/lib/i18n/navigation";
@@ -27,6 +27,7 @@ import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
 import { dmChannelId } from "@shared/chat";
 import { rememberOffice } from "@/lib/lastOffice";
 import { withPostHog } from "@/lib/analytics";
+import { earlyTicket, warmFloor } from "@/lib/floorWarmup";
 
 interface OfficeContext {
   office: Office;
@@ -86,6 +87,24 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
 
   // The office is read on arrival, and again by any screen that changed it; both land here.
   const load = useCallback(() => api.overview(officeId).then((found) => setRead({ overview: found, at: Date.now() })), [officeId]);
+  // The office, and the floor's code, files and ticket, are all asked for at
+  // once and alongside the session, not after it: the cookie is enough. Signed
+  // out, they fail and the redirect below takes over.
+  const [ticket] = useState(() => earlyTicket(() => api.officeTicket(officeId)));
+  const arriving = useRef<Promise<void> | null>(null);
+  const arrive = useCallback(
+    () =>
+      (arriving.current ??= load().catch((error) => {
+        arriving.current = null;
+        if (error instanceof ApiError && error.status === 404) setGone(true);
+      })),
+    [load],
+  );
+  useEffect(() => {
+    warmFloor();
+    void arrive();
+    ticket.start();
+  }, [arrive, ticket]);
   const refresh = useCallback(async () => {
     await load();
   }, [load]);
@@ -96,10 +115,8 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
       router.replace(`/auth?${new URLSearchParams({ redirect: officePath(officeId) })}`);
       return;
     }
-    load().catch((error) => {
-      if (error instanceof ApiError && error.status === 404) setGone(true);
-    });
-  }, [isLoading, user, load, officeId, router]);
+    void arrive();
+  }, [isLoading, user, arrive, officeId, router]);
 
   // The tab says which office it is, and what's new in its chat, the way a
   // pinned work tab does: worth a glance from another window, no more (docs/product.md).
@@ -230,7 +247,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
                   <RoomView
                     title={office.name}
                     user={user}
-                    ticketFor={() => api.officeTicket(office.id)}
+                    ticketFor={ticket.ticketFor}
                     // Once someone else has joined, inviting lives in People and the office menu, not over the floor.
                     inviteChip={members.length <= 1}
                     leaveHref={door}

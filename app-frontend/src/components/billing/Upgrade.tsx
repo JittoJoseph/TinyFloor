@@ -10,6 +10,7 @@ import { Modal } from "@/components/ui/Modal";
 import { useOfficeMaybe } from "@/components/app/OfficeShell";
 import { PLAN_NAMES, ProOffer, paidPlan } from "./PlanCards";
 import { usePlanChange } from "./usePlanChange";
+import { track } from "@/lib/analytics";
 
 /** What brought them to the plans: the office is full, the hours are (nearly) used, the trial is ending, or just looking. */
 export type UpgradeReason = "full" | "hours" | "trial" | "plans";
@@ -36,7 +37,11 @@ export function UpgradeProvider({ children }: { children: ReactNode }) {
   const catalog = usePlans();
   const [reason, setReason] = useState<UpgradeReason | null>(null);
   const on = !!catalog?.billing && !!context;
-  const open = useCallback((why: UpgradeReason = "plans") => setReason(why), []);
+  const open = useCallback((why: UpgradeReason = "plans") => {
+    setReason(why);
+    // Seen, against checkout_opened: whether the offer, or the price, is where buying stops.
+    track("upgrade_opened", { reason: why });
+  }, []);
   const value = useMemo<Upgrade>(() => ({ open: on ? open : null }), [on, open]);
   return (
     <Context.Provider value={value}>

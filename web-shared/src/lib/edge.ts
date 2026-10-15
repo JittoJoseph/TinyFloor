@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { routing } from "@/lib/i18n/routing";
+import { RELAY_PATH } from "@/lib/relay";
 
 /** What both sites' middleware does before routing a request to a page. */
 
@@ -36,6 +37,11 @@ export function notFound() {
  */
 export function screen(request: NextRequest, home: URL): NextResponse | "file" | null {
   const { pathname, search } = request.nextUrl;
+  // Next's own trailing-slash redirect is off (next-config.mjs) so PostHog's
+  // paths keep theirs through the relay; every other address loses it here.
+  if (pathname.length > 1 && pathname.endsWith("/")) {
+    return NextResponse.redirect(new URL(`${pathname.replace(/\/+$/, "") || "/"}${search}`, request.url), 308);
+  }
   const host = (request.headers.get("host") ?? "").replace(/:\d+$/, "");
   if (process.env.NODE_ENV === "production" && host !== home.hostname) {
     return NextResponse.redirect(new URL(`${pathname}${search}`, home), 301);
@@ -52,6 +58,25 @@ export function screen(request: NextRequest, home: URL): NextResponse | "file" |
   // Files (sitemap.xml, robots.txt, sprites, music) carry no locale.
   if (/\.[^/]+$/.test(pathname)) return "file";
   return null;
+}
+
+/**
+ * PostHog through our own address (lib/relay.ts): `/tf/static/...` and
+ * `/tf/array/...` from its asset host, everything else (events, recordings,
+ * flags) to its event host. Nothing of ours goes along (no cookies), but the
+ * visitor's IP does, so their country is still theirs and not Cloudflare's.
+ */
+export async function relay(request: NextRequest): Promise<Response | null> {
+  const { pathname, search } = request.nextUrl;
+  if (!pathname.startsWith(`${RELAY_PATH}/`)) return null;
+  const path = pathname.slice(RELAY_PATH.length) + search;
+  const host = path.startsWith("/static/") || path.startsWith("/array/") ? "us-assets.i.posthog.com" : "us.i.posthog.com";
+  const headers = new Headers(request.headers);
+  for (const name of ["cookie", "authorization", "host"]) headers.delete(name);
+  const ip = request.headers.get("cf-connecting-ip");
+  if (ip) headers.set("x-forwarded-for", ip);
+  const body = request.method === "GET" || request.method === "HEAD" ? undefined : await request.arrayBuffer();
+  return fetch(`https://${host}${path}`, { method: request.method, headers, body, redirect: "manual" });
 }
 
 /** The language of an address we route ourselves: its prefix, else English. */

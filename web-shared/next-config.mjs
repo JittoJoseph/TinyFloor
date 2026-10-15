@@ -23,6 +23,9 @@ export function frontendConfig({ serverLeavesOut = [] } = {}) {
       // again, some 20 times a second.
       prefetchInlining: false,
     },
+    // The middleware strips trailing slashes itself (lib/edge.ts screen), so
+    // PostHog's paths keep theirs on the way through the relay.
+    skipTrailingSlashRedirect: true,
     // A check build can go elsewhere, so it never trips over a running dev server's .next.
     distDir: process.env.NEXT_DIST_DIR || ".next",
     // Bottom left is where the app keeps you (your face on the rail).

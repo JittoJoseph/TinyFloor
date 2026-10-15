@@ -1,4 +1,5 @@
 import type { CaptureResult, PostHog } from "posthog-js";
+import { RELAY_PATH } from "@/lib/relay";
 
 const token = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
 const host = process.env.NEXT_PUBLIC_POSTHOG_HOST;
@@ -32,6 +33,14 @@ function scrubUrls(event: CaptureResult | null): CaptureResult | null {
   return event;
 }
 
+/**
+ * The live and preview sites reach PostHog through their own address, which ad
+ * blockers leave alone (lib/relay.ts); a laptop goes straight to PostHog.
+ */
+function apiHost(): string {
+  return window.location.hostname.endsWith("tinyfloor.com") ? `${window.location.origin}${RELAY_PATH}` : host!;
+}
+
 let loaded: Promise<PostHog> | null = null;
 
 /**
@@ -40,10 +49,15 @@ let loaded: Promise<PostHog> | null = null;
  * startAnalytics), or sooner if something is tracked before then.
  */
 function load() {
-  return (loaded ??= import("posthog-js").then(({ default: posthog }) => {
+  // The recorder comes with it rather than as its own script: blockers stop
+  // a file named posthog-recorder.js wherever it's served from.
+  return (loaded ??= Promise.all([import("posthog-js"), import("posthog-js/dist/posthog-recorder")]).then(([{ default: posthog }]) => {
     const where = environment();
     posthog.init(token!, {
-      api_host: host,
+      api_host: apiHost(),
+      ui_host: "https://us.posthog.com",
+      // No surveys here, so their script isn't fetched.
+      disable_surveys: true,
       defaults: "2026-01-30",
       // A laptop's errors are mid-edit noise, not something a user ran into.
       capture_exceptions: where !== "development",

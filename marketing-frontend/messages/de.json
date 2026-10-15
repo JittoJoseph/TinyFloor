@@ -66,13 +66,13 @@
     "relatedTitle": "Weiter <em>entdecken.</em>",
     "pages": {
       "gather": {
-        "label": "Gather-Alternative",
+        "label": "Gather-Alternativen",
         "meta": {
-          "title": "Kostenlose Gather-Town-Alternative im Browser",
-          "description": "Du suchst eine kostenlose Gather-Town-Alternative? TinyFloor ist ein virtuelles Pixel-Art-Büro mit Videoanrufen in der Nähe."
+          "title": "Die 7 besten Gather-Alternativen 2026, mit Preisen für dein Team",
+          "description": "Gather hat den kostenlosen Tarif beendet und berechnet jedes Mitglied. Sieben Gather-Alternativen im Vergleich: was ein Team von 8 zahlt, kostenlose Tarife, Apps und wofür jede am besten ist, mit TinyFloor darunter."
         },
-        "title": "Eine kostenlose <em>Gather-Alternative.</em>",
-        "subtitle": "Gather hat den kostenlosen Tarif gestrichen und berechnet jetzt pro Mitglied. TinyFloor behält dieselbe Idee bei, ein Büro, in dem man herumläuft und redet: kostenlos für bis zu 3 Personen, danach ein Preis für das ganze Büro.",
+        "title": "Die besten <em>Gather-Alternativen</em> 2026.",
+        "subtitle": "Gather hat seinen kostenlosen Tarif im September 2025 beendet und berechnet jetzt jedes Mitglied. Hier sind sieben Alternativen, verglichen danach, was ein echtes Team zahlt, was kostenlos ist und was jede am besten kann. Wir machen TinyFloor, deshalb steht es zuerst; alles andere stammt von den Seiten der jeweiligen Produkte.",
         "points": [
           {
             "title": "Keine Testphase, die abläuft",
@@ -95,20 +95,28 @@
         },
         "faq": [
           {
-            "q": "Ist Gather noch kostenlos?",
-            "a": "Nein. Gather hat keinen dauerhaft kostenlosen Tarif mehr. Es gibt eine 30-tägige Testphase, danach kostet der Essential-Tarif ab 12 $ pro Mitglied pro Monat. TinyFloor ist kostenlos für bis zu 3 Personen und kostet $29 im Monat für das ganze Team."
+            "q": "Was ist die beste kostenlose Gather-Alternative?",
+            "a": "Für ein Team von bis zu 10 fasst der kostenlose Tarif von SoWork die meisten Leute, mit Meetings von höchstens 30 Minuten; der von WorkAdventure fasst 10 gleichzeitig anwesende Personen. TinyFloor ist für bis zu 3 kostenlos, mit allen Funktionen, und danach 29 $ im Monat für das ganze Team."
           },
           {
-            "q": "Was hat Gather, was TinyFloor nicht hat?",
-            "a": "Gather bietet zusätzlich KI-Meetingnotizen und anpassbare Büros. TinyFloor konzentriert sich auf das Wesentliche: herumlaufen, Anrufe in der Nähe, Bildschirmfreigabe, einen Besprechungsraum, Chat, ein Whiteboard und Musik im Raum."
+            "q": "Was ist die günstigste Gather-Alternative für ein Team von 10?",
+            "a": "TinyFloor, für 29 $ im Monat für das ganze Team. Der Basic-Tarif von SoWork kostet 54 $ im Monat bei jährlicher Abrechnung für 10 Mitglieder, Gather 120 $ bei jährlicher Abrechnung."
           },
           {
-            "q": "Kann ich mein Team von Gather zu TinyFloor holen?",
-            "a": "Ja. Erstelle ein Büro, lade dein Team mit einem Link ein, und alle kommen rein. Es gibt keine Daten zu migrieren und nichts zu installieren."
+            "q": "Gibt es eine Gather-Alternative, die im Browser läuft?",
+            "a": "Ja. TinyFloor, Kumospace und WorkAdventure laufen im Browser; Teamflow und Roam sind Desktop-Apps."
           },
           {
-            "q": "Wie viele Personen passen in ein TinyFloor-Büro?",
-            "a": "Bis zu 3 Personen mit Free und ein kleines Team von bis zu 15 mit Pro. Du kannst so viele Büros anlegen, wie du brauchst."
+            "q": "Hat Gather noch einen kostenlosen Tarif?",
+            "a": "Nein. Gather hat den kostenlosen Tarif am 15. September 2025 beendet. Es kostet nach einer 30-tägigen Testphase 15 $ pro Mitglied im Monat oder 12 $ bei jährlicher Abrechnung."
+          },
+          {
+            "q": "Kann ich mein Gather-Büro in ein anderes Tool mitnehmen?",
+            "a": "TinyFloor kann keine Gather-Karte importieren: Du startest mit einem fertigen Büro und lädst alle mit einem Link ein, das dauert Minuten. Frag bei jedem anderen Tool nach, bevor du einen Umzug planst."
+          },
+          {
+            "q": "Ist TinyFloor wie Gather?",
+            "a": "Ja, in dem, was im Alltag zählt: ein Pixel-Art-Büro, in dem du zu jemandem gehst, um zu reden, und einen Raum betrittst, um dich zu treffen. Du kannst das Büro nicht selbst gestalten, und es gibt keine Aufnahmen oder Transkripte."
           }
         ]
       },

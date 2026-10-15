@@ -919,34 +919,37 @@
   "gatherPricing": {
     "label": "Prezzi di Gather",
     "meta": {
-      "title": "Prezzi di Gather nel 2026: quanto paga un team di 5, 10 o 25",
-      "description": "Gather costa 12 $ per membro al mese con fatturazione annuale o 15 $ mensile, senza piano gratuito. Quanto fa per team di 5, 10, 25 e 50, e quanto paga lo stesso team altrove."
+      "title": "Prezzi di Gather nel 2026: quanto paga il tuo team, ospiti compresi",
+      "description": "Gather costa 12 $ per membro al mese con fatturazione annuale o 15 $ mensile, senza piano gratuito da settembre 2025. Quanto significa per team da 4 a 50, cosa includono ospiti e registrazioni, e quanto paga lo stesso team altrove."
     },
     "title": "Quanto costa <em>Gather?</em>",
-    "intro": "Da settembre 2025 Gather fa pagare ogni membro e non ha un piano gratuito. Ecco quanto fa per il tuo team, calcolato per dimensione, e quanto paga lo stesso team in altri uffici virtuali. I prezzi vengono dalle pagine dei prezzi e di assistenza di Gather, verificate a ottobre 2026.",
+    "intro": "Dal 15 settembre 2025 Gather fa pagare ogni membro del team e non ha più un piano gratuito. Questa guida calcola quanto significa per le dimensioni del tuo team, cosa include il piano e cosa lascia fuori, cosa è cambiato per chi usava già Gather e quanto paga lo stesso team su altri uffici virtuali. Tutte le cifre di Gather vengono dalla sua pagina dei prezzi e dal suo centro assistenza, controllati a ottobre 2026; prezzi in dollari statunitensi, tasse escluse.",
     "sections": [
       {
         "title": "I piani di Gather",
         "body": [
-          "Gather ha un piano per la maggior parte dei team, Essential, e un piano Custom per le grandi organizzazioni."
+          "Gather vende un piano alla maggior parte dei team, Essential, e un piano Custom alle grandi organizzazioni. Le due versioni di Gather, il nuovo Gather 2.0 e l'originale, ora costano lo stesso a persona."
         ],
         "items": [
           {
             "title": "Essential",
-            "body": "15 $ per membro al mese, o 12 $ con fatturazione annuale. Include tutte le funzioni di Gather: un ufficio virtuale personalizzato, riunioni e chat illimitate, integrazioni con Google Calendar, GitHub e Spotify, ospiti, e registrazione e trascrizione delle riunioni con una quota mensile di ore."
+            "body": "15 $ per membro al mese, o 12 $ con fatturazione annuale. Tutte le funzioni di Gather: un ufficio virtuale che progetti tu, riunioni e chat illimitate, integrazioni con Google Calendar, GitHub e Spotify, e note delle riunioni con l'IA. Registrazioni, trascrizioni e ospiti hanno quote mensili, a partire da 20 ore di registrazione, 30 ore di trascrizione e 30 ore di ospiti."
           },
           {
             "title": "Custom",
-            "body": "Con prezzo stabilito dal team vendite di Gather, per team grandi che vogliono un onboarding dedicato e funzioni aziendali."
+            "body": "Prezzo stabilito dal team commerciale di Gather. Tutto quello di Essential, più single sign-on (SSO), onboarding personalizzato, uffici più grandi, configurazioni ibride e prezzi regionali. Se dovete accedere tramite il provider di identità dell'azienda, è questo il piano."
           },
           {
             "title": "Prova gratuita",
-            "body": "30 giorni gratis, poi Essential. Non esiste un piano gratuito permanente."
+            "body": "30 giorni per un massimo di 50 persone, senza carta. Poi l'ufficio ha bisogno di Essential. Non esiste un piano gratuito permanente. Chi si aggiunge dopo ha una propria prova di 14 giorni prima di essere conteggiato."
           }
         ]
       },
       {
-        "title": "Quanto costa Gather per dimensione del team",
+        "title": "Quanto costa Gather in base alle dimensioni del team",
+        "body": [
+          "Gather conta i membri: chiunque abbia un account nel vostro ufficio, che entri quel giorno o no. Ecco il piano Essential per le dimensioni di team più comuni."
+        ],
         "table": {
           "head": [
             "Team",
@@ -956,16 +959,40 @@
           ],
           "rows": [
             [
-              "5 persone",
-              "75 $",
+              "4 persone",
               "60 $",
-              "720 $"
+              "48 $",
+              "576 $"
+            ],
+            [
+              "6 persone",
+              "90 $",
+              "72 $",
+              "864 $"
+            ],
+            [
+              "8 persone",
+              "120 $",
+              "96 $",
+              "1.152 $"
             ],
             [
               "10 persone",
               "150 $",
               "120 $",
               "1.440 $"
+            ],
+            [
+              "12 persone",
+              "180 $",
+              "144 $",
+              "1.728 $"
+            ],
+            [
+              "15 persone",
+              "225 $",
+              "180 $",
+              "2.160 $"
             ],
             [
               "25 persone",
@@ -980,73 +1007,160 @@
               "7.200 $"
             ]
           ],
-          "note": "Gather fa pagare ogni membro, che quel giorno venga in ufficio o no. Prezzi tasse escluse."
+          "note": "Essential a 15 $ per membro al mese, o 12 $ con fatturazione annuale (pagina dei prezzi di Gather, ottobre 2026). Tasse escluse."
         }
+      },
+      {
+        "title": "Cos'altro pesa sulla bolletta",
+        "items": [
+          {
+            "title": "Ospiti",
+            "body": "Clienti, candidati e collaboratori esterni possono entrare come ospiti: non pagano come membri ma consumano ore ospite. Ogni ufficio ha almeno 30 ore ospite al mese; un ufficio con più di 10 membri ne ha 3 per ogni membro, cioè 60 ore per 20 membri. Un team che riceve clienti ogni giorno può restare senza."
+          },
+          {
+            "title": "Registrazioni e trascrizioni",
+            "body": "Incluse, entro quote mensili che partono da 20 ore di registrazione e 30 di trascrizione."
+          },
+          {
+            "title": "Ogni persona è un posto",
+            "body": "Un collaboratore part-time, un responsabile che passa una volta a settimana, qualcuno in ferie: ognuno è un membro a prezzo pieno finché è nell'ufficio."
+          },
+          {
+            "title": "Il Gather originale conta ancora chi è connesso contemporaneamente",
+            "body": "Gli uffici rimasti sulla versione originale pagano il nuovo prezzo per persona connessa contemporaneamente, non per membro. Passare a Gather 2.0 significa costruire un nuovo ufficio in Gather Studio."
+          },
+          {
+            "title": "Sconti",
+            "body": "Scuole, università e organizzazioni non profit possono chiedere un codice sconto al supporto di Gather. Gli eventi sulla versione originale costano 3 $ a persona al giorno, con il prezzo mensile come tetto dopo cinque giorni."
+          }
+        ]
       },
       {
         "title": "Cosa è cambiato nel 2025",
         "body": [
-          "Il 15 settembre 2025 Gather ha lanciato Gather 2.0 e ha portato sia la versione nuova sia quella originale al prezzo per membro: 15 $ per membro al mese, o 12 $ con fatturazione annuale. Prima i team pagavano in base al numero di persone presenti in ufficio nello stesso momento.",
-          "Il piano gratuito è sparito per entrambe le versioni. I team che già pagavano hanno potuto bloccare il vecchio prezzo prima del cambio. Per un team piccolo che usava Gather gratis, è stato il momento in cui ha cominciato a costare."
+          "Fino a settembre 2025 i team piccoli potevano usare Gather gratis, e i team paganti pagavano 7 $ a persona al mese, o 5,95 $ con fatturazione annuale, per il numero di persone connesse contemporaneamente.",
+          "Il 15 settembre 2025 Gather ha lanciato Gather 2.0 e portato entrambe le versioni a 15 $ per membro al mese, o 12 $ con fatturazione annuale. Il piano gratuito è finito: gli uffici che non erano passati a un piano a pagamento entro quella data sono stati chiusi.",
+          "Chi pagava già ha avuto tempo per adattarsi. I piani mensili hanno mantenuto il vecchio prezzo fino alla fine del 2025 e sono passati a 15 $ al primo rinnovo dopo il 1° gennaio 2026. I team che avevano bloccato un piano annuale prima del cambio hanno mantenuto 5,95 $ fino a settembre 2026, quindi molti trovano il nuovo prezzo al rinnovo di quest'anno."
+        ]
+      },
+      {
+        "title": "Esempi pratici",
+        "items": [
+          {
+            "title": "Un team di 6 che usava il piano gratuito",
+            "detail": "Da 0 $ a 864 $ all'anno",
+            "body": "Sei persone che usavano Gather gratis ora pagano 72 $ al mese con il piano annuale (864 $ all'anno), o 90 $ al mese con fatturazione mensile."
+          },
+          {
+            "title": "Un team di 8 che aveva bloccato il vecchio prezzo annuale",
+            "detail": "Da 571 $ a 1.152 $ all'anno",
+            "body": "Otto persone a 5,95 $ al mese pagavano circa 571 $ all'anno. Al rinnovo da settembre 2026, lo stesso team paga 12 $ al mese a testa, 1.152 $ all'anno: più o meno il doppio."
+          },
+          {
+            "title": "Un team di 12 che riceve clienti",
+            "detail": "144 $ al mese, 36 ore ospite",
+            "body": "Dodici membri con il piano annuale pagano 144 $ al mese e hanno 36 ore ospite al mese, circa un'ora e mezza per giorno lavorativo. Un'ora al giorno con i clienti ci sta; diversi incontri con clienti al giorno no."
+          }
         ]
       },
       {
         "title": "Lo stesso team altrove",
         "body": [
-          "Ecco quanto pagano al mese gli stessi team in altri uffici virtuali, sul piano più economico che li ospita."
+          "Quanto pagano al mese gli stessi team su altri uffici virtuali, con il piano più economico adatto a loro."
         ],
         "table": {
           "head": [
             "Team",
-            "Gather, annuale",
+            "Gather, fatturazione annuale",
             "TinyFloor",
-            "SoWork Basic, annuale",
+            "SoWork Basic, fatturazione annuale",
             "Kumospace Business"
           ],
           "rows": [
             [
-              "5 persone",
-              "60 $",
-              "$29",
-              "27 $",
+              "4 persone",
+              "48 $",
+              "29 $",
+              "21,60 $",
               "Gratis (fino a 5 membri)"
             ],
             [
-              "10 persone",
-              "120 $",
-              "$29",
-              "54 $",
-              "160 $"
+              "8 persone",
+              "96 $",
+              "29 $",
+              "43,20 $",
+              "128 $"
+            ],
+            [
+              "12 persone",
+              "144 $",
+              "29 $",
+              "64,80 $",
+              "192 $"
             ]
           ],
-          "note": "Dalla pagina dei prezzi di ogni prodotto a ottobre 2026, tasse escluse. Anche il piano gratuito di SoWork copre fino a 10 membri, con riunioni al massimo di 30 minuti, e quello di WorkAdventure fino a 10 persone contemporaneamente."
+          "note": "Dalla pagina dei prezzi di ogni prodotto a ottobre 2026, tasse escluse. Il piano gratuito di SoWork copre fino a 10 membri con riunioni limitate a 30 minuti; quello di WorkAdventure fino a 10 persone connesse contemporaneamente. TinyFloor è gratis fino a 3 persone."
         }
       },
       {
-        "title": "Quando Gather vale la spesa",
+        "title": "Quando Gather conviene",
         "items": [
           {
-            "title": "Vuoi disegnare il tuo ufficio",
-            "body": "Gather ti fa costruire piani, stanze e oggetti. Quasi tutte le alternative ti danno un ufficio già pronto."
+            "title": "Vuoi progettare il tuo ufficio",
+            "body": "Gather ti fa disporre piani, stanze e più di 200 oggetti. La maggior parte delle alternative ti dà un ufficio già pronto."
           },
           {
             "title": "Ti servono registrazioni e trascrizioni",
-            "body": "Essential le include, con una quota di ore ogni mese."
+            "body": "Essential le include, con quote di ore ogni mese."
           },
           {
-            "title": "La tua giornata gira intorno a Google Calendar e GitHub",
-            "body": "Le integrazioni di Gather mostrano il tuo stato e la tua attività in ufficio."
+            "title": "La tua giornata gira attorno a Google Calendar e GitHub",
+            "body": "Le integrazioni di Gather mostrano il tuo stato e su cosa stai lavorando, dentro l'ufficio."
           },
           {
-            "title": "Quando non la vale",
+            "title": "Ti serve il single sign-on",
+            "body": "Il piano Custom di Gather ce l'ha; molti prodotti più piccoli no."
+          },
+          {
+            "title": "Quando no",
             "body": "Se al tuo team serve soprattutto vedere chi c'è, parlare e riunirsi, paghi funzioni che non userai, ogni mese, per ogni persona."
           }
+        ]
+      },
+      {
+        "title": "Prima di rinnovare",
+        "body": [
+          "Se il tuo piano annuale sta per rinnovarsi al nuovo prezzo, quattro domande ti dicono di cosa hai davvero bisogno."
+        ],
+        "items": [
+          {
+            "title": "Quante persone entrano in un giorno normale?",
+            "body": "Gather fa pagare ogni membro. Se metà del team non apre quasi mai l'ufficio, paghi comunque il prezzo pieno per loro."
+          },
+          {
+            "title": "Usate registrazioni e trascrizioni?",
+            "body": "Sono una buona parte di quello che aggiunge Essential. Se le vostre riunioni passano già da Zoom o Google Meet con la loro registrazione, forse state pagando due volte."
+          },
+          {
+            "title": "Quante ore ospite usate?",
+            "body": "Confrontale con 30 al mese, o 3 per ogni membro oltre i 10. Molto lavoro con i clienti può superarle."
+          },
+          {
+            "title": "Modificate ancora l'ufficio?",
+            "body": "La progettazione dell'ufficio è il punto forte di Gather. Se la vostra mappa non cambia da mesi, un ufficio già pronto fa lo stesso lavoro."
+          }
+        ]
+      },
+      {
+        "title": "Come abbiamo verificato",
+        "body": [
+          "Prezzi, quote e dettagli dei piani di Gather vengono da gather.town/pricing e dall'articolo del centro assistenza di Gather \"Understanding Gather's pricing changes (2025)\", letti a ottobre 2026. I prezzi degli altri prodotti vengono dalle loro pagine dei prezzi, nello stesso mese. Quando la pagina di un prodotto non diceva qualcosa, l'abbiamo lasciata fuori invece di tirare a indovinare. I prezzi cambiano: controlla la pagina del fornitore prima di acquistare."
         ]
       }
     ],
     "fit": {
-      "title": "Dove si inserisce TinyFloor",
-      "body": "TinyFloor mantiene il cuore di ciò che fa Gather: un ufficio in cui ti muovi e parli avvicinandoti a qualcuno, con sala riunioni, chat e condivisione dello schermo. Costa $29 al mese per tutto il team, un solo prezzo per tutto l'ufficio, ed è gratis fino a 3. Non ha registrazioni, trascrizioni né editor dell'ufficio; se ti servono, Gather è la scelta migliore."
+      "title": "Dove si colloca TinyFloor",
+      "body": "TinyFloor mantiene il cuore di ciò che fa Gather: un ufficio in cui ti muovi e parli avvicinandoti a qualcuno, con sala riunioni, chat e condivisione dello schermo. Costa 29 $ al mese per tutto il team, un solo prezzo per quante persone inviti, ed è gratis fino a 3. Non ha registrazioni, trascrizione, editor dell'ufficio né single sign-on: se ne dipendi, Gather fa più al caso tuo."
     },
     "faq": [
       {
@@ -1055,15 +1169,31 @@
       },
       {
         "q": "Gather ha un piano gratuito?",
-        "a": "No. Gather ha tolto il piano gratuito a settembre 2025. Al suo posto offre una prova gratuita di 30 giorni."
+        "a": "No. Gather ha chiuso il piano gratuito il 15 settembre 2025. Offre invece una prova gratuita di 30 giorni per un massimo di 50 persone."
       },
       {
         "q": "Quanto costa Gather per 10 persone?",
         "a": "150 $ al mese con fatturazione mensile, o 120 $ al mese con fatturazione annuale (1.440 $ all'anno)."
       },
       {
+        "q": "Gather fa pagare gli ospiti?",
+        "a": "Non come membri. Ogni ufficio ha almeno 30 ore ospite al mese, e gli uffici con più di 10 membri hanno 3 ore ospite per ogni membro."
+      },
+      {
+        "q": "Avevamo bloccato il vecchio prezzo di Gather. E adesso?",
+        "a": "I piani annuali bloccati prima del 15 settembre 2025 hanno mantenuto 5,95 $ a persona al mese fino a settembre 2026; al rinnovo passano a 12 $ con fatturazione annuale o 15 $ mensile."
+      },
+      {
+        "q": "Il Gather originale costa meno di Gather 2.0?",
+        "a": "No, entrambi costano 15 $ a persona al mese, o 12 $ all'anno. La versione originale fa pagare per persona connessa contemporaneamente, Gather 2.0 per membro."
+      },
+      {
+        "q": "Gather offre sconti?",
+        "a": "Scuole, università e organizzazioni non profit possono chiedere un codice sconto al supporto di Gather. La fatturazione annuale costa il 20% in meno di quella mensile."
+      },
+      {
         "q": "Qual è un'alternativa più economica a Gather?",
-        "a": "TinyFloor costa $29 al mese per tutto il team ed è gratis fino a 3. Il piano Basic di SoWork costa $5,40 a membro al mese con fatturazione annuale, e il suo piano gratuito copre 10 membri con riunioni di 30 minuti."
+        "a": "TinyFloor costa 29 $ al mese per tutto il team ed è gratis fino a 3. Il piano Basic di SoWork costa 5,40 $ per membro al mese con fatturazione annuale, e il suo piano gratuito copre 10 membri con riunioni di 30 minuti."
       }
     ]
   }

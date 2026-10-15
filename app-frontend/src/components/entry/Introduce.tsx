@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { track } from "@/lib/analytics";
 import { useTranslations } from "next-intl";
 import { useAuth } from "@/contexts/AuthContext";
 import { character as cleanCharacter, saveIdentity } from "@/lib/identity";
@@ -42,6 +43,8 @@ export function Introduce({ backHref = "/" }: { backHref?: string }) {
     try {
       await updateProfile({ displayName: typed, character: picked, introduced: true });
       saveIdentity({ name: typed, character: picked });
+      // A new account's first door: who gets past it to their office (docs/analytics.md).
+      track("profile_introduced");
     } catch (err) {
       setError(explain(err));
       setBusy(false);

@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Check, Copy, Link2, Mail, MessageSquare, Refresh, Share, UserPlus, Zap } from "@/components/ui/icons";
 import { FaceStack } from "@/components/ui/Face";
 import { Modal } from "@/components/ui/Modal";
-import { withPostHog } from "@/lib/analytics";
+import { track, withPostHog } from "@/lib/analytics";
 import { usePlans } from "@/lib/billing";
 import { resetInviteLink, useInviteLink } from "@/lib/inviteLink";
 import { shareUrl } from "@/lib/links";
@@ -31,7 +31,11 @@ export function useInvite(): (() => void) | null {
 export function InviteProvider({ children }: { children: ReactNode }) {
   const context = useOfficeMaybe();
   const [open, setOpen] = useState(false);
-  const show = useCallback(() => setOpen(true), []);
+  // Opened, against invite_sent: whether the dialog brings the team or loses them.
+  const show = useCallback(() => {
+    setOpen(true);
+    track("invite_opened");
+  }, []);
   return (
     <Context.Provider value={context ? show : null}>
       {children}

@@ -52,8 +52,14 @@ function load() {
       // stuck. What's private stays hidden: everything typed (inputs are masked),
       // and what's marked: messages, emails, the invite link, help tickets, the
       // admin pages (`data-ph-mask` hides the words, `ph-no-capture` the whole
-      // thing, for chat pictures).
-      session_recording: { maskTextSelector: "[data-ph-mask], [data-ph-mask] *", maskAllInputs: true },
+      // thing, for chat pictures and the whiteboard). The floor is a canvas, so
+      // it's recorded as a few small frames a second; without them a recording
+      // of the floor is a blank panel.
+      session_recording: {
+        maskTextSelector: "[data-ph-mask], [data-ph-mask] *",
+        maskAllInputs: true,
+        captureCanvas: { recordCanvas: true, canvasFps: 2, canvasQuality: "0.3" },
+      },
       debug: false,
     });
     posthog.register({ environment: where });

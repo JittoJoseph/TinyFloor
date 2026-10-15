@@ -24,7 +24,8 @@ import type { RoomTicket } from "@/lib/api";
 import type { ShareResult } from "@/lib/share";
 import { useInvite } from "@/components/app/Invite";
 import { DeskHint, DeskOffer } from "./Desks";
-import { FLOOR_ARRIVED_EVENT, floorRequested, useFloor } from "@/lib/floor";
+import { FLOOR_ARRIVED_EVENT, floorRequested, sinceFloorRequested, useFloor } from "@/lib/floor";
+import { track } from "@/lib/analytics";
 import { EASE_OUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { ROOM_CONNECTION_EVENT, ROOM_ENDED_EVENT, type RoomEnd } from "@/lib/RoomSocket";
@@ -106,14 +107,36 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
 
   useEffect(() => {
     floorRequested();
-    const onArrived = () => setArrivedOn(attempt);
+    let settled = false;
+    const onArrived = () => {
+      settled = true;
+      setArrivedOn(attempt);
+    };
+    // Turned away is floor_failed (below), not giving up.
+    const onEnded = () => (settled = true);
+    // Gone before the floor showed (closed the tab, went elsewhere): how long they had waited (docs/analytics.md).
+    const gaveUp = () => {
+      if (!settled) track("floor_abandoned", { waited_ms: sinceFloorRequested() });
+      settled = true;
+    };
     window.addEventListener(FLOOR_ARRIVED_EVENT, onArrived);
-    return () => window.removeEventListener(FLOOR_ARRIVED_EVENT, onArrived);
+    window.addEventListener(ROOM_ENDED_EVENT, onEnded);
+    window.addEventListener("pagehide", gaveUp);
+    return () => {
+      gaveUp();
+      window.removeEventListener(FLOOR_ARRIVED_EVENT, onArrived);
+      window.removeEventListener(ROOM_ENDED_EVENT, onEnded);
+      window.removeEventListener("pagehide", gaveUp);
+    };
   }, [attempt]);
 
   useEffect(() => {
     const onConnection = (event: Event) => setReconnecting((event as CustomEvent<{ state: string }>).detail.state === "reconnecting");
-    const onEnded = (event: Event) => setEnded((event as CustomEvent<{ reason: RoomEnd }>).detail.reason);
+    const onEnded = (event: Event) => {
+      const { reason } = (event as CustomEvent<{ reason: RoomEnd }>).detail;
+      setEnded(reason);
+      track("floor_failed", { reason });
+    };
 
     window.addEventListener(ROOM_CONNECTION_EVENT, onConnection);
     window.addEventListener(ROOM_ENDED_EVENT, onEnded);

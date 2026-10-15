@@ -17,9 +17,14 @@ declare global {
   }
 }
 
+/** How long a submit waits for the check. It can take 10 seconds or more on a slow connection or from far away. */
+const TOKEN_WAIT_MS = 30_000;
+
 /**
  * The latest token, and a way to wait for one: the check usually finishes before
- * anyone submits, but a quick submit waits up to a few seconds for it.
+ * anyone submits, but a quick submit waits for it (the button says it's busy)
+ * rather than failing. Turnstile retries a failed check by itself, so only a
+ * check that never finishes is an error.
  */
 export function useTurnstileToken() {
   const resetWidget = useRef<(() => void) | null>(null);
@@ -45,7 +50,7 @@ export function useTurnstileToken() {
                 waiting.current = null;
                 resolve(null);
               }
-            }, 8000);
+            }, TOKEN_WAIT_MS);
           }),
     [],
   );

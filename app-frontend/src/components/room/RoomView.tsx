@@ -20,6 +20,7 @@ import { Button } from "@/components/motion/button/base";
 import { Loader } from "@/components/motion/loader";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { PersonPill } from "@/components/ui/Person";
+import { DoneChip } from "@/components/ui/DoneChip";
 import type { RoomTicket } from "@/lib/api";
 import type { ShareResult } from "@/lib/share";
 import { useInvite } from "@/components/app/Invite";
@@ -314,48 +315,15 @@ function RoomEnded({ reason, leaveHref, onRetry }: { reason: RoomEnd; leaveHref:
  */
 function InviteChip({ copied, onClick }: { copied: boolean; onClick: () => void }) {
   const t = useTranslations("room");
-  const reduce = useReducedMotion();
   return (
-    <motion.button
-      type="button"
+    <DoneChip
+      done={copied}
+      icon={<UserPlus strokeWidth={2.25} />}
+      label={t("invite")}
+      doneLabel={t("linkCopied")}
       onClick={onClick}
-      layout={!reduce}
-      whileTap={reduce ? undefined : { scale: 0.96 }}
-      transition={{ type: "spring", stiffness: 520, damping: 34 }}
-      className="pointer-events-auto flex h-10 shrink-0 cursor-pointer items-center gap-2 overflow-hidden rounded-full border border-border bg-card/90 ps-1.5 pe-3.5 text-[13px] font-medium text-foreground shadow-float backdrop-blur-md transition-colors hover:bg-card"
-    >
-      <motion.span
-        layout={!reduce ? "position" : false}
-        className={cn(
-          "flex size-7 items-center justify-center rounded-full transition-colors duration-200",
-          copied ? "bg-ok text-white" : "bg-foreground text-background",
-        )}
-      >
-        <AnimatePresence mode="popLayout" initial={false}>
-          <motion.span
-            key={copied ? "done" : "invite"}
-            initial={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.5, rotate: -30 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.5 }}
-            transition={{ type: "spring", stiffness: 600, damping: 30 }}
-            className="flex"
-          >
-            {copied ? <Check className="size-3.5" strokeWidth={2.75} /> : <UserPlus className="size-3.5" strokeWidth={2.25} />}
-          </motion.span>
-        </AnimatePresence>
-      </motion.span>
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.span
-          key={copied ? "done" : "invite"}
-          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={reduce ? { opacity: 0 } : { opacity: 0, y: -8 }}
-          transition={{ duration: 0.18, ease: EASE_OUT }}
-          className="hidden whitespace-nowrap sm:inline"
-        >
-          {copied ? t("linkCopied") : t("invite")}
-        </motion.span>
-      </AnimatePresence>
-    </motion.button>
+      className="pointer-events-auto bg-card/90 shadow-float backdrop-blur-md hover:bg-card"
+      labelClassName="hidden sm:inline"
+    />
   );
 }

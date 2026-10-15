@@ -138,8 +138,10 @@ export function WalkIn({
           )}
         </div>
 
-        {onCharacterStep && !isLoading && (
-          <Turnstile controller={turnstile} action="guest" className="flex justify-center mt-4" />
+        {/* From the first step, so the check runs while a name is typed. It's
+            invisible unless it needs a click, but its box is always there: no gap for it on the name step. */}
+        {!isLoading && (
+          <Turnstile controller={turnstile} action="guest" className={onCharacterStep ? "mt-4 flex justify-center" : "flex justify-center"} />
         )}
 
         {error && (

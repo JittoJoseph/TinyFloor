@@ -66,13 +66,13 @@
     "relatedTitle": "Verder <em>ontdekken.</em>",
     "pages": {
       "gather": {
-        "label": "Gather-alternatief",
+        "label": "Alternatieven voor Gather",
         "meta": {
-          "title": "Gratis Gather Town-alternatief in je browser",
-          "description": "Op zoek naar een gratis Gather Town-alternatief? TinyFloor is een virtueel pixel-art kantoor met videogesprekken op basis van nabijheid."
+          "title": "De 7 beste alternatieven voor Gather in 2026, met prijzen voor je team",
+          "description": "Gather stopte met het gratis abonnement en rekent per lid. Zeven alternatieven voor Gather vergeleken op wat een team van 8 betaalt, gratis abonnementen, apps en waar elk goed in is, met TinyFloor erbij."
         },
-        "title": "Een gratis <em>Gather-alternatief.</em>",
-        "subtitle": "Gather heeft het gratis abonnement geschrapt en rekent nu per lid. TinyFloor houdt hetzelfde idee aan, een kantoor waar je rondloopt en praat, gratis voor maximaal 3 mensen en daarna één prijs voor het hele kantoor.",
+        "title": "De beste <em>alternatieven voor Gather</em> in 2026.",
+        "subtitle": "Gather stopte in september 2025 met het gratis abonnement en rekent nu voor elk lid. Hier zijn zeven alternatieven, vergeleken op wat een echt team betaalt, wat gratis is en waar elk het best in is. Wij maken TinyFloor, dus dat staat bovenaan; al het andere komt van de pagina's van elk product.",
         "points": [
           {
             "title": "Geen proefperiode die afloopt",
@@ -95,20 +95,28 @@
         },
         "faq": [
           {
-            "q": "Is Gather nog gratis?",
-            "a": "Nee. Gather heeft geen permanent gratis abonnement meer. Er is een proefperiode van 30 dagen, daarna begint het Essential-abonnement bij $ 12 per lid per maand. TinyFloor is gratis voor maximaal 3 mensen en kost $29 per maand voor het hele team."
+            "q": "Wat is het beste gratis alternatief voor Gather?",
+            "a": "Voor een team tot 10 past het gratis abonnement van SoWork de meeste mensen, met vergaderingen van maximaal 30 minuten; dat van WorkAdventure past 10 mensen die tegelijk online zijn. TinyFloor is gratis voor maximaal 3, met alle functies, en daarna $ 29 per maand voor het hele team."
           },
           {
-            "q": "Wat heeft Gather dat TinyFloor niet heeft?",
-            "a": "Gather voegt AI-vergadernotities en een aanpasbaar kantoor toe. TinyFloor richt zich op de kern: rondlopen, gesprekken op basis van nabijheid, scherm delen, een vergaderruimte, chat, een whiteboard en muziek in de ruimte."
+            "q": "Wat is het goedkoopste alternatief voor Gather voor een team van 10?",
+            "a": "TinyFloor, voor $ 29 per maand voor het hele team. Het Basic-abonnement van SoWork kost $ 54 per maand bij jaarbetaling voor 10 leden, Gather $ 120 bij jaarbetaling."
           },
           {
-            "q": "Kan ik mijn team van Gather naar TinyFloor verhuizen?",
-            "a": "Ja. Maak een kantoor, nodig je team uit met één link en iedereen loopt binnen. Er zijn geen gegevens te migreren en niets te installeren."
+            "q": "Is er een alternatief voor Gather dat in de browser werkt?",
+            "a": "Ja. TinyFloor, Kumospace en WorkAdventure werken in de browser; Teamflow en Roam zijn desktop-apps."
           },
           {
-            "q": "Hoeveel mensen passen er in een TinyFloor-kantoor?",
-            "a": "Tot 3 mensen op Free en een klein team tot 15 op Pro. Je kunt zoveel kantoren maken als je nodig hebt."
+            "q": "Heeft Gather nog een gratis abonnement?",
+            "a": "Nee. Gather stopte op 15 september 2025 met het gratis abonnement. Na een proefperiode van 30 dagen kost het $ 15 per lid per maand, of $ 12 bij jaarbetaling."
+          },
+          {
+            "q": "Kan ik mijn Gather-kantoor naar een andere tool meenemen?",
+            "a": "TinyFloor kan geen Gather-plattegrond importeren: je begint met een kant-en-klaar kantoor en nodigt iedereen uit met één link, dat duurt een paar minuten. Vraag het bij elke andere tool na voordat je een overstap plant."
+          },
+          {
+            "q": "Lijkt TinyFloor op Gather?",
+            "a": "Ja, in wat er dagelijks toe doet: een kantoor in pixel art waar je naar iemand toe loopt om te praten en een kamer binnenstapt om te vergaderen. Je kunt het kantoor niet zelf ontwerpen, en er zijn geen opnames of transcripties."
           }
         ]
       },
@@ -297,7 +305,7 @@
       "virtualOffice": {
         "label": "Virtueel kantoor",
         "meta": {
-          "title": "Virtueel kantoor voor remote teams",
+          "title": "Virtueel kantoor voor remote teams: wat het is en wat het kost",
           "description": "Een virtueel kantoor in je browser. Zie wie er is, loop erheen voor een videogesprek op nabijheid en houd één ruimte open voor je remote team."
         },
         "title": "Een <em>virtueel kantoor</em> voor remote teams.",

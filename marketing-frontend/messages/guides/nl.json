@@ -917,36 +917,39 @@
     ]
   },
   "gatherPricing": {
-    "label": "Prijzen van Gather",
+    "label": "Prijs van Gather",
     "meta": {
-      "title": "Prijzen van Gather in 2026: wat een team van 5, 10 of 25 betaalt",
-      "description": "Gather kost $ 12 per lid per maand bij jaarbetaling of $ 15 per maand, zonder gratis abonnement. Wat dat is voor teams van 5, 10, 25 en 50, en wat hetzelfde team elders betaalt."
+      "title": "Prijs van Gather in 2026: wat je team betaalt, gasten inbegrepen",
+      "description": "Gather kost $ 12 per lid per maand bij jaarbetaling of $ 15 per maand, zonder gratis abonnement sinds september 2025. Wat dat betekent voor teams van 4 tot 50, wat gasten en opnames inhouden, en wat hetzelfde team elders betaalt."
     },
     "title": "Wat kost <em>Gather?</em>",
-    "intro": "Sinds september 2025 rekent Gather voor elk lid en heeft het geen gratis abonnement. Hier zie je wat dat voor je team betekent, uitgerekend per teamgrootte, en wat hetzelfde team bij andere virtuele kantoren betaalt. De prijzen komen van Gathers eigen prijs- en helppagina's, gecontroleerd in oktober 2026.",
+    "intro": "Sinds 15 september 2025 rekent Gather voor elk teamlid en is er geen gratis abonnement meer. Deze gids rekent uit wat dat betekent voor de grootte van je team, wat het abonnement wel en niet bevat, wat er veranderde voor teams die Gather al gebruikten, en wat hetzelfde team betaalt bij andere virtuele kantoren. Alle cijfers van Gather komen van de eigen prijspagina en het helpcentrum van Gather, gecontroleerd in oktober 2026; prijzen in Amerikaanse dollars, exclusief belasting.",
     "sections": [
       {
         "title": "De abonnementen van Gather",
         "body": [
-          "Gather heeft één abonnement voor de meeste teams, Essential, en een Custom-abonnement voor grote organisaties."
+          "Gather verkoopt de meeste teams één abonnement, Essential, en grote organisaties een Custom-abonnement. Beide versies van Gather, het nieuwe Gather 2.0 en het origineel, kosten nu hetzelfde per persoon."
         ],
         "items": [
           {
             "title": "Essential",
-            "body": "$ 15 per lid per maand, of $ 12 bij jaarbetaling. Bevat alle functies van Gather: een eigen virtueel kantoor, onbeperkt vergaderen en chatten, koppelingen met Google Calendar, GitHub en Spotify, gasten, en vergaderingen opnemen en transcriberen met een maandelijks aantal uren."
+            "body": "$ 15 per lid per maand, of $ 12 bij jaarbetaling. Alle functies van Gather: een virtueel kantoor dat je zelf inricht, onbeperkt vergaderen en chatten, koppelingen met Google Calendar, GitHub en Spotify, en vergadernotities met AI. Opnames, transcripties en gasten hebben maandelijkse tegoeden, vanaf 20 uur opname, 30 uur transcriptie en 30 gastenuren."
           },
           {
             "title": "Custom",
-            "body": "Prijs via het salesteam van Gather, voor grote teams die begeleide onboarding en enterprisefuncties willen."
+            "body": "Prijs bepaald door het salesteam van Gather. Alles van Essential, plus single sign-on, onboarding op maat, grotere kantoren, hybride opstellingen en regionale prijzen. Moet je inloggen via de identiteitsprovider van je bedrijf, dan is dit het abonnement."
           },
           {
             "title": "Gratis proefperiode",
-            "body": "30 dagen gratis, daarna Essential. Er is geen blijvend gratis abonnement."
+            "body": "30 dagen voor maximaal 50 mensen, zonder creditcard. Daarna heeft het kantoor Essential nodig. Een blijvend gratis abonnement is er niet. Wie later bij het kantoor komt, krijgt eerst een eigen proefperiode van 14 dagen voordat die meetelt."
           }
         ]
       },
       {
         "title": "Wat Gather kost per teamgrootte",
+        "body": [
+          "Gather telt leden: iedereen met een account in je kantoor, of die er die dag nu binnenkomt of niet. Hier het Essential-abonnement voor gangbare teamgroottes."
+        ],
         "table": {
           "head": [
             "Team",
@@ -956,16 +959,40 @@
           ],
           "rows": [
             [
-              "5 mensen",
-              "$ 75",
+              "4 mensen",
               "$ 60",
-              "$ 720"
+              "$ 48",
+              "$ 576"
+            ],
+            [
+              "6 mensen",
+              "$ 90",
+              "$ 72",
+              "$ 864"
+            ],
+            [
+              "8 mensen",
+              "$ 120",
+              "$ 96",
+              "$ 1.152"
             ],
             [
               "10 mensen",
               "$ 150",
               "$ 120",
               "$ 1.440"
+            ],
+            [
+              "12 mensen",
+              "$ 180",
+              "$ 144",
+              "$ 1.728"
+            ],
+            [
+              "15 mensen",
+              "$ 225",
+              "$ 180",
+              "$ 2.160"
             ],
             [
               "25 mensen",
@@ -980,73 +1007,160 @@
               "$ 7.200"
             ]
           ],
-          "note": "Gather rekent voor elk lid, of diegene die dag nu op kantoor komt of niet. Prijzen zonder belasting."
+          "note": "Essential voor $ 15 per lid per maand, of $ 12 bij jaarbetaling (prijspagina van Gather, oktober 2026). Exclusief belasting."
         }
+      },
+      {
+        "title": "Wat er verder meetelt op de rekening",
+        "items": [
+          {
+            "title": "Gasten",
+            "body": "Klanten, sollicitanten en freelancers kunnen als gast binnenkomen; ze betalen niet als lid, maar gebruiken gastenuren. Elk kantoor heeft minstens 30 gastenuren per maand; een kantoor met meer dan 10 leden krijgt 3 uur per lid, dus 60 uur bij 20 leden. Een team dat elke dag klanten ontvangt, kan tekortkomen."
+          },
+          {
+            "title": "Opnames en transcripties",
+            "body": "Inbegrepen, binnen maandelijkse tegoeden die beginnen bij 20 uur opname en 30 uur transcriptie."
+          },
+          {
+            "title": "Iedereen is een plek",
+            "body": "Een parttime freelancer, een manager die eens per week langskomt, iemand op vakantie: ieder is een lid tegen de volle prijs zolang die in het kantoor staat."
+          },
+          {
+            "title": "Het originele Gather telt nog steeds wie er tegelijk is",
+            "body": "Kantoren die op de originele versie blijven, betalen de nieuwe prijs per persoon die tegelijk online is, niet per lid. Overstappen naar Gather 2.0 betekent een nieuw kantoor bouwen in Gather Studio."
+          },
+          {
+            "title": "Kortingen",
+            "body": "Scholen, universiteiten en non-profits kunnen bij de support van Gather een kortingscode vragen. Evenementen op de originele versie kosten $ 3 per persoon per dag, na vijf dagen begrensd op de maandprijs."
+          }
+        ]
       },
       {
         "title": "Wat er in 2025 veranderde",
         "body": [
-          "Op 15 september 2025 bracht Gather Gather 2.0 uit en zette zowel de nieuwe als de oorspronkelijke versie over op prijzen per lid: $ 15 per lid per maand, of $ 12 bij jaarbetaling. Daarvoor betaalden teams voor het aantal mensen dat tegelijk op kantoor was.",
-          "Het gratis abonnement verdween voor beide versies. Teams die al betaalden, konden hun oude prijs vastzetten vóór de overstap. Voor een klein team dat Gather gratis gebruikte, was dit het moment dat het geld ging kosten."
+          "Tot september 2025 konden kleine teams Gather gratis gebruiken, en betalende teams betaalden $ 7 per persoon per maand, of $ 5,95 bij jaarbetaling, voor het aantal mensen dat tegelijk online was.",
+          "Op 15 september 2025 lanceerde Gather Gather 2.0 en zette beide versies op $ 15 per lid per maand, of $ 12 bij jaarbetaling. Het gratis abonnement stopte: kantoren die niet vóór die datum overstapten op een betaald abonnement, werden gesloten.",
+          "Wie al betaalde, kreeg tijd om zich aan te passen. Maandabonnementen hielden hun oude prijs tot eind 2025 en gingen bij de eerste verlenging na 1 januari 2026 naar $ 15. Teams die vóór de wijziging een jaarabonnement vastlegden, hielden $ 5,95 tot september 2026; veel van hen krijgen de nieuwe prijs dus bij de verlenging van dit jaar."
+        ]
+      },
+      {
+        "title": "Rekenvoorbeelden",
+        "items": [
+          {
+            "title": "Een team van 6 dat het gratis abonnement gebruikte",
+            "detail": "Van $ 0 naar $ 864 per jaar",
+            "body": "Zes mensen die Gather gratis gebruikten, betalen nu $ 72 per maand bij een jaarabonnement ($ 864 per jaar), of $ 90 per maand bij maandelijkse betaling."
+          },
+          {
+            "title": "Een team van 8 dat de oude jaarprijs had vastgelegd",
+            "detail": "Van $ 571 naar $ 1.152 per jaar",
+            "body": "Acht mensen voor $ 5,95 per maand betaalden zo'n $ 571 per jaar. Bij de verlenging vanaf september 2026 betaalt hetzelfde team $ 12 per persoon per maand, $ 1.152 per jaar: ongeveer het dubbele."
+          },
+          {
+            "title": "Een team van 12 dat klanten ontvangt",
+            "detail": "$ 144 per maand, 36 gastenuren",
+            "body": "Twaalf leden met een jaarabonnement betalen $ 144 per maand en hebben 36 gastenuren per maand, zo'n anderhalf uur per werkdag. Een uur per dag met klanten past; meerdere klantgesprekken per dag niet."
+          }
         ]
       },
       {
         "title": "Hetzelfde team elders",
         "body": [
-          "Dit betalen dezelfde teams per maand bij andere virtuele kantoren, op het goedkoopste abonnement dat ze plek biedt."
+          "Wat dezelfde teams per maand betalen bij andere virtuele kantoren, op het goedkoopste passende abonnement."
         ],
         "table": {
           "head": [
             "Team",
-            "Gather, jaarlijks",
+            "Gather, jaarlijks betaald",
             "TinyFloor",
-            "SoWork Basic, jaarlijks",
+            "SoWork Basic, jaarlijks betaald",
             "Kumospace Business"
           ],
           "rows": [
             [
-              "5 mensen",
-              "$ 60",
-              "$29",
-              "$ 27",
+              "4 mensen",
+              "$ 48",
+              "$ 29",
+              "$ 21,60",
               "Gratis (tot 5 leden)"
             ],
             [
-              "10 mensen",
-              "$ 120",
-              "$29",
-              "$ 54",
-              "$ 160"
+              "8 mensen",
+              "$ 96",
+              "$ 29",
+              "$ 43,20",
+              "$ 128"
+            ],
+            [
+              "12 mensen",
+              "$ 144",
+              "$ 29",
+              "$ 64,80",
+              "$ 192"
             ]
           ],
-          "note": "Van de prijspagina van elk product in oktober 2026, zonder belasting. Het gratis abonnement van SoWork dekt ook tot 10 leden, met vergaderingen van maximaal 30 minuten, en dat van WorkAdventure tot 10 mensen tegelijk."
+          "note": "Van de prijspagina van elk product in oktober 2026, exclusief belasting. Het gratis abonnement van SoWork dekt tot 10 leden met vergaderingen van maximaal 30 minuten; dat van WorkAdventure tot 10 mensen tegelijk. TinyFloor is gratis voor maximaal 3 mensen."
         }
       },
       {
-        "title": "Wanneer Gather het waard is",
+        "title": "Wanneer Gather de moeite waard is",
         "items": [
           {
             "title": "Je wilt je kantoor zelf ontwerpen",
-            "body": "Met Gather bouw je verdiepingen, kamers en objecten. De meeste alternatieven geven je een kant-en-klaar kantoor."
+            "body": "In Gather richt je verdiepingen, kamers en meer dan 200 objecten in. De meeste alternatieven geven je een kant-en-klaar kantoor."
           },
           {
             "title": "Je hebt opnames en transcripties nodig",
-            "body": "Essential bevat ze, met een aantal uren per maand."
+            "body": "Essential bevat ze, met maandelijkse urentegoeden."
           },
           {
             "title": "Je dag draait om Google Calendar en GitHub",
-            "body": "De koppelingen van Gather tonen je status en activiteit op kantoor."
+            "body": "De koppelingen van Gather tonen je status en waar je aan werkt in het kantoor."
+          },
+          {
+            "title": "Je hebt single sign-on nodig",
+            "body": "Het Custom-abonnement van Gather heeft het; veel kleinere producten niet."
           },
           {
             "title": "Wanneer niet",
-            "body": "Als je team vooral wil zien wie er is, wil praten en vergaderen, betaal je voor functies die je niet gebruikt, elke maand, voor elke persoon."
+            "body": "Als je team vooral wil zien wie er is, wil praten en wil vergaderen, betaal je voor functies die je niet gebruikt, elke maand, voor elke persoon."
           }
+        ]
+      },
+      {
+        "title": "Voor je verlengt",
+        "body": [
+          "Wordt je jaarabonnement verlengd tegen de nieuwe prijs? Vier vragen laten zien wat je echt nodig hebt."
+        ],
+        "items": [
+          {
+            "title": "Hoeveel mensen komen er op een gewone dag binnen?",
+            "body": "Gather rekent voor elk lid. Opent de helft van het team het kantoor bijna nooit, dan betaal je toch de volle prijs voor ze."
+          },
+          {
+            "title": "Gebruiken jullie opnames en transcripties?",
+            "body": "Die zijn een groot deel van wat Essential toevoegt. Lopen jullie vergaderingen al via Zoom of Google Meet met eigen opnames, dan betaal je misschien dubbel."
+          },
+          {
+            "title": "Hoeveel gastenuren gebruiken jullie?",
+            "body": "Vergelijk met 30 per maand, of 3 per lid boven de 10. Veel klantwerk kan daarboven uitkomen."
+          },
+          {
+            "title": "Passen jullie het kantoor nog aan?",
+            "body": "Het ontwerpen van het kantoor is de grootste kracht van Gather. Is jullie plattegrond al maanden niet veranderd, dan doet een kant-en-klaar kantoor hetzelfde werk."
+          }
+        ]
+      },
+      {
+        "title": "Hoe we het controleerden",
+        "body": [
+          "De prijzen, tegoeden en abonnementsdetails van Gather komen van gather.town/pricing en het helpcentrumartikel \"Understanding Gather's pricing changes (2025)\" van Gather, gelezen in oktober 2026. De prijzen van de andere producten komen van hun eigen prijspagina's, in dezelfde maand. Als de pagina van een product iets niet vermeldde, lieten we het weg in plaats van te gokken. Prijzen veranderen: kijk op de pagina van de aanbieder voordat je koopt."
         ]
       }
     ],
     "fit": {
       "title": "Waar TinyFloor past",
-      "body": "TinyFloor houdt de kern van wat Gather doet: een kantoor waar je rondloopt en praat door naar iemand toe te lopen, met een vergaderruimte, chat en scherm delen. Het kost $29 per maand voor het hele team, één prijs voor het hele kantoor, en is gratis voor maximaal 3. Het heeft geen opnames, transcriptie of kantooreditor; als je daarop vertrouwt, past Gather beter."
+      "body": "TinyFloor houdt de kern van wat Gather doet: een kantoor waar je rondloopt en praat door naar iemand toe te lopen, met een vergaderruimte, chat en schermdelen. Het kost $ 29 per maand voor het hele team, één prijs hoeveel mensen je ook uitnodigt, en is gratis voor maximaal 3. Het heeft geen opnames, transcriptie, kantooreditor of single sign-on; ben je daarvan afhankelijk, dan past Gather beter."
     },
     "faq": [
       {
@@ -1055,15 +1169,31 @@
       },
       {
         "q": "Heeft Gather een gratis abonnement?",
-        "a": "Nee. Gather stopte in september 2025 met het gratis abonnement. In plaats daarvan is er een gratis proefperiode van 30 dagen."
+        "a": "Nee. Gather stopte op 15 september 2025 met het gratis abonnement. In plaats daarvan is er een gratis proefperiode van 30 dagen voor maximaal 50 mensen."
       },
       {
         "q": "Wat kost Gather voor 10 mensen?",
         "a": "$ 150 per maand bij maandelijkse betaling, of $ 120 per maand bij jaarbetaling ($ 1.440 per jaar)."
       },
       {
+        "q": "Rekent Gather voor gasten?",
+        "a": "Niet als leden. Elk kantoor heeft minstens 30 gastenuren per maand, en kantoren met meer dan 10 leden krijgen 3 gastenuren per lid."
+      },
+      {
+        "q": "We hadden de oude prijs van Gather vastgelegd. En nu?",
+        "a": "Jaarabonnementen die vóór 15 september 2025 waren vastgelegd, hielden $ 5,95 per persoon per maand tot september 2026; bij de verlenging gaan ze naar $ 12 bij jaarbetaling of $ 15 per maand."
+      },
+      {
+        "q": "Is het originele Gather goedkoper dan Gather 2.0?",
+        "a": "Nee, beide kosten $ 15 per persoon per maand, of $ 12 bij jaarbetaling. De originele versie rekent per persoon die tegelijk online is, Gather 2.0 per lid."
+      },
+      {
+        "q": "Geeft Gather korting?",
+        "a": "Scholen, universiteiten en non-profits kunnen bij de support van Gather een kortingscode vragen. Jaarbetaling is 20% goedkoper dan maandbetaling."
+      },
+      {
         "q": "Wat is een goedkoper alternatief voor Gather?",
-        "a": "TinyFloor kost $29 per maand voor het hele team en is gratis voor maximaal 3. Het Basic-abonnement van SoWork kost $5,40 per lid per maand bij jaarlijkse betaling, en het gratis abonnement dekt 10 leden met meetings van 30 minuten."
+        "a": "TinyFloor kost $ 29 per maand voor het hele team en is gratis voor maximaal 3. Het Basic-abonnement van SoWork kost $ 5,40 per lid per maand bij jaarbetaling, en het gratis abonnement dekt 10 leden met vergaderingen van 30 minuten."
       }
     ]
   }

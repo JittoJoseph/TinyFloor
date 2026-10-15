@@ -66,13 +66,13 @@
     "relatedTitle": "Tutustu <em>lisää.</em>",
     "pages": {
       "gather": {
-        "label": "Gather-vaihtoehto",
+        "label": "Gather-vaihtoehdot",
         "meta": {
-          "title": "Ilmainen Gather Town -vaihtoehto selaimessa",
-          "description": "Etsitkö ilmaista Gather Town -vaihtoehtoa? TinyFloor on pikselitaiteinen virtuaalitoimisto, jossa videopuhelu alkaa lähellä toista."
+          "title": "7 parasta vaihtoehtoa Gatherille vuonna 2026, hinnat tiimillesi",
+          "description": "Gather lopetti ilmaisversion ja laskuttaa jokaisesta jäsenestä. Seitsemän vaihtoehtoa Gatherille vertailtuna sen mukaan, mitä 8 hengen tiimi maksaa, ilmaisversiot, sovellukset ja missä kukin on paras, TinyFloor mukana."
         },
-        "title": "Ilmainen <em>Gather-vaihtoehto.</em>",
-        "subtitle": "Gather lopetti ilmaisen paketin ja veloittaa nyt jäsentä kohden. TinyFloor säilyttää saman idean, toimiston jossa liikutaan ja jutellaan: ilmainen enintään 3 hengelle ja sen jälkeen yksi hinta koko toimistolle.",
+        "title": "Parhaat <em>vaihtoehdot Gatherille</em> vuonna 2026.",
+        "subtitle": "Gather lopetti ilmaisversion syyskuussa 2025 ja laskuttaa nyt jokaisesta jäsenestä. Tässä on seitsemän vaihtoehtoa vertailtuna sen mukaan, mitä oikea tiimi maksaa, mikä on ilmaista ja missä kukin on paras. Me teemme TinyFlooria, joten se on ensimmäisenä; kaikki muu on peräisin kunkin tuotteen omilta sivuilta.",
         "points": [
           {
             "title": "Ei päättyvää kokeilujaksoa",
@@ -95,20 +95,28 @@
         },
         "faq": [
           {
-            "q": "Onko Gather yhä ilmainen?",
-            "a": "Ei. Gatherilla ei ole enää pysyvää ilmaista pakettia. Tarjolla on 30 päivän kokeilu, jonka jälkeen Essential-paketti maksaa alkaen 12 $ jäseneltä kuukaudessa. TinyFloor on ilmainen enintään 3 hengelle ja maksaa $29 kuukaudessa koko tiimille."
+            "q": "Mikä on paras ilmainen vaihtoehto Gatherille?",
+            "a": "Enintään 10 hengen tiimille SoWorkin ilmaisversioon mahtuu eniten ihmisiä, kokoukset enintään 30 minuuttia; WorkAdventuren ilmaisversioon mahtuu 10 samaan aikaan paikalla olevaa. TinyFloor on ilmainen enintään 3 hengelle kaikilla ominaisuuksilla, ja sen jälkeen 29 $ kuukaudessa koko tiimiltä."
           },
           {
-            "q": "Mitä Gatherissa on, mitä TinyFloorissä ei ole?",
-            "a": "Gather tarjoaa lisäksi tekoälyn kokousmuistiinpanot ja toimiston muokkauksen. TinyFloor keskittyy olennaiseen: liikkumiseen, lähipuheluihin, näytön jakamiseen, neuvotteluhuoneeseen, chattiin, valkotauluun ja huoneen musiikkiin."
+            "q": "Mikä on halvin vaihtoehto Gatherille 10 hengen tiimille?",
+            "a": "TinyFloor, 29 $ kuukaudessa koko tiimiltä. SoWorkin Basic-tilaus maksaa vuosimaksulla 54 $ kuukaudessa 10 jäseneltä, Gather 120 $ vuosimaksulla."
           },
           {
-            "q": "Voinko siirtää tiimini Gatherista TinyFlooriin?",
-            "a": "Kyllä. Tee toimisto, kutsu tiimisi yhdellä linkillä, ja kaikki kävelevät sisään. Siirrettävää dataa tai asennettavaa ei ole."
+            "q": "Onko olemassa selaimessa toimivaa vaihtoehtoa Gatherille?",
+            "a": "On. TinyFloor, Kumospace ja WorkAdventure toimivat selaimessa; Teamflow ja Roam ovat tietokonesovelluksia."
           },
           {
-            "q": "Montako henkeä TinyFloor-toimistoon mahtuu?",
-            "a": "Enintään 3 henkeä Freessä ja pieni, enintään 15 hengen tiimi Prossa. Voit tehdä niin monta toimistoa kuin tarvitset."
+            "q": "Onko Gatherilla vielä ilmaisversiota?",
+            "a": "Ei. Gather lopetti ilmaisversion 15. syyskuuta 2025. 30 päivän kokeilun jälkeen se maksaa 15 $ jäsentä kohden kuukaudessa, tai 12 $ vuosimaksulla."
+          },
+          {
+            "q": "Voinko siirtää Gather-toimistoni toiseen työkaluun?",
+            "a": "TinyFloor ei tuo Gather-karttoja: aloitat valmiista toimistosta ja kutsut kaikki yhdellä linkillä, mikä vie muutaman minuutin. Tarkista asia jokaiselta muulta työkalulta ennen kuin suunnittelet siirtoa."
+          },
+          {
+            "q": "Muistuttaako TinyFloor Gatheria?",
+            "a": "Kyllä, siinä mikä on tärkeää joka päivä: pikselitaidetoimisto, jossa kävelet jonkun luo juttelemaan ja astut huoneeseen kokoukseen. Toimistoa ei voi suunnitella itse, eikä tallenteita tai litterointeja ole."
           }
         ]
       },
@@ -297,7 +305,7 @@
       "virtualOffice": {
         "label": "Virtuaalitoimisto",
         "meta": {
-          "title": "Virtuaalitoimisto etätiimeille",
+          "title": "Virtuaalitoimisto etätiimeille: mikä se on ja mitä se maksaa",
           "description": "Virtuaalitoimisto selaimessa. Näe, kuka on paikalla, kävele juttelemaan läheisyyteen perustuvalla videopuhelulla ja pidä yksi huone auki etätiimillesi."
         },
         "title": "<em>Virtuaalitoimisto</em> etätiimeille.",

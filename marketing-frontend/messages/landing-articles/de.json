@@ -139,5 +139,333 @@
         "Preise, kostenlose Tarife und Grenzen stammen von den Preis- und Hilfeseiten der jeweiligen Produkte, gelesen im Oktober 2026, in US-Dollar oder Euro, wie jedes sie angibt, ohne Steuern. Wo eine Produktseite etwas nicht sagte, haben wir es weggelassen, statt zu raten. Wir machen TinyFloor, deshalb steht es zuerst, und wir sagen klar, was es nicht kann. Preise ändern sich: Prüf die Seite des Anbieters, bevor du kaufst."
       ]
     }
+  ],
+  "virtualOffice": [
+    {
+      "title": "Was ein virtuelles Büro ist und was nicht",
+      "body": [
+        "„Virtuelles Büro“ meint zwei verschiedene Dinge. Das eine ist eine Geschäftsadresse: ein Dienst, der einer Firma eine Postanschrift und manchmal eine Telefonnummer gibt, ohne Schreibtisch. Das andere, und darum geht es auf dieser Seite, ist ein Online-Büro, in dem ein Remote-Team tagsüber zusammenarbeitet.",
+        "Diese zweite Art ist ein gemeinsamer Raum, der offen bleibt, solange gearbeitet wird. Statt eines Rasters aus Gesichtern, das mit dem Meeting endet, hat jede Person einen Platz im Büro, sieht, wer sonst da ist, und beginnt ein Gespräch wie in einem Gebäude: indem sie zu jemandem hinübergeht."
+      ]
+    },
+    {
+      "title": "Was du darin machst",
+      "items": [
+        {
+          "title": "Sehen, wer da ist",
+          "body": "Alle erscheinen im Büro, mit einem Status. So weißt du, wer am Schreibtisch sitzt, wer beschäftigt ist und wer in einem Meeting steckt, bevor du störst."
+        },
+        {
+          "title": "Reden ohne Termin",
+          "body": "Geh zu jemandem aus dem Team und fang an zu reden. Eine Frage von zwei Minuten bleibt zwei Minuten, statt zu einer Kalendereinladung für morgen zu werden."
+        },
+        {
+          "title": "Sich in einem Raum treffen",
+          "body": "Gruppengespräche finden in einem Besprechungsraum statt, den du betrittst, mit Video und Bildschirmfreigabe, und den du verlässt, wenn ihr fertig seid."
+        },
+        {
+          "title": "Einen eigenen Schreibtisch haben",
+          "body": "Ein Schreibtisch gibt jeder Person einen Platz, sodass das Büro nach einem Team aussieht und nicht nach einer Lobby."
+        },
+        {
+          "title": "Daneben chatten",
+          "body": "Nachrichten und Kanäle liegen neben der Fläche, für alles, was kein Gespräch braucht."
+        }
+      ]
+    },
+    {
+      "title": "Ein virtuelles Büro neben den Tools, die du schon hast",
+      "body": [
+        "Ein virtuelles Büro ersetzt weder Videocalls noch Team-Chat. Es deckt den Teil des Tages ab, für den keins von beiden gemacht ist."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Videocall-App",
+          "Team-Chat",
+          "Virtuelles Büro"
+        ],
+        "rows": [
+          [
+            "Am besten für",
+            "Geplante Meetings",
+            "Schriftliche Updates und Threads",
+            "Zusammen sein, während man arbeitet"
+          ],
+          [
+            "Ein Gespräch beginnt, wenn",
+            "Ein Meeting startet",
+            "Jemand antwortet",
+            "Du zu jemandem hinübergehst"
+          ],
+          [
+            "Zeigt, wer da ist",
+            "Nur, wer dem Call beigetreten ist",
+            "Online oder abwesend",
+            "Alle, wo sie sind und was sie gerade tun"
+          ],
+          [
+            "Den ganzen Tag offen",
+            "Nein, es endet mit dem Meeting",
+            "Ja, als Nachrichten",
+            "Ja, als Ort"
+          ]
+        ],
+        "note": "Die meisten Teams behalten alle drei: ein virtuelles Büro für den Tag, Chat für das, was schriftlich festgehalten werden soll, und einen Videocall für Meetings mit Leuten außerhalb des Teams."
+      }
+    },
+    {
+      "title": "Wer eins nutzt",
+      "items": [
+        {
+          "title": "Kleine Remote-Teams",
+          "body": "Vier bis fünfzehn Leute, die kein Gebäude teilen und vermissen, sich einfach umdrehen und fragen zu können."
+        },
+        {
+          "title": "Startups",
+          "body": "Frühe Teams, die schnell entscheiden und nicht einen Tag auf das nächste Meeting warten können."
+        },
+        {
+          "title": "Agenturen und Studios",
+          "body": "Leute, die den ganzen Tag zwischen Kundenprojekten wechseln und einander schnell finden müssen."
+        },
+        {
+          "title": "Entwicklungs- und Designteams",
+          "body": "Pairing, Reviews und Arbeit auf dem Bildschirm zeigen, ohne dafür einen Call zu buchen."
+        },
+        {
+          "title": "Teams beim Onboarding",
+          "body": "Neue Leute sehen, wer da ist, und fragen einfach, statt zu raten, wen sie gerade anschreiben können."
+        }
+      ]
+    },
+    {
+      "title": "Was eins kostet",
+      "body": [
+        "Was ein Team von 8 bei bekannten virtuellen Büros im Monat zahlt, im günstigsten passenden Tarif."
+      ],
+      "table": {
+        "head": [
+          "Produkt",
+          "Ein Team von 8, im Monat",
+          "Wie abgerechnet wird"
+        ],
+        "rows": [
+          [
+            "TinyFloor",
+            "29 $",
+            "Ein Preis für das ganze Team; kostenlos für bis zu 3"
+          ],
+          [
+            "SoWork Basic",
+            "43,20 $ jährlich abgerechnet",
+            "Pro Mitglied; kostenlos für bis zu 10 mit Meetings bis 30 Minuten"
+          ],
+          [
+            "Gather",
+            "96 $ jährlich abgerechnet",
+            "Pro Mitglied; kein kostenloser Tarif"
+          ],
+          [
+            "Teamflow",
+            "120 $ jährlich abgerechnet",
+            "Pro Person; kostenlos für bis zu 5"
+          ],
+          [
+            "Kumospace Business",
+            "128 $",
+            "Pro Nutzer; kostenlos für bis zu 5 Mitglieder"
+          ]
+        ],
+        "note": "Von der Preisseite jedes Produkts im Oktober 2026, ohne Steuern."
+      }
+    },
+    {
+      "title": "In einem Tag eingerichtet",
+      "items": [
+        {
+          "title": "Das Büro anlegen",
+          "detail": "Zwei Minuten",
+          "body": "Benenne es nach dem Team. Es gibt nichts zu gestalten: Fläche, Schreibtische und Besprechungsraum sind fertig."
+        },
+        {
+          "title": "Alle mit einem Link einladen",
+          "detail": "Dort posten, wo das Team schon redet",
+          "body": "Das Team meldet sich mit Google oder E-Mail an und kommt herein. Keine Installation, auf dem Laptop oder Handy."
+        },
+        {
+          "title": "Alle nehmen sich einen Schreibtisch",
+          "detail": "Ein eigener Platz",
+          "body": "Sobald alle irgendwo sitzen, wirkt das Büro wie ein Team, und man findet sich leicht."
+        },
+        {
+          "title": "Das nächste Standup im Besprechungsraum abhalten",
+          "detail": "Die erste Gewohnheit",
+          "body": "Ein tägliches Meeting ins Büro zu verlegen, bringt die Leute am nächsten Tag zurück."
+        },
+        {
+          "title": "Eine Woche offen lassen",
+          "detail": "Dann entscheiden",
+          "body": "Es beweist sich in kleinen Momenten: eine schnelle Frage, in einer Minute beantwortet, ein Gespräch, das du mitbekommst und dazukommst."
+        }
+      ]
+    },
+    {
+      "title": "Was ein Team dabeibleiben lässt",
+      "items": [
+        {
+          "title": "In einem angehefteten Tab lassen",
+          "body": "Das Büro funktioniert, wenn es da ist, wo du bist, und nicht noch eine Sache zum Öffnen ist."
+        },
+        {
+          "title": "Vorbeischauen, Kamera optional",
+          "body": "Nur Ton ist in Ordnung; Video ist da, wenn es hilft. Niemand soll sich beobachtet fühlen."
+        },
+        {
+          "title": "Nie zur Überwachung nutzen",
+          "body": "Ein virtuelles Büro ist ein Ort, um einander zu finden, keine Stempeluhr. Teams, die damit Leute kontrollieren, hören auf, es zu nutzen."
+        },
+        {
+          "title": "Auch dort Meetings machen",
+          "body": "Wenn Standup und schnelle Fragen im Büro stattfinden, kommen die Leute von selbst wieder."
+        }
+      ]
+    }
+  ],
+  "discord": [
+    {
+      "title": "Warum Teams Discord als Büro nutzen",
+      "body": [
+        "Viele kleine Teams, vor allem Entwickler, Studios und Startups, verbringen ihren Arbeitstag in Discord. Sie legen einen Server an, öffnen einen Sprachkanal, und die Leute kommen und gehen, wie in einem gemeinsamen Raum. Es ist kostenlos, der Ton ist gut, Bildschirmfreigabe funktioniert in Sprachkanälen, und wer es schon nutzt, muss nichts Neues lernen.",
+        "Es zeigt, dass es besser funktioniert, einen Klick voneinander entfernt zu sein, als jedes Gespräch zu planen. Die Frage ist, ob eine App für Gaming-Communitys das beste Zuhause dafür ist."
+      ]
+    },
+    {
+      "title": "Wo es für die Arbeit nicht reicht",
+      "items": [
+        {
+          "title": "Es ist privat, nicht das deiner Firma",
+          "body": "Alle kommen mit ihrem eigenen Discord-Konto, also liegt die Arbeit neben Gaming-Servern und Freunden, mit allen Benachrichtigungen an einem Ort."
+        },
+        {
+          "title": "Kanäle statt eines Ortes",
+          "body": "Du siehst, wer in welchem Sprachkanal ist, aber nicht, wer am Schreibtisch sitzt und kurz Zeit hat. Einem Kanal beizutreten ist ein Alles-oder-nichts-Weg, ein Gespräch zu beginnen."
+        },
+        {
+          "title": "Kein klarer Besprechungsraum",
+          "body": "Ein Meeting ist einfach ein weiterer Sprachkanal. Das funktioniert, aber es fühlt sich nicht an, als würdest du einen Raum betreten und danach zurück an deinen Schreibtisch gehen."
+        },
+        {
+          "title": "Für Communitys gebaut",
+          "body": "Rollen, Server und Bots sind für große Gruppen von Fremden gemacht. Ein Team von acht braucht viel weniger davon und mehr von dem, was ein Büro hat."
+        }
+      ]
+    },
+    {
+      "title": "Discord und TinyFloor für ein Arbeitsteam",
+      "table": {
+        "head": [
+          "",
+          "Discord",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Preis",
+            "Kostenlos; Nitro kostet extra pro Person",
+            "Kostenlos für bis zu 3; 29 $ im Monat für das ganze Team"
+          ],
+          [
+            "Konten",
+            "Das eigene Discord-Konto jeder Person",
+            "Ein kostenloses Konto; das Team kommt über den Einladungslink des Büros"
+          ],
+          [
+            "Ein Gespräch beginnen",
+            "Einem Sprachkanal beitreten",
+            "Zu jemandem aus dem Team hinübergehen"
+          ],
+          [
+            "Sehen, wer da ist",
+            "Eine Mitgliederliste und wer in welchem Kanal ist",
+            "Alle auf einer Fläche: Schreibtische, Status und wer im Call ist"
+          ],
+          [
+            "Meetings",
+            "Ein Sprachkanal mit Bildschirmfreigabe",
+            "Ein Besprechungsraum mit Video und Bildschirmfreigabe"
+          ],
+          [
+            "Läuft in",
+            "Browser, Desktop- und Handy-Apps",
+            "Dem Browser, auf Desktop und Handy"
+          ]
+        ],
+        "note": "Angaben zu Discord von seiner eigenen Website, Oktober 2026."
+      }
+    },
+    {
+      "title": "Wenn du bei Discord bleibst, richte es wie ein Büro ein",
+      "items": [
+        {
+          "title": "Sprachkanäle nach Orten benennen",
+          "body": "„Schreibtische“, „Besprechungsraum“ und „Fokus“ sagen allen, was Beitreten bedeutet, besser als „Allgemein 1“ und „Allgemein 2“."
+        },
+        {
+          "title": "Festlegen, was ein Status bedeutet",
+          "body": "Nicht stören heißt konzentriert arbeiten; abwesend heißt nicht am Schreibtisch. Gemeinsame Regeln machen es leicht, einfach vorbeizuschauen."
+        },
+        {
+          "title": "Ein Textkanal pro Projekt",
+          "body": "So bleibt die Arbeit aus dem allgemeinen Kanal heraus und ist später leicht zu finden."
+        },
+        {
+          "title": "Einen eigenen Server für die Arbeit",
+          "body": "Damit sich der Raum des Teams nicht mit den Communitys aller vermischt."
+        }
+      ]
+    },
+    {
+      "title": "Wann Discord besser passt",
+      "items": [
+        {
+          "title": "Dein Team ist schon dort und zufrieden",
+          "body": "Wenn es funktioniert und niemandem etwas fehlt, gibt es keinen Grund zu wechseln."
+        },
+        {
+          "title": "Du betreibst auch eine Community",
+          "body": "Wenn Kunden oder Spieler auf demselben Server sind, ist Discord genau dafür gebaut."
+        },
+        {
+          "title": "Es darf nichts kosten",
+          "body": "Discord ist für beliebig viele Leute kostenlos; TinyFloor ist für 3 kostenlos."
+        }
+      ]
+    },
+    {
+      "title": "Ein Team von Discord umziehen",
+      "items": [
+        {
+          "title": "Ein Büro anlegen",
+          "detail": "Zwei Minuten",
+          "body": "Gib ihm einen Namen, und Fläche, Schreibtische und Besprechungsraum sind fertig."
+        },
+        {
+          "title": "Den Einladungslink in eurem Discord teilen",
+          "detail": "Dort, wo alle schon sind",
+          "body": "Alle melden sich mit Google oder E-Mail an und kommen im Browser herein."
+        },
+        {
+          "title": "Zuerst das tägliche Standup verlegen",
+          "detail": "Eine Gewohnheit nach der anderen",
+          "body": "Haltet es eine Woche lang im Besprechungsraum ab, während alles andere bleibt, wo es ist."
+        },
+        {
+          "title": "Dann entscheiden, was bleibt",
+          "detail": "Kein großer Umstieg",
+          "body": "Viele Teams behalten Discord für ihre Community und nutzen das Büro für den Arbeitstag."
+        }
+      ]
+    }
   ]
 }

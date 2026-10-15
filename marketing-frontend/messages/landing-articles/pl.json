@@ -1,1 +1,471 @@
-{}
+{
+  "gather": [
+    {
+      "title": "Alternatywy dla Gather w skrócie",
+      "body": [
+        "Ile zespół 8 osób płaci miesięcznie w najtańszym pasującym planie, darmowy plan, jeśli jest, i komu każdy produkt pasuje najbardziej. Gather jest w pierwszym wierszu dla porównania."
+      ],
+      "table": {
+        "head": [
+          "Produkt",
+          "Zespół 8 osób, miesięcznie",
+          "Darmowy plan",
+          "Najlepszy dla"
+        ],
+        "rows": [
+          [
+            "Gather",
+            "96 $ rocznie, 120 $ miesięcznie",
+            "Brak, 30 dni próbnych",
+            "Zespołów, które same projektują biuro"
+          ],
+          [
+            "TinyFloor",
+            "29 $ za cały zespół",
+            "Do 3 osób",
+            "Małych zespołów, które chcą jednej ceny"
+          ],
+          [
+            "SoWork",
+            "43,20 $ rocznie",
+            "Do 10 członków, spotkania do 30 minut",
+            "Zespołów z ograniczonym budżetem"
+          ],
+          [
+            "Kumospace",
+            "128 $",
+            "Do 5 członków, 1 piętro",
+            "Zespołów, które chcą aplikacji na komputer i telefon"
+          ],
+          [
+            "WorkAdventure",
+            "Od 64 €",
+            "Do 10 osób jednocześnie",
+            "Zespołów, które chcą mapy open source"
+          ],
+          [
+            "Teamflow",
+            "120 $ rocznie",
+            "Do 5 osób, spotkania do 45 minut",
+            "Zespołów, którym pasuje aplikacja na komputer"
+          ],
+          [
+            "Roam",
+            "Cena za aktywnego członka",
+            "Brak, 14 dni próbnych",
+            "Zespołów, które chcą narzędzi AI razem z biurem"
+          ],
+          [
+            "Discord",
+            "Za darmo",
+            "Tak",
+            "Zespołów, którym wystarczą kanały głosowe"
+          ]
+        ],
+        "note": "Ze strony z cenami każdego produktu w październiku 2026, bez podatku. Ceny za osobę pomnożone przez 8; plan Business w WorkAdventure zaczyna się od 8 € za użytkownika."
+      }
+    },
+    {
+      "title": "Dlaczego zespoły szukają alternatywy dla Gather",
+      "body": [
+        "Gather spopularyzował wirtualne biuro i przez lata mały zespół mógł z niego korzystać za darmo. 15 września 2025 to się skończyło: Gather przeszedł na 15 $ za członka miesięcznie albo 12 $ przy płatności rocznej i zamknął darmowe biura, które nie przeszły na płatny plan. Zespoły, które zablokowały starą cenę roczną 5,95 $, zachowały ją do września 2026, więc wiele z nich trafia na nową cenę przy tegorocznym odnowieniu.",
+        "Cena to nie jedyny powód. Gather 2.0 to nowa platforma, a przejście na nią oznacza budowanie biura od nowa. Wiele zespołów zauważa też, że korzysta tylko z ułamka tego, za co płaci: chcą widzieć, kto jest, rozmawiać bez umawiania się i spotykać. Właśnie według tego oceniamy poniższe alternatywy."
+      ]
+    },
+    {
+      "title": "Alternatywy po kolei",
+      "items": [
+        {
+          "title": "TinyFloor",
+          "detail": "29 $ miesięcznie za cały zespół, za darmo dla maksymalnie 3",
+          "body": "Biuro w stylu pixel art, które otwiera się w karcie przeglądarki, na laptopie albo telefonie. Widzisz, kto siedzi przy biurku, podchodzisz, żeby porozmawiać, i wchodzisz do sali spotkań na wideo i udostępnianie ekranu; jest czat zespołu i własne biurko. Jedna cena obejmuje wszystkich, których zaprosisz. Nie ma edytora biura, nagrań, transkrypcji ani logowania jednokrotnego; zespoły, które tego potrzebują, powinny przyjrzeć się Gather albo Kumospace."
+        },
+        {
+          "title": "SoWork",
+          "detail": "Basic 5,40 $ za członka miesięcznie przy płatności rocznej; za darmo do 10",
+          "body": "Najtańszy plan za osobę na tej liście i najhojniejszy darmowy plan dla zespołu: do 10 członków, ze spotkaniami do 30 minut. Opłata jest za członka, więc rachunek rośnie razem z zespołem."
+        },
+        {
+          "title": "Kumospace",
+          "detail": "Business od 16 $ za użytkownika miesięcznie; za darmo do 5 członków",
+          "body": "Dopracowane wirtualne biuro z aplikacjami na komputer i telefon obok przeglądarki. Darmowy plan mieści 5 członków, 50 gości i jedno piętro. Dla zespołu 8 osób to po miesięcznym planie Gather najdroższa opcja na tej liście."
+        },
+        {
+          "title": "WorkAdventure",
+          "detail": "Business od 8 € za użytkownika miesięcznie; za darmo do 10 jednocześnie",
+          "body": "Kolejne biuro w stylu pixel art, do tego open source, więc techniczny zespół może dostosować mapę. Darmowy plan liczy osoby obecne online jednocześnie, do 10, a nie członków."
+        },
+        {
+          "title": "Teamflow",
+          "detail": "15 $ za osobę miesięcznie przy płatności rocznej; za darmo do 5",
+          "body": "Wirtualne biuro działające jako aplikacja na komputer dla Maca i Windows, wersja mobilna w becie. Darmowy plan mieści 5 osób ze spotkaniami do 45 minut. Przy płatności rocznej kosztuje więcej za osobę niż 12 $ w Gather."
+        },
+        {
+          "title": "Roam",
+          "detail": "Miesięczna cena za aktywnego członka; 14 dni próbnych",
+          "body": "Wirtualne biuro z narzędziami AI, w aplikacji na komputer do pobrania. Pobiera opłatę tylko za aktywnych członków i nie ma darmowego planu."
+        },
+        {
+          "title": "Discord",
+          "detail": "Za darmo",
+          "body": "To nie jest wirtualne biuro, ale wiele małych zespołów i tak używa jego kanałów głosowych w ten sposób: wchodzisz, rozmawiasz, wychodzisz. Jest darmowy i ma dobry dźwięk. Powstał dla społeczności graczy, więc nie ma biura, w którym widać, kto jest, a praca miesza się ze wszystkim innym."
+        }
+      ]
+    },
+    {
+      "title": "Jak wybrać",
+      "items": [
+        {
+          "title": "Policz, kto naprawdę będzie z tego korzystał",
+          "body": "Darmowe plany kończą się na 3–10 osobach, a większość płatnych pobiera opłatę za każdą osobę. Dla zespołu 4–15 osób stała cena albo pasujący darmowy plan często wypada lepiej niż cena za głowę."
+        },
+        {
+          "title": "Przeglądarka czy aplikacja",
+          "body": "Produkty działające tylko w przeglądarce nie wymagają instalacji i od razu działają dla gości i zewnętrznych współpracowników. Aplikacje na komputer potrafią więcej, ale każdy musi je zainstalować."
+        },
+        {
+          "title": "Najpierw spisz to, co niezbędne",
+          "body": "Jeśli potrzebujesz nagrań, transkrypcji, biura projektowanego samodzielnie albo logowania jednokrotnego, zostają Gather, Kumospace i kilka innych, niezależnie od ceny."
+        },
+        {
+          "title": "Wypróbuj w zwykły dzień pracy",
+          "body": "Te narzędzia sprawdzają się w drobnych momentach: szybkie pytanie, spotkanie, które zaczyna się punktualnie. Tydzień prawdziwej pracy powie więcej niż demo."
+        }
+      ]
+    },
+    {
+      "title": "Jak porównywaliśmy",
+      "body": [
+        "Ceny, darmowe plany i limity pochodzą ze stron z cenami i stron pomocy każdego produktu, przeczytanych w październiku 2026, w dolarach albo euro, tak jak podaje każdy z nich, bez podatku. Jeśli strona produktu czegoś nie podawała, pominęliśmy to zamiast zgadywać. TinyFloor robimy my, więc postawiliśmy go na pierwszym miejscu i jasno piszemy, czego nie potrafi. Ceny się zmieniają: przed zakupem sprawdź stronę dostawcy."
+      ]
+    }
+  ],
+  "virtualOffice": [
+    {
+      "title": "Czym jest wirtualne biuro, a czym nie jest",
+      "body": [
+        "„Wirtualne biuro” oznacza dwie różne rzeczy. Pierwsza to adres firmy: usługa, która daje firmie adres korespondencyjny, a czasem numer telefonu, bez biurka. Druga, o której jest ta strona, to biuro online, w którym zespół zdalny pracuje razem w ciągu dnia.",
+        "Ten drugi rodzaj to wspólna przestrzeń, która jest otwarta, dopóki ludzie pracują. Zamiast siatki twarzy, która znika razem z końcem spotkania, każdy ma w biurze swoje miejsce, widzi, kto jeszcze jest, i zaczyna rozmowę tak jak w budynku: podchodząc do kogoś."
+      ]
+    },
+    {
+      "title": "Co w nim robisz",
+      "items": [
+        {
+          "title": "Widzisz, kto jest",
+          "body": "Wszyscy są widoczni w biurze, ze statusem, więc wiesz, kto siedzi przy biurku, kto jest zajęty, a kto jest na spotkaniu, zanim przeszkodzisz."
+        },
+        {
+          "title": "Rozmawiasz bez umawiania się",
+          "body": "Podejdź do kogoś z zespołu i zacznij mówić. Dwuminutowe pytanie zostaje dwuminutowym pytaniem, zamiast stać się zaproszeniem w kalendarzu na jutro."
+        },
+        {
+          "title": "Spotykasz się w sali",
+          "body": "Rozmowy grupowe odbywają się w sali spotkań, do której wchodzisz, z wideo i udostępnianiem ekranu, i z której wychodzisz, gdy skończycie."
+        },
+        {
+          "title": "Masz własne biurko",
+          "body": "Biurko daje każdemu miejsce, dzięki czemu biuro wygląda jak zespół, a nie jak recepcja."
+        },
+        {
+          "title": "Piszesz na czacie obok",
+          "body": "Wiadomości i kanały są obok piętra, na wszystko, co nie wymaga rozmowy."
+        }
+      ]
+    },
+    {
+      "title": "Wirtualne biuro obok narzędzi, które już masz",
+      "body": [
+        "Wirtualne biuro nie zastępuje rozmów wideo ani czatu zespołu. Obejmuje tę część dnia, do której żadne z nich nie zostało stworzone."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Aplikacja do rozmów wideo",
+          "Czat zespołu",
+          "Wirtualne biuro"
+        ],
+        "rows": [
+          [
+            "Najlepsze do",
+            "Zaplanowanych spotkań",
+            "Pisemnych aktualizacji i wątków",
+            "Bycia razem podczas pracy"
+          ],
+          [
+            "Rozmowa zaczyna się, gdy",
+            "Zaczyna się spotkanie",
+            "Ktoś odpowiada",
+            "Podchodzisz do kogoś"
+          ],
+          [
+            "Pokazuje, kto jest",
+            "Tylko tych, którzy dołączyli do rozmowy",
+            "Dostępny lub nieobecny",
+            "Wszystkich, gdzie są i co robią"
+          ],
+          [
+            "Otwarte cały dzień",
+            "Nie, kończy się razem ze spotkaniem",
+            "Tak, jako wiadomości",
+            "Tak, jako miejsce"
+          ]
+        ],
+        "note": "Większość zespołów zostaje przy wszystkich trzech: wirtualne biuro na cały dzień, czat na to, co trzeba zapisać, i rozmowa wideo na spotkania z osobami spoza zespołu."
+      }
+    },
+    {
+      "title": "Kto z niego korzysta",
+      "items": [
+        {
+          "title": "Małe zespoły zdalne",
+          "body": "Od czterech do piętnastu osób, które nie dzielą budynku i brakuje im możliwości odwrócenia się i zapytania."
+        },
+        {
+          "title": "Startupy",
+          "body": "Młode zespoły, które decydują szybko i nie mogą czekać dnia na kolejne spotkanie."
+        },
+        {
+          "title": "Agencje i studia",
+          "body": "Ludzie, którzy cały dzień przechodzą między projektami klientów i muszą szybko się znaleźć."
+        },
+        {
+          "title": "Zespoły programistów i projektantów",
+          "body": "Praca w parach, przeglądy i pokazywanie pracy na ekranie bez umawiania rozmowy."
+        },
+        {
+          "title": "Zespoły wdrażające nową osobę",
+          "body": "Nowa osoba widzi, kto jest, i po prostu pyta, zamiast zgadywać, do kogo może napisać."
+        }
+      ]
+    },
+    {
+      "title": "Ile to kosztuje",
+      "body": [
+        "Ile zespół 8 osób płaci miesięcznie w popularnych wirtualnych biurach, w najtańszym pasującym planie."
+      ],
+      "table": {
+        "head": [
+          "Produkt",
+          "Zespół 8 osób, miesięcznie",
+          "Jak naliczana jest opłata"
+        ],
+        "rows": [
+          [
+            "TinyFloor",
+            "29 $",
+            "Jedna cena za cały zespół; za darmo do 3 osób"
+          ],
+          [
+            "SoWork Basic",
+            "43,20 $ rocznie",
+            "Za członka; za darmo do 10 ze spotkaniami do 30 minut"
+          ],
+          [
+            "Gather",
+            "96 $ rocznie",
+            "Za członka; brak darmowego planu"
+          ],
+          [
+            "Teamflow",
+            "120 $ rocznie",
+            "Za osobę; za darmo do 5"
+          ],
+          [
+            "Kumospace Business",
+            "128 $",
+            "Za użytkownika; za darmo do 5 członków"
+          ]
+        ],
+        "note": "Ze strony z cenami każdego produktu w październiku 2026, bez podatku."
+      }
+    },
+    {
+      "title": "Uruchomienie w jeden dzień",
+      "items": [
+        {
+          "title": "Utwórz biuro",
+          "detail": "Dwie minuty",
+          "body": "Nazwij je tak jak zespół. Nie ma nic do projektowania: piętro, biurka i sala spotkań są gotowe."
+        },
+        {
+          "title": "Zaproś wszystkich jednym linkiem",
+          "detail": "Wklej go tam, gdzie zespół już rozmawia",
+          "body": "Zespół loguje się przez Google lub e-mail i wchodzi. Bez instalacji, na laptopie albo telefonie."
+        },
+        {
+          "title": "Każdy zajmuje biurko",
+          "detail": "Własne miejsce",
+          "body": "Gdy wszyscy gdzieś usiądą, biuro wygląda jak zespół i łatwo się znaleźć."
+        },
+        {
+          "title": "Zróbcie następny standup w sali spotkań",
+          "detail": "Pierwszy nawyk",
+          "body": "Przeniesienie jednego codziennego spotkania do biura sprawia, że ludzie wracają następnego dnia."
+        },
+        {
+          "title": "Zostaw je otwarte na tydzień",
+          "detail": "Potem zdecyduj",
+          "body": "Sprawdza się w drobnych chwilach: szybkie pytanie załatwione w minutę, rozmowa, którą usłyszałeś i do której dołączyłeś."
+        }
+      ]
+    },
+    {
+      "title": "Co sprawia, że zespół zostaje przy nim",
+      "items": [
+        {
+          "title": "Trzymaj je w przypiętej karcie",
+          "body": "Biuro działa, gdy jest tam, gdzie ty, a nie jest kolejną rzeczą do otwarcia."
+        },
+        {
+          "title": "Wpadaj, kamera opcjonalna",
+          "body": "Sam głos wystarczy; wideo jest, gdy pomaga. Nikt nie powinien czuć się obserwowany."
+        },
+        {
+          "title": "Nigdy nie używaj go do kontrolowania ludzi",
+          "body": "Wirtualne biuro to miejsce, w którym się znajdujecie, a nie lista obecności. Zespoły, które używają go do sprawdzania ludzi, przestają z niego korzystać."
+        },
+        {
+          "title": "Spotykajcie się tam też",
+          "body": "Jeśli standup i szybkie pytania odbywają się w biurze, ludzie wracają do niego bez proszenia."
+        }
+      ]
+    }
+  ],
+  "discord": [
+    {
+      "title": "Dlaczego zespoły używają Discorda jako biura",
+      "body": [
+        "Wiele małych zespołów, zwłaszcza programistów, studiów i startupów, spędza dzień pracy na Discordzie. Zakładają serwer, otwierają kanał głosowy, a ludzie wchodzą i wychodzą jak do wspólnego pokoju. Jest za darmo, dźwięk jest dobry, udostępnianie ekranu działa na kanałach głosowych, a kto już go używa, nie musi uczyć się niczego nowego.",
+        "Pokazuje to, że bycie o jedno kliknięcie od siebie działa lepiej niż planowanie każdej rozmowy. Pytanie, czy aplikacja stworzona dla społeczności graczy to najlepsze miejsce na to."
+      ]
+    },
+    {
+      "title": "Gdzie nie wystarcza do pracy",
+      "items": [
+        {
+          "title": "Jest prywatny, nie twojej firmy",
+          "body": "Każdy dołącza z własnym kontem Discord, więc praca sąsiaduje z serwerami do gier i znajomymi, a wszystkie powiadomienia trafiają w jedno miejsce."
+        },
+        {
+          "title": "Kanały zamiast miejsca",
+          "body": "Widzisz, kto jest na którym kanale głosowym, ale nie, kto siedzi przy biurku i ma chwilę. Dołączenie do kanału to sposób na zasadzie wszystko albo nic, żeby zacząć rozmowę."
+        },
+        {
+          "title": "Brak wyraźnej sali spotkań",
+          "body": "Spotkanie to po prostu kolejny kanał głosowy. Działa, ale nie ma poczucia wejścia do sali i powrotu do biurka."
+        },
+        {
+          "title": "Stworzony dla społeczności",
+          "body": "Role, serwery i boty są dla dużych grup obcych ludzi. Zespół ośmiu osób potrzebuje znacznie mniej, a więcej tego, co ma biuro."
+        }
+      ]
+    },
+    {
+      "title": "Discord i TinyFloor dla zespołu w pracy",
+      "table": {
+        "head": [
+          "",
+          "Discord",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Cena",
+            "Za darmo; Nitro płatne osobno za każdą osobę",
+            "Za darmo do 3 osób; 29 $ miesięcznie za cały zespół"
+          ],
+          [
+            "Konta",
+            "Prywatne konto Discord każdej osoby",
+            "Darmowe konto; zespół dołącza przez link z zaproszeniem do biura"
+          ],
+          [
+            "Rozpoczęcie rozmowy",
+            "Dołączenie do kanału głosowego",
+            "Podejście do kogoś z zespołu"
+          ],
+          [
+            "Kto jest obecny",
+            "Lista członków i kto jest na którym kanale",
+            "Wszyscy na jednym piętrze: biurka, statusy i kto jest na rozmowie"
+          ],
+          [
+            "Spotkania",
+            "Kanał głosowy z udostępnianiem ekranu",
+            "Sala spotkań z wideo i udostępnianiem ekranu"
+          ],
+          [
+            "Działa w",
+            "Przeglądarce, aplikacjach na komputer i telefon",
+            "Przeglądarce, na komputerze i telefonie"
+          ]
+        ],
+        "note": "Dane o Discordzie z jego strony, październik 2026."
+      }
+    },
+    {
+      "title": "Jeśli zostajesz na Discordzie, urządź go jak biuro",
+      "items": [
+        {
+          "title": "Nazwij kanały głosowe jak miejsca",
+          "body": "„Biurka”, „Sala spotkań” i „Skupienie” mówią, co oznacza dołączenie, lepiej niż „Ogólny 1” i „Ogólny 2”."
+        },
+        {
+          "title": "Ustalcie, co oznacza status",
+          "body": "Nie przeszkadzać oznacza pełne skupienie; zaraz wracam oznacza brak przy biurku. Wspólne zasady sprawiają, że można swobodnie wpaść."
+        },
+        {
+          "title": "Jeden kanał tekstowy na projekt",
+          "body": "Praca nie trafia na kanał ogólny i łatwo ją potem znaleźć."
+        },
+        {
+          "title": "Osobny serwer do pracy",
+          "body": "Żeby przestrzeń zespołu nie mieszała się ze społecznościami każdego z was."
+        }
+      ]
+    },
+    {
+      "title": "Kiedy Discord pasuje lepiej",
+      "items": [
+        {
+          "title": "Twój zespół już tam jest i jest zadowolony",
+          "body": "Jeśli to działa i nikomu niczego nie brakuje, nie ma powodu się przenosić."
+        },
+        {
+          "title": "Prowadzisz też społeczność",
+          "body": "Jeśli klienci albo gracze są na tym samym serwerze, Discord jest stworzony właśnie do tego."
+        },
+        {
+          "title": "Koszt musi wynosić zero",
+          "body": "Discord jest darmowy dla dowolnej liczby osób; TinyFloor jest darmowy dla 3."
+        }
+      ]
+    },
+    {
+      "title": "Przeniesienie zespołu z Discorda",
+      "items": [
+        {
+          "title": "Utwórz biuro",
+          "detail": "Dwie minuty",
+          "body": "Nadaj mu nazwę, a piętro, biurka i sala spotkań są gotowe."
+        },
+        {
+          "title": "Udostępnij link z zaproszeniem na swoim Discordzie",
+          "detail": "Tam, gdzie wszyscy już są",
+          "body": "Ludzie logują się przez Google lub e-mail i wchodzą z przeglądarki."
+        },
+        {
+          "title": "Najpierw przenieś codzienny standup",
+          "detail": "Jeden nawyk naraz",
+          "body": "Róbcie go przez tydzień w sali spotkań, a wszystko inne niech zostanie, gdzie jest."
+        },
+        {
+          "title": "Potem zdecyduj, co zostaje",
+          "detail": "Bez wielkiej przeprowadzki",
+          "body": "Wiele zespołów zostawia Discorda dla społeczności, a biuro wykorzystuje w dniu pracy."
+        }
+      ]
+    }
+  ]
+}

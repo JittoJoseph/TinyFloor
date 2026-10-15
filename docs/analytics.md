@@ -63,3 +63,18 @@ back after being resolved. Two found from it and fixed on 12 October:
   (facebook/react#11538).
 - **Browsers without WebRTC** (Safari in Lockdown Mode) crashed on joining a
   meeting; they now get a message.
+
+## Where people stop (first read, 15 October)
+
+The "Funnel: where people stop" dashboard follows one person from the site to
+a team that pays. Counted from 12 October, when the team events began:
+
+- **The site to the app is the biggest leak.** Over 30 days, 528 people saw
+  the site and 26 opened the app (5%); since 12 October, 39 and 17.
+- **The demo office's door loses most of its visitors.** 127 reached it in
+  30 days and 37 walked in (29%); since 12 October, 17 and 8. Everyone who
+  walked in reached the floor.
+- **Office floors that never showed** (3 of 12) were seconds-long visits with
+  no other events, more like link previews than a broken floor;
+  `floor_abandoned` now says how long anyone waited.
+- **Invites:** 3 people opened an invite link, 1 joined.

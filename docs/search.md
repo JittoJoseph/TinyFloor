@@ -127,8 +127,8 @@ What's happening outside:
 - **Gather ended its free plan on 15 September 2025**: every office now pays
   $12 a member a month yearly, $15 monthly. A team of 8 pays $96–120 a month
   where it used to pay nothing. Reviewers in Brazil and Europe complain most.
-  In February 2026 Gather's AI team and founders went to Figma; Gather goes on
-  as a small independent company.
+  Yearly plans locked in at the old $5.95 ran until September 2026, so many
+  teams meet the new price at this year's renewal (Gather's help center).
 - **Gather's buyers are small tech teams.** About 74% of its G2 reviewers
   work at 50 people or fewer; Computer Software 26%, IT services 20%,
   Marketing and Advertising 8%, Consulting 5%.

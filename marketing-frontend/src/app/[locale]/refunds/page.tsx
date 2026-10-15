@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { LegalPage } from "@/components/legal/LegalPage";
-import { legalMetadata } from "@/components/legal/legalMetadata";
+import { englishOnlyMetadata } from "@/lib/englishOnlyMetadata";
 import { REFUNDS_UPDATED, refundsSections, refundsSummary } from "@/components/legal/refunds";
 
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata(): Promise<Metadata> {
-  return legalMetadata({
+  return englishOnlyMetadata({
     path: "/refunds",
     title: "Refund Policy",
     description: "How cancelling and refunds work for TinyFloor's paid plans: cancel any time, and a full refund within 14 days of any payment.",

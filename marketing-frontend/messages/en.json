@@ -66,13 +66,13 @@
     "relatedTitle": "Keep <em>exploring.</em>",
     "pages": {
       "gather": {
-        "label": "Gather alternative",
+        "label": "Gather alternatives",
         "meta": {
-          "title": "Free Gather Town Alternative in Your Browser",
-          "description": "Looking for a free Gather Town alternative? TinyFloor is a pixel-art virtual office with proximity video calls. No trial, no per-seat price, nothing to install."
+          "title": "7 Best Gather Alternatives in 2026, With Prices for Your Team",
+          "description": "Gather ended its free plan and charges for every member. Seven Gather alternatives compared on what a team of 8 pays, free plans, apps and what each does best, with TinyFloor among them."
         },
-        "title": "A free <em>Gather alternative.</em>",
-        "subtitle": "Gather dropped its free plan and now charges per member. TinyFloor keeps the same idea, an office you walk around and talk in, free for up to 3 people and one price for the whole office after that.",
+        "title": "The best <em>Gather alternatives</em> in 2026.",
+        "subtitle": "Gather ended its free plan in September 2025 and now charges for every member. Here are seven alternatives, compared on what a real team pays, what's free, and what each one is best at. We make TinyFloor, so it's listed first; everything else comes from each product's own pages.",
         "points": [
           {
             "title": "No trial clock",
@@ -95,20 +95,28 @@
         },
         "faq": [
           {
-            "q": "Is Gather still free?",
-            "a": "No. Gather no longer has a permanent free plan. It offers a 30-day trial, then the Essential plan starts at $12 per member per month. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+            "q": "What is the best free Gather alternative?",
+            "a": "For a team of up to 10, SoWork's free plan fits the most people, with meetings capped at 30 minutes; WorkAdventure's fits 10 people online at once. TinyFloor is free for up to 3 with every feature included, and $29 a month for the whole team after that."
           },
           {
-            "q": "What does Gather have that TinyFloor does not?",
-            "a": "Gather adds AI meeting notes and office customization. TinyFloor focuses on the core: walking around, proximity calls, screen sharing, a meeting room, chat, a whiteboard and room music."
+            "q": "What is the cheapest Gather alternative for a team of 10?",
+            "a": "TinyFloor, at $29 a month for the whole team. SoWork's Basic plan is $54 a month billed yearly for 10 members, and Gather is $120 billed yearly."
           },
           {
-            "q": "Can I move my team from Gather to TinyFloor?",
-            "a": "Yes. Make an office, invite your team with one link, and everyone walks in. There is no data to migrate and nothing to install."
+            "q": "Is there a Gather alternative that runs in the browser?",
+            "a": "Yes. TinyFloor, Kumospace and WorkAdventure run in the browser; Teamflow and Roam are desktop apps."
           },
           {
-            "q": "How many people fit in a TinyFloor office?",
-            "a": "Up to 3 people on Free, and a small team of up to 15 on Pro. You can make as many offices as you need."
+            "q": "Does Gather still have a free plan?",
+            "a": "No. Gather ended its free plan on September 15, 2025. It costs $15 a member a month, or $12 billed yearly, after a 30-day trial."
+          },
+          {
+            "q": "Can I move my Gather office to another tool?",
+            "a": "TinyFloor can't import a Gather map: you start with a ready-made office and invite everyone with one link, which takes minutes. Check with any other tool before you plan a move."
+          },
+          {
+            "q": "Is TinyFloor like Gather?",
+            "a": "Yes, in the way that matters day to day: a pixel-art office where you walk up to someone to talk and step into a room to meet. It doesn't let you design the office, and it has no recordings or transcripts."
           }
         ]
       },
@@ -297,8 +305,8 @@
       "virtualOffice": {
         "label": "Virtual office",
         "meta": {
-          "title": "Virtual Office for Remote Teams",
-          "description": "A virtual office in your browser. See who is around, walk over to talk with proximity video calls, and keep one room open for your remote team."
+          "title": "Virtual Office for Remote Teams: What It Is, What It Costs",
+          "description": "A virtual office is an online place where a remote team works together: see who is around, walk over to talk, meet in a room. What it is, what it costs, and how to set one up in a day."
         },
         "title": "A <em>virtual office</em> for remote teams.",
         "subtitle": "Give your team a place to be during the day. See who is around, walk over to ask a quick question, and step into the meeting room when it is time to talk.",
@@ -1680,6 +1688,34 @@
         "body": "An office is for a team that works together every day, up to 15 people. A bigger company gives each team an office of its own."
       }
     }
+  },
+  "pricingFaq": {
+    "items": [
+      {
+        "q": "How much does TinyFloor cost?",
+        "a": "It's free for an office of up to 3 people, with everything included. Pro is $29 a month for the whole team, billed monthly."
+      },
+      {
+        "q": "Do you charge per person?",
+        "a": "No. One price covers the whole office, and calls between two people are never counted."
+      },
+      {
+        "q": "What happens when a 4th person joins a free office?",
+        "a": "The whole team gets Pro free for 14 days, with no card needed. After that the office stays on Free unless you choose Pro: everyone stays a member, and up to 3 can be on the floor at once."
+      },
+      {
+        "q": "Is there a yearly plan?",
+        "a": "No. Pro is monthly only, and you can cancel any time. Your plan runs to the end of what you paid for, then the office moves to Free."
+      },
+      {
+        "q": "Can I get a refund?",
+        "a": "Yes. Ask within 14 days of any payment and you get all of it back."
+      },
+      {
+        "q": "Who handles the payment?",
+        "a": "Creem, our reseller, takes the payment and adds any sales tax or VAT at checkout. Prices are in US dollars."
+      }
+    ]
   },
   "guides": {
     "label": "Guides",

@@ -1681,6 +1681,34 @@
       }
     }
   },
+  "pricingFaq": {
+    "items": [
+      {
+        "q": "Ile kosztuje TinyFloor?",
+        "a": "Jest darmowy dla biura do 3 osób, ze wszystkim w zestawie. Pro kosztuje 29 $ miesięcznie za cały zespół, z płatnością co miesiąc."
+      },
+      {
+        "q": "Czy płaci się za osobę?",
+        "a": "Nie. Jedna cena obejmuje całe biuro, a rozmowy między dwiema osobami nigdy nie są liczone."
+      },
+      {
+        "q": "Co się dzieje, gdy do darmowego biura dołącza 4. osoba?",
+        "a": "Cały zespół dostaje Pro za darmo na 14 dni, bez karty. Potem biuro zostaje na planie Free, chyba że wybierzecie Pro: wszyscy pozostają członkami, a na piętrze mogą być naraz do 3 osoby."
+      },
+      {
+        "q": "Czy jest plan roczny?",
+        "a": "Nie. Pro jest tylko miesięczny i możesz zrezygnować w każdej chwili. Plan trwa do końca opłaconego okresu, potem biuro przechodzi na Free."
+      },
+      {
+        "q": "Czy mogę dostać zwrot pieniędzy?",
+        "a": "Tak. Poproś o niego w ciągu 14 dni od dowolnej płatności, a zwrócimy całość."
+      },
+      {
+        "q": "Kto obsługuje płatność?",
+        "a": "Creem, nasz sprzedawca, przyjmuje płatność i dolicza ewentualny podatek od sprzedaży lub VAT przy kasie. Ceny są w dolarach amerykańskich."
+      }
+    ]
+  },
   "guides": {
     "label": "Poradniki",
     "eyebrow": "Poradnik",

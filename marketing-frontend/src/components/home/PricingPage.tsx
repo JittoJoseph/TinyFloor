@@ -4,16 +4,19 @@ import { CalendarOff, Check, CreditCard, Minus, Refund, UserPlus, Users } from "
 import { SUPPORT_EMAIL } from "@/components/legal/LegalPage";
 import { PLANS } from "@/lib/plans";
 import { cn } from "@/lib/utils";
-import { CJK_HEADLINE, COLUMN, Closing, EYEBROW, Heading, LEAD, MarketingShell, Notes, PlanCards, STAGE } from "./Blocks";
+import { CJK_HEADLINE, COLUMN, Closing, EYEBROW, Heading, LEAD, MarketingShell, Notes, PlanCards, Questions, STAGE, quiet } from "./Blocks";
 
 /**
  * The pricing page (docs/pricing.md): Free and Pro up top, then three things
  * that each take one look. What ten people pay against a per-seat tool, one
- * table of what each plan gives, and the billing answers as short notes. Few words on purpose; the plans carry the page.
+ * table of what each plan gives, and the billing answers as short notes, then
+ * the questions buyers ask, said plainly. The plans carry the page.
  */
 export function PricingPage() {
   const t = useTranslations("pricingPage");
   const tp = useTranslations("homepage.pricing");
+  const tl = useTranslations("landings");
+  const tq = useTranslations("pricingFaq");
   return (
     <MarketingShell path="/pricing" oneTap>
       <section className={cn(COLUMN, "pb-24 pt-32 sm:pb-36 sm:pt-44")}>
@@ -55,6 +58,8 @@ export function PricingPage() {
           }))}
         />
       </section>
+
+      <Questions items={tq.raw("items") as Array<{ q: string; a: string }>} title={tl.rich("faqTitle", { em: quiet })} />
 
       <Closing />
     </MarketingShell>

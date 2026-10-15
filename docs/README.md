@@ -16,3 +16,4 @@ logs here: when a finding changes, change the doc that holds it.
 | [search.md](search.md) | What search engines and AI assistants actually did with us, and the rules for comparison pages |
 | [sites.md](sites.md) | The site and the app as two Workers: links that must keep working, and the build gotchas |
 | [research/gather.md](research/gather.md) | Gather, used properly for a day: what makes it usable by a team |
+| [development.md](development.md) | Known debt: content missing in some languages, pages still thin, what waits on search engines |

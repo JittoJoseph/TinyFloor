@@ -95,3 +95,86 @@ learn about new pages. The key file is
 Mobile PageSpeed was 65 with a 7.1 s LCP on throttled 4G because the hero
 video downloaded before the page counted as loaded. The poster is preloaded
 now and the video attached after load.
+
+## Who is looking, and who acts (15 October)
+
+Search Console, three months: 108 clicks, 3,330 impressions, average
+position 25. PostHog, 30 days: about 3 to 8 real search visitors a day (a
+spike of 224 "Google" visits on 28 September was a bot opening every locale
+from the US), 48 people from GitHub, a handful from Bing, DuckDuckGo,
+ChatGPT, Ecosia and AlternativeTo.
+
+What the impressions are, by intent:
+
+| Intent | Impressions | Where we rank | Worth it? |
+|---|---|---|---|
+| Proximity chat (what it means) | ~350, guide ~500 | 7–9, no clicks | No: gamers. |
+| Gather and other alternatives, "X vs Y" | ~300 | 40–60 | Yes, but it's authority, not the pages. |
+| **Gather's price** ("gather pricing", "gather cost", "gather 料金", "gather planos") | small | **6–9** | **Yes: the one buyer search we already win.** |
+| Virtual office (free, online, app) | ~250 | 27–80 | Mostly address-seekers and "free". |
+| Team-building activities and games | ~200 | 60–90 | No: one-off HR searches. |
+| Online study room | ~300, most of the clicks | 7–22 | No (students; the page redirects). |
+| Wonder.me alternative | ~70 | 13 | Little: Wonder.me closed in April 2023 and served events. |
+
+Who made offices: people arriving from GitHub (the README), ChatGPT, and
+Google on the Kumospace and Gather alternative pages and the virtual office
+page, from Brazil, India, Korea, Indonesia, the US and Germany. Search
+impressions lean to the US (682) and UK (236), but there we rank 37 and 55;
+the clicks come from Japan, Brazil, India and Italy.
+
+What's happening outside:
+
+- **Gather ended its free plan on 15 September 2025**: every office now pays
+  $12 a member a month yearly, $15 monthly. A team of 8 pays $96–120 a month
+  where it used to pay nothing. Reviewers in Brazil and Europe complain most.
+  Yearly plans locked in at the old $5.95 ran until September 2026, so many
+  teams meet the new price at this year's renewal (Gather's help center).
+- **Gather's buyers are small tech teams.** About 74% of its G2 reviewers
+  work at 50 people or fewer; Computer Software 26%, IT services 20%,
+  Marketing and Advertising 8%, Consulting 5%.
+- **Small teams use Discord voice channels as an office** (dev teams, agencies,
+  a Japanese consultancy that went remote on it): cheap, drop-in, good audio,
+  but built for gamers. Our "Discord for work" page ranks 8.
+- **Free tiers elsewhere stop at 5–10 people** (Kumospace 5, Flat.social 5 at
+  once, SoWork 10, WorkAdventure 10, ZEP cut from 20 to 10 at once).
+- **Japan and Korea have their own tools** priced by space, not by person
+  (oVice Entry-S $65 a month; RISA ¥3,000–5,000; ZEP), so a flat price is
+  normal there, not a novelty.
+- **Always-on presence worries some remote workers** as surveillance (Hacker
+  News threads on virtual offices). The pitch is a place to drop in, never a
+  camera on.
+
+So the audience: **a remote team of 4 to 15, mostly in software, agencies or
+consulting, often outside the US, that either lost Gather's free plan,
+already hangs out in a Discord voice channel, or has outgrown a 5–10 person
+free tier.** Not students, gamers, event hosts or anyone after an address.
+
+## What our pages lack, and what to do about it (15 October)
+
+Measured on the live site: our pages run 350–790 words (/features 176,
+/pricing 353, the alternative pages 550–600, the virtual office page 440),
+mostly a hero, three short points, a block repeated on every landing page,
+and an FAQ. The one long page, the best-virtual-office-software guide, is
+1,465 words. Pages that win searches like ours are reference pages, not
+sales pages. So:
+
+- **Each page earns its place with its own content**: 1,500 words or so of
+  what that page alone can say, in sections (how it works, a comparison
+  table, worked examples, what to do when it doesn't fit), an FAQ, a "how we
+  checked" note and a last-checked date. No block shared across pages.
+- **Alternatives as round-ups**, not one-against-one sales pages: "the best
+  Gather alternatives in 2026", several products reviewed with TinyFloor
+  among them, how we compared them, and an FAQ. Say honestly what each does
+  better.
+- **One free tool that answers one concrete question** a remote team lead
+  has, built into a full page like the above and leading to the floor. It's
+  the kind of page that earns links, which is what we lack.
+- **Fewer languages done properly** before eighteen thin ones: English
+  first, then Portuguese and Spanish, where our visitors are.
+
+Search demand for such tools (Ahrefs' free keyword tool, US, rough bands):
+"icebreaker questions" over 10,000 a month, easy; "icebreaker questions for
+work" over 1,000, easy; "daily standup tool" and "daily standup meeting
+template" over 100, easy; "virtual team building activities" over 1,000,
+medium; "meeting cost calculator" over 100, hard; world clocks and time-zone
+planners large but hard. "Virtual office software" itself is just over 100.

@@ -1681,6 +1681,34 @@
       }
     }
   },
+  "pricingFaq": {
+    "items": [
+      {
+        "q": "Mitä TinyFloor maksaa?",
+        "a": "Se on ilmainen enintään 3 hengen toimistolle, kaikki mukana. Pro maksaa 29 $ kuussa koko tiimille, kuukausilaskutuksella."
+      },
+      {
+        "q": "Laskutatteko henkeä kohden?",
+        "a": "Ei. Yksi hinta kattaa koko toimiston, eikä kahden ihmisen välisiä puheluita lasketa koskaan."
+      },
+      {
+        "q": "Mitä tapahtuu, kun neljäs henkilö liittyy ilmaiseen toimistoon?",
+        "a": "Koko tiimi saa Pron ilmaiseksi 14 päiväksi, ilman korttia. Sen jälkeen toimisto pysyy Free-tasolla, ellette valitse Prota: kaikki pysyvät jäseninä, ja kerrallaan kerroksessa voi olla enintään 3."
+      },
+      {
+        "q": "Onko vuosisopimusta?",
+        "a": "Ei. Pro on vain kuukausittainen, ja sen voi perua milloin tahansa. Tilaus jatkuu maksetun jakson loppuun, minkä jälkeen toimisto siirtyy Free-tasolle."
+      },
+      {
+        "q": "Voinko saada rahat takaisin?",
+        "a": "Kyllä. Pyydä sitä 14 päivän kuluessa mistä tahansa maksusta, niin saat kaiken takaisin."
+      },
+      {
+        "q": "Kuka hoitaa maksun?",
+        "a": "Jälleenmyyjämme Creem ottaa maksun vastaan ja lisää kassalla mahdollisen myyntiveron tai arvonlisäveron. Hinnat ovat Yhdysvaltain dollareina."
+      }
+    ]
+  },
   "guides": {
     "label": "Oppaat",
     "eyebrow": "Opas",

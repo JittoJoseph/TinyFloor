@@ -919,34 +919,37 @@
   "gatherPricing": {
     "label": "Gather pricing",
     "meta": {
-      "title": "Gather Pricing 2026: What a Team of 5, 10 or 25 Pays",
-      "description": "Gather costs $12 a member a month billed yearly or $15 monthly, with no free plan. What that comes to for teams of 5, 10, 25 and 50, and what the same team pays elsewhere."
+      "title": "Gather Pricing 2026: What Your Team Pays, Guests and All",
+      "description": "Gather costs $12 a member a month billed yearly or $15 monthly, with no free plan since September 2025. What that comes to for teams of 4 to 50, what guests and recordings include, and what the same team pays elsewhere."
     },
     "title": "What does <em>Gather cost?</em>",
-    "intro": "Since September 2025, Gather charges for every member and has no free plan. Here is what that comes to for your team, worked out by size, and what the same team pays on other virtual offices. Prices are from Gather's own pricing and help pages, checked in October 2026.",
+    "intro": "Since September 15, 2025, Gather charges for every member of your team and has no free plan. This guide works out what that comes to for your team size, what the plan includes and what it leaves out, what changed for teams that used Gather before, and what the same team pays on other virtual offices. Every Gather figure is from Gather's own pricing page and help center, checked in October 2026; prices are in US dollars, before tax.",
     "sections": [
       {
         "title": "Gather's plans",
         "body": [
-          "Gather has one plan for most teams, Essential, and a Custom plan for large organisations."
+          "Gather sells one plan to most teams, Essential, and a Custom plan for large organisations. Both versions of Gather, the new Gather 2.0 and the original, now cost the same per person."
         ],
         "items": [
           {
             "title": "Essential",
-            "body": "$15 a member a month, or $12 billed yearly. It includes every Gather feature: a custom virtual office, unlimited meetings and chat, Google Calendar, GitHub and Spotify integrations, guests, and meeting recordings and transcriptions with monthly hour allowances."
+            "body": "$15 a member a month, or $12 billed yearly. Every Gather feature: a virtual office you can design, unlimited meetings and chat, Google Calendar, GitHub and Spotify integrations, and AI meeting notes. Recordings, transcriptions and guests come with monthly allowances, starting at 20 hours of recording, 30 hours of transcription and 30 guest hours."
           },
           {
             "title": "Custom",
-            "body": "Priced by Gather's sales team, for large teams that want custom onboarding and enterprise features."
+            "body": "Priced by Gather's sales team. Everything in Essential, plus single sign-on, custom onboarding, larger offices, hybrid setups and regional pricing. If you need sign-in through your company's identity provider, this is the plan."
           },
           {
             "title": "Free trial",
-            "body": "30 days free, then Essential. There is no permanent free plan."
+            "body": "30 days for up to 50 people, no card needed. Then the office needs Essential. There is no permanent free plan. People added later get their own 14-day trial before they count."
           }
         ]
       },
       {
         "title": "What Gather costs by team size",
+        "body": [
+          "Gather counts members: everyone with an account in your office, whether or not they come in that day. Here is the Essential plan for common team sizes."
+        ],
         "table": {
           "head": [
             "Team",
@@ -956,16 +959,40 @@
           ],
           "rows": [
             [
-              "5 people",
-              "$75",
+              "4 people",
               "$60",
-              "$720"
+              "$48",
+              "$576"
+            ],
+            [
+              "6 people",
+              "$90",
+              "$72",
+              "$864"
+            ],
+            [
+              "8 people",
+              "$120",
+              "$96",
+              "$1,152"
             ],
             [
               "10 people",
               "$150",
               "$120",
               "$1,440"
+            ],
+            [
+              "12 people",
+              "$180",
+              "$144",
+              "$1,728"
+            ],
+            [
+              "15 people",
+              "$225",
+              "$180",
+              "$2,160"
             ],
             [
               "25 people",
@@ -980,20 +1007,66 @@
               "$7,200"
             ]
           ],
-          "note": "Gather charges for every member, whether or not they come into the office that day. Prices before tax."
+          "note": "Essential at $15 a member a month, or $12 billed yearly (Gather's pricing page, October 2026). Before tax."
         }
+      },
+      {
+        "title": "What else counts toward the bill",
+        "items": [
+          {
+            "title": "Guests",
+            "body": "Clients, candidates and contractors can visit as guests, who don't pay as members but use up guest hours. Every office gets at least 30 guest hours a month; an office with more than 10 members gets 3 hours for each member, so 60 hours for 20 members. A team that hosts clients every day can run out."
+          },
+          {
+            "title": "Recordings and transcripts",
+            "body": "Included, within monthly hour allowances that start at 20 hours of recording and 30 of transcription."
+          },
+          {
+            "title": "Everyone is a seat",
+            "body": "A part-time contractor, a manager who drops in once a week, someone on leave: each is a member at the full price for as long as they're in the office."
+          },
+          {
+            "title": "The original Gather still counts people online at once",
+            "body": "Offices still on the original version pay the new price per person online at the same time, not per member. Moving to Gather 2.0 means building a new office in Gather Studio."
+          },
+          {
+            "title": "Discounts",
+            "body": "Schools, universities and non-profits can ask Gather's support team for a discount code. Events on the original version cost $3 a person a day, capped at the monthly price after five days."
+          }
+        ]
       },
       {
         "title": "What changed in 2025",
         "body": [
-          "On September 15, 2025, Gather launched Gather 2.0 and moved both the new and the original version to pricing per member: $15 a member a month, or $12 billed yearly. Before, teams paid for how many people were in the office at the same time.",
-          "The free plan ended for both versions. Teams already paying could lock in their old price before the change. For a small team that used Gather for free, this was the moment it started to cost money."
+          "Until September 2025, small teams could use Gather for free, and paying teams were charged $7 a person a month, or $5.95 billed yearly, for the number of people online at the same time.",
+          "On September 15, 2025, Gather launched Gather 2.0 and moved both versions to $15 a member a month, or $12 billed yearly. The free plan ended: offices that didn't upgrade by that date were closed.",
+          "Teams already paying got time to adjust. Monthly plans kept their old price until the end of 2025 and moved to $15 at their first renewal after January 1, 2026. Teams that locked in a yearly plan before the change kept $5.95 until September 2026, so many of them see the new price at this year's renewal."
+        ]
+      },
+      {
+        "title": "Worked examples",
+        "items": [
+          {
+            "title": "A team of 6 that used the free plan",
+            "detail": "From $0 to $864 a year",
+            "body": "Six people who used Gather for free now pay $72 a month on a yearly plan ($864 a year), or $90 a month billed monthly."
+          },
+          {
+            "title": "A team of 8 that locked in the old yearly price",
+            "detail": "From $571 to $1,152 a year",
+            "body": "Eight people at $5.95 a month paid about $571 a year. At their renewal from September 2026, the same team pays $12 a month each, $1,152 a year: about twice as much."
+          },
+          {
+            "title": "A team of 12 that meets clients",
+            "detail": "$144 a month, 36 guest hours",
+            "body": "Twelve members on a yearly plan pay $144 a month and get 36 guest hours a month, about an hour and a half each working day. A daily hour with clients fits; several client meetings a day would not."
+          }
         ]
       },
       {
         "title": "The same team elsewhere",
         "body": [
-          "Here is what the same teams pay a month on other virtual offices, on the cheapest plan that fits them."
+          "What the same teams pay a month on other virtual offices, on the cheapest plan that fits them."
         ],
         "table": {
           "head": [
@@ -1005,21 +1078,28 @@
           ],
           "rows": [
             [
-              "5 people",
-              "$60",
+              "4 people",
+              "$48",
               "$29",
-              "$27",
+              "$21.60",
               "Free (up to 5 members)"
             ],
             [
-              "10 people",
-              "$120",
+              "8 people",
+              "$96",
               "$29",
-              "$54",
-              "$160"
+              "$43.20",
+              "$128"
+            ],
+            [
+              "12 people",
+              "$144",
+              "$29",
+              "$64.80",
+              "$192"
             ]
           ],
-          "note": "From each product's own pricing page in October 2026, before tax. SoWork's free plan also covers up to 10 members, with meetings capped at 30 minutes, and WorkAdventure's covers up to 10 people at once."
+          "note": "From each product's own pricing page in October 2026, before tax. SoWork's free plan covers up to 10 members with meetings capped at 30 minutes; WorkAdventure's covers up to 10 people at once. TinyFloor is free for up to 3 people."
         }
       },
       {
@@ -1027,7 +1107,7 @@
         "items": [
           {
             "title": "You want to design your office",
-            "body": "Gather lets you lay out floors, rooms and objects. Most alternatives give you a ready-made office."
+            "body": "Gather lets you lay out floors, rooms and over 200 objects. Most alternatives give you a ready-made office."
           },
           {
             "title": "You need recordings and transcripts",
@@ -1035,18 +1115,52 @@
           },
           {
             "title": "Your day runs on Google Calendar and GitHub",
-            "body": "Gather's integrations show your status and activity in the office."
+            "body": "Gather's integrations show your status and what you're working on in the office."
+          },
+          {
+            "title": "You need single sign-on",
+            "body": "Gather's Custom plan has it; many smaller products don't."
           },
           {
             "title": "When it isn't",
             "body": "If your team mostly needs to see who's around, talk and meet, you're paying for features you won't use, every month, for every person."
           }
         ]
+      },
+      {
+        "title": "Before you renew",
+        "body": [
+          "If your yearly plan is coming up for renewal at the new price, four questions tell you what you actually need."
+        ],
+        "items": [
+          {
+            "title": "How many people come in on a normal day?",
+            "body": "Gather bills every member. If half the team rarely opens the office, you pay full price for them anyway."
+          },
+          {
+            "title": "Do you use recordings and transcripts?",
+            "body": "They are a large part of what Essential adds. If your meetings already run on Zoom or Google Meet with their own recordings, you may be paying twice."
+          },
+          {
+            "title": "How many guest hours do you use?",
+            "body": "Check against 30 a month, or 3 for each member above 10. Heavy client work can outgrow it."
+          },
+          {
+            "title": "Do you still edit the office?",
+            "body": "Office design is Gather's strongest feature. If your map hasn't changed in months, a ready-made office does the same job."
+          }
+        ]
+      },
+      {
+        "title": "How we checked",
+        "body": [
+          "Gather's prices, allowances and plan details come from gather.town/pricing and the Gather help center article \"Understanding Gather's pricing changes (2025)\", read in October 2026. The other products' prices come from their own pricing pages in the same month. Where a product's page didn't say something, we left it out rather than guess. Prices change: check the vendor's page before you buy."
+        ]
       }
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor keeps the core of what Gather does, an office you walk around in where you talk by walking up to someone, with a meeting room, chat and screen sharing. It costs $29 a month for the whole team, one price for the whole office, and it's free for up to 3. It has no recordings, transcription or office editor, so if you rely on those, Gather is the better fit."
+      "body": "TinyFloor keeps the core of what Gather does: an office you walk around in, where you talk by walking up to someone, with a meeting room, chat and screen sharing. It costs $29 a month for the whole team, one price however many people you invite, and it's free for up to 3. It has no recordings, transcription, office editor or single sign-on, so if you rely on those, Gather is the better fit."
     },
     "faq": [
       {
@@ -1055,11 +1169,27 @@
       },
       {
         "q": "Does Gather have a free plan?",
-        "a": "No. Gather ended its free plan in September 2025. It offers a 30-day free trial instead."
+        "a": "No. Gather ended its free plan on September 15, 2025. It offers a 30-day free trial for up to 50 people instead."
       },
       {
         "q": "How much does Gather cost for 10 people?",
         "a": "$150 a month billed monthly, or $120 a month billed yearly ($1,440 a year)."
+      },
+      {
+        "q": "Does Gather charge for guests?",
+        "a": "Not as members. Every office gets at least 30 guest hours a month, and offices with more than 10 members get 3 guest hours for each member."
+      },
+      {
+        "q": "We locked in Gather's old price. What happens now?",
+        "a": "Yearly plans locked in before September 15, 2025 kept $5.95 a person a month until September 2026; at renewal they move to $12 billed yearly or $15 monthly."
+      },
+      {
+        "q": "Is the original Gather cheaper than Gather 2.0?",
+        "a": "No, both cost $15 a person a month, or $12 yearly. The original version charges per person online at the same time, Gather 2.0 per member."
+      },
+      {
+        "q": "Does Gather offer discounts?",
+        "a": "Schools, universities and non-profits can ask Gather's support team for a discount code. Yearly billing is 20% less than monthly."
       },
       {
         "q": "What is a cheaper alternative to Gather?",

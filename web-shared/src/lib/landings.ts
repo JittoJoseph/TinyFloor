@@ -45,7 +45,7 @@ export interface Landing {
 
 /** Pages written for what people search (docs/search.md). Copy lives under `landings.pages.<key>`. */
 export const LANDINGS: Landing[] = [
-  { slug: "gather-alternative", key: "gather", group: "compare", competitor: "Gather" },
+  { slug: "gather-alternative", key: "gather", group: "compare", competitor: "Gather", checked: "2026-10" },
   { slug: "kumospace-alternative", key: "kumospace", group: "compare", competitor: "Kumospace" },
   { slug: "sococo-alternative", key: "sococo", group: "compare", competitor: "Sococo", checked: "2026-10" },
   { slug: "ovice-alternative", key: "ovice", group: "compare", competitor: "oVice", checked: "2026-10" },

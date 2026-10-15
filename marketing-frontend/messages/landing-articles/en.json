@@ -1,0 +1,143 @@
+{
+  "gather": [
+    {
+      "title": "Gather alternatives at a glance",
+      "body": [
+        "What a team of 8 pays a month on the cheapest plan that fits, the free plan if there is one, and who each product suits best. Gather is in the first row for reference."
+      ],
+      "table": {
+        "head": [
+          "Product",
+          "A team of 8, a month",
+          "Free plan",
+          "Best for"
+        ],
+        "rows": [
+          [
+            "Gather",
+            "$96 billed yearly, $120 monthly",
+            "None, a 30-day trial",
+            "Teams that design their own office"
+          ],
+          [
+            "TinyFloor",
+            "$29 for the whole team",
+            "Up to 3 people",
+            "Small teams that want one price"
+          ],
+          [
+            "SoWork",
+            "$43.20 billed yearly",
+            "Up to 10 members, 30-minute meetings",
+            "Teams on a tight budget"
+          ],
+          [
+            "Kumospace",
+            "$128",
+            "Up to 5 members, 1 floor",
+            "Teams that want desktop and mobile apps"
+          ],
+          [
+            "WorkAdventure",
+            "From €64",
+            "Up to 10 people at once",
+            "Teams that want an open-source map"
+          ],
+          [
+            "Teamflow",
+            "$120 billed yearly",
+            "Up to 5 people, 45-minute meetings",
+            "Teams happy with a desktop app"
+          ],
+          [
+            "Roam",
+            "A price per active member",
+            "None, a 14-day trial",
+            "Teams that want AI tools with their office"
+          ],
+          [
+            "Discord",
+            "Free",
+            "Yes",
+            "Teams that only need voice rooms"
+          ]
+        ],
+        "note": "From each product's own pricing page in October 2026, before tax. Per-person prices multiplied by 8; WorkAdventure's Business plan starts at €8 a user."
+      }
+    },
+    {
+      "title": "Why teams look for a Gather alternative",
+      "body": [
+        "Gather made the virtual office popular, and for years a small team could use it for free. On September 15, 2025 that ended: Gather moved to $15 a member a month, or $12 billed yearly, and closed free offices that didn't upgrade. Teams that had locked in the old yearly price of $5.95 kept it until September 2026, so many of them are meeting the new price at this year's renewal.",
+        "Price isn't the only reason. Gather 2.0 is a new platform, and moving to it means building your office again. And many teams find they use a fraction of what they pay for: they want to see who's around, talk without scheduling, and meet. That's what the alternatives below are judged on."
+      ]
+    },
+    {
+      "title": "The alternatives, reviewed",
+      "items": [
+        {
+          "title": "TinyFloor",
+          "detail": "$29 a month for the whole team, free for up to 3",
+          "body": "A pixel-art office that opens in a browser tab, on a laptop or a phone. You see who's at their desk, walk up to talk, and step into the meeting room for video and screen sharing; there's team chat and a desk of your own. One price covers everyone you invite. It has no office editor, recordings, transcription or single sign-on, so teams that rely on those should look at Gather or Kumospace."
+        },
+        {
+          "title": "SoWork",
+          "detail": "Basic $5.40 a member a month billed yearly; free for up to 10",
+          "body": "The cheapest per-person plan here, and the most generous free plan for a team: up to 10 members, with meetings capped at 30 minutes. It's priced per member, so the bill grows with the team."
+        },
+        {
+          "title": "Kumospace",
+          "detail": "Business from $16 a user a month; free for up to 5 members",
+          "body": "A polished virtual office with desktop and mobile apps as well as the browser. Its free plan fits 5 members, 50 guests and one floor. For a team of 8 it's the most expensive option on this list after Gather's monthly plan."
+        },
+        {
+          "title": "WorkAdventure",
+          "detail": "Business from €8 a user a month; free for up to 10 at once",
+          "body": "Another pixel-art office, and open source, so a technical team can customise the map. Its free plan counts people online at the same time, up to 10, rather than members."
+        },
+        {
+          "title": "Teamflow",
+          "detail": "$15 a person a month billed yearly; free for up to 5",
+          "body": "A virtual office that runs as a desktop app for Mac and Windows, with mobile in beta. The free plan fits 5 people with 45-minute meetings. Billed yearly, it costs more per person than Gather's $12."
+        },
+        {
+          "title": "Roam",
+          "detail": "A monthly price per active member; 14-day trial",
+          "body": "A virtual office bundled with AI tools, in a desktop app you download. It charges only for members who are active, and has no free plan."
+        },
+        {
+          "title": "Discord",
+          "detail": "Free",
+          "body": "Not a virtual office, but many small teams already use its voice channels as one: drop in, talk, leave. It's free and the audio is good. It was built for gaming communities, so there's no office to see who's around, and work lives next to everything else on it."
+        }
+      ]
+    },
+    {
+      "title": "How to choose",
+      "items": [
+        {
+          "title": "Count the people who'll really use it",
+          "body": "Free plans stop at 3 to 10 people, and most paid plans charge each person. For a team of 4 to 15, a flat price or a free plan that fits often beats a price per head."
+        },
+        {
+          "title": "Browser or app",
+          "body": "Browser-only products need nothing installed and work for guests and contractors straight away. Desktop apps can do more, but everyone has to install them."
+        },
+        {
+          "title": "List your must-haves first",
+          "body": "If you need recordings, transcripts, an office you design yourself or single sign-on, that narrows the list to Gather, Kumospace and a few others, whatever the price."
+        },
+        {
+          "title": "Try it on a normal working day",
+          "body": "These tools prove themselves in the small moments: a quick question, a meeting that starts on time. A week of real work tells you more than a demo."
+        }
+      ]
+    },
+    {
+      "title": "How we compared",
+      "body": [
+        "Prices, free plans and limits come from each product's own pricing and help pages, read in October 2026, in US dollars or euros as each lists them, before tax. Where a product's page didn't say something, we left it out rather than guess. We make TinyFloor, so we put it first and said plainly what it doesn't do. Prices change: check the vendor's page before you buy."
+      ]
+    }
+  ]
+}

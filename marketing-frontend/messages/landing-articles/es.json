@@ -1,0 +1,143 @@
+{
+  "gather": [
+    {
+      "title": "Alternativas a Gather de un vistazo",
+      "body": [
+        "Lo que paga al mes un equipo de 8 con el plan más barato que le sirve, el plan gratuito si lo hay, y para quién encaja mejor cada producto. Gather está en la primera fila como referencia."
+      ],
+      "table": {
+        "head": [
+          "Producto",
+          "Un equipo de 8, al mes",
+          "Plan gratuito",
+          "Ideal para"
+        ],
+        "rows": [
+          [
+            "Gather",
+            "96 $ con facturación anual, 120 $ mensual",
+            "Ninguno, prueba de 30 días",
+            "Equipos que diseñan su propia oficina"
+          ],
+          [
+            "TinyFloor",
+            "29 $ para todo el equipo",
+            "Hasta 3 personas",
+            "Equipos pequeños que quieren un solo precio"
+          ],
+          [
+            "SoWork",
+            "43,20 $ con facturación anual",
+            "Hasta 10 miembros, reuniones de 30 minutos",
+            "Equipos con poco presupuesto"
+          ],
+          [
+            "Kumospace",
+            "128 $",
+            "Hasta 5 miembros, 1 planta",
+            "Equipos que quieren apps de escritorio y móvil"
+          ],
+          [
+            "WorkAdventure",
+            "Desde 64 €",
+            "Hasta 10 personas a la vez",
+            "Equipos que quieren un mapa de código abierto"
+          ],
+          [
+            "Teamflow",
+            "120 $ con facturación anual",
+            "Hasta 5 personas, reuniones de 45 minutos",
+            "Equipos a los que no les importa una app de escritorio"
+          ],
+          [
+            "Roam",
+            "Un precio por miembro activo",
+            "Ninguno, prueba de 14 días",
+            "Equipos que quieren herramientas de IA con su oficina"
+          ],
+          [
+            "Discord",
+            "Gratis",
+            "Sí",
+            "Equipos que solo necesitan salas de voz"
+          ]
+        ],
+        "note": "De la página de precios de cada producto en octubre de 2026, sin impuestos. Precios por persona multiplicados por 8; el plan Business de WorkAdventure empieza en 8 € por usuario."
+      }
+    },
+    {
+      "title": "Por qué los equipos buscan una alternativa a Gather",
+      "body": [
+        "Gather popularizó la oficina virtual, y durante años un equipo pequeño podía usarla gratis. El 15 de septiembre de 2025 eso terminó: Gather pasó a 15 $ por miembro al mes, o 12 $ con facturación anual, y cerró las oficinas gratuitas que no se pasaron a un plan de pago. Los equipos que fijaron el antiguo precio anual de 5,95 $ lo mantuvieron hasta septiembre de 2026, así que muchos se encuentran el precio nuevo en la renovación de este año.",
+        "El precio no es el único motivo. Gather 2.0 es una plataforma nueva, y pasarse a ella supone montar la oficina otra vez. Y muchos equipos ven que usan una parte pequeña de lo que pagan: quieren ver quién está, hablar sin agendar y reunirse. Eso es lo que se valora en las alternativas de abajo."
+      ]
+    },
+    {
+      "title": "Las alternativas, analizadas",
+      "items": [
+        {
+          "title": "TinyFloor",
+          "detail": "29 $ al mes para todo el equipo, gratis para hasta 3",
+          "body": "Una oficina en pixel art que se abre en una pestaña del navegador, en el portátil o en el móvil. Ves quién está en su mesa, te acercas para hablar y entras en la sala de reuniones para vídeo y pantalla compartida; hay chat del equipo y una mesa propia. Un solo precio cubre a todos los que invites. No tiene editor de oficina, grabaciones, transcripción ni inicio de sesión único (SSO); los equipos que dependen de eso deberían mirar Gather o Kumospace."
+        },
+        {
+          "title": "SoWork",
+          "detail": "Basic a 5,40 $ por miembro al mes con facturación anual; gratis para hasta 10",
+          "body": "El plan por persona más barato de esta lista, y el plan gratuito más generoso para un equipo: hasta 10 miembros, con reuniones limitadas a 30 minutos. Cobra por miembro, así que la factura crece con el equipo."
+        },
+        {
+          "title": "Kumospace",
+          "detail": "Business desde 16 $ por usuario al mes; gratis para hasta 5 miembros",
+          "body": "Una oficina virtual cuidada, con apps de escritorio y móvil además del navegador. Su plan gratuito admite 5 miembros, 50 invitados y una planta. Para un equipo de 8 es la opción más cara de esta lista después del plan mensual de Gather."
+        },
+        {
+          "title": "WorkAdventure",
+          "detail": "Business desde 8 € por usuario al mes; gratis para hasta 10 a la vez",
+          "body": "Otra oficina en pixel art, y de código abierto, así que un equipo técnico puede personalizar el mapa. Su plan gratuito cuenta personas conectadas a la vez, hasta 10, no miembros."
+        },
+        {
+          "title": "Teamflow",
+          "detail": "15 $ por persona al mes con facturación anual; gratis para hasta 5",
+          "body": "Una oficina virtual que funciona como app de escritorio para Mac y Windows, con móvil en beta. Su plan gratuito admite 5 personas con reuniones de 45 minutos. Con facturación anual cuesta más por persona que los 12 $ de Gather."
+        },
+        {
+          "title": "Roam",
+          "detail": "Un precio mensual por miembro activo; prueba de 14 días",
+          "body": "Una oficina virtual junto con herramientas de IA, en una app de escritorio que descargas. Solo cobra por los miembros activos y no tiene plan gratuito."
+        },
+        {
+          "title": "Discord",
+          "detail": "Gratis",
+          "body": "No es una oficina virtual, pero muchos equipos pequeños ya usan sus canales de voz como si lo fuera: entrar, hablar, salir. Es gratis y el audio es bueno. Se hizo para comunidades de videojuegos, así que no hay una oficina donde ver quién está, y el trabajo convive con todo lo demás."
+        }
+      ]
+    },
+    {
+      "title": "Cómo elegir",
+      "items": [
+        {
+          "title": "Cuenta quién lo va a usar de verdad",
+          "body": "Los planes gratuitos se quedan entre 3 y 10 personas, y la mayoría de los planes de pago cobran por persona. Para un equipo de 4 a 15, un precio fijo o un plan gratuito que te quepa suele salir mejor que un precio por cabeza."
+        },
+        {
+          "title": "Navegador o app",
+          "body": "Los productos que funcionan solo en el navegador no necesitan instalar nada y sirven al momento para invitados y colaboradores externos. Las apps de escritorio pueden hacer más, pero todos tienen que instalarlas."
+        },
+        {
+          "title": "Apunta primero lo imprescindible",
+          "body": "Si necesitas grabaciones, transcripciones, una oficina que diseñas tú o inicio de sesión único, la lista se reduce a Gather, Kumospace y pocos más, cueste lo que cueste."
+        },
+        {
+          "title": "Pruébalo un día normal de trabajo",
+          "body": "Estas herramientas se demuestran en los momentos pequeños: una pregunta rápida, una reunión que empieza a su hora. Una semana de trabajo real dice más que una demo."
+        }
+      ]
+    },
+    {
+      "title": "Cómo lo comparamos",
+      "body": [
+        "Los precios, los planes gratuitos y los límites salen de las páginas de precios y de ayuda de cada producto, leídas en octubre de 2026, en dólares o euros según los indica cada uno, sin impuestos. Cuando la página de un producto no decía algo, lo dejamos fuera en lugar de suponerlo. Nosotros hacemos TinyFloor, así que lo pusimos primero y dijimos claramente lo que no hace. Los precios cambian: revisa la página del proveedor antes de comprar."
+      ]
+    }
+  ]
+}

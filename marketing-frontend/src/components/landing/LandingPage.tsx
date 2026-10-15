@@ -41,6 +41,8 @@ import { Logo } from "@/components/app/Logo";
 import { cn } from "@/lib/utils";
 import { emphasised } from "@/lib/words";
 import { COLUMN, Closing, FloorMoments, H2, Hero, MarketingShell, Questions, CJK_HEADLINE, quiet } from "@/components/home/Blocks";
+import { ArticleSections, READ, numberItems } from "@/components/guides/ArticleSections";
+import { landingArticle } from "@/lib/landing-articles";
 
 type Row = (typeof COMPARE_ROWS)[number];
 
@@ -98,6 +100,9 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
   const t = await getTranslations("landings");
   const copyOf = (key: LandingKey) => t.raw(`pages.${key}` as Parameters<typeof t.raw>[0]) as LandingCopy;
   const copy = copyOf(page.key);
+  // The page's own long text where this language has it (lib/landing-articles): it takes
+  // the place of the three short points and the home page's moments, so nothing is shared.
+  const article = await landingArticle(locale, page.key);
   const path = `/${page.slug}`;
   const icons = POINT_ICONS[page.key];
   const checked = page.checked
@@ -139,12 +144,20 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
         body={copy.subtitle}
       />
 
-      <Points
-        items={copy.points.map((point, index) => {
-          const Icon = icons[index % icons.length];
-          return { icon: <Icon />, title: point.title, body: point.body };
-        })}
-      />
+      {article ? (
+        <div className={cn(COLUMN, "pb-4")}>
+          <div className={READ}>
+            <ArticleSections sections={numberItems(article)} />
+          </div>
+        </div>
+      ) : (
+        <Points
+          items={copy.points.map((point, index) => {
+            const Icon = icons[index % icons.length];
+            return { icon: <Icon />, title: point.title, body: point.body };
+          })}
+        />
+      )}
 
       {copy.moments && copy.momentsTitle && (
         <Moments title={emphasised(copy.momentsTitle, locale, "text-muted-foreground/75")} items={copy.moments} />
@@ -153,7 +166,7 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
       {others.length > 0 && <Compare title={compareTitle} note={note} others={others} t={t} />}
 
       {/* The home page's three moments, for pages that have no day of their own to show. */}
-      {!copy.moments && <FloorMoments className={SECTION_GAP} />}
+      {!copy.moments && !article && <FloorMoments className={SECTION_GAP} />}
 
       <div className={SECTION}>
         <Questions items={copy.faq} title={t.rich("faqTitle", { em: quiet })} />

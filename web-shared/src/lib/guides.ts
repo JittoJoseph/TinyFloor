@@ -55,6 +55,9 @@ export interface GuideCopy {
   faq: Array<{ q: string; a: string }>;
 }
 
+/** One section of long text: a guide's, or a page written for a search that has its own (LandingPage). */
+export type GuideSection = GuideCopy["sections"][number];
+
 /** Minutes to read: about 230 words a minute, or 500 characters for languages written without spaces. */
 export function readingMinutes(copy: GuideCopy, locale: string): number {
   const text = [

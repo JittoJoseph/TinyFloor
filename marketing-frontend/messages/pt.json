@@ -66,13 +66,13 @@
     "relatedTitle": "Continue <em>explorando.</em>",
     "pages": {
       "gather": {
-        "label": "Alternativa ao Gather",
+        "label": "Alternativas ao Gather",
         "meta": {
-          "title": "Alternativa gratuita ao Gather Town no navegador",
-          "description": "Procurando uma alternativa gratuita ao Gather Town? TinyFloor é um escritório virtual em pixel art com chamadas de vídeo por proximidade."
+          "title": "7 melhores alternativas ao Gather em 2026, com preços para a sua equipe",
+          "description": "O Gather acabou com o plano gratuito e cobra por cada membro. Sete alternativas ao Gather comparadas pelo que uma equipe de 8 paga, planos gratuitos, apps e no que cada uma é melhor, com o TinyFloor entre elas."
         },
-        "title": "Uma <em>alternativa gratuita ao Gather.</em>",
-        "subtitle": "O Gather acabou com o plano gratuito e agora cobra por membro. O TinyFloor mantém a mesma ideia, um escritório por onde você anda e conversa, grátis para até 3 pessoas e depois um só preço para o escritório inteiro.",
+        "title": "As melhores <em>alternativas ao Gather</em> em 2026.",
+        "subtitle": "O Gather acabou com o plano gratuito em setembro de 2025 e agora cobra por cada membro. Aqui estão sete alternativas, comparadas pelo que uma equipe de verdade paga, pelo que é grátis e pelo que cada uma faz melhor. Nós fazemos o TinyFloor, então ele aparece primeiro; todo o resto vem das páginas de cada produto.",
         "points": [
           {
             "title": "Sem contagem regressiva",
@@ -95,20 +95,28 @@
         },
         "faq": [
           {
-            "q": "O Gather ainda é grátis?",
-            "a": "Não. O Gather não tem mais um plano gratuito permanente. Ele oferece um teste de 30 dias e depois o plano Essential começa em US$ 12 por membro por mês. O TinyFloor é grátis para até 3 pessoas e custa US$ 29 por mês para toda a equipe."
+            "q": "Qual é a melhor alternativa gratuita ao Gather?",
+            "a": "Para uma equipe de até 10, o plano gratuito do SoWork é o que comporta mais gente, com reuniões limitadas a 30 minutos; o do WorkAdventure comporta 10 pessoas online ao mesmo tempo. O TinyFloor é grátis para até 3, com todos os recursos, e US$ 29 por mês para a equipe toda depois disso."
           },
           {
-            "q": "O que o Gather tem que o TinyFloor não tem?",
-            "a": "O Gather adiciona notas de reunião com IA e personalização do escritório. O TinyFloor foca no essencial: andar pelo espaço, chamadas por proximidade, compartilhamento de tela, uma sala de reunião, chat, um quadro branco e música na sala."
+            "q": "Qual é a alternativa ao Gather mais barata para uma equipe de 10?",
+            "a": "O TinyFloor, a US$ 29 por mês para a equipe toda. O plano Basic do SoWork sai a US$ 54 por mês no anual para 10 membros, e o Gather a US$ 120 no anual."
           },
           {
-            "q": "Posso levar minha equipe do Gather para o TinyFloor?",
-            "a": "Sim. Crie um escritório, convide sua equipe com um só link e todos entram. Não há dados para migrar nem nada para instalar."
+            "q": "Existe alguma alternativa ao Gather que roda no navegador?",
+            "a": "Sim. O TinyFloor, o Kumospace e o WorkAdventure rodam no navegador; o Teamflow e o Roam são apps de desktop."
           },
           {
-            "q": "Quantas pessoas cabem em um escritório TinyFloor?",
-            "a": "Até 3 pessoas no Free e uma equipe pequena de até 15 no Pro. Você pode criar quantos escritórios precisar."
+            "q": "O Gather ainda tem plano gratuito?",
+            "a": "Não. O Gather acabou com o plano gratuito em 15 de setembro de 2025. Custa US$ 15 por membro por mês, ou US$ 12 no anual, depois de um teste de 30 dias."
+          },
+          {
+            "q": "Dá para levar meu escritório do Gather para outra ferramenta?",
+            "a": "O TinyFloor não importa um mapa do Gather: você começa com um escritório pronto e convida todo mundo com um link, o que leva minutos. Confirme com qualquer outra ferramenta antes de planejar a mudança."
+          },
+          {
+            "q": "O TinyFloor é parecido com o Gather?",
+            "a": "Sim, no que importa no dia a dia: um escritório em pixel art onde você chega perto de alguém para conversar e entra numa sala para se reunir. Ele não deixa você desenhar o escritório e não tem gravações nem transcrições."
           }
         ]
       },

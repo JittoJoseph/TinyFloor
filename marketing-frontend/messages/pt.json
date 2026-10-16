@@ -491,11 +491,11 @@
       "ovice": {
         "label": "Alternativa ao oVice",
         "meta": {
-          "title": "Alternativa ao oVice para equipes pequenas",
-          "description": "O oVice cobra por espaço ou a partir de 20 usuários. O TinyFloor é um escritório virtual no navegador para equipes pequenas: grátis para 3 pessoas e depois US$ 29 por mês para toda a equipe."
+          "title": "Alternativa ao oVice: preços, o plano grátis e um escritório mais simples para equipes pequenas",
+          "description": "O Entry-S do oVice custa US$ 65–78 por mês por um espaço pensado para cerca de 10 membros, e o Business Starter começa em 20 usuários. Quanto uma equipe pequena paga, o que o oVice faz melhor e o TinyFloor a US$ 29 para a equipe toda."
         },
         "title": "Uma <em>alternativa ao oVice</em> do tamanho de equipes pequenas.",
-        "subtitle": "O oVice é feito para empresas e comunidades, com planos por tamanho de espaço ou a partir de 20 usuários. O TinyFloor é feito para equipes pequenas, com um preço simples por escritório.",
+        "subtitle": "O oVice foi feito para empresas e comunidades, com preço fixo por espaço ou por usuário a partir de 20. O TinyFloor é feito para equipes pequenas, com um preço simples por escritório: US$ 29 por mês.",
         "points": [
           {
             "title": "Um preço por escritório",
@@ -519,15 +519,15 @@
         "faq": [
           {
             "q": "Quanto custa o oVice?",
-            "a": "O oVice Entry-S custa US$ 65 por mês por espaço no plano anual, ou US$ 78 no mensal, para cerca de 10 membros fixos. O Business Starter custa US$ 16 por usuário por mês a partir de 20 usuários. O TinyFloor custa US$ 29 por mês para toda a equipe."
+            "a": "O oVice Entry-S custa US$ 65 por mês por espaço no anual (US$ 780 por ano), ou US$ 78 no mensal, para cerca de 10 membros frequentes. O Entry-M custa US$ 245 ou US$ 294 para cerca de 40. O Business Starter custa US$ 16 por usuário por mês no anual, ou US$ 19,20 no mensal, a partir de 20 usuários. O TinyFloor custa US$ 29 por mês para a equipe toda."
           },
           {
             "q": "O oVice tem plano grátis?",
-            "a": "Sim. Depois do teste de 14 dias, o espaço passa para um plano gratuito que roda num ambiente preliminar, sem SLA nem suporte. O plano grátis do TinyFloor é o mesmo produto dos planos pagos, para até 3 pessoas."
+            "a": "Sim. Depois do teste de 14 dias, o espaço passa para um plano grátis que roda num ambiente de pré-lançamento, sem SLA nem suporte, e sem controles de acesso, SSO ou integrações. O plano grátis do TinyFloor é o mesmo produto dos planos pagos, para até 3 pessoas."
           },
           {
             "q": "O que o oVice tem que o TinyFloor não tem?",
-            "a": "O oVice traz layouts personalizados, transcrição, gravação sob pedido, integração com calendário e Microsoft Teams, e planos para eventos. O TinyFloor foca no escritório do dia a dia: chegar perto, reuniões, chat, um quadro branco e música."
+            "a": "O oVice traz layouts e avatares personalizados, integração com Google Agenda e Microsoft Teams, SSO, gravação e transcrição no Business Starter, e planos avulsos para eventos. O TinyFloor se concentra no escritório do dia a dia: chegar perto, reuniões, chat, um quadro branco e música."
           },
           {
             "q": "O TinyFloor está disponível em japonês?",

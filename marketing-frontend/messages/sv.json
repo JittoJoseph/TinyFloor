@@ -491,11 +491,11 @@
       "ovice": {
         "label": "oVice-alternativ",
         "meta": {
-          "title": "oVice-alternativ för små team",
-          "description": "oVice tar betalt per rum eller från 20 användare. TinyFloor är ett virtuellt kontor i webbläsaren för små team: gratis för 3 personer, sedan $29 i månaden för hela teamet."
+          "title": "Alternativ till oVice: priser, gratisplanen och ett enklare kontor för små team",
+          "description": "oVices Entry-S kostar 65–78 $ per månad för ett utrymme för cirka 10 medlemmar, och Business Starter börjar vid 20 användare. Vad ett litet team betalar, vad oVice gör bättre och TinyFloor för 29 $ för hela teamet."
         },
         "title": "Ett <em>oVice-alternativ</em> i storlek för små team.",
-        "subtitle": "oVice är byggt för företag och communities, med planer efter rumsstorlek eller från 20 användare. TinyFloor är gjort för små team, med ett enkelt pris per kontor.",
+        "subtitle": "oVice är byggt för företag och communityn, med ett fast pris per utrymme eller per användare från 20 användare. TinyFloor är gjort för små team, med ett enkelt pris per kontor: 29 $ per månad.",
         "points": [
           {
             "title": "Ett pris per kontor",
@@ -519,15 +519,15 @@
         "faq": [
           {
             "q": "Vad kostar oVice?",
-            "a": "oVice Entry-S kostar $65 i månaden per yta vid årsbetalning, eller $78 per månad, för ungefär 10 fasta medlemmar. Business Starter kostar $16 per användare i månaden från 20 användare. TinyFloor kostar $29 i månaden för hela teamet."
+            "a": "oVice Entry-S kostar 65 $ per månad och utrymme vid årsbetalning (780 $ per år), eller 78 $ månadsvis, för cirka 10 fasta medlemmar. Entry-M kostar 245 eller 294 $ för cirka 40. Business Starter kostar 16 $ per användare och månad vid årsbetalning, eller 19,20 $ månadsvis, från 20 användare. TinyFloor kostar 29 $ per månad för hela teamet."
           },
           {
             "q": "Har oVice en gratisplan?",
-            "a": "Ja. Efter provperioden på 14 dagar går ytan över till en gratisplan som körs i en förhandsmiljö utan SLA eller support. TinyFloors gratisplan är samma produkt som de betalda planerna, för upp till 3 personer."
+            "a": "Ja. Efter 14 dagars provperiod går ett utrymme över till en gratisplan som körs i en förhandsmiljö utan SLA eller support, och utan åtkomstkontroll, SSO och integrationer. TinyFloors gratisplan är samma produkt som de betalda, för upp till 3 personer."
           },
           {
             "q": "Vad har oVice som TinyFloor inte har?",
-            "a": "oVice har egna layouter, transkribering, inspelning på begäran, koppling till kalender och Microsoft Teams, samt planer för evenemang. TinyFloor fokuserar på kontoret i vardagen: gå fram, möten, chatt, en whiteboard och musik."
+            "a": "oVice har egna layouter och avatarer, integration med Google Kalender och Microsoft Teams, SSO, inspelning och transkribering med Business Starter, och engångsplaner för evenemang. TinyFloor fokuserar på det dagliga kontoret: gå fram till folk, möten, chatt, en whiteboard och musik."
           },
           {
             "q": "Finns TinyFloor på japanska?",

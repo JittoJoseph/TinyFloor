@@ -1368,5 +1368,185 @@
         "Los precios, límites y funciones de Sococo salen de su página de precios, leída en octubre de 2026, en dólares estadounidenses sin impuestos. Lo que no aparecía allí lo dejamos fuera en vez de adivinar. Hacemos TinyFloor, así que decimos claramente lo que no hace. Los precios cambian: revisa la página de Sococo antes de comprar."
       ]
     }
+  ],
+  "ovice": [
+    {
+      "title": "oVice y TinyFloor de un vistazo",
+      "body": [
+        "En los dos mueves tu avatar para hablar con la gente, y los dos tienen un plan con precio por espacio en vez de por persona. oVice añade los controles e integraciones que pide un despliegue en una empresa; TinyFloor se queda con lo que un equipo pequeño usa a diario."
+      ],
+      "table": {
+        "head": [
+          "",
+          "oVice",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Un equipo de 8, al mes",
+            "65 $ con facturación anual, 78 $ mensual (Entry-S)",
+            "29 $ para todo el equipo"
+          ],
+          [
+            "Plan gratis",
+            "Sí, en un entorno de preversión sin SLA ni soporte",
+            "Hasta 3 personas, el mismo producto que el de pago"
+          ],
+          [
+            "Cómo se cobra",
+            "Por espacio en Entry, por usuario desde 20 en Business Starter",
+            "Un precio por oficina"
+          ],
+          [
+            "Mantener la oficina privada",
+            "Controles por contraseña, correo e IP en los planes de pago",
+            "Privada en todos los planes"
+          ],
+          [
+            "Integraciones y SSO",
+            "Google Calendar, Microsoft Teams y SSO en los planes de pago",
+            "Ninguna"
+          ],
+          [
+            "El espacio",
+            "Diseños y avatares personalizados",
+            "Una oficina lista para usar"
+          ],
+          [
+            "Grabación y transcripción",
+            "Bajo petición con Business Starter",
+            "No"
+          ],
+          [
+            "Eventos",
+            "Planes puntuales desde 35 $ por semana",
+            "No"
+          ]
+        ],
+        "note": "Datos de oVice de su página de precios en octubre de 2026, en dólares estadounidenses sin impuestos."
+      }
+    },
+    {
+      "title": "Cuánto cuestan los planes de oVice",
+      "body": [
+        "Los planes Entry de oVice son un precio fijo por espacio, dimensionado según cuántas personas pueden estar conectadas a la vez. Business Starter se cobra por usuario, a partir de 20."
+      ],
+      "table": {
+        "head": [
+          "Plan",
+          "Facturación mensual",
+          "Facturación anual, al mes",
+          "Pensado para"
+        ],
+        "rows": [
+          [
+            "oVice Entry-S",
+            "78 $",
+            "65 $",
+            "Un espacio; unos 10 miembros habituales, 50 conectados a la vez"
+          ],
+          [
+            "oVice Entry-M",
+            "294 $",
+            "245 $",
+            "Un espacio; unos 40 miembros habituales, 200 conectados a la vez"
+          ],
+          [
+            "oVice Business Starter",
+            "384 $ por 20 usuarios",
+            "320 $ por 20 usuarios",
+            "Desde 20 usuarios; espacios y edificios ilimitados"
+          ],
+          [
+            "TinyFloor Pro",
+            "29 $",
+            "Solo mensual",
+            "Una oficina para un equipo pequeño; gratis para hasta 3"
+          ]
+        ],
+        "note": "Precios de oVice de su página de precios, octubre de 2026; Business Starter cuesta 19,20 $ por usuario mensual o 16 $ con facturación anual. TinyFloor Pro se factura mensualmente."
+      }
+    },
+    {
+      "title": "Por qué los equipos pequeños buscan una alternativa a oVice",
+      "items": [
+        {
+          "title": "Un espacio más grande de lo necesario",
+          "body": "Entry-S admite 50 personas conectadas a la vez. Un equipo de 6 paga los mismos 65 a 78 $ al mes que uno de 10."
+        },
+        {
+          "title": "El plan gratis no es para el día a día",
+          "body": "oVice mantiene su plan gratis en un entorno de preversión sin SLA ni soporte, y sin controles de acceso, así que sirve más para probar que para trabajar con un equipo."
+        },
+        {
+          "title": "El plan para empresas empieza en 20",
+          "body": "La administración, los informes y la grabación de Business Starter empiezan en 20 usuarios, 320 $ al mes o más."
+        },
+        {
+          "title": "Pensado para despliegues",
+          "body": "Edificios, grupos de permisos e informes de teletrabajo están hechos para organizaciones grandes; un equipo pequeño puede que nunca los use."
+        }
+      ]
+    },
+    {
+      "title": "Lo que oVice hace mejor",
+      "items": [
+        {
+          "title": "Espacios a tu medida",
+          "body": "Diseños y avatares personalizados, varios espacios y edificios con Business Starter, y tamaños de espacio para cientos de personas conectadas. TinyFloor tiene una oficina lista para usar."
+        },
+        {
+          "title": "Integraciones y seguridad desde el plan básico",
+          "body": "Entry-S ya incluye SSO, integración con Google Calendar y Microsoft Teams, controles de acceso y un SLA."
+        },
+        {
+          "title": "Grabación, transcripción y actas con IA",
+          "body": "Incluidas en Business Starter y activadas bajo petición. TinyFloor no graba."
+        },
+        {
+          "title": "Eventos",
+          "body": "Planes puntuales de una semana o un mes, desde 35 $, para meetups y conferencias."
+        }
+      ]
+    },
+    {
+      "title": "Cuál encaja con tu equipo",
+      "items": [
+        {
+          "title": "TinyFloor, para la oficina diaria de un equipo pequeño",
+          "body": "Para un equipo de 4 a 15 personas que quiere una oficina privada con llamadas, sala de reuniones, chat y pizarra, por 29 $ al mes, sin dimensionar un espacio."
+        },
+        {
+          "title": "oVice, para empresas y comunidades",
+          "body": "Si necesitas SSO, integración con Microsoft Teams o Google Calendar, diseños personalizados, salas para decenas o cientos de personas, o un espacio para un evento."
+        }
+      ]
+    },
+    {
+      "title": "Llevar un equipo desde oVice",
+      "items": [
+        {
+          "title": "Crea una oficina",
+          "detail": "Dos minutos",
+          "body": "Ponle el nombre del equipo. La planta, las mesas y la sala de reuniones están listas; no hay ningún diseño que rehacer."
+        },
+        {
+          "title": "Comparte un enlace de invitación",
+          "detail": "En el chat del equipo",
+          "body": "Tus compañeros entran con Google o con su correo desde el navegador, en portátil o móvil."
+        },
+        {
+          "title": "Pasad allí una semana normal",
+          "detail": "La daily en la sala de reuniones",
+          "body": "Usadlo junto a oVice durante una semana y luego decidid cuál abrió de verdad el equipo."
+        }
+      ]
+    },
+    {
+      "title": "Cómo comparamos",
+      "body": [
+        "Los precios, límites y funciones de oVice salen de su página de precios y de su tabla comparativa, leídas en octubre de 2026, en dólares estadounidenses sin impuestos. Lo que no aparecía allí lo dejamos fuera en vez de adivinar. Hacemos TinyFloor, así que decimos claramente lo que no hace. Los precios cambian: revisa la página de oVice antes de comprar."
+      ]
+    }
   ]
 }

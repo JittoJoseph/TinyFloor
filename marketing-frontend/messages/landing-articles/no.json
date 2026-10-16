@@ -1368,5 +1368,185 @@
         "Sococos priser, grenser og funksjoner kommer fra prissiden deres, lest i oktober 2026, i amerikanske dollar eksklusive avgifter. Det som ikke sto der, utelot vi i stedet for å gjette. Vi lager TinyFloor, så vi sier tydelig hva det ikke gjør. Priser endrer seg: sjekk Sococos side før du kjøper."
       ]
     }
+  ],
+  "ovice": [
+    {
+      "title": "oVice og TinyFloor i korte trekk",
+      "body": [
+        "I begge flytter du avataren din for å prate med folk, og begge har en plan med pris per rom i stedet for per person. oVice legger til kontrollene og integrasjonene en utrulling i et selskap trenger; TinyFloor holder seg til det et lite team bruker hver dag."
+      ],
+      "table": {
+        "head": [
+          "",
+          "oVice",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Et team på 8, per måned",
+            "65 $ årlig, 78 $ månedlig (Entry-S)",
+            "29 $ for hele teamet"
+          ],
+          [
+            "Gratisplan",
+            "Ja, i et forhåndsmiljø uten SLA eller støtte",
+            "Opptil 3 personer, samme produkt som betalt"
+          ],
+          [
+            "Hvordan det prises",
+            "Per rom i Entry, per bruker fra 20 i Business Starter",
+            "Én pris for kontoret"
+          ],
+          [
+            "Holde kontoret privat",
+            "Passord-, e-post- og IP-kontroll i betalte planer",
+            "Privat i alle planer"
+          ],
+          [
+            "Integrasjoner og SSO",
+            "Google Kalender, Microsoft Teams og SSO i betalte planer",
+            "Ingen"
+          ],
+          [
+            "Rommet",
+            "Egne oppsett og avatarer",
+            "Et ferdig kontor"
+          ],
+          [
+            "Opptak og transkribering",
+            "På forespørsel med Business Starter",
+            "Nei"
+          ],
+          [
+            "Arrangementer",
+            "Engangsplaner fra 35 $ per uke",
+            "Nei"
+          ]
+        ],
+        "note": "Opplysninger om oVice fra prissiden i oktober 2026, i amerikanske dollar eksklusive avgifter."
+      }
+    },
+    {
+      "title": "Hva oVices planer koster",
+      "body": [
+        "oVices Entry-planer er en fast pris per rom, dimensjonert etter hvor mange som kan være pålogget samtidig. Business Starter prises per bruker, fra 20."
+      ],
+      "table": {
+        "head": [
+          "Plan",
+          "Månedlig",
+          "Årlig, per måned",
+          "Laget for"
+        ],
+        "rows": [
+          [
+            "oVice Entry-S",
+            "78 $",
+            "65 $",
+            "Ett rom; omtrent 10 faste medlemmer, 50 pålogget samtidig"
+          ],
+          [
+            "oVice Entry-M",
+            "294 $",
+            "245 $",
+            "Ett rom; omtrent 40 faste medlemmer, 200 pålogget samtidig"
+          ],
+          [
+            "oVice Business Starter",
+            "384 $ for 20 brukere",
+            "320 $ for 20 brukere",
+            "Fra 20 brukere; ubegrensede rom og bygninger"
+          ],
+          [
+            "TinyFloor Pro",
+            "29 $",
+            "Bare månedlig",
+            "Ett kontor for et lite team; gratis for opptil 3"
+          ]
+        ],
+        "note": "oVices priser fra prissiden, oktober 2026; Business Starter koster 19,20 $ per bruker månedlig eller 16 $ årlig. TinyFloor Pro betales månedlig."
+      }
+    },
+    {
+      "title": "Hvorfor små team leter etter et alternativ til oVice",
+      "items": [
+        {
+          "title": "Et rom som er større enn nødvendig",
+          "body": "Entry-S rommer 50 personer pålogget samtidig. Et team på 6 betaler de samme 65–78 $ i måneden som et team på 10."
+        },
+        {
+          "title": "Gratisplanen er ikke for daglig arbeid",
+          "body": "oVice kjører gratisplanen i et forhåndsmiljø uten SLA eller støtte, og uten tilgangskontroll, så den passer bedre til å prøve ut enn til å la et team jobbe."
+        },
+        {
+          "title": "Bedriftsplanen starter ved 20",
+          "body": "Administrasjon, rapporter og opptak i Business Starter starter ved 20 brukere, 320 $ i måneden eller mer."
+        },
+        {
+          "title": "Laget for utrullinger",
+          "body": "Bygninger, tilgangsgrupper og rapporter om fjernarbeid er laget for større organisasjoner; et lite team bruker dem kanskje aldri."
+        }
+      ]
+    },
+    {
+      "title": "Hva oVice gjør bedre",
+      "items": [
+        {
+          "title": "Rom du former selv",
+          "body": "Egne oppsett og avatarer, flere rom og bygninger med Business Starter, og romstørrelser for hundrevis av personer pålogget. TinyFloor har ett ferdig kontor."
+        },
+        {
+          "title": "Integrasjoner og sikkerhet allerede i inngangsplanen",
+          "body": "Entry-S har allerede SSO, integrasjon med Google Kalender og Microsoft Teams, tilgangskontroll og en SLA."
+        },
+        {
+          "title": "Opptak, transkribering og AI-referater",
+          "body": "Inkludert i Business Starter og slått på ved forespørsel. TinyFloor tar ikke opp."
+        },
+        {
+          "title": "Arrangementer",
+          "body": "Engangsplaner for en uke eller en måned, fra 35 $, for meetups og konferanser."
+        }
+      ]
+    },
+    {
+      "title": "Hva som passer teamet ditt",
+      "items": [
+        {
+          "title": "TinyFloor, for et lite teams daglige kontor",
+          "body": "For et team på 4 til 15 som vil ha et privat kontor med samtaler, møterom, chat og tavle, for 29 $ i måneden, uten å dimensjonere et rom."
+        },
+        {
+          "title": "oVice, for selskaper og miljøer",
+          "body": "Hvis du trenger SSO, integrasjon med Microsoft Teams eller Google Kalender, egne oppsett, rom for dusinvis eller hundrevis av personer, eller et rom til et arrangement."
+        }
+      ]
+    },
+    {
+      "title": "Flytte et team fra oVice",
+      "items": [
+        {
+          "title": "Lag et kontor",
+          "detail": "To minutter",
+          "body": "Gi det navnet til teamet. Gulvet, pultene og møterommet er klare; det er ikke noe oppsett å bygge opp igjen."
+        },
+        {
+          "title": "Del én invitasjonslenke",
+          "detail": "I teamchatten",
+          "body": "Kollegaene logger inn med Google eller e-post og går inn fra nettleseren, på datamaskin eller telefon."
+        },
+        {
+          "title": "Jobb der en vanlig uke",
+          "detail": "Standup i møterommet",
+          "body": "Bruk det ved siden av oVice i en uke, og bestem så hvilket teamet faktisk åpnet."
+        }
+      ]
+    },
+    {
+      "title": "Slik sammenlignet vi",
+      "body": [
+        "oVices priser, grenser og funksjoner kommer fra prissiden og funksjonssammenligningen deres, lest i oktober 2026, i amerikanske dollar eksklusive avgifter. Det som ikke sto der, utelot vi i stedet for å gjette. Vi lager TinyFloor, så vi sier tydelig hva det ikke gjør. Priser endrer seg: sjekk oVices side før du kjøper."
+      ]
+    }
   ]
 }

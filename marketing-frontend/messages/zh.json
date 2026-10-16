@@ -491,11 +491,11 @@
       "ovice": {
         "label": "oVice 替代方案",
         "meta": {
-          "title": "适合小团队的 oVice 替代方案",
-          "description": "oVice 按空间收费，或 20 个用户起。TinyFloor 是面向小团队的浏览器虚拟办公室：3 人免费，之后整个团队每月 $29。"
+          "title": "oVice 替代品：价格、免费方案，以及更适合小团队的简单办公室",
+          "description": "oVice 的 Entry-S 每月 $65–78，是一个约 10 人用的空间；Business Starter 从 20 位用户起。小团队要付多少、oVice 哪里更好，以及整个团队 $29 的 TinyFloor。"
         },
         "title": "为小团队量身打造的 <em>oVice 替代方案。</em>",
-        "subtitle": "oVice 面向企业和社区，按空间大小收费，或 20 个用户起。TinyFloor 为小团队打造，每个办公室一个简单的价格。",
+        "subtitle": "oVice 是为企业和社区打造的，按空间固定计价，或从 20 位用户起按用户计价。TinyFloor 为小团队而做，每个办公室一个简单价格：每月 $29。",
         "points": [
           {
             "title": "每个办公室一个价格",
@@ -519,15 +519,15 @@
         "faq": [
           {
             "q": "oVice 多少钱？",
-            "a": "oVice Entry-S 按年付费每个空间每月 $65，按月付费为 $78，适合约 10 名固定成员。Business Starter 从 20 个用户起每用户每月 $16。TinyFloor 整个团队每月 $29。"
+            "a": "oVice Entry-S 按年付费每个空间每月 $65（每年 $780），按月付费 $78，适合约 10 位固定成员。Entry-M 适合约 40 人，$245 或 $294。Business Starter 按年付费每位用户每月 $16，按月付费 $19.20，20 位用户起。TinyFloor 整个团队每月 $29。"
           },
           {
-            "q": "oVice 有免费套餐吗？",
-            "a": "有。14 天试用结束后，空间会转为免费套餐，运行在没有 SLA 和支持服务的预发布环境中。TinyFloor 的免费套餐和付费套餐是同一个产品，最多 3 人。"
+            "q": "oVice 有免费方案吗？",
+            "a": "有。14 天试用后，空间会转为免费方案，它运行在预发布环境中，没有 SLA 和支持，也没有访问控制、单点登录和集成。TinyFloor 的免费方案和付费方案是同一个产品，最多 3 人。"
           },
           {
             "q": "oVice 有哪些 TinyFloor 没有的功能？",
-            "a": "oVice 提供自定义布局、转写、按需录制、日历和 Microsoft Teams 集成，以及活动套餐。TinyFloor 专注于日常办公：走过去交谈、会议、聊天、白板和音乐。"
+            "a": "可自定义的布局和头像、Google 日历和 Microsoft Teams 集成、单点登录、Business Starter 的录制和转写，以及面向活动的一次性方案。TinyFloor 专注于日常办公室：走过去聊、开会、聊天、白板和音乐。"
           },
           {
             "q": "TinyFloor 有日语版吗？",

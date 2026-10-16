@@ -1368,5 +1368,185 @@
         "De prijzen, grenzen en functies van Sococo komen van de prijspagina, gelezen in oktober 2026, in Amerikaanse dollars exclusief belasting. Wat daar niet stond, lieten we weg in plaats van te gokken. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van Sococo voordat je koopt."
       ]
     }
+  ],
+  "ovice": [
+    {
+      "title": "oVice en TinyFloor in één oogopslag",
+      "body": [
+        "In beide beweeg je je avatar om met mensen te praten, en beide hebben een abonnement met een prijs per ruimte in plaats van per persoon. oVice voegt de controles en integraties toe die een uitrol in een bedrijf vraagt; TinyFloor houdt het bij wat een klein team elke dag gebruikt."
+      ],
+      "table": {
+        "head": [
+          "",
+          "oVice",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Een team van 8, per maand",
+            "$ 65 jaarlijks, $ 78 maandelijks (Entry-S)",
+            "$ 29 voor het hele team"
+          ],
+          [
+            "Gratis abonnement",
+            "Ja, in een pre-release-omgeving zonder SLA of support",
+            "Tot 3 mensen, hetzelfde product als betaald"
+          ],
+          [
+            "Hoe het geprijsd is",
+            "Per ruimte bij Entry, per gebruiker vanaf 20 bij Business Starter",
+            "Eén prijs voor het kantoor"
+          ],
+          [
+            "Het kantoor privé houden",
+            "Wachtwoord-, e-mail- en IP-controle op betaalde abonnementen",
+            "Privé op elk abonnement"
+          ],
+          [
+            "Integraties en SSO",
+            "Google Agenda, Microsoft Teams en SSO op betaalde abonnementen",
+            "Geen"
+          ],
+          [
+            "De ruimte",
+            "Eigen indelingen en avatars",
+            "Een kant-en-klaar kantoor"
+          ],
+          [
+            "Opnames en transcriptie",
+            "Op verzoek met Business Starter",
+            "Nee"
+          ],
+          [
+            "Evenementen",
+            "Eenmalige abonnementen vanaf $ 35 per week",
+            "Nee"
+          ]
+        ],
+        "note": "Gegevens over oVice van de prijspagina in oktober 2026, in Amerikaanse dollars exclusief belasting."
+      }
+    },
+    {
+      "title": "Wat de abonnementen van oVice kosten",
+      "body": [
+        "De Entry-abonnementen van oVice zijn een vaste prijs per ruimte, bepaald door hoeveel mensen tegelijk online kunnen zijn. Business Starter wordt per gebruiker gerekend, vanaf 20."
+      ],
+      "table": {
+        "head": [
+          "Abonnement",
+          "Maandelijks",
+          "Jaarlijks, per maand",
+          "Gemaakt voor"
+        ],
+        "rows": [
+          [
+            "oVice Entry-S",
+            "$ 78",
+            "$ 65",
+            "Eén ruimte; ongeveer 10 vaste leden, 50 tegelijk online"
+          ],
+          [
+            "oVice Entry-M",
+            "$ 294",
+            "$ 245",
+            "Eén ruimte; ongeveer 40 vaste leden, 200 tegelijk online"
+          ],
+          [
+            "oVice Business Starter",
+            "$ 384 voor 20 gebruikers",
+            "$ 320 voor 20 gebruikers",
+            "Vanaf 20 gebruikers; onbeperkte ruimtes en gebouwen"
+          ],
+          [
+            "TinyFloor Pro",
+            "$ 29",
+            "Alleen maandelijks",
+            "Eén kantoor voor een klein team; gratis voor maximaal 3"
+          ]
+        ],
+        "note": "Prijzen van oVice van de prijspagina, oktober 2026; Business Starter kost $ 19,20 per gebruiker maandelijks of $ 16 jaarlijks. TinyFloor Pro wordt maandelijks gefactureerd."
+      }
+    },
+    {
+      "title": "Waarom kleine teams een alternatief voor oVice zoeken",
+      "items": [
+        {
+          "title": "Een ruimte groter dan nodig",
+          "body": "Entry-S biedt plaats aan 50 mensen tegelijk online. Een team van 6 betaalt dezelfde $ 65 tot $ 78 per maand als een team van 10."
+        },
+        {
+          "title": "Het gratis abonnement is niet voor dagelijks werk",
+          "body": "oVice draait het gratis abonnement in een pre-release-omgeving zonder SLA of support, en zonder toegangscontrole, dus het is meer om te proberen dan om een team op te laten werken."
+        },
+        {
+          "title": "Het bedrijfsabonnement begint bij 20",
+          "body": "Beheer, rapporten en opnames van Business Starter beginnen bij 20 gebruikers, $ 320 per maand of meer."
+        },
+        {
+          "title": "Gemaakt voor uitrol",
+          "body": "Gebouwen, rechtengroepen en rapporten over thuiswerken zijn voor grotere organisaties; een klein team gebruikt ze misschien nooit."
+        }
+      ]
+    },
+    {
+      "title": "Wat oVice beter doet",
+      "items": [
+        {
+          "title": "Ruimtes die je zelf vormgeeft",
+          "body": "Eigen indelingen en avatars, meerdere ruimtes en gebouwen met Business Starter, en ruimtematen voor honderden mensen online. TinyFloor heeft één kant-en-klaar kantoor."
+        },
+        {
+          "title": "Integraties en beveiliging al in het instapabonnement",
+          "body": "Entry-S heeft al SSO, integratie met Google Agenda en Microsoft Teams, toegangscontrole en een SLA."
+        },
+        {
+          "title": "Opnames, transcriptie en AI-notulen",
+          "body": "Inbegrepen bij Business Starter en op verzoek aangezet. TinyFloor neemt niet op."
+        },
+        {
+          "title": "Evenementen",
+          "body": "Eenmalige abonnementen voor een week of een maand, vanaf $ 35, voor meetups en conferenties."
+        }
+      ]
+    },
+    {
+      "title": "Wat past bij je team",
+      "items": [
+        {
+          "title": "TinyFloor, voor het dagelijkse kantoor van een klein team",
+          "body": "Voor een team van 4 tot 15 dat een privékantoor wil met gesprekken, een vergaderruimte, chat en een whiteboard, voor $ 29 per maand, zonder een ruimte te hoeven kiezen."
+        },
+        {
+          "title": "oVice, voor bedrijven en community's",
+          "body": "Als je SSO, integratie met Microsoft Teams of Google Agenda, eigen indelingen, ruimtes voor tientallen of honderden mensen, of een ruimte voor een evenement nodig hebt."
+        }
+      ]
+    },
+    {
+      "title": "Een team overzetten vanaf oVice",
+      "items": [
+        {
+          "title": "Maak een kantoor",
+          "detail": "Twee minuten",
+          "body": "Noem het naar het team. De vloer, de bureaus en de vergaderruimte staan klaar; er is geen indeling om opnieuw te bouwen."
+        },
+        {
+          "title": "Deel één uitnodigingslink",
+          "detail": "In de teamchat",
+          "body": "Collega's loggen in met Google of e-mail en lopen binnen vanuit de browser, op een laptop of telefoon."
+        },
+        {
+          "title": "Werk er een gewone week",
+          "detail": "De standup in de vergaderruimte",
+          "body": "Gebruik het een week naast oVice en kijk dan welke het team echt opende."
+        }
+      ]
+    },
+    {
+      "title": "Hoe we vergeleken",
+      "body": [
+        "De prijzen, grenzen en functies van oVice komen van de prijspagina en de functievergelijking, gelezen in oktober 2026, in Amerikaanse dollars exclusief belasting. Wat daar niet stond, lieten we weg in plaats van te gokken. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van oVice voordat je koopt."
+      ]
+    }
   ]
 }

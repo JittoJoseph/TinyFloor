@@ -491,11 +491,11 @@
       "ovice": {
         "label": "oVice-vaihtoehto",
         "meta": {
-          "title": "oVice-vaihtoehto pienille tiimeille",
-          "description": "oVice laskuttaa tilan mukaan tai 20 käyttäjästä alkaen. TinyFloor on selaimessa toimiva virtuaalitoimisto pienille tiimeille: ilmainen 3 hengelle, sitten $29 kuukaudessa koko tiimille."
+          "title": "Vaihtoehto oVicelle: hinnat, ilmaisversio ja yksinkertaisempi toimisto pienille tiimeille",
+          "description": "oVicen Entry-S maksaa 65–78 $ kuukaudessa yhdestä tilasta noin 10 jäsenelle, ja Business Starter alkaa 20 käyttäjästä. Mitä pieni tiimi maksaa, missä oVice on parempi ja TinyFloor 29 $:lla koko tiimiltä."
         },
         "title": "<em>oVice-vaihtoehto</em> pienten tiimien kokoon.",
-        "subtitle": "oVice on rakennettu yrityksille ja yhteisöille, ja sen tilaukset määräytyvät tilan koon mukaan tai alkavat 20 käyttäjästä. TinyFloor on tehty pienille tiimeille, ja siinä on yksi yksinkertainen hinta toimistoa kohden.",
+        "subtitle": "oVice on tehty yrityksille ja yhteisöille, ja sen hinta on kiinteä tilaa kohden tai käyttäjää kohden 20 käyttäjästä alkaen. TinyFloor on tehty pienille tiimeille, ja sillä on yksi yksinkertainen hinta toimistoa kohden: 29 $ kuukaudessa.",
         "points": [
           {
             "title": "Yksi hinta toimistoa kohden",
@@ -518,20 +518,20 @@
         },
         "faq": [
           {
-            "q": "Paljonko oVice maksaa?",
-            "a": "oVice Entry-S maksaa $65 kuussa tilaa kohden vuosilaskutuksella tai $78 kuukausilaskutuksella, noin 10 vakituiselle jäsenelle. Business Starter maksaa $16 käyttäjältä kuussa 20 käyttäjästä alkaen. TinyFloor maksaa $29 kuukaudessa koko tiimille."
+            "q": "Mitä oVice maksaa?",
+            "a": "oVice Entry-S maksaa 65 $ kuukaudessa tilaa kohden vuosimaksulla (780 $ vuodessa) tai 78 $ kuukausittain, noin 10 vakituiselle jäsenelle. Entry-M maksaa 245 tai 294 $ noin 40:lle. Business Starter maksaa 16 $ käyttäjältä kuukaudessa vuosimaksulla tai 19,20 $ kuukausittain, 20 käyttäjästä alkaen. TinyFloor maksaa 29 $ kuukaudessa koko tiimiltä."
           },
           {
-            "q": "Onko oVicella ilmaista pakettia?",
-            "a": "On. 14 päivän kokeilun jälkeen tila siirtyy ilmaiseen pakettiin, joka toimii esiversioympäristössä ilman SLA:ta tai tukea. TinyFloorin ilmainen paketti on sama tuote kuin maksulliset, enintään 3 hengelle."
+            "q": "Onko oVicella ilmaisversiota?",
+            "a": "On. 14 päivän kokeilun jälkeen tila siirtyy ilmaisversioon, joka toimii esijulkaisuympäristössä ilman SLA:ta ja tukea sekä ilman pääsynhallintaa, SSO:ta ja integraatioita. TinyFloorin ilmaisversio on sama tuote kuin maksulliset, enintään 3 hengelle."
           },
           {
             "q": "Mitä oVicessa on, mitä TinyFloorissa ei ole?",
-            "a": "oVicessa on omat pohjat, litterointi, tallennus pyynnöstä, kalenteri- ja Microsoft Teams -integraatio sekä paketit tapahtumiin. TinyFloor keskittyy arjen toimistoon: luo kävelemiseen, kokouksiin, chattiin, tauluun ja musiikkiin."
+            "a": "oVicessa on omat asettelut ja avatarit, Google Kalenteri- ja Microsoft Teams -integraatio, SSO, tallennus ja litterointi Business Starterissa sekä kertaluonteiset tilaukset tapahtumiin. TinyFloor keskittyy päivittäiseen toimistoon: kävelemiseen ihmisten luo, kokouksiin, chattiin, tauluun ja musiikkiin."
           },
           {
             "q": "Onko TinyFloor saatavilla japaniksi?",
-            "a": "On. TinyFloor toimii 18 kielellä, myös japaniksi ja koreaksi, ja jokainen voi valita oman kielensä."
+            "a": "On. TinyFloor on saatavilla 18 kielellä, myös japaniksi ja koreaksi, ja jokainen voi valita oman kielensä."
           }
         ]
       },

@@ -1368,5 +1368,185 @@
         "Sococon hinnat, rajat ja ominaisuudet ovat sen hintasivulta, luettu lokakuussa 2026, Yhdysvaltain dollareina ilman veroja. Mitä siellä ei mainittu, jätimme pois arvailun sijaan. Me teemme TinyFlooria, joten kerromme selvästi, mitä se ei tee. Hinnat muuttuvat: tarkista Sococon sivu ennen ostamista."
       ]
     }
+  ],
+  "ovice": [
+    {
+      "title": "oVice ja TinyFloor lyhyesti",
+      "body": [
+        "Molemmissa liikutat avatariasi jutellaksesi ihmisten kanssa, ja molemmissa on tilaus, jonka hinta on tilaa eikä henkeä kohden. oVice lisää hallinnan ja integraatiot, joita yrityksen käyttöönotto vaatii; TinyFloor pysyy siinä, mitä pieni tiimi käyttää joka päivä."
+      ],
+      "table": {
+        "head": [
+          "",
+          "oVice",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "8 hengen tiimi, kuukaudessa",
+            "65 $ vuosittain, 78 $ kuukausittain (Entry-S)",
+            "29 $ koko tiimiltä"
+          ],
+          [
+            "Ilmaisversio",
+            "On, esijulkaisuympäristössä ilman SLA:ta ja tukea",
+            "Enintään 3 henkeä, sama tuote kuin maksullinen"
+          ],
+          [
+            "Miten hinnoitellaan",
+            "Tilaa kohden Entryssä, käyttäjää kohden 20:stä alkaen Business Starterissa",
+            "Yksi hinta toimistolle"
+          ],
+          [
+            "Toimiston pitäminen yksityisenä",
+            "Salasana-, sähköposti- ja IP-rajaukset maksullisissa",
+            "Yksityinen joka tilauksessa"
+          ],
+          [
+            "Integraatiot ja SSO",
+            "Google Kalenteri, Microsoft Teams ja SSO maksullisissa",
+            "Ei ole"
+          ],
+          [
+            "Tila",
+            "Omat asettelut ja avatarit",
+            "Valmis toimisto"
+          ],
+          [
+            "Tallennus ja litterointi",
+            "Pyynnöstä Business Starterissa",
+            "Ei"
+          ],
+          [
+            "Tapahtumat",
+            "Kertatilaukset alkaen 35 $ viikossa",
+            "Ei"
+          ]
+        ],
+        "note": "oVicen tiedot sen hintasivulta lokakuussa 2026, Yhdysvaltain dollareina ilman veroja."
+      }
+    },
+    {
+      "title": "Mitä oVicen tilaukset maksavat",
+      "body": [
+        "oVicen Entry-tilaukset ovat kiinteä hinta tilaa kohden, mitoitettuna sen mukaan, montako henkeä voi olla paikalla yhtä aikaa. Business Starter hinnoitellaan käyttäjää kohden, 20:stä alkaen."
+      ],
+      "table": {
+        "head": [
+          "Tilaus",
+          "Kuukausittain",
+          "Vuosittain, kuukaudessa",
+          "Kenelle"
+        ],
+        "rows": [
+          [
+            "oVice Entry-S",
+            "78 $",
+            "65 $",
+            "Yksi tila; noin 10 vakituista jäsentä, 50 paikalla yhtä aikaa"
+          ],
+          [
+            "oVice Entry-M",
+            "294 $",
+            "245 $",
+            "Yksi tila; noin 40 vakituista jäsentä, 200 paikalla yhtä aikaa"
+          ],
+          [
+            "oVice Business Starter",
+            "384 $ 20 käyttäjältä",
+            "320 $ 20 käyttäjältä",
+            "20 käyttäjästä alkaen; rajattomasti tiloja ja rakennuksia"
+          ],
+          [
+            "TinyFloor Pro",
+            "29 $",
+            "Vain kuukausittain",
+            "Yksi toimisto pienelle tiimille; ilmainen enintään 3:lle"
+          ]
+        ],
+        "note": "oVicen hinnat sen hintasivulta, lokakuu 2026; Business Starter maksaa 19,20 $ käyttäjältä kuukausittain tai 16 $ vuosittain. TinyFloor Pro laskutetaan kuukausittain."
+      }
+    },
+    {
+      "title": "Miksi pienet tiimit etsivät vaihtoehtoa oVicelle",
+      "items": [
+        {
+          "title": "Tarvetta suurempi tila",
+          "body": "Entry-S:ään mahtuu 50 henkeä paikalla yhtä aikaa. Kuuden hengen tiimi maksaa saman 65–78 $ kuukaudessa kuin kymmenen hengen tiimi."
+        },
+        {
+          "title": "Ilmaisversio ei ole päivittäiseen työhön",
+          "body": "oVice pyörittää ilmaisversiota esijulkaisuympäristössä ilman SLA:ta, tukea ja pääsynhallintaa, joten se sopii paremmin kokeiluun kuin tiimin työhön."
+        },
+        {
+          "title": "Yritystilaus alkaa 20:stä",
+          "body": "Business Starterin hallinta, raportit ja tallennus alkavat 20 käyttäjästä, 320 $ kuukaudessa tai enemmän."
+        },
+        {
+          "title": "Tehty käyttöönottoihin",
+          "body": "Rakennukset, käyttöoikeusryhmät ja etätyöraportit on tehty suuremmille organisaatioille; pieni tiimi ei ehkä koskaan käytä niitä."
+        }
+      ]
+    },
+    {
+      "title": "Missä oVice on parempi",
+      "items": [
+        {
+          "title": "Itse muokattavat tilat",
+          "body": "Omat asettelut ja avatarit, useita tiloja ja rakennuksia Business Starterissa ja tilakoot sadoille paikalla oleville. TinyFloorissa on yksi valmis toimisto."
+        },
+        {
+          "title": "Integraatiot ja tietoturva jo perustilauksessa",
+          "body": "Entry-S sisältää jo SSO:n, Google Kalenteri- ja Microsoft Teams -integraation, pääsynhallinnan ja SLA:n."
+        },
+        {
+          "title": "Tallennus, litterointi ja tekoälypöytäkirjat",
+          "body": "Sisältyvät Business Starteriin ja otetaan käyttöön pyynnöstä. TinyFloor ei tallenna."
+        },
+        {
+          "title": "Tapahtumat",
+          "body": "Kertatilaukset viikoksi tai kuukaudeksi, alkaen 35 $, meetupeihin ja konferensseihin."
+        }
+      ]
+    },
+    {
+      "title": "Kumpi sopii tiimillesi",
+      "items": [
+        {
+          "title": "TinyFloor, pienen tiimin päivittäiseksi toimistoksi",
+          "body": "4–15 hengen tiimille, joka haluaa yksityisen toimiston puheluineen, neuvotteluhuoneineen, chatteineen ja tauluineen, 29 $:lla kuukaudessa, ilman tilan mitoittamista."
+        },
+        {
+          "title": "oVice, yrityksille ja yhteisöille",
+          "body": "Jos tarvitset SSO:n, Microsoft Teams- tai Google Kalenteri -integraation, omia asetteluja, huoneita kymmenille tai sadoille ihmisille tai tilan tapahtumalle."
+        }
+      ]
+    },
+    {
+      "title": "Tiimin siirtäminen oVicesta",
+      "items": [
+        {
+          "title": "Luo toimisto",
+          "detail": "Kaksi minuuttia",
+          "body": "Nimeä se tiimin mukaan. Kerros, työpöydät ja neuvotteluhuone ovat valmiina; asettelua ei tarvitse rakentaa uudelleen."
+        },
+        {
+          "title": "Jaa yksi kutsulinkki",
+          "detail": "Tiimin chatissa",
+          "body": "Kollegat kirjautuvat Googlella tai sähköpostilla ja tulevat sisään selaimesta, tietokoneella tai puhelimella."
+        },
+        {
+          "title": "Tehkää siellä tavallinen viikko",
+          "detail": "Standup neuvotteluhuoneessa",
+          "body": "Käyttäkää sitä viikon ajan oVicen rinnalla ja päättäkää sitten, kumpaa tiimi oikeasti avasi."
+        }
+      ]
+    },
+    {
+      "title": "Miten vertailimme",
+      "body": [
+        "oVicen hinnat, rajat ja ominaisuudet ovat sen hintasivulta ja ominaisuusvertailusta, luettu lokakuussa 2026, Yhdysvaltain dollareina ilman veroja. Mitä siellä ei mainittu, jätimme pois arvailun sijaan. Me teemme TinyFlooria, joten kerromme selvästi, mitä se ei tee. Hinnat muuttuvat: tarkista oVicen sivu ennen ostamista."
+      ]
+    }
   ]
 }

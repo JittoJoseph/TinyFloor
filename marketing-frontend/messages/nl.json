@@ -441,11 +441,11 @@
       "sococo": {
         "label": "Sococo-alternatief",
         "meta": {
-          "title": "Sococo-alternatief voor kleine remote teams",
-          "description": "Sococo begint bij 10 plekken op een jaarabonnement. TinyFloor is een virtueel kantoor in de browser, gratis voor 3 mensen en $29 per maand voor het hele team, per maand gefactureerd."
+          "title": "Alternatief voor Sococo: prijzen, het minimum van 10 plekken en een maandoptie",
+          "description": "Sococo kost $ 13,49–14,99 per plek per maand, met een minimum van 10 plekken en 500 minuten per plek. Wat een klein team betaalt, wat Sococo beter doet en TinyFloor voor $ 29 per maand voor het hele team."
         },
         "title": "Een <em>Sococo-alternatief</em> zonder minimum van 10 plekken.",
-        "subtitle": "Sococo verkoopt plekken per jaar, minimaal 10. TinyFloor heeft één maandprijs voor het hele kantoor, en een klein team kan gratis beginnen.",
+        "subtitle": "Sococo verkoopt plekken per 10 als minimum, voor $ 13,49 per plek bij jaarlijkse vooruitbetaling of $ 14,99 per maand, met 500 minuten per plek. TinyFloor is één maandprijs voor het hele kantoor, en een klein team kan gratis beginnen.",
         "points": [
           {
             "title": "Begin op je echte grootte",
@@ -461,14 +461,18 @@
           }
         ],
         "them": {
-          "price": "$13,49 per plek per maand, jaarlijks gefactureerd, minimaal 10 plekken",
+          "price": "$ 13,49 per plek per maand bij jaarlijkse vooruitbetaling, $ 14,99 maandelijks, minimaal 10 plekken",
           "freePlan": "Geen, alleen een gratis proefperiode",
           "screenShare": "Ja, meerdere tegelijk"
         },
         "faq": [
           {
             "q": "Wat kost Sococo?",
-            "a": "Sococo kost $13,49 per plek per maand, jaarlijks gefactureerd, met minimaal 10 plekken en 500 minuten per plek per maand. Sococo Unlimited kost $24,99 per plek met minimaal 100 plekken. TinyFloor is gratis voor maximaal 3 mensen en kost $29 per maand voor het hele team."
+            "a": "Sococo kost $ 13,49 per plek per maand bij jaarlijkse vooruitbetaling, of $ 14,99 met een maandcontract, met minimaal 10 plekken en 500 minuten per plek per maand; extra minuten kosten $ 5 per 1.000. Sococo Unlimited kost $ 24,99 per plek met minimaal 100 plekken. TinyFloor is gratis voor maximaal 3 mensen en kost $ 29 per maand voor het hele team."
+          },
+          {
+            "q": "Wat kost Sococo voor een team van 5?",
+            "a": "Hetzelfde als voor 10: het minimum is 10 plekken, dus $ 134,90 per maand bij jaarlijkse vooruitbetaling ($ 1.618,80 per jaar) of $ 149,90 per maand. TinyFloor kost $ 29 per maand."
           },
           {
             "q": "Is er een gratis versie van Sococo?",
@@ -476,11 +480,11 @@
           },
           {
             "q": "Wat heeft Sococo dat TinyFloor niet heeft?",
-            "a": "Bij Sococo kies je plattegronden en inrichting, en het koppelt met Zoom, Webex, Google Meet en Microsoft Teams. TinyFloor houdt het bij één kantoorverdieping en regelt zijn eigen gesprekken en vergaderingen."
+            "a": "Een keuze uit plattegronden en inrichting, koppelingen met Zoom, Webex, Google Meet en Microsoft Teams, documenten delen, en apps voor iOS en Android. TinyFloor houdt het bij één kantoorvloer en heeft eigen gesprekken en vergaderingen."
           },
           {
             "q": "Moet ik iets installeren?",
-            "a": "Nee. TinyFloor draait in de browser op desktop en mobiel. Deel de uitnodigingslink van je kantoor en je team loopt binnen."
+            "a": "Nee. TinyFloor werkt in de browser op desktop en mobiel. Deel de uitnodigingslink van je kantoor en je team loopt binnen."
           }
         ]
       },

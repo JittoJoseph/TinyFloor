@@ -441,11 +441,11 @@
       "sococo": {
         "label": "Alternativa a Sococo",
         "meta": {
-          "title": "Alternativa a Sococo per piccoli team da remoto",
-          "description": "Sococo parte da 10 posti con piano annuale. TinyFloor è un ufficio virtuale nel browser, gratis per 3 persone e $29 al mese per tutto il team, con fatturazione mensile."
+          "title": "Alternativa a Sococo: prezzi, il minimo di 10 posti e un'opzione mensile",
+          "description": "Sococo costa 13,49–14,99 $ a posto al mese, con un minimo di 10 posti e 500 minuti a posto. Quanto paga un piccolo team, cosa fa meglio Sococo e TinyFloor a 29 $ al mese per tutto il team."
         },
         "title": "Un'<em>alternativa a Sococo</em> senza il minimo di 10 posti.",
-        "subtitle": "Sococo vende posti all'anno, almeno 10. TinyFloor ha un prezzo mensile per tutto l'ufficio, e un piccolo team può iniziare gratis.",
+        "subtitle": "Sococo vende posti a blocchi di almeno 10, a 13,49 $ a posto con pagamento annuale anticipato o 14,99 $ mese per mese, con 500 minuti a posto. TinyFloor è un prezzo mensile per tutto l'ufficio, e un piccolo team può iniziare gratis.",
         "points": [
           {
             "title": "Parti dalla tua vera dimensione",
@@ -461,14 +461,18 @@
           }
         ],
         "them": {
-          "price": "$13,49 a posto al mese, fatturato annualmente, minimo 10 posti",
+          "price": "13,49 $ a posto al mese con pagamento annuale anticipato, 14,99 $ mensile, minimo 10 posti",
           "freePlan": "Nessuno, solo una prova gratuita",
-          "screenShare": "Sì, più schermi insieme"
+          "screenShare": "Sì, più di una alla volta"
         },
         "faq": [
           {
             "q": "Quanto costa Sococo?",
-            "a": "Sococo costa $13,49 a posto al mese, fatturato annualmente, con un minimo di 10 posti e 500 minuti a posto al mese. Sococo Unlimited costa $24,99 a posto con un minimo di 100 posti. TinyFloor è gratis fino a 3 persone e costa $29 al mese per tutto il team."
+            "a": "Sococo costa 13,49 $ a posto al mese con pagamento annuale anticipato, o 14,99 $ con durata mensile, con un minimo di 10 posti e 500 minuti a posto al mese; i minuti in più costano 5 $ ogni 1.000. Sococo Unlimited costa 24,99 $ a posto con un minimo di 100. TinyFloor è gratis fino a 3 persone e costa 29 $ al mese per tutto il team."
+          },
+          {
+            "q": "Quanto costa Sococo per un team di 5?",
+            "a": "Come per 10: il minimo è di 10 posti, quindi 134,90 $ al mese con pagamento annuale anticipato (1.618,80 $ all'anno) o 149,90 $ mensile. TinyFloor costa 29 $ al mese."
           },
           {
             "q": "Esiste una versione gratuita di Sococo?",
@@ -476,11 +480,11 @@
           },
           {
             "q": "Cosa ha Sococo che TinyFloor non ha?",
-            "a": "Sococo ti fa scegliere planimetrie e arredi, e si collega a Zoom, Webex, Google Meet e Microsoft Teams. TinyFloor mantiene un solo piano d'ufficio e gestisce chiamate e riunioni da sé."
+            "a": "Una scelta di piantine e arredi, collegamenti con Zoom, Webex, Google Meet e Microsoft Teams, condivisione di documenti e app per iOS e Android. TinyFloor ha un solo piano d'ufficio e gestisce da sé chiamate e riunioni."
           },
           {
             "q": "Devo installare qualcosa?",
-            "a": "No. TinyFloor funziona nel browser su desktop e mobile. Condividi il link d'invito del tuo ufficio e il team entra."
+            "a": "No. TinyFloor funziona nel browser, su computer e mobile. Condividi il link di invito del tuo ufficio e il team entra."
           }
         ]
       },

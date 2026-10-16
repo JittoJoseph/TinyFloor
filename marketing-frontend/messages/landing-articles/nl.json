@@ -1193,5 +1193,180 @@
         "De prijzen en functies van Roam komen van de prijspagina, gelezen in oktober 2026, in Amerikaanse dollars exclusief belasting; Roam toont ook prijzen in sommige lokale valuta, zoals roepies voor bedrijven in India. Wat daar niet stond, lieten we weg in plaats van te gokken. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van Roam voordat je koopt."
       ]
     }
+  ],
+  "sococo": [
+    {
+      "title": "Sococo en TinyFloor in één oogopslag",
+      "body": [
+        "Allebei tonen ze je team als plattegrond van een kantoor met ruimtes die je binnenloopt. Sococo, nu onderdeel van IgniteTech, verkoopt plekken met een minimum; TinyFloor rekent één prijs voor het kantoor."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Sococo",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Een team van 8, per maand",
+            "$ 134,90 jaarlijks vooruitbetaald, $ 149,90 maandelijks (minimaal 10 plekken)",
+            "$ 29 voor het hele team"
+          ],
+          [
+            "Gratis abonnement",
+            "Geen, een gratis proefperiode",
+            "Tot 3 mensen, alle functies"
+          ],
+          [
+            "Hoe het geprijsd is",
+            "Per plek, minimaal 10",
+            "Eén prijs voor het kantoor"
+          ],
+          [
+            "Minuten",
+            "500 per plek per maand; meer voor $ 5 per 1.000",
+            "Gesprekken worden niet geteld"
+          ],
+          [
+            "Het kantoor",
+            "Een keuze uit plattegronden en inrichting",
+            "Een kant-en-klaar kantoor"
+          ],
+          [
+            "Videogesprekken",
+            "Eigen, of Zoom, Webex, Google Meet of Microsoft Teams",
+            "Eigen gesprekken en vergaderruimte"
+          ],
+          [
+            "Telefoons",
+            "Apps voor iOS en Android",
+            "De mobiele browser"
+          ]
+        ],
+        "note": "Gegevens over Sococo van de prijspagina in oktober 2026, exclusief belasting."
+      }
+    },
+    {
+      "title": "Wat Sococo kost per teamgrootte",
+      "body": [
+        "Sococo rekent minimaal 10 plekken, voor $ 13,49 per plek per maand bij jaarlijkse vooruitbetaling of $ 14,99 met een maandcontract, dus elk team van 10 of minder betaalt hetzelfde."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Sococo, maandcontract",
+          "Sococo, jaarlijks vooruitbetaald, per maand",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "4 mensen",
+            "$ 149,90",
+            "$ 134,90",
+            "$ 29"
+          ],
+          [
+            "8 mensen",
+            "$ 149,90",
+            "$ 134,90",
+            "$ 29"
+          ],
+          [
+            "10 mensen",
+            "$ 149,90",
+            "$ 134,90",
+            "$ 29"
+          ],
+          [
+            "12 mensen",
+            "$ 179,88",
+            "$ 161,88",
+            "$ 29"
+          ]
+        ],
+        "note": "Sococo voor $ 14,99 per plek maandelijks of $ 13,49 jaarlijks vooruitbetaald, minimaal 10 plekken (prijspagina van Sococo, oktober 2026). TinyFloor Pro is maandelijks; teams tot 3 blijven gratis."
+      }
+    },
+    {
+      "title": "Waarom kleine teams een alternatief voor Sococo zoeken",
+      "items": [
+        {
+          "title": "Tien plekken, hoe klein je ook bent",
+          "body": "Een team van 4 betaalt voor 10. Met $ 134,90 tot $ 149,90 per maand is dat de prijs van een veel groter team."
+        },
+        {
+          "title": "Minuten om in de gaten te houden",
+          "body": "Elke plek bevat 500 minuten per maand, iets minder dan 25 minuten per werkdag. Een team dat veel praat, koopt er meer bij voor $ 5 per 1.000 minuten."
+        },
+        {
+          "title": "De beste prijs vraagt een jaar vooruit",
+          "body": "$ 13,49 is de prijs met het jaar vooruitbetaald; per maand is het $ 14,99 per plek."
+        },
+        {
+          "title": "Geen gratis abonnement",
+          "body": "Er is een gratis proefperiode, maar geen abonnement waarop een klein team kan blijven zonder te betalen."
+        }
+      ]
+    },
+    {
+      "title": "Wat Sococo beter doet",
+      "items": [
+        {
+          "title": "Kantoren om uit te kiezen",
+          "body": "Kies een plattegrond en inrichting die bij het team passen. TinyFloor heeft één kant-en-klaar kantoor."
+        },
+        {
+          "title": "Werkt met je eigen beltool",
+          "body": "Sococo koppelt aan Zoom, Webex, Google Meet en Microsoft Teams, zodat een team zijn videotool kan houden en Sococo als plattegrond gebruikt."
+        },
+        {
+          "title": "Gemaakt voor grotere bedrijven",
+          "body": "Sococo Unlimited, voor bedrijven met 100 plekken of meer, heeft onbeperkte minuten, voor $ 24,99 per plek met een jaarcontract."
+        },
+        {
+          "title": "Apps voor de telefoon",
+          "body": "Sococo heeft apps voor iOS en Android; TinyFloor werkt in de mobiele browser."
+        }
+      ]
+    },
+    {
+      "title": "Wat past bij je team",
+      "items": [
+        {
+          "title": "TinyFloor, voor een klein team dat per maand betaalt",
+          "body": "Voor een team van 4 tot 15 dat een privékantoor wil met gesprekken, een vergaderruimte en chat, zonder minimum aan plekken, minutenbundel of jaarlijkse vooruitbetaling."
+        },
+        {
+          "title": "Sococo, voor een bedrijf dat op Zoom of Teams draait",
+          "body": "Als je de kantoorplattegrond bovenop de videotool wilt waarvoor je al betaalt, een keuze uit plattegronden of ruimte voor tientallen plekken."
+        }
+      ]
+    },
+    {
+      "title": "Een team overzetten vanaf Sococo",
+      "items": [
+        {
+          "title": "Maak een kantoor",
+          "detail": "Twee minuten",
+          "body": "Noem het naar het team. De vloer, de bureaus en de vergaderruimte staan klaar."
+        },
+        {
+          "title": "Deel één uitnodigingslink",
+          "detail": "In de teamchat",
+          "body": "Collega's loggen in met Google of e-mail en lopen binnen vanuit de browser, op een laptop of telefoon."
+        },
+        {
+          "title": "Werk er een gewone week",
+          "detail": "De standup in de vergaderruimte",
+          "body": "Gebruik het een week naast Sococo en kijk vóór je verlenging welke het team echt opende."
+        }
+      ]
+    },
+    {
+      "title": "Hoe we vergeleken",
+      "body": [
+        "De prijzen, grenzen en functies van Sococo komen van de prijspagina, gelezen in oktober 2026, in Amerikaanse dollars exclusief belasting. Wat daar niet stond, lieten we weg in plaats van te gokken. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van Sococo voordat je koopt."
+      ]
+    }
   ]
 }

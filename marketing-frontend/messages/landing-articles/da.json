@@ -1193,5 +1193,180 @@
         "Roams priser og funktioner kommer fra dets prisside, læst i oktober 2026, i amerikanske dollar ekskl. moms; Roam viser også priser i nogle lokale valutaer, fx rupier for virksomheder i Indien. Hvad der ikke stod der, udelod vi i stedet for at gætte. Vi laver TinyFloor, så vi siger tydeligt, hvad det ikke kan. Priser ændrer sig: tjek Roams side, før du køber."
       ]
     }
+  ],
+  "sococo": [
+    {
+      "title": "Sococo og TinyFloor i overblik",
+      "body": [
+        "Begge viser teamet som et kort over et kontor med lokaler, man går ind i. Sococo, nu en del af IgniteTech, sælger pladser med et minimum; TinyFloor tager én pris for kontoret."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Sococo",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Et team på 8, om måneden",
+            "134,90 $ forudbetalt årligt, 149,90 $ månedligt (mindst 10 pladser)",
+            "29 $ for hele teamet"
+          ],
+          [
+            "Gratisplan",
+            "Ingen, en gratis prøveperiode",
+            "Op til 3 personer, alle funktioner"
+          ],
+          [
+            "Hvordan prisen beregnes",
+            "Per plads, mindst 10",
+            "Én pris for kontoret"
+          ],
+          [
+            "Minutter",
+            "500 per plads om måneden; flere til 5 $ per 1.000",
+            "Opkald tælles ikke"
+          ],
+          [
+            "Kontoret",
+            "Valg af plantegninger og indretning",
+            "Et færdigt kontor"
+          ],
+          [
+            "Videoopkald",
+            "Egne, eller Zoom, Webex, Google Meet eller Microsoft Teams",
+            "Egne opkald og mødelokale"
+          ],
+          [
+            "Telefoner",
+            "Apps til iOS og Android",
+            "Mobilbrowseren"
+          ]
+        ],
+        "note": "Oplysninger om Sococo fra dets prisside i oktober 2026, ekskl. moms."
+      }
+    },
+    {
+      "title": "Hvad Sococo koster efter teamstørrelse",
+      "body": [
+        "Sococo opkræver mindst 10 pladser, til 13,49 $ per plads om måneden ved årlig forudbetaling eller 14,99 $ med månedlig binding, så alle teams på 10 eller færre betaler det samme."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Sococo, månedlig binding",
+          "Sococo, forudbetalt årligt, om måneden",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "4 personer",
+            "149,90 $",
+            "134,90 $",
+            "29 $"
+          ],
+          [
+            "8 personer",
+            "149,90 $",
+            "134,90 $",
+            "29 $"
+          ],
+          [
+            "10 personer",
+            "149,90 $",
+            "134,90 $",
+            "29 $"
+          ],
+          [
+            "12 personer",
+            "179,88 $",
+            "161,88 $",
+            "29 $"
+          ]
+        ],
+        "note": "Sococo til 14,99 $ per plads månedligt eller 13,49 $ forudbetalt årligt, mindst 10 pladser (Sococos prisside, oktober 2026). TinyFloor Pro betales månedligt; teams på op til 3 forbliver gratis."
+      }
+    },
+    {
+      "title": "Hvorfor små teams leder efter et alternativ til Sococo",
+      "items": [
+        {
+          "title": "Ti pladser, uanset hvor lille I er",
+          "body": "Et team på 4 betaler for 10. Med 134,90–149,90 $ om måneden er det prisen for et meget større team."
+        },
+        {
+          "title": "Minutter at holde øje med",
+          "body": "Hver plads indeholder 500 minutter om måneden, knap 25 minutter per arbejdsdag. Et team, der snakker meget, køber flere til 5 $ per 1.000 minutter."
+        },
+        {
+          "title": "Den bedste pris kræver et år forud",
+          "body": "13,49 $ gælder med året forudbetalt; månedligt er det 14,99 $ per plads."
+        },
+        {
+          "title": "Ingen gratisplan",
+          "body": "Der er en gratis prøveperiode, men ingen plan, hvor et lille team kan blive uden at betale."
+        }
+      ]
+    },
+    {
+      "title": "Hvad Sococo gør bedre",
+      "items": [
+        {
+          "title": "Kontorer at vælge imellem",
+          "body": "Vælg en plantegning og en indretning, der passer til teamet. TinyFloor har ét færdigt kontor."
+        },
+        {
+          "title": "Virker med dit opkaldsværktøj",
+          "body": "Sococo forbinder til Zoom, Webex, Google Meet og Microsoft Teams, så et team kan beholde sit videoværktøj og bruge Sococo som kort."
+        },
+        {
+          "title": "Bygget til større virksomheder",
+          "body": "Sococo Unlimited, til virksomheder med 100 pladser eller flere, har ubegrænsede minutter, til 24,99 $ per plads med årlig binding."
+        },
+        {
+          "title": "Apps til telefonen",
+          "body": "Sococo har apps til iOS og Android; TinyFloor kører i mobilbrowseren."
+        }
+      ]
+    },
+    {
+      "title": "Hvad der passer til dit team",
+      "items": [
+        {
+          "title": "TinyFloor, til et lille team, der betaler månedligt",
+          "body": "Til et team på 4 til 15, der vil have et privat kontor med opkald, mødelokale og chat, uden minimum af pladser, minutpulje eller årlig forudbetaling."
+        },
+        {
+          "title": "Sococo, til en virksomhed, der kører Zoom eller Teams",
+          "body": "Hvis du vil have kontorkortet oven på det videoværktøj, du allerede betaler for, et valg af plantegninger eller plads til snesevis af pladser."
+        }
+      ]
+    },
+    {
+      "title": "Flyt et team fra Sococo",
+      "items": [
+        {
+          "title": "Opret et kontor",
+          "detail": "To minutter",
+          "body": "Navngiv det efter teamet. Gulvet, skrivebordene og mødelokalet er klar."
+        },
+        {
+          "title": "Del ét invitationslink",
+          "detail": "I teamchatten",
+          "body": "Kollegerne logger ind med Google eller e-mail og går ind fra browseren, på computer eller telefon."
+        },
+        {
+          "title": "Arbejd der en almindelig uge",
+          "detail": "Standup i mødelokalet",
+          "body": "Brug det ved siden af Sococo i en uge, og beslut før jeres fornyelse, hvilket teamet faktisk åbnede."
+        }
+      ]
+    },
+    {
+      "title": "Sådan sammenlignede vi",
+      "body": [
+        "Sococos priser, grænser og funktioner kommer fra dets prisside, læst i oktober 2026, i amerikanske dollar ekskl. moms. Hvad der ikke stod der, udelod vi i stedet for at gætte. Vi laver TinyFloor, så vi siger tydeligt, hvad det ikke kan. Priser ændrer sig: tjek Sococos side, før du køber."
+      ]
+    }
   ]
 }

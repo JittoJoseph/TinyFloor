@@ -1193,5 +1193,180 @@
         "Roamin hinnat ja ominaisuudet ovat sen hintasivulta, luettu lokakuussa 2026, Yhdysvaltain dollareina ilman veroja; Roam näyttää hinnat myös joissakin paikallisissa valuutoissa, kuten rupioina Intiassa toimiville yrityksille. Mitä siellä ei mainittu, jätimme pois arvailun sijaan. Me teemme TinyFlooria, joten kerromme selvästi, mitä se ei tee. Hinnat muuttuvat: tarkista Roamin sivu ennen ostamista."
       ]
     }
+  ],
+  "sococo": [
+    {
+      "title": "Sococo ja TinyFloor lyhyesti",
+      "body": [
+        "Molemmat näyttävät tiimin toimiston pohjapiirroksena, jonka huoneisiin astutaan. Sococo, nykyään osa IgniteTechiä, myy paikkoja vähimmäismäärällä; TinyFloor veloittaa yhden hinnan toimistosta."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Sococo",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "8 hengen tiimi, kuukaudessa",
+            "134,90 $ vuoden ennakkomaksulla, 149,90 $ kuukausittain (vähintään 10 paikkaa)",
+            "29 $ koko tiimiltä"
+          ],
+          [
+            "Ilmaisversio",
+            "Ei ole, ilmainen kokeilu",
+            "Enintään 3 henkeä, kaikki ominaisuudet"
+          ],
+          [
+            "Miten hinnoitellaan",
+            "Paikkaa kohden, vähintään 10",
+            "Yksi hinta toimistolle"
+          ],
+          [
+            "Minuutit",
+            "500 paikkaa kohden kuukaudessa; lisää 5 $ per 1 000",
+            "Puheluita ei lasketa"
+          ],
+          [
+            "Toimisto",
+            "Valittavat pohjapiirrokset ja sisustus",
+            "Valmis toimisto"
+          ],
+          [
+            "Videopuhelut",
+            "Omat, tai Zoom, Webex, Google Meet tai Microsoft Teams",
+            "Omat puhelut ja neuvotteluhuone"
+          ],
+          [
+            "Puhelimet",
+            "iOS- ja Android-sovellukset",
+            "Mobiiliselain"
+          ]
+        ],
+        "note": "Sococon tiedot sen hintasivulta lokakuussa 2026, ilman veroja."
+      }
+    },
+    {
+      "title": "Mitä Sococo maksaa tiimin koon mukaan",
+      "body": [
+        "Sococo laskuttaa vähintään 10 paikkaa, 13,49 $ paikalta kuukaudessa vuoden ennakkomaksulla tai 14,99 $ kuukausisopimuksella, joten jokainen enintään 10 hengen tiimi maksaa saman."
+      ],
+      "table": {
+        "head": [
+          "Tiimi",
+          "Sococo, kuukausisopimus",
+          "Sococo, vuoden ennakkomaksu, kuukaudessa",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "4 henkeä",
+            "149,90 $",
+            "134,90 $",
+            "29 $"
+          ],
+          [
+            "8 henkeä",
+            "149,90 $",
+            "134,90 $",
+            "29 $"
+          ],
+          [
+            "10 henkeä",
+            "149,90 $",
+            "134,90 $",
+            "29 $"
+          ],
+          [
+            "12 henkeä",
+            "179,88 $",
+            "161,88 $",
+            "29 $"
+          ]
+        ],
+        "note": "Sococo 14,99 $ paikalta kuukausittain tai 13,49 $ vuoden ennakkomaksulla, vähintään 10 paikkaa (Sococon hintasivu, lokakuu 2026). TinyFloor Pro on kuukausitilaus; enintään 3 hengen tiimit pysyvät ilmaisina."
+      }
+    },
+    {
+      "title": "Miksi pienet tiimit etsivät vaihtoehtoa Sococolle",
+      "items": [
+        {
+          "title": "Kymmenen paikkaa, olittepa kuinka pieniä tahansa",
+          "body": "Neljän hengen tiimi maksaa kymmenestä. 134,90–149,90 $:n kuukausihinta on paljon suuremman tiimin hinta."
+        },
+        {
+          "title": "Minuutteja pitää seurata",
+          "body": "Jokaiseen paikkaan kuuluu 500 minuuttia kuukaudessa, vajaat 25 minuuttia työpäivää kohden. Paljon puhuva tiimi ostaa lisää hintaan 5 $ per 1 000 minuuttia."
+        },
+        {
+          "title": "Paras hinta vaatii vuoden ennakkoon",
+          "body": "13,49 $ on hinta vuoden ennakkomaksulla; kuukausittain se on 14,99 $ paikalta."
+        },
+        {
+          "title": "Ei ilmaisversiota",
+          "body": "Ilmainen kokeilu on, mutta ei tilausta, jolla pieni tiimi voisi jatkaa maksamatta."
+        }
+      ]
+    },
+    {
+      "title": "Missä Sococo on parempi",
+      "items": [
+        {
+          "title": "Valittavia toimistoja",
+          "body": "Valitse tiimille sopiva pohjapiirros ja sisustus. TinyFloorissa on yksi valmis toimisto."
+        },
+        {
+          "title": "Toimii nykyisen puhelutyökalusi kanssa",
+          "body": "Sococo yhdistyy Zoomiin, Webexiin, Google Meetiin ja Microsoft Teamsiin, joten tiimi voi pitää videotyökalunsa ja käyttää Sococoa karttana."
+        },
+        {
+          "title": "Tehty suuremmille yrityksille",
+          "body": "Sococo Unlimitedissa, vähintään 100 paikan yrityksille, on rajattomasti minuutteja hintaan 24,99 $ paikalta vuosisopimuksella."
+        },
+        {
+          "title": "Sovellukset puhelimeen",
+          "body": "Sococolla on iOS- ja Android-sovellukset; TinyFloor toimii mobiiliselaimessa."
+        }
+      ]
+    },
+    {
+      "title": "Kumpi sopii tiimillesi",
+      "items": [
+        {
+          "title": "TinyFloor, kuukausittain maksavalle pienelle tiimille",
+          "body": "4–15 hengen tiimille, joka haluaa yksityisen toimiston puheluineen, neuvotteluhuoneineen ja chatteineen ilman paikkojen vähimmäismäärää, minuuttikiintiötä tai vuoden ennakkomaksua."
+        },
+        {
+          "title": "Sococo, Zoomia tai Teamsia käyttävälle yritykselle",
+          "body": "Jos haluat toimistokartan sen videotyökalun päälle, josta jo maksat, valittavia pohjapiirroksia tai tilaa kymmenille paikoille."
+        }
+      ]
+    },
+    {
+      "title": "Tiimin siirtäminen Sococosta",
+      "items": [
+        {
+          "title": "Luo toimisto",
+          "detail": "Kaksi minuuttia",
+          "body": "Nimeä se tiimin mukaan. Kerros, työpöydät ja neuvotteluhuone ovat valmiina."
+        },
+        {
+          "title": "Jaa yksi kutsulinkki",
+          "detail": "Tiimin chatissa",
+          "body": "Kollegat kirjautuvat Googlella tai sähköpostilla ja tulevat sisään selaimesta, tietokoneella tai puhelimella."
+        },
+        {
+          "title": "Tehkää siellä tavallinen viikko",
+          "detail": "Standup neuvotteluhuoneessa",
+          "body": "Käyttäkää sitä viikon ajan Sococon rinnalla ja päättäkää ennen uusimista, kumpaa tiimi oikeasti avasi."
+        }
+      ]
+    },
+    {
+      "title": "Miten vertailimme",
+      "body": [
+        "Sococon hinnat, rajat ja ominaisuudet ovat sen hintasivulta, luettu lokakuussa 2026, Yhdysvaltain dollareina ilman veroja. Mitä siellä ei mainittu, jätimme pois arvailun sijaan. Me teemme TinyFlooria, joten kerromme selvästi, mitä se ei tee. Hinnat muuttuvat: tarkista Sococon sivu ennen ostamista."
+      ]
+    }
   ]
 }

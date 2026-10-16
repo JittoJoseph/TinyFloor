@@ -1193,5 +1193,180 @@
         "Os preços e recursos do Roam vêm da página de preços dele, lida em outubro de 2026, em dólares americanos sem impostos; o Roam também mostra preços em algumas moedas locais, como rúpias para empresas na Índia. O que não estava lá, deixamos de fora em vez de chutar. Nós fazemos o TinyFloor, então dizemos com clareza o que ele não faz. Preços mudam: confira a página do Roam antes de comprar."
       ]
     }
+  ],
+  "sococo": [
+    {
+      "title": "Sococo e TinyFloor num relance",
+      "body": [
+        "Os dois mostram sua equipe como a planta de um escritório com salas em que você entra. O Sococo, agora parte da IgniteTech, vende lugares com mínimo; o TinyFloor cobra um preço pelo escritório."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Sococo",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Uma equipe de 8, por mês",
+            "US$ 134,90 no anual pré-pago, US$ 149,90 no mensal (mínimo de 10 lugares)",
+            "US$ 29 para a equipe toda"
+          ],
+          [
+            "Plano grátis",
+            "Nenhum, um teste grátis",
+            "Até 3 pessoas, todos os recursos"
+          ],
+          [
+            "Como é cobrado",
+            "Por lugar, no mínimo 10",
+            "Um preço pelo escritório"
+          ],
+          [
+            "Minutos",
+            "500 por lugar por mês; mais a US$ 5 a cada 1.000",
+            "Chamadas não são contadas"
+          ],
+          [
+            "O escritório",
+            "Escolha de plantas e decoração",
+            "Um escritório pronto"
+          ],
+          [
+            "Videochamadas",
+            "As próprias, ou Zoom, Webex, Google Meet ou Microsoft Teams",
+            "Chamadas próprias e sala de reunião"
+          ],
+          [
+            "Celulares",
+            "Apps para iOS e Android",
+            "O navegador do celular"
+          ]
+        ],
+        "note": "Dados do Sococo da página de preços em outubro de 2026, sem impostos."
+      }
+    },
+    {
+      "title": "Quanto custa o Sococo por tamanho de equipe",
+      "body": [
+        "O Sococo cobra no mínimo 10 lugares, a US$ 13,49 por lugar por mês no anual pré-pago ou US$ 14,99 no plano mensal, então qualquer equipe de até 10 paga o mesmo."
+      ],
+      "table": {
+        "head": [
+          "Equipe",
+          "Sococo, plano mensal",
+          "Sococo, anual pré-pago, por mês",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "4 pessoas",
+            "US$ 149,90",
+            "US$ 134,90",
+            "US$ 29"
+          ],
+          [
+            "8 pessoas",
+            "US$ 149,90",
+            "US$ 134,90",
+            "US$ 29"
+          ],
+          [
+            "10 pessoas",
+            "US$ 149,90",
+            "US$ 134,90",
+            "US$ 29"
+          ],
+          [
+            "12 pessoas",
+            "US$ 179,88",
+            "US$ 161,88",
+            "US$ 29"
+          ]
+        ],
+        "note": "Sococo a US$ 14,99 por lugar no mensal ou US$ 13,49 no anual pré-pago, mínimo de 10 lugares (página de preços do Sococo, outubro de 2026). O TinyFloor Pro é mensal; equipes de até 3 continuam grátis."
+      }
+    },
+    {
+      "title": "Por que equipes pequenas procuram uma alternativa ao Sococo",
+      "items": [
+        {
+          "title": "Dez lugares, por menor que seja a equipe",
+          "body": "Uma equipe de 4 paga por 10. Com US$ 134,90 a US$ 149,90 por mês, é o preço de uma equipe bem maior."
+        },
+        {
+          "title": "Minutos para controlar",
+          "body": "Cada lugar inclui 500 minutos por mês, um pouco menos de 25 minutos por dia útil. Uma equipe que conversa muito compra mais a US$ 5 a cada 1.000 minutos."
+        },
+        {
+          "title": "O melhor preço exige pagar o ano adiantado",
+          "body": "US$ 13,49 é o preço com o ano pré-pago; no mensal são US$ 14,99 por lugar."
+        },
+        {
+          "title": "Não há plano grátis",
+          "body": "Existe um teste grátis, mas nenhum plano em que uma equipe pequena possa ficar sem pagar."
+        }
+      ]
+    },
+    {
+      "title": "O que o Sococo faz melhor",
+      "items": [
+        {
+          "title": "Escritórios para escolher",
+          "body": "Escolha uma planta e uma decoração que combinem com a equipe. O TinyFloor tem um escritório pronto."
+        },
+        {
+          "title": "Funciona com a sua ferramenta de chamadas",
+          "body": "O Sococo se conecta ao Zoom, Webex, Google Meet e Microsoft Teams, então a equipe pode manter a ferramenta de vídeo e usar o Sococo como planta."
+        },
+        {
+          "title": "Feito para empresas maiores",
+          "body": "O Sococo Unlimited, para empresas com 100 lugares ou mais, tem minutos ilimitados, a US$ 24,99 por lugar no plano anual."
+        },
+        {
+          "title": "Apps para celular",
+          "body": "O Sococo tem apps para iOS e Android; o TinyFloor roda no navegador do celular."
+        }
+      ]
+    },
+    {
+      "title": "Qual combina com a sua equipe",
+      "items": [
+        {
+          "title": "TinyFloor, para uma equipe pequena que paga por mês",
+          "body": "Para uma equipe de 4 a 15 pessoas que quer um escritório privado com chamadas, sala de reunião e chat, sem mínimo de lugares, pacote de minutos ou pagamento anual adiantado."
+        },
+        {
+          "title": "Sococo, para uma empresa que já usa Zoom ou Teams",
+          "body": "Se você quer a planta do escritório por cima da ferramenta de vídeo que já paga, plantas para escolher ou espaço para dezenas de lugares."
+        }
+      ]
+    },
+    {
+      "title": "Trazer uma equipe do Sococo",
+      "items": [
+        {
+          "title": "Crie um escritório",
+          "detail": "Dois minutos",
+          "body": "Dê o nome da equipe. O andar, as mesas e a sala de reunião já estão prontos."
+        },
+        {
+          "title": "Compartilhe um link de convite",
+          "detail": "No chat da equipe",
+          "body": "Os colegas entram com Google ou e-mail pelo navegador, no notebook ou no celular."
+        },
+        {
+          "title": "Passe uma semana normal lá",
+          "detail": "A daily na sala de reunião",
+          "body": "Use junto com o Sococo por uma semana e decida, antes da renovação, qual a equipe realmente abriu."
+        }
+      ]
+    },
+    {
+      "title": "Como comparamos",
+      "body": [
+        "Os preços, limites e recursos do Sococo vêm da página de preços dele, lida em outubro de 2026, em dólares americanos sem impostos. O que não estava lá, deixamos de fora em vez de chutar. Nós fazemos o TinyFloor, então dizemos com clareza o que ele não faz. Preços mudam: confira a página do Sococo antes de comprar."
+      ]
+    }
   ]
 }

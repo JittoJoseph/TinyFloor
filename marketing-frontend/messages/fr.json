@@ -441,11 +441,11 @@
       "sococo": {
         "label": "Alternative à Sococo",
         "meta": {
-          "title": "Alternative à Sococo pour les petites équipes à distance",
-          "description": "Sococo commence à 10 places avec un engagement annuel. TinyFloor est un bureau virtuel dans le navigateur, gratuit pour 3 personnes et 29 $ par mois pour toute l'équipe, facturé au mois."
+          "title": "Alternative à Sococo : tarifs, minimum de 10 places et une option au mois",
+          "description": "Sococo coûte 13,49 à 14,99 $ par place et par mois, avec un minimum de 10 places et 500 minutes par place. Ce que paie une petite équipe, ce que Sococo fait mieux, et TinyFloor à 29 $ par mois pour toute l'équipe."
         },
         "title": "Une <em>alternative à Sococo</em> sans minimum de 10 places.",
-        "subtitle": "Sococo vend des places à l'année, 10 au minimum. TinyFloor, c'est un prix mensuel pour tout le bureau, et une petite équipe peut commencer gratuitement.",
+        "subtitle": "Sococo vend les places par 10 au minimum, à 13,49 $ la place prépayée à l'année ou 14,99 $ au mois, avec 500 minutes par place. TinyFloor, c'est un prix mensuel pour tout le bureau, et une petite équipe peut commencer gratuitement.",
         "points": [
           {
             "title": "Commencez à votre vraie taille",
@@ -461,25 +461,29 @@
           }
         ],
         "them": {
-          "price": "13,49 $ par place et par mois, facturé à l'année, 10 places minimum",
+          "price": "13,49 $ par place et par mois prépayé à l'année, 14,99 $ au mois, 10 places minimum",
           "freePlan": "Aucune, seulement un essai gratuit",
           "screenShare": "Oui, plusieurs à la fois"
         },
         "faq": [
           {
             "q": "Combien coûte Sococo ?",
-            "a": "Sococo coûte 13,49 $ par place et par mois, facturé à l'année, avec un minimum de 10 places et 500 minutes par place et par mois. Sococo Unlimited coûte 24,99 $ par place avec un minimum de 100 places. TinyFloor est gratuit jusqu'à 3 personnes et coûte 29 $ par mois pour toute l'équipe."
+            "a": "Sococo coûte 13,49 $ par place et par mois prépayé à l'année, ou 14,99 $ avec un engagement mensuel, avec un minimum de 10 places et 500 minutes par place et par mois ; les minutes supplémentaires coûtent 5 $ les 1 000. Sococo Unlimited coûte 24,99 $ par place avec un minimum de 100 places. TinyFloor est gratuit jusqu'à 3 personnes et coûte 29 $ par mois pour toute l'équipe."
+          },
+          {
+            "q": "Combien coûte Sococo pour une équipe de 5 ?",
+            "a": "Autant que pour 10 : le minimum est de 10 places, soit 134,90 $ par mois prépayé à l'année (1 618,80 $ par an) ou 149,90 $ au mois. TinyFloor coûte 29 $ par mois."
           },
           {
             "q": "Existe-t-il une version gratuite de Sococo ?",
-            "a": "Sococo propose un essai gratuit plutôt qu'une offre gratuite. L'offre gratuite de TinyFloor n'a pas de date de fin, jusqu'à 3 personnes."
+            "a": "Sococo propose un essai gratuit plutôt qu'une formule gratuite. La formule gratuite de TinyFloor n'a pas de date de fin, jusqu'à 3 personnes."
           },
           {
             "q": "Qu'est-ce que Sococo a que TinyFloor n'a pas ?",
-            "a": "Sococo permet de choisir des plans d'étage et une décoration, et se connecte à Zoom, Webex, Google Meet et Microsoft Teams. TinyFloor garde un seul étage de bureau et gère ses propres appels et réunions."
+            "a": "Un choix de plans et de décors, des connexions avec Zoom, Webex, Google Meet et Microsoft Teams, le partage de documents, et des applications iOS et Android. TinyFloor garde un seul étage de bureau et gère ses propres appels et réunions."
           },
           {
-            "q": "Faut-il installer quelque chose ?",
+            "q": "Dois-je installer quelque chose ?",
             "a": "Non. TinyFloor fonctionne dans le navigateur, sur ordinateur et mobile. Partagez le lien d'invitation de votre bureau et votre équipe entre."
           }
         ]

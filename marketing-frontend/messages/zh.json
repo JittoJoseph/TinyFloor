@@ -441,11 +441,11 @@
       "sococo": {
         "label": "Sococo 替代方案",
         "meta": {
-          "title": "适合小型远程团队的 Sococo 替代方案",
-          "description": "Sococo 年付方案 10 个席位起。TinyFloor 是浏览器里的虚拟办公室，3 人免费，整个团队每月 $29，按月付费。"
+          "title": "Sococo 替代品：价格、10 个席位起购，以及按月付费的选择",
+          "description": "Sococo 每个席位每月 $13.49–14.99，至少 10 个席位，每个席位 500 分钟。小团队要付多少、Sococo 哪里更好，以及整个团队每月 $29 的 TinyFloor。"
         },
         "title": "没有 10 席位起购限制的 <em>Sococo 替代方案。</em>",
-        "subtitle": "Sococo 按年销售席位，至少 10 个。TinyFloor 整个办公室一个月费，小团队可以免费开始。",
+        "subtitle": "Sococo 至少按 10 个席位出售，按年预付每个席位 $13.49，按月付费 $14.99，每个席位含 500 分钟。TinyFloor 整个办公室一个月费，小团队可以免费开始。",
         "points": [
           {
             "title": "从实际人数开始",
@@ -461,26 +461,30 @@
           }
         ],
         "them": {
-          "price": "每席位每月 $13.49，按年付费，至少 10 个席位",
+          "price": "按年预付每个席位每月 $13.49，按月 $14.99，至少 10 个席位",
           "freePlan": "没有，只有免费试用",
-          "screenShare": "支持，可同时多个"
+          "screenShare": "是，可多人同时共享"
         },
         "faq": [
           {
             "q": "Sococo 多少钱？",
-            "a": "Sococo 每席位每月 $13.49，按年付费，至少 10 个席位，每席位每月 500 分钟。Sococo Unlimited 每席位 $24.99，至少 100 个席位。TinyFloor 3 人以内免费，整个团队每月 $29。"
+            "a": "Sococo 按年预付每个席位每月 $13.49，按月合约 $14.99，至少 10 个席位，每个席位每月 500 分钟；额外分钟每 1,000 分钟 $5。Sococo Unlimited 每个席位 $24.99，至少 100 个席位。TinyFloor 最多 3 人免费，整个团队每月 $29。"
+          },
+          {
+            "q": "5 人团队用 Sococo 要多少钱？",
+            "a": "和 10 人一样：最少 10 个席位，所以按年预付每月 $134.90（每年 $1,618.80），按月付费 $149.90。TinyFloor 每月 $29。"
           },
           {
             "q": "Sococo 有免费版吗？",
-            "a": "Sococo 提供免费试用，而不是免费套餐。TinyFloor 的免费套餐没有截止日期，最多 3 人。"
+            "a": "Sococo 提供免费试用，而不是免费方案。TinyFloor 的免费方案最多 3 人，没有到期日。"
           },
           {
             "q": "Sococo 有哪些 TinyFloor 没有的功能？",
-            "a": "Sococo 可以选择楼层布局和装修，并能连接 Zoom、Webex、Google Meet 和 Microsoft Teams。TinyFloor 只有一层办公室，通话和会议都由自己完成。"
+            "a": "可选的平面布局和装饰、与 Zoom、Webex、Google Meet 和 Microsoft Teams 的连接、文档共享，以及 iOS 和 Android 应用。TinyFloor 只有一层办公室，通话和会议由自己提供。"
           },
           {
             "q": "需要安装什么吗？",
-            "a": "不需要。TinyFloor 可以在电脑和手机浏览器中运行。分享办公室的邀请链接，团队就能进来。"
+            "a": "不需要。TinyFloor 在电脑和手机的浏览器里运行。分享办公室的邀请链接，团队就能进来。"
           }
         ]
       },

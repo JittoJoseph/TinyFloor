@@ -1193,5 +1193,180 @@
         "Preise und Funktionen von Roam stammen von seiner Preisseite, gelesen im Oktober 2026, in US-Dollar ohne Steuern; Roam nennt auch Preise in einigen lokalen Währungen, etwa Rupien für Firmen in Indien. Was dort nicht stand, haben wir weggelassen, statt zu raten. Wir machen TinyFloor, deshalb sagen wir klar, was es nicht kann. Preise ändern sich: Prüfe vor dem Kauf die Seite von Roam."
       ]
     }
+  ],
+  "sococo": [
+    {
+      "title": "Sococo und TinyFloor im Überblick",
+      "body": [
+        "Beide zeigen dein Team als Karte eines Büros mit Räumen, die man betritt. Sococo, inzwischen Teil von IgniteTech, verkauft Plätze mit Minimum; TinyFloor berechnet einen Preis für das Büro."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Sococo",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Ein Team von 8, im Monat",
+            "134,90 $ jährlich vorausbezahlt, 149,90 $ monatlich (mindestens 10 Plätze)",
+            "29 $ für das ganze Team"
+          ],
+          [
+            "Gratis-Tarif",
+            "Keiner, eine kostenlose Testphase",
+            "Bis zu 3 Personen, alle Funktionen"
+          ],
+          [
+            "Wie abgerechnet wird",
+            "Pro Platz, mindestens 10",
+            "Ein Preis für das Büro"
+          ],
+          [
+            "Minuten",
+            "500 pro Platz im Monat; mehr für 5 $ pro 1.000",
+            "Calls werden nicht gezählt"
+          ],
+          [
+            "Das Büro",
+            "Auswahl an Grundrissen und Einrichtung",
+            "Ein fertiges Büro"
+          ],
+          [
+            "Videocalls",
+            "Eigene, oder Zoom, Webex, Google Meet oder Microsoft Teams",
+            "Eigene Calls und Besprechungsraum"
+          ],
+          [
+            "Handys",
+            "Apps für iOS und Android",
+            "Der mobile Browser"
+          ]
+        ],
+        "note": "Angaben zu Sococo von seiner Preisseite im Oktober 2026, ohne Steuern."
+      }
+    },
+    {
+      "title": "Was Sococo nach Teamgröße kostet",
+      "body": [
+        "Sococo rechnet mindestens 10 Plätze ab, zu 13,49 $ pro Platz im Monat bei jährlicher Vorauszahlung oder 14,99 $ bei monatlicher Laufzeit. Jedes Team mit 10 oder weniger zahlt also dasselbe."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Sococo, monatliche Laufzeit",
+          "Sococo, jährlich vorausbezahlt, pro Monat",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "4 Personen",
+            "149,90 $",
+            "134,90 $",
+            "29 $"
+          ],
+          [
+            "8 Personen",
+            "149,90 $",
+            "134,90 $",
+            "29 $"
+          ],
+          [
+            "10 Personen",
+            "149,90 $",
+            "134,90 $",
+            "29 $"
+          ],
+          [
+            "12 Personen",
+            "179,88 $",
+            "161,88 $",
+            "29 $"
+          ]
+        ],
+        "note": "Sococo zu 14,99 $ pro Platz monatlich oder 13,49 $ jährlich vorausbezahlt, mindestens 10 Plätze (Preisseite von Sococo, Oktober 2026). TinyFloor Pro wird monatlich abgerechnet; Teams bis 3 bleiben kostenlos."
+      }
+    },
+    {
+      "title": "Warum kleine Teams eine Alternative zu Sococo suchen",
+      "items": [
+        {
+          "title": "Zehn Plätze, egal wie klein ihr seid",
+          "body": "Ein Team von 4 zahlt für 10. Mit 134,90 bis 149,90 $ im Monat ist das der Preis eines viel größeren Teams."
+        },
+        {
+          "title": "Minuten im Blick behalten",
+          "body": "Jeder Platz enthält 500 Minuten im Monat, knapp 25 Minuten pro Arbeitstag. Ein Team, das viel redet, kauft mehr für 5 $ pro 1.000 Minuten."
+        },
+        {
+          "title": "Der beste Preis braucht ein Jahr im Voraus",
+          "body": "13,49 $ gelten bei Vorauszahlung für das Jahr; monatlich sind es 14,99 $ pro Platz."
+        },
+        {
+          "title": "Kein Gratis-Tarif",
+          "body": "Es gibt eine kostenlose Testphase, aber keinen Tarif, in dem ein kleines Team ohne Bezahlung bleiben kann."
+        }
+      ]
+    },
+    {
+      "title": "Was Sococo besser kann",
+      "items": [
+        {
+          "title": "Eine Auswahl an Büros",
+          "body": "Wähle einen Grundriss und eine Einrichtung, die zum Team passen. TinyFloor hat ein fertiges Büro."
+        },
+        {
+          "title": "Funktioniert mit deinem Call-Tool",
+          "body": "Sococo bindet Zoom, Webex, Google Meet und Microsoft Teams an, sodass ein Team sein Videotool behält und Sococo als Karte nutzt."
+        },
+        {
+          "title": "Gemacht für größere Firmen",
+          "body": "Sococo Unlimited, für Firmen ab 100 Plätzen, hat unbegrenzte Minuten, für 24,99 $ pro Platz bei jährlicher Laufzeit."
+        },
+        {
+          "title": "Apps fürs Handy",
+          "body": "Sococo hat Apps für iOS und Android; TinyFloor läuft im mobilen Browser."
+        }
+      ]
+    },
+    {
+      "title": "Was zu deinem Team passt",
+      "items": [
+        {
+          "title": "TinyFloor, für ein kleines Team mit Monatszahlung",
+          "body": "Für ein Team von 4 bis 15, das ein privates Büro mit Calls, Besprechungsraum und Chat will, ohne Mindestzahl an Plätzen, Minutenkontingent oder jährliche Vorauszahlung."
+        },
+        {
+          "title": "Sococo, für eine Firma, die auf Zoom oder Teams setzt",
+          "body": "Wenn du die Bürokarte über dem Videotool willst, für das du schon zahlst, eine Auswahl an Grundrissen oder Platz für Dutzende Plätze."
+        }
+      ]
+    },
+    {
+      "title": "Ein Team von Sococo umziehen",
+      "items": [
+        {
+          "title": "Ein Büro anlegen",
+          "detail": "Zwei Minuten",
+          "body": "Benenne es nach dem Team. Fläche, Schreibtische und Besprechungsraum sind fertig."
+        },
+        {
+          "title": "Einen Einladungslink teilen",
+          "detail": "In eurem Team-Chat",
+          "body": "Das Team meldet sich mit Google oder E-Mail an und kommt im Browser herein, auf dem Laptop oder Handy."
+        },
+        {
+          "title": "Eine normale Woche dort arbeiten",
+          "detail": "Standup im Besprechungsraum",
+          "body": "Nutzt es eine Woche lang neben Sococo und entscheidet vor eurer Verlängerung, welches das Team wirklich geöffnet hat."
+        }
+      ]
+    },
+    {
+      "title": "Wie wir verglichen haben",
+      "body": [
+        "Preise, Grenzen und Funktionen von Sococo stammen von seiner Preisseite, gelesen im Oktober 2026, in US-Dollar ohne Steuern. Was dort nicht stand, haben wir weggelassen, statt zu raten. Wir machen TinyFloor, deshalb sagen wir klar, was es nicht kann. Preise ändern sich: Prüfe vor dem Kauf die Seite von Sococo."
+      ]
+    }
   ]
 }

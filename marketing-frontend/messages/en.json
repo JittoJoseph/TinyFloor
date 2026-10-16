@@ -441,11 +441,11 @@
       "sococo": {
         "label": "Sococo alternative",
         "meta": {
-          "title": "Sococo Alternative for Small Remote Teams",
-          "description": "Sococo starts at 10 seats on a yearly plan. TinyFloor is a virtual office in the browser, free for 3 people and $29 a month for the whole team, billed monthly."
+          "title": "Sococo Alternative: Pricing, the 10-Seat Minimum and a Monthly Option",
+          "description": "Sococo is $13.49–14.99 a seat a month with a 10-seat minimum and 500 minutes per seat. What a small team pays, what Sococo does better, and TinyFloor at $29 a month for the whole team."
         },
         "title": "A <em>Sococo alternative</em> without the 10-seat minimum.",
-        "subtitle": "Sococo sells seats by the year, 10 at the least. TinyFloor is one monthly price for the whole office, and a small team can start free.",
+        "subtitle": "Sococo sells seats 10 at a time, at $13.49 a seat prepaid yearly or $14.99 month to month, with 500 minutes per seat. TinyFloor is one monthly price for the whole office, and a small team can start free.",
         "points": [
           {
             "title": "Start at your real size",
@@ -461,14 +461,18 @@
           }
         ],
         "them": {
-          "price": "$13.49 per seat a month, billed yearly, 10 seats minimum",
+          "price": "$13.49 per seat a month prepaid yearly, $14.99 monthly, 10 seats minimum",
           "freePlan": "None, only a free trial",
           "screenShare": "Yes, several at once"
         },
         "faq": [
           {
             "q": "How much does Sococo cost?",
-            "a": "Sococo is $13.49 per seat a month, billed yearly, with a 10-seat minimum and 500 minutes per seat a month. Sococo Unlimited is $24.99 per seat with a 100-seat minimum. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+            "a": "Sococo is $13.49 per seat a month prepaid yearly, or $14.99 on a monthly term, with a 10-seat minimum and 500 minutes per seat a month; extra minutes are $5 per 1,000. Sococo Unlimited is $24.99 per seat with a 100-seat minimum. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+          },
+          {
+            "q": "How much does Sococo cost for a team of 5?",
+            "a": "The same as for 10: the minimum is 10 seats, so $134.90 a month prepaid yearly ($1,618.80 a year) or $149.90 monthly. TinyFloor is $29 a month."
           },
           {
             "q": "Is there a free version of Sococo?",
@@ -476,7 +480,7 @@
           },
           {
             "q": "What does Sococo have that TinyFloor does not?",
-            "a": "Sococo lets you choose floor plans and decor, and connects to Zoom, Webex, Google Meet and Microsoft Teams. TinyFloor keeps one office floor and runs its own calls and meetings."
+            "a": "A choice of floor plans and decor, connections to Zoom, Webex, Google Meet and Microsoft Teams, document sharing, and iOS and Android apps. TinyFloor keeps one office floor and runs its own calls and meetings."
           },
           {
             "q": "Do I need to install anything?",

@@ -441,11 +441,11 @@
       "sococo": {
         "label": "Alternativa ao Sococo",
         "meta": {
-          "title": "Alternativa ao Sococo para equipes remotas pequenas",
-          "description": "O Sococo começa em 10 assentos no plano anual. O TinyFloor é um escritório virtual no navegador, grátis para 3 pessoas e US$ 29 por mês para toda a equipe, com cobrança mensal."
+          "title": "Alternativa ao Sococo: preços, o mínimo de 10 lugares e uma opção mensal",
+          "description": "O Sococo custa US$ 13,49–14,99 por lugar por mês, com mínimo de 10 lugares e 500 minutos por lugar. Quanto uma equipe pequena paga, o que o Sococo faz melhor e o TinyFloor a US$ 29 por mês para a equipe toda."
         },
         "title": "Uma <em>alternativa ao Sococo</em> sem o mínimo de 10 assentos.",
-        "subtitle": "O Sococo vende assentos por ano, no mínimo 10. O TinyFloor tem um preço mensal para o escritório inteiro, e uma equipe pequena pode começar de graça.",
+        "subtitle": "O Sococo vende lugares de 10 em 10, no mínimo, a US$ 13,49 por lugar no anual pré-pago ou US$ 14,99 no mensal, com 500 minutos por lugar. O TinyFloor é um preço mensal para o escritório inteiro, e uma equipe pequena pode começar de graça.",
         "points": [
           {
             "title": "Comece no seu tamanho real",
@@ -461,26 +461,30 @@
           }
         ],
         "them": {
-          "price": "US$ 13,49 por assento por mês, cobrado anualmente, mínimo de 10 assentos",
+          "price": "US$ 13,49 por lugar por mês no anual pré-pago, US$ 14,99 no mensal, mínimo de 10 lugares",
           "freePlan": "Nenhum, só um teste grátis",
-          "screenShare": "Sim, várias telas ao mesmo tempo"
+          "screenShare": "Sim, várias ao mesmo tempo"
         },
         "faq": [
           {
             "q": "Quanto custa o Sococo?",
-            "a": "O Sococo custa US$ 13,49 por assento por mês, cobrado anualmente, com mínimo de 10 assentos e 500 minutos por assento por mês. O Sococo Unlimited custa US$ 24,99 por assento com mínimo de 100 assentos. O TinyFloor é grátis para até 3 pessoas e custa US$ 29 por mês para toda a equipe."
+            "a": "O Sococo custa US$ 13,49 por lugar por mês no anual pré-pago, ou US$ 14,99 no plano mensal, com mínimo de 10 lugares e 500 minutos por lugar por mês; minutos extras custam US$ 5 a cada 1.000. O Sococo Unlimited custa US$ 24,99 por lugar com mínimo de 100. O TinyFloor é grátis para até 3 pessoas e custa US$ 29 por mês para a equipe toda."
           },
           {
-            "q": "Existe uma versão grátis do Sococo?",
-            "a": "O Sococo oferece um teste grátis em vez de um plano gratuito. O plano grátis do TinyFloor não tem data para acabar, para até 3 pessoas."
+            "q": "Quanto custa o Sococo para uma equipe de 5?",
+            "a": "O mesmo que para 10: o mínimo é de 10 lugares, então US$ 134,90 por mês no anual pré-pago (US$ 1.618,80 por ano) ou US$ 149,90 no mensal. O TinyFloor custa US$ 29 por mês."
+          },
+          {
+            "q": "Existe versão grátis do Sococo?",
+            "a": "O Sococo oferece um teste grátis em vez de um plano grátis. O plano grátis do TinyFloor não tem data para acabar, para até 3 pessoas."
           },
           {
             "q": "O que o Sococo tem que o TinyFloor não tem?",
-            "a": "O Sococo deixa você escolher plantas e decoração, e se conecta ao Zoom, Webex, Google Meet e Microsoft Teams. O TinyFloor mantém um andar de escritório e tem suas próprias chamadas e reuniões."
+            "a": "Escolha de plantas e decoração, conexão com Zoom, Webex, Google Meet e Microsoft Teams, compartilhamento de documentos e apps para iOS e Android. O TinyFloor tem um andar só e faz as próprias chamadas e reuniões."
           },
           {
             "q": "Preciso instalar alguma coisa?",
-            "a": "Não. O TinyFloor roda no navegador do computador e do celular. Compartilhe o link de convite do seu escritório e sua equipe entra."
+            "a": "Não. O TinyFloor roda no navegador, no computador e no celular. Compartilhe o link de convite do seu escritório e a equipe entra."
           }
         ]
       },

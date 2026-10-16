@@ -1193,5 +1193,360 @@
         "Preise und Funktionen von Roam stammen von seiner Preisseite, gelesen im Oktober 2026, in US-Dollar ohne Steuern; Roam nennt auch Preise in einigen lokalen Währungen, etwa Rupien für Firmen in Indien. Was dort nicht stand, haben wir weggelassen, statt zu raten. Wir machen TinyFloor, deshalb sagen wir klar, was es nicht kann. Preise ändern sich: Prüfe vor dem Kauf die Seite von Roam."
       ]
     }
+  ],
+  "sococo": [
+    {
+      "title": "Sococo und TinyFloor im Überblick",
+      "body": [
+        "Beide zeigen dein Team als Karte eines Büros mit Räumen, die man betritt. Sococo, inzwischen Teil von IgniteTech, verkauft Plätze mit Minimum; TinyFloor berechnet einen Preis für das Büro."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Sococo",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Ein Team von 8, im Monat",
+            "134,90 $ jährlich vorausbezahlt, 149,90 $ monatlich (mindestens 10 Plätze)",
+            "29 $ für das ganze Team"
+          ],
+          [
+            "Gratis-Tarif",
+            "Keiner, eine kostenlose Testphase",
+            "Bis zu 3 Personen, alle Funktionen"
+          ],
+          [
+            "Wie abgerechnet wird",
+            "Pro Platz, mindestens 10",
+            "Ein Preis für das Büro"
+          ],
+          [
+            "Minuten",
+            "500 pro Platz im Monat; mehr für 5 $ pro 1.000",
+            "Calls werden nicht gezählt"
+          ],
+          [
+            "Das Büro",
+            "Auswahl an Grundrissen und Einrichtung",
+            "Ein fertiges Büro"
+          ],
+          [
+            "Videocalls",
+            "Eigene, oder Zoom, Webex, Google Meet oder Microsoft Teams",
+            "Eigene Calls und Besprechungsraum"
+          ],
+          [
+            "Handys",
+            "Apps für iOS und Android",
+            "Der mobile Browser"
+          ]
+        ],
+        "note": "Angaben zu Sococo von seiner Preisseite im Oktober 2026, ohne Steuern."
+      }
+    },
+    {
+      "title": "Was Sococo nach Teamgröße kostet",
+      "body": [
+        "Sococo rechnet mindestens 10 Plätze ab, zu 13,49 $ pro Platz im Monat bei jährlicher Vorauszahlung oder 14,99 $ bei monatlicher Laufzeit. Jedes Team mit 10 oder weniger zahlt also dasselbe."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Sococo, monatliche Laufzeit",
+          "Sococo, jährlich vorausbezahlt, pro Monat",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "4 Personen",
+            "149,90 $",
+            "134,90 $",
+            "29 $"
+          ],
+          [
+            "8 Personen",
+            "149,90 $",
+            "134,90 $",
+            "29 $"
+          ],
+          [
+            "10 Personen",
+            "149,90 $",
+            "134,90 $",
+            "29 $"
+          ],
+          [
+            "12 Personen",
+            "179,88 $",
+            "161,88 $",
+            "29 $"
+          ]
+        ],
+        "note": "Sococo zu 14,99 $ pro Platz monatlich oder 13,49 $ jährlich vorausbezahlt, mindestens 10 Plätze (Preisseite von Sococo, Oktober 2026). TinyFloor Pro wird monatlich abgerechnet; Teams bis 3 bleiben kostenlos."
+      }
+    },
+    {
+      "title": "Warum kleine Teams eine Alternative zu Sococo suchen",
+      "items": [
+        {
+          "title": "Zehn Plätze, egal wie klein ihr seid",
+          "body": "Ein Team von 4 zahlt für 10. Mit 134,90 bis 149,90 $ im Monat ist das der Preis eines viel größeren Teams."
+        },
+        {
+          "title": "Minuten im Blick behalten",
+          "body": "Jeder Platz enthält 500 Minuten im Monat, knapp 25 Minuten pro Arbeitstag. Ein Team, das viel redet, kauft mehr für 5 $ pro 1.000 Minuten."
+        },
+        {
+          "title": "Der beste Preis braucht ein Jahr im Voraus",
+          "body": "13,49 $ gelten bei Vorauszahlung für das Jahr; monatlich sind es 14,99 $ pro Platz."
+        },
+        {
+          "title": "Kein Gratis-Tarif",
+          "body": "Es gibt eine kostenlose Testphase, aber keinen Tarif, in dem ein kleines Team ohne Bezahlung bleiben kann."
+        }
+      ]
+    },
+    {
+      "title": "Was Sococo besser kann",
+      "items": [
+        {
+          "title": "Eine Auswahl an Büros",
+          "body": "Wähle einen Grundriss und eine Einrichtung, die zum Team passen. TinyFloor hat ein fertiges Büro."
+        },
+        {
+          "title": "Funktioniert mit deinem Call-Tool",
+          "body": "Sococo bindet Zoom, Webex, Google Meet und Microsoft Teams an, sodass ein Team sein Videotool behält und Sococo als Karte nutzt."
+        },
+        {
+          "title": "Gemacht für größere Firmen",
+          "body": "Sococo Unlimited, für Firmen ab 100 Plätzen, hat unbegrenzte Minuten, für 24,99 $ pro Platz bei jährlicher Laufzeit."
+        },
+        {
+          "title": "Apps fürs Handy",
+          "body": "Sococo hat Apps für iOS und Android; TinyFloor läuft im mobilen Browser."
+        }
+      ]
+    },
+    {
+      "title": "Was zu deinem Team passt",
+      "items": [
+        {
+          "title": "TinyFloor, für ein kleines Team mit Monatszahlung",
+          "body": "Für ein Team von 4 bis 15, das ein privates Büro mit Calls, Besprechungsraum und Chat will, ohne Mindestzahl an Plätzen, Minutenkontingent oder jährliche Vorauszahlung."
+        },
+        {
+          "title": "Sococo, für eine Firma, die auf Zoom oder Teams setzt",
+          "body": "Wenn du die Bürokarte über dem Videotool willst, für das du schon zahlst, eine Auswahl an Grundrissen oder Platz für Dutzende Plätze."
+        }
+      ]
+    },
+    {
+      "title": "Ein Team von Sococo umziehen",
+      "items": [
+        {
+          "title": "Ein Büro anlegen",
+          "detail": "Zwei Minuten",
+          "body": "Benenne es nach dem Team. Fläche, Schreibtische und Besprechungsraum sind fertig."
+        },
+        {
+          "title": "Einen Einladungslink teilen",
+          "detail": "In eurem Team-Chat",
+          "body": "Das Team meldet sich mit Google oder E-Mail an und kommt im Browser herein, auf dem Laptop oder Handy."
+        },
+        {
+          "title": "Eine normale Woche dort arbeiten",
+          "detail": "Standup im Besprechungsraum",
+          "body": "Nutzt es eine Woche lang neben Sococo und entscheidet vor eurer Verlängerung, welches das Team wirklich geöffnet hat."
+        }
+      ]
+    },
+    {
+      "title": "Wie wir verglichen haben",
+      "body": [
+        "Preise, Grenzen und Funktionen von Sococo stammen von seiner Preisseite, gelesen im Oktober 2026, in US-Dollar ohne Steuern. Was dort nicht stand, haben wir weggelassen, statt zu raten. Wir machen TinyFloor, deshalb sagen wir klar, was es nicht kann. Preise ändern sich: Prüfe vor dem Kauf die Seite von Sococo."
+      ]
+    }
+  ],
+  "ovice": [
+    {
+      "title": "oVice und TinyFloor im Überblick",
+      "body": [
+        "Bei beiden bewegt man seinen Avatar, um mit Leuten zu reden, und beide haben einen Tarif mit Preis pro Space statt pro Person. oVice ergänzt die Kontrollen und Integrationen, die ein Firmen-Rollout braucht; TinyFloor beschränkt sich auf das, was ein kleines Team jeden Tag nutzt."
+      ],
+      "table": {
+        "head": [
+          "",
+          "oVice",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Ein Team von 8, im Monat",
+            "65 $ jährlich, 78 $ monatlich abgerechnet (Entry-S)",
+            "29 $ für das ganze Team"
+          ],
+          [
+            "Gratis-Tarif",
+            "Ja, in einer Vorab-Umgebung ohne SLA und Support",
+            "Bis zu 3 Personen, dasselbe Produkt wie bezahlt"
+          ],
+          [
+            "Wie abgerechnet wird",
+            "Pro Space bei Entry, pro Nutzer ab 20 bei Business Starter",
+            "Ein Preis für das Büro"
+          ],
+          [
+            "Das Büro privat halten",
+            "Passwort-, E-Mail- und IP-Kontrollen in bezahlten Tarifen",
+            "In jedem Tarif privat"
+          ],
+          [
+            "Integrationen und SSO",
+            "Google Calendar, Microsoft Teams und SSO in bezahlten Tarifen",
+            "Keine"
+          ],
+          [
+            "Der Raum",
+            "Eigene Layouts und Avatare",
+            "Ein fertiges Büro"
+          ],
+          [
+            "Aufnahmen und Transkription",
+            "Auf Anfrage mit Business Starter",
+            "Nein"
+          ],
+          [
+            "Events",
+            "Einmalige Tarife ab 35 $ pro Woche",
+            "Nein"
+          ]
+        ],
+        "note": "Angaben zu oVice von seiner Preisseite im Oktober 2026, in US-Dollar ohne Steuern."
+      }
+    },
+    {
+      "title": "Was die Tarife von oVice kosten",
+      "body": [
+        "Die Entry-Tarife von oVice sind ein Festpreis pro Space, bemessen danach, wie viele Personen gleichzeitig online sein können. Business Starter wird pro Nutzer berechnet, ab 20 Nutzern."
+      ],
+      "table": {
+        "head": [
+          "Tarif",
+          "Monatlich abgerechnet",
+          "Jährlich abgerechnet, pro Monat",
+          "Gemacht für"
+        ],
+        "rows": [
+          [
+            "oVice Entry-S",
+            "78 $",
+            "65 $",
+            "Ein Space; etwa 10 regelmäßige Mitglieder, 50 gleichzeitig online"
+          ],
+          [
+            "oVice Entry-M",
+            "294 $",
+            "245 $",
+            "Ein Space; etwa 40 regelmäßige Mitglieder, 200 gleichzeitig online"
+          ],
+          [
+            "oVice Business Starter",
+            "384 $ für 20 Nutzer",
+            "320 $ für 20 Nutzer",
+            "Ab 20 Nutzern; unbegrenzte Spaces und Gebäude"
+          ],
+          [
+            "TinyFloor Pro",
+            "29 $",
+            "Nur monatlich",
+            "Ein Büro für ein kleines Team; kostenlos für bis zu 3"
+          ]
+        ],
+        "note": "Preise von oVice laut Preisseite, Oktober 2026; Business Starter kostet 19,20 $ pro Nutzer monatlich oder 16 $ jährlich. TinyFloor Pro wird monatlich abgerechnet."
+      }
+    },
+    {
+      "title": "Warum kleine Teams eine Alternative zu oVice suchen",
+      "items": [
+        {
+          "title": "Ein Space, größer als nötig",
+          "body": "Entry-S fasst 50 Personen gleichzeitig. Ein Team von 6 zahlt dieselben 65 bis 78 $ im Monat wie ein Team von 10."
+        },
+        {
+          "title": "Der Gratis-Tarif ist nicht für den Arbeitsalltag",
+          "body": "oVice betreibt den Gratis-Tarif in einer Vorab-Umgebung ohne SLA und Support und ohne Zugangskontrollen; er eignet sich eher zum Ausprobieren als für ein Team im Alltag."
+        },
+        {
+          "title": "Der Firmentarif beginnt bei 20",
+          "body": "Verwaltung, Berichte und Aufnahmen von Business Starter gibt es ab 20 Nutzern, für 320 $ im Monat oder mehr."
+        },
+        {
+          "title": "Gebaut für Rollouts",
+          "body": "Gebäude, Berechtigungsgruppen und Remote-Work-Berichte sind für größere Organisationen gemacht; ein kleines Team braucht sie vielleicht nie."
+        }
+      ]
+    },
+    {
+      "title": "Was oVice besser kann",
+      "items": [
+        {
+          "title": "Räume, die du gestaltest",
+          "body": "Eigene Layouts und Avatare, mehrere Spaces und Gebäude mit Business Starter und Space-Größen für Hunderte Personen online. TinyFloor hat ein fertiges Büro."
+        },
+        {
+          "title": "Integrationen und Sicherheit schon im Einstiegstarif",
+          "body": "Entry-S enthält bereits SSO, Integration mit Google Calendar und Microsoft Teams, Zugangskontrollen und ein SLA."
+        },
+        {
+          "title": "Aufnahmen, Transkription und KI-Protokolle",
+          "body": "In Business Starter enthalten und auf Anfrage aktiviert. TinyFloor nimmt nicht auf."
+        },
+        {
+          "title": "Events",
+          "body": "Einmalige Tarife für eine Woche oder einen Monat, ab 35 $, für Meetups und Konferenzen."
+        }
+      ]
+    },
+    {
+      "title": "Was zu deinem Team passt",
+      "items": [
+        {
+          "title": "TinyFloor, für das tägliche Büro eines kleinen Teams",
+          "body": "Für ein Team von 4 bis 15, das ein privates Büro mit Calls, Besprechungsraum, Chat und Whiteboard will, für 29 $ im Monat, ohne einen Space zu dimensionieren."
+        },
+        {
+          "title": "oVice, für Firmen und Communitys",
+          "body": "Wenn du SSO, Integration mit Microsoft Teams oder Google Calendar, eigene Layouts, Räume für Dutzende oder Hunderte Personen oder einen Space für ein Event brauchst."
+        }
+      ]
+    },
+    {
+      "title": "Ein Team von oVice umziehen",
+      "items": [
+        {
+          "title": "Ein Büro anlegen",
+          "detail": "Zwei Minuten",
+          "body": "Benenne es nach dem Team. Fläche, Schreibtische und Besprechungsraum sind fertig; kein Layout neu aufzubauen."
+        },
+        {
+          "title": "Einen Einladungslink teilen",
+          "detail": "In eurem Team-Chat",
+          "body": "Das Team meldet sich mit Google oder E-Mail an und kommt im Browser herein, auf dem Laptop oder Handy."
+        },
+        {
+          "title": "Eine normale Woche dort arbeiten",
+          "detail": "Standup im Besprechungsraum",
+          "body": "Nutzt es eine Woche lang neben oVice und entscheidet dann, welches das Team wirklich geöffnet hat."
+        }
+      ]
+    },
+    {
+      "title": "Wie wir verglichen haben",
+      "body": [
+        "Preise, Grenzen und Funktionen von oVice stammen von seiner Preisseite und dem Funktionsvergleich, gelesen im Oktober 2026, in US-Dollar ohne Steuern. Was dort nicht stand, haben wir weggelassen, statt zu raten. Wir machen TinyFloor, deshalb sagen wir klar, was es nicht kann. Preise ändern sich: Prüfe vor dem Kauf die Seite von oVice."
+      ]
+    }
   ]
 }

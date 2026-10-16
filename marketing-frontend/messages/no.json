@@ -441,11 +441,11 @@
       "sococo": {
         "label": "Sococo-alternativ",
         "meta": {
-          "title": "Sococo-alternativ for små team som jobber eksternt",
-          "description": "Sococo starter på 10 plasser med årsplan. TinyFloor er et virtuelt kontor i nettleseren, gratis for 3 personer og $29 i måneden for hele teamet, fakturert månedlig."
+          "title": "Alternativ til Sococo: priser, minimum på 10 plasser og et månedsalternativ",
+          "description": "Sococo koster 13,49–14,99 $ per plass i måneden, med minst 10 plasser og 500 minutter per plass. Hva et lite team betaler, hva Sococo gjør bedre, og TinyFloor til 29 $ i måneden for hele teamet."
         },
         "title": "Et <em>Sococo-alternativ</em> uten minimum på 10 plasser.",
-        "subtitle": "Sococo selger plasser per år, minst 10. TinyFloor har én månedspris for hele kontoret, og et lite team kan starte gratis.",
+        "subtitle": "Sococo selger plasser i minst ti om gangen, til 13,49 $ per plass ved årlig forskuddsbetaling eller 14,99 $ månedlig, med 500 minutter per plass. TinyFloor er én månedspris for hele kontoret, og et lite team kan starte gratis.",
         "points": [
           {
             "title": "Start i din faktiske størrelse",
@@ -461,37 +461,41 @@
           }
         ],
         "them": {
-          "price": "$13,49 per plass i måneden, fakturert årlig, minst 10 plasser",
+          "price": "13,49 $ per plass i måneden ved årlig forskuddsbetaling, 14,99 $ månedlig, minst 10 plasser",
           "freePlan": "Ingen, bare en gratis prøveperiode",
           "screenShare": "Ja, flere samtidig"
         },
         "faq": [
           {
             "q": "Hva koster Sococo?",
-            "a": "Sococo koster $13,49 per plass i måneden, fakturert årlig, med minst 10 plasser og 500 minutter per plass i måneden. Sococo Unlimited koster $24,99 per plass med minst 100 plasser. TinyFloor er gratis for opptil 3 personer og koster $29 i måneden for hele teamet."
+            "a": "Sococo koster 13,49 $ per plass i måneden ved årlig forskuddsbetaling, eller 14,99 $ med månedlig binding, med minst 10 plasser og 500 minutter per plass i måneden; ekstra minutter koster 5 $ per 1 000. Sococo Unlimited koster 24,99 $ per plass med minst 100 plasser. TinyFloor er gratis for opptil 3 personer og koster 29 $ i måneden for hele teamet."
+          },
+          {
+            "q": "Hva koster Sococo for et team på 5?",
+            "a": "Det samme som for 10: minimum er 10 plasser, altså 134,90 $ i måneden ved årlig forskuddsbetaling (1 618,80 $ i året) eller 149,90 $ månedlig. TinyFloor koster 29 $ i måneden."
           },
           {
             "q": "Finnes det en gratisversjon av Sococo?",
-            "a": "Sococo tilbyr en gratis prøveperiode i stedet for en gratisplan. Gratisplanen til TinyFloor har ingen sluttdato, for opptil 3 personer."
+            "a": "Sococo tilbyr en gratis prøveperiode i stedet for en gratisplan. TinyFloors gratisplan har ingen sluttdato, for opptil 3 personer."
           },
           {
             "q": "Hva har Sococo som TinyFloor ikke har?",
-            "a": "I Sococo kan du velge planløsninger og innredning, og det kobles til Zoom, Webex, Google Meet og Microsoft Teams. TinyFloor har én kontoretasje og står for sine egne samtaler og møter."
+            "a": "Valg av planløsninger og innredning, koblinger til Zoom, Webex, Google Meet og Microsoft Teams, dokumentdeling og apper for iOS og Android. TinyFloor har ett kontorgulv og egne samtaler og møter."
           },
           {
             "q": "Må jeg installere noe?",
-            "a": "Nei. TinyFloor kjører i nettleseren på datamaskin og mobil. Del invitasjonslenken til kontoret, så går teamet inn."
+            "a": "Nei. TinyFloor kjører i nettleseren på datamaskin og mobil. Del kontorets invitasjonslenke, så går teamet inn."
           }
         ]
       },
       "ovice": {
         "label": "oVice-alternativ",
         "meta": {
-          "title": "oVice-alternativ for små team",
-          "description": "oVice tar betalt per rom eller fra 20 brukere. TinyFloor er et virtuelt kontor i nettleseren for små team: gratis for 3 personer, deretter $29 i måneden for hele teamet."
+          "title": "Alternativ til oVice: priser, gratisplanen og et enklere kontor for små team",
+          "description": "oVices Entry-S koster 65–78 $ i måneden for ett rom til omtrent 10 medlemmer, og Business Starter starter ved 20 brukere. Hva et lite team betaler, hva oVice gjør bedre, og TinyFloor til 29 $ for hele teamet."
         },
         "title": "Et <em>oVice-alternativ</em> i størrelse for små team.",
-        "subtitle": "oVice er bygget for bedrifter og fellesskap, med planer etter romstørrelse eller fra 20 brukere. TinyFloor er laget for små team, med én enkel pris per kontor.",
+        "subtitle": "oVice er laget for selskaper og miljøer, med en fast pris per rom eller en pris per bruker fra 20 brukere. TinyFloor er laget for små team, med én enkel pris per kontor: 29 $ i måneden.",
         "points": [
           {
             "title": "Én pris per kontor",
@@ -515,19 +519,19 @@
         "faq": [
           {
             "q": "Hva koster oVice?",
-            "a": "oVice Entry-S koster $65 i måneden per område ved årlig betaling, eller $78 per måned, for rundt 10 faste medlemmer. Business Starter koster $16 per bruker i måneden fra 20 brukere. TinyFloor koster $29 i måneden for hele teamet."
+            "a": "oVice Entry-S koster 65 $ i måneden per rom ved årlig betaling (780 $ i året), eller 78 $ månedlig, for omtrent 10 faste medlemmer. Entry-M koster 245 eller 294 $ for omtrent 40. Business Starter koster 16 $ per bruker i måneden ved årlig betaling, eller 19,20 $ månedlig, fra 20 brukere. TinyFloor koster 29 $ i måneden for hele teamet."
           },
           {
             "q": "Har oVice en gratisplan?",
-            "a": "Ja. Etter prøveperioden på 14 dager går området over til en gratisplan som kjører i et forhåndsmiljø uten SLA eller støtte. Gratisplanen til TinyFloor er det samme produktet som de betalte planene, for opptil 3 personer."
+            "a": "Ja. Etter prøveperioden på 14 dager går et rom over på en gratisplan som kjører i et forhåndsmiljø uten SLA eller støtte, og uten tilgangskontroll, SSO og integrasjoner. TinyFloors gratisplan er det samme produktet som de betalte, for opptil 3 personer."
           },
           {
             "q": "Hva har oVice som TinyFloor ikke har?",
-            "a": "oVice har egne oppsett, transkribering, opptak på forespørsel, kobling til kalender og Microsoft Teams, og planer for arrangementer. TinyFloor konsentrerer seg om kontoret i hverdagen: gå bort, møter, chat, en tavle og musikk."
+            "a": "oVice har egne oppsett og avatarer, integrasjon med Google Kalender og Microsoft Teams, SSO, opptak og transkribering med Business Starter, og engangsplaner for arrangementer. TinyFloor konsentrerer seg om det daglige kontoret: gå bort til folk, møter, chat, en tavle og musikk."
           },
           {
             "q": "Finnes TinyFloor på japansk?",
-            "a": "Ja. TinyFloor finnes på 18 språk, inkludert japansk og koreansk, og hver person kan velge sitt eget."
+            "a": "Ja. TinyFloor finnes på 18 språk, japansk og koreansk inkludert, og hver person kan velge sitt eget."
           }
         ]
       },

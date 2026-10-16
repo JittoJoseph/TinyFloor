@@ -441,11 +441,11 @@
       "sococo": {
         "label": "Sococo-vaihtoehto",
         "meta": {
-          "title": "Sococo-vaihtoehto pienille etätiimeille",
-          "description": "Sococo alkaa 10 paikasta vuositilauksella. TinyFloor on virtuaalitoimisto selaimessa, ilmainen 3 hengelle ja $29 kuukaudessa koko tiimille, kuukausilaskutuksella."
+          "title": "Vaihtoehto Sococolle: hinnat, 10 paikan vähimmäismäärä ja kuukausivaihtoehto",
+          "description": "Sococo maksaa 13,49–14,99 $ paikalta kuukaudessa, vähintään 10 paikkaa ja 500 minuuttia paikkaa kohden. Mitä pieni tiimi maksaa, missä Sococo on parempi ja TinyFloor 29 $:lla kuukaudessa koko tiimiltä."
         },
         "title": "<em>Sococo-vaihtoehto</em> ilman 10 paikan minimiä.",
-        "subtitle": "Sococo myy paikkoja vuodeksi, vähintään 10. TinyFloorissa on yksi kuukausihinta koko toimistolle, ja pieni tiimi voi aloittaa ilmaiseksi.",
+        "subtitle": "Sococo myy paikkoja vähintään kymmenen kerrallaan, 13,49 $ paikalta vuoden ennakkomaksulla tai 14,99 $ kuukausittain, ja jokaiseen paikkaan kuuluu 500 minuuttia. TinyFloor on yksi kuukausihinta koko toimistolle, ja pieni tiimi voi aloittaa ilmaiseksi.",
         "points": [
           {
             "title": "Aloita oikeasta koostasi",
@@ -461,22 +461,26 @@
           }
         ],
         "them": {
-          "price": "$13,49 paikka kuussa, vuosilaskutus, vähintään 10 paikkaa",
-          "freePlan": "Ei, vain ilmainen kokeilu",
-          "screenShare": "Kyllä, useita kerralla"
+          "price": "13,49 $ paikalta kuukaudessa vuoden ennakkomaksulla, 14,99 $ kuukausittain, vähintään 10 paikkaa",
+          "freePlan": "Ei ole, vain ilmainen kokeilu",
+          "screenShare": "Kyllä, useita yhtä aikaa"
         },
         "faq": [
           {
-            "q": "Paljonko Sococo maksaa?",
-            "a": "Sococo maksaa $13,49 paikka kuussa vuosilaskutuksella, vähintään 10 paikkaa ja 500 minuuttia paikkaa kohden kuussa. Sococo Unlimited maksaa $24,99 paikka, vähintään 100 paikkaa. TinyFloor on ilmainen enintään 3 hengelle ja maksaa $29 kuukaudessa koko tiimille."
+            "q": "Mitä Sococo maksaa?",
+            "a": "Sococo maksaa 13,49 $ paikalta kuukaudessa vuoden ennakkomaksulla tai 14,99 $ kuukausisopimuksella, vähintään 10 paikkaa ja 500 minuuttia paikkaa kohden kuukaudessa; lisäminuutit maksavat 5 $ per 1 000. Sococo Unlimited maksaa 24,99 $ paikalta vähintään 100 paikalla. TinyFloor on ilmainen enintään 3 hengelle ja maksaa 29 $ kuukaudessa koko tiimiltä."
+          },
+          {
+            "q": "Mitä Sococo maksaa 5 hengen tiimille?",
+            "a": "Saman kuin 10:lle: vähimmäismäärä on 10 paikkaa, eli 134,90 $ kuukaudessa vuoden ennakkomaksulla (1 618,80 $ vuodessa) tai 149,90 $ kuukausittain. TinyFloor maksaa 29 $ kuukaudessa."
           },
           {
             "q": "Onko Sococosta ilmaista versiota?",
-            "a": "Sococo tarjoaa ilmaisen kokeilun ilmaisen paketin sijaan. TinyFloorin ilmaisella paketilla ei ole päättymispäivää, enintään 3 hengelle."
+            "a": "Sococo tarjoaa ilmaisen kokeilun ilmaisversion sijaan. TinyFloorin ilmaisversiolla ei ole päättymispäivää, enintään 3 hengelle."
           },
           {
             "q": "Mitä Sococossa on, mitä TinyFloorissa ei ole?",
-            "a": "Sococossa voit valita pohjapiirroksia ja sisustuksen, ja se yhdistyy Zoomiin, Webexiin, Google Meetiin ja Microsoft Teamsiin. TinyFloorissa on yksi toimistokerros, ja puhelut ja kokoukset hoituvat sen sisällä."
+            "a": "Valittavat pohjapiirrokset ja sisustus, yhteydet Zoomiin, Webexiin, Google Meetiin ja Microsoft Teamsiin, asiakirjojen jakaminen sekä iOS- ja Android-sovellukset. TinyFloorissa on yksi toimistokerros ja omat puhelut ja kokoukset."
           },
           {
             "q": "Pitääkö minun asentaa jotain?",
@@ -487,11 +491,11 @@
       "ovice": {
         "label": "oVice-vaihtoehto",
         "meta": {
-          "title": "oVice-vaihtoehto pienille tiimeille",
-          "description": "oVice laskuttaa tilan mukaan tai 20 käyttäjästä alkaen. TinyFloor on selaimessa toimiva virtuaalitoimisto pienille tiimeille: ilmainen 3 hengelle, sitten $29 kuukaudessa koko tiimille."
+          "title": "Vaihtoehto oVicelle: hinnat, ilmaisversio ja yksinkertaisempi toimisto pienille tiimeille",
+          "description": "oVicen Entry-S maksaa 65–78 $ kuukaudessa yhdestä tilasta noin 10 jäsenelle, ja Business Starter alkaa 20 käyttäjästä. Mitä pieni tiimi maksaa, missä oVice on parempi ja TinyFloor 29 $:lla koko tiimiltä."
         },
         "title": "<em>oVice-vaihtoehto</em> pienten tiimien kokoon.",
-        "subtitle": "oVice on rakennettu yrityksille ja yhteisöille, ja sen tilaukset määräytyvät tilan koon mukaan tai alkavat 20 käyttäjästä. TinyFloor on tehty pienille tiimeille, ja siinä on yksi yksinkertainen hinta toimistoa kohden.",
+        "subtitle": "oVice on tehty yrityksille ja yhteisöille, ja sen hinta on kiinteä tilaa kohden tai käyttäjää kohden 20 käyttäjästä alkaen. TinyFloor on tehty pienille tiimeille, ja sillä on yksi yksinkertainen hinta toimistoa kohden: 29 $ kuukaudessa.",
         "points": [
           {
             "title": "Yksi hinta toimistoa kohden",
@@ -514,20 +518,20 @@
         },
         "faq": [
           {
-            "q": "Paljonko oVice maksaa?",
-            "a": "oVice Entry-S maksaa $65 kuussa tilaa kohden vuosilaskutuksella tai $78 kuukausilaskutuksella, noin 10 vakituiselle jäsenelle. Business Starter maksaa $16 käyttäjältä kuussa 20 käyttäjästä alkaen. TinyFloor maksaa $29 kuukaudessa koko tiimille."
+            "q": "Mitä oVice maksaa?",
+            "a": "oVice Entry-S maksaa 65 $ kuukaudessa tilaa kohden vuosimaksulla (780 $ vuodessa) tai 78 $ kuukausittain, noin 10 vakituiselle jäsenelle. Entry-M maksaa 245 tai 294 $ noin 40:lle. Business Starter maksaa 16 $ käyttäjältä kuukaudessa vuosimaksulla tai 19,20 $ kuukausittain, 20 käyttäjästä alkaen. TinyFloor maksaa 29 $ kuukaudessa koko tiimiltä."
           },
           {
-            "q": "Onko oVicella ilmaista pakettia?",
-            "a": "On. 14 päivän kokeilun jälkeen tila siirtyy ilmaiseen pakettiin, joka toimii esiversioympäristössä ilman SLA:ta tai tukea. TinyFloorin ilmainen paketti on sama tuote kuin maksulliset, enintään 3 hengelle."
+            "q": "Onko oVicella ilmaisversiota?",
+            "a": "On. 14 päivän kokeilun jälkeen tila siirtyy ilmaisversioon, joka toimii esijulkaisuympäristössä ilman SLA:ta ja tukea sekä ilman pääsynhallintaa, SSO:ta ja integraatioita. TinyFloorin ilmaisversio on sama tuote kuin maksulliset, enintään 3 hengelle."
           },
           {
             "q": "Mitä oVicessa on, mitä TinyFloorissa ei ole?",
-            "a": "oVicessa on omat pohjat, litterointi, tallennus pyynnöstä, kalenteri- ja Microsoft Teams -integraatio sekä paketit tapahtumiin. TinyFloor keskittyy arjen toimistoon: luo kävelemiseen, kokouksiin, chattiin, tauluun ja musiikkiin."
+            "a": "oVicessa on omat asettelut ja avatarit, Google Kalenteri- ja Microsoft Teams -integraatio, SSO, tallennus ja litterointi Business Starterissa sekä kertaluonteiset tilaukset tapahtumiin. TinyFloor keskittyy päivittäiseen toimistoon: kävelemiseen ihmisten luo, kokouksiin, chattiin, tauluun ja musiikkiin."
           },
           {
             "q": "Onko TinyFloor saatavilla japaniksi?",
-            "a": "On. TinyFloor toimii 18 kielellä, myös japaniksi ja koreaksi, ja jokainen voi valita oman kielensä."
+            "a": "On. TinyFloor on saatavilla 18 kielellä, myös japaniksi ja koreaksi, ja jokainen voi valita oman kielensä."
           }
         ]
       },

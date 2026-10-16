@@ -441,11 +441,11 @@
       "sococo": {
         "label": "Sococo alternative",
         "meta": {
-          "title": "Sococo Alternative for Small Remote Teams",
-          "description": "Sococo starts at 10 seats on a yearly plan. TinyFloor is a virtual office in the browser, free for 3 people and $29 a month for the whole team, billed monthly."
+          "title": "Sococo Alternative: Pricing, the 10-Seat Minimum and a Monthly Option",
+          "description": "Sococo is $13.49–14.99 a seat a month with a 10-seat minimum and 500 minutes per seat. What a small team pays, what Sococo does better, and TinyFloor at $29 a month for the whole team."
         },
         "title": "A <em>Sococo alternative</em> without the 10-seat minimum.",
-        "subtitle": "Sococo sells seats by the year, 10 at the least. TinyFloor is one monthly price for the whole office, and a small team can start free.",
+        "subtitle": "Sococo sells seats 10 at a time, at $13.49 a seat prepaid yearly or $14.99 month to month, with 500 minutes per seat. TinyFloor is one monthly price for the whole office, and a small team can start free.",
         "points": [
           {
             "title": "Start at your real size",
@@ -461,14 +461,18 @@
           }
         ],
         "them": {
-          "price": "$13.49 per seat a month, billed yearly, 10 seats minimum",
+          "price": "$13.49 per seat a month prepaid yearly, $14.99 monthly, 10 seats minimum",
           "freePlan": "None, only a free trial",
           "screenShare": "Yes, several at once"
         },
         "faq": [
           {
             "q": "How much does Sococo cost?",
-            "a": "Sococo is $13.49 per seat a month, billed yearly, with a 10-seat minimum and 500 minutes per seat a month. Sococo Unlimited is $24.99 per seat with a 100-seat minimum. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+            "a": "Sococo is $13.49 per seat a month prepaid yearly, or $14.99 on a monthly term, with a 10-seat minimum and 500 minutes per seat a month; extra minutes are $5 per 1,000. Sococo Unlimited is $24.99 per seat with a 100-seat minimum. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+          },
+          {
+            "q": "How much does Sococo cost for a team of 5?",
+            "a": "The same as for 10: the minimum is 10 seats, so $134.90 a month prepaid yearly ($1,618.80 a year) or $149.90 monthly. TinyFloor is $29 a month."
           },
           {
             "q": "Is there a free version of Sococo?",
@@ -476,7 +480,7 @@
           },
           {
             "q": "What does Sococo have that TinyFloor does not?",
-            "a": "Sococo lets you choose floor plans and decor, and connects to Zoom, Webex, Google Meet and Microsoft Teams. TinyFloor keeps one office floor and runs its own calls and meetings."
+            "a": "A choice of floor plans and decor, connections to Zoom, Webex, Google Meet and Microsoft Teams, document sharing, and iOS and Android apps. TinyFloor keeps one office floor and runs its own calls and meetings."
           },
           {
             "q": "Do I need to install anything?",
@@ -487,11 +491,11 @@
       "ovice": {
         "label": "oVice alternative",
         "meta": {
-          "title": "oVice Alternative for Small Teams",
-          "description": "oVice prices by the space or from 20 users. TinyFloor is a browser virtual office for small teams: free for 3 people, then $29 a month for the whole team."
+          "title": "oVice Alternative: Pricing, the Free Plan and a Simpler Office for Small Teams",
+          "description": "oVice's Entry-S is $65–78 a month for one space sized for about 10 members, and Business Starter starts at 20 users. What a small team pays, what oVice does better, and TinyFloor at $29 for the whole team."
         },
         "title": "An <em>oVice alternative</em> sized for small teams.",
-        "subtitle": "oVice is built for companies and communities, with plans by space size or from 20 users. TinyFloor is made for small teams, with one simple price per office.",
+        "subtitle": "oVice is built for companies and communities, with a flat price per space or per user from 20 users. TinyFloor is made for small teams, with one simple price per office: $29 a month.",
         "points": [
           {
             "title": "One price per office",
@@ -515,15 +519,15 @@
         "faq": [
           {
             "q": "How much does oVice cost?",
-            "a": "oVice Entry-S is $65 a month per space billed yearly, or $78 monthly, for about 10 regular members. Business Starter is $16 per user a month from 20 users. TinyFloor is $29 a month for the whole team."
+            "a": "oVice Entry-S is $65 a month per space billed yearly ($780 a year), or $78 monthly, for about 10 regular members. Entry-M is $245 or $294 for about 40. Business Starter is $16 per user a month billed yearly, or $19.20 monthly, from 20 users. TinyFloor is $29 a month for the whole team."
           },
           {
             "q": "Does oVice have a free plan?",
-            "a": "Yes. After its 14-day trial a space moves to a free plan, which runs on a pre-release environment without an SLA or support. TinyFloor's free plan is the same product as its paid plans, for up to 3 people."
+            "a": "Yes. After its 14-day trial a space moves to a free plan, which runs on a pre-release environment without an SLA or support, and without access controls, SSO or integrations. TinyFloor's free plan is the same product as its paid plans, for up to 3 people."
           },
           {
             "q": "What does oVice have that TinyFloor does not?",
-            "a": "oVice adds custom layouts, transcription, recording on request, calendar and Microsoft Teams integration, and plans for events. TinyFloor focuses on the everyday office: walking up, meetings, chat, a whiteboard and music."
+            "a": "oVice adds custom layouts and avatars, Google Calendar and Microsoft Teams integration, SSO, recording and transcription on Business Starter, and one-time plans for events. TinyFloor focuses on the everyday office: walking up, meetings, chat, a whiteboard and music."
           },
           {
             "q": "Is TinyFloor available in Japanese?",

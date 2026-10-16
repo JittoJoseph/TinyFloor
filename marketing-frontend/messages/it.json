@@ -441,11 +441,11 @@
       "sococo": {
         "label": "Alternativa a Sococo",
         "meta": {
-          "title": "Alternativa a Sococo per piccoli team da remoto",
-          "description": "Sococo parte da 10 posti con piano annuale. TinyFloor è un ufficio virtuale nel browser, gratis per 3 persone e $29 al mese per tutto il team, con fatturazione mensile."
+          "title": "Alternativa a Sococo: prezzi, il minimo di 10 posti e un'opzione mensile",
+          "description": "Sococo costa 13,49–14,99 $ a posto al mese, con un minimo di 10 posti e 500 minuti a posto. Quanto paga un piccolo team, cosa fa meglio Sococo e TinyFloor a 29 $ al mese per tutto il team."
         },
         "title": "Un'<em>alternativa a Sococo</em> senza il minimo di 10 posti.",
-        "subtitle": "Sococo vende posti all'anno, almeno 10. TinyFloor ha un prezzo mensile per tutto l'ufficio, e un piccolo team può iniziare gratis.",
+        "subtitle": "Sococo vende posti a blocchi di almeno 10, a 13,49 $ a posto con pagamento annuale anticipato o 14,99 $ mese per mese, con 500 minuti a posto. TinyFloor è un prezzo mensile per tutto l'ufficio, e un piccolo team può iniziare gratis.",
         "points": [
           {
             "title": "Parti dalla tua vera dimensione",
@@ -461,14 +461,18 @@
           }
         ],
         "them": {
-          "price": "$13,49 a posto al mese, fatturato annualmente, minimo 10 posti",
+          "price": "13,49 $ a posto al mese con pagamento annuale anticipato, 14,99 $ mensile, minimo 10 posti",
           "freePlan": "Nessuno, solo una prova gratuita",
-          "screenShare": "Sì, più schermi insieme"
+          "screenShare": "Sì, più di una alla volta"
         },
         "faq": [
           {
             "q": "Quanto costa Sococo?",
-            "a": "Sococo costa $13,49 a posto al mese, fatturato annualmente, con un minimo di 10 posti e 500 minuti a posto al mese. Sococo Unlimited costa $24,99 a posto con un minimo di 100 posti. TinyFloor è gratis fino a 3 persone e costa $29 al mese per tutto il team."
+            "a": "Sococo costa 13,49 $ a posto al mese con pagamento annuale anticipato, o 14,99 $ con durata mensile, con un minimo di 10 posti e 500 minuti a posto al mese; i minuti in più costano 5 $ ogni 1.000. Sococo Unlimited costa 24,99 $ a posto con un minimo di 100. TinyFloor è gratis fino a 3 persone e costa 29 $ al mese per tutto il team."
+          },
+          {
+            "q": "Quanto costa Sococo per un team di 5?",
+            "a": "Come per 10: il minimo è di 10 posti, quindi 134,90 $ al mese con pagamento annuale anticipato (1.618,80 $ all'anno) o 149,90 $ mensile. TinyFloor costa 29 $ al mese."
           },
           {
             "q": "Esiste una versione gratuita di Sococo?",
@@ -476,22 +480,22 @@
           },
           {
             "q": "Cosa ha Sococo che TinyFloor non ha?",
-            "a": "Sococo ti fa scegliere planimetrie e arredi, e si collega a Zoom, Webex, Google Meet e Microsoft Teams. TinyFloor mantiene un solo piano d'ufficio e gestisce chiamate e riunioni da sé."
+            "a": "Una scelta di piantine e arredi, collegamenti con Zoom, Webex, Google Meet e Microsoft Teams, condivisione di documenti e app per iOS e Android. TinyFloor ha un solo piano d'ufficio e gestisce da sé chiamate e riunioni."
           },
           {
             "q": "Devo installare qualcosa?",
-            "a": "No. TinyFloor funziona nel browser su desktop e mobile. Condividi il link d'invito del tuo ufficio e il team entra."
+            "a": "No. TinyFloor funziona nel browser, su computer e mobile. Condividi il link di invito del tuo ufficio e il team entra."
           }
         ]
       },
       "ovice": {
         "label": "Alternativa a oVice",
         "meta": {
-          "title": "Alternativa a oVice per piccoli team",
-          "description": "oVice fa pagare per spazio o da 20 utenti. TinyFloor è un ufficio virtuale nel browser per piccoli team: gratis per 3 persone, poi $29 al mese per tutto il team."
+          "title": "Alternativa a oVice: prezzi, il piano gratuito e un ufficio più semplice per piccoli team",
+          "description": "Entry-S di oVice costa 65–78 $ al mese per uno spazio pensato per circa 10 membri, e Business Starter parte da 20 utenti. Quanto paga un piccolo team, cosa fa meglio oVice e TinyFloor a 29 $ per tutto il team."
         },
         "title": "Un'<em>alternativa a oVice</em> a misura di piccolo team.",
-        "subtitle": "oVice è pensato per aziende e community, con piani per dimensione dello spazio o da 20 utenti. TinyFloor è fatto per piccoli team, con un solo prezzo semplice per ufficio.",
+        "subtitle": "oVice è fatto per aziende e community, con un prezzo fisso per spazio o per utente da 20 utenti in su. TinyFloor è fatto per piccoli team, con un prezzo semplice per ufficio: 29 $ al mese.",
         "points": [
           {
             "title": "Un prezzo per ufficio",
@@ -515,19 +519,19 @@
         "faq": [
           {
             "q": "Quanto costa oVice?",
-            "a": "oVice Entry-S costa $65 al mese per spazio con fatturazione annuale, o $78 mensili, per circa 10 membri abituali. Business Starter costa $16 a utente al mese da 20 utenti. TinyFloor costa $29 al mese per tutto il team."
+            "a": "oVice Entry-S costa 65 $ al mese per spazio con fatturazione annuale (780 $ all'anno), o 78 $ mensile, per circa 10 membri abituali. Entry-M costa 245 o 294 $ per circa 40. Business Starter costa 16 $ a utente al mese con fatturazione annuale, o 19,20 $ mensile, da 20 utenti. TinyFloor costa 29 $ al mese per tutto il team."
           },
           {
             "q": "oVice ha un piano gratuito?",
-            "a": "Sì. Dopo la prova di 14 giorni uno spazio passa a un piano gratuito che gira su un ambiente preliminare senza SLA né assistenza. Il piano gratuito di TinyFloor è lo stesso prodotto dei piani a pagamento, fino a 3 persone."
+            "a": "Sì. Dopo la prova di 14 giorni lo spazio passa a un piano gratuito che gira in un ambiente di pre-release, senza SLA né supporto, e senza controlli di accesso, SSO o integrazioni. Il piano gratuito di TinyFloor è lo stesso prodotto dei piani a pagamento, fino a 3 persone."
           },
           {
             "q": "Cosa ha oVice che TinyFloor non ha?",
-            "a": "oVice aggiunge layout personalizzati, trascrizione, registrazione su richiesta, integrazione con calendario e Microsoft Teams, e piani per eventi. TinyFloor si concentra sull'ufficio di ogni giorno: avvicinarsi, riunioni, chat, una lavagna e musica."
+            "a": "oVice aggiunge layout e avatar personalizzati, integrazione con Google Calendar e Microsoft Teams, SSO, registrazione e trascrizione con Business Starter, e piani una tantum per gli eventi. TinyFloor si concentra sull'ufficio di tutti i giorni: avvicinarsi, riunioni, chat, una lavagna e musica."
           },
           {
             "q": "TinyFloor è disponibile in giapponese?",
-            "a": "Sì. TinyFloor è in 18 lingue, tra cui giapponese e coreano, e ogni persona può scegliere la propria."
+            "a": "Sì. TinyFloor è disponibile in 18 lingue, giapponese e coreano compresi, e ognuno può scegliere la propria."
           }
         ]
       },

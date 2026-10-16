@@ -1193,5 +1193,360 @@
         "Roams priser og funktioner kommer fra dets prisside, læst i oktober 2026, i amerikanske dollar ekskl. moms; Roam viser også priser i nogle lokale valutaer, fx rupier for virksomheder i Indien. Hvad der ikke stod der, udelod vi i stedet for at gætte. Vi laver TinyFloor, så vi siger tydeligt, hvad det ikke kan. Priser ændrer sig: tjek Roams side, før du køber."
       ]
     }
+  ],
+  "sococo": [
+    {
+      "title": "Sococo og TinyFloor i overblik",
+      "body": [
+        "Begge viser teamet som et kort over et kontor med lokaler, man går ind i. Sococo, nu en del af IgniteTech, sælger pladser med et minimum; TinyFloor tager én pris for kontoret."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Sococo",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Et team på 8, om måneden",
+            "134,90 $ forudbetalt årligt, 149,90 $ månedligt (mindst 10 pladser)",
+            "29 $ for hele teamet"
+          ],
+          [
+            "Gratisplan",
+            "Ingen, en gratis prøveperiode",
+            "Op til 3 personer, alle funktioner"
+          ],
+          [
+            "Hvordan prisen beregnes",
+            "Per plads, mindst 10",
+            "Én pris for kontoret"
+          ],
+          [
+            "Minutter",
+            "500 per plads om måneden; flere til 5 $ per 1.000",
+            "Opkald tælles ikke"
+          ],
+          [
+            "Kontoret",
+            "Valg af plantegninger og indretning",
+            "Et færdigt kontor"
+          ],
+          [
+            "Videoopkald",
+            "Egne, eller Zoom, Webex, Google Meet eller Microsoft Teams",
+            "Egne opkald og mødelokale"
+          ],
+          [
+            "Telefoner",
+            "Apps til iOS og Android",
+            "Mobilbrowseren"
+          ]
+        ],
+        "note": "Oplysninger om Sococo fra dets prisside i oktober 2026, ekskl. moms."
+      }
+    },
+    {
+      "title": "Hvad Sococo koster efter teamstørrelse",
+      "body": [
+        "Sococo opkræver mindst 10 pladser, til 13,49 $ per plads om måneden ved årlig forudbetaling eller 14,99 $ med månedlig binding, så alle teams på 10 eller færre betaler det samme."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Sococo, månedlig binding",
+          "Sococo, forudbetalt årligt, om måneden",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "4 personer",
+            "149,90 $",
+            "134,90 $",
+            "29 $"
+          ],
+          [
+            "8 personer",
+            "149,90 $",
+            "134,90 $",
+            "29 $"
+          ],
+          [
+            "10 personer",
+            "149,90 $",
+            "134,90 $",
+            "29 $"
+          ],
+          [
+            "12 personer",
+            "179,88 $",
+            "161,88 $",
+            "29 $"
+          ]
+        ],
+        "note": "Sococo til 14,99 $ per plads månedligt eller 13,49 $ forudbetalt årligt, mindst 10 pladser (Sococos prisside, oktober 2026). TinyFloor Pro betales månedligt; teams på op til 3 forbliver gratis."
+      }
+    },
+    {
+      "title": "Hvorfor små teams leder efter et alternativ til Sococo",
+      "items": [
+        {
+          "title": "Ti pladser, uanset hvor lille I er",
+          "body": "Et team på 4 betaler for 10. Med 134,90–149,90 $ om måneden er det prisen for et meget større team."
+        },
+        {
+          "title": "Minutter at holde øje med",
+          "body": "Hver plads indeholder 500 minutter om måneden, knap 25 minutter per arbejdsdag. Et team, der snakker meget, køber flere til 5 $ per 1.000 minutter."
+        },
+        {
+          "title": "Den bedste pris kræver et år forud",
+          "body": "13,49 $ gælder med året forudbetalt; månedligt er det 14,99 $ per plads."
+        },
+        {
+          "title": "Ingen gratisplan",
+          "body": "Der er en gratis prøveperiode, men ingen plan, hvor et lille team kan blive uden at betale."
+        }
+      ]
+    },
+    {
+      "title": "Hvad Sococo gør bedre",
+      "items": [
+        {
+          "title": "Kontorer at vælge imellem",
+          "body": "Vælg en plantegning og en indretning, der passer til teamet. TinyFloor har ét færdigt kontor."
+        },
+        {
+          "title": "Virker med dit opkaldsværktøj",
+          "body": "Sococo forbinder til Zoom, Webex, Google Meet og Microsoft Teams, så et team kan beholde sit videoværktøj og bruge Sococo som kort."
+        },
+        {
+          "title": "Bygget til større virksomheder",
+          "body": "Sococo Unlimited, til virksomheder med 100 pladser eller flere, har ubegrænsede minutter, til 24,99 $ per plads med årlig binding."
+        },
+        {
+          "title": "Apps til telefonen",
+          "body": "Sococo har apps til iOS og Android; TinyFloor kører i mobilbrowseren."
+        }
+      ]
+    },
+    {
+      "title": "Hvad der passer til dit team",
+      "items": [
+        {
+          "title": "TinyFloor, til et lille team, der betaler månedligt",
+          "body": "Til et team på 4 til 15, der vil have et privat kontor med opkald, mødelokale og chat, uden minimum af pladser, minutpulje eller årlig forudbetaling."
+        },
+        {
+          "title": "Sococo, til en virksomhed, der kører Zoom eller Teams",
+          "body": "Hvis du vil have kontorkortet oven på det videoværktøj, du allerede betaler for, et valg af plantegninger eller plads til snesevis af pladser."
+        }
+      ]
+    },
+    {
+      "title": "Flyt et team fra Sococo",
+      "items": [
+        {
+          "title": "Opret et kontor",
+          "detail": "To minutter",
+          "body": "Navngiv det efter teamet. Gulvet, skrivebordene og mødelokalet er klar."
+        },
+        {
+          "title": "Del ét invitationslink",
+          "detail": "I teamchatten",
+          "body": "Kollegerne logger ind med Google eller e-mail og går ind fra browseren, på computer eller telefon."
+        },
+        {
+          "title": "Arbejd der en almindelig uge",
+          "detail": "Standup i mødelokalet",
+          "body": "Brug det ved siden af Sococo i en uge, og beslut før jeres fornyelse, hvilket teamet faktisk åbnede."
+        }
+      ]
+    },
+    {
+      "title": "Sådan sammenlignede vi",
+      "body": [
+        "Sococos priser, grænser og funktioner kommer fra dets prisside, læst i oktober 2026, i amerikanske dollar ekskl. moms. Hvad der ikke stod der, udelod vi i stedet for at gætte. Vi laver TinyFloor, så vi siger tydeligt, hvad det ikke kan. Priser ændrer sig: tjek Sococos side, før du køber."
+      ]
+    }
+  ],
+  "ovice": [
+    {
+      "title": "oVice og TinyFloor i overblik",
+      "body": [
+        "I begge flytter du din avatar for at snakke med folk, og begge har en plan med pris per rum i stedet for per person. oVice lægger de kontroller og integrationer oveni, som en udrulning i en virksomhed kræver; TinyFloor holder sig til det, et lille team bruger hver dag."
+      ],
+      "table": {
+        "head": [
+          "",
+          "oVice",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Et team på 8, om måneden",
+            "65 $ årligt, 78 $ månedligt (Entry-S)",
+            "29 $ for hele teamet"
+          ],
+          [
+            "Gratisplan",
+            "Ja, i et præ-release-miljø uden SLA eller support",
+            "Op til 3 personer, samme produkt som betalt"
+          ],
+          [
+            "Hvordan prisen beregnes",
+            "Per rum i Entry, per bruger fra 20 i Business Starter",
+            "Én pris for kontoret"
+          ],
+          [
+            "At holde kontoret privat",
+            "Adgangskode-, e-mail- og IP-kontrol i betalte planer",
+            "Privat i alle planer"
+          ],
+          [
+            "Integrationer og SSO",
+            "Google Kalender, Microsoft Teams og SSO i betalte planer",
+            "Ingen"
+          ],
+          [
+            "Rummet",
+            "Egne layouts og avatarer",
+            "Et færdigt kontor"
+          ],
+          [
+            "Optagelse og transskription",
+            "På anmodning med Business Starter",
+            "Nej"
+          ],
+          [
+            "Events",
+            "Engangsplaner fra 35 $ om ugen",
+            "Nej"
+          ]
+        ],
+        "note": "Oplysninger om oVice fra dets prisside i oktober 2026, i amerikanske dollar ekskl. moms."
+      }
+    },
+    {
+      "title": "Hvad oVices planer koster",
+      "body": [
+        "oVices Entry-planer er en fast pris per rum, dimensioneret efter, hvor mange der kan være online samtidig. Business Starter prissættes per bruger, fra 20."
+      ],
+      "table": {
+        "head": [
+          "Plan",
+          "Månedligt",
+          "Årligt, om måneden",
+          "Lavet til"
+        ],
+        "rows": [
+          [
+            "oVice Entry-S",
+            "78 $",
+            "65 $",
+            "Ét rum; omkring 10 faste medlemmer, 50 online samtidig"
+          ],
+          [
+            "oVice Entry-M",
+            "294 $",
+            "245 $",
+            "Ét rum; omkring 40 faste medlemmer, 200 online samtidig"
+          ],
+          [
+            "oVice Business Starter",
+            "384 $ for 20 brugere",
+            "320 $ for 20 brugere",
+            "Fra 20 brugere; ubegrænsede rum og bygninger"
+          ],
+          [
+            "TinyFloor Pro",
+            "29 $",
+            "Kun månedligt",
+            "Ét kontor til et lille team; gratis for op til 3"
+          ]
+        ],
+        "note": "oVices priser fra dets prisside, oktober 2026; Business Starter koster 19,20 $ per bruger månedligt eller 16 $ årligt. TinyFloor Pro betales månedligt."
+      }
+    },
+    {
+      "title": "Hvorfor små teams leder efter et alternativ til oVice",
+      "items": [
+        {
+          "title": "Et rum, der er større end nødvendigt",
+          "body": "Entry-S rummer 50 personer online samtidig. Et team på 6 betaler de samme 65–78 $ om måneden som et team på 10."
+        },
+        {
+          "title": "Gratisplanen er ikke til det daglige arbejde",
+          "body": "oVice kører gratisplanen i et præ-release-miljø uden SLA eller support og uden adgangskontrol, så den egner sig bedre til at prøve ting af end til at lade et team arbejde."
+        },
+        {
+          "title": "Virksomhedsplanen starter ved 20",
+          "body": "Business Starters administration, rapporter og optagelse starter ved 20 brugere, 320 $ om måneden eller mere."
+        },
+        {
+          "title": "Bygget til udrulninger",
+          "body": "Bygninger, rettighedsgrupper og rapporter om fjernarbejde er lavet til større organisationer; et lille team bruger dem måske aldrig."
+        }
+      ]
+    },
+    {
+      "title": "Hvad oVice gør bedre",
+      "items": [
+        {
+          "title": "Rum, du selv former",
+          "body": "Egne layouts og avatarer, flere rum og bygninger med Business Starter og rumstørrelser til hundredvis af personer online. TinyFloor har ét færdigt kontor."
+        },
+        {
+          "title": "Integrationer og sikkerhed allerede i startplanen",
+          "body": "Entry-S har allerede SSO, integration med Google Kalender og Microsoft Teams, adgangskontrol og en SLA."
+        },
+        {
+          "title": "Optagelse, transskription og AI-referater",
+          "body": "Inkluderet i Business Starter og slået til på anmodning. TinyFloor optager ikke."
+        },
+        {
+          "title": "Events",
+          "body": "Engangsplaner for en uge eller en måned, fra 35 $, til meetups og konferencer."
+        }
+      ]
+    },
+    {
+      "title": "Hvad der passer til dit team",
+      "items": [
+        {
+          "title": "TinyFloor, til et lille teams daglige kontor",
+          "body": "Til et team på 4 til 15, der vil have et privat kontor med opkald, mødelokale, chat og whiteboard, til 29 $ om måneden, uden at dimensionere et rum."
+        },
+        {
+          "title": "oVice, til virksomheder og fællesskaber",
+          "body": "Hvis du har brug for SSO, integration med Microsoft Teams eller Google Kalender, egne layouts, lokaler til snesevis eller hundredvis af personer eller et rum til et event."
+        }
+      ]
+    },
+    {
+      "title": "Flyt et team fra oVice",
+      "items": [
+        {
+          "title": "Opret et kontor",
+          "detail": "To minutter",
+          "body": "Navngiv det efter teamet. Gulvet, skrivebordene og mødelokalet er klar; der er intet layout at bygge op igen."
+        },
+        {
+          "title": "Del ét invitationslink",
+          "detail": "I teamchatten",
+          "body": "Kollegerne logger ind med Google eller e-mail og går ind fra browseren, på computer eller telefon."
+        },
+        {
+          "title": "Arbejd der en almindelig uge",
+          "detail": "Standup i mødelokalet",
+          "body": "Brug det ved siden af oVice i en uge, og beslut så, hvilket teamet faktisk åbnede."
+        }
+      ]
+    },
+    {
+      "title": "Sådan sammenlignede vi",
+      "body": [
+        "oVices priser, grænser og funktioner kommer fra dets prisside og funktionssammenligning, læst i oktober 2026, i amerikanske dollar ekskl. moms. Hvad der ikke stod der, udelod vi i stedet for at gætte. Vi laver TinyFloor, så vi siger tydeligt, hvad det ikke kan. Priser ændrer sig: tjek oVices side, før du køber."
+      ]
+    }
   ]
 }

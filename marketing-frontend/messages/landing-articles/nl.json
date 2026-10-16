@@ -2452,5 +2452,102 @@
         "Het is geen HR-tool. Er zijn geen onboardingchecklists, geen documenten ondertekenen, geen accounts aanmaken en geen single sign-on. Houd je handboek in je documentatietool en accounts in je beheertools; TinyFloor is waar de nieuwe collega het team ontmoet en hulp krijgt. Uitnodigen kost één link, en een minuut later kan die aan een bureau zitten."
       ]
     }
+  ],
+  "watercooler": [
+    {
+      "title": "Waar het koffieapparaat echt voor was",
+      "body": [
+        "Niemand mist de koffie. Wat remote teams missen, is het gesprek dat niemand had gepland: de vraag in het voorbijgaan, de grap, de vijf minuten waardoor iemand zich deel van het team voelde. In de cijfers van Gallup uit 2024 gaf 25% van de volledig remote werkenden aan zich eenzaam te voelen, tegenover 16% van wie op locatie werkt.",
+        "Ingeplande sociale calls proberen dat op te lossen en voelen vaak als nog een meeting. Beter werkt een plek waar je elkaar weer toevallig tegenkomt."
+      ]
+    },
+    {
+      "title": "Hoe het gebeurt op de verdieping",
+      "items": [
+        {
+          "title": "Iemand komt binnen",
+          "body": "Als een collega binnenkomt, ziet iedereen die al op de verdieping is een paar seconden een rustig \"Ana is er\" met een zwaaiknop. Eén zwaai, en de dag begint met een hallo."
+        },
+        {
+          "title": "Je loopt langs iemand",
+          "body": "Op weg naar de vergaderruimte of het whiteboard loop je langs bureaus. Blijf naast iemand staan en een gesprek is één tik weg; loop door en er gebeurt niets."
+        },
+        {
+          "title": "Muziek in de ruimte",
+          "body": "Loop naar de speaker en zet een nummer op. Iedereen hoort hetzelfde nummer, hard bij de speaker en zachter naarmate je verder weg loopt, dus mensen aan hun bureau kunnen doorwerken."
+        },
+        {
+          "title": "De chat tussen calls door",
+          "body": "Een kanaal voor alles wat geen werk is, met foto's en reacties. Berichten blijven staan, dus niemand mist de hondenfoto omdat die in een meeting zat."
+        }
+      ]
+    },
+    {
+      "title": "Rituelen die werken voor een klein team",
+      "body": [
+        "Houd ze kort, vrijwillig en regelmatig. Een team van acht heeft geen evenementenprogramma nodig, maar een paar gewoontes waar mensen echt op afkomen."
+      ],
+      "table": {
+        "head": [
+          "Ritueel",
+          "Hoe het gaat",
+          "Hoe vaak"
+        ],
+        "rows": [
+          [
+            "Vrijdagkoffie",
+            "Start een meeting die Koffie heet en vraag iedereen erbij. Een kwartier, geen agenda, camera's vrijwillig.",
+            "Wekelijks"
+          ],
+          [
+            "Show and tell",
+            "Iemand deelt vijf minuten zijn scherm: een zijproject, een foto, een tool die hij fijn vindt.",
+            "Om de week"
+          ],
+          [
+            "Successen van de week",
+            "Een bericht in een kanaal op vrijdagmiddag, één regel per persoon.",
+            "Wekelijks"
+          ],
+          [
+            "Een schets op het bord",
+            "Laat iets achter op het gedeelde whiteboard voor de ochtend: een vraag, een tekening, een poll.",
+            "Wanneer je wilt"
+          ],
+          [
+            "Lunch op de verdieping",
+            "Wie zin heeft, eet aan het bureau met het kantoor open en kletst als die wil.",
+            "Wanneer je wilt"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Wat het geforceerd maakt",
+      "items": [
+        {
+          "title": "Het verplicht maken",
+          "body": "Een sociale call waar je heen moet, is een meeting. Nodig uit en tel niet wie er kwam."
+        },
+        {
+          "title": "Camera's verplicht",
+          "body": "Bekeken worden is vermoeiend. In een gesprek met alleen stem stap je makkelijker in, en wie geen camera aan heeft, verschijnt toch als een kaart die oplicht bij het praten."
+        },
+        {
+          "title": "Punten en ranglijsten",
+          "body": "Streaks en badges maken van tijd samen een wedstrijd. TinyFloor heeft ze niet, met opzet."
+        },
+        {
+          "title": "Kijken wie er online is",
+          "body": "Niets op de verdieping telt hoe lang iemand er is of hoe lang iemand inactief was. Mensen ontspannen als niemand de score bijhoudt."
+        }
+      ]
+    },
+    {
+      "title": "Wat TinyFloor niet doet",
+      "body": [
+        "Er zijn geen spelletjes, geen quiz, geen YouTube-schermen en geen evenementruimtes voor honderd gasten. Het is een klein kantoor voor een team dat elke dag samenwerkt, en het koffieapparaat is het stukje tussen de taken. Voor een bedrijfsfeest of een groot sociaal evenement hebben Kumospace en Gather meer aan boord."
+      ]
+    }
   ]
 }

@@ -2452,5 +2452,102 @@
         "To nie jest narzędzie HR. Nie ma list kontrolnych wdrożenia, podpisywania dokumentów, zakładania kont ani logowania jednokrotnego. Trzymajcie podręcznik w narzędziu do dokumentacji, a konta w narzędziach administracyjnych; TinyFloor to miejsce, gdzie nowa osoba poznaje zespół i dostaje pomoc. Zaproszenie to jeden link, a minutę później może siedzieć przy biurku."
       ]
     }
+  ],
+  "watercooler": [
+    {
+      "title": "Do czego naprawdę służył ekspres do kawy",
+      "body": [
+        "Nikt nie tęskni za kawą. Zespołom zdalnym brakuje rozmowy, której nikt nie planował: pytania rzuconego w przejściu, żartu, pięciu minut, po których ktoś poczuł się częścią zespołu. W danych Gallupa z 2024 roku samotność zgłaszało 25% osób pracujących w pełni zdalnie, wobec 16% pracujących na miejscu.",
+        "Zaplanowane rozmowy towarzyskie próbują to naprawić i często wydają się kolejnym spotkaniem. Lepiej działa miejsce, w którym znów można na siebie wpaść."
+      ]
+    },
+    {
+      "title": "Jak to się dzieje na piętrze",
+      "items": [
+        {
+          "title": "Ktoś wchodzi",
+          "body": "Gdy przychodzi koleżanka, wszyscy, którzy są już na piętrze, widzą przez kilka sekund dyskretne „Ana jest” z przyciskiem do pomachania. Jedno pomachanie i dzień zaczyna się od „cześć”."
+        },
+        {
+          "title": "Mijasz kogoś",
+          "body": "Idąc do sali spotkań albo do tablicy, mijasz biurka. Zatrzymaj się obok kogoś, a rozmowa jest na jedno dotknięcie; idź dalej i nic się nie dzieje."
+        },
+        {
+          "title": "Muzyka w pokoju",
+          "body": "Podejdź do głośnika i włącz utwór. Wszyscy słyszą tę samą piosenkę, głośno przy głośniku i ciszej, im dalej odejdą, więc osoby przy biurkach mogą dalej pracować."
+        },
+        {
+          "title": "Czat między rozmowami",
+          "body": "Kanał na wszystko, co nie jest pracą, ze zdjęciami i reakcjami. Wiadomości zostają, więc nikt nie przegapi zdjęcia psa, bo akurat był na spotkaniu."
+        }
+      ]
+    },
+    {
+      "title": "Rytuały, które działają w małym zespole",
+      "body": [
+        "Krótkie, dobrowolne i regularne. Zespół ośmiu osób nie potrzebuje programu wydarzeń, tylko kilku zwyczajów, na które ludzie naprawdę przychodzą."
+      ],
+      "table": {
+        "head": [
+          "Rytuał",
+          "Jak to wygląda",
+          "Jak często"
+        ],
+        "rows": [
+          [
+            "Piątkowa kawa",
+            "Załóż spotkanie o nazwie Kawa i zaproś wszystkich. Piętnaście minut, bez agendy, kamery dobrowolne.",
+            "Co tydzień"
+          ],
+          [
+            "Pokaż i opowiedz",
+            "Ktoś udostępnia ekran na pięć minut: projekt po godzinach, zdjęcie, narzędzie, które lubi.",
+            "Co dwa tygodnie"
+          ],
+          [
+            "Sukcesy tygodnia",
+            "Wiadomość na kanale w piątek po południu, po jednej linijce od każdego.",
+            "Co tydzień"
+          ],
+          [
+            "Szkic na tablicy",
+            "Zostaw coś na wspólnej tablicy na rano: pytanie, rysunek, ankietę.",
+            "Kiedy chcesz"
+          ],
+          [
+            "Lunch na piętrze",
+            "Kto ma ochotę, je przy biurku przy otwartym biurze i rozmawia, jeśli chce.",
+            "Kiedy chcesz"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Co sprawia, że wychodzi to na siłę",
+      "items": [
+        {
+          "title": "Obowiązek",
+          "body": "Spotkanie towarzyskie, na które trzeba przyjść, to zwykłe spotkanie. Zapraszaj i nie licz, kto przyszedł."
+        },
+        {
+          "title": "Wymóg kamer",
+          "body": "Bycie obserwowanym męczy. Do rozmowy głosowej łatwiej dołączyć, a kto nie ma kamery, i tak pojawia się jako karta, która podświetla się, gdy mówi."
+        },
+        {
+          "title": "Punkty i rankingi",
+          "body": "Serie i odznaki zamieniają wspólny czas w rywalizację. TinyFloor ich nie ma, celowo."
+        },
+        {
+          "title": "Śledzenie, kto jest online",
+          "body": "Nic na piętrze nie liczy, jak długo ktoś tam jest ani jak długo był nieaktywny. Ludzie się rozluźniają, gdy nikt nie prowadzi punktacji."
+        }
+      ]
+    },
+    {
+      "title": "Czego TinyFloor nie robi",
+      "body": [
+        "Nie ma gier, quizów, ekranów YouTube ani przestrzeni na wydarzenia dla stu gości. To małe biuro dla zespołu, który pracuje razem codziennie, a ekspres do kawy to chwila między zadaniami. Na firmową imprezę albo duże wydarzenie towarzyskie Kumospace i Gather mają więcej wbudowanych funkcji."
+      ]
+    }
   ]
 }

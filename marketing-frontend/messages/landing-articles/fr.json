@@ -2452,5 +2452,102 @@
         "Ce n'est pas un outil RH. Il n'y a pas de checklists d'intégration, de signature de documents, de création de comptes ni d'authentification unique. Gardez votre manuel dans votre outil de documentation et vos comptes dans vos outils d'administration ; TinyFloor est l'endroit où la nouvelle personne rencontre l'équipe et trouve de l'aide. L'inviter prend un lien, et elle peut être à un poste une minute plus tard."
       ]
     }
+  ],
+  "watercooler": [
+    {
+      "title": "À quoi servait vraiment la machine à café",
+      "body": [
+        "Personne ne regrette le café. Ce qui manque aux équipes à distance, c'est la conversation que personne n'avait prévue : la question posée en passant, la blague, les cinq minutes qui ont fait sentir à quelqu'un qu'il faisait partie de l'équipe. Dans les données Gallup de 2024, 25 % des personnes en télétravail complet se disaient seules, contre 16 % de celles sur site.",
+        "Les appels conviviaux planifiés essaient d'y remédier et ressemblent souvent à une réunion de plus. Ce qui marche mieux, c'est d'offrir un lieu où l'on peut de nouveau se croiser."
+      ]
+    },
+    {
+      "title": "Comment ça se passe sur l'étage",
+      "items": [
+        {
+          "title": "Quelqu'un arrive",
+          "body": "Quand une collègue arrive, tous ceux déjà sur l'étage voient quelques secondes un discret « Ana est là » avec un bouton pour faire signe. Un signe de la main, et la journée commence par un bonjour."
+        },
+        {
+          "title": "Vous croisez quelqu'un",
+          "body": "En allant vers la salle de réunion ou le tableau blanc, vous passez devant des postes. Arrêtez-vous à côté de quelqu'un et un appel est à un geste ; continuez et rien ne se passe."
+        },
+        {
+          "title": "De la musique dans la pièce",
+          "body": "Approchez-vous de l'enceinte et lancez un morceau. Tout le monde entend la même chanson, forte près de l'enceinte et plus faible en s'éloignant, pour que ceux à leur poste puissent continuer à travailler."
+        },
+        {
+          "title": "Le chat entre deux appels",
+          "body": "Un canal pour tout ce qui n'est pas le travail, avec photos et réactions. Les messages restent, personne ne rate la photo du chien parce qu'il était en réunion."
+        }
+      ]
+    },
+    {
+      "title": "Des rituels qui marchent pour une petite équipe",
+      "body": [
+        "Courts, facultatifs et réguliers. Une équipe de huit n'a pas besoin d'un programme d'événements ; il lui faut quelques habitudes auxquelles les gens viennent vraiment."
+      ],
+      "table": {
+        "head": [
+          "Rituel",
+          "Déroulé",
+          "Fréquence"
+        ],
+        "rows": [
+          [
+            "Le café du vendredi",
+            "Lancez une réunion appelée Café et invitez tout le monde. Quinze minutes, sans ordre du jour, caméras facultatives.",
+            "Chaque semaine"
+          ],
+          [
+            "Montrer et raconter",
+            "Quelqu'un partage son écran cinq minutes : un projet perso, une photo, un outil qu'il aime.",
+            "Toutes les deux semaines"
+          ],
+          [
+            "Les réussites de la semaine",
+            "Un message dans un canal le vendredi après-midi, une ligne chacun.",
+            "Chaque semaine"
+          ],
+          [
+            "Un dessin au tableau",
+            "Laissez quelque chose sur le tableau blanc partagé pour le matin : une question, un dessin, un sondage.",
+            "Quand on veut"
+          ],
+          [
+            "Déjeuner sur l'étage",
+            "Ceux qui en ont envie mangent à leur poste, bureau ouvert, et discutent s'ils veulent.",
+            "Quand on veut"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Ce qui rend le moment forcé",
+      "items": [
+        {
+          "title": "Le rendre obligatoire",
+          "body": "Un moment convivial obligatoire, c'est une réunion. Invitez, et ne comptez pas qui est venu."
+        },
+        {
+          "title": "Exiger les caméras",
+          "body": "Être regardé fatigue. On entre plus facilement dans une conversation à la voix, et quiconque n'a pas de caméra apparaît quand même sous forme de carte qui s'allume quand il parle."
+        },
+        {
+          "title": "Points et classements",
+          "body": "Séries et badges transforment le temps passé ensemble en compétition. TinyFloor n'en a pas, volontairement."
+        },
+        {
+          "title": "Surveiller qui est en ligne",
+          "body": "Rien sur l'étage ne compte depuis combien de temps quelqu'un est là ou inactif. Les gens se détendent quand personne ne tient les comptes."
+        }
+      ]
+    },
+    {
+      "title": "Ce que TinyFloor ne fait pas",
+      "body": [
+        "Il n'y a pas de jeux, pas de quiz, pas d'écrans YouTube ni d'espaces d'événement pour cent invités. C'est un petit bureau pour une équipe qui travaille ensemble chaque jour, et la machine à café, c'est le moment entre deux tâches. Pour une fête d'entreprise ou un grand événement convivial, Kumospace et Gather en proposent davantage."
+      ]
+    }
   ]
 }

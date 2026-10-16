@@ -2452,5 +2452,102 @@
         "Det är inget HR-verktyg. Det finns inga introduktionschecklistor, ingen dokumentsignering, ingen kontohantering och ingen enkel inloggning. Ha handboken i ert dokumentverktyg och kontona i era administrationsverktyg; TinyFloor är där den nya personen träffar teamet och får hjälp. Att bjuda in tar en länk, och en minut senare kan hen sitta vid ett skrivbord."
       ]
     }
+  ],
+  "watercooler": [
+    {
+      "title": "Vad kaffemaskinen egentligen var till för",
+      "body": [
+        "Ingen saknar kaffet. Det distansteam saknar är samtalet ingen planerade: frågan i förbifarten, skämtet, de fem minuterna som fick någon att känna sig som en del av teamet. I Gallups data från 2024 uppgav 25 % av dem som jobbar helt på distans att de kände sig ensamma, mot 16 % av dem på plats.",
+        "Inbokade sociala samtal försöker lösa det och känns ofta som ännu ett möte. Bättre fungerar en plats där man kan springa på varandra igen."
+      ]
+    },
+    {
+      "title": "Hur det händer på våningen",
+      "items": [
+        {
+          "title": "Någon kommer in",
+          "body": "När en kollega kommer ser alla som redan är på våningen ett diskret ”Ana är här” med en vinkknapp i några sekunder. En vinkning, och dagen börjar med ett hej."
+        },
+        {
+          "title": "Du går förbi någon",
+          "body": "På väg till mötesrummet eller whiteboarden går du förbi skrivbord. Stanna bredvid någon så är ett samtal ett tryck bort; gå vidare så händer ingenting."
+        },
+        {
+          "title": "Musik i rummet",
+          "body": "Gå fram till högtalaren och sätt på ett spår. Alla hör samma låt, högt nära högtalaren och svagare ju längre bort de går, så de vid sina skrivbord kan jobba vidare."
+        },
+        {
+          "title": "Chatten mellan samtalen",
+          "body": "En kanal för allt som inte är jobb, med bilder och reaktioner. Meddelandena finns kvar, så ingen missar hundbilden för att hen satt i ett möte."
+        }
+      ]
+    },
+    {
+      "title": "Ritualer som fungerar för ett litet team",
+      "body": [
+        "Korta, frivilliga och regelbundna. Ett team på åtta behöver inget eventprogram, utan några vanor som folk faktiskt dyker upp till."
+      ],
+      "table": {
+        "head": [
+          "Ritual",
+          "Så går det till",
+          "Hur ofta"
+        ],
+        "rows": [
+          [
+            "Fredagsfika",
+            "Starta ett möte som heter Fika och bjud in alla. En kvart, ingen agenda, kameror frivilligt.",
+            "Varje vecka"
+          ],
+          [
+            "Visa och berätta",
+            "Någon delar skärmen i fem minuter: ett sidoprojekt, ett foto, ett verktyg hen gillar.",
+            "Varannan vecka"
+          ],
+          [
+            "Veckans framgångar",
+            "Ett meddelande i en kanal på fredagseftermiddagen, en rad var.",
+            "Varje vecka"
+          ],
+          [
+            "En skiss på tavlan",
+            "Lämna något på den delade whiteboarden till morgonen: en fråga, en teckning, en omröstning.",
+            "När som helst"
+          ],
+          [
+            "Lunch på våningen",
+            "Den som vill äter vid skrivbordet med kontoret öppet och pratar om hen vill.",
+            "När som helst"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Det som gör det påtvingat",
+      "items": [
+        {
+          "title": "Att göra det obligatoriskt",
+          "body": "Ett socialt samtal man måste gå på är ett möte. Bjud in, och räkna inte vilka som kom."
+        },
+        {
+          "title": "Kamerakrav",
+          "body": "Att bli iakttagen är tröttande. Röstsamtal är lättare att hoppa in i, och den som inte har kamera visas ändå som ett kort som lyser upp när hen pratar."
+        },
+        {
+          "title": "Poäng och topplistor",
+          "body": "Streaks och märken gör tid tillsammans till en tävling. TinyFloor har dem inte, med flit."
+        },
+        {
+          "title": "Att hålla koll på vem som är online",
+          "body": "Inget på våningen räknar hur länge någon har varit där eller hur länge någon varit inaktiv. Folk slappnar av när ingen för protokoll."
+        }
+      ]
+    },
+    {
+      "title": "Vad TinyFloor inte gör",
+      "body": [
+        "Det finns inga spel, inga frågesporter, inga YouTube-skärmar och inga eventytor för hundra gäster. Det är ett litet kontor för ett team som jobbar tillsammans varje dag, och kaffemaskinen är stunden mellan uppgifterna. För en firmafest eller ett stort socialt evenemang har Kumospace och Gather mer inbyggt."
+      ]
+    }
   ]
 }

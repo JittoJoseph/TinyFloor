@@ -2452,5 +2452,102 @@
         "Se ei ole HR-työkalu. Siinä ei ole perehdytyksen tarkistuslistoja, asiakirjojen allekirjoitusta, tunnusten luontia eikä kertakirjautumista. Pitäkää käsikirja dokumenttityökalussanne ja tunnukset hallintatyökaluissanne; TinyFloor on paikka, jossa uusi tapaa tiimin ja saa apua. Kutsuminen vaatii yhden linkin, ja minuuttia myöhemmin hän voi istua työpisteellä."
       ]
     }
+  ],
+  "watercooler": [
+    {
+      "title": "Mitä varten kahvinkeitin oikeasti oli",
+      "body": [
+        "Kukaan ei kaipaa kahvia. Etätiimit kaipaavat keskustelua, jota kukaan ei suunnitellut: ohimennen esitettyä kysymystä, vitsiä, niitä viittä minuuttia, joiden jälkeen joku tunsi kuuluvansa tiimiin. Gallupin vuoden 2024 aineistossa 25 % täysin etänä työskentelevistä kertoi tuntevansa yksinäisyyttä, kun paikan päällä työskentelevistä näin kertoi 16 %.",
+        "Sovitut sosiaaliset puhelut yrittävät korjata tätä ja tuntuvat usein vain uudelta kokoukselta. Paremmin toimii paikka, jossa toisiin voi taas törmätä."
+      ]
+    },
+    {
+      "title": "Näin se tapahtuu kerroksessa",
+      "items": [
+        {
+          "title": "Joku tulee sisään",
+          "body": "Kun kollega saapuu, kaikki jo kerroksessa olevat näkevät muutaman sekunnin ajan hillityn ”Ana on paikalla” ja vilkutusnapin. Yksi vilkutus, ja päivä alkaa tervehdyksellä."
+        },
+        {
+          "title": "Kuljet jonkun ohi",
+          "body": "Matkalla kokoushuoneeseen tai taululle kuljet työpisteiden ohi. Pysähdy jonkun viereen, niin puhelu on yhden napautuksen päässä; jatka matkaa, niin mitään ei tapahdu."
+        },
+        {
+          "title": "Musiikkia huoneessa",
+          "body": "Kävele kaiuttimen luo ja laita kappale soimaan. Kaikki kuulevat saman kappaleen, kovaa kaiuttimen lähellä ja hiljempaa mitä kauemmas kävelee, joten työpisteillä voi jatkaa töitä."
+        },
+        {
+          "title": "Chat puheluiden välissä",
+          "body": "Kanava kaikelle, mikä ei ole työtä, kuvineen ja reaktioineen. Viestit säilyvät, joten kukaan ei missaa koirakuvaa sen takia, että oli kokouksessa."
+        }
+      ]
+    },
+    {
+      "title": "Pienelle tiimille sopivat rituaalit",
+      "body": [
+        "Lyhyitä, vapaaehtoisia ja säännöllisiä. Kahdeksan hengen tiimi ei tarvitse tapahtumaohjelmaa, vaan muutaman tavan, joihin ihmiset oikeasti tulevat."
+      ],
+      "table": {
+        "head": [
+          "Rituaali",
+          "Miten se menee",
+          "Kuinka usein"
+        ],
+        "rows": [
+          [
+            "Perjantaikahvit",
+            "Aloita kokous nimeltä Kahvit ja kutsu kaikki mukaan. Vartti, ei asialistaa, kamerat vapaaehtoisia.",
+            "Viikoittain"
+          ],
+          [
+            "Näytä ja kerro",
+            "Joku jakaa näyttönsä viideksi minuutiksi: sivuprojekti, valokuva, työkalu, josta hän pitää.",
+            "Joka toinen viikko"
+          ],
+          [
+            "Viikon onnistumiset",
+            "Viesti kanavalle perjantai-iltapäivänä, rivi kultakin.",
+            "Viikoittain"
+          ],
+          [
+            "Luonnos taululle",
+            "Jätä jotain jaetulle taululle aamuksi: kysymys, piirros, äänestys.",
+            "Milloin vain"
+          ],
+          [
+            "Lounas kerroksessa",
+            "Ne, joita huvittaa, syövät työpisteellään toimisto auki ja juttelevat, jos haluavat.",
+            "Milloin vain"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Mikä tekee siitä väkinäistä",
+      "items": [
+        {
+          "title": "Pakollisuus",
+          "body": "Sosiaalinen puhelu, johon on pakko tulla, on kokous. Kutsu, äläkä laske, kuka tuli."
+        },
+        {
+          "title": "Kamerapakko",
+          "body": "Katseltavana oleminen väsyttää. Äänellä käytävään keskusteluun on helpompi tulla mukaan, ja se, jolla ei ole kameraa, näkyy silti korttina, joka syttyy kun hän puhuu."
+        },
+        {
+          "title": "Pisteet ja tulostaulut",
+          "body": "Putket ja merkit tekevät yhteisestä ajasta kilpailun. TinyFloorissa niitä ei ole, tarkoituksella."
+        },
+        {
+          "title": "Sen seuraaminen, kuka on paikalla",
+          "body": "Mikään kerroksessa ei laske, kuinka kauan joku on ollut paikalla tai toimettomana. Ihmiset rentoutuvat, kun kukaan ei pidä kirjaa."
+        }
+      ]
+    },
+    {
+      "title": "Mitä TinyFloor ei tee",
+      "body": [
+        "Siinä ei ole pelejä, tietovisoja, YouTube-näyttöjä eikä tapahtumatiloja sadalle vieraalle. Se on pieni toimisto tiimille, joka tekee töitä yhdessä joka päivä, ja kahvinkeitin on hetki tehtävien välissä. Yrityksen juhliin tai isoon sosiaaliseen tapahtumaan Kumospacessa ja Gatherissa on enemmän valmiina."
+      ]
+    }
   ]
 }

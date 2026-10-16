@@ -2452,5 +2452,102 @@
         "Non è uno strumento HR. Non ci sono checklist di onboarding, firma di documenti, creazione di account né single sign-on. Tenete il manuale nel vostro strumento di documentazione e gli account nei vostri strumenti di amministrazione; TinyFloor è il posto dove la persona nuova conosce il team e trova aiuto. Invitarla richiede un link, e un minuto dopo può essere a una scrivania."
       ]
     }
+  ],
+  "watercooler": [
+    {
+      "title": "A cosa serviva davvero la macchinetta del caffè",
+      "body": [
+        "A nessuno manca il caffè. Ai team remoti manca la conversazione che nessuno aveva pianificato: la domanda fatta passando, la battuta, i cinque minuti che hanno fatto sentire qualcuno parte del team. Nei dati Gallup del 2024, il 25% di chi lavora completamente da remoto diceva di sentirsi solo, contro il 16% di chi lavora in sede.",
+        "Le chiamate sociali programmate provano a rimediare e spesso sembrano un'altra riunione. Funziona meglio dare alle persone un posto dove incrociarsi possa succedere di nuovo."
+      ]
+    },
+    {
+      "title": "Come succede sul piano",
+      "items": [
+        {
+          "title": "Qualcuno entra",
+          "body": "Quando arriva una collega, tutti quelli già sul piano vedono per qualche secondo un discreto \"Ana è arrivata\" con un pulsante per salutare. Un saluto, e la giornata inizia con un ciao."
+        },
+        {
+          "title": "Passi accanto a qualcuno",
+          "body": "Andando verso la sala riunioni o la lavagna passi davanti alle scrivanie. Fermati accanto a qualcuno e la chiamata è a un tocco; prosegui e non succede niente."
+        },
+        {
+          "title": "Musica nella stanza",
+          "body": "Avvicinati all'altoparlante e metti un brano. Tutti sentono la stessa canzone, forte vicino all'altoparlante e più bassa allontanandosi, così chi è alla scrivania può continuare a lavorare."
+        },
+        {
+          "title": "La chat tra una chiamata e l'altra",
+          "body": "Un canale per tutto ciò che non è lavoro, con foto e reazioni. I messaggi restano, così nessuno si perde la foto del cane perché era in riunione."
+        }
+      ]
+    },
+    {
+      "title": "Rituali che funzionano per un team piccolo",
+      "body": [
+        "Brevi, facoltativi e regolari. Un team di otto non ha bisogno di un programma di eventi; ha bisogno di poche abitudini a cui le persone vengono davvero."
+      ],
+      "table": {
+        "head": [
+          "Rituale",
+          "Come si svolge",
+          "Ogni quanto"
+        ],
+        "rows": [
+          [
+            "Caffè del venerdì",
+            "Avvia una riunione chiamata Caffè e invita tutti. Quindici minuti, niente ordine del giorno, videocamere facoltative.",
+            "Ogni settimana"
+          ],
+          [
+            "Mostra e racconta",
+            "Qualcuno condivide lo schermo per cinque minuti: un progetto personale, una foto, uno strumento che gli piace.",
+            "Ogni due settimane"
+          ],
+          [
+            "Successi della settimana",
+            "Un messaggio in un canale il venerdì pomeriggio, una riga a testa.",
+            "Ogni settimana"
+          ],
+          [
+            "Uno schizzo alla lavagna",
+            "Lascia qualcosa sulla lavagna condivisa per il mattino: una domanda, un disegno, un sondaggio.",
+            "Quando capita"
+          ],
+          [
+            "Pranzo sul piano",
+            "Chi ne ha voglia mangia alla scrivania con l'ufficio aperto e chiacchiera se vuole.",
+            "Quando capita"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Cosa lo fa sembrare forzato",
+      "items": [
+        {
+          "title": "Renderlo obbligatorio",
+          "body": "Una chiamata sociale a cui si deve partecipare è una riunione. Invita, e non contare chi è venuto."
+        },
+        {
+          "title": "Videocamere obbligatorie",
+          "body": "Essere osservati stanca. Nelle conversazioni a voce si entra più facilmente, e chi non ha la videocamera appare comunque come una scheda che si illumina quando parla."
+        },
+        {
+          "title": "Punti e classifiche",
+          "body": "Serie e badge trasformano il tempo insieme in una gara. TinyFloor non li ha, di proposito."
+        },
+        {
+          "title": "Controllare chi è online",
+          "body": "Niente sul piano conta da quanto tempo qualcuno è lì o da quanto è inattivo. Le persone si rilassano quando nessuno tiene il conto."
+        }
+      ]
+    },
+    {
+      "title": "Cosa TinyFloor non fa",
+      "body": [
+        "Non ci sono giochi, quiz, schermi YouTube né spazi per eventi da cento ospiti. È un piccolo ufficio per un team che lavora insieme ogni giorno, e la macchinetta del caffè è il momento tra un compito e l'altro. Per una festa aziendale o un grande evento sociale, Kumospace e Gather hanno più funzioni."
+      ]
+    }
   ]
 }

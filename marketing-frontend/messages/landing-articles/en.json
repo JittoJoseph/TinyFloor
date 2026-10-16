@@ -2452,5 +2452,102 @@
         "It isn't an HR tool. There are no onboarding checklists, document signing, account provisioning or single sign-on. Keep your handbook in your docs tool and your accounts in your admin tools; TinyFloor is where the new person meets the team and gets help. Inviting them takes one link, and they can be at a desk a minute later."
       ]
     }
+  ],
+  "watercooler": [
+    {
+      "title": "What the watercooler was really for",
+      "body": [
+        "Nobody misses the water. What remote teams miss is the conversation nobody planned: the question asked on the way past, the joke, the five minutes that made someone feel part of the team. In Gallup's 2024 data, 25% of fully remote workers reported loneliness, against 16% of people on site.",
+        "Scheduled social calls try to fix that and often feel like another meeting. What works better is giving people a place where running into each other can happen again."
+      ]
+    },
+    {
+      "title": "How it happens on the floor",
+      "items": [
+        {
+          "title": "Someone walks in",
+          "body": "When a teammate arrives, everyone already on the floor sees a quiet \"Ana is in\" with a wave button for a few seconds. One wave, and the day has started with a hello."
+        },
+        {
+          "title": "You pass someone",
+          "body": "Walking to the meeting room or the whiteboard, you go past desks. Stop next to someone and a call is one tap away; walk on and nothing happens."
+        },
+        {
+          "title": "Music in the room",
+          "body": "Walk up to the speaker and put a track on. Everyone hears the same song, loud near the speaker and fading as they walk away, so people at their desks can still work."
+        },
+        {
+          "title": "The chat between calls",
+          "body": "A channel for anything that isn't work, with photos and reactions. Messages stay, so nobody misses the dog picture because they were in a meeting."
+        }
+      ]
+    },
+    {
+      "title": "Rituals that work for a small team",
+      "body": [
+        "Keep them short, optional and regular. A team of eight doesn't need an events programme; it needs a few habits people actually turn up for."
+      ],
+      "table": {
+        "head": [
+          "Ritual",
+          "How it goes",
+          "How often"
+        ],
+        "rows": [
+          [
+            "Friday coffee",
+            "Start a meeting called Coffee and ask everyone in. Fifteen minutes, no agenda, cameras optional.",
+            "Weekly"
+          ],
+          [
+            "Show and tell",
+            "Someone shares their screen for five minutes: a side project, a photo, a tool they like.",
+            "Every couple of weeks"
+          ],
+          [
+            "Wins of the week",
+            "A message in a channel on Friday afternoon, one line each.",
+            "Weekly"
+          ],
+          [
+            "A sketch on the board",
+            "Leave something on the shared whiteboard for the morning: a question, a drawing, a poll.",
+            "Whenever"
+          ],
+          [
+            "Lunch on the floor",
+            "People who feel like it eat at their desks with the office open and chat if they want to.",
+            "Whenever"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "What makes it feel forced",
+      "items": [
+        {
+          "title": "Making it mandatory",
+          "body": "A social call people have to attend is a meeting. Invite, and don't count who came."
+        },
+        {
+          "title": "Cameras required",
+          "body": "Being watched is tiring. Voice-first conversations are easier to drop into, and anyone without a camera still shows as a card that lights up when they talk."
+        },
+        {
+          "title": "Points and leaderboards",
+          "body": "Streaks and badges turn time together into a contest. TinyFloor doesn't have them, on purpose."
+        },
+        {
+          "title": "Watching who's online",
+          "body": "Nothing on the floor counts how long anyone has been there or how long they've been idle. People relax when nobody's keeping score."
+        }
+      ]
+    },
+    {
+      "title": "What TinyFloor doesn't do",
+      "body": [
+        "There are no games, no trivia, no YouTube screens and no event spaces for a hundred guests. It's a small office for a team that works together every day, and the watercooler is the part between tasks. For a company party or a large social event, Kumospace and Gather have more built in."
+      ]
+    }
   ]
 }

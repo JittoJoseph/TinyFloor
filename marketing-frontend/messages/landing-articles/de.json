@@ -2452,5 +2452,102 @@
         "Es ist kein HR-Tool. Es gibt keine Onboarding-Checklisten, keine Dokumentensignatur, keine Kontoeinrichtung und kein Single Sign-on. Behaltet euer Handbuch in eurem Dokumententool und die Konten in euren Admin-Tools; TinyFloor ist der Ort, an dem die neue Person das Team trifft und Hilfe bekommt. Einladen braucht einen Link, und eine Minute später kann sie an einem Schreibtisch sitzen."
       ]
     }
+  ],
+  "watercooler": [
+    {
+      "title": "Wofür die Kaffeeküche wirklich da war",
+      "body": [
+        "Niemand vermisst den Kaffee. Was Remote-Teams vermissen, ist das Gespräch, das niemand geplant hat: die Frage im Vorbeigehen, der Witz, die fünf Minuten, nach denen sich jemand als Teil des Teams fühlte. In Gallups Daten von 2024 berichteten 25 % der vollständig remote Arbeitenden von Einsamkeit, gegenüber 16 % derer vor Ort.",
+        "Geplante Social Calls sollen das lösen und fühlen sich oft wie ein weiteres Meeting an. Besser funktioniert ein Ort, an dem man sich wieder zufällig begegnen kann."
+      ]
+    },
+    {
+      "title": "Wie es auf der Fläche passiert",
+      "items": [
+        {
+          "title": "Jemand kommt herein",
+          "body": "Wenn eine Kollegin ankommt, sehen alle, die schon auf der Fläche sind, für ein paar Sekunden ein leises „Ana ist da“ mit einem Winken-Knopf. Einmal winken, und der Tag beginnt mit einem Hallo."
+        },
+        {
+          "title": "Du gehst an jemandem vorbei",
+          "body": "Auf dem Weg zum Besprechungsraum oder zum Whiteboard gehst du an Schreibtischen vorbei. Bleib neben jemandem stehen, und ein Anruf ist einen Tipp entfernt; geh weiter, und nichts passiert."
+        },
+        {
+          "title": "Musik im Raum",
+          "body": "Geh zum Lautsprecher und leg einen Titel auf. Alle hören denselben Song, laut am Lautsprecher und leiser, je weiter sie weggehen, so können die Leute an ihren Schreibtischen weiterarbeiten."
+        },
+        {
+          "title": "Der Chat zwischen den Calls",
+          "body": "Ein Kanal für alles, was nicht Arbeit ist, mit Fotos und Reaktionen. Nachrichten bleiben, also verpasst niemand das Hundefoto, weil er gerade in einem Meeting war."
+        }
+      ]
+    },
+    {
+      "title": "Rituale, die für ein kleines Team funktionieren",
+      "body": [
+        "Kurz, freiwillig und regelmäßig. Ein Team von acht braucht kein Eventprogramm, sondern ein paar Gewohnheiten, zu denen die Leute wirklich kommen."
+      ],
+      "table": {
+        "head": [
+          "Ritual",
+          "So läuft es",
+          "Wie oft"
+        ],
+        "rows": [
+          [
+            "Freitagskaffee",
+            "Starte ein Meeting namens Kaffee und hol alle dazu. Fünfzehn Minuten, keine Agenda, Kameras freiwillig.",
+            "Wöchentlich"
+          ],
+          [
+            "Show and Tell",
+            "Jemand teilt fünf Minuten lang den Bildschirm: ein Nebenprojekt, ein Foto, ein Tool, das er mag.",
+            "Alle zwei Wochen"
+          ],
+          [
+            "Erfolge der Woche",
+            "Eine Nachricht in einem Kanal am Freitagnachmittag, eine Zeile pro Person.",
+            "Wöchentlich"
+          ],
+          [
+            "Eine Skizze am Board",
+            "Lass etwas für den Morgen auf dem gemeinsamen Whiteboard: eine Frage, eine Zeichnung, eine Umfrage.",
+            "Wann immer"
+          ],
+          [
+            "Mittagessen auf der Fläche",
+            "Wer Lust hat, isst am Schreibtisch mit offenem Büro und plaudert, wenn er will.",
+            "Wann immer"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Was es erzwungen wirken lässt",
+      "items": [
+        {
+          "title": "Pflicht daraus machen",
+          "body": "Ein Social Call, zu dem man kommen muss, ist ein Meeting. Lade ein und zähl nicht, wer kam."
+        },
+        {
+          "title": "Kamerapflicht",
+          "body": "Beobachtet zu werden ist anstrengend. In Gespräche mit Stimme kommt man leichter hinein, und wer keine Kamera anhat, erscheint trotzdem als Karte, die beim Sprechen aufleuchtet."
+        },
+        {
+          "title": "Punkte und Bestenlisten",
+          "body": "Streaks und Abzeichen machen aus gemeinsamer Zeit einen Wettbewerb. TinyFloor hat sie nicht, mit Absicht."
+        },
+        {
+          "title": "Beobachten, wer online ist",
+          "body": "Nichts auf der Fläche zählt, wie lange jemand da ist oder wie lange jemand inaktiv war. Leute entspannen sich, wenn niemand mitzählt."
+        }
+      ]
+    },
+    {
+      "title": "Was TinyFloor nicht macht",
+      "body": [
+        "Es gibt keine Spiele, kein Quiz, keine YouTube-Bildschirme und keine Eventflächen für hundert Gäste. Es ist ein kleines Büro für ein Team, das jeden Tag zusammenarbeitet, und die Kaffeeküche ist der Teil zwischen den Aufgaben. Für eine Firmenfeier oder ein großes geselliges Event haben Kumospace und Gather mehr eingebaut."
+      ]
+    }
   ]
 }

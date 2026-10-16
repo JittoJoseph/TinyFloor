@@ -3482,5 +3482,187 @@
         "TinyFloor is geen openbare coworkingruimte. Een kantoor is privé voor je team, dus er zijn geen onbekenden om naast te werken en geen koppeling met andere mensen. Er zijn geen sessietimers, geen streaks en niets dat telt hoe lang je hebt gewerkt. Werk je alleen en zoek je gezelschap van onbekenden, dan past een body-doublingdienst beter; wil je je team om je heen terwijl je werkt, dan is dit het."
       ]
     }
-  ]
+  ],
+  "proximityChat": [
+    {
+      "title": "Wat proximity chat betekent",
+      "body": [
+        "Proximity chat komt uit games: je hoort de spelers bij je in de buurt en niet die aan de andere kant van de kaart, zoals geluid op een echte plek werkt. Virtuele kantoren namen het idee over, zodat waar je staat bepaalt met wie je praat. Er zijn twee manieren om het te doen, en op het werk voelen ze heel anders."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Open ruimtelijk geluid",
+          "Nabijheid om te bellen (TinyFloor)"
+        ],
+        "rows": [
+          [
+            "Hoe een gesprek begint",
+            "Loop naar iemand toe en jullie horen elkaar",
+            "Ga naast iemand staan en tik op Bellen"
+          ],
+          [
+            "Microfoons",
+            "Open zolang je bij iemand in de buurt bent",
+            "Uit tot een gesprek begint"
+          ],
+          [
+            "Wie je hoort",
+            "Iedereen die in de buurt komt",
+            "Alleen de persoon die je belt"
+          ],
+          [
+            "Achtergrondgeluid",
+            "Gedeeld met wie er in de buurt is",
+            "Blijft bij jou tot je belt"
+          ],
+          [
+            "Goed voor",
+            "Feestjes, evenementen, games",
+            "Een werkdag, waarin de meeste uren stil zijn"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Zo werkt het in TinyFloor",
+      "items": [
+        {
+          "title": "Erheen lopen",
+          "detail": "1",
+          "body": "Zet je poppetje naast een collega. Er verschijnt een kleine kaart met een knop Bellen."
+        },
+        {
+          "title": "Bellen",
+          "detail": "2",
+          "body": "Die ziet \"Belt je\" en kan opnemen of weigeren. Is die bezet of neemt die niet op, dan hoor je dat, en verder gebeurt er niets."
+        },
+        {
+          "title": "Praten",
+          "detail": "3",
+          "body": "Het gesprek begint met stem. Zet een camera aan of deel een scherm als dat helpt."
+        },
+        {
+          "title": "Rondlopen",
+          "detail": "4",
+          "body": "Eenmaal verbonden blijft het gesprek staan tot iemand ophangt, dus over de verdieping lopen verbreekt het niet."
+        },
+        {
+          "title": "Een derde erbij",
+          "detail": "5",
+          "body": "Een gesprek is twee mensen. Loop naar een derde en TinyFloor biedt aan er een meeting voor jullie drieën van te maken."
+        }
+      ]
+    },
+    {
+      "title": "Waarom gesprekken in plaats van open geluid",
+      "items": [
+        {
+          "title": "Niemand luistert per ongeluk mee",
+          "body": "Je microfoon staat alleen aan in een gesprek of meeting. Langs een bureau lopen laat je nooit iemand horen."
+        },
+        {
+          "title": "Concentratie blijft mogelijk",
+          "body": "Een verdieping vol open microfoons is een lawaaiige ruimte. Gesprekken houden de rest van de verdieping stil."
+        },
+        {
+          "title": "Het voelt toch spontaan",
+          "body": "Erheen lopen en op Bellen tikken kost een paar seconden, ongeveer zo lang als opzij leunen naar een collega."
+        },
+        {
+          "title": "Het werkt op elk netwerk",
+          "body": "Gesprekken lopen via het relaynetwerk van Cloudflare, dus ze komen tot stand achter bedrijfsfirewalls en op mobiele netwerken, zonder installatie."
+        }
+      ]
+    },
+    {
+      "title": "Wanneer wat",
+      "table": {
+        "head": [
+          "Je wilt",
+          "Op de verdieping"
+        ],
+        "rows": [
+          [
+            "Eén persoon een snelle vraag stellen",
+            "Erheen lopen en bellen"
+          ],
+          [
+            "Een derde erbij halen",
+            "Tijdens het gesprek naar die persoon lopen; het wordt een meeting"
+          ],
+          [
+            "Met het hele team praten",
+            "Meedoen aan de hoofdmeeting van het kantoor"
+          ],
+          [
+            "Iemand vragen die bezet is",
+            "Schrijf in de chat en laat die naar jou komen"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Wat het niet doet",
+      "body": [
+        "TinyFloor heeft geen open ruimtelijk geluid, dus een groep kan niet praten door gewoon bij elkaar te staan; vanaf drie mensen ga je naar een meeting. Het is niet gemaakt voor evenementen of games met honderden mensen, en er is geen telefonische inbelmogelijkheid. Wil je een levendige ruimte waar stemmen aanzwellen en wegvallen terwijl je rondloopt, dan past een product rond ruimtelijk geluid beter; wil je een rustig kantoor waar praten één tik weg is, dan is dit het."
+      ]
+    }
+  ],
+  "hubs": {
+    "features": [
+      {
+        "title": "Hoe de onderdelen in elkaar passen",
+        "body": [
+          "Een TinyFloor-kantoor is één gedeelde verdieping: een bureau voor iedereen, een vergaderruimte die altijd open is, een whiteboard aan de muur en een chat ernaast. Je beweegt als poppetje, en waar je staat bepaalt met wie je praat.",
+          "Elk abonnement heeft alle functies, het gratis abonnement ook. Met Pro verandert hoeveel mensen er in het kantoor passen, niet wat ze kunnen."
+        ]
+      },
+      {
+        "title": "Wat er met opzet niet in zit",
+        "body": [
+          "Er zijn geen opnames, er wordt niet bijgehouden hoe lang iemand online is en er zijn geen integraties om in te stellen. Microfoons staan uit tot een gesprek begint, en camera's rusten als niemand praat. Het draait in de browser op desktop en mobiel, zonder iets te installeren."
+        ]
+      }
+    ],
+    "teams": [
+      {
+        "title": "Eén verdieping, verschillende dagen",
+        "body": [
+          "Kleine remote teams hebben vaak dezelfde twee problemen: een snelle vraag stellen duurt te lang, en niemand ziet wie er is. Wat verschilt, is het ritme van de dag.",
+          "Developers hebben lange stukken focus nodig en een snelle manier om los te komen. Designers hebben meerdere keren per dag feedback nodig. Bureaus jongleren met klanten en freelancers. Startups hebben snelheid nodig, en een prijs die niet bij elke nieuwe collega stijgt."
+        ]
+      },
+      {
+        "title": "Wat elke pagina laat zien",
+        "body": [
+          "Elke pagina loopt een typische dag voor dat soort team door, wat je in je andere tools houdt, en waar TinyFloor niet past."
+        ]
+      }
+    ],
+    "useCases": [
+      {
+        "title": "De werkdag, moment voor moment",
+        "body": [
+          "Een remote werkdag is vooral rustig werk, onderbroken door een handvol momenten waarop mensen elkaar nodig hebben: de standup in de ochtend, een vraag aan een collega, de eerste week van iemand nieuw, een paar minuten kletsen tussen taken door.",
+          "Elke pagina neemt één van die momenten en laat zien hoe het op de verdieping gaat, met de vormen, tijden en gewoontes van kleine teams, en wat TinyFloor niet doet, zodat je voor elk moment het juiste hulpmiddel kiest."
+        ]
+      }
+    ],
+    "compare": [
+      {
+        "title": "Hoe deze vergelijkingen tot stand komen",
+        "body": [
+          "Elk getal komt van de prijspagina of het helpcentrum van het andere product, met de maand waarin we het controleerden. Wat niet gepubliceerd was, hebben we weggelaten in plaats van te gokken.",
+          "Wij maken TinyFloor, dus elke pagina zegt ook wat het andere product beter doet en wanneer je dat moet kiezen."
+        ]
+      },
+      {
+        "title": "Waar je begint",
+        "body": [
+          "De meeste van deze tools rekenen per lid; TinyFloor is één prijs voor het kantoor en gratis tot drie mensen. Stap je over van Gather, begin dan met het overzicht van alternatieven en de gids over wat Gather nu kost."
+        ]
+      }
+    ]
+  }
 }

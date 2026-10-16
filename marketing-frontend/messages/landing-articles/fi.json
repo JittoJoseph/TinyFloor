@@ -3482,5 +3482,187 @@
         "TinyFloor ei ole julkinen coworking-tila. Toimisto on tiimisi yksityinen, joten tuntemattomia, joiden kanssa työskennellä, ei ole, eikä muiden ihmisten kanssa yhdistämistä. Ei istuntoajastimia, ei putkia eikä mitään, mikä laskisi, kuinka kauan teit töitä. Jos työskentelet yksin ja kaipaat tuntemattomien seuraa, body doubling -palvelu sopii paremmin; jos haluat tiimisi ympärillesi töitä tehdessäsi, tämä on se."
       ]
     }
-  ]
+  ],
+  "proximityChat": [
+    {
+      "title": "Mitä lähichat tarkoittaa",
+      "body": [
+        "Lähichat tulee peleistä: kuulet lähelläsi olevat pelaajat etkä kartan toisella puolella olevia, kuten ääni kulkee oikeassa paikassa. Virtuaalitoimistot lainasivat idean, jotta sijaintisi ratkaisee, kenen kanssa puhut. Sen voi toteuttaa kahdella tavalla, ja töissä ne tuntuvat hyvin erilaisilta."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Avoin tilaääni",
+          "Läheisyys soittamiseen (TinyFloor)"
+        ],
+        "rows": [
+          [
+            "Miten keskustelu alkaa",
+            "Mene jonkun lähelle, niin kuulette toisenne",
+            "Asetu jonkun viereen ja napauta Soita"
+          ],
+          [
+            "Mikrofonit",
+            "Auki niin kauan kuin olet jonkun lähellä",
+            "Pois, kunnes puhelu alkaa"
+          ],
+          [
+            "Kuka kuulee sinut",
+            "Kuka tahansa, joka tulee lähelle",
+            "Vain se, jolle soitit"
+          ],
+          [
+            "Taustamelu",
+            "Jaettu lähellä olevien kanssa",
+            "Pysyy luonasi, kunnes soitat"
+          ],
+          [
+            "Sopii",
+            "Juhliin, tapahtumiin, peleihin",
+            "Työpäivään, jonka useimmat tunnit ovat hiljaisia"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Näin se toimii TinyFloorissa",
+      "items": [
+        {
+          "title": "Mene luo",
+          "detail": "1",
+          "body": "Siirrä hahmosi kollegan viereen. Esiin tulee pieni kortti, jossa on Soita-painike."
+        },
+        {
+          "title": "Soita",
+          "detail": "2",
+          "body": "Hän näkee ”Soittaa sinulle” ja voi vastata tai hylätä. Jos hän on varattu tai ei vastaa, saat tiedon, eikä muuta tapahdu."
+        },
+        {
+          "title": "Puhu",
+          "detail": "3",
+          "body": "Puhelu alkaa äänellä. Laita kamera päälle tai jaa näyttö, jos siitä on apua."
+        },
+        {
+          "title": "Liiku",
+          "detail": "4",
+          "body": "Kun yhteys on muodostettu, puhelu jatkuu, kunnes joku lopettaa sen, joten kerroksen poikki kävely ei katkaise sitä."
+        },
+        {
+          "title": "Lisää kolmas",
+          "detail": "5",
+          "body": "Puhelu on kahden ihmisen. Kävele kolmannen luo, niin TinyFloor tarjoaa tehdä siitä kokouksen teille kolmelle."
+        }
+      ]
+    },
+    {
+      "title": "Miksi puhelut eikä avoin ääni",
+      "items": [
+        {
+          "title": "Kukaan ei kuule vahingossa",
+          "body": "Mikrofonisi on päällä vain puhelussa tai kokouksessa. Työpisteen ohi kulkiessa et koskaan kuule ketään."
+        },
+        {
+          "title": "Keskittyminen onnistuu",
+          "body": "Avoimia mikrofoneja täynnä oleva kerros on meluisa huone. Puhelut pitävät muun kerroksen hiljaisena."
+        },
+        {
+          "title": "Silti spontaania",
+          "body": "Luo käveleminen ja Soita-napautus vievät pari sekuntia, suunnilleen saman kuin viereiselle pöydälle kumartuminen."
+        },
+        {
+          "title": "Toimii kaikissa verkoissa",
+          "body": "Puhelut kulkevat Cloudflaren välitysverkon kautta, joten ne yhdistyvät yritysten palomuurien takana ja mobiiliverkoissa, ilman asennuksia."
+        }
+      ]
+    },
+    {
+      "title": "Mitä käyttää milloinkin",
+      "table": {
+        "head": [
+          "Haluat",
+          "Kerroksessa"
+        ],
+        "rows": [
+          [
+            "Kysyä yhdeltä ihmiseltä nopean kysymyksen",
+            "Mene luo ja soita"
+          ],
+          [
+            "Ottaa mukaan kolmannen",
+            "Mene hänen luokseen puhelun aikana; siitä tulee kokous"
+          ],
+          [
+            "Puhua koko tiimin kanssa",
+            "Liity toimiston pääkokoukseen"
+          ],
+          [
+            "Kysyä joltakulta, joka on varattu",
+            "Kirjoita chattiin ja anna hänen tulla luoksesi"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Mitä se ei tee",
+      "body": [
+        "TinyFloorissa ei ole avointa tilaääntä, joten ryhmä ei voi jutella vain seisomalla yhdessä; kolmesta ihmisestä alkaen mennään kokoukseen. Sitä ei ole tehty sadan hengen tapahtumiin tai peleihin, eikä puhelinsoitolla voi liittyä. Jos haluat eloisan tilan, jossa äänet kuuluvat ja hiipuvat liikkuessasi, tilaääneen perustuva tuote sopii paremmin; jos haluat rauhallisen toimiston, jossa puhuminen on yhden napautuksen päässä, tämä on se."
+      ]
+    }
+  ],
+  "hubs": {
+    "features": [
+      {
+        "title": "Miten osat sopivat yhteen",
+        "body": [
+          "TinyFloor-toimisto on yksi yhteinen kerros: työpiste jokaiselle, aina auki oleva kokoushuone, taulu seinällä ja chat vieressä. Liikut hahmona, ja se, missä seisot, ratkaisee, kenen kanssa puhut.",
+          "Jokaisessa paketissa ovat kaikki ominaisuudet, myös ilmaisessa. Pron myötä muuttuu se, kuinka monta ihmistä toimistoon mahtuu, ei se, mitä he voivat tehdä."
+        ]
+      },
+      {
+        "title": "Mitä on tarkoituksella jätetty pois",
+        "body": [
+          "Siinä ei ole tallennusta, ei sen seurantaa, kuinka kauan joku on paikalla, eikä määritettäviä integraatioita. Mikrofonit ovat pois, kunnes puhelu alkaa, ja kamerat lepäävät, kun kukaan ei puhu. Se toimii selaimessa tietokoneella ja puhelimella, eikä mitään tarvitse asentaa."
+        ]
+      }
+    ],
+    "teams": [
+      {
+        "title": "Yksi kerros, erilaisia päiviä",
+        "body": [
+          "Pienillä etätiimeillä on usein samat kaksi ongelmaa: nopean kysymyksen esittäminen vie liikaa aikaa, eikä kukaan näe, kuka on paikalla. Erona on päivän rytmi.",
+          "Kehittäjät tarvitsevat pitkiä keskittymisjaksoja ja nopean tavan päästä jumista. Suunnittelijat tarvitsevat palautetta monta kertaa päivässä. Toimistot tasapainoilevat asiakkaiden ja freelancereiden välillä. Startupit tarvitsevat vauhtia ja hinnan, joka ei kasva jokaisen palkkauksen myötä."
+        ]
+      },
+      {
+        "title": "Mitä kukin sivu käsittelee",
+        "body": [
+          "Jokainen sivu käy läpi tyypillisen päivän sellaiselle tiimille, mitä kannattaa pitää muissa työkaluissa ja missä TinyFloor ei sovi."
+        ]
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Työpäivä hetki hetkeltä",
+        "body": [
+          "Etätyöpäivä on enimmäkseen hiljaista työtä, jota katkaisee kourallinen hetkiä, jolloin ihmiset tarvitsevat toisiaan: aamun päiväpalaveri, kysymys kollegalle, uuden ihmisen ensimmäinen viikko, muutama minuutti juttelua tehtävien välissä.",
+          "Jokainen sivu ottaa yhden näistä hetkistä ja näyttää, miten se sujuu kerroksessa, pienten tiimien käyttämine muotoineen, aikoineen ja tapoineen, sekä mitä TinyFloor ei tee, jotta valitset jokaiseen oikean työkalun."
+        ]
+      }
+    ],
+    "compare": [
+      {
+        "title": "Miten vertailut on kirjoitettu",
+        "body": [
+          "Jokainen luku on toisen tuotteen omalta hintasivulta tai ohjekeskuksesta, ja mukana on kuukausi, jolloin tarkistimme sen. Mitä ei ollut julkaistu, jätimme pois arvaamisen sijaan.",
+          "Teemme TinyFlooria, joten jokainen sivu kertoo myös, missä toinen tuote on parempi ja milloin kannattaa valita se."
+        ]
+      },
+      {
+        "title": "Mistä aloittaa",
+        "body": [
+          "Useimmat näistä työkaluista laskuttavat jäsentä kohden; TinyFloor on yksi hinta toimistolle ja ilmainen enintään kolmelle hengelle. Jos olet lähdössä Gatherista, aloita vaihtoehtojen katsauksesta ja oppaasta siihen, mitä Gather nyt maksaa."
+        ]
+      }
+    ]
+  }
 }

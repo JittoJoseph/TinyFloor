@@ -8,7 +8,9 @@ import { pageMetadata } from "@/lib/seo";
 import { pageGraph } from "@/lib/structured-data";
 import { emphasised } from "@/lib/words";
 import { cn } from "@/lib/utils";
+import { hubArticle } from "@/lib/landing-articles";
 import { JsonLd } from "@/components/JsonLd";
+import { ArticleSections, READ, numberItems } from "@/components/guides/ArticleSections";
 import { CJK_HEADLINE, COLUMN, Closing, EYEBROW, LEAD, MarketingShell } from "@/components/home/Blocks";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -33,6 +35,8 @@ export async function HubPage({ group, params }: { group: LandingGroup; params: 
   const t = await getTranslations("landings");
   const path = `/${HUBS[group]}`;
   const pages = LANDINGS.filter((page) => page.group === group);
+  // What's behind the list, where this language has it: a few short sections under the cards.
+  const article = await hubArticle(locale, group);
 
   return (
     <MarketingShell path={path}>
@@ -75,6 +79,12 @@ export async function HubPage({ group, params }: { group: LandingGroup; params: 
             </li>
           ))}
         </ul>
+
+        {article && (
+          <div className={cn(READ, "mt-4 sm:mt-8")}>
+            <ArticleSections sections={numberItems(article)} />
+          </div>
+        )}
 
         <nav aria-label={(t.raw("relatedTitle") as string).replace(/<\/?em>/g, "")} className="mt-14 flex flex-wrap justify-center gap-2">
           {LANDING_GROUPS.filter((other) => other !== group).map((other) => (

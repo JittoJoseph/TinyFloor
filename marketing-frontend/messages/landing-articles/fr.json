@@ -3482,5 +3482,187 @@
         "TinyFloor n'est pas un espace de coworking public. Un bureau est réservé à votre équipe : pas d'inconnus avec qui travailler, et pas de mise en relation avec d'autres personnes. Il n'y a ni minuteur de session, ni séries, ni rien qui compte combien de temps vous avez travaillé. Si vous travaillez seul et cherchez la compagnie d'inconnus, un service de body doubling vous conviendra mieux ; si vous voulez votre équipe autour de vous pendant que vous travaillez, c'est ici."
       ]
     }
-  ]
+  ],
+  "proximityChat": [
+    {
+      "title": "Ce que veut dire le chat de proximité",
+      "body": [
+        "Le chat de proximité vient des jeux vidéo : vous entendez les joueurs proches de vous et pas ceux à l'autre bout de la carte, comme le son dans un vrai lieu. Les bureaux virtuels ont repris l'idée pour que l'endroit où vous êtes décide à qui vous parlez. Il y a deux façons de le faire, et au travail elles n'ont pas du tout le même effet."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Audio spatial ouvert",
+          "La proximité pour appeler (TinyFloor)"
+        ],
+        "rows": [
+          [
+            "Comment la conversation démarre",
+            "Approchez-vous de quelqu'un et vous vous entendez",
+            "Placez-vous à côté de quelqu'un et touchez Appeler"
+          ],
+          [
+            "Micros",
+            "Ouverts dès que vous êtes près de quelqu'un",
+            "Coupés jusqu'au début d'un appel"
+          ],
+          [
+            "Qui vous entend",
+            "Quiconque passe à proximité",
+            "Seulement la personne appelée"
+          ],
+          [
+            "Bruit de fond",
+            "Partagé avec ceux qui sont près",
+            "Reste chez vous jusqu'à l'appel"
+          ],
+          [
+            "Idéal pour",
+            "Fêtes, événements, jeux",
+            "Une journée de travail, surtout faite d'heures calmes"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Comment ça marche sur TinyFloor",
+      "items": [
+        {
+          "title": "S'approcher",
+          "detail": "1",
+          "body": "Placez votre personnage à côté d'un collègue. Une petite carte apparaît avec un bouton Appeler."
+        },
+        {
+          "title": "Appeler",
+          "detail": "2",
+          "body": "Il voit « Vous appelle » et peut répondre ou refuser. S'il est occupé ou ne répond pas, vous le savez, et rien d'autre ne se passe."
+        },
+        {
+          "title": "Parler",
+          "detail": "3",
+          "body": "L'appel démarre en audio. Allumez une caméra ou partagez un écran si ça aide."
+        },
+        {
+          "title": "Se déplacer",
+          "detail": "4",
+          "body": "Une fois connecté, l'appel tient jusqu'à ce que quelqu'un raccroche : traverser l'étage ne le coupe pas."
+        },
+        {
+          "title": "Ajouter une troisième personne",
+          "detail": "5",
+          "body": "Un appel, c'est deux personnes. Approchez-vous d'une troisième et TinyFloor propose d'en faire une réunion à trois."
+        }
+      ]
+    },
+    {
+      "title": "Pourquoi des appels plutôt qu'un audio ouvert",
+      "items": [
+        {
+          "title": "Personne n'entend par hasard",
+          "body": "Votre micro n'est actif qu'en appel ou en réunion. Passer devant un poste ne permet jamais d'entendre quelqu'un."
+        },
+        {
+          "title": "La concentration reste possible",
+          "body": "Un étage plein de micros ouverts, c'est une pièce bruyante. Les appels laissent le reste de l'étage au calme."
+        },
+        {
+          "title": "Ça reste spontané",
+          "body": "S'approcher et toucher Appeler prend quelques secondes, à peu près le temps de se pencher vers un collègue."
+        },
+        {
+          "title": "Ça marche sur n'importe quel réseau",
+          "body": "Les appels passent par le réseau de relais de Cloudflare : ils se connectent derrière les pare-feu d'entreprise et sur les réseaux mobiles, sans rien installer."
+        }
+      ]
+    },
+    {
+      "title": "Quoi utiliser quand",
+      "table": {
+        "head": [
+          "Vous voulez",
+          "Sur l'étage"
+        ],
+        "rows": [
+          [
+            "Poser une question rapide à une personne",
+            "S'approcher et appeler"
+          ],
+          [
+            "Faire venir une troisième personne",
+            "S'approcher d'elle pendant l'appel ; ça devient une réunion"
+          ],
+          [
+            "Parler avec toute l'équipe",
+            "Rejoindre la réunion principale du bureau"
+          ],
+          [
+            "Solliciter quelqu'un d'occupé",
+            "Écrire plutôt dans le chat, et la laisser venir à vous"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Ce qu'il ne fait pas",
+      "body": [
+        "TinyFloor n'a pas d'audio spatial ouvert : un groupe ne peut pas discuter simplement en restant côte à côte ; à partir de trois, on passe en réunion. Il n'est pas conçu pour des événements ou des jeux à des centaines de personnes, et il n'y a pas d'appel téléphonique entrant. Si vous voulez un espace animé où les voix vont et viennent quand vous vous déplacez, un produit construit autour de l'audio spatial vous conviendra mieux ; si vous voulez un bureau calme où parler est à un geste, c'est ici."
+      ]
+    }
+  ],
+  "hubs": {
+    "features": [
+      {
+        "title": "Comment les pièces s'assemblent",
+        "body": [
+          "Un bureau TinyFloor, c'est un étage partagé : un poste pour chacun, une salle de réunion toujours ouverte, un tableau blanc au mur et un chat à côté. Vous vous déplacez avec un personnage, et l'endroit où vous êtes décide à qui vous parlez.",
+          "Chaque offre a toutes les fonctions, la gratuite comprise. Ce qui change avec Pro, c'est le nombre de personnes que le bureau accueille, pas ce qu'elles peuvent faire."
+        ]
+      },
+      {
+        "title": "Ce qui manque volontairement",
+        "body": [
+          "Il n'y a pas d'enregistrement, pas de suivi du temps passé en ligne et pas d'intégrations à configurer. Les micros sont coupés jusqu'au début d'un appel, et les caméras se reposent quand personne ne parle. Il fonctionne dans le navigateur, sur ordinateur et mobile, sans rien installer."
+        ]
+      }
+    ],
+    "teams": [
+      {
+        "title": "Un étage, des journées différentes",
+        "body": [
+          "Les petites équipes à distance partagent souvent les mêmes deux problèmes : poser une question rapide prend trop de temps, et personne ne voit qui est là. Ce qui change, c'est le rythme de la journée.",
+          "Les développeurs ont besoin de longues plages de concentration et d'un moyen rapide de se débloquer. Les designers ont besoin de retours plusieurs fois par jour. Les agences jonglent entre clients et freelances. Les startups ont besoin de vitesse, et d'un prix qui n'augmente pas à chaque embauche."
+        ]
+      },
+      {
+        "title": "Ce que couvre chaque page",
+        "body": [
+          "Chaque page passe en revue une journée type pour ce genre d'équipe, ce qu'il faut garder dans vos autres outils, et où TinyFloor ne convient pas."
+        ]
+      }
+    ],
+    "useCases": [
+      {
+        "title": "La journée de travail, moment par moment",
+        "body": [
+          "Une journée à distance, c'est surtout du travail calme, ponctué de quelques moments où l'on a besoin des autres : le point du matin, une question à un collègue, la première semaine d'une recrue, quelques minutes de discussion entre deux tâches.",
+          "Chaque page prend l'un de ces moments et montre comment il se passe sur l'étage, avec les formats, les durées et les habitudes des petites équipes, et ce que TinyFloor ne fait pas, pour choisir le bon outil à chaque fois."
+        ]
+      }
+    ],
+    "compare": [
+      {
+        "title": "Comment ces comparatifs sont écrits",
+        "body": [
+          "Chaque chiffre vient de la page tarifs ou du centre d'aide de l'autre produit, avec le mois où nous l'avons vérifié. Quand une information n'était pas publiée, nous l'avons laissée de côté plutôt que de deviner.",
+          "Nous faisons TinyFloor, alors chaque page dit aussi ce que l'autre produit fait mieux et quand le choisir à la place."
+        ]
+      },
+      {
+        "title": "Par où commencer",
+        "body": [
+          "La plupart de ces outils facturent par membre ; TinyFloor, c'est un prix pour le bureau, gratuit jusqu'à trois personnes. Si vous quittez Gather, commencez par le panorama des alternatives et le guide de ce que coûte Gather aujourd'hui."
+        ]
+      }
+    ]
+  }
 }

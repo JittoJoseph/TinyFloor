@@ -738,11 +738,11 @@
       "gatherVsKumospace": {
         "label": "Gather vs Kumospace",
         "meta": {
-          "title": "Gather vs Kumospace : prix, offres gratuites et une troisième option",
-          "description": "Gather vs Kumospace côte à côte : prix, offre gratuite, navigateur et partage d'écran, et comment TinyFloor se compare pour les petites équipes à distance."
+          "title": "Gather ou Kumospace : tarifs, offres gratuites et une troisième option",
+          "description": "Gather et Kumospace côte à côte : ce que paie une équipe sur chacun, offres gratuites, enregistrement, applications et aménagement du bureau, et la place de TinyFloor pour les petites équipes à distance, à 29 $ pour toute l'équipe."
         },
         "title": "<em>Gather vs Kumospace</em>, et une troisième option.",
-        "subtitle": "Les deux facturent par membre une fois l'offre gratuite dépassée. Si votre équipe est petite et veut un bureau simple, TinyFloor, c'est un seul prix pour tout l'étage.",
+        "subtitle": "Les deux facturent par membre une fois passée l'offre gratuite : Gather n'en a pas, celle de Kumospace s'arrête à 5. Si votre équipe est petite et veut un bureau simple, TinyFloor est un seul prix pour tout l'étage.",
         "points": [
           {
             "title": "Gather",
@@ -760,19 +760,19 @@
         "faq": [
           {
             "q": "Lequel est le moins cher, Gather ou Kumospace ?",
-            "a": "Pour une équipe de 10, Gather commence à environ 120 $ par mois et Kumospace Business à environ 160 $. Kumospace a une offre gratuite jusqu'à 5 membres ; Gather a un essai de 30 jours. TinyFloor Pro coûte 29 $ par mois pour tout le bureau."
+            "a": "Gather. Pour une équipe de 10 à l'année, Gather coûte 120 $ par mois et Kumospace Business 160 $ ; au mois, 150 contre 200 $. Kumospace a une offre gratuite jusqu'à 5 membres ; Gather un essai de 30 jours. TinyFloor Pro coûte 29 $ par mois pour tout le bureau."
           },
           {
             "q": "Lequel est le mieux pour une petite équipe ?",
-            "a": "L'offre gratuite de Kumospace convient jusqu'à 5 personnes, et Gather aux équipes qui veulent plus de personnalisation. Si vous voulez un seul prix simple pour une petite équipe, TinyFloor est fait pour ça."
+            "a": "L'offre gratuite de Kumospace convient jusqu'à 5 personnes si un espace public vous va, et Gather convient aux équipes qui veulent aménager leur bureau et enregistrer leurs réunions. Si vous voulez un seul prix simple pour une petite équipe, TinyFloor est fait pour ça."
           },
           {
             "q": "Gather et Kumospace fonctionnent-ils dans le navigateur ?",
-            "a": "Les deux fonctionnent dans le navigateur, Gather avec une appli pour ordinateur et Kumospace avec des applis pour ordinateur et mobile. TinyFloor fonctionne uniquement dans le navigateur, sur ordinateur et mobile, donc il n'y a rien à installer."
+            "a": "Les deux fonctionnent dans le navigateur, Gather avec une application de bureau et Kumospace avec des applications de bureau et mobiles. TinyFloor fonctionne uniquement dans le navigateur, sur ordinateur et mobile : rien à installer."
           },
           {
-            "q": "Pourra-t-on passer à TinyFloor plus tard ?",
-            "a": "Oui. Il n'y a rien à migrer : créez un bureau, partagez le lien d'invitation, et votre équipe entre."
+            "q": "Pouvons-nous passer à TinyFloor plus tard ?",
+            "a": "Oui. Rien à migrer : créez un bureau, partagez le lien d'invitation, et votre équipe entre."
           }
         ]
       },

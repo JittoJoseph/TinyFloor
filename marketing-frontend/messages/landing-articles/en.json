@@ -1874,5 +1874,189 @@
         "Huddle limits come from Slack's help centre, read in October 2026. Slack's pricing page shows prices in the visitor's currency, so we haven't quoted a figure; check Slack's page for yours. We make TinyFloor, so we've said plainly what it doesn't do."
       ]
     }
+  ],
+  "gatherVsKumospace": [
+    {
+      "title": "Gather, Kumospace and TinyFloor at a glance",
+      "body": [
+        "Gather and Kumospace are the two best-known virtual offices, and both bill per member. TinyFloor is here as the third option for a small team."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Gather",
+          "Kumospace",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "A team of 8, a month",
+            "$96 billed yearly, $120 monthly",
+            "$128 billed yearly, $160 monthly",
+            "$29 for the whole team"
+          ],
+          [
+            "Free plan",
+            "None, a 30-day trial",
+            "Up to 5 members, 1 floor, a public space",
+            "Up to 3 people, every feature"
+          ],
+          [
+            "How it's priced",
+            "Per member",
+            "Per member, at least 5",
+            "One price for the office"
+          ],
+          [
+            "Recording",
+            "Included, with monthly hours",
+            "On Business",
+            "No"
+          ],
+          [
+            "Designing the office",
+            "Floors, rooms and 200+ objects you place",
+            "Furniture, floors and activities you place",
+            "A ready-made office"
+          ],
+          [
+            "Apps",
+            "Browser and a desktop app",
+            "Browser, desktop and mobile apps",
+            "The browser, on desktop and mobile"
+          ],
+          [
+            "Single sign-on",
+            "On Custom",
+            "On Enterprise",
+            "No"
+          ]
+        ],
+        "note": "Gather's and Kumospace's details from their own pricing pages and help centres in October 2026, in US dollars before tax."
+      }
+    },
+    {
+      "title": "What each costs by team size",
+      "body": [
+        "Gather is $12 a member a month billed yearly or $15 monthly. Kumospace Business is $16 or $20, with a 5-member minimum. Both bill every member, whether or not they come in that day."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Gather, yearly / monthly",
+          "Kumospace, yearly / monthly",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 people",
+            "$60 / $75",
+            "$80 / $100",
+            "$29"
+          ],
+          [
+            "8 people",
+            "$96 / $120",
+            "$128 / $160",
+            "$29"
+          ],
+          [
+            "10 people",
+            "$120 / $150",
+            "$160 / $200",
+            "$29"
+          ],
+          [
+            "12 people",
+            "$144 / $180",
+            "$192 / $240",
+            "$29"
+          ]
+        ],
+        "note": "A month, before tax: Gather Essential, Kumospace Business (October 2026). TinyFloor Pro is monthly; teams of up to 3 stay free, and Kumospace's free plan covers up to 5."
+      }
+    },
+    {
+      "title": "Where Gather is stronger",
+      "items": [
+        {
+          "title": "Designing your own office",
+          "body": "Lay out floors and rooms with more than 200 objects in Gather Studio."
+        },
+        {
+          "title": "Recording, transcription and AI notes",
+          "body": "Essential includes recording and transcription hours each month and AI meeting notes."
+        },
+        {
+          "title": "Integrations",
+          "body": "Google Calendar, GitHub and Spotify show what people are up to in the office."
+        },
+        {
+          "title": "Price per member",
+          "body": "At $12 to $15 a member, it's cheaper than Kumospace Business for the same team."
+        }
+      ]
+    },
+    {
+      "title": "Where Kumospace is stronger",
+      "items": [
+        {
+          "title": "A free plan",
+          "body": "Up to 5 members, 50 guests and one floor, as long as a public space is fine. Gather ended its free plan in September 2025."
+        },
+        {
+          "title": "Desktop and mobile apps",
+          "body": "Apps for Windows, macOS, iOS and Android as well as the browser."
+        },
+        {
+          "title": "Spaces for socials and events",
+          "body": "Furniture, games, whiteboards and YouTube screens make it popular for social events as well as offices."
+        }
+      ]
+    },
+    {
+      "title": "Where TinyFloor fits",
+      "items": [
+        {
+          "title": "One price for the team",
+          "body": "$29 a month for everyone you invite, so a team of 12 pays the same as a team of 4."
+        },
+        {
+          "title": "A private office on the free plan",
+          "body": "Up to 3 people, every feature, no trial clock and no public space."
+        },
+        {
+          "title": "Nothing to install or design",
+          "body": "It opens in a browser tab with desks and a meeting room ready."
+        },
+        {
+          "title": "What it leaves out",
+          "body": "No recording, transcription, office editor or single sign-on. If you rely on those, Gather or Kumospace will suit you better."
+        }
+      ]
+    },
+    {
+      "title": "Which one to choose",
+      "items": [
+        {
+          "title": "Gather",
+          "body": "If you want to design the office yourself and record or transcribe meetings, and paying per member is fine."
+        },
+        {
+          "title": "Kumospace",
+          "body": "If you're 5 or fewer and happy with a public free space, or you want native apps and a space for social events."
+        },
+        {
+          "title": "TinyFloor",
+          "body": "If you're a team of 4 to 15 that wants a simple private office in the browser, for one monthly price."
+        }
+      ]
+    },
+    {
+      "title": "How we compared",
+      "body": [
+        "Prices, limits and features come from Gather's and Kumospace's own pricing pages and help centres, read in October 2026, in US dollars before tax. If something wasn't stated there, we left it out rather than guess. We make TinyFloor, so we've said plainly what it doesn't do. Prices change: check each product's page before you buy."
+      ]
+    }
   ]
 }

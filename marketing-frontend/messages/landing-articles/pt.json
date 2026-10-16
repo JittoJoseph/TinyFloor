@@ -1874,5 +1874,189 @@
         "Os limites dos huddles vêm da central de ajuda do Slack, lida em outubro de 2026. A página de preços do Slack mostra valores na moeda de quem visita, então não citamos um número; confira a página do Slack para ver o seu. Nós fazemos o TinyFloor, então dizemos com clareza o que ele não faz."
       ]
     }
+  ],
+  "gatherVsKumospace": [
+    {
+      "title": "Gather, Kumospace e TinyFloor num relance",
+      "body": [
+        "Gather e Kumospace são os dois escritórios virtuais mais conhecidos, e os dois cobram por membro. O TinyFloor aparece aqui como terceira opção para uma equipe pequena."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Gather",
+          "Kumospace",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Uma equipe de 8, por mês",
+            "US$ 96 no anual, US$ 120 no mensal",
+            "US$ 128 no anual, US$ 160 no mensal",
+            "US$ 29 para a equipe toda"
+          ],
+          [
+            "Plano grátis",
+            "Nenhum, um teste de 30 dias",
+            "Até 5 membros, 1 andar, um espaço público",
+            "Até 3 pessoas, todos os recursos"
+          ],
+          [
+            "Como é cobrado",
+            "Por membro",
+            "Por membro, no mínimo 5",
+            "Um preço pelo escritório"
+          ],
+          [
+            "Gravação",
+            "Incluída, com horas mensais",
+            "No Business",
+            "Não"
+          ],
+          [
+            "Montar o escritório",
+            "Andares, salas e mais de 200 objetos que você posiciona",
+            "Móveis, andares e atividades que você posiciona",
+            "Um escritório pronto"
+          ],
+          [
+            "Apps",
+            "Navegador e um app para desktop",
+            "Navegador, apps para desktop e celular",
+            "O navegador, no computador e no celular"
+          ],
+          [
+            "Login único (SSO)",
+            "No Custom",
+            "No Enterprise",
+            "Não"
+          ]
+        ],
+        "note": "Dados do Gather e do Kumospace das próprias páginas de preços e centrais de ajuda em outubro de 2026, em dólares americanos sem impostos."
+      }
+    },
+    {
+      "title": "Quanto cada um custa por tamanho de equipe",
+      "body": [
+        "O Gather custa US$ 12 por membro por mês no anual ou US$ 15 no mensal. O Kumospace Business custa US$ 16 ou US$ 20, com mínimo de 5 membros. Os dois cobram cada membro, apareça ele ou não naquele dia."
+      ],
+      "table": {
+        "head": [
+          "Equipe",
+          "Gather, anual / mensal",
+          "Kumospace, anual / mensal",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 pessoas",
+            "US$ 60 / US$ 75",
+            "US$ 80 / US$ 100",
+            "US$ 29"
+          ],
+          [
+            "8 pessoas",
+            "US$ 96 / US$ 120",
+            "US$ 128 / US$ 160",
+            "US$ 29"
+          ],
+          [
+            "10 pessoas",
+            "US$ 120 / US$ 150",
+            "US$ 160 / US$ 200",
+            "US$ 29"
+          ],
+          [
+            "12 pessoas",
+            "US$ 144 / US$ 180",
+            "US$ 192 / US$ 240",
+            "US$ 29"
+          ]
+        ],
+        "note": "Por mês, sem impostos: Gather Essential, Kumospace Business (outubro de 2026). O TinyFloor Pro é mensal; equipes de até 3 continuam grátis, e o plano grátis do Kumospace cobre até 5."
+      }
+    },
+    {
+      "title": "Onde o Gather é mais forte",
+      "items": [
+        {
+          "title": "Montar seu próprio escritório",
+          "body": "Organize andares e salas com mais de 200 objetos no Gather Studio."
+        },
+        {
+          "title": "Gravação, transcrição e notas com IA",
+          "body": "O Essential inclui horas de gravação e transcrição todo mês e notas de reunião com IA."
+        },
+        {
+          "title": "Integrações",
+          "body": "Google Agenda, GitHub e Spotify mostram no escritório o que cada um está fazendo."
+        },
+        {
+          "title": "Preço por membro",
+          "body": "Com US$ 12 a US$ 15 por membro, sai mais barato que o Kumospace Business para a mesma equipe."
+        }
+      ]
+    },
+    {
+      "title": "Onde o Kumospace é mais forte",
+      "items": [
+        {
+          "title": "Um plano grátis",
+          "body": "Até 5 membros, 50 convidados e um andar, desde que um espaço público esteja bom. O Gather encerrou o plano grátis em setembro de 2025."
+        },
+        {
+          "title": "Apps para desktop e celular",
+          "body": "Apps para Windows, macOS, iOS e Android, além do navegador."
+        },
+        {
+          "title": "Espaços para festas e eventos",
+          "body": "Móveis, jogos, quadros brancos e telas do YouTube o tornam popular para eventos sociais, não só para escritórios."
+        }
+      ]
+    },
+    {
+      "title": "Onde o TinyFloor se encaixa",
+      "items": [
+        {
+          "title": "Um preço para a equipe",
+          "body": "US$ 29 por mês para todos que você convidar, então uma equipe de 12 paga o mesmo que uma de 4."
+        },
+        {
+          "title": "Um escritório privado no plano grátis",
+          "body": "Até 3 pessoas, todos os recursos, sem prazo de teste e sem espaço público."
+        },
+        {
+          "title": "Nada para instalar nem montar",
+          "body": "Abre numa aba do navegador com as mesas e a sala de reunião prontas."
+        },
+        {
+          "title": "O que ele deixa de fora",
+          "body": "Sem gravação, transcrição, editor de escritório ou login único. Se você depende disso, o Gather ou o Kumospace vão servir melhor."
+        }
+      ]
+    },
+    {
+      "title": "Qual escolher",
+      "items": [
+        {
+          "title": "Gather",
+          "body": "Se você quer montar o escritório você mesmo e gravar ou transcrever reuniões, e pagar por membro não é problema."
+        },
+        {
+          "title": "Kumospace",
+          "body": "Se vocês são 5 ou menos e um espaço grátis público basta, ou se você quer apps nativos e um espaço para eventos sociais."
+        },
+        {
+          "title": "TinyFloor",
+          "body": "Se vocês são uma equipe de 4 a 15 pessoas que quer um escritório privado simples no navegador, por um preço mensal só."
+        }
+      ]
+    },
+    {
+      "title": "Como comparamos",
+      "body": [
+        "Preços, limites e recursos vêm das próprias páginas de preços e centrais de ajuda do Gather e do Kumospace, lidas em outubro de 2026, em dólares americanos sem impostos. O que não estava escrito lá, deixamos de fora em vez de chutar. Nós fazemos o TinyFloor, então dizemos com clareza o que ele não faz. Preços mudam: confira a página de cada produto antes de comprar."
+      ]
+    }
   ]
 }

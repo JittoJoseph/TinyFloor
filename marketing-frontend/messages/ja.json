@@ -738,11 +738,11 @@
       "gatherVsKumospace": {
         "label": "Gather と Kumospace の比較",
         "meta": {
-          "title": "Gather と Kumospace を比較：料金、無料プラン、そして第三の選択肢",
-          "description": "Gather と Kumospace を料金、無料プラン、ブラウザ対応、画面共有で並べて比較。小規模リモートチームにとって TinyFloor はどうかも紹介します。"
+          "title": "Gather と Kumospace の比較：料金、無料プラン、そして第3の選択肢",
+          "description": "Gather と Kumospace を並べて比較。それぞれでチームが払う金額、無料プラン、録画、アプリ、オフィスのデザイン、そして小さなリモートチーム向けにチーム全体で$29の TinyFloor が合う場面。"
         },
         "title": "<em>Gather と Kumospace</em>、そして第三の選択肢。",
-        "subtitle": "どちらも無料枠を超えるとメンバーごとの課金です。チームが小さく、シンプルなオフィスがほしいなら、TinyFloor はフロア全体でひとつの料金です。",
+        "subtitle": "どちらも無料の範囲を超えるとメンバーごとの課金です。Gather には無料プランがなく、Kumospace の無料プランは5人まで。チームが小さく、シンプルなオフィスがほしいなら、TinyFloor はフロア全体でひとつの料金です。",
         "points": [
           {
             "title": "Gather",
@@ -759,16 +759,16 @@
         ],
         "faq": [
           {
-            "q": "Gather と Kumospace はどちらが安いですか？",
-            "a": "10 人のチームなら、Gather は月およそ $120 から、Kumospace Business は月およそ $160 からです。Kumospace には 5 人までの無料プランがあり、Gather には 30 日間のトライアルがあります。TinyFloor Proはオフィス全体で月$29です。"
+            "q": "Gather と Kumospace、どちらが安いですか？",
+            "a": "Gather です。10人のチームで年払いの場合、Gather は月$120、Kumospace Business は$160。月払いなら$150対$200です。Kumospace には5人までの無料プランがあり、Gather には30日間の試用があります。TinyFloor Pro はオフィス全体で月$29です。"
           },
           {
-            "q": "小さなチームにはどちらがいいですか？",
-            "a": "Kumospaceの無料プランは5人まで、Gatherはもっとカスタマイズしたいチーム向けです。小さなチームにシンプルなひとつの料金がほしいなら、TinyFloorはそのために作られています。"
+            "q": "小さなチームにはどちらが向いていますか？",
+            "a": "公開スペースで問題なければ Kumospace の無料プランが5人まで使え、オフィスを自分でデザインして会議を録画したいチームには Gather が向いています。小さなチームにシンプルな料金がほしいなら、TinyFloor はそのために作られています。"
           },
           {
-            "q": "Gather と Kumospace はブラウザで動きますか？",
-            "a": "どちらもブラウザで動き、Gather にはデスクトップアプリ、Kumospace にはデスクトップとモバイルのアプリもあります。TinyFloor はパソコンでもスマートフォンでもブラウザだけで動くので、インストールするものはありません。"
+            "q": "Gather と Kumospace はブラウザで使えますか？",
+            "a": "どちらもブラウザで使えます。Gather にはデスクトップアプリ、Kumospace にはデスクトップとモバイルのアプリもあります。TinyFloor はブラウザだけで、パソコンでもスマートフォンでも動くので、インストールは不要です。"
           },
           {
             "q": "あとから TinyFloor に移れますか？",

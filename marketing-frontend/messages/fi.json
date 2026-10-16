@@ -739,10 +739,10 @@
         "label": "Gather vs Kumospace",
         "meta": {
           "title": "Gather vs Kumospace: hinnat, ilmaiset paketit ja kolmas vaihtoehto",
-          "description": "Gather ja Kumospace rinnakkain: hinta, ilmainen paketti, selain ja näytön jakaminen, sekä miten TinyFloor vertautuu pienille etätiimeille."
+          "description": "Gather ja Kumospace rinnakkain: mitä tiimi maksaa kummassakin, ilmaiset paketit, tallennus, sovellukset ja toimiston suunnittelu, sekä mihin TinyFloor sopii pienille etätiimeille, 29 $ koko tiimiltä."
         },
         "title": "<em>Gather vs Kumospace</em>, ja kolmas vaihtoehto.",
-        "subtitle": "Molemmat laskuttavat jäsentä kohden, kun ilmainen taso ylittyy. Jos tiimisi on pieni ja haluaa yksinkertaisen toimiston, TinyFloorissa on yksi hinta koko kerrokselle.",
+        "subtitle": "Molemmat laskuttavat jäsentä kohden, kun ilmainen taso loppuu: Gatherilla ei ole ilmaista pakettia, ja Kumospacen paketti loppuu viiteen. Jos tiimisi on pieni ja haluaa yksinkertaisen toimiston, TinyFloor on yksi hinta koko kerrokselle.",
         "points": [
           {
             "title": "Gather",
@@ -760,19 +760,19 @@
         "faq": [
           {
             "q": "Kumpi on halvempi, Gather vai Kumospace?",
-            "a": "10 hengen tiimille Gather alkaa noin $120 kuussa ja Kumospace Business noin $160 kuussa. Kumospacessa on ilmainen paketti enintään 5 jäsenelle; Gatherissa on 30 päivän kokeilu. TinyFloor Pro maksaa $29 kuukaudessa koko toimistolle."
+            "a": "Gather. Kymmenen hengen tiimille vuosilaskutuksella Gather maksaa 120 $ kuukaudessa ja Kumospace Business 160 $; kuukausilaskutuksella 150 vastaan 200 $. Kumospacella on ilmainen paketti enintään 5 jäsenelle; Gatherilla 30 päivän kokeilu. TinyFloor Pro maksaa 29 $ kuukaudessa koko toimistolta."
           },
           {
             "q": "Kumpi sopii paremmin pienelle tiimille?",
-            "a": "Kumospacen ilmainen tilaus sopii enintään 5 hengelle, ja Gather tiimeille, jotka haluavat muokata enemmän. Jos haluat yhden yksinkertaisen hinnan pienelle tiimille, TinyFloor on tehty siihen."
+            "a": "Kumospacen ilmainen paketti riittää enintään 5 hengelle, jos julkinen tila käy, ja Gather sopii tiimeille, jotka haluavat suunnitella toimistonsa ja tallentaa kokouksia. Jos haluat yhden yksinkertaisen hinnan pienelle tiimille, TinyFloor on tehty juuri siihen."
           },
           {
             "q": "Toimivatko Gather ja Kumospace selaimessa?",
-            "a": "Molemmat toimivat selaimessa, Gather tietokonesovelluksen ja Kumospace tietokone- ja mobiilisovellusten kanssa. TinyFloor toimii vain selaimessa, tietokoneella ja mobiilissa, joten mitään ei tarvitse asentaa."
+            "a": "Molemmat toimivat selaimessa, Gather tietokonesovelluksen kanssa ja Kumospace tietokone- ja mobiilisovellusten kanssa. TinyFloor toimii vain selaimessa, tietokoneella ja puhelimella, joten mitään ei tarvitse asentaa."
           },
           {
             "q": "Voimmeko vaihtaa TinyFlooriin myöhemmin?",
-            "a": "Voitte. Siirrettävää ei ole: tee toimisto, jaa kutsulinkki, niin tiimi tulee sisään."
+            "a": "Kyllä. Mitään ei tarvitse siirtää: luo toimisto, jaa kutsulinkki, ja tiimi kävelee sisään."
           }
         ]
       },

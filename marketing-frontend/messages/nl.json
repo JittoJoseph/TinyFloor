@@ -739,10 +739,10 @@
         "label": "Gather vs Kumospace",
         "meta": {
           "title": "Gather vs Kumospace: prijzen, gratis abonnementen en een derde optie",
-          "description": "Gather vs Kumospace naast elkaar: prijs, gratis abonnement, browser en schermdelen, en hoe TinyFloor zich verhoudt voor kleine remote teams."
+          "description": "Gather en Kumospace naast elkaar: wat een team bij elk betaalt, gratis abonnementen, opnemen, apps en het kantoor inrichten, en waar TinyFloor past voor kleine remote teams, voor $ 29 voor het hele team."
         },
         "title": "<em>Gather vs Kumospace</em>, en een derde optie.",
-        "subtitle": "Beide rekenen per lid zodra je voorbij de gratis laag bent. Is je team klein en wil je een eenvoudig kantoor, dan is TinyFloor één prijs voor de hele verdieping.",
+        "subtitle": "Beide rekenen per lid zodra je voorbij het gratis deel bent: Gather heeft geen gratis abonnement, dat van Kumospace stopt bij 5. Is je team klein en wil het een eenvoudig kantoor, dan is TinyFloor één prijs voor de hele verdieping.",
         "points": [
           {
             "title": "Gather",
@@ -760,19 +760,19 @@
         "faq": [
           {
             "q": "Wat is goedkoper, Gather of Kumospace?",
-            "a": "Voor een team van 10 begint Gather bij ongeveer $120 per maand en Kumospace Business bij ongeveer $160. Kumospace heeft een gratis abonnement voor maximaal 5 leden; Gather heeft een proefperiode van 30 dagen. TinyFloor Pro kost $29 per maand voor het hele kantoor."
+            "a": "Gather. Voor een team van 10 met jaarlijkse betaling kost Gather $ 120 per maand en Kumospace Business $ 160; maandelijks $ 150 tegenover $ 200. Kumospace heeft een gratis abonnement voor maximaal 5 leden; Gather een proefperiode van 30 dagen. TinyFloor Pro kost $ 29 per maand voor het hele kantoor."
           },
           {
             "q": "Wat is beter voor een klein team?",
-            "a": "Het gratis abonnement van Kumospace past bij maximaal 5 mensen, en Gather bij teams die meer willen aanpassen. Wil je één eenvoudige prijs voor een klein team, dan is TinyFloor daarvoor gemaakt."
+            "a": "Het gratis abonnement van Kumospace past bij maximaal 5 mensen als een openbare ruimte geen probleem is, en Gather past bij teams die hun kantoor willen inrichten en meetings willen opnemen. Wil je één eenvoudige prijs voor een klein team, dan is TinyFloor daarvoor gemaakt."
           },
           {
-            "q": "Draaien Gather en Kumospace in de browser?",
-            "a": "Beide draaien in de browser, Gather met een desktop-app en Kumospace met desktop- en mobiele apps. TinyFloor draait alleen in de browser, op desktop en mobiel, dus er is niets te installeren."
+            "q": "Werken Gather en Kumospace in de browser?",
+            "a": "Beide werken in de browser, Gather met een desktop-app en Kumospace met desktop- en mobiele apps. TinyFloor werkt alleen in de browser, op desktop en mobiel, dus er is niets te installeren."
           },
           {
             "q": "Kunnen we later overstappen naar TinyFloor?",
-            "a": "Ja. Er is niets te migreren: maak een kantoor, deel de uitnodigingslink, en je team loopt binnen."
+            "a": "Ja. Er is niets te migreren: maak een kantoor, deel de uitnodigingslink en je team loopt binnen."
           }
         ]
       },

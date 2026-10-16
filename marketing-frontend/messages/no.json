@@ -739,10 +739,10 @@
         "label": "Gather vs Kumospace",
         "meta": {
           "title": "Gather vs Kumospace: priser, gratisplaner og et tredje alternativ",
-          "description": "Gather og Kumospace side om side: pris, gratisplan, nettleser og skjermdeling, og hvordan TinyFloor står seg for små team som jobber eksternt."
+          "description": "Gather og Kumospace side om side: hva et team betaler hos hver, gratisplaner, opptak, apper og innredning av kontoret, og hvor TinyFloor passer for små fjernteam, for 29 $ for hele teamet."
         },
         "title": "<em>Gather vs Kumospace</em>, og et tredje alternativ.",
-        "subtitle": "Begge tar betalt per medlem når du er forbi gratisnivået. Hvis teamet er lite og vil ha et enkelt kontor, har TinyFloor én pris for hele etasjen.",
+        "subtitle": "Begge tar betalt per medlem når du er forbi gratisnivået: Gather har ingen gratisplan, og Kumospaces stopper ved 5. Hvis teamet ditt er lite og vil ha et enkelt kontor, er TinyFloor én pris for hele etasjen.",
         "points": [
           {
             "title": "Gather",
@@ -760,19 +760,19 @@
         "faq": [
           {
             "q": "Hva er billigst, Gather eller Kumospace?",
-            "a": "For et team på 10 starter Gather på rundt $120 i måneden og Kumospace Business på rundt $160. Kumospace har en gratisplan for opptil 5 medlemmer; Gather har en prøveperiode på 30 dager. TinyFloor Pro koster $29 i måneden for hele kontoret."
+            "a": "Gather. For et team på 10 med årlig betaling koster Gather 120 $ i måneden og Kumospace Business 160 $; månedlig 150 mot 200 $. Kumospace har en gratisplan for opptil 5 medlemmer; Gather en prøveperiode på 30 dager. TinyFloor Pro koster 29 $ i måneden for hele kontoret."
           },
           {
-            "q": "Hva passer best for et lite team?",
-            "a": "Kumospaces gratisplan passer for opptil 5 personer, og Gather for team som vil tilpasse mer. Vil du ha én enkel pris for et lite team, er TinyFloor laget for det."
+            "q": "Hva er best for et lite team?",
+            "a": "Kumospaces gratisplan passer for opptil 5 personer hvis et offentlig rom er greit, og Gather passer for team som vil innrede kontoret sitt og ta opp møter. Vil du ha én enkel pris for et lite team, er TinyFloor laget for det."
           },
           {
             "q": "Kjører Gather og Kumospace i nettleseren?",
-            "a": "Begge kjører i nettleseren, Gather med en app for datamaskin og Kumospace med apper for datamaskin og mobil. TinyFloor kjører bare i nettleseren, på datamaskin og mobil, så det er ingenting å installere."
+            "a": "Begge kjører i nettleseren, Gather med en datamaskinapp og Kumospace med apper for datamaskin og mobil. TinyFloor kjører bare i nettleseren, på datamaskin og mobil, så det er ingenting å installere."
           },
           {
             "q": "Kan vi bytte til TinyFloor senere?",
-            "a": "Ja. Det er ingenting å flytte: lag et kontor, del invitasjonslenken, så går teamet inn."
+            "a": "Ja. Det er ingenting å flytte: opprett et kontor, del invitasjonslenken, og teamet går inn."
           }
         ]
       },

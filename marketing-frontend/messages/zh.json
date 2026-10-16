@@ -738,11 +738,11 @@
       "gatherVsKumospace": {
         "label": "Gather 与 Kumospace 对比",
         "meta": {
-          "title": "Gather 与 Kumospace 对比：价格、免费套餐和第三种选择",
-          "description": "Gather 和 Kumospace 并排比较：价格、免费套餐、浏览器支持和屏幕共享，以及 TinyFloor 对小型远程团队来说如何。"
+          "title": "Gather 与 Kumospace 对比：价格、免费版和第三个选择",
+          "description": "Gather 与 Kumospace 并排对比：团队在各自上面要付多少、免费版、录制、应用和办公室布置，以及 TinyFloor 以整个团队 $29 适合哪些小型远程团队。"
         },
         "title": "<em>Gather 与 Kumospace</em>，还有第三种选择。",
-        "subtitle": "两者超出免费额度后都按成员收费。如果你的团队不大、想要一个简单的办公室，TinyFloor 整层楼一个价。",
+        "subtitle": "两者在超出免费范围后都按成员收费：Gather 没有免费版，Kumospace 的免费版到 5 人为止。如果你的团队不大、想要一个简单的办公室，TinyFloor 是整层一个价格。",
         "points": [
           {
             "title": "Gather",
@@ -760,19 +760,19 @@
         "faq": [
           {
             "q": "Gather 和 Kumospace 哪个更便宜？",
-            "a": "对 10 人团队来说，Gather 每月约 $120 起，Kumospace Business 每月约 $160 起。Kumospace 有最多 5 名成员的免费套餐；Gather 有 30 天试用。TinyFloor Pro 整个办公室每月 $29。"
+            "a": "Gather。10 人团队按年付费时，Gather 每月 $120，Kumospace Business 每月 $160；按月付费则是 $150 对 $200。Kumospace 有最多 5 名成员的免费版；Gather 有 30 天试用。TinyFloor Pro 整个办公室每月 $29。"
           },
           {
             "q": "哪个更适合小团队？",
-            "a": "Kumospace 的免费方案适合最多 5 人，Gather 适合想要更多自定义的团队。如果你想为小团队找一个简单的价格，TinyFloor 正是为此打造的。"
+            "a": "如果公开空间可以接受，Kumospace 的免费版够 5 人使用；想自己布置办公室并录制会议的团队适合 Gather。如果你想为小团队找一个简单的价格，TinyFloor 就是为此而做的。"
           },
           {
-            "q": "Gather 和 Kumospace 能在浏览器中运行吗？",
-            "a": "两者都能在浏览器中运行，Gather 另有桌面应用，Kumospace 另有桌面和移动应用。TinyFloor 在电脑和手机上都只用浏览器运行，无需安装任何东西。"
+            "q": "Gather 和 Kumospace 能在浏览器里用吗？",
+            "a": "两者都能在浏览器里用，Gather 另有桌面应用，Kumospace 另有桌面和手机应用。TinyFloor 只在浏览器里运行，电脑和手机都能用，所以不需要安装任何东西。"
           },
           {
             "q": "以后可以换到 TinyFloor 吗？",
-            "a": "可以。没有需要迁移的数据：创建一个办公室，分享邀请链接，团队就能进来。"
+            "a": "可以。没有什么需要迁移：创建一个办公室，分享邀请链接，你的团队就能进来。"
           }
         ]
       },

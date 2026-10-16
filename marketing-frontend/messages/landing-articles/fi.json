@@ -1874,5 +1874,189 @@
         "Huddlejen rajat ovat Slackin ohjekeskuksesta, luettu lokakuussa 2026. Slackin hintasivu näyttää hinnat kävijän valuutassa, joten emme mainitse summaa; tarkista oma hintasi Slackin sivulta. Me teemme TinyFlooria, joten kerromme selvästi, mitä se ei tee."
       ]
     }
+  ],
+  "gatherVsKumospace": [
+    {
+      "title": "Gather, Kumospace ja TinyFloor lyhyesti",
+      "body": [
+        "Gather ja Kumospace ovat kaksi tunnetuinta virtuaalitoimistoa, ja molemmat laskuttavat jäsentä kohden. TinyFloor on mukana kolmantena vaihtoehtona pienelle tiimille."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Gather",
+          "Kumospace",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "8 hengen tiimi, kuukaudessa",
+            "96 $ vuosilaskutuksella, 120 $ kuukausittain",
+            "128 $ vuosilaskutuksella, 160 $ kuukausittain",
+            "29 $ koko tiimiltä"
+          ],
+          [
+            "Ilmainen paketti",
+            "Ei ole, 30 päivän kokeilu",
+            "Enintään 5 jäsentä, 1 kerros, julkinen tila",
+            "Enintään 3 henkeä, kaikki ominaisuudet"
+          ],
+          [
+            "Miten hinnoitellaan",
+            "Jäsentä kohden",
+            "Jäsentä kohden, vähintään 5",
+            "Yksi hinta toimistolle"
+          ],
+          [
+            "Tallennus",
+            "Mukana, tunteja kuukaudessa",
+            "Business-paketissa",
+            "Ei"
+          ],
+          [
+            "Toimiston suunnittelu",
+            "Kerrokset, huoneet ja yli 200 sijoitettavaa esinettä",
+            "Huonekalut, kerrokset ja sijoitettavat aktiviteetit",
+            "Valmis toimisto"
+          ],
+          [
+            "Sovellukset",
+            "Selain ja tietokonesovellus",
+            "Selain, tietokone- ja mobiilisovellukset",
+            "Selain, tietokoneella ja puhelimella"
+          ],
+          [
+            "Kertakirjautuminen (SSO)",
+            "Custom-paketissa",
+            "Enterprise-paketissa",
+            "Ei"
+          ]
+        ],
+        "note": "Gatherin ja Kumospacen tiedot niiden omilta hintasivuilta ja ohjekeskuksista lokakuussa 2026, Yhdysvaltain dollareina ilman veroja."
+      }
+    },
+    {
+      "title": "Mitä kumpikin maksaa tiimin koon mukaan",
+      "body": [
+        "Gather maksaa 12 $ jäseneltä kuukaudessa vuosilaskutuksella tai 15 $ kuukausittain. Kumospace Business maksaa 16 tai 20 $, vähintään 5 jäsentä. Molemmat laskuttavat jokaisesta jäsenestä, tuli hän sinä päivänä paikalle tai ei."
+      ],
+      "table": {
+        "head": [
+          "Tiimi",
+          "Gather, vuosi / kuukausi",
+          "Kumospace, vuosi / kuukausi",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 henkeä",
+            "60 $ / 75 $",
+            "80 $ / 100 $",
+            "29 $"
+          ],
+          [
+            "8 henkeä",
+            "96 $ / 120 $",
+            "128 $ / 160 $",
+            "29 $"
+          ],
+          [
+            "10 henkeä",
+            "120 $ / 150 $",
+            "160 $ / 200 $",
+            "29 $"
+          ],
+          [
+            "12 henkeä",
+            "144 $ / 180 $",
+            "192 $ / 240 $",
+            "29 $"
+          ]
+        ],
+        "note": "Kuukaudessa, ilman veroja: Gather Essential, Kumospace Business (lokakuu 2026). TinyFloor Pro laskutetaan kuukausittain; enintään 3 hengen tiimit pysyvät ilmaisina, ja Kumospacen ilmainen paketti kattaa enintään 5."
+      }
+    },
+    {
+      "title": "Missä Gather on vahvempi",
+      "items": [
+        {
+          "title": "Oman toimiston suunnittelu",
+          "body": "Järjestä kerrokset ja huoneet yli 200 esineellä Gather Studiossa."
+        },
+        {
+          "title": "Tallennus, litterointi ja tekoälymuistiinpanot",
+          "body": "Essential sisältää joka kuukausi tunteja tallennukseen ja litterointiin sekä tekoälyn tekemät kokousmuistiinpanot."
+        },
+        {
+          "title": "Integraatiot",
+          "body": "Google Kalenteri, GitHub ja Spotify näyttävät toimistossa, mitä kukin tekee."
+        },
+        {
+          "title": "Hinta jäsentä kohden",
+          "body": "12–15 $ jäseneltä on halvempi kuin Kumospace Business samalle tiimille."
+        }
+      ]
+    },
+    {
+      "title": "Missä Kumospace on vahvempi",
+      "items": [
+        {
+          "title": "Ilmainen paketti",
+          "body": "Enintään 5 jäsentä, 50 vierasta ja yksi kerros, kunhan julkinen tila käy. Gather lopetti ilmaisen pakettinsa syyskuussa 2025."
+        },
+        {
+          "title": "Tietokone- ja mobiilisovellukset",
+          "body": "Sovellukset Windowsille, macOS:lle, iOS:lle ja Androidille selaimen lisäksi."
+        },
+        {
+          "title": "Tilat juhliin ja tapahtumiin",
+          "body": "Huonekalut, pelit, taulut ja YouTube-näytöt tekevät siitä suositun sosiaalisissa tapahtumissa eikä vain toimistona."
+        }
+      ]
+    },
+    {
+      "title": "Mihin TinyFloor sopii",
+      "items": [
+        {
+          "title": "Yksi hinta tiimille",
+          "body": "29 $ kuukaudessa kaikista, jotka kutsut, joten 12 hengen tiimi maksaa saman kuin 4 hengen tiimi."
+        },
+        {
+          "title": "Yksityinen toimisto ilmaisella paketilla",
+          "body": "Enintään 3 henkeä, kaikki ominaisuudet, ei kokeilun aikarajaa eikä julkista tilaa."
+        },
+        {
+          "title": "Ei mitään asennettavaa tai suunniteltavaa",
+          "body": "Se aukeaa selaimen välilehteen, ja työpisteet ja kokoushuone ovat valmiina."
+        },
+        {
+          "title": "Mitä siitä puuttuu",
+          "body": "Ei tallennusta, litterointia, toimistoeditoria eikä kertakirjautumista. Jos tarvitset niitä, Gather tai Kumospace sopii paremmin."
+        }
+      ]
+    },
+    {
+      "title": "Kumpi valita",
+      "items": [
+        {
+          "title": "Gather",
+          "body": "Jos haluat suunnitella toimiston itse ja tallentaa tai litteroida kokouksia, ja jäsenkohtainen laskutus käy."
+        },
+        {
+          "title": "Kumospace",
+          "body": "Jos teitä on 5 tai vähemmän ja julkinen ilmainen tila riittää, tai jos haluat natiivisovellukset ja tilan sosiaalisille tapahtumille."
+        },
+        {
+          "title": "TinyFloor",
+          "body": "Jos olette 4–15 hengen tiimi, joka haluaa yksinkertaisen yksityisen toimiston selaimeen yhdellä kuukausihinnalla."
+        }
+      ]
+    },
+    {
+      "title": "Miten vertailimme",
+      "body": [
+        "Hinnat, rajat ja ominaisuudet ovat Gatherin ja Kumospacen omilta hintasivuilta ja ohjekeskuksista, luettu lokakuussa 2026, Yhdysvaltain dollareina ilman veroja. Mitä niissä ei kerrottu, jätimme pois arvaamisen sijaan. Teemme TinyFlooria, joten kerromme suoraan, mitä se ei tee. Hinnat muuttuvat: tarkista kunkin tuotteen sivu ennen ostamista."
+      ]
+    }
   ]
 }

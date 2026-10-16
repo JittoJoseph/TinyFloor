@@ -1874,5 +1874,189 @@
         "Grensene for huddles kommer fra Slacks hjelpesenter, lest i oktober 2026. Slacks prisside viser priser i den besøkendes valuta, så vi oppgir ikke noe beløp; sjekk Slacks side for din pris. Vi lager TinyFloor, så vi sier tydelig hva det ikke gjør."
       ]
     }
+  ],
+  "gatherVsKumospace": [
+    {
+      "title": "Gather, Kumospace og TinyFloor kort fortalt",
+      "body": [
+        "Gather og Kumospace er de to mest kjente virtuelle kontorene, og begge tar betalt per medlem. TinyFloor er med som et tredje alternativ for et lite team."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Gather",
+          "Kumospace",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Et team på 8, i måneden",
+            "96 $ ved årlig betaling, 120 $ månedlig",
+            "128 $ ved årlig betaling, 160 $ månedlig",
+            "29 $ for hele teamet"
+          ],
+          [
+            "Gratisplan",
+            "Ingen, en prøveperiode på 30 dager",
+            "Opptil 5 medlemmer, 1 etasje, et offentlig rom",
+            "Opptil 3 personer, alle funksjoner"
+          ],
+          [
+            "Slik prises det",
+            "Per medlem",
+            "Per medlem, minst 5",
+            "Én pris for kontoret"
+          ],
+          [
+            "Opptak",
+            "Inkludert, med timer i måneden",
+            "I Business",
+            "Nei"
+          ],
+          [
+            "Innrede kontoret",
+            "Etasjer, rom og over 200 objekter du plasserer",
+            "Møbler, etasjer og aktiviteter du plasserer",
+            "Et ferdig kontor"
+          ],
+          [
+            "Apper",
+            "Nettleser og en datamaskinapp",
+            "Nettleser, apper for datamaskin og mobil",
+            "Nettleseren, på datamaskin og mobil"
+          ],
+          [
+            "Single sign-on",
+            "I Custom",
+            "I Enterprise",
+            "Nei"
+          ]
+        ],
+        "note": "Opplysninger om Gather og Kumospace fra deres egne prissider og hjelpesentre i oktober 2026, i amerikanske dollar uten mva."
+      }
+    },
+    {
+      "title": "Hva de koster etter teamstørrelse",
+      "body": [
+        "Gather koster 12 $ per medlem i måneden ved årlig betaling eller 15 $ månedlig. Kumospace Business koster 16 eller 20 $, minst 5 medlemmer. Begge tar betalt for hvert medlem, uansett om personen kommer inn den dagen."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Gather, årlig / månedlig",
+          "Kumospace, årlig / månedlig",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 personer",
+            "60 $ / 75 $",
+            "80 $ / 100 $",
+            "29 $"
+          ],
+          [
+            "8 personer",
+            "96 $ / 120 $",
+            "128 $ / 160 $",
+            "29 $"
+          ],
+          [
+            "10 personer",
+            "120 $ / 150 $",
+            "160 $ / 200 $",
+            "29 $"
+          ],
+          [
+            "12 personer",
+            "144 $ / 180 $",
+            "192 $ / 240 $",
+            "29 $"
+          ]
+        ],
+        "note": "I måneden, uten mva: Gather Essential, Kumospace Business (oktober 2026). TinyFloor Pro betales månedlig; team på opptil 3 forblir gratis, og Kumospaces gratisplan dekker opptil 5."
+      }
+    },
+    {
+      "title": "Der Gather er sterkest",
+      "items": [
+        {
+          "title": "Innrede ditt eget kontor",
+          "body": "Legg opp etasjer og rom med over 200 objekter i Gather Studio."
+        },
+        {
+          "title": "Opptak, transkribering og AI-notater",
+          "body": "Essential inkluderer timer til opptak og transkribering hver måned og AI-notater fra møter."
+        },
+        {
+          "title": "Integrasjoner",
+          "body": "Google Kalender, GitHub og Spotify viser i kontoret hva folk holder på med."
+        },
+        {
+          "title": "Pris per medlem",
+          "body": "Med 12–15 $ per medlem er det billigere enn Kumospace Business for det samme teamet."
+        }
+      ]
+    },
+    {
+      "title": "Der Kumospace er sterkest",
+      "items": [
+        {
+          "title": "En gratisplan",
+          "body": "Opptil 5 medlemmer, 50 gjester og én etasje, så lenge et offentlig rom er greit. Gather avsluttet gratisplanen sin i september 2025."
+        },
+        {
+          "title": "Apper for datamaskin og mobil",
+          "body": "Apper for Windows, macOS, iOS og Android i tillegg til nettleseren."
+        },
+        {
+          "title": "Rom for fester og arrangementer",
+          "body": "Møbler, spill, tavler og YouTube-skjermer gjør det populært til sosiale arrangementer og ikke bare som kontor."
+        }
+      ]
+    },
+    {
+      "title": "Der TinyFloor passer",
+      "items": [
+        {
+          "title": "Én pris for teamet",
+          "body": "29 $ i måneden for alle du inviterer, så et team på 12 betaler det samme som et team på 4."
+        },
+        {
+          "title": "Et privat kontor på gratisplanen",
+          "body": "Opptil 3 personer, alle funksjoner, ingen nedtelling på en prøveperiode og ikke noe offentlig rom."
+        },
+        {
+          "title": "Ingenting å installere eller innrede",
+          "body": "Det åpnes i en nettleserfane med pulter og møterom klare."
+        },
+        {
+          "title": "Hva det utelater",
+          "body": "Ikke opptak, transkribering, kontoreditor eller single sign-on. Er du avhengig av det, passer Gather eller Kumospace bedre."
+        }
+      ]
+    },
+    {
+      "title": "Hva du bør velge",
+      "items": [
+        {
+          "title": "Gather",
+          "body": "Hvis du vil innrede kontoret selv og ta opp eller transkribere møter, og betaling per medlem er greit."
+        },
+        {
+          "title": "Kumospace",
+          "body": "Hvis dere er 5 eller færre og fornøyde med et offentlig gratisrom, eller hvis du vil ha egne apper og et rom for sosiale arrangementer."
+        },
+        {
+          "title": "TinyFloor",
+          "body": "Hvis dere er et team på 4 til 15 som vil ha et enkelt privat kontor i nettleseren, for én månedspris."
+        }
+      ]
+    },
+    {
+      "title": "Slik sammenlignet vi",
+      "body": [
+        "Priser, grenser og funksjoner kommer fra Gathers og Kumospaces egne prissider og hjelpesentre, lest i oktober 2026, i amerikanske dollar uten mva. Det som ikke sto der, har vi utelatt i stedet for å gjette. Vi lager TinyFloor, så vi sier tydelig hva det ikke gjør. Priser endrer seg: sjekk hvert produkts side før du kjøper."
+      ]
+    }
   ]
 }

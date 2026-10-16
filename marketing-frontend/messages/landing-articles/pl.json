@@ -3001,5 +3001,96 @@
         "Obecność nie synchronizuje się z kalendarzem, Slackiem ani systemem operacyjnym, a statusy nie zmieniają się według harmonogramu. Własnych opisów statusu jeszcze nie ma. Jeśli potrzebujesz obecności we wszystkich narzędziach, właściwym miejscem jest status w twojej aplikacji do czatu; ten w TinyFloor mówi, kto jest teraz na piętrze."
       ]
     }
+  ],
+  "whiteboard": [
+    {
+      "title": "Tablica na ścianie, a nie w kolejnej karcie",
+      "body": [
+        "Większość tablic online to osobna aplikacja: utwórz tablicę, udostępnij link, czekaj, aż ludzie ją otworzą. W TinyFloor tablica wisi na ścianie biura. Podejdź i rysuj, a każdy, kto patrzy, widzi twoje linie, gdy je kreślisz."
+      ]
+    },
+    {
+      "title": "Co na niej jest",
+      "table": {
+        "head": [
+          "",
+          "Jak to działa"
+        ],
+        "rows": [
+          [
+            "Pisaki",
+            "Cztery kolory: czarny, pomarańczowy, zielony i niebieski, w cienkiej i grubej kresce."
+          ],
+          [
+            "Gumka",
+            "Zetrzyj część rysunku bez zaczynania od nowa."
+          ],
+          [
+            "Wyczyść",
+            "Wyczyść całą tablicę, gdy skończycie."
+          ],
+          [
+            "Na żywo",
+            "Każdy przy tablicy widzi każdą linię, gdy jest rysowana."
+          ],
+          [
+            "Zostaje",
+            "To, co narysowane, zostaje na następny raz. Gdy tablica jest bardzo zapełniona, najstarsze linie robią miejsce nowym."
+          ],
+          [
+            "Jedna tablica",
+            "Jedna tablica na biuro, wspólna dla wszystkich."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Do czego się przydaje",
+      "items": [
+        {
+          "title": "Tłumaczenie w trakcie rozmowy",
+          "body": "Prostokąt, dwie strzałki i baza danych często wystarczą, żeby podczas rozmowy wyjaśnić projekt."
+        },
+        {
+          "title": "Planowanie na ścianie",
+          "body": "Priorytety tygodnia, lista przed wydaniem albo kto ma dyżur wsparcia, na widoku dla wszystkich."
+        },
+        {
+          "title": "Szkic interfejsu",
+          "body": "Zgrubny układ, zanim ktoś otworzy narzędzie do projektowania, żeby dyskutować o pomyśle, a nie o pikselach."
+        },
+        {
+          "title": "Notatka na rano",
+          "body": "Pytanie, rysunek albo ankieta dla tego, kto przyjdzie pierwszy."
+        }
+      ]
+    },
+    {
+      "title": "Wskazówki do wspólnego rysowania",
+      "items": [
+        {
+          "title": "Mów, gdy rysujesz",
+          "body": "Najpierw zacznij rozmowę albo spotkanie. Szkic z wyjaśnieniem wygrywa z idealnym diagramem w ciszy."
+        },
+        {
+          "title": "Każdy swój kolor",
+          "body": "Przy czterech kolorach w małej grupie każdy może mieć swój, więc widać, kto co zaproponował."
+        },
+        {
+          "title": "Zrób zrzut tego, co ważne",
+          "body": "Zanim wyczyścisz tablicę, zapisz to, czego będziesz potrzebować, i wpisz decyzję na czat zespołu."
+        },
+        {
+          "title": "Duże diagramy gdzie indziej",
+          "body": "Architektura, ścieżki użytkownika i roadmapy, które żyją miesiącami, należą do narzędzia do projektowania albo diagramów."
+        }
+      ]
+    },
+    {
+      "title": "Czego nie robi",
+      "body": [
+        "To tablica z pisakiem i gumką. Nie ma narzędzia tekstu, kształtów ani karteczek, obrazów, cofania, szablonów ani eksportu, a biuro ma jedną tablicę. Na warsztaty, retrospektywy z karteczkami albo szczegółowe diagramy Miro, FigJam czy Excalidraw dają dużo więcej. Tablica w TinyFloor służy do szybkiego szkicu podczas rozmowy."
+      ]
+    }
   ]
 }

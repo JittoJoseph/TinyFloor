@@ -3001,5 +3001,96 @@
         "Läsnäolo ei synkronoidu kalenterisi, Slackin tai käyttöjärjestelmäsi kanssa, eivätkä tilat vaihdu aikataulun mukaan. Omia tilaviestejä ei vielä ole. Jos tarvitset läsnäoloa kaikkiin työkaluihisi, chat-sovelluksesi tila on oikea paikka; TinyFloorin tila kertoo, kuka on kerroksessa juuri nyt."
       ]
     }
+  ],
+  "whiteboard": [
+    {
+      "title": "Taulu seinällä, ei toisessa välilehdessä",
+      "body": [
+        "Useimmat verkkotaulut ovat oma sovelluksensa: luo taulu, jaa linkki, odota, että ihmiset avaavat sen. TinyFloorissa taulu roikkuu toimiston seinällä. Kävele sen luo ja piirrä, niin kaikki katsojat näkevät vetosi sitä mukaa kuin piirrät."
+      ]
+    },
+    {
+      "title": "Mitä siinä on",
+      "table": {
+        "head": [
+          "",
+          "Miten se toimii"
+        ],
+        "rows": [
+          [
+            "Kynät",
+            "Neljä väriä: musta, oranssi, vihreä ja sininen, ohuena ja paksuna viivana."
+          ],
+          [
+            "Pyyhekumi",
+            "Pyyhi osa piirroksesta aloittamatta alusta."
+          ],
+          [
+            "Tyhjennä",
+            "Pyyhi koko taulu, kun olette valmiita."
+          ],
+          [
+            "Livenä",
+            "Kaikki taulun äärellä näkevät jokaisen vedon sitä piirrettäessä."
+          ],
+          [
+            "Säilyy",
+            "Piirretty jää seuraavaan kertaan. Kun taulu on hyvin täynnä, vanhimmat vedot väistyvät uusien tieltä."
+          ],
+          [
+            "Yksi taulu",
+            "Yksi taulu toimistoa kohden, kaikille yhteinen."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Mihin se sopii",
+      "items": [
+        {
+          "title": "Selittämiseen puhuessa",
+          "body": "Laatikko, kaksi nuolta ja tietokanta riittävät usein tekemään suunnitelman selväksi puhelun aikana."
+        },
+        {
+          "title": "Suunnitteluun seinällä",
+          "body": "Viikon prioriteetit, julkaisun tarkistuslista tai tukivuorot kaikkien nähtävillä."
+        },
+        {
+          "title": "Käyttöliittymän luonnosteluun",
+          "body": "Karkea asettelu ennen kuin kukaan avaa suunnittelutyökalua, jotta keskustellaan ideasta eikä pikseleistä."
+        },
+        {
+          "title": "Viestiin aamuksi",
+          "body": "Kysymys, piirros tai äänestys sille, joka tulee ensimmäisenä."
+        }
+      ]
+    },
+    {
+      "title": "Vinkkejä yhdessä piirtämiseen",
+      "items": [
+        {
+          "title": "Puhu piirtäessäsi",
+          "body": "Aloita ensin puhelu tai kokous. Selitetty luonnos voittaa täydellisen kaavion hiljaisuudessa."
+        },
+        {
+          "title": "Jokaiselle oma väri",
+          "body": "Neljällä värillä pienessä ryhmässä jokaisella voi olla omansa, jolloin näkyy, kuka ehdotti mitä."
+        },
+        {
+          "title": "Ota kuvakaappaus tärkeästä",
+          "body": "Ennen tyhjentämistä tallenna se, mitä tarvitset, ja kirjaa päätös tiimin chattiin."
+        },
+        {
+          "title": "Isot kaaviot muualle",
+          "body": "Arkkitehtuurit, käyttäjäpolut ja kuukausia elävät tiekartat kuuluvat suunnittelu- tai kaaviotyökaluunne."
+        }
+      ]
+    },
+    {
+      "title": "Mitä se ei tee",
+      "body": [
+        "Se on taulu kynällä ja pyyhekumilla. Siinä ei ole tekstityökalua, muotoja tai lappuja, kuvia, kumoamista, malleja eikä vientiä, ja toimistossa on yksi taulu. Työpajoihin, lappuretrospektiiveihin tai yksityiskohtaisiin kaavioihin Miro, FigJam tai Excalidraw tekevät paljon enemmän. TinyFloorin taulu on nopeaa luonnosta varten puhuessa."
+      ]
+    }
   ]
 }

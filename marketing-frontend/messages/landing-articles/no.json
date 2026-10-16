@@ -3001,5 +3001,96 @@
         "Tilstedeværelse synkroniseres ikke med kalenderen din, Slack eller operativsystemet, og statuser endres ikke etter en tidsplan. Egne statusmeldinger finnes ikke ennå. Trenger du tilstedeværelse på tvers av alle verktøyene dine, er statusen i chatteappen stedet; TinyFloors sier hvem som er i etasjen akkurat nå."
       ]
     }
+  ],
+  "whiteboard": [
+    {
+      "title": "En tavle på veggen, ikke i en annen fane",
+      "body": [
+        "De fleste nettbaserte tavler er en egen app: opprett en tavle, del en lenke, vent til folk åpner den. I TinyFloor henger tavla på kontorveggen. Gå bort og tegn, så ser alle som ser på strekene dine mens du tegner dem."
+      ]
+    },
+    {
+      "title": "Hva som er der",
+      "table": {
+        "head": [
+          "",
+          "Slik fungerer det"
+        ],
+        "rows": [
+          [
+            "Penner",
+            "Fire farger: svart, oransje, grønn og blå, i en tynn og en tykk strek."
+          ],
+          [
+            "Viskelær",
+            "Visk ut en del av en tegning uten å starte på nytt."
+          ],
+          [
+            "Tøm",
+            "Tørk av hele tavla når dere er ferdige."
+          ],
+          [
+            "Live",
+            "Alle ved tavla ser hver strek mens den tegnes."
+          ],
+          [
+            "Blir stående",
+            "Det som er tegnet, blir stående til neste gang. Når tavla er veldig full, gir de eldste strekene plass til nye."
+          ],
+          [
+            "Én tavle",
+            "Én tavle per kontor, delt av alle."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Hva den er god til",
+      "items": [
+        {
+          "title": "Forklare mens man snakker",
+          "body": "En boks, to piler og en database er ofte nok til å gjøre et design tydelig i en samtale."
+        },
+        {
+          "title": "Planlegge på veggen",
+          "body": "Ukas prioriteringer, en sjekkliste før lansering eller hvem som har support, synlig for alle."
+        },
+        {
+          "title": "Skissere et grensesnitt",
+          "body": "Et grovt oppsett før noen åpner et designverktøy, så folk diskuterer idéen og ikke pikslene."
+        },
+        {
+          "title": "En lapp til morgenen",
+          "body": "Et spørsmål, en tegning eller en avstemning til den som kommer først."
+        }
+      ]
+    },
+    {
+      "title": "Tips for å tegne sammen",
+      "items": [
+        {
+          "title": "Snakk mens du tegner",
+          "body": "Start en samtale eller et møte først. En skisse med forklaring slår et perfekt diagram i stillhet."
+        },
+        {
+          "title": "Én farge hver",
+          "body": "Med fire farger kan alle i en liten gruppe ha sin egen, så det er tydelig hvem som foreslo hva."
+        },
+        {
+          "title": "Ta skjermbilde av det viktige",
+          "body": "Før dere tømmer tavla, ta vare på det dere trenger, og skriv beslutningen i teamchatten."
+        },
+        {
+          "title": "Store diagrammer et annet sted",
+          "body": "Arkitektur, brukerflyter og veikart som lever i måneder, hører hjemme i design- eller diagramverktøyet deres."
+        }
+      ]
+    },
+    {
+      "title": "Hva den ikke gjør",
+      "body": [
+        "Det er en tavle med penn og viskelær. Det finnes ikke tekstverktøy, figurer eller lapper, bilder, angre, maler eller eksport, og et kontor har én tavle. Til workshops, retrospektiver med lapper eller detaljerte diagrammer gjør Miro, FigJam eller Excalidraw mye mer. Tavla i TinyFloor er for den raske skissen mens dere snakker."
+      ]
+    }
   ]
 }

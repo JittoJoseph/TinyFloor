@@ -3001,5 +3001,96 @@
         "La présence ne se synchronise pas avec votre agenda, Slack ou votre système d'exploitation, et les statuts ne changent pas selon un horaire. Il n'y a pas encore de messages de statut personnalisés. Si vous avez besoin d'une présence commune à tous vos outils, le statut de votre appli de chat est fait pour ça ; celui de TinyFloor dit qui est sur l'étage en ce moment."
       ]
     }
+  ],
+  "whiteboard": [
+    {
+      "title": "Un tableau blanc au mur, pas dans un autre onglet",
+      "body": [
+        "La plupart des tableaux blancs en ligne sont une appli à part : créer un tableau, partager un lien, attendre que les gens l'ouvrent. Sur TinyFloor, le tableau est accroché au mur du bureau. Approchez-vous et dessinez : tous ceux qui regardent voient vos traits au moment où vous les tracez."
+      ]
+    },
+    {
+      "title": "Ce qu'il propose",
+      "table": {
+        "head": [
+          "",
+          "Comment ça marche"
+        ],
+        "rows": [
+          [
+            "Feutres",
+            "Quatre couleurs : noir, orange, vert et bleu, en trait fin ou épais."
+          ],
+          [
+            "Gomme",
+            "Effacez une partie du dessin sans tout recommencer."
+          ],
+          [
+            "Effacer tout",
+            "Videz le tableau quand vous avez fini."
+          ],
+          [
+            "En direct",
+            "Tout le monde devant le tableau voit chaque trait au moment où il est tracé."
+          ],
+          [
+            "Conservé",
+            "Ce qui est dessiné reste pour la prochaine fois. Quand le tableau est très rempli, les traits les plus anciens laissent la place aux nouveaux."
+          ],
+          [
+            "Un seul tableau",
+            "Un tableau par bureau, partagé par tous."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "À quoi il sert",
+      "items": [
+        {
+          "title": "Expliquer en parlant",
+          "body": "Une boîte, deux flèches et une base de données suffisent souvent à rendre une conception claire pendant un appel."
+        },
+        {
+          "title": "Planifier au mur",
+          "body": "Les priorités de la semaine, une checklist de mise en production ou qui est au support, affichés pour tous."
+        },
+        {
+          "title": "Esquisser une interface",
+          "body": "Une maquette grossière avant que quiconque ouvre un outil de design, pour débattre de l'idée, pas des pixels."
+        },
+        {
+          "title": "Un mot pour le matin",
+          "body": "Une question, un dessin ou un sondage laissé pour la première personne qui arrive."
+        }
+      ]
+    },
+    {
+      "title": "Conseils pour dessiner ensemble",
+      "items": [
+        {
+          "title": "Parler en dessinant",
+          "body": "Lancez d'abord un appel ou une réunion. Un croquis commenté vaut mieux qu'un schéma parfait en silence."
+        },
+        {
+          "title": "Une couleur chacun",
+          "body": "Avec quatre couleurs, chacun peut avoir la sienne dans un petit groupe : on voit qui a proposé quoi."
+        },
+        {
+          "title": "Capturer ce qui compte",
+          "body": "Avant d'effacer, faites une capture de ce dont vous aurez besoin et notez la décision dans le chat de l'équipe."
+        },
+        {
+          "title": "Garder les grands schémas ailleurs",
+          "body": "Architecture, parcours utilisateurs et feuilles de route qui vivent des mois ont leur place dans votre outil de design ou de diagrammes."
+        }
+      ]
+    },
+    {
+      "title": "Ce qu'il ne fait pas",
+      "body": [
+        "C'est un tableau avec feutre et gomme. Il n'y a ni outil texte, ni formes ou post-it, ni images, ni annulation, ni modèles, ni export, et un bureau a un seul tableau. Pour les ateliers, les rétros avec post-it ou les schémas détaillés, Miro, FigJam ou Excalidraw font bien plus. Le tableau de TinyFloor sert au croquis rapide pendant qu'on parle."
+      ]
+    }
   ]
 }

@@ -3001,5 +3001,96 @@
         "La presencia no se sincroniza con tu calendario, con Slack ni con tu sistema operativo, y los estados no cambian según un horario. Todavía no hay mensajes de estado personalizados. Si necesitas una presencia común a todas tus herramientas, el estado de tu app de chat es el sitio; el de TinyFloor dice quién está en la planta ahora mismo."
       ]
     }
+  ],
+  "whiteboard": [
+    {
+      "title": "Una pizarra en la pared, no en otra pestaña",
+      "body": [
+        "La mayoría de las pizarras online son una app aparte: crear un tablero, compartir un enlace, esperar a que la gente lo abra. En TinyFloor la pizarra cuelga de la pared de la oficina. Acércate y dibuja, y todos los que miran ven tus trazos mientras los haces."
+      ]
+    },
+    {
+      "title": "Qué tiene",
+      "table": {
+        "head": [
+          "",
+          "Cómo funciona"
+        ],
+        "rows": [
+          [
+            "Rotuladores",
+            "Cuatro colores: negro, naranja, verde y azul, en trazo fino o grueso."
+          ],
+          [
+            "Borrador",
+            "Borra parte del dibujo sin empezar de nuevo."
+          ],
+          [
+            "Borrar todo",
+            "Limpia la pizarra entera cuando terminéis."
+          ],
+          [
+            "En directo",
+            "Todos frente a la pizarra ven cada trazo mientras se dibuja."
+          ],
+          [
+            "Se guarda",
+            "Lo dibujado se queda para la próxima vez. Cuando la pizarra está muy llena, los trazos más antiguos dejan sitio a los nuevos."
+          ],
+          [
+            "Una pizarra",
+            "Una pizarra por oficina, compartida por todos."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Para qué sirve",
+      "items": [
+        {
+          "title": "Explicar mientras hablas",
+          "body": "Una caja, dos flechas y una base de datos suelen bastar para aclarar un diseño en una llamada."
+        },
+        {
+          "title": "Planificar en la pared",
+          "body": "Las prioridades de la semana, una lista para el lanzamiento o quién está de soporte, a la vista de todos."
+        },
+        {
+          "title": "Bocetar una interfaz",
+          "body": "Una maqueta rápida antes de que nadie abra una herramienta de diseño, para discutir la idea y no los píxeles."
+        },
+        {
+          "title": "Una nota para la mañana",
+          "body": "Una pregunta, un dibujo o una encuesta para quien llegue primero."
+        }
+      ]
+    },
+    {
+      "title": "Consejos para dibujar juntos",
+      "items": [
+        {
+          "title": "Habla mientras dibujas",
+          "body": "Empieza antes una llamada o una reunión. Un boceto explicado gana a un diagrama perfecto en silencio."
+        },
+        {
+          "title": "Un color para cada uno",
+          "body": "Con cuatro colores, en un grupo pequeño cada persona puede tener el suyo y se ve quién propuso qué."
+        },
+        {
+          "title": "Haz captura de lo importante",
+          "body": "Antes de borrar, captura lo que vayas a necesitar y apunta la decisión en el chat del equipo."
+        },
+        {
+          "title": "Los diagramas grandes, en otro sitio",
+          "body": "Arquitectura, flujos de usuario y hojas de ruta que viven meses van en tu herramienta de diseño o de diagramas."
+        }
+      ]
+    },
+    {
+      "title": "Lo que no hace",
+      "body": [
+        "Es una pizarra de rotulador y borrador. No hay herramienta de texto, ni formas o notas adhesivas, ni imágenes, ni deshacer, ni plantillas, ni exportación, y una oficina tiene una sola pizarra. Para talleres, retrospectivas con notas adhesivas o diagramas detallados, Miro, FigJam o Excalidraw hacen mucho más. La pizarra de TinyFloor es para el boceto rápido mientras habláis."
+      ]
+    }
   ]
 }

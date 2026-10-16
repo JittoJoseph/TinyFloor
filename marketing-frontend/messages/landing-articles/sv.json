@@ -3001,5 +3001,96 @@
         "Närvaron synkas inte med din kalender, Slack eller ditt operativsystem, och statusar ändras inte enligt schema. Egna statusmeddelanden finns inte än. Behöver du närvaro i alla dina verktyg är chattappens status rätt plats; TinyFloors säger vem som är på våningen just nu."
       ]
     }
+  ],
+  "whiteboard": [
+    {
+      "title": "En whiteboard på väggen, inte i en annan flik",
+      "body": [
+        "De flesta whiteboards på nätet är en egen app: skapa en tavla, dela en länk, vänta tills folk öppnar den. I TinyFloor hänger tavlan på kontorets vägg. Gå fram och rita, så ser alla som tittar dina streck medan du drar dem."
+      ]
+    },
+    {
+      "title": "Vad som finns",
+      "table": {
+        "head": [
+          "",
+          "Så fungerar det"
+        ],
+        "rows": [
+          [
+            "Pennor",
+            "Fyra färger: svart, orange, grönt och blått, i en tunn och en tjock storlek."
+          ],
+          [
+            "Suddgummi",
+            "Sudda ut en del av en teckning utan att börja om."
+          ],
+          [
+            "Rensa",
+            "Torka hela tavlan när ni är klara."
+          ],
+          [
+            "Live",
+            "Alla vid tavlan ser varje streck medan det ritas."
+          ],
+          [
+            "Sparas",
+            "Det som ritats finns kvar till nästa gång. När tavlan är väldigt full gör de äldsta strecken plats för nya."
+          ],
+          [
+            "En tavla",
+            "En tavla per kontor, delad av alla."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Vad den är bra för",
+      "items": [
+        {
+          "title": "Förklara medan man pratar",
+          "body": "En låda, två pilar och en databas räcker ofta för att göra en design tydlig i ett samtal."
+        },
+        {
+          "title": "Planera på väggen",
+          "body": "Veckans prioriteringar, en releasechecklista eller vem som har support, synligt för alla."
+        },
+        {
+          "title": "Skissa ett gränssnitt",
+          "body": "En grov layout innan någon öppnar ett designverktyg, så att folk diskuterar idén och inte pixlarna."
+        },
+        {
+          "title": "En lapp till morgonen",
+          "body": "En fråga, en teckning eller en omröstning till den som kommer först."
+        }
+      ]
+    },
+    {
+      "title": "Tips för att rita tillsammans",
+      "items": [
+        {
+          "title": "Prata medan du ritar",
+          "body": "Starta ett samtal eller ett möte först. En skiss med förklaring slår ett perfekt diagram i tystnad."
+        },
+        {
+          "title": "En färg var",
+          "body": "Med fyra färger kan alla i en liten grupp ha sin egen, så det syns vem som föreslog vad."
+        },
+        {
+          "title": "Ta en skärmdump av det viktiga",
+          "body": "Innan ni rensar, spara det ni behöver och skriv beslutet i teamchatten."
+        },
+        {
+          "title": "Stora diagram någon annanstans",
+          "body": "Arkitektur, användarflöden och färdplaner som lever i månader hör hemma i ert design- eller diagramverktyg."
+        }
+      ]
+    },
+    {
+      "title": "Vad den inte gör",
+      "body": [
+        "Det är en tavla med penna och suddgummi. Det finns inget textverktyg, inga former eller lappar, inga bilder, inget ångra, inga mallar och ingen export, och ett kontor har en tavla. För workshops, retrospektiver med lappar eller detaljerade diagram gör Miro, FigJam eller Excalidraw mycket mer. TinyFloors tavla är till för den snabba skissen medan ni pratar."
+      ]
+    }
   ]
 }

@@ -3001,5 +3001,96 @@
         "Presence doesn't sync with your calendar, Slack or your operating system, and statuses don't change on a schedule. There are no custom status messages yet. If you need presence across all your tools, your chat app's status is the place for it; TinyFloor's is about who's on the floor right now."
       ]
     }
+  ],
+  "whiteboard": [
+    {
+      "title": "A whiteboard on the wall, not in another tab",
+      "body": [
+        "Most online whiteboards are a separate app: make a board, share a link, wait for people to open it. On TinyFloor the board hangs on the office wall. Walk up to it and draw, and everyone looking sees the same strokes as you make them."
+      ]
+    },
+    {
+      "title": "What's on it",
+      "table": {
+        "head": [
+          "",
+          "How it works"
+        ],
+        "rows": [
+          [
+            "Pens",
+            "Four colours: black, orange, green and blue, in a fine and a thick size."
+          ],
+          [
+            "Eraser",
+            "Rub out part of a drawing without starting again."
+          ],
+          [
+            "Clear",
+            "Wipe the whole board when you're done."
+          ],
+          [
+            "Live",
+            "Everyone at the board sees each stroke as it's drawn."
+          ],
+          [
+            "Kept",
+            "What's drawn stays for next time. When the board is very full, the oldest strokes make way for new ones."
+          ],
+          [
+            "One board",
+            "One board per office, shared by everyone in it."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "What it's good for",
+      "items": [
+        {
+          "title": "Explaining while you talk",
+          "body": "A box, two arrows and a database is often all it takes to make a design clear in a call."
+        },
+        {
+          "title": "Planning on the wall",
+          "body": "This week's priorities, a release checklist or who's on support, left up for everyone to see."
+        },
+        {
+          "title": "Sketching an interface",
+          "body": "A rough layout before anyone opens a design tool, so people argue about the idea, not the pixels."
+        },
+        {
+          "title": "A note for the morning",
+          "body": "A question, a drawing or a poll left on the board for whoever comes in first."
+        }
+      ]
+    },
+    {
+      "title": "Tips for drawing together",
+      "items": [
+        {
+          "title": "Talk while you draw",
+          "body": "Start a call or a meeting first. A sketch with someone explaining it beats a perfect diagram in silence."
+        },
+        {
+          "title": "Pick a colour each",
+          "body": "With four colours, each person in a small group can have their own, so it's clear who suggested what."
+        },
+        {
+          "title": "Take a screenshot of what matters",
+          "body": "Before you clear the board, capture anything you'll need and post the decision in the team chat."
+        },
+        {
+          "title": "Keep the big diagrams elsewhere",
+          "body": "Architecture, user flows and roadmaps that live for months belong in your design or diagram tool."
+        }
+      ]
+    },
+    {
+      "title": "What it doesn't do",
+      "body": [
+        "It's a pen-and-eraser board. There's no text tool, no shapes or sticky notes, no images, no undo, no templates and no export, and an office has one board rather than many. For workshops, retrospectives with sticky notes or detailed diagrams, Miro, FigJam or Excalidraw do far more. The TinyFloor board is for the quick sketch while you talk."
+      ]
+    }
   ]
 }

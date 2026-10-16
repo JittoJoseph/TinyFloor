@@ -3001,5 +3001,96 @@
         "Aanwezigheid synchroniseert niet met je agenda, Slack of je besturingssysteem, en statussen veranderen niet volgens een schema. Eigen statusberichten zijn er nog niet. Heb je aanwezigheid nodig over al je tools, dan is de status van je chatapp de plek; die van TinyFloor zegt wie er nu op de verdieping is."
       ]
     }
+  ],
+  "whiteboard": [
+    {
+      "title": "Een whiteboard aan de muur, niet in een ander tabblad",
+      "body": [
+        "De meeste online whiteboards zijn een aparte app: bord aanmaken, link delen, wachten tot mensen het openen. In TinyFloor hangt het bord aan de kantoormuur. Loop erheen en teken, en iedereen die kijkt, ziet je lijnen terwijl je ze zet."
+      ]
+    },
+    {
+      "title": "Wat erop zit",
+      "table": {
+        "head": [
+          "",
+          "Hoe het werkt"
+        ],
+        "rows": [
+          [
+            "Stiften",
+            "Vier kleuren: zwart, oranje, groen en blauw, in een dunne en een dikke lijn."
+          ],
+          [
+            "Gum",
+            "Gum een deel van een tekening weg zonder opnieuw te beginnen."
+          ],
+          [
+            "Wissen",
+            "Veeg het hele bord schoon als je klaar bent."
+          ],
+          [
+            "Live",
+            "Iedereen bij het bord ziet elke lijn terwijl die getekend wordt."
+          ],
+          [
+            "Blijft staan",
+            "Wat getekend is, blijft voor de volgende keer. Als het bord heel vol is, maken de oudste lijnen plaats voor nieuwe."
+          ],
+          [
+            "Eén bord",
+            "Eén bord per kantoor, gedeeld door iedereen."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Waar het goed voor is",
+      "items": [
+        {
+          "title": "Uitleggen terwijl je praat",
+          "body": "Een blok, twee pijlen en een database zijn vaak genoeg om in een gesprek een ontwerp duidelijk te maken."
+        },
+        {
+          "title": "Plannen aan de muur",
+          "body": "De prioriteiten van de week, een releasechecklist of wie support heeft, zichtbaar voor iedereen."
+        },
+        {
+          "title": "Een interface schetsen",
+          "body": "Een ruwe opzet voordat iemand een designtool opent, zodat mensen over het idee praten en niet over pixels."
+        },
+        {
+          "title": "Een briefje voor de ochtend",
+          "body": "Een vraag, een tekening of een poll voor wie als eerste binnenkomt."
+        }
+      ]
+    },
+    {
+      "title": "Tips om samen te tekenen",
+      "items": [
+        {
+          "title": "Praat terwijl je tekent",
+          "body": "Start eerst een gesprek of meeting. Een schets met uitleg wint van een perfect diagram in stilte."
+        },
+        {
+          "title": "Ieder een kleur",
+          "body": "Met vier kleuren kan in een kleine groep iedereen een eigen kleur hebben, zodat duidelijk is wie wat voorstelde."
+        },
+        {
+          "title": "Maak een screenshot van wat telt",
+          "body": "Leg vast wat je nodig hebt voordat je het bord wist, en zet het besluit in de teamchat."
+        },
+        {
+          "title": "Grote diagrammen elders",
+          "body": "Architectuur, gebruikersflows en roadmaps die maanden meegaan, horen in je design- of diagramtool."
+        }
+      ]
+    },
+    {
+      "title": "Wat het niet doet",
+      "body": [
+        "Het is een bord met stift en gum. Er is geen teksttool, geen vormen of plakbriefjes, geen afbeeldingen, geen ongedaan maken, geen sjablonen en geen export, en een kantoor heeft één bord. Voor workshops, retro's met plakbriefjes of gedetailleerde diagrammen kunnen Miro, FigJam of Excalidraw veel meer. Het bord van TinyFloor is voor de snelle schets terwijl je praat."
+      ]
+    }
   ]
 }

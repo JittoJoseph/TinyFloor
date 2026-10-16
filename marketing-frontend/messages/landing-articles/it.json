@@ -3001,5 +3001,96 @@
         "La presenza non si sincronizza con il calendario, con Slack o con il sistema operativo, e gli stati non cambiano in base a un orario. Non ci sono ancora messaggi di stato personalizzati. Se ti serve una presenza comune a tutti i tuoi strumenti, lo stato della tua app di chat è il posto giusto; quello di TinyFloor dice chi è sul piano in questo momento."
       ]
     }
+  ],
+  "whiteboard": [
+    {
+      "title": "Una lavagna sul muro, non in un'altra scheda",
+      "body": [
+        "La maggior parte delle lavagne online è un'app a parte: crea una lavagna, condividi un link, aspetta che le persone la aprano. Su TinyFloor la lavagna è appesa al muro dell'ufficio. Avvicinati e disegna, e chi guarda vede i tuoi tratti mentre li fai."
+      ]
+    },
+    {
+      "title": "Cosa c'è",
+      "table": {
+        "head": [
+          "",
+          "Come funziona"
+        ],
+        "rows": [
+          [
+            "Pennarelli",
+            "Quattro colori: nero, arancione, verde e blu, in tratto sottile o spesso."
+          ],
+          [
+            "Gomma",
+            "Cancella una parte del disegno senza ricominciare."
+          ],
+          [
+            "Pulisci",
+            "Cancella tutta la lavagna quando avete finito."
+          ],
+          [
+            "In diretta",
+            "Chiunque sia alla lavagna vede ogni tratto mentre viene disegnato."
+          ],
+          [
+            "Resta",
+            "Ciò che è disegnato resta per la volta dopo. Quando la lavagna è molto piena, i tratti più vecchi lasciano spazio ai nuovi."
+          ],
+          [
+            "Una lavagna",
+            "Una lavagna per ufficio, condivisa da tutti."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "A cosa serve",
+      "items": [
+        {
+          "title": "Spiegare mentre parli",
+          "body": "Un riquadro, due frecce e un database spesso bastano a chiarire un progetto durante una chiamata."
+        },
+        {
+          "title": "Pianificare sul muro",
+          "body": "Le priorità della settimana, una checklist di rilascio o chi è di supporto, sotto gli occhi di tutti."
+        },
+        {
+          "title": "Abbozzare un'interfaccia",
+          "body": "Un layout grezzo prima che qualcuno apra uno strumento di design, per discutere l'idea e non i pixel."
+        },
+        {
+          "title": "Una nota per il mattino",
+          "body": "Una domanda, un disegno o un sondaggio per chi arriva per primo."
+        }
+      ]
+    },
+    {
+      "title": "Consigli per disegnare insieme",
+      "items": [
+        {
+          "title": "Parla mentre disegni",
+          "body": "Avvia prima una chiamata o una riunione. Uno schizzo spiegato batte un diagramma perfetto in silenzio."
+        },
+        {
+          "title": "Un colore a testa",
+          "body": "Con quattro colori, in un piccolo gruppo ognuno può avere il suo, così si vede chi ha proposto cosa."
+        },
+        {
+          "title": "Fai uno screenshot di ciò che conta",
+          "body": "Prima di pulire, cattura quello che ti servirà e scrivi la decisione nella chat del team."
+        },
+        {
+          "title": "I diagrammi grandi altrove",
+          "body": "Architetture, flussi utente e roadmap che durano mesi vanno nel vostro strumento di design o di diagrammi."
+        }
+      ]
+    },
+    {
+      "title": "Cosa non fa",
+      "body": [
+        "È una lavagna con pennarello e gomma. Non c'è uno strumento testo, né forme o post-it, né immagini, né annulla, né modelli, né esportazione, e un ufficio ha una sola lavagna. Per workshop, retrospettive con post-it o diagrammi dettagliati, Miro, FigJam o Excalidraw fanno molto di più. La lavagna di TinyFloor è per lo schizzo veloce mentre parlate."
+      ]
+    }
   ]
 }

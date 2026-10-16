@@ -2478,7 +2478,7 @@
         },
         {
           "title": "Chat puheluiden välissä",
-          "body": "Kanava kaikelle, mikä ei ole työtä, kuvineen ja reaktioineen. Viestit säilyvät, joten kukaan ei missaa koirakuvaa sen takia, että oli kokouksessa."
+          "body": "Kanava kaikelle, mikä ei ole työtä, emojeineen ja reaktioineen. Viestit säilyvät, joten kukaan ei missaa vitsiä sen takia, että oli kokouksessa."
         }
       ]
     },
@@ -2773,6 +2773,112 @@
       "title": "Mitä se ei tee",
       "body": [
         "Siinä ei ole tallennusta, litterointia eikä tekoälymuistiinpanoja. Kokoukset pidetään toimistosi sisällä: ei soittonumeroita eikä webinaaritilaa suurelle yleisölle. Jaetut näytöt välittävät kuvan, eivät ääntä. Jos tarvitset jotain näistä, käytä siihen kokoukseen Zoomia tai Google Meetiä ja TinyFlooria arjen kokouksiin."
+      ]
+    }
+  ],
+  "teamChat": [
+    {
+      "title": "Chat aivan kerroksen vieressä",
+      "body": [
+        "Useimmissa työkaluissa chat on koko työpaikka. TinyFloorissa se on puolet: kerros näyttää, kuka on paikalla, ja antaa teidän puhua, ja chat pitää tallessa kaiken, mikä kuuluu kirjoittaa ylös. Koska ne ovat vierekkäin, pitkästä viestittelystä tulee yhdellä painalluksella kahden minuutin keskustelu."
+      ]
+    },
+    {
+      "title": "Mitä siinä on",
+      "table": {
+        "head": [
+          "",
+          "Miten se toimii"
+        ],
+        "rows": [
+          [
+            "Kanavat",
+            "Nimet pienillä kirjaimilla, ilman välilyöntejä. Kaikki toimistossa voivat lukea jokaista kanavaa ja liittyä siihen."
+          ],
+          [
+            "Yksityisviestit",
+            "Kahden ihmisen välillä, ja vain te kaksi näette ne."
+          ],
+          [
+            "Historia",
+            "Jokainen kanava säilyttää viimeisimmät 5 000 viestiään, millä tahansa paketilla."
+          ],
+          [
+            "Reaktiot ja emojit",
+            "Reagoi viestiin sen sijaan, että vastaisit ”+1”."
+          ],
+          [
+            "Muokkaa ja peru",
+            "Korjaa kirjoitusvirhe lähettämisen jälkeen tai ota viesti takaisin. Muokatut viestit merkitään."
+          ],
+          [
+            "Puhelimessa",
+            "Chat toimii puhelimen selaimessa ilman, että menet kerrokseen."
+          ],
+          [
+            "Lukemattomat viestit",
+            "Välilehden otsikko näyttää, montako odottaa, joten kiinnitetty välilehti kertoo, milloin kannattaa katsoa."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Missä chat ja kerros kohtaavat",
+      "items": [
+        {
+          "title": "Mene keskustelusta paikan päälle",
+          "body": "Yksityisviesti kerroksessa olevan kanssa tarjoaa mahdollisuuden kävellä hänen luokseen. Hahmosi löytää itse tien työpisteelle, ja puhelu on yhden napautuksen päässä."
+        },
+        {
+          "title": "Katso ensin, kuka on paikalla",
+          "body": "Ihmisten luettelo näyttää, kuka on kerroksessa, kuka varattu ja kuka kokouksessa, joten tiedät, kirjoittaako vai odottaa."
+        },
+        {
+          "title": "Hillitty merkki ponnahdusikkunoiden sijaan",
+          "body": "Kun joku kirjoittaa sinulle ollessasi kerroksessa, saat pienen merkin, et ilmoitusten tulvaa."
+        },
+        {
+          "title": "”Onko sinulla hetki?”",
+          "body": "Uusi yksityisviesti tarjoaa valmiita aloituksia, kuten ”Onko sinulla hetki?”, kun mieluummin kysyt kuin ilmestyt ilmoittamatta."
+        }
+      ]
+    },
+    {
+      "title": "Kanavat, joita pieni tiimi oikeasti käyttää",
+      "table": {
+        "head": [
+          "Kanava",
+          "Mitä sinne kuuluu"
+        ],
+        "rows": [
+          [
+            "#general",
+            "Tiedotteet, viikon suunnitelmat, kaikki, mitä jokaisen pitäisi lukea."
+          ],
+          [
+            "Yksi projektia tai asiakasta kohden",
+            "Päätökset, linkit ja kysymykset siitä työstä, yhdessä paikassa."
+          ],
+          [
+            "#standup",
+            "Kirjalliset päivitykset päiville tai ihmisille, jotka eivät pääse livepalaveriin."
+          ],
+          [
+            "#random",
+            "Kaikki, mikä ei ole työtä."
+          ],
+          [
+            "#kysymykset",
+            "Kysymykset, joita kenenkään ei tarvitse hävetä. Uudet lukevat vastaukset myöhemmin."
+          ]
+        ],
+        "note": "Viisi tai kuusi kanavaa riittää kymmenen hengen tiimille. Kun jokin on ollut kuukauden hiljaa, lopettakaa sen käyttö ja kertokaa siitä #generalissa."
+      }
+    },
+    {
+      "title": "Mitä se ei tee",
+      "body": [
+        "Siinä ei ole ketjuja, integraatioita tai botteja, eikä viestihakua vielä. Kuvia ei voi vielä jakaa chatissa, joten kuvakaappaukset näytetään puhelun aikana näytöllä. Ilmoitukset eivät seuraa puhelimeesi: TinyFloor ei lähetä push-ilmoituksia tai sähköposteja houkutellakseen ihmisiä takaisin. Jos tiiminne tarvitsee jotain näistä, pitäkää Slack kirjoittamiseen ja käyttäkää TinyFlooria läsnäoloon, puheluihin ja kokouksiin; moni tiimi tekee niin."
       ]
     }
   ]

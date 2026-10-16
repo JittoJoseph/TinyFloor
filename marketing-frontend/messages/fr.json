@@ -1359,8 +1359,8 @@
             "a": "Oui. Ouvrez TinyFloor dans le navigateur de votre téléphone pour lire et répondre, sans aller sur l'étage."
           },
           {
-            "q": "Peut-on partager des images ?",
-            "a": "Oui. Déposez captures et photos dans n'importe quel canal ou message privé."
+            "q": "Puis-je modifier ou retirer un message ?",
+            "a": "Oui. Modifiez un message après l'avoir envoyé, ou retirez-le s'il n'a pas sa place. Les messages modifiés l'indiquent."
           },
           {
             "q": "Remplace-t-il Slack ?",

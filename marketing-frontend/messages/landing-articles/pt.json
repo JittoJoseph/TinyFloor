@@ -2478,7 +2478,7 @@
         },
         {
           "title": "O chat entre as chamadas",
-          "body": "Um canal para tudo que não é trabalho, com fotos e reações. As mensagens ficam, então ninguém perde a foto do cachorro por estar numa reunião."
+          "body": "Um canal para tudo que não é trabalho, com emojis e reações. As mensagens ficam, então ninguém perde a piada por estar numa reunião."
         }
       ]
     },
@@ -2773,6 +2773,112 @@
       "title": "O que ele não faz",
       "body": [
         "Não há gravação, transcrição nem notas com IA. As reuniões acontecem dentro do seu escritório: não há números para ligar por telefone nem modo webinar para um público grande. Telas compartilhadas levam a imagem, não o som. Se você precisa disso, use Zoom ou Google Meet para essa reunião e o TinyFloor para as do dia a dia."
+      ]
+    }
+  ],
+  "teamChat": [
+    {
+      "title": "Um chat bem ao lado do andar",
+      "body": [
+        "Na maioria das ferramentas, o chat é o local de trabalho inteiro. No TinyFloor ele é metade: o andar mostra quem está por perto e deixa vocês conversarem, e o chat guarda tudo o que precisa ficar por escrito. Como os dois ficam lado a lado, um vai e vem longo pode virar uma conversa de dois minutos com um clique."
+      ]
+    },
+    {
+      "title": "O que tem",
+      "table": {
+        "head": [
+          "",
+          "Como funciona"
+        ],
+        "rows": [
+          [
+            "Canais",
+            "Nomes em minúsculas, sem espaços. Todos no escritório podem ler e entrar em qualquer canal."
+          ],
+          [
+            "Mensagens diretas",
+            "Entre duas pessoas, e só vocês dois veem."
+          ],
+          [
+            "Histórico",
+            "Cada canal guarda as 5.000 mensagens mais recentes, em qualquer plano."
+          ],
+          [
+            "Reações e emojis",
+            "Reaja a uma mensagem em vez de responder \"+1\"."
+          ],
+          [
+            "Editar e desfazer o envio",
+            "Corrija um erro de digitação depois de enviar, ou retire uma mensagem. Mensagens editadas ficam marcadas."
+          ],
+          [
+            "No celular",
+            "O chat funciona no navegador do celular, sem entrar no andar."
+          ],
+          [
+            "Mensagens não lidas",
+            "O título da aba mostra quantas estão esperando, então uma aba fixada avisa quando olhar."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Onde chat e andar se encontram",
+      "items": [
+        {
+          "title": "Ir até a pessoa a partir de uma conversa",
+          "body": "Uma mensagem direta com alguém que está no andar oferece ir até a pessoa. Seu personagem acha sozinho o caminho até a mesa dela, e a chamada fica a um toque."
+        },
+        {
+          "title": "Veja quem está por perto antes de escrever",
+          "body": "A lista de pessoas mostra quem está no andar, quem está ocupado e quem está em reunião, então você sabe se é melhor escrever ou esperar."
+        },
+        {
+          "title": "Um aviso discreto em vez de pop-ups",
+          "body": "Quando alguém escreve enquanto você está no andar, você recebe um pequeno aviso, não uma enxurrada de notificações."
+        },
+        {
+          "title": "\"Tem um minuto?\"",
+          "body": "Uma nova mensagem direta oferece frases prontas como \"Tem um minuto?\", para quando você prefere perguntar a aparecer sem avisar."
+        }
+      ]
+    },
+    {
+      "title": "Canais que uma equipe pequena usa de verdade",
+      "table": {
+        "head": [
+          "Canal",
+          "O que vai nele"
+        ],
+        "rows": [
+          [
+            "#general",
+            "Avisos, planos da semana, tudo que todo mundo deve ler."
+          ],
+          [
+            "Um por projeto ou cliente",
+            "Decisões, links e dúvidas sobre aquele trabalho, num lugar só."
+          ],
+          [
+            "#standup",
+            "Atualizações por escrito para dias ou pessoas que não podem ir à daily."
+          ],
+          [
+            "#random",
+            "Tudo que não é trabalho."
+          ],
+          [
+            "#duvidas",
+            "Perguntas que ninguém deveria ter vergonha de fazer. Quem chega depois lê as respostas."
+          ]
+        ],
+        "note": "Cinco ou seis canais bastam para uma equipe de dez. Quando um ficar um mês em silêncio, parem de usá-lo e avisem em #general."
+      }
+    },
+    {
+      "title": "O que ele não faz",
+      "body": [
+        "Não há threads, integrações ou bots, e ainda não há busca nas mensagens. Ainda não dá para compartilhar imagens no chat, então capturas de tela vão para a tela numa chamada. As notificações não seguem você no celular: o TinyFloor não manda notificações push nem e-mails para trazer as pessoas de volta. Se sua equipe depende disso, mantenha o Slack para a escrita e use o TinyFloor para presença, chamadas e reuniões; muitas equipes fazem assim."
       ]
     }
   ]

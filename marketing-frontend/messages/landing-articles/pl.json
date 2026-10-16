@@ -2478,7 +2478,7 @@
         },
         {
           "title": "Czat między rozmowami",
-          "body": "Kanał na wszystko, co nie jest pracą, ze zdjęciami i reakcjami. Wiadomości zostają, więc nikt nie przegapi zdjęcia psa, bo akurat był na spotkaniu."
+          "body": "Kanał na wszystko, co nie jest pracą, z emoji i reakcjami. Wiadomości zostają, więc nikt nie przegapi żartu, bo akurat był na spotkaniu."
         }
       ]
     },
@@ -2773,6 +2773,112 @@
       "title": "Czego nie robi",
       "body": [
         "Nie ma nagrywania, transkrypcji ani notatek AI. Spotkania odbywają się w twoim biurze: nie ma numerów do dzwonienia ani trybu webinaru dla dużej publiczności. Udostępnione ekrany przesyłają obraz, nie dźwięk. Jeśli tego potrzebujesz, na to jedno spotkanie użyj Zooma albo Google Meet, a TinyFloor zostaw na codzienne."
+      ]
+    }
+  ],
+  "teamChat": [
+    {
+      "title": "Czat tuż obok piętra",
+      "body": [
+        "W większości narzędzi czat to całe miejsce pracy. W TinyFloor to połowa: piętro pokazuje, kto jest obok, i pozwala rozmawiać, a czat przechowuje wszystko, co powinno być zapisane. Ponieważ są obok siebie, długa wymiana wiadomości może jednym kliknięciem zamienić się w dwuminutową rozmowę."
+      ]
+    },
+    {
+      "title": "Co w nim jest",
+      "table": {
+        "head": [
+          "",
+          "Jak to działa"
+        ],
+        "rows": [
+          [
+            "Kanały",
+            "Nazwy małymi literami, bez spacji. Każdy w biurze może czytać każdy kanał i do niego dołączyć."
+          ],
+          [
+            "Wiadomości prywatne",
+            "Między dwiema osobami i tylko wy je widzicie."
+          ],
+          [
+            "Historia",
+            "Każdy kanał przechowuje ostatnie 5000 wiadomości, w każdym planie."
+          ],
+          [
+            "Reakcje i emoji",
+            "Zareaguj na wiadomość zamiast odpisywać „+1”."
+          ],
+          [
+            "Edycja i cofanie",
+            "Popraw literówkę po wysłaniu albo cofnij wiadomość. Edytowane wiadomości są oznaczone."
+          ],
+          [
+            "Na telefonie",
+            "Czat działa w przeglądarce telefonu, bez wchodzenia na piętro."
+          ],
+          [
+            "Nieprzeczytane",
+            "Tytuł karty pokazuje, ile wiadomości czeka, więc przypięta karta podpowiada, kiedy zajrzeć."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Gdzie czat spotyka się z piętrem",
+      "items": [
+        {
+          "title": "Podejdź prosto z rozmowy",
+          "body": "Wiadomość prywatna z kimś, kto jest na piętrze, proponuje podejście. Twoja postać sama znajdzie drogę do biurka, a rozmowa jest na jedno dotknięcie."
+        },
+        {
+          "title": "Zobacz, kto jest, zanim napiszesz",
+          "body": "Lista osób pokazuje, kto jest na piętrze, kto jest zajęty, a kto na spotkaniu, więc wiesz, czy pisać, czy poczekać."
+        },
+        {
+          "title": "Dyskretny sygnał zamiast okienek",
+          "body": "Gdy ktoś do ciebie pisze, kiedy jesteś na piętrze, dostajesz mały sygnał, a nie zalew powiadomień."
+        },
+        {
+          "title": "„Masz chwilę?”",
+          "body": "Nowa wiadomość prywatna podsuwa gotowe zdania, takie jak „Masz chwilę?”, gdy wolisz zapytać, niż przyjść bez zapowiedzi."
+        }
+      ]
+    },
+    {
+      "title": "Kanały, których mały zespół naprawdę używa",
+      "table": {
+        "head": [
+          "Kanał",
+          "Co do niego trafia"
+        ],
+        "rows": [
+          [
+            "#general",
+            "Ogłoszenia, plany na tydzień, wszystko, co każdy powinien przeczytać."
+          ],
+          [
+            "Jeden na projekt lub klienta",
+            "Decyzje, linki i pytania o tę pracę, w jednym miejscu."
+          ],
+          [
+            "#standup",
+            "Pisemne aktualizacje na dni albo dla osób, które nie mogą być na stand-upie na żywo."
+          ],
+          [
+            "#random",
+            "Wszystko, co nie jest pracą."
+          ],
+          [
+            "#pytania",
+            "Pytania, których nikt nie powinien się wstydzić. Nowi czytają odpowiedzi później."
+          ]
+        ],
+        "note": "Pięć, sześć kanałów wystarczy zespołowi dziesięciu osób. Gdy któryś milczy od miesiąca, przestańcie z niego korzystać i napiszcie o tym na #general."
+      }
+    },
+    {
+      "title": "Czego nie robi",
+      "body": [
+        "Nie ma wątków, integracji ani botów, a wyszukiwania w wiadomościach jeszcze nie ma. W czacie nie da się jeszcze udostępniać obrazów, więc zrzuty ekranu pokazujecie na ekranie podczas rozmowy. Powiadomienia nie idą za tobą na telefon: TinyFloor nie wysyła powiadomień push ani maili, żeby ściągać ludzi z powrotem. Jeśli wasz zespół tego potrzebuje, zostawcie Slacka do pisania, a TinyFloor używajcie do obecności, rozmów i spotkań; wiele zespołów tak robi."
       ]
     }
   ]

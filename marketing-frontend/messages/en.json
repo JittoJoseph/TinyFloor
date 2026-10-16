@@ -1359,8 +1359,8 @@
             "a": "Yes. Open TinyFloor in your phone's browser to read and reply, without walking onto the floor."
           },
           {
-            "q": "Can we share images?",
-            "a": "Yes. Drop screenshots and photos into any channel or direct message."
+            "q": "Can I edit or unsend a message?",
+            "a": "Yes. Edit a message after you've sent it, or unsend it if it shouldn't be there. Edited messages say so."
           },
           {
             "q": "Does it replace Slack?",

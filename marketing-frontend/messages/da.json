@@ -1359,8 +1359,8 @@
             "a": "Ja. Åbn TinyFloor i mobilens browser for at læse og svare, uden at gå ud på etagen."
           },
           {
-            "q": "Kan vi dele billeder?",
-            "a": "Ja. Smid skærmbilleder og fotos i enhver kanal eller direkte besked."
+            "q": "Kan jeg redigere eller trække en besked tilbage?",
+            "a": "Ja. Rediger en besked, efter du har sendt den, eller træk den tilbage, hvis den ikke hører til der. Redigerede beskeder viser det."
           },
           {
             "q": "Erstatter den Slack?",

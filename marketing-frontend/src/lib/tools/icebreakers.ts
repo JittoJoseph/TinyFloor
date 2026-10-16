@@ -1,6 +1,8 @@
 import type { GuideSection } from "@/lib/guides";
 import en from "@/lib/tools/icebreaker-lists/en";
 import es from "@/lib/tools/icebreaker-lists/es";
+import it from "@/lib/tools/icebreaker-lists/it";
+import ja from "@/lib/tools/icebreaker-lists/ja";
 import pt from "@/lib/tools/icebreaker-lists/pt";
 
 /**
@@ -39,7 +41,7 @@ export interface IcebreakersContent {
   faq: Array<{ q: string; a: string }>;
 }
 
-const LISTS: Record<string, IcebreakersContent> = { en, pt, es };
+const LISTS: Record<string, IcebreakersContent> = { en, pt, es, it, ja };
 
 /** The languages the tool is written in, English first. */
 export const ICEBREAKER_LOCALES = Object.keys(LISTS);

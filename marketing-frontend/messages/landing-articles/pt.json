@@ -2881,5 +2881,216 @@
         "Não há threads, integrações ou bots, e ainda não há busca nas mensagens. Ainda não dá para compartilhar imagens no chat, então capturas de tela vão para a tela numa chamada. As notificações não seguem você no celular: o TinyFloor não manda notificações push nem e-mails para trazer as pessoas de volta. Se sua equipe depende disso, mantenha o Slack para a escrita e use o TinyFloor para presença, chamadas e reuniões; muitas equipes fazem assim."
       ]
     }
+  ],
+  "presence": [
+    {
+      "title": "O que presença significa no TinyFloor",
+      "body": [
+        "No escritório você sabe de relance quem está, quem está concentrado em algo e quem está no telefone. Remoto, uma bolinha verde num app de chat diz muito pouco. No andar, presença é onde as pessoas estão e o que elas dizem sobre si mesmas, nada além disso."
+      ]
+    },
+    {
+      "title": "O que você vê",
+      "table": {
+        "head": [
+          "Sinal",
+          "O que diz",
+          "Quem define"
+        ],
+        "rows": [
+          [
+            "No andar",
+            "A pessoa está com o escritório aberto agora.",
+            "Estar lá"
+          ],
+          [
+            "Na mesa",
+            "Está trabalhando. Cada pessoa senta na própria mesa.",
+            "Sentar"
+          ],
+          [
+            "Disponível",
+            "Pronto para conversar: vá até lá ou ligue.",
+            "Você"
+          ],
+          [
+            "Ocupado",
+            "Não perturbe. Escreva, ou espere.",
+            "Você"
+          ],
+          [
+            "Ausente",
+            "Volto já.",
+            "Você"
+          ],
+          [
+            "Em chamada",
+            "Já está falando com alguém; pergunte depois.",
+            "Definido enquanto você está em uma chamada"
+          ],
+          [
+            "Na sala de reunião",
+            "Numa reunião. A lista de reuniões mostra quais estão acontecendo.",
+            "Entrar numa reunião"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "O que não é registrado",
+      "items": [
+        {
+          "title": "Sem horas online",
+          "body": "Nada conta há quanto tempo alguém está no andar, e nada mostra quanto tempo ficou inativo."
+        },
+        {
+          "title": "Sem relatórios de atividade",
+          "body": "Não há painel de quem fez o quê, nem capturas de tela, nem monitoramento de teclado ou mouse."
+        },
+        {
+          "title": "Sem avisos para voltar",
+          "body": "O TinyFloor não manda e-mails nem notificações para trazer as pessoas ao andar. Se alguém não está, não está."
+        },
+        {
+          "title": "Status que significam o que você escolheu",
+          "body": "Disponível, ocupado e ausente são definidos por você. Ocupado pede que esperem; não bloqueia ninguém."
+        }
+      ]
+    },
+    {
+      "title": "Usando bem a presença em equipe",
+      "items": [
+        {
+          "title": "Combinem o que ocupado significa",
+          "body": "A maioria das equipes chega nisto: ocupado quer dizer escrever, não ir até lá, a menos que algo esteja pegando fogo."
+        },
+        {
+          "title": "Sente na sua mesa quando estiver trabalhando",
+          "body": "Alguém na mesa passa a ideia de \"aqui e trabalhando\". É o sinal mais claro que existe, e não custa nada."
+        },
+        {
+          "title": "Ausente para pausas",
+          "body": "Almoço, buscar as crianças, uma caminhada. Ausente diz que você volta sem ninguém precisar perguntar."
+        },
+        {
+          "title": "Não leia presença como desempenho",
+          "body": "Estar no andar é para estar acessível, não vigiado. Equipes que usam isso para controlar pessoas param de usar."
+        }
+      ]
+    },
+    {
+      "title": "Encontrando as pessoas",
+      "items": [
+        {
+          "title": "A lista de pessoas",
+          "body": "Todo mundo do escritório com seu status, no computador e no navegador do celular."
+        },
+        {
+          "title": "Ir até lá",
+          "body": "Aperte Ir até lá no card de alguém e seu personagem acha sozinho o caminho pelo andar."
+        },
+        {
+          "title": "Chegadas",
+          "body": "Quando alguém entra, quem já está no andar vê por alguns segundos um discreto \"Ana chegou\" com um botão de aceno."
+        }
+      ]
+    },
+    {
+      "title": "O que ele não faz",
+      "body": [
+        "A presença não sincroniza com sua agenda, com o Slack nem com seu sistema operacional, e os status não mudam por horário. Ainda não há mensagens de status personalizadas. Se você precisa de presença em todas as suas ferramentas, o status do seu app de chat é o lugar; o do TinyFloor diz quem está no andar agora."
+      ]
+    }
+  ],
+  "whiteboard": [
+    {
+      "title": "Um quadro branco na parede, não em outra aba",
+      "body": [
+        "A maioria dos quadros brancos online é um app separado: criar um quadro, compartilhar um link, esperar as pessoas abrirem. No TinyFloor o quadro fica pendurado na parede do escritório. Vá até ele e desenhe, e todo mundo que estiver olhando vê seus traços enquanto você desenha."
+      ]
+    },
+    {
+      "title": "O que tem",
+      "table": {
+        "head": [
+          "",
+          "Como funciona"
+        ],
+        "rows": [
+          [
+            "Canetas",
+            "Quatro cores: preto, laranja, verde e azul, em traço fino ou grosso."
+          ],
+          [
+            "Borracha",
+            "Apague parte do desenho sem começar de novo."
+          ],
+          [
+            "Limpar",
+            "Limpe o quadro inteiro quando terminar."
+          ],
+          [
+            "Ao vivo",
+            "Todos diante do quadro veem cada traço enquanto ele é desenhado."
+          ],
+          [
+            "Fica guardado",
+            "O que foi desenhado fica para a próxima vez. Quando o quadro está muito cheio, os traços mais antigos dão lugar aos novos."
+          ],
+          [
+            "Um quadro",
+            "Um quadro por escritório, compartilhado por todos."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Para que serve",
+      "items": [
+        {
+          "title": "Explicar enquanto fala",
+          "body": "Uma caixa, duas setas e um banco de dados muitas vezes bastam para deixar um desenho de sistema claro numa chamada."
+        },
+        {
+          "title": "Planejar na parede",
+          "body": "As prioridades da semana, um checklist de lançamento ou quem está no suporte, à vista de todos."
+        },
+        {
+          "title": "Rascunhar uma interface",
+          "body": "Um layout rápido antes de alguém abrir uma ferramenta de design, para discutir a ideia, não os pixels."
+        },
+        {
+          "title": "Um recado para a manhã",
+          "body": "Uma pergunta, um desenho ou uma enquete para quem chegar primeiro."
+        }
+      ]
+    },
+    {
+      "title": "Dicas para desenhar junto",
+      "items": [
+        {
+          "title": "Fale enquanto desenha",
+          "body": "Comece antes uma chamada ou uma reunião. Um rascunho explicado ganha de um diagrama perfeito em silêncio."
+        },
+        {
+          "title": "Uma cor para cada um",
+          "body": "Com quatro cores, num grupo pequeno cada pessoa pode ter a sua, e fica claro quem sugeriu o quê."
+        },
+        {
+          "title": "Faça captura do que importa",
+          "body": "Antes de limpar, capture o que vai precisar e registre a decisão no chat da equipe."
+        },
+        {
+          "title": "Diagramas grandes ficam em outro lugar",
+          "body": "Arquitetura, fluxos de usuário e roadmaps que vivem por meses pertencem à sua ferramenta de design ou de diagramas."
+        }
+      ]
+    },
+    {
+      "title": "O que ele não faz",
+      "body": [
+        "É um quadro de caneta e borracha. Não há ferramenta de texto, formas ou post-its, imagens, desfazer, modelos nem exportação, e um escritório tem um quadro só. Para workshops, retrospectivas com post-its ou diagramas detalhados, Miro, FigJam ou Excalidraw fazem muito mais. O quadro do TinyFloor é para o rascunho rápido enquanto vocês conversam."
+      ]
+    }
   ]
 }

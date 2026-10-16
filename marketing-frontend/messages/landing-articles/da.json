@@ -2881,5 +2881,216 @@
         "Der er ingen tråde, ingen integrationer eller bots og endnu ingen søgning i beskeder. Du kan ikke dele billeder i chatten endnu, så skærmbilleder vises på skærmen i et opkald. Notifikationer følger dig ikke til telefonen: TinyFloor sender ingen pushbeskeder eller mails for at trække folk tilbage. Er jeres team afhængigt af noget af det, så behold Slack til skrivning og brug TinyFloor til tilstedeværelse, opkald og møder; mange teams gør sådan."
       ]
     }
+  ],
+  "presence": [
+    {
+      "title": "Hvad tilstedeværelse betyder i TinyFloor",
+      "body": [
+        "På et kontor ser du med ét blik, hvem der er der, hvem der er dybt nede i noget, og hvem der taler i telefon. Remote siger en grøn prik i en chatapp meget lidt. På etagen er tilstedeværelse, hvor folk er, og hvad de selv siger om sig, intet mere."
+      ]
+    },
+    {
+      "title": "Hvad du ser",
+      "table": {
+        "head": [
+          "Signal",
+          "Hvad det fortæller",
+          "Hvem der sætter det"
+        ],
+        "rows": [
+          [
+            "På etagen",
+            "Personen har kontoret åbent lige nu.",
+            "At være der"
+          ],
+          [
+            "Ved skrivebordet",
+            "Arbejder. Hver person sidder ved sit eget skrivebord.",
+            "At sætte sig"
+          ],
+          [
+            "Tilgængelig",
+            "Klar til en snak: gå derhen eller ring.",
+            "Dig"
+          ],
+          [
+            "Optaget",
+            "Må ikke forstyrres. Skriv hellere, eller vent.",
+            "Dig"
+          ],
+          [
+            "Væk",
+            "Er straks tilbage.",
+            "Dig"
+          ],
+          [
+            "I et opkald",
+            "Taler allerede med nogen; spørg senere.",
+            "Sat, mens du er i et opkald"
+          ],
+          [
+            "I mødelokalet",
+            "I et møde. Listen over møder viser, hvilke der er i gang.",
+            "At deltage i et møde"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Hvad det ikke registrerer",
+      "items": [
+        {
+          "title": "Ingen timer online",
+          "body": "Intet tæller, hvor længe nogen har været på etagen, og intet viser, hvor længe nogen har været inaktiv."
+        },
+        {
+          "title": "Ingen aktivitetsrapporter",
+          "body": "Der er intet overblik over, hvem der lavede hvad, ingen skærmbilleder og ingen overvågning af tastatur eller mus."
+        },
+        {
+          "title": "Ingen påmindelser om at komme tilbage",
+          "body": "TinyFloor sender ingen mails eller notifikationer for at få folk ind på etagen. Er nogen ikke der, er de ikke der."
+        },
+        {
+          "title": "Statusser, der betyder det, du valgte",
+          "body": "Tilgængelig, optaget og væk sætter du selv. Optaget beder folk vente; det lukker ingen ude."
+        }
+      ]
+    },
+    {
+      "title": "Brug tilstedeværelse godt som team",
+      "items": [
+        {
+          "title": "Aftal, hvad optaget betyder",
+          "body": "De fleste teams lander på: optaget betyder skriv, gå ikke derhen, medmindre det brænder."
+        },
+        {
+          "title": "Sæt dig ved dit skrivebord, når du arbejder",
+          "body": "En person ved skrivebordet læses som \"her og i gang\". Det er det tydeligste signal, der findes, og det koster intet."
+        },
+        {
+          "title": "Væk til pauser",
+          "body": "Frokost, hente børn, en gåtur. Væk siger, at du kommer tilbage, uden at nogen skal spørge."
+        },
+        {
+          "title": "Læs ikke tilstedeværelse som præstation",
+          "body": "At være på etagen handler om at være til at få fat på, ikke om at blive overvåget. Teams, der bruger det til kontrol, holder op med at bruge det."
+        }
+      ]
+    },
+    {
+      "title": "Find folk",
+      "items": [
+        {
+          "title": "Listen over personer",
+          "body": "Alle på kontoret med deres status, på computeren og i telefonens browser."
+        },
+        {
+          "title": "Gå derhen",
+          "body": "Tryk Gå derhen på nogens kort, så finder din figur selv vej hen over etagen."
+        },
+        {
+          "title": "Ankomster",
+          "body": "Når nogen kommer ind, ser dem, der allerede er på etagen, et diskret \"Ana er her\" med en vinkeknap i nogle sekunder."
+        }
+      ]
+    },
+    {
+      "title": "Hvad det ikke gør",
+      "body": [
+        "Tilstedeværelse synkroniseres ikke med din kalender, Slack eller dit styresystem, og statusser skifter ikke efter en tidsplan. Egne statusbeskeder findes ikke endnu. Har du brug for tilstedeværelse på tværs af alle dine værktøjer, er din chatapps status stedet; TinyFloors fortæller, hvem der er på etagen lige nu."
+      ]
+    }
+  ],
+  "whiteboard": [
+    {
+      "title": "Et whiteboard på væggen, ikke i en anden fane",
+      "body": [
+        "De fleste online-whiteboards er en app for sig: opret et board, del et link, vent på, at folk åbner det. I TinyFloor hænger tavlen på kontorets væg. Gå hen og tegn, og alle, der kigger, ser dine streger, mens du tegner dem."
+      ]
+    },
+    {
+      "title": "Hvad der er på den",
+      "table": {
+        "head": [
+          "",
+          "Sådan virker det"
+        ],
+        "rows": [
+          [
+            "Penne",
+            "Fire farver: sort, orange, grøn og blå, i en tynd og en tyk streg."
+          ],
+          [
+            "Viskelæder",
+            "Visk en del af en tegning ud uden at starte forfra."
+          ],
+          [
+            "Ryd",
+            "Tør hele tavlen af, når I er færdige."
+          ],
+          [
+            "Live",
+            "Alle ved tavlen ser hver streg, mens den tegnes."
+          ],
+          [
+            "Bliver",
+            "Det tegnede bliver til næste gang. Når tavlen er meget fuld, giver de ældste streger plads til nye."
+          ],
+          [
+            "Én tavle",
+            "Én tavle pr. kontor, delt af alle."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Hvad den er god til",
+      "items": [
+        {
+          "title": "Forklare, mens man taler",
+          "body": "En kasse, to pile og en database er ofte nok til at gøre et design tydeligt i et opkald."
+        },
+        {
+          "title": "Planlægge på væggen",
+          "body": "Ugens prioriteter, en release-tjekliste eller hvem der har support, synligt for alle."
+        },
+        {
+          "title": "Skitsere en brugerflade",
+          "body": "Et groft layout, før nogen åbner et designværktøj, så folk diskuterer idéen og ikke pixels."
+        },
+        {
+          "title": "En note til morgenen",
+          "body": "Et spørgsmål, en tegning eller en afstemning til den, der kommer først."
+        }
+      ]
+    },
+    {
+      "title": "Tips til at tegne sammen",
+      "items": [
+        {
+          "title": "Tal, mens du tegner",
+          "body": "Start et opkald eller et møde først. En skitse med forklaring slår et perfekt diagram i stilhed."
+        },
+        {
+          "title": "Én farve hver",
+          "body": "Med fire farver kan alle i en lille gruppe have deres egen, så det er tydeligt, hvem der foreslog hvad."
+        },
+        {
+          "title": "Tag et skærmbillede af det vigtige",
+          "body": "Før I rydder tavlen, så gem det, I får brug for, og skriv beslutningen i teamchatten."
+        },
+        {
+          "title": "Store diagrammer et andet sted",
+          "body": "Arkitektur, brugerflows og roadmaps, der lever i måneder, hører hjemme i jeres design- eller diagramværktøj."
+        }
+      ]
+    },
+    {
+      "title": "Hvad den ikke gør",
+      "body": [
+        "Det er en tavle med pen og viskelæder. Der er intet tekstværktøj, ingen figurer eller sedler, ingen billeder, ingen fortryd, ingen skabeloner og ingen eksport, og et kontor har én tavle. Til workshops, retrospektiver med sedler eller detaljerede diagrammer kan Miro, FigJam eller Excalidraw langt mere. Tavlen i TinyFloor er til den hurtige skitse, mens I taler."
+      ]
+    }
   ]
 }

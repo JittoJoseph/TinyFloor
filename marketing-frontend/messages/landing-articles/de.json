@@ -2881,5 +2881,216 @@
         "Es gibt keine Threads, keine Integrationen oder Bots und noch keine Suche in Nachrichten. Bilder kannst du im Chat noch nicht teilen, Screenshots kommen also im Call auf den Bildschirm. Benachrichtigungen folgen dir nicht aufs Handy: TinyFloor schickt keine Push-Nachrichten oder E-Mails, um Leute zurückzuholen. Wenn euer Team darauf angewiesen ist, behaltet Slack zum Schreiben und nutzt TinyFloor für Präsenz, Calls und Meetings; viele Teams machen es so."
       ]
     }
+  ],
+  "presence": [
+    {
+      "title": "Was Präsenz in TinyFloor bedeutet",
+      "body": [
+        "Im Büro siehst du auf einen Blick, wer da ist, wer in etwas vertieft ist und wer telefoniert. Remote sagt dir ein grüner Punkt in einer Chat-App sehr wenig. Auf der Fläche ist Präsenz, wo die Leute sind und was sie selbst über sich angeben, mehr nicht."
+      ]
+    },
+    {
+      "title": "Was du siehst",
+      "table": {
+        "head": [
+          "Signal",
+          "Was es dir sagt",
+          "Wer es setzt"
+        ],
+        "rows": [
+          [
+            "Auf der Fläche",
+            "Die Person hat das Büro gerade offen.",
+            "Da sein"
+          ],
+          [
+            "Am Schreibtisch",
+            "Sie arbeitet. Jede Person sitzt an einem eigenen Schreibtisch.",
+            "Hinsetzen"
+          ],
+          [
+            "Verfügbar",
+            "Bereit zum Plaudern: hingehen oder anrufen.",
+            "Du"
+          ],
+          [
+            "Beschäftigt",
+            "Bitte nicht stören. Schreib lieber, oder warte.",
+            "Du"
+          ],
+          [
+            "Abwesend",
+            "Bin gleich zurück.",
+            "Du"
+          ],
+          [
+            "Im Gespräch",
+            "Redet schon mit jemandem; frag später.",
+            "Gilt, solange du in einem Anruf bist"
+          ],
+          [
+            "Im Besprechungsraum",
+            "In einem Meeting. Die Liste der Meetings zeigt, welche gerade laufen.",
+            "Einem Meeting beitreten"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Was nicht erfasst wird",
+      "items": [
+        {
+          "title": "Keine Online-Stunden",
+          "body": "Nichts zählt, wie lange jemand auf der Fläche war, und nichts zeigt, wie lange jemand inaktiv war."
+        },
+        {
+          "title": "Keine Aktivitätsberichte",
+          "body": "Es gibt kein Dashboard, wer was gemacht hat, keine Screenshots und keine Tastatur- oder Mausüberwachung."
+        },
+        {
+          "title": "Keine Pings zum Zurückkommen",
+          "body": "TinyFloor schickt keine E-Mails oder Benachrichtigungen, um Leute auf die Fläche zu holen. Wer nicht da ist, ist nicht da."
+        },
+        {
+          "title": "Status, die bedeuten, was du gewählt hast",
+          "body": "Verfügbar, beschäftigt und abwesend setzt du selbst. Ein Beschäftigt-Status bittet Leute zu warten; er sperrt niemanden aus."
+        }
+      ]
+    },
+    {
+      "title": "Präsenz gut im Team nutzen",
+      "items": [
+        {
+          "title": "Klärt, was beschäftigt heißt",
+          "body": "Die meisten Teams einigen sich darauf: beschäftigt heißt schreiben, nicht hingehen, außer es brennt."
+        },
+        {
+          "title": "Setz dich an deinen Schreibtisch, wenn du arbeitest",
+          "body": "Wer am Schreibtisch sitzt, wirkt wie „da und bei der Arbeit“. Es ist das klarste Signal, das es gibt, und es kostet nichts."
+        },
+        {
+          "title": "Abwesend für Pausen",
+          "body": "Mittagessen, Kinder abholen, ein Spaziergang. Abwesend sagt, dass du zurückkommst, ohne dass jemand fragen muss."
+        },
+        {
+          "title": "Präsenz nicht als Leistung lesen",
+          "body": "Auf der Fläche zu sein heißt erreichbar sein, nicht beobachtet werden. Teams, die damit Leute kontrollieren, hören auf, es zu nutzen."
+        }
+      ]
+    },
+    {
+      "title": "Leute finden",
+      "items": [
+        {
+          "title": "Die Personenliste",
+          "body": "Alle im Büro mit ihrem Status, am Desktop und im Browser deines Handys."
+        },
+        {
+          "title": "Hingehen",
+          "body": "Drück auf der Karte einer Person auf Hingehen, und deine Figur findet selbst den Weg über die Fläche zu ihr."
+        },
+        {
+          "title": "Ankommen",
+          "body": "Wenn jemand hereinkommt, sehen alle auf der Fläche für ein paar Sekunden ein leises „Ana ist da“ mit einem Winken-Knopf."
+        }
+      ]
+    },
+    {
+      "title": "Was es nicht kann",
+      "body": [
+        "Präsenz synchronisiert sich nicht mit deinem Kalender, mit Slack oder deinem Betriebssystem, und Status ändern sich nicht nach Zeitplan. Eigene Statustexte gibt es noch nicht. Wenn du Präsenz über alle Tools brauchst, ist der Status deiner Chat-App der richtige Ort; der von TinyFloor sagt, wer gerade auf der Fläche ist."
+      ]
+    }
+  ],
+  "whiteboard": [
+    {
+      "title": "Ein Whiteboard an der Wand, nicht in einem anderen Tab",
+      "body": [
+        "Die meisten Online-Whiteboards sind eine eigene App: Board anlegen, Link teilen, warten, bis die Leute es öffnen. In TinyFloor hängt das Board an der Bürowand. Geh hin und zeichne, und alle, die hinschauen, sehen deine Striche, während du sie ziehst."
+      ]
+    },
+    {
+      "title": "Was drauf ist",
+      "table": {
+        "head": [
+          "",
+          "So funktioniert es"
+        ],
+        "rows": [
+          [
+            "Stifte",
+            "Vier Farben: Schwarz, Orange, Grün und Blau, in einer feinen und einer dicken Stärke."
+          ],
+          [
+            "Radierer",
+            "Radiere einen Teil der Zeichnung weg, ohne neu anzufangen."
+          ],
+          [
+            "Löschen",
+            "Wisch das ganze Board, wenn ihr fertig seid."
+          ],
+          [
+            "Live",
+            "Alle am Board sehen jeden Strich, während er gezeichnet wird."
+          ],
+          [
+            "Bleibt",
+            "Was gezeichnet ist, bleibt fürs nächste Mal. Wenn das Board sehr voll ist, machen die ältesten Striche Platz für neue."
+          ],
+          [
+            "Ein Board",
+            "Ein Board pro Büro, für alle darin."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Wofür es gut ist",
+      "items": [
+        {
+          "title": "Erklären, während man redet",
+          "body": "Ein Kasten, zwei Pfeile und eine Datenbank reichen oft, um in einem Call einen Entwurf klarzumachen."
+        },
+        {
+          "title": "Planen an der Wand",
+          "body": "Die Prioritäten der Woche, eine Release-Checkliste oder wer Support hat, für alle sichtbar."
+        },
+        {
+          "title": "Eine Oberfläche skizzieren",
+          "body": "Ein grobes Layout, bevor jemand ein Designtool öffnet, damit über die Idee diskutiert wird, nicht über Pixel."
+        },
+        {
+          "title": "Eine Notiz für den Morgen",
+          "body": "Eine Frage, eine Zeichnung oder eine Umfrage für die Person, die zuerst kommt."
+        }
+      ]
+    },
+    {
+      "title": "Tipps fürs gemeinsame Zeichnen",
+      "items": [
+        {
+          "title": "Beim Zeichnen reden",
+          "body": "Starte zuerst einen Call oder ein Meeting. Eine Skizze mit Erklärung schlägt ein perfektes Diagramm in Stille."
+        },
+        {
+          "title": "Jede Person eine Farbe",
+          "body": "Mit vier Farben kann in einer kleinen Gruppe jede Person ihre eigene haben, so ist klar, wer was vorgeschlagen hat."
+        },
+        {
+          "title": "Wichtiges per Screenshot sichern",
+          "body": "Bevor ihr das Board löscht, haltet fest, was ihr braucht, und schreibt die Entscheidung in den Team-Chat."
+        },
+        {
+          "title": "Große Diagramme woanders",
+          "body": "Architektur, User Flows und Roadmaps, die monatelang leben, gehören in euer Design- oder Diagrammtool."
+        }
+      ]
+    },
+    {
+      "title": "Was es nicht kann",
+      "body": [
+        "Es ist ein Board mit Stift und Radierer. Es gibt kein Textwerkzeug, keine Formen oder Haftnotizen, keine Bilder, kein Rückgängig, keine Vorlagen und keinen Export, und ein Büro hat ein Board statt vieler. Für Workshops, Retros mit Haftnotizen oder detaillierte Diagramme können Miro, FigJam oder Excalidraw viel mehr. Das Board in TinyFloor ist für die schnelle Skizze beim Reden."
+      ]
+    }
   ]
 }

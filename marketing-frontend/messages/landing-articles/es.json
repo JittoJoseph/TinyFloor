@@ -2881,5 +2881,216 @@
         "No hay hilos, ni integraciones ni bots, y todavía no hay búsqueda de mensajes. Aún no se pueden compartir imágenes en el chat, así que las capturas van a la pantalla en una llamada. Las notificaciones no te siguen al móvil: TinyFloor no envía notificaciones push ni correos para traer de vuelta a la gente. Si tu equipo depende de algo de eso, mantén Slack para escribir y usa TinyFloor para la presencia, las llamadas y las reuniones; muchos equipos lo hacen así."
       ]
     }
+  ],
+  "presence": [
+    {
+      "title": "Qué significa la presencia en TinyFloor",
+      "body": [
+        "En una oficina sabes de un vistazo quién está, quién está metido en algo y quién está al teléfono. En remoto, un punto verde en una app de chat dice muy poco. En la planta, la presencia es dónde está la gente y lo que dice de sí misma, nada más."
+      ]
+    },
+    {
+      "title": "Lo que ves",
+      "table": {
+        "head": [
+          "Señal",
+          "Qué te dice",
+          "Quién la pone"
+        ],
+        "rows": [
+          [
+            "En la planta",
+            "Tiene la oficina abierta ahora mismo.",
+            "Estar ahí"
+          ],
+          [
+            "En su mesa",
+            "Está trabajando. Cada persona tiene su propia mesa.",
+            "Sentarse"
+          ],
+          [
+            "Disponible",
+            "Listo para charlar: acércate o llama.",
+            "Tú"
+          ],
+          [
+            "Ocupado",
+            "No molestar. Mejor escribe, o espera.",
+            "Tú"
+          ],
+          [
+            "Ausente",
+            "Vuelvo enseguida.",
+            "Tú"
+          ],
+          [
+            "En una llamada",
+            "Ya está hablando con alguien; pregunta luego.",
+            "Se activa mientras estás en una llamada"
+          ],
+          [
+            "En la sala de reuniones",
+            "En una reunión. La lista de reuniones muestra las que hay en curso.",
+            "Unirse a una reunión"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Lo que no registra",
+      "items": [
+        {
+          "title": "Sin horas conectado",
+          "body": "Nada cuenta cuánto tiempo lleva alguien en la planta, y nada muestra cuánto ha estado inactivo."
+        },
+        {
+          "title": "Sin informes de actividad",
+          "body": "No hay un panel de quién hizo qué, ni capturas de pantalla, ni seguimiento de teclado o ratón."
+        },
+        {
+          "title": "Sin avisos para volver",
+          "body": "TinyFloor no envía correos ni notificaciones para traer a la gente a la planta. Si alguien no está, no está."
+        },
+        {
+          "title": "Estados que significan lo que elegiste",
+          "body": "Disponible, ocupado y ausente los pones tú. Un estado de ocupado pide esperar; no bloquea a nadie."
+        }
+      ]
+    },
+    {
+      "title": "Usar bien la presencia en equipo",
+      "items": [
+        {
+          "title": "Acordad qué significa ocupado",
+          "body": "La mayoría de los equipos acaba en esto: ocupado significa escribir, no acercarse, salvo que algo arda."
+        },
+        {
+          "title": "Siéntate en tu mesa cuando trabajes",
+          "body": "Alguien en su mesa se lee como «aquí y trabajando». Es la señal más clara que hay, y no cuesta nada."
+        },
+        {
+          "title": "Ausente para los descansos",
+          "body": "La comida, recoger a los niños, un paseo. Ausente dice que vuelves sin que nadie tenga que preguntar."
+        },
+        {
+          "title": "No leas la presencia como rendimiento",
+          "body": "Estar en la planta es estar localizable, no vigilado. Los equipos que la usan para controlar a la gente dejan de usarla."
+        }
+      ]
+    },
+    {
+      "title": "Encontrar a la gente",
+      "items": [
+        {
+          "title": "La lista de personas",
+          "body": "Todos los de la oficina con su estado, en el ordenador y en el navegador del móvil."
+        },
+        {
+          "title": "Ir hasta allí",
+          "body": "Pulsa Ir hasta allí en la tarjeta de alguien y tu personaje encuentra solo el camino por la planta."
+        },
+        {
+          "title": "Llegadas",
+          "body": "Cuando alguien entra, quienes ya están en la planta ven unos segundos un discreto «Ana ha llegado» con un botón para saludar."
+        }
+      ]
+    },
+    {
+      "title": "Lo que no hace",
+      "body": [
+        "La presencia no se sincroniza con tu calendario, con Slack ni con tu sistema operativo, y los estados no cambian según un horario. Todavía no hay mensajes de estado personalizados. Si necesitas una presencia común a todas tus herramientas, el estado de tu app de chat es el sitio; el de TinyFloor dice quién está en la planta ahora mismo."
+      ]
+    }
+  ],
+  "whiteboard": [
+    {
+      "title": "Una pizarra en la pared, no en otra pestaña",
+      "body": [
+        "La mayoría de las pizarras online son una app aparte: crear un tablero, compartir un enlace, esperar a que la gente lo abra. En TinyFloor la pizarra cuelga de la pared de la oficina. Acércate y dibuja, y todos los que miran ven tus trazos mientras los haces."
+      ]
+    },
+    {
+      "title": "Qué tiene",
+      "table": {
+        "head": [
+          "",
+          "Cómo funciona"
+        ],
+        "rows": [
+          [
+            "Rotuladores",
+            "Cuatro colores: negro, naranja, verde y azul, en trazo fino o grueso."
+          ],
+          [
+            "Borrador",
+            "Borra parte del dibujo sin empezar de nuevo."
+          ],
+          [
+            "Borrar todo",
+            "Limpia la pizarra entera cuando terminéis."
+          ],
+          [
+            "En directo",
+            "Todos frente a la pizarra ven cada trazo mientras se dibuja."
+          ],
+          [
+            "Se guarda",
+            "Lo dibujado se queda para la próxima vez. Cuando la pizarra está muy llena, los trazos más antiguos dejan sitio a los nuevos."
+          ],
+          [
+            "Una pizarra",
+            "Una pizarra por oficina, compartida por todos."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Para qué sirve",
+      "items": [
+        {
+          "title": "Explicar mientras hablas",
+          "body": "Una caja, dos flechas y una base de datos suelen bastar para aclarar un diseño en una llamada."
+        },
+        {
+          "title": "Planificar en la pared",
+          "body": "Las prioridades de la semana, una lista para el lanzamiento o quién está de soporte, a la vista de todos."
+        },
+        {
+          "title": "Bocetar una interfaz",
+          "body": "Una maqueta rápida antes de que nadie abra una herramienta de diseño, para discutir la idea y no los píxeles."
+        },
+        {
+          "title": "Una nota para la mañana",
+          "body": "Una pregunta, un dibujo o una encuesta para quien llegue primero."
+        }
+      ]
+    },
+    {
+      "title": "Consejos para dibujar juntos",
+      "items": [
+        {
+          "title": "Habla mientras dibujas",
+          "body": "Empieza antes una llamada o una reunión. Un boceto explicado gana a un diagrama perfecto en silencio."
+        },
+        {
+          "title": "Un color para cada uno",
+          "body": "Con cuatro colores, en un grupo pequeño cada persona puede tener el suyo y se ve quién propuso qué."
+        },
+        {
+          "title": "Haz captura de lo importante",
+          "body": "Antes de borrar, captura lo que vayas a necesitar y apunta la decisión en el chat del equipo."
+        },
+        {
+          "title": "Los diagramas grandes, en otro sitio",
+          "body": "Arquitectura, flujos de usuario y hojas de ruta que viven meses van en tu herramienta de diseño o de diagramas."
+        }
+      ]
+    },
+    {
+      "title": "Lo que no hace",
+      "body": [
+        "Es una pizarra de rotulador y borrador. No hay herramienta de texto, ni formas o notas adhesivas, ni imágenes, ni deshacer, ni plantillas, ni exportación, y una oficina tiene una sola pizarra. Para talleres, retrospectivas con notas adhesivas o diagramas detallados, Miro, FigJam o Excalidraw hacen mucho más. La pizarra de TinyFloor es para el boceto rápido mientras habláis."
+      ]
+    }
   ]
 }

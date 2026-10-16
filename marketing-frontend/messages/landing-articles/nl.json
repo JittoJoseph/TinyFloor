@@ -2881,5 +2881,216 @@
         "Er zijn geen threads, geen integraties of bots, en nog geen zoekfunctie voor berichten. Afbeeldingen delen in de chat kan nog niet, dus screenshots gaan op het scherm in een gesprek. Meldingen volgen je niet naar je telefoon: TinyFloor stuurt geen pushmeldingen of e-mails om mensen terug te halen. Is je team daarvan afhankelijk, houd dan Slack voor het schrijven en gebruik TinyFloor voor aanwezigheid, gesprekken en meetings; veel teams doen dat."
       ]
     }
+  ],
+  "presence": [
+    {
+      "title": "Wat aanwezigheid betekent in TinyFloor",
+      "body": [
+        "Op kantoor zie je in één oogopslag wie er is, wie ergens in verdiept is en wie aan de telefoon hangt. Remote zegt een groen bolletje in een chatapp weinig. Op de verdieping is aanwezigheid waar mensen zijn en wat ze zelf over zichzelf aangeven, meer niet."
+      ]
+    },
+    {
+      "title": "Wat je ziet",
+      "table": {
+        "head": [
+          "Signaal",
+          "Wat het je vertelt",
+          "Wie het instelt"
+        ],
+        "rows": [
+          [
+            "Op de verdieping",
+            "Die persoon heeft het kantoor nu open.",
+            "Er zijn"
+          ],
+          [
+            "Aan het bureau",
+            "Aan het werk. Iedereen zit aan een eigen bureau.",
+            "Gaan zitten"
+          ],
+          [
+            "Beschikbaar",
+            "Klaar om te kletsen: loop erheen of bel.",
+            "Jij"
+          ],
+          [
+            "Bezet",
+            "Niet storen. Schrijf liever, of wacht.",
+            "Jij"
+          ],
+          [
+            "Afwezig",
+            "Zo terug.",
+            "Jij"
+          ],
+          [
+            "In gesprek",
+            "Praat al met iemand; vraag het later.",
+            "Staat aan tijdens een gesprek"
+          ],
+          [
+            "In de vergaderruimte",
+            "In een meeting. De lijst met meetings laat zien welke er bezig zijn.",
+            "Een meeting binnengaan"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Wat het niet bijhoudt",
+      "items": [
+        {
+          "title": "Geen online-uren",
+          "body": "Niets telt hoe lang iemand op de verdieping is geweest, en niets laat zien hoe lang iemand inactief was."
+        },
+        {
+          "title": "Geen activiteitsrapporten",
+          "body": "Er is geen dashboard van wie wat deed, geen screenshots en geen toetsenbord- of muisregistratie."
+        },
+        {
+          "title": "Geen pings om terug te komen",
+          "body": "TinyFloor stuurt geen e-mails of meldingen om mensen naar de verdieping te halen. Is iemand er niet, dan is die er niet."
+        },
+        {
+          "title": "Statussen die betekenen wat jij koos",
+          "body": "Beschikbaar, bezet en afwezig stel je zelf in. Bezet vraagt mensen te wachten; het sluit niemand buiten."
+        }
+      ]
+    },
+    {
+      "title": "Aanwezigheid goed gebruiken als team",
+      "items": [
+        {
+          "title": "Spreek af wat bezet betekent",
+          "body": "De meeste teams komen hierop uit: bezet betekent schrijven, niet langslopen, tenzij er iets in brand staat."
+        },
+        {
+          "title": "Ga aan je bureau zitten als je werkt",
+          "body": "Iemand aan het bureau leest als \"hier en aan het werk\". Het is het duidelijkste signaal dat er is, en het kost niets."
+        },
+        {
+          "title": "Afwezig voor pauzes",
+          "body": "Lunch, de kinderen ophalen, een wandeling. Afwezig zegt dat je terugkomt zonder dat iemand hoeft te vragen."
+        },
+        {
+          "title": "Lees aanwezigheid niet als prestatie",
+          "body": "Op de verdieping zijn is bereikbaar zijn, niet bekeken worden. Teams die het gebruiken om mensen te controleren, stoppen ermee."
+        }
+      ]
+    },
+    {
+      "title": "Mensen vinden",
+      "items": [
+        {
+          "title": "De lijst met mensen",
+          "body": "Iedereen in het kantoor met zijn status, op desktop en in de browser van je telefoon."
+        },
+        {
+          "title": "Loop erheen",
+          "body": "Druk op Loop erheen op iemands kaart en je poppetje vindt zelf de weg over de verdieping."
+        },
+        {
+          "title": "Binnenkomers",
+          "body": "Als iemand binnenkomt, zien mensen die al op de verdieping zijn een paar seconden een rustig \"Ana is er\" met een zwaaiknop."
+        }
+      ]
+    },
+    {
+      "title": "Wat het niet doet",
+      "body": [
+        "Aanwezigheid synchroniseert niet met je agenda, Slack of je besturingssysteem, en statussen veranderen niet volgens een schema. Eigen statusberichten zijn er nog niet. Heb je aanwezigheid nodig over al je tools, dan is de status van je chatapp de plek; die van TinyFloor zegt wie er nu op de verdieping is."
+      ]
+    }
+  ],
+  "whiteboard": [
+    {
+      "title": "Een whiteboard aan de muur, niet in een ander tabblad",
+      "body": [
+        "De meeste online whiteboards zijn een aparte app: bord aanmaken, link delen, wachten tot mensen het openen. In TinyFloor hangt het bord aan de kantoormuur. Loop erheen en teken, en iedereen die kijkt, ziet je lijnen terwijl je ze zet."
+      ]
+    },
+    {
+      "title": "Wat erop zit",
+      "table": {
+        "head": [
+          "",
+          "Hoe het werkt"
+        ],
+        "rows": [
+          [
+            "Stiften",
+            "Vier kleuren: zwart, oranje, groen en blauw, in een dunne en een dikke lijn."
+          ],
+          [
+            "Gum",
+            "Gum een deel van een tekening weg zonder opnieuw te beginnen."
+          ],
+          [
+            "Wissen",
+            "Veeg het hele bord schoon als je klaar bent."
+          ],
+          [
+            "Live",
+            "Iedereen bij het bord ziet elke lijn terwijl die getekend wordt."
+          ],
+          [
+            "Blijft staan",
+            "Wat getekend is, blijft voor de volgende keer. Als het bord heel vol is, maken de oudste lijnen plaats voor nieuwe."
+          ],
+          [
+            "Eén bord",
+            "Eén bord per kantoor, gedeeld door iedereen."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Waar het goed voor is",
+      "items": [
+        {
+          "title": "Uitleggen terwijl je praat",
+          "body": "Een blok, twee pijlen en een database zijn vaak genoeg om in een gesprek een ontwerp duidelijk te maken."
+        },
+        {
+          "title": "Plannen aan de muur",
+          "body": "De prioriteiten van de week, een releasechecklist of wie support heeft, zichtbaar voor iedereen."
+        },
+        {
+          "title": "Een interface schetsen",
+          "body": "Een ruwe opzet voordat iemand een designtool opent, zodat mensen over het idee praten en niet over pixels."
+        },
+        {
+          "title": "Een briefje voor de ochtend",
+          "body": "Een vraag, een tekening of een poll voor wie als eerste binnenkomt."
+        }
+      ]
+    },
+    {
+      "title": "Tips om samen te tekenen",
+      "items": [
+        {
+          "title": "Praat terwijl je tekent",
+          "body": "Start eerst een gesprek of meeting. Een schets met uitleg wint van een perfect diagram in stilte."
+        },
+        {
+          "title": "Ieder een kleur",
+          "body": "Met vier kleuren kan in een kleine groep iedereen een eigen kleur hebben, zodat duidelijk is wie wat voorstelde."
+        },
+        {
+          "title": "Maak een screenshot van wat telt",
+          "body": "Leg vast wat je nodig hebt voordat je het bord wist, en zet het besluit in de teamchat."
+        },
+        {
+          "title": "Grote diagrammen elders",
+          "body": "Architectuur, gebruikersflows en roadmaps die maanden meegaan, horen in je design- of diagramtool."
+        }
+      ]
+    },
+    {
+      "title": "Wat het niet doet",
+      "body": [
+        "Het is een bord met stift en gum. Er is geen teksttool, geen vormen of plakbriefjes, geen afbeeldingen, geen ongedaan maken, geen sjablonen en geen export, en een kantoor heeft één bord. Voor workshops, retro's met plakbriefjes of gedetailleerde diagrammen kunnen Miro, FigJam of Excalidraw veel meer. Het bord van TinyFloor is voor de snelle schets terwijl je praat."
+      ]
+    }
   ]
 }

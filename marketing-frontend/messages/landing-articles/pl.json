@@ -3482,5 +3482,131 @@
         "TinyFloor nie jest publiczną przestrzenią coworkingową. Biuro jest prywatne dla twojego zespołu, więc nie ma nieznajomych, obok których można pracować, ani dobierania z innymi ludźmi. Nie ma minutników sesji, serii ani niczego, co liczy, jak długo pracowałeś. Jeśli pracujesz sam i szukasz towarzystwa nieznajomych, lepiej sprawdzi się usługa body doublingu; jeśli chcesz mieć zespół obok podczas pracy, to jest to."
       ]
     }
+  ],
+  "proximityChat": [
+    {
+      "title": "Czym jest czat zbliżeniowy",
+      "body": [
+        "Czat zbliżeniowy wywodzi się z gier: słyszysz graczy w pobliżu, a nie tych na drugim końcu mapy, tak jak dźwięk w prawdziwym miejscu. Wirtualne biura przejęły ten pomysł, żeby to, gdzie stoisz, decydowało, z kim rozmawiasz. Można to zrobić na dwa sposoby, a w pracy działają one zupełnie inaczej."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Otwarty dźwięk przestrzenny",
+          "Bliskość do rozmowy (TinyFloor)"
+        ],
+        "rows": [
+          [
+            "Jak zaczyna się rozmowa",
+            "Podchodzisz do kogoś i słyszycie się",
+            "Stajesz obok kogoś i dotykasz Zadzwoń"
+          ],
+          [
+            "Mikrofony",
+            "Otwarte, gdy jesteś obok kogoś",
+            "Wyłączone do rozpoczęcia rozmowy"
+          ],
+          [
+            "Kto cię słyszy",
+            "Każdy, kto podejdzie blisko",
+            "Tylko osoba, do której dzwonisz"
+          ],
+          [
+            "Hałas w tle",
+            "Wspólny z tymi, którzy są obok",
+            "Zostaje u ciebie, dopóki nie zadzwonisz"
+          ],
+          [
+            "Dobre do",
+            "Imprez, wydarzeń, gier",
+            "Dnia pracy, w którym większość godzin jest cicha"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Jak to działa w TinyFloor",
+      "items": [
+        {
+          "title": "Podejdź",
+          "detail": "1",
+          "body": "Ustaw postać obok współpracownika. Pojawi się mała karta z przyciskiem Zadzwoń."
+        },
+        {
+          "title": "Zadzwoń",
+          "detail": "2",
+          "body": "Widzi „Dzwoni do ciebie” i może odebrać albo odrzucić. Jeśli jest zajęty albo nie odbiera, dowiesz się o tym i nic więcej się nie dzieje."
+        },
+        {
+          "title": "Rozmawiaj",
+          "detail": "3",
+          "body": "Rozmowa zaczyna się od głosu. Włącz kamerę albo udostępnij ekran, jeśli to pomoże."
+        },
+        {
+          "title": "Chodź",
+          "detail": "4",
+          "body": "Po połączeniu rozmowa trwa, dopóki ktoś się nie rozłączy, więc przejście przez piętro jej nie przerywa."
+        },
+        {
+          "title": "Dołącz trzecią osobę",
+          "detail": "5",
+          "body": "Rozmowa to dwie osoby. Podejdź do trzeciej, a TinyFloor zaproponuje spotkanie dla was trojga."
+        }
+      ]
+    },
+    {
+      "title": "Dlaczego rozmowy, a nie otwarty dźwięk",
+      "items": [
+        {
+          "title": "Nikt nie podsłuchuje przypadkiem",
+          "body": "Mikrofon działa tylko w rozmowie albo na spotkaniu. Przejście obok biurka nigdy nie pozwala nikogo usłyszeć."
+        },
+        {
+          "title": "Da się skupić",
+          "body": "Piętro pełne otwartych mikrofonów to głośny pokój. Rozmowy zostawiają resztę piętra w ciszy."
+        },
+        {
+          "title": "Wciąż jest spontanicznie",
+          "body": "Podejście i dotknięcie Zadzwoń trwa kilka sekund, mniej więcej tyle, co nachylenie się do sąsiedniego biurka."
+        },
+        {
+          "title": "Działa w każdej sieci",
+          "body": "Rozmowy idą przez sieć przekaźników Cloudflare, więc łączą się za firmowymi firewallami i w sieciach komórkowych, bez instalowania czegokolwiek."
+        }
+      ]
+    },
+    {
+      "title": "Kiedy czego używać",
+      "table": {
+        "head": [
+          "Chcesz",
+          "Na piętrze"
+        ],
+        "rows": [
+          [
+            "Zadać jednej osobie szybkie pytanie",
+            "Podejdź i zadzwoń"
+          ],
+          [
+            "Włączyć trzecią osobę",
+            "Podejdź do niej w trakcie rozmowy; zrobi się spotkanie"
+          ],
+          [
+            "Porozmawiać z całym zespołem",
+            "Dołącz do głównego spotkania biura"
+          ],
+          [
+            "Zapytać kogoś zajętego",
+            "Napisz na czacie i pozwól tej osobie przyjść do ciebie"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Czego nie robi",
+      "body": [
+        "TinyFloor nie ma otwartego dźwięku przestrzennego, więc grupa nie porozmawia, po prostu stojąc razem; od trzech osób idzie się na spotkanie. Nie jest zrobiony na wydarzenia czy gry z setkami ludzi i nie ma dostępu telefonicznego. Jeśli chcesz żywej przestrzeni, w której głosy narastają i cichną, gdy chodzisz, lepiej sprawdzi się produkt oparty na dźwięku przestrzennym; jeśli chcesz spokojnego biura, w którym rozmowa jest na jedno dotknięcie, to jest to."
+      ]
+    }
   ]
 }

@@ -3482,5 +3482,131 @@
         "TinyFloor is geen openbare coworkingruimte. Een kantoor is privé voor je team, dus er zijn geen onbekenden om naast te werken en geen koppeling met andere mensen. Er zijn geen sessietimers, geen streaks en niets dat telt hoe lang je hebt gewerkt. Werk je alleen en zoek je gezelschap van onbekenden, dan past een body-doublingdienst beter; wil je je team om je heen terwijl je werkt, dan is dit het."
       ]
     }
+  ],
+  "proximityChat": [
+    {
+      "title": "Wat proximity chat betekent",
+      "body": [
+        "Proximity chat komt uit games: je hoort de spelers bij je in de buurt en niet die aan de andere kant van de kaart, zoals geluid op een echte plek werkt. Virtuele kantoren namen het idee over, zodat waar je staat bepaalt met wie je praat. Er zijn twee manieren om het te doen, en op het werk voelen ze heel anders."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Open ruimtelijk geluid",
+          "Nabijheid om te bellen (TinyFloor)"
+        ],
+        "rows": [
+          [
+            "Hoe een gesprek begint",
+            "Loop naar iemand toe en jullie horen elkaar",
+            "Ga naast iemand staan en tik op Bellen"
+          ],
+          [
+            "Microfoons",
+            "Open zolang je bij iemand in de buurt bent",
+            "Uit tot een gesprek begint"
+          ],
+          [
+            "Wie je hoort",
+            "Iedereen die in de buurt komt",
+            "Alleen de persoon die je belt"
+          ],
+          [
+            "Achtergrondgeluid",
+            "Gedeeld met wie er in de buurt is",
+            "Blijft bij jou tot je belt"
+          ],
+          [
+            "Goed voor",
+            "Feestjes, evenementen, games",
+            "Een werkdag, waarin de meeste uren stil zijn"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Zo werkt het in TinyFloor",
+      "items": [
+        {
+          "title": "Erheen lopen",
+          "detail": "1",
+          "body": "Zet je poppetje naast een collega. Er verschijnt een kleine kaart met een knop Bellen."
+        },
+        {
+          "title": "Bellen",
+          "detail": "2",
+          "body": "Die ziet \"Belt je\" en kan opnemen of weigeren. Is die bezet of neemt die niet op, dan hoor je dat, en verder gebeurt er niets."
+        },
+        {
+          "title": "Praten",
+          "detail": "3",
+          "body": "Het gesprek begint met stem. Zet een camera aan of deel een scherm als dat helpt."
+        },
+        {
+          "title": "Rondlopen",
+          "detail": "4",
+          "body": "Eenmaal verbonden blijft het gesprek staan tot iemand ophangt, dus over de verdieping lopen verbreekt het niet."
+        },
+        {
+          "title": "Een derde erbij",
+          "detail": "5",
+          "body": "Een gesprek is twee mensen. Loop naar een derde en TinyFloor biedt aan er een meeting voor jullie drieën van te maken."
+        }
+      ]
+    },
+    {
+      "title": "Waarom gesprekken in plaats van open geluid",
+      "items": [
+        {
+          "title": "Niemand luistert per ongeluk mee",
+          "body": "Je microfoon staat alleen aan in een gesprek of meeting. Langs een bureau lopen laat je nooit iemand horen."
+        },
+        {
+          "title": "Concentratie blijft mogelijk",
+          "body": "Een verdieping vol open microfoons is een lawaaiige ruimte. Gesprekken houden de rest van de verdieping stil."
+        },
+        {
+          "title": "Het voelt toch spontaan",
+          "body": "Erheen lopen en op Bellen tikken kost een paar seconden, ongeveer zo lang als opzij leunen naar een collega."
+        },
+        {
+          "title": "Het werkt op elk netwerk",
+          "body": "Gesprekken lopen via het relaynetwerk van Cloudflare, dus ze komen tot stand achter bedrijfsfirewalls en op mobiele netwerken, zonder installatie."
+        }
+      ]
+    },
+    {
+      "title": "Wanneer wat",
+      "table": {
+        "head": [
+          "Je wilt",
+          "Op de verdieping"
+        ],
+        "rows": [
+          [
+            "Eén persoon een snelle vraag stellen",
+            "Erheen lopen en bellen"
+          ],
+          [
+            "Een derde erbij halen",
+            "Tijdens het gesprek naar die persoon lopen; het wordt een meeting"
+          ],
+          [
+            "Met het hele team praten",
+            "Meedoen aan de hoofdmeeting van het kantoor"
+          ],
+          [
+            "Iemand vragen die bezet is",
+            "Schrijf in de chat en laat die naar jou komen"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Wat het niet doet",
+      "body": [
+        "TinyFloor heeft geen open ruimtelijk geluid, dus een groep kan niet praten door gewoon bij elkaar te staan; vanaf drie mensen ga je naar een meeting. Het is niet gemaakt voor evenementen of games met honderden mensen, en er is geen telefonische inbelmogelijkheid. Wil je een levendige ruimte waar stemmen aanzwellen en wegvallen terwijl je rondloopt, dan past een product rond ruimtelijk geluid beter; wil je een rustig kantoor waar praten één tik weg is, dan is dit het."
+      ]
+    }
   ]
 }

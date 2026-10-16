@@ -3482,5 +3482,131 @@
         "TinyFloor ist kein öffentlicher Coworking-Space. Ein Büro gehört nur deinem Team, es gibt also keine Fremden zum Mitarbeiten und kein Zusammenbringen mit anderen Leuten. Es gibt keine Session-Timer, keine Streaks und nichts, was zählt, wie lange du gearbeitet hast. Wenn du allein arbeitest und Gesellschaft von Fremden suchst, passt ein Body-Doubling-Dienst besser; wenn du dein Team beim Arbeiten um dich haben willst, ist es das hier."
       ]
     }
+  ],
+  "proximityChat": [
+    {
+      "title": "Was Proximity-Chat bedeutet",
+      "body": [
+        "Proximity-Chat kommt aus Spielen: Du hörst die Spieler in deiner Nähe und nicht die am anderen Ende der Karte, so wie Schall an einem echten Ort funktioniert. Virtuelle Büros haben die Idee übernommen, damit dein Standort bestimmt, mit wem du redest. Es gibt zwei Arten, das umzusetzen, und bei der Arbeit fühlen sie sich sehr unterschiedlich an."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Offenes räumliches Audio",
+          "Nähe zum Anruf (TinyFloor)"
+        ],
+        "rows": [
+          [
+            "Wie ein Gespräch beginnt",
+            "Geh in die Nähe von jemandem, und ihr hört euch",
+            "Stell dich neben jemanden und tippe auf Anrufen"
+          ],
+          [
+            "Mikrofone",
+            "Offen, solange du in jemandes Nähe bist",
+            "Aus, bis ein Anruf beginnt"
+          ],
+          [
+            "Wer dich hört",
+            "Jeder, der in die Nähe kommt",
+            "Nur die Person, die du angerufen hast"
+          ],
+          [
+            "Hintergrundgeräusche",
+            "Geteilt mit allen in der Nähe",
+            "Bleiben bei dir, bis du anrufst"
+          ],
+          [
+            "Gut für",
+            "Partys, Events, Spiele",
+            "Einen Arbeitstag, an dem die meisten Stunden ruhig sind"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "So funktioniert es in TinyFloor",
+      "items": [
+        {
+          "title": "Hingehen",
+          "detail": "1",
+          "body": "Bewege deine Figur neben eine Kollegin. Eine kleine Karte mit einem Anrufen-Knopf erscheint."
+        },
+        {
+          "title": "Anrufen",
+          "detail": "2",
+          "body": "Sie sieht „Ruft dich an“ und kann annehmen oder ablehnen. Ist sie beschäftigt oder geht nicht ran, erfährst du es, und sonst passiert nichts."
+        },
+        {
+          "title": "Reden",
+          "detail": "3",
+          "body": "Der Anruf beginnt mit Stimme. Schalte eine Kamera ein oder teile den Bildschirm, wenn es hilft."
+        },
+        {
+          "title": "Herumgehen",
+          "detail": "4",
+          "body": "Einmal verbunden, bleibt der Anruf bestehen, bis jemand auflegt, also bricht er nicht ab, wenn du über die Fläche gehst."
+        },
+        {
+          "title": "Eine dritte Person dazu",
+          "detail": "5",
+          "body": "Ein Anruf ist zwei Personen. Geh zu einer dritten, und TinyFloor bietet an, daraus ein Meeting für euch drei zu machen."
+        }
+      ]
+    },
+    {
+      "title": "Warum Anrufe statt offenem Audio",
+      "items": [
+        {
+          "title": "Niemand hört zufällig mit",
+          "body": "Dein Mikrofon ist nur in einem Anruf oder Meeting an. Wer an einem Schreibtisch vorbeigeht, hört dort nie etwas."
+        },
+        {
+          "title": "Konzentration bleibt möglich",
+          "body": "Eine Fläche voller offener Mikrofone ist ein lauter Raum. Anrufe halten den Rest der Fläche ruhig."
+        },
+        {
+          "title": "Es fühlt sich trotzdem spontan an",
+          "body": "Hingehen und auf Anrufen tippen dauert ein paar Sekunden, etwa so lange wie sich zur Kollegin hinüberzulehnen."
+        },
+        {
+          "title": "Es funktioniert in jedem Netz",
+          "body": "Anrufe laufen über das Relay-Netz von Cloudflare, sie kommen also auch hinter Firmen-Firewalls und in Mobilnetzen zustande, ohne Installation."
+        }
+      ]
+    },
+    {
+      "title": "Wann was",
+      "table": {
+        "head": [
+          "Du willst",
+          "Auf der Fläche"
+        ],
+        "rows": [
+          [
+            "Einer Person eine kurze Frage stellen",
+            "Hingehen und anrufen"
+          ],
+          [
+            "Eine dritte Person dazuholen",
+            "Während des Anrufs zu ihr gehen; daraus wird ein Meeting"
+          ],
+          [
+            "Mit dem ganzen Team reden",
+            "Dem Hauptmeeting des Büros beitreten"
+          ],
+          [
+            "Jemanden fragen, der beschäftigt ist",
+            "Stattdessen im Chat schreiben und die Person zu dir kommen lassen"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Was es nicht kann",
+      "body": [
+        "TinyFloor hat kein offenes räumliches Audio, eine Gruppe kann also nicht einfach durch Zusammenstehen reden; ab drei Leuten geht ihr in ein Meeting. Es ist nicht für Events oder Spiele mit Hunderten von Leuten gebaut, und es gibt keine Telefoneinwahl. Wenn du einen lebhaften Raum willst, in dem Stimmen beim Herumgehen auf- und abschwellen, passt ein Produkt mit räumlichem Audio besser; wenn du ein ruhiges Büro willst, in dem Reden einen Tipp entfernt ist, ist es das hier."
+      ]
+    }
   ]
 }

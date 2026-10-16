@@ -24,11 +24,12 @@ Measured on 16 October 2026 (English, words a reader sees):
 - **Index pages:** `/teams` 153, `/features` 176, `/use-cases` 216,
   `/compare` 396, `/about` 208. They mostly route visitors on; each would do
   better with a short real introduction to what's behind it.
-- **Feature, team and use-case pages:** 280 to 440 words each (proximity
-  chat). Each needs its own article: they
-  still share the home page's "moments" block. Standup, pair programming,
-  onboarding, watercooler, engineering teams, meeting room, team chat, team presence, online whiteboard, agencies, startups, design teams and virtual coworking have theirs in every
-  language.
+- **Unused copy:** every feature, team and use-case page now has its own
+  article in every language, which replaces its three short points and its
+  moments timeline. Those keys (`points`, `moments`, `momentsTitle` under
+  `landings.pages.<key>` in each `messages/<locale>.json`) are no longer shown
+  and can be deleted, once the Wonder.me page is decided (it still uses its
+  points).
 - **The Wonder.me page** serves a product that closed in 2023; decide whether
   to keep it.
 

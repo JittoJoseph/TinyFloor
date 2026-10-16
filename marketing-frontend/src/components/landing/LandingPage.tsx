@@ -159,7 +159,7 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
         />
       )}
 
-      {copy.moments && copy.momentsTitle && (
+      {!article && copy.moments && copy.momentsTitle && (
         <Moments title={emphasised(copy.momentsTitle, locale, "text-muted-foreground/75")} items={copy.moments} />
       )}
 

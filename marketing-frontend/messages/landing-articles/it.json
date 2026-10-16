@@ -3482,5 +3482,131 @@
         "TinyFloor non è uno spazio di coworking pubblico. Un ufficio è riservato al tuo team, quindi non ci sono sconosciuti con cui lavorare né abbinamenti con altre persone. Non ci sono timer di sessione, serie o qualcosa che conti quanto hai lavorato. Se lavori da solo e cerchi la compagnia di sconosciuti, un servizio di body doubling fa più al caso tuo; se vuoi il tuo team intorno mentre lavori, è questo."
       ]
     }
+  ],
+  "proximityChat": [
+    {
+      "title": "Cosa significa chat di prossimità",
+      "body": [
+        "La chat di prossimità viene dai videogiochi: senti i giocatori vicini e non quelli dall'altra parte della mappa, come il suono in un posto reale. Gli uffici virtuali hanno preso l'idea perché sia la tua posizione a decidere con chi parli. Ci sono due modi di farlo, e sul lavoro danno sensazioni molto diverse."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Audio spaziale aperto",
+          "Prossimità per chiamare (TinyFloor)"
+        ],
+        "rows": [
+          [
+            "Come inizia la conversazione",
+            "Ti avvicini a qualcuno e vi sentite",
+            "Ti metti accanto a qualcuno e tocchi Chiama"
+          ],
+          [
+            "Microfoni",
+            "Aperti finché sei vicino a qualcuno",
+            "Spenti finché non inizia una chiamata"
+          ],
+          [
+            "Chi ti sente",
+            "Chiunque si avvicini",
+            "Solo la persona che hai chiamato"
+          ],
+          [
+            "Rumore di fondo",
+            "Condiviso con chi è vicino",
+            "Resta con te finché non chiami"
+          ],
+          [
+            "Adatto a",
+            "Feste, eventi, giochi",
+            "Una giornata di lavoro, fatta soprattutto di ore tranquille"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Come funziona su TinyFloor",
+      "items": [
+        {
+          "title": "Avvicinarsi",
+          "detail": "1",
+          "body": "Porta il tuo personaggio accanto a un collega. Compare una piccola scheda con il pulsante Chiama."
+        },
+        {
+          "title": "Chiamare",
+          "detail": "2",
+          "body": "Vede \"Ti sta chiamando\" e può rispondere o rifiutare. Se è occupato o non risponde, te lo dice e non succede altro."
+        },
+        {
+          "title": "Parlare",
+          "detail": "3",
+          "body": "La chiamata parte con la voce. Accendi una videocamera o condividi lo schermo se serve."
+        },
+        {
+          "title": "Muoversi",
+          "detail": "4",
+          "body": "Una volta connessa, la chiamata resta attiva finché qualcuno non riattacca, quindi attraversare il piano non la fa cadere."
+        },
+        {
+          "title": "Aggiungere una terza persona",
+          "detail": "5",
+          "body": "Una chiamata è tra due persone. Avvicinati a una terza e TinyFloor propone di trasformarla in una riunione per voi tre."
+        }
+      ]
+    },
+    {
+      "title": "Perché chiamate e non audio aperto",
+      "items": [
+        {
+          "title": "Nessuno sente per caso",
+          "body": "Il tuo microfono è attivo solo in una chiamata o in una riunione. Passare accanto a una scrivania non ti fa mai sentire nessuno."
+        },
+        {
+          "title": "Ci si può concentrare",
+          "body": "Un piano pieno di microfoni aperti è una stanza rumorosa. Le chiamate lasciano tranquillo il resto del piano."
+        },
+        {
+          "title": "Resta spontaneo",
+          "body": "Avvicinarsi e toccare Chiama richiede un paio di secondi, più o meno il tempo di sporgersi verso il collega accanto."
+        },
+        {
+          "title": "Funziona su qualsiasi rete",
+          "body": "Le chiamate passano per la rete di relay di Cloudflare, quindi si connettono dietro i firewall aziendali e sulle reti mobili, senza installare niente."
+        }
+      ]
+    },
+    {
+      "title": "Cosa usare quando",
+      "table": {
+        "head": [
+          "Vuoi",
+          "Sul piano"
+        ],
+        "rows": [
+          [
+            "Fare una domanda veloce a una persona",
+            "Avvicinati e chiama"
+          ],
+          [
+            "Coinvolgere una terza persona",
+            "Avvicinati a lei durante la chiamata; diventa una riunione"
+          ],
+          [
+            "Parlare con tutto il team",
+            "Entra nella riunione principale dell'ufficio"
+          ],
+          [
+            "Chiedere a qualcuno che è occupato",
+            "Scrivi in chat e lascia che venga lui da te"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Cosa non fa",
+      "body": [
+        "TinyFloor non ha audio spaziale aperto, quindi un gruppo non può chiacchierare solo stando vicino; da tre persone in su si va in riunione. Non è pensato per eventi o giochi con centinaia di persone, e non c'è accesso telefonico. Se vuoi uno spazio vivace dove le voci vanno e vengono mentre ti muovi, un prodotto basato sull'audio spaziale fa più al caso tuo; se vuoi un ufficio tranquillo dove parlare è a un tocco, è questo."
+      ]
+    }
   ]
 }

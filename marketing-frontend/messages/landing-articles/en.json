@@ -3482,5 +3482,131 @@
         "TinyFloor isn't a public coworking space. An office is private to your team, so there are no strangers to work alongside and no matching with other people. There are no session timers, no streaks and nothing that counts how long you worked. If you work alone and want company from strangers, a body-doubling service is the better fit; if you want your team around while you work, this is it."
       ]
     }
+  ],
+  "proximityChat": [
+    {
+      "title": "What proximity chat means",
+      "body": [
+        "Proximity chat comes from games: you hear the players near you and not the ones across the map, the way sound works in a real place. Virtual offices borrowed the idea so that where you stand decides who you talk to. There are two ways to do it, and they feel very different at work."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Open spatial audio",
+          "Proximity to call (TinyFloor)"
+        ],
+        "rows": [
+          [
+            "How talking starts",
+            "Walk near someone and you hear each other",
+            "Stand next to someone and tap Call"
+          ],
+          [
+            "Microphones",
+            "Open while you're near anyone",
+            "Off until a call starts"
+          ],
+          [
+            "Who hears you",
+            "Anyone who wanders close",
+            "Only the person you called"
+          ],
+          [
+            "Background noise",
+            "Shared with whoever is near",
+            "Stays with you until you call"
+          ],
+          [
+            "Good for",
+            "Parties, events, games",
+            "A workday, where most hours are quiet"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "How it works on TinyFloor",
+      "items": [
+        {
+          "title": "Walk up",
+          "detail": "1",
+          "body": "Move your character next to a teammate. A small card appears with a Call button."
+        },
+        {
+          "title": "Call",
+          "detail": "2",
+          "body": "They see \"Calling you\" and can answer or decline. If they're busy or don't answer, you're told, and nothing else happens."
+        },
+        {
+          "title": "Talk",
+          "detail": "3",
+          "body": "The call starts with voice. Turn on a camera or share a screen if it helps."
+        },
+        {
+          "title": "Walk around",
+          "detail": "4",
+          "body": "Once connected, the call stays up until someone hangs up, so moving across the floor doesn't drop it."
+        },
+        {
+          "title": "Add a third",
+          "detail": "5",
+          "body": "A call is two people. Walk up to a third and TinyFloor offers to make it a meeting for the three of you."
+        }
+      ]
+    },
+    {
+      "title": "Why calls instead of open audio",
+      "items": [
+        {
+          "title": "Nobody overhears by accident",
+          "body": "Your microphone is only on in a call or a meeting. Passing someone's desk never lets you hear them."
+        },
+        {
+          "title": "Focus stays possible",
+          "body": "A floor full of open microphones is a noisy room. Calls keep the rest of the floor quiet."
+        },
+        {
+          "title": "It still feels spontaneous",
+          "body": "Walking over and tapping Call takes a couple of seconds, about the same as leaning over to a colleague."
+        },
+        {
+          "title": "It works on any network",
+          "body": "Calls go through Cloudflare's relay network, so they connect behind office firewalls and on mobile networks, with nothing to install."
+        }
+      ]
+    },
+    {
+      "title": "When to use what",
+      "table": {
+        "head": [
+          "You want to",
+          "On the floor"
+        ],
+        "rows": [
+          [
+            "Ask one person a quick question",
+            "Walk up and call"
+          ],
+          [
+            "Pull a third person in",
+            "Walk up to them during the call; it becomes a meeting"
+          ],
+          [
+            "Talk with the whole team",
+            "Join the office's main meeting"
+          ],
+          [
+            "Ask someone who's busy",
+            "Write in the chat instead, and let them come to you"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "What it doesn't do",
+      "body": [
+        "TinyFloor doesn't have open spatial audio, so a group can't chat just by standing together; three or more people go to a meeting. It isn't built for events or games with hundreds of people, and there's no phone dial-in. If you want a lively space where voices drift as you walk around, a product built around spatial audio will suit you better; if you want a quiet office where talking is one tap away, this is it."
+      ]
+    }
   ]
 }

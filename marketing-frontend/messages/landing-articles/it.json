@@ -2549,5 +2549,231 @@
         "Non ci sono giochi, quiz, schermi YouTube né spazi per eventi da cento ospiti. È un piccolo ufficio per un team che lavora insieme ogni giorno, e la macchinetta del caffè è il momento tra un compito e l'altro. Per una festa aziendale o un grande evento sociale, Kumospace e Gather hanno più funzioni."
       ]
     }
+  ],
+  "engineering": [
+    {
+      "title": "Una giornata di sviluppo sul piano",
+      "body": [
+        "Chi sviluppa ha bisogno di due cose che tirano in direzioni opposte: lunghi momenti senza interruzioni e una risposta veloce quando è bloccato. Un piano dà entrambe, perché vedi chi è concentrato prima di avvicinarti."
+      ],
+      "items": [
+        {
+          "title": "Standup",
+          "detail": "10:00",
+          "body": "Il team entra nella sala riunioni, fa il giro in dieci minuti ed esce."
+        },
+        {
+          "title": "Concentrazione",
+          "detail": "10:15",
+          "body": "Mettiti occupato. Sei ancora sul piano, quindi si vede che stai lavorando e si sa che bisogna aspettare."
+        },
+        {
+          "title": "Sbloccato",
+          "detail": "14:30",
+          "body": "La build fallisce? Guarda chi è disponibile, avvicinati, condividi i log e risolvete in dieci minuti invece che domani."
+        },
+        {
+          "title": "Revisione",
+          "detail": "16:00",
+          "body": "Due o tre persone in riunione, una condivide la pull request, e ne parlate invece di scrivere quaranta commenti."
+        }
+      ]
+    },
+    {
+      "title": "Cosa serve a un team di sviluppo e come lo copre il piano",
+      "table": {
+        "head": [
+          "Esigenza",
+          "Su TinyFloor",
+          "Da tenere altrove"
+        ],
+        "rows": [
+          [
+            "Tempo di concentrazione",
+            "Uno stato occupato. Nessuno ti sente finché non avvii una chiamata, e non c'è un microfono aperto.",
+            "Il tuo editor e le impostazioni delle notifiche."
+          ],
+          [
+            "Domande veloci",
+            "Avvicinati a chi sa e tocca per chiamare. Prima la voce, condivisione dello schermo con un clic.",
+            "—"
+          ],
+          [
+            "Pair programming",
+            "Una chiamata con una finestra condivisa; una terza persona la trasforma in riunione.",
+            "Live Share o Code With Me, se dovete scrivere entrambi."
+          ],
+          [
+            "Standup e demo",
+            "La riunione principale, sempre aperta, con condivisione dello schermo.",
+            "—"
+          ],
+          [
+            "Incidenti",
+            "Una riunione con il nome dell'incidente in cui si può far entrare chiunque.",
+            "I vostri alert e la pagina di stato."
+          ],
+          [
+            "Decisioni scritte",
+            "Canali e messaggi diretti che conservano la cronologia.",
+            "Pull request, ticket e documentazione."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Silenzioso per impostazione",
+      "items": [
+        {
+          "title": "Nessun microfono aperto",
+          "body": "Essere sul piano non vuol dire essere sentiti. L'audio parte solo quando qualcuno avvia una chiamata o entri in una riunione."
+        },
+        {
+          "title": "Stati scelti da ognuno",
+          "body": "Disponibile, occupato o assente, scelto da te. Niente riporta da quanto sei alla scrivania o da quanto sei inattivo."
+        },
+        {
+          "title": "Videocamere che si riposano",
+          "body": "Le chiamate partono con la voce. Una videocamera rimasta accesa per dieci minuti senza che nessuno parli si spegne da sola."
+        },
+        {
+          "title": "Nessun richiamo",
+          "body": "TinyFloor non manda email o notifiche per riportare le persone sul piano. Il titolo della scheda mostra i messaggi non letti, e basta."
+        }
+      ]
+    },
+    {
+      "title": "Gestire un incidente sul piano",
+      "items": [
+        {
+          "title": "Aprire una stanza apposta",
+          "body": "Avvia una riunione con il nome dell'incidente e fai entrare chi è di reperibilità. Tutto il piano vede chi c'è dentro, quindi nessuno deve chiedere cosa succede."
+        },
+        {
+          "title": "Condividere quello che stai guardando",
+          "body": "Dashboard, log e pipeline di deploy sullo schermo, così tutti guardano la stessa cosa."
+        },
+        {
+          "title": "Far entrare le persone e poi lasciarle andare",
+          "body": "Fai entrare chi ha scritto il servizio; quando ha risposto, torna alla sua scrivania."
+        },
+        {
+          "title": "Scriverlo",
+          "body": "Pubblica la cronologia e cosa avete cambiato in un canale finché è fresco, pronto per il resoconto."
+        }
+      ]
+    },
+    {
+      "title": "Come si inserisce tra i vostri strumenti",
+      "body": [
+        "TinyFloor gira in una scheda del browser accanto a editor, terminale e chat. Non si collega a GitHub, GitLab, Jira o Linear, e non pubblica niente su Slack. È voluto: è il posto dove il team parla, e il lavoro resta tracciato dove già lo è. Molti team tengono Slack per i messaggi scritti e usano TinyFloor per presenza, chiamate e riunioni."
+      ]
+    }
+  ],
+  "meetingRoom": [
+    {
+      "title": "Come funziona una riunione su TinyFloor",
+      "body": [
+        "La maggior parte degli strumenti video parte da un link. TinyFloor parte da una stanza: ogni ufficio ha una riunione principale sempre aperta, e chiunque può avviarne un'altra accanto."
+      ],
+      "items": [
+        {
+          "title": "Entrare",
+          "detail": "1",
+          "body": "Premi Partecipa nella riunione dell'ufficio. Un controllo rapido mostra videocamera e microfono, poi il tuo personaggio entra nella sala riunioni."
+        },
+        {
+          "title": "Parlare",
+          "detail": "2",
+          "body": "Prima la voce; accendi la videocamera se vuoi. Chi parla prende la scheda grande, con altre tre accanto."
+        },
+        {
+          "title": "Condividere",
+          "detail": "3",
+          "body": "Condividi una finestra, una scheda o lo schermo. Compare sul palco accanto alle persone."
+        },
+        {
+          "title": "Uscire",
+          "detail": "4",
+          "body": "Esci e sei di nuovo sul piano. Uscito per sbaglio? Rientrare è un clic."
+        }
+      ]
+    },
+    {
+      "title": "La riunione principale e quelle che avvii tu",
+      "table": {
+        "head": [
+          "",
+          "La riunione dell'ufficio",
+          "Una riunione che avvii tu"
+        ],
+        "rows": [
+          [
+            "Quando c'è",
+            "Sempre, con il nome dell'ufficio",
+            "Da quando la avvii finché esce l'ultima persona"
+          ],
+          [
+            "Chi c'è",
+            "Chiunque dell'ufficio partecipi",
+            "Le persone che inviti e chiunque partecipi"
+          ],
+          [
+            "Adatta a",
+            "Standup, riunioni di tutto il team, un allineamento veloce",
+            "Una revisione di design, la preparazione di un cliente, un incidente"
+          ],
+          [
+            "Come si trova",
+            "Sul piano e nell'elenco delle riunioni",
+            "Su invito per nome, ed elencata tra quelle \"in corso\""
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Invitare senza calendario",
+      "items": [
+        {
+          "title": "Avvia e invita",
+          "body": "Dai un nome alla riunione, scegli chi invitare e premi Avvia. Ricevono una richiesta con il nome della riunione e possono entrare o rispondere \"non ora\"."
+        },
+        {
+          "title": "Da una chiamata",
+          "body": "In chiamata con una persona e ne vuoi una terza? Avvicinati e TinyFloor propone di trasformarla in una riunione per voi tre."
+        },
+        {
+          "title": "Vedere prima chi è libero",
+          "body": "L'elenco delle persone mostra chi è libero di parlare, chi è occupato e chi è già in un'altra riunione, così inviti solo chi può venire."
+        }
+      ]
+    },
+    {
+      "title": "Un palco che segue la conversazione",
+      "items": [
+        {
+          "title": "Chi parla, in grande",
+          "body": "La scheda grande passa a chi parla, ma solo dopo che chi parlava prima ha fatto una pausa, così non sfarfalla a ogni \"mm-hm\"."
+        },
+        {
+          "title": "Fissa ciò che conta",
+          "body": "Fissa una persona o uno schermo condiviso per tenerlo in grande mentre parlano altri."
+        },
+        {
+          "title": "Senza videocamera, ma presente",
+          "body": "Chi non ha la videocamera appare come una scheda che si illumina quando parla, così la stanza non sembra mai vuota."
+        },
+        {
+          "title": "Riposante per gli occhi",
+          "body": "Una videocamera rimasta accesa per dieci minuti senza che nessuno parli si spegne da sola. Nessuno resta in video quando non c'è niente da dire."
+        }
+      ]
+    },
+    {
+      "title": "Cosa non fa",
+      "body": [
+        "Non c'è registrazione, trascrizione né note con IA. Le riunioni si svolgono nel tuo ufficio: non ci sono numeri per chiamare da telefono né modalità webinar per un grande pubblico. Gli schermi condivisi trasmettono l'immagine, non l'audio. Se ti serve qualcosa di questo, usa Zoom o Google Meet per quella riunione e TinyFloor per quelle di tutti i giorni."
+      ]
+    }
   ]
 }

@@ -2549,5 +2549,231 @@
         "There are no games, no trivia, no YouTube screens and no event spaces for a hundred guests. It's a small office for a team that works together every day, and the watercooler is the part between tasks. For a company party or a large social event, Kumospace and Gather have more built in."
       ]
     }
+  ],
+  "engineering": [
+    {
+      "title": "An engineering day on the floor",
+      "body": [
+        "Engineers need two things that pull against each other: long stretches without interruptions, and a quick answer when they're stuck. A floor gives you both, because you can see who's heads down before you walk over."
+      ],
+      "items": [
+        {
+          "title": "Standup",
+          "detail": "10:00",
+          "body": "The team walks into the meeting room, goes round in ten minutes and walks back out."
+        },
+        {
+          "title": "Heads down",
+          "detail": "10:15",
+          "body": "Set yourself busy. You're still on the floor, so people know you're working, and they know to wait."
+        },
+        {
+          "title": "Unblocked",
+          "detail": "14:30",
+          "body": "Stuck on a failing build? See who's available, walk over, share the logs and sort it out in ten minutes instead of tomorrow."
+        },
+        {
+          "title": "Review",
+          "detail": "16:00",
+          "body": "Two or three people in a meeting, one sharing the pull request, talking it through instead of forty comments."
+        }
+      ]
+    },
+    {
+      "title": "What an engineering team needs, and how the floor covers it",
+      "table": {
+        "head": [
+          "Need",
+          "On TinyFloor",
+          "Keep elsewhere"
+        ],
+        "rows": [
+          [
+            "Focus time",
+            "A busy status. Nobody hears you until you start a call, and there's no open microphone.",
+            "Your editor and your notification settings."
+          ],
+          [
+            "Quick questions",
+            "Walk up to whoever knows and tap to call. Voice first, screen share in one click.",
+            "—"
+          ],
+          [
+            "Pairing",
+            "A call with a shared window, and a third person turns it into a meeting.",
+            "Live Share or Code With Me, if both of you need to type."
+          ],
+          [
+            "Standups and demos",
+            "The main meeting, always open, with screen sharing.",
+            "—"
+          ],
+          [
+            "Incidents",
+            "A meeting named after the incident that anyone can be asked into.",
+            "Your alerting and status page."
+          ],
+          [
+            "Written decisions",
+            "Channels and direct messages that keep their history.",
+            "Pull requests, tickets and docs."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Quiet by default",
+      "items": [
+        {
+          "title": "No open microphones",
+          "body": "Being on the floor doesn't mean being heard. Sound only starts when someone starts a call or you join a meeting."
+        },
+        {
+          "title": "Statuses people set themselves",
+          "body": "Available, busy or away, chosen by you. Nothing reports how long you've been at your desk or how long you've been idle."
+        },
+        {
+          "title": "Cameras that rest",
+          "body": "Calls start with voice. A camera left on through ten minutes with nobody talking turns itself off."
+        },
+        {
+          "title": "No pings to come back",
+          "body": "TinyFloor doesn't send emails or notifications to pull people onto the floor. The tab's title shows unread messages, and that's all."
+        }
+      ]
+    },
+    {
+      "title": "Running an incident on the floor",
+      "items": [
+        {
+          "title": "Open a room for it",
+          "body": "Start a meeting named after the incident and ask in whoever's on call. Everyone on the floor can see who's in it, so nobody has to ask what's going on."
+        },
+        {
+          "title": "Share what you're looking at",
+          "body": "Dashboards, logs and the deploy pipeline on screen, so everyone is looking at the same thing."
+        },
+        {
+          "title": "Bring people in, then let them go",
+          "body": "Ask in the person who wrote the service; when they've answered, they walk back to their desk."
+        },
+        {
+          "title": "Write it down",
+          "body": "Post the timeline and what you changed in a channel while it's fresh, ready for the write-up."
+        }
+      ]
+    },
+    {
+      "title": "How it fits beside your tools",
+      "body": [
+        "TinyFloor runs in a browser tab next to your editor, terminal and chat. It doesn't connect to GitHub, GitLab, Jira or Linear, and it doesn't post into Slack. That's deliberate: it's where the team talks, and the work stays tracked where it already is. Many teams keep Slack for written messages and use TinyFloor for presence, calls and meetings."
+      ]
+    }
+  ],
+  "meetingRoom": [
+    {
+      "title": "How a meeting works on TinyFloor",
+      "body": [
+        "Most video tools start from a link. TinyFloor starts from a room: every office has a main meeting that's always open, and anyone can start another one beside it."
+      ],
+      "items": [
+        {
+          "title": "Join",
+          "detail": "1",
+          "body": "Press Join on the office's meeting. A quick check shows your camera and microphone, then your character walks into the meeting room."
+        },
+        {
+          "title": "Talk",
+          "detail": "2",
+          "body": "Voice first; turn your camera on if you want. Whoever is talking takes the big card, with three more beside it."
+        },
+        {
+          "title": "Share",
+          "detail": "3",
+          "body": "Share a window, a tab or your screen. It goes on the stage next to the people."
+        },
+        {
+          "title": "Walk out",
+          "detail": "4",
+          "body": "Leave and you're back on the floor. Walked out by mistake? Rejoin is one press."
+        }
+      ]
+    },
+    {
+      "title": "The main meeting, and the ones you start",
+      "table": {
+        "head": [
+          "",
+          "The office's meeting",
+          "A meeting you start"
+        ],
+        "rows": [
+          [
+            "When it's there",
+            "Always, named after the office",
+            "From when you start it until the last person leaves"
+          ],
+          [
+            "Who's in it",
+            "Anyone in the office who joins",
+            "The people you ask in, and anyone who joins"
+          ],
+          [
+            "Good for",
+            "Standups, all-hands, a quick sync",
+            "A design review, a client prep, an incident"
+          ],
+          [
+            "How people find it",
+            "On the floor and in the list of meetings",
+            "Asked in by name, and listed as \"also on now\""
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Asking people in, without a calendar",
+      "items": [
+        {
+          "title": "Start and ask",
+          "body": "Give the meeting a name, pick who to ask and press Start. They get \"asks you to join\" with the meeting's name, and can join or say not now."
+        },
+        {
+          "title": "From a call",
+          "body": "On a call with one person and want a third? Walk up to them and TinyFloor offers to make it a meeting for the three of you."
+        },
+        {
+          "title": "See who's free first",
+          "body": "The list of people shows who's free to talk, who's busy and who's already in another meeting, so you only ask people who can come."
+        }
+      ]
+    },
+    {
+      "title": "A stage that follows the conversation",
+      "items": [
+        {
+          "title": "The speaker on the big card",
+          "body": "The big card moves to whoever is talking, but only after the last speaker has paused for a moment, so it doesn't flicker on every \"mm-hm\"."
+        },
+        {
+          "title": "Pin what matters",
+          "body": "Pin a person or a shared screen to keep it big while others talk."
+        },
+        {
+          "title": "No camera, still present",
+          "body": "People without a camera show as a card that lights up when they speak, so the room never looks empty."
+        },
+        {
+          "title": "Easy on the eyes",
+          "body": "A camera left on through ten minutes with nobody talking turns itself off. Nobody is kept on camera when there's nothing to say."
+        }
+      ]
+    },
+    {
+      "title": "What it doesn't do",
+      "body": [
+        "There's no recording, no transcription and no AI notes. Meetings happen inside your office: there are no dial-in numbers and no webinar mode for a big audience. Shared screens carry the picture, not sound. If you need any of those, keep Zoom or Google Meet for that meeting and use TinyFloor for the everyday ones."
+      ]
+    }
   ]
 }

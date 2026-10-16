@@ -2549,5 +2549,231 @@
         "Det finnes ingen spill, ingen quiz, ingen YouTube-skjermer og ingen arrangementsområder for hundre gjester. Det er et lite kontor for et team som jobber sammen hver dag, og kaffemaskinen er pausen mellom oppgavene. Til en firmafest eller et stort sosialt arrangement har Kumospace og Gather mer innebygd."
       ]
     }
+  ],
+  "engineering": [
+    {
+      "title": "En utviklerdag i etasjen",
+      "body": [
+        "Utviklere trenger to ting som drar i hver sin retning: lange økter uten avbrytelser, og et raskt svar når de står fast. En etasje gir deg begge, fordi du ser hvem som jobber konsentrert før du går bort."
+      ],
+      "items": [
+        {
+          "title": "Standup",
+          "detail": "10:00",
+          "body": "Teamet går inn i møterommet, tar runden på ti minutter og går ut igjen."
+        },
+        {
+          "title": "Fokus",
+          "detail": "10:15",
+          "body": "Sett deg som opptatt. Du er fortsatt i etasjen, så folk ser at du jobber, og vet at de skal vente."
+        },
+        {
+          "title": "Løst",
+          "detail": "14:30",
+          "body": "Feiler bygget? Se hvem som er tilgjengelig, gå bort, del loggene og løs det på ti minutter i stedet for i morgen."
+        },
+        {
+          "title": "Gjennomgang",
+          "detail": "16:00",
+          "body": "To eller tre personer i et møte, én deler pull requesten, og dere snakker gjennom den i stedet for førti kommentarer."
+        }
+      ]
+    },
+    {
+      "title": "Hva et utviklerteam trenger, og hvordan etasjen dekker det",
+      "table": {
+        "head": [
+          "Behov",
+          "I TinyFloor",
+          "Behold et annet sted"
+        ],
+        "rows": [
+          [
+            "Fokustid",
+            "En opptatt-status. Ingen hører deg før du starter en samtale, og det finnes ingen åpen mikrofon.",
+            "Editoren din og varslingsinnstillingene dine."
+          ],
+          [
+            "Raske spørsmål",
+            "Gå bort til den som vet og trykk for å ringe. Stemme først, skjermdeling med ett klikk.",
+            "—"
+          ],
+          [
+            "Parprogrammering",
+            "En samtale med et delt vindu; en tredje person gjør det til et møte.",
+            "Live Share eller Code With Me, hvis begge må skrive."
+          ],
+          [
+            "Standuper og demoer",
+            "Hovedmøtet, alltid åpent, med skjermdeling.",
+            "—"
+          ],
+          [
+            "Hendelser",
+            "Et møte oppkalt etter hendelsen som hvem som helst kan inviteres inn i.",
+            "Varslingen og statussiden deres."
+          ],
+          [
+            "Skriftlige beslutninger",
+            "Kanaler og direktemeldinger som beholder historikken.",
+            "Pull requests, saker og dokumentasjon."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Stille som standard",
+      "items": [
+        {
+          "title": "Ingen åpne mikrofoner",
+          "body": "Å være i etasjen betyr ikke å bli hørt. Lyd starter først når noen starter en samtale eller du blir med i et møte."
+        },
+        {
+          "title": "Statuser man velger selv",
+          "body": "Tilgjengelig, opptatt eller borte, valgt av deg. Ingenting rapporterer hvor lenge du har sittet ved pulten eller hvor lenge du har vært inaktiv."
+        },
+        {
+          "title": "Kameraer som hviler",
+          "body": "Samtaler starter med stemme. Et kamera som har stått på i ti minutter uten at noen har snakket, slår seg av selv."
+        },
+        {
+          "title": "Ingen påminnelser om å komme tilbake",
+          "body": "TinyFloor sender ingen e-poster eller varsler for å trekke folk inn i etasjen. Fanetittelen viser uleste meldinger, og det er alt."
+        }
+      ]
+    },
+    {
+      "title": "Håndtere en hendelse i etasjen",
+      "items": [
+        {
+          "title": "Åpne et rom for den",
+          "body": "Start et møte oppkalt etter hendelsen og inviter den som har vakt. Hele etasjen ser hvem som er der inne, så ingen trenger å spørre hva som skjer."
+        },
+        {
+          "title": "Del det du ser på",
+          "body": "Dashbord, logger og deploy-pipelinen på skjermen, så alle ser på det samme."
+        },
+        {
+          "title": "Hent folk inn, og la dem gå igjen",
+          "body": "Inviter den som skrev tjenesten; når de har svart, går de tilbake til pulten sin."
+        },
+        {
+          "title": "Skriv det ned",
+          "body": "Legg tidslinjen og det dere endret i en kanal mens det er ferskt, klart for gjennomgangen etterpå."
+        }
+      ]
+    },
+    {
+      "title": "Hvordan det passer ved siden av verktøyene deres",
+      "body": [
+        "TinyFloor kjører i en nettleserfane ved siden av editor, terminal og chat. Det er ikke koblet til GitHub, GitLab, Jira eller Linear, og det poster ingenting i Slack. Det er med vilje: Det er der teamet snakker, og arbeidet spores der det allerede er. Mange team beholder Slack for skrevne meldinger og bruker TinyFloor for tilstedeværelse, samtaler og møter."
+      ]
+    }
+  ],
+  "meetingRoom": [
+    {
+      "title": "Slik fungerer et møte i TinyFloor",
+      "body": [
+        "De fleste videoverktøy starter med en lenke. TinyFloor starter med et rom: Hvert kontor har et hovedmøte som alltid er åpent, og alle kan starte et annet ved siden av."
+      ],
+      "items": [
+        {
+          "title": "Bli med",
+          "detail": "1",
+          "body": "Trykk Bli med i kontorets møte. En rask sjekk viser kamera og mikrofon, så går figuren din inn i møterommet."
+        },
+        {
+          "title": "Snakk",
+          "detail": "2",
+          "body": "Stemme først; slå på kameraet om du vil. Den som snakker får det store kortet, med tre andre ved siden av."
+        },
+        {
+          "title": "Del",
+          "detail": "3",
+          "body": "Del et vindu, en fane eller skjermen din. Det vises på scenen ved siden av personene."
+        },
+        {
+          "title": "Gå ut",
+          "detail": "4",
+          "body": "Forlat møtet, så er du tilbake i etasjen. Gikk du ut ved en feil? Å bli med igjen er ett klikk."
+        }
+      ]
+    },
+    {
+      "title": "Hovedmøtet og møtene du starter selv",
+      "table": {
+        "head": [
+          "",
+          "Kontorets møte",
+          "Et møte du starter"
+        ],
+        "rows": [
+          [
+            "Når det finnes",
+            "Alltid, oppkalt etter kontoret",
+            "Fra du starter det til den siste går"
+          ],
+          [
+            "Hvem som er med",
+            "Alle fra kontoret som blir med",
+            "De du inviterer, og alle som blir med"
+          ],
+          [
+            "Bra for",
+            "Standuper, allmøter, en rask avklaring",
+            "En designgjennomgang, kundeforberedelse, en hendelse"
+          ],
+          [
+            "Slik finner man det",
+            "I etasjen og i listen over møter",
+            "Invitert med navn, og vist under «pågår også»"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Inviter folk uten kalender",
+      "items": [
+        {
+          "title": "Start og inviter",
+          "body": "Gi møtet et navn, velg hvem du vil invitere, og trykk Start. De får en forespørsel med møtets navn og kan bli med eller si «ikke nå»."
+        },
+        {
+          "title": "Fra en samtale",
+          "body": "I samtale med én og vil ha med en tredje? Gå bort til personen, så tilbyr TinyFloor å gjøre det til et møte for dere tre."
+        },
+        {
+          "title": "Se først hvem som er ledig",
+          "body": "Listen over personer viser hvem som er ledig til å snakke, hvem som er opptatt og hvem som allerede er i et annet møte, så du bare inviterer dem som kan komme."
+        }
+      ]
+    },
+    {
+      "title": "En scene som følger samtalen",
+      "items": [
+        {
+          "title": "Den som snakker vises stort",
+          "body": "Det store kortet går til den som snakker, men først når den forrige har tatt en kort pause, så det ikke blinker ved hvert «mm»."
+        },
+        {
+          "title": "Fest det som er viktig",
+          "body": "Fest en person eller en delt skjerm så den forblir stor mens andre snakker."
+        },
+        {
+          "title": "Uten kamera, men til stede",
+          "body": "Den som ikke har kamera på, vises som et kort som lyser opp når de snakker, så rommet aldri ser tomt ut."
+        },
+        {
+          "title": "Skånsomt for øynene",
+          "body": "Et kamera som har stått på i ti minutter uten at noen har snakket, slår seg av selv. Ingen holdes i bildet når det ikke er noe å si."
+        }
+      ]
+    },
+    {
+      "title": "Hva det ikke gjør",
+      "body": [
+        "Det finnes ikke opptak, transkribering eller AI-notater. Møter skjer inne i kontoret ditt: Det finnes ingen innringingsnumre og ingen webinarmodus for et stort publikum. Delte skjermer sender bildet, ikke lyden. Trenger du det, bruk Zoom eller Google Meet til det møtet og TinyFloor til de daglige."
+      ]
+    }
   ]
 }

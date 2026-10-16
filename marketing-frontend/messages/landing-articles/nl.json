@@ -2549,5 +2549,231 @@
         "Er zijn geen spelletjes, geen quiz, geen YouTube-schermen en geen evenementruimtes voor honderd gasten. Het is een klein kantoor voor een team dat elke dag samenwerkt, en het koffieapparaat is het stukje tussen de taken. Voor een bedrijfsfeest of een groot sociaal evenement hebben Kumospace en Gather meer aan boord."
       ]
     }
+  ],
+  "engineering": [
+    {
+      "title": "Een engineeringdag op de verdieping",
+      "body": [
+        "Engineers hebben twee dingen nodig die tegen elkaar in werken: lange stukken zonder onderbreking, en snel een antwoord als ze vastzitten. Een verdieping geeft je allebei, omdat je ziet wie geconcentreerd werkt voordat je erheen loopt."
+      ],
+      "items": [
+        {
+          "title": "Standup",
+          "detail": "10:00",
+          "body": "Het team loopt de vergaderruimte in, doet het rondje in tien minuten en loopt weer naar buiten."
+        },
+        {
+          "title": "Geconcentreerd",
+          "detail": "10:15",
+          "body": "Zet jezelf op bezet. Je bent nog steeds op de verdieping, dus mensen zien dat je werkt en weten dat ze moeten wachten."
+        },
+        {
+          "title": "Losgemaakt",
+          "detail": "14:30",
+          "body": "Faalt de build? Kijk wie beschikbaar is, loop erheen, deel de logs en los het in tien minuten op in plaats van morgen."
+        },
+        {
+          "title": "Review",
+          "detail": "16:00",
+          "body": "Twee of drie mensen in een meeting, één deelt de pull request, en jullie bespreken hem in plaats van veertig opmerkingen te schrijven."
+        }
+      ]
+    },
+    {
+      "title": "Wat een engineeringteam nodig heeft, en hoe de verdieping dat dekt",
+      "table": {
+        "head": [
+          "Behoefte",
+          "In TinyFloor",
+          "Elders houden"
+        ],
+        "rows": [
+          [
+            "Focustijd",
+            "Een bezet-status. Niemand hoort je tot je een gesprek start, en er is geen open microfoon.",
+            "Je editor en je meldingsinstellingen."
+          ],
+          [
+            "Snelle vragen",
+            "Loop naar wie het weet en tik om te bellen. Eerst stem, scherm delen met één klik.",
+            "—"
+          ],
+          [
+            "Pairen",
+            "Een gesprek met een gedeeld venster; een derde maakt er een meeting van.",
+            "Live Share of Code With Me, als jullie allebei moeten typen."
+          ],
+          [
+            "Standups en demo's",
+            "De hoofdmeeting, altijd open, met scherm delen.",
+            "—"
+          ],
+          [
+            "Incidenten",
+            "Een meeting vernoemd naar het incident, waar iedereen bij gevraagd kan worden.",
+            "Je alerting en statuspagina."
+          ],
+          [
+            "Geschreven beslissingen",
+            "Kanalen en directe berichten die hun geschiedenis bewaren.",
+            "Pull requests, tickets en documentatie."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Standaard stil",
+      "items": [
+        {
+          "title": "Geen open microfoons",
+          "body": "Op de verdieping zijn betekent niet gehoord worden. Geluid begint pas als iemand een gesprek start of je een meeting binnengaat."
+        },
+        {
+          "title": "Statussen die je zelf kiest",
+          "body": "Beschikbaar, bezet of afwezig, door jou gekozen. Niets meldt hoe lang je aan je bureau zit of hoe lang je inactief was."
+        },
+        {
+          "title": "Camera's die rusten",
+          "body": "Gesprekken beginnen met stem. Een camera die tien minuten aanstond zonder dat iemand praatte, gaat vanzelf uit."
+        },
+        {
+          "title": "Geen pings om terug te komen",
+          "body": "TinyFloor stuurt geen e-mails of meldingen om mensen naar de verdieping te halen. De titel van het tabblad toont ongelezen berichten, en dat is alles."
+        }
+      ]
+    },
+    {
+      "title": "Een incident afhandelen op de verdieping",
+      "items": [
+        {
+          "title": "Open er een ruimte voor",
+          "body": "Start een meeting vernoemd naar het incident en vraag wie dienst heeft erbij. De hele verdieping ziet wie erin zit, dus niemand hoeft te vragen wat er aan de hand is."
+        },
+        {
+          "title": "Deel waar je naar kijkt",
+          "body": "Dashboards, logs en de deploy-pipeline op het scherm, zodat iedereen naar hetzelfde kijkt."
+        },
+        {
+          "title": "Haal mensen erbij en laat ze weer gaan",
+          "body": "Vraag wie de service schreef erbij; als die heeft geantwoord, loopt die terug naar het bureau."
+        },
+        {
+          "title": "Schrijf het op",
+          "body": "Post de tijdlijn en wat jullie veranderden in een kanaal zolang het vers is, klaar voor de evaluatie."
+        }
+      ]
+    },
+    {
+      "title": "Hoe het naast je tools past",
+      "body": [
+        "TinyFloor draait in een browsertab naast je editor, terminal en chat. Het is niet gekoppeld aan GitHub, GitLab, Jira of Linear, en het post niets in Slack. Dat is bewust: het is waar het team praat, en het werk wordt bijgehouden waar het al staat. Veel teams houden Slack voor geschreven berichten en gebruiken TinyFloor voor aanwezigheid, gesprekken en meetings."
+      ]
+    }
+  ],
+  "meetingRoom": [
+    {
+      "title": "Zo werkt een meeting in TinyFloor",
+      "body": [
+        "De meeste videotools beginnen met een link. TinyFloor begint met een ruimte: elk kantoor heeft een hoofdmeeting die altijd open is, en iedereen kan er een andere naast starten."
+      ],
+      "items": [
+        {
+          "title": "Meedoen",
+          "detail": "1",
+          "body": "Druk op Meedoen bij de meeting van het kantoor. Een korte check laat je camera en microfoon zien, en dan loopt je poppetje de vergaderruimte in."
+        },
+        {
+          "title": "Praten",
+          "detail": "2",
+          "body": "Eerst stem; zet je camera aan als je wilt. Wie praat krijgt de grote kaart, met drie andere ernaast."
+        },
+        {
+          "title": "Delen",
+          "detail": "3",
+          "body": "Deel een venster, een tabblad of je scherm. Het verschijnt op het podium naast de mensen."
+        },
+        {
+          "title": "Naar buiten",
+          "detail": "4",
+          "body": "Verlaat de meeting en je bent terug op de verdieping. Per ongeluk weggelopen? Opnieuw meedoen is één klik."
+        }
+      ]
+    },
+    {
+      "title": "De hoofdmeeting en de meetings die je zelf start",
+      "table": {
+        "head": [
+          "",
+          "De meeting van het kantoor",
+          "Een meeting die je start"
+        ],
+        "rows": [
+          [
+            "Wanneer die er is",
+            "Altijd, vernoemd naar het kantoor",
+            "Vanaf de start tot de laatste persoon vertrekt"
+          ],
+          [
+            "Wie erin zit",
+            "Iedereen uit het kantoor die meedoet",
+            "De mensen die je erbij vraagt, en iedereen die meedoet"
+          ],
+          [
+            "Goed voor",
+            "Standups, teambijeenkomsten, een snelle afstemming",
+            "Een designreview, een klantvoorbereiding, een incident"
+          ],
+          [
+            "Hoe je hem vindt",
+            "Op de verdieping en in de lijst met meetings",
+            "Uitgenodigd bij naam, en vermeld onder \"ook nu bezig\""
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Mensen erbij vragen, zonder agenda",
+      "items": [
+        {
+          "title": "Starten en vragen",
+          "body": "Geef de meeting een naam, kies wie je wilt vragen en druk op Starten. Zij krijgen een verzoek met de naam van de meeting en kunnen meedoen of \"niet nu\" zeggen."
+        },
+        {
+          "title": "Vanuit een gesprek",
+          "body": "In gesprek met één persoon en wil je een derde erbij? Loop naar die persoon en TinyFloor biedt aan er een meeting voor jullie drieën van te maken."
+        },
+        {
+          "title": "Eerst zien wie vrij is",
+          "body": "De lijst met mensen laat zien wie vrij is om te praten, wie bezet is en wie al in een andere meeting zit, dus je vraagt alleen mensen die kunnen komen."
+        }
+      ]
+    },
+    {
+      "title": "Een podium dat het gesprek volgt",
+      "items": [
+        {
+          "title": "Wie praat, staat groot",
+          "body": "De grote kaart gaat naar wie praat, maar pas als de vorige spreker even stil is geweest, zodat hij niet bij elk \"hm-hm\" flikkert."
+        },
+        {
+          "title": "Zet vast wat telt",
+          "body": "Zet een persoon of een gedeeld scherm vast om het groot te houden terwijl anderen praten."
+        },
+        {
+          "title": "Zonder camera, toch aanwezig",
+          "body": "Wie geen camera aan heeft, verschijnt als een kaart die oplicht bij het praten, dus de ruimte ziet er nooit leeg uit."
+        },
+        {
+          "title": "Rustig voor de ogen",
+          "body": "Een camera die tien minuten aanstond zonder dat iemand praatte, gaat vanzelf uit. Niemand blijft in beeld als er niets te zeggen is."
+        }
+      ]
+    },
+    {
+      "title": "Wat het niet doet",
+      "body": [
+        "Er is geen opname, geen transcriptie en geen AI-notities. Meetings vinden plaats in je kantoor: er zijn geen inbelnummers en geen webinarmodus voor een groot publiek. Gedeelde schermen sturen het beeld, geen geluid. Heb je dat nodig, gebruik dan Zoom of Google Meet voor die meeting en TinyFloor voor de dagelijkse."
+      ]
+    }
   ]
 }

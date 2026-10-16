@@ -2549,5 +2549,231 @@
         "Nie ma gier, quizów, ekranów YouTube ani przestrzeni na wydarzenia dla stu gości. To małe biuro dla zespołu, który pracuje razem codziennie, a ekspres do kawy to chwila między zadaniami. Na firmową imprezę albo duże wydarzenie towarzyskie Kumospace i Gather mają więcej wbudowanych funkcji."
       ]
     }
+  ],
+  "engineering": [
+    {
+      "title": "Dzień programisty na piętrze",
+      "body": [
+        "Programiści potrzebują dwóch rzeczy, które się wykluczają: długich okresów bez przerywania i szybkiej odpowiedzi, gdy utkną. Piętro daje jedno i drugie, bo widzisz, kto pracuje w skupieniu, zanim do niego podejdziesz."
+      ],
+      "items": [
+        {
+          "title": "Stand-up",
+          "detail": "10:00",
+          "body": "Zespół wchodzi do sali spotkań, robi rundę w dziesięć minut i wychodzi."
+        },
+        {
+          "title": "Skupienie",
+          "detail": "10:15",
+          "body": "Ustaw się jako zajęty. Nadal jesteś na piętrze, więc widać, że pracujesz, i wiadomo, że trzeba poczekać."
+        },
+        {
+          "title": "Odblokowanie",
+          "detail": "14:30",
+          "body": "Build nie przechodzi? Zobacz, kto jest dostępny, podejdź, udostępnij logi i rozwiążcie to w dziesięć minut zamiast jutro."
+        },
+        {
+          "title": "Przegląd",
+          "detail": "16:00",
+          "body": "Dwie, trzy osoby na spotkaniu, jedna udostępnia pull request i omawiacie go zamiast pisać czterdzieści komentarzy."
+        }
+      ]
+    },
+    {
+      "title": "Czego potrzebuje zespół programistów i jak piętro to zapewnia",
+      "table": {
+        "head": [
+          "Potrzeba",
+          "W TinyFloor",
+          "Zostaw gdzie indziej"
+        ],
+        "rows": [
+          [
+            "Czas na skupienie",
+            "Status zajęty. Nikt cię nie słyszy, dopóki nie zaczniesz rozmowy, i nie ma otwartego mikrofonu.",
+            "Edytor i ustawienia powiadomień."
+          ],
+          [
+            "Szybkie pytania",
+            "Podejdź do osoby, która wie, i dotknij, żeby zadzwonić. Najpierw głos, udostępnianie ekranu jednym kliknięciem.",
+            "—"
+          ],
+          [
+            "Programowanie w parze",
+            "Rozmowa z udostępnionym oknem; trzecia osoba zamienia ją w spotkanie.",
+            "Live Share albo Code With Me, jeśli obie osoby muszą pisać."
+          ],
+          [
+            "Stand-upy i dema",
+            "Główne spotkanie, zawsze otwarte, z udostępnianiem ekranu.",
+            "—"
+          ],
+          [
+            "Incydenty",
+            "Spotkanie nazwane od incydentu, do którego można zaprosić każdego.",
+            "Wasze alerty i strona statusu."
+          ],
+          [
+            "Decyzje na piśmie",
+            "Kanały i wiadomości prywatne, które zachowują historię.",
+            "Pull requesty, zgłoszenia i dokumentacja."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Domyślnie cicho",
+      "items": [
+        {
+          "title": "Bez otwartych mikrofonów",
+          "body": "Bycie na piętrze nie oznacza, że ktoś cię słyszy. Dźwięk pojawia się dopiero, gdy ktoś zacznie rozmowę albo dołączysz do spotkania."
+        },
+        {
+          "title": "Statusy ustawiane samodzielnie",
+          "body": "Dostępny, zajęty albo nieobecny, wybrane przez ciebie. Nic nie raportuje, jak długo siedzisz przy biurku ani jak długo byłeś nieaktywny."
+        },
+        {
+          "title": "Kamery, które odpoczywają",
+          "body": "Rozmowy zaczynają się od głosu. Kamera włączona przez dziesięć minut, gdy nikt nie mówi, wyłącza się sama."
+        },
+        {
+          "title": "Bez ponagleń do powrotu",
+          "body": "TinyFloor nie wysyła maili ani powiadomień, żeby ściągać ludzi na piętro. Tytuł karty pokazuje nieprzeczytane wiadomości i to wszystko."
+        }
+      ]
+    },
+    {
+      "title": "Obsługa incydentu na piętrze",
+      "items": [
+        {
+          "title": "Otwórz na niego pokój",
+          "body": "Załóż spotkanie nazwane od incydentu i zaproś osobę na dyżurze. Całe piętro widzi, kto jest w środku, więc nikt nie musi pytać, co się dzieje."
+        },
+        {
+          "title": "Udostępnij to, na co patrzysz",
+          "body": "Dashboardy, logi i pipeline wdrożeń na ekranie, żeby wszyscy patrzyli na to samo."
+        },
+        {
+          "title": "Zaproś ludzi, a potem ich puść",
+          "body": "Zaproś osobę, która napisała serwis; gdy odpowie, wraca do swojego biurka."
+        },
+        {
+          "title": "Zapisz to",
+          "body": "Wrzuć przebieg zdarzeń i wprowadzone zmiany na kanał, póki wszystko jest świeże, gotowe do podsumowania."
+        }
+      ]
+    },
+    {
+      "title": "Jak pasuje do waszych narzędzi",
+      "body": [
+        "TinyFloor działa w karcie przeglądarki obok edytora, terminala i czatu. Nie łączy się z GitHubem, GitLabem, Jirą ani Linearem i nic nie publikuje w Slacku. To celowe: to miejsce, gdzie zespół rozmawia, a praca jest śledzona tam, gdzie już jest. Wiele zespołów zostawia Slacka do wiadomości pisanych, a TinyFloor używa do obecności, rozmów i spotkań."
+      ]
+    }
+  ],
+  "meetingRoom": [
+    {
+      "title": "Jak działa spotkanie w TinyFloor",
+      "body": [
+        "Większość narzędzi wideo zaczyna od linku. TinyFloor zaczyna od pokoju: każde biuro ma główne spotkanie, które jest zawsze otwarte, a każdy może obok założyć kolejne."
+      ],
+      "items": [
+        {
+          "title": "Dołącz",
+          "detail": "1",
+          "body": "Naciśnij Dołącz przy spotkaniu biura. Szybki podgląd pokazuje kamerę i mikrofon, a potem twoja postać wchodzi do sali spotkań."
+        },
+        {
+          "title": "Rozmawiaj",
+          "detail": "2",
+          "body": "Najpierw głos; włącz kamerę, jeśli chcesz. Kto mówi, ten zajmuje dużą kartę, a obok są trzy kolejne."
+        },
+        {
+          "title": "Udostępnij",
+          "detail": "3",
+          "body": "Udostępnij okno, kartę albo ekran. Pojawia się na scenie obok ludzi."
+        },
+        {
+          "title": "Wyjdź",
+          "detail": "4",
+          "body": "Wyjdź i wracasz na piętro. Wyszedłeś przez pomyłkę? Powrót to jedno kliknięcie."
+        }
+      ]
+    },
+    {
+      "title": "Główne spotkanie i te, które zakładasz",
+      "table": {
+        "head": [
+          "",
+          "Spotkanie biura",
+          "Spotkanie, które zakładasz"
+        ],
+        "rows": [
+          [
+            "Kiedy istnieje",
+            "Zawsze, nazwane od biura",
+            "Od założenia do wyjścia ostatniej osoby"
+          ],
+          [
+            "Kto w nim jest",
+            "Każdy z biura, kto dołączy",
+            "Osoby, które zaprosisz, i każdy, kto dołączy"
+          ],
+          [
+            "Dobre do",
+            "Stand-upów, spotkań całego zespołu, szybkiego uzgodnienia",
+            "Przeglądu projektu, przygotowania do klienta, incydentu"
+          ],
+          [
+            "Jak je znaleźć",
+            "Na piętrze i na liście spotkań",
+            "Zaproszenie po nazwie i lista „teraz trwa też”"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Zapraszanie bez kalendarza",
+      "items": [
+        {
+          "title": "Załóż i zaproś",
+          "body": "Nazwij spotkanie, wybierz, kogo zaprosić, i naciśnij Rozpocznij. Dostaną prośbę z nazwą spotkania i mogą dołączyć albo odpowiedzieć „nie teraz”."
+        },
+        {
+          "title": "Z rozmowy",
+          "body": "Rozmawiasz z jedną osobą i chcesz dołączyć trzecią? Podejdź do niej, a TinyFloor zaproponuje spotkanie dla was trojga."
+        },
+        {
+          "title": "Najpierw zobacz, kto jest wolny",
+          "body": "Lista osób pokazuje, kto może rozmawiać, kto jest zajęty, a kto już siedzi na innym spotkaniu, więc zapraszasz tylko tych, którzy mogą przyjść."
+        }
+      ]
+    },
+    {
+      "title": "Scena, która podąża za rozmową",
+      "items": [
+        {
+          "title": "Mówiący na dużej karcie",
+          "body": "Duża karta przechodzi na osobę, która mówi, ale dopiero gdy poprzednia zrobi przerwę, żeby nie migała przy każdym „mhm”."
+        },
+        {
+          "title": "Przypnij to, co ważne",
+          "body": "Przypnij osobę albo udostępniony ekran, żeby pozostał duży, gdy mówią inni."
+        },
+        {
+          "title": "Bez kamery, ale obecny",
+          "body": "Kto nie ma kamery, pojawia się jako karta, która podświetla się, gdy mówi, więc pokój nigdy nie wygląda na pusty."
+        },
+        {
+          "title": "Odpoczynek dla oczu",
+          "body": "Kamera włączona przez dziesięć minut, gdy nikt nie mówi, wyłącza się sama. Nikt nie siedzi przed kamerą, gdy nie ma nic do powiedzenia."
+        }
+      ]
+    },
+    {
+      "title": "Czego nie robi",
+      "body": [
+        "Nie ma nagrywania, transkrypcji ani notatek AI. Spotkania odbywają się w twoim biurze: nie ma numerów do dzwonienia ani trybu webinaru dla dużej publiczności. Udostępnione ekrany przesyłają obraz, nie dźwięk. Jeśli tego potrzebujesz, na to jedno spotkanie użyj Zooma albo Google Meet, a TinyFloor zostaw na codzienne."
+      ]
+    }
   ]
 }

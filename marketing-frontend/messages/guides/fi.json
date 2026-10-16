@@ -772,7 +772,7 @@
           },
           {
             "title": "SpatialChat",
-            "detail": "Ilmainen 2 tuntia päivässä 12 hengelle · 5 $ käyttäjältä päivässä, Business alkaen 399 $ kuukaudessa",
+            "detail": "Ilmainen 2 tuntia päivässä 12 hengelle · Business 8 $ käyttäjältä kuukaudessa",
             "body": "Huoneita, joissa on tilaääni ja videokuplat, paljon käytössä tapahtumissa, opetuksessa ja työpajoissa. Ilmainen paketti sopii satunnaisiin sessioihin; koko päivän paikalla oleva tiimi tarvitsee Business-paketin."
           },
           {
@@ -818,6 +818,12 @@
               "54 $"
             ],
             [
+              "SpatialChat Business",
+              "Käyttäjältä",
+              "2 tuntia päivässä, enintään 12 henkeä",
+              "63,33 $ vuosittain, 80 $ kuukausittain"
+            ],
+            [
               "oVice Entry-S",
               "Tilaa kohden, vuosittain",
               "Esiversio, ilman tukea",
@@ -852,12 +858,6 @@
               "Aktiiviselta jäseneltä, kuukausittain",
               "Ei, 14 päivän kokeilu",
               "195 $"
-            ],
-            [
-              "SpatialChat",
-              "Päiväpassit tai Business-paketti",
-              "2 tuntia päivässä, enintään 12 henkeä",
-              "50 $ päivässä passeilla, Business alkaen 399 $"
             ]
           ],
           "note": "Hinnat ilman veroja, kunkin tuotteen hintasivulta lokakuussa 2026. Ilmainen paketti, joka kattaa koko tiimisi, voittaa minkä tahansa maksullisen: WorkAdventuren paketti kattaa 10 henkeä yhtä aikaa ja SoWorkin 10 jäsentä 30 minuutin palavereilla."

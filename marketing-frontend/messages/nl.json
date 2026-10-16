@@ -178,11 +178,11 @@
       "spatialchat": {
         "label": "SpatialChat-alternatief",
         "meta": {
-          "title": "SpatialChat-alternatief zonder daglimiet",
-          "description": "Het gratis abonnement van SpatialChat staat 2 uur per dag toe. TinyFloor is een gratis virtueel pixel-art kantoor met gesprekken op basis van nabijheid dat de hele dag open kan blijven."
+          "title": "Alternatief voor SpatialChat: prijzen, het gratis abonnement van 2 uur en een kantoor voor de hele dag",
+          "description": "Het gratis abonnement van SpatialChat staat 2 uur vergaderen per dag toe, en het abonnement voor een virtueel kantoor kost $ 8 per gebruiker per maand. Wat een klein team betaalt, wat SpatialChat beter doet en TinyFloor, een kantoor dat de hele dag openblijft, voor $ 29 voor het hele team."
         },
         "title": "Een <em>SpatialChat-alternatief</em> dat de hele dag open blijft.",
-        "subtitle": "SpatialChat is gebouwd rond evenementen, en het gratis abonnement stopt na 2 uur per dag. TinyFloor is een kantoor, dus de ruimte blijft open zolang je team werkt.",
+        "subtitle": "SpatialChat is ontstaan rond evenementen, en het gratis abonnement stopt na 2 uur vergaderen per dag. Het abonnement voor een virtueel kantoor kost $ 8 per gebruiker per maand. TinyFloor is een kantoor, dus de ruimte blijft open zolang je team werkt, voor één prijs per team.",
         "points": [
           {
             "title": "Geen daglimiet",
@@ -198,15 +198,19 @@
           }
         ],
         "them": {
-          "price": "Day Pass $ 5 per gebruiker per dag, Business vanaf $ 399 per maand",
-          "freePlan": "2 uur per dag, tot 12 mensen",
+          "price": "Business $ 8 per gebruiker per maand, $ 76 per jaar (abonnement virtueel kantoor)",
+          "freePlan": "2 uur vergaderen per dag, tot 12 mensen",
           "browser": "Ja",
           "screenShare": "Ja"
         },
         "faq": [
           {
             "q": "Is SpatialChat gratis?",
-            "a": "SpatialChat heeft een gratis abonnement met maximaal 2 uur vergaderen per dag voor maximaal 12 deelnemers. Betaalde opties zijn een Day Pass van $ 5 per gebruiker en Business-abonnementen vanaf $ 399 per maand. TinyFloor heeft op geen enkel abonnement een daglimiet, ook niet op het gratis abonnement."
+            "a": "SpatialChat heeft een gratis abonnement met maximaal 2 uur vergaderen per dag voor maximaal 12 deelnemers en 4 ruimtes. Voor een kantoor kost het Business-abonnement $ 8 per gebruiker per maand, of $ 76 per jaar; Enterprise kost $ 12 per maand of $ 120 per jaar. TinyFloor heeft op geen enkel abonnement een daglimiet, ook niet op het gratis abonnement."
+          },
+          {
+            "q": "Wat kost SpatialChat voor 10 mensen?",
+            "a": "Met het Business-abonnement voor een virtueel kantoor $ 80 per maand bij maandbetaling, of $ 760 per jaar ($ 63,33 per maand). TinyFloor kost $ 29 per maand voor hetzelfde team."
           },
           {
             "q": "Is TinyFloor geschikt voor virtuele evenementen?",
@@ -214,11 +218,11 @@
           },
           {
             "q": "Wat heeft SpatialChat dat TinyFloor niet heeft?",
-            "a": "SpatialChat voegt vastgezette bestanden en grote evenementen toe. TinyFloor richt zich op dagelijkse aanwezigheid, korte gesprekken en scherm delen in gesprekken en vergaderingen."
+            "a": "SpatialChat biedt evenementruimtes voor duizenden deelnemers, vastgezette bestanden, opgeslagen opnames en, met Enterprise, single sign-on. TinyFloor richt zich op aanwezigheid in het dagelijks werk, korte gesprekken en schermdelen in gesprekken en vergaderingen."
           },
           {
-            "q": "Werken gesprekken tussen browsers?",
-            "a": "Ja. Gesprekken in TinyFloor lopen via WebRTC in de browser, over het relaynetwerk van Cloudflare, dus ze verbinden op elk netwerk, op kantoor of thuis."
+            "q": "Werken gesprekken tussen verschillende browsers?",
+            "a": "Ja. Gesprekken in TinyFloor lopen via WebRTC in de browser, over het relaynetwerk van Cloudflare, dus ze verbinden op elk kantoor- of thuisnetwerk."
           }
         ]
       },
@@ -640,11 +644,11 @@
       "slackHuddles": {
         "label": "Alternatief voor Slack huddles",
         "meta": {
-          "title": "Alternatief voor Slack huddles: zie wie vrij is en loop erheen",
-          "description": "Een Slack huddle is een gesprek in het wilde weg. TinyFloor laat eerst zien wie vrij is, daarna loop je erheen om te praten. Een virtueel kantoor naast Slack, gratis voor 3 mensen."
+          "title": "Alternatief voor Slack-huddles: zie wie vrij is en loop erheen",
+          "description": "Een Slack-huddle is een gesprek in het wilde weg, en het gratis abonnement van Slack beperkt het tot twee mensen. TinyFloor laat eerst zien wie vrij is, daarna loop je erheen. Een virtueel kantoor naast Slack, gratis voor 3, $ 29 per maand voor het hele team."
         },
         "title": "Een <em>alternatief voor Slack huddles</em> waarbij je eerst ziet wie vrij is.",
-        "subtitle": "Een huddle is een gesprek dat je start zonder te weten of het uitkomt. Op TinyFloor zie je wie er is, wie bezig is en wie al praat, en dan loop je erheen.",
+        "subtitle": "Een huddle is een gesprek dat je start zonder te weten of het uitkomt, en op het gratis abonnement van Slack past het bij twee mensen. In TinyFloor zie je wie er is, wie bezig is en wie al praat, en dan loop je erheen.",
         "points": [
           {
             "title": "Eerst kijken, dan bellen",
@@ -660,27 +664,27 @@
           }
         ],
         "them": {
-          "price": "Groepshuddles vragen om Slack Pro, met een prijs per gebruiker",
-          "freePlan": "Slack Free heeft alleen huddles met z'n tweeën",
+          "price": "Groepshuddles vragen een betaald Slack-abonnement, per gebruiker",
+          "freePlan": "Slack Free: huddles van maximaal 2 mensen",
           "browser": "Ja, met desktop- en mobiele apps",
           "screenShare": "Ja"
         },
         "faq": [
           {
-            "q": "Wat is een Slack huddle?",
-            "a": "Een huddle is een kort audio- of videogesprek in Slack, gestart vanuit een kanaal of een direct bericht. In het gratis abonnement van Slack zijn huddles tussen twee mensen; groepshuddles vragen om een betaald abonnement."
+            "q": "Wat is een Slack-huddle?",
+            "a": "Een huddle is een snel audio- of videogesprek in Slack, gestart vanuit een kanaal of privébericht, met schermdelen en een thread voor notities. Op het gratis abonnement van Slack past een huddle bij twee mensen; op betaalde abonnementen tot 50, met 25 tegelijk op video."
           },
           {
-            "q": "Wat is het verschil tussen TinyFloor en een huddle?",
-            "a": "Een huddle begint als iemand belt. Op TinyFloor is je team al samen op één verdieping, dus je ziet wie vrij is en loopt erheen, en de vergaderruimte is er altijd."
+            "q": "Hoe verschilt TinyFloor van een huddle?",
+            "a": "Een huddle begint als iemand belt. In TinyFloor is je team al samen op één vloer, dus je ziet wie vrij is en loopt erheen, en de vergaderruimte is er altijd."
           },
           {
-            "q": "Kan ik TinyFloor samen met Slack gebruiken?",
-            "a": "Ja. Ze zijn niet aan elkaar gekoppeld, maar veel teams houden Slack voor berichten en gebruiken TinyFloor voor aanwezigheid, gesprekken en vergaderingen."
+            "q": "Kan ik TinyFloor met Slack gebruiken?",
+            "a": "Ja. Ze zijn niet met elkaar verbonden, maar veel teams houden Slack voor berichten en gebruiken TinyFloor voor aanwezigheid, gesprekken en vergaderingen."
           },
           {
             "q": "Wat kost TinyFloor?",
-            "a": "Gratis voor maximaal 3 mensen. Pro kost $29 per maand voor het hele team, niet per persoon."
+            "a": "Gratis voor maximaal 3 mensen. Pro kost $ 29 per maand voor het hele team, niet per persoon."
           }
         ]
       },
@@ -735,10 +739,10 @@
         "label": "Gather vs Kumospace",
         "meta": {
           "title": "Gather vs Kumospace: prijzen, gratis abonnementen en een derde optie",
-          "description": "Gather vs Kumospace naast elkaar: prijs, gratis abonnement, browser en schermdelen, en hoe TinyFloor zich verhoudt voor kleine remote teams."
+          "description": "Gather en Kumospace naast elkaar: wat een team bij elk betaalt, gratis abonnementen, opnemen, apps en het kantoor inrichten, en waar TinyFloor past voor kleine remote teams, voor $ 29 voor het hele team."
         },
         "title": "<em>Gather vs Kumospace</em>, en een derde optie.",
-        "subtitle": "Beide rekenen per lid zodra je voorbij de gratis laag bent. Is je team klein en wil je een eenvoudig kantoor, dan is TinyFloor één prijs voor de hele verdieping.",
+        "subtitle": "Beide rekenen per lid zodra je voorbij het gratis deel bent: Gather heeft geen gratis abonnement, dat van Kumospace stopt bij 5. Is je team klein en wil het een eenvoudig kantoor, dan is TinyFloor één prijs voor de hele verdieping.",
         "points": [
           {
             "title": "Gather",
@@ -756,19 +760,19 @@
         "faq": [
           {
             "q": "Wat is goedkoper, Gather of Kumospace?",
-            "a": "Voor een team van 10 begint Gather bij ongeveer $120 per maand en Kumospace Business bij ongeveer $160. Kumospace heeft een gratis abonnement voor maximaal 5 leden; Gather heeft een proefperiode van 30 dagen. TinyFloor Pro kost $29 per maand voor het hele kantoor."
+            "a": "Gather. Voor een team van 10 met jaarlijkse betaling kost Gather $ 120 per maand en Kumospace Business $ 160; maandelijks $ 150 tegenover $ 200. Kumospace heeft een gratis abonnement voor maximaal 5 leden; Gather een proefperiode van 30 dagen. TinyFloor Pro kost $ 29 per maand voor het hele kantoor."
           },
           {
             "q": "Wat is beter voor een klein team?",
-            "a": "Het gratis abonnement van Kumospace past bij maximaal 5 mensen, en Gather bij teams die meer willen aanpassen. Wil je één eenvoudige prijs voor een klein team, dan is TinyFloor daarvoor gemaakt."
+            "a": "Het gratis abonnement van Kumospace past bij maximaal 5 mensen als een openbare ruimte geen probleem is, en Gather past bij teams die hun kantoor willen inrichten en meetings willen opnemen. Wil je één eenvoudige prijs voor een klein team, dan is TinyFloor daarvoor gemaakt."
           },
           {
-            "q": "Draaien Gather en Kumospace in de browser?",
-            "a": "Beide draaien in de browser, Gather met een desktop-app en Kumospace met desktop- en mobiele apps. TinyFloor draait alleen in de browser, op desktop en mobiel, dus er is niets te installeren."
+            "q": "Werken Gather en Kumospace in de browser?",
+            "a": "Beide werken in de browser, Gather met een desktop-app en Kumospace met desktop- en mobiele apps. TinyFloor werkt alleen in de browser, op desktop en mobiel, dus er is niets te installeren."
           },
           {
             "q": "Kunnen we later overstappen naar TinyFloor?",
-            "a": "Ja. Er is niets te migreren: maak een kantoor, deel de uitnodigingslink, en je team loopt binnen."
+            "a": "Ja. Er is niets te migreren: maak een kantoor, deel de uitnodigingslink en je team loopt binnen."
           }
         ]
       },

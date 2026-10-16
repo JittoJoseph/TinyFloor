@@ -772,7 +772,7 @@
           },
           {
             "title": "SpatialChat",
-            "detail": "Gratis 2 uur per dag voor 12 · $ 5 per gebruiker per dag, Business vanaf $ 399 per maand",
+            "detail": "Gratis 2 uur per dag voor 12 · Business $ 8 per gebruiker per maand",
             "body": "Ruimtes met ruimtelijke audio en videobubbels, veel gebruikt voor evenementen, lessen en workshops. Het gratis abonnement past bij losse sessies; een team dat er de hele dag zit, heeft een Business-abonnement nodig."
           },
           {
@@ -818,6 +818,12 @@
               "$ 54"
             ],
             [
+              "SpatialChat Business",
+              "Per gebruiker",
+              "2 uur per dag, tot 12 mensen",
+              "$ 63,33 jaarlijks, $ 80 maandelijks"
+            ],
+            [
               "oVice Entry-S",
               "Per ruimte, jaarlijks",
               "Previewversie, zonder support",
@@ -852,12 +858,6 @@
               "Per actief lid, maandelijks",
               "Geen, proefperiode van 14 dagen",
               "$ 195"
-            ],
-            [
-              "SpatialChat",
-              "Dagpassen of Business-abonnement",
-              "2 uur per dag, tot 12 mensen",
-              "$ 50 per dag met passen, Business vanaf $ 399"
             ]
           ],
           "note": "Prijzen zonder belasting, van de prijspagina van elk product in oktober 2026. Een gratis abonnement dat je hele team dekt, verslaat elk betaald abonnement: dat van WorkAdventure dekt 10 mensen tegelijk, dat van SoWork 10 leden met vergaderingen van 30 minuten."

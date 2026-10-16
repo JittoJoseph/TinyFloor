@@ -178,11 +178,11 @@
       "spatialchat": {
         "label": "Alternativa a SpatialChat",
         "meta": {
-          "title": "Alternativa a SpatialChat senza limiti giornalieri",
-          "description": "Il piano gratuito di SpatialChat consente 2 ore al giorno. TinyFloor è un ufficio virtuale gratuito in pixel art con chiamate di prossimità che puoi lasciare aperto tutto il giorno."
+          "title": "Alternativa a SpatialChat: prezzi, il piano gratuito da 2 ore e un ufficio per tutto il giorno",
+          "description": "Il piano gratuito di SpatialChat consente 2 ore di riunioni al giorno, e il piano per l'ufficio virtuale costa 8 $ a utente al mese. Quanto paga un piccolo team, cosa fa meglio SpatialChat e TinyFloor, un ufficio aperto tutto il giorno, a 29 $ per tutto il team."
         },
         "title": "Un’<em>alternativa a SpatialChat</em> aperta tutto il giorno.",
-        "subtitle": "SpatialChat è pensato per gli eventi, e il suo piano gratuito si ferma dopo 2 ore al giorno. TinyFloor è un ufficio, quindi la stanza resta aperta finché il tuo team lavora.",
+        "subtitle": "SpatialChat è nato attorno agli eventi, e il piano gratuito si ferma dopo 2 ore di riunioni al giorno. Il piano per l'ufficio virtuale costa 8 $ a utente al mese. TinyFloor è un ufficio, quindi la stanza resta aperta finché il team lavora, a un prezzo per team.",
         "points": [
           {
             "title": "Nessun limite giornaliero",
@@ -198,15 +198,19 @@
           }
         ],
         "them": {
-          "price": "Day Pass a 5 $ per utente al giorno, Business da 399 $ al mese",
-          "freePlan": "2 ore al giorno, fino a 12 persone",
+          "price": "Business 8 $ a utente al mese, 76 $ all'anno (piano ufficio virtuale)",
+          "freePlan": "2 ore di riunioni al giorno, fino a 12 persone",
           "browser": "Sì",
           "screenShare": "Sì"
         },
         "faq": [
           {
             "q": "SpatialChat è gratis?",
-            "a": "SpatialChat ha un piano gratuito con fino a 2 ore di riunioni al giorno per un massimo di 12 partecipanti. Le opzioni a pagamento includono un Day Pass da 5 $ per utente e piani Business da 399 $ al mese. TinyFloor non ha limiti giornalieri in nessun piano, nemmeno in quello gratuito."
+            "a": "SpatialChat ha un piano gratuito con fino a 2 ore di riunioni al giorno per un massimo di 12 partecipanti e 4 stanze. Per un ufficio, il piano Business costa 8 $ a utente al mese, o 76 $ all'anno; Enterprise costa 12 $ al mese o 120 $ all'anno. TinyFloor non ha limiti giornalieri in nessun piano, nemmeno in quello gratuito."
+          },
+          {
+            "q": "Quanto costa SpatialChat per 10 persone?",
+            "a": "Con il piano Business per l'ufficio virtuale, 80 $ al mese con fatturazione mensile, o 760 $ all'anno (63,33 $ al mese). TinyFloor costa 29 $ al mese per lo stesso team."
           },
           {
             "q": "TinyFloor va bene per gli eventi virtuali?",
@@ -214,11 +218,11 @@
           },
           {
             "q": "Cosa ha SpatialChat che TinyFloor non ha?",
-            "a": "SpatialChat aggiunge file fissati e grandi eventi. TinyFloor si concentra sulla presenza quotidiana, sulle conversazioni rapide e sulla condivisione dello schermo in chiamate e riunioni."
+            "a": "SpatialChat aggiunge spazi per eventi da migliaia di partecipanti, file fissati, registrazioni salvate e, con Enterprise, l'accesso unico. TinyFloor si concentra sulla presenza quotidiana, sulle conversazioni veloci e sulla condivisione schermo in chiamate e riunioni."
           },
           {
-            "q": "Le chiamate funzionano tra browser?",
-            "a": "Sì. Le chiamate di TinyFloor passano su WebRTC nel browser, attraverso la rete di relay di Cloudflare, quindi si collegano su qualsiasi rete, in ufficio o a casa."
+            "q": "Le chiamate funzionano tra browser diversi?",
+            "a": "Sì. Le chiamate di TinyFloor passano da WebRTC nel browser, attraverso la rete di relay di Cloudflare, quindi si collegano su qualsiasi rete, in ufficio o a casa."
           }
         ]
       },
@@ -640,11 +644,11 @@
       "slackHuddles": {
         "label": "Alternativa agli huddle di Slack",
         "meta": {
-          "title": "Alternativa agli huddle di Slack: vedi chi è libero, poi raggiungilo",
-          "description": "Un huddle di Slack è una chiamata al buio. TinyFloor mostra prima chi è libero, poi lo raggiungi per parlare. Un ufficio virtuale accanto a Slack, gratis per 3 persone."
+          "title": "Alternativa agli huddle di Slack: vedi chi è libero, poi vai da lui",
+          "description": "Un huddle di Slack è una chiamata al buio, e il piano gratuito di Slack lo limita a due persone. TinyFloor ti mostra prima chi è libero, poi vai da lui. Un ufficio virtuale accanto a Slack, gratis fino a 3 e 29 $ al mese per tutto il team."
         },
         "title": "Un'<em>alternativa agli huddle di Slack</em> dove vedi prima chi è libero.",
-        "subtitle": "Un huddle è una chiamata che fai senza sapere se è il momento giusto. Su TinyFloor vedi chi c'è, chi è occupato e chi sta già parlando, poi ti avvicini.",
+        "subtitle": "Un huddle è una chiamata che avvii senza sapere se è il momento giusto, e con il piano gratuito di Slack ospita due persone. In TinyFloor vedi chi c'è, chi è occupato e chi sta già parlando, poi ti avvicini.",
         "points": [
           {
             "title": "Guarda prima di chiamare",
@@ -660,27 +664,27 @@
           }
         ],
         "them": {
-          "price": "Gli huddle di gruppo richiedono Slack Pro, a prezzo per utente",
-          "freePlan": "Slack Free ha solo huddle a due",
+          "price": "Gli huddle di gruppo richiedono un piano Slack a pagamento, per utente",
+          "freePlan": "Slack Free: huddle fino a 2 persone",
           "browser": "Sì, con app desktop e mobile",
           "screenShare": "Sì"
         },
         "faq": [
           {
             "q": "Cos'è un huddle di Slack?",
-            "a": "Un huddle è una breve chiamata audio o video dentro Slack, avviata da un canale o da un messaggio diretto. Nel piano gratuito di Slack gli huddle sono tra due persone; quelli di gruppo richiedono un piano a pagamento."
+            "a": "Un huddle è una chiamata audio o video veloce dentro Slack, avviata da un canale o da un messaggio diretto, con condivisione schermo e un thread per le note. Con il piano gratuito di Slack un huddle ospita due persone; con i piani a pagamento fino a 50, di cui 25 in video alla volta."
           },
           {
             "q": "In cosa TinyFloor è diverso da un huddle?",
-            "a": "Un huddle inizia quando qualcuno chiama. Su TinyFloor il tuo team è già insieme su un piano, quindi vedi chi è libero e ti avvicini, e la sala riunioni è sempre lì."
+            "a": "Un huddle inizia quando qualcuno chiama. In TinyFloor il team è già insieme su un piano, quindi vedi chi è libero e ti avvicini, e la sala riunioni è sempre lì."
           },
           {
             "q": "Posso usare TinyFloor con Slack?",
-            "a": "Sì. Non sono collegati tra loro, ma molti team tengono Slack per i messaggi e usano TinyFloor per presenza, chiamate e riunioni."
+            "a": "Sì. Non sono collegati, ma molti team tengono Slack per i messaggi e usano TinyFloor per presenza, chiamate e riunioni."
           },
           {
             "q": "Quanto costa TinyFloor?",
-            "a": "Gratis fino a 3 persone. Pro costa $29 al mese per tutto il team, non a persona."
+            "a": "Gratis fino a 3 persone. Pro costa 29 $ al mese per tutto il team, non a persona."
           }
         ]
       },
@@ -735,10 +739,10 @@
         "label": "Gather vs Kumospace",
         "meta": {
           "title": "Gather vs Kumospace: prezzi, piani gratuiti e una terza opzione",
-          "description": "Gather vs Kumospace a confronto: prezzo, piano gratuito, browser e condivisione dello schermo, e come si confronta TinyFloor per piccoli team da remoto."
+          "description": "Gather e Kumospace a confronto: quanto paga un team su ciascuno, piani gratuiti, registrazione, app e allestimento dell'ufficio, e dove si inserisce TinyFloor per i piccoli team remoti, a 29 $ per tutto il team."
         },
         "title": "<em>Gather vs Kumospace</em>, e una terza opzione.",
-        "subtitle": "Entrambi fanno pagare per membro una volta superato il livello gratuito. Se il tuo team è piccolo e vuole un ufficio semplice, TinyFloor ha un solo prezzo per tutto il piano.",
+        "subtitle": "Entrambi fanno pagare per membro appena superi la parte gratuita: Gather non ha un piano gratuito, quello di Kumospace si ferma a 5. Se il tuo team è piccolo e vuole un ufficio semplice, TinyFloor è un unico prezzo per tutto il piano.",
         "points": [
           {
             "title": "Gather",
@@ -755,16 +759,16 @@
         ],
         "faq": [
           {
-            "q": "Costa meno Gather o Kumospace?",
-            "a": "Per un team di 10, Gather parte da circa $120 al mese e Kumospace Business da circa $160. Kumospace ha un piano gratuito fino a 5 membri; Gather ha una prova di 30 giorni. TinyFloor Pro costa $29 al mese per tutto l'ufficio."
+            "q": "Quale costa meno, Gather o Kumospace?",
+            "a": "Gather. Per un team di 10 con fatturazione annuale, Gather costa 120 $ al mese e Kumospace Business 160 $; con fatturazione mensile, 150 contro 200 $. Kumospace ha un piano gratuito fino a 5 membri; Gather una prova di 30 giorni. TinyFloor Pro costa 29 $ al mese per tutto l'ufficio."
           },
           {
-            "q": "Qual è meglio per un piccolo team?",
-            "a": "Il piano gratuito di Kumospace va bene fino a 5 persone, e Gather per i team che vogliono più personalizzazione. Se vuoi un prezzo semplice per un piccolo team, TinyFloor è fatto per questo."
+            "q": "Quale è meglio per un team piccolo?",
+            "a": "Il piano gratuito di Kumospace va bene fino a 5 persone se uno spazio pubblico non è un problema, e Gather va bene per i team che vogliono allestire il proprio ufficio e registrare le riunioni. Se vuoi un prezzo semplice per un team piccolo, TinyFloor è fatto per questo."
           },
           {
             "q": "Gather e Kumospace funzionano nel browser?",
-            "a": "Entrambi funzionano nel browser, Gather con un'app desktop e Kumospace con app desktop e mobile. TinyFloor funziona solo nel browser, su desktop e mobile, quindi non c'è niente da installare."
+            "a": "Entrambi funzionano nel browser, Gather con un'app desktop e Kumospace con app desktop e mobile. TinyFloor funziona solo nel browser, su computer e telefono, quindi non c'è niente da installare."
           },
           {
             "q": "Possiamo passare a TinyFloor più avanti?",

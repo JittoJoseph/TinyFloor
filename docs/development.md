@@ -29,10 +29,6 @@ Measured on 16 October 2026 (English, words a reader sees):
   meeting room, agencies, startups, watercooler, standup, onboarding, pair
   programming, coworking, proximity chat). Each needs its own article: they
   still share the home page's "moments" block.
-- **One-against-one alternative pages:** 560 to 620 words (SpatialChat,
-  Slack huddles, Gather vs Kumospace). Kumospace, which has the most
-  impressions after Gather, WorkAdventure, Teamflow, Roam, Sococo and oVice now
-  have full articles in every language.
 - **The Wonder.me page** serves a product that closed in 2023; decide whether
   to keep it.
 
@@ -47,7 +43,9 @@ Measured on 16 October 2026 (English, words a reader sees):
   `/guides/gather-pricing`; then the pages translated on 16 October, most
   searched first: `/gather-alternative` and `/guides/gather-pricing` in nl,
   pl, sv, da, no, fi, ru, ar, he, zh, and `/virtual-office` and
-  `/discord-for-work` in all 17 other languages. Requested on 16 October: the
+  `/discord-for-work` in all 17 other languages; then the alternative pages
+  rewritten on 16 October (Kumospace, WorkAdventure, Teamflow, Roam, Sococo,
+  oVice, SpatialChat, Slack huddles, Gather vs Kumospace). Requested on 16 October: the
   English Gather guide, round-up, icebreaker tool, virtual office, Discord for
   work and pricing pages, the Portuguese and Spanish Gather pages, and the
   German, French and Italian round-ups.

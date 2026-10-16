@@ -178,11 +178,11 @@
       "spatialchat": {
         "label": "Alternativ til SpatialChat",
         "meta": {
-          "title": "Alternativ til SpatialChat uten daglig grense",
-          "description": "SpatialChats gratisplan tillater 2 timer om dagen. TinyFloor er et gratis virtuelt kontor i pikselgrafikk med samtaler når man står nær, som kan være åpent hele dagen."
+          "title": "Alternativ til SpatialChat: priser, gratisplanen på 2 timer og et kontor for hele dagen",
+          "description": "SpatialChats gratisplan gir 2 timer med møter om dagen, og planen for virtuelt kontor koster 8 $ per bruker i måneden. Hva et lite team betaler, hva SpatialChat gjør bedre, og TinyFloor, et kontor som er åpent hele dagen, til 29 $ for hele teamet."
         },
         "title": "Et <em>alternativ til SpatialChat</em> som er åpent hele dagen.",
-        "subtitle": "SpatialChat er laget for arrangementer, og gratisplanen stopper etter 2 timer om dagen. TinyFloor er et kontor, så rommet er åpent så lenge teamet jobber.",
+        "subtitle": "SpatialChat vokste fram rundt arrangementer, og gratisplanen stopper etter 2 timer med møter om dagen. Planen for virtuelt kontor koster 8 $ per bruker i måneden. TinyFloor er et kontor, så rommet er åpent så lenge teamet jobber, for én pris per team.",
         "points": [
           {
             "title": "Ingen daglig grense",
@@ -198,15 +198,19 @@
           }
         ],
         "them": {
-          "price": "Day Pass 5 $ per bruker per dag, Business fra 399 $ i måneden",
-          "freePlan": "2 timer om dagen, opptil 12 personer",
+          "price": "Business 8 $ per bruker i måneden, 76 $ i året (plan for virtuelt kontor)",
+          "freePlan": "2 timer med møter om dagen, opptil 12 personer",
           "browser": "Ja",
           "screenShare": "Ja"
         },
         "faq": [
           {
             "q": "Er SpatialChat gratis?",
-            "a": "SpatialChat har en gratisplan med opptil 2 timer møter om dagen for opptil 12 deltakere. Betalte alternativer er et Day Pass til 5 $ per bruker og Business-planer fra 399 $ i måneden. TinyFloor har ingen daglig grense på noen plan, heller ikke den gratis."
+            "a": "SpatialChat har en gratisplan med opptil 2 timer med møter om dagen for opptil 12 deltakere og 4 rom. For et kontor koster Business-planen 8 $ per bruker i måneden, eller 76 $ i året; Enterprise koster 12 $ i måneden eller 120 $ i året. TinyFloor har ingen daglig grense i noen plan, heller ikke gratisplanen."
+          },
+          {
+            "q": "Hva koster SpatialChat for 10 personer?",
+            "a": "Med Business-planen for virtuelt kontor 80 $ i måneden ved månedlig betaling, eller 760 $ i året (63,33 $ i måneden). TinyFloor koster 29 $ i måneden for det samme teamet."
           },
           {
             "q": "Passer TinyFloor for virtuelle arrangementer?",
@@ -214,11 +218,11 @@
           },
           {
             "q": "Hva har SpatialChat som TinyFloor ikke har?",
-            "a": "SpatialChat legger til festede filer og store arrangementer. TinyFloor fokuserer på daglig tilstedeværelse, raske samtaler og skjermdeling i samtaler og møter."
+            "a": "SpatialChat har arrangementsrom for tusenvis av deltakere, festede filer, lagrede opptak og, med Enterprise, enkel pålogging. TinyFloor konsentrerer seg om tilstedeværelse i hverdagen, raske samtaler og skjermdeling i samtaler og møter."
           },
           {
-            "q": "Fungerer samtaler mellom nettlesere?",
-            "a": "Ja. Samtaler i TinyFloor går over WebRTC i nettleseren gjennom Cloudflares relénettverk, så de kobler til på alle nettverk, på jobb eller hjemme."
+            "q": "Fungerer samtaler på tvers av nettlesere?",
+            "a": "Ja. Samtaler i TinyFloor går over WebRTC i nettleseren, gjennom Cloudflares relénettverk, så de kobler seg til på alle kontor- og hjemmenettverk."
           }
         ]
       },
@@ -641,10 +645,10 @@
         "label": "Alternativ til Slack-huddles",
         "meta": {
           "title": "Alternativ til Slack-huddles: se hvem som er ledig, og gå bort",
-          "description": "En Slack-huddle er en samtale i blinde. TinyFloor viser først hvem som er ledig, så går du bort og snakker. Et virtuelt kontor ved siden av Slack, gratis for 3 personer."
+          "description": "En Slack-huddle er en samtale i blinde, og Slacks gratisplan begrenser den til to personer. TinyFloor viser først hvem som er ledig, så går du bort. Et virtuelt kontor ved siden av Slack, gratis for 3, 29 $ i måneden for hele teamet."
         },
         "title": "Et <em>alternativ til Slack-huddles</em> der du først ser hvem som er ledig.",
-        "subtitle": "En huddle er en samtale du starter uten å vite om det passer. På TinyFloor ser du hvem som er her, hvem som er opptatt og hvem som allerede snakker, og så går du bort.",
+        "subtitle": "En huddle er en samtale du starter uten å vite om det passer, og på Slacks gratisplan rommer den to personer. I TinyFloor ser du hvem som er der, hvem som er opptatt og hvem som allerede prater, og så går du bort.",
         "points": [
           {
             "title": "Se før du ringer",
@@ -660,27 +664,27 @@
           }
         ],
         "them": {
-          "price": "Gruppehuddles krever Slack Pro, pris per bruker",
-          "freePlan": "Slack Free har bare huddles for to",
-          "browser": "Ja, med apper for datamaskin og mobil",
+          "price": "Gruppehuddles krever en betalt Slack-plan, per bruker",
+          "freePlan": "Slack Free: huddles med opptil 2 personer",
+          "browser": "Ja, med datamaskin- og mobilapper",
           "screenShare": "Ja"
         },
         "faq": [
           {
             "q": "Hva er en Slack-huddle?",
-            "a": "En huddle er en rask lyd- eller videosamtale i Slack, startet fra en kanal eller en direktemelding. I Slacks gratisplan er huddles mellom to personer; gruppehuddles krever en betalt plan."
+            "a": "En huddle er en rask lyd- eller videosamtale i Slack, startet fra en kanal eller en direktemelding, med skjermdeling og en tråd for notater. På Slacks gratisplan rommer en huddle to personer; på betalte planer opptil 50, med 25 på video samtidig."
           },
           {
             "q": "Hvordan skiller TinyFloor seg fra en huddle?",
-            "a": "En huddle starter når noen ringer. På TinyFloor er teamet allerede samlet i én etasje, så du ser hvem som er ledig og går bort, og møterommet er alltid der."
+            "a": "En huddle starter når noen ringer. I TinyFloor er teamet allerede samlet i én etasje, så du ser hvem som er ledig og går bort, og møterommet er alltid der."
           },
           {
             "q": "Kan jeg bruke TinyFloor sammen med Slack?",
-            "a": "Ja. De er ikke koblet sammen, men mange team beholder Slack til meldinger og bruker TinyFloor til tilstedeværelse, samtaler og møter."
+            "a": "Ja. De er ikke koblet sammen, men mange team beholder Slack for meldinger og bruker TinyFloor for tilstedeværelse, samtaler og møter."
           },
           {
             "q": "Hva koster TinyFloor?",
-            "a": "Gratis for opptil 3 personer. Pro koster $29 i måneden for hele teamet, ikke per person."
+            "a": "Gratis for opptil 3 personer. Pro koster 29 $ i måneden for hele teamet, ikke per person."
           }
         ]
       },
@@ -735,10 +739,10 @@
         "label": "Gather vs Kumospace",
         "meta": {
           "title": "Gather vs Kumospace: priser, gratisplaner og et tredje alternativ",
-          "description": "Gather og Kumospace side om side: pris, gratisplan, nettleser og skjermdeling, og hvordan TinyFloor står seg for små team som jobber eksternt."
+          "description": "Gather og Kumospace side om side: hva et team betaler hos hver, gratisplaner, opptak, apper og innredning av kontoret, og hvor TinyFloor passer for små fjernteam, for 29 $ for hele teamet."
         },
         "title": "<em>Gather vs Kumospace</em>, og et tredje alternativ.",
-        "subtitle": "Begge tar betalt per medlem når du er forbi gratisnivået. Hvis teamet er lite og vil ha et enkelt kontor, har TinyFloor én pris for hele etasjen.",
+        "subtitle": "Begge tar betalt per medlem når du er forbi gratisnivået: Gather har ingen gratisplan, og Kumospaces stopper ved 5. Hvis teamet ditt er lite og vil ha et enkelt kontor, er TinyFloor én pris for hele etasjen.",
         "points": [
           {
             "title": "Gather",
@@ -756,19 +760,19 @@
         "faq": [
           {
             "q": "Hva er billigst, Gather eller Kumospace?",
-            "a": "For et team på 10 starter Gather på rundt $120 i måneden og Kumospace Business på rundt $160. Kumospace har en gratisplan for opptil 5 medlemmer; Gather har en prøveperiode på 30 dager. TinyFloor Pro koster $29 i måneden for hele kontoret."
+            "a": "Gather. For et team på 10 med årlig betaling koster Gather 120 $ i måneden og Kumospace Business 160 $; månedlig 150 mot 200 $. Kumospace har en gratisplan for opptil 5 medlemmer; Gather en prøveperiode på 30 dager. TinyFloor Pro koster 29 $ i måneden for hele kontoret."
           },
           {
-            "q": "Hva passer best for et lite team?",
-            "a": "Kumospaces gratisplan passer for opptil 5 personer, og Gather for team som vil tilpasse mer. Vil du ha én enkel pris for et lite team, er TinyFloor laget for det."
+            "q": "Hva er best for et lite team?",
+            "a": "Kumospaces gratisplan passer for opptil 5 personer hvis et offentlig rom er greit, og Gather passer for team som vil innrede kontoret sitt og ta opp møter. Vil du ha én enkel pris for et lite team, er TinyFloor laget for det."
           },
           {
             "q": "Kjører Gather og Kumospace i nettleseren?",
-            "a": "Begge kjører i nettleseren, Gather med en app for datamaskin og Kumospace med apper for datamaskin og mobil. TinyFloor kjører bare i nettleseren, på datamaskin og mobil, så det er ingenting å installere."
+            "a": "Begge kjører i nettleseren, Gather med en datamaskinapp og Kumospace med apper for datamaskin og mobil. TinyFloor kjører bare i nettleseren, på datamaskin og mobil, så det er ingenting å installere."
           },
           {
             "q": "Kan vi bytte til TinyFloor senere?",
-            "a": "Ja. Det er ingenting å flytte: lag et kontor, del invitasjonslenken, så går teamet inn."
+            "a": "Ja. Det er ingenting å flytte: opprett et kontor, del invitasjonslenken, og teamet går inn."
           }
         ]
       },

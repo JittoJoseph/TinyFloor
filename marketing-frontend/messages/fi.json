@@ -178,11 +178,11 @@
       "spatialchat": {
         "label": "SpatialChat-vaihtoehto",
         "meta": {
-          "title": "SpatialChat-vaihtoehto ilman päivärajaa",
-          "description": "SpatialChatin ilmainen paketti sallii 2 tuntia päivässä. TinyFloor on ilmainen pikselitaiteinen virtuaalitoimisto lähipuheluilla, jonka voi pitää auki koko päivän."
+          "title": "Vaihtoehto SpatialChatille: hinnat, 2 tunnin ilmaisversio ja koko päivän toimisto",
+          "description": "SpatialChatin ilmaisversio sallii 2 tuntia kokouksia päivässä, ja virtuaalitoimiston tilaus maksaa 8 $ käyttäjältä kuukaudessa. Mitä pieni tiimi maksaa, missä SpatialChat on parempi ja TinyFloor, koko päivän auki pysyvä toimisto, 29 $:lla koko tiimiltä."
         },
         "title": "<em>SpatialChat-vaihtoehto</em>, joka on auki koko päivän.",
-        "subtitle": "SpatialChat on tehty tapahtumiin, ja sen ilmainen paketti loppuu 2 tunnin jälkeen päivässä. TinyFloor on toimisto, joten huone pysyy auki niin kauan kuin tiimisi tekee töitä.",
+        "subtitle": "SpatialChat syntyi tapahtumien ympärille, ja sen ilmaisversio loppuu 2 tunnin kokousten jälkeen päivässä. Virtuaalitoimiston tilaus maksaa 8 $ käyttäjältä kuukaudessa. TinyFloor on toimisto, joten huone pysyy auki niin kauan kuin tiimi tekee töitä, yhdellä hinnalla tiimiä kohden.",
         "points": [
           {
             "title": "Ei päivärajaa",
@@ -198,27 +198,31 @@
           }
         ],
         "them": {
-          "price": "Day Pass 5 $ käyttäjältä päivässä, Business alkaen 399 $ kuukaudessa",
-          "freePlan": "2 tuntia päivässä, enintään 12 henkeä",
+          "price": "Business 8 $ käyttäjältä kuukaudessa, 76 $ vuodessa (virtuaalitoimiston tilaus)",
+          "freePlan": "2 tuntia kokouksia päivässä, enintään 12 henkeä",
           "browser": "Kyllä",
           "screenShare": "Kyllä"
         },
         "faq": [
           {
             "q": "Onko SpatialChat ilmainen?",
-            "a": "SpatialChatilla on ilmainen paketti, jossa voi pitää kokouksia enintään 2 tuntia päivässä enintään 12 osallistujalle. Maksullisia vaihtoehtoja ovat 5 $ Day Pass käyttäjältä ja Business-paketit alkaen 399 $ kuukaudessa. TinyFloorissa ei ole päivärajaa missään paketissa, ei ilmaisessakaan."
+            "a": "SpatialChatilla on ilmaisversio, jossa voi pitää enintään 2 tuntia kokouksia päivässä enintään 12 osallistujalle ja 4 huoneessa. Toimistokäyttöön Business-tilaus maksaa 8 $ käyttäjältä kuukaudessa tai 76 $ vuodessa; Enterprise maksaa 12 $ kuukaudessa tai 120 $ vuodessa. TinyFloorissa ei ole päivärajaa missään tilauksessa, ei myöskään ilmaisessa."
+          },
+          {
+            "q": "Mitä SpatialChat maksaa 10 hengelle?",
+            "a": "Virtuaalitoimiston Business-tilauksella 80 $ kuukaudessa kuukausilaskutuksella tai 760 $ vuodessa (63,33 $ kuukaudessa). TinyFloor maksaa samalle tiimille 29 $ kuukaudessa."
           },
           {
             "q": "Sopiiko TinyFloor virtuaalitapahtumiin?",
-            "a": "TinyFloor on tehty pienille tiimeille, jotka tekevät töitä yhdessä joka päivä, enintään 15 henkeä toimistossa, enemmän kuin isoille tapahtumille."
+            "a": "TinyFloor on tehty pienille tiimeille, jotka työskentelevät yhdessä joka päivä, enintään 15 henkeä toimistossa, ei niinkään suuriin tapahtumiin."
           },
           {
-            "q": "Mitä SpatialChatissa on, mitä TinyFloorissä ei ole?",
-            "a": "SpatialChat tarjoaa lisäksi kiinnitetyt tiedostot ja suuret tapahtumat. TinyFloor keskittyy arjen läsnäoloon, nopeisiin keskusteluihin ja näytön jakamiseen puheluissa ja kokouksissa."
+            "q": "Mitä SpatialChatissa on, mitä TinyFloorissa ei ole?",
+            "a": "SpatialChatissa on tapahtumatiloja tuhansille osallistujille, kiinnitettäviä tiedostoja, tallennettuja nauhoitteita ja Enterprisessa kertakirjautuminen. TinyFloor keskittyy arjen läsnäoloon, nopeisiin keskusteluihin ja näytönjakoon puheluissa ja kokouksissa."
           },
           {
-            "q": "Toimivatko puhelut selainten välillä?",
-            "a": "Kyllä. TinyFloorin puhelut kulkevat selaimessa WebRTC:llä Cloudflaren välitysverkon kautta, joten ne yhdistyvät missä tahansa verkossa, toimistolla tai kotona."
+            "q": "Toimivatko puhelut eri selainten välillä?",
+            "a": "Kyllä. TinyFloorin puhelut kulkevat WebRTC:llä selaimessa Cloudflaren välitysverkon kautta, joten ne yhdistyvät missä tahansa toimisto- tai kotiverkossa."
           }
         ]
       },
@@ -640,11 +644,11 @@
       "slackHuddles": {
         "label": "Vaihtoehto Slackin huddleille",
         "meta": {
-          "title": "Vaihtoehto Slackin huddleille: katso kuka on vapaana ja kävele luo",
-          "description": "Slackin huddle on puhelu sokkona. TinyFloor näyttää ensin, kuka on vapaana, ja sitten kävelet juttelemaan. Virtuaalitoimisto Slackin rinnalla, ilmainen 3 hengelle."
+          "title": "Vaihtoehto Slackin huddleille: näe ensin kuka on vapaana, kävele sitten luo",
+          "description": "Slackin huddle on soitto sokkona, ja Slackin ilmaisversio rajaa sen kahteen henkeen. TinyFloor näyttää ensin, kuka on vapaana, sitten kävelet luo. Virtuaalitoimisto Slackin rinnalle, ilmainen 3 hengelle, 29 $ kuukaudessa koko tiimiltä."
         },
         "title": "<em>Vaihtoehto Slackin huddleille</em>, jossa näet ensin, kuka on vapaana.",
-        "subtitle": "Huddle on puhelu, jonka aloitat tietämättä, sopiiko hetki. TinyFloorissa näet, kuka on paikalla, kuka kiireinen ja kuka jo puhuu, ja vasta sitten menet luo.",
+        "subtitle": "Huddle on puhelu, jonka aloitat tietämättä, sopiiko se, ja Slackin ilmaisversiossa siihen mahtuu kaksi henkeä. TinyFloorissa näet, kuka on paikalla, kuka on kiireinen ja kuka jo juttelee, ja kävelet sitten luo.",
         "points": [
           {
             "title": "Katso ennen kuin soitat",
@@ -660,27 +664,27 @@
           }
         ],
         "them": {
-          "price": "Ryhmähuddlet vaativat Slack Pron, käyttäjäkohtainen hinta",
-          "freePlan": "Slack Freessä vain kahden hengen huddlet",
-          "browser": "Kyllä, lisäksi sovellukset tietokoneelle ja mobiiliin",
+          "price": "Ryhmähuddlet vaativat maksullisen Slack-tilauksen, käyttäjää kohden",
+          "freePlan": "Slack Free: huddlet enintään 2 hengelle",
+          "browser": "Kyllä, tietokone- ja mobiilisovellusten kanssa",
           "screenShare": "Kyllä"
         },
         "faq": [
           {
             "q": "Mikä on Slackin huddle?",
-            "a": "Huddle on nopea ääni- tai videopuhelu Slackissa, joka aloitetaan kanavasta tai yksityisviestistä. Slackin ilmaisessa paketissa huddlet ovat kahden hengen välisiä; ryhmähuddlet vaativat maksullisen paketin."
+            "a": "Huddle on nopea ääni- tai videopuhelu Slackissa, joka aloitetaan kanavalta tai yksityisviestistä, ja siinä on näytönjako ja ketju muistiinpanoille. Slackin ilmaisversiossa huddleen mahtuu kaksi henkeä; maksullisissa enintään 50, joista 25 videolla yhtä aikaa."
           },
           {
             "q": "Miten TinyFloor eroaa huddlesta?",
-            "a": "Huddle alkaa, kun joku soittaa. TinyFloorissa tiimi on jo yhdessä samassa kerroksessa, joten näet kuka on vapaana ja menet luo, ja neuvotteluhuone on aina olemassa."
+            "a": "Huddle alkaa, kun joku soittaa. TinyFloorissa tiimi on jo koolla samassa kerroksessa, joten näet, kuka on vapaana, ja kävelet luo, ja neuvotteluhuone on aina paikallaan."
           },
           {
             "q": "Voinko käyttää TinyFlooria Slackin kanssa?",
-            "a": "Voit. Ne eivät ole yhteydessä toisiinsa, mutta moni tiimi pitää Slackin viesteihin ja käyttää TinyFlooria läsnäoloon, puheluihin ja kokouksiin."
+            "a": "Voit. Ne eivät ole yhteydessä toisiinsa, mutta moni tiimi pitää Slackin viesteille ja käyttää TinyFlooria läsnäoloon, puheluihin ja kokouksiin."
           },
           {
-            "q": "Paljonko TinyFloor maksaa?",
-            "a": "Ilmainen enintään 3 hengelle. Pro maksaa $29 kuukaudessa koko tiimille, ei henkeä kohden."
+            "q": "Mitä TinyFloor maksaa?",
+            "a": "Ilmainen enintään 3 hengelle. Pro maksaa 29 $ kuukaudessa koko tiimiltä, ei henkeä kohden."
           }
         ]
       },
@@ -735,10 +739,10 @@
         "label": "Gather vs Kumospace",
         "meta": {
           "title": "Gather vs Kumospace: hinnat, ilmaiset paketit ja kolmas vaihtoehto",
-          "description": "Gather ja Kumospace rinnakkain: hinta, ilmainen paketti, selain ja näytön jakaminen, sekä miten TinyFloor vertautuu pienille etätiimeille."
+          "description": "Gather ja Kumospace rinnakkain: mitä tiimi maksaa kummassakin, ilmaiset paketit, tallennus, sovellukset ja toimiston suunnittelu, sekä mihin TinyFloor sopii pienille etätiimeille, 29 $ koko tiimiltä."
         },
         "title": "<em>Gather vs Kumospace</em>, ja kolmas vaihtoehto.",
-        "subtitle": "Molemmat laskuttavat jäsentä kohden, kun ilmainen taso ylittyy. Jos tiimisi on pieni ja haluaa yksinkertaisen toimiston, TinyFloorissa on yksi hinta koko kerrokselle.",
+        "subtitle": "Molemmat laskuttavat jäsentä kohden, kun ilmainen taso loppuu: Gatherilla ei ole ilmaista pakettia, ja Kumospacen paketti loppuu viiteen. Jos tiimisi on pieni ja haluaa yksinkertaisen toimiston, TinyFloor on yksi hinta koko kerrokselle.",
         "points": [
           {
             "title": "Gather",
@@ -756,19 +760,19 @@
         "faq": [
           {
             "q": "Kumpi on halvempi, Gather vai Kumospace?",
-            "a": "10 hengen tiimille Gather alkaa noin $120 kuussa ja Kumospace Business noin $160 kuussa. Kumospacessa on ilmainen paketti enintään 5 jäsenelle; Gatherissa on 30 päivän kokeilu. TinyFloor Pro maksaa $29 kuukaudessa koko toimistolle."
+            "a": "Gather. Kymmenen hengen tiimille vuosilaskutuksella Gather maksaa 120 $ kuukaudessa ja Kumospace Business 160 $; kuukausilaskutuksella 150 vastaan 200 $. Kumospacella on ilmainen paketti enintään 5 jäsenelle; Gatherilla 30 päivän kokeilu. TinyFloor Pro maksaa 29 $ kuukaudessa koko toimistolta."
           },
           {
             "q": "Kumpi sopii paremmin pienelle tiimille?",
-            "a": "Kumospacen ilmainen tilaus sopii enintään 5 hengelle, ja Gather tiimeille, jotka haluavat muokata enemmän. Jos haluat yhden yksinkertaisen hinnan pienelle tiimille, TinyFloor on tehty siihen."
+            "a": "Kumospacen ilmainen paketti riittää enintään 5 hengelle, jos julkinen tila käy, ja Gather sopii tiimeille, jotka haluavat suunnitella toimistonsa ja tallentaa kokouksia. Jos haluat yhden yksinkertaisen hinnan pienelle tiimille, TinyFloor on tehty juuri siihen."
           },
           {
             "q": "Toimivatko Gather ja Kumospace selaimessa?",
-            "a": "Molemmat toimivat selaimessa, Gather tietokonesovelluksen ja Kumospace tietokone- ja mobiilisovellusten kanssa. TinyFloor toimii vain selaimessa, tietokoneella ja mobiilissa, joten mitään ei tarvitse asentaa."
+            "a": "Molemmat toimivat selaimessa, Gather tietokonesovelluksen kanssa ja Kumospace tietokone- ja mobiilisovellusten kanssa. TinyFloor toimii vain selaimessa, tietokoneella ja puhelimella, joten mitään ei tarvitse asentaa."
           },
           {
             "q": "Voimmeko vaihtaa TinyFlooriin myöhemmin?",
-            "a": "Voitte. Siirrettävää ei ole: tee toimisto, jaa kutsulinkki, niin tiimi tulee sisään."
+            "a": "Kyllä. Mitään ei tarvitse siirtää: luo toimisto, jaa kutsulinkki, ja tiimi kävelee sisään."
           }
         ]
       },

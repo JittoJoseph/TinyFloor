@@ -1548,5 +1548,515 @@
         "Les prix, limites et fonctions d'oVice viennent de sa page tarifs et de son tableau comparatif, lus en octobre 2026, en dollars américains hors taxes. Ce qui n'y figurait pas, nous l'avons laissé de côté plutôt que de deviner. Nous faisons TinyFloor, nous disons donc clairement ce qu'il ne fait pas. Les prix changent : vérifiez la page d'oVice avant d'acheter."
       ]
     }
+  ],
+  "spatialchat": [
+    {
+      "title": "SpatialChat et TinyFloor en bref",
+      "body": [
+        "Les deux fonctionnent dans le navigateur et on s'y rapproche pour parler. SpatialChat vend des salles pour les événements, les cours et les bureaux ; TinyFloor n'est qu'un bureau pour une petite équipe, au prix d'un bureau."
+      ],
+      "table": {
+        "head": [
+          "",
+          "SpatialChat",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Une équipe de 8, par mois",
+            "50,67 $ à l'année, 64 $ au mois (Business)",
+            "29 $ pour toute l'équipe"
+          ],
+          [
+            "Offre gratuite",
+            "2 heures de réunions par jour, jusqu'à 12 personnes",
+            "Jusqu'à 3 personnes, sans limite quotidienne"
+          ],
+          [
+            "Mode de tarification",
+            "Par utilisateur",
+            "Un prix pour le bureau"
+          ],
+          [
+            "L'espace",
+            "Jusqu'à 5 salles avec Business",
+            "Des postes et une salle de réunion sur un étage"
+          ],
+          [
+            "Enregistrement",
+            "Jusqu'à 7 enregistrements conservés avec Business",
+            "Non"
+          ],
+          [
+            "Événements",
+            "Offres d'événements distinctes, jusqu'à 10 000 participants",
+            "Non"
+          ],
+          [
+            "Authentification unique",
+            "SAML avec Enterprise",
+            "Non"
+          ]
+        ],
+        "note": "Informations sur SpatialChat tirées de sa page tarifs (offres bureau virtuel) en octobre 2026, en dollars américains hors taxes."
+      }
+    },
+    {
+      "title": "Ce que coûte SpatialChat selon la taille de l'équipe",
+      "body": [
+        "L'offre Business du bureau virtuel coûte 8 $ par utilisateur et par mois, ou 76 $ par utilisateur et par an (environ 6,33 $ par mois). Pour une toute petite équipe à l'année, c'est moins que TinyFloor ; au-delà de 4 ou 5 personnes, c'est plus."
+      ],
+      "table": {
+        "head": [
+          "Équipe",
+          "SpatialChat Business, au mois",
+          "SpatialChat Business, à l'année, par mois",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "4 personnes",
+            "32 $",
+            "25,33 $",
+            "29 $"
+          ],
+          [
+            "8 personnes",
+            "64 $",
+            "50,67 $",
+            "29 $"
+          ],
+          [
+            "10 personnes",
+            "80 $",
+            "63,33 $",
+            "29 $"
+          ],
+          [
+            "12 personnes",
+            "96 $",
+            "76 $",
+            "29 $"
+          ]
+        ],
+        "note": "SpatialChat Business (bureau virtuel) à 8 $ par utilisateur au mois ou 76 $ par utilisateur et par an (page tarifs de SpatialChat, octobre 2026). TinyFloor Pro est mensuel ; les équipes jusqu'à 3 restent gratuites."
+      }
+    },
+    {
+      "title": "Pourquoi les petites équipes cherchent une alternative à SpatialChat",
+      "items": [
+        {
+          "title": "L'offre gratuite s'arrête à 2 heures par jour",
+          "body": "Suffisant pour quelques réunions, pas pour un bureau qu'on laisse ouvert en travaillant. L'accès en continu commence avec Business."
+        },
+        {
+          "title": "Pensé pour les événements",
+          "body": "SpatialChat vient des conférences, des cours et des ateliers. Une équipe qui veut des postes, voir qui est là et échanger un mot rapide cherchera peut-être un outil fait pour ça."
+        },
+        {
+          "title": "Des salles, pas un bureau",
+          "body": "SpatialChat vous donne des salles où vous retrouver. TinyFloor donne à chacun un poste sur un même étage, pour voir qui est là et aller le voir."
+        },
+        {
+          "title": "Le prix par utilisateur grandit avec l'équipe",
+          "body": "Chaque personne ajoute 6,33 à 8 $ par mois ; à 12 personnes, cela fait 76 à 96 $ par mois."
+        }
+      ]
+    },
+    {
+      "title": "Ce que SpatialChat fait mieux",
+      "items": [
+        {
+          "title": "Des événements à grande échelle",
+          "body": "Les offres d'événements accueillent jusqu'à 10 000 participants, avec salles annexes, mots de passe et sessions sur invitation. TinyFloor n'est pas conçu pour les événements."
+        },
+        {
+          "title": "Moins cher pour 4 personnes ou moins à l'année",
+          "body": "À 76 $ par utilisateur et par an, quatre personnes paient environ 25 $ par mois, moins que les 29 $ de TinyFloor."
+        },
+        {
+          "title": "Fichiers et enregistrements",
+          "body": "Partagez plusieurs écrans, épinglez des fichiers dans une salle et conservez les enregistrements des réunions. TinyFloor n'enregistre pas."
+        },
+        {
+          "title": "Authentification unique",
+          "body": "Enterprise ajoute la connexion SAML pour les entreprises qui en ont besoin."
+        }
+      ]
+    },
+    {
+      "title": "Lequel convient à votre équipe",
+      "items": [
+        {
+          "title": "TinyFloor, pour un bureau qui reste ouvert",
+          "body": "Pour une équipe de 4 à 15 personnes qui veut voir qui est à son poste, parler sans planifier et se réunir sans limite quotidienne, pour un seul prix."
+        },
+        {
+          "title": "SpatialChat, pour les événements et les cours",
+          "body": "Si vous organisez des conférences, des ateliers ou des cours, avez besoin d'enregistrements ou d'authentification unique, ou si vous êtes 4 ou moins et prêts à payer à l'année."
+        }
+      ]
+    },
+    {
+      "title": "Faire passer une équipe de SpatialChat à TinyFloor",
+      "items": [
+        {
+          "title": "Créer un bureau",
+          "detail": "Deux minutes",
+          "body": "Donnez-lui le nom de l'équipe. L'étage, les postes et la salle de réunion sont prêts."
+        },
+        {
+          "title": "Partager un lien d'invitation",
+          "detail": "Dans la messagerie de l'équipe",
+          "body": "Chacun se connecte avec Google ou un e-mail et entre depuis le navigateur, sur ordinateur ou téléphone."
+        },
+        {
+          "title": "Y passer une semaine normale",
+          "detail": "Le point quotidien dans la salle de réunion",
+          "body": "Laissez-le ouvert toute la journée pendant une semaine, puis voyez lequel l'équipe a vraiment ouvert."
+        }
+      ]
+    },
+    {
+      "title": "Comment nous avons comparé",
+      "body": [
+        "Les prix, limites et fonctions de SpatialChat viennent de sa page tarifs, onglet Virtual Office, lue en octobre 2026, en dollars américains hors taxes. Ce qui n'y figurait pas, nous l'avons laissé de côté plutôt que de deviner. Nous faisons TinyFloor, nous disons donc clairement ce qu'il ne fait pas. Les prix changent : vérifiez la page de SpatialChat avant d'acheter."
+      ]
+    }
+  ],
+  "slackHuddles": [
+    {
+      "title": "Huddles Slack et TinyFloor en bref",
+      "body": [
+        "Les huddles ajoutent des appels là où votre équipe écrit déjà. TinyFloor ajoute ce qui manque à Slack : un étage où vous voyez qui est là avant de commencer à parler."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Huddles Slack",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Commencer une conversation",
+            "Lancer un huddle dans un canal ou un message direct, les autres rejoignent",
+            "Aller voir un collègue"
+          ],
+          [
+            "Voir qui est libre",
+            "Les statuts Slack et la pastille verte",
+            "Tout le monde sur un étage : postes, statuts et qui est en appel"
+          ],
+          [
+            "Appels de groupe",
+            "Jusqu'à 50 avec les offres payantes, 25 en vidéo",
+            "Une salle de réunion où tout le bureau peut entrer"
+          ],
+          [
+            "Offre gratuite",
+            "Huddles jusqu'à 2 personnes",
+            "Jusqu'à 3 personnes, toutes les fonctions"
+          ],
+          [
+            "Mode de tarification",
+            "Inclus dans Slack, par utilisateur sur les offres payantes",
+            "29 $ par mois pour toute l'équipe"
+          ],
+          [
+            "Où ça fonctionne",
+            "Les applications de bureau et mobiles de Slack, Chrome et Firefox",
+            "Le navigateur, sur ordinateur et mobile"
+          ],
+          [
+            "Messages",
+            "Slack est d'abord une messagerie",
+            "Messagerie d'équipe à côté de l'étage"
+          ]
+        ],
+        "note": "Limites des huddles tirées du centre d'aide de Slack, lu en octobre 2026. Les prix de Slack varient selon le pays, nous ne les indiquons donc pas."
+      }
+    },
+    {
+      "title": "Pourquoi un huddle n'est pas un bureau partagé",
+      "items": [
+        {
+          "title": "C'est un appel à l'aveugle",
+          "body": "Vous lancez un huddle sans savoir si l'autre est en pleine réflexion ou déjà en appel. Au bureau, vous jetteriez d'abord un coup d'œil."
+        },
+        {
+          "title": "Impossible d'entendre une conversation",
+          "body": "Un huddle dans un autre canal est invisible tant qu'on n'y est pas. Sur un étage, vous voyez deux personnes parler et vous les rejoignez si cela concerne votre travail."
+        },
+        {
+          "title": "Aucune salle où revenir",
+          "body": "Quand un huddle se termine, il disparaît. Une salle de réunion reste à sa place, et le point quotidien s'y tient chaque jour."
+        },
+        {
+          "title": "Avec l'offre gratuite, c'est deux personnes",
+          "body": "Une question rapide en groupe exige que tout l'espace de travail passe à une offre Slack payante."
+        }
+      ]
+    },
+    {
+      "title": "Ce que les huddles font mieux",
+      "items": [
+        {
+          "title": "Ils sont déjà là où vous écrivez",
+          "body": "Aucun nouvel outil : un huddle part du canal ou du message direct où vous êtes, et son fil de notes reste avec la conversation."
+        },
+        {
+          "title": "Des appels plus grands",
+          "body": "Jusqu'à 50 personnes avec les offres payantes, ce qui convient aux réunions générales pour lesquelles TinyFloor n'est pas fait."
+        },
+        {
+          "title": "Tout le reste de Slack",
+          "body": "Canaux, historique, intégrations et workflows. TinyFloor ne remplace rien de tout cela."
+        }
+      ]
+    },
+    {
+      "title": "Utiliser TinyFloor à côté de Slack",
+      "items": [
+        {
+          "title": "Garder Slack pour les messages",
+          "body": "Les fils, les décisions et tout ce qui doit être écrit restent dans Slack."
+        },
+        {
+          "title": "Garder le bureau dans un onglet épinglé",
+          "body": "TinyFloor, c'est là où vous voyez qui est présent et où vous parlez ; laissez-le ouvert à côté de Slack toute la journée."
+        },
+        {
+          "title": "Déplacer le point quotidien dans la salle de réunion",
+          "body": "Une réunion quotidienne au bureau donne à chacun une raison d'y être."
+        },
+        {
+          "title": "Mettre le lien d'invitation dans le sujet d'un canal",
+          "body": "Les nouveaux trouvent le bureau là où ils trouvent tout le reste."
+        }
+      ]
+    },
+    {
+      "title": "Lequel convient à votre équipe",
+      "items": [
+        {
+          "title": "TinyFloor, à côté de Slack",
+          "body": "Pour une équipe de 4 à 15 personnes qui veut voir qui est libre et parler comme dans une pièce, sans passer tout le monde sur une offre Slack payante pour les appels de groupe."
+        },
+        {
+          "title": "Les huddles seuls",
+          "body": "Si votre équipe aime s'appeler depuis Slack, paie déjà pour lui et ne regrette pas de voir qui est là."
+        }
+      ]
+    },
+    {
+      "title": "L'essayer avec votre équipe Slack",
+      "items": [
+        {
+          "title": "Créer un bureau",
+          "detail": "Deux minutes",
+          "body": "Donnez-lui le nom de l'équipe. L'étage, les postes et la salle de réunion sont prêts."
+        },
+        {
+          "title": "Publier le lien d'invitation dans Slack",
+          "detail": "Dans le canal de l'équipe",
+          "body": "Chacun se connecte avec Google ou un e-mail et entre depuis le navigateur."
+        },
+        {
+          "title": "Passer une semaine normale",
+          "detail": "Huddles facultatifs",
+          "body": "Gardez Slack pour les messages et voyez si les questions rapides passent sur l'étage."
+        }
+      ]
+    },
+    {
+      "title": "Comment nous avons comparé",
+      "body": [
+        "Les limites des huddles viennent du centre d'aide de Slack, lu en octobre 2026. La page tarifs de Slack affiche les prix dans la devise du visiteur, nous n'avons donc pas cité de montant ; consultez la page de Slack pour le vôtre. Nous faisons TinyFloor, nous disons donc clairement ce qu'il ne fait pas."
+      ]
+    }
+  ],
+  "gatherVsKumospace": [
+    {
+      "title": "Gather, Kumospace et TinyFloor en bref",
+      "body": [
+        "Gather et Kumospace sont les deux bureaux virtuels les plus connus, et tous deux facturent par membre. TinyFloor est là comme troisième option pour une petite équipe."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Gather",
+          "Kumospace",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Une équipe de 8, par mois",
+            "96 $ à l'année, 120 $ au mois",
+            "128 $ à l'année, 160 $ au mois",
+            "29 $ pour toute l'équipe"
+          ],
+          [
+            "Offre gratuite",
+            "Aucune, un essai de 30 jours",
+            "Jusqu'à 5 membres, 1 étage, un espace public",
+            "Jusqu'à 3 personnes, toutes les fonctions"
+          ],
+          [
+            "Mode de tarification",
+            "Par membre",
+            "Par membre, 5 au minimum",
+            "Un prix pour le bureau"
+          ],
+          [
+            "Enregistrement",
+            "Inclus, avec des heures mensuelles",
+            "Avec Business",
+            "Non"
+          ],
+          [
+            "Aménager le bureau",
+            "Étages, salles et plus de 200 objets à placer",
+            "Meubles, étages et activités à placer",
+            "Un bureau prêt à l'emploi"
+          ],
+          [
+            "Applications",
+            "Navigateur et application de bureau",
+            "Navigateur, applications de bureau et mobiles",
+            "Le navigateur, sur ordinateur et mobile"
+          ],
+          [
+            "Authentification unique",
+            "Avec Custom",
+            "Avec Enterprise",
+            "Non"
+          ]
+        ],
+        "note": "Informations sur Gather et Kumospace tirées de leurs propres pages tarifs et centres d'aide en octobre 2026, en dollars américains hors taxes."
+      }
+    },
+    {
+      "title": "Ce que coûte chacun selon la taille de l'équipe",
+      "body": [
+        "Gather coûte 12 $ par membre et par mois à l'année ou 15 $ au mois. Kumospace Business coûte 16 ou 20 $, avec 5 membres au minimum. Les deux facturent chaque membre, qu'il vienne ou non ce jour-là."
+      ],
+      "table": {
+        "head": [
+          "Équipe",
+          "Gather, année / mois",
+          "Kumospace, année / mois",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 personnes",
+            "60 $ / 75 $",
+            "80 $ / 100 $",
+            "29 $"
+          ],
+          [
+            "8 personnes",
+            "96 $ / 120 $",
+            "128 $ / 160 $",
+            "29 $"
+          ],
+          [
+            "10 personnes",
+            "120 $ / 150 $",
+            "160 $ / 200 $",
+            "29 $"
+          ],
+          [
+            "12 personnes",
+            "144 $ / 180 $",
+            "192 $ / 240 $",
+            "29 $"
+          ]
+        ],
+        "note": "Par mois, hors taxes : Gather Essential, Kumospace Business (octobre 2026). TinyFloor Pro est mensuel ; les équipes jusqu'à 3 restent gratuites, et l'offre gratuite de Kumospace couvre jusqu'à 5."
+      }
+    },
+    {
+      "title": "Là où Gather est plus fort",
+      "items": [
+        {
+          "title": "Aménager son propre bureau",
+          "body": "Organisez étages et salles avec plus de 200 objets dans Gather Studio."
+        },
+        {
+          "title": "Enregistrement, transcription et notes par IA",
+          "body": "Essential inclut chaque mois des heures d'enregistrement et de transcription, et des notes de réunion par IA."
+        },
+        {
+          "title": "Intégrations",
+          "body": "Google Agenda, GitHub et Spotify montrent dans le bureau ce que fait chacun."
+        },
+        {
+          "title": "Prix par membre",
+          "body": "À 12 ou 15 $ par membre, il coûte moins cher que Kumospace Business pour la même équipe."
+        }
+      ]
+    },
+    {
+      "title": "Là où Kumospace est plus fort",
+      "items": [
+        {
+          "title": "Une offre gratuite",
+          "body": "Jusqu'à 5 membres, 50 invités et un étage, tant qu'un espace public vous convient. Gather a mis fin à son offre gratuite en septembre 2025."
+        },
+        {
+          "title": "Applications de bureau et mobiles",
+          "body": "Des applications pour Windows, macOS, iOS et Android en plus du navigateur."
+        },
+        {
+          "title": "Des espaces pour les fêtes et les événements",
+          "body": "Meubles, jeux, tableaux blancs et écrans YouTube le rendent populaire pour les événements conviviaux autant que pour le bureau."
+        }
+      ]
+    },
+    {
+      "title": "Où se place TinyFloor",
+      "items": [
+        {
+          "title": "Un prix pour l'équipe",
+          "body": "29 $ par mois pour toutes les personnes que vous invitez : une équipe de 12 paie autant qu'une équipe de 4."
+        },
+        {
+          "title": "Un bureau privé avec l'offre gratuite",
+          "body": "Jusqu'à 3 personnes, toutes les fonctions, sans compte à rebours d'essai ni espace public."
+        },
+        {
+          "title": "Rien à installer ni à aménager",
+          "body": "Il s'ouvre dans un onglet du navigateur, avec les postes et la salle de réunion prêts."
+        },
+        {
+          "title": "Ce qu'il laisse de côté",
+          "body": "Pas d'enregistrement, de transcription, d'éditeur de bureau ni d'authentification unique. Si vous en dépendez, Gather ou Kumospace vous conviendront mieux."
+        }
+      ]
+    },
+    {
+      "title": "Lequel choisir",
+      "items": [
+        {
+          "title": "Gather",
+          "body": "Si vous voulez aménager le bureau vous-même et enregistrer ou transcrire les réunions, et qu'une facturation par membre vous convient."
+        },
+        {
+          "title": "Kumospace",
+          "body": "Si vous êtes 5 ou moins et qu'un espace gratuit public vous suffit, ou si vous voulez des applications natives et un espace pour des événements conviviaux."
+        },
+        {
+          "title": "TinyFloor",
+          "body": "Si vous êtes une équipe de 4 à 15 personnes qui veut un bureau privé simple dans le navigateur, pour un seul prix mensuel."
+        }
+      ]
+    },
+    {
+      "title": "Comment nous avons comparé",
+      "body": [
+        "Les prix, limites et fonctions viennent des pages tarifs et centres d'aide de Gather et de Kumospace, lus en octobre 2026, en dollars américains hors taxes. Ce qui n'y figurait pas, nous l'avons laissé de côté plutôt que de deviner. Nous faisons TinyFloor, nous disons donc clairement ce qu'il ne fait pas. Les prix changent : vérifiez la page de chaque produit avant d'acheter."
+      ]
+    }
   ]
 }

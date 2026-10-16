@@ -772,7 +772,7 @@
           },
           {
             "title": "SpatialChat",
-            "detail": "Gratuit 2 heures par jour pour 12 · 5 $ par utilisateur et par jour, Business dès 399 $ par mois",
+            "detail": "Gratuit 2 heures par jour pour 12 · Business 8 $ par utilisateur et par mois",
             "body": "Des salles avec audio spatial et bulles vidéo, très utilisées pour les événements, les cours et les ateliers. L'offre gratuite convient aux sessions ponctuelles ; une équipe présente toute la journée a besoin d'une offre Business."
           },
           {
@@ -818,6 +818,12 @@
               "54 $"
             ],
             [
+              "SpatialChat Business",
+              "Par utilisateur",
+              "2 heures par jour, jusqu'à 12 personnes",
+              "63,33 $ à l'année, 80 $ au mois"
+            ],
+            [
               "oVice Entry-S",
               "Par espace, à l'année",
               "Version préliminaire, sans assistance",
@@ -852,12 +858,6 @@
               "Par membre actif, au mois",
               "Aucune, essai de 14 jours",
               "195 $"
-            ],
-            [
-              "SpatialChat",
-              "Pass journée ou offre Business",
-              "2 heures par jour, jusqu'à 12 personnes",
-              "50 $ par jour en pass journée, Business dès 399 $"
             ]
           ],
           "note": "Prix hors taxes, tirés de la page de tarifs de chaque produit en octobre 2026. Une offre gratuite qui couvre toute votre équipe vaut mieux que n'importe quelle offre payante : celle de WorkAdventure couvre 10 personnes en même temps, et celle de SoWork 10 membres avec des réunions de 30 minutes."

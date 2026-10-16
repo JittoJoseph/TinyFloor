@@ -1548,5 +1548,515 @@
         "De prijzen, grenzen en functies van oVice komen van de prijspagina en de functievergelijking, gelezen in oktober 2026, in Amerikaanse dollars exclusief belasting. Wat daar niet stond, lieten we weg in plaats van te gokken. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van oVice voordat je koopt."
       ]
     }
+  ],
+  "spatialchat": [
+    {
+      "title": "SpatialChat en TinyFloor in één oogopslag",
+      "body": [
+        "Allebei werken ze in de browser en in allebei kom je dichterbij om te praten. SpatialChat verkoopt ruimtes voor evenementen, lessen en kantoren; TinyFloor is alleen een kantoor voor een klein team, met de prijs van een kantoor."
+      ],
+      "table": {
+        "head": [
+          "",
+          "SpatialChat",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Een team van 8, per maand",
+            "$ 50,67 jaarlijks, $ 64 maandelijks (Business)",
+            "$ 29 voor het hele team"
+          ],
+          [
+            "Gratis abonnement",
+            "2 uur vergaderen per dag, tot 12 mensen",
+            "Tot 3 mensen, zonder daglimiet"
+          ],
+          [
+            "Hoe het geprijsd is",
+            "Per gebruiker",
+            "Eén prijs voor het kantoor"
+          ],
+          [
+            "De ruimte",
+            "Tot 5 ruimtes met Business",
+            "Bureaus en een vergaderruimte op één vloer"
+          ],
+          [
+            "Opnames",
+            "Tot 7 opgeslagen opnames met Business",
+            "Nee"
+          ],
+          [
+            "Evenementen",
+            "Aparte evenementabonnementen, tot 10.000 deelnemers",
+            "Nee"
+          ],
+          [
+            "Single sign-on",
+            "SAML met Enterprise",
+            "Nee"
+          ]
+        ],
+        "note": "Gegevens over SpatialChat van de prijspagina (abonnementen voor een virtueel kantoor) in oktober 2026, in Amerikaanse dollars exclusief belasting."
+      }
+    },
+    {
+      "title": "Wat SpatialChat kost per teamgrootte",
+      "body": [
+        "Het Business-abonnement voor een virtueel kantoor kost $ 8 per gebruiker per maand, of $ 76 per gebruiker per jaar (ongeveer $ 6,33 per maand). Voor een heel klein team met een jaarabonnement is dat minder dan TinyFloor; vanaf 4 of 5 mensen is het meer."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "SpatialChat Business, maandelijks",
+          "SpatialChat Business, jaarlijks, per maand",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "4 mensen",
+            "$ 32",
+            "$ 25,33",
+            "$ 29"
+          ],
+          [
+            "8 mensen",
+            "$ 64",
+            "$ 50,67",
+            "$ 29"
+          ],
+          [
+            "10 mensen",
+            "$ 80",
+            "$ 63,33",
+            "$ 29"
+          ],
+          [
+            "12 mensen",
+            "$ 96",
+            "$ 76",
+            "$ 29"
+          ]
+        ],
+        "note": "SpatialChat Business (virtueel kantoor) voor $ 8 per gebruiker maandelijks of $ 76 per gebruiker per jaar (prijspagina van SpatialChat, oktober 2026). TinyFloor Pro is maandelijks; teams tot 3 blijven gratis."
+      }
+    },
+    {
+      "title": "Waarom kleine teams een alternatief voor SpatialChat zoeken",
+      "items": [
+        {
+          "title": "Het gratis abonnement stopt na 2 uur per dag",
+          "body": "Prima voor een paar vergaderingen, niet voor een kantoor dat openblijft terwijl je werkt. Toegang de klok rond begint bij Business."
+        },
+        {
+          "title": "Gebouwd rond evenementen",
+          "body": "SpatialChat komt voort uit conferenties, lessen en workshops. Een team dat bureaus wil, wil zien wie er is en even iets wil vragen, zoekt misschien iets dat daarvoor gemaakt is."
+        },
+        {
+          "title": "Ruimtes, geen kantoor",
+          "body": "SpatialChat geeft je ruimtes om samen te komen. TinyFloor geeft iedereen een bureau op één vloer, zodat je ziet wie er is en erheen kunt lopen."
+        },
+        {
+          "title": "Prijs per gebruiker groeit mee met het team",
+          "body": "Elke persoon kost $ 6,33 tot $ 8 per maand extra; bij 12 mensen is dat $ 76 tot $ 96 per maand."
+        }
+      ]
+    },
+    {
+      "title": "Wat SpatialChat beter doet",
+      "items": [
+        {
+          "title": "Evenementen op grote schaal",
+          "body": "Evenementabonnementen bieden plaats aan tot 10.000 deelnemers, met breakout-ruimtes, wachtwoorden en sessies alleen op uitnodiging. TinyFloor is niet gemaakt voor evenementen."
+        },
+        {
+          "title": "Goedkoper voor 4 of minder met een jaarabonnement",
+          "body": "Voor $ 76 per gebruiker per jaar betalen vier mensen ongeveer $ 25 per maand, minder dan de $ 29 van TinyFloor."
+        },
+        {
+          "title": "Bestanden en opnames",
+          "body": "Deel meerdere schermen, zet bestanden vast in een ruimte en bewaar opnames van vergaderingen. TinyFloor neemt niet op."
+        },
+        {
+          "title": "Single sign-on",
+          "body": "Enterprise voegt inloggen via SAML toe voor bedrijven die dat nodig hebben."
+        }
+      ]
+    },
+    {
+      "title": "Wat past bij je team",
+      "items": [
+        {
+          "title": "TinyFloor, voor een kantoor dat openblijft",
+          "body": "Voor een team van 4 tot 15 dat wil zien wie er aan zijn bureau zit, wil praten zonder afspraak en wil vergaderen zonder daglimiet, voor één prijs."
+        },
+        {
+          "title": "SpatialChat, voor evenementen en lessen",
+          "body": "Als je conferenties, workshops of lessen organiseert, opnames of single sign-on nodig hebt, of met 4 of minder bent en graag per jaar betaalt."
+        }
+      ]
+    },
+    {
+      "title": "Een team overzetten vanaf SpatialChat",
+      "items": [
+        {
+          "title": "Maak een kantoor",
+          "detail": "Twee minuten",
+          "body": "Noem het naar het team. De vloer, de bureaus en de vergaderruimte staan klaar."
+        },
+        {
+          "title": "Deel één uitnodigingslink",
+          "detail": "In de teamchat",
+          "body": "Collega's loggen in met Google of e-mail en lopen binnen vanuit de browser, op een laptop of telefoon."
+        },
+        {
+          "title": "Werk er een gewone week",
+          "detail": "De standup in de vergaderruimte",
+          "body": "Laat het een week lang de hele dag openstaan en kijk dan welke het team echt opende."
+        }
+      ]
+    },
+    {
+      "title": "Hoe we vergeleken",
+      "body": [
+        "De prijzen, grenzen en functies van SpatialChat komen van de prijspagina, op het tabblad Virtual Office, gelezen in oktober 2026, in Amerikaanse dollars exclusief belasting. Wat daar niet stond, lieten we weg in plaats van te gokken. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van SpatialChat voordat je koopt."
+      ]
+    }
+  ],
+  "slackHuddles": [
+    {
+      "title": "Slack-huddles en TinyFloor in één oogopslag",
+      "body": [
+        "Huddles voegen gesprekken toe aan de plek waar je team al schrijft. TinyFloor voegt toe wat Slack niet heeft: een vloer waarop je ziet wie er is voordat je begint te praten."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Slack-huddles",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Een gesprek beginnen",
+            "Een huddle starten in een kanaal of privébericht en anderen sluiten aan",
+            "Naar een collega toe lopen"
+          ],
+          [
+            "Zien wie vrij is",
+            "Slack-statussen en het groene bolletje",
+            "Iedereen op één vloer: bureaus, statussen en wie in gesprek is"
+          ],
+          [
+            "Groepsgesprekken",
+            "Tot 50 op betaalde abonnementen, 25 met video",
+            "Een vergaderruimte waar het hele kantoor in kan"
+          ],
+          [
+            "Gratis abonnement",
+            "Huddles van maximaal 2 mensen",
+            "Tot 3 mensen, alle functies"
+          ],
+          [
+            "Hoe het geprijsd is",
+            "Onderdeel van Slack, per gebruiker op betaalde abonnementen",
+            "$ 29 per maand voor het hele team"
+          ],
+          [
+            "Waar het draait",
+            "Desktop- en mobiele apps van Slack, Chrome en Firefox",
+            "De browser, op desktop en mobiel"
+          ],
+          [
+            "Berichten",
+            "Slack is in de eerste plaats chat",
+            "Teamchat naast de vloer"
+          ]
+        ],
+        "note": "Limieten van huddles uit het helpcentrum van Slack, gelezen in oktober 2026. De prijzen van Slack verschillen per land, dus die noemen we niet."
+      }
+    },
+    {
+      "title": "Waarom een huddle niet hetzelfde is als een kantoor delen",
+      "items": [
+        {
+          "title": "Het is een gesprek in het wilde weg",
+          "body": "Je start een huddle zonder te weten of de ander midden in iets zit of al in een ander gesprek. Op kantoor zou je eerst even kijken."
+        },
+        {
+          "title": "Je kunt geen gesprek opvangen",
+          "body": "Een huddle in een ander kanaal is onzichtbaar zolang je er niet in zit. Op een vloer zie je twee mensen praten en sluit je aan als het over jouw werk gaat."
+        },
+        {
+          "title": "Er is geen ruimte om naar terug te gaan",
+          "body": "Als een huddle eindigt, is hij weg. Een vergaderruimte blijft waar hij is, en de standup vindt daar elke dag plaats."
+        },
+        {
+          "title": "Op het gratis abonnement zijn het twee mensen",
+          "body": "Een snelle vraag aan de groep vraagt de hele workspace op een betaald Slack-abonnement."
+        }
+      ]
+    },
+    {
+      "title": "Wat huddles beter doen",
+      "items": [
+        {
+          "title": "Ze zitten al waar je schrijft",
+          "body": "Geen nieuwe tool: een huddle start vanuit het kanaal of privébericht waarin je zit, en de notitiethread blijft bij het gesprek."
+        },
+        {
+          "title": "Grotere gesprekken",
+          "body": "Tot 50 mensen op betaalde abonnementen, handig voor all-hands waar TinyFloor niet voor gemaakt is."
+        },
+        {
+          "title": "Al het andere dat Slack doet",
+          "body": "Kanalen, geschiedenis, integraties en workflows. TinyFloor vervangt daar niets van."
+        }
+      ]
+    },
+    {
+      "title": "TinyFloor naast Slack gebruiken",
+      "items": [
+        {
+          "title": "Houd Slack voor berichten",
+          "body": "Threads, besluiten en alles wat op papier moet, blijven in Slack."
+        },
+        {
+          "title": "Houd het kantoor in een vastgezet tabblad",
+          "body": "In TinyFloor zie je wie er is en praat je; laat het de hele dag naast Slack openstaan."
+        },
+        {
+          "title": "Verplaats de standup naar de vergaderruimte",
+          "body": "Eén dagelijkse vergadering in het kantoor geeft iedereen een reden om er te zijn."
+        },
+        {
+          "title": "Zet de uitnodigingslink in het onderwerp van een kanaal",
+          "body": "Nieuwe collega's vinden het kantoor op de plek waar ze al het andere ook vinden."
+        }
+      ]
+    },
+    {
+      "title": "Wat past bij je team",
+      "items": [
+        {
+          "title": "TinyFloor, naast Slack",
+          "body": "Voor een team van 4 tot 15 dat wil zien wie vrij is en wil praten zoals in een ruimte, zonder iedereen voor groepsgesprekken naar een betaald Slack-abonnement te brengen."
+        },
+        {
+          "title": "Alleen huddles",
+          "body": "Als je team elkaar graag vanuit Slack belt, er al voor betaalt en niet mist om te zien wie er is."
+        }
+      ]
+    },
+    {
+      "title": "Uitproberen met je Slack-team",
+      "items": [
+        {
+          "title": "Maak een kantoor",
+          "detail": "Twee minuten",
+          "body": "Noem het naar het team. De vloer, de bureaus en de vergaderruimte staan klaar."
+        },
+        {
+          "title": "Plaats de uitnodigingslink in Slack",
+          "detail": "In je teamkanaal",
+          "body": "Collega's loggen in met Google of e-mail en lopen binnen vanuit de browser."
+        },
+        {
+          "title": "Werk een gewone week",
+          "detail": "Huddles optioneel",
+          "body": "Houd Slack voor berichten en kijk of de snelle vragen naar de vloer verhuizen."
+        }
+      ]
+    },
+    {
+      "title": "Hoe we vergeleken",
+      "body": [
+        "De limieten van huddles komen uit het helpcentrum van Slack, gelezen in oktober 2026. De prijspagina van Slack toont prijzen in de valuta van de bezoeker, dus we noemen geen bedrag; kijk op de pagina van Slack voor jouw prijs. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet."
+      ]
+    }
+  ],
+  "gatherVsKumospace": [
+    {
+      "title": "Gather, Kumospace en TinyFloor in één oogopslag",
+      "body": [
+        "Gather en Kumospace zijn de twee bekendste virtuele kantoren, en beide rekenen per lid. TinyFloor staat hier als derde optie voor een klein team."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Gather",
+          "Kumospace",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Een team van 8, per maand",
+            "$ 96 bij jaarlijkse betaling, $ 120 maandelijks",
+            "$ 128 bij jaarlijkse betaling, $ 160 maandelijks",
+            "$ 29 voor het hele team"
+          ],
+          [
+            "Gratis abonnement",
+            "Geen, een proefperiode van 30 dagen",
+            "Maximaal 5 leden, 1 verdieping, een openbare ruimte",
+            "Maximaal 3 mensen, alle functies"
+          ],
+          [
+            "Hoe je betaalt",
+            "Per lid",
+            "Per lid, minimaal 5",
+            "Eén prijs voor het kantoor"
+          ],
+          [
+            "Opnemen",
+            "Inbegrepen, met uren per maand",
+            "Bij Business",
+            "Nee"
+          ],
+          [
+            "Het kantoor inrichten",
+            "Verdiepingen, ruimtes en meer dan 200 objecten die je plaatst",
+            "Meubels, verdiepingen en activiteiten die je plaatst",
+            "Een kant-en-klaar kantoor"
+          ],
+          [
+            "Apps",
+            "Browser en een desktop-app",
+            "Browser, desktop- en mobiele apps",
+            "De browser, op desktop en mobiel"
+          ],
+          [
+            "Single sign-on",
+            "Bij Custom",
+            "Bij Enterprise",
+            "Nee"
+          ]
+        ],
+        "note": "Gegevens van Gather en Kumospace van hun eigen prijspagina's en helpcentra in oktober 2026, in Amerikaanse dollars exclusief belasting."
+      }
+    },
+    {
+      "title": "Wat elk kost per teamgrootte",
+      "body": [
+        "Gather kost $ 12 per lid per maand bij jaarlijkse betaling of $ 15 maandelijks. Kumospace Business kost $ 16 of $ 20, met minimaal 5 leden. Beide rekenen elk lid, of die die dag nu binnenkomt of niet."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Gather, jaarlijks / maandelijks",
+          "Kumospace, jaarlijks / maandelijks",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 mensen",
+            "$ 60 / $ 75",
+            "$ 80 / $ 100",
+            "$ 29"
+          ],
+          [
+            "8 mensen",
+            "$ 96 / $ 120",
+            "$ 128 / $ 160",
+            "$ 29"
+          ],
+          [
+            "10 mensen",
+            "$ 120 / $ 150",
+            "$ 160 / $ 200",
+            "$ 29"
+          ],
+          [
+            "12 mensen",
+            "$ 144 / $ 180",
+            "$ 192 / $ 240",
+            "$ 29"
+          ]
+        ],
+        "note": "Per maand, exclusief belasting: Gather Essential, Kumospace Business (oktober 2026). TinyFloor Pro is maandelijks; teams tot 3 blijven gratis, en het gratis abonnement van Kumospace dekt tot 5."
+      }
+    },
+    {
+      "title": "Waar Gather sterker is",
+      "items": [
+        {
+          "title": "Je eigen kantoor inrichten",
+          "body": "Deel verdiepingen en ruimtes in met meer dan 200 objecten in Gather Studio."
+        },
+        {
+          "title": "Opnemen, transcriptie en AI-notities",
+          "body": "Essential bevat elke maand uren voor opnemen en transcriptie, plus AI-notities van meetings."
+        },
+        {
+          "title": "Integraties",
+          "body": "Google Agenda, GitHub en Spotify laten in het kantoor zien waar mensen mee bezig zijn."
+        },
+        {
+          "title": "Prijs per lid",
+          "body": "Met $ 12 tot $ 15 per lid is het goedkoper dan Kumospace Business voor hetzelfde team."
+        }
+      ]
+    },
+    {
+      "title": "Waar Kumospace sterker is",
+      "items": [
+        {
+          "title": "Een gratis abonnement",
+          "body": "Maximaal 5 leden, 50 gasten en één verdieping, zolang een openbare ruimte geen probleem is. Gather stopte in september 2025 met zijn gratis abonnement."
+        },
+        {
+          "title": "Desktop- en mobiele apps",
+          "body": "Apps voor Windows, macOS, iOS en Android, naast de browser."
+        },
+        {
+          "title": "Ruimtes voor borrels en events",
+          "body": "Meubels, spelletjes, whiteboards en YouTube-schermen maken het populair voor sociale events, niet alleen voor kantoren."
+        }
+      ]
+    },
+    {
+      "title": "Waar TinyFloor past",
+      "items": [
+        {
+          "title": "Eén prijs voor het team",
+          "body": "$ 29 per maand voor iedereen die je uitnodigt, dus een team van 12 betaalt hetzelfde als een team van 4."
+        },
+        {
+          "title": "Een privékantoor met het gratis abonnement",
+          "body": "Maximaal 3 mensen, alle functies, zonder aflopende proefperiode en zonder openbare ruimte."
+        },
+        {
+          "title": "Niets te installeren of in te richten",
+          "body": "Het opent in een browsertab met de bureaus en de vergaderruimte klaar."
+        },
+        {
+          "title": "Wat het weglaat",
+          "body": "Geen opnames, transcriptie, kantooreditor of single sign-on. Heb je die nodig, dan passen Gather of Kumospace beter."
+        }
+      ]
+    },
+    {
+      "title": "Welke kies je",
+      "items": [
+        {
+          "title": "Gather",
+          "body": "Als je het kantoor zelf wilt inrichten en meetings wilt opnemen of transcriberen, en betalen per lid prima is."
+        },
+        {
+          "title": "Kumospace",
+          "body": "Als jullie met 5 of minder zijn en een gratis openbare ruimte genoeg is, of als je native apps en een ruimte voor sociale events wilt."
+        },
+        {
+          "title": "TinyFloor",
+          "body": "Als jullie een team van 4 tot 15 zijn dat een eenvoudig privékantoor in de browser wil, voor één maandprijs."
+        }
+      ]
+    },
+    {
+      "title": "Hoe we vergeleken",
+      "body": [
+        "Prijzen, limieten en functies komen van de eigen prijspagina's en helpcentra van Gather en Kumospace, gelezen in oktober 2026, in Amerikaanse dollars exclusief belasting. Wat daar niet stond, hebben we weggelaten in plaats van te gokken. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van elk product voordat je koopt."
+      ]
+    }
   ]
 }

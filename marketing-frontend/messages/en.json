@@ -534,11 +534,11 @@
       "teamflow": {
         "label": "Teamflow alternative",
         "meta": {
-          "title": "Teamflow Alternative That Runs in the Browser",
-          "description": "Teamflow is $15 per person a month with desktop apps. TinyFloor is a virtual office in the browser: free for 3 people, then $29 a month for the whole team."
+          "title": "Teamflow Alternative: Pricing, Free Plan Limits and a Browser Option",
+          "description": "Teamflow is free for 5 with 45-minute meetings, then $15–20 per employee a month, in a desktop app. What a small team pays, what Teamflow does better, and TinyFloor in the browser at $29 for the whole team."
         },
         "title": "A <em>Teamflow alternative</em> with nothing to download.",
-        "subtitle": "Teamflow charges per person and runs as an app on your computer. TinyFloor opens in a browser tab, on a laptop or a phone, for one price per office.",
+        "subtitle": "Teamflow is free for 5 with 45-minute meetings, then charged per employee, and runs as an app on your computer. TinyFloor opens in a browser tab, on a laptop or a phone, for one price per office: $29 a month.",
         "points": [
           {
             "title": "One price for the office",
@@ -554,19 +554,23 @@
           }
         ],
         "them": {
-          "price": "$15 per person a month, billed yearly",
-          "freePlan": "Up to 5 people, with 45-minute meetings",
+          "price": "Seed $15 per employee a month billed yearly, $20 monthly",
+          "freePlan": "Up to 5 employees, with 45-minute meetings",
           "browser": "Desktop apps for Mac and Windows, mobile in beta",
           "screenShare": "Yes, several at once"
         },
         "faq": [
           {
             "q": "How much does Teamflow cost?",
-            "a": "Teamflow is free for up to 5 people with 45-minute meetings. Seed is $15 and Business $25 per person a month, billed yearly. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+            "a": "Teamflow is free for up to 5 employees with 45-minute meetings. Seed is $15 per employee a month billed yearly or $20 monthly, and Business $25 yearly or $30 monthly. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+          },
+          {
+            "q": "How much does Teamflow cost for 10 people?",
+            "a": "On Seed, $150 a month billed yearly ($1,800 a year) or $200 billed monthly. TinyFloor is $29 a month for the same team."
           },
           {
             "q": "Does TinyFloor have Teamflow's app integrations?",
-            "a": "No. Teamflow embeds apps such as Figma and Google Docs in meetings. TinyFloor keeps to presence, calls, meetings, chat, a whiteboard and screen sharing."
+            "a": "No. Teamflow lets each person open apps such as Figma and Google Docs in the office. TinyFloor keeps to presence, calls, meetings, chat, a whiteboard and screen sharing."
           },
           {
             "q": "Do my teammates need to install anything?",
@@ -581,11 +585,11 @@
       "roam": {
         "label": "Roam alternative",
         "meta": {
-          "title": "Roam Alternative for Small Remote Teams",
-          "description": "Roam is a desktop app priced per active member. TinyFloor is a virtual office in the browser, free for 3 people and $29 a month for the whole team."
+          "title": "Roam Alternative: Pricing, What the Bundle Includes and a Simpler Office",
+          "description": "Roam is $19.50 per active member a month for a bundle of nine products in a desktop app, with no free plan. What a small team pays, what Roam does better, and TinyFloor in the browser at $29 for the whole team."
         },
         "title": "A <em>Roam alternative</em> that opens in the browser.",
-        "subtitle": "Roam bundles a virtual office with AI tools and a desktop app, priced per member. TinyFloor does the office part simply: walk up, meet and chat, for one price per team.",
+        "subtitle": "Roam bundles a virtual office with AI notes, an assistant, webinars and more in a desktop app, at $19.50 per active member a month. TinyFloor does the office part simply, in the browser: walk up, meet and chat, for one price per team.",
         "points": [
           {
             "title": "Just the office",
@@ -601,19 +605,23 @@
           }
         ],
         "them": {
-          "price": "A monthly price per active member",
-          "freePlan": "None, only a 14-day trial",
-          "browser": "Desktop app to download",
+          "price": "$19.50 per active member a month",
+          "freePlan": "None, a 14-day trial for each new member",
+          "browser": "Desktop and mobile apps to download",
           "screenShare": "Yes"
         },
         "faq": [
           {
-            "q": "How is Roam priced?",
-            "a": "Roam charges one monthly price per active member for all its products, with a 14-day free trial and no annual contract. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+            "q": "How much does Roam cost?",
+            "a": "Roam is $19.50 per active member a month in 2026, billed monthly, for all nine of its products; it has published $20.88 for 2027. There's no free plan, but each new member gets a 14-day trial, and guests are free. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+          },
+          {
+            "q": "How much does Roam cost for 10 people?",
+            "a": "$195 a month if all 10 are active, or $2,340 a year. TinyFloor is $29 a month for the same team."
           },
           {
             "q": "What does Roam have that TinyFloor does not?",
-            "a": "Roam adds AI meeting notes, an AI assistant, webinars, scheduling and screen recording. TinyFloor focuses on the office itself."
+            "a": "AI meeting notes without a bot, an AI assistant and inbox, webinars and events, scheduling, screen recording, and desktop and mobile apps. TinyFloor focuses on the office itself."
           },
           {
             "q": "Can guests join a TinyFloor office?",

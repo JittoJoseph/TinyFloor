@@ -51,7 +51,7 @@
           ],
           [
             "Roam",
-            "A price per active member",
+            "$156",
             "None, a 14-day trial",
             "Teams that want AI tools with their office"
           ],
@@ -837,6 +837,360 @@
       "title": "How we compared",
       "body": [
         "WorkAdventure's prices, limits and features come from its pricing page and its pricing FAQ, read in October 2026, in US dollars before tax. If something wasn't stated there, we left it out rather than guess. We make TinyFloor, so we've said plainly what it doesn't do. Prices change: check WorkAdventure's page before you buy."
+      ]
+    }
+  ],
+  "teamflow": [
+    {
+      "title": "Teamflow and TinyFloor at a glance",
+      "body": [
+        "Both put your team in one shared office where you move closer to talk. Teamflow is a desktop app with apps inside the office; TinyFloor is a pixel-art office in the browser with one price for everyone."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Teamflow",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "A team of 8, a month",
+            "$120 billed yearly, $160 monthly (Seed)",
+            "$29 for the whole team"
+          ],
+          [
+            "Free plan",
+            "Up to 5 employees, 45-minute meetings, 10 guests at a time",
+            "Up to 3 people, every feature"
+          ],
+          [
+            "How it's priced",
+            "Per employee",
+            "One price for the office"
+          ],
+          [
+            "Where it runs",
+            "Desktop apps for Mac and Windows, mobile in beta",
+            "The browser, on desktop and mobile"
+          ],
+          [
+            "Meetings",
+            "Unlimited length on paid plans",
+            "No time limit on any plan"
+          ],
+          [
+            "Apps in the office",
+            "Shared apps, 5 to unlimited per person by plan",
+            "Whiteboard and screen sharing"
+          ],
+          [
+            "Guests",
+            "10 to 25 at a time by plan",
+            "Everyone joins with a free account"
+          ]
+        ],
+        "note": "Teamflow's details from its pricing page in October 2026, before tax."
+      }
+    },
+    {
+      "title": "What Teamflow costs by team size",
+      "body": [
+        "The free plan covers up to 5 employees. Past that, Seed is $15 an employee a month on a yearly plan or $20 month to month, and Business is $25 or $30."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Teamflow Seed, billed monthly",
+          "Teamflow Seed, billed yearly, a month",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "6 people",
+            "$120",
+            "$90",
+            "$29"
+          ],
+          [
+            "8 people",
+            "$160",
+            "$120",
+            "$29"
+          ],
+          [
+            "10 people",
+            "$200",
+            "$150",
+            "$29"
+          ],
+          [
+            "12 people",
+            "$240",
+            "$180",
+            "$29"
+          ]
+        ],
+        "note": "Teamflow Seed at $20 an employee monthly or $15 yearly (Teamflow pricing page, October 2026). TinyFloor Pro is monthly; teams of up to 3 stay free."
+      }
+    },
+    {
+      "title": "Why small teams look for a Teamflow alternative",
+      "items": [
+        {
+          "title": "Meetings stop at 45 minutes on the free plan",
+          "body": "Fine for a quick sync, not for a planning session or a long pairing call. Unlimited meetings start with Seed."
+        },
+        {
+          "title": "The sixth person costs everyone",
+          "body": "Free covers 5 employees. A team of 6 on Seed pays $90 a month on a yearly plan or $120 monthly."
+        },
+        {
+          "title": "It's an app to install",
+          "body": "Everyone downloads Teamflow for Mac or Windows, and mobile is in beta. A browser office works on any machine, including a guest's."
+        },
+        {
+          "title": "More than some teams need",
+          "body": "Shared apps in the office are useful for workshops; a team that mostly wants to see who's in and talk may never open them."
+        }
+      ]
+    },
+    {
+      "title": "What Teamflow does better",
+      "items": [
+        {
+          "title": "Apps inside the office",
+          "body": "Open shared apps like Figma and Google Docs in the space so a meeting can work on them together. TinyFloor has a whiteboard and screen sharing, not embedded apps."
+        },
+        {
+          "title": "Several screens at once",
+          "body": "More than one person can share at the same time, which helps when comparing work side by side."
+        },
+        {
+          "title": "Room for larger teams",
+          "body": "Up to 200 people per floor, and a Business plan with more guests and unlimited apps. TinyFloor offices are made for small teams."
+        },
+        {
+          "title": "A desktop app",
+          "body": "If your team prefers a native app that lives in the dock, Teamflow is built that way."
+        }
+      ]
+    },
+    {
+      "title": "Which one fits your team",
+      "items": [
+        {
+          "title": "TinyFloor, for a small team in the browser",
+          "body": "For a team of 4 to 15 that wants to see who's in, talk without scheduling and meet with no time limit, without installing anything, for one price."
+        },
+        {
+          "title": "Teamflow, for workshops and larger teams",
+          "body": "If you want shared apps inside meetings, several screens at once, a desktop app, or room for dozens of people on a floor."
+        },
+        {
+          "title": "Teamflow free, for 5 or fewer",
+          "body": "If 45-minute meetings are enough and everyone is happy to install an app, the free plan may be all you need."
+        }
+      ]
+    },
+    {
+      "title": "Moving a team from Teamflow",
+      "items": [
+        {
+          "title": "Make an office",
+          "detail": "Two minutes",
+          "body": "Name it after the team. The floor, desks and meeting room are ready."
+        },
+        {
+          "title": "Share one invite link",
+          "detail": "In your team chat",
+          "body": "Teammates sign in with Google or email and walk in from the browser. Nothing to download."
+        },
+        {
+          "title": "Run a normal week there",
+          "detail": "Standup in the meeting room",
+          "body": "Keep Teamflow until the week is up, then decide which one the team actually opened."
+        }
+      ]
+    },
+    {
+      "title": "How we compared",
+      "body": [
+        "Teamflow's prices, limits and features come from its pricing page, read in October 2026, in US dollars before tax. If something wasn't stated there, we left it out rather than guess. We make TinyFloor, so we've said plainly what it doesn't do. Prices change: check Teamflow's page before you buy."
+      ]
+    }
+  ],
+  "roam": [
+    {
+      "title": "Roam and TinyFloor at a glance",
+      "body": [
+        "Roam sells one bundle of nine products built around a virtual office; TinyFloor is only the office, in the browser, priced for a small team."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Roam",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "A team of 8, a month",
+            "$156 if all 8 are active",
+            "$29 for the whole team"
+          ],
+          [
+            "Free plan",
+            "None; a 14-day trial for each new member",
+            "Up to 3 people, every feature"
+          ],
+          [
+            "How it's priced",
+            "Per active member, monthly",
+            "One price for the office, monthly"
+          ],
+          [
+            "Guests",
+            "Free",
+            "Everyone joins with a free account"
+          ],
+          [
+            "Where it runs",
+            "Desktop and mobile apps",
+            "The browser, on desktop and mobile"
+          ],
+          [
+            "AI",
+            "Meeting notes, an assistant and an AI inbox",
+            "None"
+          ],
+          [
+            "Events and recording",
+            "Webinars, a theater for all-hands, screen recording",
+            "No"
+          ]
+        ],
+        "note": "Roam's details from its pricing page in October 2026, in US dollars before tax."
+      }
+    },
+    {
+      "title": "What Roam costs by team size",
+      "body": [
+        "Roam charges $19.50 a month for each member who uses it that month, with no yearly plan and no discounts. Members who don't open Roam in a month aren't counted."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Roam, a month",
+          "Roam, a year",
+          "TinyFloor, a month"
+        ],
+        "rows": [
+          [
+            "4 people",
+            "$78",
+            "$936",
+            "$29"
+          ],
+          [
+            "8 people",
+            "$156",
+            "$1,872",
+            "$29"
+          ],
+          [
+            "10 people",
+            "$195",
+            "$2,340",
+            "$29"
+          ],
+          [
+            "12 people",
+            "$234",
+            "$2,808",
+            "$29"
+          ]
+        ],
+        "note": "Roam at $19.50 per active member a month, everyone active (Roam pricing page, October 2026; Roam has published $20.88 for 2027). TinyFloor Pro is $29 a month; teams of up to 3 stay free."
+      }
+    },
+    {
+      "title": "Why small teams look for a Roam alternative",
+      "items": [
+        {
+          "title": "No free plan",
+          "body": "Every member gets a 14-day trial, then counts toward the bill. There's no tier that a small team can stay on for free."
+        },
+        {
+          "title": "A bundle you may not use",
+          "body": "AI notes, webinars, scheduling and recording are useful if they replace tools you pay for. If you already have them, much of the bundle sits unused."
+        },
+        {
+          "title": "An app to install",
+          "body": "Roam is a download for desktop and mobile. A browser office opens on any machine without setup."
+        },
+        {
+          "title": "The price grows with each person",
+          "body": "Every active member adds $19.50 a month, so a team of 12 pays $234 where TinyFloor stays at $29."
+        }
+      ]
+    },
+    {
+      "title": "What Roam does better",
+      "items": [
+        {
+          "title": "Nine products in one",
+          "body": "Drop-in meetings, a theater for all-hands, a lobby for scheduling, webinars, screen recording and an AI assistant, so a team can drop several other subscriptions."
+        },
+        {
+          "title": "AI notes without a bot",
+          "body": "Roam writes meeting minutes itself, without a note-taking bot joining the call. TinyFloor has no AI features."
+        },
+        {
+          "title": "Free guests, and only active members pay",
+          "body": "Customers and partners join for free, and people who don't use Roam in a month aren't billed."
+        },
+        {
+          "title": "Built for larger companies",
+          "body": "SOC 2 Type II, GDPR compliance, and published price changes two years ahead, which suits procurement and security reviews."
+        }
+      ]
+    },
+    {
+      "title": "Which one fits your team",
+      "items": [
+        {
+          "title": "TinyFloor, for the office alone",
+          "body": "For a team of 4 to 15 that wants to see who's in, talk without scheduling and meet in a room, in the browser, for one price, and already has its other tools."
+        },
+        {
+          "title": "Roam, for an all-in-one workspace",
+          "body": "If you want AI notes, webinars, scheduling and recording in the same place as your office, and the bundle would replace subscriptions you pay for today."
+        }
+      ]
+    },
+    {
+      "title": "Moving a team from Roam",
+      "items": [
+        {
+          "title": "Make an office",
+          "detail": "Two minutes",
+          "body": "Name it after the team. The floor, desks and meeting room are ready."
+        },
+        {
+          "title": "Share one invite link",
+          "detail": "In your team chat",
+          "body": "Teammates sign in with Google or email and walk in from the browser. Nothing to download."
+        },
+        {
+          "title": "Run a normal week there",
+          "detail": "Standup in the meeting room",
+          "body": "Keep Roam until the week is up, then decide which one the team actually opened."
+        }
+      ]
+    },
+    {
+      "title": "How we compared",
+      "body": [
+        "Roam's prices and features come from its pricing page, read in October 2026, in US dollars before tax; Roam also lists prices in some local currencies, such as rupees for companies in India. If something wasn't stated there, we left it out rather than guess. We make TinyFloor, so we've said plainly what it doesn't do. Prices change: check Roam's page before you buy."
       ]
     }
   ]

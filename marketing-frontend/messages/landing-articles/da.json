@@ -51,7 +51,7 @@
           ],
           [
             "Roam",
-            "En pris per aktivt medlem",
+            "156 $",
             "Ingen, 14 dages prøveperiode",
             "Teams, der vil have AI-værktøjer med kontoret"
           ],
@@ -837,6 +837,360 @@
       "title": "Sådan sammenlignede vi",
       "body": [
         "WorkAdventures priser, grænser og funktioner kommer fra dets prisside og dets ofte stillede spørgsmål om priser, læst i oktober 2026, i amerikanske dollar ekskl. moms. Hvad der ikke stod der, udelod vi i stedet for at gætte. Vi laver TinyFloor, så vi siger tydeligt, hvad det ikke kan. Priser ændrer sig: tjek WorkAdventures side, før du køber."
+      ]
+    }
+  ],
+  "teamflow": [
+    {
+      "title": "Teamflow og TinyFloor i overblik",
+      "body": [
+        "Begge samler teamet i ét fælles kontor, hvor man rykker tættere på for at snakke. Teamflow er en computerapp med apps i kontoret; TinyFloor er et kontor i pixelkunst i browseren med én pris for alle."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Teamflow",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Et team på 8, om måneden",
+            "120 $ årligt, 160 $ månedligt (Seed)",
+            "29 $ for hele teamet"
+          ],
+          [
+            "Gratisplan",
+            "Op til 5 medarbejdere, møder på 45 minutter, 10 gæster ad gangen",
+            "Op til 3 personer, alle funktioner"
+          ],
+          [
+            "Hvordan prisen beregnes",
+            "Per medarbejder",
+            "Én pris for kontoret"
+          ],
+          [
+            "Hvor det kører",
+            "Computerapps til Mac og Windows, mobil i beta",
+            "Browseren, på computer og mobil"
+          ],
+          [
+            "Møder",
+            "Ubegrænset længde i betalte planer",
+            "Ingen tidsgrænse i nogen plan"
+          ],
+          [
+            "Apps i kontoret",
+            "Delte apps, 5 til ubegrænset per person afhængigt af plan",
+            "Whiteboard og skærmdeling"
+          ],
+          [
+            "Gæster",
+            "10 til 25 ad gangen afhængigt af plan",
+            "Alle kommer ind med en gratis konto"
+          ]
+        ],
+        "note": "Oplysninger om Teamflow fra dets prisside i oktober 2026, ekskl. moms."
+      }
+    },
+    {
+      "title": "Hvad Teamflow koster efter teamstørrelse",
+      "body": [
+        "Gratisplanen dækker op til 5 medarbejdere. Derefter koster Seed 15 $ per medarbejder om måneden på en årsplan eller 20 $ måned for måned, og Business 25 eller 30 $."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Teamflow Seed, månedligt",
+          "Teamflow Seed, årligt, om måneden",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "6 personer",
+            "120 $",
+            "90 $",
+            "29 $"
+          ],
+          [
+            "8 personer",
+            "160 $",
+            "120 $",
+            "29 $"
+          ],
+          [
+            "10 personer",
+            "200 $",
+            "150 $",
+            "29 $"
+          ],
+          [
+            "12 personer",
+            "240 $",
+            "180 $",
+            "29 $"
+          ]
+        ],
+        "note": "Teamflow Seed til 20 $ per medarbejder månedligt eller 15 $ årligt (Teamflows prisside, oktober 2026). TinyFloor Pro betales månedligt; teams på op til 3 forbliver gratis."
+      }
+    },
+    {
+      "title": "Hvorfor små teams leder efter et alternativ til Teamflow",
+      "items": [
+        {
+          "title": "Møder stopper efter 45 minutter på gratisplanen",
+          "body": "Fint til en hurtig afstemning, ikke til en planlægningssession eller et langt parprogrammeringsopkald. Ubegrænsede møder begynder med Seed."
+        },
+        {
+          "title": "Den sjette person koster for alle",
+          "body": "Gratisplanen dækker 5 medarbejdere. Et team på 6 på Seed betaler 90 $ om måneden på en årsplan eller 120 $ månedligt."
+        },
+        {
+          "title": "Det er en app, der skal installeres",
+          "body": "Alle downloader Teamflow til Mac eller Windows, og mobil er i beta. Et kontor i browseren virker på enhver computer, også en gæsts."
+        },
+        {
+          "title": "Mere, end nogle teams har brug for",
+          "body": "Delte apps i kontoret er nyttige til workshops; et team, der mest vil se, hvem der er der, og snakke, åbner dem måske aldrig."
+        }
+      ]
+    },
+    {
+      "title": "Hvad Teamflow gør bedre",
+      "items": [
+        {
+          "title": "Apps i kontoret",
+          "body": "Åbn delte apps som Figma og Google Docs i rummet, så et møde kan arbejde i dem sammen. TinyFloor har whiteboard og skærmdeling, ikke indlejrede apps."
+        },
+        {
+          "title": "Flere skærme ad gangen",
+          "body": "Mere end én person kan dele samtidig, hvilket hjælper, når man sammenligner arbejde side om side."
+        },
+        {
+          "title": "Plads til større teams",
+          "body": "Op til 200 personer per etage og en Business-plan med flere gæster og ubegrænsede apps. TinyFloor-kontorer er lavet til små teams."
+        },
+        {
+          "title": "En computerapp",
+          "body": "Hvis dit team foretrækker en indbygget app i docken, er Teamflow bygget sådan."
+        }
+      ]
+    },
+    {
+      "title": "Hvad der passer til dit team",
+      "items": [
+        {
+          "title": "TinyFloor, til et lille team i browseren",
+          "body": "Til et team på 4 til 15, der vil se, hvem der er der, snakke uden at aftale tid og mødes uden tidsgrænse, uden at installere noget, for én pris."
+        },
+        {
+          "title": "Teamflow, til workshops og større teams",
+          "body": "Hvis du vil have delte apps i møder, flere skærme ad gangen, en computerapp eller plads til snesevis af personer på en etage."
+        },
+        {
+          "title": "Teamflow gratis, til 5 eller færre",
+          "body": "Hvis møder på 45 minutter er nok, og alle gerne installerer en app, kan gratisplanen være nok."
+        }
+      ]
+    },
+    {
+      "title": "Flyt et team fra Teamflow",
+      "items": [
+        {
+          "title": "Opret et kontor",
+          "detail": "To minutter",
+          "body": "Navngiv det efter teamet. Gulvet, skrivebordene og mødelokalet er klar."
+        },
+        {
+          "title": "Del ét invitationslink",
+          "detail": "I teamchatten",
+          "body": "Kollegerne logger ind med Google eller e-mail og går ind fra browseren. Intet at downloade."
+        },
+        {
+          "title": "Arbejd der en almindelig uge",
+          "detail": "Standup i mødelokalet",
+          "body": "Behold Teamflow, til ugen er gået, og beslut så, hvilket teamet faktisk åbnede."
+        }
+      ]
+    },
+    {
+      "title": "Sådan sammenlignede vi",
+      "body": [
+        "Teamflows priser, grænser og funktioner kommer fra dets prisside, læst i oktober 2026, i amerikanske dollar ekskl. moms. Hvad der ikke stod der, udelod vi i stedet for at gætte. Vi laver TinyFloor, så vi siger tydeligt, hvad det ikke kan. Priser ændrer sig: tjek Teamflows side, før du køber."
+      ]
+    }
+  ],
+  "roam": [
+    {
+      "title": "Roam og TinyFloor i overblik",
+      "body": [
+        "Roam sælger én pakke med ni produkter bygget op om et virtuelt kontor; TinyFloor er kun kontoret, i browseren, med en pris til et lille team."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Roam",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Et team på 8, om måneden",
+            "156 $, hvis alle 8 er aktive",
+            "29 $ for hele teamet"
+          ],
+          [
+            "Gratisplan",
+            "Ingen; 14 dages prøveperiode for hvert nyt medlem",
+            "Op til 3 personer, alle funktioner"
+          ],
+          [
+            "Hvordan prisen beregnes",
+            "Per aktivt medlem, månedligt",
+            "Én pris for kontoret, månedligt"
+          ],
+          [
+            "Gæster",
+            "Gratis",
+            "Alle kommer ind med en gratis konto"
+          ],
+          [
+            "Hvor det kører",
+            "Computer- og mobilapps",
+            "Browseren, på computer og mobil"
+          ],
+          [
+            "AI",
+            "Mødenoter, en assistent og en AI-indbakke",
+            "Ingen"
+          ],
+          [
+            "Events og optagelse",
+            "Webinarer, en sal til fællesmøder, skærmoptagelse",
+            "Nej"
+          ]
+        ],
+        "note": "Oplysninger om Roam fra dets prisside i oktober 2026, i amerikanske dollar ekskl. moms."
+      }
+    },
+    {
+      "title": "Hvad Roam koster efter teamstørrelse",
+      "body": [
+        "Roam tager 19,50 $ om måneden for hvert medlem, der bruger Roam den måned, uden årsplan og uden rabatter. Medlemmer, der ikke åbner Roam i en måned, tæller ikke med."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Roam, om måneden",
+          "Roam, om året",
+          "TinyFloor, om måneden"
+        ],
+        "rows": [
+          [
+            "4 personer",
+            "78 $",
+            "936 $",
+            "29 $"
+          ],
+          [
+            "8 personer",
+            "156 $",
+            "1.872 $",
+            "29 $"
+          ],
+          [
+            "10 personer",
+            "195 $",
+            "2.340 $",
+            "29 $"
+          ],
+          [
+            "12 personer",
+            "234 $",
+            "2.808 $",
+            "29 $"
+          ]
+        ],
+        "note": "Roam til 19,50 $ per aktivt medlem om måneden, alle aktive (Roams prisside, oktober 2026; for 2027 har Roam meldt 20,88 $ ud). TinyFloor Pro koster 29 $ om måneden; teams på op til 3 forbliver gratis."
+      }
+    },
+    {
+      "title": "Hvorfor små teams leder efter et alternativ til Roam",
+      "items": [
+        {
+          "title": "Ingen gratisplan",
+          "body": "Hvert medlem får 14 dages prøveperiode og tæller derefter med på regningen. Der er ingen plan, hvor et lille team kan blive gratis."
+        },
+        {
+          "title": "En pakke, du måske ikke bruger",
+          "body": "AI-noter, webinarer, planlægning og optagelse er nyttige, hvis de erstatter værktøjer, du betaler for. Har du dem allerede, står meget af pakken ubrugt."
+        },
+        {
+          "title": "En app, der skal installeres",
+          "body": "Roam skal downloades til computer og mobil. Et kontor i browseren åbner på enhver computer uden opsætning."
+        },
+        {
+          "title": "Prisen vokser med hver person",
+          "body": "Hvert aktivt medlem lægger 19,50 $ oven i om måneden, så et team på 12 betaler 234 $, mens TinyFloor bliver ved 29 $."
+        }
+      ]
+    },
+    {
+      "title": "Hvad Roam gør bedre",
+      "items": [
+        {
+          "title": "Ni produkter i ét",
+          "body": "Spontane møder, en sal til fællesmøder, en lobby til planlægning, webinarer, skærmoptagelse og en AI-assistent, så et team kan opsige flere andre abonnementer."
+        },
+        {
+          "title": "AI-noter uden bot",
+          "body": "Roam skriver selv mødereferatet, uden at en notatbot deltager i opkaldet. TinyFloor har ingen AI-funktioner."
+        },
+        {
+          "title": "Gratis gæster, og kun aktive medlemmer betaler",
+          "body": "Kunder og partnere kommer gratis ind, og den, der ikke bruger Roam i en måned, bliver ikke opkrævet."
+        },
+        {
+          "title": "Bygget til større virksomheder",
+          "body": "SOC 2 Type II, GDPR-overholdelse og prisændringer, der offentliggøres to år frem, hvilket gør indkøb og sikkerhedsgennemgange lettere."
+        }
+      ]
+    },
+    {
+      "title": "Hvad der passer til dit team",
+      "items": [
+        {
+          "title": "TinyFloor, kun til kontoret",
+          "body": "Til et team på 4 til 15, der vil se, hvem der er der, snakke uden at aftale tid og mødes i et lokale, i browseren, for én pris, og som allerede har sine andre værktøjer."
+        },
+        {
+          "title": "Roam, til en alt-i-én-arbejdsplads",
+          "body": "Hvis du vil have AI-noter, webinarer, planlægning og optagelse samme sted som dit kontor, og pakken ville erstatte abonnementer, du betaler for i dag."
+        }
+      ]
+    },
+    {
+      "title": "Flyt et team fra Roam",
+      "items": [
+        {
+          "title": "Opret et kontor",
+          "detail": "To minutter",
+          "body": "Navngiv det efter teamet. Gulvet, skrivebordene og mødelokalet er klar."
+        },
+        {
+          "title": "Del ét invitationslink",
+          "detail": "I teamchatten",
+          "body": "Kollegerne logger ind med Google eller e-mail og går ind fra browseren. Intet at downloade."
+        },
+        {
+          "title": "Arbejd der en almindelig uge",
+          "detail": "Standup i mødelokalet",
+          "body": "Behold Roam, til ugen er gået, og beslut så, hvilket teamet faktisk åbnede."
+        }
+      ]
+    },
+    {
+      "title": "Sådan sammenlignede vi",
+      "body": [
+        "Roams priser og funktioner kommer fra dets prisside, læst i oktober 2026, i amerikanske dollar ekskl. moms; Roam viser også priser i nogle lokale valutaer, fx rupier for virksomheder i Indien. Hvad der ikke stod der, udelod vi i stedet for at gætte. Vi laver TinyFloor, så vi siger tydeligt, hvad det ikke kan. Priser ændrer sig: tjek Roams side, før du køber."
       ]
     }
   ]

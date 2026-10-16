@@ -534,11 +534,11 @@
       "teamflow": {
         "label": "Alternative à Teamflow",
         "meta": {
-          "title": "Alternative à Teamflow qui fonctionne dans le navigateur",
-          "description": "Teamflow coûte 15 $ par personne et par mois, avec des applications de bureau. TinyFloor est un bureau virtuel dans le navigateur : gratuit pour 3 personnes, puis 29 $ par mois pour toute l'équipe."
+          "title": "Alternative à Teamflow : tarifs, limites de l'offre gratuite et une option dans le navigateur",
+          "description": "Teamflow est gratuit pour 5 avec des réunions de 45 minutes, puis 15 à 20 $ par employé et par mois, dans une application de bureau. Ce que paie une petite équipe, ce que Teamflow fait mieux, et TinyFloor dans le navigateur à 29 $ pour toute l'équipe."
         },
         "title": "Une <em>alternative à Teamflow</em> sans rien à télécharger.",
-        "subtitle": "Teamflow facture par personne et tourne comme une appli sur votre ordinateur. TinyFloor s'ouvre dans un onglet du navigateur, sur ordinateur ou téléphone, pour un seul prix par bureau.",
+        "subtitle": "Teamflow est gratuit pour 5 avec des réunions de 45 minutes, puis facturé par employé, et fonctionne comme une application sur votre ordinateur. TinyFloor s'ouvre dans un onglet du navigateur, sur ordinateur ou téléphone, pour un prix par bureau : 29 $ par mois.",
         "points": [
           {
             "title": "Un prix pour le bureau",
@@ -554,38 +554,42 @@
           }
         ],
         "them": {
-          "price": "15 $ par personne et par mois, facturé à l'année",
-          "freePlan": "Jusqu'à 5 personnes, avec des réunions de 45 minutes",
-          "browser": "Applis pour Mac et Windows, mobile en bêta",
+          "price": "Seed 15 $ par employé et par mois à l'année, 20 $ au mois",
+          "freePlan": "Jusqu'à 5 employés, avec des réunions de 45 minutes",
+          "browser": "Applications de bureau pour Mac et Windows, mobile en bêta",
           "screenShare": "Oui, plusieurs à la fois"
         },
         "faq": [
           {
             "q": "Combien coûte Teamflow ?",
-            "a": "Teamflow est gratuit jusqu'à 5 personnes avec des réunions de 45 minutes. Seed coûte 15 $ et Business 25 $ par personne et par mois, facturés à l'année. TinyFloor est gratuit jusqu'à 3 personnes et coûte 29 $ par mois pour toute l'équipe."
+            "a": "Teamflow est gratuit jusqu'à 5 employés avec des réunions de 45 minutes. Seed coûte 15 $ par employé et par mois à l'année ou 20 $ au mois, et Business 25 $ à l'année ou 30 $ au mois. TinyFloor est gratuit jusqu'à 3 personnes et coûte 29 $ par mois pour toute l'équipe."
           },
           {
-            "q": "TinyFloor a-t-il les intégrations d'applis de Teamflow ?",
-            "a": "Non. Teamflow intègre des applis comme Figma et Google Docs dans les réunions. TinyFloor s'en tient à la présence, aux appels, aux réunions, au chat, à un tableau blanc et au partage d'écran."
+            "q": "Combien coûte Teamflow pour 10 personnes ?",
+            "a": "Avec Seed, 150 $ par mois à l'année (1 800 $ par an) ou 200 $ au mois. TinyFloor coûte 29 $ par mois pour la même équipe."
+          },
+          {
+            "q": "TinyFloor a-t-il les intégrations d'applications de Teamflow ?",
+            "a": "Non. Teamflow permet à chacun d'ouvrir des applications comme Figma et Google Docs dans le bureau. TinyFloor s'en tient à la présence, aux appels, aux réunions, à la messagerie, à un tableau blanc et au partage d'écran."
           },
           {
             "q": "Mes collègues doivent-ils installer quelque chose ?",
             "a": "Non. TinyFloor fonctionne dans le navigateur, sur ordinateur et mobile. Ils ouvrent le lien d'invitation de votre bureau et se connectent."
           },
           {
-            "q": "Combien de personnes peuvent rejoindre un bureau TinyFloor ?",
-            "a": "Jusqu'à 3 personnes avec Free, et une petite équipe jusqu'à 15 avec Pro. Vous pouvez créer autant de bureaux que nécessaire."
+            "q": "Combien de personnes peut accueillir un bureau TinyFloor ?",
+            "a": "Jusqu'à 3 personnes avec l'offre gratuite, et une petite équipe jusqu'à 15 avec Pro. Vous pouvez créer autant de bureaux que nécessaire."
           }
         ]
       },
       "roam": {
         "label": "Alternative à Roam",
         "meta": {
-          "title": "Alternative à Roam pour les petites équipes à distance",
-          "description": "Roam est une application de bureau facturée par membre actif. TinyFloor est un bureau virtuel dans le navigateur, gratuit pour 3 personnes et 29 $ par mois pour toute l'équipe."
+          "title": "Alternative à Roam : tarifs, contenu de l'offre groupée et un bureau plus simple",
+          "description": "Roam coûte 19,50 $ par membre actif et par mois pour une offre de neuf produits dans une application de bureau, sans formule gratuite. Ce que paie une petite équipe, ce que Roam fait mieux, et TinyFloor dans le navigateur à 29 $ pour toute l'équipe."
         },
         "title": "Une <em>alternative à Roam</em> qui s'ouvre dans le navigateur.",
-        "subtitle": "Roam regroupe un bureau virtuel, des outils d'IA et une appli à installer, facturés par membre. TinyFloor fait simplement la partie bureau : s'approcher, se réunir et discuter, pour un seul prix par équipe.",
+        "subtitle": "Roam regroupe un bureau virtuel, des notes par IA, un assistant, des webinaires et plus encore dans une application de bureau, à 19,50 $ par membre actif et par mois. TinyFloor fait simplement la partie bureau, dans le navigateur : aller voir quelqu'un, se réunir, discuter, pour un prix par équipe.",
         "points": [
           {
             "title": "Juste le bureau",
@@ -601,23 +605,27 @@
           }
         ],
         "them": {
-          "price": "Un prix mensuel par membre actif",
-          "freePlan": "Aucune, seulement un essai de 14 jours",
-          "browser": "Appli à télécharger",
+          "price": "19,50 $ par membre actif et par mois",
+          "freePlan": "Aucune, 14 jours d'essai pour chaque nouveau membre",
+          "browser": "Applications de bureau et mobiles à télécharger",
           "screenShare": "Oui"
         },
         "faq": [
           {
-            "q": "Comment Roam est-il facturé ?",
-            "a": "Roam facture un prix mensuel par membre actif pour tous ses produits, avec un essai gratuit de 14 jours et sans contrat annuel. TinyFloor est gratuit jusqu'à 3 personnes et coûte 29 $ par mois pour toute l'équipe."
+            "q": "Combien coûte Roam ?",
+            "a": "Roam coûte 19,50 $ par membre actif et par mois en 2026, facturé au mois, pour ses neuf produits ; Roam a annoncé 20,88 $ pour 2027. Il n'y a pas de formule gratuite, mais chaque nouveau membre a 14 jours d'essai, et les invités sont gratuits. TinyFloor est gratuit jusqu'à 3 personnes et coûte 29 $ par mois pour toute l'équipe."
+          },
+          {
+            "q": "Combien coûte Roam pour 10 personnes ?",
+            "a": "195 $ par mois si les 10 sont actifs, soit 2 340 $ par an. TinyFloor coûte 29 $ par mois pour la même équipe."
           },
           {
             "q": "Qu'est-ce que Roam a que TinyFloor n'a pas ?",
-            "a": "Roam ajoute des notes de réunion par IA, un assistant IA, des webinaires, la planification et l'enregistrement d'écran. TinyFloor se concentre sur le bureau lui-même."
+            "a": "Des notes de réunion par IA sans bot, un assistant et une boîte de réception IA, des webinaires et événements, la planification, l'enregistrement d'écran, et des applications de bureau et mobiles. TinyFloor se concentre sur le bureau lui-même."
           },
           {
-            "q": "Des invités peuvent-ils rejoindre un bureau TinyFloor ?",
-            "a": "Les bureaux sont réservés aux membres : on les rejoint avec le lien d'invitation et un compte gratuit. Pour jeter un œil d'abord, tout le monde peut essayer le bureau de démo avec un simple nom."
+            "q": "Des invités peuvent-ils entrer dans un bureau TinyFloor ?",
+            "a": "Les bureaux sont réservés aux membres : on entre avec le lien d'invitation et un compte gratuit. Pour faire un tour avant, chacun peut essayer le bureau de démonstration avec juste un nom."
           },
           {
             "q": "TinyFloor fonctionne-t-il sur téléphone ?",

@@ -51,7 +51,7 @@
           ],
           [
             "Roam",
-            "Um preço por membro ativo",
+            "US$ 156",
             "Nenhum, teste de 14 dias",
             "Equipes que querem ferramentas de IA junto com o escritório"
           ],
@@ -837,6 +837,360 @@
       "title": "Como comparamos",
       "body": [
         "Os preços, limites e recursos do WorkAdventure vêm da página de preços e das perguntas frequentes sobre preços, lidas em outubro de 2026, em dólares americanos sem impostos. O que não estava lá, deixamos de fora em vez de chutar. Nós fazemos o TinyFloor, então dizemos com clareza o que ele não faz. Preços mudam: confira a página do WorkAdventure antes de comprar."
+      ]
+    }
+  ],
+  "teamflow": [
+    {
+      "title": "Teamflow e TinyFloor num relance",
+      "body": [
+        "Os dois colocam sua equipe num escritório compartilhado onde você chega perto para conversar. O Teamflow é um app de desktop com apps dentro do escritório; o TinyFloor é um escritório em pixel art no navegador com um preço só para todos."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Teamflow",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Uma equipe de 8, por mês",
+            "US$ 120 no anual, US$ 160 no mensal (Seed)",
+            "US$ 29 para a equipe toda"
+          ],
+          [
+            "Plano grátis",
+            "Até 5 funcionários, reuniões de 45 minutos, 10 convidados ao mesmo tempo",
+            "Até 3 pessoas, todos os recursos"
+          ],
+          [
+            "Como é cobrado",
+            "Por funcionário",
+            "Um preço pelo escritório"
+          ],
+          [
+            "Onde roda",
+            "Apps de desktop para Mac e Windows, celular em beta",
+            "O navegador, no computador e no celular"
+          ],
+          [
+            "Reuniões",
+            "Duração ilimitada nos planos pagos",
+            "Sem limite de tempo em nenhum plano"
+          ],
+          [
+            "Apps no escritório",
+            "Apps compartilhados, de 5 a ilimitados por pessoa conforme o plano",
+            "Quadro branco e compartilhamento de tela"
+          ],
+          [
+            "Convidados",
+            "De 10 a 25 ao mesmo tempo conforme o plano",
+            "Todos entram com uma conta grátis"
+          ]
+        ],
+        "note": "Dados do Teamflow da página de preços em outubro de 2026, sem impostos."
+      }
+    },
+    {
+      "title": "Quanto custa o Teamflow por tamanho de equipe",
+      "body": [
+        "O plano grátis cobre até 5 funcionários. Depois disso, o Seed custa US$ 15 por funcionário por mês no plano anual ou US$ 20 no mensal, e o Business US$ 25 ou US$ 30."
+      ],
+      "table": {
+        "head": [
+          "Equipe",
+          "Teamflow Seed, no mensal",
+          "Teamflow Seed, no anual, por mês",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "6 pessoas",
+            "US$ 120",
+            "US$ 90",
+            "US$ 29"
+          ],
+          [
+            "8 pessoas",
+            "US$ 160",
+            "US$ 120",
+            "US$ 29"
+          ],
+          [
+            "10 pessoas",
+            "US$ 200",
+            "US$ 150",
+            "US$ 29"
+          ],
+          [
+            "12 pessoas",
+            "US$ 240",
+            "US$ 180",
+            "US$ 29"
+          ]
+        ],
+        "note": "Teamflow Seed a US$ 20 por funcionário no mensal ou US$ 15 no anual (página de preços do Teamflow, outubro de 2026). O TinyFloor Pro é mensal; equipes de até 3 continuam grátis."
+      }
+    },
+    {
+      "title": "Por que equipes pequenas procuram uma alternativa ao Teamflow",
+      "items": [
+        {
+          "title": "No plano grátis, reuniões param em 45 minutos",
+          "body": "Serve para um alinhamento rápido, não para uma sessão de planejamento ou uma chamada longa de pareamento. Reuniões ilimitadas começam no Seed."
+        },
+        {
+          "title": "A sexta pessoa custa para todos",
+          "body": "O plano grátis cobre 5 funcionários. Uma equipe de 6 no Seed paga US$ 90 por mês no anual ou US$ 120 no mensal."
+        },
+        {
+          "title": "É um app para instalar",
+          "body": "Todo mundo baixa o Teamflow para Mac ou Windows, e o celular está em beta. Um escritório no navegador funciona em qualquer máquina, até na de um convidado."
+        },
+        {
+          "title": "Mais do que algumas equipes precisam",
+          "body": "Apps compartilhados ajudam em workshops; uma equipe que só quer ver quem está e conversar talvez nunca os abra."
+        }
+      ]
+    },
+    {
+      "title": "O que o Teamflow faz melhor",
+      "items": [
+        {
+          "title": "Apps dentro do escritório",
+          "body": "Abra apps compartilhados como Figma e Google Docs no espaço para uma reunião trabalhar neles junto. O TinyFloor tem quadro branco e compartilhamento de tela, não apps integrados."
+        },
+        {
+          "title": "Várias telas ao mesmo tempo",
+          "body": "Mais de uma pessoa pode compartilhar ao mesmo tempo, o que ajuda a comparar trabalhos lado a lado."
+        },
+        {
+          "title": "Espaço para equipes maiores",
+          "body": "Até 200 pessoas por andar e um plano Business com mais convidados e apps ilimitados. Os escritórios do TinyFloor são feitos para equipes pequenas."
+        },
+        {
+          "title": "Um app de desktop",
+          "body": "Se a sua equipe prefere um app nativo no dock, o Teamflow é feito assim."
+        }
+      ]
+    },
+    {
+      "title": "Qual combina com a sua equipe",
+      "items": [
+        {
+          "title": "TinyFloor, para uma equipe pequena no navegador",
+          "body": "Para uma equipe de 4 a 15 pessoas que quer ver quem está, conversar sem agendar e se reunir sem limite de tempo, sem instalar nada, por um preço só."
+        },
+        {
+          "title": "Teamflow, para workshops e equipes maiores",
+          "body": "Se você quer apps compartilhados nas reuniões, várias telas ao mesmo tempo, um app de desktop ou espaço para dezenas de pessoas num andar."
+        },
+        {
+          "title": "Teamflow grátis, para 5 ou menos",
+          "body": "Se reuniões de 45 minutos bastam e todo mundo topa instalar um app, o plano grátis pode ser suficiente."
+        }
+      ]
+    },
+    {
+      "title": "Trazer uma equipe do Teamflow",
+      "items": [
+        {
+          "title": "Crie um escritório",
+          "detail": "Dois minutos",
+          "body": "Dê o nome da equipe. O andar, as mesas e a sala de reunião já estão prontos."
+        },
+        {
+          "title": "Compartilhe um link de convite",
+          "detail": "No chat da equipe",
+          "body": "Os colegas entram com Google ou e-mail pelo navegador. Nada para baixar."
+        },
+        {
+          "title": "Passe uma semana normal lá",
+          "detail": "A daily na sala de reunião",
+          "body": "Mantenham o Teamflow até a semana acabar e depois decidam qual a equipe realmente abriu."
+        }
+      ]
+    },
+    {
+      "title": "Como comparamos",
+      "body": [
+        "Os preços, limites e recursos do Teamflow vêm da página de preços dele, lida em outubro de 2026, em dólares americanos sem impostos. O que não estava lá, deixamos de fora em vez de chutar. Nós fazemos o TinyFloor, então dizemos com clareza o que ele não faz. Preços mudam: confira a página do Teamflow antes de comprar."
+      ]
+    }
+  ],
+  "roam": [
+    {
+      "title": "Roam e TinyFloor num relance",
+      "body": [
+        "O Roam vende um pacote de nove produtos em torno de um escritório virtual; o TinyFloor é só o escritório, no navegador, com um preço pensado para uma equipe pequena."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Roam",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Uma equipe de 8, por mês",
+            "US$ 156 se os 8 estiverem ativos",
+            "US$ 29 para a equipe toda"
+          ],
+          [
+            "Plano grátis",
+            "Nenhum; 14 dias de teste para cada novo membro",
+            "Até 3 pessoas, todos os recursos"
+          ],
+          [
+            "Como é cobrado",
+            "Por membro ativo, mensal",
+            "Um preço pelo escritório, mensal"
+          ],
+          [
+            "Convidados",
+            "Grátis",
+            "Todos entram com uma conta grátis"
+          ],
+          [
+            "Onde roda",
+            "Apps de desktop e celular",
+            "O navegador, no computador e no celular"
+          ],
+          [
+            "IA",
+            "Notas de reunião, um assistente e uma caixa de entrada com IA",
+            "Nenhuma"
+          ],
+          [
+            "Eventos e gravação",
+            "Webinars, um auditório para reuniões gerais, gravação de tela",
+            "Não"
+          ]
+        ],
+        "note": "Dados do Roam da página de preços em outubro de 2026, em dólares americanos sem impostos."
+      }
+    },
+    {
+      "title": "Quanto custa o Roam por tamanho de equipe",
+      "body": [
+        "O Roam cobra US$ 19,50 por mês por membro que usa o Roam naquele mês, sem plano anual e sem descontos. Quem não abre o Roam no mês não conta."
+      ],
+      "table": {
+        "head": [
+          "Equipe",
+          "Roam, por mês",
+          "Roam, por ano",
+          "TinyFloor, por mês"
+        ],
+        "rows": [
+          [
+            "4 pessoas",
+            "US$ 78",
+            "US$ 936",
+            "US$ 29"
+          ],
+          [
+            "8 pessoas",
+            "US$ 156",
+            "US$ 1.872",
+            "US$ 29"
+          ],
+          [
+            "10 pessoas",
+            "US$ 195",
+            "US$ 2.340",
+            "US$ 29"
+          ],
+          [
+            "12 pessoas",
+            "US$ 234",
+            "US$ 2.808",
+            "US$ 29"
+          ]
+        ],
+        "note": "Roam a US$ 19,50 por membro ativo por mês, todos ativos (página de preços do Roam, outubro de 2026; o Roam anunciou US$ 20,88 para 2027). O TinyFloor Pro custa US$ 29 por mês; equipes de até 3 continuam grátis."
+      }
+    },
+    {
+      "title": "Por que equipes pequenas procuram uma alternativa ao Roam",
+      "items": [
+        {
+          "title": "Não há plano grátis",
+          "body": "Cada membro tem 14 dias de teste e depois entra na conta. Não existe um plano em que uma equipe pequena possa ficar de graça."
+        },
+        {
+          "title": "Um pacote que você talvez não use",
+          "body": "Notas por IA, webinars, agendamento e gravação são úteis se substituírem ferramentas que você paga. Se você já as tem, boa parte do pacote fica parada."
+        },
+        {
+          "title": "Um app para instalar",
+          "body": "O Roam é um download para desktop e celular. Um escritório no navegador abre em qualquer máquina, sem configuração."
+        },
+        {
+          "title": "O preço cresce com cada pessoa",
+          "body": "Cada membro ativo soma US$ 19,50 por mês, então uma equipe de 12 paga US$ 234 enquanto o TinyFloor continua em US$ 29."
+        }
+      ]
+    },
+    {
+      "title": "O que o Roam faz melhor",
+      "items": [
+        {
+          "title": "Nove produtos em um",
+          "body": "Reuniões espontâneas, um auditório para reuniões gerais, um lobby para agendar, webinars, gravação de tela e um assistente de IA, para a equipe cancelar várias outras assinaturas."
+        },
+        {
+          "title": "Notas por IA sem bot",
+          "body": "O Roam escreve a ata da reunião sem que um bot de anotações entre na chamada. O TinyFloor não tem recursos de IA."
+        },
+        {
+          "title": "Convidados grátis, e só membros ativos pagam",
+          "body": "Clientes e parceiros entram de graça, e quem não usa o Roam no mês não é cobrado."
+        },
+        {
+          "title": "Feito para empresas maiores",
+          "body": "SOC 2 Tipo II, conformidade com o GDPR e mudanças de preço publicadas com dois anos de antecedência, o que facilita compras e revisões de segurança."
+        }
+      ]
+    },
+    {
+      "title": "Qual combina com a sua equipe",
+      "items": [
+        {
+          "title": "TinyFloor, só para o escritório",
+          "body": "Para uma equipe de 4 a 15 pessoas que quer ver quem está, conversar sem agendar e se reunir numa sala, no navegador, por um preço só, e que já tem as outras ferramentas."
+        },
+        {
+          "title": "Roam, para um espaço de trabalho tudo em um",
+          "body": "Se você quer notas por IA, webinars, agendamento e gravação no mesmo lugar do escritório, e o pacote substituiria assinaturas que você paga hoje."
+        }
+      ]
+    },
+    {
+      "title": "Trazer uma equipe do Roam",
+      "items": [
+        {
+          "title": "Crie um escritório",
+          "detail": "Dois minutos",
+          "body": "Dê o nome da equipe. O andar, as mesas e a sala de reunião já estão prontos."
+        },
+        {
+          "title": "Compartilhe um link de convite",
+          "detail": "No chat da equipe",
+          "body": "Os colegas entram com Google ou e-mail pelo navegador. Nada para baixar."
+        },
+        {
+          "title": "Passe uma semana normal lá",
+          "detail": "A daily na sala de reunião",
+          "body": "Mantenham o Roam até a semana acabar e depois decidam qual a equipe realmente abriu."
+        }
+      ]
+    },
+    {
+      "title": "Como comparamos",
+      "body": [
+        "Os preços e recursos do Roam vêm da página de preços dele, lida em outubro de 2026, em dólares americanos sem impostos; o Roam também mostra preços em algumas moedas locais, como rúpias para empresas na Índia. O que não estava lá, deixamos de fora em vez de chutar. Nós fazemos o TinyFloor, então dizemos com clareza o que ele não faz. Preços mudam: confira a página do Roam antes de comprar."
       ]
     }
   ]

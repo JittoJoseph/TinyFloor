@@ -534,11 +534,11 @@
       "teamflow": {
         "label": "Alternatywa dla Teamflow",
         "meta": {
-          "title": "Alternatywa dla Teamflow działająca w przeglądarce",
-          "description": "Teamflow kosztuje $15 za osobę miesięcznie, z aplikacjami na komputer. TinyFloor to wirtualne biuro w przeglądarce: za darmo dla 3 osób, potem $29 miesięcznie za cały zespół."
+          "title": "Alternatywa dla Teamflow: ceny, limity darmowego planu i opcja w przeglądarce",
+          "description": "Teamflow jest darmowy dla 5 osób ze spotkaniami do 45 minut, potem kosztuje 15–20 $ za pracownika miesięcznie, w aplikacji na komputer. Ile płaci mały zespół, co Teamflow robi lepiej i TinyFloor w przeglądarce za 29 $ za cały zespół."
         },
         "title": "<em>Alternatywa dla Teamflow</em> bez pobierania czegokolwiek.",
-        "subtitle": "Teamflow pobiera opłatę za osobę i działa jako aplikacja na komputerze. TinyFloor otwiera się w karcie przeglądarki, na laptopie lub telefonie, za jedną cenę za biuro.",
+        "subtitle": "Teamflow jest darmowy dla 5 osób ze spotkaniami do 45 minut, potem rozlicza za pracownika i działa jako aplikacja na komputerze. TinyFloor otwiera się w karcie przeglądarki, na laptopie albo telefonie, za jedną cenę za biuro: 29 $ miesięcznie.",
         "points": [
           {
             "title": "Jedna cena za biuro",
@@ -554,38 +554,42 @@
           }
         ],
         "them": {
-          "price": "$15 za osobę miesięcznie, płatne rocznie",
-          "freePlan": "Do 5 osób, ze spotkaniami do 45 minut",
-          "browser": "Aplikacje na Mac i Windows, mobilna w becie",
-          "screenShare": "Tak, kilka ekranów naraz"
+          "price": "Seed 15 $ za pracownika miesięcznie przy płatności rocznej, 20 $ miesięcznie",
+          "freePlan": "Do 5 pracowników, spotkania do 45 minut",
+          "browser": "Aplikacje na Maca i Windows, wersja mobilna w becie",
+          "screenShare": "Tak, kilka naraz"
         },
         "faq": [
           {
             "q": "Ile kosztuje Teamflow?",
-            "a": "Teamflow jest darmowy do 5 osób ze spotkaniami do 45 minut. Seed kosztuje $15, a Business $25 za osobę miesięcznie, płatne rocznie. TinyFloor jest darmowy do 3 osób i kosztuje $29 miesięcznie za cały zespół."
+            "a": "Teamflow jest darmowy dla maksymalnie 5 pracowników ze spotkaniami do 45 minut. Seed kosztuje 15 $ za pracownika miesięcznie przy płatności rocznej albo 20 $ miesięcznie, a Business 25 $ rocznie albo 30 $ miesięcznie. TinyFloor jest darmowy dla maksymalnie 3 osób i kosztuje 29 $ miesięcznie za cały zespół."
+          },
+          {
+            "q": "Ile kosztuje Teamflow dla 10 osób?",
+            "a": "W planie Seed 150 $ miesięcznie przy płatności rocznej (1 800 $ rocznie) albo 200 $ przy płatności miesięcznej. TinyFloor kosztuje 29 $ miesięcznie za ten sam zespół."
           },
           {
             "q": "Czy TinyFloor ma integracje aplikacji jak Teamflow?",
-            "a": "Nie. Teamflow osadza w spotkaniach aplikacje takie jak Figma i Dokumenty Google. TinyFloor zostaje przy obecności, rozmowach, spotkaniach, czacie, tablicy i udostępnianiu ekranu."
+            "a": "Nie. W Teamflow każdy może otworzyć w biurze aplikacje takie jak Figma i Google Docs. TinyFloor ogranicza się do obecności, rozmów, spotkań, czatu, tablicy i udostępniania ekranu."
           },
           {
             "q": "Czy moi współpracownicy muszą coś instalować?",
-            "a": "Nie. TinyFloor działa w przeglądarce na komputerze i telefonie. Otwierają link z zaproszeniem do biura i się logują."
+            "a": "Nie. TinyFloor działa w przeglądarce na komputerze i telefonie. Otwierają link z zaproszeniem do twojego biura i się logują."
           },
           {
             "q": "Ile osób zmieści się w biurze TinyFloor?",
-            "a": "Do 3 osób na Free i mały zespół do 15 osób na Pro. Możesz utworzyć tyle biur, ile potrzebujesz."
+            "a": "Do 3 osób w planie darmowym i mały zespół do 15 osób w Pro. Możesz utworzyć tyle biur, ile potrzebujesz."
           }
         ]
       },
       "roam": {
         "label": "Alternatywa dla Roam",
         "meta": {
-          "title": "Alternatywa dla Roam dla małych zespołów zdalnych",
-          "description": "Roam to aplikacja na komputer z ceną za aktywnego członka. TinyFloor to wirtualne biuro w przeglądarce, za darmo dla 3 osób i za $29 miesięcznie za cały zespół."
+          "title": "Alternatywa dla Roam: ceny, co zawiera pakiet i prostsze biuro",
+          "description": "Roam kosztuje 19,50 $ za aktywnego członka miesięcznie za pakiet dziewięciu produktów w aplikacji na komputer, bez darmowego planu. Ile płaci mały zespół, co Roam robi lepiej i TinyFloor w przeglądarce za 29 $ za cały zespół."
         },
         "title": "<em>Alternatywa dla Roam</em>, która otwiera się w przeglądarce.",
-        "subtitle": "Roam łączy wirtualne biuro z narzędziami AI i aplikacją na komputer, z ceną za członka. TinyFloor robi część biurową po prostu: podejść, spotkać się, pogadać, za jedną cenę za zespół.",
+        "subtitle": "Roam łączy wirtualne biuro z notatkami AI, asystentem, webinarami i nie tylko w aplikacji na komputer, za 19,50 $ za aktywnego członka miesięcznie. TinyFloor robi prosto samą część biurową, w przeglądarce: podejść, spotkać się i pisać, za jedną cenę za zespół.",
         "points": [
           {
             "title": "Tylko biuro",
@@ -601,19 +605,23 @@
           }
         ],
         "them": {
-          "price": "Miesięczna cena za aktywnego członka",
-          "freePlan": "Brak, tylko 14-dniowy okres próbny",
-          "browser": "Aplikacja na komputer do pobrania",
+          "price": "19,50 $ za aktywnego członka miesięcznie",
+          "freePlan": "Brak, 14 dni próbnych dla każdego nowego członka",
+          "browser": "Aplikacje na komputer i telefon do pobrania",
           "screenShare": "Tak"
         },
         "faq": [
           {
-            "q": "Jak wyceniany jest Roam?",
-            "a": "Roam pobiera jedną miesięczną opłatę za aktywnego członka za wszystkie swoje produkty, z 14-dniowym darmowym okresem próbnym i bez umowy rocznej. TinyFloor jest darmowy do 3 osób i kosztuje $29 miesięcznie za cały zespół."
+            "q": "Ile kosztuje Roam?",
+            "a": "Roam kosztuje w 2026 roku 19,50 $ za aktywnego członka miesięcznie, z płatnością miesięczną, za wszystkie dziewięć produktów; na 2027 rok Roam zapowiedział 20,88 $. Nie ma darmowego planu, ale każdy nowy członek dostaje 14 dni próbnych, a goście są za darmo. TinyFloor jest darmowy dla maksymalnie 3 osób i kosztuje 29 $ miesięcznie za cały zespół."
+          },
+          {
+            "q": "Ile kosztuje Roam dla 10 osób?",
+            "a": "195 $ miesięcznie, jeśli wszystkie 10 osób jest aktywnych, czyli 2 340 $ rocznie. TinyFloor kosztuje 29 $ miesięcznie za ten sam zespół."
           },
           {
             "q": "Co ma Roam, czego nie ma TinyFloor?",
-            "a": "Roam dodaje notatki ze spotkań od AI, asystenta AI, webinary, planowanie i nagrywanie ekranu. TinyFloor skupia się na samym biurze."
+            "a": "Notatki ze spotkań AI bez bota, asystenta i skrzynkę AI, webinary i wydarzenia, planowanie, nagrywanie ekranu oraz aplikacje na komputer i telefon. TinyFloor skupia się na samym biurze."
           },
           {
             "q": "Czy goście mogą wejść do biura TinyFloor?",
@@ -621,7 +629,7 @@
           },
           {
             "q": "Czy TinyFloor działa na telefonie?",
-            "a": "Tak. Działa w mobilnych przeglądarkach z joystickiem na ekranie, bez pobierania."
+            "a": "Tak. Działa w mobilnych przeglądarkach z joystickiem na ekranie, bez pobierania czegokolwiek."
           }
         ]
       },

@@ -4,7 +4,7 @@ import { localeCodes } from '@/lib/i18n/routing';
 import { localePath } from '@/lib/seo';
 import { HUBS, LANDINGS } from '@/lib/landings';
 import { GUIDES, GUIDES_PATH, guidePath } from '@/lib/guides';
-import { ICEBREAKER_LOCALES, ICEBREAKERS_PATH } from '@/lib/tools/icebreakers';
+import { ICEBREAKERS_PATH } from '@/lib/tools/icebreakers';
 
 const routes: Array<{
   path: string;
@@ -40,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ),
     // The legal pages are in English only; the other languages' copies point here.
     ...['/privacy', '/terms', '/refunds'].map((path) => ({ url: absolute(path), changeFrequency: 'yearly' as const, priority: 0.3 })),
-    // The free tools are in the languages they're written in; the others' copies point at English.
-    ...ICEBREAKER_LOCALES.map((locale) => ({ url: absolute(localePath(locale, ICEBREAKERS_PATH)), changeFrequency: 'monthly' as const, priority: 0.6 })),
+    // The free tools, in every language.
+    ...localeCodes.map((locale) => ({ url: absolute(localePath(locale, ICEBREAKERS_PATH)), changeFrequency: 'monthly' as const, priority: 0.6 })),
   ];
 }

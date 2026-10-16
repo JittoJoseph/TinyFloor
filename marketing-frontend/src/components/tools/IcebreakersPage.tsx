@@ -13,7 +13,7 @@ import { IcebreakerPicker } from "./IcebreakerPicker";
  * then how to run one, every question by group, what makes a good one, and
  * where TinyFloor fits. Read in the guides' column, in the list's own language.
  */
-export function IcebreakersPage({ locale, content: copy, note }: { locale: string; content: IcebreakersContent; note?: string }) {
+export function IcebreakersPage({ locale, content: copy }: { locale: string; content: IcebreakersContent }) {
   const groups = copy.groups;
   const updated = new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(
     new Date(`${ICEBREAKERS_UPDATED}T00:00:00Z`),
@@ -61,7 +61,6 @@ export function IcebreakersPage({ locale, content: copy, note }: { locale: strin
             <p className={cn(LEAD, "mt-7")}>{copy.intro}</p>
             <p className="mt-7 text-[14px] text-muted-foreground">
               {copy.updated} <time dateTime={ICEBREAKERS_UPDATED}>{updated}</time>
-              {note && <span className="ms-2 text-faint">· {note}</span>}
             </p>
           </div>
         </header>

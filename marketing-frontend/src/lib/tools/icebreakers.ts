@@ -1,19 +1,28 @@
 import type { GuideSection } from "@/lib/guides";
+import type { Locale } from "@/lib/i18n/routing";
+import ar from "@/lib/tools/icebreaker-lists/ar";
+import da from "@/lib/tools/icebreaker-lists/da";
 import de from "@/lib/tools/icebreaker-lists/de";
 import en from "@/lib/tools/icebreaker-lists/en";
 import es from "@/lib/tools/icebreaker-lists/es";
+import fi from "@/lib/tools/icebreaker-lists/fi";
 import fr from "@/lib/tools/icebreaker-lists/fr";
+import he from "@/lib/tools/icebreaker-lists/he";
 import it from "@/lib/tools/icebreaker-lists/it";
 import ja from "@/lib/tools/icebreaker-lists/ja";
+import ko from "@/lib/tools/icebreaker-lists/ko";
 import nl from "@/lib/tools/icebreaker-lists/nl";
+import no from "@/lib/tools/icebreaker-lists/no";
 import pl from "@/lib/tools/icebreaker-lists/pl";
 import pt from "@/lib/tools/icebreaker-lists/pt";
+import ru from "@/lib/tools/icebreaker-lists/ru";
+import sv from "@/lib/tools/icebreaker-lists/sv";
+import zh from "@/lib/tools/icebreaker-lists/zh";
 
 /**
  * Icebreaker questions for work (docs/search.md): a free tool for whoever runs
- * a remote team's meetings. Each language with its own list (lib/tools/icebreaker-lists)
- * is a page of its own; every other language's copy points search engines at
- * the English one (like the legal pages). Every question can be answered in a
+ * a remote team's meetings, written in every language (lib/tools/icebreaker-lists,
+ * adapted rather than translated word for word). Every question can be answered in a
  * sentence, and none asks about family, health, money, politics or religion,
  * or assumes someone travels or drinks.
  */
@@ -45,10 +54,6 @@ export interface IcebreakersContent {
   faq: Array<{ q: string; a: string }>;
 }
 
-const LISTS: Record<string, IcebreakersContent> = { en, pt, es, it, ja, de, fr, nl, pl };
+const LISTS: Record<Locale, IcebreakersContent> = { en, pt, es, it, ja, de, fr, nl, pl, sv, da, no, fi, ru, ko, zh, he, ar };
 
-/** The languages the tool is written in, English first. */
-export const ICEBREAKER_LOCALES = Object.keys(LISTS);
-
-/** The list in this language, if it has one of its own. */
-export const icebreakersIn = (locale: string): IcebreakersContent | undefined => LISTS[locale];
+export const icebreakersIn = (locale: Locale): IcebreakersContent => LISTS[locale];

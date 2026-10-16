@@ -123,11 +123,11 @@
       "kumospace": {
         "label": "Kumospace-alternatief",
         "meta": {
-          "title": "Gratis Kumospace-alternatief voor het hele team",
-          "description": "Het gratis abonnement van Kumospace stopt bij 5 leden. TinyFloor is een gratis virtueel pixel-art kantoor met videogesprekken op basis van nabijheid, open voor je hele team in de browser."
+          "title": "Alternatief voor Kumospace: prijzen, grenzen van het gratis abonnement en een vaste prijs",
+          "description": "Het gratis abonnement van Kumospace stopt bij 5 leden op een openbare verdieping, en Business kost $ 16–20 per lid, minimaal 5. Wat een klein team betaalt, wat Kumospace beter doet en TinyFloor voor $ 29 voor het hele team."
         },
         "title": "Een <em>Kumospace-alternatief</em> voor het hele team.",
-        "subtitle": "Het gratis abonnement van Kumospace biedt plek aan 5 leden op één verdieping. TinyFloor is gratis voor 3, daarna één prijs voor het hele team: $29 per maand.",
+        "subtitle": "Het gratis abonnement van Kumospace past bij 5 leden op één openbare verdieping, en Business rekent per lid, minimaal 5. TinyFloor is gratis voor 3, daarna één prijs voor het hele team: $ 29 per maand.",
         "points": [
           {
             "title": "Geen limiet van 5 leden",
@@ -151,14 +151,22 @@
         "faq": [
           {
             "q": "Is Kumospace gratis?",
-            "a": "Kumospace heeft een gratis abonnement voor maximaal 5 geregistreerde leden, met één verdieping en gasten die beperkt zijn tot 4 uur per week. Het Business-abonnement begint bij $ 16 per gebruiker per maand. TinyFloor is gratis voor maximaal 3 mensen en kost $29 per maand voor het hele team."
+            "a": "Kumospace heeft een gratis abonnement voor maximaal 5 geregistreerde leden, met één verdieping, een openbare space en gasten die maximaal 4 uur per week mogen blijven. Business kost $ 16 per lid per maand bij jaarbetaling, of $ 20 per maand, voor minimaal 5 leden. TinyFloor is gratis voor maximaal 3 mensen en kost $ 29 per maand voor het hele team."
+          },
+          {
+            "q": "Wat kost Kumospace voor 10 mensen?",
+            "a": "Met Business $ 160 per maand bij jaarbetaling ($ 1.920 per jaar) of $ 200 bij maandbetaling. TinyFloor kost $ 29 per maand voor hetzelfde team."
           },
           {
             "q": "Wat heeft Kumospace dat TinyFloor niet heeft?",
-            "a": "De betaalde abonnementen van Kumospace voegen opnemen en onbeperkte chatgeschiedenis toe. TinyFloor neemt gesprekken nog niet op, maar scherm delen, chat en bellen zitten in elk abonnement, ook het gratis abonnement."
+            "a": "Opnames, desktop- en mobiele apps, spaces die je zelf inricht en ontwerpt, meerdere verdiepingen, gebruiksstatistieken en, met Enterprise, single sign-on. TinyFloor neemt geen gesprekken op, maar schermdelen, chat en gesprekken zitten in elk abonnement, ook het gratis abonnement."
           },
           {
-            "q": "Hebben mijn teamgenoten een account nodig?",
+            "q": "Is een gratis Kumospace-space privé?",
+            "a": "Kumospace noemt het gratis abonnement een openbare space; toegangscontrole met wachtwoord en e-mail hoort bij Business. TinyFloor-kantoren zijn privé op elk abonnement: het team komt binnen met een gratis account via jouw uitnodigingslink."
+          },
+          {
+            "q": "Hebben mijn collega's een account nodig?",
             "a": "Ja, een gratis account, zodat je kantoor privé blijft voor je team. Wil je eerst rondkijken, probeer dan het demokantoor met alleen een naam."
           },
           {

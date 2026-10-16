@@ -33,7 +33,7 @@
           ],
           [
             "Kumospace",
-            "128 $",
+            "128 $ vuosittain, 160 $ kuukausittain",
             "Enintään 5 jäsentä, 1 kerros",
             "Tiimeille, jotka haluavat tietokone- ja mobiilisovellukset"
           ],
@@ -273,7 +273,7 @@
           ],
           [
             "Kumospace Business",
-            "128 $",
+            "128 $ vuosittain",
             "Käyttäjää kohden; ilmainen enintään 5 jäsenelle"
           ]
         ],
@@ -465,6 +465,190 @@
           "detail": "Ei suurta vaihtoa",
           "body": "Moni tiimi pitää Discordin yhteisöään varten ja käyttää toimistoa työpäivän aikana."
         }
+      ]
+    }
+  ],
+  "kumospace": [
+    {
+      "title": "Kumospace ja TinyFloor lyhyesti",
+      "body": [
+        "Molemmat ovat virtuaalitoimistoja, joissa liikutaan. Eniten ne eroavat siinä, miten ne laskuttavat ja mitä ilmaisversioon kuuluu."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Kumospace",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "8 hengen tiimi, kuukaudessa",
+            "128 $ vuosittain, 160 $ kuukausittain (Business)",
+            "29 $ koko tiimiltä"
+          ],
+          [
+            "Ilmaisversio",
+            "Enintään 5 jäsentä, 1 kerros, julkinen tila",
+            "Enintään 3 henkeä, kaikki ominaisuudet"
+          ],
+          [
+            "Miten hinnoitellaan",
+            "Jäsentä kohden, vähintään 5",
+            "Yksi hinta toimistolle"
+          ],
+          [
+            "Vieraat",
+            "50, kukin enintään 4 tuntia viikossa",
+            "Kaikki liittyvät ilmaisella tilillä"
+          ],
+          [
+            "Toimiston pitäminen yksityisenä",
+            "Salasana- ja sähköpostihallinta Businessissa",
+            "Yksityinen joka tilauksessa"
+          ],
+          [
+            "Sovellukset",
+            "Selain, tietokone- ja mobiilisovellukset",
+            "Selain, tietokoneella ja mobiilissa"
+          ],
+          [
+            "Tallennus",
+            "Businessissa",
+            "Ei"
+          ],
+          [
+            "Toimiston suunnittelu",
+            "Itse sijoitettavat kalusteet, kerrokset ja aktiviteetit",
+            "Valmis toimisto"
+          ]
+        ],
+        "note": "Kumospacen tiedot sen hintasivulta lokakuussa 2026, ilman veroja."
+      }
+    },
+    {
+      "title": "Mitä Kumospace maksaa tiimin koon mukaan",
+      "body": [
+        "Business laskutetaan jokaisesta rekisteröityneestä jäsenestä, vähintään 5, hintaan 16 $ jäseneltä kuukaudessa vuositilauksella tai 20 $ kuukausittain."
+      ],
+      "table": {
+        "head": [
+          "Tiimi",
+          "Kumospace, kuukausittain",
+          "Kumospace, vuosittain, kuukaudessa",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 henkeä",
+            "100 $",
+            "80 $",
+            "29 $"
+          ],
+          [
+            "8 henkeä",
+            "160 $",
+            "128 $",
+            "29 $"
+          ],
+          [
+            "10 henkeä",
+            "200 $",
+            "160 $",
+            "29 $"
+          ],
+          [
+            "12 henkeä",
+            "240 $",
+            "192 $",
+            "29 $"
+          ]
+        ],
+        "note": "Kumospace Business 20 $ jäseneltä kuukausittain tai 16 $ vuosittain (Kumospacen hintasivu, lokakuu 2026). TinyFloor Pro on kuukausitilaus; enintään 3 hengen tiimit pysyvät ilmaisina."
+      }
+    },
+    {
+      "title": "Miksi pienet tiimit etsivät vaihtoehtoa Kumospacelle",
+      "items": [
+        {
+          "title": "Ilmaisversio loppuu viiteen",
+          "body": "Kuudes henkilö tarkoittaa, että kaikki siirtyvät Businessiin, ja Business laskuttaa vähintään 5 jäsentä. Kuuden hengen tiimin ensimmäinen maksullinen kuukausi maksaa siis 96 $ vuositilauksella tai 120 $ kuukausittain."
+        },
+        {
+          "title": "Ilmaiset tilat ovat julkisia",
+          "body": "Kumospace ilmoittaa ilmaisversion julkiseksi tilaksi. Sen rajaaminen, kuka pääsee sisään, salasanalla tai sähköpostilla, tulee Businessin mukana."
+        },
+        {
+          "title": "Vierailla on aikaraja",
+          "body": "Vieraat voivat olla enintään 4 tuntia viikossa. Freelancerin tai asiakkaan, joka työskentelee kanssanne päivittäin, on oltava maksava jäsen."
+        },
+        {
+          "title": "Jäsenhinta kasvaa tiimin mukana",
+          "body": "Jokainen uusi henkilö lisää 16–20 $ kuukaudessa, myös ne, jotka käyvät vain silloin tällöin."
+        }
+      ]
+    },
+    {
+      "title": "Missä Kumospace on parempi",
+      "items": [
+        {
+          "title": "Itse suunniteltavat tilat",
+          "body": "Kalusteet, lattiat, sisustus ja aktiviteetit kuten pelit, taulut ja YouTube-ruudut. Jos haluat toimiston näyttävän brändiltäsi, Kumospace antaa paljon enemmän mahdollisuuksia."
+        },
+        {
+          "title": "Tallennus",
+          "body": "Business tallentaa kokoukset ja esitykset jaettaviksi myöhemmin. TinyFloor ei tallenna."
+        },
+        {
+          "title": "Tietokone- ja mobiilisovellukset",
+          "body": "Kumospacella on sovellukset Windowsille, macOS:lle, iOS:lle ja Androidille selaimen lisäksi. TinyFloor toimii vain selaimessa."
+        },
+        {
+          "title": "Tilaa suuremmille organisaatioille",
+          "body": "Useita kerroksia, käyttäjäroolit, rajaton chat-historia ja Enterprisessa kertakirjautuminen, oma verkkotunnus ja käytettävyystakuu."
+        }
+      ]
+    },
+    {
+      "title": "Kumpi sopii tiimillesi",
+      "items": [
+        {
+          "title": "TinyFloor, pienelle tiimille",
+          "body": "4–15 hengen tiimille, joka tarvitsee lähinnä nähdä, kuka on paikalla, jutella sopimatta aikaa ja kokoontua huoneeseen, ja joka maksaa mieluummin yhden hinnan kuin laskee paikkoja."
+        },
+        {
+          "title": "Kumospace, suunnitellulle tilalle",
+          "body": "Jos haluat suunnitella tilan brändisi mukaan, tallentaa kokouksia tai käyttää omia sovelluksia, tai jos isompi yritys tarvitsee kertakirjautumisen ja tilastot."
+        },
+        {
+          "title": "Ilmainen Kumospace, viidelle tai vähemmälle",
+          "body": "Jos julkinen tila käy ja kenenkään ei tarvitse tulla vieraaksi yli 4 tuntia viikossa, ilmaisversio voi riittää."
+        }
+      ]
+    },
+    {
+      "title": "Tiimin siirtäminen Kumospacesta",
+      "items": [
+        {
+          "title": "Luo toimisto",
+          "detail": "Kaksi minuuttia",
+          "body": "Nimeä se tiimin mukaan. Kerros, työpöydät ja neuvotteluhuone ovat valmiina; mitään ei tarvitse rakentaa uudelleen."
+        },
+        {
+          "title": "Jaa yksi kutsulinkki",
+          "detail": "Tiimin chatissa",
+          "body": "Kollegat kirjautuvat Googlella tai sähköpostilla ja tulevat sisään selaimesta, tietokoneella tai puhelimella."
+        },
+        {
+          "title": "Tehkää siellä tavallinen viikko",
+          "detail": "Standup neuvotteluhuoneessa",
+          "body": "Pitäkää Kumospace viikon loppuun ja päättäkää sitten, kumpaa tiimi oikeasti avasi."
+        }
+      ]
+    },
+    {
+      "title": "Miten vertailimme",
+      "body": [
+        "Kumospacen hinnat, rajat ja ominaisuudet ovat sen hintasivulta, luettu lokakuussa 2026, Yhdysvaltain dollareina ilman veroja. Mitä siellä ei mainittu, jätimme pois arvailun sijaan. Me teemme TinyFlooria, joten kerromme selvästi, mitä se ei tee. Hinnat muuttuvat: tarkista Kumospacen sivu ennen ostamista."
       ]
     }
   ]

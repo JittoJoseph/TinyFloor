@@ -33,7 +33,7 @@
           ],
           [
             "Kumospace",
-            "128 $",
+            "128 $ årligt, 160 $ månedligt",
             "Op til 5 medlemmer, 1 etage",
             "Teams, der vil have apps til computer og mobil"
           ],
@@ -273,7 +273,7 @@
           ],
           [
             "Kumospace Business",
-            "128 $",
+            "128 $ årligt",
             "Per bruger; gratis for op til 5 medlemmer"
           ]
         ],
@@ -465,6 +465,190 @@
           "detail": "Intet stort skifte",
           "body": "Mange teams beholder Discord til deres fællesskab og bruger kontoret til arbejdsdagen."
         }
+      ]
+    }
+  ],
+  "kumospace": [
+    {
+      "title": "Kumospace og TinyFloor i overblik",
+      "body": [
+        "Begge er virtuelle kontorer, man går rundt i. De adskiller sig mest i, hvordan de tager betaling, og hvad gratisplanen indeholder."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Kumospace",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Et team på 8, om måneden",
+            "128 $ årligt, 160 $ månedligt (Business)",
+            "29 $ for hele teamet"
+          ],
+          [
+            "Gratisplan",
+            "Op til 5 medlemmer, 1 etage, et offentligt space",
+            "Op til 3 personer, alle funktioner"
+          ],
+          [
+            "Hvordan prisen beregnes",
+            "Per medlem, mindst 5",
+            "Én pris for kontoret"
+          ],
+          [
+            "Gæster",
+            "50, hver op til 4 timer om ugen",
+            "Alle kommer ind med en gratis konto"
+          ],
+          [
+            "At holde kontoret privat",
+            "Adgangskode- og e-mailkontrol med Business",
+            "Privat i alle planer"
+          ],
+          [
+            "Apps",
+            "Browser, computer- og mobilapps",
+            "Browseren, på computer og mobil"
+          ],
+          [
+            "Optagelse",
+            "Med Business",
+            "Nej"
+          ],
+          [
+            "Indretning af kontoret",
+            "Møbler, etager og aktiviteter, du selv placerer",
+            "Et færdigt kontor"
+          ]
+        ],
+        "note": "Oplysninger om Kumospace fra dets prisside i oktober 2026, ekskl. moms."
+      }
+    },
+    {
+      "title": "Hvad Kumospace koster efter teamstørrelse",
+      "body": [
+        "Business tager betaling for hvert registreret medlem, mindst 5, med 16 $ per medlem om måneden på en årsplan eller 20 $ måned for måned."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Kumospace, månedligt",
+          "Kumospace, årligt, om måneden",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 personer",
+            "100 $",
+            "80 $",
+            "29 $"
+          ],
+          [
+            "8 personer",
+            "160 $",
+            "128 $",
+            "29 $"
+          ],
+          [
+            "10 personer",
+            "200 $",
+            "160 $",
+            "29 $"
+          ],
+          [
+            "12 personer",
+            "240 $",
+            "192 $",
+            "29 $"
+          ]
+        ],
+        "note": "Kumospace Business til 20 $ per medlem månedligt eller 16 $ årligt (Kumospaces prisside, oktober 2026). TinyFloor Pro betales månedligt; teams på op til 3 forbliver gratis."
+      }
+    },
+    {
+      "title": "Hvorfor små teams leder efter et alternativ til Kumospace",
+      "items": [
+        {
+          "title": "Gratisplanen stopper ved 5",
+          "body": "En sjette person betyder, at alle skal over på Business, og Business tager betaling for mindst 5 medlemmer. Den første betalte måned for et team på 6 koster altså 96 $ på en årsplan eller 120 $ månedligt."
+        },
+        {
+          "title": "Gratis spaces er offentlige",
+          "body": "Kumospace angiver gratisplanen som et offentligt space. At begrænse, hvem der må komme ind, med adgangskode eller via e-mail, følger med Business."
+        },
+        {
+          "title": "Gæster er på tid",
+          "body": "Gæster må blive op til 4 timer om ugen. En freelancer eller kunde, der arbejder med jer hver dag, skal være betalende medlem."
+        },
+        {
+          "title": "Prisen per medlem vokser med teamet",
+          "body": "Hver nyansættelse lægger 16 til 20 $ oven i om måneden, også folk, der kun kigger forbi en gang imellem."
+        }
+      ]
+    },
+    {
+      "title": "Hvad Kumospace gør bedre",
+      "items": [
+        {
+          "title": "Spaces du selv designer",
+          "body": "Møbler, gulve, pynt og aktiviteter som spil, whiteboards og YouTube-skærme. Vil du have, at kontoret ligner dit brand, giver Kumospace dig langt flere muligheder."
+        },
+        {
+          "title": "Optagelse",
+          "body": "Business optager møder og præsentationer, så de kan deles senere. TinyFloor optager ikke."
+        },
+        {
+          "title": "Computer- og mobilapps",
+          "body": "Kumospace har apps til Windows, macOS, iOS og Android ud over browseren. TinyFloor kører kun i browseren."
+        },
+        {
+          "title": "Plads til større organisationer",
+          "body": "Flere etager, brugerroller, ubegrænset chathistorik og, med Enterprise, single sign-on, eget domæne og oppetidsgaranti."
+        }
+      ]
+    },
+    {
+      "title": "Hvad der passer til dit team",
+      "items": [
+        {
+          "title": "TinyFloor, til et lille team",
+          "body": "Til et team på 4 til 15, der mest har brug for at se, hvem der er der, snakke uden at aftale tid og mødes i et lokale, og som hellere betaler én pris end tæller pladser."
+        },
+        {
+          "title": "Kumospace, til et designet space",
+          "body": "Hvis du vil designe dit space efter dit brand, optage møder eller bruge egne apps, eller hvis en større virksomhed har brug for single sign-on og statistik."
+        },
+        {
+          "title": "Kumospace gratis, til 5 eller færre",
+          "body": "Hvis et offentligt space er fint, og ingen skal komme ind som gæst mere end 4 timer om ugen, kan gratisplanen være nok."
+        }
+      ]
+    },
+    {
+      "title": "Flyt et team fra Kumospace",
+      "items": [
+        {
+          "title": "Opret et kontor",
+          "detail": "To minutter",
+          "body": "Navngiv det efter teamet. Gulvet, skrivebordene og mødelokalet er klar; der er intet at bygge op igen."
+        },
+        {
+          "title": "Del ét invitationslink",
+          "detail": "I teamchatten",
+          "body": "Kollegerne logger ind med Google eller e-mail og går ind fra browseren, på computer eller telefon."
+        },
+        {
+          "title": "Arbejd der en almindelig uge",
+          "detail": "Standup i mødelokalet",
+          "body": "Behold Kumospace, til ugen er gået, og beslut så, hvilket teamet faktisk åbnede."
+        }
+      ]
+    },
+    {
+      "title": "Sådan sammenlignede vi",
+      "body": [
+        "Kumospaces priser, grænser og funktioner kommer fra dets prisside, læst i oktober 2026, i amerikanske dollar ekskl. moms. Hvad der ikke stod der, udelod vi i stedet for at gætte. Vi laver TinyFloor, så vi siger tydeligt, hvad det ikke kan. Priser ændrer sig: tjek Kumospaces side, før du køber."
       ]
     }
   ]

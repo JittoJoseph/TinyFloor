@@ -123,11 +123,11 @@
       "kumospace": {
         "label": "Alternativ til Kumospace",
         "meta": {
-          "title": "Gratis alternativ til Kumospace for hele teamet",
-          "description": "Kumospaces gratisplan stopper ved 5 medlemmer. TinyFloor er et gratis virtuelt kontor i pikselgrafikk med videosamtaler når man står nær, åpent for hele teamet i nettleseren."
+          "title": "Alternativ til Kumospace: priser, grenser for gratisplanen og en fast pris",
+          "description": "Kumospaces gratisplan stopper ved 5 medlemmer i en offentlig etasje, og Business koster 16–20 $ per medlem, minst 5. Hva et lite team betaler, hva Kumospace gjør bedre, og TinyFloor til 29 $ for hele teamet."
         },
         "title": "Et <em>alternativ til Kumospace</em> for hele teamet.",
-        "subtitle": "Kumospaces gratisplan har plass til 5 medlemmer på én etasje. TinyFloor er gratis for 3, deretter én pris for hele teamet: $29 i måneden.",
+        "subtitle": "Kumospaces gratisplan rommer 5 medlemmer i én offentlig etasje, og Business tar betalt per medlem, minst 5. TinyFloor er gratis for 3, deretter én pris for hele teamet: 29 $ i måneden.",
         "points": [
           {
             "title": "Ingen grense på 5 medlemmer",
@@ -151,15 +151,23 @@
         "faq": [
           {
             "q": "Er Kumospace gratis?",
-            "a": "Kumospace har en gratisplan for opptil 5 registrerte medlemmer, med én etasje og gjester begrenset til 4 timer i uken. Business-planen starter på 16 $ per bruker i måneden. TinyFloor er gratis for opptil 3 personer og koster $29 i måneden for hele teamet."
+            "a": "Kumospace har en gratisplan for opptil 5 registrerte medlemmer, med én etasje, et offentlig space og gjester som maks kan bli 4 timer i uken. Business koster 16 $ per medlem i måneden ved årlig betaling, eller 20 $ månedlig, for minst 5 medlemmer. TinyFloor er gratis for opptil 3 personer og koster 29 $ i måneden for hele teamet."
+          },
+          {
+            "q": "Hva koster Kumospace for 10 personer?",
+            "a": "Med Business 160 $ i måneden ved årlig betaling (1 920 $ i året) eller 200 $ ved månedlig betaling. TinyFloor koster 29 $ i måneden for det samme teamet."
           },
           {
             "q": "Hva har Kumospace som TinyFloor ikke har?",
-            "a": "Kumospaces betalte planer legger til opptak og ubegrenset chathistorikk. TinyFloor tar ikke opp samtaler ennå, men skjermdeling, chat og samtaler er med i alle planer, også den gratis."
+            "a": "Opptak, datamaskin- og mobilapper, spaces du innreder og designer selv, flere etasjer, brukerstatistikk og, med Enterprise, enkel pålogging. TinyFloor tar ikke opp samtaler, men skjermdeling, chat og samtaler er med i alle planer, også gratisplanen."
           },
           {
-            "q": "Trenger kollegene mine en konto?",
-            "a": "Ja, en gratis konto, som holder kontoret ditt privat for teamet. Vil du se deg rundt først, kan du prøve demokontoret med bare et navn."
+            "q": "Er et gratis Kumospace-space privat?",
+            "a": "Kumospace oppgir gratisplanen som et offentlig space; tilgangskontroll med passord og e-post hører til Business. TinyFloor-kontorer er private i alle planer: teamet blir med med en gratis konto via invitasjonslenken din."
+          },
+          {
+            "q": "Trenger kollegaene mine en konto?",
+            "a": "Ja, en gratis konto, så kontoret ditt holdes privat for teamet. Vil du se deg rundt først, kan du prøve demokontoret med bare et navn."
           },
           {
             "q": "Fungerer TinyFloor på mobil?",

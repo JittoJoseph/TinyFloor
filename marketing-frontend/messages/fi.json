@@ -123,11 +123,11 @@
       "kumospace": {
         "label": "Kumospace-vaihtoehto",
         "meta": {
-          "title": "Ilmainen Kumospace-vaihtoehto koko tiimille",
-          "description": "Kumospacen ilmainen paketti loppuu 5 jäseneen. TinyFloor on ilmainen pikselitaiteinen virtuaalitoimisto lähipuheluilla, avoin koko tiimillesi selaimessa."
+          "title": "Vaihtoehto Kumospacelle: hinnat, ilmaisversion rajat ja kiinteä hinta",
+          "description": "Kumospacen ilmaisversio loppuu 5 jäseneen julkisessa kerroksessa, ja Business maksaa 16–20 $ jäseneltä, vähintään 5. Mitä pieni tiimi maksaa, missä Kumospace on parempi ja TinyFloor 29 $:lla koko tiimiltä."
         },
         "title": "<em>Kumospace-vaihtoehto</em> koko tiimille.",
-        "subtitle": "Kumospacen ilmaiseen tilaukseen mahtuu 5 jäsentä yhteen kerrokseen. TinyFloor on ilmainen 3 hengelle, sitten yksi hinta koko tiimille: $29 kuukaudessa.",
+        "subtitle": "Kumospacen ilmaisversioon mahtuu 5 jäsentä yhteen julkiseen kerrokseen, ja Business laskutetaan jäsentä kohden, vähintään 5. TinyFloor on ilmainen 3 hengelle, sitten yksi hinta koko tiimille: 29 $ kuukaudessa.",
         "points": [
           {
             "title": "Ei 5 jäsenen rajaa",
@@ -151,19 +151,27 @@
         "faq": [
           {
             "q": "Onko Kumospace ilmainen?",
-            "a": "Kumospacella on ilmainen paketti enintään 5 rekisteröityneelle jäsenelle, yksi kerros ja vieraille 4 tuntia viikossa. Business-paketti alkaa 16 $ käyttäjältä kuukaudessa. TinyFloor on ilmainen enintään 3 hengelle ja maksaa $29 kuukaudessa koko tiimille."
+            "a": "Kumospacella on ilmaisversio enintään 5 rekisteröityneelle jäsenelle, jossa on yksi kerros, julkinen tila ja vieraat enintään 4 tuntia viikossa. Business maksaa 16 $ jäseneltä kuukaudessa vuosimaksulla tai 20 $ kuukausimaksulla, vähintään 5 jäseneltä. TinyFloor on ilmainen enintään 3 hengelle ja maksaa 29 $ kuukaudessa koko tiimiltä."
           },
           {
-            "q": "Mitä Kumospacessa on, mitä TinyFloorissä ei ole?",
-            "a": "Kumospacen maksulliset paketit tuovat tallennuksen ja rajattoman chat-historian. TinyFloor ei vielä tallenna puheluita, mutta näytön jakaminen, chat ja puhelut kuuluvat jokaiseen pakettiin, myös ilmaiseen."
+            "q": "Mitä Kumospace maksaa 10 hengelle?",
+            "a": "Business-tilauksella 160 $ kuukaudessa vuosimaksulla (1 920 $ vuodessa) tai 200 $ kuukausimaksulla. TinyFloor maksaa samalle tiimille 29 $ kuukaudessa."
           },
           {
-            "q": "Tarvitsevatko tiimikaverini tilin?",
-            "a": "Kyllä, ilmaisen, joka pitää toimistosi vain tiimisi käytössä. Jos haluat ensin katsella ympärillesi, kokeile demotoimistoa pelkällä nimellä."
+            "q": "Mitä Kumospacessa on, mitä TinyFloorissa ei ole?",
+            "a": "Tallennus, tietokone- ja mobiilisovellukset, itse kalustettavat ja suunniteltavat tilat, useita kerroksia, käyttötilastot ja Enterprise-tilauksessa kertakirjautuminen. TinyFloor ei tallenna puheluita, mutta näytönjako, chat ja puhelut kuuluvat jokaiseen tilaukseen, myös ilmaiseen."
+          },
+          {
+            "q": "Onko ilmainen Kumospace-tila yksityinen?",
+            "a": "Kumospace ilmoittaa ilmaisversion julkiseksi tilaksi; pääsynhallinta salasanalla ja sähköpostilla kuuluu Business-tilaukseen. TinyFloor-toimistot ovat yksityisiä joka tilauksessa: tiimi liittyy ilmaisella tilillä kutsulinkkisi kautta."
+          },
+          {
+            "q": "Tarvitsevatko kollegani tilin?",
+            "a": "Kyllä, ilmaisen tilin, jotta toimisto pysyy tiimin omana. Jos haluat ensin katsella ympärillesi, kokeile demotoimistoa pelkällä nimellä."
           },
           {
             "q": "Toimiiko TinyFloor puhelimella?",
-            "a": "Kyllä. Se toimii mobiiliselaimissa näytön ohjaussauvalla, joten sovellusta ei tarvitse ladata."
+            "a": "Kyllä. Se toimii mobiiliselaimissa näytön ohjaimella, joten sovellusta ei tarvitse ladata."
           }
         ]
       },

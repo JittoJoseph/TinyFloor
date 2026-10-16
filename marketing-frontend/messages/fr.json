@@ -123,11 +123,11 @@
       "kumospace": {
         "label": "Alternative à Kumospace",
         "meta": {
-          "title": "Alternative gratuite à Kumospace pour toute l’équipe",
-          "description": "L’offre gratuite de Kumospace s’arrête à 5 membres. TinyFloor est un bureau virtuel gratuit en pixel art avec des appels vidéo de proximité, ouvert à toute votre équipe dans le navigateur."
+          "title": "Alternative à Kumospace : tarifs, limites de l'offre gratuite et un prix fixe",
+          "description": "L'offre gratuite de Kumospace s'arrête à 5 membres sur un étage public, et Business coûte 16 à 20 $ par membre, 5 au minimum. Ce que paie une petite équipe, ce que Kumospace fait mieux, et TinyFloor à 29 $ pour toute l'équipe."
         },
         "title": "Une <em>alternative à Kumospace</em> pour toute l’équipe.",
-        "subtitle": "L'offre gratuite de Kumospace accueille 5 membres sur un étage. TinyFloor est gratuit pour 3, puis un seul prix pour toute l'équipe : 29 $ par mois.",
+        "subtitle": "L'offre gratuite de Kumospace accueille 5 membres sur un étage public, et Business est facturé par membre, 5 au minimum. TinyFloor est gratuit jusqu'à 3, puis un seul prix pour toute l'équipe : 29 $ par mois.",
         "points": [
           {
             "title": "Pas de limite à 5 membres",
@@ -151,19 +151,27 @@
         "faq": [
           {
             "q": "Kumospace est-il gratuit ?",
-            "a": "Kumospace a une offre gratuite pour 5 membres inscrits au maximum, avec un étage et des invités limités à 4 heures par semaine. L’offre Business commence à 16 $ par utilisateur par mois. TinyFloor est gratuit jusqu'à 3 personnes et coûte 29 $ par mois pour toute l'équipe."
+            "a": "Kumospace propose une offre gratuite jusqu'à 5 membres inscrits, avec un étage, un espace public et des invités limités à 4 heures par semaine. Business coûte 16 $ par membre et par mois à l'année, ou 20 $ au mois, pour 5 membres au minimum. TinyFloor est gratuit jusqu'à 3 personnes et coûte 29 $ par mois pour toute l'équipe."
           },
           {
-            "q": "Qu’est-ce que Kumospace propose et que TinyFloor n’a pas ?",
-            "a": "Les offres payantes de Kumospace ajoutent l’enregistrement et un historique de chat illimité. TinyFloor n'enregistre pas encore les appels, mais le partage d'écran, le chat et les appels sont inclus dans chaque offre, y compris la gratuite."
+            "q": "Combien coûte Kumospace pour 10 personnes ?",
+            "a": "Avec Business, 160 $ par mois à l'année (1 920 $ par an) ou 200 $ au mois. TinyFloor coûte 29 $ par mois pour la même équipe."
           },
           {
-            "q": "Mes collègues ont-ils besoin d’un compte ?",
-            "a": "Oui, un compte gratuit, qui garde votre bureau réservé à votre équipe. Pour jeter un œil d'abord, essayez le bureau de démo avec un simple nom."
+            "q": "Qu'est-ce que Kumospace a que TinyFloor n'a pas ?",
+            "a": "L'enregistrement, des applications de bureau et mobiles, des espaces que vous meublez et concevez vous-même, plusieurs étages, des statistiques d'utilisation et, avec Enterprise, l'authentification unique. TinyFloor n'enregistre pas les appels, mais le partage d'écran, la messagerie et les appels sont inclus dans toutes les formules, y compris la gratuite."
+          },
+          {
+            "q": "Un espace Kumospace gratuit est-il privé ?",
+            "a": "Kumospace présente l'offre gratuite comme un espace public ; les contrôles d'accès par mot de passe et e-mail font partie de Business. Les bureaux TinyFloor sont privés dans toutes les formules : l'équipe entre avec un compte gratuit grâce à votre lien d'invitation."
+          },
+          {
+            "q": "Mes collègues ont-ils besoin d'un compte ?",
+            "a": "Oui, un compte gratuit, pour que votre bureau reste privé. Pour faire un tour avant, essayez le bureau de démonstration avec juste un nom."
           },
           {
             "q": "TinyFloor fonctionne-t-il sur téléphone ?",
-            "a": "Oui. Il fonctionne dans les navigateurs mobiles avec un joystick à l’écran, sans application à télécharger."
+            "a": "Oui. Il fonctionne dans les navigateurs mobiles avec un joystick à l'écran, sans application à télécharger."
           }
         ]
       },

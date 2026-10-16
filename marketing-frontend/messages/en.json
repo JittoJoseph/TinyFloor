@@ -123,11 +123,11 @@
       "kumospace": {
         "label": "Kumospace alternative",
         "meta": {
-          "title": "Free Kumospace Alternative for Whole Teams",
-          "description": "Kumospace's free plan stops at 5 members. TinyFloor is a free pixel-art virtual office with proximity video calls, open to your whole team in the browser."
+          "title": "Kumospace Alternative: Pricing, Free Plan Limits and a Flat-Price Option",
+          "description": "Kumospace's free plan stops at 5 members on a public floor, and Business is $16–20 per member with a 5-member minimum. What a small team pays, what Kumospace does better, and TinyFloor at $29 for the whole team."
         },
         "title": "A <em>Kumospace alternative</em> for the whole team.",
-        "subtitle": "Kumospace's free plan fits 5 members on one floor. TinyFloor is free for 3, then one price for the whole team: $29 a month.",
+        "subtitle": "Kumospace's free plan fits 5 members on one public floor, and Business is billed per member with a minimum of 5. TinyFloor is free for 3, then one price for the whole team: $29 a month.",
         "points": [
           {
             "title": "No 5-member cap",
@@ -151,11 +151,19 @@
         "faq": [
           {
             "q": "Is Kumospace free?",
-            "a": "Kumospace has a free plan for up to 5 registered members, with one floor and guests limited to 4 hours a week. The Business plan starts at $16 per user per month. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+            "a": "Kumospace has a free plan for up to 5 registered members, with one floor, a public space and guests limited to 4 hours a week. The Business plan is $16 per member per month billed yearly, or $20 monthly, for at least 5 members. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+          },
+          {
+            "q": "How much does Kumospace cost for 10 people?",
+            "a": "On Business, $160 a month billed yearly ($1,920 a year) or $200 billed monthly. TinyFloor is $29 a month for the same team."
           },
           {
             "q": "What does Kumospace have that TinyFloor does not?",
-            "a": "Kumospace's paid plans add recording and unlimited chat history. TinyFloor does not record calls yet, but screen sharing, chat and calls are on every plan, the free one included."
+            "a": "Recording, desktop and mobile apps, spaces you furnish and design yourself, several floors, user analytics and, on Enterprise, single sign-on. TinyFloor does not record calls, but screen sharing, chat and calls are on every plan, the free one included."
+          },
+          {
+            "q": "Is a free Kumospace space private?",
+            "a": "Kumospace lists the free plan as a public space; password and email access controls are part of Business. TinyFloor offices are private on every plan: teammates join with a free account through your invite link."
           },
           {
             "q": "Do my teammates need an account?",

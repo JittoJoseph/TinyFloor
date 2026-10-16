@@ -33,7 +33,7 @@
           ],
           [
             "Kumospace",
-            "128 $",
+            "128 $ jährlich, 160 $ monatlich abgerechnet",
             "Bis zu 5 Mitglieder, 1 Etage",
             "Teams, die Desktop- und Mobil-Apps wollen"
           ],
@@ -273,7 +273,7 @@
           ],
           [
             "Kumospace Business",
-            "128 $",
+            "128 $ jährlich abgerechnet",
             "Pro Nutzer; kostenlos für bis zu 5 Mitglieder"
           ]
         ],
@@ -465,6 +465,190 @@
           "detail": "Kein großer Umstieg",
           "body": "Viele Teams behalten Discord für ihre Community und nutzen das Büro für den Arbeitstag."
         }
+      ]
+    }
+  ],
+  "kumospace": [
+    {
+      "title": "Kumospace und TinyFloor im Überblick",
+      "body": [
+        "Beides sind virtuelle Büros, in denen man herumläuft. Am meisten unterscheiden sie sich darin, wie abgerechnet wird und was der Gratis-Tarif enthält."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Kumospace",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Ein Team von 8, im Monat",
+            "128 $ jährlich, 160 $ monatlich abgerechnet (Business)",
+            "29 $ für das ganze Team"
+          ],
+          [
+            "Gratis-Tarif",
+            "Bis zu 5 Mitglieder, 1 Etage, ein öffentlicher Space",
+            "Bis zu 3 Personen, alle Funktionen"
+          ],
+          [
+            "Wie abgerechnet wird",
+            "Pro Mitglied, mindestens 5",
+            "Ein Preis für das Büro"
+          ],
+          [
+            "Gäste",
+            "50, jeweils bis zu 4 Stunden pro Woche",
+            "Alle kommen mit einem kostenlosen Konto"
+          ],
+          [
+            "Das Büro privat halten",
+            "Passwort- und E-Mail-Kontrollen mit Business",
+            "In jedem Tarif privat"
+          ],
+          [
+            "Apps",
+            "Browser, Desktop- und Handy-Apps",
+            "Der Browser, auf Desktop und Handy"
+          ],
+          [
+            "Aufnahmen",
+            "Mit Business",
+            "Nein"
+          ],
+          [
+            "Das Büro gestalten",
+            "Möbel, Etagen und Aktivitäten, die du platzierst",
+            "Ein fertiges Büro"
+          ]
+        ],
+        "note": "Angaben zu Kumospace von seiner Preisseite im Oktober 2026, ohne Steuern."
+      }
+    },
+    {
+      "title": "Was Kumospace nach Teamgröße kostet",
+      "body": [
+        "Business wird für jedes registrierte Mitglied abgerechnet, mindestens 5, mit 16 $ pro Mitglied im Monat im Jahrestarif oder 20 $ bei monatlicher Zahlung."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Kumospace, monatlich abgerechnet",
+          "Kumospace, jährlich abgerechnet, pro Monat",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 Personen",
+            "100 $",
+            "80 $",
+            "29 $"
+          ],
+          [
+            "8 Personen",
+            "160 $",
+            "128 $",
+            "29 $"
+          ],
+          [
+            "10 Personen",
+            "200 $",
+            "160 $",
+            "29 $"
+          ],
+          [
+            "12 Personen",
+            "240 $",
+            "192 $",
+            "29 $"
+          ]
+        ],
+        "note": "Kumospace Business zu 20 $ pro Mitglied monatlich oder 16 $ jährlich (Preisseite von Kumospace, Oktober 2026). TinyFloor Pro wird monatlich abgerechnet; Teams bis 3 bleiben kostenlos."
+      }
+    },
+    {
+      "title": "Warum kleine Teams eine Alternative zu Kumospace suchen",
+      "items": [
+        {
+          "title": "Der Gratis-Tarif endet bei 5",
+          "body": "Eine sechste Person heißt, alle auf Business umzustellen, und Business rechnet mindestens 5 Mitglieder ab. Der erste bezahlte Monat für ein Team von 6 kostet also 96 $ im Jahrestarif oder 120 $ monatlich."
+        },
+        {
+          "title": "Kostenlose Spaces sind öffentlich",
+          "body": "Kumospace führt den Gratis-Tarif als öffentlichen Space. Wer hereindarf, per Passwort oder E-Mail festzulegen, gibt es erst mit Business."
+        },
+        {
+          "title": "Gäste haben ein Zeitlimit",
+          "body": "Gäste dürfen bis zu 4 Stunden pro Woche bleiben. Eine Freelancerin oder ein Kunde, die täglich mit euch arbeiten, muss ein bezahltes Mitglied werden."
+        },
+        {
+          "title": "Preise pro Mitglied wachsen mit dem Team",
+          "body": "Jede neue Person kostet 16 bis 20 $ mehr im Monat, auch Leute, die nur ab und zu vorbeischauen."
+        }
+      ]
+    },
+    {
+      "title": "Was Kumospace besser kann",
+      "items": [
+        {
+          "title": "Spaces, die du gestaltest",
+          "body": "Möbel, Böden, Deko und Aktivitäten wie Spiele, Whiteboards und YouTube-Bildschirme. Wenn das Büro nach deiner Marke aussehen soll, gibt dir Kumospace viel mehr Möglichkeiten."
+        },
+        {
+          "title": "Aufnahmen",
+          "body": "Business nimmt Meetings und Präsentationen auf, um sie später zu teilen. TinyFloor nimmt nicht auf."
+        },
+        {
+          "title": "Desktop- und Handy-Apps",
+          "body": "Kumospace hat Apps für Windows, macOS, iOS und Android und läuft auch im Browser. TinyFloor läuft nur im Browser."
+        },
+        {
+          "title": "Platz für größere Organisationen",
+          "body": "Mehrere Etagen, Nutzerrollen, unbegrenzter Chatverlauf und, mit Enterprise, Single Sign-on, eine eigene Domain und eine Verfügbarkeitsgarantie."
+        }
+      ]
+    },
+    {
+      "title": "Was zu deinem Team passt",
+      "items": [
+        {
+          "title": "TinyFloor, für ein kleines Team",
+          "body": "Für ein Team von 4 bis 15, das vor allem sehen will, wer da ist, ohne Termin reden und sich in einem Raum treffen möchte, und lieber einen Preis zahlt, als Plätze zu zählen."
+        },
+        {
+          "title": "Kumospace, für einen gestalteten Space",
+          "body": "Wenn du den Space gestalten und mit deiner Marke versehen, Meetings aufnehmen oder native Apps nutzen willst, oder wenn eine größere Firma Single Sign-on und Statistiken braucht."
+        },
+        {
+          "title": "Kumospace kostenlos, für 5 oder weniger",
+          "body": "Wenn ein öffentlicher Space in Ordnung ist und niemand länger als 4 Stunden pro Woche als Gast vorbeikommen muss, reicht der Gratis-Tarif vielleicht schon."
+        }
+      ]
+    },
+    {
+      "title": "Ein Team von Kumospace umziehen",
+      "items": [
+        {
+          "title": "Ein Büro anlegen",
+          "detail": "Zwei Minuten",
+          "body": "Benenne es nach dem Team. Fläche, Schreibtische und Besprechungsraum sind fertig; es gibt nichts neu aufzubauen."
+        },
+        {
+          "title": "Einen Einladungslink teilen",
+          "detail": "In eurem Team-Chat",
+          "body": "Das Team meldet sich mit Google oder E-Mail an und kommt im Browser herein, auf dem Laptop oder Handy."
+        },
+        {
+          "title": "Eine normale Woche dort arbeiten",
+          "detail": "Standup im Besprechungsraum",
+          "body": "Behaltet Kumospace, bis die Woche um ist, und entscheidet dann, welches das Team wirklich geöffnet hat."
+        }
+      ]
+    },
+    {
+      "title": "Wie wir verglichen haben",
+      "body": [
+        "Preise, Grenzen und Funktionen von Kumospace stammen von seiner Preisseite, gelesen im Oktober 2026, in US-Dollar ohne Steuern. Was dort nicht stand, haben wir weggelassen, statt zu raten. Wir machen TinyFloor, deshalb sagen wir klar, was es nicht kann. Preise ändern sich: Prüfe vor dem Kauf die Seite von Kumospace."
       ]
     }
   ]

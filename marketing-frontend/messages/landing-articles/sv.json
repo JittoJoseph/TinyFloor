@@ -33,7 +33,7 @@
           ],
           [
             "Kumospace",
-            "128 $",
+            "128 $ årsvis, 160 $ månadsvis",
             "Upp till 5 medlemmar, 1 våning",
             "Team som vill ha appar för dator och mobil"
           ],
@@ -273,7 +273,7 @@
           ],
           [
             "Kumospace Business",
-            "128 $",
+            "128 $ årsvis",
             "Per användare; gratis för upp till 5 medlemmar"
           ]
         ],
@@ -465,6 +465,190 @@
           "detail": "Inget stort byte",
           "body": "Många team behåller Discord för sin community och använder kontoret för arbetsdagen."
         }
+      ]
+    }
+  ],
+  "kumospace": [
+    {
+      "title": "Kumospace och TinyFloor i korthet",
+      "body": [
+        "Båda är virtuella kontor som man går runt i. De skiljer sig mest i hur de tar betalt och vad gratisplanen innehåller."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Kumospace",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Ett team på 8, per månad",
+            "128 $ årsvis, 160 $ månadsvis (Business)",
+            "29 $ för hela teamet"
+          ],
+          [
+            "Gratisplan",
+            "Upp till 5 medlemmar, 1 våning, ett offentligt space",
+            "Upp till 3 personer, alla funktioner"
+          ],
+          [
+            "Hur det prissätts",
+            "Per medlem, minst 5",
+            "Ett pris för kontoret"
+          ],
+          [
+            "Gäster",
+            "50, var och en upp till 4 timmar per vecka",
+            "Alla går in med ett gratis konto"
+          ],
+          [
+            "Hålla kontoret privat",
+            "Lösenords- och e-postkontroll med Business",
+            "Privat i alla planer"
+          ],
+          [
+            "Appar",
+            "Webbläsare, dator- och mobilappar",
+            "Webbläsaren, på dator och mobil"
+          ],
+          [
+            "Inspelning",
+            "Med Business",
+            "Nej"
+          ],
+          [
+            "Inreda kontoret",
+            "Möbler, våningar och aktiviteter som du placerar",
+            "Ett färdigt kontor"
+          ]
+        ],
+        "note": "Uppgifter om Kumospace från dess prissida i oktober 2026, exklusive skatt."
+      }
+    },
+    {
+      "title": "Vad Kumospace kostar efter teamstorlek",
+      "body": [
+        "Business tar betalt för varje registrerad medlem, minst 5, med 16 $ per medlem och månad på årsplan eller 20 $ månad för månad."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Kumospace, månadsvis",
+          "Kumospace, årsvis, per månad",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 personer",
+            "100 $",
+            "80 $",
+            "29 $"
+          ],
+          [
+            "8 personer",
+            "160 $",
+            "128 $",
+            "29 $"
+          ],
+          [
+            "10 personer",
+            "200 $",
+            "160 $",
+            "29 $"
+          ],
+          [
+            "12 personer",
+            "240 $",
+            "192 $",
+            "29 $"
+          ]
+        ],
+        "note": "Kumospace Business för 20 $ per medlem månadsvis eller 16 $ årsvis (Kumospaces prissida, oktober 2026). TinyFloor Pro betalas månadsvis; team på upp till 3 förblir gratis."
+      }
+    },
+    {
+      "title": "Varför små team letar efter ett alternativ till Kumospace",
+      "items": [
+        {
+          "title": "Gratisplanen tar slut vid 5",
+          "body": "En sjätte person betyder att alla måste över till Business, och Business tar betalt för minst 5 medlemmar. Den första betalda månaden för ett team på 6 kostar alltså 96 $ på årsplan eller 120 $ månadsvis."
+        },
+        {
+          "title": "Gratis spaces är offentliga",
+          "body": "Kumospace anger gratisplanen som ett offentligt space. Att begränsa vem som får komma in, med lösenord eller via e-post, kommer med Business."
+        },
+        {
+          "title": "Gäster går på tid",
+          "body": "Gäster får stanna upp till 4 timmar per vecka. En frilansare eller kund som jobbar med er varje dag måste bli betald medlem."
+        },
+        {
+          "title": "Priset per medlem växer med teamet",
+          "body": "Varje nyanställd lägger till 16 till 20 $ per månad, även de som bara tittar in ibland."
+        }
+      ]
+    },
+    {
+      "title": "Vad Kumospace gör bättre",
+      "items": [
+        {
+          "title": "Spaces som du designar",
+          "body": "Möbler, golv, inredning och aktiviteter som spel, whiteboards och YouTube-skärmar. Vill du att kontoret ska se ut som ditt varumärke ger Kumospace dig mycket mer att arbeta med."
+        },
+        {
+          "title": "Inspelning",
+          "body": "Business spelar in möten och presentationer att dela senare. TinyFloor spelar inte in."
+        },
+        {
+          "title": "Dator- och mobilappar",
+          "body": "Kumospace har appar för Windows, macOS, iOS och Android utöver webbläsaren. TinyFloor körs bara i webbläsaren."
+        },
+        {
+          "title": "Plats för större organisationer",
+          "body": "Flera våningar, användarroller, obegränsad chatthistorik och, med Enterprise, enkel inloggning, egen domän och tillgänglighetsgaranti."
+        }
+      ]
+    },
+    {
+      "title": "Vilket som passar ditt team",
+      "items": [
+        {
+          "title": "TinyFloor, för ett litet team",
+          "body": "För ett team på 4 till 15 som främst vill se vem som är där, prata utan att boka och träffas i ett rum, och som hellre betalar ett pris än räknar platser."
+        },
+        {
+          "title": "Kumospace, för ett designat space",
+          "body": "Om du vill designa ditt space efter varumärket, spela in möten eller använda egna appar, eller om ett större företag behöver enkel inloggning och statistik."
+        },
+        {
+          "title": "Kumospace gratis, för 5 eller färre",
+          "body": "Om ett offentligt space går bra och ingen behöver komma in som gäst mer än 4 timmar per vecka kan gratisplanen räcka."
+        }
+      ]
+    },
+    {
+      "title": "Flytta ett team från Kumospace",
+      "items": [
+        {
+          "title": "Skapa ett kontor",
+          "detail": "Två minuter",
+          "body": "Döp det efter teamet. Golvet, skrivborden och mötesrummet är klara; det finns inget att bygga om."
+        },
+        {
+          "title": "Dela en inbjudningslänk",
+          "detail": "I teamchatten",
+          "body": "Kollegorna loggar in med Google eller e-post och går in från webbläsaren, på dator eller mobil."
+        },
+        {
+          "title": "Jobba där en vanlig vecka",
+          "detail": "Standup i mötesrummet",
+          "body": "Behåll Kumospace tills veckan är slut och bestäm sedan vilket teamet faktiskt öppnade."
+        }
+      ]
+    },
+    {
+      "title": "Hur vi jämförde",
+      "body": [
+        "Kumospaces priser, gränser och funktioner kommer från dess prissida, läst i oktober 2026, i amerikanska dollar exklusive skatt. Det som inte stod där utelämnade vi i stället för att gissa. Vi gör TinyFloor, så vi säger tydligt vad det inte gör. Priser ändras: kontrollera Kumospaces sida innan du köper."
       ]
     }
   ]

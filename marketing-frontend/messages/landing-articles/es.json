@@ -33,13 +33,13 @@
           ],
           [
             "Kumospace",
-            "128 $",
+            "128 $ con facturación anual, 160 $ mensual",
             "Hasta 5 miembros, 1 planta",
             "Equipos que quieren apps de escritorio y móvil"
           ],
           [
             "WorkAdventure",
-            "Desde 64 €",
+            "72 $ con facturación anual, 88 $ mensual",
             "Hasta 10 personas a la vez",
             "Equipos que quieren un mapa de código abierto"
           ],
@@ -62,7 +62,7 @@
             "Equipos que solo necesitan salas de voz"
           ]
         ],
-        "note": "De la página de precios de cada producto en octubre de 2026, sin impuestos. Precios por persona multiplicados por 8; el plan Business de WorkAdventure empieza en 8 € por usuario."
+        "note": "De la página de precios de cada producto en octubre de 2026, sin impuestos. Precios por persona multiplicados por 8; el plan Business de WorkAdventure empieza en 9 $ por usuario."
       }
     },
     {
@@ -92,7 +92,7 @@
         },
         {
           "title": "WorkAdventure",
-          "detail": "Business desde 8 € por usuario al mes; gratis para hasta 10 a la vez",
+          "detail": "Business desde 9 $ por usuario al mes; gratis para hasta 10 a la vez",
           "body": "Otra oficina en pixel art, y de código abierto, así que un equipo técnico puede personalizar el mapa. Su plan gratuito cuenta personas conectadas a la vez, hasta 10, no miembros."
         },
         {
@@ -273,7 +273,7 @@
           ],
           [
             "Kumospace Business",
-            "128 $",
+            "128 $ con facturación anual",
             "Por usuario; gratis para hasta 5 miembros"
           ]
         ],
@@ -465,6 +465,378 @@
           "detail": "Sin un gran cambio",
           "body": "Muchos equipos mantienen Discord para su comunidad y usan la oficina para la jornada de trabajo."
         }
+      ]
+    }
+  ],
+  "kumospace": [
+    {
+      "title": "Kumospace y TinyFloor de un vistazo",
+      "body": [
+        "Los dos son oficinas virtuales por las que te mueves. Donde más se diferencian es en cómo cobran y en lo que incluye el plan gratis."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Kumospace",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Un equipo de 8, al mes",
+            "128 $ con facturación anual, 160 $ mensual (Business)",
+            "29 $ para todo el equipo"
+          ],
+          [
+            "Plan gratis",
+            "Hasta 5 miembros, 1 planta, un espacio público",
+            "Hasta 3 personas, todas las funciones"
+          ],
+          [
+            "Cómo se cobra",
+            "Por miembro, mínimo 5",
+            "Un precio por oficina"
+          ],
+          [
+            "Invitados",
+            "50, cada uno hasta 4 horas a la semana",
+            "Todos entran con una cuenta gratis"
+          ],
+          [
+            "Mantener la oficina privada",
+            "Controles por contraseña y correo en Business",
+            "Privada en todos los planes"
+          ],
+          [
+            "Apps",
+            "Navegador, apps de escritorio y móvil",
+            "El navegador, en ordenador y móvil"
+          ],
+          [
+            "Grabación",
+            "En Business",
+            "No"
+          ],
+          [
+            "Diseñar la oficina",
+            "Muebles, plantas y actividades que colocas tú",
+            "Una oficina lista para usar"
+          ]
+        ],
+        "note": "Datos de Kumospace de su página de precios en octubre de 2026, sin impuestos."
+      }
+    },
+    {
+      "title": "Cuánto cuesta Kumospace según el tamaño del equipo",
+      "body": [
+        "Business se cobra por cada miembro registrado, con un mínimo de 5, a 16 $ por miembro al mes en el plan anual o 20 $ mes a mes."
+      ],
+      "table": {
+        "head": [
+          "Equipo",
+          "Kumospace, facturación mensual",
+          "Kumospace, facturación anual, al mes",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 personas",
+            "100 $",
+            "80 $",
+            "29 $"
+          ],
+          [
+            "8 personas",
+            "160 $",
+            "128 $",
+            "29 $"
+          ],
+          [
+            "10 personas",
+            "200 $",
+            "160 $",
+            "29 $"
+          ],
+          [
+            "12 personas",
+            "240 $",
+            "192 $",
+            "29 $"
+          ]
+        ],
+        "note": "Kumospace Business a 20 $ por miembro al mes o 16 $ con facturación anual (página de precios de Kumospace, octubre de 2026). TinyFloor Pro es mensual; los equipos de hasta 3 siguen gratis."
+      }
+    },
+    {
+      "title": "Por qué los equipos pequeños buscan una alternativa a Kumospace",
+      "items": [
+        {
+          "title": "El plan gratis se queda en 5",
+          "body": "Una sexta persona obliga a pasar a todos a Business, y Business cobra al menos 5 miembros, así que el primer mes de pago de un equipo de 6 cuesta 96 $ en el plan anual o 120 $ mensual."
+        },
+        {
+          "title": "Los espacios gratis son públicos",
+          "body": "Kumospace presenta el plan gratis como un espacio público. Restringir quién puede entrar, con contraseña o por correo, llega con Business."
+        },
+        {
+          "title": "Los invitados van con reloj",
+          "body": "Los invitados pueden quedarse hasta 4 horas a la semana. Un freelance o un cliente que trabaja contigo a diario tiene que ser miembro de pago."
+        },
+        {
+          "title": "El precio por miembro crece con el equipo",
+          "body": "Cada nueva persona suma de 16 a 20 $ al mes, incluidas las que solo pasan de vez en cuando."
+        }
+      ]
+    },
+    {
+      "title": "Lo que Kumospace hace mejor",
+      "items": [
+        {
+          "title": "Espacios que diseñas tú",
+          "body": "Muebles, suelos, decoración y actividades como juegos, pizarras y pantallas de YouTube. Si quieres que la oficina se parezca a tu marca, Kumospace te da mucho más con lo que trabajar."
+        },
+        {
+          "title": "Grabación",
+          "body": "Business graba reuniones y presentaciones para compartirlas después. TinyFloor no graba."
+        },
+        {
+          "title": "Apps de escritorio y móvil",
+          "body": "Kumospace tiene apps para Windows, macOS, iOS y Android además del navegador. TinyFloor solo funciona en el navegador."
+        },
+        {
+          "title": "Sitio para organizaciones grandes",
+          "body": "Varias plantas, roles de usuario, historial de chat ilimitado y, en Enterprise, inicio de sesión único, dominio propio y garantía de disponibilidad."
+        }
+      ]
+    },
+    {
+      "title": "Cuál encaja con tu equipo",
+      "items": [
+        {
+          "title": "TinyFloor, para un equipo pequeño",
+          "body": "Para un equipo de 4 a 15 personas que sobre todo necesita ver quién está, hablar sin agendar y reunirse en una sala, y que prefiere pagar un solo precio a contar plazas."
+        },
+        {
+          "title": "Kumospace, para un espacio a tu medida",
+          "body": "Si quieres diseñar el espacio con tu marca, grabar reuniones o usar apps nativas, o si una empresa grande necesita inicio de sesión único y estadísticas."
+        },
+        {
+          "title": "Kumospace gratis, para 5 o menos",
+          "body": "Si un espacio público te sirve y nadie necesita entrar como invitado más de 4 horas a la semana, puede que el plan gratis te baste."
+        }
+      ]
+    },
+    {
+      "title": "Llevar un equipo desde Kumospace",
+      "items": [
+        {
+          "title": "Crea una oficina",
+          "detail": "Dos minutos",
+          "body": "Ponle el nombre del equipo. La planta, las mesas y la sala de reuniones están listas; no hay nada que reconstruir."
+        },
+        {
+          "title": "Comparte un enlace de invitación",
+          "detail": "En el chat del equipo",
+          "body": "Tus compañeros entran con Google o con su correo desde el navegador, en portátil o móvil."
+        },
+        {
+          "title": "Pasad allí una semana normal",
+          "detail": "La daily en la sala de reuniones",
+          "body": "Mantened Kumospace hasta que acabe la semana y luego decidid cuál abrió de verdad el equipo."
+        }
+      ]
+    },
+    {
+      "title": "Cómo comparamos",
+      "body": [
+        "Los precios, límites y funciones de Kumospace salen de su página de precios, leída en octubre de 2026, en dólares estadounidenses sin impuestos. Lo que no aparecía allí lo dejamos fuera en vez de adivinar. Hacemos TinyFloor, así que decimos claramente lo que no hace. Los precios cambian: revisa la página de Kumospace antes de comprar."
+      ]
+    }
+  ],
+  "workadventure": [
+    {
+      "title": "WorkAdventure y TinyFloor de un vistazo",
+      "body": [
+        "Las dos son oficinas en pixel art en el navegador donde te acercas a la gente para hablar. WorkAdventure está hecha para darle forma y alojarla a tu manera; TinyFloor, para estar lista en cuanto la abres."
+      ],
+      "table": {
+        "head": [
+          "",
+          "WorkAdventure",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Un equipo de 8, al mes",
+            "Gratis en salas públicas; Business 72 $ con facturación anual, 88 $ mensual",
+            "29 $ para todo el equipo"
+          ],
+          [
+            "Plan gratis",
+            "Hasta 10 personas a la vez, sin límite de tiempo",
+            "Hasta 3 personas, todas las funciones"
+          ],
+          [
+            "Cómo se cobra",
+            "Por usuario, según cuántos pueden estar conectados a la vez",
+            "Un precio por oficina"
+          ],
+          [
+            "Mantener la oficina privada",
+            "Salas gratis públicas; miembros y filtro por correo en los planes de pago",
+            "Privada en todos los planes"
+          ],
+          [
+            "El mapa",
+            "Plantillas y un editor de mapas",
+            "Una oficina lista para usar"
+          ],
+          [
+            "Alojamiento",
+            "Alojado, o en tus propios servidores",
+            "Alojado"
+          ],
+          [
+            "Grabación",
+            "En los planes de pago",
+            "No"
+          ],
+          [
+            "Integraciones",
+            "Microsoft Teams, Outlook, Google Calendar, Google Meet en los planes de pago",
+            "Ninguna"
+          ]
+        ],
+        "note": "Datos de WorkAdventure de su página de precios en octubre de 2026, en dólares estadounidenses sin impuestos."
+      }
+    },
+    {
+      "title": "Cuánto cuesta WorkAdventure según el tamaño del equipo",
+      "body": [
+        "Business se cobra por usuario según el número de personas que pueden estar conectadas a la vez, a 9 $ por usuario al mes en el plan anual o 11 $ mes a mes. El plan gratis cubre hasta 10 a la vez, con salas públicas."
+      ],
+      "table": {
+        "head": [
+          "Equipo",
+          "WorkAdventure Business, facturación mensual",
+          "WorkAdventure Business, facturación anual, al mes",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 personas",
+            "55 $",
+            "45 $",
+            "29 $"
+          ],
+          [
+            "8 personas",
+            "88 $",
+            "72 $",
+            "29 $"
+          ],
+          [
+            "10 personas",
+            "110 $",
+            "90 $",
+            "29 $"
+          ],
+          [
+            "12 personas",
+            "132 $",
+            "108 $",
+            "29 $"
+          ]
+        ],
+        "note": "WorkAdventure Business a 11 $ por usuario al mes o 9 $ con facturación anual, para todos los conectados a la vez (página de precios de WorkAdventure, octubre de 2026). TinyFloor Pro es mensual; los equipos de hasta 3 siguen gratis."
+      }
+    },
+    {
+      "title": "Por qué los equipos pequeños buscan una alternativa a WorkAdventure",
+      "items": [
+        {
+          "title": "Las salas gratis son públicas",
+          "body": "WorkAdventure indica que las salas del plan gratis están abiertas a cualquiera con el enlace. Los miembros, los roles y limitar la entrada a ciertos correos llegan con los planes de pago."
+        },
+        {
+          "title": "Primero hay que construir un mundo",
+          "body": "Las plantillas ayudan a empezar, pero el mapa lo organizas tú, y uno a medida suele ser trabajo para un diseñador. Algunos equipos solo quieren entrar."
+        },
+        {
+          "title": "Alojarlo tú es un proyecto",
+          "body": "Tener WorkAdventure en tus servidores te da control total, pero también significa que alguien del equipo lo mantiene y lo actualiza."
+        },
+        {
+          "title": "Pagar por capacidad",
+          "body": "Business se calcula según cuántas personas pueden estar conectadas a la vez: eliges un número, lo pagas y lo cambias cuando el equipo crece."
+        }
+      ]
+    },
+    {
+      "title": "Lo que WorkAdventure hace mejor",
+      "items": [
+        {
+          "title": "Un mundo propio",
+          "body": "Un editor de mapas, plantillas, mesas y avatares personalizados, y un equipo de diseño que puedes contratar para un mapa a medida. TinyFloor tiene una oficina lista para usar."
+        },
+        {
+          "title": "Código abierto y alojamiento propio",
+          "body": "Puedes tenerlo en tus servidores o en una nube privada y guardar allí tus datos. TinyFloor solo está alojado por nosotros."
+        },
+        {
+          "title": "Eventos y conferencias",
+          "body": "Zonas de ponente donde solo se oye a quien habla, precio por día para eventos puntuales, grabación y emisión en directo en YouTube."
+        },
+        {
+          "title": "Integraciones",
+          "body": "Los planes de pago conectan Microsoft Teams, Outlook, Google Calendar y Google Meet, y hay bots de IA y webhooks."
+        },
+        {
+          "title": "Un plan gratis más amplio",
+          "body": "Diez personas a la vez, sin límite de tiempo, es uno de los planes gratis más amplios entre las oficinas virtuales que comparamos, si las salas públicas te sirven."
+        }
+      ]
+    },
+    {
+      "title": "Cuál encaja con tu equipo",
+      "items": [
+        {
+          "title": "TinyFloor, para una oficina lista",
+          "body": "Para un equipo de 4 a 15 personas que quiere una oficina privada que pueda abrir hoy, con mesas, sala de reuniones y chat, por un solo precio en vez de contar plazas."
+        },
+        {
+          "title": "WorkAdventure, para un mundo propio",
+          "body": "Si quieres diseñar el espacio, alojarlo tú, organizar eventos en él o conectarlo con Microsoft Teams o Google Calendar."
+        },
+        {
+          "title": "WorkAdventure gratis, para un espacio abierto",
+          "body": "Si las salas públicas te sirven y no sois más de 10 conectados a la vez, puede que el plan gratis te baste."
+        }
+      ]
+    },
+    {
+      "title": "Llevar un equipo desde WorkAdventure",
+      "items": [
+        {
+          "title": "Crea una oficina",
+          "detail": "Dos minutos",
+          "body": "Ponle el nombre del equipo. La planta, las mesas y la sala de reuniones están listas; no hay ningún mapa que trasladar."
+        },
+        {
+          "title": "Comparte un enlace de invitación",
+          "detail": "En el chat del equipo",
+          "body": "Tus compañeros entran con Google o con su correo desde el navegador, en portátil o móvil."
+        },
+        {
+          "title": "Pasad allí una semana normal",
+          "detail": "La daily en la sala de reuniones",
+          "body": "Mantened vuestro mundo de WorkAdventure hasta que acabe la semana y luego decidid cuál abrió de verdad el equipo."
+        }
+      ]
+    },
+    {
+      "title": "Cómo comparamos",
+      "body": [
+        "Los precios, límites y funciones de WorkAdventure salen de su página de precios y de sus preguntas frecuentes sobre precios, leídas en octubre de 2026, en dólares estadounidenses sin impuestos. Lo que no aparecía allí lo dejamos fuera en vez de adivinar. Hacemos TinyFloor, así que decimos claramente lo que no hace. Los precios cambian: revisa la página de WorkAdventure antes de comprar."
       ]
     }
   ]

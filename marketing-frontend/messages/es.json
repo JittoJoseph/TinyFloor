@@ -123,11 +123,11 @@
       "kumospace": {
         "label": "Alternativa a Kumospace",
         "meta": {
-          "title": "Alternativa gratis a Kumospace para todo el equipo",
-          "description": "El plan gratuito de Kumospace llega hasta 5 miembros. TinyFloor es una oficina virtual gratis de pixel art con videollamadas por proximidad, abierta a todo tu equipo en el navegador."
+          "title": "Alternativa a Kumospace: precios, límites del plan gratis y un precio fijo",
+          "description": "El plan gratis de Kumospace se queda en 5 miembros en una planta pública, y Business cuesta de 16 a 20 $ por miembro, con un mínimo de 5. Lo que paga un equipo pequeño, lo que Kumospace hace mejor y TinyFloor a 29 $ para todo el equipo."
         },
         "title": "Una <em>alternativa a Kumospace</em> para todo el equipo.",
-        "subtitle": "El plan gratuito de Kumospace admite 5 miembros en una planta. TinyFloor es gratis para 3 y después un precio para todo el equipo: $29 al mes.",
+        "subtitle": "El plan gratis de Kumospace admite 5 miembros en una planta pública, y Business se cobra por miembro, con un mínimo de 5. TinyFloor es gratis para 3 y luego tiene un solo precio para todo el equipo: 29 $ al mes.",
         "points": [
           {
             "title": "Sin límite de 5 miembros",
@@ -151,15 +151,23 @@
         "faq": [
           {
             "q": "¿Kumospace es gratis?",
-            "a": "Kumospace tiene un plan gratuito para hasta 5 miembros registrados, con una planta e invitados limitados a 4 horas a la semana. El plan Business empieza en 16 $ por usuario al mes. TinyFloor es gratis para hasta 3 personas y cuesta $29 al mes para todo el equipo."
+            "a": "Kumospace tiene un plan gratis para hasta 5 miembros registrados, con una planta, un espacio público e invitados limitados a 4 horas a la semana. Business cuesta 16 $ por miembro al mes con facturación anual, o 20 $ mensual, para al menos 5 miembros. TinyFloor es gratis para hasta 3 personas y cuesta 29 $ al mes para todo el equipo."
           },
           {
-            "q": "¿Qué tiene Kumospace que no tenga TinyFloor?",
-            "a": "Los planes de pago de Kumospace añaden grabación e historial de chat ilimitado. TinyFloor todavía no graba llamadas, pero compartir pantalla, el chat y las llamadas están en todos los planes, incluido el gratuito."
+            "q": "¿Cuánto cuesta Kumospace para 10 personas?",
+            "a": "Con Business, 160 $ al mes con facturación anual (1.920 $ al año) o 200 $ con facturación mensual. TinyFloor cuesta 29 $ al mes para el mismo equipo."
+          },
+          {
+            "q": "¿Qué tiene Kumospace que TinyFloor no tiene?",
+            "a": "Grabación, apps de escritorio y móvil, espacios que amueblas y diseñas tú, varias plantas, estadísticas de uso y, en Enterprise, inicio de sesión único. TinyFloor no graba las llamadas, pero la pantalla compartida, el chat y las llamadas están en todos los planes, también en el gratis."
+          },
+          {
+            "q": "¿Un espacio gratis de Kumospace es privado?",
+            "a": "Kumospace presenta el plan gratis como un espacio público; los controles de acceso por contraseña y correo forman parte de Business. Las oficinas de TinyFloor son privadas en todos los planes: el equipo entra con una cuenta gratis desde tu enlace de invitación."
           },
           {
             "q": "¿Mis compañeros necesitan una cuenta?",
-            "a": "Sí, una gratuita, que mantiene tu oficina privada para tu equipo. Para echar un vistazo antes, prueba la oficina de demostración solo con un nombre."
+            "a": "Sí, una gratis, para que tu oficina sea privada para tu equipo. Para echar un vistazo antes, prueba la oficina de demostración solo con un nombre."
           },
           {
             "q": "¿TinyFloor funciona en el móvil?",
@@ -217,11 +225,11 @@
       "workadventure": {
         "label": "Alternativa a WorkAdventure",
         "meta": {
-          "title": "Alternativa a WorkAdventure para equipos pequeños",
-          "description": "El plan gratuito de WorkAdventure admite 10 personas a la vez. TinyFloor es una oficina virtual en pixel art con videollamadas por proximidad, gratis para 3 personas y $29 al mes para todo el equipo."
+          "title": "Alternativa a WorkAdventure: precios, el plan gratis y una opción alojada",
+          "description": "El plan gratis de WorkAdventure admite 10 personas a la vez en salas públicas, y Business cuesta de 9 a 11 $ por usuario al mes. Lo que paga un equipo pequeño, lo que WorkAdventure hace mejor y TinyFloor a 29 $ para todo el equipo."
         },
         "title": "Una <em>alternativa a WorkAdventure</em> con espacio para crecer.",
-        "subtitle": "WorkAdventure también es una oficina de pixel art, y su plan gratuito admite 10 personas a la vez. TinyFloor es gratis para 3 personas y después tiene un precio fijo, no un precio por persona.",
+        "subtitle": "WorkAdventure también es una oficina en pixel art: su plan gratis admite 10 personas a la vez en salas públicas, y Business se cobra según cuántas personas pueden estar conectadas a la vez. TinyFloor es gratis para 3 y luego tiene un solo precio para todo el equipo: 29 $ al mes.",
         "points": [
           {
             "title": "El doble de espacio",
@@ -237,23 +245,27 @@
           }
         ],
         "them": {
-          "price": "Business desde 8 € por usuario al mes",
-          "freePlan": "Hasta 10 personas a la vez",
+          "price": "Business desde 9 $ por usuario al mes",
+          "freePlan": "Hasta 10 personas a la vez, en salas públicas",
           "browser": "Sí",
           "screenShare": "Sí"
         },
         "faq": [
           {
             "q": "¿WorkAdventure es gratis?",
-            "a": "WorkAdventure tiene un plan gratuito para hasta 10 usuarios simultáneos. El plan Business empieza en 8 € por usuario al mes, y los precios para eventos desde 4 € por usuario al día. TinyFloor es gratis para hasta 3 personas y cuesta $29 al mes para todo el equipo."
+            "a": "WorkAdventure tiene un plan gratis para hasta 10 personas conectadas a la vez, sin límite de tiempo, pero sus salas son públicas para cualquiera con el enlace. Business cuesta 9 $ por usuario al mes con facturación anual o 11 $ mensual, y los eventos desde 5 $ por usuario al día. TinyFloor es gratis para hasta 3 personas y cuesta 29 $ al mes para todo el equipo."
+          },
+          {
+            "q": "¿Cuánto cuesta WorkAdventure para 10 personas?",
+            "a": "Si las salas públicas te sirven, el plan gratis cubre 10 personas a la vez. En Business, espacio para 10 a la vez cuesta 90 $ al mes con facturación anual o 110 $ mensual. TinyFloor cuesta 29 $ al mes para el mismo equipo."
           },
           {
             "q": "¿Puedo personalizar el mapa en TinyFloor?",
-            "a": "Todavía no. Todas las oficinas usan la misma planta. WorkAdventure te deja diseñar tus propios mapas, algo ideal para equipos que quieren un mundo a medida."
+            "a": "No. Cada oficina viene lista, con mesas, sala de reuniones y pizarra. WorkAdventure tiene un editor de mapas y plantillas, que encaja con equipos que quieren un mundo propio."
           },
           {
             "q": "¿Tengo que mantener un servidor?",
-            "a": "No. TinyFloor está alojado por nosotros. Crea una oficina en el navegador e invita a tu equipo."
+            "a": "No. TinyFloor está alojado por nosotros: crea una oficina en el navegador e invita a tu equipo. WorkAdventure también está alojado y, además, puede instalarse en tus propios servidores."
           },
           {
             "q": "¿Cómo empiezan las llamadas en TinyFloor?",

@@ -33,13 +33,13 @@
           ],
           [
             "Kumospace",
-            "128 $",
+            "128 $ jährlich, 160 $ monatlich abgerechnet",
             "Bis zu 5 Mitglieder, 1 Etage",
             "Teams, die Desktop- und Mobil-Apps wollen"
           ],
           [
             "WorkAdventure",
-            "Ab 64 €",
+            "72 $ jährlich, 88 $ monatlich abgerechnet",
             "Bis zu 10 Personen gleichzeitig",
             "Teams, die eine Open-Source-Karte wollen"
           ],
@@ -62,7 +62,7 @@
             "Teams, die nur Sprachräume brauchen"
           ]
         ],
-        "note": "Von der Preisseite des jeweiligen Produkts im Oktober 2026, ohne Steuern. Preise pro Person mal 8; der Business-Tarif von WorkAdventure beginnt bei 8 € pro Nutzer."
+        "note": "Von der Preisseite des jeweiligen Produkts im Oktober 2026, ohne Steuern. Preise pro Person mal 8; der Business-Tarif von WorkAdventure beginnt bei 9 $ pro Nutzer."
       }
     },
     {
@@ -92,7 +92,7 @@
         },
         {
           "title": "WorkAdventure",
-          "detail": "Business ab 8 € pro Nutzer im Monat; kostenlos für bis zu 10 gleichzeitig",
+          "detail": "Business ab 9 $ pro Nutzer im Monat; kostenlos für bis zu 10 gleichzeitig",
           "body": "Ein weiteres Pixel-Art-Büro, und Open Source, ein technisches Team kann die Karte also anpassen. Der kostenlose Tarif zählt gleichzeitig anwesende Personen, bis zu 10, nicht Mitglieder."
         },
         {
@@ -273,7 +273,7 @@
           ],
           [
             "Kumospace Business",
-            "128 $",
+            "128 $ jährlich abgerechnet",
             "Pro Nutzer; kostenlos für bis zu 5 Mitglieder"
           ]
         ],
@@ -465,6 +465,378 @@
           "detail": "Kein großer Umstieg",
           "body": "Viele Teams behalten Discord für ihre Community und nutzen das Büro für den Arbeitstag."
         }
+      ]
+    }
+  ],
+  "kumospace": [
+    {
+      "title": "Kumospace und TinyFloor im Überblick",
+      "body": [
+        "Beides sind virtuelle Büros, in denen man herumläuft. Am meisten unterscheiden sie sich darin, wie abgerechnet wird und was der Gratis-Tarif enthält."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Kumospace",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Ein Team von 8, im Monat",
+            "128 $ jährlich, 160 $ monatlich abgerechnet (Business)",
+            "29 $ für das ganze Team"
+          ],
+          [
+            "Gratis-Tarif",
+            "Bis zu 5 Mitglieder, 1 Etage, ein öffentlicher Space",
+            "Bis zu 3 Personen, alle Funktionen"
+          ],
+          [
+            "Wie abgerechnet wird",
+            "Pro Mitglied, mindestens 5",
+            "Ein Preis für das Büro"
+          ],
+          [
+            "Gäste",
+            "50, jeweils bis zu 4 Stunden pro Woche",
+            "Alle kommen mit einem kostenlosen Konto"
+          ],
+          [
+            "Das Büro privat halten",
+            "Passwort- und E-Mail-Kontrollen mit Business",
+            "In jedem Tarif privat"
+          ],
+          [
+            "Apps",
+            "Browser, Desktop- und Handy-Apps",
+            "Der Browser, auf Desktop und Handy"
+          ],
+          [
+            "Aufnahmen",
+            "Mit Business",
+            "Nein"
+          ],
+          [
+            "Das Büro gestalten",
+            "Möbel, Etagen und Aktivitäten, die du platzierst",
+            "Ein fertiges Büro"
+          ]
+        ],
+        "note": "Angaben zu Kumospace von seiner Preisseite im Oktober 2026, ohne Steuern."
+      }
+    },
+    {
+      "title": "Was Kumospace nach Teamgröße kostet",
+      "body": [
+        "Business wird für jedes registrierte Mitglied abgerechnet, mindestens 5, mit 16 $ pro Mitglied im Monat im Jahrestarif oder 20 $ bei monatlicher Zahlung."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Kumospace, monatlich abgerechnet",
+          "Kumospace, jährlich abgerechnet, pro Monat",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 Personen",
+            "100 $",
+            "80 $",
+            "29 $"
+          ],
+          [
+            "8 Personen",
+            "160 $",
+            "128 $",
+            "29 $"
+          ],
+          [
+            "10 Personen",
+            "200 $",
+            "160 $",
+            "29 $"
+          ],
+          [
+            "12 Personen",
+            "240 $",
+            "192 $",
+            "29 $"
+          ]
+        ],
+        "note": "Kumospace Business zu 20 $ pro Mitglied monatlich oder 16 $ jährlich (Preisseite von Kumospace, Oktober 2026). TinyFloor Pro wird monatlich abgerechnet; Teams bis 3 bleiben kostenlos."
+      }
+    },
+    {
+      "title": "Warum kleine Teams eine Alternative zu Kumospace suchen",
+      "items": [
+        {
+          "title": "Der Gratis-Tarif endet bei 5",
+          "body": "Eine sechste Person heißt, alle auf Business umzustellen, und Business rechnet mindestens 5 Mitglieder ab. Der erste bezahlte Monat für ein Team von 6 kostet also 96 $ im Jahrestarif oder 120 $ monatlich."
+        },
+        {
+          "title": "Kostenlose Spaces sind öffentlich",
+          "body": "Kumospace führt den Gratis-Tarif als öffentlichen Space. Wer hereindarf, per Passwort oder E-Mail festzulegen, gibt es erst mit Business."
+        },
+        {
+          "title": "Gäste haben ein Zeitlimit",
+          "body": "Gäste dürfen bis zu 4 Stunden pro Woche bleiben. Eine Freelancerin oder ein Kunde, die täglich mit euch arbeiten, muss ein bezahltes Mitglied werden."
+        },
+        {
+          "title": "Preise pro Mitglied wachsen mit dem Team",
+          "body": "Jede neue Person kostet 16 bis 20 $ mehr im Monat, auch Leute, die nur ab und zu vorbeischauen."
+        }
+      ]
+    },
+    {
+      "title": "Was Kumospace besser kann",
+      "items": [
+        {
+          "title": "Spaces, die du gestaltest",
+          "body": "Möbel, Böden, Deko und Aktivitäten wie Spiele, Whiteboards und YouTube-Bildschirme. Wenn das Büro nach deiner Marke aussehen soll, gibt dir Kumospace viel mehr Möglichkeiten."
+        },
+        {
+          "title": "Aufnahmen",
+          "body": "Business nimmt Meetings und Präsentationen auf, um sie später zu teilen. TinyFloor nimmt nicht auf."
+        },
+        {
+          "title": "Desktop- und Handy-Apps",
+          "body": "Kumospace hat Apps für Windows, macOS, iOS und Android und läuft auch im Browser. TinyFloor läuft nur im Browser."
+        },
+        {
+          "title": "Platz für größere Organisationen",
+          "body": "Mehrere Etagen, Nutzerrollen, unbegrenzter Chatverlauf und, mit Enterprise, Single Sign-on, eine eigene Domain und eine Verfügbarkeitsgarantie."
+        }
+      ]
+    },
+    {
+      "title": "Was zu deinem Team passt",
+      "items": [
+        {
+          "title": "TinyFloor, für ein kleines Team",
+          "body": "Für ein Team von 4 bis 15, das vor allem sehen will, wer da ist, ohne Termin reden und sich in einem Raum treffen möchte, und lieber einen Preis zahlt, als Plätze zu zählen."
+        },
+        {
+          "title": "Kumospace, für einen gestalteten Space",
+          "body": "Wenn du den Space gestalten und mit deiner Marke versehen, Meetings aufnehmen oder native Apps nutzen willst, oder wenn eine größere Firma Single Sign-on und Statistiken braucht."
+        },
+        {
+          "title": "Kumospace kostenlos, für 5 oder weniger",
+          "body": "Wenn ein öffentlicher Space in Ordnung ist und niemand länger als 4 Stunden pro Woche als Gast vorbeikommen muss, reicht der Gratis-Tarif vielleicht schon."
+        }
+      ]
+    },
+    {
+      "title": "Ein Team von Kumospace umziehen",
+      "items": [
+        {
+          "title": "Ein Büro anlegen",
+          "detail": "Zwei Minuten",
+          "body": "Benenne es nach dem Team. Fläche, Schreibtische und Besprechungsraum sind fertig; es gibt nichts neu aufzubauen."
+        },
+        {
+          "title": "Einen Einladungslink teilen",
+          "detail": "In eurem Team-Chat",
+          "body": "Das Team meldet sich mit Google oder E-Mail an und kommt im Browser herein, auf dem Laptop oder Handy."
+        },
+        {
+          "title": "Eine normale Woche dort arbeiten",
+          "detail": "Standup im Besprechungsraum",
+          "body": "Behaltet Kumospace, bis die Woche um ist, und entscheidet dann, welches das Team wirklich geöffnet hat."
+        }
+      ]
+    },
+    {
+      "title": "Wie wir verglichen haben",
+      "body": [
+        "Preise, Grenzen und Funktionen von Kumospace stammen von seiner Preisseite, gelesen im Oktober 2026, in US-Dollar ohne Steuern. Was dort nicht stand, haben wir weggelassen, statt zu raten. Wir machen TinyFloor, deshalb sagen wir klar, was es nicht kann. Preise ändern sich: Prüfe vor dem Kauf die Seite von Kumospace."
+      ]
+    }
+  ],
+  "workadventure": [
+    {
+      "title": "WorkAdventure und TinyFloor im Überblick",
+      "body": [
+        "Beides sind Pixel-Art-Büros im Browser, in denen man zu Leuten hingeht, um zu reden. WorkAdventure ist dafür gebaut, nach deinen Vorstellungen gestaltet und gehostet zu werden; TinyFloor dafür, sofort fertig zu sein, wenn du es öffnest."
+      ],
+      "table": {
+        "head": [
+          "",
+          "WorkAdventure",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Ein Team von 8, im Monat",
+            "Kostenlos in öffentlichen Räumen; Business 72 $ jährlich, 88 $ monatlich abgerechnet",
+            "29 $ für das ganze Team"
+          ],
+          [
+            "Gratis-Tarif",
+            "Bis zu 10 Personen gleichzeitig, ohne Zeitlimit",
+            "Bis zu 3 Personen, alle Funktionen"
+          ],
+          [
+            "Wie abgerechnet wird",
+            "Pro Nutzer, für die Zahl der Personen, die gleichzeitig online sind",
+            "Ein Preis für das Büro"
+          ],
+          [
+            "Das Büro privat halten",
+            "Gratis-Räume sind öffentlich; Mitglieder und E-Mail-Beschränkung in bezahlten Tarifen",
+            "In jedem Tarif privat"
+          ],
+          [
+            "Die Karte",
+            "Vorlagen und ein Karteneditor",
+            "Ein fertiges Büro"
+          ],
+          [
+            "Hosting",
+            "Gehostet oder auf eigenen Servern",
+            "Gehostet"
+          ],
+          [
+            "Aufnahmen",
+            "In bezahlten Tarifen",
+            "Nein"
+          ],
+          [
+            "Integrationen",
+            "Microsoft Teams, Outlook, Google Calendar, Google Meet in bezahlten Tarifen",
+            "Keine"
+          ]
+        ],
+        "note": "Angaben zu WorkAdventure von seiner Preisseite im Oktober 2026, in US-Dollar ohne Steuern."
+      }
+    },
+    {
+      "title": "Was WorkAdventure nach Teamgröße kostet",
+      "body": [
+        "Business wird pro Nutzer für die Zahl der Personen abgerechnet, die gleichzeitig verbunden sein können: 9 $ pro Nutzer im Monat im Jahrestarif oder 11 $ bei monatlicher Zahlung. Der Gratis-Tarif deckt bis zu 10 gleichzeitig ab, mit öffentlichen Räumen."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "WorkAdventure Business, monatlich abgerechnet",
+          "WorkAdventure Business, jährlich abgerechnet, pro Monat",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 Personen",
+            "55 $",
+            "45 $",
+            "29 $"
+          ],
+          [
+            "8 Personen",
+            "88 $",
+            "72 $",
+            "29 $"
+          ],
+          [
+            "10 Personen",
+            "110 $",
+            "90 $",
+            "29 $"
+          ],
+          [
+            "12 Personen",
+            "132 $",
+            "108 $",
+            "29 $"
+          ]
+        ],
+        "note": "WorkAdventure Business zu 11 $ pro Nutzer monatlich oder 9 $ jährlich, für alle, die gleichzeitig online sind (Preisseite von WorkAdventure, Oktober 2026). TinyFloor Pro wird monatlich abgerechnet; Teams bis 3 bleiben kostenlos."
+      }
+    },
+    {
+      "title": "Warum kleine Teams eine Alternative zu WorkAdventure suchen",
+      "items": [
+        {
+          "title": "Gratis-Räume sind öffentlich",
+          "body": "WorkAdventure schreibt, dass die Räume im Gratis-Tarif für alle mit dem Link offen sind. Mitglieder, Rollen und die Beschränkung auf bestimmte E-Mail-Adressen gibt es in den bezahlten Tarifen."
+        },
+        {
+          "title": "Erst eine Welt bauen",
+          "body": "Vorlagen helfen beim Start, aber die Karte richtest du selbst ein, und eine eigene ist oft ein Auftrag für eine Designerin. Manche Teams wollen einfach hereinkommen."
+        },
+        {
+          "title": "Selbst hosten ist ein Projekt",
+          "body": "WorkAdventure auf eigenen Servern zu betreiben gibt dir volle Kontrolle, heißt aber auch, dass jemand im Team es am Laufen und aktuell hält."
+        },
+        {
+          "title": "Bezahlen für Kapazität",
+          "body": "Business wird danach berechnet, wie viele Personen gleichzeitig online sein können. Du wählst also eine Zahl, bezahlst sie und passt sie an, wenn das Team wächst."
+        }
+      ]
+    },
+    {
+      "title": "Was WorkAdventure besser kann",
+      "items": [
+        {
+          "title": "Eine eigene Welt",
+          "body": "Ein Karteneditor, Vorlagen, eigene Schreibtische und Avatare und ein Designteam, das du für eine eigene Karte buchen kannst. TinyFloor hat ein fertiges Büro."
+        },
+        {
+          "title": "Open Source und selbst hosten",
+          "body": "Du kannst es auf eigenen Servern oder in einer privaten Cloud betreiben und deine Daten dort behalten. TinyFloor gibt es nur gehostet."
+        },
+        {
+          "title": "Events und Konferenzen",
+          "body": "Sprecherzonen, in denen nur die sprechende Person zu hören ist, Tagespreise für einmalige Events, Aufnahmen und Livestreams auf YouTube."
+        },
+        {
+          "title": "Integrationen",
+          "body": "Bezahlte Tarife verbinden Microsoft Teams, Outlook, Google Calendar und Google Meet, und es gibt KI-Bots und Webhooks."
+        },
+        {
+          "title": "Ein größerer Gratis-Tarif",
+          "body": "Zehn Personen gleichzeitig, ohne Zeitlimit, ist einer der großzügigsten Gratis-Tarife unter den virtuellen Büros, die wir verglichen haben, wenn öffentliche Räume für dich in Ordnung sind."
+        }
+      ]
+    },
+    {
+      "title": "Was zu deinem Team passt",
+      "items": [
+        {
+          "title": "TinyFloor, für ein fertiges Büro",
+          "body": "Für ein Team von 4 bis 15, das heute ein privates Büro öffnen will, mit Schreibtischen, Besprechungsraum und Chat, zu einem Preis statt nach Zahl der Plätze."
+        },
+        {
+          "title": "WorkAdventure, für eine eigene Welt",
+          "body": "Wenn du den Raum gestalten, selbst hosten, Events darin veranstalten oder ihn mit Microsoft Teams oder Google Calendar verbinden willst."
+        },
+        {
+          "title": "WorkAdventure kostenlos, für einen offenen Raum",
+          "body": "Wenn öffentliche Räume in Ordnung sind und höchstens 10 gleichzeitig online sind, reicht der Gratis-Tarif vielleicht schon."
+        }
+      ]
+    },
+    {
+      "title": "Ein Team von WorkAdventure umziehen",
+      "items": [
+        {
+          "title": "Ein Büro anlegen",
+          "detail": "Zwei Minuten",
+          "body": "Benenne es nach dem Team. Fläche, Schreibtische und Besprechungsraum sind fertig; es gibt keine Karte zu übertragen."
+        },
+        {
+          "title": "Einen Einladungslink teilen",
+          "detail": "In eurem Team-Chat",
+          "body": "Das Team meldet sich mit Google oder E-Mail an und kommt im Browser herein, auf dem Laptop oder Handy."
+        },
+        {
+          "title": "Eine normale Woche dort arbeiten",
+          "detail": "Standup im Besprechungsraum",
+          "body": "Behaltet eure WorkAdventure-Welt, bis die Woche um ist, und entscheidet dann, welches das Team wirklich geöffnet hat."
+        }
+      ]
+    },
+    {
+      "title": "Wie wir verglichen haben",
+      "body": [
+        "Preise, Grenzen und Funktionen von WorkAdventure stammen von seiner Preisseite und den Preis-FAQ, gelesen im Oktober 2026, in US-Dollar ohne Steuern. Was dort nicht stand, haben wir weggelassen, statt zu raten. Wir machen TinyFloor, deshalb sagen wir klar, was es nicht kann. Preise ändern sich: Prüfe vor dem Kauf die Seite von WorkAdventure."
       ]
     }
   ]

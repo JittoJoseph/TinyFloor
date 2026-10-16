@@ -767,7 +767,7 @@
           },
           {
             "title": "WorkAdventure",
-            "detail": "Gratis for 10 personer ad gangen · Business 8 € pr. bruger om måneden",
+            "detail": "Gratis for 10 personer ad gangen · Business 9 $ pr. bruger om måneden",
             "body": "En verden i pixelkunst med åben kildekode, som du kan hoste selv, med kort bygget i editoren Tiled. God til tekniske teams og arrangementer, der vil have fuld kontrol. At bygge sit eget kort eller drive sin egen server er rigtigt arbejde."
           },
           {
@@ -827,7 +827,7 @@
               "WorkAdventure Business",
               "Pr. bruger",
               "Op til 10 personer ad gangen",
-              "80 €"
+              "90 $ årligt, 110 $ månedligt"
             ],
             [
               "Gather Essential",
@@ -845,7 +845,7 @@
               "Kumospace Business",
               "Pr. bruger",
               "Op til 5 medlemmer",
-              "160 $"
+              "160 $ årligt, 200 $ månedligt"
             ],
             [
               "Roam",
@@ -1074,7 +1074,7 @@
             "Gather, årlig betaling",
             "TinyFloor",
             "SoWork Basic, årlig betaling",
-            "Kumospace Business"
+            "Kumospace Business, årlig betaling"
           ],
           "rows": [
             [

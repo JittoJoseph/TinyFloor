@@ -123,11 +123,11 @@
       "kumospace": {
         "label": "Kumospace 替代品",
         "meta": {
-          "title": "适合整个团队的免费 Kumospace 替代品",
-          "description": "Kumospace 免费方案最多 5 名成员。TinyFloor 是免费的像素风虚拟办公室，走近即可视频通话，整个团队都能在浏览器中使用。"
+          "title": "Kumospace 替代品：价格、免费方案的限制，以及固定价格的选择",
+          "description": "Kumospace 免费方案在公开楼层上最多 5 位成员，Business 每位成员 $16–20，至少 5 人。小团队要付多少、Kumospace 哪里更好，以及整个团队 $29 的 TinyFloor。"
         },
         "title": "适合整个团队的 <em>Kumospace 替代品。</em>",
-        "subtitle": "Kumospace 的免费方案一层最多 5 名成员。TinyFloor 3 人以内免费，之后整个团队一个价格：每月 $29。",
+        "subtitle": "Kumospace 免费方案在一个公开楼层上最多 5 位成员，Business 按成员计费，至少 5 人。TinyFloor 最多 3 人免费，之后整个团队一个价格：每月 $29。",
         "points": [
           {
             "title": "没有 5 人上限",
@@ -151,19 +151,27 @@
         "faq": [
           {
             "q": "Kumospace 免费吗？",
-            "a": "Kumospace 有免费方案，最多 5 名注册成员，一个楼层，访客每周限 4 小时。Business 方案每位用户每月 16 美元起。TinyFloor 3 人以内免费，整个团队每月 $29。"
+            "a": "Kumospace 有免费方案，最多 5 位注册成员，一个楼层、公开空间，访客每周最多 4 小时。Business 按年付费每位成员每月 $16，按月付费 $20，至少 5 位成员。TinyFloor 最多 3 人免费，整个团队每月 $29。"
+          },
+          {
+            "q": "10 个人用 Kumospace 要多少钱？",
+            "a": "Business 按年付费每月 $160（每年 $1,920），按月付费每月 $200。同样的团队用 TinyFloor 每月 $29。"
           },
           {
             "q": "Kumospace 有哪些 TinyFloor 没有的功能？",
-            "a": "Kumospace 的付费方案提供录制和不限量的聊天记录。TinyFloor 暂不支持通话录制，但屏幕共享、聊天和通话在每个方案中都有，包括免费方案。"
+            "a": "录制、电脑和手机应用、可以自己布置和设计的空间、多个楼层、用户分析，以及 Enterprise 方案的单点登录。TinyFloor 不录制通话，但屏幕共享、聊天和通话在所有方案里都有，免费方案也包括在内。"
           },
           {
-            "q": "我的同事需要账号吗？",
-            "a": "需要，一个免费账号即可，这样办公室只对你的团队开放。想先看看的话，只需一个名字就能试用演示办公室。"
+            "q": "Kumospace 的免费空间是私密的吗？",
+            "a": "Kumospace 把免费方案列为公开空间；通过密码和邮箱限制访问属于 Business。TinyFloor 的办公室在所有方案里都是私密的：同事用免费账号通过你的邀请链接加入。"
+          },
+          {
+            "q": "同事需要注册账号吗？",
+            "a": "需要，一个免费账号，这样办公室只对你的团队开放。想先看看的话，只填一个名字就能试用演示办公室。"
           },
           {
             "q": "TinyFloor 能在手机上用吗？",
-            "a": "可以。它在手机浏览器中运行，使用屏幕摇杆移动，无需下载应用。"
+            "a": "能。它在手机浏览器里运行，用屏幕上的摇杆移动，不需要下载应用。"
           }
         ]
       },
@@ -217,11 +225,11 @@
       "workadventure": {
         "label": "WorkAdventure 替代品",
         "meta": {
-          "title": "适合小团队的 WorkAdventure 替代品",
-          "description": "WorkAdventure 的免费方案同时最多 10 人。TinyFloor 是一个像素风虚拟办公室，走近就能视频通话，3 人免费，整个团队每月 $29。"
+          "title": "WorkAdventure 替代品：价格、免费方案，以及托管好的选择",
+          "description": "WorkAdventure 免费方案在公开房间里最多同时 10 人，Business 每位用户每月 $9–11。小团队要付多少、WorkAdventure 哪里更好，以及整个团队 $29 的 TinyFloor。"
         },
         "title": "留有成长空间的 <em>WorkAdventure 替代品。</em>",
-        "subtitle": "WorkAdventure 也是像素风办公室，免费方案同时最多 10 人。TinyFloor 3 人免费，超出后是固定价格，而不是按人收费。",
+        "subtitle": "WorkAdventure 也是像素风办公室：免费方案在公开房间里最多同时 10 人，Business 按能同时在线的人数计费。TinyFloor 最多 3 人免费，之后整个团队一个价格：每月 $29。",
         "points": [
           {
             "title": "两倍的空间",
@@ -237,27 +245,31 @@
           }
         ],
         "them": {
-          "price": "Business 每位用户每月 8 欧元起",
-          "freePlan": "同时最多 10 人",
+          "price": "Business 每位用户每月 $9 起",
+          "freePlan": "最多同时 10 人，公开房间",
           "browser": "是",
-          "screenShare": "有"
+          "screenShare": "是"
         },
         "faq": [
           {
             "q": "WorkAdventure 免费吗？",
-            "a": "WorkAdventure 有免费方案，同时最多 10 名用户。Business 方案每位用户每月 8 欧元起，活动价格每位用户每天 4 欧元起。TinyFloor 3 人以内免费，整个团队每月 $29。"
+            "a": "WorkAdventure 有免费方案，最多同时 10 人在线，没有时间限制，但房间对任何有链接的人公开。Business 按年付费每位用户每月 $9，按月付费 $11，活动每位用户每天 $5 起。TinyFloor 最多 3 人免费，整个团队每月 $29。"
           },
           {
-            "q": "可以在 TinyFloor 中自定义地图吗？",
-            "a": "暂时不行。所有办公室都使用同一个楼层。WorkAdventure 可以自己设计地图，适合想要定制世界的团队。"
+            "q": "10 个人用 WorkAdventure 要多少钱？",
+            "a": "如果公开房间没问题，免费方案就能覆盖同时 10 人。Business 同时容纳 10 人，按年付费每月 $90，按月付费每月 $110。同样的团队用 TinyFloor 每月 $29。"
+          },
+          {
+            "q": "TinyFloor 可以自定义地图吗？",
+            "a": "不可以。每个办公室都已准备好工位、会议室和白板。WorkAdventure 有地图编辑器和模板，适合想打造自己世界的团队。"
           },
           {
             "q": "需要自己运行服务器吗？",
-            "a": "不需要。TinyFloor 由我们托管。在浏览器中创建办公室并邀请团队即可。"
+            "a": "不需要。TinyFloor 由我们托管：在浏览器里创建办公室，邀请团队即可。WorkAdventure 也有托管版本，还可以部署在你自己的服务器上。"
           },
           {
-            "q": "TinyFloor 中的通话怎么开始？",
-            "a": "走到同事身边，就会出现通话卡片，点一下即可开始通话。多人交流时，加入会议，你的角色就会走进会议室。"
+            "q": "在 TinyFloor 里怎么开始通话？",
+            "a": "走到同事身边，就会出现他的通话卡片，点一下就开始通话。多人的话，加入会议，你的角色就会走进会议室。"
           }
         ]
       },

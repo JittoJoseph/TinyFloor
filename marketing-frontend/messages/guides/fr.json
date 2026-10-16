@@ -767,7 +767,7 @@
           },
           {
             "title": "WorkAdventure",
-            "detail": "Gratuit pour 10 personnes en même temps · Business 8 € par utilisateur et par mois",
+            "detail": "Gratuit pour 10 personnes en même temps · Business 9 $ par utilisateur et par mois",
             "body": "Un monde open source en pixel art que vous pouvez héberger vous-même, avec des cartes construites dans l'éditeur Tiled. Bien pour les équipes techniques et les événements qui veulent tout contrôler. Créer sa propre carte ou son propre serveur demande un vrai travail."
           },
           {
@@ -827,7 +827,7 @@
               "WorkAdventure Business",
               "Par utilisateur",
               "Jusqu'à 10 personnes en même temps",
-              "80 €"
+              "90 $ à l'année, 110 $ au mois"
             ],
             [
               "Gather Essential",
@@ -845,7 +845,7 @@
               "Kumospace Business",
               "Par utilisateur",
               "Jusqu'à 5 membres",
-              "160 $"
+              "160 $ à l'année, 200 $ au mois"
             ],
             [
               "Roam",
@@ -1074,7 +1074,7 @@
             "Gather, facturé à l'année",
             "TinyFloor",
             "SoWork Basic, facturé à l'année",
-            "Kumospace Business"
+            "Kumospace Business, facturé à l'année"
           ],
           "rows": [
             [

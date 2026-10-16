@@ -123,11 +123,11 @@
       "kumospace": {
         "label": "Alternativ til Kumospace",
         "meta": {
-          "title": "Gratis alternativ til Kumospace for hele teamet",
-          "description": "Kumospaces gratisplan stopper ved 5 medlemmer. TinyFloor er et gratis virtuelt kontor i pikselgrafikk med videosamtaler når man står nær, åpent for hele teamet i nettleseren."
+          "title": "Alternativ til Kumospace: priser, grenser for gratisplanen og en fast pris",
+          "description": "Kumospaces gratisplan stopper ved 5 medlemmer i en offentlig etasje, og Business koster 16–20 $ per medlem, minst 5. Hva et lite team betaler, hva Kumospace gjør bedre, og TinyFloor til 29 $ for hele teamet."
         },
         "title": "Et <em>alternativ til Kumospace</em> for hele teamet.",
-        "subtitle": "Kumospaces gratisplan har plass til 5 medlemmer på én etasje. TinyFloor er gratis for 3, deretter én pris for hele teamet: $29 i måneden.",
+        "subtitle": "Kumospaces gratisplan rommer 5 medlemmer i én offentlig etasje, og Business tar betalt per medlem, minst 5. TinyFloor er gratis for 3, deretter én pris for hele teamet: 29 $ i måneden.",
         "points": [
           {
             "title": "Ingen grense på 5 medlemmer",
@@ -151,15 +151,23 @@
         "faq": [
           {
             "q": "Er Kumospace gratis?",
-            "a": "Kumospace har en gratisplan for opptil 5 registrerte medlemmer, med én etasje og gjester begrenset til 4 timer i uken. Business-planen starter på 16 $ per bruker i måneden. TinyFloor er gratis for opptil 3 personer og koster $29 i måneden for hele teamet."
+            "a": "Kumospace har en gratisplan for opptil 5 registrerte medlemmer, med én etasje, et offentlig space og gjester som maks kan bli 4 timer i uken. Business koster 16 $ per medlem i måneden ved årlig betaling, eller 20 $ månedlig, for minst 5 medlemmer. TinyFloor er gratis for opptil 3 personer og koster 29 $ i måneden for hele teamet."
+          },
+          {
+            "q": "Hva koster Kumospace for 10 personer?",
+            "a": "Med Business 160 $ i måneden ved årlig betaling (1 920 $ i året) eller 200 $ ved månedlig betaling. TinyFloor koster 29 $ i måneden for det samme teamet."
           },
           {
             "q": "Hva har Kumospace som TinyFloor ikke har?",
-            "a": "Kumospaces betalte planer legger til opptak og ubegrenset chathistorikk. TinyFloor tar ikke opp samtaler ennå, men skjermdeling, chat og samtaler er med i alle planer, også den gratis."
+            "a": "Opptak, datamaskin- og mobilapper, spaces du innreder og designer selv, flere etasjer, brukerstatistikk og, med Enterprise, enkel pålogging. TinyFloor tar ikke opp samtaler, men skjermdeling, chat og samtaler er med i alle planer, også gratisplanen."
           },
           {
-            "q": "Trenger kollegene mine en konto?",
-            "a": "Ja, en gratis konto, som holder kontoret ditt privat for teamet. Vil du se deg rundt først, kan du prøve demokontoret med bare et navn."
+            "q": "Er et gratis Kumospace-space privat?",
+            "a": "Kumospace oppgir gratisplanen som et offentlig space; tilgangskontroll med passord og e-post hører til Business. TinyFloor-kontorer er private i alle planer: teamet blir med med en gratis konto via invitasjonslenken din."
+          },
+          {
+            "q": "Trenger kollegaene mine en konto?",
+            "a": "Ja, en gratis konto, så kontoret ditt holdes privat for teamet. Vil du se deg rundt først, kan du prøve demokontoret med bare et navn."
           },
           {
             "q": "Fungerer TinyFloor på mobil?",
@@ -217,11 +225,11 @@
       "workadventure": {
         "label": "Alternativ til WorkAdventure",
         "meta": {
-          "title": "WorkAdventure-alternativ for små team",
-          "description": "WorkAdventures gratisplan tillater 10 personer om gangen. TinyFloor er et virtuelt kontor i pikselkunst med videosamtaler etter nærhet, gratis for 3 personer og $29 i måneden for hele teamet."
+          "title": "Alternativ til WorkAdventure: priser, gratisplanen og et hostet alternativ",
+          "description": "WorkAdventures gratisplan rommer 10 personer samtidig i offentlige rom, og Business koster 9–11 $ per bruker i måneden. Hva et lite team betaler, hva WorkAdventure gjør bedre, og TinyFloor til 29 $ for hele teamet."
         },
         "title": "Et <em>alternativ til WorkAdventure</em> med plass til å vokse.",
-        "subtitle": "WorkAdventure er også et kontor i pikselgrafikk, og gratisplanen har plass til 10 personer samtidig. TinyFloor er gratis for 3 personer og deretter én fast pris, ikke en pris per person.",
+        "subtitle": "WorkAdventure er også et kontor i pikselkunst: gratisplanen rommer 10 personer samtidig i offentlige rom, og Business tar betalt etter hvor mange som kan være pålogget samtidig. TinyFloor er gratis for 3, deretter én pris for hele teamet: 29 $ i måneden.",
         "points": [
           {
             "title": "Dobbelt så mye plass",
@@ -237,27 +245,31 @@
           }
         ],
         "them": {
-          "price": "Business fra 8 € per bruker i måneden",
-          "freePlan": "Opptil 10 personer samtidig",
+          "price": "Business fra 9 $ per bruker i måneden",
+          "freePlan": "Opptil 10 personer samtidig, i offentlige rom",
           "browser": "Ja",
           "screenShare": "Ja"
         },
         "faq": [
           {
             "q": "Er WorkAdventure gratis?",
-            "a": "WorkAdventure har en gratisplan for opptil 10 samtidige brukere. Business-planen starter på 8 € per bruker i måneden, og arrangementspriser på 4 € per bruker per dag. TinyFloor er gratis for opptil 3 personer og koster $29 i måneden for hele teamet."
+            "a": "WorkAdventure har en gratisplan for opptil 10 personer tilkoblet samtidig, uten tidsgrense, men rommene er offentlige for alle med lenken. Business koster 9 $ per bruker i måneden ved årlig betaling eller 11 $ månedlig, og arrangementer fra 5 $ per bruker per dag. TinyFloor er gratis for opptil 3 personer og koster 29 $ i måneden for hele teamet."
+          },
+          {
+            "q": "Hva koster WorkAdventure for 10 personer?",
+            "a": "Hvis offentlige rom er greit, dekker gratisplanen 10 personer samtidig. Med Business koster plass til 10 samtidig 90 $ i måneden ved årlig betaling eller 110 $ månedlig. TinyFloor koster 29 $ i måneden for det samme teamet."
           },
           {
             "q": "Kan jeg tilpasse kartet i TinyFloor?",
-            "a": "Ikke ennå. Alle kontorer bruker samme etasje. WorkAdventure lar deg designe egne kart, som passer for team som vil ha sin egen verden."
+            "a": "Nei. Hvert kontor kommer ferdig, med pulter, møterom og tavle. WorkAdventure har en karteditor og maler, som passer for team som vil ha sin egen verden."
           },
           {
-            "q": "Må jeg drive en server?",
-            "a": "Nei. TinyFloor driftes for deg. Lag et kontor i nettleseren og inviter teamet ditt."
+            "q": "Må jeg drifte en server?",
+            "a": "Nei. TinyFloor hostes for deg: lag et kontor i nettleseren og inviter teamet. WorkAdventure hostes også og kan i tillegg kjøres på egne servere."
           },
           {
             "q": "Hvordan starter samtaler i TinyFloor?",
-            "a": "Gå bort til en kollega, så dukker samtalekortet deres opp. Ett trykk starter samtalen. For en gruppe blir du med i et møte, og figuren din går inn i møterommet."
+            "a": "Gå bort til en kollega, så dukker samtalekortet opp. Ett trykk starter samtalen. For en gruppe blir du med i et møte, og figuren din går inn i møterommet."
           }
         ]
       },

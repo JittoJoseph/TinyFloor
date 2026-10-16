@@ -767,7 +767,7 @@
           },
           {
             "title": "WorkAdventure",
-            "detail": "同时在线 10 人以内免费 · Business 每位用户每月 €8",
+            "detail": "同时在线 10 人以内免费 · Business 每位用户每月 $9",
             "body": "开源的像素风世界，可以自己部署，地图用 Tiled 编辑器制作。适合想完全掌控的技术团队和活动。自己做地图或维护自己的服务器，都需要实打实的工作量。"
           },
           {
@@ -827,7 +827,7 @@
               "WorkAdventure Business",
               "按用户",
               "同时在线最多 10 人",
-              "€80"
+              "年付 $90，月付 $110"
             ],
             [
               "Gather Essential",
@@ -845,7 +845,7 @@
               "Kumospace Business",
               "按用户",
               "最多 5 位成员",
-              "$160"
+              "年付 $160，月付 $200"
             ],
             [
               "Roam",
@@ -1074,7 +1074,7 @@
             "Gather（按年付费）",
             "TinyFloor",
             "SoWork Basic（按年付费）",
-            "Kumospace Business"
+            "Kumospace Business（按年付费）"
           ],
           "rows": [
             [

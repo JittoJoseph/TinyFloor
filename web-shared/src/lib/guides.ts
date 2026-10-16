@@ -27,8 +27,8 @@ export const GUIDES: Guide[] = [
   { slug: "remote-team-communication", key: "remoteCommunication", published: "2026-10-04", updated: "2026-10-04", pages: ["teamChat", "presence", "slackHuddles"] },
   { slug: "what-is-proximity-chat", key: "proximityChat", published: "2026-10-04", updated: "2026-10-04", pages: ["proximityChat", "virtualOffice", "gather"] },
   // Buyers comparing products and prices (docs/search.md). Competitors' prices are checked against their own pages; bump `updated` when they are.
-  { slug: "best-virtual-office-software", key: "bestVirtualOffice", published: "2026-10-07", updated: "2026-10-07", pages: ["virtualOffice", "gather", "kumospace"] },
-  { slug: "gather-pricing", key: "gatherPricing", published: "2026-10-07", updated: "2026-10-15", pages: ["gather", "gatherVsKumospace", "virtualOffice"] },
+  { slug: "best-virtual-office-software", key: "bestVirtualOffice", published: "2026-10-07", updated: "2026-10-16", pages: ["virtualOffice", "gather", "kumospace"] },
+  { slug: "gather-pricing", key: "gatherPricing", published: "2026-10-07", updated: "2026-10-16", pages: ["gather", "gatherVsKumospace", "virtualOffice"] },
 ];
 
 /** The guides' index, and the folder every guide sits in. */

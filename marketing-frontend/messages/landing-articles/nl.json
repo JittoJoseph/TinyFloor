@@ -33,13 +33,13 @@
           ],
           [
             "Kumospace",
-            "$ 128",
+            "$ 128 jaarlijks, $ 160 maandelijks",
             "Tot 5 leden, 1 verdieping",
             "Teams die desktop- en mobiele apps willen"
           ],
           [
             "WorkAdventure",
-            "Vanaf € 64",
+            "$ 72 jaarlijks, $ 88 maandelijks",
             "Tot 10 mensen tegelijk",
             "Teams die een opensource-plattegrond willen"
           ],
@@ -62,7 +62,7 @@
             "Teams die alleen spraakkanalen nodig hebben"
           ]
         ],
-        "note": "Van de prijspagina van elk product in oktober 2026, exclusief belasting. Prijzen per persoon maal 8; het Business-abonnement van WorkAdventure begint bij € 8 per gebruiker."
+        "note": "Van de prijspagina van elk product in oktober 2026, exclusief belasting. Prijzen per persoon maal 8; het Business-abonnement van WorkAdventure begint bij $ 9 per gebruiker."
       }
     },
     {
@@ -92,7 +92,7 @@
         },
         {
           "title": "WorkAdventure",
-          "detail": "Business vanaf € 8 per gebruiker per maand; gratis tot 10 tegelijk",
+          "detail": "Business vanaf $ 9 per gebruiker per maand; gratis tot 10 tegelijk",
           "body": "Nog een kantoor in pixel art, en opensource, dus een technisch team kan de plattegrond aanpassen. Het gratis abonnement telt mensen die tegelijk online zijn, tot 10, niet leden."
         },
         {
@@ -273,7 +273,7 @@
           ],
           [
             "Kumospace Business",
-            "$ 128",
+            "$ 128 jaarlijks",
             "Per gebruiker; gratis voor maximaal 5 leden"
           ]
         ],
@@ -465,6 +465,378 @@
           "detail": "Geen grote overstap",
           "body": "Veel teams houden Discord voor hun community en gebruiken het kantoor voor de werkdag."
         }
+      ]
+    }
+  ],
+  "kumospace": [
+    {
+      "title": "Kumospace en TinyFloor in één oogopslag",
+      "body": [
+        "Het zijn allebei virtuele kantoren waarin je rondloopt. Ze verschillen het meest in hoe ze rekenen en in wat het gratis abonnement bevat."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Kumospace",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Een team van 8, per maand",
+            "$ 128 jaarlijks, $ 160 maandelijks (Business)",
+            "$ 29 voor het hele team"
+          ],
+          [
+            "Gratis abonnement",
+            "Tot 5 leden, 1 verdieping, een openbare space",
+            "Tot 3 mensen, alle functies"
+          ],
+          [
+            "Hoe het geprijsd is",
+            "Per lid, minimaal 5",
+            "Eén prijs voor het kantoor"
+          ],
+          [
+            "Gasten",
+            "50, elk tot 4 uur per week",
+            "Iedereen komt binnen met een gratis account"
+          ],
+          [
+            "Het kantoor privé houden",
+            "Wachtwoord- en e-mailcontrole met Business",
+            "Privé op elk abonnement"
+          ],
+          [
+            "Apps",
+            "Browser, desktop- en mobiele apps",
+            "De browser, op desktop en mobiel"
+          ],
+          [
+            "Opnames",
+            "Met Business",
+            "Nee"
+          ],
+          [
+            "Het kantoor inrichten",
+            "Meubels, verdiepingen en activiteiten die je zelf plaatst",
+            "Een kant-en-klaar kantoor"
+          ]
+        ],
+        "note": "Gegevens over Kumospace van de prijspagina in oktober 2026, exclusief belasting."
+      }
+    },
+    {
+      "title": "Wat Kumospace kost per teamgrootte",
+      "body": [
+        "Business rekent voor elk geregistreerd lid, minimaal 5, met $ 16 per lid per maand bij een jaarabonnement of $ 20 per maand."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Kumospace, maandelijks",
+          "Kumospace, jaarlijks, per maand",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 mensen",
+            "$ 100",
+            "$ 80",
+            "$ 29"
+          ],
+          [
+            "8 mensen",
+            "$ 160",
+            "$ 128",
+            "$ 29"
+          ],
+          [
+            "10 mensen",
+            "$ 200",
+            "$ 160",
+            "$ 29"
+          ],
+          [
+            "12 mensen",
+            "$ 240",
+            "$ 192",
+            "$ 29"
+          ]
+        ],
+        "note": "Kumospace Business voor $ 20 per lid maandelijks of $ 16 jaarlijks (prijspagina van Kumospace, oktober 2026). TinyFloor Pro is maandelijks; teams tot 3 blijven gratis."
+      }
+    },
+    {
+      "title": "Waarom kleine teams een alternatief voor Kumospace zoeken",
+      "items": [
+        {
+          "title": "Het gratis abonnement stopt bij 5",
+          "body": "Een zesde persoon betekent iedereen naar Business, en Business rekent minimaal 5 leden. De eerste betaalde maand voor een team van 6 kost dus $ 96 bij een jaarabonnement of $ 120 per maand."
+        },
+        {
+          "title": "Gratis spaces zijn openbaar",
+          "body": "Kumospace noemt het gratis abonnement een openbare space. Bepalen wie binnen mag, met een wachtwoord of via e-mail, komt met Business."
+        },
+        {
+          "title": "Gasten lopen op de klok",
+          "body": "Gasten mogen maximaal 4 uur per week blijven. Een freelancer of klant die elke dag met je werkt, moet een betaald lid worden."
+        },
+        {
+          "title": "Prijs per lid groeit mee met het team",
+          "body": "Elke nieuwe collega kost $ 16 tot $ 20 per maand extra, ook mensen die maar af en toe langskomen."
+        }
+      ]
+    },
+    {
+      "title": "Wat Kumospace beter doet",
+      "items": [
+        {
+          "title": "Spaces die je zelf ontwerpt",
+          "body": "Meubels, vloeren, decoratie en activiteiten zoals spelletjes, whiteboards en YouTube-schermen. Wil je dat het kantoor eruitziet als je merk, dan geeft Kumospace je veel meer mogelijkheden."
+        },
+        {
+          "title": "Opnames",
+          "body": "Business neemt vergaderingen en presentaties op om later te delen. TinyFloor neemt niet op."
+        },
+        {
+          "title": "Desktop- en mobiele apps",
+          "body": "Kumospace heeft apps voor Windows, macOS, iOS en Android naast de browser. TinyFloor werkt alleen in de browser."
+        },
+        {
+          "title": "Ruimte voor grotere organisaties",
+          "body": "Meerdere verdiepingen, gebruikersrollen, onbeperkte chatgeschiedenis en, met Enterprise, single sign-on, een eigen domein en een uptimegarantie."
+        }
+      ]
+    },
+    {
+      "title": "Wat past bij je team",
+      "items": [
+        {
+          "title": "TinyFloor, voor een klein team",
+          "body": "Voor een team van 4 tot 15 dat vooral wil zien wie er is, wil praten zonder afspraak en wil vergaderen in een ruimte, en liever één prijs betaalt dan plekken telt."
+        },
+        {
+          "title": "Kumospace, voor een ontworpen space",
+          "body": "Als je de space wilt ontwerpen in je eigen huisstijl, vergaderingen wilt opnemen of native apps wilt gebruiken, of als een groter bedrijf single sign-on en statistieken nodig heeft."
+        },
+        {
+          "title": "Kumospace gratis, voor 5 of minder",
+          "body": "Als een openbare space prima is en niemand meer dan 4 uur per week als gast hoeft langs te komen, is het gratis abonnement misschien genoeg."
+        }
+      ]
+    },
+    {
+      "title": "Een team overzetten vanaf Kumospace",
+      "items": [
+        {
+          "title": "Maak een kantoor",
+          "detail": "Twee minuten",
+          "body": "Noem het naar het team. De vloer, de bureaus en de vergaderruimte staan klaar; er valt niets opnieuw te bouwen."
+        },
+        {
+          "title": "Deel één uitnodigingslink",
+          "detail": "In de teamchat",
+          "body": "Collega's loggen in met Google of e-mail en lopen binnen vanuit de browser, op een laptop of telefoon."
+        },
+        {
+          "title": "Werk er een gewone week",
+          "detail": "De standup in de vergaderruimte",
+          "body": "Houd Kumospace tot de week voorbij is en kijk dan welke het team echt opende."
+        }
+      ]
+    },
+    {
+      "title": "Hoe we vergeleken",
+      "body": [
+        "De prijzen, grenzen en functies van Kumospace komen van de prijspagina, gelezen in oktober 2026, in Amerikaanse dollars exclusief belasting. Wat daar niet stond, lieten we weg in plaats van te gokken. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van Kumospace voordat je koopt."
+      ]
+    }
+  ],
+  "workadventure": [
+    {
+      "title": "WorkAdventure en TinyFloor in één oogopslag",
+      "body": [
+        "Het zijn allebei kantoren in pixel art in de browser waar je naar mensen toe loopt om te praten. WorkAdventure is gemaakt om naar eigen wens in te richten en te hosten; TinyFloor om klaar te staan zodra je het opent."
+      ],
+      "table": {
+        "head": [
+          "",
+          "WorkAdventure",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Een team van 8, per maand",
+            "Gratis in openbare ruimtes; Business $ 72 jaarlijks, $ 88 maandelijks",
+            "$ 29 voor het hele team"
+          ],
+          [
+            "Gratis abonnement",
+            "Tot 10 mensen tegelijk, zonder tijdslimiet",
+            "Tot 3 mensen, alle functies"
+          ],
+          [
+            "Hoe het geprijsd is",
+            "Per gebruiker, naar hoeveel er tegelijk online kunnen zijn",
+            "Eén prijs voor het kantoor"
+          ],
+          [
+            "Het kantoor privé houden",
+            "Gratis ruimtes zijn openbaar; leden en e-mailbeperking op betaalde abonnementen",
+            "Privé op elk abonnement"
+          ],
+          [
+            "De plattegrond",
+            "Sjablonen en een kaarteditor",
+            "Een kant-en-klaar kantoor"
+          ],
+          [
+            "Hosting",
+            "Gehost, of op je eigen servers",
+            "Gehost"
+          ],
+          [
+            "Opnames",
+            "Op betaalde abonnementen",
+            "Nee"
+          ],
+          [
+            "Integraties",
+            "Microsoft Teams, Outlook, Google Agenda, Google Meet op betaalde abonnementen",
+            "Geen"
+          ]
+        ],
+        "note": "Gegevens over WorkAdventure van de prijspagina in oktober 2026, in Amerikaanse dollars exclusief belasting."
+      }
+    },
+    {
+      "title": "Wat WorkAdventure kost per teamgrootte",
+      "body": [
+        "Business rekent per gebruiker voor het aantal mensen dat tegelijk verbonden kan zijn: $ 9 per gebruiker per maand bij een jaarabonnement of $ 11 per maand. Het gratis abonnement dekt tot 10 tegelijk, met openbare ruimtes."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "WorkAdventure Business, maandelijks",
+          "WorkAdventure Business, jaarlijks, per maand",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 mensen",
+            "$ 55",
+            "$ 45",
+            "$ 29"
+          ],
+          [
+            "8 mensen",
+            "$ 88",
+            "$ 72",
+            "$ 29"
+          ],
+          [
+            "10 mensen",
+            "$ 110",
+            "$ 90",
+            "$ 29"
+          ],
+          [
+            "12 mensen",
+            "$ 132",
+            "$ 108",
+            "$ 29"
+          ]
+        ],
+        "note": "WorkAdventure Business voor $ 11 per gebruiker maandelijks of $ 9 jaarlijks, voor iedereen die tegelijk online is (prijspagina van WorkAdventure, oktober 2026). TinyFloor Pro is maandelijks; teams tot 3 blijven gratis."
+      }
+    },
+    {
+      "title": "Waarom kleine teams een alternatief voor WorkAdventure zoeken",
+      "items": [
+        {
+          "title": "Gratis ruimtes zijn openbaar",
+          "body": "WorkAdventure schrijft dat de ruimtes van het gratis abonnement open zijn voor iedereen met de link. Leden, rollen en toegang beperken tot bepaalde e-mailadressen komen met de betaalde abonnementen."
+        },
+        {
+          "title": "Eerst een wereld bouwen",
+          "body": "Sjablonen helpen op weg, maar de plattegrond richt je zelf in, en een eigen ontwerp is vaak werk voor een ontwerper. Sommige teams willen gewoon binnenlopen."
+        },
+        {
+          "title": "Zelf hosten is een project",
+          "body": "WorkAdventure op je eigen servers draaien geeft volledige controle, maar betekent ook dat iemand in het team het draaiende en bijgewerkt houdt."
+        },
+        {
+          "title": "Betalen voor capaciteit",
+          "body": "Business wordt berekend op hoeveel mensen tegelijk online kunnen zijn: je kiest een aantal, betaalt dat en past het aan als het team groeit."
+        }
+      ]
+    },
+    {
+      "title": "Wat WorkAdventure beter doet",
+      "items": [
+        {
+          "title": "Een eigen wereld",
+          "body": "Een kaarteditor, sjablonen, eigen bureaus en avatars, en een ontwerpteam dat je kunt inhuren voor een eigen plattegrond. TinyFloor heeft één kant-en-klaar kantoor."
+        },
+        {
+          "title": "Opensource en zelf hosten",
+          "body": "Je kunt het op je eigen servers of in een private cloud draaien en je gegevens daar houden. TinyFloor is alleen gehost."
+        },
+        {
+          "title": "Evenementen en conferenties",
+          "body": "Sprekerszones waar alleen de spreker te horen is, dagprijzen voor losse evenementen, opnames en livestreams naar YouTube."
+        },
+        {
+          "title": "Integraties",
+          "body": "Betaalde abonnementen koppelen Microsoft Teams, Outlook, Google Agenda en Google Meet, en er zijn AI-bots en webhooks."
+        },
+        {
+          "title": "Een groter gratis abonnement",
+          "body": "Tien mensen tegelijk, zonder tijdslimiet, is een van de ruimste gratis abonnementen van de virtuele kantoren die we vergeleken, als openbare ruimtes voor jou prima zijn."
+        }
+      ]
+    },
+    {
+      "title": "Wat past bij je team",
+      "items": [
+        {
+          "title": "TinyFloor, voor een kant-en-klaar kantoor",
+          "body": "Voor een team van 4 tot 15 dat vandaag een privékantoor wil openen, met bureaus, een vergaderruimte en chat, voor één prijs in plaats van een aantal plekken."
+        },
+        {
+          "title": "WorkAdventure, voor een eigen wereld",
+          "body": "Als je de ruimte wilt ontwerpen, zelf wilt hosten, er evenementen in wilt houden of hem wilt koppelen aan Microsoft Teams of Google Agenda."
+        },
+        {
+          "title": "WorkAdventure gratis, voor een open ruimte",
+          "body": "Als openbare ruimtes prima zijn en jullie met hooguit 10 tegelijk online zijn, is het gratis abonnement misschien genoeg."
+        }
+      ]
+    },
+    {
+      "title": "Een team overzetten vanaf WorkAdventure",
+      "items": [
+        {
+          "title": "Maak een kantoor",
+          "detail": "Twee minuten",
+          "body": "Noem het naar het team. De vloer, de bureaus en de vergaderruimte staan klaar; er is geen plattegrond over te zetten."
+        },
+        {
+          "title": "Deel één uitnodigingslink",
+          "detail": "In de teamchat",
+          "body": "Collega's loggen in met Google of e-mail en lopen binnen vanuit de browser, op een laptop of telefoon."
+        },
+        {
+          "title": "Werk er een gewone week",
+          "detail": "De standup in de vergaderruimte",
+          "body": "Houd je WorkAdventure-wereld tot de week voorbij is en kijk dan welke het team echt opende."
+        }
+      ]
+    },
+    {
+      "title": "Hoe we vergeleken",
+      "body": [
+        "De prijzen, grenzen en functies van WorkAdventure komen van de prijspagina en de veelgestelde vragen over prijzen, gelezen in oktober 2026, in Amerikaanse dollars exclusief belasting. Wat daar niet stond, lieten we weg in plaats van te gokken. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van WorkAdventure voordat je koopt."
       ]
     }
   ]

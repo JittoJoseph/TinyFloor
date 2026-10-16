@@ -3,15 +3,12 @@
 What we know is missing or behind, so it isn't forgotten. Not a log of what
 was built: when an item is done, delete it.
 
-## Content missing in some languages
+## Adding a page in every language
 
-The Gather pricing guide, the Gather round-up, the virtual office page and
-Discord for work are in all 18 languages. A language without a page's deeper
-version shows the shorter one, never English text under a translated headline.
-
-| Page | Deeper version in | Still the shorter version in | Where the text lives |
-|---|---|---|---|
-| `/tools/icebreaker-questions` | en only, by design for now | every other language's copy points search engines at the English page | `marketing-frontend/src/lib/tools/icebreakers.ts` |
+Nothing is missing in any language today. A language without a page's deeper
+version shows the shorter one, never English text under a translated headline;
+the icebreaker lists are typed per locale, so a new language fails the
+typecheck until it has one.
 
 When a new article is translated, its table rows need the language's own
 number format (`1.152 $`, `1 152 $`, `$1,152`, `US$ 1.152`), as the existing

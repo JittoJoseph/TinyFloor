@@ -40,7 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ),
     // The legal pages are in English only; the other languages' copies point here.
     ...['/privacy', '/terms', '/refunds'].map((path) => ({ url: absolute(path), changeFrequency: 'yearly' as const, priority: 0.3 })),
-    // So are the free tools.
-    { url: absolute(ICEBREAKERS_PATH), changeFrequency: 'monthly' as const, priority: 0.6 },
+    // The free tools, in every language.
+    ...localeCodes.map((locale) => ({ url: absolute(localePath(locale, ICEBREAKERS_PATH)), changeFrequency: 'monthly' as const, priority: 0.6 })),
   ];
 }

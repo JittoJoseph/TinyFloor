@@ -2329,5 +2329,128 @@
         }
       ]
     }
+  ],
+  "onboarding": [
+    {
+      "title": "En ny persons første dag i etasjen",
+      "body": [
+        "I et fjernteam ser ingen at noen nye har begynt. I etasjen gjør de det: Det sitter et nytt navn ved en pult, og teamet er noen skritt unna."
+      ],
+      "items": [
+        {
+          "title": "Åpne invitasjonslenken",
+          "detail": "9:00",
+          "body": "Én lenke for hele kontoret. Logg inn med Google eller en e-postadresse, i nettleseren, uten å installere noe."
+        },
+        {
+          "title": "Velg en pult",
+          "detail": "9:05",
+          "body": "Du dukker opp ved siden av en ledig pult. Sett deg og gjør den til din; etter det sitter ingen andre der."
+        },
+        {
+          "title": "Få et vink",
+          "detail": "9:05",
+          "body": "Alle som allerede er i etasjen, ser deg komme inn og kan vinke. En liten ting som viser den nye at noen har lagt merke til dem."
+        },
+        {
+          "title": "Si hei på standupen",
+          "detail": "10:00",
+          "body": "Gå inn i møterommet med alle de andre. Ett minutt til å presentere deg, så har teamet møtt deg."
+        },
+        {
+          "title": "Sitt med fadderen din",
+          "detail": "11:00",
+          "body": "Gå bort til fadderens pult, del en skjerm og løs den første oppgaven sammen."
+        }
+      ]
+    },
+    {
+      "title": "En første uke som fungerer",
+      "body": [
+        "Små steg, de samme menneskene og noen å spørre. Slik ser en uke ut som mange små team bruker:"
+      ],
+      "table": {
+        "head": [
+          "Dag",
+          "Hva som skjer",
+          "I etasjen"
+        ],
+        "rows": [
+          [
+            "Mandag",
+            "Kontoer og oppsett, møte teamet, en første liten oppgave med fadderen.",
+            "Presentasjon på standupen, deretter mesteparten av dagen ved fadderens pult."
+          ],
+          [
+            "Tirsdag",
+            "Gjøre ferdig den første oppgaven. Korte prater med to eller tre personer fra andre deler av arbeidet.",
+            "Gå bort til hver av dem i et kvarter."
+          ],
+          [
+            "Onsdag",
+            "En ny oppgave, mer på egen hånd. Spørsmål etter hvert som de dukker opp.",
+            "Status tilgjengelig, og kolleger som vet at de kan få besøk."
+          ],
+          [
+            "Torsdag",
+            "Sitte med på en gjennomgang, en planlegging eller en kundesamtale.",
+            "Bli med i et møte i møterommet; å lytte teller."
+          ],
+          [
+            "Fredag",
+            "En samtale med lederen: hva som er klart, hva som ikke er det, hva som kommer.",
+            "En samtale ved lederens pult."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Hva fjern-onboarding vanligvis mangler",
+      "items": [
+        {
+          "title": "Å vite hvem man skal spørre",
+          "body": "På et kontor lærer du hvem som kan hva ved å se hvem folk går til. I etasjen ser du det samme: hvem som snakker med hvem, og hvem som er opptatt."
+        },
+        {
+          "title": "Å spørre uten å føle seg i veien",
+          "body": "Å skrive til noen man aldri har møtt, føles stort. Å gå bort til en tilgjengelig person er som å lene seg over til nabopulten på kontoret."
+        },
+        {
+          "title": "Å bli sett mens man jobber",
+          "body": "En ny ved en pult er synlig en del av teamet fra første dag, i stedet for et navn i en kanal."
+        },
+        {
+          "title": "Å få med seg hvordan teamet jobber",
+          "body": "Å sitte med på et møte eller to lærer deg mer om hvordan beslutninger tas, enn noe dokument."
+        }
+      ]
+    },
+    {
+      "title": "Slik fungerer fadderordningen på avstand",
+      "items": [
+        {
+          "title": "Velg noen nær arbeidet",
+          "body": "Ikke lederen, og ikke den travleste i teamet. Noen som gjør lignende arbeid og har tid til spørsmål."
+        },
+        {
+          "title": "Sett av tid de to første dagene",
+          "body": "Mesteparten av mandagen og litt av tirsdagen sammen, med delt skjerm. Etter det kommer den nye bort når det trengs."
+        },
+        {
+          "title": "Ta det første besøket selv",
+          "body": "Fadderen går bort først, på første dag. Det viser den nye at det er vanlig å gå bort til folk her."
+        },
+        {
+          "title": "Ha en kanal for spørsmål",
+          "body": "En kanal i teamchatten for spørsmål ingen skal føle seg dumme for å stille. Meldingene blir liggende, så den neste nye kan lese svarene."
+        }
+      ]
+    },
+    {
+      "title": "Hva TinyFloor ikke gjør for onboarding",
+      "body": [
+        "Det er ikke et HR-verktøy. Det finnes ingen onboarding-sjekklister, ingen dokumentsignering, ingen kontooppretting og ingen single sign-on. Ha håndboka i dokumentverktøyet deres og kontoene i adminverktøyene; TinyFloor er der den nye møter teamet og får hjelp. Å invitere krever én lenke, og et minutt senere kan de sitte ved en pult."
+      ]
+    }
   ]
 }

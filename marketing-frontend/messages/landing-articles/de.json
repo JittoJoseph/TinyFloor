@@ -2329,5 +2329,128 @@
         }
       ]
     }
+  ],
+  "onboarding": [
+    {
+      "title": "Der erste Tag einer neuen Person auf der Fläche",
+      "body": [
+        "In einem Remote-Team sieht niemand, dass jemand Neues angefangen hat. Auf der Fläche schon: Da sitzt ein neuer Name an einem Schreibtisch, und das Team ist ein paar Schritte entfernt."
+      ],
+      "items": [
+        {
+          "title": "Den Einladungslink öffnen",
+          "detail": "9:00",
+          "body": "Ein Link für das ganze Büro. Anmelden mit Google oder einer E-Mail-Adresse, im Browser, ohne etwas zu installieren."
+        },
+        {
+          "title": "Einen Schreibtisch wählen",
+          "detail": "9:05",
+          "body": "Du kommst neben einem freien Schreibtisch an. Setz dich und mach ihn zu deinem; ab dann sitzt dort niemand anderes."
+        },
+        {
+          "title": "Gewunken bekommen",
+          "detail": "9:05",
+          "body": "Alle, die schon auf der Fläche sind, sehen dich hereinkommen und können winken. Eine Kleinigkeit, die der neuen Person zeigt, dass man sie bemerkt hat."
+        },
+        {
+          "title": "Beim Standup Hallo sagen",
+          "detail": "10:00",
+          "body": "Geh mit allen anderen in den Besprechungsraum. Eine Minute, um dich vorzustellen, und das Team kennt dich."
+        },
+        {
+          "title": "Beim Buddy sitzen",
+          "detail": "11:00",
+          "body": "Geh zum Schreibtisch deines Buddys, teilt einen Bildschirm und arbeitet die erste Aufgabe gemeinsam durch."
+        }
+      ]
+    },
+    {
+      "title": "Eine erste Woche, die funktioniert",
+      "body": [
+        "Kleine Schritte, dieselben Leute und jemand, den man fragen kann. So sieht eine Woche aus, die viele kleine Teams nutzen:"
+      ],
+      "table": {
+        "head": [
+          "Tag",
+          "Was passiert",
+          "Auf der Fläche"
+        ],
+        "rows": [
+          [
+            "Montag",
+            "Zugänge und Einrichtung, das Team kennenlernen, eine erste kleine Aufgabe mit dem Buddy.",
+            "Vorstellung beim Standup, dann den Großteil des Tages am Schreibtisch des Buddys."
+          ],
+          [
+            "Dienstag",
+            "Die erste Aufgabe abschließen. Kurze Gespräche mit zwei, drei Leuten aus anderen Bereichen.",
+            "Für eine Viertelstunde zu jeder dieser Personen gehen."
+          ],
+          [
+            "Mittwoch",
+            "Eine zweite Aufgabe, eher allein. Fragen, wann immer sie kommen.",
+            "Status verfügbar, und Kolleginnen und Kollegen, die mit Besuch rechnen."
+          ],
+          [
+            "Donnerstag",
+            "Bei einem Review, einer Planung oder einem Kundengespräch dabei sein.",
+            "Einem Meeting im Besprechungsraum beitreten; Zuhören zählt."
+          ],
+          [
+            "Freitag",
+            "Ein Gespräch mit der Führungskraft: was klar ist, was nicht, was als Nächstes kommt.",
+            "Ein Call am Schreibtisch der Führungskraft."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Was beim Remote-Onboarding meistens fehlt",
+      "items": [
+        {
+          "title": "Wissen, wen man fragt",
+          "body": "Im Büro lernst du, wer was weiß, indem du siehst, zu wem die Leute gehen. Auf der Fläche siehst du dasselbe: wer mit wem redet und wer beschäftigt ist."
+        },
+        {
+          "title": "Fragen, ohne sich wie eine Störung zu fühlen",
+          "body": "Jemandem zu schreiben, den man noch nie getroffen hat, fühlt sich groß an. Zu einer verfügbaren Person zu gehen ist wie im Büro kurz rüberzulehnen."
+        },
+        {
+          "title": "Beim Arbeiten gesehen werden",
+          "body": "Eine neue Person an einem Schreibtisch gehört vom ersten Tag an sichtbar zum Team, statt nur ein Name in einem Kanal zu sein."
+        },
+        {
+          "title": "Mitbekommen, wie das Team arbeitet",
+          "body": "Bei ein, zwei Meetings dabei zu sein, zeigt mehr darüber, wie Entscheidungen fallen, als jedes Dokument."
+        }
+      ]
+    },
+    {
+      "title": "Damit das Buddy-System remote funktioniert",
+      "items": [
+        {
+          "title": "Jemanden nah an der Arbeit wählen",
+          "body": "Nicht die Führungskraft und nicht die beschäftigtste Person im Team. Jemanden, der Ähnliches macht und Zeit für Fragen hat."
+        },
+        {
+          "title": "Die ersten zwei Tage Zeit einplanen",
+          "body": "Den größten Teil des Montags und einen Teil des Dienstags zusammen, mit geteiltem Bildschirm. Danach kommt die neue Person vorbei, wenn sie etwas braucht."
+        },
+        {
+          "title": "Den ersten Besuch selbst machen",
+          "body": "Der Buddy geht am ersten Tag zuerst hin. Das zeigt der neuen Person, dass Hingehen hier normal ist."
+        },
+        {
+          "title": "Einen Kanal für Fragen haben",
+          "body": "Ein Kanal im Team-Chat für Fragen, bei denen sich niemand albern fühlen soll. Nachrichten bleiben, die nächste neue Person kann die Antworten also nachlesen."
+        }
+      ]
+    },
+    {
+      "title": "Was TinyFloor beim Onboarding nicht macht",
+      "body": [
+        "Es ist kein HR-Tool. Es gibt keine Onboarding-Checklisten, keine Dokumentensignatur, keine Kontoeinrichtung und kein Single Sign-on. Behaltet euer Handbuch in eurem Dokumententool und die Konten in euren Admin-Tools; TinyFloor ist der Ort, an dem die neue Person das Team trifft und Hilfe bekommt. Einladen braucht einen Link, und eine Minute später kann sie an einem Schreibtisch sitzen."
+      ]
+    }
   ]
 }

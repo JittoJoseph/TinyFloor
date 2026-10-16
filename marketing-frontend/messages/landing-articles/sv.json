@@ -2329,5 +2329,128 @@
         }
       ]
     }
+  ],
+  "onboarding": [
+    {
+      "title": "En ny persons första dag på våningen",
+      "body": [
+        "I ett distansteam ser ingen att någon ny har börjat. På våningen syns det: det sitter ett nytt namn vid ett skrivbord, och teamet är några steg bort."
+      ],
+      "items": [
+        {
+          "title": "Öppna inbjudningslänken",
+          "detail": "9:00",
+          "body": "En länk för hela kontoret. Logga in med Google eller en e-postadress, i webbläsaren, utan att installera något."
+        },
+        {
+          "title": "Välj ett skrivbord",
+          "detail": "9:05",
+          "body": "Du dyker upp bredvid ett ledigt skrivbord. Sätt dig och gör det till ditt; sedan sitter ingen annan där."
+        },
+        {
+          "title": "Få en vinkning",
+          "detail": "9:05",
+          "body": "Alla som redan är på våningen ser dig komma in och kan vinka. En liten sak som visar den nya personen att någon har märkt hen."
+        },
+        {
+          "title": "Säg hej på standupen",
+          "detail": "10:00",
+          "body": "Gå in i mötesrummet med alla andra. En minut för att presentera dig, så har teamet träffat dig."
+        },
+        {
+          "title": "Sitt med din fadder",
+          "detail": "11:00",
+          "body": "Gå till din fadders skrivbord, dela en skärm och gör den första uppgiften tillsammans."
+        }
+      ]
+    },
+    {
+      "title": "En första vecka som fungerar",
+      "body": [
+        "Små steg, samma personer och någon att fråga. Så här ser en vecka ut som många små team använder:"
+      ],
+      "table": {
+        "head": [
+          "Dag",
+          "Vad som händer",
+          "På våningen"
+        ],
+        "rows": [
+          [
+            "Måndag",
+            "Konton och installation, träffa teamet, en första liten uppgift med faddern.",
+            "Presentation på standupen, sedan större delen av dagen vid fadderns skrivbord."
+          ],
+          [
+            "Tisdag",
+            "Göra klart den första uppgiften. Korta samtal med två eller tre personer från andra delar av arbetet.",
+            "Gå till var och en av dem en kvart."
+          ],
+          [
+            "Onsdag",
+            "En andra uppgift, mer på egen hand. Frågor allteftersom de dyker upp.",
+            "Status tillgänglig, och kollegor som vet att de kan få besök."
+          ],
+          [
+            "Torsdag",
+            "Sitta med på en granskning, en planering eller ett kundsamtal.",
+            "Gå med i ett möte i mötesrummet; att lyssna räknas."
+          ],
+          [
+            "Fredag",
+            "Ett avstämningssamtal med chefen: vad som är tydligt, vad som inte är det, vad som kommer härnäst.",
+            "Ett samtal vid chefens skrivbord."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Vad distansintroduktion ofta missar",
+      "items": [
+        {
+          "title": "Att veta vem man ska fråga",
+          "body": "På ett kontor lär du dig vem som kan vad genom att se vem folk går till. På våningen ser du samma sak: vem som pratar med vem, och vem som är upptagen."
+        },
+        {
+          "title": "Att fråga utan att känna sig i vägen",
+          "body": "Att skriva till någon man aldrig träffat känns stort. Att gå fram till en tillgänglig person är som att luta sig mot grannskrivbordet på kontoret."
+        },
+        {
+          "title": "Att synas när man jobbar",
+          "body": "En ny person vid ett skrivbord är synligt en del av teamet från första dagen, i stället för ett namn i en kanal."
+        },
+        {
+          "title": "Att uppfatta hur teamet arbetar",
+          "body": "Att sitta med på ett eller två möten lär mer om hur beslut fattas än något dokument."
+        }
+      ]
+    },
+    {
+      "title": "Så fungerar faddersystemet på distans",
+      "items": [
+        {
+          "title": "Välj någon nära arbetet",
+          "body": "Inte chefen, och inte den mest upptagna i teamet. Någon som gör liknande arbete och har tid för frågor."
+        },
+        {
+          "title": "Avsätt tid de två första dagarna",
+          "body": "Större delen av måndagen och en del av tisdagen tillsammans, med delad skärm. Sedan går den nya personen dit när hen behöver."
+        },
+        {
+          "title": "Gör det första besöket själv",
+          "body": "Faddern går dit först, första dagen. Det visar den nya personen att det är normalt att gå fram här."
+        },
+        {
+          "title": "Ha en kanal för frågor",
+          "body": "En kanal i teamchatten för frågor som ingen ska behöva känna sig dum för. Meddelandena finns kvar, så nästa nya person kan läsa svaren."
+        }
+      ]
+    },
+    {
+      "title": "Vad TinyFloor inte gör för introduktionen",
+      "body": [
+        "Det är inget HR-verktyg. Det finns inga introduktionschecklistor, ingen dokumentsignering, ingen kontohantering och ingen enkel inloggning. Ha handboken i ert dokumentverktyg och kontona i era administrationsverktyg; TinyFloor är där den nya personen träffar teamet och får hjälp. Att bjuda in tar en länk, och en minut senare kan hen sitta vid ett skrivbord."
+      ]
+    }
   ]
 }

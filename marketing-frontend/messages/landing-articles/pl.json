@@ -2329,5 +2329,128 @@
         }
       ]
     }
+  ],
+  "onboarding": [
+    {
+      "title": "Pierwszy dzień nowej osoby na piętrze",
+      "body": [
+        "W zespole zdalnym nikt nie widzi, że ktoś nowy zaczął pracę. Na piętrze widać: przy biurku pojawia się nowe imię, a zespół jest kilka kroków dalej."
+      ],
+      "items": [
+        {
+          "title": "Otwórz link z zaproszeniem",
+          "detail": "9:00",
+          "body": "Jeden link dla całego biura. Logowanie przez Google albo adres e-mail, w przeglądarce, bez instalowania czegokolwiek."
+        },
+        {
+          "title": "Wybierz biurko",
+          "detail": "9:05",
+          "body": "Pojawiasz się obok wolnego biurka. Usiądź i zrób z niego swoje; od tej pory nikt inny tam nie siada."
+        },
+        {
+          "title": "Dostań pomachanie",
+          "detail": "9:05",
+          "body": "Wszyscy, którzy są już na piętrze, widzą, jak wchodzisz, i mogą pomachać. Drobiazg, który pokazuje nowej osobie, że ją zauważono."
+        },
+        {
+          "title": "Przywitaj się na stand-upie",
+          "detail": "10:00",
+          "body": "Wejdź do sali spotkań razem z innymi. Minuta, żeby się przedstawić, i zespół już cię zna."
+        },
+        {
+          "title": "Usiądź ze swoim opiekunem",
+          "detail": "11:00",
+          "body": "Podejdź do biurka opiekuna, udostępnijcie ekran i zróbcie razem pierwsze zadanie."
+        }
+      ]
+    },
+    {
+      "title": "Pierwszy tydzień, który działa",
+      "body": [
+        "Małe kroki, te same osoby i ktoś, kogo można zapytać. Oto tydzień, z którego korzysta wiele małych zespołów:"
+      ],
+      "table": {
+        "head": [
+          "Dzień",
+          "Co się dzieje",
+          "Na piętrze"
+        ],
+        "rows": [
+          [
+            "Poniedziałek",
+            "Konta i konfiguracja, poznanie zespołu, pierwsze małe zadanie z opiekunem.",
+            "Przedstawienie się na stand-upie, potem większość dnia przy biurku opiekuna."
+          ],
+          [
+            "Wtorek",
+            "Dokończenie pierwszego zadania. Krótkie rozmowy z dwiema, trzema osobami z innych obszarów pracy.",
+            "Podejście do każdej z nich na kwadrans."
+          ],
+          [
+            "Środa",
+            "Drugie zadanie, bardziej samodzielnie. Pytania na bieżąco.",
+            "Status dostępny i współpracownicy, którzy spodziewają się odwiedzin."
+          ],
+          [
+            "Czwartek",
+            "Udział w przeglądzie, planowaniu albo rozmowie z klientem.",
+            "Dołączenie do spotkania w sali spotkań; słuchanie też się liczy."
+          ],
+          [
+            "Piątek",
+            "Rozmowa z przełożonym: co jest jasne, co nie, co dalej.",
+            "Rozmowa przy biurku przełożonego."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Czego zwykle brakuje we wdrażaniu zdalnym",
+      "items": [
+        {
+          "title": "Wiedzy, kogo pytać",
+          "body": "W biurze uczysz się, kto co wie, patrząc, do kogo chodzą ludzie. Na piętrze widzisz to samo: kto z kim rozmawia i kto jest zajęty."
+        },
+        {
+          "title": "Pytania bez poczucia, że się przeszkadza",
+          "body": "Napisanie do kogoś, kogo nigdy się nie spotkało, to dużo. Podejście do dostępnej osoby jest jak nachylenie się do sąsiedniego biurka w biurze."
+        },
+        {
+          "title": "Bycia widzianym przy pracy",
+          "body": "Nowa osoba przy biurku od pierwszego dnia widocznie należy do zespołu, zamiast być imieniem na kanale."
+        },
+        {
+          "title": "Słyszenia, jak pracuje zespół",
+          "body": "Udział w jednym czy dwóch spotkaniach uczy więcej o tym, jak zapadają decyzje, niż jakikolwiek dokument."
+        }
+      ]
+    },
+    {
+      "title": "Jak sprawić, by opiekun działał zdalnie",
+      "items": [
+        {
+          "title": "Wybierz kogoś blisko pracy",
+          "body": "Nie przełożonego i nie najbardziej zajętą osobę w zespole. Kogoś, kto robi podobną pracę i ma czas na pytania."
+        },
+        {
+          "title": "Zarezerwuj czas na pierwsze dwa dni",
+          "body": "Większość poniedziałku i część wtorku razem, przy udostępnionym ekranie. Potem nowa osoba podchodzi, kiedy czegoś potrzebuje."
+        },
+        {
+          "title": "Złóż pierwszą wizytę za nią",
+          "body": "Opiekun podchodzi pierwszy, pierwszego dnia. To pokazuje nowej osobie, że podchodzenie jest tu normalne."
+        },
+        {
+          "title": "Miej kanał na pytania",
+          "body": "Kanał na czacie zespołu na pytania, których nikt nie powinien się wstydzić. Wiadomości zostają, więc następna nowa osoba może przeczytać odpowiedzi."
+        }
+      ]
+    },
+    {
+      "title": "Czego TinyFloor nie robi przy wdrażaniu",
+      "body": [
+        "To nie jest narzędzie HR. Nie ma list kontrolnych wdrożenia, podpisywania dokumentów, zakładania kont ani logowania jednokrotnego. Trzymajcie podręcznik w narzędziu do dokumentacji, a konta w narzędziach administracyjnych; TinyFloor to miejsce, gdzie nowa osoba poznaje zespół i dostaje pomoc. Zaproszenie to jeden link, a minutę później może siedzieć przy biurku."
+      ]
+    }
   ]
 }

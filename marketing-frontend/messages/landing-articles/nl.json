@@ -2329,5 +2329,128 @@
         }
       ]
     }
+  ],
+  "onboarding": [
+    {
+      "title": "De eerste dag van een nieuwe collega op de verdieping",
+      "body": [
+        "In een remote team ziet niemand dat er iemand nieuw is begonnen. Op de verdieping wel: er staat een nieuwe naam bij een bureau, en het team is een paar stappen verderop."
+      ],
+      "items": [
+        {
+          "title": "De uitnodigingslink openen",
+          "detail": "9:00",
+          "body": "Eén link voor het hele kantoor. Inloggen met Google of een e-mailadres, in de browser, zonder iets te installeren."
+        },
+        {
+          "title": "Een bureau kiezen",
+          "detail": "9:05",
+          "body": "Je komt aan naast een vrij bureau. Ga zitten en maak het van jou; vanaf dan zit niemand anders daar."
+        },
+        {
+          "title": "Een zwaai krijgen",
+          "detail": "9:05",
+          "body": "Iedereen die al op de verdieping is, ziet je binnenkomen en kan zwaaien. Een kleinigheid die de nieuwe collega laat merken dat die gezien is."
+        },
+        {
+          "title": "Hallo zeggen bij de standup",
+          "detail": "10:00",
+          "body": "Loop met iedereen de vergaderruimte in. Eén minuut om jezelf voor te stellen, en het team kent je."
+        },
+        {
+          "title": "Bij je buddy zitten",
+          "detail": "11:00",
+          "body": "Loop naar het bureau van je buddy, deel een scherm en werk de eerste taak samen door."
+        }
+      ]
+    },
+    {
+      "title": "Een eerste week die werkt",
+      "body": [
+        "Kleine stappen, dezelfde mensen en iemand aan wie je iets kunt vragen. Dit is een week die veel kleine teams gebruiken:"
+      ],
+      "table": {
+        "head": [
+          "Dag",
+          "Wat er gebeurt",
+          "Op de verdieping"
+        ],
+        "rows": [
+          [
+            "Maandag",
+            "Accounts en installatie, het team leren kennen, een eerste kleine taak met de buddy.",
+            "Voorstellen bij de standup, daarna het grootste deel van de dag bij het bureau van de buddy."
+          ],
+          [
+            "Dinsdag",
+            "De eerste taak afmaken. Korte gesprekken met twee of drie mensen uit andere delen van het werk.",
+            "Een kwartiertje naar elk van hen toe lopen."
+          ],
+          [
+            "Woensdag",
+            "Een tweede taak, meer zelfstandig. Vragen zodra ze opkomen.",
+            "Status beschikbaar, en collega's die weten dat er bezoek kan komen."
+          ],
+          [
+            "Donderdag",
+            "Aanschuiven bij een review, een planning of een klantgesprek.",
+            "Een meeting in de vergaderruimte bijwonen; luisteren telt."
+          ],
+          [
+            "Vrijdag",
+            "Een gesprek met de leidinggevende: wat duidelijk is, wat niet, wat er komt.",
+            "Een gesprek bij het bureau van de leidinggevende."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Wat remote onboarding meestal mist",
+      "items": [
+        {
+          "title": "Weten wie je moet vragen",
+          "body": "Op kantoor leer je wie wat weet door te zien naar wie mensen toe gaan. Op de verdieping zie je hetzelfde: wie met wie praat, en wie bezet is."
+        },
+        {
+          "title": "Vragen zonder je een stoorzender te voelen",
+          "body": "Iemand schrijven die je nog nooit hebt ontmoet, voelt groot. Naar een beschikbare collega lopen is hetzelfde als op kantoor even opzij leunen."
+        },
+        {
+          "title": "Gezien worden terwijl je werkt",
+          "body": "Een nieuwe collega aan een bureau hoort vanaf dag één zichtbaar bij het team, in plaats van een naam in een kanaal te zijn."
+        },
+        {
+          "title": "Meekrijgen hoe het team werkt",
+          "body": "Bij een of twee meetings aanschuiven leert meer over hoe beslissingen vallen dan welk document ook."
+        }
+      ]
+    },
+    {
+      "title": "Het buddysysteem remote laten werken",
+      "items": [
+        {
+          "title": "Kies iemand dicht bij het werk",
+          "body": "Niet de leidinggevende, en niet de drukste persoon in het team. Iemand die vergelijkbaar werk doet en tijd heeft voor vragen."
+        },
+        {
+          "title": "Plan tijd op de eerste twee dagen",
+          "body": "Het grootste deel van maandag en een deel van dinsdag samen, met een gedeeld scherm. Daarna loopt de nieuwe collega langs wanneer dat nodig is."
+        },
+        {
+          "title": "Doe het eerste bezoek zelf",
+          "body": "De buddy loopt op dag één als eerste langs. Zo ziet de nieuwe collega dat langslopen hier normaal is."
+        },
+        {
+          "title": "Houd een kanaal voor vragen",
+          "body": "Een kanaal in de teamchat voor vragen waar niemand zich dom bij hoeft te voelen. Berichten blijven staan, dus de volgende nieuwe collega kan de antwoorden teruglezen."
+        }
+      ]
+    },
+    {
+      "title": "Wat TinyFloor niet doet voor onboarding",
+      "body": [
+        "Het is geen HR-tool. Er zijn geen onboardingchecklists, geen documenten ondertekenen, geen accounts aanmaken en geen single sign-on. Houd je handboek in je documentatietool en accounts in je beheertools; TinyFloor is waar de nieuwe collega het team ontmoet en hulp krijgt. Uitnodigen kost één link, en een minuut later kan die aan een bureau zitten."
+      ]
+    }
   ]
 }

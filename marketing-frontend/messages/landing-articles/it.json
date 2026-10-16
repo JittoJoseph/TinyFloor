@@ -2329,5 +2329,128 @@
         }
       ]
     }
+  ],
+  "onboarding": [
+    {
+      "title": "Il primo giorno di una persona nuova sul piano",
+      "body": [
+        "In un team remoto nessuno vede che qualcuno di nuovo ha iniziato. Sul piano sì: c'è un nome nuovo a una scrivania, e il team è a pochi passi."
+      ],
+      "items": [
+        {
+          "title": "Aprire il link d'invito",
+          "detail": "9:00",
+          "body": "Un solo link per tutto l'ufficio. Accedi con Google o un indirizzo email, nel browser, senza installare niente."
+        },
+        {
+          "title": "Scegliere una scrivania",
+          "detail": "9:05",
+          "body": "Arrivi accanto a una scrivania libera. Siediti e falla tua; da quel momento nessun altro si siede lì."
+        },
+        {
+          "title": "Ricevere un saluto",
+          "detail": "9:05",
+          "body": "Chi è già sul piano ti vede entrare e può salutarti con la mano. Una piccola cosa che fa capire alla persona nuova di essere stata notata."
+        },
+        {
+          "title": "Salutare allo standup",
+          "detail": "10:00",
+          "body": "Entra nella sala riunioni con tutti gli altri. Un minuto per presentarti, e il team ti conosce."
+        },
+        {
+          "title": "Sedersi con il proprio buddy",
+          "detail": "11:00",
+          "body": "Vai alla scrivania del tuo buddy, condividete uno schermo e affrontate insieme il primo compito."
+        }
+      ]
+    },
+    {
+      "title": "Una prima settimana che funziona",
+      "body": [
+        "Piccoli passi, le stesse persone e qualcuno a cui chiedere. Ecco una settimana che usano molti piccoli team:"
+      ],
+      "table": {
+        "head": [
+          "Giorno",
+          "Cosa succede",
+          "Sul piano"
+        ],
+        "rows": [
+          [
+            "Lunedì",
+            "Account e configurazione, conoscere il team, un primo piccolo compito con il buddy.",
+            "Presentazione allo standup, poi quasi tutta la giornata alla scrivania del buddy."
+          ],
+          [
+            "Martedì",
+            "Finire il primo compito. Brevi chiacchierate con due o tre persone di altre parti del lavoro.",
+            "Andare da ciascuna per un quarto d'ora."
+          ],
+          [
+            "Mercoledì",
+            "Un secondo compito, più in autonomia. Domande man mano che arrivano.",
+            "Stato disponibile, e colleghi che sanno di aspettarsi visite."
+          ],
+          [
+            "Giovedì",
+            "Assistere a una revisione, una pianificazione o una chiamata con un cliente.",
+            "Entrare in una riunione nella sala riunioni; ascoltare conta."
+          ],
+          [
+            "Venerdì",
+            "Un confronto con il proprio responsabile: cosa è chiaro, cosa no, cosa viene dopo.",
+            "Una chiamata alla scrivania del responsabile."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Cosa manca di solito nell'onboarding da remoto",
+      "items": [
+        {
+          "title": "Sapere a chi chiedere",
+          "body": "In ufficio impari chi sa cosa guardando da chi vanno le persone. Sul piano vedi la stessa cosa: chi parla con chi e chi è occupato."
+        },
+        {
+          "title": "Chiedere senza sentirsi di disturbo",
+          "body": "Scrivere a qualcuno che non hai mai incontrato pesa. Avvicinarsi a una persona disponibile è come sporgersi verso la scrivania accanto in ufficio."
+        },
+        {
+          "title": "Essere visti mentre si lavora",
+          "body": "Una persona nuova a una scrivania fa visibilmente parte del team dal primo giorno, invece di essere un nome in un canale."
+        },
+        {
+          "title": "Capire come lavora il team",
+          "body": "Partecipare a una o due riunioni insegna più su come si prendono le decisioni di qualsiasi documento."
+        }
+      ]
+    },
+    {
+      "title": "Far funzionare il buddy da remoto",
+      "items": [
+        {
+          "title": "Scegliere qualcuno vicino al lavoro",
+          "body": "Non il responsabile, e non la persona più occupata del team. Qualcuno che fa un lavoro simile e ha tempo per le domande."
+        },
+        {
+          "title": "Riservare tempo i primi due giorni",
+          "body": "Quasi tutto il lunedì e parte del martedì insieme, condividendo lo schermo. Poi la persona nuova passa quando ne ha bisogno."
+        },
+        {
+          "title": "Fare la prima visita al posto suo",
+          "body": "Il buddy va per primo, il primo giorno. Così la persona nuova vede che avvicinarsi qui è normale."
+        },
+        {
+          "title": "Tenere un canale per le domande",
+          "body": "Un canale nella chat del team per le domande che nessuno dovrebbe vergognarsi di fare. I messaggi restano, così la prossima persona nuova può leggere le risposte."
+        }
+      ]
+    },
+    {
+      "title": "Cosa TinyFloor non fa per l'onboarding",
+      "body": [
+        "Non è uno strumento HR. Non ci sono checklist di onboarding, firma di documenti, creazione di account né single sign-on. Tenete il manuale nel vostro strumento di documentazione e gli account nei vostri strumenti di amministrazione; TinyFloor è il posto dove la persona nuova conosce il team e trova aiuto. Invitarla richiede un link, e un minuto dopo può essere a una scrivania."
+      ]
+    }
   ]
 }

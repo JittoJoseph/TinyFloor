@@ -2329,5 +2329,128 @@
         }
       ]
     }
+  ],
+  "onboarding": [
+    {
+      "title": "En ny persons første dag på etagen",
+      "body": [
+        "I et remote-team kan ingen se, at en ny er startet. På etagen kan de: Der sidder et nyt navn ved et skrivebord, og teamet er få skridt væk."
+      ],
+      "items": [
+        {
+          "title": "Åbn invitationslinket",
+          "detail": "9:00",
+          "body": "Ét link til hele kontoret. Log ind med Google eller en e-mailadresse, i browseren, uden at installere noget."
+        },
+        {
+          "title": "Vælg et skrivebord",
+          "detail": "9:05",
+          "body": "Du dukker op ved siden af et ledigt skrivebord. Sæt dig, og gør det til dit; derefter sidder ingen andre der."
+        },
+        {
+          "title": "Få et vink",
+          "detail": "9:05",
+          "body": "Alle, der allerede er på etagen, ser dig komme ind og kan vinke. En lille ting, der viser den nye, at nogen har lagt mærke til dem."
+        },
+        {
+          "title": "Sig hej til standuppen",
+          "detail": "10:00",
+          "body": "Gå ind i mødelokalet med alle de andre. Et minut til at præsentere dig, og teamet har mødt dig."
+        },
+        {
+          "title": "Sid med din buddy",
+          "detail": "11:00",
+          "body": "Gå hen til din buddys skrivebord, del en skærm, og løs den første opgave sammen."
+        }
+      ]
+    },
+    {
+      "title": "En første uge, der virker",
+      "body": [
+        "Små skridt, de samme mennesker og nogen at spørge. Sådan ser en uge ud, som mange små teams bruger:"
+      ],
+      "table": {
+        "head": [
+          "Dag",
+          "Hvad der sker",
+          "På etagen"
+        ],
+        "rows": [
+          [
+            "Mandag",
+            "Konti og opsætning, mød teamet, en første lille opgave med buddyen.",
+            "Præsentation til standuppen, derefter det meste af dagen ved buddyens skrivebord."
+          ],
+          [
+            "Tirsdag",
+            "Gør den første opgave færdig. Korte snakke med to eller tre personer fra andre dele af arbejdet.",
+            "Gå hen til hver af dem i et kvarter."
+          ],
+          [
+            "Onsdag",
+            "En anden opgave, mere på egen hånd. Spørgsmål, når de dukker op.",
+            "Status tilgængelig, og kolleger, der ved, at de kan få besøg."
+          ],
+          [
+            "Torsdag",
+            "Sid med til et review, en planlægning eller et kundeopkald.",
+            "Deltag i et møde i mødelokalet; at lytte tæller."
+          ],
+          [
+            "Fredag",
+            "En snak med lederen: hvad er klart, hvad er ikke, hvad kommer nu.",
+            "Et opkald ved lederens skrivebord."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Hvad remote onboarding som regel mangler",
+      "items": [
+        {
+          "title": "At vide, hvem man skal spørge",
+          "body": "På et kontor lærer du, hvem der ved hvad, ved at se, hvem folk går til. På etagen ser du det samme: hvem der taler med hvem, og hvem der er optaget."
+        },
+        {
+          "title": "At spørge uden at føle sig til besvær",
+          "body": "At skrive til en, man aldrig har mødt, føles stort. At gå hen til en tilgængelig person er som at læne sig over til nabobordet på kontoret."
+        },
+        {
+          "title": "At blive set, mens man arbejder",
+          "body": "En ny ved et skrivebord er synligt en del af teamet fra dag ét i stedet for et navn i en kanal."
+        },
+        {
+          "title": "At opfange, hvordan teamet arbejder",
+          "body": "At sidde med til et møde eller to lærer en mere om, hvordan beslutninger træffes, end noget dokument."
+        }
+      ]
+    },
+    {
+      "title": "Sådan virker buddyordningen remote",
+      "items": [
+        {
+          "title": "Vælg en tæt på arbejdet",
+          "body": "Ikke lederen og ikke den travleste i teamet. En, der laver lignende arbejde og har tid til spørgsmål."
+        },
+        {
+          "title": "Sæt tid af de første to dage",
+          "body": "Det meste af mandagen og noget af tirsdagen sammen med delt skærm. Derefter kommer den nye forbi, når der er brug for det."
+        },
+        {
+          "title": "Tag det første besøg selv",
+          "body": "Buddyen går hen først, på dag ét. Det viser den nye, at det er normalt at gå hen til folk her."
+        },
+        {
+          "title": "Hav en kanal til spørgsmål",
+          "body": "En kanal i teamchatten til spørgsmål, ingen skal føle sig dumme over at stille. Beskederne bliver, så den næste nye kan læse svarene."
+        }
+      ]
+    },
+    {
+      "title": "Hvad TinyFloor ikke gør for onboarding",
+      "body": [
+        "Det er ikke et HR-værktøj. Der er ingen onboarding-tjeklister, ingen dokumentsignering, ingen kontooprettelse og ingen single sign-on. Hold jeres håndbog i jeres dokumentværktøj og kontiene i jeres admin-værktøjer; TinyFloor er stedet, hvor den nye møder teamet og får hjælp. At invitere kræver ét link, og et minut senere kan de sidde ved et skrivebord."
+      ]
+    }
   ]
 }

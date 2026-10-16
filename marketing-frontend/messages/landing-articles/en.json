@@ -2329,5 +2329,128 @@
         }
       ]
     }
+  ],
+  "onboarding": [
+    {
+      "title": "A new person's first day on the floor",
+      "body": [
+        "On a remote team, nobody can see that someone new has started. On the floor they can: there's a new name at a desk, and the team is a short walk away."
+      ],
+      "items": [
+        {
+          "title": "Open the invite link",
+          "detail": "9:00",
+          "body": "One link for the whole office. Sign in with Google or an email address, in the browser, with nothing to install."
+        },
+        {
+          "title": "Pick a desk",
+          "detail": "9:05",
+          "body": "You arrive beside a free desk. Sit down and make it yours; from then on nobody else sits there."
+        },
+        {
+          "title": "Get a wave",
+          "detail": "9:05",
+          "body": "Everyone already on the floor sees you walk in and can wave. It's a small thing, and it tells the new person they've been noticed."
+        },
+        {
+          "title": "Say hello at standup",
+          "detail": "10:00",
+          "body": "Walk into the meeting room with everyone else. One minute to introduce yourself, and the team has met you."
+        },
+        {
+          "title": "Sit with your buddy",
+          "detail": "11:00",
+          "body": "Walk over to your buddy's desk, share a screen and work through the first task together."
+        }
+      ]
+    },
+    {
+      "title": "A first week that works",
+      "body": [
+        "Small steps, the same people, and someone to ask. Here's a week many small teams use:"
+      ],
+      "table": {
+        "head": [
+          "Day",
+          "What happens",
+          "On the floor"
+        ],
+        "rows": [
+          [
+            "Monday",
+            "Accounts and setup, meet the team, a first small task with the buddy.",
+            "Standup intro, then most of the day at the buddy's desk."
+          ],
+          [
+            "Tuesday",
+            "Finish the first task. Short calls with two or three people from other parts of the work.",
+            "Walk over to each of them for fifteen minutes."
+          ],
+          [
+            "Wednesday",
+            "A second task, more on their own. Questions as they come.",
+            "Available status, and teammates who know to expect visits."
+          ],
+          [
+            "Thursday",
+            "Sit in on a review, a planning session or a client call.",
+            "Join a meeting in the meeting room; listening counts."
+          ],
+          [
+            "Friday",
+            "A check-in with their manager: what's clear, what isn't, what's next.",
+            "A call at the manager's desk."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "What remote onboarding usually misses",
+      "items": [
+        {
+          "title": "Knowing who to ask",
+          "body": "In an office you learn who knows what by watching who people go to. On the floor, you can see the same thing: who's talking to whom, and who's busy."
+        },
+        {
+          "title": "Asking without feeling like an interruption",
+          "body": "Sending a message to someone you've never met feels like a lot. Walking up to an available person is the same as leaning over in an office."
+        },
+        {
+          "title": "Being seen working",
+          "body": "A new person at a desk is visibly part of the team from day one, instead of a name in a channel."
+        },
+        {
+          "title": "Overhearing how the team works",
+          "body": "Sitting in on a meeting or two teaches more about how decisions get made than any document."
+        }
+      ]
+    },
+    {
+      "title": "Making the buddy system work remotely",
+      "items": [
+        {
+          "title": "Pick someone close to the work",
+          "body": "Not the manager, and not the busiest person on the team. Someone who does similar work and has time for questions."
+        },
+        {
+          "title": "Book time on the first two days",
+          "body": "Most of Monday and some of Tuesday together, sharing a screen. After that, the new person walks over when they need to."
+        },
+        {
+          "title": "Make the first visit for them",
+          "body": "The buddy walks over first, on day one. It shows the new person that walking over is normal here."
+        },
+        {
+          "title": "Keep a channel for questions",
+          "body": "A channel in the team chat for questions nobody should feel silly asking. Messages stay, so the next new person can read the answers."
+        }
+      ]
+    },
+    {
+      "title": "What TinyFloor doesn't do for onboarding",
+      "body": [
+        "It isn't an HR tool. There are no onboarding checklists, document signing, account provisioning or single sign-on. Keep your handbook in your docs tool and your accounts in your admin tools; TinyFloor is where the new person meets the team and gets help. Inviting them takes one link, and they can be at a desk a minute later."
+      ]
+    }
   ]
 }

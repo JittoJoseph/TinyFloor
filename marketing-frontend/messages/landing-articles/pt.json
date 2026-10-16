@@ -2329,5 +2329,128 @@
         }
       ]
     }
+  ],
+  "onboarding": [
+    {
+      "title": "O primeiro dia de uma pessoa nova no andar",
+      "body": [
+        "Numa equipe remota, ninguém vê que alguém novo começou. No andar, todo mundo vê: há um nome novo numa mesa, e a equipe está a poucos passos."
+      ],
+      "items": [
+        {
+          "title": "Abrir o link de convite",
+          "detail": "9:00",
+          "body": "Um link para o escritório inteiro. Entre com Google ou um endereço de e-mail, no navegador, sem instalar nada."
+        },
+        {
+          "title": "Escolher uma mesa",
+          "detail": "9:05",
+          "body": "Você chega ao lado de uma mesa livre. Sente e faça dela a sua; a partir daí ninguém mais senta ali."
+        },
+        {
+          "title": "Receber um aceno",
+          "detail": "9:05",
+          "body": "Quem já está no andar vê você entrar e pode acenar. É um detalhe pequeno que mostra à pessoa nova que ela foi notada."
+        },
+        {
+          "title": "Dizer oi na daily",
+          "detail": "10:00",
+          "body": "Entre na sala de reunião com todo mundo. Um minuto para se apresentar, e a equipe já conhece você."
+        },
+        {
+          "title": "Sentar com seu padrinho",
+          "detail": "11:00",
+          "body": "Vá até a mesa do seu padrinho, compartilhe uma tela e façam a primeira tarefa juntos."
+        }
+      ]
+    },
+    {
+      "title": "Uma primeira semana que funciona",
+      "body": [
+        "Passos pequenos, as mesmas pessoas e alguém para perguntar. Esta é uma semana que muitas equipes pequenas usam:"
+      ],
+      "table": {
+        "head": [
+          "Dia",
+          "O que acontece",
+          "No andar"
+        ],
+        "rows": [
+          [
+            "Segunda",
+            "Contas e configuração, conhecer a equipe, uma primeira tarefa pequena com o padrinho.",
+            "Apresentação na daily, depois a maior parte do dia na mesa do padrinho."
+          ],
+          [
+            "Terça",
+            "Terminar a primeira tarefa. Conversas curtas com duas ou três pessoas de outras partes do trabalho.",
+            "Ir até cada uma delas por quinze minutos."
+          ],
+          [
+            "Quarta",
+            "Uma segunda tarefa, mais por conta própria. Perguntas conforme surgem.",
+            "Status disponível, e colegas que sabem que vão receber visitas."
+          ],
+          [
+            "Quinta",
+            "Acompanhar uma revisão, um planejamento ou uma chamada com cliente.",
+            "Entrar numa reunião na sala de reunião; ouvir conta."
+          ],
+          [
+            "Sexta",
+            "Uma conversa com a liderança: o que está claro, o que não está, o que vem depois.",
+            "Uma chamada na mesa da liderança."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "O que costuma faltar no onboarding remoto",
+      "items": [
+        {
+          "title": "Saber a quem perguntar",
+          "body": "No escritório você aprende quem sabe o quê vendo a quem as pessoas recorrem. No andar você vê a mesma coisa: quem fala com quem, e quem está ocupado."
+        },
+        {
+          "title": "Perguntar sem sentir que está atrapalhando",
+          "body": "Mandar mensagem para alguém que você nunca viu pesa. Ir até uma pessoa disponível é como se inclinar para a mesa ao lado no escritório."
+        },
+        {
+          "title": "Ser visto trabalhando",
+          "body": "Uma pessoa nova numa mesa faz parte da equipe de forma visível desde o primeiro dia, em vez de ser um nome num canal."
+        },
+        {
+          "title": "Perceber como a equipe trabalha",
+          "body": "Acompanhar uma ou duas reuniões ensina mais sobre como as decisões são tomadas do que qualquer documento."
+        }
+      ]
+    },
+    {
+      "title": "Fazendo o padrinho funcionar no remoto",
+      "items": [
+        {
+          "title": "Escolha alguém perto do trabalho",
+          "body": "Não a liderança, nem a pessoa mais ocupada da equipe. Alguém que faz um trabalho parecido e tem tempo para perguntas."
+        },
+        {
+          "title": "Reserve tempo nos dois primeiros dias",
+          "body": "A maior parte da segunda e parte da terça juntos, compartilhando a tela. Depois disso, a pessoa nova vai até lá quando precisar."
+        },
+        {
+          "title": "Faça a primeira visita por ela",
+          "body": "O padrinho vai primeiro, no primeiro dia. Isso mostra à pessoa nova que ir até alguém é normal aqui."
+        },
+        {
+          "title": "Tenha um canal para perguntas",
+          "body": "Um canal no chat da equipe para as perguntas que ninguém deveria ter vergonha de fazer. As mensagens ficam, então a próxima pessoa nova pode ler as respostas."
+        }
+      ]
+    },
+    {
+      "title": "O que o TinyFloor não faz no onboarding",
+      "body": [
+        "Ele não é uma ferramenta de RH. Não há checklists de onboarding, assinatura de documentos, criação de contas nem login único. Mantenha seu manual na sua ferramenta de documentação e as contas nas suas ferramentas de administração; o TinyFloor é onde a pessoa nova conhece a equipe e encontra ajuda. Convidar leva um link, e um minuto depois ela pode estar numa mesa."
+      ]
+    }
   ]
 }

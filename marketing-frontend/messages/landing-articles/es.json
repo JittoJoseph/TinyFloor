@@ -2329,5 +2329,128 @@
         }
       ]
     }
+  ],
+  "onboarding": [
+    {
+      "title": "El primer día de una persona nueva en la planta",
+      "body": [
+        "En un equipo remoto nadie ve que alguien nuevo ha empezado. En la planta sí: hay un nombre nuevo en una mesa, y el equipo está a unos pasos."
+      ],
+      "items": [
+        {
+          "title": "Abrir el enlace de invitación",
+          "detail": "9:00",
+          "body": "Un enlace para toda la oficina. Inicia sesión con Google o una dirección de correo, en el navegador, sin instalar nada."
+        },
+        {
+          "title": "Elegir una mesa",
+          "detail": "9:05",
+          "body": "Llegas junto a una mesa libre. Siéntate y hazla tuya; a partir de ahí nadie más se sienta en ella."
+        },
+        {
+          "title": "Recibir un saludo",
+          "detail": "9:05",
+          "body": "Todos los que ya están en la planta te ven entrar y pueden saludarte con la mano. Es un detalle pequeño que le dice a la persona nueva que la han visto."
+        },
+        {
+          "title": "Presentarse en la reunión diaria",
+          "detail": "10:00",
+          "body": "Entra en la sala de reuniones con todos. Un minuto para presentarte y el equipo ya te conoce."
+        },
+        {
+          "title": "Sentarse con tu compañero guía",
+          "detail": "11:00",
+          "body": "Ve a la mesa de tu compañero guía, comparte pantalla y haced juntos la primera tarea."
+        }
+      ]
+    },
+    {
+      "title": "Una primera semana que funciona",
+      "body": [
+        "Pasos pequeños, las mismas personas y alguien a quien preguntar. Esta es una semana que usan muchos equipos pequeños:"
+      ],
+      "table": {
+        "head": [
+          "Día",
+          "Qué pasa",
+          "En la planta"
+        ],
+        "rows": [
+          [
+            "Lunes",
+            "Cuentas y configuración, conocer al equipo, una primera tarea pequeña con el compañero guía.",
+            "Presentación en la reunión diaria y luego casi todo el día en la mesa del compañero guía."
+          ],
+          [
+            "Martes",
+            "Terminar la primera tarea. Charlas cortas con dos o tres personas de otras partes del trabajo.",
+            "Acercarse a cada una de ellas un cuarto de hora."
+          ],
+          [
+            "Miércoles",
+            "Una segunda tarea, más por su cuenta. Preguntas según surjan.",
+            "Estado disponible, y compañeros que saben que recibirán visitas."
+          ],
+          [
+            "Jueves",
+            "Asistir a una revisión, una planificación o una llamada con un cliente.",
+            "Unirse a una reunión en la sala de reuniones; escuchar cuenta."
+          ],
+          [
+            "Viernes",
+            "Una charla con su responsable: qué está claro, qué no, qué viene después.",
+            "Una llamada en la mesa del responsable."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Lo que suele faltar en la incorporación remota",
+      "items": [
+        {
+          "title": "Saber a quién preguntar",
+          "body": "En una oficina aprendes quién sabe qué viendo a quién acude la gente. En la planta ves lo mismo: quién habla con quién y quién está ocupado."
+        },
+        {
+          "title": "Preguntar sin sentir que molestas",
+          "body": "Escribir a alguien que no conoces cuesta. Acercarse a una persona disponible es como inclinarse hacia la mesa de al lado en la oficina."
+        },
+        {
+          "title": "Que te vean trabajando",
+          "body": "Una persona nueva en una mesa forma parte visible del equipo desde el primer día, en lugar de ser un nombre en un canal."
+        },
+        {
+          "title": "Enterarse de cómo trabaja el equipo",
+          "body": "Estar en una o dos reuniones enseña más sobre cómo se toman las decisiones que cualquier documento."
+        }
+      ]
+    },
+    {
+      "title": "Que el compañero guía funcione en remoto",
+      "items": [
+        {
+          "title": "Elegir a alguien cercano al trabajo",
+          "body": "Ni el responsable ni la persona más ocupada del equipo. Alguien que haga un trabajo parecido y tenga tiempo para preguntas."
+        },
+        {
+          "title": "Reservar tiempo los dos primeros días",
+          "body": "Casi todo el lunes y parte del martes juntos, compartiendo pantalla. Después, la persona nueva se acerca cuando lo necesita."
+        },
+        {
+          "title": "Hacer la primera visita por ella",
+          "body": "El compañero guía se acerca primero, el primer día. Así la persona nueva ve que acercarse es lo normal aquí."
+        },
+        {
+          "title": "Tener un canal para preguntas",
+          "body": "Un canal en el chat del equipo para las preguntas que a nadie debería darle vergüenza hacer. Los mensajes se quedan, así que la próxima persona nueva puede leer las respuestas."
+        }
+      ]
+    },
+    {
+      "title": "Lo que TinyFloor no hace en la incorporación",
+      "body": [
+        "No es una herramienta de RR. HH. No hay listas de incorporación, firma de documentos, alta de cuentas ni inicio de sesión único. Guarda tu manual en tu herramienta de documentación y las cuentas en tus herramientas de administración; TinyFloor es donde la persona nueva conoce al equipo y encuentra ayuda. Invitarla es un enlace, y un minuto después puede estar en una mesa."
+      ]
+    }
   ]
 }

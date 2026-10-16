@@ -2329,5 +2329,128 @@
         }
       ]
     }
+  ],
+  "onboarding": [
+    {
+      "title": "Le premier jour d'une nouvelle personne sur l'étage",
+      "body": [
+        "Dans une équipe à distance, personne ne voit qu'une nouvelle personne a commencé. Sur l'étage, si : il y a un nouveau nom à un poste, et l'équipe est à quelques pas."
+      ],
+      "items": [
+        {
+          "title": "Ouvrir le lien d'invitation",
+          "detail": "9 h 00",
+          "body": "Un seul lien pour tout le bureau. Connexion avec Google ou une adresse e-mail, dans le navigateur, sans rien installer."
+        },
+        {
+          "title": "Choisir un poste",
+          "detail": "9 h 05",
+          "body": "Vous arrivez à côté d'un poste libre. Asseyez-vous et faites-en le vôtre ; personne d'autre ne s'y assoit ensuite."
+        },
+        {
+          "title": "Recevoir un signe de la main",
+          "detail": "9 h 05",
+          "body": "Tous ceux déjà sur l'étage vous voient entrer et peuvent vous faire signe. Un petit geste qui montre à la nouvelle personne qu'on l'a remarquée."
+        },
+        {
+          "title": "Dire bonjour au point quotidien",
+          "detail": "10 h 00",
+          "body": "Entrez dans la salle de réunion avec tout le monde. Une minute pour vous présenter, et l'équipe vous connaît."
+        },
+        {
+          "title": "S'installer avec son binôme",
+          "detail": "11 h 00",
+          "body": "Allez au poste de votre binôme, partagez un écran et faites la première tâche ensemble."
+        }
+      ]
+    },
+    {
+      "title": "Une première semaine qui fonctionne",
+      "body": [
+        "De petites étapes, les mêmes personnes, et quelqu'un à qui demander. Voici une semaine qu'utilisent beaucoup de petites équipes :"
+      ],
+      "table": {
+        "head": [
+          "Jour",
+          "Ce qui se passe",
+          "Sur l'étage"
+        ],
+        "rows": [
+          [
+            "Lundi",
+            "Comptes et installation, rencontre avec l'équipe, une première petite tâche avec le binôme.",
+            "Présentation au point quotidien, puis la majeure partie de la journée au poste du binôme."
+          ],
+          [
+            "Mardi",
+            "Terminer la première tâche. De courts échanges avec deux ou trois personnes d'autres parties du travail.",
+            "Aller voir chacune d'elles un quart d'heure."
+          ],
+          [
+            "Mercredi",
+            "Une deuxième tâche, plus en autonomie. Des questions au fil de l'eau.",
+            "Statut disponible, et des collègues qui s'attendent à des visites."
+          ],
+          [
+            "Jeudi",
+            "Assister à une revue, une planification ou un appel client.",
+            "Rejoindre une réunion dans la salle de réunion ; écouter compte."
+          ],
+          [
+            "Vendredi",
+            "Un point avec son manager : ce qui est clair, ce qui ne l'est pas, la suite.",
+            "Un appel au poste du manager."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Ce qui manque souvent à l'intégration à distance",
+      "items": [
+        {
+          "title": "Savoir à qui demander",
+          "body": "Au bureau, on apprend qui sait quoi en voyant vers qui les gens vont. Sur l'étage, on voit la même chose : qui parle avec qui, et qui est occupé."
+        },
+        {
+          "title": "Demander sans avoir l'impression de déranger",
+          "body": "Écrire à quelqu'un qu'on n'a jamais rencontré, c'est beaucoup. Aller voir une personne disponible, c'est comme se pencher vers son voisin au bureau."
+        },
+        {
+          "title": "Être vu en train de travailler",
+          "body": "Une nouvelle personne à un poste fait visiblement partie de l'équipe dès le premier jour, au lieu d'être un nom dans un canal."
+        },
+        {
+          "title": "Entendre comment l'équipe travaille",
+          "body": "Assister à une ou deux réunions en apprend plus sur la façon dont les décisions se prennent que n'importe quel document."
+        }
+      ]
+    },
+    {
+      "title": "Faire fonctionner le binôme à distance",
+      "items": [
+        {
+          "title": "Choisir quelqu'un proche du travail",
+          "body": "Pas le manager, ni la personne la plus occupée de l'équipe. Quelqu'un qui fait un travail similaire et a du temps pour les questions."
+        },
+        {
+          "title": "Réserver du temps les deux premiers jours",
+          "body": "La majeure partie du lundi et une partie du mardi ensemble, en partageant un écran. Ensuite, la nouvelle personne vient quand elle en a besoin."
+        },
+        {
+          "title": "Faire la première visite à sa place",
+          "body": "Le binôme vient en premier, le premier jour. Ça montre à la nouvelle personne qu'aller voir quelqu'un est normal ici."
+        },
+        {
+          "title": "Garder un canal pour les questions",
+          "body": "Un canal dans le chat de l'équipe pour les questions que personne ne devrait avoir honte de poser. Les messages restent, la prochaine recrue pourra lire les réponses."
+        }
+      ]
+    },
+    {
+      "title": "Ce que TinyFloor ne fait pas pour l'intégration",
+      "body": [
+        "Ce n'est pas un outil RH. Il n'y a pas de checklists d'intégration, de signature de documents, de création de comptes ni d'authentification unique. Gardez votre manuel dans votre outil de documentation et vos comptes dans vos outils d'administration ; TinyFloor est l'endroit où la nouvelle personne rencontre l'équipe et trouve de l'aide. L'inviter prend un lien, et elle peut être à un poste une minute plus tard."
+      ]
+    }
   ]
 }

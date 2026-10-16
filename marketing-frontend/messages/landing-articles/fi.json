@@ -2329,5 +2329,128 @@
         }
       ]
     }
+  ],
+  "onboarding": [
+    {
+      "title": "Uuden ihmisen ensimmäinen päivä kerroksessa",
+      "body": [
+        "Etätiimissä kukaan ei näe, että joku uusi on aloittanut. Kerroksessa näkee: työpisteellä on uusi nimi, ja tiimi on muutaman askeleen päässä."
+      ],
+      "items": [
+        {
+          "title": "Avaa kutsulinkki",
+          "detail": "9.00",
+          "body": "Yksi linkki koko toimistolle. Kirjaudu Googlella tai sähköpostiosoitteella, selaimessa, mitään asentamatta."
+        },
+        {
+          "title": "Valitse työpiste",
+          "detail": "9.05",
+          "body": "Saavut vapaan työpisteen viereen. Istu ja tee siitä omasi; sen jälkeen kukaan muu ei istu siinä."
+        },
+        {
+          "title": "Saa vilkutus",
+          "detail": "9.05",
+          "body": "Kaikki jo kerroksessa olevat näkevät sinun tulevan sisään ja voivat vilkuttaa. Pieni asia, joka kertoo uudelle, että hänet on huomattu."
+        },
+        {
+          "title": "Sano hei päiväpalaverissa",
+          "detail": "10.00",
+          "body": "Kävele kokoushuoneeseen muiden kanssa. Minuutti esittäytymiseen, ja tiimi on tavannut sinut."
+        },
+        {
+          "title": "Istu kummisi kanssa",
+          "detail": "11.00",
+          "body": "Kävele kummisi työpisteelle, jakakaa näyttö ja tehkää ensimmäinen tehtävä yhdessä."
+        }
+      ]
+    },
+    {
+      "title": "Toimiva ensimmäinen viikko",
+      "body": [
+        "Pieniä askelia, samat ihmiset ja joku, jolta kysyä. Tässä viikko, jota moni pieni tiimi käyttää:"
+      ],
+      "table": {
+        "head": [
+          "Päivä",
+          "Mitä tapahtuu",
+          "Kerroksessa"
+        ],
+        "rows": [
+          [
+            "Maanantai",
+            "Tunnukset ja asennukset, tiimiin tutustuminen, ensimmäinen pieni tehtävä kummin kanssa.",
+            "Esittäytyminen päiväpalaverissa, sitten suurin osa päivästä kummin työpisteellä."
+          ],
+          [
+            "Tiistai",
+            "Ensimmäisen tehtävän viimeistely. Lyhyet juttutuokiot kahden tai kolmen ihmisen kanssa työn muista osista.",
+            "Käy jokaisen luona vartin ajan."
+          ],
+          [
+            "Keskiviikko",
+            "Toinen tehtävä, enemmän itsenäisesti. Kysymyksiä sitä mukaa kuin niitä tulee.",
+            "Tila tavoitettavissa, ja kollegat, jotka tietävät odottaa vierailuja."
+          ],
+          [
+            "Torstai",
+            "Osallistuminen katselmointiin, suunnitteluun tai asiakaspuheluun.",
+            "Liity kokoukseen kokoushuoneessa; kuunteleminenkin lasketaan."
+          ],
+          [
+            "Perjantai",
+            "Keskustelu esihenkilön kanssa: mikä on selvää, mikä ei, mitä seuraavaksi.",
+            "Puhelu esihenkilön työpisteellä."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Mikä etäperehdytyksestä yleensä puuttuu",
+      "items": [
+        {
+          "title": "Tieto siitä, keneltä kysyä",
+          "body": "Toimistolla opit, kuka tietää mitä, näkemällä kenen luo ihmiset menevät. Kerroksessa näet saman: kuka puhuu kenen kanssa ja kuka on varattu."
+        },
+        {
+          "title": "Kysyminen ilman tunnetta häiritsemisestä",
+          "body": "Viestin kirjoittaminen tuntemattomalle tuntuu isolta. Tavoitettavissa olevan luo käveleminen on kuin kumartuisi toimistolla viereiselle pöydälle."
+        },
+        {
+          "title": "Näkyminen työn ääressä",
+          "body": "Uusi ihminen työpisteellä on näkyvästi osa tiimiä ensimmäisestä päivästä, eikä vain nimi kanavalla."
+        },
+        {
+          "title": "Kuulla, miten tiimi toimii",
+          "body": "Yhteen tai kahteen kokoukseen osallistuminen opettaa enemmän päätöksenteosta kuin mikään dokumentti."
+        }
+      ]
+    },
+    {
+      "title": "Näin kummijärjestelmä toimii etänä",
+      "items": [
+        {
+          "title": "Valitse joku lähellä työtä",
+          "body": "Ei esihenkilöä eikä tiimin kiireisintä. Joku, joka tekee samanlaista työtä ja jolla on aikaa kysymyksille."
+        },
+        {
+          "title": "Varaa aikaa kahdelle ensimmäiselle päivälle",
+          "body": "Suurin osa maanantaista ja osa tiistaista yhdessä, näyttöä jakaen. Sen jälkeen uusi tulee käymään, kun tarvitsee."
+        },
+        {
+          "title": "Tee ensimmäinen käynti itse",
+          "body": "Kummi menee ensin, ensimmäisenä päivänä. Se näyttää uudelle, että toisen luo meneminen on täällä tavallista."
+        },
+        {
+          "title": "Pidä kanava kysymyksille",
+          "body": "Kanava tiimin chatissa kysymyksille, joita kenenkään ei tarvitse hävetä. Viestit säilyvät, joten seuraava uusi voi lukea vastaukset."
+        }
+      ]
+    },
+    {
+      "title": "Mitä TinyFloor ei tee perehdytykselle",
+      "body": [
+        "Se ei ole HR-työkalu. Siinä ei ole perehdytyksen tarkistuslistoja, asiakirjojen allekirjoitusta, tunnusten luontia eikä kertakirjautumista. Pitäkää käsikirja dokumenttityökalussanne ja tunnukset hallintatyökaluissanne; TinyFloor on paikka, jossa uusi tapaa tiimin ja saa apua. Kutsuminen vaatii yhden linkin, ja minuuttia myöhemmin hän voi istua työpisteellä."
+      ]
+    }
   ]
 }

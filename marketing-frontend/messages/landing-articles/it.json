@@ -3383,5 +3383,104 @@
         "TinyFloor non si collega a Figma, Sketch o Adobe, e non archivia file. Gli schermi condivisi trasmettono l'immagine a una risoluzione pensata per un testo nitido: va bene per rivedere un layout, ma non sostituisce aprire il file per controllare un colore o un pixel. Le crit non vengono registrate e nella chat non si possono ancora condividere immagini. Tenete il vostro strumento di design per il lavoro e i commenti; usate TinyFloor per le conversazioni intorno."
       ]
     }
+  ],
+  "virtualCoworking": [
+    {
+      "title": "Due tipi di coworking virtuale",
+      "body": [
+        "\"Coworking virtuale\" vuol dire due cose diverse. Alcuni vogliono uno sconosciuto con cui lavorare fianco a fianco, per compagnia e un po' di impegno. Altri vogliono il proprio team intorno mentre ognuno fa il suo lavoro. TinyFloor è il secondo tipo."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Con sconosciuti",
+          "Con il tuo team"
+        ],
+        "rows": [
+          [
+            "Chi c'è",
+            "Qualcuno abbinato a te per una sessione",
+            "Le persone con cui lavori ogni giorno"
+          ],
+          [
+            "Come inizia",
+            "Prenoti uno slot",
+            "Apri l'ufficio; chi c'è, c'è"
+          ],
+          [
+            "Videocamere",
+            "Di solito accese, per l'impegno",
+            "Spente, a meno che tu non sia in chiamata"
+          ],
+          [
+            "Cosa succede dopo",
+            "La sessione finisce e ognuno va per la sua strada",
+            "Ti avvicini quando ti serve qualcuno"
+          ],
+          [
+            "TinyFloor",
+            "Non è fatto per questo",
+            "È fatto per questo"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Una giornata di coworking sul piano",
+      "items": [
+        {
+          "title": "Arrivare",
+          "detail": "9:00",
+          "body": "Apri la scheda e il tuo personaggio va alla tua scrivania. Chi è già lì ti vede arrivare e può salutarti."
+        },
+        {
+          "title": "Concentrazione",
+          "detail": "9:15",
+          "body": "Mettiti occupato. Si vede che stai lavorando, nessuno ti sente e nessuno si aspetta una risposta subito."
+        },
+        {
+          "title": "Musica di sottofondo",
+          "detail": "11:00",
+          "body": "Qualcuno mette un brano sull'altoparlante. Vicino è forte e sul piano si attenua, così è compagnia e non rumore."
+        },
+        {
+          "title": "Una pausa",
+          "detail": "13:00",
+          "body": "Mettiti assente per il pranzo. Tornato alla scrivania, due minuti di chiacchiere con chi c'è prima del pomeriggio."
+        }
+      ]
+    },
+    {
+      "title": "Sessioni di concentrazione con il team",
+      "body": [
+        "Alcuni team amano un po' di struttura. Una sessione di concentrazione è una riunione in cui tutti lavorano in silenzio e fanno un breve punto all'inizio e alla fine."
+      ],
+      "items": [
+        {
+          "title": "Avvia una riunione chiamata Focus",
+          "body": "Fai entrare chi vuole partecipare. Di' in una frase cosa farai."
+        },
+        {
+          "title": "Silenzia e lavora",
+          "body": "Microfoni spenti, videocamere facoltative. La riunione c'è perché tu sappia di non essere l'unico a lavorare."
+        },
+        {
+          "title": "Un punto alla fine",
+          "body": "Una frase a testa: fatto, non fatto, cosa viene dopo. Poi esci dalla stanza."
+        }
+      ]
+    },
+    {
+      "title": "Perché lavorare vicino agli altri aiuta",
+      "body": [
+        "Studi sulla consapevolezza ambientale sul lavoro hanno rilevato che vedere a colpo d'occhio la presenza dei colleghi dava la sensazione che anche altri stessero lavorando e portava a più contatti informali. Nei dati Gallup del 2024, chi lavora completamente da remoto diceva più spesso di sentirsi solo rispetto a chi lavora in sede, 25% contro 16%. Un piano dove il tuo team è visibilmente presente aiuta su entrambi i fronti, senza che nessuno debba stare in video."
+      ]
+    },
+    {
+      "title": "Cosa non è",
+      "body": [
+        "TinyFloor non è uno spazio di coworking pubblico. Un ufficio è riservato al tuo team, quindi non ci sono sconosciuti con cui lavorare né abbinamenti con altre persone. Non ci sono timer di sessione, serie o qualcosa che conti quanto hai lavorato. Se lavori da solo e cerchi la compagnia di sconosciuti, un servizio di body doubling fa più al caso tuo; se vuoi il tuo team intorno mentre lavori, è questo."
+      ]
+    }
   ]
 }

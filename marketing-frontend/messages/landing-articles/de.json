@@ -3383,5 +3383,104 @@
         "TinyFloor ist nicht mit Figma, Sketch oder Adobe verbunden und speichert keine Dateien. Geteilte Bildschirme übertragen das Bild in einer Auflösung, die auf scharfen Text ausgelegt ist: gut, um ein Layout zu besprechen, aber kein Ersatz dafür, die Datei selbst zu öffnen, um eine Farbe oder ein Pixel zu prüfen. Crits werden nicht aufgenommen, und Bilder lassen sich im Chat noch nicht teilen. Behaltet euer Designtool für die Arbeit und ihre Kommentare; nutzt TinyFloor für die Gespräche darum herum."
       ]
     }
+  ],
+  "virtualCoworking": [
+    {
+      "title": "Zwei Arten von virtuellem Coworking",
+      "body": [
+        "„Virtuelles Coworking“ meint zwei verschiedene Dinge. Manche wollen eine fremde Person, mit der sie nebeneinander arbeiten, für Gesellschaft und ein bisschen Verbindlichkeit. Andere wollen ihr eigenes Team um sich, während alle ihre Arbeit machen. TinyFloor ist die zweite Art."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Mit Fremden",
+          "Mit deinem Team"
+        ],
+        "rows": [
+          [
+            "Wer da ist",
+            "Jemand, der dir für eine Session zugeteilt wird",
+            "Die Leute, mit denen du jeden Tag arbeitest"
+          ],
+          [
+            "Wie es beginnt",
+            "Du buchst einen Termin",
+            "Du öffnest das Büro; wer da ist, ist da"
+          ],
+          [
+            "Kameras",
+            "Meist an, wegen der Verbindlichkeit",
+            "Aus, außer du bist in einem Call"
+          ],
+          [
+            "Was danach passiert",
+            "Die Session endet und ihr geht getrennte Wege",
+            "Du gehst hin, wenn du jemanden brauchst"
+          ],
+          [
+            "TinyFloor",
+            "Nicht dafür gemacht",
+            "Genau dafür gebaut"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Ein Coworking-Tag auf der Fläche",
+      "items": [
+        {
+          "title": "Ankommen",
+          "detail": "9:00",
+          "body": "Öffne den Tab, und deine Figur geht zu deinem Schreibtisch. Wer schon da ist, sieht dich ankommen und kann winken."
+        },
+        {
+          "title": "Konzentriert",
+          "detail": "9:15",
+          "body": "Stell dich auf beschäftigt. Man sieht, dass du arbeitest, niemand hört dich, und niemand erwartet sofort eine Antwort."
+        },
+        {
+          "title": "Musik im Hintergrund",
+          "detail": "11:00",
+          "body": "Jemand legt einen Titel am Lautsprecher auf. Nah dran ist es laut, über die Fläche wird es leiser, so ist es Gesellschaft statt Lärm."
+        },
+        {
+          "title": "Eine Pause",
+          "detail": "13:00",
+          "body": "Stell dich zum Mittagessen auf abwesend. Zurück am Schreibtisch, zwei Minuten Plaudern mit wem auch immer, bevor der Nachmittag beginnt."
+        }
+      ]
+    },
+    {
+      "title": "Fokus-Sessions mit deinem Team",
+      "body": [
+        "Manche Teams mögen ein bisschen Struktur. Eine Fokus-Session ist ein Meeting, in dem alle still arbeiten und sich am Anfang und am Ende kurz melden."
+      ],
+      "items": [
+        {
+          "title": "Ein Meeting namens Fokus starten",
+          "body": "Hol dazu, wer mitmachen will. Sag in einem Satz, was du schaffen willst."
+        },
+        {
+          "title": "Stumm schalten und arbeiten",
+          "body": "Mikrofone aus, Kameras freiwillig. Das Meeting ist da, damit du weißt, dass du nicht allein arbeitest."
+        },
+        {
+          "title": "Am Ende kurz melden",
+          "body": "Ein Satz pro Person: fertig, nicht fertig, was als Nächstes kommt. Dann aus dem Raum gehen."
+        }
+      ]
+    },
+    {
+      "title": "Warum Arbeiten in der Nähe anderer hilft",
+      "body": [
+        "Studien zur beiläufigen Wahrnehmung am Arbeitsplatz fanden, dass es Menschen das Gefühl gibt, andere arbeiten auch, wenn sie die Präsenz von Kolleginnen und Kollegen auf einen Blick sehen, und dass es zu mehr informellem Kontakt führt. In Gallups Daten von 2024 berichteten vollständig remote Arbeitende häufiger von Einsamkeit als Leute vor Ort, 25 % gegenüber 16 %. Eine Fläche, auf der dein Team sichtbar da ist, hilft bei beidem, ohne dass jemand vor der Kamera sitzen muss."
+      ]
+    },
+    {
+      "title": "Was es nicht ist",
+      "body": [
+        "TinyFloor ist kein öffentlicher Coworking-Space. Ein Büro gehört nur deinem Team, es gibt also keine Fremden zum Mitarbeiten und kein Zusammenbringen mit anderen Leuten. Es gibt keine Session-Timer, keine Streaks und nichts, was zählt, wie lange du gearbeitet hast. Wenn du allein arbeitest und Gesellschaft von Fremden suchst, passt ein Body-Doubling-Dienst besser; wenn du dein Team beim Arbeiten um dich haben willst, ist es das hier."
+      ]
+    }
   ]
 }

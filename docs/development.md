@@ -24,10 +24,10 @@ Measured on 16 October 2026 (English, words a reader sees):
 - **Index pages:** `/teams` 153, `/features` 176, `/use-cases` 216,
   `/compare` 396, `/about` 208. They mostly route visitors on; each would do
   better with a short real introduction to what's behind it.
-- **Feature, team and use-case pages:** 280 to 440 words each (coworking
-  and proximity chat). Each needs its own article: they
+- **Feature, team and use-case pages:** 280 to 440 words each (proximity
+  chat). Each needs its own article: they
   still share the home page's "moments" block. Standup, pair programming,
-  onboarding, watercooler, engineering teams, meeting room, team chat, team presence, online whiteboard, agencies, startups and design teams have theirs in every
+  onboarding, watercooler, engineering teams, meeting room, team chat, team presence, online whiteboard, agencies, startups, design teams and virtual coworking have theirs in every
   language.
 - **The Wonder.me page** serves a product that closed in 2023; decide whether
   to keep it.

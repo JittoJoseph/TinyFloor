@@ -3383,5 +3383,104 @@
         "TinyFloor ei ole yhteydessä Figmaan, Sketchiin tai Adobeen, eikä se tallenna tiedostoja. Jaettu näyttö välittää kuvan resoluutiolla, joka on viritetty terävälle tekstille: hyvä asettelun läpikäyntiin, mutta ei korvaa tiedoston avaamista itse värin tai pikselin tarkistamiseksi. Critejä ei tallenneta, eikä kuvia voi vielä jakaa chatissa. Pitäkää suunnittelutyökalu työtä ja sen kommentteja varten; käyttäkää TinyFlooria sen ympärillä käytäviin keskusteluihin."
       ]
     }
+  ],
+  "virtualCoworking": [
+    {
+      "title": "Kaksi erilaista virtuaalista yhteistyöskentelyä",
+      "body": [
+        "”Virtuaalinen coworking” tarkoittaa kahta eri asiaa. Jotkut haluavat tuntemattoman, jonka rinnalla tehdä töitä, seuran ja pienen sitoutumisen vuoksi. Toiset haluavat oman tiiminsä ympärilleen, kun jokainen tekee omiaan. TinyFloor on jälkimmäistä."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Tuntemattomien kanssa",
+          "Oman tiimin kanssa"
+        ],
+        "rows": [
+          [
+            "Kuka on paikalla",
+            "Joku, joka on yhdistetty sinulle istunnoksi",
+            "Ihmiset, joiden kanssa teet töitä joka päivä"
+          ],
+          [
+            "Miten se alkaa",
+            "Varaat ajan",
+            "Avaat toimiston; joka on paikalla, on paikalla"
+          ],
+          [
+            "Kamerat",
+            "Yleensä päällä sitoutumisen vuoksi",
+            "Pois, ellet ole puhelussa"
+          ],
+          [
+            "Mitä sitten tapahtuu",
+            "Istunto loppuu ja kumpikin menee omaan suuntaansa",
+            "Kävelet luo, kun tarvitset jotakuta"
+          ],
+          [
+            "TinyFloor",
+            "Ei siihen tarkoitettu",
+            "Tehty juuri siihen"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Coworking-päivä kerroksessa",
+      "items": [
+        {
+          "title": "Saavu",
+          "detail": "9.00",
+          "body": "Avaa välilehti, niin hahmosi kävelee työpisteellesi. Jo paikalla olevat näkevät sinun saapuvan ja voivat vilkuttaa."
+        },
+        {
+          "title": "Keskittyminen",
+          "detail": "9.15",
+          "body": "Laita tilaksi varattu. Näkyy, että teet töitä, kukaan ei kuule sinua, eikä kukaan odota heti vastausta."
+        },
+        {
+          "title": "Taustamusiikkia",
+          "detail": "11.00",
+          "body": "Joku laittaa kappaleen soimaan kaiuttimesta. Lähellä se soi kovaa ja vaimenee kerroksen poikki, joten se on seuraa eikä melua."
+        },
+        {
+          "title": "Tauko",
+          "detail": "13.00",
+          "body": "Laita tilaksi poissa lounaan ajaksi. Takaisin työpisteellä kahden minuutin juttelu paikalla olevien kanssa ennen iltapäivää."
+        }
+      ]
+    },
+    {
+      "title": "Keskittymisjaksot tiimin kanssa",
+      "body": [
+        "Jotkut tiimit pitävät vähän rakenteesta. Keskittymisjakso on kokous, jossa kaikki tekevät töitä hiljaa ja kertovat alussa ja lopussa, missä mennään."
+      ],
+      "items": [
+        {
+          "title": "Aloita kokous nimeltä Fokus",
+          "body": "Pyydä mukaan ne, jotka haluavat. Kerro yhdellä lauseella, mitä aiot saada tehtyä."
+        },
+        {
+          "title": "Mykistä ja tee töitä",
+          "body": "Mikrofonit pois, kamerat vapaaehtoisia. Kokous on olemassa, jotta tiedät, ettet ole ainoa töissä."
+        },
+        {
+          "title": "Kerro lopuksi",
+          "body": "Yksi lause kultakin: valmis, ei valmis, mitä seuraavaksi. Kävele sitten ulos huoneesta."
+        }
+      ]
+    },
+    {
+      "title": "Miksi muiden lähellä työskentely auttaa",
+      "body": [
+        "Työpaikan ympäristötietoisuutta koskevat tutkimukset havaitsivat, että kollegoiden läsnäolon näkeminen yhdellä silmäyksellä sai ihmiset tuntemaan, että muutkin tekevät töitä, ja johti epävirallisempaan kanssakäymiseen. Gallupin vuoden 2024 aineistossa täysin etänä työskentelevät kertoivat yksinäisyydestä useammin kuin paikan päällä työskentelevät, 25 % vastaan 16 %. Kerros, jossa tiimisi näkyy, auttaa molemmissa ilman, että kenenkään tarvitsee olla kameralla."
+      ]
+    },
+    {
+      "title": "Mitä se ei ole",
+      "body": [
+        "TinyFloor ei ole julkinen coworking-tila. Toimisto on tiimisi yksityinen, joten tuntemattomia, joiden kanssa työskennellä, ei ole, eikä muiden ihmisten kanssa yhdistämistä. Ei istuntoajastimia, ei putkia eikä mitään, mikä laskisi, kuinka kauan teit töitä. Jos työskentelet yksin ja kaipaat tuntemattomien seuraa, body doubling -palvelu sopii paremmin; jos haluat tiimisi ympärillesi töitä tehdessäsi, tämä on se."
+      ]
+    }
   ]
 }

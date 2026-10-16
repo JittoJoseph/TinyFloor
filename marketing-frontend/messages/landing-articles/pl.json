@@ -3383,5 +3383,104 @@
         "TinyFloor nie łączy się z Figmą, Sketchem ani Adobe i nie przechowuje plików. Udostępniony ekran przesyła obraz w rozdzielczości dostosowanej do ostrego tekstu: dobrze nadaje się do omówienia układu, ale nie zastąpi otwarcia pliku, żeby sprawdzić kolor czy piksel. Krytyki nie są nagrywane, a obrazów nie da się jeszcze udostępniać w czacie. Zostawcie narzędzie do projektowania na pracę i komentarze; TinyFloor służy do rozmów wokół niej."
       ]
     }
+  ],
+  "virtualCoworking": [
+    {
+      "title": "Dwa rodzaje wirtualnego coworkingu",
+      "body": [
+        "„Wirtualny coworking” oznacza dwie różne rzeczy. Niektórzy chcą obcej osoby, obok której mogą pracować, dla towarzystwa i odrobiny mobilizacji. Inni chcą mieć wokół własny zespół, gdy każdy robi swoje. TinyFloor to ten drugi rodzaj."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Z nieznajomymi",
+          "Z twoim zespołem"
+        ],
+        "rows": [
+          [
+            "Kto jest obok",
+            "Ktoś dobrany do ciebie na sesję",
+            "Ludzie, z którymi pracujesz codziennie"
+          ],
+          [
+            "Jak się zaczyna",
+            "Rezerwujesz termin",
+            "Otwierasz biuro; kto jest, ten jest"
+          ],
+          [
+            "Kamery",
+            "Zwykle włączone, dla mobilizacji",
+            "Wyłączone, chyba że rozmawiasz"
+          ],
+          [
+            "Co dalej",
+            "Sesja się kończy i każdy idzie w swoją stronę",
+            "Podchodzisz, gdy kogoś potrzebujesz"
+          ],
+          [
+            "TinyFloor",
+            "Nie do tego służy",
+            "Stworzony właśnie do tego"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Dzień coworkingu na piętrze",
+      "items": [
+        {
+          "title": "Przyjście",
+          "detail": "9:00",
+          "body": "Otwórz kartę, a twoja postać podejdzie do twojego biurka. Kto już jest, widzi, jak przychodzisz, i może pomachać."
+        },
+        {
+          "title": "Skupienie",
+          "detail": "9:15",
+          "body": "Ustaw się jako zajęty. Widać, że pracujesz, nikt cię nie słyszy i nikt nie oczekuje natychmiastowej odpowiedzi."
+        },
+        {
+          "title": "Muzyka w tle",
+          "detail": "11:00",
+          "body": "Ktoś włącza utwór na głośniku. Blisko jest głośno, dalej na piętrze cichnie, więc to towarzystwo, a nie hałas."
+        },
+        {
+          "title": "Przerwa",
+          "detail": "13:00",
+          "body": "Ustaw się jako nieobecny na obiad. Po powrocie do biurka dwie minuty rozmowy z kimś, kto jest obok, zanim zacznie się popołudnie."
+        }
+      ]
+    },
+    {
+      "title": "Sesje skupienia z zespołem",
+      "body": [
+        "Niektóre zespoły lubią odrobinę struktury. Sesja skupienia to spotkanie, na którym wszyscy pracują w ciszy i krótko meldują się na początku i na końcu."
+      ],
+      "items": [
+        {
+          "title": "Załóż spotkanie o nazwie Skupienie",
+          "body": "Zaproś, kto chce dołączyć. Powiedz jednym zdaniem, co zrobisz."
+        },
+        {
+          "title": "Wycisz się i pracuj",
+          "body": "Mikrofony wyłączone, kamery dobrowolne. Spotkanie jest po to, żebyś wiedział, że nie pracujesz sam."
+        },
+        {
+          "title": "Krótko na koniec",
+          "body": "Jedno zdanie od każdego: zrobione, niezrobione, co dalej. Potem wyjdź z sali."
+        }
+      ]
+    },
+    {
+      "title": "Dlaczego praca w pobliżu innych pomaga",
+      "body": [
+        "Badania nad świadomością otoczenia w pracy wykazały, że widzenie obecności współpracowników jednym rzutem oka daje poczucie, że inni też pracują, i prowadzi do większej liczby nieformalnych kontaktów. W danych Gallupa z 2024 roku osoby pracujące w pełni zdalnie częściej zgłaszały samotność niż pracujące na miejscu, 25% wobec 16%. Piętro, na którym twój zespół jest widocznie obecny, pomaga w obu sprawach, bez siedzenia przed kamerą."
+      ]
+    },
+    {
+      "title": "Czym nie jest",
+      "body": [
+        "TinyFloor nie jest publiczną przestrzenią coworkingową. Biuro jest prywatne dla twojego zespołu, więc nie ma nieznajomych, obok których można pracować, ani dobierania z innymi ludźmi. Nie ma minutników sesji, serii ani niczego, co liczy, jak długo pracowałeś. Jeśli pracujesz sam i szukasz towarzystwa nieznajomych, lepiej sprawdzi się usługa body doublingu; jeśli chcesz mieć zespół obok podczas pracy, to jest to."
+      ]
+    }
   ]
 }

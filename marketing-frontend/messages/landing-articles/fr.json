@@ -3383,5 +3383,104 @@
         "TinyFloor n'est relié ni à Figma, ni à Sketch, ni à Adobe, et ne stocke pas de fichiers. Les écrans partagés transmettent l'image dans une résolution pensée pour un texte net : parfait pour revoir une mise en page, mais pas un substitut à l'ouverture du fichier pour vérifier une couleur ou un pixel. Les crits ne sont pas enregistrées et on ne peut pas encore partager d'images dans le chat. Gardez votre outil de design pour le travail et ses commentaires ; utilisez TinyFloor pour les conversations autour."
       ]
     }
+  ],
+  "virtualCoworking": [
+    {
+      "title": "Deux sortes de coworking virtuel",
+      "body": [
+        "« Coworking virtuel » désigne deux choses différentes. Certains veulent un inconnu avec qui travailler côte à côte, pour la compagnie et un peu d'engagement. D'autres veulent leur propre équipe autour d'eux pendant que chacun avance. TinyFloor, c'est la seconde."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Avec des inconnus",
+          "Avec votre équipe"
+        ],
+        "rows": [
+          [
+            "Qui est là",
+            "Quelqu'un associé à vous pour une session",
+            "Les personnes avec qui vous travaillez chaque jour"
+          ],
+          [
+            "Comment ça commence",
+            "Vous réservez un créneau",
+            "Vous ouvrez le bureau ; ceux qui sont là sont là"
+          ],
+          [
+            "Caméras",
+            "En général allumées, pour l'engagement",
+            "Éteintes sauf pendant un appel"
+          ],
+          [
+            "Et ensuite",
+            "La session se termine et chacun repart",
+            "Vous allez voir quelqu'un quand vous en avez besoin"
+          ],
+          [
+            "TinyFloor",
+            "Pas fait pour ça",
+            "Fait pour ça"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Une journée de coworking sur l'étage",
+      "items": [
+        {
+          "title": "Arriver",
+          "detail": "9 h 00",
+          "body": "Ouvrez l'onglet et votre personnage rejoint votre poste. Ceux déjà là vous voient arriver et peuvent vous faire signe."
+        },
+        {
+          "title": "Concentration",
+          "detail": "9 h 15",
+          "body": "Passez en occupé. On voit que vous travaillez, personne ne vous entend, et personne n'attend de réponse immédiate."
+        },
+        {
+          "title": "Musique de fond",
+          "detail": "11 h 00",
+          "body": "Quelqu'un lance un morceau sur l'enceinte. Fort à côté, plus doux à travers l'étage : une présence plutôt qu'un bruit."
+        },
+        {
+          "title": "Une pause",
+          "detail": "13 h 00",
+          "body": "Passez en absent pour déjeuner. De retour à votre poste, deux minutes de discussion avec qui est là avant l'après-midi."
+        }
+      ]
+    },
+    {
+      "title": "Des sessions de concentration en équipe",
+      "body": [
+        "Certaines équipes aiment un peu de cadre. Une session de concentration, c'est une réunion où tout le monde travaille en silence et fait un point au début et à la fin."
+      ],
+      "items": [
+        {
+          "title": "Lancer une réunion appelée Focus",
+          "body": "Faites entrer qui veut participer. Dites en une phrase ce que vous allez faire."
+        },
+        {
+          "title": "Couper le micro et travailler",
+          "body": "Micros coupés, caméras facultatives. La réunion est là pour que vous sachiez que vous n'êtes pas seul à travailler."
+        },
+        {
+          "title": "Faire le point à la fin",
+          "body": "Une phrase chacun : fait, pas fait, la suite. Puis sortez de la salle."
+        }
+      ]
+    },
+    {
+      "title": "Pourquoi travailler près des autres aide",
+      "body": [
+        "Des études sur la perception ambiante au travail ont montré que voir d'un coup d'œil la présence de ses collègues donnait le sentiment que d'autres travaillaient aussi, et menait à davantage d'échanges informels. Dans les données Gallup de 2024, les personnes en télétravail complet se disaient plus souvent seules que celles sur site, 25 % contre 16 %. Un étage où votre équipe est visiblement présente aide sur les deux plans, sans que personne ait à être devant la caméra."
+      ]
+    },
+    {
+      "title": "Ce qu'il n'est pas",
+      "body": [
+        "TinyFloor n'est pas un espace de coworking public. Un bureau est réservé à votre équipe : pas d'inconnus avec qui travailler, et pas de mise en relation avec d'autres personnes. Il n'y a ni minuteur de session, ni séries, ni rien qui compte combien de temps vous avez travaillé. Si vous travaillez seul et cherchez la compagnie d'inconnus, un service de body doubling vous conviendra mieux ; si vous voulez votre équipe autour de vous pendant que vous travaillez, c'est ici."
+      ]
+    }
   ]
 }

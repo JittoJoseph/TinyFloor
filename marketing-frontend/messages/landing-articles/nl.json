@@ -3383,5 +3383,104 @@
         "TinyFloor is niet gekoppeld aan Figma, Sketch of Adobe, en slaat geen bestanden op. Gedeelde schermen sturen het beeld in een resolutie die is afgestemd op scherpe tekst: prima om een layout door te nemen, maar geen vervanging voor het zelf openen van het bestand om een kleur of pixel te checken. Crits worden niet opgenomen en afbeeldingen delen in de chat kan nog niet. Houd je designtool voor het werk en de opmerkingen; gebruik TinyFloor voor de gesprekken eromheen."
       ]
     }
+  ],
+  "virtualCoworking": [
+    {
+      "title": "Twee soorten virtueel coworken",
+      "body": [
+        "\"Virtueel coworken\" betekent twee verschillende dingen. Sommige mensen willen een onbekende om naast te werken, voor gezelschap en een beetje stok achter de deur. Anderen willen hun eigen team om zich heen terwijl iedereen aan het werk is. TinyFloor is de tweede soort."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Met onbekenden",
+          "Met je team"
+        ],
+        "rows": [
+          [
+            "Wie er is",
+            "Iemand die voor een sessie aan je gekoppeld wordt",
+            "De mensen met wie je elke dag werkt"
+          ],
+          [
+            "Hoe het begint",
+            "Je boekt een tijdslot",
+            "Je opent het kantoor; wie er is, is er"
+          ],
+          [
+            "Camera's",
+            "Meestal aan, als stok achter de deur",
+            "Uit, tenzij je in een gesprek zit"
+          ],
+          [
+            "Wat er daarna gebeurt",
+            "De sessie eindigt en jullie gaan ieder je weg",
+            "Je loopt erheen als je iemand nodig hebt"
+          ],
+          [
+            "TinyFloor",
+            "Niet waarvoor het is",
+            "Waarvoor het gemaakt is"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Een coworkingdag op de verdieping",
+      "items": [
+        {
+          "title": "Aankomen",
+          "detail": "9:00",
+          "body": "Open het tabblad en je poppetje loopt naar je bureau. Wie er al is, ziet je binnenkomen en kan zwaaien."
+        },
+        {
+          "title": "Geconcentreerd",
+          "detail": "9:15",
+          "body": "Zet jezelf op bezet. Je bent zichtbaar aan het werk, niemand hoort je, en niemand verwacht meteen antwoord."
+        },
+        {
+          "title": "Muziek op de achtergrond",
+          "detail": "11:00",
+          "body": "Iemand zet een nummer op de speaker. Dichtbij is het hard en over de verdieping zachter, dus het is gezelschap in plaats van herrie."
+        },
+        {
+          "title": "Een pauze",
+          "detail": "13:00",
+          "body": "Zet jezelf op afwezig voor de lunch. Terug aan je bureau, twee minuten kletsen met wie er is voordat de middag begint."
+        }
+      ]
+    },
+    {
+      "title": "Focussessies met je team",
+      "body": [
+        "Sommige teams houden van een beetje structuur. Een focussessie is een meeting waarin iedereen stil werkt en aan het begin en het eind even meldt waar hij staat."
+      ],
+      "items": [
+        {
+          "title": "Start een meeting die Focus heet",
+          "body": "Vraag wie wil erbij. Zeg in één zin wat je gaat doen."
+        },
+        {
+          "title": "Dempen en werken",
+          "body": "Microfoons uit, camera's vrijwillig. De meeting is er zodat je weet dat je niet de enige bent die werkt."
+        },
+        {
+          "title": "Aan het eind even melden",
+          "body": "Eén zin per persoon: af, niet af, wat er nu komt. Loop dan de ruimte uit."
+        }
+      ]
+    },
+    {
+      "title": "Waarom werken in de buurt van anderen helpt",
+      "body": [
+        "Onderzoek naar omgevingsbewustzijn op het werk vond dat het in één oogopslag zien van de aanwezigheid van collega's mensen het gevoel gaf dat anderen ook werkten, en tot meer informeel contact leidde. In de cijfers van Gallup uit 2024 gaven volledig remote werkenden vaker aan zich eenzaam te voelen dan mensen op locatie, 25% tegenover 16%. Een verdieping waar je team zichtbaar is, helpt bij allebei, zonder dat iemand in beeld hoeft te zijn."
+      ]
+    },
+    {
+      "title": "Wat het niet is",
+      "body": [
+        "TinyFloor is geen openbare coworkingruimte. Een kantoor is privé voor je team, dus er zijn geen onbekenden om naast te werken en geen koppeling met andere mensen. Er zijn geen sessietimers, geen streaks en niets dat telt hoe lang je hebt gewerkt. Werk je alleen en zoek je gezelschap van onbekenden, dan past een body-doublingdienst beter; wil je je team om je heen terwijl je werkt, dan is dit het."
+      ]
+    }
   ]
 }

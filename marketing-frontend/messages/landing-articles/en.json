@@ -3383,5 +3383,104 @@
         "TinyFloor doesn't connect to Figma, Sketch or Adobe, and it doesn't store files. Shared screens carry the picture at a resolution tuned for sharp text, which is fine for reviewing a layout but not a substitute for opening the file yourself to check a colour or a pixel. There's no recording of crits and no image sharing in the chat yet. Keep your design tool for the work and its comments; use TinyFloor for the conversations around it."
       ]
     }
+  ],
+  "virtualCoworking": [
+    {
+      "title": "Two kinds of virtual coworking",
+      "body": [
+        "\"Virtual coworking\" means two different things. Some people want a stranger to work alongside, for company and a bit of accountability. Others want their own team around while everyone gets on with their work. TinyFloor is the second kind."
+      ],
+      "table": {
+        "head": [
+          "",
+          "With strangers",
+          "With your team"
+        ],
+        "rows": [
+          [
+            "Who's there",
+            "Someone matched to you for a session",
+            "The people you work with every day"
+          ],
+          [
+            "How it starts",
+            "You book a slot",
+            "You open the office; whoever's in is in"
+          ],
+          [
+            "Cameras",
+            "Usually on, for accountability",
+            "Off unless you're in a call"
+          ],
+          [
+            "What happens next",
+            "The session ends and you part ways",
+            "You walk over when you need someone"
+          ],
+          [
+            "TinyFloor",
+            "Not what it's for",
+            "What it's built for"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "A coworking day on the floor",
+      "items": [
+        {
+          "title": "Arrive",
+          "detail": "9:00",
+          "body": "Open the tab and your character walks to your desk. Teammates already in see you arrive and can wave."
+        },
+        {
+          "title": "Heads down",
+          "detail": "9:15",
+          "body": "Set yourself busy. You're visibly working, nobody can hear you, and nobody expects a reply right away."
+        },
+        {
+          "title": "Background music",
+          "detail": "11:00",
+          "body": "Someone puts a track on the speaker. It's loud near the speaker and fades across the floor, so it's company rather than noise."
+        },
+        {
+          "title": "A break",
+          "detail": "13:00",
+          "body": "Set yourself away for lunch. Back at your desk, a two-minute chat with whoever's around before the afternoon."
+        }
+      ]
+    },
+    {
+      "title": "Focus sessions with your team",
+      "body": [
+        "Some teams like a little structure. A focus session is a meeting where everyone works quietly and checks in at the start and the end."
+      ],
+      "items": [
+        {
+          "title": "Start a meeting called Focus",
+          "body": "Ask in whoever wants to join. Say in one line what you'll get done."
+        },
+        {
+          "title": "Mute and work",
+          "body": "Microphones off, cameras optional. The meeting is there so you know you're not the only one working."
+        },
+        {
+          "title": "Check in at the end",
+          "body": "One line each: done, not done, what's next. Then walk out of the room."
+        }
+      ]
+    },
+    {
+      "title": "Why working near others helps",
+      "body": [
+        "Studies of ambient awareness at work found that seeing colleagues' presence at a glance made people feel others were working too, and led to more informal contact. In Gallup's 2024 data, fully remote workers reported loneliness more often than people on site, 25% against 16%. A floor where your team is visibly around addresses both, without anyone having to be on camera."
+      ]
+    },
+    {
+      "title": "What it isn't",
+      "body": [
+        "TinyFloor isn't a public coworking space. An office is private to your team, so there are no strangers to work alongside and no matching with other people. There are no session timers, no streaks and nothing that counts how long you worked. If you work alone and want company from strangers, a body-doubling service is the better fit; if you want your team around while you work, this is it."
+      ]
+    }
   ]
 }

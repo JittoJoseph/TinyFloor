@@ -2058,5 +2058,496 @@
         "Hinnat, rajat ja ominaisuudet ovat Gatherin ja Kumospacen omilta hintasivuilta ja ohjekeskuksista, luettu lokakuussa 2026, Yhdysvaltain dollareina ilman veroja. Mitä niissä ei kerrottu, jätimme pois arvaamisen sijaan. Teemme TinyFlooria, joten kerromme suoraan, mitä se ei tee. Hinnat muuttuvat: tarkista kunkin tuotteen sivu ennen ostamista."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "Näin päiväpalaveri sujuu TinyFloorissa",
+      "body": [
+        "Jokaisessa toimistossa on pääkokous, joka on aina auki. Päiväpalaveri on se huone joka päivä samaan aikaan: kukaan ei lähetä linkkiä, eikä kukaan odota järjestäjää odotushuoneessa."
+      ],
+      "items": [
+        {
+          "title": "Sisään",
+          "detail": "9.58",
+          "body": "Liity pääkokoukseen, niin hahmosi kävelee kokoushuoneeseen. Kaikki kerroksessa näkevät huoneen täyttyvän."
+        },
+        {
+          "title": "Kierros",
+          "detail": "10.00",
+          "body": "Ensin ääni, kamerat jos ihmiset haluavat. Puhuja saa ison kortin, joten on selvää, kenen vuoro on."
+        },
+        {
+          "title": "Ulos",
+          "detail": "10.10",
+          "body": "Kävele ulos huoneesta poistuaksesi kokouksesta ja palaa työpisteellesi. Minuuttia pidempää vaativa asia jatkuu jonkun työpisteellä niiden kahden kanssa, joita se koskee."
+        }
+      ]
+    },
+    {
+      "title": "Kolme toimivaa muotoa",
+      "body": [
+        "Valitse yksi ja pidä siitä kiinni. Joka viikko muotoaan vaihtava päiväpalaveri muuttuu tilannekokoukseksi."
+      ],
+      "table": {
+        "head": [
+          "Muoto",
+          "Miten se menee",
+          "Sopii"
+        ],
+        "rows": [
+          [
+            "Kolme kysymystä",
+            "Jokainen: mitä sain valmiiksi, mitä teen tänään, mikä on esteenä.",
+            "Uusille tiimeille ja tiimeille, joiden työ ei ole yhdellä taululla."
+          ],
+          [
+            "Taulun läpikäynti",
+            "Käydään taulu läpi oikealta vasemmalle, valmista lähinnä oleva työ ensin. Puhut, kun oma korttisi tulee vastaan.",
+            "Tiimeille, joilla on yhteinen Kanban- tai sprinttitaulu. Jaa se näytöllä."
+          ],
+          [
+            "Yksi lause ja parkkipaikka",
+            "Yksi lause kultakin, sitten esiin nousseet kysymykset niille, jotka niitä tarvitsevat.",
+            "Pienille, hioutuneille tiimeille, jotka juttelevat muutenkin koko päivän."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Kuinka kauan sen pitäisi kestää",
+      "body": [
+        "Laske noin minuutti henkeä kohden ja pari minuuttia parkkipaikalle. Noin 12 hengen jälkeen kierros kestää kauemmin kuin jaksaa kuunnella; jakakaa projektin mukaan tai käykää taulu läpi."
+      ],
+      "table": {
+        "head": [
+          "Tiimi",
+          "Kierros",
+          "Parkkipaikan kanssa"
+        ],
+        "rows": [
+          [
+            "4 henkeä",
+            "4 minuuttia",
+            "noin 6 minuuttia"
+          ],
+          [
+            "8 henkeä",
+            "8 minuuttia",
+            "noin 10 minuuttia"
+          ],
+          [
+            "12 henkeä",
+            "12 minuuttia",
+            "noin 15 minuuttia"
+          ],
+          [
+            "15 henkeä",
+            "15 minuuttia",
+            "jakakaa tai käykää taulu läpi"
+          ]
+        ],
+        "note": "Nyrkkisääntö, ei ajastin. 15 minuutin päiväpalaveri joka työpäivä tekee noin 5 tuntia kokouksia kuukaudessa, millä tahansa paketilla."
+      }
+    },
+    {
+      "title": "Näin se pysyy lyhyenä",
+      "items": [
+        {
+          "title": "Aloita ajallaan",
+          "body": "Aloita minuutilleen, vaikka joku puuttuisi. Kerros näyttää, kuka on paikalla, kuka poissa ja kuka vielä puhelussa, joten tiedät, ketä odottaa ja ketä ei."
+        },
+        {
+          "title": "Jatkokysymykset työpisteelle",
+          "body": "Kun kahden pitää syventyä johonkin, he menevät palaverin jälkeen työpisteelle. Muun huoneen ei tarvitse kuunnella."
+        },
+        {
+          "title": "Näytä, älä kuvaile",
+          "body": "Jaa ikkuna, jossa on taulu tai bugi, sen sijaan että luet sen ääneen. Yksi klikkaus, ja se on kaikkien näytöllä."
+        },
+        {
+          "title": "Kamerat vapaaehtoisia",
+          "body": "Se, jolla ei ole kameraa päällä, näkyy korttina, joka syttyy kun hän puhuu. Kamera, joka on ollut päällä kymmenen minuuttia kenenkään puhumatta, sammuu itsestään."
+        }
+      ]
+    },
+    {
+      "title": "Livenä, kirjallisesti vai molemmat",
+      "body": [
+        "Eri aikavyöhykkeille hajautunut tiimi ei aina voi tavata samaan aikaan. Moni kirjoittaa päivityksen toimiston chatin kanavalle ja pitää livepalaverin päiville, jolloin on jotain päätettävää: julkaisu, ongelma, uusi ihminen."
+      ],
+      "items": [
+        {
+          "title": "Livenä",
+          "body": "Esteet ratkeavat nopeammin, ja se on päivän ainoa hetki, jolloin koko tiimi on samassa huoneessa. Paras, kun useimmilla on samat työajat."
+        },
+        {
+          "title": "Kirjallisesti",
+          "body": "Toimii aikavyöhykkeiden yli ja jättää jäljen. Helppo silmäillä ja helppo ohittaa, joten esteet voivat jäädä huomaamatta."
+        },
+        {
+          "title": "Molemmat",
+          "body": "Kirjalliset päivitykset joka päivä ja lyhyt livekierros kerran tai kaksi viikossa, kaikille sopivaan aikaan."
+        }
+      ]
+    },
+    {
+      "title": "Mitä TinyFloor ei tee päiväpalavereille",
+      "body": [
+        "Ei ole bottia, joka esittää kysymykset puolestasi, ei muistutusta, ei ajastinta eikä tallennusta. Se ei ole yhteydessä Jiraan, Lineariin tai GitHubiin, joten taulu tulee näytölle jaettuna ikkunana. Jos haluat kirjalliset päivitykset kerättyä automaattisesti, chat-työkalunne botti tekee sen paremmin; TinyFloor on paikka, jossa tiimi tapaa."
+      ]
+    }
+  ],
+  "pairProgramming": [
+    {
+      "title": "Näin pariohjelmointi alkaa",
+      "body": [
+        "Toimistolla pariohjelmointi alkaa usein kysymyksellä ”onko sinulla hetki?” jonkun työpisteellä. Etänä siihen tarvitaan yleensä kalenterikutsu, joten sitä tehdään harvemmin. TinyFloorissa se alkaa kuten toimistolla."
+      ],
+      "items": [
+        {
+          "title": "Katso, kuka on vapaana",
+          "detail": "1",
+          "body": "Työpisteet ja tilat näyttävät, kuka keskittyy, kuka on poissa ja kuka on jo puhelussa. Varattu tarkoittaa odota; tavoitettavissa tarkoittaa mene."
+        },
+        {
+          "title": "Mene ja puhu",
+          "detail": "2",
+          "body": "Seiso vieressä ja napauta soittaaksesi. Se alkaa äänellä; laita kamera päälle, jos haluat."
+        },
+        {
+          "title": "Jaa ja tee töitä",
+          "detail": "3",
+          "body": "Jaa ikkuna, välilehti tai koko näyttö: editori, pääte, kaatuva testi."
+        },
+        {
+          "title": "Palaa",
+          "detail": "4",
+          "body": "Lopeta puhelu, niin olet taas omien töidesi ääressä. Puhelu pysyy yhdistettynä, kun liikut, joten mikään ei katkea, jos kävelet ympäriinsä."
+        }
+      ]
+    },
+    {
+      "title": "Etänä toimivat pariohjelmoinnin tavat",
+      "body": [
+        "Jokainen toimii niin, että yksi jakaa ja kaksi puhuu. Kun haluatte vaihtaa kuljettajaa, pushatkaa keskeneräisen työn haara, ja toinen jakaa oman näyttönsä."
+      ],
+      "table": {
+        "head": [
+          "Tapa",
+          "Miten se menee",
+          "Hyvä"
+        ],
+        "rows": [
+          [
+            "Kuljettaja ja navigaattori",
+            "Toinen kirjoittaa, toinen ajattelee eteenpäin, lukee ja huomaa virheet. Vaihtakaa 20–30 minuutin välein.",
+            "Useimpaan pariohjelmointiin ja jonkun tuomiseen vieraaseen koodiin."
+          ],
+          [
+            "Pingpong",
+            "Toinen kirjoittaa kaatuvan testin, toinen saa sen menemään läpi ja kirjoittaa seuraavan.",
+            "Testivetoiseen työhön ja siihen, että molemmat ovat yhtä mukana."
+          ],
+          [
+            "Strong-style",
+            "Ideat menevät koodiin vain toisen käsien kautta: navigaattori sanoo mitä, kuljettaja kirjoittaa.",
+            "Opettamiseen ja perehdytykseen, jotta uudempi ei vain katsele."
+          ],
+          [
+            "Esteen purku",
+            "Kymmenen minuuttia jonkun toisen ongelman parissa, sitten takaisin.",
+            "Nopeaan kysymykseen, joka muuten odottaisi huomiseen."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Näin jaettu koodi on helppo lukea",
+      "items": [
+        {
+          "title": "Jaa yksi ikkuna",
+          "body": "Jaettu näyttö on viritetty terävälle tekstille eikä sulavalle liikkeelle. Yksi editori-ikkuna on luettavampi kuin koko leveä näyttö pienennettynä."
+        },
+        {
+          "title": "Suurenna fonttia",
+          "body": "Nosta editorin ja päätteen kokoa parilla kolmella pykälällä pariohjelmoinnin ajaksi. Mikä on mukava omalla näytölläsi, on pieni toisen näytöllä."
+        },
+        {
+          "title": "Kaikki yhdessä paikassa",
+          "body": "Jaa editori ja pääte samaan ikkunaan, ettei jakoa tarvitse vaihtaa joka kerta, kun testit ajetaan."
+        },
+        {
+          "title": "Kerro, mihin katsot",
+          "body": "Osoita tiedostolla ja rivinumerolla: ”rivi 84 käsittelijässä” on parempi kuin ”vähän ylempää, ei, tuossa”."
+        }
+      ]
+    },
+    {
+      "title": "Kun kahdesta tulee kolme",
+      "body": [
+        "Kävele puhelun aikana kolmannen kollegan luo, niin TinyFloor tarjoaa tehdä siitä kokouksen teille kolmelle. Suunniteltuun mob- tai ensemble-istuntoon käyttäkää kokoushuonetta: puhuja saa ison kortin, ja jaettu näyttö on ihmisten vieressä."
+      ]
+    },
+    {
+      "title": "Mitä käyttää rinnalla",
+      "body": [
+        "TinyFloor on paikka, jossa löydätte toisenne ja puhutte. Se ei tee kaikkea, mitä pariohjelmointi voi tarvita:"
+      ],
+      "items": [
+        {
+          "title": "Ei etäohjausta",
+          "body": "Toinen näkee näyttösi mutta ei voi kirjoittaa siihen. Jos haluatte molemmat muokata samaa koodia, käyttäkää editorinne omaa työkalua, kuten VS Code Live Sharea tai JetBrains Code With Meta, ja TinyFlooria äänelle."
+        },
+        {
+          "title": "Ei ääntä jaetulta näytöltä",
+          "body": "Näytönjako välittää vain kuvan, ja sitä koodi tarvitsee."
+        },
+        {
+          "title": "Ei tallennusta",
+          "body": "Istuntoja ei tallenneta. Kirjatkaa päätökset pull requestiin tai tiimin chattiin."
+        },
+        {
+          "title": "Ei yhteyttä GitHubiin tai Jiraan",
+          "body": "Jakakaa pull request tai tiketti näytölle, niin katsotte sitä yhdessä."
+        }
+      ]
+    },
+    {
+      "title": "Tavat, joilla pariohjelmointi pysyy tervetulleena",
+      "items": [
+        {
+          "title": "Kunnioita varattua",
+          "body": "Varattu-tila on suljettu ovi. Kirjoita mieluummin viesti chattiin ja anna hänen tulla luoksesi."
+        },
+        {
+          "title": "Pidä istunnot lyhyinä",
+          "body": "Enintään tunti tai kaksi, tauoin. Koko päivän pariohjelmointi väsyttää, vaikka se sujuisi hyvin."
+        },
+        {
+          "title": "Tee kysymisestä tavallista",
+          "body": "Tiimi, jossa kysymysten kanssa mennään toisen luo, purkaa esteet minuuteissa eikä huomenna. Kokeneiden meneminen uudempien luo auttaa yhtä paljon kuin toisin päin."
+        }
+      ]
+    }
+  ],
+  "onboarding": [
+    {
+      "title": "Uuden ihmisen ensimmäinen päivä kerroksessa",
+      "body": [
+        "Etätiimissä kukaan ei näe, että joku uusi on aloittanut. Kerroksessa näkee: työpisteellä on uusi nimi, ja tiimi on muutaman askeleen päässä."
+      ],
+      "items": [
+        {
+          "title": "Avaa kutsulinkki",
+          "detail": "9.00",
+          "body": "Yksi linkki koko toimistolle. Kirjaudu Googlella tai sähköpostiosoitteella, selaimessa, mitään asentamatta."
+        },
+        {
+          "title": "Valitse työpiste",
+          "detail": "9.05",
+          "body": "Saavut vapaan työpisteen viereen. Istu ja tee siitä omasi; sen jälkeen kukaan muu ei istu siinä."
+        },
+        {
+          "title": "Saa vilkutus",
+          "detail": "9.05",
+          "body": "Kaikki jo kerroksessa olevat näkevät sinun tulevan sisään ja voivat vilkuttaa. Pieni asia, joka kertoo uudelle, että hänet on huomattu."
+        },
+        {
+          "title": "Sano hei päiväpalaverissa",
+          "detail": "10.00",
+          "body": "Kävele kokoushuoneeseen muiden kanssa. Minuutti esittäytymiseen, ja tiimi on tavannut sinut."
+        },
+        {
+          "title": "Istu kummisi kanssa",
+          "detail": "11.00",
+          "body": "Kävele kummisi työpisteelle, jakakaa näyttö ja tehkää ensimmäinen tehtävä yhdessä."
+        }
+      ]
+    },
+    {
+      "title": "Toimiva ensimmäinen viikko",
+      "body": [
+        "Pieniä askelia, samat ihmiset ja joku, jolta kysyä. Tässä viikko, jota moni pieni tiimi käyttää:"
+      ],
+      "table": {
+        "head": [
+          "Päivä",
+          "Mitä tapahtuu",
+          "Kerroksessa"
+        ],
+        "rows": [
+          [
+            "Maanantai",
+            "Tunnukset ja asennukset, tiimiin tutustuminen, ensimmäinen pieni tehtävä kummin kanssa.",
+            "Esittäytyminen päiväpalaverissa, sitten suurin osa päivästä kummin työpisteellä."
+          ],
+          [
+            "Tiistai",
+            "Ensimmäisen tehtävän viimeistely. Lyhyet juttutuokiot kahden tai kolmen ihmisen kanssa työn muista osista.",
+            "Käy jokaisen luona vartin ajan."
+          ],
+          [
+            "Keskiviikko",
+            "Toinen tehtävä, enemmän itsenäisesti. Kysymyksiä sitä mukaa kuin niitä tulee.",
+            "Tila tavoitettavissa, ja kollegat, jotka tietävät odottaa vierailuja."
+          ],
+          [
+            "Torstai",
+            "Osallistuminen katselmointiin, suunnitteluun tai asiakaspuheluun.",
+            "Liity kokoukseen kokoushuoneessa; kuunteleminenkin lasketaan."
+          ],
+          [
+            "Perjantai",
+            "Keskustelu esihenkilön kanssa: mikä on selvää, mikä ei, mitä seuraavaksi.",
+            "Puhelu esihenkilön työpisteellä."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Mikä etäperehdytyksestä yleensä puuttuu",
+      "items": [
+        {
+          "title": "Tieto siitä, keneltä kysyä",
+          "body": "Toimistolla opit, kuka tietää mitä, näkemällä kenen luo ihmiset menevät. Kerroksessa näet saman: kuka puhuu kenen kanssa ja kuka on varattu."
+        },
+        {
+          "title": "Kysyminen ilman tunnetta häiritsemisestä",
+          "body": "Viestin kirjoittaminen tuntemattomalle tuntuu isolta. Tavoitettavissa olevan luo käveleminen on kuin kumartuisi toimistolla viereiselle pöydälle."
+        },
+        {
+          "title": "Näkyminen työn ääressä",
+          "body": "Uusi ihminen työpisteellä on näkyvästi osa tiimiä ensimmäisestä päivästä, eikä vain nimi kanavalla."
+        },
+        {
+          "title": "Kuulla, miten tiimi toimii",
+          "body": "Yhteen tai kahteen kokoukseen osallistuminen opettaa enemmän päätöksenteosta kuin mikään dokumentti."
+        }
+      ]
+    },
+    {
+      "title": "Näin kummijärjestelmä toimii etänä",
+      "items": [
+        {
+          "title": "Valitse joku lähellä työtä",
+          "body": "Ei esihenkilöä eikä tiimin kiireisintä. Joku, joka tekee samanlaista työtä ja jolla on aikaa kysymyksille."
+        },
+        {
+          "title": "Varaa aikaa kahdelle ensimmäiselle päivälle",
+          "body": "Suurin osa maanantaista ja osa tiistaista yhdessä, näyttöä jakaen. Sen jälkeen uusi tulee käymään, kun tarvitsee."
+        },
+        {
+          "title": "Tee ensimmäinen käynti itse",
+          "body": "Kummi menee ensin, ensimmäisenä päivänä. Se näyttää uudelle, että toisen luo meneminen on täällä tavallista."
+        },
+        {
+          "title": "Pidä kanava kysymyksille",
+          "body": "Kanava tiimin chatissa kysymyksille, joita kenenkään ei tarvitse hävetä. Viestit säilyvät, joten seuraava uusi voi lukea vastaukset."
+        }
+      ]
+    },
+    {
+      "title": "Mitä TinyFloor ei tee perehdytykselle",
+      "body": [
+        "Se ei ole HR-työkalu. Siinä ei ole perehdytyksen tarkistuslistoja, asiakirjojen allekirjoitusta, tunnusten luontia eikä kertakirjautumista. Pitäkää käsikirja dokumenttityökalussanne ja tunnukset hallintatyökaluissanne; TinyFloor on paikka, jossa uusi tapaa tiimin ja saa apua. Kutsuminen vaatii yhden linkin, ja minuuttia myöhemmin hän voi istua työpisteellä."
+      ]
+    }
+  ],
+  "watercooler": [
+    {
+      "title": "Mitä varten kahvinkeitin oikeasti oli",
+      "body": [
+        "Kukaan ei kaipaa kahvia. Etätiimit kaipaavat keskustelua, jota kukaan ei suunnitellut: ohimennen esitettyä kysymystä, vitsiä, niitä viittä minuuttia, joiden jälkeen joku tunsi kuuluvansa tiimiin. Gallupin vuoden 2024 aineistossa 25 % täysin etänä työskentelevistä kertoi tuntevansa yksinäisyyttä, kun paikan päällä työskentelevistä näin kertoi 16 %.",
+        "Sovitut sosiaaliset puhelut yrittävät korjata tätä ja tuntuvat usein vain uudelta kokoukselta. Paremmin toimii paikka, jossa toisiin voi taas törmätä."
+      ]
+    },
+    {
+      "title": "Näin se tapahtuu kerroksessa",
+      "items": [
+        {
+          "title": "Joku tulee sisään",
+          "body": "Kun kollega saapuu, kaikki jo kerroksessa olevat näkevät muutaman sekunnin ajan hillityn ”Ana on paikalla” ja vilkutusnapin. Yksi vilkutus, ja päivä alkaa tervehdyksellä."
+        },
+        {
+          "title": "Kuljet jonkun ohi",
+          "body": "Matkalla kokoushuoneeseen tai taululle kuljet työpisteiden ohi. Pysähdy jonkun viereen, niin puhelu on yhden napautuksen päässä; jatka matkaa, niin mitään ei tapahdu."
+        },
+        {
+          "title": "Musiikkia huoneessa",
+          "body": "Kävele kaiuttimen luo ja laita kappale soimaan. Kaikki kuulevat saman kappaleen, kovaa kaiuttimen lähellä ja hiljempaa mitä kauemmas kävelee, joten työpisteillä voi jatkaa töitä."
+        },
+        {
+          "title": "Chat puheluiden välissä",
+          "body": "Kanava kaikelle, mikä ei ole työtä, kuvineen ja reaktioineen. Viestit säilyvät, joten kukaan ei missaa koirakuvaa sen takia, että oli kokouksessa."
+        }
+      ]
+    },
+    {
+      "title": "Pienelle tiimille sopivat rituaalit",
+      "body": [
+        "Lyhyitä, vapaaehtoisia ja säännöllisiä. Kahdeksan hengen tiimi ei tarvitse tapahtumaohjelmaa, vaan muutaman tavan, joihin ihmiset oikeasti tulevat."
+      ],
+      "table": {
+        "head": [
+          "Rituaali",
+          "Miten se menee",
+          "Kuinka usein"
+        ],
+        "rows": [
+          [
+            "Perjantaikahvit",
+            "Aloita kokous nimeltä Kahvit ja kutsu kaikki mukaan. Vartti, ei asialistaa, kamerat vapaaehtoisia.",
+            "Viikoittain"
+          ],
+          [
+            "Näytä ja kerro",
+            "Joku jakaa näyttönsä viideksi minuutiksi: sivuprojekti, valokuva, työkalu, josta hän pitää.",
+            "Joka toinen viikko"
+          ],
+          [
+            "Viikon onnistumiset",
+            "Viesti kanavalle perjantai-iltapäivänä, rivi kultakin.",
+            "Viikoittain"
+          ],
+          [
+            "Luonnos taululle",
+            "Jätä jotain jaetulle taululle aamuksi: kysymys, piirros, äänestys.",
+            "Milloin vain"
+          ],
+          [
+            "Lounas kerroksessa",
+            "Ne, joita huvittaa, syövät työpisteellään toimisto auki ja juttelevat, jos haluavat.",
+            "Milloin vain"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Mikä tekee siitä väkinäistä",
+      "items": [
+        {
+          "title": "Pakollisuus",
+          "body": "Sosiaalinen puhelu, johon on pakko tulla, on kokous. Kutsu, äläkä laske, kuka tuli."
+        },
+        {
+          "title": "Kamerapakko",
+          "body": "Katseltavana oleminen väsyttää. Äänellä käytävään keskusteluun on helpompi tulla mukaan, ja se, jolla ei ole kameraa, näkyy silti korttina, joka syttyy kun hän puhuu."
+        },
+        {
+          "title": "Pisteet ja tulostaulut",
+          "body": "Putket ja merkit tekevät yhteisestä ajasta kilpailun. TinyFloorissa niitä ei ole, tarkoituksella."
+        },
+        {
+          "title": "Sen seuraaminen, kuka on paikalla",
+          "body": "Mikään kerroksessa ei laske, kuinka kauan joku on ollut paikalla tai toimettomana. Ihmiset rentoutuvat, kun kukaan ei pidä kirjaa."
+        }
+      ]
+    },
+    {
+      "title": "Mitä TinyFloor ei tee",
+      "body": [
+        "Siinä ei ole pelejä, tietovisoja, YouTube-näyttöjä eikä tapahtumatiloja sadalle vieraalle. Se on pieni toimisto tiimille, joka tekee töitä yhdessä joka päivä, ja kahvinkeitin on hetki tehtävien välissä. Yrityksen juhliin tai isoon sosiaaliseen tapahtumaan Kumospacessa ja Gatherissa on enemmän valmiina."
+      ]
+    }
   ]
 }

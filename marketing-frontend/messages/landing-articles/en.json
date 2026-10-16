@@ -2058,5 +2058,496 @@
         "Prices, limits and features come from Gather's and Kumospace's own pricing pages and help centres, read in October 2026, in US dollars before tax. If something wasn't stated there, we left it out rather than guess. We make TinyFloor, so we've said plainly what it doesn't do. Prices change: check each product's page before you buy."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "How a standup runs on TinyFloor",
+      "body": [
+        "Every office has a main meeting that's always open. Standup is that room at the same time every day: nobody sends a link, and nobody waits in a lobby for a host."
+      ],
+      "items": [
+        {
+          "title": "Walk in",
+          "detail": "9:58",
+          "body": "Join the main meeting and your character walks into the meeting room. Everyone on the floor can see the room filling up."
+        },
+        {
+          "title": "Go round",
+          "detail": "10:00",
+          "body": "Voice first, cameras if people want them. Whoever is talking takes the big card, so it's clear who has the floor."
+        },
+        {
+          "title": "Walk out",
+          "detail": "10:10",
+          "body": "Walk out of the room to leave, and go back to your desk. Anything that needs more than a minute carries on at someone's desk with the two people it concerns."
+        }
+      ]
+    },
+    {
+      "title": "Three formats that work",
+      "body": [
+        "Pick one and keep it. A standup that changes shape every week turns into a status meeting."
+      ],
+      "table": {
+        "head": [
+          "Format",
+          "How it goes",
+          "Suits"
+        ],
+        "rows": [
+          [
+            "Three questions",
+            "Each person: what I finished, what I'm on today, what's in my way.",
+            "New teams, and teams whose work doesn't sit on one board."
+          ],
+          [
+            "Walk the board",
+            "Go through the board from right to left, the work closest to done first. People speak when their card comes up.",
+            "Teams that share a Kanban or sprint board. Share it on screen."
+          ],
+          [
+            "One line and a parking lot",
+            "One sentence each, then the questions that came up, taken by whoever needs them.",
+            "Small, settled teams that talk all day anyway."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "How long it should take",
+      "body": [
+        "Plan on about a minute a person and a couple of minutes for the parking lot. Past 12 or so, a round takes longer than people can listen; split by project, or walk the board instead."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Round",
+          "With the parking lot"
+        ],
+        "rows": [
+          [
+            "4 people",
+            "4 minutes",
+            "about 6 minutes"
+          ],
+          [
+            "8 people",
+            "8 minutes",
+            "about 10 minutes"
+          ],
+          [
+            "12 people",
+            "12 minutes",
+            "about 15 minutes"
+          ],
+          [
+            "15 people",
+            "15 minutes",
+            "split it, or walk the board"
+          ]
+        ],
+        "note": "A rule of thumb, not a timer. A 15-minute standup every working day comes to about 5 hours of meetings a month, on any plan."
+      }
+    },
+    {
+      "title": "Keeping it short",
+      "items": [
+        {
+          "title": "Start on time",
+          "body": "Start at the minute even if someone's missing. The floor shows who's in, who's away and who's still on a call, so you can tell who to wait for and who not to."
+        },
+        {
+          "title": "Take follow-ups to a desk",
+          "body": "When two people need to dig into something, they walk to a desk after standup. The rest of the room doesn't have to listen."
+        },
+        {
+          "title": "Show, don't describe",
+          "body": "Share a window for the board or a bug instead of reading it out. One click, and it's on everyone's screen."
+        },
+        {
+          "title": "Leave cameras optional",
+          "body": "Anyone without a camera shows as a card that lights up when they talk. A camera that's been on through ten quiet minutes turns itself off."
+        }
+      ]
+    },
+    {
+      "title": "Live, written, or both",
+      "body": [
+        "A team spread across time zones can't always meet at one time. Many post a written update in a channel of the office's chat, and keep the live standup for the days with something to decide: a release, a problem, a new person."
+      ],
+      "items": [
+        {
+          "title": "Live",
+          "body": "Quicker to unblock, and it's the one time a day the whole team is in one room. Best when most of you share working hours."
+        },
+        {
+          "title": "Written",
+          "body": "Works across time zones and leaves a record. Easy to skim, easy to skip, so blockers can sit unnoticed."
+        },
+        {
+          "title": "Both",
+          "body": "Written updates every day, and a short live round once or twice a week, at a time that suits everyone."
+        }
+      ]
+    },
+    {
+      "title": "What TinyFloor doesn't do for standups",
+      "body": [
+        "There's no standup bot that asks the questions for you, no reminder, no timer and no recording. It doesn't connect to Jira, Linear or GitHub, so the board goes on screen as a shared window. If you need written standups collected automatically, a bot in your chat tool does that better; TinyFloor is where the team meets."
+      ]
+    }
+  ],
+  "pairProgramming": [
+    {
+      "title": "How a pairing session starts",
+      "body": [
+        "In an office, pairing often starts with \"got a minute?\" at someone's desk. Remote, it usually needs a calendar invite, so it happens less. On TinyFloor it starts the way it did in the office."
+      ],
+      "items": [
+        {
+          "title": "See who's free",
+          "detail": "1",
+          "body": "Desks and statuses show who's heads down, who's away and who's already in a call. Busy means wait; available means walk over."
+        },
+        {
+          "title": "Walk over and talk",
+          "detail": "2",
+          "body": "Stand next to them and tap to call. It starts with voice; turn a camera on if you want one."
+        },
+        {
+          "title": "Share and work",
+          "detail": "3",
+          "body": "Share a window, a tab or your whole screen: the editor, the terminal, the failing test."
+        },
+        {
+          "title": "Walk back",
+          "detail": "4",
+          "body": "Hang up and you're back at your own work. The call stays connected while you move, so nothing drops if you wander."
+        }
+      ]
+    },
+    {
+      "title": "Pairing styles that work remotely",
+      "body": [
+        "Every style below works with one person sharing and both talking. To swap who drives, push a work-in-progress branch and the other person shares their screen instead."
+      ],
+      "table": {
+        "head": [
+          "Style",
+          "How it goes",
+          "Good for"
+        ],
+        "rows": [
+          [
+            "Driver and navigator",
+            "One types, the other thinks ahead, reads and catches mistakes. Swap every 20 to 30 minutes.",
+            "Most pairing, and bringing someone into unfamiliar code."
+          ],
+          [
+            "Ping-pong",
+            "One writes a failing test, the other makes it pass and writes the next test.",
+            "Test-driven work, and keeping both people equally involved."
+          ],
+          [
+            "Strong-style",
+            "Ideas go into the code only through the other person's hands: the navigator says what, the driver types it.",
+            "Teaching and onboarding, so the newer person isn't just watching."
+          ],
+          [
+            "Unblocking",
+            "Ten minutes on someone else's problem, then walk back.",
+            "The quick question that would otherwise wait for tomorrow."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Making shared code easy to read",
+      "items": [
+        {
+          "title": "Share one window",
+          "body": "A shared screen is tuned for sharp text rather than smooth motion. A single editor window reads better than a whole wide monitor scaled down."
+        },
+        {
+          "title": "Turn the font up",
+          "body": "Go up two or three sizes in the editor and terminal while you pair. What's comfortable on your screen is small on theirs."
+        },
+        {
+          "title": "Keep it in one place",
+          "body": "Split the editor and terminal in the same window, so the share doesn't need switching every time a test runs."
+        },
+        {
+          "title": "Say where you're looking",
+          "body": "Point by file and line number: \"line 84 in the handler\" beats \"up a bit, no, there\"."
+        }
+      ]
+    },
+    {
+      "title": "When two becomes three",
+      "body": [
+        "Walk up to a third teammate during a call and TinyFloor offers to make it a meeting for the three of you. For a planned mob or ensemble session, use the meeting room: whoever is talking takes the big card, and the shared screen sits beside the people."
+      ]
+    },
+    {
+      "title": "What to use alongside it",
+      "body": [
+        "TinyFloor is where you find each other and talk. It doesn't do everything a pairing session can need:"
+      ],
+      "items": [
+        {
+          "title": "No remote control",
+          "body": "The other person can see your screen but can't type into it. For both people editing the same code, use your editor's own tool, such as VS Code Live Share or JetBrains Code With Me, and keep TinyFloor for the voice."
+        },
+        {
+          "title": "No sound from the shared screen",
+          "body": "Screen sharing carries the picture only, which is what code needs."
+        },
+        {
+          "title": "No recording",
+          "body": "Sessions aren't recorded. Write down what you decided in the pull request or the team chat."
+        },
+        {
+          "title": "No GitHub or Jira connection",
+          "body": "Share the pull request or the ticket on screen to look at it together."
+        }
+      ]
+    },
+    {
+      "title": "Habits that keep pairing welcome",
+      "items": [
+        {
+          "title": "Respect busy",
+          "body": "A busy status is the closed door. Send a message in the chat instead, and let them come to you."
+        },
+        {
+          "title": "Keep sessions short",
+          "body": "An hour or two at most, with breaks. Pairing all day is tiring, even when it's going well."
+        },
+        {
+          "title": "Make asking normal",
+          "body": "A team where people walk over with questions unblocks in minutes, not tomorrow. Seniors walking over to juniors helps as much as the other way round."
+        }
+      ]
+    }
+  ],
+  "onboarding": [
+    {
+      "title": "A new person's first day on the floor",
+      "body": [
+        "On a remote team, nobody can see that someone new has started. On the floor they can: there's a new name at a desk, and the team is a short walk away."
+      ],
+      "items": [
+        {
+          "title": "Open the invite link",
+          "detail": "9:00",
+          "body": "One link for the whole office. Sign in with Google or an email address, in the browser, with nothing to install."
+        },
+        {
+          "title": "Pick a desk",
+          "detail": "9:05",
+          "body": "You arrive beside a free desk. Sit down and make it yours; from then on nobody else sits there."
+        },
+        {
+          "title": "Get a wave",
+          "detail": "9:05",
+          "body": "Everyone already on the floor sees you walk in and can wave. It's a small thing, and it tells the new person they've been noticed."
+        },
+        {
+          "title": "Say hello at standup",
+          "detail": "10:00",
+          "body": "Walk into the meeting room with everyone else. One minute to introduce yourself, and the team has met you."
+        },
+        {
+          "title": "Sit with your buddy",
+          "detail": "11:00",
+          "body": "Walk over to your buddy's desk, share a screen and work through the first task together."
+        }
+      ]
+    },
+    {
+      "title": "A first week that works",
+      "body": [
+        "Small steps, the same people, and someone to ask. Here's a week many small teams use:"
+      ],
+      "table": {
+        "head": [
+          "Day",
+          "What happens",
+          "On the floor"
+        ],
+        "rows": [
+          [
+            "Monday",
+            "Accounts and setup, meet the team, a first small task with the buddy.",
+            "Standup intro, then most of the day at the buddy's desk."
+          ],
+          [
+            "Tuesday",
+            "Finish the first task. Short calls with two or three people from other parts of the work.",
+            "Walk over to each of them for fifteen minutes."
+          ],
+          [
+            "Wednesday",
+            "A second task, more on their own. Questions as they come.",
+            "Available status, and teammates who know to expect visits."
+          ],
+          [
+            "Thursday",
+            "Sit in on a review, a planning session or a client call.",
+            "Join a meeting in the meeting room; listening counts."
+          ],
+          [
+            "Friday",
+            "A check-in with their manager: what's clear, what isn't, what's next.",
+            "A call at the manager's desk."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "What remote onboarding usually misses",
+      "items": [
+        {
+          "title": "Knowing who to ask",
+          "body": "In an office you learn who knows what by watching who people go to. On the floor, you can see the same thing: who's talking to whom, and who's busy."
+        },
+        {
+          "title": "Asking without feeling like an interruption",
+          "body": "Sending a message to someone you've never met feels like a lot. Walking up to an available person is the same as leaning over in an office."
+        },
+        {
+          "title": "Being seen working",
+          "body": "A new person at a desk is visibly part of the team from day one, instead of a name in a channel."
+        },
+        {
+          "title": "Overhearing how the team works",
+          "body": "Sitting in on a meeting or two teaches more about how decisions get made than any document."
+        }
+      ]
+    },
+    {
+      "title": "Making the buddy system work remotely",
+      "items": [
+        {
+          "title": "Pick someone close to the work",
+          "body": "Not the manager, and not the busiest person on the team. Someone who does similar work and has time for questions."
+        },
+        {
+          "title": "Book time on the first two days",
+          "body": "Most of Monday and some of Tuesday together, sharing a screen. After that, the new person walks over when they need to."
+        },
+        {
+          "title": "Make the first visit for them",
+          "body": "The buddy walks over first, on day one. It shows the new person that walking over is normal here."
+        },
+        {
+          "title": "Keep a channel for questions",
+          "body": "A channel in the team chat for questions nobody should feel silly asking. Messages stay, so the next new person can read the answers."
+        }
+      ]
+    },
+    {
+      "title": "What TinyFloor doesn't do for onboarding",
+      "body": [
+        "It isn't an HR tool. There are no onboarding checklists, document signing, account provisioning or single sign-on. Keep your handbook in your docs tool and your accounts in your admin tools; TinyFloor is where the new person meets the team and gets help. Inviting them takes one link, and they can be at a desk a minute later."
+      ]
+    }
+  ],
+  "watercooler": [
+    {
+      "title": "What the watercooler was really for",
+      "body": [
+        "Nobody misses the water. What remote teams miss is the conversation nobody planned: the question asked on the way past, the joke, the five minutes that made someone feel part of the team. In Gallup's 2024 data, 25% of fully remote workers reported loneliness, against 16% of people on site.",
+        "Scheduled social calls try to fix that and often feel like another meeting. What works better is giving people a place where running into each other can happen again."
+      ]
+    },
+    {
+      "title": "How it happens on the floor",
+      "items": [
+        {
+          "title": "Someone walks in",
+          "body": "When a teammate arrives, everyone already on the floor sees a quiet \"Ana is in\" with a wave button for a few seconds. One wave, and the day has started with a hello."
+        },
+        {
+          "title": "You pass someone",
+          "body": "Walking to the meeting room or the whiteboard, you go past desks. Stop next to someone and a call is one tap away; walk on and nothing happens."
+        },
+        {
+          "title": "Music in the room",
+          "body": "Walk up to the speaker and put a track on. Everyone hears the same song, loud near the speaker and fading as they walk away, so people at their desks can still work."
+        },
+        {
+          "title": "The chat between calls",
+          "body": "A channel for anything that isn't work, with photos and reactions. Messages stay, so nobody misses the dog picture because they were in a meeting."
+        }
+      ]
+    },
+    {
+      "title": "Rituals that work for a small team",
+      "body": [
+        "Keep them short, optional and regular. A team of eight doesn't need an events programme; it needs a few habits people actually turn up for."
+      ],
+      "table": {
+        "head": [
+          "Ritual",
+          "How it goes",
+          "How often"
+        ],
+        "rows": [
+          [
+            "Friday coffee",
+            "Start a meeting called Coffee and ask everyone in. Fifteen minutes, no agenda, cameras optional.",
+            "Weekly"
+          ],
+          [
+            "Show and tell",
+            "Someone shares their screen for five minutes: a side project, a photo, a tool they like.",
+            "Every couple of weeks"
+          ],
+          [
+            "Wins of the week",
+            "A message in a channel on Friday afternoon, one line each.",
+            "Weekly"
+          ],
+          [
+            "A sketch on the board",
+            "Leave something on the shared whiteboard for the morning: a question, a drawing, a poll.",
+            "Whenever"
+          ],
+          [
+            "Lunch on the floor",
+            "People who feel like it eat at their desks with the office open and chat if they want to.",
+            "Whenever"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "What makes it feel forced",
+      "items": [
+        {
+          "title": "Making it mandatory",
+          "body": "A social call people have to attend is a meeting. Invite, and don't count who came."
+        },
+        {
+          "title": "Cameras required",
+          "body": "Being watched is tiring. Voice-first conversations are easier to drop into, and anyone without a camera still shows as a card that lights up when they talk."
+        },
+        {
+          "title": "Points and leaderboards",
+          "body": "Streaks and badges turn time together into a contest. TinyFloor doesn't have them, on purpose."
+        },
+        {
+          "title": "Watching who's online",
+          "body": "Nothing on the floor counts how long anyone has been there or how long they've been idle. People relax when nobody's keeping score."
+        }
+      ]
+    },
+    {
+      "title": "What TinyFloor doesn't do",
+      "body": [
+        "There are no games, no trivia, no YouTube screens and no event spaces for a hundred guests. It's a small office for a team that works together every day, and the watercooler is the part between tasks. For a company party or a large social event, Kumospace and Gather have more built in."
+      ]
+    }
   ]
 }

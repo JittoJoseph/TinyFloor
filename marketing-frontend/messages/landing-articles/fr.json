@@ -2058,5 +2058,496 @@
         "Les prix, limites et fonctions viennent des pages tarifs et centres d'aide de Gather et de Kumospace, lus en octobre 2026, en dollars américains hors taxes. Ce qui n'y figurait pas, nous l'avons laissé de côté plutôt que de deviner. Nous faisons TinyFloor, nous disons donc clairement ce qu'il ne fait pas. Les prix changent : vérifiez la page de chaque produit avant d'acheter."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "Comment se passe un point quotidien sur TinyFloor",
+      "body": [
+        "Chaque bureau a une réunion principale toujours ouverte. Le point quotidien, c'est cette salle, chaque jour à la même heure : personne n'envoie de lien, et personne n'attend un hôte dans une salle d'attente."
+      ],
+      "items": [
+        {
+          "title": "Entrer",
+          "detail": "9 h 58",
+          "body": "Rejoignez la réunion principale et votre personnage entre dans la salle de réunion. Tout le monde sur l'étage voit la salle se remplir."
+        },
+        {
+          "title": "Faire le tour",
+          "detail": "10 h 00",
+          "body": "La voix d'abord, les caméras si on veut. La personne qui parle prend la grande carte, on voit donc clairement qui a la parole."
+        },
+        {
+          "title": "Sortir",
+          "detail": "10 h 10",
+          "body": "Sortez de la salle pour quitter la réunion et retournez à votre poste. Ce qui demande plus d'une minute continue au poste de quelqu'un, avec les deux personnes concernées."
+        }
+      ]
+    },
+    {
+      "title": "Trois formats qui fonctionnent",
+      "body": [
+        "Choisissez-en un et gardez-le. Un point quotidien qui change de forme chaque semaine devient une réunion de suivi."
+      ],
+      "table": {
+        "head": [
+          "Format",
+          "Déroulé",
+          "Convient à"
+        ],
+        "rows": [
+          [
+            "Trois questions",
+            "Chacun : ce que j'ai terminé, ce sur quoi je travaille aujourd'hui, ce qui me bloque.",
+            "Les nouvelles équipes, et celles dont le travail n'est pas sur un seul tableau."
+          ],
+          [
+            "Parcourir le tableau",
+            "Parcourir le tableau de droite à gauche, le travail le plus proche de la fin d'abord. On parle quand sa carte arrive.",
+            "Les équipes qui partagent un tableau Kanban ou de sprint. Partagez-le à l'écran."
+          ],
+          [
+            "Une phrase et un parking",
+            "Une phrase chacun, puis les questions soulevées, reprises par ceux qui en ont besoin.",
+            "Les petites équipes rodées qui se parlent déjà toute la journée."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Combien de temps ça devrait prendre",
+      "body": [
+        "Comptez environ une minute par personne et quelques minutes pour le parking. Au-delà de 12 environ, un tour dure plus longtemps qu'on ne peut écouter ; séparez par projet, ou parcourez plutôt le tableau."
+      ],
+      "table": {
+        "head": [
+          "Équipe",
+          "Tour",
+          "Avec le parking"
+        ],
+        "rows": [
+          [
+            "4 personnes",
+            "4 minutes",
+            "environ 6 minutes"
+          ],
+          [
+            "8 personnes",
+            "8 minutes",
+            "environ 10 minutes"
+          ],
+          [
+            "12 personnes",
+            "12 minutes",
+            "environ 15 minutes"
+          ],
+          [
+            "15 personnes",
+            "15 minutes",
+            "séparez, ou parcourez le tableau"
+          ]
+        ],
+        "note": "Un ordre de grandeur, pas un minuteur. Un point quotidien de 15 minutes chaque jour ouvré représente environ 5 heures de réunion par mois, sur toutes les offres."
+      }
+    },
+    {
+      "title": "Le garder court",
+      "items": [
+        {
+          "title": "Commencer à l'heure",
+          "body": "Commencez à la minute, même s'il manque quelqu'un. L'étage montre qui est là, qui est absent et qui est encore en appel : vous savez qui attendre et qui ne pas attendre."
+        },
+        {
+          "title": "Poursuivre à un poste",
+          "body": "Quand deux personnes doivent creuser un sujet, elles vont à un poste après le point quotidien. Le reste de la salle n'a pas à écouter."
+        },
+        {
+          "title": "Montrer plutôt que décrire",
+          "body": "Partagez une fenêtre avec le tableau ou un bug au lieu de le lire à voix haute. Un clic, et c'est sur l'écran de tout le monde."
+        },
+        {
+          "title": "Laisser les caméras facultatives",
+          "body": "Quiconque n'a pas de caméra apparaît sous forme de carte qui s'allume quand il parle. Une caméra restée allumée dix minutes sans que personne ne parle s'éteint d'elle-même."
+        }
+      ]
+    },
+    {
+      "title": "En direct, par écrit, ou les deux",
+      "body": [
+        "Une équipe répartie sur plusieurs fuseaux horaires ne peut pas toujours se réunir à la même heure. Beaucoup publient un point écrit dans un canal du chat du bureau et gardent le point quotidien en direct pour les jours où il y a quelque chose à décider : une mise en production, un problème, une nouvelle personne."
+      ],
+      "items": [
+        {
+          "title": "En direct",
+          "body": "Plus rapide pour débloquer, et c'est le seul moment de la journée où toute l'équipe est dans une même salle. Idéal quand la plupart partagent les mêmes horaires."
+        },
+        {
+          "title": "Par écrit",
+          "body": "Fonctionne entre fuseaux horaires et laisse une trace. Facile à survoler, facile à sauter : un blocage peut passer inaperçu."
+        },
+        {
+          "title": "Les deux",
+          "body": "Un point écrit chaque jour, et un court tour en direct une ou deux fois par semaine, à une heure qui convient à tous."
+        }
+      ]
+    },
+    {
+      "title": "Ce que TinyFloor ne fait pas pour les points quotidiens",
+      "body": [
+        "Il n'y a pas de bot qui pose les questions du point quotidien à votre place, pas de rappel, pas de minuteur et pas d'enregistrement. Il n'est pas relié à Jira, Linear ou GitHub : le tableau passe donc à l'écran en fenêtre partagée. Si vous voulez que les points écrits soient collectés automatiquement, un bot dans votre outil de chat le fait mieux ; TinyFloor est l'endroit où l'équipe se retrouve."
+      ]
+    }
+  ],
+  "pairProgramming": [
+    {
+      "title": "Comment démarre une session de pair programming",
+      "body": [
+        "Au bureau, le pair programming commence souvent par « tu as une minute ? » au poste de quelqu'un. À distance, il faut en général une invitation dans l'agenda, donc on le fait moins. Sur TinyFloor, il démarre comme au bureau."
+      ],
+      "items": [
+        {
+          "title": "Voir qui est libre",
+          "detail": "1",
+          "body": "Les postes et les statuts montrent qui est concentré, qui est absent et qui est déjà en appel. Occupé veut dire attendre ; disponible veut dire y aller."
+        },
+        {
+          "title": "Aller le voir et parler",
+          "detail": "2",
+          "body": "Placez-vous à côté et touchez pour appeler. L'appel démarre en audio ; allumez une caméra si vous voulez."
+        },
+        {
+          "title": "Partager et travailler",
+          "detail": "3",
+          "body": "Partagez une fenêtre, un onglet ou tout l'écran : l'éditeur, le terminal, le test qui échoue."
+        },
+        {
+          "title": "Revenir",
+          "detail": "4",
+          "body": "Raccrochez et vous voilà de retour à votre travail. L'appel reste connecté pendant que vous bougez, rien ne coupe si vous vous déplacez."
+        }
+      ]
+    },
+    {
+      "title": "Les façons de pairer qui marchent à distance",
+      "body": [
+        "Chacune fonctionne avec une personne qui partage et deux qui parlent. Pour changer de pilote, poussez une branche de travail en cours et l'autre personne partage son écran à la place."
+      ],
+      "table": {
+        "head": [
+          "Façon",
+          "Déroulé",
+          "Idéal pour"
+        ],
+        "rows": [
+          [
+            "Pilote et copilote",
+            "L'un tape, l'autre anticipe, relit et repère les erreurs. On échange toutes les 20 à 30 minutes.",
+            "La plupart des sessions, et faire entrer quelqu'un dans un code qu'il ne connaît pas."
+          ],
+          [
+            "Ping-pong",
+            "L'un écrit un test qui échoue, l'autre le fait passer et écrit le test suivant.",
+            "Le développement piloté par les tests, et garder les deux également impliqués."
+          ],
+          [
+            "Strong-style",
+            "Les idées n'entrent dans le code que par les mains de l'autre : le copilote dit quoi, le pilote tape.",
+            "La transmission et l'intégration, pour que le nouveau ne fasse pas que regarder."
+          ],
+          [
+            "Débloquer",
+            "Dix minutes sur le problème de quelqu'un d'autre, puis on repart.",
+            "La petite question qui sinon attendrait demain."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Rendre le code partagé facile à lire",
+      "items": [
+        {
+          "title": "Partager une seule fenêtre",
+          "body": "Un écran partagé privilégie la netteté du texte plutôt que la fluidité. Une seule fenêtre d'éditeur se lit mieux qu'un grand écran entier réduit."
+        },
+        {
+          "title": "Agrandir la police",
+          "body": "Montez de deux ou trois tailles dans l'éditeur et le terminal pendant la session. Ce qui est confortable chez vous est petit chez l'autre."
+        },
+        {
+          "title": "Tout au même endroit",
+          "body": "Divisez l'éditeur et le terminal dans la même fenêtre, pour ne pas changer de partage à chaque lancement de test."
+        },
+        {
+          "title": "Dire où vous regardez",
+          "body": "Désignez par fichier et numéro de ligne : « ligne 84 dans le handler » vaut mieux que « un peu plus haut, non, là »."
+        }
+      ]
+    },
+    {
+      "title": "Quand on passe de deux à trois",
+      "body": [
+        "Allez voir un troisième collègue pendant un appel et TinyFloor propose d'en faire une réunion à trois. Pour une session de mob programming prévue, utilisez la salle de réunion : la personne qui parle prend la grande carte, et l'écran partagé se place à côté des participants."
+      ]
+    },
+    {
+      "title": "Ce qu'il faut utiliser à côté",
+      "body": [
+        "TinyFloor est l'endroit où vous vous retrouvez et parlez. Il ne fait pas tout ce dont une session peut avoir besoin :"
+      ],
+      "items": [
+        {
+          "title": "Pas de contrôle à distance",
+          "body": "L'autre voit votre écran mais ne peut pas y taper. Pour éditer le même code à deux, utilisez l'outil de votre éditeur, comme VS Code Live Share ou JetBrains Code With Me, et gardez TinyFloor pour la voix."
+        },
+        {
+          "title": "Pas de son depuis l'écran partagé",
+          "body": "Le partage d'écran transmet l'image seulement, ce dont le code a besoin."
+        },
+        {
+          "title": "Pas d'enregistrement",
+          "body": "Les sessions ne sont pas enregistrées. Notez ce que vous avez décidé dans la pull request ou le chat de l'équipe."
+        },
+        {
+          "title": "Pas de lien avec GitHub ou Jira",
+          "body": "Partagez la pull request ou le ticket à l'écran pour le regarder ensemble."
+        }
+      ]
+    },
+    {
+      "title": "Des habitudes qui gardent le pairing bienvenu",
+      "items": [
+        {
+          "title": "Respecter l'état occupé",
+          "body": "Un statut occupé, c'est la porte fermée. Envoyez plutôt un message dans le chat et laissez la personne venir à vous."
+        },
+        {
+          "title": "Des sessions courtes",
+          "body": "Une heure ou deux au plus, avec des pauses. Pairer toute la journée fatigue, même quand ça se passe bien."
+        },
+        {
+          "title": "Rendre normal le fait de demander",
+          "body": "Une équipe où l'on va voir les autres avec ses questions se débloque en quelques minutes, pas le lendemain. Que les plus expérimentés aillent voir les plus récents aide autant que l'inverse."
+        }
+      ]
+    }
+  ],
+  "onboarding": [
+    {
+      "title": "Le premier jour d'une nouvelle personne sur l'étage",
+      "body": [
+        "Dans une équipe à distance, personne ne voit qu'une nouvelle personne a commencé. Sur l'étage, si : il y a un nouveau nom à un poste, et l'équipe est à quelques pas."
+      ],
+      "items": [
+        {
+          "title": "Ouvrir le lien d'invitation",
+          "detail": "9 h 00",
+          "body": "Un seul lien pour tout le bureau. Connexion avec Google ou une adresse e-mail, dans le navigateur, sans rien installer."
+        },
+        {
+          "title": "Choisir un poste",
+          "detail": "9 h 05",
+          "body": "Vous arrivez à côté d'un poste libre. Asseyez-vous et faites-en le vôtre ; personne d'autre ne s'y assoit ensuite."
+        },
+        {
+          "title": "Recevoir un signe de la main",
+          "detail": "9 h 05",
+          "body": "Tous ceux déjà sur l'étage vous voient entrer et peuvent vous faire signe. Un petit geste qui montre à la nouvelle personne qu'on l'a remarquée."
+        },
+        {
+          "title": "Dire bonjour au point quotidien",
+          "detail": "10 h 00",
+          "body": "Entrez dans la salle de réunion avec tout le monde. Une minute pour vous présenter, et l'équipe vous connaît."
+        },
+        {
+          "title": "S'installer avec son binôme",
+          "detail": "11 h 00",
+          "body": "Allez au poste de votre binôme, partagez un écran et faites la première tâche ensemble."
+        }
+      ]
+    },
+    {
+      "title": "Une première semaine qui fonctionne",
+      "body": [
+        "De petites étapes, les mêmes personnes, et quelqu'un à qui demander. Voici une semaine qu'utilisent beaucoup de petites équipes :"
+      ],
+      "table": {
+        "head": [
+          "Jour",
+          "Ce qui se passe",
+          "Sur l'étage"
+        ],
+        "rows": [
+          [
+            "Lundi",
+            "Comptes et installation, rencontre avec l'équipe, une première petite tâche avec le binôme.",
+            "Présentation au point quotidien, puis la majeure partie de la journée au poste du binôme."
+          ],
+          [
+            "Mardi",
+            "Terminer la première tâche. De courts échanges avec deux ou trois personnes d'autres parties du travail.",
+            "Aller voir chacune d'elles un quart d'heure."
+          ],
+          [
+            "Mercredi",
+            "Une deuxième tâche, plus en autonomie. Des questions au fil de l'eau.",
+            "Statut disponible, et des collègues qui s'attendent à des visites."
+          ],
+          [
+            "Jeudi",
+            "Assister à une revue, une planification ou un appel client.",
+            "Rejoindre une réunion dans la salle de réunion ; écouter compte."
+          ],
+          [
+            "Vendredi",
+            "Un point avec son manager : ce qui est clair, ce qui ne l'est pas, la suite.",
+            "Un appel au poste du manager."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Ce qui manque souvent à l'intégration à distance",
+      "items": [
+        {
+          "title": "Savoir à qui demander",
+          "body": "Au bureau, on apprend qui sait quoi en voyant vers qui les gens vont. Sur l'étage, on voit la même chose : qui parle avec qui, et qui est occupé."
+        },
+        {
+          "title": "Demander sans avoir l'impression de déranger",
+          "body": "Écrire à quelqu'un qu'on n'a jamais rencontré, c'est beaucoup. Aller voir une personne disponible, c'est comme se pencher vers son voisin au bureau."
+        },
+        {
+          "title": "Être vu en train de travailler",
+          "body": "Une nouvelle personne à un poste fait visiblement partie de l'équipe dès le premier jour, au lieu d'être un nom dans un canal."
+        },
+        {
+          "title": "Entendre comment l'équipe travaille",
+          "body": "Assister à une ou deux réunions en apprend plus sur la façon dont les décisions se prennent que n'importe quel document."
+        }
+      ]
+    },
+    {
+      "title": "Faire fonctionner le binôme à distance",
+      "items": [
+        {
+          "title": "Choisir quelqu'un proche du travail",
+          "body": "Pas le manager, ni la personne la plus occupée de l'équipe. Quelqu'un qui fait un travail similaire et a du temps pour les questions."
+        },
+        {
+          "title": "Réserver du temps les deux premiers jours",
+          "body": "La majeure partie du lundi et une partie du mardi ensemble, en partageant un écran. Ensuite, la nouvelle personne vient quand elle en a besoin."
+        },
+        {
+          "title": "Faire la première visite à sa place",
+          "body": "Le binôme vient en premier, le premier jour. Ça montre à la nouvelle personne qu'aller voir quelqu'un est normal ici."
+        },
+        {
+          "title": "Garder un canal pour les questions",
+          "body": "Un canal dans le chat de l'équipe pour les questions que personne ne devrait avoir honte de poser. Les messages restent, la prochaine recrue pourra lire les réponses."
+        }
+      ]
+    },
+    {
+      "title": "Ce que TinyFloor ne fait pas pour l'intégration",
+      "body": [
+        "Ce n'est pas un outil RH. Il n'y a pas de checklists d'intégration, de signature de documents, de création de comptes ni d'authentification unique. Gardez votre manuel dans votre outil de documentation et vos comptes dans vos outils d'administration ; TinyFloor est l'endroit où la nouvelle personne rencontre l'équipe et trouve de l'aide. L'inviter prend un lien, et elle peut être à un poste une minute plus tard."
+      ]
+    }
+  ],
+  "watercooler": [
+    {
+      "title": "À quoi servait vraiment la machine à café",
+      "body": [
+        "Personne ne regrette le café. Ce qui manque aux équipes à distance, c'est la conversation que personne n'avait prévue : la question posée en passant, la blague, les cinq minutes qui ont fait sentir à quelqu'un qu'il faisait partie de l'équipe. Dans les données Gallup de 2024, 25 % des personnes en télétravail complet se disaient seules, contre 16 % de celles sur site.",
+        "Les appels conviviaux planifiés essaient d'y remédier et ressemblent souvent à une réunion de plus. Ce qui marche mieux, c'est d'offrir un lieu où l'on peut de nouveau se croiser."
+      ]
+    },
+    {
+      "title": "Comment ça se passe sur l'étage",
+      "items": [
+        {
+          "title": "Quelqu'un arrive",
+          "body": "Quand une collègue arrive, tous ceux déjà sur l'étage voient quelques secondes un discret « Ana est là » avec un bouton pour faire signe. Un signe de la main, et la journée commence par un bonjour."
+        },
+        {
+          "title": "Vous croisez quelqu'un",
+          "body": "En allant vers la salle de réunion ou le tableau blanc, vous passez devant des postes. Arrêtez-vous à côté de quelqu'un et un appel est à un geste ; continuez et rien ne se passe."
+        },
+        {
+          "title": "De la musique dans la pièce",
+          "body": "Approchez-vous de l'enceinte et lancez un morceau. Tout le monde entend la même chanson, forte près de l'enceinte et plus faible en s'éloignant, pour que ceux à leur poste puissent continuer à travailler."
+        },
+        {
+          "title": "Le chat entre deux appels",
+          "body": "Un canal pour tout ce qui n'est pas le travail, avec photos et réactions. Les messages restent, personne ne rate la photo du chien parce qu'il était en réunion."
+        }
+      ]
+    },
+    {
+      "title": "Des rituels qui marchent pour une petite équipe",
+      "body": [
+        "Courts, facultatifs et réguliers. Une équipe de huit n'a pas besoin d'un programme d'événements ; il lui faut quelques habitudes auxquelles les gens viennent vraiment."
+      ],
+      "table": {
+        "head": [
+          "Rituel",
+          "Déroulé",
+          "Fréquence"
+        ],
+        "rows": [
+          [
+            "Le café du vendredi",
+            "Lancez une réunion appelée Café et invitez tout le monde. Quinze minutes, sans ordre du jour, caméras facultatives.",
+            "Chaque semaine"
+          ],
+          [
+            "Montrer et raconter",
+            "Quelqu'un partage son écran cinq minutes : un projet perso, une photo, un outil qu'il aime.",
+            "Toutes les deux semaines"
+          ],
+          [
+            "Les réussites de la semaine",
+            "Un message dans un canal le vendredi après-midi, une ligne chacun.",
+            "Chaque semaine"
+          ],
+          [
+            "Un dessin au tableau",
+            "Laissez quelque chose sur le tableau blanc partagé pour le matin : une question, un dessin, un sondage.",
+            "Quand on veut"
+          ],
+          [
+            "Déjeuner sur l'étage",
+            "Ceux qui en ont envie mangent à leur poste, bureau ouvert, et discutent s'ils veulent.",
+            "Quand on veut"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Ce qui rend le moment forcé",
+      "items": [
+        {
+          "title": "Le rendre obligatoire",
+          "body": "Un moment convivial obligatoire, c'est une réunion. Invitez, et ne comptez pas qui est venu."
+        },
+        {
+          "title": "Exiger les caméras",
+          "body": "Être regardé fatigue. On entre plus facilement dans une conversation à la voix, et quiconque n'a pas de caméra apparaît quand même sous forme de carte qui s'allume quand il parle."
+        },
+        {
+          "title": "Points et classements",
+          "body": "Séries et badges transforment le temps passé ensemble en compétition. TinyFloor n'en a pas, volontairement."
+        },
+        {
+          "title": "Surveiller qui est en ligne",
+          "body": "Rien sur l'étage ne compte depuis combien de temps quelqu'un est là ou inactif. Les gens se détendent quand personne ne tient les comptes."
+        }
+      ]
+    },
+    {
+      "title": "Ce que TinyFloor ne fait pas",
+      "body": [
+        "Il n'y a pas de jeux, pas de quiz, pas d'écrans YouTube ni d'espaces d'événement pour cent invités. C'est un petit bureau pour une équipe qui travaille ensemble chaque jour, et la machine à café, c'est le moment entre deux tâches. Pour une fête d'entreprise ou un grand événement convivial, Kumospace et Gather en proposent davantage."
+      ]
+    }
   ]
 }

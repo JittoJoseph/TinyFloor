@@ -2058,5 +2058,496 @@
         "Priser, grænser og funktioner kommer fra Gathers og Kumospaces egne prissider og hjælpecentre, læst i oktober 2026, i amerikanske dollar uden moms. Hvad der ikke stod der, har vi udeladt i stedet for at gætte. Vi laver TinyFloor, så vi siger tydeligt, hvad det ikke kan. Priser ændrer sig: tjek hvert produkts side, før du køber."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "Sådan foregår en standup i TinyFloor",
+      "body": [
+        "Hvert kontor har et hovedmøde, der altid er åbent. Standuppen er det rum, hver dag på samme tid: ingen sender et link, og ingen venter i et venterum på en vært."
+      ],
+      "items": [
+        {
+          "title": "Gå ind",
+          "detail": "9:58",
+          "body": "Deltag i hovedmødet, og din figur går ind i mødelokalet. Alle på etagen kan se rummet fylde op."
+        },
+        {
+          "title": "Runden",
+          "detail": "10:00",
+          "body": "Stemme først, kameraer hvis folk vil. Den, der taler, får det store kort, så det er tydeligt, hvis tur det er."
+        },
+        {
+          "title": "Gå ud",
+          "detail": "10:10",
+          "body": "Gå ud af rummet for at forlade mødet, og tilbage til dit skrivebord. Det, der kræver mere end et minut, fortsætter ved nogens skrivebord med de to, det handler om."
+        }
+      ]
+    },
+    {
+      "title": "Tre formater, der virker",
+      "body": [
+        "Vælg ét, og hold fast i det. En standup, der skifter form hver uge, bliver til et statusmøde."
+      ],
+      "table": {
+        "head": [
+          "Format",
+          "Sådan foregår det",
+          "Passer til"
+        ],
+        "rows": [
+          [
+            "Tre spørgsmål",
+            "Hver person: hvad jeg har gjort færdigt, hvad jeg arbejder på i dag, hvad der står i vejen.",
+            "Nye teams og teams, hvis arbejde ikke ligger på ét board."
+          ],
+          [
+            "Gå boardet igennem",
+            "Gå boardet igennem fra højre mod venstre, det tætteste på færdigt først. Man taler, når ens kort kommer op.",
+            "Teams med et fælles Kanban- eller sprintboard. Del det på skærmen."
+          ],
+          [
+            "Én sætning og en parkeringsplads",
+            "Én sætning hver, derefter de spørgsmål, der kom op, for dem, der har brug for dem.",
+            "Små, sammentømrede teams, der alligevel snakker hele dagen."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Hvor lang tid det bør tage",
+      "body": [
+        "Regn med omkring et minut per person og et par minutter til parkeringspladsen. Over cirka 12 tager en runde længere tid, end folk kan lytte; del op efter projekt, eller gå boardet igennem i stedet."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Runde",
+          "Med parkeringspladsen"
+        ],
+        "rows": [
+          [
+            "4 personer",
+            "4 minutter",
+            "omkring 6 minutter"
+          ],
+          [
+            "8 personer",
+            "8 minutter",
+            "omkring 10 minutter"
+          ],
+          [
+            "12 personer",
+            "12 minutter",
+            "omkring 15 minutter"
+          ],
+          [
+            "15 personer",
+            "15 minutter",
+            "del den op, eller gå boardet igennem"
+          ]
+        ],
+        "note": "En tommelfingerregel, ikke en timer. En standup på 15 minutter hver arbejdsdag bliver til omkring 5 timers møder om måneden, på alle planer."
+      }
+    },
+    {
+      "title": "Sådan holder du den kort",
+      "items": [
+        {
+          "title": "Start til tiden",
+          "body": "Start på minuttet, også selvom nogen mangler. Etagen viser, hvem der er der, hvem der er væk, og hvem der stadig er i et opkald, så du ved, hvem du skal vente på, og hvem ikke."
+        },
+        {
+          "title": "Tag opfølgning ved et skrivebord",
+          "body": "Når to personer skal grave i noget, går de til et skrivebord efter standuppen. Resten af rummet behøver ikke lytte med."
+        },
+        {
+          "title": "Vis i stedet for at beskrive",
+          "body": "Del et vindue med boardet eller en fejl i stedet for at læse det op. Ét klik, og det er på alles skærm."
+        },
+        {
+          "title": "Kameraer er frivillige",
+          "body": "Den, der ikke har kamera på, vises som et kort, der lyser op, når personen taler. Et kamera, der har været tændt i ti minutter, uden at nogen har talt, slukker af sig selv."
+        }
+      ]
+    },
+    {
+      "title": "Live, skriftligt eller begge dele",
+      "body": [
+        "Et team spredt over tidszoner kan ikke altid mødes på samme tid. Mange skriver en opdatering i en kanal i kontorets chat og gemmer den levende standup til dage, hvor der skal besluttes noget: en release, et problem, en ny kollega."
+      ],
+      "items": [
+        {
+          "title": "Live",
+          "body": "Hurtigere til at løsne op for problemer, og det er den ene gang om dagen, hele teamet er i ét rum. Bedst når de fleste har samme arbejdstid."
+        },
+        {
+          "title": "Skriftligt",
+          "body": "Virker på tværs af tidszoner og efterlader et spor. Let at skimme, let at springe over, så problemer kan ligge ubemærket hen."
+        },
+        {
+          "title": "Begge dele",
+          "body": "Skriftlige opdateringer hver dag og en kort levende runde en eller to gange om ugen, på et tidspunkt, der passer alle."
+        }
+      ]
+    },
+    {
+      "title": "Hvad TinyFloor ikke gør for standups",
+      "body": [
+        "Der er ingen standup-bot, der stiller spørgsmålene for dig, ingen påmindelse, ingen timer og ingen optagelse. Det er ikke forbundet med Jira, Linear eller GitHub, så boardet kommer på skærmen som et delt vindue. Vil du have skriftlige standups indsamlet automatisk, gør en bot i jeres chatværktøj det bedre; TinyFloor er stedet, hvor teamet mødes."
+      ]
+    }
+  ],
+  "pairProgramming": [
+    {
+      "title": "Sådan starter en parprogrammeringssession",
+      "body": [
+        "På kontoret starter parprogrammering ofte med \"har du et øjeblik?\" ved nogens skrivebord. Remote kræver det som regel en kalenderinvitation, så det sker sjældnere. I TinyFloor starter det, som det gjorde på kontoret."
+      ],
+      "items": [
+        {
+          "title": "Se, hvem der er ledig",
+          "detail": "1",
+          "body": "Skriveborde og statusser viser, hvem der arbejder koncentreret, hvem der er væk, og hvem der allerede er i et opkald. Optaget betyder vent; tilgængelig betyder gå derhen."
+        },
+        {
+          "title": "Gå derhen og snak",
+          "detail": "2",
+          "body": "Stil dig ved siden af, og tryk for at ringe. Det starter med stemme; tænd et kamera, hvis du vil."
+        },
+        {
+          "title": "Del og arbejd",
+          "detail": "3",
+          "body": "Del et vindue, en fane eller hele skærmen: editoren, terminalen, testen, der fejler."
+        },
+        {
+          "title": "Gå tilbage",
+          "detail": "4",
+          "body": "Læg på, og du er tilbage ved dit eget arbejde. Opkaldet forbliver forbundet, mens du bevæger dig, så intet falder ud, hvis du går rundt."
+        }
+      ]
+    },
+    {
+      "title": "Måder at parprogrammere på, der virker remote",
+      "body": [
+        "Alle virker med én, der deler, og to, der taler. For at bytte, hvem der kører, pusher I en branch med igangværende arbejde, og den anden deler sin skærm i stedet."
+      ],
+      "table": {
+        "head": [
+          "Måde",
+          "Sådan foregår det",
+          "Godt til"
+        ],
+        "rows": [
+          [
+            "Driver og navigatør",
+            "Én skriver, den anden tænker fremad, læser med og fanger fejl. Byt hvert 20. til 30. minut.",
+            "Det meste parprogrammering, og at tage nogen med ind i ukendt kode."
+          ],
+          [
+            "Ping-pong",
+            "Én skriver en test, der fejler, den anden får den til at bestå og skriver den næste.",
+            "Testdrevet arbejde, og at holde begge lige meget med."
+          ],
+          [
+            "Strong-style",
+            "Idéer kommer kun ind i koden gennem den andens hænder: navigatøren siger hvad, driveren skriver.",
+            "Undervisning og onboarding, så den nyere ikke bare kigger på."
+          ],
+          [
+            "Løsne op",
+            "Ti minutter på en andens problem, så tilbage.",
+            "Det hurtige spørgsmål, der ellers ville vente til i morgen."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Sådan bliver delt kode let at læse",
+      "items": [
+        {
+          "title": "Del ét vindue",
+          "body": "En delt skærm er indstillet til skarp tekst frem for jævn bevægelse. Et enkelt editorvindue læses bedre end en hel bred skærm skaleret ned."
+        },
+        {
+          "title": "Skru op for skriften",
+          "body": "Gå to eller tre størrelser op i editoren og terminalen, mens I parprogrammerer. Det, der er behageligt på din skærm, er småt på deres."
+        },
+        {
+          "title": "Alt ét sted",
+          "body": "Del editor og terminal i samme vindue, så I ikke skal skifte deling, hver gang en test kører."
+        },
+        {
+          "title": "Sig, hvor du kigger",
+          "body": "Peg med fil og linjenummer: \"linje 84 i handleren\" slår \"lidt længere op, nej, der\"."
+        }
+      ]
+    },
+    {
+      "title": "Når to bliver til tre",
+      "body": [
+        "Gå hen til en tredje kollega under et opkald, og TinyFloor tilbyder at gøre det til et møde for jer tre. Til en planlagt mob- eller ensemblesession bruger I mødelokalet: Den, der taler, får det store kort, og den delte skærm står ved siden af personerne."
+      ]
+    },
+    {
+      "title": "Hvad du bruger ved siden af",
+      "body": [
+        "TinyFloor er stedet, hvor I finder hinanden og taler. Det gør ikke alt, hvad en parsession kan have brug for:"
+      ],
+      "items": [
+        {
+          "title": "Ingen fjernstyring",
+          "body": "Den anden kan se din skærm, men ikke skrive i den. Skal I begge redigere den samme kode, så brug din editors eget værktøj, som VS Code Live Share eller JetBrains Code With Me, og behold TinyFloor til stemmen."
+        },
+        {
+          "title": "Ingen lyd fra den delte skærm",
+          "body": "Skærmdeling sender kun billedet, og det er, hvad kode har brug for."
+        },
+        {
+          "title": "Ingen optagelse",
+          "body": "Sessioner optages ikke. Skriv det, I besluttede, i pull requesten eller teamchatten."
+        },
+        {
+          "title": "Ingen forbindelse til GitHub eller Jira",
+          "body": "Del pull requesten eller sagen på skærmen for at se på den sammen."
+        }
+      ]
+    },
+    {
+      "title": "Vaner, der holder parprogrammering velkommen",
+      "items": [
+        {
+          "title": "Respektér optaget",
+          "body": "En optaget-status er den lukkede dør. Skriv i stedet en besked i chatten, og lad personen komme til dig."
+        },
+        {
+          "title": "Hold sessionerne korte",
+          "body": "En time eller to højst, med pauser. At parprogrammere hele dagen er hårdt, også når det går godt."
+        },
+        {
+          "title": "Gør det normalt at spørge",
+          "body": "Et team, hvor folk går hen med spørgsmål, løser problemer på minutter, ikke i morgen. At de erfarne går hen til de nyere, hjælper lige så meget som omvendt."
+        }
+      ]
+    }
+  ],
+  "onboarding": [
+    {
+      "title": "En ny persons første dag på etagen",
+      "body": [
+        "I et remote-team kan ingen se, at en ny er startet. På etagen kan de: Der sidder et nyt navn ved et skrivebord, og teamet er få skridt væk."
+      ],
+      "items": [
+        {
+          "title": "Åbn invitationslinket",
+          "detail": "9:00",
+          "body": "Ét link til hele kontoret. Log ind med Google eller en e-mailadresse, i browseren, uden at installere noget."
+        },
+        {
+          "title": "Vælg et skrivebord",
+          "detail": "9:05",
+          "body": "Du dukker op ved siden af et ledigt skrivebord. Sæt dig, og gør det til dit; derefter sidder ingen andre der."
+        },
+        {
+          "title": "Få et vink",
+          "detail": "9:05",
+          "body": "Alle, der allerede er på etagen, ser dig komme ind og kan vinke. En lille ting, der viser den nye, at nogen har lagt mærke til dem."
+        },
+        {
+          "title": "Sig hej til standuppen",
+          "detail": "10:00",
+          "body": "Gå ind i mødelokalet med alle de andre. Et minut til at præsentere dig, og teamet har mødt dig."
+        },
+        {
+          "title": "Sid med din buddy",
+          "detail": "11:00",
+          "body": "Gå hen til din buddys skrivebord, del en skærm, og løs den første opgave sammen."
+        }
+      ]
+    },
+    {
+      "title": "En første uge, der virker",
+      "body": [
+        "Små skridt, de samme mennesker og nogen at spørge. Sådan ser en uge ud, som mange små teams bruger:"
+      ],
+      "table": {
+        "head": [
+          "Dag",
+          "Hvad der sker",
+          "På etagen"
+        ],
+        "rows": [
+          [
+            "Mandag",
+            "Konti og opsætning, mød teamet, en første lille opgave med buddyen.",
+            "Præsentation til standuppen, derefter det meste af dagen ved buddyens skrivebord."
+          ],
+          [
+            "Tirsdag",
+            "Gør den første opgave færdig. Korte snakke med to eller tre personer fra andre dele af arbejdet.",
+            "Gå hen til hver af dem i et kvarter."
+          ],
+          [
+            "Onsdag",
+            "En anden opgave, mere på egen hånd. Spørgsmål, når de dukker op.",
+            "Status tilgængelig, og kolleger, der ved, at de kan få besøg."
+          ],
+          [
+            "Torsdag",
+            "Sid med til et review, en planlægning eller et kundeopkald.",
+            "Deltag i et møde i mødelokalet; at lytte tæller."
+          ],
+          [
+            "Fredag",
+            "En snak med lederen: hvad er klart, hvad er ikke, hvad kommer nu.",
+            "Et opkald ved lederens skrivebord."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Hvad remote onboarding som regel mangler",
+      "items": [
+        {
+          "title": "At vide, hvem man skal spørge",
+          "body": "På et kontor lærer du, hvem der ved hvad, ved at se, hvem folk går til. På etagen ser du det samme: hvem der taler med hvem, og hvem der er optaget."
+        },
+        {
+          "title": "At spørge uden at føle sig til besvær",
+          "body": "At skrive til en, man aldrig har mødt, føles stort. At gå hen til en tilgængelig person er som at læne sig over til nabobordet på kontoret."
+        },
+        {
+          "title": "At blive set, mens man arbejder",
+          "body": "En ny ved et skrivebord er synligt en del af teamet fra dag ét i stedet for et navn i en kanal."
+        },
+        {
+          "title": "At opfange, hvordan teamet arbejder",
+          "body": "At sidde med til et møde eller to lærer en mere om, hvordan beslutninger træffes, end noget dokument."
+        }
+      ]
+    },
+    {
+      "title": "Sådan virker buddyordningen remote",
+      "items": [
+        {
+          "title": "Vælg en tæt på arbejdet",
+          "body": "Ikke lederen og ikke den travleste i teamet. En, der laver lignende arbejde og har tid til spørgsmål."
+        },
+        {
+          "title": "Sæt tid af de første to dage",
+          "body": "Det meste af mandagen og noget af tirsdagen sammen med delt skærm. Derefter kommer den nye forbi, når der er brug for det."
+        },
+        {
+          "title": "Tag det første besøg selv",
+          "body": "Buddyen går hen først, på dag ét. Det viser den nye, at det er normalt at gå hen til folk her."
+        },
+        {
+          "title": "Hav en kanal til spørgsmål",
+          "body": "En kanal i teamchatten til spørgsmål, ingen skal føle sig dumme over at stille. Beskederne bliver, så den næste nye kan læse svarene."
+        }
+      ]
+    },
+    {
+      "title": "Hvad TinyFloor ikke gør for onboarding",
+      "body": [
+        "Det er ikke et HR-værktøj. Der er ingen onboarding-tjeklister, ingen dokumentsignering, ingen kontooprettelse og ingen single sign-on. Hold jeres håndbog i jeres dokumentværktøj og kontiene i jeres admin-værktøjer; TinyFloor er stedet, hvor den nye møder teamet og får hjælp. At invitere kræver ét link, og et minut senere kan de sidde ved et skrivebord."
+      ]
+    }
+  ],
+  "watercooler": [
+    {
+      "title": "Hvad kaffemaskinen egentlig var til",
+      "body": [
+        "Ingen savner kaffen. Det, remote-teams savner, er samtalen, ingen havde planlagt: spørgsmålet i forbifarten, joken, de fem minutter, der fik nogen til at føle sig som en del af teamet. I Gallups data fra 2024 svarede 25 % af dem, der arbejder helt remote, at de følte sig ensomme, mod 16 % af dem på stedet.",
+        "Planlagte sociale opkald prøver at løse det og føles tit som endnu et møde. Det virker bedre at give folk et sted, hvor de igen kan løbe ind i hinanden."
+      ]
+    },
+    {
+      "title": "Sådan sker det på etagen",
+      "items": [
+        {
+          "title": "Nogen kommer ind",
+          "body": "Når en kollega ankommer, ser alle, der allerede er på etagen, et diskret \"Ana er her\" med en vinkeknap i nogle sekunder. Ét vink, og dagen starter med et hej."
+        },
+        {
+          "title": "Du går forbi nogen",
+          "body": "På vej til mødelokalet eller whiteboardet går du forbi skriveborde. Stop ved siden af nogen, og et opkald er ét tryk væk; gå videre, og der sker ingenting."
+        },
+        {
+          "title": "Musik i rummet",
+          "body": "Gå hen til højttaleren, og sæt et nummer på. Alle hører den samme sang, højt ved højttaleren og svagere, jo længere væk de går, så dem ved skrivebordene kan arbejde videre."
+        },
+        {
+          "title": "Chatten mellem opkaldene",
+          "body": "En kanal til alt, der ikke er arbejde, med billeder og reaktioner. Beskederne bliver, så ingen går glip af hundebilledet, fordi de sad i et møde."
+        }
+      ]
+    },
+    {
+      "title": "Ritualer, der virker for et lille team",
+      "body": [
+        "Korte, frivillige og faste. Et team på otte har ikke brug for et eventprogram, men for nogle få vaner, folk faktisk dukker op til."
+      ],
+      "table": {
+        "head": [
+          "Ritual",
+          "Sådan foregår det",
+          "Hvor tit"
+        ],
+        "rows": [
+          [
+            "Fredagskaffe",
+            "Start et møde, der hedder Kaffe, og inviter alle ind. Et kvarter, ingen dagsorden, kameraer frivillige.",
+            "Hver uge"
+          ],
+          [
+            "Vis og fortæl",
+            "Nogen deler skærmen i fem minutter: et sideprojekt, et billede, et værktøj, de kan lide.",
+            "Hver anden uge"
+          ],
+          [
+            "Ugens sejre",
+            "En besked i en kanal fredag eftermiddag, én linje hver.",
+            "Hver uge"
+          ],
+          [
+            "En skitse på tavlen",
+            "Efterlad noget på det fælles whiteboard til morgenen: et spørgsmål, en tegning, en afstemning.",
+            "Når som helst"
+          ],
+          [
+            "Frokost på etagen",
+            "Dem, der har lyst, spiser ved skrivebordet med kontoret åbent og snakker, hvis de vil.",
+            "Når som helst"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Det, der gør det påtvunget",
+      "items": [
+        {
+          "title": "At gøre det obligatorisk",
+          "body": "Et socialt opkald, man skal deltage i, er et møde. Inviter, og tæl ikke, hvem der kom."
+        },
+        {
+          "title": "Krav om kamera",
+          "body": "Det er trættende at blive set på. Samtaler med stemme er lettere at hoppe ind i, og den, der ikke har kamera på, vises stadig som et kort, der lyser op, når personen taler."
+        },
+        {
+          "title": "Point og ranglister",
+          "body": "Streaks og badges gør tid sammen til en konkurrence. TinyFloor har dem ikke, med vilje."
+        },
+        {
+          "title": "At holde øje med, hvem der er online",
+          "body": "Intet på etagen tæller, hvor længe nogen har været der, eller hvor længe de har været inaktive. Folk slapper af, når ingen fører regnskab."
+        }
+      ]
+    },
+    {
+      "title": "Hvad TinyFloor ikke gør",
+      "body": [
+        "Der er ingen spil, ingen quiz, ingen YouTube-skærme og ingen eventområder til hundrede gæster. Det er et lille kontor til et team, der arbejder sammen hver dag, og kaffemaskinen er pausen mellem opgaverne. Til en firmafest eller et stort socialt arrangement har Kumospace og Gather mere indbygget."
+      ]
+    }
   ]
 }

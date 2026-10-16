@@ -2058,5 +2058,496 @@
         "Preise, Grenzen und Funktionen stammen von den eigenen Preisseiten und Hilfecentern von Gather und Kumospace, gelesen im Oktober 2026, in US-Dollar ohne Steuern. Was dort nicht stand, haben wir weggelassen, statt zu raten. Wir machen TinyFloor, deshalb sagen wir klar, was es nicht kann. Preise ändern sich: Prüfe vor dem Kauf die Seite des jeweiligen Produkts."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "So läuft ein Standup in TinyFloor",
+      "body": [
+        "Jedes Büro hat ein Hauptmeeting, das immer offen ist. Das Standup ist dieser Raum, jeden Tag zur selben Zeit: Niemand verschickt einen Link, und niemand wartet in einer Lobby auf einen Gastgeber."
+      ],
+      "items": [
+        {
+          "title": "Reingehen",
+          "detail": "9:58",
+          "body": "Tritt dem Hauptmeeting bei, und deine Figur geht in den Besprechungsraum. Alle auf der Fläche sehen, wie sich der Raum füllt."
+        },
+        {
+          "title": "Die Runde",
+          "detail": "10:00",
+          "body": "Zuerst Stimme, Kameras, wenn die Leute wollen. Wer spricht, bekommt die große Karte, so ist klar, wer gerade dran ist."
+        },
+        {
+          "title": "Rausgehen",
+          "detail": "10:10",
+          "body": "Geh aus dem Raum, um das Meeting zu verlassen, und zurück an deinen Schreibtisch. Was länger als eine Minute braucht, geht an einem Schreibtisch weiter, mit den zwei Leuten, die es betrifft."
+        }
+      ]
+    },
+    {
+      "title": "Drei Formate, die funktionieren",
+      "body": [
+        "Such dir eins aus und bleib dabei. Ein Standup, das jede Woche anders aussieht, wird zum Statusmeeting."
+      ],
+      "table": {
+        "head": [
+          "Format",
+          "So läuft es",
+          "Passt zu"
+        ],
+        "rows": [
+          [
+            "Drei Fragen",
+            "Jede Person: was ich fertig habe, woran ich heute arbeite, was mich aufhält.",
+            "Neuen Teams und Teams, deren Arbeit nicht auf einem Board liegt."
+          ],
+          [
+            "Das Board durchgehen",
+            "Das Board von rechts nach links durchgehen, das Fast-Fertige zuerst. Man spricht, wenn die eigene Karte dran ist.",
+            "Teams mit einem gemeinsamen Kanban- oder Sprint-Board. Teile es auf dem Bildschirm."
+          ],
+          [
+            "Ein Satz und ein Parkplatz",
+            "Ein Satz pro Person, danach die Fragen, die aufkamen, von denen, die sie brauchen.",
+            "Kleinen, eingespielten Teams, die sowieso den ganzen Tag reden."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Wie lange es dauern sollte",
+      "body": [
+        "Rechne mit etwa einer Minute pro Person und ein paar Minuten für den Parkplatz. Ab etwa 12 dauert eine Runde länger, als Leute zuhören können; teilt nach Projekt auf oder geht stattdessen das Board durch."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Runde",
+          "Mit Parkplatz"
+        ],
+        "rows": [
+          [
+            "4 Personen",
+            "4 Minuten",
+            "etwa 6 Minuten"
+          ],
+          [
+            "8 Personen",
+            "8 Minuten",
+            "etwa 10 Minuten"
+          ],
+          [
+            "12 Personen",
+            "12 Minuten",
+            "etwa 15 Minuten"
+          ],
+          [
+            "15 Personen",
+            "15 Minuten",
+            "aufteilen oder das Board durchgehen"
+          ]
+        ],
+        "note": "Eine Faustregel, kein Timer. Ein 15-minütiges Standup an jedem Arbeitstag ergibt etwa 5 Stunden Meetings im Monat, in jedem Tarif."
+      }
+    },
+    {
+      "title": "Wie es kurz bleibt",
+      "items": [
+        {
+          "title": "Pünktlich anfangen",
+          "body": "Fang zur vollen Minute an, auch wenn jemand fehlt. Die Fläche zeigt, wer da ist, wer abwesend ist und wer noch in einem Call steckt, so weißt du, auf wen du warten musst und auf wen nicht."
+        },
+        {
+          "title": "Nachfragen an einen Schreibtisch verlegen",
+          "body": "Wenn zwei Leute etwas genauer klären müssen, gehen sie nach dem Standup an einen Schreibtisch. Der Rest des Raums muss nicht zuhören."
+        },
+        {
+          "title": "Zeigen statt beschreiben",
+          "body": "Teile ein Fenster mit dem Board oder einem Bug, statt es vorzulesen. Ein Klick, und es ist auf allen Bildschirmen."
+        },
+        {
+          "title": "Kameras freiwillig lassen",
+          "body": "Wer keine Kamera anhat, erscheint als Karte, die aufleuchtet, wenn er spricht. Eine Kamera, die zehn Minuten ohne Gespräch an war, schaltet sich selbst aus."
+        }
+      ]
+    },
+    {
+      "title": "Live, schriftlich oder beides",
+      "body": [
+        "Ein Team über mehrere Zeitzonen kann sich nicht immer zur selben Zeit treffen. Viele posten ein schriftliches Update in einem Kanal im Chat des Büros und behalten das Live-Standup für Tage, an denen etwas zu entscheiden ist: ein Release, ein Problem, eine neue Person."
+      ],
+      "items": [
+        {
+          "title": "Live",
+          "body": "Blockaden lösen sich schneller, und es ist das eine Mal am Tag, an dem das ganze Team in einem Raum ist. Am besten, wenn die meisten ähnliche Arbeitszeiten haben."
+        },
+        {
+          "title": "Schriftlich",
+          "body": "Funktioniert über Zeitzonen hinweg und hinterlässt eine Spur. Leicht zu überfliegen, leicht zu überspringen, Blockaden können also unbemerkt liegen bleiben."
+        },
+        {
+          "title": "Beides",
+          "body": "Jeden Tag schriftliche Updates und ein- oder zweimal die Woche eine kurze Live-Runde, zu einer Zeit, die allen passt."
+        }
+      ]
+    },
+    {
+      "title": "Was TinyFloor für Standups nicht macht",
+      "body": [
+        "Es gibt keinen Standup-Bot, der die Fragen für dich stellt, keine Erinnerung, keinen Timer und keine Aufnahme. Es ist nicht mit Jira, Linear oder GitHub verbunden, das Board kommt also als geteiltes Fenster auf den Bildschirm. Wenn schriftliche Standups automatisch eingesammelt werden sollen, kann das ein Bot in eurem Chat-Tool besser; TinyFloor ist der Ort, an dem sich das Team trifft."
+      ]
+    }
+  ],
+  "pairProgramming": [
+    {
+      "title": "So beginnt eine Pairing-Session",
+      "body": [
+        "Im Büro beginnt Pairing oft mit „Hast du kurz Zeit?“ am Schreibtisch. Remote braucht es meist eine Kalendereinladung, also passiert es seltener. In TinyFloor beginnt es so wie im Büro."
+      ],
+      "items": [
+        {
+          "title": "Sehen, wer frei ist",
+          "detail": "1",
+          "body": "Schreibtische und Status zeigen, wer konzentriert arbeitet, wer weg ist und wer schon in einem Call ist. Beschäftigt heißt warten; verfügbar heißt hingehen."
+        },
+        {
+          "title": "Hingehen und reden",
+          "detail": "2",
+          "body": "Stell dich daneben und tippe, um anzurufen. Es beginnt mit Stimme; schalte eine Kamera ein, wenn du willst."
+        },
+        {
+          "title": "Teilen und arbeiten",
+          "detail": "3",
+          "body": "Teile ein Fenster, einen Tab oder den ganzen Bildschirm: den Editor, das Terminal, den roten Test."
+        },
+        {
+          "title": "Zurückgehen",
+          "detail": "4",
+          "body": "Leg auf, und du bist zurück bei deiner Arbeit. Der Call bleibt verbunden, während du dich bewegst, es bricht also nichts ab, wenn du herumläufst."
+        }
+      ]
+    },
+    {
+      "title": "Pairing-Stile, die remote funktionieren",
+      "body": [
+        "Jeder Stil hier funktioniert mit einer Person, die teilt, und zwei, die reden. Um zu wechseln, wer fährt, pusht ihr einen Work-in-Progress-Branch, und die andere Person teilt stattdessen ihren Bildschirm."
+      ],
+      "table": {
+        "head": [
+          "Stil",
+          "So läuft es",
+          "Gut für"
+        ],
+        "rows": [
+          [
+            "Driver und Navigator",
+            "Eine Person tippt, die andere denkt voraus, liest mit und findet Fehler. Alle 20 bis 30 Minuten wechseln.",
+            "Das meiste Pairing, und um jemanden in unbekannten Code zu holen."
+          ],
+          [
+            "Ping-Pong",
+            "Eine Person schreibt einen roten Test, die andere macht ihn grün und schreibt den nächsten Test.",
+            "Testgetriebene Arbeit, und damit beide gleich beteiligt sind."
+          ],
+          [
+            "Strong-Style",
+            "Ideen kommen nur über die Hände der anderen Person in den Code: Der Navigator sagt was, der Driver tippt.",
+            "Lehren und Einarbeitung, damit die neuere Person nicht nur zuschaut."
+          ],
+          [
+            "Entblocken",
+            "Zehn Minuten am Problem von jemand anderem, dann zurückgehen.",
+            "Die kurze Frage, die sonst bis morgen warten würde."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Damit geteilter Code gut lesbar ist",
+      "items": [
+        {
+          "title": "Ein Fenster teilen",
+          "body": "Ein geteilter Bildschirm ist auf scharfen Text ausgelegt, nicht auf flüssige Bewegung. Ein einzelnes Editorfenster liest sich besser als ein ganzer breiter Monitor, verkleinert."
+        },
+        {
+          "title": "Die Schrift größer stellen",
+          "body": "Geh beim Pairen im Editor und Terminal zwei, drei Größen hoch. Was auf deinem Bildschirm angenehm ist, ist auf ihrem klein."
+        },
+        {
+          "title": "Alles an einem Ort",
+          "body": "Teil Editor und Terminal im selben Fenster, damit ihr nicht bei jedem Testlauf die Freigabe wechseln müsst."
+        },
+        {
+          "title": "Sag, wo du hinschaust",
+          "body": "Zeig mit Datei und Zeilennummer: „Zeile 84 im Handler“ ist besser als „etwas höher, nein, da“."
+        }
+      ]
+    },
+    {
+      "title": "Wenn aus zwei drei werden",
+      "body": [
+        "Geh während eines Calls zu einer dritten Person, und TinyFloor bietet an, daraus ein Meeting für euch drei zu machen. Für eine geplante Mob- oder Ensemble-Session nehmt ihr den Besprechungsraum: Wer spricht, bekommt die große Karte, und der geteilte Bildschirm steht neben den Leuten."
+      ]
+    },
+    {
+      "title": "Was du daneben nutzen solltest",
+      "body": [
+        "TinyFloor ist der Ort, an dem ihr euch findet und redet. Es kann nicht alles, was eine Pairing-Session brauchen kann:"
+      ],
+      "items": [
+        {
+          "title": "Keine Fernsteuerung",
+          "body": "Die andere Person sieht deinen Bildschirm, kann aber nicht darauf tippen. Wenn beide denselben Code bearbeiten sollen, nehmt das Werkzeug eures Editors, etwa VS Code Live Share oder JetBrains Code With Me, und TinyFloor für die Stimme."
+        },
+        {
+          "title": "Kein Ton vom geteilten Bildschirm",
+          "body": "Die Bildschirmfreigabe überträgt nur das Bild, und mehr braucht Code nicht."
+        },
+        {
+          "title": "Keine Aufnahme",
+          "body": "Sessions werden nicht aufgenommen. Haltet fest, was ihr entschieden habt, im Pull Request oder im Team-Chat."
+        },
+        {
+          "title": "Keine Verbindung zu GitHub oder Jira",
+          "body": "Teilt den Pull Request oder das Ticket auf dem Bildschirm, um es gemeinsam anzuschauen."
+        }
+      ]
+    },
+    {
+      "title": "Gewohnheiten, die Pairing willkommen halten",
+      "items": [
+        {
+          "title": "Beschäftigt respektieren",
+          "body": "Ein Beschäftigt-Status ist die geschlossene Tür. Schreib stattdessen im Chat und lass die Person zu dir kommen."
+        },
+        {
+          "title": "Sessions kurz halten",
+          "body": "Höchstens ein, zwei Stunden, mit Pausen. Den ganzen Tag pairen ist anstrengend, auch wenn es gut läuft."
+        },
+        {
+          "title": "Fragen normal machen",
+          "body": "Ein Team, in dem Leute mit Fragen hingehen, löst Blockaden in Minuten, nicht morgen. Wenn Erfahrene zu Neueren gehen, hilft das genauso wie umgekehrt."
+        }
+      ]
+    }
+  ],
+  "onboarding": [
+    {
+      "title": "Der erste Tag einer neuen Person auf der Fläche",
+      "body": [
+        "In einem Remote-Team sieht niemand, dass jemand Neues angefangen hat. Auf der Fläche schon: Da sitzt ein neuer Name an einem Schreibtisch, und das Team ist ein paar Schritte entfernt."
+      ],
+      "items": [
+        {
+          "title": "Den Einladungslink öffnen",
+          "detail": "9:00",
+          "body": "Ein Link für das ganze Büro. Anmelden mit Google oder einer E-Mail-Adresse, im Browser, ohne etwas zu installieren."
+        },
+        {
+          "title": "Einen Schreibtisch wählen",
+          "detail": "9:05",
+          "body": "Du kommst neben einem freien Schreibtisch an. Setz dich und mach ihn zu deinem; ab dann sitzt dort niemand anderes."
+        },
+        {
+          "title": "Gewunken bekommen",
+          "detail": "9:05",
+          "body": "Alle, die schon auf der Fläche sind, sehen dich hereinkommen und können winken. Eine Kleinigkeit, die der neuen Person zeigt, dass man sie bemerkt hat."
+        },
+        {
+          "title": "Beim Standup Hallo sagen",
+          "detail": "10:00",
+          "body": "Geh mit allen anderen in den Besprechungsraum. Eine Minute, um dich vorzustellen, und das Team kennt dich."
+        },
+        {
+          "title": "Beim Buddy sitzen",
+          "detail": "11:00",
+          "body": "Geh zum Schreibtisch deines Buddys, teilt einen Bildschirm und arbeitet die erste Aufgabe gemeinsam durch."
+        }
+      ]
+    },
+    {
+      "title": "Eine erste Woche, die funktioniert",
+      "body": [
+        "Kleine Schritte, dieselben Leute und jemand, den man fragen kann. So sieht eine Woche aus, die viele kleine Teams nutzen:"
+      ],
+      "table": {
+        "head": [
+          "Tag",
+          "Was passiert",
+          "Auf der Fläche"
+        ],
+        "rows": [
+          [
+            "Montag",
+            "Zugänge und Einrichtung, das Team kennenlernen, eine erste kleine Aufgabe mit dem Buddy.",
+            "Vorstellung beim Standup, dann den Großteil des Tages am Schreibtisch des Buddys."
+          ],
+          [
+            "Dienstag",
+            "Die erste Aufgabe abschließen. Kurze Gespräche mit zwei, drei Leuten aus anderen Bereichen.",
+            "Für eine Viertelstunde zu jeder dieser Personen gehen."
+          ],
+          [
+            "Mittwoch",
+            "Eine zweite Aufgabe, eher allein. Fragen, wann immer sie kommen.",
+            "Status verfügbar, und Kolleginnen und Kollegen, die mit Besuch rechnen."
+          ],
+          [
+            "Donnerstag",
+            "Bei einem Review, einer Planung oder einem Kundengespräch dabei sein.",
+            "Einem Meeting im Besprechungsraum beitreten; Zuhören zählt."
+          ],
+          [
+            "Freitag",
+            "Ein Gespräch mit der Führungskraft: was klar ist, was nicht, was als Nächstes kommt.",
+            "Ein Call am Schreibtisch der Führungskraft."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Was beim Remote-Onboarding meistens fehlt",
+      "items": [
+        {
+          "title": "Wissen, wen man fragt",
+          "body": "Im Büro lernst du, wer was weiß, indem du siehst, zu wem die Leute gehen. Auf der Fläche siehst du dasselbe: wer mit wem redet und wer beschäftigt ist."
+        },
+        {
+          "title": "Fragen, ohne sich wie eine Störung zu fühlen",
+          "body": "Jemandem zu schreiben, den man noch nie getroffen hat, fühlt sich groß an. Zu einer verfügbaren Person zu gehen ist wie im Büro kurz rüberzulehnen."
+        },
+        {
+          "title": "Beim Arbeiten gesehen werden",
+          "body": "Eine neue Person an einem Schreibtisch gehört vom ersten Tag an sichtbar zum Team, statt nur ein Name in einem Kanal zu sein."
+        },
+        {
+          "title": "Mitbekommen, wie das Team arbeitet",
+          "body": "Bei ein, zwei Meetings dabei zu sein, zeigt mehr darüber, wie Entscheidungen fallen, als jedes Dokument."
+        }
+      ]
+    },
+    {
+      "title": "Damit das Buddy-System remote funktioniert",
+      "items": [
+        {
+          "title": "Jemanden nah an der Arbeit wählen",
+          "body": "Nicht die Führungskraft und nicht die beschäftigtste Person im Team. Jemanden, der Ähnliches macht und Zeit für Fragen hat."
+        },
+        {
+          "title": "Die ersten zwei Tage Zeit einplanen",
+          "body": "Den größten Teil des Montags und einen Teil des Dienstags zusammen, mit geteiltem Bildschirm. Danach kommt die neue Person vorbei, wenn sie etwas braucht."
+        },
+        {
+          "title": "Den ersten Besuch selbst machen",
+          "body": "Der Buddy geht am ersten Tag zuerst hin. Das zeigt der neuen Person, dass Hingehen hier normal ist."
+        },
+        {
+          "title": "Einen Kanal für Fragen haben",
+          "body": "Ein Kanal im Team-Chat für Fragen, bei denen sich niemand albern fühlen soll. Nachrichten bleiben, die nächste neue Person kann die Antworten also nachlesen."
+        }
+      ]
+    },
+    {
+      "title": "Was TinyFloor beim Onboarding nicht macht",
+      "body": [
+        "Es ist kein HR-Tool. Es gibt keine Onboarding-Checklisten, keine Dokumentensignatur, keine Kontoeinrichtung und kein Single Sign-on. Behaltet euer Handbuch in eurem Dokumententool und die Konten in euren Admin-Tools; TinyFloor ist der Ort, an dem die neue Person das Team trifft und Hilfe bekommt. Einladen braucht einen Link, und eine Minute später kann sie an einem Schreibtisch sitzen."
+      ]
+    }
+  ],
+  "watercooler": [
+    {
+      "title": "Wofür die Kaffeeküche wirklich da war",
+      "body": [
+        "Niemand vermisst den Kaffee. Was Remote-Teams vermissen, ist das Gespräch, das niemand geplant hat: die Frage im Vorbeigehen, der Witz, die fünf Minuten, nach denen sich jemand als Teil des Teams fühlte. In Gallups Daten von 2024 berichteten 25 % der vollständig remote Arbeitenden von Einsamkeit, gegenüber 16 % derer vor Ort.",
+        "Geplante Social Calls sollen das lösen und fühlen sich oft wie ein weiteres Meeting an. Besser funktioniert ein Ort, an dem man sich wieder zufällig begegnen kann."
+      ]
+    },
+    {
+      "title": "Wie es auf der Fläche passiert",
+      "items": [
+        {
+          "title": "Jemand kommt herein",
+          "body": "Wenn eine Kollegin ankommt, sehen alle, die schon auf der Fläche sind, für ein paar Sekunden ein leises „Ana ist da“ mit einem Winken-Knopf. Einmal winken, und der Tag beginnt mit einem Hallo."
+        },
+        {
+          "title": "Du gehst an jemandem vorbei",
+          "body": "Auf dem Weg zum Besprechungsraum oder zum Whiteboard gehst du an Schreibtischen vorbei. Bleib neben jemandem stehen, und ein Anruf ist einen Tipp entfernt; geh weiter, und nichts passiert."
+        },
+        {
+          "title": "Musik im Raum",
+          "body": "Geh zum Lautsprecher und leg einen Titel auf. Alle hören denselben Song, laut am Lautsprecher und leiser, je weiter sie weggehen, so können die Leute an ihren Schreibtischen weiterarbeiten."
+        },
+        {
+          "title": "Der Chat zwischen den Calls",
+          "body": "Ein Kanal für alles, was nicht Arbeit ist, mit Fotos und Reaktionen. Nachrichten bleiben, also verpasst niemand das Hundefoto, weil er gerade in einem Meeting war."
+        }
+      ]
+    },
+    {
+      "title": "Rituale, die für ein kleines Team funktionieren",
+      "body": [
+        "Kurz, freiwillig und regelmäßig. Ein Team von acht braucht kein Eventprogramm, sondern ein paar Gewohnheiten, zu denen die Leute wirklich kommen."
+      ],
+      "table": {
+        "head": [
+          "Ritual",
+          "So läuft es",
+          "Wie oft"
+        ],
+        "rows": [
+          [
+            "Freitagskaffee",
+            "Starte ein Meeting namens Kaffee und hol alle dazu. Fünfzehn Minuten, keine Agenda, Kameras freiwillig.",
+            "Wöchentlich"
+          ],
+          [
+            "Show and Tell",
+            "Jemand teilt fünf Minuten lang den Bildschirm: ein Nebenprojekt, ein Foto, ein Tool, das er mag.",
+            "Alle zwei Wochen"
+          ],
+          [
+            "Erfolge der Woche",
+            "Eine Nachricht in einem Kanal am Freitagnachmittag, eine Zeile pro Person.",
+            "Wöchentlich"
+          ],
+          [
+            "Eine Skizze am Board",
+            "Lass etwas für den Morgen auf dem gemeinsamen Whiteboard: eine Frage, eine Zeichnung, eine Umfrage.",
+            "Wann immer"
+          ],
+          [
+            "Mittagessen auf der Fläche",
+            "Wer Lust hat, isst am Schreibtisch mit offenem Büro und plaudert, wenn er will.",
+            "Wann immer"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Was es erzwungen wirken lässt",
+      "items": [
+        {
+          "title": "Pflicht daraus machen",
+          "body": "Ein Social Call, zu dem man kommen muss, ist ein Meeting. Lade ein und zähl nicht, wer kam."
+        },
+        {
+          "title": "Kamerapflicht",
+          "body": "Beobachtet zu werden ist anstrengend. In Gespräche mit Stimme kommt man leichter hinein, und wer keine Kamera anhat, erscheint trotzdem als Karte, die beim Sprechen aufleuchtet."
+        },
+        {
+          "title": "Punkte und Bestenlisten",
+          "body": "Streaks und Abzeichen machen aus gemeinsamer Zeit einen Wettbewerb. TinyFloor hat sie nicht, mit Absicht."
+        },
+        {
+          "title": "Beobachten, wer online ist",
+          "body": "Nichts auf der Fläche zählt, wie lange jemand da ist oder wie lange jemand inaktiv war. Leute entspannen sich, wenn niemand mitzählt."
+        }
+      ]
+    },
+    {
+      "title": "Was TinyFloor nicht macht",
+      "body": [
+        "Es gibt keine Spiele, kein Quiz, keine YouTube-Bildschirme und keine Eventflächen für hundert Gäste. Es ist ein kleines Büro für ein Team, das jeden Tag zusammenarbeitet, und die Kaffeeküche ist der Teil zwischen den Aufgaben. Für eine Firmenfeier oder ein großes geselliges Event haben Kumospace und Gather mehr eingebaut."
+      ]
+    }
   ]
 }

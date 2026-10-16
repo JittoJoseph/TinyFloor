@@ -2058,5 +2058,496 @@
         "Preços, limites e recursos vêm das próprias páginas de preços e centrais de ajuda do Gather e do Kumospace, lidas em outubro de 2026, em dólares americanos sem impostos. O que não estava escrito lá, deixamos de fora em vez de chutar. Nós fazemos o TinyFloor, então dizemos com clareza o que ele não faz. Preços mudam: confira a página de cada produto antes de comprar."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "Como uma daily funciona no TinyFloor",
+      "body": [
+        "Todo escritório tem uma reunião principal sempre aberta. A daily é essa sala, todo dia no mesmo horário: ninguém manda link e ninguém espera um anfitrião numa sala de espera."
+      ],
+      "items": [
+        {
+          "title": "Entrar",
+          "detail": "9:58",
+          "body": "Entre na reunião principal e seu personagem vai até a sala de reunião. Todo mundo no andar vê a sala enchendo."
+        },
+        {
+          "title": "Fazer a rodada",
+          "detail": "10:00",
+          "body": "Voz primeiro, câmera se a pessoa quiser. Quem está falando fica no card grande, então fica claro de quem é a vez."
+        },
+        {
+          "title": "Sair",
+          "detail": "10:10",
+          "body": "Saia da sala para deixar a reunião e volte para sua mesa. O que precisar de mais de um minuto continua na mesa de alguém, com as duas pessoas envolvidas."
+        }
+      ]
+    },
+    {
+      "title": "Três formatos que funcionam",
+      "body": [
+        "Escolha um e mantenha. Uma daily que muda de formato toda semana vira reunião de status."
+      ],
+      "table": {
+        "head": [
+          "Formato",
+          "Como funciona",
+          "Serve para"
+        ],
+        "rows": [
+          [
+            "Três perguntas",
+            "Cada pessoa: o que terminei, no que estou hoje, o que está me travando.",
+            "Equipes novas e equipes cujo trabalho não fica num quadro só."
+          ],
+          [
+            "Percorrer o quadro",
+            "Percorrer o quadro da direita para a esquerda, primeiro o que está mais perto de pronto. Cada um fala quando seu card aparece.",
+            "Equipes que dividem um quadro Kanban ou de sprint. Compartilhe na tela."
+          ],
+          [
+            "Uma frase e um estacionamento",
+            "Uma frase de cada um, depois as dúvidas que surgiram, com quem precisar delas.",
+            "Equipes pequenas e entrosadas que já conversam o dia todo."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Quanto tempo deve durar",
+      "body": [
+        "Conte cerca de um minuto por pessoa e alguns minutos para o estacionamento. Passando de umas 12 pessoas, uma rodada dura mais do que dá para prestar atenção; divida por projeto ou percorra o quadro."
+      ],
+      "table": {
+        "head": [
+          "Equipe",
+          "Rodada",
+          "Com o estacionamento"
+        ],
+        "rows": [
+          [
+            "4 pessoas",
+            "4 minutos",
+            "cerca de 6 minutos"
+          ],
+          [
+            "8 pessoas",
+            "8 minutos",
+            "cerca de 10 minutos"
+          ],
+          [
+            "12 pessoas",
+            "12 minutos",
+            "cerca de 15 minutos"
+          ],
+          [
+            "15 pessoas",
+            "15 minutos",
+            "divida ou percorra o quadro"
+          ]
+        ],
+        "note": "Uma referência, não um cronômetro. Uma daily de 15 minutos em todo dia útil dá cerca de 5 horas de reunião por mês, em qualquer plano."
+      }
+    },
+    {
+      "title": "Como manter curta",
+      "items": [
+        {
+          "title": "Comece na hora",
+          "body": "Comece no horário mesmo se faltar alguém. O andar mostra quem está, quem está ausente e quem ainda está numa chamada, então você sabe por quem esperar e por quem não."
+        },
+        {
+          "title": "Leve os desdobramentos para uma mesa",
+          "body": "Quando duas pessoas precisam aprofundar algo, elas vão até uma mesa depois da daily. O resto da sala não precisa ouvir."
+        },
+        {
+          "title": "Mostre em vez de descrever",
+          "body": "Compartilhe uma janela com o quadro ou um bug em vez de ler em voz alta. Um clique e está na tela de todos."
+        },
+        {
+          "title": "Câmera opcional",
+          "body": "Quem está sem câmera aparece como um card que acende quando fala. Uma câmera ligada por dez minutos sem ninguém falando se desliga sozinha."
+        }
+      ]
+    },
+    {
+      "title": "Ao vivo, por escrito ou os dois",
+      "body": [
+        "Uma equipe espalhada por fusos horários nem sempre consegue se reunir no mesmo horário. Muitas postam uma atualização por escrito num canal do chat do escritório e deixam a daily ao vivo para os dias com algo a decidir: um lançamento, um problema, uma pessoa nova."
+      ],
+      "items": [
+        {
+          "title": "Ao vivo",
+          "body": "Destrava mais rápido, e é o único momento do dia em que a equipe toda está numa sala. Melhor quando a maioria trabalha no mesmo horário."
+        },
+        {
+          "title": "Por escrito",
+          "body": "Funciona entre fusos e deixa registro. Fácil de passar o olho e fácil de pular, então um bloqueio pode ficar sem ninguém ver."
+        },
+        {
+          "title": "Os dois",
+          "body": "Atualizações escritas todo dia e uma rodada curta ao vivo uma ou duas vezes por semana, num horário bom para todos."
+        }
+      ]
+    },
+    {
+      "title": "O que o TinyFloor não faz pela sua daily",
+      "body": [
+        "Não há bot de daily que faça as perguntas por você, nem lembrete, nem cronômetro, nem gravação. Ele não se conecta ao Jira, ao Linear nem ao GitHub, então o quadro vai para a tela como janela compartilhada. Se você quer dailies escritas coletadas automaticamente, um bot na sua ferramenta de chat faz isso melhor; o TinyFloor é onde a equipe se encontra."
+      ]
+    }
+  ],
+  "pairProgramming": [
+    {
+      "title": "Como uma sessão de pair programming começa",
+      "body": [
+        "No escritório, programar em par costuma começar com um \"tem um minuto?\" na mesa de alguém. Remoto, normalmente precisa de um convite na agenda, então acontece menos. No TinyFloor começa do jeito que era no escritório."
+      ],
+      "items": [
+        {
+          "title": "Ver quem está livre",
+          "detail": "1",
+          "body": "Mesas e status mostram quem está concentrado, quem está ausente e quem já está numa chamada. Ocupado quer dizer esperar; disponível quer dizer ir até lá."
+        },
+        {
+          "title": "Ir até a pessoa e falar",
+          "detail": "2",
+          "body": "Pare do lado dela e toque para ligar. Começa com voz; ligue a câmera se quiser."
+        },
+        {
+          "title": "Compartilhar e trabalhar",
+          "detail": "3",
+          "body": "Compartilhe uma janela, uma aba ou a tela inteira: o editor, o terminal, o teste que está falhando."
+        },
+        {
+          "title": "Voltar",
+          "detail": "4",
+          "body": "Desligue e você está de volta ao seu trabalho. A chamada continua conectada enquanto você anda, então nada cai se você se mexer."
+        }
+      ]
+    },
+    {
+      "title": "Jeitos de programar em par que funcionam remoto",
+      "body": [
+        "Todos funcionam com uma pessoa compartilhando e as duas falando. Para trocar quem dirige, suba uma branch de trabalho em andamento e a outra pessoa compartilha a tela dela."
+      ],
+      "table": {
+        "head": [
+          "Jeito",
+          "Como funciona",
+          "Bom para"
+        ],
+        "rows": [
+          [
+            "Piloto e navegador",
+            "Um digita, o outro pensa à frente, lê e pega erros. Troquem a cada 20 a 30 minutos.",
+            "A maior parte das sessões, e trazer alguém para um código que não conhece."
+          ],
+          [
+            "Pingue-pongue",
+            "Um escreve um teste que falha, o outro faz passar e escreve o próximo.",
+            "Trabalho guiado por testes, e manter os dois igualmente envolvidos."
+          ],
+          [
+            "Strong-style",
+            "Ideias só entram no código pelas mãos do outro: o navegador diz o quê, o piloto digita.",
+            "Ensinar e integrar pessoas, para quem é novo não ficar só olhando."
+          ],
+          [
+            "Destravar",
+            "Dez minutos no problema de outra pessoa, e de volta.",
+            "A pergunta rápida que, de outro jeito, ficaria para amanhã."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Deixando o código compartilhado fácil de ler",
+      "items": [
+        {
+          "title": "Compartilhe uma janela",
+          "body": "Uma tela compartilhada prioriza texto nítido em vez de movimento suave. Uma janela só do editor fica mais legível que um monitor largo inteiro reduzido."
+        },
+        {
+          "title": "Aumente a fonte",
+          "body": "Suba dois ou três tamanhos no editor e no terminal durante a sessão. O que é confortável na sua tela fica pequeno na da outra pessoa."
+        },
+        {
+          "title": "Tudo num lugar",
+          "body": "Divida editor e terminal na mesma janela, para não trocar o compartilhamento toda vez que um teste roda."
+        },
+        {
+          "title": "Diga para onde está olhando",
+          "body": "Aponte por arquivo e número de linha: \"linha 84 no handler\" é melhor que \"um pouco mais pra cima, não, aí\"."
+        }
+      ]
+    },
+    {
+      "title": "Quando dois viram três",
+      "body": [
+        "Vá até uma terceira pessoa durante uma chamada e o TinyFloor oferece transformar tudo numa reunião para os três. Para uma sessão de mob programming planejada, use a sala de reunião: quem está falando fica no card grande, e a tela compartilhada fica ao lado das pessoas."
+      ]
+    },
+    {
+      "title": "O que usar junto",
+      "body": [
+        "O TinyFloor é onde vocês se encontram e conversam. Ele não faz tudo o que uma sessão pode precisar:"
+      ],
+      "items": [
+        {
+          "title": "Sem controle remoto",
+          "body": "A outra pessoa vê sua tela, mas não consegue digitar nela. Para os dois editarem o mesmo código, use a ferramenta do seu editor, como VS Code Live Share ou JetBrains Code With Me, e deixe o TinyFloor para a voz."
+        },
+        {
+          "title": "Sem som da tela compartilhada",
+          "body": "O compartilhamento de tela leva só a imagem, que é o que o código precisa."
+        },
+        {
+          "title": "Sem gravação",
+          "body": "As sessões não são gravadas. Anotem o que decidiram no pull request ou no chat da equipe."
+        },
+        {
+          "title": "Sem conexão com GitHub ou Jira",
+          "body": "Compartilhe o pull request ou o ticket na tela para olhar junto."
+        }
+      ]
+    },
+    {
+      "title": "Hábitos que mantêm o pair programming bem-vindo",
+      "items": [
+        {
+          "title": "Respeite o ocupado",
+          "body": "Status ocupado é a porta fechada. Mande uma mensagem no chat e deixe a pessoa vir até você."
+        },
+        {
+          "title": "Sessões curtas",
+          "body": "Uma ou duas horas no máximo, com pausas. Programar em par o dia todo cansa, mesmo quando está indo bem."
+        },
+        {
+          "title": "Torne normal perguntar",
+          "body": "Uma equipe em que as pessoas vão até as outras com dúvidas destrava em minutos, não amanhã. Os mais experientes irem até os mais novos ajuda tanto quanto o contrário."
+        }
+      ]
+    }
+  ],
+  "onboarding": [
+    {
+      "title": "O primeiro dia de uma pessoa nova no andar",
+      "body": [
+        "Numa equipe remota, ninguém vê que alguém novo começou. No andar, todo mundo vê: há um nome novo numa mesa, e a equipe está a poucos passos."
+      ],
+      "items": [
+        {
+          "title": "Abrir o link de convite",
+          "detail": "9:00",
+          "body": "Um link para o escritório inteiro. Entre com Google ou um endereço de e-mail, no navegador, sem instalar nada."
+        },
+        {
+          "title": "Escolher uma mesa",
+          "detail": "9:05",
+          "body": "Você chega ao lado de uma mesa livre. Sente e faça dela a sua; a partir daí ninguém mais senta ali."
+        },
+        {
+          "title": "Receber um aceno",
+          "detail": "9:05",
+          "body": "Quem já está no andar vê você entrar e pode acenar. É um detalhe pequeno que mostra à pessoa nova que ela foi notada."
+        },
+        {
+          "title": "Dizer oi na daily",
+          "detail": "10:00",
+          "body": "Entre na sala de reunião com todo mundo. Um minuto para se apresentar, e a equipe já conhece você."
+        },
+        {
+          "title": "Sentar com seu padrinho",
+          "detail": "11:00",
+          "body": "Vá até a mesa do seu padrinho, compartilhe uma tela e façam a primeira tarefa juntos."
+        }
+      ]
+    },
+    {
+      "title": "Uma primeira semana que funciona",
+      "body": [
+        "Passos pequenos, as mesmas pessoas e alguém para perguntar. Esta é uma semana que muitas equipes pequenas usam:"
+      ],
+      "table": {
+        "head": [
+          "Dia",
+          "O que acontece",
+          "No andar"
+        ],
+        "rows": [
+          [
+            "Segunda",
+            "Contas e configuração, conhecer a equipe, uma primeira tarefa pequena com o padrinho.",
+            "Apresentação na daily, depois a maior parte do dia na mesa do padrinho."
+          ],
+          [
+            "Terça",
+            "Terminar a primeira tarefa. Conversas curtas com duas ou três pessoas de outras partes do trabalho.",
+            "Ir até cada uma delas por quinze minutos."
+          ],
+          [
+            "Quarta",
+            "Uma segunda tarefa, mais por conta própria. Perguntas conforme surgem.",
+            "Status disponível, e colegas que sabem que vão receber visitas."
+          ],
+          [
+            "Quinta",
+            "Acompanhar uma revisão, um planejamento ou uma chamada com cliente.",
+            "Entrar numa reunião na sala de reunião; ouvir conta."
+          ],
+          [
+            "Sexta",
+            "Uma conversa com a liderança: o que está claro, o que não está, o que vem depois.",
+            "Uma chamada na mesa da liderança."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "O que costuma faltar no onboarding remoto",
+      "items": [
+        {
+          "title": "Saber a quem perguntar",
+          "body": "No escritório você aprende quem sabe o quê vendo a quem as pessoas recorrem. No andar você vê a mesma coisa: quem fala com quem, e quem está ocupado."
+        },
+        {
+          "title": "Perguntar sem sentir que está atrapalhando",
+          "body": "Mandar mensagem para alguém que você nunca viu pesa. Ir até uma pessoa disponível é como se inclinar para a mesa ao lado no escritório."
+        },
+        {
+          "title": "Ser visto trabalhando",
+          "body": "Uma pessoa nova numa mesa faz parte da equipe de forma visível desde o primeiro dia, em vez de ser um nome num canal."
+        },
+        {
+          "title": "Perceber como a equipe trabalha",
+          "body": "Acompanhar uma ou duas reuniões ensina mais sobre como as decisões são tomadas do que qualquer documento."
+        }
+      ]
+    },
+    {
+      "title": "Fazendo o padrinho funcionar no remoto",
+      "items": [
+        {
+          "title": "Escolha alguém perto do trabalho",
+          "body": "Não a liderança, nem a pessoa mais ocupada da equipe. Alguém que faz um trabalho parecido e tem tempo para perguntas."
+        },
+        {
+          "title": "Reserve tempo nos dois primeiros dias",
+          "body": "A maior parte da segunda e parte da terça juntos, compartilhando a tela. Depois disso, a pessoa nova vai até lá quando precisar."
+        },
+        {
+          "title": "Faça a primeira visita por ela",
+          "body": "O padrinho vai primeiro, no primeiro dia. Isso mostra à pessoa nova que ir até alguém é normal aqui."
+        },
+        {
+          "title": "Tenha um canal para perguntas",
+          "body": "Um canal no chat da equipe para as perguntas que ninguém deveria ter vergonha de fazer. As mensagens ficam, então a próxima pessoa nova pode ler as respostas."
+        }
+      ]
+    },
+    {
+      "title": "O que o TinyFloor não faz no onboarding",
+      "body": [
+        "Ele não é uma ferramenta de RH. Não há checklists de onboarding, assinatura de documentos, criação de contas nem login único. Mantenha seu manual na sua ferramenta de documentação e as contas nas suas ferramentas de administração; o TinyFloor é onde a pessoa nova conhece a equipe e encontra ajuda. Convidar leva um link, e um minuto depois ela pode estar numa mesa."
+      ]
+    }
+  ],
+  "watercooler": [
+    {
+      "title": "Para que o cafezinho servia de verdade",
+      "body": [
+        "Ninguém sente falta do café. O que equipes remotas sentem falta é da conversa que ninguém planejou: a pergunta feita de passagem, a piada, os cinco minutos que fizeram alguém se sentir parte da equipe. Nos dados da Gallup de 2024, 25% de quem trabalha totalmente remoto relatou solidão, contra 16% de quem trabalha no escritório.",
+        "Chamadas sociais agendadas tentam resolver isso e muitas vezes parecem mais uma reunião. Funciona melhor dar às pessoas um lugar onde esbarrar umas nas outras volte a acontecer."
+      ]
+    },
+    {
+      "title": "Como acontece no andar",
+      "items": [
+        {
+          "title": "Alguém chega",
+          "body": "Quando uma colega chega, quem já está no andar vê por alguns segundos um discreto \"Ana chegou\" com um botão de aceno. Um aceno, e o dia começa com um oi."
+        },
+        {
+          "title": "Você passa por alguém",
+          "body": "No caminho para a sala de reunião ou para o quadro branco, você passa por mesas. Pare do lado de alguém e a chamada está a um toque; siga andando e nada acontece."
+        },
+        {
+          "title": "Música na sala",
+          "body": "Vá até a caixa de som e coloque uma faixa. Todos ouvem a mesma música, alta perto da caixa e mais baixa conforme se afastam, então quem está na mesa continua trabalhando."
+        },
+        {
+          "title": "O chat entre as chamadas",
+          "body": "Um canal para tudo que não é trabalho, com fotos e reações. As mensagens ficam, então ninguém perde a foto do cachorro por estar numa reunião."
+        }
+      ]
+    },
+    {
+      "title": "Rituais que funcionam numa equipe pequena",
+      "body": [
+        "Curtos, opcionais e regulares. Uma equipe de oito não precisa de um programa de eventos; precisa de alguns hábitos que as pessoas realmente frequentem."
+      ],
+      "table": {
+        "head": [
+          "Ritual",
+          "Como funciona",
+          "Frequência"
+        ],
+        "rows": [
+          [
+            "Café de sexta",
+            "Crie uma reunião chamada Café e chame todo mundo. Quinze minutos, sem pauta, câmera opcional.",
+            "Toda semana"
+          ],
+          [
+            "Mostra e conta",
+            "Alguém compartilha a tela por cinco minutos: um projeto pessoal, uma foto, uma ferramenta de que gosta.",
+            "A cada duas semanas"
+          ],
+          [
+            "Conquistas da semana",
+            "Uma mensagem num canal na sexta à tarde, uma linha de cada um.",
+            "Toda semana"
+          ],
+          [
+            "Um rabisco no quadro",
+            "Deixe algo no quadro branco compartilhado para a manhã: uma pergunta, um desenho, uma enquete.",
+            "Quando quiser"
+          ],
+          [
+            "Almoço no andar",
+            "Quem quiser come na mesa com o escritório aberto e conversa se tiver vontade.",
+            "Quando quiser"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "O que deixa tudo forçado",
+      "items": [
+        {
+          "title": "Tornar obrigatório",
+          "body": "Uma chamada social obrigatória é uma reunião. Convide e não conte quem veio."
+        },
+        {
+          "title": "Exigir câmera",
+          "body": "Ser observado cansa. Conversas por voz são mais fáceis de entrar, e quem está sem câmera ainda aparece como um card que acende quando fala."
+        },
+        {
+          "title": "Pontos e rankings",
+          "body": "Sequências e medalhas transformam o tempo juntos numa competição. O TinyFloor não tem isso, de propósito."
+        },
+        {
+          "title": "Vigiar quem está online",
+          "body": "Nada no andar conta há quanto tempo alguém está ali ou quanto tempo ficou inativo. As pessoas relaxam quando ninguém está contando."
+        }
+      ]
+    },
+    {
+      "title": "O que o TinyFloor não faz",
+      "body": [
+        "Não há jogos, quiz, telas do YouTube nem espaços de evento para cem convidados. É um escritório pequeno para uma equipe que trabalha junta todo dia, e o cafezinho é a parte entre as tarefas. Para uma festa da empresa ou um grande evento social, o Kumospace e o Gather têm mais recursos."
+      ]
+    }
   ]
 }

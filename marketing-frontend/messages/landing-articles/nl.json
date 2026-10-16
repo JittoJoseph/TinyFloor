@@ -2058,5 +2058,496 @@
         "Prijzen, limieten en functies komen van de eigen prijspagina's en helpcentra van Gather en Kumospace, gelezen in oktober 2026, in Amerikaanse dollars exclusief belasting. Wat daar niet stond, hebben we weggelaten in plaats van te gokken. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van elk product voordat je koopt."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "Zo verloopt een standup in TinyFloor",
+      "body": [
+        "Elk kantoor heeft een hoofdmeeting die altijd open is. De standup is die ruimte, elke dag op hetzelfde tijdstip: niemand stuurt een link en niemand wacht in een wachtkamer op een host."
+      ],
+      "items": [
+        {
+          "title": "Binnenlopen",
+          "detail": "9:58",
+          "body": "Doe mee aan de hoofdmeeting en je poppetje loopt de vergaderruimte in. Iedereen op de verdieping ziet de ruimte vollopen."
+        },
+        {
+          "title": "Het rondje",
+          "detail": "10:00",
+          "body": "Eerst stem, camera's als mensen dat willen. Wie praat krijgt de grote kaart, dus het is duidelijk wie aan de beurt is."
+        },
+        {
+          "title": "Naar buiten",
+          "detail": "10:10",
+          "body": "Loop de ruimte uit om de meeting te verlaten en ga terug naar je bureau. Wat meer dan een minuut nodig heeft, gaat verder aan iemands bureau, met de twee mensen die het aangaat."
+        }
+      ]
+    },
+    {
+      "title": "Drie vormen die werken",
+      "body": [
+        "Kies er één en houd die aan. Een standup die elke week van vorm verandert, wordt een statusmeeting."
+      ],
+      "table": {
+        "head": [
+          "Vorm",
+          "Hoe het gaat",
+          "Past bij"
+        ],
+        "rows": [
+          [
+            "Drie vragen",
+            "Ieder: wat ik af heb, waar ik vandaag aan werk, wat me tegenhoudt.",
+            "Nieuwe teams en teams waarvan het werk niet op één bord staat."
+          ],
+          [
+            "Het bord aflopen",
+            "Loop het bord van rechts naar links af, het werk dat het dichtst bij af is eerst. Je praat als je kaart aan de beurt is.",
+            "Teams met een gedeeld Kanban- of sprintbord. Deel het op je scherm."
+          ],
+          [
+            "Eén zin en een parkeerplaats",
+            "Eén zin per persoon, daarna de vragen die opkwamen, opgepakt door wie ze nodig heeft.",
+            "Kleine, ingespeelde teams die de hele dag al praten."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Hoe lang het zou moeten duren",
+      "body": [
+        "Reken op ongeveer een minuut per persoon en een paar minuten voor de parkeerplaats. Boven de 12 of zo duurt een rondje langer dan mensen kunnen luisteren; splits per project of loop in plaats daarvan het bord af."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Rondje",
+          "Met de parkeerplaats"
+        ],
+        "rows": [
+          [
+            "4 mensen",
+            "4 minuten",
+            "ongeveer 6 minuten"
+          ],
+          [
+            "8 mensen",
+            "8 minuten",
+            "ongeveer 10 minuten"
+          ],
+          [
+            "12 mensen",
+            "12 minuten",
+            "ongeveer 15 minuten"
+          ],
+          [
+            "15 mensen",
+            "15 minuten",
+            "splits het, of loop het bord af"
+          ]
+        ],
+        "note": "Een vuistregel, geen timer. Een standup van 15 minuten op elke werkdag komt neer op ongeveer 5 uur vergaderen per maand, bij elk abonnement."
+      }
+    },
+    {
+      "title": "Zo blijft het kort",
+      "items": [
+        {
+          "title": "Op tijd beginnen",
+          "body": "Begin op de minuut, ook als iemand ontbreekt. De verdieping laat zien wie er is, wie afwezig is en wie nog in een gesprek zit, dus je weet op wie je moet wachten en op wie niet."
+        },
+        {
+          "title": "Vervolgvragen naar een bureau",
+          "body": "Als twee mensen ergens dieper in moeten duiken, lopen ze na de standup naar een bureau. De rest van de ruimte hoeft niet mee te luisteren."
+        },
+        {
+          "title": "Laten zien in plaats van beschrijven",
+          "body": "Deel een venster met het bord of een bug in plaats van het voor te lezen. Eén klik en het staat op ieders scherm."
+        },
+        {
+          "title": "Camera's vrijwillig",
+          "body": "Wie geen camera aan heeft, verschijnt als een kaart die oplicht als die persoon praat. Een camera die tien minuten aanstond zonder dat iemand praatte, gaat vanzelf uit."
+        }
+      ]
+    },
+    {
+      "title": "Live, geschreven of allebei",
+      "body": [
+        "Een team verspreid over tijdzones kan niet altijd op één tijdstip afspreken. Veel teams posten een geschreven update in een kanaal van de chat van het kantoor en houden de live standup voor dagen waarop er iets te beslissen valt: een release, een probleem, een nieuwe collega."
+      ],
+      "items": [
+        {
+          "title": "Live",
+          "body": "Sneller om knelpunten op te lossen, en het is het ene moment per dag dat het hele team in één ruimte is. Het beste als de meesten dezelfde werktijden hebben."
+        },
+        {
+          "title": "Geschreven",
+          "body": "Werkt over tijdzones heen en laat iets na om op terug te kijken. Makkelijk te scannen en makkelijk over te slaan, dus knelpunten kunnen onopgemerkt blijven."
+        },
+        {
+          "title": "Allebei",
+          "body": "Elke dag geschreven updates, en een of twee keer per week een kort live rondje, op een tijd die iedereen uitkomt."
+        }
+      ]
+    },
+    {
+      "title": "Wat TinyFloor niet doet voor standups",
+      "body": [
+        "Er is geen standup-bot die de vragen voor je stelt, geen herinnering, geen timer en geen opname. Het is niet gekoppeld aan Jira, Linear of GitHub, dus het bord gaat als gedeeld venster op het scherm. Wil je geschreven standups automatisch verzamelen, dan doet een bot in je chattool dat beter; TinyFloor is waar het team samenkomt."
+      ]
+    }
+  ],
+  "pairProgramming": [
+    {
+      "title": "Zo begint een pairing-sessie",
+      "body": [
+        "Op kantoor begint pair programming vaak met \"heb je even?\" bij iemands bureau. Remote is er meestal een agenda-uitnodiging voor nodig, dus gebeurt het minder. In TinyFloor begint het zoals op kantoor."
+      ],
+      "items": [
+        {
+          "title": "Zien wie vrij is",
+          "detail": "1",
+          "body": "Bureaus en statussen laten zien wie geconcentreerd werkt, wie afwezig is en wie al in een gesprek zit. Bezet betekent wachten; beschikbaar betekent erheen lopen."
+        },
+        {
+          "title": "Erheen lopen en praten",
+          "detail": "2",
+          "body": "Ga ernaast staan en tik om te bellen. Het begint met stem; zet een camera aan als je wilt."
+        },
+        {
+          "title": "Delen en werken",
+          "detail": "3",
+          "body": "Deel een venster, een tabblad of je hele scherm: de editor, de terminal, de falende test."
+        },
+        {
+          "title": "Teruglopen",
+          "detail": "4",
+          "body": "Hang op en je bent terug bij je eigen werk. Het gesprek blijft verbonden terwijl je beweegt, dus er valt niets weg als je rondloopt."
+        }
+      ]
+    },
+    {
+      "title": "Manieren van pairen die remote werken",
+      "body": [
+        "Elke manier werkt met één persoon die deelt en twee die praten. Om te wisselen wie stuurt, push je een work-in-progress-branch en deelt de ander zijn of haar scherm."
+      ],
+      "table": {
+        "head": [
+          "Manier",
+          "Hoe het gaat",
+          "Goed voor"
+        ],
+        "rows": [
+          [
+            "Driver en navigator",
+            "De een typt, de ander denkt vooruit, leest mee en vangt fouten. Wissel elke 20 tot 30 minuten.",
+            "Het meeste pairen, en iemand meenemen in onbekende code."
+          ],
+          [
+            "Pingpong",
+            "De een schrijft een falende test, de ander laat hem slagen en schrijft de volgende.",
+            "Testgedreven werk, en beiden even betrokken houden."
+          ],
+          [
+            "Strong-style",
+            "Ideeën komen alleen via de handen van de ander in de code: de navigator zegt wat, de driver typt.",
+            "Leren en inwerken, zodat de nieuwere persoon niet alleen toekijkt."
+          ],
+          [
+            "Losmaken",
+            "Tien minuten aan het probleem van een ander, dan teruglopen.",
+            "De snelle vraag die anders tot morgen zou wachten."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Gedeelde code goed leesbaar maken",
+      "items": [
+        {
+          "title": "Deel één venster",
+          "body": "Een gedeeld scherm is afgestemd op scherpe tekst, niet op vloeiende beweging. Eén editorvenster leest beter dan een hele brede monitor verkleind."
+        },
+        {
+          "title": "Zet het lettertype groter",
+          "body": "Ga tijdens het pairen twee of drie maten omhoog in de editor en terminal. Wat op jouw scherm prettig is, is op dat van de ander klein."
+        },
+        {
+          "title": "Alles op één plek",
+          "body": "Splits editor en terminal in hetzelfde venster, zodat je niet bij elke testrun van deelscherm hoeft te wisselen."
+        },
+        {
+          "title": "Zeg waar je kijkt",
+          "body": "Wijs aan met bestand en regelnummer: \"regel 84 in de handler\" is beter dan \"iets hoger, nee, daar\"."
+        }
+      ]
+    },
+    {
+      "title": "Als twee er drie worden",
+      "body": [
+        "Loop tijdens een gesprek naar een derde collega en TinyFloor biedt aan er een meeting voor jullie drieën van te maken. Voor een geplande mob- of ensemble-sessie gebruik je de vergaderruimte: wie praat krijgt de grote kaart, en het gedeelde scherm staat naast de mensen."
+      ]
+    },
+    {
+      "title": "Wat je ernaast gebruikt",
+      "body": [
+        "TinyFloor is waar je elkaar vindt en praat. Het doet niet alles wat een pairing-sessie nodig kan hebben:"
+      ],
+      "items": [
+        {
+          "title": "Geen besturing op afstand",
+          "body": "De ander ziet je scherm maar kan er niet in typen. Wil je allebei dezelfde code bewerken, gebruik dan de tool van je editor, zoals VS Code Live Share of JetBrains Code With Me, en houd TinyFloor voor de stem."
+        },
+        {
+          "title": "Geen geluid van het gedeelde scherm",
+          "body": "Scherm delen stuurt alleen het beeld, en dat is wat code nodig heeft."
+        },
+        {
+          "title": "Geen opname",
+          "body": "Sessies worden niet opgenomen. Schrijf op wat jullie besloten in de pull request of de teamchat."
+        },
+        {
+          "title": "Geen koppeling met GitHub of Jira",
+          "body": "Deel de pull request of het ticket op je scherm om het samen te bekijken."
+        }
+      ]
+    },
+    {
+      "title": "Gewoontes die pairen welkom houden",
+      "items": [
+        {
+          "title": "Respecteer bezet",
+          "body": "Een bezet-status is de dichte deur. Stuur in plaats daarvan een bericht in de chat en laat de ander naar jou toe komen."
+        },
+        {
+          "title": "Houd sessies kort",
+          "body": "Hooguit een of twee uur, met pauzes. De hele dag pairen is vermoeiend, ook als het goed gaat."
+        },
+        {
+          "title": "Maak vragen normaal",
+          "body": "Een team waarin mensen met vragen naar elkaar toe lopen, lost knelpunten op in minuten, niet morgen. Ervaren mensen die naar nieuwere lopen helpen evenveel als andersom."
+        }
+      ]
+    }
+  ],
+  "onboarding": [
+    {
+      "title": "De eerste dag van een nieuwe collega op de verdieping",
+      "body": [
+        "In een remote team ziet niemand dat er iemand nieuw is begonnen. Op de verdieping wel: er staat een nieuwe naam bij een bureau, en het team is een paar stappen verderop."
+      ],
+      "items": [
+        {
+          "title": "De uitnodigingslink openen",
+          "detail": "9:00",
+          "body": "Eén link voor het hele kantoor. Inloggen met Google of een e-mailadres, in de browser, zonder iets te installeren."
+        },
+        {
+          "title": "Een bureau kiezen",
+          "detail": "9:05",
+          "body": "Je komt aan naast een vrij bureau. Ga zitten en maak het van jou; vanaf dan zit niemand anders daar."
+        },
+        {
+          "title": "Een zwaai krijgen",
+          "detail": "9:05",
+          "body": "Iedereen die al op de verdieping is, ziet je binnenkomen en kan zwaaien. Een kleinigheid die de nieuwe collega laat merken dat die gezien is."
+        },
+        {
+          "title": "Hallo zeggen bij de standup",
+          "detail": "10:00",
+          "body": "Loop met iedereen de vergaderruimte in. Eén minuut om jezelf voor te stellen, en het team kent je."
+        },
+        {
+          "title": "Bij je buddy zitten",
+          "detail": "11:00",
+          "body": "Loop naar het bureau van je buddy, deel een scherm en werk de eerste taak samen door."
+        }
+      ]
+    },
+    {
+      "title": "Een eerste week die werkt",
+      "body": [
+        "Kleine stappen, dezelfde mensen en iemand aan wie je iets kunt vragen. Dit is een week die veel kleine teams gebruiken:"
+      ],
+      "table": {
+        "head": [
+          "Dag",
+          "Wat er gebeurt",
+          "Op de verdieping"
+        ],
+        "rows": [
+          [
+            "Maandag",
+            "Accounts en installatie, het team leren kennen, een eerste kleine taak met de buddy.",
+            "Voorstellen bij de standup, daarna het grootste deel van de dag bij het bureau van de buddy."
+          ],
+          [
+            "Dinsdag",
+            "De eerste taak afmaken. Korte gesprekken met twee of drie mensen uit andere delen van het werk.",
+            "Een kwartiertje naar elk van hen toe lopen."
+          ],
+          [
+            "Woensdag",
+            "Een tweede taak, meer zelfstandig. Vragen zodra ze opkomen.",
+            "Status beschikbaar, en collega's die weten dat er bezoek kan komen."
+          ],
+          [
+            "Donderdag",
+            "Aanschuiven bij een review, een planning of een klantgesprek.",
+            "Een meeting in de vergaderruimte bijwonen; luisteren telt."
+          ],
+          [
+            "Vrijdag",
+            "Een gesprek met de leidinggevende: wat duidelijk is, wat niet, wat er komt.",
+            "Een gesprek bij het bureau van de leidinggevende."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Wat remote onboarding meestal mist",
+      "items": [
+        {
+          "title": "Weten wie je moet vragen",
+          "body": "Op kantoor leer je wie wat weet door te zien naar wie mensen toe gaan. Op de verdieping zie je hetzelfde: wie met wie praat, en wie bezet is."
+        },
+        {
+          "title": "Vragen zonder je een stoorzender te voelen",
+          "body": "Iemand schrijven die je nog nooit hebt ontmoet, voelt groot. Naar een beschikbare collega lopen is hetzelfde als op kantoor even opzij leunen."
+        },
+        {
+          "title": "Gezien worden terwijl je werkt",
+          "body": "Een nieuwe collega aan een bureau hoort vanaf dag één zichtbaar bij het team, in plaats van een naam in een kanaal te zijn."
+        },
+        {
+          "title": "Meekrijgen hoe het team werkt",
+          "body": "Bij een of twee meetings aanschuiven leert meer over hoe beslissingen vallen dan welk document ook."
+        }
+      ]
+    },
+    {
+      "title": "Het buddysysteem remote laten werken",
+      "items": [
+        {
+          "title": "Kies iemand dicht bij het werk",
+          "body": "Niet de leidinggevende, en niet de drukste persoon in het team. Iemand die vergelijkbaar werk doet en tijd heeft voor vragen."
+        },
+        {
+          "title": "Plan tijd op de eerste twee dagen",
+          "body": "Het grootste deel van maandag en een deel van dinsdag samen, met een gedeeld scherm. Daarna loopt de nieuwe collega langs wanneer dat nodig is."
+        },
+        {
+          "title": "Doe het eerste bezoek zelf",
+          "body": "De buddy loopt op dag één als eerste langs. Zo ziet de nieuwe collega dat langslopen hier normaal is."
+        },
+        {
+          "title": "Houd een kanaal voor vragen",
+          "body": "Een kanaal in de teamchat voor vragen waar niemand zich dom bij hoeft te voelen. Berichten blijven staan, dus de volgende nieuwe collega kan de antwoorden teruglezen."
+        }
+      ]
+    },
+    {
+      "title": "Wat TinyFloor niet doet voor onboarding",
+      "body": [
+        "Het is geen HR-tool. Er zijn geen onboardingchecklists, geen documenten ondertekenen, geen accounts aanmaken en geen single sign-on. Houd je handboek in je documentatietool en accounts in je beheertools; TinyFloor is waar de nieuwe collega het team ontmoet en hulp krijgt. Uitnodigen kost één link, en een minuut later kan die aan een bureau zitten."
+      ]
+    }
+  ],
+  "watercooler": [
+    {
+      "title": "Waar het koffieapparaat echt voor was",
+      "body": [
+        "Niemand mist de koffie. Wat remote teams missen, is het gesprek dat niemand had gepland: de vraag in het voorbijgaan, de grap, de vijf minuten waardoor iemand zich deel van het team voelde. In de cijfers van Gallup uit 2024 gaf 25% van de volledig remote werkenden aan zich eenzaam te voelen, tegenover 16% van wie op locatie werkt.",
+        "Ingeplande sociale calls proberen dat op te lossen en voelen vaak als nog een meeting. Beter werkt een plek waar je elkaar weer toevallig tegenkomt."
+      ]
+    },
+    {
+      "title": "Hoe het gebeurt op de verdieping",
+      "items": [
+        {
+          "title": "Iemand komt binnen",
+          "body": "Als een collega binnenkomt, ziet iedereen die al op de verdieping is een paar seconden een rustig \"Ana is er\" met een zwaaiknop. Eén zwaai, en de dag begint met een hallo."
+        },
+        {
+          "title": "Je loopt langs iemand",
+          "body": "Op weg naar de vergaderruimte of het whiteboard loop je langs bureaus. Blijf naast iemand staan en een gesprek is één tik weg; loop door en er gebeurt niets."
+        },
+        {
+          "title": "Muziek in de ruimte",
+          "body": "Loop naar de speaker en zet een nummer op. Iedereen hoort hetzelfde nummer, hard bij de speaker en zachter naarmate je verder weg loopt, dus mensen aan hun bureau kunnen doorwerken."
+        },
+        {
+          "title": "De chat tussen calls door",
+          "body": "Een kanaal voor alles wat geen werk is, met foto's en reacties. Berichten blijven staan, dus niemand mist de hondenfoto omdat die in een meeting zat."
+        }
+      ]
+    },
+    {
+      "title": "Rituelen die werken voor een klein team",
+      "body": [
+        "Houd ze kort, vrijwillig en regelmatig. Een team van acht heeft geen evenementenprogramma nodig, maar een paar gewoontes waar mensen echt op afkomen."
+      ],
+      "table": {
+        "head": [
+          "Ritueel",
+          "Hoe het gaat",
+          "Hoe vaak"
+        ],
+        "rows": [
+          [
+            "Vrijdagkoffie",
+            "Start een meeting die Koffie heet en vraag iedereen erbij. Een kwartier, geen agenda, camera's vrijwillig.",
+            "Wekelijks"
+          ],
+          [
+            "Show and tell",
+            "Iemand deelt vijf minuten zijn scherm: een zijproject, een foto, een tool die hij fijn vindt.",
+            "Om de week"
+          ],
+          [
+            "Successen van de week",
+            "Een bericht in een kanaal op vrijdagmiddag, één regel per persoon.",
+            "Wekelijks"
+          ],
+          [
+            "Een schets op het bord",
+            "Laat iets achter op het gedeelde whiteboard voor de ochtend: een vraag, een tekening, een poll.",
+            "Wanneer je wilt"
+          ],
+          [
+            "Lunch op de verdieping",
+            "Wie zin heeft, eet aan het bureau met het kantoor open en kletst als die wil.",
+            "Wanneer je wilt"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Wat het geforceerd maakt",
+      "items": [
+        {
+          "title": "Het verplicht maken",
+          "body": "Een sociale call waar je heen moet, is een meeting. Nodig uit en tel niet wie er kwam."
+        },
+        {
+          "title": "Camera's verplicht",
+          "body": "Bekeken worden is vermoeiend. In een gesprek met alleen stem stap je makkelijker in, en wie geen camera aan heeft, verschijnt toch als een kaart die oplicht bij het praten."
+        },
+        {
+          "title": "Punten en ranglijsten",
+          "body": "Streaks en badges maken van tijd samen een wedstrijd. TinyFloor heeft ze niet, met opzet."
+        },
+        {
+          "title": "Kijken wie er online is",
+          "body": "Niets op de verdieping telt hoe lang iemand er is of hoe lang iemand inactief was. Mensen ontspannen als niemand de score bijhoudt."
+        }
+      ]
+    },
+    {
+      "title": "Wat TinyFloor niet doet",
+      "body": [
+        "Er zijn geen spelletjes, geen quiz, geen YouTube-schermen en geen evenementruimtes voor honderd gasten. Het is een klein kantoor voor een team dat elke dag samenwerkt, en het koffieapparaat is het stukje tussen de taken. Voor een bedrijfsfeest of een groot sociaal evenement hebben Kumospace en Gather meer aan boord."
+      ]
+    }
   ]
 }

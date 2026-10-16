@@ -3608,5 +3608,61 @@
         "TinyFloorissa ei ole avointa tilaääntä, joten ryhmä ei voi jutella vain seisomalla yhdessä; kolmesta ihmisestä alkaen mennään kokoukseen. Sitä ei ole tehty sadan hengen tapahtumiin tai peleihin, eikä puhelinsoitolla voi liittyä. Jos haluat eloisan tilan, jossa äänet kuuluvat ja hiipuvat liikkuessasi, tilaääneen perustuva tuote sopii paremmin; jos haluat rauhallisen toimiston, jossa puhuminen on yhden napautuksen päässä, tämä on se."
       ]
     }
-  ]
+  ],
+  "hubs": {
+    "features": [
+      {
+        "title": "Miten osat sopivat yhteen",
+        "body": [
+          "TinyFloor-toimisto on yksi yhteinen kerros: työpiste jokaiselle, aina auki oleva kokoushuone, taulu seinällä ja chat vieressä. Liikut hahmona, ja se, missä seisot, ratkaisee, kenen kanssa puhut.",
+          "Jokaisessa paketissa ovat kaikki ominaisuudet, myös ilmaisessa. Pron myötä muuttuu se, kuinka monta ihmistä toimistoon mahtuu, ei se, mitä he voivat tehdä."
+        ]
+      },
+      {
+        "title": "Mitä on tarkoituksella jätetty pois",
+        "body": [
+          "Siinä ei ole tallennusta, ei sen seurantaa, kuinka kauan joku on paikalla, eikä määritettäviä integraatioita. Mikrofonit ovat pois, kunnes puhelu alkaa, ja kamerat lepäävät, kun kukaan ei puhu. Se toimii selaimessa tietokoneella ja puhelimella, eikä mitään tarvitse asentaa."
+        ]
+      }
+    ],
+    "teams": [
+      {
+        "title": "Yksi kerros, erilaisia päiviä",
+        "body": [
+          "Pienillä etätiimeillä on usein samat kaksi ongelmaa: nopean kysymyksen esittäminen vie liikaa aikaa, eikä kukaan näe, kuka on paikalla. Erona on päivän rytmi.",
+          "Kehittäjät tarvitsevat pitkiä keskittymisjaksoja ja nopean tavan päästä jumista. Suunnittelijat tarvitsevat palautetta monta kertaa päivässä. Toimistot tasapainoilevat asiakkaiden ja freelancereiden välillä. Startupit tarvitsevat vauhtia ja hinnan, joka ei kasva jokaisen palkkauksen myötä."
+        ]
+      },
+      {
+        "title": "Mitä kukin sivu käsittelee",
+        "body": [
+          "Jokainen sivu käy läpi tyypillisen päivän sellaiselle tiimille, mitä kannattaa pitää muissa työkaluissa ja missä TinyFloor ei sovi."
+        ]
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Työpäivä hetki hetkeltä",
+        "body": [
+          "Etätyöpäivä on enimmäkseen hiljaista työtä, jota katkaisee kourallinen hetkiä, jolloin ihmiset tarvitsevat toisiaan: aamun päiväpalaveri, kysymys kollegalle, uuden ihmisen ensimmäinen viikko, muutama minuutti juttelua tehtävien välissä.",
+          "Jokainen sivu ottaa yhden näistä hetkistä ja näyttää, miten se sujuu kerroksessa, pienten tiimien käyttämine muotoineen, aikoineen ja tapoineen, sekä mitä TinyFloor ei tee, jotta valitset jokaiseen oikean työkalun."
+        ]
+      }
+    ],
+    "compare": [
+      {
+        "title": "Miten vertailut on kirjoitettu",
+        "body": [
+          "Jokainen luku on toisen tuotteen omalta hintasivulta tai ohjekeskuksesta, ja mukana on kuukausi, jolloin tarkistimme sen. Mitä ei ollut julkaistu, jätimme pois arvaamisen sijaan.",
+          "Teemme TinyFlooria, joten jokainen sivu kertoo myös, missä toinen tuote on parempi ja milloin kannattaa valita se."
+        ]
+      },
+      {
+        "title": "Mistä aloittaa",
+        "body": [
+          "Useimmat näistä työkaluista laskuttavat jäsentä kohden; TinyFloor on yksi hinta toimistolle ja ilmainen enintään kolmelle hengelle. Jos olet lähdössä Gatherista, aloita vaihtoehtojen katsauksesta ja oppaasta siihen, mitä Gather nyt maksaa."
+        ]
+      }
+    ]
+  }
 }

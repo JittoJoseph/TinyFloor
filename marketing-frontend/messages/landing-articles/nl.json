@@ -3608,5 +3608,61 @@
         "TinyFloor heeft geen open ruimtelijk geluid, dus een groep kan niet praten door gewoon bij elkaar te staan; vanaf drie mensen ga je naar een meeting. Het is niet gemaakt voor evenementen of games met honderden mensen, en er is geen telefonische inbelmogelijkheid. Wil je een levendige ruimte waar stemmen aanzwellen en wegvallen terwijl je rondloopt, dan past een product rond ruimtelijk geluid beter; wil je een rustig kantoor waar praten één tik weg is, dan is dit het."
       ]
     }
-  ]
+  ],
+  "hubs": {
+    "features": [
+      {
+        "title": "Hoe de onderdelen in elkaar passen",
+        "body": [
+          "Een TinyFloor-kantoor is één gedeelde verdieping: een bureau voor iedereen, een vergaderruimte die altijd open is, een whiteboard aan de muur en een chat ernaast. Je beweegt als poppetje, en waar je staat bepaalt met wie je praat.",
+          "Elk abonnement heeft alle functies, het gratis abonnement ook. Met Pro verandert hoeveel mensen er in het kantoor passen, niet wat ze kunnen."
+        ]
+      },
+      {
+        "title": "Wat er met opzet niet in zit",
+        "body": [
+          "Er zijn geen opnames, er wordt niet bijgehouden hoe lang iemand online is en er zijn geen integraties om in te stellen. Microfoons staan uit tot een gesprek begint, en camera's rusten als niemand praat. Het draait in de browser op desktop en mobiel, zonder iets te installeren."
+        ]
+      }
+    ],
+    "teams": [
+      {
+        "title": "Eén verdieping, verschillende dagen",
+        "body": [
+          "Kleine remote teams hebben vaak dezelfde twee problemen: een snelle vraag stellen duurt te lang, en niemand ziet wie er is. Wat verschilt, is het ritme van de dag.",
+          "Developers hebben lange stukken focus nodig en een snelle manier om los te komen. Designers hebben meerdere keren per dag feedback nodig. Bureaus jongleren met klanten en freelancers. Startups hebben snelheid nodig, en een prijs die niet bij elke nieuwe collega stijgt."
+        ]
+      },
+      {
+        "title": "Wat elke pagina laat zien",
+        "body": [
+          "Elke pagina loopt een typische dag voor dat soort team door, wat je in je andere tools houdt, en waar TinyFloor niet past."
+        ]
+      }
+    ],
+    "useCases": [
+      {
+        "title": "De werkdag, moment voor moment",
+        "body": [
+          "Een remote werkdag is vooral rustig werk, onderbroken door een handvol momenten waarop mensen elkaar nodig hebben: de standup in de ochtend, een vraag aan een collega, de eerste week van iemand nieuw, een paar minuten kletsen tussen taken door.",
+          "Elke pagina neemt één van die momenten en laat zien hoe het op de verdieping gaat, met de vormen, tijden en gewoontes van kleine teams, en wat TinyFloor niet doet, zodat je voor elk moment het juiste hulpmiddel kiest."
+        ]
+      }
+    ],
+    "compare": [
+      {
+        "title": "Hoe deze vergelijkingen tot stand komen",
+        "body": [
+          "Elk getal komt van de prijspagina of het helpcentrum van het andere product, met de maand waarin we het controleerden. Wat niet gepubliceerd was, hebben we weggelaten in plaats van te gokken.",
+          "Wij maken TinyFloor, dus elke pagina zegt ook wat het andere product beter doet en wanneer je dat moet kiezen."
+        ]
+      },
+      {
+        "title": "Waar je begint",
+        "body": [
+          "De meeste van deze tools rekenen per lid; TinyFloor is één prijs voor het kantoor en gratis tot drie mensen. Stap je over van Gather, begin dan met het overzicht van alternatieven en de gids over wat Gather nu kost."
+        ]
+      }
+    ]
+  }
 }

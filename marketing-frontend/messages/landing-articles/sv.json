@@ -3608,5 +3608,61 @@
         "TinyFloor har inget öppet rumsligt ljud, så en grupp kan inte prata bara genom att stå tillsammans; från tre personer går man till ett möte. Det är inte byggt för evenemang eller spel med hundratals personer, och det finns ingen telefoninringning. Vill du ha en livlig plats där röster kommer och går när du rör dig passar en produkt byggd kring rumsligt ljud bättre; vill du ha ett lugnt kontor där samtal är ett tryck bort är det här rätt."
       ]
     }
-  ]
+  ],
+  "hubs": {
+    "features": [
+      {
+        "title": "Hur delarna hänger ihop",
+        "body": [
+          "Ett TinyFloor-kontor är en delad våning: ett skrivbord för alla, ett mötesrum som alltid är öppet, en whiteboard på väggen och en chatt bredvid. Du rör dig som en figur, och var du står avgör vem du pratar med.",
+          "Varje plan har alla funktioner, även den kostnadsfria. Det som ändras med Pro är hur många som får plats på kontoret, inte vad de kan göra."
+        ]
+      },
+      {
+        "title": "Det som saknas med avsikt",
+        "body": [
+          "Det finns ingen inspelning, ingen mätning av hur länge någon är online och inga integrationer att sätta upp. Mikrofonerna är av tills ett samtal börjar, och kamerorna vilar när ingen pratar. Det körs i webbläsaren på dator och mobil, utan att något behöver installeras."
+        ]
+      }
+    ],
+    "teams": [
+      {
+        "title": "En våning, olika dagar",
+        "body": [
+          "Små distansteam delar ofta samma två problem: en snabb fråga tar för lång tid att ställa, och ingen ser vem som är där. Det som skiljer är dagens rytm.",
+          "Utvecklare behöver långa fokuspass och ett snabbt sätt att komma loss. Designer behöver feedback många gånger om dagen. Byråer jonglerar kunder och frilansare. Startups behöver fart och ett pris som inte växer med varje anställning."
+        ]
+      },
+      {
+        "title": "Vad varje sida tar upp",
+        "body": [
+          "Varje sida går igenom en typisk dag för den sortens team, vad ni behåller i era andra verktyg och var TinyFloor inte passar."
+        ]
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Arbetsdagen, stund för stund",
+        "body": [
+          "En arbetsdag på distans är mest tyst arbete, avbrutet av några få stunder när folk behöver varandra: morgonens standup, en fråga till en kollega, en ny persons första vecka, några minuters prat mellan uppgifterna.",
+          "Varje sida tar en av de stunderna och visar hur den går till på våningen, med de format, tider och vanor små team använder, och vad TinyFloor inte gör, så att du väljer rätt verktyg för var och en."
+        ]
+      }
+    ],
+    "compare": [
+      {
+        "title": "Hur jämförelserna skrivs",
+        "body": [
+          "Varje siffra kommer från den andra produktens prissida eller hjälpcenter, med månaden vi kontrollerade den. Det som inte var publicerat har vi utelämnat i stället för att gissa.",
+          "Vi gör TinyFloor, så varje sida säger också vad den andra produkten gör bättre och när du borde välja den i stället."
+        ]
+      },
+      {
+        "title": "Var du börjar",
+        "body": [
+          "De flesta av de här verktygen tar betalt per medlem; TinyFloor är ett pris för kontoret och gratis för upp till tre personer. Lämnar du Gather, börja med genomgången av alternativ och guiden om vad Gather kostar nu."
+        ]
+      }
+    ]
+  }
 }

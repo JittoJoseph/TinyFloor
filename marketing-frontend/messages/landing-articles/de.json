@@ -3608,5 +3608,61 @@
         "TinyFloor hat kein offenes räumliches Audio, eine Gruppe kann also nicht einfach durch Zusammenstehen reden; ab drei Leuten geht ihr in ein Meeting. Es ist nicht für Events oder Spiele mit Hunderten von Leuten gebaut, und es gibt keine Telefoneinwahl. Wenn du einen lebhaften Raum willst, in dem Stimmen beim Herumgehen auf- und abschwellen, passt ein Produkt mit räumlichem Audio besser; wenn du ein ruhiges Büro willst, in dem Reden einen Tipp entfernt ist, ist es das hier."
       ]
     }
-  ]
+  ],
+  "hubs": {
+    "features": [
+      {
+        "title": "Wie die Teile zusammenpassen",
+        "body": [
+          "Ein TinyFloor-Büro ist eine gemeinsame Fläche: ein Schreibtisch für jede Person, ein Besprechungsraum, der immer offen ist, ein Whiteboard an der Wand und ein Chat daneben. Du bewegst dich als Figur, und wo du stehst, entscheidet, mit wem du redest.",
+          "Jeder Tarif hat alle Funktionen, auch der kostenlose. Mit Pro ändert sich, wie viele Leute ins Büro passen, nicht, was sie tun können."
+        ]
+      },
+      {
+        "title": "Was mit Absicht fehlt",
+        "body": [
+          "Es gibt keine Aufnahmen, keine Erfassung, wie lange jemand online ist, und keine Integrationen zum Einrichten. Mikrofone sind aus, bis ein Anruf beginnt, und Kameras ruhen, wenn niemand spricht. Es läuft im Browser auf Desktop und Handy, ohne etwas zu installieren."
+        ]
+      }
+    ],
+    "teams": [
+      {
+        "title": "Eine Fläche, verschiedene Tage",
+        "body": [
+          "Kleine Remote-Teams teilen meist dieselben zwei Probleme: Eine kurze Frage dauert zu lange, und niemand sieht, wer da ist. Was sich unterscheidet, ist der Rhythmus des Tages.",
+          "Entwickler brauchen lange Fokuszeiten und einen schnellen Weg aus der Sackgasse. Designerinnen brauchen viele Male am Tag Feedback. Agenturen jonglieren Kunden und Freelancer. Startups brauchen Tempo und einen Preis, der nicht mit jeder Einstellung wächst."
+        ]
+      },
+      {
+        "title": "Was jede Seite zeigt",
+        "body": [
+          "Jede Seite geht einen typischen Tag für diese Art Team durch, zeigt, was in euren anderen Tools bleibt, und wo TinyFloor nicht passt."
+        ]
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Der Arbeitstag, Moment für Moment",
+        "body": [
+          "Ein Remote-Arbeitstag ist meist ruhige Arbeit, unterbrochen von ein paar Momenten, in denen Leute einander brauchen: das Standup am Morgen, eine Frage an eine Kollegin, die erste Woche einer neuen Person, ein paar Minuten Plaudern zwischen den Aufgaben.",
+          "Jede Seite nimmt einen dieser Momente und zeigt, wie er auf der Fläche läuft, mit den Formaten, Zeiten und Gewohnheiten kleiner Teams, und was TinyFloor nicht macht, damit du für jeden das richtige Tool wählst."
+        ]
+      }
+    ],
+    "compare": [
+      {
+        "title": "Wie diese Vergleiche entstehen",
+        "body": [
+          "Jede Zahl stammt von der Preisseite oder aus dem Hilfecenter des anderen Produkts, mit dem Monat, in dem wir nachgesehen haben. Was nicht veröffentlicht war, haben wir weggelassen, statt zu raten.",
+          "Wir machen TinyFloor, deshalb sagt jede Seite auch, was das andere Produkt besser kann und wann du es stattdessen wählen solltest."
+        ]
+      },
+      {
+        "title": "Wo du anfangen kannst",
+        "body": [
+          "Die meisten dieser Tools rechnen pro Mitglied ab; TinyFloor ist ein Preis für das Büro und kostenlos für bis zu drei Personen. Wenn du von Gather wechselst, fang mit der Übersicht der Alternativen und dem Leitfaden zu Gathers aktuellen Preisen an."
+        ]
+      }
+    ]
+  }
 }

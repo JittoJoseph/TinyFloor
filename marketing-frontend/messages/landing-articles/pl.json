@@ -3608,5 +3608,61 @@
         "TinyFloor nie ma otwartego dźwięku przestrzennego, więc grupa nie porozmawia, po prostu stojąc razem; od trzech osób idzie się na spotkanie. Nie jest zrobiony na wydarzenia czy gry z setkami ludzi i nie ma dostępu telefonicznego. Jeśli chcesz żywej przestrzeni, w której głosy narastają i cichną, gdy chodzisz, lepiej sprawdzi się produkt oparty na dźwięku przestrzennym; jeśli chcesz spokojnego biura, w którym rozmowa jest na jedno dotknięcie, to jest to."
       ]
     }
-  ]
+  ],
+  "hubs": {
+    "features": [
+      {
+        "title": "Jak to wszystko się łączy",
+        "body": [
+          "Biuro w TinyFloor to jedno wspólne piętro: biurko dla każdego, sala spotkań, która jest zawsze otwarta, tablica na ścianie i czat obok. Poruszasz się postacią, a to, gdzie stoisz, decyduje, z kim rozmawiasz.",
+          "Każdy plan ma wszystkie funkcje, także darmowy. Z Pro zmienia się to, ile osób zmieści biuro, a nie to, co mogą robić."
+        ]
+      },
+      {
+        "title": "Czego celowo nie ma",
+        "body": [
+          "Nie ma nagrywania, śledzenia, jak długo ktoś jest online, ani integracji do konfigurowania. Mikrofony są wyłączone do rozpoczęcia rozmowy, a kamery odpoczywają, gdy nikt nie mówi. Działa w przeglądarce na komputerze i telefonie, bez instalowania czegokolwiek."
+        ]
+      }
+    ],
+    "teams": [
+      {
+        "title": "Jedno piętro, różne dni",
+        "body": [
+          "Małe zespoły zdalne mają zwykle te same dwa problemy: szybkie pytanie zajmuje za dużo czasu, a nikt nie widzi, kto jest obok. Różni się rytm dnia.",
+          "Programiści potrzebują długich okresów skupienia i szybkiego sposobu na odblokowanie. Projektanci potrzebują feedbacku wiele razy dziennie. Agencje żonglują klientami i freelancerami. Startupy potrzebują tempa i ceny, która nie rośnie z każdym zatrudnieniem."
+        ]
+      },
+      {
+        "title": "Co opisuje każda strona",
+        "body": [
+          "Każda strona przechodzi przez typowy dzień takiego zespołu, mówi, co zostawić w innych narzędziach, i gdzie TinyFloor się nie sprawdzi."
+        ]
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Dzień pracy, chwila po chwili",
+        "body": [
+          "Zdalny dzień pracy to głównie cicha praca, przerywana kilkoma chwilami, w których ludzie siebie potrzebują: poranny stand-up, pytanie do współpracownika, pierwszy tydzień nowej osoby, kilka minut rozmowy między zadaniami.",
+          "Każda strona bierze jedną z tych chwil i pokazuje, jak wygląda na piętrze, z formatami, czasami i nawykami małych zespołów, a także czego TinyFloor nie robi, żebyś do każdej wybrał właściwe narzędzie."
+        ]
+      }
+    ],
+    "compare": [
+      {
+        "title": "Jak powstają te porównania",
+        "body": [
+          "Każda liczba pochodzi ze strony z cenami lub centrum pomocy drugiego produktu, z miesiącem, w którym ją sprawdziliśmy. Czego nie opublikowano, pominęliśmy zamiast zgadywać.",
+          "Tworzymy TinyFloor, więc każda strona mówi też, co drugi produkt robi lepiej i kiedy warto wybrać właśnie jego."
+        ]
+      },
+      {
+        "title": "Od czego zacząć",
+        "body": [
+          "Większość tych narzędzi liczy opłatę za członka; TinyFloor to jedna cena za biuro i za darmo do trzech osób. Jeśli odchodzisz od Gather, zacznij od przeglądu alternatyw i przewodnika o tym, ile Gather kosztuje teraz."
+        ]
+      }
+    ]
+  }
 }

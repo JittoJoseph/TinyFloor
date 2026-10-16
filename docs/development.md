@@ -21,9 +21,10 @@ ones have, and the site's own word for the floor in each language.
 
 Measured on 16 October 2026 (English, words a reader sees):
 
-- **Index pages:** `/teams` 153, `/features` 176, `/use-cases` 216,
-  `/compare` 396, `/about` 208. They mostly route visitors on; each would do
-  better with a short real introduction to what's behind it.
+- **The About page** (208 words) is mostly about the founder. The four index
+  pages now carry a short text under their lists (`hubs` in
+  `messages/landing-articles/<locale>.json`); /about was left alone because
+  anything more about the person who makes TinyFloor is theirs to write.
 - **Unused copy:** every feature, team and use-case page now has its own
   article in every language, which replaces its three short points and its
   moments timeline. Those keys (`points`, `moments`, `momentsTitle` under

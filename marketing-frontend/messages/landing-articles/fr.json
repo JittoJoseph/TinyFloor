@@ -2669,5 +2669,111 @@
         "TinyFloor tourne dans un onglet du navigateur à côté de votre éditeur, de votre terminal et de votre chat. Il n'est relié ni à GitHub, ni à GitLab, ni à Jira, ni à Linear, et ne publie rien dans Slack. C'est voulu : c'est l'endroit où l'équipe parle, et le travail reste suivi là où il l'est déjà. Beaucoup d'équipes gardent Slack pour les messages écrits et utilisent TinyFloor pour la présence, les appels et les réunions."
       ]
     }
+  ],
+  "meetingRoom": [
+    {
+      "title": "Comment fonctionne une réunion sur TinyFloor",
+      "body": [
+        "La plupart des outils vidéo partent d'un lien. TinyFloor part d'une salle : chaque bureau a une réunion principale toujours ouverte, et chacun peut en lancer une autre à côté."
+      ],
+      "items": [
+        {
+          "title": "Rejoindre",
+          "detail": "1",
+          "body": "Appuyez sur Rejoindre dans la réunion du bureau. Une vérification rapide montre votre caméra et votre micro, puis votre personnage entre dans la salle de réunion."
+        },
+        {
+          "title": "Parler",
+          "detail": "2",
+          "body": "La voix d'abord ; allumez votre caméra si vous voulez. La personne qui parle prend la grande carte, avec trois autres à côté."
+        },
+        {
+          "title": "Partager",
+          "detail": "3",
+          "body": "Partagez une fenêtre, un onglet ou votre écran. Il s'affiche sur la scène, à côté des participants."
+        },
+        {
+          "title": "Sortir",
+          "detail": "4",
+          "body": "Quittez la réunion et vous voilà sur l'étage. Sorti par erreur ? Revenir prend un clic."
+        }
+      ]
+    },
+    {
+      "title": "La réunion principale, et celles que vous lancez",
+      "table": {
+        "head": [
+          "",
+          "La réunion du bureau",
+          "Une réunion que vous lancez"
+        ],
+        "rows": [
+          [
+            "Quand elle existe",
+            "Toujours, au nom du bureau",
+            "De son lancement jusqu'au départ de la dernière personne"
+          ],
+          [
+            "Qui y est",
+            "Toute personne du bureau qui la rejoint",
+            "Les personnes invitées, et quiconque la rejoint"
+          ],
+          [
+            "Idéale pour",
+            "Points quotidiens, réunions d'équipe, un point rapide",
+            "Une revue de design, une préparation client, un incident"
+          ],
+          [
+            "Comment on la trouve",
+            "Sur l'étage et dans la liste des réunions",
+            "Invitation par son nom, et listée dans « en cours aussi »"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Inviter sans agenda",
+      "items": [
+        {
+          "title": "Lancer et inviter",
+          "body": "Donnez un nom à la réunion, choisissez qui inviter et appuyez sur Lancer. Les personnes reçoivent une demande avec le nom de la réunion et peuvent la rejoindre ou répondre « pas maintenant »."
+        },
+        {
+          "title": "Depuis un appel",
+          "body": "En appel avec une personne et besoin d'une troisième ? Allez la voir et TinyFloor propose d'en faire une réunion à trois."
+        },
+        {
+          "title": "Voir d'abord qui est libre",
+          "body": "La liste des personnes montre qui est libre pour parler, qui est occupé et qui est déjà dans une autre réunion : vous n'invitez que ceux qui peuvent venir."
+        }
+      ]
+    },
+    {
+      "title": "Une scène qui suit la conversation",
+      "items": [
+        {
+          "title": "La personne qui parle en grand",
+          "body": "La grande carte passe à la personne qui parle, mais seulement une fois que la précédente a marqué une pause, pour ne pas clignoter à chaque « mm-hm »."
+        },
+        {
+          "title": "Épingler ce qui compte",
+          "body": "Épinglez une personne ou un écran partagé pour le garder en grand pendant que d'autres parlent."
+        },
+        {
+          "title": "Sans caméra, mais présent",
+          "body": "Quiconque n'a pas de caméra apparaît sous forme de carte qui s'allume quand il parle, la salle n'a donc jamais l'air vide."
+        },
+        {
+          "title": "Reposant pour les yeux",
+          "body": "Une caméra restée allumée dix minutes sans que personne ne parle s'éteint d'elle-même. Personne n'est gardé à l'image quand il n'y a rien à dire."
+        }
+      ]
+    },
+    {
+      "title": "Ce qu'il ne fait pas",
+      "body": [
+        "Il n'y a ni enregistrement, ni transcription, ni notes par IA. Les réunions ont lieu dans votre bureau : il n'y a pas de numéros d'appel ni de mode webinaire pour un grand public. Les écrans partagés transmettent l'image, pas le son. Si vous en avez besoin, gardez Zoom ou Google Meet pour cette réunion-là et TinyFloor pour celles du quotidien."
+      ]
+    }
   ]
 }

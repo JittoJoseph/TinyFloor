@@ -2669,5 +2669,111 @@
         "TinyFloor läuft in einem Browser-Tab neben Editor, Terminal und Chat. Es ist nicht mit GitHub, GitLab, Jira oder Linear verbunden und postet nichts in Slack. Das ist Absicht: Es ist der Ort, an dem das Team redet, und die Arbeit wird weiter dort verfolgt, wo sie schon ist. Viele Teams behalten Slack für schriftliche Nachrichten und nutzen TinyFloor für Präsenz, Calls und Meetings."
       ]
     }
+  ],
+  "meetingRoom": [
+    {
+      "title": "So funktioniert ein Meeting in TinyFloor",
+      "body": [
+        "Die meisten Videotools beginnen mit einem Link. TinyFloor beginnt mit einem Raum: Jedes Büro hat ein Hauptmeeting, das immer offen ist, und jede und jeder kann daneben ein weiteres starten."
+      ],
+      "items": [
+        {
+          "title": "Beitreten",
+          "detail": "1",
+          "body": "Drück im Meeting des Büros auf Beitreten. Ein kurzer Check zeigt Kamera und Mikrofon, dann geht deine Figur in den Besprechungsraum."
+        },
+        {
+          "title": "Reden",
+          "detail": "2",
+          "body": "Zuerst Stimme; schalte die Kamera ein, wenn du willst. Wer spricht, bekommt die große Karte, mit drei weiteren daneben."
+        },
+        {
+          "title": "Teilen",
+          "detail": "3",
+          "body": "Teile ein Fenster, einen Tab oder deinen Bildschirm. Er erscheint auf der Bühne neben den Leuten."
+        },
+        {
+          "title": "Rausgehen",
+          "detail": "4",
+          "body": "Verlass das Meeting, und du bist zurück auf der Fläche. Aus Versehen rausgegangen? Wieder beitreten ist ein Klick."
+        }
+      ]
+    },
+    {
+      "title": "Das Hauptmeeting und die, die du startest",
+      "table": {
+        "head": [
+          "",
+          "Das Meeting des Büros",
+          "Ein Meeting, das du startest"
+        ],
+        "rows": [
+          [
+            "Wann es da ist",
+            "Immer, benannt nach dem Büro",
+            "Vom Start, bis die letzte Person geht"
+          ],
+          [
+            "Wer drin ist",
+            "Alle aus dem Büro, die beitreten",
+            "Die Leute, die du dazuholst, und alle, die beitreten"
+          ],
+          [
+            "Gut für",
+            "Standups, All-Hands, ein kurzer Abgleich",
+            "Ein Design-Review, eine Kundenvorbereitung, einen Incident"
+          ],
+          [
+            "Wie man es findet",
+            "Auf der Fläche und in der Liste der Meetings",
+            "Mit Namen eingeladen und als „auch gerade“ gelistet"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Leute dazuholen, ohne Kalender",
+      "items": [
+        {
+          "title": "Starten und fragen",
+          "body": "Gib dem Meeting einen Namen, wähle, wen du fragen willst, und drück auf Starten. Sie bekommen eine Anfrage mit dem Namen des Meetings und können beitreten oder „Nicht jetzt“ sagen."
+        },
+        {
+          "title": "Aus einem Call heraus",
+          "body": "Im Call mit einer Person und eine dritte soll dazu? Geh zu ihr, und TinyFloor bietet an, daraus ein Meeting für euch drei zu machen."
+        },
+        {
+          "title": "Erst sehen, wer frei ist",
+          "body": "Die Personenliste zeigt, wer frei zum Reden ist, wer beschäftigt ist und wer schon in einem anderen Meeting sitzt, so fragst du nur Leute, die kommen können."
+        }
+      ]
+    },
+    {
+      "title": "Eine Bühne, die dem Gespräch folgt",
+      "items": [
+        {
+          "title": "Wer spricht, ist groß",
+          "body": "Die große Karte wechselt zu der Person, die spricht, aber erst, wenn die vorherige kurz pausiert hat, damit sie nicht bei jedem „mhm“ flackert."
+        },
+        {
+          "title": "Anheften, was wichtig ist",
+          "body": "Hefte eine Person oder einen geteilten Bildschirm an, damit er groß bleibt, während andere reden."
+        },
+        {
+          "title": "Ohne Kamera trotzdem da",
+          "body": "Wer keine Kamera anhat, erscheint als Karte, die beim Sprechen aufleuchtet, so wirkt der Raum nie leer."
+        },
+        {
+          "title": "Schonend für die Augen",
+          "body": "Eine Kamera, die zehn Minuten ohne Gespräch an war, schaltet sich selbst aus. Niemand bleibt vor der Kamera, wenn es nichts zu sagen gibt."
+        }
+      ]
+    },
+    {
+      "title": "Was es nicht kann",
+      "body": [
+        "Es gibt keine Aufnahme, keine Transkription und keine KI-Notizen. Meetings finden in deinem Büro statt: Es gibt keine Einwahlnummern und keinen Webinar-Modus für ein großes Publikum. Geteilte Bildschirme übertragen das Bild, keinen Ton. Wenn du so etwas brauchst, nimm für dieses Meeting Zoom oder Google Meet und TinyFloor für die alltäglichen."
+      ]
+    }
   ]
 }

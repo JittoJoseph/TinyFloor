@@ -2669,5 +2669,111 @@
         "TinyFloor runs in a browser tab next to your editor, terminal and chat. It doesn't connect to GitHub, GitLab, Jira or Linear, and it doesn't post into Slack. That's deliberate: it's where the team talks, and the work stays tracked where it already is. Many teams keep Slack for written messages and use TinyFloor for presence, calls and meetings."
       ]
     }
+  ],
+  "meetingRoom": [
+    {
+      "title": "How a meeting works on TinyFloor",
+      "body": [
+        "Most video tools start from a link. TinyFloor starts from a room: every office has a main meeting that's always open, and anyone can start another one beside it."
+      ],
+      "items": [
+        {
+          "title": "Join",
+          "detail": "1",
+          "body": "Press Join on the office's meeting. A quick check shows your camera and microphone, then your character walks into the meeting room."
+        },
+        {
+          "title": "Talk",
+          "detail": "2",
+          "body": "Voice first; turn your camera on if you want. Whoever is talking takes the big card, with three more beside it."
+        },
+        {
+          "title": "Share",
+          "detail": "3",
+          "body": "Share a window, a tab or your screen. It goes on the stage next to the people."
+        },
+        {
+          "title": "Walk out",
+          "detail": "4",
+          "body": "Leave and you're back on the floor. Walked out by mistake? Rejoin is one press."
+        }
+      ]
+    },
+    {
+      "title": "The main meeting, and the ones you start",
+      "table": {
+        "head": [
+          "",
+          "The office's meeting",
+          "A meeting you start"
+        ],
+        "rows": [
+          [
+            "When it's there",
+            "Always, named after the office",
+            "From when you start it until the last person leaves"
+          ],
+          [
+            "Who's in it",
+            "Anyone in the office who joins",
+            "The people you ask in, and anyone who joins"
+          ],
+          [
+            "Good for",
+            "Standups, all-hands, a quick sync",
+            "A design review, a client prep, an incident"
+          ],
+          [
+            "How people find it",
+            "On the floor and in the list of meetings",
+            "Asked in by name, and listed as \"also on now\""
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Asking people in, without a calendar",
+      "items": [
+        {
+          "title": "Start and ask",
+          "body": "Give the meeting a name, pick who to ask and press Start. They get \"asks you to join\" with the meeting's name, and can join or say not now."
+        },
+        {
+          "title": "From a call",
+          "body": "On a call with one person and want a third? Walk up to them and TinyFloor offers to make it a meeting for the three of you."
+        },
+        {
+          "title": "See who's free first",
+          "body": "The list of people shows who's free to talk, who's busy and who's already in another meeting, so you only ask people who can come."
+        }
+      ]
+    },
+    {
+      "title": "A stage that follows the conversation",
+      "items": [
+        {
+          "title": "The speaker on the big card",
+          "body": "The big card moves to whoever is talking, but only after the last speaker has paused for a moment, so it doesn't flicker on every \"mm-hm\"."
+        },
+        {
+          "title": "Pin what matters",
+          "body": "Pin a person or a shared screen to keep it big while others talk."
+        },
+        {
+          "title": "No camera, still present",
+          "body": "People without a camera show as a card that lights up when they speak, so the room never looks empty."
+        },
+        {
+          "title": "Easy on the eyes",
+          "body": "A camera left on through ten minutes with nobody talking turns itself off. Nobody is kept on camera when there's nothing to say."
+        }
+      ]
+    },
+    {
+      "title": "What it doesn't do",
+      "body": [
+        "There's no recording, no transcription and no AI notes. Meetings happen inside your office: there are no dial-in numbers and no webinar mode for a big audience. Shared screens carry the picture, not sound. If you need any of those, keep Zoom or Google Meet for that meeting and use TinyFloor for the everyday ones."
+      ]
+    }
   ]
 }

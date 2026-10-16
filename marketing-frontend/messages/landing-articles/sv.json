@@ -2669,5 +2669,111 @@
         "TinyFloor körs i en webbläsarflik bredvid editorn, terminalen och chatten. Det är inte kopplat till GitHub, GitLab, Jira eller Linear, och det postar inget i Slack. Det är medvetet: det är där teamet pratar, och arbetet spåras där det redan finns. Många team behåller Slack för skrivna meddelanden och använder TinyFloor för närvaro, samtal och möten."
       ]
     }
+  ],
+  "meetingRoom": [
+    {
+      "title": "Så fungerar ett möte i TinyFloor",
+      "body": [
+        "De flesta videoverktyg börjar med en länk. TinyFloor börjar med ett rum: varje kontor har ett huvudmöte som alltid är öppet, och vem som helst kan starta ett till bredvid."
+      ],
+      "items": [
+        {
+          "title": "Gå med",
+          "detail": "1",
+          "body": "Tryck på Gå med i kontorets möte. En snabb koll visar kamera och mikrofon, sedan går din figur in i mötesrummet."
+        },
+        {
+          "title": "Prata",
+          "detail": "2",
+          "body": "Röst först; slå på kameran om du vill. Den som pratar får det stora kortet, med tre till bredvid."
+        },
+        {
+          "title": "Dela",
+          "detail": "3",
+          "body": "Dela ett fönster, en flik eller din skärm. Den visas på scenen bredvid personerna."
+        },
+        {
+          "title": "Gå ut",
+          "detail": "4",
+          "body": "Lämna och du är tillbaka på våningen. Gick du ut av misstag? Att gå med igen är ett klick."
+        }
+      ]
+    },
+    {
+      "title": "Huvudmötet och de möten du startar",
+      "table": {
+        "head": [
+          "",
+          "Kontorets möte",
+          "Ett möte du startar"
+        ],
+        "rows": [
+          [
+            "När det finns",
+            "Alltid, uppkallat efter kontoret",
+            "Från att du startar det tills den sista går"
+          ],
+          [
+            "Vem som är med",
+            "Alla från kontoret som går med",
+            "De du bjuder in, och alla som går med"
+          ],
+          [
+            "Bra för",
+            "Standups, allmöten, en snabb avstämning",
+            "En designgranskning, kundförberedelse, en incident"
+          ],
+          [
+            "Hur man hittar det",
+            "På våningen och i listan med möten",
+            "Inbjuden med namn, och listat under ”pågår också”"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Bjuda in utan kalender",
+      "items": [
+        {
+          "title": "Starta och fråga",
+          "body": "Ge mötet ett namn, välj vilka du vill fråga och tryck på Starta. De får en förfrågan med mötets namn och kan gå med eller säga ”inte nu”."
+        },
+        {
+          "title": "Från ett samtal",
+          "body": "I samtal med en person och vill ha med en tredje? Gå fram till hen så erbjuder TinyFloor att göra det till ett möte för er tre."
+        },
+        {
+          "title": "Se först vem som är ledig",
+          "body": "Listan med personer visar vem som är ledig att prata, vem som är upptagen och vem som redan sitter i ett annat möte, så du frågar bara dem som kan komma."
+        }
+      ]
+    },
+    {
+      "title": "En scen som följer samtalet",
+      "items": [
+        {
+          "title": "Den som pratar visas stort",
+          "body": "Det stora kortet flyttar till den som pratar, men först när den förra har gjort en kort paus, så att det inte fladdrar vid varje ”mm”."
+        },
+        {
+          "title": "Fäst det som är viktigt",
+          "body": "Fäst en person eller en delad skärm så att den stannar stor medan andra pratar."
+        },
+        {
+          "title": "Utan kamera, men närvarande",
+          "body": "Den som inte har kamera visas som ett kort som lyser upp när hen pratar, så rummet ser aldrig tomt ut."
+        },
+        {
+          "title": "Skonsamt för ögonen",
+          "body": "En kamera som varit på i tio minuter utan att någon pratat stänger av sig själv. Ingen hålls kvar i bild när det inte finns något att säga."
+        }
+      ]
+    },
+    {
+      "title": "Vad det inte gör",
+      "body": [
+        "Det finns ingen inspelning, ingen transkribering och inga AI-anteckningar. Möten sker inne i ditt kontor: det finns inga inringningsnummer och inget webbinarläge för en stor publik. Delade skärmar skickar bilden, inte ljudet. Behöver du något av det, använd Zoom eller Google Meet för det mötet och TinyFloor för vardagens möten."
+      ]
+    }
   ]
 }

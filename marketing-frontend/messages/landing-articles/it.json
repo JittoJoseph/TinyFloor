@@ -2669,5 +2669,111 @@
         "TinyFloor gira in una scheda del browser accanto a editor, terminale e chat. Non si collega a GitHub, GitLab, Jira o Linear, e non pubblica niente su Slack. È voluto: è il posto dove il team parla, e il lavoro resta tracciato dove già lo è. Molti team tengono Slack per i messaggi scritti e usano TinyFloor per presenza, chiamate e riunioni."
       ]
     }
+  ],
+  "meetingRoom": [
+    {
+      "title": "Come funziona una riunione su TinyFloor",
+      "body": [
+        "La maggior parte degli strumenti video parte da un link. TinyFloor parte da una stanza: ogni ufficio ha una riunione principale sempre aperta, e chiunque può avviarne un'altra accanto."
+      ],
+      "items": [
+        {
+          "title": "Entrare",
+          "detail": "1",
+          "body": "Premi Partecipa nella riunione dell'ufficio. Un controllo rapido mostra videocamera e microfono, poi il tuo personaggio entra nella sala riunioni."
+        },
+        {
+          "title": "Parlare",
+          "detail": "2",
+          "body": "Prima la voce; accendi la videocamera se vuoi. Chi parla prende la scheda grande, con altre tre accanto."
+        },
+        {
+          "title": "Condividere",
+          "detail": "3",
+          "body": "Condividi una finestra, una scheda o lo schermo. Compare sul palco accanto alle persone."
+        },
+        {
+          "title": "Uscire",
+          "detail": "4",
+          "body": "Esci e sei di nuovo sul piano. Uscito per sbaglio? Rientrare è un clic."
+        }
+      ]
+    },
+    {
+      "title": "La riunione principale e quelle che avvii tu",
+      "table": {
+        "head": [
+          "",
+          "La riunione dell'ufficio",
+          "Una riunione che avvii tu"
+        ],
+        "rows": [
+          [
+            "Quando c'è",
+            "Sempre, con il nome dell'ufficio",
+            "Da quando la avvii finché esce l'ultima persona"
+          ],
+          [
+            "Chi c'è",
+            "Chiunque dell'ufficio partecipi",
+            "Le persone che inviti e chiunque partecipi"
+          ],
+          [
+            "Adatta a",
+            "Standup, riunioni di tutto il team, un allineamento veloce",
+            "Una revisione di design, la preparazione di un cliente, un incidente"
+          ],
+          [
+            "Come si trova",
+            "Sul piano e nell'elenco delle riunioni",
+            "Su invito per nome, ed elencata tra quelle \"in corso\""
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Invitare senza calendario",
+      "items": [
+        {
+          "title": "Avvia e invita",
+          "body": "Dai un nome alla riunione, scegli chi invitare e premi Avvia. Ricevono una richiesta con il nome della riunione e possono entrare o rispondere \"non ora\"."
+        },
+        {
+          "title": "Da una chiamata",
+          "body": "In chiamata con una persona e ne vuoi una terza? Avvicinati e TinyFloor propone di trasformarla in una riunione per voi tre."
+        },
+        {
+          "title": "Vedere prima chi è libero",
+          "body": "L'elenco delle persone mostra chi è libero di parlare, chi è occupato e chi è già in un'altra riunione, così inviti solo chi può venire."
+        }
+      ]
+    },
+    {
+      "title": "Un palco che segue la conversazione",
+      "items": [
+        {
+          "title": "Chi parla, in grande",
+          "body": "La scheda grande passa a chi parla, ma solo dopo che chi parlava prima ha fatto una pausa, così non sfarfalla a ogni \"mm-hm\"."
+        },
+        {
+          "title": "Fissa ciò che conta",
+          "body": "Fissa una persona o uno schermo condiviso per tenerlo in grande mentre parlano altri."
+        },
+        {
+          "title": "Senza videocamera, ma presente",
+          "body": "Chi non ha la videocamera appare come una scheda che si illumina quando parla, così la stanza non sembra mai vuota."
+        },
+        {
+          "title": "Riposante per gli occhi",
+          "body": "Una videocamera rimasta accesa per dieci minuti senza che nessuno parli si spegne da sola. Nessuno resta in video quando non c'è niente da dire."
+        }
+      ]
+    },
+    {
+      "title": "Cosa non fa",
+      "body": [
+        "Non c'è registrazione, trascrizione né note con IA. Le riunioni si svolgono nel tuo ufficio: non ci sono numeri per chiamare da telefono né modalità webinar per un grande pubblico. Gli schermi condivisi trasmettono l'immagine, non l'audio. Se ti serve qualcosa di questo, usa Zoom o Google Meet per quella riunione e TinyFloor per quelle di tutti i giorni."
+      ]
+    }
   ]
 }

@@ -2669,5 +2669,111 @@
         "O TinyFloor roda numa aba do navegador ao lado do editor, do terminal e do chat. Ele não se conecta ao GitHub, GitLab, Jira ou Linear, e não posta nada no Slack. É de propósito: é onde a equipe conversa, e o trabalho continua registrado onde já está. Muitas equipes mantêm o Slack para mensagens escritas e usam o TinyFloor para presença, chamadas e reuniões."
       ]
     }
+  ],
+  "meetingRoom": [
+    {
+      "title": "Como funciona uma reunião no TinyFloor",
+      "body": [
+        "A maioria das ferramentas de vídeo começa com um link. O TinyFloor começa com uma sala: todo escritório tem uma reunião principal sempre aberta, e qualquer pessoa pode começar outra ao lado."
+      ],
+      "items": [
+        {
+          "title": "Entrar",
+          "detail": "1",
+          "body": "Aperte Entrar na reunião do escritório. Uma verificação rápida mostra sua câmera e seu microfone, e então seu personagem vai até a sala de reunião."
+        },
+        {
+          "title": "Falar",
+          "detail": "2",
+          "body": "Voz primeiro; ligue a câmera se quiser. Quem está falando fica no card grande, com outros três ao lado."
+        },
+        {
+          "title": "Compartilhar",
+          "detail": "3",
+          "body": "Compartilhe uma janela, uma aba ou sua tela. Ela aparece no palco ao lado das pessoas."
+        },
+        {
+          "title": "Sair",
+          "detail": "4",
+          "body": "Saia e você está de volta no andar. Saiu sem querer? Voltar é um clique."
+        }
+      ]
+    },
+    {
+      "title": "A reunião principal e as que você começa",
+      "table": {
+        "head": [
+          "",
+          "A reunião do escritório",
+          "Uma reunião que você começa"
+        ],
+        "rows": [
+          [
+            "Quando existe",
+            "Sempre, com o nome do escritório",
+            "Do início até a última pessoa sair"
+          ],
+          [
+            "Quem está",
+            "Qualquer pessoa do escritório que entrar",
+            "As pessoas que você chamar e quem entrar"
+          ],
+          [
+            "Boa para",
+            "Dailies, reuniões gerais, um alinhamento rápido",
+            "Uma revisão de design, a preparação de um cliente, um incidente"
+          ],
+          [
+            "Como encontrar",
+            "No andar e na lista de reuniões",
+            "Chamado pelo nome, e listada em \"também agora\""
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Chamando pessoas sem agenda",
+      "items": [
+        {
+          "title": "Começar e chamar",
+          "body": "Dê um nome à reunião, escolha quem chamar e aperte Começar. As pessoas recebem um pedido com o nome da reunião e podem entrar ou dizer \"agora não\"."
+        },
+        {
+          "title": "A partir de uma chamada",
+          "body": "Numa chamada com uma pessoa e quer incluir uma terceira? Vá até ela e o TinyFloor oferece transformar tudo numa reunião para os três."
+        },
+        {
+          "title": "Veja antes quem está livre",
+          "body": "A lista de pessoas mostra quem está livre para conversar, quem está ocupado e quem já está em outra reunião, então você só chama quem pode vir."
+        }
+      ]
+    },
+    {
+      "title": "Um palco que acompanha a conversa",
+      "items": [
+        {
+          "title": "Quem fala fica grande",
+          "body": "O card grande passa para quem está falando, mas só depois que a pessoa anterior faz uma pausa, para não piscar a cada \"aham\"."
+        },
+        {
+          "title": "Fixe o que importa",
+          "body": "Fixe uma pessoa ou uma tela compartilhada para mantê-la grande enquanto outros falam."
+        },
+        {
+          "title": "Sem câmera, mas presente",
+          "body": "Quem está sem câmera aparece como um card que acende quando fala, então a sala nunca parece vazia."
+        },
+        {
+          "title": "Descanso para os olhos",
+          "body": "Uma câmera ligada por dez minutos sem ninguém falando se desliga sozinha. Ninguém fica na câmera quando não há nada a dizer."
+        }
+      ]
+    },
+    {
+      "title": "O que ele não faz",
+      "body": [
+        "Não há gravação, transcrição nem notas com IA. As reuniões acontecem dentro do seu escritório: não há números para ligar por telefone nem modo webinar para um público grande. Telas compartilhadas levam a imagem, não o som. Se você precisa disso, use Zoom ou Google Meet para essa reunião e o TinyFloor para as do dia a dia."
+      ]
+    }
   ]
 }

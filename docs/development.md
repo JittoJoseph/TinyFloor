@@ -11,7 +11,7 @@ version shows the shorter one, never English text under a translated headline.
 
 | Page | Deeper version in | Still the shorter version in | Where the text lives |
 |---|---|---|---|
-| `/tools/icebreaker-questions` | en, pt, es, it, ja | the other 13 languages show the English list and point search engines at it | `marketing-frontend/src/lib/tools/icebreaker-lists/<locale>.ts`, listed in `icebreakers.ts` |
+| `/tools/icebreaker-questions` | en, pt, es, it, ja, de, fr | the other 11 languages show the English list and point search engines at it | `marketing-frontend/src/lib/tools/icebreaker-lists/<locale>.ts`, listed in `icebreakers.ts` |
 
 When a new article is translated, its table rows need the language's own
 number format (`1.152 $`, `1 152 $`, `$1,152`, `US$ 1.152`), as the existing

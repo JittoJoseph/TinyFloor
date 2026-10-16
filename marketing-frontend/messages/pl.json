@@ -645,10 +645,10 @@
         "label": "Alternatywa dla huddli w Slacku",
         "meta": {
           "title": "Alternatywa dla huddli w Slacku: zobacz, kto jest wolny, i podejdź",
-          "description": "Huddle w Slacku to rozmowa na ślepo. TinyFloor najpierw pokazuje, kto jest wolny, a potem podchodzisz porozmawiać. Wirtualne biuro obok Slacka, za darmo dla 3 osób."
+          "description": "Huddle w Slacku to telefon w ciemno, a darmowy plan Slacka ogranicza go do dwóch osób. TinyFloor najpierw pokazuje, kto jest wolny, a potem podchodzisz. Wirtualne biuro obok Slacka, za darmo dla 3 osób, 29 $ miesięcznie za cały zespół."
         },
         "title": "<em>Alternatywa dla huddli w Slacku</em>, w której najpierw widzisz, kto jest wolny.",
-        "subtitle": "Huddle to rozmowa, którą zaczynasz, nie wiedząc, czy to dobry moment. W TinyFloor widzisz, kto jest na miejscu, kto jest zajęty i kto już rozmawia, a dopiero potem podchodzisz.",
+        "subtitle": "Huddle to rozmowa, którą zaczynasz, nie wiedząc, czy to dobry moment, a w darmowym planie Slacka mieści dwie osoby. W TinyFloor widzisz, kto jest, kto jest zajęty i kto już rozmawia, a potem podchodzisz.",
         "points": [
           {
             "title": "Zobacz, zanim zadzwonisz",
@@ -664,27 +664,27 @@
           }
         ],
         "them": {
-          "price": "Huddle grupowe wymagają Slack Pro, cena za użytkownika",
-          "freePlan": "Slack Free ma tylko huddle we dwoje",
-          "browser": "Tak, oraz aplikacje na komputer i telefon",
+          "price": "Huddle grupowe wymagają płatnego planu Slacka, za użytkownika",
+          "freePlan": "Slack Free: huddle do 2 osób",
+          "browser": "Tak, z aplikacjami na komputer i telefon",
           "screenShare": "Tak"
         },
         "faq": [
           {
             "q": "Czym jest huddle w Slacku?",
-            "a": "Huddle to szybka rozmowa audio lub wideo w Slacku, rozpoczynana z kanału lub wiadomości prywatnej. W darmowym planie Slacka huddle są tylko między dwiema osobami; grupowe wymagają płatnego planu."
+            "a": "Huddle to szybka rozmowa audio lub wideo w Slacku, zaczynana z kanału albo wiadomości prywatnej, z udostępnianiem ekranu i wątkiem na notatki. W darmowym planie Slacka huddle mieści dwie osoby; w płatnych do 50, z czego 25 jednocześnie z wideo."
           },
           {
-            "q": "Czym TinyFloor różni się od huddle'a?",
-            "a": "Huddle zaczyna się, gdy ktoś dzwoni. W TinyFloor zespół jest już razem na jednym piętrze, więc widzisz, kto jest wolny, i podchodzisz, a sala spotkań jest zawsze na miejscu."
+            "q": "Czym TinyFloor różni się od huddle?",
+            "a": "Huddle zaczyna się, gdy ktoś dzwoni. W TinyFloor zespół jest już razem na jednym piętrze, więc widzisz, kto jest wolny, i podchodzisz, a sala spotkań zawsze jest na miejscu."
           },
           {
-            "q": "Czy mogę używać TinyFloor razem ze Slackiem?",
-            "a": "Tak. Nie łączą się ze sobą, ale wiele zespołów zostawia Slacka do wiadomości, a TinyFloor używa do obecności, rozmów i spotkań."
+            "q": "Czy mogę używać TinyFloor ze Slackiem?",
+            "a": "Tak. Nie są ze sobą połączone, ale wiele zespołów zostawia Slacka do wiadomości, a TinyFloor używa do obecności, rozmów i spotkań."
           },
           {
             "q": "Ile kosztuje TinyFloor?",
-            "a": "Za darmo do 3 osób. Pro kosztuje $29 miesięcznie za cały zespół, nie za osobę."
+            "a": "Za darmo dla maksymalnie 3 osób. Pro kosztuje 29 $ miesięcznie za cały zespół, nie za osobę."
           }
         ]
       },

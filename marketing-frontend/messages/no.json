@@ -645,10 +645,10 @@
         "label": "Alternativ til Slack-huddles",
         "meta": {
           "title": "Alternativ til Slack-huddles: se hvem som er ledig, og gå bort",
-          "description": "En Slack-huddle er en samtale i blinde. TinyFloor viser først hvem som er ledig, så går du bort og snakker. Et virtuelt kontor ved siden av Slack, gratis for 3 personer."
+          "description": "En Slack-huddle er en samtale i blinde, og Slacks gratisplan begrenser den til to personer. TinyFloor viser først hvem som er ledig, så går du bort. Et virtuelt kontor ved siden av Slack, gratis for 3, 29 $ i måneden for hele teamet."
         },
         "title": "Et <em>alternativ til Slack-huddles</em> der du først ser hvem som er ledig.",
-        "subtitle": "En huddle er en samtale du starter uten å vite om det passer. På TinyFloor ser du hvem som er her, hvem som er opptatt og hvem som allerede snakker, og så går du bort.",
+        "subtitle": "En huddle er en samtale du starter uten å vite om det passer, og på Slacks gratisplan rommer den to personer. I TinyFloor ser du hvem som er der, hvem som er opptatt og hvem som allerede prater, og så går du bort.",
         "points": [
           {
             "title": "Se før du ringer",
@@ -664,27 +664,27 @@
           }
         ],
         "them": {
-          "price": "Gruppehuddles krever Slack Pro, pris per bruker",
-          "freePlan": "Slack Free har bare huddles for to",
-          "browser": "Ja, med apper for datamaskin og mobil",
+          "price": "Gruppehuddles krever en betalt Slack-plan, per bruker",
+          "freePlan": "Slack Free: huddles med opptil 2 personer",
+          "browser": "Ja, med datamaskin- og mobilapper",
           "screenShare": "Ja"
         },
         "faq": [
           {
             "q": "Hva er en Slack-huddle?",
-            "a": "En huddle er en rask lyd- eller videosamtale i Slack, startet fra en kanal eller en direktemelding. I Slacks gratisplan er huddles mellom to personer; gruppehuddles krever en betalt plan."
+            "a": "En huddle er en rask lyd- eller videosamtale i Slack, startet fra en kanal eller en direktemelding, med skjermdeling og en tråd for notater. På Slacks gratisplan rommer en huddle to personer; på betalte planer opptil 50, med 25 på video samtidig."
           },
           {
             "q": "Hvordan skiller TinyFloor seg fra en huddle?",
-            "a": "En huddle starter når noen ringer. På TinyFloor er teamet allerede samlet i én etasje, så du ser hvem som er ledig og går bort, og møterommet er alltid der."
+            "a": "En huddle starter når noen ringer. I TinyFloor er teamet allerede samlet i én etasje, så du ser hvem som er ledig og går bort, og møterommet er alltid der."
           },
           {
             "q": "Kan jeg bruke TinyFloor sammen med Slack?",
-            "a": "Ja. De er ikke koblet sammen, men mange team beholder Slack til meldinger og bruker TinyFloor til tilstedeværelse, samtaler og møter."
+            "a": "Ja. De er ikke koblet sammen, men mange team beholder Slack for meldinger og bruker TinyFloor for tilstedeværelse, samtaler og møter."
           },
           {
             "q": "Hva koster TinyFloor?",
-            "a": "Gratis for opptil 3 personer. Pro koster $29 i måneden for hele teamet, ikke per person."
+            "a": "Gratis for opptil 3 personer. Pro koster 29 $ i måneden for hele teamet, ikke per person."
           }
         ]
       },

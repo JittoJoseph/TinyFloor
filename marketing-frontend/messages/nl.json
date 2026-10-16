@@ -644,11 +644,11 @@
       "slackHuddles": {
         "label": "Alternatief voor Slack huddles",
         "meta": {
-          "title": "Alternatief voor Slack huddles: zie wie vrij is en loop erheen",
-          "description": "Een Slack huddle is een gesprek in het wilde weg. TinyFloor laat eerst zien wie vrij is, daarna loop je erheen om te praten. Een virtueel kantoor naast Slack, gratis voor 3 mensen."
+          "title": "Alternatief voor Slack-huddles: zie wie vrij is en loop erheen",
+          "description": "Een Slack-huddle is een gesprek in het wilde weg, en het gratis abonnement van Slack beperkt het tot twee mensen. TinyFloor laat eerst zien wie vrij is, daarna loop je erheen. Een virtueel kantoor naast Slack, gratis voor 3, $ 29 per maand voor het hele team."
         },
         "title": "Een <em>alternatief voor Slack huddles</em> waarbij je eerst ziet wie vrij is.",
-        "subtitle": "Een huddle is een gesprek dat je start zonder te weten of het uitkomt. Op TinyFloor zie je wie er is, wie bezig is en wie al praat, en dan loop je erheen.",
+        "subtitle": "Een huddle is een gesprek dat je start zonder te weten of het uitkomt, en op het gratis abonnement van Slack past het bij twee mensen. In TinyFloor zie je wie er is, wie bezig is en wie al praat, en dan loop je erheen.",
         "points": [
           {
             "title": "Eerst kijken, dan bellen",
@@ -664,27 +664,27 @@
           }
         ],
         "them": {
-          "price": "Groepshuddles vragen om Slack Pro, met een prijs per gebruiker",
-          "freePlan": "Slack Free heeft alleen huddles met z'n tweeën",
+          "price": "Groepshuddles vragen een betaald Slack-abonnement, per gebruiker",
+          "freePlan": "Slack Free: huddles van maximaal 2 mensen",
           "browser": "Ja, met desktop- en mobiele apps",
           "screenShare": "Ja"
         },
         "faq": [
           {
-            "q": "Wat is een Slack huddle?",
-            "a": "Een huddle is een kort audio- of videogesprek in Slack, gestart vanuit een kanaal of een direct bericht. In het gratis abonnement van Slack zijn huddles tussen twee mensen; groepshuddles vragen om een betaald abonnement."
+            "q": "Wat is een Slack-huddle?",
+            "a": "Een huddle is een snel audio- of videogesprek in Slack, gestart vanuit een kanaal of privébericht, met schermdelen en een thread voor notities. Op het gratis abonnement van Slack past een huddle bij twee mensen; op betaalde abonnementen tot 50, met 25 tegelijk op video."
           },
           {
-            "q": "Wat is het verschil tussen TinyFloor en een huddle?",
-            "a": "Een huddle begint als iemand belt. Op TinyFloor is je team al samen op één verdieping, dus je ziet wie vrij is en loopt erheen, en de vergaderruimte is er altijd."
+            "q": "Hoe verschilt TinyFloor van een huddle?",
+            "a": "Een huddle begint als iemand belt. In TinyFloor is je team al samen op één vloer, dus je ziet wie vrij is en loopt erheen, en de vergaderruimte is er altijd."
           },
           {
-            "q": "Kan ik TinyFloor samen met Slack gebruiken?",
-            "a": "Ja. Ze zijn niet aan elkaar gekoppeld, maar veel teams houden Slack voor berichten en gebruiken TinyFloor voor aanwezigheid, gesprekken en vergaderingen."
+            "q": "Kan ik TinyFloor met Slack gebruiken?",
+            "a": "Ja. Ze zijn niet met elkaar verbonden, maar veel teams houden Slack voor berichten en gebruiken TinyFloor voor aanwezigheid, gesprekken en vergaderingen."
           },
           {
             "q": "Wat kost TinyFloor?",
-            "a": "Gratis voor maximaal 3 mensen. Pro kost $29 per maand voor het hele team, niet per persoon."
+            "a": "Gratis voor maximaal 3 mensen. Pro kost $ 29 per maand voor het hele team, niet per persoon."
           }
         ]
       },

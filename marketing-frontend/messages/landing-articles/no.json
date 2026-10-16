@@ -1723,5 +1723,156 @@
         "SpatialChats priser, grenser og funksjoner kommer fra prissiden deres, fanen Virtual Office, lest i oktober 2026, i amerikanske dollar eksklusive avgifter. Det som ikke sto der, utelot vi i stedet for å gjette. Vi lager TinyFloor, så vi sier tydelig hva det ikke gjør. Priser endrer seg: sjekk SpatialChats side før du kjøper."
       ]
     }
+  ],
+  "slackHuddles": [
+    {
+      "title": "Slack-huddles og TinyFloor i korte trekk",
+      "body": [
+        "Huddles legger samtaler der teamet allerede skriver. TinyFloor legger til det Slack mangler: et gulv der du ser hvem som er der før du begynner å prate."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Slack-huddles",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Starte en samtale",
+            "Start en huddle i en kanal eller direktemelding, så blir andre med",
+            "Gå bort til en kollega"
+          ],
+          [
+            "Se hvem som er ledig",
+            "Slack-statuser og den grønne prikken",
+            "Alle på ett gulv: pulter, statuser og hvem som er i samtale"
+          ],
+          [
+            "Gruppesamtaler",
+            "Opptil 50 på betalte planer, 25 med video",
+            "Et møterom hele kontoret kan gå inn i"
+          ],
+          [
+            "Gratisplan",
+            "Huddles med opptil 2 personer",
+            "Opptil 3 personer, alle funksjoner"
+          ],
+          [
+            "Hvordan det prises",
+            "En del av Slack, per bruker på betalte planer",
+            "29 $ i måneden for hele teamet"
+          ],
+          [
+            "Hvor det kjører",
+            "Slacks datamaskin- og mobilapper, Chrome og Firefox",
+            "Nettleseren, på datamaskin og mobil"
+          ],
+          [
+            "Meldinger",
+            "Slack er chat først",
+            "Teamchat ved siden av gulvet"
+          ]
+        ],
+        "note": "Grenser for huddles fra Slacks hjelpesenter, lest i oktober 2026. Slacks priser varierer fra land til land, så vi oppgir dem ikke."
+      }
+    },
+    {
+      "title": "Hvorfor en huddle ikke er det samme som et felles kontor",
+      "items": [
+        {
+          "title": "Det er en samtale i blinde",
+          "body": "Du starter en huddle uten å vite om den andre er midt i en tanke eller i en annen samtale. På et kontor ville du kikket først."
+        },
+        {
+          "title": "Du kan ikke overhøre en samtale",
+          "body": "En huddle i en annen kanal er usynlig med mindre du er med. På et gulv ser du to personer prate og blir med hvis det gjelder jobben din."
+        },
+        {
+          "title": "Det finnes ikke noe rom å komme tilbake til",
+          "body": "Når en huddle slutter, er den borte. Et møterom blir stående, og standupen holdes der hver dag."
+        },
+        {
+          "title": "På gratisplanen er det to personer",
+          "body": "Et raskt spørsmål til gruppen krever at hele arbeidsområdet har en betalt Slack-plan."
+        }
+      ]
+    },
+    {
+      "title": "Hva huddles gjør bedre",
+      "items": [
+        {
+          "title": "De er allerede der du skriver",
+          "body": "Ikke noe nytt verktøy: en huddle starter fra kanalen eller direktemeldingen du er i, og notattråden blir værende ved samtalen."
+        },
+        {
+          "title": "Større samtaler",
+          "body": "Opptil 50 personer på betalte planer, bra for allmøter som TinyFloor ikke er laget for."
+        },
+        {
+          "title": "Alt annet Slack gjør",
+          "body": "Kanaler, historikk, integrasjoner og arbeidsflyter. TinyFloor erstatter ikke noe av det."
+        }
+      ]
+    },
+    {
+      "title": "Bruke TinyFloor ved siden av Slack",
+      "items": [
+        {
+          "title": "Behold Slack for meldinger",
+          "body": "Tråder, beslutninger og alt som skal stå skriftlig, blir i Slack."
+        },
+        {
+          "title": "Ha kontoret i en festet fane",
+          "body": "TinyFloor er der du ser hvem som er der og prater; la det stå åpent ved siden av Slack hele dagen."
+        },
+        {
+          "title": "Flytt standupen til møterommet",
+          "body": "Ett daglig møte på kontoret gir alle en grunn til å være der."
+        },
+        {
+          "title": "Legg invitasjonslenken i emnet til en kanal",
+          "body": "Nye kollegaer finner kontoret der de finner alt annet."
+        }
+      ]
+    },
+    {
+      "title": "Hva som passer teamet ditt",
+      "items": [
+        {
+          "title": "TinyFloor, ved siden av Slack",
+          "body": "For et team på 4 til 15 som vil se hvem som er ledig og prate som i et rom, uten å flytte alle til en betalt Slack-plan for gruppesamtaler."
+        },
+        {
+          "title": "Bare huddles",
+          "body": "Hvis teamet gjerne ringer hverandre fra Slack, allerede betaler for det og ikke savner å se hvem som er der."
+        }
+      ]
+    },
+    {
+      "title": "Prøv med Slack-teamet ditt",
+      "items": [
+        {
+          "title": "Lag et kontor",
+          "detail": "To minutter",
+          "body": "Gi det navnet til teamet. Gulvet, pultene og møterommet er klare."
+        },
+        {
+          "title": "Del invitasjonslenken i Slack",
+          "detail": "I teamkanalen",
+          "body": "Kollegaene logger inn med Google eller e-post og går inn fra nettleseren."
+        },
+        {
+          "title": "Jobb en vanlig uke",
+          "detail": "Huddles valgfritt",
+          "body": "Behold Slack for meldinger og se om de raske spørsmålene flytter til gulvet."
+        }
+      ]
+    },
+    {
+      "title": "Slik sammenlignet vi",
+      "body": [
+        "Grensene for huddles kommer fra Slacks hjelpesenter, lest i oktober 2026. Slacks prisside viser priser i den besøkendes valuta, så vi oppgir ikke noe beløp; sjekk Slacks side for din pris. Vi lager TinyFloor, så vi sier tydelig hva det ikke gjør."
+      ]
+    }
   ]
 }

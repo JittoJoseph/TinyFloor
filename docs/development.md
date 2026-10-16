@@ -29,10 +29,11 @@ Measured on 16 October 2026 (English, words a reader sees):
   meeting room, agencies, startups, watercooler, standup, onboarding, pair
   programming, coworking, proximity chat). Each needs its own article: they
   still share the home page's "moments" block.
-- **One-against-one alternative pages:** 560 to 620 words (Slack
-  huddles, Gather vs Kumospace). Kumospace, which has the most impressions
-  after Gather, WorkAdventure, Teamflow, Roam, Sococo, oVice and SpatialChat
-  now have full articles in every language.
+- **One-against-one alternative pages:** 560 to 620 words (Gather vs
+  Kumospace). Kumospace, which has the most impressions after Gather,
+  WorkAdventure, Teamflow, Roam, Sococo, oVice, SpatialChat and Slack huddles
+  now have full articles in every language. Slack's prices aren't quoted: its
+  pricing page only shows the visitor's own currency.
 - **The Wonder.me page** serves a product that closed in 2023; decide whether
   to keep it.
 

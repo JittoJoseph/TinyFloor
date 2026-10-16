@@ -1723,5 +1723,156 @@
         "Ceny, limity i funkcje SpatialChat pochodzą z jego strony z cenami, z zakładki Virtual Office, przeczytanej w październiku 2026, w dolarach amerykańskich bez podatku. Czego tam nie było, pominęliśmy zamiast zgadywać. TinyFloor robimy my, więc jasno piszemy, czego nie potrafi. Ceny się zmieniają: przed zakupem sprawdź stronę SpatialChat."
       ]
     }
+  ],
+  "slackHuddles": [
+    {
+      "title": "Huddle w Slacku i TinyFloor w skrócie",
+      "body": [
+        "Huddle dodają rozmowy tam, gdzie zespół już pisze. TinyFloor dodaje to, czego Slackowi brakuje: piętro, na którym widzisz, kto jest, zanim zaczniesz mówić."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Huddle w Slacku",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Rozpoczęcie rozmowy",
+            "Zacząć huddle na kanale lub w wiadomości prywatnej, inni dołączają",
+            "Podejść do kogoś z zespołu"
+          ],
+          [
+            "Kto jest wolny",
+            "Statusy w Slacku i zielona kropka",
+            "Wszyscy na jednym piętrze: biurka, statusy i kto jest na rozmowie"
+          ],
+          [
+            "Rozmowy grupowe",
+            "Do 50 w płatnych planach, 25 z wideo",
+            "Sala spotkań, do której może wejść całe biuro"
+          ],
+          [
+            "Darmowy plan",
+            "Huddle do 2 osób",
+            "Do 3 osób, wszystkie funkcje"
+          ],
+          [
+            "Jak naliczana jest opłata",
+            "Część Slacka, za użytkownika w płatnych planach",
+            "29 $ miesięcznie za cały zespół"
+          ],
+          [
+            "Gdzie działa",
+            "Aplikacje Slacka na komputer i telefon, Chrome i Firefox",
+            "Przeglądarka, na komputerze i telefonie"
+          ],
+          [
+            "Wiadomości",
+            "Slack to przede wszystkim czat",
+            "Czat zespołu obok piętra"
+          ]
+        ],
+        "note": "Limity huddli z centrum pomocy Slacka, przeczytanego w październiku 2026. Ceny Slacka różnią się w zależności od kraju, więc ich nie podajemy."
+      }
+    },
+    {
+      "title": "Dlaczego huddle to nie to samo co wspólne biuro",
+      "items": [
+        {
+          "title": "To telefon w ciemno",
+          "body": "Zaczynasz huddle, nie wiedząc, czy druga osoba jest w trakcie myślenia albo na innej rozmowie. W biurze najpierw byś zerknął."
+        },
+        {
+          "title": "Nie usłyszysz cudzej rozmowy",
+          "body": "Huddle na innym kanale jest niewidoczny, dopóki w nim nie jesteś. Na piętrze widzisz dwie rozmawiające osoby i dołączasz, jeśli chodzi o twoją pracę."
+        },
+        {
+          "title": "Nie ma sali, do której się wraca",
+          "body": "Kiedy huddle się kończy, znika. Sala spotkań zostaje na miejscu, a standup odbywa się tam codziennie."
+        },
+        {
+          "title": "W darmowym planie to dwie osoby",
+          "body": "Szybkie pytanie do grupy wymaga całego workspace'u na płatnym planie Slacka."
+        }
+      ]
+    },
+    {
+      "title": "Co huddle robią lepiej",
+      "items": [
+        {
+          "title": "Są już tam, gdzie piszesz",
+          "body": "Żadnego nowego narzędzia: huddle zaczyna się z kanału lub wiadomości, w której jesteś, a jego wątek z notatkami zostaje przy rozmowie."
+        },
+        {
+          "title": "Większe rozmowy",
+          "body": "Do 50 osób w płatnych planach, dobre na spotkania całej firmy, do których TinyFloor nie jest zrobiony."
+        },
+        {
+          "title": "Wszystko inne, co robi Slack",
+          "body": "Kanały, historia, integracje i automatyzacje. TinyFloor niczego z tego nie zastępuje."
+        }
+      ]
+    },
+    {
+      "title": "TinyFloor obok Slacka",
+      "items": [
+        {
+          "title": "Zostaw Slacka do wiadomości",
+          "body": "Wątki, decyzje i wszystko, co powinno być zapisane, zostają w Slacku."
+        },
+        {
+          "title": "Trzymaj biuro w przypiętej karcie",
+          "body": "W TinyFloor widzisz, kto jest, i rozmawiasz; zostaw je otwarte obok Slacka przez cały dzień."
+        },
+        {
+          "title": "Przenieś standup do sali spotkań",
+          "body": "Jedno codzienne spotkanie w biurze daje wszystkim powód, żeby tam być."
+        },
+        {
+          "title": "Wstaw link z zaproszeniem do tematu kanału",
+          "body": "Nowe osoby znajdą biuro tam, gdzie znajdują wszystko inne."
+        }
+      ]
+    },
+    {
+      "title": "Co pasuje do twojego zespołu",
+      "items": [
+        {
+          "title": "TinyFloor, obok Slacka",
+          "body": "Dla zespołu od 4 do 15 osób, który chce widzieć, kto jest wolny, i rozmawiać jak w pokoju, bez przenoszenia wszystkich na płatny plan Slacka dla rozmów grupowych."
+        },
+        {
+          "title": "Same huddle",
+          "body": "Jeśli twój zespół lubi dzwonić ze Slacka, już za niego płaci i nie brakuje mu widoku, kto jest obecny."
+        }
+      ]
+    },
+    {
+      "title": "Wypróbuj z zespołem ze Slacka",
+      "items": [
+        {
+          "title": "Utwórz biuro",
+          "detail": "Dwie minuty",
+          "body": "Nazwij je tak jak zespół. Piętro, biurka i sala spotkań są gotowe."
+        },
+        {
+          "title": "Wrzuć link z zaproszeniem na Slacka",
+          "detail": "Na kanale zespołu",
+          "body": "Zespół loguje się przez Google lub e-mail i wchodzi z przeglądarki."
+        },
+        {
+          "title": "Przepracujcie zwykły tydzień",
+          "detail": "Huddle opcjonalnie",
+          "body": "Zostawcie Slacka do wiadomości i zobaczcie, czy szybkie pytania przeniosą się na piętro."
+        }
+      ]
+    },
+    {
+      "title": "Jak porównywaliśmy",
+      "body": [
+        "Limity huddli pochodzą z centrum pomocy Slacka, przeczytanego w październiku 2026. Strona z cenami Slacka pokazuje ceny w walucie odwiedzającego, więc nie podajemy kwoty; sprawdź swoją cenę na stronie Slacka. TinyFloor robimy my, więc jasno piszemy, czego nie potrafi."
+      ]
+    }
   ]
 }

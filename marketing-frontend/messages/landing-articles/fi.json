@@ -1723,5 +1723,156 @@
         "SpatialChatin hinnat, rajat ja ominaisuudet ovat sen hintasivun Virtual Office -välilehdeltä, luettu lokakuussa 2026, Yhdysvaltain dollareina ilman veroja. Mitä siellä ei mainittu, jätimme pois arvailun sijaan. Me teemme TinyFlooria, joten kerromme selvästi, mitä se ei tee. Hinnat muuttuvat: tarkista SpatialChatin sivu ennen ostamista."
       ]
     }
+  ],
+  "slackHuddles": [
+    {
+      "title": "Slackin huddlet ja TinyFloor lyhyesti",
+      "body": [
+        "Huddlet tuovat puhelut sinne, missä tiimi jo kirjoittaa. TinyFloor lisää sen, mitä Slackista puuttuu: kerroksen, jossa näet, kuka on paikalla, ennen kuin alat puhua."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Slackin huddlet",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Keskustelun aloittaminen",
+            "Aloita huddle kanavalla tai yksityisviestissä, muut liittyvät",
+            "Kävele kollegan luo"
+          ],
+          [
+            "Kuka on vapaana",
+            "Slackin tilat ja vihreä pallo",
+            "Kaikki yhdessä kerroksessa: työpöydät, tilat ja kuka on puhelussa"
+          ],
+          [
+            "Ryhmäpuhelut",
+            "Enintään 50 maksullisissa, 25 videolla",
+            "Neuvotteluhuone, johon koko toimisto voi astua"
+          ],
+          [
+            "Ilmaisversio",
+            "Huddlet enintään 2 hengelle",
+            "Enintään 3 henkeä, kaikki ominaisuudet"
+          ],
+          [
+            "Miten hinnoitellaan",
+            "Osa Slackia, käyttäjää kohden maksullisissa",
+            "29 $ kuukaudessa koko tiimiltä"
+          ],
+          [
+            "Missä toimii",
+            "Slackin tietokone- ja mobiilisovellukset, Chrome ja Firefox",
+            "Selaimessa, tietokoneella ja mobiilissa"
+          ],
+          [
+            "Viestit",
+            "Slack on ennen kaikkea chat",
+            "Tiimichat kerroksen vieressä"
+          ]
+        ],
+        "note": "Huddlejen rajat Slackin ohjekeskuksesta, luettu lokakuussa 2026. Slackin hinnat vaihtelevat maittain, joten emme ilmoita niitä."
+      }
+    },
+    {
+      "title": "Miksi huddle ei ole sama asia kuin yhteinen toimisto",
+      "items": [
+        {
+          "title": "Se on soitto sokkona",
+          "body": "Aloitat huddlen tietämättä, onko toinen keskellä ajatusta tai toisessa puhelussa. Toimistossa vilkaisisit ensin."
+        },
+        {
+          "title": "Et kuule keskustelua ohimennen",
+          "body": "Toisen kanavan huddle on näkymätön, ellet ole siinä mukana. Kerroksessa näet kahden ihmisen juttelevan ja liityt, jos se koskee työtäsi."
+        },
+        {
+          "title": "Ei huonetta, johon palata",
+          "body": "Kun huddle loppuu, se on poissa. Neuvotteluhuone pysyy paikallaan, ja standup pidetään siellä joka päivä."
+        },
+        {
+          "title": "Ilmaisversiossa kaksi henkeä",
+          "body": "Nopea kysymys ryhmälle vaatii koko työtilan maksulliselle Slack-tilaukselle."
+        }
+      ]
+    },
+    {
+      "title": "Missä huddlet ovat parempia",
+      "items": [
+        {
+          "title": "Ne ovat jo siellä, missä kirjoitat",
+          "body": "Ei uutta työkalua: huddle alkaa kanavalta tai yksityisviestistä, jossa olet, ja muistiinpanoketju jää keskustelun yhteyteen."
+        },
+        {
+          "title": "Isommat puhelut",
+          "body": "Enintään 50 henkeä maksullisissa tilauksissa, mikä sopii koko yrityksen tilaisuuksiin, joihin TinyFlooria ei ole tehty."
+        },
+        {
+          "title": "Kaikki muu, mitä Slack tekee",
+          "body": "Kanavat, historia, integraatiot ja työnkulut. TinyFloor ei korvaa niistä mitään."
+        }
+      ]
+    },
+    {
+      "title": "TinyFloorin käyttö Slackin rinnalla",
+      "items": [
+        {
+          "title": "Pidä Slack viesteille",
+          "body": "Ketjut, päätökset ja kaikki, mikä pitää kirjata, jäävät Slackiin."
+        },
+        {
+          "title": "Pidä toimisto kiinnitetyssä välilehdessä",
+          "body": "TinyFloorissa näet, kuka on paikalla, ja juttelet; pidä se auki Slackin vieressä koko päivän."
+        },
+        {
+          "title": "Siirrä standup neuvotteluhuoneeseen",
+          "body": "Yksi päivittäinen kokous toimistossa antaa kaikille syyn olla siellä."
+        },
+        {
+          "title": "Laita kutsulinkki kanavan aiheeseen",
+          "body": "Uudet kollegat löytävät toimiston samasta paikasta kuin kaiken muunkin."
+        }
+      ]
+    },
+    {
+      "title": "Kumpi sopii tiimillesi",
+      "items": [
+        {
+          "title": "TinyFloor, Slackin rinnalla",
+          "body": "4–15 hengen tiimille, joka haluaa nähdä, kuka on vapaana, ja jutella kuin samassa huoneessa, siirtämättä kaikkia maksulliselle Slack-tilaukselle ryhmäpuheluiden takia."
+        },
+        {
+          "title": "Pelkät huddlet",
+          "body": "Jos tiimi soittelee mielellään Slackista, maksaa siitä jo eikä kaipaa näkymää siitä, kuka on paikalla."
+        }
+      ]
+    },
+    {
+      "title": "Kokeile Slack-tiimisi kanssa",
+      "items": [
+        {
+          "title": "Luo toimisto",
+          "detail": "Kaksi minuuttia",
+          "body": "Nimeä se tiimin mukaan. Kerros, työpöydät ja neuvotteluhuone ovat valmiina."
+        },
+        {
+          "title": "Julkaise kutsulinkki Slackissa",
+          "detail": "Tiimin kanavalla",
+          "body": "Kollegat kirjautuvat Googlella tai sähköpostilla ja tulevat sisään selaimesta."
+        },
+        {
+          "title": "Tehkää tavallinen viikko",
+          "detail": "Huddlet vapaaehtoisia",
+          "body": "Pitäkää Slack viesteille ja katsokaa, siirtyvätkö nopeat kysymykset kerrokseen."
+        }
+      ]
+    },
+    {
+      "title": "Miten vertailimme",
+      "body": [
+        "Huddlejen rajat ovat Slackin ohjekeskuksesta, luettu lokakuussa 2026. Slackin hintasivu näyttää hinnat kävijän valuutassa, joten emme mainitse summaa; tarkista oma hintasi Slackin sivulta. Me teemme TinyFlooria, joten kerromme selvästi, mitä se ei tee."
+      ]
+    }
   ]
 }

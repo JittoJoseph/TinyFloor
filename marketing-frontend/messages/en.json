@@ -645,10 +645,10 @@
         "label": "Slack huddles alternative",
         "meta": {
           "title": "Slack Huddles Alternative: See Who's Free, Then Walk Over",
-          "description": "A Slack huddle is a call into the unknown. TinyFloor shows who's free first, then you walk over to talk. A virtual office beside Slack, free for 3 people."
+          "description": "A Slack huddle is a call into the unknown, and Slack's free plan limits it to two people. TinyFloor shows who's free first, then you walk over to talk. A virtual office beside Slack, free for 3 people, $29 a month for the whole team."
         },
         "title": "A <em>Slack huddles alternative</em> where you see who's free first.",
-        "subtitle": "A huddle is a call you start without knowing if it's a good time. On TinyFloor you see who's around, who's busy and who's already talking, then walk over.",
+        "subtitle": "A huddle is a call you start without knowing if it's a good time, and on Slack's free plan it holds two people. On TinyFloor you see who's around, who's busy and who's already talking, then walk over.",
         "points": [
           {
             "title": "See before you call",
@@ -664,15 +664,15 @@
           }
         ],
         "them": {
-          "price": "Group huddles need Slack Pro, priced per user",
-          "freePlan": "Slack Free has 1:1 huddles only",
+          "price": "Group huddles need a paid Slack plan, priced per user",
+          "freePlan": "Slack Free: huddles of up to 2 people",
           "browser": "Yes, with desktop and mobile apps",
           "screenShare": "Yes"
         },
         "faq": [
           {
             "q": "What is a Slack huddle?",
-            "a": "A huddle is a quick audio or video call inside Slack, started from a channel or a direct message. On Slack's free plan huddles are between two people; group huddles need a paid plan."
+            "a": "A huddle is a quick audio or video call inside Slack, started from a channel or a direct message, with screen sharing and a thread for notes. On Slack's free plan a huddle holds two people; on paid plans up to 50, with 25 on video at a time."
           },
           {
             "q": "How is TinyFloor different from a huddle?",

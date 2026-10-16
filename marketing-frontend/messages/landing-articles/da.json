@@ -1723,5 +1723,156 @@
         "SpatialChats priser, grænser og funktioner kommer fra dets prisside, fanen Virtual Office, læst i oktober 2026, i amerikanske dollar ekskl. moms. Hvad der ikke stod der, udelod vi i stedet for at gætte. Vi laver TinyFloor, så vi siger tydeligt, hvad det ikke kan. Priser ændrer sig: tjek SpatialChats side, før du køber."
       ]
     }
+  ],
+  "slackHuddles": [
+    {
+      "title": "Slack-huddles og TinyFloor i overblik",
+      "body": [
+        "Huddles bringer opkald derhen, hvor teamet allerede skriver. TinyFloor tilføjer det, Slack mangler: et gulv, hvor du ser, hvem der er der, før du begynder at snakke."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Slack-huddles",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "At starte en samtale",
+            "Start et huddle i en kanal eller direkte besked, og andre deltager",
+            "Gå hen til en kollega"
+          ],
+          [
+            "At se, hvem der er ledig",
+            "Slack-statusser og den grønne prik",
+            "Alle på ét gulv: skriveborde, statusser og hvem der er i opkald"
+          ],
+          [
+            "Gruppeopkald",
+            "Op til 50 på betalte planer, 25 med video",
+            "Et mødelokale, hele kontoret kan gå ind i"
+          ],
+          [
+            "Gratisplan",
+            "Huddles med op til 2 personer",
+            "Op til 3 personer, alle funktioner"
+          ],
+          [
+            "Hvordan prisen beregnes",
+            "En del af Slack, per bruger på betalte planer",
+            "29 $ om måneden for hele teamet"
+          ],
+          [
+            "Hvor det kører",
+            "Slacks computer- og mobilapps, Chrome og Firefox",
+            "Browseren, på computer og mobil"
+          ],
+          [
+            "Beskeder",
+            "Slack er først og fremmest chat",
+            "Teamchat ved siden af gulvet"
+          ]
+        ],
+        "note": "Grænser for huddles fra Slacks hjælpecenter, læst i oktober 2026. Slacks priser varierer fra land til land, så vi oplyser dem ikke."
+      }
+    },
+    {
+      "title": "Hvorfor et huddle ikke er det samme som et fælles kontor",
+      "items": [
+        {
+          "title": "Det er et opkald i blinde",
+          "body": "Du starter et huddle uden at vide, om den anden er midt i en tanke eller i et andet opkald. På et kontor ville du lige kigge først."
+        },
+        {
+          "title": "Du kan ikke overhøre en samtale",
+          "body": "Et huddle i en anden kanal er usynligt, medmindre du er med. På et gulv ser du to personer snakke og slutter dig til, hvis det handler om dit arbejde."
+        },
+        {
+          "title": "Der er intet lokale at vende tilbage til",
+          "body": "Når et huddle slutter, er det væk. Et mødelokale bliver, hvor det er, og standup holdes der hver dag."
+        },
+        {
+          "title": "På gratisplanen er det to personer",
+          "body": "Et hurtigt spørgsmål til gruppen kræver hele workspacet på en betalt Slack-plan."
+        }
+      ]
+    },
+    {
+      "title": "Hvad huddles gør bedre",
+      "items": [
+        {
+          "title": "De er der allerede, hvor du skriver",
+          "body": "Intet nyt værktøj: et huddle starter fra den kanal eller direkte besked, du er i, og notetråden bliver ved samtalen."
+        },
+        {
+          "title": "Større opkald",
+          "body": "Op til 50 personer på betalte planer, godt til fællesmøder, som TinyFloor ikke er lavet til."
+        },
+        {
+          "title": "Alt det andet, Slack gør",
+          "body": "Kanaler, historik, integrationer og workflows. TinyFloor erstatter intet af det."
+        }
+      ]
+    },
+    {
+      "title": "Brug TinyFloor ved siden af Slack",
+      "items": [
+        {
+          "title": "Behold Slack til beskeder",
+          "body": "Tråde, beslutninger og alt, der skal skrives ned, bliver i Slack."
+        },
+        {
+          "title": "Hav kontoret i en fastgjort fane",
+          "body": "TinyFloor er der, hvor du ser, hvem der er der, og snakker; lad det stå åbent ved siden af Slack hele dagen."
+        },
+        {
+          "title": "Flyt standup ind i mødelokalet",
+          "body": "Ét dagligt møde på kontoret giver alle en grund til at være der."
+        },
+        {
+          "title": "Sæt invitationslinket i en kanals emne",
+          "body": "Nye kolleger finder kontoret der, hvor de finder alt andet."
+        }
+      ]
+    },
+    {
+      "title": "Hvad der passer til dit team",
+      "items": [
+        {
+          "title": "TinyFloor, ved siden af Slack",
+          "body": "Til et team på 4 til 15, der vil se, hvem der er ledig, og snakke som i et lokale, uden at flytte alle over på en betalt Slack-plan for gruppeopkald."
+        },
+        {
+          "title": "Kun huddles",
+          "body": "Hvis teamet gerne ringer til hinanden fra Slack, allerede betaler for det og ikke savner at se, hvem der er der."
+        }
+      ]
+    },
+    {
+      "title": "Prøv det med dit Slack-team",
+      "items": [
+        {
+          "title": "Opret et kontor",
+          "detail": "To minutter",
+          "body": "Navngiv det efter teamet. Gulvet, skrivebordene og mødelokalet er klar."
+        },
+        {
+          "title": "Del invitationslinket i Slack",
+          "detail": "I teamkanalen",
+          "body": "Kollegerne logger ind med Google eller e-mail og går ind fra browseren."
+        },
+        {
+          "title": "Arbejd en almindelig uge",
+          "detail": "Huddles efter behov",
+          "body": "Behold Slack til beskeder, og se, om de hurtige spørgsmål flytter over på gulvet."
+        }
+      ]
+    },
+    {
+      "title": "Sådan sammenlignede vi",
+      "body": [
+        "Grænserne for huddles kommer fra Slacks hjælpecenter, læst i oktober 2026. Slacks prisside viser priser i den besøgendes valuta, så vi oplyser ikke et beløb; tjek Slacks side for din pris. Vi laver TinyFloor, så vi siger tydeligt, hvad det ikke kan."
+      ]
+    }
   ]
 }

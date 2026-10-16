@@ -1723,5 +1723,156 @@
         "Prezzi, limiti e funzioni di SpatialChat vengono dalla sua pagina prezzi, nella scheda Virtual Office, letta a ottobre 2026, in dollari statunitensi tasse escluse. Quello che non c'era l'abbiamo lasciato fuori invece di tirare a indovinare. Facciamo TinyFloor, quindi diciamo chiaramente cosa non fa. I prezzi cambiano: controlla la pagina di SpatialChat prima di acquistare."
       ]
     }
+  ],
+  "slackHuddles": [
+    {
+      "title": "Huddle di Slack e TinyFloor in breve",
+      "body": [
+        "Gli huddle portano le chiamate dove il team già scrive. TinyFloor aggiunge ciò che manca a Slack: un piano dove vedi chi c'è prima di iniziare a parlare."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Huddle di Slack",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Iniziare una conversazione",
+            "Avviare un huddle in un canale o messaggio diretto e gli altri si uniscono",
+            "Avvicinarsi a un collega"
+          ],
+          [
+            "Vedere chi è libero",
+            "Gli stati di Slack e il pallino verde",
+            "Tutti su un piano: scrivanie, stati e chi è in chiamata"
+          ],
+          [
+            "Chiamate di gruppo",
+            "Fino a 50 con i piani a pagamento, 25 in video",
+            "Una sala riunioni in cui può entrare tutto l'ufficio"
+          ],
+          [
+            "Piano gratuito",
+            "Huddle fino a 2 persone",
+            "Fino a 3 persone, tutte le funzioni"
+          ],
+          [
+            "Come si paga",
+            "Parte di Slack, per utente nei piani a pagamento",
+            "29 $ al mese per tutto il team"
+          ],
+          [
+            "Dove funziona",
+            "App desktop e mobile di Slack, Chrome e Firefox",
+            "Il browser, su computer e mobile"
+          ],
+          [
+            "Messaggi",
+            "Slack è prima di tutto una chat",
+            "Chat del team accanto al piano"
+          ]
+        ],
+        "note": "Limiti degli huddle dal centro assistenza di Slack, letto a ottobre 2026. I prezzi di Slack cambiano da paese a paese, quindi non li riportiamo."
+      }
+    },
+    {
+      "title": "Perché un huddle non è come condividere un ufficio",
+      "items": [
+        {
+          "title": "È una chiamata al buio",
+          "body": "Avvii un huddle senza sapere se l'altra persona è concentrata o in un'altra chiamata. In ufficio daresti prima un'occhiata."
+        },
+        {
+          "title": "Non puoi sentire una conversazione",
+          "body": "Un huddle in un altro canale è invisibile se non ci sei dentro. Su un piano vedi due persone che parlano e ti unisci se riguarda il tuo lavoro."
+        },
+        {
+          "title": "Non c'è una stanza a cui tornare",
+          "body": "Quando un huddle finisce, sparisce. Una sala riunioni resta dov'è, e lo standup si fa lì ogni giorno."
+        },
+        {
+          "title": "Con il piano gratuito sono due persone",
+          "body": "Una domanda veloce al gruppo richiede tutto il workspace su un piano Slack a pagamento."
+        }
+      ]
+    },
+    {
+      "title": "Cosa fanno meglio gli huddle",
+      "items": [
+        {
+          "title": "Sono già dove scrivi",
+          "body": "Nessuno strumento nuovo: un huddle parte dal canale o dal messaggio diretto in cui sei, e il suo thread di note resta con la conversazione."
+        },
+        {
+          "title": "Chiamate più grandi",
+          "body": "Fino a 50 persone con i piani a pagamento, adatto alle riunioni plenarie per cui TinyFloor non è pensato."
+        },
+        {
+          "title": "Tutto il resto che fa Slack",
+          "body": "Canali, cronologia, integrazioni e flussi di lavoro. TinyFloor non sostituisce nulla di tutto questo."
+        }
+      ]
+    },
+    {
+      "title": "Usare TinyFloor accanto a Slack",
+      "items": [
+        {
+          "title": "Tieni Slack per i messaggi",
+          "body": "Thread, decisioni e tutto ciò che va messo per iscritto restano in Slack."
+        },
+        {
+          "title": "Tieni l'ufficio in una scheda fissata",
+          "body": "TinyFloor è dove vedi chi c'è e parli; lascialo aperto accanto a Slack tutto il giorno."
+        },
+        {
+          "title": "Sposta lo standup nella sala riunioni",
+          "body": "Una riunione quotidiana in ufficio dà a tutti un motivo per esserci."
+        },
+        {
+          "title": "Metti il link di invito nell'argomento di un canale",
+          "body": "I nuovi arrivati trovano l'ufficio dove trovano tutto il resto."
+        }
+      ]
+    },
+    {
+      "title": "Quale fa per il tuo team",
+      "items": [
+        {
+          "title": "TinyFloor, accanto a Slack",
+          "body": "Per un team da 4 a 15 persone che vuole vedere chi è libero e parlare come in una stanza, senza passare tutti a un piano Slack a pagamento per le chiamate di gruppo."
+        },
+        {
+          "title": "Solo huddle",
+          "body": "Se al team piace chiamarsi da Slack, lo paga già e non sente la mancanza di vedere chi c'è."
+        }
+      ]
+    },
+    {
+      "title": "Provarlo con il tuo team su Slack",
+      "items": [
+        {
+          "title": "Crea un ufficio",
+          "detail": "Due minuti",
+          "body": "Dagli il nome del team. Piano, scrivanie e sala riunioni sono pronti."
+        },
+        {
+          "title": "Pubblica il link di invito su Slack",
+          "detail": "Nel canale del team",
+          "body": "I colleghi accedono con Google o email ed entrano dal browser."
+        },
+        {
+          "title": "Passate una settimana normale",
+          "detail": "Huddle facoltativi",
+          "body": "Tenete Slack per i messaggi e guardate se le domande veloci si spostano sul piano."
+        }
+      ]
+    },
+    {
+      "title": "Come abbiamo confrontato",
+      "body": [
+        "I limiti degli huddle vengono dal centro assistenza di Slack, letto a ottobre 2026. La pagina prezzi di Slack mostra i prezzi nella valuta di chi la visita, quindi non citiamo una cifra; controlla la pagina di Slack per la tua. Facciamo TinyFloor, quindi diciamo chiaramente cosa non fa."
+      ]
+    }
   ]
 }

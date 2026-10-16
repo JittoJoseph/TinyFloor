@@ -644,11 +644,11 @@
       "slackHuddles": {
         "label": "Vaihtoehto Slackin huddleille",
         "meta": {
-          "title": "Vaihtoehto Slackin huddleille: katso kuka on vapaana ja kävele luo",
-          "description": "Slackin huddle on puhelu sokkona. TinyFloor näyttää ensin, kuka on vapaana, ja sitten kävelet juttelemaan. Virtuaalitoimisto Slackin rinnalla, ilmainen 3 hengelle."
+          "title": "Vaihtoehto Slackin huddleille: näe ensin kuka on vapaana, kävele sitten luo",
+          "description": "Slackin huddle on soitto sokkona, ja Slackin ilmaisversio rajaa sen kahteen henkeen. TinyFloor näyttää ensin, kuka on vapaana, sitten kävelet luo. Virtuaalitoimisto Slackin rinnalle, ilmainen 3 hengelle, 29 $ kuukaudessa koko tiimiltä."
         },
         "title": "<em>Vaihtoehto Slackin huddleille</em>, jossa näet ensin, kuka on vapaana.",
-        "subtitle": "Huddle on puhelu, jonka aloitat tietämättä, sopiiko hetki. TinyFloorissa näet, kuka on paikalla, kuka kiireinen ja kuka jo puhuu, ja vasta sitten menet luo.",
+        "subtitle": "Huddle on puhelu, jonka aloitat tietämättä, sopiiko se, ja Slackin ilmaisversiossa siihen mahtuu kaksi henkeä. TinyFloorissa näet, kuka on paikalla, kuka on kiireinen ja kuka jo juttelee, ja kävelet sitten luo.",
         "points": [
           {
             "title": "Katso ennen kuin soitat",
@@ -664,27 +664,27 @@
           }
         ],
         "them": {
-          "price": "Ryhmähuddlet vaativat Slack Pron, käyttäjäkohtainen hinta",
-          "freePlan": "Slack Freessä vain kahden hengen huddlet",
-          "browser": "Kyllä, lisäksi sovellukset tietokoneelle ja mobiiliin",
+          "price": "Ryhmähuddlet vaativat maksullisen Slack-tilauksen, käyttäjää kohden",
+          "freePlan": "Slack Free: huddlet enintään 2 hengelle",
+          "browser": "Kyllä, tietokone- ja mobiilisovellusten kanssa",
           "screenShare": "Kyllä"
         },
         "faq": [
           {
             "q": "Mikä on Slackin huddle?",
-            "a": "Huddle on nopea ääni- tai videopuhelu Slackissa, joka aloitetaan kanavasta tai yksityisviestistä. Slackin ilmaisessa paketissa huddlet ovat kahden hengen välisiä; ryhmähuddlet vaativat maksullisen paketin."
+            "a": "Huddle on nopea ääni- tai videopuhelu Slackissa, joka aloitetaan kanavalta tai yksityisviestistä, ja siinä on näytönjako ja ketju muistiinpanoille. Slackin ilmaisversiossa huddleen mahtuu kaksi henkeä; maksullisissa enintään 50, joista 25 videolla yhtä aikaa."
           },
           {
             "q": "Miten TinyFloor eroaa huddlesta?",
-            "a": "Huddle alkaa, kun joku soittaa. TinyFloorissa tiimi on jo yhdessä samassa kerroksessa, joten näet kuka on vapaana ja menet luo, ja neuvotteluhuone on aina olemassa."
+            "a": "Huddle alkaa, kun joku soittaa. TinyFloorissa tiimi on jo koolla samassa kerroksessa, joten näet, kuka on vapaana, ja kävelet luo, ja neuvotteluhuone on aina paikallaan."
           },
           {
             "q": "Voinko käyttää TinyFlooria Slackin kanssa?",
-            "a": "Voit. Ne eivät ole yhteydessä toisiinsa, mutta moni tiimi pitää Slackin viesteihin ja käyttää TinyFlooria läsnäoloon, puheluihin ja kokouksiin."
+            "a": "Voit. Ne eivät ole yhteydessä toisiinsa, mutta moni tiimi pitää Slackin viesteille ja käyttää TinyFlooria läsnäoloon, puheluihin ja kokouksiin."
           },
           {
-            "q": "Paljonko TinyFloor maksaa?",
-            "a": "Ilmainen enintään 3 hengelle. Pro maksaa $29 kuukaudessa koko tiimille, ei henkeä kohden."
+            "q": "Mitä TinyFloor maksaa?",
+            "a": "Ilmainen enintään 3 hengelle. Pro maksaa 29 $ kuukaudessa koko tiimiltä, ei henkeä kohden."
           }
         ]
       },

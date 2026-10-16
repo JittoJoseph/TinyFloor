@@ -645,10 +645,10 @@
         "label": "Alternativa aos huddles do Slack",
         "meta": {
           "title": "Alternativa aos huddles do Slack: veja quem está livre e vá até lá",
-          "description": "Um huddle do Slack é uma chamada no escuro. O TinyFloor mostra primeiro quem está livre e depois você vai até a pessoa. Um escritório virtual ao lado do Slack, grátis para 3 pessoas."
+          "description": "Um huddle do Slack é uma ligação no escuro, e o plano grátis do Slack limita a duas pessoas. O TinyFloor mostra primeiro quem está livre, e aí você vai até lá. Um escritório virtual ao lado do Slack, grátis para 3 e US$ 29 por mês para a equipe toda."
         },
         "title": "Uma <em>alternativa aos huddles do Slack</em> em que você vê primeiro quem está livre.",
-        "subtitle": "Um huddle é uma chamada que você começa sem saber se é uma boa hora. No TinyFloor você vê quem está por perto, quem está ocupado e quem já está conversando, e então vai até lá.",
+        "subtitle": "Um huddle é uma ligação que você começa sem saber se é uma boa hora, e no plano grátis do Slack ele comporta duas pessoas. No TinyFloor você vê quem está, quem está ocupado e quem já está conversando, e então vai até lá.",
         "points": [
           {
             "title": "Veja antes de chamar",
@@ -664,19 +664,19 @@
           }
         ],
         "them": {
-          "price": "Huddles em grupo exigem o Slack Pro, com preço por usuário",
-          "freePlan": "O Slack Free só tem huddles de duas pessoas",
-          "browser": "Sim, com apps para computador e celular",
+          "price": "Huddles em grupo exigem um plano pago do Slack, por usuário",
+          "freePlan": "Slack Free: huddles de até 2 pessoas",
+          "browser": "Sim, com apps de desktop e celular",
           "screenShare": "Sim"
         },
         "faq": [
           {
             "q": "O que é um huddle do Slack?",
-            "a": "Um huddle é uma chamada rápida de áudio ou vídeo dentro do Slack, iniciada a partir de um canal ou de uma mensagem direta. No plano grátis do Slack os huddles são entre duas pessoas; huddles em grupo exigem um plano pago."
+            "a": "Um huddle é uma chamada rápida de áudio ou vídeo dentro do Slack, iniciada num canal ou numa mensagem direta, com compartilhamento de tela e um fio para anotações. No plano grátis do Slack, um huddle comporta duas pessoas; nos planos pagos, até 50, com 25 em vídeo ao mesmo tempo."
           },
           {
             "q": "Qual a diferença entre o TinyFloor e um huddle?",
-            "a": "Um huddle começa quando alguém chama. No TinyFloor sua equipe já está junta num andar, então você vê quem está livre e vai até lá, e a sala de reunião está sempre ali."
+            "a": "Um huddle começa quando alguém liga. No TinyFloor sua equipe já está junta num andar, então você vê quem está livre e vai até lá, e a sala de reunião está sempre ali."
           },
           {
             "q": "Posso usar o TinyFloor com o Slack?",
@@ -684,7 +684,7 @@
           },
           {
             "q": "Quanto custa o TinyFloor?",
-            "a": "Grátis para até 3 pessoas. O Pro custa US$ 29 por mês para toda a equipe, não por pessoa."
+            "a": "Grátis para até 3 pessoas. O Pro custa US$ 29 por mês para a equipe toda, não por pessoa."
           }
         ]
       },

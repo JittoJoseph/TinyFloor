@@ -644,11 +644,11 @@
       "slackHuddles": {
         "label": "Slack huddle 替代方案",
         "meta": {
-          "title": "Slack huddle 替代方案：先看谁有空，再走过去",
-          "description": "Slack huddle 是不知道对方方不方便就打过去的通话。TinyFloor 先让你看到谁有空，再走过去交谈。可与 Slack 并用的虚拟办公室，3 人以内免费。"
+          "title": "Slack huddle 替代品：先看谁有空，再走过去",
+          "description": "Slack 的 huddle 是一通不知道对方状态的电话，Slack 免费方案还限制为两人。TinyFloor 先让你看到谁有空，再走过去聊。放在 Slack 旁边的虚拟办公室，最多 3 人免费，整个团队每月 $29。"
         },
         "title": "先看到谁有空的 <em>Slack huddle 替代方案。</em>",
-        "subtitle": "huddle 是在不知道现在合不合适时就发起的通话。在 TinyFloor 上，你能先看到谁在、谁在忙、谁已经在说话，然后再走过去。",
+        "subtitle": "Huddle 是在不知道是否方便的情况下发起的通话，而在 Slack 免费方案里只能两个人。在 TinyFloor 里，你能看到谁在、谁在忙、谁已经在聊，然后再走过去。",
         "points": [
           {
             "title": "打之前先看",
@@ -664,27 +664,27 @@
           }
         ],
         "them": {
-          "price": "多人 huddle 需要 Slack Pro，按用户收费",
-          "freePlan": "Slack Free 只有两人 huddle",
-          "browser": "支持，另有桌面和移动应用",
-          "screenShare": "支持"
+          "price": "多人 huddle 需要 Slack 付费方案，按用户计费",
+          "freePlan": "Slack 免费版：huddle 最多 2 人",
+          "browser": "是，另有电脑和手机应用",
+          "screenShare": "是"
         },
         "faq": [
           {
             "q": "什么是 Slack huddle？",
-            "a": "huddle 是 Slack 里从频道或私信发起的快速语音或视频通话。在 Slack 免费套餐中 huddle 只能两人进行，多人 huddle 需要付费套餐。"
+            "a": "Huddle 是在 Slack 里从频道或私信快速发起的语音或视频通话，带屏幕共享和一个记笔记的话题串。Slack 免费方案中一次 huddle 最多两人；付费方案最多 50 人，其中最多 25 人同时开视频。"
           },
           {
             "q": "TinyFloor 和 huddle 有什么不同？",
-            "a": "huddle 要有人打过来才开始。在 TinyFloor 上，团队已经在同一层楼里，你能看到谁有空并走过去，会议室也一直都在。"
+            "a": "Huddle 要等有人发起才开始。在 TinyFloor 里，团队本来就在同一层楼，所以你能看到谁有空，走过去就行，会议室也一直都在。"
           },
           {
             "q": "TinyFloor 能和 Slack 一起用吗？",
-            "a": "可以。两者互不连接，但很多团队消息继续用 Slack，在线状态、通话和会议用 TinyFloor。"
+            "a": "能。两者并不相互连接，但很多团队用 Slack 发消息，用 TinyFloor 看在线状态、通话和开会。"
           },
           {
             "q": "TinyFloor 多少钱？",
-            "a": "3 人以内免费。Pro 整个团队每月 $29，不按人收费。"
+            "a": "最多 3 人免费。Pro 整个团队每月 $29，不按人收费。"
           }
         ]
       },

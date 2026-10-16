@@ -1723,5 +1723,156 @@
         "SpatialChat's prices, limits and features come from its pricing page, on the Virtual Office tab, read in October 2026, in US dollars before tax. If something wasn't stated there, we left it out rather than guess. We make TinyFloor, so we've said plainly what it doesn't do. Prices change: check SpatialChat's page before you buy."
       ]
     }
+  ],
+  "slackHuddles": [
+    {
+      "title": "Slack huddles and TinyFloor at a glance",
+      "body": [
+        "Huddles add calls to the place your team already writes. TinyFloor adds the part Slack doesn't have: a floor where you can see who's around before you start talking."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Slack huddles",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Starting a conversation",
+            "Start a huddle in a channel or DM and people join",
+            "Walk up to a teammate"
+          ],
+          [
+            "Seeing who's free",
+            "Slack statuses and the green dot",
+            "Everyone on one floor: desks, statuses and who's in a call"
+          ],
+          [
+            "Group calls",
+            "Up to 50 on paid plans, 25 with video",
+            "A meeting room the whole office can walk into"
+          ],
+          [
+            "Free plan",
+            "Huddles of up to 2 people",
+            "Up to 3 people, every feature"
+          ],
+          [
+            "How it's priced",
+            "Part of Slack, per user on paid plans",
+            "$29 a month for the whole team"
+          ],
+          [
+            "Where it runs",
+            "Slack's desktop and mobile apps, Chrome and Firefox",
+            "The browser, on desktop and mobile"
+          ],
+          [
+            "Messages",
+            "Slack is chat first",
+            "Team chat beside the floor"
+          ]
+        ],
+        "note": "Huddle limits from Slack's help centre, read in October 2026. Slack's prices vary by country, so we haven't listed them."
+      }
+    },
+    {
+      "title": "Why a huddle isn't the same as sharing an office",
+      "items": [
+        {
+          "title": "It's a call into the unknown",
+          "body": "You start a huddle without knowing whether the other person is mid-thought or in another call. In an office you'd glance over first."
+        },
+        {
+          "title": "You can't overhear a conversation",
+          "body": "A huddle in another channel is invisible unless you're in it. On a floor you can see two people talking and join if it's about your work."
+        },
+        {
+          "title": "There's no room to come back to",
+          "body": "When a huddle ends, it's gone. A meeting room stays where it is, and the standup happens there every day."
+        },
+        {
+          "title": "On the free plan it's two people",
+          "body": "A quick group question needs the whole workspace on a paid Slack plan."
+        }
+      ]
+    },
+    {
+      "title": "What huddles do better",
+      "items": [
+        {
+          "title": "They're already where you write",
+          "body": "No new tool: a huddle starts from the channel or DM you're in, and its notes thread stays with the conversation."
+        },
+        {
+          "title": "Bigger calls",
+          "body": "Up to 50 people on paid plans, which suits all-hands calls TinyFloor isn't made for."
+        },
+        {
+          "title": "Everything else Slack does",
+          "body": "Channels, history, integrations and workflows. TinyFloor doesn't replace any of that."
+        }
+      ]
+    },
+    {
+      "title": "Using TinyFloor next to Slack",
+      "items": [
+        {
+          "title": "Keep Slack for messages",
+          "body": "Threads, decisions and anything that should be written down stay in Slack."
+        },
+        {
+          "title": "Keep the office in a pinned tab",
+          "body": "TinyFloor is where you see who's in and talk; leave it open beside Slack all day."
+        },
+        {
+          "title": "Move the standup into the meeting room",
+          "body": "One daily meeting in the office gives everyone a reason to be there."
+        },
+        {
+          "title": "Put the invite link in a channel topic",
+          "body": "New teammates find the office the same place they find everything else."
+        }
+      ]
+    },
+    {
+      "title": "Which one fits your team",
+      "items": [
+        {
+          "title": "TinyFloor, beside Slack",
+          "body": "For a team of 4 to 15 that wants to see who's free and talk the way it would in a room, without moving everyone to a paid Slack plan for group calls."
+        },
+        {
+          "title": "Huddles alone",
+          "body": "If your team is happy calling each other from Slack, already pays for it, and doesn't miss seeing who's around."
+        }
+      ]
+    },
+    {
+      "title": "Trying it with your Slack team",
+      "items": [
+        {
+          "title": "Make an office",
+          "detail": "Two minutes",
+          "body": "Name it after the team. The floor, desks and meeting room are ready."
+        },
+        {
+          "title": "Post the invite link in Slack",
+          "detail": "In your team channel",
+          "body": "Teammates sign in with Google or email and walk in from the browser."
+        },
+        {
+          "title": "Run a normal week",
+          "detail": "Huddles optional",
+          "body": "Keep Slack for messages and see whether the quick questions move to the floor."
+        }
+      ]
+    },
+    {
+      "title": "How we compared",
+      "body": [
+        "Huddle limits come from Slack's help centre, read in October 2026. Slack's pricing page shows prices in the visitor's currency, so we haven't quoted a figure; check Slack's page for yours. We make TinyFloor, so we've said plainly what it doesn't do."
+      ]
+    }
   ]
 }

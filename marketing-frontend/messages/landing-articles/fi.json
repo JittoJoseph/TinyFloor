@@ -3092,5 +3092,125 @@
         "Se on taulu kynällä ja pyyhekumilla. Siinä ei ole tekstityökalua, muotoja tai lappuja, kuvia, kumoamista, malleja eikä vientiä, ja toimistossa on yksi taulu. Työpajoihin, lappuretrospektiiveihin tai yksityiskohtaisiin kaavioihin Miro, FigJam tai Excalidraw tekevät paljon enemmän. TinyFloorin taulu on nopeaa luonnosta varten puhuessa."
       ]
     }
+  ],
+  "agencies": [
+    {
+      "title": "Päivä pienessä toimistossa, kerroksessa",
+      "body": [
+        "Toimistot elävät lyhyistä kierroksista: luonnos, nopea vilkaisu, korjaus, uusi vilkaisu. Etänä jokaisesta kierroksesta tulee helposti sovittu puhelu. Kerroksessa useimmat niistä ovat kävely huoneen poikki."
+      ],
+      "items": [
+        {
+          "title": "Prioriteetit",
+          "detail": "9.30",
+          "body": "Kymmenen minuuttia kokoushuoneessa: mitä millekin asiakkaalle pitää toimittaa tänään ja kuka tarvitsee apua."
+        },
+        {
+          "title": "Nopea katselmointi",
+          "detail": "11.00",
+          "body": "Kävele AD:n luo, jaa luonnos ja saa kommentit viidessä minuutissa huomisen ajan sijaan."
+        },
+        {
+          "title": "Deadline-tila",
+          "detail": "14.00",
+          "body": "Laita tilaksi varattu. Ihmiset näkevät, että olet paikalla ja töissä, ja tietävät kirjoittaa eikä tulla luo."
+        },
+        {
+          "title": "Asiakastapaamisen valmistelu",
+          "detail": "17.00",
+          "body": "Aloita asiakkaan mukaan nimetty kokous, pyydä mukaan asiakkuuden kolme tekijää ja käykää huomisen esitys läpi."
+        }
+      ]
+    },
+    {
+      "title": "Mitä toimisto tarvitsee ja missä se on",
+      "table": {
+        "head": [
+          "Tarve",
+          "TinyFloorissa",
+          "Pidä muualla"
+        ],
+        "rows": [
+          [
+            "Nopeat luovat katselmoinnit",
+            "Mene luo, jaa näyttö, puhukaa läpi.",
+            "Suunnittelutiedostonne Figmassa tai missä ne ovatkaan."
+          ],
+          [
+            "Tieto siitä, kenellä on tilaa",
+            "Tilat ja työpisteet näyttävät, kenellä on deadline ja kuka voi auttaa.",
+            "Tulevien viikkojen resurssisuunnitelma."
+          ],
+          [
+            "Asiakkaat erillään",
+            "Kanava asiakasta tai projektia kohden.",
+            "Briefit ja sopimukset dokumenteissanne."
+          ],
+          [
+            "Freelancerit",
+            "He liittyvät kutsulinkillä ja saavat työpisteen projektin ajaksi.",
+            "Sopimukset ja laskut."
+          ],
+          [
+            "Asiakaspuhelut",
+            "—",
+            "Kokoustyökalu, jota asiakkaanne jo käyttävät."
+          ],
+          [
+            "Ideoiden luonnostelu",
+            "Taulu seinällä karkeaa versiota varten.",
+            "Kunnon taulut Mirossa tai FigJamissa."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Freelancerit ja alihankkijat",
+      "items": [
+        {
+          "title": "Liittyminen",
+          "body": "Lähetä toimiston kutsulinkki. He kirjautuvat Googlella tai sähköpostilla, valitsevat työpisteen ja ovat kerroksessa minuutissa."
+        },
+        {
+          "title": "Paikat",
+          "body": "Paikka on jäsen. Freelancer vie yhden ollessaan toimistossa ja vapauttaa sen lähtiessään."
+        },
+        {
+          "title": "Kun projekti päättyy",
+          "body": "Omistaja tai ylläpitäjä poistaa hänet ihmisten luettelosta. Jos linkki on levinnyt pidemmälle kuin piti, nollaa se, niin vanha lakkaa toimimasta."
+        },
+        {
+          "title": "Roolit",
+          "body": "Omistaja, ylläpitäjät ja jäsenet. Ylläpitäjät voivat hallita ihmisiä, joten studiopäällikön ei tarvitse olla perustaja."
+        }
+      ]
+    },
+    {
+      "title": "Studioon sopivat tavat",
+      "items": [
+        {
+          "title": "Nimeä kokoukset asiakkaiden mukaan",
+          "body": "Kokous nimeltä ”Northwind-katselmointi” kertoo koko kerrokselle, mitä tapahtuu ja kuka on kiinni."
+        },
+        {
+          "title": "Näytä työ, ei tiivistelmää",
+          "body": "Jaa oikea tiedosto puhelussa. Katselmoinnit sujuvat nopeammin, kun kaikki katsovat samaa."
+        },
+        {
+          "title": "Suojele toimituspäiviä",
+          "body": "Sopikaa, että varattu tarkoittaa kirjoita, älä tule, jotta tänään toimittava saa työn valmiiksi."
+        },
+        {
+          "title": "Asiakkaan ääni yhdellä kanavalla",
+          "body": "Liitä asiakkaan sähköpostien palaute asiakkaan kanavalle, ettei kukaan tee töitä briefin vanhan version pohjalta."
+        }
+      ]
+    },
+    {
+      "title": "Mitä se ei tee",
+      "body": [
+        "Toimistot ovat jäsenille, jotka liittyvät tilillä, joten asiakkaat eivät pistäydy; pitäkää asiakaspuheluihin tavallinen kokoustyökalunne. Ajanseurantaa, tiedostojen tallennusta tai Figma-, Drive- tai projektityökaluintegraatiota ei ole, eikä kuvia voi vielä jakaa chatissa. TinyFloor on paikka, jossa tiiminne tekee töitä yhdessä päivittäin; asiakkaille näkyvät työkalut pysyvät ennallaan."
+      ]
+    }
   ]
 }

@@ -3092,5 +3092,125 @@
         "È una lavagna con pennarello e gomma. Non c'è uno strumento testo, né forme o post-it, né immagini, né annulla, né modelli, né esportazione, e un ufficio ha una sola lavagna. Per workshop, retrospettive con post-it o diagrammi dettagliati, Miro, FigJam o Excalidraw fanno molto di più. La lavagna di TinyFloor è per lo schizzo veloce mentre parlate."
       ]
     }
+  ],
+  "agencies": [
+    {
+      "title": "Una giornata in una piccola agenzia, sul piano",
+      "body": [
+        "Le agenzie vivono di cicli brevi: una bozza, un'occhiata, una correzione, un'altra occhiata. Da remoto ogni ciclo può diventare una chiamata in calendario. Sul piano, quasi tutti si risolvono attraversando la stanza."
+      ],
+      "items": [
+        {
+          "title": "Priorità",
+          "detail": "9:30",
+          "body": "Dieci minuti in sala riunioni: cosa scade oggi per quale cliente, e chi ha bisogno di una mano."
+        },
+        {
+          "title": "Una revisione veloce",
+          "detail": "11:00",
+          "body": "Raggiungi la direzione artistica, condividi la bozza e ottieni note in cinque minuti invece che allo slot di domani."
+        },
+        {
+          "title": "Modalità scadenza",
+          "detail": "14:00",
+          "body": "Mettiti occupato. Si vede che ci sei e stai lavorando, e si sa che bisogna scrivere invece di avvicinarsi."
+        },
+        {
+          "title": "Preparare il cliente",
+          "detail": "17:00",
+          "body": "Avvia una riunione con il nome del cliente, fai entrare le tre persone sull'account e ripassate la presentazione di domani."
+        }
+      ]
+    },
+    {
+      "title": "Cosa serve a un'agenzia e dove sta",
+      "table": {
+        "head": [
+          "Esigenza",
+          "Su TinyFloor",
+          "Da tenere altrove"
+        ],
+        "rows": [
+          [
+            "Revisioni creative rapide",
+            "Avvicinarsi, condividere lo schermo, parlarne.",
+            "I vostri file di design, in Figma o dove stanno."
+          ],
+          [
+            "Sapere chi ha disponibilità",
+            "Stati e scrivanie mostrano chi è in scadenza e chi può aiutare.",
+            "La pianificazione delle risorse per le prossime settimane."
+          ],
+          [
+            "Tenere separati i clienti",
+            "Un canale per cliente o progetto.",
+            "Brief e contratti, nei vostri documenti."
+          ],
+          [
+            "Freelance",
+            "Entrano con il link d'invito e hanno una scrivania finché dura il progetto.",
+            "Contratti e fatture."
+          ],
+          [
+            "Chiamate con i clienti",
+            "—",
+            "Lo strumento di riunione che i clienti usano già."
+          ],
+          [
+            "Abbozzare idee",
+            "La lavagna sul muro, per la versione grezza.",
+            "Board veri in Miro o FigJam."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Freelance e collaboratori esterni",
+      "items": [
+        {
+          "title": "Entrare",
+          "body": "Manda il link d'invito dell'ufficio. Accedono con Google o con l'email, scelgono una scrivania e in un minuto sono sul piano."
+        },
+        {
+          "title": "Posti",
+          "body": "Un posto è un membro. Un freelance ne occupa uno finché è nell'ufficio e lo libera quando esce."
+        },
+        {
+          "title": "Quando finisce il progetto",
+          "body": "Un proprietario o un admin lo rimuove dall'elenco delle persone. Se il link è arrivato più lontano del dovuto, reimpostalo e quello vecchio smette di funzionare."
+        },
+        {
+          "title": "Ruoli",
+          "body": "Proprietario, admin e membri. Gli admin possono gestire le persone, quindi chi gestisce lo studio non deve per forza essere chi lo ha fondato."
+        }
+      ]
+    },
+    {
+      "title": "Abitudini adatte a uno studio",
+      "items": [
+        {
+          "title": "Dai alle riunioni il nome del cliente",
+          "body": "Una riunione chiamata \"Revisione Northwind\" dice a tutto il piano cosa succede e chi è impegnato."
+        },
+        {
+          "title": "Mostra il lavoro, non un riassunto",
+          "body": "Condividi il file vero in chiamata. Le revisioni vanno più veloci quando tutti guardano la stessa cosa."
+        },
+        {
+          "title": "Proteggi i giorni di consegna",
+          "body": "Decidete che occupato vuol dire scrivere, non avvicinarsi, così chi consegna oggi riesce a finire."
+        },
+        {
+          "title": "La voce del cliente in un solo canale",
+          "body": "Incolla i feedback delle email del cliente nel suo canale, così nessuno lavora su una versione vecchia del brief."
+        }
+      ]
+    },
+    {
+      "title": "Cosa non fa",
+      "body": [
+        "Gli uffici sono per i membri che entrano con un account, quindi i clienti non passano a trovarvi; per le chiamate con loro tenete il vostro solito strumento. Non c'è tracciamento delle ore, né archivio di file, né integrazione con Figma, Drive o il vostro strumento di progetto, e nella chat non si possono ancora condividere immagini. TinyFloor è il posto dove il team lavora insieme ogni giorno; gli strumenti per i clienti restano dove sono."
+      ]
+    }
   ]
 }

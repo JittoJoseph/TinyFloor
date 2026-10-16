@@ -3092,5 +3092,125 @@
         "Det er en tavle med pen og viskelæder. Der er intet tekstværktøj, ingen figurer eller sedler, ingen billeder, ingen fortryd, ingen skabeloner og ingen eksport, og et kontor har én tavle. Til workshops, retrospektiver med sedler eller detaljerede diagrammer kan Miro, FigJam eller Excalidraw langt mere. Tavlen i TinyFloor er til den hurtige skitse, mens I taler."
       ]
     }
+  ],
+  "agencies": [
+    {
+      "title": "En dag på et lille bureau, på etagen",
+      "body": [
+        "Bureauer lever af korte runder: et udkast, et hurtigt kig, en rettelse, et kig mere. Remote bliver hver runde let til et planlagt opkald. På etagen er de fleste en tur gennem rummet."
+      ],
+      "items": [
+        {
+          "title": "Prioriteter",
+          "detail": "9:30",
+          "body": "Ti minutter i mødelokalet: hvad der skal leveres til hvilken kunde i dag, og hvem der har brug for hjælp."
+        },
+        {
+          "title": "Et hurtigt review",
+          "detail": "11:00",
+          "body": "Gå hen til art directoren, del udkastet og få noter på fem minutter i stedet for i morgendagens tid."
+        },
+        {
+          "title": "Deadlinetilstand",
+          "detail": "14:00",
+          "body": "Sæt dig som optaget. Folk kan se, at du er der og arbejder, og ved, at de skal skrive i stedet for at komme forbi."
+        },
+        {
+          "title": "Kundeforberedelse",
+          "detail": "17:00",
+          "body": "Start et møde opkaldt efter kunden, inviter de tre på kontoen ind, og gå morgendagens præsentation igennem."
+        }
+      ]
+    },
+    {
+      "title": "Hvad et bureau har brug for, og hvor det bor",
+      "table": {
+        "head": [
+          "Behov",
+          "I TinyFloor",
+          "Behold et andet sted"
+        ],
+        "rows": [
+          [
+            "Hurtige kreative reviews",
+            "Gå derhen, del skærmen, snak det igennem.",
+            "Jeres designfiler, i Figma eller hvor de nu ligger."
+          ],
+          [
+            "Vide, hvem der har tid",
+            "Statusser og skriveborde viser, hvem der sidder med en deadline, og hvem der kan hjælpe.",
+            "Jeres ressourceplan for de kommende uger."
+          ],
+          [
+            "Holde kunder adskilt",
+            "En kanal pr. kunde eller projekt.",
+            "Briefs og kontrakter, i jeres dokumenter."
+          ],
+          [
+            "Freelancere",
+            "De kommer ind via invitationslinket og får et skrivebord, mens projektet kører.",
+            "Kontrakter og fakturaer."
+          ],
+          [
+            "Kundeopkald",
+            "—",
+            "Det mødeværktøj, jeres kunder allerede bruger."
+          ],
+          [
+            "Skitsere idéer",
+            "Whiteboardet på væggen, til den grove version.",
+            "Rigtige boards i Miro eller FigJam."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Freelancere og konsulenter",
+      "items": [
+        {
+          "title": "Kom ind",
+          "body": "Send kontorets invitationslink. De logger ind med Google eller e-mail, vælger et skrivebord og er på etagen på et minut."
+        },
+        {
+          "title": "Pladser",
+          "body": "En plads er et medlem. En freelancer optager én, mens de er på kontoret, og frigiver den, når de går."
+        },
+        {
+          "title": "Når projektet slutter",
+          "body": "En ejer eller admin fjerner personen fra listen over personer. Er linket nået længere ud end meningen, så nulstil det, og det gamle holder op med at virke."
+        },
+        {
+          "title": "Roller",
+          "body": "Ejer, admins og medlemmer. Admins kan administrere personer, så studiechefen behøver ikke være stifteren."
+        }
+      ]
+    },
+    {
+      "title": "Vaner, der passer til et studie",
+      "items": [
+        {
+          "title": "Navngiv møder efter kunder",
+          "body": "Et møde, der hedder \"Northwind review\", fortæller hele etagen, hvad der sker, og hvem der er optaget."
+        },
+        {
+          "title": "Vis arbejdet, ikke et resumé",
+          "body": "Del den rigtige fil i opkaldet. Reviews går hurtigere, når alle kigger på det samme."
+        },
+        {
+          "title": "Beskyt deadlinedage",
+          "body": "Aftal, at optaget betyder skriv, kom ikke forbi, så den, der leverer i dag, kan blive færdig."
+        },
+        {
+          "title": "Kundens stemme i én kanal",
+          "body": "Kopiér feedback fra kundens mails ind i kundens kanal, så ingen arbejder ud fra en gammel version af briefet."
+        }
+      ]
+    },
+    {
+      "title": "Hvad det ikke gør",
+      "body": [
+        "Kontorer er for medlemmer, der kommer ind med en konto, så kunder kigger ikke forbi; behold jeres sædvanlige mødeværktøj til kundeopkald. Der er ingen tidsregistrering, ingen fillagring og ingen integration med Figma, Drive eller jeres projektværktøj, og billeder kan ikke deles i chatten endnu. TinyFloor er stedet, hvor jeres team arbejder sammen til daglig; værktøjerne mod kunderne bliver, hvor de er."
+      ]
+    }
   ]
 }

@@ -3092,5 +3092,125 @@
         "Es ist ein Board mit Stift und Radierer. Es gibt kein Textwerkzeug, keine Formen oder Haftnotizen, keine Bilder, kein Rückgängig, keine Vorlagen und keinen Export, und ein Büro hat ein Board statt vieler. Für Workshops, Retros mit Haftnotizen oder detaillierte Diagramme können Miro, FigJam oder Excalidraw viel mehr. Das Board in TinyFloor ist für die schnelle Skizze beim Reden."
       ]
     }
+  ],
+  "agencies": [
+    {
+      "title": "Ein Tag in einer kleinen Agentur auf der Fläche",
+      "body": [
+        "Agenturen leben von kurzen Schleifen: ein Entwurf, ein kurzer Blick, eine Korrektur, noch ein Blick. Remote wird aus jeder Schleife schnell ein geplanter Call. Auf der Fläche sind die meisten davon ein Gang durch den Raum."
+      ],
+      "items": [
+        {
+          "title": "Prioritäten",
+          "detail": "9:30",
+          "body": "Zehn Minuten im Besprechungsraum: was heute für welchen Kunden fällig ist und wer Hilfe braucht."
+        },
+        {
+          "title": "Ein kurzes Review",
+          "detail": "11:00",
+          "body": "Geh zur Art Direction, teile den Entwurf und hol dir in fünf Minuten Feedback statt im Termin morgen."
+        },
+        {
+          "title": "Deadline-Modus",
+          "detail": "14:00",
+          "body": "Stell dich auf beschäftigt. Die Leute sehen, dass du da bist und arbeitest, und wissen, dass sie schreiben statt hingehen sollen."
+        },
+        {
+          "title": "Kundenvorbereitung",
+          "detail": "17:00",
+          "body": "Starte ein Meeting, benannt nach dem Kunden, hol die drei Leute vom Etat dazu und geht die Präsentation von morgen durch."
+        }
+      ]
+    },
+    {
+      "title": "Was eine Agentur braucht und wo es lebt",
+      "table": {
+        "head": [
+          "Bedarf",
+          "In TinyFloor",
+          "Woanders behalten"
+        ],
+        "rows": [
+          [
+            "Schnelle Kreativ-Reviews",
+            "Hingehen, Bildschirm teilen, durchsprechen.",
+            "Eure Designdateien, in Figma oder wo sie liegen."
+          ],
+          [
+            "Wissen, wer Kapazität hat",
+            "Status und Schreibtische zeigen, wer an einer Deadline sitzt und wer helfen kann.",
+            "Eure Ressourcenplanung für die nächsten Wochen."
+          ],
+          [
+            "Kunden getrennt halten",
+            "Ein Kanal pro Kunde oder Projekt.",
+            "Briefings und Verträge, in euren Dokumenten."
+          ],
+          [
+            "Freelancer",
+            "Sie kommen über den Einladungslink und bekommen einen Schreibtisch, solange das Projekt läuft.",
+            "Verträge und Rechnungen."
+          ],
+          [
+            "Kundencalls",
+            "—",
+            "Das Meeting-Tool, das eure Kunden schon nutzen."
+          ],
+          [
+            "Ideen skizzieren",
+            "Das Whiteboard an der Wand, für die grobe Version.",
+            "Richtige Boards in Miro oder FigJam."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Freelancer und externe Leute",
+      "items": [
+        {
+          "title": "Dazukommen",
+          "body": "Schick den Einladungslink des Büros. Sie melden sich mit Google oder E-Mail an, wählen einen Schreibtisch und sind in einer Minute auf der Fläche."
+        },
+        {
+          "title": "Plätze",
+          "body": "Ein Platz ist ein Mitglied. Ein Freelancer belegt einen, solange er im Büro ist, und gibt ihn frei, wenn er geht."
+        },
+        {
+          "title": "Wenn das Projekt endet",
+          "body": "Eine Inhaberin oder ein Admin entfernt die Person aus der Personenliste. Ist der Link weiter gewandert als gedacht, setzt ihn zurück, dann funktioniert der alte nicht mehr."
+        },
+        {
+          "title": "Rollen",
+          "body": "Inhaber, Admins und Mitglieder. Admins können Leute verwalten, die Studioleitung muss also nicht die Gründerin sein."
+        }
+      ]
+    },
+    {
+      "title": "Gewohnheiten, die zu einem Studio passen",
+      "items": [
+        {
+          "title": "Meetings nach Kunden benennen",
+          "body": "Ein Meeting namens „Northwind Review“ sagt der ganzen Fläche, was läuft und wer gerade gebunden ist."
+        },
+        {
+          "title": "Die Arbeit zeigen, nicht eine Zusammenfassung",
+          "body": "Teilt im Call die echte Datei. Reviews gehen schneller, wenn alle auf dasselbe schauen."
+        },
+        {
+          "title": "Deadline-Tage schützen",
+          "body": "Vereinbart, dass beschäftigt heißt: schreiben, nicht hingehen, damit die Person, die heute liefert, fertig wird."
+        },
+        {
+          "title": "Die Stimme des Kunden in einem Kanal",
+          "body": "Kopiert Feedback aus Kunden-Mails in den Kanal des Kunden, damit niemand nach einer alten Version des Briefings arbeitet."
+        }
+      ]
+    },
+    {
+      "title": "Was es nicht kann",
+      "body": [
+        "Büros sind für Mitglieder, die mit einem Konto beitreten, Kunden schauen also nicht einfach vorbei; behaltet für Kundencalls euer übliches Meeting-Tool. Es gibt keine Zeiterfassung, keine Dateiablage und keine Anbindung an Figma, Drive oder euer Projekttool, und Bilder lassen sich im Chat noch nicht teilen. TinyFloor ist der Ort, an dem euer Team täglich zusammenarbeitet; die Tools für Kunden bleiben, wo sie sind."
+      ]
+    }
   ]
 }

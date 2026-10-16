@@ -3092,5 +3092,125 @@
         "Het is een bord met stift en gum. Er is geen teksttool, geen vormen of plakbriefjes, geen afbeeldingen, geen ongedaan maken, geen sjablonen en geen export, en een kantoor heeft één bord. Voor workshops, retro's met plakbriefjes of gedetailleerde diagrammen kunnen Miro, FigJam of Excalidraw veel meer. Het bord van TinyFloor is voor de snelle schets terwijl je praat."
       ]
     }
+  ],
+  "agencies": [
+    {
+      "title": "Een dag bij een klein bureau, op de verdieping",
+      "body": [
+        "Bureaus draaien op korte rondjes: een schets, even kijken, een aanpassing, nog eens kijken. Remote wordt elk rondje al snel een ingeplande call. Op de verdieping zijn de meeste een loopje door de ruimte."
+      ],
+      "items": [
+        {
+          "title": "Prioriteiten",
+          "detail": "9:30",
+          "body": "Tien minuten in de vergaderruimte: wat vandaag af moet voor welke klant, en wie hulp nodig heeft."
+        },
+        {
+          "title": "Een snelle review",
+          "detail": "11:00",
+          "body": "Loop naar de art director, deel het ontwerp en krijg in vijf minuten feedback in plaats van in het slot van morgen."
+        },
+        {
+          "title": "Deadlinemodus",
+          "detail": "14:00",
+          "body": "Zet jezelf op bezet. Mensen zien dat je er bent en werkt, en weten dat ze moeten schrijven in plaats van langslopen."
+        },
+        {
+          "title": "Klantvoorbereiding",
+          "detail": "17:00",
+          "body": "Start een meeting met de naam van de klant, vraag de drie mensen op het account erbij en loop de presentatie van morgen door."
+        }
+      ]
+    },
+    {
+      "title": "Wat een bureau nodig heeft, en waar het staat",
+      "table": {
+        "head": [
+          "Behoefte",
+          "In TinyFloor",
+          "Elders houden"
+        ],
+        "rows": [
+          [
+            "Snelle creatieve reviews",
+            "Erheen lopen, scherm delen, doorpraten.",
+            "Je designbestanden, in Figma of waar ze staan."
+          ],
+          [
+            "Weten wie ruimte heeft",
+            "Statussen en bureaus laten zien wie met een deadline bezig is en wie kan helpen.",
+            "Je capaciteitsplanning voor de komende weken."
+          ],
+          [
+            "Klanten gescheiden houden",
+            "Een kanaal per klant of project.",
+            "Briefings en contracten, in je documenten."
+          ],
+          [
+            "Freelancers",
+            "Ze komen binnen via de uitnodigingslink en krijgen een bureau zolang het project loopt.",
+            "Contracten en facturen."
+          ],
+          [
+            "Klantgesprekken",
+            "—",
+            "De meetingtool die je klanten al gebruiken."
+          ],
+          [
+            "Ideeën schetsen",
+            "Het whiteboard aan de muur, voor de ruwe versie.",
+            "Echte borden in Miro of FigJam."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Freelancers en externen",
+      "items": [
+        {
+          "title": "Binnenkomen",
+          "body": "Stuur de uitnodigingslink van het kantoor. Ze loggen in met Google of e-mail, kiezen een bureau en staan binnen een minuut op de verdieping."
+        },
+        {
+          "title": "Plekken",
+          "body": "Een plek is een lid. Een freelancer neemt er een in zolang die in het kantoor zit, en geeft hem vrij bij vertrek."
+        },
+        {
+          "title": "Als het project klaar is",
+          "body": "Een eigenaar of admin haalt de persoon uit de lijst met mensen. Is de link verder gekomen dan bedoeld, reset hem dan en de oude werkt niet meer."
+        },
+        {
+          "title": "Rollen",
+          "body": "Eigenaar, admins en leden. Admins kunnen mensen beheren, dus de studiomanager hoeft niet de oprichter te zijn."
+        }
+      ]
+    },
+    {
+      "title": "Gewoontes die bij een studio passen",
+      "items": [
+        {
+          "title": "Vernoem meetings naar klanten",
+          "body": "Een meeting die \"Northwind review\" heet, vertelt de hele verdieping wat er gebeurt en wie vastzit."
+        },
+        {
+          "title": "Laat het werk zien, niet een samenvatting",
+          "body": "Deel het echte bestand in de call. Reviews gaan sneller als iedereen naar hetzelfde kijkt."
+        },
+        {
+          "title": "Bescherm deadlinedagen",
+          "body": "Spreek af dat bezet schrijven betekent, niet langslopen, zodat wie vandaag oplevert het af kan maken."
+        },
+        {
+          "title": "De stem van de klant in één kanaal",
+          "body": "Plak feedback uit klantmails in het kanaal van die klant, zodat niemand met een oude versie van de briefing werkt."
+        }
+      ]
+    },
+    {
+      "title": "Wat het niet doet",
+      "body": [
+        "Kantoren zijn voor leden die met een account binnenkomen, dus klanten lopen niet zomaar binnen; houd je gebruikelijke meetingtool voor klantgesprekken. Er is geen urenregistratie, geen bestandsopslag en geen koppeling met Figma, Drive of je projecttool, en afbeeldingen delen in de chat kan nog niet. TinyFloor is waar je team elke dag samenwerkt; de tools richting klanten blijven waar ze zijn."
+      ]
+    }
   ]
 }

@@ -3294,5 +3294,94 @@
         "TinyFloor er ikke en komplett arbeidsplasspakke. Det finnes ikke opptak, single sign-on, integrasjoner med verktøyene deres eller tilgang for kunder, og bilder kan ikke deles i chatten ennå. Trenger dere en enterpriseavtale, samsvarsrapporter eller SSO fra første dag, passer et større produkt bedre. Er dere et lite team som vil føle seg som ett igjen, er det laget for det."
       ]
     }
+  ],
+  "design": [
+    {
+      "title": "Tilbakemelding er flaskehalsen",
+      "body": [
+        "Designarbeid blir bedre hver gang noen ser på det sammen med deg. I et studio skjer det over skulderen, mange ganger om dagen. På avstand krymper det til en ukentlig crit og kommentarer i en fil. I etasjen er et ekstra par øyne igjen noen skritt unna."
+      ]
+    },
+    {
+      "title": "Typer tilbakemelding, og hvor hver passer",
+      "table": {
+        "head": [
+          "Type",
+          "Slik går det",
+          "I etasjen"
+        ],
+        "rows": [
+          [
+            "En rask titt",
+            "«Er dette lesbart?» To minutter, én annen designer.",
+            "Gå bort, del vinduet, spør."
+          ],
+          [
+            "Løse et problem i par",
+            "To personer jobber seg gjennom en vanskelig flyt sammen.",
+            "En samtale med delt skjerm i en time."
+          ],
+          [
+            "Den ukentlige critten",
+            "Teamet ser på pågående arbeid, ett stykke av gangen.",
+            "Et møte som heter Crit; hver designer deler etter tur."
+          ],
+          [
+            "Gjennomgang med produkt eller utvikling",
+            "Holde et design opp mot det mulige og det nødvendige.",
+            "Inviter utvikleren inn; gå ut igjen når det er avklart."
+          ],
+          [
+            "Skriftlige kommentarer",
+            "Detaljerte notater å komme tilbake til.",
+            "Ha dem i designverktøyet deres, på den rammen de gjelder."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "En god crit på avstand",
+      "items": [
+        {
+          "title": "Si hvilken tilbakemelding du vil ha",
+          "body": "«Jeg står fast på hierarkiet» gir bedre innspill enn «tanker?»."
+        },
+        {
+          "title": "Vis den ekte filen",
+          "body": "Del Figma eller prototypen i møtet, ikke et skjermbilde av forrige ukes versjon."
+        },
+        {
+          "title": "Ett stykke av gangen",
+          "body": "Den som snakker får det store kortet; den delte skjermen står ved siden av, så rommet følger én ting."
+        },
+        {
+          "title": "Skriv ned beslutningene",
+          "body": "Legg det som ble bestemt i teamchatten, så det ikke bare lever i noens hukommelse."
+        }
+      ]
+    },
+    {
+      "title": "Beskytt tiden til å skape",
+      "items": [
+        {
+          "title": "Opptatt betyr opptatt",
+          "body": "Sett opptatt-status for fordypningsarbeid. Kollegene ser at du er der, og skriver i stedet for å komme bort."
+        },
+        {
+          "title": "Ikke krav om kamera",
+          "body": "Samtaler starter med stemme. Slå på kameraet når det hjelper, ikke fordi verktøyet forventer det."
+        },
+        {
+          "title": "Skisser først",
+          "body": "Tavla på veggen er der for den grove versjonen, før noen åpner et designverktøy."
+        }
+      ]
+    },
+    {
+      "title": "Hva det ikke gjør",
+      "body": [
+        "TinyFloor er ikke koblet til Figma, Sketch eller Adobe og lagrer ikke filer. Delte skjermer sender bildet i en oppløsning innstilt på skarp tekst: fint for å gå gjennom et oppsett, men ingen erstatning for å åpne filen selv for å sjekke en farge eller en piksel. Critter tas ikke opp, og bilder kan ikke deles i chatten ennå. Behold designverktøyet for arbeidet og kommentarene; bruk TinyFloor for samtalene rundt."
+      ]
+    }
   ]
 }

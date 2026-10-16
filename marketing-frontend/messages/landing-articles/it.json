@@ -3294,5 +3294,94 @@
         "TinyFloor non è una suite completa per il lavoro. Non c'è registrazione, né single sign-on, né integrazioni con i vostri strumenti, né accesso per i clienti, e nella chat non si possono ancora condividere immagini. Se dal primo giorno vi servono un contratto enterprise, report di conformità o SSO, un prodotto più grande fa più al caso vostro. Se siete un team piccolo che vuole sentirsi di nuovo tale, è fatto per questo."
       ]
     }
+  ],
+  "design": [
+    {
+      "title": "Il collo di bottiglia è il feedback",
+      "body": [
+        "Il lavoro di design migliora ogni volta che qualcuno lo guarda con te. In uno studio succede da sopra la spalla, tante volte al giorno. Da remoto si riduce a una crit settimanale e a commenti in un file. Sul piano, un secondo paio d'occhi torna a essere a pochi passi."
+      ]
+    },
+    {
+      "title": "Tipi di feedback e dove si inserisce ciascuno",
+      "table": {
+        "head": [
+          "Tipo",
+          "Come si svolge",
+          "Sul piano"
+        ],
+        "rows": [
+          [
+            "Un'occhiata veloce",
+            "\"Si legge?\" Due minuti, un'altra persona del design.",
+            "Avvicinati, condividi la finestra, chiedi."
+          ],
+          [
+            "Lavorare in coppia su un problema",
+            "Due persone affrontano insieme un flusso complicato.",
+            "Una chiamata con schermo condiviso per un'ora."
+          ],
+          [
+            "La crit settimanale",
+            "Il team guarda il lavoro in corso, un pezzo alla volta.",
+            "Una riunione chiamata Crit; ogni designer condivide a turno."
+          ],
+          [
+            "Revisione con prodotto o sviluppo",
+            "Confrontare un design con ciò che è possibile e necessario.",
+            "Fai entrare lo sviluppatore; uscite quando è risolto."
+          ],
+          [
+            "Commenti scritti",
+            "Note dettagliate a cui tornare.",
+            "Tienili nel vostro strumento di design, sul frame a cui si riferiscono."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Una buona crit da remoto",
+      "items": [
+        {
+          "title": "Di' che feedback vuoi",
+          "body": "\"Sono bloccato sulla gerarchia\" porta note migliori di \"pareri?\"."
+        },
+        {
+          "title": "Mostra il file vero",
+          "body": "Condividi Figma o il prototipo in riunione, non uno screenshot della versione della settimana scorsa."
+        },
+        {
+          "title": "Un pezzo alla volta",
+          "body": "Chi parla prende la scheda grande; lo schermo condiviso è accanto, così la stanza segue una cosa sola."
+        },
+        {
+          "title": "Scrivi le decisioni",
+          "body": "Pubblica ciò che è stato deciso nella chat del team, così non resta solo nella memoria di qualcuno."
+        }
+      ]
+    },
+    {
+      "title": "Proteggere il tempo per creare",
+      "items": [
+        {
+          "title": "Occupato vuol dire occupato",
+          "body": "Imposta uno stato occupato per il lavoro concentrato. Il team vede che ci sei e scrive invece di avvicinarsi."
+        },
+        {
+          "title": "Nessun obbligo di videocamera",
+          "body": "Le chiamate partono con la voce. Accendi la videocamera quando serve, non perché lo strumento se lo aspetta."
+        },
+        {
+          "title": "Prima lo schizzo",
+          "body": "La lavagna sul muro è lì per la versione grezza, prima che qualcuno apra uno strumento di design."
+        }
+      ]
+    },
+    {
+      "title": "Cosa non fa",
+      "body": [
+        "TinyFloor non si collega a Figma, Sketch o Adobe, e non archivia file. Gli schermi condivisi trasmettono l'immagine a una risoluzione pensata per un testo nitido: va bene per rivedere un layout, ma non sostituisce aprire il file per controllare un colore o un pixel. Le crit non vengono registrate e nella chat non si possono ancora condividere immagini. Tenete il vostro strumento di design per il lavoro e i commenti; usate TinyFloor per le conversazioni intorno."
+      ]
+    }
   ]
 }

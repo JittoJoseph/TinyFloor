@@ -3294,5 +3294,94 @@
         "TinyFloor isn't a full workplace suite. There's no recording, no single sign-on, no integrations with your tools and no client access, and images can't be shared in the chat yet. If you need an enterprise contract, compliance reports or SSO from day one, a bigger product will suit you better. If you're a small team that wants to feel like one again, it's built for that."
       ]
     }
+  ],
+  "design": [
+    {
+      "title": "Feedback is the bottleneck",
+      "body": [
+        "Design work gets better each time someone looks at it with you. In a studio that happens over a shoulder, many times a day. Remote, it shrinks to a weekly crit and comments left in a file. On the floor, a second pair of eyes is a short walk away again."
+      ]
+    },
+    {
+      "title": "Kinds of feedback, and where each one fits",
+      "table": {
+        "head": [
+          "Kind",
+          "How it goes",
+          "On the floor"
+        ],
+        "rows": [
+          [
+            "A quick look",
+            "\"Does this read?\" Two minutes, one other designer.",
+            "Walk over, share the window, ask."
+          ],
+          [
+            "Pairing on a problem",
+            "Two people working through a tricky flow together.",
+            "A call with a shared screen for an hour."
+          ],
+          [
+            "The weekly crit",
+            "The team looks at work in progress, one piece at a time.",
+            "A meeting named Crit; each designer shares in turn."
+          ],
+          [
+            "Review with product or engineering",
+            "Checking a design against what's possible and what's needed.",
+            "Ask the engineer in; walk back out when it's settled."
+          ],
+          [
+            "Written comments",
+            "Detailed notes to come back to.",
+            "Keep these in your design tool, on the frame they're about."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Running a good remote crit",
+      "items": [
+        {
+          "title": "Say what kind of feedback you want",
+          "body": "\"I'm stuck on the hierarchy\" gets better notes than \"thoughts?\"."
+        },
+        {
+          "title": "Show the real file",
+          "body": "Share Figma or your prototype in the meeting, not a screenshot of last week's version."
+        },
+        {
+          "title": "One piece at a time",
+          "body": "Whoever is talking takes the big card; the shared screen sits beside them, so the room follows one thing."
+        },
+        {
+          "title": "Write the decisions down",
+          "body": "Post what was decided in the team chat, so the notes don't live only in someone's memory."
+        }
+      ]
+    },
+    {
+      "title": "Protecting time to make things",
+      "items": [
+        {
+          "title": "Busy means busy",
+          "body": "Set a busy status for deep work. Teammates can see you're in, and know to write instead of walking over."
+        },
+        {
+          "title": "No camera required",
+          "body": "Calls start with voice. Turn the camera on when it helps, not because the tool expects it."
+        },
+        {
+          "title": "Sketch first",
+          "body": "The whiteboard on the wall is there for the rough version, before anyone opens a design tool."
+        }
+      ]
+    },
+    {
+      "title": "What it doesn't do",
+      "body": [
+        "TinyFloor doesn't connect to Figma, Sketch or Adobe, and it doesn't store files. Shared screens carry the picture at a resolution tuned for sharp text, which is fine for reviewing a layout but not a substitute for opening the file yourself to check a colour or a pixel. There's no recording of crits and no image sharing in the chat yet. Keep your design tool for the work and its comments; use TinyFloor for the conversations around it."
+      ]
+    }
   ]
 }

@@ -3294,5 +3294,94 @@
         "TinyFloor no es una suite completa para el trabajo. No hay grabación, ni inicio de sesión único, ni integraciones con tus herramientas, ni acceso para clientes, y todavía no se pueden compartir imágenes en el chat. Si desde el primer día necesitas un contrato empresarial, informes de cumplimiento o SSO, te irá mejor un producto más grande. Si sois un equipo pequeño que quiere volver a sentirse como tal, está hecho para eso."
       ]
     }
+  ],
+  "design": [
+    {
+      "title": "El cuello de botella es el feedback",
+      "body": [
+        "El trabajo de diseño mejora cada vez que alguien lo mira contigo. En un estudio eso pasa por encima del hombro, muchas veces al día. En remoto se reduce a una crítica semanal y comentarios en un archivo. En la planta, otro par de ojos vuelve a estar a unos pasos."
+      ]
+    },
+    {
+      "title": "Tipos de feedback y dónde encaja cada uno",
+      "table": {
+        "head": [
+          "Tipo",
+          "Cómo va",
+          "En la planta"
+        ],
+        "rows": [
+          [
+            "Un vistazo rápido",
+            "«¿Se lee bien?» Dos minutos, otra persona de diseño.",
+            "Acercarse, compartir la ventana, preguntar."
+          ],
+          [
+            "Resolver algo en pareja",
+            "Dos personas trabajan juntas un flujo complicado.",
+            "Una llamada con pantalla compartida durante una hora."
+          ],
+          [
+            "La crítica semanal",
+            "El equipo mira el trabajo en curso, una pieza cada vez.",
+            "Una reunión llamada Crítica; cada diseñador comparte por turnos."
+          ],
+          [
+            "Revisión con producto o ingeniería",
+            "Contrastar un diseño con lo posible y lo necesario.",
+            "Invita al ingeniero; sal cuando esté resuelto."
+          ],
+          [
+            "Comentarios por escrito",
+            "Notas detalladas para volver a ellas.",
+            "Déjalas en tu herramienta de diseño, en el frame al que se refieren."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Una buena crítica en remoto",
+      "items": [
+        {
+          "title": "Di qué feedback quieres",
+          "body": "«Me he atascado con la jerarquía» da mejores notas que «¿opiniones?»."
+        },
+        {
+          "title": "Enseña el archivo real",
+          "body": "Comparte Figma o tu prototipo en la reunión, no una captura de la versión de la semana pasada."
+        },
+        {
+          "title": "Una pieza cada vez",
+          "body": "Quien habla ocupa la tarjeta grande; la pantalla compartida está al lado, así la sala sigue una sola cosa."
+        },
+        {
+          "title": "Apunta las decisiones",
+          "body": "Publica lo decidido en el chat del equipo, para que no viva solo en la memoria de alguien."
+        }
+      ]
+    },
+    {
+      "title": "Proteger el tiempo para crear",
+      "items": [
+        {
+          "title": "Ocupado es ocupado",
+          "body": "Pon estado de ocupado para el trabajo profundo. El equipo ve que estás y escribe en vez de acercarse."
+        },
+        {
+          "title": "Sin cámara obligatoria",
+          "body": "Las llamadas empiezan con voz. Enciende la cámara cuando ayude, no porque la herramienta lo espere."
+        },
+        {
+          "title": "Primero, bocetar",
+          "body": "La pizarra de la pared está para la versión en sucio, antes de que nadie abra una herramienta de diseño."
+        }
+      ]
+    },
+    {
+      "title": "Lo que no hace",
+      "body": [
+        "TinyFloor no se conecta a Figma, Sketch ni Adobe, y no guarda archivos. Las pantallas compartidas transmiten la imagen con una resolución pensada para un texto nítido: bien para revisar una maquetación, pero no sustituye abrir el archivo tú mismo para comprobar un color o un píxel. Las críticas no se graban y todavía no se pueden compartir imágenes en el chat. Mantén tu herramienta de diseño para el trabajo y sus comentarios; usa TinyFloor para las conversaciones alrededor."
+      ]
+    }
   ]
 }

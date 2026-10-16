@@ -3294,5 +3294,94 @@
         "TinyFloor ei ole täydellinen työpaikkapaketti. Siinä ei ole tallennusta, kertakirjautumista, integraatioita työkaluihinne eikä pääsyä asiakkaille, eikä kuvia voi vielä jakaa chatissa. Jos tarvitsette ensimmäisestä päivästä yrityssopimuksen, vaatimustenmukaisuusraportit tai SSO:n, isompi tuote sopii paremmin. Jos olette pieni tiimi, joka haluaa taas tuntea olevansa sellainen, se on tehty juuri siihen."
       ]
     }
+  ],
+  "design": [
+    {
+      "title": "Palaute on pullonkaula",
+      "body": [
+        "Suunnittelutyö paranee joka kerta, kun joku katsoo sitä kanssasi. Studiossa se tapahtuu olan yli monta kertaa päivässä. Etänä se kutistuu viikoittaiseksi critiksi ja tiedoston kommenteiksi. Kerroksessa toinen silmäpari on taas muutaman askeleen päässä."
+      ]
+    },
+    {
+      "title": "Palautteen lajit ja mihin kukin sopii",
+      "table": {
+        "head": [
+          "Laji",
+          "Miten se menee",
+          "Kerroksessa"
+        ],
+        "rows": [
+          [
+            "Nopea vilkaisu",
+            "”Onko tämä luettava?” Kaksi minuuttia, yksi toinen suunnittelija.",
+            "Mene luo, jaa ikkuna, kysy."
+          ],
+          [
+            "Ongelman ratkaisu parina",
+            "Kaksi ihmistä käy yhdessä läpi hankalan polun.",
+            "Puhelu jaetulla näytöllä tunnin ajan."
+          ],
+          [
+            "Viikoittainen crit",
+            "Tiimi katsoo keskeneräistä työtä pala kerrallaan.",
+            "Kokous nimeltä Crit; jokainen suunnittelija jakaa vuorollaan."
+          ],
+          [
+            "Katselmointi tuotteen tai kehityksen kanssa",
+            "Suunnitelman vertaaminen siihen, mikä on mahdollista ja tarpeen.",
+            "Pyydä kehittäjä mukaan; poistukaa, kun asia on selvä."
+          ],
+          [
+            "Kirjalliset kommentit",
+            "Yksityiskohtaiset muistiinpanot, joihin palata.",
+            "Pitäkää ne suunnittelutyökalussa sen kehyksen kohdalla, jota ne koskevat."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Hyvä etäcrit",
+      "items": [
+        {
+          "title": "Kerro, millaista palautetta haluat",
+          "body": "”Jumitan hierarkiassa” tuo parempia huomioita kuin ”mielipiteitä?”."
+        },
+        {
+          "title": "Näytä oikea tiedosto",
+          "body": "Jaa Figma tai prototyyppi kokouksessa, älä kuvakaappausta viime viikon versiosta."
+        },
+        {
+          "title": "Yksi pala kerrallaan",
+          "body": "Puhuja saa ison kortin; jaettu näyttö on vieressä, joten huone seuraa yhtä asiaa."
+        },
+        {
+          "title": "Kirjaa päätökset",
+          "body": "Kirjoita päätökset tiimin chattiin, etteivät ne jää vain jonkun muistiin."
+        }
+      ]
+    },
+    {
+      "title": "Suojaa aika tekemiselle",
+      "items": [
+        {
+          "title": "Varattu tarkoittaa varattua",
+          "body": "Laita varattu-tila syventymistä varten. Kollegat näkevät, että olet paikalla, ja kirjoittavat sen sijaan, että tulisivat luo."
+        },
+        {
+          "title": "Ei kamerapakkoa",
+          "body": "Puhelut alkavat äänellä. Laita kamera päälle, kun siitä on apua, ei siksi, että työkalu odottaa sitä."
+        },
+        {
+          "title": "Luonnostele ensin",
+          "body": "Seinän taulu on karkeaa versiota varten, ennen kuin kukaan avaa suunnittelutyökalua."
+        }
+      ]
+    },
+    {
+      "title": "Mitä se ei tee",
+      "body": [
+        "TinyFloor ei ole yhteydessä Figmaan, Sketchiin tai Adobeen, eikä se tallenna tiedostoja. Jaettu näyttö välittää kuvan resoluutiolla, joka on viritetty terävälle tekstille: hyvä asettelun läpikäyntiin, mutta ei korvaa tiedoston avaamista itse värin tai pikselin tarkistamiseksi. Critejä ei tallenneta, eikä kuvia voi vielä jakaa chatissa. Pitäkää suunnittelutyökalu työtä ja sen kommentteja varten; käyttäkää TinyFlooria sen ympärillä käytäviin keskusteluihin."
+      ]
+    }
   ]
 }

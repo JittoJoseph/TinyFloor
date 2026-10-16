@@ -3294,5 +3294,94 @@
         "O TinyFloor não é uma suíte completa de trabalho. Não há gravação, login único, integrações com suas ferramentas nem acesso para clientes, e ainda não dá para compartilhar imagens no chat. Se vocês precisam de contrato corporativo, relatórios de conformidade ou SSO desde o primeiro dia, um produto maior vai servir melhor. Se vocês são uma equipe pequena que quer voltar a se sentir como uma, ele foi feito para isso."
       ]
     }
+  ],
+  "design": [
+    {
+      "title": "O gargalo é o feedback",
+      "body": [
+        "Um trabalho de design melhora toda vez que alguém olha junto com você. Num estúdio, isso acontece por cima do ombro, muitas vezes por dia. No remoto, encolhe para uma crítica semanal e comentários num arquivo. No andar, um segundo par de olhos volta a estar a poucos passos."
+      ]
+    },
+    {
+      "title": "Tipos de feedback e onde cada um se encaixa",
+      "table": {
+        "head": [
+          "Tipo",
+          "Como funciona",
+          "No andar"
+        ],
+        "rows": [
+          [
+            "Uma olhada rápida",
+            "\"Isso está legível?\" Dois minutos, outra pessoa de design.",
+            "Ir até lá, compartilhar a janela, perguntar."
+          ],
+          [
+            "Resolver um problema em dupla",
+            "Duas pessoas trabalhando juntas num fluxo complicado.",
+            "Uma chamada com tela compartilhada por uma hora."
+          ],
+          [
+            "A crítica semanal",
+            "A equipe olha o trabalho em andamento, uma peça por vez.",
+            "Uma reunião chamada Crítica; cada designer compartilha na sua vez."
+          ],
+          [
+            "Revisão com produto ou engenharia",
+            "Conferir um design com o que é possível e necessário.",
+            "Chame a pessoa de engenharia; saiam quando estiver resolvido."
+          ],
+          [
+            "Comentários por escrito",
+            "Notas detalhadas para voltar depois.",
+            "Deixe na sua ferramenta de design, no frame a que se referem."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Fazendo uma boa crítica remota",
+      "items": [
+        {
+          "title": "Diga que feedback você quer",
+          "body": "\"Travei na hierarquia\" rende comentários melhores que \"opiniões?\"."
+        },
+        {
+          "title": "Mostre o arquivo de verdade",
+          "body": "Compartilhe o Figma ou o protótipo na reunião, não uma captura da versão da semana passada."
+        },
+        {
+          "title": "Uma peça por vez",
+          "body": "Quem fala fica no card grande; a tela compartilhada fica ao lado, então a sala acompanha uma coisa só."
+        },
+        {
+          "title": "Registre as decisões",
+          "body": "Poste o que foi decidido no chat da equipe, para não ficar só na memória de alguém."
+        }
+      ]
+    },
+    {
+      "title": "Protegendo o tempo de criar",
+      "items": [
+        {
+          "title": "Ocupado é ocupado",
+          "body": "Coloque status ocupado para o trabalho profundo. A equipe vê que você está lá e escreve em vez de aparecer."
+        },
+        {
+          "title": "Sem câmera obrigatória",
+          "body": "As chamadas começam com voz. Ligue a câmera quando ajudar, não porque a ferramenta espera."
+        },
+        {
+          "title": "Rascunhe antes",
+          "body": "O quadro branco na parede existe para a versão bruta, antes de alguém abrir uma ferramenta de design."
+        }
+      ]
+    },
+    {
+      "title": "O que ele não faz",
+      "body": [
+        "O TinyFloor não se conecta ao Figma, ao Sketch nem à Adobe, e não guarda arquivos. Telas compartilhadas levam a imagem numa resolução pensada para texto nítido: ótimo para revisar um layout, mas não substitui abrir o arquivo você mesmo para conferir uma cor ou um pixel. As críticas não são gravadas e ainda não dá para compartilhar imagens no chat. Mantenha sua ferramenta de design para o trabalho e os comentários; use o TinyFloor para as conversas em volta."
+      ]
+    }
   ]
 }

@@ -3294,5 +3294,94 @@
         "TinyFloor ist keine komplette Arbeitsplatz-Suite. Es gibt keine Aufnahmen, kein Single Sign-on, keine Integrationen mit euren Tools und keinen Zugang für Kunden, und Bilder lassen sich im Chat noch nicht teilen. Wenn ihr ab dem ersten Tag einen Enterprise-Vertrag, Compliance-Berichte oder SSO braucht, passt ein größeres Produkt besser. Wenn ihr ein kleines Team seid, das sich wieder wie eines anfühlen will, ist es genau dafür gebaut."
       ]
     }
+  ],
+  "design": [
+    {
+      "title": "Feedback ist der Engpass",
+      "body": [
+        "Designarbeit wird jedes Mal besser, wenn jemand mit dir draufschaut. Im Studio passiert das über die Schulter, viele Male am Tag. Remote schrumpft es auf eine wöchentliche Crit und Kommentare in einer Datei. Auf der Fläche ist ein zweites Paar Augen wieder ein paar Schritte entfernt."
+      ]
+    },
+    {
+      "title": "Arten von Feedback und wo jede hinpasst",
+      "table": {
+        "head": [
+          "Art",
+          "So läuft es",
+          "Auf der Fläche"
+        ],
+        "rows": [
+          [
+            "Ein kurzer Blick",
+            "„Liest sich das?“ Zwei Minuten, eine andere Designerin.",
+            "Hingehen, Fenster teilen, fragen."
+          ],
+          [
+            "Gemeinsam an einem Problem",
+            "Zwei Leute arbeiten zusammen einen kniffligen Flow durch.",
+            "Ein Call mit geteiltem Bildschirm für eine Stunde."
+          ],
+          [
+            "Die wöchentliche Crit",
+            "Das Team schaut sich laufende Arbeit an, ein Stück nach dem anderen.",
+            "Ein Meeting namens Crit; alle teilen nacheinander."
+          ],
+          [
+            "Review mit Produkt oder Entwicklung",
+            "Ein Design gegen das Machbare und das Nötige prüfen.",
+            "Hol die Entwicklerin dazu; geht wieder raus, wenn es geklärt ist."
+          ],
+          [
+            "Schriftliche Kommentare",
+            "Ausführliche Notizen zum Nachlesen.",
+            "Behaltet sie in eurem Designtool, am Frame, um den es geht."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Eine gute Remote-Crit",
+      "items": [
+        {
+          "title": "Sag, welches Feedback du willst",
+          "body": "„Ich hänge bei der Hierarchie“ bringt bessere Hinweise als „Meinungen?“."
+        },
+        {
+          "title": "Die echte Datei zeigen",
+          "body": "Teile Figma oder deinen Prototyp im Meeting, nicht einen Screenshot der Version von letzter Woche."
+        },
+        {
+          "title": "Ein Stück nach dem anderen",
+          "body": "Wer spricht, bekommt die große Karte; der geteilte Bildschirm steht daneben, so folgt der Raum einer Sache."
+        },
+        {
+          "title": "Entscheidungen aufschreiben",
+          "body": "Schreib, was entschieden wurde, in den Team-Chat, damit es nicht nur in jemandes Kopf lebt."
+        }
+      ]
+    },
+    {
+      "title": "Zeit zum Gestalten schützen",
+      "items": [
+        {
+          "title": "Beschäftigt heißt beschäftigt",
+          "body": "Setz für konzentrierte Arbeit einen Beschäftigt-Status. Das Team sieht, dass du da bist, und schreibt lieber, statt hinzukommen."
+        },
+        {
+          "title": "Keine Kamerapflicht",
+          "body": "Calls beginnen mit Stimme. Schalte die Kamera ein, wenn sie hilft, nicht weil das Tool es erwartet."
+        },
+        {
+          "title": "Erst skizzieren",
+          "body": "Das Whiteboard an der Wand ist für die grobe Version da, bevor jemand ein Designtool öffnet."
+        }
+      ]
+    },
+    {
+      "title": "Was es nicht kann",
+      "body": [
+        "TinyFloor ist nicht mit Figma, Sketch oder Adobe verbunden und speichert keine Dateien. Geteilte Bildschirme übertragen das Bild in einer Auflösung, die auf scharfen Text ausgelegt ist: gut, um ein Layout zu besprechen, aber kein Ersatz dafür, die Datei selbst zu öffnen, um eine Farbe oder ein Pixel zu prüfen. Crits werden nicht aufgenommen, und Bilder lassen sich im Chat noch nicht teilen. Behaltet euer Designtool für die Arbeit und ihre Kommentare; nutzt TinyFloor für die Gespräche darum herum."
+      ]
+    }
   ]
 }

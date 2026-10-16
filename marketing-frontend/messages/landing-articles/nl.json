@@ -3294,5 +3294,94 @@
         "TinyFloor is geen complete werkplek-suite. Er zijn geen opnames, geen single sign-on, geen integraties met je tools en geen toegang voor klanten, en afbeeldingen delen in de chat kan nog niet. Heb je vanaf dag één een enterprisecontract, compliancerapporten of SSO nodig, dan past een groter product beter. Ben je een klein team dat zich weer zo wil voelen, dan is het daarvoor gemaakt."
       ]
     }
+  ],
+  "design": [
+    {
+      "title": "Feedback is de bottleneck",
+      "body": [
+        "Designwerk wordt elke keer beter als iemand er met je naar kijkt. In een studio gebeurt dat over je schouder, vele keren per dag. Remote krimpt het tot een wekelijkse crit en opmerkingen in een bestand. Op de verdieping is een tweede paar ogen weer een paar stappen verderop."
+      ]
+    },
+    {
+      "title": "Soorten feedback, en waar elk past",
+      "table": {
+        "head": [
+          "Soort",
+          "Hoe het gaat",
+          "Op de verdieping"
+        ],
+        "rows": [
+          [
+            "Even kijken",
+            "\"Leest dit goed?\" Twee minuten, één andere designer.",
+            "Erheen lopen, venster delen, vragen."
+          ],
+          [
+            "Samen een probleem oplossen",
+            "Twee mensen werken samen een lastige flow door.",
+            "Een gesprek met gedeeld scherm, een uur lang."
+          ],
+          [
+            "De wekelijkse crit",
+            "Het team bekijkt werk in uitvoering, stuk voor stuk.",
+            "Een meeting die Crit heet; elke designer deelt om de beurt."
+          ],
+          [
+            "Review met product of development",
+            "Een ontwerp toetsen aan wat kan en wat nodig is.",
+            "Vraag de developer erbij; loop weer weg als het helder is."
+          ],
+          [
+            "Geschreven opmerkingen",
+            "Uitgebreide notities om op terug te komen.",
+            "Houd ze in je designtool, bij het frame waar ze over gaan."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Een goede remote crit",
+      "items": [
+        {
+          "title": "Zeg welke feedback je wilt",
+          "body": "\"Ik loop vast op de hiërarchie\" levert betere notities op dan \"meningen?\"."
+        },
+        {
+          "title": "Laat het echte bestand zien",
+          "body": "Deel Figma of je prototype in de meeting, niet een screenshot van de versie van vorige week."
+        },
+        {
+          "title": "Eén stuk tegelijk",
+          "body": "Wie praat krijgt de grote kaart; het gedeelde scherm staat ernaast, dus de ruimte volgt één ding."
+        },
+        {
+          "title": "Schrijf de besluiten op",
+          "body": "Zet wat besloten is in de teamchat, zodat het niet alleen in iemands hoofd zit."
+        }
+      ]
+    },
+    {
+      "title": "Tijd om te maken beschermen",
+      "items": [
+        {
+          "title": "Bezet is bezet",
+          "body": "Zet een bezet-status voor diep werk. Collega's zien dat je er bent en schrijven liever dan langs te komen."
+        },
+        {
+          "title": "Geen camera verplicht",
+          "body": "Gesprekken beginnen met stem. Zet de camera aan als het helpt, niet omdat de tool het verwacht."
+        },
+        {
+          "title": "Eerst schetsen",
+          "body": "Het whiteboard aan de muur is er voor de ruwe versie, voordat iemand een designtool opent."
+        }
+      ]
+    },
+    {
+      "title": "Wat het niet doet",
+      "body": [
+        "TinyFloor is niet gekoppeld aan Figma, Sketch of Adobe, en slaat geen bestanden op. Gedeelde schermen sturen het beeld in een resolutie die is afgestemd op scherpe tekst: prima om een layout door te nemen, maar geen vervanging voor het zelf openen van het bestand om een kleur of pixel te checken. Crits worden niet opgenomen en afbeeldingen delen in de chat kan nog niet. Houd je designtool voor het werk en de opmerkingen; gebruik TinyFloor voor de gesprekken eromheen."
+      ]
+    }
   ]
 }

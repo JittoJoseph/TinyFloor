@@ -51,7 +51,7 @@
           ],
           [
             "Roam",
-            "Een prijs per actief lid",
+            "$ 156",
             "Geen, proefperiode van 14 dagen",
             "Teams die AI-tools bij hun kantoor willen"
           ],
@@ -1016,6 +1016,181 @@
       "title": "Hoe we vergeleken",
       "body": [
         "De prijzen, grenzen en functies van Teamflow komen van de prijspagina, gelezen in oktober 2026, in Amerikaanse dollars exclusief belasting. Wat daar niet stond, lieten we weg in plaats van te gokken. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van Teamflow voordat je koopt."
+      ]
+    }
+  ],
+  "roam": [
+    {
+      "title": "Roam en TinyFloor in één oogopslag",
+      "body": [
+        "Roam verkoopt één bundel van negen producten rond een virtueel kantoor; TinyFloor is alleen het kantoor, in de browser, met een prijs voor een klein team."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Roam",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Een team van 8, per maand",
+            "$ 156 als alle 8 actief zijn",
+            "$ 29 voor het hele team"
+          ],
+          [
+            "Gratis abonnement",
+            "Geen; 14 dagen proef voor elk nieuw lid",
+            "Tot 3 mensen, alle functies"
+          ],
+          [
+            "Hoe het geprijsd is",
+            "Per actief lid, maandelijks",
+            "Eén prijs voor het kantoor, maandelijks"
+          ],
+          [
+            "Gasten",
+            "Gratis",
+            "Iedereen komt binnen met een gratis account"
+          ],
+          [
+            "Waar het draait",
+            "Desktop- en mobiele apps",
+            "De browser, op desktop en mobiel"
+          ],
+          [
+            "AI",
+            "Vergadernotities, een assistent en een AI-inbox",
+            "Geen"
+          ],
+          [
+            "Evenementen en opnames",
+            "Webinars, een zaal voor all-hands, schermopnames",
+            "Nee"
+          ]
+        ],
+        "note": "Gegevens over Roam van de prijspagina in oktober 2026, in Amerikaanse dollars exclusief belasting."
+      }
+    },
+    {
+      "title": "Wat Roam kost per teamgrootte",
+      "body": [
+        "Roam rekent $ 19,50 per maand voor elk lid dat Roam die maand gebruikt, zonder jaarabonnement en zonder kortingen. Leden die Roam in een maand niet openen, tellen niet mee."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Roam, per maand",
+          "Roam, per jaar",
+          "TinyFloor, per maand"
+        ],
+        "rows": [
+          [
+            "4 mensen",
+            "$ 78",
+            "$ 936",
+            "$ 29"
+          ],
+          [
+            "8 mensen",
+            "$ 156",
+            "$ 1.872",
+            "$ 29"
+          ],
+          [
+            "10 mensen",
+            "$ 195",
+            "$ 2.340",
+            "$ 29"
+          ],
+          [
+            "12 mensen",
+            "$ 234",
+            "$ 2.808",
+            "$ 29"
+          ]
+        ],
+        "note": "Roam voor $ 19,50 per actief lid per maand, iedereen actief (prijspagina van Roam, oktober 2026; voor 2027 heeft Roam $ 20,88 aangekondigd). TinyFloor Pro kost $ 29 per maand; teams tot 3 blijven gratis."
+      }
+    },
+    {
+      "title": "Waarom kleine teams een alternatief voor Roam zoeken",
+      "items": [
+        {
+          "title": "Geen gratis abonnement",
+          "body": "Elk lid krijgt 14 dagen proef en telt daarna mee op de rekening. Er is geen abonnement waarop een klein team gratis kan blijven."
+        },
+        {
+          "title": "Een bundel die je misschien niet gebruikt",
+          "body": "AI-notities, webinars, planning en opnames zijn handig als ze tools vervangen waarvoor je betaalt. Heb je die al, dan blijft een groot deel van de bundel ongebruikt."
+        },
+        {
+          "title": "Een app om te installeren",
+          "body": "Roam is een download voor desktop en mobiel. Een kantoor in de browser opent op elke computer zonder installatie."
+        },
+        {
+          "title": "De prijs groeit met elke persoon",
+          "body": "Elk actief lid kost $ 19,50 per maand extra, dus een team van 12 betaalt $ 234 terwijl TinyFloor op $ 29 blijft."
+        }
+      ]
+    },
+    {
+      "title": "Wat Roam beter doet",
+      "items": [
+        {
+          "title": "Negen producten in één",
+          "body": "Spontane vergaderingen, een zaal voor all-hands, een lobby om af te spreken, webinars, schermopnames en een AI-assistent, zodat een team meerdere andere abonnementen kan opzeggen."
+        },
+        {
+          "title": "AI-notities zonder bot",
+          "body": "Roam schrijft zelf het verslag van de vergadering, zonder dat er een notulenbot aan het gesprek deelneemt. TinyFloor heeft geen AI-functies."
+        },
+        {
+          "title": "Gratis gasten, en alleen actieve leden betalen",
+          "body": "Klanten en partners komen gratis binnen, en wie Roam een maand niet gebruikt, betaalt niet."
+        },
+        {
+          "title": "Gemaakt voor grotere bedrijven",
+          "body": "SOC 2 Type II, AVG-naleving en prijswijzigingen die twee jaar vooruit worden gepubliceerd, wat inkoop en beveiligingsreviews makkelijker maakt."
+        }
+      ]
+    },
+    {
+      "title": "Wat past bij je team",
+      "items": [
+        {
+          "title": "TinyFloor, alleen voor het kantoor",
+          "body": "Voor een team van 4 tot 15 dat wil zien wie er is, wil praten zonder afspraak en wil vergaderen in een ruimte, in de browser, voor één prijs, en zijn andere tools al heeft."
+        },
+        {
+          "title": "Roam, voor een alles-in-één werkplek",
+          "body": "Als je AI-notities, webinars, planning en opnames op dezelfde plek als je kantoor wilt, en de bundel abonnementen zou vervangen waarvoor je nu betaalt."
+        }
+      ]
+    },
+    {
+      "title": "Een team overzetten vanaf Roam",
+      "items": [
+        {
+          "title": "Maak een kantoor",
+          "detail": "Twee minuten",
+          "body": "Noem het naar het team. De vloer, de bureaus en de vergaderruimte staan klaar."
+        },
+        {
+          "title": "Deel één uitnodigingslink",
+          "detail": "In de teamchat",
+          "body": "Collega's loggen in met Google of e-mail en lopen binnen vanuit de browser. Niets te downloaden."
+        },
+        {
+          "title": "Werk er een gewone week",
+          "detail": "De standup in de vergaderruimte",
+          "body": "Houd Roam tot de week voorbij is en kijk dan welke het team echt opende."
+        }
+      ]
+    },
+    {
+      "title": "Hoe we vergeleken",
+      "body": [
+        "De prijzen en functies van Roam komen van de prijspagina, gelezen in oktober 2026, in Amerikaanse dollars exclusief belasting; Roam toont ook prijzen in sommige lokale valuta, zoals roepies voor bedrijven in India. Wat daar niet stond, lieten we weg in plaats van te gokken. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van Roam voordat je koopt."
       ]
     }
   ]

@@ -585,11 +585,11 @@
       "roam": {
         "label": "Alternativa ao Roam",
         "meta": {
-          "title": "Alternativa ao Roam para equipes remotas pequenas",
-          "description": "O Roam é um app de desktop cobrado por membro ativo. O TinyFloor é um escritório virtual no navegador, grátis para 3 pessoas e US$ 29 por mês para toda a equipe."
+          "title": "Alternativa ao Roam: preços, o que o pacote inclui e um escritório mais simples",
+          "description": "O Roam custa US$ 19,50 por membro ativo por mês por um pacote de nove produtos num app de desktop, sem plano grátis. Quanto uma equipe pequena paga, o que o Roam faz melhor e o TinyFloor no navegador a US$ 29 para a equipe toda."
         },
         "title": "Uma <em>alternativa ao Roam</em> que abre no navegador.",
-        "subtitle": "O Roam junta um escritório virtual com ferramentas de IA e um app para computador, com preço por membro. O TinyFloor faz a parte do escritório de forma simples: chegar perto, se reunir e conversar, por um preço por equipe.",
+        "subtitle": "O Roam junta um escritório virtual com notas por IA, um assistente, webinars e mais num app de desktop, a US$ 19,50 por membro ativo por mês. O TinyFloor faz a parte do escritório de forma simples, no navegador: chegar perto, se reunir e conversar, por um preço por equipe.",
         "points": [
           {
             "title": "Só o escritório",
@@ -605,27 +605,31 @@
           }
         ],
         "them": {
-          "price": "Um preço mensal por membro ativo",
-          "freePlan": "Nenhum, só um teste de 14 dias",
-          "browser": "App para computador, para baixar",
+          "price": "US$ 19,50 por membro ativo por mês",
+          "freePlan": "Nenhum, 14 dias de teste para cada novo membro",
+          "browser": "Apps de desktop e celular para baixar",
           "screenShare": "Sim"
         },
         "faq": [
           {
-            "q": "Como o Roam cobra?",
-            "a": "O Roam cobra um preço mensal por membro ativo por todos os seus produtos, com teste grátis de 14 dias e sem contrato anual. O TinyFloor é grátis para até 3 pessoas e custa US$ 29 por mês para toda a equipe."
+            "q": "Quanto custa o Roam?",
+            "a": "O Roam custa US$ 19,50 por membro ativo por mês em 2026, cobrado mensalmente, pelos nove produtos; para 2027, o Roam anunciou US$ 20,88. Não há plano grátis, mas cada novo membro tem 14 dias de teste, e convidados são grátis. O TinyFloor é grátis para até 3 pessoas e custa US$ 29 por mês para a equipe toda."
+          },
+          {
+            "q": "Quanto custa o Roam para 10 pessoas?",
+            "a": "US$ 195 por mês se os 10 estiverem ativos, ou US$ 2.340 por ano. O TinyFloor custa US$ 29 por mês para a mesma equipe."
           },
           {
             "q": "O que o Roam tem que o TinyFloor não tem?",
-            "a": "O Roam traz notas de reunião com IA, um assistente de IA, webinars, agendamento e gravação de tela. O TinyFloor foca no escritório em si."
+            "a": "Notas de reunião por IA sem bot, um assistente e uma caixa de entrada com IA, webinars e eventos, agendamento, gravação de tela e apps de desktop e celular. O TinyFloor se concentra no escritório em si."
           },
           {
-            "q": "Convidados podem entrar num escritório TinyFloor?",
+            "q": "Convidados podem entrar num escritório do TinyFloor?",
             "a": "Os escritórios são só para membros: entra-se com o link de convite e uma conta grátis. Para dar uma olhada antes, qualquer pessoa pode experimentar o escritório de demonstração só com um nome."
           },
           {
             "q": "O TinyFloor funciona no celular?",
-            "a": "Sim. Ele roda nos navegadores de celular com um joystick na tela, sem nada para baixar."
+            "a": "Sim. Funciona no navegador do celular com um joystick na tela, sem nada para baixar."
           }
         ]
       },

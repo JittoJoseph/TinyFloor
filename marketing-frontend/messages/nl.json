@@ -585,11 +585,11 @@
       "roam": {
         "label": "Roam-alternatief",
         "meta": {
-          "title": "Roam-alternatief voor kleine remote teams",
-          "description": "Roam is een desktopapp met een prijs per actief lid. TinyFloor is een virtueel kantoor in de browser, gratis voor 3 mensen en $29 per maand voor het hele team."
+          "title": "Alternatief voor Roam: prijzen, wat de bundel bevat en een eenvoudiger kantoor",
+          "description": "Roam kost $ 19,50 per actief lid per maand voor een bundel van negen producten in een desktop-app, zonder gratis abonnement. Wat een klein team betaalt, wat Roam beter doet en TinyFloor in de browser voor $ 29 voor het hele team."
         },
         "title": "Een <em>Roam-alternatief</em> dat in de browser opent.",
-        "subtitle": "Roam bundelt een virtueel kantoor met AI-tools en een desktop-app, met een prijs per lid. TinyFloor doet het kantoorgedeelte eenvoudig: erheen lopen, vergaderen en chatten, voor één prijs per team.",
+        "subtitle": "Roam bundelt een virtueel kantoor met AI-notities, een assistent, webinars en meer in een desktop-app, voor $ 19,50 per actief lid per maand. TinyFloor doet het kantoorgedeelte eenvoudig, in de browser: naar iemand toe lopen, vergaderen en chatten, voor één prijs per team.",
         "points": [
           {
             "title": "Alleen het kantoor",
@@ -605,27 +605,31 @@
           }
         ],
         "them": {
-          "price": "Een maandprijs per actief lid",
-          "freePlan": "Geen, alleen een proefperiode van 14 dagen",
-          "browser": "Desktop-app om te downloaden",
+          "price": "$ 19,50 per actief lid per maand",
+          "freePlan": "Geen, 14 dagen proef voor elk nieuw lid",
+          "browser": "Desktop- en mobiele apps om te downloaden",
           "screenShare": "Ja"
         },
         "faq": [
           {
-            "q": "Hoe rekent Roam?",
-            "a": "Roam rekent één maandprijs per actief lid voor al zijn producten, met een gratis proefperiode van 14 dagen en zonder jaarcontract. TinyFloor is gratis voor maximaal 3 mensen en kost $29 per maand voor het hele team."
+            "q": "Wat kost Roam?",
+            "a": "Roam kost in 2026 $ 19,50 per actief lid per maand, maandelijks gefactureerd, voor alle negen producten; voor 2027 heeft Roam $ 20,88 aangekondigd. Er is geen gratis abonnement, maar elk nieuw lid krijgt 14 dagen proef, en gasten zijn gratis. TinyFloor is gratis voor maximaal 3 mensen en kost $ 29 per maand voor het hele team."
+          },
+          {
+            "q": "Wat kost Roam voor 10 mensen?",
+            "a": "$ 195 per maand als alle 10 actief zijn, of $ 2.340 per jaar. TinyFloor kost $ 29 per maand voor hetzelfde team."
           },
           {
             "q": "Wat heeft Roam dat TinyFloor niet heeft?",
-            "a": "Roam biedt AI-vergadernotities, een AI-assistent, webinars, planning en schermopnames. TinyFloor richt zich op het kantoor zelf."
+            "a": "AI-vergadernotities zonder bot, een AI-assistent en AI-inbox, webinars en evenementen, planning, schermopnames, en desktop- en mobiele apps. TinyFloor richt zich op het kantoor zelf."
           },
           {
-            "q": "Kunnen gasten bij een TinyFloor-kantoor?",
-            "a": "Kantoren zijn alleen voor leden: je komt binnen met de uitnodigingslink en een gratis account. Wil je eerst rondkijken, dan kan iedereen het demokantoor proberen met alleen een naam."
+            "q": "Kunnen gasten in een TinyFloor-kantoor?",
+            "a": "Kantoren zijn alleen voor leden: je komt binnen met de uitnodigingslink en een gratis account. Wie eerst wil rondkijken, kan het demokantoor proberen met alleen een naam."
           },
           {
             "q": "Werkt TinyFloor op een telefoon?",
-            "a": "Ja. Het draait in mobiele browsers met een joystick op het scherm, zonder iets te downloaden."
+            "a": "Ja. Het werkt in mobiele browsers met een joystick op het scherm, zonder iets te downloaden."
           }
         ]
       },

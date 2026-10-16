@@ -585,11 +585,11 @@
       "roam": {
         "label": "Roam alternative",
         "meta": {
-          "title": "Roam Alternative for Small Remote Teams",
-          "description": "Roam is a desktop app priced per active member. TinyFloor is a virtual office in the browser, free for 3 people and $29 a month for the whole team."
+          "title": "Roam Alternative: Pricing, What the Bundle Includes and a Simpler Office",
+          "description": "Roam is $19.50 per active member a month for a bundle of nine products in a desktop app, with no free plan. What a small team pays, what Roam does better, and TinyFloor in the browser at $29 for the whole team."
         },
         "title": "A <em>Roam alternative</em> that opens in the browser.",
-        "subtitle": "Roam bundles a virtual office with AI tools and a desktop app, priced per member. TinyFloor does the office part simply: walk up, meet and chat, for one price per team.",
+        "subtitle": "Roam bundles a virtual office with AI notes, an assistant, webinars and more in a desktop app, at $19.50 per active member a month. TinyFloor does the office part simply, in the browser: walk up, meet and chat, for one price per team.",
         "points": [
           {
             "title": "Just the office",
@@ -605,19 +605,23 @@
           }
         ],
         "them": {
-          "price": "A monthly price per active member",
-          "freePlan": "None, only a 14-day trial",
-          "browser": "Desktop app to download",
+          "price": "$19.50 per active member a month",
+          "freePlan": "None, a 14-day trial for each new member",
+          "browser": "Desktop and mobile apps to download",
           "screenShare": "Yes"
         },
         "faq": [
           {
-            "q": "How is Roam priced?",
-            "a": "Roam charges one monthly price per active member for all its products, with a 14-day free trial and no annual contract. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+            "q": "How much does Roam cost?",
+            "a": "Roam is $19.50 per active member a month in 2026, billed monthly, for all nine of its products; it has published $20.88 for 2027. There's no free plan, but each new member gets a 14-day trial, and guests are free. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+          },
+          {
+            "q": "How much does Roam cost for 10 people?",
+            "a": "$195 a month if all 10 are active, or $2,340 a year. TinyFloor is $29 a month for the same team."
           },
           {
             "q": "What does Roam have that TinyFloor does not?",
-            "a": "Roam adds AI meeting notes, an AI assistant, webinars, scheduling and screen recording. TinyFloor focuses on the office itself."
+            "a": "AI meeting notes without a bot, an AI assistant and inbox, webinars and events, scheduling, screen recording, and desktop and mobile apps. TinyFloor focuses on the office itself."
           },
           {
             "q": "Can guests join a TinyFloor office?",

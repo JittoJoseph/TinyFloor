@@ -51,7 +51,7 @@
           ],
           [
             "Roam",
-            "Cena za aktywnego członka",
+            "156 $",
             "Brak, 14 dni próbnych",
             "Zespołów, które chcą narzędzi AI razem z biurem"
           ],
@@ -1016,6 +1016,181 @@
       "title": "Jak porównywaliśmy",
       "body": [
         "Ceny, limity i funkcje Teamflow pochodzą z jego strony z cenami, przeczytanej w październiku 2026, w dolarach amerykańskich bez podatku. Czego tam nie było, pominęliśmy zamiast zgadywać. TinyFloor robimy my, więc jasno piszemy, czego nie potrafi. Ceny się zmieniają: przed zakupem sprawdź stronę Teamflow."
+      ]
+    }
+  ],
+  "roam": [
+    {
+      "title": "Roam i TinyFloor w skrócie",
+      "body": [
+        "Roam sprzedaje pakiet dziewięciu produktów zbudowany wokół wirtualnego biura; TinyFloor to tylko biuro, w przeglądarce, z ceną dla małego zespołu."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Roam",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Zespół 8 osób, miesięcznie",
+            "156 $, jeśli wszystkie 8 osób jest aktywnych",
+            "29 $ za cały zespół"
+          ],
+          [
+            "Darmowy plan",
+            "Brak; 14 dni próbnych dla każdego nowego członka",
+            "Do 3 osób, wszystkie funkcje"
+          ],
+          [
+            "Jak naliczana jest opłata",
+            "Za aktywnego członka, miesięcznie",
+            "Jedna cena za biuro, miesięcznie"
+          ],
+          [
+            "Goście",
+            "Za darmo",
+            "Wszyscy wchodzą z darmowym kontem"
+          ],
+          [
+            "Gdzie działa",
+            "Aplikacje na komputer i telefon",
+            "Przeglądarka, na komputerze i telefonie"
+          ],
+          [
+            "AI",
+            "Notatki ze spotkań, asystent i skrzynka AI",
+            "Brak"
+          ],
+          [
+            "Wydarzenia i nagrywanie",
+            "Webinary, sala na spotkania całej firmy, nagrywanie ekranu",
+            "Nie"
+          ]
+        ],
+        "note": "Dane o Roam z jego strony z cenami w październiku 2026, w dolarach amerykańskich bez podatku."
+      }
+    },
+    {
+      "title": "Ile kosztuje Roam w zależności od wielkości zespołu",
+      "body": [
+        "Roam pobiera 19,50 $ miesięcznie za każdego członka, który używa go w danym miesiącu, bez planu rocznego i bez rabatów. Członkowie, którzy nie otworzą Roam w danym miesiącu, się nie liczą."
+      ],
+      "table": {
+        "head": [
+          "Zespół",
+          "Roam, miesięcznie",
+          "Roam, rocznie",
+          "TinyFloor, miesięcznie"
+        ],
+        "rows": [
+          [
+            "4 osoby",
+            "78 $",
+            "936 $",
+            "29 $"
+          ],
+          [
+            "8 osób",
+            "156 $",
+            "1 872 $",
+            "29 $"
+          ],
+          [
+            "10 osób",
+            "195 $",
+            "2 340 $",
+            "29 $"
+          ],
+          [
+            "12 osób",
+            "234 $",
+            "2 808 $",
+            "29 $"
+          ]
+        ],
+        "note": "Roam za 19,50 $ za aktywnego członka miesięcznie, wszyscy aktywni (strona z cenami Roam, październik 2026; na 2027 rok Roam zapowiedział 20,88 $). TinyFloor Pro kosztuje 29 $ miesięcznie; zespoły do 3 osób pozostają darmowe."
+      }
+    },
+    {
+      "title": "Dlaczego małe zespoły szukają alternatywy dla Roam",
+      "items": [
+        {
+          "title": "Brak darmowego planu",
+          "body": "Każdy członek ma 14 dni próbnych, a potem wchodzi na rachunek. Nie ma planu, na którym mały zespół mógłby zostać za darmo."
+        },
+        {
+          "title": "Pakiet, z którego możesz nie korzystać",
+          "body": "Notatki AI, webinary, planowanie i nagrywanie są przydatne, jeśli zastępują narzędzia, za które płacisz. Jeśli już je masz, duża część pakietu leży nieużywana."
+        },
+        {
+          "title": "Aplikacja do zainstalowania",
+          "body": "Roam pobiera się na komputer i telefon. Biuro w przeglądarce otwiera się na każdym urządzeniu bez konfiguracji."
+        },
+        {
+          "title": "Cena rośnie z każdą osobą",
+          "body": "Każdy aktywny członek dodaje 19,50 $ miesięcznie, więc zespół 12 osób płaci 234 $, a TinyFloor zostaje przy 29 $."
+        }
+      ]
+    },
+    {
+      "title": "Co Roam robi lepiej",
+      "items": [
+        {
+          "title": "Dziewięć produktów w jednym",
+          "body": "Spontaniczne spotkania, sala na spotkania całej firmy, lobby do umawiania, webinary, nagrywanie ekranu i asystent AI, dzięki czemu zespół może zrezygnować z kilku innych subskrypcji."
+        },
+        {
+          "title": "Notatki AI bez bota",
+          "body": "Roam sam pisze notatki ze spotkania, bez dołączania bota do rozmowy. TinyFloor nie ma funkcji AI."
+        },
+        {
+          "title": "Darmowi goście, a płacą tylko aktywni członkowie",
+          "body": "Klienci i partnerzy wchodzą za darmo, a za osoby, które nie używają Roam w danym miesiącu, się nie płaci."
+        },
+        {
+          "title": "Zrobiony dla większych firm",
+          "body": "SOC 2 Type II, zgodność z RODO i zmiany cen publikowane dwa lata naprzód, co ułatwia zakupy i przeglądy bezpieczeństwa."
+        }
+      ]
+    },
+    {
+      "title": "Co pasuje do twojego zespołu",
+      "items": [
+        {
+          "title": "TinyFloor, tylko jako biuro",
+          "body": "Dla zespołu od 4 do 15 osób, który chce widzieć, kto jest, rozmawiać bez umawiania się i spotykać w sali, w przeglądarce, za jedną cenę, i ma już inne narzędzia."
+        },
+        {
+          "title": "Roam, jako przestrzeń pracy wszystko w jednym",
+          "body": "Jeśli chcesz mieć notatki AI, webinary, planowanie i nagrywanie w tym samym miejscu co biuro, a pakiet zastąpiłby subskrypcje, za które dziś płacisz."
+        }
+      ]
+    },
+    {
+      "title": "Przeniesienie zespołu z Roam",
+      "items": [
+        {
+          "title": "Utwórz biuro",
+          "detail": "Dwie minuty",
+          "body": "Nazwij je tak jak zespół. Piętro, biurka i sala spotkań są gotowe."
+        },
+        {
+          "title": "Udostępnij jeden link z zaproszeniem",
+          "detail": "Na czacie zespołu",
+          "body": "Zespół loguje się przez Google lub e-mail i wchodzi z przeglądarki. Nic do pobrania."
+        },
+        {
+          "title": "Przepracujcie tam zwykły tydzień",
+          "detail": "Standup w sali spotkań",
+          "body": "Zostawcie Roam do końca tygodnia, a potem zdecydujcie, które z nich zespół naprawdę otwierał."
+        }
+      ]
+    },
+    {
+      "title": "Jak porównywaliśmy",
+      "body": [
+        "Ceny i funkcje Roam pochodzą z jego strony z cenami, przeczytanej w październiku 2026, w dolarach amerykańskich bez podatku; Roam podaje też ceny w niektórych walutach lokalnych, np. w rupiach dla firm w Indiach. Czego tam nie było, pominęliśmy zamiast zgadywać. TinyFloor robimy my, więc jasno piszemy, czego nie potrafi. Ceny się zmieniają: przed zakupem sprawdź stronę Roam."
       ]
     }
   ]

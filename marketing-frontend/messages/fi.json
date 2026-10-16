@@ -585,11 +585,11 @@
       "roam": {
         "label": "Roam-vaihtoehto",
         "meta": {
-          "title": "Roam-vaihtoehto pienille etätiimeille",
-          "description": "Roam on työpöytäsovellus, jonka hinta on aktiivista jäsentä kohden. TinyFloor on virtuaalitoimisto selaimessa, ilmainen 3 hengelle ja $29 kuukaudessa koko tiimille."
+          "title": "Vaihtoehto Roamille: hinnat, mitä paketti sisältää ja yksinkertaisempi toimisto",
+          "description": "Roam maksaa 19,50 $ aktiiviselta jäseneltä kuukaudessa yhdeksän tuotteen paketista tietokonesovelluksessa, eikä ilmaisversiota ole. Mitä pieni tiimi maksaa, missä Roam on parempi ja TinyFloor selaimessa 29 $:lla koko tiimiltä."
         },
         "title": "<em>Roam-vaihtoehto</em>, joka aukeaa selaimessa.",
-        "subtitle": "Roam niputtaa virtuaalitoimiston, tekoälytyökalut ja tietokonesovelluksen, ja hinnoittelee jäsentä kohden. TinyFloor hoitaa toimisto-osan yksinkertaisesti: kävele luo, kokoonnu ja juttele, yhdellä hinnalla tiimiä kohden.",
+        "subtitle": "Roam niputtaa virtuaalitoimiston, tekoälymuistiinpanot, avustajan, webinaarit ja muuta tietokonesovellukseen hintaan 19,50 $ aktiiviselta jäseneltä kuukaudessa. TinyFloor hoitaa toimisto-osan yksinkertaisesti selaimessa: kävele luo, kokoonnu ja chattaa, yhdellä hinnalla tiimiä kohden.",
         "points": [
           {
             "title": "Vain toimisto",
@@ -605,27 +605,31 @@
           }
         ],
         "them": {
-          "price": "Kuukausihinta aktiivista jäsentä kohden",
-          "freePlan": "Ei, vain 14 päivän kokeilu",
-          "browser": "Ladattava tietokonesovellus",
+          "price": "19,50 $ aktiiviselta jäseneltä kuukaudessa",
+          "freePlan": "Ei ole, 14 päivän kokeilu jokaiselle uudelle jäsenelle",
+          "browser": "Ladattavat tietokone- ja mobiilisovellukset",
           "screenShare": "Kyllä"
         },
         "faq": [
           {
-            "q": "Miten Roam on hinnoiteltu?",
-            "a": "Roam veloittaa kuukausihinnan aktiivista jäsentä kohden kaikista tuotteistaan, 14 päivän ilmaisella kokeilulla ja ilman vuosisopimusta. TinyFloor on ilmainen enintään 3 hengelle ja maksaa $29 kuukaudessa koko tiimille."
+            "q": "Mitä Roam maksaa?",
+            "a": "Roam maksaa vuonna 2026 19,50 $ aktiiviselta jäseneltä kuukaudessa, kuukausilaskutuksella, kaikista yhdeksästä tuotteesta; vuodelle 2027 Roam on ilmoittanut hinnaksi 20,88 $. Ilmaisversiota ei ole, mutta jokainen uusi jäsen saa 14 päivän kokeilun, ja vieraat ovat ilmaisia. TinyFloor on ilmainen enintään 3 hengelle ja maksaa 29 $ kuukaudessa koko tiimiltä."
+          },
+          {
+            "q": "Mitä Roam maksaa 10 hengelle?",
+            "a": "195 $ kuukaudessa, jos kaikki 10 ovat aktiivisia, eli 2 340 $ vuodessa. TinyFloor maksaa samalle tiimille 29 $ kuukaudessa."
           },
           {
             "q": "Mitä Roamissa on, mitä TinyFloorissa ei ole?",
-            "a": "Roamissa on tekoälyn kokousmuistiinpanot, tekoälyavustaja, webinaarit, aikataulutus ja näytön tallennus. TinyFloor keskittyy itse toimistoon."
+            "a": "Tekoälyn kokousmuistiinpanot ilman bottia, tekoälyavustaja ja -saapuneet, webinaarit ja tapahtumat, ajanvaraus, näytön tallennus sekä tietokone- ja mobiilisovellukset. TinyFloor keskittyy itse toimistoon."
           },
           {
             "q": "Pääsevätkö vieraat TinyFloor-toimistoon?",
-            "a": "Toimistot ovat vain jäsenille: niihin liitytään kutsulinkillä ja ilmaisella tilillä. Jos haluat ensin katsella ympärillesi, kuka tahansa voi kokeilla demotoimistoa pelkällä nimellä."
+            "a": "Toimistot ovat vain jäsenille: sisään tullaan kutsulinkillä ja ilmaisella tilillä. Jos haluaa ensin katsella ympärilleen, kuka tahansa voi kokeilla demotoimistoa pelkällä nimellä."
           },
           {
             "q": "Toimiiko TinyFloor puhelimella?",
-            "a": "Toimii. Se toimii mobiiliselaimissa näytön ohjaussauvalla, ilman ladattavaa."
+            "a": "Kyllä. Se toimii mobiiliselaimissa näytön ohjaimella, eikä mitään tarvitse ladata."
           }
         ]
       },

@@ -585,11 +585,11 @@
       "roam": {
         "label": "Roam-Alternative",
         "meta": {
-          "title": "Roam-Alternative für kleine Remote-Teams",
-          "description": "Roam ist eine Desktop-App mit einem Preis pro aktivem Mitglied. TinyFloor ist ein virtuelles Büro im Browser, kostenlos für 3 Personen und $29 im Monat für das ganze Team."
+          "title": "Roam-Alternative: Preise, was im Paket steckt, und ein einfacheres Büro",
+          "description": "Roam kostet 19,50 $ pro aktivem Mitglied im Monat für ein Paket aus neun Produkten in einer Desktop-App, ohne Gratis-Tarif. Was ein kleines Team zahlt, was Roam besser kann und TinyFloor im Browser für 29 $ für das ganze Team."
         },
         "title": "Eine <em>Roam-Alternative</em>, die sich im Browser öffnet.",
-        "subtitle": "Roam bündelt ein virtuelles Büro mit KI-Tools und einer Desktop-App, mit Preis pro Mitglied. TinyFloor macht den Büroteil einfach: hingehen, treffen und chatten, zu einem Preis pro Team.",
+        "subtitle": "Roam bündelt ein virtuelles Büro mit KI-Notizen, einem Assistenten, Webinaren und mehr in einer Desktop-App, für 19,50 $ pro aktivem Mitglied im Monat. TinyFloor macht den Büro-Teil einfach, im Browser: hingehen, treffen, chatten, für einen Preis pro Team.",
         "points": [
           {
             "title": "Nur das Büro",
@@ -605,27 +605,31 @@
           }
         ],
         "them": {
-          "price": "Ein Monatspreis pro aktivem Mitglied",
-          "freePlan": "Keiner, nur eine 14-tägige Testphase",
-          "browser": "Desktop-App zum Herunterladen",
+          "price": "19,50 $ pro aktivem Mitglied im Monat",
+          "freePlan": "Keiner, 14 Tage Test für jedes neue Mitglied",
+          "browser": "Desktop- und Handy-Apps zum Herunterladen",
           "screenShare": "Ja"
         },
         "faq": [
           {
-            "q": "Wie ist Roam bepreist?",
-            "a": "Roam berechnet einen Monatspreis pro aktivem Mitglied für alle seine Produkte, mit einer 14-tägigen kostenlosen Testphase und ohne Jahresvertrag. TinyFloor ist kostenlos für bis zu 3 Personen und kostet $29 im Monat für das ganze Team."
+            "q": "Was kostet Roam?",
+            "a": "Roam kostet 2026 19,50 $ pro aktivem Mitglied im Monat, monatlich abgerechnet, für alle neun Produkte; für 2027 hat Roam 20,88 $ angekündigt. Einen Gratis-Tarif gibt es nicht, aber jedes neue Mitglied bekommt 14 Tage Test, und Gäste sind kostenlos. TinyFloor ist kostenlos für bis zu 3 Personen und kostet 29 $ im Monat für das ganze Team."
+          },
+          {
+            "q": "Was kostet Roam für 10 Personen?",
+            "a": "195 $ im Monat, wenn alle 10 aktiv sind, also 2.340 $ im Jahr. TinyFloor kostet für dasselbe Team 29 $ im Monat."
           },
           {
             "q": "Was hat Roam, was TinyFloor nicht hat?",
-            "a": "Roam bietet KI-Meetingnotizen, einen KI-Assistenten, Webinare, Terminplanung und Bildschirmaufnahmen. TinyFloor konzentriert sich auf das Büro selbst."
+            "a": "KI-Meetingnotizen ohne Bot, einen KI-Assistenten und Posteingang, Webinare und Events, Terminplanung, Bildschirmaufnahmen sowie Desktop- und Handy-Apps. TinyFloor konzentriert sich auf das Büro selbst."
           },
           {
-            "q": "Können Gäste einem TinyFloor-Büro beitreten?",
-            "a": "Büros sind nur für Mitglieder: Man tritt mit dem Einladungslink und einem kostenlosen Konto bei. Wer sich erst umsehen will, kann das Demo-Büro mit nur einem Namen ausprobieren."
+            "q": "Können Gäste in ein TinyFloor-Büro kommen?",
+            "a": "Büros sind nur für Mitglieder: Man kommt mit dem Einladungslink und einem kostenlosen Konto herein. Wer sich erst umsehen will, kann das Demo-Büro nur mit einem Namen ausprobieren."
           },
           {
             "q": "Funktioniert TinyFloor auf dem Handy?",
-            "a": "Ja. Es läuft in mobilen Browsern mit einem Joystick auf dem Bildschirm, ohne Download."
+            "a": "Ja. Es läuft im mobilen Browser mit einem Joystick auf dem Bildschirm, ohne etwas herunterzuladen."
           }
         ]
       },

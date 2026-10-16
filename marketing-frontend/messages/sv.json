@@ -585,11 +585,11 @@
       "roam": {
         "label": "Roam-alternativ",
         "meta": {
-          "title": "Roam-alternativ för små distansteam",
-          "description": "Roam är en skrivbordsapp med pris per aktiv medlem. TinyFloor är ett virtuellt kontor i webbläsaren, gratis för 3 personer och $29 i månaden för hela teamet."
+          "title": "Alternativ till Roam: priser, vad paketet innehåller och ett enklare kontor",
+          "description": "Roam kostar 19,50 $ per aktiv medlem och månad för ett paket med nio produkter i en datorapp, utan gratisplan. Vad ett litet team betalar, vad Roam gör bättre och TinyFloor i webbläsaren för 29 $ för hela teamet."
         },
         "title": "Ett <em>Roam-alternativ</em> som öppnas i webbläsaren.",
-        "subtitle": "Roam paketerar ett virtuellt kontor med AI-verktyg och en datorapp, med pris per medlem. TinyFloor gör kontorsdelen enkelt: gå fram, träffas och chatta, för ett pris per team.",
+        "subtitle": "Roam paketerar ett virtuellt kontor med AI-anteckningar, en assistent, webbinarier med mera i en datorapp, för 19,50 $ per aktiv medlem och månad. TinyFloor gör kontorsdelen enkelt, i webbläsaren: gå fram, träffas och chatta, för ett pris per team.",
         "points": [
           {
             "title": "Bara kontoret",
@@ -605,27 +605,31 @@
           }
         ],
         "them": {
-          "price": "Ett månadspris per aktiv medlem",
-          "freePlan": "Ingen, bara en provperiod på 14 dagar",
-          "browser": "Datorapp att ladda ner",
+          "price": "19,50 $ per aktiv medlem och månad",
+          "freePlan": "Ingen, 14 dagars provperiod för varje ny medlem",
+          "browser": "Dator- och mobilappar att ladda ner",
           "screenShare": "Ja"
         },
         "faq": [
           {
-            "q": "Hur prissätts Roam?",
-            "a": "Roam tar ett månadspris per aktiv medlem för alla sina produkter, med en gratis provperiod på 14 dagar och utan årsavtal. TinyFloor är gratis för upp till 3 personer och kostar $29 i månaden för hela teamet."
+            "q": "Vad kostar Roam?",
+            "a": "Roam kostar 19,50 $ per aktiv medlem och månad 2026, månadsvis, för alla nio produkter; för 2027 har Roam meddelat 20,88 $. Det finns ingen gratisplan, men varje ny medlem får 14 dagars provperiod, och gäster är gratis. TinyFloor är gratis för upp till 3 personer och kostar 29 $ per månad för hela teamet."
+          },
+          {
+            "q": "Vad kostar Roam för 10 personer?",
+            "a": "195 $ per månad om alla 10 är aktiva, eller 2 340 $ per år. TinyFloor kostar 29 $ per månad för samma team."
           },
           {
             "q": "Vad har Roam som TinyFloor inte har?",
-            "a": "Roam har AI-mötesanteckningar, en AI-assistent, webbinarier, schemaläggning och skärminspelning. TinyFloor fokuserar på själva kontoret."
+            "a": "AI-mötesanteckningar utan bot, en AI-assistent och AI-inkorg, webbinarier och evenemang, schemaläggning, skärminspelning och dator- och mobilappar. TinyFloor fokuserar på själva kontoret."
           },
           {
-            "q": "Kan gäster gå in i ett TinyFloor-kontor?",
-            "a": "Kontor är bara för medlemmar: man går med via inbjudningslänken och ett gratis konto. Vill du titta runt först kan vem som helst prova demokontoret med bara ett namn."
+            "q": "Kan gäster komma in i ett TinyFloor-kontor?",
+            "a": "Kontoren är bara för medlemmar: man går in med inbjudningslänken och ett gratis konto. Vill man titta runt först kan vem som helst prova demokontoret med bara ett namn."
           },
           {
-            "q": "Fungerar TinyFloor i mobilen?",
-            "a": "Ja. Det körs i mobila webbläsare med en joystick på skärmen, utan något att ladda ner."
+            "q": "Fungerar TinyFloor på mobilen?",
+            "a": "Ja. Det körs i mobilens webbläsare med en joystick på skärmen, utan något att ladda ner."
           }
         ]
       },

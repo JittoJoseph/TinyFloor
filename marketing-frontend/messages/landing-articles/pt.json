@@ -3212,5 +3212,87 @@
         "Escritórios são para membros que entram com uma conta, então clientes não aparecem por lá; mantenha sua ferramenta de reunião de sempre para chamadas com clientes. Não há controle de horas, armazenamento de arquivos nem integração com Figma, Drive ou sua ferramenta de projetos, e ainda não dá para compartilhar imagens no chat. O TinyFloor é onde sua equipe trabalha junto no dia a dia; as ferramentas voltadas ao cliente ficam onde estão."
       ]
     }
+  ],
+  "startups": [
+    {
+      "title": "Por que equipes iniciais perdem velocidade no remoto",
+      "body": [
+        "A vantagem de uma startup é a rapidez com que uma pergunta vira decisão. Numa mesma sala isso leva um minuto: você vira a cadeira. No remoto, precisa de uma mensagem, uma espera, um link de chamada e uma agenda. O TinyFloor devolve uma sala só para uma equipe pequena, para a pergunta continuar levando um minuto."
+      ]
+    },
+    {
+      "title": "Quanto custa conforme vocês crescem",
+      "body": [
+        "O TinyFloor é cobrado por escritório, não por pessoa. Uma contratação não muda a conta."
+      ],
+      "table": {
+        "head": [
+          "Equipe",
+          "Plano",
+          "Por mês"
+        ],
+        "rows": [
+          [
+            "Fundadores, 2 ou 3 pessoas",
+            "Free, todos os recursos",
+            "US$ 0"
+          ],
+          [
+            "A partir da quarta pessoa",
+            "Pro, todos os recursos",
+            "US$ 29 para o escritório inteiro"
+          ]
+        ],
+        "note": "Preços em dólares americanos sem impostos. Quando a quarta pessoa entra, a equipe ganha primeiro um teste do Pro. Cobrança mensal, sem compromisso anual."
+      }
+    },
+    {
+      "title": "Como uma equipe pequena usa o andar",
+      "items": [
+        {
+          "title": "Decidir no corredor",
+          "body": "Ver quem está por perto, ir até lá, decidir e voltar. Uma pergunta de dois minutos não precisa de reunião."
+        },
+        {
+          "title": "Uma daily, a mesma sala",
+          "body": "A reunião principal está sempre lá. Dez minutos de manhã mantêm todo mundo na mesma direção."
+        },
+        {
+          "title": "Chamadas com investidores e clientes em outro lugar",
+          "body": "Mantenha o Zoom ou o Meet para quem é de fora da empresa. O andar é para a equipe."
+        },
+        {
+          "title": "Contratar para um lugar, não para uma lista de canais",
+          "body": "Uma pessoa nova ganha uma mesa e vê quem é quem no primeiro dia, em vez de conhecer a equipe por uma barra lateral de nomes."
+        }
+      ]
+    },
+    {
+      "title": "O que fundadores costumam perguntar",
+      "items": [
+        {
+          "title": "Precisamos de TI para configurar?",
+          "body": "Não. Funciona no navegador. Crie um escritório, compartilhe o link de convite e as pessoas entram com Google ou e-mail."
+        },
+        {
+          "title": "Dá para sair fácil?",
+          "body": "Sim. Um plano pago vale até o fim do período pago, e então o escritório volta para o Free. Nada é apagado."
+        },
+        {
+          "title": "Nosso escritório é privado?",
+          "body": "Sim. Só entra quem tem o link de convite, e vocês podem redefinir o link ou remover alguém a qualquer momento."
+        },
+        {
+          "title": "E se ficarmos grandes demais?",
+          "body": "Um escritório é feito para uma equipe pequena. Quando vocês se dividirem em equipes, dê a cada uma o próprio escritório."
+        }
+      ]
+    },
+    {
+      "title": "O que ele não faz",
+      "body": [
+        "O TinyFloor não é uma suíte completa de trabalho. Não há gravação, login único, integrações com suas ferramentas nem acesso para clientes, e ainda não dá para compartilhar imagens no chat. Se vocês precisam de contrato corporativo, relatórios de conformidade ou SSO desde o primeiro dia, um produto maior vai servir melhor. Se vocês são uma equipe pequena que quer voltar a se sentir como uma, ele foi feito para isso."
+      ]
+    }
   ]
 }

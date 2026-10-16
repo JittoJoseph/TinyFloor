@@ -3212,5 +3212,87 @@
         "Kontorer er for medlemmer som blir med med en konto, så kunder stikker ikke innom; behold det vanlige møteverktøyet deres til kundesamtaler. Det finnes ingen timeføring, ingen fillagring og ingen kobling til Figma, Drive eller prosjektverktøyet deres, og bilder kan ikke deles i chatten ennå. TinyFloor er der teamet jobber sammen hver dag; verktøyene mot kundene blir der de er."
       ]
     }
+  ],
+  "startups": [
+    {
+      "title": "Hvorfor tidlige team mister fart på avstand",
+      "body": [
+        "En startups fordel er hvor fort et spørsmål blir en beslutning. I ett rom tar det et minutt: Du snur stolen. På fjernarbeid krever det en melding, venting, en samtalelenke og en kalender. TinyFloor gir et lite team ett rom igjen, så spørsmålet fortsatt tar et minutt."
+      ]
+    },
+    {
+      "title": "Hva det koster når dere vokser",
+      "body": [
+        "TinyFloor koster per kontor, ikke per person. En ansettelse endrer ikke regningen."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Plan",
+          "I måneden"
+        ],
+        "rows": [
+          [
+            "Gründere, 2 eller 3 personer",
+            "Free, alle funksjoner",
+            "0 $"
+          ],
+          [
+            "Fra den fjerde personen",
+            "Pro, alle funksjoner",
+            "29 $ for hele kontoret"
+          ]
+        ],
+        "note": "Priser i amerikanske dollar uten mva. Når den fjerde personen blir med, får teamet først en prøveperiode med Pro. Månedlig betaling, uten årlig binding."
+      }
+    },
+    {
+      "title": "Slik bruker et lite team etasjen",
+      "items": [
+        {
+          "title": "Bestem i gangen",
+          "body": "Se hvem som er der, gå bort, bestem og gå tilbake. Et spørsmål på to minutter trenger ikke et møte."
+        },
+        {
+          "title": "Én standup, samme rom",
+          "body": "Hovedmøtet er der alltid. Ti minutter om morgenen holder alle i samme retning."
+        },
+        {
+          "title": "Investor- og kundesamtaler et annet sted",
+          "body": "Behold Zoom eller Meet for folk utenfor selskapet. Etasjen er for teamet."
+        },
+        {
+          "title": "Ansett til et sted, ikke til en kanalliste",
+          "body": "En ny person får en pult og ser hvem som er hvem fra første dag, i stedet for å bli kjent med teamet fra et sidefelt fullt av navn."
+        }
+      ]
+    },
+    {
+      "title": "Hva gründere ofte spør om",
+      "items": [
+        {
+          "title": "Trenger vi IT for å sette det opp?",
+          "body": "Nei. Det kjører i nettleseren. Opprett et kontor, del invitasjonslenken, og folk logger inn med Google eller e-post."
+        },
+        {
+          "title": "Kan vi slutte enkelt?",
+          "body": "Ja. En betalt plan varer til slutten av det dere har betalt for, så går kontoret tilbake til Free. Ingenting slettes."
+        },
+        {
+          "title": "Er kontoret vårt privat?",
+          "body": "Ja. Bare folk med invitasjonslenken deres kan bli med, og dere kan tilbakestille lenken eller fjerne noen når som helst."
+        },
+        {
+          "title": "Hva om vi vokser ut av det?",
+          "body": "Et kontor er laget for et lite team. Når dere deler dere opp i team, gi hvert team sitt eget kontor."
+        }
+      ]
+    },
+    {
+      "title": "Hva det ikke gjør",
+      "body": [
+        "TinyFloor er ikke en komplett arbeidsplasspakke. Det finnes ikke opptak, single sign-on, integrasjoner med verktøyene deres eller tilgang for kunder, og bilder kan ikke deles i chatten ennå. Trenger dere en enterpriseavtale, samsvarsrapporter eller SSO fra første dag, passer et større produkt bedre. Er dere et lite team som vil føle seg som ett igjen, er det laget for det."
+      ]
+    }
   ]
 }

@@ -3212,5 +3212,87 @@
         "Les bureaux sont réservés aux membres qui rejoignent avec un compte, donc les clients ne passent pas ; gardez votre outil de réunion habituel pour les appels clients. Il n'y a ni suivi du temps, ni stockage de fichiers, ni intégration avec Figma, Drive ou votre outil de gestion de projet, et on ne peut pas encore partager d'images dans le chat. TinyFloor est l'endroit où votre équipe travaille ensemble au quotidien ; les outils côté client restent où ils sont."
       ]
     }
+  ],
+  "startups": [
+    {
+      "title": "Pourquoi les jeunes équipes perdent de la vitesse à distance",
+      "body": [
+        "L'avantage d'une startup, c'est la vitesse à laquelle une question devient une décision. Dans une même pièce, ça prend une minute : vous tournez votre chaise. À distance, il faut un message, une attente, un lien d'appel et un agenda. TinyFloor redonne une pièce commune à une petite équipe, pour que la question prenne toujours une minute."
+      ]
+    },
+    {
+      "title": "Ce que ça coûte quand vous grandissez",
+      "body": [
+        "TinyFloor se paie par bureau, pas par personne. Une embauche ne change pas la facture."
+      ],
+      "table": {
+        "head": [
+          "Équipe",
+          "Offre",
+          "Par mois"
+        ],
+        "rows": [
+          [
+            "Fondateurs, 2 ou 3 personnes",
+            "Free, toutes les fonctions",
+            "0 $"
+          ],
+          [
+            "À partir de la quatrième personne",
+            "Pro, toutes les fonctions",
+            "29 $ pour tout le bureau"
+          ]
+        ],
+        "note": "Prix en dollars américains hors taxes. Quand la quatrième personne arrive, l'équipe a d'abord un essai de Pro. Facturation mensuelle, sans engagement annuel."
+      }
+    },
+    {
+      "title": "Comment une petite équipe utilise l'étage",
+      "items": [
+        {
+          "title": "Décider dans le couloir",
+          "body": "Voir qui est là, aller le voir, décider, revenir. Pas besoin de réunion pour une question de deux minutes."
+        },
+        {
+          "title": "Un point quotidien, une même salle",
+          "body": "La réunion principale est toujours là. Dix minutes le matin gardent tout le monde dans la même direction."
+        },
+        {
+          "title": "Appels investisseurs et clients ailleurs",
+          "body": "Gardez Zoom ou Meet pour les personnes extérieures à l'entreprise. L'étage est pour l'équipe."
+        },
+        {
+          "title": "Embaucher dans un lieu, pas dans une liste de canaux",
+          "body": "Une nouvelle personne a un poste et voit qui est qui dès le premier jour, au lieu de découvrir l'équipe dans une barre latérale de noms."
+        }
+      ]
+    },
+    {
+      "title": "Ce que demandent souvent les fondateurs",
+      "items": [
+        {
+          "title": "Faut-il un service informatique pour l'installer ?",
+          "body": "Non. Il fonctionne dans le navigateur. Créez un bureau, partagez le lien d'invitation, et les gens se connectent avec Google ou par e-mail."
+        },
+        {
+          "title": "Peut-on partir facilement ?",
+          "body": "Oui. Une offre payante court jusqu'à la fin de la période payée, puis le bureau repasse en Free. Rien n'est supprimé."
+        },
+        {
+          "title": "Notre bureau est-il privé ?",
+          "body": "Oui. Seules les personnes ayant votre lien d'invitation peuvent entrer, et vous pouvez réinitialiser le lien ou retirer quelqu'un à tout moment."
+        },
+        {
+          "title": "Et si on devient trop grands ?",
+          "body": "Un bureau est fait pour une petite équipe. Quand vous vous divisez en équipes, donnez à chacune son propre bureau."
+        }
+      ]
+    },
+    {
+      "title": "Ce qu'il ne fait pas",
+      "body": [
+        "TinyFloor n'est pas une suite complète pour le travail. Il n'y a pas d'enregistrement, pas d'authentification unique, pas d'intégrations avec vos outils ni d'accès pour les clients, et on ne peut pas encore partager d'images dans le chat. Si vous avez besoin dès le premier jour d'un contrat entreprise, de rapports de conformité ou de SSO, un produit plus grand vous conviendra mieux. Si vous êtes une petite équipe qui veut de nouveau se sentir comme telle, il est fait pour ça."
+      ]
+    }
   ]
 }

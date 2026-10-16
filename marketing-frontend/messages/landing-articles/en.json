@@ -3212,5 +3212,87 @@
         "Offices are for members who join with an account, so clients don't drop in; keep your usual meeting tool for client calls. There's no time tracking, no file storage and no integration with Figma, Drive or your project tool, and images can't be shared in the chat yet. TinyFloor is where your team works together day to day; the client-facing tools stay where they are."
       ]
     }
+  ],
+  "startups": [
+    {
+      "title": "Why early teams lose speed when they go remote",
+      "body": [
+        "A startup's edge is how fast a question becomes a decision. In one room that takes a minute: you turn your chair. Remote, it takes a message, a wait, a call link and a calendar. TinyFloor gives a small team one room again, so the question still takes a minute."
+      ]
+    },
+    {
+      "title": "What it costs as you grow",
+      "body": [
+        "TinyFloor is priced per office, not per person. A hire doesn't change the bill."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Plan",
+          "A month"
+        ],
+        "rows": [
+          [
+            "Founders, 2 or 3 people",
+            "Free, every feature",
+            "$0"
+          ],
+          [
+            "From the fourth person",
+            "Pro, every feature",
+            "$29 for the whole office"
+          ]
+        ],
+        "note": "Prices in US dollars before tax. When the fourth person joins, the team gets a trial of Pro first. Billed monthly, with no yearly commitment."
+      }
+    },
+    {
+      "title": "How a small team uses the floor",
+      "items": [
+        {
+          "title": "Decide in the hallway",
+          "body": "See who's around, walk over, decide, and walk back. No meeting needed for a two-minute question."
+        },
+        {
+          "title": "One standup, same room",
+          "body": "The main meeting is always there. Ten minutes in the morning keeps everyone pointed the same way."
+        },
+        {
+          "title": "Investor and customer calls elsewhere",
+          "body": "Keep Zoom or Meet for people outside the company. The floor is for the team."
+        },
+        {
+          "title": "Hire into a place, not a channel list",
+          "body": "A new person gets a desk and can see who's who on day one, instead of learning the team from a sidebar of names."
+        }
+      ]
+    },
+    {
+      "title": "What founders usually ask",
+      "items": [
+        {
+          "title": "Do we need IT to set it up?",
+          "body": "No. It runs in the browser. Make an office, share the invite link, and people sign in with Google or email."
+        },
+        {
+          "title": "Can we leave easily?",
+          "body": "Yes. A paid plan runs to the end of what you've paid for, then the office moves back to Free. Nothing is deleted."
+        },
+        {
+          "title": "Is our office private?",
+          "body": "Yes. Only people with your invite link can join, and you can reset the link or remove someone at any time."
+        },
+        {
+          "title": "What if we outgrow it?",
+          "body": "An office is made for a small team. When you split into teams, give each one an office of its own."
+        }
+      ]
+    },
+    {
+      "title": "What it doesn't do",
+      "body": [
+        "TinyFloor isn't a full workplace suite. There's no recording, no single sign-on, no integrations with your tools and no client access, and images can't be shared in the chat yet. If you need an enterprise contract, compliance reports or SSO from day one, a bigger product will suit you better. If you're a small team that wants to feel like one again, it's built for that."
+      ]
+    }
   ]
 }

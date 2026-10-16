@@ -3212,5 +3212,87 @@
         "Toimistot ovat jäsenille, jotka liittyvät tilillä, joten asiakkaat eivät pistäydy; pitäkää asiakaspuheluihin tavallinen kokoustyökalunne. Ajanseurantaa, tiedostojen tallennusta tai Figma-, Drive- tai projektityökaluintegraatiota ei ole, eikä kuvia voi vielä jakaa chatissa. TinyFloor on paikka, jossa tiiminne tekee töitä yhdessä päivittäin; asiakkaille näkyvät työkalut pysyvät ennallaan."
       ]
     }
+  ],
+  "startups": [
+    {
+      "title": "Miksi nuoret tiimit menettävät vauhtia etänä",
+      "body": [
+        "Startupin etu on se, kuinka nopeasti kysymyksestä tulee päätös. Samassa huoneessa se vie minuutin: käännät tuolia. Etänä tarvitaan viesti, odottelua, puhelulinkki ja kalenteri. TinyFloor antaa pienelle tiimille taas yhden huoneen, jotta kysymys vie edelleen minuutin."
+      ]
+    },
+    {
+      "title": "Mitä se maksaa kasvaessanne",
+      "body": [
+        "TinyFloor maksaa toimistolta, ei henkilöltä. Uusi palkkaus ei muuta laskua."
+      ],
+      "table": {
+        "head": [
+          "Tiimi",
+          "Paketti",
+          "Kuukaudessa"
+        ],
+        "rows": [
+          [
+            "Perustajat, 2 tai 3 henkeä",
+            "Free, kaikki ominaisuudet",
+            "0 $"
+          ],
+          [
+            "Neljännestä henkilöstä alkaen",
+            "Pro, kaikki ominaisuudet",
+            "29 $ koko toimistolta"
+          ]
+        ],
+        "note": "Hinnat Yhdysvaltain dollareina ilman veroja. Kun neljäs henkilö liittyy, tiimi saa ensin Pron kokeilujakson. Kuukausilaskutus, ei vuosisitoumusta."
+      }
+    },
+    {
+      "title": "Miten pieni tiimi käyttää kerrosta",
+      "items": [
+        {
+          "title": "Päätökset käytävällä",
+          "body": "Katso, kuka on paikalla, mene luo, päätä ja palaa. Kahden minuutin kysymys ei tarvitse kokousta."
+        },
+        {
+          "title": "Yksi päiväpalaveri, sama huone",
+          "body": "Pääkokous on aina auki. Kymmenen minuuttia aamulla pitää kaikki samassa suunnassa."
+        },
+        {
+          "title": "Sijoittaja- ja asiakaspuhelut muualla",
+          "body": "Pitäkää Zoom tai Meet yrityksen ulkopuolisia varten. Kerros on tiimiä varten."
+        },
+        {
+          "title": "Palkkaa paikkaan, ei kanavalistaan",
+          "body": "Uusi ihminen saa työpisteen ja näkee ensimmäisenä päivänä, kuka on kuka, sen sijaan että tutustuisi tiimiin nimilistasta sivupalkissa."
+        }
+      ]
+    },
+    {
+      "title": "Mitä perustajat yleensä kysyvät",
+      "items": [
+        {
+          "title": "Tarvitaanko käyttöönottoon IT:tä?",
+          "body": "Ei. Se toimii selaimessa. Luo toimisto, jaa kutsulinkki, ja ihmiset kirjautuvat Googlella tai sähköpostilla."
+        },
+        {
+          "title": "Pääsemmekö helposti lopettamaan?",
+          "body": "Kyllä. Maksullinen paketti on voimassa maksetun jakson loppuun, minkä jälkeen toimisto palaa Free-pakettiin. Mitään ei poisteta."
+        },
+        {
+          "title": "Onko toimistomme yksityinen?",
+          "body": "On. Vain kutsulinkin saaneet voivat liittyä, ja voitte milloin tahansa nollata linkin tai poistaa jonkun."
+        },
+        {
+          "title": "Entä jos kasvamme siitä ulos?",
+          "body": "Toimisto on tehty pienelle tiimille. Kun jakaudutte tiimeiksi, antakaa jokaiselle oma toimisto."
+        }
+      ]
+    },
+    {
+      "title": "Mitä se ei tee",
+      "body": [
+        "TinyFloor ei ole täydellinen työpaikkapaketti. Siinä ei ole tallennusta, kertakirjautumista, integraatioita työkaluihinne eikä pääsyä asiakkaille, eikä kuvia voi vielä jakaa chatissa. Jos tarvitsette ensimmäisestä päivästä yrityssopimuksen, vaatimustenmukaisuusraportit tai SSO:n, isompi tuote sopii paremmin. Jos olette pieni tiimi, joka haluaa taas tuntea olevansa sellainen, se on tehty juuri siihen."
+      ]
+    }
   ]
 }

@@ -3212,5 +3212,87 @@
         "Büros sind für Mitglieder, die mit einem Konto beitreten, Kunden schauen also nicht einfach vorbei; behaltet für Kundencalls euer übliches Meeting-Tool. Es gibt keine Zeiterfassung, keine Dateiablage und keine Anbindung an Figma, Drive oder euer Projekttool, und Bilder lassen sich im Chat noch nicht teilen. TinyFloor ist der Ort, an dem euer Team täglich zusammenarbeitet; die Tools für Kunden bleiben, wo sie sind."
       ]
     }
+  ],
+  "startups": [
+    {
+      "title": "Warum frühe Teams remote an Tempo verlieren",
+      "body": [
+        "Der Vorteil eines Startups ist, wie schnell aus einer Frage eine Entscheidung wird. In einem Raum dauert das eine Minute: Du drehst deinen Stuhl. Remote braucht es eine Nachricht, Warten, einen Call-Link und einen Kalender. TinyFloor gibt einem kleinen Team wieder einen Raum, damit die Frage weiter eine Minute dauert."
+      ]
+    },
+    {
+      "title": "Was es kostet, wenn ihr wachst",
+      "body": [
+        "TinyFloor kostet pro Büro, nicht pro Person. Eine Einstellung ändert die Rechnung nicht."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Tarif",
+          "Im Monat"
+        ],
+        "rows": [
+          [
+            "Gründer, 2 oder 3 Personen",
+            "Free, alle Funktionen",
+            "0 $"
+          ],
+          [
+            "Ab der vierten Person",
+            "Pro, alle Funktionen",
+            "29 $ für das ganze Büro"
+          ]
+        ],
+        "note": "Preise in US-Dollar ohne Steuern. Wenn die vierte Person beitritt, bekommt das Team zuerst eine Testphase von Pro. Monatliche Abrechnung, ohne Jahresbindung."
+      }
+    },
+    {
+      "title": "Wie ein kleines Team die Fläche nutzt",
+      "items": [
+        {
+          "title": "Auf dem Flur entscheiden",
+          "body": "Sehen, wer da ist, hingehen, entscheiden, zurückgehen. Für eine Zwei-Minuten-Frage braucht es kein Meeting."
+        },
+        {
+          "title": "Ein Standup, derselbe Raum",
+          "body": "Das Hauptmeeting ist immer da. Zehn Minuten am Morgen halten alle auf Kurs."
+        },
+        {
+          "title": "Investoren- und Kundencalls woanders",
+          "body": "Behaltet Zoom oder Meet für Leute außerhalb der Firma. Die Fläche ist fürs Team."
+        },
+        {
+          "title": "In einen Ort einstellen, nicht in eine Kanalliste",
+          "body": "Eine neue Person bekommt einen Schreibtisch und sieht am ersten Tag, wer wer ist, statt das Team aus einer Seitenleiste voller Namen kennenzulernen."
+        }
+      ]
+    },
+    {
+      "title": "Was Gründer meistens fragen",
+      "items": [
+        {
+          "title": "Brauchen wir IT für die Einrichtung?",
+          "body": "Nein. Es läuft im Browser. Büro anlegen, Einladungslink teilen, und die Leute melden sich mit Google oder E-Mail an."
+        },
+        {
+          "title": "Kommen wir leicht wieder raus?",
+          "body": "Ja. Ein bezahlter Tarif läuft bis zum Ende des bezahlten Zeitraums, dann wechselt das Büro zurück zu Free. Nichts wird gelöscht."
+        },
+        {
+          "title": "Ist unser Büro privat?",
+          "body": "Ja. Nur Leute mit eurem Einladungslink können beitreten, und ihr könnt den Link jederzeit zurücksetzen oder jemanden entfernen."
+        },
+        {
+          "title": "Und wenn wir herauswachsen?",
+          "body": "Ein Büro ist für ein kleines Team gemacht. Wenn ihr euch in Teams aufteilt, gebt jedem ein eigenes Büro."
+        }
+      ]
+    },
+    {
+      "title": "Was es nicht kann",
+      "body": [
+        "TinyFloor ist keine komplette Arbeitsplatz-Suite. Es gibt keine Aufnahmen, kein Single Sign-on, keine Integrationen mit euren Tools und keinen Zugang für Kunden, und Bilder lassen sich im Chat noch nicht teilen. Wenn ihr ab dem ersten Tag einen Enterprise-Vertrag, Compliance-Berichte oder SSO braucht, passt ein größeres Produkt besser. Wenn ihr ein kleines Team seid, das sich wieder wie eines anfühlen will, ist es genau dafür gebaut."
+      ]
+    }
   ]
 }

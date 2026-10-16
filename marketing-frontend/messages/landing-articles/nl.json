@@ -3212,5 +3212,87 @@
         "Kantoren zijn voor leden die met een account binnenkomen, dus klanten lopen niet zomaar binnen; houd je gebruikelijke meetingtool voor klantgesprekken. Er is geen urenregistratie, geen bestandsopslag en geen koppeling met Figma, Drive of je projecttool, en afbeeldingen delen in de chat kan nog niet. TinyFloor is waar je team elke dag samenwerkt; de tools richting klanten blijven waar ze zijn."
       ]
     }
+  ],
+  "startups": [
+    {
+      "title": "Waarom jonge teams remote snelheid verliezen",
+      "body": [
+        "Het voordeel van een startup is hoe snel een vraag een beslissing wordt. In één ruimte duurt dat een minuut: je draait je stoel om. Remote kost het een bericht, wachten, een call-link en een agenda. TinyFloor geeft een klein team weer één ruimte, zodat de vraag een minuut blijft duren."
+      ]
+    },
+    {
+      "title": "Wat het kost terwijl je groeit",
+      "body": [
+        "TinyFloor kost per kantoor, niet per persoon. Een nieuwe collega verandert de rekening niet."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Abonnement",
+          "Per maand"
+        ],
+        "rows": [
+          [
+            "Oprichters, 2 of 3 mensen",
+            "Free, alle functies",
+            "$ 0"
+          ],
+          [
+            "Vanaf de vierde persoon",
+            "Pro, alle functies",
+            "$ 29 voor het hele kantoor"
+          ]
+        ],
+        "note": "Prijzen in Amerikaanse dollars exclusief belasting. Als de vierde persoon erbij komt, krijgt het team eerst een proefperiode van Pro. Maandelijks gefactureerd, zonder jaarcontract."
+      }
+    },
+    {
+      "title": "Hoe een klein team de verdieping gebruikt",
+      "items": [
+        {
+          "title": "Beslissen in de gang",
+          "body": "Zien wie er is, erheen lopen, beslissen en teruglopen. Voor een vraag van twee minuten is geen meeting nodig."
+        },
+        {
+          "title": "Eén standup, dezelfde ruimte",
+          "body": "De hoofdmeeting is er altijd. Tien minuten in de ochtend houdt iedereen op één lijn."
+        },
+        {
+          "title": "Gesprekken met investeerders en klanten elders",
+          "body": "Houd Zoom of Meet voor mensen buiten het bedrijf. De verdieping is voor het team."
+        },
+        {
+          "title": "Aannemen in een plek, niet in een kanalenlijst",
+          "body": "Een nieuwe collega krijgt een bureau en ziet op dag één wie wie is, in plaats van het team te leren kennen uit een zijbalk vol namen."
+        }
+      ]
+    },
+    {
+      "title": "Wat oprichters meestal vragen",
+      "items": [
+        {
+          "title": "Hebben we IT nodig om het op te zetten?",
+          "body": "Nee. Het draait in de browser. Maak een kantoor, deel de uitnodigingslink, en mensen loggen in met Google of e-mail."
+        },
+        {
+          "title": "Kunnen we makkelijk stoppen?",
+          "body": "Ja. Een betaald abonnement loopt tot het einde van wat je hebt betaald, daarna gaat het kantoor terug naar Free. Er wordt niets verwijderd."
+        },
+        {
+          "title": "Is ons kantoor privé?",
+          "body": "Ja. Alleen mensen met jullie uitnodigingslink kunnen binnenkomen, en je kunt de link op elk moment resetten of iemand verwijderen."
+        },
+        {
+          "title": "En als we eruit groeien?",
+          "body": "Een kantoor is gemaakt voor een klein team. Splitsen jullie op in teams, geef dan elk team een eigen kantoor."
+        }
+      ]
+    },
+    {
+      "title": "Wat het niet doet",
+      "body": [
+        "TinyFloor is geen complete werkplek-suite. Er zijn geen opnames, geen single sign-on, geen integraties met je tools en geen toegang voor klanten, en afbeeldingen delen in de chat kan nog niet. Heb je vanaf dag één een enterprisecontract, compliancerapporten of SSO nodig, dan past een groter product beter. Ben je een klein team dat zich weer zo wil voelen, dan is het daarvoor gemaakt."
+      ]
+    }
   ]
 }

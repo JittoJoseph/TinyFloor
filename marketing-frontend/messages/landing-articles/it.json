@@ -3212,5 +3212,87 @@
         "Gli uffici sono per i membri che entrano con un account, quindi i clienti non passano a trovarvi; per le chiamate con loro tenete il vostro solito strumento. Non c'è tracciamento delle ore, né archivio di file, né integrazione con Figma, Drive o il vostro strumento di progetto, e nella chat non si possono ancora condividere immagini. TinyFloor è il posto dove il team lavora insieme ogni giorno; gli strumenti per i clienti restano dove sono."
       ]
     }
+  ],
+  "startups": [
+    {
+      "title": "Perché i team giovani perdono velocità da remoto",
+      "body": [
+        "Il vantaggio di una startup è quanto in fretta una domanda diventa una decisione. Nella stessa stanza ci vuole un minuto: giri la sedia. Da remoto servono un messaggio, un'attesa, un link alla chiamata e un calendario. TinyFloor restituisce a un team piccolo una stanza sola, così la domanda continua a richiedere un minuto."
+      ]
+    },
+    {
+      "title": "Quanto costa mentre crescete",
+      "body": [
+        "TinyFloor si paga per ufficio, non per persona. Un'assunzione non cambia il conto."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Piano",
+          "Al mese"
+        ],
+        "rows": [
+          [
+            "Fondatori, 2 o 3 persone",
+            "Free, tutte le funzioni",
+            "0 $"
+          ],
+          [
+            "Dalla quarta persona",
+            "Pro, tutte le funzioni",
+            "29 $ per tutto l'ufficio"
+          ]
+        ],
+        "note": "Prezzi in dollari USA tasse escluse. Quando entra la quarta persona, il team ha prima una prova di Pro. Fatturazione mensile, senza vincolo annuale."
+      }
+    },
+    {
+      "title": "Come un team piccolo usa il piano",
+      "items": [
+        {
+          "title": "Decidere in corridoio",
+          "body": "Vedere chi c'è, avvicinarsi, decidere e tornare. Per una domanda da due minuti non serve una riunione."
+        },
+        {
+          "title": "Uno standup, la stessa stanza",
+          "body": "La riunione principale è sempre lì. Dieci minuti al mattino tengono tutti nella stessa direzione."
+        },
+        {
+          "title": "Chiamate con investitori e clienti altrove",
+          "body": "Tenete Zoom o Meet per chi è fuori dall'azienda. Il piano è per il team."
+        },
+        {
+          "title": "Assumere in un luogo, non in un elenco di canali",
+          "body": "Una persona nuova ha una scrivania e vede chi è chi dal primo giorno, invece di conoscere il team da una barra laterale di nomi."
+        }
+      ]
+    },
+    {
+      "title": "Cosa chiedono di solito i fondatori",
+      "items": [
+        {
+          "title": "Serve l'IT per configurarlo?",
+          "body": "No. Funziona nel browser. Crea un ufficio, condividi il link d'invito e le persone accedono con Google o con l'email."
+        },
+        {
+          "title": "Possiamo andarcene facilmente?",
+          "body": "Sì. Un piano a pagamento dura fino alla fine del periodo pagato, poi l'ufficio torna a Free. Non si cancella niente."
+        },
+        {
+          "title": "Il nostro ufficio è privato?",
+          "body": "Sì. Può entrare solo chi ha il vostro link d'invito, e potete reimpostare il link o rimuovere qualcuno in qualsiasi momento."
+        },
+        {
+          "title": "E se diventiamo troppo grandi?",
+          "body": "Un ufficio è pensato per un team piccolo. Quando vi dividete in team, date a ciascuno il suo ufficio."
+        }
+      ]
+    },
+    {
+      "title": "Cosa non fa",
+      "body": [
+        "TinyFloor non è una suite completa per il lavoro. Non c'è registrazione, né single sign-on, né integrazioni con i vostri strumenti, né accesso per i clienti, e nella chat non si possono ancora condividere immagini. Se dal primo giorno vi servono un contratto enterprise, report di conformità o SSO, un prodotto più grande fa più al caso vostro. Se siete un team piccolo che vuole sentirsi di nuovo tale, è fatto per questo."
+      ]
+    }
   ]
 }

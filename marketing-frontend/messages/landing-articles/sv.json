@@ -3294,5 +3294,193 @@
         "TinyFloor är ingen komplett arbetsplatssvit. Det finns ingen inspelning, ingen enkel inloggning, inga integrationer med era verktyg och ingen åtkomst för kunder, och bilder går inte att dela i chatten än. Behöver ni ett företagsavtal, efterlevnadsrapporter eller SSO från första dagen passar en större produkt bättre. Är ni ett litet team som vill känna sig som ett igen är det byggt för det."
       ]
     }
+  ],
+  "design": [
+    {
+      "title": "Flaskhalsen är feedback",
+      "body": [
+        "Designarbete blir bättre varje gång någon tittar på det med dig. I en studio sker det över axeln, många gånger om dagen. På distans krymper det till en veckovis crit och kommentarer i en fil. På våningen är ett andra par ögon några steg bort igen."
+      ]
+    },
+    {
+      "title": "Sorters feedback, och var var och en passar",
+      "table": {
+        "head": [
+          "Sort",
+          "Så går det till",
+          "På våningen"
+        ],
+        "rows": [
+          [
+            "En snabb titt",
+            "”Går det att läsa?” Två minuter, en annan designer.",
+            "Gå dit, dela fönstret, fråga."
+          ],
+          [
+            "Lösa ett problem i par",
+            "Två personer arbetar igenom ett knepigt flöde tillsammans.",
+            "Ett samtal med delad skärm i en timme."
+          ],
+          [
+            "Den veckovisa critten",
+            "Teamet tittar på pågående arbete, ett i taget.",
+            "Ett möte som heter Crit; varje designer delar i tur och ordning."
+          ],
+          [
+            "Granskning med produkt eller utveckling",
+            "Pröva en design mot vad som går och vad som behövs.",
+            "Bjud in utvecklaren; gå ut igen när det är klart."
+          ],
+          [
+            "Skriftliga kommentarer",
+            "Utförliga anteckningar att komma tillbaka till.",
+            "Ha dem i ert designverktyg, på den frame de gäller."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "En bra crit på distans",
+      "items": [
+        {
+          "title": "Säg vilken feedback du vill ha",
+          "body": "”Jag har kört fast på hierarkin” ger bättre kommentarer än ”tankar?”."
+        },
+        {
+          "title": "Visa den riktiga filen",
+          "body": "Dela Figma eller prototypen i mötet, inte en skärmdump av förra veckans version."
+        },
+        {
+          "title": "En sak i taget",
+          "body": "Den som pratar får det stora kortet; den delade skärmen står bredvid, så rummet följer en sak."
+        },
+        {
+          "title": "Skriv ner besluten",
+          "body": "Lägg det som bestämdes i teamchatten, så att det inte bara finns i någons minne."
+        }
+      ]
+    },
+    {
+      "title": "Skydda tiden för att skapa",
+      "items": [
+        {
+          "title": "Upptagen betyder upptagen",
+          "body": "Sätt upptagen-status för fördjupat arbete. Kollegor ser att du är där och skriver i stället för att komma förbi."
+        },
+        {
+          "title": "Inget kamerakrav",
+          "body": "Samtal börjar med röst. Slå på kameran när den hjälper, inte för att verktyget förväntar sig det."
+        },
+        {
+          "title": "Skissa först",
+          "body": "Whiteboarden på väggen finns för den grova versionen, innan någon öppnar ett designverktyg."
+        }
+      ]
+    },
+    {
+      "title": "Vad det inte gör",
+      "body": [
+        "TinyFloor är inte kopplat till Figma, Sketch eller Adobe och lagrar inga filer. Delade skärmar skickar bilden i en upplösning som är inställd på skarp text: bra för att gå igenom en layout, men ingen ersättning för att öppna filen själv och kontrollera en färg eller en pixel. Critar spelas inte in och bilder går inte att dela i chatten än. Behåll designverktyget för arbetet och dess kommentarer; använd TinyFloor för samtalen runt omkring."
+      ]
+    }
+  ],
+  "virtualCoworking": [
+    {
+      "title": "Två sorters virtuell coworking",
+      "body": [
+        "”Virtuell coworking” betyder två olika saker. Vissa vill ha en främling att jobba bredvid, för sällskapets skull och lite peppning. Andra vill ha sitt eget team omkring sig medan alla gör sitt. TinyFloor är den andra sorten."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Med främlingar",
+          "Med ditt team"
+        ],
+        "rows": [
+          [
+            "Vem som är där",
+            "Någon som matchas med dig för en session",
+            "De du jobbar med varje dag"
+          ],
+          [
+            "Hur det börjar",
+            "Du bokar en tid",
+            "Du öppnar kontoret; den som är där är där"
+          ],
+          [
+            "Kameror",
+            "Oftast på, för peppningens skull",
+            "Av, om du inte är i ett samtal"
+          ],
+          [
+            "Vad som händer sedan",
+            "Sessionen tar slut och ni går skilda vägar",
+            "Du går dit när du behöver någon"
+          ],
+          [
+            "TinyFloor",
+            "Inte vad det är till för",
+            "Det det är byggt för"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "En coworkingdag på våningen",
+      "items": [
+        {
+          "title": "Kom in",
+          "detail": "9:00",
+          "body": "Öppna fliken så går din figur till ditt skrivbord. De som redan är där ser dig komma och kan vinka."
+        },
+        {
+          "title": "Fokus",
+          "detail": "9:15",
+          "body": "Sätt dig som upptagen. Det syns att du jobbar, ingen hör dig och ingen väntar sig svar direkt."
+        },
+        {
+          "title": "Bakgrundsmusik",
+          "detail": "11:00",
+          "body": "Någon sätter på ett spår i högtalaren. Nära är det högt och över våningen tonar det bort, så det blir sällskap snarare än oljud."
+        },
+        {
+          "title": "En paus",
+          "detail": "13:00",
+          "body": "Sätt dig som borta över lunchen. Tillbaka vid skrivbordet, två minuters prat med den som är där innan eftermiddagen."
+        }
+      ]
+    },
+    {
+      "title": "Fokuspass med ditt team",
+      "body": [
+        "Vissa team gillar lite struktur. Ett fokuspass är ett möte där alla jobbar tyst och stämmer av i början och i slutet."
+      ],
+      "items": [
+        {
+          "title": "Starta ett möte som heter Fokus",
+          "body": "Bjud in den som vill vara med. Säg i en mening vad du ska göra."
+        },
+        {
+          "title": "Stäng av ljudet och jobba",
+          "body": "Mikrofoner av, kameror frivilligt. Mötet finns där så att du vet att du inte är ensam om att jobba."
+        },
+        {
+          "title": "Stäm av i slutet",
+          "body": "En mening var: klart, inte klart, vad som kommer sedan. Gå sedan ut ur rummet."
+        }
+      ]
+    },
+    {
+      "title": "Varför det hjälper att jobba nära andra",
+      "body": [
+        "Studier av omgivningsmedvetenhet på jobbet fann att det fick folk att känna att andra också jobbade när de med en blick såg kollegornas närvaro, och att det ledde till mer informell kontakt. I Gallups data från 2024 uppgav de som jobbar helt på distans oftare att de kände sig ensamma än de på plats, 25 % mot 16 %. En våning där ditt team syns hjälper med båda, utan att någon behöver sitta framför kameran."
+      ]
+    },
+    {
+      "title": "Vad det inte är",
+      "body": [
+        "TinyFloor är ingen offentlig coworkingyta. Ett kontor är privat för ditt team, så det finns inga främlingar att jobba bredvid och ingen matchning med andra. Det finns inga sessionstimrar, inga streaks och inget som räknar hur länge du jobbat. Jobbar du ensam och vill ha sällskap av främlingar passar en body doubling-tjänst bättre; vill du ha ditt team omkring dig medan du jobbar är det här rätt."
+      ]
+    }
   ]
 }

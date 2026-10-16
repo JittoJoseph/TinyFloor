@@ -3294,5 +3294,193 @@
         "TinyFloor n'est pas une suite complète pour le travail. Il n'y a pas d'enregistrement, pas d'authentification unique, pas d'intégrations avec vos outils ni d'accès pour les clients, et on ne peut pas encore partager d'images dans le chat. Si vous avez besoin dès le premier jour d'un contrat entreprise, de rapports de conformité ou de SSO, un produit plus grand vous conviendra mieux. Si vous êtes une petite équipe qui veut de nouveau se sentir comme telle, il est fait pour ça."
       ]
     }
+  ],
+  "design": [
+    {
+      "title": "Le retour, c'est le goulot d'étranglement",
+      "body": [
+        "Un travail de design s'améliore chaque fois que quelqu'un le regarde avec vous. Dans un studio, ça se passe par-dessus l'épaule, plusieurs fois par jour. À distance, ça se réduit à une crit hebdomadaire et à des commentaires dans un fichier. Sur l'étage, un deuxième regard est de nouveau à quelques pas."
+      ]
+    },
+    {
+      "title": "Les types de retours, et où chacun trouve sa place",
+      "table": {
+        "head": [
+          "Type",
+          "Déroulé",
+          "Sur l'étage"
+        ],
+        "rows": [
+          [
+            "Un coup d'œil",
+            "« Est-ce que ça se lit ? » Deux minutes, un autre designer.",
+            "Aller le voir, partager la fenêtre, demander."
+          ],
+          [
+            "Travailler un problème à deux",
+            "Deux personnes avancent ensemble sur un parcours délicat.",
+            "Un appel avec écran partagé pendant une heure."
+          ],
+          [
+            "La crit hebdomadaire",
+            "L'équipe regarde le travail en cours, une pièce à la fois.",
+            "Une réunion appelée Crit ; chaque designer partage à son tour."
+          ],
+          [
+            "Revue avec le produit ou les devs",
+            "Confronter un design à ce qui est faisable et nécessaire.",
+            "Faire entrer le développeur ; ressortir quand c'est réglé."
+          ],
+          [
+            "Commentaires écrits",
+            "Des notes détaillées à reprendre plus tard.",
+            "Gardez-les dans votre outil de design, sur le frame concerné."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Réussir une crit à distance",
+      "items": [
+        {
+          "title": "Dire quel retour on attend",
+          "body": "« Je bloque sur la hiérarchie » donne de meilleurs retours que « des avis ? »."
+        },
+        {
+          "title": "Montrer le vrai fichier",
+          "body": "Partagez Figma ou votre prototype en réunion, pas une capture de la version de la semaine dernière."
+        },
+        {
+          "title": "Une pièce à la fois",
+          "body": "La personne qui parle prend la grande carte ; l'écran partagé est à côté, la salle suit donc une seule chose."
+        },
+        {
+          "title": "Noter les décisions",
+          "body": "Publiez ce qui a été décidé dans le chat de l'équipe, pour que ça ne reste pas dans la mémoire d'une seule personne."
+        }
+      ]
+    },
+    {
+      "title": "Protéger le temps de création",
+      "items": [
+        {
+          "title": "Occupé veut dire occupé",
+          "body": "Mettez un statut occupé pour le travail de fond. Vos collègues voient que vous êtes là et écrivent plutôt que de venir."
+        },
+        {
+          "title": "Pas de caméra obligatoire",
+          "body": "Les appels démarrent en audio. Allumez la caméra quand elle aide, pas parce que l'outil l'attend."
+        },
+        {
+          "title": "Esquisser d'abord",
+          "body": "Le tableau blanc au mur sert à la version brute, avant que quiconque ouvre un outil de design."
+        }
+      ]
+    },
+    {
+      "title": "Ce qu'il ne fait pas",
+      "body": [
+        "TinyFloor n'est relié ni à Figma, ni à Sketch, ni à Adobe, et ne stocke pas de fichiers. Les écrans partagés transmettent l'image dans une résolution pensée pour un texte net : parfait pour revoir une mise en page, mais pas un substitut à l'ouverture du fichier pour vérifier une couleur ou un pixel. Les crits ne sont pas enregistrées et on ne peut pas encore partager d'images dans le chat. Gardez votre outil de design pour le travail et ses commentaires ; utilisez TinyFloor pour les conversations autour."
+      ]
+    }
+  ],
+  "virtualCoworking": [
+    {
+      "title": "Deux sortes de coworking virtuel",
+      "body": [
+        "« Coworking virtuel » désigne deux choses différentes. Certains veulent un inconnu avec qui travailler côte à côte, pour la compagnie et un peu d'engagement. D'autres veulent leur propre équipe autour d'eux pendant que chacun avance. TinyFloor, c'est la seconde."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Avec des inconnus",
+          "Avec votre équipe"
+        ],
+        "rows": [
+          [
+            "Qui est là",
+            "Quelqu'un associé à vous pour une session",
+            "Les personnes avec qui vous travaillez chaque jour"
+          ],
+          [
+            "Comment ça commence",
+            "Vous réservez un créneau",
+            "Vous ouvrez le bureau ; ceux qui sont là sont là"
+          ],
+          [
+            "Caméras",
+            "En général allumées, pour l'engagement",
+            "Éteintes sauf pendant un appel"
+          ],
+          [
+            "Et ensuite",
+            "La session se termine et chacun repart",
+            "Vous allez voir quelqu'un quand vous en avez besoin"
+          ],
+          [
+            "TinyFloor",
+            "Pas fait pour ça",
+            "Fait pour ça"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Une journée de coworking sur l'étage",
+      "items": [
+        {
+          "title": "Arriver",
+          "detail": "9 h 00",
+          "body": "Ouvrez l'onglet et votre personnage rejoint votre poste. Ceux déjà là vous voient arriver et peuvent vous faire signe."
+        },
+        {
+          "title": "Concentration",
+          "detail": "9 h 15",
+          "body": "Passez en occupé. On voit que vous travaillez, personne ne vous entend, et personne n'attend de réponse immédiate."
+        },
+        {
+          "title": "Musique de fond",
+          "detail": "11 h 00",
+          "body": "Quelqu'un lance un morceau sur l'enceinte. Fort à côté, plus doux à travers l'étage : une présence plutôt qu'un bruit."
+        },
+        {
+          "title": "Une pause",
+          "detail": "13 h 00",
+          "body": "Passez en absent pour déjeuner. De retour à votre poste, deux minutes de discussion avec qui est là avant l'après-midi."
+        }
+      ]
+    },
+    {
+      "title": "Des sessions de concentration en équipe",
+      "body": [
+        "Certaines équipes aiment un peu de cadre. Une session de concentration, c'est une réunion où tout le monde travaille en silence et fait un point au début et à la fin."
+      ],
+      "items": [
+        {
+          "title": "Lancer une réunion appelée Focus",
+          "body": "Faites entrer qui veut participer. Dites en une phrase ce que vous allez faire."
+        },
+        {
+          "title": "Couper le micro et travailler",
+          "body": "Micros coupés, caméras facultatives. La réunion est là pour que vous sachiez que vous n'êtes pas seul à travailler."
+        },
+        {
+          "title": "Faire le point à la fin",
+          "body": "Une phrase chacun : fait, pas fait, la suite. Puis sortez de la salle."
+        }
+      ]
+    },
+    {
+      "title": "Pourquoi travailler près des autres aide",
+      "body": [
+        "Des études sur la perception ambiante au travail ont montré que voir d'un coup d'œil la présence de ses collègues donnait le sentiment que d'autres travaillaient aussi, et menait à davantage d'échanges informels. Dans les données Gallup de 2024, les personnes en télétravail complet se disaient plus souvent seules que celles sur site, 25 % contre 16 %. Un étage où votre équipe est visiblement présente aide sur les deux plans, sans que personne ait à être devant la caméra."
+      ]
+    },
+    {
+      "title": "Ce qu'il n'est pas",
+      "body": [
+        "TinyFloor n'est pas un espace de coworking public. Un bureau est réservé à votre équipe : pas d'inconnus avec qui travailler, et pas de mise en relation avec d'autres personnes. Il n'y a ni minuteur de session, ni séries, ni rien qui compte combien de temps vous avez travaillé. Si vous travaillez seul et cherchez la compagnie d'inconnus, un service de body doubling vous conviendra mieux ; si vous voulez votre équipe autour de vous pendant que vous travaillez, c'est ici."
+      ]
+    }
   ]
 }

@@ -5,6 +5,8 @@ import es from "@/lib/tools/icebreaker-lists/es";
 import fr from "@/lib/tools/icebreaker-lists/fr";
 import it from "@/lib/tools/icebreaker-lists/it";
 import ja from "@/lib/tools/icebreaker-lists/ja";
+import nl from "@/lib/tools/icebreaker-lists/nl";
+import pl from "@/lib/tools/icebreaker-lists/pl";
 import pt from "@/lib/tools/icebreaker-lists/pt";
 
 /**
@@ -43,7 +45,7 @@ export interface IcebreakersContent {
   faq: Array<{ q: string; a: string }>;
 }
 
-const LISTS: Record<string, IcebreakersContent> = { en, pt, es, it, ja, de, fr };
+const LISTS: Record<string, IcebreakersContent> = { en, pt, es, it, ja, de, fr, nl, pl };
 
 /** The languages the tool is written in, English first. */
 export const ICEBREAKER_LOCALES = Object.keys(LISTS);

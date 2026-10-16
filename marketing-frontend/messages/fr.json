@@ -225,11 +225,11 @@
       "workadventure": {
         "label": "Alternative à WorkAdventure",
         "meta": {
-          "title": "Alternative à WorkAdventure pour les petites équipes",
-          "description": "L'offre gratuite de WorkAdventure accepte 10 personnes à la fois. TinyFloor est un bureau virtuel en pixel art avec des appels vidéo de proximité, gratuit pour 3 personnes et 29 $ par mois pour toute l'équipe."
+          "title": "Alternative à WorkAdventure : tarifs, offre gratuite et une option hébergée",
+          "description": "L'offre gratuite de WorkAdventure accueille 10 personnes à la fois dans des salles publiques, et Business coûte 9 à 11 $ par utilisateur et par mois. Ce que paie une petite équipe, ce que WorkAdventure fait mieux, et TinyFloor à 29 $ pour toute l'équipe."
         },
         "title": "Une <em>alternative à WorkAdventure</em> qui laisse de la place.",
-        "subtitle": "WorkAdventure est aussi un bureau en pixel art, et son offre gratuite accueille 10 personnes à la fois. TinyFloor est gratuit pour 3 personnes, puis à prix fixe, pas un prix par personne.",
+        "subtitle": "WorkAdventure est aussi un bureau en pixel art : son offre gratuite accueille 10 personnes à la fois dans des salles publiques, et Business se paie selon le nombre de personnes connectées en même temps. TinyFloor est gratuit jusqu'à 3, puis un seul prix pour toute l'équipe : 29 $ par mois.",
         "points": [
           {
             "title": "Deux fois plus de place",
@@ -245,27 +245,31 @@
           }
         ],
         "them": {
-          "price": "Business à partir de 8 € par utilisateur par mois",
-          "freePlan": "Jusqu’à 10 personnes à la fois",
+          "price": "Business à partir de 9 $ par utilisateur et par mois",
+          "freePlan": "Jusqu'à 10 personnes à la fois, dans des salles publiques",
           "browser": "Oui",
           "screenShare": "Oui"
         },
         "faq": [
           {
             "q": "WorkAdventure est-il gratuit ?",
-            "a": "WorkAdventure a une offre gratuite pour 10 utilisateurs simultanés au maximum. L’offre Business commence à 8 € par utilisateur par mois, et les tarifs événements à 4 € par utilisateur par jour. TinyFloor est gratuit jusqu'à 3 personnes et coûte 29 $ par mois pour toute l'équipe."
+            "a": "WorkAdventure propose une offre gratuite jusqu'à 10 personnes connectées à la fois, sans limite de durée, mais ses salles sont publiques pour toute personne ayant le lien. Business coûte 9 $ par utilisateur et par mois à l'année ou 11 $ au mois, et les événements à partir de 5 $ par utilisateur et par jour. TinyFloor est gratuit jusqu'à 3 personnes et coûte 29 $ par mois pour toute l'équipe."
+          },
+          {
+            "q": "Combien coûte WorkAdventure pour 10 personnes ?",
+            "a": "Si des salles publiques vous conviennent, l'offre gratuite couvre 10 personnes à la fois. Avec Business, de la place pour 10 personnes à la fois coûte 90 $ par mois à l'année ou 110 $ au mois. TinyFloor coûte 29 $ par mois pour la même équipe."
           },
           {
             "q": "Puis-je personnaliser la carte dans TinyFloor ?",
-            "a": "Pas encore. Tous les bureaux utilisent le même étage. WorkAdventure vous permet de concevoir vos propres cartes, ce qui convient aux équipes qui veulent un monde sur mesure."
+            "a": "Non. Chaque bureau est prêt, avec des postes, une salle de réunion et un tableau blanc. WorkAdventure a un éditeur de carte et des modèles, ce qui convient aux équipes qui veulent leur propre monde."
           },
           {
-            "q": "Dois-je gérer un serveur ?",
-            "a": "Non. TinyFloor est hébergé pour vous. Créez un bureau dans le navigateur et invitez votre équipe."
+            "q": "Dois-je faire tourner un serveur ?",
+            "a": "Non. TinyFloor est hébergé pour vous : créez un bureau dans le navigateur et invitez votre équipe. WorkAdventure est aussi hébergé, et peut en plus être installé sur vos propres serveurs."
           },
           {
             "q": "Comment démarrent les appels dans TinyFloor ?",
-            "a": "Approchez-vous d’un collègue et sa carte d’appel apparaît. Un clic lance l’appel. Pour un groupe, rejoignez une réunion et votre personnage entre dans la salle de réunion."
+            "a": "Approchez-vous d'un collègue et sa carte d'appel apparaît. Un geste lance l'appel. Pour un groupe, rejoignez une réunion et votre personnage entre dans la salle de réunion."
           }
         ]
       },

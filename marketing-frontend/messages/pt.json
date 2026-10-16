@@ -225,11 +225,11 @@
       "workadventure": {
         "label": "Alternativa ao WorkAdventure",
         "meta": {
-          "title": "Alternativa ao WorkAdventure para equipes pequenas",
-          "description": "O plano gratuito do WorkAdventure permite 10 pessoas ao mesmo tempo. O TinyFloor é um escritório virtual em pixel art com chamadas de vídeo por proximidade, grátis para 3 pessoas e US$ 29 por mês para toda a equipe."
+          "title": "Alternativa ao WorkAdventure: preços, o plano grátis e uma opção hospedada",
+          "description": "O plano grátis do WorkAdventure comporta 10 pessoas ao mesmo tempo em salas públicas, e o Business custa US$ 9–11 por usuário por mês. Quanto uma equipe pequena paga, o que o WorkAdventure faz melhor e o TinyFloor a US$ 29 para a equipe toda."
         },
         "title": "Uma <em>alternativa ao WorkAdventure</em> com espaço para crescer.",
-        "subtitle": "O WorkAdventure também é um escritório em pixel art, e o plano gratuito comporta 10 pessoas ao mesmo tempo. O TinyFloor é grátis para 3 pessoas e depois tem um preço fixo, não um preço por pessoa.",
+        "subtitle": "O WorkAdventure também é um escritório em pixel art: o plano grátis comporta 10 pessoas ao mesmo tempo em salas públicas, e o Business é cobrado pelo número de pessoas que podem estar online juntas. O TinyFloor é grátis para 3 e depois tem um preço só para a equipe toda: US$ 29 por mês.",
         "points": [
           {
             "title": "O dobro de espaço",
@@ -245,27 +245,31 @@
           }
         ],
         "them": {
-          "price": "Business a partir de 8 € por usuário por mês",
-          "freePlan": "Até 10 pessoas ao mesmo tempo",
+          "price": "Business a partir de US$ 9 por usuário por mês",
+          "freePlan": "Até 10 pessoas ao mesmo tempo, em salas públicas",
           "browser": "Sim",
           "screenShare": "Sim"
         },
         "faq": [
           {
             "q": "O WorkAdventure é grátis?",
-            "a": "O WorkAdventure tem um plano gratuito para até 10 usuários simultâneos. O plano Business começa em 8 € por usuário por mês, e os preços para eventos em 4 € por usuário por dia. O TinyFloor é grátis para até 3 pessoas e custa US$ 29 por mês para toda a equipe."
+            "a": "O WorkAdventure tem um plano grátis para até 10 pessoas conectadas ao mesmo tempo, sem limite de tempo, mas as salas são públicas para quem tiver o link. O Business custa US$ 9 por usuário por mês no anual ou US$ 11 no mensal, e eventos a partir de US$ 5 por usuário por dia. O TinyFloor é grátis para até 3 pessoas e custa US$ 29 por mês para a equipe toda."
+          },
+          {
+            "q": "Quanto custa o WorkAdventure para 10 pessoas?",
+            "a": "Se salas públicas servem, o plano grátis cobre 10 pessoas ao mesmo tempo. No Business, espaço para 10 ao mesmo tempo custa US$ 90 por mês no anual ou US$ 110 no mensal. O TinyFloor custa US$ 29 por mês para a mesma equipe."
           },
           {
             "q": "Posso personalizar o mapa no TinyFloor?",
-            "a": "Ainda não. Todo escritório usa o mesmo andar. O WorkAdventure permite criar seus próprios mapas, o que combina com equipes que querem um mundo personalizado."
+            "a": "Não. Todo escritório vem pronto, com mesas, sala de reunião e quadro branco. O WorkAdventure tem editor de mapas e modelos, o que combina com equipes que querem um mundo próprio."
           },
           {
             "q": "Preciso manter um servidor?",
-            "a": "Não. O TinyFloor é hospedado para você. Crie um escritório no navegador e convide sua equipe."
+            "a": "Não. O TinyFloor é hospedado por nós: crie um escritório no navegador e convide sua equipe. O WorkAdventure também é hospedado e, além disso, pode rodar nos seus próprios servidores."
           },
           {
-            "q": "Como as chamadas começam no TinyFloor?",
-            "a": "Chegue perto de um colega e o cartão de chamada aparece. Um toque inicia a chamada. Para um grupo, entre numa reunião e seu personagem vai até a sala de reuniões."
+            "q": "Como começam as chamadas no TinyFloor?",
+            "a": "Vá até um colega e o cartão de chamada dele aparece. Um toque inicia a chamada. Para um grupo, entre numa reunião e seu personagem caminha até a sala de reunião."
           }
         ]
       },

@@ -225,11 +225,11 @@
       "workadventure": {
         "label": "WorkAdventure-alternatief",
         "meta": {
-          "title": "WorkAdventure-alternatief voor kleine teams",
-          "description": "Het gratis abonnement van WorkAdventure laat 10 mensen tegelijk toe. TinyFloor is een virtueel kantoor in pixel art met videogesprekken op nabijheid, gratis voor 3 mensen en $29 per maand voor het hele team."
+          "title": "Alternatief voor WorkAdventure: prijzen, het gratis abonnement en een gehoste optie",
+          "description": "Het gratis abonnement van WorkAdventure past bij 10 mensen tegelijk in openbare ruimtes, en Business kost $ 9–11 per gebruiker per maand. Wat een klein team betaalt, wat WorkAdventure beter doet en TinyFloor voor $ 29 voor het hele team."
         },
         "title": "Een <em>WorkAdventure-alternatief</em> met ruimte om te groeien.",
-        "subtitle": "WorkAdventure is ook een pixel-art kantoor, en het gratis abonnement biedt plek aan 10 mensen tegelijk. TinyFloor is gratis voor 3 mensen en daarna één vaste prijs, geen prijs per persoon.",
+        "subtitle": "WorkAdventure is ook een kantoor in pixel art: het gratis abonnement past bij 10 mensen tegelijk in openbare ruimtes, en Business rekent naar hoeveel mensen tegelijk online kunnen zijn. TinyFloor is gratis voor 3, daarna één prijs voor het hele team: $ 29 per maand.",
         "points": [
           {
             "title": "Twee keer zoveel plek",
@@ -245,27 +245,31 @@
           }
         ],
         "them": {
-          "price": "Business vanaf € 8 per gebruiker per maand",
-          "freePlan": "Tot 10 mensen tegelijk",
+          "price": "Business vanaf $ 9 per gebruiker per maand",
+          "freePlan": "Tot 10 mensen tegelijk, in openbare ruimtes",
           "browser": "Ja",
           "screenShare": "Ja"
         },
         "faq": [
           {
             "q": "Is WorkAdventure gratis?",
-            "a": "WorkAdventure heeft een gratis abonnement voor maximaal 10 gelijktijdige gebruikers. Het Business-abonnement begint bij € 8 per gebruiker per maand, en evenementprijzen bij € 4 per gebruiker per dag. TinyFloor is gratis voor maximaal 3 mensen en kost $29 per maand voor het hele team."
+            "a": "WorkAdventure heeft een gratis abonnement voor maximaal 10 mensen die tegelijk verbonden zijn, zonder tijdslimiet, maar de ruimtes zijn openbaar voor iedereen met de link. Business kost $ 9 per gebruiker per maand bij jaarbetaling of $ 11 per maand, en evenementen vanaf $ 5 per gebruiker per dag. TinyFloor is gratis voor maximaal 3 mensen en kost $ 29 per maand voor het hele team."
           },
           {
-            "q": "Kan ik de kaart in TinyFloor aanpassen?",
-            "a": "Nog niet. Elk kantoor gebruikt dezelfde verdieping. Met WorkAdventure ontwerp je je eigen kaarten, handig voor teams die een eigen wereld willen."
+            "q": "Wat kost WorkAdventure voor 10 mensen?",
+            "a": "Als openbare ruimtes prima zijn, dekt het gratis abonnement 10 mensen tegelijk. Met Business kost ruimte voor 10 tegelijk $ 90 per maand bij jaarbetaling of $ 110 per maand. TinyFloor kost $ 29 per maand voor hetzelfde team."
+          },
+          {
+            "q": "Kan ik de plattegrond in TinyFloor aanpassen?",
+            "a": "Nee. Elk kantoor is kant-en-klaar, met bureaus, een vergaderruimte en een whiteboard. WorkAdventure heeft een kaarteditor en sjablonen, wat past bij teams die een eigen wereld willen."
           },
           {
             "q": "Moet ik een server draaien?",
-            "a": "Nee. TinyFloor wordt voor je gehost. Maak een kantoor in de browser en nodig je team uit."
+            "a": "Nee. TinyFloor wordt voor je gehost: maak een kantoor in de browser en nodig je team uit. WorkAdventure wordt ook gehost en kan daarnaast op je eigen servers draaien."
           },
           {
-            "q": "Hoe starten gesprekken in TinyFloor?",
-            "a": "Loop naar een collega toe en diens belkaart verschijnt. Eén tik start het gesprek. Voor een groep doe je mee aan een meeting en loopt je poppetje naar de vergaderruimte."
+            "q": "Hoe beginnen gesprekken in TinyFloor?",
+            "a": "Loop naar een collega en diens belkaart verschijnt. Eén tik start het gesprek. Voor een groep sluit je aan bij een vergadering en loopt je figuur de vergaderruimte in."
           }
         ]
       },

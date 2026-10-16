@@ -39,7 +39,7 @@
           ],
           [
             "WorkAdventure",
-            "From €64",
+            "$72 billed yearly, $88 monthly",
             "Up to 10 people at once",
             "Teams that want an open-source map"
           ],
@@ -62,7 +62,7 @@
             "Teams that only need voice rooms"
           ]
         ],
-        "note": "From each product's own pricing page in October 2026, before tax. Per-person prices multiplied by 8; WorkAdventure's Business plan starts at €8 a user."
+        "note": "From each product's own pricing page in October 2026, before tax. Per-person prices multiplied by 8; WorkAdventure's Business plan starts at $9 a user."
       }
     },
     {
@@ -92,7 +92,7 @@
         },
         {
           "title": "WorkAdventure",
-          "detail": "Business from €8 a user a month; free for up to 10 at once",
+          "detail": "Business from $9 a user a month; free for up to 10 at once",
           "body": "Another pixel-art office, and open source, so a technical team can customise the map. Its free plan counts people online at the same time, up to 10, rather than members."
         },
         {
@@ -649,6 +649,194 @@
       "title": "How we compared",
       "body": [
         "Kumospace's prices, limits and features come from its pricing page, read in October 2026, in US dollars before tax. If something wasn't stated there, we left it out rather than guess. We make TinyFloor, so we've said plainly what it doesn't do. Prices change: check Kumospace's page before you buy."
+      ]
+    }
+  ],
+  "workadventure": [
+    {
+      "title": "WorkAdventure and TinyFloor at a glance",
+      "body": [
+        "Both are pixel-art offices in the browser where you walk up to people to talk. WorkAdventure is built to be shaped and hosted your way; TinyFloor is built to be ready the moment you open it."
+      ],
+      "table": {
+        "head": [
+          "",
+          "WorkAdventure",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "A team of 8, a month",
+            "Free in public rooms; Business $72 billed yearly, $88 monthly",
+            "$29 for the whole team"
+          ],
+          [
+            "Free plan",
+            "Up to 10 people at once, no time limit",
+            "Up to 3 people, every feature"
+          ],
+          [
+            "How it's priced",
+            "Per user, for how many can be online at once",
+            "One price for the office"
+          ],
+          [
+            "Keeping the office private",
+            "Free rooms are public; members and email limits on paid plans",
+            "Private on every plan"
+          ],
+          [
+            "The map",
+            "Templates and a map editor",
+            "A ready-made office"
+          ],
+          [
+            "Hosting",
+            "Hosted, or on your own servers",
+            "Hosted"
+          ],
+          [
+            "Recording",
+            "On paid plans",
+            "No"
+          ],
+          [
+            "Integrations",
+            "Microsoft Teams, Outlook, Google Calendar, Google Meet on paid plans",
+            "None"
+          ]
+        ],
+        "note": "WorkAdventure's details from its pricing page in October 2026, in US dollars before tax."
+      }
+    },
+    {
+      "title": "What WorkAdventure costs by team size",
+      "body": [
+        "Business is billed per user for the number of people who can be connected at the same time, at $9 a user a month on a yearly plan or $11 month to month. The free plan covers up to 10 at once, with public rooms."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "WorkAdventure Business, billed monthly",
+          "WorkAdventure Business, billed yearly, a month",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 people",
+            "$55",
+            "$45",
+            "$29"
+          ],
+          [
+            "8 people",
+            "$88",
+            "$72",
+            "$29"
+          ],
+          [
+            "10 people",
+            "$110",
+            "$90",
+            "$29"
+          ],
+          [
+            "12 people",
+            "$132",
+            "$108",
+            "$29"
+          ]
+        ],
+        "note": "WorkAdventure Business at $11 a user monthly or $9 yearly, for everyone online at once (WorkAdventure pricing page, October 2026). TinyFloor Pro is monthly; teams of up to 3 stay free."
+      }
+    },
+    {
+      "title": "Why small teams look for a WorkAdventure alternative",
+      "items": [
+        {
+          "title": "Free rooms are public",
+          "body": "WorkAdventure says its free plan's rooms are open to anyone with the link. Members, roles and limiting entry to certain email addresses come with the paid plans."
+        },
+        {
+          "title": "A world to build first",
+          "body": "Templates get you started, but the map is yours to arrange, and a custom one is often a job for a designer. Some teams just want to walk in."
+        },
+        {
+          "title": "Self-hosting is a project",
+          "body": "Running WorkAdventure on your own servers gives you full control, and it also means someone on the team keeps it up and updated."
+        },
+        {
+          "title": "Paying for capacity",
+          "body": "Business is priced for how many people can be online at once, so you choose a number and pay for it, and change it as the team grows."
+        }
+      ]
+    },
+    {
+      "title": "What WorkAdventure does better",
+      "items": [
+        {
+          "title": "A world of your own",
+          "body": "A map editor, templates, personalised desks and avatars, and a design team you can hire for a custom map. TinyFloor has one ready-made office."
+        },
+        {
+          "title": "Open source and self-hosting",
+          "body": "You can run it on your own servers or private cloud and keep your data there. TinyFloor is hosted only."
+        },
+        {
+          "title": "Events and conferences",
+          "body": "Speaker zones where only the speaker is heard, day pricing for one-off events, recording and live streaming to YouTube."
+        },
+        {
+          "title": "Integrations",
+          "body": "Paid plans connect Microsoft Teams, Outlook, Google Calendar and Google Meet, and there are AI bots and webhooks."
+        },
+        {
+          "title": "A bigger free plan",
+          "body": "Ten people at once, with no time limit, is one of the roomiest free plans among the virtual offices we compared, if public rooms are fine for you."
+        }
+      ]
+    },
+    {
+      "title": "Which one fits your team",
+      "items": [
+        {
+          "title": "TinyFloor, for a ready office",
+          "body": "For a team of 4 to 15 that wants a private office it can open today, with desks, a meeting room and chat, for one price instead of a count of seats."
+        },
+        {
+          "title": "WorkAdventure, for your own world",
+          "body": "If you want to design the space, host it yourself, run events in it, or connect it to Microsoft Teams or Google Calendar."
+        },
+        {
+          "title": "WorkAdventure free, for an open space",
+          "body": "If public rooms are fine and you're 10 or fewer online at once, the free plan may be all you need."
+        }
+      ]
+    },
+    {
+      "title": "Moving a team from WorkAdventure",
+      "items": [
+        {
+          "title": "Make an office",
+          "detail": "Two minutes",
+          "body": "Name it after the team. The floor, desks and meeting room are ready; there's no map to carry over."
+        },
+        {
+          "title": "Share one invite link",
+          "detail": "In your team chat",
+          "body": "Teammates sign in with Google or email and walk in from the browser, on a laptop or a phone."
+        },
+        {
+          "title": "Run a normal week there",
+          "detail": "Standup in the meeting room",
+          "body": "Keep your WorkAdventure world until the week is up, then decide which one the team actually opened."
+        }
+      ]
+    },
+    {
+      "title": "How we compared",
+      "body": [
+        "WorkAdventure's prices, limits and features come from its pricing page and its pricing FAQ, read in October 2026, in US dollars before tax. If something wasn't stated there, we left it out rather than guess. We make TinyFloor, so we've said plainly what it doesn't do. Prices change: check WorkAdventure's page before you buy."
       ]
     }
   ]

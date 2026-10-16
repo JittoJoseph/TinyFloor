@@ -225,11 +225,11 @@
       "workadventure": {
         "label": "WorkAdventure-vaihtoehto",
         "meta": {
-          "title": "WorkAdventure-vaihtoehto pienille tiimeille",
-          "description": "WorkAdventuren ilmainen tilaus sallii 10 henkeä kerralla. TinyFloor on pikselitaidetta oleva virtuaalitoimisto, jossa on läheisyyteen perustuvat videopuhelut, ilmainen 3 hengelle ja $29 kuukaudessa koko tiimille."
+          "title": "Vaihtoehto WorkAdventurelle: hinnat, ilmaisversio ja ylläpidetty vaihtoehto",
+          "description": "WorkAdventuren ilmaisversioon mahtuu 10 henkeä kerrallaan julkisiin huoneisiin, ja Business maksaa 9–11 $ käyttäjältä kuukaudessa. Mitä pieni tiimi maksaa, missä WorkAdventure on parempi ja TinyFloor 29 $:lla koko tiimiltä."
         },
         "title": "<em>WorkAdventure-vaihtoehto</em>, jossa on tilaa kasvaa.",
-        "subtitle": "WorkAdventure on myös pikselitaiteinen toimisto, ja sen ilmaiseen pakettiin mahtuu 10 henkeä kerralla. TinyFloor on ilmainen 3 hengelle ja sen jälkeen kiinteähintainen, ei henkilökohtaista hintaa.",
+        "subtitle": "WorkAdventure on myös pikselitaidetoimisto: ilmaisversioon mahtuu 10 henkeä kerrallaan julkisiin huoneisiin, ja Business laskutetaan sen mukaan, montako voi olla paikalla yhtä aikaa. TinyFloor on ilmainen 3 hengelle, sitten yksi hinta koko tiimille: 29 $ kuukaudessa.",
         "points": [
           {
             "title": "Tuplasti tilaa",
@@ -245,27 +245,31 @@
           }
         ],
         "them": {
-          "price": "Business alkaen 8 € käyttäjältä kuukaudessa",
-          "freePlan": "Enintään 10 henkeä kerralla",
+          "price": "Business alkaen 9 $ käyttäjältä kuukaudessa",
+          "freePlan": "Enintään 10 henkeä kerrallaan, julkisissa huoneissa",
           "browser": "Kyllä",
           "screenShare": "Kyllä"
         },
         "faq": [
           {
             "q": "Onko WorkAdventure ilmainen?",
-            "a": "WorkAdventurella on ilmainen paketti enintään 10 samanaikaiselle käyttäjälle. Business-paketti alkaa 8 € käyttäjältä kuukaudessa, ja tapahtumahinnat 4 € käyttäjältä päivässä. TinyFloor on ilmainen enintään 3 hengelle ja maksaa $29 kuukaudessa koko tiimille."
+            "a": "WorkAdventurella on ilmaisversio enintään 10 yhtä aikaa yhdistetylle henkilölle ilman aikarajaa, mutta huoneet ovat julkisia kaikille, joilla on linkki. Business maksaa 9 $ käyttäjältä kuukaudessa vuosimaksulla tai 11 $ kuukausittain, ja tapahtumat alkaen 5 $ käyttäjältä päivässä. TinyFloor on ilmainen enintään 3 hengelle ja maksaa 29 $ kuukaudessa koko tiimiltä."
           },
           {
-            "q": "Voinko muokata karttaa TinyFloorissä?",
-            "a": "Ei vielä. Kaikki toimistot käyttävät samaa kerrosta. WorkAdventuressa voit suunnitella omat karttasi, mikä sopii tiimeille, jotka haluavat oman maailman."
+            "q": "Mitä WorkAdventure maksaa 10 hengelle?",
+            "a": "Jos julkiset huoneet käyvät, ilmaisversio kattaa 10 henkeä kerrallaan. Businessissa tila 10 hengelle kerrallaan maksaa 90 $ kuukaudessa vuosimaksulla tai 110 $ kuukausittain. TinyFloor maksaa samalle tiimille 29 $ kuukaudessa."
           },
           {
-            "q": "Tarvitsenko oman palvelimen?",
-            "a": "Ei. TinyFloor ylläpidetään puolestasi. Tee toimisto selaimessa ja kutsu tiimisi."
+            "q": "Voinko muokata karttaa TinyFloorissa?",
+            "a": "Et. Jokainen toimisto tulee valmiina, työpöytineen, neuvotteluhuoneineen ja tauluineen. WorkAdventuressa on karttaeditori ja pohjat, jotka sopivat tiimeille, jotka haluavat oman maailman."
           },
           {
-            "q": "Miten puhelut alkavat TinyFloorissä?",
-            "a": "Kävele kollegan luo, niin hänen puhelukorttinsa ilmestyy. Yksi napautus aloittaa puhelun. Ryhmänä liityt kokoukseen, ja hahmosi kävelee kokoushuoneeseen."
+            "q": "Tarvitseeko minun ylläpitää palvelinta?",
+            "a": "Ei. TinyFlooria ylläpidetään puolestasi: luo toimisto selaimessa ja kutsu tiimisi. WorkAdventurea ylläpidetään myös, ja sen voi lisäksi asentaa omille palvelimille."
+          },
+          {
+            "q": "Miten puhelut alkavat TinyFloorissa?",
+            "a": "Kävele kollegan luo, niin hänen puhelukorttinsa tulee näkyviin. Yksi napautus aloittaa puhelun. Ryhmää varten liity kokoukseen, niin hahmosi kävelee neuvotteluhuoneeseen."
           }
         ]
       },

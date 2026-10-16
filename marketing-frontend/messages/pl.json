@@ -225,11 +225,11 @@
       "workadventure": {
         "label": "Alternatywa dla WorkAdventure",
         "meta": {
-          "title": "Alternatywa dla WorkAdventure dla małych zespołów",
-          "description": "Darmowy plan WorkAdventure pozwala na 10 osób naraz. TinyFloor to wirtualne biuro w pixel arcie z rozmowami wideo na podstawie bliskości, za darmo dla 3 osób i za $29 miesięcznie za cały zespół."
+          "title": "Alternatywa dla WorkAdventure: ceny, darmowy plan i opcja hostowana",
+          "description": "Darmowy plan WorkAdventure mieści 10 osób naraz w publicznych pokojach, a Business kosztuje 9–11 $ za użytkownika miesięcznie. Ile płaci mały zespół, co WorkAdventure robi lepiej i TinyFloor za 29 $ za cały zespół."
         },
         "title": "<em>Alternatywa dla WorkAdventure</em> z miejscem na rozwój.",
-        "subtitle": "WorkAdventure to również biuro w stylu pixel art, a jego darmowy plan mieści 10 osób jednocześnie. TinyFloor jest darmowy dla 3 osób, a potem ma jedną stałą cenę, a nie cenę za osobę.",
+        "subtitle": "WorkAdventure to też biuro w stylu pixel art: darmowy plan mieści 10 osób naraz w publicznych pokojach, a Business jest rozliczany według tego, ile osób może być online jednocześnie. TinyFloor jest za darmo dla 3 osób, potem jedna cena za cały zespół: 29 $ miesięcznie.",
         "points": [
           {
             "title": "Dwa razy więcej miejsca",
@@ -245,27 +245,31 @@
           }
         ],
         "them": {
-          "price": "Business od 8 € za użytkownika miesięcznie",
-          "freePlan": "Do 10 osób jednocześnie",
+          "price": "Business od 9 $ za użytkownika miesięcznie",
+          "freePlan": "Do 10 osób naraz, w publicznych pokojach",
           "browser": "Tak",
           "screenShare": "Tak"
         },
         "faq": [
           {
             "q": "Czy WorkAdventure jest darmowy?",
-            "a": "WorkAdventure ma darmowy plan dla maksymalnie 10 jednoczesnych użytkowników. Plan Business kosztuje od 8 € za użytkownika miesięcznie, a ceny na wydarzenia od 4 € za użytkownika dziennie. TinyFloor jest darmowy do 3 osób i kosztuje $29 miesięcznie za cały zespół."
+            "a": "WorkAdventure ma darmowy plan dla maksymalnie 10 osób połączonych jednocześnie, bez limitu czasu, ale pokoje są publiczne dla każdego, kto ma link. Business kosztuje 9 $ za użytkownika miesięcznie przy płatności rocznej albo 11 $ miesięcznie, a wydarzenia od 5 $ za użytkownika dziennie. TinyFloor jest darmowy dla maksymalnie 3 osób i kosztuje 29 $ miesięcznie za cały zespół."
+          },
+          {
+            "q": "Ile kosztuje WorkAdventure dla 10 osób?",
+            "a": "Jeśli publiczne pokoje wam odpowiadają, darmowy plan obejmuje 10 osób naraz. W planie Business miejsce dla 10 osób naraz kosztuje 90 $ miesięcznie przy płatności rocznej albo 110 $ miesięcznie. TinyFloor kosztuje 29 $ miesięcznie za ten sam zespół."
           },
           {
             "q": "Czy mogę dostosować mapę w TinyFloor?",
-            "a": "Jeszcze nie. Każde biuro korzysta z tego samego piętra. WorkAdventure pozwala projektować własne mapy, co pasuje zespołom, które chcą własnego świata."
+            "a": "Nie. Każde biuro jest gotowe, z biurkami, salą spotkań i tablicą. WorkAdventure ma edytor map i szablony, co pasuje do zespołów, które chcą własnego świata."
           },
           {
             "q": "Czy muszę utrzymywać serwer?",
-            "a": "Nie. TinyFloor jest hostowany za ciebie. Załóż biuro w przeglądarce i zaproś zespół."
+            "a": "Nie. TinyFloor jest hostowany za ciebie: utwórz biuro w przeglądarce i zaproś zespół. WorkAdventure też jest hostowany, a do tego można go uruchomić na własnych serwerach."
           },
           {
             "q": "Jak zaczynają się rozmowy w TinyFloor?",
-            "a": "Podejdź do kogoś z zespołu, a pojawi się karta połączenia. Jedno kliknięcie rozpoczyna rozmowę. W grupie dołącz do spotkania, a twoja postać pójdzie do sali spotkań."
+            "a": "Podejdź do kogoś z zespołu, a pojawi się jego karta rozmowy. Jedno dotknięcie zaczyna rozmowę. Dla grupy dołącz do spotkania, a twoja postać wejdzie do sali spotkań."
           }
         ]
       },

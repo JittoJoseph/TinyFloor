@@ -225,11 +225,11 @@
       "workadventure": {
         "label": "Alternativ til WorkAdventure",
         "meta": {
-          "title": "WorkAdventure-alternativ for små teams",
-          "description": "WorkAdventures gratisplan tillader 10 personer ad gangen. TinyFloor er et virtuelt kontor i pixel art med videoopkald efter nærhed, gratis for 3 personer og $29 om måneden for hele teamet."
+          "title": "Alternativ til WorkAdventure: priser, gratisplanen og en hostet mulighed",
+          "description": "WorkAdventures gratisplan rummer 10 personer ad gangen i offentlige rum, og Business koster 9–11 $ per bruger om måneden. Hvad et lille team betaler, hvad WorkAdventure gør bedre, og TinyFloor til 29 $ for hele teamet."
         },
         "title": "Et <em>alternativ til WorkAdventure</em> med plads til at vokse.",
-        "subtitle": "WorkAdventure er også et kontor i pixel art, og gratisplanen har plads til 10 personer ad gangen. TinyFloor er gratis for 3 personer og derefter én fast pris, ikke en pris pr. person.",
+        "subtitle": "WorkAdventure er også et kontor i pixelkunst: gratisplanen rummer 10 personer ad gangen i offentlige rum, og Business tager betaling efter, hvor mange der kan være online samtidig. TinyFloor er gratis for 3, derefter én pris for hele teamet: 29 $ om måneden.",
         "points": [
           {
             "title": "Dobbelt så meget plads",
@@ -245,27 +245,31 @@
           }
         ],
         "them": {
-          "price": "Business fra 8 € pr. bruger om måneden",
-          "freePlan": "Op til 10 personer ad gangen",
+          "price": "Business fra 9 $ per bruger om måneden",
+          "freePlan": "Op til 10 personer ad gangen, i offentlige rum",
           "browser": "Ja",
           "screenShare": "Ja"
         },
         "faq": [
           {
             "q": "Er WorkAdventure gratis?",
-            "a": "WorkAdventure har en gratisplan for op til 10 samtidige brugere. Business-planen starter ved 8 € pr. bruger om måneden, og eventpriser ved 4 € pr. bruger pr. dag. TinyFloor er gratis for op til 3 personer og koster $29 om måneden for hele teamet."
+            "a": "WorkAdventure har en gratisplan til op til 10 personer forbundet ad gangen, uden tidsgrænse, men rummene er offentlige for alle med linket. Business koster 9 $ per bruger om måneden ved årlig betaling eller 11 $ månedligt, og events fra 5 $ per bruger om dagen. TinyFloor er gratis for op til 3 personer og koster 29 $ om måneden for hele teamet."
+          },
+          {
+            "q": "Hvad koster WorkAdventure for 10 personer?",
+            "a": "Hvis offentlige rum er fine, dækker gratisplanen 10 personer ad gangen. Med Business koster plads til 10 ad gangen 90 $ om måneden ved årlig betaling eller 110 $ månedligt. TinyFloor koster 29 $ om måneden for det samme team."
           },
           {
             "q": "Kan jeg tilpasse kortet i TinyFloor?",
-            "a": "Ikke endnu. Alle kontorer bruger den samme etage. WorkAdventure lader dig designe dine egne kort, hvilket passer til teams, der vil have deres egen verden."
+            "a": "Nej. Hvert kontor er klar, med skriveborde, et mødelokale og et whiteboard. WorkAdventure har en korteditor og skabeloner, som passer til teams, der vil have deres egen verden."
           },
           {
-            "q": "Skal jeg drive en server?",
-            "a": "Nej. TinyFloor hostes for dig. Lav et kontor i browseren, og inviter dit team."
+            "q": "Skal jeg køre en server?",
+            "a": "Nej. TinyFloor hostes for dig: opret et kontor i browseren og inviter dit team. WorkAdventure hostes også og kan desuden køre på dine egne servere."
           },
           {
             "q": "Hvordan starter opkald i TinyFloor?",
-            "a": "Gå hen til en kollega, og deres opkaldskort dukker op. Et tryk starter opkaldet. Til en gruppe deltager du i et møde, og din figur går ind i mødelokalet."
+            "a": "Gå hen til en kollega, så dukker opkaldskortet op. Ét tryk starter opkaldet. For en gruppe deltager du i et møde, og din figur går ind i mødelokalet."
           }
         ]
       },

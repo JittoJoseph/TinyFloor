@@ -225,11 +225,11 @@
       "workadventure": {
         "label": "WorkAdventure alternative",
         "meta": {
-          "title": "WorkAdventure Alternative for Small Teams",
-          "description": "WorkAdventure's free plan allows 10 people at once. TinyFloor is a pixel-art virtual office with proximity video calls, free for 3 people and $29 a month for the whole team."
+          "title": "WorkAdventure Alternative: Pricing, the Free Plan and a Hosted Option",
+          "description": "WorkAdventure's free plan fits 10 people at once in public rooms, and Business is $9–11 a user a month. What a small team pays, what WorkAdventure does better, and TinyFloor at $29 for the whole team."
         },
         "title": "A <em>WorkAdventure alternative</em> with room to grow.",
-        "subtitle": "WorkAdventure is a pixel-art office too, and its free plan fits 10 people at once. TinyFloor is free for 3 people and one flat price after that, not a price per person.",
+        "subtitle": "WorkAdventure is a pixel-art office too: its free plan fits 10 people at once in public rooms, and Business is billed for how many people can be online together. TinyFloor is free for 3, then one price for the whole team: $29 a month.",
         "points": [
           {
             "title": "Twice the room",
@@ -245,23 +245,27 @@
           }
         ],
         "them": {
-          "price": "Business from €8 per user per month",
-          "freePlan": "Up to 10 people at once",
+          "price": "Business from $9 per user per month",
+          "freePlan": "Up to 10 people at once, in public rooms",
           "browser": "Yes",
           "screenShare": "Yes"
         },
         "faq": [
           {
             "q": "Is WorkAdventure free?",
-            "a": "WorkAdventure has a free plan for up to 10 simultaneous users. The Business plan starts at €8 per user per month, and event pricing starts at €4 per user per day. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+            "a": "WorkAdventure has a free plan for up to 10 people connected at once, with no time limit, but its rooms are public to anyone with the link. Business is $9 a user a month billed yearly or $11 monthly, and events are from $5 a user a day. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+          },
+          {
+            "q": "How much does WorkAdventure cost for 10 people?",
+            "a": "If public rooms are fine, the free plan covers 10 people at once. On Business, room for 10 at once is $90 a month billed yearly or $110 monthly. TinyFloor is $29 a month for the same team."
           },
           {
             "q": "Can I customize the map in TinyFloor?",
-            "a": "Not yet. Every office uses the same floor. WorkAdventure lets you design your own maps, which suits teams that want a custom world."
+            "a": "No. Every office comes ready, with desks, a meeting room and a whiteboard. WorkAdventure has a map editor and templates, which suits teams that want a world of their own."
           },
           {
             "q": "Do I need to run a server?",
-            "a": "No. TinyFloor is hosted for you. Make an office in the browser and invite your team."
+            "a": "No. TinyFloor is hosted for you: make an office in the browser and invite your team. WorkAdventure is hosted too, and it can also be self-hosted if you want to run it on your own servers."
           },
           {
             "q": "How do calls start in TinyFloor?",

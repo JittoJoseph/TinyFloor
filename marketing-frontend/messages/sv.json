@@ -225,11 +225,11 @@
       "workadventure": {
         "label": "Alternativ till WorkAdventure",
         "meta": {
-          "title": "WorkAdventure-alternativ för små team",
-          "description": "WorkAdventures gratisplan tillåter 10 personer samtidigt. TinyFloor är ett virtuellt kontor i pixelgrafik med videosamtal efter närhet, gratis för 3 personer och $29 i månaden för hela teamet."
+          "title": "Alternativ till WorkAdventure: priser, gratisplanen och ett hostat alternativ",
+          "description": "WorkAdventures gratisplan rymmer 10 personer samtidigt i offentliga rum, och Business kostar 9–11 $ per användare och månad. Vad ett litet team betalar, vad WorkAdventure gör bättre och TinyFloor för 29 $ för hela teamet."
         },
         "title": "Ett <em>alternativ till WorkAdventure</em> med plats att växa.",
-        "subtitle": "WorkAdventure är också ett kontor i pixelgrafik, och gratisplanen rymmer 10 personer samtidigt. TinyFloor är gratis för 3 personer och sedan ett fast pris, inte ett pris per person.",
+        "subtitle": "WorkAdventure är också ett kontor i pixelkonst: gratisplanen rymmer 10 personer samtidigt i offentliga rum, och Business tar betalt efter hur många som kan vara online samtidigt. TinyFloor är gratis för 3, sedan ett pris för hela teamet: 29 $ per månad.",
         "points": [
           {
             "title": "Dubbelt så mycket plats",
@@ -245,27 +245,31 @@
           }
         ],
         "them": {
-          "price": "Business från 8 € per användare i månaden",
-          "freePlan": "Upp till 10 personer samtidigt",
+          "price": "Business från 9 $ per användare och månad",
+          "freePlan": "Upp till 10 personer samtidigt, i offentliga rum",
           "browser": "Ja",
           "screenShare": "Ja"
         },
         "faq": [
           {
             "q": "Är WorkAdventure gratis?",
-            "a": "WorkAdventure har en gratisplan för upp till 10 samtidiga användare. Business-planen börjar på 8 € per användare i månaden, och evenemangspriser på 4 € per användare per dag. TinyFloor är gratis för upp till 3 personer och kostar $29 i månaden för hela teamet."
+            "a": "WorkAdventure har en gratisplan för upp till 10 personer anslutna samtidigt, utan tidsgräns, men rummen är offentliga för alla som har länken. Business kostar 9 $ per användare och månad vid årsbetalning eller 11 $ månadsvis, och evenemang från 5 $ per användare och dag. TinyFloor är gratis för upp till 3 personer och kostar 29 $ per månad för hela teamet."
+          },
+          {
+            "q": "Vad kostar WorkAdventure för 10 personer?",
+            "a": "Om offentliga rum går bra täcker gratisplanen 10 personer samtidigt. Med Business kostar plats för 10 samtidigt 90 $ per månad vid årsbetalning eller 110 $ månadsvis. TinyFloor kostar 29 $ per månad för samma team."
           },
           {
             "q": "Kan jag anpassa kartan i TinyFloor?",
-            "a": "Inte än. Alla kontor använder samma våning. I WorkAdventure kan du designa egna kartor, vilket passar team som vill ha en egen värld."
+            "a": "Nej. Varje kontor är färdigt, med skrivbord, mötesrum och whiteboard. WorkAdventure har en kartredigerare och mallar, som passar team som vill ha en egen värld."
           },
           {
-            "q": "Måste jag köra en server?",
-            "a": "Nej. TinyFloor hostas åt dig. Skapa ett kontor i webbläsaren och bjud in ditt team."
+            "q": "Behöver jag köra en server?",
+            "a": "Nej. TinyFloor hostas åt dig: skapa ett kontor i webbläsaren och bjud in teamet. WorkAdventure hostas också och kan dessutom köras på egna servrar."
           },
           {
-            "q": "Hur startar samtal i TinyFloor?",
-            "a": "Gå fram till en kollega så dyker deras samtalskort upp. Ett tryck startar samtalet. För en grupp går du med i ett möte, och din figur går in i mötesrummet."
+            "q": "Hur börjar samtal i TinyFloor?",
+            "a": "Gå fram till en kollega så visas samtalskortet. Ett tryck startar samtalet. För en grupp går du med i ett möte, så går din figur in i mötesrummet."
           }
         ]
       },

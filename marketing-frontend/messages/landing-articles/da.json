@@ -39,7 +39,7 @@
           ],
           [
             "WorkAdventure",
-            "Fra 64 €",
+            "72 $ årligt, 88 $ månedligt",
             "Op til 10 personer samtidig",
             "Teams, der vil have et kort med åben kildekode"
           ],
@@ -62,7 +62,7 @@
             "Teams, der kun har brug for talekanaler"
           ]
         ],
-        "note": "Fra hvert produkts prisside i oktober 2026, ekskl. moms. Priser per person gange 8; WorkAdventures Business-plan starter ved 8 € per bruger."
+        "note": "Fra hvert produkts prisside i oktober 2026, ekskl. moms. Priser per person gange 8; WorkAdventures Business-plan starter ved 9 $ per bruger."
       }
     },
     {
@@ -92,7 +92,7 @@
         },
         {
           "title": "WorkAdventure",
-          "detail": "Business fra 8 € per bruger om måneden; gratis op til 10 samtidig",
+          "detail": "Business fra 9 $ per bruger om måneden; gratis op til 10 samtidig",
           "body": "Endnu et kontor i pixelkunst, og med åben kildekode, så et teknisk team kan tilpasse kortet. Gratisplanen tæller personer, der er online samtidig, op til 10, ikke medlemmer."
         },
         {
@@ -649,6 +649,194 @@
       "title": "Sådan sammenlignede vi",
       "body": [
         "Kumospaces priser, grænser og funktioner kommer fra dets prisside, læst i oktober 2026, i amerikanske dollar ekskl. moms. Hvad der ikke stod der, udelod vi i stedet for at gætte. Vi laver TinyFloor, så vi siger tydeligt, hvad det ikke kan. Priser ændrer sig: tjek Kumospaces side, før du køber."
+      ]
+    }
+  ],
+  "workadventure": [
+    {
+      "title": "WorkAdventure og TinyFloor i overblik",
+      "body": [
+        "Begge er kontorer i pixelkunst i browseren, hvor man går hen til folk for at snakke. WorkAdventure er bygget til at blive formet og hostet på din måde; TinyFloor til at være klar, i det øjeblik du åbner det."
+      ],
+      "table": {
+        "head": [
+          "",
+          "WorkAdventure",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Et team på 8, om måneden",
+            "Gratis i offentlige rum; Business 72 $ årligt, 88 $ månedligt",
+            "29 $ for hele teamet"
+          ],
+          [
+            "Gratisplan",
+            "Op til 10 personer ad gangen, uden tidsgrænse",
+            "Op til 3 personer, alle funktioner"
+          ],
+          [
+            "Hvordan prisen beregnes",
+            "Per bruger, efter hvor mange der kan være online samtidig",
+            "Én pris for kontoret"
+          ],
+          [
+            "At holde kontoret privat",
+            "Gratis rum er offentlige; medlemmer og e-mailbegrænsning i betalte planer",
+            "Privat i alle planer"
+          ],
+          [
+            "Kortet",
+            "Skabeloner og en korteditor",
+            "Et færdigt kontor"
+          ],
+          [
+            "Hosting",
+            "Hostet, eller på egne servere",
+            "Hostet"
+          ],
+          [
+            "Optagelse",
+            "I betalte planer",
+            "Nej"
+          ],
+          [
+            "Integrationer",
+            "Microsoft Teams, Outlook, Google Kalender, Google Meet i betalte planer",
+            "Ingen"
+          ]
+        ],
+        "note": "Oplysninger om WorkAdventure fra dets prisside i oktober 2026, i amerikanske dollar ekskl. moms."
+      }
+    },
+    {
+      "title": "Hvad WorkAdventure koster efter teamstørrelse",
+      "body": [
+        "Business tager betaling per bruger for det antal personer, der kan være forbundet samtidig: 9 $ per bruger om måneden på en årsplan eller 11 $ måned for måned. Gratisplanen dækker op til 10 ad gangen, med offentlige rum."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "WorkAdventure Business, månedligt",
+          "WorkAdventure Business, årligt, om måneden",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 personer",
+            "55 $",
+            "45 $",
+            "29 $"
+          ],
+          [
+            "8 personer",
+            "88 $",
+            "72 $",
+            "29 $"
+          ],
+          [
+            "10 personer",
+            "110 $",
+            "90 $",
+            "29 $"
+          ],
+          [
+            "12 personer",
+            "132 $",
+            "108 $",
+            "29 $"
+          ]
+        ],
+        "note": "WorkAdventure Business til 11 $ per bruger månedligt eller 9 $ årligt, for alle, der er online samtidig (WorkAdventures prisside, oktober 2026). TinyFloor Pro betales månedligt; teams på op til 3 forbliver gratis."
+      }
+    },
+    {
+      "title": "Hvorfor små teams leder efter et alternativ til WorkAdventure",
+      "items": [
+        {
+          "title": "Gratis rum er offentlige",
+          "body": "WorkAdventure skriver, at rummene i gratisplanen er åbne for alle med linket. Medlemmer, roller og at begrænse adgangen til bestemte e-mailadresser følger med de betalte planer."
+        },
+        {
+          "title": "En verden, der skal bygges først",
+          "body": "Skabeloner hjælper i gang, men kortet indretter du selv, og et eget er ofte en opgave for en designer. Nogle teams vil bare gå ind."
+        },
+        {
+          "title": "At hoste selv er et projekt",
+          "body": "At køre WorkAdventure på egne servere giver fuld kontrol, men betyder også, at nogen i teamet holder det kørende og opdateret."
+        },
+        {
+          "title": "Betaling for kapacitet",
+          "body": "Business beregnes efter, hvor mange der kan være online samtidig: du vælger et antal, betaler for det og ændrer det, når teamet vokser."
+        }
+      ]
+    },
+    {
+      "title": "Hvad WorkAdventure gør bedre",
+      "items": [
+        {
+          "title": "En verden for sig selv",
+          "body": "En korteditor, skabeloner, egne skriveborde og avatarer og et designteam, du kan hyre til et eget kort. TinyFloor har ét færdigt kontor."
+        },
+        {
+          "title": "Open source og egen hosting",
+          "body": "Du kan køre det på egne servere eller i en privat sky og beholde dine data der. TinyFloor findes kun hostet."
+        },
+        {
+          "title": "Events og konferencer",
+          "body": "Talerzoner, hvor kun taleren kan høres, dagspriser til enkeltstående events, optagelse og livestreaming til YouTube."
+        },
+        {
+          "title": "Integrationer",
+          "body": "Betalte planer forbinder Microsoft Teams, Outlook, Google Kalender og Google Meet, og der er AI-bots og webhooks."
+        },
+        {
+          "title": "En større gratisplan",
+          "body": "Ti personer ad gangen, uden tidsgrænse, er en af de mest rummelige gratisplaner blandt de virtuelle kontorer, vi sammenlignede, hvis offentlige rum er fine for dig."
+        }
+      ]
+    },
+    {
+      "title": "Hvad der passer til dit team",
+      "items": [
+        {
+          "title": "TinyFloor, til et færdigt kontor",
+          "body": "Til et team på 4 til 15, der vil åbne et privat kontor i dag, med skriveborde, mødelokale og chat, for én pris i stedet for et antal pladser."
+        },
+        {
+          "title": "WorkAdventure, til en egen verden",
+          "body": "Hvis du vil designe rummet, hoste det selv, holde events i det eller forbinde det med Microsoft Teams eller Google Kalender."
+        },
+        {
+          "title": "WorkAdventure gratis, til et åbent rum",
+          "body": "Hvis offentlige rum er fine, og I højst er 10 online ad gangen, kan gratisplanen være nok."
+        }
+      ]
+    },
+    {
+      "title": "Flyt et team fra WorkAdventure",
+      "items": [
+        {
+          "title": "Opret et kontor",
+          "detail": "To minutter",
+          "body": "Navngiv det efter teamet. Gulvet, skrivebordene og mødelokalet er klar; der er intet kort at flytte."
+        },
+        {
+          "title": "Del ét invitationslink",
+          "detail": "I teamchatten",
+          "body": "Kollegerne logger ind med Google eller e-mail og går ind fra browseren, på computer eller telefon."
+        },
+        {
+          "title": "Arbejd der en almindelig uge",
+          "detail": "Standup i mødelokalet",
+          "body": "Behold jeres WorkAdventure-verden, til ugen er gået, og beslut så, hvilket teamet faktisk åbnede."
+        }
+      ]
+    },
+    {
+      "title": "Sådan sammenlignede vi",
+      "body": [
+        "WorkAdventures priser, grænser og funktioner kommer fra dets prisside og dets ofte stillede spørgsmål om priser, læst i oktober 2026, i amerikanske dollar ekskl. moms. Hvad der ikke stod der, udelod vi i stedet for at gætte. Vi laver TinyFloor, så vi siger tydeligt, hvad det ikke kan. Priser ændrer sig: tjek WorkAdventures side, før du køber."
       ]
     }
   ]

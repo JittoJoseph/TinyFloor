@@ -767,7 +767,7 @@
           },
           {
             "title": "WorkAdventure",
-            "detail": "Free for 10 people at once · Business €8 a user a month",
+            "detail": "Free for 10 people at once · Business $9 a user a month",
             "body": "An open-source pixel-art world you can host yourself, with maps you build in the Tiled editor. Good for technical teams and events that want full control. Setting up a custom map or your own server takes real work."
           },
           {
@@ -827,7 +827,7 @@
               "WorkAdventure Business",
               "Per user",
               "Up to 10 people at once",
-              "€80"
+              "$90 billed yearly, $110 monthly"
             ],
             [
               "Gather Essential",
@@ -845,7 +845,7 @@
               "Kumospace Business",
               "Per user",
               "Up to 5 members",
-              "$160"
+              "$160 billed yearly, $200 monthly"
             ],
             [
               "Roam",

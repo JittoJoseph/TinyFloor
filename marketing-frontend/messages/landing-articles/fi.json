@@ -39,7 +39,7 @@
           ],
           [
             "WorkAdventure",
-            "Alkaen 64 €",
+            "72 $ vuosittain, 88 $ kuukausittain",
             "Enintään 10 henkeä samaan aikaan",
             "Tiimeille, jotka haluavat avoimen lähdekoodin kartan"
           ],
@@ -62,7 +62,7 @@
             "Tiimeille, jotka tarvitsevat vain puhekanavia"
           ]
         ],
-        "note": "Kunkin tuotteen hintasivulta lokakuussa 2026, ilman veroja. Henkilöhinnat kerrottuna 8:lla; WorkAdventuren Business-tilaus alkaa 8 €:sta käyttäjää kohden."
+        "note": "Kunkin tuotteen hintasivulta lokakuussa 2026, ilman veroja. Henkilöhinnat kerrottuna 8:lla; WorkAdventuren Business-tilaus alkaa 9 $:sta käyttäjää kohden."
       }
     },
     {
@@ -92,7 +92,7 @@
         },
         {
           "title": "WorkAdventure",
-          "detail": "Business alkaen 8 € käyttäjää kohden kuukaudessa; ilmainen enintään 10:lle yhtä aikaa",
+          "detail": "Business alkaen 9 $ käyttäjää kohden kuukaudessa; ilmainen enintään 10:lle yhtä aikaa",
           "body": "Toinen pikselitaidetoimisto, lisäksi avointa lähdekoodia, joten tekninen tiimi voi muokata karttaa. Ilmaisversio laskee samaan aikaan paikalla olevia, enintään 10, ei jäseniä."
         },
         {
@@ -649,6 +649,194 @@
       "title": "Miten vertailimme",
       "body": [
         "Kumospacen hinnat, rajat ja ominaisuudet ovat sen hintasivulta, luettu lokakuussa 2026, Yhdysvaltain dollareina ilman veroja. Mitä siellä ei mainittu, jätimme pois arvailun sijaan. Me teemme TinyFlooria, joten kerromme selvästi, mitä se ei tee. Hinnat muuttuvat: tarkista Kumospacen sivu ennen ostamista."
+      ]
+    }
+  ],
+  "workadventure": [
+    {
+      "title": "WorkAdventure ja TinyFloor lyhyesti",
+      "body": [
+        "Molemmat ovat selaimessa toimivia pikselitaidetoimistoja, joissa kävellään ihmisten luo juttelemaan. WorkAdventure on tehty muokattavaksi ja ylläpidettäväksi omalla tavallasi; TinyFloor olemaan valmis heti, kun avaat sen."
+      ],
+      "table": {
+        "head": [
+          "",
+          "WorkAdventure",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "8 hengen tiimi, kuukaudessa",
+            "Ilmainen julkisissa huoneissa; Business 72 $ vuosittain, 88 $ kuukausittain",
+            "29 $ koko tiimiltä"
+          ],
+          [
+            "Ilmaisversio",
+            "Enintään 10 henkeä kerrallaan, ei aikarajaa",
+            "Enintään 3 henkeä, kaikki ominaisuudet"
+          ],
+          [
+            "Miten hinnoitellaan",
+            "Käyttäjää kohden, sen mukaan montako voi olla paikalla yhtä aikaa",
+            "Yksi hinta toimistolle"
+          ],
+          [
+            "Toimiston pitäminen yksityisenä",
+            "Ilmaiset huoneet ovat julkisia; jäsenet ja sähköpostirajaus maksullisissa",
+            "Yksityinen joka tilauksessa"
+          ],
+          [
+            "Kartta",
+            "Pohjat ja karttaeditori",
+            "Valmis toimisto"
+          ],
+          [
+            "Ylläpito",
+            "Ylläpidetty tai omilla palvelimilla",
+            "Ylläpidetty"
+          ],
+          [
+            "Tallennus",
+            "Maksullisissa",
+            "Ei"
+          ],
+          [
+            "Integraatiot",
+            "Microsoft Teams, Outlook, Google Kalenteri, Google Meet maksullisissa",
+            "Ei ole"
+          ]
+        ],
+        "note": "WorkAdventuren tiedot sen hintasivulta lokakuussa 2026, Yhdysvaltain dollareina ilman veroja."
+      }
+    },
+    {
+      "title": "Mitä WorkAdventure maksaa tiimin koon mukaan",
+      "body": [
+        "Business laskutetaan käyttäjää kohden sen mukaan, montako henkeä voi olla yhdistettynä yhtä aikaa: 9 $ käyttäjältä kuukaudessa vuositilauksella tai 11 $ kuukausittain. Ilmaisversio kattaa enintään 10 kerrallaan, julkisin huonein."
+      ],
+      "table": {
+        "head": [
+          "Tiimi",
+          "WorkAdventure Business, kuukausittain",
+          "WorkAdventure Business, vuosittain, kuukaudessa",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "5 henkeä",
+            "55 $",
+            "45 $",
+            "29 $"
+          ],
+          [
+            "8 henkeä",
+            "88 $",
+            "72 $",
+            "29 $"
+          ],
+          [
+            "10 henkeä",
+            "110 $",
+            "90 $",
+            "29 $"
+          ],
+          [
+            "12 henkeä",
+            "132 $",
+            "108 $",
+            "29 $"
+          ]
+        ],
+        "note": "WorkAdventure Business 11 $ käyttäjältä kuukausittain tai 9 $ vuosittain, kaikista yhtä aikaa paikalla olevista (WorkAdventuren hintasivu, lokakuu 2026). TinyFloor Pro on kuukausitilaus; enintään 3 hengen tiimit pysyvät ilmaisina."
+      }
+    },
+    {
+      "title": "Miksi pienet tiimit etsivät vaihtoehtoa WorkAdventurelle",
+      "items": [
+        {
+          "title": "Ilmaiset huoneet ovat julkisia",
+          "body": "WorkAdventure kertoo, että ilmaisversion huoneet ovat avoinna kaikille, joilla on linkki. Jäsenet, roolit ja pääsyn rajaaminen tiettyihin sähköpostiosoitteisiin tulevat maksullisten tilausten mukana."
+        },
+        {
+          "title": "Ensin rakennetaan maailma",
+          "body": "Pohjat auttavat alkuun, mutta kartan järjestät itse, ja oma kartta on usein suunnittelijan työtä. Jotkut tiimit haluavat vain kävellä sisään."
+        },
+        {
+          "title": "Oma ylläpito on projekti",
+          "body": "WorkAdventuren pyörittäminen omilla palvelimilla antaa täyden hallinnan, mutta tarkoittaa myös, että joku tiimistä pitää sen käynnissä ja ajan tasalla."
+        },
+        {
+          "title": "Maksu kapasiteetista",
+          "body": "Business lasketaan sen mukaan, montako voi olla paikalla yhtä aikaa: valitset luvun, maksat siitä ja muutat sitä tiimin kasvaessa."
+        }
+      ]
+    },
+    {
+      "title": "Missä WorkAdventure on parempi",
+      "items": [
+        {
+          "title": "Oma maailma",
+          "body": "Karttaeditori, pohjat, omat työpöydät ja avatarit sekä suunnittelutiimi, jonka voi palkata omaan karttaan. TinyFloorissa on yksi valmis toimisto."
+        },
+        {
+          "title": "Avoin lähdekoodi ja oma ylläpito",
+          "body": "Voit pyörittää sitä omilla palvelimilla tai yksityisessä pilvessä ja pitää datasi siellä. TinyFloor on vain ylläpidetty."
+        },
+        {
+          "title": "Tapahtumat ja konferenssit",
+          "body": "Puhujavyöhykkeet, joissa kuuluu vain puhuja, päivähinnat kertaluonteisiin tapahtumiin, tallennus ja suoratoisto YouTubeen."
+        },
+        {
+          "title": "Integraatiot",
+          "body": "Maksulliset tilaukset yhdistävät Microsoft Teamsin, Outlookin, Google Kalenterin ja Google Meetin, ja mukana on tekoälybotteja ja webhookeja."
+        },
+        {
+          "title": "Suurempi ilmaisversio",
+          "body": "Kymmenen henkeä kerrallaan ilman aikarajaa on yksi väljimmistä ilmaisversioista vertailemiemme virtuaalitoimistojen joukossa, jos julkiset huoneet käyvät sinulle."
+        }
+      ]
+    },
+    {
+      "title": "Kumpi sopii tiimillesi",
+      "items": [
+        {
+          "title": "TinyFloor, valmiiseen toimistoon",
+          "body": "4–15 hengen tiimille, joka haluaa avata yksityisen toimiston tänään, työpöytineen, neuvotteluhuoneineen ja chatteineen, yhdellä hinnalla paikkamäärän sijaan."
+        },
+        {
+          "title": "WorkAdventure, omaan maailmaan",
+          "body": "Jos haluat suunnitella tilan, ylläpitää sitä itse, järjestää siellä tapahtumia tai liittää sen Microsoft Teamsiin tai Google Kalenteriin."
+        },
+        {
+          "title": "Ilmainen WorkAdventure, avoimeen tilaan",
+          "body": "Jos julkiset huoneet käyvät ja teitä on paikalla enintään 10 kerrallaan, ilmaisversio voi riittää."
+        }
+      ]
+    },
+    {
+      "title": "Tiimin siirtäminen WorkAdventuresta",
+      "items": [
+        {
+          "title": "Luo toimisto",
+          "detail": "Kaksi minuuttia",
+          "body": "Nimeä se tiimin mukaan. Kerros, työpöydät ja neuvotteluhuone ovat valmiina; siirrettävää karttaa ei ole."
+        },
+        {
+          "title": "Jaa yksi kutsulinkki",
+          "detail": "Tiimin chatissa",
+          "body": "Kollegat kirjautuvat Googlella tai sähköpostilla ja tulevat sisään selaimesta, tietokoneella tai puhelimella."
+        },
+        {
+          "title": "Tehkää siellä tavallinen viikko",
+          "detail": "Standup neuvotteluhuoneessa",
+          "body": "Pitäkää WorkAdventure-maailmanne viikon loppuun ja päättäkää sitten, kumpaa tiimi oikeasti avasi."
+        }
+      ]
+    },
+    {
+      "title": "Miten vertailimme",
+      "body": [
+        "WorkAdventuren hinnat, rajat ja ominaisuudet ovat sen hintasivulta ja hintoja koskevista usein kysytyistä kysymyksistä, luettu lokakuussa 2026, Yhdysvaltain dollareina ilman veroja. Mitä siellä ei mainittu, jätimme pois arvailun sijaan. Me teemme TinyFlooria, joten kerromme selvästi, mitä se ei tee. Hinnat muuttuvat: tarkista WorkAdventuren sivu ennen ostamista."
       ]
     }
   ]

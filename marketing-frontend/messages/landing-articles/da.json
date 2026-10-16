@@ -2478,7 +2478,7 @@
         },
         {
           "title": "Chatten mellem opkaldene",
-          "body": "En kanal til alt, der ikke er arbejde, med billeder og reaktioner. Beskederne bliver, så ingen går glip af hundebilledet, fordi de sad i et møde."
+          "body": "En kanal til alt, der ikke er arbejde, med emojis og reaktioner. Beskederne bliver, så ingen går glip af joken, fordi de sad i et møde."
         }
       ]
     },
@@ -2773,6 +2773,112 @@
       "title": "Hvad det ikke gør",
       "body": [
         "Der er ingen optagelse, ingen transskription og ingen AI-noter. Møder foregår inde i dit kontor: Der er ingen opkaldsnumre og ingen webinartilstand til et stort publikum. Delte skærme sender billedet, ikke lyden. Har du brug for det, så brug Zoom eller Google Meet til det møde og TinyFloor til de daglige."
+      ]
+    }
+  ],
+  "teamChat": [
+    {
+      "title": "En chat lige ved siden af etagen",
+      "body": [
+        "I de fleste værktøjer er chatten hele arbejdspladsen. I TinyFloor er den halvdelen: Etagen viser, hvem der er der, og lader jer tale, og chatten holder på alt det, der skal skrives ned. Fordi de ligger side om side, kan en lang frem-og-tilbage blive til en snak på to minutter med ét klik."
+      ]
+    },
+    {
+      "title": "Hvad der er i den",
+      "table": {
+        "head": [
+          "",
+          "Sådan virker det"
+        ],
+        "rows": [
+          [
+            "Kanaler",
+            "Navne med små bogstaver, uden mellemrum. Alle på kontoret kan læse og deltage i alle kanaler."
+          ],
+          [
+            "Direkte beskeder",
+            "Mellem to personer, og kun I to kan se dem."
+          ],
+          [
+            "Historik",
+            "Hver kanal gemmer sine seneste 5.000 beskeder, på alle planer."
+          ],
+          [
+            "Reaktioner og emojis",
+            "Reager på en besked i stedet for at svare \"+1\"."
+          ],
+          [
+            "Rediger og træk tilbage",
+            "Ret en tastefejl efter afsendelse, eller tag en besked tilbage. Redigerede beskeder er markeret."
+          ],
+          [
+            "På telefonen",
+            "Chatten virker i telefonens browser, uden at du går ind på etagen."
+          ],
+          [
+            "Ulæste beskeder",
+            "Fanens titel viser, hvor mange der venter, så en fastgjort fane fortæller dig, hvornår du skal kigge."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Hvor chat og etage mødes",
+      "items": [
+        {
+          "title": "Gå derhen fra en samtale",
+          "body": "En direkte besked med en, der er på etagen, tilbyder at gå derhen. Din figur finder selv vej til skrivebordet, og et opkald er ét tryk væk."
+        },
+        {
+          "title": "Se, hvem der er der, før du skriver",
+          "body": "Listen over personer viser, hvem der er på etagen, hvem der er optaget, og hvem der er i et møde, så du ved, om du skal skrive eller vente."
+        },
+        {
+          "title": "Et diskret signal i stedet for pop-ups",
+          "body": "Når nogen skriver, mens du er på etagen, får du et lille signal, ikke en strøm af notifikationer."
+        },
+        {
+          "title": "\"Har du et øjeblik?\"",
+          "body": "En ny direkte besked tilbyder færdige indledninger som \"Har du et øjeblik?\", når du hellere vil spørge end dukke op uanmeldt."
+        }
+      ]
+    },
+    {
+      "title": "Kanaler, et lille team faktisk bruger",
+      "table": {
+        "head": [
+          "Kanal",
+          "Hvad der hører til"
+        ],
+        "rows": [
+          [
+            "#general",
+            "Meddelelser, planer for ugen, alt det, alle bør læse."
+          ],
+          [
+            "Én pr. projekt eller kunde",
+            "Beslutninger, links og spørgsmål om det arbejde, ét sted."
+          ],
+          [
+            "#standup",
+            "Skriftlige opdateringer til dage eller folk, der ikke kan være med til den levende standup."
+          ],
+          [
+            "#random",
+            "Alt, der ikke er arbejde."
+          ],
+          [
+            "#spoergsmaal",
+            "Spørgsmål, ingen skal føle sig dumme over. Nye læser svarene senere."
+          ]
+        ],
+        "note": "Fem eller seks kanaler er nok til et team på ti. Når én har været stille i en måned, så stop med at bruge den, og sig det i #general."
+      }
+    },
+    {
+      "title": "Hvad den ikke gør",
+      "body": [
+        "Der er ingen tråde, ingen integrationer eller bots og endnu ingen søgning i beskeder. Du kan ikke dele billeder i chatten endnu, så skærmbilleder vises på skærmen i et opkald. Notifikationer følger dig ikke til telefonen: TinyFloor sender ingen pushbeskeder eller mails for at trække folk tilbage. Er jeres team afhængigt af noget af det, så behold Slack til skrivning og brug TinyFloor til tilstedeværelse, opkald og møder; mange teams gør sådan."
       ]
     }
   ]

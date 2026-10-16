@@ -2478,7 +2478,7 @@
         },
         {
           "title": "The chat between calls",
-          "body": "A channel for anything that isn't work, with photos and reactions. Messages stay, so nobody misses the dog picture because they were in a meeting."
+          "body": "A channel for anything that isn't work, with emoji and reactions. Messages stay, so nobody misses the joke because they were in a meeting."
         }
       ]
     },
@@ -2773,6 +2773,112 @@
       "title": "What it doesn't do",
       "body": [
         "There's no recording, no transcription and no AI notes. Meetings happen inside your office: there are no dial-in numbers and no webinar mode for a big audience. Shared screens carry the picture, not sound. If you need any of those, keep Zoom or Google Meet for that meeting and use TinyFloor for the everyday ones."
+      ]
+    }
+  ],
+  "teamChat": [
+    {
+      "title": "A chat that lives next to the floor",
+      "body": [
+        "Most team chat is the whole workplace. On TinyFloor it's half of it: the floor shows who's around and lets you talk, and the chat holds everything that should be written down. Because they sit side by side, a long back-and-forth can turn into a two-minute conversation with one press."
+      ]
+    },
+    {
+      "title": "What's in it",
+      "table": {
+        "head": [
+          "",
+          "How it works"
+        ],
+        "rows": [
+          [
+            "Channels",
+            "Lowercase names, no spaces. Everyone in the office can read and join every channel."
+          ],
+          [
+            "Direct messages",
+            "Between two people, and only the two of you can see them."
+          ],
+          [
+            "History",
+            "Each channel keeps its most recent 5,000 messages, on every plan."
+          ],
+          [
+            "Reactions and emoji",
+            "React to a message instead of replying \"+1\"."
+          ],
+          [
+            "Edit and unsend",
+            "Fix a typo after sending, or take a message back. Edited messages are marked."
+          ],
+          [
+            "On your phone",
+            "The chat works in your phone's browser, without walking onto the floor."
+          ],
+          [
+            "Unread messages",
+            "The tab's title shows how many are waiting, so a pinned tab tells you when to look."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Where chat and floor meet",
+      "items": [
+        {
+          "title": "Walk over from a conversation",
+          "body": "A direct message with someone on the floor offers to walk over. Your character finds its own way to their desk, and a call is one tap away."
+        },
+        {
+          "title": "See who's around before you write",
+          "body": "The people list shows who's on the floor, who's busy and who's in a meeting, so you know whether to write or wait."
+        },
+        {
+          "title": "A quiet nudge instead of pop-ups",
+          "body": "When someone writes while you're on the floor, you get a small nudge, not a stream of notifications."
+        },
+        {
+          "title": "\"Got a minute?\"",
+          "body": "A new direct message offers ready openers, such as \"Got a minute?\", for when you would rather ask than turn up unannounced."
+        }
+      ]
+    },
+    {
+      "title": "Channels a small team actually uses",
+      "table": {
+        "head": [
+          "Channel",
+          "What goes in it"
+        ],
+        "rows": [
+          [
+            "#general",
+            "Announcements, plans for the week, anything everyone should read."
+          ],
+          [
+            "One per project or client",
+            "Decisions, links and questions about that piece of work, in one place."
+          ],
+          [
+            "#standup",
+            "Written updates for days or people who can't make the live standup."
+          ],
+          [
+            "#random",
+            "Everything that isn't work."
+          ],
+          [
+            "#questions",
+            "Questions nobody should feel silly asking. New people read the answers later."
+          ]
+        ],
+        "note": "Five or six channels is plenty for a team of ten. When one goes quiet for a month, stop using it and say so in #general."
+      }
+    },
+    {
+      "title": "What it doesn't do",
+      "body": [
+        "There are no threads, no integrations or bots, and no message search yet. You can't share images in the chat yet, so screenshots go on screen in a call. Notifications don't follow you to your phone: TinyFloor doesn't send push notifications or emails to bring people back. If your team relies on any of that, keep Slack for writing and use TinyFloor for presence, calls and meetings; plenty of teams do."
       ]
     }
   ]

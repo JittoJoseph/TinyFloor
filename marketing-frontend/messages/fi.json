@@ -1359,8 +1359,8 @@
             "a": "Kyllä. Avaa TinyFloor puhelimen selaimessa lukeaksesi ja vastataksesi menemättä kerrokseen."
           },
           {
-            "q": "Voimmeko jakaa kuvia?",
-            "a": "Kyllä. Pudota kuvakaappauksia ja valokuvia mille tahansa kanavalle tai yksityisviestiin."
+            "q": "Voinko muokata viestiä tai perua sen?",
+            "a": "Voit. Muokkaa viestiä lähettämisen jälkeen tai peru se, jos se ei kuulu sinne. Muokatut viestit näyttävät sen."
           },
           {
             "q": "Korvaako se Slackin?",

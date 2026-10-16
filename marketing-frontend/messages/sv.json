@@ -1359,8 +1359,8 @@
             "a": "Ja. Öppna TinyFloor i mobilens webbläsare för att läsa och svara, utan att gå ut på våningen."
           },
           {
-            "q": "Kan vi dela bilder?",
-            "a": "Ja. Släpp skärmdumpar och foton i valfri kanal eller direktmeddelande."
+            "q": "Kan jag redigera eller ta tillbaka ett meddelande?",
+            "a": "Ja. Redigera ett meddelande efter att du skickat det, eller ta tillbaka det om det inte hör hemma där. Redigerade meddelanden visar det."
           },
           {
             "q": "Ersätter den Slack?",

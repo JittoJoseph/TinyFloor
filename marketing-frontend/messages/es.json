@@ -1359,8 +1359,8 @@
             "a": "Sí. Abre TinyFloor en el navegador del móvil para leer y responder, sin entrar en la planta."
           },
           {
-            "q": "¿Podemos compartir imágenes?",
-            "a": "Sí. Suelta capturas y fotos en cualquier canal o mensaje directo."
+            "q": "¿Puedo editar o anular un mensaje?",
+            "a": "Sí. Edita un mensaje después de enviarlo, o anúlalo si no debería estar ahí. Los mensajes editados lo indican."
           },
           {
             "q": "¿Sustituye a Slack?",

@@ -1359,8 +1359,8 @@
             "a": "Sim. Abra o TinyFloor no navegador do celular para ler e responder, sem entrar no andar."
           },
           {
-            "q": "Podemos compartilhar imagens?",
-            "a": "Sim. Solte capturas e fotos em qualquer canal ou mensagem direta."
+            "q": "Posso editar ou desfazer o envio de uma mensagem?",
+            "a": "Sim. Edite uma mensagem depois de enviar, ou desfaça o envio se ela não devia estar ali. Mensagens editadas mostram isso."
           },
           {
             "q": "Ele substitui o Slack?",

@@ -1359,8 +1359,8 @@
             "a": "Sì. Apri TinyFloor nel browser del telefono per leggere e rispondere, senza entrare sul piano."
           },
           {
-            "q": "Possiamo condividere immagini?",
-            "a": "Sì. Lascia screenshot e foto in qualsiasi canale o messaggio diretto."
+            "q": "Posso modificare o annullare l'invio di un messaggio?",
+            "a": "Sì. Modifica un messaggio dopo averlo inviato, o annullane l'invio se non dovrebbe stare lì. I messaggi modificati lo indicano."
           },
           {
             "q": "Sostituisce Slack?",

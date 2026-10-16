@@ -1359,8 +1359,8 @@
             "a": "Ja. Öffne TinyFloor im Browser deines Handys, um zu lesen und zu antworten, ohne auf die Etage zu gehen."
           },
           {
-            "q": "Können wir Bilder teilen?",
-            "a": "Ja. Leg Screenshots und Fotos in jeden Kanal oder jede Direktnachricht."
+            "q": "Kann ich eine Nachricht bearbeiten oder zurückziehen?",
+            "a": "Ja. Bearbeite eine Nachricht nach dem Senden oder zieh sie zurück, wenn sie dort nicht hingehört. Bearbeitete Nachrichten sind markiert."
           },
           {
             "q": "Ersetzt er Slack?",

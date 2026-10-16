@@ -2478,7 +2478,7 @@
         },
         {
           "title": "De chat tussen calls door",
-          "body": "Een kanaal voor alles wat geen werk is, met foto's en reacties. Berichten blijven staan, dus niemand mist de hondenfoto omdat die in een meeting zat."
+          "body": "Een kanaal voor alles wat geen werk is, met emoji en reacties. Berichten blijven staan, dus niemand mist de grap omdat die in een meeting zat."
         }
       ]
     },
@@ -2773,6 +2773,112 @@
       "title": "Wat het niet doet",
       "body": [
         "Er is geen opname, geen transcriptie en geen AI-notities. Meetings vinden plaats in je kantoor: er zijn geen inbelnummers en geen webinarmodus voor een groot publiek. Gedeelde schermen sturen het beeld, geen geluid. Heb je dat nodig, gebruik dan Zoom of Google Meet voor die meeting en TinyFloor voor de dagelijkse."
+      ]
+    }
+  ],
+  "teamChat": [
+    {
+      "title": "Een chat vlak naast de verdieping",
+      "body": [
+        "Bij de meeste tools is de chat de hele werkplek. In TinyFloor is het de helft: de verdieping laat zien wie er is en laat je praten, en de chat bewaart alles wat op papier moet. Omdat ze naast elkaar staan, wordt een lang heen-en-weer met één klik een gesprek van twee minuten."
+      ]
+    },
+    {
+      "title": "Wat erin zit",
+      "table": {
+        "head": [
+          "",
+          "Hoe het werkt"
+        ],
+        "rows": [
+          [
+            "Kanalen",
+            "Namen in kleine letters, zonder spaties. Iedereen in het kantoor kan elk kanaal lezen en erbij komen."
+          ],
+          [
+            "Directe berichten",
+            "Tussen twee mensen, en alleen jullie tweeën zien ze."
+          ],
+          [
+            "Geschiedenis",
+            "Elk kanaal bewaart de laatste 5.000 berichten, bij elk abonnement."
+          ],
+          [
+            "Reacties en emoji",
+            "Reageer op een bericht in plaats van \"+1\" te antwoorden."
+          ],
+          [
+            "Bewerken en terughalen",
+            "Verbeter een typfout na het versturen, of haal een bericht terug. Bewerkte berichten zijn gemarkeerd."
+          ],
+          [
+            "Op je telefoon",
+            "De chat werkt in de browser van je telefoon, zonder de verdieping op te lopen."
+          ],
+          [
+            "Ongelezen berichten",
+            "De titel van het tabblad laat zien hoeveel er wachten, dus een vastgezet tabblad vertelt je wanneer je moet kijken."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Waar chat en verdieping samenkomen",
+      "items": [
+        {
+          "title": "Erheen lopen vanuit een gesprek",
+          "body": "Een direct bericht met iemand op de verdieping biedt aan erheen te lopen. Je poppetje vindt zelf de weg naar het bureau, en een gesprek is één tik weg."
+        },
+        {
+          "title": "Zien wie er is voordat je schrijft",
+          "body": "De lijst met mensen laat zien wie op de verdieping is, wie bezet is en wie in een meeting zit, dus je weet of je moet schrijven of wachten."
+        },
+        {
+          "title": "Een rustig seintje in plaats van pop-ups",
+          "body": "Als iemand je schrijft terwijl je op de verdieping bent, krijg je een klein seintje, geen stroom meldingen."
+        },
+        {
+          "title": "\"Heb je even?\"",
+          "body": "Een nieuw direct bericht biedt kant-en-klare openingszinnen zoals \"Heb je even?\", voor als je liever vraagt dan onaangekondigd langskomt."
+        }
+      ]
+    },
+    {
+      "title": "Kanalen die een klein team echt gebruikt",
+      "table": {
+        "head": [
+          "Kanaal",
+          "Wat erin hoort"
+        ],
+        "rows": [
+          [
+            "#general",
+            "Aankondigingen, plannen voor de week, alles wat iedereen moet lezen."
+          ],
+          [
+            "Eén per project of klant",
+            "Beslissingen, links en vragen over dat werk, op één plek."
+          ],
+          [
+            "#standup",
+            "Geschreven updates voor dagen of mensen die de live standup niet halen."
+          ],
+          [
+            "#random",
+            "Alles wat geen werk is."
+          ],
+          [
+            "#vragen",
+            "Vragen waar niemand zich dom bij hoeft te voelen. Nieuwe collega's lezen de antwoorden later."
+          ]
+        ],
+        "note": "Vijf of zes kanalen is genoeg voor een team van tien. Is er een een maand stil, stop er dan mee en meld het in #general."
+      }
+    },
+    {
+      "title": "Wat het niet doet",
+      "body": [
+        "Er zijn geen threads, geen integraties of bots, en nog geen zoekfunctie voor berichten. Afbeeldingen delen in de chat kan nog niet, dus screenshots gaan op het scherm in een gesprek. Meldingen volgen je niet naar je telefoon: TinyFloor stuurt geen pushmeldingen of e-mails om mensen terug te halen. Is je team daarvan afhankelijk, houd dan Slack voor het schrijven en gebruik TinyFloor voor aanwezigheid, gesprekken en meetings; veel teams doen dat."
       ]
     }
   ]

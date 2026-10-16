@@ -4,6 +4,7 @@ import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { locales } from "@/lib/i18n/routing";
 import { GUIDES_PATH } from "@/lib/guides";
 import { ICEBREAKERS_PATH } from "@/lib/tools/icebreakers";
+import { OFFICE_COSTS_PATH } from "@/lib/tools/office-costs";
 import { HUBS, LANDINGS, type LandingGroup } from "@/lib/landings";
 import { SOCIALS, SUPPORT_EMAIL } from "@/lib/site";
 import { Logo } from "@/components/app/Logo";
@@ -87,6 +88,7 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
         { label: tl("features"), href: `/${HUBS.features}` },
         { label: tg("label"), href: GUIDES_PATH },
         { label: t("icebreakers"), href: ICEBREAKERS_PATH },
+        { label: t("officeCosts"), href: OFFICE_COSTS_PATH },
         { label: t("about"), href: "/about" },
         { label: t("contact"), href: `mailto:${SUPPORT_EMAIL}` },
         { label: t("faq"), href: "/#faq" },

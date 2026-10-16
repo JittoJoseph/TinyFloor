@@ -2549,5 +2549,125 @@
         "There are no games, no trivia, no YouTube screens and no event spaces for a hundred guests. It's a small office for a team that works together every day, and the watercooler is the part between tasks. For a company party or a large social event, Kumospace and Gather have more built in."
       ]
     }
+  ],
+  "engineering": [
+    {
+      "title": "An engineering day on the floor",
+      "body": [
+        "Engineers need two things that pull against each other: long stretches without interruptions, and a quick answer when they're stuck. A floor gives you both, because you can see who's heads down before you walk over."
+      ],
+      "items": [
+        {
+          "title": "Standup",
+          "detail": "10:00",
+          "body": "The team walks into the meeting room, goes round in ten minutes and walks back out."
+        },
+        {
+          "title": "Heads down",
+          "detail": "10:15",
+          "body": "Set yourself busy. You're still on the floor, so people know you're working, and they know to wait."
+        },
+        {
+          "title": "Unblocked",
+          "detail": "14:30",
+          "body": "Stuck on a failing build? See who's available, walk over, share the logs and sort it out in ten minutes instead of tomorrow."
+        },
+        {
+          "title": "Review",
+          "detail": "16:00",
+          "body": "Two or three people in a meeting, one sharing the pull request, talking it through instead of forty comments."
+        }
+      ]
+    },
+    {
+      "title": "What an engineering team needs, and how the floor covers it",
+      "table": {
+        "head": [
+          "Need",
+          "On TinyFloor",
+          "Keep elsewhere"
+        ],
+        "rows": [
+          [
+            "Focus time",
+            "A busy status. Nobody hears you until you start a call, and there's no open microphone.",
+            "Your editor and your notification settings."
+          ],
+          [
+            "Quick questions",
+            "Walk up to whoever knows and tap to call. Voice first, screen share in one click.",
+            "—"
+          ],
+          [
+            "Pairing",
+            "A call with a shared window, and a third person turns it into a meeting.",
+            "Live Share or Code With Me, if both of you need to type."
+          ],
+          [
+            "Standups and demos",
+            "The main meeting, always open, with screen sharing.",
+            "—"
+          ],
+          [
+            "Incidents",
+            "A meeting named after the incident that anyone can be asked into.",
+            "Your alerting and status page."
+          ],
+          [
+            "Written decisions",
+            "Channels and direct messages that keep their history.",
+            "Pull requests, tickets and docs."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Quiet by default",
+      "items": [
+        {
+          "title": "No open microphones",
+          "body": "Being on the floor doesn't mean being heard. Sound only starts when someone starts a call or you join a meeting."
+        },
+        {
+          "title": "Statuses people set themselves",
+          "body": "Available, busy or away, chosen by you. Nothing reports how long you've been at your desk or how long you've been idle."
+        },
+        {
+          "title": "Cameras that rest",
+          "body": "Calls start with voice. A camera left on through ten minutes with nobody talking turns itself off."
+        },
+        {
+          "title": "No pings to come back",
+          "body": "TinyFloor doesn't send emails or notifications to pull people onto the floor. The tab's title shows unread messages, and that's all."
+        }
+      ]
+    },
+    {
+      "title": "Running an incident on the floor",
+      "items": [
+        {
+          "title": "Open a room for it",
+          "body": "Start a meeting named after the incident and ask in whoever's on call. Everyone on the floor can see who's in it, so nobody has to ask what's going on."
+        },
+        {
+          "title": "Share what you're looking at",
+          "body": "Dashboards, logs and the deploy pipeline on screen, so everyone is looking at the same thing."
+        },
+        {
+          "title": "Bring people in, then let them go",
+          "body": "Ask in the person who wrote the service; when they've answered, they walk back to their desk."
+        },
+        {
+          "title": "Write it down",
+          "body": "Post the timeline and what you changed in a channel while it's fresh, ready for the write-up."
+        }
+      ]
+    },
+    {
+      "title": "How it fits beside your tools",
+      "body": [
+        "TinyFloor runs in a browser tab next to your editor, terminal and chat. It doesn't connect to GitHub, GitLab, Jira or Linear, and it doesn't post into Slack. That's deliberate: it's where the team talks, and the work stays tracked where it already is. Many teams keep Slack for written messages and use TinyFloor for presence, calls and meetings."
+      ]
+    }
   ]
 }

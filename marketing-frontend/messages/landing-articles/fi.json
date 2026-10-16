@@ -2549,5 +2549,125 @@
         "Siinä ei ole pelejä, tietovisoja, YouTube-näyttöjä eikä tapahtumatiloja sadalle vieraalle. Se on pieni toimisto tiimille, joka tekee töitä yhdessä joka päivä, ja kahvinkeitin on hetki tehtävien välissä. Yrityksen juhliin tai isoon sosiaaliseen tapahtumaan Kumospacessa ja Gatherissa on enemmän valmiina."
       ]
     }
+  ],
+  "engineering": [
+    {
+      "title": "Kehittäjän päivä kerroksessa",
+      "body": [
+        "Kehittäjät tarvitsevat kaksi asiaa, jotka vetävät eri suuntiin: pitkiä keskeytyksettömiä jaksoja ja nopean vastauksen, kun he jäävät jumiin. Kerros antaa molemmat, koska näet, kuka keskittyy, ennen kuin menet hänen luokseen."
+      ],
+      "items": [
+        {
+          "title": "Päiväpalaveri",
+          "detail": "10.00",
+          "body": "Tiimi kävelee kokoushuoneeseen, käy kierroksen kymmenessä minuutissa ja kävelee ulos."
+        },
+        {
+          "title": "Keskittyminen",
+          "detail": "10.15",
+          "body": "Laita tilaksi varattu. Olet yhä kerroksessa, joten muut näkevät, että teet töitä, ja tietävät odottaa."
+        },
+        {
+          "title": "Jumi purettu",
+          "detail": "14.30",
+          "body": "Kaatuuko build? Katso, kuka on tavoitettavissa, mene hänen luokseen, jaa lokit ja ratkaiskaa se kymmenessä minuutissa eikä huomenna."
+        },
+        {
+          "title": "Katselmointi",
+          "detail": "16.00",
+          "body": "Kaksi tai kolme ihmistä kokouksessa, yksi jakaa pull requestin, ja käytte sen läpi puhumalla neljänkymmenen kommentin sijaan."
+        }
+      ]
+    },
+    {
+      "title": "Mitä kehitystiimi tarvitsee ja miten kerros sen kattaa",
+      "table": {
+        "head": [
+          "Tarve",
+          "TinyFloorissa",
+          "Pidä muualla"
+        ],
+        "rows": [
+          [
+            "Keskittymisaika",
+            "Varattu-tila. Kukaan ei kuule sinua ennen kuin aloitat puhelun, eikä avointa mikrofonia ole.",
+            "Editorisi ja ilmoitusasetuksesi."
+          ],
+          [
+            "Nopeat kysymykset",
+            "Mene sen luo, joka tietää, ja napauta soittaaksesi. Ensin ääni, näytönjako yhdellä klikkauksella.",
+            "—"
+          ],
+          [
+            "Pariohjelmointi",
+            "Puhelu jaetulla ikkunalla; kolmas ihminen tekee siitä kokouksen.",
+            "Live Share tai Code With Me, jos molempien pitää kirjoittaa."
+          ],
+          [
+            "Päiväpalaverit ja demot",
+            "Pääkokous, aina auki, näytönjaolla.",
+            "—"
+          ],
+          [
+            "Häiriöt",
+            "Häiriön mukaan nimetty kokous, johon kenet tahansa voi pyytää.",
+            "Hälytyksenne ja tilasivunne."
+          ],
+          [
+            "Kirjalliset päätökset",
+            "Kanavat ja yksityisviestit, jotka säilyttävät historiansa.",
+            "Pull requestit, tiketit ja dokumentaatio."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Oletuksena hiljainen",
+      "items": [
+        {
+          "title": "Ei avoimia mikrofoneja",
+          "body": "Kerroksessa oleminen ei tarkoita, että sinut kuullaan. Ääni alkaa vasta, kun joku aloittaa puhelun tai liityt kokoukseen."
+        },
+        {
+          "title": "Itse valitut tilat",
+          "body": "Tavoitettavissa, varattu tai poissa, sinun valitsemasi. Mikään ei raportoi, kuinka kauan olet ollut työpisteelläsi tai toimettomana."
+        },
+        {
+          "title": "Lepäävät kamerat",
+          "body": "Puhelut alkavat äänellä. Kamera, joka on ollut päällä kymmenen minuuttia kenenkään puhumatta, sammuu itsestään."
+        },
+        {
+          "title": "Ei houkuttelua takaisin",
+          "body": "TinyFloor ei lähetä sähköposteja tai ilmoituksia vetääkseen ihmisiä kerrokseen. Välilehden otsikko näyttää lukemattomat viestit, ja siinä kaikki."
+        }
+      ]
+    },
+    {
+      "title": "Häiriön hoitaminen kerroksessa",
+      "items": [
+        {
+          "title": "Avaa sille huone",
+          "body": "Aloita häiriön mukaan nimetty kokous ja pyydä päivystäjä mukaan. Koko kerros näkee, kuka siellä on, joten kenenkään ei tarvitse kysyä, mitä tapahtuu."
+        },
+        {
+          "title": "Jaa se, mitä katsot",
+          "body": "Kojelaudat, lokit ja julkaisuputki näytölle, jotta kaikki katsovat samaa."
+        },
+        {
+          "title": "Pyydä ihmiset mukaan ja päästä heidät",
+          "body": "Pyydä mukaan palvelun kirjoittaja; kun hän on vastannut, hän kävelee takaisin työpisteelleen."
+        },
+        {
+          "title": "Kirjaa se",
+          "body": "Kirjoita aikajana ja tekemänne muutokset kanavalle, kun asia on tuoreena, valmiina jälkikatsausta varten."
+        }
+      ]
+    },
+    {
+      "title": "Miten se sopii työkalujenne rinnalle",
+      "body": [
+        "TinyFloor toimii selaimen välilehdessä editorin, päätteen ja chatin vieressä. Se ei ole yhteydessä GitHubiin, GitLabiin, Jiraan tai Lineariin, eikä se julkaise mitään Slackiin. Se on tarkoituksellista: se on paikka, jossa tiimi puhuu, ja työtä seurataan siellä, missä sitä jo seurataan. Moni tiimi pitää Slackin kirjoitettuja viestejä varten ja käyttää TinyFlooria läsnäoloon, puheluihin ja kokouksiin."
+      ]
+    }
   ]
 }

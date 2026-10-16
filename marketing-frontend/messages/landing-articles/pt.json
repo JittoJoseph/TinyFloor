@@ -2549,5 +2549,125 @@
         "Não há jogos, quiz, telas do YouTube nem espaços de evento para cem convidados. É um escritório pequeno para uma equipe que trabalha junta todo dia, e o cafezinho é a parte entre as tarefas. Para uma festa da empresa ou um grande evento social, o Kumospace e o Gather têm mais recursos."
       ]
     }
+  ],
+  "engineering": [
+    {
+      "title": "Um dia de engenharia no andar",
+      "body": [
+        "Pessoas de engenharia precisam de duas coisas que puxam para lados opostos: longos períodos sem interrupção e uma resposta rápida quando travam. Um andar dá as duas, porque você vê quem está concentrado antes de ir até lá."
+      ],
+      "items": [
+        {
+          "title": "Daily",
+          "detail": "10:00",
+          "body": "A equipe entra na sala de reunião, faz a rodada em dez minutos e sai."
+        },
+        {
+          "title": "Foco",
+          "detail": "10:15",
+          "body": "Coloque-se como ocupado. Você continua no andar, então as pessoas veem que você está trabalhando e sabem que devem esperar."
+        },
+        {
+          "title": "Destravado",
+          "detail": "14:30",
+          "body": "Build falhando? Veja quem está disponível, vá até lá, compartilhe os logs e resolva em dez minutos em vez de amanhã."
+        },
+        {
+          "title": "Revisão",
+          "detail": "16:00",
+          "body": "Duas ou três pessoas numa reunião, uma compartilha o pull request, e vocês conversam em vez de trocar quarenta comentários."
+        }
+      ]
+    },
+    {
+      "title": "O que uma equipe de engenharia precisa e como o andar resolve",
+      "table": {
+        "head": [
+          "Necessidade",
+          "No TinyFloor",
+          "Manter em outro lugar"
+        ],
+        "rows": [
+          [
+            "Tempo de foco",
+            "Um status ocupado. Ninguém ouve você até você começar uma chamada, e não há microfone aberto.",
+            "Seu editor e suas configurações de notificação."
+          ],
+          [
+            "Perguntas rápidas",
+            "Vá até quem sabe e toque para ligar. Voz primeiro, compartilhamento de tela em um clique.",
+            "—"
+          ],
+          [
+            "Pair programming",
+            "Uma chamada com uma janela compartilhada; uma terceira pessoa transforma em reunião.",
+            "Live Share ou Code With Me, se os dois precisarem digitar."
+          ],
+          [
+            "Dailies e demos",
+            "A reunião principal, sempre aberta, com compartilhamento de tela.",
+            "—"
+          ],
+          [
+            "Incidentes",
+            "Uma reunião com o nome do incidente, para a qual qualquer pessoa pode ser chamada.",
+            "Seus alertas e sua página de status."
+          ],
+          [
+            "Decisões por escrito",
+            "Canais e mensagens diretas que guardam o histórico.",
+            "Pull requests, tickets e documentação."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Silencioso por padrão",
+      "items": [
+        {
+          "title": "Sem microfones abertos",
+          "body": "Estar no andar não significa ser ouvido. O som só começa quando alguém inicia uma chamada ou você entra numa reunião."
+        },
+        {
+          "title": "Status que cada um escolhe",
+          "body": "Disponível, ocupado ou ausente, escolhido por você. Nada informa há quanto tempo você está na mesa ou quanto tempo ficou inativo."
+        },
+        {
+          "title": "Câmeras que descansam",
+          "body": "As chamadas começam com voz. Uma câmera ligada por dez minutos sem ninguém falando se desliga sozinha."
+        },
+        {
+          "title": "Sem avisos para voltar",
+          "body": "O TinyFloor não manda e-mails nem notificações para trazer as pessoas para o andar. O título da aba mostra as mensagens não lidas, e só."
+        }
+      ]
+    },
+    {
+      "title": "Lidando com um incidente no andar",
+      "items": [
+        {
+          "title": "Abra uma sala para ele",
+          "body": "Crie uma reunião com o nome do incidente e chame quem está de plantão. Todo o andar vê quem está lá, então ninguém precisa perguntar o que está acontecendo."
+        },
+        {
+          "title": "Compartilhe o que você está vendo",
+          "body": "Dashboards, logs e o pipeline de deploy na tela, para que todos olhem para a mesma coisa."
+        },
+        {
+          "title": "Chame as pessoas e depois libere",
+          "body": "Chame quem escreveu o serviço; depois que responder, a pessoa volta para a mesa."
+        },
+        {
+          "title": "Registre",
+          "body": "Poste a linha do tempo e o que vocês mudaram num canal enquanto está fresco, pronto para o post-mortem."
+        }
+      ]
+    },
+    {
+      "title": "Como ele se encaixa nas suas ferramentas",
+      "body": [
+        "O TinyFloor roda numa aba do navegador ao lado do editor, do terminal e do chat. Ele não se conecta ao GitHub, GitLab, Jira ou Linear, e não posta nada no Slack. É de propósito: é onde a equipe conversa, e o trabalho continua registrado onde já está. Muitas equipes mantêm o Slack para mensagens escritas e usam o TinyFloor para presença, chamadas e reuniões."
+      ]
+    }
   ]
 }

@@ -2549,5 +2549,125 @@
         "Es gibt keine Spiele, kein Quiz, keine YouTube-Bildschirme und keine Eventflächen für hundert Gäste. Es ist ein kleines Büro für ein Team, das jeden Tag zusammenarbeitet, und die Kaffeeküche ist der Teil zwischen den Aufgaben. Für eine Firmenfeier oder ein großes geselliges Event haben Kumospace und Gather mehr eingebaut."
       ]
     }
+  ],
+  "engineering": [
+    {
+      "title": "Ein Entwicklertag auf der Fläche",
+      "body": [
+        "Entwickler brauchen zwei Dinge, die gegeneinander ziehen: lange Strecken ohne Unterbrechung und eine schnelle Antwort, wenn sie feststecken. Eine Fläche gibt dir beides, weil du siehst, wer konzentriert arbeitet, bevor du hingehst."
+      ],
+      "items": [
+        {
+          "title": "Standup",
+          "detail": "10:00",
+          "body": "Das Team geht in den Besprechungsraum, macht in zehn Minuten die Runde und geht wieder raus."
+        },
+        {
+          "title": "Konzentriert",
+          "detail": "10:15",
+          "body": "Stell dich auf beschäftigt. Du bist weiter auf der Fläche, die Leute sehen also, dass du arbeitest, und wissen, dass sie warten sollen."
+        },
+        {
+          "title": "Entblockt",
+          "detail": "14:30",
+          "body": "Der Build schlägt fehl? Schau, wer verfügbar ist, geh hin, teile die Logs und löst es in zehn Minuten statt morgen."
+        },
+        {
+          "title": "Review",
+          "detail": "16:00",
+          "body": "Zwei, drei Leute in einem Meeting, eine Person teilt den Pull Request, und ihr besprecht ihn, statt vierzig Kommentare zu schreiben."
+        }
+      ]
+    },
+    {
+      "title": "Was ein Entwicklerteam braucht und wie die Fläche es abdeckt",
+      "table": {
+        "head": [
+          "Bedarf",
+          "In TinyFloor",
+          "Woanders behalten"
+        ],
+        "rows": [
+          [
+            "Fokuszeit",
+            "Ein Beschäftigt-Status. Niemand hört dich, bis du einen Call startest, und es gibt kein offenes Mikrofon.",
+            "Deinen Editor und deine Benachrichtigungseinstellungen."
+          ],
+          [
+            "Kurze Fragen",
+            "Geh zu der Person, die es weiß, und tippe, um anzurufen. Zuerst Stimme, Bildschirm teilen mit einem Klick.",
+            "—"
+          ],
+          [
+            "Pairing",
+            "Ein Call mit geteiltem Fenster; eine dritte Person macht daraus ein Meeting.",
+            "Live Share oder Code With Me, wenn beide tippen müssen."
+          ],
+          [
+            "Standups und Demos",
+            "Das Hauptmeeting, immer offen, mit Bildschirmfreigabe.",
+            "—"
+          ],
+          [
+            "Incidents",
+            "Ein Meeting, benannt nach dem Incident, in das jede und jeder geholt werden kann.",
+            "Euer Alerting und eure Statusseite."
+          ],
+          [
+            "Schriftliche Entscheidungen",
+            "Kanäle und Direktnachrichten, die ihren Verlauf behalten.",
+            "Pull Requests, Tickets und Dokumentation."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Standardmäßig leise",
+      "items": [
+        {
+          "title": "Keine offenen Mikrofone",
+          "body": "Auf der Fläche zu sein heißt nicht, gehört zu werden. Ton gibt es erst, wenn jemand einen Call startet oder du einem Meeting beitrittst."
+        },
+        {
+          "title": "Status, den man selbst setzt",
+          "body": "Verfügbar, beschäftigt oder abwesend, von dir gewählt. Nichts meldet, wie lange du am Schreibtisch warst oder wie lange du inaktiv warst."
+        },
+        {
+          "title": "Kameras, die sich ausruhen",
+          "body": "Calls beginnen mit Stimme. Eine Kamera, die zehn Minuten ohne Gespräch an war, schaltet sich selbst aus."
+        },
+        {
+          "title": "Keine Pings zum Zurückkommen",
+          "body": "TinyFloor schickt keine E-Mails oder Benachrichtigungen, um Leute auf die Fläche zu holen. Der Tab-Titel zeigt ungelesene Nachrichten, und das ist alles."
+        }
+      ]
+    },
+    {
+      "title": "Einen Incident auf der Fläche bearbeiten",
+      "items": [
+        {
+          "title": "Einen Raum dafür öffnen",
+          "body": "Starte ein Meeting, benannt nach dem Incident, und hol die Person mit Bereitschaft dazu. Alle auf der Fläche sehen, wer drin ist, also muss niemand fragen, was los ist."
+        },
+        {
+          "title": "Teilen, was du dir ansiehst",
+          "body": "Dashboards, Logs und die Deploy-Pipeline auf dem Bildschirm, damit alle dasselbe sehen."
+        },
+        {
+          "title": "Leute dazuholen und wieder gehen lassen",
+          "body": "Hol die Person dazu, die den Service geschrieben hat; wenn sie geantwortet hat, geht sie zurück an ihren Schreibtisch."
+        },
+        {
+          "title": "Aufschreiben",
+          "body": "Poste den Ablauf und eure Änderungen in einem Kanal, solange alles frisch ist, bereit für die Nachbetrachtung."
+        }
+      ]
+    },
+    {
+      "title": "Wie es neben eure Tools passt",
+      "body": [
+        "TinyFloor läuft in einem Browser-Tab neben Editor, Terminal und Chat. Es ist nicht mit GitHub, GitLab, Jira oder Linear verbunden und postet nichts in Slack. Das ist Absicht: Es ist der Ort, an dem das Team redet, und die Arbeit wird weiter dort verfolgt, wo sie schon ist. Viele Teams behalten Slack für schriftliche Nachrichten und nutzen TinyFloor für Präsenz, Calls und Meetings."
+      ]
+    }
   ]
 }

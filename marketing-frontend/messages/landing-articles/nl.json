@@ -2549,5 +2549,125 @@
         "Er zijn geen spelletjes, geen quiz, geen YouTube-schermen en geen evenementruimtes voor honderd gasten. Het is een klein kantoor voor een team dat elke dag samenwerkt, en het koffieapparaat is het stukje tussen de taken. Voor een bedrijfsfeest of een groot sociaal evenement hebben Kumospace en Gather meer aan boord."
       ]
     }
+  ],
+  "engineering": [
+    {
+      "title": "Een engineeringdag op de verdieping",
+      "body": [
+        "Engineers hebben twee dingen nodig die tegen elkaar in werken: lange stukken zonder onderbreking, en snel een antwoord als ze vastzitten. Een verdieping geeft je allebei, omdat je ziet wie geconcentreerd werkt voordat je erheen loopt."
+      ],
+      "items": [
+        {
+          "title": "Standup",
+          "detail": "10:00",
+          "body": "Het team loopt de vergaderruimte in, doet het rondje in tien minuten en loopt weer naar buiten."
+        },
+        {
+          "title": "Geconcentreerd",
+          "detail": "10:15",
+          "body": "Zet jezelf op bezet. Je bent nog steeds op de verdieping, dus mensen zien dat je werkt en weten dat ze moeten wachten."
+        },
+        {
+          "title": "Losgemaakt",
+          "detail": "14:30",
+          "body": "Faalt de build? Kijk wie beschikbaar is, loop erheen, deel de logs en los het in tien minuten op in plaats van morgen."
+        },
+        {
+          "title": "Review",
+          "detail": "16:00",
+          "body": "Twee of drie mensen in een meeting, één deelt de pull request, en jullie bespreken hem in plaats van veertig opmerkingen te schrijven."
+        }
+      ]
+    },
+    {
+      "title": "Wat een engineeringteam nodig heeft, en hoe de verdieping dat dekt",
+      "table": {
+        "head": [
+          "Behoefte",
+          "In TinyFloor",
+          "Elders houden"
+        ],
+        "rows": [
+          [
+            "Focustijd",
+            "Een bezet-status. Niemand hoort je tot je een gesprek start, en er is geen open microfoon.",
+            "Je editor en je meldingsinstellingen."
+          ],
+          [
+            "Snelle vragen",
+            "Loop naar wie het weet en tik om te bellen. Eerst stem, scherm delen met één klik.",
+            "—"
+          ],
+          [
+            "Pairen",
+            "Een gesprek met een gedeeld venster; een derde maakt er een meeting van.",
+            "Live Share of Code With Me, als jullie allebei moeten typen."
+          ],
+          [
+            "Standups en demo's",
+            "De hoofdmeeting, altijd open, met scherm delen.",
+            "—"
+          ],
+          [
+            "Incidenten",
+            "Een meeting vernoemd naar het incident, waar iedereen bij gevraagd kan worden.",
+            "Je alerting en statuspagina."
+          ],
+          [
+            "Geschreven beslissingen",
+            "Kanalen en directe berichten die hun geschiedenis bewaren.",
+            "Pull requests, tickets en documentatie."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Standaard stil",
+      "items": [
+        {
+          "title": "Geen open microfoons",
+          "body": "Op de verdieping zijn betekent niet gehoord worden. Geluid begint pas als iemand een gesprek start of je een meeting binnengaat."
+        },
+        {
+          "title": "Statussen die je zelf kiest",
+          "body": "Beschikbaar, bezet of afwezig, door jou gekozen. Niets meldt hoe lang je aan je bureau zit of hoe lang je inactief was."
+        },
+        {
+          "title": "Camera's die rusten",
+          "body": "Gesprekken beginnen met stem. Een camera die tien minuten aanstond zonder dat iemand praatte, gaat vanzelf uit."
+        },
+        {
+          "title": "Geen pings om terug te komen",
+          "body": "TinyFloor stuurt geen e-mails of meldingen om mensen naar de verdieping te halen. De titel van het tabblad toont ongelezen berichten, en dat is alles."
+        }
+      ]
+    },
+    {
+      "title": "Een incident afhandelen op de verdieping",
+      "items": [
+        {
+          "title": "Open er een ruimte voor",
+          "body": "Start een meeting vernoemd naar het incident en vraag wie dienst heeft erbij. De hele verdieping ziet wie erin zit, dus niemand hoeft te vragen wat er aan de hand is."
+        },
+        {
+          "title": "Deel waar je naar kijkt",
+          "body": "Dashboards, logs en de deploy-pipeline op het scherm, zodat iedereen naar hetzelfde kijkt."
+        },
+        {
+          "title": "Haal mensen erbij en laat ze weer gaan",
+          "body": "Vraag wie de service schreef erbij; als die heeft geantwoord, loopt die terug naar het bureau."
+        },
+        {
+          "title": "Schrijf het op",
+          "body": "Post de tijdlijn en wat jullie veranderden in een kanaal zolang het vers is, klaar voor de evaluatie."
+        }
+      ]
+    },
+    {
+      "title": "Hoe het naast je tools past",
+      "body": [
+        "TinyFloor draait in een browsertab naast je editor, terminal en chat. Het is niet gekoppeld aan GitHub, GitLab, Jira of Linear, en het post niets in Slack. Dat is bewust: het is waar het team praat, en het werk wordt bijgehouden waar het al staat. Veel teams houden Slack voor geschreven berichten en gebruiken TinyFloor voor aanwezigheid, gesprekken en meetings."
+      ]
+    }
   ]
 }

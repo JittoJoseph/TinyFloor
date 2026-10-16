@@ -2549,5 +2549,125 @@
         "No hay juegos, ni trivial, ni pantallas de YouTube, ni espacios para eventos de cien invitados. Es una oficina pequeña para un equipo que trabaja junto cada día, y la máquina de café es el rato entre tareas. Para una fiesta de empresa o un gran evento social, Kumospace y Gather traen más cosas."
       ]
     }
+  ],
+  "engineering": [
+    {
+      "title": "Un día de ingeniería en la planta",
+      "body": [
+        "Los ingenieros necesitan dos cosas que tiran en sentidos opuestos: ratos largos sin interrupciones y una respuesta rápida cuando se atascan. Una planta da las dos, porque ves quién está concentrado antes de acercarte."
+      ],
+      "items": [
+        {
+          "title": "Reunión diaria",
+          "detail": "10:00",
+          "body": "El equipo entra en la sala de reuniones, hace la ronda en diez minutos y vuelve a salir."
+        },
+        {
+          "title": "Concentración",
+          "detail": "10:15",
+          "body": "Ponte en ocupado. Sigues en la planta, así que se ve que estás trabajando y se sabe que hay que esperar."
+        },
+        {
+          "title": "Desbloqueado",
+          "detail": "14:30",
+          "body": "¿Falla el build? Mira quién está disponible, acércate, comparte los logs y resolvedlo en diez minutos en vez de mañana."
+        },
+        {
+          "title": "Revisión",
+          "detail": "16:00",
+          "body": "Dos o tres personas en una reunión, una comparte la pull request y la comentáis hablando en vez de con cuarenta comentarios."
+        }
+      ]
+    },
+    {
+      "title": "Lo que necesita un equipo de ingeniería y cómo lo cubre la planta",
+      "table": {
+        "head": [
+          "Necesidad",
+          "En TinyFloor",
+          "Mantener en otro sitio"
+        ],
+        "rows": [
+          [
+            "Tiempo de concentración",
+            "Un estado de ocupado. Nadie te oye hasta que empiezas una llamada, y no hay micrófono abierto.",
+            "Tu editor y tus ajustes de notificaciones."
+          ],
+          [
+            "Preguntas rápidas",
+            "Acércate a quien lo sabe y toca para llamar. Primero voz, compartir pantalla con un clic.",
+            "—"
+          ],
+          [
+            "Programar en pareja",
+            "Una llamada con una ventana compartida; una tercera persona la convierte en reunión.",
+            "Live Share o Code With Me, si los dos necesitáis escribir."
+          ],
+          [
+            "Reuniones diarias y demos",
+            "La reunión principal, siempre abierta, con pantalla compartida.",
+            "—"
+          ],
+          [
+            "Incidencias",
+            "Una reunión con el nombre de la incidencia a la que se puede invitar a cualquiera.",
+            "Tus alertas y tu página de estado."
+          ],
+          [
+            "Decisiones por escrito",
+            "Canales y mensajes directos que guardan su historial.",
+            "Pull requests, tickets y documentación."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Silencioso por defecto",
+      "items": [
+        {
+          "title": "Sin micrófonos abiertos",
+          "body": "Estar en la planta no significa que te oigan. El sonido solo empieza cuando alguien inicia una llamada o te unes a una reunión."
+        },
+        {
+          "title": "Estados que elige cada uno",
+          "body": "Disponible, ocupado o ausente, elegido por ti. Nada informa de cuánto tiempo llevas en tu mesa ni de cuánto has estado inactivo."
+        },
+        {
+          "title": "Cámaras que descansan",
+          "body": "Las llamadas empiezan con voz. Una cámara que lleva diez minutos encendida sin que nadie hable se apaga sola."
+        },
+        {
+          "title": "Sin avisos para volver",
+          "body": "TinyFloor no envía correos ni notificaciones para traer a la gente a la planta. El título de la pestaña muestra los mensajes sin leer, y nada más."
+        }
+      ]
+    },
+    {
+      "title": "Gestionar una incidencia en la planta",
+      "items": [
+        {
+          "title": "Abrir una sala para ella",
+          "body": "Crea una reunión con el nombre de la incidencia e invita a quien esté de guardia. Toda la planta ve quién está dentro, así que nadie tiene que preguntar qué pasa."
+        },
+        {
+          "title": "Compartir lo que estás mirando",
+          "body": "Paneles, logs y el pipeline de despliegue en pantalla, para que todos miren lo mismo."
+        },
+        {
+          "title": "Traer a gente y dejarla ir",
+          "body": "Invita a quien escribió el servicio; cuando haya respondido, vuelve a su mesa."
+        },
+        {
+          "title": "Ponerlo por escrito",
+          "body": "Publica la cronología y lo que cambiasteis en un canal mientras está fresco, listo para el informe."
+        }
+      ]
+    },
+    {
+      "title": "Cómo encaja junto a tus herramientas",
+      "body": [
+        "TinyFloor funciona en una pestaña del navegador junto a tu editor, tu terminal y tu chat. No se conecta a GitHub, GitLab, Jira ni Linear, y no publica nada en Slack. Es a propósito: es donde el equipo habla, y el trabajo sigue registrado donde ya lo está. Muchos equipos mantienen Slack para los mensajes escritos y usan TinyFloor para la presencia, las llamadas y las reuniones."
+      ]
+    }
   ]
 }

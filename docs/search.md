@@ -92,6 +92,31 @@ learn about new pages. The key file is
 `/6537fa0233c5dc0cca20f9d1f56be989.txt`. Bing Webmaster Tools has the site as
 `https://tinyfloor.com/` (covering www) and reads the www sitemap.
 
+## Brave
+
+Claude searches Brave, so a page Brave hasn't indexed can't be recommended
+there. On 16 October Brave had one tinyfloor.com page (the Wonder.me
+alternative), the same as on 7 October. A search for "tinyfloor virtual
+office" returned the GitHub repo and about twenty of its pull requests first,
+some still showing the old "$19/month for 10" repo description.
+
+- Brave takes no IndexNow and no sitemap submissions. Its crawler announces
+  no user agent of its own and fetches what Googlebot may fetch; nothing of
+  ours is blocked.
+- It learns of pages partly from the Web Discovery Project: Brave browser
+  users who opt in send anonymised reports of public pages they visit,
+  mostly ones reached from a search. The GitHub repo is that client's code,
+  not a way for a site to submit pages. Pages with few visitors, which is all
+  of ours, don't reach it.
+- `search.brave.com/submit-url` asks Brave to re-fetch one URL at a time. It
+  is meant for updates and removals, and is the only manual lever there is.
+  It runs an automatic human check that sometimes takes 15 seconds. The ten
+  main English pages went in on 16 October; `site:tinyfloor.com` on Brave
+  will show whether it adds pages Brave never had.
+- So what grows Brave's index of us is the same as for everything else:
+  visitors arriving from Google and Bing, and links from pages Brave already
+  has (the GitHub repo links to the site).
+
 Mobile PageSpeed was 65 with a 7.1 s LCP on throttled 4G because the hero
 video downloaded before the page counted as loaded. The poster is preloaded
 now and the video attached after load.

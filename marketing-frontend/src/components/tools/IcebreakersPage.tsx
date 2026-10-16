@@ -5,18 +5,17 @@ import { cn } from "@/lib/utils";
 import { emphasised } from "@/lib/words";
 import { CJK_HEADLINE, COLUMN, Closing, EYEBROW, INK, LEAD, MarketingShell, Questions } from "@/components/home/Blocks";
 import { ArticleSections, READ, numberItems } from "@/components/guides/ArticleSections";
-import { ICEBREAKER_GROUPS, ICEBREAKERS_COPY, ICEBREAKERS_PATH, ICEBREAKERS_UPDATED } from "@/lib/tools/icebreakers";
+import { ICEBREAKERS_PATH, ICEBREAKERS_UPDATED, type IcebreakersContent } from "@/lib/tools/icebreakers";
 import { IcebreakerPicker } from "./IcebreakerPicker";
-
-const copy = ICEBREAKERS_COPY;
 
 /**
  * The icebreaker questions tool (lib/tools/icebreakers): the picker up top,
  * then how to run one, every question by group, what makes a good one, and
- * where TinyFloor fits. Read in the guides' column, in English.
+ * where TinyFloor fits. Read in the guides' column, in the list's own language.
  */
-export function IcebreakersPage({ locale, note }: { locale: string; note?: string }) {
-  const updated = new Intl.DateTimeFormat("en", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(
+export function IcebreakersPage({ locale, content: copy, note }: { locale: string; content: IcebreakersContent; note?: string }) {
+  const groups = copy.groups;
+  const updated = new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(
     new Date(`${ICEBREAKERS_UPDATED}T00:00:00Z`),
   );
   // The how-to's steps are numbered; the lists of questions carry their own numbers.
@@ -28,26 +27,26 @@ export function IcebreakersPage({ locale, note }: { locale: string; note?: strin
     <MarketingShell path={ICEBREAKERS_PATH} oneTap>
       <JsonLd
         schema={pageGraph({
-          locale: "en",
+          locale,
           path: ICEBREAKERS_PATH,
           name: copy.meta.title,
           description: copy.meta.description,
-          mainEntity: `${absoluteUrl("en", ICEBREAKERS_PATH)}#article`,
+          mainEntity: `${absoluteUrl(locale, ICEBREAKERS_PATH)}#article`,
           nodes: [
             articleNode({
-              locale: "en",
+              locale,
               path: ICEBREAKERS_PATH,
               headline: copy.meta.title,
               description: copy.meta.description,
               published: ICEBREAKERS_UPDATED,
               updated: ICEBREAKERS_UPDATED,
             }),
-            faqNode("en", ICEBREAKERS_PATH, copy.faq),
+            faqNode(locale, ICEBREAKERS_PATH, copy.faq),
           ],
         })}
       />
 
-      <article lang="en">
+      <article lang={locale}>
         <header className={cn(COLUMN, "pt-32 sm:pt-44")}>
           <div className={READ}>
             <p className={EYEBROW}>{copy.eyebrow}</p>
@@ -61,7 +60,7 @@ export function IcebreakersPage({ locale, note }: { locale: string; note?: strin
             </h1>
             <p className={cn(LEAD, "mt-7")}>{copy.intro}</p>
             <p className="mt-7 text-[14px] text-muted-foreground">
-              Updated <time dateTime={ICEBREAKERS_UPDATED}>{updated}</time>
+              {copy.updated} <time dateTime={ICEBREAKERS_UPDATED}>{updated}</time>
               {note && <span className="ms-2 text-faint">· {note}</span>}
             </p>
           </div>
@@ -70,7 +69,7 @@ export function IcebreakersPage({ locale, note }: { locale: string; note?: strin
         <div className={cn(COLUMN, "mt-12 sm:mt-14")}>
           <div className={READ}>
             <IcebreakerPicker
-              groups={ICEBREAKER_GROUPS}
+              groups={groups}
               labels={{ all: copy.picker.all, another: copy.picker.another, copy: copy.picker.copy, copied: copy.picker.copied }}
             />
           </div>
@@ -80,7 +79,7 @@ export function IcebreakersPage({ locale, note }: { locale: string; note?: strin
           <div className={READ}>
             <ArticleSections sections={howTo} />
 
-            {ICEBREAKER_GROUPS.map((group, index) => (
+            {groups.map((group, index) => (
               <section key={group.key} id={`section-${listed + index}`} className="scroll-mt-24 pt-16 sm:pt-20">
                 <h2 className={cn("text-balance text-[27px] font-normal leading-[1.12] tracking-[-0.035em] sm:text-[34px]", CJK_HEADLINE)}>
                   {group.title}
@@ -97,7 +96,7 @@ export function IcebreakersPage({ locale, note }: { locale: string; note?: strin
               </section>
             ))}
 
-            <ArticleSections sections={rules} first={listed + ICEBREAKER_GROUPS.length} />
+            <ArticleSections sections={rules} first={listed + groups.length} />
 
             <aside className="mt-16 rounded-[24px] bg-brand/[0.07] p-6 sm:mt-20 sm:p-8">
               <h2 className="text-[22px] font-semibold tracking-[-0.02em]">{copy.fit.title}</h2>
@@ -112,7 +111,7 @@ export function IcebreakersPage({ locale, note }: { locale: string; note?: strin
         </div>
       </article>
 
-      <Questions items={copy.faq} title={emphasised("Common <em>questions.</em>", locale, "text-muted-foreground/75")} />
+      <Questions items={copy.faq} title={emphasised(copy.faqTitle, locale, "text-muted-foreground/75")} />
 
       <Closing />
     </MarketingShell>

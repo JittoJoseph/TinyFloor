@@ -3092,5 +3092,207 @@
         "Es una pizarra de rotulador y borrador. No hay herramienta de texto, ni formas o notas adhesivas, ni imágenes, ni deshacer, ni plantillas, ni exportación, y una oficina tiene una sola pizarra. Para talleres, retrospectivas con notas adhesivas o diagramas detallados, Miro, FigJam o Excalidraw hacen mucho más. La pizarra de TinyFloor es para el boceto rápido mientras habláis."
       ]
     }
+  ],
+  "agencies": [
+    {
+      "title": "Un día en una agencia pequeña, en la planta",
+      "body": [
+        "Las agencias viven de ciclos cortos: un borrador, un vistazo, un arreglo, otro vistazo. En remoto, cada ciclo puede acabar siendo una llamada programada. En la planta, la mayoría son cruzar la sala."
+      ],
+      "items": [
+        {
+          "title": "Prioridades",
+          "detail": "9:30",
+          "body": "Diez minutos en la sala de reuniones: qué hay que entregar hoy para cada cliente y quién necesita ayuda."
+        },
+        {
+          "title": "Una revisión rápida",
+          "detail": "11:00",
+          "body": "Acércate a dirección de arte, comparte el borrador y llévate comentarios en cinco minutos en vez de esperar al hueco de mañana."
+        },
+        {
+          "title": "Modo entrega",
+          "detail": "14:00",
+          "body": "Ponte en ocupado. Se ve que estás y que trabajas, y se sabe que hay que escribir en vez de acercarse."
+        },
+        {
+          "title": "Preparar al cliente",
+          "detail": "17:00",
+          "body": "Crea una reunión con el nombre del cliente, invita a las tres personas de la cuenta y repasad la presentación de mañana."
+        }
+      ]
+    },
+    {
+      "title": "Lo que necesita una agencia y dónde vive",
+      "table": {
+        "head": [
+          "Necesidad",
+          "En TinyFloor",
+          "Mantener en otro sitio"
+        ],
+        "rows": [
+          [
+            "Revisiones creativas rápidas",
+            "Acercarse, compartir pantalla, comentarlo.",
+            "Tus archivos de diseño, en Figma o donde estén."
+          ],
+          [
+            "Saber quién tiene hueco",
+            "Estados y mesas muestran quién está con una entrega y quién puede ayudar.",
+            "Tu planificación de recursos para las próximas semanas."
+          ],
+          [
+            "Separar clientes",
+            "Un canal por cliente o proyecto.",
+            "Briefings y contratos, en tus documentos."
+          ],
+          [
+            "Freelances",
+            "Entran con el enlace de invitación y tienen mesa mientras dura el proyecto.",
+            "Contratos y facturas."
+          ],
+          [
+            "Llamadas con clientes",
+            "—",
+            "La herramienta de reuniones que ya usan tus clientes."
+          ],
+          [
+            "Bocetar ideas",
+            "La pizarra de la pared, para la versión en sucio.",
+            "Tableros de verdad en Miro o FigJam."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Freelances y colaboradores externos",
+      "items": [
+        {
+          "title": "Entrar",
+          "body": "Envía el enlace de invitación de la oficina. Inician sesión con Google o con su correo, eligen mesa y en un minuto están en la planta."
+        },
+        {
+          "title": "Plazas",
+          "body": "Una plaza es un miembro. Un freelance ocupa una mientras está en la oficina y la libera al irse."
+        },
+        {
+          "title": "Cuando acaba el proyecto",
+          "body": "Una persona propietaria o admin lo quita de la lista de personas. Si el enlace llegó más lejos de lo previsto, restablécelo y el antiguo deja de funcionar."
+        },
+        {
+          "title": "Roles",
+          "body": "Propietario, admins y miembros. Los admins pueden gestionar personas, así que quien lleva el estudio no tiene por qué ser quien lo fundó."
+        }
+      ]
+    },
+    {
+      "title": "Hábitos que le van bien a un estudio",
+      "items": [
+        {
+          "title": "Nombra las reuniones por cliente",
+          "body": "Una reunión llamada «Revisión Northwind» le dice a toda la planta qué está pasando y quién está liado."
+        },
+        {
+          "title": "Enseña el trabajo, no un resumen",
+          "body": "Comparte el archivo real en la llamada. Las revisiones van más rápido cuando todos miran lo mismo."
+        },
+        {
+          "title": "Protege los días de entrega",
+          "body": "Acordad que ocupado significa escribir, no acercarse, para que quien entrega hoy pueda terminar."
+        },
+        {
+          "title": "La voz del cliente en un solo canal",
+          "body": "Pega los comentarios de los correos del cliente en su canal, para que nadie trabaje con una versión vieja del briefing."
+        }
+      ]
+    },
+    {
+      "title": "Lo que no hace",
+      "body": [
+        "Las oficinas son para miembros que entran con una cuenta, así que los clientes no se pasan sin más; mantén tu herramienta de reuniones de siempre para las llamadas con clientes. No hay control de horas, ni almacenamiento de archivos, ni integración con Figma, Drive o tu herramienta de proyectos, y todavía no se pueden compartir imágenes en el chat. TinyFloor es donde tu equipo trabaja junto cada día; las herramientas de cara al cliente se quedan donde están."
+      ]
+    }
+  ],
+  "startups": [
+    {
+      "title": "Por qué los equipos jóvenes pierden velocidad en remoto",
+      "body": [
+        "La ventaja de una startup es lo rápido que una pregunta se convierte en una decisión. En una misma sala tarda un minuto: giras la silla. En remoto hace falta un mensaje, esperar, un enlace de llamada y un calendario. TinyFloor devuelve a un equipo pequeño una sala común, para que la pregunta siga tardando un minuto."
+      ]
+    },
+    {
+      "title": "Lo que cuesta a medida que creces",
+      "body": [
+        "TinyFloor se paga por oficina, no por persona. Una contratación no cambia la factura."
+      ],
+      "table": {
+        "head": [
+          "Equipo",
+          "Plan",
+          "Al mes"
+        ],
+        "rows": [
+          [
+            "Fundadores, 2 o 3 personas",
+            "Free, todas las funciones",
+            "0 $"
+          ],
+          [
+            "Desde la cuarta persona",
+            "Pro, todas las funciones",
+            "29 $ para toda la oficina"
+          ]
+        ],
+        "note": "Precios en dólares estadounidenses sin impuestos. Cuando entra la cuarta persona, el equipo tiene primero una prueba de Pro. Facturación mensual, sin permanencia anual."
+      }
+    },
+    {
+      "title": "Cómo usa la planta un equipo pequeño",
+      "items": [
+        {
+          "title": "Decidir en el pasillo",
+          "body": "Ver quién está, acercarse, decidir y volver. No hace falta una reunión para una pregunta de dos minutos."
+        },
+        {
+          "title": "Una reunión diaria, la misma sala",
+          "body": "La reunión principal siempre está ahí. Diez minutos por la mañana mantienen a todos en la misma dirección."
+        },
+        {
+          "title": "Llamadas con inversores y clientes, en otro sitio",
+          "body": "Mantén Zoom o Meet para la gente de fuera de la empresa. La planta es para el equipo."
+        },
+        {
+          "title": "Contratar para un sitio, no para una lista de canales",
+          "body": "Una persona nueva tiene mesa y ve quién es quién desde el primer día, en vez de conocer al equipo por una barra lateral de nombres."
+        }
+      ]
+    },
+    {
+      "title": "Lo que suelen preguntar los fundadores",
+      "items": [
+        {
+          "title": "¿Necesitamos a alguien de IT para configurarlo?",
+          "body": "No. Funciona en el navegador. Crea una oficina, comparte el enlace de invitación y la gente entra con Google o su correo."
+        },
+        {
+          "title": "¿Podemos irnos fácilmente?",
+          "body": "Sí. Un plan de pago dura hasta el final de lo pagado y luego la oficina vuelve a Free. No se borra nada."
+        },
+        {
+          "title": "¿Nuestra oficina es privada?",
+          "body": "Sí. Solo puede entrar quien tenga vuestro enlace de invitación, y podéis restablecerlo o quitar a alguien en cualquier momento."
+        },
+        {
+          "title": "¿Y si se nos queda pequeño?",
+          "body": "Una oficina está pensada para un equipo pequeño. Cuando os dividáis en equipos, dad a cada uno su propia oficina."
+        }
+      ]
+    },
+    {
+      "title": "Lo que no hace",
+      "body": [
+        "TinyFloor no es una suite completa para el trabajo. No hay grabación, ni inicio de sesión único, ni integraciones con tus herramientas, ni acceso para clientes, y todavía no se pueden compartir imágenes en el chat. Si desde el primer día necesitas un contrato empresarial, informes de cumplimiento o SSO, te irá mejor un producto más grande. Si sois un equipo pequeño que quiere volver a sentirse como tal, está hecho para eso."
+      ]
+    }
   ]
 }

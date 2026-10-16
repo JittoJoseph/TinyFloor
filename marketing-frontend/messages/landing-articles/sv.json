@@ -3092,5 +3092,207 @@
         "Det är en tavla med penna och suddgummi. Det finns inget textverktyg, inga former eller lappar, inga bilder, inget ångra, inga mallar och ingen export, och ett kontor har en tavla. För workshops, retrospektiver med lappar eller detaljerade diagram gör Miro, FigJam eller Excalidraw mycket mer. TinyFloors tavla är till för den snabba skissen medan ni pratar."
       ]
     }
+  ],
+  "agencies": [
+    {
+      "title": "En dag på en liten byrå, på våningen",
+      "body": [
+        "Byråer lever på korta varv: ett utkast, en snabb titt, en ändring, en titt till. På distans blir varje varv lätt ett inbokat samtal. På våningen är de flesta en promenad genom rummet."
+      ],
+      "items": [
+        {
+          "title": "Prioriteringar",
+          "detail": "9:30",
+          "body": "Tio minuter i mötesrummet: vad som ska levereras till vilken kund i dag, och vem som behöver hjälp."
+        },
+        {
+          "title": "En snabb granskning",
+          "detail": "11:00",
+          "body": "Gå till AD:n, dela utkastet och få kommentarer på fem minuter i stället för i morgondagens tid."
+        },
+        {
+          "title": "Deadlineläge",
+          "detail": "14:00",
+          "body": "Sätt dig som upptagen. Folk ser att du är där och jobbar, och vet att de ska skriva i stället för att gå dit."
+        },
+        {
+          "title": "Kundförberedelse",
+          "detail": "17:00",
+          "body": "Starta ett möte uppkallat efter kunden, bjud in de tre som jobbar med kontot och gå igenom morgondagens presentation."
+        }
+      ]
+    },
+    {
+      "title": "Vad en byrå behöver, och var det finns",
+      "table": {
+        "head": [
+          "Behov",
+          "I TinyFloor",
+          "Behåll någon annanstans"
+        ],
+        "rows": [
+          [
+            "Snabba kreativa granskningar",
+            "Gå dit, dela skärmen, prata igenom.",
+            "Era designfiler, i Figma eller där de ligger."
+          ],
+          [
+            "Veta vem som har utrymme",
+            "Statusar och skrivbord visar vem som har deadline och vem som kan hjälpa till.",
+            "Er resursplanering för de kommande veckorna."
+          ],
+          [
+            "Hålla isär kunder",
+            "En kanal per kund eller projekt.",
+            "Briefer och avtal, i era dokument."
+          ],
+          [
+            "Frilansare",
+            "De går med via inbjudningslänken och får ett skrivbord medan projektet pågår.",
+            "Avtal och fakturor."
+          ],
+          [
+            "Kundsamtal",
+            "—",
+            "Mötesverktyget era kunder redan använder."
+          ],
+          [
+            "Skissa idéer",
+            "Whiteboarden på väggen, för den grova versionen.",
+            "Riktiga tavlor i Miro eller FigJam."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Frilansare och konsulter",
+      "items": [
+        {
+          "title": "Gå med",
+          "body": "Skicka kontorets inbjudningslänk. De loggar in med Google eller e-post, väljer ett skrivbord och är på våningen på en minut."
+        },
+        {
+          "title": "Platser",
+          "body": "En plats är en medlem. En frilansare tar en medan hen är på kontoret och frigör den när hen går."
+        },
+        {
+          "title": "När projektet är slut",
+          "body": "En ägare eller admin tar bort personen ur listan med personer. Har länken spridits längre än tänkt, återställ den så slutar den gamla fungera."
+        },
+        {
+          "title": "Roller",
+          "body": "Ägare, admins och medlemmar. Admins kan hantera personer, så studiochefen behöver inte vara grundaren."
+        }
+      ]
+    },
+    {
+      "title": "Vanor som passar en studio",
+      "items": [
+        {
+          "title": "Döp möten efter kunder",
+          "body": "Ett möte som heter ”Northwind-granskning” berättar för hela våningen vad som pågår och vem som är upptagen."
+        },
+        {
+          "title": "Visa jobbet, inte en sammanfattning",
+          "body": "Dela den riktiga filen i samtalet. Granskningar går fortare när alla tittar på samma sak."
+        },
+        {
+          "title": "Skydda leveransdagar",
+          "body": "Kom överens om att upptagen betyder skriv, gå inte dit, så att den som levererar i dag hinner klart."
+        },
+        {
+          "title": "Kundens röst i en kanal",
+          "body": "Klistra in feedback från kundens mejl i kundens kanal, så att ingen jobbar efter en gammal version av briefen."
+        }
+      ]
+    },
+    {
+      "title": "Vad det inte gör",
+      "body": [
+        "Kontor är för medlemmar som går med med ett konto, så kunder tittar inte förbi; behåll ert vanliga mötesverktyg för kundsamtal. Det finns ingen tidrapportering, ingen fillagring och ingen koppling till Figma, Drive eller ert projektverktyg, och bilder går inte att dela i chatten än. TinyFloor är där ert team jobbar tillsammans varje dag; verktygen mot kunderna stannar där de är."
+      ]
+    }
+  ],
+  "startups": [
+    {
+      "title": "Varför tidiga team tappar fart på distans",
+      "body": [
+        "En startups fördel är hur snabbt en fråga blir ett beslut. I ett rum tar det en minut: du vänder på stolen. På distans krävs ett meddelande, väntan, en samtalslänk och en kalender. TinyFloor ger ett litet team ett rum igen, så att frågan fortfarande tar en minut."
+      ]
+    },
+    {
+      "title": "Vad det kostar när ni växer",
+      "body": [
+        "TinyFloor kostar per kontor, inte per person. En nyanställning ändrar inte räkningen."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Plan",
+          "Per månad"
+        ],
+        "rows": [
+          [
+            "Grundare, 2 eller 3 personer",
+            "Free, alla funktioner",
+            "0 $"
+          ],
+          [
+            "Från den fjärde personen",
+            "Pro, alla funktioner",
+            "29 $ för hela kontoret"
+          ]
+        ],
+        "note": "Priser i amerikanska dollar exklusive skatt. När den fjärde personen går med får teamet först en provperiod av Pro. Månadsvis betalning, utan årsbindning."
+      }
+    },
+    {
+      "title": "Hur ett litet team använder våningen",
+      "items": [
+        {
+          "title": "Besluta i korridoren",
+          "body": "Se vem som är där, gå dit, bestäm och gå tillbaka. En tvåminutersfråga behöver inget möte."
+        },
+        {
+          "title": "En standup, samma rum",
+          "body": "Huvudmötet finns alltid. Tio minuter på morgonen håller alla åt samma håll."
+        },
+        {
+          "title": "Investerar- och kundsamtal någon annanstans",
+          "body": "Behåll Zoom eller Meet för folk utanför företaget. Våningen är för teamet."
+        },
+        {
+          "title": "Anställ till en plats, inte till en kanallista",
+          "body": "En ny person får ett skrivbord och ser vem som är vem första dagen, i stället för att lära känna teamet från en sidopanel full av namn."
+        }
+      ]
+    },
+    {
+      "title": "Vad grundare brukar fråga",
+      "items": [
+        {
+          "title": "Behöver vi IT för att sätta upp det?",
+          "body": "Nej. Det körs i webbläsaren. Skapa ett kontor, dela inbjudningslänken, så loggar folk in med Google eller e-post."
+        },
+        {
+          "title": "Kan vi sluta enkelt?",
+          "body": "Ja. En betald plan gäller till slutet av det ni betalat för, sedan går kontoret tillbaka till Free. Inget raderas."
+        },
+        {
+          "title": "Är vårt kontor privat?",
+          "body": "Ja. Bara de som har er inbjudningslänk kan gå med, och ni kan återställa länken eller ta bort någon när som helst."
+        },
+        {
+          "title": "Och om vi växer ur det?",
+          "body": "Ett kontor är gjort för ett litet team. När ni delar upp er i team, ge varje team ett eget kontor."
+        }
+      ]
+    },
+    {
+      "title": "Vad det inte gör",
+      "body": [
+        "TinyFloor är ingen komplett arbetsplatssvit. Det finns ingen inspelning, ingen enkel inloggning, inga integrationer med era verktyg och ingen åtkomst för kunder, och bilder går inte att dela i chatten än. Behöver ni ett företagsavtal, efterlevnadsrapporter eller SSO från första dagen passar en större produkt bättre. Är ni ett litet team som vill känna sig som ett igen är det byggt för det."
+      ]
+    }
   ]
 }

@@ -3092,5 +3092,207 @@
         "It's a pen-and-eraser board. There's no text tool, no shapes or sticky notes, no images, no undo, no templates and no export, and an office has one board rather than many. For workshops, retrospectives with sticky notes or detailed diagrams, Miro, FigJam or Excalidraw do far more. The TinyFloor board is for the quick sketch while you talk."
       ]
     }
+  ],
+  "agencies": [
+    {
+      "title": "A day at a small agency on the floor",
+      "body": [
+        "Agencies run on short loops: a draft, a quick look, a fix, another look. Remote, every loop can turn into a scheduled call. On the floor, most of them are a walk across the room."
+      ],
+      "items": [
+        {
+          "title": "Priorities",
+          "detail": "9:30",
+          "body": "Ten minutes in the meeting room: what's due for which client today, and who needs help."
+        },
+        {
+          "title": "A quick review",
+          "detail": "11:00",
+          "body": "Walk over to the art director, share the draft and get notes in five minutes instead of tomorrow's slot."
+        },
+        {
+          "title": "Deadline mode",
+          "detail": "14:00",
+          "body": "Set yourself busy. People can see you're in and working, and know to write instead of walking over."
+        },
+        {
+          "title": "Client prep",
+          "detail": "17:00",
+          "body": "Start a meeting named after the client, ask in the three people on the account and run through tomorrow's presentation."
+        }
+      ]
+    },
+    {
+      "title": "What an agency needs, and where it lives",
+      "table": {
+        "head": [
+          "Need",
+          "On TinyFloor",
+          "Keep elsewhere"
+        ],
+        "rows": [
+          [
+            "Fast creative reviews",
+            "Walk over, share a screen, talk it through.",
+            "Your design files, in Figma or wherever they live."
+          ],
+          [
+            "Knowing who has capacity",
+            "Statuses and desks show who's on a deadline and who can help.",
+            "Your resourcing sheet, for the weeks ahead."
+          ],
+          [
+            "Keeping clients apart",
+            "A channel per client or project.",
+            "Briefs and contracts, in your docs."
+          ],
+          [
+            "Freelancers",
+            "They join with the invite link and get a desk while the project runs.",
+            "Contracts and invoices."
+          ],
+          [
+            "Client calls",
+            "—",
+            "The meeting tool your clients already use."
+          ],
+          [
+            "Sketching ideas",
+            "The whiteboard on the wall, for the rough version.",
+            "Proper boards in Miro or FigJam."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Freelancers and contractors",
+      "items": [
+        {
+          "title": "Joining",
+          "body": "Send the office's invite link. They sign in with Google or email, pick a desk and are part of the floor in a minute."
+        },
+        {
+          "title": "Seats",
+          "body": "A seat is a member. A freelancer takes one while they're in the office, and frees it when they leave."
+        },
+        {
+          "title": "When the project ends",
+          "body": "An owner or admin removes them from the people list. If the link went further than it should have, reset it and the old one stops working."
+        },
+        {
+          "title": "Roles",
+          "body": "Owner, admins and members. Admins can manage people, so the studio manager doesn't have to be the founder."
+        }
+      ]
+    },
+    {
+      "title": "Habits that suit a studio",
+      "items": [
+        {
+          "title": "Name meetings after clients",
+          "body": "A meeting called \"Northwind review\" tells the whole floor what's happening, and who's tied up."
+        },
+        {
+          "title": "Show the work, not a summary of it",
+          "body": "Share the actual file in a call. Reviews go faster when everyone is looking at the same thing."
+        },
+        {
+          "title": "Protect deadline days",
+          "body": "Agree that busy means write, don't walk over, so the person shipping today can finish."
+        },
+        {
+          "title": "Keep the client's voice in one channel",
+          "body": "Paste feedback from client emails into that client's channel, so nobody works from an old version of the brief."
+        }
+      ]
+    },
+    {
+      "title": "What it doesn't do",
+      "body": [
+        "Offices are for members who join with an account, so clients don't drop in; keep your usual meeting tool for client calls. There's no time tracking, no file storage and no integration with Figma, Drive or your project tool, and images can't be shared in the chat yet. TinyFloor is where your team works together day to day; the client-facing tools stay where they are."
+      ]
+    }
+  ],
+  "startups": [
+    {
+      "title": "Why early teams lose speed when they go remote",
+      "body": [
+        "A startup's edge is how fast a question becomes a decision. In one room that takes a minute: you turn your chair. Remote, it takes a message, a wait, a call link and a calendar. TinyFloor gives a small team one room again, so the question still takes a minute."
+      ]
+    },
+    {
+      "title": "What it costs as you grow",
+      "body": [
+        "TinyFloor is priced per office, not per person. A hire doesn't change the bill."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Plan",
+          "A month"
+        ],
+        "rows": [
+          [
+            "Founders, 2 or 3 people",
+            "Free, every feature",
+            "$0"
+          ],
+          [
+            "From the fourth person",
+            "Pro, every feature",
+            "$29 for the whole office"
+          ]
+        ],
+        "note": "Prices in US dollars before tax. When the fourth person joins, the team gets a trial of Pro first. Billed monthly, with no yearly commitment."
+      }
+    },
+    {
+      "title": "How a small team uses the floor",
+      "items": [
+        {
+          "title": "Decide in the hallway",
+          "body": "See who's around, walk over, decide, and walk back. No meeting needed for a two-minute question."
+        },
+        {
+          "title": "One standup, same room",
+          "body": "The main meeting is always there. Ten minutes in the morning keeps everyone pointed the same way."
+        },
+        {
+          "title": "Investor and customer calls elsewhere",
+          "body": "Keep Zoom or Meet for people outside the company. The floor is for the team."
+        },
+        {
+          "title": "Hire into a place, not a channel list",
+          "body": "A new person gets a desk and can see who's who on day one, instead of learning the team from a sidebar of names."
+        }
+      ]
+    },
+    {
+      "title": "What founders usually ask",
+      "items": [
+        {
+          "title": "Do we need IT to set it up?",
+          "body": "No. It runs in the browser. Make an office, share the invite link, and people sign in with Google or email."
+        },
+        {
+          "title": "Can we leave easily?",
+          "body": "Yes. A paid plan runs to the end of what you've paid for, then the office moves back to Free. Nothing is deleted."
+        },
+        {
+          "title": "Is our office private?",
+          "body": "Yes. Only people with your invite link can join, and you can reset the link or remove someone at any time."
+        },
+        {
+          "title": "What if we outgrow it?",
+          "body": "An office is made for a small team. When you split into teams, give each one an office of its own."
+        }
+      ]
+    },
+    {
+      "title": "What it doesn't do",
+      "body": [
+        "TinyFloor isn't a full workplace suite. There's no recording, no single sign-on, no integrations with your tools and no client access, and images can't be shared in the chat yet. If you need an enterprise contract, compliance reports or SSO from day one, a bigger product will suit you better. If you're a small team that wants to feel like one again, it's built for that."
+      ]
+    }
   ]
 }

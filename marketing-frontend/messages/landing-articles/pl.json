@@ -3092,5 +3092,207 @@
         "To tablica z pisakiem i gumką. Nie ma narzędzia tekstu, kształtów ani karteczek, obrazów, cofania, szablonów ani eksportu, a biuro ma jedną tablicę. Na warsztaty, retrospektywy z karteczkami albo szczegółowe diagramy Miro, FigJam czy Excalidraw dają dużo więcej. Tablica w TinyFloor służy do szybkiego szkicu podczas rozmowy."
       ]
     }
+  ],
+  "agencies": [
+    {
+      "title": "Dzień w małej agencji na piętrze",
+      "body": [
+        "Agencje żyją krótkimi pętlami: szkic, rzut oka, poprawka, kolejny rzut oka. Zdalnie każda pętla może zamienić się w zaplanowaną rozmowę. Na piętrze większość z nich to przejście przez pokój."
+      ],
+      "items": [
+        {
+          "title": "Priorytety",
+          "detail": "9:30",
+          "body": "Dziesięć minut w sali spotkań: co dziś trzeba oddać któremu klientowi i kto potrzebuje pomocy."
+        },
+        {
+          "title": "Szybki przegląd",
+          "detail": "11:00",
+          "body": "Podejdź do art directora, udostępnij szkic i dostań uwagi w pięć minut zamiast w jutrzejszym terminie."
+        },
+        {
+          "title": "Tryb deadline'u",
+          "detail": "14:00",
+          "body": "Ustaw się jako zajęty. Ludzie widzą, że jesteś i pracujesz, i wiedzą, że mają pisać zamiast podchodzić."
+        },
+        {
+          "title": "Przygotowanie do klienta",
+          "detail": "17:00",
+          "body": "Załóż spotkanie nazwane od klienta, zaproś trzy osoby z projektu i przejdźcie przez jutrzejszą prezentację."
+        }
+      ]
+    },
+    {
+      "title": "Czego potrzebuje agencja i gdzie to trzymać",
+      "table": {
+        "head": [
+          "Potrzeba",
+          "W TinyFloor",
+          "Zostaw gdzie indziej"
+        ],
+        "rows": [
+          [
+            "Szybkie przeglądy kreacji",
+            "Podejść, udostępnić ekran, omówić.",
+            "Pliki projektowe, w Figmie lub tam, gdzie leżą."
+          ],
+          [
+            "Wiedza, kto ma moce przerobowe",
+            "Statusy i biurka pokazują, kto siedzi nad deadline'em, a kto może pomóc.",
+            "Wasz plan zasobów na najbliższe tygodnie."
+          ],
+          [
+            "Oddzielenie klientów",
+            "Kanał na każdego klienta lub projekt.",
+            "Briefy i umowy, w waszych dokumentach."
+          ],
+          [
+            "Freelancerzy",
+            "Dołączają przez link z zaproszeniem i mają biurko na czas projektu.",
+            "Umowy i faktury."
+          ],
+          [
+            "Rozmowy z klientami",
+            "—",
+            "Narzędzie do spotkań, którego klienci już używają."
+          ],
+          [
+            "Szkicowanie pomysłów",
+            "Tablica na ścianie, na wersję roboczą.",
+            "Prawdziwe tablice w Miro albo FigJam."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Freelancerzy i współpracownicy z zewnątrz",
+      "items": [
+        {
+          "title": "Dołączanie",
+          "body": "Wyślij link z zaproszeniem do biura. Logują się przez Google albo e-mail, wybierają biurko i po minucie są na piętrze."
+        },
+        {
+          "title": "Miejsca",
+          "body": "Miejsce to członek. Freelancer zajmuje jedno, dopóki jest w biurze, i zwalnia je, gdy odchodzi."
+        },
+        {
+          "title": "Gdy projekt się kończy",
+          "body": "Właściciel lub admin usuwa tę osobę z listy osób. Jeśli link trafił dalej, niż powinien, zresetuj go, a stary przestanie działać."
+        },
+        {
+          "title": "Role",
+          "body": "Właściciel, admini i członkowie. Admini mogą zarządzać ludźmi, więc szefowa studia nie musi być założycielką."
+        }
+      ]
+    },
+    {
+      "title": "Nawyki pasujące do studia",
+      "items": [
+        {
+          "title": "Nazywaj spotkania od klientów",
+          "body": "Spotkanie o nazwie „Przegląd Northwind” mówi całemu piętru, co się dzieje i kto jest zajęty."
+        },
+        {
+          "title": "Pokazuj pracę, nie jej streszczenie",
+          "body": "Udostępnij prawdziwy plik w rozmowie. Przeglądy idą szybciej, gdy wszyscy patrzą na to samo."
+        },
+        {
+          "title": "Chroń dni oddania",
+          "body": "Ustalcie, że zajęty znaczy pisz, nie podchodź, żeby osoba, która dziś oddaje, mogła skończyć."
+        },
+        {
+          "title": "Głos klienta w jednym kanale",
+          "body": "Wklejaj uwagi z maili klienta do jego kanału, żeby nikt nie pracował na starej wersji briefu."
+        }
+      ]
+    },
+    {
+      "title": "Czego nie robi",
+      "body": [
+        "Biura są dla członków, którzy dołączają z kontem, więc klienci nie wpadają; do rozmów z klientami zostawcie swoje zwykłe narzędzie do spotkań. Nie ma rejestracji czasu, przechowywania plików ani integracji z Figmą, Drive'em czy narzędziem do projektów, a obrazów nie da się jeszcze udostępniać w czacie. TinyFloor to miejsce codziennej pracy zespołu; narzędzia dla klientów zostają tam, gdzie są."
+      ]
+    }
+  ],
+  "startups": [
+    {
+      "title": "Dlaczego młode zespoły tracą tempo w pracy zdalnej",
+      "body": [
+        "Przewagą startupu jest to, jak szybko pytanie zamienia się w decyzję. W jednym pokoju trwa to minutę: obracasz krzesło. Zdalnie potrzeba wiadomości, czekania, linku do rozmowy i kalendarza. TinyFloor znów daje małemu zespołowi jeden pokój, żeby pytanie nadal zajmowało minutę."
+      ]
+    },
+    {
+      "title": "Ile to kosztuje, gdy rośniecie",
+      "body": [
+        "TinyFloor kosztuje za biuro, a nie za osobę. Nowa osoba w zespole nie zmienia rachunku."
+      ],
+      "table": {
+        "head": [
+          "Zespół",
+          "Plan",
+          "Miesięcznie"
+        ],
+        "rows": [
+          [
+            "Założyciele, 2 lub 3 osoby",
+            "Free, wszystkie funkcje",
+            "0 $"
+          ],
+          [
+            "Od czwartej osoby",
+            "Pro, wszystkie funkcje",
+            "29 $ za całe biuro"
+          ]
+        ],
+        "note": "Ceny w dolarach amerykańskich bez podatku. Gdy dołącza czwarta osoba, zespół najpierw dostaje okres próbny Pro. Płatność miesięczna, bez rocznego zobowiązania."
+      }
+    },
+    {
+      "title": "Jak mały zespół korzysta z piętra",
+      "items": [
+        {
+          "title": "Decyzje na korytarzu",
+          "body": "Zobacz, kto jest, podejdź, zdecyduj i wróć. Na dwuminutowe pytanie nie trzeba spotkania."
+        },
+        {
+          "title": "Jeden stand-up, ten sam pokój",
+          "body": "Główne spotkanie jest zawsze. Dziesięć minut rano trzyma wszystkich w tym samym kierunku."
+        },
+        {
+          "title": "Rozmowy z inwestorami i klientami gdzie indziej",
+          "body": "Zostawcie Zooma albo Meet dla osób spoza firmy. Piętro jest dla zespołu."
+        },
+        {
+          "title": "Zatrudniaj do miejsca, nie do listy kanałów",
+          "body": "Nowa osoba dostaje biurko i pierwszego dnia widzi, kto jest kim, zamiast poznawać zespół z paska pełnego imion."
+        }
+      ]
+    },
+    {
+      "title": "O co zwykle pytają założyciele",
+      "items": [
+        {
+          "title": "Czy potrzebujemy IT do konfiguracji?",
+          "body": "Nie. Działa w przeglądarce. Utwórz biuro, udostępnij link z zaproszeniem, a ludzie zalogują się przez Google albo e-mail."
+        },
+        {
+          "title": "Czy łatwo zrezygnować?",
+          "body": "Tak. Płatny plan trwa do końca opłaconego okresu, potem biuro wraca na Free. Nic nie jest usuwane."
+        },
+        {
+          "title": "Czy nasze biuro jest prywatne?",
+          "body": "Tak. Dołączyć mogą tylko osoby z waszym linkiem, a link możecie w każdej chwili zresetować albo kogoś usunąć."
+        },
+        {
+          "title": "A jeśli z niego wyrośniemy?",
+          "body": "Biuro jest dla małego zespołu. Gdy podzielicie się na zespoły, dajcie każdemu własne biuro."
+        }
+      ]
+    },
+    {
+      "title": "Czego nie robi",
+      "body": [
+        "TinyFloor to nie pełny pakiet do pracy. Nie ma nagrywania, logowania jednokrotnego, integracji z waszymi narzędziami ani dostępu dla klientów, a obrazów nie da się jeszcze udostępniać w czacie. Jeśli od pierwszego dnia potrzebujecie umowy enterprise, raportów zgodności albo SSO, lepiej sprawdzi się większy produkt. Jeśli jesteście małym zespołem, który chce znów się tak czuć, jest stworzony właśnie do tego."
+      ]
+    }
   ]
 }

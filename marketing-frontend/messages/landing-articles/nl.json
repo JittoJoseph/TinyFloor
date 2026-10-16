@@ -2881,5 +2881,125 @@
         "Er zijn geen threads, geen integraties of bots, en nog geen zoekfunctie voor berichten. Afbeeldingen delen in de chat kan nog niet, dus screenshots gaan op het scherm in een gesprek. Meldingen volgen je niet naar je telefoon: TinyFloor stuurt geen pushmeldingen of e-mails om mensen terug te halen. Is je team daarvan afhankelijk, houd dan Slack voor het schrijven en gebruik TinyFloor voor aanwezigheid, gesprekken en meetings; veel teams doen dat."
       ]
     }
+  ],
+  "presence": [
+    {
+      "title": "Wat aanwezigheid betekent in TinyFloor",
+      "body": [
+        "Op kantoor zie je in één oogopslag wie er is, wie ergens in verdiept is en wie aan de telefoon hangt. Remote zegt een groen bolletje in een chatapp weinig. Op de verdieping is aanwezigheid waar mensen zijn en wat ze zelf over zichzelf aangeven, meer niet."
+      ]
+    },
+    {
+      "title": "Wat je ziet",
+      "table": {
+        "head": [
+          "Signaal",
+          "Wat het je vertelt",
+          "Wie het instelt"
+        ],
+        "rows": [
+          [
+            "Op de verdieping",
+            "Die persoon heeft het kantoor nu open.",
+            "Er zijn"
+          ],
+          [
+            "Aan het bureau",
+            "Aan het werk. Iedereen zit aan een eigen bureau.",
+            "Gaan zitten"
+          ],
+          [
+            "Beschikbaar",
+            "Klaar om te kletsen: loop erheen of bel.",
+            "Jij"
+          ],
+          [
+            "Bezet",
+            "Niet storen. Schrijf liever, of wacht.",
+            "Jij"
+          ],
+          [
+            "Afwezig",
+            "Zo terug.",
+            "Jij"
+          ],
+          [
+            "In gesprek",
+            "Praat al met iemand; vraag het later.",
+            "Staat aan tijdens een gesprek"
+          ],
+          [
+            "In de vergaderruimte",
+            "In een meeting. De lijst met meetings laat zien welke er bezig zijn.",
+            "Een meeting binnengaan"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Wat het niet bijhoudt",
+      "items": [
+        {
+          "title": "Geen online-uren",
+          "body": "Niets telt hoe lang iemand op de verdieping is geweest, en niets laat zien hoe lang iemand inactief was."
+        },
+        {
+          "title": "Geen activiteitsrapporten",
+          "body": "Er is geen dashboard van wie wat deed, geen screenshots en geen toetsenbord- of muisregistratie."
+        },
+        {
+          "title": "Geen pings om terug te komen",
+          "body": "TinyFloor stuurt geen e-mails of meldingen om mensen naar de verdieping te halen. Is iemand er niet, dan is die er niet."
+        },
+        {
+          "title": "Statussen die betekenen wat jij koos",
+          "body": "Beschikbaar, bezet en afwezig stel je zelf in. Bezet vraagt mensen te wachten; het sluit niemand buiten."
+        }
+      ]
+    },
+    {
+      "title": "Aanwezigheid goed gebruiken als team",
+      "items": [
+        {
+          "title": "Spreek af wat bezet betekent",
+          "body": "De meeste teams komen hierop uit: bezet betekent schrijven, niet langslopen, tenzij er iets in brand staat."
+        },
+        {
+          "title": "Ga aan je bureau zitten als je werkt",
+          "body": "Iemand aan het bureau leest als \"hier en aan het werk\". Het is het duidelijkste signaal dat er is, en het kost niets."
+        },
+        {
+          "title": "Afwezig voor pauzes",
+          "body": "Lunch, de kinderen ophalen, een wandeling. Afwezig zegt dat je terugkomt zonder dat iemand hoeft te vragen."
+        },
+        {
+          "title": "Lees aanwezigheid niet als prestatie",
+          "body": "Op de verdieping zijn is bereikbaar zijn, niet bekeken worden. Teams die het gebruiken om mensen te controleren, stoppen ermee."
+        }
+      ]
+    },
+    {
+      "title": "Mensen vinden",
+      "items": [
+        {
+          "title": "De lijst met mensen",
+          "body": "Iedereen in het kantoor met zijn status, op desktop en in de browser van je telefoon."
+        },
+        {
+          "title": "Loop erheen",
+          "body": "Druk op Loop erheen op iemands kaart en je poppetje vindt zelf de weg over de verdieping."
+        },
+        {
+          "title": "Binnenkomers",
+          "body": "Als iemand binnenkomt, zien mensen die al op de verdieping zijn een paar seconden een rustig \"Ana is er\" met een zwaaiknop."
+        }
+      ]
+    },
+    {
+      "title": "Wat het niet doet",
+      "body": [
+        "Aanwezigheid synchroniseert niet met je agenda, Slack of je besturingssysteem, en statussen veranderen niet volgens een schema. Eigen statusberichten zijn er nog niet. Heb je aanwezigheid nodig over al je tools, dan is de status van je chatapp de plek; die van TinyFloor zegt wie er nu op de verdieping is."
+      ]
+    }
   ]
 }

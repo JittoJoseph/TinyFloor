@@ -2881,5 +2881,125 @@
         "Il n'y a pas de fils de discussion, pas d'intégrations ni de bots, et pas encore de recherche dans les messages. On ne peut pas encore partager d'images dans le chat : les captures d'écran passent à l'écran pendant un appel. Les notifications ne vous suivent pas sur votre téléphone : TinyFloor n'envoie ni notifications push ni e-mails pour faire revenir les gens. Si votre équipe en dépend, gardez Slack pour l'écrit et utilisez TinyFloor pour la présence, les appels et les réunions ; beaucoup d'équipes font ainsi."
       ]
     }
+  ],
+  "presence": [
+    {
+      "title": "Ce que la présence veut dire sur TinyFloor",
+      "body": [
+        "Au bureau, on voit d'un coup d'œil qui est là, qui est plongé dans quelque chose et qui est au téléphone. À distance, un point vert dans une appli de chat en dit très peu. Sur l'étage, la présence, c'est où sont les gens et ce qu'ils disent d'eux-mêmes, rien de plus."
+      ]
+    },
+    {
+      "title": "Ce que vous voyez",
+      "table": {
+        "head": [
+          "Signal",
+          "Ce qu'il vous dit",
+          "Qui le définit"
+        ],
+        "rows": [
+          [
+            "Sur l'étage",
+            "La personne a le bureau ouvert en ce moment.",
+            "Être là"
+          ],
+          [
+            "À son poste",
+            "Elle travaille. Chacun a son propre poste.",
+            "S'asseoir"
+          ],
+          [
+            "Disponible",
+            "Prêt à discuter : allez la voir ou appelez.",
+            "Vous"
+          ],
+          [
+            "Occupé",
+            "Ne pas déranger. Écrivez plutôt, ou attendez.",
+            "Vous"
+          ],
+          [
+            "Absent",
+            "Je reviens tout de suite.",
+            "Vous"
+          ],
+          [
+            "En appel",
+            "Parle déjà avec quelqu'un ; demandez plus tard.",
+            "Défini pendant un appel"
+          ],
+          [
+            "En salle de réunion",
+            "En réunion. La liste des réunions montre celles qui sont en cours.",
+            "Rejoindre une réunion"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Ce qui n'est pas suivi",
+      "items": [
+        {
+          "title": "Pas d'heures en ligne",
+          "body": "Rien ne compte depuis combien de temps quelqu'un est sur l'étage, et rien ne montre depuis combien de temps il est inactif."
+        },
+        {
+          "title": "Pas de rapports d'activité",
+          "body": "Il n'y a ni tableau de bord de qui a fait quoi, ni captures d'écran, ni suivi du clavier ou de la souris."
+        },
+        {
+          "title": "Pas de relances",
+          "body": "TinyFloor n'envoie ni e-mails ni notifications pour faire venir les gens sur l'étage. Si quelqu'un n'est pas là, il n'est pas là."
+        },
+        {
+          "title": "Des statuts qui veulent dire ce que vous avez choisi",
+          "body": "Disponible, occupé et absent, c'est vous qui les définissez. Un statut occupé demande d'attendre ; il ne bloque personne."
+        }
+      ]
+    },
+    {
+      "title": "Bien utiliser la présence en équipe",
+      "items": [
+        {
+          "title": "Convenir de ce qu'occupé veut dire",
+          "body": "La plupart des équipes s'accordent là-dessus : occupé veut dire écrire, pas venir, sauf urgence."
+        },
+        {
+          "title": "S'asseoir à son poste quand on travaille",
+          "body": "Une personne à son poste se lit comme « là et au travail ». C'est le signal le plus clair qui soit, et il ne coûte rien."
+        },
+        {
+          "title": "Absent pour les pauses",
+          "body": "Le déjeuner, l'école, une marche. Absent dit que vous revenez sans que personne ait à demander."
+        },
+        {
+          "title": "Ne pas lire la présence comme une performance",
+          "body": "Être sur l'étage, c'est être joignable, pas surveillé. Les équipes qui s'en servent pour contrôler les gens arrêtent de l'utiliser."
+        }
+      ]
+    },
+    {
+      "title": "Trouver les gens",
+      "items": [
+        {
+          "title": "La liste des personnes",
+          "body": "Tout le monde au bureau avec son statut, sur ordinateur et dans le navigateur de votre téléphone."
+        },
+        {
+          "title": "Aller le voir",
+          "body": "Appuyez sur Aller le voir sur la carte de quelqu'un et votre personnage trouve seul son chemin jusqu'à lui à travers l'étage."
+        },
+        {
+          "title": "Les arrivées",
+          "body": "Quand quelqu'un arrive, ceux déjà sur l'étage voient quelques secondes un discret « Ana est là » avec un bouton pour faire signe."
+        }
+      ]
+    },
+    {
+      "title": "Ce qu'il ne fait pas",
+      "body": [
+        "La présence ne se synchronise pas avec votre agenda, Slack ou votre système d'exploitation, et les statuts ne changent pas selon un horaire. Il n'y a pas encore de messages de statut personnalisés. Si vous avez besoin d'une présence commune à tous vos outils, le statut de votre appli de chat est fait pour ça ; celui de TinyFloor dit qui est sur l'étage en ce moment."
+      ]
+    }
   ]
 }

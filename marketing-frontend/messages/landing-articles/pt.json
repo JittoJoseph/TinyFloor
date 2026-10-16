@@ -2881,5 +2881,125 @@
         "Não há threads, integrações ou bots, e ainda não há busca nas mensagens. Ainda não dá para compartilhar imagens no chat, então capturas de tela vão para a tela numa chamada. As notificações não seguem você no celular: o TinyFloor não manda notificações push nem e-mails para trazer as pessoas de volta. Se sua equipe depende disso, mantenha o Slack para a escrita e use o TinyFloor para presença, chamadas e reuniões; muitas equipes fazem assim."
       ]
     }
+  ],
+  "presence": [
+    {
+      "title": "O que presença significa no TinyFloor",
+      "body": [
+        "No escritório você sabe de relance quem está, quem está concentrado em algo e quem está no telefone. Remoto, uma bolinha verde num app de chat diz muito pouco. No andar, presença é onde as pessoas estão e o que elas dizem sobre si mesmas, nada além disso."
+      ]
+    },
+    {
+      "title": "O que você vê",
+      "table": {
+        "head": [
+          "Sinal",
+          "O que diz",
+          "Quem define"
+        ],
+        "rows": [
+          [
+            "No andar",
+            "A pessoa está com o escritório aberto agora.",
+            "Estar lá"
+          ],
+          [
+            "Na mesa",
+            "Está trabalhando. Cada pessoa senta na própria mesa.",
+            "Sentar"
+          ],
+          [
+            "Disponível",
+            "Pronto para conversar: vá até lá ou ligue.",
+            "Você"
+          ],
+          [
+            "Ocupado",
+            "Não perturbe. Escreva, ou espere.",
+            "Você"
+          ],
+          [
+            "Ausente",
+            "Volto já.",
+            "Você"
+          ],
+          [
+            "Em chamada",
+            "Já está falando com alguém; pergunte depois.",
+            "Definido enquanto você está em uma chamada"
+          ],
+          [
+            "Na sala de reunião",
+            "Numa reunião. A lista de reuniões mostra quais estão acontecendo.",
+            "Entrar numa reunião"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "O que não é registrado",
+      "items": [
+        {
+          "title": "Sem horas online",
+          "body": "Nada conta há quanto tempo alguém está no andar, e nada mostra quanto tempo ficou inativo."
+        },
+        {
+          "title": "Sem relatórios de atividade",
+          "body": "Não há painel de quem fez o quê, nem capturas de tela, nem monitoramento de teclado ou mouse."
+        },
+        {
+          "title": "Sem avisos para voltar",
+          "body": "O TinyFloor não manda e-mails nem notificações para trazer as pessoas ao andar. Se alguém não está, não está."
+        },
+        {
+          "title": "Status que significam o que você escolheu",
+          "body": "Disponível, ocupado e ausente são definidos por você. Ocupado pede que esperem; não bloqueia ninguém."
+        }
+      ]
+    },
+    {
+      "title": "Usando bem a presença em equipe",
+      "items": [
+        {
+          "title": "Combinem o que ocupado significa",
+          "body": "A maioria das equipes chega nisto: ocupado quer dizer escrever, não ir até lá, a menos que algo esteja pegando fogo."
+        },
+        {
+          "title": "Sente na sua mesa quando estiver trabalhando",
+          "body": "Alguém na mesa passa a ideia de \"aqui e trabalhando\". É o sinal mais claro que existe, e não custa nada."
+        },
+        {
+          "title": "Ausente para pausas",
+          "body": "Almoço, buscar as crianças, uma caminhada. Ausente diz que você volta sem ninguém precisar perguntar."
+        },
+        {
+          "title": "Não leia presença como desempenho",
+          "body": "Estar no andar é para estar acessível, não vigiado. Equipes que usam isso para controlar pessoas param de usar."
+        }
+      ]
+    },
+    {
+      "title": "Encontrando as pessoas",
+      "items": [
+        {
+          "title": "A lista de pessoas",
+          "body": "Todo mundo do escritório com seu status, no computador e no navegador do celular."
+        },
+        {
+          "title": "Ir até lá",
+          "body": "Aperte Ir até lá no card de alguém e seu personagem acha sozinho o caminho pelo andar."
+        },
+        {
+          "title": "Chegadas",
+          "body": "Quando alguém entra, quem já está no andar vê por alguns segundos um discreto \"Ana chegou\" com um botão de aceno."
+        }
+      ]
+    },
+    {
+      "title": "O que ele não faz",
+      "body": [
+        "A presença não sincroniza com sua agenda, com o Slack nem com seu sistema operacional, e os status não mudam por horário. Ainda não há mensagens de status personalizadas. Se você precisa de presença em todas as suas ferramentas, o status do seu app de chat é o lugar; o do TinyFloor diz quem está no andar agora."
+      ]
+    }
   ]
 }

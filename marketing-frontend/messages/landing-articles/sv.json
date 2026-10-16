@@ -2881,5 +2881,125 @@
         "Det finns inga trådar, inga integrationer eller bottar och ännu ingen sökning i meddelanden. Det går inte att dela bilder i chatten än, så skärmdumpar visas på skärmen i ett samtal. Aviseringar följer inte med till mobilen: TinyFloor skickar inga pushnotiser eller mejl för att locka tillbaka folk. Är ert team beroende av något av det, behåll Slack för skrivandet och använd TinyFloor för närvaro, samtal och möten; många team gör så."
       ]
     }
+  ],
+  "presence": [
+    {
+      "title": "Vad närvaro betyder i TinyFloor",
+      "body": [
+        "På ett kontor ser du med en blick vem som är där, vem som är fördjupad i något och vem som pratar i telefon. På distans säger en grön prick i en chattapp väldigt lite. På våningen är närvaro var folk är och vad de själva säger om sig, inget mer."
+      ]
+    },
+    {
+      "title": "Vad du ser",
+      "table": {
+        "head": [
+          "Signal",
+          "Vad den säger",
+          "Vem som sätter den"
+        ],
+        "rows": [
+          [
+            "På våningen",
+            "Personen har kontoret öppet just nu.",
+            "Att vara där"
+          ],
+          [
+            "Vid skrivbordet",
+            "Jobbar. Var och en sitter vid ett eget skrivbord.",
+            "Att sätta sig"
+          ],
+          [
+            "Tillgänglig",
+            "Redo att prata: gå dit eller ring.",
+            "Du"
+          ],
+          [
+            "Upptagen",
+            "Stör ej. Skriv hellre, eller vänta.",
+            "Du"
+          ],
+          [
+            "Borta",
+            "Strax tillbaka.",
+            "Du"
+          ],
+          [
+            "I samtal",
+            "Pratar redan med någon; fråga senare.",
+            "Sätts medan du är i ett samtal"
+          ],
+          [
+            "I mötesrummet",
+            "I ett möte. Listan med möten visar vilka som pågår.",
+            "Att gå med i ett möte"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Vad den inte registrerar",
+      "items": [
+        {
+          "title": "Inga timmar online",
+          "body": "Inget räknar hur länge någon har varit på våningen, och inget visar hur länge någon har varit inaktiv."
+        },
+        {
+          "title": "Inga aktivitetsrapporter",
+          "body": "Det finns ingen översikt över vem som gjort vad, inga skärmdumpar och ingen övervakning av tangentbord eller mus."
+        },
+        {
+          "title": "Inga påminnelser om att komma tillbaka",
+          "body": "TinyFloor skickar inga mejl eller aviseringar för att få folk till våningen. Är någon inte där, så är hen inte där."
+        },
+        {
+          "title": "Statusar som betyder det du valt",
+          "body": "Tillgänglig, upptagen och borta sätter du själv. Upptagen ber folk vänta; den stänger inte ute någon."
+        }
+      ]
+    },
+    {
+      "title": "Använd närvaro väl som team",
+      "items": [
+        {
+          "title": "Kom överens om vad upptagen betyder",
+          "body": "De flesta team landar i: upptagen betyder skriv, gå inte dit, om det inte brinner."
+        },
+        {
+          "title": "Sitt vid ditt skrivbord när du jobbar",
+          "body": "Någon vid skrivbordet läses som ”här och jobbar”. Det är den tydligaste signalen som finns, och den kostar inget."
+        },
+        {
+          "title": "Borta för pauser",
+          "body": "Lunch, hämta barnen, en promenad. Borta säger att du kommer tillbaka utan att någon behöver fråga."
+        },
+        {
+          "title": "Läs inte närvaro som prestation",
+          "body": "Att vara på våningen handlar om att vara nåbar, inte iakttagen. Team som använder den för att kontrollera folk slutar använda den."
+        }
+      ]
+    },
+    {
+      "title": "Hitta folk",
+      "items": [
+        {
+          "title": "Listan med personer",
+          "body": "Alla på kontoret med sin status, på datorn och i mobilens webbläsare."
+        },
+        {
+          "title": "Gå dit",
+          "body": "Tryck på Gå dit på någons kort så hittar din figur själv vägen över våningen."
+        },
+        {
+          "title": "Ankomster",
+          "body": "När någon kommer in ser de som redan är på våningen ett diskret ”Ana är här” med en vinkknapp i några sekunder."
+        }
+      ]
+    },
+    {
+      "title": "Vad den inte gör",
+      "body": [
+        "Närvaron synkas inte med din kalender, Slack eller ditt operativsystem, och statusar ändras inte enligt schema. Egna statusmeddelanden finns inte än. Behöver du närvaro i alla dina verktyg är chattappens status rätt plats; TinyFloors säger vem som är på våningen just nu."
+      ]
+    }
   ]
 }

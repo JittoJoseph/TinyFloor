@@ -2881,5 +2881,125 @@
         "Siinä ei ole ketjuja, integraatioita tai botteja, eikä viestihakua vielä. Kuvia ei voi vielä jakaa chatissa, joten kuvakaappaukset näytetään puhelun aikana näytöllä. Ilmoitukset eivät seuraa puhelimeesi: TinyFloor ei lähetä push-ilmoituksia tai sähköposteja houkutellakseen ihmisiä takaisin. Jos tiiminne tarvitsee jotain näistä, pitäkää Slack kirjoittamiseen ja käyttäkää TinyFlooria läsnäoloon, puheluihin ja kokouksiin; moni tiimi tekee niin."
       ]
     }
+  ],
+  "presence": [
+    {
+      "title": "Mitä läsnäolo tarkoittaa TinyFloorissa",
+      "body": [
+        "Toimistolla näet yhdellä silmäyksellä, kuka on paikalla, kuka on syventynyt johonkin ja kuka puhuu puhelimessa. Etänä vihreä pallo chat-sovelluksessa kertoo hyvin vähän. Kerroksessa läsnäolo on sitä, missä ihmiset ovat ja mitä he itse kertovat itsestään, ei mitään muuta."
+      ]
+    },
+    {
+      "title": "Mitä näet",
+      "table": {
+        "head": [
+          "Merkki",
+          "Mitä se kertoo",
+          "Kuka sen asettaa"
+        ],
+        "rows": [
+          [
+            "Kerroksessa",
+            "Hänellä on toimisto auki juuri nyt.",
+            "Paikalla oleminen"
+          ],
+          [
+            "Työpisteellä",
+            "Tekee töitä. Jokaisella on oma työpiste.",
+            "Istuutuminen"
+          ],
+          [
+            "Tavoitettavissa",
+            "Valmis juttelemaan: mene luo tai soita.",
+            "Sinä"
+          ],
+          [
+            "Varattu",
+            "Älä häiritse. Kirjoita mieluummin tai odota.",
+            "Sinä"
+          ],
+          [
+            "Poissa",
+            "Palaan pian.",
+            "Sinä"
+          ],
+          [
+            "Puhelussa",
+            "Puhuu jo jonkun kanssa; kysy myöhemmin.",
+            "Asetetaan puhelun ajaksi"
+          ],
+          [
+            "Kokoushuoneessa",
+            "Kokouksessa. Kokousten luettelo näyttää, mitkä ovat käynnissä.",
+            "Kokoukseen liittyminen"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Mitä se ei seuraa",
+      "items": [
+        {
+          "title": "Ei tunteja paikalla",
+          "body": "Mikään ei laske, kuinka kauan joku on ollut kerroksessa, eikä mikään näytä, kuinka kauan joku on ollut toimettomana."
+        },
+        {
+          "title": "Ei aktiivisuusraportteja",
+          "body": "Ei koostetta siitä, kuka teki mitä, ei kuvakaappauksia eikä näppäimistön tai hiiren seurantaa."
+        },
+        {
+          "title": "Ei houkuttelua takaisin",
+          "body": "TinyFloor ei lähetä sähköposteja tai ilmoituksia saadakseen ihmiset kerrokseen. Jos joku ei ole paikalla, hän ei ole paikalla."
+        },
+        {
+          "title": "Tilat, jotka tarkoittavat valitsemaasi",
+          "body": "Tavoitettavissa, varattu ja poissa asetat itse. Varattu pyytää odottamaan; se ei sulje ketään ulos."
+        }
+      ]
+    },
+    {
+      "title": "Läsnäolon hyvä käyttö tiiminä",
+      "items": [
+        {
+          "title": "Sopikaa, mitä varattu tarkoittaa",
+          "body": "Useimmat tiimit päätyvät tähän: varattu tarkoittaa kirjoita, älä tule, ellei jokin ole tulessa."
+        },
+        {
+          "title": "Istu työpisteelläsi, kun teet töitä",
+          "body": "Työpisteellä istuva näyttää siltä, että hän on ”paikalla ja töissä”. Se on selkein merkki, joka on olemassa, eikä se maksa mitään."
+        },
+        {
+          "title": "Poissa taukoja varten",
+          "body": "Lounas, lasten haku, kävely. Poissa kertoo, että palaat, ilman että kenenkään tarvitsee kysyä."
+        },
+        {
+          "title": "Älä lue läsnäoloa suorituksena",
+          "body": "Kerroksessa oleminen on tavoitettavuutta, ei tarkkailua. Tiimit, jotka käyttävät sitä ihmisten valvontaan, lopettavat sen käytön."
+        }
+      ]
+    },
+    {
+      "title": "Ihmisten löytäminen",
+      "items": [
+        {
+          "title": "Ihmisten luettelo",
+          "body": "Kaikki toimistossa tiloineen, tietokoneella ja puhelimen selaimessa."
+        },
+        {
+          "title": "Kävele luo",
+          "body": "Paina jonkun kortissa Kävele luo, niin hahmosi löytää itse tien kerroksen poikki."
+        },
+        {
+          "title": "Saapumiset",
+          "body": "Kun joku tulee sisään, jo kerroksessa olevat näkevät muutaman sekunnin ajan hillityn ”Ana on paikalla” ja vilkutusnapin."
+        }
+      ]
+    },
+    {
+      "title": "Mitä se ei tee",
+      "body": [
+        "Läsnäolo ei synkronoidu kalenterisi, Slackin tai käyttöjärjestelmäsi kanssa, eivätkä tilat vaihdu aikataulun mukaan. Omia tilaviestejä ei vielä ole. Jos tarvitset läsnäoloa kaikkiin työkaluihisi, chat-sovelluksesi tila on oikea paikka; TinyFloorin tila kertoo, kuka on kerroksessa juuri nyt."
+      ]
+    }
   ]
 }

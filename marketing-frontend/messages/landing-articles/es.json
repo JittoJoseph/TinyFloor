@@ -2881,5 +2881,125 @@
         "No hay hilos, ni integraciones ni bots, y todavía no hay búsqueda de mensajes. Aún no se pueden compartir imágenes en el chat, así que las capturas van a la pantalla en una llamada. Las notificaciones no te siguen al móvil: TinyFloor no envía notificaciones push ni correos para traer de vuelta a la gente. Si tu equipo depende de algo de eso, mantén Slack para escribir y usa TinyFloor para la presencia, las llamadas y las reuniones; muchos equipos lo hacen así."
       ]
     }
+  ],
+  "presence": [
+    {
+      "title": "Qué significa la presencia en TinyFloor",
+      "body": [
+        "En una oficina sabes de un vistazo quién está, quién está metido en algo y quién está al teléfono. En remoto, un punto verde en una app de chat dice muy poco. En la planta, la presencia es dónde está la gente y lo que dice de sí misma, nada más."
+      ]
+    },
+    {
+      "title": "Lo que ves",
+      "table": {
+        "head": [
+          "Señal",
+          "Qué te dice",
+          "Quién la pone"
+        ],
+        "rows": [
+          [
+            "En la planta",
+            "Tiene la oficina abierta ahora mismo.",
+            "Estar ahí"
+          ],
+          [
+            "En su mesa",
+            "Está trabajando. Cada persona tiene su propia mesa.",
+            "Sentarse"
+          ],
+          [
+            "Disponible",
+            "Listo para charlar: acércate o llama.",
+            "Tú"
+          ],
+          [
+            "Ocupado",
+            "No molestar. Mejor escribe, o espera.",
+            "Tú"
+          ],
+          [
+            "Ausente",
+            "Vuelvo enseguida.",
+            "Tú"
+          ],
+          [
+            "En una llamada",
+            "Ya está hablando con alguien; pregunta luego.",
+            "Se activa mientras estás en una llamada"
+          ],
+          [
+            "En la sala de reuniones",
+            "En una reunión. La lista de reuniones muestra las que hay en curso.",
+            "Unirse a una reunión"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Lo que no registra",
+      "items": [
+        {
+          "title": "Sin horas conectado",
+          "body": "Nada cuenta cuánto tiempo lleva alguien en la planta, y nada muestra cuánto ha estado inactivo."
+        },
+        {
+          "title": "Sin informes de actividad",
+          "body": "No hay un panel de quién hizo qué, ni capturas de pantalla, ni seguimiento de teclado o ratón."
+        },
+        {
+          "title": "Sin avisos para volver",
+          "body": "TinyFloor no envía correos ni notificaciones para traer a la gente a la planta. Si alguien no está, no está."
+        },
+        {
+          "title": "Estados que significan lo que elegiste",
+          "body": "Disponible, ocupado y ausente los pones tú. Un estado de ocupado pide esperar; no bloquea a nadie."
+        }
+      ]
+    },
+    {
+      "title": "Usar bien la presencia en equipo",
+      "items": [
+        {
+          "title": "Acordad qué significa ocupado",
+          "body": "La mayoría de los equipos acaba en esto: ocupado significa escribir, no acercarse, salvo que algo arda."
+        },
+        {
+          "title": "Siéntate en tu mesa cuando trabajes",
+          "body": "Alguien en su mesa se lee como «aquí y trabajando». Es la señal más clara que hay, y no cuesta nada."
+        },
+        {
+          "title": "Ausente para los descansos",
+          "body": "La comida, recoger a los niños, un paseo. Ausente dice que vuelves sin que nadie tenga que preguntar."
+        },
+        {
+          "title": "No leas la presencia como rendimiento",
+          "body": "Estar en la planta es estar localizable, no vigilado. Los equipos que la usan para controlar a la gente dejan de usarla."
+        }
+      ]
+    },
+    {
+      "title": "Encontrar a la gente",
+      "items": [
+        {
+          "title": "La lista de personas",
+          "body": "Todos los de la oficina con su estado, en el ordenador y en el navegador del móvil."
+        },
+        {
+          "title": "Ir hasta allí",
+          "body": "Pulsa Ir hasta allí en la tarjeta de alguien y tu personaje encuentra solo el camino por la planta."
+        },
+        {
+          "title": "Llegadas",
+          "body": "Cuando alguien entra, quienes ya están en la planta ven unos segundos un discreto «Ana ha llegado» con un botón para saludar."
+        }
+      ]
+    },
+    {
+      "title": "Lo que no hace",
+      "body": [
+        "La presencia no se sincroniza con tu calendario, con Slack ni con tu sistema operativo, y los estados no cambian según un horario. Todavía no hay mensajes de estado personalizados. Si necesitas una presencia común a todas tus herramientas, el estado de tu app de chat es el sitio; el de TinyFloor dice quién está en la planta ahora mismo."
+      ]
+    }
   ]
 }

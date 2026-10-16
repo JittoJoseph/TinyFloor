@@ -2881,5 +2881,125 @@
         "Det finnes ingen tråder, ingen integrasjoner eller boter og ennå ikke søk i meldinger. Du kan ikke dele bilder i chatten ennå, så skjermbilder vises på skjermen i en samtale. Varsler følger deg ikke til telefonen: TinyFloor sender ingen push-varsler eller e-poster for å trekke folk tilbake. Er teamet deres avhengig av noe av dette, behold Slack for skriving og bruk TinyFloor for tilstedeværelse, samtaler og møter; mange team gjør det slik."
       ]
     }
+  ],
+  "presence": [
+    {
+      "title": "Hva tilstedeværelse betyr i TinyFloor",
+      "body": [
+        "På et kontor ser du med ett blikk hvem som er der, hvem som er dypt inne i noe og hvem som snakker i telefonen. På fjernarbeid sier en grønn prikk i en chatteapp veldig lite. I etasjen er tilstedeværelse hvor folk er og hva de selv sier om seg, ikke noe mer."
+      ]
+    },
+    {
+      "title": "Hva du ser",
+      "table": {
+        "head": [
+          "Signal",
+          "Hva det forteller",
+          "Hvem som setter det"
+        ],
+        "rows": [
+          [
+            "I etasjen",
+            "Personen har kontoret åpent akkurat nå.",
+            "Å være der"
+          ],
+          [
+            "Ved pulten",
+            "Jobber. Hver person sitter ved sin egen pult.",
+            "Å sette seg"
+          ],
+          [
+            "Tilgjengelig",
+            "Klar for en prat: gå bort eller ring.",
+            "Deg"
+          ],
+          [
+            "Opptatt",
+            "Ikke stør. Skriv heller, eller vent.",
+            "Deg"
+          ],
+          [
+            "Borte",
+            "Straks tilbake.",
+            "Deg"
+          ],
+          [
+            "I en samtale",
+            "Snakker allerede med noen; spør senere.",
+            "Settes mens du er i en samtale"
+          ],
+          [
+            "I møterommet",
+            "I et møte. Listen over møter viser hvilke som pågår.",
+            "Å bli med i et møte"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Hva det ikke registrerer",
+      "items": [
+        {
+          "title": "Ingen timer pålogget",
+          "body": "Ingenting teller hvor lenge noen har vært i etasjen, og ingenting viser hvor lenge noen har vært inaktive."
+        },
+        {
+          "title": "Ingen aktivitetsrapporter",
+          "body": "Det finnes ingen oversikt over hvem som gjorde hva, ingen skjermbilder og ingen overvåking av tastatur eller mus."
+        },
+        {
+          "title": "Ingen påminnelser om å komme tilbake",
+          "body": "TinyFloor sender ingen e-poster eller varsler for å få folk inn i etasjen. Er noen ikke der, er de ikke der."
+        },
+        {
+          "title": "Statuser som betyr det du valgte",
+          "body": "Tilgjengelig, opptatt og borte setter du selv. Opptatt ber folk vente; det stenger ingen ute."
+        }
+      ]
+    },
+    {
+      "title": "Bruk tilstedeværelse godt som team",
+      "items": [
+        {
+          "title": "Bli enige om hva opptatt betyr",
+          "body": "De fleste team lander på: opptatt betyr skriv, ikke gå bort, med mindre det brenner."
+        },
+        {
+          "title": "Sett deg ved pulten når du jobber",
+          "body": "Noen ved pulten leses som «her og i gang». Det er det tydeligste signalet som finnes, og det koster ingenting."
+        },
+        {
+          "title": "Borte for pauser",
+          "body": "Lunsj, hente barna, en tur. Borte sier at du kommer tilbake uten at noen må spørre."
+        },
+        {
+          "title": "Ikke les tilstedeværelse som prestasjon",
+          "body": "Å være i etasjen handler om å være tilgjengelig, ikke om å bli overvåket. Team som bruker det til kontroll, slutter å bruke det."
+        }
+      ]
+    },
+    {
+      "title": "Finn folk",
+      "items": [
+        {
+          "title": "Listen over personer",
+          "body": "Alle på kontoret med status, på datamaskinen og i telefonens nettleser."
+        },
+        {
+          "title": "Gå dit",
+          "body": "Trykk Gå dit på noens kort, så finner figuren din selv veien gjennom etasjen."
+        },
+        {
+          "title": "Ankomster",
+          "body": "Når noen kommer inn, ser de som allerede er i etasjen et diskret «Ana er her» med en vinkeknapp i noen sekunder."
+        }
+      ]
+    },
+    {
+      "title": "Hva det ikke gjør",
+      "body": [
+        "Tilstedeværelse synkroniseres ikke med kalenderen din, Slack eller operativsystemet, og statuser endres ikke etter en tidsplan. Egne statusmeldinger finnes ikke ennå. Trenger du tilstedeværelse på tvers av alle verktøyene dine, er statusen i chatteappen stedet; TinyFloors sier hvem som er i etasjen akkurat nå."
+      ]
+    }
   ]
 }

@@ -2881,5 +2881,125 @@
         "Non ci sono thread, né integrazioni o bot, e non c'è ancora la ricerca nei messaggi. Non si possono ancora condividere immagini nella chat, quindi gli screenshot vanno sullo schermo durante una chiamata. Le notifiche non ti seguono sul telefono: TinyFloor non invia notifiche push né email per far tornare le persone. Se il vostro team ne ha bisogno, tenete Slack per scrivere e usate TinyFloor per presenza, chiamate e riunioni; molti team fanno così."
       ]
     }
+  ],
+  "presence": [
+    {
+      "title": "Cosa significa la presenza su TinyFloor",
+      "body": [
+        "In ufficio capisci a colpo d'occhio chi c'è, chi è immerso in qualcosa e chi è al telefono. Da remoto, un pallino verde in un'app di chat dice ben poco. Sul piano, la presenza è dove sono le persone e cosa dicono di sé, niente di più."
+      ]
+    },
+    {
+      "title": "Cosa vedi",
+      "table": {
+        "head": [
+          "Segnale",
+          "Cosa ti dice",
+          "Chi lo imposta"
+        ],
+        "rows": [
+          [
+            "Sul piano",
+            "Ha l'ufficio aperto in questo momento.",
+            "Esserci"
+          ],
+          [
+            "Alla scrivania",
+            "Sta lavorando. Ognuno ha la propria scrivania.",
+            "Sedersi"
+          ],
+          [
+            "Disponibile",
+            "Pronto a chiacchierare: avvicinati o chiama.",
+            "Tu"
+          ],
+          [
+            "Occupato",
+            "Non disturbare. Scrivi, oppure aspetta.",
+            "Tu"
+          ],
+          [
+            "Assente",
+            "Torno subito.",
+            "Tu"
+          ],
+          [
+            "In chiamata",
+            "Sta già parlando con qualcuno; chiedi dopo.",
+            "Impostato durante una chiamata"
+          ],
+          [
+            "In sala riunioni",
+            "In riunione. L'elenco delle riunioni mostra quelle in corso.",
+            "Entrare in una riunione"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Cosa non registra",
+      "items": [
+        {
+          "title": "Nessuna ora online",
+          "body": "Niente conta da quanto tempo qualcuno è sul piano, e niente mostra da quanto è inattivo."
+        },
+        {
+          "title": "Nessun report di attività",
+          "body": "Non c'è una dashboard di chi ha fatto cosa, né screenshot, né monitoraggio di tastiera o mouse."
+        },
+        {
+          "title": "Nessun richiamo",
+          "body": "TinyFloor non manda email o notifiche per portare le persone sul piano. Se qualcuno non c'è, non c'è."
+        },
+        {
+          "title": "Stati che dicono quello che hai scelto",
+          "body": "Disponibile, occupato e assente li imposti tu. Occupato chiede di aspettare; non blocca nessuno."
+        }
+      ]
+    },
+    {
+      "title": "Usare bene la presenza in team",
+      "items": [
+        {
+          "title": "Decidete cosa vuol dire occupato",
+          "body": "Quasi tutti i team arrivano qui: occupato vuol dire scrivere, non avvicinarsi, salvo emergenze."
+        },
+        {
+          "title": "Siediti alla scrivania quando lavori",
+          "body": "Una persona alla scrivania si legge come \"qui e al lavoro\". È il segnale più chiaro che ci sia, e non costa niente."
+        },
+        {
+          "title": "Assente per le pause",
+          "body": "Il pranzo, i bambini da prendere, una passeggiata. Assente dice che torni senza che nessuno debba chiedere."
+        },
+        {
+          "title": "Non leggere la presenza come rendimento",
+          "body": "Essere sul piano serve a essere raggiungibili, non a essere osservati. I team che la usano per controllare le persone smettono di usarla."
+        }
+      ]
+    },
+    {
+      "title": "Trovare le persone",
+      "items": [
+        {
+          "title": "L'elenco delle persone",
+          "body": "Tutti nell'ufficio con il loro stato, su computer e nel browser del telefono."
+        },
+        {
+          "title": "Raggiungilo",
+          "body": "Premi Raggiungilo sulla scheda di qualcuno e il tuo personaggio trova da solo la strada sul piano."
+        },
+        {
+          "title": "Gli arrivi",
+          "body": "Quando qualcuno entra, chi è già sul piano vede per qualche secondo un discreto \"Ana è arrivata\" con un pulsante per salutare."
+        }
+      ]
+    },
+    {
+      "title": "Cosa non fa",
+      "body": [
+        "La presenza non si sincronizza con il calendario, con Slack o con il sistema operativo, e gli stati non cambiano in base a un orario. Non ci sono ancora messaggi di stato personalizzati. Se ti serve una presenza comune a tutti i tuoi strumenti, lo stato della tua app di chat è il posto giusto; quello di TinyFloor dice chi è sul piano in questo momento."
+      ]
+    }
   ]
 }

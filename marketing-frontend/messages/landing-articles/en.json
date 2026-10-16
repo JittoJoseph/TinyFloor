@@ -2881,5 +2881,125 @@
         "There are no threads, no integrations or bots, and no message search yet. You can't share images in the chat yet, so screenshots go on screen in a call. Notifications don't follow you to your phone: TinyFloor doesn't send push notifications or emails to bring people back. If your team relies on any of that, keep Slack for writing and use TinyFloor for presence, calls and meetings; plenty of teams do."
       ]
     }
+  ],
+  "presence": [
+    {
+      "title": "What presence means on TinyFloor",
+      "body": [
+        "In an office you know at a glance who's in, who's deep in something and who's on the phone. Remote, a green dot in a chat app tells you very little. On the floor, presence is where people are and what they've said about themselves, nothing more."
+      ]
+    },
+    {
+      "title": "What you can see",
+      "table": {
+        "head": [
+          "Signal",
+          "What it tells you",
+          "Who sets it"
+        ],
+        "rows": [
+          [
+            "On the floor",
+            "They have the office open right now.",
+            "Being there"
+          ],
+          [
+            "At their desk",
+            "They're working. Each person sits at a desk of their own.",
+            "Sitting down"
+          ],
+          [
+            "Available",
+            "Ready to chat: walk over or call.",
+            "You"
+          ],
+          [
+            "Busy",
+            "Do not disturb. Write instead, or wait.",
+            "You"
+          ],
+          [
+            "Away",
+            "Be right back.",
+            "You"
+          ],
+          [
+            "In a call",
+            "Already talking to someone; ask later.",
+            "Set while you're on a call"
+          ],
+          [
+            "In the meeting room",
+            "In a meeting. The list of meetings shows which ones are on.",
+            "Joining a meeting"
+          ]
+        ]
+      }
+    },
+    {
+      "title": "What it doesn't track",
+      "items": [
+        {
+          "title": "No hours online",
+          "body": "Nothing counts how long anyone has been on the floor, and nothing shows how long someone has been idle."
+        },
+        {
+          "title": "No activity reports",
+          "body": "There's no dashboard of who did what, no screenshots and no keystroke or mouse tracking."
+        },
+        {
+          "title": "No pings to come back",
+          "body": "TinyFloor doesn't email or notify people to get them onto the floor. If someone's not there, they're not there."
+        },
+        {
+          "title": "Statuses that mean what you chose",
+          "body": "Available, busy and away are yours to set. A busy status asks people to wait; it doesn't lock anyone out."
+        }
+      ]
+    },
+    {
+      "title": "Using presence well as a team",
+      "items": [
+        {
+          "title": "Agree what busy means",
+          "body": "Most teams settle on: busy means write, don't walk over, unless something's on fire."
+        },
+        {
+          "title": "Sit at your desk when you're working",
+          "body": "A person at their desk reads as \"here and working\". It's the clearest signal there is, and it costs nothing."
+        },
+        {
+          "title": "Use away for breaks",
+          "body": "Lunch, a school run, a walk. Away says you'll be back without anyone having to ask."
+        },
+        {
+          "title": "Don't read presence as performance",
+          "body": "Being on the floor is for being reachable, not for being watched. Teams that use it to check on people stop using it."
+        }
+      ]
+    },
+    {
+      "title": "Finding people",
+      "items": [
+        {
+          "title": "The list of people",
+          "body": "Everyone in the office with their status, on desktop and in your phone's browser."
+        },
+        {
+          "title": "Walk over",
+          "body": "Press Walk over on anyone's card and your character finds its own way across the floor to them."
+        },
+        {
+          "title": "Arrivals",
+          "body": "When someone walks in, people already on the floor see a quiet \"Ana is in\" with a wave button for a few seconds."
+        }
+      ]
+    },
+    {
+      "title": "What it doesn't do",
+      "body": [
+        "Presence doesn't sync with your calendar, Slack or your operating system, and statuses don't change on a schedule. There are no custom status messages yet. If you need presence across all your tools, your chat app's status is the place for it; TinyFloor's is about who's on the floor right now."
+      ]
+    }
   ]
 }

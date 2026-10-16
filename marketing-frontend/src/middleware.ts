@@ -19,7 +19,7 @@ const PAGES = [
   `guides(/(${GUIDES.map((guide) => guide.slug).join("|")}))?`,
   "about|pricing|features|compare|use-cases|teams|people|privacy|terms|refunds|rooms|og-render",
   // The free tools (lib/tools), in every language.
-  "tools/(icebreaker-questions|virtual-office-cost-calculator)",
+  "tools/(icebreaker-questions|virtual-office-cost-calculator|time-zone-meeting-planner)",
 ];
 const PAGE = new RegExp(`^(?:/(${routing.locales.join("|")}))?(?:/(?:${PAGES.join("|")}))?/?$`);
 

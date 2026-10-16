@@ -2058,5 +2058,143 @@
         "Prijzen, limieten en functies komen van de eigen prijspagina's en helpcentra van Gather en Kumospace, gelezen in oktober 2026, in Amerikaanse dollars exclusief belasting. Wat daar niet stond, hebben we weggelaten in plaats van te gokken. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van elk product voordat je koopt."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "Zo verloopt een standup in TinyFloor",
+      "body": [
+        "Elk kantoor heeft een hoofdmeeting die altijd open is. De standup is die ruimte, elke dag op hetzelfde tijdstip: niemand stuurt een link en niemand wacht in een wachtkamer op een host."
+      ],
+      "items": [
+        {
+          "title": "Binnenlopen",
+          "detail": "9:58",
+          "body": "Doe mee aan de hoofdmeeting en je poppetje loopt de vergaderruimte in. Iedereen op de verdieping ziet de ruimte vollopen."
+        },
+        {
+          "title": "Het rondje",
+          "detail": "10:00",
+          "body": "Eerst stem, camera's als mensen dat willen. Wie praat krijgt de grote kaart, dus het is duidelijk wie aan de beurt is."
+        },
+        {
+          "title": "Naar buiten",
+          "detail": "10:10",
+          "body": "Loop de ruimte uit om de meeting te verlaten en ga terug naar je bureau. Wat meer dan een minuut nodig heeft, gaat verder aan iemands bureau, met de twee mensen die het aangaat."
+        }
+      ]
+    },
+    {
+      "title": "Drie vormen die werken",
+      "body": [
+        "Kies er één en houd die aan. Een standup die elke week van vorm verandert, wordt een statusmeeting."
+      ],
+      "table": {
+        "head": [
+          "Vorm",
+          "Hoe het gaat",
+          "Past bij"
+        ],
+        "rows": [
+          [
+            "Drie vragen",
+            "Ieder: wat ik af heb, waar ik vandaag aan werk, wat me tegenhoudt.",
+            "Nieuwe teams en teams waarvan het werk niet op één bord staat."
+          ],
+          [
+            "Het bord aflopen",
+            "Loop het bord van rechts naar links af, het werk dat het dichtst bij af is eerst. Je praat als je kaart aan de beurt is.",
+            "Teams met een gedeeld Kanban- of sprintbord. Deel het op je scherm."
+          ],
+          [
+            "Eén zin en een parkeerplaats",
+            "Eén zin per persoon, daarna de vragen die opkwamen, opgepakt door wie ze nodig heeft.",
+            "Kleine, ingespeelde teams die de hele dag al praten."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Hoe lang het zou moeten duren",
+      "body": [
+        "Reken op ongeveer een minuut per persoon en een paar minuten voor de parkeerplaats. Boven de 12 of zo duurt een rondje langer dan mensen kunnen luisteren; splits per project of loop in plaats daarvan het bord af."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Rondje",
+          "Met de parkeerplaats"
+        ],
+        "rows": [
+          [
+            "4 mensen",
+            "4 minuten",
+            "ongeveer 6 minuten"
+          ],
+          [
+            "8 mensen",
+            "8 minuten",
+            "ongeveer 10 minuten"
+          ],
+          [
+            "12 mensen",
+            "12 minuten",
+            "ongeveer 15 minuten"
+          ],
+          [
+            "15 mensen",
+            "15 minuten",
+            "splits het, of loop het bord af"
+          ]
+        ],
+        "note": "Een vuistregel, geen timer. Een standup van 15 minuten op elke werkdag komt neer op ongeveer 5 uur vergaderen per maand, bij elk abonnement."
+      }
+    },
+    {
+      "title": "Zo blijft het kort",
+      "items": [
+        {
+          "title": "Op tijd beginnen",
+          "body": "Begin op de minuut, ook als iemand ontbreekt. De verdieping laat zien wie er is, wie afwezig is en wie nog in een gesprek zit, dus je weet op wie je moet wachten en op wie niet."
+        },
+        {
+          "title": "Vervolgvragen naar een bureau",
+          "body": "Als twee mensen ergens dieper in moeten duiken, lopen ze na de standup naar een bureau. De rest van de ruimte hoeft niet mee te luisteren."
+        },
+        {
+          "title": "Laten zien in plaats van beschrijven",
+          "body": "Deel een venster met het bord of een bug in plaats van het voor te lezen. Eén klik en het staat op ieders scherm."
+        },
+        {
+          "title": "Camera's vrijwillig",
+          "body": "Wie geen camera aan heeft, verschijnt als een kaart die oplicht als die persoon praat. Een camera die tien minuten aanstond zonder dat iemand praatte, gaat vanzelf uit."
+        }
+      ]
+    },
+    {
+      "title": "Live, geschreven of allebei",
+      "body": [
+        "Een team verspreid over tijdzones kan niet altijd op één tijdstip afspreken. Veel teams posten een geschreven update in een kanaal van de chat van het kantoor en houden de live standup voor dagen waarop er iets te beslissen valt: een release, een probleem, een nieuwe collega."
+      ],
+      "items": [
+        {
+          "title": "Live",
+          "body": "Sneller om knelpunten op te lossen, en het is het ene moment per dag dat het hele team in één ruimte is. Het beste als de meesten dezelfde werktijden hebben."
+        },
+        {
+          "title": "Geschreven",
+          "body": "Werkt over tijdzones heen en laat iets na om op terug te kijken. Makkelijk te scannen en makkelijk over te slaan, dus knelpunten kunnen onopgemerkt blijven."
+        },
+        {
+          "title": "Allebei",
+          "body": "Elke dag geschreven updates, en een of twee keer per week een kort live rondje, op een tijd die iedereen uitkomt."
+        }
+      ]
+    },
+    {
+      "title": "Wat TinyFloor niet doet voor standups",
+      "body": [
+        "Er is geen standup-bot die de vragen voor je stelt, geen herinnering, geen timer en geen opname. Het is niet gekoppeld aan Jira, Linear of GitHub, dus het bord gaat als gedeeld venster op het scherm. Wil je geschreven standups automatisch verzamelen, dan doet een bot in je chattool dat beter; TinyFloor is waar het team samenkomt."
+      ]
+    }
   ]
 }

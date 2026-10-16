@@ -2058,5 +2058,143 @@
         "Preços, limites e recursos vêm das próprias páginas de preços e centrais de ajuda do Gather e do Kumospace, lidas em outubro de 2026, em dólares americanos sem impostos. O que não estava escrito lá, deixamos de fora em vez de chutar. Nós fazemos o TinyFloor, então dizemos com clareza o que ele não faz. Preços mudam: confira a página de cada produto antes de comprar."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "Como uma daily funciona no TinyFloor",
+      "body": [
+        "Todo escritório tem uma reunião principal sempre aberta. A daily é essa sala, todo dia no mesmo horário: ninguém manda link e ninguém espera um anfitrião numa sala de espera."
+      ],
+      "items": [
+        {
+          "title": "Entrar",
+          "detail": "9:58",
+          "body": "Entre na reunião principal e seu personagem vai até a sala de reunião. Todo mundo no andar vê a sala enchendo."
+        },
+        {
+          "title": "Fazer a rodada",
+          "detail": "10:00",
+          "body": "Voz primeiro, câmera se a pessoa quiser. Quem está falando fica no card grande, então fica claro de quem é a vez."
+        },
+        {
+          "title": "Sair",
+          "detail": "10:10",
+          "body": "Saia da sala para deixar a reunião e volte para sua mesa. O que precisar de mais de um minuto continua na mesa de alguém, com as duas pessoas envolvidas."
+        }
+      ]
+    },
+    {
+      "title": "Três formatos que funcionam",
+      "body": [
+        "Escolha um e mantenha. Uma daily que muda de formato toda semana vira reunião de status."
+      ],
+      "table": {
+        "head": [
+          "Formato",
+          "Como funciona",
+          "Serve para"
+        ],
+        "rows": [
+          [
+            "Três perguntas",
+            "Cada pessoa: o que terminei, no que estou hoje, o que está me travando.",
+            "Equipes novas e equipes cujo trabalho não fica num quadro só."
+          ],
+          [
+            "Percorrer o quadro",
+            "Percorrer o quadro da direita para a esquerda, primeiro o que está mais perto de pronto. Cada um fala quando seu card aparece.",
+            "Equipes que dividem um quadro Kanban ou de sprint. Compartilhe na tela."
+          ],
+          [
+            "Uma frase e um estacionamento",
+            "Uma frase de cada um, depois as dúvidas que surgiram, com quem precisar delas.",
+            "Equipes pequenas e entrosadas que já conversam o dia todo."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Quanto tempo deve durar",
+      "body": [
+        "Conte cerca de um minuto por pessoa e alguns minutos para o estacionamento. Passando de umas 12 pessoas, uma rodada dura mais do que dá para prestar atenção; divida por projeto ou percorra o quadro."
+      ],
+      "table": {
+        "head": [
+          "Equipe",
+          "Rodada",
+          "Com o estacionamento"
+        ],
+        "rows": [
+          [
+            "4 pessoas",
+            "4 minutos",
+            "cerca de 6 minutos"
+          ],
+          [
+            "8 pessoas",
+            "8 minutos",
+            "cerca de 10 minutos"
+          ],
+          [
+            "12 pessoas",
+            "12 minutos",
+            "cerca de 15 minutos"
+          ],
+          [
+            "15 pessoas",
+            "15 minutos",
+            "divida ou percorra o quadro"
+          ]
+        ],
+        "note": "Uma referência, não um cronômetro. Uma daily de 15 minutos em todo dia útil dá cerca de 5 horas de reunião por mês, em qualquer plano."
+      }
+    },
+    {
+      "title": "Como manter curta",
+      "items": [
+        {
+          "title": "Comece na hora",
+          "body": "Comece no horário mesmo se faltar alguém. O andar mostra quem está, quem está ausente e quem ainda está numa chamada, então você sabe por quem esperar e por quem não."
+        },
+        {
+          "title": "Leve os desdobramentos para uma mesa",
+          "body": "Quando duas pessoas precisam aprofundar algo, elas vão até uma mesa depois da daily. O resto da sala não precisa ouvir."
+        },
+        {
+          "title": "Mostre em vez de descrever",
+          "body": "Compartilhe uma janela com o quadro ou um bug em vez de ler em voz alta. Um clique e está na tela de todos."
+        },
+        {
+          "title": "Câmera opcional",
+          "body": "Quem está sem câmera aparece como um card que acende quando fala. Uma câmera ligada por dez minutos sem ninguém falando se desliga sozinha."
+        }
+      ]
+    },
+    {
+      "title": "Ao vivo, por escrito ou os dois",
+      "body": [
+        "Uma equipe espalhada por fusos horários nem sempre consegue se reunir no mesmo horário. Muitas postam uma atualização por escrito num canal do chat do escritório e deixam a daily ao vivo para os dias com algo a decidir: um lançamento, um problema, uma pessoa nova."
+      ],
+      "items": [
+        {
+          "title": "Ao vivo",
+          "body": "Destrava mais rápido, e é o único momento do dia em que a equipe toda está numa sala. Melhor quando a maioria trabalha no mesmo horário."
+        },
+        {
+          "title": "Por escrito",
+          "body": "Funciona entre fusos e deixa registro. Fácil de passar o olho e fácil de pular, então um bloqueio pode ficar sem ninguém ver."
+        },
+        {
+          "title": "Os dois",
+          "body": "Atualizações escritas todo dia e uma rodada curta ao vivo uma ou duas vezes por semana, num horário bom para todos."
+        }
+      ]
+    },
+    {
+      "title": "O que o TinyFloor não faz pela sua daily",
+      "body": [
+        "Não há bot de daily que faça as perguntas por você, nem lembrete, nem cronômetro, nem gravação. Ele não se conecta ao Jira, ao Linear nem ao GitHub, então o quadro vai para a tela como janela compartilhada. Se você quer dailies escritas coletadas automaticamente, um bot na sua ferramenta de chat faz isso melhor; o TinyFloor é onde a equipe se encontra."
+      ]
+    }
   ]
 }

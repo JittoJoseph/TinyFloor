@@ -2058,5 +2058,143 @@
         "Preise, Grenzen und Funktionen stammen von den eigenen Preisseiten und Hilfecentern von Gather und Kumospace, gelesen im Oktober 2026, in US-Dollar ohne Steuern. Was dort nicht stand, haben wir weggelassen, statt zu raten. Wir machen TinyFloor, deshalb sagen wir klar, was es nicht kann. Preise ändern sich: Prüfe vor dem Kauf die Seite des jeweiligen Produkts."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "So läuft ein Standup in TinyFloor",
+      "body": [
+        "Jedes Büro hat ein Hauptmeeting, das immer offen ist. Das Standup ist dieser Raum, jeden Tag zur selben Zeit: Niemand verschickt einen Link, und niemand wartet in einer Lobby auf einen Gastgeber."
+      ],
+      "items": [
+        {
+          "title": "Reingehen",
+          "detail": "9:58",
+          "body": "Tritt dem Hauptmeeting bei, und deine Figur geht in den Besprechungsraum. Alle auf der Fläche sehen, wie sich der Raum füllt."
+        },
+        {
+          "title": "Die Runde",
+          "detail": "10:00",
+          "body": "Zuerst Stimme, Kameras, wenn die Leute wollen. Wer spricht, bekommt die große Karte, so ist klar, wer gerade dran ist."
+        },
+        {
+          "title": "Rausgehen",
+          "detail": "10:10",
+          "body": "Geh aus dem Raum, um das Meeting zu verlassen, und zurück an deinen Schreibtisch. Was länger als eine Minute braucht, geht an einem Schreibtisch weiter, mit den zwei Leuten, die es betrifft."
+        }
+      ]
+    },
+    {
+      "title": "Drei Formate, die funktionieren",
+      "body": [
+        "Such dir eins aus und bleib dabei. Ein Standup, das jede Woche anders aussieht, wird zum Statusmeeting."
+      ],
+      "table": {
+        "head": [
+          "Format",
+          "So läuft es",
+          "Passt zu"
+        ],
+        "rows": [
+          [
+            "Drei Fragen",
+            "Jede Person: was ich fertig habe, woran ich heute arbeite, was mich aufhält.",
+            "Neuen Teams und Teams, deren Arbeit nicht auf einem Board liegt."
+          ],
+          [
+            "Das Board durchgehen",
+            "Das Board von rechts nach links durchgehen, das Fast-Fertige zuerst. Man spricht, wenn die eigene Karte dran ist.",
+            "Teams mit einem gemeinsamen Kanban- oder Sprint-Board. Teile es auf dem Bildschirm."
+          ],
+          [
+            "Ein Satz und ein Parkplatz",
+            "Ein Satz pro Person, danach die Fragen, die aufkamen, von denen, die sie brauchen.",
+            "Kleinen, eingespielten Teams, die sowieso den ganzen Tag reden."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Wie lange es dauern sollte",
+      "body": [
+        "Rechne mit etwa einer Minute pro Person und ein paar Minuten für den Parkplatz. Ab etwa 12 dauert eine Runde länger, als Leute zuhören können; teilt nach Projekt auf oder geht stattdessen das Board durch."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Runde",
+          "Mit Parkplatz"
+        ],
+        "rows": [
+          [
+            "4 Personen",
+            "4 Minuten",
+            "etwa 6 Minuten"
+          ],
+          [
+            "8 Personen",
+            "8 Minuten",
+            "etwa 10 Minuten"
+          ],
+          [
+            "12 Personen",
+            "12 Minuten",
+            "etwa 15 Minuten"
+          ],
+          [
+            "15 Personen",
+            "15 Minuten",
+            "aufteilen oder das Board durchgehen"
+          ]
+        ],
+        "note": "Eine Faustregel, kein Timer. Ein 15-minütiges Standup an jedem Arbeitstag ergibt etwa 5 Stunden Meetings im Monat, in jedem Tarif."
+      }
+    },
+    {
+      "title": "Wie es kurz bleibt",
+      "items": [
+        {
+          "title": "Pünktlich anfangen",
+          "body": "Fang zur vollen Minute an, auch wenn jemand fehlt. Die Fläche zeigt, wer da ist, wer abwesend ist und wer noch in einem Call steckt, so weißt du, auf wen du warten musst und auf wen nicht."
+        },
+        {
+          "title": "Nachfragen an einen Schreibtisch verlegen",
+          "body": "Wenn zwei Leute etwas genauer klären müssen, gehen sie nach dem Standup an einen Schreibtisch. Der Rest des Raums muss nicht zuhören."
+        },
+        {
+          "title": "Zeigen statt beschreiben",
+          "body": "Teile ein Fenster mit dem Board oder einem Bug, statt es vorzulesen. Ein Klick, und es ist auf allen Bildschirmen."
+        },
+        {
+          "title": "Kameras freiwillig lassen",
+          "body": "Wer keine Kamera anhat, erscheint als Karte, die aufleuchtet, wenn er spricht. Eine Kamera, die zehn Minuten ohne Gespräch an war, schaltet sich selbst aus."
+        }
+      ]
+    },
+    {
+      "title": "Live, schriftlich oder beides",
+      "body": [
+        "Ein Team über mehrere Zeitzonen kann sich nicht immer zur selben Zeit treffen. Viele posten ein schriftliches Update in einem Kanal im Chat des Büros und behalten das Live-Standup für Tage, an denen etwas zu entscheiden ist: ein Release, ein Problem, eine neue Person."
+      ],
+      "items": [
+        {
+          "title": "Live",
+          "body": "Blockaden lösen sich schneller, und es ist das eine Mal am Tag, an dem das ganze Team in einem Raum ist. Am besten, wenn die meisten ähnliche Arbeitszeiten haben."
+        },
+        {
+          "title": "Schriftlich",
+          "body": "Funktioniert über Zeitzonen hinweg und hinterlässt eine Spur. Leicht zu überfliegen, leicht zu überspringen, Blockaden können also unbemerkt liegen bleiben."
+        },
+        {
+          "title": "Beides",
+          "body": "Jeden Tag schriftliche Updates und ein- oder zweimal die Woche eine kurze Live-Runde, zu einer Zeit, die allen passt."
+        }
+      ]
+    },
+    {
+      "title": "Was TinyFloor für Standups nicht macht",
+      "body": [
+        "Es gibt keinen Standup-Bot, der die Fragen für dich stellt, keine Erinnerung, keinen Timer und keine Aufnahme. Es ist nicht mit Jira, Linear oder GitHub verbunden, das Board kommt also als geteiltes Fenster auf den Bildschirm. Wenn schriftliche Standups automatisch eingesammelt werden sollen, kann das ein Bot in eurem Chat-Tool besser; TinyFloor ist der Ort, an dem sich das Team trifft."
+      ]
+    }
   ]
 }

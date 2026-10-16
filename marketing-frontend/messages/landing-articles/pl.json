@@ -2058,5 +2058,143 @@
         "Ceny, limity i funkcje pochodzą z własnych stron z cenami i centrów pomocy Gather i Kumospace, przeczytanych w październiku 2026, w dolarach amerykańskich bez podatku. Czego tam nie napisano, to pominęliśmy zamiast zgadywać. Tworzymy TinyFloor, więc jasno mówimy, czego nie robi. Ceny się zmieniają: przed zakupem sprawdź stronę każdego produktu."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "Jak wygląda stand-up w TinyFloor",
+      "body": [
+        "Każde biuro ma główne spotkanie, które jest zawsze otwarte. Stand-up to ten pokój, codziennie o tej samej porze: nikt nie wysyła linku i nikt nie czeka w poczekalni na gospodarza."
+      ],
+      "items": [
+        {
+          "title": "Wejście",
+          "detail": "9:58",
+          "body": "Dołącz do głównego spotkania, a twoja postać wejdzie do sali spotkań. Wszyscy na piętrze widzą, jak sala się zapełnia."
+        },
+        {
+          "title": "Runda",
+          "detail": "10:00",
+          "body": "Najpierw głos, kamery, jeśli ktoś chce. Kto mówi, ten zajmuje dużą kartę, więc wiadomo, czyja jest kolej."
+        },
+        {
+          "title": "Wyjście",
+          "detail": "10:10",
+          "body": "Wyjdź z sali, żeby opuścić spotkanie, i wróć do swojego biurka. To, co wymaga więcej niż minuty, toczy się dalej przy czyimś biurku, z dwiema osobami, których dotyczy."
+        }
+      ]
+    },
+    {
+      "title": "Trzy formaty, które działają",
+      "body": [
+        "Wybierz jeden i trzymaj się go. Stand-up, który co tydzień wygląda inaczej, zamienia się w spotkanie statusowe."
+      ],
+      "table": {
+        "head": [
+          "Format",
+          "Jak to wygląda",
+          "Dla kogo"
+        ],
+        "rows": [
+          [
+            "Trzy pytania",
+            "Każdy: co skończyłem, nad czym dziś pracuję, co mnie blokuje.",
+            "Nowe zespoły i zespoły, których praca nie mieści się na jednej tablicy."
+          ],
+          [
+            "Przejście po tablicy",
+            "Przechodzicie tablicę od prawej do lewej, najpierw to, co najbliżej końca. Mówisz, gdy przyjdzie kolej na twoją kartę.",
+            "Zespoły ze wspólną tablicą Kanban lub sprintu. Udostępnij ją na ekranie."
+          ],
+          [
+            "Jedno zdanie i parking",
+            "Po jednym zdaniu, a potem pytania, które padły, dla tych, którzy ich potrzebują.",
+            "Małe, zgrane zespoły, które i tak rozmawiają cały dzień."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Ile powinno to trwać",
+      "body": [
+        "Licz około minuty na osobę i kilka minut na parking. Powyżej mniej więcej 12 osób runda trwa dłużej, niż da się słuchać; podzielcie się według projektów albo przejdźcie po tablicy."
+      ],
+      "table": {
+        "head": [
+          "Zespół",
+          "Runda",
+          "Z parkingiem"
+        ],
+        "rows": [
+          [
+            "4 osoby",
+            "4 minuty",
+            "około 6 minut"
+          ],
+          [
+            "8 osób",
+            "8 minut",
+            "około 10 minut"
+          ],
+          [
+            "12 osób",
+            "12 minut",
+            "około 15 minut"
+          ],
+          [
+            "15 osób",
+            "15 minut",
+            "podzielcie się albo przejdźcie po tablicy"
+          ]
+        ],
+        "note": "Reguła orientacyjna, nie minutnik. 15-minutowy stand-up w każdy dzień roboczy to około 5 godzin spotkań miesięcznie, w każdym planie."
+      }
+    },
+    {
+      "title": "Jak utrzymać go krótkim",
+      "items": [
+        {
+          "title": "Zaczynaj punktualnie",
+          "body": "Zacznij co do minuty, nawet jeśli kogoś brakuje. Piętro pokazuje, kto jest, kto jest nieobecny, a kto wciąż rozmawia, więc wiesz, na kogo czekać, a na kogo nie."
+        },
+        {
+          "title": "Dalsze rozmowy przy biurku",
+          "body": "Gdy dwie osoby muszą coś dokładniej omówić, po stand-upie idą do biurka. Reszta sali nie musi słuchać."
+        },
+        {
+          "title": "Pokazuj zamiast opisywać",
+          "body": "Udostępnij okno z tablicą albo błędem, zamiast czytać na głos. Jedno kliknięcie i jest na ekranie u wszystkich."
+        },
+        {
+          "title": "Kamery nieobowiązkowe",
+          "body": "Kto nie ma włączonej kamery, pojawia się jako karta, która podświetla się, gdy mówi. Kamera włączona przez dziesięć minut, gdy nikt nie mówi, wyłącza się sama."
+        }
+      ]
+    },
+    {
+      "title": "Na żywo, na piśmie czy jedno i drugie",
+      "body": [
+        "Zespół rozrzucony po strefach czasowych nie zawsze może spotkać się o jednej porze. Wiele zespołów pisze aktualizację na kanale czatu biura, a stand-up na żywo zostawia na dni, w które trzeba coś zdecydować: wydanie, problem, nowa osoba."
+      ],
+      "items": [
+        {
+          "title": "Na żywo",
+          "body": "Szybciej odblokowuje, a to jedyny moment w ciągu dnia, gdy cały zespół jest w jednym pokoju. Najlepsze, gdy większość pracuje w podobnych godzinach."
+        },
+        {
+          "title": "Na piśmie",
+          "body": "Działa między strefami czasowymi i zostawia ślad. Łatwo przejrzeć i łatwo pominąć, więc blokady mogą przejść niezauważone."
+        },
+        {
+          "title": "Jedno i drugie",
+          "body": "Pisemne aktualizacje codziennie i krótka runda na żywo raz lub dwa razy w tygodniu, o porze dogodnej dla wszystkich."
+        }
+      ]
+    },
+    {
+      "title": "Czego TinyFloor nie robi przy stand-upach",
+      "body": [
+        "Nie ma bota, który zada pytania za ciebie, nie ma przypomnień, minutnika ani nagrywania. Nie łączy się z Jirą, Linearem ani GitHubem, więc tablica trafia na ekran jako udostępnione okno. Jeśli chcesz automatycznie zbierać pisemne stand-upy, lepiej zrobi to bot w waszym narzędziu do czatu; TinyFloor to miejsce, gdzie zespół się spotyka."
+      ]
+    }
   ]
 }

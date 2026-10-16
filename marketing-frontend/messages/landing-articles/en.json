@@ -2058,5 +2058,143 @@
         "Prices, limits and features come from Gather's and Kumospace's own pricing pages and help centres, read in October 2026, in US dollars before tax. If something wasn't stated there, we left it out rather than guess. We make TinyFloor, so we've said plainly what it doesn't do. Prices change: check each product's page before you buy."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "How a standup runs on TinyFloor",
+      "body": [
+        "Every office has a main meeting that's always open. Standup is that room at the same time every day: nobody sends a link, and nobody waits in a lobby for a host."
+      ],
+      "items": [
+        {
+          "title": "Walk in",
+          "detail": "9:58",
+          "body": "Join the main meeting and your character walks into the meeting room. Everyone on the floor can see the room filling up."
+        },
+        {
+          "title": "Go round",
+          "detail": "10:00",
+          "body": "Voice first, cameras if people want them. Whoever is talking takes the big card, so it's clear who has the floor."
+        },
+        {
+          "title": "Walk out",
+          "detail": "10:10",
+          "body": "Walk out of the room to leave, and go back to your desk. Anything that needs more than a minute carries on at someone's desk with the two people it concerns."
+        }
+      ]
+    },
+    {
+      "title": "Three formats that work",
+      "body": [
+        "Pick one and keep it. A standup that changes shape every week turns into a status meeting."
+      ],
+      "table": {
+        "head": [
+          "Format",
+          "How it goes",
+          "Suits"
+        ],
+        "rows": [
+          [
+            "Three questions",
+            "Each person: what I finished, what I'm on today, what's in my way.",
+            "New teams, and teams whose work doesn't sit on one board."
+          ],
+          [
+            "Walk the board",
+            "Go through the board from right to left, the work closest to done first. People speak when their card comes up.",
+            "Teams that share a Kanban or sprint board. Share it on screen."
+          ],
+          [
+            "One line and a parking lot",
+            "One sentence each, then the questions that came up, taken by whoever needs them.",
+            "Small, settled teams that talk all day anyway."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "How long it should take",
+      "body": [
+        "Plan on about a minute a person and a couple of minutes for the parking lot. Past 12 or so, a round takes longer than people can listen; split by project, or walk the board instead."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Round",
+          "With the parking lot"
+        ],
+        "rows": [
+          [
+            "4 people",
+            "4 minutes",
+            "about 6 minutes"
+          ],
+          [
+            "8 people",
+            "8 minutes",
+            "about 10 minutes"
+          ],
+          [
+            "12 people",
+            "12 minutes",
+            "about 15 minutes"
+          ],
+          [
+            "15 people",
+            "15 minutes",
+            "split it, or walk the board"
+          ]
+        ],
+        "note": "A rule of thumb, not a timer. A 15-minute standup every working day comes to about 5 hours of meetings a month, on any plan."
+      }
+    },
+    {
+      "title": "Keeping it short",
+      "items": [
+        {
+          "title": "Start on time",
+          "body": "Start at the minute even if someone's missing. The floor shows who's in, who's away and who's still on a call, so you can tell who to wait for and who not to."
+        },
+        {
+          "title": "Take follow-ups to a desk",
+          "body": "When two people need to dig into something, they walk to a desk after standup. The rest of the room doesn't have to listen."
+        },
+        {
+          "title": "Show, don't describe",
+          "body": "Share a window for the board or a bug instead of reading it out. One click, and it's on everyone's screen."
+        },
+        {
+          "title": "Leave cameras optional",
+          "body": "Anyone without a camera shows as a card that lights up when they talk. A camera that's been on through ten quiet minutes turns itself off."
+        }
+      ]
+    },
+    {
+      "title": "Live, written, or both",
+      "body": [
+        "A team spread across time zones can't always meet at one time. Many post a written update in a channel of the office's chat, and keep the live standup for the days with something to decide: a release, a problem, a new person."
+      ],
+      "items": [
+        {
+          "title": "Live",
+          "body": "Quicker to unblock, and it's the one time a day the whole team is in one room. Best when most of you share working hours."
+        },
+        {
+          "title": "Written",
+          "body": "Works across time zones and leaves a record. Easy to skim, easy to skip, so blockers can sit unnoticed."
+        },
+        {
+          "title": "Both",
+          "body": "Written updates every day, and a short live round once or twice a week, at a time that suits everyone."
+        }
+      ]
+    },
+    {
+      "title": "What TinyFloor doesn't do for standups",
+      "body": [
+        "There's no standup bot that asks the questions for you, no reminder, no timer and no recording. It doesn't connect to Jira, Linear or GitHub, so the board goes on screen as a shared window. If you need written standups collected automatically, a bot in your chat tool does that better; TinyFloor is where the team meets."
+      ]
+    }
   ]
 }

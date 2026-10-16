@@ -2058,5 +2058,143 @@
         "Hinnat, rajat ja ominaisuudet ovat Gatherin ja Kumospacen omilta hintasivuilta ja ohjekeskuksista, luettu lokakuussa 2026, Yhdysvaltain dollareina ilman veroja. Mitä niissä ei kerrottu, jätimme pois arvaamisen sijaan. Teemme TinyFlooria, joten kerromme suoraan, mitä se ei tee. Hinnat muuttuvat: tarkista kunkin tuotteen sivu ennen ostamista."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "Näin päiväpalaveri sujuu TinyFloorissa",
+      "body": [
+        "Jokaisessa toimistossa on pääkokous, joka on aina auki. Päiväpalaveri on se huone joka päivä samaan aikaan: kukaan ei lähetä linkkiä, eikä kukaan odota järjestäjää odotushuoneessa."
+      ],
+      "items": [
+        {
+          "title": "Sisään",
+          "detail": "9.58",
+          "body": "Liity pääkokoukseen, niin hahmosi kävelee kokoushuoneeseen. Kaikki kerroksessa näkevät huoneen täyttyvän."
+        },
+        {
+          "title": "Kierros",
+          "detail": "10.00",
+          "body": "Ensin ääni, kamerat jos ihmiset haluavat. Puhuja saa ison kortin, joten on selvää, kenen vuoro on."
+        },
+        {
+          "title": "Ulos",
+          "detail": "10.10",
+          "body": "Kävele ulos huoneesta poistuaksesi kokouksesta ja palaa työpisteellesi. Minuuttia pidempää vaativa asia jatkuu jonkun työpisteellä niiden kahden kanssa, joita se koskee."
+        }
+      ]
+    },
+    {
+      "title": "Kolme toimivaa muotoa",
+      "body": [
+        "Valitse yksi ja pidä siitä kiinni. Joka viikko muotoaan vaihtava päiväpalaveri muuttuu tilannekokoukseksi."
+      ],
+      "table": {
+        "head": [
+          "Muoto",
+          "Miten se menee",
+          "Sopii"
+        ],
+        "rows": [
+          [
+            "Kolme kysymystä",
+            "Jokainen: mitä sain valmiiksi, mitä teen tänään, mikä on esteenä.",
+            "Uusille tiimeille ja tiimeille, joiden työ ei ole yhdellä taululla."
+          ],
+          [
+            "Taulun läpikäynti",
+            "Käydään taulu läpi oikealta vasemmalle, valmista lähinnä oleva työ ensin. Puhut, kun oma korttisi tulee vastaan.",
+            "Tiimeille, joilla on yhteinen Kanban- tai sprinttitaulu. Jaa se näytöllä."
+          ],
+          [
+            "Yksi lause ja parkkipaikka",
+            "Yksi lause kultakin, sitten esiin nousseet kysymykset niille, jotka niitä tarvitsevat.",
+            "Pienille, hioutuneille tiimeille, jotka juttelevat muutenkin koko päivän."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Kuinka kauan sen pitäisi kestää",
+      "body": [
+        "Laske noin minuutti henkeä kohden ja pari minuuttia parkkipaikalle. Noin 12 hengen jälkeen kierros kestää kauemmin kuin jaksaa kuunnella; jakakaa projektin mukaan tai käykää taulu läpi."
+      ],
+      "table": {
+        "head": [
+          "Tiimi",
+          "Kierros",
+          "Parkkipaikan kanssa"
+        ],
+        "rows": [
+          [
+            "4 henkeä",
+            "4 minuuttia",
+            "noin 6 minuuttia"
+          ],
+          [
+            "8 henkeä",
+            "8 minuuttia",
+            "noin 10 minuuttia"
+          ],
+          [
+            "12 henkeä",
+            "12 minuuttia",
+            "noin 15 minuuttia"
+          ],
+          [
+            "15 henkeä",
+            "15 minuuttia",
+            "jakakaa tai käykää taulu läpi"
+          ]
+        ],
+        "note": "Nyrkkisääntö, ei ajastin. 15 minuutin päiväpalaveri joka työpäivä tekee noin 5 tuntia kokouksia kuukaudessa, millä tahansa paketilla."
+      }
+    },
+    {
+      "title": "Näin se pysyy lyhyenä",
+      "items": [
+        {
+          "title": "Aloita ajallaan",
+          "body": "Aloita minuutilleen, vaikka joku puuttuisi. Kerros näyttää, kuka on paikalla, kuka poissa ja kuka vielä puhelussa, joten tiedät, ketä odottaa ja ketä ei."
+        },
+        {
+          "title": "Jatkokysymykset työpisteelle",
+          "body": "Kun kahden pitää syventyä johonkin, he menevät palaverin jälkeen työpisteelle. Muun huoneen ei tarvitse kuunnella."
+        },
+        {
+          "title": "Näytä, älä kuvaile",
+          "body": "Jaa ikkuna, jossa on taulu tai bugi, sen sijaan että luet sen ääneen. Yksi klikkaus, ja se on kaikkien näytöllä."
+        },
+        {
+          "title": "Kamerat vapaaehtoisia",
+          "body": "Se, jolla ei ole kameraa päällä, näkyy korttina, joka syttyy kun hän puhuu. Kamera, joka on ollut päällä kymmenen minuuttia kenenkään puhumatta, sammuu itsestään."
+        }
+      ]
+    },
+    {
+      "title": "Livenä, kirjallisesti vai molemmat",
+      "body": [
+        "Eri aikavyöhykkeille hajautunut tiimi ei aina voi tavata samaan aikaan. Moni kirjoittaa päivityksen toimiston chatin kanavalle ja pitää livepalaverin päiville, jolloin on jotain päätettävää: julkaisu, ongelma, uusi ihminen."
+      ],
+      "items": [
+        {
+          "title": "Livenä",
+          "body": "Esteet ratkeavat nopeammin, ja se on päivän ainoa hetki, jolloin koko tiimi on samassa huoneessa. Paras, kun useimmilla on samat työajat."
+        },
+        {
+          "title": "Kirjallisesti",
+          "body": "Toimii aikavyöhykkeiden yli ja jättää jäljen. Helppo silmäillä ja helppo ohittaa, joten esteet voivat jäädä huomaamatta."
+        },
+        {
+          "title": "Molemmat",
+          "body": "Kirjalliset päivitykset joka päivä ja lyhyt livekierros kerran tai kaksi viikossa, kaikille sopivaan aikaan."
+        }
+      ]
+    },
+    {
+      "title": "Mitä TinyFloor ei tee päiväpalavereille",
+      "body": [
+        "Ei ole bottia, joka esittää kysymykset puolestasi, ei muistutusta, ei ajastinta eikä tallennusta. Se ei ole yhteydessä Jiraan, Lineariin tai GitHubiin, joten taulu tulee näytölle jaettuna ikkunana. Jos haluat kirjalliset päivitykset kerättyä automaattisesti, chat-työkalunne botti tekee sen paremmin; TinyFloor on paikka, jossa tiimi tapaa."
+      ]
+    }
   ]
 }

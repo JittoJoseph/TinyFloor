@@ -2058,5 +2058,143 @@
         "Les prix, limites et fonctions viennent des pages tarifs et centres d'aide de Gather et de Kumospace, lus en octobre 2026, en dollars américains hors taxes. Ce qui n'y figurait pas, nous l'avons laissé de côté plutôt que de deviner. Nous faisons TinyFloor, nous disons donc clairement ce qu'il ne fait pas. Les prix changent : vérifiez la page de chaque produit avant d'acheter."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "Comment se passe un point quotidien sur TinyFloor",
+      "body": [
+        "Chaque bureau a une réunion principale toujours ouverte. Le point quotidien, c'est cette salle, chaque jour à la même heure : personne n'envoie de lien, et personne n'attend un hôte dans une salle d'attente."
+      ],
+      "items": [
+        {
+          "title": "Entrer",
+          "detail": "9 h 58",
+          "body": "Rejoignez la réunion principale et votre personnage entre dans la salle de réunion. Tout le monde sur l'étage voit la salle se remplir."
+        },
+        {
+          "title": "Faire le tour",
+          "detail": "10 h 00",
+          "body": "La voix d'abord, les caméras si on veut. La personne qui parle prend la grande carte, on voit donc clairement qui a la parole."
+        },
+        {
+          "title": "Sortir",
+          "detail": "10 h 10",
+          "body": "Sortez de la salle pour quitter la réunion et retournez à votre poste. Ce qui demande plus d'une minute continue au poste de quelqu'un, avec les deux personnes concernées."
+        }
+      ]
+    },
+    {
+      "title": "Trois formats qui fonctionnent",
+      "body": [
+        "Choisissez-en un et gardez-le. Un point quotidien qui change de forme chaque semaine devient une réunion de suivi."
+      ],
+      "table": {
+        "head": [
+          "Format",
+          "Déroulé",
+          "Convient à"
+        ],
+        "rows": [
+          [
+            "Trois questions",
+            "Chacun : ce que j'ai terminé, ce sur quoi je travaille aujourd'hui, ce qui me bloque.",
+            "Les nouvelles équipes, et celles dont le travail n'est pas sur un seul tableau."
+          ],
+          [
+            "Parcourir le tableau",
+            "Parcourir le tableau de droite à gauche, le travail le plus proche de la fin d'abord. On parle quand sa carte arrive.",
+            "Les équipes qui partagent un tableau Kanban ou de sprint. Partagez-le à l'écran."
+          ],
+          [
+            "Une phrase et un parking",
+            "Une phrase chacun, puis les questions soulevées, reprises par ceux qui en ont besoin.",
+            "Les petites équipes rodées qui se parlent déjà toute la journée."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Combien de temps ça devrait prendre",
+      "body": [
+        "Comptez environ une minute par personne et quelques minutes pour le parking. Au-delà de 12 environ, un tour dure plus longtemps qu'on ne peut écouter ; séparez par projet, ou parcourez plutôt le tableau."
+      ],
+      "table": {
+        "head": [
+          "Équipe",
+          "Tour",
+          "Avec le parking"
+        ],
+        "rows": [
+          [
+            "4 personnes",
+            "4 minutes",
+            "environ 6 minutes"
+          ],
+          [
+            "8 personnes",
+            "8 minutes",
+            "environ 10 minutes"
+          ],
+          [
+            "12 personnes",
+            "12 minutes",
+            "environ 15 minutes"
+          ],
+          [
+            "15 personnes",
+            "15 minutes",
+            "séparez, ou parcourez le tableau"
+          ]
+        ],
+        "note": "Un ordre de grandeur, pas un minuteur. Un point quotidien de 15 minutes chaque jour ouvré représente environ 5 heures de réunion par mois, sur toutes les offres."
+      }
+    },
+    {
+      "title": "Le garder court",
+      "items": [
+        {
+          "title": "Commencer à l'heure",
+          "body": "Commencez à la minute, même s'il manque quelqu'un. L'étage montre qui est là, qui est absent et qui est encore en appel : vous savez qui attendre et qui ne pas attendre."
+        },
+        {
+          "title": "Poursuivre à un poste",
+          "body": "Quand deux personnes doivent creuser un sujet, elles vont à un poste après le point quotidien. Le reste de la salle n'a pas à écouter."
+        },
+        {
+          "title": "Montrer plutôt que décrire",
+          "body": "Partagez une fenêtre avec le tableau ou un bug au lieu de le lire à voix haute. Un clic, et c'est sur l'écran de tout le monde."
+        },
+        {
+          "title": "Laisser les caméras facultatives",
+          "body": "Quiconque n'a pas de caméra apparaît sous forme de carte qui s'allume quand il parle. Une caméra restée allumée dix minutes sans que personne ne parle s'éteint d'elle-même."
+        }
+      ]
+    },
+    {
+      "title": "En direct, par écrit, ou les deux",
+      "body": [
+        "Une équipe répartie sur plusieurs fuseaux horaires ne peut pas toujours se réunir à la même heure. Beaucoup publient un point écrit dans un canal du chat du bureau et gardent le point quotidien en direct pour les jours où il y a quelque chose à décider : une mise en production, un problème, une nouvelle personne."
+      ],
+      "items": [
+        {
+          "title": "En direct",
+          "body": "Plus rapide pour débloquer, et c'est le seul moment de la journée où toute l'équipe est dans une même salle. Idéal quand la plupart partagent les mêmes horaires."
+        },
+        {
+          "title": "Par écrit",
+          "body": "Fonctionne entre fuseaux horaires et laisse une trace. Facile à survoler, facile à sauter : un blocage peut passer inaperçu."
+        },
+        {
+          "title": "Les deux",
+          "body": "Un point écrit chaque jour, et un court tour en direct une ou deux fois par semaine, à une heure qui convient à tous."
+        }
+      ]
+    },
+    {
+      "title": "Ce que TinyFloor ne fait pas pour les points quotidiens",
+      "body": [
+        "Il n'y a pas de bot qui pose les questions du point quotidien à votre place, pas de rappel, pas de minuteur et pas d'enregistrement. Il n'est pas relié à Jira, Linear ou GitHub : le tableau passe donc à l'écran en fenêtre partagée. Si vous voulez que les points écrits soient collectés automatiquement, un bot dans votre outil de chat le fait mieux ; TinyFloor est l'endroit où l'équipe se retrouve."
+      ]
+    }
   ]
 }

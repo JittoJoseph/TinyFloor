@@ -2058,5 +2058,143 @@
         "Prezzi, limiti e funzioni vengono dalle pagine prezzi e dai centri assistenza di Gather e Kumospace, letti a ottobre 2026, in dollari USA tasse escluse. Quello che non era indicato lì l'abbiamo lasciato fuori invece di tirare a indovinare. Facciamo TinyFloor, quindi diciamo chiaramente cosa non fa. I prezzi cambiano: controlla la pagina di ogni prodotto prima di acquistare."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "Come funziona uno standup su TinyFloor",
+      "body": [
+        "Ogni ufficio ha una riunione principale sempre aperta. Lo standup è quella stanza, ogni giorno alla stessa ora: nessuno manda un link e nessuno aspetta un organizzatore in sala d'attesa."
+      ],
+      "items": [
+        {
+          "title": "Entrare",
+          "detail": "9:58",
+          "body": "Entra nella riunione principale e il tuo personaggio va nella sala riunioni. Tutti sul piano vedono la stanza che si riempie."
+        },
+        {
+          "title": "Fare il giro",
+          "detail": "10:00",
+          "body": "Prima la voce, le videocamere se le persone vogliono. Chi parla prende la scheda grande, così è chiaro a chi tocca."
+        },
+        {
+          "title": "Uscire",
+          "detail": "10:10",
+          "body": "Esci dalla stanza per lasciare la riunione e torna alla tua scrivania. Quello che richiede più di un minuto continua alla scrivania di qualcuno, con le due persone interessate."
+        }
+      ]
+    },
+    {
+      "title": "Tre formati che funzionano",
+      "body": [
+        "Scegline uno e tienilo. Uno standup che cambia forma ogni settimana diventa una riunione di aggiornamento."
+      ],
+      "table": {
+        "head": [
+          "Formato",
+          "Come si svolge",
+          "Adatto a"
+        ],
+        "rows": [
+          [
+            "Tre domande",
+            "Ognuno: cosa ho finito, su cosa lavoro oggi, cosa mi blocca.",
+            "Team nuovi e team il cui lavoro non sta su un'unica board."
+          ],
+          [
+            "Scorrere la board",
+            "Si scorre la board da destra a sinistra, prima il lavoro più vicino alla fine. Si parla quando arriva la propria scheda.",
+            "Team che condividono una board Kanban o di sprint. Condividila sullo schermo."
+          ],
+          [
+            "Una frase e un parcheggio",
+            "Una frase a testa, poi le domande emerse, prese da chi ne ha bisogno.",
+            "Team piccoli e affiatati che si parlano già tutto il giorno."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Quanto dovrebbe durare",
+      "body": [
+        "Calcola circa un minuto a persona e un paio di minuti per il parcheggio. Oltre le 12 persone circa, un giro dura più di quanto si riesca ad ascoltare; dividete per progetto o scorrete la board."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Giro",
+          "Con il parcheggio"
+        ],
+        "rows": [
+          [
+            "4 persone",
+            "4 minuti",
+            "circa 6 minuti"
+          ],
+          [
+            "8 persone",
+            "8 minuti",
+            "circa 10 minuti"
+          ],
+          [
+            "12 persone",
+            "12 minuti",
+            "circa 15 minuti"
+          ],
+          [
+            "15 persone",
+            "15 minuti",
+            "dividetelo o scorrete la board"
+          ]
+        ],
+        "note": "Una regola pratica, non un timer. Uno standup di 15 minuti ogni giorno lavorativo fa circa 5 ore di riunioni al mese, con qualsiasi piano."
+      }
+    },
+    {
+      "title": "Come tenerlo breve",
+      "items": [
+        {
+          "title": "Iniziare in orario",
+          "body": "Inizia al minuto anche se manca qualcuno. Il piano mostra chi c'è, chi è assente e chi è ancora in chiamata, così sai chi aspettare e chi no."
+        },
+        {
+          "title": "Portare gli approfondimenti a una scrivania",
+          "body": "Quando due persone devono approfondire qualcosa, vanno a una scrivania dopo lo standup. Il resto della stanza non deve ascoltare."
+        },
+        {
+          "title": "Mostrare invece di descrivere",
+          "body": "Condividi una finestra con la board o un bug invece di leggerlo ad alta voce. Un clic ed è sullo schermo di tutti."
+        },
+        {
+          "title": "Videocamere facoltative",
+          "body": "Chi non ha la videocamera accesa appare come una scheda che si illumina quando parla. Una videocamera rimasta accesa per dieci minuti senza che nessuno parli si spegne da sola."
+        }
+      ]
+    },
+    {
+      "title": "Dal vivo, per iscritto o entrambi",
+      "body": [
+        "Un team distribuito su più fusi orari non può sempre incontrarsi alla stessa ora. Molti scrivono un aggiornamento in un canale della chat dell'ufficio e tengono lo standup dal vivo per i giorni in cui c'è qualcosa da decidere: un rilascio, un problema, una persona nuova."
+      ],
+      "items": [
+        {
+          "title": "Dal vivo",
+          "body": "Sblocca più in fretta, ed è l'unico momento della giornata in cui tutto il team è in una stanza. Ideale quando quasi tutti hanno gli stessi orari."
+        },
+        {
+          "title": "Per iscritto",
+          "body": "Funziona tra fusi orari diversi e lascia traccia. Facile da scorrere e facile da saltare, quindi un blocco può passare inosservato."
+        },
+        {
+          "title": "Entrambi",
+          "body": "Aggiornamenti scritti ogni giorno e un breve giro dal vivo una o due volte a settimana, a un'ora che va bene a tutti."
+        }
+      ]
+    },
+    {
+      "title": "Cosa TinyFloor non fa per gli standup",
+      "body": [
+        "Non c'è un bot che fa le domande al posto tuo, né promemoria, né timer, né registrazione. Non si collega a Jira, Linear o GitHub, quindi la board va sullo schermo come finestra condivisa. Se vuoi raccogliere gli standup scritti in automatico, un bot nel tuo strumento di chat lo fa meglio; TinyFloor è il posto dove il team si incontra."
+      ]
+    }
   ]
 }

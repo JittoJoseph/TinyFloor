@@ -2058,5 +2058,143 @@
         "Priser, grenser og funksjoner kommer fra Gathers og Kumospaces egne prissider og hjelpesentre, lest i oktober 2026, i amerikanske dollar uten mva. Det som ikke sto der, har vi utelatt i stedet for å gjette. Vi lager TinyFloor, så vi sier tydelig hva det ikke gjør. Priser endrer seg: sjekk hvert produkts side før du kjøper."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "Slik foregår en standup i TinyFloor",
+      "body": [
+        "Hvert kontor har et hovedmøte som alltid er åpent. Standupen er det rommet, hver dag på samme tid: ingen sender en lenke, og ingen venter i et venterom på en vert."
+      ],
+      "items": [
+        {
+          "title": "Gå inn",
+          "detail": "9:58",
+          "body": "Bli med i hovedmøtet, så går figuren din inn i møterommet. Alle i etasjen ser rommet fylles opp."
+        },
+        {
+          "title": "Runden",
+          "detail": "10:00",
+          "body": "Stemme først, kamera hvis folk vil. Den som snakker får det store kortet, så det er tydelig hvem sin tur det er."
+        },
+        {
+          "title": "Gå ut",
+          "detail": "10:10",
+          "body": "Gå ut av rommet for å forlate møtet, og tilbake til pulten din. Det som trenger mer enn ett minutt, fortsetter ved noens pult med de to det gjelder."
+        }
+      ]
+    },
+    {
+      "title": "Tre formater som fungerer",
+      "body": [
+        "Velg ett og hold deg til det. En standup som skifter form hver uke, blir et statusmøte."
+      ],
+      "table": {
+        "head": [
+          "Format",
+          "Slik går det",
+          "Passer for"
+        ],
+        "rows": [
+          [
+            "Tre spørsmål",
+            "Hver person: hva jeg har gjort ferdig, hva jeg jobber med i dag, hva som står i veien.",
+            "Nye team og team der arbeidet ikke ligger på én tavle."
+          ],
+          [
+            "Gå gjennom tavla",
+            "Gå gjennom tavla fra høyre mot venstre, det som er nærmest ferdig først. Man snakker når kortet ens kommer opp.",
+            "Team med en felles Kanban- eller sprinttavle. Del den på skjermen."
+          ],
+          [
+            "Én setning og en parkeringsplass",
+            "Én setning hver, deretter spørsmålene som kom opp, for dem som trenger dem.",
+            "Små, samkjørte team som uansett snakker hele dagen."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Hvor lang tid det bør ta",
+      "body": [
+        "Regn med rundt ett minutt per person og et par minutter til parkeringsplassen. Over rundt 12 tar en runde lengre tid enn folk klarer å lytte; del opp etter prosjekt, eller gå gjennom tavla i stedet."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Runde",
+          "Med parkeringsplassen"
+        ],
+        "rows": [
+          [
+            "4 personer",
+            "4 minutter",
+            "rundt 6 minutter"
+          ],
+          [
+            "8 personer",
+            "8 minutter",
+            "rundt 10 minutter"
+          ],
+          [
+            "12 personer",
+            "12 minutter",
+            "rundt 15 minutter"
+          ],
+          [
+            "15 personer",
+            "15 minutter",
+            "del den opp, eller gå gjennom tavla"
+          ]
+        ],
+        "note": "En tommelfingerregel, ikke en tidtaker. En standup på 15 minutter hver arbeidsdag blir rundt 5 timer møter i måneden, på alle planer."
+      }
+    },
+    {
+      "title": "Slik holder du den kort",
+      "items": [
+        {
+          "title": "Start i tide",
+          "body": "Start på minuttet, selv om noen mangler. Etasjen viser hvem som er der, hvem som er borte og hvem som fortsatt er i en samtale, så du vet hvem du skal vente på og hvem ikke."
+        },
+        {
+          "title": "Ta oppfølging ved en pult",
+          "body": "Når to personer må grave i noe, går de til en pult etter standupen. Resten av rommet trenger ikke å lytte."
+        },
+        {
+          "title": "Vis i stedet for å beskrive",
+          "body": "Del et vindu med tavla eller en feil i stedet for å lese det høyt. Ett klikk, så er det på alles skjerm."
+        },
+        {
+          "title": "Kamera er frivillig",
+          "body": "Den som ikke har kameraet på, vises som et kort som lyser opp når personen snakker. Et kamera som har stått på i ti minutter uten at noen har snakket, slår seg av selv."
+        }
+      ]
+    },
+    {
+      "title": "Live, skriftlig eller begge deler",
+      "body": [
+        "Et team spredt over tidssoner kan ikke alltid møtes på samme tid. Mange skriver en oppdatering i en kanal i kontorets chat og sparer den levende standupen til dager der noe skal avgjøres: en lansering, et problem, en ny kollega."
+      ],
+      "items": [
+        {
+          "title": "Live",
+          "body": "Raskere å løse opp i hindringer, og det er den ene gangen om dagen hele teamet er i ett rom. Best når de fleste har samme arbeidstid."
+        },
+        {
+          "title": "Skriftlig",
+          "body": "Fungerer på tvers av tidssoner og etterlater et spor. Lett å skumme, lett å hoppe over, så hindringer kan bli liggende ubemerket."
+        },
+        {
+          "title": "Begge deler",
+          "body": "Skriftlige oppdateringer hver dag og en kort levende runde én eller to ganger i uken, på et tidspunkt som passer alle."
+        }
+      ]
+    },
+    {
+      "title": "Hva TinyFloor ikke gjør for standuper",
+      "body": [
+        "Det finnes ingen standup-bot som stiller spørsmålene for deg, ingen påminnelse, ingen tidtaker og ikke noe opptak. Det er ikke koblet til Jira, Linear eller GitHub, så tavla kommer på skjermen som et delt vindu. Vil du samle inn skriftlige standuper automatisk, gjør en bot i chatteverktøyet deres det bedre; TinyFloor er der teamet møtes."
+      ]
+    }
   ]
 }

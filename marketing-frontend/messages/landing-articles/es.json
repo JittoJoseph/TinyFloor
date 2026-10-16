@@ -2058,5 +2058,143 @@
         "Los precios, límites y funciones salen de las páginas de precios y centros de ayuda de Gather y Kumospace, leídos en octubre de 2026, en dólares estadounidenses sin impuestos. Lo que no aparecía allí lo dejamos fuera en vez de adivinar. Hacemos TinyFloor, así que decimos claramente lo que no hace. Los precios cambian: revisa la página de cada producto antes de comprar."
       ]
     }
+  ],
+  "standup": [
+    {
+      "title": "Cómo funciona una reunión diaria en TinyFloor",
+      "body": [
+        "Cada oficina tiene una reunión principal siempre abierta. La reunión diaria es esa sala, todos los días a la misma hora: nadie envía un enlace y nadie espera a un anfitrión en una sala de espera."
+      ],
+      "items": [
+        {
+          "title": "Entrar",
+          "detail": "9:58",
+          "body": "Únete a la reunión principal y tu personaje entra en la sala de reuniones. Todos en la planta ven cómo se llena la sala."
+        },
+        {
+          "title": "Hacer la ronda",
+          "detail": "10:00",
+          "body": "Primero la voz, cámaras si la gente quiere. Quien habla ocupa la tarjeta grande, así queda claro a quién le toca."
+        },
+        {
+          "title": "Salir",
+          "detail": "10:10",
+          "body": "Sal de la sala para dejar la reunión y vuelve a tu mesa. Lo que necesite más de un minuto sigue en la mesa de alguien, con las dos personas a las que afecta."
+        }
+      ]
+    },
+    {
+      "title": "Tres formatos que funcionan",
+      "body": [
+        "Elige uno y mantenlo. Una reunión diaria que cambia de forma cada semana acaba siendo una reunión de estado."
+      ],
+      "table": {
+        "head": [
+          "Formato",
+          "Cómo va",
+          "Ideal para"
+        ],
+        "rows": [
+          [
+            "Tres preguntas",
+            "Cada persona: qué terminé, en qué estoy hoy, qué me bloquea.",
+            "Equipos nuevos y equipos cuyo trabajo no está en un solo tablero."
+          ],
+          [
+            "Recorrer el tablero",
+            "Recorrer el tablero de derecha a izquierda, primero lo más cerca de terminar. Cada uno habla cuando sale su tarjeta.",
+            "Equipos que comparten un tablero Kanban o de sprint. Compártelo en pantalla."
+          ],
+          [
+            "Una frase y un aparcamiento",
+            "Una frase cada uno y luego las preguntas que hayan salido, para quien las necesite.",
+            "Equipos pequeños y asentados que ya hablan todo el día."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Cuánto debería durar",
+      "body": [
+        "Cuenta con un minuto por persona y un par de minutos para el aparcamiento. A partir de unas 12 personas, una ronda dura más de lo que la gente puede escuchar; divide por proyecto o recorre el tablero."
+      ],
+      "table": {
+        "head": [
+          "Equipo",
+          "Ronda",
+          "Con el aparcamiento"
+        ],
+        "rows": [
+          [
+            "4 personas",
+            "4 minutos",
+            "unos 6 minutos"
+          ],
+          [
+            "8 personas",
+            "8 minutos",
+            "unos 10 minutos"
+          ],
+          [
+            "12 personas",
+            "12 minutos",
+            "unos 15 minutos"
+          ],
+          [
+            "15 personas",
+            "15 minutos",
+            "divídela o recorre el tablero"
+          ]
+        ],
+        "note": "Una regla práctica, no un temporizador. Una reunión diaria de 15 minutos cada día laborable suma unas 5 horas de reuniones al mes, en cualquier plan."
+      }
+    },
+    {
+      "title": "Cómo mantenerla corta",
+      "items": [
+        {
+          "title": "Empezar a la hora",
+          "body": "Empieza en punto aunque falte alguien. La planta muestra quién está, quién está ausente y quién sigue en una llamada, así sabes a quién esperar y a quién no."
+        },
+        {
+          "title": "Llevar los temas a una mesa",
+          "body": "Cuando dos personas tienen que profundizar en algo, van a una mesa después de la reunión diaria. El resto de la sala no tiene que escuchar."
+        },
+        {
+          "title": "Mostrar, no describir",
+          "body": "Comparte una ventana con el tablero o un error en vez de leerlo en voz alta. Un clic y está en la pantalla de todos."
+        },
+        {
+          "title": "Cámaras opcionales",
+          "body": "Quien no tiene cámara aparece como una tarjeta que se ilumina al hablar. Una cámara que lleva diez minutos encendida sin que nadie hable se apaga sola."
+        }
+      ]
+    },
+    {
+      "title": "En directo, por escrito o las dos cosas",
+      "body": [
+        "Un equipo repartido en varias zonas horarias no siempre puede reunirse a la misma hora. Muchos publican una actualización por escrito en un canal del chat de la oficina y dejan la reunión diaria en directo para los días con algo que decidir: un lanzamiento, un problema, una persona nueva."
+      ],
+      "items": [
+        {
+          "title": "En directo",
+          "body": "Desbloquea más rápido y es el único momento del día en que todo el equipo está en una sala. Ideal cuando la mayoría comparte horario."
+        },
+        {
+          "title": "Por escrito",
+          "body": "Funciona entre zonas horarias y deja constancia. Fácil de leer en diagonal y fácil de saltarse, así que un bloqueo puede pasar desapercibido."
+        },
+        {
+          "title": "Las dos cosas",
+          "body": "Actualizaciones escritas cada día y una ronda corta en directo una o dos veces por semana, a una hora que vaya bien a todos."
+        }
+      ]
+    },
+    {
+      "title": "Lo que TinyFloor no hace por tus reuniones diarias",
+      "body": [
+        "No hay un bot que haga las preguntas por ti, ni recordatorios, ni temporizador, ni grabación. No se conecta a Jira, Linear ni GitHub, así que el tablero va a la pantalla como ventana compartida. Si quieres recoger reuniones diarias por escrito automáticamente, un bot en tu herramienta de chat lo hace mejor; TinyFloor es donde el equipo se reúne."
+      ]
+    }
   ]
 }

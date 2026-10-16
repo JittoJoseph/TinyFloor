@@ -1548,5 +1548,180 @@
         "Os preços, limites e recursos do oVice vêm da página de preços e da tabela comparativa dele, lidas em outubro de 2026, em dólares americanos sem impostos. O que não estava lá, deixamos de fora em vez de chutar. Nós fazemos o TinyFloor, então dizemos com clareza o que ele não faz. Preços mudam: confira a página do oVice antes de comprar."
       ]
     }
+  ],
+  "spatialchat": [
+    {
+      "title": "SpatialChat e TinyFloor num relance",
+      "body": [
+        "Os dois rodam no navegador e nos dois você chega perto para conversar. O SpatialChat vende salas para eventos, aulas e escritórios; o TinyFloor é só um escritório para uma equipe pequena, com preço de escritório."
+      ],
+      "table": {
+        "head": [
+          "",
+          "SpatialChat",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Uma equipe de 8, por mês",
+            "US$ 50,67 no anual, US$ 64 no mensal (Business)",
+            "US$ 29 para a equipe toda"
+          ],
+          [
+            "Plano grátis",
+            "2 horas de reuniões por dia, até 12 pessoas",
+            "Até 3 pessoas, sem limite diário"
+          ],
+          [
+            "Como é cobrado",
+            "Por usuário",
+            "Um preço pelo escritório"
+          ],
+          [
+            "O espaço",
+            "Até 5 salas no Business",
+            "Mesas e uma sala de reunião num andar"
+          ],
+          [
+            "Gravação",
+            "Até 7 gravações salvas no Business",
+            "Não"
+          ],
+          [
+            "Eventos",
+            "Planos de evento à parte, até 10.000 participantes",
+            "Não"
+          ],
+          [
+            "Login único",
+            "SAML no Enterprise",
+            "Não"
+          ]
+        ],
+        "note": "Dados do SpatialChat da página de preços (planos de escritório virtual) em outubro de 2026, em dólares americanos sem impostos."
+      }
+    },
+    {
+      "title": "Quanto custa o SpatialChat por tamanho de equipe",
+      "body": [
+        "O plano Business de escritório virtual custa US$ 8 por usuário por mês, ou US$ 76 por usuário por ano (cerca de US$ 6,33 por mês). Para uma equipe bem pequena no anual, sai mais barato que o TinyFloor; a partir de 4 ou 5 pessoas, sai mais caro."
+      ],
+      "table": {
+        "head": [
+          "Equipe",
+          "SpatialChat Business, no mensal",
+          "SpatialChat Business, no anual, por mês",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "4 pessoas",
+            "US$ 32",
+            "US$ 25,33",
+            "US$ 29"
+          ],
+          [
+            "8 pessoas",
+            "US$ 64",
+            "US$ 50,67",
+            "US$ 29"
+          ],
+          [
+            "10 pessoas",
+            "US$ 80",
+            "US$ 63,33",
+            "US$ 29"
+          ],
+          [
+            "12 pessoas",
+            "US$ 96",
+            "US$ 76",
+            "US$ 29"
+          ]
+        ],
+        "note": "SpatialChat Business (escritório virtual) a US$ 8 por usuário no mensal ou US$ 76 por usuário por ano (página de preços do SpatialChat, outubro de 2026). O TinyFloor Pro é mensal; equipes de até 3 continuam grátis."
+      }
+    },
+    {
+      "title": "Por que equipes pequenas procuram uma alternativa ao SpatialChat",
+      "items": [
+        {
+          "title": "O plano grátis para em 2 horas por dia",
+          "body": "Serve para algumas reuniões, não para um escritório que fica aberto enquanto você trabalha. O acesso o tempo todo começa no Business."
+        },
+        {
+          "title": "Feito em torno de eventos",
+          "body": "O SpatialChat vem de conferências, aulas e workshops. Uma equipe que quer mesas, ver quem está e trocar uma palavra rápida talvez queira algo feito para isso."
+        },
+        {
+          "title": "Salas, não um escritório",
+          "body": "O SpatialChat dá salas para se reunir. O TinyFloor dá a cada pessoa uma mesa num andar só, para você ver quem está por perto e ir até lá."
+        },
+        {
+          "title": "O preço por usuário cresce com a equipe",
+          "body": "Cada pessoa soma US$ 6,33 a US$ 8 por mês; com 12 pessoas, são US$ 76 a US$ 96 por mês."
+        }
+      ]
+    },
+    {
+      "title": "O que o SpatialChat faz melhor",
+      "items": [
+        {
+          "title": "Eventos em grande escala",
+          "body": "Os planos de evento comportam até 10.000 participantes, com salas paralelas, senhas e sessões só para convidados. O TinyFloor não foi feito para eventos."
+        },
+        {
+          "title": "Mais barato para 4 ou menos no anual",
+          "body": "A US$ 76 por usuário por ano, quatro pessoas pagam cerca de US$ 25 por mês, menos que os US$ 29 do TinyFloor."
+        },
+        {
+          "title": "Arquivos e gravações",
+          "body": "Compartilhe várias telas, fixe arquivos numa sala e guarde gravações das reuniões. O TinyFloor não grava."
+        },
+        {
+          "title": "Login único",
+          "body": "O Enterprise acrescenta login via SAML para empresas que precisam."
+        }
+      ]
+    },
+    {
+      "title": "Qual combina com a sua equipe",
+      "items": [
+        {
+          "title": "TinyFloor, para um escritório que fica aberto",
+          "body": "Para uma equipe de 4 a 15 pessoas que quer ver quem está na mesa, conversar sem agendar e se reunir sem limite diário, por um preço só."
+        },
+        {
+          "title": "SpatialChat, para eventos e aulas",
+          "body": "Se você organiza conferências, workshops ou aulas, precisa de gravações ou login único, ou se vocês são 4 ou menos e topam pagar no anual."
+        }
+      ]
+    },
+    {
+      "title": "Trazer uma equipe do SpatialChat",
+      "items": [
+        {
+          "title": "Crie um escritório",
+          "detail": "Dois minutos",
+          "body": "Dê o nome da equipe. O andar, as mesas e a sala de reunião já estão prontos."
+        },
+        {
+          "title": "Compartilhe um link de convite",
+          "detail": "No chat da equipe",
+          "body": "Os colegas entram com Google ou e-mail pelo navegador, no notebook ou no celular."
+        },
+        {
+          "title": "Passe uma semana normal lá",
+          "detail": "A daily na sala de reunião",
+          "body": "Deixem aberto o dia todo por uma semana e depois decidam qual a equipe realmente abriu."
+        }
+      ]
+    },
+    {
+      "title": "Como comparamos",
+      "body": [
+        "Os preços, limites e recursos do SpatialChat vêm da página de preços dele, na aba Virtual Office, lida em outubro de 2026, em dólares americanos sem impostos. O que não estava lá, deixamos de fora em vez de chutar. Nós fazemos o TinyFloor, então dizemos com clareza o que ele não faz. Preços mudam: confira a página do SpatialChat antes de comprar."
+      ]
+    }
   ]
 }

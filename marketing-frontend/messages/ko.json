@@ -178,11 +178,11 @@
       "spatialchat": {
         "label": "SpatialChat 대안",
         "meta": {
-          "title": "하루 사용 제한 없는 SpatialChat 대안",
-          "description": "SpatialChat 무료 요금제는 하루 2시간입니다. TinyFloor은 가까이 가서 통화하는 무료 픽셀 아트 가상 오피스로, 하루 종일 열어 둘 수 있습니다."
+          "title": "SpatialChat 대안: 가격, 하루 2시간 무료 요금제, 그리고 하루 종일 여는 오피스",
+          "description": "SpatialChat 무료 요금제는 하루 2시간까지 회의할 수 있고, 가상 오피스 요금제는 사용자당 월 $8입니다. 작은 팀이 내는 금액, SpatialChat이 더 나은 점, 그리고 하루 종일 열어 두는 오피스인 팀 전체 $29의 TinyFloor."
         },
         "title": "하루 종일 열어 두는 <em>SpatialChat 대안.</em>",
-        "subtitle": "SpatialChat은 이벤트용으로 만들어졌고 무료 요금제는 하루 2시간이면 끝납니다. TinyFloor은 오피스라서 팀이 일하는 동안 방이 계속 열려 있습니다.",
+        "subtitle": "SpatialChat은 이벤트를 중심으로 자랐고, 무료 요금제는 하루 2시간 회의 후 끝나요. 가상 오피스 요금제는 사용자당 월 $8이에요. TinyFloor는 오피스라서, 팀이 일하는 동안 방이 계속 열려 있어요. 팀당 하나의 가격으로요.",
         "points": [
           {
             "title": "하루 제한 없음",
@@ -198,27 +198,31 @@
           }
         ],
         "them": {
-          "price": "Day Pass 사용자당 하루 5달러, Business 월 399달러부터",
-          "freePlan": "하루 2시간, 최대 12명",
-          "browser": "네",
-          "screenShare": "있음"
+          "price": "Business 사용자당 월 $8, 연 $76 (가상 오피스 요금제)",
+          "freePlan": "하루 2시간 회의, 12명까지",
+          "browser": "예",
+          "screenShare": "예"
         },
         "faq": [
           {
             "q": "SpatialChat은 무료인가요?",
-            "a": "SpatialChat에는 하루 2시간까지, 최대 12명이 회의할 수 있는 무료 요금제가 있습니다. 유료로는 사용자당 5달러 Day Pass와 월 399달러부터인 Business 요금제가 있습니다. TinyFloor은 무료 요금제를 포함해 어떤 요금제에도 하루 제한이 없습니다."
+            "a": "SpatialChat에는 하루 2시간까지 회의, 참가자 12명, 방 4개까지인 무료 요금제가 있습니다. 오피스로 쓰려면 Business 요금제가 사용자당 월 $8 또는 연 $76, Enterprise가 월 $12 또는 연 $120입니다. TinyFloor는 무료 요금제를 포함해 어떤 요금제에도 하루 제한이 없습니다."
           },
           {
-            "q": "TinyFloor은 온라인 이벤트에 적합한가요?",
-            "a": "TinyFloor는 매일 함께 일하는 작은 팀을 위해 만들었어요. 오피스 하나에 15명까지이고, 큰 행사용은 아니에요."
+            "q": "10명이 SpatialChat을 쓰면 얼마인가요?",
+            "a": "가상 오피스 Business 요금제로 월간 결제 시 월 $80, 연간 결제 시 연 $760(월 $63.33)입니다. 같은 팀에 TinyFloor는 월 $29입니다."
           },
           {
-            "q": "SpatialChat에는 있고 TinyFloor에는 없는 것은?",
-            "a": "SpatialChat에는 파일 고정과 대규모 이벤트 기능이 더 있습니다. TinyFloor는 일상적인 접속 상태, 짧은 대화, 통화와 회의에서의 화면 공유에 집중합니다."
+            "q": "TinyFloor는 가상 이벤트에 맞나요?",
+            "a": "TinyFloor는 매일 함께 일하는 작은 팀을 위해 만들어졌고, 오피스 하나에 15명까지입니다. 큰 이벤트용은 아닙니다."
           },
           {
-            "q": "브라우저끼리 통화가 되나요?",
-            "a": "네. TinyFloor 통화는 브라우저의 WebRTC로 Cloudflare 중계 네트워크를 거치기 때문에, 회사든 집이든 어떤 네트워크에서도 연결돼요."
+            "q": "SpatialChat에는 있고 TinyFloor에는 없는 것은 무엇인가요?",
+            "a": "수천 명 규모의 이벤트 공간, 파일 고정, 녹화 저장, 그리고 Enterprise의 싱글 사인온입니다. TinyFloor는 매일의 접속 상태, 짧은 대화, 통화와 회의 중 화면 공유에 집중합니다."
+          },
+          {
+            "q": "다른 브라우저끼리도 통화가 되나요?",
+            "a": "네. TinyFloor 통화는 브라우저의 WebRTC로 Cloudflare 릴레이 네트워크를 거치기 때문에 회사나 집, 어떤 네트워크에서도 연결됩니다."
           }
         ]
       },

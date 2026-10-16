@@ -178,11 +178,11 @@
       "spatialchat": {
         "label": "Alternativa a SpatialChat",
         "meta": {
-          "title": "Alternativa a SpatialChat sin límite diario",
-          "description": "El plan gratuito de SpatialChat permite 2 horas al día. TinyFloor es una oficina virtual gratis de pixel art con llamadas por proximidad que puedes dejar abierta todo el día."
+          "title": "Alternativa a SpatialChat: precios, el plan gratis de 2 horas y una oficina para todo el día",
+          "description": "El plan gratis de SpatialChat permite 2 horas de reuniones al día, y su plan de oficina virtual cuesta 8 $ por usuario al mes. Lo que paga un equipo pequeño, lo que SpatialChat hace mejor y TinyFloor, una oficina abierta todo el día, a 29 $ para todo el equipo."
         },
         "title": "Una <em>alternativa a SpatialChat</em> abierta todo el día.",
-        "subtitle": "SpatialChat está pensado para eventos, y su plan gratuito se corta tras 2 horas al día. TinyFloor es una oficina, así que la sala sigue abierta mientras tu equipo trabaja.",
+        "subtitle": "SpatialChat nació alrededor de los eventos, y su plan gratis se corta tras 2 horas de reuniones al día. Su plan de oficina virtual cuesta 8 $ por usuario al mes. TinyFloor es una oficina, así que la sala sigue abierta mientras tu equipo trabaja, por un precio por equipo.",
         "points": [
           {
             "title": "Sin límite diario",
@@ -198,27 +198,31 @@
           }
         ],
         "them": {
-          "price": "Day Pass a 5 $ por usuario al día, Business desde 399 $ al mes",
-          "freePlan": "2 horas al día, hasta 12 personas",
+          "price": "Business 8 $ por usuario al mes, 76 $ al año (plan de oficina virtual)",
+          "freePlan": "2 horas de reuniones al día, hasta 12 personas",
           "browser": "Sí",
           "screenShare": "Sí"
         },
         "faq": [
           {
             "q": "¿SpatialChat es gratis?",
-            "a": "SpatialChat tiene un plan gratuito con hasta 2 horas de reuniones al día para hasta 12 participantes. Las opciones de pago incluyen un Day Pass de 5 $ por usuario y planes Business desde 399 $ al mes. TinyFloor no tiene límite diario en ningún plan, ni siquiera en el gratuito."
+            "a": "SpatialChat tiene un plan gratis con hasta 2 horas de reuniones al día para hasta 12 participantes y 4 salas. Para una oficina, el plan Business cuesta 8 $ por usuario al mes, o 76 $ al año; Enterprise cuesta 12 $ al mes o 120 $ al año. TinyFloor no tiene límite diario en ningún plan, tampoco en el gratis."
+          },
+          {
+            "q": "¿Cuánto cuesta SpatialChat para 10 personas?",
+            "a": "Con el plan Business de oficina virtual, 80 $ al mes con facturación mensual, o 760 $ al año (63,33 $ al mes). TinyFloor cuesta 29 $ al mes para el mismo equipo."
           },
           {
             "q": "¿TinyFloor sirve para eventos virtuales?",
-            "a": "TinyFloor está hecho para equipos pequeños que trabajan juntos cada día, hasta 15 personas por oficina, más que para grandes eventos."
+            "a": "TinyFloor está pensado para equipos pequeños que trabajan juntos cada día, hasta 15 personas por oficina, más que para grandes eventos."
           },
           {
-            "q": "¿Qué tiene SpatialChat que no tenga TinyFloor?",
-            "a": "SpatialChat añade archivos fijados y eventos grandes. TinyFloor se centra en la presencia diaria, las conversaciones rápidas y compartir pantalla en llamadas y reuniones."
+            "q": "¿Qué tiene SpatialChat que TinyFloor no tiene?",
+            "a": "SpatialChat añade espacios para eventos de miles de asistentes, archivos fijados, grabaciones guardadas y, en Enterprise, inicio de sesión único. TinyFloor se centra en la presencia del día a día, las conversaciones rápidas y la pantalla compartida en llamadas y reuniones."
           },
           {
             "q": "¿Las llamadas funcionan entre navegadores?",
-            "a": "Sí. Las llamadas de TinyFloor van por WebRTC en el navegador, a través de la red de retransmisión de Cloudflare, así que conectan en cualquier red, de oficina o de casa."
+            "a": "Sí. Las llamadas de TinyFloor van por WebRTC en el navegador, a través de la red de relés de Cloudflare, así que conectan en cualquier red de oficina o de casa."
           }
         ]
       },

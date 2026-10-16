@@ -178,11 +178,11 @@
       "spatialchat": {
         "label": "Alternativa ao SpatialChat",
         "meta": {
-          "title": "Alternativa ao SpatialChat sem limite diário",
-          "description": "O plano gratuito do SpatialChat permite 2 horas por dia. O TinyFloor é um escritório virtual gratuito em pixel art com chamadas por proximidade que você pode deixar aberto o dia todo."
+          "title": "Alternativa ao SpatialChat: preços, o plano grátis de 2 horas e um escritório para o dia todo",
+          "description": "O plano grátis do SpatialChat permite 2 horas de reuniões por dia, e o plano de escritório virtual custa US$ 8 por usuário por mês. Quanto uma equipe pequena paga, o que o SpatialChat faz melhor e o TinyFloor, um escritório aberto o dia todo, a US$ 29 para a equipe toda."
         },
         "title": "Uma <em>alternativa ao SpatialChat</em> aberta o dia todo.",
-        "subtitle": "O SpatialChat é feito para eventos, e o plano gratuito para depois de 2 horas por dia. O TinyFloor é um escritório, então a sala fica aberta enquanto sua equipe trabalha.",
+        "subtitle": "O SpatialChat nasceu em torno de eventos, e o plano grátis para depois de 2 horas de reuniões por dia. O plano de escritório virtual custa US$ 8 por usuário por mês. O TinyFloor é um escritório, então a sala fica aberta enquanto sua equipe trabalha, por um preço por equipe.",
         "points": [
           {
             "title": "Sem limite diário",
@@ -198,15 +198,19 @@
           }
         ],
         "them": {
-          "price": "Day Pass de US$ 5 por usuário por dia, Business a partir de US$ 399 por mês",
-          "freePlan": "2 horas por dia, até 12 pessoas",
+          "price": "Business US$ 8 por usuário por mês, US$ 76 por ano (plano de escritório virtual)",
+          "freePlan": "2 horas de reuniões por dia, até 12 pessoas",
           "browser": "Sim",
           "screenShare": "Sim"
         },
         "faq": [
           {
             "q": "O SpatialChat é grátis?",
-            "a": "O SpatialChat tem um plano gratuito com até 2 horas de reuniões por dia para até 12 participantes. As opções pagas incluem um Day Pass de US$ 5 por usuário e planos Business a partir de US$ 399 por mês. O TinyFloor não tem limite diário em nenhum plano, nem no grátis."
+            "a": "O SpatialChat tem um plano grátis com até 2 horas de reuniões por dia para até 12 participantes e 4 salas. Para um escritório, o plano Business custa US$ 8 por usuário por mês, ou US$ 76 por ano; o Enterprise custa US$ 12 por mês ou US$ 120 por ano. O TinyFloor não tem limite diário em nenhum plano, nem no grátis."
+          },
+          {
+            "q": "Quanto custa o SpatialChat para 10 pessoas?",
+            "a": "No plano Business de escritório virtual, US$ 80 por mês no mensal, ou US$ 760 por ano (US$ 63,33 por mês). O TinyFloor custa US$ 29 por mês para a mesma equipe."
           },
           {
             "q": "O TinyFloor serve para eventos virtuais?",
@@ -214,11 +218,11 @@
           },
           {
             "q": "O que o SpatialChat tem que o TinyFloor não tem?",
-            "a": "O SpatialChat adiciona arquivos fixados e grandes eventos. O TinyFloor foca na presença do dia a dia, em conversas rápidas e no compartilhamento de tela em chamadas e reuniões."
+            "a": "O SpatialChat traz espaços para eventos com milhares de participantes, arquivos fixados, gravações salvas e, no Enterprise, login único. O TinyFloor se concentra na presença do dia a dia, em conversas rápidas e em compartilhamento de tela nas chamadas e reuniões."
           },
           {
             "q": "As chamadas funcionam entre navegadores?",
-            "a": "Sim. As chamadas do TinyFloor passam por WebRTC no navegador, pela rede de retransmissão da Cloudflare, então conectam em qualquer rede, no escritório ou em casa."
+            "a": "Sim. As chamadas do TinyFloor rodam via WebRTC no navegador, pela rede de relay da Cloudflare, então conectam em qualquer rede de escritório ou de casa."
           }
         ]
       },

@@ -178,11 +178,11 @@
       "spatialchat": {
         "label": "SpatialChat 替代品",
         "meta": {
-          "title": "没有每日时长限制的 SpatialChat 替代品",
-          "description": "SpatialChat 免费方案每天只有 2 小时。TinyFloor 是免费的像素风虚拟办公室，走近即可通话，可以全天开放。"
+          "title": "SpatialChat 替代品：价格、每天 2 小时的免费方案，以及全天开着的办公室",
+          "description": "SpatialChat 免费方案每天最多 2 小时会议，虚拟办公室方案每位用户每月 $8。小团队要付多少、SpatialChat 哪里更好，以及可以全天开着、整个团队 $29 的 TinyFloor。"
         },
         "title": "可以全天开放的 <em>SpatialChat 替代品。</em>",
-        "subtitle": "SpatialChat 面向活动设计，免费方案每天 2 小时就结束。TinyFloor 是一个办公室，只要团队还在工作，房间就一直开着。",
+        "subtitle": "SpatialChat 围绕活动成长起来，免费方案每天开会满 2 小时就停止。它的虚拟办公室方案每位用户每月 $8。TinyFloor 是一个办公室，只要团队在工作，房间就一直开着，每个团队一个价格。",
         "points": [
           {
             "title": "没有每日时长限制",
@@ -198,27 +198,31 @@
           }
         ],
         "them": {
-          "price": "Day Pass 每位用户每天 5 美元，Business 每月 399 美元起",
-          "freePlan": "每天 2 小时，最多 12 人",
+          "price": "Business 每位用户每月 $8，每年 $76（虚拟办公室方案）",
+          "freePlan": "每天 2 小时会议，最多 12 人",
           "browser": "是",
-          "screenShare": "有"
+          "screenShare": "是"
         },
         "faq": [
           {
             "q": "SpatialChat 免费吗？",
-            "a": "SpatialChat 有免费方案，每天最多 2 小时会议，最多 12 名参与者。付费选项包括每位用户 5 美元的 Day Pass 和每月 399 美元起的 Business 方案。TinyFloor 的任何方案都没有每日时长限制，包括免费方案。"
+            "a": "SpatialChat 有免费方案：每天最多 2 小时会议，最多 12 位参与者和 4 个房间。用作办公室的话，Business 方案每位用户每月 $8 或每年 $76；Enterprise 每月 $12 或每年 $120。TinyFloor 的任何方案都没有每日限制，免费方案也一样。"
           },
           {
-            "q": "TinyFloor 适合线上活动吗？",
-            "a": "TinyFloor 为每天一起工作的小团队打造，每个办公室最多 15 人，不太适合大型活动。"
+            "q": "10 个人用 SpatialChat 要多少钱？",
+            "a": "虚拟办公室 Business 方案按月付费每月 $80，按年付费每年 $760（每月 $63.33）。同样的团队用 TinyFloor 每月 $29。"
+          },
+          {
+            "q": "TinyFloor 适合办虚拟活动吗？",
+            "a": "TinyFloor 是为每天一起工作的小团队做的，一个办公室最多 15 人，并不适合大型活动。"
           },
           {
             "q": "SpatialChat 有哪些 TinyFloor 没有的功能？",
-            "a": "SpatialChat 还提供置顶文件和大型活动。TinyFloor 专注于日常在线状态、快速交流，以及通话和会议中的屏幕共享。"
+            "a": "能容纳数千人的活动空间、置顶文件、保存的录像，以及 Enterprise 方案的单点登录。TinyFloor 专注于日常在线状态、快速交流，以及通话和会议中的屏幕共享。"
           },
           {
-            "q": "浏览器之间可以通话吗？",
-            "a": "是的。TinyFloor 的通话在浏览器中通过 WebRTC 经由 Cloudflare 的中继网络传输，所以无论公司还是家里的网络都能连上。"
+            "q": "不同浏览器之间能通话吗？",
+            "a": "能。TinyFloor 的通话在浏览器中通过 WebRTC 进行，经由 Cloudflare 的中继网络，所以在公司或家里的任何网络上都能连通。"
           }
         ]
       },

@@ -178,11 +178,11 @@
       "spatialchat": {
         "label": "SpatialChat-vaihtoehto",
         "meta": {
-          "title": "SpatialChat-vaihtoehto ilman päivärajaa",
-          "description": "SpatialChatin ilmainen paketti sallii 2 tuntia päivässä. TinyFloor on ilmainen pikselitaiteinen virtuaalitoimisto lähipuheluilla, jonka voi pitää auki koko päivän."
+          "title": "Vaihtoehto SpatialChatille: hinnat, 2 tunnin ilmaisversio ja koko päivän toimisto",
+          "description": "SpatialChatin ilmaisversio sallii 2 tuntia kokouksia päivässä, ja virtuaalitoimiston tilaus maksaa 8 $ käyttäjältä kuukaudessa. Mitä pieni tiimi maksaa, missä SpatialChat on parempi ja TinyFloor, koko päivän auki pysyvä toimisto, 29 $:lla koko tiimiltä."
         },
         "title": "<em>SpatialChat-vaihtoehto</em>, joka on auki koko päivän.",
-        "subtitle": "SpatialChat on tehty tapahtumiin, ja sen ilmainen paketti loppuu 2 tunnin jälkeen päivässä. TinyFloor on toimisto, joten huone pysyy auki niin kauan kuin tiimisi tekee töitä.",
+        "subtitle": "SpatialChat syntyi tapahtumien ympärille, ja sen ilmaisversio loppuu 2 tunnin kokousten jälkeen päivässä. Virtuaalitoimiston tilaus maksaa 8 $ käyttäjältä kuukaudessa. TinyFloor on toimisto, joten huone pysyy auki niin kauan kuin tiimi tekee töitä, yhdellä hinnalla tiimiä kohden.",
         "points": [
           {
             "title": "Ei päivärajaa",
@@ -198,27 +198,31 @@
           }
         ],
         "them": {
-          "price": "Day Pass 5 $ käyttäjältä päivässä, Business alkaen 399 $ kuukaudessa",
-          "freePlan": "2 tuntia päivässä, enintään 12 henkeä",
+          "price": "Business 8 $ käyttäjältä kuukaudessa, 76 $ vuodessa (virtuaalitoimiston tilaus)",
+          "freePlan": "2 tuntia kokouksia päivässä, enintään 12 henkeä",
           "browser": "Kyllä",
           "screenShare": "Kyllä"
         },
         "faq": [
           {
             "q": "Onko SpatialChat ilmainen?",
-            "a": "SpatialChatilla on ilmainen paketti, jossa voi pitää kokouksia enintään 2 tuntia päivässä enintään 12 osallistujalle. Maksullisia vaihtoehtoja ovat 5 $ Day Pass käyttäjältä ja Business-paketit alkaen 399 $ kuukaudessa. TinyFloorissa ei ole päivärajaa missään paketissa, ei ilmaisessakaan."
+            "a": "SpatialChatilla on ilmaisversio, jossa voi pitää enintään 2 tuntia kokouksia päivässä enintään 12 osallistujalle ja 4 huoneessa. Toimistokäyttöön Business-tilaus maksaa 8 $ käyttäjältä kuukaudessa tai 76 $ vuodessa; Enterprise maksaa 12 $ kuukaudessa tai 120 $ vuodessa. TinyFloorissa ei ole päivärajaa missään tilauksessa, ei myöskään ilmaisessa."
+          },
+          {
+            "q": "Mitä SpatialChat maksaa 10 hengelle?",
+            "a": "Virtuaalitoimiston Business-tilauksella 80 $ kuukaudessa kuukausilaskutuksella tai 760 $ vuodessa (63,33 $ kuukaudessa). TinyFloor maksaa samalle tiimille 29 $ kuukaudessa."
           },
           {
             "q": "Sopiiko TinyFloor virtuaalitapahtumiin?",
-            "a": "TinyFloor on tehty pienille tiimeille, jotka tekevät töitä yhdessä joka päivä, enintään 15 henkeä toimistossa, enemmän kuin isoille tapahtumille."
+            "a": "TinyFloor on tehty pienille tiimeille, jotka työskentelevät yhdessä joka päivä, enintään 15 henkeä toimistossa, ei niinkään suuriin tapahtumiin."
           },
           {
-            "q": "Mitä SpatialChatissa on, mitä TinyFloorissä ei ole?",
-            "a": "SpatialChat tarjoaa lisäksi kiinnitetyt tiedostot ja suuret tapahtumat. TinyFloor keskittyy arjen läsnäoloon, nopeisiin keskusteluihin ja näytön jakamiseen puheluissa ja kokouksissa."
+            "q": "Mitä SpatialChatissa on, mitä TinyFloorissa ei ole?",
+            "a": "SpatialChatissa on tapahtumatiloja tuhansille osallistujille, kiinnitettäviä tiedostoja, tallennettuja nauhoitteita ja Enterprisessa kertakirjautuminen. TinyFloor keskittyy arjen läsnäoloon, nopeisiin keskusteluihin ja näytönjakoon puheluissa ja kokouksissa."
           },
           {
-            "q": "Toimivatko puhelut selainten välillä?",
-            "a": "Kyllä. TinyFloorin puhelut kulkevat selaimessa WebRTC:llä Cloudflaren välitysverkon kautta, joten ne yhdistyvät missä tahansa verkossa, toimistolla tai kotona."
+            "q": "Toimivatko puhelut eri selainten välillä?",
+            "a": "Kyllä. TinyFloorin puhelut kulkevat WebRTC:llä selaimessa Cloudflaren välitysverkon kautta, joten ne yhdistyvät missä tahansa toimisto- tai kotiverkossa."
           }
         ]
       },

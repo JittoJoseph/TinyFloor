@@ -178,11 +178,11 @@
       "spatialchat": {
         "label": "Alternativ til SpatialChat",
         "meta": {
-          "title": "Alternativ til SpatialChat uden daglig grænse",
-          "description": "SpatialChats gratisplan tillader 2 timer om dagen. TinyFloor er et gratis virtuelt kontor i pixel art med opkald, når man står tæt, som kan være åbent hele dagen."
+          "title": "Alternativ til SpatialChat: priser, gratisplanen på 2 timer og et kontor til hele dagen",
+          "description": "SpatialChats gratisplan giver 2 timers møder om dagen, og planen til virtuelt kontor koster 8 $ per bruger om måneden. Hvad et lille team betaler, hvad SpatialChat gør bedre, og TinyFloor, et kontor, der er åbent hele dagen, til 29 $ for hele teamet."
         },
         "title": "Et <em>alternativ til SpatialChat</em>, der er åbent hele dagen.",
-        "subtitle": "SpatialChat er bygget til events, og gratisplanen stopper efter 2 timer om dagen. TinyFloor er et kontor, så rummet er åbent, så længe dit team arbejder.",
+        "subtitle": "SpatialChat er vokset op omkring events, og gratisplanen stopper efter 2 timers møder om dagen. Planen til virtuelt kontor koster 8 $ per bruger om måneden. TinyFloor er et kontor, så rummet er åbent, så længe dit team arbejder, for én pris per team.",
         "points": [
           {
             "title": "Ingen daglig grænse",
@@ -198,27 +198,31 @@
           }
         ],
         "them": {
-          "price": "Day Pass 5 $ pr. bruger pr. dag, Business fra 399 $ om måneden",
-          "freePlan": "2 timer om dagen, op til 12 personer",
+          "price": "Business 8 $ per bruger om måneden, 76 $ om året (plan til virtuelt kontor)",
+          "freePlan": "2 timers møder om dagen, op til 12 personer",
           "browser": "Ja",
           "screenShare": "Ja"
         },
         "faq": [
           {
             "q": "Er SpatialChat gratis?",
-            "a": "SpatialChat har en gratisplan med op til 2 timers møder om dagen for op til 12 deltagere. Betalte muligheder er et Day Pass til 5 $ pr. bruger og Business-planer fra 399 $ om måneden. TinyFloor har ingen daglig grænse på nogen plan, heller ikke den gratis."
+            "a": "SpatialChat har en gratisplan med op til 2 timers møder om dagen for op til 12 deltagere og 4 rum. Til et kontor koster Business-planen 8 $ per bruger om måneden eller 76 $ om året; Enterprise koster 12 $ om måneden eller 120 $ om året. TinyFloor har ingen daglig grænse i nogen plan, heller ikke gratisplanen."
           },
           {
-            "q": "Er TinyFloor godt til virtuelle events?",
-            "a": "TinyFloor er lavet til små teams, der arbejder sammen hver dag, op til 15 personer pr. kontor, mere end til store events."
+            "q": "Hvad koster SpatialChat for 10 personer?",
+            "a": "Med Business-planen til virtuelt kontor 80 $ om måneden ved månedlig betaling eller 760 $ om året (63,33 $ om måneden). TinyFloor koster 29 $ om måneden for det samme team."
+          },
+          {
+            "q": "Egner TinyFloor sig til virtuelle events?",
+            "a": "TinyFloor er lavet til små teams, der arbejder sammen hver dag, op til 15 personer per kontor, mere end til store events."
           },
           {
             "q": "Hvad har SpatialChat, som TinyFloor ikke har?",
-            "a": "SpatialChat tilføjer fastgjorte filer og store events. TinyFloor fokuserer på daglig tilstedeværelse, hurtige samtaler og skærmdeling i opkald og møder."
+            "a": "SpatialChat har eventrum til tusindvis af deltagere, fastgjorte filer, gemte optagelser og, med Enterprise, single sign-on. TinyFloor fokuserer på tilstedeværelse i hverdagen, hurtige samtaler og skærmdeling i opkald og møder."
           },
           {
-            "q": "Virker opkald mellem browsere?",
-            "a": "Ja. Opkald i TinyFloor kører over WebRTC i browseren gennem Cloudflares relænetværk, så de forbinder på ethvert netværk, på kontoret eller hjemme."
+            "q": "Virker opkald på tværs af browsere?",
+            "a": "Ja. Opkald i TinyFloor kører over WebRTC i browseren, gennem Cloudflares relænetværk, så de forbinder på ethvert kontor- eller hjemmenetværk."
           }
         ]
       },

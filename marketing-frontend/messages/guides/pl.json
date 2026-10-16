@@ -772,7 +772,7 @@
           },
           {
             "title": "SpatialChat",
-            "detail": "Za darmo 2 godziny dziennie dla 12 · 5 $ za użytkownika dziennie, Business od 399 $ miesięcznie",
+            "detail": "Za darmo 2 godziny dziennie dla 12 · Business 8 $ za użytkownika miesięcznie",
             "body": "Pokoje z dźwiękiem przestrzennym i bańkami wideo, często używane na wydarzenia, zajęcia i warsztaty. Darmowy plan wystarczy na pojedyncze sesje; zespół, który jest tam cały dzień, potrzebuje planu Business."
           },
           {
@@ -818,6 +818,12 @@
               "54 $"
             ],
             [
+              "SpatialChat Business",
+              "Za użytkownika",
+              "2 godziny dziennie, do 12 osób",
+              "63,33 $ rocznie, 80 $ miesięcznie"
+            ],
+            [
               "oVice Entry-S",
               "Za przestrzeń, rocznie",
               "Wersja poglądowa, bez wsparcia",
@@ -852,12 +858,6 @@
               "Za aktywnego członka, miesięcznie",
               "Brak, 14-dniowy okres próbny",
               "195 $"
-            ],
-            [
-              "SpatialChat",
-              "Karnety dzienne lub plan Business",
-              "2 godziny dziennie, do 12 osób",
-              "50 $ dziennie z karnetami, Business od 399 $"
             ]
           ],
           "note": "Ceny bez podatków, ze strony z cennikiem każdego produktu w październiku 2026. Darmowy plan, który obejmuje cały twój zespół, wygrywa z każdym płatnym: plan WorkAdventure obejmuje 10 osób jednocześnie, a plan SoWork 10 członków ze spotkaniami 30-minutowymi."

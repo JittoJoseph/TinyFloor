@@ -772,7 +772,7 @@
           },
           {
             "title": "SpatialChat",
-            "detail": "Gratis 2 timer om dagen for 12 · 5 $ pr. bruger om dagen, Business fra 399 $ om måneden",
+            "detail": "Gratis 2 timer om dagen for 12 · Business 8 $ pr. bruger om måneden",
             "body": "Rum med rumlig lyd og videobobler, meget brugt til arrangementer, undervisning og workshops. Gratisplanen passer til enkelte sessioner; et team, der er der hele dagen, har brug for en Business-plan."
           },
           {
@@ -818,6 +818,12 @@
               "54 $"
             ],
             [
+              "SpatialChat Business",
+              "Pr. bruger",
+              "2 timer om dagen, op til 12 personer",
+              "63,33 $ årligt, 80 $ månedligt"
+            ],
+            [
               "oVice Entry-S",
               "Pr. rum, årligt",
               "Prøveversion, uden support",
@@ -852,12 +858,6 @@
               "Pr. aktivt medlem, månedligt",
               "Ingen, 14 dages prøveperiode",
               "195 $"
-            ],
-            [
-              "SpatialChat",
-              "Dagspas eller Business-plan",
-              "2 timer om dagen, op til 12 personer",
-              "50 $ om dagen med pas, Business fra 399 $"
             ]
           ],
           "note": "Priser uden moms, fra hvert produkts prisside i oktober 2026. En gratisplan, der dækker hele dit team, slår enhver betalt plan: WorkAdventures dækker 10 personer ad gangen og SoWorks 10 medlemmer med møder på 30 minutter."

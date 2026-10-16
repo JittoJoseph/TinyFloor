@@ -178,11 +178,11 @@
       "spatialchat": {
         "label": "Alternativa a SpatialChat",
         "meta": {
-          "title": "Alternativa a SpatialChat senza limiti giornalieri",
-          "description": "Il piano gratuito di SpatialChat consente 2 ore al giorno. TinyFloor è un ufficio virtuale gratuito in pixel art con chiamate di prossimità che puoi lasciare aperto tutto il giorno."
+          "title": "Alternativa a SpatialChat: prezzi, il piano gratuito da 2 ore e un ufficio per tutto il giorno",
+          "description": "Il piano gratuito di SpatialChat consente 2 ore di riunioni al giorno, e il piano per l'ufficio virtuale costa 8 $ a utente al mese. Quanto paga un piccolo team, cosa fa meglio SpatialChat e TinyFloor, un ufficio aperto tutto il giorno, a 29 $ per tutto il team."
         },
         "title": "Un’<em>alternativa a SpatialChat</em> aperta tutto il giorno.",
-        "subtitle": "SpatialChat è pensato per gli eventi, e il suo piano gratuito si ferma dopo 2 ore al giorno. TinyFloor è un ufficio, quindi la stanza resta aperta finché il tuo team lavora.",
+        "subtitle": "SpatialChat è nato attorno agli eventi, e il piano gratuito si ferma dopo 2 ore di riunioni al giorno. Il piano per l'ufficio virtuale costa 8 $ a utente al mese. TinyFloor è un ufficio, quindi la stanza resta aperta finché il team lavora, a un prezzo per team.",
         "points": [
           {
             "title": "Nessun limite giornaliero",
@@ -198,15 +198,19 @@
           }
         ],
         "them": {
-          "price": "Day Pass a 5 $ per utente al giorno, Business da 399 $ al mese",
-          "freePlan": "2 ore al giorno, fino a 12 persone",
+          "price": "Business 8 $ a utente al mese, 76 $ all'anno (piano ufficio virtuale)",
+          "freePlan": "2 ore di riunioni al giorno, fino a 12 persone",
           "browser": "Sì",
           "screenShare": "Sì"
         },
         "faq": [
           {
             "q": "SpatialChat è gratis?",
-            "a": "SpatialChat ha un piano gratuito con fino a 2 ore di riunioni al giorno per un massimo di 12 partecipanti. Le opzioni a pagamento includono un Day Pass da 5 $ per utente e piani Business da 399 $ al mese. TinyFloor non ha limiti giornalieri in nessun piano, nemmeno in quello gratuito."
+            "a": "SpatialChat ha un piano gratuito con fino a 2 ore di riunioni al giorno per un massimo di 12 partecipanti e 4 stanze. Per un ufficio, il piano Business costa 8 $ a utente al mese, o 76 $ all'anno; Enterprise costa 12 $ al mese o 120 $ all'anno. TinyFloor non ha limiti giornalieri in nessun piano, nemmeno in quello gratuito."
+          },
+          {
+            "q": "Quanto costa SpatialChat per 10 persone?",
+            "a": "Con il piano Business per l'ufficio virtuale, 80 $ al mese con fatturazione mensile, o 760 $ all'anno (63,33 $ al mese). TinyFloor costa 29 $ al mese per lo stesso team."
           },
           {
             "q": "TinyFloor va bene per gli eventi virtuali?",
@@ -214,11 +218,11 @@
           },
           {
             "q": "Cosa ha SpatialChat che TinyFloor non ha?",
-            "a": "SpatialChat aggiunge file fissati e grandi eventi. TinyFloor si concentra sulla presenza quotidiana, sulle conversazioni rapide e sulla condivisione dello schermo in chiamate e riunioni."
+            "a": "SpatialChat aggiunge spazi per eventi da migliaia di partecipanti, file fissati, registrazioni salvate e, con Enterprise, l'accesso unico. TinyFloor si concentra sulla presenza quotidiana, sulle conversazioni veloci e sulla condivisione schermo in chiamate e riunioni."
           },
           {
-            "q": "Le chiamate funzionano tra browser?",
-            "a": "Sì. Le chiamate di TinyFloor passano su WebRTC nel browser, attraverso la rete di relay di Cloudflare, quindi si collegano su qualsiasi rete, in ufficio o a casa."
+            "q": "Le chiamate funzionano tra browser diversi?",
+            "a": "Sì. Le chiamate di TinyFloor passano da WebRTC nel browser, attraverso la rete di relay di Cloudflare, quindi si collegano su qualsiasi rete, in ufficio o a casa."
           }
         ]
       },

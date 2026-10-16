@@ -178,11 +178,11 @@
       "spatialchat": {
         "label": "SpatialChat alternative",
         "meta": {
-          "title": "SpatialChat Alternative With No Daily Limit",
-          "description": "SpatialChat's free plan allows 2 hours a day. TinyFloor is a free pixel-art virtual office with proximity calls that you can keep open all day."
+          "title": "SpatialChat Alternative: Pricing, the 2-Hour Free Plan and an All-Day Office",
+          "description": "SpatialChat's free plan allows 2 hours of meetings a day, and its virtual office plan is $8 a user a month. What a small team pays, what SpatialChat does better, and TinyFloor, an office you keep open all day, at $29 for the whole team."
         },
         "title": "A <em>SpatialChat alternative</em> you can leave open all day.",
-        "subtitle": "SpatialChat is built around events, and its free plan stops after 2 hours a day. TinyFloor is an office, so the room stays open for as long as your team works.",
+        "subtitle": "SpatialChat grew up around events, and its free plan stops after 2 hours of meetings a day. Its virtual office plan is $8 a user a month. TinyFloor is an office, so the room stays open for as long as your team works, for one price per team.",
         "points": [
           {
             "title": "No daily time limit",
@@ -198,15 +198,19 @@
           }
         ],
         "them": {
-          "price": "Day Pass $5 per user per day, Business from $399 per month",
-          "freePlan": "2 hours a day, up to 12 people",
+          "price": "Business $8 per user a month, $76 a year (virtual office plan)",
+          "freePlan": "2 hours of meetings a day, up to 12 people",
           "browser": "Yes",
           "screenShare": "Yes"
         },
         "faq": [
           {
             "q": "Is SpatialChat free?",
-            "a": "SpatialChat has a free plan with up to 2 hours of meetings a day for up to 12 participants. Paid options include a $5 Day Pass per user and Business plans from $399 per month. TinyFloor has no daily limit on any plan, the free one included."
+            "a": "SpatialChat has a free plan with up to 2 hours of meetings a day for up to 12 participants and 4 rooms. For an office, the Business plan is $8 per user a month, or $76 a year; Enterprise is $12 a month or $120 a year. TinyFloor has no daily limit on any plan, the free one included."
+          },
+          {
+            "q": "How much does SpatialChat cost for 10 people?",
+            "a": "On the virtual office Business plan, $80 a month billed monthly, or $760 a year ($63.33 a month). TinyFloor is $29 a month for the same team."
           },
           {
             "q": "Is TinyFloor good for virtual events?",
@@ -214,7 +218,7 @@
           },
           {
             "q": "What does SpatialChat have that TinyFloor does not?",
-            "a": "SpatialChat adds pinned files and large events. TinyFloor focuses on everyday presence, quick conversations and screen sharing in calls and meetings."
+            "a": "SpatialChat adds event spaces for thousands of attendees, pinned files, stored recordings and, on Enterprise, single sign-on. TinyFloor focuses on everyday presence, quick conversations and screen sharing in calls and meetings."
           },
           {
             "q": "Do calls work between browsers?",

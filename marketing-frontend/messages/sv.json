@@ -178,11 +178,11 @@
       "spatialchat": {
         "label": "Alternativ till SpatialChat",
         "meta": {
-          "title": "Alternativ till SpatialChat utan daglig gräns",
-          "description": "SpatialChats gratisplan tillåter 2 timmar om dagen. TinyFloor är ett gratis virtuellt kontor i pixelgrafik med samtal när man står nära, som kan vara öppet hela dagen."
+          "title": "Alternativ till SpatialChat: priser, gratisplanen på 2 timmar och ett kontor för hela dagen",
+          "description": "SpatialChats gratisplan tillåter 2 timmars möten om dagen, och planen för virtuellt kontor kostar 8 $ per användare och månad. Vad ett litet team betalar, vad SpatialChat gör bättre och TinyFloor, ett kontor som är öppet hela dagen, för 29 $ för hela teamet."
         },
         "title": "Ett <em>alternativ till SpatialChat</em> som är öppet hela dagen.",
-        "subtitle": "SpatialChat är byggt för evenemang, och gratisplanen stannar efter 2 timmar om dagen. TinyFloor är ett kontor, så rummet är öppet så länge teamet jobbar.",
+        "subtitle": "SpatialChat växte fram kring evenemang, och gratisplanen tar slut efter 2 timmars möten om dagen. Planen för virtuellt kontor kostar 8 $ per användare och månad. TinyFloor är ett kontor, så rummet är öppet så länge teamet jobbar, för ett pris per team.",
         "points": [
           {
             "title": "Ingen daglig gräns",
@@ -198,27 +198,31 @@
           }
         ],
         "them": {
-          "price": "Day Pass 5 $ per användare per dag, Business från 399 $ i månaden",
-          "freePlan": "2 timmar om dagen, upp till 12 personer",
+          "price": "Business 8 $ per användare och månad, 76 $ per år (plan för virtuellt kontor)",
+          "freePlan": "2 timmars möten om dagen, upp till 12 personer",
           "browser": "Ja",
           "screenShare": "Ja"
         },
         "faq": [
           {
             "q": "Är SpatialChat gratis?",
-            "a": "SpatialChat har en gratisplan med upp till 2 timmars möten om dagen för upp till 12 deltagare. Betalda alternativ är ett Day Pass för 5 $ per användare och Business-planer från 399 $ i månaden. TinyFloor har ingen daglig gräns på någon plan, inte ens den gratis."
+            "a": "SpatialChat har en gratisplan med upp till 2 timmars möten om dagen för upp till 12 deltagare och 4 rum. För ett kontor kostar Business-planen 8 $ per användare och månad, eller 76 $ per år; Enterprise kostar 12 $ per månad eller 120 $ per år. TinyFloor har ingen daglig gräns i någon plan, inte heller gratisplanen."
+          },
+          {
+            "q": "Vad kostar SpatialChat för 10 personer?",
+            "a": "Med Business-planen för virtuellt kontor 80 $ per månad vid månadsbetalning, eller 760 $ per år (63,33 $ per månad). TinyFloor kostar 29 $ per månad för samma team."
           },
           {
             "q": "Passar TinyFloor för virtuella evenemang?",
-            "a": "TinyFloor är gjort för små team som jobbar ihop varje dag, upp till 15 personer per kontor, mer än för stora evenemang."
+            "a": "TinyFloor är gjort för små team som arbetar tillsammans varje dag, upp till 15 personer per kontor, snarare än för stora evenemang."
           },
           {
             "q": "Vad har SpatialChat som TinyFloor inte har?",
-            "a": "SpatialChat lägger till fästa filer och stora evenemang. TinyFloor fokuserar på vardaglig närvaro, snabba samtal och skärmdelning i samtal och möten."
+            "a": "SpatialChat har evenemangsytor för tusentals deltagare, fästa filer, sparade inspelningar och, med Enterprise, enkel inloggning. TinyFloor fokuserar på närvaro i vardagen, snabba samtal och skärmdelning i samtal och möten."
           },
           {
-            "q": "Fungerar samtal mellan webbläsare?",
-            "a": "Ja. Samtal i TinyFloor går över WebRTC i webbläsaren genom Cloudflares relänät, så de ansluter på alla nätverk, på jobbet eller hemma."
+            "q": "Fungerar samtal mellan olika webbläsare?",
+            "a": "Ja. Samtal i TinyFloor går via WebRTC i webbläsaren, genom Cloudflares relänätverk, så de kopplar upp sig på alla kontors- och hemnätverk."
           }
         ]
       },

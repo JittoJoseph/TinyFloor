@@ -1548,5 +1548,180 @@
         "oVices priser, gränser och funktioner kommer från dess prissida och funktionsjämförelse, lästa i oktober 2026, i amerikanska dollar exklusive skatt. Det som inte stod där utelämnade vi i stället för att gissa. Vi gör TinyFloor, så vi säger tydligt vad det inte gör. Priser ändras: kontrollera oVices sida innan du köper."
       ]
     }
+  ],
+  "spatialchat": [
+    {
+      "title": "SpatialChat och TinyFloor i korthet",
+      "body": [
+        "Båda körs i webbläsaren och i båda rör man sig närmare för att prata. SpatialChat säljer rum för evenemang, lektioner och kontor; TinyFloor är bara ett kontor för ett litet team, till ett kontors pris."
+      ],
+      "table": {
+        "head": [
+          "",
+          "SpatialChat",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Ett team på 8, per månad",
+            "50,67 $ årsvis, 64 $ månadsvis (Business)",
+            "29 $ för hela teamet"
+          ],
+          [
+            "Gratisplan",
+            "2 timmars möten om dagen, upp till 12 personer",
+            "Upp till 3 personer, ingen daglig gräns"
+          ],
+          [
+            "Hur det prissätts",
+            "Per användare",
+            "Ett pris för kontoret"
+          ],
+          [
+            "Utrymmet",
+            "Upp till 5 rum med Business",
+            "Skrivbord och ett mötesrum på ett golv"
+          ],
+          [
+            "Inspelning",
+            "Upp till 7 sparade inspelningar med Business",
+            "Nej"
+          ],
+          [
+            "Evenemang",
+            "Separata evenemangsplaner, upp till 10 000 deltagare",
+            "Nej"
+          ],
+          [
+            "Enkel inloggning",
+            "SAML med Enterprise",
+            "Nej"
+          ]
+        ],
+        "note": "Uppgifter om SpatialChat från dess prissida (planer för virtuellt kontor) i oktober 2026, i amerikanska dollar exklusive skatt."
+      }
+    },
+    {
+      "title": "Vad SpatialChat kostar efter teamstorlek",
+      "body": [
+        "Business-planen för virtuellt kontor kostar 8 $ per användare och månad, eller 76 $ per användare och år (cirka 6,33 $ per månad). För ett mycket litet team på årsplan är det mindre än TinyFloor; från 4 eller 5 personer är det mer."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "SpatialChat Business, månadsvis",
+          "SpatialChat Business, årsvis, per månad",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "4 personer",
+            "32 $",
+            "25,33 $",
+            "29 $"
+          ],
+          [
+            "8 personer",
+            "64 $",
+            "50,67 $",
+            "29 $"
+          ],
+          [
+            "10 personer",
+            "80 $",
+            "63,33 $",
+            "29 $"
+          ],
+          [
+            "12 personer",
+            "96 $",
+            "76 $",
+            "29 $"
+          ]
+        ],
+        "note": "SpatialChat Business (virtuellt kontor) för 8 $ per användare månadsvis eller 76 $ per användare och år (SpatialChats prissida, oktober 2026). TinyFloor Pro betalas månadsvis; team på upp till 3 förblir gratis."
+      }
+    },
+    {
+      "title": "Varför små team letar efter ett alternativ till SpatialChat",
+      "items": [
+        {
+          "title": "Gratisplanen tar slut efter 2 timmar om dagen",
+          "body": "Bra för några möten, inte för ett kontor som är öppet medan man jobbar. Åtkomst dygnet runt börjar med Business."
+        },
+        {
+          "title": "Byggt kring evenemang",
+          "body": "SpatialChat kommer från konferenser, lektioner och workshoppar. Ett team som vill ha skrivbord, se vem som är där och växla ett snabbt ord vill kanske ha något som är gjort för det."
+        },
+        {
+          "title": "Rum, inte ett kontor",
+          "body": "SpatialChat ger dig rum att samlas i. TinyFloor ger alla ett skrivbord på samma golv, så att du ser vem som är där och kan gå fram."
+        },
+        {
+          "title": "Priset per användare växer med teamet",
+          "body": "Varje person lägger till 6,33–8 $ per månad; med 12 personer blir det 76–96 $ per månad."
+        }
+      ]
+    },
+    {
+      "title": "Vad SpatialChat gör bättre",
+      "items": [
+        {
+          "title": "Evenemang i stor skala",
+          "body": "Evenemangsplanerna rymmer upp till 10 000 deltagare, med grupprum, lösenord och sessioner endast för inbjudna. TinyFloor är inte byggt för evenemang."
+        },
+        {
+          "title": "Billigare för 4 eller färre på årsplan",
+          "body": "För 76 $ per användare och år betalar fyra personer cirka 25 $ per månad, mindre än TinyFloors 29 $."
+        },
+        {
+          "title": "Filer och inspelningar",
+          "body": "Dela flera skärmar, fäst filer i ett rum och spara inspelningar av möten. TinyFloor spelar inte in."
+        },
+        {
+          "title": "Enkel inloggning",
+          "body": "Enterprise lägger till SAML-inloggning för företag som behöver det."
+        }
+      ]
+    },
+    {
+      "title": "Vilket som passar ditt team",
+      "items": [
+        {
+          "title": "TinyFloor, för ett kontor som är öppet",
+          "body": "För ett team på 4 till 15 som vill se vem som sitter vid sitt skrivbord, prata utan att boka och träffas utan daglig gräns, för ett pris."
+        },
+        {
+          "title": "SpatialChat, för evenemang och lektioner",
+          "body": "Om du anordnar konferenser, workshoppar eller lektioner, behöver inspelningar eller enkel inloggning, eller om ni är 4 eller färre och gärna betalar årsvis."
+        }
+      ]
+    },
+    {
+      "title": "Flytta ett team från SpatialChat",
+      "items": [
+        {
+          "title": "Skapa ett kontor",
+          "detail": "Två minuter",
+          "body": "Döp det efter teamet. Golvet, skrivborden och mötesrummet är klara."
+        },
+        {
+          "title": "Dela en inbjudningslänk",
+          "detail": "I teamchatten",
+          "body": "Kollegorna loggar in med Google eller e-post och går in från webbläsaren, på dator eller mobil."
+        },
+        {
+          "title": "Jobba där en vanlig vecka",
+          "detail": "Standup i mötesrummet",
+          "body": "Låt det vara öppet hela dagen i en vecka och bestäm sedan vilket teamet faktiskt öppnade."
+        }
+      ]
+    },
+    {
+      "title": "Hur vi jämförde",
+      "body": [
+        "SpatialChats priser, gränser och funktioner kommer från dess prissida, fliken Virtual Office, läst i oktober 2026, i amerikanska dollar exklusive skatt. Det som inte stod där utelämnade vi i stället för att gissa. Vi gör TinyFloor, så vi säger tydligt vad det inte gör. Priser ändras: kontrollera SpatialChats sida innan du köper."
+      ]
+    }
   ]
 }

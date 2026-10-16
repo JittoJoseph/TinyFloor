@@ -772,7 +772,7 @@
           },
           {
             "title": "SpatialChat",
-            "detail": "Free 2 hours a day for 12 · $5 a user a day, Business from $399 a month",
+            "detail": "Free 2 hours a day for 12 · Business $8 a user a month",
             "body": "Rooms with spatial audio and video bubbles, used a lot for events, classes and workshops. The free plan suits occasional sessions; a team that's in all day needs a Business plan."
           },
           {
@@ -818,6 +818,12 @@
               "$54"
             ],
             [
+              "SpatialChat Business",
+              "Per user",
+              "2 hours a day, up to 12 people",
+              "$63.33 billed yearly, $80 monthly"
+            ],
+            [
               "oVice Entry-S",
               "Per space, billed yearly",
               "Pre-release version, no support",
@@ -852,12 +858,6 @@
               "Per active member, monthly",
               "None, a 14-day trial",
               "$195"
-            ],
-            [
-              "SpatialChat",
-              "Day passes, or a Business plan",
-              "2 hours a day, up to 12 people",
-              "$50 a day on day passes, Business from $399"
             ]
           ],
           "note": "Prices before tax, from each product's own pricing page in October 2026. A free plan that fits your whole team beats any paid one: WorkAdventure's covers 10 people at once, and SoWork's 10 members with 30-minute meetings."

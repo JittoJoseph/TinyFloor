@@ -178,11 +178,11 @@
       "spatialchat": {
         "label": "Alternativ til SpatialChat",
         "meta": {
-          "title": "Alternativ til SpatialChat uten daglig grense",
-          "description": "SpatialChats gratisplan tillater 2 timer om dagen. TinyFloor er et gratis virtuelt kontor i pikselgrafikk med samtaler når man står nær, som kan være åpent hele dagen."
+          "title": "Alternativ til SpatialChat: priser, gratisplanen på 2 timer og et kontor for hele dagen",
+          "description": "SpatialChats gratisplan gir 2 timer med møter om dagen, og planen for virtuelt kontor koster 8 $ per bruker i måneden. Hva et lite team betaler, hva SpatialChat gjør bedre, og TinyFloor, et kontor som er åpent hele dagen, til 29 $ for hele teamet."
         },
         "title": "Et <em>alternativ til SpatialChat</em> som er åpent hele dagen.",
-        "subtitle": "SpatialChat er laget for arrangementer, og gratisplanen stopper etter 2 timer om dagen. TinyFloor er et kontor, så rommet er åpent så lenge teamet jobber.",
+        "subtitle": "SpatialChat vokste fram rundt arrangementer, og gratisplanen stopper etter 2 timer med møter om dagen. Planen for virtuelt kontor koster 8 $ per bruker i måneden. TinyFloor er et kontor, så rommet er åpent så lenge teamet jobber, for én pris per team.",
         "points": [
           {
             "title": "Ingen daglig grense",
@@ -198,15 +198,19 @@
           }
         ],
         "them": {
-          "price": "Day Pass 5 $ per bruker per dag, Business fra 399 $ i måneden",
-          "freePlan": "2 timer om dagen, opptil 12 personer",
+          "price": "Business 8 $ per bruker i måneden, 76 $ i året (plan for virtuelt kontor)",
+          "freePlan": "2 timer med møter om dagen, opptil 12 personer",
           "browser": "Ja",
           "screenShare": "Ja"
         },
         "faq": [
           {
             "q": "Er SpatialChat gratis?",
-            "a": "SpatialChat har en gratisplan med opptil 2 timer møter om dagen for opptil 12 deltakere. Betalte alternativer er et Day Pass til 5 $ per bruker og Business-planer fra 399 $ i måneden. TinyFloor har ingen daglig grense på noen plan, heller ikke den gratis."
+            "a": "SpatialChat har en gratisplan med opptil 2 timer med møter om dagen for opptil 12 deltakere og 4 rom. For et kontor koster Business-planen 8 $ per bruker i måneden, eller 76 $ i året; Enterprise koster 12 $ i måneden eller 120 $ i året. TinyFloor har ingen daglig grense i noen plan, heller ikke gratisplanen."
+          },
+          {
+            "q": "Hva koster SpatialChat for 10 personer?",
+            "a": "Med Business-planen for virtuelt kontor 80 $ i måneden ved månedlig betaling, eller 760 $ i året (63,33 $ i måneden). TinyFloor koster 29 $ i måneden for det samme teamet."
           },
           {
             "q": "Passer TinyFloor for virtuelle arrangementer?",
@@ -214,11 +218,11 @@
           },
           {
             "q": "Hva har SpatialChat som TinyFloor ikke har?",
-            "a": "SpatialChat legger til festede filer og store arrangementer. TinyFloor fokuserer på daglig tilstedeværelse, raske samtaler og skjermdeling i samtaler og møter."
+            "a": "SpatialChat har arrangementsrom for tusenvis av deltakere, festede filer, lagrede opptak og, med Enterprise, enkel pålogging. TinyFloor konsentrerer seg om tilstedeværelse i hverdagen, raske samtaler og skjermdeling i samtaler og møter."
           },
           {
-            "q": "Fungerer samtaler mellom nettlesere?",
-            "a": "Ja. Samtaler i TinyFloor går over WebRTC i nettleseren gjennom Cloudflares relénettverk, så de kobler til på alle nettverk, på jobb eller hjemme."
+            "q": "Fungerer samtaler på tvers av nettlesere?",
+            "a": "Ja. Samtaler i TinyFloor går over WebRTC i nettleseren, gjennom Cloudflares relénettverk, så de kobler seg til på alle kontor- og hjemmenettverk."
           }
         ]
       },

@@ -178,11 +178,11 @@
       "spatialchat": {
         "label": "SpatialChat-alternatief",
         "meta": {
-          "title": "SpatialChat-alternatief zonder daglimiet",
-          "description": "Het gratis abonnement van SpatialChat staat 2 uur per dag toe. TinyFloor is een gratis virtueel pixel-art kantoor met gesprekken op basis van nabijheid dat de hele dag open kan blijven."
+          "title": "Alternatief voor SpatialChat: prijzen, het gratis abonnement van 2 uur en een kantoor voor de hele dag",
+          "description": "Het gratis abonnement van SpatialChat staat 2 uur vergaderen per dag toe, en het abonnement voor een virtueel kantoor kost $ 8 per gebruiker per maand. Wat een klein team betaalt, wat SpatialChat beter doet en TinyFloor, een kantoor dat de hele dag openblijft, voor $ 29 voor het hele team."
         },
         "title": "Een <em>SpatialChat-alternatief</em> dat de hele dag open blijft.",
-        "subtitle": "SpatialChat is gebouwd rond evenementen, en het gratis abonnement stopt na 2 uur per dag. TinyFloor is een kantoor, dus de ruimte blijft open zolang je team werkt.",
+        "subtitle": "SpatialChat is ontstaan rond evenementen, en het gratis abonnement stopt na 2 uur vergaderen per dag. Het abonnement voor een virtueel kantoor kost $ 8 per gebruiker per maand. TinyFloor is een kantoor, dus de ruimte blijft open zolang je team werkt, voor één prijs per team.",
         "points": [
           {
             "title": "Geen daglimiet",
@@ -198,15 +198,19 @@
           }
         ],
         "them": {
-          "price": "Day Pass $ 5 per gebruiker per dag, Business vanaf $ 399 per maand",
-          "freePlan": "2 uur per dag, tot 12 mensen",
+          "price": "Business $ 8 per gebruiker per maand, $ 76 per jaar (abonnement virtueel kantoor)",
+          "freePlan": "2 uur vergaderen per dag, tot 12 mensen",
           "browser": "Ja",
           "screenShare": "Ja"
         },
         "faq": [
           {
             "q": "Is SpatialChat gratis?",
-            "a": "SpatialChat heeft een gratis abonnement met maximaal 2 uur vergaderen per dag voor maximaal 12 deelnemers. Betaalde opties zijn een Day Pass van $ 5 per gebruiker en Business-abonnementen vanaf $ 399 per maand. TinyFloor heeft op geen enkel abonnement een daglimiet, ook niet op het gratis abonnement."
+            "a": "SpatialChat heeft een gratis abonnement met maximaal 2 uur vergaderen per dag voor maximaal 12 deelnemers en 4 ruimtes. Voor een kantoor kost het Business-abonnement $ 8 per gebruiker per maand, of $ 76 per jaar; Enterprise kost $ 12 per maand of $ 120 per jaar. TinyFloor heeft op geen enkel abonnement een daglimiet, ook niet op het gratis abonnement."
+          },
+          {
+            "q": "Wat kost SpatialChat voor 10 mensen?",
+            "a": "Met het Business-abonnement voor een virtueel kantoor $ 80 per maand bij maandbetaling, of $ 760 per jaar ($ 63,33 per maand). TinyFloor kost $ 29 per maand voor hetzelfde team."
           },
           {
             "q": "Is TinyFloor geschikt voor virtuele evenementen?",
@@ -214,11 +218,11 @@
           },
           {
             "q": "Wat heeft SpatialChat dat TinyFloor niet heeft?",
-            "a": "SpatialChat voegt vastgezette bestanden en grote evenementen toe. TinyFloor richt zich op dagelijkse aanwezigheid, korte gesprekken en scherm delen in gesprekken en vergaderingen."
+            "a": "SpatialChat biedt evenementruimtes voor duizenden deelnemers, vastgezette bestanden, opgeslagen opnames en, met Enterprise, single sign-on. TinyFloor richt zich op aanwezigheid in het dagelijks werk, korte gesprekken en schermdelen in gesprekken en vergaderingen."
           },
           {
-            "q": "Werken gesprekken tussen browsers?",
-            "a": "Ja. Gesprekken in TinyFloor lopen via WebRTC in de browser, over het relaynetwerk van Cloudflare, dus ze verbinden op elk netwerk, op kantoor of thuis."
+            "q": "Werken gesprekken tussen verschillende browsers?",
+            "a": "Ja. Gesprekken in TinyFloor lopen via WebRTC in de browser, over het relaynetwerk van Cloudflare, dus ze verbinden op elk kantoor- of thuisnetwerk."
           }
         ]
       },

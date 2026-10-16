@@ -51,7 +51,7 @@ export const LANDINGS: Landing[] = [
   { slug: "ovice-alternative", key: "ovice", group: "compare", competitor: "oVice", checked: "2026-10" },
   { slug: "roam-alternative", key: "roam", group: "compare", competitor: "Roam", checked: "2026-10" },
   { slug: "teamflow-alternative", key: "teamflow", group: "compare", competitor: "Teamflow", checked: "2026-10" },
-  { slug: "spatialchat-alternative", key: "spatialchat", group: "compare", competitor: "SpatialChat" },
+  { slug: "spatialchat-alternative", key: "spatialchat", group: "compare", competitor: "SpatialChat", checked: "2026-10" },
   { slug: "workadventure-alternative", key: "workadventure", group: "compare", competitor: "WorkAdventure", checked: "2026-10" },
   { slug: "wonder-alternative", key: "wonder", group: "compare", product: "Wonder" },
   { slug: "slack-huddles-alternative", key: "slackHuddles", group: "compare", competitor: "Slack huddles", checked: "2026-10" },

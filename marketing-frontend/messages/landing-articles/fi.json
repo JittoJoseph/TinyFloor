@@ -1548,5 +1548,180 @@
         "oVicen hinnat, rajat ja ominaisuudet ovat sen hintasivulta ja ominaisuusvertailusta, luettu lokakuussa 2026, Yhdysvaltain dollareina ilman veroja. Mitä siellä ei mainittu, jätimme pois arvailun sijaan. Me teemme TinyFlooria, joten kerromme selvästi, mitä se ei tee. Hinnat muuttuvat: tarkista oVicen sivu ennen ostamista."
       ]
     }
+  ],
+  "spatialchat": [
+    {
+      "title": "SpatialChat ja TinyFloor lyhyesti",
+      "body": [
+        "Molemmat toimivat selaimessa, ja molemmissa siirrytään lähemmäs juttelemaan. SpatialChat myy huoneita tapahtumiin, opetukseen ja toimistoille; TinyFloor on pelkkä toimisto pienelle tiimille, toimiston hinnalla."
+      ],
+      "table": {
+        "head": [
+          "",
+          "SpatialChat",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "8 hengen tiimi, kuukaudessa",
+            "50,67 $ vuosittain, 64 $ kuukausittain (Business)",
+            "29 $ koko tiimiltä"
+          ],
+          [
+            "Ilmaisversio",
+            "2 tuntia kokouksia päivässä, enintään 12 henkeä",
+            "Enintään 3 henkeä, ei päivärajaa"
+          ],
+          [
+            "Miten hinnoitellaan",
+            "Käyttäjää kohden",
+            "Yksi hinta toimistolle"
+          ],
+          [
+            "Tila",
+            "Enintään 5 huonetta Businessissa",
+            "Työpöydät ja neuvotteluhuone yhdessä kerroksessa"
+          ],
+          [
+            "Tallennus",
+            "Enintään 7 tallennettua nauhoitetta Businessissa",
+            "Ei"
+          ],
+          [
+            "Tapahtumat",
+            "Erilliset tapahtumatilaukset, enintään 10 000 osallistujaa",
+            "Ei"
+          ],
+          [
+            "Kertakirjautuminen",
+            "SAML Enterprisessa",
+            "Ei"
+          ]
+        ],
+        "note": "SpatialChatin tiedot sen hintasivulta (virtuaalitoimiston tilaukset) lokakuussa 2026, Yhdysvaltain dollareina ilman veroja."
+      }
+    },
+    {
+      "title": "Mitä SpatialChat maksaa tiimin koon mukaan",
+      "body": [
+        "Virtuaalitoimiston Business-tilaus maksaa 8 $ käyttäjältä kuukaudessa tai 76 $ käyttäjältä vuodessa (noin 6,33 $ kuukaudessa). Hyvin pienelle tiimille vuositilauksella se on vähemmän kuin TinyFloor; 4 tai 5 hengestä ylöspäin enemmän."
+      ],
+      "table": {
+        "head": [
+          "Tiimi",
+          "SpatialChat Business, kuukausittain",
+          "SpatialChat Business, vuosittain, kuukaudessa",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "4 henkeä",
+            "32 $",
+            "25,33 $",
+            "29 $"
+          ],
+          [
+            "8 henkeä",
+            "64 $",
+            "50,67 $",
+            "29 $"
+          ],
+          [
+            "10 henkeä",
+            "80 $",
+            "63,33 $",
+            "29 $"
+          ],
+          [
+            "12 henkeä",
+            "96 $",
+            "76 $",
+            "29 $"
+          ]
+        ],
+        "note": "SpatialChat Business (virtuaalitoimisto) 8 $ käyttäjältä kuukausittain tai 76 $ käyttäjältä vuodessa (SpatialChatin hintasivu, lokakuu 2026). TinyFloor Pro on kuukausitilaus; enintään 3 hengen tiimit pysyvät ilmaisina."
+      }
+    },
+    {
+      "title": "Miksi pienet tiimit etsivät vaihtoehtoa SpatialChatille",
+      "items": [
+        {
+          "title": "Ilmaisversio loppuu 2 tuntiin päivässä",
+          "body": "Riittää muutamaan kokoukseen, ei toimistoon, joka on auki työn ajan. Ympärivuorokautinen pääsy alkaa Businessista."
+        },
+        {
+          "title": "Rakennettu tapahtumien ympärille",
+          "body": "SpatialChat on lähtöisin konferensseista, opetuksesta ja työpajoista. Tiimi, joka haluaa työpöydät, nähdä kuka on paikalla ja vaihtaa nopean sanan, haluaa ehkä jotain juuri siihen tehtyä."
+        },
+        {
+          "title": "Huoneita, ei toimistoa",
+          "body": "SpatialChat antaa huoneita kokoontumiseen. TinyFloor antaa jokaiselle työpöydän samassa kerroksessa, jotta näet, kuka on lähellä, ja voit kävellä luo."
+        },
+        {
+          "title": "Käyttäjähinta kasvaa tiimin mukana",
+          "body": "Jokainen henkilö lisää 6,33–8 $ kuukaudessa; 12 hengellä se on 76–96 $ kuukaudessa."
+        }
+      ]
+    },
+    {
+      "title": "Missä SpatialChat on parempi",
+      "items": [
+        {
+          "title": "Suuret tapahtumat",
+          "body": "Tapahtumatilauksiin mahtuu enintään 10 000 osallistujaa, sivuhuoneineen, salasanoineen ja vain kutsutuille tarkoitettuine sessioineen. TinyFloor ei ole tehty tapahtumiin."
+        },
+        {
+          "title": "Halvempi enintään 4 hengelle vuositilauksella",
+          "body": "Hintaan 76 $ käyttäjältä vuodessa neljä henkeä maksaa noin 25 $ kuukaudessa, vähemmän kuin TinyFloorin 29 $."
+        },
+        {
+          "title": "Tiedostot ja nauhoitteet",
+          "body": "Jaa useita näyttöjä, kiinnitä tiedostoja huoneeseen ja säilytä kokousten nauhoitteet. TinyFloor ei tallenna."
+        },
+        {
+          "title": "Kertakirjautuminen",
+          "body": "Enterprise lisää SAML-kirjautumisen yrityksille, jotka sitä tarvitsevat."
+        }
+      ]
+    },
+    {
+      "title": "Kumpi sopii tiimillesi",
+      "items": [
+        {
+          "title": "TinyFloor, auki pysyväksi toimistoksi",
+          "body": "4–15 hengen tiimille, joka haluaa nähdä, kuka istuu pöytänsä ääressä, jutella sopimatta aikaa ja kokoontua ilman päivärajaa, yhdellä hinnalla."
+        },
+        {
+          "title": "SpatialChat, tapahtumiin ja opetukseen",
+          "body": "Jos järjestät konferensseja, työpajoja tai oppitunteja, tarvitset tallenteita tai kertakirjautumista, tai teitä on enintään 4 ja maksatte mielellänne vuosittain."
+        }
+      ]
+    },
+    {
+      "title": "Tiimin siirtäminen SpatialChatista",
+      "items": [
+        {
+          "title": "Luo toimisto",
+          "detail": "Kaksi minuuttia",
+          "body": "Nimeä se tiimin mukaan. Kerros, työpöydät ja neuvotteluhuone ovat valmiina."
+        },
+        {
+          "title": "Jaa yksi kutsulinkki",
+          "detail": "Tiimin chatissa",
+          "body": "Kollegat kirjautuvat Googlella tai sähköpostilla ja tulevat sisään selaimesta, tietokoneella tai puhelimella."
+        },
+        {
+          "title": "Tehkää siellä tavallinen viikko",
+          "detail": "Standup neuvotteluhuoneessa",
+          "body": "Pitäkää se auki koko päivän viikon ajan ja päättäkää sitten, kumpaa tiimi oikeasti avasi."
+        }
+      ]
+    },
+    {
+      "title": "Miten vertailimme",
+      "body": [
+        "SpatialChatin hinnat, rajat ja ominaisuudet ovat sen hintasivun Virtual Office -välilehdeltä, luettu lokakuussa 2026, Yhdysvaltain dollareina ilman veroja. Mitä siellä ei mainittu, jätimme pois arvailun sijaan. Me teemme TinyFlooria, joten kerromme selvästi, mitä se ei tee. Hinnat muuttuvat: tarkista SpatialChatin sivu ennen ostamista."
+      ]
+    }
   ]
 }

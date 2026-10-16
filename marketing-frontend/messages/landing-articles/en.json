@@ -2196,5 +2196,138 @@
         "There's no standup bot that asks the questions for you, no reminder, no timer and no recording. It doesn't connect to Jira, Linear or GitHub, so the board goes on screen as a shared window. If you need written standups collected automatically, a bot in your chat tool does that better; TinyFloor is where the team meets."
       ]
     }
+  ],
+  "pairProgramming": [
+    {
+      "title": "How a pairing session starts",
+      "body": [
+        "In an office, pairing often starts with \"got a minute?\" at someone's desk. Remote, it usually needs a calendar invite, so it happens less. On TinyFloor it starts the way it did in the office."
+      ],
+      "items": [
+        {
+          "title": "See who's free",
+          "detail": "1",
+          "body": "Desks and statuses show who's heads down, who's away and who's already in a call. Busy means wait; available means walk over."
+        },
+        {
+          "title": "Walk over and talk",
+          "detail": "2",
+          "body": "Stand next to them and tap to call. It starts with voice; turn a camera on if you want one."
+        },
+        {
+          "title": "Share and work",
+          "detail": "3",
+          "body": "Share a window, a tab or your whole screen: the editor, the terminal, the failing test."
+        },
+        {
+          "title": "Walk back",
+          "detail": "4",
+          "body": "Hang up and you're back at your own work. The call stays connected while you move, so nothing drops if you wander."
+        }
+      ]
+    },
+    {
+      "title": "Pairing styles that work remotely",
+      "body": [
+        "Every style below works with one person sharing and both talking. To swap who drives, push a work-in-progress branch and the other person shares their screen instead."
+      ],
+      "table": {
+        "head": [
+          "Style",
+          "How it goes",
+          "Good for"
+        ],
+        "rows": [
+          [
+            "Driver and navigator",
+            "One types, the other thinks ahead, reads and catches mistakes. Swap every 20 to 30 minutes.",
+            "Most pairing, and bringing someone into unfamiliar code."
+          ],
+          [
+            "Ping-pong",
+            "One writes a failing test, the other makes it pass and writes the next test.",
+            "Test-driven work, and keeping both people equally involved."
+          ],
+          [
+            "Strong-style",
+            "Ideas go into the code only through the other person's hands: the navigator says what, the driver types it.",
+            "Teaching and onboarding, so the newer person isn't just watching."
+          ],
+          [
+            "Unblocking",
+            "Ten minutes on someone else's problem, then walk back.",
+            "The quick question that would otherwise wait for tomorrow."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Making shared code easy to read",
+      "items": [
+        {
+          "title": "Share one window",
+          "body": "A shared screen is tuned for sharp text rather than smooth motion. A single editor window reads better than a whole wide monitor scaled down."
+        },
+        {
+          "title": "Turn the font up",
+          "body": "Go up two or three sizes in the editor and terminal while you pair. What's comfortable on your screen is small on theirs."
+        },
+        {
+          "title": "Keep it in one place",
+          "body": "Split the editor and terminal in the same window, so the share doesn't need switching every time a test runs."
+        },
+        {
+          "title": "Say where you're looking",
+          "body": "Point by file and line number: \"line 84 in the handler\" beats \"up a bit, no, there\"."
+        }
+      ]
+    },
+    {
+      "title": "When two becomes three",
+      "body": [
+        "Walk up to a third teammate during a call and TinyFloor offers to make it a meeting for the three of you. For a planned mob or ensemble session, use the meeting room: whoever is talking takes the big card, and the shared screen sits beside the people."
+      ]
+    },
+    {
+      "title": "What to use alongside it",
+      "body": [
+        "TinyFloor is where you find each other and talk. It doesn't do everything a pairing session can need:"
+      ],
+      "items": [
+        {
+          "title": "No remote control",
+          "body": "The other person can see your screen but can't type into it. For both people editing the same code, use your editor's own tool, such as VS Code Live Share or JetBrains Code With Me, and keep TinyFloor for the voice."
+        },
+        {
+          "title": "No sound from the shared screen",
+          "body": "Screen sharing carries the picture only, which is what code needs."
+        },
+        {
+          "title": "No recording",
+          "body": "Sessions aren't recorded. Write down what you decided in the pull request or the team chat."
+        },
+        {
+          "title": "No GitHub or Jira connection",
+          "body": "Share the pull request or the ticket on screen to look at it together."
+        }
+      ]
+    },
+    {
+      "title": "Habits that keep pairing welcome",
+      "items": [
+        {
+          "title": "Respect busy",
+          "body": "A busy status is the closed door. Send a message in the chat instead, and let them come to you."
+        },
+        {
+          "title": "Keep sessions short",
+          "body": "An hour or two at most, with breaks. Pairing all day is tiring, even when it's going well."
+        },
+        {
+          "title": "Make asking normal",
+          "body": "A team where people walk over with questions unblocks in minutes, not tomorrow. Seniors walking over to juniors helps as much as the other way round."
+        }
+      ]
+    }
   ]
 }

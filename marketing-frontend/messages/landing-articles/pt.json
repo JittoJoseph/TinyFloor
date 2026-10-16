@@ -2196,5 +2196,138 @@
         "Não há bot de daily que faça as perguntas por você, nem lembrete, nem cronômetro, nem gravação. Ele não se conecta ao Jira, ao Linear nem ao GitHub, então o quadro vai para a tela como janela compartilhada. Se você quer dailies escritas coletadas automaticamente, um bot na sua ferramenta de chat faz isso melhor; o TinyFloor é onde a equipe se encontra."
       ]
     }
+  ],
+  "pairProgramming": [
+    {
+      "title": "Como uma sessão de pair programming começa",
+      "body": [
+        "No escritório, programar em par costuma começar com um \"tem um minuto?\" na mesa de alguém. Remoto, normalmente precisa de um convite na agenda, então acontece menos. No TinyFloor começa do jeito que era no escritório."
+      ],
+      "items": [
+        {
+          "title": "Ver quem está livre",
+          "detail": "1",
+          "body": "Mesas e status mostram quem está concentrado, quem está ausente e quem já está numa chamada. Ocupado quer dizer esperar; disponível quer dizer ir até lá."
+        },
+        {
+          "title": "Ir até a pessoa e falar",
+          "detail": "2",
+          "body": "Pare do lado dela e toque para ligar. Começa com voz; ligue a câmera se quiser."
+        },
+        {
+          "title": "Compartilhar e trabalhar",
+          "detail": "3",
+          "body": "Compartilhe uma janela, uma aba ou a tela inteira: o editor, o terminal, o teste que está falhando."
+        },
+        {
+          "title": "Voltar",
+          "detail": "4",
+          "body": "Desligue e você está de volta ao seu trabalho. A chamada continua conectada enquanto você anda, então nada cai se você se mexer."
+        }
+      ]
+    },
+    {
+      "title": "Jeitos de programar em par que funcionam remoto",
+      "body": [
+        "Todos funcionam com uma pessoa compartilhando e as duas falando. Para trocar quem dirige, suba uma branch de trabalho em andamento e a outra pessoa compartilha a tela dela."
+      ],
+      "table": {
+        "head": [
+          "Jeito",
+          "Como funciona",
+          "Bom para"
+        ],
+        "rows": [
+          [
+            "Piloto e navegador",
+            "Um digita, o outro pensa à frente, lê e pega erros. Troquem a cada 20 a 30 minutos.",
+            "A maior parte das sessões, e trazer alguém para um código que não conhece."
+          ],
+          [
+            "Pingue-pongue",
+            "Um escreve um teste que falha, o outro faz passar e escreve o próximo.",
+            "Trabalho guiado por testes, e manter os dois igualmente envolvidos."
+          ],
+          [
+            "Strong-style",
+            "Ideias só entram no código pelas mãos do outro: o navegador diz o quê, o piloto digita.",
+            "Ensinar e integrar pessoas, para quem é novo não ficar só olhando."
+          ],
+          [
+            "Destravar",
+            "Dez minutos no problema de outra pessoa, e de volta.",
+            "A pergunta rápida que, de outro jeito, ficaria para amanhã."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Deixando o código compartilhado fácil de ler",
+      "items": [
+        {
+          "title": "Compartilhe uma janela",
+          "body": "Uma tela compartilhada prioriza texto nítido em vez de movimento suave. Uma janela só do editor fica mais legível que um monitor largo inteiro reduzido."
+        },
+        {
+          "title": "Aumente a fonte",
+          "body": "Suba dois ou três tamanhos no editor e no terminal durante a sessão. O que é confortável na sua tela fica pequeno na da outra pessoa."
+        },
+        {
+          "title": "Tudo num lugar",
+          "body": "Divida editor e terminal na mesma janela, para não trocar o compartilhamento toda vez que um teste roda."
+        },
+        {
+          "title": "Diga para onde está olhando",
+          "body": "Aponte por arquivo e número de linha: \"linha 84 no handler\" é melhor que \"um pouco mais pra cima, não, aí\"."
+        }
+      ]
+    },
+    {
+      "title": "Quando dois viram três",
+      "body": [
+        "Vá até uma terceira pessoa durante uma chamada e o TinyFloor oferece transformar tudo numa reunião para os três. Para uma sessão de mob programming planejada, use a sala de reunião: quem está falando fica no card grande, e a tela compartilhada fica ao lado das pessoas."
+      ]
+    },
+    {
+      "title": "O que usar junto",
+      "body": [
+        "O TinyFloor é onde vocês se encontram e conversam. Ele não faz tudo o que uma sessão pode precisar:"
+      ],
+      "items": [
+        {
+          "title": "Sem controle remoto",
+          "body": "A outra pessoa vê sua tela, mas não consegue digitar nela. Para os dois editarem o mesmo código, use a ferramenta do seu editor, como VS Code Live Share ou JetBrains Code With Me, e deixe o TinyFloor para a voz."
+        },
+        {
+          "title": "Sem som da tela compartilhada",
+          "body": "O compartilhamento de tela leva só a imagem, que é o que o código precisa."
+        },
+        {
+          "title": "Sem gravação",
+          "body": "As sessões não são gravadas. Anotem o que decidiram no pull request ou no chat da equipe."
+        },
+        {
+          "title": "Sem conexão com GitHub ou Jira",
+          "body": "Compartilhe o pull request ou o ticket na tela para olhar junto."
+        }
+      ]
+    },
+    {
+      "title": "Hábitos que mantêm o pair programming bem-vindo",
+      "items": [
+        {
+          "title": "Respeite o ocupado",
+          "body": "Status ocupado é a porta fechada. Mande uma mensagem no chat e deixe a pessoa vir até você."
+        },
+        {
+          "title": "Sessões curtas",
+          "body": "Uma ou duas horas no máximo, com pausas. Programar em par o dia todo cansa, mesmo quando está indo bem."
+        },
+        {
+          "title": "Torne normal perguntar",
+          "body": "Uma equipe em que as pessoas vão até as outras com dúvidas destrava em minutos, não amanhã. Os mais experientes irem até os mais novos ajuda tanto quanto o contrário."
+        }
+      ]
+    }
   ]
 }

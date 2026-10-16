@@ -2196,5 +2196,138 @@
         "Il n'y a pas de bot qui pose les questions du point quotidien à votre place, pas de rappel, pas de minuteur et pas d'enregistrement. Il n'est pas relié à Jira, Linear ou GitHub : le tableau passe donc à l'écran en fenêtre partagée. Si vous voulez que les points écrits soient collectés automatiquement, un bot dans votre outil de chat le fait mieux ; TinyFloor est l'endroit où l'équipe se retrouve."
       ]
     }
+  ],
+  "pairProgramming": [
+    {
+      "title": "Comment démarre une session de pair programming",
+      "body": [
+        "Au bureau, le pair programming commence souvent par « tu as une minute ? » au poste de quelqu'un. À distance, il faut en général une invitation dans l'agenda, donc on le fait moins. Sur TinyFloor, il démarre comme au bureau."
+      ],
+      "items": [
+        {
+          "title": "Voir qui est libre",
+          "detail": "1",
+          "body": "Les postes et les statuts montrent qui est concentré, qui est absent et qui est déjà en appel. Occupé veut dire attendre ; disponible veut dire y aller."
+        },
+        {
+          "title": "Aller le voir et parler",
+          "detail": "2",
+          "body": "Placez-vous à côté et touchez pour appeler. L'appel démarre en audio ; allumez une caméra si vous voulez."
+        },
+        {
+          "title": "Partager et travailler",
+          "detail": "3",
+          "body": "Partagez une fenêtre, un onglet ou tout l'écran : l'éditeur, le terminal, le test qui échoue."
+        },
+        {
+          "title": "Revenir",
+          "detail": "4",
+          "body": "Raccrochez et vous voilà de retour à votre travail. L'appel reste connecté pendant que vous bougez, rien ne coupe si vous vous déplacez."
+        }
+      ]
+    },
+    {
+      "title": "Les façons de pairer qui marchent à distance",
+      "body": [
+        "Chacune fonctionne avec une personne qui partage et deux qui parlent. Pour changer de pilote, poussez une branche de travail en cours et l'autre personne partage son écran à la place."
+      ],
+      "table": {
+        "head": [
+          "Façon",
+          "Déroulé",
+          "Idéal pour"
+        ],
+        "rows": [
+          [
+            "Pilote et copilote",
+            "L'un tape, l'autre anticipe, relit et repère les erreurs. On échange toutes les 20 à 30 minutes.",
+            "La plupart des sessions, et faire entrer quelqu'un dans un code qu'il ne connaît pas."
+          ],
+          [
+            "Ping-pong",
+            "L'un écrit un test qui échoue, l'autre le fait passer et écrit le test suivant.",
+            "Le développement piloté par les tests, et garder les deux également impliqués."
+          ],
+          [
+            "Strong-style",
+            "Les idées n'entrent dans le code que par les mains de l'autre : le copilote dit quoi, le pilote tape.",
+            "La transmission et l'intégration, pour que le nouveau ne fasse pas que regarder."
+          ],
+          [
+            "Débloquer",
+            "Dix minutes sur le problème de quelqu'un d'autre, puis on repart.",
+            "La petite question qui sinon attendrait demain."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Rendre le code partagé facile à lire",
+      "items": [
+        {
+          "title": "Partager une seule fenêtre",
+          "body": "Un écran partagé privilégie la netteté du texte plutôt que la fluidité. Une seule fenêtre d'éditeur se lit mieux qu'un grand écran entier réduit."
+        },
+        {
+          "title": "Agrandir la police",
+          "body": "Montez de deux ou trois tailles dans l'éditeur et le terminal pendant la session. Ce qui est confortable chez vous est petit chez l'autre."
+        },
+        {
+          "title": "Tout au même endroit",
+          "body": "Divisez l'éditeur et le terminal dans la même fenêtre, pour ne pas changer de partage à chaque lancement de test."
+        },
+        {
+          "title": "Dire où vous regardez",
+          "body": "Désignez par fichier et numéro de ligne : « ligne 84 dans le handler » vaut mieux que « un peu plus haut, non, là »."
+        }
+      ]
+    },
+    {
+      "title": "Quand on passe de deux à trois",
+      "body": [
+        "Allez voir un troisième collègue pendant un appel et TinyFloor propose d'en faire une réunion à trois. Pour une session de mob programming prévue, utilisez la salle de réunion : la personne qui parle prend la grande carte, et l'écran partagé se place à côté des participants."
+      ]
+    },
+    {
+      "title": "Ce qu'il faut utiliser à côté",
+      "body": [
+        "TinyFloor est l'endroit où vous vous retrouvez et parlez. Il ne fait pas tout ce dont une session peut avoir besoin :"
+      ],
+      "items": [
+        {
+          "title": "Pas de contrôle à distance",
+          "body": "L'autre voit votre écran mais ne peut pas y taper. Pour éditer le même code à deux, utilisez l'outil de votre éditeur, comme VS Code Live Share ou JetBrains Code With Me, et gardez TinyFloor pour la voix."
+        },
+        {
+          "title": "Pas de son depuis l'écran partagé",
+          "body": "Le partage d'écran transmet l'image seulement, ce dont le code a besoin."
+        },
+        {
+          "title": "Pas d'enregistrement",
+          "body": "Les sessions ne sont pas enregistrées. Notez ce que vous avez décidé dans la pull request ou le chat de l'équipe."
+        },
+        {
+          "title": "Pas de lien avec GitHub ou Jira",
+          "body": "Partagez la pull request ou le ticket à l'écran pour le regarder ensemble."
+        }
+      ]
+    },
+    {
+      "title": "Des habitudes qui gardent le pairing bienvenu",
+      "items": [
+        {
+          "title": "Respecter l'état occupé",
+          "body": "Un statut occupé, c'est la porte fermée. Envoyez plutôt un message dans le chat et laissez la personne venir à vous."
+        },
+        {
+          "title": "Des sessions courtes",
+          "body": "Une heure ou deux au plus, avec des pauses. Pairer toute la journée fatigue, même quand ça se passe bien."
+        },
+        {
+          "title": "Rendre normal le fait de demander",
+          "body": "Une équipe où l'on va voir les autres avec ses questions se débloque en quelques minutes, pas le lendemain. Que les plus expérimentés aillent voir les plus récents aide autant que l'inverse."
+        }
+      ]
+    }
   ]
 }

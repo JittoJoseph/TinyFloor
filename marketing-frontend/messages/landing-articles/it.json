@@ -2196,5 +2196,138 @@
         "Non c'è un bot che fa le domande al posto tuo, né promemoria, né timer, né registrazione. Non si collega a Jira, Linear o GitHub, quindi la board va sullo schermo come finestra condivisa. Se vuoi raccogliere gli standup scritti in automatico, un bot nel tuo strumento di chat lo fa meglio; TinyFloor è il posto dove il team si incontra."
       ]
     }
+  ],
+  "pairProgramming": [
+    {
+      "title": "Come inizia una sessione di pair programming",
+      "body": [
+        "In ufficio, il pair programming spesso inizia con un \"hai un minuto?\" alla scrivania di qualcuno. Da remoto di solito serve un invito in calendario, quindi succede meno. Su TinyFloor inizia come in ufficio."
+      ],
+      "items": [
+        {
+          "title": "Vedere chi è libero",
+          "detail": "1",
+          "body": "Scrivanie e stati mostrano chi è concentrato, chi è assente e chi è già in chiamata. Occupato vuol dire aspettare; disponibile vuol dire andare."
+        },
+        {
+          "title": "Avvicinarsi e parlare",
+          "detail": "2",
+          "body": "Mettiti accanto e tocca per chiamare. Si parte con la voce; accendi una videocamera se vuoi."
+        },
+        {
+          "title": "Condividere e lavorare",
+          "detail": "3",
+          "body": "Condividi una finestra, una scheda o l'intero schermo: l'editor, il terminale, il test che fallisce."
+        },
+        {
+          "title": "Tornare",
+          "detail": "4",
+          "body": "Riattacca e sei di nuovo al tuo lavoro. La chiamata resta connessa mentre ti muovi, quindi non cade niente se ti sposti."
+        }
+      ]
+    },
+    {
+      "title": "Modi di lavorare in coppia che funzionano da remoto",
+      "body": [
+        "Ognuno funziona con una persona che condivide e due che parlano. Per cambiare chi guida, fate push di un branch con il lavoro in corso e l'altra persona condivide il suo schermo."
+      ],
+      "table": {
+        "head": [
+          "Modo",
+          "Come si svolge",
+          "Adatto a"
+        ],
+        "rows": [
+          [
+            "Driver e navigator",
+            "Uno scrive, l'altro pensa avanti, legge e trova gli errori. Ci si scambia ogni 20-30 minuti.",
+            "La maggior parte delle sessioni, e portare qualcuno in un codice che non conosce."
+          ],
+          [
+            "Ping-pong",
+            "Uno scrive un test che fallisce, l'altro lo fa passare e scrive il test successivo.",
+            "Lavoro guidato dai test, e tenere entrambi ugualmente coinvolti."
+          ],
+          [
+            "Strong-style",
+            "Le idee entrano nel codice solo attraverso le mani dell'altro: il navigator dice cosa, il driver scrive.",
+            "Insegnare e inserire nuove persone, così chi è nuovo non si limita a guardare."
+          ],
+          [
+            "Sbloccare",
+            "Dieci minuti sul problema di qualcun altro, poi si torna.",
+            "La domanda veloce che altrimenti aspetterebbe domani."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Rendere il codice condiviso facile da leggere",
+      "items": [
+        {
+          "title": "Condividi una finestra",
+          "body": "Uno schermo condiviso privilegia il testo nitido rispetto al movimento fluido. Una sola finestra dell'editor si legge meglio di un intero monitor largo rimpicciolito."
+        },
+        {
+          "title": "Ingrandisci il carattere",
+          "body": "Sali di due o tre dimensioni nell'editor e nel terminale mentre lavorate in coppia. Ciò che è comodo sul tuo schermo è piccolo sul loro."
+        },
+        {
+          "title": "Tutto in un posto",
+          "body": "Dividi editor e terminale nella stessa finestra, così non serve cambiare condivisione a ogni test."
+        },
+        {
+          "title": "Di' dove stai guardando",
+          "body": "Indica file e numero di riga: \"riga 84 nell'handler\" è meglio di \"un po' più su, no, lì\"."
+        }
+      ]
+    },
+    {
+      "title": "Quando da due si passa a tre",
+      "body": [
+        "Avvicinati a una terza persona durante una chiamata e TinyFloor propone di trasformarla in una riunione per voi tre. Per una sessione di mob programming programmata, usate la sala riunioni: chi parla prende la scheda grande, e lo schermo condiviso sta accanto alle persone."
+      ]
+    },
+    {
+      "title": "Cosa usare insieme",
+      "body": [
+        "TinyFloor è il posto dove vi trovate e parlate. Non fa tutto quello che una sessione può richiedere:"
+      ],
+      "items": [
+        {
+          "title": "Nessun controllo remoto",
+          "body": "L'altra persona vede il tuo schermo ma non può scriverci. Per modificare insieme lo stesso codice, usate lo strumento del vostro editor, come VS Code Live Share o JetBrains Code With Me, e tenete TinyFloor per la voce."
+        },
+        {
+          "title": "Nessun audio dallo schermo condiviso",
+          "body": "La condivisione dello schermo trasmette solo l'immagine, ed è ciò che serve al codice."
+        },
+        {
+          "title": "Nessuna registrazione",
+          "body": "Le sessioni non vengono registrate. Annotate cosa avete deciso nella pull request o nella chat del team."
+        },
+        {
+          "title": "Nessun collegamento con GitHub o Jira",
+          "body": "Condividete la pull request o il ticket sullo schermo per guardarlo insieme."
+        }
+      ]
+    },
+    {
+      "title": "Abitudini che rendono il pairing benvenuto",
+      "items": [
+        {
+          "title": "Rispetta l'occupato",
+          "body": "Uno stato occupato è la porta chiusa. Scrivi invece un messaggio in chat e lascia che sia l'altra persona a venire da te."
+        },
+        {
+          "title": "Sessioni brevi",
+          "body": "Un'ora o due al massimo, con pause. Lavorare in coppia tutto il giorno stanca, anche quando va bene."
+        },
+        {
+          "title": "Rendere normale chiedere",
+          "body": "Un team in cui ci si avvicina con le domande si sblocca in minuti, non domani. Che i più esperti vadano dai più nuovi aiuta quanto il contrario."
+        }
+      ]
+    }
   ]
 }

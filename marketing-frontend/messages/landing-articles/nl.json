@@ -2196,5 +2196,138 @@
         "Er is geen standup-bot die de vragen voor je stelt, geen herinnering, geen timer en geen opname. Het is niet gekoppeld aan Jira, Linear of GitHub, dus het bord gaat als gedeeld venster op het scherm. Wil je geschreven standups automatisch verzamelen, dan doet een bot in je chattool dat beter; TinyFloor is waar het team samenkomt."
       ]
     }
+  ],
+  "pairProgramming": [
+    {
+      "title": "Zo begint een pairing-sessie",
+      "body": [
+        "Op kantoor begint pair programming vaak met \"heb je even?\" bij iemands bureau. Remote is er meestal een agenda-uitnodiging voor nodig, dus gebeurt het minder. In TinyFloor begint het zoals op kantoor."
+      ],
+      "items": [
+        {
+          "title": "Zien wie vrij is",
+          "detail": "1",
+          "body": "Bureaus en statussen laten zien wie geconcentreerd werkt, wie afwezig is en wie al in een gesprek zit. Bezet betekent wachten; beschikbaar betekent erheen lopen."
+        },
+        {
+          "title": "Erheen lopen en praten",
+          "detail": "2",
+          "body": "Ga ernaast staan en tik om te bellen. Het begint met stem; zet een camera aan als je wilt."
+        },
+        {
+          "title": "Delen en werken",
+          "detail": "3",
+          "body": "Deel een venster, een tabblad of je hele scherm: de editor, de terminal, de falende test."
+        },
+        {
+          "title": "Teruglopen",
+          "detail": "4",
+          "body": "Hang op en je bent terug bij je eigen werk. Het gesprek blijft verbonden terwijl je beweegt, dus er valt niets weg als je rondloopt."
+        }
+      ]
+    },
+    {
+      "title": "Manieren van pairen die remote werken",
+      "body": [
+        "Elke manier werkt met één persoon die deelt en twee die praten. Om te wisselen wie stuurt, push je een work-in-progress-branch en deelt de ander zijn of haar scherm."
+      ],
+      "table": {
+        "head": [
+          "Manier",
+          "Hoe het gaat",
+          "Goed voor"
+        ],
+        "rows": [
+          [
+            "Driver en navigator",
+            "De een typt, de ander denkt vooruit, leest mee en vangt fouten. Wissel elke 20 tot 30 minuten.",
+            "Het meeste pairen, en iemand meenemen in onbekende code."
+          ],
+          [
+            "Pingpong",
+            "De een schrijft een falende test, de ander laat hem slagen en schrijft de volgende.",
+            "Testgedreven werk, en beiden even betrokken houden."
+          ],
+          [
+            "Strong-style",
+            "Ideeën komen alleen via de handen van de ander in de code: de navigator zegt wat, de driver typt.",
+            "Leren en inwerken, zodat de nieuwere persoon niet alleen toekijkt."
+          ],
+          [
+            "Losmaken",
+            "Tien minuten aan het probleem van een ander, dan teruglopen.",
+            "De snelle vraag die anders tot morgen zou wachten."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Gedeelde code goed leesbaar maken",
+      "items": [
+        {
+          "title": "Deel één venster",
+          "body": "Een gedeeld scherm is afgestemd op scherpe tekst, niet op vloeiende beweging. Eén editorvenster leest beter dan een hele brede monitor verkleind."
+        },
+        {
+          "title": "Zet het lettertype groter",
+          "body": "Ga tijdens het pairen twee of drie maten omhoog in de editor en terminal. Wat op jouw scherm prettig is, is op dat van de ander klein."
+        },
+        {
+          "title": "Alles op één plek",
+          "body": "Splits editor en terminal in hetzelfde venster, zodat je niet bij elke testrun van deelscherm hoeft te wisselen."
+        },
+        {
+          "title": "Zeg waar je kijkt",
+          "body": "Wijs aan met bestand en regelnummer: \"regel 84 in de handler\" is beter dan \"iets hoger, nee, daar\"."
+        }
+      ]
+    },
+    {
+      "title": "Als twee er drie worden",
+      "body": [
+        "Loop tijdens een gesprek naar een derde collega en TinyFloor biedt aan er een meeting voor jullie drieën van te maken. Voor een geplande mob- of ensemble-sessie gebruik je de vergaderruimte: wie praat krijgt de grote kaart, en het gedeelde scherm staat naast de mensen."
+      ]
+    },
+    {
+      "title": "Wat je ernaast gebruikt",
+      "body": [
+        "TinyFloor is waar je elkaar vindt en praat. Het doet niet alles wat een pairing-sessie nodig kan hebben:"
+      ],
+      "items": [
+        {
+          "title": "Geen besturing op afstand",
+          "body": "De ander ziet je scherm maar kan er niet in typen. Wil je allebei dezelfde code bewerken, gebruik dan de tool van je editor, zoals VS Code Live Share of JetBrains Code With Me, en houd TinyFloor voor de stem."
+        },
+        {
+          "title": "Geen geluid van het gedeelde scherm",
+          "body": "Scherm delen stuurt alleen het beeld, en dat is wat code nodig heeft."
+        },
+        {
+          "title": "Geen opname",
+          "body": "Sessies worden niet opgenomen. Schrijf op wat jullie besloten in de pull request of de teamchat."
+        },
+        {
+          "title": "Geen koppeling met GitHub of Jira",
+          "body": "Deel de pull request of het ticket op je scherm om het samen te bekijken."
+        }
+      ]
+    },
+    {
+      "title": "Gewoontes die pairen welkom houden",
+      "items": [
+        {
+          "title": "Respecteer bezet",
+          "body": "Een bezet-status is de dichte deur. Stuur in plaats daarvan een bericht in de chat en laat de ander naar jou toe komen."
+        },
+        {
+          "title": "Houd sessies kort",
+          "body": "Hooguit een of twee uur, met pauzes. De hele dag pairen is vermoeiend, ook als het goed gaat."
+        },
+        {
+          "title": "Maak vragen normaal",
+          "body": "Een team waarin mensen met vragen naar elkaar toe lopen, lost knelpunten op in minuten, niet morgen. Ervaren mensen die naar nieuwere lopen helpen evenveel als andersom."
+        }
+      ]
+    }
   ]
 }

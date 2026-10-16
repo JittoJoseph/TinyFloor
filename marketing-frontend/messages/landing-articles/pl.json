@@ -2196,5 +2196,138 @@
         "Nie ma bota, który zada pytania za ciebie, nie ma przypomnień, minutnika ani nagrywania. Nie łączy się z Jirą, Linearem ani GitHubem, więc tablica trafia na ekran jako udostępnione okno. Jeśli chcesz automatycznie zbierać pisemne stand-upy, lepiej zrobi to bot w waszym narzędziu do czatu; TinyFloor to miejsce, gdzie zespół się spotyka."
       ]
     }
+  ],
+  "pairProgramming": [
+    {
+      "title": "Jak zaczyna się sesja programowania w parze",
+      "body": [
+        "W biurze programowanie w parze często zaczyna się od „masz chwilę?” przy czyimś biurku. Zdalnie zwykle potrzebne jest zaproszenie w kalendarzu, więc zdarza się rzadziej. W TinyFloor zaczyna się tak jak w biurze."
+      ],
+      "items": [
+        {
+          "title": "Zobacz, kto jest wolny",
+          "detail": "1",
+          "body": "Biurka i statusy pokazują, kto pracuje w skupieniu, kto jest nieobecny, a kto już rozmawia. Zajęty znaczy czekaj; dostępny znaczy podejdź."
+        },
+        {
+          "title": "Podejdź i porozmawiaj",
+          "detail": "2",
+          "body": "Stań obok i dotknij, żeby zadzwonić. Zaczyna się od głosu; włącz kamerę, jeśli chcesz."
+        },
+        {
+          "title": "Udostępnij i pracuj",
+          "detail": "3",
+          "body": "Udostępnij okno, kartę albo cały ekran: edytor, terminal, test, który nie przechodzi."
+        },
+        {
+          "title": "Wróć",
+          "detail": "4",
+          "body": "Rozłącz się i wracasz do swojej pracy. Połączenie trwa, gdy się przemieszczasz, więc nic nie zrywa się, gdy chodzisz."
+        }
+      ]
+    },
+    {
+      "title": "Style pracy w parze, które działają zdalnie",
+      "body": [
+        "Każdy działa z jedną osobą, która udostępnia, i dwiema, które rozmawiają. Żeby zmienić, kto prowadzi, wypchnijcie gałąź z pracą w toku, a druga osoba udostępnia swój ekran."
+      ],
+      "table": {
+        "head": [
+          "Styl",
+          "Jak to wygląda",
+          "Dobre do"
+        ],
+        "rows": [
+          [
+            "Kierowca i nawigator",
+            "Jedna osoba pisze, druga myśli do przodu, czyta i wyłapuje błędy. Zamiana co 20–30 minut.",
+            "Większości sesji i wprowadzania kogoś w nieznany kod."
+          ],
+          [
+            "Ping-pong",
+            "Jedna osoba pisze test, który nie przechodzi, druga sprawia, że przechodzi, i pisze kolejny.",
+            "Pracy sterowanej testami i równego zaangażowania obu osób."
+          ],
+          [
+            "Strong-style",
+            "Pomysły trafiają do kodu tylko przez ręce drugiej osoby: nawigator mówi co, kierowca pisze.",
+            "Uczenia i wdrażania, żeby nowsza osoba nie tylko patrzyła."
+          ],
+          [
+            "Odblokowanie",
+            "Dziesięć minut nad cudzym problemem i powrót.",
+            "Krótkiego pytania, które inaczej czekałoby do jutra."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Jak sprawić, by udostępniony kod był czytelny",
+      "items": [
+        {
+          "title": "Udostępnij jedno okno",
+          "body": "Udostępniony ekran stawia na ostry tekst, a nie płynny ruch. Jedno okno edytora czyta się lepiej niż cały szeroki monitor pomniejszony."
+        },
+        {
+          "title": "Powiększ czcionkę",
+          "body": "Podczas pracy w parze podnieś rozmiar w edytorze i terminalu o dwa, trzy stopnie. Co wygodne na twoim ekranie, na cudzym jest małe."
+        },
+        {
+          "title": "Wszystko w jednym miejscu",
+          "body": "Podziel edytor i terminal w tym samym oknie, żeby nie zmieniać udostępniania przy każdym uruchomieniu testów."
+        },
+        {
+          "title": "Mów, gdzie patrzysz",
+          "body": "Wskazuj plik i numer linii: „linia 84 w handlerze” jest lepsze niż „trochę wyżej, nie, tam”."
+        }
+      ]
+    },
+    {
+      "title": "Gdy z dwóch robi się trzy",
+      "body": [
+        "Podejdź do trzeciej osoby podczas rozmowy, a TinyFloor zaproponuje zrobienie z tego spotkania dla was trojga. Na zaplanowaną sesję mob programmingu użyjcie sali spotkań: kto mówi, ten zajmuje dużą kartę, a udostępniony ekran jest obok ludzi."
+      ]
+    },
+    {
+      "title": "Czego używać obok",
+      "body": [
+        "TinyFloor to miejsce, gdzie się znajdujecie i rozmawiacie. Nie robi wszystkiego, czego może potrzebować sesja:"
+      ],
+      "items": [
+        {
+          "title": "Brak zdalnego sterowania",
+          "body": "Druga osoba widzi twój ekran, ale nie może na nim pisać. Żeby obie osoby edytowały ten sam kod, użyjcie narzędzia waszego edytora, na przykład VS Code Live Share albo JetBrains Code With Me, a TinyFloor zostawcie do rozmowy."
+        },
+        {
+          "title": "Brak dźwięku z udostępnionego ekranu",
+          "body": "Udostępnianie ekranu przesyła tylko obraz, a tego potrzebuje kod."
+        },
+        {
+          "title": "Brak nagrywania",
+          "body": "Sesje nie są nagrywane. Zapiszcie, co ustaliliście, w pull requeście albo na czacie zespołu."
+        },
+        {
+          "title": "Brak połączenia z GitHubem czy Jirą",
+          "body": "Udostępnijcie pull request albo zgłoszenie na ekranie, żeby obejrzeć je razem."
+        }
+      ]
+    },
+    {
+      "title": "Nawyki, dzięki którym praca w parze jest mile widziana",
+      "items": [
+        {
+          "title": "Szanuj „zajęty”",
+          "body": "Status zajęty to zamknięte drzwi. Napisz zamiast tego na czacie i pozwól tej osobie przyjść do ciebie."
+        },
+        {
+          "title": "Krótkie sesje",
+          "body": "Najwyżej godzina, dwie, z przerwami. Praca w parze przez cały dzień męczy, nawet gdy idzie dobrze."
+        },
+        {
+          "title": "Niech pytanie będzie czymś normalnym",
+          "body": "Zespół, w którym ludzie podchodzą z pytaniami, odblokowuje się w kilka minut, a nie jutro. Gdy doświadczeni podchodzą do nowszych, pomaga to tak samo jak odwrotnie."
+        }
+      ]
+    }
   ]
 }

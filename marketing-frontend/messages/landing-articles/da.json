@@ -2196,5 +2196,138 @@
         "Der er ingen standup-bot, der stiller spørgsmålene for dig, ingen påmindelse, ingen timer og ingen optagelse. Det er ikke forbundet med Jira, Linear eller GitHub, så boardet kommer på skærmen som et delt vindue. Vil du have skriftlige standups indsamlet automatisk, gør en bot i jeres chatværktøj det bedre; TinyFloor er stedet, hvor teamet mødes."
       ]
     }
+  ],
+  "pairProgramming": [
+    {
+      "title": "Sådan starter en parprogrammeringssession",
+      "body": [
+        "På kontoret starter parprogrammering ofte med \"har du et øjeblik?\" ved nogens skrivebord. Remote kræver det som regel en kalenderinvitation, så det sker sjældnere. I TinyFloor starter det, som det gjorde på kontoret."
+      ],
+      "items": [
+        {
+          "title": "Se, hvem der er ledig",
+          "detail": "1",
+          "body": "Skriveborde og statusser viser, hvem der arbejder koncentreret, hvem der er væk, og hvem der allerede er i et opkald. Optaget betyder vent; tilgængelig betyder gå derhen."
+        },
+        {
+          "title": "Gå derhen og snak",
+          "detail": "2",
+          "body": "Stil dig ved siden af, og tryk for at ringe. Det starter med stemme; tænd et kamera, hvis du vil."
+        },
+        {
+          "title": "Del og arbejd",
+          "detail": "3",
+          "body": "Del et vindue, en fane eller hele skærmen: editoren, terminalen, testen, der fejler."
+        },
+        {
+          "title": "Gå tilbage",
+          "detail": "4",
+          "body": "Læg på, og du er tilbage ved dit eget arbejde. Opkaldet forbliver forbundet, mens du bevæger dig, så intet falder ud, hvis du går rundt."
+        }
+      ]
+    },
+    {
+      "title": "Måder at parprogrammere på, der virker remote",
+      "body": [
+        "Alle virker med én, der deler, og to, der taler. For at bytte, hvem der kører, pusher I en branch med igangværende arbejde, og den anden deler sin skærm i stedet."
+      ],
+      "table": {
+        "head": [
+          "Måde",
+          "Sådan foregår det",
+          "Godt til"
+        ],
+        "rows": [
+          [
+            "Driver og navigatør",
+            "Én skriver, den anden tænker fremad, læser med og fanger fejl. Byt hvert 20. til 30. minut.",
+            "Det meste parprogrammering, og at tage nogen med ind i ukendt kode."
+          ],
+          [
+            "Ping-pong",
+            "Én skriver en test, der fejler, den anden får den til at bestå og skriver den næste.",
+            "Testdrevet arbejde, og at holde begge lige meget med."
+          ],
+          [
+            "Strong-style",
+            "Idéer kommer kun ind i koden gennem den andens hænder: navigatøren siger hvad, driveren skriver.",
+            "Undervisning og onboarding, så den nyere ikke bare kigger på."
+          ],
+          [
+            "Løsne op",
+            "Ti minutter på en andens problem, så tilbage.",
+            "Det hurtige spørgsmål, der ellers ville vente til i morgen."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Sådan bliver delt kode let at læse",
+      "items": [
+        {
+          "title": "Del ét vindue",
+          "body": "En delt skærm er indstillet til skarp tekst frem for jævn bevægelse. Et enkelt editorvindue læses bedre end en hel bred skærm skaleret ned."
+        },
+        {
+          "title": "Skru op for skriften",
+          "body": "Gå to eller tre størrelser op i editoren og terminalen, mens I parprogrammerer. Det, der er behageligt på din skærm, er småt på deres."
+        },
+        {
+          "title": "Alt ét sted",
+          "body": "Del editor og terminal i samme vindue, så I ikke skal skifte deling, hver gang en test kører."
+        },
+        {
+          "title": "Sig, hvor du kigger",
+          "body": "Peg med fil og linjenummer: \"linje 84 i handleren\" slår \"lidt længere op, nej, der\"."
+        }
+      ]
+    },
+    {
+      "title": "Når to bliver til tre",
+      "body": [
+        "Gå hen til en tredje kollega under et opkald, og TinyFloor tilbyder at gøre det til et møde for jer tre. Til en planlagt mob- eller ensemblesession bruger I mødelokalet: Den, der taler, får det store kort, og den delte skærm står ved siden af personerne."
+      ]
+    },
+    {
+      "title": "Hvad du bruger ved siden af",
+      "body": [
+        "TinyFloor er stedet, hvor I finder hinanden og taler. Det gør ikke alt, hvad en parsession kan have brug for:"
+      ],
+      "items": [
+        {
+          "title": "Ingen fjernstyring",
+          "body": "Den anden kan se din skærm, men ikke skrive i den. Skal I begge redigere den samme kode, så brug din editors eget værktøj, som VS Code Live Share eller JetBrains Code With Me, og behold TinyFloor til stemmen."
+        },
+        {
+          "title": "Ingen lyd fra den delte skærm",
+          "body": "Skærmdeling sender kun billedet, og det er, hvad kode har brug for."
+        },
+        {
+          "title": "Ingen optagelse",
+          "body": "Sessioner optages ikke. Skriv det, I besluttede, i pull requesten eller teamchatten."
+        },
+        {
+          "title": "Ingen forbindelse til GitHub eller Jira",
+          "body": "Del pull requesten eller sagen på skærmen for at se på den sammen."
+        }
+      ]
+    },
+    {
+      "title": "Vaner, der holder parprogrammering velkommen",
+      "items": [
+        {
+          "title": "Respektér optaget",
+          "body": "En optaget-status er den lukkede dør. Skriv i stedet en besked i chatten, og lad personen komme til dig."
+        },
+        {
+          "title": "Hold sessionerne korte",
+          "body": "En time eller to højst, med pauser. At parprogrammere hele dagen er hårdt, også når det går godt."
+        },
+        {
+          "title": "Gør det normalt at spørge",
+          "body": "Et team, hvor folk går hen med spørgsmål, løser problemer på minutter, ikke i morgen. At de erfarne går hen til de nyere, hjælper lige så meget som omvendt."
+        }
+      ]
+    }
   ]
 }

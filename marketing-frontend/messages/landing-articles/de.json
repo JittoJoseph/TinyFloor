@@ -2196,5 +2196,138 @@
         "Es gibt keinen Standup-Bot, der die Fragen für dich stellt, keine Erinnerung, keinen Timer und keine Aufnahme. Es ist nicht mit Jira, Linear oder GitHub verbunden, das Board kommt also als geteiltes Fenster auf den Bildschirm. Wenn schriftliche Standups automatisch eingesammelt werden sollen, kann das ein Bot in eurem Chat-Tool besser; TinyFloor ist der Ort, an dem sich das Team trifft."
       ]
     }
+  ],
+  "pairProgramming": [
+    {
+      "title": "So beginnt eine Pairing-Session",
+      "body": [
+        "Im Büro beginnt Pairing oft mit „Hast du kurz Zeit?“ am Schreibtisch. Remote braucht es meist eine Kalendereinladung, also passiert es seltener. In TinyFloor beginnt es so wie im Büro."
+      ],
+      "items": [
+        {
+          "title": "Sehen, wer frei ist",
+          "detail": "1",
+          "body": "Schreibtische und Status zeigen, wer konzentriert arbeitet, wer weg ist und wer schon in einem Call ist. Beschäftigt heißt warten; verfügbar heißt hingehen."
+        },
+        {
+          "title": "Hingehen und reden",
+          "detail": "2",
+          "body": "Stell dich daneben und tippe, um anzurufen. Es beginnt mit Stimme; schalte eine Kamera ein, wenn du willst."
+        },
+        {
+          "title": "Teilen und arbeiten",
+          "detail": "3",
+          "body": "Teile ein Fenster, einen Tab oder den ganzen Bildschirm: den Editor, das Terminal, den roten Test."
+        },
+        {
+          "title": "Zurückgehen",
+          "detail": "4",
+          "body": "Leg auf, und du bist zurück bei deiner Arbeit. Der Call bleibt verbunden, während du dich bewegst, es bricht also nichts ab, wenn du herumläufst."
+        }
+      ]
+    },
+    {
+      "title": "Pairing-Stile, die remote funktionieren",
+      "body": [
+        "Jeder Stil hier funktioniert mit einer Person, die teilt, und zwei, die reden. Um zu wechseln, wer fährt, pusht ihr einen Work-in-Progress-Branch, und die andere Person teilt stattdessen ihren Bildschirm."
+      ],
+      "table": {
+        "head": [
+          "Stil",
+          "So läuft es",
+          "Gut für"
+        ],
+        "rows": [
+          [
+            "Driver und Navigator",
+            "Eine Person tippt, die andere denkt voraus, liest mit und findet Fehler. Alle 20 bis 30 Minuten wechseln.",
+            "Das meiste Pairing, und um jemanden in unbekannten Code zu holen."
+          ],
+          [
+            "Ping-Pong",
+            "Eine Person schreibt einen roten Test, die andere macht ihn grün und schreibt den nächsten Test.",
+            "Testgetriebene Arbeit, und damit beide gleich beteiligt sind."
+          ],
+          [
+            "Strong-Style",
+            "Ideen kommen nur über die Hände der anderen Person in den Code: Der Navigator sagt was, der Driver tippt.",
+            "Lehren und Einarbeitung, damit die neuere Person nicht nur zuschaut."
+          ],
+          [
+            "Entblocken",
+            "Zehn Minuten am Problem von jemand anderem, dann zurückgehen.",
+            "Die kurze Frage, die sonst bis morgen warten würde."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Damit geteilter Code gut lesbar ist",
+      "items": [
+        {
+          "title": "Ein Fenster teilen",
+          "body": "Ein geteilter Bildschirm ist auf scharfen Text ausgelegt, nicht auf flüssige Bewegung. Ein einzelnes Editorfenster liest sich besser als ein ganzer breiter Monitor, verkleinert."
+        },
+        {
+          "title": "Die Schrift größer stellen",
+          "body": "Geh beim Pairen im Editor und Terminal zwei, drei Größen hoch. Was auf deinem Bildschirm angenehm ist, ist auf ihrem klein."
+        },
+        {
+          "title": "Alles an einem Ort",
+          "body": "Teil Editor und Terminal im selben Fenster, damit ihr nicht bei jedem Testlauf die Freigabe wechseln müsst."
+        },
+        {
+          "title": "Sag, wo du hinschaust",
+          "body": "Zeig mit Datei und Zeilennummer: „Zeile 84 im Handler“ ist besser als „etwas höher, nein, da“."
+        }
+      ]
+    },
+    {
+      "title": "Wenn aus zwei drei werden",
+      "body": [
+        "Geh während eines Calls zu einer dritten Person, und TinyFloor bietet an, daraus ein Meeting für euch drei zu machen. Für eine geplante Mob- oder Ensemble-Session nehmt ihr den Besprechungsraum: Wer spricht, bekommt die große Karte, und der geteilte Bildschirm steht neben den Leuten."
+      ]
+    },
+    {
+      "title": "Was du daneben nutzen solltest",
+      "body": [
+        "TinyFloor ist der Ort, an dem ihr euch findet und redet. Es kann nicht alles, was eine Pairing-Session brauchen kann:"
+      ],
+      "items": [
+        {
+          "title": "Keine Fernsteuerung",
+          "body": "Die andere Person sieht deinen Bildschirm, kann aber nicht darauf tippen. Wenn beide denselben Code bearbeiten sollen, nehmt das Werkzeug eures Editors, etwa VS Code Live Share oder JetBrains Code With Me, und TinyFloor für die Stimme."
+        },
+        {
+          "title": "Kein Ton vom geteilten Bildschirm",
+          "body": "Die Bildschirmfreigabe überträgt nur das Bild, und mehr braucht Code nicht."
+        },
+        {
+          "title": "Keine Aufnahme",
+          "body": "Sessions werden nicht aufgenommen. Haltet fest, was ihr entschieden habt, im Pull Request oder im Team-Chat."
+        },
+        {
+          "title": "Keine Verbindung zu GitHub oder Jira",
+          "body": "Teilt den Pull Request oder das Ticket auf dem Bildschirm, um es gemeinsam anzuschauen."
+        }
+      ]
+    },
+    {
+      "title": "Gewohnheiten, die Pairing willkommen halten",
+      "items": [
+        {
+          "title": "Beschäftigt respektieren",
+          "body": "Ein Beschäftigt-Status ist die geschlossene Tür. Schreib stattdessen im Chat und lass die Person zu dir kommen."
+        },
+        {
+          "title": "Sessions kurz halten",
+          "body": "Höchstens ein, zwei Stunden, mit Pausen. Den ganzen Tag pairen ist anstrengend, auch wenn es gut läuft."
+        },
+        {
+          "title": "Fragen normal machen",
+          "body": "Ein Team, in dem Leute mit Fragen hingehen, löst Blockaden in Minuten, nicht morgen. Wenn Erfahrene zu Neueren gehen, hilft das genauso wie umgekehrt."
+        }
+      ]
+    }
   ]
 }

@@ -2196,5 +2196,138 @@
         "Ei ole bottia, joka esittää kysymykset puolestasi, ei muistutusta, ei ajastinta eikä tallennusta. Se ei ole yhteydessä Jiraan, Lineariin tai GitHubiin, joten taulu tulee näytölle jaettuna ikkunana. Jos haluat kirjalliset päivitykset kerättyä automaattisesti, chat-työkalunne botti tekee sen paremmin; TinyFloor on paikka, jossa tiimi tapaa."
       ]
     }
+  ],
+  "pairProgramming": [
+    {
+      "title": "Näin pariohjelmointi alkaa",
+      "body": [
+        "Toimistolla pariohjelmointi alkaa usein kysymyksellä ”onko sinulla hetki?” jonkun työpisteellä. Etänä siihen tarvitaan yleensä kalenterikutsu, joten sitä tehdään harvemmin. TinyFloorissa se alkaa kuten toimistolla."
+      ],
+      "items": [
+        {
+          "title": "Katso, kuka on vapaana",
+          "detail": "1",
+          "body": "Työpisteet ja tilat näyttävät, kuka keskittyy, kuka on poissa ja kuka on jo puhelussa. Varattu tarkoittaa odota; tavoitettavissa tarkoittaa mene."
+        },
+        {
+          "title": "Mene ja puhu",
+          "detail": "2",
+          "body": "Seiso vieressä ja napauta soittaaksesi. Se alkaa äänellä; laita kamera päälle, jos haluat."
+        },
+        {
+          "title": "Jaa ja tee töitä",
+          "detail": "3",
+          "body": "Jaa ikkuna, välilehti tai koko näyttö: editori, pääte, kaatuva testi."
+        },
+        {
+          "title": "Palaa",
+          "detail": "4",
+          "body": "Lopeta puhelu, niin olet taas omien töidesi ääressä. Puhelu pysyy yhdistettynä, kun liikut, joten mikään ei katkea, jos kävelet ympäriinsä."
+        }
+      ]
+    },
+    {
+      "title": "Etänä toimivat pariohjelmoinnin tavat",
+      "body": [
+        "Jokainen toimii niin, että yksi jakaa ja kaksi puhuu. Kun haluatte vaihtaa kuljettajaa, pushatkaa keskeneräisen työn haara, ja toinen jakaa oman näyttönsä."
+      ],
+      "table": {
+        "head": [
+          "Tapa",
+          "Miten se menee",
+          "Hyvä"
+        ],
+        "rows": [
+          [
+            "Kuljettaja ja navigaattori",
+            "Toinen kirjoittaa, toinen ajattelee eteenpäin, lukee ja huomaa virheet. Vaihtakaa 20–30 minuutin välein.",
+            "Useimpaan pariohjelmointiin ja jonkun tuomiseen vieraaseen koodiin."
+          ],
+          [
+            "Pingpong",
+            "Toinen kirjoittaa kaatuvan testin, toinen saa sen menemään läpi ja kirjoittaa seuraavan.",
+            "Testivetoiseen työhön ja siihen, että molemmat ovat yhtä mukana."
+          ],
+          [
+            "Strong-style",
+            "Ideat menevät koodiin vain toisen käsien kautta: navigaattori sanoo mitä, kuljettaja kirjoittaa.",
+            "Opettamiseen ja perehdytykseen, jotta uudempi ei vain katsele."
+          ],
+          [
+            "Esteen purku",
+            "Kymmenen minuuttia jonkun toisen ongelman parissa, sitten takaisin.",
+            "Nopeaan kysymykseen, joka muuten odottaisi huomiseen."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Näin jaettu koodi on helppo lukea",
+      "items": [
+        {
+          "title": "Jaa yksi ikkuna",
+          "body": "Jaettu näyttö on viritetty terävälle tekstille eikä sulavalle liikkeelle. Yksi editori-ikkuna on luettavampi kuin koko leveä näyttö pienennettynä."
+        },
+        {
+          "title": "Suurenna fonttia",
+          "body": "Nosta editorin ja päätteen kokoa parilla kolmella pykälällä pariohjelmoinnin ajaksi. Mikä on mukava omalla näytölläsi, on pieni toisen näytöllä."
+        },
+        {
+          "title": "Kaikki yhdessä paikassa",
+          "body": "Jaa editori ja pääte samaan ikkunaan, ettei jakoa tarvitse vaihtaa joka kerta, kun testit ajetaan."
+        },
+        {
+          "title": "Kerro, mihin katsot",
+          "body": "Osoita tiedostolla ja rivinumerolla: ”rivi 84 käsittelijässä” on parempi kuin ”vähän ylempää, ei, tuossa”."
+        }
+      ]
+    },
+    {
+      "title": "Kun kahdesta tulee kolme",
+      "body": [
+        "Kävele puhelun aikana kolmannen kollegan luo, niin TinyFloor tarjoaa tehdä siitä kokouksen teille kolmelle. Suunniteltuun mob- tai ensemble-istuntoon käyttäkää kokoushuonetta: puhuja saa ison kortin, ja jaettu näyttö on ihmisten vieressä."
+      ]
+    },
+    {
+      "title": "Mitä käyttää rinnalla",
+      "body": [
+        "TinyFloor on paikka, jossa löydätte toisenne ja puhutte. Se ei tee kaikkea, mitä pariohjelmointi voi tarvita:"
+      ],
+      "items": [
+        {
+          "title": "Ei etäohjausta",
+          "body": "Toinen näkee näyttösi mutta ei voi kirjoittaa siihen. Jos haluatte molemmat muokata samaa koodia, käyttäkää editorinne omaa työkalua, kuten VS Code Live Sharea tai JetBrains Code With Meta, ja TinyFlooria äänelle."
+        },
+        {
+          "title": "Ei ääntä jaetulta näytöltä",
+          "body": "Näytönjako välittää vain kuvan, ja sitä koodi tarvitsee."
+        },
+        {
+          "title": "Ei tallennusta",
+          "body": "Istuntoja ei tallenneta. Kirjatkaa päätökset pull requestiin tai tiimin chattiin."
+        },
+        {
+          "title": "Ei yhteyttä GitHubiin tai Jiraan",
+          "body": "Jakakaa pull request tai tiketti näytölle, niin katsotte sitä yhdessä."
+        }
+      ]
+    },
+    {
+      "title": "Tavat, joilla pariohjelmointi pysyy tervetulleena",
+      "items": [
+        {
+          "title": "Kunnioita varattua",
+          "body": "Varattu-tila on suljettu ovi. Kirjoita mieluummin viesti chattiin ja anna hänen tulla luoksesi."
+        },
+        {
+          "title": "Pidä istunnot lyhyinä",
+          "body": "Enintään tunti tai kaksi, tauoin. Koko päivän pariohjelmointi väsyttää, vaikka se sujuisi hyvin."
+        },
+        {
+          "title": "Tee kysymisestä tavallista",
+          "body": "Tiimi, jossa kysymysten kanssa mennään toisen luo, purkaa esteet minuuteissa eikä huomenna. Kokeneiden meneminen uudempien luo auttaa yhtä paljon kuin toisin päin."
+        }
+      ]
+    }
   ]
 }

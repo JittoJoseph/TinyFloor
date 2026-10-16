@@ -2196,5 +2196,138 @@
         "No hay un bot que haga las preguntas por ti, ni recordatorios, ni temporizador, ni grabación. No se conecta a Jira, Linear ni GitHub, así que el tablero va a la pantalla como ventana compartida. Si quieres recoger reuniones diarias por escrito automáticamente, un bot en tu herramienta de chat lo hace mejor; TinyFloor es donde el equipo se reúne."
       ]
     }
+  ],
+  "pairProgramming": [
+    {
+      "title": "Cómo empieza una sesión de pair programming",
+      "body": [
+        "En la oficina, programar en pareja suele empezar con un «¿tienes un minuto?» en la mesa de alguien. En remoto suele hacer falta una invitación en el calendario, así que se hace menos. En TinyFloor empieza como en la oficina."
+      ],
+      "items": [
+        {
+          "title": "Ver quién está libre",
+          "detail": "1",
+          "body": "Las mesas y los estados muestran quién está concentrado, quién está ausente y quién ya está en una llamada. Ocupado significa esperar; disponible, acercarse."
+        },
+        {
+          "title": "Acercarse y hablar",
+          "detail": "2",
+          "body": "Ponte a su lado y toca para llamar. Empieza con voz; enciende la cámara si quieres."
+        },
+        {
+          "title": "Compartir y trabajar",
+          "detail": "3",
+          "body": "Comparte una ventana, una pestaña o toda la pantalla: el editor, la terminal, el test que falla."
+        },
+        {
+          "title": "Volver",
+          "detail": "4",
+          "body": "Cuelga y vuelves a tu trabajo. La llamada sigue conectada mientras te mueves, así que no se corta si te paseas."
+        }
+      ]
+    },
+    {
+      "title": "Formas de programar en pareja que funcionan en remoto",
+      "body": [
+        "Todas funcionan con una persona que comparte y dos que hablan. Para cambiar quién conduce, sube una rama de trabajo en curso y la otra persona comparte su pantalla."
+      ],
+      "table": {
+        "head": [
+          "Forma",
+          "Cómo va",
+          "Ideal para"
+        ],
+        "rows": [
+          [
+            "Conductor y navegante",
+            "Uno escribe, el otro piensa por delante, lee y caza errores. Cambiad cada 20 o 30 minutos.",
+            "La mayoría de las sesiones, y meter a alguien en código que no conoce."
+          ],
+          [
+            "Ping-pong",
+            "Uno escribe un test que falla, el otro lo hace pasar y escribe el siguiente.",
+            "Trabajo guiado por tests, y mantener a los dos igual de implicados."
+          ],
+          [
+            "Strong-style",
+            "Las ideas solo entran en el código a través de las manos del otro: el navegante dice qué, el conductor lo escribe.",
+            "Enseñar e incorporar a alguien, para que la persona nueva no se limite a mirar."
+          ],
+          [
+            "Desbloquear",
+            "Diez minutos con el problema de otra persona y de vuelta.",
+            "La pregunta rápida que, si no, esperaría a mañana."
+          ]
+        ]
+      }
+    },
+    {
+      "title": "Que el código compartido se lea bien",
+      "items": [
+        {
+          "title": "Comparte una ventana",
+          "body": "Una pantalla compartida prioriza el texto nítido sobre el movimiento fluido. Una sola ventana del editor se lee mejor que un monitor ancho entero reducido."
+        },
+        {
+          "title": "Sube la letra",
+          "body": "Sube dos o tres tamaños en el editor y la terminal mientras programáis juntos. Lo que es cómodo en tu pantalla es pequeño en la suya."
+        },
+        {
+          "title": "Todo en un sitio",
+          "body": "Divide el editor y la terminal en la misma ventana, para no cambiar lo que compartes cada vez que corre un test."
+        },
+        {
+          "title": "Di dónde miras",
+          "body": "Señala por archivo y número de línea: «línea 84 del handler» es mejor que «un poco más arriba, no, ahí»."
+        }
+      ]
+    },
+    {
+      "title": "Cuando dos pasan a ser tres",
+      "body": [
+        "Acércate a una tercera persona durante una llamada y TinyFloor te ofrece convertirla en una reunión para los tres. Para una sesión de mob programming planificada, usa la sala de reuniones: quien habla ocupa la tarjeta grande y la pantalla compartida queda al lado de las personas."
+      ]
+    },
+    {
+      "title": "Qué usar junto a TinyFloor",
+      "body": [
+        "TinyFloor es donde os encontráis y habláis. No hace todo lo que puede necesitar una sesión:"
+      ],
+      "items": [
+        {
+          "title": "Sin control remoto",
+          "body": "La otra persona ve tu pantalla pero no puede escribir en ella. Para editar los dos el mismo código, usa la herramienta de tu editor, como VS Code Live Share o JetBrains Code With Me, y deja TinyFloor para la voz."
+        },
+        {
+          "title": "Sin sonido de la pantalla compartida",
+          "body": "Compartir pantalla transmite solo la imagen, que es lo que el código necesita."
+        },
+        {
+          "title": "Sin grabación",
+          "body": "Las sesiones no se graban. Apuntad lo que decidisteis en la pull request o en el chat del equipo."
+        },
+        {
+          "title": "Sin conexión con GitHub ni Jira",
+          "body": "Comparte la pull request o el ticket en pantalla para verlo juntos."
+        }
+      ]
+    },
+    {
+      "title": "Hábitos que hacen bienvenido el pair programming",
+      "items": [
+        {
+          "title": "Respeta el ocupado",
+          "body": "Un estado de ocupado es la puerta cerrada. Manda un mensaje en el chat y deja que la persona venga a ti."
+        },
+        {
+          "title": "Sesiones cortas",
+          "body": "Una o dos horas como mucho, con descansos. Programar en pareja todo el día cansa, aunque vaya bien."
+        },
+        {
+          "title": "Que preguntar sea normal",
+          "body": "Un equipo en el que la gente se acerca con preguntas se desbloquea en minutos, no mañana. Que los veteranos se acerquen a los nuevos ayuda tanto como al revés."
+        }
+      ]
+    }
   ]
 }

@@ -839,5 +839,184 @@
         "Prezzi, limiti e funzioni di WorkAdventure vengono dalla sua pagina prezzi e dalle FAQ sui prezzi, lette a ottobre 2026, in dollari statunitensi tasse escluse. Quello che non c'era l'abbiamo lasciato fuori invece di tirare a indovinare. Facciamo TinyFloor, quindi diciamo chiaramente cosa non fa. I prezzi cambiano: controlla la pagina di WorkAdventure prima di acquistare."
       ]
     }
+  ],
+  "teamflow": [
+    {
+      "title": "Teamflow e TinyFloor in breve",
+      "body": [
+        "Entrambi riuniscono il team in un ufficio condiviso dove ci si avvicina per parlare. Teamflow è un'app desktop con app dentro l'ufficio; TinyFloor è un ufficio in pixel art nel browser con un solo prezzo per tutti."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Teamflow",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Un team di 8, al mese",
+            "120 $ annuale, 160 $ mensile (Seed)",
+            "29 $ per tutto il team"
+          ],
+          [
+            "Piano gratuito",
+            "Fino a 5 dipendenti, riunioni di 45 minuti, 10 ospiti alla volta",
+            "Fino a 3 persone, tutte le funzioni"
+          ],
+          [
+            "Come si paga",
+            "Per dipendente",
+            "Un prezzo per l'ufficio"
+          ],
+          [
+            "Dove funziona",
+            "App desktop per Mac e Windows, mobile in beta",
+            "Il browser, su computer e mobile"
+          ],
+          [
+            "Riunioni",
+            "Durata illimitata nei piani a pagamento",
+            "Nessun limite di tempo in nessun piano"
+          ],
+          [
+            "App nell'ufficio",
+            "App condivise, da 5 a illimitate a persona secondo il piano",
+            "Lavagna e condivisione schermo"
+          ],
+          [
+            "Ospiti",
+            "Da 10 a 25 alla volta secondo il piano",
+            "Tutti entrano con un account gratuito"
+          ]
+        ],
+        "note": "Dati su Teamflow dalla sua pagina prezzi a ottobre 2026, tasse escluse."
+      }
+    },
+    {
+      "title": "Quanto costa Teamflow in base al team",
+      "body": [
+        "Il piano gratuito copre fino a 5 dipendenti. Oltre, Seed costa 15 $ a dipendente al mese con il piano annuale o 20 $ mese per mese, e Business 25 o 30 $."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Teamflow Seed, mensile",
+          "Teamflow Seed, annuale, al mese",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "6 persone",
+            "120 $",
+            "90 $",
+            "29 $"
+          ],
+          [
+            "8 persone",
+            "160 $",
+            "120 $",
+            "29 $"
+          ],
+          [
+            "10 persone",
+            "200 $",
+            "150 $",
+            "29 $"
+          ],
+          [
+            "12 persone",
+            "240 $",
+            "180 $",
+            "29 $"
+          ]
+        ],
+        "note": "Teamflow Seed a 20 $ a dipendente mensile o 15 $ annuale (pagina prezzi di Teamflow, ottobre 2026). TinyFloor Pro è mensile; i team fino a 3 restano gratis."
+      }
+    },
+    {
+      "title": "Perché i piccoli team cercano un'alternativa a Teamflow",
+      "items": [
+        {
+          "title": "Nel piano gratuito le riunioni si fermano a 45 minuti",
+          "body": "Va bene per un allineamento veloce, non per una sessione di pianificazione o una lunga chiamata in coppia. Le riunioni illimitate partono da Seed."
+        },
+        {
+          "title": "La sesta persona costa per tutti",
+          "body": "Il piano gratuito copre 5 dipendenti. Un team di 6 su Seed paga 90 $ al mese con l'annuale o 120 $ con il mensile."
+        },
+        {
+          "title": "È un'app da installare",
+          "body": "Tutti scaricano Teamflow per Mac o Windows, e il mobile è in beta. Un ufficio nel browser funziona su qualsiasi computer, anche quello di un ospite."
+        },
+        {
+          "title": "Più di quanto serva ad alcuni team",
+          "body": "Le app condivise sono utili per i workshop; un team che vuole soprattutto vedere chi c'è e parlare potrebbe non aprirle mai."
+        }
+      ]
+    },
+    {
+      "title": "Cosa fa meglio Teamflow",
+      "items": [
+        {
+          "title": "App dentro l'ufficio",
+          "body": "Si aprono app condivise come Figma e Google Docs nello spazio, così una riunione ci lavora insieme. TinyFloor ha una lavagna e la condivisione schermo, non app integrate."
+        },
+        {
+          "title": "Più schermi alla volta",
+          "body": "Più persone possono condividere contemporaneamente, utile per confrontare lavori fianco a fianco."
+        },
+        {
+          "title": "Spazio per team più grandi",
+          "body": "Fino a 200 persone per piano e un piano Business con più ospiti e app illimitate. Gli uffici TinyFloor sono fatti per piccoli team."
+        },
+        {
+          "title": "Un'app desktop",
+          "body": "Se il tuo team preferisce un'app nativa nel dock, Teamflow è fatto così."
+        }
+      ]
+    },
+    {
+      "title": "Quale fa per il tuo team",
+      "items": [
+        {
+          "title": "TinyFloor, per un piccolo team nel browser",
+          "body": "Per un team da 4 a 15 persone che vuole vedere chi c'è, parlare senza appuntamento e riunirsi senza limiti di tempo, senza installare nulla, a un solo prezzo."
+        },
+        {
+          "title": "Teamflow, per workshop e team più grandi",
+          "body": "Se vuoi app condivise nelle riunioni, più schermi alla volta, un'app desktop o spazio per decine di persone su un piano."
+        },
+        {
+          "title": "Teamflow gratis, per 5 o meno",
+          "body": "Se bastano riunioni di 45 minuti e a tutti va bene installare un'app, il piano gratuito potrebbe bastare."
+        }
+      ]
+    },
+    {
+      "title": "Spostare un team da Teamflow",
+      "items": [
+        {
+          "title": "Crea un ufficio",
+          "detail": "Due minuti",
+          "body": "Dagli il nome del team. Piano, scrivanie e sala riunioni sono pronti."
+        },
+        {
+          "title": "Condividi un link di invito",
+          "detail": "Nella chat del team",
+          "body": "I colleghi accedono con Google o email ed entrano dal browser. Niente da scaricare."
+        },
+        {
+          "title": "Passate lì una settimana normale",
+          "detail": "Lo standup nella sala riunioni",
+          "body": "Tenete Teamflow fino alla fine della settimana, poi decidete quale il team ha davvero aperto."
+        }
+      ]
+    },
+    {
+      "title": "Come abbiamo confrontato",
+      "body": [
+        "Prezzi, limiti e funzioni di Teamflow vengono dalla sua pagina prezzi, letta a ottobre 2026, in dollari statunitensi tasse escluse. Quello che non c'era l'abbiamo lasciato fuori invece di tirare a indovinare. Facciamo TinyFloor, quindi diciamo chiaramente cosa non fa. I prezzi cambiano: controlla la pagina di Teamflow prima di acquistare."
+      ]
+    }
   ]
 }

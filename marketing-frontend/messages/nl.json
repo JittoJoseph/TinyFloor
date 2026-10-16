@@ -534,11 +534,11 @@
       "teamflow": {
         "label": "Teamflow-alternatief",
         "meta": {
-          "title": "Teamflow-alternatief dat in de browser draait",
-          "description": "Teamflow kost $15 per persoon per maand, met desktopapps. TinyFloor is een virtueel kantoor in de browser: gratis voor 3 mensen, daarna $29 per maand voor het hele team."
+          "title": "Alternatief voor Teamflow: prijzen, grenzen van het gratis abonnement en een browseroptie",
+          "description": "Teamflow is gratis voor 5 met vergaderingen van 45 minuten, daarna $ 15–20 per medewerker per maand, in een desktop-app. Wat een klein team betaalt, wat Teamflow beter doet en TinyFloor in de browser voor $ 29 voor het hele team."
         },
         "title": "Een <em>Teamflow-alternatief</em> zonder iets te downloaden.",
-        "subtitle": "Teamflow rekent per persoon en draait als app op je computer. TinyFloor opent in een browsertabblad, op een laptop of telefoon, voor één prijs per kantoor.",
+        "subtitle": "Teamflow is gratis voor 5 met vergaderingen van 45 minuten, rekent daarna per medewerker en draait als app op je computer. TinyFloor opent in een browsertabblad, op een laptop of telefoon, voor één prijs per kantoor: $ 29 per maand.",
         "points": [
           {
             "title": "Eén prijs voor het kantoor",
@@ -554,27 +554,31 @@
           }
         ],
         "them": {
-          "price": "$15 per persoon per maand, jaarlijks gefactureerd",
-          "freePlan": "Tot 5 mensen, met vergaderingen van 45 minuten",
-          "browser": "Apps voor Mac en Windows, mobiel in bèta",
+          "price": "Seed $ 15 per medewerker per maand bij jaarbetaling, $ 20 maandelijks",
+          "freePlan": "Tot 5 medewerkers, met vergaderingen van 45 minuten",
+          "browser": "Desktop-apps voor Mac en Windows, mobiel in bèta",
           "screenShare": "Ja, meerdere tegelijk"
         },
         "faq": [
           {
             "q": "Wat kost Teamflow?",
-            "a": "Teamflow is gratis voor maximaal 5 mensen met vergaderingen van 45 minuten. Seed kost $15 en Business $25 per persoon per maand, jaarlijks gefactureerd. TinyFloor is gratis voor maximaal 3 mensen en kost $29 per maand voor het hele team."
+            "a": "Teamflow is gratis voor maximaal 5 medewerkers met vergaderingen van 45 minuten. Seed kost $ 15 per medewerker per maand bij jaarbetaling of $ 20 per maand, Business $ 25 jaarlijks of $ 30 maandelijks. TinyFloor is gratis voor maximaal 3 mensen en kost $ 29 per maand voor het hele team."
           },
           {
-            "q": "Heeft TinyFloor de app-koppelingen van Teamflow?",
-            "a": "Nee. Teamflow sluit apps als Figma en Google Docs in vergaderingen in. TinyFloor houdt het bij aanwezigheid, gesprekken, vergaderingen, chat, een whiteboard en schermdelen."
+            "q": "Wat kost Teamflow voor 10 mensen?",
+            "a": "Met Seed $ 150 per maand bij jaarbetaling ($ 1.800 per jaar) of $ 200 bij maandbetaling. TinyFloor kost $ 29 per maand voor hetzelfde team."
+          },
+          {
+            "q": "Heeft TinyFloor de app-integraties van Teamflow?",
+            "a": "Nee. Bij Teamflow kan iedereen apps zoals Figma en Google Docs in het kantoor openen. TinyFloor houdt het bij aanwezigheid, gesprekken, vergaderingen, chat, een whiteboard en schermdelen."
           },
           {
             "q": "Moeten mijn collega's iets installeren?",
-            "a": "Nee. TinyFloor draait in de browser op desktop en mobiel. Ze openen de uitnodigingslink van je kantoor en loggen in."
+            "a": "Nee. TinyFloor werkt in de browser op desktop en mobiel. Ze openen de uitnodigingslink van je kantoor en loggen in."
           },
           {
-            "q": "Hoeveel mensen passen er in een TinyFloor-kantoor?",
-            "a": "Tot 3 mensen op Free en een klein team tot 15 op Pro. Je kunt zoveel kantoren maken als je nodig hebt."
+            "q": "Hoeveel mensen passen in een TinyFloor-kantoor?",
+            "a": "Tot 3 mensen op het gratis abonnement en een klein team van maximaal 15 op Pro. Je kunt zoveel kantoren maken als je nodig hebt."
           }
         ]
       },

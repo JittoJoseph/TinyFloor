@@ -839,5 +839,184 @@
         "WorkAdventuren hinnat, rajat ja ominaisuudet ovat sen hintasivulta ja hintoja koskevista usein kysytyistä kysymyksistä, luettu lokakuussa 2026, Yhdysvaltain dollareina ilman veroja. Mitä siellä ei mainittu, jätimme pois arvailun sijaan. Me teemme TinyFlooria, joten kerromme selvästi, mitä se ei tee. Hinnat muuttuvat: tarkista WorkAdventuren sivu ennen ostamista."
       ]
     }
+  ],
+  "teamflow": [
+    {
+      "title": "Teamflow ja TinyFloor lyhyesti",
+      "body": [
+        "Molemmat kokoavat tiimin yhteiseen toimistoon, jossa siirrytään lähemmäs juttelemaan. Teamflow on tietokonesovellus, jonka toimistossa on sovelluksia; TinyFloor on pikselitaidetoimisto selaimessa yhdellä hinnalla kaikille."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Teamflow",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "8 hengen tiimi, kuukaudessa",
+            "120 $ vuosittain, 160 $ kuukausittain (Seed)",
+            "29 $ koko tiimiltä"
+          ],
+          [
+            "Ilmaisversio",
+            "Enintään 5 työntekijää, 45 minuutin kokoukset, 10 vierasta kerrallaan",
+            "Enintään 3 henkeä, kaikki ominaisuudet"
+          ],
+          [
+            "Miten hinnoitellaan",
+            "Työntekijää kohden",
+            "Yksi hinta toimistolle"
+          ],
+          [
+            "Missä toimii",
+            "Tietokonesovellukset Macille ja Windowsille, mobiili betassa",
+            "Selaimessa, tietokoneella ja mobiilissa"
+          ],
+          [
+            "Kokoukset",
+            "Rajaton pituus maksullisissa",
+            "Ei aikarajaa missään tilauksessa"
+          ],
+          [
+            "Sovellukset toimistossa",
+            "Jaetut sovellukset, 5:stä rajattomaan henkeä kohden tilauksen mukaan",
+            "Taulu ja näytönjako"
+          ],
+          [
+            "Vieraat",
+            "10–25 kerrallaan tilauksen mukaan",
+            "Kaikki liittyvät ilmaisella tilillä"
+          ]
+        ],
+        "note": "Teamflow'n tiedot sen hintasivulta lokakuussa 2026, ilman veroja."
+      }
+    },
+    {
+      "title": "Mitä Teamflow maksaa tiimin koon mukaan",
+      "body": [
+        "Ilmaisversio kattaa enintään 5 työntekijää. Sen jälkeen Seed maksaa 15 $ työntekijältä kuukaudessa vuositilauksella tai 20 $ kuukausittain, ja Business 25 tai 30 $."
+      ],
+      "table": {
+        "head": [
+          "Tiimi",
+          "Teamflow Seed, kuukausittain",
+          "Teamflow Seed, vuosittain, kuukaudessa",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "6 henkeä",
+            "120 $",
+            "90 $",
+            "29 $"
+          ],
+          [
+            "8 henkeä",
+            "160 $",
+            "120 $",
+            "29 $"
+          ],
+          [
+            "10 henkeä",
+            "200 $",
+            "150 $",
+            "29 $"
+          ],
+          [
+            "12 henkeä",
+            "240 $",
+            "180 $",
+            "29 $"
+          ]
+        ],
+        "note": "Teamflow Seed 20 $ työntekijältä kuukausittain tai 15 $ vuosittain (Teamflow'n hintasivu, lokakuu 2026). TinyFloor Pro on kuukausitilaus; enintään 3 hengen tiimit pysyvät ilmaisina."
+      }
+    },
+    {
+      "title": "Miksi pienet tiimit etsivät vaihtoehtoa Teamflowlle",
+      "items": [
+        {
+          "title": "Ilmaisversiossa kokoukset loppuvat 45 minuuttiin",
+          "body": "Sopii nopeaan tilannekatsaukseen, ei suunnittelupalaveriin tai pitkään pariohjelmointipuheluun. Rajattomat kokoukset alkavat Seedistä."
+        },
+        {
+          "title": "Kuudes henkilö maksaa kaikille",
+          "body": "Ilmaisversio kattaa 5 työntekijää. Kuuden hengen tiimi maksaa Seedillä 90 $ kuukaudessa vuositilauksella tai 120 $ kuukausittain."
+        },
+        {
+          "title": "Se on asennettava sovellus",
+          "body": "Kaikki lataavat Teamflow'n Macille tai Windowsille, ja mobiili on betassa. Selaintoimisto toimii millä tahansa koneella, myös vieraan."
+        },
+        {
+          "title": "Enemmän kuin jotkut tiimit tarvitsevat",
+          "body": "Jaetut sovellukset toimistossa ovat hyödyllisiä työpajoissa; tiimi, joka haluaa lähinnä nähdä, kuka on paikalla, ja jutella, ei ehkä avaa niitä koskaan."
+        }
+      ]
+    },
+    {
+      "title": "Missä Teamflow on parempi",
+      "items": [
+        {
+          "title": "Sovellukset toimistossa",
+          "body": "Avaa jaettuja sovelluksia, kuten Figma ja Google Docs, tilassa, jotta kokous voi työstää niitä yhdessä. TinyFloorissa on taulu ja näytönjako, ei upotettuja sovelluksia."
+        },
+        {
+          "title": "Useita näyttöjä yhtä aikaa",
+          "body": "Useampi henkilö voi jakaa samaan aikaan, mikä auttaa vertaamaan töitä rinnakkain."
+        },
+        {
+          "title": "Tilaa suuremmille tiimeille",
+          "body": "Enintään 200 henkeä kerrosta kohden ja Business-tilaus, jossa on enemmän vieraita ja rajattomasti sovelluksia. TinyFloor-toimistot on tehty pienille tiimeille."
+        },
+        {
+          "title": "Tietokonesovellus",
+          "body": "Jos tiimisi suosii natiivisovellusta telakassa, Teamflow on tehty juuri niin."
+        }
+      ]
+    },
+    {
+      "title": "Kumpi sopii tiimillesi",
+      "items": [
+        {
+          "title": "TinyFloor, pienelle tiimille selaimessa",
+          "body": "4–15 hengen tiimille, joka haluaa nähdä, kuka on paikalla, jutella sopimatta aikaa ja kokoontua ilman aikarajaa, mitään asentamatta, yhdellä hinnalla."
+        },
+        {
+          "title": "Teamflow, työpajoihin ja suuremmille tiimeille",
+          "body": "Jos haluat jaettuja sovelluksia kokouksiin, useita näyttöjä yhtä aikaa, tietokonesovelluksen tai tilaa kymmenille ihmisille samaan kerrokseen."
+        },
+        {
+          "title": "Ilmainen Teamflow, viidelle tai vähemmälle",
+          "body": "Jos 45 minuutin kokoukset riittävät ja kaikki asentavat mielellään sovelluksen, ilmaisversio voi riittää."
+        }
+      ]
+    },
+    {
+      "title": "Tiimin siirtäminen Teamflow'sta",
+      "items": [
+        {
+          "title": "Luo toimisto",
+          "detail": "Kaksi minuuttia",
+          "body": "Nimeä se tiimin mukaan. Kerros, työpöydät ja neuvotteluhuone ovat valmiina."
+        },
+        {
+          "title": "Jaa yksi kutsulinkki",
+          "detail": "Tiimin chatissa",
+          "body": "Kollegat kirjautuvat Googlella tai sähköpostilla ja tulevat sisään selaimesta. Mitään ei tarvitse ladata."
+        },
+        {
+          "title": "Tehkää siellä tavallinen viikko",
+          "detail": "Standup neuvotteluhuoneessa",
+          "body": "Pitäkää Teamflow viikon loppuun ja päättäkää sitten, kumpaa tiimi oikeasti avasi."
+        }
+      ]
+    },
+    {
+      "title": "Miten vertailimme",
+      "body": [
+        "Teamflow'n hinnat, rajat ja ominaisuudet ovat sen hintasivulta, luettu lokakuussa 2026, Yhdysvaltain dollareina ilman veroja. Mitä siellä ei mainittu, jätimme pois arvailun sijaan. Me teemme TinyFlooria, joten kerromme selvästi, mitä se ei tee. Hinnat muuttuvat: tarkista Teamflow'n sivu ennen ostamista."
+      ]
+    }
   ]
 }

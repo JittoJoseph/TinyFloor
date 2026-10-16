@@ -534,11 +534,11 @@
       "teamflow": {
         "label": "Alternativa a Teamflow",
         "meta": {
-          "title": "Alternativa a Teamflow que funciona en el navegador",
-          "description": "Teamflow cuesta $15 por persona al mes, con apps de escritorio. TinyFloor es una oficina virtual en el navegador: gratis para 3 personas y después $29 al mes para todo el equipo."
+          "title": "Alternativa a Teamflow: precios, límites del plan gratis y una opción en el navegador",
+          "description": "Teamflow es gratis para 5 con reuniones de 45 minutos y luego cuesta de 15 a 20 $ por empleado al mes, en una app de escritorio. Lo que paga un equipo pequeño, lo que Teamflow hace mejor y TinyFloor en el navegador a 29 $ para todo el equipo."
         },
         "title": "Una <em>alternativa a Teamflow</em> sin nada que descargar.",
-        "subtitle": "Teamflow cobra por persona y funciona como una app en tu ordenador. TinyFloor se abre en una pestaña del navegador, en el portátil o el móvil, por un único precio por oficina.",
+        "subtitle": "Teamflow es gratis para 5 con reuniones de 45 minutos, luego cobra por empleado y funciona como una app en tu ordenador. TinyFloor se abre en una pestaña del navegador, en portátil o móvil, por un precio por oficina: 29 $ al mes.",
         "points": [
           {
             "title": "Un precio para la oficina",
@@ -554,27 +554,31 @@
           }
         ],
         "them": {
-          "price": "$15 por persona al mes, facturado al año",
-          "freePlan": "Hasta 5 personas, con reuniones de 45 minutos",
-          "browser": "Apps para Mac y Windows, móvil en beta",
+          "price": "Seed 15 $ por empleado al mes con facturación anual, 20 $ mensual",
+          "freePlan": "Hasta 5 empleados, con reuniones de 45 minutos",
+          "browser": "Apps de escritorio para Mac y Windows, móvil en beta",
           "screenShare": "Sí, varias a la vez"
         },
         "faq": [
           {
             "q": "¿Cuánto cuesta Teamflow?",
-            "a": "Teamflow es gratis para hasta 5 personas con reuniones de 45 minutos. Seed cuesta $15 y Business $25 por persona al mes, facturados al año. TinyFloor es gratis para hasta 3 personas y cuesta $29 al mes para todo el equipo."
+            "a": "Teamflow es gratis para hasta 5 empleados con reuniones de 45 minutos. Seed cuesta 15 $ por empleado al mes con facturación anual o 20 $ mensual, y Business 25 $ anual o 30 $ mensual. TinyFloor es gratis para hasta 3 personas y cuesta 29 $ al mes para todo el equipo."
+          },
+          {
+            "q": "¿Cuánto cuesta Teamflow para 10 personas?",
+            "a": "Con Seed, 150 $ al mes con facturación anual (1.800 $ al año) o 200 $ con facturación mensual. TinyFloor cuesta 29 $ al mes para el mismo equipo."
           },
           {
             "q": "¿TinyFloor tiene las integraciones de apps de Teamflow?",
-            "a": "No. Teamflow integra apps como Figma y Google Docs en las reuniones. TinyFloor se limita a la presencia, las llamadas, las reuniones, el chat, una pizarra y compartir pantalla."
+            "a": "No. Teamflow deja que cada persona abra apps como Figma y Google Docs en la oficina. TinyFloor se centra en presencia, llamadas, reuniones, chat, una pizarra y pantalla compartida."
           },
           {
             "q": "¿Mis compañeros tienen que instalar algo?",
-            "a": "No. TinyFloor funciona en el navegador de escritorio y móvil. Abren el enlace de invitación de tu oficina e inician sesión."
+            "a": "No. TinyFloor funciona en el navegador, en ordenador y móvil. Abren el enlace de invitación de tu oficina e inician sesión."
           },
           {
             "q": "¿Cuántas personas caben en una oficina de TinyFloor?",
-            "a": "Hasta 3 personas en Free y un equipo pequeño de hasta 15 en Pro. Puedes crear tantas oficinas como necesites."
+            "a": "Hasta 3 personas en el plan gratis y un equipo pequeño de hasta 15 en Pro. Puedes crear tantas oficinas como necesites."
           }
         ]
       },

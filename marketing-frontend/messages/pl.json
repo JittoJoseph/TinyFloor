@@ -534,11 +534,11 @@
       "teamflow": {
         "label": "Alternatywa dla Teamflow",
         "meta": {
-          "title": "Alternatywa dla Teamflow działająca w przeglądarce",
-          "description": "Teamflow kosztuje $15 za osobę miesięcznie, z aplikacjami na komputer. TinyFloor to wirtualne biuro w przeglądarce: za darmo dla 3 osób, potem $29 miesięcznie za cały zespół."
+          "title": "Alternatywa dla Teamflow: ceny, limity darmowego planu i opcja w przeglądarce",
+          "description": "Teamflow jest darmowy dla 5 osób ze spotkaniami do 45 minut, potem kosztuje 15–20 $ za pracownika miesięcznie, w aplikacji na komputer. Ile płaci mały zespół, co Teamflow robi lepiej i TinyFloor w przeglądarce za 29 $ za cały zespół."
         },
         "title": "<em>Alternatywa dla Teamflow</em> bez pobierania czegokolwiek.",
-        "subtitle": "Teamflow pobiera opłatę za osobę i działa jako aplikacja na komputerze. TinyFloor otwiera się w karcie przeglądarki, na laptopie lub telefonie, za jedną cenę za biuro.",
+        "subtitle": "Teamflow jest darmowy dla 5 osób ze spotkaniami do 45 minut, potem rozlicza za pracownika i działa jako aplikacja na komputerze. TinyFloor otwiera się w karcie przeglądarki, na laptopie albo telefonie, za jedną cenę za biuro: 29 $ miesięcznie.",
         "points": [
           {
             "title": "Jedna cena za biuro",
@@ -554,27 +554,31 @@
           }
         ],
         "them": {
-          "price": "$15 za osobę miesięcznie, płatne rocznie",
-          "freePlan": "Do 5 osób, ze spotkaniami do 45 minut",
-          "browser": "Aplikacje na Mac i Windows, mobilna w becie",
-          "screenShare": "Tak, kilka ekranów naraz"
+          "price": "Seed 15 $ za pracownika miesięcznie przy płatności rocznej, 20 $ miesięcznie",
+          "freePlan": "Do 5 pracowników, spotkania do 45 minut",
+          "browser": "Aplikacje na Maca i Windows, wersja mobilna w becie",
+          "screenShare": "Tak, kilka naraz"
         },
         "faq": [
           {
             "q": "Ile kosztuje Teamflow?",
-            "a": "Teamflow jest darmowy do 5 osób ze spotkaniami do 45 minut. Seed kosztuje $15, a Business $25 za osobę miesięcznie, płatne rocznie. TinyFloor jest darmowy do 3 osób i kosztuje $29 miesięcznie za cały zespół."
+            "a": "Teamflow jest darmowy dla maksymalnie 5 pracowników ze spotkaniami do 45 minut. Seed kosztuje 15 $ za pracownika miesięcznie przy płatności rocznej albo 20 $ miesięcznie, a Business 25 $ rocznie albo 30 $ miesięcznie. TinyFloor jest darmowy dla maksymalnie 3 osób i kosztuje 29 $ miesięcznie za cały zespół."
+          },
+          {
+            "q": "Ile kosztuje Teamflow dla 10 osób?",
+            "a": "W planie Seed 150 $ miesięcznie przy płatności rocznej (1 800 $ rocznie) albo 200 $ przy płatności miesięcznej. TinyFloor kosztuje 29 $ miesięcznie za ten sam zespół."
           },
           {
             "q": "Czy TinyFloor ma integracje aplikacji jak Teamflow?",
-            "a": "Nie. Teamflow osadza w spotkaniach aplikacje takie jak Figma i Dokumenty Google. TinyFloor zostaje przy obecności, rozmowach, spotkaniach, czacie, tablicy i udostępnianiu ekranu."
+            "a": "Nie. W Teamflow każdy może otworzyć w biurze aplikacje takie jak Figma i Google Docs. TinyFloor ogranicza się do obecności, rozmów, spotkań, czatu, tablicy i udostępniania ekranu."
           },
           {
             "q": "Czy moi współpracownicy muszą coś instalować?",
-            "a": "Nie. TinyFloor działa w przeglądarce na komputerze i telefonie. Otwierają link z zaproszeniem do biura i się logują."
+            "a": "Nie. TinyFloor działa w przeglądarce na komputerze i telefonie. Otwierają link z zaproszeniem do twojego biura i się logują."
           },
           {
             "q": "Ile osób zmieści się w biurze TinyFloor?",
-            "a": "Do 3 osób na Free i mały zespół do 15 osób na Pro. Możesz utworzyć tyle biur, ile potrzebujesz."
+            "a": "Do 3 osób w planie darmowym i mały zespół do 15 osób w Pro. Możesz utworzyć tyle biur, ile potrzebujesz."
           }
         ]
       },

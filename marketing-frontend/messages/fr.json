@@ -534,11 +534,11 @@
       "teamflow": {
         "label": "Alternative à Teamflow",
         "meta": {
-          "title": "Alternative à Teamflow qui fonctionne dans le navigateur",
-          "description": "Teamflow coûte 15 $ par personne et par mois, avec des applications de bureau. TinyFloor est un bureau virtuel dans le navigateur : gratuit pour 3 personnes, puis 29 $ par mois pour toute l'équipe."
+          "title": "Alternative à Teamflow : tarifs, limites de l'offre gratuite et une option dans le navigateur",
+          "description": "Teamflow est gratuit pour 5 avec des réunions de 45 minutes, puis 15 à 20 $ par employé et par mois, dans une application de bureau. Ce que paie une petite équipe, ce que Teamflow fait mieux, et TinyFloor dans le navigateur à 29 $ pour toute l'équipe."
         },
         "title": "Une <em>alternative à Teamflow</em> sans rien à télécharger.",
-        "subtitle": "Teamflow facture par personne et tourne comme une appli sur votre ordinateur. TinyFloor s'ouvre dans un onglet du navigateur, sur ordinateur ou téléphone, pour un seul prix par bureau.",
+        "subtitle": "Teamflow est gratuit pour 5 avec des réunions de 45 minutes, puis facturé par employé, et fonctionne comme une application sur votre ordinateur. TinyFloor s'ouvre dans un onglet du navigateur, sur ordinateur ou téléphone, pour un prix par bureau : 29 $ par mois.",
         "points": [
           {
             "title": "Un prix pour le bureau",
@@ -554,27 +554,31 @@
           }
         ],
         "them": {
-          "price": "15 $ par personne et par mois, facturé à l'année",
-          "freePlan": "Jusqu'à 5 personnes, avec des réunions de 45 minutes",
-          "browser": "Applis pour Mac et Windows, mobile en bêta",
+          "price": "Seed 15 $ par employé et par mois à l'année, 20 $ au mois",
+          "freePlan": "Jusqu'à 5 employés, avec des réunions de 45 minutes",
+          "browser": "Applications de bureau pour Mac et Windows, mobile en bêta",
           "screenShare": "Oui, plusieurs à la fois"
         },
         "faq": [
           {
             "q": "Combien coûte Teamflow ?",
-            "a": "Teamflow est gratuit jusqu'à 5 personnes avec des réunions de 45 minutes. Seed coûte 15 $ et Business 25 $ par personne et par mois, facturés à l'année. TinyFloor est gratuit jusqu'à 3 personnes et coûte 29 $ par mois pour toute l'équipe."
+            "a": "Teamflow est gratuit jusqu'à 5 employés avec des réunions de 45 minutes. Seed coûte 15 $ par employé et par mois à l'année ou 20 $ au mois, et Business 25 $ à l'année ou 30 $ au mois. TinyFloor est gratuit jusqu'à 3 personnes et coûte 29 $ par mois pour toute l'équipe."
           },
           {
-            "q": "TinyFloor a-t-il les intégrations d'applis de Teamflow ?",
-            "a": "Non. Teamflow intègre des applis comme Figma et Google Docs dans les réunions. TinyFloor s'en tient à la présence, aux appels, aux réunions, au chat, à un tableau blanc et au partage d'écran."
+            "q": "Combien coûte Teamflow pour 10 personnes ?",
+            "a": "Avec Seed, 150 $ par mois à l'année (1 800 $ par an) ou 200 $ au mois. TinyFloor coûte 29 $ par mois pour la même équipe."
+          },
+          {
+            "q": "TinyFloor a-t-il les intégrations d'applications de Teamflow ?",
+            "a": "Non. Teamflow permet à chacun d'ouvrir des applications comme Figma et Google Docs dans le bureau. TinyFloor s'en tient à la présence, aux appels, aux réunions, à la messagerie, à un tableau blanc et au partage d'écran."
           },
           {
             "q": "Mes collègues doivent-ils installer quelque chose ?",
             "a": "Non. TinyFloor fonctionne dans le navigateur, sur ordinateur et mobile. Ils ouvrent le lien d'invitation de votre bureau et se connectent."
           },
           {
-            "q": "Combien de personnes peuvent rejoindre un bureau TinyFloor ?",
-            "a": "Jusqu'à 3 personnes avec Free, et une petite équipe jusqu'à 15 avec Pro. Vous pouvez créer autant de bureaux que nécessaire."
+            "q": "Combien de personnes peut accueillir un bureau TinyFloor ?",
+            "a": "Jusqu'à 3 personnes avec l'offre gratuite, et une petite équipe jusqu'à 15 avec Pro. Vous pouvez créer autant de bureaux que nécessaire."
           }
         ]
       },

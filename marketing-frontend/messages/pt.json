@@ -534,11 +534,11 @@
       "teamflow": {
         "label": "Alternativa ao Teamflow",
         "meta": {
-          "title": "Alternativa ao Teamflow que roda no navegador",
-          "description": "O Teamflow custa US$ 15 por pessoa por mês, com apps para desktop. O TinyFloor é um escritório virtual no navegador: grátis para 3 pessoas e depois US$ 29 por mês para toda a equipe."
+          "title": "Alternativa ao Teamflow: preços, limites do plano grátis e uma opção no navegador",
+          "description": "O Teamflow é grátis para 5 com reuniões de 45 minutos e depois custa US$ 15–20 por funcionário por mês, num app de desktop. Quanto uma equipe pequena paga, o que o Teamflow faz melhor e o TinyFloor no navegador a US$ 29 para a equipe toda."
         },
         "title": "Uma <em>alternativa ao Teamflow</em> sem nada para baixar.",
-        "subtitle": "O Teamflow cobra por pessoa e roda como app no seu computador. O TinyFloor abre numa aba do navegador, no notebook ou no celular, por um preço por escritório.",
+        "subtitle": "O Teamflow é grátis para 5 com reuniões de 45 minutos, depois cobra por funcionário e roda como um app no seu computador. O TinyFloor abre numa aba do navegador, no notebook ou no celular, por um preço por escritório: US$ 29 por mês.",
         "points": [
           {
             "title": "Um preço para o escritório",
@@ -554,27 +554,31 @@
           }
         ],
         "them": {
-          "price": "US$ 15 por pessoa por mês, cobrado anualmente",
-          "freePlan": "Até 5 pessoas, com reuniões de 45 minutos",
-          "browser": "Apps para Mac e Windows, celular em beta",
-          "screenShare": "Sim, várias telas ao mesmo tempo"
+          "price": "Seed US$ 15 por funcionário por mês no anual, US$ 20 no mensal",
+          "freePlan": "Até 5 funcionários, com reuniões de 45 minutos",
+          "browser": "Apps de desktop para Mac e Windows, celular em beta",
+          "screenShare": "Sim, várias ao mesmo tempo"
         },
         "faq": [
           {
             "q": "Quanto custa o Teamflow?",
-            "a": "O Teamflow é grátis para até 5 pessoas com reuniões de 45 minutos. O Seed custa US$ 15 e o Business US$ 25 por pessoa por mês, cobrados anualmente. O TinyFloor é grátis para até 3 pessoas e custa US$ 29 por mês para toda a equipe."
+            "a": "O Teamflow é grátis para até 5 funcionários com reuniões de 45 minutos. O Seed custa US$ 15 por funcionário por mês no anual ou US$ 20 no mensal, e o Business US$ 25 no anual ou US$ 30 no mensal. O TinyFloor é grátis para até 3 pessoas e custa US$ 29 por mês para a equipe toda."
+          },
+          {
+            "q": "Quanto custa o Teamflow para 10 pessoas?",
+            "a": "No Seed, US$ 150 por mês no anual (US$ 1.800 por ano) ou US$ 200 no mensal. O TinyFloor custa US$ 29 por mês para a mesma equipe."
           },
           {
             "q": "O TinyFloor tem as integrações de apps do Teamflow?",
-            "a": "Não. O Teamflow incorpora apps como Figma e Google Docs nas reuniões. O TinyFloor fica com presença, chamadas, reuniões, chat, um quadro branco e compartilhamento de tela."
+            "a": "Não. O Teamflow deixa cada pessoa abrir apps como Figma e Google Docs no escritório. O TinyFloor se concentra em presença, chamadas, reuniões, chat, um quadro branco e compartilhamento de tela."
           },
           {
             "q": "Meus colegas precisam instalar alguma coisa?",
-            "a": "Não. O TinyFloor roda no navegador do computador e do celular. Eles abrem o link de convite do seu escritório e entram."
+            "a": "Não. O TinyFloor roda no navegador, no computador e no celular. Eles abrem o link de convite do seu escritório e fazem login."
           },
           {
-            "q": "Quantas pessoas cabem num escritório TinyFloor?",
-            "a": "Até 3 pessoas no Free e uma equipe pequena de até 15 no Pro. Você pode criar quantos escritórios precisar."
+            "q": "Quantas pessoas cabem num escritório do TinyFloor?",
+            "a": "Até 3 pessoas no plano grátis e uma equipe pequena de até 15 no Pro. Você pode criar quantos escritórios precisar."
           }
         ]
       },

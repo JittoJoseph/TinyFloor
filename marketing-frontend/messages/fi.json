@@ -534,11 +534,11 @@
       "teamflow": {
         "label": "Teamflow-vaihtoehto",
         "meta": {
-          "title": "Teamflow-vaihtoehto, joka toimii selaimessa",
-          "description": "Teamflow maksaa $15 henkeä kohden kuukaudessa, ja siinä on työpöytäsovellukset. TinyFloor on virtuaalitoimisto selaimessa: ilmainen 3 hengelle, sitten $29 kuukaudessa koko tiimille."
+          "title": "Vaihtoehto Teamflowlle: hinnat, ilmaisversion rajat ja selainvaihtoehto",
+          "description": "Teamflow on ilmainen 5 hengelle 45 minuutin kokouksilla, sitten 15–20 $ työntekijältä kuukaudessa, tietokonesovelluksessa. Mitä pieni tiimi maksaa, missä Teamflow on parempi ja TinyFloor selaimessa 29 $:lla koko tiimiltä."
         },
         "title": "<em>Teamflow-vaihtoehto</em> ilman mitään ladattavaa.",
-        "subtitle": "Teamflow laskuttaa henkeä kohden ja toimii sovelluksena tietokoneella. TinyFloor aukeaa selaimen välilehdessä, kannettavalla tai puhelimella, yhdellä hinnalla toimistoa kohden.",
+        "subtitle": "Teamflow on ilmainen 5 hengelle 45 minuutin kokouksilla, laskuttaa sitten työntekijää kohden ja toimii sovelluksena tietokoneella. TinyFloor avautuu selaimen välilehdessä, tietokoneella tai puhelimella, yhdellä hinnalla toimistoa kohden: 29 $ kuukaudessa.",
         "points": [
           {
             "title": "Yksi hinta toimistolle",
@@ -554,27 +554,31 @@
           }
         ],
         "them": {
-          "price": "$15 henkeä kohden kuussa, vuosilaskutus",
-          "freePlan": "Enintään 5 henkeä, 45 minuutin kokoukset",
-          "browser": "Sovellukset Macille ja Windowsille, mobiili betana",
-          "screenShare": "Kyllä, useita kerralla"
+          "price": "Seed 15 $ työntekijältä kuukaudessa vuosimaksulla, 20 $ kuukausittain",
+          "freePlan": "Enintään 5 työntekijää, 45 minuutin kokoukset",
+          "browser": "Tietokonesovellukset Macille ja Windowsille, mobiili betassa",
+          "screenShare": "Kyllä, useita yhtä aikaa"
         },
         "faq": [
           {
-            "q": "Paljonko Teamflow maksaa?",
-            "a": "Teamflow on ilmainen enintään 5 hengelle 45 minuutin kokouksilla. Seed maksaa $15 ja Business $25 henkeä kohden kuussa vuosilaskutuksella. TinyFloor on ilmainen enintään 3 hengelle ja maksaa $29 kuukaudessa koko tiimille."
+            "q": "Mitä Teamflow maksaa?",
+            "a": "Teamflow on ilmainen enintään 5 työntekijälle 45 minuutin kokouksilla. Seed maksaa 15 $ työntekijältä kuukaudessa vuosimaksulla tai 20 $ kuukausittain, ja Business 25 $ vuosittain tai 30 $ kuukausittain. TinyFloor on ilmainen enintään 3 hengelle ja maksaa 29 $ kuukaudessa koko tiimiltä."
+          },
+          {
+            "q": "Mitä Teamflow maksaa 10 hengelle?",
+            "a": "Seed-tilauksella 150 $ kuukaudessa vuosimaksulla (1 800 $ vuodessa) tai 200 $ kuukausimaksulla. TinyFloor maksaa samalle tiimille 29 $ kuukaudessa."
           },
           {
             "q": "Onko TinyFloorissa Teamflow'n sovellusintegraatiot?",
-            "a": "Ei. Teamflow upottaa kokouksiin sovelluksia kuten Figman ja Google Docsin. TinyFloor pysyy läsnäolossa, puheluissa, kokouksissa, chatissa, taulussa ja näytön jakamisessa."
+            "a": "Ei. Teamflow'ssa jokainen voi avata toimistossa sovelluksia, kuten Figman ja Google Docsin. TinyFloor keskittyy läsnäoloon, puheluihin, kokouksiin, chattiin, tauluun ja näytönjakoon."
           },
           {
             "q": "Pitääkö kollegoideni asentaa jotain?",
             "a": "Ei. TinyFloor toimii selaimessa tietokoneella ja mobiilissa. He avaavat toimistosi kutsulinkin ja kirjautuvat."
           },
           {
-            "q": "Montako henkeä TinyFloor-toimistoon mahtuu?",
-            "a": "Enintään 3 henkeä Freessä ja pieni, enintään 15 hengen tiimi Prossa. Voit tehdä niin monta toimistoa kuin tarvitset."
+            "q": "Montako ihmistä TinyFloor-toimistoon mahtuu?",
+            "a": "Enintään 3 henkeä ilmaisversiossa ja enintään 15 hengen pieni tiimi Prossa. Voit luoda niin monta toimistoa kuin tarvitset."
           }
         ]
       },

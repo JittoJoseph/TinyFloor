@@ -534,11 +534,11 @@
       "teamflow": {
         "label": "Teamflow-Alternative",
         "meta": {
-          "title": "Teamflow-Alternative, die im Browser läuft",
-          "description": "Teamflow kostet $15 pro Person im Monat, mit Desktop-Apps. TinyFloor ist ein virtuelles Büro im Browser: kostenlos für 3 Personen, danach $29 im Monat für das ganze Team."
+          "title": "Teamflow-Alternative: Preise, Grenzen des Gratis-Tarifs und eine Browser-Option",
+          "description": "Teamflow ist kostenlos für 5 mit 45-Minuten-Meetings, danach 15–20 $ pro Mitarbeiter im Monat, in einer Desktop-App. Was ein kleines Team zahlt, was Teamflow besser kann und TinyFloor im Browser für 29 $ für das ganze Team."
         },
         "title": "Eine <em>Teamflow-Alternative</em> ganz ohne Download.",
-        "subtitle": "Teamflow rechnet pro Person ab und läuft als App auf deinem Computer. TinyFloor öffnet sich in einem Browser-Tab, auf Laptop oder Handy, zu einem Preis pro Büro.",
+        "subtitle": "Teamflow ist kostenlos für 5 mit 45-Minuten-Meetings, rechnet danach pro Mitarbeiter ab und läuft als App auf deinem Computer. TinyFloor öffnet sich in einem Browser-Tab, auf Laptop oder Handy, für einen Preis pro Büro: 29 $ im Monat.",
         "points": [
           {
             "title": "Ein Preis fürs Büro",
@@ -554,19 +554,23 @@
           }
         ],
         "them": {
-          "price": "$15 pro Person im Monat, jährlich abgerechnet",
-          "freePlan": "Bis zu 5 Personen, mit Meetings bis 45 Minuten",
+          "price": "Seed 15 $ pro Mitarbeiter im Monat bei jährlicher Abrechnung, 20 $ monatlich",
+          "freePlan": "Bis zu 5 Mitarbeiter, mit 45-Minuten-Meetings",
           "browser": "Desktop-Apps für Mac und Windows, mobil in der Beta",
           "screenShare": "Ja, mehrere gleichzeitig"
         },
         "faq": [
           {
             "q": "Was kostet Teamflow?",
-            "a": "Teamflow ist kostenlos für bis zu 5 Personen mit Meetings bis 45 Minuten. Seed kostet $15 und Business $25 pro Person im Monat, jährlich abgerechnet. TinyFloor ist kostenlos für bis zu 3 Personen und kostet $29 im Monat für das ganze Team."
+            "a": "Teamflow ist kostenlos für bis zu 5 Mitarbeiter mit 45-Minuten-Meetings. Seed kostet 15 $ pro Mitarbeiter im Monat bei jährlicher Abrechnung oder 20 $ monatlich, Business 25 $ jährlich oder 30 $ monatlich. TinyFloor ist kostenlos für bis zu 3 Personen und kostet 29 $ im Monat für das ganze Team."
+          },
+          {
+            "q": "Was kostet Teamflow für 10 Personen?",
+            "a": "Mit Seed 150 $ im Monat bei jährlicher Abrechnung (1.800 $ im Jahr) oder 200 $ bei monatlicher Abrechnung. TinyFloor kostet für dasselbe Team 29 $ im Monat."
           },
           {
             "q": "Hat TinyFloor die App-Integrationen von Teamflow?",
-            "a": "Nein. Teamflow bettet Apps wie Figma und Google Docs in Meetings ein. TinyFloor bleibt bei Präsenz, Anrufen, Meetings, Chat, einem Whiteboard und Bildschirmfreigabe."
+            "a": "Nein. Bei Teamflow kann jede Person Apps wie Figma und Google Docs im Büro öffnen. TinyFloor beschränkt sich auf Anwesenheit, Calls, Meetings, Chat, ein Whiteboard und Bildschirmfreigabe."
           },
           {
             "q": "Müssen meine Teammitglieder etwas installieren?",
@@ -574,7 +578,7 @@
           },
           {
             "q": "Wie viele Personen passen in ein TinyFloor-Büro?",
-            "a": "Bis zu 3 Personen mit Free und ein kleines Team von bis zu 15 mit Pro. Du kannst so viele Büros anlegen, wie du brauchst."
+            "a": "Bis zu 3 Personen im kostenlosen Tarif und ein kleines Team von bis zu 15 mit Pro. Du kannst so viele Büros anlegen, wie du brauchst."
           }
         ]
       },

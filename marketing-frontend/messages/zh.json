@@ -534,11 +534,11 @@
       "teamflow": {
         "label": "Teamflow 替代方案",
         "meta": {
-          "title": "在浏览器中运行的 Teamflow 替代方案",
-          "description": "Teamflow 每人每月 $15，需要桌面应用。TinyFloor 是浏览器里的虚拟办公室：3 人免费，之后整个团队每月 $29。"
+          "title": "Teamflow 替代品：价格、免费方案的限制，以及浏览器里的选择",
+          "description": "Teamflow 最多 5 人免费（会议最长 45 分钟），之后每位员工每月 $15–20，需要桌面应用。小团队要付多少、Teamflow 哪里更好，以及在浏览器里运行、整个团队 $29 的 TinyFloor。"
         },
         "title": "无需下载的 <em>Teamflow 替代方案。</em>",
-        "subtitle": "Teamflow 按人收费，以应用的形式运行在电脑上。TinyFloor 在浏览器标签页中打开，笔记本和手机都可以，每个办公室一个价格。",
+        "subtitle": "Teamflow 最多 5 人免费，会议最长 45 分钟，之后按员工收费，以应用形式装在电脑上。TinyFloor 在浏览器标签页里打开，电脑和手机都能用，每个办公室一个价格：每月 $29。",
         "points": [
           {
             "title": "整个办公室一个价",
@@ -554,27 +554,31 @@
           }
         ],
         "them": {
-          "price": "每人每月 $15，按年付费",
-          "freePlan": "最多 5 人，会议最长 45 分钟",
-          "browser": "Mac 和 Windows 桌面应用，移动版为测试版",
-          "screenShare": "支持，可同时多个"
+          "price": "Seed 按年付费每位员工每月 $15，按月付费 $20",
+          "freePlan": "最多 5 位员工，会议最长 45 分钟",
+          "browser": "Mac 和 Windows 桌面应用，手机版测试中",
+          "screenShare": "是，可多人同时共享"
         },
         "faq": [
           {
             "q": "Teamflow 多少钱？",
-            "a": "Teamflow 最多 5 人免费，会议最长 45 分钟。Seed 每人每月 $15，Business 每人每月 $25，均按年付费。TinyFloor 3 人以内免费，整个团队每月 $29。"
+            "a": "Teamflow 最多 5 位员工免费，会议最长 45 分钟。Seed 按年付费每位员工每月 $15，按月付费 $20；Business 按年 $25，按月 $30。TinyFloor 最多 3 人免费，整个团队每月 $29。"
+          },
+          {
+            "q": "10 个人用 Teamflow 要多少钱？",
+            "a": "Seed 按年付费每月 $150（每年 $1,800），按月付费每月 $200。同样的团队用 TinyFloor 每月 $29。"
           },
           {
             "q": "TinyFloor 有 Teamflow 那样的应用集成吗？",
-            "a": "没有。Teamflow 可以在会议中嵌入 Figma、Google 文档等应用。TinyFloor 专注于在线状态、通话、会议、聊天、白板和屏幕共享。"
+            "a": "没有。在 Teamflow 里，每个人都能在办公室中打开 Figma、Google Docs 等应用。TinyFloor 专注于在线状态、通话、会议、聊天、白板和屏幕共享。"
           },
           {
-            "q": "我的同事需要安装什么吗？",
-            "a": "不需要。TinyFloor 可以在电脑和手机浏览器中运行。他们打开办公室的邀请链接并登录即可。"
+            "q": "同事需要安装什么吗？",
+            "a": "不需要。TinyFloor 在电脑和手机的浏览器里运行。打开办公室的邀请链接并登录即可。"
           },
           {
             "q": "一个 TinyFloor 办公室能容纳多少人？",
-            "a": "Free 最多 3 人，Pro 面向最多 15 人的小团队。办公室想建几个就建几个。"
+            "a": "免费方案最多 3 人，Pro 适合最多 15 人的小团队。办公室可以按需创建多个。"
           }
         ]
       },

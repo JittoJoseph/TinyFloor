@@ -839,5 +839,184 @@
         "De prijzen, grenzen en functies van WorkAdventure komen van de prijspagina en de veelgestelde vragen over prijzen, gelezen in oktober 2026, in Amerikaanse dollars exclusief belasting. Wat daar niet stond, lieten we weg in plaats van te gokken. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van WorkAdventure voordat je koopt."
       ]
     }
+  ],
+  "teamflow": [
+    {
+      "title": "Teamflow en TinyFloor in één oogopslag",
+      "body": [
+        "Allebei brengen ze je team samen in één gedeeld kantoor waar je dichterbij komt om te praten. Teamflow is een desktop-app met apps in het kantoor; TinyFloor is een kantoor in pixel art in de browser met één prijs voor iedereen."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Teamflow",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Een team van 8, per maand",
+            "$ 120 jaarlijks, $ 160 maandelijks (Seed)",
+            "$ 29 voor het hele team"
+          ],
+          [
+            "Gratis abonnement",
+            "Tot 5 medewerkers, vergaderingen van 45 minuten, 10 gasten tegelijk",
+            "Tot 3 mensen, alle functies"
+          ],
+          [
+            "Hoe het geprijsd is",
+            "Per medewerker",
+            "Eén prijs voor het kantoor"
+          ],
+          [
+            "Waar het draait",
+            "Desktop-apps voor Mac en Windows, mobiel in bèta",
+            "De browser, op desktop en mobiel"
+          ],
+          [
+            "Vergaderingen",
+            "Onbeperkte duur op betaalde abonnementen",
+            "Geen tijdslimiet op welk abonnement dan ook"
+          ],
+          [
+            "Apps in het kantoor",
+            "Gedeelde apps, 5 tot onbeperkt per persoon afhankelijk van het abonnement",
+            "Whiteboard en schermdelen"
+          ],
+          [
+            "Gasten",
+            "10 tot 25 tegelijk afhankelijk van het abonnement",
+            "Iedereen komt binnen met een gratis account"
+          ]
+        ],
+        "note": "Gegevens over Teamflow van de prijspagina in oktober 2026, exclusief belasting."
+      }
+    },
+    {
+      "title": "Wat Teamflow kost per teamgrootte",
+      "body": [
+        "Het gratis abonnement dekt tot 5 medewerkers. Daarna kost Seed $ 15 per medewerker per maand bij een jaarabonnement of $ 20 per maand, en Business $ 25 of $ 30."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Teamflow Seed, maandelijks",
+          "Teamflow Seed, jaarlijks, per maand",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "6 mensen",
+            "$ 120",
+            "$ 90",
+            "$ 29"
+          ],
+          [
+            "8 mensen",
+            "$ 160",
+            "$ 120",
+            "$ 29"
+          ],
+          [
+            "10 mensen",
+            "$ 200",
+            "$ 150",
+            "$ 29"
+          ],
+          [
+            "12 mensen",
+            "$ 240",
+            "$ 180",
+            "$ 29"
+          ]
+        ],
+        "note": "Teamflow Seed voor $ 20 per medewerker maandelijks of $ 15 jaarlijks (prijspagina van Teamflow, oktober 2026). TinyFloor Pro is maandelijks; teams tot 3 blijven gratis."
+      }
+    },
+    {
+      "title": "Waarom kleine teams een alternatief voor Teamflow zoeken",
+      "items": [
+        {
+          "title": "Vergaderingen stoppen na 45 minuten op het gratis abonnement",
+          "body": "Prima voor een snelle afstemming, niet voor een planningssessie of een lang pairgesprek. Onbeperkte vergaderingen beginnen bij Seed."
+        },
+        {
+          "title": "De zesde persoon kost voor iedereen",
+          "body": "Het gratis abonnement dekt 5 medewerkers. Een team van 6 op Seed betaalt $ 90 per maand bij een jaarabonnement of $ 120 per maand."
+        },
+        {
+          "title": "Het is een app om te installeren",
+          "body": "Iedereen downloadt Teamflow voor Mac of Windows, en mobiel is in bèta. Een kantoor in de browser werkt op elke computer, ook die van een gast."
+        },
+        {
+          "title": "Meer dan sommige teams nodig hebben",
+          "body": "Gedeelde apps in het kantoor zijn handig voor workshops; een team dat vooral wil zien wie er is en wil praten, opent ze misschien nooit."
+        }
+      ]
+    },
+    {
+      "title": "Wat Teamflow beter doet",
+      "items": [
+        {
+          "title": "Apps in het kantoor",
+          "body": "Open gedeelde apps zoals Figma en Google Docs in de ruimte, zodat een vergadering er samen aan werkt. TinyFloor heeft een whiteboard en schermdelen, geen ingebouwde apps."
+        },
+        {
+          "title": "Meerdere schermen tegelijk",
+          "body": "Meer dan één persoon kan tegelijk delen, handig om werk naast elkaar te vergelijken."
+        },
+        {
+          "title": "Ruimte voor grotere teams",
+          "body": "Tot 200 mensen per verdieping en een Business-abonnement met meer gasten en onbeperkte apps. TinyFloor-kantoren zijn gemaakt voor kleine teams."
+        },
+        {
+          "title": "Een desktop-app",
+          "body": "Als je team liever een native app in het dock heeft, is Teamflow precies zo gebouwd."
+        }
+      ]
+    },
+    {
+      "title": "Wat past bij je team",
+      "items": [
+        {
+          "title": "TinyFloor, voor een klein team in de browser",
+          "body": "Voor een team van 4 tot 15 dat wil zien wie er is, wil praten zonder afspraak en wil vergaderen zonder tijdslimiet, zonder iets te installeren, voor één prijs."
+        },
+        {
+          "title": "Teamflow, voor workshops en grotere teams",
+          "body": "Als je gedeelde apps in vergaderingen wilt, meerdere schermen tegelijk, een desktop-app of ruimte voor tientallen mensen op een verdieping."
+        },
+        {
+          "title": "Teamflow gratis, voor 5 of minder",
+          "body": "Als vergaderingen van 45 minuten genoeg zijn en iedereen graag een app installeert, is het gratis abonnement misschien genoeg."
+        }
+      ]
+    },
+    {
+      "title": "Een team overzetten vanaf Teamflow",
+      "items": [
+        {
+          "title": "Maak een kantoor",
+          "detail": "Twee minuten",
+          "body": "Noem het naar het team. De vloer, de bureaus en de vergaderruimte staan klaar."
+        },
+        {
+          "title": "Deel één uitnodigingslink",
+          "detail": "In de teamchat",
+          "body": "Collega's loggen in met Google of e-mail en lopen binnen vanuit de browser. Niets te downloaden."
+        },
+        {
+          "title": "Werk er een gewone week",
+          "detail": "De standup in de vergaderruimte",
+          "body": "Houd Teamflow tot de week voorbij is en kijk dan welke het team echt opende."
+        }
+      ]
+    },
+    {
+      "title": "Hoe we vergeleken",
+      "body": [
+        "De prijzen, grenzen en functies van Teamflow komen van de prijspagina, gelezen in oktober 2026, in Amerikaanse dollars exclusief belasting. Wat daar niet stond, lieten we weg in plaats van te gokken. Wij maken TinyFloor, dus we zeggen duidelijk wat het niet doet. Prijzen veranderen: kijk op de pagina van Teamflow voordat je koopt."
+      ]
+    }
   ]
 }

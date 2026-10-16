@@ -839,5 +839,184 @@
         "WorkAdventures priser, gränser och funktioner kommer från dess prissida och dess vanliga frågor om priser, lästa i oktober 2026, i amerikanska dollar exklusive skatt. Det som inte stod där utelämnade vi i stället för att gissa. Vi gör TinyFloor, så vi säger tydligt vad det inte gör. Priser ändras: kontrollera WorkAdventures sida innan du köper."
       ]
     }
+  ],
+  "teamflow": [
+    {
+      "title": "Teamflow och TinyFloor i korthet",
+      "body": [
+        "Båda samlar teamet i ett gemensamt kontor där man rör sig närmare för att prata. Teamflow är en datorapp med appar i kontoret; TinyFloor är ett kontor i pixelkonst i webbläsaren med ett pris för alla."
+      ],
+      "table": {
+        "head": [
+          "",
+          "Teamflow",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "Ett team på 8, per månad",
+            "120 $ årsvis, 160 $ månadsvis (Seed)",
+            "29 $ för hela teamet"
+          ],
+          [
+            "Gratisplan",
+            "Upp till 5 anställda, möten på 45 minuter, 10 gäster samtidigt",
+            "Upp till 3 personer, alla funktioner"
+          ],
+          [
+            "Hur det prissätts",
+            "Per anställd",
+            "Ett pris för kontoret"
+          ],
+          [
+            "Var det körs",
+            "Datorappar för Mac och Windows, mobil i beta",
+            "Webbläsaren, på dator och mobil"
+          ],
+          [
+            "Möten",
+            "Obegränsad längd i betalplaner",
+            "Ingen tidsgräns i någon plan"
+          ],
+          [
+            "Appar i kontoret",
+            "Delade appar, 5 till obegränsat per person beroende på plan",
+            "Whiteboard och skärmdelning"
+          ],
+          [
+            "Gäster",
+            "10 till 25 samtidigt beroende på plan",
+            "Alla går in med ett gratis konto"
+          ]
+        ],
+        "note": "Uppgifter om Teamflow från dess prissida i oktober 2026, exklusive skatt."
+      }
+    },
+    {
+      "title": "Vad Teamflow kostar efter teamstorlek",
+      "body": [
+        "Gratisplanen täcker upp till 5 anställda. Därefter kostar Seed 15 $ per anställd och månad på årsplan eller 20 $ månad för månad, och Business 25 eller 30 $."
+      ],
+      "table": {
+        "head": [
+          "Team",
+          "Teamflow Seed, månadsvis",
+          "Teamflow Seed, årsvis, per månad",
+          "TinyFloor"
+        ],
+        "rows": [
+          [
+            "6 personer",
+            "120 $",
+            "90 $",
+            "29 $"
+          ],
+          [
+            "8 personer",
+            "160 $",
+            "120 $",
+            "29 $"
+          ],
+          [
+            "10 personer",
+            "200 $",
+            "150 $",
+            "29 $"
+          ],
+          [
+            "12 personer",
+            "240 $",
+            "180 $",
+            "29 $"
+          ]
+        ],
+        "note": "Teamflow Seed för 20 $ per anställd månadsvis eller 15 $ årsvis (Teamflows prissida, oktober 2026). TinyFloor Pro betalas månadsvis; team på upp till 3 förblir gratis."
+      }
+    },
+    {
+      "title": "Varför små team letar efter ett alternativ till Teamflow",
+      "items": [
+        {
+          "title": "Möten tar slut efter 45 minuter på gratisplanen",
+          "body": "Bra för en snabb avstämning, inte för en planeringssession eller ett långt parprogrammeringssamtal. Obegränsade möten börjar med Seed."
+        },
+        {
+          "title": "Den sjätte personen kostar för alla",
+          "body": "Gratisplanen täcker 5 anställda. Ett team på 6 på Seed betalar 90 $ per månad på årsplan eller 120 $ månadsvis."
+        },
+        {
+          "title": "Det är en app att installera",
+          "body": "Alla laddar ner Teamflow för Mac eller Windows, och mobilen är i beta. Ett kontor i webbläsaren fungerar på vilken dator som helst, även en gästs."
+        },
+        {
+          "title": "Mer än vissa team behöver",
+          "body": "Delade appar i kontoret är bra för workshops; ett team som mest vill se vem som är där och prata öppnar dem kanske aldrig."
+        }
+      ]
+    },
+    {
+      "title": "Vad Teamflow gör bättre",
+      "items": [
+        {
+          "title": "Appar i kontoret",
+          "body": "Öppna delade appar som Figma och Google Docs i rummet så att ett möte kan arbeta i dem tillsammans. TinyFloor har whiteboard och skärmdelning, inte inbäddade appar."
+        },
+        {
+          "title": "Flera skärmar samtidigt",
+          "body": "Fler än en person kan dela samtidigt, vilket hjälper när man jämför arbeten sida vid sida."
+        },
+        {
+          "title": "Plats för större team",
+          "body": "Upp till 200 personer per våning och en Business-plan med fler gäster och obegränsat med appar. TinyFloor-kontor är gjorda för små team."
+        },
+        {
+          "title": "En datorapp",
+          "body": "Om ditt team föredrar en inbyggd app i dockan är Teamflow byggt så."
+        }
+      ]
+    },
+    {
+      "title": "Vilket som passar ditt team",
+      "items": [
+        {
+          "title": "TinyFloor, för ett litet team i webbläsaren",
+          "body": "För ett team på 4 till 15 som vill se vem som är där, prata utan att boka och träffas utan tidsgräns, utan att installera något, för ett pris."
+        },
+        {
+          "title": "Teamflow, för workshops och större team",
+          "body": "Om du vill ha delade appar i möten, flera skärmar samtidigt, en datorapp eller plats för dussintals personer på en våning."
+        },
+        {
+          "title": "Teamflow gratis, för 5 eller färre",
+          "body": "Om möten på 45 minuter räcker och alla gärna installerar en app kan gratisplanen räcka."
+        }
+      ]
+    },
+    {
+      "title": "Flytta ett team från Teamflow",
+      "items": [
+        {
+          "title": "Skapa ett kontor",
+          "detail": "Två minuter",
+          "body": "Döp det efter teamet. Golvet, skrivborden och mötesrummet är klara."
+        },
+        {
+          "title": "Dela en inbjudningslänk",
+          "detail": "I teamchatten",
+          "body": "Kollegorna loggar in med Google eller e-post och går in från webbläsaren. Inget att ladda ner."
+        },
+        {
+          "title": "Jobba där en vanlig vecka",
+          "detail": "Standup i mötesrummet",
+          "body": "Behåll Teamflow tills veckan är slut och bestäm sedan vilket teamet faktiskt öppnade."
+        }
+      ]
+    },
+    {
+      "title": "Hur vi jämförde",
+      "body": [
+        "Teamflows priser, gränser och funktioner kommer från dess prissida, läst i oktober 2026, i amerikanska dollar exklusive skatt. Det som inte stod där utelämnade vi i stället för att gissa. Vi gör TinyFloor, så vi säger tydligt vad det inte gör. Priser ändras: kontrollera Teamflows sida innan du köper."
+      ]
+    }
   ]
 }

@@ -7,7 +7,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { locales, type Locale } from "@/lib/i18n/routing";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError } from "@/lib/api";
+import { api, ApiError, type InvitePolicy, type Welcome } from "@/lib/api";
 import { savedDevices, saveDevices } from "@/lib/media";
 import { setPref, usePrefs, type Prefs } from "@/lib/prefs";
 import { setTheme, useTheme, type ThemeChoice } from "@/lib/theme";
@@ -510,6 +510,14 @@ function OfficeSection() {
 
       {error && <p className="-mt-4 mb-6 text-[12.5px] text-destructive">{error}</p>}
 
+      {admin ? (
+        <WelcomeEditor officeId={office.id} welcome={office.welcome ?? null} me={user.id} />
+      ) : (
+        office.welcome && <WelcomeRead welcome={office.welcome} />
+      )}
+
+      {admin && <InvitePolicyRow officeId={office.id} policy={office.invitePolicy ?? "everyone"} />}
+
       {owner && others.length > 0 && <HandOver officeId={office.id} officeName={office.name} paid={office.plan !== "free"} members={others} />}
 
       <LeaveOrClose officeId={office.id} officeName={office.name} owner={owner} userId={user.id} />
@@ -692,5 +700,136 @@ function LeaveOrClose({ officeId, officeName, owner, userId }: { officeId: strin
         )}
       </Dialog>
     </>
+  );
+}
+
+const WELCOME_MAX = 600;
+
+/**
+ * The welcome note, for an admin to write: each person sees it once, the first
+ * time they walk onto the floor, signed by whoever wrote it. What to put in it
+ * (when the team meets, where to sit, who to ask) is what a newcomer would
+ * otherwise have to work out alone.
+ */
+function WelcomeEditor({ officeId, welcome, me }: { officeId: string; welcome: Welcome | null; me: string }) {
+  const t = useTranslations("office.settings");
+  const tc = useTranslations("common");
+  const { refresh } = useOfficeMaybe()!;
+  const [text, setText] = useState(welcome?.text ?? "");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [saved, setSaved] = useState(false);
+  const changed = text.trim() !== (welcome?.text ?? "");
+
+  const save = async () => {
+    setBusy(true);
+    setError(null);
+    try {
+      await api.updateOffice(officeId, { welcome: text });
+      await refresh();
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2000);
+    } catch (problem) {
+      setError(problem instanceof ApiError ? problem.message : t("wrong"));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const signed = welcome?.by && welcome.by !== me && welcome.byName ? t("welcomeBy", { name: welcome.byName }) : null;
+
+  return (
+    <Group title={t("welcome")} note={t("welcomeNote")}>
+      <div className="px-4 py-3.5">
+        <textarea
+          value={text}
+          rows={4}
+          maxLength={WELCOME_MAX}
+          disabled={busy}
+          aria-label={t("welcome")}
+          placeholder={t("welcomePlaceholder")}
+          onChange={(event) => setText(event.target.value)}
+          className="block w-full resize-y rounded-xl border border-border bg-card px-3.5 py-2.5 text-[16px] leading-relaxed text-foreground outline-none transition-colors placeholder:text-faint focus:border-foreground/35 disabled:opacity-60 sm:text-[14px]"
+        />
+        <div className="mt-2 flex min-h-9 items-center gap-3">
+          <span className="min-w-0 flex-1 truncate text-[12px] text-faint">
+            {signed ?? `${text.length} / ${WELCOME_MAX}`}
+          </span>
+          {saved && <span className="text-[12.5px] text-ok">{t("saved")}</span>}
+          {changed && (
+            <Button size="sm" className="h-9 px-4 text-[13px]" disabled={busy} onClick={save}>
+              {tc("save")}
+            </Button>
+          )}
+        </div>
+        {error && <p className="mt-1 text-[12.5px] text-destructive">{error}</p>}
+      </div>
+    </Group>
+  );
+}
+
+/** The welcome note as a member reads it again: the words, and who wrote them. */
+function WelcomeRead({ welcome }: { welcome: Welcome }) {
+  const t = useTranslations("office.settings");
+  return (
+    <Group title={t("welcome")}>
+      <div className="px-4 py-3.5">
+        <p className="whitespace-pre-line text-[13.5px] leading-relaxed text-foreground/85">{welcome.text}</p>
+        {welcome.by && welcome.byName && (
+          <div className="mt-3 flex items-center gap-2">
+            <Face seed={welcome.by} size={22} />
+            <span className="text-[12.5px] text-muted-foreground">{welcome.byName}</span>
+          </div>
+        )}
+      </div>
+    </Group>
+  );
+}
+
+/**
+ * Who can share the office's invite link: everyone (the default, since a team
+ * grows by its members bringing each other) or only admins, for an office that
+ * wants to decide who comes in.
+ */
+function InvitePolicyRow({ officeId, policy }: { officeId: string; policy: InvitePolicy }) {
+  const t = useTranslations("office.settings");
+  const { refresh } = useOfficeMaybe()!;
+  const [value, setValue] = useState<InvitePolicy>(policy);
+  const [error, setError] = useState<string | null>(null);
+
+  const change = async (next: InvitePolicy) => {
+    const before = value;
+    setValue(next);
+    setError(null);
+    try {
+      await api.updateOffice(officeId, { invitePolicy: next });
+      await refresh();
+    } catch (problem) {
+      setValue(before);
+      setError(problem instanceof ApiError ? problem.message : t("wrong"));
+    }
+  };
+
+  return (
+    <Group title={t("inviting")}>
+      <Row
+        title={t("whoInvites")}
+        description={value === "admins" ? t("whoInvitesAdmins") : t("whoInvitesEveryone")}
+        control={
+          <div className="w-44">
+            <Select value={value} onValueChange={(next) => void change(next as InvitePolicy)}>
+              <SelectTrigger className="h-9 bg-card text-[13px]" aria-label={t("whoInvites")}>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="everyone">{t("inviteEveryone")}</SelectItem>
+                <SelectItem value="admins">{t("inviteAdmins")}</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        }
+      />
+      {error && <p className="px-4 pb-3 text-[12.5px] text-destructive">{error}</p>}
+    </Group>
   );
 }

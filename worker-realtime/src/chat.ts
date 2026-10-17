@@ -23,7 +23,7 @@ import {
   type LobbyChatPage,
   type RoomTicket,
 } from "../../shared-protocol/src";
-import { TICKET_HEADER } from "./headers";
+import { readTicket, TICKET_HEADER } from "./headers";
 
 /** What the socket remembers about whoever is on it. */
 interface Attachment {
@@ -130,7 +130,7 @@ export class Chat extends DurableObject<Env> {
   private readonly attachments = new WeakMap<WebSocket, Attachment>();
 
   async fetch(request: Request): Promise<Response> {
-    const ticket = JSON.parse(request.headers.get(TICKET_HEADER) ?? "null") as RoomTicket | null;
+    const ticket = readTicket(request.headers.get(TICKET_HEADER));
     if (!ticket) return new Response("Unauthorized", { status: 401 });
 
     const pair = new WebSocketPair();

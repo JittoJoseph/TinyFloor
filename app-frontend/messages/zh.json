@@ -92,6 +92,7 @@
     "you": "{name}（你）",
     "aloneTitle": "楼层上只有你",
     "aloneBody": "发送链接，打开它的人会出现在你身旁。",
+    "aloneQuiet": "有其他人进来时，会显示在这里。",
     "inviteSomeone": "邀请某人"
   },
   "call": {
@@ -377,7 +378,18 @@
       "stay": "留下",
       "closeTitle": "关闭{office}？",
       "closeType": "输入“{name}”以确认。",
-      "keepOffice": "保留办公室"
+      "keepOffice": "保留办公室",
+      "welcome": "欢迎语",
+      "welcomeNote": "每个人第一次进入楼层时会看到一次，并署上你的名字。",
+      "welcomePlaceholder": "团队什么时候碰面、坐在哪里、有问题找谁……",
+      "welcomeBy": "由 {name} 撰写",
+      "saved": "已保存",
+      "inviting": "邀请",
+      "whoInvites": "谁可以邀请",
+      "whoInvitesEveryone": "办公室里的任何人都可以分享邀请链接。",
+      "whoInvitesAdmins": "只有管理员可以查看和分享邀请链接。",
+      "inviteEveryone": "所有人",
+      "inviteAdmins": "仅管理员"
     },
     "profile": {
       "changePassword": "修改密码",
@@ -745,5 +757,36 @@
     "notNow": "暂不",
     "claimed": "这里现在是你的工位了",
     "hint": "选一个工位坐下吧，它可以成为你的。"
+  },
+  "note": {
+    "title": "状态备注",
+    "set": "设置状态备注",
+    "clear": "清除备注",
+    "placeholder": "你在忙什么？",
+    "emoji": "选择表情",
+    "clearAfter": "清除时间",
+    "save": "保存",
+    "failed": "没有保存成功，请重试。",
+    "presets": {
+      "focus": "专注中",
+      "lunch": "午饭",
+      "back": "马上回来",
+      "sick": "病假",
+      "holiday": "休假中"
+    },
+    "lasting": {
+      "never": "不清除",
+      "m30": "30 分钟",
+      "h1": "1 小时",
+      "h4": "4 小时",
+      "today": "今天",
+      "week": "本周"
+    },
+    "keep": "不变（{time}）"
+  },
+  "welcome": {
+    "title": "欢迎来到{office}",
+    "walkIn": "进入",
+    "close": "关闭"
   }
 }

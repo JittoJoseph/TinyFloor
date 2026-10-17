@@ -11,7 +11,7 @@ import { api, ApiError } from "@/lib/api";
 import { lobbyPath, officeChatPath, officePath, officeSettingsPath, shareUrl } from "@/lib/links";
 import { useInvite } from "./Invite";
 import { shareLink } from "@/lib/share";
-import { useFloor, useFloorStatus, walkToPerson } from "@/lib/floor";
+import { useFloor, useFloorStatus, useMyNote, walkToPerson } from "@/lib/floor";
 import { Button } from "@/components/motion/button/base";
 import { Face } from "@/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
@@ -52,6 +52,10 @@ function OfficePeople() {
   // Taking someone out of the office (or yourself) asks first: keeping them is the easy answer.
   const [removing, setRemoving] = useState<{ id: string; name: string; isMe: boolean } | null>(null);
   const floor = useFloorStatus();
+  // On the floor, the note as it is this second; otherwise as the office last read it.
+  const floorPeople = useFloor();
+  const liveNotes = new Map(floorPeople.map((one) => [one.id, one.note ?? null]));
+  const myNote = useMyNote();
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [onlyHere, setOnlyHere] = useState(false);
@@ -177,6 +181,7 @@ function OfficePeople() {
                 name={member.displayName}
                 detail={member.email ?? t("noEmail")}
                 presence={floor.get(member.id) ?? null}
+                note={isMe ? myNote : liveNotes.has(member.id) ? liveNotes.get(member.id) : (member.status ?? null)}
                 role={owner ? t("owner") : t(member.role)}
                 joinedAt={member.joinedAt}
                 isMe={isMe}

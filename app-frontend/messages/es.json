@@ -92,6 +92,7 @@
     "you": "{name} (tú)",
     "aloneTitle": "Solo tú en la planta",
     "aloneBody": "Envía el enlace y quien lo abra aparecerá a tu lado.",
+    "aloneQuiet": "Cuando entre alguien más, aparecerá aquí.",
     "inviteSomeone": "Invitar a alguien"
   },
   "call": {
@@ -377,7 +378,18 @@
       "stay": "Quedarme",
       "closeTitle": "¿Cerrar {office}?",
       "closeType": "Escribe {name} para confirmar.",
-      "keepOffice": "Conservar la oficina"
+      "keepOffice": "Conservar la oficina",
+      "welcome": "Mensaje de bienvenida",
+      "welcomeNote": "Cada persona lo ve una vez, la primera vez que entra en la planta, firmado por ti.",
+      "welcomePlaceholder": "Cuándo se reúne el equipo, dónde sentarse, a quién preguntar…",
+      "welcomeBy": "Escrito por {name}",
+      "saved": "Guardado",
+      "inviting": "Invitaciones",
+      "whoInvites": "Quién puede invitar",
+      "whoInvitesEveryone": "Cualquiera en la oficina puede compartir el enlace de invitación.",
+      "whoInvitesAdmins": "Solo los admins pueden ver y compartir el enlace de invitación.",
+      "inviteEveryone": "Todos",
+      "inviteAdmins": "Solo admins"
     },
     "profile": {
       "changePassword": "Cambiar contraseña",
@@ -745,5 +757,36 @@
     "notNow": "Ahora no",
     "claimed": "Este es tu escritorio ahora",
     "hint": "Elige un escritorio y siéntate. Puede ser tuyo."
+  },
+  "note": {
+    "title": "Nota de estado",
+    "set": "Poner una nota de estado",
+    "clear": "Borrar nota",
+    "placeholder": "¿En qué andas?",
+    "emoji": "Elige un emoji",
+    "clearAfter": "Borrar tras",
+    "save": "Guardar",
+    "failed": "No se ha guardado. Inténtalo de nuevo.",
+    "presets": {
+      "focus": "Concentrado",
+      "lunch": "Comiendo",
+      "back": "Vuelvo enseguida",
+      "sick": "De baja",
+      "holiday": "De vacaciones"
+    },
+    "lasting": {
+      "never": "No borrar",
+      "m30": "30 minutos",
+      "h1": "1 hora",
+      "h4": "4 horas",
+      "today": "Hoy",
+      "week": "Esta semana"
+    },
+    "keep": "Sin cambios ({time})"
+  },
+  "welcome": {
+    "title": "Bienvenido a {office}",
+    "walkIn": "Entrar",
+    "close": "Cerrar"
   }
 }

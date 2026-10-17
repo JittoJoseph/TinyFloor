@@ -23,6 +23,7 @@ import { OfficeSwitcher } from "./OfficeSwitcher";
 import { PlaceProvider, type Place } from "./place";
 import { Entering } from "./Entering";
 import { FloorNudges } from "./FloorNudges";
+import { WelcomeNote } from "./WelcomeNote";
 import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
 import { dmChannelId } from "@shared/chat";
 import { rememberOffice } from "@/lib/lastOffice";
@@ -263,6 +264,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
                     settingsHref={settingsPath}
                   />
                   {!onChat && <FloorNudges chatPath={(channel) => officeChatPath(office.id, channel)} />}
+                  <WelcomeNote />
                 </>
               }
             >

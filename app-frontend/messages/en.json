@@ -92,6 +92,7 @@
     "you": "{name} (you)",
     "aloneTitle": "Just you on the floor",
     "aloneBody": "Send the link, and whoever opens it walks in beside you.",
+    "aloneQuiet": "When someone else comes in, they'll show up here.",
     "inviteSomeone": "Invite someone"
   },
   "call": {
@@ -377,7 +378,18 @@
       "stay": "Stay",
       "closeTitle": "Close {office}?",
       "closeType": "Type {name} to confirm.",
-      "keepOffice": "Keep the office"
+      "keepOffice": "Keep the office",
+      "welcome": "Welcome note",
+      "welcomeNote": "Each person sees it once, the first time they walk onto the floor, signed by you.",
+      "welcomePlaceholder": "When the team meets, where to sit, who to ask…",
+      "welcomeBy": "Written by {name}",
+      "saved": "Saved",
+      "inviting": "Inviting",
+      "whoInvites": "Who can invite people",
+      "whoInvitesEveryone": "Anyone in the office can share its invite link.",
+      "whoInvitesAdmins": "Only admins can see and share the invite link.",
+      "inviteEveryone": "Everyone",
+      "inviteAdmins": "Only admins"
     },
     "profile": {
       "changePassword": "Change password",
@@ -745,5 +757,36 @@
     "notNow": "Not now",
     "claimed": "This is your desk now",
     "hint": "Pick a desk and sit down. It can be yours."
+  },
+  "note": {
+    "title": "Status note",
+    "set": "Set a status note",
+    "clear": "Clear note",
+    "placeholder": "What are you up to?",
+    "emoji": "Choose an emoji",
+    "clearAfter": "Clear after",
+    "save": "Save",
+    "failed": "That didn't save. Try again.",
+    "presets": {
+      "focus": "Heads down",
+      "lunch": "Lunch",
+      "back": "Back soon",
+      "sick": "Out sick",
+      "holiday": "On holiday"
+    },
+    "lasting": {
+      "never": "Don't clear",
+      "m30": "30 minutes",
+      "h1": "1 hour",
+      "h4": "4 hours",
+      "today": "Today",
+      "week": "This week"
+    },
+    "keep": "Unchanged ({time})"
+  },
+  "welcome": {
+    "title": "Welcome to {office}",
+    "walkIn": "Walk in",
+    "close": "Close"
   }
 }

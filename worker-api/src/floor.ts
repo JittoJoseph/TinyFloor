@@ -2,6 +2,7 @@ import {
   LOBBY_CHAT,
   LOBBY_COPY_CAPACITY,
   LOBBY_ROOM,
+  liveNote,
   signTicket,
   TICKET_LIFETIME_MS,
   type RoomRole,
@@ -99,6 +100,8 @@ async function ticketFor(
   /** An office's meeting hours a month, from its plan; lobby copies keep their own. */
   hours?: number,
 ): Promise<{ ticket: string; url: string }> {
+  // Walking in with your status note, so the floor shows it from the first frame.
+  const note = user.isGuest ? null : liveNote(user.status);
   const claims: RoomTicket = {
     v: 1,
     room,
@@ -108,6 +111,7 @@ async function ticketFor(
     role,
     cap,
     ...(hours === undefined ? {} : { hours }),
+    ...(note ? { note } : {}),
     exp: Date.now() + TICKET_LIFETIME_MS,
   };
   const path = room === LOBBY_ROOM ? LOBBY_ROOM : `rooms/${room}`;

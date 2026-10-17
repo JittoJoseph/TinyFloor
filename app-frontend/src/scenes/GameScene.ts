@@ -1,4 +1,5 @@
 import { onFloorShown, WALK_TO_PERSON_EVENT, WAVE_EVENT } from "../lib/floor";
+import type { StatusNote } from "@shared/messages";
 import * as Phaser from "phaser";
 import type { RoomTicket } from "@/lib/api";
 import { RoomSocket } from "../lib/RoomSocket";
@@ -184,6 +185,10 @@ class GameScene extends Phaser.Scene {
     this.listen("statusChange", (event: CustomEvent) => {
       this.wsManager.send({ t: "status", status: event.detail.status });
       this.playerManager.updatePlayerStatus(this.playerId, event.detail.status);
+    });
+    this.listen("noteChange", (event: CustomEvent<{ note: StatusNote | null }>) => {
+      this.wsManager.send({ t: "note", note: event.detail.note });
+      this.playerManager.updatePlayerNote(this.playerId, event.detail.note);
     });
     this.listen(WAVE_EVENT, (event: CustomEvent<{ id: string }>) => this.wsManager.send({ t: "wave", to: event.detail.id }));
     this.listen("chatFocused", () => this.movementManager.setInputEnabled(false));

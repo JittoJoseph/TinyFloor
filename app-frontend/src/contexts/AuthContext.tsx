@@ -4,6 +4,7 @@ import React, { createContext, useCallback, useContext, useEffect, useLayoutEffe
 import { analyticsConfigured, withPostHog } from "@/lib/analytics";
 import { api, type SessionUser } from "@/lib/api";
 import { readIdentity } from "@/lib/identity";
+import { adoptMyNote } from "@/lib/floor";
 import { posthogLog } from "@/lib/posthog-log";
 import { recallSession, rememberSession } from "@/lib/session-hint";
 import { rememberAccount } from "@/lib/accountHint";
@@ -30,6 +31,8 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<SessionUser | null>(null);
+  // Your status note comes with your account; the floor and your menu read it from there.
+  useEffect(() => adoptMyNote(user && !user.guest ? (user.status ?? null) : null), [user]);
   const [isLoading, setIsLoading] = useState(true);
   const [introduceFailed, setIntroduceFailed] = useState(false);
   const identifiedUserId = useRef<string | null>(null);

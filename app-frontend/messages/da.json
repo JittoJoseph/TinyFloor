@@ -92,6 +92,7 @@
     "you": "{name} (dig)",
     "aloneTitle": "Kun dig på gulvet",
     "aloneBody": "Send linket, så står den, der åbner det, lige ved siden af dig.",
+    "aloneQuiet": "Når en anden kommer ind, dukker de op her.",
     "inviteSomeone": "Invitér nogen"
   },
   "call": {
@@ -377,7 +378,18 @@
       "stay": "Bliv",
       "closeTitle": "Luk {office}?",
       "closeType": "Skriv {name} for at bekræfte.",
-      "keepOffice": "Behold kontoret"
+      "keepOffice": "Behold kontoret",
+      "welcome": "Velkomstnote",
+      "welcomeNote": "Alle ser den én gang, første gang de træder ind på gulvet, med dit navn under.",
+      "welcomePlaceholder": "Hvornår teamet mødes, hvor man sidder, hvem man spørger…",
+      "welcomeBy": "Skrevet af {name}",
+      "saved": "Gemt",
+      "inviting": "Invitationer",
+      "whoInvites": "Hvem kan invitere",
+      "whoInvitesEveryone": "Alle på kontoret kan dele invitationslinket.",
+      "whoInvitesAdmins": "Kun admins kan se og dele invitationslinket.",
+      "inviteEveryone": "Alle",
+      "inviteAdmins": "Kun admins"
     },
     "profile": {
       "changePassword": "Skift adgangskode",
@@ -745,5 +757,36 @@
     "notNow": "Ikke nu",
     "claimed": "Det er dit skrivebord nu",
     "hint": "Vælg et skrivebord og sæt dig. Det kan blive dit."
+  },
+  "note": {
+    "title": "Statusnote",
+    "set": "Sæt en statusnote",
+    "clear": "Ryd note",
+    "placeholder": "Hvad laver du?",
+    "emoji": "Vælg en emoji",
+    "clearAfter": "Ryd efter",
+    "save": "Gem",
+    "failed": "Det blev ikke gemt. Prøv igen.",
+    "presets": {
+      "focus": "Fokuseret",
+      "lunch": "Frokost",
+      "back": "Tilbage om lidt",
+      "sick": "Syg",
+      "holiday": "På ferie"
+    },
+    "lasting": {
+      "never": "Ryd ikke",
+      "m30": "30 minutter",
+      "h1": "1 time",
+      "h4": "4 timer",
+      "today": "I dag",
+      "week": "Denne uge"
+    },
+    "keep": "Uændret ({time})"
+  },
+  "welcome": {
+    "title": "Velkommen til {office}",
+    "walkIn": "Gå ind",
+    "close": "Luk"
   }
 }

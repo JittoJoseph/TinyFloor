@@ -102,3 +102,21 @@ work happens. What we don't build, though each would raise usage numbers:
   settings, your other offices, a new one. The demo office isn't there, or on
   the screen after stepping out of an office; someone with an office has no
   use for it.
+- **A status note says why you're away** (17 October). Most of a remote team
+  is off the floor most of the day, and "Not on the floor" alone reads as
+  absent; a few words and an emoji ("🌴 On holiday until Monday") answer the
+  question before anyone asks it. The note shows on your name tag, the card
+  when someone walks up, People, the presence dock and your menu, and stays
+  while you're signed out. The five presets each clear themselves after the
+  time that fits (lunch an hour, sick until midnight), as Slack's do, so a
+  stale note doesn't sit there for a week. Guests don't get one.
+- **The welcome note is signed by a person**. An admin writes a few lines
+  (when standup is, where to sit, who to ask) and each new member sees it
+  once, the first time they reach the floor, with the writer's face and name
+  under it. The first minutes in a new office decide whether someone comes
+  back; a note from a teammate makes it their team's place, not an empty
+  tool. The writer never sees their own note pop up.
+- **Who can invite** is everyone by default, which is how a team grows
+  without asking. An admin can limit it to admins, and then members see no
+  invite button anywhere, and the empty floor stops telling them to send the
+  link.

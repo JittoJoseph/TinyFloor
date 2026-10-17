@@ -92,6 +92,7 @@
     "you": "{name} (나)",
     "aloneTitle": "층에 나만 있어요",
     "aloneBody": "링크를 보내면 연 사람이 바로 옆에 나타나요.",
+    "aloneQuiet": "다른 사람이 들어오면 여기에 표시돼요.",
     "inviteSomeone": "누군가 초대하기"
   },
   "call": {
@@ -377,7 +378,18 @@
       "stay": "남기",
       "closeTitle": "{office}을(를) 닫을까요?",
       "closeType": "확인하려면 {name}을(를) 입력하세요.",
-      "keepOffice": "사무실 유지"
+      "keepOffice": "사무실 유지",
+      "welcome": "환영 메시지",
+      "welcomeNote": "처음 층에 들어올 때 한 번, 내 이름과 함께 보여요.",
+      "welcomePlaceholder": "팀이 모이는 시간, 앉을 자리, 물어볼 사람…",
+      "welcomeBy": "{name} 님이 작성",
+      "saved": "저장됨",
+      "inviting": "초대",
+      "whoInvites": "초대할 수 있는 사람",
+      "whoInvitesEveryone": "사무실의 누구나 초대 링크를 공유할 수 있어요.",
+      "whoInvitesAdmins": "관리자만 초대 링크를 보고 공유할 수 있어요.",
+      "inviteEveryone": "모두",
+      "inviteAdmins": "관리자만"
     },
     "profile": {
       "changePassword": "비밀번호 변경",
@@ -745,5 +757,36 @@
     "notNow": "나중에",
     "claimed": "이제 여기가 내 책상이에요",
     "hint": "책상을 골라 앉아 보세요. 내 책상으로 만들 수 있어요."
+  },
+  "note": {
+    "title": "상태 메모",
+    "set": "상태 메모 설정",
+    "clear": "메모 지우기",
+    "placeholder": "지금 무엇을 하고 있나요?",
+    "emoji": "이모지 선택",
+    "clearAfter": "지우기",
+    "save": "저장",
+    "failed": "저장하지 못했어요. 다시 시도해 주세요.",
+    "presets": {
+      "focus": "집중 중",
+      "lunch": "점심",
+      "back": "곧 돌아올게요",
+      "sick": "병가",
+      "holiday": "휴가 중"
+    },
+    "lasting": {
+      "never": "지우지 않기",
+      "m30": "30분",
+      "h1": "1시간",
+      "h4": "4시간",
+      "today": "오늘",
+      "week": "이번 주"
+    },
+    "keep": "그대로 ({time})"
+  },
+  "welcome": {
+    "title": "{office}에 오신 걸 환영해요",
+    "walkIn": "들어가기",
+    "close": "닫기"
   }
 }

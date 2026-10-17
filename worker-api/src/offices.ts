@@ -1,8 +1,11 @@
+import { liveNote } from "../../shared-protocol/src";
 import {
   cleanName,
+  INVITE_POLICIES,
   realtime,
   requireOffice,
   seatsUsed,
+  type InvitePolicy,
   type Office,
   type OfficeRole,
 } from "./access";
@@ -10,7 +13,7 @@ import { endBillingForClosing, endTrials, startTrialIfFull, trialWaiting } from 
 import { hashToken, randomToken } from "./crypto";
 import { HttpError, json, readJson } from "./http";
 import type { Router } from "./router";
-import { requireAccount, requireUser } from "./session";
+import { noteFrom, requireAccount, requireUser } from "./session";
 
 /** An invite code: 16 random bytes, base64url, so the link stays short enough to paste anywhere. */
 function inviteCode(): string {
@@ -55,12 +58,36 @@ export function officeRoutes(router: Router): void {
       return json({ office: officeJson(office, await seatsUsed(env, params.id)) });
     })
 
+    // An admin changing the office: its name, its welcome note, who can invite. Any of them, in one go.
     .add("PATCH", "/v1/offices/:id", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       await requireOffice(env, params.id, user.id, ["admin"]);
-      const name = cleanName((await readJson(request)).name);
-      if (!name) throw new HttpError(400, "name_required", "Name the office");
-      await env.DB.prepare("UPDATE offices SET name = ? WHERE id = ?").bind(name, params.id).run();
+      const body = await readJson(request);
+      const sets: string[] = [];
+      const values: (string | null)[] = [];
+      if (body.name !== undefined) {
+        const name = cleanName(body.name);
+        if (!name) throw new HttpError(400, "name_required", "Name the office");
+        sets.push("name = ?");
+        values.push(name);
+      }
+      if (body.welcome !== undefined) {
+        // Whoever writes it signs it; clearing it clears the signature too.
+        const welcome = cleanWelcome(body.welcome);
+        sets.push("welcome = ?", "welcome_by = ?");
+        values.push(welcome, welcome ? user.id : null);
+      }
+      if (body.invitePolicy !== undefined) {
+        if (!INVITE_POLICIES.includes(body.invitePolicy as InvitePolicy)) {
+          throw new HttpError(400, "bad_invite_policy", "Everyone or admins");
+        }
+        sets.push("invite_policy = ?");
+        values.push(body.invitePolicy as string);
+      }
+      if (!sets.length) throw new HttpError(400, "nothing_to_change", "Nothing to change");
+      await env.DB.prepare(`UPDATE offices SET ${sets.join(", ")} WHERE id = ?`)
+        .bind(...values, params.id)
+        .run();
       const office = await requireOffice(env, params.id, user.id);
       return json({ office: officeJson(office, await seatsUsed(env, params.id)) });
     })
@@ -138,7 +165,10 @@ export function officeRoutes(router: Router): void {
     // The office's one invite link, for anyone in it to share; made the first time it is asked for.
     .add("GET", "/v1/offices/:id/invite", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
-      await requireOffice(env, params.id, user.id);
+      const office = await requireOffice(env, params.id, user.id);
+      if (office.invitePolicy === "admins" && office.role !== "admin") {
+        throw new HttpError(403, "admins_invite", "Only an admin can invite people to this office");
+      }
       await env.DB.prepare("UPDATE offices SET invite_code = ? WHERE id = ? AND invite_code IS NULL")
         .bind(inviteCode(), params.id)
         .run();
@@ -269,7 +299,7 @@ export async function closeOffice(env: Env, officeId: string): Promise<void> {
 /** Everyone in an office, oldest member first. */
 export async function membersOf(env: Env, officeId: string) {
   const { results } = await env.DB.prepare(
-    `SELECT u.id, u.display_name, u.character, u.email, m.role, m.joined_at
+    `SELECT u.id, u.display_name, u.character, u.email, m.role, m.joined_at, u.status_emoji, u.status_text, u.status_until
      FROM memberships m JOIN users u ON u.id = m.user_id
      WHERE m.office_id = ? ORDER BY m.joined_at`,
   )
@@ -281,6 +311,9 @@ export async function membersOf(env: Env, officeId: string) {
       email: string | null;
       role: OfficeRole;
       joined_at: number;
+      status_emoji: string | null;
+      status_text: string | null;
+      status_until: number | null;
     }>();
   return results.map((row) => ({
     id: row.id,
@@ -289,6 +322,7 @@ export async function membersOf(env: Env, officeId: string) {
     email: row.email,
     role: row.role,
     joinedAt: row.joined_at,
+    status: liveNote(noteFrom(row)),
   }));
 }
 
@@ -311,5 +345,25 @@ export function officeJson(office: Office, members: number) {
     owner: office.ownerId,
     trialEndsAt: office.trialEndsAt,
     trialOpen: office.trialOpen,
+    welcome: office.welcome,
+    invitePolicy: office.invitePolicy,
   };
+}
+
+export const WELCOME_MAX = 600;
+
+/** A welcome note: its own lines kept, no more than one blank line between them, trimmed to length. Empty is none. */
+export function cleanWelcome(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const text = value
+    .replace(/\r\n?/g, "\n")
+    .replace(/[\p{Cc}\p{Cf}]/gu, (char) => (char === "\n" ? char : ""))
+    .split("\n")
+    .map((line) => line.replace(/\s+/g, " ").trim())
+    .join("\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim()
+    .slice(0, WELCOME_MAX)
+    .trim();
+  return text || null;
 }

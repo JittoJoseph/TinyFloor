@@ -92,6 +92,7 @@
     "you": "{name} (você)",
     "aloneTitle": "Só você no andar",
     "aloneBody": "Envie o link, e quem abrir aparece ao seu lado.",
+    "aloneQuiet": "Quando mais alguém entrar, aparece aqui.",
     "inviteSomeone": "Convidar alguém"
   },
   "call": {
@@ -377,7 +378,18 @@
       "stay": "Ficar",
       "closeTitle": "Fechar {office}?",
       "closeType": "Digite {name} para confirmar.",
-      "keepOffice": "Manter o escritório"
+      "keepOffice": "Manter o escritório",
+      "welcome": "Mensagem de boas-vindas",
+      "welcomeNote": "Cada pessoa vê uma vez, na primeira vez que entra no andar, assinada por você.",
+      "welcomePlaceholder": "Quando a equipe se reúne, onde sentar, a quem perguntar…",
+      "welcomeBy": "Escrita por {name}",
+      "saved": "Salvo",
+      "inviting": "Convites",
+      "whoInvites": "Quem pode convidar",
+      "whoInvitesEveryone": "Qualquer pessoa do escritório pode compartilhar o link de convite.",
+      "whoInvitesAdmins": "Só admins podem ver e compartilhar o link de convite.",
+      "inviteEveryone": "Todos",
+      "inviteAdmins": "Só admins"
     },
     "profile": {
       "changePassword": "Alterar senha",
@@ -745,5 +757,36 @@
     "notNow": "Agora não",
     "claimed": "Esta é sua mesa agora",
     "hint": "Escolha uma mesa e sente-se. Ela pode ser sua."
+  },
+  "note": {
+    "title": "Nota de status",
+    "set": "Definir nota de status",
+    "clear": "Limpar nota",
+    "placeholder": "O que você está fazendo?",
+    "emoji": "Escolha um emoji",
+    "clearAfter": "Limpar depois de",
+    "save": "Salvar",
+    "failed": "Não foi salvo. Tente de novo.",
+    "presets": {
+      "focus": "Concentrado",
+      "lunch": "Almoço",
+      "back": "Volto já",
+      "sick": "Doente",
+      "holiday": "De férias"
+    },
+    "lasting": {
+      "never": "Não limpar",
+      "m30": "30 minutos",
+      "h1": "1 hora",
+      "h4": "4 horas",
+      "today": "Hoje",
+      "week": "Esta semana"
+    },
+    "keep": "Sem mudança ({time})"
+  },
+  "welcome": {
+    "title": "Boas-vindas a {office}",
+    "walkIn": "Entrar",
+    "close": "Fechar"
   }
 }

@@ -92,6 +92,7 @@
     "you": "{name} (du)",
     "aloneTitle": "Nur du auf der Fläche",
     "aloneBody": "Schick den Link – wer ihn öffnet, steht gleich neben dir.",
+    "aloneQuiet": "Sobald jemand anderes reinkommt, erscheint er hier.",
     "inviteSomeone": "Jemanden einladen"
   },
   "call": {
@@ -377,7 +378,18 @@
       "stay": "Bleiben",
       "closeTitle": "{office} schließen?",
       "closeType": "Gib {name} ein, um zu bestätigen.",
-      "keepOffice": "Büro behalten"
+      "keepOffice": "Büro behalten",
+      "welcome": "Willkommensnotiz",
+      "welcomeNote": "Jede Person sieht sie einmal, wenn sie die Fläche zum ersten Mal betritt, mit deinem Namen darunter.",
+      "welcomePlaceholder": "Wann sich das Team trifft, wo man sitzt, wen man fragt …",
+      "welcomeBy": "Geschrieben von {name}",
+      "saved": "Gespeichert",
+      "inviting": "Einladen",
+      "whoInvites": "Wer Leute einladen kann",
+      "whoInvitesEveryone": "Alle im Büro können den Einladungslink teilen.",
+      "whoInvitesAdmins": "Nur Admins können den Einladungslink sehen und teilen.",
+      "inviteEveryone": "Alle",
+      "inviteAdmins": "Nur Admins"
     },
     "profile": {
       "changePassword": "Passwort ändern",
@@ -745,5 +757,36 @@
     "notNow": "Nicht jetzt",
     "claimed": "Das ist jetzt dein Schreibtisch",
     "hint": "Such dir einen Schreibtisch und setz dich. Er kann deiner werden."
+  },
+  "note": {
+    "title": "Statusnotiz",
+    "set": "Statusnotiz festlegen",
+    "clear": "Notiz löschen",
+    "placeholder": "Was machst du gerade?",
+    "emoji": "Emoji wählen",
+    "clearAfter": "Löschen nach",
+    "save": "Speichern",
+    "failed": "Das wurde nicht gespeichert. Versuch es nochmal.",
+    "presets": {
+      "focus": "Konzentriert",
+      "lunch": "Mittagspause",
+      "back": "Gleich zurück",
+      "sick": "Krank",
+      "holiday": "Im Urlaub"
+    },
+    "lasting": {
+      "never": "Nicht löschen",
+      "m30": "30 Minuten",
+      "h1": "1 Stunde",
+      "h4": "4 Stunden",
+      "today": "Heute",
+      "week": "Diese Woche"
+    },
+    "keep": "Unverändert ({time})"
+  },
+  "welcome": {
+    "title": "Willkommen bei {office}",
+    "walkIn": "Reingehen",
+    "close": "Schließen"
   }
 }

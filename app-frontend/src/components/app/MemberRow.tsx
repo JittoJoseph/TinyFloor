@@ -6,6 +6,8 @@ import { Footprints, MessageSquare, UserRound } from "@/components/ui/icons";
 import { Face, type Presence } from "@/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
 import { cn } from "@/lib/utils";
+import type { StatusNote } from "@shared/messages";
+import { noteLine } from "./StatusNote";
 
 const STATUS_DOT: Record<string, string> = {
   available: "bg-ok",
@@ -19,7 +21,7 @@ export const PRESENCE_ORDER: Record<string, number> = { available: 0, in_call: 1
 
 /**
  * A person as a row of the People list: who they are, whether they're on the
- * floor and how, their role, and the two things you'd do next (write to them,
+ * floor and how (or the note they left, even while away), their role, and the two things you'd do next (write to them,
  * walk over) as quiet buttons at the end.
  */
 export function MemberRow({
@@ -27,6 +29,7 @@ export function MemberRow({
   name,
   detail,
   presence,
+  note,
   role,
   joinedAt,
   isMe,
@@ -41,6 +44,8 @@ export function MemberRow({
   detail?: string | null;
   /** Their status on the floor, or null when they are not on it. */
   presence: Presence;
+  /** Their status note, which says more than the status, so it takes its place. */
+  note?: StatusNote | null;
   /** "Owner", "Admin", "Member": already in words. */
   role?: string;
   joinedAt?: number;
@@ -67,12 +72,14 @@ export function MemberRow({
         <p data-ph-mask className="truncate text-[12.5px] text-muted-foreground">
           {detail || t("guest")}
         </p>
+        {/* On a phone the status column is gone, so a note goes under the name. */}
+        {note && <p className="truncate text-[12.5px] text-foreground/80 sm:hidden">{noteLine(note)}</p>}
       </div>
 
-      <span className="hidden w-36 shrink-0 items-center gap-2 text-[12.5px] sm:flex">
+      <span className="hidden w-44 shrink-0 items-center gap-2 text-[12.5px] sm:flex">
         <span className={cn("size-1.5 shrink-0 rounded-full", onFloor ? STATUS_DOT[presence!] : "bg-faint")} />
-        <span className={cn("truncate", onFloor ? "text-foreground" : "text-muted-foreground")}>
-          {onFloor ? tStatus(`${presence as "available"}.label`) : t("notOnFloor")}
+        <span title={note ? noteLine(note) : undefined} className={cn("truncate", onFloor ? "text-foreground" : "text-muted-foreground")}>
+          {note ? noteLine(note) : onFloor ? tStatus(`${presence as "available"}.label`) : t("notOnFloor")}
         </span>
       </span>
       {role !== undefined && <span className="hidden w-20 shrink-0 truncate text-[12.5px] text-muted-foreground md:block">{role}</span>}

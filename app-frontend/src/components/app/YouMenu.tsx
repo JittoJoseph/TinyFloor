@@ -1,10 +1,12 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { DoorOpen, HelpCircle, LogOut, Settings2, UserRound, UserPlus } from "@/components/ui/icons";
+import { useState } from "react";
+import { useFormatter, useTranslations } from "next-intl";
+import { DoorOpen, HelpCircle, LogOut, Settings2, SmilePlus, UserRound, UserPlus } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { setMyStatus, useMyStatus } from "@/lib/floor";
+import { setMyStatus, useMyNote, useMyStatus } from "@/lib/floor";
+import { StatusNoteDialog } from "./StatusNote";
 import type { PlayerStatus } from "@/lib/types";
 import { Face } from "@/components/ui/Face";
 import { Menu, MenuHeader, MenuItem, MenuLabel, MenuSeparator } from "@/components/ui/Menu";
@@ -19,7 +21,7 @@ const STATUS_DOT: Record<string, string> = { available: "bg-ok", busy: "bg-destr
 /**
  * You, at the bottom of the rail: your face with your status on it, and a
  * short menu of what you reach for while working — your status first, then
- * your profile. Theme and devices live in Settings, and so does signing out:
+ * your note ("🍜 Lunch, back at 2"), then your profile. Theme and devices live in Settings, and so does signing out:
  * a slip in a menu this close at hand would take you off the floor in front of
  * your team. A guest has no account settings, so a guest signs out here.
  */
@@ -44,16 +46,21 @@ export function YouMenu({
   const t = useTranslations("shell");
   const tHelp = useTranslations("help");
   const tStatus = useTranslations("status");
+  const tNote = useTranslations("note");
+  const format = useFormatter();
   const router = useRouter();
   const home = useSitePage();
   const { user, isGuest, signOut } = useAuth();
   const status = useMyStatus();
+  const note = useMyNote();
+  const [noting, setNoting] = useState(false);
   const wide = useWide();
   if (!user) return null;
   // On a phone the rail isn't there, so Help and feedback is in here; never in the dashboard's bar, which has no dialog.
   const helpHere = !wide && !bar;
 
   return (
+    <>
     <Menu
       side={panel ? "top" : bar ? "bottom" : wide ? "right" : "top"}
       align={panel ? "start" : "end"}
@@ -108,6 +115,35 @@ export function YouMenu({
         </>
       )}
 
+      {/* A note says what a status can't: what you're doing, and until when. */}
+      {!isGuest && (
+        <>
+          <MenuSeparator />
+          {note ? (
+            <MenuItem
+              icon={<span className="text-[15px] leading-none">{note.emoji ?? "💬"}</span>}
+              onSelect={() => setNoting(true)}
+              // When it clears: a time today, a day and time later on.
+              hint={
+                note.until
+                  ? format.dateTime(new Date(note.until), {
+                      ...(new Date(note.until).toDateString() === new Date().toDateString() ? {} : { weekday: "short" }),
+                      hour: "numeric",
+                      minute: "2-digit",
+                    })
+                  : undefined
+              }
+            >
+              <span className="block truncate">{note.text || tNote("title")}</span>
+            </MenuItem>
+          ) : (
+            <MenuItem icon={<SmilePlus />} onSelect={() => setNoting(true)}>
+              {tNote("set")}
+            </MenuItem>
+          )}
+        </>
+      )}
+
       <MenuSeparator />
       {isGuest ? (
         <MenuItem icon={<UserPlus />} onSelect={() => router.push("/auth?mode=signup")}>
@@ -156,5 +192,7 @@ export function YouMenu({
         </>
       )}
     </Menu>
+    {noting && <StatusNoteDialog open onClose={() => setNoting(false)} note={note} />}
+    </>
   );
 }

@@ -92,6 +92,7 @@
     "you": "{name} (deg)",
     "aloneTitle": "Bare deg på gulvet",
     "aloneBody": "Send lenken, så dukker den som åpner den opp ved siden av deg.",
+    "aloneQuiet": "Når noen andre kommer inn, dukker de opp her.",
     "inviteSomeone": "Inviter noen"
   },
   "call": {
@@ -377,7 +378,18 @@
       "stay": "Bli",
       "closeTitle": "Stenge {office}?",
       "closeType": "Skriv {name} for å bekrefte.",
-      "keepOffice": "Behold kontoret"
+      "keepOffice": "Behold kontoret",
+      "welcome": "Velkomstnotat",
+      "welcomeNote": "Alle ser det én gang, første gang de går inn på gulvet, med navnet ditt under.",
+      "welcomePlaceholder": "Når teamet møtes, hvor man sitter, hvem man spør…",
+      "welcomeBy": "Skrevet av {name}",
+      "saved": "Lagret",
+      "inviting": "Invitasjoner",
+      "whoInvites": "Hvem kan invitere",
+      "whoInvitesEveryone": "Alle på kontoret kan dele invitasjonslenken.",
+      "whoInvitesAdmins": "Bare admins kan se og dele invitasjonslenken.",
+      "inviteEveryone": "Alle",
+      "inviteAdmins": "Bare admins"
     },
     "profile": {
       "changePassword": "Endre passord",
@@ -745,5 +757,36 @@
     "notNow": "Ikke nå",
     "claimed": "Dette er pulten din nå",
     "hint": "Velg en pult og sett deg. Den kan bli din."
+  },
+  "note": {
+    "title": "Statusnotat",
+    "set": "Sett et statusnotat",
+    "clear": "Fjern notat",
+    "placeholder": "Hva holder du på med?",
+    "emoji": "Velg en emoji",
+    "clearAfter": "Fjern etter",
+    "save": "Lagre",
+    "failed": "Det ble ikke lagret. Prøv igjen.",
+    "presets": {
+      "focus": "Fokusert",
+      "lunch": "Lunsj",
+      "back": "Straks tilbake",
+      "sick": "Syk",
+      "holiday": "På ferie"
+    },
+    "lasting": {
+      "never": "Ikke fjern",
+      "m30": "30 minutter",
+      "h1": "1 time",
+      "h4": "4 timer",
+      "today": "I dag",
+      "week": "Denne uken"
+    },
+    "keep": "Uendret ({time})"
+  },
+  "welcome": {
+    "title": "Velkommen til {office}",
+    "walkIn": "Gå inn",
+    "close": "Lukk"
   }
 }

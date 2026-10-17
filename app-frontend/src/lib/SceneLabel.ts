@@ -11,6 +11,13 @@ const STYLE = {
   resolution: 2,
 };
 
+/** Emoji drawn by the system's own font, since the pixel font has none. */
+const EMOJI_STYLE = {
+  fontSize: "11px",
+  fontFamily: "'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif",
+  resolution: 2,
+};
+
 /** Past this many characters a name tag shortens to a first name and an initial. */
 const LONGEST_TAG = 16;
 
@@ -27,12 +34,15 @@ export function tagName(name: string): string {
  * The dark pill every label in the room is drawn as: a centred hint, or, with a
  * dot, a tag like the one over each player's head. A tag can fold down to its
  * dot where the floor is crowded, and keeps the whole name for anyone asking.
+ * A tag can carry the emoji of its person's status note at its end.
  */
 export class SceneLabel {
   readonly container: Phaser.GameObjects.Container;
   readonly dot?: Phaser.GameObjects.Graphics;
   private background: Phaser.GameObjects.Graphics;
   private label: Phaser.GameObjects.Text;
+  private emoji?: Phaser.GameObjects.Text;
+  private scene: Phaser.Scene;
   private dotColor = EDGE;
   private full = "";
   private folded = false;
@@ -44,6 +54,7 @@ export class SceneLabel {
     text: string,
     dot = false,
   ) {
+    this.scene = scene;
     this.background = scene.add.graphics();
     this.label = scene.add.text(0, 0, "", STYLE).setOrigin(dot ? 0 : 0.5, 0.5);
     this.dot = dot ? scene.add.graphics() : undefined;
@@ -63,7 +74,26 @@ export class SceneLabel {
 
   /** How wide it is with its name showing, before scaling. */
   get fullWidth(): number {
-    return this.label.width + (this.dot ? 32 : 20);
+    return this.label.width + (this.dot ? 32 : 20) + this.emojiWidth;
+  }
+
+  private get emojiWidth(): number {
+    // Counted whether or not it's showing, so a tag doesn't fold and unfold over its own emoji.
+    return this.emoji?.text ? this.emoji.width + 3 : 0;
+  }
+
+  /** The emoji at the tag's end, or none. */
+  setEmoji(emoji: string | null): this {
+    if (!this.dot) return this;
+    if (!emoji && !this.emoji) return this;
+    if (!this.emoji) {
+      this.emoji = this.scene.add.text(0, 0, "", EMOJI_STYLE).setOrigin(0, 0.5);
+      this.container.add(this.emoji);
+    }
+    this.emoji.setText(emoji ?? "");
+    this.emoji.setVisible(!!emoji && !this.folded);
+    this.draw();
+    return this;
   }
 
   private get width(): number {
@@ -82,6 +112,7 @@ export class SceneLabel {
     if (folded === this.folded) return this;
     this.folded = folded;
     this.label.setVisible(!folded);
+    this.emoji?.setVisible(!folded && !!this.emoji.text);
     this.draw();
     return this;
   }
@@ -113,5 +144,6 @@ export class SceneLabel {
     this.dot.fillStyle(this.dotColor, 1);
     this.dot.fillCircle(this.folded ? 0 : left + 12, 0, 4);
     this.label.setPosition(left + 22, 0);
+    this.emoji?.setPosition(left + 22 + this.label.width + 2, 0);
   }
 }

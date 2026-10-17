@@ -1,6 +1,7 @@
 import * as Phaser from "phaser";
 import { PlayerManager } from "./PlayerManager";
 import { TILE_SIZE } from "@/lib/types";
+import type { StatusNote } from "@shared/messages";
 
 const PROXIMITY_RADIUS = 2.5 * TILE_SIZE;
 const DWELL_TIME = 1000;
@@ -13,6 +14,7 @@ interface NearbyPlayer {
   y: number;
   status: string;
   guest: boolean;
+  note: StatusNote | null;
 }
 
 export class ProximityManager {
@@ -65,6 +67,7 @@ export class ProximityManager {
       const x = Math.round((container.x - view.x) * camera.zoom);
       const y = Math.round((container.y - BODY_OFFSET - view.y) * camera.zoom);
       const status = this.playerManager.getPlayerStatus(id) || "available";
+      const note = this.playerManager.getPlayerNote(id);
 
       nearby.push({
         id,
@@ -73,8 +76,9 @@ export class ProximityManager {
         y,
         status,
         guest: this.playerManager.isGuest(id),
+        note,
       });
-      signature += id + x + "," + y + status + "|";
+      signature += id + x + "," + y + status + (note ? note.emoji + note.text : "") + "|";
     });
 
     if (signature === this.lastSignature) return;

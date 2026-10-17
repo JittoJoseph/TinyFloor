@@ -229,8 +229,18 @@ function EmojiGrid({ label, chosen, onPick, onDone }: { label: string; chosen: s
     const away = (event: PointerEvent) => {
       if (!grid.current?.parentElement?.contains(event.target as Node)) onDone();
     };
+    // Escape puts the emoji away, not the whole dialog.
+    const escape = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      event.stopPropagation();
+      onDone();
+    };
     window.addEventListener("pointerdown", away);
-    return () => window.removeEventListener("pointerdown", away);
+    window.addEventListener("keydown", escape, true);
+    return () => {
+      window.removeEventListener("pointerdown", away);
+      window.removeEventListener("keydown", escape, true);
+    };
   }, [onDone]);
 
   return (

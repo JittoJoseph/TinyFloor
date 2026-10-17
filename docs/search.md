@@ -117,6 +117,15 @@ some still showing the old "$19/month for 10" repo description.
   there was one page. On the 17th the other 32 English pages and the 17
   translated home pages went in too. Translated inner pages weren't
   submitted (over 700); Brave can reach them from the language links.
+- Brazil is where most sign-ups come from (16 of the accounts and guests in
+  the admin's country list on 17 October, then the Philippines and India at
+  7; Portugal 3), and Portuguese pages have the most impressions of any
+  language in Search Console. So all 44 Portuguese pages went to Brave by
+  the 17th, along with the 19 best-seen pages in other languages (the German
+  and Italian proximity chat guides, the virtual office pages that the old
+  study room pages now redirect to, team building guides in Danish, Swedish,
+  Dutch and German, and the like). The Portuguese copy is Brazilian (você,
+  equipe), which suits who is arriving.
 - So what grows Brave's index of us is the same as for everything else:
   visitors arriving from Google and Bing, and links from pages Brave already
   has (the GitHub repo links to the site).

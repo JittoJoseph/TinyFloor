@@ -1,4 +1,4 @@
-import { cleanDisplayName, DEFAULT_CHARACTER, isCharacter, type PresentPerson } from "../../shared-protocol/src";
+import { cleanDisplayName, cleanNote, DEFAULT_CHARACTER, isCharacter, liveNote, type PresentPerson } from "../../shared-protocol/src";
 import { realtime } from "./access";
 import { HttpError, json, readJson } from "./http";
 import { limitAuth } from "./limits";
@@ -256,6 +256,17 @@ export function authRoutes(router: Router): void {
       return json({ user: publicUser({ ...user, displayName, character, link, introduced }) });
     })
 
+    // Your status note, kept with the account so People shows it while you're away.
+    // The floor hears about it from your own socket; this keeps it. Null clears it.
+    .add("PUT", "/v1/me/status", async ({ request, env, ctx }) => {
+      const user = await requireAccount(env, request, ctx);
+      const note = cleanNote((await readJson(request)).status);
+      await env.DB.prepare("UPDATE users SET status_emoji = ?, status_text = ?, status_until = ? WHERE id = ?")
+        .bind(note?.emoji ?? null, note?.text || null, note?.until ?? null, user.id)
+        .run();
+      return json({ status: note });
+    })
+
     // Someone's profile, for whoever they share a floor or a chat with: their name and their link.
     .add("GET", "/v1/people/:id", async ({ request, env, ctx, params }) => {
       await requireUser(env, request, ctx);
@@ -325,6 +336,7 @@ export function publicUser(user: User) {
     link: user.link ?? null,
     // Guests always are: they said who they are at the door.
     introduced: user.isGuest || user.introduced !== false,
+    status: liveNote(user.status),
   };
 }
 

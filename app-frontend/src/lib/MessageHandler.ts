@@ -11,7 +11,7 @@ import { tileToPixel } from "@/lib/types";
 import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import { setMeetings, setMeetingUsage } from "./meetings";
 import { deskOf, deskState, setDesks } from "./desks";
-import { FLOOR_ARRIVED_EVENT, myStatus, sinceFloorRequested, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
+import { FLOOR_ARRIVED_EVENT, myStatus, myStatusNote, sinceFloorRequested, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
 import { track } from "@/lib/analytics";
 
 /** Applies what the room says to the scene and the React overlays. */
@@ -100,6 +100,10 @@ export class MessageHandler {
         this.dispatchPlayerList();
         window.dispatchEvent(new CustomEvent("playerStatusChanged", { detail: { id: message.id, status: message.status } }));
         break;
+      case "note":
+        this.playerManager.updatePlayerNote(message.id, message.note, () => this.dispatchPlayerList());
+        this.dispatchPlayerList();
+        break;
       case "board_state":
       case "board_draw":
       case "board_clear":
@@ -122,6 +126,9 @@ export class MessageHandler {
     // A new connection starts you as available; busy, away or on a call is said again.
     const status = myStatus();
     if (status !== self.status && status !== "offline") this.send({ t: "status", status });
+    // So is a note changed while the connection was down.
+    const note = myStatusNote();
+    if (!self.guest && JSON.stringify(note) !== JSON.stringify(self.note ?? null)) this.send({ t: "note", note });
     // Everyone else; our own sprite and nameplate stay.
     for (const { id } of this.playerManager.getPlayerList()) {
       if (id === this.playerId) continue;
@@ -132,6 +139,7 @@ export class MessageHandler {
     const spawn = tileToPixel(self.x, self.y);
     this.player.setPosition(spawn.x, spawn.y);
     this.playerManager.showLocalPlayer();
+    this.playerManager.updatePlayerNote(this.playerId, self.guest ? null : myStatusNote(), () => this.dispatchPlayerList());
     // The view starts where you are, rather than sweeping over from where it was.
     this.scene.cameras.main.centerOn(spawn.x, spawn.y);
     const spriteName = isCharacter(self.character) ? self.character : DEFAULT_CHARACTER;
@@ -155,6 +163,7 @@ export class MessageHandler {
 
   private addUser(player: PlayerState) {
     this.playerManager.addPlayer(player.id, player.name, player.x, player.y, player.character, player.status, player.guest);
+    this.playerManager.updatePlayerNote(player.id, player.note, () => this.dispatchPlayerList());
     if (player.seat !== null) this.seatPlayer(player.id, player.seat, false);
   }
 

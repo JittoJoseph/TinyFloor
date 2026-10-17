@@ -9,6 +9,7 @@ import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { setInCall } from "@/lib/floor";
 import { useRouter } from "@/lib/i18n/navigation";
+import { openSettings } from "@/lib/links";
 import { CameraRested } from "@/components/meetings/CameraRested";
 
 /**
@@ -21,6 +22,7 @@ import { CameraRested } from "@/components/meetings/CameraRested";
 export default function ControlBar({ settingsHref }: { settingsHref?: string }) {
   const router = useRouter();
   const t = useTranslations("controls");
+  const tSettings = useTranslations("settings");
   const { peers, meeting, micEnabled, cameraEnabled, speakerEnabled, screenStream } = useCall();
   const inCall = peers.length > 0 || !!meeting;
   // Phones and some browsers cannot share a screen, so the button only exists where it works.
@@ -79,10 +81,10 @@ export default function ControlBar({ settingsHref }: { settingsHref?: string }) 
         )}
 
         {settingsHref && (
-          // Choosing a microphone or camera is a desktop job.
+          // Choosing a microphone or camera is a desktop job: the gear beside the microphone opens those settings.
           <span className="hidden items-center sm:flex">
             <DockSeparator className="mx-1" />
-            <IconButton label={t("settings")} size="lg" onClick={() => router.push(settingsHref)} icon={<Settings2 />} />
+            <IconButton label={tSettings("sections.media")} size="lg" onClick={() => openSettings(router, settingsHref, "media")} icon={<Settings2 />} />
           </span>
         )}
 

@@ -92,6 +92,7 @@
     "you": "{name} (vous)",
     "aloneTitle": "Vous êtes seul sur l'étage",
     "aloneBody": "Envoyez le lien : qui l'ouvre arrive juste à côté de vous.",
+    "aloneQuiet": "Quand quelqu'un d'autre arrive, il apparaît ici.",
     "inviteSomeone": "Inviter quelqu'un"
   },
   "call": {
@@ -361,8 +362,34 @@
       "leave": "Quitter ce bureau",
       "wrong": "Ça n'a pas marché. Réessayez.",
       "plan": "{plan} · {used} places sur {seats}",
-      "danger": "Quitter ou fermer",
-      "cancelPlanFirst": "Résiliez d'abord l'offre de ce bureau dans Offre et facturation. Il pourra ensuite être fermé."
+      "cancelPlanFirst": "Résiliez d'abord l'offre de ce bureau dans Offre et facturation. Il pourra ensuite être fermé.",
+      "nameAdminsOnly": "Seul un admin peut renommer le bureau.",
+      "handOver": "Céder le bureau",
+      "handOverNote": "Faites de quelqu'un d'autre le propriétaire. Cette personne devient aussi admin, et vous restez admin.",
+      "handOverBilling": "L'offre et sa facturation restent telles quelles.",
+      "handOverPick": "Choisir un membre",
+      "handOverButton": "Céder",
+      "handOverTitle": "Céder {office} à {name} ?",
+      "handOverSure": "{name} devient propriétaire, la seule personne qui pourra fermer le bureau ou le céder à nouveau. Vous restez admin.",
+      "handOverIt": "Le céder",
+      "leaveTitle": "Quitter {office} ?",
+      "leaveSure": "Vous perdrez son étage et son chat. Pour revenir, quelqu'un du bureau devra vous inviter à nouveau.",
+      "leaveIt": "Quitter le bureau",
+      "stay": "Rester",
+      "closeTitle": "Fermer {office} ?",
+      "closeType": "Tapez {name} pour confirmer.",
+      "keepOffice": "Garder le bureau",
+      "welcome": "Mot de bienvenue",
+      "welcomeNote": "Chacun le voit une fois, la première fois qu'il arrive à l'étage, signé de votre nom.",
+      "welcomePlaceholder": "Quand l'équipe se retrouve, où s'asseoir, à qui demander…",
+      "welcomeBy": "Écrit par {name}",
+      "saved": "Enregistré",
+      "inviting": "Invitations",
+      "whoInvites": "Qui peut inviter",
+      "whoInvitesEveryone": "Tout le monde dans le bureau peut partager le lien d'invitation.",
+      "whoInvitesAdmins": "Seuls les admins peuvent voir et partager le lien d'invitation.",
+      "inviteEveryone": "Tout le monde",
+      "inviteAdmins": "Seulement les admins"
     },
     "profile": {
       "changePassword": "Changer le mot de passe",
@@ -475,7 +502,9 @@
       "search": "Rechercher des personnes",
       "noMatch": "Personne ne correspond.",
       "seatsOpen": "{count, plural, one {# place libre} other {# places libres}}",
-      "proRoom": "De la place pour toute votre équipe, {price} par mois"
+      "proRoom": "De la place pour toute votre équipe, {price} par mois",
+      "removeTitle": "Retirer {name} ?",
+      "removeSure": "{name} perd l'étage et le chat, et sa place se libère. Vous pourrez l'inviter à nouveau plus tard."
     },
     "office": "Bureau",
     "goneTitle": "Ce bureau n'existe plus",
@@ -728,5 +757,36 @@
     "notNow": "Pas maintenant",
     "claimed": "C'est votre bureau maintenant",
     "hint": "Choisissez un bureau et asseyez-vous. Il peut devenir le vôtre."
+  },
+  "note": {
+    "title": "Note de statut",
+    "set": "Ajouter une note de statut",
+    "clear": "Effacer la note",
+    "placeholder": "Que faites-vous ?",
+    "emoji": "Choisir un emoji",
+    "clearAfter": "Effacer après",
+    "save": "Enregistrer",
+    "failed": "Ce n'a pas été enregistré. Réessayez.",
+    "presets": {
+      "focus": "Concentré",
+      "lunch": "Déjeuner",
+      "back": "De retour bientôt",
+      "sick": "Malade",
+      "holiday": "En vacances"
+    },
+    "lasting": {
+      "never": "Ne pas effacer",
+      "m30": "30 minutes",
+      "h1": "1 heure",
+      "h4": "4 heures",
+      "today": "Aujourd'hui",
+      "week": "Cette semaine"
+    },
+    "keep": "Inchangé ({time})"
+  },
+  "welcome": {
+    "title": "Bienvenue chez {office}",
+    "walkIn": "Entrer",
+    "close": "Fermer"
   }
 }

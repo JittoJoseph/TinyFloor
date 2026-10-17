@@ -23,6 +23,7 @@ import { OfficeSwitcher } from "./OfficeSwitcher";
 import { PlaceProvider, type Place } from "./place";
 import { Entering } from "./Entering";
 import { FloorNudges } from "./FloorNudges";
+import { WelcomeNote } from "./WelcomeNote";
 import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
 import { dmChannelId } from "@shared/chat";
 import { rememberOffice } from "@/lib/lastOffice";
@@ -120,11 +121,20 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
 
   // The tab says which office it is, and what's new in its chat, the way a
   // pinned work tab does: worth a glance from another window, no more (docs/product.md).
+  // Moving to Chat or Settings has Next put its own <title> back in the head,
+  // ahead of this one, so the head is watched and the office's name re-applied.
   const waiting = unread + helpUnread;
   useEffect(() => {
     if (!office?.name) return;
-    document.title = `${waiting ? `(${waiting}) ` : ""}${office.name} · TinyFloor`;
-  }, [office?.name, waiting, pathname]);
+    const title = `${waiting ? `(${waiting}) ` : ""}${office.name} · TinyFloor`;
+    const apply = () => {
+      if (document.title !== title) document.title = title;
+    };
+    apply();
+    const watch = new MutationObserver(apply);
+    watch.observe(document.head, { childList: true, subtree: true, characterData: true });
+    return () => watch.disconnect();
+  }, [office?.name, waiting]);
 
   // Everything done in here carries which office it was, and its plan, so
   // analytics can ask about teams, not only people (docs/analytics.md).
@@ -254,6 +264,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
                     settingsHref={settingsPath}
                   />
                   {!onChat && <FloorNudges chatPath={(channel) => officeChatPath(office.id, channel)} />}
+                  <WelcomeNote />
                 </>
               }
             >

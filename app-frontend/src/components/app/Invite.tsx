@@ -24,7 +24,7 @@ import { useOfficeMaybe } from "./OfficeShell";
  */
 const Context = createContext<(() => void) | null>(null);
 
-/** Opens the invite dialog; null outside an office. */
+/** Opens the invite dialog; null outside an office, and for members where only admins invite. */
 export function useInvite(): (() => void) | null {
   return useContext(Context);
 }
@@ -37,10 +37,12 @@ export function InviteProvider({ children }: { children: ReactNode }) {
     setOpen(true);
     track("invite_opened");
   }, []);
+  // Every way to invite (the office menu, People, the chip on an empty floor) goes through here.
+  const allowed = !!context && (context.office.invitePolicy !== "admins" || context.office.role === "admin");
   return (
-    <Context.Provider value={context ? show : null}>
+    <Context.Provider value={allowed ? show : null}>
       {children}
-      {context && <InviteDialog open={open} onClose={() => setOpen(false)} />}
+      {allowed && <InviteDialog open={open} onClose={() => setOpen(false)} />}
     </Context.Provider>
   );
 }

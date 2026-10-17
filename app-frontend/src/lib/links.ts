@@ -40,6 +40,16 @@ export function useSitePage(path = "/") {
   return siteHref(useLocale(), path);
 }
 
+/**
+ * Opens one section of a settings page (…/settings#office). Already on that
+ * page, only the hash changes, and setting it directly is what tells the page:
+ * the router's push changes the address without saying so.
+ */
+export function openSettings(router: { push: (href: string) => void }, settingsHref: string, section: string) {
+  if (decodeURIComponent(window.location.pathname).endsWith(decodeURIComponent(settingsHref))) window.location.hash = section;
+  else router.push(`${settingsHref}#${section}`);
+}
+
 /** Moves to `href`, which may be the marketing site's: a page load there, a client-side move here. */
 export function goTo(router: { push: (href: string) => void }, href: string) {
   if (/^https?:/.test(href)) window.location.assign(href);

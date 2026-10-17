@@ -92,6 +92,7 @@
     "you": "{name} (du)",
     "aloneTitle": "Bara du på golvet",
     "aloneBody": "Skicka länken, så dyker den som öppnar den upp bredvid dig.",
+    "aloneQuiet": "När någon annan kommer in dyker de upp här.",
     "inviteSomeone": "Bjud in någon"
   },
   "call": {
@@ -361,8 +362,34 @@
       "leave": "Lämna det här kontoret",
       "wrong": "Det gick inte. Försök igen.",
       "plan": "{plan} · {used} av {seats} platser",
-      "danger": "Lämna eller stänga",
-      "cancelPlanFirst": "Säg först upp kontorets plan under Plan och betalning. Sedan kan det stängas."
+      "cancelPlanFirst": "Säg först upp kontorets plan under Plan och betalning. Sedan kan det stängas.",
+      "nameAdminsOnly": "Bara en admin kan byta namn på kontoret.",
+      "handOver": "Lämna över kontoret",
+      "handOverNote": "Gör någon annan till ägare. Personen blir också admin, och du fortsätter som admin.",
+      "handOverBilling": "Planen och faktureringen förblir som de är.",
+      "handOverPick": "Välj en medlem",
+      "handOverButton": "Lämna över",
+      "handOverTitle": "Lämna över {office} till {name}?",
+      "handOverSure": "{name} blir ägare, den enda som kan stänga kontoret eller lämna över det igen. Du fortsätter som admin.",
+      "handOverIt": "Lämna över",
+      "leaveTitle": "Lämna {office}?",
+      "leaveSure": "Du förlorar golvet och chatten. För att komma tillbaka måste någon på kontoret bjuda in dig igen.",
+      "leaveIt": "Lämna kontoret",
+      "stay": "Stanna",
+      "closeTitle": "Stäng {office}?",
+      "closeType": "Skriv {name} för att bekräfta.",
+      "keepOffice": "Behåll kontoret",
+      "welcome": "Välkomstnotis",
+      "welcomeNote": "Alla ser den en gång, första gången de kliver in på golvet, med ditt namn under.",
+      "welcomePlaceholder": "När teamet ses, var man sitter, vem man frågar…",
+      "welcomeBy": "Skriven av {name}",
+      "saved": "Sparat",
+      "inviting": "Inbjudningar",
+      "whoInvites": "Vem kan bjuda in",
+      "whoInvitesEveryone": "Alla på kontoret kan dela inbjudningslänken.",
+      "whoInvitesAdmins": "Bara admins kan se och dela inbjudningslänken.",
+      "inviteEveryone": "Alla",
+      "inviteAdmins": "Bara admins"
     },
     "profile": {
       "changePassword": "Byt lösenord",
@@ -475,7 +502,9 @@
       "search": "Sök personer",
       "noMatch": "Ingen matchar det.",
       "seatsOpen": "{count, plural, one {# ledig plats} other {# lediga platser}}",
-      "proRoom": "Plats för hela ditt team, {price} i månaden"
+      "proRoom": "Plats för hela ditt team, {price} i månaden",
+      "removeTitle": "Ta bort {name}?",
+      "removeSure": "{name} förlorar golvet och chatten, och platsen blir ledig. Du kan bjuda in personen igen senare."
     },
     "office": "Kontor",
     "goneTitle": "Det här kontoret finns inte längre",
@@ -728,5 +757,36 @@
     "notNow": "Inte nu",
     "claimed": "Det här är ditt skrivbord nu",
     "hint": "Välj ett skrivbord och sätt dig. Det kan bli ditt."
+  },
+  "note": {
+    "title": "Statusnotis",
+    "set": "Ange en statusnotis",
+    "clear": "Rensa notis",
+    "placeholder": "Vad håller du på med?",
+    "emoji": "Välj en emoji",
+    "clearAfter": "Rensa efter",
+    "save": "Spara",
+    "failed": "Det sparades inte. Försök igen.",
+    "presets": {
+      "focus": "Fokuserar",
+      "lunch": "Lunch",
+      "back": "Strax tillbaka",
+      "sick": "Sjuk",
+      "holiday": "På semester"
+    },
+    "lasting": {
+      "never": "Rensa inte",
+      "m30": "30 minuter",
+      "h1": "1 timme",
+      "h4": "4 timmar",
+      "today": "I dag",
+      "week": "Den här veckan"
+    },
+    "keep": "Oförändrat ({time})"
+  },
+  "welcome": {
+    "title": "Välkommen till {office}",
+    "walkIn": "Gå in",
+    "close": "Stäng"
   }
 }

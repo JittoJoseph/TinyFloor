@@ -4,6 +4,17 @@ import { HttpError } from "./http";
 
 export type OfficeRole = "admin" | "member";
 
+/** Who can share the office's invite link. */
+export type InvitePolicy = "everyone" | "admins";
+export const INVITE_POLICIES: readonly InvitePolicy[] = ["everyone", "admins"];
+
+/** An office's welcome note, with the admin who wrote it, who signs it. */
+export interface Welcome {
+  text: string;
+  by: string | null;
+  byName: string | null;
+}
+
 export interface Office {
   id: string;
   name: string;
@@ -17,6 +28,8 @@ export interface Office {
   trialEndsAt: number | null;
   /** Free, never trialled and never paid: the trial is still there to start (where plans are sold). */
   trialOpen: boolean;
+  welcome: Welcome | null;
+  invitePolicy: InvitePolicy;
 }
 
 /**
@@ -32,12 +45,27 @@ export async function requireOffice(
 ): Promise<Office> {
   const row = await env.DB.prepare(
     `SELECT o.id, o.name, o.plan, o.seats, o.owner_id, o.trial_ends_at, m.role,
-            (o.plan = 'free' AND o.trial_ends_at IS NULL AND NOT EXISTS (SELECT 1 FROM subscriptions s WHERE s.office_id = o.id)) AS trial_open
+            (o.plan = 'free' AND o.trial_ends_at IS NULL AND NOT EXISTS (SELECT 1 FROM subscriptions s WHERE s.office_id = o.id)) AS trial_open,
+            o.welcome, o.welcome_by, w.display_name AS welcome_by_name, o.invite_policy
      FROM memberships m JOIN offices o ON o.id = m.office_id
+     LEFT JOIN users w ON w.id = o.welcome_by
      WHERE m.office_id = ? AND m.user_id = ?`,
   )
     .bind(officeId, userId)
-    .first<{ id: string; name: string; plan: string; seats: number; owner_id: string; trial_ends_at: number | null; role: OfficeRole; trial_open: number }>();
+    .first<{
+      id: string;
+      name: string;
+      plan: string;
+      seats: number;
+      owner_id: string;
+      trial_ends_at: number | null;
+      role: OfficeRole;
+      trial_open: number;
+      welcome: string | null;
+      welcome_by: string | null;
+      welcome_by_name: string | null;
+      invite_policy: string | null;
+    }>();
   if (!row) throw new HttpError(404, "not_found", "No such office");
   if (roles && !roles.includes(row.role)) throw new HttpError(403, "not_allowed", "Only an admin can do that");
   // A trial that has just ended goes back to free before anything reads the plan.
@@ -53,11 +81,13 @@ export async function requireOffice(
     ownerId: row.owner_id,
     trialEndsAt: row.trial_ends_at && row.trial_ends_at > Date.now() ? row.trial_ends_at : null,
     trialOpen: !!row.trial_open,
+    welcome: row.welcome ? { text: row.welcome, by: row.welcome_by, byName: row.welcome_by_name } : null,
+    invitePolicy: row.invite_policy === "admins" ? "admins" : "everyone",
   };
 }
 
 /** The office behind a floor, without requiring membership. */
-export async function findOffice(env: Env, officeId: string): Promise<Omit<Office, "role" | "trialEndsAt" | "trialOpen"> | null> {
+export async function findOffice(env: Env, officeId: string): Promise<Omit<Office, "role" | "trialEndsAt" | "trialOpen" | "welcome" | "invitePolicy"> | null> {
   const row = await env.DB.prepare("SELECT id, name, plan, seats, owner_id FROM offices WHERE id = ?")
     .bind(officeId)
     .first<{ id: string; name: string; plan: string; seats: number; owner_id: string }>();

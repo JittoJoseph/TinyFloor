@@ -1,3 +1,5 @@
+import type { StatusNote } from "./messages";
+
 export type RoomRole = "admin" | "member" | "guest";
 
 /**
@@ -15,6 +17,8 @@ export interface RoomTicket {
   cap: number;
   /** An office's meeting hours a month, from its plan (docs/pricing.md). Lobby copies have their own. */
   hours?: number;
+  /** Their status note as they walk in, while it lasts. */
+  note?: StatusNote;
   exp: number;
 }
 

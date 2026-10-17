@@ -92,6 +92,7 @@
     "you": "{name}（あなた）",
     "aloneTitle": "フロアにいるのはあなただけ",
     "aloneBody": "リンクを送れば、開いた人があなたの隣に現れます。",
+    "aloneQuiet": "ほかの人が来ると、ここに表示されます。",
     "inviteSomeone": "誰かを招待"
   },
   "call": {
@@ -361,8 +362,34 @@
       "leave": "このオフィスを抜ける",
       "wrong": "うまくいきませんでした。もう一度お試しください。",
       "plan": "{plan} · {seats}席中{used}席",
-      "danger": "退出または閉鎖",
-      "cancelPlanFirst": "先に「プランと請求」でこのオフィスのプランを解約してください。その後で閉じられます。"
+      "cancelPlanFirst": "先に「プランと請求」でこのオフィスのプランを解約してください。その後で閉じられます。",
+      "nameAdminsOnly": "オフィス名を変更できるのは管理者だけです。",
+      "handOver": "オフィスを引き継ぐ",
+      "handOverNote": "ほかのメンバーをオーナーにします。その人は管理者にもなり、あなたは管理者のまま残ります。",
+      "handOverBilling": "プランと請求はそのままです。",
+      "handOverPick": "メンバーを選択",
+      "handOverButton": "引き継ぐ",
+      "handOverTitle": "{office}を{name}さんに引き継ぎますか？",
+      "handOverSure": "{name}さんがオーナーになり、オフィスを閉じたり別の人に引き継いだりできるのはその人だけになります。あなたは管理者のまま残ります。",
+      "handOverIt": "引き継ぐ",
+      "leaveTitle": "{office}を抜けますか？",
+      "leaveSure": "このオフィスのフロアとチャットに入れなくなります。戻るには、オフィスの誰かにもう一度招待してもらう必要があります。",
+      "leaveIt": "オフィスを抜ける",
+      "stay": "残る",
+      "closeTitle": "{office}を閉じますか？",
+      "closeType": "確認のため「{name}」と入力してください。",
+      "keepOffice": "オフィスを残す",
+      "welcome": "ウェルカムメッセージ",
+      "welcomeNote": "初めてフロアに入ったときに一度だけ、あなたの名前付きで表示されます。",
+      "welcomePlaceholder": "チームが集まる時間、座る場所、誰に聞けばいいか…",
+      "welcomeBy": "{name}さんが作成",
+      "saved": "保存しました",
+      "inviting": "招待",
+      "whoInvites": "招待できる人",
+      "whoInvitesEveryone": "オフィスの誰でも招待リンクを共有できます。",
+      "whoInvitesAdmins": "招待リンクを見たり共有したりできるのは管理者だけです。",
+      "inviteEveryone": "全員",
+      "inviteAdmins": "管理者のみ"
     },
     "profile": {
       "changePassword": "パスワードを変更",
@@ -475,7 +502,9 @@
       "search": "メンバーを検索",
       "noMatch": "該当する人はいません。",
       "seatsOpen": "空き {count} 席",
-      "proRoom": "チーム全員が入れます。月額 {price}"
+      "proRoom": "チーム全員が入れます。月額 {price}",
+      "removeTitle": "{name}さんを外しますか？",
+      "removeSure": "{name}さんはフロアとチャットに入れなくなり、席が空きます。あとでもう一度招待できます。"
     },
     "office": "オフィス",
     "goneTitle": "このオフィスはありません",
@@ -728,5 +757,36 @@
     "notNow": "今はしない",
     "claimed": "ここがあなたのデスクになりました",
     "hint": "デスクを選んで座ってみましょう。自分のデスクにできます。"
+  },
+  "note": {
+    "title": "ステータスメモ",
+    "set": "ステータスメモを設定",
+    "clear": "メモを消す",
+    "placeholder": "いま何をしていますか？",
+    "emoji": "絵文字を選択",
+    "clearAfter": "消すまでの時間",
+    "save": "保存",
+    "failed": "保存できませんでした。もう一度お試しください。",
+    "presets": {
+      "focus": "集中しています",
+      "lunch": "昼休み",
+      "back": "すぐ戻ります",
+      "sick": "体調不良",
+      "holiday": "休暇中"
+    },
+    "lasting": {
+      "never": "消さない",
+      "m30": "30分",
+      "h1": "1時間",
+      "h4": "4時間",
+      "today": "今日",
+      "week": "今週"
+    },
+    "keep": "変更しない（{time}）"
+  },
+  "welcome": {
+    "title": "{office}へようこそ",
+    "walkIn": "入る",
+    "close": "閉じる"
   }
 }

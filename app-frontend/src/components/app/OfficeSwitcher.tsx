@@ -2,10 +2,10 @@
 
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { DoorOpen, Plus, UserPlus, Zap } from "@/components/ui/icons";
+import { Plus, Settings2, UserPlus, Zap } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { api, type Office, type OfficeSummary } from "@/lib/api";
-import { officePath } from "@/lib/links";
+import { officePath, officeSettingsPath, openSettings } from "@/lib/links";
 import { Face } from "@/components/ui/Face";
 import { Menu, MenuHeader, MenuItem, MenuLabel, MenuSeparator } from "@/components/ui/Menu";
 import { useWide } from "@/lib/hooks/use-wide";
@@ -18,12 +18,14 @@ import type { PlanId } from "@/lib/api";
 const DAY = 24 * 60 * 60 * 1000;
 
 /**
- * The office's mark at the top of the rail, and the way to your other offices.
- * Its header says the plan's trial while one runs (docs/pricing.md), and admins find
- * the plans here too.
+ * The office's mark at the top of the rail: what you do for this office
+ * (bring people in, its plan, its settings) and the way to your other offices.
+ * Its header says the plan's trial while one runs (docs/pricing.md). Nothing
+ * here leads out of the office: someone with an office has no use for the demo.
  */
 export function OfficeSwitcher({ office }: { office: Office }) {
   const t = useTranslations("shell");
+  const tSettings = useTranslations("office.settings");
   const router = useRouter();
   const wide = useWide();
   const [offices, setOffices] = useState<OfficeSummary[]>([]);
@@ -98,6 +100,9 @@ export function OfficeSwitcher({ office }: { office: Office }) {
           {trialDays ? t("choosePlan") : t("upgrade")}
         </MenuItem>
       )}
+      <MenuItem icon={<Settings2 />} onSelect={() => openSettings(router, officeSettingsPath(office.id), "office")}>
+        {tSettings("title")}
+      </MenuItem>
 
       {others.length > 0 && (
         <>
@@ -122,9 +127,6 @@ export function OfficeSwitcher({ office }: { office: Office }) {
       <MenuSeparator />
       <MenuItem icon={<Plus />} onSelect={() => router.push("/create")}>
         {t("newOffice")}
-      </MenuItem>
-      <MenuItem icon={<DoorOpen />} onSelect={() => router.push("/lobby")}>
-        {t("publicLobby")}
       </MenuItem>
     </Menu>
   );

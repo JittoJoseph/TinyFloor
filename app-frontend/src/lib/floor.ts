@@ -2,12 +2,16 @@
 
 import { useSyncExternalStore } from "react";
 import type { PlayerStatus } from "@/lib/types";
+import type { StatusNote } from "@shared/messages";
+import { api } from "@/lib/api";
 import { track } from "@/lib/analytics";
 
 export interface FloorPerson {
   id: string;
   name: string;
   status: PlayerStatus;
+  /** Their status note, while it lasts. */
+  note?: StatusNote | null;
 }
 
 /**
@@ -156,5 +160,55 @@ export function useMyStatus(): PlayerStatus {
     },
     () => mine,
     () => "available" as PlayerStatus,
+  );
+}
+
+/**
+ * Your status note ("🍜 Lunch, back at 2"). The account keeps it, so it holds
+ * across visits; the floor hears a change from your own socket (GameScene
+ * listens for `noteChange`), and People reads it from the office.
+ */
+let myNote: StatusNote | null = null;
+const noteListeners = new Set<() => void>();
+
+function changeNote(note: StatusNote | null) {
+  myNote = note;
+  noteListeners.forEach((listener) => listener());
+}
+
+/** The note your account came with: shown, not sent again. */
+export function adoptMyNote(note: StatusNote | null) {
+  if (JSON.stringify(note) !== JSON.stringify(myNote)) changeNote(note);
+}
+
+/** Sets or clears your note: on the floor at once, then kept; put back if keeping it fails. */
+export async function saveMyNote(note: StatusNote | null) {
+  const before = myNote;
+  changeNote(note);
+  window.dispatchEvent(new CustomEvent("noteChange", { detail: { note } }));
+  try {
+    const { status } = await api.setStatusNote(note);
+    if (JSON.stringify(status) !== JSON.stringify(note)) {
+      changeNote(status);
+      window.dispatchEvent(new CustomEvent("noteChange", { detail: { note: status } }));
+    }
+    track("status_note_set", { cleared: !status, emoji: status?.emoji ?? null, lasts: !!status?.until });
+  } catch (error) {
+    changeNote(before);
+    window.dispatchEvent(new CustomEvent("noteChange", { detail: { note: before } }));
+    throw error;
+  }
+}
+
+export const myStatusNote = (): StatusNote | null => myNote;
+
+export function useMyNote(): StatusNote | null {
+  return useSyncExternalStore(
+    (listener) => {
+      noteListeners.add(listener);
+      return () => noteListeners.delete(listener);
+    },
+    () => myNote,
+    () => null,
   );
 }

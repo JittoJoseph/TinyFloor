@@ -3,8 +3,9 @@
  * sends by itself, so nothing about signing in is kept in JavaScript.
  */
 import type { LobbyChatPage, PresentPerson } from "@shared/admin";
+import type { StatusNote } from "@shared/messages";
 
-export type { LobbyChatPage, PresentPerson };
+export type { LobbyChatPage, PresentPerson, StatusNote };
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8787/v1";
 
 export class ApiError extends Error {
@@ -33,6 +34,8 @@ export interface SessionUser {
   link?: string | null;
   /** Has said who they are on the floor. A new account hasn't, until its first door. */
   introduced?: boolean;
+  /** Their status note, while it lasts. */
+  status?: StatusNote | null;
 }
 
 /** Someone's profile, as the people they chat with see it. */
@@ -44,6 +47,16 @@ export interface PersonProfile {
 }
 
 export type OfficeRole = "admin" | "member";
+
+/** Who can share an office's invite link. */
+export type InvitePolicy = "everyone" | "admins";
+
+/** An office's welcome note, signed by the admin who wrote it. */
+export interface Welcome {
+  text: string;
+  by: string | null;
+  byName: string | null;
+}
 
 export interface OfficeSummary {
   id: string;
@@ -67,6 +80,9 @@ export interface OfficeSummary {
 export interface Office extends OfficeSummary {
   /** Who holds the subscription. */
   owner: string;
+  /** Shown once to each person the first time they walk onto the floor. */
+  welcome?: Welcome | null;
+  invitePolicy?: InvitePolicy;
 }
 
 export interface Member {
@@ -76,6 +92,8 @@ export interface Member {
   email: string | null;
   role: OfficeRole;
   joinedAt: number;
+  /** Their status note, while it lasts: People shows it even while they're away. */
+  status?: StatusNote | null;
 }
 
 export interface OfficeOverview {
@@ -318,6 +336,7 @@ async function request<T>(method: string, path: string, body?: unknown): Promise
 const get = <T>(path: string) => request<T>("GET", path);
 const post = <T>(path: string, body: unknown = {}) => request<T>("POST", path, body);
 const patch = <T>(path: string, body: unknown) => request<T>("PATCH", path, body);
+const put = <T>(path: string, body: unknown) => request<T>("PUT", path, body);
 const del = <T>(path: string) => request<T>("DELETE", path, {});
 const id = encodeURIComponent;
 
@@ -341,6 +360,8 @@ export const api = {
   connectGoogle: (code: string) => post<{ user: SessionUser }>("/me/google", { code }),
   person: (id: string) => get<{ person: PersonProfile }>(`/people/${encodeURIComponent(id)}`),
   changePassword: (body: { currentPassword: string; newPassword: string }) => post<{ ok: true }>("/me/password", body),
+  /** Your status note, kept with your account; null clears it. The floor hears it from your own socket. */
+  setStatusNote: (status: StatusNote | null) => put<{ status: StatusNote | null }>("/me/status", { status }),
 
   // The admin view
   adminSummary: () =>
@@ -387,6 +408,9 @@ export const api = {
   /** The office, its people and its invitations in one request. */
   overview: (officeId: string) => get<OfficeOverview>(`/offices/${id(officeId)}/overview`),
   renameOffice: (officeId: string, name: string) => patch<{ office: Office }>(`/offices/${id(officeId)}`, { name }),
+  /** An admin's changes to the office: its welcome note (empty clears it), who can invite. */
+  updateOffice: (officeId: string, changes: { welcome?: string; invitePolicy?: InvitePolicy }) =>
+    patch<{ office: Office }>(`/offices/${id(officeId)}`, changes),
   closeOffice: (officeId: string) => del<{ ok: true }>(`/offices/${id(officeId)}`),
 
   // Paid plans (worker-api/src/billing.ts)

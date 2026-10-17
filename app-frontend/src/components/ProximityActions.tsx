@@ -10,6 +10,7 @@ import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { Face, type Presence } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
+import type { StatusNote } from "@shared/messages";
 
 /** Asks whichever shell holds the floor to open a conversation with someone. */
 export const OPEN_CONVERSATION_EVENT = "openConversation";
@@ -21,6 +22,8 @@ export interface NearbyPlayer {
   y: number;
   status: string;
   guest: boolean;
+  /** Their status note, which says more than their status: shown in its place. */
+  note?: StatusNote | null;
 }
 
 export const TOUCH_BREAKPOINT = 768;
@@ -55,14 +58,19 @@ export const ProximityActions = memo(function ProximityActions({
   const asMeeting = !onCall && peers.length > 0 && !!meetingPath;
   const busy = !onCall && player.status === "in_call";
   const status = STATUSES.has(player.status) ? tStatus(`${player.status as "available"}.label`) : null;
+  const note = player.note ? [player.note.emoji, player.note.text].filter(Boolean).join(" ") : null;
 
   return (
     <div className={cn(surface, "flex items-center rounded-full", touch ? "gap-2.5 p-2" : "gap-2 p-1.5")}>
       <Face seed={player.id} size={touch ? 40 : 32} presence={player.status as Presence} />
 
-      <div className={cn("min-w-0 pe-1 leading-tight", touch ? "max-w-[9rem]" : "max-w-[8rem]")}>
+      <div className={cn("min-w-0 pe-1 leading-tight", note ? "max-w-[12rem]" : touch ? "max-w-[9rem]" : "max-w-[8rem]")}>
         <p className={cn("truncate font-semibold text-foreground", touch ? "text-[14px]" : "text-[13px]")}>{player.name}</p>
-        {status && <p className={cn("mt-0.5 truncate text-muted-foreground", touch ? "text-[12px]" : "text-[11.5px]")}>{status}</p>}
+        {(note || status) && (
+          <p title={note ?? undefined} className={cn("mt-0.5 truncate text-muted-foreground", touch ? "text-[12px]" : "text-[11.5px]")}>
+            {note ?? status}
+          </p>
+        )}
       </div>
 
       <RoomIconButton

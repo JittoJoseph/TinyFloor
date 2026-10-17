@@ -379,11 +379,6 @@
       "closeTitle": "{office} sluiten?",
       "closeType": "Typ {name} om te bevestigen.",
       "keepOffice": "Kantoor houden",
-      "welcome": "Welkomstnotitie",
-      "welcomeNote": "Iedereen ziet hem één keer, de eerste keer dat ze de vloer op komen, ondertekend door jou.",
-      "welcomePlaceholder": "Wanneer het team samenkomt, waar je zit, wie je iets vraagt…",
-      "welcomeBy": "Geschreven door {name}",
-      "saved": "Opgeslagen",
       "inviting": "Uitnodigen",
       "whoInvites": "Wie mensen kan uitnodigen",
       "whoInvitesEveryone": "Iedereen in het kantoor kan de uitnodigingslink delen.",
@@ -763,6 +758,7 @@
     "set": "Statusnotitie instellen",
     "clear": "Notitie wissen",
     "placeholder": "Waar ben je mee bezig?",
+    "empty": "Tekst wissen",
     "emoji": "Kies een emoji",
     "clearAfter": "Wissen na",
     "save": "Opslaan",
@@ -781,11 +777,11 @@
       "h4": "4 uur",
       "today": "Vandaag",
       "week": "Deze week"
-    },
-    "keep": "Ongewijzigd ({time})"
+    }
   },
   "welcome": {
     "title": "Welkom bij {office}",
+    "body": "Hier werkt het team. Loop naar iemand toe om te praten, en stap een vergaderruimte in als het tijd is om te vergaderen.",
     "walkIn": "Naar binnen",
     "close": "Sluiten"
   }

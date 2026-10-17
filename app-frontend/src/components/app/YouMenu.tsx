@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useFormatter, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { DoorOpen, HelpCircle, LogOut, Settings2, SmilePlus, UserRound, UserPlus } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
@@ -47,7 +47,6 @@ export function YouMenu({
   const tHelp = useTranslations("help");
   const tStatus = useTranslations("status");
   const tNote = useTranslations("note");
-  const format = useFormatter();
   const router = useRouter();
   const home = useSitePage();
   const { user, isGuest, signOut } = useAuth();
@@ -115,7 +114,7 @@ export function YouMenu({
         </>
       )}
 
-      {/* A note says what a status can't: what you're doing, and until when. */}
+      {/* A note says what a status can't: what you're doing. */}
       {!isGuest && (
         <>
           <MenuSeparator />
@@ -123,16 +122,6 @@ export function YouMenu({
             <MenuItem
               icon={<span className="text-[15px] leading-none">{note.emoji ?? "💬"}</span>}
               onSelect={() => setNoting(true)}
-              // When it clears: a time today, a day and time later on.
-              hint={
-                note.until
-                  ? format.dateTime(new Date(note.until), {
-                      ...(new Date(note.until).toDateString() === new Date().toDateString() ? {} : { weekday: "short" }),
-                      hour: "numeric",
-                      minute: "2-digit",
-                    })
-                  : undefined
-              }
             >
               <span className="block truncate">{note.text || tNote("title")}</span>
             </MenuItem>

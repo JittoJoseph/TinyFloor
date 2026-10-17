@@ -379,11 +379,6 @@
       "closeTitle": "Chiudere {office}?",
       "closeType": "Scrivi {name} per confermare.",
       "keepOffice": "Tieni l'ufficio",
-      "welcome": "Messaggio di benvenuto",
-      "welcomeNote": "Ognuno lo vede una volta, la prima volta che entra nel piano, firmato da te.",
-      "welcomePlaceholder": "Quando si riunisce il team, dove sedersi, a chi chiedere…",
-      "welcomeBy": "Scritto da {name}",
-      "saved": "Salvato",
       "inviting": "Inviti",
       "whoInvites": "Chi può invitare",
       "whoInvitesEveryone": "Chiunque nell'ufficio può condividere il link d'invito.",
@@ -763,6 +758,7 @@
     "set": "Imposta una nota di stato",
     "clear": "Cancella nota",
     "placeholder": "Cosa stai facendo?",
+    "empty": "Cancella testo",
     "emoji": "Scegli un'emoji",
     "clearAfter": "Cancella dopo",
     "save": "Salva",
@@ -781,11 +777,11 @@
       "h4": "4 ore",
       "today": "Oggi",
       "week": "Questa settimana"
-    },
-    "keep": "Invariato ({time})"
+    }
   },
   "welcome": {
     "title": "Benvenuto in {office}",
+    "body": "Qui lavora il team. Avvicinati a qualcuno per parlare ed entra in una sala riunioni quando è ora della riunione.",
     "walkIn": "Entra",
     "close": "Chiudi"
   }

@@ -379,11 +379,6 @@
       "closeTitle": "Zamknąć {office}?",
       "closeType": "Wpisz {name}, aby potwierdzić.",
       "keepOffice": "Zachowaj biuro",
-      "welcome": "Wiadomość powitalna",
-      "welcomeNote": "Każdy zobaczy ją raz, gdy pierwszy raz wejdzie na piętro, podpisaną przez ciebie.",
-      "welcomePlaceholder": "Kiedy zespół się spotyka, gdzie usiąść, kogo pytać…",
-      "welcomeBy": "Napisane przez: {name}",
-      "saved": "Zapisano",
       "inviting": "Zapraszanie",
       "whoInvites": "Kto może zapraszać",
       "whoInvitesEveryone": "Każdy w biurze może udostępnić link z zaproszeniem.",
@@ -763,6 +758,7 @@
     "set": "Ustaw notatkę statusu",
     "clear": "Wyczyść notatkę",
     "placeholder": "Czym się zajmujesz?",
+    "empty": "Wyczyść tekst",
     "emoji": "Wybierz emoji",
     "clearAfter": "Wyczyść po",
     "save": "Zapisz",
@@ -781,11 +777,11 @@
       "h4": "4 godziny",
       "today": "Dziś",
       "week": "Ten tydzień"
-    },
-    "keep": "Bez zmian ({time})"
+    }
   },
   "welcome": {
     "title": "Witaj w {office}",
+    "body": "Tu pracuje zespół. Podejdź do kogoś, żeby porozmawiać, a gdy przyjdzie pora spotkania, wejdź do sali spotkań.",
     "walkIn": "Wejdź",
     "close": "Zamknij"
   }

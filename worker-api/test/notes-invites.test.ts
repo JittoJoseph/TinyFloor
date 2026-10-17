@@ -67,25 +67,11 @@ describe("status notes", () => {
 });
 
 describe("office settings", () => {
-  it("lets an admin write a welcome note, signed with their name, and clear it", async () => {
-    const fay = await makeUser("Fay");
-    const officeId = await officeOf(fay);
-    const set = await call<{ office: { welcome: unknown } }>(fay, "PATCH", `/v1/offices/${officeId}`, {
-      welcome: "  Hi all!\n\n\n\nStandup at 10 in the meeting room.  ",
-    });
-    expect(set.status).toBe(200);
-    expect(set.body.office.welcome).toEqual({ text: "Hi all!\n\nStandup at 10 in the meeting room.", by: fay.id, byName: "Fay" });
-
-    const cleared = await call<{ office: { welcome: unknown } }>(fay, "PATCH", `/v1/offices/${officeId}`, { welcome: "   " });
-    expect(cleared.body.office.welcome).toBeNull();
-  });
-
-  it("keeps the welcome note and invite rule to admins", async () => {
+  it("keeps the invite rule to admins", async () => {
     const gus = await makeUser("Gus");
     const hal = await makeUser("Hal");
     const officeId = await officeOf(gus);
     await joinOffice(gus, hal, officeId);
-    expect((await call(hal, "PATCH", `/v1/offices/${officeId}`, { welcome: "Hello" })).status).toBe(403);
     expect((await call(hal, "PATCH", `/v1/offices/${officeId}`, { invitePolicy: "admins" })).status).toBe(403);
   });
 
@@ -109,10 +95,10 @@ describe("office settings", () => {
   it("still renames, and says when there's nothing to change", async () => {
     const kim = await makeUser("Kim");
     const officeId = await officeOf(kim);
-    const renamed = await call<{ office: { name: string; invitePolicy: string; welcome: unknown } }>(kim, "PATCH", `/v1/offices/${officeId}`, {
+    const renamed = await call<{ office: { name: string; invitePolicy: string } }>(kim, "PATCH", `/v1/offices/${officeId}`, {
       name: "Harbour",
     });
-    expect(renamed.body.office).toMatchObject({ name: "Harbour", invitePolicy: "everyone", welcome: null });
+    expect(renamed.body.office).toMatchObject({ name: "Harbour", invitePolicy: "everyone" });
     expect((await call(kim, "PATCH", `/v1/offices/${officeId}`, {})).status).toBe(400);
   });
 });

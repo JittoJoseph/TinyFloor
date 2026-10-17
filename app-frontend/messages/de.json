@@ -379,11 +379,6 @@
       "closeTitle": "{office} schließen?",
       "closeType": "Gib {name} ein, um zu bestätigen.",
       "keepOffice": "Büro behalten",
-      "welcome": "Willkommensnotiz",
-      "welcomeNote": "Jede Person sieht sie einmal, wenn sie die Fläche zum ersten Mal betritt, mit deinem Namen darunter.",
-      "welcomePlaceholder": "Wann sich das Team trifft, wo man sitzt, wen man fragt …",
-      "welcomeBy": "Geschrieben von {name}",
-      "saved": "Gespeichert",
       "inviting": "Einladen",
       "whoInvites": "Wer Leute einladen kann",
       "whoInvitesEveryone": "Alle im Büro können den Einladungslink teilen.",
@@ -763,6 +758,7 @@
     "set": "Statusnotiz festlegen",
     "clear": "Notiz löschen",
     "placeholder": "Was machst du gerade?",
+    "empty": "Text löschen",
     "emoji": "Emoji wählen",
     "clearAfter": "Löschen nach",
     "save": "Speichern",
@@ -781,11 +777,11 @@
       "h4": "4 Stunden",
       "today": "Heute",
       "week": "Diese Woche"
-    },
-    "keep": "Unverändert ({time})"
+    }
   },
   "welcome": {
     "title": "Willkommen bei {office}",
+    "body": "Hier arbeitet das Team. Geh zu jemandem hin, um zu reden, und in einen Meetingraum, wenn es Zeit für ein Meeting ist.",
     "walkIn": "Reingehen",
     "close": "Schließen"
   }

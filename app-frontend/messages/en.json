@@ -379,11 +379,6 @@
       "closeTitle": "Close {office}?",
       "closeType": "Type {name} to confirm.",
       "keepOffice": "Keep the office",
-      "welcome": "Welcome note",
-      "welcomeNote": "Each person sees it once, the first time they walk onto the floor, signed by you.",
-      "welcomePlaceholder": "When the team meets, where to sit, who to ask…",
-      "welcomeBy": "Written by {name}",
-      "saved": "Saved",
       "inviting": "Inviting",
       "whoInvites": "Who can invite people",
       "whoInvitesEveryone": "Anyone in the office can share its invite link.",
@@ -763,6 +758,7 @@
     "set": "Set a status note",
     "clear": "Clear note",
     "placeholder": "What are you up to?",
+    "empty": "Clear text",
     "emoji": "Choose an emoji",
     "clearAfter": "Clear after",
     "save": "Save",
@@ -781,11 +777,11 @@
       "h4": "4 hours",
       "today": "Today",
       "week": "This week"
-    },
-    "keep": "Unchanged ({time})"
+    }
   },
   "welcome": {
     "title": "Welcome to {office}",
+    "body": "This is where the team works. Walk up to anyone to talk, and step into a meeting room when it's time to meet.",
     "walkIn": "Walk in",
     "close": "Close"
   }

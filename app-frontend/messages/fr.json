@@ -379,11 +379,6 @@
       "closeTitle": "Fermer {office} ?",
       "closeType": "Tapez {name} pour confirmer.",
       "keepOffice": "Garder le bureau",
-      "welcome": "Mot de bienvenue",
-      "welcomeNote": "Chacun le voit une fois, la première fois qu'il arrive à l'étage, signé de votre nom.",
-      "welcomePlaceholder": "Quand l'équipe se retrouve, où s'asseoir, à qui demander…",
-      "welcomeBy": "Écrit par {name}",
-      "saved": "Enregistré",
       "inviting": "Invitations",
       "whoInvites": "Qui peut inviter",
       "whoInvitesEveryone": "Tout le monde dans le bureau peut partager le lien d'invitation.",
@@ -763,6 +758,7 @@
     "set": "Ajouter une note de statut",
     "clear": "Effacer la note",
     "placeholder": "Que faites-vous ?",
+    "empty": "Effacer le texte",
     "emoji": "Choisir un emoji",
     "clearAfter": "Effacer après",
     "save": "Enregistrer",
@@ -781,11 +777,11 @@
       "h4": "4 heures",
       "today": "Aujourd'hui",
       "week": "Cette semaine"
-    },
-    "keep": "Inchangé ({time})"
+    }
   },
   "welcome": {
     "title": "Bienvenue chez {office}",
+    "body": "C'est ici que l'équipe travaille. Approchez-vous de quelqu'un pour lui parler, et entrez dans une salle de réunion quand c'est l'heure.",
     "walkIn": "Entrer",
     "close": "Fermer"
   }

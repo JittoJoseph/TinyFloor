@@ -379,11 +379,6 @@
       "closeTitle": "Stäng {office}?",
       "closeType": "Skriv {name} för att bekräfta.",
       "keepOffice": "Behåll kontoret",
-      "welcome": "Välkomstnotis",
-      "welcomeNote": "Alla ser den en gång, första gången de kliver in på golvet, med ditt namn under.",
-      "welcomePlaceholder": "När teamet ses, var man sitter, vem man frågar…",
-      "welcomeBy": "Skriven av {name}",
-      "saved": "Sparat",
       "inviting": "Inbjudningar",
       "whoInvites": "Vem kan bjuda in",
       "whoInvitesEveryone": "Alla på kontoret kan dela inbjudningslänken.",
@@ -763,6 +758,7 @@
     "set": "Ange en statusnotis",
     "clear": "Rensa notis",
     "placeholder": "Vad håller du på med?",
+    "empty": "Rensa texten",
     "emoji": "Välj en emoji",
     "clearAfter": "Rensa efter",
     "save": "Spara",
@@ -781,11 +777,11 @@
       "h4": "4 timmar",
       "today": "I dag",
       "week": "Den här veckan"
-    },
-    "keep": "Oförändrat ({time})"
+    }
   },
   "welcome": {
     "title": "Välkommen till {office}",
+    "body": "Här jobbar teamet. Gå fram till någon för att prata, och kliv in i ett mötesrum när det är dags för möte.",
     "walkIn": "Gå in",
     "close": "Stäng"
   }

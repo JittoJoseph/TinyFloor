@@ -379,11 +379,6 @@
       "closeTitle": "Suljetaanko {office}?",
       "closeType": "Vahvista kirjoittamalla {name}.",
       "keepOffice": "Pidä toimisto",
-      "welcome": "Tervetuloviesti",
-      "welcomeNote": "Jokainen näkee sen kerran, kun hän ensimmäisen kerran astuu kerrokseen, sinun allekirjoittamanasi.",
-      "welcomePlaceholder": "Milloin tiimi kokoontuu, mihin istutaan, keneltä kysytään…",
-      "welcomeBy": "Kirjoittanut {name}",
-      "saved": "Tallennettu",
       "inviting": "Kutsuminen",
       "whoInvites": "Kuka voi kutsua",
       "whoInvitesEveryone": "Kuka tahansa toimistossa voi jakaa kutsulinkin.",
@@ -763,6 +758,7 @@
     "set": "Aseta tilaviesti",
     "clear": "Poista viesti",
     "placeholder": "Mitä olet tekemässä?",
+    "empty": "Tyhjennä teksti",
     "emoji": "Valitse emoji",
     "clearAfter": "Poista ajan kuluttua",
     "save": "Tallenna",
@@ -781,11 +777,11 @@
       "h4": "4 tuntia",
       "today": "Tänään",
       "week": "Tällä viikolla"
-    },
-    "keep": "Ennallaan ({time})"
+    }
   },
   "welcome": {
     "title": "Tervetuloa: {office}",
+    "body": "Täällä tiimi tekee töitä. Kävele kenen tahansa luo jutellaksesi, ja astu kokoushuoneeseen, kun on kokouksen aika.",
     "walkIn": "Astu sisään",
     "close": "Sulje"
   }

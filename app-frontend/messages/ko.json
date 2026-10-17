@@ -379,11 +379,6 @@
       "closeTitle": "{office}을(를) 닫을까요?",
       "closeType": "확인하려면 {name}을(를) 입력하세요.",
       "keepOffice": "사무실 유지",
-      "welcome": "환영 메시지",
-      "welcomeNote": "처음 층에 들어올 때 한 번, 내 이름과 함께 보여요.",
-      "welcomePlaceholder": "팀이 모이는 시간, 앉을 자리, 물어볼 사람…",
-      "welcomeBy": "{name} 님이 작성",
-      "saved": "저장됨",
       "inviting": "초대",
       "whoInvites": "초대할 수 있는 사람",
       "whoInvitesEveryone": "사무실의 누구나 초대 링크를 공유할 수 있어요.",
@@ -763,6 +758,7 @@
     "set": "상태 메모 설정",
     "clear": "메모 지우기",
     "placeholder": "지금 무엇을 하고 있나요?",
+    "empty": "텍스트 지우기",
     "emoji": "이모지 선택",
     "clearAfter": "지우기",
     "save": "저장",
@@ -781,11 +777,11 @@
       "h4": "4시간",
       "today": "오늘",
       "week": "이번 주"
-    },
-    "keep": "그대로 ({time})"
+    }
   },
   "welcome": {
     "title": "{office}에 오신 걸 환영해요",
+    "body": "팀이 일하는 곳이에요. 누구에게든 다가가면 바로 대화할 수 있고, 회의 시간에는 회의실로 들어가세요.",
     "walkIn": "들어가기",
     "close": "닫기"
   }

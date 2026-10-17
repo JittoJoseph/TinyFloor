@@ -379,11 +379,6 @@
       "closeTitle": "Luk {office}?",
       "closeType": "Skriv {name} for at bekræfte.",
       "keepOffice": "Behold kontoret",
-      "welcome": "Velkomstnote",
-      "welcomeNote": "Alle ser den én gang, første gang de træder ind på gulvet, med dit navn under.",
-      "welcomePlaceholder": "Hvornår teamet mødes, hvor man sidder, hvem man spørger…",
-      "welcomeBy": "Skrevet af {name}",
-      "saved": "Gemt",
       "inviting": "Invitationer",
       "whoInvites": "Hvem kan invitere",
       "whoInvitesEveryone": "Alle på kontoret kan dele invitationslinket.",
@@ -763,6 +758,7 @@
     "set": "Sæt en statusnote",
     "clear": "Ryd note",
     "placeholder": "Hvad laver du?",
+    "empty": "Ryd teksten",
     "emoji": "Vælg en emoji",
     "clearAfter": "Ryd efter",
     "save": "Gem",
@@ -781,11 +777,11 @@
       "h4": "4 timer",
       "today": "I dag",
       "week": "Denne uge"
-    },
-    "keep": "Uændret ({time})"
+    }
   },
   "welcome": {
     "title": "Velkommen til {office}",
+    "body": "Her arbejder holdet. Gå hen til nogen for at tale sammen, og gå ind i et mødelokale, når det er tid til møde.",
     "walkIn": "Gå ind",
     "close": "Luk"
   }

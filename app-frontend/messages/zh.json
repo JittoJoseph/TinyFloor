@@ -379,11 +379,6 @@
       "closeTitle": "关闭{office}？",
       "closeType": "输入“{name}”以确认。",
       "keepOffice": "保留办公室",
-      "welcome": "欢迎语",
-      "welcomeNote": "每个人第一次进入楼层时会看到一次，并署上你的名字。",
-      "welcomePlaceholder": "团队什么时候碰面、坐在哪里、有问题找谁……",
-      "welcomeBy": "由 {name} 撰写",
-      "saved": "已保存",
       "inviting": "邀请",
       "whoInvites": "谁可以邀请",
       "whoInvitesEveryone": "办公室里的任何人都可以分享邀请链接。",
@@ -763,6 +758,7 @@
     "set": "设置状态备注",
     "clear": "清除备注",
     "placeholder": "你在忙什么？",
+    "empty": "清除文字",
     "emoji": "选择表情",
     "clearAfter": "清除时间",
     "save": "保存",
@@ -781,11 +777,11 @@
       "h4": "4 小时",
       "today": "今天",
       "week": "本周"
-    },
-    "keep": "不变（{time}）"
+    }
   },
   "welcome": {
     "title": "欢迎来到{office}",
+    "body": "这里是团队工作的地方。走到任何人身边就能交谈，开会时走进会议室即可。",
     "walkIn": "进入",
     "close": "关闭"
   }

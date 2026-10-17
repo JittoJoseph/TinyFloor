@@ -379,11 +379,6 @@
       "closeTitle": "Stenge {office}?",
       "closeType": "Skriv {name} for å bekrefte.",
       "keepOffice": "Behold kontoret",
-      "welcome": "Velkomstnotat",
-      "welcomeNote": "Alle ser det én gang, første gang de går inn på gulvet, med navnet ditt under.",
-      "welcomePlaceholder": "Når teamet møtes, hvor man sitter, hvem man spør…",
-      "welcomeBy": "Skrevet av {name}",
-      "saved": "Lagret",
       "inviting": "Invitasjoner",
       "whoInvites": "Hvem kan invitere",
       "whoInvitesEveryone": "Alle på kontoret kan dele invitasjonslenken.",
@@ -763,6 +758,7 @@
     "set": "Sett et statusnotat",
     "clear": "Fjern notat",
     "placeholder": "Hva holder du på med?",
+    "empty": "Tøm teksten",
     "emoji": "Velg en emoji",
     "clearAfter": "Fjern etter",
     "save": "Lagre",
@@ -781,11 +777,11 @@
       "h4": "4 timer",
       "today": "I dag",
       "week": "Denne uken"
-    },
-    "keep": "Uendret ({time})"
+    }
   },
   "welcome": {
     "title": "Velkommen til {office}",
+    "body": "Her jobber teamet. Gå bort til noen for å snakke, og gå inn i et møterom når det er tid for møte.",
     "walkIn": "Gå inn",
     "close": "Lukk"
   }

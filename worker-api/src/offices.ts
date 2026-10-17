@@ -58,7 +58,7 @@ export function officeRoutes(router: Router): void {
       return json({ office: officeJson(office, await seatsUsed(env, params.id)) });
     })
 
-    // An admin changing the office: its name, its welcome note, who can invite. Any of them, in one go.
+    // An admin changing the office: its name, who can invite. Either or both, in one go.
     .add("PATCH", "/v1/offices/:id", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       await requireOffice(env, params.id, user.id, ["admin"]);
@@ -70,12 +70,6 @@ export function officeRoutes(router: Router): void {
         if (!name) throw new HttpError(400, "name_required", "Name the office");
         sets.push("name = ?");
         values.push(name);
-      }
-      if (body.welcome !== undefined) {
-        // Whoever writes it signs it; clearing it clears the signature too.
-        const welcome = cleanWelcome(body.welcome);
-        sets.push("welcome = ?", "welcome_by = ?");
-        values.push(welcome, welcome ? user.id : null);
       }
       if (body.invitePolicy !== undefined) {
         if (!INVITE_POLICIES.includes(body.invitePolicy as InvitePolicy)) {
@@ -345,25 +339,6 @@ export function officeJson(office: Office, members: number) {
     owner: office.ownerId,
     trialEndsAt: office.trialEndsAt,
     trialOpen: office.trialOpen,
-    welcome: office.welcome,
     invitePolicy: office.invitePolicy,
   };
-}
-
-export const WELCOME_MAX = 600;
-
-/** A welcome note: its own lines kept, no more than one blank line between them, trimmed to length. Empty is none. */
-export function cleanWelcome(value: unknown): string | null {
-  if (typeof value !== "string") return null;
-  const text = value
-    .replace(/\r\n?/g, "\n")
-    .replace(/[\p{Cc}\p{Cf}]/gu, (char) => (char === "\n" ? char : ""))
-    .split("\n")
-    .map((line) => line.replace(/\s+/g, " ").trim())
-    .join("\n")
-    .replace(/\n{3,}/g, "\n\n")
-    .trim()
-    .slice(0, WELCOME_MAX)
-    .trim();
-  return text || null;
 }

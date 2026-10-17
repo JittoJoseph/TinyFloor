@@ -5,10 +5,5 @@ ALTER TABLE users ADD COLUMN status_emoji TEXT;
 ALTER TABLE users ADD COLUMN status_text TEXT;
 ALTER TABLE users ADD COLUMN status_until INTEGER;
 
--- An office's welcome note, shown once to each person the first time they walk
--- onto its floor, signed by the admin who wrote it.
-ALTER TABLE offices ADD COLUMN welcome TEXT;
-ALTER TABLE offices ADD COLUMN welcome_by TEXT;
-
 -- Who can share the office's invite link: everyone in it (the default), or only admins.
 ALTER TABLE offices ADD COLUMN invite_policy TEXT NOT NULL DEFAULT 'everyone';

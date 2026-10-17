@@ -92,6 +92,7 @@
     "you": "{name} (du)",
     "aloneTitle": "Nur du auf der Fläche",
     "aloneBody": "Schick den Link – wer ihn öffnet, steht gleich neben dir.",
+    "aloneQuiet": "Sobald jemand anderes reinkommt, erscheint er hier.",
     "inviteSomeone": "Jemanden einladen"
   },
   "call": {
@@ -361,8 +362,29 @@
       "leave": "Dieses Büro verlassen",
       "wrong": "Das hat nicht geklappt. Versuch es nochmal.",
       "plan": "{plan} · {used} von {seats} Plätzen",
-      "danger": "Verlassen oder schließen",
-      "cancelPlanFirst": "Kündige zuerst den Tarif dieses Büros unter Tarif und Abrechnung. Danach kann es geschlossen werden."
+      "cancelPlanFirst": "Kündige zuerst den Tarif dieses Büros unter Tarif und Abrechnung. Danach kann es geschlossen werden.",
+      "nameAdminsOnly": "Nur ein Admin kann das Büro umbenennen.",
+      "handOver": "Büro übergeben",
+      "handOverNote": "Mach jemand anderen zum Inhaber. Diese Person wird auch Admin, und du bleibst Admin.",
+      "handOverBilling": "Der Tarif und seine Abrechnung bleiben, wie sie sind.",
+      "handOverPick": "Mitglied auswählen",
+      "handOverButton": "Übergeben",
+      "handOverTitle": "{office} an {name} übergeben?",
+      "handOverSure": "{name} wird Inhaber und ist damit die einzige Person, die das Büro schließen oder weitergeben kann. Du bleibst Admin.",
+      "handOverIt": "Übergeben",
+      "leaveTitle": "{office} verlassen?",
+      "leaveSure": "Du verlierst die Fläche und den Chat. Um zurückzukommen, muss dich jemand aus dem Büro wieder einladen.",
+      "leaveIt": "Büro verlassen",
+      "stay": "Bleiben",
+      "closeTitle": "{office} schließen?",
+      "closeType": "Gib {name} ein, um zu bestätigen.",
+      "keepOffice": "Büro behalten",
+      "inviting": "Einladen",
+      "whoInvites": "Wer Leute einladen kann",
+      "whoInvitesEveryone": "Alle im Büro können den Einladungslink teilen.",
+      "whoInvitesAdmins": "Nur Admins können den Einladungslink sehen und teilen.",
+      "inviteEveryone": "Alle",
+      "inviteAdmins": "Nur Admins"
     },
     "profile": {
       "changePassword": "Passwort ändern",
@@ -475,7 +497,9 @@
       "search": "Personen suchen",
       "noMatch": "Niemand passt dazu.",
       "seatsOpen": "{count, plural, one {# Platz frei} other {# Plätze frei}}",
-      "proRoom": "Platz für dein ganzes Team, {price} im Monat"
+      "proRoom": "Platz für dein ganzes Team, {price} im Monat",
+      "removeTitle": "{name} entfernen?",
+      "removeSure": "{name} verliert die Fläche und den Chat, und der Platz wird frei. Du kannst die Person später wieder einladen."
     },
     "office": "Büro",
     "goneTitle": "Dieses Büro gibt es nicht mehr",
@@ -728,5 +752,37 @@
     "notNow": "Nicht jetzt",
     "claimed": "Das ist jetzt dein Schreibtisch",
     "hint": "Such dir einen Schreibtisch und setz dich. Er kann deiner werden."
+  },
+  "note": {
+    "title": "Statusnotiz",
+    "set": "Statusnotiz festlegen",
+    "clear": "Notiz löschen",
+    "placeholder": "Was machst du gerade?",
+    "empty": "Text löschen",
+    "emoji": "Emoji wählen",
+    "clearAfter": "Löschen nach",
+    "save": "Speichern",
+    "failed": "Das wurde nicht gespeichert. Versuch es nochmal.",
+    "presets": {
+      "focus": "Konzentriert",
+      "lunch": "Mittagspause",
+      "back": "Gleich zurück",
+      "sick": "Krank",
+      "holiday": "Im Urlaub"
+    },
+    "lasting": {
+      "never": "Nicht löschen",
+      "m30": "30 Minuten",
+      "h1": "1 Stunde",
+      "h4": "4 Stunden",
+      "today": "Heute",
+      "week": "Diese Woche"
+    }
+  },
+  "welcome": {
+    "title": "Willkommen bei {office}",
+    "body": "Hier arbeitet das Team. Geh zu jemandem hin, um zu reden, und in einen Meetingraum, wenn es Zeit für ein Meeting ist.",
+    "walkIn": "Reingehen",
+    "close": "Schließen"
   }
 }

@@ -89,3 +89,35 @@ work happens. What we don't build, though each would raise usage numbers:
   address, the phone's share sheet.
 - **The doors' main button never moves**: every step is the same height, so
   people can keep pressing the same place, with a thumb on a phone.
+- **No way out within a click's reach** (17 October). The menu under your
+  face opened upward with Sign out as the item nearest the pointer, so a slip
+  took you off the floor in front of your team; it now holds only your status
+  and profile, and signing out lives in Settings › Signing in (a guest, with no
+  account settings, still signs out from the menu). Leaving or closing an
+  office is one quiet line at the foot of its settings, not a red card, and
+  leaving, closing and removing someone each ask first, with staying as the
+  button and going as plain words beside it. Closing also wants the office's
+  name typed. An owner can hand the office to a teammate instead of closing it.
+- **The office menu is for the office you're in**: invite, its plan, its
+  settings, your other offices, a new one. The demo office isn't there, or on
+  the screen after stepping out of an office; someone with an office has no
+  use for it.
+- **A status note says why you're away** (17 October). Most of a remote team
+  is off the floor most of the day, and "Not on the floor" alone reads as
+  absent; a few words and an emoji ("🌴 On holiday until Monday") answer the
+  question before anyone asks it. The note shows on your name tag, the card
+  when someone walks up, People, the presence dock and your menu, and stays
+  while you're signed out. Picking one of the five usual notes fills it in
+  with the time it usually lasts (lunch an hour, sick until midnight), as
+  Slack's do, so a stale note doesn't sit there for a week; one save sets
+  it. Guests don't get one.
+- **A welcome, the same for every office** (17 October). Someone who has just
+  joined sees it once, the first time they reach the floor: the office, the
+  faces of who's in it, and one line on walking up to talk. An admin-written
+  note was tried and dropped: one more thing to set up before an office
+  feels finished, and most would have stayed empty. Not shown to the owner,
+  or to anyone who joined more than three days ago.
+- **Who can invite** is everyone by default, which is how a team grows
+  without asking. An admin can limit it to admins, and then members see no
+  invite button anywhere, and the empty floor stops telling them to send the
+  link.

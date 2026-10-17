@@ -3,11 +3,11 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { ArrowRight, DoorOpen, Plus } from "@/components/ui/icons";
+import { ArrowRight, Plus } from "@/components/ui/icons";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, type OfficeSummary } from "@/lib/api";
-import { lobbyPath, officePath, useSitePage } from "@/lib/links";
+import { officePath, useSitePage } from "@/lib/links";
 import { lastOffice } from "@/lib/lastOffice";
 import { Face } from "@/components/ui/Face";
 import { LitFace } from "@/components/ui/LitFace";
@@ -83,7 +83,7 @@ export function AppHome() {
   return <div className="min-h-dvh bg-background" aria-busy="true" />;
 }
 
-/** Just outside the office you left: its door to walk back in by, your other offices, and the demo office. */
+/** Just outside the office you left: its door to walk back in by, and your other offices. */
 function Outside({ office, others }: { office: OfficeSummary; others: OfficeSummary[] }) {
   const t = useTranslations("dashboard");
   const ts = useTranslations("shell");
@@ -131,12 +131,6 @@ function Outside({ office, others }: { office: OfficeSummary; others: OfficeSumm
             <Plus />
           </span>
           <span className="flex-1">{ts("newOffice")}</span>
-        </Link>
-        <Link href={lobbyPath} className={row}>
-          <span className="flex size-[22px] items-center justify-center text-muted-foreground [&_svg]:size-4">
-            <DoorOpen className="rtl:-scale-x-100" />
-          </span>
-          <span className="flex-1">{ts("publicLobby")}</span>
         </Link>
       </div>
     </div>

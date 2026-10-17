@@ -10,6 +10,50 @@ export const HEARTBEAT_PONG = "pong";
 export const BOARD_MAX_STROKES = 400;
 export const BOARD_MAX_POINTS_PER_STROKE = 4000;
 
+/**
+ * A few words beside someone's status, with an emoji their name tag on the
+ * floor shows: "🍜 Lunch, back at 2". It can clear itself when they say, so a
+ * note never goes stale and nobody has to remember to take it down.
+ */
+export interface StatusNote {
+  emoji: string | null;
+  text: string;
+  /** When it clears itself, in milliseconds; null keeps it until it's changed. */
+  until: number | null;
+}
+
+export const STATUS_NOTE_MAX = 80;
+/** Room for an emoji built of several joined code points (👩🏽‍💻), and no more. */
+const NOTE_EMOJI_MAX = 16;
+/** A note can be set to last a week at most; longer than that, it's out of date. */
+const NOTE_LONGEST_MS = 8 * 24 * 60 * 60 * 1000;
+
+/** The note while it lasts; null once it has cleared itself. */
+export function liveNote(note: StatusNote | null | undefined, now = Date.now()): StatusNote | null {
+  return note && (note.until === null || note.until > now) ? note : null;
+}
+
+/** A note as someone sent it, made safe to keep and to show, or null for none. */
+export function cleanNote(value: unknown, now = Date.now()): StatusNote | null {
+  if (!value || typeof value !== "object") return null;
+  const { emoji, text, until } = value as Record<string, unknown>;
+  const words =
+    typeof text === "string"
+      ? text
+          .replace(/[\u0000-\u001f\u007f]/g, " ")
+          .replace(/\s+/g, " ")
+          .trim()
+          .slice(0, STATUS_NOTE_MAX)
+      : "";
+  const mark =
+    typeof emoji === "string" && emoji.length <= NOTE_EMOJI_MAX && /^\p{Extended_Pictographic}/u.test(emoji.trim())
+      ? emoji.trim()
+      : null;
+  if (!words && !mark) return null;
+  const ends = typeof until === "number" && Number.isFinite(until) && until > now ? Math.min(until, now + NOTE_LONGEST_MS) : null;
+  return { emoji: mark, text: words, until: ends };
+}
+
 export interface PlayerState {
   id: string;
   name: string;
@@ -19,6 +63,8 @@ export interface PlayerState {
   status: PresenceStatus;
   guest: boolean;
   seat: number | null;
+  /** Their status note, while it lasts. */
+  note?: StatusNote | null;
 }
 
 /** A desk that is someone's own in an office (docs/product.md): they arrive sitting at it, and nobody else sits there. */
@@ -164,6 +210,8 @@ export type ClientMessage =
   | { t: "sit"; seat: number; x: number; y: number }
   | { t: "stand"; x: number; y: number }
   | { t: "status"; status: PresenceStatus }
+  /** Your status note changed (the API keeps it; this tells the floor). */
+  | { t: "note"; note: StatusNote | null }
   | { t: "board_sync" }
   | ({ t: "board_draw" } & BoardStroke)
   | { t: "board_clear" }
@@ -224,6 +272,7 @@ export type ServerMessage =
   | { t: "meeting_invited"; from: string; fromName: string; meeting: string; name: string | null }
   | { t: "meeting_error"; code: MeetingErrorCode }
   | { t: "status"; id: string; status: PresenceStatus }
+  | { t: "note"; id: string; note: StatusNote | null }
   | { t: "board_state"; strokes: BoardStroke[] }
   | ({ t: "board_draw"; by: string } & BoardStroke)
   | { t: "board_clear"; by: string }

@@ -92,6 +92,7 @@
     "you": "{name} (você)",
     "aloneTitle": "Só você no andar",
     "aloneBody": "Envie o link, e quem abrir aparece ao seu lado.",
+    "aloneQuiet": "Quando mais alguém entrar, aparece aqui.",
     "inviteSomeone": "Convidar alguém"
   },
   "call": {
@@ -361,8 +362,29 @@
       "leave": "Sair deste escritório",
       "wrong": "Não resultou. Tenta outra vez.",
       "plan": "{plan} · {used} de {seats} lugares",
-      "danger": "Sair ou fechar",
-      "cancelPlanFirst": "Cancele primeiro o plano deste escritório em Plano e cobrança. Depois ele pode ser fechado."
+      "cancelPlanFirst": "Cancele primeiro o plano deste escritório em Plano e cobrança. Depois ele pode ser fechado.",
+      "nameAdminsOnly": "Só um admin pode renomear o escritório.",
+      "handOver": "Passar o escritório",
+      "handOverNote": "Torne outra pessoa a dona. Ela também vira admin, e você continua admin.",
+      "handOverBilling": "O plano e a cobrança continuam como estão.",
+      "handOverPick": "Escolha um membro",
+      "handOverButton": "Passar",
+      "handOverTitle": "Passar {office} para {name}?",
+      "handOverSure": "{name} passa a ser dono, a única pessoa que pode fechar o escritório ou passá-lo adiante. Você continua admin.",
+      "handOverIt": "Passar o escritório",
+      "leaveTitle": "Sair de {office}?",
+      "leaveSure": "Você perde o andar e o chat. Para voltar, alguém do escritório precisa te convidar de novo.",
+      "leaveIt": "Sair do escritório",
+      "stay": "Ficar",
+      "closeTitle": "Fechar {office}?",
+      "closeType": "Digite {name} para confirmar.",
+      "keepOffice": "Manter o escritório",
+      "inviting": "Convites",
+      "whoInvites": "Quem pode convidar",
+      "whoInvitesEveryone": "Qualquer pessoa do escritório pode compartilhar o link de convite.",
+      "whoInvitesAdmins": "Só admins podem ver e compartilhar o link de convite.",
+      "inviteEveryone": "Todos",
+      "inviteAdmins": "Só admins"
     },
     "profile": {
       "changePassword": "Alterar senha",
@@ -475,7 +497,9 @@
       "search": "Procurar pessoas",
       "noMatch": "Ninguém corresponde.",
       "seatsOpen": "{count, plural, one {# lugar livre} other {# lugares livres}}",
-      "proRoom": "Espaço para toda a sua equipe, {price} por mês"
+      "proRoom": "Espaço para toda a sua equipe, {price} por mês",
+      "removeTitle": "Remover {name}?",
+      "removeSure": "{name} perde o andar e o chat, e o lugar fica livre. Você pode convidar de novo depois."
     },
     "office": "Escritório",
     "goneTitle": "Este escritório já não existe",
@@ -606,7 +630,7 @@
     "welcomeAnonymous": "Bem-vindo",
     "welcomeBody": "Um andar para sua equipe, com canais e chamadas incluídos.",
     "invited": "Foi convidado?",
-    "invitedBody": "Cole o link que a sua equipa lhe enviou.",
+    "invitedBody": "Cole o link que sua equipe enviou para você.",
     "invitePlaceholder": "Cole um link de convite",
     "join": "Entrar",
     "badLink": "Isso não parece um link de convite. Cole o link completo.",
@@ -728,5 +752,37 @@
     "notNow": "Agora não",
     "claimed": "Esta é sua mesa agora",
     "hint": "Escolha uma mesa e sente-se. Ela pode ser sua."
+  },
+  "note": {
+    "title": "Nota de status",
+    "set": "Definir nota de status",
+    "clear": "Limpar nota",
+    "placeholder": "O que você está fazendo?",
+    "empty": "Apagar texto",
+    "emoji": "Escolha um emoji",
+    "clearAfter": "Limpar depois de",
+    "save": "Salvar",
+    "failed": "Não foi salvo. Tente de novo.",
+    "presets": {
+      "focus": "Concentrado",
+      "lunch": "Almoço",
+      "back": "Volto já",
+      "sick": "Doente",
+      "holiday": "De férias"
+    },
+    "lasting": {
+      "never": "Não limpar",
+      "m30": "30 minutos",
+      "h1": "1 hora",
+      "h4": "4 horas",
+      "today": "Hoje",
+      "week": "Esta semana"
+    }
+  },
+  "welcome": {
+    "title": "Boas-vindas a {office}",
+    "body": "É aqui que a equipe trabalha. Chegue perto de alguém para conversar e entre numa sala de reunião quando for hora de se reunir.",
+    "walkIn": "Entrar",
+    "close": "Fechar"
   }
 }

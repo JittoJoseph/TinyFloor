@@ -92,6 +92,7 @@
     "you": "{name} (you)",
     "aloneTitle": "Just you on the floor",
     "aloneBody": "Send the link, and whoever opens it walks in beside you.",
+    "aloneQuiet": "When someone else comes in, they'll show up here.",
     "inviteSomeone": "Invite someone"
   },
   "call": {
@@ -361,8 +362,29 @@
       "leave": "Leave this office",
       "wrong": "That didn't work. Try again.",
       "plan": "{plan} · {used} of {seats} seats",
-      "danger": "Leaving or closing",
-      "cancelPlanFirst": "Cancel this office's plan first, in Plan and billing. Then it can be closed."
+      "cancelPlanFirst": "Cancel this office's plan first, in Plan and billing. Then it can be closed.",
+      "nameAdminsOnly": "Only an admin can rename the office.",
+      "handOver": "Hand the office over",
+      "handOverNote": "Make someone else its owner. They become an admin too, and you stay on as an admin.",
+      "handOverBilling": "The plan and its billing stay as they are.",
+      "handOverPick": "Choose a member",
+      "handOverButton": "Hand over",
+      "handOverTitle": "Hand {office} over to {name}?",
+      "handOverSure": "{name} becomes the owner, the only one who can close the office or hand it on again. You stay on as an admin.",
+      "handOverIt": "Hand it over",
+      "leaveTitle": "Leave {office}?",
+      "leaveSure": "You'll lose its floor and its chat. To come back, someone in the office has to invite you again.",
+      "leaveIt": "Leave the office",
+      "stay": "Stay",
+      "closeTitle": "Close {office}?",
+      "closeType": "Type {name} to confirm.",
+      "keepOffice": "Keep the office",
+      "inviting": "Inviting",
+      "whoInvites": "Who can invite people",
+      "whoInvitesEveryone": "Anyone in the office can share its invite link.",
+      "whoInvitesAdmins": "Only admins can see and share the invite link.",
+      "inviteEveryone": "Everyone",
+      "inviteAdmins": "Only admins"
     },
     "profile": {
       "changePassword": "Change password",
@@ -475,7 +497,9 @@
       "search": "Search people",
       "noMatch": "Nobody matches that.",
       "seatsOpen": "{count, plural, one {# seat open} other {# seats open}}",
-      "proRoom": "Room for your whole team, {price} a month"
+      "proRoom": "Room for your whole team, {price} a month",
+      "removeTitle": "Remove {name}?",
+      "removeSure": "{name} loses the floor and the chat, and their seat frees up. You can invite them back later."
     },
     "office": "Office",
     "goneTitle": "This office is gone",
@@ -728,5 +752,37 @@
     "notNow": "Not now",
     "claimed": "This is your desk now",
     "hint": "Pick a desk and sit down. It can be yours."
+  },
+  "note": {
+    "title": "Status note",
+    "set": "Set a status note",
+    "clear": "Clear note",
+    "placeholder": "What are you up to?",
+    "empty": "Clear text",
+    "emoji": "Choose an emoji",
+    "clearAfter": "Clear after",
+    "save": "Save",
+    "failed": "That didn't save. Try again.",
+    "presets": {
+      "focus": "Heads down",
+      "lunch": "Lunch",
+      "back": "Back soon",
+      "sick": "Out sick",
+      "holiday": "On holiday"
+    },
+    "lasting": {
+      "never": "Don't clear",
+      "m30": "30 minutes",
+      "h1": "1 hour",
+      "h4": "4 hours",
+      "today": "Today",
+      "week": "This week"
+    }
+  },
+  "welcome": {
+    "title": "Welcome to {office}",
+    "body": "This is where the team works. Walk up to anyone to talk, and step into a meeting room when it's time to meet.",
+    "walkIn": "Walk in",
+    "close": "Close"
   }
 }

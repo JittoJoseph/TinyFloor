@@ -92,6 +92,7 @@
     "you": "{name} (나)",
     "aloneTitle": "층에 나만 있어요",
     "aloneBody": "링크를 보내면 연 사람이 바로 옆에 나타나요.",
+    "aloneQuiet": "다른 사람이 들어오면 여기에 표시돼요.",
     "inviteSomeone": "누군가 초대하기"
   },
   "call": {
@@ -361,8 +362,29 @@
       "leave": "이 사무실 나가기",
       "wrong": "실패했습니다. 다시 시도해 주세요.",
       "plan": "{plan} · 자리 {seats}개 중 {used}개",
-      "danger": "나가기 또는 닫기",
-      "cancelPlanFirst": "먼저 '요금제 및 결제'에서 이 오피스의 요금제를 해지하세요. 그다음 닫을 수 있어요."
+      "cancelPlanFirst": "먼저 '요금제 및 결제'에서 이 오피스의 요금제를 해지하세요. 그다음 닫을 수 있어요.",
+      "nameAdminsOnly": "관리자만 사무실 이름을 바꿀 수 있어요.",
+      "handOver": "사무실 넘기기",
+      "handOverNote": "다른 사람을 소유자로 지정해요. 그 사람은 관리자도 되고, 나는 관리자로 남아요.",
+      "handOverBilling": "요금제와 결제는 그대로 유지돼요.",
+      "handOverPick": "멤버 선택",
+      "handOverButton": "넘기기",
+      "handOverTitle": "{office}을(를) {name} 님에게 넘길까요?",
+      "handOverSure": "{name} 님이 소유자가 되어, 사무실을 닫거나 다시 넘길 수 있는 유일한 사람이 돼요. 나는 관리자로 남아요.",
+      "handOverIt": "넘기기",
+      "leaveTitle": "{office}에서 나갈까요?",
+      "leaveSure": "이 사무실의 층과 채팅에 들어갈 수 없게 돼요. 돌아오려면 사무실의 누군가가 다시 초대해야 해요.",
+      "leaveIt": "사무실 나가기",
+      "stay": "남기",
+      "closeTitle": "{office}을(를) 닫을까요?",
+      "closeType": "확인하려면 {name}을(를) 입력하세요.",
+      "keepOffice": "사무실 유지",
+      "inviting": "초대",
+      "whoInvites": "초대할 수 있는 사람",
+      "whoInvitesEveryone": "사무실의 누구나 초대 링크를 공유할 수 있어요.",
+      "whoInvitesAdmins": "관리자만 초대 링크를 보고 공유할 수 있어요.",
+      "inviteEveryone": "모두",
+      "inviteAdmins": "관리자만"
     },
     "profile": {
       "changePassword": "비밀번호 변경",
@@ -475,7 +497,9 @@
       "search": "사람 검색",
       "noMatch": "일치하는 사람이 없어요.",
       "seatsOpen": "빈자리 {count}개",
-      "proRoom": "팀 전체가 들어올 수 있어요. 월 {price}"
+      "proRoom": "팀 전체가 들어올 수 있어요. 월 {price}",
+      "removeTitle": "{name} 님을 내보낼까요?",
+      "removeSure": "{name} 님은 층과 채팅에 들어갈 수 없게 되고, 자리가 비어요. 나중에 다시 초대할 수 있어요."
     },
     "office": "오피스",
     "goneTitle": "이 오피스는 없습니다",
@@ -728,5 +752,37 @@
     "notNow": "나중에",
     "claimed": "이제 여기가 내 책상이에요",
     "hint": "책상을 골라 앉아 보세요. 내 책상으로 만들 수 있어요."
+  },
+  "note": {
+    "title": "상태 메모",
+    "set": "상태 메모 설정",
+    "clear": "메모 지우기",
+    "placeholder": "지금 무엇을 하고 있나요?",
+    "empty": "텍스트 지우기",
+    "emoji": "이모지 선택",
+    "clearAfter": "지우기",
+    "save": "저장",
+    "failed": "저장하지 못했어요. 다시 시도해 주세요.",
+    "presets": {
+      "focus": "집중 중",
+      "lunch": "점심",
+      "back": "곧 돌아올게요",
+      "sick": "병가",
+      "holiday": "휴가 중"
+    },
+    "lasting": {
+      "never": "지우지 않기",
+      "m30": "30분",
+      "h1": "1시간",
+      "h4": "4시간",
+      "today": "오늘",
+      "week": "이번 주"
+    }
+  },
+  "welcome": {
+    "title": "{office}에 오신 걸 환영해요",
+    "body": "팀이 일하는 곳이에요. 누구에게든 다가가면 바로 대화할 수 있고, 회의 시간에는 회의실로 들어가세요.",
+    "walkIn": "들어가기",
+    "close": "닫기"
   }
 }

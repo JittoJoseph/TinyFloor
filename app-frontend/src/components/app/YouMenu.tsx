@@ -1,25 +1,29 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { DoorOpen, HelpCircle, LogOut, Monitor, Moon, Settings2, Sun, UserRound, UserPlus } from "@/components/ui/icons";
+import { DoorOpen, HelpCircle, LogOut, Settings2, SmilePlus, UserRound, UserPlus } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { setTheme, useTheme, type ThemeChoice } from "@/lib/theme";
-import { setMyStatus, useMyStatus } from "@/lib/floor";
+import { setMyStatus, useMyNote, useMyStatus } from "@/lib/floor";
+import { StatusNoteDialog } from "./StatusNote";
 import type { PlayerStatus } from "@/lib/types";
 import { Face } from "@/components/ui/Face";
 import { Menu, MenuHeader, MenuItem, MenuLabel, MenuSeparator } from "@/components/ui/Menu";
 import { cn } from "@/lib/utils";
 import { useWide } from "@/lib/hooks/use-wide";
 import { help } from "@/lib/help";
-import { goTo, useSitePage } from "@/lib/links";
+import { goTo, openSettings, useSitePage } from "@/lib/links";
 
 const STATUSES: Array<Exclude<PlayerStatus, "in_call" | "offline">> = ["available", "busy", "away"];
 const STATUS_DOT: Record<string, string> = { available: "bg-ok", busy: "bg-destructive", away: "bg-warn", in_call: "bg-violet-500" };
 
 /**
- * You, at the bottom of the rail: your face with your status on it, and one
- * menu for everything about you — status, theme, devices, account, leaving.
+ * You, at the bottom of the rail: your face with your status on it, and a
+ * short menu of what you reach for while working — your status first, then
+ * your note ("🍜 Lunch, back at 2"), then your profile. Theme and devices live in Settings, and so does signing out:
+ * a slip in a menu this close at hand would take you off the floor in front of
+ * your team. A guest has no account settings, so a guest signs out here.
  */
 export function YouMenu({
   settingsHref,
@@ -42,23 +46,20 @@ export function YouMenu({
   const t = useTranslations("shell");
   const tHelp = useTranslations("help");
   const tStatus = useTranslations("status");
+  const tNote = useTranslations("note");
   const router = useRouter();
   const home = useSitePage();
   const { user, isGuest, signOut } = useAuth();
-  const theme = useTheme();
   const status = useMyStatus();
+  const note = useMyNote();
+  const [noting, setNoting] = useState(false);
   const wide = useWide();
   if (!user) return null;
   // On a phone the rail isn't there, so Help and feedback is in here; never in the dashboard's bar, which has no dialog.
   const helpHere = !wide && !bar;
 
-  const themes: Array<{ value: ThemeChoice; icon: React.ReactNode }> = [
-    { value: "system", icon: <Monitor /> },
-    { value: "light", icon: <Sun /> },
-    { value: "dark", icon: <Moon /> },
-  ];
-
   return (
+    <>
     <Menu
       side={panel ? "top" : bar ? "bottom" : wide ? "right" : "top"}
       align={panel ? "start" : "end"}
@@ -113,45 +114,44 @@ export function YouMenu({
         </>
       )}
 
-      <MenuSeparator />
-      <MenuLabel>{t("theme")}</MenuLabel>
-      <div className="grid grid-cols-3 gap-1 px-1 pb-1">
-        {themes.map((one) => (
-          <button
-            key={one.value}
-            type="button"
-            onClick={() => setTheme(one.value)}
-            aria-pressed={theme === one.value}
-            className={cn(
-              "flex h-14 cursor-pointer flex-col items-center justify-center gap-1 rounded-[10px] border text-[11px] transition-colors [&_svg]:size-4",
-              theme === one.value
-                ? "border-foreground/20 bg-muted text-foreground"
-                : "border-transparent text-muted-foreground hover:bg-muted hover:text-foreground",
-            )}
-          >
-            {one.icon}
-            {t(`themes.${one.value}`)}
-          </button>
-        ))}
-      </div>
+      {/* A note says what a status can't: what you're doing. */}
+      {!isGuest && (
+        <>
+          <MenuSeparator />
+          {note ? (
+            <MenuItem
+              icon={<span className="text-[15px] leading-none">{note.emoji ?? "💬"}</span>}
+              onSelect={() => setNoting(true)}
+            >
+              <span className="block truncate">{note.text || tNote("title")}</span>
+            </MenuItem>
+          ) : (
+            <MenuItem icon={<SmilePlus />} onSelect={() => setNoting(true)}>
+              {tNote("set")}
+            </MenuItem>
+          )}
+        </>
+      )}
 
       <MenuSeparator />
-      {settingsHref && (
-        <MenuItem icon={<Settings2 />} onSelect={() => router.push(settingsHref)}>
-          {t("settings")}
-        </MenuItem>
-      )}
       {isGuest ? (
         <MenuItem icon={<UserPlus />} onSelect={() => router.push("/auth?mode=signup")}>
           {t("makeAccount")}
         </MenuItem>
       ) : (
-        <>
-          {/* In a place, your account is a section of its settings; outside one, its own page. */}
-          <MenuItem icon={<UserRound />} onSelect={() => router.push(settingsHref ? `${settingsHref}#profile` : "/account")}>
-            {t("account")}
-          </MenuItem>
-        </>
+        // In a place, your profile is a section of its settings; outside one, its own page.
+        <MenuItem
+          icon={<UserRound />}
+          onSelect={() => (settingsHref ? openSettings(router, settingsHref, "profile") : router.push("/account"))}
+        >
+          {t("yourProfile")}
+        </MenuItem>
+      )}
+      {/* On a wide screen Settings is the gear on the rail, just above; a phone has no rail. */}
+      {settingsHref && !wide && (
+        <MenuItem icon={<Settings2 />} onSelect={() => router.push(settingsHref)}>
+          {t("settings")}
+        </MenuItem>
       )}
       {helpHere && (
         <MenuItem icon={<HelpCircle />} onSelect={() => help.open()}>
@@ -166,16 +166,22 @@ export function YouMenu({
           </MenuItem>
         </>
       )}
-      <MenuSeparator />
-      <MenuItem
-        icon={<LogOut className="rtl:rotate-180" />}
-        onSelect={async () => {
-          await signOut();
-          window.location.assign(home);
-        }}
-      >
-        {t("signOut")}
-      </MenuItem>
+      {isGuest && (
+        <>
+          <MenuSeparator />
+          <MenuItem
+            icon={<LogOut className="rtl:rotate-180" />}
+            onSelect={async () => {
+              await signOut();
+              window.location.assign(home);
+            }}
+          >
+            {t("signOut")}
+          </MenuItem>
+        </>
+      )}
     </Menu>
+    {noting && <StatusNoteDialog open onClose={() => setNoting(false)} note={note} />}
+    </>
   );
 }

@@ -7,7 +7,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { locales, type Locale } from "@/lib/i18n/routing";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError } from "@/lib/api";
+import { api, ApiError, type InvitePolicy } from "@/lib/api";
 import { savedDevices, saveDevices } from "@/lib/media";
 import { setPref, usePrefs, type Prefs } from "@/lib/prefs";
 import { setTheme, useTheme, type ThemeChoice } from "@/lib/theme";
@@ -15,6 +15,7 @@ import { Switch } from "@/components/motion/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/motion/select";
 import { Button } from "@/components/motion/button/base";
 import { Face } from "@/components/ui/Face";
+import { Dialog } from "@/components/ui/Dialog";
 import { IconButton } from "@/components/ui/IconButton";
 import { PlansSoon } from "@/components/ui/PlansSoon";
 import { SPRING_LAYOUT } from "@/lib/ease";
@@ -59,16 +60,19 @@ export function SettingsView() {
   // A link straight to a section ("Get more seats" → …/settings#plan, your profile → #profile).
   const hashed = useSyncExternalStore(subscribeHash, () => window.location.hash.slice(1), () => "") as Section;
   const linked = SECTIONS.includes(hashed) && shown.includes(hashed) ? hashed : null;
-  const [chosen, setSection] = useState<Section | null>(null);
-  const [pickedByHand, setPicked] = useState<boolean | null>(null);
-  const section = chosen ?? linked ?? "general";
-  const picked = pickedByHand ?? !!linked;
+  // What was picked by hand, and under which link: a link opened afterwards (the office
+  // menu's "Office settings" while already here) takes over from it.
+  const [chosen, setSection] = useState<{ one: Section; at: string } | null>(null);
+  const [pickedByHand, setPicked] = useState<{ shown: boolean; at: string } | null>(null);
+  const handHolds = (by: { at: string } | null): by is { at: string } => !!by && (by.at === hashed || !linked);
+  const section = (handHolds(chosen) ? chosen.one : linked) ?? "general";
+  const picked = handHolds(pickedByHand) ? pickedByHand.shown : !!linked;
   const reduce = useReducedMotion();
   const label = (one: Section) => (one === "profile" || one === "signin" ? tp(`sections.${one}`) : t(`sections.${one}`));
 
   const choose = (one: Section) => {
-    setSection(one);
-    setPicked(true);
+    setSection({ one, at: hashed });
+    setPicked({ shown: true, at: hashed });
   };
 
   const item = (one: Section) => (
@@ -128,7 +132,7 @@ export function SettingsView() {
           label={ts("back")}
           size="sm"
           className="md:hidden"
-          onClick={() => setPicked(false)}
+          onClick={() => setPicked({ shown: false, at: hashed })}
           icon={<ArrowLeft className="rtl:rotate-180" />}
         />
         <span className="text-[15px] font-semibold text-foreground">{label(section)}</span>
@@ -424,22 +428,26 @@ function AccessibilitySection() {
   );
 }
 
-/** The office's own settings: its name, its seats, and leaving or closing it. */
+/**
+ * The office's own settings: its name, and for its owner, handing it to
+ * someone else. Leaving or closing it is the quiet last line, and each asks
+ * first, with staying as the answer that's easiest to give.
+ */
 function OfficeSection() {
   const t = useTranslations("office.settings");
+  const tPeople = useTranslations("office.people");
   const tc = useTranslations("common");
   const tPlans = useTranslations("office.plans");
-  const router = useRouter();
   const { user } = useAuth();
   const context = useOfficeMaybe();
   const [name, setName] = useState(context?.office.name ?? "");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [confirming, setConfirming] = useState(false);
-  if (!context) return null;
-  const { office, refresh } = context;
+  if (!context || !user) return null;
+  const { office, overview, refresh } = context;
   const admin = office.role === "admin";
-  const owner = user?.id === office.owner;
+  const owner = user.id === office.owner;
+  const others = overview.members.filter((member) => member.id !== user.id);
 
   const run = async (action: () => Promise<void>) => {
     setBusy(true);
@@ -447,9 +455,7 @@ function OfficeSection() {
     try {
       await action();
     } catch (problem) {
-      // A paid plan is cancelled first, on purpose, from the plan section (docs/pricing.md).
-      if (problem instanceof ApiError && problem.code === "cancel_plan_first") setError(t("cancelPlanFirst"));
-      else setError(problem instanceof ApiError ? problem.message : t("wrong"));
+      setError(problem instanceof ApiError ? problem.message : t("wrong"));
     } finally {
       setBusy(false);
     }
@@ -467,17 +473,20 @@ function OfficeSection() {
               used: office.members,
               seats: office.seats,
             })}
+            {" · "}
+            {owner ? tPeople("owner") : tPeople(office.role)}
           </p>
           <PlansSoon className="mt-1" />
         </div>
       </div>
 
-      <Group title={t("name")} note={t("seatsNote")}>
+      <Group title={t("name")} note={admin ? undefined : t("nameAdminsOnly")}>
         <div className="flex gap-2 px-4 py-3.5">
           <input
             value={name}
             maxLength={64}
             disabled={!admin || busy}
+            aria-label={t("name")}
             onChange={(event) => setName(event.target.value)}
             className="h-10 min-w-0 flex-1 rounded-xl border border-border bg-card px-3.5 text-[16px] text-foreground outline-none transition-colors focus:border-foreground/35 disabled:opacity-60 sm:text-[14px]"
           />
@@ -501,66 +510,237 @@ function OfficeSection() {
 
       {error && <p className="-mt-4 mb-6 text-[12.5px] text-destructive">{error}</p>}
 
-      <Group title={t("danger")}>
-        <div className="px-4 py-3.5">
-          {owner ? (
-            confirming ? (
-              <div className="rounded-xl border border-destructive/25 bg-destructive/[0.06] p-3">
-                <p className="text-[13px] leading-relaxed text-foreground">{t("closeSure")}</p>
-                <div className="mt-3 flex justify-end gap-2">
-                  <Button variant="ghost" size="sm" className="h-9 px-3" onClick={() => setConfirming(false)}>
-                    {tc("cancel")}
-                  </Button>
-                  <Button
-                    size="sm"
-                    disabled={busy}
-                    className="h-9 bg-destructive px-4 text-white hover:bg-destructive/90"
-                    onClick={() =>
-                      run(async () => {
-                        await api.closeOffice(office.id);
-                        router.replace("/");
-                      })
-                    }
-                  >
-                    {t("closeIt")}
-                  </Button>
-                </div>
-              </div>
-            ) : (
-              <Row
-                title={t("close")}
-                description={t("closeSure")}
-                control={
-                  <Button variant="secondary" size="sm" className="h-9 px-3.5 text-destructive" onClick={() => setConfirming(true)}>
-                    {t("close")}
-                  </Button>
-                }
-              />
-            )
-          ) : (
-            <Row
-              title={t("leave")}
-              description={t("seatsNote")}
-              control={
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  disabled={busy}
-                  className="h-9 px-3.5 text-destructive"
-                  onClick={() =>
-                    run(async () => {
-                      await api.removeMember(office.id, user!.id);
-                      router.replace("/");
-                    })
-                  }
-                >
-                  {t("leave")}
-                </Button>
-              }
-            />
-          )}
-        </div>
-      </Group>
+      {admin && <InvitePolicyRow officeId={office.id} policy={office.invitePolicy ?? "everyone"} />}
+
+      {owner && others.length > 0 && <HandOver officeId={office.id} officeName={office.name} paid={office.plan !== "free"} members={others} />}
+
+      <LeaveOrClose officeId={office.id} officeName={office.name} owner={owner} userId={user.id} />
     </>
+  );
+}
+
+/**
+ * The owner giving the office to someone in it: they become its owner (and an
+ * admin), and you stay on as an admin. Without this, closing was the only way
+ * for an owner to step back.
+ */
+function HandOver({
+  officeId,
+  officeName,
+  paid,
+  members,
+}: {
+  officeId: string;
+  officeName: string;
+  paid: boolean;
+  members: Array<{ id: string; displayName: string }>;
+}) {
+  const t = useTranslations("office.settings");
+  const tc = useTranslations("common");
+  const { refresh } = useOfficeMaybe()!;
+  const [to, setTo] = useState<string>("");
+  const [asking, setAsking] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const picked = members.find((member) => member.id === to);
+
+  const handOver = async () => {
+    if (!picked) return;
+    setBusy(true);
+    setError(null);
+    try {
+      await api.handOver(officeId, picked.id);
+      await refresh();
+      setAsking(false);
+      setTo("");
+    } catch (problem) {
+      setError(problem instanceof ApiError ? problem.message : t("wrong"));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <Group title={t("handOver")} note={paid ? `${t("handOverNote")} ${t("handOverBilling")}` : t("handOverNote")}>
+      <div className="flex flex-wrap items-center gap-2 px-4 py-3.5">
+        <div className="min-w-0 flex-1 basis-48">
+          <Select value={to} onValueChange={setTo}>
+            <SelectTrigger className="h-10 bg-card text-[13px]" aria-label={t("handOverPick")}>
+              <SelectValue placeholder={t("handOverPick")} />
+            </SelectTrigger>
+            <SelectContent>
+              {members.map((member) => (
+                <SelectItem key={member.id} value={member.id}>
+                  {member.displayName}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+        <Button variant="secondary" size="md" className="h-10 px-4 text-[13px]" disabled={!picked} onClick={() => setAsking(true)}>
+          {t("handOverButton")}
+        </Button>
+      </div>
+      {picked && (
+        <Dialog
+          open={asking}
+          onClose={() => setAsking(false)}
+          title={t("handOverTitle", { office: officeName, name: picked.displayName })}
+          description={t("handOverSure", { name: picked.displayName })}
+          closeLabel={tc("close")}
+          footer={
+            <>
+              <Button variant="ghost" size="sm" className="h-10 px-4" onClick={() => setAsking(false)}>
+                {tc("cancel")}
+              </Button>
+              <Button size="sm" className="h-10 px-5" disabled={busy} onClick={handOver}>
+                {t("handOverIt")}
+              </Button>
+            </>
+          }
+        >
+          {error && <p className="text-[12.5px] text-destructive">{error}</p>}
+        </Dialog>
+      )}
+    </Group>
+  );
+}
+
+/**
+ * The way out, kept to one quiet line at the foot of the page: leaving for a
+ * member, closing for the owner (who has to hand it over to leave). Either
+ * asks first. Staying is the button; going is the plain words beside it, and
+ * closing for everyone also wants the office's name typed out.
+ */
+function LeaveOrClose({ officeId, officeName, owner, userId }: { officeId: string; officeName: string; owner: boolean; userId: string }) {
+  const t = useTranslations("office.settings");
+  const tc = useTranslations("common");
+  const router = useRouter();
+  const [asking, setAsking] = useState(false);
+  const [typed, setTyped] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const named = typed.trim().toLowerCase() === officeName.trim().toLowerCase();
+
+  const close = () => {
+    setAsking(false);
+    setTyped("");
+    setError(null);
+  };
+
+  const go = async () => {
+    setBusy(true);
+    setError(null);
+    try {
+      if (owner) await api.closeOffice(officeId);
+      else await api.removeMember(officeId, userId);
+      router.replace("/");
+    } catch (problem) {
+      // A paid plan is cancelled first, on purpose, from the plan section (docs/pricing.md).
+      if (problem instanceof ApiError && problem.code === "cancel_plan_first") setError(t("cancelPlanFirst"));
+      else setError(problem instanceof ApiError ? problem.message : t("wrong"));
+      setBusy(false);
+    }
+  };
+
+  return (
+    <>
+      <div className="mt-12 border-t border-border pt-5">
+        <button
+          type="button"
+          onClick={() => setAsking(true)}
+          className="cursor-pointer text-[13px] text-muted-foreground underline-offset-4 transition-colors hover:text-destructive hover:underline"
+        >
+          {owner ? t("close") : t("leave")}
+        </button>
+      </div>
+      <Dialog
+        open={asking}
+        onClose={close}
+        title={owner ? t("closeTitle", { office: officeName }) : t("leaveTitle", { office: officeName })}
+        description={owner ? t("closeSure") : t("leaveSure")}
+        closeLabel={tc("close")}
+        footer={
+          <>
+            <button
+              type="button"
+              disabled={busy || (owner && !named)}
+              onClick={go}
+              className="me-auto inline-flex h-10 cursor-pointer items-center rounded-full px-3 text-[13px] font-medium text-muted-foreground transition-colors hover:text-destructive disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:text-muted-foreground"
+            >
+              {owner ? t("closeIt") : t("leaveIt")}
+            </button>
+            <Button size="sm" className="h-10 px-5" onClick={close}>
+              {owner ? t("keepOffice") : t("stay")}
+            </Button>
+          </>
+        }
+      >
+        {(owner || error) && (
+          <>
+            {owner && (
+              <label className="block">
+                <span className="text-[12.5px] text-muted-foreground">{t("closeType", { name: officeName })}</span>
+                <input
+                  value={typed}
+                  autoComplete="off"
+                  onChange={(event) => setTyped(event.target.value)}
+                  className="mt-1.5 h-10 w-full rounded-xl border border-border bg-card px-3.5 text-[16px] text-foreground outline-none transition-colors focus:border-foreground/35 sm:text-[14px]"
+                />
+              </label>
+            )}
+            {error && <p className="mt-2 text-[12.5px] text-destructive">{error}</p>}
+          </>
+        )}
+      </Dialog>
+    </>
+  );
+}
+
+/**
+ * Who can share the office's invite link: everyone (the default, since a team
+ * grows by its members bringing each other) or only admins, for an office that
+ * wants to decide who comes in.
+ */
+function InvitePolicyRow({ officeId, policy }: { officeId: string; policy: InvitePolicy }) {
+  const t = useTranslations("office.settings");
+  const { refresh } = useOfficeMaybe()!;
+  const [value, setValue] = useState<InvitePolicy>(policy);
+  const [error, setError] = useState<string | null>(null);
+
+  const change = async (next: InvitePolicy) => {
+    const before = value;
+    setValue(next);
+    setError(null);
+    try {
+      await api.updateOffice(officeId, { invitePolicy: next });
+      await refresh();
+    } catch (problem) {
+      setValue(before);
+      setError(problem instanceof ApiError ? problem.message : t("wrong"));
+    }
+  };
+
+  return (
+    <Group title={t("inviting")}>
+      <Row
+        title={t("whoInvites")}
+        description={value === "admins" ? t("whoInvitesAdmins") : t("whoInvitesEveryone")}
+        control={
+          <div className="w-44">
+            <Select value={value} onValueChange={(next) => void change(next as InvitePolicy)}>
+              <SelectTrigger className="h-9 bg-card text-[13px]" aria-label={t("whoInvites")}>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="everyone">{t("inviteEveryone")}</SelectItem>
+                <SelectItem value="admins">{t("inviteAdmins")}</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        }
+      />
+      {error && <p className="px-4 pb-3 text-[12.5px] text-destructive">{error}</p>}
+    </Group>
   );
 }

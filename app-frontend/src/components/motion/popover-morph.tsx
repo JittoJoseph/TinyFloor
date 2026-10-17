@@ -18,7 +18,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { usePopoverPortalPosition } from "@/components/motion/popover-position";
-import { EASE_OUT, SPRING_PANEL } from "@/lib/ease";
+import { EASE_OUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 
 type Side = "top" | "bottom" | "right";
@@ -55,9 +55,8 @@ export interface MorphPopoverProps {
 }
 
 /**
- * A popover whose panel morphs open from the trigger corner: it's laid out at
- * full size but clipped to the corner nearest the trigger, then unclips as one
- * piece. Closes on outside pointer / Escape. Controlled or uncontrolled.
+ * A popover whose panel opens from the trigger corner with a quick fade and
+ * scale. Closes on outside pointer / Escape. Controlled or uncontrolled.
  */
 export function MorphPopover({
   children,
@@ -198,26 +197,12 @@ const originFor = (side: Side, align: Align) =>
     ? `left ${align === "end" ? "bottom" : "top"}`
     : `${side === "bottom" ? "top" : "bottom"} ${align === "end" ? "right" : "left"}`;
 
-// A clip that hides everything but the corner nearest the trigger, so the
-// panel appears to grow out of it. inset(top right bottom left).
-function clipHidden(side: Side, align: Align, radius: number) {
-  // Beside the trigger (a rail): grow out of the edge that faces it.
-  if (side === "right") {
-    const top = align === "end" ? "92%" : "0%";
-    const bottom = align === "end" ? "0%" : "92%";
-    return `inset(${top} 92% ${bottom} 0% round ${radius}px)`;
-  }
-  const top = side === "bottom" ? "0%" : "92%";
-  const bottom = side === "bottom" ? "92%" : "0%";
-  const right = align === "end" ? "0%" : "92%";
-  const left = align === "end" ? "92%" : "0%";
-  return `inset(${top} ${right} ${bottom} ${left} round ${radius}px)`;
-}
-const clipShown = (radius: number) => `inset(0% 0% 0% 0% round ${radius}px)`;
-
-// Preserve the original spring character on the wrapper, but tween the complex
-// clip-path so it cannot snap when the spring resolves its final distance.
-const MORPH_CLIP_TRANSITION = { duration: 0.32, ease: EASE_OUT } as const;
+// Opens from the trigger's corner with a quick fade and scale: only opacity
+// and transform move, which the compositor does alone. (A clip-path reveal
+// under a drop-shadow filter repainted the whole panel every frame, and
+// stuttered over the floor.)
+const OPEN = { duration: 0.16, ease: EASE_OUT } as const;
+const CLOSE = { duration: 0.11, ease: EASE_OUT } as const;
 
 export interface MorphPopoverContentProps {
   children: ReactNode;
@@ -269,26 +254,9 @@ export function MorphPopoverContent({
   const left = layout && typeof window !== "undefined" ? clamp(rawLeft, layout.content.width, window.innerWidth) : rawLeft;
   const top = layout && typeof window !== "undefined" ? clamp(rawTop, layout.content.height, window.innerHeight) : rawTop;
 
-  // Both directions travel between the exact same hidden/show states. Exit
-  // targets "hidden" directly instead of introducing separate choreography.
-  const wrap = reduce
-    ? undefined
-    : {
-        hidden: { opacity: 0, scale: 0.96, transition: SPRING_PANEL },
-        show: { opacity: 1, scale: 1, transition: SPRING_PANEL },
-      };
-  const clip = reduce
-    ? undefined
-    : {
-        hidden: {
-          clipPath: clipHidden(side, align, radius),
-          transition: MORPH_CLIP_TRANSITION,
-        },
-        show: {
-          clipPath: clipShown(radius),
-          transition: MORPH_CLIP_TRANSITION,
-        },
-      };
+  const shift = side === "right" ? { x: -4 } : { y: side === "bottom" ? -4 : 4 };
+  const hidden = reduce ? { opacity: 0 } : { opacity: 0, scale: 0.97, ...shift };
+  const shown = reduce ? { opacity: 1 } : { opacity: 1, scale: 1, x: 0, y: 0 };
 
   // Keep the server and first client render identical, then mount the portal.
   if (!portalReady) return null;
@@ -298,35 +266,26 @@ export function MorphPopoverContent({
       {ctx.open ? (
         <motion.div
           data-morph-popover-portal=""
-          // Wrapper carries the shadow as a drop-shadow filter, which hugs the
-          // clipped shape below (box-shadow would just get clipped away).
-          variants={wrap}
-          initial={reduce ? { opacity: 0 } : "hidden"}
-          animate={reduce ? { opacity: 1 } : "show"}
-          exit={reduce ? { opacity: 0 } : "hidden"}
-          transition={reduce ? { duration: 0.12 } : undefined}
+          ref={ctx.contentRef}
+          id={ctx.contentId}
+          role="dialog"
+          aria-labelledby={ctx.triggerId}
+          initial={hidden}
+          animate={{ ...shown, transition: reduce ? { duration: 0.12 } : OPEN }}
+          exit={{ ...hidden, transition: reduce ? { duration: 0.1 } : CLOSE }}
           style={{
             left,
             top,
+            borderRadius: radius,
             visibility: layout ? "visible" : "hidden",
             transformOrigin: originFor(side, align),
           }}
-          className="fixed z-[9999] [filter:drop-shadow(0_10px_18px_rgba(0,0,0,0.14))]"
+          className={cn(
+            "fixed z-[9999] overflow-hidden border border-border bg-background shadow-[0_12px_32px_-12px_rgb(0_0_0/0.35)]",
+            className,
+          )}
         >
-          <motion.div
-            ref={ctx.contentRef}
-            id={ctx.contentId}
-            role="dialog"
-            aria-labelledby={ctx.triggerId}
-            variants={clip}
-            style={{ borderRadius: radius }}
-            className={cn(
-              "overflow-hidden border border-border bg-background",
-              className,
-            )}
-          >
-            {children}
-          </motion.div>
+          {children}
         </motion.div>
       ) : null}
     </AnimatePresence>,

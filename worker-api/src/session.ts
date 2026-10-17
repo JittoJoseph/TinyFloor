@@ -1,3 +1,4 @@
+import type { StatusNote } from "../../shared-protocol/src";
 import { hashToken, randomToken } from "./crypto";
 import { HttpError } from "./http";
 
@@ -30,6 +31,8 @@ export interface User {
   link?: string | null;
   /** Has said who they are on the floor: a name and a character, at their first door. */
   introduced?: boolean;
+  /** Their status note, as kept; whether it still lasts is for the reader (liveNote). */
+  status?: StatusNote | null;
   /** The country they last walked onto a floor from (see noteCountry). */
   country?: string | null;
   /** The hashed id of the session this request came with. */
@@ -47,6 +50,9 @@ interface SessionRow {
   link: string | null;
   introduced: number;
   country: string | null;
+  status_emoji: string | null;
+  status_text: string | null;
+  status_until: number | null;
   last_seen_at: number;
 }
 
@@ -115,7 +121,8 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
   const id = await hashToken(token);
   const row = await env.DB.prepare(
     `SELECT s.user_id, s.last_seen_at, u.email, u.display_name, u.character, u.is_guest, u.password_hash IS NOT NULL AS has_password,
-            u.google_sub IS NOT NULL AS has_google, u.link, u.introduced_at IS NOT NULL AS introduced, u.country
+            u.google_sub IS NOT NULL AS has_google, u.link, u.introduced_at IS NOT NULL AS introduced, u.country,
+            u.status_emoji, u.status_text, u.status_until
      FROM sessions s JOIN users u ON u.id = s.user_id
      WHERE s.id = ? AND s.expires_at > ?`,
   )
@@ -143,8 +150,15 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
     link: row.link,
     introduced: row.introduced === 1,
     country: row.country,
+    status: noteFrom(row),
     sessionId: id,
   };
+}
+
+/** A status note from the three columns that keep it, or null when there is none. */
+export function noteFrom(row: { status_emoji: string | null; status_text: string | null; status_until: number | null }): StatusNote | null {
+  if (!row.status_emoji && !row.status_text) return null;
+  return { emoji: row.status_emoji, text: row.status_text ?? "", until: row.status_until };
 }
 
 export async function requireUser(env: Env, request: Request, ctx: ExecutionContext): Promise<User> {

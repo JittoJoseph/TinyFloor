@@ -92,6 +92,7 @@
     "you": "{name} (sinä)",
     "aloneTitle": "Vain sinä kerroksella",
     "aloneBody": "Lähetä linkki, niin sen avaaja ilmestyy viereesi.",
+    "aloneQuiet": "Kun joku muu tulee sisään, hän näkyy tässä.",
     "inviteSomeone": "Kutsu joku"
   },
   "call": {
@@ -361,8 +362,29 @@
       "leave": "Poistu tästä toimistosta",
       "wrong": "Ei onnistunut. Yritä uudelleen.",
       "plan": "{plan} · {used}/{seats} paikkaa",
-      "danger": "Poistuminen tai sulkeminen",
-      "cancelPlanFirst": "Peru ensin toimiston paketti kohdassa Paketti ja laskutus. Sen jälkeen toimiston voi sulkea."
+      "cancelPlanFirst": "Peru ensin toimiston paketti kohdassa Paketti ja laskutus. Sen jälkeen toimiston voi sulkea.",
+      "nameAdminsOnly": "Vain admin voi nimetä toimiston uudelleen.",
+      "handOver": "Luovuta toimisto",
+      "handOverNote": "Tee jostakusta toisesta omistaja. Hänestä tulee myös admin, ja sinä jatkat adminina.",
+      "handOverBilling": "Paketti ja sen laskutus pysyvät ennallaan.",
+      "handOverPick": "Valitse jäsen",
+      "handOverButton": "Luovuta",
+      "handOverTitle": "Luovutetaanko {office} henkilölle {name}?",
+      "handOverSure": "{name} tulee omistajaksi, ainoaksi joka voi sulkea toimiston tai luovuttaa sen eteenpäin. Sinä jatkat adminina.",
+      "handOverIt": "Luovuta",
+      "leaveTitle": "Poistutaanko toimistosta {office}?",
+      "leaveSure": "Menetät sen kerroksen ja chatin. Palataksesi jonkun toimistosta täytyy kutsua sinut uudelleen.",
+      "leaveIt": "Poistu toimistosta",
+      "stay": "Jää",
+      "closeTitle": "Suljetaanko {office}?",
+      "closeType": "Vahvista kirjoittamalla {name}.",
+      "keepOffice": "Pidä toimisto",
+      "inviting": "Kutsuminen",
+      "whoInvites": "Kuka voi kutsua",
+      "whoInvitesEveryone": "Kuka tahansa toimistossa voi jakaa kutsulinkin.",
+      "whoInvitesAdmins": "Vain adminit voivat nähdä ja jakaa kutsulinkin.",
+      "inviteEveryone": "Kaikki",
+      "inviteAdmins": "Vain adminit"
     },
     "profile": {
       "changePassword": "Vaihda salasana",
@@ -475,7 +497,9 @@
       "search": "Hae ihmisiä",
       "noMatch": "Kukaan ei vastaa hakua.",
       "seatsOpen": "{count, plural, one {# paikka vapaana} other {# paikkaa vapaana}}",
-      "proRoom": "Tilaa koko tiimillesi, {price} kuukaudessa"
+      "proRoom": "Tilaa koko tiimillesi, {price} kuukaudessa",
+      "removeTitle": "Poistetaanko {name}?",
+      "removeSure": "{name} menettää kerroksen ja chatin, ja hänen paikkansa vapautuu. Voit kutsua hänet takaisin myöhemmin."
     },
     "office": "Toimisto",
     "goneTitle": "Tätä toimistoa ei enää ole",
@@ -728,5 +752,37 @@
     "notNow": "Ei nyt",
     "claimed": "Tämä on nyt sinun työpöytäsi",
     "hint": "Valitse työpöytä ja istu alas. Siitä voi tulla sinun."
+  },
+  "note": {
+    "title": "Tilaviesti",
+    "set": "Aseta tilaviesti",
+    "clear": "Poista viesti",
+    "placeholder": "Mitä olet tekemässä?",
+    "empty": "Tyhjennä teksti",
+    "emoji": "Valitse emoji",
+    "clearAfter": "Poista ajan kuluttua",
+    "save": "Tallenna",
+    "failed": "Tallennus ei onnistunut. Yritä uudelleen.",
+    "presets": {
+      "focus": "Keskittymässä",
+      "lunch": "Lounaalla",
+      "back": "Palaan pian",
+      "sick": "Sairaana",
+      "holiday": "Lomalla"
+    },
+    "lasting": {
+      "never": "Älä poista",
+      "m30": "30 minuuttia",
+      "h1": "1 tunti",
+      "h4": "4 tuntia",
+      "today": "Tänään",
+      "week": "Tällä viikolla"
+    }
+  },
+  "welcome": {
+    "title": "Tervetuloa: {office}",
+    "body": "Täällä tiimi tekee töitä. Kävele kenen tahansa luo jutellaksesi, ja astu kokoushuoneeseen, kun on kokouksen aika.",
+    "walkIn": "Astu sisään",
+    "close": "Sulje"
   }
 }

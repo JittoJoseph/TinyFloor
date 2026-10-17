@@ -1,5 +1,5 @@
 import { LOBBY_CHAT, LOBBY_ROOM, verifyTicket } from "../../shared-protocol/src";
-import { ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER, WHERE_HEADER } from "./headers";
+import { ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER, WHERE_HEADER, writeTicket } from "./headers";
 import { Room } from "./room";
 import { Chat } from "./chat";
 import { placeInLobby } from "./lobby";
@@ -43,7 +43,7 @@ export default {
 
     if (chatName) {
       const headers = new Headers(request.headers);
-      headers.set(TICKET_HEADER, JSON.stringify(ticket));
+      headers.set(TICKET_HEADER, writeTicket(ticket));
       return env.CHAT.getByName(chatName).fetch(new Request(request.url, { headers }));
     }
 
@@ -54,7 +54,7 @@ export default {
     // names is overwritten here, where the ticket has just been checked.
     const headers = new Headers(request.headers);
     headers.set(ROOM_HEADER, target);
-    headers.set(TICKET_HEADER, JSON.stringify(ticket));
+    headers.set(TICKET_HEADER, writeTicket(ticket));
     headers.set(
       SPAWN_HEADER,
       `${url.searchParams.get("x") ?? ""},${url.searchParams.get("y") ?? ""},${url.searchParams.get("arrive") === "1" ? 1 : 0}`,

@@ -92,6 +92,7 @@
     "you": "{name} (deg)",
     "aloneTitle": "Bare deg på gulvet",
     "aloneBody": "Send lenken, så dukker den som åpner den opp ved siden av deg.",
+    "aloneQuiet": "Når noen andre kommer inn, dukker de opp her.",
     "inviteSomeone": "Inviter noen"
   },
   "call": {
@@ -361,8 +362,29 @@
       "leave": "Forlat dette kontoret",
       "wrong": "Det gikk ikke. Prøv igjen.",
       "plan": "{plan} · {used} av {seats} plasser",
-      "danger": "Forlate eller stenge",
-      "cancelPlanFirst": "Si først opp kontorets plan under Plan og betaling. Så kan det stenges."
+      "cancelPlanFirst": "Si først opp kontorets plan under Plan og betaling. Så kan det stenges.",
+      "nameAdminsOnly": "Bare en admin kan gi kontoret nytt navn.",
+      "handOver": "Overdra kontoret",
+      "handOverNote": "Gjør noen andre til eier. Personen blir også admin, og du fortsetter som admin.",
+      "handOverBilling": "Abonnementet og faktureringen forblir som de er.",
+      "handOverPick": "Velg et medlem",
+      "handOverButton": "Overdra",
+      "handOverTitle": "Overdra {office} til {name}?",
+      "handOverSure": "{name} blir eier, den eneste som kan stenge kontoret eller overdra det igjen. Du fortsetter som admin.",
+      "handOverIt": "Overdra",
+      "leaveTitle": "Forlate {office}?",
+      "leaveSure": "Du mister gulvet og chatten. For å komme tilbake må noen på kontoret invitere deg igjen.",
+      "leaveIt": "Forlat kontoret",
+      "stay": "Bli",
+      "closeTitle": "Stenge {office}?",
+      "closeType": "Skriv {name} for å bekrefte.",
+      "keepOffice": "Behold kontoret",
+      "inviting": "Invitasjoner",
+      "whoInvites": "Hvem kan invitere",
+      "whoInvitesEveryone": "Alle på kontoret kan dele invitasjonslenken.",
+      "whoInvitesAdmins": "Bare admins kan se og dele invitasjonslenken.",
+      "inviteEveryone": "Alle",
+      "inviteAdmins": "Bare admins"
     },
     "profile": {
       "changePassword": "Endre passord",
@@ -475,7 +497,9 @@
       "search": "Søk etter personer",
       "noMatch": "Ingen passer til det.",
       "seatsOpen": "{count, plural, one {# ledig plass} other {# ledige plasser}}",
-      "proRoom": "Plass til hele teamet ditt, {price} i måneden"
+      "proRoom": "Plass til hele teamet ditt, {price} i måneden",
+      "removeTitle": "Fjerne {name}?",
+      "removeSure": "{name} mister gulvet og chatten, og plassen blir ledig. Du kan invitere personen igjen senere."
     },
     "office": "Kontor",
     "goneTitle": "Dette kontoret finnes ikke lenger",
@@ -728,5 +752,37 @@
     "notNow": "Ikke nå",
     "claimed": "Dette er pulten din nå",
     "hint": "Velg en pult og sett deg. Den kan bli din."
+  },
+  "note": {
+    "title": "Statusnotat",
+    "set": "Sett et statusnotat",
+    "clear": "Fjern notat",
+    "placeholder": "Hva holder du på med?",
+    "empty": "Tøm teksten",
+    "emoji": "Velg en emoji",
+    "clearAfter": "Fjern etter",
+    "save": "Lagre",
+    "failed": "Det ble ikke lagret. Prøv igjen.",
+    "presets": {
+      "focus": "Fokusert",
+      "lunch": "Lunsj",
+      "back": "Straks tilbake",
+      "sick": "Syk",
+      "holiday": "På ferie"
+    },
+    "lasting": {
+      "never": "Ikke fjern",
+      "m30": "30 minutter",
+      "h1": "1 time",
+      "h4": "4 timer",
+      "today": "I dag",
+      "week": "Denne uken"
+    }
+  },
+  "welcome": {
+    "title": "Velkommen til {office}",
+    "body": "Her jobber teamet. Gå bort til noen for å snakke, og gå inn i et møterom når det er tid for møte.",
+    "walkIn": "Gå inn",
+    "close": "Lukk"
   }
 }

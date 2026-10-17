@@ -237,7 +237,7 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
                       ))}
                     </span>
                     <p className="mt-3 text-[14px] font-semibold text-foreground">{t("aloneTitle")}</p>
-                    <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{t("aloneBody")}</p>
+                    <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{t(canInvite ? "aloneBody" : "aloneQuiet")}</p>
                     {canInvite && (
                       <Button size="sm" onClick={invite} className="mt-3 h-9 w-full gap-2 text-[13px]">
                         {copied ? <Check className="size-3.5" /> : <UserPlus className="size-3.5" />}

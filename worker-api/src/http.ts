@@ -40,7 +40,7 @@ export function preflight(origin: string | null): Response {
     new Response(null, {
       status: 204,
       headers: {
-        "Access-Control-Allow-Methods": "GET, POST, PATCH, DELETE",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, PATCH, DELETE",
         "Access-Control-Allow-Headers": "Content-Type",
         "Access-Control-Max-Age": "86400",
       },

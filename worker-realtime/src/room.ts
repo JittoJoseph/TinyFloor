@@ -7,6 +7,9 @@ import {
   HEARTBEAT_PING,
   HEARTBEAT_PONG,
   PRESENCE_STATUSES,
+  cleanNote,
+  liveNote,
+  type StatusNote,
   isInsideMap,
   DESK_SEATS,
   deskArrival,
@@ -33,7 +36,7 @@ import {
 } from "../../shared-protocol/src";
 import { Board, parseStroke } from "./board";
 import { Reporter } from "./discord";
-import { ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER, WHERE_HEADER } from "./headers";
+import { readTicket, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER, WHERE_HEADER } from "./headers";
 import { lobbyCopyNumber } from "./lobby";
 import { Desks } from "./desks";
 import { MeetingClock } from "./meeting-clock";
@@ -71,6 +74,8 @@ interface Attachment {
   x: number;
   y: number;
   status: PresenceStatus;
+  /** Their status note, as the API keeps it; the room only passes it on. */
+  note?: StatusNote | null;
   seat: number | null;
   meeting: string | null;
   /** When this person joined their meeting, for usage totals and the meeting's clock. */
@@ -213,7 +218,7 @@ export class Room extends DurableObject<Env> {
   }
 
   async fetch(request: Request): Promise<Response> {
-    const ticket = JSON.parse(request.headers.get(TICKET_HEADER) ?? "null") as RoomTicket | null;
+    const ticket = readTicket(request.headers.get(TICKET_HEADER));
     const room = request.headers.get(ROOM_HEADER);
     if (!ticket || !room) return new Response("Unauthorized", { status: 401 });
 
@@ -247,6 +252,7 @@ export class Room extends DurableObject<Env> {
       role: ticket.role,
       ...spawn,
       status: "available",
+      note: liveNote(ticket.note),
       seat: null,
       meeting: null,
       meetingSince: null,
@@ -340,6 +346,9 @@ export class Room extends DurableObject<Env> {
         break;
       case "status":
         this.setStatus(me, message.status);
+        break;
+      case "note":
+        this.setNote(me, message.note);
         break;
       case "board_sync":
         send(socket, { t: "board_state", strokes: this.board.strokes() });
@@ -488,6 +497,13 @@ export class Room extends DurableObject<Env> {
     if (!this.takeAction(me) || !PRESENCE_STATUSES.includes(status)) return;
     me.status = status;
     this.broadcast({ t: "status", id: me.userId, status });
+  }
+
+  /** A status note changed: the API has kept it, and everyone here sees it now. */
+  private setNote(me: Attachment, note: unknown): void {
+    if (!this.takeAction(me) || me.guest) return;
+    me.note = cleanNote(note);
+    this.broadcast({ t: "note", id: me.userId, note: me.note });
   }
 
   private draw(socket: WebSocket, me: Attachment, message: object): void {
@@ -1188,6 +1204,7 @@ function playerState(attachment: Attachment): PlayerState {
     status: attachment.status,
     guest: attachment.guest,
     seat: attachment.seat,
+    note: liveNote(attachment.note),
   };
 }
 

@@ -6,7 +6,8 @@ import { Link } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
-import { useMyStatus } from "@/lib/floor";
+import { useMyNote, useMyStatus } from "@/lib/floor";
+import { noteLine } from "./StatusNote";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
 import { Tooltip } from "@/components/motion/tooltip";
@@ -28,6 +29,7 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
   const tControls = useTranslations("controls");
   const { user } = useAuth();
   const status = useMyStatus();
+  const note = useMyNote();
   useDockHoldsYou();
   const { peers, meeting, micEnabled, cameraEnabled, speakerEnabled, screenStream } = useCall();
   const myMeeting = useMyMeeting();
@@ -104,7 +106,8 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
                 <span className="min-w-0 leading-[1.25]">
                   <span className="block truncate text-[13.5px] font-semibold text-foreground">{user.displayName}</span>
                   <span className="block truncate text-[12px] text-muted-foreground">
-                    {tStatus(`${status === "offline" ? "away" : status}.label`)}
+                    {/* Your note says more than your status, so it takes the line when there is one. */}
+                    {note ? noteLine(note) : tStatus(`${status === "offline" ? "away" : status}.label`)}
                   </span>
                 </span>
               </button>

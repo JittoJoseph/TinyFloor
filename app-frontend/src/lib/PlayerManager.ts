@@ -13,6 +13,7 @@ import { SceneLabel } from "./SceneLabel";
 import { TILE_SIZE, MOVEMENT_SPEED, pixelToTile, tileToPixel } from "@/lib/types";
 import { statusColorValue } from "@/lib/status";
 import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
+import { liveNote, type StatusNote } from "@shared/messages";
 import type { PlayerStatus } from "@/lib/types";
 
 interface RemotePlayerState {
@@ -63,6 +64,9 @@ export class PlayerManager {
   private players: Map<string, Phaser.GameObjects.Container> = new Map();
   private nameTags: Map<string, SceneLabel> = new Map();
   private playerStates: Map<string, RemotePlayerState> = new Map();
+  /** Status notes by person, you included, while they last; each with its timer to clear itself. */
+  private notes: Map<string, StatusNote> = new Map();
+  private noteTimers: Map<string, Phaser.Time.TimerEvent> = new Map();
   private localPlayer?: Phaser.GameObjects.Sprite;
   private scratch: Vec = { x: 0, y: 0 };
   /** Name tags grow a little when the camera pulls back, so they stay readable. */
@@ -261,6 +265,26 @@ export class PlayerManager {
     tag.setDot(statusColorValue(status));
     this.scene.tweens.killTweensOf(tag.dot);
     tag.dot.setAlpha(1);
+  }
+
+  /**
+   * Someone's status note: its emoji on their tag while it lasts, gone when its
+   * time is up (and `expired` is told, so the lists can follow).
+   */
+  updatePlayerNote(id: string, note: StatusNote | null | undefined, expired?: () => void) {
+    this.noteTimers.get(id)?.remove();
+    this.noteTimers.delete(id);
+    const live = liveNote(note);
+    if (live) this.notes.set(id, live);
+    else this.notes.delete(id);
+    this.nameTags.get(id)?.setEmoji(live?.emoji ?? null);
+    if (live?.until) {
+      const timer = this.scene.time.delayedCall(Math.max(0, live.until - Date.now()), () => {
+        this.updatePlayerNote(id, null);
+        expired?.();
+      });
+      this.noteTimers.set(id, timer);
+    }
   }
 
   /**
@@ -507,6 +531,9 @@ export class PlayerManager {
     }
     this.players.delete(id);
     this.playerStates.delete(id);
+    this.noteTimers.get(id)?.remove();
+    this.noteTimers.delete(id);
+    this.notes.delete(id);
   }
 
   getPlayers(): Map<string, Phaser.GameObjects.Container> {
@@ -531,8 +558,17 @@ export class PlayerManager {
     return this.playerStates.get(id)?.guest !== false;
   }
 
-  getPlayerList(): Array<{ id: string; name: string; status: PlayerStatus }> {
-    return [...this.nameTags].map(([id, tag]) => ({ id, name: tag.text, status: this.playerStates.get(id)?.status ?? "available" }));
+  getPlayerList(): Array<{ id: string; name: string; status: PlayerStatus; note: StatusNote | null }> {
+    return [...this.nameTags].map(([id, tag]) => ({
+      id,
+      name: tag.text,
+      status: this.playerStates.get(id)?.status ?? "available",
+      note: this.notes.get(id) ?? null,
+    }));
+  }
+
+  getPlayerNote(id: string): StatusNote | null {
+    return this.notes.get(id) ?? null;
   }
 
   destroy() {
@@ -546,5 +582,8 @@ export class PlayerManager {
     this.players.clear();
     this.nameTags.clear();
     this.playerStates.clear();
+    this.noteTimers.forEach((timer) => timer.remove());
+    this.noteTimers.clear();
+    this.notes.clear();
   }
 }

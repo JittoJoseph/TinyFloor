@@ -16,6 +16,7 @@ import { Button } from "@/components/motion/button/base";
 import { Face } from "@/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
 import { Menu, MenuItem, MenuSeparator } from "@/components/ui/Menu";
+import { Dialog } from "@/components/ui/Dialog";
 import { cn } from "@/lib/utils";
 import { Chip, Empty } from "@/components/ui/Empty";
 import { useOffice } from "./OfficeShell";
@@ -43,9 +44,13 @@ export function PeopleView() {
  */
 function OfficePeople() {
   const t = useTranslations("office.people");
+  const tSettings = useTranslations("office.settings");
+  const tc = useTranslations("common");
   const router = useRouter();
   const { user } = useAuth();
   const { office, overview: data, readAt, refresh } = useOffice();
+  // Taking someone out of the office (or yourself) asks first: keeping them is the easy answer.
+  const [removing, setRemoving] = useState<{ id: string; name: string; isMe: boolean } | null>(null);
   const floor = useFloorStatus();
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
@@ -191,7 +196,7 @@ function OfficePeople() {
                         {member.role === "admin" ? t("makeMember") : t("makeAdmin")}
                       </MenuItem>
                       <MenuSeparator />
-                      <MenuItem danger icon={<UserMinus />} onSelect={() => run(() => api.removeMember(office.id, member.id).then())}>
+                      <MenuItem danger icon={<UserMinus />} onSelect={() => setRemoving({ id: member.id, name: member.displayName, isMe })}>
                         {isMe ? t("leave") : t("remove")}
                       </MenuItem>
                     </Menu>
@@ -202,6 +207,36 @@ function OfficePeople() {
           })}
           {listed.length === 0 && <li className="px-4 py-10 text-center text-[13px] text-muted-foreground">{t("noMatch")}</li>}
         </ul>
+
+        {removing && (
+          <Dialog
+            open
+            onClose={() => setRemoving(null)}
+            title={removing.isMe ? tSettings("leaveTitle", { office: office.name }) : t("removeTitle", { name: removing.name })}
+            description={removing.isMe ? tSettings("leaveSure") : t("removeSure", { name: removing.name })}
+            closeLabel={tc("close")}
+            footer={
+              <>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const { id, isMe } = removing;
+                    setRemoving(null);
+                    // Leaving yourself goes straight out: there is no office left to read again.
+                    if (isMe) void api.removeMember(office.id, id).then(() => router.replace("/"), () => setError(t("wrong")));
+                    else void run(() => api.removeMember(office.id, id).then());
+                  }}
+                  className="me-auto inline-flex h-10 cursor-pointer items-center rounded-full px-3 text-[13px] font-medium text-muted-foreground transition-colors hover:text-destructive"
+                >
+                  {removing.isMe ? tSettings("leaveIt") : t("remove")}
+                </button>
+                <Button size="sm" className="h-10 px-5" onClick={() => setRemoving(null)}>
+                  {removing.isMe ? tSettings("stay") : tc("cancel")}
+                </Button>
+              </>
+            }
+          />
+        )}
       </div>
     </div>
   );

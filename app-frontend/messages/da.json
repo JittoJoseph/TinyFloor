@@ -361,8 +361,23 @@
       "leave": "Forlad dette kontor",
       "wrong": "Det virkede ikke. Prøv igen.",
       "plan": "{plan} · {used} af {seats} pladser",
-      "danger": "Forlad eller luk",
-      "cancelPlanFirst": "Opsig først kontorets plan under Plan og betaling. Så kan det lukkes."
+      "cancelPlanFirst": "Opsig først kontorets plan under Plan og betaling. Så kan det lukkes.",
+      "nameAdminsOnly": "Kun en admin kan omdøbe kontoret.",
+      "handOver": "Overdrag kontoret",
+      "handOverNote": "Gør en anden til ejer. Personen bliver også admin, og du fortsætter som admin.",
+      "handOverBilling": "Abonnementet og faktureringen forbliver, som de er.",
+      "handOverPick": "Vælg et medlem",
+      "handOverButton": "Overdrag",
+      "handOverTitle": "Overdrag {office} til {name}?",
+      "handOverSure": "{name} bliver ejer, den eneste der kan lukke kontoret eller overdrage det igen. Du fortsætter som admin.",
+      "handOverIt": "Overdrag",
+      "leaveTitle": "Forlad {office}?",
+      "leaveSure": "Du mister gulvet og chatten. For at komme tilbage skal nogen på kontoret invitere dig igen.",
+      "leaveIt": "Forlad kontoret",
+      "stay": "Bliv",
+      "closeTitle": "Luk {office}?",
+      "closeType": "Skriv {name} for at bekræfte.",
+      "keepOffice": "Behold kontoret"
     },
     "profile": {
       "changePassword": "Skift adgangskode",
@@ -475,7 +490,9 @@
       "search": "Søg efter personer",
       "noMatch": "Ingen matcher det.",
       "seatsOpen": "{count, plural, one {# ledig plads} other {# ledige pladser}}",
-      "proRoom": "Plads til hele dit team, {price} om måneden"
+      "proRoom": "Plads til hele dit team, {price} om måneden",
+      "removeTitle": "Fjern {name}?",
+      "removeSure": "{name} mister gulvet og chatten, og pladsen bliver fri. Du kan invitere personen igen senere."
     },
     "office": "Kontor",
     "goneTitle": "Kontoret findes ikke længere",

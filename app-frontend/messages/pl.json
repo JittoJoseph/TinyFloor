@@ -361,8 +361,23 @@
       "leave": "Opuść to biuro",
       "wrong": "Nie udało się. Spróbuj ponownie.",
       "plan": "{plan} · {used} z {seats} miejsc",
-      "danger": "Opuszczanie lub zamykanie",
-      "cancelPlanFirst": "Najpierw anuluj plan tego biura w sekcji Plan i płatności. Potem można je zamknąć."
+      "cancelPlanFirst": "Najpierw anuluj plan tego biura w sekcji Plan i płatności. Potem można je zamknąć.",
+      "nameAdminsOnly": "Tylko admin może zmienić nazwę biura.",
+      "handOver": "Przekaż biuro",
+      "handOverNote": "Ustaw kogoś innego jako właściciela. Ta osoba zostanie też adminem, a ty pozostaniesz adminem.",
+      "handOverBilling": "Plan i rozliczenia pozostają bez zmian.",
+      "handOverPick": "Wybierz członka",
+      "handOverButton": "Przekaż",
+      "handOverTitle": "Przekazać {office} użytkownikowi {name}?",
+      "handOverSure": "{name} zostanie właścicielem i jako jedyny będzie mógł zamknąć biuro lub przekazać je dalej. Ty pozostaniesz adminem.",
+      "handOverIt": "Przekaż",
+      "leaveTitle": "Opuścić {office}?",
+      "leaveSure": "Stracisz dostęp do piętra i czatu. Aby wrócić, ktoś z biura musi cię ponownie zaprosić.",
+      "leaveIt": "Opuść biuro",
+      "stay": "Zostań",
+      "closeTitle": "Zamknąć {office}?",
+      "closeType": "Wpisz {name}, aby potwierdzić.",
+      "keepOffice": "Zachowaj biuro"
     },
     "profile": {
       "changePassword": "Zmień hasło",
@@ -475,7 +490,9 @@
       "search": "Szukaj osób",
       "noMatch": "Nikt nie pasuje.",
       "seatsOpen": "{count, plural, one {# wolne miejsce} few {# wolne miejsca} many {# wolnych miejsc} other {# wolnego miejsca}}",
-      "proRoom": "Miejsce dla całego zespołu, {price} miesięcznie"
+      "proRoom": "Miejsce dla całego zespołu, {price} miesięcznie",
+      "removeTitle": "Usunąć {name}?",
+      "removeSure": "{name} straci dostęp do piętra i czatu, a miejsce się zwolni. Możesz zaprosić tę osobę ponownie później."
     },
     "office": "Biuro",
     "goneTitle": "Tego biura już nie ma",

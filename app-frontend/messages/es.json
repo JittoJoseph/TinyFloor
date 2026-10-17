@@ -361,8 +361,23 @@
       "leave": "Salir de esta oficina",
       "wrong": "No ha funcionado. Inténtalo otra vez.",
       "plan": "{plan} · {used} de {seats} puestos",
-      "danger": "Salir o cerrar",
-      "cancelPlanFirst": "Cancela primero el plan de esta oficina en Plan y facturación. Después se podrá cerrar."
+      "cancelPlanFirst": "Cancela primero el plan de esta oficina en Plan y facturación. Después se podrá cerrar.",
+      "nameAdminsOnly": "Solo un admin puede cambiar el nombre de la oficina.",
+      "handOver": "Ceder la oficina",
+      "handOverNote": "Haz que otra persona sea la propietaria. También pasa a ser admin, y tú sigues siendo admin.",
+      "handOverBilling": "El plan y su facturación se quedan como están.",
+      "handOverPick": "Elige un miembro",
+      "handOverButton": "Ceder",
+      "handOverTitle": "¿Ceder {office} a {name}?",
+      "handOverSure": "{name} pasa a ser propietario, la única persona que podrá cerrar la oficina o volver a cederla. Tú sigues siendo admin.",
+      "handOverIt": "Cederla",
+      "leaveTitle": "¿Salir de {office}?",
+      "leaveSure": "Perderás su planta y su chat. Para volver, alguien de la oficina tendrá que invitarte de nuevo.",
+      "leaveIt": "Salir de la oficina",
+      "stay": "Quedarme",
+      "closeTitle": "¿Cerrar {office}?",
+      "closeType": "Escribe {name} para confirmar.",
+      "keepOffice": "Conservar la oficina"
     },
     "profile": {
       "changePassword": "Cambiar contraseña",
@@ -475,7 +490,9 @@
       "search": "Buscar personas",
       "noMatch": "Nadie coincide.",
       "seatsOpen": "{count, plural, one {# plaza libre} other {# plazas libres}}",
-      "proRoom": "Sitio para todo tu equipo, {price} al mes"
+      "proRoom": "Sitio para todo tu equipo, {price} al mes",
+      "removeTitle": "¿Quitar a {name}?",
+      "removeSure": "{name} pierde la planta y el chat, y su plaza queda libre. Puedes volver a invitarle más adelante."
     },
     "office": "Oficina",
     "goneTitle": "Esta oficina ya no existe",

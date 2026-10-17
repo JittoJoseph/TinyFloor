@@ -361,8 +361,23 @@
       "leave": "离开此办公室",
       "wrong": "没有成功，请再试一次。",
       "plan": "{plan} · {used}/{seats} 个席位",
-      "danger": "离开或关闭",
-      "cancelPlanFirst": "请先在「方案与账单」中取消此办公室的方案，然后才能关闭。"
+      "cancelPlanFirst": "请先在「方案与账单」中取消此办公室的方案，然后才能关闭。",
+      "nameAdminsOnly": "只有管理员可以重命名办公室。",
+      "handOver": "移交办公室",
+      "handOverNote": "让其他人成为所有者。对方也会成为管理员，你仍是管理员。",
+      "handOverBilling": "套餐和账单保持不变。",
+      "handOverPick": "选择成员",
+      "handOverButton": "移交",
+      "handOverTitle": "将{office}移交给{name}？",
+      "handOverSure": "{name}将成为所有者，也是唯一能关闭办公室或再次移交的人。你仍是管理员。",
+      "handOverIt": "移交",
+      "leaveTitle": "离开{office}？",
+      "leaveSure": "你将无法进入它的楼层和聊天。要回来，需要办公室里的人再次邀请你。",
+      "leaveIt": "离开办公室",
+      "stay": "留下",
+      "closeTitle": "关闭{office}？",
+      "closeType": "输入“{name}”以确认。",
+      "keepOffice": "保留办公室"
     },
     "profile": {
       "changePassword": "修改密码",
@@ -475,7 +490,9 @@
       "search": "搜索成员",
       "noMatch": "没有匹配的人。",
       "seatsOpen": "空余 {count} 个席位",
-      "proRoom": "整个团队都能进来，每月 {price}"
+      "proRoom": "整个团队都能进来，每月 {price}",
+      "removeTitle": "移除{name}？",
+      "removeSure": "{name}将无法进入楼层和聊天，其席位会空出来。之后你可以再次邀请。"
     },
     "office": "办公室",
     "goneTitle": "这个办公室不在了",

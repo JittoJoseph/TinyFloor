@@ -361,8 +361,23 @@
       "leave": "このオフィスを抜ける",
       "wrong": "うまくいきませんでした。もう一度お試しください。",
       "plan": "{plan} · {seats}席中{used}席",
-      "danger": "退出または閉鎖",
-      "cancelPlanFirst": "先に「プランと請求」でこのオフィスのプランを解約してください。その後で閉じられます。"
+      "cancelPlanFirst": "先に「プランと請求」でこのオフィスのプランを解約してください。その後で閉じられます。",
+      "nameAdminsOnly": "オフィス名を変更できるのは管理者だけです。",
+      "handOver": "オフィスを引き継ぐ",
+      "handOverNote": "ほかのメンバーをオーナーにします。その人は管理者にもなり、あなたは管理者のまま残ります。",
+      "handOverBilling": "プランと請求はそのままです。",
+      "handOverPick": "メンバーを選択",
+      "handOverButton": "引き継ぐ",
+      "handOverTitle": "{office}を{name}さんに引き継ぎますか？",
+      "handOverSure": "{name}さんがオーナーになり、オフィスを閉じたり別の人に引き継いだりできるのはその人だけになります。あなたは管理者のまま残ります。",
+      "handOverIt": "引き継ぐ",
+      "leaveTitle": "{office}を抜けますか？",
+      "leaveSure": "このオフィスのフロアとチャットに入れなくなります。戻るには、オフィスの誰かにもう一度招待してもらう必要があります。",
+      "leaveIt": "オフィスを抜ける",
+      "stay": "残る",
+      "closeTitle": "{office}を閉じますか？",
+      "closeType": "確認のため「{name}」と入力してください。",
+      "keepOffice": "オフィスを残す"
     },
     "profile": {
       "changePassword": "パスワードを変更",
@@ -475,7 +490,9 @@
       "search": "メンバーを検索",
       "noMatch": "該当する人はいません。",
       "seatsOpen": "空き {count} 席",
-      "proRoom": "チーム全員が入れます。月額 {price}"
+      "proRoom": "チーム全員が入れます。月額 {price}",
+      "removeTitle": "{name}さんを外しますか？",
+      "removeSure": "{name}さんはフロアとチャットに入れなくなり、席が空きます。あとでもう一度招待できます。"
     },
     "office": "オフィス",
     "goneTitle": "このオフィスはありません",

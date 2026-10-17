@@ -361,8 +361,23 @@
       "leave": "Dit kantoor verlaten",
       "wrong": "Dat lukte niet. Probeer het nog eens.",
       "plan": "{plan} · {used} van {seats} plekken",
-      "danger": "Verlaten of sluiten",
-      "cancelPlanFirst": "Zeg eerst het abonnement van dit kantoor op onder Abonnement en facturering. Daarna kan het dicht."
+      "cancelPlanFirst": "Zeg eerst het abonnement van dit kantoor op onder Abonnement en facturering. Daarna kan het dicht.",
+      "nameAdminsOnly": "Alleen een admin kan het kantoor hernoemen.",
+      "handOver": "Kantoor overdragen",
+      "handOverNote": "Maak iemand anders eigenaar. Die persoon wordt ook admin, en jij blijft admin.",
+      "handOverBilling": "Het abonnement en de facturering blijven zoals ze zijn.",
+      "handOverPick": "Kies een lid",
+      "handOverButton": "Overdragen",
+      "handOverTitle": "{office} overdragen aan {name}?",
+      "handOverSure": "{name} wordt eigenaar, de enige die het kantoor kan sluiten of opnieuw kan overdragen. Jij blijft admin.",
+      "handOverIt": "Overdragen",
+      "leaveTitle": "{office} verlaten?",
+      "leaveSure": "Je verliest de vloer en de chat. Om terug te komen, moet iemand van het kantoor je opnieuw uitnodigen.",
+      "leaveIt": "Kantoor verlaten",
+      "stay": "Blijven",
+      "closeTitle": "{office} sluiten?",
+      "closeType": "Typ {name} om te bevestigen.",
+      "keepOffice": "Kantoor houden"
     },
     "profile": {
       "changePassword": "Wachtwoord wijzigen",
@@ -475,7 +490,9 @@
       "search": "Personen zoeken",
       "noMatch": "Niemand komt overeen.",
       "seatsOpen": "{count, plural, one {# plek vrij} other {# plekken vrij}}",
-      "proRoom": "Ruimte voor je hele team, {price} per maand"
+      "proRoom": "Ruimte voor je hele team, {price} per maand",
+      "removeTitle": "{name} verwijderen?",
+      "removeSure": "{name} verliest de vloer en de chat, en de plek komt vrij. Je kunt diegene later opnieuw uitnodigen."
     },
     "office": "Kantoor",
     "goneTitle": "Dit kantoor bestaat niet meer",

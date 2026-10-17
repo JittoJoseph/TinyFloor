@@ -361,8 +361,23 @@
       "leave": "Lämna det här kontoret",
       "wrong": "Det gick inte. Försök igen.",
       "plan": "{plan} · {used} av {seats} platser",
-      "danger": "Lämna eller stänga",
-      "cancelPlanFirst": "Säg först upp kontorets plan under Plan och betalning. Sedan kan det stängas."
+      "cancelPlanFirst": "Säg först upp kontorets plan under Plan och betalning. Sedan kan det stängas.",
+      "nameAdminsOnly": "Bara en admin kan byta namn på kontoret.",
+      "handOver": "Lämna över kontoret",
+      "handOverNote": "Gör någon annan till ägare. Personen blir också admin, och du fortsätter som admin.",
+      "handOverBilling": "Planen och faktureringen förblir som de är.",
+      "handOverPick": "Välj en medlem",
+      "handOverButton": "Lämna över",
+      "handOverTitle": "Lämna över {office} till {name}?",
+      "handOverSure": "{name} blir ägare, den enda som kan stänga kontoret eller lämna över det igen. Du fortsätter som admin.",
+      "handOverIt": "Lämna över",
+      "leaveTitle": "Lämna {office}?",
+      "leaveSure": "Du förlorar golvet och chatten. För att komma tillbaka måste någon på kontoret bjuda in dig igen.",
+      "leaveIt": "Lämna kontoret",
+      "stay": "Stanna",
+      "closeTitle": "Stäng {office}?",
+      "closeType": "Skriv {name} för att bekräfta.",
+      "keepOffice": "Behåll kontoret"
     },
     "profile": {
       "changePassword": "Byt lösenord",
@@ -475,7 +490,9 @@
       "search": "Sök personer",
       "noMatch": "Ingen matchar det.",
       "seatsOpen": "{count, plural, one {# ledig plats} other {# lediga platser}}",
-      "proRoom": "Plats för hela ditt team, {price} i månaden"
+      "proRoom": "Plats för hela ditt team, {price} i månaden",
+      "removeTitle": "Ta bort {name}?",
+      "removeSure": "{name} förlorar golvet och chatten, och platsen blir ledig. Du kan bjuda in personen igen senare."
     },
     "office": "Kontor",
     "goneTitle": "Det här kontoret finns inte längre",

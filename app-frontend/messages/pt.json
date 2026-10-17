@@ -361,8 +361,23 @@
       "leave": "Sair deste escritório",
       "wrong": "Não resultou. Tenta outra vez.",
       "plan": "{plan} · {used} de {seats} lugares",
-      "danger": "Sair ou fechar",
-      "cancelPlanFirst": "Cancele primeiro o plano deste escritório em Plano e cobrança. Depois ele pode ser fechado."
+      "cancelPlanFirst": "Cancele primeiro o plano deste escritório em Plano e cobrança. Depois ele pode ser fechado.",
+      "nameAdminsOnly": "Só um admin pode renomear o escritório.",
+      "handOver": "Passar o escritório",
+      "handOverNote": "Torne outra pessoa a dona. Ela também vira admin, e você continua admin.",
+      "handOverBilling": "O plano e a cobrança continuam como estão.",
+      "handOverPick": "Escolha um membro",
+      "handOverButton": "Passar",
+      "handOverTitle": "Passar {office} para {name}?",
+      "handOverSure": "{name} passa a ser dono, a única pessoa que pode fechar o escritório ou passá-lo adiante. Você continua admin.",
+      "handOverIt": "Passar o escritório",
+      "leaveTitle": "Sair de {office}?",
+      "leaveSure": "Você perde o andar e o chat. Para voltar, alguém do escritório precisa te convidar de novo.",
+      "leaveIt": "Sair do escritório",
+      "stay": "Ficar",
+      "closeTitle": "Fechar {office}?",
+      "closeType": "Digite {name} para confirmar.",
+      "keepOffice": "Manter o escritório"
     },
     "profile": {
       "changePassword": "Alterar senha",
@@ -475,7 +490,9 @@
       "search": "Procurar pessoas",
       "noMatch": "Ninguém corresponde.",
       "seatsOpen": "{count, plural, one {# lugar livre} other {# lugares livres}}",
-      "proRoom": "Espaço para toda a sua equipe, {price} por mês"
+      "proRoom": "Espaço para toda a sua equipe, {price} por mês",
+      "removeTitle": "Remover {name}?",
+      "removeSure": "{name} perde o andar e o chat, e o lugar fica livre. Você pode convidar de novo depois."
     },
     "office": "Escritório",
     "goneTitle": "Este escritório já não existe",

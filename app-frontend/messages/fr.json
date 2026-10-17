@@ -361,8 +361,23 @@
       "leave": "Quitter ce bureau",
       "wrong": "Ça n'a pas marché. Réessayez.",
       "plan": "{plan} · {used} places sur {seats}",
-      "danger": "Quitter ou fermer",
-      "cancelPlanFirst": "Résiliez d'abord l'offre de ce bureau dans Offre et facturation. Il pourra ensuite être fermé."
+      "cancelPlanFirst": "Résiliez d'abord l'offre de ce bureau dans Offre et facturation. Il pourra ensuite être fermé.",
+      "nameAdminsOnly": "Seul un admin peut renommer le bureau.",
+      "handOver": "Céder le bureau",
+      "handOverNote": "Faites de quelqu'un d'autre le propriétaire. Cette personne devient aussi admin, et vous restez admin.",
+      "handOverBilling": "L'offre et sa facturation restent telles quelles.",
+      "handOverPick": "Choisir un membre",
+      "handOverButton": "Céder",
+      "handOverTitle": "Céder {office} à {name} ?",
+      "handOverSure": "{name} devient propriétaire, la seule personne qui pourra fermer le bureau ou le céder à nouveau. Vous restez admin.",
+      "handOverIt": "Le céder",
+      "leaveTitle": "Quitter {office} ?",
+      "leaveSure": "Vous perdrez son étage et son chat. Pour revenir, quelqu'un du bureau devra vous inviter à nouveau.",
+      "leaveIt": "Quitter le bureau",
+      "stay": "Rester",
+      "closeTitle": "Fermer {office} ?",
+      "closeType": "Tapez {name} pour confirmer.",
+      "keepOffice": "Garder le bureau"
     },
     "profile": {
       "changePassword": "Changer le mot de passe",
@@ -475,7 +490,9 @@
       "search": "Rechercher des personnes",
       "noMatch": "Personne ne correspond.",
       "seatsOpen": "{count, plural, one {# place libre} other {# places libres}}",
-      "proRoom": "De la place pour toute votre équipe, {price} par mois"
+      "proRoom": "De la place pour toute votre équipe, {price} par mois",
+      "removeTitle": "Retirer {name} ?",
+      "removeSure": "{name} perd l'étage et le chat, et sa place se libère. Vous pourrez l'inviter à nouveau plus tard."
     },
     "office": "Bureau",
     "goneTitle": "Ce bureau n'existe plus",

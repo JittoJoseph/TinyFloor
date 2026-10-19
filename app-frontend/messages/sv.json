@@ -384,7 +384,10 @@
       "whoInvitesEveryone": "Alla på kontoret kan dela inbjudningslänken.",
       "whoInvitesAdmins": "Bara admins kan se och dela inbjudningslänken.",
       "inviteEveryone": "Alla",
-      "inviteAdmins": "Bara admins"
+      "inviteAdmins": "Bara admins",
+      "domainJoin": "Alla på {domain}",
+      "domainJoinOn": "Den som är inloggad med en @{domain}-adress kan hitta kontoret och gå med utan länken.",
+      "domainJoinOff": "Bara den som har länken kan gå med."
     },
     "profile": {
       "changePassword": "Byt lösenord",
@@ -784,5 +787,16 @@
     "body": "Här jobbar teamet. Gå fram till någon för att prata, och kliv in i ett mötesrum när det är dags för möte.",
     "walkIn": "Gå in",
     "close": "Stäng"
+  },
+  "team": {
+    "title": "Ditt team är redan här",
+    "body": "Folk på {domain} har ett kontor på TinyFloor. Kliv in och var med.",
+    "atDomain": "På {domain}",
+    "alreadyHas": "Ditt team på {domain} har redan ett kontor",
+    "members": "{count, plural, one {# medlem} other {# medlemmar}}",
+    "join": "Gå med",
+    "full": "Fullt",
+    "makeOwn": "Skapa ett nytt kontor i stället",
+    "failed": "Det gick inte. Försök igen."
   }
 }

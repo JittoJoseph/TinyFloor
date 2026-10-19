@@ -384,7 +384,10 @@
       "whoInvitesEveryone": "Cualquiera en la oficina puede compartir el enlace de invitación.",
       "whoInvitesAdmins": "Solo los admins pueden ver y compartir el enlace de invitación.",
       "inviteEveryone": "Todos",
-      "inviteAdmins": "Solo admins"
+      "inviteAdmins": "Solo admins",
+      "domainJoin": "Cualquiera de {domain}",
+      "domainJoinOn": "Quien inicie sesión con un correo @{domain} puede encontrar esta oficina y unirse sin el enlace.",
+      "domainJoinOff": "Solo quien tenga el enlace puede unirse."
     },
     "profile": {
       "changePassword": "Cambiar contraseña",
@@ -784,5 +787,16 @@
     "body": "Aquí trabaja el equipo. Acércate a alguien para hablar y entra en una sala de reuniones cuando toque reunirse.",
     "walkIn": "Entrar",
     "close": "Cerrar"
+  },
+  "team": {
+    "title": "Tu equipo ya está aquí",
+    "body": "Gente de {domain} tiene una oficina en TinyFloor. Entra y únete a ellos.",
+    "atDomain": "En {domain}",
+    "alreadyHas": "Tu equipo de {domain} ya tiene una oficina",
+    "members": "{count, plural, one {# miembro} other {# miembros}}",
+    "join": "Unirme",
+    "full": "Llena",
+    "makeOwn": "Crear una oficina nueva",
+    "failed": "No funcionó. Inténtalo de nuevo."
   }
 }

@@ -384,7 +384,10 @@
       "whoInvitesEveryone": "オフィスの誰でも招待リンクを共有できます。",
       "whoInvitesAdmins": "招待リンクを見たり共有したりできるのは管理者だけです。",
       "inviteEveryone": "全員",
-      "inviteAdmins": "管理者のみ"
+      "inviteAdmins": "管理者のみ",
+      "domainJoin": "{domain} の全員",
+      "domainJoinOn": "@{domain} のメールアドレスでサインインした人は、リンクなしでこのオフィスを見つけて参加できます。",
+      "domainJoinOff": "リンクを持っている人だけが参加できます。"
     },
     "profile": {
       "changePassword": "パスワードを変更",
@@ -784,5 +787,16 @@
     "body": "ここがチームの仕事場です。話したい人のそばまで歩いて行き、会議の時間になったら会議室に入りましょう。",
     "walkIn": "入る",
     "close": "閉じる"
+  },
+  "team": {
+    "title": "チームはもうここにいます",
+    "body": "{domain} の人たちが TinyFloor にオフィスを持っています。入って合流しましょう。",
+    "atDomain": "{domain}",
+    "alreadyHas": "{domain} のチームにはもうオフィスがあります",
+    "members": "{count, plural, other {メンバー#人}}",
+    "join": "参加",
+    "full": "満員",
+    "makeOwn": "新しいオフィスを作る",
+    "failed": "うまくいきませんでした。もう一度お試しください。"
   }
 }

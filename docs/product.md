@@ -121,3 +121,18 @@ work happens. What we don't build, though each would raise usage numbers:
   without asking. An admin can limit it to admins, and then members see no
   invite button anywhere, and the empty floor stops telling them to send the
   link.
+- **Colleagues find their team's office by their work email** (19 October).
+  People from the same company were signing up on their own and landing on
+  "make your office": on 19 October four people from one company signed up
+  within the hour; two joined a colleague's office and two never got into
+  any, and another company had two offices with different members. Now anyone signed in with
+  a verified address at the domain of an office's owner sees "Your team is
+  already here" before "make your own" (and on the new-office screen, and
+  outside an office), and walks in with one tap. A full free office's trial
+  starts for the fourth, as with an invite. Personal addresses (Gmail,
+  Outlook, Yahoo, UOL and the like) never match, and only the owner's domain
+  counts, so a gmail office with one company member isn't found by that
+  company. On by default, as Slack and Linear do it; an admin can turn it off
+  under Inviting. A university's domain is off until an admin turns it on,
+  since thousands of strangers share it. Only Google-verified addresses
+  count: a password account's email is never checked.

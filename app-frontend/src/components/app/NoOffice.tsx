@@ -8,17 +8,50 @@ import { lobbyPath } from "@/lib/links";
 import { JoinByLink } from "./CreateOffice";
 import { LitFace } from "@/components/ui/LitFace";
 import { ActionLink } from "@/components/ui/Action";
+import { TeamOffices, useTeamOffices } from "./TeamOffices";
 
 /**
  * No office yet, just after signing up (docs/product.md): one thing to do, make one.
  * Someone who was invited pastes the link instead, and the lobby is there
  * meanwhile. On a phone those two are grouped as a list; wider, they sit
- * quietly underneath.
+ * quietly underneath. Someone whose colleagues already have an office (found by
+ * their work email) sees that first: joining their team, not making a second
+ * office for it, is what they came for.
  */
 export function NoOffice() {
   const t = useTranslations("dashboard");
+  const tt = useTranslations("team");
   const ts = useTranslations("shell");
   const { user } = useAuth();
+  const team = useTeamOffices();
+
+  // A moment to ask, so the door doesn't offer "make one" and then change its mind.
+  if (team === undefined) return <div className="min-h-[50dvh]" aria-busy="true" />;
+
+  if (team) {
+    return (
+      <div className="mx-auto max-w-[440px] sm:flex sm:min-h-[calc(100dvh-14rem)] sm:flex-col sm:items-center sm:justify-center sm:pb-6 sm:text-center">
+        <LitFace seed={team.offices[0].id} size={80} phone={60} square />
+        <p className="mt-7 text-[13px] font-medium text-muted-foreground sm:mt-9">
+          {user ? t("welcome", { name: user.displayName.split(" ")[0] }) : t("welcomeAnonymous")}
+        </p>
+        <h1 className="mt-1 text-[30px] font-semibold leading-[1.12] tracking-[-0.03em] text-foreground sm:mt-1.5 sm:text-[34px] sm:leading-tight sm:tracking-[-0.025em]">
+          {tt("title")}
+        </h1>
+        <p className="mt-2.5 text-[15px] leading-relaxed text-muted-foreground sm:text-balance sm:text-[14.5px]">
+          {tt("body", { domain: team.domain })}
+        </p>
+        <TeamOffices team={team} className="mt-7 w-full sm:mt-8" />
+        <Link
+          href="/create"
+          className="mt-8 inline-flex items-center gap-1.5 text-[13px] text-muted-foreground transition-colors hover:text-foreground sm:mx-auto"
+        >
+          {tt("makeOwn")}
+          <ArrowRight className="size-3.5 rtl:rotate-180" />
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="mx-auto max-w-[440px] sm:flex sm:min-h-[calc(100dvh-14rem)] sm:flex-col sm:items-center sm:justify-center sm:pb-6 sm:text-center">

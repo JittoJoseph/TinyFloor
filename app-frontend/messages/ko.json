@@ -384,7 +384,10 @@
       "whoInvitesEveryone": "사무실의 누구나 초대 링크를 공유할 수 있어요.",
       "whoInvitesAdmins": "관리자만 초대 링크를 보고 공유할 수 있어요.",
       "inviteEveryone": "모두",
-      "inviteAdmins": "관리자만"
+      "inviteAdmins": "관리자만",
+      "domainJoin": "{domain}의 모든 사람",
+      "domainJoinOn": "@{domain} 이메일로 로그인한 사람은 링크 없이 이 오피스를 찾아 참여할 수 있어요.",
+      "domainJoinOff": "링크가 있는 사람만 참여할 수 있어요."
     },
     "profile": {
       "changePassword": "비밀번호 변경",
@@ -784,5 +787,16 @@
     "body": "팀이 일하는 곳이에요. 누구에게든 다가가면 바로 대화할 수 있고, 회의 시간에는 회의실로 들어가세요.",
     "walkIn": "들어가기",
     "close": "닫기"
+  },
+  "team": {
+    "title": "팀이 이미 여기 있어요",
+    "body": "{domain} 사람들이 TinyFloor에 오피스를 두고 있어요. 들어가서 함께하세요.",
+    "atDomain": "{domain}",
+    "alreadyHas": "{domain} 팀에 이미 오피스가 있어요",
+    "members": "{count, plural, other {멤버 #명}}",
+    "join": "참여",
+    "full": "가득 참",
+    "makeOwn": "새 오피스 만들기",
+    "failed": "잘 안 됐어요. 다시 시도해 주세요."
   }
 }

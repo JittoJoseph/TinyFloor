@@ -510,7 +510,14 @@ function OfficeSection() {
 
       {error && <p className="-mt-4 mb-6 text-[12.5px] text-destructive">{error}</p>}
 
-      {admin && <InvitePolicyRow officeId={office.id} policy={office.invitePolicy ?? "everyone"} />}
+      {admin && (
+        <InvitePolicyRow
+          officeId={office.id}
+          policy={office.invitePolicy ?? "everyone"}
+          domain={office.joinDomain ?? null}
+          domainJoin={!!office.domainJoin}
+        />
+      )}
 
       {owner && others.length > 0 && <HandOver officeId={office.id} officeName={office.name} paid={office.plan !== "free"} members={others} />}
 
@@ -702,11 +709,36 @@ function LeaveOrClose({ officeId, officeName, owner, userId }: { officeId: strin
  * grows by its members bringing each other) or only admins, for an office that
  * wants to decide who comes in.
  */
-function InvitePolicyRow({ officeId, policy }: { officeId: string; policy: InvitePolicy }) {
+function InvitePolicyRow({
+  officeId,
+  policy,
+  domain,
+  domainJoin,
+}: {
+  officeId: string;
+  policy: InvitePolicy;
+  /** The owner's company domain, when there is one to open the office to. */
+  domain: string | null;
+  domainJoin: boolean;
+}) {
   const t = useTranslations("office.settings");
   const { refresh } = useOfficeMaybe()!;
   const [value, setValue] = useState<InvitePolicy>(policy);
+  const [open, setOpen] = useState(domainJoin);
   const [error, setError] = useState<string | null>(null);
+
+  // Colleagues at the owner's company finding the office by their email: on unless an admin turns it off.
+  const toggle = async (next: boolean) => {
+    setOpen(next);
+    setError(null);
+    try {
+      await api.updateOffice(officeId, { domainJoin: next });
+      await refresh();
+    } catch (problem) {
+      setOpen(!next);
+      setError(problem instanceof ApiError ? problem.message : t("wrong"));
+    }
+  };
 
   const change = async (next: InvitePolicy) => {
     const before = value;
@@ -740,6 +772,13 @@ function InvitePolicyRow({ officeId, policy }: { officeId: string; policy: Invit
           </div>
         }
       />
+      {domain && (
+        <Row
+          title={t("domainJoin", { domain })}
+          description={open ? t("domainJoinOn", { domain }) : t("domainJoinOff")}
+          control={<Switch checked={open} onCheckedChange={(on) => void toggle(on)} ariaLabel={t("domainJoin", { domain })} />}
+        />
+      )}
       {error && <p className="px-4 pb-3 text-[12.5px] text-destructive">{error}</p>}
     </Group>
   );

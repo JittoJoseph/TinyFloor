@@ -7,6 +7,7 @@ import { floorRoutes } from "./floor";
 import { googleRoutes } from "./google";
 import { helpRoutes } from "./help";
 import { officeRoutes } from "./offices";
+import { teamRoutes } from "./team";
 import { runRetention } from "./retention";
 import { Router } from "./router";
 
@@ -21,6 +22,7 @@ const router = new Router().add("GET", "/v1/health", async ({ env }) => {
 authRoutes(router);
 googleRoutes(router);
 officeRoutes(router);
+teamRoutes(router);
 floorRoutes(router);
 callRoutes(router);
 billingRoutes(router);

@@ -384,7 +384,10 @@
       "whoInvitesEveryone": "Kuka tahansa toimistossa voi jakaa kutsulinkin.",
       "whoInvitesAdmins": "Vain adminit voivat nähdä ja jakaa kutsulinkin.",
       "inviteEveryone": "Kaikki",
-      "inviteAdmins": "Vain adminit"
+      "inviteAdmins": "Vain adminit",
+      "domainJoin": "Kaikki osoitteesta {domain}",
+      "domainJoinOn": "Kuka tahansa, joka on kirjautunut @{domain}-osoitteella, löytää toimiston ja voi liittyä ilman linkkiä.",
+      "domainJoinOff": "Vain linkin saaneet voivat liittyä."
     },
     "profile": {
       "changePassword": "Vaihda salasana",
@@ -784,5 +787,16 @@
     "body": "Täällä tiimi tekee töitä. Kävele kenen tahansa luo jutellaksesi, ja astu kokoushuoneeseen, kun on kokouksen aika.",
     "walkIn": "Astu sisään",
     "close": "Sulje"
+  },
+  "team": {
+    "title": "Tiimisi on jo täällä",
+    "body": "Väellä osoitteesta {domain} on toimisto TinyFloorissa. Astu sisään ja liity heihin.",
+    "atDomain": "{domain}",
+    "alreadyHas": "Tiimilläsi ({domain}) on jo toimisto",
+    "members": "{count, plural, one {# jäsen} other {# jäsentä}}",
+    "join": "Liity",
+    "full": "Täynnä",
+    "makeOwn": "Luo sittenkin uusi toimisto",
+    "failed": "Se ei onnistunut. Yritä uudelleen."
   }
 }

@@ -384,7 +384,10 @@
       "whoInvitesEveryone": "Anyone in the office can share its invite link.",
       "whoInvitesAdmins": "Only admins can see and share the invite link.",
       "inviteEveryone": "Everyone",
-      "inviteAdmins": "Only admins"
+      "inviteAdmins": "Only admins",
+      "domainJoin": "Anyone at {domain}",
+      "domainJoinOn": "Anyone signed in with an @{domain} email can find this office and join without the link.",
+      "domainJoinOff": "Only people with the link can join."
     },
     "profile": {
       "changePassword": "Change password",
@@ -784,5 +787,16 @@
     "body": "This is where the team works. Walk up to anyone to talk, and step into a meeting room when it's time to meet.",
     "walkIn": "Walk in",
     "close": "Close"
+  },
+  "team": {
+    "title": "Your team is already here",
+    "body": "People at {domain} have an office on TinyFloor. Walk in and join them.",
+    "atDomain": "At {domain}",
+    "alreadyHas": "Your team at {domain} already has an office",
+    "members": "{count, plural, one {# member} other {# members}}",
+    "join": "Join",
+    "full": "Full",
+    "makeOwn": "Make a new office instead",
+    "failed": "That didn't work. Try again."
   }
 }

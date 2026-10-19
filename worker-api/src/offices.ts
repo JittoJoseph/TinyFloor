@@ -58,13 +58,13 @@ export function officeRoutes(router: Router): void {
       return json({ office: officeJson(office, await seatsUsed(env, params.id)) });
     })
 
-    // An admin changing the office: its name, who can invite. Either or both, in one go.
+    // An admin changing the office: its name, who can invite, whether colleagues can find it. Any of them, in one go.
     .add("PATCH", "/v1/offices/:id", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       await requireOffice(env, params.id, user.id, ["admin"]);
       const body = await readJson(request);
       const sets: string[] = [];
-      const values: (string | null)[] = [];
+      const values: (string | number | null)[] = [];
       if (body.name !== undefined) {
         const name = cleanName(body.name);
         if (!name) throw new HttpError(400, "name_required", "Name the office");
@@ -77,6 +77,11 @@ export function officeRoutes(router: Router): void {
         }
         sets.push("invite_policy = ?");
         values.push(body.invitePolicy as string);
+      }
+      if (body.domainJoin !== undefined) {
+        if (typeof body.domainJoin !== "boolean") throw new HttpError(400, "bad_domain_join", "On or off");
+        sets.push("domain_join = ?");
+        values.push(body.domainJoin ? 1 : 0);
       }
       if (!sets.length) throw new HttpError(400, "nothing_to_change", "Nothing to change");
       await env.DB.prepare(`UPDATE offices SET ${sets.join(", ")} WHERE id = ?`)
@@ -340,5 +345,7 @@ export function officeJson(office: Office, members: number) {
     trialEndsAt: office.trialEndsAt,
     trialOpen: office.trialOpen,
     invitePolicy: office.invitePolicy,
+    joinDomain: office.joinDomain,
+    domainJoin: office.domainJoin,
   };
 }

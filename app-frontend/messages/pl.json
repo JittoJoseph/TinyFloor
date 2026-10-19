@@ -384,7 +384,10 @@
       "whoInvitesEveryone": "Każdy w biurze może udostępnić link z zaproszeniem.",
       "whoInvitesAdmins": "Tylko admini mogą zobaczyć i udostępnić link z zaproszeniem.",
       "inviteEveryone": "Wszyscy",
-      "inviteAdmins": "Tylko admini"
+      "inviteAdmins": "Tylko admini",
+      "domainJoin": "Każdy z {domain}",
+      "domainJoinOn": "Każdy zalogowany adresem @{domain} znajdzie to biuro i dołączy bez linku.",
+      "domainJoinOff": "Dołączyć mogą tylko osoby z linkiem."
     },
     "profile": {
       "changePassword": "Zmień hasło",
@@ -784,5 +787,16 @@
     "body": "Tu pracuje zespół. Podejdź do kogoś, żeby porozmawiać, a gdy przyjdzie pora spotkania, wejdź do sali spotkań.",
     "walkIn": "Wejdź",
     "close": "Zamknij"
+  },
+  "team": {
+    "title": "Twój zespół już tu jest",
+    "body": "Osoby z {domain} mają biuro w TinyFloor. Wejdź i dołącz do nich.",
+    "atDomain": "W {domain}",
+    "alreadyHas": "Twój zespół w {domain} ma już biuro",
+    "members": "{count, plural, one {# członek} few {# członków} many {# członków} other {# członka}}",
+    "join": "Dołącz",
+    "full": "Pełne",
+    "makeOwn": "Utwórz jednak nowe biuro",
+    "failed": "Nie udało się. Spróbuj ponownie."
   }
 }

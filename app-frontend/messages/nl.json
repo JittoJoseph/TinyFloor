@@ -384,7 +384,10 @@
       "whoInvitesEveryone": "Iedereen in het kantoor kan de uitnodigingslink delen.",
       "whoInvitesAdmins": "Alleen admins kunnen de uitnodigingslink zien en delen.",
       "inviteEveryone": "Iedereen",
-      "inviteAdmins": "Alleen admins"
+      "inviteAdmins": "Alleen admins",
+      "domainJoin": "Iedereen bij {domain}",
+      "domainJoinOn": "Wie inlogt met een @{domain}-adres kan dit kantoor vinden en zonder link meedoen.",
+      "domainJoinOff": "Alleen wie de link heeft, kan meedoen."
     },
     "profile": {
       "changePassword": "Wachtwoord wijzigen",
@@ -784,5 +787,16 @@
     "body": "Hier werkt het team. Loop naar iemand toe om te praten, en stap een vergaderruimte in als het tijd is om te vergaderen.",
     "walkIn": "Naar binnen",
     "close": "Sluiten"
+  },
+  "team": {
+    "title": "Je team is er al",
+    "body": "Mensen van {domain} hebben een kantoor op TinyFloor. Loop binnen en doe mee.",
+    "atDomain": "Bij {domain}",
+    "alreadyHas": "Je team bij {domain} heeft al een kantoor",
+    "members": "{count, plural, one {# lid} other {# leden}}",
+    "join": "Meedoen",
+    "full": "Vol",
+    "makeOwn": "Toch een nieuw kantoor maken",
+    "failed": "Dat lukte niet. Probeer het opnieuw."
   }
 }

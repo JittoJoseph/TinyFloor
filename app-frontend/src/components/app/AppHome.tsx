@@ -15,6 +15,7 @@ import { ActionLink } from "@/components/ui/Action";
 import { HomeFrame } from "./HomeFrame";
 import { NoOffice } from "./NoOffice";
 import { Introduce } from "@/components/entry/Introduce";
+import { TeamOffices, useTeamOffices } from "./TeamOffices";
 
 /**
  * The app's front door (app.tinyfloor.com). There is no dashboard: signed
@@ -87,6 +88,7 @@ export function AppHome() {
 function Outside({ office, others }: { office: OfficeSummary; others: OfficeSummary[] }) {
   const t = useTranslations("dashboard");
   const ts = useTranslations("shell");
+  const team = useTeamOffices();
   const row =
     "flex h-12 items-center gap-3 px-4 text-[13.5px] text-foreground transition-colors hover:bg-foreground/[0.04]";
   return (
@@ -133,6 +135,7 @@ function Outside({ office, others }: { office: OfficeSummary; others: OfficeSumm
           <span className="flex-1">{ts("newOffice")}</span>
         </Link>
       </div>
+      {team && <TeamOffices team={team} className="mt-4" />}
     </div>
   );
 }

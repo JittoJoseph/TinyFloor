@@ -384,7 +384,10 @@
       "whoInvitesEveryone": "כל מי שבמשרד יכול לשתף את קישור ההזמנה.",
       "whoInvitesAdmins": "רק אדמינים יכולים לראות ולשתף את קישור ההזמנה.",
       "inviteEveryone": "כולם",
-      "inviteAdmins": "רק אדמינים"
+      "inviteAdmins": "רק אדמינים",
+      "domainJoin": "כל מי שב־{domain}",
+      "domainJoinOn": "כל מי שמחובר עם כתובת @{domain} יכול למצוא את המשרד ולהצטרף בלי הקישור.",
+      "domainJoinOff": "רק מי שיש לו את הקישור יכול להצטרף."
     },
     "profile": {
       "changePassword": "שינוי סיסמה",
@@ -784,5 +787,16 @@
     "body": "כאן הצוות עובד. גשו למישהו כדי לדבר, והיכנסו לחדר ישיבות כשמגיע זמן הפגישה.",
     "walkIn": "להיכנס",
     "close": "סגירה"
+  },
+  "team": {
+    "title": "הצוות שלך כבר כאן",
+    "body": "לאנשים מ־{domain} יש משרד ב־TinyFloor. היכנסו והצטרפו אליהם.",
+    "atDomain": "ב־{domain}",
+    "alreadyHas": "לצוות שלך ב־{domain} כבר יש משרד",
+    "members": "{count, plural, one {חבר/ה אחד/ת} other {# חברים}}",
+    "join": "הצטרפות",
+    "full": "מלא",
+    "makeOwn": "ליצור משרד חדש במקום",
+    "failed": "זה לא הצליח. נסו שוב."
   }
 }

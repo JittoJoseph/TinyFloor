@@ -384,7 +384,10 @@
       "whoInvitesEveryone": "办公室里的任何人都可以分享邀请链接。",
       "whoInvitesAdmins": "只有管理员可以查看和分享邀请链接。",
       "inviteEveryone": "所有人",
-      "inviteAdmins": "仅管理员"
+      "inviteAdmins": "仅管理员",
+      "domainJoin": "{domain} 的所有人",
+      "domainJoinOn": "用 @{domain} 邮箱登录的人都能找到这个办公室，无需链接即可加入。",
+      "domainJoinOff": "只有拿到链接的人才能加入。"
     },
     "profile": {
       "changePassword": "修改密码",
@@ -784,5 +787,16 @@
     "body": "这里是团队工作的地方。走到任何人身边就能交谈，开会时走进会议室即可。",
     "walkIn": "进入",
     "close": "关闭"
+  },
+  "team": {
+    "title": "你的团队已经在这里了",
+    "body": "{domain} 的同事已经在 TinyFloor 上有了办公室。进去加入他们吧。",
+    "atDomain": "{domain}",
+    "alreadyHas": "你在 {domain} 的团队已经有办公室了",
+    "members": "{count, plural, other {# 名成员}}",
+    "join": "加入",
+    "full": "已满",
+    "makeOwn": "仍然新建办公室",
+    "failed": "没有成功，请再试一次。"
   }
 }

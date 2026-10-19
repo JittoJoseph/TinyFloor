@@ -385,9 +385,13 @@
       "whoInvitesAdmins": "Só admins podem ver e compartilhar o link de convite.",
       "inviteEveryone": "Todos",
       "inviteAdmins": "Só admins",
-      "domainJoin": "Qualquer pessoa da {domain}",
-      "domainJoinOn": "Quem entrar com um e-mail @{domain} encontra este escritório e pode entrar sem o link.",
-      "domainJoinOff": "Só quem tem o link pode entrar."
+      "domainJoin": "Pessoas da {domain}",
+      "domainAsk": "Podem pedir para entrar",
+      "domainOpen": "Podem entrar direto",
+      "domainOff": "Não encontram",
+      "domainAskNote": "Elas encontram este escritório pelo e-mail de trabalho e pedem para entrar. Um admin libera.",
+      "domainOpenNote": "Quem entrar com um e-mail @{domain} pode entrar direto.",
+      "domainOffNote": "Só quem tem o link de convite pode entrar."
     },
     "profile": {
       "changePassword": "Alterar senha",
@@ -475,6 +479,9 @@
     "people": {
       "title": "Pessoas",
       "members": "Membros",
+      "asking": "Pedindo para entrar",
+      "letIn": "Liberar",
+      "decline": "Recusar",
       "invite": "Convidar",
       "seats": "{used} de {seats} lugares",
       "seatsFull": "Já não há lugares.",
@@ -790,11 +797,15 @@
   },
   "team": {
     "title": "Sua equipe já está aqui",
-    "body": "Pessoas da {domain} têm um escritório no TinyFloor. Entre e junte-se a elas.",
+    "bodyAsk": "Pessoas da {domain} já estão no TinyFloor. Peça para entrar no escritório delas e um admin libera sua entrada.",
+    "bodyOpen": "Pessoas da {domain} já estão no TinyFloor. Junte-se a elas em vez de criar um escritório novo.",
     "atDomain": "Na {domain}",
     "alreadyHas": "Sua equipe na {domain} já tem um escritório",
     "members": "{count, plural, one {# membro} other {# membros}}",
+    "ask": "Pedir para entrar",
     "join": "Entrar",
+    "waiting": "Esperando {owner} liberar sua entrada",
+    "cancel": "Cancelar",
     "full": "Lotado",
     "makeOwn": "Criar um escritório novo",
     "failed": "Não deu certo. Tente de novo."

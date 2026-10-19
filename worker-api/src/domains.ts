@@ -22,8 +22,13 @@ export function workDomain(email: string | null | undefined): string | null {
   return domain;
 }
 
-/** Whether an office with this setting is open to its owner's domain. */
-export function domainOpen(setting: number | null, domain: string | null): boolean {
-  if (!domain) return false;
-  return setting === null ? !ACADEMIC.test(domain) : setting === 1;
+/** How colleagues at the owner's domain get in: ask an admin, walk straight in, or not find the office at all. */
+export type DomainAccess = "ask" | "open" | "off";
+export const DOMAIN_ACCESS: readonly DomainAccess[] = ["ask", "open", "off"];
+
+/** What an office's setting means at its owner's domain: asking by default, except at a university. */
+export function domainAccess(setting: string | number | null, domain: string | null): DomainAccess {
+  if (!domain) return "off";
+  if (setting === "ask" || setting === "open" || setting === "off") return setting;
+  return ACADEMIC.test(domain) ? "off" : "ask";
 }

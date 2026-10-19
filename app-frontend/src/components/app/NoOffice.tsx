@@ -7,6 +7,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { lobbyPath } from "@/lib/links";
 import { JoinByLink } from "./CreateOffice";
 import { LitFace } from "@/components/ui/LitFace";
+import { FaceStack } from "@/components/ui/Face";
 import { ActionLink } from "@/components/ui/Action";
 import { TeamOffices, useTeamOffices } from "./TeamOffices";
 
@@ -31,20 +32,21 @@ export function NoOffice() {
   if (team) {
     return (
       <div className="mx-auto max-w-[440px] sm:flex sm:min-h-[calc(100dvh-14rem)] sm:flex-col sm:items-center sm:justify-center sm:pb-6 sm:text-center">
-        <LitFace seed={team.offices[0].id} size={80} phone={60} square />
-        <p className="mt-7 text-[13px] font-medium text-muted-foreground sm:mt-9">
+        {/* Your colleagues, not another office mark: they're who you came for. */}
+        <FaceStack seeds={team.offices[0].faces} size={56} max={4} className="[--face-ring:var(--ui-background)]" />
+        <p className="mt-7 text-[13px] font-medium text-muted-foreground sm:mt-8">
           {user ? t("welcome", { name: user.displayName.split(" ")[0] }) : t("welcomeAnonymous")}
         </p>
         <h1 className="mt-1 text-[30px] font-semibold leading-[1.12] tracking-[-0.03em] text-foreground sm:mt-1.5 sm:text-[34px] sm:leading-tight sm:tracking-[-0.025em]">
           {tt("title")}
         </h1>
         <p className="mt-2.5 text-[15px] leading-relaxed text-muted-foreground sm:text-balance sm:text-[14.5px]">
-          {tt("body", { domain: team.domain })}
+          {team.offices.some((one) => one.access === "open") ? tt("bodyOpen", { domain: team.domain }) : tt("bodyAsk", { domain: team.domain })}
         </p>
         <TeamOffices team={team} className="mt-7 w-full sm:mt-8" />
         <Link
           href="/create"
-          className="mt-8 inline-flex items-center gap-1.5 text-[13px] text-muted-foreground transition-colors hover:text-foreground sm:mx-auto"
+          className="mt-6 inline-flex h-9 items-center gap-1.5 text-[13px] text-muted-foreground transition-colors hover:text-foreground sm:mx-auto"
         >
           {tt("makeOwn")}
           <ArrowRight className="size-3.5 rtl:rotate-180" />

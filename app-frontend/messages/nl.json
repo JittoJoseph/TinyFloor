@@ -385,9 +385,13 @@
       "whoInvitesAdmins": "Alleen admins kunnen de uitnodigingslink zien en delen.",
       "inviteEveryone": "Iedereen",
       "inviteAdmins": "Alleen admins",
-      "domainJoin": "Iedereen bij {domain}",
-      "domainJoinOn": "Wie inlogt met een @{domain}-adres kan dit kantoor vinden en zonder link meedoen.",
-      "domainJoinOff": "Alleen wie de link heeft, kan meedoen."
+      "domainJoin": "Mensen van {domain}",
+      "domainAsk": "Kunnen het vragen",
+      "domainOpen": "Kunnen meteen binnen",
+      "domainOff": "Vinden het niet",
+      "domainAskNote": "Ze vinden dit kantoor via hun werkadres en vragen het. Een admin laat ze binnen.",
+      "domainOpenNote": "Wie inlogt met een @{domain}-adres kan meteen binnenlopen.",
+      "domainOffNote": "Alleen wie de uitnodigingslink heeft, kan meedoen."
     },
     "profile": {
       "changePassword": "Wachtwoord wijzigen",
@@ -475,6 +479,9 @@
     "people": {
       "title": "Mensen",
       "members": "Leden",
+      "asking": "Willen meedoen",
+      "letIn": "Binnenlaten",
+      "decline": "Weigeren",
       "invite": "Uitnodigen",
       "seats": "{used} van {seats} plekken",
       "seatsFull": "Alle plekken zijn bezet.",
@@ -790,11 +797,15 @@
   },
   "team": {
     "title": "Je team is er al",
-    "body": "Mensen van {domain} hebben een kantoor op TinyFloor. Loop binnen en doe mee.",
+    "bodyAsk": "Mensen van {domain} zitten al op TinyFloor. Vraag of je bij hun kantoor mag, een admin laat je binnen.",
+    "bodyOpen": "Mensen van {domain} zitten al op TinyFloor. Doe met hen mee in plaats van een nieuw kantoor te maken.",
     "atDomain": "Bij {domain}",
     "alreadyHas": "Je team bij {domain} heeft al een kantoor",
     "members": "{count, plural, one {# lid} other {# leden}}",
+    "ask": "Vragen",
     "join": "Meedoen",
+    "waiting": "Wacht tot {owner} je binnenlaat",
+    "cancel": "Annuleren",
     "full": "Vol",
     "makeOwn": "Toch een nieuw kantoor maken",
     "failed": "Dat lukte niet. Probeer het opnieuw."

@@ -385,9 +385,13 @@
       "whoInvitesAdmins": "관리자만 초대 링크를 보고 공유할 수 있어요.",
       "inviteEveryone": "모두",
       "inviteAdmins": "관리자만",
-      "domainJoin": "{domain}의 모든 사람",
-      "domainJoinOn": "@{domain} 이메일로 로그인한 사람은 링크 없이 이 오피스를 찾아 참여할 수 있어요.",
-      "domainJoinOff": "링크가 있는 사람만 참여할 수 있어요."
+      "domainJoin": "{domain} 사람들",
+      "domainAsk": "참여를 요청할 수 있음",
+      "domainOpen": "바로 참여할 수 있음",
+      "domainOff": "찾을 수 없음",
+      "domainAskNote": "업무용 이메일로 이 오피스를 찾아 요청해요. 관리자가 들여보내 줘요.",
+      "domainOpenNote": "@{domain} 이메일로 로그인한 사람은 바로 들어올 수 있어요.",
+      "domainOffNote": "초대 링크가 있는 사람만 참여할 수 있어요."
     },
     "profile": {
       "changePassword": "비밀번호 변경",
@@ -475,6 +479,9 @@
     "people": {
       "title": "사람들",
       "members": "멤버",
+      "asking": "참여 요청",
+      "letIn": "들여보내기",
+      "decline": "거절",
       "invite": "초대",
       "seats": "{seats}석 중 {used}석",
       "seatsFull": "자리가 모두 찼습니다.",
@@ -790,11 +797,15 @@
   },
   "team": {
     "title": "팀이 이미 여기 있어요",
-    "body": "{domain} 사람들이 TinyFloor에 오피스를 두고 있어요. 들어가서 함께하세요.",
+    "bodyAsk": "{domain} 사람들이 이미 TinyFloor에 있어요. 오피스 참여를 요청하면 관리자가 들여보내 줘요.",
+    "bodyOpen": "{domain} 사람들이 이미 TinyFloor에 있어요. 새 오피스를 만드는 대신 함께하세요.",
     "atDomain": "{domain}",
     "alreadyHas": "{domain} 팀에 이미 오피스가 있어요",
     "members": "{count, plural, other {멤버 #명}}",
+    "ask": "참여 요청",
     "join": "참여",
+    "waiting": "{owner}님의 승인을 기다리는 중",
+    "cancel": "취소",
     "full": "가득 참",
     "makeOwn": "새 오피스 만들기",
     "failed": "잘 안 됐어요. 다시 시도해 주세요."

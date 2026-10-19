@@ -385,9 +385,13 @@
       "whoInvitesAdmins": "רק אדמינים יכולים לראות ולשתף את קישור ההזמנה.",
       "inviteEveryone": "כולם",
       "inviteAdmins": "רק אדמינים",
-      "domainJoin": "כל מי שב־{domain}",
-      "domainJoinOn": "כל מי שמחובר עם כתובת @{domain} יכול למצוא את המשרד ולהצטרף בלי הקישור.",
-      "domainJoinOff": "רק מי שיש לו את הקישור יכול להצטרף."
+      "domainJoin": "אנשים מ־{domain}",
+      "domainAsk": "יכולים לבקש להצטרף",
+      "domainOpen": "יכולים להצטרף מיד",
+      "domainOff": "לא מוצאים אותו",
+      "domainAskNote": "הם מוצאים את המשרד לפי כתובת העבודה ומבקשים. מנהל מכניס אותם.",
+      "domainOpenNote": "כל מי שמחובר עם כתובת @{domain} יכול להיכנס ישר.",
+      "domainOffNote": "רק מי שיש לו את קישור ההזמנה יכול להצטרף."
     },
     "profile": {
       "changePassword": "שינוי סיסמה",
@@ -475,6 +479,9 @@
     "people": {
       "title": "אנשים",
       "members": "חברים",
+      "asking": "מבקשים להצטרף",
+      "letIn": "הכנסה",
+      "decline": "דחייה",
       "invite": "הזמנה",
       "seats": "{used} מתוך {seats} מקומות",
       "seatsFull": "כל המקומות תפוסים.",
@@ -790,11 +797,15 @@
   },
   "team": {
     "title": "הצוות שלך כבר כאן",
-    "body": "לאנשים מ־{domain} יש משרד ב־TinyFloor. היכנסו והצטרפו אליהם.",
+    "bodyAsk": "אנשים מ־{domain} כבר ב־TinyFloor. בקשו להצטרף למשרד שלהם, ומנהל יכניס אתכם.",
+    "bodyOpen": "אנשים מ־{domain} כבר ב־TinyFloor. הצטרפו אליהם במקום ליצור משרד חדש.",
     "atDomain": "ב־{domain}",
     "alreadyHas": "לצוות שלך ב־{domain} כבר יש משרד",
     "members": "{count, plural, one {חבר/ה אחד/ת} other {# חברים}}",
+    "ask": "בקשת הצטרפות",
     "join": "הצטרפות",
+    "waiting": "ממתינים ש־{owner} יכניס אתכם",
+    "cancel": "ביטול",
     "full": "מלא",
     "makeOwn": "ליצור משרד חדש במקום",
     "failed": "זה לא הצליח. נסו שוב."

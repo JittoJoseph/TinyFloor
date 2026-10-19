@@ -385,9 +385,13 @@
       "whoInvitesAdmins": "Only admins can see and share the invite link.",
       "inviteEveryone": "Everyone",
       "inviteAdmins": "Only admins",
-      "domainJoin": "Anyone at {domain}",
-      "domainJoinOn": "Anyone signed in with an @{domain} email can find this office and join without the link.",
-      "domainJoinOff": "Only people with the link can join."
+      "domainJoin": "People at {domain}",
+      "domainAsk": "Can ask to join",
+      "domainOpen": "Can join right away",
+      "domainOff": "Can't find it",
+      "domainAskNote": "They find this office by their work email and ask. An admin lets them in.",
+      "domainOpenNote": "Anyone signed in with an @{domain} email can walk straight in.",
+      "domainOffNote": "Only people with the invite link can join."
     },
     "profile": {
       "changePassword": "Change password",
@@ -475,6 +479,9 @@
     "people": {
       "title": "People",
       "members": "Members",
+      "asking": "Asking to join",
+      "letIn": "Let in",
+      "decline": "Decline",
       "invite": "Invite",
       "seats": "{used} of {seats} seats",
       "seatsFull": "Every seat is taken.",
@@ -790,11 +797,15 @@
   },
   "team": {
     "title": "Your team is already here",
-    "body": "People at {domain} have an office on TinyFloor. Walk in and join them.",
+    "bodyAsk": "People at {domain} are already on TinyFloor. Ask to join their office, and an admin lets you in.",
+    "bodyOpen": "People at {domain} are already on TinyFloor. Join them instead of starting a new office.",
     "atDomain": "At {domain}",
     "alreadyHas": "Your team at {domain} already has an office",
     "members": "{count, plural, one {# member} other {# members}}",
+    "ask": "Ask to join",
     "join": "Join",
+    "waiting": "Waiting for {owner} to let you in",
+    "cancel": "Cancel",
     "full": "Full",
     "makeOwn": "Make a new office instead",
     "failed": "That didn't work. Try again."

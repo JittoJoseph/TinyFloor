@@ -385,9 +385,13 @@
       "whoInvitesAdmins": "Solo los admins pueden ver y compartir el enlace de invitación.",
       "inviteEveryone": "Todos",
       "inviteAdmins": "Solo admins",
-      "domainJoin": "Cualquiera de {domain}",
-      "domainJoinOn": "Quien inicie sesión con un correo @{domain} puede encontrar esta oficina y unirse sin el enlace.",
-      "domainJoinOff": "Solo quien tenga el enlace puede unirse."
+      "domainJoin": "Gente de {domain}",
+      "domainAsk": "Pueden pedir unirse",
+      "domainOpen": "Pueden entrar directamente",
+      "domainOff": "No la encuentran",
+      "domainAskNote": "Encuentran esta oficina por su correo de trabajo y piden entrar. Un admin les deja pasar.",
+      "domainOpenNote": "Quien inicie sesión con un correo @{domain} puede entrar directamente.",
+      "domainOffNote": "Solo quien tenga el enlace de invitación puede unirse."
     },
     "profile": {
       "changePassword": "Cambiar contraseña",
@@ -475,6 +479,9 @@
     "people": {
       "title": "Personas",
       "members": "Miembros",
+      "asking": "Piden unirse",
+      "letIn": "Dejar entrar",
+      "decline": "Rechazar",
       "invite": "Invitar",
       "seats": "{used} de {seats} plazas",
       "seatsFull": "No queda ninguna plaza.",
@@ -790,11 +797,15 @@
   },
   "team": {
     "title": "Tu equipo ya está aquí",
-    "body": "Gente de {domain} tiene una oficina en TinyFloor. Entra y únete a ellos.",
+    "bodyAsk": "Gente de {domain} ya está en TinyFloor. Pide unirte a su oficina y un admin te dejará entrar.",
+    "bodyOpen": "Gente de {domain} ya está en TinyFloor. Únete a ellos en vez de crear una oficina nueva.",
     "atDomain": "En {domain}",
     "alreadyHas": "Tu equipo de {domain} ya tiene una oficina",
     "members": "{count, plural, one {# miembro} other {# miembros}}",
+    "ask": "Pedir unirme",
     "join": "Unirme",
+    "waiting": "Esperando a que {owner} te deje entrar",
+    "cancel": "Cancelar",
     "full": "Llena",
     "makeOwn": "Crear una oficina nueva",
     "failed": "No funcionó. Inténtalo de nuevo."

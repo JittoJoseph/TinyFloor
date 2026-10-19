@@ -13,8 +13,14 @@ async function officeOf(owner: TestUser, name = "Studio") {
 
 interface Team {
   domain: string | null;
-  offices: Array<{ id: string; name: string; members: number; owner: string; faces: string[]; full: boolean }>;
+  offices: Array<{ id: string; name: string; members: number; owner: string; faces: string[]; access: string; asked: boolean; full: boolean }>;
 }
+
+type Requests = Array<{ id: string; displayName: string; email: string | null; askedAt: number }>;
+
+const team = async (user: TestUser) => (await call<Team>(user, "GET", "/v1/me/team")).body;
+const roleIn = async (user: TestUser, officeId: string) =>
+  (await call<{ office?: { role: string } }>(user, "GET", `/v1/offices/${officeId}`)).body.office?.role ?? null;
 
 describe("finding your team by your work email", () => {
   it("tells a work address from a personal one", () => {
@@ -24,23 +30,76 @@ describe("finding your team by your work email", () => {
     expect(workDomain(null)).toBeNull();
   });
 
-  it("shows a colleague the office at their domain, and lets them walk in", async () => {
+  it("shows a colleague the office, and they ask to join until an admin lets them in", async () => {
     const domain = company();
     const arv = await makeUser("Arv", { email: `arv@${domain}` });
     const officeId = await officeOf(arv, "HRIS Team");
     const bea = await makeUser("Bea", { email: `bea@${domain}` });
 
-    const team = await call<Team>(bea, "GET", "/v1/me/team");
-    expect(team.body.domain).toBe(domain);
-    expect(team.body.offices).toEqual([{ id: officeId, name: "HRIS Team", members: 1, owner: "Arv", faces: [arv.id], full: false }]);
+    expect(await team(bea)).toEqual({
+      domain,
+      offices: [{ id: officeId, name: "HRIS Team", members: 1, owner: "Arv", faces: [arv.id], access: "ask", asked: false, full: false }],
+    });
 
-    const joined = await call<{ officeId: string }>(bea, "POST", `/v1/offices/${officeId}/join`);
-    expect(joined.body.officeId).toBe(officeId);
-    const office = await call<{ office: { role: string; members: number } }>(bea, "GET", `/v1/offices/${officeId}`);
-    expect(office.body.office).toMatchObject({ role: "member", members: 2 });
-    // In it now: it's no longer something to find, and joining again is fine.
-    expect((await call<Team>(bea, "GET", "/v1/me/team")).body.offices).toEqual([]);
-    expect((await call(bea, "POST", `/v1/offices/${officeId}/join`)).status).toBe(200);
+    const asked = await call<{ joined: boolean }>(bea, "POST", `/v1/offices/${officeId}/join`);
+    expect(asked.body.joined).toBe(false);
+    expect(await roleIn(bea, officeId)).toBeNull();
+    expect((await team(bea)).offices[0].asked).toBe(true);
+
+    // The admin sees who's asking, with the overview; members don't.
+    const overview = await call<{ requests: Requests }>(arv, "GET", `/v1/offices/${officeId}/overview`);
+    expect(overview.body.requests.map((one) => [one.id, one.displayName])).toEqual([[bea.id, "Bea"]]);
+
+    const let_in = await call<{ requests: Requests }>(arv, "POST", `/v1/offices/${officeId}/requests/${bea.id}`, { approve: true });
+    expect(let_in.body.requests).toEqual([]);
+    expect(await roleIn(bea, officeId)).toBe("member");
+    expect((await team(bea)).offices).toEqual([]);
+    const asMember = await call<{ requests: Requests }>(bea, "GET", `/v1/offices/${officeId}/overview`);
+    expect(asMember.body.requests).toEqual([]);
+  });
+
+  it("lets an admin turn someone away, and the asker take it back", async () => {
+    const domain = company();
+    const arv = await makeUser("Arv", { email: `arv@${domain}` });
+    const officeId = await officeOf(arv);
+    const cy = await makeUser("Cy", { email: `cy@${domain}` });
+    const dee = await makeUser("Dee", { email: `dee@${domain}` });
+    await call(cy, "POST", `/v1/offices/${officeId}/join`);
+    await call(dee, "POST", `/v1/offices/${officeId}/join`);
+
+    // Only an admin answers.
+    expect((await call(cy, "POST", `/v1/offices/${officeId}/requests/${dee.id}`, { approve: true })).status).toBe(404);
+    const declined = await call<{ requests: Requests }>(arv, "POST", `/v1/offices/${officeId}/requests/${cy.id}`, { approve: false });
+    expect(declined.body.requests.map((one) => one.id)).toEqual([dee.id]);
+    expect(await roleIn(cy, officeId)).toBeNull();
+    expect((await team(cy)).offices[0].asked).toBe(false);
+
+    await call(dee, "DELETE", `/v1/offices/${officeId}/join`);
+    const none = await call<{ requests: Requests }>(arv, "GET", `/v1/offices/${officeId}/overview`);
+    expect(none.body.requests).toEqual([]);
+    expect((await call(arv, "POST", `/v1/offices/${officeId}/requests/${dee.id}`, { approve: true })).status).toBe(404);
+  });
+
+  it("lets colleagues walk straight in where an admin opened it, and hides it where they turned it off", async () => {
+    const domain = company();
+    const arv = await makeUser("Arv", { email: `arv@${domain}` });
+    const officeId = await officeOf(arv);
+    const own = await call<{ office: { joinDomain: string; domainJoin: string } }>(arv, "GET", `/v1/offices/${officeId}`);
+    expect(own.body.office).toMatchObject({ joinDomain: domain, domainJoin: "ask" });
+
+    await call(arv, "PATCH", `/v1/offices/${officeId}`, { domainJoin: "open" });
+    const bea = await makeUser("Bea", { email: `bea@${domain}` });
+    expect((await team(bea)).offices[0].access).toBe("open");
+    expect((await call<{ joined: boolean }>(bea, "POST", `/v1/offices/${officeId}/join`)).body.joined).toBe(true);
+    expect(await roleIn(bea, officeId)).toBe("member");
+
+    await call(arv, "PATCH", `/v1/offices/${officeId}`, { domainJoin: "off" });
+    const cy = await makeUser("Cy", { email: `cy@${domain}` });
+    expect((await team(cy)).offices).toEqual([]);
+    expect((await call(cy, "POST", `/v1/offices/${officeId}/join`)).status).toBe(404);
+
+    expect((await call(arv, "PATCH", `/v1/offices/${officeId}`, { domainJoin: "yes" })).status).toBe(400);
+    expect((await call(bea, "PATCH", `/v1/offices/${officeId}`, { domainJoin: "open" })).status).toBe(403);
   });
 
   it("finds nothing for a personal address, an unverified one, or someone at another company", async () => {
@@ -49,12 +108,12 @@ describe("finding your team by your work email", () => {
     const officeId = await officeOf(arv);
 
     const gil = await makeUser("Gil", { email: `gil-${crypto.randomUUID()}@gmail.com` });
-    expect((await call<Team>(gil, "GET", "/v1/me/team")).body).toEqual({ domain: null, offices: [] });
+    expect(await team(gil)).toEqual({ domain: null, offices: [] });
     expect((await call(gil, "POST", `/v1/offices/${officeId}/join`)).status).toBe(404);
 
     const una = await makeUser("Una", { email: `una@${domain}` });
     await env.DB.prepare("UPDATE users SET email_verified = 0 WHERE id = ?").bind(una.id).run();
-    expect((await call<Team>(una, "GET", "/v1/me/team")).body.offices).toEqual([]);
+    expect((await team(una)).offices).toEqual([]);
     expect((await call(una, "POST", `/v1/offices/${officeId}/join`)).status).toBe(404);
 
     const ola = await makeUser("Ola", { email: `ola@${company()}` });
@@ -64,45 +123,23 @@ describe("finding your team by your work email", () => {
     expect((await call(guest, "GET", "/v1/me/team")).status).toBe(403);
   });
 
-  it("goes only by the owner's address, never a member's", async () => {
+  it("goes only by the owner's address, never a member's, and keeps a university's out of sight", async () => {
     const domain = company();
     const pat = await makeUser("Pat", { email: `pat-${crypto.randomUUID()}@gmail.com` });
     const officeId = await officeOf(pat);
     const { body } = await call<{ code: string }>(pat, "GET", `/v1/offices/${officeId}/invite`);
     const kim = await makeUser("Kim", { email: `kim@${domain}` });
     await call(kim, "POST", `/v1/invites/${body.code}/accept`);
-
     const lee = await makeUser("Lee", { email: `lee@${domain}` });
-    expect((await call<Team>(lee, "GET", "/v1/me/team")).body.offices).toEqual([]);
-  });
-
-  it("lets an admin close it to the domain, and a university's stays closed until opened", async () => {
-    const domain = company();
-    const arv = await makeUser("Arv", { email: `arv@${domain}` });
-    const officeId = await officeOf(arv);
-    const own = await call<{ office: { joinDomain: string; domainJoin: boolean } }>(arv, "GET", `/v1/offices/${officeId}`);
-    expect(own.body.office).toMatchObject({ joinDomain: domain, domainJoin: true });
-
-    const off = await call<{ office: { domainJoin: boolean } }>(arv, "PATCH", `/v1/offices/${officeId}`, { domainJoin: false });
-    expect(off.body.office.domainJoin).toBe(false);
-    const bea = await makeUser("Bea", { email: `bea@${domain}` });
-    expect((await call<Team>(bea, "GET", "/v1/me/team")).body.offices).toEqual([]);
-    expect((await call(bea, "POST", `/v1/offices/${officeId}/join`)).status).toBe(404);
-    expect((await call(arv, "PATCH", `/v1/offices/${officeId}`, { domainJoin: "yes" })).status).toBe(400);
+    expect((await team(lee)).offices).toEqual([]);
 
     const school = `${crypto.randomUUID().slice(0, 8)}.edu`;
-    const pro = await makeUser("Prof", { email: `prof@${school}` });
-    const classId = await officeOf(pro);
-    const student = await makeUser("Stu", { email: `stu@${school}` });
-    expect((await call<Team>(student, "GET", "/v1/me/team")).body.offices).toEqual([]);
-    await call(pro, "PATCH", `/v1/offices/${classId}`, { domainJoin: true });
-    expect((await call<Team>(student, "GET", "/v1/me/team")).body.offices.map((one) => one.id)).toEqual([classId]);
-
-    // Only an admin decides.
-    await call(bea, "POST", `/v1/offices/${officeId}/join`);
-    await call(arv, "PATCH", `/v1/offices/${officeId}`, { domainJoin: true });
-    await call(bea, "POST", `/v1/offices/${officeId}/join`);
-    expect((await call(bea, "PATCH", `/v1/offices/${officeId}`, { domainJoin: false })).status).toBe(403);
+    const prof = await makeUser("Prof", { email: `prof@${school}` });
+    const classId = await officeOf(prof);
+    const stu = await makeUser("Stu", { email: `stu@${school}` });
+    expect((await team(stu)).offices).toEqual([]);
+    await call(prof, "PATCH", `/v1/offices/${classId}`, { domainJoin: "ask" });
+    expect((await team(stu)).offices.map((one) => one.id)).toEqual([classId]);
   });
 
   it("starts the team trial for the fourth, as an invite would", async () => {
@@ -111,15 +148,17 @@ describe("finding your team by your work email", () => {
     const officeId = await officeOf(arv);
     for (const name of ["Bea", "Paul", "Jp"]) {
       const one = await makeUser(name, { email: `${name.toLowerCase()}@${domain}` });
-      expect((await call(one, "POST", `/v1/offices/${officeId}/join`)).status).toBe(200);
+      await call(one, "POST", `/v1/offices/${officeId}/join`);
+      expect((await call(arv, "POST", `/v1/offices/${officeId}/requests/${one.id}`, { approve: true })).status).toBe(200);
     }
     const office = await call<{ office: { plan: string; members: number } }>(arv, "GET", `/v1/offices/${officeId}`);
     expect(office.body.office).toMatchObject({ plan: "pro", members: 4 });
 
-    // A free office already past its trial is full for the next one, and says so before they try.
+    // A free office already past its trial is full for the next one, and says so before they ask.
     await env.DB.prepare("UPDATE offices SET plan = 'free', seats = 3, trial_ends_at = 0 WHERE id = ?").bind(officeId).run();
     const jez = await makeUser("Jez", { email: `jez@${domain}` });
-    expect((await call<Team>(jez, "GET", "/v1/me/team")).body.offices[0]).toMatchObject({ id: officeId, full: true });
-    expect((await call(jez, "POST", `/v1/offices/${officeId}/join`)).status).toBe(409);
+    expect((await team(jez)).offices[0]).toMatchObject({ id: officeId, full: true });
+    await call(jez, "POST", `/v1/offices/${officeId}/join`);
+    expect((await call(arv, "POST", `/v1/offices/${officeId}/requests/${jez.id}`, { approve: true })).status).toBe(409);
   });
 });

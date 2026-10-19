@@ -128,6 +128,43 @@ function OfficePeople() {
 
         {error && <p className="mt-4 text-[13px] text-destructive">{error}</p>}
 
+        {/* Colleagues who found the office by their work email and asked: the admins' to answer. */}
+        {admin && !!data.requests?.length && (
+          <section className="mt-10">
+            <h2 className="mb-3 flex items-baseline gap-2 text-[15px] font-semibold text-foreground">
+              {t("asking")}
+              <span className="text-[13px] font-normal tabular-nums text-muted-foreground">{data.requests.length}</span>
+            </h2>
+            <ul className="divide-y divide-border overflow-hidden rounded-2xl border border-border bg-background">
+              {data.requests.map((one) => (
+                <li key={one.id} className="flex items-center gap-3 px-4 py-3">
+                  <Face seed={one.id} size={36} />
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-[14px] font-medium text-foreground">{one.displayName}</p>
+                    <p data-ph-mask className="truncate text-[12.5px] text-muted-foreground">
+                      {one.email}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => void run(() => api.answerJoinRequest(office.id, one.id, false).then())}
+                    className="inline-flex h-9 shrink-0 cursor-pointer items-center rounded-full px-3.5 text-[13px] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                  >
+                    {t("decline")}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => void run(() => api.answerJoinRequest(office.id, one.id, true).then())}
+                    className="inline-flex h-9 shrink-0 cursor-pointer items-center rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/90"
+                  >
+                    {t("letIn")}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         <div className="mb-3 mt-10 flex flex-wrap items-center gap-x-4 gap-y-3">
           <h2 className="flex items-baseline gap-2 text-[15px] font-semibold text-foreground">
             {t("members")}

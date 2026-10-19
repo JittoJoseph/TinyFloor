@@ -1,6 +1,6 @@
 import type { RealtimeAdminApi } from "../../shared-protocol/src";
 import { endTrials } from "./billing";
-import { domainOpen, workDomain } from "./domains";
+import { domainAccess, workDomain, type DomainAccess } from "./domains";
 import { HttpError } from "./http";
 
 export type OfficeRole = "admin" | "member";
@@ -25,8 +25,8 @@ export interface Office {
   invitePolicy: InvitePolicy;
   /** The owner's company email domain, when it has one: colleagues there can find the office. */
   joinDomain: string | null;
-  /** Whether they can, and walk in without the link. */
-  domainJoin: boolean;
+  /** How they get in: ask an admin, walk straight in, or not find it. */
+  domainJoin: DomainAccess;
 }
 
 /**
@@ -59,7 +59,7 @@ export async function requireOffice(
       role: OfficeRole;
       trial_open: number;
       invite_policy: string | null;
-      domain_join: number | null;
+      domain_join: string | null;
       owner_email: string | null;
     }>();
   if (!row) throw new HttpError(404, "not_found", "No such office");
@@ -79,7 +79,7 @@ export async function requireOffice(
     trialOpen: !!row.trial_open,
     invitePolicy: row.invite_policy === "admins" ? "admins" : "everyone",
     joinDomain: workDomain(row.owner_email),
-    domainJoin: domainOpen(row.domain_join, workDomain(row.owner_email)),
+    domainJoin: domainAccess(row.domain_join, workDomain(row.owner_email)),
   };
 }
 

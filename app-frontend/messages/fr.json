@@ -385,9 +385,13 @@
       "whoInvitesAdmins": "Seuls les admins peuvent voir et partager le lien d'invitation.",
       "inviteEveryone": "Tout le monde",
       "inviteAdmins": "Seulement les admins",
-      "domainJoin": "Tout le monde chez {domain}",
-      "domainJoinOn": "Toute personne connectée avec une adresse @{domain} peut trouver ce bureau et le rejoindre sans le lien.",
-      "domainJoinOff": "Seules les personnes qui ont le lien peuvent rejoindre."
+      "domainJoin": "Les personnes de {domain}",
+      "domainAsk": "Peuvent demander",
+      "domainOpen": "Peuvent entrer directement",
+      "domainOff": "Ne le trouvent pas",
+      "domainAskNote": "Elles trouvent ce bureau grâce à leur adresse pro et demandent à entrer. Un admin les fait entrer.",
+      "domainOpenNote": "Toute personne connectée avec une adresse @{domain} peut entrer directement.",
+      "domainOffNote": "Seules les personnes qui ont le lien d'invitation peuvent rejoindre."
     },
     "profile": {
       "changePassword": "Changer le mot de passe",
@@ -475,6 +479,9 @@
     "people": {
       "title": "Personnes",
       "members": "Membres",
+      "asking": "Demandent à rejoindre",
+      "letIn": "Faire entrer",
+      "decline": "Refuser",
       "invite": "Inviter",
       "seats": "{used} places sur {seats}",
       "seatsFull": "Toutes les places sont prises.",
@@ -790,11 +797,15 @@
   },
   "team": {
     "title": "Votre équipe est déjà là",
-    "body": "Des personnes de {domain} ont un bureau sur TinyFloor. Entrez et rejoignez-les.",
+    "bodyAsk": "Des personnes de {domain} sont déjà sur TinyFloor. Demandez à rejoindre leur bureau, un admin vous fera entrer.",
+    "bodyOpen": "Des personnes de {domain} sont déjà sur TinyFloor. Rejoignez-les plutôt que de créer un nouveau bureau.",
     "atDomain": "Chez {domain}",
     "alreadyHas": "Votre équipe chez {domain} a déjà un bureau",
     "members": "{count, plural, one {# membre} other {# membres}}",
+    "ask": "Demander",
     "join": "Rejoindre",
+    "waiting": "En attente que {owner} vous fasse entrer",
+    "cancel": "Annuler",
     "full": "Complet",
     "makeOwn": "Créer plutôt un nouveau bureau",
     "failed": "Ça n'a pas marché. Réessayez."

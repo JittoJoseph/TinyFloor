@@ -385,9 +385,13 @@
       "whoInvitesAdmins": "招待リンクを見たり共有したりできるのは管理者だけです。",
       "inviteEveryone": "全員",
       "inviteAdmins": "管理者のみ",
-      "domainJoin": "{domain} の全員",
-      "domainJoinOn": "@{domain} のメールアドレスでサインインした人は、リンクなしでこのオフィスを見つけて参加できます。",
-      "domainJoinOff": "リンクを持っている人だけが参加できます。"
+      "domainJoin": "{domain} の人",
+      "domainAsk": "参加をリクエストできる",
+      "domainOpen": "すぐに参加できる",
+      "domainOff": "見つけられない",
+      "domainAskNote": "仕事用のメールアドレスでこのオフィスを見つけてリクエストします。管理者が承認します。",
+      "domainOpenNote": "@{domain} のメールアドレスでサインインした人は、そのまま入れます。",
+      "domainOffNote": "招待リンクを持っている人だけが参加できます。"
     },
     "profile": {
       "changePassword": "パスワードを変更",
@@ -475,6 +479,9 @@
     "people": {
       "title": "メンバー",
       "members": "メンバー",
+      "asking": "参加リクエスト",
+      "letIn": "承認",
+      "decline": "断る",
       "invite": "招待",
       "seats": "{seats} 席中 {used} 席",
       "seatsFull": "席はすべて埋まっています。",
@@ -790,11 +797,15 @@
   },
   "team": {
     "title": "チームはもうここにいます",
-    "body": "{domain} の人たちが TinyFloor にオフィスを持っています。入って合流しましょう。",
+    "bodyAsk": "{domain} の人たちはもう TinyFloor にいます。オフィスへの参加をリクエストすると、管理者が入れてくれます。",
+    "bodyOpen": "{domain} の人たちはもう TinyFloor にいます。新しいオフィスを作る代わりに合流しましょう。",
     "atDomain": "{domain}",
     "alreadyHas": "{domain} のチームにはもうオフィスがあります",
     "members": "{count, plural, other {メンバー#人}}",
+    "ask": "参加をリクエスト",
     "join": "参加",
+    "waiting": "{owner} さんの承認待ち",
+    "cancel": "取り消す",
     "full": "満員",
     "makeOwn": "新しいオフィスを作る",
     "failed": "うまくいきませんでした。もう一度お試しください。"

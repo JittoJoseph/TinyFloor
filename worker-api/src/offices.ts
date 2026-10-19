@@ -10,6 +10,8 @@ import {
   type OfficeRole,
 } from "./access";
 import { endBillingForClosing, endTrials, startTrialIfFull, trialWaiting } from "./billing";
+import { DOMAIN_ACCESS, type DomainAccess } from "./domains";
+import { joinRequests } from "./team";
 import { hashToken, randomToken } from "./crypto";
 import { HttpError, json, readJson } from "./http";
 import type { Router } from "./router";
@@ -79,9 +81,9 @@ export function officeRoutes(router: Router): void {
         values.push(body.invitePolicy as string);
       }
       if (body.domainJoin !== undefined) {
-        if (typeof body.domainJoin !== "boolean") throw new HttpError(400, "bad_domain_join", "On or off");
+        if (!DOMAIN_ACCESS.includes(body.domainJoin as DomainAccess)) throw new HttpError(400, "bad_domain_join", "Ask, open or off");
         sets.push("domain_join = ?");
-        values.push(body.domainJoin ? 1 : 0);
+        values.push(body.domainJoin as string);
       }
       if (!sets.length) throw new HttpError(400, "nothing_to_change", "Nothing to change");
       await env.DB.prepare(`UPDATE offices SET ${sets.join(", ")} WHERE id = ?`)
@@ -106,8 +108,13 @@ export function officeRoutes(router: Router): void {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id);
       const admin = office.role === "admin";
-      const [members, people] = await Promise.all([membersOf(env, params.id), headcount(env, params.id)]);
-      return json({ office: officeJson(office, members.length), members, people });
+      const [members, people, requests] = await Promise.all([
+        membersOf(env, params.id),
+        headcount(env, params.id),
+        // Colleagues asking to join are for the people who can let them in.
+        admin ? joinRequests(env, params.id) : Promise.resolve([]),
+      ]);
+      return json({ office: officeJson(office, members.length), members, people, requests });
     })
 
     .add("PATCH", "/v1/offices/:id/members/:userId", async ({ request, env, ctx, params }) => {

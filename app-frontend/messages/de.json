@@ -385,9 +385,13 @@
       "whoInvitesAdmins": "Nur Admins können den Einladungslink sehen und teilen.",
       "inviteEveryone": "Alle",
       "inviteAdmins": "Nur Admins",
-      "domainJoin": "Alle bei {domain}",
-      "domainJoinOn": "Wer mit einer @{domain}-Adresse angemeldet ist, findet dieses Büro und kann ohne Link beitreten.",
-      "domainJoinOff": "Nur wer den Link hat, kann beitreten."
+      "domainJoin": "Leute von {domain}",
+      "domainAsk": "Können anfragen",
+      "domainOpen": "Können direkt beitreten",
+      "domainOff": "Finden es nicht",
+      "domainAskNote": "Sie finden dieses Büro über ihre Arbeitsadresse und fragen an. Ein Admin lässt sie rein.",
+      "domainOpenNote": "Wer mit einer @{domain}-Adresse angemeldet ist, kann direkt rein.",
+      "domainOffNote": "Nur wer den Einladungslink hat, kann beitreten."
     },
     "profile": {
       "changePassword": "Passwort ändern",
@@ -475,6 +479,9 @@
     "people": {
       "title": "Leute",
       "members": "Mitglieder",
+      "asking": "Möchten beitreten",
+      "letIn": "Reinlassen",
+      "decline": "Ablehnen",
       "invite": "Einladen",
       "seats": "{used} von {seats} Plätzen",
       "seatsFull": "Alle Plätze sind belegt.",
@@ -790,11 +797,15 @@
   },
   "team": {
     "title": "Dein Team ist schon da",
-    "body": "Leute von {domain} haben ein Büro auf TinyFloor. Komm rein und schließ dich ihnen an.",
+    "bodyAsk": "Leute von {domain} sind schon auf TinyFloor. Frag an, ob du ihrem Büro beitreten kannst – ein Admin lässt dich rein.",
+    "bodyOpen": "Leute von {domain} sind schon auf TinyFloor. Schließ dich ihnen an, statt ein neues Büro anzulegen.",
     "atDomain": "Bei {domain}",
     "alreadyHas": "Dein Team bei {domain} hat schon ein Büro",
     "members": "{count, plural, one {# Mitglied} other {# Mitglieder}}",
+    "ask": "Beitritt anfragen",
     "join": "Beitreten",
+    "waiting": "Wartet darauf, dass {owner} dich reinlässt",
+    "cancel": "Abbrechen",
     "full": "Voll",
     "makeOwn": "Lieber ein neues Büro anlegen",
     "failed": "Das hat nicht geklappt. Versuch es noch einmal."

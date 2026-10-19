@@ -7,18 +7,21 @@ import { useRouter } from "@/lib/i18n/navigation";
 import { api, type TeamOffice } from "@/lib/api";
 import { officePath } from "@/lib/links";
 import { track } from "@/lib/analytics";
-import { Face } from "@/components/ui/Face";
+import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 
-interface Team {
+export interface Team {
   domain: string;
   offices: TeamOffice[];
 }
 
+/** How often a waiting request looks to see whether it was answered. */
+const CHECK_MS = 15_000;
+
 /**
  * The offices your colleagues are in, found by your work email (docs/product.md):
- * undefined until known, null when there are none. Someone who signed up on their
- * own, without the link, sees their team's office before "make your own".
+ * undefined until known, null when there are none. Someone who signed up on
+ * their own, without the link, sees their team's office before "make your own".
  */
 export function useTeamOffices(): Team | null | undefined {
   const [team, setTeam] = useState<Team | null | undefined>(undefined);
@@ -35,87 +38,96 @@ export function useTeamOffices(): Team | null | undefined {
   return team;
 }
 
-/** Walking into a colleague's office, then onto its floor. */
-function useJoin() {
-  const t = useTranslations("team");
-  const router = useRouter();
-  const [joining, setJoining] = useState<string | null>(null);
-  const [failed, setFailed] = useState<string | null>(null);
-  const join = async (office: TeamOffice) => {
-    if (joining || office.full) return;
-    setJoining(office.id);
-    setFailed(null);
-    try {
-      await api.joinTeamOffice(office.id);
-      track("office_joined_by_domain", { office_id: office.id, members: office.members });
-      router.replace(officePath(office.id));
-    } catch {
-      setFailed(t("failed"));
-      setJoining(null);
-    }
-  };
-  return { join, joining, failed };
-}
-
-/** Their faces, the owner's first: who you'd be walking in beside. */
-function Faces({ office, size }: { office: TeamOffice; size: number }) {
-  return (
-    <span className="flex shrink-0 items-center">
-      {office.faces.slice(0, 4).map((id) => (
-        <span key={id} className="-ms-1.5 rounded-full ring-2 ring-card first:ms-0">
-          <Face seed={id} size={size} />
-        </span>
-      ))}
-    </span>
-  );
-}
-
-/** One office to join: its mark and name, who's in it, and the way in. */
-function TeamOfficeRow({ office, join }: { office: TeamOffice; join: ReturnType<typeof useJoin> }) {
-  const t = useTranslations("team");
-  const busy = join.joining === office.id;
-  return (
-    <div className="flex items-center gap-3 px-4 py-3">
-      <Face seed={office.id} size={36} square />
-      <div className="min-w-0 flex-1 text-start">
-        <p className="truncate text-[14px] font-medium text-foreground">{office.name}</p>
-        <div className="mt-1 flex items-center gap-2">
-          <Faces office={office} size={18} />
-          <span className="min-w-0 truncate text-[12.5px] text-muted-foreground">{t("members", { count: office.members })}</span>
-        </div>
-      </div>
-      {office.full ? (
-        <span className="shrink-0 text-[12.5px] text-muted-foreground">{t("full")}</span>
-      ) : (
-        <button
-          type="button"
-          disabled={!!join.joining}
-          onClick={() => void join.join(office)}
-          className="inline-flex h-9 shrink-0 cursor-pointer items-center gap-2 rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-opacity hover:opacity-90 disabled:opacity-60"
-        >
-          {busy && <Loader2 className="size-3.5 animate-spin" />}
-          {t("join")}
-        </button>
-      )}
-    </div>
-  );
-}
-
-/** Your team's offices as a card: on the door with no office yet, and before making another. */
+/**
+ * Your team's offices: each one's mark and name, who's in it, and the one
+ * thing to do about it, always in the same place: join, ask to join, take the
+ * request back while it waits, or nothing when it's full. A request that's
+ * waiting is checked on, and walks you in the moment an admin lets you in.
+ */
 export function TeamOffices({ team, label, className }: { team: Team; label?: string; className?: string }) {
   const t = useTranslations("team");
-  const join = useJoin();
+  const router = useRouter();
+  const [offices, setOffices] = useState(team.offices);
+  const [busy, setBusy] = useState<string | null>(null);
+  const [failed, setFailed] = useState(false);
+  const waiting = offices.filter((one) => one.asked).map((one) => one.id).join(",");
+
+  // Asked: once an admin lets you in, the office is yours, and you walk in.
+  useEffect(() => {
+    if (!waiting) return;
+    const ids = new Set(waiting.split(","));
+    const timer = setInterval(() => {
+      if (document.visibilityState !== "visible") return;
+      void api.me().then(({ offices: mine }) => {
+        const found = mine?.find((one) => ids.has(one.id));
+        if (found) router.replace(officePath(found.id));
+      }, () => undefined);
+    }, CHECK_MS);
+    return () => clearInterval(timer);
+  }, [waiting, router]);
+
+  const mark = (id: string, asked: boolean) => setOffices((all) => all.map((one) => (one.id === id ? { ...one, asked } : one)));
+
+  const act = async (office: TeamOffice) => {
+    if (busy || office.full) return;
+    setBusy(office.id);
+    setFailed(false);
+    try {
+      if (office.asked) {
+        await api.cancelJoinRequest(office.id);
+        mark(office.id, false);
+      } else {
+        const { joined } = await api.joinTeamOffice(office.id);
+        track(joined ? "office_joined_by_domain" : "office_join_requested", { office_id: office.id, members: office.members });
+        if (joined) return router.replace(officePath(office.id));
+        mark(office.id, true);
+      }
+    } catch {
+      setFailed(true);
+    }
+    setBusy(null);
+  };
+
   return (
     <div className={cn("text-start", className)}>
-      <div className="overflow-hidden rounded-[20px] border border-border bg-card shadow-[0_1px_2px_rgb(0_0_0/0.06),0_16px_40px_-28px_rgb(0_0_0/0.45)]">
-        <p className="px-4 pb-0.5 pt-3 text-[12px] font-medium text-faint">{label ?? t("atDomain", { domain: team.domain })}</p>
-        <div className="divide-y divide-border">
-          {team.offices.map((office) => (
-            <TeamOfficeRow key={office.id} office={office} join={join} />
+      <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[0_1px_2px_rgb(0_0_0/0.05)]">
+        {label && <p className="px-4 pb-1 pt-3.5 text-[12px] font-medium text-muted-foreground">{label}</p>}
+        <ul className="divide-y divide-border">
+          {offices.map((office) => (
+            <li key={office.id} className="flex items-center gap-3.5 px-4 py-3.5">
+              <Face seed={office.id} size={40} square />
+              <div className="min-w-0 flex-1">
+                <p className="truncate text-[14.5px] font-semibold leading-5 text-foreground">{office.name}</p>
+                <p className="mt-1 flex min-w-0 items-center gap-2 text-[12.5px] leading-[18px] text-muted-foreground">
+                  <FaceStack seeds={office.faces} size={18} max={3} className="[--face-ring:var(--ui-card)]" />
+                  <span className="truncate">
+                    {office.asked ? t("waiting", { owner: office.owner }) : `${office.owner} · ${t("members", { count: office.members })}`}
+                  </span>
+                </p>
+              </div>
+              {office.full ? (
+                <span className="min-w-[6.5rem] shrink-0 text-center text-[12.5px] text-faint">{t("full")}</span>
+              ) : (
+                <button
+                  type="button"
+                  disabled={!!busy}
+                  onClick={() => void act(office)}
+                  className={cn(
+                    "inline-flex h-9 min-w-[6.5rem] shrink-0 px-4 cursor-pointer items-center justify-center gap-1.5 rounded-full text-[13px] font-medium transition-[background-color,opacity] disabled:cursor-default disabled:opacity-60",
+                    office.asked
+                      ? "border border-border text-muted-foreground hover:bg-muted hover:text-foreground"
+                      : "bg-foreground text-background hover:bg-foreground/90",
+                  )}
+                >
+                  {busy === office.id && <Loader2 className="size-3.5 animate-spin" />}
+                  {office.asked ? t("cancel") : office.access === "open" ? t("join") : t("ask")}
+                </button>
+              )}
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-      {join.failed && <p className="mt-2 px-4 text-[12.5px] text-destructive">{join.failed}</p>}
+      {failed && <p className="mt-2 px-1 text-[12.5px] text-destructive">{t("failed")}</p>}
     </div>
   );
 }

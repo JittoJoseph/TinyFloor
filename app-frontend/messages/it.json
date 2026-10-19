@@ -385,9 +385,13 @@
       "whoInvitesAdmins": "Solo gli admin possono vedere e condividere il link d'invito.",
       "inviteEveryone": "Tutti",
       "inviteAdmins": "Solo admin",
-      "domainJoin": "Chiunque in {domain}",
-      "domainJoinOn": "Chi accede con un indirizzo @{domain} può trovare questo ufficio ed entrare senza il link.",
-      "domainJoinOff": "Può entrare solo chi ha il link."
+      "domainJoin": "Persone di {domain}",
+      "domainAsk": "Possono chiedere",
+      "domainOpen": "Possono entrare subito",
+      "domainOff": "Non lo trovano",
+      "domainAskNote": "Trovano questo ufficio con l'indirizzo di lavoro e chiedono di entrare. Un admin li fa entrare.",
+      "domainOpenNote": "Chi accede con un indirizzo @{domain} può entrare subito.",
+      "domainOffNote": "Può entrare solo chi ha il link di invito."
     },
     "profile": {
       "changePassword": "Cambia password",
@@ -475,6 +479,9 @@
     "people": {
       "title": "Persone",
       "members": "Membri",
+      "asking": "Chiedono di entrare",
+      "letIn": "Fai entrare",
+      "decline": "Rifiuta",
       "invite": "Invita",
       "seats": "{used} di {seats} posti",
       "seatsFull": "Tutti i posti sono occupati.",
@@ -790,11 +797,15 @@
   },
   "team": {
     "title": "Il tuo team è già qui",
-    "body": "Persone di {domain} hanno un ufficio su TinyFloor. Entra e unisciti a loro.",
+    "bodyAsk": "Persone di {domain} sono già su TinyFloor. Chiedi di entrare nel loro ufficio e un admin ti farà entrare.",
+    "bodyOpen": "Persone di {domain} sono già su TinyFloor. Unisciti a loro invece di creare un nuovo ufficio.",
     "atDomain": "In {domain}",
     "alreadyHas": "Il tuo team in {domain} ha già un ufficio",
     "members": "{count, plural, one {# membro} other {# membri}}",
+    "ask": "Chiedi di entrare",
     "join": "Unisciti",
+    "waiting": "In attesa che {owner} ti faccia entrare",
+    "cancel": "Annulla",
     "full": "Pieno",
     "makeOwn": "Crea invece un nuovo ufficio",
     "failed": "Non ha funzionato. Riprova."

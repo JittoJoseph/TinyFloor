@@ -125,14 +125,22 @@ work happens. What we don't build, though each would raise usage numbers:
   People from the same company were signing up on their own and landing on
   "make your office": on 19 October four people from one company signed up
   within the hour; two joined a colleague's office and two never got into
-  any, and another company had two offices with different members. Now anyone signed in with
-  a verified address at the domain of an office's owner sees "Your team is
-  already here" before "make your own" (and on the new-office screen, and
-  outside an office), and walks in with one tap. A full free office's trial
-  starts for the fourth, as with an invite. Personal addresses (Gmail,
-  Outlook, Yahoo, UOL and the like) never match, and only the owner's domain
-  counts, so a gmail office with one company member isn't found by that
-  company. On by default, as Slack and Linear do it; an admin can turn it off
-  under Inviting. A university's domain is off until an admin turns it on,
-  since thousands of strangers share it. Only Google-verified addresses
-  count: a password account's email is never checked.
+  any, and another company had two offices with different members. Now
+  anyone signed in with a verified address at the domain of an office's
+  owner sees "Your team is already here" before "make your own" (and on the
+  new-office screen, and outside an office). A company can have several
+  teams, so by default they ask to join: the request waits in People for
+  the office's admins (with a count on the rail), and the asker's page walks
+  them in the moment they're let in. An admin can instead let colleagues
+  walk straight in, or keep the office out of sight (Inviting, "People at
+  your domain"); a university's domain is out of sight until an admin
+  changes it. A full free office's trial starts for the fourth, as with an
+  invite. Personal addresses (Gmail, Outlook, Yahoo, UOL and the like) never
+  match, only the owner's domain counts, and only Google-verified addresses
+  do: a password account's email is never checked.
+- **Chat picks up where you left it** (19 October). Coming back to Chat
+  opens the conversation you were last in, not #general; what you'd started
+  writing waits in each conversation, across trips to the floor; typing
+  anywhere on the page writes in the box; Up in an empty box edits your last
+  message, and finishing the edit hands the cursor back. Sending always
+  shows what you sent, links open, and on a phone Enter is a new line.

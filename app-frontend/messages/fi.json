@@ -385,9 +385,13 @@
       "whoInvitesAdmins": "Vain adminit voivat nähdä ja jakaa kutsulinkin.",
       "inviteEveryone": "Kaikki",
       "inviteAdmins": "Vain adminit",
-      "domainJoin": "Kaikki osoitteesta {domain}",
-      "domainJoinOn": "Kuka tahansa, joka on kirjautunut @{domain}-osoitteella, löytää toimiston ja voi liittyä ilman linkkiä.",
-      "domainJoinOff": "Vain linkin saaneet voivat liittyä."
+      "domainJoin": "Väki osoitteesta {domain}",
+      "domainAsk": "Voivat pyytää pääsyä",
+      "domainOpen": "Voivat liittyä heti",
+      "domainOff": "Eivät löydä sitä",
+      "domainAskNote": "He löytävät toimiston työosoitteellaan ja pyytävät pääsyä. Ylläpitäjä päästää heidät sisään.",
+      "domainOpenNote": "Kuka tahansa @{domain}-osoitteella kirjautunut voi tulla suoraan sisään.",
+      "domainOffNote": "Vain kutsulinkin saaneet voivat liittyä."
     },
     "profile": {
       "changePassword": "Vaihda salasana",
@@ -475,6 +479,9 @@
     "people": {
       "title": "Ihmiset",
       "members": "Jäsenet",
+      "asking": "Pyytävät pääsyä",
+      "letIn": "Päästä sisään",
+      "decline": "Hylkää",
       "invite": "Kutsu",
       "seats": "{used}/{seats} paikkaa",
       "seatsFull": "Kaikki paikat ovat varattuja.",
@@ -790,11 +797,15 @@
   },
   "team": {
     "title": "Tiimisi on jo täällä",
-    "body": "Väellä osoitteesta {domain} on toimisto TinyFloorissa. Astu sisään ja liity heihin.",
+    "bodyAsk": "Väki osoitteesta {domain} on jo TinyFloorissa. Pyydä päästä heidän toimistoonsa, niin ylläpitäjä päästää sinut sisään.",
+    "bodyOpen": "Väki osoitteesta {domain} on jo TinyFloorissa. Liity heihin uuden toimiston luomisen sijaan.",
     "atDomain": "{domain}",
     "alreadyHas": "Tiimilläsi ({domain}) on jo toimisto",
     "members": "{count, plural, one {# jäsen} other {# jäsentä}}",
+    "ask": "Pyydä pääsyä",
     "join": "Liity",
+    "waiting": "Odottaa, että {owner} päästää sinut sisään",
+    "cancel": "Peru",
     "full": "Täynnä",
     "makeOwn": "Luo sittenkin uusi toimisto",
     "failed": "Se ei onnistunut. Yritä uudelleen."

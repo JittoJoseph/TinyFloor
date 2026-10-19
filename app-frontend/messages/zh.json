@@ -385,9 +385,13 @@
       "whoInvitesAdmins": "只有管理员可以查看和分享邀请链接。",
       "inviteEveryone": "所有人",
       "inviteAdmins": "仅管理员",
-      "domainJoin": "{domain} 的所有人",
-      "domainJoinOn": "用 @{domain} 邮箱登录的人都能找到这个办公室，无需链接即可加入。",
-      "domainJoinOff": "只有拿到链接的人才能加入。"
+      "domainJoin": "{domain} 的人",
+      "domainAsk": "可以申请加入",
+      "domainOpen": "可以直接加入",
+      "domainOff": "找不到这里",
+      "domainAskNote": "他们用工作邮箱找到这个办公室并申请，管理员同意后即可进入。",
+      "domainOpenNote": "用 @{domain} 邮箱登录的人都可以直接进来。",
+      "domainOffNote": "只有拿到邀请链接的人才能加入。"
     },
     "profile": {
       "changePassword": "修改密码",
@@ -475,6 +479,9 @@
     "people": {
       "title": "成员",
       "members": "成员",
+      "asking": "申请加入",
+      "letIn": "让他进来",
+      "decline": "拒绝",
       "invite": "邀请",
       "seats": "{seats} 个席位中的 {used} 个",
       "seatsFull": "席位已满。",
@@ -790,11 +797,15 @@
   },
   "team": {
     "title": "你的团队已经在这里了",
-    "body": "{domain} 的同事已经在 TinyFloor 上有了办公室。进去加入他们吧。",
+    "bodyAsk": "{domain} 的同事已经在 TinyFloor 上了。申请加入他们的办公室，管理员会让你进来。",
+    "bodyOpen": "{domain} 的同事已经在 TinyFloor 上了。加入他们，不必新建办公室。",
     "atDomain": "{domain}",
     "alreadyHas": "你在 {domain} 的团队已经有办公室了",
     "members": "{count, plural, other {# 名成员}}",
+    "ask": "申请加入",
     "join": "加入",
+    "waiting": "等待 {owner} 让你进来",
+    "cancel": "取消",
     "full": "已满",
     "makeOwn": "仍然新建办公室",
     "failed": "没有成功，请再试一次。"

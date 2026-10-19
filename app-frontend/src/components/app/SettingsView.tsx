@@ -7,7 +7,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { locales, type Locale } from "@/lib/i18n/routing";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError, type InvitePolicy } from "@/lib/api";
+import { api, ApiError, type DomainAccess, type InvitePolicy } from "@/lib/api";
 import { savedDevices, saveDevices } from "@/lib/media";
 import { setPref, usePrefs, type Prefs } from "@/lib/prefs";
 import { setTheme, useTheme, type ThemeChoice } from "@/lib/theme";
@@ -515,7 +515,7 @@ function OfficeSection() {
           officeId={office.id}
           policy={office.invitePolicy ?? "everyone"}
           domain={office.joinDomain ?? null}
-          domainJoin={!!office.domainJoin}
+          domainJoin={office.domainJoin ?? "ask"}
         />
       )}
 
@@ -719,23 +719,24 @@ function InvitePolicyRow({
   policy: InvitePolicy;
   /** The owner's company domain, when there is one to open the office to. */
   domain: string | null;
-  domainJoin: boolean;
+  domainJoin: DomainAccess;
 }) {
   const t = useTranslations("office.settings");
   const { refresh } = useOfficeMaybe()!;
   const [value, setValue] = useState<InvitePolicy>(policy);
-  const [open, setOpen] = useState(domainJoin);
+  const [access, setAccess] = useState<DomainAccess>(domainJoin);
   const [error, setError] = useState<string | null>(null);
 
-  // Colleagues at the owner's company finding the office by their email: on unless an admin turns it off.
-  const toggle = async (next: boolean) => {
-    setOpen(next);
+  // Colleagues at the owner's company, finding the office by their email: they ask unless an admin decides otherwise.
+  const changeAccess = async (next: DomainAccess) => {
+    const before = access;
+    setAccess(next);
     setError(null);
     try {
       await api.updateOffice(officeId, { domainJoin: next });
       await refresh();
     } catch (problem) {
-      setOpen(!next);
+      setAccess(before);
       setError(problem instanceof ApiError ? problem.message : t("wrong"));
     }
   };
@@ -775,8 +776,21 @@ function InvitePolicyRow({
       {domain && (
         <Row
           title={t("domainJoin", { domain })}
-          description={open ? t("domainJoinOn", { domain }) : t("domainJoinOff")}
-          control={<Switch checked={open} onCheckedChange={(on) => void toggle(on)} ariaLabel={t("domainJoin", { domain })} />}
+          description={access === "open" ? t("domainOpenNote", { domain }) : access === "ask" ? t("domainAskNote") : t("domainOffNote")}
+          control={
+            <div className="w-44">
+              <Select value={access} onValueChange={(next) => void changeAccess(next as DomainAccess)}>
+                <SelectTrigger className="h-9 bg-card text-[13px]" aria-label={t("domainJoin", { domain })}>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="ask">{t("domainAsk")}</SelectItem>
+                  <SelectItem value="open">{t("domainOpen")}</SelectItem>
+                  <SelectItem value="off">{t("domainOff")}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          }
         />
       )}
       {error && <p className="px-4 pb-3 text-[12.5px] text-destructive">{error}</p>}

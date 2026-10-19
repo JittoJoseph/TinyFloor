@@ -76,8 +76,19 @@ export interface Office extends OfficeSummary {
   invitePolicy?: InvitePolicy;
   /** The owner's company email domain, when it has one: colleagues there can find the office. */
   joinDomain?: string | null;
-  /** Whether they can, and walk in without the link. */
-  domainJoin?: boolean;
+  /** How they get in: ask an admin (the default), walk straight in, or not find it at all. */
+  domainJoin?: DomainAccess;
+}
+
+/** How colleagues at the owner's company get into an office. */
+export type DomainAccess = "ask" | "open" | "off";
+
+/** A colleague asking to join, for the office's admins. */
+export interface JoinRequest {
+  id: string;
+  displayName: string;
+  email: string | null;
+  askedAt: number;
 }
 
 /** An office your colleagues are in, found by your work email. */
@@ -87,6 +98,10 @@ export interface TeamOffice {
   members: number;
   /** The owner's name. */
   owner: string;
+  /** Walk straight in, or ask an admin first. */
+  access: "ask" | "open";
+  /** Asked already, and nobody has answered. */
+  asked: boolean;
   /** The first few members, for their faces. */
   faces: string[];
   /** No room, and no trial left to make some. */
@@ -109,6 +124,8 @@ export interface OfficeOverview {
   members: Member[];
   /** How many people are on the floor right now. */
   people: number;
+  /** Colleagues asking to join, for an admin; always empty for a member. */
+  requests?: JoinRequest[];
 }
 
 export interface RoomTicket {
@@ -417,7 +434,7 @@ export const api = {
   overview: (officeId: string) => get<OfficeOverview>(`/offices/${id(officeId)}/overview`),
   renameOffice: (officeId: string, name: string) => patch<{ office: Office }>(`/offices/${id(officeId)}`, { name }),
   /** An admin's changes to the office: who can invite. */
-  updateOffice: (officeId: string, changes: { invitePolicy?: InvitePolicy; domainJoin?: boolean }) =>
+  updateOffice: (officeId: string, changes: { invitePolicy?: InvitePolicy; domainJoin?: DomainAccess }) =>
     patch<{ office: Office }>(`/offices/${id(officeId)}`, changes),
   closeOffice: (officeId: string) => del<{ ok: true }>(`/offices/${id(officeId)}`),
 
@@ -449,8 +466,13 @@ export const api = {
   acceptInvite: (token: string) => post<{ officeId: string }>(`/invites/${id(token)}/accept`),
   /** Your colleagues' offices, by your verified work email. */
   myTeam: () => get<{ domain: string | null; offices: TeamOffice[] }>("/me/team"),
-  /** Walking into one of them, without the link. */
-  joinTeamOffice: (officeId: string) => post<{ officeId: string }>(`/offices/${id(officeId)}/join`),
+  /** Walking into one of them where it's open; asking its admins where it isn't. */
+  joinTeamOffice: (officeId: string) => post<{ officeId: string; joined: boolean }>(`/offices/${id(officeId)}/join`),
+  /** Taking back a request nobody has answered. */
+  cancelJoinRequest: (officeId: string) => del<{ ok: true }>(`/offices/${id(officeId)}/join`),
+  /** An admin letting someone in, or not. */
+  answerJoinRequest: (officeId: string, userId: string, approve: boolean) =>
+    post<{ requests: JoinRequest[] }>(`/offices/${id(officeId)}/requests/${id(userId)}`, { approve }),
 
   // Walking in, chatting, calling
   officeTicket: (officeId: string) => post<RoomTicket>(`/offices/${id(officeId)}/ticket`),

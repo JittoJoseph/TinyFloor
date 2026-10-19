@@ -385,9 +385,13 @@
       "whoInvitesAdmins": "Tylko admini mogą zobaczyć i udostępnić link z zaproszeniem.",
       "inviteEveryone": "Wszyscy",
       "inviteAdmins": "Tylko admini",
-      "domainJoin": "Każdy z {domain}",
-      "domainJoinOn": "Każdy zalogowany adresem @{domain} znajdzie to biuro i dołączy bez linku.",
-      "domainJoinOff": "Dołączyć mogą tylko osoby z linkiem."
+      "domainJoin": "Osoby z {domain}",
+      "domainAsk": "Mogą poprosić o dostęp",
+      "domainOpen": "Mogą od razu dołączyć",
+      "domainOff": "Nie widzą biura",
+      "domainAskNote": "Znajdują to biuro po służbowym adresie i proszą o dostęp. Admin ich wpuszcza.",
+      "domainOpenNote": "Każdy zalogowany adresem @{domain} może od razu wejść.",
+      "domainOffNote": "Dołączyć mogą tylko osoby z linkiem z zaproszeniem."
     },
     "profile": {
       "changePassword": "Zmień hasło",
@@ -475,6 +479,9 @@
     "people": {
       "title": "Ludzie",
       "members": "Członkowie",
+      "asking": "Proszą o dostęp",
+      "letIn": "Wpuść",
+      "decline": "Odrzuć",
       "invite": "Zaproś",
       "seats": "{used} z {seats} miejsc",
       "seatsFull": "Wszystkie miejsca zajęte.",
@@ -790,11 +797,15 @@
   },
   "team": {
     "title": "Twój zespół już tu jest",
-    "body": "Osoby z {domain} mają biuro w TinyFloor. Wejdź i dołącz do nich.",
+    "bodyAsk": "Osoby z {domain} są już w TinyFloor. Poproś o dołączenie do ich biura, a admin cię wpuści.",
+    "bodyOpen": "Osoby z {domain} są już w TinyFloor. Dołącz do nich, zamiast tworzyć nowe biuro.",
     "atDomain": "W {domain}",
     "alreadyHas": "Twój zespół w {domain} ma już biuro",
     "members": "{count, plural, one {# członek} few {# członków} many {# członków} other {# członka}}",
+    "ask": "Poproś o dostęp",
     "join": "Dołącz",
+    "waiting": "Czekasz, aż {owner} cię wpuści",
+    "cancel": "Anuluj",
     "full": "Pełne",
     "makeOwn": "Utwórz jednak nowe biuro",
     "failed": "Nie udało się. Spróbuj ponownie."

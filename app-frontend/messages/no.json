@@ -385,9 +385,13 @@
       "whoInvitesAdmins": "Bare admins kan se og dele invitasjonslenken.",
       "inviteEveryone": "Alle",
       "inviteAdmins": "Bare admins",
-      "domainJoin": "Alle hos {domain}",
-      "domainJoinOn": "Alle som er logget inn med en @{domain}-adresse, kan finne kontoret og bli med uten lenken.",
-      "domainJoinOff": "Bare de som har lenken, kan bli med."
+      "domainJoin": "Folk fra {domain}",
+      "domainAsk": "Kan spørre om å bli med",
+      "domainOpen": "Kan bli med med en gang",
+      "domainOff": "Finner det ikke",
+      "domainAskNote": "De finner kontoret via jobbadressen og spør. En admin slipper dem inn.",
+      "domainOpenNote": "Alle som er logget inn med en @{domain}-adresse, kan gå rett inn.",
+      "domainOffNote": "Bare de som har invitasjonslenken, kan bli med."
     },
     "profile": {
       "changePassword": "Endre passord",
@@ -475,6 +479,9 @@
     "people": {
       "title": "Folk",
       "members": "Medlemmer",
+      "asking": "Vil bli med",
+      "letIn": "Slipp inn",
+      "decline": "Avslå",
       "invite": "Inviter",
       "seats": "{used} av {seats} plasser",
       "seatsFull": "Alle plassene er tatt.",
@@ -790,11 +797,15 @@
   },
   "team": {
     "title": "Teamet ditt er her allerede",
-    "body": "Folk fra {domain} har et kontor på TinyFloor. Gå inn og bli med.",
+    "bodyAsk": "Folk fra {domain} er allerede på TinyFloor. Spør om å bli med på kontoret deres, så slipper en admin deg inn.",
+    "bodyOpen": "Folk fra {domain} er allerede på TinyFloor. Bli med dem i stedet for å lage et nytt kontor.",
     "atDomain": "Hos {domain}",
     "alreadyHas": "Teamet ditt hos {domain} har allerede et kontor",
     "members": "{count, plural, one {# medlem} other {# medlemmer}}",
+    "ask": "Spør om å bli med",
     "join": "Bli med",
+    "waiting": "Venter på at {owner} slipper deg inn",
+    "cancel": "Avbryt",
     "full": "Fullt",
     "makeOwn": "Lag heller et nytt kontor",
     "failed": "Det fungerte ikke. Prøv igjen."

@@ -43,6 +43,10 @@ import { Composer, focusComposer } from "./chat/Composer";
 import { HelpTicket } from "./HelpTicket";
 import { Logo } from "@/components/app/Logo";
 import { help, SUPPORT_CHANNEL, useHelp } from "@/lib/help";
+import { lastConversation, rememberConversation } from "@/lib/chatMemory";
+
+/** Wide enough that a conversation shows beside the list, rather than instead of it. */
+const WIDE = "(min-width: 768px)";
 
 /**
  * Chat: channels and direct messages, beside the floor. The same screen in an
@@ -50,6 +54,7 @@ import { help, SUPPORT_CHANNEL, useHelp } from "@/lib/help";
  * lobby direct messages last only while both of you are there, and what only
  * an office can do (making channels, images) is all here and asks for an office.
  * A ticket with the TinyFloor team, while one is open, sits at the very bottom.
+ * Coming back to Chat opens the conversation you were last in, not #general.
  */
 export function ChatView({ channel }: { channel?: string }) {
   const t = useTranslations("chat");
@@ -68,6 +73,8 @@ export function ChatView({ channel }: { channel?: string }) {
 
   const open = channel ?? GENERAL_CHANNEL;
   const support = open === SUPPORT_CHANNEL;
+  // Up in an empty box: edit your last message here.
+  const [editLast, setEditLast] = useState(0);
   const { ticket, view: ticketView } = useHelp();
   // Who you are is known from your session before the chat has connected, so a
   // direct message opened in that first moment still has both its people.
@@ -106,8 +113,26 @@ export function ChatView({ channel }: { channel?: string }) {
   // A direct message's address with someone missing from it goes nowhere: back to the start.
   const broken = isDm(open) && !pair;
   useEffect(() => {
-    if (broken) router.replace(place.paths.chat());
-  }, [broken, router, place.paths]);
+    if (broken) {
+      rememberConversation(place.id, null);
+      router.replace(place.paths.chat());
+    }
+  }, [broken, router, place.paths, place.id]);
+
+  // Chat, from the rail, opens where you left it: the conversation you were last in, if it's still there.
+  // On a phone the bare address is the list, which is where Chat starts there.
+  useEffect(() => {
+    if (channel || !state.ready || !window.matchMedia(WIDE).matches) return;
+    const last = lastConversation(place.id);
+    if (!last || last === GENERAL_CHANNEL) return;
+    const pairOf = dmMembers(last);
+    const there = pairOf ? pairOf.every((id) => id === me || personById.has(id)) : state.channels.some((one) => one.id === last);
+    if (there) router.replace(place.paths.chat(last));
+    else rememberConversation(place.id, null);
+  }, [channel, state.ready, state.channels, place.id, place.paths, personById, me, router]);
+  useEffect(() => {
+    if (channel && !broken && channel !== SUPPORT_CHANNEL) rememberConversation(place.id, channel);
+  }, [channel, broken, place.id]);
 
   const say = (text: string) => {
     clearTimeout(noteTimer.current);
@@ -404,6 +429,7 @@ export function ChatView({ channel }: { channel?: string }) {
           more={state.more[open] ?? false}
           onOlder={() => chat.older(open)}
           firstUnread={firstUnread.channel === open ? firstUnread.id : null}
+          editLast={editLast}
           onReact={(line, emoji, on) => chat.react(Number(line.id), emoji, on)}
           onEdit={(line, body) => chat.edit(Number(line.id), body, open)}
           onDelete={(line) => chat.remove(Number(line.id), open)}
@@ -467,6 +493,8 @@ export function ChatView({ channel }: { channel?: string }) {
           placeholder={pair ? t("sayTo", { name: title }) : t("say", { channel: `#${title}` })}
           onSend={(text) => chat.say(open, text)}
           onFiles={onFiles}
+          draftKey={`${place.id}:${open}`}
+          onEditLast={() => setEditLast((was) => was + 1)}
           note={note ?? (state.slowDown ? t("slowDown") : state.notHere ? t("notHere") : null)}
         />
         </>

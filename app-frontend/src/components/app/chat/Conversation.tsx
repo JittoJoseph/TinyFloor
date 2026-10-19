@@ -9,6 +9,7 @@ import { Face } from "@/components/ui/Face";
 import { Loader } from "@/components/motion/loader";
 import { EASE_OUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
+import { focusComposer } from "./Composer";
 
 export interface Line {
   id: string;
@@ -32,7 +33,10 @@ const RUN_MS = 5 * 60_000;
  * A conversation, the way Slack lays one out: days under a sticky label, runs
  * of messages under one face and name, a line where the new ones start, and
  * the beginning of the channel at the very top. Give each conversation its
- * own key, so opening another starts at its latest message.
+ * own key, so opening another starts at its latest message. Sending always
+ * brings you down to what you sent; Up in the box edits your last message
+ * (`editLast` changes each time it's asked), and finishing an edit hands the
+ * cursor back to the box.
  */
 export function Conversation({
   lines,
@@ -45,6 +49,7 @@ export function Conversation({
   onEdit,
   onDelete,
   personCard,
+  editLast,
 }: {
   lines: Line[];
   me: string;
@@ -60,8 +65,24 @@ export function Conversation({
   onDelete?: (line: Line) => void;
   /** Wraps a face or a name so pressing it shows who that is. */
   personCard?: (id: string, name: string, trigger: ReactNode) => ReactNode;
+  /** Changes when Up was pressed in an empty box: your last message opens for editing. */
+  editLast?: number;
 }) {
   const t = useTranslations("chat");
+  // One message is edited at a time, so Up in the box can open the right one.
+  const [editing, setEditing] = useState<string | null>(null);
+  const lastMine = onEdit ? [...lines].reverse().find((line) => line.author === me && line.body) : undefined;
+  const asked = useRef(editLast);
+  useEffect(() => {
+    if (editLast === asked.current) return;
+    asked.current = editLast;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (lastMine) setEditing(lastMine.id);
+  }, [editLast, lastMine]);
+  const doneEditing = () => {
+    setEditing(null);
+    focusComposer();
+  };
   const box = useRef<HTMLDivElement>(null);
   const atEnd = useRef(true);
   const [behind, setBehind] = useState(false);
@@ -70,12 +91,17 @@ export function Conversation({
   const heightBefore = useRef(0);
   const reduce = useReducedMotion();
 
-  // New messages: follow them if you were at the bottom, otherwise say so.
+  // New messages: follow them if you were at the bottom, otherwise say so. Your own always come into view.
+  const lastAuthor = lines.at(-1)?.author;
   useLayoutEffect(() => {
     const element = box.current;
     if (!element) return;
-    if (atEnd.current) element.scrollTop = element.scrollHeight;
-    else setBehind(true);
+    if (atEnd.current || lastAuthor === me) {
+      element.scrollTop = element.scrollHeight;
+      atEnd.current = true;
+      setBehind(false);
+    } else setBehind(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lastId]);
 
   // Older messages arrived above: keep what you were reading where it was.
@@ -142,6 +168,8 @@ export function Conversation({
                     onEdit={line.author === me ? onEdit : undefined}
                     onDelete={line.author === me ? onDelete : undefined}
                     personCard={personCard}
+                    editing={editing === line.id}
+                    onEditing={(on) => (on ? setEditing(line.id) : doneEditing())}
                   />
                 </Fragment>
               );
@@ -236,6 +264,8 @@ function Message({
   onEdit,
   onDelete,
   personCard,
+  editing: isEditing,
+  onEditing,
 }: {
   line: Line;
   grouped: boolean;
@@ -244,11 +274,25 @@ function Message({
   onEdit?: (line: Line, body: string) => void;
   onDelete?: (line: Line) => void;
   personCard?: (id: string, name: string, trigger: ReactNode) => ReactNode;
+  editing: boolean;
+  onEditing: (on: boolean) => void;
 }) {
   const t = useTranslations("chat");
   const format = useFormatter();
   const [copied, setCopied] = useState(false);
-  const [editing, setEditing] = useState<string | null>(null);
+  // The words while they're being changed; opening the edit starts from what was sent.
+  const [draft, setDraft] = useState(line.body);
+  const [wasEditing, setWasEditing] = useState(isEditing);
+  if (isEditing !== wasEditing) {
+    setWasEditing(isEditing);
+    if (isEditing) setDraft(line.body);
+  }
+  const editing = isEditing ? draft : null;
+  const setEditing = (value: string | null) => {
+    if (value === null) return onEditing(false);
+    setDraft(value);
+    if (!isEditing) onEditing(true);
+  };
   const [confirming, setConfirming] = useState(false);
   const time = format.dateTime(new Date(line.at), { hour: "numeric", minute: "2-digit" });
   const card = (trigger: ReactNode) => (personCard ? personCard(line.author, line.authorName, trigger) : trigger);
@@ -301,6 +345,8 @@ function Message({
           >
             <textarea
               autoFocus
+              // Carry on from the end of what you wrote, as you would in the box below.
+              onFocus={(event) => event.currentTarget.setSelectionRange(event.currentTarget.value.length, event.currentTarget.value.length)}
               value={editing}
               rows={Math.min(6, editing.split("\n").length)}
               onChange={(event) => setEditing(event.target.value)}
@@ -325,7 +371,7 @@ function Message({
         ) : (
           line.body && (
             <p dir="auto" data-ph-mask className="whitespace-pre-wrap break-words text-[14px] leading-[1.45] text-foreground/90">
-              {line.body}
+              <Linked text={line.body} />
               {line.edited && <span className="ms-1.5 text-[11px] text-faint">({t("edited")})</span>}
             </p>
           )
@@ -435,10 +481,48 @@ function Message({
   );
 }
 
+/** A link written in a message opens, in a new tab; the rest stays plain text. */
+const URL_PATTERN = /\bhttps?:\/\/[^\s<>"']+[^\s<>"'.,;:!?)\]}]/gi;
+function Linked({ text }: { text: string }) {
+  const parts: ReactNode[] = [];
+  let at = 0;
+  for (const match of text.matchAll(URL_PATTERN)) {
+    const start = match.index ?? 0;
+    if (start > at) parts.push(text.slice(at, start));
+    parts.push(
+      <a
+        key={start}
+        href={match[0]}
+        target="_blank"
+        rel="noopener noreferrer nofollow ugc"
+        className="text-brand underline decoration-brand/40 underline-offset-2 hover:decoration-brand"
+      >
+        {match[0]}
+      </a>,
+    );
+    at = start + match[0].length;
+  }
+  if (at < text.length) parts.push(text.slice(at));
+  return <>{parts}</>;
+}
+
 function MoreReactions({ onPick, label }: { onPick: (emoji: string) => void; label: string }) {
   const [open, setOpen] = useState(false);
+  const holder = useRef<HTMLSpanElement>(null);
+  // A press anywhere else, or Escape, puts the extra reactions away.
+  useEffect(() => {
+    if (!open) return;
+    const away = (event: PointerEvent) => !holder.current?.contains(event.target as Node) && setOpen(false);
+    const escape = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
+    window.addEventListener("pointerdown", away);
+    window.addEventListener("keydown", escape);
+    return () => {
+      window.removeEventListener("pointerdown", away);
+      window.removeEventListener("keydown", escape);
+    };
+  }, [open]);
   return (
-    <span className="relative flex">
+    <span ref={holder} className="relative flex">
       <button
         type="button"
         aria-label={label}

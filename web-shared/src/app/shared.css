@@ -56,9 +56,12 @@ body {
  * ink. On the dark ink of the light theme it's a narrow white streak; on the
  * light ink of the dark theme, which can't be lit brighter than white, a
  * wider, smooth wave of pure white over its pale grey: never shade, which
- * reads as a smudge there. It runs under the label, so the
- * words stay sharp, and once more as the pointer arrives. Nothing for anyone
- * who asked for less motion.
+ * reads as a smudge there. A wave on white is faint, so there the glint
+ * also passes through the label, the way light runs along shiny text: a grey
+ * band blended to keep whichever is lighter, so the pale surface is left as
+ * it is and only the dark letters lighten as it crosses. The surface glint
+ * runs under the label, so the words stay sharp, and both run once more as
+ * the pointer arrives. Nothing for anyone who asked for less motion.
  */
 :root {
   --shine-core: rgb(255 255 255 / 0.38);
@@ -99,7 +102,30 @@ body {
   animation: shine 4.6s cubic-bezier(0.4, 0, 0.2, 1) 1.4s infinite;
 }
 
-.shine:hover::after {
+/* Through the label, on the light ink only: in step with the glint under it. */
+.dark .shine::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: var(--shine-width);
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(150 150 147 / 0.55) 32%,
+    rgb(150 150 147) 50%,
+    rgb(150 150 147 / 0.55) 68%,
+    transparent
+  );
+  mix-blend-mode: lighten;
+  transform: translateX(-130%) skewX(-22deg);
+  animation: shine 4.6s cubic-bezier(0.4, 0, 0.2, 1) 1.4s infinite;
+}
+
+.shine:hover::after,
+.dark .shine:hover::before {
   animation: shine-once 0.85s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -165,7 +191,8 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .shine::after {
+  .shine::after,
+  .dark .shine::before {
     display: none;
   }
   .persona-fade,

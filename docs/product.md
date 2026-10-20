@@ -111,6 +111,22 @@ code on 20 October):
   the floor", with no calendar status ("In a meeting until 3") the way
   Gather's calendar sync sets it.
 
+Gather's integrations (looked at in a space on 20 October) are three, under
+Settings › Integrations: Google Calendar, which fills a day timeline on the
+card that opens when you click someone (beside their local time) and drives
+"in a meeting" status; Spotify, which shares what you're playing while you're
+online; and a GitHub app (beta) that puts particles on the map when you open
+or merge a pull request and lists your recent PRs on your profile. The card,
+top right, is the one place they show. Of the three only the calendar
+answers a question a teammate has ("are they free?"); local time on the card
+costs nothing and answers the other one.
+
+Project tracking in the Linear manner doesn't fit: it's a product of its
+own that a team already has (Linear, Jira, GitHub), it can't be explained in
+the one line a virtual office gets on its landing page, and none of the
+virtual offices that added work features kept them central. A link that
+unfurls (an issue's title and state in chat) does the part that matters.
+
 Outside, the advice that recurs for moving a team into a virtual office is
 behavioural, not a feature: run one existing recurring meeting there first,
 start with a few people who already work together, and have the lead be
@@ -202,6 +218,17 @@ missing features on the map.
   in the ⌘K palette: words and file names in the office's channels and your
   own direct messages, case and accents folded, and picking a result opens
   the conversation at that message.
+- **Notifications for what's yours** (20 October): a direct message, a
+  mention, a call or an ask into a meeting, a wave, shown by the system while
+  the office is open in another window, and only then; in front of it, the
+  sound and the floor's nudges say it. A busy channel never notifies or makes
+  a sound, the same rule as the counts. One notification per conversation,
+  replaced by the next, and a call's stays until it stops ringing. The
+  browser is asked from a card in Chat (once there's someone to hear from)
+  or from Settings, never on arrival. A message that lands in the open
+  conversation while the tab is hidden stays unread until you're back. The
+  installed app's icon carries the same count as the tab's title, and the
+  menu under your face offers "Install app" whenever the browser can.
 - **Chat picks up where you left it** (19 October). Coming back to Chat
   opens the conversation you were last in, not #general; what you'd started
   writing waits in each conversation, across trips to the floor; typing

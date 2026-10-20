@@ -96,7 +96,8 @@
     "arrived": "وصل {name}",
     "wave": "👋 لوّح",
     "waved": "لوّح لك {name}",
-    "waveBack": "👋 لوّح بالمقابل"
+    "waveBack": "👋 لوّح بالمقابل",
+    "installApp": "تثبيت التطبيق"
   },
   "home": {
     "nav": {

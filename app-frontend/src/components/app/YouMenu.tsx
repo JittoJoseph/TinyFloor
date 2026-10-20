@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { DoorOpen, HelpCircle, LogOut, Settings2, SmilePlus, UserRound, UserPlus } from "@/components/ui/icons";
+import { DoorOpen, HelpCircle, LogOut, MonitorDown, Settings2, SmilePlus, UserRound, UserPlus } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { setMyStatus, useMyNote, useMyStatus } from "@/lib/floor";
@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 import { useWide } from "@/lib/hooks/use-wide";
 import { help } from "@/lib/help";
 import { goTo, openSettings, useSitePage } from "@/lib/links";
+import { install, useCanInstall } from "@/lib/install";
 
 const STATUSES: Array<Exclude<PlayerStatus, "in_call" | "offline">> = ["available", "busy", "away"];
 const STATUS_DOT: Record<string, string> = { available: "bg-ok", busy: "bg-destructive", away: "bg-warn", in_call: "bg-violet-500" };
@@ -54,6 +55,7 @@ export function YouMenu({
   const note = useMyNote();
   const [noting, setNoting] = useState(false);
   const wide = useWide();
+  const canInstall = useCanInstall();
   if (!user) return null;
   // On a phone the rail isn't there, so Help and feedback is in here; never in the dashboard's bar, which has no dialog.
   const helpHere = !wide && !bar;
@@ -156,6 +158,12 @@ export function YouMenu({
       {helpHere && (
         <MenuItem icon={<HelpCircle />} onSelect={() => help.open()}>
           {tHelp("title")}
+        </MenuItem>
+      )}
+      {/* Only when the browser can install it, and it isn't already. */}
+      {canInstall && (
+        <MenuItem icon={<MonitorDown />} onSelect={() => void install()}>
+          {t("installApp")}
         </MenuItem>
       )}
       {leave && !wide && (

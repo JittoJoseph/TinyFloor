@@ -96,7 +96,8 @@
     "arrived": "{name} is er",
     "wave": "👋 Zwaai",
     "waved": "{name} zwaaide naar je",
-    "waveBack": "👋 Zwaai terug"
+    "waveBack": "👋 Zwaai terug",
+    "installApp": "App installeren"
   },
   "home": {
     "nav": {

@@ -217,7 +217,11 @@
     "fileTooBig": "Pliki mogą mieć do 10 MB.",
     "fileSlowDown": "Za dużo plików naraz. Spróbuj za minutę.",
     "fileFailed": "Ten plik się nie wysłał. Spróbuj ponownie.",
-    "mentionSomeone": "Wspomnij kogoś"
+    "mentionSomeone": "Wspomnij kogoś",
+    "notifyTitle": "Włącz powiadomienia",
+    "notifyBody": "Wiadomości, wzmianki i połączenia, z każdego okna.",
+    "notifyOn": "Włącz",
+    "notNow": "Nie teraz"
   },
   "proximity": {
     "call": "Zadzwoń",
@@ -279,7 +283,7 @@
     "mediaLocal": "Zapisane tylko w tej przeglądarce.",
     "sounds": "Dźwięki",
     "messageSound": "Nowe wiadomości",
-    "messageSoundNote": "Cichy dźwięk, gdy przychodzi wiadomość.",
+    "messageSoundNote": "Cichy dźwięk przy wiadomościach prywatnych i wzmiankach.",
     "joinSound": "Ktoś przychodzi",
     "joinSoundNote": "Cichy dźwięk, gdy ktoś wchodzi na piętro.",
     "onTheFloor": "Na piętrze",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "Mniej animacji w całej aplikacji.",
     "performance": "Wydajność",
     "batterySaver": "Oszczędzanie baterii",
-    "batterySaverNote": "Rysuje piętro z mniejszą liczbą klatek. Działa od następnego wejścia."
+    "batterySaverNote": "Rysuje piętro z mniejszą liczbą klatek. Działa od następnego wejścia.",
+    "desktop": "Pulpit",
+    "desktopNotifications": "Pokazuj powiadomienia",
+    "desktopNote": "Wiadomości prywatne, wzmianki, połączenia i machnięcia, gdy TinyFloor jest otwarty w innym oknie.",
+    "desktopBlocked": "Zablokowane przez przeglądarkę. Zezwól na powiadomienia dla tej strony przez ikonę obok paska adresu.",
+    "turnOn": "Włącz"
   },
   "scene": {
     "sit": "Naciśnij E, aby usiąść",

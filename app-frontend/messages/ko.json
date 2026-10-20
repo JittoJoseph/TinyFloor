@@ -217,7 +217,11 @@
     "fileTooBig": "파일은 10MB까지 올릴 수 있어요.",
     "fileSlowDown": "한꺼번에 파일이 너무 많아요. 1분 뒤에 다시 시도해 주세요.",
     "fileFailed": "파일이 올라가지 않았어요. 다시 시도해 주세요.",
-    "mentionSomeone": "멘션하기"
+    "mentionSomeone": "멘션하기",
+    "notifyTitle": "알림 켜기",
+    "notifyBody": "메시지, 멘션, 통화를 어느 창에서든.",
+    "notifyOn": "켜기",
+    "notNow": "나중에"
   },
   "proximity": {
     "call": "통화",
@@ -279,7 +283,7 @@
     "mediaLocal": "이 브라우저에만 저장돼요.",
     "sounds": "소리",
     "messageSound": "새 메시지",
-    "messageSoundNote": "메시지가 오면 부드러운 소리가 나요.",
+    "messageSoundNote": "다이렉트 메시지와 멘션에 부드러운 소리가 나요.",
     "joinSound": "누군가 들어올 때",
     "joinSoundNote": "누군가 층에 들어오면 부드러운 소리가 나요.",
     "onTheFloor": "층",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "앱 전체의 애니메이션을 줄여요.",
     "performance": "성능",
     "batterySaver": "배터리 절약",
-    "batterySaverNote": "층을 낮은 프레임 속도로 그려요. 다음에 들어올 때부터 적용돼요."
+    "batterySaverNote": "층을 낮은 프레임 속도로 그려요. 다음에 들어올 때부터 적용돼요.",
+    "desktop": "데스크톱",
+    "desktopNotifications": "알림 표시",
+    "desktopNote": "TinyFloor가 다른 창에 열려 있을 때 받는 다이렉트 메시지, 멘션, 통화, 손 흔들기.",
+    "desktopBlocked": "브라우저에서 차단했어요. 주소창 옆 아이콘에서 이 사이트의 알림을 허용하세요.",
+    "turnOn": "켜기"
   },
   "scene": {
     "sit": "E 키로 앉기",

@@ -96,7 +96,8 @@
     "arrived": "{name}さんが来ました",
     "wave": "👋 手を振る",
     "waved": "{name}さんが手を振っています",
-    "waveBack": "👋 手を振り返す"
+    "waveBack": "👋 手を振り返す",
+    "installApp": "アプリをインストール"
   },
   "home": {
     "nav": {

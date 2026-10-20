@@ -124,6 +124,11 @@ class ChatSocket {
   getServerSnapshot = () => EMPTY;
 
   /** What the chat view is showing; its messages count as read. */
+  /** The channel on screen, if any. */
+  get watched() {
+    return this.watching;
+  }
+
   watch(channel: string | null) {
     this.watching = channel;
     if (!channel) return;
@@ -268,7 +273,9 @@ class ChatSocket {
       case "chat_new": {
         const { channel } = message.message;
         if (this.state.history[channel]?.some((one) => one.seq === message.message.seq)) break;
-        const seen = this.watching === channel;
+        // On screen only counts while the tab is: a message that lands while you're
+        // in another window waits as unread, and is marked read when you come back.
+        const seen = this.watching === channel && document.visibilityState === "visible";
         const mine = message.message.author === this.state.me;
         const forMe = !mine && !seen && !!message.message.mentions?.includes(this.state.me);
         const history = [...(this.state.history[channel] ?? []), message.message];
@@ -307,8 +314,9 @@ class ChatSocket {
           history: { ...this.state.history, [channel]: history },
         });
         if (seen && message.message.seq > 0) this.send({ t: "chat_read", channel, seq: message.message.seq });
-        else if (message.message.author !== this.state.me) {
-          playSound("message");
+        else if (!mine) {
+          // A sound only for what's yours, the same as the rail's count: a busy channel stays quiet.
+          if (isDm(channel) || forMe) playSound("message");
           this.incoming.forEach((listener) => listener(message.message));
         }
         break;
@@ -418,3 +426,10 @@ const total = (channels: ChannelSummary[]) =>
   channels.reduce((sum, one) => sum + (one.kind === "dm" ? one.unread : (one.mentions ?? 0)), 0);
 
 export const chat = new ChatSocket();
+
+// Back in the tab: what arrived in the open conversation meanwhile is read now.
+if (typeof document !== "undefined") {
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") chat.watch(chat.watched);
+  });
+}

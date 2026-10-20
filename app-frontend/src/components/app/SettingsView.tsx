@@ -10,6 +10,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError, type DomainAccess, type InvitePolicy } from "@/lib/api";
 import { savedDevices, saveDevices } from "@/lib/media";
 import { setPref, usePrefs, type Prefs } from "@/lib/prefs";
+import { askToNotify, useNotifyPermission } from "@/lib/notify";
 import { setTheme, useTheme, type ThemeChoice } from "@/lib/theme";
 import { Switch } from "@/components/motion/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/motion/select";
@@ -403,6 +404,7 @@ function Notifications() {
   const t = useTranslations("settings");
   return (
     <>
+      <Desktop />
       <Group title={t("sounds")}>
         <Toggle pref="messageSound" title={t("messageSound")} description={t("messageSoundNote")} />
         <Toggle pref="joinSound" title={t("joinSound")} description={t("joinSoundNote")} />
@@ -411,6 +413,36 @@ function Notifications() {
         <Toggle pref="nudges" title={t("nudges")} description={t("nudgesNote")} />
       </Group>
     </>
+  );
+}
+
+/**
+ * Desktop notifications: the browser asks once, from here or from Chat, and
+ * after that only its own site settings can change its answer, so a blocked
+ * browser gets told where that is rather than a switch that does nothing.
+ */
+function Desktop() {
+  const t = useTranslations("settings");
+  const permission = useNotifyPermission();
+  const prefs = usePrefs();
+  if (permission === "unsupported") return null;
+  const title = t("desktopNotifications");
+  return (
+    <Group title={t("desktop")}>
+      <Row
+        title={title}
+        description={permission === "denied" ? t("desktopBlocked") : t("desktopNote")}
+        control={
+          permission === "granted" ? (
+            <Switch checked={prefs.desktopNotifications} onCheckedChange={(on) => setPref("desktopNotifications", on)} ariaLabel={title} />
+          ) : permission === "default" ? (
+            <Button size="sm" variant="secondary" className="h-8 px-3.5 text-[12.5px]" onClick={() => void askToNotify()}>
+              {t("turnOn")}
+            </Button>
+          ) : null
+        }
+      />
+    </Group>
   );
 }
 

@@ -96,7 +96,8 @@
     "arrived": "{name} ist da",
     "wave": "👋 Winken",
     "waved": "{name} hat dir gewinkt",
-    "waveBack": "👋 Zurückwinken"
+    "waveBack": "👋 Zurückwinken",
+    "installApp": "App installieren"
   },
   "home": {
     "nav": {

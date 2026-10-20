@@ -217,7 +217,11 @@
     "fileTooBig": "Arquivos podem ter até 10 MB.",
     "fileSlowDown": "Arquivos demais de uma vez. Tente de novo em um minuto.",
     "fileFailed": "Esse arquivo não foi enviado. Tente de novo.",
-    "mentionSomeone": "Mencionar alguém"
+    "mentionSomeone": "Mencionar alguém",
+    "notifyTitle": "Ative as notificações",
+    "notifyBody": "Mensagens, menções e chamadas, em qualquer janela.",
+    "notifyOn": "Ativar",
+    "notNow": "Agora não"
   },
   "proximity": {
     "call": "Ligar",
@@ -279,7 +283,7 @@
     "mediaLocal": "Guardado só neste navegador.",
     "sounds": "Sons",
     "messageSound": "Novas mensagens",
-    "messageSoundNote": "Um som suave quando chega uma mensagem.",
+    "messageSoundNote": "Um som suave para mensagens diretas e menções.",
     "joinSound": "Alguém chega",
     "joinSoundNote": "Um som suave quando alguém entra no andar.",
     "onTheFloor": "No andar",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "Menos animações em todo o app.",
     "performance": "Desempenho",
     "batterySaver": "Economia de bateria",
-    "batterySaverNote": "Desenha o andar com menos quadros por segundo. Vale na próxima vez que você entrar."
+    "batterySaverNote": "Desenha o andar com menos quadros por segundo. Vale na próxima vez que você entrar.",
+    "desktop": "Área de trabalho",
+    "desktopNotifications": "Mostrar notificações",
+    "desktopNote": "Mensagens diretas, menções, chamadas e acenos, enquanto o TinyFloor está aberto em outra janela.",
+    "desktopBlocked": "Bloqueadas pelo navegador. Permita notificações deste site pelo ícone ao lado da barra de endereço.",
+    "turnOn": "Ativar"
   },
   "scene": {
     "sit": "Pressione E para sentar",

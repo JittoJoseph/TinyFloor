@@ -37,6 +37,7 @@ import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { ShellView } from "./AppShell";
 import { PresenceDock } from "./PresenceDock";
+import { NotifyCard } from "./chat/NotifyCard";
 import { usePlace, type PlacePerson } from "./place";
 import { Conversation, ConversationIntro, type Line } from "./chat/Conversation";
 import { addToComposer, Composer, focusComposer } from "./chat/Composer";
@@ -399,6 +400,7 @@ export function ChatView({ channel }: { channel?: string }) {
             </div>
           )}
 
+          {!lobby && dms.length > 0 && <NotifyCard />}
           <PresenceDock place={place.name} settingsHref={place.paths.settings} />
           <CommandPalette
             items={items}

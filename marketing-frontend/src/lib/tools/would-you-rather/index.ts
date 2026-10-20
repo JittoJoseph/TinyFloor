@@ -10,7 +10,7 @@ import pt from "./pt";
  * (lib/tools/catalog). Same rules as the icebreakers: nothing private, both
  * options fine, nothing that assumes how someone lives.
  */
-export const WOULD_YOU_RATHER_UPDATED = "2026-10-21";
+export const WOULD_YOU_RATHER_UPDATED = "2026-10-20";
 
 const CONTENT: Partial<Record<Locale, IcebreakersContent>> = { en, pt, es };
 

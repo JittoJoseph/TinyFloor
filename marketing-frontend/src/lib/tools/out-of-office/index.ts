@@ -14,7 +14,7 @@ import pt from "./pt";
  * what TinyFloor does with status notes ("🌴 On holiday until Monday"). In
  * English, Portuguese and Spanish (lib/tools/catalog).
  */
-export const OUT_OF_OFFICE_UPDATED = "2026-10-21";
+export const OUT_OF_OFFICE_UPDATED = "2026-10-20";
 
 export interface OooContent extends ToolCopy {
   writer: {

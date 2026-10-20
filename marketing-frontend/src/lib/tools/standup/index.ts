@@ -11,7 +11,7 @@ import pt from "./pt";
  * in the US, easy), for the audience we want most: small software teams. In
  * English, Portuguese and Spanish (lib/tools/catalog).
  */
-export const STANDUP_UPDATED = "2026-10-21";
+export const STANDUP_UPDATED = "2026-10-20";
 
 export type StandupFormat = "live" | "async" | "board";
 

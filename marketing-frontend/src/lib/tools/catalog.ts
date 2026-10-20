@@ -20,6 +20,7 @@ export const WOULD_YOU_RATHER_PATH = "/tools/would-you-rather-questions";
 export const TWO_TRUTHS_PATH = "/tools/two-truths-and-a-lie";
 export const STANDUP_PATH = "/tools/daily-standup-template";
 export const OUT_OF_OFFICE_PATH = "/tools/out-of-office-message";
+export const TEAM_BUILDING_PATH = "/tools/team-building-questions";
 
 /** The languages the newer tools are written in. */
 export const FEW: readonly Locale[] = ["en", "pt", "es"];
@@ -35,6 +36,7 @@ export const TOOLS: ToolEntry[] = [
   { path: ICEBREAKERS_PATH, locales: localeCodes },
   { path: WOULD_YOU_RATHER_PATH, locales: FEW },
   { path: TWO_TRUTHS_PATH, locales: FEW },
+  { path: TEAM_BUILDING_PATH, locales: FEW },
   { path: TIME_ZONES_PATH, locales: localeCodes },
   { path: OUT_OF_OFFICE_PATH, locales: FEW },
   { path: OFFICE_COSTS_PATH, locales: localeCodes },

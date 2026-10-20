@@ -1,0 +1,216 @@
+import type { IcebreakersContent } from "@/lib/tools/icebreakers";
+
+/** Team building questions for work, in English: the list the other languages are written from. */
+const en: IcebreakersContent = {
+  groups: [
+    {
+      key: "fun",
+      label: "Fun",
+      title: "Fun team building questions",
+      when: "Playful questions about the team itself. Good for opening a team session, a social call or a quiet Friday.",
+      questions: [
+        "If our team were a band, what would we be called?",
+        "If the team had a mascot, what would it be?",
+        "Which fictional character would fit right in on our team?",
+        "If our team had a theme song, what would it be?",
+        "If we could swap jobs for a day, whose job would you want to try?",
+        "What would our team's reality show be called?",
+        "If we opened a restaurant together, what would we serve?",
+        "What superpower would make your job easier?",
+        "On a team road trip, would you be the driver, the navigator, the DJ or the one with the snacks?",
+        "If you could add one perk at work, with no budget limit, what would it be?",
+        "Which job would you be terrible at, and why?",
+        "If your work week were a film genre, what would it be?",
+        "What would the title of your autobiography be right now?",
+        "If we had our own team holiday, what would we celebrate?",
+        "What's the most useless talent you have?",
+        "If you could have any animal as a coworker, which would you pick?",
+        "Which three things would you take to an office on a desert island?",
+        "If it were up to you, what would we call the meeting room?",
+        "If you could master any skill overnight, which would it be?",
+        "What would be on the menu at the perfect team lunch?",
+      ],
+    },
+    {
+      key: "work",
+      label: "How you work",
+      title: "Team building questions about how you work",
+      when: "Each person's user manual: how they like feedback, help and focus time. Teams that ask these early save themselves a lot of guessing.",
+      questions: [
+        "How do you prefer to get feedback: in the moment, in writing or one to one?",
+        "What's the best way to ask you for help?",
+        "What time of day do you do your best work?",
+        "What does a good meeting look like to you?",
+        "When you're stuck, do you prefer to talk it through or work it out alone first?",
+        "What's something about how you work that people often get wrong?",
+        "How can teammates tell you need quiet time to focus?",
+        "What kind of recognition means the most to you?",
+        "Do you like detailed instructions, or the goal and the freedom to get there?",
+        "What drains your energy at work?",
+        "What's one thing that helps you do your best work?",
+        "How quickly do you expect replies to messages, and how quickly do you reply?",
+        "What's a pet peeve of yours in team communication?",
+        "What's a strength of yours the team might not use enough?",
+        "How do you like to celebrate when something goes well?",
+        "What would you want a new teammate to know about working with you?",
+        "When you disagree, do you prefer to say so in the meeting or afterwards?",
+        "How do you like to start a new project?",
+        "What makes you feel trusted at work?",
+        "Would you rather have a quick call or a written message for a tricky question?",
+      ],
+    },
+    {
+      key: "team",
+      label: "The team",
+      title: "Team building questions about the team",
+      when: "About how the team works together: what's going well, what gets in the way, and what to try next. Good for a team session or a quarterly check-in.",
+      questions: [
+        "What's one thing this team does better than any team you've been on?",
+        "What's an unwritten rule on this team?",
+        "What should a new person know in their first week here?",
+        "What's a team moment you still think about?",
+        "What do we spend too much time on?",
+        "What's one thing we could try as a team next month?",
+        "When did you last feel the team really pulled together?",
+        "What's one habit of a teammate you'd like to borrow?",
+        "What would make working together easier for you?",
+        "Which of our meetings could be a message, and which needs more time?",
+        "What's something we stopped doing that we should bring back?",
+        "How do we celebrate wins, and how should we?",
+        "What's a tradition we should start as a team?",
+        "If you described our team in three words, what would they be?",
+        "What do people outside the team get wrong about what we do?",
+        "What's a skill the team has that we don't talk about?",
+        "What would you change about how we share updates?",
+        "What's the best decision this team made in the last year?",
+        "What should we say no to more often?",
+        "What does a great week look like for the whole team?",
+      ],
+    },
+    {
+      key: "deeper",
+      label: "Deeper",
+      title: "Deeper team building questions",
+      when: "For an offsite, a long team session or a team that already knows each other. They take a few minutes each, and they're worth it.",
+      questions: [
+        "What's a moment at work you felt proud of, and why?",
+        "What made you choose the work you do?",
+        "What's a value you try to bring to every job?",
+        "Who has had the biggest influence on how you work?",
+        "What's the hardest thing you've learned at work?",
+        "What does success look like for you a year from now?",
+        "What's a risk you took at work that paid off?",
+        "When do you feel most like yourself at work?",
+        "What part of your work would you keep doing even if nobody noticed?",
+        "What's something you've had to unlearn?",
+        "What's the kindest thing a colleague has done for you?",
+        "What did your best manager do that others didn't?",
+        "What would you like to be known for on this team?",
+        "What's one thing you'd like more help with?",
+        "What's the best team you've been part of, and what made it work?",
+        "What do you wish you'd known when you started your career?",
+        "What gives you energy on a hard day?",
+        "What's one thing you'd like the team to understand about you?",
+        "What are you most curious about right now?",
+        "What's a piece of advice you'd pass on to everyone here?",
+      ],
+    },
+  ],
+  meta: {
+    title: "Team Building Questions for Work: 80 to Get Your Team Talking",
+    description:
+      "80 team building questions for work: fun ones, questions about how people like to work, about the team itself, and deeper ones for an offsite. Pick one at random.",
+  },
+  eyebrow: "Free tool",
+  updated: "Updated",
+  title: "Team building questions <em>for work.</em>",
+  intro:
+    "An icebreaker warms up a meeting; a good team building question tells you something about how your team works. Here are 80: fun ones about the team, questions about how each person likes to work, questions about the team itself, and deeper ones for an offsite. Pick one at random below, or browse the list.",
+  picker: { all: "All", another: "Another question", copy: "Copy", copied: "Copied", of: "of" },
+  howTo: [
+    {
+      title: "How to use team building questions",
+      items: [
+        {
+          title: "One question, everyone answers",
+          detail: "Five to ten minutes",
+          body: "Ask one question at the start of a team meeting and go round in a fixed order. Answer first yourself, so people see how long and how personal an answer can be.",
+        },
+        {
+          title: "Pick the group for the moment",
+          detail: "Fun first, deeper later",
+          body: "Fun questions suit any team. Save the deeper ones for a team that already knows each other, or for an offsite with time to listen properly.",
+        },
+        {
+          title: "Write the answers down",
+          detail: "For the how-you-work questions",
+          body: "Answers to \"How do you prefer to get feedback?\" are worth keeping. Put them in a shared doc, one section per person, and point new teammates to it.",
+        },
+        {
+          title: "Do something with the team questions",
+          detail: "Or they stop working",
+          body: "If you ask \"What should we say no to more often?\", pick one answer and act on it. People answer honestly when they see the answers change something.",
+        },
+      ],
+    },
+  ],
+  rules: [
+    {
+      title: "What makes a good team building question",
+      items: [
+        {
+          title: "Everyone can answer",
+          body: "A good question doesn't depend on age, seniority, where someone lives or what they do at weekends. Anyone on the team, from their first week, has an answer.",
+        },
+        {
+          title: "Nothing private",
+          body: "Leave out family, relationships, health, money, politics and religion. Even the deeper questions here are about work and how people like to work.",
+        },
+        {
+          title: "Passing is fine",
+          body: "Say at the start that anyone can pass or answer briefly. A question people feel made to answer stops being team building.",
+        },
+        {
+          title: "Says something useful",
+          body: "The best ones are fun to answer and leave the team knowing something it didn't: when someone focuses best, what drains them, what they're proud of.",
+        },
+      ],
+    },
+    {
+      title: "How we picked these",
+      body: [
+        "We wrote these for small teams at work, with the rules above, and grouped them by how much a team knows each other and how much time there is. For a one-minute warm-up before a standup, our icebreaker questions are quicker; these take a little longer and tell you more about how the team works. We add to the list as we find good ones.",
+      ],
+    },
+  ],
+  fit: {
+    title: "Bring the team together on the floor",
+    body: "TinyFloor is a virtual office for small teams: you see who's at their desk, walk over to talk, and meet in the meeting room for the team session, questions and all. It runs in a browser tab, free for up to 3 people and $29 a month for the whole team.",
+    cta: "Try the demo office",
+  },
+  faqTitle: "Common <em>questions.</em>",
+  faq: [
+    {
+      q: "What are good team building questions for work?",
+      a: "Ones everyone can answer that tell you something about how the team works, like \"What's the best way to ask you for help?\" or \"What's one thing this team does better than any team you've been on?\"",
+    },
+    {
+      q: "What are some fun team building questions?",
+      a: "Playful questions about the team itself: \"If our team were a band, what would we be called?\", \"What would our team's reality show be called?\" or \"If we opened a restaurant together, what would we serve?\"",
+    },
+    {
+      q: "What's the difference between icebreakers and team building questions?",
+      a: "An icebreaker is a quick warm-up, a minute before a meeting. A team building question takes a few minutes and is meant to teach the team something about each other or about how it works together.",
+    },
+    {
+      q: "How do you run team building questions with a remote team?",
+      a: "On a call, ask one question and go round in a fixed order, so nobody talks over anyone. For a team across time zones, post the question in the team chat and let people answer when they're online.",
+    },
+    {
+      q: "Which team building questions should you avoid?",
+      a: "Anything about family, relationships, health, money, politics or religion, and questions that put one person on the spot, like asking someone to rate a teammate.",
+    },
+  ],
+};
+
+export default en;

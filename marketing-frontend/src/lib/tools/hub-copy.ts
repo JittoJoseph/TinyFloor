@@ -1,5 +1,5 @@
 import type { Locale } from "@/lib/i18n/routing";
-import { OUT_OF_OFFICE_PATH, STANDUP_PATH, TWO_TRUTHS_PATH, WOULD_YOU_RATHER_PATH } from "@/lib/tools/catalog";
+import { OUT_OF_OFFICE_PATH, STANDUP_PATH, TEAM_BUILDING_PATH, TWO_TRUTHS_PATH, WOULD_YOU_RATHER_PATH } from "@/lib/tools/catalog";
 
 /**
  * The free tools' index (/tools), in every language: its own words, and the
@@ -130,18 +130,21 @@ export const FEW_TOOL_NAMES: Partial<Record<Locale, Record<string, string>>> = {
     [STANDUP_PATH]: "Daily standup template",
     [WOULD_YOU_RATHER_PATH]: "Would you rather questions for work",
     [TWO_TRUTHS_PATH]: "Two truths and a lie ideas",
+    [TEAM_BUILDING_PATH]: "Team building questions",
     [OUT_OF_OFFICE_PATH]: "Out of office message generator",
   },
   pt: {
     [STANDUP_PATH]: "Modelo de daily",
     [WOULD_YOU_RATHER_PATH]: "Perguntas \"você prefere\" para o trabalho",
     [TWO_TRUTHS_PATH]: "Ideias de duas verdades e uma mentira",
+    [TEAM_BUILDING_PATH]: "Perguntas de team building",
     [OUT_OF_OFFICE_PATH]: "Gerador de mensagem de ausência",
   },
   es: {
     [STANDUP_PATH]: "Plantilla de daily",
     [WOULD_YOU_RATHER_PATH]: "Preguntas de \"¿qué prefieres?\" para el trabajo",
     [TWO_TRUTHS_PATH]: "Ideas de dos verdades y una mentira",
+    [TEAM_BUILDING_PATH]: "Preguntas de team building",
     [OUT_OF_OFFICE_PATH]: "Generador de mensaje de fuera de la oficina",
   },
 };

@@ -10,7 +10,7 @@ import pt from "./pt";
  * could be true for someone; none asks anything private or assumes much money
  * or travel.
  */
-export const TWO_TRUTHS_UPDATED = "2026-10-21";
+export const TWO_TRUTHS_UPDATED = "2026-10-20";
 
 const CONTENT: Partial<Record<Locale, IcebreakersContent>> = { en, pt, es };
 

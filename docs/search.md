@@ -217,7 +217,7 @@ template" over 100, easy; "virtual team building activities" over 1,000,
 medium; "meeting cost calculator" over 100, hard; world clocks and time-zone
 planners large but hard. "Virtual office software" itself is just over 100.
 
-## Where search stands, and four more tools (21 October)
+## Where search stands, and four more tools (20 October)
 
 Search Console, 28 days to 17 October: 96 clicks, 3,630 impressions,
 average position 25 (property `sc-domain:tinyfloor.com`, under the second

@@ -219,7 +219,7 @@
     "fileFailed": "Filen laddades inte upp. Försök igen.",
     "mentionSomeone": "Nämn någon",
     "notifyTitle": "Slå på aviseringar",
-    "notifyBody": "Meddelanden, omnämnanden och samtal, från alla fönster.",
+    "notifyBody": "Meddelanden och omnämnanden, även när TinyFloor är stängt.",
     "notifyOn": "Slå på",
     "notNow": "Inte nu"
   },
@@ -297,7 +297,7 @@
     "batterySaverNote": "Ritar planet med lägre bildfrekvens. Gäller nästa gång du går in.",
     "desktop": "Skrivbord",
     "desktopNotifications": "Visa aviseringar",
-    "desktopNote": "Direktmeddelanden, omnämnanden, samtal och vinkningar, medan TinyFloor är öppet i ett annat fönster.",
+    "desktopNote": "Direktmeddelanden och omnämnanden, även när TinyFloor är stängt. Samtal och vinkningar medan det är öppet i ett annat fönster.",
     "desktopBlocked": "Blockerade av webbläsaren. Tillåt aviseringar för webbplatsen via ikonen bredvid adressfältet.",
     "turnOn": "Slå på"
   },

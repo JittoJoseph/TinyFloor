@@ -18,3 +18,7 @@
 /page-fingerprints.json
   Cache-Control: no-cache
   X-Robots-Tag: noindex
+
+# Checked on every visit, so a new one takes over at once.
+/sw.js
+  Cache-Control: no-cache

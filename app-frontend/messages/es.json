@@ -219,7 +219,7 @@
     "fileFailed": "Ese archivo no se subió. Inténtalo de nuevo.",
     "mentionSomeone": "Mencionar a alguien",
     "notifyTitle": "Activa las notificaciones",
-    "notifyBody": "Mensajes, menciones y llamadas, desde cualquier ventana.",
+    "notifyBody": "Mensajes y menciones, incluso con TinyFloor cerrado.",
     "notifyOn": "Activar",
     "notNow": "Ahora no"
   },
@@ -297,7 +297,7 @@
     "batterySaverNote": "Dibuja la planta a menos fotogramas por segundo. Se aplica la próxima vez que entres.",
     "desktop": "Escritorio",
     "desktopNotifications": "Mostrar notificaciones",
-    "desktopNote": "Mensajes directos, menciones, llamadas y saludos, mientras TinyFloor está abierto en otra ventana.",
+    "desktopNote": "Mensajes directos y menciones, incluso con TinyFloor cerrado. Llamadas y saludos mientras está abierto en otra ventana.",
     "desktopBlocked": "Tu navegador las bloquea. Permite las notificaciones de este sitio desde el icono junto a la barra de direcciones.",
     "turnOn": "Activar"
   },

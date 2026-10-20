@@ -219,7 +219,7 @@
     "fileFailed": "Ce fichier n'a pas été envoyé. Réessayez.",
     "mentionSomeone": "Mentionner quelqu'un",
     "notifyTitle": "Activer les notifications",
-    "notifyBody": "Messages, mentions et appels, depuis n'importe quelle fenêtre.",
+    "notifyBody": "Messages et mentions, même quand TinyFloor est fermé.",
     "notifyOn": "Activer",
     "notNow": "Pas maintenant"
   },
@@ -297,7 +297,7 @@
     "batterySaverNote": "Affiche l'étage avec moins d'images par seconde. S'applique à votre prochaine entrée.",
     "desktop": "Bureau",
     "desktopNotifications": "Afficher les notifications",
-    "desktopNote": "Messages privés, mentions, appels et saluts, quand TinyFloor est ouvert dans une autre fenêtre.",
+    "desktopNote": "Messages privés et mentions, même quand TinyFloor est fermé. Appels et saluts quand il est ouvert dans une autre fenêtre.",
     "desktopBlocked": "Bloquées par votre navigateur. Autorisez les notifications pour ce site depuis l'icône à côté de la barre d'adresse.",
     "turnOn": "Activer"
   },

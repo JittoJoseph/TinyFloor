@@ -6,13 +6,16 @@ import { isDm } from "@shared/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { chat } from "@/lib/ChatSocket";
 import { useCall } from "@/lib/useCall";
-import { notify, setBadge } from "@/lib/notify";
+import { notify, setBadge, useNotifyPermission } from "@/lib/notify";
+import { onOpenFromPush, startPush, stopPush } from "@/lib/push";
+import { usePrefs } from "@/lib/prefs";
 import { WAVED_AT_YOU_EVENT } from "@/lib/floor";
 
 /**
  * What reaches you in another window (lib/notify.ts): a direct message, a
  * mention, a call or an ask into a meeting, a wave. Clicking one brings the
- * office back, at the conversation it came from. Nothing else: someone walking
+ * office back, at the conversation it came from. Once TinyFloor is closed,
+ * direct messages and mentions still come, as pushes. Nothing else: someone walking
  * in, or a busy channel, is for when you're looking. The installed app's icon
  * counts what's waiting, as the tab's title does.
  */
@@ -65,6 +68,17 @@ export function DesktopAlerts({ chatPath, waiting }: { chatPath: (channel: strin
     window.addEventListener(WAVED_AT_YOU_EVENT, waved);
     return () => window.removeEventListener(WAVED_AT_YOU_EVENT, waved);
   }, [tShell]);
+
+  // While closed, the chat pushes instead (lib/push.ts): this browser is
+  // subscribed while notifications are allowed and on, and not otherwise.
+  const permission = useNotifyPermission();
+  const { desktopNotifications } = usePrefs();
+  useEffect(() => {
+    if (permission !== "granted") return;
+    void (desktopNotifications ? startPush() : stopPush());
+  }, [permission, desktopNotifications]);
+  const go = useEffectEvent((path: string) => router.push(path));
+  useEffect(() => onOpenFromPush(go), []);
 
   useEffect(() => {
     setBadge(waiting);

@@ -26,9 +26,11 @@ import {
   type ChatMessage,
   type ChatServerMessage,
   type LobbyChatPage,
+  type PushPayload,
   type RoomTicket,
 } from "../../shared-protocol/src";
 import { readTicket, TICKET_HEADER } from "./headers";
+import { sendPush, topicFor, type PushTarget } from "./push";
 
 /** What the socket remembers about whoever is on it. */
 interface Attachment {
@@ -359,11 +361,59 @@ export class Chat extends DurableObject<Env> {
     // Your own message counts as read, so your unread badge stays quiet.
     this.markRead(me.userId, channel, seq);
     this.deliver(channel, { t: "chat_new", message });
+    this.reachAway(message);
 
     // History trims itself as it grows, so no nightly job has to walk offices.
     if (seq % TRIM_EVERY === 0) this.trim();
 
     if (this.lobby) this.ctx.waitUntil(this.keepAWeek(now));
+  }
+
+  /**
+   * A direct message, or a mention, for someone with no tab open here reaches
+   * their browser as a push (push.ts); a tab that's open says it itself (the
+   * app's DesktopAlerts). Never in the lobby.
+   */
+  private reachAway(message: ChatMessage): void {
+    if (this.lobby || !this.office || !this.env.VAPID_KEY) return;
+    const pair = dmMembers(message.channel);
+    const wanted = pair ? pair.filter((id) => id !== message.author) : (message.mentions ?? []);
+    if (!wanted.length) return;
+    const here = new Set(this.ctx.getWebSockets().map((socket) => this.attachmentOf(socket)?.userId));
+    const away = wanted.filter((id) => !here.has(id));
+    if (away.length) this.ctx.waitUntil(this.push(this.office, away, message).catch((error: unknown) => console.error("chat: push failed", error)));
+  }
+
+  /** To every browser those people subscribed while signed in, if they're still in the office. */
+  private async push(office: string, userIds: string[], message: ChatMessage): Promise<void> {
+    const { results } = await this.env.DB.prepare(
+      `SELECT p.endpoint, p.p256dh, p.auth FROM push_subscriptions p
+       JOIN sessions s ON s.id = p.session_id AND s.expires_at > ?
+       JOIN memberships m ON m.user_id = p.user_id AND m.office_id = ?
+       WHERE p.user_id IN (${userIds.map(() => "?").join(", ")})`,
+    )
+      .bind(Date.now(), office, ...userIds)
+      .all<PushTarget>();
+    if (!results.length) return;
+
+    const text = message.body || (message.files ?? []).map((file) => `📎 ${file.name}`).join(", ");
+    const payload: PushPayload = {
+      title: isDm(message.channel) ? message.authorName : `${message.authorName} · #${message.channel}`,
+      body: text.length > 160 ? `${text.slice(0, 160)}…` : text,
+      tag: `chat:${message.channel}`,
+      url: `/office/${office}/chat/${encodeURIComponent(message.channel)}`,
+    };
+    const topic = await topicFor(office, message.channel);
+    const outcomes = await Promise.all(
+      results.map((target) => sendPush(target, payload, this.env.VAPID_KEY, topic).catch(() => "failed" as const)),
+    );
+    // The browser unsubscribed, or its push service forgot it: don't try it again.
+    const gone = results.filter((_, index) => outcomes[index] === "gone").map((target) => target.endpoint);
+    if (gone.length) {
+      await this.env.DB.prepare(`DELETE FROM push_subscriptions WHERE endpoint IN (${gone.map(() => "?").join(", ")})`)
+        .bind(...gone)
+        .run();
+    }
   }
 
   /**

@@ -219,7 +219,7 @@
     "fileFailed": "Il file non è stato caricato. Riprova.",
     "mentionSomeone": "Menziona qualcuno",
     "notifyTitle": "Attiva le notifiche",
-    "notifyBody": "Messaggi, menzioni e chiamate, da qualsiasi finestra.",
+    "notifyBody": "Messaggi e menzioni, anche con TinyFloor chiuso.",
     "notifyOn": "Attiva",
     "notNow": "Non ora"
   },
@@ -297,7 +297,7 @@
     "batterySaverNote": "Disegna il piano a una frequenza più bassa. Si applica al prossimo ingresso.",
     "desktop": "Desktop",
     "desktopNotifications": "Mostra notifiche",
-    "desktopNote": "Messaggi diretti, menzioni, chiamate e saluti, mentre TinyFloor è aperto in un'altra finestra.",
+    "desktopNote": "Messaggi diretti e menzioni, anche con TinyFloor chiuso. Chiamate e saluti mentre è aperto in un'altra finestra.",
     "desktopBlocked": "Bloccate dal browser. Consenti le notifiche per questo sito dall'icona accanto alla barra degli indirizzi.",
     "turnOn": "Attiva"
   },

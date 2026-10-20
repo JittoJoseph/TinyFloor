@@ -229,6 +229,16 @@ missing features on the map.
   conversation while the tab is hidden stays unread until you're back. The
   installed app's icon carries the same count as the tab's title, and the
   menu under your face offers "Install app" whenever the browser can.
+  With TinyFloor closed, direct messages and mentions still arrive, as Web
+  Push: the office's chat sends one to each browser the person subscribed,
+  but only if none of their tabs has the office open (an open tab says it
+  itself, so nothing comes twice). No separate service: the chat object
+  encrypts and signs each push with WebCrypto, one VAPID key for production
+  and preview. A subscription belongs to the session that made it, so
+  signing out stops it, and leaving the office stops its pushes; one the
+  push service says is gone is deleted. Only browsers' own push services
+  are accepted (Google, Mozilla, Apple, Microsoft). Calls and waves don't
+  push: answering needs the office open.
 - **Chat picks up where you left it** (19 October). Coming back to Chat
   opens the conversation you were last in, not #general; what you'd started
   writing waits in each conversation, across trips to the floor; typing

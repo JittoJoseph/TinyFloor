@@ -219,7 +219,7 @@
     "fileFailed": "파일이 올라가지 않았어요. 다시 시도해 주세요.",
     "mentionSomeone": "멘션하기",
     "notifyTitle": "알림 켜기",
-    "notifyBody": "메시지, 멘션, 통화를 어느 창에서든.",
+    "notifyBody": "TinyFloor를 닫아도 메시지와 멘션을 받아요.",
     "notifyOn": "켜기",
     "notNow": "나중에"
   },
@@ -297,7 +297,7 @@
     "batterySaverNote": "층을 낮은 프레임 속도로 그려요. 다음에 들어올 때부터 적용돼요.",
     "desktop": "데스크톱",
     "desktopNotifications": "알림 표시",
-    "desktopNote": "TinyFloor가 다른 창에 열려 있을 때 받는 다이렉트 메시지, 멘션, 통화, 손 흔들기.",
+    "desktopNote": "TinyFloor를 닫아도 다이렉트 메시지와 멘션을 알려요. 통화와 손 흔들기는 다른 창에 열려 있을 때 알려요.",
     "desktopBlocked": "브라우저에서 차단했어요. 주소창 옆 아이콘에서 이 사이트의 알림을 허용하세요.",
     "turnOn": "켜기"
   },

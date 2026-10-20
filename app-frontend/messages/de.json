@@ -219,7 +219,7 @@
     "fileFailed": "Die Datei wurde nicht hochgeladen. Versuch es noch einmal.",
     "mentionSomeone": "Jemanden erwähnen",
     "notifyTitle": "Benachrichtigungen aktivieren",
-    "notifyBody": "Nachrichten, Erwähnungen und Anrufe, aus jedem Fenster.",
+    "notifyBody": "Nachrichten und Erwähnungen, auch wenn TinyFloor geschlossen ist.",
     "notifyOn": "Aktivieren",
     "notNow": "Nicht jetzt"
   },
@@ -297,7 +297,7 @@
     "batterySaverNote": "Zeichnet die Fläche mit niedrigerer Bildrate. Gilt beim nächsten Betreten.",
     "desktop": "Desktop",
     "desktopNotifications": "Benachrichtigungen anzeigen",
-    "desktopNote": "Direktnachrichten, Erwähnungen, Anrufe und Winken, während TinyFloor in einem anderen Fenster offen ist.",
+    "desktopNote": "Direktnachrichten und Erwähnungen, auch wenn TinyFloor geschlossen ist. Anrufe und Winken, während es in einem anderen Fenster offen ist.",
     "desktopBlocked": "Von deinem Browser blockiert. Erlaube Benachrichtigungen für diese Seite über das Symbol neben der Adressleiste.",
     "turnOn": "Aktivieren"
   },

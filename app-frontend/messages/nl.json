@@ -219,7 +219,7 @@
     "fileFailed": "Dat bestand is niet geüpload. Probeer het opnieuw.",
     "mentionSomeone": "Iemand noemen",
     "notifyTitle": "Meldingen aanzetten",
-    "notifyBody": "Berichten, vermeldingen en oproepen, vanuit elk venster.",
+    "notifyBody": "Berichten en vermeldingen, ook als TinyFloor dicht is.",
     "notifyOn": "Aanzetten",
     "notNow": "Niet nu"
   },
@@ -297,7 +297,7 @@
     "batterySaverNote": "Tekent de vloer met een lagere framerate. Geldt de volgende keer dat je binnenkomt.",
     "desktop": "Bureaublad",
     "desktopNotifications": "Meldingen tonen",
-    "desktopNote": "Directe berichten, vermeldingen, oproepen en zwaaien, terwijl TinyFloor in een ander venster open staat.",
+    "desktopNote": "Directe berichten en vermeldingen, ook als TinyFloor dicht is. Oproepen en zwaaien terwijl het in een ander venster open staat.",
     "desktopBlocked": "Geblokkeerd door je browser. Sta meldingen voor deze site toe via het pictogram naast de adresbalk.",
     "turnOn": "Aanzetten"
   },

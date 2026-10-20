@@ -219,7 +219,7 @@
     "fileFailed": "Tiedosto ei latautunut. Yritä uudelleen.",
     "mentionSomeone": "Mainitse joku",
     "notifyTitle": "Ota ilmoitukset käyttöön",
-    "notifyBody": "Viestit, maininnat ja puhelut, mistä tahansa ikkunasta.",
+    "notifyBody": "Viestit ja maininnat, myös kun TinyFloor on suljettu.",
     "notifyOn": "Ota käyttöön",
     "notNow": "Ei nyt"
   },
@@ -297,7 +297,7 @@
     "batterySaverNote": "Piirtää kerroksen pienemmällä kuvataajuudella. Tulee voimaan seuraavalla kerralla.",
     "desktop": "Työpöytä",
     "desktopNotifications": "Näytä ilmoitukset",
-    "desktopNote": "Yksityisviestit, maininnat, puhelut ja vilkutukset, kun TinyFloor on auki toisessa ikkunassa.",
+    "desktopNote": "Yksityisviestit ja maininnat, myös kun TinyFloor on suljettu. Puhelut ja vilkutukset, kun se on auki toisessa ikkunassa.",
     "desktopBlocked": "Selaimesi estää ne. Salli tämän sivuston ilmoitukset osoiterivin vieressä olevasta kuvakkeesta.",
     "turnOn": "Ota käyttöön"
   },

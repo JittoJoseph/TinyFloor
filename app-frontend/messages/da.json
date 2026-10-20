@@ -219,7 +219,7 @@
     "fileFailed": "Filen blev ikke uploadet. Prøv igen.",
     "mentionSomeone": "Nævn nogen",
     "notifyTitle": "Slå notifikationer til",
-    "notifyBody": "Beskeder, omtaler og opkald, fra ethvert vindue.",
+    "notifyBody": "Beskeder og omtaler, også når TinyFloor er lukket.",
     "notifyOn": "Slå til",
     "notNow": "Ikke nu"
   },
@@ -297,7 +297,7 @@
     "batterySaverNote": "Tegner etagen med lavere billedhastighed. Gælder næste gang, du går ind.",
     "desktop": "Skrivebord",
     "desktopNotifications": "Vis notifikationer",
-    "desktopNote": "Direkte beskeder, omtaler, opkald og vink, mens TinyFloor er åben i et andet vindue.",
+    "desktopNote": "Direkte beskeder og omtaler, også når TinyFloor er lukket. Opkald og vink, mens det er åbent i et andet vindue.",
     "desktopBlocked": "Blokeret af din browser. Tillad notifikationer for siden via ikonet ved adresselinjen.",
     "turnOn": "Slå til"
   },

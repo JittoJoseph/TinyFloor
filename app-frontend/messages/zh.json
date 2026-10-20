@@ -219,7 +219,7 @@
     "fileFailed": "文件没有上传成功，请再试一次。",
     "mentionSomeone": "提及某人",
     "notifyTitle": "开启通知",
-    "notifyBody": "消息、提及和通话，在任何窗口都能收到。",
+    "notifyBody": "即使关闭了 TinyFloor，也能收到消息和提及。",
     "notifyOn": "开启",
     "notNow": "暂不"
   },
@@ -297,7 +297,7 @@
     "batterySaverNote": "以较低帧率绘制楼层。下次进入时生效。",
     "desktop": "桌面",
     "desktopNotifications": "显示通知",
-    "desktopNote": "TinyFloor 在其他窗口打开时，接收私信、提及、通话和挥手。",
+    "desktopNote": "即使关闭了 TinyFloor，也会通知私信和提及；在其他窗口打开时，还会通知通话和挥手。",
     "desktopBlocked": "已被浏览器阻止。请通过地址栏旁的图标允许本站的通知。",
     "turnOn": "开启"
   },

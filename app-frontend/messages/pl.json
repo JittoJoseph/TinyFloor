@@ -219,7 +219,7 @@
     "fileFailed": "Ten plik się nie wysłał. Spróbuj ponownie.",
     "mentionSomeone": "Wspomnij kogoś",
     "notifyTitle": "Włącz powiadomienia",
-    "notifyBody": "Wiadomości, wzmianki i połączenia, z każdego okna.",
+    "notifyBody": "Wiadomości i wzmianki, nawet gdy TinyFloor jest zamknięty.",
     "notifyOn": "Włącz",
     "notNow": "Nie teraz"
   },
@@ -297,7 +297,7 @@
     "batterySaverNote": "Rysuje piętro z mniejszą liczbą klatek. Działa od następnego wejścia.",
     "desktop": "Pulpit",
     "desktopNotifications": "Pokazuj powiadomienia",
-    "desktopNote": "Wiadomości prywatne, wzmianki, połączenia i machnięcia, gdy TinyFloor jest otwarty w innym oknie.",
+    "desktopNote": "Wiadomości prywatne i wzmianki, nawet gdy TinyFloor jest zamknięty. Połączenia i machnięcia, gdy jest otwarty w innym oknie.",
     "desktopBlocked": "Zablokowane przez przeglądarkę. Zezwól na powiadomienia dla tej strony przez ikonę obok paska adresu.",
     "turnOn": "Włącz"
   },

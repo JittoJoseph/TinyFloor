@@ -47,6 +47,36 @@ and a landing-page change doesn't rebuild the app.
   `web-shared/` and `shared-protocol/`. `tools/deploy.mjs` sends master to
   production and every other branch to preview.
 
+## Build times (20 October)
+
+Measured from Workers Builds' own records, the last ten builds of each:
+
+- **Builds run one at a time.** The account is on the Workers Free plan,
+  which builds one project at a time (Workers Paid builds six), so a push
+  that touches all four builds them in a row: about ten minutes before the
+  last is live, and an API change can wait five minutes behind the site.
+- **The site takes ~5 minutes**, and 133 seconds of it is uploading about
+  5,500 changed files: every built page is kept twice (Next's cache entry
+  and the plain files `static-pages.mjs` serves), and each build's id is in
+  all of them, so all 864 pages count as changed on every deploy. Building
+  the 946 pages took 48 seconds on one worker; Workers Builds has two cores
+  and Next uses one fewer than there are, so the config asks for two (28 s).
+- **The app takes ~3 minutes**: install ~20 s, compile ~21 s warm (50 s
+  when the config changes and webpack's cache is cold), type check ~10 s,
+  build traces and OpenNext's bundling ~35 s, upload ~15 s.
+- **The Workers take ~25 seconds** each; their time is the queue.
+- The site watched `shared-protocol/`, which it only takes types from, so
+  every protocol change rebuilt it; it no longer does.
+- **Turbopack builds the app in 51 s locally against webpack's 83 s**
+  (compile 14 s against 40 s, and no separate trace step), and keeps a
+  build cache in `.next/cache`, which Workers Builds restores. OpenNext
+  supports its output. What stands in the way is `web-shared/node_modules`:
+  one link, pointing at whichever frontend last ran. Webpack is told to look
+  in the building app's packages first; Turbopack has no such setting, and
+  with the link pointing at the site, the app's server bundle took
+  `next-intl`, `posthog-js` and others from the site's copies. A pnpm
+  workspace (one lockfile, `web-shared` as a package) removes the link.
+
 ## Getting onto the floor fast
 
 Measured on 15 October 2026 from India, opening an office on app.tinyfloor.com:

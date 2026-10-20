@@ -56,3 +56,35 @@ describe("status notes", () => {
     expect(ava.messages.some((message) => message.t === "note")).toBe(false);
   });
 });
+
+describe("a new name on the demo office's floor", () => {
+  let copy = 9000;
+
+  it("passes on the name someone took signing up from the floor, cleaned", async () => {
+    const room = `lobby-${copy++}`;
+    const ava = await Client.open(room, { sub: "ava", role: "guest" });
+    await ava.next("welcome");
+    const gil = await Client.open(room, { sub: "gil", name: "Mason", role: "guest" });
+    await gil.next("welcome");
+
+    gil.send({ t: "rename", name: "  Gil   Smith " });
+    expect(await ava.next("renamed")).toEqual({ t: "renamed", id: "gil", name: "Gil Smith" });
+
+    // Whoever walks in next sees the new name.
+    const cy = await Client.open(room, { sub: "cy", role: "guest" });
+    const welcome = await cy.next("welcome");
+    expect(welcome.players.find((player) => player.id === "gil")?.name).toBe("Gil Smith");
+  });
+
+  it("takes no new name in an office, where the name comes from the account", async () => {
+    const room = uniqueRoom();
+    const ava = await Client.open(room, { sub: "ava" });
+    await ava.next("welcome");
+    const ben = await Client.open(room, { sub: "ben" });
+    await ben.next("welcome");
+
+    ben.send({ t: "rename", name: "Someone Else" });
+    await settle();
+    expect(ava.messages.some((message) => message.t === "renamed")).toBe(false);
+  });
+});

@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Users } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
-import { character as cleanCharacter, saveIdentity } from "@/lib/identity";
+import { anyCharacter, character as cleanCharacter, saveIdentity } from "@/lib/identity";
 import { invitePath, officePath } from "@/lib/links";
 import { EntryDetail, EntryHeader, EntryShell } from "@/components/entry/EntryShell";
 import { OfficeMark, YouSummary } from "@/components/entry/DoorParts";
@@ -18,7 +18,7 @@ import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
 import { Agree } from "@/components/legal/Agree";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { posthogLog } from "@/lib/posthog-log";
-import { withPostHog } from "@/lib/analytics";
+import { track, withPostHog } from "@/lib/analytics";
 import { Link } from "@/lib/i18n/navigation";
 
 export interface InvitePreview {
@@ -54,6 +54,8 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
   const [busy, setBusy] = useState(false);
   const [googling, setGoogling] = useState(false);
   const [error, setError] = useState("");
+  // Someone new is offered a character at random, so a team that presses straight through doesn't arrive as eight of one.
+  const [anyone] = useState(anyCharacter);
 
   useEffect(() => {
     if (initialPreview) return;
@@ -77,7 +79,15 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
   // Google's name to confirm, for a Google account; an email sign-up types it.
   const suggested = user?.google ? user.displayName : "";
   const name = (typedName ?? suggested).trim();
-  const character = cleanCharacter(pickedCharacter ?? user?.character ?? "Adam");
+  const character = cleanCharacter(pickedCharacter ?? (introduced ? user.character : anyone));
+
+  // The door, once it knows what it's showing: the funnel from an invite link to the floor (docs/analytics.md).
+  const seen = useRef(false);
+  useEffect(() => {
+    if (seen.current || isLoading || state !== "ready") return;
+    seen.current = true;
+    track("door_viewed", { door: "invite", step });
+  }, [isLoading, state, step]);
 
   /** Into the office, then home, where it is waiting with a way to walk in. */
   const join = async () => {
@@ -89,7 +99,12 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
         saveIdentity({ name, character });
       }
       const { officeId } = await api.acceptInvite(token);
-      withPostHog((posthog) => posthog.capture("office_invite_accepted", { office_id: officeId }));
+      withPostHog((posthog) =>
+        posthog.capture("office_invite_accepted", {
+          office_id: officeId,
+          character: introduced ? "account" : pickedCharacter === null ? "offered" : "chosen",
+        }),
+      );
       posthogLog.info("Office invitation acceptance completed");
       router.replace(officePath(officeId));
     } catch (err) {
@@ -170,7 +185,10 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
           event.preventDefault();
           if (full) return;
           setWentBack(false);
-          if (step === "name" && name) setIdentity("character");
+          if (step === "name" && name) {
+            track("door_name_entered", { door: "invite", name: typedName === null && suggested ? "suggested" : "typed" });
+            setIdentity("character");
+          }
           else if (step === "character" || step === "join") void join();
         }}
       >
@@ -186,7 +204,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
                 <ActionLink href={emailHref}>{t("createAccount")}</ActionLink>
               )
             ) : (
-              <ActionButton type="submit" disabled={full || (step === "name" && !name)} busy={busy} busyLabel={t("joining")}>
+              <ActionButton type="submit" disabled={full || (step === "name" && !name)} busy={busy} busyLabel={t("joining")} shine>
                 {step === "name" ? tEntry("continue") : t("join", { office: invite.officeName })}
               </ActionButton>
             )

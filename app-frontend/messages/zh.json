@@ -61,7 +61,9 @@
     "nameBody": "显示在你的角色和聊天中。",
     "characterTitle": "选择你的角色",
     "characterBody": "这就是你在楼层上的样子。",
-    "thatsMe": "就是我"
+    "thatsMe": "就是我",
+    "pickCharacter": "先选一个角色",
+    "anotherName": "换一个人"
   },
   "room": {
     "connecting": "连接中...",
@@ -318,9 +320,9 @@
   "lobby": {
     "eyebrow": "试用 TinyFloor",
     "title": "演示办公室",
-    "subtitle": "在为团队创建办公室之前，先在真实的 TinyFloor 办公室里走走。选一个名字和角色即可开始。",
+    "subtitle": "在为团队创建办公室之前，先逛一逛真实的 TinyFloor 办公室。",
     "peopleSubtitle": "此刻在演示办公室里的所有人。",
-    "door": "{here, plural, =0 {还没有人，来做第一个吧} other {现在有 # 人在里面}}",
+    "door": "{here, plural, =0 {现在很安静，可以随意看看} other {现在有 # 人在里面}}",
     "officesOnly": {
       "channels": {
         "title": "频道属于办公室",
@@ -350,6 +352,10 @@
       "placeholderName": "你的办公室",
       "create": "创建我的办公室",
       "free": "最多 3 人免费，无需绑卡。"
+    },
+    "officePrompt": {
+      "accountTitle": "保存到你的账户",
+      "accountBody": "这样它就一直属于你，团队也能找到它。只需几秒钟。"
     }
   },
   "office": {

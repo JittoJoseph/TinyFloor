@@ -26,9 +26,11 @@ export const ActionButton = forwardRef<
     disabled?: boolean;
     onClick?: () => void;
     state?: ButtonState;
+    /** The button this screen wants pressed: a glare runs across it while it can be (shared.css). */
+    shine?: boolean;
   }
 >(function ActionButton(
-  { children, busy, busyLabel, tone = "primary", icon, className, type = "button", disabled, onClick, state },
+  { children, busy, busyLabel, tone = "primary", icon, className, type = "button", disabled, onClick, state, shine },
   ref,
 ) {
   return (
@@ -41,7 +43,12 @@ export const ActionButton = forwardRef<
       loadingText={busyLabel ?? children}
       pressScale={0.97}
       icon={icon === null ? undefined : (icon ?? <Arrow />)}
-      className={cn(BASE, TONE[tone], className)}
+      className={cn(
+        BASE,
+        TONE[tone],
+        shine && !busy && !disabled && "shine",
+        className,
+      )}
     >
       {children}
     </StatefulButton>

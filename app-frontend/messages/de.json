@@ -61,7 +61,9 @@
     "nameBody": "Steht an deinem Charakter und im Chat.",
     "characterTitle": "Wähle deinen Charakter",
     "characterBody": "Das bist du auf der Etage.",
-    "thatsMe": "Das bin ich"
+    "thatsMe": "Das bin ich",
+    "pickCharacter": "Erst eine Figur wählen",
+    "anotherName": "Jemand anderes"
   },
   "room": {
     "connecting": "Verbinde...",
@@ -318,9 +320,9 @@
   "lobby": {
     "eyebrow": "TinyFloor ausprobieren",
     "title": "Das Demo-Büro",
-    "subtitle": "Lauf durch ein echtes TinyFloor-Büro, bevor du eins für dein Team erstellst. Wähle einen Namen und eine Figur, um loszulegen.",
+    "subtitle": "Lauf durch ein echtes TinyFloor-Büro, bevor du eins für dein Team erstellst.",
     "peopleSubtitle": "Alle, die gerade im Demo-Büro sind.",
-    "door": "{here, plural, =0 {Noch niemand drin – sei als Erstes da} one {# Person gerade drin} other {# Personen gerade drin}}",
+    "door": "{here, plural, =0 {Gerade ruhig, du kannst dich in Ruhe umsehen} one {# Person gerade drin} other {# Personen gerade drin}}",
     "officesOnly": {
       "channels": {
         "title": "Kanäle gibt es mit einem Büro",
@@ -350,6 +352,10 @@
       "placeholderName": "Dein Büro",
       "create": "Mein Büro einrichten",
       "free": "Kostenlos für bis zu 3 Personen. Keine Karte nötig."
+    },
+    "officePrompt": {
+      "accountTitle": "In deinem Konto speichern",
+      "accountBody": "Damit es deins bleibt und dein Team es findet. Dauert nur ein paar Sekunden."
     }
   },
   "office": {

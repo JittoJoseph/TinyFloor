@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { emphasised } from "@/lib/words";
 import { CJK_HEADLINE, COLUMN, Closing, EYEBROW, INK, LEAD, MarketingShell, Questions } from "@/components/home/Blocks";
 import { READ } from "@/components/guides/ArticleSections";
+import { RelatedTools } from "./RelatedTools";
 
 /** What every free tool's page says around the tool itself (lib/tools). */
 export interface ToolCopy {
@@ -91,11 +92,13 @@ export function ToolPage({
               <h2 className="text-[22px] font-semibold tracking-[-0.02em]">{copy.fit.title}</h2>
               <p className="mt-3 text-[16px] leading-[1.7] text-foreground/80">{copy.fit.body}</p>
               <div className="mt-6">
-                <Link href="/lobby" className={INK}>
+                <Link href="/lobby" data-cta="tool" className={INK}>
                   {copy.fit.cta}
                 </Link>
               </div>
             </aside>
+
+            <RelatedTools locale={locale} path={path} />
           </div>
         </div>
       </article>

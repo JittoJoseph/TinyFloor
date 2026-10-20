@@ -216,3 +216,36 @@ work" over 1,000, easy; "daily standup tool" and "daily standup meeting
 template" over 100, easy; "virtual team building activities" over 1,000,
 medium; "meeting cost calculator" over 100, hard; world clocks and time-zone
 planners large but hard. "Virtual office software" itself is just over 100.
+
+## Where search stands, and four more tools (20 October)
+
+Search Console, 28 days to 17 October: 96 clicks, 3,630 impressions,
+average position 25 (property `sc-domain:tinyfloor.com`, under the second
+Google account in the team's Chrome). PostHog, 30 days: Google now sends the
+most visitors (315 people), then direct (237) and GitHub (62). The pages
+with impressions are the proximity chat guide (position 8, gamers), the
+virtual office page (43), the team building guide (77), the Gather
+alternative (38), the best virtual office software guide (29), Gather
+pricing (10) and games for virtual meetings (15).
+
+More free tools, chosen from Ahrefs' free keyword tool (US, rough bands)
+for demand, ease and who searches:
+
+| Tool | Searches | Difficulty | Why |
+|---|---|---|---|
+| Daily standup template | "daily standup template", "agenda", "tool": >100 each | easy | Small software teams, the audience we want most. |
+| Would you rather questions for work | >1,000, plus "this or that questions for work" >100 | easy | Next to the icebreakers; same rules. |
+| Two truths and a lie ideas | >1,000 | easy | The team game people search ideas for. |
+| Out of office message generator | "out of office message" >10,000; "examples" >1,000 | easy | Broad, but it's what a status note does. |
+
+Left out: "meeting cost calculator" (>100, hard), "random team generator"
+(>10,000, hard, sports fans), "slack status ideas" (<100). Retrospective
+ideas (>100, easy) and team building questions (>1,000, easy, close to the
+icebreakers) are the next candidates.
+
+The new tools are in English, Portuguese and Spanish only, where visitors
+and sign-ups come from, rather than eighteen thin copies: the page, the
+sitemap, the language versions in its head and the footer's language menu
+know which languages a tool has (`lib/tools/catalog.ts`), and the middleware
+sends any other language to the 404. Every tool page ends with the other
+tools in its language, and `/tools` lists them all, in every language.

@@ -18,13 +18,19 @@ asked about teams, not only people. In the demo office, `place: lobby`.
 
 | Event | Properties | Answers |
 |---|---|---|
-| `account_signed_up` | `sign_in_method` (google, google_one_tap, password) | Who's new, and how they came in. A Google sign-in that creates an account counts here, not as a sign-in. |
-| `account_signed_in`, `guest_session_started` | | |
-| `profile_introduced` | | A new account got past saying who it is, to its first door. |
-| `office_created` | `office_id` | |
+| `account_signed_up` | `sign_in_method` (google, google_one_tap, password); `place: lobby` when made on the demo floor | Who's new, and how they came in. A Google sign-in that creates an account counts here, not as a sign-in. |
+| `account_signed_in` | | |
+| `demo_cta_clicked` | `placement` (hero, closing, faq, guide, tool, nav, footer, page) | A link into the demo office was clicked on the marketing site, and where on the page. The first step of the demo's funnel. |
+| `door_viewed` | `door` (demo, introduce, invite), `step` on invites | Someone reached a door: the demo office's, a new account's first one, or an invitation's. Once per door. |
+| `door_name_entered` | `door` (introduce, invite), `name` (suggested, typed) | Past the name step of a two-step door. The demo's door has one step, so it has none. |
+| `guest_session_started` | `door`, `name` (suggested, remembered, typed), `character` (offered, chosen) | Walked in at the demo office's door, and whether they kept the name and character it offered. |
+| `door_failed` | `door`, `reason` | The demo door couldn't let them in (the bot check, the network, too many tries). |
+| `profile_introduced` | `character` (offered, chosen) | A new account got past saying who it is, to its first door. |
+| `office_created` | `office_id`, `from` (demo_prompt when made from the demo office's prompt) | |
+| `office_prompt_shown` | | The demo office asked someone who had looked around for a while to name their own office. |
 | `invite_opened` | | The invite dialog opened; against `invite_sent`, whether it loses people. |
 | `invite_sent` | `channel` (link, message, email, share) | Does the maker bring the team? |
-| `office_invite_accepted` | `office_id` | A teammate arrived. |
+| `office_invite_accepted` | `office_id`, `character` (offered, chosen, account) | A teammate arrived. |
 | `office_joined_by_domain` | `office_id`, `members` | A colleague found their team's office by their work email and walked in, without the link. |
 | `office_join_requested` | `office_id`, `members` | They found it, but its admins let people in: they asked. |
 | `floor_entered` | `people_here`, `load_ms` | Who shows up, and to whom. The base of the one number. `load_ms` is the wait from the floor being asked for to it showing. |
@@ -95,3 +101,63 @@ separate service for it. The recorder is bundled with the analytics code
 rather than fetched by that name. Next's trailing-slash redirect is off,
 because PostHog's paths end in `/`; the middleware strips slashes from every
 other address instead. A laptop still talks to PostHog directly.
+
+## The demo office's door, one step (20 October)
+
+Of the people who reached the demo office's door, 29% walked in, and every
+one of them reached the floor: the door was the leak, not the floor. It asked
+for a name, then a character. Now a name is enough: someone new walks in as
+a character picked at random, someone back as the one they had, and choosing
+is a link under the button. It also said "Nobody inside yet, be the first",
+which made an empty office sound like a failure; it says it's quiet, so you
+can look around. Watch the door's walk-in rate against the 29%.
+
+## The demo door, one press; and the onboarding funnels (20 October)
+
+The demo office's door now offers everything: a name (a common American
+first name, with a die for another, or the one they used last time) and a
+character picked at random, shown beside the name and a tap away from
+choosing. One press and they're on the floor. A separate character step
+would only add a press for something already chosen, so it stays a choice,
+not a step. Offices still ask for a real name and a character, the
+character pre-picked at random, so a team that presses straight through
+doesn't arrive as eight of the same one. The button each of these doors
+wants pressed, and the demo office's button on the home page, has a glare
+crossing it every few seconds.
+
+Each way in now has a funnel, on the Onboarding dashboard in PostHog:
+
+- **Demo office, site to floor:** `demo_cta_clicked` → `door_viewed` (demo)
+  → `guest_session_started` (demo) → `floor_entered` (lobby), within an hour.
+- **Demo door:** the same without the click, for everyone who reached the
+  door however they came.
+- **New account:** `account_signed_up` → `door_viewed` (introduce) →
+  `door_name_entered` → `profile_introduced` → `floor_entered` (office),
+  within a day.
+- **Invite link:** `door_viewed` (invite) → `door_name_entered` (optional:
+  people with an account skip it) → `office_invite_accepted` →
+  `floor_entered` (office).
+
+Outcome events that already existed are the last step of each door rather
+than a new "pressed the button" event beside them, so nothing is counted
+twice. `demo_cta_clicked` is one listener for the whole marketing site, so a
+new link into the demo office is counted without anyone remembering to. It
+joins PostHog's queue and leaves with the page, the way the live site's
+autocaptured clicks already arrive. From a laptop the marketing site's
+events after its first few were refused (503), so check it on the live site;
+the preview sites send nothing to PostHog.
+
+## Asking from inside the demo office (20 October)
+
+Someone looking around the demo office is asked twice, each once per visit,
+and only while the floor is in view: after 45 seconds there, Google's One
+Tap offers a guest an account; after two and a half minutes, a door over the
+floor asks them to name their team's office (not again from that browser for
+a week). One Tap makes the guest an account in place, the same id, so they
+stay on the floor as the same character and only the name on their tag
+changes, to their Google name (the room passes the new name on; it takes one
+only in the demo office). The office prompt takes the name, then an account
+for a guest (Google, or email by the sign-up page, which comes back to
+finish), makes the office and walks them into it. Watch `office_prompt_shown`
+against `office_created` with `from: demo_prompt`, and `account_signed_up`
+with `sign_in_method: google_one_tap` and `place: lobby`.

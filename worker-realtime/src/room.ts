@@ -7,6 +7,7 @@ import {
   HEARTBEAT_PING,
   HEARTBEAT_PONG,
   PRESENCE_STATUSES,
+  cleanDisplayName,
   cleanNote,
   liveNote,
   type StatusNote,
@@ -350,6 +351,9 @@ export class Room extends DurableObject<Env> {
       case "note":
         this.setNote(me, message.note);
         break;
+      case "rename":
+        this.rename(me, message.name);
+        break;
       case "board_sync":
         send(socket, { t: "board_state", strokes: this.board.strokes() });
         break;
@@ -504,6 +508,19 @@ export class Room extends DurableObject<Env> {
     if (!this.takeAction(me) || me.guest) return;
     me.note = cleanNote(note);
     this.broadcast({ t: "note", id: me.userId, note: me.note });
+  }
+
+  /**
+   * A new name for someone on the demo office's floor, who signed up with
+   * Google from it and took their Google name. Only there: in an office a name
+   * comes with the ticket, from the account, each time someone walks in.
+   */
+  private rename(me: Attachment, name: unknown): void {
+    if (!this.takeAction(me) || lobbyCopyNumber(me.room) === null) return;
+    const clean = cleanDisplayName(name);
+    if (!clean || clean === me.name) return;
+    me.name = clean;
+    this.broadcast({ t: "renamed", id: me.userId, name: clean });
   }
 
   private draw(socket: WebSocket, me: Attachment, message: object): void {

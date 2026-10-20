@@ -61,7 +61,9 @@
     "nameBody": "캐릭터와 채팅에 표시돼요.",
     "characterTitle": "캐릭터를 골라 주세요",
     "characterBody": "층에서의 내 모습이에요.",
-    "thatsMe": "이걸로 할게요"
+    "thatsMe": "이걸로 할게요",
+    "pickCharacter": "먼저 캐릭터 고르기",
+    "anotherName": "다른 사람"
   },
   "room": {
     "connecting": "연결 중...",
@@ -318,9 +320,9 @@
   "lobby": {
     "eyebrow": "TinyFloor 체험하기",
     "title": "데모 오피스",
-    "subtitle": "팀 오피스를 만들기 전에 실제 TinyFloor 오피스를 둘러보세요. 이름과 캐릭터를 고르면 시작할 수 있어요.",
+    "subtitle": "팀 오피스를 만들기 전에 진짜 TinyFloor 오피스를 둘러보세요.",
     "peopleSubtitle": "지금 데모 오피스에 있는 모든 사람이에요.",
-    "door": "{here, plural, =0 {아직 아무도 없어요. 첫 번째로 들어오세요} other {지금 #명이 있어요}}",
+    "door": "{here, plural, =0 {지금은 조용해서 마음껏 둘러볼 수 있어요} other {지금 #명이 있어요}}",
     "officesOnly": {
       "channels": {
         "title": "채널은 오피스에서 쓸 수 있어요",
@@ -350,6 +352,10 @@
       "placeholderName": "내 오피스",
       "create": "내 오피스 만들기",
       "free": "3명까지 무료. 카드 필요 없음."
+    },
+    "officePrompt": {
+      "accountTitle": "계정에 저장하세요",
+      "accountBody": "내 오피스로 남고 팀원도 찾을 수 있어요. 몇 초면 돼요."
     }
   },
   "office": {

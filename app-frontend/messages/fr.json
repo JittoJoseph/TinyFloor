@@ -61,7 +61,9 @@
     "nameBody": "Affiché sur ton personnage et dans le chat.",
     "characterTitle": "Choisis ton personnage",
     "characterBody": "C'est toi sur l'étage.",
-    "thatsMe": "C'est moi"
+    "thatsMe": "C'est moi",
+    "pickCharacter": "Choisir un personnage d'abord",
+    "anotherName": "Quelqu’un d’autre"
   },
   "room": {
     "connecting": "Connexion...",
@@ -318,9 +320,9 @@
   "lobby": {
     "eyebrow": "Essayez TinyFloor",
     "title": "Le bureau de démo",
-    "subtitle": "Faites le tour d'un vrai bureau TinyFloor avant d'en créer un pour votre équipe. Choisissez un nom et un personnage pour commencer.",
+    "subtitle": "Promenez-vous dans un vrai bureau TinyFloor avant d'en créer un pour votre équipe.",
     "peopleSubtitle": "Tous ceux qui sont dans le bureau de démo en ce moment.",
-    "door": "{here, plural, =0 {Personne pour l'instant, entrez le premier} one {# personne à l'intérieur} other {# personnes à l'intérieur}}",
+    "door": "{here, plural, =0 {C'est calme en ce moment, faites le tour} one {# personne à l'intérieur} other {# personnes à l'intérieur}}",
     "officesOnly": {
       "channels": {
         "title": "Les canaux viennent avec un bureau",
@@ -350,6 +352,10 @@
       "placeholderName": "Votre bureau",
       "create": "Créer mon bureau",
       "free": "Gratuit jusqu'à 3 personnes. Sans carte bancaire."
+    },
+    "officePrompt": {
+      "accountTitle": "Enregistrez-le dans votre compte",
+      "accountBody": "Pour qu’il reste à vous et que votre équipe le trouve. Quelques secondes suffisent."
     }
   },
   "office": {

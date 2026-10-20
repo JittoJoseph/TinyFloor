@@ -99,19 +99,22 @@ export function googleRoutes(router: Router): void {
       // Signing in from a guest session ends it; the guest stays behind as a guest.
       if (current?.isGuest) ctx.waitUntil(endSession(env, request));
     } else if (current?.isGuest) {
-      // A guest who signs up with Google keeps their name and character, chosen at the door.
+      // A guest who signs up with Google keeps the character chosen at the door and
+      // takes their Google name, often one the door suggested. The account is the
+      // guest made permanent, the same id, so they stay where they are on the floor.
+      const displayName = cleanDisplayName(google.name) || current.displayName;
       account = {
         id: current.id,
         email: google.email,
-        display_name: current.displayName,
+        display_name: displayName,
         character: current.character,
         google_sub: google.sub,
         introduced: 1,
       };
       await env.DB.batch([
         env.DB.prepare(
-          "UPDATE users SET email = ?, email_verified = 1, google_sub = ?, is_guest = 0, last_active_at = ? WHERE id = ?",
-        ).bind(google.email, google.sub, now, current.id),
+          "UPDATE users SET email = ?, email_verified = 1, google_sub = ?, display_name = ?, is_guest = 0, last_active_at = ? WHERE id = ?",
+        ).bind(google.email, google.sub, displayName, now, current.id),
         // The guest session is replaced by an account session below.
         env.DB.prepare("DELETE FROM sessions WHERE user_id = ?").bind(current.id),
       ]);

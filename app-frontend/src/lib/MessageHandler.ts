@@ -104,6 +104,10 @@ export class MessageHandler {
         this.playerManager.updatePlayerNote(message.id, message.note, () => this.dispatchPlayerList());
         this.dispatchPlayerList();
         break;
+      case "renamed":
+        this.playerManager.renamePlayer(message.id, message.name);
+        this.dispatchPlayerList();
+        break;
       case "board_state":
       case "board_draw":
       case "board_clear":

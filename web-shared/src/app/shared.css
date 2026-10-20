@@ -49,6 +49,103 @@ body {
   }
 }
 
+/*
+ * The one button a screen wants pressed: every few seconds a soft glare runs
+ * across it, like light along a blade, under the label. The same on every
+ * such button, the home page's and the doors', which are all ink: light on
+ * the dark ink, and on the light ink of the dark theme, a faint shadow. A
+ * button on another background sets its own --shine. Nothing for anyone who
+ * asked for less motion.
+ */
+:root {
+  --shine: rgb(255 255 255 / 0.32);
+}
+
+.dark {
+  --shine: rgb(0 0 0 / 0.13);
+}
+
+.shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* Under the label, over the button's own background (the button isolates it). */
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 30%, var(--shine) 50%, transparent 70%);
+  transform: translateX(-130%);
+  animation: shine 4s cubic-bezier(0.45, 0, 0.25, 1) 1.2s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-130%);
+  }
+  28%,
+  100% {
+    transform: translateX(130%);
+  }
+}
+
+/* Who someone walks in as (PersonaField): a new name fades in, a new
+   character settles into its circle, and the shuffle's arrows draw themselves
+   again. Nothing is left applied once they finish (backwards, not both), so
+   the text renders as crisply as any other. */
+@keyframes persona-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+.persona-fade {
+  animation: persona-fade 220ms ease-out backwards;
+}
+
+@keyframes persona-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+}
+
+.persona-pop {
+  animation: persona-pop 280ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@keyframes shuffle-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+
+.shuffle-draw path {
+  stroke-dasharray: 1;
+  animation: shuffle-draw 480ms cubic-bezier(0.65, 0, 0.35, 1) backwards;
+}
+
+/* The arrowheads follow their lines. */
+.shuffle-draw path:nth-child(even) {
+  animation-duration: 260ms;
+  animation-delay: 300ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shine::after {
+    display: none;
+  }
+  .persona-fade,
+  .persona-pop,
+  .shuffle-draw path {
+    animation: none;
+  }
+}
+
 /* A row that can be swiped sideways without a scrollbar sitting in the way. */
 .scrollbar-none {
   scrollbar-width: none;

@@ -61,7 +61,9 @@
     "nameBody": "Shown on your character and in chat.",
     "characterTitle": "Pick your character",
     "characterBody": "This is you on the floor.",
-    "thatsMe": "That's me"
+    "thatsMe": "That's me",
+    "pickCharacter": "Choose a character first",
+    "anotherName": "Someone else"
   },
   "room": {
     "connecting": "Connecting...",
@@ -318,9 +320,9 @@
   "lobby": {
     "eyebrow": "Try TinyFloor",
     "title": "The demo office",
-    "subtitle": "Walk around a real TinyFloor office before you make one for your team. Pick a name and a character to start.",
+    "subtitle": "Walk around a real TinyFloor office before you make one for your team.",
     "peopleSubtitle": "Everyone in the demo office right now.",
-    "door": "{here, plural, =0 {Nobody inside yet, be the first} one {# person inside now} other {# people inside now}}",
+    "door": "{here, plural, =0 {Quiet right now, so you can look around} one {# person inside now} other {# people inside now}}",
     "officesOnly": {
       "channels": {
         "title": "Channels come with an office",
@@ -350,6 +352,10 @@
       "placeholderName": "Your office",
       "create": "Make my office",
       "free": "Free for up to 3 people. No card needed."
+    },
+    "officePrompt": {
+      "accountTitle": "Save it to your account",
+      "accountBody": "So it stays yours and your team can find it. It takes a few seconds."
     }
   },
   "office": {

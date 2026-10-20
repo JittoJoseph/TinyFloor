@@ -10,6 +10,7 @@ import { AUTHOR } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { emphasised } from "@/lib/words";
 import { CJK_HEADLINE, COLUMN, Closing, H2, INK, LEAD, MarketingShell, Questions, quiet } from "@/components/home/Blocks";
+import { RelatedTools } from "@/components/tools/RelatedTools";
 import { ArticleContents, ArticleSections, READ, numberItems } from "./ArticleSections";
 
 /** "By Jitto Joseph" in the page's language, the name linking to LinkedIn wherever the language puts it. */
@@ -110,7 +111,7 @@ export async function GuidePage({ guide, locale }: { guide: Guide; locale: strin
               <h2 className="text-[22px] font-semibold tracking-[-0.02em]">{copy.fit.title}</h2>
               <p className="mt-3 text-[16px] leading-[1.7] text-foreground/80">{copy.fit.body}</p>
               <div className="mt-6 flex flex-wrap items-center gap-2">
-                <Link href="/lobby" className={INK}>
+                <Link href="/lobby" data-cta="guide" className={INK}>
                   {t("fitCta")}
                 </Link>
                 {guide.pages.map((key) => (
@@ -125,6 +126,8 @@ export async function GuidePage({ guide, locale }: { guide: Guide; locale: strin
                 ))}
               </div>
             </aside>
+
+            <RelatedTools locale={locale} path={path} />
           </div>
         </div>
       </article>

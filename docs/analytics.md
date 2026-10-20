@@ -95,3 +95,13 @@ separate service for it. The recorder is bundled with the analytics code
 rather than fetched by that name. Next's trailing-slash redirect is off,
 because PostHog's paths end in `/`; the middleware strips slashes from every
 other address instead. A laptop still talks to PostHog directly.
+
+## The demo office's door, one step (21 October)
+
+Of the people who reached the demo office's door, 29% walked in, and every
+one of them reached the floor: the door was the leak, not the floor. It asked
+for a name, then a character. Now a name is enough: someone new walks in as
+a character picked at random, someone back as the one they had, and choosing
+is a link under the button. It also said "Nobody inside yet, be the first",
+which made an empty office sound like a failure; it says it's quiet, so you
+can look around. Watch the door's walk-in rate against the 29%.

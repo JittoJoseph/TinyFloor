@@ -71,6 +71,54 @@ work happens. What we don't build, though each would raise usage numbers:
   we can say out loud: TinyFloor won't keep you on camera when nobody's
   talking.
 
+## What a team needs before it drops its other tools (20 October)
+
+The rail (chat, meetings, people, settings) was the step that made TinyFloor
+something a team could use instead of a toy beside Slack. Where we stand
+after it, from PostHog (30 days to 20 October) and the admin:
+
+- **Teams try it for one sitting and don't come back.** 26 people reached an
+  office floor; 20 of them on one day only. Of five offices that ever had two
+  or more people in them, the busiest (five people) spent 55 minutes walking
+  in one after another, calling and meeting (11 calls, 19 meeting joins),
+  and never opened it again. Nobody was turned away or shown a price.
+- **People mostly arrive to an empty floor**: 46 of 60 arrivals found nobody
+  there. The median visit to an office lasts 73 seconds.
+- **Meetings are the most used thing after the floor**, chat the least: 27
+  people opened Chat and 4 sent anything; Floor is the most clicked thing in
+  it. People also try meetings alone (18 of 32 office meeting joins).
+
+What the tools a small team already uses do that we don't (checked in the
+code on 20 October):
+
+- **Nothing reaches you when you aren't looking.** There are no system
+  notifications at all: a message or a call only makes a sound while the
+  office's tab is open, and nothing at all once it's closed. Slack and every
+  virtual office with a desktop app (Gather, Roam, Kumospace) notify.
+- **A meeting can't be sent to anyone.** Office meetings have no link a
+  client, candidate or guest can open, and no time: nothing can go in a
+  calendar invite, so scheduled and external calls stay in Meet or Zoom.
+  Gather leads its new version with Google Calendar ("create and join
+  meetings in one click"; Outlook next) and Roam has a booking lobby for
+  outside guests.
+- **Chat lacks what makes Slack work for a team**: @mentions that reach the
+  person, threads, message search, and files (images say "shortly").
+- **It's a tab, not an app.** The site is installable (a manifest with
+  standalone display) but nothing offers it. The floor draws 60 frames a
+  second all day unless battery saver is on, which is what a window left
+  open on a laptop pays for.
+- **Presence only exists while the tab is open**: closed, you are "Not on
+  the floor", with no calendar status ("In a meeting until 3") the way
+  Gather's calendar sync sets it.
+
+Outside, the advice that recurs for moving a team into a virtual office is
+behavioural, not a feature: run one existing recurring meeting there first,
+start with a few people who already work together, and have the lead be
+there visibly (SoWork); and keep the common hours modest (core-hours
+guides). Reviews of Gather and Kumospace complain about price per seat,
+audio problems, missing integrations and heavy clients, rarely about
+missing features on the map.
+
 ## Small decisions worth remembering
 
 - **"Office", not "workspace".** The whole product is the metaphor (a floor,

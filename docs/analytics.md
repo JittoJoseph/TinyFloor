@@ -141,10 +141,11 @@ Each way in now has a funnel, on the Onboarding dashboard in PostHog:
 Outcome events that already existed are the last step of each door rather
 than a new "pressed the button" event beside them, so nothing is counted
 twice. `demo_cta_clicked` is one listener for the whole marketing site, so a
-new link into the demo office is counted without anyone remembering to. In
-development it doesn't reach PostHog: events sent after the page's first
-ones were refused (503) when the browser went to PostHog directly; the live
-and preview sites go through the relay.
+new link into the demo office is counted without anyone remembering to. It
+joins PostHog's queue and leaves with the page, the way the live site's
+autocaptured clicks already arrive. From a laptop the marketing site's
+events after its first few were refused (503), so check it on the live site;
+the preview sites send nothing to PostHog.
 
 ## Asking from inside the demo office (20 October)
 

@@ -10,6 +10,7 @@ import { AUTHOR } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { emphasised } from "@/lib/words";
 import { CJK_HEADLINE, COLUMN, Closing, H2, INK, LEAD, MarketingShell, Questions, quiet } from "@/components/home/Blocks";
+import { RelatedTools } from "@/components/tools/RelatedTools";
 import { ArticleContents, ArticleSections, READ, numberItems } from "./ArticleSections";
 
 /** "By Jitto Joseph" in the page's language, the name linking to LinkedIn wherever the language puts it. */
@@ -125,6 +126,8 @@ export async function GuidePage({ guide, locale }: { guide: Guide; locale: strin
                 ))}
               </div>
             </aside>
+
+            <RelatedTools locale={locale} path={path} />
           </div>
         </div>
       </article>

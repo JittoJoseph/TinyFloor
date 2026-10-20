@@ -245,3 +245,14 @@ missing features on the map.
   anywhere on the page writes in the box; Up in an empty box edits your last
   message, and finishing the edit hands the cursor back. Sending always
   shows what you sent, links open, and on a phone Enter is a new line.
+  (20 October) It goes there directly: the rail's Chat link is that
+  conversation, so #general no longer shows for a moment first. Its messages
+  are fetched as soon as the chat connects, and any conversation's when the
+  pointer rests on it in the list, so most open with their messages already
+  there; one that has to wait shows nothing (not its empty-conversation
+  intro) and fades its messages in, and a message said after it opened eases
+  into place. After a dropped connection the open conversation is read again,
+  so what was said meanwhile appears. A file taken out of the box, or left in
+  it, is deleted rather than kept with no message showing it. One attach
+  button takes pictures and files alike; a second, pictures-only button would
+  be clutter, and the system's picker already offers photos.

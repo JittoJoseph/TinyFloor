@@ -1,4 +1,4 @@
-import { exports } from "cloudflare:workers";
+import { env, exports } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
 import { call, makeUser, SITE, type TestUser } from "./helpers";
 
@@ -72,5 +72,21 @@ describe("files in chat", () => {
     const { file } = (await (await upload(cy, officeId, "x", "application/pdf")).json()) as { file: { key: string } };
     expect((await read(dee, file.key)).status).toBe(404);
     expect((await read(cy, `att/${officeId}/missing.pdf`)).status).toBe(404);
+  });
+
+  it("lets whoever sent a file up throw it away, and nobody else", async () => {
+    const eve = await makeUser("Eve");
+    const officeId = await officeOf(eve);
+    const fay = await makeUser("Fay");
+    await env.DB.prepare("INSERT INTO memberships (office_id, user_id, role, joined_at) VALUES (?, ?, 'member', ?)").bind(officeId, fay.id, Date.now()).run();
+    const { file } = (await (await upload(eve, officeId, "x", "application/pdf")).json()) as { file: { key: string } };
+    const path = `/v1/files/${file.key.slice("att/".length)}`;
+
+    expect((await call(fay, "DELETE", path)).status).toBe(403);
+    expect((await read(eve, file.key)).status).toBe(200);
+    expect((await call(eve, "DELETE", path)).status).toBe(200);
+    expect((await read(eve, file.key)).status).toBe(404);
+    // Already gone is fine.
+    expect((await call(eve, "DELETE", path)).status).toBe(200);
   });
 });

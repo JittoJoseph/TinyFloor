@@ -44,13 +44,11 @@ import { addToComposer, Composer, focusComposer } from "./chat/Composer";
 import { HelpTicket } from "./HelpTicket";
 import { Logo } from "@/components/app/Logo";
 import { help, SUPPORT_CHANNEL, useHelp } from "@/lib/help";
-import { jumpTo, lastConversation, rememberConversation, takeJump } from "@/lib/chatMemory";
-import { upload } from "@/lib/chatFiles";
+import { conversationToOpen, jumpTo, rememberConversation, takeJump } from "@/lib/chatMemory";
+import { useWide } from "@/lib/hooks/use-wide";
+import { discard, upload } from "@/lib/chatFiles";
 import { mentionsIn } from "@/lib/mentions";
 import type { ChatMessage } from "@shared/chat";
-
-/** Wide enough that a conversation shows beside the list, rather than instead of it. */
-const WIDE = "(min-width: 768px)";
 
 /**
  * Chat: channels and direct messages, beside the floor. The same screen in an
@@ -73,14 +71,30 @@ export function ChatView({ channel }: { channel?: string }) {
   const [jump, setJump] = useState(false);
   const [dragging, setDragging] = useState(false);
 
-  const open = channel ?? GENERAL_CHANNEL;
+  // Chat from a bare address (an old link, or a phone turned wide) opens where you left it,
+  // straight away rather than on #general first; the address catches up just after.
+  // The rail's link already goes there. On a phone the bare address is the list.
+  const wide = useWide();
+  // Who you are is known from your session before the chat has connected, so a
+  // direct message opened in that first moment still has both its people.
+  const me = user?.id ?? state.me;
+  const remembered = useMemo(
+    () =>
+      channel || !wide
+        ? null
+        : conversationToOpen(place.id, (last) => {
+            const pairOf = dmMembers(last);
+            // A lobby direct message lasts only while you're both there, so it isn't reopened.
+            if (pairOf) return !lobby && pairOf.every((id) => id === me || place.people.some((one) => one.id === id));
+            return !state.ready || state.channels.some((one) => one.id === last);
+          }),
+    [channel, wide, place.id, place.people, lobby, me, state.ready, state.channels],
+  );
+  const open = channel ?? remembered ?? GENERAL_CHANNEL;
   const support = open === SUPPORT_CHANNEL;
   // Up in an empty box: edit your last message here.
   const [editLast, setEditLast] = useState(0);
   const { ticket, view: ticketView } = useHelp();
-  // Who you are is known from your session before the chat has connected, so a
-  // direct message opened in that first moment still has both its people.
-  const me = user?.id ?? state.me;
   const people = place.people;
   const personById = useMemo(() => new Map(people.map((one) => [one.id, one])), [people]);
   const names = useMemo(() => new Map(people.map((one) => [one.id, one.displayName])), [people]);
@@ -132,8 +146,8 @@ export function ChatView({ channel }: { channel?: string }) {
     return () => chat.watch(null);
   }, [open, support, state.ready]);
   useEffect(() => {
-    if (!support && state.ready && !state.history[open]) chat.older(open);
-  }, [support, state.ready, state.history, open]);
+    if (!support && state.ready) chat.warm(open);
+  }, [support, state.ready, open]);
   // The ticket is read often while Chat is open, so the team's answers turn up here.
   useEffect(() => {
     void help.refresh(true);
@@ -149,17 +163,9 @@ export function ChatView({ channel }: { channel?: string }) {
     }
   }, [broken, router, place.paths, place.id]);
 
-  // Chat, from the rail, opens where you left it: the conversation you were last in, if it's still there.
-  // On a phone the bare address is the list, which is where Chat starts there.
   useEffect(() => {
-    if (channel || !state.ready || !window.matchMedia(WIDE).matches) return;
-    const last = lastConversation(place.id);
-    if (!last || last === GENERAL_CHANNEL) return;
-    const pairOf = dmMembers(last);
-    const there = pairOf ? pairOf.every((id) => id === me || personById.has(id)) : state.channels.some((one) => one.id === last);
-    if (there) router.replace(place.paths.chat(last));
-    else rememberConversation(place.id, null);
-  }, [channel, state.ready, state.channels, place.id, place.paths, personById, me, router]);
+    if (remembered) router.replace(place.paths.chat(remembered));
+  }, [remembered, router, place.paths]);
   useEffect(() => {
     if (channel && !broken && channel !== SUPPORT_CHANNEL) rememberConversation(place.id, channel);
   }, [channel, broken, place.id]);
@@ -324,6 +330,7 @@ export function ChatView({ channel }: { channel?: string }) {
                 <Row
                   key={one.id}
                   href={place.paths.chat(one.id)}
+                  warm={one.id}
                   active={one.id === open}
                   unread={one.unread}
                   count={one.mentions ?? 0}
@@ -347,6 +354,7 @@ export function ChatView({ channel }: { channel?: string }) {
                 <Row
                   key={person.id}
                   href={place.paths.chat(dmChannelId(me, person.id))}
+                  warm={lobby ? undefined : dmChannelId(me, person.id)}
                   active={open === dmChannelId(me, person.id)}
                   unread={dm?.unread ?? 0}
                   count={dm?.unread ?? 0}
@@ -498,6 +506,8 @@ export function ChatView({ channel }: { channel?: string }) {
           onEdit={(line, body) => chat.edit(Number(line.id), body, open, mentionsIn(body, mentionable, me))}
           names={names}
           target={target?.channel === open ? String(target.seq) : null}
+          // A lobby direct message is never stored, so there's nothing to wait for.
+          loading={!history && !(lobby && pair)}
           onDelete={(line) => chat.remove(Number(line.id), open)}
           personCard={personCard}
           intro={
@@ -559,7 +569,8 @@ export function ChatView({ channel }: { channel?: string }) {
           placeholder={pair ? t("sayTo", { name: title }) : t("say", { channel: `#${title}` })}
           onSend={(text, files) => chat.say(open, text, files, mentionsIn(text, mentionable, me))}
           onFiles={onFiles}
-          upload={lobby ? undefined : (file, progress) => upload(place.id, file, progress)}
+          upload={lobby ? undefined : (file, progress, signal) => upload(place.id, file, progress, signal)}
+          discard={lobby ? undefined : discard}
           people={mentionable}
           draftKey={`${place.id}:${open}`}
           onEditLast={() => setEditLast((was) => was + 1)}
@@ -643,6 +654,7 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
 
 function Row({
   href,
+  warm,
   onClick,
   active,
   unread,
@@ -652,6 +664,8 @@ function Row({
   trailing,
 }: {
   href?: string;
+  /** The conversation it opens, fetched as the pointer rests on it so it opens with its messages. */
+  warm?: string;
   onClick?: () => void;
   active: boolean;
   /** Anything unread makes the row bold. */
@@ -691,7 +705,14 @@ function Row({
     </>
   );
   return href ? (
-    <Link href={href} aria-current={active ? "page" : undefined} onClick={active ? focusComposer : undefined} className={className}>
+    <Link
+      href={href}
+      aria-current={active ? "page" : undefined}
+      onClick={active ? focusComposer : undefined}
+      onPointerEnter={warm ? () => chat.warm(warm) : undefined}
+      onFocus={warm ? () => chat.warm(warm) : undefined}
+      className={className}
+    >
       {body}
     </Link>
   ) : (

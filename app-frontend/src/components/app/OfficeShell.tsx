@@ -26,7 +26,9 @@ import { FloorNudges } from "./FloorNudges";
 import { DesktopAlerts } from "./DesktopAlerts";
 import { WelcomeNote } from "./WelcomeNote";
 import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
-import { dmChannelId } from "@shared/chat";
+import { dmChannelId, dmMembers } from "@shared/chat";
+import { conversationToOpen } from "@/lib/chatMemory";
+import { useWide } from "@/lib/hooks/use-wide";
 import { rememberOffice } from "@/lib/lastOffice";
 import { withPostHog } from "@/lib/analytics";
 import { earlyTicket, warmFloor } from "@/lib/floorWarmup";
@@ -83,6 +85,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   // The ticket with the TinyFloor team lives in Chat, so what's new in it counts there too.
   const helpUnread = useHelp().ticket?.unread ?? 0;
   const inMeetings = usePeopleInMeetings();
+  const wide = useWide();
   const overview = read?.overview ?? null;
   const office = overview?.office ?? null;
   const members = overview?.members ?? [];
@@ -194,6 +197,10 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
 
   const floor = officePath(office.id);
   const chatPath = officeChatPath(office.id);
+  // Chat goes straight to the conversation you were last in (on a phone, to the list).
+  const lastChat = wide
+    ? conversationToOpen(office.id, (last) => dmMembers(last)?.every((id) => id === user.id || members.some((one) => one.id === id)) ?? true)
+    : null;
   const people = officePeoplePath(office.id);
   const meetings = officeMeetingsPath(office.id);
   const settingsPath = officeSettingsPath(office.id);
@@ -239,7 +246,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
                   icon: RailIcons.floor,
                   active: !onChat && !onPeople && !onMeetings && !onSettings,
                 },
-                { key: "chat", href: chatPath, label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread + helpUnread },
+                { key: "chat", href: lastChat ? officeChatPath(office.id, lastChat) : chatPath, label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread + helpUnread },
                 {
                   key: "meetings",
                   href: meetings,

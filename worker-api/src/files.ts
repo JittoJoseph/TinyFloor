@@ -72,6 +72,17 @@ export function fileRoutes(router: Router): void {
       );
     })
 
+    // One that went up but was never sent: only whoever sent it up can take it back.
+    .add("DELETE", "/v1/files/:office/:name", async ({ request, env, ctx, params }) => {
+      const user = await requireAccount(env, request, ctx);
+      await requireOffice(env, params.office, user.id);
+      const key = `att/${params.office}/${params.name}`;
+      const object = await env.FILES.head(key);
+      if (object && object.customMetadata?.by !== user.id) throw new HttpError(403, "not_yours", "Only who shared a file can delete it");
+      if (object) await env.FILES.delete(key);
+      return json({ ok: true });
+    })
+
     // Reading one back: only someone in the office it was shared in.
     .add("GET", "/v1/files/:office/:name", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);

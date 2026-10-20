@@ -14,12 +14,16 @@ self.addEventListener("push", (event) => {
     return;
   }
   event.waitUntil(
-    self.registration.showNotification(data.title, {
-      body: data.body,
-      tag: data.tag,
-      icon: "/icon-192.png",
-      data: { url: data.url },
-    }),
+    Promise.all([
+      self.registration.showNotification(data.title, {
+        body: data.body,
+        tag: data.tag,
+        icon: "/icon-192.png",
+        data: { url: data.url },
+      }),
+      // The installed app's icon gets a dot; the app sets the real count, or clears it, once it's open.
+      self.navigator.setAppBadge?.().catch(() => {}),
+    ]),
   );
 });
 

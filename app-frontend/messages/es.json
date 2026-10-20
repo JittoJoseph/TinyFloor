@@ -61,7 +61,8 @@
     "nameBody": "Aparece en tu personaje y en el chat.",
     "characterTitle": "Elige tu personaje",
     "characterBody": "Así te verán en la planta.",
-    "thatsMe": "Soy yo"
+    "thatsMe": "Soy yo",
+    "pickCharacter": "Elegir un personaje antes"
   },
   "room": {
     "connecting": "Conectando...",
@@ -318,9 +319,9 @@
   "lobby": {
     "eyebrow": "Prueba TinyFloor",
     "title": "La oficina de demostración",
-    "subtitle": "Recorre una oficina real de TinyFloor antes de crear una para tu equipo. Elige un nombre y un personaje para empezar.",
+    "subtitle": "Recorre una oficina real de TinyFloor antes de crear una para tu equipo. Escribe un nombre y entras.",
     "peopleSubtitle": "Todos los que están ahora en la oficina de demostración.",
-    "door": "{here, plural, =0 {Aún no hay nadie, entra primero} one {# persona dentro ahora} other {# personas dentro ahora}}",
+    "door": "{here, plural, =0 {Tranquila ahora, puedes recorrerla a tu aire} one {# persona dentro ahora} other {# personas dentro ahora}}",
     "officesOnly": {
       "channels": {
         "title": "Los canales llegan con una oficina",

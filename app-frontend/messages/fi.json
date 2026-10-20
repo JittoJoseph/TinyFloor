@@ -61,7 +61,8 @@
     "nameBody": "Näkyy hahmossasi ja chatissa.",
     "characterTitle": "Valitse hahmosi",
     "characterBody": "Tämä olet sinä kerroksessa.",
-    "thatsMe": "Tämä olen minä"
+    "thatsMe": "Tämä olen minä",
+    "pickCharacter": "Valitse ensin hahmo"
   },
   "room": {
     "connecting": "Yhdistetään...",
@@ -318,9 +319,9 @@
   "lobby": {
     "eyebrow": "Kokeile TinyFlooria",
     "title": "Demotoimisto",
-    "subtitle": "Kävele oikeassa TinyFloor-toimistossa ennen kuin teet sellaisen tiimillesi. Aloita valitsemalla nimi ja hahmo.",
+    "subtitle": "Kierrä oikeassa TinyFloor-toimistossa ennen kuin teet oman tiimillesi. Kirjoita nimi, niin olet sisällä.",
     "peopleSubtitle": "Kaikki, jotka ovat nyt demotoimistossa.",
-    "door": "{here, plural, =0 {Ei vielä ketään, tule ensimmäisenä} one {# ihminen sisällä nyt} other {# ihmistä sisällä nyt}}",
+    "door": "{here, plural, =0 {Rauhallista juuri nyt, voit katsella ympärillesi} one {# ihminen sisällä nyt} other {# ihmistä sisällä nyt}}",
     "officesOnly": {
       "channels": {
         "title": "Kanavat kuuluvat toimistoon",

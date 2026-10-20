@@ -61,7 +61,8 @@
     "nameBody": "Staat bij je personage en in de chat.",
     "characterTitle": "Kies je personage",
     "characterBody": "Dit ben jij op de vloer.",
-    "thatsMe": "Dat ben ik"
+    "thatsMe": "Dat ben ik",
+    "pickCharacter": "Eerst een personage kiezen"
   },
   "room": {
     "connecting": "Verbinden...",
@@ -318,9 +319,9 @@
   "lobby": {
     "eyebrow": "Probeer TinyFloor",
     "title": "Het demokantoor",
-    "subtitle": "Loop rond in een echt TinyFloor-kantoor voordat je er een voor je team maakt. Kies een naam en een personage om te beginnen.",
+    "subtitle": "Loop rond in een echt TinyFloor-kantoor voordat je er een voor je team maakt. Vul een naam in en je bent binnen.",
     "peopleSubtitle": "Iedereen die nu in het demokantoor is.",
-    "door": "{here, plural, =0 {Nog niemand binnen, wees de eerste} one {# persoon nu binnen} other {# mensen nu binnen}}",
+    "door": "{here, plural, =0 {Rustig op dit moment, kijk gerust rond} one {# persoon nu binnen} other {# mensen nu binnen}}",
     "officesOnly": {
       "channels": {
         "title": "Kanalen horen bij een kantoor",

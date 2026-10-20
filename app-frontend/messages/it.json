@@ -61,7 +61,8 @@
     "nameBody": "Compare sul tuo personaggio e in chat.",
     "characterTitle": "Scegli il tuo personaggio",
     "characterBody": "Questo sei tu sul piano.",
-    "thatsMe": "Sono io"
+    "thatsMe": "Sono io",
+    "pickCharacter": "Scegli prima un personaggio"
   },
   "room": {
     "connecting": "Connessione...",
@@ -318,9 +319,9 @@
   "lobby": {
     "eyebrow": "Prova TinyFloor",
     "title": "L'ufficio demo",
-    "subtitle": "Fai un giro in un vero ufficio TinyFloor prima di crearne uno per il tuo team. Scegli un nome e un personaggio per iniziare.",
+    "subtitle": "Gira per un vero ufficio TinyFloor prima di crearne uno per il tuo team. Scrivi un nome e sei dentro.",
     "peopleSubtitle": "Tutti quelli che sono ora nell'ufficio demo.",
-    "door": "{here, plural, =0 {Ancora nessuno, entra per primo} one {# persona dentro ora} other {# persone dentro ora}}",
+    "door": "{here, plural, =0 {Tranquillo adesso, puoi guardarti intorno} one {# persona dentro ora} other {# persone dentro ora}}",
     "officesOnly": {
       "channels": {
         "title": "I canali arrivano con un ufficio",

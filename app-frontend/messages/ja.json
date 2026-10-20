@@ -61,7 +61,8 @@
     "nameBody": "キャラクターとチャットに表示されます。",
     "characterTitle": "キャラクターを選ぼう",
     "characterBody": "フロアでのあなたです。",
-    "thatsMe": "これにする"
+    "thatsMe": "これにする",
+    "pickCharacter": "先にキャラクターを選ぶ"
   },
   "room": {
     "connecting": "接続中...",
@@ -318,9 +319,9 @@
   "lobby": {
     "eyebrow": "TinyFloor を試す",
     "title": "デモオフィス",
-    "subtitle": "チームのオフィスを作る前に、本物の TinyFloor オフィスを歩いてみましょう。名前とキャラクターを選んで始めます。",
+    "subtitle": "チームのオフィスを作る前に、本物の TinyFloor オフィスを歩いてみましょう。名前を入れるだけで入れます。",
     "peopleSubtitle": "いまデモオフィスにいる全員です。",
-    "door": "{here, plural, =0 {まだ誰もいません。最初の一人になりましょう} other {いま#人がいます}}",
+    "door": "{here, plural, =0 {今は静かなので、ゆっくり見て回れます} other {いま#人がいます}}",
     "officesOnly": {
       "channels": {
         "title": "チャンネルはオフィスで使えます",

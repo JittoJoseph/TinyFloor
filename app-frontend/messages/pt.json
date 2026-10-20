@@ -61,7 +61,8 @@
     "nameBody": "Aparece no seu personagem e no chat.",
     "characterTitle": "Escolha seu personagem",
     "characterBody": "Este é você no andar.",
-    "thatsMe": "Sou eu"
+    "thatsMe": "Sou eu",
+    "pickCharacter": "Escolher um personagem antes"
   },
   "room": {
     "connecting": "Conectando...",
@@ -318,9 +319,9 @@
   "lobby": {
     "eyebrow": "Experimente o TinyFloor",
     "title": "O escritório de demonstração",
-    "subtitle": "Ande por um escritório TinyFloor de verdade antes de criar um para sua equipe. Escolha um nome e um personagem para começar.",
+    "subtitle": "Ande por um escritório TinyFloor de verdade antes de criar um para sua equipe. Digite um nome e pronto.",
     "peopleSubtitle": "Todos que estão no escritório de demonstração agora.",
-    "door": "{here, plural, =0 {Ninguém aqui ainda, entre primeiro} one {# pessoa aqui agora} other {# pessoas aqui agora}}",
+    "door": "{here, plural, =0 {Tranquilo agora, dá para explorar à vontade} one {# pessoa aqui agora} other {# pessoas aqui agora}}",
     "officesOnly": {
       "channels": {
         "title": "Canais vêm com um escritório",

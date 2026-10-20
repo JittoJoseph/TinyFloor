@@ -68,3 +68,6 @@ __pycache__/
 /*-frontend/public/floor.webp
 /*-frontend/public/floor-pieces.webp
 /*-frontend/public/_headers
+
+# Agents' worktrees
+.claude/worktrees/

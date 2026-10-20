@@ -5,13 +5,11 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { ApiError } from "@/lib/api";
-import { anyCharacter, character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
-import { suggestName } from "@/lib/names";
+import { character as cleanCharacter, readIdentity, saveIdentity } from "@/lib/identity";
+import { randomPersona } from "@/lib/names";
 import { track } from "@/lib/analytics";
-import { Dice } from "@/components/ui/icons";
-import { PixelAvatar } from "@/components/PixelAvatar";
-import { cn } from "@/lib/utils";
-import { EntryHeader, EntryShell, Field, pillInputClass } from "./EntryShell";
+import { EntryHeader, EntryShell } from "./EntryShell";
+import { PersonaField } from "./PersonaField";
 import { CopyLink } from "./DoorParts";
 import { ActionButton } from "@/components/ui/Action";
 import { CharacterStep } from "./IdentitySteps";
@@ -21,9 +19,9 @@ import { Agree } from "@/components/legal/Agree";
 
 /**
  * The demo office's door: one press and they're on the floor, as a guest
- * (docs/analytics.md). The name is filled in, a suggested one or the one they
- * used last time, with a die for another; the character is picked at random
- * and shown beside it, a tap away from choosing. Anyone with a session walks
+ * (docs/analytics.md). Who they'll be is filled in, a character and a name
+ * that suits it (or the name they used last time), with a die for someone
+ * else; the character is a tap away from choosing. Anyone with a session walks
  * straight in as the character on their account.
  */
 export function WalkIn({
@@ -61,21 +59,27 @@ export function WalkIn({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const turnstile = useTurnstileToken();
-  // The name and character the door offers. Random, so they're only shown once
-  // the session is known: the server's page, and the first render, show neither.
-  const [suggested] = useState(() => suggestName());
-  const [anyone] = useState(anyCharacter);
-  // How many times the die was rolled (it turns each time), and the names it gave.
+  // Who the door offers. Random, so it's only shown once the session is known:
+  // the server's page, and the first render, show neither (PersonaField).
+  const [persona, setPersona] = useState(randomPersona);
+  // How many times the die was rolled.
   const [rolls, setRolls] = useState(0);
-  const rolled = useRef(new Set<string>());
 
   const ready = !isLoading;
   // What this browser remembers is only read once the session is known, so the
-  // first render still matches what the server sent.
+  // first render still matches what the server sent. A name used before is
+  // offered until the die is rolled.
   const saved = ready ? readIdentity() : { name: "", character: "Adam" };
-  const offered = ready ? saved.name || suggested : "";
-  const name = typedName ?? offered;
-  const character = cleanCharacter(pickedCharacter ?? anyone);
+  const remembered = rolls === 0 && !!saved.name;
+  const name = typedName ?? (!ready ? "" : remembered ? saved.name : persona.name);
+  const character = cleanCharacter(pickedCharacter ?? persona.character);
+
+  const roll = () => {
+    setPersona((current) => randomPersona(current));
+    setTypedName(null);
+    setPickedCharacter(null);
+    setRolls((count) => count + 1);
+  };
   const onCharacterStep = wentOn ?? false;
 
   const setName = setTypedName;
@@ -108,8 +112,9 @@ export function WalkIn({
       // Whether they kept what the door offered: the name, and the character.
       track("guest_session_started", {
         door: "demo",
-        name: typedName === null ? (saved.name ? "remembered" : "suggested") : rolled.current.has(typedName) ? "suggested" : "typed",
+        name: typedName !== null ? "typed" : remembered ? "remembered" : "suggested",
         character: pickedCharacter === null ? "offered" : "chosen",
+        rolls,
       });
       onReady();
     } catch (err) {
@@ -163,55 +168,19 @@ export function WalkIn({
               }}
             />
           ) : (
-            <Field label={t("yourName")} htmlFor="identity-name">
-              <div className="relative">
-                {/* Who they'll be, picked for them: a tap to choose another. */}
-                <button
-                  type="button"
-                  disabled={!ready}
-                  onClick={() => {
-                    setWentBack(false);
-                    setOnCharacterStep(true);
-                  }}
-                  aria-label={t("pickCharacter")}
-                  title={t("pickCharacter")}
-                  className="absolute start-1.5 top-1/2 size-9 -translate-y-1/2 cursor-pointer overflow-hidden rounded-full bg-card transition-transform active:scale-95 disabled:cursor-default"
-                  style={{ containerType: "size" }}
-                >
-                  {ready && <PixelAvatar character={character} width="62cqw" style={{ left: "50%", top: "92%" }} />}
-                </button>
-                <input
-                  id="identity-name"
-                  type="text"
-                  value={name}
-                  onChange={(event) => setName(event.target.value)}
-                  // The name is filled in, so typing replaces it rather than adding to it.
-                  onFocus={(event) => event.currentTarget.select()}
-                  placeholder={t("namePlaceholder")}
-                  className={cn(pillInputClass, "ps-[3.25rem] pe-12")}
-                  maxLength={30}
-                  autoComplete="nickname"
-                />
-                <button
-                  type="button"
-                  disabled={!ready}
-                  onClick={() => {
-                    const next = suggestName(name.trim());
-                    rolled.current.add(next);
-                    setName(next);
-                    setRolls((count) => count + 1);
-                  }}
-                  aria-label={t("anotherName")}
-                  title={t("anotherName")}
-                  className="absolute end-1.5 top-1/2 flex size-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground disabled:cursor-default"
-                >
-                  <Dice
-                    className="size-[18px] transition-transform duration-300 ease-out motion-reduce:transition-none"
-                    style={{ transform: `rotate(${rolls * 180}deg)` }}
-                  />
-                </button>
-              </div>
-            </Field>
+            <PersonaField
+              ready={ready}
+              name={name}
+              character={character}
+              rolls={rolls}
+              onName={setName}
+              onRoll={roll}
+              onCharacter={() => {
+                setWentBack(false);
+                setOnCharacterStep(true);
+              }}
+              labels={{ name: t("yourName"), placeholder: t("namePlaceholder"), roll: t("anotherName"), character: t("pickCharacter") }}
+            />
           )}
         </div>
 
@@ -232,7 +201,8 @@ export function WalkIn({
           disabled={!trimmed || isLoading}
           busy={busy}
           busyLabel={t("openingDoor")}
-          className="mt-5"
+          // As tall as the pill above it, so the two read as one control.
+          className="mt-4 h-[3.25rem] text-[15px]"
           shine
         >
           {t("walkIn")}

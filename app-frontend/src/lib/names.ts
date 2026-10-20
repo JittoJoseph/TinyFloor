@@ -1,18 +1,35 @@
+import { anyCharacter } from "@/lib/identity";
+
 /**
- * Names the demo office's door suggests, so someone can walk in with one press
- * (docs/analytics.md). Common American first names, short enough to read
- * above a character on the floor. Offices never suggest one: a teammate's
- * name there is their own.
+ * Who the demo office's door suggests someone walks in as, so they can be on
+ * the floor with one press (docs/analytics.md): a character and a common
+ * American first name that suits it, short enough to read above a character
+ * on the floor. Offices never suggest one: a teammate's name there is their own.
  */
-const NAMES = [
+const WOMEN = [
   "Emma", "Olivia", "Ava", "Sophia", "Mia", "Harper", "Evelyn", "Abigail", "Emily", "Ella",
   "Grace", "Chloe", "Lily", "Hannah", "Zoe", "Nora", "Riley", "Claire", "Avery", "Madison",
+];
+const MEN = [
   "Liam", "Noah", "Oliver", "James", "Elijah", "Lucas", "Mason", "Logan", "Ethan", "Jacob",
   "Jack", "Henry", "Owen", "Ryan", "Nathan", "Caleb", "Dylan", "Tyler", "Austin", "Jordan",
 ];
+/** The characters drawn as women (public/characters); the rest are men. */
+const DRAWN_AS_WOMEN = new Set(["Amelia", "Lucy", "Molly"]);
 
-/** A name to suggest, never the one already there. */
-export function suggestName(not?: string): string {
-  const choices = NAMES.filter((name) => name !== not);
-  return choices[Math.floor(Math.random() * choices.length)];
+export interface Persona {
+  name: string;
+  character: string;
+}
+
+const pick = <T,>(choices: readonly T[], not?: T) => {
+  const left = choices.filter((one) => one !== not);
+  return left[Math.floor(Math.random() * left.length)];
+};
+
+/** Someone to walk in as, never quite the one already offered: another character, and a name to go with it. */
+export function randomPersona(not?: Persona): Persona {
+  let character = anyCharacter();
+  while (character === not?.character) character = anyCharacter();
+  return { character, name: pick(DRAWN_AS_WOMEN.has(character) ? WOMEN : MEN, not?.name) };
 }

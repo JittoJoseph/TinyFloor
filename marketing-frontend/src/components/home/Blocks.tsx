@@ -137,27 +137,26 @@ export function Hero({
 }
 
 /**
- * The two ways in as one control: ink for making an office, a quiet stone for
- * looking around first. On a phone they stack as two whole pills, since in
+ * The two ways in as one control: ink for looking around the demo office
+ * first, the step most people take before making their own
+ * (docs/analytics.md), and a quiet stone for making an office straight away.
+ * On a phone they stack as two whole pills, the demo office on top, since in
  * Portuguese or Spanish the pair is wider than the screen; the text may wrap
- * there rather than run off the edge. The demo office is the one to press
- * first, so a glare runs across it now and then (shared.css).
+ * there rather than run off the edge. A glare runs across the demo office's
+ * now and then, as on the doors' buttons (shared.css).
  */
 export function Joined({ placement, className }: { placement: string; className?: string }) {
   const t = useTranslations("homepage.hero");
   const half =
     "inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-[14px] font-medium leading-tight transition-colors min-[400px]:px-6 min-[400px]:text-[15px] sm:whitespace-nowrap";
   return (
-    <div data-cta={placement} className={cn("flex w-full max-w-[22rem] flex-col gap-2 sm:w-auto sm:max-w-none sm:flex-row sm:gap-0", className)}>
-      <Link href="/create" className={cn(half, "bg-foreground text-background hover:bg-foreground/85 sm:rounded-e-none")}>
+    <div data-cta={placement} className={cn("flex w-full max-w-[22rem] flex-col-reverse gap-2 sm:w-auto sm:max-w-none sm:flex-row sm:gap-0", className)}>
+      <Link href="/create" className={cn(half, "bg-foreground/[0.09] text-foreground hover:bg-foreground/[0.14] sm:rounded-e-none")}>
         {t("cta")}
       </Link>
       <Link
         href="/lobby"
-        className={cn(
-          half,
-          "shine bg-foreground/[0.09] text-foreground [--shine:rgb(255_255_255/0.95)] hover:bg-foreground/[0.14] sm:rounded-s-none dark:[--shine:rgb(255_255_255/0.16)]",
-        )}
+        className={cn(half, "shine bg-foreground text-background hover:bg-foreground/85 sm:rounded-s-none")}
       >
         {t("lobby")}
       </Link>

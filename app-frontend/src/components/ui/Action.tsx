@@ -46,8 +46,7 @@ export const ActionButton = forwardRef<
       className={cn(
         BASE,
         TONE[tone],
-        // Light on the dark ink; on the light ink of the dark theme, a faint shadow does the same.
-        shine && !busy && !disabled && "shine dark:[--shine:rgb(0_0_0/0.14)]",
+        shine && !busy && !disabled && "shine",
         className,
       )}
     >

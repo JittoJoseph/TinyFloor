@@ -110,3 +110,37 @@ a character picked at random, someone back as the one they had, and choosing
 is a link under the button. It also said "Nobody inside yet, be the first",
 which made an empty office sound like a failure; it says it's quiet, so you
 can look around. Watch the door's walk-in rate against the 29%.
+
+## The demo door, one press; and the onboarding funnels (20 October)
+
+The demo office's door now offers everything: a name (a common American
+first name, with a die for another, or the one they used last time) and a
+character picked at random, shown beside the name and a tap away from
+choosing. One press and they're on the floor. A separate character step
+would only add a press for something already chosen, so it stays a choice,
+not a step. Offices still ask for a real name and a character, the
+character pre-picked at random, so a team that presses straight through
+doesn't arrive as eight of the same one. The button each of these doors
+wants pressed, and the demo office's button on the home page, has a glare
+crossing it every few seconds.
+
+Each way in now has a funnel, on the Onboarding dashboard in PostHog:
+
+- **Demo office, site to floor:** `demo_cta_clicked` → `door_viewed` (demo)
+  → `guest_session_started` (demo) → `floor_entered` (lobby), within an hour.
+- **Demo door:** the same without the click, for everyone who reached the
+  door however they came.
+- **New account:** `account_signed_up` → `door_viewed` (introduce) →
+  `door_name_entered` → `profile_introduced` → `floor_entered` (office),
+  within a day.
+- **Invite link:** `door_viewed` (invite) → `door_name_entered` (optional:
+  people with an account skip it) → `office_invite_accepted` →
+  `floor_entered` (office).
+
+Outcome events that already existed are the last step of each door rather
+than a new "pressed the button" event beside them, so nothing is counted
+twice. `demo_cta_clicked` is one listener for the whole marketing site, so a
+new link into the demo office is counted without anyone remembering to. In
+development it doesn't reach PostHog: events sent after the page's first
+ones were refused (503) when the browser went to PostHog directly; the live
+and preview sites go through the relay.

@@ -29,12 +29,23 @@ and a landing-page change doesn't rebuild the app.
 
 ## Build gotchas
 
+- **The two frontends and `web-shared` are one pnpm workspace** (20
+  October): `pnpm-workspace.yaml` and `pnpm-lock.yaml` at the repository
+  root, versions named once in its `catalog`, and `web-shared` a package
+  with the same versions as the frontends, so every package is a single
+  copy in the store that all three resolve to. Install from the root, or
+  from either frontend. The Workers keep their own lockfiles and
+  `pnpm-workspace.yaml`, so their installs stay small. Before this,
+  `web-shared/node_modules` was a link to whichever frontend last ran, and
+  only webpack's custom resolving kept one copy of React.
+- **Both frontends build and run on Turbopack.** Its root is the
+  repository's (`turbopack.root`, and `outputFileTracingRoot` with it).
+  Packages the server build leaves out (Phaser) are aliased to
+  `web-shared/empty.cjs`: CommonJS, because Turbopack rejects a named import
+  that an empty ES module provably lacks.
 - **Don't map bare imports through tsconfig `paths`.** OpenNext's bundler
   reads them too, picks up the full `next` package and its native image
-  library, and the worker fails to build. Instead `web-shared/node_modules` is
-  linked to the building app's before every build
-  (`web-shared/scripts/link-modules.mjs`), and webpack looks in the app's own
-  `node_modules` first, so there's one copy of React.
+  library, and the worker fails to build.
 - `@/` looks in the app's own `src` first, then `web-shared/src`. Only files
   both apps use belong in `web-shared`. The deliberate override is
   `lib/i18n/navigation.ts`: the site's turns links to app paths into plain
@@ -46,6 +57,33 @@ and a landing-page change doesn't rebuild the app.
 - Each Worker has its own Workers Builds project watching its folder,
   `web-shared/` and `shared-protocol/`. `tools/deploy.mjs` sends master to
   production and every other branch to preview.
+
+## Build times (20 October)
+
+Measured from Workers Builds' own records, the last ten builds of each:
+
+- **Builds run one at a time.** The account is on the Workers Free plan,
+  which builds one project at a time (Workers Paid builds six), so a push
+  that touches all four builds them in a row: about ten minutes before the
+  last is live, and an API change can wait five minutes behind the site.
+- **The site takes ~5 minutes**, and 133 seconds of it is uploading about
+  5,500 changed files: every built page is kept twice (Next's cache entry
+  and the plain files `static-pages.mjs` serves), and each build's id is in
+  all of them, so all 864 pages count as changed on every deploy. Building
+  the 946 pages took 48 seconds on one worker; Workers Builds has two cores
+  and Next uses one fewer than there are, so the config asks for two (28 s).
+- **The app takes ~3 minutes**: install ~20 s, compile ~21 s warm (50 s
+  when the config changes and webpack's cache is cold), type check ~10 s,
+  build traces and OpenNext's bundling ~35 s, upload ~15 s.
+- **The Workers take ~25 seconds** each; their time is the queue.
+- The site watched `shared-protocol/`, which it only takes types from, so
+  every protocol change rebuilt it; it no longer does.
+- **Turbopack builds the app in 35 s locally against webpack's 83 s**
+  (compile 11 s against 40 s, and no separate trace step), the site in 73
+  s, and keeps a build cache in `.next/cache`, which Workers Builds
+  restores. With the old link pointing at the site, a Turbopack build of the
+  app took `next-intl`, `posthog-js` and others from the site's copies,
+  which is why the workspace came first.
 
 ## Getting onto the floor fast
 

@@ -66,11 +66,11 @@ function socialImagePath(locale: string, path: string): string {
   return `/og/home-${code}.jpg`;
 }
 
-/** hreflang alternates for every locale plus x-default. */
-function languageAlternates(path: string) {
+/** hreflang alternates for every locale the page is written in, plus x-default. */
+function languageAlternates(path: string, codes: readonly string[] = localeCodes) {
   return {
-    ...Object.fromEntries(localeCodes.map((code) => [code, localePath(code, path)])),
-    "x-default": localePath(defaultLocale, path),
+    ...Object.fromEntries(codes.map((code) => [code, localePath(code, path)])),
+    "x-default": localePath(codes.includes(defaultLocale) ? defaultLocale : codes[0], path),
   };
 }
 
@@ -87,6 +87,8 @@ interface PageMetadataInput {
   socialTitle?: string;
   /** What the social card shows, for people who can't see it. */
   imageAlt?: string;
+  /** The languages the page is written in, when it isn't in all of them (some free tools). */
+  locales?: readonly string[];
 }
 
 /**
@@ -102,6 +104,7 @@ export function pageMetadata({
   noindex = false,
   socialTitle,
   imageAlt,
+  locales = localeCodes,
 }: PageMetadataInput): Metadata {
   const canonical = localePath(locale, path);
   // A title that already names us (an invite's "Join Northwind on TinyFloor") isn't suffixed again.
@@ -113,7 +116,7 @@ export function pageMetadata({
     ...(title ? { title: branded ? { absolute: title } : title } : {}),
     ...(description ? { description } : {}),
     ...(noindex ? { robots: { index: false, follow: false } } : {}),
-    alternates: { canonical, languages: languageAlternates(path) },
+    alternates: { canonical, languages: languageAlternates(path, locales) },
     openGraph: {
       type: "website",
       siteName: SITE_NAME,
@@ -121,9 +124,9 @@ export function pageMetadata({
       ...(fullTitle ? { title: fullTitle } : {}),
       ...(description ? { description } : {}),
       locale: ogLocale(locale),
-      alternateLocale: localeCodes
+      alternateLocale: locales
         .filter((code) => code !== locale)
-        .map((code) => OG_LOCALE[code]),
+        .map((code) => OG_LOCALE[code as Locale]),
       images: [image],
     },
     twitter: {

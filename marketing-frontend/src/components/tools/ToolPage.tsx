@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { emphasised } from "@/lib/words";
 import { CJK_HEADLINE, COLUMN, Closing, EYEBROW, INK, LEAD, MarketingShell, Questions } from "@/components/home/Blocks";
 import { READ } from "@/components/guides/ArticleSections";
+import { RelatedTools } from "./RelatedTools";
 
 /** What every free tool's page says around the tool itself (lib/tools). */
 export interface ToolCopy {
@@ -96,6 +97,8 @@ export function ToolPage({
                 </Link>
               </div>
             </aside>
+
+            <RelatedTools locale={locale} path={path} />
           </div>
         </div>
       </article>

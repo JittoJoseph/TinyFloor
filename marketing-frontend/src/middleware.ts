@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { routing } from "@/lib/i18n/routing";
 import { GUIDES } from "@/lib/guides";
 import { LANDINGS } from "@/lib/landings";
+import { TOOLS, hasPage } from "@/lib/tools/catalog";
 import { APP_PATH, APP_URL, SITE_URL } from "@/lib/site";
 import { readerLocale, relay, screen, unprefixed, withCountry } from "@/lib/edge";
 
@@ -18,8 +19,8 @@ const PAGES = [
   ...LANDINGS.map((page) => page.slug),
   `guides(/(${GUIDES.map((guide) => guide.slug).join("|")}))?`,
   "about|pricing|features|compare|use-cases|teams|people|privacy|terms|refunds|rooms|og-render",
-  // The free tools (lib/tools), in every language.
-  "tools/(icebreaker-questions|virtual-office-cost-calculator|time-zone-meeting-planner)",
+  // The free tools and their index (lib/tools/catalog).
+  `tools(/(${TOOLS.map((tool) => tool.path.slice("/tools/".length)).join("|")}))?`,
 ];
 const PAGE = new RegExp(`^(?:/(${routing.locales.join("|")}))?(?:/(?:${PAGES.join("|")}))?/?$`);
 
@@ -52,8 +53,10 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL(`${prefix}${retired}${search}`, request.url), 308);
   }
 
-  // An address with no page: the prebuilt 404 in the address's language, with a 404 status.
-  if (!PAGE.test(pathname)) {
+  // An address with no page, or a free tool in a language it isn't written in:
+  // the prebuilt 404 in the address's language, with a 404 status.
+  const locale = routing.locales.find((code) => pathname === `/${code}` || pathname.startsWith(`/${code}/`)) ?? routing.defaultLocale;
+  if (!PAGE.test(pathname) || !hasPage(unprefixed(pathname).replace(/\/$/, ""), locale)) {
     return NextResponse.rewrite(new URL(`/${readerLocale(request)}/missing${search}`, request.url), { status: 404 });
   }
 

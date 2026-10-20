@@ -43,12 +43,15 @@ async function copy(from, to) {
 const pages = {};
 /** Each page's public address (`/about`, `/de/about`) and the hash of what a search engine reads there. */
 const fingerprints = {};
+/** Built pages that answer 404: a free tool in a language it isn't written in, which the middleware never lets through. */
+const unreached = [];
 for (const [route, entry] of Object.entries(routes)) {
   // Pages under a locale (/de/about), not Next's internals or metadata files.
   const [, locale, ...rest] = route.split("/");
   if (!entry.dataRoute || !/^[a-z]{2}$/.test(locale)) continue;
   if (SKIP.has(rest[0])) continue;
   const meta = JSON.parse(await readFile(join(app, `${route}.meta`), "utf8").catch(() => "{}"));
+  if (meta.status === 404) unreached.push(route);
   if (meta.status && meta.status !== 200) continue;
 
   const html = await copy(`${route}.html`, `${route}.html`);
@@ -85,13 +88,13 @@ const buildId = (await readFile(join(root, ".next/BUILD_ID"), "utf8")).trim();
 // Still in .open-next/cache here: the deploy copies it into the assets (populate-cache).
 const cache = join(root, ".open-next/cache", buildId);
 let dropped = 0;
-for (const route of paths) {
+for (const route of [...paths, ...unreached]) {
   const entry = join(cache, `${route}.cache`);
   if (!(await stat(entry).catch(() => null))) continue;
   await rm(entry);
   dropped++;
 }
-console.log(`static pages: ${dropped} of their ${paths.length} cache entries left out of the upload`);
+console.log(`static pages: ${dropped} cache entries left out of the upload (${paths.length} pages served as files, ${unreached.length} never reached)`);
 if (paths.length && !dropped) console.warn(`static pages: no cache entries found under ${cache}; has OpenNext moved them?`);
 
 await writeFile(

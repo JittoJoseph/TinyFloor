@@ -6,6 +6,7 @@ import { GUIDES_PATH } from "@/lib/guides";
 import { ICEBREAKERS_PATH } from "@/lib/tools/icebreakers";
 import { OFFICE_COSTS_PATH } from "@/lib/tools/office-costs";
 import { TIME_ZONES_PATH } from "@/lib/tools/time-zones";
+import { TOOLS_PATH, hasPage } from "@/lib/tools/catalog";
 import { HUBS, LANDINGS, type LandingGroup } from "@/lib/landings";
 import { SOCIALS, SUPPORT_EMAIL } from "@/lib/site";
 import { Logo } from "@/components/app/Logo";
@@ -88,6 +89,7 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
       links: [
         { label: tl("features"), href: `/${HUBS.features}` },
         { label: tg("label"), href: GUIDES_PATH },
+        { label: t("tools"), href: TOOLS_PATH },
         { label: t("icebreakers"), href: ICEBREAKERS_PATH },
         { label: t("officeCosts"), href: OFFICE_COSTS_PATH },
         { label: t("timeZones"), href: TIME_ZONES_PATH },
@@ -170,8 +172,9 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
               <ul className="absolute bottom-10 end-0 z-10 max-h-72 w-56 overflow-y-auto rounded-2xl bg-popover p-1.5 shadow-float">
                 {locales.map((one) => (
                   <li key={one.code}>
+                    {/* A page not written in that language (some free tools) leads to its home instead. */}
                     <Link
-                      href={path}
+                      href={hasPage(path, one.code) ? path : "/"}
                       locale={one.code}
                       hrefLang={one.code}
                       aria-current={one.code === locale ? "true" : undefined}

@@ -515,7 +515,7 @@ function OfficeSection() {
           officeId={office.id}
           policy={office.invitePolicy ?? "everyone"}
           domain={office.joinDomain ?? null}
-          domainJoin={office.domainJoin ?? "ask"}
+          domainJoin={office.domainJoin ?? "open"}
         />
       )}
 
@@ -727,7 +727,7 @@ function InvitePolicyRow({
   const [access, setAccess] = useState<DomainAccess>(domainJoin);
   const [error, setError] = useState<string | null>(null);
 
-  // Colleagues at the owner's company, finding the office by their email: they ask unless an admin decides otherwise.
+  // Colleagues at the owner's company, finding the office by their email: they walk in unless an admin decides otherwise.
   const changeAccess = async (next: DomainAccess) => {
     const before = access;
     setAccess(next);
@@ -784,8 +784,8 @@ function InvitePolicyRow({
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="ask">{t("domainAsk")}</SelectItem>
                   <SelectItem value="open">{t("domainOpen")}</SelectItem>
+                  <SelectItem value="ask">{t("domainAsk")}</SelectItem>
                   <SelectItem value="off">{t("domainOff")}</SelectItem>
                 </SelectContent>
               </Select>

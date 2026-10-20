@@ -128,13 +128,13 @@ work happens. What we don't build, though each would raise usage numbers:
   any, and another company had two offices with different members. Now
   anyone signed in with a verified address at the domain of an office's
   owner sees "Your team is already here" before "make your own" (and on the
-  new-office screen, and outside an office). A company can have several
-  teams, so by default they ask to join: the request waits in People for
-  the office's admins (with a count on the rail), and the asker's page walks
-  them in the moment they're let in. An admin can instead let colleagues
-  walk straight in, or keep the office out of sight (Inviting, "People at
-  your domain"); a university's domain is out of sight until an admin
-  changes it. A full free office's trial starts for the fourth, as with an
+  new-office screen, and outside an office), and walks straight in: nobody
+  has to be online to let them in. An admin can change that under Inviting,
+  "People at your domain": have them ask first (a company with several teams
+  might), when the request waits in People for the office's admins, with a
+  count on the rail, and the asker's page walks them in the moment they're
+  let in; or keep the office out of sight. A university's domain is out of
+  sight until an admin changes it. A full free office's trial starts for the fourth, as with an
   invite. Personal addresses (Gmail, Outlook, Yahoo, UOL and the like) never
   match, only the owner's domain counts, and only Google-verified addresses
   do: a password account's email is never checked.

@@ -26,9 +26,9 @@ export function workDomain(email: string | null | undefined): string | null {
 export type DomainAccess = "ask" | "open" | "off";
 export const DOMAIN_ACCESS: readonly DomainAccess[] = ["ask", "open", "off"];
 
-/** What an office's setting means at its owner's domain: asking by default, except at a university. */
+/** What an office's setting means at its owner's domain: straight in by default, except at a university. */
 export function domainAccess(setting: string | number | null, domain: string | null): DomainAccess {
   if (!domain) return "off";
   if (setting === "ask" || setting === "open" || setting === "off") return setting;
-  return ACADEMIC.test(domain) ? "off" : "ask";
+  return ACADEMIC.test(domain) ? "off" : "open";
 }

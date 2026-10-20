@@ -1,7 +1,7 @@
 -- How colleagues at the owner's company (anyone signed in with a verified
--- address at its email domain) find the office: 'ask' to join and an admin
--- lets them in, 'open' to walk straight in, or 'off' not to see it at all.
--- NULL is the default: ask, except at a university's domain, where it's off.
+-- address at its email domain) find the office: 'open' to walk straight in,
+-- 'ask' to join and an admin lets them in, or 'off' not to see it at all.
+-- NULL is the default: open, except at a university's domain, where it's off.
 ALTER TABLE offices ADD COLUMN domain_join TEXT;
 
 -- Colleagues asking to join, until an admin lets them in or turns them away.

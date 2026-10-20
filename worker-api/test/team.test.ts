@@ -30,10 +30,11 @@ describe("finding your team by your work email", () => {
     expect(workDomain(null)).toBeNull();
   });
 
-  it("shows a colleague the office, and they ask to join until an admin lets them in", async () => {
+  it("lets a colleague ask to join where an admin wants that, until they're let in", async () => {
     const domain = company();
     const arv = await makeUser("Arv", { email: `arv@${domain}` });
     const officeId = await officeOf(arv, "HRIS Team");
+    await call(arv, "PATCH", `/v1/offices/${officeId}`, { domainJoin: "ask" });
     const bea = await makeUser("Bea", { email: `bea@${domain}` });
 
     expect(await team(bea)).toEqual({
@@ -62,6 +63,7 @@ describe("finding your team by your work email", () => {
     const domain = company();
     const arv = await makeUser("Arv", { email: `arv@${domain}` });
     const officeId = await officeOf(arv);
+    await call(arv, "PATCH", `/v1/offices/${officeId}`, { domainJoin: "ask" });
     const cy = await makeUser("Cy", { email: `cy@${domain}` });
     const dee = await makeUser("Dee", { email: `dee@${domain}` });
     await call(cy, "POST", `/v1/offices/${officeId}/join`);
@@ -80,14 +82,13 @@ describe("finding your team by your work email", () => {
     expect((await call(arv, "POST", `/v1/offices/${officeId}/requests/${dee.id}`, { approve: true })).status).toBe(404);
   });
 
-  it("lets colleagues walk straight in where an admin opened it, and hides it where they turned it off", async () => {
+  it("lets colleagues walk straight in by default, and hides the office where an admin turned it off", async () => {
     const domain = company();
     const arv = await makeUser("Arv", { email: `arv@${domain}` });
     const officeId = await officeOf(arv);
     const own = await call<{ office: { joinDomain: string; domainJoin: string } }>(arv, "GET", `/v1/offices/${officeId}`);
-    expect(own.body.office).toMatchObject({ joinDomain: domain, domainJoin: "ask" });
+    expect(own.body.office).toMatchObject({ joinDomain: domain, domainJoin: "open" });
 
-    await call(arv, "PATCH", `/v1/offices/${officeId}`, { domainJoin: "open" });
     const bea = await makeUser("Bea", { email: `bea@${domain}` });
     expect((await team(bea)).offices[0].access).toBe("open");
     expect((await call<{ joined: boolean }>(bea, "POST", `/v1/offices/${officeId}/join`)).body.joined).toBe(true);
@@ -138,7 +139,7 @@ describe("finding your team by your work email", () => {
     const classId = await officeOf(prof);
     const stu = await makeUser("Stu", { email: `stu@${school}` });
     expect((await team(stu)).offices).toEqual([]);
-    await call(prof, "PATCH", `/v1/offices/${classId}`, { domainJoin: "ask" });
+    await call(prof, "PATCH", `/v1/offices/${classId}`, { domainJoin: "open" });
     expect((await team(stu)).offices.map((one) => one.id)).toEqual([classId]);
   });
 
@@ -146,6 +147,7 @@ describe("finding your team by your work email", () => {
     const domain = company();
     const arv = await makeUser("Arv", { email: `arv@${domain}` });
     const officeId = await officeOf(arv);
+    await call(arv, "PATCH", `/v1/offices/${officeId}`, { domainJoin: "ask" });
     for (const name of ["Bea", "Paul", "Jp"]) {
       const one = await makeUser(name, { email: `${name.toLowerCase()}@${domain}` });
       await call(one, "POST", `/v1/offices/${officeId}/join`);

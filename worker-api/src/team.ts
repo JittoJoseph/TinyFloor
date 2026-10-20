@@ -10,9 +10,8 @@ import { requireAccount, type User } from "./session";
  * sign up on their own, without the link, and used to land on "make your
  * office": a second office for the same company, or none at all. Anyone
  * signed in with a verified address at the domain of an office's owner can
- * see that office. A company can have several teams, so by default they ask
- * to join and an admin lets them in; an admin can let them walk straight in
- * instead, or keep the office out of sight.
+ * see that office and walk straight in. An admin can have them ask first
+ * instead (a company with several teams might), or keep the office out of sight.
  */
 
 /** The caller's company domain, if their address is verified and isn't a personal one. */

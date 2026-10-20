@@ -186,6 +186,22 @@ missing features on the map.
   invite. Personal addresses (Gmail, Outlook, Yahoo, UOL and the like) never
   match, only the owner's domain counts, and only Google-verified addresses
   do: a password account's email is never checked.
+- **Files, mentions and search in chat** (20 October), the three things that
+  kept a team in Slack beside us; threads were left out. Files go in by the
+  paperclip, a paste or a drop, start going up at once and are sent the
+  moment they're there; a picture is made small in the browser first (2048
+  pixels on its long side, WebP: a 20 MB screenshot went up as 1.6 MB) and
+  takes its room before it loads. Up to four on a message, 10 MB each, for
+  every office, free included. They're kept in a private R2 bucket and read
+  only through the API after a membership check; anything that isn't a
+  picture downloads rather than opens. A file goes when its message does.
+  "@" offers the office's people, and the words stay plain ("@Ana Lima")
+  with the ids beside them, so a typed name works too. In a channel only
+  mentions are counted (on the rail and in the list); the rest only makes it
+  bold, as in Slack, while a direct message counts everything. Search is
+  in the ⌘K palette: words and file names in the office's channels and your
+  own direct messages, case and accents folded, and picking a result opens
+  the conversation at that message.
 - **Chat picks up where you left it** (19 October). Coming back to Chat
   opens the conversation you were last in, not #general; what you'd started
   writing waits in each conversation, across trips to the floor; typing

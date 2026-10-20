@@ -47,3 +47,17 @@ export function keepDraft(key: string, text: string) {
     // Kept for this page, at least.
   }
 }
+
+/** A found message to open: picked in search, carried to its conversation, read once there. */
+let jump: { channel: string; seq: number } | null = null;
+
+export function jumpTo(channel: string, seq: number) {
+  jump = { channel, seq };
+}
+
+export function takeJump(channel: string): number | null {
+  if (jump?.channel !== channel) return null;
+  const { seq } = jump;
+  jump = null;
+  return seq;
+}

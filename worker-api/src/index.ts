@@ -8,6 +8,7 @@ import { googleRoutes } from "./google";
 import { helpRoutes } from "./help";
 import { officeRoutes } from "./offices";
 import { teamRoutes } from "./team";
+import { assertSafeUpload, fileRoutes, UPLOAD_PATH } from "./files";
 import { runRetention } from "./retention";
 import { Router } from "./router";
 
@@ -23,6 +24,7 @@ authRoutes(router);
 googleRoutes(router);
 officeRoutes(router);
 teamRoutes(router);
+fileRoutes(router);
 floorRoutes(router);
 callRoutes(router);
 billingRoutes(router);
@@ -38,7 +40,8 @@ export default {
     try {
       const { pathname } = new URL(request.url);
       // Creem's webhook is the one write that doesn't come from the site: its signature is its proof.
-      if (request.method !== "GET" && pathname !== WEBHOOK_PATH) assertSafeWrite(request, origin);
+      if (request.method === "POST" && UPLOAD_PATH.test(pathname)) assertSafeUpload(request, origin);
+      else if (request.method !== "GET" && pathname !== WEBHOOK_PATH) assertSafeWrite(request, origin);
       const match = router.match(request.method, pathname);
       if (!match) throw new HttpError(404, "not_found", "No such endpoint");
       response = await match.handler({ request, env, ctx, params: match.params });

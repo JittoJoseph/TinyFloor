@@ -30,8 +30,14 @@
   // Secrets, set with `wrangler secret put` (and in .dev.vars locally): TICKET_SECRET,
   // TURNSTILE_SECRET, TURN_KEY_ID, TURN_KEY_API_TOKEN, GOOGLE_CLIENT_SECRET, and
   // ADMIN_EMAILS, the comma-separated accounts that can open /admin.
-  "ratelimits": [{ "name": "AUTH_LIMIT", "namespace_id": "1001", "simple": { "limit": 10, "period": 60 } }],
+  // UPLOAD_LIMIT: per-person uploads to chat (src/files.ts).
+  "ratelimits": [
+    { "name": "AUTH_LIMIT", "namespace_id": "1001", "simple": { "limit": 10, "period": 60 } },
+    { "name": "UPLOAD_LIMIT", "namespace_id": "1003", "simple": { "limit": 30, "period": 60 } }
+  ],
   "services": [{ "binding": "REALTIME", "service": "tinyfloor-realtime", "entrypoint": "RealtimeAdmin" }],
+  // Files shared in chat: private, read only through /v1/files after a membership check.
+  "r2_buckets": [{ "binding": "FILES", "bucket_name": "tinyfloor-files" }],
   "d1_databases": [
     {
       "binding": "DB",
@@ -65,8 +71,12 @@
         "CREEM_PRODUCTS": "{\"pro\":\"prod_2bvC3UGSNphGww4yBDFhl4\"}"
       },
       "durable_objects": { "bindings": [{ "name": "PASSWORD_GUARD", "class_name": "PasswordGuard" }] },
-      "ratelimits": [{ "name": "AUTH_LIMIT", "namespace_id": "1002", "simple": { "limit": 10, "period": 60 } }],
+      "ratelimits": [
+        { "name": "AUTH_LIMIT", "namespace_id": "1002", "simple": { "limit": 10, "period": 60 } },
+        { "name": "UPLOAD_LIMIT", "namespace_id": "1004", "simple": { "limit": 30, "period": 60 } }
+      ],
       "services": [{ "binding": "REALTIME", "service": "tinyfloor-realtime-preview", "entrypoint": "RealtimeAdmin" }],
+      "r2_buckets": [{ "binding": "FILES", "bucket_name": "tinyfloor-files-preview" }],
       "d1_databases": [
         {
           "binding": "DB",

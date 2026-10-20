@@ -31,6 +31,10 @@ export type CommandItem = {
   badge?: ReactNode;
   /** Something to lead the row instead of an icon: a person's face. */
   visual?: ReactNode;
+  /** The label as something richer than text (a found message with its words marked); `label` stays for matching. */
+  labelNode?: ReactNode;
+  /** A quieter second line under the label. */
+  detail?: ReactNode;
   onSelect: () => void;
 };
 
@@ -42,6 +46,12 @@ export interface CommandPaletteProps {
   emptyMessage?: string;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  /** Told what's typed, for results found elsewhere (messages on the server). */
+  onQueryChange?: (query: string) => void;
+  /** Results already matched elsewhere: shown after the palette's own, as they are. */
+  found?: CommandItem[];
+  /** Looking for `found`: instead of "no results" while the answer is on its way. */
+  searching?: ReactNode;
 }
 
 // Opened via a keyboard shortcut many times a day — entrance must read as
@@ -60,6 +70,9 @@ export function CommandPalette({
   emptyMessage = "No results found.",
   open: controlledOpen,
   onOpenChange,
+  onQueryChange,
+  found,
+  searching,
 }: CommandPaletteProps) {
   const [internalOpen, setInternalOpen] = useState(false);
   const controlled = controlledOpen !== undefined;
@@ -114,11 +127,12 @@ export function CommandPalette({
     };
   }, [open]);
 
-  const filtered = useMemo(() => searchCommands(items, query), [items, query]);
+  const filtered = useMemo(() => [...searchCommands(items, query), ...(query.trim() ? (found ?? []) : [])], [items, query, found]);
+  useEffect(() => onQueryChange?.(query), [query, onQueryChange]);
 
   // Reserve the icon column only when at least one item brings an icon, so
   // icon-less lists don't render a dead gap before every label.
-  const hasIcons = useMemo(() => items.some((it) => it.icon || it.visual), [items]);
+  const hasIcons = useMemo(() => [...items, ...(found ?? [])].some((it) => it.icon || it.visual), [items, found]);
 
   const grouped = useMemo(() => {
     const map = new Map<string, CommandItem[]>();
@@ -278,7 +292,7 @@ export function CommandPalette({
                 >
                   {rows.length === 0 ? (
                     <div className="p-8 text-center text-sm text-muted-foreground">
-                      {emptyMessage}
+                      {searching ?? emptyMessage}
                     </div>
                   ) : (
                     grouped.map(([group, list]) => (
@@ -332,15 +346,22 @@ export function CommandPalette({
                                 />
                               ) : null}
                               {it.visual ? (
-                                <span className="relative z-10 flex h-4 w-4 items-center justify-center">{it.visual}</span>
+                                <span className={cn("relative z-10 flex shrink-0 items-center justify-center", it.detail ? "h-7 w-7 self-start mt-0.5" : "h-4 w-4")}>{it.visual}</span>
                               ) : Icon ? (
                                 <Icon className="relative z-10 h-4 w-4" />
                               ) : hasIcons ? (
                                 <span className="relative z-10 h-4 w-4" />
                               ) : null}
-                              <span className="relative z-10 flex-1 truncate">
-                                {it.label}
-                              </span>
+                              {it.detail ? (
+                                <span className="relative z-10 min-w-0 flex-1">
+                                  <span className="block truncate text-foreground">{it.labelNode ?? it.label}</span>
+                                  <span className="mt-0.5 block truncate text-[12px] text-muted-foreground">{it.detail}</span>
+                                </span>
+                              ) : (
+                                <span className="relative z-10 flex-1 truncate">
+                                  {it.labelNode ?? it.label}
+                                </span>
+                              )}
                               {it.badge ? (
                                 <span className="relative z-10 shrink-0">
                                   {it.badge}

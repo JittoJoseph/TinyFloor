@@ -1,10 +1,13 @@
 "use client";
 
 import { Fragment, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
-import { useFormatter, useNow, useTranslations } from "next-intl";
-import { ArrowDown, Check, Copy, Pencil, SmilePlus, Trash2 } from "@/components/ui/icons";
+import { useFormatter, useLocale, useNow, useTranslations } from "next-intl";
+import { ArrowDown, Check, Copy, Download, FileText, Pencil, SmilePlus, Trash2 } from "@/components/ui/icons";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import type { ChatImage } from "@shared/chat";
+import { isPicture, type ChatFile } from "@shared/chat";
+import { fileUrl, sizeOf } from "@/lib/chatFiles";
+import { mentionSpans } from "@/lib/mentions";
+import { Viewer } from "./Viewer";
 import { Face } from "@/components/ui/Face";
 import { Loader } from "@/components/motion/loader";
 import { EASE_OUT } from "@/lib/ease";
@@ -17,7 +20,9 @@ export interface Line {
   authorName: string;
   body: string;
   at: number;
-  image?: ChatImage;
+  files?: ChatFile[];
+  /** Who it mentions, by id. */
+  mentions?: string[];
   reactions?: Record<string, string[]>;
   /** When it was last edited, if it was. */
   edited?: number;
@@ -36,7 +41,8 @@ const RUN_MS = 5 * 60_000;
  * own key, so opening another starts at its latest message. Sending always
  * brings you down to what you sent; Up in the box edits your last message
  * (`editLast` changes each time it's asked), and finishing an edit hands the
- * cursor back to the box.
+ * cursor back to the box. A message that mentions you is marked, and `target`
+ * (a search result) is brought into view and lit for a moment.
  */
 export function Conversation({
   lines,
@@ -50,6 +56,8 @@ export function Conversation({
   onDelete,
   personCard,
   editLast,
+  names,
+  target,
 }: {
   lines: Line[];
   me: string;
@@ -67,6 +75,10 @@ export function Conversation({
   personCard?: (id: string, name: string, trigger: ReactNode) => ReactNode;
   /** Changes when Up was pressed in an empty box: your last message opens for editing. */
   editLast?: number;
+  /** People's names by id, for the mentions in what they said. */
+  names?: Map<string, string>;
+  /** A message to bring into view: a search result. */
+  target?: string | null;
 }) {
   const t = useTranslations("chat");
   // One message is edited at a time, so Up in the box can open the right one.
@@ -111,6 +123,25 @@ export function Conversation({
     element.scrollTop += element.scrollHeight - heightBefore.current;
     heightBefore.current = 0;
   }, [firstId]);
+
+  // A search result: once it's loaded, scroll to it and light it up for a moment.
+  const [lit, setLit] = useState<string | null>(null);
+  const reached = useRef<string | null>(null);
+  useLayoutEffect(() => {
+    if (!target || reached.current === target) return;
+    const row = box.current?.querySelector<HTMLElement>(`[data-line="${CSS.escape(target)}"]`);
+    if (!row) return;
+    reached.current = target;
+    row.scrollIntoView({ block: "center" });
+    atEnd.current = false;
+    setLit(target);
+    // Again as messages arrive: the one looked for may be in the page that just came.
+  }, [target, lines.length]);
+  useEffect(() => {
+    if (!lit) return;
+    const timer = setTimeout(() => setLit(null), 2200);
+    return () => clearTimeout(timer);
+  }, [lit]);
 
   // Reaching the top asks for the page before it.
   const top = useRef<HTMLDivElement>(null);
@@ -170,6 +201,8 @@ export function Conversation({
                     personCard={personCard}
                     editing={editing === line.id}
                     onEditing={(on) => (on ? setEditing(line.id) : doneEditing())}
+                    names={names}
+                    lit={lit === line.id}
                   />
                 </Fragment>
               );
@@ -266,6 +299,8 @@ function Message({
   personCard,
   editing: isEditing,
   onEditing,
+  names,
+  lit,
 }: {
   line: Line;
   grouped: boolean;
@@ -276,6 +311,8 @@ function Message({
   personCard?: (id: string, name: string, trigger: ReactNode) => ReactNode;
   editing: boolean;
   onEditing: (on: boolean) => void;
+  names?: Map<string, string>;
+  lit?: boolean;
 }) {
   const t = useTranslations("chat");
   const format = useFormatter();
@@ -297,12 +334,18 @@ function Message({
   const time = format.dateTime(new Date(line.at), { hour: "numeric", minute: "2-digit" });
   const card = (trigger: ReactNode) => (personCard ? personCard(line.author, line.authorName, trigger) : trigger);
   const reactions = Object.entries(line.reactions ?? {});
+  // Mentioned: marked down its edge, so it stands out in a long channel without shouting.
+  const forMe = !!line.mentions?.includes(me);
+  const mentioned = (line.mentions ?? []).map((id) => ({ id, displayName: names?.get(id) ?? "" }));
 
   return (
     <div
+      data-line={line.id}
       className={cn(
-        "group relative flex gap-3 px-5 py-0.5 transition-colors hover:bg-muted/50 sm:px-6",
+        "group relative flex gap-3 px-5 py-0.5 transition-colors duration-700 sm:px-6",
         !grouped && "mt-2 pt-1.5",
+        lit ? "bg-brand/[0.12]" : forMe ? "bg-brand/[0.06] hover:bg-brand/[0.09]" : "hover:bg-muted/50",
+        forMe && "shadow-[inset_2px_0_0_var(--color-brand)]",
       )}
     >
       <div className="w-9 shrink-0">
@@ -371,21 +414,12 @@ function Message({
         ) : (
           line.body && (
             <p dir="auto" data-ph-mask className="whitespace-pre-wrap break-words text-[14px] leading-[1.45] text-foreground/90">
-              <Linked text={line.body} />
+              <Linked text={line.body} mentioned={mentioned} me={me} />
               {line.edited && <span className="ms-1.5 text-[11px] text-faint">({t("edited")})</span>}
             </p>
           )
         )}
-        {line.image && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={`${process.env.NEXT_PUBLIC_API_URL ?? ""}/attachments/${line.image.key}`}
-            alt=""
-            width={line.image.width}
-            height={line.image.height}
-            className="ph-no-capture mt-1.5 h-auto max-w-[min(22rem,100%)] rounded-xl border border-border"
-          />
-        )}
+        {!!line.files?.length && <Files files={line.files} />}
 
         {reactions.length > 0 && (
           <div className="mt-1 flex flex-wrap gap-1">
@@ -483,12 +517,35 @@ function Message({
 
 /** A link written in a message opens, in a new tab; the rest stays plain text. */
 const URL_PATTERN = /\bhttps?:\/\/[^\s<>"']+[^\s<>"'.,;:!?)\]}]/gi;
-function Linked({ text }: { text: string }) {
+function Linked({ text, mentioned = [], me }: { text: string; mentioned?: Array<{ id: string; displayName: string }>; me?: string }) {
   const parts: ReactNode[] = [];
   let at = 0;
-  for (const match of text.matchAll(URL_PATTERN)) {
-    const start = match.index ?? 0;
+  // Mentions and links, in the order they come; anything between them is plain words.
+  const marks = [
+    ...mentionSpans(text, mentioned).map((span) => ({ ...span, kind: "mention" as const })),
+    ...[...text.matchAll(URL_PATTERN)].map((match) => ({ start: match.index ?? 0, end: (match.index ?? 0) + match[0].length, kind: "link" as const, person: null })),
+  ]
+    .sort((a, b) => a.start - b.start)
+    .filter((mark, index, all) => index === 0 || mark.start >= all[index - 1].end);
+  for (const mark of marks) {
+    const start = mark.start;
     if (start > at) parts.push(text.slice(at, start));
+    if (mark.kind === "mention") {
+      parts.push(
+        <span
+          key={start}
+          className={cn(
+            "rounded-[5px] px-[3px] py-px font-medium",
+            mark.person?.id === me ? "bg-brand/20 text-foreground" : "bg-brand/10 text-brand",
+          )}
+        >
+          {text.slice(start, mark.end)}
+        </span>,
+      );
+      at = mark.end;
+      continue;
+    }
+    const match = [text.slice(start, mark.end)];
     parts.push(
       <a
         key={start}
@@ -504,6 +561,89 @@ function Linked({ text }: { text: string }) {
   }
   if (at < text.length) parts.push(text.slice(at));
   return <>{parts}</>;
+}
+
+/** The biggest a single picture is drawn in a message; its own shape decides the rest. */
+const PICTURE = { width: 360, height: 280 };
+
+/**
+ * What came with a message: pictures, drawn at their own shape (one on its
+ * own, several as a grid of squares) and opened full size on a click; any
+ * other file as a card that downloads it.
+ */
+function Files({ files }: { files: ChatFile[] }) {
+  const t = useTranslations("chat");
+  const locale = useLocale();
+  const [viewing, setViewing] = useState<ChatFile | null>(null);
+  const pictures = files.filter((file) => isPicture(file));
+  const others = files.filter((file) => !isPicture(file));
+  const single = pictures.length === 1 ? pictures[0] : null;
+  const fit = single?.width && single.height ? Math.min(1, PICTURE.width / single.width, PICTURE.height / single.height) : 1;
+
+  return (
+    <div className="mt-1.5 flex flex-col items-start gap-1.5">
+      {single ? (
+        <button
+          type="button"
+          onClick={() => setViewing(single)}
+          aria-label={t("openPicture", { name: single.name })}
+          className="block max-w-full cursor-zoom-in overflow-hidden rounded-xl border border-border bg-muted"
+          // Its own shape, at most the picture's box, and never wider than the column on a phone.
+          style={
+            single.width && single.height
+              ? { width: Math.round(single.width * fit), aspectRatio: `${single.width} / ${single.height}` }
+              : { width: PICTURE.width, aspectRatio: "4 / 3" }
+          }
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={fileUrl(single)} alt={single.name} loading="lazy" className="ph-no-capture size-full object-cover" />
+        </button>
+      ) : (
+        pictures.length > 1 && (
+          <div className="grid grid-cols-2 gap-1.5">
+            {pictures.map((file) => (
+              <button
+                key={file.key}
+                type="button"
+                onClick={() => setViewing(file)}
+                aria-label={t("openPicture", { name: file.name })}
+                className="block size-[8.5rem] cursor-zoom-in overflow-hidden rounded-xl border border-border bg-muted sm:size-40"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={fileUrl(file)} alt={file.name} loading="lazy" className="ph-no-capture size-full object-cover" />
+              </button>
+            ))}
+          </div>
+        )
+      )}
+      {others.map((file) => (
+        <a
+          key={file.key}
+          href={fileUrl(file, true)}
+          download={file.name}
+          className="group/file flex h-14 w-[22.5rem] max-w-full items-center gap-3 rounded-xl border border-border bg-card px-3 transition-colors hover:border-border-strong"
+        >
+          <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground">
+            <FileText className="size-[18px]" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block truncate text-[13px] font-medium text-foreground">{file.name}</span>
+            <span className="block text-[11.5px] text-muted-foreground">
+              {[extensionLabel(file.name), sizeOf(file.size, locale)].filter(Boolean).join(" · ")}
+            </span>
+          </span>
+          <Download className="size-4 shrink-0 text-faint transition-colors group-hover/file:text-foreground" />
+        </a>
+      ))}
+      {viewing && <Viewer file={viewing} onClose={() => setViewing(null)} />}
+    </div>
+  );
+}
+
+/** "PDF", "DOCX": what kind of file, from its name. */
+function extensionLabel(name: string): string {
+  const found = /\.([a-z0-9]{1,6})$/i.exec(name);
+  return found ? found[1].toUpperCase() : "";
 }
 
 function MoreReactions({ onPick, label }: { onPick: (emoji: string) => void; label: string }) {

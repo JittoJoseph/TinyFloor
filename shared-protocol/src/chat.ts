@@ -26,8 +26,18 @@ export const LOBBY_CHANNELS = ["general", "feedback"] as const;
 /** Who a change was made by when TinyFloor's admin made it, rather than the author. */
 export const MODERATOR = "moderator";
 export const LOBBY_RETENTION_DAYS = 7;
-/** Kept per channel, oldest trimmed by the nightly job. */
+/** Kept per channel, oldest trimmed as it grows. */
 export const CHANNEL_HISTORY_MAX = 5000;
+/** The biggest file chat takes, in bytes. */
+export const FILE_MAX = 10 * 1024 * 1024;
+/** Files on one message. */
+export const FILES_PER_MESSAGE = 4;
+/** People one message can mention. */
+export const MENTIONS_MAX = 20;
+/** Messages a search finds, newest first. */
+export const SEARCH_MAX = 30;
+/** How far back opening a found message loads at most, so it's never a whole channel at once. */
+export const JUMP_MAX = 500;
 
 export type ChannelKind = "channel" | "dm";
 
@@ -40,17 +50,30 @@ export interface ChannelSummary {
   withId?: string;
   /** Messages you have not read. */
   unread: number;
+  /** Of those, the ones that mention you: what a channel counts, where it's otherwise only bold. */
+  mentions?: number;
   /** The last thing said, for the channel list. */
   lastAt?: number;
   lastBy?: string;
   lastBody?: string;
 }
 
-export interface ChatImage {
-  /** The object key in R2. */
+/** A file shared in chat. Images carry their size, so they take their room before they load. */
+export interface ChatFile {
+  /** The object key in R2: `att/<office>/<id>.<ext>`. */
   key: string;
-  width: number;
-  height: number;
+  name: string;
+  /** Bytes. */
+  size: number;
+  /** Its media type, as the browser said when it was shared. */
+  type: string;
+  width?: number;
+  height?: number;
+}
+
+/** Whether a file shows as a picture: the kinds every browser draws safely. */
+export function isPicture(file: Pick<ChatFile, "type">): boolean {
+  return /^image\/(png|jpeg|webp|gif|avif)$/.test(file.type);
 }
 
 export interface ChatMessage {
@@ -59,7 +82,9 @@ export interface ChatMessage {
   author: string;
   authorName: string;
   body: string;
-  image?: ChatImage;
+  files?: ChatFile[];
+  /** Who it mentions, by id; the words say "@Name". */
+  mentions?: string[];
   at: number;
   /** Emoji to the people who reacted with it. */
   reactions?: Record<string, string[]>;
@@ -71,15 +96,17 @@ export interface ChatMessage {
 
 /** What a client sends up the chat socket. */
 export type ChatClientMessage =
-  | { t: "chat_send"; channel: string; body: string; image?: ChatImage }
-  | { t: "chat_history"; channel: string; before?: number }
+  | { t: "chat_send"; channel: string; body: string; files?: ChatFile[]; mentions?: string[] }
+  /** A page of history; with `to`, everything back to that message, so a search result can be opened in place. */
+  | { t: "chat_history"; channel: string; before?: number; to?: number }
+  | { t: "chat_search"; q: string }
   | { t: "chat_read"; channel: string; seq: number }
   | { t: "chat_react"; seq: number; emoji: string; on: boolean }
   | { t: "chat_channel"; name: string }
   | { t: "chat_dm"; userId: string }
   /** The lobby only: change or take back something you said. */
   // `channel` is only needed for a lobby direct message, which isn't stored anywhere to look it up.
-  | { t: "chat_edit"; seq: number; body: string; channel?: string }
+  | { t: "chat_edit"; seq: number; body: string; channel?: string; mentions?: string[] }
   | { t: "chat_delete"; seq: number; channel?: string };
 
 /** What the chat object sends down. */
@@ -91,7 +118,8 @@ export type ChatServerMessage =
   | { t: "chat_channel"; channel: ChannelSummary }
   // `by` is who changed it: its author, or MODERATOR. A lobby direct message was never stored, so
   // the server can't check it; clients apply a change to one only when `by` is its author.
-  | { t: "chat_edited"; seq: number; channel: string; body: string; edited: number; by: string }
+  | { t: "chat_edited"; seq: number; channel: string; body: string; edited: number; by: string; mentions?: string[] }
+  | { t: "chat_found"; q: string; messages: ChatMessage[] }
   | { t: "chat_deleted"; seq: number; channel: string; by: string }
   /** Someone left the lobby: their direct messages go with them. */
   | { t: "chat_gone"; userId: string }

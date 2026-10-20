@@ -4,6 +4,8 @@
 interface __BaseEnv_Env {
 	DB: D1Database;
 	AUTH_LIMIT: RateLimit;
+	UPLOAD_LIMIT: RateLimit;
+	FILES: R2Bucket;
 	SITE_ORIGINS: "https://preview.tinyfloor.com,http://localhost:3000" | "https://www.tinyfloor.com,https://preview.tinyfloor.com,http://localhost:3000";
 	SESSION_COOKIE: "tf_preview_session" | "tf_session";
 	TICKET_SECRET: string;
@@ -31,6 +33,8 @@ declare namespace Cloudflare {
 	interface PreviewEnv {
 		DB: D1Database;
 		AUTH_LIMIT: RateLimit;
+		UPLOAD_LIMIT: RateLimit;
+		FILES: R2Bucket;
 		SITE_ORIGINS: "https://preview.tinyfloor.com,http://localhost:3000";
 		SESSION_COOKIE: "tf_preview_session";
 		TICKET_SECRET: string;

@@ -28,7 +28,7 @@ export function FloorNudges({ chatPath }: { chatPath: (channel: string) => strin
     if (!nudges) return;
     return chat.onIncoming((message) => {
       const where = isDm(message.channel) ? "" : `#${message.channel}`;
-      const body = message.image ? "📷" : message.body;
+      const body = message.body || (message.files?.length ? `📎 ${message.files.map((file) => file.name).join(", ")}` : "");
       showToast({
         title: where ? `${message.authorName} · ${where}` : message.authorName,
         description: <span data-ph-mask>{body.length > 140 ? `${body.slice(0, 140)}…` : body}</span>,

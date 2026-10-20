@@ -1,6 +1,7 @@
 import { env, exports } from "cloudflare:workers";
 import { runDurableObjectAlarm, runInDurableObject } from "cloudflare:test";
 import { describe, expect, it } from "vitest";
+import { ChatClient, officeId } from "./chat-client";
 import {
   GENERAL_CHANNEL,
   LOBBY_CHANNELS,
@@ -11,70 +12,7 @@ import {
   type ChatServerMessage,
 } from "../../shared-protocol/src";
 
-const ORIGIN = "http://localhost:3000";
 let sequence = 0;
-
-const officeId = () => `office-${Date.now()}-${sequence++}`;
-
-class ChatClient {
-  readonly messages: ChatServerMessage[] = [];
-  private listeners: Array<() => void> = [];
-
-  constructor(
-    readonly socket: WebSocket,
-    readonly userId: string,
-  ) {
-    socket.addEventListener("message", (event) => {
-      if (event.data === "pong") return;
-      this.messages.push(JSON.parse(event.data as string));
-      for (const listener of this.listeners.splice(0)) listener();
-    });
-  }
-
-  static async open(office: string, who: { id: string; name: string }, role = "member"): Promise<ChatClient> {
-    const ticket = await signTicket(
-      {
-        v: 1,
-        room: `chat:${office}`,
-        sub: who.id,
-        name: who.name,
-        character: "Adam",
-        role: role as "member",
-        cap: 10,
-        exp: Date.now() + 60_000,
-      },
-      env.TICKET_SECRET,
-    );
-    const response = await exports.default.fetch(
-      `https://realtime.tinyfloor.com/${office === LOBBY_CHAT ? "lobby" : `offices/${office}`}/chat?ticket=${encodeURIComponent(ticket)}`,
-      { headers: { Upgrade: "websocket", Origin: ORIGIN } },
-    );
-    expect(response.status).toBe(101);
-    const socket = response.webSocket!;
-    socket.accept();
-    return new ChatClient(socket, who.id);
-  }
-
-  send(message: ChatClientMessage): void {
-    this.socket.send(JSON.stringify(message));
-  }
-
-  async next<T extends ChatServerMessage["t"]>(type: T, timeout = 2000): Promise<Extract<ChatServerMessage, { t: T }>> {
-    const at = () => this.messages.findIndex((message) => message.t === type);
-    const deadline = Date.now() + timeout;
-    while (at() < 0) {
-      if (Date.now() > deadline) throw new Error(`no ${type} after ${timeout}ms`);
-      await new Promise<void>((resolve) => {
-        this.listeners.push(resolve);
-        setTimeout(resolve, 20);
-      });
-    }
-    const index = at();
-    const message = this.messages[index];
-    this.messages.splice(0, index + 1);
-    return message as Extract<ChatServerMessage, { t: T }>;
-  }
-}
 
 describe("office chat", () => {
   it("opens with #general before anything has been written", async () => {
@@ -221,7 +159,7 @@ describe("lobby chat", () => {
     expect(seen.message).toMatchObject({ channel: "feedback", authorName: "Mara", body: text });
   });
 
-  it("keeps what an office adds for offices: no channels, no images, no other channel names", async () => {
+  it("keeps what an office adds for offices: no channels, no files, no other channel names", async () => {
     const ada = await ChatClient.open(LOBBY_CHAT, { id: `lobby-ada-${sequence++}`, name: "Ada" });
     await ada.next("chat_ready");
 
@@ -229,7 +167,7 @@ describe("lobby chat", () => {
     expect((await ada.next("chat_error")).code).toBe("offices_only");
     ada.messages.length = 0;
 
-    ada.send({ t: "chat_send", channel: "general", body: "", image: { key: "att/x.webp", width: 1, height: 1 } });
+    ada.send({ t: "chat_send", channel: "general", body: "", files: [{ key: "att/lobby/abcdefgh.png", name: "x.png", size: 1, type: "image/png" }] });
     expect((await ada.next("chat_error")).code).toBe("offices_only");
     ada.messages.length = 0;
 
@@ -369,7 +307,7 @@ describe("lobby chat", () => {
     await runInDurableObject(stub, async (_chat, state) => {
       const old = Date.now() - 8 * 24 * 60 * 60 * 1000;
       state.storage.sql.exec(
-        "INSERT INTO messages (channel, author, author_name, body, image, at) VALUES ('feedback', 'x', 'X', 'stale', NULL, ?)",
+        "INSERT INTO messages (channel, author, author_name, body, at) VALUES ('feedback', 'x', 'X', 'stale', ?)",
         old,
       );
       expect(await state.storage.getAlarm()).not.toBeNull();

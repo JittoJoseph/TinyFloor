@@ -352,6 +352,10 @@
       "placeholderName": "你的办公室",
       "create": "创建我的办公室",
       "free": "最多 3 人免费，无需绑卡。"
+    },
+    "officePrompt": {
+      "accountTitle": "保存到你的账户",
+      "accountBody": "这样它就一直属于你，团队也能找到它。只需几秒钟。"
     }
   },
   "office": {

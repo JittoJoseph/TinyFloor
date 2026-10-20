@@ -352,6 +352,10 @@
       "placeholderName": "あなたのオフィス",
       "create": "オフィスを作る",
       "free": "3人まで無料。カード不要。"
+    },
+    "officePrompt": {
+      "accountTitle": "アカウントに保存しましょう",
+      "accountBody": "あなたのオフィスとして残り、チームも見つけられます。数秒で終わります。"
     }
   },
   "office": {

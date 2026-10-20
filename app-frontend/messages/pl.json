@@ -352,6 +352,10 @@
       "placeholderName": "Twoje biuro",
       "create": "Utwórz moje biuro",
       "free": "Za darmo dla maksymalnie 3 osób. Bez karty."
+    },
+    "officePrompt": {
+      "accountTitle": "Zapisz je na swoim koncie",
+      "accountBody": "Wtedy zostanie twoje, a zespół łatwo je znajdzie. To kilka sekund."
     }
   },
   "office": {

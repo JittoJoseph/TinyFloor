@@ -352,6 +352,10 @@
       "placeholderName": "Ditt kontor",
       "create": "Skapa mitt kontor",
       "free": "Gratis för upp till 3 personer. Inget kort behövs."
+    },
+    "officePrompt": {
+      "accountTitle": "Spara det på ditt konto",
+      "accountBody": "Så förblir det ditt och teamet hittar det. Det tar bara några sekunder."
     }
   },
   "office": {

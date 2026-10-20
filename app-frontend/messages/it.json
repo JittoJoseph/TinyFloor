@@ -352,6 +352,10 @@
       "placeholderName": "Il tuo ufficio",
       "create": "Crea il mio ufficio",
       "free": "Gratis fino a 3 persone. Nessuna carta richiesta."
+    },
+    "officePrompt": {
+      "accountTitle": "Salvalo nel tuo account",
+      "accountBody": "Così resta tuo e il tuo team può trovarlo. Bastano pochi secondi."
     }
   },
   "office": {

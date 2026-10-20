@@ -352,6 +352,10 @@
       "placeholderName": "Oma toimisto",
       "create": "Luo toimistoni",
       "free": "Ilmainen enintään 3 hengelle. Korttia ei tarvita."
+    },
+    "officePrompt": {
+      "accountTitle": "Tallenna se tilillesi",
+      "accountBody": "Niin se pysyy sinun ja tiimisi löytää sen. Se vie vain hetken."
     }
   },
   "office": {

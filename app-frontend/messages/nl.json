@@ -352,6 +352,10 @@
       "placeholderName": "Jouw kantoor",
       "create": "Maak mijn kantoor",
       "free": "Gratis tot 3 mensen. Geen kaart nodig."
+    },
+    "officePrompt": {
+      "accountTitle": "Bewaar het in je account",
+      "accountBody": "Zo blijft het van jou en vindt je team het. Het duurt maar een paar seconden."
     }
   },
   "office": {

@@ -352,6 +352,10 @@
       "placeholderName": "Your office",
       "create": "Make my office",
       "free": "Free for up to 3 people. No card needed."
+    },
+    "officePrompt": {
+      "accountTitle": "Save it to your account",
+      "accountBody": "So it stays yours and your team can find it. It takes a few seconds."
     }
   },
   "office": {

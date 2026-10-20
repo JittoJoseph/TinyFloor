@@ -352,6 +352,10 @@
       "placeholderName": "내 오피스",
       "create": "내 오피스 만들기",
       "free": "3명까지 무료. 카드 필요 없음."
+    },
+    "officePrompt": {
+      "accountTitle": "계정에 저장하세요",
+      "accountBody": "내 오피스로 남고 팀원도 찾을 수 있어요. 몇 초면 돼요."
     }
   },
   "office": {

@@ -352,6 +352,10 @@
       "placeholderName": "Votre bureau",
       "create": "Créer mon bureau",
       "free": "Gratuit jusqu'à 3 personnes. Sans carte bancaire."
+    },
+    "officePrompt": {
+      "accountTitle": "Enregistrez-le dans votre compte",
+      "accountBody": "Pour qu’il reste à vous et que votre équipe le trouve. Quelques secondes suffisent."
     }
   },
   "office": {

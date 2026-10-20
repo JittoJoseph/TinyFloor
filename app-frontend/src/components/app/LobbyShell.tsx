@@ -40,6 +40,7 @@ import { useWide } from "@/lib/hooks/use-wide";
 import { AppShell, Logo } from "./AppShell";
 import { YouMenu } from "./YouMenu";
 import { FloorNudges } from "./FloorNudges";
+import { DemoPrompts } from "./DemoPrompts";
 import { PlaceProvider, type OfficeFeature, type Place } from "./place";
 import { Entering } from "./Entering";
 import { withPostHog } from "@/lib/analytics";
@@ -96,16 +97,17 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
     };
   }, [inside]);
 
-  // One chat for every copy of the lobby, open while you are in.
+  // One chat for every copy of the lobby, open while you are in, as whoever you are.
+  const me = inside ? user.id : null;
   useEffect(() => {
-    if (!inside) return;
+    if (!me) return;
     chat.connect("lobby", api.lobbyChatTicket);
     return () => {
       chat.disconnect();
       clearFloor();
       clearMeetings();
     };
-  }, [inside]);
+  }, [me]);
 
   // "Message" beside someone on the floor opens a direct message with them, one that lasts while you're both here.
   useEffect(() => {
@@ -216,7 +218,10 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
         you={<YouMenu onFloor settingsHref={lobbySettingsPath} leave={leave} />}
         floor={
           <>
+            {/* Signing in from the floor to an account of a different person (not a guest
+                made into an account, which keeps its id) walks in again as them. */}
             <RoomView
+              key={user.id}
               title={t("title")}
               user={user}
               ticketFor={ticket.ticketFor}
@@ -226,6 +231,7 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
               settingsHref={lobbySettingsPath}
             />
             {!onChat && <FloorNudges chatPath={lobbyChatPath} />}
+            <DemoPrompts />
           </>
         }
       >

@@ -212,6 +212,11 @@ export type ClientMessage =
   | { t: "status"; status: PresenceStatus }
   /** Your status note changed (the API keeps it; this tells the floor). */
   | { t: "note"; note: StatusNote | null }
+  /**
+   * Your name changed while you're on the demo office's floor, signing up with
+   * Google from it (the API keeps it; this tells the floor, without walking out and back in).
+   */
+  | { t: "rename"; name: string }
   | { t: "board_sync" }
   | ({ t: "board_draw" } & BoardStroke)
   | { t: "board_clear" }
@@ -273,6 +278,7 @@ export type ServerMessage =
   | { t: "meeting_error"; code: MeetingErrorCode }
   | { t: "status"; id: string; status: PresenceStatus }
   | { t: "note"; id: string; note: StatusNote | null }
+  | { t: "renamed"; id: string; name: string }
   | { t: "board_state"; strokes: BoardStroke[] }
   | ({ t: "board_draw"; by: string } & BoardStroke)
   | { t: "board_clear"; by: string }

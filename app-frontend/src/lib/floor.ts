@@ -202,6 +202,23 @@ export async function saveMyNote(note: StatusNote | null) {
 
 export const myStatusNote = (): StatusNote | null => myNote;
 
+const RENAME_EVENT = "floorRename";
+
+/**
+ * Your new name, told to the floor you're on without walking out and back in:
+ * the demo office's, after signing up with Google from it (the API has it already).
+ */
+export function renameOnFloor(name: string) {
+  window.dispatchEvent(new CustomEvent(RENAME_EVENT, { detail: { name } }));
+}
+
+/** For the scene: hears a new name of yours. */
+export function onFloorRename(listener: (name: string) => void): () => void {
+  const hear = (event: Event) => listener((event as CustomEvent<{ name: string }>).detail.name);
+  window.addEventListener(RENAME_EVENT, hear);
+  return () => window.removeEventListener(RENAME_EVENT, hear);
+}
+
 export function useMyNote(): StatusNote | null {
   return useSyncExternalStore(
     (listener) => {

@@ -116,13 +116,20 @@ describe("sign in with Google", () => {
     expect(result.body.error).toMatchObject({ code: "google_mismatch" });
   });
 
-  it("turns a guest into an account, keeping their name and character", async () => {
+  it("turns a guest into an account, the same one, with their character and their Google name", async () => {
     const guest = await makeUser("Gus", { guest: true });
     claims = person();
     const result = await google(guest.cookie);
-    expect(result.body).toMatchObject({ created: true, user: { id: guest.id, displayName: "Gus", guest: false } });
+    expect(result.body).toMatchObject({ created: true, user: { id: guest.id, displayName: "Zoë Park", character: "Adam", guest: false } });
     // The guest session made way for the account's.
     expect((await call(guest, "GET", "/v1/session")).body.user).toBeNull();
+  });
+
+  it("keeps a guest's name when Google has none for them", async () => {
+    const guest = await makeUser("Gus", { guest: true });
+    claims = person({ name: "" });
+    const result = await google(guest.cookie);
+    expect(result.body.user).toMatchObject({ id: guest.id, displayName: "Gus" });
   });
 
   it("lets someone who came in with Google set a first password, and then sign in with it", async () => {

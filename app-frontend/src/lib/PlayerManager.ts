@@ -267,6 +267,11 @@ export class PlayerManager {
     tag.dot.setAlpha(1);
   }
 
+  /** Someone's new name, on their tag. */
+  renamePlayer(id: string, name: string) {
+    this.nameTags.get(id)?.setText(name);
+  }
+
   /**
    * Someone's status note: its emoji on their tag while it lasts, gone when its
    * time is up (and `expired` is told, so the lists can follow).

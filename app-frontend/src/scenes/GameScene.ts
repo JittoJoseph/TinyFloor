@@ -1,4 +1,4 @@
-import { onFloorShown, WALK_TO_PERSON_EVENT, WAVE_EVENT } from "../lib/floor";
+import { onFloorRename, onFloorShown, WALK_TO_PERSON_EVENT, WAVE_EVENT } from "../lib/floor";
 import type { StatusNote } from "@shared/messages";
 import * as Phaser from "phaser";
 import type { RoomTicket } from "@/lib/api";
@@ -60,6 +60,7 @@ class GameScene extends Phaser.Scene {
   private seatManager?: SeatManager;
   private windowListeners: Array<[string, EventListener]> = [];
   private unsubscribeShown?: () => void;
+  private unsubscribeRename?: () => void;
   /** The meeting room, and whether we stand in it. */
   private meetingZone?: MapAnchor;
   private insideRoom = false;
@@ -196,6 +197,10 @@ class GameScene extends Phaser.Scene {
 
     // Under a view the floor isn't seen, so it isn't drawn; it keeps running.
     this.unsubscribeShown = onFloorShown((shown) => this.sys.setVisible(shown));
+    this.unsubscribeRename = onFloorRename((name) => {
+      this.wsManager.send({ t: "rename", name });
+      this.playerManager.renamePlayer(this.playerId, name);
+    });
 
     // Everything is listening now, so nothing the room says first is missed.
     this.wsManager.connect();
@@ -283,6 +288,7 @@ class GameScene extends Phaser.Scene {
     this.windowListeners.forEach(([type, listener]) => window.removeEventListener(type, listener));
     this.windowListeners.length = 0;
     this.unsubscribeShown?.();
+    this.unsubscribeRename?.();
 
     this.movementManager?.destroy();
     this.wsManager?.disconnect();

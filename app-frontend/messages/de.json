@@ -352,6 +352,10 @@
       "placeholderName": "Dein Büro",
       "create": "Mein Büro einrichten",
       "free": "Kostenlos für bis zu 3 Personen. Keine Karte nötig."
+    },
+    "officePrompt": {
+      "accountTitle": "In deinem Konto speichern",
+      "accountBody": "Damit es deins bleibt und dein Team es findet. Dauert nur ein paar Sekunden."
     }
   },
   "office": {

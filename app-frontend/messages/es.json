@@ -352,6 +352,10 @@
       "placeholderName": "Tu oficina",
       "create": "Crear mi oficina",
       "free": "Gratis hasta 3 personas. Sin tarjeta."
+    },
+    "officePrompt": {
+      "accountTitle": "Guárdala en tu cuenta",
+      "accountBody": "Así sigue siendo tuya y tu equipo puede encontrarla. Son unos segundos."
     }
   },
   "office": {

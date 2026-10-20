@@ -352,6 +352,10 @@
       "placeholderName": "Dit kontor",
       "create": "Lav mit kontor",
       "free": "Gratis for op til 3 personer. Intet kort nødvendigt."
+    },
+    "officePrompt": {
+      "accountTitle": "Gem det på din konto",
+      "accountBody": "Så forbliver det dit, og dit team kan finde det. Det tager få sekunder."
     }
   },
   "office": {

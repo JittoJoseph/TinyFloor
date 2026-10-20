@@ -352,6 +352,10 @@
       "placeholderName": "Ditt kontor",
       "create": "Lag mitt kontor",
       "free": "Gratis for opptil 3 personer. Ikke noe kort."
+    },
+    "officePrompt": {
+      "accountTitle": "Lagre det på kontoen din",
+      "accountBody": "Da forblir det ditt, og teamet ditt finner det. Det tar noen sekunder."
     }
   },
   "office": {

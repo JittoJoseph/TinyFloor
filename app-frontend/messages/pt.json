@@ -352,6 +352,10 @@
       "placeholderName": "Seu escritório",
       "create": "Criar meu escritório",
       "free": "Grátis para até 3 pessoas. Sem cartão."
+    },
+    "officePrompt": {
+      "accountTitle": "Guarde na sua conta",
+      "accountBody": "Assim ele fica seu e sua equipe consegue encontrá-lo. Leva poucos segundos."
     }
   },
   "office": {

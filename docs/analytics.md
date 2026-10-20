@@ -18,7 +18,7 @@ asked about teams, not only people. In the demo office, `place: lobby`.
 
 | Event | Properties | Answers |
 |---|---|---|
-| `account_signed_up` | `sign_in_method` (google, google_one_tap, password) | Who's new, and how they came in. A Google sign-in that creates an account counts here, not as a sign-in. |
+| `account_signed_up` | `sign_in_method` (google, google_one_tap, password); `place: lobby` when made on the demo floor | Who's new, and how they came in. A Google sign-in that creates an account counts here, not as a sign-in. |
 | `account_signed_in` | | |
 | `demo_cta_clicked` | `placement` (hero, closing, faq, guide, tool, nav, footer, page) | A link into the demo office was clicked on the marketing site, and where on the page. The first step of the demo's funnel. |
 | `door_viewed` | `door` (demo, introduce, invite), `step` on invites | Someone reached a door: the demo office's, a new account's first one, or an invitation's. Once per door. |
@@ -26,7 +26,8 @@ asked about teams, not only people. In the demo office, `place: lobby`.
 | `guest_session_started` | `door`, `name` (suggested, remembered, typed), `character` (offered, chosen) | Walked in at the demo office's door, and whether they kept the name and character it offered. |
 | `door_failed` | `door`, `reason` | The demo door couldn't let them in (the bot check, the network, too many tries). |
 | `profile_introduced` | `character` (offered, chosen) | A new account got past saying who it is, to its first door. |
-| `office_created` | `office_id` | |
+| `office_created` | `office_id`, `from` (demo_prompt when made from the demo office's prompt) | |
+| `office_prompt_shown` | | The demo office asked someone who had looked around for a while to name their own office. |
 | `invite_opened` | | The invite dialog opened; against `invite_sent`, whether it loses people. |
 | `invite_sent` | `channel` (link, message, email, share) | Does the maker bring the team? |
 | `office_invite_accepted` | `office_id`, `character` (offered, chosen, account) | A teammate arrived. |
@@ -144,3 +145,18 @@ new link into the demo office is counted without anyone remembering to. In
 development it doesn't reach PostHog: events sent after the page's first
 ones were refused (503) when the browser went to PostHog directly; the live
 and preview sites go through the relay.
+
+## Asking from inside the demo office (20 October)
+
+Someone looking around the demo office is asked twice, each once per visit,
+and only while the floor is in view: after 45 seconds there, Google's One
+Tap offers a guest an account; after two and a half minutes, a door over the
+floor asks them to name their team's office (not again from that browser for
+a week). One Tap makes the guest an account in place, the same id, so they
+stay on the floor as the same character and only the name on their tag
+changes, to their Google name (the room passes the new name on; it takes one
+only in the demo office). The office prompt takes the name, then an account
+for a guest (Google, or email by the sign-up page, which comes back to
+finish), makes the office and walks them into it. Watch `office_prompt_shown`
+against `office_created` with `from: demo_prompt`, and `account_signed_up`
+with `sign_in_method: google_one_tap` and `place: lobby`.

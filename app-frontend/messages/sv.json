@@ -62,7 +62,8 @@
     "characterTitle": "Välj din figur",
     "characterBody": "Det här är du på våningen.",
     "thatsMe": "Det är jag",
-    "pickCharacter": "Välj en figur först"
+    "pickCharacter": "Välj en figur först",
+    "anotherName": "Ett annat namn"
   },
   "room": {
     "connecting": "Ansluter...",
@@ -319,7 +320,7 @@
   "lobby": {
     "eyebrow": "Prova TinyFloor",
     "title": "Demokontoret",
-    "subtitle": "Gå runt i ett riktigt TinyFloor-kontor innan du skapar ett för ditt team. Skriv ett namn så är du inne.",
+    "subtitle": "Gå runt i ett riktigt TinyFloor-kontor innan du skapar ett för ditt team.",
     "peopleSubtitle": "Alla i demokontoret just nu.",
     "door": "{here, plural, =0 {Lugnt just nu, så du kan titta runt} one {# person här nu} other {# personer här nu}}",
     "officesOnly": {

@@ -62,7 +62,8 @@
     "characterTitle": "בחרו דמות",
     "characterBody": "זה אתם על הקומה.",
     "thatsMe": "זה אני",
-    "pickCharacter": "קודם לבחור דמות"
+    "pickCharacter": "קודם לבחור דמות",
+    "anotherName": "שם אחר"
   },
   "room": {
     "connecting": "מתחבר...",
@@ -319,7 +320,7 @@
   "lobby": {
     "eyebrow": "נסו את TinyFloor",
     "title": "משרד ההדגמה",
-    "subtitle": "הסתובבו במשרד TinyFloor אמיתי לפני שאתם יוצרים אחד לצוות. כתבו שם ואתם בפנים.",
+    "subtitle": "הסתובבו במשרד TinyFloor אמיתי לפני שאתם יוצרים אחד לצוות.",
     "peopleSubtitle": "כל מי שנמצא עכשיו במשרד ההדגמה.",
     "door": "{here, plural, =0 {שקט כרגע, אפשר להסתכל מסביב בנחת} one {אדם אחד בפנים עכשיו} other {# אנשים בפנים עכשיו}}",
     "officesOnly": {

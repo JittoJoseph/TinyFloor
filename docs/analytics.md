@@ -19,12 +19,17 @@ asked about teams, not only people. In the demo office, `place: lobby`.
 | Event | Properties | Answers |
 |---|---|---|
 | `account_signed_up` | `sign_in_method` (google, google_one_tap, password) | Who's new, and how they came in. A Google sign-in that creates an account counts here, not as a sign-in. |
-| `account_signed_in`, `guest_session_started` | | |
-| `profile_introduced` | | A new account got past saying who it is, to its first door. |
+| `account_signed_in` | | |
+| `demo_cta_clicked` | `placement` (hero, closing, faq, guide, tool, nav, footer, page) | A link into the demo office was clicked on the marketing site, and where on the page. The first step of the demo's funnel. |
+| `door_viewed` | `door` (demo, introduce, invite), `step` on invites | Someone reached a door: the demo office's, a new account's first one, or an invitation's. Once per door. |
+| `door_name_entered` | `door` (introduce, invite), `name` (suggested, typed) | Past the name step of a two-step door. The demo's door has one step, so it has none. |
+| `guest_session_started` | `door`, `name` (suggested, remembered, typed), `character` (offered, chosen) | Walked in at the demo office's door, and whether they kept the name and character it offered. |
+| `door_failed` | `door`, `reason` | The demo door couldn't let them in (the bot check, the network, too many tries). |
+| `profile_introduced` | `character` (offered, chosen) | A new account got past saying who it is, to its first door. |
 | `office_created` | `office_id` | |
 | `invite_opened` | | The invite dialog opened; against `invite_sent`, whether it loses people. |
 | `invite_sent` | `channel` (link, message, email, share) | Does the maker bring the team? |
-| `office_invite_accepted` | `office_id` | A teammate arrived. |
+| `office_invite_accepted` | `office_id`, `character` (offered, chosen, account) | A teammate arrived. |
 | `office_joined_by_domain` | `office_id`, `members` | A colleague found their team's office by their work email and walked in, without the link. |
 | `office_join_requested` | `office_id`, `members` | They found it, but its admins let people in: they asked. |
 | `floor_entered` | `people_here`, `load_ms` | Who shows up, and to whom. The base of the one number. `load_ms` is the wait from the floor being asked for to it showing. |

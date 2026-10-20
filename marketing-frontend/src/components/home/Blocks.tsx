@@ -115,7 +115,7 @@ export function Hero({
           {title}
         </h1>
         <p className={cn(LEAD, "mt-7 max-w-[36rem] text-balance")}>{body}</p>
-        <Joined className="mt-10" />
+        <Joined placement="hero" className="mt-10" />
         <p className="mt-5 text-[13px] text-faint">{t("note")}</p>
       </div>
 
@@ -140,18 +140,25 @@ export function Hero({
  * The two ways in as one control: ink for making an office, a quiet stone for
  * looking around first. On a phone they stack as two whole pills, since in
  * Portuguese or Spanish the pair is wider than the screen; the text may wrap
- * there rather than run off the edge.
+ * there rather than run off the edge. The demo office is the one to press
+ * first, so a glare runs across it now and then (shared.css).
  */
-export function Joined({ className }: { className?: string }) {
+export function Joined({ placement, className }: { placement: string; className?: string }) {
   const t = useTranslations("homepage.hero");
   const half =
     "inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-[14px] font-medium leading-tight transition-colors min-[400px]:px-6 min-[400px]:text-[15px] sm:whitespace-nowrap";
   return (
-    <div className={cn("flex w-full max-w-[22rem] flex-col gap-2 sm:w-auto sm:max-w-none sm:flex-row sm:gap-0", className)}>
+    <div data-cta={placement} className={cn("flex w-full max-w-[22rem] flex-col gap-2 sm:w-auto sm:max-w-none sm:flex-row sm:gap-0", className)}>
       <Link href="/create" className={cn(half, "bg-foreground text-background hover:bg-foreground/85 sm:rounded-e-none")}>
         {t("cta")}
       </Link>
-      <Link href="/lobby" className={cn(half, "bg-foreground/[0.09] text-foreground hover:bg-foreground/[0.14] sm:rounded-s-none")}>
+      <Link
+        href="/lobby"
+        className={cn(
+          half,
+          "shine bg-foreground/[0.09] text-foreground [--shine:rgb(255_255_255/0.95)] hover:bg-foreground/[0.14] sm:rounded-s-none dark:[--shine:rgb(255_255_255/0.16)]",
+        )}
+      >
         {t("lobby")}
       </Link>
     </div>
@@ -491,7 +498,7 @@ export function Questions({ items, title }: { items: Array<{ q: string; a: strin
         <p className="mt-10 text-center text-[15px] text-muted-foreground">
           {t.rich("more", {
             lobby: (chunks) => (
-              <Link href="/lobby" className="font-medium text-foreground hover:underline hover:underline-offset-4">
+              <Link href="/lobby" data-cta="faq" className="font-medium text-foreground hover:underline hover:underline-offset-4">
                 {chunks}
               </Link>
             ),
@@ -540,7 +547,7 @@ export function Closing() {
         {t("title")}
         <span className="block">{t("muted")}</span>
       </h2>
-      <Joined className="mt-10" />
+      <Joined placement="closing" className="mt-10" />
       <p className="mt-6 text-[13px] text-faint">{t("note")}</p>
     </section>
   );

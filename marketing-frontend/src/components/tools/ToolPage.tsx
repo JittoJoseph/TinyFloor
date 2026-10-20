@@ -92,7 +92,7 @@ export function ToolPage({
               <h2 className="text-[22px] font-semibold tracking-[-0.02em]">{copy.fit.title}</h2>
               <p className="mt-3 text-[16px] leading-[1.7] text-foreground/80">{copy.fit.body}</p>
               <div className="mt-6">
-                <Link href="/lobby" className={INK}>
+                <Link href="/lobby" data-cta="tool" className={INK}>
                   {copy.fit.cta}
                 </Link>
               </div>

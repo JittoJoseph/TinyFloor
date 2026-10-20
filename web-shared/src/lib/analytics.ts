@@ -42,6 +42,8 @@ function apiHost(): string {
 }
 
 let loaded: Promise<PostHog> | null = null;
+// PostHog once it's set up, for what has to be sent before the page goes.
+let instance: PostHog | null = null;
 
 /**
  * PostHog, fetched and set up on first use. It is some 100KB of script, so no
@@ -77,6 +79,7 @@ function load() {
       debug: false,
     });
     posthog.register({ environment: where });
+    instance = posthog;
     return posthog;
   }));
 }
@@ -89,6 +92,34 @@ export function withPostHog(use: (posthog: PostHog) => void) {
 /** Records something someone did, with what it was about (never what they wrote). */
 export function track(event: string, properties?: Record<string, string | number | boolean | null>) {
   withPostHog((posthog) => posthog.capture(event, properties));
+}
+
+/**
+ * Records a click on a link that leaves for the other site (the marketing
+ * site's way into the app). It joins PostHog's queue like any event, and
+ * PostHog sends the queue as the page goes, with its $pageleave, which
+ * arrives reliably (asking for it to be sent on its own, or by beacon, did
+ * not). If PostHog isn't set up yet, the page waits for it, never more than
+ * half a second: returns true then, and `go` follows the link.
+ */
+export function trackLeaving(event: string, properties: Record<string, string>, go: () => void): boolean {
+  if (!analyticsConfigured) return false;
+  if (instance) {
+    instance.capture(event, properties);
+    return false;
+  }
+  let gone = false;
+  const leave = () => {
+    if (gone) return;
+    gone = true;
+    go();
+  };
+  setTimeout(leave, 500);
+  void load().then((posthog) => {
+    posthog.capture(event, properties);
+    leave();
+  });
+  return true;
 }
 
 /** Loads PostHog when the browser is idle after the page has loaded, so it never competes with the page. */

@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { track } from "@/lib/analytics";
 import { useTranslations } from "next-intl";
 import { useAuth } from "@/contexts/AuthContext";
-import { character as cleanCharacter, saveIdentity } from "@/lib/identity";
+import { anyCharacter, character as cleanCharacter, saveIdentity } from "@/lib/identity";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { ActionButton } from "@/components/ui/Action";
 import { EntryHeader, EntryShell } from "./EntryShell";
@@ -16,7 +16,8 @@ import { YouMark } from "./DoorParts";
  * A new account's first door (docs/product.md): the name people will see, then who
  * they'll be on the floor, one at a time. Someone who signed up with Google
  * finds their Google name filled in and still presses Continue (or changes
- * it); someone who used an email types it.
+ * it); someone who used an email types it. A character is already picked, at
+ * random, so the second step can be one press too.
  */
 export function Introduce({ backHref = "/" }: { backHref?: string }) {
   const t = useTranslations("entry");
@@ -28,13 +29,21 @@ export function Introduce({ backHref = "/" }: { backHref?: string }) {
   const [wentBack, setWentBack] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [anyone] = useState(anyCharacter);
+
+  // A new account at its first door: the funnel from signing up to the floor (docs/analytics.md).
+  const here = !!user;
+  useEffect(() => {
+    if (here) track("door_viewed", { door: "introduce" });
+  }, [here]);
+
   if (!user) return null;
 
   // Google gave us their name, so it's there to confirm; an email sign-up only
   // gave an address, so they type it (what we guessed from it isn't a name).
   const suggested = user.google ? user.displayName : "";
   const typed = (name ?? suggested).trim();
-  const picked = cleanCharacter(character ?? user.character);
+  const picked = cleanCharacter(character ?? anyone);
 
   const finish = async () => {
     if (!typed || busy) return;
@@ -44,7 +53,7 @@ export function Introduce({ backHref = "/" }: { backHref?: string }) {
       await updateProfile({ displayName: typed, character: picked, introduced: true });
       saveIdentity({ name: typed, character: picked });
       // A new account's first door: who gets past it to their office (docs/analytics.md).
-      track("profile_introduced");
+      track("profile_introduced", { character: character === null ? "offered" : "chosen" });
     } catch (err) {
       setError(explain(err));
       setBusy(false);
@@ -68,6 +77,7 @@ export function Introduce({ backHref = "/" }: { backHref?: string }) {
           event.preventDefault();
           if (step === "character") void finish();
           else if (typed) {
+            track("door_name_entered", { door: "introduce", name: name === null && suggested ? "suggested" : "typed" });
             setWentBack(false);
             setStep("character");
           }
@@ -85,7 +95,7 @@ export function Introduce({ backHref = "/" }: { backHref?: string }) {
               : undefined
           }
           action={
-            <ActionButton type="submit" disabled={!typed} busy={busy} busyLabel={t("openingDoor")}>
+            <ActionButton type="submit" disabled={!typed} busy={busy} busyLabel={t("openingDoor")} shine>
               {step === "name" ? t("continue") : t("thatsMe")}
             </ActionButton>
           }

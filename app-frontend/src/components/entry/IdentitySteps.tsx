@@ -3,38 +3,15 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 import { ArrowLeft } from "@/components/ui/icons";
-import { Field, pillInputClass } from "./EntryShell";
+import { pillInputClass } from "./EntryShell";
 import { CharacterPicker } from "./CharacterPicker";
 import { StepTitle } from "./DoorSteps";
 
 /**
- * Walking in is two small steps instead of one busy form: your name, then who
- * you'll be. Both are used by the lobby, by rooms, by guest links and by
- * invitations, so the way in is the same everywhere.
+ * Who someone will be, one question at a time: the demo office's door asks
+ * for the character only if they want to choose (WalkIn); a new account's
+ * door and an invitation ask for the name, then the character.
  */
-export const NameStep: React.FC<{
-  name: string;
-  onName: (value: string) => void;
-}> = ({ name, onName }) => {
-  const t = useTranslations("entry");
-
-  return (
-    <Field label={t("yourName")} htmlFor="identity-name">
-      <input
-        id="identity-name"
-        type="text"
-        value={name}
-        onChange={(event) => onName(event.target.value)}
-        placeholder={t("namePlaceholder")}
-        className={pillInputClass}
-        maxLength={30}
-        autoFocus
-        autoComplete="nickname"
-      />
-    </Field>
-  );
-};
-
 export const CharacterStep: React.FC<{
   name: string;
   character: string;

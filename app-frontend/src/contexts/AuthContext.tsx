@@ -156,7 +156,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       continueAsGuest: async (details) => {
         const { user: next } = await api.continueAsGuest(details);
         setUser(next);
-        withPostHog((posthog) => posthog.capture("guest_session_started"));
         return next;
       },
       signOut: async () => {

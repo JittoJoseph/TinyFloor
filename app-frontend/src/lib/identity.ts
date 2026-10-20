@@ -31,6 +31,15 @@ export function saveIdentity(identity: Identity) {
   } catch {}
 }
 
+/**
+ * Who a door has picked for someone before they choose: one at random, so a
+ * team that presses straight through doesn't arrive as eight of the same
+ * character. Only for a door's own state, never in what the server renders.
+ */
+export function anyCharacter(): string {
+  return CHARACTER_IDS[Math.floor(Math.random() * CHARACTER_IDS.length)];
+}
+
 /** One of the characters we have art for, or the default. */
 export function character(value: unknown): string {
   return typeof value === "string" && CHARACTER_IDS.includes(value) ? value : DEFAULT_CHARACTER;

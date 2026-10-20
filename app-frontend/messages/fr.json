@@ -62,7 +62,8 @@
     "characterTitle": "Choisis ton personnage",
     "characterBody": "C'est toi sur l'étage.",
     "thatsMe": "C'est moi",
-    "pickCharacter": "Choisir un personnage d'abord"
+    "pickCharacter": "Choisir un personnage d'abord",
+    "anotherName": "Un autre nom"
   },
   "room": {
     "connecting": "Connexion...",
@@ -319,7 +320,7 @@
   "lobby": {
     "eyebrow": "Essayez TinyFloor",
     "title": "Le bureau de démo",
-    "subtitle": "Promenez-vous dans un vrai bureau TinyFloor avant d'en créer un pour votre équipe. Entrez un nom et vous y êtes.",
+    "subtitle": "Promenez-vous dans un vrai bureau TinyFloor avant d'en créer un pour votre équipe.",
     "peopleSubtitle": "Tous ceux qui sont dans le bureau de démo en ce moment.",
     "door": "{here, plural, =0 {C'est calme en ce moment, faites le tour} one {# personne à l'intérieur} other {# personnes à l'intérieur}}",
     "officesOnly": {

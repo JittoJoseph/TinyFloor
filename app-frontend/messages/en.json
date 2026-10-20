@@ -62,7 +62,8 @@
     "characterTitle": "Pick your character",
     "characterBody": "This is you on the floor.",
     "thatsMe": "That's me",
-    "pickCharacter": "Choose a character first"
+    "pickCharacter": "Choose a character first",
+    "anotherName": "Another name"
   },
   "room": {
     "connecting": "Connecting...",
@@ -319,7 +320,7 @@
   "lobby": {
     "eyebrow": "Try TinyFloor",
     "title": "The demo office",
-    "subtitle": "Walk around a real TinyFloor office before you make one for your team. Type a name and you're in.",
+    "subtitle": "Walk around a real TinyFloor office before you make one for your team.",
     "peopleSubtitle": "Everyone in the demo office right now.",
     "door": "{here, plural, =0 {Quiet right now, so you can look around} one {# person inside now} other {# people inside now}}",
     "officesOnly": {

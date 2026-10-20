@@ -1,3 +1,4 @@
+import { availableParallelism } from "node:os";
 import path from "node:path";
 import createNextIntlPlugin from "next-intl/plugin";
 
@@ -17,6 +18,9 @@ export function frontendConfig({ serverLeavesOut = [] } = {}) {
     // frontends share (components, translations, styles) lives in ../web-shared.
     experimental: {
       externalDir: true,
+      // Next builds pages with one worker fewer than the machine has cores, which on
+      // Workers Builds' two is one, with the second core idle. Two keep both busy.
+      cpus: Math.max(2, availableParallelism() - 1),
       // Next 16.3 bundles small prefetch responses together; OpenNext serves a
       // built page's prefetch from its cache only unbundled, and otherwise
       // answers with the whole page, which the router rejects and asks for

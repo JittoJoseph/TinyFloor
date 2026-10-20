@@ -135,7 +135,11 @@ export function LobbyShell({ children }: { children: React.ReactNode }) {
         onReady={() => {}}
         mark={<LobbyDoorMark />}
         detail={
-          door && (
+          // Who's inside arrives a moment after the door: until then an empty chip
+          // holds its place, so the door doesn't grow under someone reading it.
+          !door ? (
+            <span aria-hidden className="block h-8 w-44 rounded-full border border-border bg-background" />
+          ) : (
             <EntryDetail
               lead={
                 door.faces.length > 0 ? (

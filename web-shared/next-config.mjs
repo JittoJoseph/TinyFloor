@@ -21,11 +21,13 @@ export function frontendConfig({ serverLeavesOut = [] } = {}) {
       // Next builds pages with one worker fewer than the machine has cores, which on
       // Workers Builds' two is one, with the second core idle. Two keep both busy.
       cpus: Math.max(2, availableParallelism() - 1),
-      // Next 16.3 bundles small prefetch responses together; OpenNext serves a
-      // built page's prefetch from its cache only unbundled, and otherwise
-      // answers with the whole page, which the router rejects and asks for
-      // again, some 20 times a second.
-      prefetchInlining: false,
+      // Small prefetch segments are bundled together (about half as many files
+      // per built page). This was off while OpenNext's cache answered prefetches:
+      // it serves them only unbundled, otherwise sending the whole page, which the
+      // router rejects and asks for again, some 20 times a second. Built pages'
+      // segments now come from static-worker.mjs, and their cache entries are left
+      // out (static-pages.mjs), so that cache never answers one.
+      prefetchInlining: true,
     },
     // The middleware strips trailing slashes itself (lib/edge.ts screen), so
     // PostHog's paths keep theirs on the way through the relay.

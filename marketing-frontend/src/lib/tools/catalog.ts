@@ -1,12 +1,11 @@
 import { localeCodes, type Locale } from "@/lib/i18n/routing";
 
 /**
- * Every free tool (docs/search.md), and the languages it's written in. The
- * first three are in all eighteen; the newer ones only where they're written
- * properly, English, Portuguese and Spanish (where most visitors come from),
- * rather than eighteen thin copies. A page asked for in another language is
- * not found, and nothing links there: not the sitemap, the language versions
- * in its head, or the language menu.
+ * Every free tool (docs/search.md), and the languages it's written in: all
+ * eighteen, each written for its language rather than translated word for
+ * word. A tool added in fewer languages lists them here; a page asked for in
+ * another language is then not found, and nothing links there: not the
+ * sitemap, the language versions in its head, or the language menu.
  */
 export const TOOLS_PATH = "/tools";
 
@@ -22,9 +21,6 @@ export const STANDUP_PATH = "/tools/daily-standup-template";
 export const OUT_OF_OFFICE_PATH = "/tools/out-of-office-message";
 export const TEAM_BUILDING_PATH = "/tools/team-building-questions";
 
-/** The languages the newer tools are written in. */
-export const FEW: readonly Locale[] = ["en", "pt", "es"];
-
 export interface ToolEntry {
   path: string;
   locales: readonly Locale[];
@@ -32,13 +28,13 @@ export interface ToolEntry {
 
 /** In the order the index lists them: the ones a team lead reaches for most first. */
 export const TOOLS: ToolEntry[] = [
-  { path: STANDUP_PATH, locales: FEW },
+  { path: STANDUP_PATH, locales: localeCodes },
   { path: ICEBREAKERS_PATH, locales: localeCodes },
-  { path: WOULD_YOU_RATHER_PATH, locales: FEW },
-  { path: TWO_TRUTHS_PATH, locales: FEW },
-  { path: TEAM_BUILDING_PATH, locales: FEW },
+  { path: WOULD_YOU_RATHER_PATH, locales: localeCodes },
+  { path: TWO_TRUTHS_PATH, locales: localeCodes },
+  { path: TEAM_BUILDING_PATH, locales: localeCodes },
   { path: TIME_ZONES_PATH, locales: localeCodes },
-  { path: OUT_OF_OFFICE_PATH, locales: FEW },
+  { path: OUT_OF_OFFICE_PATH, locales: localeCodes },
   { path: OFFICE_COSTS_PATH, locales: localeCodes },
 ];
 

@@ -1,0 +1,216 @@
+import type { IcebreakersContent } from "@/lib/tools/icebreakers";
+
+/** Tiimiytymiskysymyksiä töihin, suomeksi, kirjoitettu englanninkielisen listan pohjalta. */
+const fi: IcebreakersContent = {
+  groups: [
+    {
+      key: "fun",
+      label: "Hauskat",
+      title: "Hauskat tiimiytymiskysymykset",
+      when: "Leikkisiä kysymyksiä tiimistä itsestään. Hyviä tiimipäivän, rennon puhelun tai rauhallisen perjantain aloitukseen.",
+      questions: [
+        "Jos tiimimme olisi bändi, mikä sen nimi olisi?",
+        "Jos tiimillä olisi maskotti, mikä se olisi?",
+        "Mikä fiktiivinen hahmo sopisi täydellisesti tiimiimme?",
+        "Jos tiimillämme olisi tunnuskappale, mikä se olisi?",
+        "Jos voisimme vaihtaa töitä päiväksi, kenen työtä haluaisit kokeilla?",
+        "Mikä olisi tiimistämme tehdyn tosi-tv-sarjan nimi?",
+        "Jos avaisimme yhdessä ravintolan, mitä tarjoilisimme?",
+        "Mikä supervoima helpottaisi työtäsi?",
+        "Tiimin automatkalla olisitko kuski, kartanlukija, DJ vai eväsvastaava?",
+        "Jos saisit lisätä työpaikalle yhden edun ilman budjettirajaa, mikä se olisi?",
+        "Missä työssä olisit surkea, ja miksi?",
+        "Jos työviikkosi olisi elokuvalaji, mikä se olisi?",
+        "Mikä olisi omaelämäkertasi nimi juuri nyt?",
+        "Jos meillä olisi oma tiimin juhlapäivä, mitä juhlisimme?",
+        "Mikä on hyödyttömin taitosi?",
+        "Jos saisit minkä tahansa eläimen työkaveriksi, minkä valitsisit?",
+        "Mitkä kolme asiaa ottaisit mukaan autiolla saarella sijaitsevaan toimistoon?",
+        "Jos saisit päättää, minkä nimen antaisimme neuvotteluhuoneelle?",
+        "Jos voisit oppia minkä tahansa taidon yhdessä yössä, mikä se olisi?",
+        "Mitä olisi täydellisen tiimilounaan ruokalistalla?",
+      ],
+    },
+    {
+      key: "work",
+      label: "Työtapasi",
+      title: "Tiimiytymiskysymyksiä työtavoista",
+      when: "Jokaisen käyttöohje: miten hän haluaa palautetta, apua ja keskittymisaikaa. Tiimit, jotka kysyvät näitä ajoissa, säästyvät paljolta arvailulta.",
+      questions: [
+        "Miten saat palautetta mieluiten: heti, kirjallisesti vai kahden kesken?",
+        "Mikä on paras tapa pyytää sinulta apua?",
+        "Mihin aikaan päivästä teet parhaat työsi?",
+        "Millainen on mielestäsi hyvä palaveri?",
+        "Kun olet jumissa, puhutko asian mieluummin läpi vai selvitätkö sen ensin itse?",
+        "Mitä ihmiset ymmärtävät usein väärin tavastasi tehdä töitä?",
+        "Mistä työkaverit huomaavat, että tarvitset rauhaa keskittyäksesi?",
+        "Millainen tunnustus merkitsee sinulle eniten?",
+        "Pidätkö tarkoista ohjeista vai tavoitteesta ja vapaudesta löytää oma tie?",
+        "Mikä vie sinulta energiaa töissä?",
+        "Mikä auttaa sinua tekemään parhaan työsi?",
+        "Kuinka nopeasti odotat vastausta viesteihin, ja kuinka nopeasti itse vastaat?",
+        "Mikä ärsyttää sinua tiimin viestinnässä?",
+        "Mikä vahvuutesi jää tiimiltä ehkä liian vähälle käytölle?",
+        "Miten tykkäät juhlistaa, kun jokin onnistuu?",
+        "Mitä haluaisit uuden työkaverin tietävän yhteistyöstä kanssasi?",
+        "Kun olet eri mieltä, sanotko sen mieluummin palaverissa vai jälkeenpäin?",
+        "Miten tykkäät aloittaa uuden projektin?",
+        "Mistä tunnet, että sinuun luotetaan töissä?",
+        "Hankalassa kysymyksessä: mieluummin nopea puhelu vai kirjallinen viesti?",
+      ],
+    },
+    {
+      key: "team",
+      label: "Tiimi",
+      title: "Tiimiytymiskysymyksiä tiimistä",
+      when: "Siitä, miten tiimi toimii yhdessä: mikä sujuu, mikä on tiellä ja mitä kokeillaan seuraavaksi. Hyviä tiimipäivään tai neljännesvuosikatsaukseen.",
+      questions: [
+        "Mitä tämä tiimi tekee paremmin kuin mikään muu tiimi, jossa olet ollut?",
+        "Mikä on tämän tiimin kirjoittamaton sääntö?",
+        "Mitä uuden ihmisen pitäisi tietää ensimmäisellä viikollaan täällä?",
+        "Mitä tiimin hetkeä ajattelet yhä?",
+        "Mihin käytämme liikaa aikaa?",
+        "Mitä voisimme kokeilla tiiminä ensi kuussa?",
+        "Milloin viimeksi tuntui, että tiimi todella puhalsi yhteen hiileen?",
+        "Minkä työkaverin tavan haluaisit lainata?",
+        "Mikä helpottaisi yhteistyötä sinun kannaltasi?",
+        "Mikä palavereistamme voisi olla viesti, ja mikä tarvitsee enemmän aikaa?",
+        "Mitä olemme lopettaneet, vaikka se pitäisi ottaa takaisin?",
+        "Miten juhlistamme onnistumisia, ja miten meidän pitäisi?",
+        "Minkä perinteen voisimme aloittaa tiiminä?",
+        "Jos kuvailisit tiimiämme kolmella sanalla, mitkä ne olisivat?",
+        "Mitä tiimin ulkopuoliset ymmärtävät väärin työstämme?",
+        "Mikä taito tiimillä on, josta emme koskaan puhu?",
+        "Mitä muuttaisit siinä, miten jaamme päivityksiä?",
+        "Mikä oli tämän tiimin paras päätös viime vuonna?",
+        "Mille meidän pitäisi sanoa useammin ei?",
+        "Millainen on koko tiimille loistava viikko?",
+      ],
+    },
+    {
+      key: "deeper",
+      label: "Syvemmät",
+      title: "Syvemmät tiimiytymiskysymykset",
+      when: "Kehittämispäivään, pitkään tiimipäivään tai tiimille, joka tuntee jo toisensa. Jokainen vie muutaman minuutin, ja se kannattaa.",
+      questions: [
+        "Mistä hetkestä töissä olet ollut ylpeä, ja miksi?",
+        "Mikä sai sinut valitsemaan nykyisen työsi?",
+        "Minkä arvon yrität tuoda jokaiseen työhön?",
+        "Kuka on vaikuttanut eniten siihen, miten teet töitä?",
+        "Mikä on vaikein asia, jonka olet oppinut töissä?",
+        "Miltä menestys näyttää sinulle vuoden päästä?",
+        "Minkä riskin otit töissä, ja se kannatti?",
+        "Milloin tunnet olevasi eniten oma itsesi töissä?",
+        "Mitä osaa työstäsi tekisit, vaikka kukaan ei huomaisi?",
+        "Mitä olet joutunut opettelemaan pois?",
+        "Mikä on ystävällisin asia, jonka työkaveri on tehnyt sinulle?",
+        "Mitä paras esihenkilösi teki, mitä muut eivät tehneet?",
+        "Mistä haluaisit, että sinut tunnetaan tässä tiimissä?",
+        "Missä kaipaisit enemmän apua?",
+        "Mikä on paras tiimi, jossa olet ollut, ja mikä sai sen toimimaan?",
+        "Mitä toivoisit tienneesi uran alussa?",
+        "Mikä antaa sinulle energiaa raskaana päivänä?",
+        "Mitä haluaisit tiimin ymmärtävän sinusta?",
+        "Mikä kiinnostaa sinua eniten juuri nyt?",
+        "Minkä neuvon antaisit kaikille täällä?",
+      ],
+    },
+  ],
+  meta: {
+    title: "Tiimiytymiskysymyksiä töihin: 80 kysymystä tiimin keskusteluun",
+    description:
+      "80 tiimiytymiskysymystä eli team building -kysymystä töihin: hauskoja, työtavoista, tiimistä ja syvempiä kehittämispäivään. Arvo yksi.",
+  },
+  eyebrow: "Ilmainen työkalu",
+  updated: "Päivitetty",
+  title: "Tiimiytymiskysymyksiä <em>töihin.</em>",
+  intro:
+    "Jäänmurtaja lämmittää palaverin; hyvä tiimiytymiskysymys kertoo jotain siitä, miten tiimisi toimii. Tässä on 80: hauskoja kysymyksiä tiimistä, kysymyksiä siitä, miten kukin tykkää tehdä töitä, kysymyksiä tiimistä itsestään ja syvempiä kehittämispäivään. Arvo yksi alta tai selaa listaa.",
+  picker: { all: "Kaikki", another: "Toinen kysymys", copy: "Kopioi", copied: "Kopioitu", of: "/" },
+  howTo: [
+    {
+      title: "Näin käytät tiimiytymiskysymyksiä",
+      items: [
+        {
+          title: "Yksi kysymys, kaikki vastaavat",
+          detail: "Viidestä kymmeneen minuuttia",
+          body: "Kysy yksi kysymys tiimipalaverin alussa ja kierrä kiinteässä järjestyksessä. Vastaa ensin itse, jotta muut näkevät, kuinka pitkä ja henkilökohtainen vastaus voi olla.",
+        },
+        {
+          title: "Valitse ryhmä tilanteen mukaan",
+          detail: "Ensin hauskat, myöhemmin syvemmät",
+          body: "Hauskat kysymykset sopivat kaikille tiimeille. Säästä syvemmät tiimille, joka tuntee jo toisensa, tai kehittämispäivään, jossa on aikaa kuunnella kunnolla.",
+        },
+        {
+          title: "Kirjaa vastaukset",
+          detail: "Työtapoja koskeviin kysymyksiin",
+          body: "Vastaukset kysymykseen \"Miten saat palautetta mieluiten?\" kannattaa säilyttää. Kokoa ne jaettuun dokumenttiin, oma osio kullekin, ja ohjaa uudet työkaverit sinne.",
+        },
+        {
+          title: "Tee jotain tiimikysymysten vastauksilla",
+          detail: "Muuten ne lakkaavat toimimasta",
+          body: "Jos kysyt \"Mille meidän pitäisi sanoa useammin ei?\", valitse yksi vastaus ja toimi sen mukaan. Ihmiset vastaavat rehellisesti, kun näkevät vastausten muuttavan jotain.",
+        },
+      ],
+    },
+  ],
+  rules: [
+    {
+      title: "Millainen on hyvä tiimiytymiskysymys",
+      items: [
+        {
+          title: "Kaikki voivat vastata",
+          body: "Hyvä kysymys ei riipu iästä, kokemuksesta, asuinpaikasta tai siitä, mitä joku tekee viikonloppuisin. Jokaisella tiimissä on vastaus jo ensimmäisellä viikolla.",
+        },
+        {
+          title: "Ei mitään yksityistä",
+          body: "Jätä pois perhe, parisuhteet, terveys, raha, politiikka ja uskonto. Syvemmätkin kysymykset tässä koskevat työtä ja sitä, miten ihmiset tykkäävät tehdä töitä.",
+        },
+        {
+          title: "Saa jättää väliin",
+          body: "Kerro alussa, että kuka tahansa voi jättää vuoronsa väliin tai vastata lyhyesti. Kysymys, johon on pakko vastata, lakkaa olemasta tiimiytymistä.",
+        },
+        {
+          title: "Kertoo jotain hyödyllistä",
+          body: "Parhaisiin on hauska vastata, ja niiden jälkeen tiimi tietää jotain uutta: milloin joku keskittyy parhaiten, mikä kuormittaa häntä, mistä hän on ylpeä.",
+        },
+      ],
+    },
+    {
+      title: "Näin valitsimme ne",
+      body: [
+        "Kirjoitimme nämä kysymykset pienille työpaikan tiimeille yllä olevien sääntöjen mukaan ja ryhmittelimme ne sen mukaan, kuinka hyvin tiimi tuntee toisensa ja paljonko aikaa on. Minuutin lämmittelyyn ennen dailya jäänmurtajakysymyksemme ovat nopeampia; nämä vievät vähän enemmän aikaa ja kertovat enemmän siitä, miten tiimi toimii. Lisäämme listaan uusia, kun löydämme hyviä.",
+      ],
+    },
+  ],
+  fit: {
+    title: "Kokoa tiimi kerrokseen",
+    body: "TinyFloor on virtuaalitoimisto pienille tiimeille: näet, kuka istuu työpisteellään, kävelet viereen juttelemaan ja kokoonnutte neuvotteluhuoneeseen tiimipäivään, kysymyksineen kaikkineen. Se toimii selaimen välilehdessä, ilmaiseksi enintään 3 hengelle ja 29 $ kuukaudessa koko tiimiltä.",
+    cta: "Kokeile demotoimistoa",
+  },
+  faqTitle: "Usein <em>kysyttyä.</em>",
+  faq: [
+    {
+      q: "Millaisia ovat hyvät tiimiytymiskysymykset töihin?",
+      a: "Sellaiset, joihin kaikki voivat vastata ja jotka kertovat jotain tiimin toiminnasta, kuten \"Mikä on paras tapa pyytää sinulta apua?\" tai \"Mitä tämä tiimi tekee paremmin kuin mikään muu tiimi, jossa olet ollut?\"",
+    },
+    {
+      q: "Mitä ovat hauskat tiimiytymiskysymykset?",
+      a: "Leikkisiä kysymyksiä tiimistä itsestään: \"Jos tiimimme olisi bändi, mikä sen nimi olisi?\", \"Mikä olisi tiimistämme tehdyn tosi-tv-sarjan nimi?\" tai \"Jos avaisimme yhdessä ravintolan, mitä tarjoilisimme?\"",
+    },
+    {
+      q: "Mitä eroa on jäänmurtajilla ja tiimiytymiskysymyksillä?",
+      a: "Jäänmurtaja on nopea lämmittely minuutin ajan ennen palaveria. Tiimiytymiskysymys vie muutaman minuutin, ja sen tarkoitus on opettaa tiimille jotain sen jäsenistä tai yhteistyöstä.",
+    },
+    {
+      q: "Miten tiimiytymiskysymyksiä käytetään etätiimissä?",
+      a: "Kysy puhelussa yksi kysymys ja kierrä kiinteässä järjestyksessä, ettei kukaan puhu toisten päälle. Eri aikavyöhykkeillä toimivassa tiimissä julkaise kysymys tiimin chatissa ja anna kaikkien vastata, kun ovat paikalla.",
+    },
+    {
+      q: "Mitä tiimiytymiskysymyksiä kannattaa välttää?",
+      a: "Kaikkea perheeseen, parisuhteisiin, terveyteen, rahaan, politiikkaan tai uskontoon liittyvää sekä kysymyksiä, jotka asettavat yhden ihmisen kiusalliseen asemaan, kuten työkaverin arvioimista.",
+    },
+  ],
+};
+
+export default fi;

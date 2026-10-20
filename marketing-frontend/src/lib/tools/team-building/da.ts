@@ -1,0 +1,216 @@
+import type { IcebreakersContent } from "@/lib/tools/icebreakers";
+
+/** Teambuilding-spørgsmål til arbejdet, på dansk, skrevet ud fra den engelske liste. */
+const da: IcebreakersContent = {
+  groups: [
+    {
+      key: "fun",
+      label: "Sjove",
+      title: "Sjove teambuilding-spørgsmål",
+      when: "Legende spørgsmål om selve teamet. Gode til at åbne en teamdag, et uformelt opkald eller en stille fredag.",
+      questions: [
+        "Hvis vores team var et band, hvad ville vi så hedde?",
+        "Hvis teamet havde en maskot, hvad skulle det så være?",
+        "Hvilken fiktiv figur ville passe perfekt ind på vores team?",
+        "Hvis vores team havde en kendingsmelodi, hvilken skulle det så være?",
+        "Hvis vi kunne bytte job for en dag, hvis job ville du så prøve?",
+        "Hvad ville realityprogrammet om vores team hedde?",
+        "Hvis vi åbnede en restaurant sammen, hvad skulle vi så servere?",
+        "Hvilken superkraft ville gøre dit job lettere?",
+        "På en roadtrip med teamet, er du så chaufføren, navigatøren, dj'en eller den med snacks?",
+        "Hvis du kunne tilføje ét frynsegode på arbejdet uden budgetgrænse, hvad skulle det så være?",
+        "Hvilket job ville du være elendig til, og hvorfor?",
+        "Hvis din arbejdsuge var en filmgenre, hvilken ville det så være?",
+        "Hvad ville titlen på din selvbiografi være lige nu?",
+        "Hvis vi havde vores egen helligdag i teamet, hvad skulle vi så fejre?",
+        "Hvad er dit mest ubrugelige talent?",
+        "Hvis du kunne have et hvilket som helst dyr som kollega, hvilket ville du vælge?",
+        "Hvilke tre ting ville du tage med til et kontor på en øde ø?",
+        "Hvis det stod til dig, hvad skulle mødelokalet så hedde?",
+        "Hvis du kunne mestre en færdighed fra den ene dag til den anden, hvilken skulle det så være?",
+        "Hvad ville stå på menuen til den perfekte teamfrokost?",
+      ],
+    },
+    {
+      key: "work",
+      label: "Sådan arbejder du",
+      title: "Teambuilding-spørgsmål om, hvordan du arbejder",
+      when: "Hver persons brugsanvisning: hvordan de vil have feedback, hjælp og fokustid. Teams, der spørger om det tidligt, sparer sig selv for en masse gætteri.",
+      questions: [
+        "Hvordan får du helst feedback: med det samme, på skrift eller under fire øjne?",
+        "Hvad er den bedste måde at bede dig om hjælp på?",
+        "Hvornår på dagen laver du dit bedste arbejde?",
+        "Hvordan ser et godt møde ud for dig?",
+        "Når du sidder fast, vil du så hellere tale det igennem eller finde ud af det selv først?",
+        "Hvad er noget ved din måde at arbejde på, som folk ofte misforstår?",
+        "Hvordan kan kollegerne se, at du har brug for ro til at fokusere?",
+        "Hvilken slags anerkendelse betyder mest for dig?",
+        "Kan du lide detaljerede instruktioner, eller målet og frihed til selv at finde vejen?",
+        "Hvad dræner dig for energi på arbejdet?",
+        "Hvad hjælper dig med at lave dit bedste arbejde?",
+        "Hvor hurtigt forventer du svar på beskeder, og hvor hurtigt svarer du selv?",
+        "Hvad irriterer dig i teamets kommunikation?",
+        "Hvilken styrke har du, som teamet måske ikke bruger nok?",
+        "Hvordan kan du lide at fejre, når noget er gået godt?",
+        "Hvad vil du gerne have, at en ny kollega ved om at arbejde sammen med dig?",
+        "Når du er uenig, siger du det så hellere på mødet eller bagefter?",
+        "Hvordan kan du bedst lide at starte et nyt projekt?",
+        "Hvad får dig til at føle, at man har tillid til dig på arbejdet?",
+        "Ved et svært spørgsmål: hellere et hurtigt opkald eller en skrevet besked?",
+      ],
+    },
+    {
+      key: "team",
+      label: "Teamet",
+      title: "Teambuilding-spørgsmål om teamet",
+      when: "Om hvordan teamet arbejder sammen: hvad der går godt, hvad der står i vejen, og hvad I skal prøve som det næste. Gode til en teamdag eller et kvartalsvist tjek.",
+      questions: [
+        "Hvad gør dette team bedre end noget andet team, du har været på?",
+        "Hvad er en uskreven regel på dette team?",
+        "Hvad bør en ny person vide i sin første uge her?",
+        "Hvilket øjeblik med teamet tænker du stadig på?",
+        "Hvad bruger vi for meget tid på?",
+        "Hvad kunne vi prøve som team næste måned?",
+        "Hvornår føltes det sidst, som om teamet virkelig stod sammen?",
+        "Hvilken vane hos en kollega kunne du tænke dig at låne?",
+        "Hvad ville gøre samarbejdet lettere for dig?",
+        "Hvilket af vores møder kunne være en besked, og hvilket har brug for mere tid?",
+        "Hvad er vi holdt op med, som vi burde tage op igen?",
+        "Hvordan fejrer vi sejre, og hvordan burde vi?",
+        "Hvilken tradition burde vi starte som team?",
+        "Hvis du skulle beskrive vores team med tre ord, hvilke ville det være?",
+        "Hvad misforstår folk uden for teamet ved det, vi laver?",
+        "Hvilken færdighed har teamet, som vi aldrig taler om?",
+        "Hvad ville du ændre ved, hvordan vi deler opdateringer?",
+        "Hvad var den bedste beslutning, teamet tog det seneste år?",
+        "Hvad burde vi sige nej til oftere?",
+        "Hvordan ser en rigtig god uge ud for hele teamet?",
+      ],
+    },
+    {
+      key: "deeper",
+      label: "Dybere",
+      title: "Dybere teambuilding-spørgsmål",
+      when: "Til et seminar, en lang teamdag eller et team, der allerede kender hinanden. De tager et par minutter hver, og det er det værd.",
+      questions: [
+        "Hvilket øjeblik på arbejdet var du stolt af, og hvorfor?",
+        "Hvad fik dig til at vælge det arbejde, du laver?",
+        "Hvilken værdi prøver du at tage med ind i ethvert job?",
+        "Hvem har haft størst indflydelse på, hvordan du arbejder?",
+        "Hvad er det sværeste, du har lært på arbejdet?",
+        "Hvordan ser succes ud for dig om et år?",
+        "Hvilken risiko tog du på arbejdet, som betalte sig?",
+        "Hvornår føler du dig mest som dig selv på arbejdet?",
+        "Hvilken del af dit arbejde ville du blive ved med, selv hvis ingen lagde mærke til det?",
+        "Hvad har du måttet aflære?",
+        "Hvad er det sødeste, en kollega har gjort for dig?",
+        "Hvad gjorde din bedste leder, som andre ikke gjorde?",
+        "Hvad vil du gerne være kendt for på dette team?",
+        "Hvad kunne du tænke dig mere hjælp til?",
+        "Hvad er det bedste team, du har været en del af, og hvad fik det til at fungere?",
+        "Hvad ville du ønske, du havde vidst, da du startede din karriere?",
+        "Hvad giver dig energi på en hård dag?",
+        "Hvad vil du gerne have, at teamet forstår om dig?",
+        "Hvad er du mest nysgerrig på lige nu?",
+        "Hvilket råd vil du give videre til alle her?",
+      ],
+    },
+  ],
+  meta: {
+    title: "Teambuilding spørgsmål til arbejdet: 80 der får teamet i snak",
+    description:
+      "80 teambuilding-spørgsmål til arbejdet: sjove, om hvordan hver person arbejder, om selve teamet og dybere til et seminar. Træk et tilfældigt.",
+  },
+  eyebrow: "Gratis værktøj",
+  updated: "Opdateret",
+  title: "Teambuilding-spørgsmål <em>til arbejdet.</em>",
+  intro:
+    "En isbryder varmer et møde op; et godt teambuilding-spørgsmål fortæller dig noget om, hvordan dit team arbejder. Her er 80: sjove om teamet, spørgsmål om hvordan hver person kan lide at arbejde, spørgsmål om selve teamet og dybere til et seminar. Træk et tilfældigt herunder, eller bladr i listen.",
+  picker: { all: "Alle", another: "Et andet spørgsmål", copy: "Kopiér", copied: "Kopieret", of: "af" },
+  howTo: [
+    {
+      title: "Sådan bruger du teambuilding-spørgsmål",
+      items: [
+        {
+          title: "Ét spørgsmål, alle svarer",
+          detail: "Fem til ti minutter",
+          body: "Stil ét spørgsmål i starten af et teammøde, og gå rundt i en fast rækkefølge. Svar selv først, så folk kan se, hvor langt og hvor personligt et svar kan være.",
+        },
+        {
+          title: "Vælg gruppen efter situationen",
+          detail: "Sjove først, dybere senere",
+          body: "Sjove spørgsmål passer til ethvert team. Gem de dybere til et team, der allerede kender hinanden, eller til et seminar med tid til at lytte ordentligt.",
+        },
+        {
+          title: "Skriv svarene ned",
+          detail: "Ved spørgsmålene om, hvordan du arbejder",
+          body: "Svarene på \"Hvordan får du helst feedback?\" er værd at gemme. Læg dem i et delt dokument, ét afsnit pr. person, og henvis nye kolleger til det.",
+        },
+        {
+          title: "Gør noget ved teamspørgsmålene",
+          detail: "Ellers holder de op med at virke",
+          body: "Hvis du spørger \"Hvad burde vi sige nej til oftere?\", så vælg ét svar og handl på det. Folk svarer ærligt, når de kan se, at svarene ændrer noget.",
+        },
+      ],
+    },
+  ],
+  rules: [
+    {
+      title: "Hvad der gør et godt teambuilding-spørgsmål",
+      items: [
+        {
+          title: "Alle kan svare",
+          body: "Et godt spørgsmål afhænger ikke af alder, anciennitet, hvor man bor, eller hvad man laver i weekenden. Alle på teamet har et svar, allerede i deres første uge.",
+        },
+        {
+          title: "Intet privat",
+          body: "Lad familie, forhold, helbred, penge, politik og religion ligge. Selv de dybere spørgsmål her handler om arbejdet, og hvordan folk kan lide at arbejde.",
+        },
+        {
+          title: "Det er fint at stå over",
+          body: "Sig i starten, at alle må stå over eller svare kort. Et spørgsmål, folk føler sig tvunget til at svare på, holder op med at være teambuilding.",
+        },
+        {
+          title: "Siger noget nyttigt",
+          body: "De bedste er sjove at svare på og efterlader teamet med noget, det ikke vidste: hvornår nogen fokuserer bedst, hvad der dræner dem, hvad de er stolte af.",
+        },
+      ],
+    },
+    {
+      title: "Sådan valgte vi dem",
+      body: [
+        "Vi skrev spørgsmålene til små teams på arbejdet efter reglerne ovenfor og grupperede dem efter, hvor godt et team kender hinanden, og hvor meget tid der er. Til en opvarmning på et minut før standuppen er vores isbryderspørgsmål hurtigere; disse tager lidt længere tid og siger mere om, hvordan teamet arbejder. Vi tilføjer nye, når vi finder gode.",
+      ],
+    },
+  ],
+  fit: {
+    title: "Saml teamet på etagen",
+    body: "TinyFloor er et virtuelt kontor til små teams: du kan se, hvem der sidder ved sit skrivebord, gå hen for at snakke og samles i mødelokalet til teamdagen, spørgsmål og det hele. Det kører i en browserfane, gratis for op til 3 personer og 29 $ om måneden for hele teamet.",
+    cta: "Prøv demokontoret",
+  },
+  faqTitle: "Ofte stillede <em>spørgsmål.</em>",
+  faq: [
+    {
+      q: "Hvad er gode teambuilding-spørgsmål til arbejdet?",
+      a: "Spørgsmål, alle kan svare på, og som siger noget om, hvordan teamet arbejder, som \"Hvad er den bedste måde at bede dig om hjælp på?\" eller \"Hvad gør dette team bedre end noget andet team, du har været på?\"",
+    },
+    {
+      q: "Hvad er sjove teambuilding-spørgsmål?",
+      a: "Legende spørgsmål om selve teamet: \"Hvis vores team var et band, hvad ville vi så hedde?\", \"Hvad ville realityprogrammet om vores team hedde?\" eller \"Hvis vi åbnede en restaurant sammen, hvad skulle vi så servere?\"",
+    },
+    {
+      q: "Hvad er forskellen på isbrydere og teambuilding-spørgsmål?",
+      a: "En isbryder er en hurtig opvarmning, et minut før et møde. Et teambuilding-spørgsmål tager et par minutter og skal lære teamet noget om hinanden eller om, hvordan det arbejder sammen.",
+    },
+    {
+      q: "Hvordan bruger man teambuilding-spørgsmål med et fjernteam?",
+      a: "På et opkald stiller du ét spørgsmål og går rundt i en fast rækkefølge, så ingen taler i munden på hinanden. Til et team på tværs af tidszoner poster du spørgsmålet i teamchatten og lader folk svare, når de er online.",
+    },
+    {
+      q: "Hvilke teambuilding-spørgsmål skal man undgå?",
+      a: "Alt om familie, forhold, helbred, penge, politik eller religion, og spørgsmål, der sætter én person i en kattepine, som at bede nogen bedømme en kollega.",
+    },
+  ],
+};
+
+export default da;

@@ -243,9 +243,13 @@ Left out: "meeting cost calculator" (>100, hard), "random team generator"
 ideas (>100, easy) and team building questions (>1,000, easy, close to the
 icebreakers) are the next candidates.
 
-The new tools are in English, Portuguese and Spanish only, where visitors
-and sign-ups come from, rather than eighteen thin copies: the page, the
-sitemap, the language versions in its head and the footer's language menu
-know which languages a tool has (`lib/tools/catalog.ts`), and the middleware
+The new tools started in English, Portuguese and Spanish, then were written
+in all eighteen languages the same day, each titled with the phrase people
+search in that language rather than a translation of the English one (in
+Japanese "究極の選択" for would you rather, in Korean "밸런스 게임" and
+"진진가", in Arabic "لو خيروك"), with examples that travel (no spelling bee,
+no northern lights where they're ordinary). A tool can still be limited to
+some languages: the page, the sitemap, the language versions in its head and
+the footer's language menu follow `lib/tools/catalog.ts`, and the middleware
 sends any other language to the 404. Every tool page ends with the other
-tools in its language, and `/tools` lists them all, in every language.
+tools in its language, and `/tools` lists them all.

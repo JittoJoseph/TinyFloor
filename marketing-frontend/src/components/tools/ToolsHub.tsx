@@ -30,7 +30,7 @@ export async function toolsMetadata({ params }: Props): Promise<Metadata> {
 /** What each tool's card says in this language: its short name, and its page's own description. */
 async function cards(locale: Locale) {
   const t = await getTranslations({ locale, namespace: "home.footer" });
-  const few = FEW_TOOL_NAMES[locale] ?? {};
+  const few = FEW_TOOL_NAMES[locale];
   const described: Record<string, () => { name: string; description: string } | undefined> = {
     [ICEBREAKERS_PATH]: () => ({ name: t("icebreakers"), description: icebreakersIn(locale).meta.description }),
     [OFFICE_COSTS_PATH]: () => ({ name: t("officeCosts"), description: officeCostsIn(locale).meta.description }),

@@ -50,19 +50,26 @@ body {
 }
 
 /*
- * The one button a screen wants pressed: every few seconds a soft glare runs
- * across it, like light along a blade, under the label. The same on every
- * such button, the home page's and the doors', which are all ink: light on
- * the dark ink, and on the light ink of the dark theme, a faint shadow. A
- * button on another background sets its own --shine. Nothing for anyone who
- * asked for less motion.
+ * The one button a screen wants pressed: every few seconds a glint crosses
+ * it, a narrow slanted streak like light catching a blade, and rests. The
+ * same on every such button, the home page's and the doors', which are all
+ * ink. On the dark ink of the light theme it's a narrow white streak; on the
+ * light ink of the dark theme, which can't be lit brighter than white, a
+ * wider, smooth wave of pure white over its pale grey: never shade, which
+ * reads as a smudge there. It runs under the label, so the
+ * words stay sharp, and once more as the pointer arrives. Nothing for anyone
+ * who asked for less motion.
  */
 :root {
-  --shine: rgb(255 255 255 / 0.32);
+  --shine-core: rgb(255 255 255 / 0.38);
+  --shine-edge: rgb(255 255 255 / 0);
+  --shine-width: 34%;
 }
 
 .dark {
-  --shine: rgb(0 0 0 / 0.13);
+  --shine-core: rgb(255 255 255 / 1);
+  --shine-edge: rgb(255 255 255 / 0.45);
+  --shine-width: 46%;
 }
 
 .shine {
@@ -74,22 +81,44 @@ body {
 .shine::after {
   content: "";
   position: absolute;
-  inset: 0;
+  inset-block: 0;
+  left: 0;
+  width: var(--shine-width);
   /* Under the label, over the button's own background (the button isolates it). */
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(105deg, transparent 30%, var(--shine) 50%, transparent 70%);
-  transform: translateX(-130%);
-  animation: shine 4s cubic-bezier(0.45, 0, 0.25, 1) 1.2s infinite;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--shine-edge) 28%,
+    var(--shine-core) 50%,
+    var(--shine-edge) 72%,
+    transparent
+  );
+  transform: translateX(-130%) skewX(-22deg);
+  animation: shine 4.6s cubic-bezier(0.4, 0, 0.2, 1) 1.4s infinite;
+}
+
+.shine:hover::after {
+  animation: shine-once 0.85s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes shine {
   0% {
-    transform: translateX(-130%);
+    transform: translateX(-130%) skewX(-22deg);
   }
-  28%,
+  19%,
   100% {
-    transform: translateX(130%);
+    transform: translateX(330%) skewX(-22deg);
+  }
+}
+
+@keyframes shine-once {
+  from {
+    transform: translateX(-130%) skewX(-22deg);
+  }
+  to {
+    transform: translateX(330%) skewX(-22deg);
   }
 }
 

@@ -53,20 +53,23 @@ body {
  * The one button a screen wants pressed: every few seconds a glint crosses
  * it, a narrow slanted streak like light catching a blade, and rests. The
  * same on every such button, the home page's and the doors', which are all
- * ink. On the dark ink of the light theme it's a soft white streak; on the
- * light ink of the dark theme, a white core with faint shade either side,
- * the way gloss shows on a pale surface. It runs under the label, so the
+ * ink. On the dark ink of the light theme it's a narrow white streak; on the
+ * light ink of the dark theme, which can't be lit brighter than white, a
+ * wider, smooth wave of pure white over its pale grey: never shade, which
+ * reads as a smudge there. It runs under the label, so the
  * words stay sharp, and once more as the pointer arrives. Nothing for anyone
  * who asked for less motion.
  */
 :root {
   --shine-core: rgb(255 255 255 / 0.38);
   --shine-edge: rgb(255 255 255 / 0);
+  --shine-width: 34%;
 }
 
 .dark {
-  --shine-core: rgb(255 255 255 / 0.95);
-  --shine-edge: rgb(0 0 0 / 0.07);
+  --shine-core: rgb(255 255 255 / 1);
+  --shine-edge: rgb(255 255 255 / 0.45);
+  --shine-width: 46%;
 }
 
 .shine {
@@ -80,7 +83,7 @@ body {
   position: absolute;
   inset-block: 0;
   left: 0;
-  width: 34%;
+  width: var(--shine-width);
   /* Under the label, over the button's own background (the button isolates it). */
   z-index: -1;
   pointer-events: none;

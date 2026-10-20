@@ -248,7 +248,15 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
                   // Green while a meeting is on: how many are in them.
                   live: inMeetings || undefined,
                 },
-                { key: "people", href: people, label: ts("people"), icon: RailIcons.people, active: onPeople },
+                {
+                  key: "people",
+                  href: people,
+                  label: ts("people"),
+                  icon: RailIcons.people,
+                  active: onPeople,
+                  // Colleagues asking to join, for whoever can let them in.
+                  badge: office.role === "admin" ? read.overview.requests?.length || undefined : undefined,
+                },
               ]}
               settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
               you={<YouMenu onFloor settingsHref={settingsPath} />}

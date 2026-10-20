@@ -163,9 +163,7 @@
     "newChannel": "Nowy kanał",
     "channelName": "Nazwa kanału",
     "say": "Napisz na {channel}",
-    "attach": "Dodaj obraz",
-    "attachmentsPaid": "Obrazy są częścią płatnego biura.",
-    "attachmentsSoon": "Obrazy pojawią się wkrótce.",
+    "attach": "Załącz plik",
     "new": "Nowe",
     "latest": "Do najnowszych",
     "today": "Dziś",
@@ -174,7 +172,7 @@
     "copy": "Kopiuj tekst",
     "emoji": "Emoji",
     "newLine": "nowy wiersz",
-    "jumpTo": "Przejdź do…",
+    "jumpTo": "Szukaj lub przejdź do…",
     "noMatch": "Nic nie pasuje.",
     "aloneHere": "Na razie tylko ty. Zaproś zespół — każda dodana osoba pojawi się tutaj.",
     "invitePeople": "Zaproś ludzi",
@@ -197,7 +195,7 @@
     "walkOver": "Podejdź",
     "lobbyAlone": "Nikogo innego jeszcze nie ma. Gdy ktoś wejdzie, możesz do niego napisać tutaj, tylko między wami.",
     "dropHere": "Upuść, aby udostępnić w {channel}",
-    "dropLobby": "Obrazy możesz udostępniać we własnym biurze, nie tutaj.",
+    "dropLobby": "Pliki można udostępniać we własnym biurze, nie tutaj.",
     "lobbyGeneral": "Zadaj pytanie o TinyFloor albo wypróbuj czat. Wiadomości zostają tu przez tydzień.",
     "lobbyFeedback": "Co sprawiłoby, że TinyFloor byłby lepszy dla twojego zespołu? Czytamy tu każdą wiadomość.",
     "lobbyDmIntro": "Tylko między wami i nigdy nie jest zapisywane: znika, gdy któreś z was wyjdzie z biura demo.",
@@ -209,7 +207,17 @@
     "deleteConfirm": "Cofnąć wysłanie?",
     "save": "Zapisz",
     "cancel": "Anuluj",
-    "showAllPeople": "Pokaż wszystkich ({count})"
+    "showAllPeople": "Pokaż wszystkich ({count})",
+    "removeFile": "Usuń {name}",
+    "openPicture": "Otwórz {name}",
+    "download": "Pobierz",
+    "messages": "Wiadomości",
+    "searching": "Szukanie…",
+    "filesMax": "Do {count} plików naraz.",
+    "fileTooBig": "Pliki mogą mieć do 10 MB.",
+    "fileSlowDown": "Za dużo plików naraz. Spróbuj za minutę.",
+    "fileFailed": "Ten plik się nie wysłał. Spróbuj ponownie.",
+    "mentionSomeone": "Wspomnij kogoś"
   },
   "proximity": {
     "call": "Zadzwoń",
@@ -384,7 +392,14 @@
       "whoInvitesEveryone": "Każdy w biurze może udostępnić link z zaproszeniem.",
       "whoInvitesAdmins": "Tylko admini mogą zobaczyć i udostępnić link z zaproszeniem.",
       "inviteEveryone": "Wszyscy",
-      "inviteAdmins": "Tylko admini"
+      "inviteAdmins": "Tylko admini",
+      "domainJoin": "Osoby z {domain}",
+      "domainAsk": "Mogą poprosić o dostęp",
+      "domainOpen": "Mogą od razu dołączyć",
+      "domainOff": "Nie widzą biura",
+      "domainAskNote": "Znajdują to biuro po służbowym adresie i proszą o dostęp. Admin ich wpuszcza.",
+      "domainOpenNote": "Każdy zalogowany adresem @{domain} może od razu wejść.",
+      "domainOffNote": "Dołączyć mogą tylko osoby z linkiem z zaproszeniem."
     },
     "profile": {
       "changePassword": "Zmień hasło",
@@ -472,6 +487,9 @@
     "people": {
       "title": "Ludzie",
       "members": "Członkowie",
+      "asking": "Proszą o dostęp",
+      "letIn": "Wpuść",
+      "decline": "Odrzuć",
       "invite": "Zaproś",
       "seats": "{used} z {seats} miejsc",
       "seatsFull": "Wszystkie miejsca zajęte.",
@@ -784,5 +802,20 @@
     "body": "Tu pracuje zespół. Podejdź do kogoś, żeby porozmawiać, a gdy przyjdzie pora spotkania, wejdź do sali spotkań.",
     "walkIn": "Wejdź",
     "close": "Zamknij"
+  },
+  "team": {
+    "title": "Twój zespół już tu jest",
+    "bodyAsk": "Osoby z {domain} są już w TinyFloor. Poproś o dołączenie do ich biura, a admin cię wpuści.",
+    "bodyOpen": "Osoby z {domain} są już w TinyFloor. Dołącz do nich, zamiast tworzyć nowe biuro.",
+    "atDomain": "W {domain}",
+    "alreadyHas": "Twój zespół w {domain} ma już biuro",
+    "members": "{count, plural, one {# członek} few {# członków} many {# członków} other {# członka}}",
+    "ask": "Poproś o dostęp",
+    "join": "Dołącz",
+    "waiting": "Czekasz, aż {owner} cię wpuści",
+    "cancel": "Anuluj",
+    "full": "Pełne",
+    "makeOwn": "Utwórz jednak nowe biuro",
+    "failed": "Nie udało się. Spróbuj ponownie."
   }
 }

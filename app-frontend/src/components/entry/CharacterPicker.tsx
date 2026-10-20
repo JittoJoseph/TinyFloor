@@ -46,8 +46,10 @@ export const CharacterPicker: React.FC<{
             {/* Sized from the tile, not in pixels, so no tile is ever too small for
                 its character. Every character's art fills the bottom three
                 quarters of its frame, so at 48% of the tile wide the body is 72%
-                tall, and feet at 86% centre it with even room above and below. */}
-            <span className="relative block aspect-square" style={{ containerType: "size" }}>
+                tall, and feet at 86% centre it with even room above and below.
+                The frame is a little shorter than square, so two rows of eight
+                fit a door's step without scrolling. */}
+            <span className="relative block aspect-[10/9]" style={{ containerType: "size" }}>
               {/* A shadow on the floor, never a light: dark on either theme. */}
               <span className="absolute left-1/2 top-[86%] h-[7%] w-[44%] -translate-x-1/2 -translate-y-1/2 rounded-[100%] bg-black/15 blur-[1.5px] dark:bg-black/60" />
               <PixelAvatar

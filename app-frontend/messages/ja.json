@@ -163,9 +163,7 @@
     "newChannel": "新しいチャンネル",
     "channelName": "チャンネル名",
     "say": "{channel} にメッセージ",
-    "attach": "画像を追加",
-    "attachmentsPaid": "画像は有料オフィスの機能です。",
-    "attachmentsSoon": "画像はまもなく使えます。",
+    "attach": "ファイルを添付",
     "new": "新着",
     "latest": "最新へ",
     "today": "今日",
@@ -174,7 +172,7 @@
     "copy": "テキストをコピー",
     "emoji": "絵文字",
     "newLine": "改行",
-    "jumpTo": "移動…",
+    "jumpTo": "検索または移動…",
     "noMatch": "一致するものがありません。",
     "aloneHere": "今はあなただけです。チームを招待しましょう。追加した人はここに表示されます。",
     "invitePeople": "メンバーを招待",
@@ -197,7 +195,7 @@
     "walkOver": "歩いていく",
     "lobbyAlone": "まだ誰もいません。誰かが入ってきたら、ここから二人だけでメッセージを送れます。",
     "dropHere": "ドロップして{channel}で共有",
-    "dropLobby": "画像は自分のオフィスで共有できます。ここでは共有できません。",
+    "dropLobby": "ファイルはここではなく、自分のオフィスで共有できます。",
     "lobbyGeneral": "TinyFloor について質問したり、チャットを試したりできます。メッセージは 1 週間ここに残ります。",
     "lobbyFeedback": "TinyFloorがあなたのチームにもっと役立つには？ここのメッセージはすべて読んでいます。",
     "lobbyDmIntro": "二人だけのやりとりで、保存されません。どちらかがデモオフィスを出ると消えます。",
@@ -209,7 +207,17 @@
     "deleteConfirm": "送信を取り消しますか？",
     "save": "保存",
     "cancel": "キャンセル",
-    "showAllPeople": "{count} 人すべて表示"
+    "showAllPeople": "{count} 人すべて表示",
+    "removeFile": "{name} を外す",
+    "openPicture": "{name} を開く",
+    "download": "ダウンロード",
+    "messages": "メッセージ",
+    "searching": "検索中…",
+    "filesMax": "一度に {count} 件まで。",
+    "fileTooBig": "ファイルは 10 MB まで。",
+    "fileSlowDown": "一度に送るファイルが多すぎます。1 分後にもう一度お試しください。",
+    "fileFailed": "ファイルをアップロードできませんでした。もう一度お試しください。",
+    "mentionSomeone": "メンションする"
   },
   "proximity": {
     "call": "通話",
@@ -384,7 +392,14 @@
       "whoInvitesEveryone": "オフィスの誰でも招待リンクを共有できます。",
       "whoInvitesAdmins": "招待リンクを見たり共有したりできるのは管理者だけです。",
       "inviteEveryone": "全員",
-      "inviteAdmins": "管理者のみ"
+      "inviteAdmins": "管理者のみ",
+      "domainJoin": "{domain} の人",
+      "domainAsk": "参加をリクエストできる",
+      "domainOpen": "すぐに参加できる",
+      "domainOff": "見つけられない",
+      "domainAskNote": "仕事用のメールアドレスでこのオフィスを見つけてリクエストします。管理者が承認します。",
+      "domainOpenNote": "@{domain} のメールアドレスでサインインした人は、そのまま入れます。",
+      "domainOffNote": "招待リンクを持っている人だけが参加できます。"
     },
     "profile": {
       "changePassword": "パスワードを変更",
@@ -472,6 +487,9 @@
     "people": {
       "title": "メンバー",
       "members": "メンバー",
+      "asking": "参加リクエスト",
+      "letIn": "承認",
+      "decline": "断る",
       "invite": "招待",
       "seats": "{seats} 席中 {used} 席",
       "seatsFull": "席はすべて埋まっています。",
@@ -784,5 +802,20 @@
     "body": "ここがチームの仕事場です。話したい人のそばまで歩いて行き、会議の時間になったら会議室に入りましょう。",
     "walkIn": "入る",
     "close": "閉じる"
+  },
+  "team": {
+    "title": "チームはもうここにいます",
+    "bodyAsk": "{domain} の人たちはもう TinyFloor にいます。オフィスへの参加をリクエストすると、管理者が入れてくれます。",
+    "bodyOpen": "{domain} の人たちはもう TinyFloor にいます。新しいオフィスを作る代わりに合流しましょう。",
+    "atDomain": "{domain}",
+    "alreadyHas": "{domain} のチームにはもうオフィスがあります",
+    "members": "{count, plural, other {メンバー#人}}",
+    "ask": "参加をリクエスト",
+    "join": "参加",
+    "waiting": "{owner} さんの承認待ち",
+    "cancel": "取り消す",
+    "full": "満員",
+    "makeOwn": "新しいオフィスを作る",
+    "failed": "うまくいきませんでした。もう一度お試しください。"
   }
 }

@@ -7,7 +7,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { locales, type Locale } from "@/lib/i18n/routing";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError, type InvitePolicy } from "@/lib/api";
+import { api, ApiError, type DomainAccess, type InvitePolicy } from "@/lib/api";
 import { savedDevices, saveDevices } from "@/lib/media";
 import { setPref, usePrefs, type Prefs } from "@/lib/prefs";
 import { setTheme, useTheme, type ThemeChoice } from "@/lib/theme";
@@ -510,7 +510,14 @@ function OfficeSection() {
 
       {error && <p className="-mt-4 mb-6 text-[12.5px] text-destructive">{error}</p>}
 
-      {admin && <InvitePolicyRow officeId={office.id} policy={office.invitePolicy ?? "everyone"} />}
+      {admin && (
+        <InvitePolicyRow
+          officeId={office.id}
+          policy={office.invitePolicy ?? "everyone"}
+          domain={office.joinDomain ?? null}
+          domainJoin={office.domainJoin ?? "open"}
+        />
+      )}
 
       {owner && others.length > 0 && <HandOver officeId={office.id} officeName={office.name} paid={office.plan !== "free"} members={others} />}
 
@@ -702,11 +709,37 @@ function LeaveOrClose({ officeId, officeName, owner, userId }: { officeId: strin
  * grows by its members bringing each other) or only admins, for an office that
  * wants to decide who comes in.
  */
-function InvitePolicyRow({ officeId, policy }: { officeId: string; policy: InvitePolicy }) {
+function InvitePolicyRow({
+  officeId,
+  policy,
+  domain,
+  domainJoin,
+}: {
+  officeId: string;
+  policy: InvitePolicy;
+  /** The owner's company domain, when there is one to open the office to. */
+  domain: string | null;
+  domainJoin: DomainAccess;
+}) {
   const t = useTranslations("office.settings");
   const { refresh } = useOfficeMaybe()!;
   const [value, setValue] = useState<InvitePolicy>(policy);
+  const [access, setAccess] = useState<DomainAccess>(domainJoin);
   const [error, setError] = useState<string | null>(null);
+
+  // Colleagues at the owner's company, finding the office by their email: they walk in unless an admin decides otherwise.
+  const changeAccess = async (next: DomainAccess) => {
+    const before = access;
+    setAccess(next);
+    setError(null);
+    try {
+      await api.updateOffice(officeId, { domainJoin: next });
+      await refresh();
+    } catch (problem) {
+      setAccess(before);
+      setError(problem instanceof ApiError ? problem.message : t("wrong"));
+    }
+  };
 
   const change = async (next: InvitePolicy) => {
     const before = value;
@@ -740,6 +773,26 @@ function InvitePolicyRow({ officeId, policy }: { officeId: string; policy: Invit
           </div>
         }
       />
+      {domain && (
+        <Row
+          title={t("domainJoin", { domain })}
+          description={access === "open" ? t("domainOpenNote", { domain }) : access === "ask" ? t("domainAskNote") : t("domainOffNote")}
+          control={
+            <div className="w-44">
+              <Select value={access} onValueChange={(next) => void changeAccess(next as DomainAccess)}>
+                <SelectTrigger className="h-9 bg-card text-[13px]" aria-label={t("domainJoin", { domain })}>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="open">{t("domainOpen")}</SelectItem>
+                  <SelectItem value="ask">{t("domainAsk")}</SelectItem>
+                  <SelectItem value="off">{t("domainOff")}</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          }
+        />
+      )}
       {error && <p className="px-4 pb-3 text-[12.5px] text-destructive">{error}</p>}
     </Group>
   );

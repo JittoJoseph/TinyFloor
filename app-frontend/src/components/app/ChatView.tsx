@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import {
   ArrowLeft,
@@ -39,10 +39,17 @@ import { ShellView } from "./AppShell";
 import { PresenceDock } from "./PresenceDock";
 import { usePlace, type PlacePerson } from "./place";
 import { Conversation, ConversationIntro, type Line } from "./chat/Conversation";
-import { Composer, focusComposer } from "./chat/Composer";
+import { addToComposer, Composer, focusComposer } from "./chat/Composer";
 import { HelpTicket } from "./HelpTicket";
 import { Logo } from "@/components/app/Logo";
 import { help, SUPPORT_CHANNEL, useHelp } from "@/lib/help";
+import { jumpTo, lastConversation, rememberConversation, takeJump } from "@/lib/chatMemory";
+import { upload } from "@/lib/chatFiles";
+import { mentionsIn } from "@/lib/mentions";
+import type { ChatMessage } from "@shared/chat";
+
+/** Wide enough that a conversation shows beside the list, rather than instead of it. */
+const WIDE = "(min-width: 768px)";
 
 /**
  * Chat: channels and direct messages, beside the floor. The same screen in an
@@ -50,6 +57,7 @@ import { help, SUPPORT_CHANNEL, useHelp } from "@/lib/help";
  * lobby direct messages last only while both of you are there, and what only
  * an office can do (making channels, images) is all here and asks for an office.
  * A ticket with the TinyFloor team, while one is open, sits at the very bottom.
+ * Coming back to Chat opens the conversation you were last in, not #general.
  */
 export function ChatView({ channel }: { channel?: string }) {
   const t = useTranslations("chat");
@@ -62,18 +70,21 @@ export function ChatView({ channel }: { channel?: string }) {
   const { user } = useAuth();
   const floor = useFloorStatus();
   const [jump, setJump] = useState(false);
-  const [note, setNote] = useState<string | null>(null);
   const [dragging, setDragging] = useState(false);
-  const noteTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const open = channel ?? GENERAL_CHANNEL;
   const support = open === SUPPORT_CHANNEL;
+  // Up in an empty box: edit your last message here.
+  const [editLast, setEditLast] = useState(0);
   const { ticket, view: ticketView } = useHelp();
   // Who you are is known from your session before the chat has connected, so a
   // direct message opened in that first moment still has both its people.
   const me = user?.id ?? state.me;
   const people = place.people;
   const personById = useMemo(() => new Map(people.map((one) => [one.id, one])), [people]);
+  const names = useMemo(() => new Map(people.map((one) => [one.id, one.displayName])), [people]);
+  // Who "@" offers: everyone in the office but you. The lobby has strangers in it, so nobody there.
+  const mentionable = useMemo(() => (lobby ? [] : people.filter((one) => one.id !== (user?.id ?? state.me))), [lobby, people, user?.id, state.me]);
   const summary = state.channels.find((one) => one.id === open);
   const pair = dmMembers(open);
   const other = pair ? personById.get(pair[0] === me ? pair[1] : pair[0]) : undefined;
@@ -86,6 +97,32 @@ export function ChatView({ channel }: { channel?: string }) {
     const first = unread > 0 ? history[Math.max(history.length - unread, 0)] : undefined;
     setFirstUnread({ channel: open, id: first ? String(first.seq) : null });
   }
+
+  // A search result picked elsewhere: load back to it here, and point the conversation at it.
+  const [target, setTarget] = useState<{ channel: string; seq: number } | null>(null);
+  useEffect(() => {
+    const seq = takeJump(open);
+    if (seq === null) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setTarget({ channel: open, seq });
+  }, [open]);
+  useEffect(() => {
+    if (target?.channel === open && state.ready) chat.reach(open, target.seq);
+  }, [target, open, state.ready]);
+
+  // Searching messages from the palette: asked as you type, a moment after you stop.
+  const [query, setQuery] = useState("");
+  const [found, setFound] = useState<{ q: string; messages: ChatMessage[] } | null>(null);
+  useEffect(() => {
+    const q = query.trim();
+    if (q.length < 2) return;
+    let current = true;
+    const timer = setTimeout(() => void chat.search(q).then((messages) => current && setFound({ q, messages })), 220);
+    return () => {
+      current = false;
+      clearTimeout(timer);
+    };
+  }, [query]);
 
   // Reading a conversation marks it read, and asks for its history.
   useEffect(() => {
@@ -102,24 +139,35 @@ export function ChatView({ channel }: { channel?: string }) {
     const timer = setInterval(() => document.visibilityState === "visible" && void help.refresh(true), 15_000);
     return () => clearInterval(timer);
   }, []);
-  useEffect(() => () => clearTimeout(noteTimer.current), []);
   // A direct message's address with someone missing from it goes nowhere: back to the start.
   const broken = isDm(open) && !pair;
   useEffect(() => {
-    if (broken) router.replace(place.paths.chat());
-  }, [broken, router, place.paths]);
+    if (broken) {
+      rememberConversation(place.id, null);
+      router.replace(place.paths.chat());
+    }
+  }, [broken, router, place.paths, place.id]);
 
-  const say = (text: string) => {
-    clearTimeout(noteTimer.current);
-    setNote(text);
-    noteTimer.current = setTimeout(() => setNote(null), 5000);
-  };
+  // Chat, from the rail, opens where you left it: the conversation you were last in, if it's still there.
+  // On a phone the bare address is the list, which is where Chat starts there.
+  useEffect(() => {
+    if (channel || !state.ready || !window.matchMedia(WIDE).matches) return;
+    const last = lastConversation(place.id);
+    if (!last || last === GENERAL_CHANNEL) return;
+    const pairOf = dmMembers(last);
+    const there = pairOf ? pairOf.every((id) => id === me || personById.has(id)) : state.channels.some((one) => one.id === last);
+    if (there) router.replace(place.paths.chat(last));
+    else rememberConversation(place.id, null);
+  }, [channel, state.ready, state.channels, place.id, place.paths, personById, me, router]);
+  useEffect(() => {
+    if (channel && !broken && channel !== SUPPORT_CHANNEL) rememberConversation(place.id, channel);
+  }, [channel, broken, place.id]);
 
-  // Images: the lobby asks for an office; an office says where they stand.
+  // Files: the lobby asks for an office; an office takes them.
   const onFiles = (files: File[]) => {
     if (!files.length) return;
     if (lobby) return place.officesOnly?.("attachments");
-    say(place.plan === "free" ? t("attachmentsPaid") : t("attachmentsSoon"));
+    addToComposer(files);
   };
 
   const channels = state.channels.filter((one) => one.kind === "channel");
@@ -135,7 +183,8 @@ export function ChatView({ channel }: { channel?: string }) {
     authorName: personById.get(message.author)?.displayName ?? message.authorName,
     body: message.body,
     at: message.at,
-    image: message.image,
+    files: message.files,
+    mentions: message.mentions,
     reactions: message.reactions,
     edited: message.edited,
   }));
@@ -204,6 +253,32 @@ export function ChatView({ channel }: { channel?: string }) {
     },
   ];
 
+  // Messages the server found for what's typed: who said it, where and when, with the words marked.
+  const foundItems: CommandItem[] =
+    found && found.q === query.trim()
+      ? found.messages.map((message) => {
+          const pairOf = dmMembers(message.channel);
+          const withId = pairOf ? (pairOf[0] === me ? pairOf[1] : pairOf[0]) : null;
+          const where = withId ? (personById.get(withId)?.displayName ?? "") : `#${message.channel}`;
+          const text = message.body || (message.files ?? []).map((file) => file.name).join(", ");
+          return {
+            id: `message-${message.seq}`,
+            label: text,
+            labelNode: <Marked text={text} words={found.q} />,
+            detail: [personById.get(message.author)?.displayName ?? message.authorName, where, formatDay(message.at)].filter(Boolean).join(" · "),
+            group: t("messages"),
+            visual: <Face seed={message.author} size={28} />,
+            onSelect: () => {
+              if (message.channel === open) setTarget({ channel: open, seq: message.seq });
+              else {
+                jumpTo(message.channel, message.seq);
+                go(message.channel);
+              }
+            },
+          };
+        })
+      : [];
+
   const newChannel = (trigger: React.ReactElement) =>
     lobby ? (
       <span
@@ -250,6 +325,7 @@ export function ChatView({ channel }: { channel?: string }) {
                   href={place.paths.chat(one.id)}
                   active={one.id === open}
                   unread={one.unread}
+                  count={one.mentions ?? 0}
                   icon={<Hash className="size-4" />}
                   label={one.name}
                 />
@@ -272,6 +348,7 @@ export function ChatView({ channel }: { channel?: string }) {
                   href={place.paths.chat(dmChannelId(me, person.id))}
                   active={open === dmChannelId(me, person.id)}
                   unread={dm?.unread ?? 0}
+                  count={dm?.unread ?? 0}
                   icon={<Face seed={person.id} size={20} presence={presenceOf(person.id)} />}
                   label={person.displayName}
                 />
@@ -315,6 +392,7 @@ export function ChatView({ channel }: { channel?: string }) {
                 href={place.paths.chat(SUPPORT_CHANNEL)}
                 active={support}
                 unread={ticket?.unread ?? 0}
+                count={ticket?.unread ?? 0}
                 icon={<Logo size={18} />}
                 label={th("support")}
               />
@@ -322,7 +400,16 @@ export function ChatView({ channel }: { channel?: string }) {
           )}
 
           <PresenceDock place={place.name} settingsHref={place.paths.settings} />
-          <CommandPalette items={items} open={jump} onOpenChange={setJump} placeholder={t("jumpTo")} emptyMessage={t("noMatch")} />
+          <CommandPalette
+            items={items}
+            open={jump}
+            onOpenChange={setJump}
+            placeholder={t("jumpTo")}
+            emptyMessage={t("noMatch")}
+            onQueryChange={setQuery}
+            found={foundItems}
+            searching={query.trim().length >= 2 && found?.q !== query.trim() ? t("searching") : undefined}
+          />
         </>
       }
     >
@@ -404,8 +491,11 @@ export function ChatView({ channel }: { channel?: string }) {
           more={state.more[open] ?? false}
           onOlder={() => chat.older(open)}
           firstUnread={firstUnread.channel === open ? firstUnread.id : null}
+          editLast={editLast}
           onReact={(line, emoji, on) => chat.react(Number(line.id), emoji, on)}
-          onEdit={(line, body) => chat.edit(Number(line.id), body, open)}
+          onEdit={(line, body) => chat.edit(Number(line.id), body, open, mentionsIn(body, mentionable, me))}
+          names={names}
+          target={target?.channel === open ? String(target.seq) : null}
           onDelete={(line) => chat.remove(Number(line.id), open)}
           personCard={personCard}
           intro={
@@ -465,9 +555,13 @@ export function ChatView({ channel }: { channel?: string }) {
         <Composer
           key={`composer-${open}`}
           placeholder={pair ? t("sayTo", { name: title }) : t("say", { channel: `#${title}` })}
-          onSend={(text) => chat.say(open, text)}
+          onSend={(text, files) => chat.say(open, text, files, mentionsIn(text, mentionable, me))}
           onFiles={onFiles}
-          note={note ?? (state.slowDown ? t("slowDown") : state.notHere ? t("notHere") : null)}
+          upload={lobby ? undefined : (file, progress) => upload(place.id, file, progress)}
+          people={mentionable}
+          draftKey={`${place.id}:${open}`}
+          onEditLast={() => setEditLast((was) => was + 1)}
+          note={state.slowDown ? t("slowDown") : state.notHere ? t("notHere") : null}
         />
         </>
         )}
@@ -550,6 +644,7 @@ function Row({
   onClick,
   active,
   unread,
+  count,
   icon,
   label,
   trailing,
@@ -557,7 +652,10 @@ function Row({
   href?: string;
   onClick?: () => void;
   active: boolean;
+  /** Anything unread makes the row bold. */
   unread: number;
+  /** What's counted beside it: in a channel only mentions, in a direct message everything (Slack's way). */
+  count: number;
   icon: ReactNode;
   label: string;
   trailing?: ReactNode;
@@ -583,9 +681,9 @@ function Row({
       <span className="relative flex size-5 shrink-0 items-center justify-center">{icon}</span>
       <span className="relative min-w-0 flex-1 truncate">{label}</span>
       {trailing && <span className="relative">{trailing}</span>}
-      {unread > 0 && !active && (
+      {count > 0 && !active && (
         <span className="relative min-w-[18px] rounded-full bg-brand px-1.5 text-center text-[10.5px] font-semibold leading-[18px] text-brand-foreground tabular-nums">
-          {unread > 99 ? "99+" : unread}
+          {count > 99 ? "99+" : count}
         </span>
       )}
     </>
@@ -737,4 +835,32 @@ function ProfileLink({ id }: { id: string }) {
       <span className="truncate">{shown}</span>
     </a>
   );
+}
+
+/** A found message's words around what was looked for, with that part marked. */
+function Marked({ text, words }: { text: string; words: string }) {
+  const fold = (value: string) => value.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
+  const at = fold(text).indexOf(fold(words));
+  if (at < 0) return <>{text}</>;
+  // Some words before it, so the match isn't lost off the end of a long line.
+  const reach = Math.max(0, at - 28);
+  // ...starting on a word, not halfway into one.
+  const space = text.indexOf(" ", reach);
+  const from = reach === 0 ? 0 : space >= 0 && space < at ? space + 1 : reach;
+  return (
+    <>
+      {from > 0 && "…"}
+      {text.slice(from, at)}
+      <mark className="rounded-[4px] bg-brand/15 px-0.5 text-foreground">{text.slice(at, at + words.length)}</mark>
+      {text.slice(at + words.length)}
+    </>
+  );
+}
+
+/** "Oct 12", or the time if it was today. */
+function formatDay(at: number): string {
+  const day = new Date(at);
+  return day.toDateString() === new Date().toDateString()
+    ? day.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" })
+    : day.toLocaleDateString(undefined, { month: "short", day: "numeric" });
 }

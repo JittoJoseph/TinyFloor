@@ -163,9 +163,7 @@
     "newChannel": "새 채널",
     "channelName": "채널 이름",
     "say": "{channel}에 메시지",
-    "attach": "이미지 추가",
-    "attachmentsPaid": "이미지는 유료 오피스의 기능입니다.",
-    "attachmentsSoon": "이미지는 곧 지원됩니다.",
+    "attach": "파일 첨부",
     "new": "새 메시지",
     "latest": "최신으로",
     "today": "오늘",
@@ -174,7 +172,7 @@
     "copy": "텍스트 복사",
     "emoji": "이모지",
     "newLine": "줄바꿈",
-    "jumpTo": "이동…",
+    "jumpTo": "검색 또는 이동…",
     "noMatch": "일치하는 항목이 없어요.",
     "aloneHere": "아직 나 혼자예요. 팀을 데려오세요. 추가한 사람은 여기에 보여요.",
     "invitePeople": "사람 초대",
@@ -197,7 +195,7 @@
     "walkOver": "걸어가기",
     "lobbyAlone": "아직 아무도 없어요. 누군가 들어오면 여기서 둘만의 메시지를 보낼 수 있어요.",
     "dropHere": "놓아서 {channel}에 공유",
-    "dropLobby": "이미지는 내 오피스에서 공유할 수 있어요. 여기서는 안 돼요.",
+    "dropLobby": "파일은 여기가 아니라 내 오피스에서 공유할 수 있어요.",
     "lobbyGeneral": "TinyFloor에 대해 질문하거나 채팅을 써 보세요. 메시지는 일주일 동안 남아 있어요.",
     "lobbyFeedback": "TinyFloor가 팀에 더 도움이 되려면 무엇이 필요할까요? 여기 메시지는 모두 읽어요.",
     "lobbyDmIntro": "두 사람만 보고 저장되지 않아요. 둘 중 한 명이 데모 오피스를 나가면 사라져요.",
@@ -209,7 +207,17 @@
     "deleteConfirm": "전송을 취소할까요?",
     "save": "저장",
     "cancel": "취소",
-    "showAllPeople": "{count}명 모두 보기"
+    "showAllPeople": "{count}명 모두 보기",
+    "removeFile": "{name} 빼기",
+    "openPicture": "{name} 열기",
+    "download": "다운로드",
+    "messages": "메시지",
+    "searching": "검색 중…",
+    "filesMax": "한 번에 {count}개까지 보낼 수 있어요.",
+    "fileTooBig": "파일은 10MB까지 올릴 수 있어요.",
+    "fileSlowDown": "한꺼번에 파일이 너무 많아요. 1분 뒤에 다시 시도해 주세요.",
+    "fileFailed": "파일이 올라가지 않았어요. 다시 시도해 주세요.",
+    "mentionSomeone": "멘션하기"
   },
   "proximity": {
     "call": "통화",
@@ -384,7 +392,14 @@
       "whoInvitesEveryone": "사무실의 누구나 초대 링크를 공유할 수 있어요.",
       "whoInvitesAdmins": "관리자만 초대 링크를 보고 공유할 수 있어요.",
       "inviteEveryone": "모두",
-      "inviteAdmins": "관리자만"
+      "inviteAdmins": "관리자만",
+      "domainJoin": "{domain} 사람들",
+      "domainAsk": "참여를 요청할 수 있음",
+      "domainOpen": "바로 참여할 수 있음",
+      "domainOff": "찾을 수 없음",
+      "domainAskNote": "업무용 이메일로 이 오피스를 찾아 요청해요. 관리자가 들여보내 줘요.",
+      "domainOpenNote": "@{domain} 이메일로 로그인한 사람은 바로 들어올 수 있어요.",
+      "domainOffNote": "초대 링크가 있는 사람만 참여할 수 있어요."
     },
     "profile": {
       "changePassword": "비밀번호 변경",
@@ -472,6 +487,9 @@
     "people": {
       "title": "사람들",
       "members": "멤버",
+      "asking": "참여 요청",
+      "letIn": "들여보내기",
+      "decline": "거절",
       "invite": "초대",
       "seats": "{seats}석 중 {used}석",
       "seatsFull": "자리가 모두 찼습니다.",
@@ -784,5 +802,20 @@
     "body": "팀이 일하는 곳이에요. 누구에게든 다가가면 바로 대화할 수 있고, 회의 시간에는 회의실로 들어가세요.",
     "walkIn": "들어가기",
     "close": "닫기"
+  },
+  "team": {
+    "title": "팀이 이미 여기 있어요",
+    "bodyAsk": "{domain} 사람들이 이미 TinyFloor에 있어요. 오피스 참여를 요청하면 관리자가 들여보내 줘요.",
+    "bodyOpen": "{domain} 사람들이 이미 TinyFloor에 있어요. 새 오피스를 만드는 대신 함께하세요.",
+    "atDomain": "{domain}",
+    "alreadyHas": "{domain} 팀에 이미 오피스가 있어요",
+    "members": "{count, plural, other {멤버 #명}}",
+    "ask": "참여 요청",
+    "join": "참여",
+    "waiting": "{owner}님의 승인을 기다리는 중",
+    "cancel": "취소",
+    "full": "가득 참",
+    "makeOwn": "새 오피스 만들기",
+    "failed": "잘 안 됐어요. 다시 시도해 주세요."
   }
 }

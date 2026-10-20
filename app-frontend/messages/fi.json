@@ -163,9 +163,7 @@
     "newChannel": "Uusi kanava",
     "channelName": "Kanavan nimi",
     "say": "Viesti kanavalle {channel}",
-    "attach": "Lisää kuva",
-    "attachmentsPaid": "Kuvat kuuluvat maksulliseen toimistoon.",
-    "attachmentsSoon": "Kuvat saapuvat pian.",
+    "attach": "Liitä tiedosto",
     "new": "Uudet",
     "latest": "Uusimpiin",
     "today": "Tänään",
@@ -174,7 +172,7 @@
     "copy": "Kopioi teksti",
     "emoji": "Emoji",
     "newLine": "uusi rivi",
-    "jumpTo": "Siirry…",
+    "jumpTo": "Hae tai siirry…",
     "noMatch": "Mikään ei vastaa.",
     "aloneHere": "Vain sinä toistaiseksi. Tuo tiimisi – jokainen lisäämäsi näkyy täällä.",
     "invitePeople": "Kutsu ihmisiä",
@@ -197,7 +195,7 @@
     "walkOver": "Kävele luo",
     "lobbyAlone": "Täällä ei ole vielä muita. Kun joku tulee sisään, voit kirjoittaa hänelle täällä, vain teidän kahden kesken.",
     "dropHere": "Pudota jakaaksesi kanavalle {channel}",
-    "dropLobby": "Kuvia voi jakaa omassa toimistossasi, ei täällä.",
+    "dropLobby": "Tiedostoja voi jakaa omassa toimistossasi, ei täällä.",
     "lobbyGeneral": "Kysy jotain TinyFloorista tai kokeile chattia. Viestit säilyvät täällä viikon.",
     "lobbyFeedback": "Mikä tekisi TinyFloorista paremman tiimillesi? Luemme jokaisen viestin täällä.",
     "lobbyDmIntro": "Vain teidän kahden välillä, eikä sitä tallenneta: se katoaa, kun jompikumpi poistuu demotoimistosta.",
@@ -209,7 +207,17 @@
     "deleteConfirm": "Peru lähetys?",
     "save": "Tallenna",
     "cancel": "Peruuta",
-    "showAllPeople": "Näytä kaikki {count}"
+    "showAllPeople": "Näytä kaikki {count}",
+    "removeFile": "Poista {name}",
+    "openPicture": "Avaa {name}",
+    "download": "Lataa",
+    "messages": "Viestit",
+    "searching": "Haetaan…",
+    "filesMax": "Enintään {count} tiedostoa kerralla.",
+    "fileTooBig": "Tiedosto voi olla enintään 10 Mt.",
+    "fileSlowDown": "Liian monta tiedostoa kerralla. Yritä minuutin päästä uudelleen.",
+    "fileFailed": "Tiedosto ei latautunut. Yritä uudelleen.",
+    "mentionSomeone": "Mainitse joku"
   },
   "proximity": {
     "call": "Soita",
@@ -384,7 +392,14 @@
       "whoInvitesEveryone": "Kuka tahansa toimistossa voi jakaa kutsulinkin.",
       "whoInvitesAdmins": "Vain adminit voivat nähdä ja jakaa kutsulinkin.",
       "inviteEveryone": "Kaikki",
-      "inviteAdmins": "Vain adminit"
+      "inviteAdmins": "Vain adminit",
+      "domainJoin": "Väki osoitteesta {domain}",
+      "domainAsk": "Voivat pyytää pääsyä",
+      "domainOpen": "Voivat liittyä heti",
+      "domainOff": "Eivät löydä sitä",
+      "domainAskNote": "He löytävät toimiston työosoitteellaan ja pyytävät pääsyä. Ylläpitäjä päästää heidät sisään.",
+      "domainOpenNote": "Kuka tahansa @{domain}-osoitteella kirjautunut voi tulla suoraan sisään.",
+      "domainOffNote": "Vain kutsulinkin saaneet voivat liittyä."
     },
     "profile": {
       "changePassword": "Vaihda salasana",
@@ -472,6 +487,9 @@
     "people": {
       "title": "Ihmiset",
       "members": "Jäsenet",
+      "asking": "Pyytävät pääsyä",
+      "letIn": "Päästä sisään",
+      "decline": "Hylkää",
       "invite": "Kutsu",
       "seats": "{used}/{seats} paikkaa",
       "seatsFull": "Kaikki paikat ovat varattuja.",
@@ -784,5 +802,20 @@
     "body": "Täällä tiimi tekee töitä. Kävele kenen tahansa luo jutellaksesi, ja astu kokoushuoneeseen, kun on kokouksen aika.",
     "walkIn": "Astu sisään",
     "close": "Sulje"
+  },
+  "team": {
+    "title": "Tiimisi on jo täällä",
+    "bodyAsk": "Väki osoitteesta {domain} on jo TinyFloorissa. Pyydä päästä heidän toimistoonsa, niin ylläpitäjä päästää sinut sisään.",
+    "bodyOpen": "Väki osoitteesta {domain} on jo TinyFloorissa. Liity heihin uuden toimiston luomisen sijaan.",
+    "atDomain": "{domain}",
+    "alreadyHas": "Tiimilläsi ({domain}) on jo toimisto",
+    "members": "{count, plural, one {# jäsen} other {# jäsentä}}",
+    "ask": "Pyydä pääsyä",
+    "join": "Liity",
+    "waiting": "Odottaa, että {owner} päästää sinut sisään",
+    "cancel": "Peru",
+    "full": "Täynnä",
+    "makeOwn": "Luo sittenkin uusi toimisto",
+    "failed": "Se ei onnistunut. Yritä uudelleen."
   }
 }

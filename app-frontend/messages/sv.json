@@ -163,9 +163,7 @@
     "newChannel": "Ny kanal",
     "channelName": "Kanalnamn",
     "say": "Skriv i {channel}",
-    "attach": "Lägg till en bild",
-    "attachmentsPaid": "Bilder hör till ett betalt kontor.",
-    "attachmentsSoon": "Bilder kommer snart.",
+    "attach": "Bifoga en fil",
     "new": "Nytt",
     "latest": "Till det senaste",
     "today": "I dag",
@@ -174,7 +172,7 @@
     "copy": "Kopiera text",
     "emoji": "Emoji",
     "newLine": "ny rad",
-    "jumpTo": "Hoppa till…",
+    "jumpTo": "Sök eller gå till…",
     "noMatch": "Inget matchar.",
     "aloneHere": "Bara du än så länge. Ta in ditt team – alla du lägger till syns här.",
     "invitePeople": "Bjud in personer",
@@ -197,7 +195,7 @@
     "walkOver": "Gå dit",
     "lobbyAlone": "Ingen annan är här än. När någon kommer in kan du skriva till hen här, bara mellan er två.",
     "dropHere": "Släpp för att dela i {channel}",
-    "dropLobby": "Bilder kan delas i ditt eget kontor, inte här.",
+    "dropLobby": "Filer kan delas i ditt eget kontor, inte här.",
     "lobbyGeneral": "Ställ en fråga om TinyFloor eller prova chatten. Meddelanden ligger kvar här i en vecka.",
     "lobbyFeedback": "Vad skulle göra TinyFloor bättre för ditt team? Vi läser varje meddelande här.",
     "lobbyDmIntro": "Bara mellan er två och sparas aldrig: det försvinner när någon av er lämnar demokontoret.",
@@ -209,7 +207,17 @@
     "deleteConfirm": "Ångra skickat?",
     "save": "Spara",
     "cancel": "Avbryt",
-    "showAllPeople": "Visa alla {count}"
+    "showAllPeople": "Visa alla {count}",
+    "removeFile": "Ta bort {name}",
+    "openPicture": "Öppna {name}",
+    "download": "Ladda ner",
+    "messages": "Meddelanden",
+    "searching": "Söker…",
+    "filesMax": "Upp till {count} filer åt gången.",
+    "fileTooBig": "Filer får vara upp till 10 MB.",
+    "fileSlowDown": "För många filer på en gång. Försök igen om en minut.",
+    "fileFailed": "Filen laddades inte upp. Försök igen.",
+    "mentionSomeone": "Nämn någon"
   },
   "proximity": {
     "call": "Ring",
@@ -384,7 +392,14 @@
       "whoInvitesEveryone": "Alla på kontoret kan dela inbjudningslänken.",
       "whoInvitesAdmins": "Bara admins kan se och dela inbjudningslänken.",
       "inviteEveryone": "Alla",
-      "inviteAdmins": "Bara admins"
+      "inviteAdmins": "Bara admins",
+      "domainJoin": "Folk på {domain}",
+      "domainAsk": "Kan be om att gå med",
+      "domainOpen": "Kan gå med direkt",
+      "domainOff": "Hittar det inte",
+      "domainAskNote": "De hittar kontoret via sin jobbadress och frågar. En admin släpper in dem.",
+      "domainOpenNote": "Den som är inloggad med en @{domain}-adress kan gå in direkt.",
+      "domainOffNote": "Bara den som har inbjudningslänken kan gå med."
     },
     "profile": {
       "changePassword": "Byt lösenord",
@@ -472,6 +487,9 @@
     "people": {
       "title": "Personer",
       "members": "Medlemmar",
+      "asking": "Vill gå med",
+      "letIn": "Släpp in",
+      "decline": "Avböj",
       "invite": "Bjud in",
       "seats": "{used} av {seats} platser",
       "seatsFull": "Alla platser är tagna.",
@@ -784,5 +802,20 @@
     "body": "Här jobbar teamet. Gå fram till någon för att prata, och kliv in i ett mötesrum när det är dags för möte.",
     "walkIn": "Gå in",
     "close": "Stäng"
+  },
+  "team": {
+    "title": "Ditt team är redan här",
+    "bodyAsk": "Folk på {domain} finns redan på TinyFloor. Be om att få gå med i deras kontor, så släpper en admin in dig.",
+    "bodyOpen": "Folk på {domain} finns redan på TinyFloor. Gå med dem i stället för att skapa ett nytt kontor.",
+    "atDomain": "På {domain}",
+    "alreadyHas": "Ditt team på {domain} har redan ett kontor",
+    "members": "{count, plural, one {# medlem} other {# medlemmar}}",
+    "ask": "Be om att gå med",
+    "join": "Gå med",
+    "waiting": "Väntar på att {owner} släpper in dig",
+    "cancel": "Avbryt",
+    "full": "Fullt",
+    "makeOwn": "Skapa ett nytt kontor i stället",
+    "failed": "Det gick inte. Försök igen."
   }
 }

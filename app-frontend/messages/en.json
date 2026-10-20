@@ -163,9 +163,7 @@
     "newChannel": "New channel",
     "channelName": "Channel name",
     "say": "Message {channel}",
-    "attach": "Add an image",
-    "attachmentsPaid": "Images are part of a paid office.",
-    "attachmentsSoon": "Images land here shortly.",
+    "attach": "Attach a file",
     "new": "New",
     "latest": "Jump to latest",
     "today": "Today",
@@ -174,7 +172,7 @@
     "copy": "Copy text",
     "emoji": "Emoji",
     "newLine": "new line",
-    "jumpTo": "Jump to…",
+    "jumpTo": "Search or jump to…",
     "noMatch": "Nothing matches that.",
     "aloneHere": "Just you so far. Bring your team in, and everyone you add shows up here to message.",
     "invitePeople": "Invite people",
@@ -197,7 +195,7 @@
     "walkOver": "Walk over",
     "lobbyAlone": "Nobody else is here yet. When someone walks in, you can write to them here, just between you two.",
     "dropHere": "Drop to share in {channel}",
-    "dropLobby": "Images can be shared in your own office, not here.",
+    "dropLobby": "Files can be shared in your own office, not here.",
     "lobbyGeneral": "Ask a question about TinyFloor, or try the chat. Messages stay here for a week.",
     "lobbyFeedback": "What would make TinyFloor better for your team? We read every message here.",
     "lobbyDmIntro": "Just between you two, and never saved: it's gone when either of you leaves the demo office.",
@@ -209,7 +207,17 @@
     "deleteConfirm": "Unsend?",
     "save": "Save",
     "cancel": "Cancel",
-    "showAllPeople": "Show all {count}"
+    "showAllPeople": "Show all {count}",
+    "removeFile": "Remove {name}",
+    "openPicture": "Open {name}",
+    "download": "Download",
+    "messages": "Messages",
+    "searching": "Searching…",
+    "filesMax": "Up to {count} files at a time.",
+    "fileTooBig": "Files can be up to 10 MB.",
+    "fileSlowDown": "Too many files at once. Try again in a minute.",
+    "fileFailed": "That file didn't upload. Try again.",
+    "mentionSomeone": "Mention someone"
   },
   "proximity": {
     "call": "Call",
@@ -384,7 +392,14 @@
       "whoInvitesEveryone": "Anyone in the office can share its invite link.",
       "whoInvitesAdmins": "Only admins can see and share the invite link.",
       "inviteEveryone": "Everyone",
-      "inviteAdmins": "Only admins"
+      "inviteAdmins": "Only admins",
+      "domainJoin": "People at {domain}",
+      "domainAsk": "Can ask to join",
+      "domainOpen": "Can join right away",
+      "domainOff": "Can't find it",
+      "domainAskNote": "They find this office by their work email and ask. An admin lets them in.",
+      "domainOpenNote": "Anyone signed in with an @{domain} email can walk straight in.",
+      "domainOffNote": "Only people with the invite link can join."
     },
     "profile": {
       "changePassword": "Change password",
@@ -472,6 +487,9 @@
     "people": {
       "title": "People",
       "members": "Members",
+      "asking": "Asking to join",
+      "letIn": "Let in",
+      "decline": "Decline",
       "invite": "Invite",
       "seats": "{used} of {seats} seats",
       "seatsFull": "Every seat is taken.",
@@ -784,5 +802,20 @@
     "body": "This is where the team works. Walk up to anyone to talk, and step into a meeting room when it's time to meet.",
     "walkIn": "Walk in",
     "close": "Close"
+  },
+  "team": {
+    "title": "Your team is already here",
+    "bodyAsk": "People at {domain} are already on TinyFloor. Ask to join their office, and an admin lets you in.",
+    "bodyOpen": "People at {domain} are already on TinyFloor. Join them instead of starting a new office.",
+    "atDomain": "At {domain}",
+    "alreadyHas": "Your team at {domain} already has an office",
+    "members": "{count, plural, one {# member} other {# members}}",
+    "ask": "Ask to join",
+    "join": "Join",
+    "waiting": "Waiting for {owner} to let you in",
+    "cancel": "Cancel",
+    "full": "Full",
+    "makeOwn": "Make a new office instead",
+    "failed": "That didn't work. Try again."
   }
 }

@@ -163,9 +163,7 @@
     "newChannel": "Neuer Kanal",
     "channelName": "Kanalname",
     "say": "Nachricht an {channel}",
-    "attach": "Bild hinzufügen",
-    "attachmentsPaid": "Bilder gehören zu einem bezahlten Büro.",
-    "attachmentsSoon": "Bilder kommen bald.",
+    "attach": "Datei anhängen",
     "new": "Neu",
     "latest": "Zu den neuesten",
     "today": "Heute",
@@ -174,7 +172,7 @@
     "copy": "Text kopieren",
     "emoji": "Emoji",
     "newLine": "neue Zeile",
-    "jumpTo": "Springen zu …",
+    "jumpTo": "Suchen oder springen…",
     "noMatch": "Dazu passt nichts.",
     "aloneHere": "Bisher nur du. Hol dein Team dazu – alle, die du hinzufügst, kannst du hier anschreiben.",
     "invitePeople": "Leute einladen",
@@ -197,7 +195,7 @@
     "walkOver": "Hingehen",
     "lobbyAlone": "Noch ist niemand sonst hier. Sobald jemand hereinkommt, kannst du ihm hier schreiben, nur zwischen euch beiden.",
     "dropHere": "Ablegen, um in {channel} zu teilen",
-    "dropLobby": "Bilder kannst du in deinem eigenen Büro teilen, nicht hier.",
+    "dropLobby": "Dateien kannst du in deinem eigenen Büro teilen, nicht hier.",
     "lobbyGeneral": "Stell eine Frage zu TinyFloor oder probier den Chat aus. Nachrichten bleiben eine Woche lang hier.",
     "lobbyFeedback": "Was würde TinyFloor für dein Team besser machen? Wir lesen jede Nachricht hier.",
     "lobbyDmIntro": "Nur zwischen euch beiden und nie gespeichert: Es verschwindet, sobald einer von euch das Demo-Büro verlässt.",
@@ -209,7 +207,17 @@
     "deleteConfirm": "Zurückziehen?",
     "save": "Speichern",
     "cancel": "Abbrechen",
-    "showAllPeople": "Alle {count} anzeigen"
+    "showAllPeople": "Alle {count} anzeigen",
+    "removeFile": "{name} entfernen",
+    "openPicture": "{name} öffnen",
+    "download": "Herunterladen",
+    "messages": "Nachrichten",
+    "searching": "Suche…",
+    "filesMax": "Bis zu {count} Dateien auf einmal.",
+    "fileTooBig": "Dateien dürfen bis zu 10 MB groß sein.",
+    "fileSlowDown": "Zu viele Dateien auf einmal. Versuch es in einer Minute noch einmal.",
+    "fileFailed": "Die Datei wurde nicht hochgeladen. Versuch es noch einmal.",
+    "mentionSomeone": "Jemanden erwähnen"
   },
   "proximity": {
     "call": "Anrufen",
@@ -384,7 +392,14 @@
       "whoInvitesEveryone": "Alle im Büro können den Einladungslink teilen.",
       "whoInvitesAdmins": "Nur Admins können den Einladungslink sehen und teilen.",
       "inviteEveryone": "Alle",
-      "inviteAdmins": "Nur Admins"
+      "inviteAdmins": "Nur Admins",
+      "domainJoin": "Leute von {domain}",
+      "domainAsk": "Können anfragen",
+      "domainOpen": "Können direkt beitreten",
+      "domainOff": "Finden es nicht",
+      "domainAskNote": "Sie finden dieses Büro über ihre Arbeitsadresse und fragen an. Ein Admin lässt sie rein.",
+      "domainOpenNote": "Wer mit einer @{domain}-Adresse angemeldet ist, kann direkt rein.",
+      "domainOffNote": "Nur wer den Einladungslink hat, kann beitreten."
     },
     "profile": {
       "changePassword": "Passwort ändern",
@@ -472,6 +487,9 @@
     "people": {
       "title": "Leute",
       "members": "Mitglieder",
+      "asking": "Möchten beitreten",
+      "letIn": "Reinlassen",
+      "decline": "Ablehnen",
       "invite": "Einladen",
       "seats": "{used} von {seats} Plätzen",
       "seatsFull": "Alle Plätze sind belegt.",
@@ -784,5 +802,20 @@
     "body": "Hier arbeitet das Team. Geh zu jemandem hin, um zu reden, und in einen Meetingraum, wenn es Zeit für ein Meeting ist.",
     "walkIn": "Reingehen",
     "close": "Schließen"
+  },
+  "team": {
+    "title": "Dein Team ist schon da",
+    "bodyAsk": "Leute von {domain} sind schon auf TinyFloor. Frag an, ob du ihrem Büro beitreten kannst – ein Admin lässt dich rein.",
+    "bodyOpen": "Leute von {domain} sind schon auf TinyFloor. Schließ dich ihnen an, statt ein neues Büro anzulegen.",
+    "atDomain": "Bei {domain}",
+    "alreadyHas": "Dein Team bei {domain} hat schon ein Büro",
+    "members": "{count, plural, one {# Mitglied} other {# Mitglieder}}",
+    "ask": "Beitritt anfragen",
+    "join": "Beitreten",
+    "waiting": "Wartet darauf, dass {owner} dich reinlässt",
+    "cancel": "Abbrechen",
+    "full": "Voll",
+    "makeOwn": "Lieber ein neues Büro anlegen",
+    "failed": "Das hat nicht geklappt. Versuch es noch einmal."
   }
 }

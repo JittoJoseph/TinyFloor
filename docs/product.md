@@ -71,6 +71,54 @@ work happens. What we don't build, though each would raise usage numbers:
   we can say out loud: TinyFloor won't keep you on camera when nobody's
   talking.
 
+## What a team needs before it drops its other tools (20 October)
+
+The rail (chat, meetings, people, settings) was the step that made TinyFloor
+something a team could use instead of a toy beside Slack. Where we stand
+after it, from PostHog (30 days to 20 October) and the admin:
+
+- **Teams try it for one sitting and don't come back.** 26 people reached an
+  office floor; 20 of them on one day only. Of five offices that ever had two
+  or more people in them, the busiest (five people) spent 55 minutes walking
+  in one after another, calling and meeting (11 calls, 19 meeting joins),
+  and never opened it again. Nobody was turned away or shown a price.
+- **People mostly arrive to an empty floor**: 46 of 60 arrivals found nobody
+  there. The median visit to an office lasts 73 seconds.
+- **Meetings are the most used thing after the floor**, chat the least: 27
+  people opened Chat and 4 sent anything; Floor is the most clicked thing in
+  it. People also try meetings alone (18 of 32 office meeting joins).
+
+What the tools a small team already uses do that we don't (checked in the
+code on 20 October):
+
+- **Nothing reaches you when you aren't looking.** There are no system
+  notifications at all: a message or a call only makes a sound while the
+  office's tab is open, and nothing at all once it's closed. Slack and every
+  virtual office with a desktop app (Gather, Roam, Kumospace) notify.
+- **A meeting can't be sent to anyone.** Office meetings have no link a
+  client, candidate or guest can open, and no time: nothing can go in a
+  calendar invite, so scheduled and external calls stay in Meet or Zoom.
+  Gather leads its new version with Google Calendar ("create and join
+  meetings in one click"; Outlook next) and Roam has a booking lobby for
+  outside guests.
+- **Chat lacks what makes Slack work for a team**: @mentions that reach the
+  person, threads, message search, and files (images say "shortly").
+- **It's a tab, not an app.** The site is installable (a manifest with
+  standalone display) but nothing offers it. The floor draws 60 frames a
+  second all day unless battery saver is on, which is what a window left
+  open on a laptop pays for.
+- **Presence only exists while the tab is open**: closed, you are "Not on
+  the floor", with no calendar status ("In a meeting until 3") the way
+  Gather's calendar sync sets it.
+
+Outside, the advice that recurs for moving a team into a virtual office is
+behavioural, not a feature: run one existing recurring meeting there first,
+start with a few people who already work together, and have the lead be
+there visibly (SoWork); and keep the common hours modest (core-hours
+guides). Reviews of Gather and Kumospace complain about price per seat,
+audio problems, missing integrations and heavy clients, rarely about
+missing features on the map.
+
 ## Small decisions worth remembering
 
 - **"Office", not "workspace".** The whole product is the metaphor (a floor,
@@ -121,3 +169,42 @@ work happens. What we don't build, though each would raise usage numbers:
   without asking. An admin can limit it to admins, and then members see no
   invite button anywhere, and the empty floor stops telling them to send the
   link.
+- **Colleagues find their team's office by their work email** (19 October).
+  People from the same company were signing up on their own and landing on
+  "make your office": on 19 October four people from one company signed up
+  within the hour; two joined a colleague's office and two never got into
+  any, and another company had two offices with different members. Now
+  anyone signed in with a verified address at the domain of an office's
+  owner sees "Your team is already here" before "make your own" (and on the
+  new-office screen, and outside an office), and walks straight in: nobody
+  has to be online to let them in. An admin can change that under Inviting,
+  "People at your domain": have them ask first (a company with several teams
+  might), when the request waits in People for the office's admins, with a
+  count on the rail, and the asker's page walks them in the moment they're
+  let in; or keep the office out of sight. A university's domain is out of
+  sight until an admin changes it. A full free office's trial starts for the fourth, as with an
+  invite. Personal addresses (Gmail, Outlook, Yahoo, UOL and the like) never
+  match, only the owner's domain counts, and only Google-verified addresses
+  do: a password account's email is never checked.
+- **Files, mentions and search in chat** (20 October), the three things that
+  kept a team in Slack beside us; threads were left out. Files go in by the
+  paperclip, a paste or a drop, start going up at once and are sent the
+  moment they're there; a picture is made small in the browser first (2048
+  pixels on its long side, WebP: a 20 MB screenshot went up as 1.6 MB) and
+  takes its room before it loads. Up to four on a message, 10 MB each, for
+  every office, free included. They're kept in a private R2 bucket and read
+  only through the API after a membership check; anything that isn't a
+  picture downloads rather than opens. A file goes when its message does.
+  "@" offers the office's people, and the words stay plain ("@Ana Lima")
+  with the ids beside them, so a typed name works too. In a channel only
+  mentions are counted (on the rail and in the list); the rest only makes it
+  bold, as in Slack, while a direct message counts everything. Search is
+  in the ⌘K palette: words and file names in the office's channels and your
+  own direct messages, case and accents folded, and picking a result opens
+  the conversation at that message.
+- **Chat picks up where you left it** (19 October). Coming back to Chat
+  opens the conversation you were last in, not #general; what you'd started
+  writing waits in each conversation, across trips to the floor; typing
+  anywhere on the page writes in the box; Up in an empty box edits your last
+  message, and finishing the edit hands the cursor back. Sending always
+  shows what you sent, links open, and on a phone Enter is a new line.

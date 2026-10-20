@@ -163,9 +163,7 @@
     "newChannel": "Nieuw kanaal",
     "channelName": "Kanaalnaam",
     "say": "Bericht in {channel}",
-    "attach": "Afbeelding toevoegen",
-    "attachmentsPaid": "Afbeeldingen horen bij een betaald kantoor.",
-    "attachmentsSoon": "Afbeeldingen komen binnenkort.",
+    "attach": "Bestand toevoegen",
     "new": "Nieuw",
     "latest": "Naar het nieuwste",
     "today": "Vandaag",
@@ -174,7 +172,7 @@
     "copy": "Tekst kopiëren",
     "emoji": "Emoji",
     "newLine": "nieuwe regel",
-    "jumpTo": "Ga naar…",
+    "jumpTo": "Zoeken of naar…",
     "noMatch": "Niets gevonden.",
     "aloneHere": "Nog alleen jij. Haal je team erbij; wie je toevoegt zie je hier.",
     "invitePeople": "Mensen uitnodigen",
@@ -197,7 +195,7 @@
     "walkOver": "Loop erheen",
     "lobbyAlone": "Er is nog niemand anders. Zodra iemand binnenkomt, kun je hier met diegene praten, alleen tussen jullie twee.",
     "dropHere": "Loslaten om te delen in {channel}",
-    "dropLobby": "Afbeeldingen deel je in je eigen kantoor, niet hier.",
+    "dropLobby": "Bestanden deel je in je eigen kantoor, niet hier.",
     "lobbyGeneral": "Stel een vraag over TinyFloor of probeer de chat. Berichten blijven hier een week staan.",
     "lobbyFeedback": "Wat zou TinyFloor beter maken voor je team? We lezen elk bericht hier.",
     "lobbyDmIntro": "Alleen tussen jullie twee en nooit bewaard: het verdwijnt zodra een van jullie het demokantoor verlaat.",
@@ -209,7 +207,17 @@
     "deleteConfirm": "Intrekken?",
     "save": "Opslaan",
     "cancel": "Annuleren",
-    "showAllPeople": "Alle {count} tonen"
+    "showAllPeople": "Alle {count} tonen",
+    "removeFile": "{name} verwijderen",
+    "openPicture": "{name} openen",
+    "download": "Downloaden",
+    "messages": "Berichten",
+    "searching": "Zoeken…",
+    "filesMax": "Tot {count} bestanden tegelijk.",
+    "fileTooBig": "Bestanden mogen tot 10 MB zijn.",
+    "fileSlowDown": "Te veel bestanden tegelijk. Probeer het over een minuut opnieuw.",
+    "fileFailed": "Dat bestand is niet geüpload. Probeer het opnieuw.",
+    "mentionSomeone": "Iemand noemen"
   },
   "proximity": {
     "call": "Bellen",
@@ -384,7 +392,14 @@
       "whoInvitesEveryone": "Iedereen in het kantoor kan de uitnodigingslink delen.",
       "whoInvitesAdmins": "Alleen admins kunnen de uitnodigingslink zien en delen.",
       "inviteEveryone": "Iedereen",
-      "inviteAdmins": "Alleen admins"
+      "inviteAdmins": "Alleen admins",
+      "domainJoin": "Mensen van {domain}",
+      "domainAsk": "Kunnen het vragen",
+      "domainOpen": "Kunnen meteen binnen",
+      "domainOff": "Vinden het niet",
+      "domainAskNote": "Ze vinden dit kantoor via hun werkadres en vragen het. Een admin laat ze binnen.",
+      "domainOpenNote": "Wie inlogt met een @{domain}-adres kan meteen binnenlopen.",
+      "domainOffNote": "Alleen wie de uitnodigingslink heeft, kan meedoen."
     },
     "profile": {
       "changePassword": "Wachtwoord wijzigen",
@@ -472,6 +487,9 @@
     "people": {
       "title": "Mensen",
       "members": "Leden",
+      "asking": "Willen meedoen",
+      "letIn": "Binnenlaten",
+      "decline": "Weigeren",
       "invite": "Uitnodigen",
       "seats": "{used} van {seats} plekken",
       "seatsFull": "Alle plekken zijn bezet.",
@@ -784,5 +802,20 @@
     "body": "Hier werkt het team. Loop naar iemand toe om te praten, en stap een vergaderruimte in als het tijd is om te vergaderen.",
     "walkIn": "Naar binnen",
     "close": "Sluiten"
+  },
+  "team": {
+    "title": "Je team is er al",
+    "bodyAsk": "Mensen van {domain} zitten al op TinyFloor. Vraag of je bij hun kantoor mag, een admin laat je binnen.",
+    "bodyOpen": "Mensen van {domain} zitten al op TinyFloor. Doe met hen mee in plaats van een nieuw kantoor te maken.",
+    "atDomain": "Bij {domain}",
+    "alreadyHas": "Je team bij {domain} heeft al een kantoor",
+    "members": "{count, plural, one {# lid} other {# leden}}",
+    "ask": "Vragen",
+    "join": "Meedoen",
+    "waiting": "Wacht tot {owner} je binnenlaat",
+    "cancel": "Annuleren",
+    "full": "Vol",
+    "makeOwn": "Toch een nieuw kantoor maken",
+    "failed": "Dat lukte niet. Probeer het opnieuw."
   }
 }

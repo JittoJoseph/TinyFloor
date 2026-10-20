@@ -163,9 +163,7 @@
     "newChannel": "Ny kanal",
     "channelName": "Kanalnavn",
     "say": "Skriv i {channel}",
-    "attach": "Tilføj et billede",
-    "attachmentsPaid": "Billeder hører til et betalt kontor.",
-    "attachmentsSoon": "Billeder kommer snart.",
+    "attach": "Vedhæft en fil",
     "new": "Nyt",
     "latest": "Til det nyeste",
     "today": "I dag",
@@ -174,7 +172,7 @@
     "copy": "Kopiér tekst",
     "emoji": "Emoji",
     "newLine": "ny linje",
-    "jumpTo": "Hop til…",
+    "jumpTo": "Søg eller gå til…",
     "noMatch": "Intet passer.",
     "aloneHere": "Kun dig indtil videre. Hent dit team ind – alle, du tilføjer, dukker op her.",
     "invitePeople": "Invitér folk",
@@ -197,7 +195,7 @@
     "walkOver": "Gå derhen",
     "lobbyAlone": "Der er ingen andre her endnu. Når nogen kommer ind, kan du skrive til dem her, kun mellem jer to.",
     "dropHere": "Slip for at dele i {channel}",
-    "dropLobby": "Billeder kan deles i dit eget kontor, ikke her.",
+    "dropLobby": "Filer kan deles på dit eget kontor, ikke her.",
     "lobbyGeneral": "Stil et spørgsmål om TinyFloor, eller prøv chatten. Beskeder bliver her i en uge.",
     "lobbyFeedback": "Hvad ville gøre TinyFloor bedre for dit team? Vi læser hver besked her.",
     "lobbyDmIntro": "Kun mellem jer to og gemmes aldrig: det forsvinder, når en af jer forlader demokontoret.",
@@ -209,7 +207,17 @@
     "deleteConfirm": "Fortryd afsendelse?",
     "save": "Gem",
     "cancel": "Annuller",
-    "showAllPeople": "Vis alle {count}"
+    "showAllPeople": "Vis alle {count}",
+    "removeFile": "Fjern {name}",
+    "openPicture": "Åbn {name}",
+    "download": "Download",
+    "messages": "Beskeder",
+    "searching": "Søger…",
+    "filesMax": "Op til {count} filer ad gangen.",
+    "fileTooBig": "Filer må fylde op til 10 MB.",
+    "fileSlowDown": "For mange filer på én gang. Prøv igen om et minut.",
+    "fileFailed": "Filen blev ikke uploadet. Prøv igen.",
+    "mentionSomeone": "Nævn nogen"
   },
   "proximity": {
     "call": "Ring op",
@@ -384,7 +392,14 @@
       "whoInvitesEveryone": "Alle på kontoret kan dele invitationslinket.",
       "whoInvitesAdmins": "Kun admins kan se og dele invitationslinket.",
       "inviteEveryone": "Alle",
-      "inviteAdmins": "Kun admins"
+      "inviteAdmins": "Kun admins",
+      "domainJoin": "Folk fra {domain}",
+      "domainAsk": "Kan spørge om lov",
+      "domainOpen": "Kan komme ind med det samme",
+      "domainOff": "Kan ikke finde det",
+      "domainAskNote": "De finder kontoret via deres arbejdsmail og spørger. En admin lukker dem ind.",
+      "domainOpenNote": "Alle, der er logget ind med en @{domain}-adresse, kan gå direkte ind.",
+      "domainOffNote": "Kun dem med invitationslinket kan deltage."
     },
     "profile": {
       "changePassword": "Skift adgangskode",
@@ -472,6 +487,9 @@
     "people": {
       "title": "Folk",
       "members": "Medlemmer",
+      "asking": "Vil gerne ind",
+      "letIn": "Luk ind",
+      "decline": "Afvis",
       "invite": "Invitér",
       "seats": "{used} af {seats} pladser",
       "seatsFull": "Alle pladser er taget.",
@@ -784,5 +802,20 @@
     "body": "Her arbejder holdet. Gå hen til nogen for at tale sammen, og gå ind i et mødelokale, når det er tid til møde.",
     "walkIn": "Gå ind",
     "close": "Luk"
+  },
+  "team": {
+    "title": "Dit team er her allerede",
+    "bodyAsk": "Folk fra {domain} er allerede på TinyFloor. Spørg om at komme med på deres kontor, så lukker en admin dig ind.",
+    "bodyOpen": "Folk fra {domain} er allerede på TinyFloor. Slut dig til dem i stedet for at oprette et nyt kontor.",
+    "atDomain": "Hos {domain}",
+    "alreadyHas": "Dit team hos {domain} har allerede et kontor",
+    "members": "{count, plural, one {# medlem} other {# medlemmer}}",
+    "ask": "Spørg om lov",
+    "join": "Deltag",
+    "waiting": "Venter på, at {owner} lukker dig ind",
+    "cancel": "Annuller",
+    "full": "Fuldt",
+    "makeOwn": "Opret hellere et nyt kontor",
+    "failed": "Det virkede ikke. Prøv igen."
   }
 }

@@ -4,7 +4,12 @@ import {
   CHAT_BODY_MAX,
   CHAT_PAGE,
   CloseCode,
+  FILE_MAX,
+  FILES_PER_MESSAGE,
   GENERAL_CHANNEL,
+  JUMP_MAX,
+  MENTIONS_MAX,
+  SEARCH_MAX,
   HEARTBEAT_PING,
   LOBBY_CHANNELS,
   LOBBY_CHAT,
@@ -17,7 +22,7 @@ import {
   isDm,
   type ChannelSummary,
   type ChatClientMessage,
-  type ChatImage,
+  type ChatFile,
   type ChatMessage,
   type ChatServerMessage,
   type LobbyChatPage,
@@ -47,10 +52,13 @@ interface MessageRow extends Record<string, SqlStorageValue> {
   author: string;
   author_name: string;
   body: string;
-  image: string | null;
+  files: string | null;
+  mentions: string | null;
   at: number;
   edited_at: SqlStorageValue;
 }
+
+const COLUMNS = "seq, channel, author, author_name, body, files, mentions, at, edited_at";
 
 /** A runaway client is stopped at ten messages a second; a person never gets near it. */
 const SENDS_PER_TEN_SECONDS = 100;
@@ -60,6 +68,8 @@ const TEN_SECONDS = 10_000;
 const DAY_MS = 24 * 60 * 60 * 1000;
 /** Where "is this the lobby's chat" is kept, so an alarm knows without a request. */
 const LOBBY_FLAG = "lobby";
+/** The office this chat belongs to, which its files are kept under. */
+const OFFICE_KEY = "office";
 
 /**
  * One of these per office. It holds that office's channels and messages in its
@@ -71,18 +81,20 @@ const LOBBY_FLAG = "lobby";
  *
  * The public lobby has one of these too, named "lobby", shared by every copy
  * of its floor. There the channels are fixed, guests may post under the name
- * they walked in with, there are no new channels or images, TinyFloor's admin
+ * they walked in with, there are no new channels or files, TinyFloor's admin
  * can change or take down any message, and an alarm once a day forgets anything older than
  * a week. Its direct messages are passed from one socket to the other and
  * never written down, so they last as long as both people stay.
  */
 export class Chat extends DurableObject<Env> {
   private lobby = false;
+  private office: string | null = null;
 
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
     ctx.blockConcurrencyWhile(async () => {
       this.lobby = (await ctx.storage.get<boolean>(LOBBY_FLAG)) === true;
+      this.office = (await ctx.storage.get<string>(OFFICE_KEY)) ?? null;
       this.sql.exec(`CREATE TABLE IF NOT EXISTS channels (
         id TEXT PRIMARY KEY,
         kind TEXT NOT NULL,
@@ -103,6 +115,9 @@ export class Chat extends DurableObject<Env> {
       // Added with editing; older objects get the column the first time they wake.
       const columns = this.sql.exec<{ name: string }>("SELECT name FROM pragma_table_info('messages')").toArray();
       if (!columns.some((column) => column.name === "edited_at")) this.sql.exec("ALTER TABLE messages ADD COLUMN edited_at INTEGER");
+      // And with files and mentions, both JSON. (`image` is from before files, and was never used.)
+      if (!columns.some((column) => column.name === "files")) this.sql.exec("ALTER TABLE messages ADD COLUMN files TEXT");
+      if (!columns.some((column) => column.name === "mentions")) this.sql.exec("ALTER TABLE messages ADD COLUMN mentions TEXT");
       this.sql.exec(`CREATE TABLE IF NOT EXISTS reads (
         member TEXT NOT NULL,
         channel TEXT NOT NULL,
@@ -139,6 +154,10 @@ export class Chat extends DurableObject<Env> {
     if (ticket.room === `chat:${LOBBY_CHAT}` && !this.lobby) {
       this.lobby = true;
       await this.ctx.storage.put(LOBBY_FLAG, true);
+    }
+    if (!this.lobby && !this.office && ticket.room.startsWith("chat:")) {
+      this.office = ticket.room.slice("chat:".length);
+      await this.ctx.storage.put(OFFICE_KEY, this.office);
     }
     const attachment: Attachment = { userId: ticket.sub, name: ticket.name, sends: 0, window: 0 };
     this.remember(server, attachment);
@@ -181,9 +200,11 @@ export class Chat extends DurableObject<Env> {
         me.sends++;
         this.remember(socket, me);
         if (me.sends > SENDS_PER_TEN_SECONDS) return this.send(socket, { t: "chat_error", code: "slow_down" });
-        return this.post(socket, me, message.channel, message.body, message.image, now);
+        return this.post(socket, me, message.channel, message.body, message.files, message.mentions, now);
       case "chat_history":
-        return this.page(socket, me, message.channel, message.before);
+        return this.page(socket, me, message.channel, message.before, message.to);
+      case "chat_search":
+        return this.search(socket, me, message.q);
       case "chat_read":
         return this.markRead(me.userId, message.channel, message.seq);
       case "chat_react":
@@ -193,7 +214,7 @@ export class Chat extends DurableObject<Env> {
       case "chat_dm":
         return this.openDm(socket, me, message.userId, now);
       case "chat_edit":
-        return this.edit(me, message.seq, message.body, message.channel, now);
+        return this.edit(me, message.seq, message.body, message.channel, message.mentions, now);
       case "chat_delete":
         return this.remove(me, message.seq, message.channel);
     }
@@ -241,6 +262,7 @@ export class Chat extends DurableObject<Env> {
         // Already gone.
       }
     }
+    this.unfile(this.allFiles());
     this.sql.exec("DELETE FROM messages");
     this.sql.exec("DELETE FROM channels");
     this.sql.exec("DELETE FROM reads");
@@ -248,14 +270,14 @@ export class Chat extends DurableObject<Env> {
     this.sql.exec("DELETE FROM people");
   }
 
-  /** Keeps each channel to its last messages. Runs from the API's nightly job. */
+  /** Keeps each channel to its last messages, and their files with them. */
   async trim(keep = CHANNEL_HISTORY_MAX): Promise<string[]> {
     const channels = this.sql.exec<{ channel: string }>("SELECT DISTINCT channel FROM messages").toArray();
     const dropped: string[] = [];
     for (const { channel } of channels) {
       const rows = this.sql
-        .exec<{ image: string | null }>(
-          `SELECT image FROM messages WHERE channel = ?1 AND seq <= (
+        .exec<{ files: string | null }>(
+          `SELECT files FROM messages WHERE channel = ?1 AND seq <= (
              SELECT seq FROM messages WHERE channel = ?1 ORDER BY seq DESC LIMIT 1 OFFSET ?2
            )`,
           channel,
@@ -263,7 +285,7 @@ export class Chat extends DurableObject<Env> {
         )
         .toArray();
       if (!rows.length) continue;
-      for (const row of rows) if (row.image) dropped.push(JSON.parse(row.image).key as string);
+      for (const row of rows) dropped.push(...keysOf(row.files));
       this.sql.exec(
         `DELETE FROM messages WHERE channel = ?1 AND seq <= (
            SELECT seq FROM messages WHERE channel = ?1 ORDER BY seq DESC LIMIT 1 OFFSET ?2
@@ -272,7 +294,24 @@ export class Chat extends DurableObject<Env> {
         keep,
       );
     }
+    this.unfile(dropped);
     return dropped;
+  }
+
+  /** Files go from R2 with their messages. A failed delete leaves a file nobody can reach, never a broken message. */
+  private unfile(keys: string[]): void {
+    if (!keys.length || !this.env.FILES) return;
+    for (let at = 0; at < keys.length; at += 1000) {
+      const batch = keys.slice(at, at + 1000);
+      this.ctx.waitUntil(this.env.FILES.delete(batch).catch((error: unknown) => console.error("chat: couldn't delete files", error)));
+    }
+  }
+
+  private allFiles(): string[] {
+    return this.sql
+      .exec<{ files: string | null }>("SELECT files FROM messages WHERE files IS NOT NULL")
+      .toArray()
+      .flatMap((row) => keysOf(row.files));
   }
 
   // -- the work ------------------------------------------------------------
@@ -282,24 +321,27 @@ export class Chat extends DurableObject<Env> {
     me: Attachment,
     channel: string,
     body: unknown,
-    image: ChatImage | undefined,
+    files: unknown,
+    mentions: unknown,
     now: number,
   ): void {
     const text = typeof body === "string" ? body.trim().slice(0, CHAT_BODY_MAX) : "";
-    const picture = this.lobby ? null : parseImage(image);
-    if (this.lobby && image) return this.send(socket, { t: "chat_error", code: "offices_only" });
-    if (!text && !picture) return;
+    if (this.lobby && Array.isArray(files) && files.length) return this.send(socket, { t: "chat_error", code: "offices_only" });
+    const shared = this.lobby ? [] : parseFiles(files, this.office);
+    if (!text && !shared.length) return;
+    const named = parseMentions(mentions, me.userId);
     if (!this.mayPost(me.userId, channel)) return this.send(socket, { t: "chat_error", code: "no_such_channel" });
     if (this.lobby && isDm(channel)) return this.pass(socket, me, channel, text, now);
 
     this.ensureChannel(channel, me.userId, now);
     this.sql.exec(
-      "INSERT INTO messages (channel, author, author_name, body, image, at) VALUES (?, ?, ?, ?, ?, ?)",
+      "INSERT INTO messages (channel, author, author_name, body, files, mentions, at) VALUES (?, ?, ?, ?, ?, ?, ?)",
       channel,
       me.userId,
       me.name,
       text,
-      picture ? JSON.stringify(picture) : null,
+      shared.length ? JSON.stringify(shared) : null,
+      named.length ? JSON.stringify(named) : null,
       now,
     );
     const seq = Number(this.sql.exec<{ seq: number }>("SELECT last_insert_rowid() AS seq").one().seq);
@@ -310,7 +352,8 @@ export class Chat extends DurableObject<Env> {
       authorName: me.name,
       body: text,
       at: now,
-      ...(picture ? { image: picture } : {}),
+      ...(shared.length ? { files: shared } : {}),
+      ...(named.length ? { mentions: named } : {}),
     };
 
     // Your own message counts as read, so your unread badge stays quiet.
@@ -347,14 +390,21 @@ export class Chat extends DurableObject<Env> {
   }
 
   /** Anyone can change what they said, anywhere they can still post. */
-  private edit(me: Attachment, seq: number, body: unknown, channel: unknown, now: number): void {
+  private edit(me: Attachment, seq: number, body: unknown, channel: unknown, mentions: unknown, now: number): void {
     const text = typeof body === "string" ? body.trim().slice(0, CHAT_BODY_MAX) : "";
     if (!text || !Number.isFinite(seq)) return;
-    const change = { t: "chat_edited", seq, body: text, edited: now, by: me.userId } as const;
+    const named = parseMentions(mentions, me.userId);
+    const change = { t: "chat_edited", seq, body: text, edited: now, by: me.userId, ...(named.length ? { mentions: named } : {}) } as const;
     if (seq < 0) return this.passChange(me, channel, (dm) => ({ ...change, channel: dm }));
     const row = this.ownMessage(me, seq);
     if (!row) return;
-    this.sql.exec("UPDATE messages SET body = ?, edited_at = ? WHERE seq = ?", text, now, seq);
+    this.sql.exec(
+      "UPDATE messages SET body = ?, mentions = ?, edited_at = ? WHERE seq = ?",
+      text,
+      named.length ? JSON.stringify(named) : null,
+      now,
+      seq,
+    );
     this.deliver(row.channel, { ...change, channel: row.channel });
   }
 
@@ -368,6 +418,8 @@ export class Chat extends DurableObject<Env> {
   }
 
   private drop(seq: number, channel: string, by: string): void {
+    const row = this.sql.exec<{ files: string | null }>("SELECT files FROM messages WHERE seq = ?", seq).toArray()[0];
+    this.unfile(keysOf(row?.files ?? null));
     this.sql.exec("DELETE FROM reactions WHERE seq = ?", seq);
     this.sql.exec("DELETE FROM messages WHERE seq = ?", seq);
     this.deliver(channel, { t: "chat_deleted", seq, channel, by });
@@ -403,7 +455,7 @@ export class Chat extends DurableObject<Env> {
     const open = (LOBBY_CHANNELS as readonly string[]).includes(channel) ? channel : LOBBY_CHANNELS[0];
     const rows = this.sql
       .exec<MessageRow>(
-        `SELECT seq, channel, author, author_name, body, image, at, edited_at FROM messages
+        `SELECT ${COLUMNS} FROM messages
          WHERE channel = ? AND seq < ? ORDER BY seq DESC LIMIT ?`,
         open,
         before ?? Number.MAX_SAFE_INTEGER,
@@ -450,19 +502,30 @@ export class Chat extends DurableObject<Env> {
     if ((await this.ctx.storage.getAlarm()) === null) await this.ctx.storage.setAlarm(now + DAY_MS);
   }
 
-  private page(socket: WebSocket, me: Attachment, channel: string, before?: number): void {
+  private page(socket: WebSocket, me: Attachment, channel: string, before?: number, to?: number): void {
     if (!this.mayPost(me.userId, channel)) return;
+    const below = typeof before === "number" && Number.isFinite(before) ? before : Number.MAX_SAFE_INTEGER;
+    // Back to a message (a search result): everything down to it, and a few before it for context.
+    const reach =
+      typeof to === "number" && Number.isFinite(to)
+        ? Number(
+            this.sql
+              .exec<{ n: number }>("SELECT COUNT(*) AS n FROM messages WHERE channel = ? AND seq < ? AND seq >= ?", channel, below, to)
+              .one().n,
+          ) + 10
+        : CHAT_PAGE;
+    const size = Math.min(Math.max(reach, CHAT_PAGE), JUMP_MAX);
     const rows = this.sql
       .exec<MessageRow>(
-        `SELECT seq, channel, author, author_name, body, image, at, edited_at FROM messages
+        `SELECT ${COLUMNS} FROM messages
          WHERE channel = ? AND seq < ? ORDER BY seq DESC LIMIT ?`,
         channel,
-        before ?? Number.MAX_SAFE_INTEGER,
-        CHAT_PAGE + 1,
+        below,
+        size + 1,
       )
       .toArray();
-    const more = rows.length > CHAT_PAGE;
-    const page = rows.slice(0, CHAT_PAGE).reverse();
+    const more = rows.length > size;
+    const page = rows.slice(0, size).reverse();
     const reactions = this.reactionsFor(page.map((row) => row.seq));
     this.send(socket, {
       t: "chat_page",
@@ -470,6 +533,35 @@ export class Chat extends DurableObject<Env> {
       more,
       messages: page.map((row) => toMessage(row, reactions.get(row.seq))),
     });
+  }
+
+  /**
+   * Words anywhere you can read: the office's channels and your own direct
+   * messages, newest first, matched on what was said and on file names, with
+   * case and accents folded.
+   */
+  private search(socket: WebSocket, me: Attachment, q: unknown): void {
+    const words = typeof q === "string" ? q.trim().slice(0, 100) : "";
+    if (fold(words).length < 2) return this.send(socket, { t: "chat_found", q: words, messages: [] });
+    const needle = fold(words);
+    // SQLite folds only ASCII case, so the narrowing is on what's cheap and the matching is done here.
+    const rows = this.sql
+      .exec<MessageRow>(
+        `SELECT ${COLUMNS} FROM messages
+         WHERE (channel NOT LIKE 'dm:%' OR instr(channel, ?) > 0)
+         ORDER BY seq DESC LIMIT 20000`,
+        me.userId,
+      )
+      .toArray();
+    const found: ChatMessage[] = [];
+    for (const row of rows) {
+      if (found.length >= SEARCH_MAX) break;
+      const named = parseStored(row.files).some((file) => fold(file.name).includes(needle));
+      if (!named && !fold(String(row.body)).includes(needle)) continue;
+      if (!this.mayPost(me.userId, String(row.channel))) continue;
+      found.push(toMessage(row));
+    }
+    this.send(socket, { t: "chat_found", q: words, messages: found });
   }
 
   private markRead(userId: string, channel: string, seq: number): void {
@@ -568,7 +660,7 @@ export class Chat extends DurableObject<Env> {
     const other = pair ? (pair[0] === userId ? pair[1] : pair[0]) : undefined;
     const last = this.sql
       .exec<MessageRow>(
-        "SELECT seq, author_name, body, image, at FROM messages WHERE channel = ? ORDER BY seq DESC LIMIT 1",
+        "SELECT seq, author_name, body, files, at FROM messages WHERE channel = ? ORDER BY seq DESC LIMIT 1",
         channel,
       )
       .toArray()[0];
@@ -583,6 +675,22 @@ export class Chat extends DurableObject<Env> {
         userId,
       )
       .one().n;
+    // In a channel, the unread ones that mention you: what's counted there, the rest only make it bold.
+    const mentions = pair
+      ? 0
+      : Number(
+          this.sql
+            .exec<{ n: number }>(
+              `SELECT COUNT(*) AS n FROM messages
+               WHERE channel = ? AND seq > ? AND author != ? AND mentions IS NOT NULL
+                 AND EXISTS (SELECT 1 FROM json_each(messages.mentions) WHERE value = ?)`,
+              channel,
+              read?.seq ?? 0,
+              userId,
+              userId,
+            )
+            .one().n,
+        );
 
     return {
       id: channel,
@@ -590,8 +698,9 @@ export class Chat extends DurableObject<Env> {
       name: pair ? this.nameOf(other!) : channel,
       ...(other ? { withId: other } : {}),
       unread: Number(unread),
+      ...(mentions ? { mentions } : {}),
       ...(last
-        ? { lastAt: Number(last.at), lastBy: String(last.author_name), lastBody: last.image ? "📷" : String(last.body) }
+        ? { lastAt: Number(last.at), lastBy: String(last.author_name), lastBody: String(last.body) || (last.files ? "📎" : "") }
         : {}),
     };
   }
@@ -657,15 +766,54 @@ export class Chat extends DurableObject<Env> {
   }
 }
 
-function parseImage(image: ChatImage | undefined): ChatImage | null {
-  if (!image || typeof image.key !== "string" || !/^att\/[\w/-]{1,120}\.webp$/.test(image.key)) return null;
-  const width = Number(image.width);
-  const height = Number(image.height);
-  if (!Number.isFinite(width) || !Number.isFinite(height) || width <= 0 || height <= 0) return null;
-  return { key: image.key, width: Math.round(width), height: Math.round(height) };
+/** Files for a message: well formed, kept under this office, a few at most. */
+function parseFiles(files: unknown, office: string | null): ChatFile[] {
+  if (!office || !Array.isArray(files)) return [];
+  const prefix = `att/${office}/`;
+  const found: ChatFile[] = [];
+  for (const file of files.slice(0, FILES_PER_MESSAGE) as Array<Partial<ChatFile> | null>) {
+    if (!file || typeof file.key !== "string" || !file.key.startsWith(prefix)) continue;
+    if (!/^[\w-]{8,64}(\.[a-z0-9]{1,8})?$/.test(file.key.slice(prefix.length))) continue;
+    const size = Number(file.size);
+    if (!Number.isFinite(size) || size <= 0 || size > FILE_MAX) continue;
+    const name = typeof file.name === "string" && file.name.trim() ? file.name.trim().slice(0, 200) : "file";
+    const type = typeof file.type === "string" && file.type ? file.type.slice(0, 100) : "application/octet-stream";
+    const width = Number(file.width);
+    const height = Number(file.height);
+    const sized = Number.isFinite(width) && Number.isFinite(height) && width > 0 && height > 0;
+    found.push({ key: file.key, name, size: Math.round(size), type, ...(sized ? { width: Math.round(width), height: Math.round(height) } : {}) });
+  }
+  return found;
+}
+
+/** Who a message mentions: ids, each once, never its author, a handful at most. */
+function parseMentions(mentions: unknown, author: string): string[] {
+  if (!Array.isArray(mentions)) return [];
+  const ids = mentions.filter((id): id is string => typeof id === "string" && id.length > 0 && id.length <= 64 && id !== author);
+  return [...new Set(ids)].slice(0, MENTIONS_MAX);
+}
+
+function parseStored(files: SqlStorageValue): ChatFile[] {
+  if (typeof files !== "string") return [];
+  try {
+    return JSON.parse(files) as ChatFile[];
+  } catch {
+    return [];
+  }
+}
+
+function keysOf(files: SqlStorageValue): string[] {
+  return parseStored(files).map((file) => file.key);
+}
+
+/** For matching: case and accents folded, so "cafe" finds "Café". */
+function fold(text: string): string {
+  return text.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
 }
 
 function toMessage(row: MessageRow, reactions?: Record<string, string[]>): ChatMessage {
+  const files = parseStored(row.files);
+  const mentions = typeof row.mentions === "string" ? (JSON.parse(row.mentions) as string[]) : [];
   return {
     seq: Number(row.seq),
     channel: String(row.channel),
@@ -673,7 +821,8 @@ function toMessage(row: MessageRow, reactions?: Record<string, string[]>): ChatM
     authorName: String(row.author_name),
     body: String(row.body),
     at: Number(row.at),
-    ...(row.image ? { image: JSON.parse(String(row.image)) as ChatImage } : {}),
+    ...(files.length ? { files } : {}),
+    ...(mentions.length ? { mentions } : {}),
     ...(reactions ? { reactions } : {}),
     ...(row.edited_at ? { edited: Number(row.edited_at) } : {}),
   };

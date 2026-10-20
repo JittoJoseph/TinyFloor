@@ -11,6 +11,7 @@ import { dollars, usePlans } from "@/lib/billing";
 import { openCheckout, waitForPlan } from "@/lib/checkout";
 import { officePath } from "@/lib/links";
 import { InviteActions } from "./Invite";
+import { TeamOffices, useTeamOffices } from "./TeamOffices";
 import { forgetPendingOffice, pendingOffice } from "@/lib/pendingOffice";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { LitFace } from "@/components/ui/LitFace";
@@ -45,6 +46,9 @@ export function CreateOfficeFlow() {
   const reduce = useReducedMotion();
   const { user } = useAuth();
   const catalog = usePlans();
+  // Colleagues with an office already: joining it beats making a second one for the same team.
+  const team = useTeamOffices();
+  const tTeam = useTranslations("team");
   const selling = !!catalog?.billing;
 
   const [step, setStep] = useState<Step>("name");
@@ -190,6 +194,7 @@ export function CreateOfficeFlow() {
           {step === "name" && (
             <>
               <StepTitle title={t("nameTitle")} body={t("nameBody")} />
+              {team && !office && <TeamOffices team={team} label={tTeam("alreadyHas", { domain: team.domain })} className="mb-4" />}
               <label htmlFor="office-name" className="sr-only">
                 {t("nameLabel")}
               </label>
@@ -203,17 +208,19 @@ export function CreateOfficeFlow() {
                 autoComplete="organization"
                 className={pillInputClass}
               />
-              {/* Their floor, with them already at a desk: what the name is for. */}
-              <div className="relative mt-4 h-[6.5rem] overflow-hidden rounded-2xl sm:mt-5 sm:h-[8.5rem] border border-border" aria-hidden>
-                <FloorScene
-                  view={[18, 4.2, 16, 8]}
-                  sitting={
-                    user ? [{ character: user.character, chair: [20, 8], name: user.displayName.split(" ")[0], status: "available" }] : []
-                  }
-                  priority
-                  className="absolute inset-0"
-                />
-              </div>
+              {/* Their floor, with them already at a desk: what the name is for. A team's office takes its place. */}
+              {!(team && !office) && (
+                <div className="relative mt-4 h-[6.5rem] overflow-hidden rounded-2xl sm:mt-5 sm:h-[8.5rem] border border-border" aria-hidden>
+                  <FloorScene
+                    view={[18, 4.2, 16, 8]}
+                    sitting={
+                      user ? [{ character: user.character, chair: [20, 8], name: user.displayName.split(" ")[0], status: "available" }] : []
+                    }
+                    priority
+                    className="absolute inset-0"
+                  />
+                </div>
+              )}
             </>
           )}
 

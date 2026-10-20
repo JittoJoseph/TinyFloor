@@ -1,5 +1,6 @@
 import type { RealtimeAdminApi } from "../../shared-protocol/src";
 import { endTrials } from "./billing";
+import { domainAccess, workDomain, type DomainAccess } from "./domains";
 import { HttpError } from "./http";
 
 export type OfficeRole = "admin" | "member";
@@ -22,6 +23,10 @@ export interface Office {
   /** Free, never trialled and never paid: the trial is still there to start (where plans are sold). */
   trialOpen: boolean;
   invitePolicy: InvitePolicy;
+  /** The owner's company email domain, when it has one: colleagues there can find the office. */
+  joinDomain: string | null;
+  /** How they get in: ask an admin, walk straight in, or not find it. */
+  domainJoin: DomainAccess;
 }
 
 /**
@@ -37,8 +42,10 @@ export async function requireOffice(
 ): Promise<Office> {
   const row = await env.DB.prepare(
     `SELECT o.id, o.name, o.plan, o.seats, o.owner_id, o.trial_ends_at, m.role,
-            (o.plan = 'free' AND o.trial_ends_at IS NULL AND NOT EXISTS (SELECT 1 FROM subscriptions s WHERE s.office_id = o.id)) AS trial_open, o.invite_policy
+            (o.plan = 'free' AND o.trial_ends_at IS NULL AND NOT EXISTS (SELECT 1 FROM subscriptions s WHERE s.office_id = o.id)) AS trial_open, o.invite_policy, o.domain_join,
+            CASE WHEN ow.email_verified = 1 THEN ow.email END AS owner_email
      FROM memberships m JOIN offices o ON o.id = m.office_id
+     LEFT JOIN users ow ON ow.id = o.owner_id
      WHERE m.office_id = ? AND m.user_id = ?`,
   )
     .bind(officeId, userId)
@@ -52,6 +59,8 @@ export async function requireOffice(
       role: OfficeRole;
       trial_open: number;
       invite_policy: string | null;
+      domain_join: string | null;
+      owner_email: string | null;
     }>();
   if (!row) throw new HttpError(404, "not_found", "No such office");
   if (roles && !roles.includes(row.role)) throw new HttpError(403, "not_allowed", "Only an admin can do that");
@@ -69,11 +78,13 @@ export async function requireOffice(
     trialEndsAt: row.trial_ends_at && row.trial_ends_at > Date.now() ? row.trial_ends_at : null,
     trialOpen: !!row.trial_open,
     invitePolicy: row.invite_policy === "admins" ? "admins" : "everyone",
+    joinDomain: workDomain(row.owner_email),
+    domainJoin: domainAccess(row.domain_join, workDomain(row.owner_email)),
   };
 }
 
 /** The office behind a floor, without requiring membership. */
-export async function findOffice(env: Env, officeId: string): Promise<Omit<Office, "role" | "trialEndsAt" | "trialOpen" | "invitePolicy"> | null> {
+export async function findOffice(env: Env, officeId: string): Promise<Omit<Office, "role" | "trialEndsAt" | "trialOpen" | "invitePolicy" | "joinDomain" | "domainJoin"> | null> {
   const row = await env.DB.prepare("SELECT id, name, plan, seats, owner_id FROM offices WHERE id = ?")
     .bind(officeId)
     .first<{ id: string; name: string; plan: string; seats: number; owner_id: string }>();

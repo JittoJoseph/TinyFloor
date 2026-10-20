@@ -4,6 +4,9 @@ import { forwardRef, type ComponentProps, type ForwardRefExoticComponent, type R
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   AccessibilityIcon,
+  AtIcon,
+  Attachment01Icon,
+  File02Icon,
   DeskIcon,
   Share08Icon,
   Alert02Icon,
@@ -168,7 +171,10 @@ export const Copy = icon(Copy01Icon, "Copy");
 export const CreditCard = icon(CreditCardIcon, "CreditCard");
 export const DoorClosed = icon(DoorClosedIcon, "DoorClosed");
 export const DoorOpen = icon(DoorOpenIcon, "DoorOpen");
+export const AtSign = icon(AtIcon, "AtSign");
 export const Download = icon(Download01Icon, "Download");
+export const FileText = icon(File02Icon, "FileText");
+export const Paperclip = icon(Attachment01Icon, "Paperclip");
 export const Eraser = icon(Eraser01Icon, "Eraser");
 export const ExternalLink = icon(LinkSquare02Icon, "ExternalLink");
 export const Eye = icon(ViewIcon, "Eye");

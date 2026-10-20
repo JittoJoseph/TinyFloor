@@ -6,7 +6,7 @@ import {
   dmChannelId,
   type ChannelSummary,
   type ChatClientMessage,
-  type ChatImage,
+  type ChatFile,
   type ChatMessage,
   type ChatServerMessage,
   isDm,
@@ -28,7 +28,7 @@ export interface ChatState {
   history: Record<string, ChatMessage[]>;
   /** Channels with older messages still on the server. */
   more: Record<string, boolean>;
-  /** Total unread, for the badge on the rail. */
+  /** For the badge on the rail: unread direct messages, and channel messages that mention you. */
   unread: number;
   /** The chat asked us to slow down; said under the composer for a moment. */
   slowDown: boolean;
@@ -80,6 +80,8 @@ class ChatSocket {
   private watching: string | null = null;
   /** Told about messages from others that land somewhere you are not looking. */
   private incoming = new Set<(message: ChatMessage) => void>();
+  /** Searches waiting for their answer, by what was asked. */
+  private searches = new Map<string, Array<(found: ChatMessage[]) => void>>();
 
   /** For the nudges over the floor: someone said something you have not seen. */
   onIncoming(listener: (message: ChatMessage) => void) {
@@ -128,17 +130,42 @@ class ChatSocket {
     const seen = this.state.history[channel]?.at(-1)?.seq;
     // A lobby direct message (numbered below zero) is never stored, so there is nothing to mark read.
     if (seen && seen > 0) this.send({ t: "chat_read", channel, seq: seen });
-    this.set({
-      ...this.state,
-      channels: this.state.channels.map((one) => (one.id === channel ? { ...one, unread: 0 } : one)),
-      unread: total(this.state.channels.map((one) => (one.id === channel ? { ...one, unread: 0 } : one))),
+    const channels = this.state.channels.map((one) => (one.id === channel ? { ...one, unread: 0, mentions: 0 } : one));
+    this.set({ ...this.state, channels, unread: total(channels) });
+  }
+
+  say(channel: string, body: string, files: ChatFile[] = [], mentions: string[] = []) {
+    this.send({ t: "chat_send", channel, body, ...(files.length ? { files } : {}), ...(mentions.length ? { mentions } : {}) });
+    // Where and what kind, never the words.
+    track("message_sent", { kind: isDm(channel) ? "dm" : "channel", picture: files.length > 0, mentions: mentions.length });
+  }
+
+  /** Words in the office's channels and your direct messages, newest first. */
+  search(q: string): Promise<ChatMessage[]> {
+    const words = q.trim();
+    if (words.length < 2) return Promise.resolve([]);
+    return new Promise((resolve) => {
+      const waiting = this.searches.get(words) ?? [];
+      waiting.push(resolve);
+      this.searches.set(words, waiting);
+      if (waiting.length === 1) this.send({ t: "chat_search", q: words });
+      // Nothing back (gone offline): an empty answer rather than a spinner forever.
+      setTimeout(() => this.answer(words, []), 8000);
     });
   }
 
-  say(channel: string, body: string, image?: ChatImage) {
-    this.send({ t: "chat_send", channel, body, ...(image ? { image } : {}) });
-    // Where and what kind, never the words.
-    track("message_sent", { kind: isDm(channel) ? "dm" : "channel", picture: !!image });
+  /** Loads a conversation back to one message, so a search result opens where it was said. */
+  reach(channel: string, seq: number) {
+    if (this.state.history[channel]?.some((one) => one.seq <= seq)) return;
+    const first = this.state.history[channel]?.[0]?.seq;
+    this.send({ t: "chat_history", channel, to: seq, ...(first ? { before: first } : {}) });
+  }
+
+  private answer(q: string, found: ChatMessage[]) {
+    const waiting = this.searches.get(q);
+    if (!waiting) return;
+    this.searches.delete(q);
+    waiting.forEach((resolve) => resolve(found));
   }
 
   older(channel: string) {
@@ -154,8 +181,8 @@ class ChatSocket {
    * Change or unsend something you said. A lobby direct message (below zero)
    * was never stored, so it says which conversation it is in.
    */
-  edit(seq: number, body: string, channel: string) {
-    this.send({ t: "chat_edit", seq, body, ...(seq < 0 ? { channel } : {}) });
+  edit(seq: number, body: string, channel: string, mentions: string[] = []) {
+    this.send({ t: "chat_edit", seq, body, ...(seq < 0 ? { channel } : {}), ...(mentions.length ? { mentions } : {}) });
   }
 
   remove(seq: number, channel: string) {
@@ -242,6 +269,8 @@ class ChatSocket {
         const { channel } = message.message;
         if (this.state.history[channel]?.some((one) => one.seq === message.message.seq)) break;
         const seen = this.watching === channel;
+        const mine = message.message.author === this.state.me;
+        const forMe = !mine && !seen && !!message.message.mentions?.includes(this.state.me);
         const history = [...(this.state.history[channel] ?? []), message.message];
         const channels = withGeneral(
           this.state.channels.some((one) => one.id === channel)
@@ -249,10 +278,11 @@ class ChatSocket {
                 one.id === channel
                   ? {
                       ...one,
-                      unread: seen || message.message.author === this.state.me ? 0 : one.unread + 1,
+                      unread: seen || mine ? 0 : one.unread + 1,
+                      mentions: seen || mine ? 0 : (one.mentions ?? 0) + (forMe ? 1 : 0),
                       lastAt: message.message.at,
                       lastBy: message.message.authorName,
-                      lastBody: message.message.image ? "📷" : message.message.body,
+                      lastBody: message.message.body || (message.message.files?.length ? "📎" : ""),
                     }
                   : one,
               )
@@ -263,9 +293,10 @@ class ChatSocket {
                   kind: channel.startsWith("dm:") ? "dm" : "channel",
                   name: channel.startsWith("dm:") ? message.message.authorName : channel,
                   unread: seen ? 0 : 1,
+                  mentions: forMe ? 1 : 0,
                   lastAt: message.message.at,
                   lastBy: message.message.authorName,
-                  lastBody: message.message.body,
+                  lastBody: message.message.body || (message.message.files?.length ? "📎" : ""),
                 } satisfies ChannelSummary,
               ],
         );
@@ -316,7 +347,7 @@ class ChatSocket {
             ? [one]
             : message.t === "chat_deleted"
               ? []
-              : [{ ...one, body: message.body, edited: message.edited }],
+              : [{ ...one, body: message.body, edited: message.edited, mentions: message.mentions }],
         );
         this.set({ ...this.state, history: { ...this.state.history, [message.channel]: history } });
         break;
@@ -340,6 +371,9 @@ class ChatSocket {
         this.set({ ...this.state, channels, unread: total(channels) });
         break;
       }
+      case "chat_found":
+        this.answer(message.q, message.messages);
+        break;
       case "help_changed":
         help.changed();
         break;
@@ -375,6 +409,12 @@ function withGeneral(channels: ChannelSummary[]): ChannelSummary[] {
   ];
 }
 
-const total = (channels: ChannelSummary[]) => channels.reduce((sum, one) => sum + one.unread, 0);
+/**
+ * What the rail counts, the way Slack does: every unread direct message, and in
+ * a channel only what mentions you. A channel that's merely busy is bold in the
+ * list, not a number that never goes away.
+ */
+const total = (channels: ChannelSummary[]) =>
+  channels.reduce((sum, one) => sum + (one.kind === "dm" ? one.unread : (one.mentions ?? 0)), 0);
 
 export const chat = new ChatSocket();

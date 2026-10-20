@@ -163,9 +163,7 @@
     "newChannel": "新建频道",
     "channelName": "频道名称",
     "say": "在 {channel} 中发消息",
-    "attach": "添加图片",
-    "attachmentsPaid": "图片是付费办公室的功能。",
-    "attachmentsSoon": "图片很快就来。",
+    "attach": "添加文件",
     "new": "新消息",
     "latest": "跳到最新",
     "today": "今天",
@@ -174,7 +172,7 @@
     "copy": "复制文字",
     "emoji": "表情",
     "newLine": "换行",
-    "jumpTo": "跳转到…",
+    "jumpTo": "搜索或跳转…",
     "noMatch": "没有匹配的结果。",
     "aloneHere": "目前只有你。把团队拉进来，添加的人都会出现在这里。",
     "invitePeople": "邀请成员",
@@ -197,7 +195,7 @@
     "walkOver": "走过去",
     "lobbyAlone": "这里还没有其他人。有人进来后，你可以在这里给对方发只有你们俩能看到的消息。",
     "dropHere": "松开即可分享到 {channel}",
-    "dropLobby": "图片可以在你自己的办公室里分享，这里不行。",
+    "dropLobby": "文件可以在你自己的办公室里分享，这里不行。",
     "lobbyGeneral": "问一个关于 TinyFloor 的问题，或试试聊天。消息会在这里保留一周。",
     "lobbyFeedback": "怎样让 TinyFloor 更适合你的团队？这里的每条消息我们都会看。",
     "lobbyDmIntro": "只在你们两人之间，且不会保存：任何一方离开演示办公室后就会消失。",
@@ -209,7 +207,17 @@
     "deleteConfirm": "撤回这条消息？",
     "save": "保存",
     "cancel": "取消",
-    "showAllPeople": "显示全部 {count} 人"
+    "showAllPeople": "显示全部 {count} 人",
+    "removeFile": "移除 {name}",
+    "openPicture": "打开 {name}",
+    "download": "下载",
+    "messages": "消息",
+    "searching": "搜索中…",
+    "filesMax": "一次最多 {count} 个文件。",
+    "fileTooBig": "文件最大 10 MB。",
+    "fileSlowDown": "一次发送的文件太多，请一分钟后再试。",
+    "fileFailed": "文件没有上传成功，请再试一次。",
+    "mentionSomeone": "提及某人"
   },
   "proximity": {
     "call": "通话",
@@ -384,7 +392,14 @@
       "whoInvitesEveryone": "办公室里的任何人都可以分享邀请链接。",
       "whoInvitesAdmins": "只有管理员可以查看和分享邀请链接。",
       "inviteEveryone": "所有人",
-      "inviteAdmins": "仅管理员"
+      "inviteAdmins": "仅管理员",
+      "domainJoin": "{domain} 的人",
+      "domainAsk": "可以申请加入",
+      "domainOpen": "可以直接加入",
+      "domainOff": "找不到这里",
+      "domainAskNote": "他们用工作邮箱找到这个办公室并申请，管理员同意后即可进入。",
+      "domainOpenNote": "用 @{domain} 邮箱登录的人都可以直接进来。",
+      "domainOffNote": "只有拿到邀请链接的人才能加入。"
     },
     "profile": {
       "changePassword": "修改密码",
@@ -472,6 +487,9 @@
     "people": {
       "title": "成员",
       "members": "成员",
+      "asking": "申请加入",
+      "letIn": "让他进来",
+      "decline": "拒绝",
       "invite": "邀请",
       "seats": "{seats} 个席位中的 {used} 个",
       "seatsFull": "席位已满。",
@@ -784,5 +802,20 @@
     "body": "这里是团队工作的地方。走到任何人身边就能交谈，开会时走进会议室即可。",
     "walkIn": "进入",
     "close": "关闭"
+  },
+  "team": {
+    "title": "你的团队已经在这里了",
+    "bodyAsk": "{domain} 的同事已经在 TinyFloor 上了。申请加入他们的办公室，管理员会让你进来。",
+    "bodyOpen": "{domain} 的同事已经在 TinyFloor 上了。加入他们，不必新建办公室。",
+    "atDomain": "{domain}",
+    "alreadyHas": "你在 {domain} 的团队已经有办公室了",
+    "members": "{count, plural, other {# 名成员}}",
+    "ask": "申请加入",
+    "join": "加入",
+    "waiting": "等待 {owner} 让你进来",
+    "cancel": "取消",
+    "full": "已满",
+    "makeOwn": "仍然新建办公室",
+    "failed": "没有成功，请再试一次。"
   }
 }

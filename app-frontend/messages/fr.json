@@ -163,9 +163,7 @@
     "newChannel": "Nouveau canal",
     "channelName": "Nom du canal",
     "say": "Écrire dans {channel}",
-    "attach": "Ajouter une image",
-    "attachmentsPaid": "Les images font partie d'un bureau payant.",
-    "attachmentsSoon": "Les images arrivent bientôt.",
+    "attach": "Joindre un fichier",
     "new": "Nouveau",
     "latest": "Aller au plus récent",
     "today": "Aujourd'hui",
@@ -174,7 +172,7 @@
     "copy": "Copier le texte",
     "emoji": "Emoji",
     "newLine": "nouvelle ligne",
-    "jumpTo": "Aller à…",
+    "jumpTo": "Rechercher ou aller à…",
     "noMatch": "Rien ne correspond.",
     "aloneHere": "Vous êtes seul pour l'instant. Faites venir votre équipe : chaque personne ajoutée apparaît ici.",
     "invitePeople": "Inviter des personnes",
@@ -197,7 +195,7 @@
     "walkOver": "Aller le voir",
     "lobbyAlone": "Personne d'autre ici pour l'instant. Dès que quelqu'un entre, vous pourrez lui écrire ici, rien qu'entre vous deux.",
     "dropHere": "Déposez pour partager dans {channel}",
-    "dropLobby": "Les images se partagent dans votre propre bureau, pas ici.",
+    "dropLobby": "Les fichiers se partagent dans votre propre bureau, pas ici.",
     "lobbyGeneral": "Posez une question sur TinyFloor ou essayez le chat. Les messages restent ici une semaine.",
     "lobbyFeedback": "Qu'est-ce qui rendrait TinyFloor meilleur pour votre équipe ? Nous lisons chaque message ici.",
     "lobbyDmIntro": "Rien qu'entre vous deux, et jamais enregistré : tout disparaît dès que l'un de vous quitte le bureau de démo.",
@@ -209,7 +207,17 @@
     "deleteConfirm": "Retirer ?",
     "save": "Enregistrer",
     "cancel": "Annuler",
-    "showAllPeople": "Afficher les {count}"
+    "showAllPeople": "Afficher les {count}",
+    "removeFile": "Retirer {name}",
+    "openPicture": "Ouvrir {name}",
+    "download": "Télécharger",
+    "messages": "Messages",
+    "searching": "Recherche…",
+    "filesMax": "Jusqu'à {count} fichiers à la fois.",
+    "fileTooBig": "Les fichiers peuvent faire jusqu'à 10 Mo.",
+    "fileSlowDown": "Trop de fichiers d'un coup. Réessayez dans une minute.",
+    "fileFailed": "Ce fichier n'a pas été envoyé. Réessayez.",
+    "mentionSomeone": "Mentionner quelqu'un"
   },
   "proximity": {
     "call": "Appeler",
@@ -384,7 +392,14 @@
       "whoInvitesEveryone": "Tout le monde dans le bureau peut partager le lien d'invitation.",
       "whoInvitesAdmins": "Seuls les admins peuvent voir et partager le lien d'invitation.",
       "inviteEveryone": "Tout le monde",
-      "inviteAdmins": "Seulement les admins"
+      "inviteAdmins": "Seulement les admins",
+      "domainJoin": "Les personnes de {domain}",
+      "domainAsk": "Peuvent demander",
+      "domainOpen": "Peuvent entrer directement",
+      "domainOff": "Ne le trouvent pas",
+      "domainAskNote": "Elles trouvent ce bureau grâce à leur adresse pro et demandent à entrer. Un admin les fait entrer.",
+      "domainOpenNote": "Toute personne connectée avec une adresse @{domain} peut entrer directement.",
+      "domainOffNote": "Seules les personnes qui ont le lien d'invitation peuvent rejoindre."
     },
     "profile": {
       "changePassword": "Changer le mot de passe",
@@ -472,6 +487,9 @@
     "people": {
       "title": "Personnes",
       "members": "Membres",
+      "asking": "Demandent à rejoindre",
+      "letIn": "Faire entrer",
+      "decline": "Refuser",
       "invite": "Inviter",
       "seats": "{used} places sur {seats}",
       "seatsFull": "Toutes les places sont prises.",
@@ -784,5 +802,20 @@
     "body": "C'est ici que l'équipe travaille. Approchez-vous de quelqu'un pour lui parler, et entrez dans une salle de réunion quand c'est l'heure.",
     "walkIn": "Entrer",
     "close": "Fermer"
+  },
+  "team": {
+    "title": "Votre équipe est déjà là",
+    "bodyAsk": "Des personnes de {domain} sont déjà sur TinyFloor. Demandez à rejoindre leur bureau, un admin vous fera entrer.",
+    "bodyOpen": "Des personnes de {domain} sont déjà sur TinyFloor. Rejoignez-les plutôt que de créer un nouveau bureau.",
+    "atDomain": "Chez {domain}",
+    "alreadyHas": "Votre équipe chez {domain} a déjà un bureau",
+    "members": "{count, plural, one {# membre} other {# membres}}",
+    "ask": "Demander",
+    "join": "Rejoindre",
+    "waiting": "En attente que {owner} vous fasse entrer",
+    "cancel": "Annuler",
+    "full": "Complet",
+    "makeOwn": "Créer plutôt un nouveau bureau",
+    "failed": "Ça n'a pas marché. Réessayez."
   }
 }

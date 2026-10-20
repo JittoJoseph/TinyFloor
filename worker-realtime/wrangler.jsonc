@@ -22,6 +22,8 @@
     // Rooms count their own people now.
     { "tag": "v4", "deleted_classes": ["Presence"] }
   ],
+  // Chat's files: an office's chat deletes a file when its message goes (tinyfloor-api writes them).
+  "r2_buckets": [{ "binding": "FILES", "bucket_name": "tinyfloor-files" }],
   // Only usage_daily is written from here; the schema belongs to tinyfloor-api.
   "d1_databases": [
     {
@@ -45,6 +47,7 @@
           { "name": "CHAT", "class_name": "Chat" }
         ]
       },
+      "r2_buckets": [{ "binding": "FILES", "bucket_name": "tinyfloor-files-preview" }],
       "d1_databases": [
         {
           "binding": "DB",

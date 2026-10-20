@@ -14,7 +14,7 @@
 // on each page (title, meta tags, links, structured data, text), so the deploy
 // can tell IndexNow about the pages whose words changed (scripts/indexnow.mjs).
 import { createHash } from "node:crypto";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rm, stat, writeFile } from "node:fs/promises";
 import { dirname, join } from "node:path";
 
 // Run from the frontend being built: `node ../web-shared/scripts/static-pages.mjs`,
@@ -74,6 +74,25 @@ const paths = Object.keys(pages).sort();
 const locales = [...new Set(paths.map((path) => path.split("/")[1]))];
 await writeFile(join(root, ".open-next/static-pages.json"), `${JSON.stringify({ host: site.hostname, locales, pages })}\n`);
 console.log(`static pages: ${paths.length} built pages served as files, for ${site.hostname}`);
+
+// OpenNext also keeps every built page as a cache entry (the HTML, payload and
+// segments again, in one file under a folder named for the build), so each
+// page went up twice on every deploy. The pages served as files never reach
+// that cache; only those still answered by Next (a built redirect or 404) keep
+// theirs. Should a request for one of these pages ever reach Next after all,
+// it renders it instead of reading it.
+const buildId = (await readFile(join(root, ".next/BUILD_ID"), "utf8")).trim();
+// Still in .open-next/cache here: the deploy copies it into the assets (populate-cache).
+const cache = join(root, ".open-next/cache", buildId);
+let dropped = 0;
+for (const route of paths) {
+  const entry = join(cache, `${route}.cache`);
+  if (!(await stat(entry).catch(() => null))) continue;
+  await rm(entry);
+  dropped++;
+}
+console.log(`static pages: ${dropped} of their ${paths.length} cache entries left out of the upload`);
+if (paths.length && !dropped) console.warn(`static pages: no cache entries found under ${cache}; has OpenNext moved them?`);
 
 await writeFile(
   join(root, ".open-next/assets/page-fingerprints.json"),

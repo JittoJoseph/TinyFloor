@@ -69,11 +69,15 @@ export function withStaticPages(next, manifest, { sharedPages = [], noindex = ()
     // A prefetch asks for one segment of the payload by name; any other data request gets all of it.
     const segment = request.headers.get("next-router-segment-prefetch");
     if (!segment) return { route, page, file: `${route}.rsc`, data };
-    return page.segments.includes(segment) ? { route, page, file: `${route}.segments${segment}.segment.rsc`, data, segment } : null;
+    // One it doesn't have (asked for by a page from an earlier build, say) gets what Next itself
+    // answers: an empty 404, after which the router stops asking. Passed on, OpenNext would
+    // answer with the whole page, which the router rejects and asks for again, many times a second.
+    if (!page.segments.includes(segment)) return { route, page, data, segment, missing: true };
+    return { route, page, file: `${route}.segments${segment}.segment.rsc`, data, segment };
   }
 
   /** The file, with the headers Next would send; null if it isn't there after all. */
-  async function serve({ route, page, file, data, segment }, request, env) {
+  async function serve({ route, page, file, data, segment, missing }, request, env) {
     const headers = new Headers({
       ...page.headers,
       "cache-control": "public, max-age=0, must-revalidate",
@@ -84,7 +88,7 @@ export function withStaticPages(next, manifest, { sharedPages = [], noindex = ()
     if (data) {
       headers.set("content-type", "text/x-component");
       // As OpenNext marks a segment it serves from its cache.
-      if (segment) headers.set("x-nextjs-postponed", "2");
+      if (segment && !missing) headers.set("x-nextjs-postponed", "2");
     } else {
       headers.set("content-type", "text/html; charset=utf-8");
       headers.set("etag", page.etag);
@@ -94,6 +98,7 @@ export function withStaticPages(next, manifest, { sharedPages = [], noindex = ()
         return new Response(null, { status: 304, headers });
       }
     }
+    if (missing) return new Response(null, { status: 404, headers });
     const found = await env.ASSETS.fetch(new URL(`/cdn-cgi/_pages${file}`, request.url), { method: request.method });
     if (found.ok) return new Response(found.body, { status: 200, headers });
     await found.body?.cancel();

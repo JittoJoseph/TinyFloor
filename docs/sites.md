@@ -72,6 +72,21 @@ Measured from Workers Builds' own records, the last ten builds of each:
   all of them, so all 864 pages count as changed on every deploy. Building
   the 946 pages took 48 seconds on one worker; Workers Builds has two cores
   and Next uses one fewer than there are, so the config asks for two (28 s).
+- **What goes up per deploy, and what was cut** (20 October). Wrangler
+  uploads three at a time, whatever the account, so the number of changed
+  files is what counts. Each built page had seven prefetch segments, its
+  HTML, its payload, and OpenNext's cache entry holding all of that again;
+  the build id is in every one. Two changes: Next's prefetch inlining is back
+  on (four segments a page instead of seven; it was off because OpenNext's
+  cache answered prefetches with the whole page, which the router rejects and
+  asks for again), and the cache entries of pages the worker serves as files
+  are left out of the upload, since those pages never reach that cache. A
+  segment the worker doesn't have now gets Next's own answer, an empty 404,
+  instead of going to Next. The site went from 5,500 changed files in
+  70-130 s to 3,600 in 52 s, and its whole build from ~5 minutes to under 3;
+  the app from 1,900 files in 15-28 s to 1,400 in 9 s, and ~3 minutes to
+  under 2. Turbopack's cache, restored by Workers Builds, made a repeat
+  compile take under a second (17 s cold).
 - **The app takes ~3 minutes**: install ~20 s, compile ~21 s warm (50 s
   when the config changes and webpack's cache is cold), type check ~10 s,
   build traces and OpenNext's bundling ~35 s, upload ~15 s.

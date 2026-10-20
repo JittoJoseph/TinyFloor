@@ -1,0 +1,216 @@
+import type { IcebreakersContent } from "@/lib/tools/icebreakers";
+
+/** Teambuilding-Fragen für die Arbeit, auf Deutsch, aus der englischen Liste geschrieben. */
+const de: IcebreakersContent = {
+  groups: [
+    {
+      key: "fun",
+      label: "Lustig",
+      title: "Lustige Teambuilding-Fragen",
+      when: "Verspielte Fragen über das Team selbst. Gut zum Einstieg in einen Teamtermin, einen lockeren Call oder einen ruhigen Freitag.",
+      questions: [
+        "Wenn unser Team eine Band wäre, wie würden wir heißen?",
+        "Wenn das Team ein Maskottchen hätte, welches wäre es?",
+        "Welche fiktive Figur würde perfekt in unser Team passen?",
+        "Wenn unser Team einen Titelsong hätte, welcher wäre es?",
+        "Wenn wir für einen Tag die Jobs tauschen könnten, wessen Job würdest du ausprobieren?",
+        "Wie würde die Reality-Show über unser Team heißen?",
+        "Wenn wir zusammen ein Restaurant eröffnen würden, was gäbe es dort?",
+        "Welche Superkraft würde dir die Arbeit leichter machen?",
+        "Auf einem Team-Roadtrip: Wärst du am Steuer, beim Navigieren, für die Musik zuständig oder für die Snacks?",
+        "Wenn du ohne Budgetgrenze einen Benefit bei der Arbeit einführen könntest, welcher wäre es?",
+        "In welchem Job wärst du furchtbar, und warum?",
+        "Wenn deine Arbeitswoche ein Filmgenre wäre, welches wäre es?",
+        "Wie würde der Titel deiner Autobiografie gerade lauten?",
+        "Wenn wir einen eigenen Team-Feiertag hätten, was würden wir feiern?",
+        "Was ist dein nutzlosestes Talent?",
+        "Wenn du ein beliebiges Tier als Kollegen haben könntest, welches würdest du nehmen?",
+        "Welche drei Dinge würdest du in ein Büro auf einer einsamen Insel mitnehmen?",
+        "Wenn es nach dir ginge, wie würden wir den Besprechungsraum nennen?",
+        "Wenn du über Nacht eine Fähigkeit perfekt beherrschen könntest, welche wäre es?",
+        "Was stünde auf der Karte beim perfekten Team-Mittagessen?",
+      ],
+    },
+    {
+      key: "work",
+      label: "Wie du arbeitest",
+      title: "Teambuilding-Fragen dazu, wie du arbeitest",
+      when: "Die Gebrauchsanweisung jeder Person: wie sie Feedback, Hilfe und Fokuszeit mag. Teams, die das früh fragen, sparen sich viel Rätselraten.",
+      questions: [
+        "Wie bekommst du am liebsten Feedback: direkt, schriftlich oder unter vier Augen?",
+        "Wie bittet man dich am besten um Hilfe?",
+        "Zu welcher Tageszeit arbeitest du am besten?",
+        "Wie sieht für dich ein gutes Meeting aus?",
+        "Wenn du feststeckst: Sprichst du es lieber durch oder knobelst du erst allein?",
+        "Was wird an deiner Arbeitsweise oft falsch verstanden?",
+        "Woran merkt das Team, dass du gerade Ruhe zum Konzentrieren brauchst?",
+        "Welche Art von Anerkennung bedeutet dir am meisten?",
+        "Magst du genaue Anweisungen, oder lieber das Ziel und die Freiheit, wie du hinkommst?",
+        "Was raubt dir bei der Arbeit Energie?",
+        "Was hilft dir, deine beste Arbeit zu machen?",
+        "Wie schnell erwartest du Antworten auf Nachrichten, und wie schnell antwortest du selbst?",
+        "Was nervt dich in der Teamkommunikation?",
+        "Welche Stärke von dir nutzt das Team vielleicht zu wenig?",
+        "Wie feierst du gern, wenn etwas gut gelaufen ist?",
+        "Was sollte eine neue Kollegin oder ein neuer Kollege über die Zusammenarbeit mit dir wissen?",
+        "Wenn du anderer Meinung bist: Sagst du es lieber im Meeting oder danach?",
+        "Wie startest du am liebsten in ein neues Projekt?",
+        "Woran merkst du, dass man dir bei der Arbeit vertraut?",
+        "Lieber ein kurzer Call oder eine schriftliche Nachricht bei einer kniffligen Frage?",
+      ],
+    },
+    {
+      key: "team",
+      label: "Das Team",
+      title: "Teambuilding-Fragen über das Team",
+      when: "Darüber, wie das Team zusammenarbeitet: was gut läuft, was im Weg steht und was ihr als Nächstes ausprobiert. Gut für einen Teamtermin oder einen Quartals-Check-in.",
+      questions: [
+        "Was macht dieses Team besser als jedes andere Team, in dem du warst?",
+        "Was ist eine ungeschriebene Regel in diesem Team?",
+        "Was sollte eine neue Person in ihrer ersten Woche hier wissen?",
+        "An welchen Teammoment denkst du heute noch?",
+        "Wofür verwenden wir zu viel Zeit?",
+        "Was könnten wir als Team nächsten Monat ausprobieren?",
+        "Wann hattest du zuletzt das Gefühl, dass das Team richtig an einem Strang gezogen hat?",
+        "Welche Gewohnheit einer Kollegin oder eines Kollegen würdest du gern übernehmen?",
+        "Was würde dir die Zusammenarbeit erleichtern?",
+        "Welches unserer Meetings könnte eine Nachricht sein, und welches braucht mehr Zeit?",
+        "Was haben wir aufgehört zu machen und sollten es wieder einführen?",
+        "Wie feiern wir Erfolge, und wie sollten wir sie feiern?",
+        "Welche Tradition sollten wir als Team einführen?",
+        "Wenn du unser Team in drei Worten beschreiben müsstest, welche wären es?",
+        "Was verstehen Leute außerhalb des Teams an unserer Arbeit falsch?",
+        "Welche Fähigkeit hat das Team, über die wir nie sprechen?",
+        "Was würdest du daran ändern, wie wir Updates teilen?",
+        "Was war die beste Entscheidung dieses Teams im letzten Jahr?",
+        "Wozu sollten wir öfter Nein sagen?",
+        "Wie sieht eine richtig gute Woche für das ganze Team aus?",
+      ],
+    },
+    {
+      key: "deeper",
+      label: "Tiefer",
+      title: "Tiefere Teambuilding-Fragen",
+      when: "Für einen Teamtag, einen langen Teamtermin oder ein Team, das sich schon kennt. Jede braucht ein paar Minuten, und die lohnen sich.",
+      questions: [
+        "Auf welchen Moment bei der Arbeit warst du stolz, und warum?",
+        "Warum hast du dich für die Arbeit entschieden, die du machst?",
+        "Welchen Wert versuchst du in jeden Job mitzubringen?",
+        "Wer hat deine Arbeitsweise am meisten geprägt?",
+        "Was ist das Schwierigste, das du bei der Arbeit gelernt hast?",
+        "Wie sieht Erfolg für dich in einem Jahr aus?",
+        "Welches Risiko bei der Arbeit hat sich für dich gelohnt?",
+        "Wann fühlst du dich bei der Arbeit am meisten wie du selbst?",
+        "Welchen Teil deiner Arbeit würdest du auch machen, wenn es niemand bemerkt?",
+        "Was musstest du dir wieder abgewöhnen?",
+        "Was ist das Netteste, das eine Kollegin oder ein Kollege für dich getan hat?",
+        "Was hat deine beste Führungskraft anders gemacht als andere?",
+        "Wofür möchtest du in diesem Team bekannt sein?",
+        "Wobei hättest du gern mehr Unterstützung?",
+        "Was war das beste Team, in dem du je warst, und warum hat es funktioniert?",
+        "Was hättest du gern zu Beginn deiner Laufbahn gewusst?",
+        "Was gibt dir an einem schweren Tag Energie?",
+        "Was soll das Team über dich verstehen?",
+        "Worauf bist du gerade am neugierigsten?",
+        "Welchen Rat würdest du allen hier mitgeben?",
+      ],
+    },
+  ],
+  meta: {
+    title: "Teambuilding Fragen für die Arbeit: 80 für echte Gespräche",
+    description:
+      "80 Teambuilding-Fragen für die Arbeit: lustige, Fragen dazu, wie jede Person arbeitet, über das Team selbst und tiefere für den Teamtag. Zieh eine zufällige.",
+  },
+  eyebrow: "Kostenloses Tool",
+  updated: "Aktualisiert am",
+  title: "Teambuilding-Fragen <em>für die Arbeit.</em>",
+  intro:
+    "Ein Icebreaker wärmt ein Meeting auf; eine gute Teambuilding-Frage verrät dir etwas darüber, wie dein Team arbeitet. Hier sind 80: lustige über das Team, Fragen dazu, wie jede Person gern arbeitet, Fragen über das Team selbst und tiefere für einen Teamtag. Zieh unten eine zufällige oder stöbere in der Liste.",
+  picker: { all: "Alle", another: "Andere Frage", copy: "Kopieren", copied: "Kopiert", of: "von" },
+  howTo: [
+    {
+      title: "So nutzt du Teambuilding-Fragen",
+      items: [
+        {
+          title: "Eine Frage, alle antworten",
+          detail: "Fünf bis zehn Minuten",
+          body: "Stell zu Beginn eines Teammeetings eine Frage und geh in fester Reihenfolge herum. Antworte zuerst selbst, damit alle sehen, wie lang und wie persönlich eine Antwort sein kann.",
+        },
+        {
+          title: "Die passende Gruppe wählen",
+          detail: "Erst lustig, später tiefer",
+          body: "Lustige Fragen passen zu jedem Team. Die tieferen hebst du dir für ein Team auf, das sich schon kennt, oder für einen Teamtag mit Zeit, richtig zuzuhören.",
+        },
+        {
+          title: "Die Antworten aufschreiben",
+          detail: "Bei den Fragen zur Arbeitsweise",
+          body: "Antworten auf „Wie bekommst du am liebsten Feedback?“ lohnt es sich aufzuheben. Sammle sie in einem gemeinsamen Dokument, ein Abschnitt pro Person, und verweise neue Leute darauf.",
+        },
+        {
+          title: "Mit den Teamfragen etwas anfangen",
+          detail: "Sonst wirken sie nicht mehr",
+          body: "Wenn du fragst „Wozu sollten wir öfter Nein sagen?“, nimm eine Antwort und setz sie um. Leute antworten ehrlich, wenn sie sehen, dass die Antworten etwas verändern.",
+        },
+      ],
+    },
+  ],
+  rules: [
+    {
+      title: "Was eine gute Teambuilding-Frage ausmacht",
+      items: [
+        {
+          title: "Alle können antworten",
+          body: "Eine gute Frage hängt nicht von Alter, Position, Wohnort oder Wochenendplänen ab. Alle im Team haben eine Antwort, schon in ihrer ersten Woche.",
+        },
+        {
+          title: "Nichts Privates",
+          body: "Lass Familie, Beziehungen, Gesundheit, Geld, Politik und Religion weg. Auch die tieferen Fragen hier drehen sich um die Arbeit und darum, wie Leute gern arbeiten.",
+        },
+        {
+          title: "Passen ist okay",
+          body: "Sag zu Beginn, dass alle passen oder kurz antworten dürfen. Eine Frage, zu der sich jemand gezwungen fühlt, ist kein Teambuilding mehr.",
+        },
+        {
+          title: "Bringt etwas Nützliches ans Licht",
+          body: "Die besten machen Spaß und hinterher weiß das Team etwas, das es vorher nicht wusste: wann sich jemand am besten konzentriert, was jemanden auslaugt, worauf jemand stolz ist.",
+        },
+      ],
+    },
+    {
+      title: "Wie wir sie ausgewählt haben",
+      body: [
+        "Wir haben diese Fragen für kleine Teams bei der Arbeit geschrieben, nach den Regeln oben, und sie danach sortiert, wie gut sich ein Team schon kennt und wie viel Zeit da ist. Für ein Ein-Minuten-Warm-up vor dem Standup sind unsere Icebreaker-Fragen schneller; diese dauern etwas länger und verraten mehr darüber, wie das Team arbeitet. Wir haben die Liste fürs Deutsche angepasst und ergänzen sie, wenn wir gute neue finden.",
+      ],
+    },
+  ],
+  fit: {
+    title: "Bringt das Team auf der Fläche zusammen",
+    body: "TinyFloor ist ein virtuelles Büro für kleine Teams: Du siehst, wer am Schreibtisch sitzt, gehst hin, um zu reden, und ihr trefft euch im Besprechungsraum zum Teamtermin, Fragen inklusive. Es läuft in einem Browser-Tab, kostenlos für bis zu 3 Personen und 29 $ im Monat für das ganze Team.",
+    cta: "Das Demo-Büro ausprobieren",
+  },
+  faqTitle: "Häufige <em>Fragen.</em>",
+  faq: [
+    {
+      q: "Was sind gute Teambuilding-Fragen für die Arbeit?",
+      a: "Fragen, die alle beantworten können und die etwas darüber verraten, wie das Team arbeitet, etwa „Wie bittet man dich am besten um Hilfe?“ oder „Was macht dieses Team besser als jedes andere Team, in dem du warst?“",
+    },
+    {
+      q: "Was sind lustige Teambuilding-Fragen?",
+      a: "Verspielte Fragen über das Team selbst: „Wenn unser Team eine Band wäre, wie würden wir heißen?“, „Wie würde die Reality-Show über unser Team heißen?“ oder „Wenn wir zusammen ein Restaurant eröffnen würden, was gäbe es dort?“",
+    },
+    {
+      q: "Was ist der Unterschied zwischen Icebreakern und Teambuilding-Fragen?",
+      a: "Ein Icebreaker ist ein schnelles Aufwärmen, eine Minute vor einem Meeting. Eine Teambuilding-Frage dauert ein paar Minuten und soll dem Team etwas übereinander oder über die Zusammenarbeit zeigen.",
+    },
+    {
+      q: "Wie nutzt man Teambuilding-Fragen mit einem Remote-Team?",
+      a: "Im Call eine Frage stellen und in fester Reihenfolge herumgehen, damit niemand jemandem ins Wort fällt. Bei einem Team über Zeitzonen hinweg die Frage im Team-Chat posten und alle antworten lassen, wenn sie online sind.",
+    },
+    {
+      q: "Welche Teambuilding-Fragen sollte man vermeiden?",
+      a: "Alles über Familie, Beziehungen, Gesundheit, Geld, Politik oder Religion und Fragen, die eine Person bloßstellen, etwa wenn jemand eine Kollegin oder einen Kollegen bewerten soll.",
+    },
+  ],
+};
+
+export default de;

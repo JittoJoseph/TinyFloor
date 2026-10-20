@@ -1,0 +1,216 @@
+import type { IcebreakersContent } from "@/lib/tools/icebreakers";
+
+/** Domande di team building per il lavoro, in italiano, scritte a partire dalla lista inglese. */
+const it: IcebreakersContent = {
+  groups: [
+    {
+      key: "fun",
+      label: "Divertenti",
+      title: "Domande di team building divertenti",
+      when: "Domande giocose sul team stesso. Ottime per aprire una sessione di team, una call informale o un venerdì tranquillo.",
+      questions: [
+        "Se il nostro team fosse una band, come ci chiameremmo?",
+        "Se il team avesse una mascotte, quale sarebbe?",
+        "Quale personaggio di fantasia starebbe benissimo nel nostro team?",
+        "Se il nostro team avesse una sigla, quale sarebbe?",
+        "Se potessimo scambiarci i ruoli per un giorno, il lavoro di chi vorresti provare?",
+        "Come si chiamerebbe il reality show sul nostro team?",
+        "Se aprissimo un ristorante insieme, cosa serviremmo?",
+        "Quale superpotere ti renderebbe il lavoro più facile?",
+        "In un viaggio on the road con il team, saresti alla guida, al navigatore, alla musica o agli snack?",
+        "Se potessi aggiungere un benefit al lavoro, senza limiti di budget, quale sarebbe?",
+        "In quale lavoro saresti un disastro, e perché?",
+        "Se la tua settimana di lavoro fosse un genere di film, quale sarebbe?",
+        "Quale sarebbe il titolo della tua autobiografia in questo momento?",
+        "Se avessimo una festa tutta del team, cosa festeggeremmo?",
+        "Qual è il tuo talento più inutile?",
+        "Se potessi avere un animale qualsiasi come collega, quale sceglieresti?",
+        "Quali tre cose porteresti in un ufficio su un'isola deserta?",
+        "Se dipendesse da te, come chiameremmo la sala riunioni?",
+        "Se potessi padroneggiare un'abilità dalla sera alla mattina, quale sarebbe?",
+        "Cosa ci sarebbe nel menu del pranzo di team perfetto?",
+      ],
+    },
+    {
+      key: "work",
+      label: "Come lavori",
+      title: "Domande di team building su come lavori",
+      when: "Il manuale d'uso di ognuno: come preferisce ricevere feedback, aiuto e tempo per concentrarsi. I team che le fanno presto si risparmiano un sacco di supposizioni.",
+      questions: [
+        "Come preferisci ricevere feedback: sul momento, per iscritto o a tu per tu?",
+        "Qual è il modo migliore per chiederti aiuto?",
+        "In quale momento della giornata lavori meglio?",
+        "Com'è per te una buona riunione?",
+        "Quando sei bloccato, preferisci parlarne o prima provarci da solo?",
+        "Cosa capiscono spesso male gli altri del tuo modo di lavorare?",
+        "Come fanno i colleghi a capire che hai bisogno di silenzio per concentrarti?",
+        "Che tipo di riconoscimento conta di più per te?",
+        "Ti piacciono le istruzioni dettagliate, o l'obiettivo e la libertà di arrivarci?",
+        "Cosa ti toglie energia al lavoro?",
+        "Qual è una cosa che ti aiuta a lavorare al meglio?",
+        "Quanto in fretta ti aspetti una risposta ai messaggi, e quanto in fretta rispondi tu?",
+        "Cosa ti dà fastidio nella comunicazione del team?",
+        "Quale tuo punto di forza il team forse non sfrutta abbastanza?",
+        "Come ti piace festeggiare quando qualcosa va bene?",
+        "Cosa vorresti che un nuovo collega sapesse su come lavorare con te?",
+        "Quando non sei d'accordo, preferisci dirlo in riunione o dopo?",
+        "Come ti piace iniziare un nuovo progetto?",
+        "Cosa ti fa sentire che hanno fiducia in te al lavoro?",
+        "Per una domanda complicata, preferisci una call veloce o un messaggio scritto?",
+      ],
+    },
+    {
+      key: "team",
+      label: "Il team",
+      title: "Domande di team building sul team",
+      when: "Su come il team lavora insieme: cosa va bene, cosa ostacola e cosa provare dopo. Ottime per una sessione di team o un check-in trimestrale.",
+      questions: [
+        "Cosa fa questo team meglio di qualsiasi altro team in cui sei stato?",
+        "Qual è una regola non scritta di questo team?",
+        "Cosa dovrebbe sapere una persona nuova nella sua prima settimana qui?",
+        "A quale momento del team ripensi ancora?",
+        "Su cosa passiamo troppo tempo?",
+        "Cosa potremmo provare come team il mese prossimo?",
+        "Quando hai sentito l'ultima volta che il team ha davvero fatto squadra?",
+        "Quale abitudine di un collega vorresti prendere in prestito?",
+        "Cosa renderebbe più facile lavorare insieme per te?",
+        "Quale delle nostre riunioni potrebbe essere un messaggio, e quale ha bisogno di più tempo?",
+        "Cosa abbiamo smesso di fare e dovremmo riprendere?",
+        "Come festeggiamo i successi, e come dovremmo farlo?",
+        "Quale tradizione dovremmo iniziare come team?",
+        "Se dovessi descrivere il nostro team in tre parole, quali sarebbero?",
+        "Cosa capisce male chi è fuori dal team di quello che facciamo?",
+        "Quale abilità ha il team di cui non parliamo mai?",
+        "Cosa cambieresti nel modo in cui condividiamo gli aggiornamenti?",
+        "Qual è stata la decisione migliore di questo team nell'ultimo anno?",
+        "A cosa dovremmo dire di no più spesso?",
+        "Com'è una settimana fantastica per tutto il team?",
+      ],
+    },
+    {
+      key: "deeper",
+      label: "Più profonde",
+      title: "Domande di team building più profonde",
+      when: "Per un offsite, una lunga sessione di team o un team che si conosce già. Ognuna richiede qualche minuto, e ne vale la pena.",
+      questions: [
+        "Di quale momento al lavoro sei stato orgoglioso, e perché?",
+        "Cosa ti ha portato a scegliere il lavoro che fai?",
+        "Quale valore cerchi di portare in ogni lavoro?",
+        "Chi ha influenzato di più il tuo modo di lavorare?",
+        "Qual è la cosa più difficile che hai imparato al lavoro?",
+        "Come sarebbe il successo per te tra un anno?",
+        "Quale rischio che hai preso al lavoro ha dato i suoi frutti?",
+        "Quando ti senti più te stesso al lavoro?",
+        "Quale parte del tuo lavoro continueresti a fare anche se nessuno se ne accorgesse?",
+        "Cosa hai dovuto disimparare?",
+        "Qual è la cosa più gentile che un collega ha fatto per te?",
+        "Cosa faceva il tuo miglior responsabile che gli altri non facevano?",
+        "Per cosa vorresti essere conosciuto in questo team?",
+        "In cosa vorresti avere più aiuto?",
+        "Qual è il miglior team di cui hai fatto parte, e cosa lo faceva funzionare?",
+        "Cosa avresti voluto sapere all'inizio della tua carriera?",
+        "Cosa ti dà energia in una giornata difficile?",
+        "Cosa vorresti che il team capisse di te?",
+        "Cosa ti incuriosisce di più in questo momento?",
+        "Quale consiglio daresti a tutti qui?",
+      ],
+    },
+  ],
+  meta: {
+    title: "Domande team building per il lavoro: 80 per far parlare il team",
+    description:
+      "80 domande di team building per il lavoro: divertenti, su come lavora ognuno, sul team stesso e più profonde per un offsite. Estraine una a caso.",
+  },
+  eyebrow: "Strumento gratuito",
+  updated: "Aggiornato il",
+  title: "Domande di team building <em>per il lavoro.</em>",
+  intro:
+    "Un rompighiaccio scalda una riunione; una buona domanda di team building ti dice qualcosa su come lavora il tuo team. Eccone 80: divertenti sul team, domande su come piace lavorare a ognuno, domande sul team stesso e più profonde per un offsite. Estraine una a caso qui sotto o sfoglia la lista.",
+  picker: { all: "Tutte", another: "Un'altra domanda", copy: "Copia", copied: "Copiata", of: "di" },
+  howTo: [
+    {
+      title: "Come usare le domande di team building",
+      items: [
+        {
+          title: "Una domanda, rispondono tutti",
+          detail: "Da cinque a dieci minuti",
+          body: "Fai una domanda all'inizio di una riunione di team e fai il giro in un ordine fisso. Rispondi prima tu, così tutti vedono quanto può essere lunga e personale una risposta.",
+        },
+        {
+          title: "Scegli il gruppo adatto al momento",
+          detail: "Prima divertenti, poi più profonde",
+          body: "Le domande divertenti vanno bene per qualsiasi team. Tieni quelle più profonde per un team che si conosce già, o per un offsite con il tempo di ascoltare davvero.",
+        },
+        {
+          title: "Annota le risposte",
+          detail: "Per le domande su come lavori",
+          body: "Le risposte a \"Come preferisci ricevere feedback?\" vale la pena tenerle. Mettile in un documento condiviso, una sezione per persona, e indicalo ai nuovi colleghi.",
+        },
+        {
+          title: "Fai qualcosa con le domande sul team",
+          detail: "O smettono di funzionare",
+          body: "Se chiedi \"A cosa dovremmo dire di no più spesso?\", scegli una risposta e mettila in pratica. Le persone rispondono con sincerità quando vedono che le risposte cambiano qualcosa.",
+        },
+      ],
+    },
+  ],
+  rules: [
+    {
+      title: "Cosa rende buona una domanda di team building",
+      items: [
+        {
+          title: "Tutti possono rispondere",
+          body: "Una buona domanda non dipende da età, anzianità, dove si vive o cosa si fa nel weekend. Chiunque nel team, dalla prima settimana, ha una risposta.",
+        },
+        {
+          title: "Niente di privato",
+          body: "Lascia fuori famiglia, relazioni, salute, soldi, politica e religione. Anche le domande più profonde qui parlano del lavoro e di come piace lavorare.",
+        },
+        {
+          title: "Si può passare",
+          body: "Di' all'inizio che chiunque può passare o rispondere in breve. Una domanda a cui ci si sente obbligati a rispondere smette di essere team building.",
+        },
+        {
+          title: "Dice qualcosa di utile",
+          body: "Le migliori sono divertenti da rispondere e lasciano il team sapendo qualcosa che prima non sapeva: quando qualcuno si concentra meglio, cosa lo stanca, di cosa va fiero.",
+        },
+      ],
+    },
+    {
+      title: "Come le abbiamo scelte",
+      body: [
+        "Le abbiamo scritte per piccoli team al lavoro, con le regole qui sopra, e raggruppate in base a quanto il team si conosce e a quanto tempo c'è. Per un riscaldamento di un minuto prima dello standup, le nostre domande rompighiaccio sono più veloci; queste richiedono un po' più di tempo e dicono di più su come lavora il team. Aggiungiamo domande alla lista quando ne troviamo di buone.",
+      ],
+    },
+  ],
+  fit: {
+    title: "Riunite il team sul piano",
+    body: "TinyFloor è un ufficio virtuale per piccoli team: vedi chi è alla scrivania, ti avvicini per parlare e vi ritrovate in sala riunioni per la sessione di team, domande comprese. Funziona in una scheda del browser, gratis fino a 3 persone e 29 $ al mese per tutto il team.",
+    cta: "Prova l'ufficio demo",
+  },
+  faqTitle: "Domande <em>frequenti.</em>",
+  faq: [
+    {
+      q: "Quali sono buone domande di team building per il lavoro?",
+      a: "Quelle a cui tutti possono rispondere e che dicono qualcosa su come lavora il team, come \"Qual è il modo migliore per chiederti aiuto?\" o \"Cosa fa questo team meglio di qualsiasi altro team in cui sei stato?\"",
+    },
+    {
+      q: "Quali sono domande di team building divertenti?",
+      a: "Domande giocose sul team stesso: \"Se il nostro team fosse una band, come ci chiameremmo?\", \"Come si chiamerebbe il reality show sul nostro team?\" o \"Se aprissimo un ristorante insieme, cosa serviremmo?\"",
+    },
+    {
+      q: "Qual è la differenza tra rompighiaccio e domande di team building?",
+      a: "Un rompighiaccio è un riscaldamento veloce, un minuto prima di una riunione. Una domanda di team building richiede qualche minuto e serve a far scoprire al team qualcosa sui suoi membri o su come lavora insieme.",
+    },
+    {
+      q: "Come si usano le domande di team building con un team da remoto?",
+      a: "In call, fai una domanda e fai il giro in un ordine fisso, così nessuno si parla sopra. Per un team su più fusi orari, pubblica la domanda nella chat del team e lascia che ognuno risponda quando è online.",
+    },
+    {
+      q: "Quali domande di team building evitare?",
+      a: "Tutto ciò che riguarda famiglia, relazioni, salute, soldi, politica o religione, e le domande che mettono qualcuno in difficoltà, come chiedere di dare un voto a un collega.",
+    },
+  ],
+};
+
+export default it;

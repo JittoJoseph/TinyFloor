@@ -1,0 +1,216 @@
+import type { IcebreakersContent } from "@/lib/tools/icebreakers";
+
+/** Teambuildingfrågor för jobbet, på svenska, skrivna utifrån den engelska listan. */
+const sv: IcebreakersContent = {
+  groups: [
+    {
+      key: "fun",
+      label: "Roliga",
+      title: "Roliga teambuildingfrågor",
+      when: "Lekfulla frågor om själva teamet. Bra för att inleda en teamträff, ett avslappnat samtal eller en lugn fredag.",
+      questions: [
+        "Om vårt team var ett band, vad skulle vi heta?",
+        "Om teamet hade en maskot, vad skulle det vara?",
+        "Vilken fiktiv figur skulle passa perfekt i vårt team?",
+        "Om vårt team hade en signaturlåt, vilken skulle det vara?",
+        "Om vi kunde byta jobb för en dag, vems jobb skulle du vilja testa?",
+        "Vad skulle dokusåpan om vårt team heta?",
+        "Om vi öppnade en restaurang tillsammans, vad skulle vi servera?",
+        "Vilken superkraft skulle göra ditt jobb enklare?",
+        "På en roadtrip med teamet, skulle du vara föraren, kartläsaren, dj:n eller den med snacksen?",
+        "Om du fick lägga till en förmån på jobbet, utan budgetgräns, vad skulle det vara?",
+        "Vilket jobb skulle du vara urdålig på, och varför?",
+        "Om din arbetsvecka var en filmgenre, vilken skulle det vara?",
+        "Vad skulle din självbiografi heta just nu?",
+        "Om vi hade en egen helgdag för teamet, vad skulle vi fira?",
+        "Vilken är din mest onödiga talang?",
+        "Om du kunde ha vilket djur som helst som kollega, vilket skulle du välja?",
+        "Vilka tre saker skulle du ta med till ett kontor på en öde ö?",
+        "Om det var upp till dig, vad skulle vi döpa mötesrummet till?",
+        "Om du kunde bemästra en färdighet över en natt, vilken skulle det vara?",
+        "Vad skulle stå på menyn på den perfekta teamlunchen?",
+      ],
+    },
+    {
+      key: "work",
+      label: "Hur du jobbar",
+      title: "Teambuildingfrågor om hur du jobbar",
+      when: "Varje persons bruksanvisning: hur de vill ha feedback, hjälp och fokustid. Team som frågar det här tidigt slipper mycket gissande.",
+      questions: [
+        "Hur vill du helst få feedback: direkt, skriftligt eller på tu man hand?",
+        "Vad är bästa sättet att be dig om hjälp?",
+        "Vilken tid på dagen gör du ditt bästa arbete?",
+        "Hur ser ett bra möte ut för dig?",
+        "När du har kört fast, vill du hellre prata igenom det eller lösa det själv först?",
+        "Vad är något med hur du jobbar som folk ofta missförstår?",
+        "Hur kan kollegorna se att du behöver lugn och ro för att fokusera?",
+        "Vilken sorts uppskattning betyder mest för dig?",
+        "Gillar du detaljerade instruktioner, eller målet och friheten att ta dig dit?",
+        "Vad tar energi från dig på jobbet?",
+        "Vad hjälper dig att göra ditt bästa arbete?",
+        "Hur snabbt förväntar du dig svar på meddelanden, och hur snabbt svarar du själv?",
+        "Vad irriterar dig i teamets kommunikation?",
+        "Vilken styrka har du som teamet kanske inte använder tillräckligt?",
+        "Hur vill du fira när något har gått bra?",
+        "Vad vill du att en ny kollega ska veta om att jobba med dig?",
+        "När du inte håller med, säger du det hellre på mötet eller efteråt?",
+        "Hur vill du helst börja ett nytt projekt?",
+        "Vad får dig att känna dig betrodd på jobbet?",
+        "Vid en knepig fråga: hellre ett snabbt samtal eller ett skriftligt meddelande?",
+      ],
+    },
+    {
+      key: "team",
+      label: "Teamet",
+      title: "Teambuildingfrågor om teamet",
+      when: "Om hur teamet jobbar tillsammans: vad som går bra, vad som står i vägen och vad ni ska prova härnäst. Bra för en teamträff eller en kvartalsavstämning.",
+      questions: [
+        "Vad gör det här teamet bättre än något annat team du har varit med i?",
+        "Vilken är en oskriven regel i det här teamet?",
+        "Vad borde en ny person veta under sin första vecka här?",
+        "Vilket teamögonblick tänker du fortfarande på?",
+        "Vad lägger vi för mycket tid på?",
+        "Vad skulle vi kunna prova som team nästa månad?",
+        "När kändes det senast som att teamet verkligen höll ihop?",
+        "Vilken vana hos en kollega skulle du vilja låna?",
+        "Vad skulle göra samarbetet enklare för dig?",
+        "Vilket av våra möten skulle kunna vara ett meddelande, och vilket behöver mer tid?",
+        "Vad har vi slutat göra som vi borde ta tillbaka?",
+        "Hur firar vi framgångar, och hur borde vi göra det?",
+        "Vilken tradition borde vi starta som team?",
+        "Om du beskrev vårt team med tre ord, vilka skulle det vara?",
+        "Vad missförstår folk utanför teamet om det vi gör?",
+        "Vilken färdighet har teamet som vi aldrig pratar om?",
+        "Vad skulle du ändra i hur vi delar uppdateringar?",
+        "Vilket var det bästa beslutet teamet tog det senaste året?",
+        "Vad borde vi säga nej till oftare?",
+        "Hur ser en riktigt bra vecka ut för hela teamet?",
+      ],
+    },
+    {
+      key: "deeper",
+      label: "Djupare",
+      title: "Djupare teambuildingfrågor",
+      when: "För en kickoff, en lång teamträff eller ett team som redan känner varandra. De tar några minuter vardera, och det är värt det.",
+      questions: [
+        "Vilket ögonblick på jobbet var du stolt över, och varför?",
+        "Vad fick dig att välja det arbete du gör?",
+        "Vilket värde försöker du ta med dig till varje jobb?",
+        "Vem har påverkat hur du jobbar mest?",
+        "Vad är det svåraste du har lärt dig på jobbet?",
+        "Hur ser framgång ut för dig om ett år?",
+        "Vilken risk du tog på jobbet lönade sig?",
+        "När känner du dig mest som dig själv på jobbet?",
+        "Vilken del av ditt jobb skulle du fortsätta med även om ingen märkte det?",
+        "Vad har du fått lära dig av med?",
+        "Vad är det snällaste en kollega har gjort för dig?",
+        "Vad gjorde din bästa chef som andra inte gjorde?",
+        "Vad skulle du vilja vara känd för i det här teamet?",
+        "Vad skulle du vilja ha mer hjälp med?",
+        "Vilket är det bästa team du har varit med i, och vad fick det att fungera?",
+        "Vad önskar du att du hade vetat när du började din karriär?",
+        "Vad ger dig energi en tung dag?",
+        "Vad vill du att teamet ska förstå om dig?",
+        "Vad är du mest nyfiken på just nu?",
+        "Vilket råd skulle du vilja ge alla här?",
+      ],
+    },
+  ],
+  meta: {
+    title: "Teambuilding frågor för jobbet: 80 som får teamet att prata",
+    description:
+      "80 teambuildingfrågor för jobbet: roliga, frågor om hur var och en jobbar, om själva teamet och djupare för en kickoff. Slumpa fram en.",
+  },
+  eyebrow: "Gratis verktyg",
+  updated: "Uppdaterad",
+  title: "Teambuildingfrågor <em>för jobbet.</em>",
+  intro:
+    "En isbrytare värmer upp ett möte; en bra teambuildingfråga berättar något om hur ditt team jobbar. Här är 80: roliga om teamet, frågor om hur var och en gillar att jobba, frågor om själva teamet och djupare för en kickoff. Slumpa fram en nedan, eller bläddra i listan.",
+  picker: { all: "Alla", another: "En annan fråga", copy: "Kopiera", copied: "Kopierad", of: "av" },
+  howTo: [
+    {
+      title: "Så använder du teambuildingfrågor",
+      items: [
+        {
+          title: "En fråga, alla svarar",
+          detail: "Fem till tio minuter",
+          body: "Ställ en fråga i början av ett teammöte och gå laget runt i en fast ordning. Svara först själv, så att alla ser hur långt och hur personligt ett svar kan vara.",
+        },
+        {
+          title: "Välj gruppen efter tillfället",
+          detail: "Roliga först, djupare sedan",
+          body: "Roliga frågor passar alla team. Spara de djupare till ett team som redan känner varandra, eller till en kickoff med tid att verkligen lyssna.",
+        },
+        {
+          title: "Skriv ner svaren",
+          detail: "För frågorna om hur du jobbar",
+          body: "Svaren på \"Hur vill du helst få feedback?\" är värda att spara. Lägg dem i ett delat dokument, ett avsnitt per person, och hänvisa nya kollegor dit.",
+        },
+        {
+          title: "Gör något med teamfrågorna",
+          detail: "Annars slutar de fungera",
+          body: "Om du frågar \"Vad borde vi säga nej till oftare?\", välj ett svar och agera på det. Folk svarar ärligt när de ser att svaren ändrar något.",
+        },
+      ],
+    },
+  ],
+  rules: [
+    {
+      title: "Vad som gör en bra teambuildingfråga",
+      items: [
+        {
+          title: "Alla kan svara",
+          body: "En bra fråga beror inte på ålder, senioritet, var någon bor eller vad de gör på helgerna. Alla i teamet har ett svar, redan första veckan.",
+        },
+        {
+          title: "Inget privat",
+          body: "Lämna familj, relationer, hälsa, pengar, politik och religion utanför. Även de djupare frågorna här handlar om jobbet och hur folk gillar att jobba.",
+        },
+        {
+          title: "Det är okej att stå över",
+          body: "Säg i början att alla får stå över eller svara kort. En fråga som folk känner sig tvingade att svara på slutar vara teambuilding.",
+        },
+        {
+          title: "Säger något användbart",
+          body: "De bästa är roliga att svara på och lämnar teamet med något det inte visste: när någon fokuserar bäst, vad som tar energi, vad någon är stolt över.",
+        },
+      ],
+    },
+    {
+      title: "Så valde vi dem",
+      body: [
+        "Vi skrev de här frågorna för små team på jobbet, med reglerna ovan, och grupperade dem efter hur väl ett team känner varandra och hur mycket tid det finns. För en uppvärmning på en minut före standupen är våra isbrytarfrågor snabbare; de här tar lite längre tid och säger mer om hur teamet jobbar. Vi fyller på listan när vi hittar bra nya.",
+      ],
+    },
+  ],
+  fit: {
+    title: "Samla teamet på våningen",
+    body: "TinyFloor är ett virtuellt kontor för små team: du ser vem som sitter vid sitt skrivbord, går fram för att prata och samlas i mötesrummet för teamträffen, frågor och allt. Det körs i en webbläsarflik, gratis för upp till 3 personer och 29 $ i månaden för hela teamet.",
+    cta: "Prova demokontoret",
+  },
+  faqTitle: "Vanliga <em>frågor.</em>",
+  faq: [
+    {
+      q: "Vilka är bra teambuildingfrågor för jobbet?",
+      a: "Frågor som alla kan svara på och som säger något om hur teamet jobbar, som \"Vad är bästa sättet att be dig om hjälp?\" eller \"Vad gör det här teamet bättre än något annat team du har varit med i?\"",
+    },
+    {
+      q: "Vilka är roliga teambuildingfrågor?",
+      a: "Lekfulla frågor om själva teamet: \"Om vårt team var ett band, vad skulle vi heta?\", \"Vad skulle dokusåpan om vårt team heta?\" eller \"Om vi öppnade en restaurang tillsammans, vad skulle vi servera?\"",
+    },
+    {
+      q: "Vad är skillnaden mellan isbrytare och teambuildingfrågor?",
+      a: "En isbrytare är en snabb uppvärmning, en minut före ett möte. En teambuildingfråga tar några minuter och ska lära teamet något om varandra eller om hur det jobbar tillsammans.",
+    },
+    {
+      q: "Hur använder man teambuildingfrågor i ett distansteam?",
+      a: "I ett samtal, ställ en fråga och gå laget runt i en fast ordning, så att ingen pratar i munnen på någon annan. För ett team i olika tidszoner, posta frågan i teamchatten och låt alla svara när de är online.",
+    },
+    {
+      q: "Vilka teambuildingfrågor ska man undvika?",
+      a: "Allt om familj, relationer, hälsa, pengar, politik eller religion, och frågor som sätter någon på pottkanten, som att be någon betygsätta en kollega.",
+    },
+  ],
+};
+
+export default sv;

@@ -1,0 +1,216 @@
+import type { IcebreakersContent } from "@/lib/tools/icebreakers";
+
+/** Pytania integracyjne do pracy, po polsku, napisane na podstawie listy angielskiej. */
+const pl: IcebreakersContent = {
+  groups: [
+    {
+      key: "fun",
+      label: "Zabawne",
+      title: "Zabawne pytania integracyjne",
+      when: "Żartobliwe pytania o sam zespół. Dobre na otwarcie warsztatu zespołowego, luźnego calla albo spokojnego piątku.",
+      questions: [
+        "Gdyby nasz zespół był zespołem muzycznym, jak byśmy się nazywali?",
+        "Gdyby zespół miał maskotkę, co by to było?",
+        "Która postać fikcyjna idealnie pasowałaby do naszego zespołu?",
+        "Gdyby nasz zespół miał swoją piosenkę przewodnią, jaka by to była?",
+        "Gdybyśmy mogli zamienić się stanowiskami na jeden dzień, czyją pracę chcesz wypróbować?",
+        "Jak nazywałby się reality show o naszym zespole?",
+        "Gdybyśmy razem otworzyli restaurację, co byśmy serwowali?",
+        "Jaka supermoc ułatwiłaby ci pracę?",
+        "W zespołowej podróży samochodem: prowadzisz, nawigujesz, wybierasz muzykę czy odpowiadasz za przekąski?",
+        "Gdyby można było dodać w pracy jeden benefit, bez limitu budżetu, co by to było?",
+        "W jakim zawodzie byłoby z ciebie najmniej pożytku, i dlaczego?",
+        "Gdyby twój tydzień pracy był gatunkiem filmowym, jakim?",
+        "Jaki tytuł miałaby teraz twoja autobiografia?",
+        "Gdybyśmy mieli własne święto zespołu, co byśmy świętowali?",
+        "Jaki jest twój najbardziej bezużyteczny talent?",
+        "Gdyby twoim współpracownikiem mogło być dowolne zwierzę, które wybierasz?",
+        "Jakie trzy rzeczy zabierasz do biura na bezludnej wyspie?",
+        "Gdyby to zależało od ciebie, jak nazwalibyśmy salę spotkań?",
+        "Gdyby dało się z dnia na dzień opanować dowolną umiejętność, jaką wybierasz?",
+        "Co byłoby w menu idealnego zespołowego lunchu?",
+      ],
+    },
+    {
+      key: "work",
+      label: "Jak pracujesz",
+      title: "Pytania integracyjne o to, jak pracujesz",
+      when: "Instrukcja obsługi każdej osoby: jak lubi dostawać feedback, pomoc i czas na skupienie. Zespoły, które pytają o to wcześnie, oszczędzają sobie mnóstwa zgadywania.",
+      questions: [
+        "Jak najchętniej dostajesz feedback: od razu, na piśmie czy w cztery oczy?",
+        "Jak najlepiej poprosić cię o pomoc?",
+        "O jakiej porze dnia pracuje ci się najlepiej?",
+        "Jak dla ciebie wygląda dobre spotkanie?",
+        "Kiedy utkniesz, wolisz to przegadać czy najpierw spróbować samodzielnie?",
+        "Co w twoim sposobie pracy ludzie często źle rozumieją?",
+        "Po czym zespół pozna, że potrzebujesz ciszy, żeby się skupić?",
+        "Jakie docenienie znaczy dla ciebie najwięcej?",
+        "Wolisz szczegółowe instrukcje czy cel i swobodę dojścia do niego?",
+        "Co w pracy zabiera ci energię?",
+        "Co pomaga ci pracować najlepiej?",
+        "Jak szybko oczekujesz odpowiedzi na wiadomości i jak szybko sam odpowiadasz?",
+        "Co cię irytuje w komunikacji w zespole?",
+        "Którą twoją mocną stronę zespół może wykorzystywać za mało?",
+        "Jak lubisz świętować, gdy coś się uda?",
+        "Co nowa osoba w zespole powinna wiedzieć o pracy z tobą?",
+        "Kiedy się nie zgadzasz, wolisz to powiedzieć na spotkaniu czy po nim?",
+        "Jak lubisz zaczynać nowy projekt?",
+        "Po czym poznajesz, że ktoś ci w pracy ufa?",
+        "Przy trudnym pytaniu wolisz szybki call czy wiadomość na piśmie?",
+      ],
+    },
+    {
+      key: "team",
+      label: "Zespół",
+      title: "Pytania integracyjne o zespół",
+      when: "O tym, jak zespół działa razem: co idzie dobrze, co przeszkadza i co spróbować dalej. Dobre na warsztat zespołowy albo kwartalne podsumowanie.",
+      questions: [
+        "Co ten zespół robi lepiej niż jakikolwiek inny zespół, w którym pracujesz lub pracowałeś?",
+        "Jaka jest niepisana zasada w tym zespole?",
+        "Co nowa osoba powinna wiedzieć w pierwszym tygodniu tutaj?",
+        "Do jakiego momentu z życia zespołu wciąż wracasz myślami?",
+        "Na co poświęcamy za dużo czasu?",
+        "Co moglibyśmy spróbować jako zespół w przyszłym miesiącu?",
+        "Kiedy ostatnio było widać, że zespół naprawdę trzyma się razem?",
+        "Jaki nawyk kogoś z zespołu chcesz przejąć?",
+        "Co ułatwiłoby ci współpracę?",
+        "Które z naszych spotkań mogłoby być wiadomością, a które potrzebuje więcej czasu?",
+        "Co przestaliśmy robić, a powinniśmy do tego wrócić?",
+        "Jak świętujemy sukcesy i jak powinniśmy?",
+        "Jaką tradycję powinniśmy zacząć jako zespół?",
+        "Jakimi trzema słowami opisujesz nasz zespół?",
+        "Co ludzie spoza zespołu źle rozumieją w tym, co robimy?",
+        "Jaką umiejętność ma zespół, o której nigdy nie mówimy?",
+        "Co zmienić w tym, jak dzielimy się aktualizacjami?",
+        "Jaka była najlepsza decyzja tego zespołu w ostatnim roku?",
+        "Na co powinniśmy częściej mówić „nie”?",
+        "Jak wygląda świetny tydzień dla całego zespołu?",
+      ],
+    },
+    {
+      key: "deeper",
+      label: "Głębsze",
+      title: "Głębsze pytania integracyjne",
+      when: "Na wyjazd firmowy, długi warsztat zespołowy albo dla zespołu, który już się zna. Każde zajmuje kilka minut i warto je poświęcić.",
+      questions: [
+        "Jaki moment w pracy daje ci powód do dumy, i dlaczego?",
+        "Dlaczego robisz to, co robisz zawodowo?",
+        "Jaką wartość starasz się wnosić do każdej pracy?",
+        "Kto najbardziej wpłynął na to, jak pracujesz?",
+        "Jaka jest najtrudniejsza lekcja, którą dała ci praca?",
+        "Jak będzie wyglądał dla ciebie sukces za rok?",
+        "Jakie ryzyko w pracy się opłaciło?",
+        "Kiedy w pracy czujesz się najbardziej sobą?",
+        "Którą część swojej pracy robisz chętnie, nawet jeśli nikt tego nie widzi?",
+        "Czego trzeba było się oduczyć?",
+        "Jaka jest najmilsza rzecz, jaką ktoś z pracy dla ciebie zrobił?",
+        "Co robił twój najlepszy przełożony, czego nie robili inni?",
+        "Z czego chcesz być znany w tym zespole?",
+        "W czym przydałoby ci się więcej pomocy?",
+        "Jaki był najlepszy zespół w twojej karierze i dlaczego działał?",
+        "Co warto byłoby wiedzieć na początku kariery?",
+        "Co daje ci energię w trudny dzień?",
+        "Co zespół powinien o tobie zrozumieć?",
+        "Co cię teraz najbardziej ciekawi?",
+        "Jaką radę przekazujesz wszystkim tutaj?",
+      ],
+    },
+  ],
+  meta: {
+    title: "Pytania integracyjne do pracy: 80 na team building",
+    description:
+      "80 pytań integracyjnych do pracy: zabawne, o tym, jak kto pracuje, o samym zespole i głębsze na wyjazd firmowy. Wylosuj jedno albo przejrzyj listę.",
+  },
+  eyebrow: "Darmowe narzędzie",
+  updated: "Zaktualizowano",
+  title: "Pytania integracyjne <em>do pracy.</em>",
+  intro:
+    "Pytanie na przełamanie lodów rozgrzewa spotkanie; dobre pytanie integracyjne mówi ci coś o tym, jak pracuje twój zespół. Oto 80: zabawne o zespole, pytania o to, jak kto lubi pracować, o sam zespół i głębsze na wyjazd firmowy. Wylosuj jedno poniżej albo przejrzyj listę.",
+  picker: { all: "Wszystkie", another: "Inne pytanie", copy: "Kopiuj", copied: "Skopiowano", of: "z" },
+  howTo: [
+    {
+      title: "Jak używać pytań integracyjnych",
+      items: [
+        {
+          title: "Jedno pytanie, wszyscy odpowiadają",
+          detail: "Od pięciu do dziesięciu minut",
+          body: "Zadaj jedno pytanie na początku spotkania zespołu i idźcie w stałej kolejności. Odpowiedz pierwszy, żeby wszyscy zobaczyli, jak długa i jak osobista może być odpowiedź.",
+        },
+        {
+          title: "Dobierz grupę do sytuacji",
+          detail: "Najpierw zabawne, potem głębsze",
+          body: "Zabawne pytania pasują do każdego zespołu. Głębsze zostaw dla zespołu, który już się zna, albo na wyjazd firmowy, gdzie jest czas, żeby naprawdę słuchać.",
+        },
+        {
+          title: "Zapisujcie odpowiedzi",
+          detail: "Przy pytaniach o styl pracy",
+          body: "Odpowiedzi na „Jak najchętniej dostajesz feedback?” warto zachować. Wpiszcie je do wspólnego dokumentu, sekcja na osobę, i pokazujcie go nowym osobom.",
+        },
+        {
+          title: "Zróbcie coś z pytaniami o zespół",
+          detail: "Inaczej przestaną działać",
+          body: "Jeśli pytasz „Na co powinniśmy częściej mówić »nie«?”, wybierz jedną odpowiedź i wprowadź ją w życie. Ludzie odpowiadają szczerze, gdy widzą, że ich odpowiedzi coś zmieniają.",
+        },
+      ],
+    },
+  ],
+  rules: [
+    {
+      title: "Co sprawia, że pytanie integracyjne jest dobre",
+      items: [
+        {
+          title: "Każdy może odpowiedzieć",
+          body: "Dobre pytanie nie zależy od wieku, stażu, miejsca zamieszkania ani tego, co ktoś robi w weekendy. Każda osoba w zespole ma odpowiedź już w pierwszym tygodniu.",
+        },
+        {
+          title: "Nic prywatnego",
+          body: "Pomiń rodzinę, związki, zdrowie, pieniądze, politykę i religię. Nawet głębsze pytania tutaj dotyczą pracy i tego, jak ludzie lubią pracować.",
+        },
+        {
+          title: "Można spasować",
+          body: "Powiedz na początku, że każdy może spasować albo odpowiedzieć krótko. Pytanie, na które ktoś czuje się zmuszony odpowiedzieć, przestaje integrować.",
+        },
+        {
+          title: "Mówi coś przydatnego",
+          body: "Najlepsze sprawiają przyjemność, a zespół wie potem coś, czego nie wiedział: kiedy ktoś najlepiej się skupia, co go wyczerpuje, z czego jest dumny.",
+        },
+      ],
+    },
+    {
+      title: "Jak je wybraliśmy",
+      body: [
+        "Napisaliśmy te pytania dla małych zespołów w pracy, według zasad powyżej, i pogrupowaliśmy je według tego, jak dobrze zespół się zna i ile jest czasu. Na minutową rozgrzewkę przed stand-upem szybsze są nasze pytania na przełamanie lodów; te zajmują trochę więcej czasu i mówią więcej o tym, jak pracuje zespół. Dodajemy nowe pytania, gdy znajdziemy dobre.",
+      ],
+    },
+  ],
+  fit: {
+    title: "Zbierzcie zespół na piętrze",
+    body: "TinyFloor to wirtualne biuro dla małych zespołów: widzisz, kto siedzi przy biurku, podchodzisz, żeby porozmawiać, a na warsztat zespołowy, razem z pytaniami, zbieracie się w sali spotkań. Działa w karcie przeglądarki, za darmo do 3 osób i za 29 $ miesięcznie dla całego zespołu.",
+    cta: "Wypróbuj biuro demo",
+  },
+  faqTitle: "Częste <em>pytania.</em>",
+  faq: [
+    {
+      q: "Jakie są dobre pytania integracyjne do pracy?",
+      a: "Takie, na które każdy może odpowiedzieć i które mówią coś o tym, jak pracuje zespół, na przykład „Jak najlepiej poprosić cię o pomoc?” albo „Co ten zespół robi lepiej niż jakikolwiek inny zespół, w którym pracujesz lub pracowałeś?”",
+    },
+    {
+      q: "Jakie są zabawne pytania integracyjne?",
+      a: "Żartobliwe pytania o sam zespół: „Gdyby nasz zespół był zespołem muzycznym, jak byśmy się nazywali?”, „Jak nazywałby się reality show o naszym zespole?” albo „Gdybyśmy razem otworzyli restaurację, co byśmy serwowali?”",
+    },
+    {
+      q: "Czym różnią się pytania na przełamanie lodów od pytań integracyjnych?",
+      a: "Pytanie na przełamanie lodów to szybka rozgrzewka, minuta przed spotkaniem. Pytanie integracyjne zajmuje kilka minut i ma nauczyć zespół czegoś o sobie nawzajem albo o tym, jak razem pracuje.",
+    },
+    {
+      q: "Jak używać pytań integracyjnych w zespole zdalnym?",
+      a: "Na callu zadaj jedno pytanie i idźcie w stałej kolejności, żeby nikt nikomu nie przerywał. W zespole w różnych strefach czasowych wrzuć pytanie na czat zespołu i pozwól każdemu odpowiedzieć, gdy jest online.",
+    },
+    {
+      q: "Jakich pytań integracyjnych unikać?",
+      a: "Wszystkiego o rodzinie, związkach, zdrowiu, pieniądzach, polityce czy religii, a także pytań, które stawiają kogoś w niezręcznej sytuacji, na przykład proszą o ocenę współpracownika.",
+    },
+  ],
+};
+
+export default pl;

@@ -1,15 +1,30 @@
 import type { GuideSection } from "@/lib/guides";
 import type { Locale } from "@/lib/i18n/routing";
 import type { ToolCopy } from "@/components/tools/ToolPage";
+import ar from "./ar";
+import da from "./da";
+import de from "./de";
 import en from "./en";
 import es from "./es";
+import fi from "./fi";
+import fr from "./fr";
+import he from "./he";
+import it from "./it";
+import ja from "./ja";
+import ko from "./ko";
+import nl from "./nl";
+import no from "./no";
+import pl from "./pl";
 import pt from "./pt";
+import ru from "./ru";
+import sv from "./sv";
+import zh from "./zh";
 
 /**
  * A daily standup template builder (docs/search.md: "daily standup template",
  * "daily standup agenda", "daily standup tool", each over 100 searches a month
  * in the US, easy), for the audience we want most: small software teams. In
- * English, Portuguese and Spanish (lib/tools/catalog).
+ * every language (lib/tools/catalog).
  */
 export const STANDUP_UPDATED = "2026-10-20";
 
@@ -56,7 +71,7 @@ export interface StandupContent extends ToolCopy {
   sections: GuideSection[];
 }
 
-const CONTENT: Partial<Record<Locale, StandupContent>> = { en, pt, es };
+const CONTENT: Record<Locale, StandupContent> = { en, pt, es, de, fr, it, nl, pl, sv, da, no, fi, ru, ja, ko, zh, he, ar };
 
 export const standupIn = (locale: string): StandupContent | undefined => CONTENT[locale as Locale];
 

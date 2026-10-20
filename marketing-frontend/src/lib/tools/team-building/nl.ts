@@ -1,0 +1,216 @@
+import type { IcebreakersContent } from "@/lib/tools/icebreakers";
+
+/** Teambuildingvragen voor op het werk, in het Nederlands, geschreven vanuit de Engelse lijst. */
+const nl: IcebreakersContent = {
+  groups: [
+    {
+      key: "fun",
+      label: "Leuk",
+      title: "Leuke teambuildingvragen",
+      when: "Speelse vragen over het team zelf. Goed om een teamsessie, een informele call of een rustige vrijdag mee te openen.",
+      questions: [
+        "Als ons team een band was, hoe zouden we dan heten?",
+        "Als het team een mascotte had, wat zou het dan zijn?",
+        "Welk fictief personage zou perfect in ons team passen?",
+        "Als ons team een themalied had, welk nummer zou het zijn?",
+        "Als we een dag van baan konden ruilen, wiens baan zou jij willen proberen?",
+        "Hoe zou de realityshow over ons team heten?",
+        "Als we samen een restaurant openden, wat zouden we dan serveren?",
+        "Welke superkracht zou je werk makkelijker maken?",
+        "Ben je op een teamroadtrip de chauffeur, de navigator, de dj of degene met de snacks?",
+        "Als je zonder budgetlimiet één extraatje op het werk mocht toevoegen, wat zou het zijn?",
+        "In welke baan zou je verschrikkelijk zijn, en waarom?",
+        "Als je werkweek een filmgenre was, welk genre zou het zijn?",
+        "Wat zou nu de titel van je autobiografie zijn?",
+        "Als we onze eigen teamfeestdag hadden, wat zouden we vieren?",
+        "Wat is je meest nutteloze talent?",
+        "Als je elk dier als collega kon hebben, welk zou je kiezen?",
+        "Welke drie dingen zou je meenemen naar een kantoor op een onbewoond eiland?",
+        "Als het aan jou lag, hoe zouden we de vergaderruimte noemen?",
+        "Als je van de ene op de andere dag een vaardigheid kon beheersen, welke zou het zijn?",
+        "Wat zou er op het menu staan bij de perfecte teamlunch?",
+      ],
+    },
+    {
+      key: "work",
+      label: "Hoe je werkt",
+      title: "Teambuildingvragen over hoe je werkt",
+      when: "Ieders gebruiksaanwijzing: hoe iemand graag feedback, hulp en focustijd krijgt. Teams die dit vroeg vragen, besparen zich een hoop gegis.",
+      questions: [
+        "Hoe krijg je het liefst feedback: meteen, op schrift of één op één?",
+        "Wat is de beste manier om jou om hulp te vragen?",
+        "Op welk moment van de dag werk je het best?",
+        "Hoe ziet een goede meeting er voor jou uit?",
+        "Als je vastzit, praat je het liever door of zoek je het eerst zelf uit?",
+        "Wat begrijpen mensen vaak verkeerd over hoe jij werkt?",
+        "Hoe kunnen collega's zien dat je rust nodig hebt om je te concentreren?",
+        "Wat voor waardering betekent het meest voor je?",
+        "Hou je van gedetailleerde instructies, of van het doel en de vrijheid om er zelf te komen?",
+        "Wat kost je op je werk de meeste energie?",
+        "Wat helpt jou om je beste werk te doen?",
+        "Hoe snel verwacht je een antwoord op berichten, en hoe snel antwoord je zelf?",
+        "Waar erger je je aan in de communicatie binnen het team?",
+        "Welke sterke kant van jou gebruikt het team misschien te weinig?",
+        "Hoe vier je het graag als iets goed gaat?",
+        "Wat zou je een nieuwe collega willen vertellen over samenwerken met jou?",
+        "Als je het ergens niet mee eens bent, zeg je dat liever in de meeting of erna?",
+        "Hoe begin je het liefst aan een nieuw project?",
+        "Waardoor voel je dat je op je werk vertrouwd wordt?",
+        "Bij een lastige vraag: liever een kort belletje of een geschreven bericht?",
+      ],
+    },
+    {
+      key: "team",
+      label: "Het team",
+      title: "Teambuildingvragen over het team",
+      when: "Over hoe het team samenwerkt: wat goed gaat, wat in de weg zit en wat je hierna probeert. Goed voor een teamsessie of een kwartaalcheck-in.",
+      questions: [
+        "Wat doet dit team beter dan elk ander team waarin je hebt gezeten?",
+        "Wat is een ongeschreven regel in dit team?",
+        "Wat moet een nieuwe collega in de eerste week hier weten?",
+        "Aan welk teammoment denk je nog steeds terug?",
+        "Waar besteden we te veel tijd aan?",
+        "Wat zouden we volgende maand als team kunnen proberen?",
+        "Wanneer had je voor het laatst het gevoel dat het team echt samen de schouders eronder zette?",
+        "Welke gewoonte van een collega zou je willen overnemen?",
+        "Wat zou samenwerken voor jou makkelijker maken?",
+        "Welke van onze meetings kan een bericht zijn, en welke heeft meer tijd nodig?",
+        "Waar zijn we mee gestopt dat we terug zouden moeten brengen?",
+        "Hoe vieren we successen, en hoe zouden we dat moeten doen?",
+        "Welke traditie zouden we als team moeten beginnen?",
+        "Als je ons team in drie woorden moest beschrijven, welke zouden dat zijn?",
+        "Wat begrijpen mensen buiten het team verkeerd over wat we doen?",
+        "Welke vaardigheid heeft het team waar we het nooit over hebben?",
+        "Wat zou je veranderen aan hoe we updates delen?",
+        "Wat was het beste besluit dat dit team het afgelopen jaar nam?",
+        "Waar zouden we vaker nee tegen moeten zeggen?",
+        "Hoe ziet een topweek eruit voor het hele team?",
+      ],
+    },
+    {
+      key: "deeper",
+      label: "Dieper",
+      title: "Diepere teambuildingvragen",
+      when: "Voor een heidag, een lange teamsessie of een team dat elkaar al kent. Elke vraag kost een paar minuten, en dat is het waard.",
+      questions: [
+        "Op welk moment op je werk was je trots, en waarom?",
+        "Waarom koos je voor het werk dat je doet?",
+        "Welke waarde probeer je in elke baan mee te nemen?",
+        "Wie heeft de meeste invloed gehad op hoe jij werkt?",
+        "Wat is het moeilijkste dat je op je werk hebt geleerd?",
+        "Hoe ziet succes er voor jou over een jaar uit?",
+        "Welk risico dat je op je werk nam, pakte goed uit?",
+        "Wanneer voel je je op je werk het meest jezelf?",
+        "Welk deel van je werk zou je blijven doen, ook als niemand het merkte?",
+        "Wat heb je moeten afleren?",
+        "Wat is het aardigste dat een collega ooit voor je heeft gedaan?",
+        "Wat deed je beste manager dat anderen niet deden?",
+        "Waar zou je om bekend willen staan in dit team?",
+        "Waar zou je meer hulp bij willen?",
+        "Wat was het beste team waar je ooit deel van uitmaakte, en waarom werkte het?",
+        "Wat had je willen weten toen je aan je loopbaan begon?",
+        "Waar haal je energie uit op een zware dag?",
+        "Wat zou je willen dat het team over jou begrijpt?",
+        "Waar ben je op dit moment het nieuwsgierigst naar?",
+        "Welk advies zou je iedereen hier willen meegeven?",
+      ],
+    },
+  ],
+  meta: {
+    title: "Teambuilding vragen voor het werk: 80 om je team te laten praten",
+    description:
+      "80 teambuildingvragen voor op het werk: leuke, vragen over hoe iedereen werkt, over het team zelf en diepere voor een heidag. Trek er willekeurig één.",
+  },
+  eyebrow: "Gratis tool",
+  updated: "Bijgewerkt op",
+  title: "Teambuildingvragen <em>voor op het werk.</em>",
+  intro:
+    "Een icebreaker warmt een meeting op; een goede teambuildingvraag vertelt je iets over hoe je team werkt. Hier zijn er 80: leuke over het team, vragen over hoe ieder graag werkt, vragen over het team zelf en diepere voor een heidag. Trek er hieronder willekeurig één of blader door de lijst.",
+  picker: { all: "Alle", another: "Andere vraag", copy: "Kopiëren", copied: "Gekopieerd", of: "van" },
+  howTo: [
+    {
+      title: "Zo gebruik je teambuildingvragen",
+      items: [
+        {
+          title: "Eén vraag, iedereen antwoordt",
+          detail: "Vijf tot tien minuten",
+          body: "Stel aan het begin van een teammeeting één vraag en ga in een vaste volgorde rond. Antwoord eerst zelf, zodat mensen zien hoe lang en hoe persoonlijk een antwoord mag zijn.",
+        },
+        {
+          title: "Kies de groep die past bij het moment",
+          detail: "Eerst leuk, later dieper",
+          body: "Leuke vragen passen bij elk team. Bewaar de diepere voor een team dat elkaar al kent, of voor een heidag met tijd om echt te luisteren.",
+        },
+        {
+          title: "Schrijf de antwoorden op",
+          detail: "Bij de vragen over hoe je werkt",
+          body: "Antwoorden op \"Hoe krijg je het liefst feedback?\" zijn de moeite waard om te bewaren. Zet ze in een gedeeld document, één kopje per persoon, en verwijs nieuwe collega's ernaar.",
+        },
+        {
+          title: "Doe iets met de teamvragen",
+          detail: "Anders werken ze niet meer",
+          body: "Als je vraagt \"Waar zouden we vaker nee tegen moeten zeggen?\", kies dan één antwoord en doe er iets mee. Mensen antwoorden eerlijk als ze zien dat hun antwoorden iets veranderen.",
+        },
+      ],
+    },
+  ],
+  rules: [
+    {
+      title: "Wat een goede teambuildingvraag maakt",
+      items: [
+        {
+          title: "Iedereen kan antwoorden",
+          body: "Een goede vraag hangt niet af van leeftijd, functie, woonplaats of wat iemand in het weekend doet. Iedereen in het team heeft een antwoord, al in de eerste week.",
+        },
+        {
+          title: "Niets privés",
+          body: "Laat familie, relaties, gezondheid, geld, politiek en religie weg. Zelfs de diepere vragen hier gaan over werk en over hoe mensen graag werken.",
+        },
+        {
+          title: "Passen mag",
+          body: "Zeg aan het begin dat iedereen mag passen of kort mag antwoorden. Een vraag waar mensen zich toe gedwongen voelen, is geen teambuilding meer.",
+        },
+        {
+          title: "Levert iets nuttigs op",
+          body: "De beste zijn leuk om te beantwoorden en laten het team iets weten wat het nog niet wist: wanneer iemand zich het best concentreert, wat iemand uitput, waar iemand trots op is.",
+        },
+      ],
+    },
+    {
+      title: "Hoe we ze hebben gekozen",
+      body: [
+        "We schreven deze vragen voor kleine teams op het werk, met de regels hierboven, en groepeerden ze naar hoe goed een team elkaar kent en hoeveel tijd er is. Voor een warming-up van een minuut vóór een standup zijn onze icebreakervragen sneller; deze duren iets langer en vertellen meer over hoe het team werkt. We vullen de lijst aan als we goede nieuwe vinden.",
+      ],
+    },
+  ],
+  fit: {
+    title: "Breng het team samen op de verdieping",
+    body: "TinyFloor is een virtueel kantoor voor kleine teams: je ziet wie aan zijn bureau zit, loopt erheen om te praten, en verzamelt in de vergaderruimte voor de teamsessie, vragen en al. Het draait in een browsertab, gratis tot 3 mensen en $ 29 per maand voor het hele team.",
+    cta: "Probeer het demokantoor",
+  },
+  faqTitle: "Veelgestelde <em>vragen.</em>",
+  faq: [
+    {
+      q: "Wat zijn goede teambuildingvragen voor op het werk?",
+      a: "Vragen die iedereen kan beantwoorden en die iets zeggen over hoe het team werkt, zoals \"Wat is de beste manier om jou om hulp te vragen?\" of \"Wat doet dit team beter dan elk ander team waarin je hebt gezeten?\"",
+    },
+    {
+      q: "Wat zijn leuke teambuildingvragen?",
+      a: "Speelse vragen over het team zelf: \"Als ons team een band was, hoe zouden we dan heten?\", \"Hoe zou de realityshow over ons team heten?\" of \"Als we samen een restaurant openden, wat zouden we dan serveren?\"",
+    },
+    {
+      q: "Wat is het verschil tussen icebreakers en teambuildingvragen?",
+      a: "Een icebreaker is een snelle opwarmer, een minuut vóór een meeting. Een teambuildingvraag duurt een paar minuten en is bedoeld om het team iets te leren over elkaar of over hoe het samenwerkt.",
+    },
+    {
+      q: "Hoe gebruik je teambuildingvragen met een remote team?",
+      a: "Stel in een call één vraag en ga in een vaste volgorde rond, zodat niemand door een ander heen praat. Voor een team over tijdzones heen zet je de vraag in de teamchat en antwoordt iedereen wanneer hij online is.",
+    },
+    {
+      q: "Welke teambuildingvragen kun je beter vermijden?",
+      a: "Alles over familie, relaties, gezondheid, geld, politiek of religie, en vragen die één persoon in de schijnwerpers zetten, zoals iemand een collega laten beoordelen.",
+    },
+  ],
+};
+
+export default nl;

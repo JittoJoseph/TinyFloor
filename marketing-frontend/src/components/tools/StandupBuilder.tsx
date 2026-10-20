@@ -86,7 +86,7 @@ export function StandupBuilder({ copy }: { copy: StandupContent["builder"] }) {
                 onChange={(event) => setPeople(Number(event.target.value))}
                 className="w-full max-w-[18rem] cursor-pointer accent-[var(--color-foreground)]"
               />
-              <span className="text-[15px] font-medium tabular-nums">{fill(copy.people, { count: people })}</span>
+              <span className="shrink-0 whitespace-nowrap text-[15px] font-medium tabular-nums">{fill(copy.people, { count: people })}</span>
             </div>
           </div>
         )}

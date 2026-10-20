@@ -217,7 +217,11 @@
     "fileTooBig": "文件最大 10 MB。",
     "fileSlowDown": "一次发送的文件太多，请一分钟后再试。",
     "fileFailed": "文件没有上传成功，请再试一次。",
-    "mentionSomeone": "提及某人"
+    "mentionSomeone": "提及某人",
+    "notifyTitle": "开启通知",
+    "notifyBody": "即使关闭了 TinyFloor，也能收到消息和提及。",
+    "notifyOn": "开启",
+    "notNow": "暂不"
   },
   "proximity": {
     "call": "通话",
@@ -279,7 +283,7 @@
     "mediaLocal": "仅保存在此浏览器中。",
     "sounds": "声音",
     "messageSound": "新消息",
-    "messageSoundNote": "收到消息时发出轻柔的提示音。",
+    "messageSoundNote": "收到私信和提及时发出轻柔的提示音。",
     "joinSound": "有人到来",
     "joinSoundNote": "有人走进楼层时发出轻柔的提示音。",
     "onTheFloor": "楼层上",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "减少整个应用中的动画。",
     "performance": "性能",
     "batterySaver": "省电模式",
-    "batterySaverNote": "以较低帧率绘制楼层。下次进入时生效。"
+    "batterySaverNote": "以较低帧率绘制楼层。下次进入时生效。",
+    "desktop": "桌面",
+    "desktopNotifications": "显示通知",
+    "desktopNote": "即使关闭了 TinyFloor，也会通知私信和提及；在其他窗口打开时，还会通知通话和挥手。",
+    "desktopBlocked": "已被浏览器阻止。请通过地址栏旁的图标允许本站的通知。",
+    "turnOn": "开启"
   },
   "scene": {
     "sit": "按 E 坐下",

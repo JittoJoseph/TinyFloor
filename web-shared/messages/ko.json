@@ -96,7 +96,8 @@
     "arrived": "{name} 님이 왔어요",
     "wave": "👋 손 흔들기",
     "waved": "{name} 님이 손을 흔들었어요",
-    "waveBack": "👋 같이 흔들기"
+    "waveBack": "👋 같이 흔들기",
+    "installApp": "앱 설치"
   },
   "home": {
     "nav": {

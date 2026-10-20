@@ -4,6 +4,7 @@
  */
 import type { LobbyChatPage, PresentPerson } from "@shared/admin";
 import type { StatusNote } from "@shared/messages";
+import type { PushSubscriptionJson } from "@shared/push";
 
 export type { LobbyChatPage, PresentPerson, StatusNote };
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8787/v1";
@@ -482,4 +483,8 @@ export const api = {
   /** Who is in the public lobby right now, for its door. */
   lobbyPeople: () => get<{ here: number; faces: Array<{ id: string; name: string }> }>("/lobby"),
   iceServers: () => post<IceServers>("/calls/ice-servers"),
+
+  // Reaching this browser when TinyFloor is closed (app-frontend's lib/push.ts)
+  savePush: (subscription: PushSubscriptionJson) => put<{ ok: true }>("/push", subscription),
+  dropPush: (endpoint: string) => request<{ ok: true }>("DELETE", "/push", { endpoint }),
 };

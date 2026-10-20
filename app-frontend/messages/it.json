@@ -217,7 +217,11 @@
     "fileTooBig": "I file possono arrivare a 10 MB.",
     "fileSlowDown": "Troppi file insieme. Riprova tra un minuto.",
     "fileFailed": "Il file non è stato caricato. Riprova.",
-    "mentionSomeone": "Menziona qualcuno"
+    "mentionSomeone": "Menziona qualcuno",
+    "notifyTitle": "Attiva le notifiche",
+    "notifyBody": "Messaggi e menzioni, anche con TinyFloor chiuso.",
+    "notifyOn": "Attiva",
+    "notNow": "Non ora"
   },
   "proximity": {
     "call": "Chiama",
@@ -279,7 +283,7 @@
     "mediaLocal": "Salvato solo in questo browser.",
     "sounds": "Suoni",
     "messageSound": "Nuovi messaggi",
-    "messageSoundNote": "Un suono leggero quando arriva un messaggio.",
+    "messageSoundNote": "Un suono leggero per messaggi diretti e menzioni.",
     "joinSound": "Arriva qualcuno",
     "joinSoundNote": "Un suono leggero quando qualcuno entra nel piano.",
     "onTheFloor": "Sul piano",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "Meno animazioni in tutta l'app.",
     "performance": "Prestazioni",
     "batterySaver": "Risparmio batteria",
-    "batterySaverNote": "Disegna il piano a una frequenza più bassa. Si applica al prossimo ingresso."
+    "batterySaverNote": "Disegna il piano a una frequenza più bassa. Si applica al prossimo ingresso.",
+    "desktop": "Desktop",
+    "desktopNotifications": "Mostra notifiche",
+    "desktopNote": "Messaggi diretti e menzioni, anche con TinyFloor chiuso. Chiamate e saluti mentre è aperto in un'altra finestra.",
+    "desktopBlocked": "Bloccate dal browser. Consenti le notifiche per questo sito dall'icona accanto alla barra degli indirizzi.",
+    "turnOn": "Attiva"
   },
   "scene": {
     "sit": "Premi E per sederti",

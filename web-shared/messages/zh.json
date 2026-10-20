@@ -96,7 +96,8 @@
     "arrived": "{name} 来了",
     "wave": "👋 打个招呼",
     "waved": "{name} 向你挥手",
-    "waveBack": "👋 挥手回应"
+    "waveBack": "👋 挥手回应",
+    "installApp": "安装应用"
   },
   "home": {
     "nav": {

@@ -64,8 +64,11 @@ export async function prepare(file: File): Promise<Prepared> {
   return { blob, name, type: blob.type, width: canvas.width, height: canvas.height };
 }
 
-/** Sends a prepared file up, saying how far along it is; resolves with the file as chat keeps it. */
-export function upload(officeId: string, file: Prepared, onProgress?: (fraction: number) => void): Promise<ChatFile> {
+/**
+ * Sends a prepared file up, saying how far along it is; resolves with the file
+ * as chat keeps it. `signal` calls it off (the file was taken out of the box).
+ */
+export function upload(officeId: string, file: Prepared, onProgress?: (fraction: number) => void, signal?: AbortSignal): Promise<ChatFile> {
   if (file.blob.size > FILE_MAX) return Promise.reject(new FileProblem("too_big"));
   const query = new URLSearchParams({ name: file.name, type: file.type });
   if (file.width && file.height) {
@@ -90,8 +93,25 @@ export function upload(officeId: string, file: Prepared, onProgress?: (fraction:
       } else reject(new FileProblem(request.status === 413 ? "too_big" : request.status === 429 ? "slow_down" : "failed"));
     };
     request.onerror = () => reject(new FileProblem("failed"));
+    request.onabort = () => reject(new FileProblem("failed"));
+    signal?.addEventListener("abort", () => request.abort(), { once: true });
     request.send(file.blob);
   });
+}
+
+/**
+ * A file that went up but was never sent (taken out of the box, or left there
+ * when the conversation changed) is deleted, so nothing is kept that no message
+ * shows. `keepalive` lets it finish as the page goes.
+ */
+export function discard(file: Pick<ChatFile, "key">) {
+  void fetch(`${API_URL}/files/${file.key.slice("att/".length)}`, {
+    method: "DELETE",
+    credentials: "include",
+    headers: { "Content-Type": "application/json" },
+    body: "{}",
+    keepalive: true,
+  }).catch(() => {});
 }
 
 /** "2.4 MB", "830 KB", the way a file's size is said. */

@@ -217,7 +217,11 @@
     "fileTooBig": "Dateien dürfen bis zu 10 MB groß sein.",
     "fileSlowDown": "Zu viele Dateien auf einmal. Versuch es in einer Minute noch einmal.",
     "fileFailed": "Die Datei wurde nicht hochgeladen. Versuch es noch einmal.",
-    "mentionSomeone": "Jemanden erwähnen"
+    "mentionSomeone": "Jemanden erwähnen",
+    "notifyTitle": "Benachrichtigungen aktivieren",
+    "notifyBody": "Nachrichten und Erwähnungen, auch wenn TinyFloor geschlossen ist.",
+    "notifyOn": "Aktivieren",
+    "notNow": "Nicht jetzt"
   },
   "proximity": {
     "call": "Anrufen",
@@ -279,7 +283,7 @@
     "mediaLocal": "Nur in diesem Browser gespeichert.",
     "sounds": "Töne",
     "messageSound": "Neue Nachrichten",
-    "messageSoundNote": "Ein leiser Ton, wenn eine Nachricht eintrifft.",
+    "messageSoundNote": "Ein leiser Ton bei Direktnachrichten und Erwähnungen.",
     "joinSound": "Jemand kommt dazu",
     "joinSoundNote": "Ein leiser Ton, wenn jemand die Fläche betritt.",
     "onTheFloor": "Auf der Fläche",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "Weniger Animationen in der ganzen App.",
     "performance": "Leistung",
     "batterySaver": "Energiesparmodus",
-    "batterySaverNote": "Zeichnet die Fläche mit niedrigerer Bildrate. Gilt beim nächsten Betreten."
+    "batterySaverNote": "Zeichnet die Fläche mit niedrigerer Bildrate. Gilt beim nächsten Betreten.",
+    "desktop": "Desktop",
+    "desktopNotifications": "Benachrichtigungen anzeigen",
+    "desktopNote": "Direktnachrichten und Erwähnungen, auch wenn TinyFloor geschlossen ist. Anrufe und Winken, während es in einem anderen Fenster offen ist.",
+    "desktopBlocked": "Von deinem Browser blockiert. Erlaube Benachrichtigungen für diese Seite über das Symbol neben der Adressleiste.",
+    "turnOn": "Aktivieren"
   },
   "scene": {
     "sit": "E drücken zum Hinsetzen",

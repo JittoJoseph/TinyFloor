@@ -217,7 +217,11 @@
     "fileTooBig": "Filer må fylde op til 10 MB.",
     "fileSlowDown": "For mange filer på én gang. Prøv igen om et minut.",
     "fileFailed": "Filen blev ikke uploadet. Prøv igen.",
-    "mentionSomeone": "Nævn nogen"
+    "mentionSomeone": "Nævn nogen",
+    "notifyTitle": "Slå notifikationer til",
+    "notifyBody": "Beskeder og omtaler, også når TinyFloor er lukket.",
+    "notifyOn": "Slå til",
+    "notNow": "Ikke nu"
   },
   "proximity": {
     "call": "Ring op",
@@ -279,7 +283,7 @@
     "mediaLocal": "Gemmes kun i denne browser.",
     "sounds": "Lyde",
     "messageSound": "Nye beskeder",
-    "messageSoundNote": "En blød lyd, når en besked kommer.",
+    "messageSoundNote": "En blød lyd ved direkte beskeder og omtaler.",
     "joinSound": "Nogen ankommer",
     "joinSoundNote": "En blød lyd, når nogen træder ind på etagen.",
     "onTheFloor": "På etagen",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "Færre animationer i hele appen.",
     "performance": "Ydeevne",
     "batterySaver": "Batterisparer",
-    "batterySaverNote": "Tegner etagen med lavere billedhastighed. Gælder næste gang, du går ind."
+    "batterySaverNote": "Tegner etagen med lavere billedhastighed. Gælder næste gang, du går ind.",
+    "desktop": "Skrivebord",
+    "desktopNotifications": "Vis notifikationer",
+    "desktopNote": "Direkte beskeder og omtaler, også når TinyFloor er lukket. Opkald og vink, mens det er åbent i et andet vindue.",
+    "desktopBlocked": "Blokeret af din browser. Tillad notifikationer for siden via ikonet ved adresselinjen.",
+    "turnOn": "Slå til"
   },
   "scene": {
     "sit": "Tryk på E for at sætte dig",

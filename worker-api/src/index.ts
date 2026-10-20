@@ -7,6 +7,7 @@ import { floorRoutes } from "./floor";
 import { googleRoutes } from "./google";
 import { helpRoutes } from "./help";
 import { officeRoutes } from "./offices";
+import { pushRoutes } from "./push";
 import { teamRoutes } from "./team";
 import { assertSafeUpload, fileRoutes, UPLOAD_PATH } from "./files";
 import { runRetention } from "./retention";
@@ -30,6 +31,7 @@ callRoutes(router);
 billingRoutes(router);
 adminRoutes(router);
 helpRoutes(router);
+pushRoutes(router);
 
 export default {
   async fetch(request, env, ctx) {

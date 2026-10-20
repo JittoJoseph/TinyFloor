@@ -217,7 +217,11 @@
     "fileTooBig": "Bestanden mogen tot 10 MB zijn.",
     "fileSlowDown": "Te veel bestanden tegelijk. Probeer het over een minuut opnieuw.",
     "fileFailed": "Dat bestand is niet geüpload. Probeer het opnieuw.",
-    "mentionSomeone": "Iemand noemen"
+    "mentionSomeone": "Iemand noemen",
+    "notifyTitle": "Meldingen aanzetten",
+    "notifyBody": "Berichten en vermeldingen, ook als TinyFloor dicht is.",
+    "notifyOn": "Aanzetten",
+    "notNow": "Niet nu"
   },
   "proximity": {
     "call": "Bellen",
@@ -279,7 +283,7 @@
     "mediaLocal": "Alleen in deze browser bewaard.",
     "sounds": "Geluiden",
     "messageSound": "Nieuwe berichten",
-    "messageSoundNote": "Een zacht geluid als er een bericht binnenkomt.",
+    "messageSoundNote": "Een zacht geluid bij directe berichten en vermeldingen.",
     "joinSound": "Er komt iemand binnen",
     "joinSoundNote": "Een zacht geluid als iemand de vloer op loopt.",
     "onTheFloor": "Op de vloer",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "Minder animaties in de hele app.",
     "performance": "Prestaties",
     "batterySaver": "Batterijbesparing",
-    "batterySaverNote": "Tekent de vloer met een lagere framerate. Geldt de volgende keer dat je binnenkomt."
+    "batterySaverNote": "Tekent de vloer met een lagere framerate. Geldt de volgende keer dat je binnenkomt.",
+    "desktop": "Bureaublad",
+    "desktopNotifications": "Meldingen tonen",
+    "desktopNote": "Directe berichten en vermeldingen, ook als TinyFloor dicht is. Oproepen en zwaaien terwijl het in een ander venster open staat.",
+    "desktopBlocked": "Geblokkeerd door je browser. Sta meldingen voor deze site toe via het pictogram naast de adresbalk.",
+    "turnOn": "Aanzetten"
   },
   "scene": {
     "sit": "Druk op E om te zitten",

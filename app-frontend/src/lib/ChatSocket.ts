@@ -15,6 +15,7 @@ import type { RoomTicket } from "@/lib/api";
 import { playSound } from "./sounds";
 import { help } from "./help";
 import { track } from "@/lib/analytics";
+import { lastConversation } from "./chatMemory";
 
 const HEARTBEAT_MS = 30_000;
 const RECONNECT_BASE_MS = 1_000;
@@ -80,6 +81,10 @@ class ChatSocket {
   private watching: string | null = null;
   /** Told about messages from others that land somewhere you are not looking. */
   private incoming = new Set<(message: ChatMessage) => void>();
+  /** Conversations whose latest messages are on their way, so they're asked for once. */
+  private asked = new Set<string>();
+  /** Conversations to start over from what the server says (after a dropped connection), not merge into. */
+  private fresh = new Set<string>();
   /** Searches waiting for their answer, by what was asked. */
   private searches = new Map<string, Array<(found: ChatMessage[]) => void>>();
 
@@ -112,6 +117,8 @@ class ChatSocket {
     this.place = null;
     this.ticketFor = null;
     this.queue = [];
+    this.asked.clear();
+    this.fresh.clear();
     this.set(EMPTY);
   }
 
@@ -124,6 +131,11 @@ class ChatSocket {
   getServerSnapshot = () => EMPTY;
 
   /** What the chat view is showing; its messages count as read. */
+  /** The channel on screen, if any. */
+  get watched() {
+    return this.watching;
+  }
+
   watch(channel: string | null) {
     this.watching = channel;
     if (!channel) return;
@@ -166,6 +178,17 @@ class ChatSocket {
     if (!waiting) return;
     this.searches.delete(q);
     waiting.forEach((resolve) => resolve(found));
+  }
+
+  /**
+   * A conversation's latest messages, if we don't have them and haven't asked:
+   * when it's opened, when the pointer rests on it in the list, and for the
+   * one Chat will open, as soon as the chat connects, so it's there already.
+   */
+  warm(channel: string) {
+    if (!this.state.ready || this.state.history[channel] || this.asked.has(channel)) return;
+    this.asked.add(channel);
+    this.send({ t: "chat_history", channel });
   }
 
   older(channel: string) {
@@ -262,13 +285,33 @@ class ChatSocket {
         // Coming back after a dropped connection: the lobby's direct messages live only here, so they stay.
         const kept = this.state.channels.filter((one) => one.kind === "dm" && !message.channels.some((other) => other.id === one.id));
         const channels = withGeneral([...message.channels, ...kept]);
-        this.set({ ...this.state, ready: true, me: message.me, channels, unread: total(channels) });
+        // What was said while we were away isn't in what we hold: the open conversation is
+        // read again from the server, the rest when they're next opened. (A lobby direct
+        // message, numbered below zero, was never stored, so it stays as it is.)
+        this.asked.clear();
+        const history: Record<string, ChatMessage[]> = {};
+        for (const [id, messages] of Object.entries(this.state.history)) {
+          if (!messages.some((one) => one.seq > 0)) history[id] = messages;
+          else if (id === this.watching) {
+            // Kept on screen until the server's version replaces it.
+            this.fresh.add(id);
+            history[id] = messages;
+          }
+        }
+        this.set({ ...this.state, ready: true, me: message.me, channels, history, unread: total(channels) });
+        if (this.watching && this.fresh.has(this.watching)) {
+          this.asked.add(this.watching);
+          this.send({ t: "chat_history", channel: this.watching });
+        }
+        if (this.place) this.warm(lastConversation(this.place) ?? GENERAL_CHANNEL);
         break;
       }
       case "chat_new": {
         const { channel } = message.message;
         if (this.state.history[channel]?.some((one) => one.seq === message.message.seq)) break;
-        const seen = this.watching === channel;
+        // On screen only counts while the tab is: a message that lands while you're
+        // in another window waits as unread, and is marked read when you come back.
+        const seen = this.watching === channel && document.visibilityState === "visible";
         const mine = message.message.author === this.state.me;
         const forMe = !mine && !seen && !!message.message.mentions?.includes(this.state.me);
         const history = [...(this.state.history[channel] ?? []), message.message];
@@ -307,14 +350,16 @@ class ChatSocket {
           history: { ...this.state.history, [channel]: history },
         });
         if (seen && message.message.seq > 0) this.send({ t: "chat_read", channel, seq: message.message.seq });
-        else if (message.message.author !== this.state.me) {
-          playSound("message");
+        else if (!mine) {
+          // A sound only for what's yours, the same as the rail's count: a busy channel stays quiet.
+          if (isDm(channel) || forMe) playSound("message");
           this.incoming.forEach((listener) => listener(message.message));
         }
         break;
       }
       case "chat_page": {
-        const known = this.state.history[message.channel] ?? [];
+        this.asked.delete(message.channel);
+        const known = this.fresh.delete(message.channel) ? [] : (this.state.history[message.channel] ?? []);
         const seqs = new Set(known.map((one) => one.seq));
         const merged = [...message.messages.filter((one) => !seqs.has(one.seq)), ...known].sort(
           (a, b) => a.seq - b.seq,
@@ -418,3 +463,10 @@ const total = (channels: ChannelSummary[]) =>
   channels.reduce((sum, one) => sum + (one.kind === "dm" ? one.unread : (one.mentions ?? 0)), 0);
 
 export const chat = new ChatSocket();
+
+// Back in the tab: what arrived in the open conversation meanwhile is read now.
+if (typeof document !== "undefined") {
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible") chat.watch(chat.watched);
+  });
+}

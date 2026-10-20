@@ -217,7 +217,11 @@
     "fileTooBig": "קבצים יכולים להגיע עד 10 MB.",
     "fileSlowDown": "יותר מדי קבצים בבת אחת. נסו שוב בעוד דקה.",
     "fileFailed": "הקובץ לא הועלה. נסו שוב.",
-    "mentionSomeone": "אזכור מישהו"
+    "mentionSomeone": "אזכור מישהו",
+    "notifyTitle": "הפעלת התראות",
+    "notifyBody": "הודעות ואזכורים, גם כש-TinyFloor סגור.",
+    "notifyOn": "הפעלה",
+    "notNow": "לא עכשיו"
   },
   "proximity": {
     "call": "התקשרות",
@@ -279,7 +283,7 @@
     "mediaLocal": "נשמר רק בדפדפן הזה.",
     "sounds": "צלילים",
     "messageSound": "הודעות חדשות",
-    "messageSoundNote": "צליל רך כשמגיעה הודעה.",
+    "messageSoundNote": "צליל רך להודעות ישירות ולאזכורים.",
     "joinSound": "מישהו מגיע",
     "joinSoundNote": "צליל רך כשמישהו נכנס לקומה.",
     "onTheFloor": "בקומה",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "פחות אנימציות בכל האפליקציה.",
     "performance": "ביצועים",
     "batterySaver": "חיסכון בסוללה",
-    "batterySaverNote": "מצייר את הקומה בקצב פריימים נמוך יותר. חל בכניסה הבאה."
+    "batterySaverNote": "מצייר את הקומה בקצב פריימים נמוך יותר. חל בכניסה הבאה.",
+    "desktop": "שולחן העבודה",
+    "desktopNotifications": "הצגת התראות",
+    "desktopNote": "הודעות ישירות ואזכורים, גם כש-TinyFloor סגור. שיחות ונפנופים כשהוא פתוח בחלון אחר.",
+    "desktopBlocked": "הדפדפן חוסם אותן. אפשר התראות לאתר הזה דרך הסמל שליד שורת הכתובת.",
+    "turnOn": "הפעלה"
   },
   "scene": {
     "sit": "E לישיבה",

@@ -96,7 +96,8 @@
     "arrived": "{name} är här",
     "wave": "👋 Vinka",
     "waved": "{name} vinkade till dig",
-    "waveBack": "👋 Vinka tillbaka"
+    "waveBack": "👋 Vinka tillbaka",
+    "installApp": "Installera appen"
   },
   "home": {
     "nav": {

@@ -96,7 +96,8 @@
     "arrived": "{name} tuli paikalle",
     "wave": "👋 Vilkuta",
     "waved": "{name} vilkutti sinulle",
-    "waveBack": "👋 Vilkuta takaisin"
+    "waveBack": "👋 Vilkuta takaisin",
+    "installApp": "Asenna sovellus"
   },
   "home": {
     "nav": {

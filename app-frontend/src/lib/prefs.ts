@@ -12,8 +12,10 @@ export interface Prefs {
   echoCancellation: boolean;
   /** Your own camera shown as a mirror, the way most people expect. */
   mirrorVideo: boolean;
-  /** A sound when a message arrives. */
+  /** A sound when a message for you arrives: a direct message or a mention. */
   messageSound: boolean;
+  /** Desktop notifications, once the browser allows them (lib/notify.ts). */
+  desktopNotifications: boolean;
   /** A sound when someone walks onto the floor. */
   joinSound: boolean;
   /** Messages you have not seen, shown for a moment over the floor. */
@@ -29,6 +31,7 @@ const DEFAULT_PREFS: Prefs = {
   echoCancellation: true,
   mirrorVideo: true,
   messageSound: true,
+  desktopNotifications: true,
   joinSound: true,
   nudges: true,
   reduceMotion: false,

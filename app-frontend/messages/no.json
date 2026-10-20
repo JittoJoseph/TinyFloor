@@ -217,7 +217,11 @@
     "fileTooBig": "Filer kan være opptil 10 MB.",
     "fileSlowDown": "For mange filer på en gang. Prøv igjen om et minutt.",
     "fileFailed": "Filen ble ikke lastet opp. Prøv igjen.",
-    "mentionSomeone": "Nevn noen"
+    "mentionSomeone": "Nevn noen",
+    "notifyTitle": "Slå på varsler",
+    "notifyBody": "Meldinger og omtaler, også når TinyFloor er lukket.",
+    "notifyOn": "Slå på",
+    "notNow": "Ikke nå"
   },
   "proximity": {
     "call": "Ring",
@@ -279,7 +283,7 @@
     "mediaLocal": "Lagres bare i denne nettleseren.",
     "sounds": "Lyder",
     "messageSound": "Nye meldinger",
-    "messageSoundNote": "En myk lyd når en melding kommer.",
+    "messageSoundNote": "En myk lyd ved direktemeldinger og omtaler.",
     "joinSound": "Noen kommer",
     "joinSoundNote": "En myk lyd når noen går inn i etasjen.",
     "onTheFloor": "I etasjen",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "Færre animasjoner i hele appen.",
     "performance": "Ytelse",
     "batterySaver": "Batterisparing",
-    "batterySaverNote": "Tegner etasjen med lavere bildefrekvens. Gjelder neste gang du går inn."
+    "batterySaverNote": "Tegner etasjen med lavere bildefrekvens. Gjelder neste gang du går inn.",
+    "desktop": "Skrivebord",
+    "desktopNotifications": "Vis varsler",
+    "desktopNote": "Direktemeldinger og omtaler, også når TinyFloor er lukket. Anrop og vinking mens det er åpent i et annet vindu.",
+    "desktopBlocked": "Blokkert av nettleseren. Tillat varsler for nettstedet fra ikonet ved adressefeltet.",
+    "turnOn": "Slå på"
   },
   "scene": {
     "sit": "Trykk E for å sette deg",

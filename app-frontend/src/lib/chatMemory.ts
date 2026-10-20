@@ -1,3 +1,5 @@
+import { GENERAL_CHANNEL } from "@shared/chat";
+
 /**
  * What chat remembers for you between visits to it (docs/product.md): the
  * conversation you were last in, per office, so coming back to Chat opens it
@@ -23,6 +25,19 @@ export function lastConversation(place: string): string | null {
   } catch {
     return null;
   }
+}
+
+/**
+ * Where Chat opens on a wide screen: the conversation you were last in, if
+ * `stillThere` says you can still open it (a direct message with someone who
+ * has left can't be); otherwise it's forgotten, and Chat opens on #general.
+ */
+export function conversationToOpen(place: string, stillThere: (channel: string) => boolean): string | null {
+  const last = lastConversation(place);
+  if (!last || last === GENERAL_CHANNEL) return null;
+  if (stillThere(last)) return last;
+  rememberConversation(place, null);
+  return null;
 }
 
 export function rememberConversation(place: string, channel: string | null) {

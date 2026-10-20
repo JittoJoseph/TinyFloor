@@ -31,6 +31,7 @@ import {
   CallMissed01Icon,
   Cancel01Icon,
   Coffee01Icon,
+  ComputerArrowDownIcon,
   ComputerIcon,
   ComputerRemoveIcon,
   ComputerScreenShareIcon,
@@ -213,6 +214,7 @@ export const Pin = icon(PinIcon, "Pin");
 export const PinOff = icon(PinOffIcon, "PinOff");
 export const Minus = icon(MinusSignIcon, "Minus");
 export const Monitor = icon(ComputerIcon, "Monitor");
+export const MonitorDown = icon(ComputerArrowDownIcon, "MonitorDown");
 export const MonitorUp = icon(ComputerScreenShareIcon, "MonitorUp");
 export const MonitorX = icon(ComputerRemoveIcon, "MonitorX");
 export const Moon = icon(Moon02Icon, "Moon");

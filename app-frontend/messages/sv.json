@@ -217,7 +217,11 @@
     "fileTooBig": "Filer får vara upp till 10 MB.",
     "fileSlowDown": "För många filer på en gång. Försök igen om en minut.",
     "fileFailed": "Filen laddades inte upp. Försök igen.",
-    "mentionSomeone": "Nämn någon"
+    "mentionSomeone": "Nämn någon",
+    "notifyTitle": "Slå på aviseringar",
+    "notifyBody": "Meddelanden och omnämnanden, även när TinyFloor är stängt.",
+    "notifyOn": "Slå på",
+    "notNow": "Inte nu"
   },
   "proximity": {
     "call": "Ring",
@@ -279,7 +283,7 @@
     "mediaLocal": "Sparas bara i den här webbläsaren.",
     "sounds": "Ljud",
     "messageSound": "Nya meddelanden",
-    "messageSoundNote": "Ett mjukt ljud när ett meddelande kommer.",
+    "messageSoundNote": "Ett mjukt ljud vid direktmeddelanden och omnämnanden.",
     "joinSound": "Någon kommer",
     "joinSoundNote": "Ett mjukt ljud när någon kliver in på planet.",
     "onTheFloor": "På planet",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "Färre animationer i hela appen.",
     "performance": "Prestanda",
     "batterySaver": "Batterisparläge",
-    "batterySaverNote": "Ritar planet med lägre bildfrekvens. Gäller nästa gång du går in."
+    "batterySaverNote": "Ritar planet med lägre bildfrekvens. Gäller nästa gång du går in.",
+    "desktop": "Skrivbord",
+    "desktopNotifications": "Visa aviseringar",
+    "desktopNote": "Direktmeddelanden och omnämnanden, även när TinyFloor är stängt. Samtal och vinkningar medan det är öppet i ett annat fönster.",
+    "desktopBlocked": "Blockerade av webbläsaren. Tillåt aviseringar för webbplatsen via ikonen bredvid adressfältet.",
+    "turnOn": "Slå på"
   },
   "scene": {
     "sit": "Tryck E för att sätta dig",

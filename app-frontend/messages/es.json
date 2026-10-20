@@ -217,7 +217,11 @@
     "fileTooBig": "Los archivos pueden pesar hasta 10 MB.",
     "fileSlowDown": "Demasiados archivos a la vez. Inténtalo en un minuto.",
     "fileFailed": "Ese archivo no se subió. Inténtalo de nuevo.",
-    "mentionSomeone": "Mencionar a alguien"
+    "mentionSomeone": "Mencionar a alguien",
+    "notifyTitle": "Activa las notificaciones",
+    "notifyBody": "Mensajes y menciones, incluso con TinyFloor cerrado.",
+    "notifyOn": "Activar",
+    "notNow": "Ahora no"
   },
   "proximity": {
     "call": "Llamar",
@@ -279,7 +283,7 @@
     "mediaLocal": "Guardado solo en este navegador.",
     "sounds": "Sonidos",
     "messageSound": "Mensajes nuevos",
-    "messageSoundNote": "Un sonido suave cuando llega un mensaje.",
+    "messageSoundNote": "Un sonido suave para mensajes directos y menciones.",
     "joinSound": "Llega alguien",
     "joinSoundNote": "Un sonido suave cuando alguien entra en la planta.",
     "onTheFloor": "En la planta",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "Menos animaciones en toda la aplicación.",
     "performance": "Rendimiento",
     "batterySaver": "Ahorro de batería",
-    "batterySaverNote": "Dibuja la planta a menos fotogramas por segundo. Se aplica la próxima vez que entres."
+    "batterySaverNote": "Dibuja la planta a menos fotogramas por segundo. Se aplica la próxima vez que entres.",
+    "desktop": "Escritorio",
+    "desktopNotifications": "Mostrar notificaciones",
+    "desktopNote": "Mensajes directos y menciones, incluso con TinyFloor cerrado. Llamadas y saludos mientras está abierto en otra ventana.",
+    "desktopBlocked": "Tu navegador las bloquea. Permite las notificaciones de este sitio desde el icono junto a la barra de direcciones.",
+    "turnOn": "Activar"
   },
   "scene": {
     "sit": "Pulsa E para sentarte",

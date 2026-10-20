@@ -217,7 +217,11 @@
     "fileTooBig": "Les fichiers peuvent faire jusqu'à 10 Mo.",
     "fileSlowDown": "Trop de fichiers d'un coup. Réessayez dans une minute.",
     "fileFailed": "Ce fichier n'a pas été envoyé. Réessayez.",
-    "mentionSomeone": "Mentionner quelqu'un"
+    "mentionSomeone": "Mentionner quelqu'un",
+    "notifyTitle": "Activer les notifications",
+    "notifyBody": "Messages et mentions, même quand TinyFloor est fermé.",
+    "notifyOn": "Activer",
+    "notNow": "Pas maintenant"
   },
   "proximity": {
     "call": "Appeler",
@@ -279,7 +283,7 @@
     "mediaLocal": "Enregistré dans ce navigateur uniquement.",
     "sounds": "Sons",
     "messageSound": "Nouveaux messages",
-    "messageSoundNote": "Un son discret à l'arrivée d'un message.",
+    "messageSoundNote": "Un son discret pour les messages privés et les mentions.",
     "joinSound": "Quelqu'un arrive",
     "joinSoundNote": "Un son discret quand quelqu'un entre sur l'étage.",
     "onTheFloor": "Sur l'étage",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "Moins d'animations dans toute l'application.",
     "performance": "Performances",
     "batterySaver": "Économie de batterie",
-    "batterySaverNote": "Affiche l'étage avec moins d'images par seconde. S'applique à votre prochaine entrée."
+    "batterySaverNote": "Affiche l'étage avec moins d'images par seconde. S'applique à votre prochaine entrée.",
+    "desktop": "Bureau",
+    "desktopNotifications": "Afficher les notifications",
+    "desktopNote": "Messages privés et mentions, même quand TinyFloor est fermé. Appels et saluts quand il est ouvert dans une autre fenêtre.",
+    "desktopBlocked": "Bloquées par votre navigateur. Autorisez les notifications pour ce site depuis l'icône à côté de la barre d'adresse.",
+    "turnOn": "Activer"
   },
   "scene": {
     "sit": "Appuyez sur E pour vous asseoir",

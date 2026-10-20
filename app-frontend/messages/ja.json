@@ -217,7 +217,11 @@
     "fileTooBig": "ファイルは 10 MB まで。",
     "fileSlowDown": "一度に送るファイルが多すぎます。1 分後にもう一度お試しください。",
     "fileFailed": "ファイルをアップロードできませんでした。もう一度お試しください。",
-    "mentionSomeone": "メンションする"
+    "mentionSomeone": "メンションする",
+    "notifyTitle": "通知をオンにする",
+    "notifyBody": "TinyFloor を閉じていても、メッセージとメンションが届きます。",
+    "notifyOn": "オンにする",
+    "notNow": "後で"
   },
   "proximity": {
     "call": "通話",
@@ -279,7 +283,7 @@
     "mediaLocal": "このブラウザにのみ保存されます。",
     "sounds": "サウンド",
     "messageSound": "新しいメッセージ",
-    "messageSoundNote": "メッセージが届くと控えめな音が鳴ります。",
+    "messageSoundNote": "ダイレクトメッセージとメンションで控えめな音が鳴ります。",
     "joinSound": "誰かが来たとき",
     "joinSoundNote": "誰かがフロアに入ると控えめな音が鳴ります。",
     "onTheFloor": "フロア",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "アプリ全体のアニメーションを減らします。",
     "performance": "パフォーマンス",
     "batterySaver": "バッテリー節約",
-    "batterySaverNote": "フロアを低いフレームレートで描画します。次に入ったときから有効です。"
+    "batterySaverNote": "フロアを低いフレームレートで描画します。次に入ったときから有効です。",
+    "desktop": "デスクトップ",
+    "desktopNotifications": "通知を表示",
+    "desktopNote": "TinyFloor を閉じていても、ダイレクトメッセージとメンションを通知します。通話と手振りは別のウィンドウで開いている間に通知します。",
+    "desktopBlocked": "ブラウザでブロックされています。アドレスバー横のアイコンから、このサイトの通知を許可してください。",
+    "turnOn": "オンにする"
   },
   "scene": {
     "sit": "E キーで座る",

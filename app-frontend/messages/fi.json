@@ -217,7 +217,11 @@
     "fileTooBig": "Tiedosto voi olla enintään 10 Mt.",
     "fileSlowDown": "Liian monta tiedostoa kerralla. Yritä minuutin päästä uudelleen.",
     "fileFailed": "Tiedosto ei latautunut. Yritä uudelleen.",
-    "mentionSomeone": "Mainitse joku"
+    "mentionSomeone": "Mainitse joku",
+    "notifyTitle": "Ota ilmoitukset käyttöön",
+    "notifyBody": "Viestit ja maininnat, myös kun TinyFloor on suljettu.",
+    "notifyOn": "Ota käyttöön",
+    "notNow": "Ei nyt"
   },
   "proximity": {
     "call": "Soita",
@@ -279,7 +283,7 @@
     "mediaLocal": "Tallennetaan vain tähän selaimeen.",
     "sounds": "Äänet",
     "messageSound": "Uudet viestit",
-    "messageSoundNote": "Pehmeä ääni, kun viesti saapuu.",
+    "messageSoundNote": "Pehmeä ääni yksityisviesteistä ja maininnoista.",
     "joinSound": "Joku saapuu",
     "joinSoundNote": "Pehmeä ääni, kun joku astuu kerrokseen.",
     "onTheFloor": "Kerroksessa",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "Vähemmän animaatioita koko sovelluksessa.",
     "performance": "Suorituskyky",
     "batterySaver": "Virransäästö",
-    "batterySaverNote": "Piirtää kerroksen pienemmällä kuvataajuudella. Tulee voimaan seuraavalla kerralla."
+    "batterySaverNote": "Piirtää kerroksen pienemmällä kuvataajuudella. Tulee voimaan seuraavalla kerralla.",
+    "desktop": "Työpöytä",
+    "desktopNotifications": "Näytä ilmoitukset",
+    "desktopNote": "Yksityisviestit ja maininnat, myös kun TinyFloor on suljettu. Puhelut ja vilkutukset, kun se on auki toisessa ikkunassa.",
+    "desktopBlocked": "Selaimesi estää ne. Salli tämän sivuston ilmoitukset osoiterivin vieressä olevasta kuvakkeesta.",
+    "turnOn": "Ota käyttöön"
   },
   "scene": {
     "sit": "Paina E istuaksesi",

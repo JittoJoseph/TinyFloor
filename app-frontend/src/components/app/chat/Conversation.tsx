@@ -58,6 +58,7 @@ export function Conversation({
   editLast,
   names,
   target,
+  loading = false,
 }: {
   lines: Line[];
   me: string;
@@ -79,6 +80,8 @@ export function Conversation({
   names?: Map<string, string>;
   /** A message to bring into view: a search result. */
   target?: string | null;
+  /** Its messages are on their way: nothing is said until they're here, then they fade in. */
+  loading?: boolean;
 }) {
   const t = useTranslations("chat");
   // One message is edited at a time, so Up in the box can open the right one.
@@ -102,6 +105,13 @@ export function Conversation({
   const lastId = lines.at(-1)?.id;
   const heightBefore = useRef(0);
   const reduce = useReducedMotion();
+  // Opened before its messages had come: they fade in when they do. Opened with them
+  // already here (seen before, or fetched ahead), they're simply there.
+  const [arrived] = useState(loading);
+  // What's said after it first showed eases in, one message at a time; a page of
+  // older ones loaded above doesn't.
+  const [settledAt, setSettledAt] = useState<number | null>(loading ? null : (lines.at(-1)?.at ?? 0));
+  if (!loading && settledAt === null) setSettledAt(lines.at(-1)?.at ?? 0);
 
   // New messages: follow them if you were at the bottom, otherwise say so. Your own always come into view.
   const lastAuthor = lines.at(-1)?.author;
@@ -174,41 +184,54 @@ export function Conversation({
         className="absolute inset-0 overflow-y-auto overscroll-contain pb-4"
       >
         <div ref={top} />
-        {more ? (
-          <div className="flex justify-center py-6 text-muted-foreground">
-            <Loader variant="dots" size={16} />
-          </div>
+        {loading ? (
+          <Patiently />
         ) : (
-          <div className="px-5 pb-2 pt-10 sm:px-6">{intro}</div>
-        )}
+          <motion.div
+            initial={arrived ? (reduce ? { opacity: 0 } : { opacity: 0, y: 6 }) : false}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.24, ease: EASE_OUT }}
+          >
+            {more ? (
+              <div className="flex justify-center py-6 text-muted-foreground">
+                <Loader variant="dots" size={16} />
+              </div>
+            ) : (
+              <div className="px-5 pb-2 pt-10 sm:px-6">{intro}</div>
+            )}
 
-        {days.map((day) => (
-          <section key={day.key}>
-            <DayLabel at={day.at} />
-            {day.lines.map((line, index) => {
-              const previous = day.lines[index - 1];
-              const grouped = !!previous && previous.author === line.author && line.at - previous.at < RUN_MS;
-              return (
-                <Fragment key={line.id}>
-                  {line.id === firstUnread && <NewLine label={t("new")} />}
-                  <Message
-                    line={line}
-                    grouped={grouped && line.id !== firstUnread}
-                    me={me}
-                    onReact={onReact}
-                    onEdit={line.author === me ? onEdit : undefined}
-                    onDelete={line.author === me ? onDelete : undefined}
-                    personCard={personCard}
-                    editing={editing === line.id}
-                    onEditing={(on) => (on ? setEditing(line.id) : doneEditing())}
-                    names={names}
-                    lit={lit === line.id}
-                  />
-                </Fragment>
-              );
-            })}
-          </section>
-        ))}
+            {days.map((day) => (
+              <section key={day.key}>
+                <DayLabel at={day.at} />
+                {day.lines.map((line, index) => {
+                  const previous = day.lines[index - 1];
+                  const grouped = !!previous && previous.author === line.author && line.at - previous.at < RUN_MS;
+                  const fresh = settledAt !== null && line.at > settledAt;
+                  return (
+                    <Fragment key={line.id}>
+                      {line.id === firstUnread && <NewLine label={t("new")} />}
+                      <Arrive fresh={fresh}>
+                        <Message
+                          line={line}
+                          grouped={grouped && line.id !== firstUnread}
+                          me={me}
+                          onReact={onReact}
+                          onEdit={line.author === me ? onEdit : undefined}
+                          onDelete={line.author === me ? onDelete : undefined}
+                          personCard={personCard}
+                          editing={editing === line.id}
+                          onEditing={(on) => (on ? setEditing(line.id) : doneEditing())}
+                          names={names}
+                          lit={lit === line.id}
+                        />
+                      </Arrive>
+                    </Fragment>
+                  );
+                })}
+              </section>
+            ))}
+          </motion.div>
+        )}
       </div>
 
       <AnimatePresence>
@@ -233,6 +256,26 @@ export function Conversation({
       </AnimatePresence>
     </div>
   );
+}
+
+/** A message said just now comes up into place; one that was already here is just there. */
+function Arrive({ fresh, children }: { fresh: boolean; children: ReactNode }) {
+  if (!fresh) return children;
+  return (
+    <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2, ease: EASE_OUT }}>
+      {children}
+    </motion.div>
+  );
+}
+
+/** Waiting on a conversation's messages: nothing at first, so a quick load never flickers; dots if it takes a while. */
+function Patiently() {
+  const [slow, setSlow] = useState(false);
+  useEffect(() => {
+    const timer = setTimeout(() => setSlow(true), 400);
+    return () => clearTimeout(timer);
+  }, []);
+  return <div className="flex h-full items-center justify-center text-muted-foreground">{slow && <Loader variant="dots" size={16} />}</div>;
 }
 
 function byDay(lines: Line[]) {

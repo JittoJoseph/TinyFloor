@@ -217,7 +217,11 @@
     "fileTooBig": "Files can be up to 10 MB.",
     "fileSlowDown": "Too many files at once. Try again in a minute.",
     "fileFailed": "That file didn't upload. Try again.",
-    "mentionSomeone": "Mention someone"
+    "mentionSomeone": "Mention someone",
+    "notifyTitle": "Turn on notifications",
+    "notifyBody": "Messages and mentions, even when TinyFloor is closed.",
+    "notifyOn": "Turn on",
+    "notNow": "Not now"
   },
   "proximity": {
     "call": "Call",
@@ -279,7 +283,7 @@
     "mediaLocal": "Kept in this browser only.",
     "sounds": "Sounds",
     "messageSound": "New messages",
-    "messageSoundNote": "A soft sound when a message comes in.",
+    "messageSoundNote": "A soft sound for direct messages and mentions.",
     "joinSound": "Someone arrives",
     "joinSoundNote": "A soft sound when someone walks onto the floor.",
     "onTheFloor": "On the floor",
@@ -290,7 +294,12 @@
     "reduceMotionNote": "Fewer animations across the app.",
     "performance": "Performance",
     "batterySaver": "Battery saver",
-    "batterySaverNote": "Draws the floor at a lower frame rate. Applies the next time you walk in."
+    "batterySaverNote": "Draws the floor at a lower frame rate. Applies the next time you walk in.",
+    "desktop": "Desktop",
+    "desktopNotifications": "Show notifications",
+    "desktopNote": "Direct messages and mentions, even when TinyFloor is closed. Calls and waves while it's open in another window.",
+    "desktopBlocked": "Blocked by your browser. Allow notifications for this site from the icon beside the address bar.",
+    "turnOn": "Turn on"
   },
   "scene": {
     "sit": "Press E to sit",

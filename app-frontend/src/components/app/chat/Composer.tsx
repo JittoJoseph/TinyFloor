@@ -47,6 +47,8 @@ interface Pending {
   progress: number;
   done?: ChatFile;
   failed?: FileProblem["code"];
+  /** Calls the upload off if it's taken out before it's up. */
+  stop: AbortController;
 }
 
 /**
@@ -69,6 +71,7 @@ export function Composer({
   onSend,
   onFiles,
   upload,
+  discard,
   people,
   note,
   maxLength = 4000,
@@ -81,7 +84,9 @@ export function Composer({
   /** Where files can't go (the lobby): the view says why, instead of taking them. */
   onFiles?: (files: File[]) => void;
   /** Sends a file up; without it, files go to `onFiles`. */
-  upload?: (file: Prepared, progress: (fraction: number) => void) => Promise<ChatFile>;
+  upload?: (file: Prepared, progress: (fraction: number) => void, signal: AbortSignal) => Promise<ChatFile>;
+  /** Throws away a file that went up but won't be sent. */
+  discard?: (file: ChatFile) => void;
   /** Who "@" can mention. */
   people?: Mentionable[];
   /** Something the room said, like "slow down". */
@@ -167,14 +172,39 @@ export function Composer({
       const preview = isPicture({ type: file.type }) ? URL.createObjectURL(file) : undefined;
       if (preview) previews.current.add(preview);
       const change = (patch: Partial<Pending>) => setPending((all) => all.map((one) => (one.id === id ? { ...one, ...patch } : one)));
-      setPending((all) => [...all, { id, name: file.name || "file", size: file.size, type: file.type, preview, progress: 0 }]);
+      const stop = new AbortController();
+      setPending((all) => [...all, { id, name: file.name || "file", size: file.size, type: file.type, preview, progress: 0, stop }]);
       void prepare(file)
-        .then((ready) => upload(ready, (progress) => change({ progress })))
-        .then((done) => change({ done, progress: 1 }))
+        .then((ready) => upload(ready, (progress) => change({ progress }), stop.signal))
+        .then((done) => {
+          // Taken out while it went up: it isn't wanted.
+          if (stop.signal.aborted) return discard?.(done);
+          change({ done, progress: 1 });
+        })
         .catch((error: unknown) => change({ failed: error instanceof FileProblem ? error.code : "failed" }));
     }
     box.current?.focus({ preventScroll: true });
   };
+
+  // Taken out of the box: stopped if it's still going up, deleted if it's up.
+  const drop = (one: Pending) => {
+    one.stop.abort();
+    if (one.done) discard?.(one.done);
+  };
+  const remove = (one: Pending) => {
+    drop(one);
+    setPending((all) => all.filter((other) => other.id !== one.id));
+  };
+  // Left in the box when the conversation changes or the page goes: the same.
+  const pendingRef = useRef(pending);
+  useEffect(() => {
+    pendingRef.current = pending;
+  });
+  const dropRef = useRef(drop);
+  useEffect(() => {
+    dropRef.current = drop;
+  });
+  useEffect(() => () => pendingRef.current.forEach((one) => dropRef.current(one)), []);
 
   // Dropped on the conversation, outside the box.
   const addRef = useRef(add);
@@ -211,14 +241,15 @@ export function Composer({
   useEffect(() => {
     sendRef.current = send;
   });
+  const failedOne = pending.find((one) => one.failed);
   useEffect(() => {
     if (!waiting || uploading) return;
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setWaiting(false);
-    sendRef.current();
-  }, [waiting, uploading]);
+    // One didn't make it: nothing goes until you've seen why, and taken it out or tried again.
+    if (!failedOne) sendRef.current();
+  }, [waiting, uploading, failedOne]);
 
-  const failedOne = pending.find((one) => one.failed);
   const shownNote =
     note ??
     problem ??
@@ -326,7 +357,7 @@ export function Composer({
                 <button
                   type="button"
                   aria-label={t("removeFile", { name: one.name })}
-                  onClick={() => setPending((all) => all.filter((other) => other.id !== one.id))}
+                  onClick={() => remove(one)}
                   className="absolute -end-1.5 -top-1.5 flex size-5 cursor-pointer items-center justify-center rounded-full bg-foreground text-background opacity-0 shadow-sm transition-opacity group-hover:opacity-100 focus-visible:opacity-100 [@media(pointer:coarse)]:opacity-100"
                 >
                   <X className="size-3" />

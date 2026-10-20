@@ -96,7 +96,8 @@
     "arrived": "{name} הגיע/ה",
     "wave": "👋 לנופף",
     "waved": "{name} נופף/ה לך",
-    "waveBack": "👋 לנופף בחזרה"
+    "waveBack": "👋 לנופף בחזרה",
+    "installApp": "התקנת האפליקציה"
   },
   "home": {
     "nav": {

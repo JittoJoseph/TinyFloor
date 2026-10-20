@@ -96,7 +96,8 @@
     "arrived": "{name} ha llegado",
     "wave": "👋 Saludar",
     "waved": "{name} te ha saludado",
-    "waveBack": "👋 Devolver el saludo"
+    "waveBack": "👋 Devolver el saludo",
+    "installApp": "Instalar app"
   },
   "home": {
     "nav": {

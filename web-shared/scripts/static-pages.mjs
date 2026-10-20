@@ -82,7 +82,8 @@ console.log(`static pages: ${paths.length} built pages served as files, for ${si
 // theirs. Should a request for one of these pages ever reach Next after all,
 // it renders it instead of reading it.
 const buildId = (await readFile(join(root, ".next/BUILD_ID"), "utf8")).trim();
-const cache = join(root, ".open-next/assets/cdn-cgi/_next_cache", buildId);
+// Still in .open-next/cache here: the deploy copies it into the assets (populate-cache).
+const cache = join(root, ".open-next/cache", buildId);
 let dropped = 0;
 for (const route of paths) {
   const entry = join(cache, `${route}.cache`);

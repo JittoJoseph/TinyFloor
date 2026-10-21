@@ -51,7 +51,7 @@ Measured on 16 October 2026 (English, words a reader sees):
   work and pricing pages, the Portuguese and Spanish Gather pages, and the
   German, French, Italian and Japanese round-ups.
 - Every updated page went to Bing and the other IndexNow engines on 16 October
-  (the deploy's own run, then `marketing-frontend/scripts/indexnow.mjs` by
-  hand, from `marketing-frontend`). Under Git Bash,
+  (`pnpm run indexnow <path…>` from `marketing-frontend`, by hand: deploys
+  don't run it). Under Git Bash,
   run it with `MSYS_NO_PATHCONV=1`, or paths like `/pt/pricing` turn into
   Windows paths and IndexNow refuses them all (422).

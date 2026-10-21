@@ -84,11 +84,12 @@ what the README says first.
 
 ## IndexNow and Bing
 
-Every production deploy tells Bing, Yandex, Seznam, Naver and Yep which
-pages changed (`marketing-frontend/scripts/indexnow.mjs`), by hashing what a
-crawler reads on each page, so a build that only changes code sends nothing.
-ChatGPT search and Copilot answer from Bing's index, so this is also how they
-learn about new pages. The key file is
+Once a deploy that changed or added pages is live, run
+`pnpm run indexnow <path…>` from `marketing-frontend` (a path covers every
+language; `all` sends the whole sitemap) to tell Bing, Yandex, Seznam, Naver
+and Yep. Deploys don't run it: most change no pages. ChatGPT search and
+Copilot answer from Bing's index, so this is also how they learn about new
+pages. The key file is
 `/6537fa0233c5dc0cca20f9d1f56be989.txt`. Bing Webmaster Tools has the site as
 `https://tinyfloor.com/` (covering www) and reads the www sitemap.
 

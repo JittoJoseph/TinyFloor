@@ -1,8 +1,9 @@
 -- Status notes carry an icon from a fixed set (shared-protocol's NOTE_ICONS)
 -- instead of any emoji, so they look the same everywhere. Notes kept with an
--- emoji take the nearest icon, or the speech bubble.
-ALTER TABLE users RENAME COLUMN status_emoji TO status_icon;
-UPDATE users SET status_icon = CASE status_icon
+-- emoji take the nearest icon, or the speech bubble. A new column rather than
+-- a rename: the API still running while this applies reads status_emoji.
+ALTER TABLE users ADD COLUMN status_icon TEXT;
+UPDATE users SET status_icon = CASE status_emoji
     WHEN '🎧' THEN 'focus'
     WHEN '🎯' THEN 'focus'
     WHEN '🍜' THEN 'lunch'
@@ -18,4 +19,4 @@ UPDATE users SET status_icon = CASE status_icon
     WHEN '🌙' THEN 'night'
     ELSE 'chat'
   END
-  WHERE status_icon IS NOT NULL;
+  WHERE status_emoji IS NOT NULL;

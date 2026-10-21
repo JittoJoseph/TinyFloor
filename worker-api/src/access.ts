@@ -1,5 +1,5 @@
 import type { RealtimeAdminApi } from "../../shared-protocol/src";
-import { endTrials, graceEnd } from "./billing";
+import { endTrials, graceEnd, trialEnd } from "./billing";
 import { domainAccess, workDomain, type DomainAccess } from "./domains";
 import { HttpError } from "./http";
 
@@ -20,6 +20,8 @@ export interface Office {
   ownerId: string;
   /** When the trial on its plan ends, while one runs (docs/pricing.md). */
   trialEndsAt: number | null;
+  /** When the trial ended, until a plan is bought or Free is chosen (billing.ts, trialEnd). */
+  trialEndedAt: number | null;
   /** After an ended trial, a Free office keeps everyone on the floor until then (billing.ts, graceEnd). */
   graceEndsAt: number | null;
   invitePolicy: InvitePolicy;
@@ -75,6 +77,7 @@ export async function requireOffice(
     role: row.role,
     ownerId: row.owner_id,
     trialEndsAt: row.trial_ends_at && row.trial_ends_at > now ? row.trial_ends_at : null,
+    trialEndedAt: trialEnd(row.plan, row.trial_ends_at, now),
     graceEndsAt: graceEnd(row.plan, row.trial_ends_at, now),
     invitePolicy: row.invite_policy === "admins" ? "admins" : "everyone",
     joinDomain: workDomain(row.owner_email),
@@ -83,7 +86,7 @@ export async function requireOffice(
 }
 
 /** The office behind a floor, without requiring membership. */
-export async function findOffice(env: Env, officeId: string): Promise<Omit<Office, "role" | "trialEndsAt" | "graceEndsAt" | "invitePolicy" | "joinDomain" | "domainJoin"> | null> {
+export async function findOffice(env: Env, officeId: string): Promise<Omit<Office, "role" | "trialEndsAt" | "trialEndedAt" | "graceEndsAt" | "invitePolicy" | "joinDomain" | "domainJoin"> | null> {
   const row = await env.DB.prepare("SELECT id, name, plan, seats, owner_id FROM offices WHERE id = ?")
     .bind(officeId)
     .first<{ id: string; name: string; plan: string; seats: number; owner_id: string }>();

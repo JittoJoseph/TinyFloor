@@ -24,9 +24,7 @@ import type { RoomTicket } from "@/lib/api";
 import type { ShareResult } from "@/lib/share";
 import { useInvite } from "@/components/app/Invite";
 import { useOfficeMaybe } from "@/components/app/OfficeShell";
-import { DeskHint, DeskOffer } from "./Desks";
-import { ActionHint } from "./ActionHint";
-import { PlanNotice } from "./PlanNotice";
+import { FloorPrompt } from "./FloorPrompt";
 import { FLOOR_ARRIVED_EVENT, floorRequested, sinceFloorRequested, useFloor } from "@/lib/floor";
 import { track } from "@/lib/analytics";
 import { EASE_OUT } from "@/lib/ease";
@@ -256,15 +254,9 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
         {inviteChip && canInvite && <InviteChip copied={copied} onClick={invite} />}
       </div>
 
-      {/* At the top of the floor: what the plan changes, and that a desk can be yours. */}
-      <div className="pointer-events-none absolute inset-x-0 top-16 z-20 flex flex-col items-center gap-2 px-3 sm:top-[4.5rem]">
-        <PlanNotice />
-        <DeskHint />
-      </div>
-      {/* Above the dock: what you can do where you stand, and the offer of the desk you sat at. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-20 z-40 flex flex-col items-center gap-2 px-3 sm:bottom-24">
-        <ActionHint />
-        <DeskOffer />
+      {/* Above the dock, one at a time: the desk you sat at, or what you can do where you stand. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-20 z-40 flex justify-center px-3 sm:bottom-24">
+        <FloorPrompt />
       </div>
       <Joystick />
       <ProximityOverlay />

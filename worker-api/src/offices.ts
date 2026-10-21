@@ -350,6 +350,7 @@ export function officeJson(office: Office, members: number) {
     role: office.role,
     owner: office.ownerId,
     trialEndsAt: office.trialEndsAt,
+    trialEndedAt: office.trialEndedAt,
     graceEndsAt: office.graceEndsAt,
     invitePolicy: office.invitePolicy,
     joinDomain: office.joinDomain,

@@ -72,14 +72,18 @@ ask Creem first.
   week of use. The clock starts when the office is made: simpler, and
   nothing is lost by a solo tester running it down. Offices that had never
   had a trial got one on 21 October (migration 0026).
-- **When the trial ends: soft, never locked.** Admins hear in its last 3
-  days, on the floor ("Your Pro trial ends on Friday"). Then it's Free. Up to
-  3 people, nothing changes. More than 3: nobody is removed and everyone
-  keeps coming in for 14 more days while nobody new joins, with a daily
-  dismissible line on the floor (admins: "Keep Pro"; members: what's
-  happening, so they ask). After that the floor holds 3 at once; chat stays
-  open to everyone. Admins' and members' lines differ on purpose: the admin
-  pays, the team asks.
+- **When the trial ends: soft, never locked, and every office is asked.**
+  Admins hear in its last 3 days. Then it's Free, and every admin is asked
+  to choose, whatever the office's size: keep Pro, or "Continue on Free"
+  (which settles it; `trial_ends_at = 0`). An office of 3 or fewer used to
+  drop to Free silently, so the smallest teams never saw the choice. More
+  than 3: nobody is removed and everyone keeps coming in for 14 more days
+  while nobody new joins. After that the floor holds 3 at once; chat stays
+  open to everyone. All of it is one bar across the top of the office, part
+  of it rather than floating over the floor, hidden for the day by its ×.
+  Admins' and members' lines differ on purpose: the admin pays, the team
+  asks. Limits are said as room ("Free has room for 3 at a time"), never as
+  what's withheld.
 - **No card for the trial.** A card-up-front trial converts more of its
   trials, but forgotten charges come back as refunds and chargebacks; Creem
   charges for disputes, can close a store with many, and reviews stores for

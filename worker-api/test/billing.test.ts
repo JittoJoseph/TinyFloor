@@ -439,6 +439,24 @@ describe("billing", () => {
     expect((await call<{ graceEndsAt: number | null }>(ada, "GET", `/v1/offices/${officeId}/billing`)).body.graceEndsAt).toBeNull();
   });
 
+  it("asks every office after its trial, however small, until it buys or settles on Free", async () => {
+    const ada = await makeUser("Ada");
+    const officeId = await officeOf(ada);
+    const ended = Date.now() - 1000;
+    await env.DB.prepare("UPDATE offices SET trial_ends_at = ? WHERE id = ?").bind(ended, officeId).run();
+    type Seen = { office: { plan: string; trialEndedAt: number | null } };
+    expect((await call<Seen>(ada, "GET", `/v1/offices/${officeId}`)).body.office).toMatchObject({ plan: "free", trialEndedAt: ended });
+
+    // Only an admin answers it.
+    const member = await makeUser("Bo");
+    await env.DB.prepare("INSERT INTO memberships (office_id, user_id, role, joined_at) VALUES (?, ?, 'member', ?)").bind(officeId, member.id, Date.now()).run();
+    expect((await call(member, "POST", `/v1/offices/${officeId}/billing/free`)).status).toBe(403);
+
+    const settled = await call<{ plan: string; trialEndedAt: number | null; graceEndsAt: number | null }>(ada, "POST", `/v1/offices/${officeId}/billing/free`);
+    expect(settled.body).toMatchObject({ plan: "free", trialEndedAt: null, graceEndsAt: null });
+    expect((await call<Seen>(ada, "GET", `/v1/offices/${officeId}`)).body.office.trialEndedAt).toBeNull();
+  });
+
   it("lets the plan bought during the trial replace it", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);

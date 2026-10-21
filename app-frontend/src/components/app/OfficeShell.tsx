@@ -18,6 +18,7 @@ import { InviteProvider } from "./Invite";
 import { Introduce } from "@/components/entry/Introduce";
 import { RoomView } from "@/components/room/RoomView";
 import { AppShell } from "./AppShell";
+import { PlanBar } from "./PlanBar";
 import { YouMenu } from "./YouMenu";
 import { OfficeSwitcher } from "./OfficeSwitcher";
 import { PlaceProvider, type Place } from "./place";
@@ -268,6 +269,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
               ]}
               settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
               you={<YouMenu onFloor settingsHref={settingsPath} />}
+              notice={<PlanBar />}
               floor={
                 <>
                   <RoomView

@@ -313,6 +313,7 @@ async function billingJson(env: Env, office: Office) {
     meetingHours: meetingHoursOf(office.plan),
     usage: { seconds, resetsAt: thisMonth().resetsAt },
     trial: live ? null : trial,
+    trialEndedAt: office.trialEndedAt,
     graceEndsAt: office.graceEndsAt,
     subscription: live
       ? {
@@ -430,6 +431,14 @@ export async function endTrials(env: Env, officeId?: string, now = Date.now()): 
       .catch((error) => console.error("trial: couldn't tell the room", id, error));
   }
   return results.length;
+}
+
+/**
+ * When the trial ended, while nothing has been chosen since: neither a plan
+ * bought nor Free settled on. Every office is asked, whatever its size.
+ */
+export function trialEnd(plan: string, trialEndsAt: number | null, now = Date.now()): number | null {
+  return plan === FREE.id && trialEndsAt && trialEndsAt > 0 && trialEndsAt <= now ? trialEndsAt : null;
 }
 
 /**
@@ -592,6 +601,15 @@ export function billingRoutes(router: Router): void {
       if (checkout.metadata?.office_id !== office.id) throw new HttpError(404, "bad_checkout", "No such checkout");
       const subscriptionId = idOf(checkout.subscription);
       if (subscriptionId) await applySubscription(env, await getSubscription(env, subscriptionId), office.id);
+      return json(await billingJson(env, await requireOffice(env, office.id, user.id)));
+    })
+
+    // After the trial, staying on Free on purpose: the question is answered, and an
+    // office with more people than Free holds gives up the rest of its grace.
+    .add("POST", "/v1/offices/:id/billing/free", async ({ request, env, ctx, params }) => {
+      const user = await requireUser(env, request, ctx);
+      const office = await requireOffice(env, params.id, user.id, ["admin"]);
+      await env.DB.prepare("UPDATE offices SET trial_ends_at = 0 WHERE id = ? AND plan = 'free' AND trial_ends_at > 0").bind(office.id).run();
       return json(await billingJson(env, await requireOffice(env, office.id, user.id)));
     })
 

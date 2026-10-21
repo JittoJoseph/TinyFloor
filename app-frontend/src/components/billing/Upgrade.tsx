@@ -14,10 +14,10 @@ import { track } from "@/lib/analytics";
 
 /**
  * What brought them to the plans: the office is full, the hours are (nearly)
- * used, the trial is ending, the office is past Free since its trial ended, or
- * just looking.
+ * used, the trial is ending, it has ended (the choice every office makes), the
+ * office is past Free since, or just looking.
  */
-export type UpgradeReason = "full" | "hours" | "trial" | "over" | "plans";
+export type UpgradeReason = "full" | "hours" | "trial" | "ended" | "over" | "plans";
 
 interface Upgrade {
   /** Opens the plans over the page, for that reason. Null where nothing is on sale. */
@@ -65,6 +65,7 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
   const office = context?.office;
   const [billing, setBilling] = useState<OfficeBilling | null>(null);
   const [done, setDone] = useState(false);
+  const [staying, setStaying] = useState(false);
   const officeId = office?.id;
   const admin = office?.role === "admin";
 
@@ -101,6 +102,9 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
   const trying = !!trialEndsAt && current === pro?.id;
   const freeSeats = free?.seats ?? 3;
   const graceEndsAt = billing?.graceEndsAt ?? office.graceEndsAt ?? null;
+  const trialEndedAt = billing?.trialEndedAt ?? office.trialEndedAt ?? null;
+  // After the trial, an office Free holds can settle on it from here too (the bar offers it on a wide screen).
+  const canStayFree = admin && !done && !!trialEndedAt && current === "free" && members <= freeSeats;
   const date = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "long" });
 
   // The headline answers why they're here; the offer below is the same every time.
@@ -112,6 +116,8 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
         ? [t("hoursTitle"), t("hoursBody")]
         : reason === "trial" && trying && trialEndsAt
           ? [t("trialTitle"), t("trialBody", { date: date(trialEndsAt), free: freeSeats })]
+          : reason === "ended" && trialEndedAt
+            ? [t("trialTitle"), t("endedBody", { date: date(trialEndedAt), free: freeSeats })]
           : reason === "over" && current === "free" && members > freeSeats
             ? [
                 t("overTitle"),
@@ -125,6 +131,16 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
     setDone(false);
     change.clearError();
     onClose();
+  };
+  const stayFree = async () => {
+    setStaying(true);
+    try {
+      await api.stayOnFree(office.id);
+      await context?.refresh();
+      close();
+    } finally {
+      setStaying(false);
+    }
   };
 
   return (
@@ -162,6 +178,17 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
               className="mt-5"
             />
           )
+        )}
+        {canStayFree && (
+          <button
+            type="button"
+            disabled={staying}
+            onClick={stayFree}
+            className="mx-auto mt-2 flex h-9 cursor-pointer items-center gap-1.5 rounded-full px-3.5 text-[13px] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:opacity-50"
+          >
+            {staying && <Loader2 className="size-3.5 animate-spin" />}
+            {t("stayFree", { free: freeSeats })}
+          </button>
         )}
         {!admin && (
           <p className="mt-5 rounded-xl bg-muted px-3.5 py-2.5 text-[12.5px] text-foreground">

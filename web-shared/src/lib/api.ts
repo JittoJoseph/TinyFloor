@@ -88,6 +88,8 @@ export interface OfficeSummary {
   inNow?: PresentPerson[];
   /** When the trial ends, while one runs (docs/pricing.md): the plan is the trial's until then. */
   trialEndsAt?: number | null;
+  /** When the trial ended, until a plan is bought or Free is chosen: every office is asked. */
+  trialEndedAt?: number | null;
   /** After an ended trial, a Free office keeps everyone on the floor until then; nobody new joins meanwhile. */
   graceEndsAt?: number | null;
 }
@@ -326,6 +328,8 @@ export interface OfficeBilling {
   usage: { seconds: number; resetsAt: number };
   /** The trial, while it runs and nothing is paid (docs/pricing.md). */
   trial: { plan: PlanId; endsAt: number } | null;
+  /** When the trial ended, until a plan is bought or Free is chosen. */
+  trialEndedAt: number | null;
   /** After an ended trial: everyone stays on the floor until then. */
   graceEndsAt: number | null;
   subscription: {
@@ -486,6 +490,8 @@ export const api = {
   syncCheckout: (officeId: string, checkoutId: string) =>
     post<OfficeBilling>(`/offices/${id(officeId)}/billing/sync`, { checkoutId }),
   cancelPlan: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/cancel`),
+  /** After the trial: stay on Free, on purpose. */
+  stayOnFree: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/free`),
   resumePlan: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/resume`),
   setRole: (officeId: string, userId: string, role: OfficeRole) =>
     patch<{ ok: true }>(`/offices/${id(officeId)}/members/${id(userId)}`, { role }),

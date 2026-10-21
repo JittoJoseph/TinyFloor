@@ -73,6 +73,7 @@ export function AppShell({
   leave,
   you,
   floor,
+  notice,
   children,
 }: {
   /** The top of the rail: the office (a switcher) or the lobby. */
@@ -85,6 +86,8 @@ export function AppShell({
   /** The bottom of the rail: you, and your menu. */
   you: ReactNode;
   floor: ReactNode;
+  /** A line across the top of the panel, part of it: the plan, when it changes something. */
+  notice?: ReactNode;
   children?: ReactNode;
 }) {
   useDesktopSiteZoom();
@@ -140,10 +143,13 @@ export function AppShell({
 
           <main
             ref={setFrame}
-            className="relative min-h-0 min-w-0 flex-1 overflow-hidden bg-card [--face-ring:var(--ui-card)] md:my-2 md:me-2 md:rounded-[18px] md:border md:border-border md:shadow-[0_1px_2px_rgb(0_0_0/0.04)]"
+            className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden bg-card [--face-ring:var(--ui-card)] md:my-2 md:me-2 md:rounded-[18px] md:border md:border-border md:shadow-[0_1px_2px_rgb(0_0_0/0.04)]"
           >
-            {floor}
-            {children}
+            {notice}
+            <div className="relative min-h-0 flex-1">
+              {floor}
+              {children}
+            </div>
           </main>
 
           {/* Phones: the same places along the bottom, where a thumb is. */}

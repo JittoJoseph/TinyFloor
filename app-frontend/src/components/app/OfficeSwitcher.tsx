@@ -10,7 +10,7 @@ import { Face } from "@/components/ui/Face";
 import { Menu, MenuHeader, MenuItem, MenuLabel, MenuSeparator } from "@/components/ui/Menu";
 import { useWide } from "@/lib/hooks/use-wide";
 import { usePlans } from "@/lib/billing";
-import { useUpgrade } from "@/components/billing/Upgrade";
+import { useOpenPlans } from "@/components/billing/openPlans";
 import { useInvite } from "./Invite";
 import { useShellFrame } from "./AppShell";
 import { PLAN_NAMES } from "@/components/billing/PlanCards";
@@ -46,13 +46,13 @@ export function OfficeSwitcher({ office }: { office: Office }) {
 
   const others = offices.filter((one) => one.id !== office.id);
   const plans = usePlans();
-  const { open } = useUpgrade();
+  const openPlans = useOpenPlans();
   const invite = useInvite();
   // Days are counted from when the switcher opened; a trial ends at its own pace, not by the render.
   const [now] = useState(() => Date.now());
   const trialDays = office.trialEndsAt ? Math.max(1, Math.ceil((office.trialEndsAt - now) / DAY)) : null;
   const top = plans?.plans[plans.plans.length - 1]?.id === office.plan;
-  const offerPlans = !!open && office.role === "admin" && (!!trialDays || !top);
+  const offerPlans = !!openPlans && (!!trialDays || !top);
 
   return (
     <Menu
@@ -97,7 +97,7 @@ export function OfficeSwitcher({ office }: { office: Office }) {
         </MenuItem>
       )}
       {offerPlans && (
-        <MenuItem icon={<Zap />} onSelect={() => open?.(trialDays ? "trial" : "plans")}>
+        <MenuItem icon={<Zap />} onSelect={() => openPlans?.(trialDays ? "trial" : "plans")}>
           {trialDays ? t("choosePlan") : t("upgrade")}
         </MenuItem>
       )}

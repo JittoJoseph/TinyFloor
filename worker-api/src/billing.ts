@@ -604,12 +604,20 @@ export function billingRoutes(router: Router): void {
       return json(await billingJson(env, await requireOffice(env, office.id, user.id)));
     })
 
-    // After the trial, staying on Free on purpose: the question is answered, and an
-    // office with more people than Free holds gives up the rest of its grace.
+    // Downgrading to Free, during the trial or after it: the question is answered, and
+    // an office with more people than Free has room for gives up the rest of its grace.
+    // A trial is never set once a plan is bought (it's cleared to 0), so this can't touch one.
     .add("POST", "/v1/offices/:id/billing/free", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id, ["admin"]);
-      await env.DB.prepare("UPDATE offices SET trial_ends_at = 0 WHERE id = ? AND plan = 'free' AND trial_ends_at > 0").bind(office.id).run();
+      const { meta } = await env.DB.prepare("UPDATE offices SET plan = 'free', seats = ?, trial_ends_at = 0 WHERE id = ? AND trial_ends_at > 0")
+        .bind(FREE.seats, office.id)
+        .run();
+      if (meta.changes && office.plan !== FREE.id) {
+        await realtime(env)
+          .setMeetingAllowance(office.id, FREE.meetingHours)
+          .catch((error) => console.error("downgrade: couldn't tell the room", office.id, error));
+      }
       return json(await billingJson(env, await requireOffice(env, office.id, user.id)));
     })
 

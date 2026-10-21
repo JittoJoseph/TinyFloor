@@ -8,7 +8,7 @@ import { useMeetings } from "@/lib/meetings";
 import { usePlans } from "@/lib/billing";
 import { cn } from "@/lib/utils";
 import { usePlace } from "@/components/app/place";
-import { useUpgrade } from "@/components/billing/Upgrade";
+import { useOpenPlans } from "@/components/billing/openPlans";
 import { PLAN_NAMES } from "@/components/billing/PlanCards";
 import type { PlanId } from "@/lib/api";
 
@@ -34,11 +34,10 @@ export function useMeetingUsage(): MeetingUsage | null {
   return { ...usage, used: usage.used + extra };
 }
 
-/** Admins of an office where plans are sold open the plans, in place, about the hours. */
+/** Admins of an office where plans are sold go to its plans, about the hours. */
 function useMoreHours(): (() => void) | null {
-  const place = usePlace();
-  const { open } = useUpgrade();
-  return place.kind === "office" && place.role === "admin" && open ? () => open("hours") : null;
+  const open = useOpenPlans();
+  return open ? () => open("hours") : null;
 }
 
 function useHours() {

@@ -23,7 +23,7 @@ import { useOffice } from "./OfficeShell";
 import { usePlace, useWalkTo } from "./place";
 import { MemberRow, PRESENCE_ORDER } from "./MemberRow";
 import { Link } from "@/lib/i18n/navigation";
-import { useUpgrade } from "@/components/billing/Upgrade";
+import { useOpenPlans } from "@/components/billing/openPlans";
 import { dollars, usePlans } from "@/lib/billing";
 import { PLAN_NAMES, paidPlan } from "@/components/billing/PlanCards";
 
@@ -296,7 +296,7 @@ function Seats({
 }) {
   const t = useTranslations("office.people");
   const tb = useTranslations("billing");
-  const { open } = useUpgrade();
+  const open = useOpenPlans();
   const pro = paidPlan(usePlans()?.plans ?? []);
   return (
     <section className="overflow-hidden rounded-2xl border border-border bg-background p-4">

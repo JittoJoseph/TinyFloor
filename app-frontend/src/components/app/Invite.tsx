@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useState, type ReactNode } from
 import { useTranslations } from "next-intl";
 import { ArrowUpRight, Check, Copy, Mail, MessageSquare, Share } from "@/components/ui/icons";
 import { Modal } from "@/components/ui/Modal";
-import { useUpgrade } from "@/components/billing/Upgrade";
+import { useOpenPlans } from "@/components/billing/openPlans";
 import { track, withPostHog } from "@/lib/analytics";
 import { resetInviteLink, useInviteLink } from "@/lib/inviteLink";
 import { shareUrl } from "@/lib/links";
@@ -49,7 +49,7 @@ function InviteDialog({ open, onClose }: { open: boolean; onClose: () => void })
   const t = useTranslations("invite");
   const tc = useTranslations("common");
   const context = useOfficeMaybe();
-  const { open: upgrade } = useUpgrade();
+  const plans = useOpenPlans();
   if (!context) return null;
   const { office, overview } = context;
   const admin = office.role === "admin";
@@ -66,12 +66,12 @@ function InviteDialog({ open, onClose }: { open: boolean; onClose: () => void })
           // No room: the link would only turn them away, so the way to more takes its place.
           <div className="mt-5 rounded-xl bg-muted/70 p-4">
             <p className="text-[13px] leading-relaxed text-foreground">{t("full", { office: office.name, seats: office.seats })}</p>
-            {admin && upgrade ? (
+            {plans ? (
               <button
                 type="button"
                 onClick={() => {
                   onClose();
-                  upgrade(office.plan === "free" && used > office.seats ? "over" : "full");
+                  plans(office.plan === "free" && used > office.seats ? "over" : "full");
                 }}
                 className="mt-3 h-9 cursor-pointer rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
               >

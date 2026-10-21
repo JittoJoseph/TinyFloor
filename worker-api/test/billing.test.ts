@@ -457,6 +457,21 @@ describe("billing", () => {
     expect((await call<Seen>(ada, "GET", `/v1/offices/${officeId}`)).body.office.trialEndedAt).toBeNull();
   });
 
+  it("downgrades to Free during the trial, but never once a plan is bought", async () => {
+    const ada = await makeUser("Ada");
+    const officeId = await officeOf(ada);
+    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 15 });
+    const down = await call<{ plan: string; trial: unknown }>(ada, "POST", `/v1/offices/${officeId}/billing/free`);
+    expect(down.body).toMatchObject({ plan: "free", trial: null });
+    expect(await officeRow(officeId)).toEqual({ plan: "free", seats: 3 });
+
+    const bo = await makeUser("Bo");
+    const paid = await officeOf(bo);
+    await deliver("subscription.active", subscription(paid));
+    await call(bo, "POST", `/v1/offices/${paid}/billing/free`);
+    expect(await officeRow(paid)).toEqual({ plan: "pro", seats: 15 });
+  });
+
   it("lets the plan bought during the trial replace it", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);

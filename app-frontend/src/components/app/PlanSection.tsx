@@ -3,12 +3,12 @@
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { AlertCircle, Check, CreditCard, Download, Info, Loader2 } from "@/components/ui/icons";
-import { api, type BillingDetails, type OfficeBilling, type Payment, type PlanId } from "@/lib/api";
+import { api, type BillingDetails, type OfficeBilling, type Payment } from "@/lib/api";
 import { dollars, usePlans } from "@/lib/billing";
 import { FOUNDING, foundingOpen } from "@/lib/founding";
 import { Dialog } from "@/components/ui/Dialog";
 import { PlansSoon } from "@/components/ui/PlansSoon";
-import { PLAN_NAMES, PlanIncludes, ProPrice, paidPlan } from "@/components/billing/PlanCards";
+import { PLAN_NAMES, PlanIncludes, paidPlan } from "@/components/billing/PlanCards";
 import { usePlanChange } from "@/components/billing/usePlanChange";
 import { cn } from "@/lib/utils";
 import { useOfficeMaybe } from "./OfficeShell";
@@ -16,16 +16,15 @@ import { Group } from "./SettingsView";
 import { SUPPORT_EMAIL } from "@/lib/site";
 
 const DAY = 24 * 60 * 60 * 1000;
+type Asking = "cancel" | "downgrade" | null;
 
 /**
- * An office's plan and billing (docs/pricing.md), in the order it's looked
- * for: anything that needs doing, as one notice; the plan the office is on,
- * with the trial's progress or the next charge; then, for an office without a
- * subscription, Free and Pro side by side, where both are chosen (keeping Pro,
- * or continuing on Free after the trial); then the card and every payment.
- * Buying opens Creem's checkout over the page; the card and the invoices are
- * in Creem's portal, for whoever pays; cancelling asks first. The plan itself
- * only changes when Creem says so.
+ * An office's plan and billing (docs/pricing.md). A trial, and a trial that
+ * has ended with nothing chosen since, read as being on Pro with billing to
+ * add: Pro's button updates billing, Free's downgrades. Once Free is chosen
+ * it's the plan, and Pro is an upgrade. A subscribed office sees its plan,
+ * card and invoices instead. Words are kept to what's needed to decide;
+ * anything that needs doing (a failed card, a plan ending) comes first.
  */
 export function PlanSection() {
   const t = useTranslations("billing");
@@ -36,8 +35,8 @@ export function PlanSection() {
   const catalog = usePlans();
   const [billing, setBilling] = useState<OfficeBilling | null>(null);
   const [details, setDetails] = useState<BillingDetails | null>(null);
-  const [asking, setAsking] = useState(false);
-  const [staying, setStaying] = useState(false);
+  const [asking, setAsking] = useState<Asking>(null);
+  const [downgrading, setDowngrading] = useState(false);
   // Read once: the trial's days don't need to tick while the page is open.
   const [now] = useState(() => Date.now());
 
@@ -60,7 +59,7 @@ export function PlanSection() {
         const found = await api.billing(officeId).catch(() => null);
         if (found) setBilling(found);
       }
-      setAsking(false);
+      setAsking(null);
       await Promise.all([context?.refresh(), reloadDetails()]);
     },
     "billing",
@@ -89,31 +88,32 @@ export function PlanSection() {
   const members = billing?.members ?? office.members;
   const sub = billing?.subscription ?? null;
   const trial = billing?.trial ?? null;
-  const planId = (office.plan as PlanId) ?? "free";
   const manage = on && admin;
   const busy = change.busy;
   const date = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "long", year: "numeric" });
   const shortDate = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "short" });
   const money = (amount: number, currency: string) => format.number(amount / 100, { style: "currency", currency });
 
-  // After the trial and before a choice: the office is on Free, and decides below.
-  const ended = manage && planId === "free" && !sub && !!billing?.trialEndedAt;
-  const fits = members <= freeSeats;
+  // A trial that ended with nothing chosen: still Pro to them, with billing to add.
+  const unpaid = !sub && office.plan === "free" && !!billing?.trialEndedAt;
+  const onPro = !!sub || !!trial || unpaid;
   const grace = billing?.graceEndsAt ?? office.graceEndsAt ?? null;
-  const hoursUsed = manage && billing && billing.usage.seconds / 3600 >= billing.meetingHours;
+  const trialDays = catalog?.trialDays || 14;
+  const daysLeft = trial ? Math.max(0, Math.ceil((trial.endsAt - now) / DAY)) : 0;
 
-  const stayFree = async () => {
-    setStaying(true);
+  const downgrade = async () => {
+    setDowngrading(true);
     try {
       setBilling(await api.stayOnFree(office.id));
+      setAsking(null);
       await context.refresh();
     } finally {
-      setStaying(false);
+      setDowngrading(false);
     }
   };
 
-  // The one thing that needs doing, if anything does.
-  const notice = ((): { tone: "brand" | "alert"; title: string; body: string; action?: ReactNode } | null => {
+  // Only what needs doing gets a notice.
+  const notice = ((): { tone: "brand" | "alert"; title: string; body: string; action: ReactNode } | null => {
     if (!manage) return null;
     if (sub?.status === "past_due") {
       return {
@@ -121,9 +121,9 @@ export function PlanSection() {
         title: tp("notice.pastDueTitle"),
         body: tp("notice.pastDueBody"),
         action: (
-          <NoticeButton busy={busy === "card"} disabled={!!busy} onClick={() => change.portal("card")}>
+          <SolidButton small busy={busy === "card"} disabled={!!busy} onClick={() => change.portal("card")}>
             {tp("updateCard")}
-          </NoticeButton>
+          </SolidButton>
         ),
       };
     }
@@ -133,25 +133,17 @@ export function PlanSection() {
         title: tp("notice.endingTitle", { date: date(sub.endsAt) }),
         body: tp("notice.endingBody", { free: freeSeats }),
         action: (
-          <NoticeButton busy={busy === "resume"} disabled={!!busy} onClick={change.resume}>
+          <SolidButton small busy={busy === "resume"} disabled={!!busy} onClick={change.resume}>
             {tp("keep")}
-          </NoticeButton>
+          </SolidButton>
         ),
       };
     }
-    if (ended && fits) return { tone: "brand", title: tp("notice.endedTitle"), body: tp("notice.endedBody", { free: freeSeats }) };
-    if (ended && grace) {
-      return { tone: "brand", title: tp("notice.endedTitle"), body: tp("notice.graceBody", { date: date(grace), free: freeSeats }) };
-    }
-    if (planId === "free" && !sub && members > freeSeats) {
-      return { tone: "brand", title: tp("notice.overTitle", { free: freeSeats }), body: tp("notice.overBody", { members }) };
-    }
-    if (hoursUsed && billing) return { tone: "brand", title: tp("notice.hoursTitle"), body: tp("notice.hoursBody", { date: shortDate(billing.usage.resetsAt) }) };
     return null;
   })();
 
-  // The plan card's second fact: when the trial ends, the next charge, or the price.
-  const fact = ((): { label: string; value: string } => {
+  // The plan card's second fact: the date that matters, or what the floor holds.
+  const second = ((): { label: string; value: string } | null => {
     if (trial) return { label: tp("trialEnds"), value: date(trial.endsAt) };
     if (sub?.endsAt) return { label: tp("ends"), value: date(sub.endsAt) };
     if (sub && details?.nextCharge) {
@@ -161,18 +153,10 @@ export function PlanSection() {
       };
     }
     if (sub?.renewsAt) return { label: tp("renews"), value: date(sub.renewsAt) };
-    if (sub && pro?.price) return { label: tp("price"), value: tp("perMonth", { price: dollars(pro.price) }) };
-    // On Free, what the floor holds: everyone while the grace runs, then the plan's seats.
-    return { label: tp("floor"), value: grace ? tp("floorEveryone", { date: shortDate(grace) }) : tp("floorAtOnce", { seats: office.seats }) };
+    if (sub) return null;
+    // The date kept whole ("Nov 4"), so a narrow cell breaks before it, not inside it.
+    return { label: tp("floor"), value: grace ? tp("floorEveryone", { date: shortDate(grace).replace(/ /g, " ") }) : tp("floorAtOnce", { seats: office.seats }) };
   })();
-
-  const trialDays = catalog?.trialDays || 14;
-  const subline = trial
-    ? tp("trialLine", { days: trialDays })
-    : sub && pro?.price
-      ? tp("proLine", { price: dollars(pro.price) })
-      : tp("freeLine", { seats: freeSeats });
-  const daysLeft = trial ? Math.max(0, Math.ceil((trial.endsAt - now) / DAY)) : 0;
 
   return (
     <div className="space-y-6">
@@ -180,20 +164,27 @@ export function PlanSection() {
 
       {/* The plan the office is on. */}
       <section className="overflow-hidden rounded-2xl border border-border bg-background">
-        <div className="p-5">
-          <p className="text-[12.5px] font-medium text-muted-foreground">{tp("yourPlan")}</p>
-          <h2 className="mt-1 flex flex-wrap items-center gap-2 text-[24px] font-semibold leading-tight tracking-tight text-foreground">
-            {PLAN_NAMES[planId] ?? office.plan}
-            {trial && <Pill tone="brand">{tp("pillTrial")}</Pill>}
-            {sub?.status === "past_due" && <Pill tone="alert">{tp("pillPastDue")}</Pill>}
-            {sub?.endsAt && <Pill>{tp("pillEnding")}</Pill>}
-          </h2>
-          <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">{subline}</p>
-          {!on && <PlansSoon className="mt-2" />}
-
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-3 p-5">
+          <div className="min-w-0 flex-1">
+            <p className="text-[12.5px] font-medium text-muted-foreground">{tp("yourPlan")}</p>
+            <h2 className="mt-1 flex flex-wrap items-center gap-2 text-[24px] font-semibold leading-tight tracking-tight text-foreground">
+              {onPro ? PLAN_NAMES.pro : PLAN_NAMES.free}
+              {trial && <Pill tone="brand">{tp("pillTrial")}</Pill>}
+              {unpaid && <Pill tone="brand">{tp("pillBilling")}</Pill>}
+              {sub?.status === "past_due" && <Pill tone="alert">{tp("pillPastDue")}</Pill>}
+              {sub?.endsAt && <Pill>{tp("pillEnding")}</Pill>}
+            </h2>
+            {!on && <PlansSoon className="mt-2" />}
+          </div>
+          {sub && pro?.price && (
+            <p className="shrink-0 text-end text-[12.5px] text-muted-foreground">
+              <span className="block text-[22px] font-semibold tabular-nums tracking-tight text-foreground">{dollars(pro.price)}</span>
+              {tp("month")}
+            </p>
+          )}
           {trial && (
             // The trial as days, so how long is left reads at a glance.
-            <div className="mt-4">
+            <div className="w-full">
               <div className="h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden>
                 <div
                   className="h-full rounded-full bg-brand"
@@ -206,10 +197,10 @@ export function PlanSection() {
         </div>
 
         <dl className="grid grid-cols-2 divide-x divide-border border-t border-border rtl:divide-x-reverse">
-          <Fact label={tp("members")} value={planId === "free" && members <= office.seats ? tp("membersOf", { members, seats: office.seats }) : String(members)}>
-            {planId === "free" && <SeatBar used={members} seats={office.seats} />}
+          <Fact label={tp("members")} value={!onPro && members <= office.seats ? tp("membersOf", { members, seats: office.seats }) : String(members)}>
+            {!onPro && <SeatBar used={members} seats={office.seats} />}
           </Fact>
-          <Fact label={fact.label} value={fact.value} />
+          {second && <Fact label={second.label} value={second.value} />}
         </dl>
 
         {manage && sub && (
@@ -222,9 +213,9 @@ export function PlanSection() {
               <p className="truncate text-[12.5px] text-muted-foreground">{tp("card")}</p>
             </div>
             {sub.status !== "canceled" && (
-              <SmallButton busy={busy === "card"} disabled={!!busy} onClick={() => change.portal("card")}>
+              <QuietButton busy={busy === "card"} disabled={!!busy} onClick={() => change.portal("card")}>
                 {tp("update")}
-              </SmallButton>
+              </QuietButton>
             )}
           </div>
         )}
@@ -237,69 +228,51 @@ export function PlanSection() {
         )}
       </section>
 
-      {/* Free and Pro side by side, for an office without a subscription. */}
+      {/* Pro and Free side by side, for an office that hasn't subscribed. */}
       {on && pro?.price && !sub && (
         <section>
-          <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-            <h3 className="text-[13px] font-semibold text-foreground">{tp("plans")}</h3>
-            <p className="text-[12px] text-faint">{tp("plansNote")}</p>
-          </div>
           <div className="grid gap-3 sm:grid-cols-2">
-            {/* Pro first on a phone: it's the one with something to decide. */}
+            {/* Pro first on a phone: it's the one to act on. */}
             <PlanCard
               className="sm:order-2"
               highlight
               name={PLAN_NAMES.pro}
-              pill={trial ? tp("pillYourTrial") : foundingOpen() ? tp("pillFounding") : undefined}
+              pill={onPro ? tp("pillCurrent") : foundingOpen() ? tp("pillFounding") : undefined}
               price={dollars(pro.price)}
               per={tp("proPer")}
               footer={
                 manage && (
                   <>
-                    <button
-                      type="button"
-                      disabled={!!busy || !!change.waiting}
-                      onClick={() => change.buy("pro")}
-                      className="flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-foreground px-4 text-[13.5px] font-medium text-background transition-[background-color,transform] hover:bg-foreground/85 active:scale-[0.99] disabled:cursor-default disabled:opacity-50"
-                    >
-                      {busy === "pro" && <Loader2 className="size-4 animate-spin" />}
-                      {trial || ended ? tp("keep") : tp("upgrade")}
-                    </button>
+                    <SolidButton busy={busy === "pro"} disabled={!!busy || !!change.waiting} onClick={() => change.buy("pro")}>
+                      {onPro ? tp("updateBilling") : tp("upgrade")}
+                    </SolidButton>
                     <p className="mt-2 text-center text-[11.5px] text-muted-foreground">{t("offer.assurance")}</p>
                   </>
                 )
               }
             >
-              <ProPrice price={pro.price} members={members} anchor={false} />
-              <PlanIncludes plans={plans} className="mt-4" />
+              <PlanIncludes plans={plans} />
             </PlanCard>
             <PlanCard
               className="sm:order-1"
               name={PLAN_NAMES.free}
+              pill={!onPro ? tp("pillCurrent") : undefined}
               price={dollars(0)}
               per={tp("freePer")}
               footer={
-                ended && fits ? (
+                manage && onPro ? (
                   <button
                     type="button"
-                    disabled={staying}
-                    onClick={stayFree}
-                    className="flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-border-strong px-4 text-[13.5px] font-medium text-foreground transition-colors hover:bg-muted disabled:opacity-50"
+                    onClick={() => setAsking("downgrade")}
+                    className="flex h-11 w-full cursor-pointer items-center justify-center rounded-full border border-border-strong px-4 text-[13.5px] font-medium text-foreground transition-colors hover:bg-muted"
                   >
-                    {staying && <Loader2 className="size-4 animate-spin" />}
-                    {tp("stayFree")}
+                    {tp("downgrade")}
                   </button>
-                ) : trial ? (
-                  <p className="text-[12px] leading-relaxed text-muted-foreground">{tp("afterTrial")}</p>
-                ) : (
-                  <p className="flex h-11 items-center justify-center rounded-full bg-muted text-[13.5px] font-medium text-muted-foreground">
-                    {tp("pillCurrent")}
-                  </p>
-                )
+                ) : null
               }
             >
               <ul className="space-y-2.5 text-[13.5px] text-foreground">
-                {[tp("freeSeats", { seats: freeSeats }), tp("freeEverything"), tp("freeNoCard")].map((item) => (
+                {[tp("freeSeats", { seats: freeSeats }), tp("freeEverything")].map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <span className="mt-0.5 flex size-[18px] shrink-0 items-center justify-center rounded-full bg-muted text-foreground">
                       <Check className="size-3" strokeWidth={3} />
@@ -311,22 +284,12 @@ export function PlanSection() {
             </PlanCard>
           </div>
           {foundingOpen() && (
-            <p className="mt-3 text-[12px] leading-relaxed text-muted-foreground">
-              {t("offer.founding", {
-                price: dollars(FOUNDING.laterPrice * 100),
-                date: format.dateTime(new Date(FOUNDING.until), { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }),
-              })}
+            <p className="mt-3 text-[12px] text-muted-foreground">
+              {tp("founding", { date: format.dateTime(new Date(FOUNDING.until), { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }) })}
             </p>
           )}
           {change.error && !asking && <p className="mt-3 text-[12.5px] text-destructive">{change.error}</p>}
         </section>
-      )}
-
-      {/* On Pro: what it gives, as a reminder of what's paid for. */}
-      {sub && planId === "pro" && (
-        <Group title={tp("included")}>
-          <PlanIncludes plans={plans} className="p-4" />
-        </Group>
       )}
 
       {/* Every payment; the invoices are in Creem's portal. */}
@@ -369,26 +332,21 @@ export function PlanSection() {
 
       {on && !admin && <p className="text-[12.5px] text-muted-foreground">{t("adminsOnly")}</p>}
 
-      {/* The rest, quietly: the small print, and cancelling. */}
+      {/* The small print, and cancelling, quietly. */}
       {manage && (
-        <div className="flex flex-col gap-3 border-t border-border pt-5 sm:flex-row sm:items-start sm:justify-between">
-          <p className="max-w-md text-[12px] leading-relaxed text-muted-foreground">
-            {t("fine")}{" "}
-            {t.rich("billingEmail", {
-              email: SUPPORT_EMAIL,
-              link: (chunks) => (
-                <a href={`mailto:${SUPPORT_EMAIL}`} className="font-medium text-foreground underline-offset-2 hover:underline" dir="ltr">
-                  {chunks}
-                </a>
-              ),
-            })}
+        <div className="flex flex-col gap-3 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[12px] leading-relaxed text-muted-foreground">
+            {tp("fine")}{" "}
+            <a href={`mailto:${SUPPORT_EMAIL}`} className="font-medium text-foreground underline-offset-2 hover:underline" dir="ltr">
+              {SUPPORT_EMAIL}
+            </a>
           </p>
           {sub && !sub.endsAt && (
             <button
               type="button"
               disabled={!!busy}
-              onClick={() => setAsking(true)}
-              className="h-8 shrink-0 cursor-pointer self-start rounded-full px-3 text-[12.5px] font-medium text-muted-foreground hover:bg-muted hover:text-destructive"
+              onClick={() => setAsking("cancel")}
+              className="h-8 shrink-0 cursor-pointer self-start rounded-full px-3 text-[12.5px] font-medium text-muted-foreground hover:bg-muted hover:text-destructive sm:self-auto"
             >
               {t("cancel")}
             </button>
@@ -397,30 +355,30 @@ export function PlanSection() {
       )}
 
       {/*
-        Cancelling, said plainly: what the team would lose, and keeping the
-        plan as the easy choice. Cancelling stays one click away; nothing is
-        hidden or made hard.
+        Leaving Pro, by cancelling or downgrading, is asked once, plainly: what
+        changes for the team, with keeping Pro as the easy answer. Leaving
+        stays one click away; nothing is hidden or made hard.
       */}
       <Dialog
-        open={asking}
-        onClose={() => setAsking(false)}
-        title={t("cancelTitle")}
-        description={sub?.renewsAt ? t("cancelWhen", { date: date(sub.renewsAt) }) : undefined}
+        open={asking !== null}
+        onClose={() => setAsking(null)}
+        title={asking === "downgrade" ? tp("downgradeTitle") : t("cancelTitle")}
+        description={asking === "cancel" && sub?.renewsAt ? t("cancelWhen", { date: date(sub.renewsAt) }) : undefined}
         closeLabel={tc("close")}
         footer={
           <>
             <button
               type="button"
-              disabled={!!busy}
-              onClick={change.cancel}
+              disabled={!!busy || downgrading}
+              onClick={asking === "downgrade" ? downgrade : change.cancel}
               className="me-auto inline-flex h-10 cursor-pointer items-center gap-2 rounded-full px-3 text-[13px] font-medium text-muted-foreground transition-colors hover:text-destructive disabled:opacity-50"
             >
-              {busy === "cancel" && <Loader2 className="size-4 animate-spin" />}
-              {t("cancelAnyway")}
+              {(busy === "cancel" || downgrading) && <Loader2 className="size-4 animate-spin" />}
+              {asking === "downgrade" ? tp("downgradeConfirm") : t("cancelAnyway")}
             </button>
             <button
               type="button"
-              onClick={() => setAsking(false)}
+              onClick={() => setAsking(null)}
               className="h-10 cursor-pointer rounded-full bg-foreground px-5 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
             >
               {tp("keep")}
@@ -428,16 +386,22 @@ export function PlanSection() {
           </>
         }
       >
-        <ul className="space-y-2.5 pb-2 text-[13px] leading-relaxed text-foreground">
-          <li className="flex items-start gap-2.5">
-            <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-foreground/40" />
-            {members > freeSeats ? t("loseSeatsOver", { members, free: freeSeats }) : t("loseSeats", { seats: office.seats, free: freeSeats })}
-          </li>
-          <li className="flex items-start gap-2.5">
-            <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-ok" />
-            {t("loseNothing")}
-          </li>
-        </ul>
+        {asking === "downgrade" ? (
+          <p className="pb-2 text-[13px] leading-relaxed text-foreground">
+            {members > freeSeats ? tp("downgradeOver", { free: freeSeats, members }) : tp("downgradeBody", { free: freeSeats })}
+          </p>
+        ) : (
+          <ul className="space-y-2.5 pb-2 text-[13px] leading-relaxed text-foreground">
+            <li className="flex items-start gap-2.5">
+              <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-foreground/40" />
+              {members > freeSeats ? t("loseSeatsOver", { members, free: freeSeats }) : t("loseSeats", { seats: office.seats, free: freeSeats })}
+            </li>
+            <li className="flex items-start gap-2.5">
+              <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-ok" />
+              {t("loseNothing")}
+            </li>
+          </ul>
+        )}
         {change.error && <p className="mt-2 text-[12.5px] text-destructive">{change.error}</p>}
       </Dialog>
     </div>
@@ -445,12 +409,12 @@ export function PlanSection() {
 }
 
 /** What needs doing, above everything else: what happened, and the way to answer it. */
-function Notice({ tone, title, body, action }: { tone: "brand" | "alert"; title: string; body: string; action?: ReactNode }) {
+function Notice({ tone, title, body, action }: { tone: "brand" | "alert"; title: string; body: string; action: ReactNode }) {
   return (
     <div
       role="status"
       className={cn(
-        "flex flex-wrap items-center gap-x-3 gap-y-3 rounded-2xl border p-4",
+        "flex flex-wrap items-center gap-3 rounded-2xl border p-4",
         tone === "alert" ? "border-destructive/25 bg-destructive/[0.06]" : "border-brand/25 bg-brand/[0.06]",
       )}
     >
@@ -466,26 +430,29 @@ function Notice({ tone, title, body, action }: { tone: "brand" | "alert"; title:
         <p className="text-[13.5px] font-semibold text-foreground">{title}</p>
         <p className="mt-0.5 text-[13px] leading-relaxed text-muted-foreground">{body}</p>
       </div>
-      {action && <div className="ms-11 shrink-0 sm:ms-0">{action}</div>}
+      <div className="ms-11 shrink-0 sm:ms-0">{action}</div>
     </div>
   );
 }
 
-function NoticeButton({ busy, disabled, onClick, children }: { busy: boolean; disabled: boolean; onClick: () => void; children: ReactNode }) {
+function SolidButton({ small, busy, disabled, onClick, children }: { small?: boolean; busy: boolean; disabled: boolean; onClick: () => void; children: ReactNode }) {
   return (
     <button
       type="button"
       disabled={disabled}
       onClick={onClick}
-      className="flex h-9 cursor-pointer items-center gap-1.5 rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85 disabled:opacity-50"
+      className={cn(
+        "flex cursor-pointer items-center justify-center gap-2 rounded-full bg-foreground font-medium text-background transition-[background-color,transform] hover:bg-foreground/85 active:scale-[0.99] disabled:cursor-default disabled:opacity-50",
+        small ? "h-9 px-4 text-[13px]" : "h-11 w-full px-4 text-[13.5px]",
+      )}
     >
-      {busy && <Loader2 className="size-3.5 animate-spin" />}
+      {busy && <Loader2 className="size-4 animate-spin" />}
       {children}
     </button>
   );
 }
 
-function SmallButton({ busy, disabled, onClick, children }: { busy: boolean; disabled: boolean; onClick: () => void; children: ReactNode }) {
+function QuietButton({ busy, disabled, onClick, children }: { busy: boolean; disabled: boolean; onClick: () => void; children: ReactNode }) {
   return (
     <button
       type="button"
@@ -504,7 +471,7 @@ function Fact({ label, value, children }: { label: string; value: string; childr
   return (
     <div className="min-w-0 px-5 py-4">
       <dt className="text-[12px] font-medium text-muted-foreground">{label}</dt>
-      <dd className="mt-1 truncate text-[14px] font-semibold tabular-nums text-foreground">{value}</dd>
+      <dd className="mt-1 text-[14px] font-semibold leading-snug tabular-nums text-foreground">{value}</dd>
       {children}
     </div>
   );
@@ -546,13 +513,13 @@ function PlanCard({
         <span className="text-[30px] font-semibold leading-none tabular-nums tracking-[-0.03em] text-foreground">{price}</span>
         <span className="text-[12.5px] text-muted-foreground">{per}</span>
       </p>
-      <div className="mt-3 flex-1">{children}</div>
+      <div className="mt-4 flex-1">{children}</div>
       {footer && <div className="mt-5">{footer}</div>}
     </div>
   );
 }
 
-/** A word beside a plan's name: on trial, its card failed, ending, current. */
+/** A word beside a plan's name: on trial, billing to add, its card failed, ending, current. */
 function Pill({ tone, children }: { tone?: "alert" | "brand"; children: ReactNode }) {
   return (
     <span

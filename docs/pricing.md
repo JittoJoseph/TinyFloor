@@ -73,27 +73,29 @@ ask Creem first.
   nothing is lost by a solo tester running it down. Offices that had never
   had a trial got one on 21 October (migration 0026).
 - **When the trial ends: soft, never locked, and every office is asked.**
-  Admins hear in its last 3 days. Then it's Free, and every admin is asked
-  to choose, whatever the office's size: keep Pro, or "Continue on Free"
-  (which settles it; `trial_ends_at = 0`). An office of 3 or fewer used to
-  drop to Free silently, so the smallest teams never saw the choice. More
-  than 3: nobody is removed and everyone keeps coming in for 14 more days
-  while nobody new joins. After that the floor holds 3 at once; chat stays
-  open to everyone. All of it is one solid bar across the top of the office,
-  part of it rather than floating over the floor, hidden for the day by its ×.
-  Its one action is "Update billing", which opens the plan page, where Pro
-  and Free are both chosen; on a phone the whole bar is the button. It says
-  what happened and what to do, in that order.
+  Admins hear in its last 3 days. After it, the office still reads as Pro,
+  with billing to add ("Billing needed"): Pro's button is "Update billing",
+  Free's is "Downgrade to Free", whatever the office's size. Paying is
+  keeping what they have, not buying something new; Free is a step down they
+  choose, not where they were dropped. An office of 3 or fewer used to fall
+  to Free silently, so the smallest teams never saw the choice. Underneath
+  it's Free until they pay: up to 3 people nothing changes; more than 3,
+  nobody is removed and everyone keeps coming in for 14 more days while
+  nobody new joins, then the floor holds 3 at once; chat stays open to
+  everyone. Downgrading (during the trial too) settles it (`trial_ends_at =
+  0`) and gives up the rest of the grace, so it's asked once, with Keep Pro
+  as the easy answer.
+- **One bar on the floor, the plan page for everything else.** The bar is
+  solid, across the top of the office, hidden for the day by its ×; its one
+  action opens the plan page, and on a phone the whole bar is the button.
+  Every limit felt elsewhere (a full office, the meeting hours, the office
+  menu) also goes to the plan page: there's no upgrade dialog over the app.
   Admins' and members' lines differ on purpose: the admin pays, the team
-  asks. Limits are said as room ("Free has room for 3 at a time"), never as
-  what's withheld.
-- **The plan page decides, in one place.** Anything that needs doing comes
-  first as one notice (trial ended, card failed, plan ending). Then the plan
-  the office is on, with the trial's days as a bar and two facts under it.
-  Then Free and Pro side by side, equal height, Pro marked and first on a
-  phone: "Keep Pro" and "Continue on Free" are the two answers to the end of
-  a trial, so they sit as two plans, not a button and a footnote. On Pro, the
-  card, what's included and invoices instead.
+  asks. Limits are said as room ("3 at a time"), never as what's withheld.
+- **The plan page is short.** A notice only when something needs doing (a
+  failed card, a plan ending). The plan, with the trial's days as a bar and
+  two facts. Pro and Free side by side, equal height, Pro first on a phone,
+  three lines and a price each. Subscribed: the card and invoices instead.
 - **No card for the trial.** A card-up-front trial converts more of its
   trials, but forgotten charges come back as refunds and chargebacks; Creem
   charges for disputes, can close a store with many, and reviews stores for

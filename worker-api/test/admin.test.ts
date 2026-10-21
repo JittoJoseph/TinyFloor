@@ -163,7 +163,7 @@ describe("admin", () => {
     expect((await call(boss, "PATCH", `/v1/admin/offices/${id}`, { plan: "pro", name: "Gift Studio" })).status).toBe(200);
     const row = await env.DB.prepare("SELECT name, plan, seats FROM offices WHERE id = ?").bind(id).first();
     expect(row).toEqual({ name: "Gift Studio", plan: "pro", seats: 15 });
-    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", id, 120]);
+    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", id, 80]);
     expect((await call(boss, "PATCH", `/v1/admin/offices/${id}`, { plan: "gold" })).status).toBe(400);
 
     await env.DB.prepare(

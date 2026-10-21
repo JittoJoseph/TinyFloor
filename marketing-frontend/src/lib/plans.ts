@@ -5,5 +5,5 @@
  */
 export const PLANS = [
   { key: "free", price: 0, people: 3, hours: 40 },
-  { key: "pro", price: 29, people: 15, hours: 120 },
+  { key: "pro", price: 29, people: 15, hours: 80 },
 ] as const;

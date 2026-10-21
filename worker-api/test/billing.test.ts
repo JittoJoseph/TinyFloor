@@ -96,7 +96,7 @@ describe("billing", () => {
     expect(status).toBe(200);
     expect(body.plans.map((plan) => [plan.id, plan.seats, plan.meetingHours, plan.price])).toEqual([
       ["free", 3, 40, null],
-      ["pro", 15, 120, 2900],
+      ["pro", 15, 80, 2900],
     ]);
     expect(body.billing).toEqual({ mode: "test" });
   });
@@ -152,9 +152,9 @@ describe("billing", () => {
       `/v1/offices/${officeId}/billing`,
     );
     expect(billing.body.subscription).toMatchObject({ plan: "pro", status: "active", renewsAt: Date.parse("2026-11-10T00:00:00Z") });
-    expect(billing.body.meetingHours).toBe(120);
+    expect(billing.body.meetingHours).toBe(80);
     // The room hears the plan's hours straight away, so a pause lifts without waiting for a new ticket.
-    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 120]);
+    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 80]);
   });
 
   it("takes the office from the checkout when the subscription doesn't carry it", async () => {

@@ -26,7 +26,7 @@ export interface Plan {
 
 export const PLANS: Plan[] = [
   { id: "free", seats: 3, meetingHours: 40, price: null },
-  { id: "pro", seats: 15, meetingHours: 120, price: 2900 },
+  { id: "pro", seats: 15, meetingHours: 80, price: 2900 },
 ];
 
 const FREE = PLANS[0];

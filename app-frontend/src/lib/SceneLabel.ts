@@ -1,25 +1,11 @@
 import * as Phaser from "phaser";
-
-const INK = 0x1f2937;
-/** A folded tag: the dot in a small round pill. */
-const FOLDED = 16;
-const EDGE = 0x374151;
-const STYLE = {
-  fontSize: "13px",
-  fontFamily: "VT323, monospace",
-  color: "#ffffff",
-  resolution: 2,
-};
-
-/** Emoji drawn by the system's own font, since the pixel font has none. */
-const EMOJI_STYLE = {
-  fontSize: "11px",
-  fontFamily: "'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif",
-  resolution: 2,
-};
+import { measure, plateLayer } from "./plates";
 
 /** Past this many characters a name tag shortens to a first name and an initial. */
 const LONGEST_TAG = 16;
+
+/** The tag's type, in the floor's units (globals.css .plate). */
+const FONT = "500 10.5px Geist, ui-sans-serif, system-ui, sans-serif";
 
 /** "Maximilian Schwarzenegger-Hoffmann" as "Maximilian S.": a tag's job is telling people apart. */
 export function tagName(name: string): string {
@@ -32,39 +18,43 @@ export function tagName(name: string): string {
 
 /**
  * The dark pill every label in the room is drawn as: a centred hint, or, with a
- * dot, a tag like the one over each player's head. A tag can fold down to its
- * dot where the floor is crowded, and keeps the whole name for anyone asking.
- * A tag can carry the emoji of its person's status note at its end.
+ * dot, a tag like the one over each player's head, which hangs from the middle
+ * of its bottom edge, so it grows upward, away from the head, when it's scaled.
+ * A tag can fold down to its dot where the floor is crowded, keeps the whole
+ * name for anyone asking, and can carry its person's status note emoji.
+ *
+ * It's HTML laid over the canvas (plates.ts), in the app's own type, sharp at
+ * any screen density; the canvas draws at one pixel per CSS pixel, so text
+ * drawn there is scaled up and soft on most screens. The Phaser container
+ * stays as the label's place in the room: what moves, hides or fades it moves,
+ * hides or fades the HTML in the same frame.
  */
 export class SceneLabel {
   readonly container: Phaser.GameObjects.Container;
-  readonly dot?: Phaser.GameObjects.Graphics;
-  private background: Phaser.GameObjects.Graphics;
-  private label: Phaser.GameObjects.Text;
-  private emoji?: Phaser.GameObjects.Text;
-  private scene: Phaser.Scene;
-  private dotColor = EDGE;
+  /** A tag (with a status dot) rather than a hint. */
+  readonly tag: boolean;
+  private readonly root: HTMLDivElement;
+  private readonly name: HTMLSpanElement;
+  private readonly dotEl?: HTMLSpanElement;
+  private emojiEl?: HTMLSpanElement;
   private full = "";
   private folded = false;
 
-  constructor(
-    scene: Phaser.Scene,
-    x: number,
-    y: number,
-    text: string,
-    dot = false,
-  ) {
-    this.scene = scene;
-    this.background = scene.add.graphics();
-    this.label = scene.add.text(0, 0, "", STYLE).setOrigin(dot ? 0 : 0.5, 0.5);
-    this.dot = dot ? scene.add.graphics() : undefined;
-    this.container = scene.add.container(
-      x,
-      y,
-      this.dot
-        ? [this.background, this.dot, this.label]
-        : [this.background, this.label],
-    );
+  constructor(scene: Phaser.Scene, x: number, y: number, text: string, dot = false) {
+    this.tag = dot;
+    this.container = scene.add.container(x, y);
+    this.root = document.createElement("div");
+    this.root.className = dot ? "plate plate-tag" : "plate plate-hint";
+    if (dot) {
+      this.dotEl = document.createElement("span");
+      this.dotEl.className = "plate-dot";
+      this.root.appendChild(this.dotEl);
+    }
+    this.name = document.createElement("span");
+    this.name.className = "plate-name";
+    this.root.appendChild(this.name);
+    const remove = plateLayer(scene).add(this.container, this.root, dot ? "bottom" : "center");
+    this.container.once(Phaser.GameObjects.Events.DESTROY, remove);
     this.setText(text);
   }
 
@@ -72,38 +62,30 @@ export class SceneLabel {
     return this.full;
   }
 
-  /** How wide it is with its name showing, before scaling. */
+  /** How wide it is with its name showing, in the floor's units before scaling. */
   get fullWidth(): number {
-    return this.label.width + (this.dot ? 32 : 20) + this.emojiWidth;
-  }
-
-  private get emojiWidth(): number {
-    // Counted whether or not it's showing, so a tag doesn't fold and unfold over its own emoji.
-    return this.emoji?.text ? this.emoji.width + 3 : 0;
+    const emoji = this.emojiEl?.textContent ? 14 : 0;
+    return measure(this.name.textContent ?? "", FONT) + (this.tag ? 22 : 18) + emoji;
   }
 
   /** The emoji at the tag's end, or none. */
   setEmoji(emoji: string | null): this {
-    if (!this.dot) return this;
-    if (!emoji && !this.emoji) return this;
-    if (!this.emoji) {
-      this.emoji = this.scene.add.text(0, 0, "", EMOJI_STYLE).setOrigin(0, 0.5);
-      this.container.add(this.emoji);
+    if (!this.tag || (!emoji && !this.emojiEl)) return this;
+    if (!this.emojiEl) {
+      this.emojiEl = document.createElement("span");
+      this.emojiEl.className = "plate-emoji";
+      this.root.appendChild(this.emojiEl);
     }
-    this.emoji.setText(emoji ?? "");
-    this.emoji.setVisible(!!emoji && !this.folded);
-    this.draw();
+    this.emojiEl.textContent = emoji ?? "";
+    this.emojiEl.hidden = !emoji;
     return this;
-  }
-
-  private get width(): number {
-    return this.folded ? FOLDED : this.fullWidth;
   }
 
   setText(text: string): this {
     this.full = text;
-    this.label.setText(this.dot ? tagName(text) : text);
-    this.draw();
+    const shown = this.tag ? tagName(text) : text;
+    this.name.textContent = shown;
+    this.root.hidden = !shown;
     return this;
   }
 
@@ -111,39 +93,12 @@ export class SceneLabel {
   setFolded(folded: boolean): this {
     if (folded === this.folded) return this;
     this.folded = folded;
-    this.label.setVisible(!folded);
-    this.emoji?.setVisible(!folded && !!this.emoji.text);
-    this.draw();
+    this.root.toggleAttribute("data-folded", folded);
     return this;
   }
 
   setDot(color: number): this {
-    this.dotColor = color;
-    this.draw();
+    if (this.dotEl) this.dotEl.style.background = `#${color.toString(16).padStart(6, "0")}`;
     return this;
-  }
-
-  private draw() {
-    const g = this.background;
-    g.clear();
-
-    if (!this.dot) {
-      const width = this.label.width + 20;
-      g.fillStyle(INK, 0.9);
-      g.fillRoundedRect(-width / 2, -11, width, 22, 11);
-      return;
-    }
-
-    const width = this.width;
-    const left = -width / 2;
-    g.fillStyle(INK, 0.85);
-    g.fillRoundedRect(left, -8, width, 16, 8);
-    g.lineStyle(1, EDGE, 0.5);
-    g.strokeRoundedRect(left, -8, width, 16, 8);
-    this.dot.clear();
-    this.dot.fillStyle(this.dotColor, 1);
-    this.dot.fillCircle(this.folded ? 0 : left + 12, 0, 4);
-    this.label.setPosition(left + 22, 0);
-    this.emoji?.setPosition(left + 22 + this.label.width + 2, 0);
   }
 }

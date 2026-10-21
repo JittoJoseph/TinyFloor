@@ -35,8 +35,17 @@ const SNAP_THRESHOLD = TILE_SIZE * 6;
 const IGNORE_CORRECTION = TILE_SIZE / 4;
 /** Behind the tile they say they're on, they walk a little faster to catch up. */
 const MAX_CATCHUP = 1.8;
-const TAG_OFFSET_Y = -55;
-const BEHIND_TAG_OFFSET_Y = 40;
+/**
+ * Where a name tag's bottom edge sits: a character's art fills the bottom
+ * three quarters of its 64-unit frame, so its hair starts 48 above its feet,
+ * and the tag clears it by 4. Tags hang from their bottom edge (SceneLabel),
+ * so a tag scaled up for a distant camera grows away from the head.
+ */
+const TAG_OFFSET_Y = -52;
+/** Under the chair instead, for someone sitting with their back to us: its top edge just below the seat. */
+const BEHIND_TAG_OFFSET_Y = 58;
+/** A tag's height, before scaling (the taller of the canvas and HTML tags). */
+const TAG_HEIGHT = 18;
 const TAG_DEPTH = 100000;
 type Box = { left: number; right: number; top: number; bottom: number };
 /** A tag folded to its dot, before scaling. */
@@ -175,7 +184,7 @@ export class PlayerManager {
       .setOrigin(0.5, 1)
       .setScale(this.tagScale);
     // Just over the name tag, so it reads as theirs.
-    const top = TAG_OFFSET_Y - 8 * this.tagScale;
+    const top = TAG_OFFSET_Y - (TAG_HEIGHT + 2) * this.tagScale;
     if (container) {
       hand.setPosition(0, top);
       container.add(hand);
@@ -235,13 +244,13 @@ export class PlayerManager {
     tags.sort((a, b) => a.distance - b.distance);
 
     const zoom = this.scene.cameras.main.zoom;
-    const height = 16 * this.tagScale;
+    const height = TAG_HEIGHT * this.tagScale;
     const gap = TAG_GAP / zoom;
     const placed: Box[] = [];
     for (const { tag, x, y } of tags) {
       const boxOf = (width: number) => {
         const half = (width * this.tagScale) / 2;
-        return { left: x - half - gap, right: x + half + gap, top: y - height / 2 - gap, bottom: y + height / 2 + gap };
+        return { left: x - half - gap, right: x + half + gap, top: y - height - gap, bottom: y + gap };
       };
       const clashes = (box: Box) => placed.some((other) => box.left < other.right && box.right > other.left && box.top < other.bottom && box.bottom > other.top);
       const full = boxOf(tag.fullWidth);
@@ -256,15 +265,13 @@ export class PlayerManager {
 
   updatePlayerStatus(id: string, status: PlayerStatus) {
     const tag = this.nameTags.get(id);
-    if (!tag?.dot) return;
+    if (!tag?.tag) return;
 
     const state = this.playerStates.get(id);
     if (state) state.status = status;
 
     // The colour says it; the dot holds still, in a call like any other status.
     tag.setDot(statusColorValue(status));
-    this.scene.tweens.killTweensOf(tag.dot);
-    tag.dot.setAlpha(1);
   }
 
   /** Someone's new name, on their tag. */
@@ -523,7 +530,7 @@ export class PlayerManager {
   removePlayer(id: string) {
     const tag = this.nameTags.get(id);
     if (tag) {
-      this.scene.tweens.killTweensOf([tag.container, tag.dot]);
+      this.scene.tweens.killTweensOf(tag.container);
       this.nameTags.delete(id);
       // A remote tag goes with its container below; the local one stands alone.
       if (!this.players.has(id)) tag.container.destroy();
@@ -578,7 +585,7 @@ export class PlayerManager {
 
   destroy() {
     this.nameTags.forEach((tag) =>
-      this.scene.tweens.killTweensOf([tag.container, tag.dot]),
+      this.scene.tweens.killTweensOf(tag.container),
     );
     this.players.forEach((container) => {
       this.scene.tweens.killTweensOf(container);

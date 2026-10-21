@@ -44,8 +44,12 @@ work happens. What we don't build, though each would raise usage numbers:
   ownership; the endowment and IKEA effects). Gather's own guide calls the
   desk "your home base" and treats being at it or away as a signal of
   availability. So: you claim a desk by sitting at it (offered after you sit,
-  never as a prompt on approach), its name plate shows only when someone's
-  near and you're away, and nobody else sits there.
+  never as a prompt on approach), and nobody else sits there. While its owner
+  isn't at it, a claimed desk carries their face, with a dot while they're in
+  the office, so the floor reads as a seating chart from across the room;
+  walk up and it opens to their name. Yours says "Your desk" from anywhere,
+  so you can find it. A name card on every desk all the time was noise; one
+  only up close hid who sits where.
 - **Arriving is a moment.** Remote work lost the commute, which marked the
   switch into work; Microsoft built a "virtual commute" into Teams on that
   reasoning, and the point researchers make is that the ritual's form hardly

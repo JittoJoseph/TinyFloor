@@ -4,3 +4,157 @@
 @import "../../../web-shared/src/app/shared.css";
 /* Tailwind scans this app's files; the components both sites share are there. */
 @source "../../../web-shared/src";
+
+/*
+ * The floor's labels drawn as HTML over its canvas (lib/plates.ts), sharp at
+ * any screen density. Sizes are in the floor's own units: the layer scales
+ * each label with the camera, so 18 here is about 22px on a desktop.
+ */
+.plates {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: strict;
+}
+
+.plate {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgb(17 17 19 / 0.8);
+  color: #fafaf9;
+  box-shadow:
+    inset 0 0 0 0.5px rgb(255 255 255 / 0.14),
+    0 1px 3px rgb(0 0 0 / 0.28);
+  white-space: nowrap;
+  font: 500 10.5px/1 Geist, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.005em;
+  will-change: transform;
+  -webkit-font-smoothing: antialiased;
+}
+
+.plate[hidden] {
+  display: none;
+}
+
+.plate-tag {
+  padding: 0 7px 0 5px;
+}
+
+.plate-hint {
+  height: 20px;
+  padding: 0 9px;
+}
+
+.plate-dot {
+  width: 6px;
+  height: 6px;
+  flex: none;
+  border-radius: 50%;
+}
+
+.plate-emoji {
+  font-size: 10px;
+  line-height: 1;
+}
+
+.plate[data-folded] {
+  width: 14px;
+  justify-content: center;
+  padding: 0;
+}
+
+.plate[data-folded] .plate-name,
+.plate[data-folded] .plate-emoji {
+  display: none;
+}
+
+/*
+ * A desk's chip (lib/DeskPlate.ts): light, like a card set on the desk, so it
+ * reads as part of the office and not as someone standing there. The owner's
+ * face, with a dot while they're in the office; it opens to their name up
+ * close, and "Your desk" stays open.
+ */
+.desk-plate {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  height: 15px;
+  padding: 2px;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.94);
+  color: #1c1c1e;
+  box-shadow:
+    0 0 0 0.5px rgb(0 0 0 / 0.12),
+    0 1px 2px rgb(0 0 0 / 0.22);
+  white-space: nowrap;
+  font: 500 9.5px/1 Geist, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.005em;
+  will-change: transform;
+  -webkit-font-smoothing: antialiased;
+}
+
+.desk-plate[hidden] {
+  display: none;
+}
+
+.desk-plate-face {
+  position: relative;
+  width: 11px;
+  height: 11px;
+  flex: none;
+  border-radius: 50%;
+}
+
+.desk-plate-dot {
+  position: absolute;
+  right: -1.5px;
+  bottom: -1.5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px #fff;
+}
+
+.desk-plate-dot[hidden] {
+  display: none;
+}
+
+.desk-plate-name {
+  max-width: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    max-width 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    margin 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 160ms ease-out;
+}
+
+.desk-plate[data-open] .desk-plate-name {
+  max-width: 110px;
+  margin: 0 4px 0 3px;
+  opacity: 1;
+}
+
+/* Yours, in ink, so it's the one you spot. */
+.desk-plate[data-mine] {
+  background: rgb(17 17 19 / 0.86);
+  color: #fafaf9;
+  box-shadow:
+    inset 0 0 0 0.5px rgb(255 255 255 / 0.14),
+    0 1px 2px rgb(0 0 0 / 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desk-plate-name {
+    transition: none;
+  }
+}

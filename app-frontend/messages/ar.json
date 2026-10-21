@@ -457,7 +457,8 @@
       "sections": {
         "profile": "الملف الشخصي",
         "signin": "تسجيل الدخول",
-        "appearance": "المظهر"
+        "appearance": "المظهر",
+        "integrations": "التكاملات"
       },
       "profileNote": "اسمك ورابطك، أينما دخلت.",
       "password": "كلمة المرور",
@@ -513,7 +514,9 @@
       "generic": "حدث خطأ ما. حاول مرة أخرى.",
       "bad_link": "لا يبدو هذا عنوان موقع.",
       "google_taken": "حساب Google هذا مرتبط بالفعل بحساب TinyFloor آخر.",
-      "google_failed": "لم ينجح الأمر مع Google. حاول مرة أخرى."
+      "google_failed": "لم ينجح الأمر مع Google. حاول مرة أخرى.",
+      "not_spotify": "هذا ليس رابط Spotify.",
+      "spotify_unknown": "لا يجد Spotify هذا الرابط."
     },
     "people": {
       "title": "الأشخاص",
@@ -848,5 +851,44 @@
     "full": "ممتلئ",
     "makeOwn": "أنشئ مكتبًا جديدًا بدلًا من ذلك",
     "failed": "لم ينجح ذلك. حاول مرة أخرى."
+  },
+  "spotify": {
+    "listening": "يستمع على Spotify",
+    "inJam": "في Jam على Spotify",
+    "listen": "استمع",
+    "open": "افتح في Spotify",
+    "joinJam": "انضم إلى Jam",
+    "jamOf": "Jam الخاص بـ {name}",
+    "jamNote": "استمعوا معًا في Spotify",
+    "playerTitle": "ما يستمع إليه {name}",
+    "kinds": {
+      "track": "أغنية",
+      "album": "ألبوم",
+      "playlist": "قائمة تشغيل",
+      "episode": "حلقة بودكاست",
+      "show": "بودكاست",
+      "artist": "فنان",
+      "jam": "Jam"
+    }
+  },
+  "integrations": {
+    "spotify": "Spotify",
+    "spotifyNote": "ما تستمع إليه، على بطاقة ملفك الشخصي.",
+    "shareTitle": "لا تشارك شيئًا",
+    "shareNote": "شارك أغنية أو ألبومًا أو قائمة تشغيل أو Jam. يبقى في ملفك الشخصي أربع ساعات.",
+    "share": "شارك رابطًا",
+    "shareAgain": "شارك مجددًا",
+    "change": "تغيير",
+    "stop": "أوقف المشاركة",
+    "until": "في ملفك الشخصي حتى {time}",
+    "ended": "لم يعد في ملفك الشخصي",
+    "jam": "Jam الخاص بك",
+    "dialogTitle": "شارك من Spotify",
+    "dialogNote": "يراه زملاؤك في المكتب عندما يفتحون ملفك الشخصي خلال الساعات الأربع القادمة.",
+    "placeholder": "الصق رابط Spotify",
+    "howTo": "في Spotify، افتح قائمة أغنية أو ألبوم أو قائمة تشغيل، ثم اختر مشاركة › نسخ الرابط.",
+    "notSpotify": "هذا ليس رابط Spotify.",
+    "shareButton": "مشاركة",
+    "cancel": "إلغاء"
   }
 }

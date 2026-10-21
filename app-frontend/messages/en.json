@@ -457,7 +457,8 @@
       "sections": {
         "profile": "Profile",
         "signin": "Signing in",
-        "appearance": "Appearance"
+        "appearance": "Appearance",
+        "integrations": "Integrations"
       },
       "profileNote": "Your name and link, wherever you walk in.",
       "password": "Password",
@@ -513,7 +514,9 @@
       "generic": "Something went wrong. Try again.",
       "bad_link": "That doesn't look like a web address.",
       "google_taken": "That Google account is already connected to another TinyFloor account.",
-      "google_failed": "Google didn't go through. Try again."
+      "google_failed": "Google didn't go through. Try again.",
+      "not_spotify": "That isn't a Spotify link.",
+      "spotify_unknown": "Spotify can't find that link."
     },
     "people": {
       "title": "People",
@@ -848,5 +851,44 @@
     "full": "Full",
     "makeOwn": "Make a new office instead",
     "failed": "That didn't work. Try again."
+  },
+  "spotify": {
+    "listening": "Listening on Spotify",
+    "inJam": "In a Jam on Spotify",
+    "listen": "Listen",
+    "open": "Open in Spotify",
+    "joinJam": "Join Jam",
+    "jamOf": "{name}'s Jam",
+    "kinds": {
+      "track": "Song",
+      "album": "Album",
+      "playlist": "Playlist",
+      "episode": "Podcast episode",
+      "show": "Podcast",
+      "artist": "Artist",
+      "jam": "Jam"
+    },
+    "playerTitle": "What {name} is listening to",
+    "jamNote": "Listen together in Spotify"
+  },
+  "integrations": {
+    "spotify": "Spotify",
+    "spotifyNote": "What you're listening to, on your profile card.",
+    "shareTitle": "Not sharing anything",
+    "shareNote": "Share a song, album, playlist or Jam. It stays on your profile for four hours.",
+    "share": "Share a link",
+    "shareAgain": "Share again",
+    "change": "Change",
+    "stop": "Stop sharing",
+    "until": "On your profile until {time}",
+    "ended": "No longer on your profile",
+    "jam": "Your Jam",
+    "dialogTitle": "Share from Spotify",
+    "dialogNote": "People in your office see it when they open your profile, for the next four hours.",
+    "placeholder": "Paste a Spotify link",
+    "howTo": "In Spotify, open the menu on a song, album or playlist, then Share › Copy link.",
+    "notSpotify": "That isn't a Spotify link.",
+    "shareButton": "Share",
+    "cancel": "Cancel"
   }
 }

@@ -155,6 +155,30 @@ missing features on the map.
 - **The box's tools** are emoji, a picture (on a phone, the camera and
   gallery first) and a file, in that order, with send on the right.
 
+## Spotify (21 October)
+
+- **What you're listening to comes from a link, not from signing in to
+  Spotify.** Reading what someone plays needs Spotify's Web API, which since
+  February 2026 lets an app in development mode serve 5 accounts added by
+  hand; more needs extended quota, open only to registered businesses with
+  250,000 monthly users (since May 2025). Its policy also bars products made
+  for businesses, and its in-browser player needs written approval for
+  commercial use. So Settings › Integrations takes a song, album, playlist,
+  podcast or Jam link, and oEmbed (no key) gives its name and cover.
+- **A share lasts four hours**, so a card never says what someone played
+  yesterday; the link stays in settings to share again with one press.
+- **It shows where people look someone up**: the chat card, and a Spotify
+  button on the card you get walking up to someone on the floor. The demo
+  office shows none, since everyone there is a guest.
+- **Listen opens Spotify's own player in a dialog**, on the listener's own
+  account (whole songs when they're signed in to Spotify in that browser,
+  30-second previews otherwise), and closing it stops it. Spotify asks that
+  nothing of theirs plays without its cover and name on screen, and the
+  player needs about 300px, more than a card has.
+- **Listening together is Spotify's Jam**: a shared Jam link shows Join Jam,
+  and Spotify keeps everyone in step. We never sync playback ourselves;
+  Spotify's policy bars playing one source to many listeners.
+
 ## Small decisions worth remembering
 
 - **"Office", not "workspace".** The whole product is the metaphor (a floor,

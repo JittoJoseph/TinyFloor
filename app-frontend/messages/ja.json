@@ -457,7 +457,8 @@
       "sections": {
         "profile": "プロフィール",
         "signin": "サインイン",
-        "appearance": "表示"
+        "appearance": "表示",
+        "integrations": "連携"
       },
       "profileNote": "どこに入っても表示される名前とリンク。",
       "password": "パスワード",
@@ -513,7 +514,9 @@
       "generic": "問題が発生しました。もう一度お試しください。",
       "bad_link": "ウェブアドレスではないようです。",
       "google_taken": "その Google アカウントは別の TinyFloor アカウントと連携済みです。",
-      "google_failed": "Google での処理に失敗しました。もう一度お試しください。"
+      "google_failed": "Google での処理に失敗しました。もう一度お試しください。",
+      "not_spotify": "Spotifyのリンクではありません。",
+      "spotify_unknown": "Spotifyでそのリンクが見つかりません。"
     },
     "people": {
       "title": "メンバー",
@@ -848,5 +851,44 @@
     "full": "満員",
     "makeOwn": "新しいオフィスを作る",
     "failed": "うまくいきませんでした。もう一度お試しください。"
+  },
+  "spotify": {
+    "listening": "Spotifyで再生中",
+    "inJam": "SpotifyのJamに参加中",
+    "listen": "聴く",
+    "open": "Spotifyで開く",
+    "joinJam": "Jamに参加",
+    "jamOf": "{name}さんのJam",
+    "jamNote": "Spotifyで一緒に聴く",
+    "playerTitle": "{name}さんが聴いている曲",
+    "kinds": {
+      "track": "曲",
+      "album": "アルバム",
+      "playlist": "プレイリスト",
+      "episode": "ポッドキャストのエピソード",
+      "show": "ポッドキャスト",
+      "artist": "アーティスト",
+      "jam": "Jam"
+    }
+  },
+  "integrations": {
+    "spotify": "Spotify",
+    "spotifyNote": "聴いている音楽をプロフィールカードに表示します。",
+    "shareTitle": "共有していません",
+    "shareNote": "曲、アルバム、プレイリスト、Jamを共有できます。プロフィールに4時間表示されます。",
+    "share": "リンクを共有",
+    "shareAgain": "もう一度共有",
+    "change": "変更",
+    "stop": "共有をやめる",
+    "until": "{time}までプロフィールに表示",
+    "ended": "プロフィールに表示されていません",
+    "jam": "あなたのJam",
+    "dialogTitle": "Spotifyから共有",
+    "dialogNote": "これから4時間、オフィスのメンバーがあなたのプロフィールを開くと表示されます。",
+    "placeholder": "Spotifyのリンクを貼り付け",
+    "howTo": "Spotifyで曲・アルバム・プレイリストのメニューを開き、「シェア」›「リンクをコピー」を選びます。",
+    "notSpotify": "Spotifyのリンクではありません。",
+    "shareButton": "共有",
+    "cancel": "キャンセル"
   }
 }

@@ -457,7 +457,8 @@
       "sections": {
         "profile": "Profil",
         "signin": "Innlogging",
-        "appearance": "Utseende"
+        "appearance": "Utseende",
+        "integrations": "Integrasjoner"
       },
       "profileNote": "Navnet og lenken din, uansett hvor du går inn.",
       "password": "Passord",
@@ -513,7 +514,9 @@
       "generic": "Noe gikk galt. Prøv igjen.",
       "bad_link": "Det ser ikke ut som en nettadresse.",
       "google_taken": "Den Google-kontoen er allerede koblet til en annen TinyFloor-konto.",
-      "google_failed": "Det gikk ikke med Google. Prøv igjen."
+      "google_failed": "Det gikk ikke med Google. Prøv igjen.",
+      "not_spotify": "Det er ikke en Spotify-lenke.",
+      "spotify_unknown": "Spotify finner ikke den lenken."
     },
     "people": {
       "title": "Folk",
@@ -848,5 +851,44 @@
     "full": "Fullt",
     "makeOwn": "Lag heller et nytt kontor",
     "failed": "Det fungerte ikke. Prøv igjen."
+  },
+  "spotify": {
+    "listening": "Lytter på Spotify",
+    "inJam": "I en Jam på Spotify",
+    "listen": "Lytt",
+    "open": "Åpne i Spotify",
+    "joinJam": "Bli med i Jam",
+    "jamOf": "{name}s Jam",
+    "jamNote": "Lytt sammen i Spotify",
+    "playerTitle": "Hva {name} lytter til",
+    "kinds": {
+      "track": "Sang",
+      "album": "Album",
+      "playlist": "Spilleliste",
+      "episode": "Podkastepisode",
+      "show": "Podkast",
+      "artist": "Artist",
+      "jam": "Jam"
+    }
+  },
+  "integrations": {
+    "spotify": "Spotify",
+    "spotifyNote": "Hva du lytter til, på profilkortet ditt.",
+    "shareTitle": "Ingenting delt",
+    "shareNote": "Del en sang, et album, en spilleliste eller en Jam. Den blir på profilen din i fire timer.",
+    "share": "Del en lenke",
+    "shareAgain": "Del igjen",
+    "change": "Endre",
+    "stop": "Slutt å dele",
+    "until": "På profilen din til {time}",
+    "ended": "Ikke lenger på profilen din",
+    "jam": "Din Jam",
+    "dialogTitle": "Del fra Spotify",
+    "dialogNote": "Folk på kontoret ditt ser det når de åpner profilen din, de neste fire timene.",
+    "placeholder": "Lim inn en Spotify-lenke",
+    "howTo": "Åpne menyen for en sang, et album eller en spilleliste i Spotify, og velg Del › Kopier lenke.",
+    "notSpotify": "Det er ikke en Spotify-lenke.",
+    "shareButton": "Del",
+    "cancel": "Avbryt"
   }
 }

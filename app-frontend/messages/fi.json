@@ -457,7 +457,8 @@
       "sections": {
         "profile": "Profiili",
         "signin": "Kirjautuminen",
-        "appearance": "Ulkoasu"
+        "appearance": "Ulkoasu",
+        "integrations": "Integraatiot"
       },
       "profileNote": "Nimesi ja linkkisi, minne ikinä astut.",
       "password": "Salasana",
@@ -513,7 +514,9 @@
       "generic": "Jokin meni vikaan. Yritä uudelleen.",
       "bad_link": "Tämä ei näytä verkko-osoitteelta.",
       "google_taken": "Tämä Google-tili on jo yhdistetty toiseen TinyFloor-tiliin.",
-      "google_failed": "Google ei onnistunut. Yritä uudelleen."
+      "google_failed": "Google ei onnistunut. Yritä uudelleen.",
+      "not_spotify": "Tämä ei ole Spotify-linkki.",
+      "spotify_unknown": "Spotify ei löydä tätä linkkiä."
     },
     "people": {
       "title": "Ihmiset",
@@ -848,5 +851,44 @@
     "full": "Täynnä",
     "makeOwn": "Luo sittenkin uusi toimisto",
     "failed": "Se ei onnistunut. Yritä uudelleen."
+  },
+  "spotify": {
+    "listening": "Kuuntelee Spotifyssa",
+    "inJam": "Jamissa Spotifyssa",
+    "listen": "Kuuntele",
+    "open": "Avaa Spotifyssa",
+    "joinJam": "Liity Jamiin",
+    "jamOf": "Käyttäjän {name} Jam",
+    "jamNote": "Kuunnelkaa yhdessä Spotifyssa",
+    "playerTitle": "Mitä {name} kuuntelee",
+    "kinds": {
+      "track": "Kappale",
+      "album": "Albumi",
+      "playlist": "Soittolista",
+      "episode": "Podcastjakso",
+      "show": "Podcast",
+      "artist": "Artisti",
+      "jam": "Jam"
+    }
+  },
+  "integrations": {
+    "spotify": "Spotify",
+    "spotifyNote": "Mitä kuuntelet, profiilikortissasi.",
+    "shareTitle": "Et jaa mitään",
+    "shareNote": "Jaa kappale, albumi, soittolista tai Jam. Se näkyy profiilissasi neljä tuntia.",
+    "share": "Jaa linkki",
+    "shareAgain": "Jaa uudelleen",
+    "change": "Vaihda",
+    "stop": "Lopeta jakaminen",
+    "until": "Profiilissasi klo {time} asti",
+    "ended": "Ei enää profiilissasi",
+    "jam": "Jamisi",
+    "dialogTitle": "Jaa Spotifysta",
+    "dialogNote": "Toimistosi ihmiset näkevät sen avatessaan profiilisi seuraavan neljän tunnin ajan.",
+    "placeholder": "Liitä Spotify-linkki",
+    "howTo": "Avaa Spotifyssa kappaleen, albumin tai soittolistan valikko ja valitse Jaa › Kopioi linkki.",
+    "notSpotify": "Tämä ei ole Spotify-linkki.",
+    "shareButton": "Jaa",
+    "cancel": "Peruuta"
   }
 }

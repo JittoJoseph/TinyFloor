@@ -5,4 +5,5 @@ export * from "./map";
 export * from "./messages";
 export * from "./profile";
 export * from "./push";
+export * from "./spotify";
 export * from "./ticket";

@@ -457,7 +457,8 @@
       "sections": {
         "profile": "Profiel",
         "signin": "Inloggen",
-        "appearance": "Weergave"
+        "appearance": "Weergave",
+        "integrations": "Integraties"
       },
       "profileNote": "Je naam en link, waar je ook binnenloopt.",
       "password": "Wachtwoord",
@@ -513,7 +514,9 @@
       "generic": "Er ging iets mis. Probeer het opnieuw.",
       "bad_link": "Dat lijkt geen webadres.",
       "google_taken": "Dat Google-account is al gekoppeld aan een ander TinyFloor-account.",
-      "google_failed": "Het is niet gelukt met Google. Probeer het opnieuw."
+      "google_failed": "Het is niet gelukt met Google. Probeer het opnieuw.",
+      "not_spotify": "Dat is geen Spotify-link.",
+      "spotify_unknown": "Spotify kan die link niet vinden."
     },
     "people": {
       "title": "Mensen",
@@ -848,5 +851,44 @@
     "full": "Vol",
     "makeOwn": "Toch een nieuw kantoor maken",
     "failed": "Dat lukte niet. Probeer het opnieuw."
+  },
+  "spotify": {
+    "listening": "Luistert op Spotify",
+    "inJam": "In een Jam op Spotify",
+    "listen": "Luisteren",
+    "open": "Openen in Spotify",
+    "joinJam": "Meedoen met Jam",
+    "jamOf": "Jam van {name}",
+    "jamNote": "Samen luisteren in Spotify",
+    "playerTitle": "Waar {name} naar luistert",
+    "kinds": {
+      "track": "Nummer",
+      "album": "Album",
+      "playlist": "Afspeellijst",
+      "episode": "Podcastaflevering",
+      "show": "Podcast",
+      "artist": "Artiest",
+      "jam": "Jam"
+    }
+  },
+  "integrations": {
+    "spotify": "Spotify",
+    "spotifyNote": "Waar je naar luistert, op je profielkaart.",
+    "shareTitle": "Niets gedeeld",
+    "shareNote": "Deel een nummer, album, afspeellijst of Jam. Het blijft vier uur op je profiel.",
+    "share": "Link delen",
+    "shareAgain": "Opnieuw delen",
+    "change": "Wijzigen",
+    "stop": "Stoppen met delen",
+    "until": "Op je profiel tot {time}",
+    "ended": "Niet meer op je profiel",
+    "jam": "Jouw Jam",
+    "dialogTitle": "Delen vanuit Spotify",
+    "dialogNote": "Mensen in je kantoor zien het de komende vier uur als ze je profiel openen.",
+    "placeholder": "Plak een Spotify-link",
+    "howTo": "Open in Spotify het menu van een nummer, album of afspeellijst en kies Delen › Link kopiëren.",
+    "notSpotify": "Dat is geen Spotify-link.",
+    "shareButton": "Delen",
+    "cancel": "Annuleren"
   }
 }

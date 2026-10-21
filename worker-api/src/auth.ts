@@ -1,4 +1,4 @@
-import { cleanDisplayName, cleanNote, DEFAULT_CHARACTER, isCharacter, liveNote, type PresentPerson } from "../../shared-protocol/src";
+import { cleanDisplayName, cleanNote, DEFAULT_CHARACTER, isCharacter, liveNote, liveShare, type PresentPerson } from "../../shared-protocol/src";
 import { realtime } from "./access";
 import { HttpError, json, readJson } from "./http";
 import { limitAuth } from "./limits";
@@ -13,6 +13,7 @@ import {
   requireUser,
   type User,
 } from "./session";
+import { shareFrom } from "./spotify";
 import { verifyTurnstile } from "./turnstile";
 
 const PASSWORD_MIN_LENGTH = 8;
@@ -278,12 +279,27 @@ export function authRoutes(router: Router): void {
       return json({ status: note });
     })
 
-    // Someone's profile, for whoever they share a floor or a chat with: their name, their link and their zone.
+    // Someone's profile, for whoever they share a floor or a chat with: their name, their link, their zone,
+    // and what they're listening to on Spotify while they share it.
     .add("GET", "/v1/people/:id", async ({ request, env, ctx, params }) => {
       await requireUser(env, request, ctx);
-      const person = await env.DB.prepare("SELECT id, display_name, link, is_guest, time_zone FROM users WHERE id = ?")
+      const person = await env.DB.prepare(
+        `SELECT id, display_name, link, is_guest, time_zone, spotify_url, spotify_kind, spotify_title, spotify_image, spotify_until
+           FROM users WHERE id = ?`,
+      )
         .bind(params.id)
-        .first<{ id: string; display_name: string; link: string | null; is_guest: number; time_zone: string | null }>();
+        .first<{
+          id: string;
+          display_name: string;
+          link: string | null;
+          is_guest: number;
+          time_zone: string | null;
+          spotify_url: string | null;
+          spotify_kind: string | null;
+          spotify_title: string | null;
+          spotify_image: string | null;
+          spotify_until: number | null;
+        }>();
       if (!person) throw new HttpError(404, "not_found", "No such person");
       return json(
         {
@@ -293,9 +309,12 @@ export function authRoutes(router: Router): void {
             link: person.is_guest ? null : person.link,
             guest: person.is_guest === 1,
             timeZone: person.time_zone,
+            spotify: person.is_guest ? null : liveShare(shareFrom(person)),
           },
         },
-        { headers: { "Cache-Control": "private, max-age=60" } },
+        // The app keeps a profile a minute itself (app-frontend's lib/people.ts) and forgets yours when you
+        // change it; a browser cache on top would hold a share for a minute more after it changed.
+        { headers: { "Cache-Control": "private, no-store" } },
       );
     });
 }
@@ -371,6 +390,8 @@ export function publicUser(user: User) {
     introduced: user.isGuest || user.introduced !== false,
     timeZone: user.timeZone ?? null,
     timeZoneAuto: user.timeZoneAuto !== false,
+    // Yours even once it has cleared, so settings can offer it again.
+    spotify: user.isGuest ? null : (user.spotify ?? null),
     status: liveNote(user.status),
   };
 }

@@ -457,7 +457,8 @@
       "sections": {
         "profile": "פרופיל",
         "signin": "התחברות",
-        "appearance": "מראה"
+        "appearance": "מראה",
+        "integrations": "שילובים"
       },
       "profileNote": "השם והקישור שלך, בכל מקום שנכנסים אליו.",
       "password": "סיסמה",
@@ -513,7 +514,9 @@
       "generic": "משהו השתבש. נסו שוב.",
       "bad_link": "זה לא נראה כמו כתובת אתר.",
       "google_taken": "חשבון Google הזה כבר מחובר לחשבון TinyFloor אחר.",
-      "google_failed": "החיבור ל-Google לא הצליח. נסו שוב."
+      "google_failed": "החיבור ל-Google לא הצליח. נסו שוב.",
+      "not_spotify": "זה לא קישור של Spotify.",
+      "spotify_unknown": "Spotify לא מוצא את הקישור הזה."
     },
     "people": {
       "title": "אנשים",
@@ -848,5 +851,44 @@
     "full": "מלא",
     "makeOwn": "ליצור משרד חדש במקום",
     "failed": "זה לא הצליח. נסו שוב."
+  },
+  "spotify": {
+    "listening": "מאזינים ב-Spotify",
+    "inJam": "ב-Jam ב-Spotify",
+    "listen": "האזנה",
+    "open": "פתיחה ב-Spotify",
+    "joinJam": "הצטרפות ל-Jam",
+    "jamOf": "ה-Jam של {name}",
+    "jamNote": "מאזינים יחד ב-Spotify",
+    "playerTitle": "למה {name} מאזינים",
+    "kinds": {
+      "track": "שיר",
+      "album": "אלבום",
+      "playlist": "פלייליסט",
+      "episode": "פרק פודקאסט",
+      "show": "פודקאסט",
+      "artist": "אמן",
+      "jam": "Jam"
+    }
+  },
+  "integrations": {
+    "spotify": "Spotify",
+    "spotifyNote": "מה שאתם מאזינים לו, בכרטיס הפרופיל שלכם.",
+    "shareTitle": "לא משתפים כלום",
+    "shareNote": "שתפו שיר, אלבום, פלייליסט או Jam. זה יישאר בפרופיל שלכם ארבע שעות.",
+    "share": "שיתוף קישור",
+    "shareAgain": "שיתוף שוב",
+    "change": "שינוי",
+    "stop": "הפסקת השיתוף",
+    "until": "בפרופיל שלכם עד {time}",
+    "ended": "כבר לא בפרופיל שלכם",
+    "jam": "ה-Jam שלכם",
+    "dialogTitle": "שיתוף מ-Spotify",
+    "dialogNote": "האנשים במשרד יראו את זה כשיפתחו את הפרופיל שלכם, בארבע השעות הקרובות.",
+    "placeholder": "הדביקו קישור מ-Spotify",
+    "howTo": "ב-Spotify, פתחו את התפריט של שיר, אלבום או פלייליסט ובחרו שיתוף › העתקת קישור.",
+    "notSpotify": "זה לא קישור של Spotify.",
+    "shareButton": "שיתוף",
+    "cancel": "ביטול"
   }
 }

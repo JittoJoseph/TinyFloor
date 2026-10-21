@@ -457,7 +457,8 @@
       "sections": {
         "profile": "Profil",
         "signin": "Inloggning",
-        "appearance": "Utseende"
+        "appearance": "Utseende",
+        "integrations": "Integrationer"
       },
       "profileNote": "Ditt namn och din länk, var du än går in.",
       "password": "Lösenord",
@@ -513,7 +514,9 @@
       "generic": "Något gick fel. Försök igen.",
       "bad_link": "Det ser inte ut som en webbadress.",
       "google_taken": "Det Google-kontot är redan kopplat till ett annat TinyFloor-konto.",
-      "google_failed": "Det gick inte med Google. Försök igen."
+      "google_failed": "Det gick inte med Google. Försök igen.",
+      "not_spotify": "Det där är ingen Spotify-länk.",
+      "spotify_unknown": "Spotify hittar inte den länken."
     },
     "people": {
       "title": "Personer",
@@ -848,5 +851,44 @@
     "full": "Fullt",
     "makeOwn": "Skapa ett nytt kontor i stället",
     "failed": "Det gick inte. Försök igen."
+  },
+  "spotify": {
+    "listening": "Lyssnar på Spotify",
+    "inJam": "I en Jam på Spotify",
+    "listen": "Lyssna",
+    "open": "Öppna i Spotify",
+    "joinJam": "Gå med i Jam",
+    "jamOf": "{name}s Jam",
+    "jamNote": "Lyssna tillsammans i Spotify",
+    "playerTitle": "Vad {name} lyssnar på",
+    "kinds": {
+      "track": "Låt",
+      "album": "Album",
+      "playlist": "Spellista",
+      "episode": "Poddavsnitt",
+      "show": "Podd",
+      "artist": "Artist",
+      "jam": "Jam"
+    }
+  },
+  "integrations": {
+    "spotify": "Spotify",
+    "spotifyNote": "Vad du lyssnar på, på ditt profilkort.",
+    "shareTitle": "Inget delat",
+    "shareNote": "Dela en låt, ett album, en spellista eller en Jam. Den ligger kvar på din profil i fyra timmar.",
+    "share": "Dela en länk",
+    "shareAgain": "Dela igen",
+    "change": "Ändra",
+    "stop": "Sluta dela",
+    "until": "På din profil till {time}",
+    "ended": "Inte längre på din profil",
+    "jam": "Din Jam",
+    "dialogTitle": "Dela från Spotify",
+    "dialogNote": "Folk på ditt kontor ser det när de öppnar din profil, de närmaste fyra timmarna.",
+    "placeholder": "Klistra in en Spotify-länk",
+    "howTo": "Öppna menyn för en låt, ett album eller en spellista i Spotify och välj Dela › Kopiera länk.",
+    "notSpotify": "Det där är ingen Spotify-länk.",
+    "shareButton": "Dela",
+    "cancel": "Avbryt"
   }
 }

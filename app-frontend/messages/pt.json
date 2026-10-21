@@ -457,7 +457,8 @@
       "sections": {
         "profile": "Perfil",
         "signin": "Iniciar sessão",
-        "appearance": "Aparência"
+        "appearance": "Aparência",
+        "integrations": "Integrações"
       },
       "profileNote": "O seu nome e o seu link, onde quer que entre.",
       "password": "Palavra-passe",
@@ -513,7 +514,9 @@
       "generic": "Algo deu errado. Tente de novo.",
       "bad_link": "Isso não parece um endereço web.",
       "google_taken": "Essa conta do Google já está conectada a outra conta do TinyFloor.",
-      "google_failed": "Não deu certo com o Google. Tente de novo."
+      "google_failed": "Não deu certo com o Google. Tente de novo.",
+      "not_spotify": "Isso não é um link do Spotify.",
+      "spotify_unknown": "O Spotify não encontra esse link."
     },
     "people": {
       "title": "Pessoas",
@@ -848,5 +851,44 @@
     "full": "Lotado",
     "makeOwn": "Criar um escritório novo",
     "failed": "Não deu certo. Tente de novo."
+  },
+  "spotify": {
+    "listening": "Ouvindo no Spotify",
+    "inJam": "Em uma Jam no Spotify",
+    "listen": "Ouvir",
+    "open": "Abrir no Spotify",
+    "joinJam": "Entrar na Jam",
+    "jamOf": "Jam de {name}",
+    "jamNote": "Ouçam juntos no Spotify",
+    "playerTitle": "O que {name} está ouvindo",
+    "kinds": {
+      "track": "Música",
+      "album": "Álbum",
+      "playlist": "Playlist",
+      "episode": "Episódio de podcast",
+      "show": "Podcast",
+      "artist": "Artista",
+      "jam": "Jam"
+    }
+  },
+  "integrations": {
+    "spotify": "Spotify",
+    "spotifyNote": "O que você está ouvindo, no seu cartão de perfil.",
+    "shareTitle": "Nada compartilhado",
+    "shareNote": "Compartilhe uma música, um álbum, uma playlist ou uma Jam. Fica no seu perfil por quatro horas.",
+    "share": "Compartilhar um link",
+    "shareAgain": "Compartilhar de novo",
+    "change": "Trocar",
+    "stop": "Parar de compartilhar",
+    "until": "No seu perfil até {time}",
+    "ended": "Não está mais no seu perfil",
+    "jam": "Sua Jam",
+    "dialogTitle": "Compartilhar do Spotify",
+    "dialogNote": "As pessoas do seu escritório veem quando abrem seu perfil, nas próximas quatro horas.",
+    "placeholder": "Cole um link do Spotify",
+    "howTo": "No Spotify, abra o menu de uma música, álbum ou playlist e toque em Compartilhar › Copiar link.",
+    "notSpotify": "Isso não é um link do Spotify.",
+    "shareButton": "Compartilhar",
+    "cancel": "Cancelar"
   }
 }

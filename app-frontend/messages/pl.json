@@ -457,7 +457,8 @@
       "sections": {
         "profile": "Profil",
         "signin": "Logowanie",
-        "appearance": "Wygląd"
+        "appearance": "Wygląd",
+        "integrations": "Integracje"
       },
       "profileNote": "Twoje imię i link, gdziekolwiek wejdziesz.",
       "password": "Hasło",
@@ -513,7 +514,9 @@
       "generic": "Coś poszło nie tak. Spróbuj ponownie.",
       "bad_link": "To nie wygląda na adres strony.",
       "google_taken": "To konto Google jest już połączone z innym kontem TinyFloor.",
-      "google_failed": "Nie udało się z Google. Spróbuj ponownie."
+      "google_failed": "Nie udało się z Google. Spróbuj ponownie.",
+      "not_spotify": "To nie jest link ze Spotify.",
+      "spotify_unknown": "Spotify nie może znaleźć tego linku."
     },
     "people": {
       "title": "Ludzie",
@@ -848,5 +851,44 @@
     "full": "Pełne",
     "makeOwn": "Utwórz jednak nowe biuro",
     "failed": "Nie udało się. Spróbuj ponownie."
+  },
+  "spotify": {
+    "listening": "Słucha w Spotify",
+    "inJam": "W Jamie w Spotify",
+    "listen": "Posłuchaj",
+    "open": "Otwórz w Spotify",
+    "joinJam": "Dołącz do Jamu",
+    "jamOf": "Jam: {name}",
+    "jamNote": "Słuchajcie razem w Spotify",
+    "playerTitle": "Czego słucha {name}",
+    "kinds": {
+      "track": "Utwór",
+      "album": "Album",
+      "playlist": "Playlista",
+      "episode": "Odcinek podcastu",
+      "show": "Podcast",
+      "artist": "Wykonawca",
+      "jam": "Jam"
+    }
+  },
+  "integrations": {
+    "spotify": "Spotify",
+    "spotifyNote": "Czego słuchasz, na twojej karcie profilu.",
+    "shareTitle": "Nic nie udostępniasz",
+    "shareNote": "Udostępnij utwór, album, playlistę albo Jam. Zostanie w twoim profilu przez cztery godziny.",
+    "share": "Udostępnij link",
+    "shareAgain": "Udostępnij ponownie",
+    "change": "Zmień",
+    "stop": "Przestań udostępniać",
+    "until": "W twoim profilu do {time}",
+    "ended": "Już nie ma go w twoim profilu",
+    "jam": "Twój Jam",
+    "dialogTitle": "Udostępnij ze Spotify",
+    "dialogNote": "Osoby z twojego biura zobaczą to po otwarciu twojego profilu przez najbliższe cztery godziny.",
+    "placeholder": "Wklej link ze Spotify",
+    "howTo": "W Spotify otwórz menu utworu, albumu lub playlisty i wybierz Udostępnij › Kopiuj link.",
+    "notSpotify": "To nie jest link ze Spotify.",
+    "shareButton": "Udostępnij",
+    "cancel": "Anuluj"
   }
 }

@@ -7,6 +7,9 @@ import { cn } from "@/lib/utils";
 
 const CloseMenu = createContext<() => void>(() => {});
 
+/** Closes the menu this is inside, for something in it that opens elsewhere; outside a menu it does nothing. */
+export const useCloseMenu = () => useContext(CloseMenu);
+
 /**
  * A menu that grows out of its trigger (beUI's morph popover). Items close it
  * when chosen; everything inside is ordinary buttons, so keyboards just work.

@@ -457,7 +457,8 @@
       "sections": {
         "profile": "Профиль",
         "signin": "Вход",
-        "appearance": "Оформление"
+        "appearance": "Оформление",
+        "integrations": "Интеграции"
       },
       "profileNote": "Ваше имя и ссылка, куда бы вы ни зашли.",
       "password": "Пароль",
@@ -513,7 +514,9 @@
       "generic": "Что-то пошло не так. Попробуйте ещё раз.",
       "bad_link": "Это не похоже на веб-адрес.",
       "google_taken": "Этот аккаунт Google уже подключён к другому аккаунту TinyFloor.",
-      "google_failed": "Не удалось через Google. Попробуйте ещё раз."
+      "google_failed": "Не удалось через Google. Попробуйте ещё раз.",
+      "not_spotify": "Это не ссылка Spotify.",
+      "spotify_unknown": "Spotify не может найти эту ссылку."
     },
     "people": {
       "title": "Люди",
@@ -848,5 +851,44 @@
     "full": "Мест нет",
     "makeOwn": "Создать новый офис",
     "failed": "Не получилось. Попробуйте ещё раз."
+  },
+  "spotify": {
+    "listening": "Слушает в Spotify",
+    "inJam": "В Jam в Spotify",
+    "listen": "Слушать",
+    "open": "Открыть в Spotify",
+    "joinJam": "Присоединиться к Jam",
+    "jamOf": "Jam: {name}",
+    "jamNote": "Слушайте вместе в Spotify",
+    "playerTitle": "Что слушает {name}",
+    "kinds": {
+      "track": "Трек",
+      "album": "Альбом",
+      "playlist": "Плейлист",
+      "episode": "Выпуск подкаста",
+      "show": "Подкаст",
+      "artist": "Исполнитель",
+      "jam": "Jam"
+    }
+  },
+  "integrations": {
+    "spotify": "Spotify",
+    "spotifyNote": "Что вы слушаете, в карточке вашего профиля.",
+    "shareTitle": "Вы ничем не делитесь",
+    "shareNote": "Поделитесь треком, альбомом, плейлистом или Jam. Он будет в профиле четыре часа.",
+    "share": "Поделиться ссылкой",
+    "shareAgain": "Поделиться снова",
+    "change": "Изменить",
+    "stop": "Перестать делиться",
+    "until": "В профиле до {time}",
+    "ended": "Больше не в профиле",
+    "jam": "Ваш Jam",
+    "dialogTitle": "Поделиться из Spotify",
+    "dialogNote": "Коллеги по офису увидят это, открыв ваш профиль, в ближайшие четыре часа.",
+    "placeholder": "Вставьте ссылку Spotify",
+    "howTo": "В Spotify откройте меню трека, альбома или плейлиста и выберите «Поделиться» › «Скопировать ссылку».",
+    "notSpotify": "Это не ссылка Spotify.",
+    "shareButton": "Поделиться",
+    "cancel": "Отмена"
   }
 }

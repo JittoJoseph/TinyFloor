@@ -58,12 +58,9 @@ export function waveAt(id: string) {
 /** Asks the floor to walk you over to someone (see GameScene). */
 export const WALK_TO_PERSON_EVENT = "walkToPerson";
 
-/**
- * Walk over to someone. The views cover the floor, so the caller shows the
- * floor first; the walk itself waits a frame for the map to be visible.
- */
+/** Walk over to someone; from a view, `useWalkTo` (place.tsx) shows the floor too. */
 export function walkToPerson(id: string) {
-  requestAnimationFrame(() => window.dispatchEvent(new CustomEvent(WALK_TO_PERSON_EVENT, { detail: { id } })));
+  window.dispatchEvent(new CustomEvent(WALK_TO_PERSON_EVENT, { detail: { id } }));
 }
 
 /**

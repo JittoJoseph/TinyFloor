@@ -259,6 +259,62 @@ describe("lobby chat", () => {
     expect(await ada.next("chat_deleted")).toMatchObject({ seq: secret, channel: dm, by: bo.userId });
   });
 
+  it("carries a reply with the message it answers, as that message is now", async () => {
+    const office = `office-reply-${sequence++}`;
+    const ada = await ChatClient.open(office, { id: `reply-ada-${sequence++}`, name: "Ada" });
+    const bo = await ChatClient.open(office, { id: `reply-bo-${sequence++}`, name: "Bo" });
+    await ada.next("chat_ready");
+    await bo.next("chat_ready");
+
+    ada.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "lunch at one?" });
+    const asked = (await ada.next("chat_new")).message.seq;
+    await bo.next("chat_new");
+    bo.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "works for me", replyTo: asked });
+    const answer = (await ada.next("chat_new")).message;
+    expect(answer.reply).toEqual({ seq: asked, author: ada.userId, authorName: "Ada", body: "lunch at one?" });
+
+    // Edited, the reply shows what it says now; deleted, only that it's gone.
+    ada.send({ t: "chat_edit", seq: asked, body: "lunch at half one?" });
+    await bo.next("chat_edited");
+    bo.send({ t: "chat_history", channel: GENERAL_CHANNEL });
+    expect((await bo.next("chat_page")).messages.find((one) => one.seq === answer.seq)?.reply?.body).toBe("lunch at half one?");
+    ada.send({ t: "chat_delete", seq: asked });
+    await bo.next("chat_deleted");
+    bo.send({ t: "chat_history", channel: GENERAL_CHANNEL });
+    expect((await bo.next("chat_page")).messages.find((one) => one.seq === answer.seq)?.reply).toEqual({ seq: asked, gone: true });
+  });
+
+  it("tells the others in a conversation that someone is typing, and that they stopped", async () => {
+    const office = `office-typing-${sequence++}`;
+    const ada = await ChatClient.open(office, { id: `typing-ada-${sequence++}`, name: "Ada" });
+    const bo = await ChatClient.open(office, { id: `typing-bo-${sequence++}`, name: "Bo" });
+    await ada.next("chat_ready");
+    await bo.next("chat_ready");
+
+    ada.send({ t: "chat_typing", channel: GENERAL_CHANNEL, on: true });
+    ada.send({ t: "chat_typing", channel: GENERAL_CHANNEL, on: true });
+    expect(await bo.next("chat_typing")).toEqual({ t: "chat_typing", channel: GENERAL_CHANNEL, userId: ada.userId, name: "Ada", on: true });
+    // The second "on", straight after, isn't passed on; the "off" always is.
+    ada.send({ t: "chat_typing", channel: GENERAL_CHANNEL, on: false });
+    expect(await bo.next("chat_typing")).toMatchObject({ userId: ada.userId, on: false });
+    expect(ada.messages.some((one) => one.t === "chat_typing")).toBe(false);
+  });
+
+  it("answers nothing from another conversation", async () => {
+    const office = `office-reply-${sequence++}`;
+    const ada = await ChatClient.open(office, { id: `reply-ada-${sequence++}`, name: "Ada" });
+    const bo = await ChatClient.open(office, { id: `reply-bo-${sequence++}`, name: "Bo" });
+    await ada.next("chat_ready");
+    await bo.next("chat_ready");
+
+    const dm = dmChannelId(ada.userId, bo.userId);
+    ada.send({ t: "chat_send", channel: dm, body: "between us" });
+    const secret = (await ada.next("chat_new")).message.seq;
+    await bo.next("chat_new");
+    bo.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "to everyone", replyTo: secret });
+    expect((await bo.next("chat_new")).message.reply).toBeUndefined();
+  });
+
   it("passes changes to a lobby direct message between its two people, marked with who made them", async () => {
     const ada = await ChatClient.open(LOBBY_CHAT, { id: `lobby-dmedit-ada-${sequence++}`, name: "Ada" });
     const bo = await ChatClient.open(LOBBY_CHAT, { id: `lobby-dmedit-bo-${sequence++}`, name: "Bo" });

@@ -223,7 +223,18 @@
     "notifyTitle": "Slå på aviseringar",
     "notifyBody": "Meddelanden och omnämnanden, även när TinyFloor är stängt.",
     "notifyOn": "Slå på",
-    "notNow": "Inte nu"
+    "notNow": "Inte nu",
+    "add": "Lägg till",
+    "photo": "Foto",
+    "file": "Fil",
+    "reply": "Svara",
+    "replyingTo": "Svarar <strong>{name}</strong>",
+    "cancelReply": "Sluta svara",
+    "replyGone": "Det ursprungliga meddelandet har tagits bort",
+    "replyFiles": "{count, plural, one {# fil} other {# filer}}",
+    "typingOne": "{name} skriver",
+    "typingTwo": "{a} och {b} skriver",
+    "typingMany": "Flera personer skriver"
   },
   "proximity": {
     "call": "Ring",

@@ -10,6 +10,7 @@ import { sceneText } from "./sceneText";
 import { pixelToTile } from "@/lib/types";
 import { isDesk } from "@shared/map";
 import { deskAt, deskState, setMySeat, subscribeDesks } from "./desks";
+import { floorStatusOf, subscribeFloor } from "./floor";
 import { DeskPlate } from "./DeskPlate";
 import { touchFirst } from "./touch";
 
@@ -71,6 +72,7 @@ export class SeatManager {
   private goTo?: GoTo;
   private unsubscribe?: () => void;
   private unsubscribeDesks: () => void;
+  private unsubscribeFloor: () => void;
   /** Whose desk it is, on each desk while its owner is away (docs/product.md). */
   private plates = new Map<number, DeskPlate>();
   /** How many the table's tag says are in meetings; who's talking changes often, the count rarely. */
@@ -109,9 +111,14 @@ export class SeatManager {
       if (!isDesk(seat.id)) return;
       const up = seat.direction === "up";
       const y = up ? seat.y - 38 : seat.baseY - 2;
-      this.plates.set(seat.id, new DeskPlate(scene, seat.x, y, depthForY(up ? seat.baseY : seat.baseY + 48) + 1));
+      this.plates.set(
+        seat.id,
+        new DeskPlate(scene, seat.x, y, depthForY(up ? seat.baseY : seat.baseY + 48) + 1, () => sceneText().yourDesk, () => this.goToDesk(seat.id)),
+      );
     });
     this.unsubscribeDesks = subscribeDesks(() => this.changed());
+    // An owner's dot follows them in and out of the office.
+    this.unsubscribeFloor = subscribeFloor(() => this.showPlates());
 
     this.seats.forEach((seat) => {
       const zone = scene.add.zone(seat.x, seat.y, 40, 44).setOrigin(0.5).setInteractive({ useHandCursor: true });
@@ -193,13 +200,21 @@ export class SeatManager {
     if (seat && !this.seated) this.walkTo(seat);
   }
 
+  /** Your desk's chip was pressed: walk there and sit, getting up first if you're sitting elsewhere. */
+  private goToDesk(seatId: number) {
+    const seat = this.byId.get(seatId);
+    if (!seat || this.seated === seat) return;
+    if (this.seated) this.stand();
+    this.walkTo(seat);
+  }
+
   /** Someone else's desk: nobody but its owner sits there. */
   private reserved(seat: Seat): boolean {
     const desk = deskAt(deskState().desks, seat.id);
     return !!desk && desk.userId !== this.selfId;
   }
 
-  /** Each desk's plate: whose it is while they're away, "Your desk" for yours, nothing on a free one. */
+  /** Each desk's plate: whose it is while they're away from it, "Your desk" for yours, nothing on a free one. */
   private showPlates() {
     const { desks } = deskState();
     this.plates.forEach((plate, id) => {
@@ -207,7 +222,7 @@ export class SeatManager {
       const seat = this.byId.get(id);
       const mine = desk?.userId === this.selfId;
       const there = !!seat && (seat.occupant === desk?.userId || (mine && seat.occupant === SELF));
-      plate.show(desk && !there ? (mine ? sceneText().yourDesk : desk.name) : null);
+      plate.show(desk && !there ? { userId: desk.userId, name: desk.name, mine, status: mine ? null : floorStatusOf(desk.userId) } : null);
     });
   }
 
@@ -330,6 +345,7 @@ export class SeatManager {
   destroy() {
     this.unsubscribe?.();
     this.unsubscribeDesks();
+    this.unsubscribeFloor();
     this.plates.forEach((plate) => plate.destroy());
     setMySeat(null);
     this.scene.input.keyboard?.off("keydown-E");

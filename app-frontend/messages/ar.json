@@ -223,7 +223,18 @@
     "notifyTitle": "فعّل الإشعارات",
     "notifyBody": "الرسائل والإشارات، حتى عندما يكون TinyFloor مغلقًا.",
     "notifyOn": "تفعيل",
-    "notNow": "ليس الآن"
+    "notNow": "ليس الآن",
+    "add": "إضافة",
+    "photo": "صورة",
+    "file": "ملف",
+    "reply": "رد",
+    "replyingTo": "الرد على <strong>{name}</strong>",
+    "cancelReply": "إلغاء الرد",
+    "replyGone": "حُذفت الرسالة الأصلية",
+    "replyFiles": "{count, plural, zero {لا ملفات} one {ملف واحد} two {ملفان} few {# ملفات} many {# ملفًا} other {# ملف}}",
+    "typingOne": "{name} يكتب الآن",
+    "typingTwo": "{a} و{b} يكتبان الآن",
+    "typingMany": "عدة أشخاص يكتبون الآن"
   },
   "proximity": {
     "call": "اتصال",

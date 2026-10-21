@@ -3,6 +3,9 @@
 import { HEARTBEAT_PING, HEARTBEAT_PONG } from "@shared/messages";
 import {
   GENERAL_CHANNEL,
+  REPLY_SNIPPET,
+  TYPING_EVERY_MS,
+  TYPING_SHOWN_MS,
   dmChannelId,
   type ChannelSummary,
   type ChatClientMessage,
@@ -57,8 +60,19 @@ const EMPTY: ChatState = {
  * The office's chat, on its own socket. It is opened with the office shell, not
  * with the chat view, so a badge can appear while you are walking around.
  */
+/** Who is typing in one conversation, by id: their name, and until when to show it. */
+type Typists = ReadonlyMap<string, { name: string; until: number }>;
+const NOBODY: Typists = new Map();
+
 class ChatSocket {
   private ws: WebSocket | null = null;
+  /** Who's typing where; kept apart from the state, so a keystroke elsewhere doesn't redraw every conversation. */
+  private typists = new Map<string, Typists>();
+  private typingListeners = new Set<() => void>();
+  /** Where you last said you're typing, and when. */
+  private typingIn: string | null = null;
+  private typedAt = 0;
+  private typingSweep?: ReturnType<typeof setTimeout>;
   /** Which chat: an office's id, or the lobby. */
   private place: string | null = null;
   private ticketFor: (() => Promise<RoomTicket>) | null = null;
@@ -146,10 +160,63 @@ class ChatSocket {
     this.set({ ...this.state, channels, unread: total(channels) });
   }
 
-  say(channel: string, body: string, files: ChatFile[] = [], mentions: string[] = []) {
-    this.send({ t: "chat_send", channel, body, ...(files.length ? { files } : {}), ...(mentions.length ? { mentions } : {}) });
+  /** Says something; `replyTo` answers a message in the same conversation. */
+  say(channel: string, body: string, files: ChatFile[] = [], mentions: string[] = [], replyTo?: number) {
+    // A lobby direct message (below zero) was never stored, so it can't be answered by number.
+    const answering = replyTo !== undefined && replyTo > 0 ? { replyTo } : {};
+    // The message itself tells the others you've stopped typing.
+    if (this.typingIn === channel) this.typingIn = null;
+    this.send({ t: "chat_send", channel, body, ...(files.length ? { files } : {}), ...(mentions.length ? { mentions } : {}), ...answering });
     // Where and what kind, never the words.
-    track("message_sent", { kind: isDm(channel) ? "dm" : "channel", picture: files.length > 0, mentions: mentions.length });
+    track("message_sent", { kind: isDm(channel) ? "dm" : "channel", picture: files.length > 0, mentions: mentions.length, reply: "replyTo" in answering });
+  }
+
+  /**
+   * Whether your box here has words in it: "on" when it gets some, again now
+   * and then while you keep typing, "off" when it's emptied. Sending clears
+   * it for everyone without a word from us (they see the message arrive).
+   */
+  typing(channel: string, on: boolean) {
+    const now = Date.now();
+    if (on) {
+      if (this.typingIn && this.typingIn !== channel) this.sayTyping(this.typingIn, false);
+      if (this.typingIn === channel && now - this.typedAt < TYPING_EVERY_MS) return;
+      this.typingIn = channel;
+      this.typedAt = now;
+      this.sayTyping(channel, true);
+    } else if (this.typingIn === channel) {
+      this.typingIn = null;
+      this.sayTyping(channel, false);
+    }
+  }
+
+  private sayTyping(channel: string, on: boolean) {
+    if (this.ws?.readyState === WebSocket.OPEN) this.ws.send(JSON.stringify({ t: "chat_typing", channel, on }));
+  }
+
+  /** For React: who's typing in a conversation (useTyping). */
+  subscribeTyping = (listener: () => void) => {
+    this.typingListeners.add(listener);
+    return () => this.typingListeners.delete(listener);
+  };
+  typistsIn = (channel: string): Typists => this.typists.get(channel) ?? NOBODY;
+
+  private setTypists(channel: string, next: Map<string, { name: string; until: number }>) {
+    if (next.size) this.typists.set(channel, next);
+    else this.typists.delete(channel);
+    this.typingListeners.forEach((listener) => listener());
+    // Gone a moment after they stop saying so: one timer for every conversation.
+    clearTimeout(this.typingSweep);
+    const soonest = Math.min(...[...this.typists.values()].flatMap((one) => [...one.values()].map((typist) => typist.until)));
+    if (Number.isFinite(soonest)) this.typingSweep = setTimeout(() => this.sweepTypists(), Math.max(0, soonest - Date.now()) + 50);
+  }
+
+  private sweepTypists() {
+    const now = Date.now();
+    for (const [channel, typists] of [...this.typists]) {
+      const left = new Map([...typists].filter(([, typist]) => typist.until > now));
+      if (left.size !== typists.size) this.setTypists(channel, left);
+    }
   }
 
   /** Words in the office's channels and your direct messages, newest first. */
@@ -308,6 +375,12 @@ class ChatSocket {
       }
       case "chat_new": {
         const { channel } = message.message;
+        // Their message is here, so they've stopped typing it.
+        if (this.typists.get(channel)?.has(message.message.author)) {
+          const left = new Map(this.typists.get(channel));
+          left.delete(message.message.author);
+          this.setTypists(channel, left);
+        }
         if (this.state.history[channel]?.some((one) => one.seq === message.message.seq)) break;
         // On screen only counts while the tab is: a message that lands while you're
         // in another window waits as unread, and is marked read when you come back.
@@ -387,13 +460,21 @@ class ChatSocket {
       case "chat_edited":
       case "chat_deleted": {
         // The server checked a stored message's author; a passing one it can't, so its author must be who changed it.
-        const history = (this.state.history[message.channel] ?? []).flatMap((one) =>
-          one.seq !== message.seq || (one.seq < 0 && one.author !== message.by)
-            ? [one]
+        const history = (this.state.history[message.channel] ?? []).flatMap((one) => {
+          // A reply to it shows the change too: the new words, or that it's gone.
+          const answers = one.reply?.seq === message.seq && message.seq > 0;
+          const reply = !answers
+            ? one.reply
+            : message.t === "chat_deleted"
+              ? { seq: message.seq, gone: true as const }
+              : { ...one.reply!, body: message.body.slice(0, REPLY_SNIPPET) };
+          const kept = reply === one.reply ? one : { ...one, reply };
+          return one.seq !== message.seq || (one.seq < 0 && one.author !== message.by)
+            ? [kept]
             : message.t === "chat_deleted"
               ? []
-              : [{ ...one, body: message.body, edited: message.edited, mentions: message.mentions }],
-        );
+              : [{ ...kept, body: message.body, edited: message.edited, mentions: message.mentions }];
+        });
         this.set({ ...this.state, history: { ...this.state.history, [message.channel]: history } });
         break;
       }
@@ -414,6 +495,13 @@ class ChatSocket {
             : [...this.state.channels, message.channel],
         );
         this.set({ ...this.state, channels, unread: total(channels) });
+        break;
+      }
+      case "chat_typing": {
+        const typists = new Map(this.typists.get(message.channel));
+        if (message.on) typists.set(message.userId, { name: message.name, until: Date.now() + TYPING_SHOWN_MS });
+        else if (!typists.delete(message.userId)) break;
+        this.setTypists(message.channel, typists);
         break;
       }
       case "chat_found":

@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { ArrowUp, FileText, Loader2, Paperclip, Smile, X } from "@/components/ui/icons";
-import { FILES_PER_MESSAGE, isPicture, type ChatFile } from "@shared/chat";
+import { ArrowUp, FileText, ImagePlus, Loader2, Paperclip, Reply, Smile, X } from "@/components/ui/icons";
+import { FILES_PER_MESSAGE, TYPING_EVERY_MS, isPicture, type ChatFile } from "@shared/chat";
 import { Kbd } from "@/components/ui/IconButton";
 import { Tooltip } from "@/components/motion/tooltip";
 import { Face } from "@/components/ui/Face";
@@ -34,6 +34,10 @@ function grow(element: HTMLTextAreaElement) {
 }
 
 const EMOJI = ["😀", "😂", "🙂", "😍", "🤔", "😅", "👍", "👏", "🙌", "🙏", "🎉", "🔥", "❤️", "👀", "✅", "☕"];
+/** A button in the box's toolbar. */
+const tool =
+  "flex size-8 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground";
+
 /** People the picker offers at once. */
 const PICKS = 6;
 
@@ -78,6 +82,10 @@ export function Composer({
   attach = true,
   draftKey,
   onEditLast,
+  replying,
+  onCancelReply,
+  onTyping,
+  typing,
 }: {
   placeholder: string;
   onSend: (text: string, files: ChatFile[]) => void;
@@ -98,16 +106,39 @@ export function Composer({
   draftKey?: string;
   /** Up in an empty box: edit your last message. */
   onEditLast?: () => void;
+  /** Who you're answering, shown over the box until you send or let it go. */
+  replying?: { name: string } | null;
+  onCancelReply?: () => void;
+  /** Whether the box has words in it, as that changes, so the others can see you're typing. */
+  onTyping?: (on: boolean) => void;
+  /** Who else is typing here, said under the box. */
+  typing?: string | null;
 }) {
   const t = useTranslations("chat");
   const locale = useLocale();
   const [body, setBodyState] = useState(() => (draftKey ? draftFor(draftKey) : ""));
+  // Leaving the conversation with words still in the box: you've stopped typing here.
+  const stopTyping = useRef(onTyping);
+  useEffect(() => {
+    stopTyping.current = onTyping;
+  });
+  useEffect(() => () => stopTyping.current?.(false), []);
+  // While there are words in the box and you're in it, you're still typing, keys or not: say so
+  // now and then. Away from the box, it fades on the others' screens by itself.
+  const [inBox, setInBox] = useState(false);
+  const drafting = inBox && !!body.trim() && !!onTyping;
+  useEffect(() => {
+    if (!drafting) return;
+    const timer = setInterval(() => stopTyping.current?.(true), TYPING_EVERY_MS);
+    return () => clearInterval(timer);
+  }, [drafting]);
   const setBody = (next: string) => {
     setBodyState(next);
     if (draftKey) keepDraft(draftKey, next);
   };
   const emojiBox = useRef<HTMLSpanElement>(null);
   const picker = useRef<HTMLInputElement>(null);
+  const photoPicker = useRef<HTMLInputElement>(null);
   const [emoji, setEmoji] = useState(false);
   const box = useRef<HTMLTextAreaElement>(null);
   const [pending, setPending] = useState<Pending[]>([]);
@@ -289,7 +320,7 @@ export function Composer({
   };
 
   return (
-    <div className="shrink-0 px-4 pb-4 sm:px-5">
+    <div className="relative shrink-0 px-4 pb-4 sm:px-5">
       {shownNote && (
         <p role="status" className="mb-2 px-1 text-[12px] text-muted-foreground">
           {shownNote}
@@ -297,6 +328,36 @@ export function Composer({
       )}
 
       <div className="relative rounded-2xl border border-border bg-card shadow-[0_1px_2px_rgb(0_0_0/0.04)] transition-colors focus-within:border-border-strong">
+        {/* 8 above the box, in the room the conversation keeps under its last message (Conversation's pb-7), so nothing moves when it comes and goes. */}
+        {typing && (
+          <p
+            aria-live="polite"
+            className="typing-in pointer-events-none absolute bottom-full start-4 mb-2 flex h-4 max-w-[calc(100%-2rem)] items-center gap-1.5 text-[12px] text-muted-foreground"
+          >
+            <span className="typing-dots shrink-0" aria-hidden>
+              <span />
+              <span />
+              <span />
+            </span>
+            <span className="truncate">{typing}</span>
+          </p>
+        )}
+        {replying && (
+          <div className="flex h-9 items-center gap-2 rounded-t-2xl border-b border-border bg-muted/60 ps-4 pe-1.5 text-[12.5px] text-muted-foreground">
+            <Reply className="size-3.5 shrink-0" />
+            <span className="min-w-0 flex-1 truncate">
+              {t.rich("replyingTo", { name: replying.name, strong: (chunks) => <strong className="font-semibold text-foreground">{chunks}</strong> })}
+            </span>
+            <button
+              type="button"
+              aria-label={t("cancelReply")}
+              onClick={onCancelReply}
+              className="flex size-6 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              <X className="size-3.5" />
+            </button>
+          </div>
+        )}
         {picking && (
           <div
             role="listbox"
@@ -376,11 +437,16 @@ export function Composer({
           placeholder={placeholder}
           onChange={(event) => {
             setBody(event.target.value);
+            onTyping?.(!!event.target.value.trim());
             grow(event.target);
             follow(event.target);
           }}
           onSelect={(event) => mention && follow(event.currentTarget)}
-          onBlur={() => setMention(null)}
+          onFocus={() => setInBox(true)}
+          onBlur={() => {
+            setMention(null);
+            setInBox(false);
+          }}
           onPaste={(event) => {
             const files = [...event.clipboardData.files];
             if (!files.length || !attach) return;
@@ -407,6 +473,9 @@ export function Composer({
             if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing && pointing()) {
               event.preventDefault();
               send();
+            } else if (event.key === "Escape" && replying && onCancelReply) {
+              event.preventDefault();
+              onCancelReply();
             } else if (event.key === "ArrowUp" && !body && !pending.length && onEditLast) {
               event.preventDefault();
               onEditLast();
@@ -415,29 +484,10 @@ export function Composer({
           className="block max-h-[200px] w-full resize-none overflow-y-hidden bg-transparent px-4 pb-1 pt-3 text-[16px] leading-[1.45] text-foreground outline-none placeholder:text-faint md:text-[14px]"
         />
 
+        {/* What goes in the message on the left (emoji, a picture, a file), sending on the right. */}
         <div className="flex items-center gap-0.5 px-2 pb-2">
           {attach && (
             <>
-              <Tooltip content={t("attach")}>
-                <button
-                  type="button"
-                  aria-label={t("attach")}
-                  onClick={() => picker.current?.click()}
-                  className="flex size-8 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                >
-                  <Paperclip className="size-[18px]" />
-                </button>
-              </Tooltip>
-              <input
-                ref={picker}
-                type="file"
-                multiple
-                hidden
-                onChange={(event) => {
-                  add([...(event.target.files ?? [])]);
-                  event.target.value = "";
-                }}
-              />
               <span ref={emojiBox} className="relative">
                 <Tooltip content={t("emoji")}>
                   <button
@@ -445,10 +495,7 @@ export function Composer({
                     aria-label={t("emoji")}
                     aria-expanded={emoji}
                     onClick={() => setEmoji((was) => !was)}
-                    className={cn(
-                      "flex size-8 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground",
-                      emoji && "bg-muted text-foreground",
-                    )}
+                    className={cn(tool, emoji && "bg-muted text-foreground")}
                   >
                     <Smile className="size-[18px]" />
                   </button>
@@ -468,10 +515,42 @@ export function Composer({
                   </span>
                 )}
               </span>
+              <Tooltip content={t("photo")}>
+                <button type="button" aria-label={t("photo")} onClick={() => photoPicker.current?.click()} className={tool}>
+                  <ImagePlus className="size-[18px]" />
+                </button>
+              </Tooltip>
+              <Tooltip content={t("file")}>
+                <button type="button" aria-label={t("file")} onClick={() => picker.current?.click()} className={tool}>
+                  <Paperclip className="size-[18px]" />
+                </button>
+              </Tooltip>
+              <input
+                ref={picker}
+                type="file"
+                multiple
+                hidden
+                onChange={(event) => {
+                  add([...(event.target.files ?? [])]);
+                  event.target.value = "";
+                }}
+              />
+              {/* Pictures only: on a phone this offers the camera and the gallery first. */}
+              <input
+                ref={photoPicker}
+                type="file"
+                accept="image/*"
+                multiple
+                hidden
+                onChange={(event) => {
+                  add([...(event.target.files ?? [])]);
+                  event.target.value = "";
+                }}
+              />
             </>
           )}
 
-          <span className="me-2 ms-auto hidden items-center gap-1 text-[11px] text-faint md:flex">
+          <span className="me-1 ms-auto hidden items-center gap-1 text-[11px] text-faint md:flex">
             <Kbd>⇧</Kbd>
             <Kbd>↵</Kbd>
             <span className="ms-0.5">{t("newLine")}</span>
@@ -482,7 +561,7 @@ export function Composer({
             disabled={(!canSend && !uploading) || waiting}
             aria-label={t("send")}
             className={cn(
-              "flex size-8 cursor-pointer items-center justify-center rounded-lg transition-colors max-md:ms-auto",
+              "ms-1 flex size-8 cursor-pointer items-center justify-center rounded-full transition-colors max-md:ms-auto",
               canSend || uploading ? "bg-foreground text-background hover:bg-foreground/90" : "bg-muted text-faint",
             )}
           >

@@ -223,7 +223,18 @@
     "notifyTitle": "开启通知",
     "notifyBody": "即使关闭了 TinyFloor，也能收到消息和提及。",
     "notifyOn": "开启",
-    "notNow": "暂不"
+    "notNow": "暂不",
+    "add": "添加",
+    "photo": "照片",
+    "file": "文件",
+    "reply": "回复",
+    "replyingTo": "回复 <strong>{name}</strong>",
+    "cancelReply": "取消回复",
+    "replyGone": "原消息已删除",
+    "replyFiles": "{count, plural, other {# 个文件}}",
+    "typingOne": "{name} 正在输入",
+    "typingTwo": "{a} 和 {b} 正在输入",
+    "typingMany": "多人正在输入"
   },
   "proximity": {
     "call": "通话",

@@ -76,6 +76,33 @@ export function isPicture(file: Pick<ChatFile, "type">): boolean {
   return /^image\/(png|jpeg|webp|gif|avif)$/.test(file.type);
 }
 
+/**
+ * Typing: a browser says "on" when its box gets words and again at most this
+ * often while they keep typing, and "off" when the box empties; sending
+ * clears it too. Without a word for this long (a tab closed mid-sentence) it
+ * goes by itself.
+ */
+export const TYPING_EVERY_MS = 8000;
+export const TYPING_SHOWN_MS = 15000;
+
+/** How much of the message replied to a reply shows. */
+export const REPLY_SNIPPET = 160;
+
+/**
+ * The message a reply answers, as the reply shows it: who said it and how it
+ * begins, read when the reply is sent out, so an edit shows and a deleted
+ * one says it's gone rather than keeping its words.
+ */
+export interface ChatReply {
+  seq: number;
+  author?: string;
+  authorName?: string;
+  body?: string;
+  /** Files on it, for one that was only a picture. */
+  files?: number;
+  gone?: true;
+}
+
 export interface ChatMessage {
   seq: number;
   channel: string;
@@ -92,14 +119,18 @@ export interface ChatMessage {
   edited?: number;
   /** A lobby direct message: passed along, never stored. */
   passing?: boolean;
+  /** The message this answers, if it's a reply. */
+  reply?: ChatReply;
 }
 
 /** What a client sends up the chat socket. */
 export type ChatClientMessage =
-  | { t: "chat_send"; channel: string; body: string; files?: ChatFile[]; mentions?: string[] }
+  | { t: "chat_send"; channel: string; body: string; files?: ChatFile[]; mentions?: string[]; replyTo?: number }
   /** A page of history; with `to`, everything back to that message, so a search result can be opened in place. */
   | { t: "chat_history"; channel: string; before?: number; to?: number }
   | { t: "chat_search"; q: string }
+  /** You're writing in this conversation: passed to the others in it, never stored. */
+  | { t: "chat_typing"; channel: string; on: boolean }
   | { t: "chat_read"; channel: string; seq: number }
   | { t: "chat_react"; seq: number; emoji: string; on: boolean }
   | { t: "chat_channel"; name: string }
@@ -120,6 +151,7 @@ export type ChatServerMessage =
   // the server can't check it; clients apply a change to one only when `by` is its author.
   | { t: "chat_edited"; seq: number; channel: string; body: string; edited: number; by: string; mentions?: string[] }
   | { t: "chat_found"; q: string; messages: ChatMessage[] }
+  | { t: "chat_typing"; channel: string; userId: string; name: string; on: boolean }
   | { t: "chat_deleted"; seq: number; channel: string; by: string }
   /** Someone left the lobby: their direct messages go with them. */
   | { t: "chat_gone"; userId: string }

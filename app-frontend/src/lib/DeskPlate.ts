@@ -1,82 +1,87 @@
 import * as Phaser from "phaser";
+import { faceBackground } from "@/components/ui/Face";
+import { statusColor } from "@/lib/status";
+import { plateLayer } from "./plates";
 import { tagName } from "./SceneLabel";
 
-const PAPER = 0xf4f1ea;
-const RULE = 0xc9c2b4;
-const STYLE = {
-  fontSize: "12px",
-  fontFamily: "VT323, monospace",
-  color: "#2b2620",
-  resolution: 2,
-};
+/** Who a desk belongs to, as its plate shows them. */
+export interface DeskOwner {
+  userId: string;
+  name: string;
+  /** Your own desk: it says so instead of your name. */
+  mine: boolean;
+  /** Their status if they're in the office now (on the floor, just not at their desk), or null. */
+  status: string | null;
+}
 
 /**
- * The little card on a desk that says whose it is (docs/product.md): paper on the
- * desktop, not a dark tag like a person's, so it reads as part of the office
- * and not as someone standing there. Only up close, while the owner is away:
- * a floor of name cards would be noise, one on the desk you walk up to is not.
+ * The chip on a claimed desk while its owner isn't sitting at it (docs/product.md):
+ * their face, the same one they wear everywhere in the app, with a dot when
+ * they're in the office, so the floor reads as a seating chart from across
+ * the room. Walk up and it opens, smoothly, to their name; yours, ringed in
+ * ink, opens to "Your desk", and pressing it walks you there from anywhere.
+ * A free desk has none. HTML over the canvas (plates.ts), like the name tags.
  */
 export class DeskPlate {
-  private readonly container: Phaser.GameObjects.Container;
-  private readonly background: Phaser.GameObjects.Graphics;
-  private readonly label: Phaser.GameObjects.Text;
-  private name: string | null = null;
+  private readonly anchor: Phaser.GameObjects.Container;
+  private readonly root: HTMLDivElement;
+  private readonly face: HTMLSpanElement;
+  private readonly dot: HTMLSpanElement;
+  private readonly name: HTMLSpanElement;
+  private readonly remove: () => void;
+  private owner: DeskOwner | null = null;
   private near = false;
 
-  constructor(scene: Phaser.Scene, x: number, y: number, depth: number) {
-    this.background = scene.add.graphics();
-    this.label = scene.add.text(0, 0, "", STYLE).setOrigin(0.5, 0.5);
-    this.container = scene.add.container(x, y, [this.background, this.label]).setDepth(depth).setAlpha(0).setVisible(false);
+  constructor(
+    scene: Phaser.Scene,
+    x: number,
+    y: number,
+    depth: number,
+    private readonly yourDesk: () => string,
+    goHome: () => void,
+  ) {
+    this.anchor = scene.add.container(x, y).setDepth(depth);
+    this.root = document.createElement("div");
+    this.root.className = "desk-plate";
+    this.root.hidden = true;
+    this.face = document.createElement("span");
+    this.face.className = "desk-plate-face";
+    this.dot = document.createElement("span");
+    this.dot.className = "desk-plate-dot";
+    this.face.appendChild(this.dot);
+    this.name = document.createElement("span");
+    this.name.className = "desk-plate-name";
+    this.root.append(this.face, this.name);
+    this.root.addEventListener("click", () => this.owner?.mine && goHome());
+    this.remove = plateLayer(scene).add(this.anchor, this.root);
   }
 
   /** Whether you are close enough to read it. */
   setNear(near: boolean): this {
     if (near === this.near) return this;
     this.near = near;
-    this.fade();
+    this.root.toggleAttribute("data-open", near);
     return this;
   }
 
-  /** Whose desk it says, or null for a free one, or one its owner is sitting at. */
-  show(name: string | null): this {
-    if (name === this.name) return this;
-    this.name = name;
-    if (name !== null) this.draw(name);
-    this.fade();
+  /** Whose desk it is, or null for a free one, or one its owner is sitting at. */
+  show(owner: DeskOwner | null): this {
+    const before = this.owner;
+    this.owner = owner;
+    this.root.hidden = !owner;
+    if (!owner) return this;
+    if (before?.userId !== owner.userId) this.face.style.background = faceBackground(owner.userId);
+    this.name.textContent = owner.mine ? this.yourDesk() : tagName(owner.name);
+    this.root.toggleAttribute("data-mine", owner.mine);
+    this.root.toggleAttribute("data-open", this.near);
+    this.dot.hidden = !owner.status;
+    if (owner.status) this.dot.style.background = statusColor(owner.status);
+    this.root.title = owner.mine ? this.yourDesk() : owner.name;
     return this;
-  }
-
-  private fade() {
-    const shown = this.near && this.name !== null;
-    // Walking past a free desk: already out of sight, nothing to fade.
-    if (!shown && !this.container.visible) return;
-    const scene = this.container.scene;
-    scene.tweens.killTweensOf(this.container);
-    if (shown) this.container.setVisible(true);
-    scene.tweens.add({
-      targets: this.container,
-      alpha: shown ? 1 : 0,
-      duration: 160,
-      ease: "Cubic.easeOut",
-      onComplete: () => this.container.setVisible(shown),
-    });
-  }
-
-  private draw(name: string) {
-    this.label.setText(tagName(name));
-    const width = Math.ceil(this.label.width) + 10;
-    const g = this.background;
-    g.clear();
-    g.fillStyle(0x000000, 0.18);
-    g.fillRoundedRect(-width / 2, -6, width, 13, 2);
-    g.fillStyle(PAPER, 1);
-    g.fillRoundedRect(-width / 2, -7, width, 13, 2);
-    g.lineStyle(1, RULE, 1);
-    g.strokeRoundedRect(-width / 2, -7, width, 13, 2);
   }
 
   destroy() {
-    this.container.scene?.tweens.killTweensOf(this.container);
-    this.container.destroy();
+    this.remove();
+    this.anchor.destroy();
   }
 }

@@ -41,11 +41,14 @@ work happens. What we don't build, though each would raise usage numbers:
   desks with names, people arriving and sitting, statuses. Not a feed.
 - **Your own desk.** People value what's theirs more than what's merely
   available, and the feeling comes from choosing and using it (psychological
-  ownership; the endowment and IKEA effects). Gather's own guide calls the
-  desk "your home base" and treats being at it or away as a signal of
-  availability. So: you claim a desk by sitting at it (offered after you sit,
-  never as a prompt on approach), its name plate shows only when someone's
-  near and you're away, and nobody else sits there.
+  ownership; the endowment and IKEA effects). A desk is a home base, and
+  being at it or away says whether you're available. So: you claim a desk by sitting at it (offered after you sit,
+  never as a prompt on approach), and nobody else sits there. While its owner
+  isn't at it, a claimed desk carries their face, with a dot while they're in
+  the office, so the floor reads as a seating chart from across the room;
+  walk up and it opens to their name. Yours says "Your desk" from anywhere,
+  so you can find it. A name card on every desk all the time was noise; one
+  only up close hid who sits where.
 - **Arriving is a moment.** Remote work lost the commute, which marked the
   switch into work; Microsoft built a "virtual commute" into Teams on that
   reasoning, and the point researchers make is that the ritual's form hardly
@@ -94,13 +97,10 @@ code on 20 October):
 - **Nothing reaches you when you aren't looking.** There are no system
   notifications at all: a message or a call only makes a sound while the
   office's tab is open, and nothing at all once it's closed. Slack and every
-  virtual office with a desktop app (Gather, Roam, Kumospace) notify.
+  virtual office with a desktop app notify.
 - **A meeting can't be sent to anyone.** Office meetings have no link a
   client, candidate or guest can open, and no time: nothing can go in a
   calendar invite, so scheduled and external calls stay in Meet or Zoom.
-  Gather leads its new version with Google Calendar ("create and join
-  meetings in one click"; Outlook next) and Roam has a booking lobby for
-  outside guests.
 - **Chat lacks what makes Slack work for a team**: @mentions that reach the
   person, threads, message search, and files (images say "shortly").
 - **It's a tab, not an app.** The site is installable (a manifest with
@@ -108,18 +108,14 @@ code on 20 October):
   second all day unless battery saver is on, which is what a window left
   open on a laptop pays for.
 - **Presence only exists while the tab is open**: closed, you are "Not on
-  the floor", with no calendar status ("In a meeting until 3") the way
-  Gather's calendar sync sets it.
+  the floor", with no calendar status ("In a meeting until 3").
 
-Gather's integrations (looked at in a space on 20 October) are three, under
-Settings › Integrations: Google Calendar, which fills a day timeline on the
-card that opens when you click someone (beside their local time) and drives
-"in a meeting" status; Spotify, which shares what you're playing while you're
-online; and a GitHub app (beta) that puts particles on the map when you open
-or merge a pull request and lists your recent PRs on your profile. The card,
-top right, is the one place they show. Of the three only the calendar
-answers a question a teammate has ("are they free?"); local time on the card
-costs nothing and answers the other one.
+An integration earns its place by answering a question a teammate has. A
+calendar answers "are they free?": a day timeline on the card that opens
+when you click someone, and an "in a meeting" status from it. Local time on
+that card costs nothing and answers "is it late for them?". Sharing what
+you're listening to, or decorating the floor when code ships, answers
+neither.
 
 Project tracking in the Linear manner doesn't fit: it's a product of its
 own that a team already has (Linear, Jira, GitHub), it can't be explained in
@@ -131,9 +127,33 @@ Outside, the advice that recurs for moving a team into a virtual office is
 behavioural, not a feature: run one existing recurring meeting there first,
 start with a few people who already work together, and have the lead be
 there visibly (SoWork); and keep the common hours modest (core-hours
-guides). Reviews of Gather and Kumospace complain about price per seat,
+guides). Reviews of virtual offices complain about price per seat,
 audio problems, missing integrations and heavy clients, rarely about
 missing features on the map.
+
+## The floor's labels, and chat (21 October)
+
+- **Name tags are HTML over the floor, not drawn into it.** The canvas paints
+  one pixel per CSS pixel, so on any screen past 100% anything drawn in it is
+  scaled up and soft. Four tags were tried on the real floor: the pixel font,
+  the app's font in the canvas, and two HTML styles (dark glass, light
+  paper). The canvas ones stay soft; dark glass reads best on the pale floor
+  and matches the floor's own cards. Tags hang from their bottom edge 4 units
+  clear of the head, so one scaled up for a distant camera grows away from it.
+- **A claimed desk shows its owner's face in a circle**, with a dot while
+  they're in the office, and opens to their name as you walk up. Yours is
+  ringed in ink, and pressing it walks you there and sits you down.
+- **Replies** quote the message they answer above them, a line curling from
+  the reply's face to a small face, the name and how it began; pressing it
+  brings the message back into view. The quote is read whenever the reply is
+  sent out, so an edit shows and a deleted message says it's gone rather
+  than keeping its words.
+- **Typing** shows above the box while someone's box has words in it: their
+  browser says "on" when the box fills, again every few seconds while
+  they're in it, and "off" when it empties; the message itself ends it, and
+  a closed tab's goes by itself. Nothing is stored.
+- **The box's tools** are emoji, a picture (on a phone, the camera and
+  gallery first) and a file, in that order, with send on the right.
 
 ## Small decisions worth remembering
 

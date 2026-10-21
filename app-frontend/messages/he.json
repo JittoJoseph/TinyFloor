@@ -223,7 +223,18 @@
     "notifyTitle": "הפעלת התראות",
     "notifyBody": "הודעות ואזכורים, גם כש-TinyFloor סגור.",
     "notifyOn": "הפעלה",
-    "notNow": "לא עכשיו"
+    "notNow": "לא עכשיו",
+    "add": "הוספה",
+    "photo": "תמונה",
+    "file": "קובץ",
+    "reply": "להשיב",
+    "replyingTo": "תשובה ל<strong>{name}</strong>",
+    "cancelReply": "ביטול התשובה",
+    "replyGone": "ההודעה המקורית נמחקה",
+    "replyFiles": "{count, plural, one {קובץ אחד} other {# קבצים}}",
+    "typingOne": "{name} מקליד/ה",
+    "typingTwo": "{a} ו{b} מקלידים",
+    "typingMany": "כמה אנשים מקלידים"
   },
   "proximity": {
     "call": "התקשרות",

@@ -97,6 +97,12 @@ function subscribe(listener: () => void) {
   return () => listeners.delete(listener);
 }
 
+/** For the scene: hears whenever who's on the floor, or their status, changes. */
+export const subscribeFloor = subscribe;
+
+/** Someone's status if they're on the floor now, or null. */
+export const floorStatusOf = (id: string): PlayerStatus | null => people.find((one) => one.id === id)?.status ?? null;
+
 const EMPTY: FloorPerson[] = [];
 
 export function useFloor(): FloorPerson[] {

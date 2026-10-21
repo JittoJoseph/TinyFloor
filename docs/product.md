@@ -155,6 +155,18 @@ missing features on the map.
 - **The box's tools** are emoji, a picture (on a phone, the camera and
   gallery first) and a file, in that order, with send on the right.
 
+## Your menu (21 October)
+
+- **Status, note and music are one row each**, saying what they are now.
+  Pressing one turns the menu into its choices in place (the other rows fade,
+  the menu resizes, the row heads the choices with its chevron turned up, and
+  pressing it goes back). No dropdowns inside the menu, and no modal.
+- **A usual note is one press**: Heads down and Lunch clear in an hour, Back
+  soon in 30 minutes, Out sick today, On holiday this week, so none goes stale.
+  Your own words take Enter and last the day unless you pick 30 minutes, an
+  hour or "Don't clear"; new words drop a usual note's emoji. The old dialog
+  filled a usual note in and still wanted Save, and defaulted to never clearing.
+
 ## Music, from Spotify (21 October)
 
 - **Music plays in TinyFloor, from your menu, not from signing in to

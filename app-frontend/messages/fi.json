@@ -815,7 +815,8 @@
       "h4": "4 tuntia",
       "today": "Tänään",
       "week": "Tällä viikolla"
-    }
+    },
+    "until": "klo {time} asti"
   },
   "welcome": {
     "title": "Tervetuloa: {office}",
@@ -870,6 +871,7 @@
     "preview": "Soitetaan näytteitä.",
     "signIn": "Kirjaudu Spotifyhin",
     "seek": "Kohta kappaleessa",
-    "yourJam": "Jamisi"
+    "yourJam": "Jamisi",
+    "next": "Soita jotain muuta"
   }
 }

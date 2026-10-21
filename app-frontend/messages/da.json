@@ -815,7 +815,8 @@
       "h4": "4 timer",
       "today": "I dag",
       "week": "Denne uge"
-    }
+    },
+    "until": "indtil {time}"
   },
   "welcome": {
     "title": "Velkommen til {office}",
@@ -870,6 +871,7 @@
     "preview": "Afspiller smagsprøver.",
     "signIn": "Log ind på Spotify",
     "seek": "Position i sangen",
-    "yourJam": "Din Jam"
+    "yourJam": "Din Jam",
+    "next": "Afspil noget andet"
   }
 }

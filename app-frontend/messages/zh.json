@@ -815,7 +815,8 @@
       "h4": "4 小时",
       "today": "今天",
       "week": "本周"
-    }
+    },
+    "until": "到 {time}"
   },
   "welcome": {
     "title": "欢迎来到{office}",
@@ -870,6 +871,7 @@
     "preview": "正在播放试听片段。",
     "signIn": "登录 Spotify",
     "seek": "歌曲播放位置",
-    "yourJam": "你的 Jam"
+    "yourJam": "你的 Jam",
+    "next": "换一首"
   }
 }

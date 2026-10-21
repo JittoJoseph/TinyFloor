@@ -815,7 +815,8 @@
       "h4": "4 uur",
       "today": "Vandaag",
       "week": "Deze week"
-    }
+    },
+    "until": "tot {time}"
   },
   "welcome": {
     "title": "Welkom bij {office}",
@@ -870,6 +871,7 @@
     "preview": "Alleen fragmenten.",
     "signIn": "Inloggen bij Spotify",
     "seek": "Positie in het nummer",
-    "yourJam": "Jouw Jam"
+    "yourJam": "Jouw Jam",
+    "next": "Iets anders afspelen"
   }
 }

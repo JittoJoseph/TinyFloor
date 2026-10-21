@@ -815,7 +815,8 @@
       "h4": "4시간",
       "today": "오늘",
       "week": "이번 주"
-    }
+    },
+    "until": "{time}까지"
   },
   "welcome": {
     "title": "{office}에 오신 걸 환영해요",
@@ -870,6 +871,7 @@
     "preview": "미리듣기로 재생 중이에요.",
     "signIn": "Spotify에 로그인",
     "seek": "곡 재생 위치",
-    "yourJam": "내 Jam"
+    "yourJam": "내 Jam",
+    "next": "다른 음악 재생"
   }
 }

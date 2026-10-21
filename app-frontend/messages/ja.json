@@ -815,7 +815,8 @@
       "h4": "4時間",
       "today": "今日",
       "week": "今週"
-    }
+    },
+    "until": "{time}まで"
   },
   "welcome": {
     "title": "{office}へようこそ",
@@ -870,6 +871,7 @@
     "preview": "試聴版を再生中です。",
     "signIn": "Spotifyにログイン",
     "seek": "曲の再生位置",
-    "yourJam": "あなたのJam"
+    "yourJam": "あなたのJam",
+    "next": "ほかの曲を再生"
   }
 }

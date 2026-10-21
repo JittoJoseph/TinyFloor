@@ -815,7 +815,8 @@
       "h4": "4 horas",
       "today": "Hoje",
       "week": "Esta semana"
-    }
+    },
+    "until": "até {time}"
   },
   "welcome": {
     "title": "Boas-vindas a {office}",
@@ -870,6 +871,7 @@
     "preview": "Tocando prévias.",
     "signIn": "Entrar no Spotify",
     "seek": "Posição na música",
-    "yourJam": "Sua Jam"
+    "yourJam": "Sua Jam",
+    "next": "Tocar outra coisa"
   }
 }

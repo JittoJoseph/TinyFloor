@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link2, X } from "@/components/ui/icons";
+import { MenuRow } from "@/components/ui/MenuViews";
 import { spotifyLink } from "@shared/spotify";
 import { api } from "@/lib/api";
 import { useErrorMessage } from "@/lib/useErrorMessage";
@@ -35,33 +36,70 @@ function lookUp(url: string): Promise<MusicItem | null> {
 const SIGN_IN = "https://accounts.spotify.com/login?continue=https%3A%2F%2Fopen.spotify.com%2F";
 
 /**
- * Music, in your menu: what's playing with its controls, or what to play.
- * Spotify's own player plays it (lib/music.ts); while it plays it shows on
- * your card for others, who can listen too.
+ * Music in your menu, as a row: what's playing, with play and pause to hand,
+ * or a way to play something. Pressing it opens the music view.
  */
-export function MusicSection() {
+export function MusicRow({ onOpen }: { onOpen: () => void }) {
   const t = useTranslations("music");
-  const { item } = useMusic();
-  const [choosing, setChoosing] = useState(false);
+  const ts = useTranslations("spotify");
+  const { item, playing, loading } = useMusic();
   useEffect(warmMusic, []);
 
-  if (item && !choosing) return <NowPlaying item={item} onChange={() => setChoosing(true)} />;
-  if (!choosing)
+  if (!item) {
     return (
-      <button
-        type="button"
-        onClick={() => setChoosing(true)}
-        className="group flex h-9 w-full cursor-pointer items-center gap-2.5 rounded-[10px] px-2.5 text-start text-[13px] text-foreground outline-none transition-colors hover:bg-muted focus-visible:bg-muted"
-      >
-        <SpotifyMark className="size-4 text-[#1ed760]" />
-        <span className="min-w-0 flex-1 truncate">{t("play")}</span>
-      </button>
+      <MenuRow icon={<SpotifyMark className="text-[#1ed760]" />} onClick={onOpen}>
+        {t("play")}
+      </MenuRow>
     );
-  return <Picker onDone={() => setChoosing(false)} canClose={!!item} />;
+  }
+  const jam = item.kind === "jam";
+  return (
+    <MenuRow
+      icon={<Cover image={item.image} size="size-5" rounded="rounded-[4px]" />}
+      onClick={onOpen}
+      label={item.title ?? t("yourJam")}
+      action={
+        jam ? undefined : (
+          <button
+            type="button"
+            onClick={toggleMusic}
+            disabled={loading}
+            aria-label={playing ? t("pause") : t("resume")}
+            className="flex size-6 cursor-pointer items-center justify-center rounded-full text-foreground transition-colors hover:bg-foreground/[0.08]"
+          >
+            <PlayGlyph playing={playing || loading} small />
+          </button>
+        )
+      }
+    >
+      <span className="block truncate">{item.title ?? t("yourJam")}</span>
+      <span className="block truncate text-[11.5px] text-muted-foreground">
+        {jam ? ts("jamNote") : (item.subtitle ?? ts(`kinds.${item.kind}`))}
+      </span>
+    </MenuRow>
+  );
+}
+
+/**
+ * The music view: what's playing with its controls, then what to play next,
+ * one press each, and a field for any Spotify link.
+ */
+export function MusicView({ onDone }: { onDone: () => void }) {
+  const t = useTranslations("music");
+  const { item } = useMusic();
+  return (
+    <>
+      <MenuRow open icon={<SpotifyMark className="text-[#1ed760]" />} onClick={onDone}>
+        {t("title")}
+      </MenuRow>
+      {item && <NowPlaying item={item} />}
+      <Picker playing={item?.url ?? null} />
+    </>
+  );
 }
 
 /** One press to play: recent plays first, then the picks, and any Spotify link pasted below. */
-function Picker({ onDone, canClose }: { onDone: () => void; canClose: boolean }) {
+function Picker({ playing }: { playing: string | null }) {
   const t = useTranslations("music");
   const ts = useTranslations("spotify");
   const [items, setItems] = useState<MusicItem[]>(() => recentMusic());
@@ -77,37 +115,20 @@ function Picker({ onDone, canClose }: { onDone: () => void; canClose: boolean })
       cancelled = true;
     };
   }, []);
-
-  const play = (item: MusicItem) => {
-    void playMusic(item);
-    onDone();
-  };
+  // What's playing is above, with its controls; the list is for what's next.
+  const shown = (items.length ? items : PICKS.map((pick) => ({ ...pick, title: null, image: null, subtitle: null }))).filter(
+    (one) => one.url !== playing,
+  );
 
   return (
-    <div className="pb-1">
-      <div className="flex items-center justify-between px-2.5 pb-1 pt-2">
-        <p className="flex items-center gap-1.5 text-[11px] font-medium text-faint">
-          <SpotifyMark className="size-3 text-[#1ed760]" />
-          {t("title")}
-        </p>
-        <button
-          type="button"
-          onClick={onDone}
-          aria-label={t("close")}
-          className={cn(
-            "-me-1 flex size-6 cursor-pointer items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground",
-            !canClose && "hidden",
-          )}
-        >
-          <X className="size-3.5" />
-        </button>
-      </div>
-      <ul className="max-h-[14.5rem] overflow-y-auto">
-        {(items.length ? items : PICKS.map((pick) => ({ ...pick, title: null, image: null, subtitle: null }))).map((one) => (
+    <div className={cn("pb-1", playing && "border-t border-border pt-1")}>
+      {playing && <p className="px-2.5 pb-1 pt-1.5 text-[11px] font-medium text-faint">{t("next")}</p>}
+      <ul>
+        {shown.map((one) => (
           <li key={one.url}>
             <button
               type="button"
-              onClick={() => play(one)}
+              onClick={() => void playMusic(one)}
               disabled={!one.title}
               className="flex w-full cursor-pointer items-center gap-2.5 rounded-[10px] px-2 py-1.5 text-start outline-none transition-colors hover:bg-muted focus-visible:bg-muted disabled:cursor-default"
             >
@@ -129,7 +150,7 @@ function Picker({ onDone, canClose }: { onDone: () => void; canClose: boolean })
           </li>
         ))}
       </ul>
-      <LinkField onPlay={play} />
+      <LinkField onPlay={(found) => void playMusic(found)} />
     </div>
   );
 }
@@ -196,61 +217,46 @@ function LinkField({ onPlay }: { onPlay: (item: MusicItem) => void }) {
   );
 }
 
-/** What's playing: its cover, name and who made it, play and pause, and where it is. */
-function NowPlaying({ item, onChange }: { item: MusicItem; onChange: () => void }) {
+/** What's playing: its cover, name and who made it, play and pause, where it is, and stop. */
+function NowPlaying({ item }: { item: MusicItem }) {
   const t = useTranslations("music");
   const ts = useTranslations("spotify");
   const { playing, loading, preview } = useMusic();
   const jam = item.kind === "jam";
 
   return (
-    <div className="px-2.5 pb-2 pt-2">
-      <div className="flex items-center justify-between">
-        <p className="flex items-center gap-1.5 text-[11px] font-medium text-faint">
-          <SpotifyMark className="size-3 text-[#1ed760]" />
-          {jam ? ts("inJam") : t("title")}
-        </p>
-        <div className="-me-1.5 flex items-center">
-          <button
-            type="button"
-            onClick={onChange}
-            className="cursor-pointer rounded-md px-1.5 py-0.5 text-[11.5px] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-          >
-            {t("change")}
-          </button>
-          <button
-            type="button"
-            onClick={stopMusic}
-            aria-label={t("stop")}
-            className="flex size-6 cursor-pointer items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-          >
-            <X className="size-3.5" />
-          </button>
-        </div>
-      </div>
-
-      <div className="mt-2 flex items-center gap-2.5">
+    <div className="px-2 pb-2.5 pt-1.5">
+      <div className="flex items-center gap-3">
         <a href={item.url} target="_blank" rel="noopener noreferrer" title={ts("open")} className="shrink-0">
-          <Cover image={item.image} size="size-10" />
+          <Cover image={item.image} size="size-12" />
         </a>
         <div className="min-w-0 flex-1">
           <a
             href={item.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="block truncate text-[13px] font-semibold text-foreground underline-offset-2 hover:underline"
+            className="block truncate text-[13.5px] font-semibold text-foreground underline-offset-2 hover:underline"
           >
             {item.title ?? t("yourJam")}
           </a>
-          <p className="truncate text-[11.5px] text-muted-foreground">{jam ? ts("jamNote") : (item.subtitle ?? kindLabel(item, ts))}</p>
+          <p className="truncate text-[12px] text-muted-foreground">{jam ? ts("jamNote") : (item.subtitle ?? kindLabel(item, ts))}</p>
         </div>
+        <button
+          type="button"
+          onClick={stopMusic}
+          aria-label={t("stop")}
+          title={t("stop")}
+          className="flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+        >
+          <X className="size-3.5" />
+        </button>
         {!jam && (
           <button
             type="button"
             onClick={toggleMusic}
             disabled={loading}
             aria-label={playing ? t("pause") : t("resume")}
-            className="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-foreground text-background transition-transform hover:scale-105 active:scale-95 disabled:opacity-60"
+            className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-foreground text-background transition-transform hover:scale-105 active:scale-95 disabled:opacity-60"
           >
             {loading ? <span className="size-3.5 animate-spin rounded-full border-2 border-background/30 border-t-background" /> : <PlayGlyph playing={playing} />}
           </button>
@@ -307,25 +313,26 @@ function Seek() {
   );
 }
 
-function PlayGlyph({ playing }: { playing: boolean }) {
+function PlayGlyph({ playing, small = false }: { playing: boolean; small?: boolean }) {
+  const size = small ? "size-3" : "size-3.5";
   return playing ? (
-    <svg viewBox="0 0 16 16" className="size-3.5" fill="currentColor" aria-hidden>
+    <svg viewBox="0 0 16 16" className={size} fill="currentColor" aria-hidden>
       <rect x="3.5" y="2.5" width="3" height="11" rx="0.8" />
       <rect x="9.5" y="2.5" width="3" height="11" rx="0.8" />
     </svg>
   ) : (
-    <svg viewBox="0 0 16 16" className="ms-0.5 size-3.5" fill="currentColor" aria-hidden>
+    <svg viewBox="0 0 16 16" className={cn("ms-0.5", size)} fill="currentColor" aria-hidden>
       <path d="M4.5 2.9v10.2a.8.8 0 0 0 1.2.7l8.3-5.1a.8.8 0 0 0 0-1.4L5.7 2.2a.8.8 0 0 0-1.2.7Z" />
     </svg>
   );
 }
 
-function Cover({ image, size }: { image: string | null; size: string }) {
+function Cover({ image, size, rounded = "rounded-md" }: { image: string | null; size: string; rounded?: string }) {
   return image ? (
     // eslint-disable-next-line @next/next/no-img-element -- Spotify's own cover, from its CDN.
-    <img src={image} alt="" className={cn(size, "shrink-0 rounded-md bg-muted object-cover")} />
+    <img src={image} alt="" className={cn(size, rounded, "max-w-none shrink-0 bg-muted object-cover")} />
   ) : (
-    <span className={cn(size, "flex shrink-0 items-center justify-center rounded-md bg-[#1ed760]/12 text-[#1ed760]")}>
+    <span className={cn(size, rounded, "flex shrink-0 items-center justify-center bg-[#1ed760]/12 text-[#1ed760]")}>
       <SpotifyMark className="size-1/2" />
     </span>
   );

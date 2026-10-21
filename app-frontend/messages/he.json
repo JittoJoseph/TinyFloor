@@ -462,7 +462,13 @@
       "profileNote": "השם והקישור שלך, בכל מקום שנכנסים אליו.",
       "password": "סיסמה",
       "passwordSet": "התחברות עם אימייל וסיסמה.",
-      "signOutNote": "התנתקות מ-TinyFloor בדפדפן הזה."
+      "signOutNote": "התנתקות מ-TinyFloor בדפדפן הזה.",
+      "timeZone": "אזור זמן",
+      "timeZoneNote": "השעה המקומית שלכם מוצגת בפרופיל, לאנשים שאתם עובדים איתם.",
+      "timeZoneAuto": "אוטומטי",
+      "timeZoneChange": "שינוי",
+      "timeZoneSearch": "חיפוש עיר",
+      "timeZoneNone": "אין אזור זמן תואם"
     },
     "invite": {
       "invalidTitle": "ההזמנה הזו לא עובדת",

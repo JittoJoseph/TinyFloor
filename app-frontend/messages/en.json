@@ -462,7 +462,13 @@
       "profileNote": "Your name and link, wherever you walk in.",
       "password": "Password",
       "passwordSet": "Sign in with your email and password.",
-      "signOutNote": "Sign out of TinyFloor in this browser."
+      "signOutNote": "Sign out of TinyFloor in this browser.",
+      "timeZone": "Time zone",
+      "timeZoneNote": "Your local time shows on your profile, for the people you work with.",
+      "timeZoneAuto": "Automatic",
+      "timeZoneChange": "Change",
+      "timeZoneSearch": "Search for a city",
+      "timeZoneNone": "No time zone matches"
     },
     "invite": {
       "invalidTitle": "This invite doesn't work",

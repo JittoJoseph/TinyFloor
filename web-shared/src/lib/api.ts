@@ -37,6 +37,20 @@ export interface SessionUser {
   introduced?: boolean;
   /** Their status note, while it lasts. */
   status?: StatusNote | null;
+  /** Their zone ("Europe/Berlin"), or null until a browser has said. */
+  timeZone?: string | null;
+  /** Whether the zone follows their browser, rather than one they picked. */
+  timeZoneAuto?: boolean;
+}
+
+/** What PATCH /me changes. A timeZone picks one; null follows the browser, whose zone is detectedZone. */
+export interface ProfileChanges {
+  displayName?: string;
+  character?: string;
+  link?: string;
+  introduced?: boolean;
+  timeZone?: string | null;
+  detectedZone?: string;
 }
 
 /** Someone's profile, as the people they chat with see it. */
@@ -45,6 +59,8 @@ export interface PersonProfile {
   displayName: string;
   link: string | null;
   guest: boolean;
+  /** Their zone, for their local time, or null. */
+  timeZone?: string | null;
 }
 
 export type OfficeRole = "admin" | "member";
@@ -381,7 +397,7 @@ export const api = {
 
   // The signed-in person
   me: () => get<{ user: SessionUser; offices: OfficeSummary[] }>("/me"),
-  updateMe: (body: { displayName?: string; character?: string; link?: string; introduced?: boolean }) => patch<{ user: SessionUser }>("/me", body),
+  updateMe: (body: ProfileChanges) => patch<{ user: SessionUser }>("/me", body),
   /** Connects a Google account to the signed-in account, with the code from Google's popup. */
   connectGoogle: (code: string) => post<{ user: SessionUser }>("/me/google", { code }),
   person: (id: string) => get<{ person: PersonProfile }>(`/people/${encodeURIComponent(id)}`),

@@ -2,8 +2,9 @@
 
 import React, { createContext, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { analyticsConfigured, withPostHog } from "@/lib/analytics";
-import { api, type SessionUser } from "@/lib/api";
+import { api, type ProfileChanges, type SessionUser } from "@/lib/api";
 import { readIdentity } from "@/lib/identity";
+import { browserZone } from "@/lib/timeZone";
 import { adoptMyNote } from "@/lib/floor";
 import { posthogLog } from "@/lib/posthog-log";
 import { recallSession, rememberSession } from "@/lib/session-hint";
@@ -24,7 +25,7 @@ interface AuthContextType {
   signUp: (details: { email: string; password: string; turnstileToken: string }) => Promise<SessionUser>;
   continueAsGuest: (details: { name: string; character: string; turnstileToken: string }) => Promise<SessionUser>;
   signOut: () => Promise<void>;
-  updateProfile: (changes: { displayName?: string; character?: string; link?: string; introduced?: boolean }) => Promise<SessionUser>;
+  updateProfile: (changes: ProfileChanges) => Promise<SessionUser>;
   refresh: () => Promise<void>;
 }
 
@@ -126,6 +127,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       cancelled = true;
     };
   }, [known]);
+
+  // Until someone picks a zone, theirs is this browser's: said once when it
+  // differs from the one kept, so their local time is right for everyone.
+  const zoneSent = useRef<string | null>(null);
+  useEffect(() => {
+    if (!user || user.timeZoneAuto === false) return;
+    const zone = browserZone();
+    const key = `${user.id} ${zone}`;
+    if (!zone || zone === user.timeZone || zoneSent.current === key) return;
+    zoneSent.current = key;
+    api.updateMe({ detectedZone: zone }).then(({ user: next }) => setUser(next), () => {});
+  }, [user]);
 
   const value = useMemo<AuthContextType>(
     () => ({

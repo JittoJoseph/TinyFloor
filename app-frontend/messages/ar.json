@@ -462,7 +462,13 @@
       "profileNote": "اسمك ورابطك، أينما دخلت.",
       "password": "كلمة المرور",
       "passwordSet": "سجّل الدخول ببريدك الإلكتروني وكلمة المرور.",
-      "signOutNote": "سجّل الخروج من TinyFloor في هذا المتصفح."
+      "signOutNote": "سجّل الخروج من TinyFloor في هذا المتصفح.",
+      "timeZone": "المنطقة الزمنية",
+      "timeZoneNote": "يظهر وقتك المحلي في ملفك الشخصي لمن تعمل معهم.",
+      "timeZoneAuto": "تلقائي",
+      "timeZoneChange": "تغيير",
+      "timeZoneSearch": "ابحث عن مدينة",
+      "timeZoneNone": "لا توجد منطقة زمنية مطابقة"
     },
     "invite": {
       "invalidTitle": "هذه الدعوة لا تعمل",

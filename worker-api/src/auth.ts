@@ -99,7 +99,7 @@ export function authRoutes(router: Router): void {
 
       const account = await env.DB.prepare(
         `SELECT id, email, password_hash, display_name, character, google_sub IS NOT NULL AS has_google, link,
-                introduced_at IS NOT NULL AS introduced
+                introduced_at IS NOT NULL AS introduced, time_zone, time_zone_auto
            FROM users WHERE email = ? AND is_guest = 0`,
       )
         .bind(email)
@@ -112,6 +112,8 @@ export function authRoutes(router: Router): void {
           has_google: number;
           link: string | null;
           introduced: number;
+          time_zone: string | null;
+          time_zone_auto: number;
         }>();
 
       const emailGuard = guard(env, `email:${email}`);
@@ -154,6 +156,8 @@ export function authRoutes(router: Router): void {
         hasGoogle: found.has_google === 1,
         link: found.link,
         introduced: found.introduced === 1,
+        timeZone: found.time_zone,
+        timeZoneAuto: found.time_zone_auto !== 0,
         sessionId,
       };
       return json({ user: publicUser(user) }, { headers: { "Set-Cookie": cookie } });
@@ -247,13 +251,20 @@ export function authRoutes(router: Router): void {
       const link = body.link === undefined || user.isGuest ? (user.link ?? null) : cleanLink(body.link);
       // Said at their first door: who they are, and who they walk in as.
       const introduced = user.introduced || body.introduced === true;
+      // A zone they pick stays; null goes back to following their browser, whose
+      // zone (detectedZone) is kept only while it does.
+      const timeZoneAuto = body.timeZone === undefined ? user.timeZoneAuto !== false : body.timeZone === null;
+      const picked = timeZoneAuto ? undefined : body.timeZone === undefined ? user.timeZone : cleanZone(body.timeZone, "timeZone");
+      const detected = body.detectedZone === undefined ? undefined : cleanZone(body.detectedZone, "detectedZone");
+      const timeZone = picked ?? (timeZoneAuto ? (detected ?? user.timeZone ?? null) : null);
 
       await env.DB.prepare(
-        "UPDATE users SET display_name = ?, character = ?, link = ?, introduced_at = CASE WHEN ? THEN COALESCE(introduced_at, ?) ELSE introduced_at END WHERE id = ?",
+        `UPDATE users SET display_name = ?, character = ?, link = ?, time_zone = ?, time_zone_auto = ?,
+                introduced_at = CASE WHEN ? THEN COALESCE(introduced_at, ?) ELSE introduced_at END WHERE id = ?`,
       )
-        .bind(displayName, character, link, introduced ? 1 : 0, Date.now(), user.id)
+        .bind(displayName, character, link, timeZone, timeZoneAuto ? 1 : 0, introduced ? 1 : 0, Date.now(), user.id)
         .run();
-      return json({ user: publicUser({ ...user, displayName, character, link, introduced }) });
+      return json({ user: publicUser({ ...user, displayName, character, link, introduced, timeZone, timeZoneAuto }) });
     })
 
     // Your status note, kept with the account so People shows it while you're away.
@@ -267,15 +278,23 @@ export function authRoutes(router: Router): void {
       return json({ status: note });
     })
 
-    // Someone's profile, for whoever they share a floor or a chat with: their name and their link.
+    // Someone's profile, for whoever they share a floor or a chat with: their name, their link and their zone.
     .add("GET", "/v1/people/:id", async ({ request, env, ctx, params }) => {
       await requireUser(env, request, ctx);
-      const person = await env.DB.prepare("SELECT id, display_name, link, is_guest FROM users WHERE id = ?")
+      const person = await env.DB.prepare("SELECT id, display_name, link, is_guest, time_zone FROM users WHERE id = ?")
         .bind(params.id)
-        .first<{ id: string; display_name: string; link: string | null; is_guest: number }>();
+        .first<{ id: string; display_name: string; link: string | null; is_guest: number; time_zone: string | null }>();
       if (!person) throw new HttpError(404, "not_found", "No such person");
       return json(
-        { person: { id: person.id, displayName: person.display_name, link: person.is_guest ? null : person.link, guest: person.is_guest === 1 } },
+        {
+          person: {
+            id: person.id,
+            displayName: person.display_name,
+            link: person.is_guest ? null : person.link,
+            guest: person.is_guest === 1,
+            timeZone: person.time_zone,
+          },
+        },
         { headers: { "Cache-Control": "private, max-age=60" } },
       );
     });
@@ -312,6 +331,20 @@ function cleanLink(value: unknown): string | null {
   return candidate;
 }
 
+/**
+ * An IANA zone the runtime knows ("Asia/Kolkata"), kept as the browser wrote
+ * it: runtimes disagree on which of a zone's old and new names is canonical.
+ */
+function cleanZone(value: unknown, field: string): string {
+  if (typeof value === "string" && value && value.length <= 64) {
+    try {
+      new Intl.DateTimeFormat("en-US", { timeZone: value });
+      return value;
+    } catch {}
+  }
+  throw new HttpError(400, "bad_time_zone", "Pick a time zone from the list", field);
+}
+
 function checkPassword(value: unknown, field = "password"): string {
   const password = typeof value === "string" ? value : "";
   if (password.length < PASSWORD_MIN_LENGTH) {
@@ -336,6 +369,8 @@ export function publicUser(user: User) {
     link: user.link ?? null,
     // Guests always are: they said who they are at the door.
     introduced: user.isGuest || user.introduced !== false,
+    timeZone: user.timeZone ?? null,
+    timeZoneAuto: user.timeZoneAuto !== false,
     status: liveNote(user.status),
   };
 }

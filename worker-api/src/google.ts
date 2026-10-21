@@ -37,6 +37,8 @@ interface AccountRow {
   has_password?: number;
   link?: string | null;
   introduced?: number;
+  time_zone?: string | null;
+  time_zone_auto?: number;
 }
 
 export function googleRoutes(router: Router): void {
@@ -79,7 +81,7 @@ export function googleRoutes(router: Router): void {
 
     const current = await currentUser(env, request, ctx);
     const columns =
-      "id, email, display_name, character, google_sub, password_hash IS NOT NULL AS has_password, link, introduced_at IS NOT NULL AS introduced";
+      "id, email, display_name, character, google_sub, password_hash IS NOT NULL AS has_password, link, introduced_at IS NOT NULL AS introduced, time_zone, time_zone_auto";
 
     let account =
       (await env.DB.prepare(`SELECT ${columns} FROM users WHERE google_sub = ?`).bind(google.sub).first<AccountRow>()) ??
@@ -110,6 +112,8 @@ export function googleRoutes(router: Router): void {
         character: current.character,
         google_sub: google.sub,
         introduced: 1,
+        time_zone: current.timeZone,
+        time_zone_auto: current.timeZoneAuto === false ? 0 : 1,
       };
       await env.DB.batch([
         env.DB.prepare(
@@ -150,6 +154,8 @@ export function googleRoutes(router: Router): void {
       hasGoogle: true,
       link: account.link ?? null,
       introduced: account.introduced === 1,
+      timeZone: account.time_zone ?? null,
+      timeZoneAuto: account.time_zone_auto !== 0,
       sessionId,
     };
     return json({ user: publicUser(user), created }, { status: created ? 201 : 200, headers: { "Set-Cookie": cookie } });

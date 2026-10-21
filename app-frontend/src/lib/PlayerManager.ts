@@ -48,11 +48,9 @@ const BEHIND_TAG_OFFSET_Y = 58;
 const TAG_HEIGHT = 18;
 const TAG_DEPTH = 100000;
 type Box = { left: number; right: number; top: number; bottom: number };
-/** A tag folded to its dot, before scaling. */
-const FOLDED_TAG = 16;
 /** How often crowded tags are sorted out, in milliseconds. */
 const DECLUTTER_EVERY = 150;
-/** Room kept between two tags before the farther one folds, in screen pixels. */
+/** Room kept between two tags before the farther one steps away, in screen pixels. */
 const TAG_GAP = 4;
 const HOP_DURATION = 220;
 const HOP_REACH = TILE_SIZE * 2;
@@ -225,9 +223,10 @@ export class PlayerManager {
   }
 
   /**
-   * Where tags would cover each other, the nearer one keeps its name and the
-   * farther one folds to its dot, the way a map drops labels as it fills up.
-   * Yours always shows; the closer someone is to you, the more theirs does.
+   * Where tags would cover each other, the nearer one stays and the farther one
+   * steps away until there's room again, the way a map drops labels as it
+   * fills up; a lone dot over someone's head would say little the avatar
+   * doesn't. Yours always shows; the closer someone is to you, the more theirs does.
    */
   declutterTags(time: number) {
     if (time < this.declutterAt || !this.localPlayer) return;
@@ -253,13 +252,10 @@ export class PlayerManager {
         return { left: x - half - gap, right: x + half + gap, top: y - height - gap, bottom: y + gap };
       };
       const clashes = (box: Box) => placed.some((other) => box.left < other.right && box.right > other.left && box.top < other.bottom && box.bottom > other.top);
-      const full = boxOf(tag.fullWidth);
-      const folded = boxOf(FOLDED_TAG);
-      // Its name if there's room, its dot if only that fits, and nothing over someone else's name.
-      const fits = !clashes(full) ? full : !clashes(folded) ? folded : null;
-      tag.setFolded(fits !== full);
-      tag.container.setAlpha(fits ? 1 : 0);
-      if (fits) placed.push(fits);
+      const box = boxOf(tag.width);
+      const crowded = clashes(box);
+      tag.setCrowded(crowded);
+      if (!crowded) placed.push(box);
     }
   }
 
@@ -279,15 +275,15 @@ export class PlayerManager {
     this.nameTags.get(id)?.setText(name);
   }
 
-  /**
-   * Someone's status note: its emoji on their tag while it lasts, gone when its
-   * time is up (and `expired` is told, so the lists can follow).
-   */
   /** Music playing for them in TinyFloor: a small moving mark on their name tag. */
   updatePlayerListening(id: string, on: boolean) {
     this.nameTags.get(id)?.setListening(on);
   }
 
+  /**
+   * Someone's status note: its icon on their tag while it lasts, gone when its
+   * time is up (and `expired` is told, so the lists can follow).
+   */
   updatePlayerNote(id: string, note: StatusNote | null | undefined, expired?: () => void) {
     this.noteTimers.get(id)?.remove();
     this.noteTimers.delete(id);

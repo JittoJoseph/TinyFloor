@@ -209,26 +209,28 @@ export async function playMusic(item: MusicItem) {
 }
 
 /**
- * The next song: the next in the list, or, when the list runs out, the
- * best-known songs of an artist on the last few played who hasn't had a turn,
- * the nearest thing to radio Spotify's player offers. It stops when there's
- * no one new.
+ * The next song: the next in the list, or, when the list runs out, a few songs
+ * from the artist of the last one played, then from artists Spotify says their
+ * fans also like, the nearest thing to radio Spotify's player offers. It stops
+ * when there's no one new.
  */
 export async function nextMusic() {
   const song = queue.shift();
   if (song) return playSong(song, now.from);
   const pick = picks;
-  const after = await api.spotifyAfter(heardSongs.slice(0, SEEDS), heardArtists).catch(() => null);
-  if (pick !== picks || !now.item) return;
-  const fresh = after?.tracks.filter((one) => !heardSongs.includes(one.url)) ?? [];
-  if (!after?.artist || !fresh.length) {
-    controller?.pause();
-    return;
+  // An artist whose songs here were all heard already has had their turn: ask again, a few times.
+  for (let tries = 0; tries < 3; tries++) {
+    const after = await api.spotifyAfter(heardSongs.slice(0, SEEDS), heardArtists).catch(() => null);
+    if (pick !== picks || !now.item) return;
+    if (!after?.artist) break;
+    heardArtists.push(after.artist);
+    const fresh = after.tracks.filter((one) => !heardSongs.includes(one.url));
+    if (!fresh.length) continue;
+    queue = fresh;
+    queueCover = null;
+    return playSong(queue.shift()!, after.artist);
   }
-  heardArtists.push(after.artist);
-  queue = fresh;
-  queueCover = null;
-  playSong(queue.shift()!, after.artist);
+  controller?.pause();
 }
 
 /** One song from a list: its name now, its own cover once Spotify gives it. */

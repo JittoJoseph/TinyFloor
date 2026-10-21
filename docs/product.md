@@ -199,11 +199,16 @@ missing features on the map.
   and your card name the song, and Listen on someone's card plays that song.
   A next button skips one.
 - **When the songs run out it plays on**, the nearest thing to radio Spotify's
-  player offers (it has no "up next" outside Spotify's apps): the
-  best-known songs of an artist on the last few played who hasn't had a turn,
-  read from the song's embed. Someone featured on a song is how it moves to a
-  new artist; it stops when there's no one new. What plays on by itself stays
-  out of the recent list.
+  player offers (it has no "up next" outside Spotify's apps): three of the
+  best-known songs of the last song's artist, then three from an artist in
+  the "Fans also like" row of that artist's public page, Spotify's own idea
+  of who's close, and so on, drifting from artist to close artist. A
+  Malayalam song plays on into Malayalam music. Featured artists aren't
+  followed: a guest verse can be a world away. It stops when there's no one
+  new. What plays on by itself stays out of the recent list.
+- **Name tags that would cover a nearer one step away** (fade out) until
+  there's room, rather than folding to a dot: a lone dot over someone's head
+  says little the avatar doesn't. Yours always shows.
 - **On your name tag, three small bars** while you play something, so people
   walking past on the floor see it without opening your card.
 - **Spotify's own player plays it, out of sight; our controls drive it**

@@ -22,6 +22,8 @@ const SONGS_TTL_SECONDS = 6 * 60 * 60;
 const LISTS = ["album", "playlist", "artist"];
 /** Songs asked about for what plays on, most: each is a page from Spotify. */
 const MOST_SONGS_AFTER = 5;
+/** Songs from each artist as it plays on, so it moves along the way radio does. */
+const SONGS_PER_ARTIST = 3;
 const USER_AGENT = { "User-Agent": "TinyFloor (+https://www.tinyfloor.com)" };
 
 type Found = Omit<SpotifyShare, "until">;
@@ -105,19 +107,40 @@ async function songsOf(url: string): Promise<Found[]> {
 }
 
 /**
- * What plays on after these songs, newest first: the best-known songs of the
- * first artist on them who hasn't had their turn, the nearest thing to radio
- * Spotify's player offers. Someone featured on a song is how it moves on.
+ * Who Spotify says fans of an artist also like, from the "Fans also like" row
+ * on the artist's public page: its own idea of who's close, so a Malayalam
+ * song plays on into Malayalam music. Asked in English, which the row is found by.
+ */
+async function alsoLiked(artist: string): Promise<string[]> {
+  const response = await fetch(artist, {
+    headers: { ...USER_AGENT, "Accept-Language": "en" },
+    cf: { cacheTtl: SONGS_TTL_SECONDS, cacheEverything: true },
+  }).catch(() => null);
+  if (!response?.ok) return [];
+  const page = await response.text();
+  const start = page.indexOf(">Fans also like</h2>");
+  if (start < 0) return [];
+  const end = page.indexOf("<h2", start + 20);
+  const row = page.slice(start, end > 0 ? end : undefined);
+  return [...row.matchAll(/href="\/artist\/([A-Za-z0-9]{22})"/g)].map((found) => `https://open.spotify.com/artist/${found[1]}`);
+}
+
+/**
+ * What plays on after these songs, newest first, the nearest thing to radio
+ * Spotify's player offers: a few best-known songs of the newest song's artist,
+ * then of an artist Spotify says their fans also like, each not yet heard. Asked
+ * again as those run out, it drifts from artist to close artist. Someone
+ * featured on a song isn't followed: a guest verse can be a world away.
  */
 async function songsAfter(songs: string[], played: string[]): Promise<{ artist: string | null; tracks: Found[] }> {
   for (const song of songs) {
-    const artists = (await embedded(song))?.artists;
-    for (const one of Array.isArray(artists) ? artists : []) {
-      const artist = spotifyLink(one?.uri);
-      if (artist?.kind !== "artist" || played.includes(artist.url)) continue;
-      const tracks = (await songsOf(artist.url)).filter((track) => !songs.includes(track.url));
-      if (tracks.length) return { artist: artist.url, tracks };
-      played = [...played, artist.url];
+    const main = spotifyLink((await embedded(song))?.artists?.[0]?.uri);
+    if (main?.kind !== "artist") continue;
+    for (const artist of [main.url, ...(await alsoLiked(main.url))]) {
+      if (played.includes(artist)) continue;
+      const tracks = (await songsOf(artist)).filter((track) => !songs.includes(track.url)).slice(0, SONGS_PER_ARTIST);
+      if (tracks.length) return { artist, tracks };
+      played = [...played, artist];
     }
   }
   return { artist: null, tracks: [] };

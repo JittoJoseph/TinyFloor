@@ -37,7 +37,7 @@ import { ActionLink } from "@/components/ui/Action";
 import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
 import { dmChannelId } from "@shared/chat";
 import { useWide } from "@/lib/hooks/use-wide";
-import { AppShell, Logo } from "./AppShell";
+import { AppShell, Logo, useShellFrame } from "./AppShell";
 import { YouMenu } from "./YouMenu";
 import { FloorNudges } from "./FloorNudges";
 import { DemoPrompts } from "./DemoPrompts";
@@ -297,13 +297,13 @@ function LobbyMark() {
   const router = useRouter();
   const home = useSitePage();
   const wide = useWide();
+  const frame = useShellFrame();
   const { user } = useAuth();
   const guest = !user || user.guest;
   return (
     <Menu
-      side={wide ? "right" : "bottom"}
       align="start"
-      offset={wide ? 16 : 8}
+      within={wide ? frame : undefined}
       width={256}
       trigger={
         <button type="button" aria-label={t("title")} className="cursor-pointer rounded-[30%] transition-transform active:scale-95">

@@ -22,17 +22,20 @@ export function Menu({
   className,
   width = 240,
   offset = 8,
+  within,
   rootClassName,
   onOpenChange,
 }: {
   trigger: ReactElement;
   children: ReactNode;
-  side?: "top" | "bottom" | "right";
+  side?: "top" | "bottom";
   align?: "start" | "end";
   className?: string;
   width?: number;
   /** Gap between the trigger and the menu. */
   offset?: number;
+  /** Opens inside this element, in its corner nearest the trigger: a rail menu, in the corner of the shell's panel. */
+  within?: HTMLElement | null;
   /** For the wrapper around the trigger, when the trigger should stretch. */
   rootClassName?: string;
   /** Told when it opens or closes, for a menu that resets what it shows. */
@@ -46,7 +49,7 @@ export function Menu({
   return (
     <MorphPopover open={open} onOpenChange={setOpen} className={rootClassName}>
       <MorphPopoverTrigger>{trigger}</MorphPopoverTrigger>
-      <MorphPopoverContent side={side} align={align} sideOffset={offset} radius={16} className={cn("bg-popover p-1.5", className)}>
+      <MorphPopoverContent side={side} align={align} sideOffset={offset} within={within} className={cn("bg-popover p-1.5", className)}>
         <div style={{ width }} className="flex flex-col">
           <CloseMenu.Provider value={() => setOpen(false)}>{children}</CloseMenu.Provider>
         </div>
@@ -63,7 +66,6 @@ export function MenuItem({
   checked,
   danger,
   disabled,
-  keepOpen,
 }: {
   onSelect?: () => void;
   icon?: ReactNode;
@@ -73,7 +75,6 @@ export function MenuItem({
   checked?: boolean;
   danger?: boolean;
   disabled?: boolean;
-  keepOpen?: boolean;
 }) {
   const close = useContext(CloseMenu);
   return (
@@ -82,7 +83,7 @@ export function MenuItem({
       disabled={disabled}
       onClick={() => {
         onSelect?.();
-        if (!keepOpen) close();
+        close();
       }}
       className={cn(
         "group flex h-9 w-full cursor-pointer items-center gap-2.5 rounded-[10px] px-2.5 text-start text-[13px] outline-none transition-colors",
@@ -91,15 +92,11 @@ export function MenuItem({
       )}
     >
       {icon && (
-        <span className={cn("flex size-4 shrink-0 items-center justify-center", danger ? "" : "text-muted-foreground")}>
-          {icon}
-        </span>
+        <span className={cn("flex size-4 shrink-0 items-center justify-center", danger ? "" : "text-muted-foreground")}>{icon}</span>
       )}
       <span className="min-w-0 flex-1 truncate">{children}</span>
       {hint && <span className="shrink-0 text-[12px] text-faint">{hint}</span>}
-      {checked !== undefined && (
-        <Check className={cn("size-4 shrink-0 text-foreground", checked ? "opacity-100" : "opacity-0")} />
-      )}
+      {checked !== undefined && <Check className={cn("size-4 shrink-0 text-foreground", checked ? "opacity-100" : "opacity-0")} />}
     </button>
   );
 }

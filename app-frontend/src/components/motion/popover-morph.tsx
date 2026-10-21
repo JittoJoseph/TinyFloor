@@ -21,7 +21,7 @@ import { usePopoverPortalPosition } from "@/components/motion/popover-position";
 import { EASE_OUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 
-type Side = "top" | "bottom" | "right";
+type Side = "top" | "bottom";
 type Align = "start" | "end";
 
 type MorphContextValue = {
@@ -58,13 +58,7 @@ export interface MorphPopoverProps {
  * A popover whose panel opens from the trigger corner with a quick fade and
  * scale. Closes on outside pointer / Escape. Controlled or uncontrolled.
  */
-export function MorphPopover({
-  children,
-  open: controlledOpen,
-  defaultOpen = false,
-  onOpenChange,
-  className,
-}: MorphPopoverProps) {
+export function MorphPopover({ children, open: controlledOpen, defaultOpen = false, onOpenChange, className }: MorphPopoverProps) {
   const baseId = useId();
   const [root, setRoot] = useState<HTMLDivElement | null>(null);
   const [trigger, setTrigger] = useState<HTMLElement | null>(null);
@@ -89,10 +83,7 @@ export function MorphPopover({
   // trigger exactly (the content portals out of it), so it stands in until a
   // real trigger registers, and stands in again if that one unmounts. Both are
   // state, so a trigger arriving while the panel is open re-anchors it.
-  const anchorRef = useMemo<React.MutableRefObject<HTMLElement | null>>(
-    () => ({ current: trigger ?? root }),
-    [root, trigger],
-  );
+  const anchorRef = useMemo<React.MutableRefObject<HTMLElement | null>>(() => ({ current: trigger ?? root }), [root, trigger]);
 
   // The panel is a `role="dialog"` and goes inert the moment it closes, so
   // focus cannot be left sitting inside it: a dismissal hands it back to the
@@ -104,8 +95,7 @@ export function MorphPopover({
   const close = useCallback(() => {
     setOpen(false);
     const focused = document.activeElement;
-    const inPanel =
-      focused instanceof HTMLElement && contentRef.current?.contains(focused);
+    const inPanel = focused instanceof HTMLElement && contentRef.current?.contains(focused);
     if (!inPanel) return;
     const restore = trigger ?? (root && root.tabIndex >= 0 ? root : null);
     restore?.focus();
@@ -116,12 +106,7 @@ export function MorphPopover({
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
     const onPointer = (e: PointerEvent) => {
       const target = e.target as Node;
-      if (
-        root &&
-        !root.contains(target) &&
-        !contentRef.current?.contains(target)
-      )
-        close();
+      if (root && !root.contains(target) && !contentRef.current?.contains(target)) close();
     };
     window.addEventListener("keydown", onKey);
     window.addEventListener("pointerdown", onPointer);
@@ -162,8 +147,7 @@ function mergeRefs<T>(...refs: Array<Ref<T> | undefined>) {
   return (node: T | null) => {
     for (const ref of refs) {
       if (typeof ref === "function") ref(node);
-      else if (ref && typeof ref === "object")
-        (ref as React.MutableRefObject<T | null>).current = node;
+      else if (ref && typeof ref === "object") (ref as React.MutableRefObject<T | null>).current = node;
     }
   };
 }
@@ -174,9 +158,7 @@ export function MorphPopoverTrigger({ children }: MorphPopoverTriggerProps) {
   if (!isValidElement(children)) return children;
 
   const child = children as ReactElement<Record<string, unknown>>;
-  const childOnClick = child.props.onClick as
-    | ((e: unknown) => void)
-    | undefined;
+  const childOnClick = child.props.onClick as ((e: unknown) => void) | undefined;
   const childRef = (child.props as { ref?: Ref<HTMLElement> }).ref;
 
   return cloneElement(child, {
@@ -191,11 +173,6 @@ export function MorphPopoverTrigger({ children }: MorphPopoverTriggerProps) {
     "aria-controls": ctx.open ? ctx.contentId : undefined,
   });
 }
-
-const originFor = (side: Side, align: Align) =>
-  side === "right"
-    ? `left ${align === "end" ? "bottom" : "top"}`
-    : `${side === "bottom" ? "top" : "bottom"} ${align === "end" ? "right" : "left"}`;
 
 // Opens from the trigger's corner with a quick fade and scale: only opacity
 // and transform move, which the compositor does alone. (A clip-path reveal
@@ -212,6 +189,12 @@ export interface MorphPopoverContentProps {
   sideOffset?: number;
   /** Panel corner radius, in px. Default 16. */
   radius?: number;
+  /**
+   * Opens inside this element instead, in its corner nearest the trigger,
+   * shaped like that corner: a menu from the rail sits in the corner of the
+   * panel beside it, on both of its edges.
+   */
+  within?: HTMLElement | null;
   className?: string;
 }
 
@@ -221,42 +204,49 @@ export function MorphPopoverContent({
   align = "end",
   sideOffset = 8,
   radius = 16,
+  within,
   className,
 }: MorphPopoverContentProps) {
   const ctx = useMorphContext("MorphPopoverContent");
   const reduce = useReducedMotion() ?? false;
   const [portalReady, setPortalReady] = useState(false);
-  const layout = usePopoverPortalPosition(
-    ctx.triggerRef,
-    ctx.contentRef,
-    portalReady && ctx.open,
-  );
-
+  const withinRef = useMemo(() => ({ current: within ?? null }), [within]);
+  const layout = usePopoverPortalPosition(within ? withinRef : ctx.triggerRef, ctx.contentRef, portalReady && ctx.open);
   useEffect(() => setPortalReady(true), []);
-  const rawLeft = layout
-    ? side === "right"
-      ? layout.trigger.left + layout.trigger.width + sideOffset
-      : align === "end"
-        ? layout.trigger.left + layout.trigger.width - layout.content.width
-        : layout.trigger.left
-    : 0;
-  const rawTop = layout
-    ? side === "right"
-      ? align === "end"
-        ? layout.trigger.top + layout.trigger.height - layout.content.height
-        : layout.trigger.top
-      : side === "bottom"
-        ? layout.trigger.top + layout.trigger.height + sideOffset
-        : layout.trigger.top - layout.content.height - sideOffset
-    : 0;
-  // Keep the whole panel on screen, which matters on a phone.
-  const clamp = (value: number, size: number, room: number) => Math.max(8, Math.min(value, room - size - 8));
-  const left = layout && typeof window !== "undefined" ? clamp(rawLeft, layout.content.width, window.innerWidth) : rawLeft;
-  const top = layout && typeof window !== "undefined" ? clamp(rawTop, layout.content.height, window.innerHeight) : rawTop;
 
-  const shift = side === "right" ? { x: -4 } : { y: side === "bottom" ? -4 : 4 };
+  // Keep a panel off a trigger on screen, which matters on a phone.
+  const clamp = (value: number, size: number, room: number) => Math.max(8, Math.min(value, room - size - 8));
+  let left = 0;
+  let top = 0;
+  let corners = `${radius}px`;
+  let origin = `${side === "bottom" ? "top" : "bottom"} ${align === "end" ? "right" : "left"}`;
+  let shift = { y: side === "bottom" ? -4 : 4 };
+  if (layout) {
+    const { trigger: anchor, content } = layout;
+    if (within) {
+      const trigger = ctx.triggerRef.current?.getBoundingClientRect();
+      const right = !!trigger && trigger.left + trigger.width / 2 > anchor.left + anchor.width / 2;
+      const bottom = !!trigger && trigger.top + trigger.height / 2 > anchor.top + anchor.height / 2;
+      left = right ? anchor.left + anchor.width - content.width : anchor.left;
+      top = bottom ? anchor.top + anchor.height - content.height : anchor.top;
+      // The corner it shares is shaped like the element's; the other three are its own.
+      const shared = getComputedStyle(within)[`border${bottom ? "Bottom" : "Top"}${right ? "Right" : "Left"}Radius`];
+      const round = (corner: boolean) => (corner ? shared : `${radius}px`);
+      corners = [round(!bottom && !right), round(!bottom && right), round(bottom && right), round(bottom && !right)].join(" ");
+      origin = `${right ? "right" : "left"} ${bottom ? "bottom" : "top"}`;
+      shift = { y: bottom ? 4 : -4 };
+    } else {
+      left = clamp(align === "end" ? anchor.left + anchor.width - content.width : anchor.left, content.width, window.innerWidth);
+      top = clamp(
+        side === "bottom" ? anchor.top + anchor.height + sideOffset : anchor.top - content.height - sideOffset,
+        content.height,
+        window.innerHeight,
+      );
+    }
+  }
+
   const hidden = reduce ? { opacity: 0 } : { opacity: 0, scale: 0.97, ...shift };
-  const shown = reduce ? { opacity: 1 } : { opacity: 1, scale: 1, x: 0, y: 0 };
+  const shown = reduce ? { opacity: 1 } : { opacity: 1, scale: 1, y: 0 };
 
   // Keep the server and first client render identical, then mount the portal.
   if (!portalReady) return null;
@@ -276,9 +266,9 @@ export function MorphPopoverContent({
           style={{
             left,
             top,
-            borderRadius: radius,
+            borderRadius: corners,
             visibility: layout ? "visible" : "hidden",
-            transformOrigin: originFor(side, align),
+            transformOrigin: origin,
           }}
           className={cn(
             "fixed z-[9999] overflow-hidden border border-border bg-background shadow-[0_12px_32px_-12px_rgb(0_0_0/0.35)]",

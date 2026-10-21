@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { Check, DoorOpen, HelpCircle, LogOut, MonitorDown, Settings2, UserRound, UserPlus } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
@@ -8,6 +8,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { setMyStatus, useMyNote, useMyStatus } from "@/lib/floor";
 import { NoteOptions, NoteRow } from "./StatusNote";
 import { MusicOptions, MusicRow } from "./Music";
+import { useShellFrame } from "./AppShell";
 import type { PlayerStatus } from "@/lib/types";
 import { Face } from "@/components/ui/Face";
 import { Menu, MenuHeader, MenuItem, MenuSeparator } from "@/components/ui/Menu";
@@ -21,18 +22,16 @@ import { install, useCanInstall } from "@/lib/install";
 const STATUSES: Array<Exclude<PlayerStatus, "in_call" | "offline">> = ["available", "busy", "away"];
 const STATUS_DOT: Record<string, string> = { available: "bg-ok", busy: "bg-destructive", away: "bg-warn", in_call: "bg-violet-500" };
 
-type Open = "status" | "note" | "music" | null;
+type Section = "status" | "note" | "music";
 
 /**
  * You, at the bottom of the rail: your face with your status on it, and a
- * short menu of what you reach for while working. Your status, your note
- * ("🍜 Lunch") and music are a row each, saying what they are now; pressing
- * one opens its choices beneath it, inset, while the other two step aside, and
- * the menu grows or shrinks to fit. Who you are stays at the top and your
- * profile at the bottom.
- * Theme and devices live in Settings, and so does signing out: a slip in a
- * menu this close at hand would take you off the floor in front of your team.
- * A guest has no account settings, so a guest signs out here.
+ * short menu of what you reach for while working. Status, note and music are
+ * a row each, saying what they are now; pressing one opens its choices beneath
+ * it while the others step aside. Who you are stays at the top, your profile
+ * at the bottom.
+ * Signing out is in Settings, so a slip here can't take you off the floor in
+ * front of your team; a guest, who has no settings, signs out here.
  */
 export function YouMenu({
   settingsHref,
@@ -60,23 +59,29 @@ export function YouMenu({
   const { user, isGuest, signOut } = useAuth();
   const status = useMyStatus();
   const note = useMyNote();
-  const [open, setOpen] = useState<Open>(null);
+  const [open, setOpen] = useState<Section | null>(null);
   const wide = useWide();
+  const frame = useShellFrame();
   const canInstall = useCanInstall();
   if (!user) return null;
-  // On a phone the rail isn't there, so Help and feedback is in here; never in the dashboard's bar, which has no dialog.
-  const helpHere = !wide && !bar;
-  const toggle = (which: Exclude<Open, null>) => setOpen((now) => (now === which ? null : which));
   const close = () => setOpen(null);
   const inCall = status === "in_call";
   const shownStatus = status === "offline" ? "away" : status;
 
+  /** A row and, pressed, its choices beneath it; the other rows fold away meanwhile. */
+  const section = (which: Section, row: (open: boolean, toggle: () => void) => ReactNode, choices: ReactNode) => (
+    <MenuFold shown={open === null || open === which}>
+      {row(open === which, () => setOpen((now) => (now === which ? null : which)))}
+      <MenuExpand open={open === which}>{choices}</MenuExpand>
+    </MenuFold>
+  );
 
   return (
     <Menu
-      side={panel ? "top" : bar ? "bottom" : wide ? "right" : "top"}
+      side={bar ? "bottom" : "top"}
       align={panel ? "start" : "end"}
-      offset={panel ? 8 : bar ? 8 : wide ? 20 : 10}
+      // From the rail or a phone's bottom bar, it opens in the panel's corner beside you.
+      within={bar || panel ? undefined : frame}
       width={272}
       rootClassName={panel ? "min-w-0 flex-1" : undefined}
       // It opens with everything folded each time.
@@ -93,8 +98,8 @@ export function YouMenu({
         )
       }
     >
+      {/* Your name as everyone sees it; your email address is for your profile. */}
       <MenuHeader>
-        {/* Your name, as everyone sees it; your email address is for your profile, not this menu. */}
         <div className="flex items-center gap-3">
           <Face seed={user.id} size={36} />
           <div className="min-w-0">
@@ -105,60 +110,54 @@ export function YouMenu({
       </MenuHeader>
 
       <MenuSeparator />
-      {onFloor && (
-        <MenuFold shown={open === null || open === "status"}>
-          <MenuRow
-            icon={<span className={cn("size-2 rounded-full", STATUS_DOT[shownStatus])} />}
-            // A call sets it, and ending the call gives yours back: nothing to pick until then.
-            onClick={inCall ? undefined : () => toggle("status")}
-            open={open === "status"}
-            hint={inCall ? tStatus("in_call.description") : undefined}
-          >
-            {/* Open, it heads the choices, which say what each one is. */}
-            {open === "status" ? t("status") : tStatus(`${shownStatus}.label`)}
-          </MenuRow>
-          <MenuExpand open={open === "status"}>
-            {STATUSES.map((one) => (
-              <button
-                key={one}
-                type="button"
-                onClick={() => {
-                  setMyStatus(one);
-                  close();
-                }}
-                className="flex w-full cursor-pointer items-center gap-2.5 rounded-[9px] px-2 py-1.5 text-start outline-none transition-colors hover:bg-foreground/[0.06] focus-visible:bg-foreground/[0.06]"
-              >
-                <span className="flex size-4 shrink-0 items-center justify-center">
-                  <span className={cn("size-2 rounded-full", STATUS_DOT[one])} />
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block text-[13px] text-foreground">{tStatus(`${one}.label`)}</span>
-                  <span className="block text-[11.5px] text-muted-foreground">{tStatus(`${one}.description`)}</span>
-                </span>
-                {status === one && <Check className="size-4 shrink-0 text-foreground" />}
-              </button>
-            ))}
-          </MenuExpand>
-        </MenuFold>
+      {onFloor &&
+        section(
+          "status",
+          (shown, toggle) => (
+            <MenuRow
+              icon={<span className={cn("size-2 rounded-full", STATUS_DOT[shownStatus])} />}
+              // A call sets it, and ending the call gives yours back: nothing to pick until then.
+              onClick={inCall ? undefined : toggle}
+              open={shown}
+              hint={inCall ? tStatus("in_call.description") : undefined}
+            >
+              {shown ? t("status") : tStatus(`${shownStatus}.label`)}
+            </MenuRow>
+          ),
+          STATUSES.map((one) => (
+            <button
+              key={one}
+              type="button"
+              onClick={() => {
+                setMyStatus(one);
+                close();
+              }}
+              className="flex w-full cursor-pointer items-center gap-2.5 rounded-[9px] px-2 py-1.5 text-start outline-none transition-colors hover:bg-foreground/[0.06] focus-visible:bg-foreground/[0.06]"
+            >
+              <span className="flex size-4 shrink-0 items-center justify-center">
+                <span className={cn("size-2 rounded-full", STATUS_DOT[one])} />
+              </span>
+              <span className="min-w-0 flex-1">
+                <span className="block text-[13px] text-foreground">{tStatus(`${one}.label`)}</span>
+                <span className="block text-[11.5px] text-muted-foreground">{tStatus(`${one}.description`)}</span>
+              </span>
+              {status === one && <Check className="size-4 shrink-0 text-foreground" />}
+            </button>
+          )),
+        )}
+      {!isGuest &&
+        section(
+          "note",
+          (shown, toggle) => <NoteRow note={note} open={shown} onToggle={toggle} />,
+          <NoteOptions note={note} onDone={close} />,
+        )}
+      {section(
+        "music",
+        (shown, toggle) => (
+          <MusicRow open={shown} onToggle={toggle} />
+        ),
+        <MusicOptions onDone={close} />,
       )}
-
-      {/* A note says what a status can't: what you're doing. */}
-      {!isGuest && (
-        <MenuFold shown={open === null || open === "note"}>
-          <NoteRow note={note} open={open === "note"} onToggle={() => toggle("note")} />
-          <MenuExpand open={open === "note"}>
-            <NoteOptions note={note} onDone={close} />
-          </MenuExpand>
-        </MenuFold>
-      )}
-
-      {/* Something to play while working, from Spotify; what plays shows on your card. */}
-      <MenuFold shown={open === null || open === "music"}>
-        <MusicRow open={open === "music"} onToggle={() => toggle("music")} />
-        <MenuExpand open={open === "music"}>
-          <MusicOptions onDone={close} />
-        </MenuExpand>
-      </MenuFold>
 
       <MenuSeparator />
       {isGuest ? (
@@ -174,13 +173,13 @@ export function YouMenu({
           {t("yourProfile")}
         </MenuItem>
       )}
-      {/* On a wide screen Settings is the gear on the rail, just above; a phone has no rail. */}
+      {/* A wide screen has Settings and Help on the rail; a phone has no rail. The dashboard's bar has no help dialog. */}
       {settingsHref && !wide && (
         <MenuItem icon={<Settings2 />} onSelect={() => router.push(settingsHref)}>
           {t("settings")}
         </MenuItem>
       )}
-      {helpHere && (
+      {!wide && !bar && (
         <MenuItem icon={<HelpCircle />} onSelect={() => help.open()}>
           {tHelp("title")}
         </MenuItem>

@@ -411,6 +411,13 @@ export const api = {
   setStatusNote: (status: StatusNote | null) => put<{ status: StatusNote | null }>("/me/status", { status }),
   /** What a Spotify link is, before it's shared. */
   lookUpSpotify: (url: string) => get<{ found: Omit<SpotifyShare, "until"> }>(`/spotify?url=${encodeURIComponent(url)}`),
+  /** An album's, playlist's or artist's songs, to play one at a time. */
+  spotifySongs: (url: string) => get<{ tracks: Omit<SpotifyShare, "until">[] }>(`/spotify/songs?url=${encodeURIComponent(url)}`),
+  /** What plays on after these songs (newest first), from an artist not yet heard. */
+  spotifyAfter: (songs: string[], played: string[]) =>
+    get<{ artist: string | null; tracks: Omit<SpotifyShare, "until">[] }>(
+      `/spotify/after?${new URLSearchParams([...songs.map((one) => ["song", one]), ...played.map((one) => ["played", one])])}`,
+    ),
   shareSpotify: (url: string) => put<{ spotify: SpotifyShare }>("/me/spotify", { url }),
   stopSpotify: () => del<{ spotify: null }>("/me/spotify"),
 

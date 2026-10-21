@@ -15,11 +15,6 @@ export interface SpotifyShare {
   image: string | null;
   /** Who made it, for a song, album or episode ("Pitbull"), or null. */
   subtitle: string | null;
-  /**
-   * A song's artist, as a link: what plays when the song ends, their best-known
-   * songs one after another. Only from a lookup; not kept with a share.
-   */
-  artist?: string | null;
   /** When it clears itself, in milliseconds. */
   until: number;
 }

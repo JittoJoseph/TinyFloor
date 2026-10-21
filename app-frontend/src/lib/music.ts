@@ -9,7 +9,10 @@ import { forgetPerson } from "@/lib/people";
 export type MusicItem = Omit<SpotifyShare, "until">;
 
 export interface MusicNow {
+  /** What's playing: a song, even from an album, playlist or artist, which play one song at a time. */
   item: MusicItem | null;
+  /** The album, playlist or artist it's playing from, by its link; null for a song picked on its own. */
+  from: string | null;
   playing: boolean;
   /** Picked, and Spotify's player hasn't started it yet. */
   loading: boolean;
@@ -63,7 +66,7 @@ const PAUSE_STOPS_SHARING_MS = 30_000;
 /** Spotify's previews run 30 seconds; whole songs that short are rare enough. */
 const PREVIEW_MS = { min: 25_000, max: 30_500 };
 
-let now: MusicNow = { item: null, playing: false, loading: false, preview: false };
+let now: MusicNow = { item: null, from: null, playing: false, loading: false, preview: false };
 let time: MusicTime = { position: 0, duration: 0 };
 const listeners = new Set<() => void>();
 const changed = () => listeners.forEach((listener) => listener());
@@ -144,7 +147,7 @@ function heard(update: PlaybackUpdate) {
   const playing = !update.isPaused;
   const ended = nearEnd && !playing && now.playing;
   nearEnd = playing && update.duration > 0 && update.duration - update.position < 2500;
-  if (ended && now.item?.kind === "track") void playOn(now.item);
+  if (ended && now.item?.kind === "track") void nextMusic();
   const preview = update.duration > PREVIEW_MS.min && update.duration <= PREVIEW_MS.max;
   if (playing !== now.playing || preview !== now.preview || (now.loading && (playing || update.duration > 0))) {
     setNow({ playing, preview, loading: now.loading && !playing });
@@ -154,43 +157,113 @@ function heard(update: PlaybackUpdate) {
   }
 }
 
+/** What plays as a list of songs, one at a time. */
+const LISTS: MusicItem["kind"][] = ["album", "playlist", "artist"];
+/** Songs remembered since the last pick, so what plays on doesn't repeat them. */
+const HEARD_MAX = 200;
+/** Songs asked about for what plays on, newest first. */
+const SEEDS = 5;
+
+/** The songs still to play, after the one playing. */
+let queue: MusicItem[] = [];
+/** Their album's or playlist's cover, until a song's own arrives. */
+let queueCover: string | null = null;
+/** Since the last pick: songs played, newest first, and the artists whose best-known songs played on. */
+let heardSongs: string[] = [];
+let heardArtists: string[] = [];
+/** Counts picks, so an answer that arrives after another pick is dropped. */
+let picks = 0;
+
 /**
  * Plays something, from a press: a pick, a pasted link, or Listen on someone's
- * card. What was chosen goes first in the picks next time; what played on by
- * itself doesn't.
+ * card. An album, playlist or artist plays one song at a time, so what's
+ * playing, here and on your card, is always the song. What was chosen goes
+ * first in the picks next time.
  */
-export async function playMusic(item: MusicItem, chosen = true) {
-  if (chosen) remember(item);
+export async function playMusic(item: MusicItem) {
+  remember(item);
+  const pick = ++picks;
+  queue = [];
+  heardSongs = [];
+  heardArtists = item.kind === "artist" ? [item.url] : [];
   if (item.kind === "jam") {
     // A Jam plays in Spotify; here it goes on your card for others to join.
     controller?.pause();
-    setNow({ item, playing: false, loading: false });
+    setNow({ item, from: null, playing: false, loading: false });
     share(item.url);
     return;
   }
+  if (!LISTS.includes(item.kind)) return load(item, null);
+  // Named as what was picked while its songs are asked for.
+  setNow({ item, from: item.url, loading: true, playing: false });
+  const songs = await api.spotifySongs(item.url).then(
+    ({ tracks }) => tracks,
+    () => [],
+  );
+  if (pick !== picks) return;
+  // Spotify wouldn't list them: it plays as a whole, under what was picked.
+  if (!songs.length) return load(item, item.url);
+  queue = item.kind === "playlist" ? shuffled(songs) : songs;
+  queueCover = item.image;
+  playSong(queue.shift()!, item.url);
+}
+
+/**
+ * The next song: the next in the list, or, when the list runs out, the
+ * best-known songs of an artist on the last few played who hasn't had a turn,
+ * the nearest thing to radio Spotify's player offers. It stops when there's
+ * no one new.
+ */
+export async function nextMusic() {
+  const song = queue.shift();
+  if (song) return playSong(song, now.from);
+  const pick = picks;
+  const after = await api.spotifyAfter(heardSongs.slice(0, SEEDS), heardArtists).catch(() => null);
+  if (pick !== picks || !now.item) return;
+  const fresh = after?.tracks.filter((one) => !heardSongs.includes(one.url)) ?? [];
+  if (!after?.artist || !fresh.length) {
+    controller?.pause();
+    return;
+  }
+  heardArtists.push(after.artist);
+  queue = fresh;
+  queueCover = null;
+  playSong(queue.shift()!, after.artist);
+}
+
+/** One song from a list: its name now, its own cover once Spotify gives it. */
+function playSong(song: MusicItem, from: string | null) {
+  void load({ ...song, image: song.image ?? queueCover }, from);
+  if (song.image) return;
+  void api.lookUpSpotify(song.url).then(
+    ({ found }) => {
+      if (now.item?.url === song.url && found.image) setNow({ item: { ...now.item, image: found.image } });
+    },
+    () => {},
+  );
+}
+
+/** Puts it in Spotify's player and plays it. */
+async function load(item: MusicItem, from: string | null) {
   const uri = spotifyUri(item);
   if (!uri) return;
+  if (item.kind === "track") heardSongs = [item.url, ...heardSongs.filter((one) => one !== item.url)].slice(0, HEARD_MAX);
   time = { position: 0, duration: 0 };
-  setNow({ item, loading: true, playing: false });
+  nearEnd = false;
+  setNow({ item, from, loading: true, playing: false });
   playWhenReady = true;
   const made = controller;
   if (made) made.loadUri(uri);
   else await player(uri);
 }
 
-/**
- * When a song ends, its artist's best-known songs play on, one after another,
- * the nearest thing to radio Spotify's player offers. An album or playlist
- * plays through on its own and stops at its end.
- */
-async function playOn(song: MusicItem) {
-  try {
-    const artist = song.artist ?? (await api.lookUpSpotify(song.url)).found.artist;
-    // Something else was picked meanwhile: that wins.
-    if (!artist || now.item?.url !== song.url) return;
-    const { found } = await api.lookUpSpotify(artist);
-    if (now.item?.url === song.url) void playMusic(found, false);
-  } catch {}
+function shuffled<T>(list: T[]): T[] {
+  const out = [...list];
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
 }
 
 export function toggleMusic() {
@@ -205,8 +278,10 @@ export function seekMusic(ms: number) {
 
 export function stopMusic() {
   playWhenReady = false;
+  picks++;
+  queue = [];
   controller?.pause();
-  setNow({ item: null, playing: false, loading: false });
+  setNow({ item: null, from: null, playing: false, loading: false });
   time = { position: 0, duration: 0 };
   unshare();
 }
@@ -275,7 +350,7 @@ function remember(item: MusicItem) {
   } catch {}
 }
 
-const serverNow: MusicNow = { item: null, playing: false, loading: false, preview: false };
+const serverNow: MusicNow = { item: null, from: null, playing: false, loading: false, preview: false };
 const serverTime: MusicTime = { position: 0, duration: 0 };
 
 export function useMusic(): MusicNow {

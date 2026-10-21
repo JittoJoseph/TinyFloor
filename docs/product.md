@@ -191,11 +191,19 @@ missing features on the map.
   own work playlists (Deep Focus, lofi beats, Peaceful Piano, Jazz Vibes,
   Chill Hits), with what you chose lately above them (up to 4, kept in the
   browser), so the list turns into your own as you listen.
-- **A song plays on into its artist's best-known songs** when it ends. Spotify
-  offers no radio or "up next" to anything but its own apps; the artist,
-  from the song page's `music:musician` tag, is the nearest. An album or
-  playlist plays through and stops. What plays on by itself stays out of the
-  recent list.
+- **Everything plays one song at a time, so what's playing is always a song.**
+  Signed in, Spotify's player reports only what it was given (a playlist, an
+  artist), never the song inside it. So an album, playlist or artist is
+  played from the song list its embed page shows (`__NEXT_DATA__`, up to
+  100), each song loaded on its own, playlists shuffled; the menu, the dock
+  and your card name the song, and Listen on someone's card plays that song.
+  A next button skips one.
+- **When the songs run out it plays on**, the nearest thing to radio Spotify's
+  player offers (it has no "up next" outside Spotify's apps): the
+  best-known songs of an artist on the last few played who hasn't had a turn,
+  read from the song's embed. Someone featured on a song is how it moves to a
+  new artist; it stops when there's no one new. What plays on by itself stays
+  out of the recent list.
 - **On your name tag, three small bars** while you play something, so people
   walking past on the floor see it without opening your card.
 - **Spotify's own player plays it, out of sight; our controls drive it**
@@ -209,8 +217,7 @@ missing features on the map.
 - **What plays shows on your card** (the chat card, and a Spotify button on
   the card you get walking up to someone) while it plays: shared when it
   starts, said again every 10 minutes, gone 30 seconds after a pause, and a
-  closed tab's lapses in 15. Signed in, Spotify's player reports the playlist
-  or album, not each song, so the card shows what was picked.
+  closed tab's lapses in 15.
 - **Listen plays it for you too**, in your own player, so it shows on your
   card as well. Never synced: Spotify's policy bars playing one source to many
   listeners. Listening in step is Spotify's Jam: a pasted Jam link goes on

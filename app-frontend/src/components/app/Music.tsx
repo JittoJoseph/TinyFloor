@@ -7,7 +7,18 @@ import { MenuRow } from "@/components/ui/MenuViews";
 import { spotifyLink } from "@shared/spotify";
 import { api } from "@/lib/api";
 import { useErrorMessage } from "@/lib/useErrorMessage";
-import { playMusic, recentMusic, seekMusic, stopMusic, toggleMusic, useMusic, useMusicTime, warmMusic, type MusicItem } from "@/lib/music";
+import {
+  nextMusic,
+  playMusic,
+  recentMusic,
+  seekMusic,
+  stopMusic,
+  toggleMusic,
+  useMusic,
+  useMusicTime,
+  warmMusic,
+  type MusicItem,
+} from "@/lib/music";
 import { cn } from "@/lib/utils";
 import { SpotifyMark } from "./SpotifyActivity";
 
@@ -101,17 +112,17 @@ export function MusicRow({ open, onToggle }: { open: boolean; onToggle: () => vo
  * is the row itself, so it isn't said twice.
  */
 export function MusicOptions({ onDone }: { onDone: () => void }) {
-  const { item } = useMusic();
+  const { item, from } = useMusic();
   return (
     <>
       {item && <Playing item={item} />}
-      <Picker playing={item?.url ?? null} onPlay={onDone} />
+      <Picker playing={item ? [item.url, from] : []} onPlay={onDone} />
     </>
   );
 }
 
 /** One press to play: recent plays first, then the picks, and any Spotify link pasted below. */
-function Picker({ playing, onPlay }: { playing: string | null; onPlay: () => void }) {
+function Picker({ playing, onPlay }: { playing: Array<string | null>; onPlay: () => void }) {
   const t = useTranslations("music");
   const ts = useTranslations("spotify");
   const [items, setItems] = useState<MusicItem[]>(() => recentMusic());
@@ -135,12 +146,12 @@ function Picker({ playing, onPlay }: { playing: string | null; onPlay: () => voi
     image: null,
     subtitle: null,
   }));
-  // What's playing is above, with its controls; the list is for what's next.
-  const shown = [...items, ...waiting].slice(0, ROWS).filter((one) => one.url !== playing);
+  // What's playing is above, with its controls, and so is the playlist it's from; the list is for what's next.
+  const shown = [...items, ...waiting].slice(0, ROWS).filter((one) => !playing.includes(one.url));
 
   return (
-    <div className={cn(playing && "mt-1 border-t border-foreground/[0.07] pt-1")}>
-      {playing && <p className="px-2 pb-0.5 pt-1 text-[11px] font-medium text-faint">{t("next")}</p>}
+    <div className={cn(playing.length > 0 && "mt-1 border-t border-foreground/[0.07] pt-1")}>
+      {playing.length > 0 && <p className="px-2 pb-0.5 pt-1 text-[11px] font-medium text-faint">{t("next")}</p>}
       <ul>
         {shown.map((one) => (
           <li key={one.url}>
@@ -265,6 +276,20 @@ function Playing({ item }: { item: MusicItem }) {
           </a>
         ) : (
           <Seek />
+        )}
+        {item.kind === "track" && (
+          <button
+            type="button"
+            onClick={() => void nextMusic()}
+            aria-label={t("skip")}
+            title={t("skip")}
+            className="flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/[0.08] hover:text-foreground"
+          >
+            <svg viewBox="0 0 16 16" className="size-3" fill="currentColor" aria-hidden>
+              <path d="M3 3.2v9.6a.7.7 0 0 0 1.1.6l6.6-4.8a.7.7 0 0 0 0-1.2L4.1 2.6a.7.7 0 0 0-1.1.6Z" />
+              <rect x="11.2" y="2.5" width="2" height="11" rx="0.8" />
+            </svg>
+          </button>
         )}
         {/* A square: stop, as on every player. An × would read as closing the menu. */}
         <button

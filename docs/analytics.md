@@ -161,3 +161,25 @@ for a guest (Google, or email by the sign-up page, which comes back to
 finish), makes the office and walks them into it. Watch `office_prompt_shown`
 against `office_created` with `from: demo_prompt`, and `account_signed_up`
 with `sign_in_method: google_one_tap` and `place: lobby`.
+
+## Where people struggle (21 October, last 14 days)
+
+Small numbers (198 site visitors, 91 in the app, 27 sign-ups), so read these
+as directions, not rates.
+
+- **Offices stay empty.** Of 18 offices made, 13 never had a second person
+  and 12 never opened the invite dialog. Their makers tour every tab (chat,
+  meetings, people, settings) within minutes and leave; 13 of 14 never came
+  back on another day. Most "invites sent" were the link copied on the
+  create screen, and none of those brought anyone.
+- **The demo's "Your office" page is a dead end.** 13 of 28 guests opened it
+  and almost all went straight back to the floor. Its button stays disabled
+  until a name is typed.
+- **The demo's office prompt rarely shows.** It waits for 150 seconds on the
+  floor; guests stay 106 seconds at the median, so 1 of 28 saw it.
+- **The sign-in page loses half.** 34 reached it, 18 signed up or in. Most of
+  the rest came from "Make your office" and left without pressing anything.
+- **Floors are slow to show.** `load_ms` for offices: 2.4 s median, 7.9 s
+  p90; first visits 2.8 s / 7.7 s; the Philippines' p90 is 10 s. It covers
+  the engine, the map and the room's first message, with no split between
+  them yet.

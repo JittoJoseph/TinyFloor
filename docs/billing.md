@@ -59,6 +59,11 @@ before the review. Submitted 11 October 2026.
   customer buys through Creem, so no other admin may open it. Creem's API
   doesn't expose the card or invoice files, so the billing page sends the
   payer to the portal for both.
+- **The trial is ours, not Creem's.** Creem's trials are set on the product
+  and start at checkout, so they need a card up front; ours needs none
+  (`pricing.md`), so it lives in `offices.trial_ends_at` and Creem only ever
+  sees a plain subscription. Buying during the trial starts billing that day;
+  the days left aren't carried over.
 - **Closing an office with a renewing plan is refused** until the plan is
   cancelled; otherwise Creem would keep charging for an office that's gone.
 - **Prices apply to new checkouts only.** Changing a product's price never

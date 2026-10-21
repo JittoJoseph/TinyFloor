@@ -2,39 +2,44 @@
 
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { AlertCircle, Check, CreditCard, Download, Loader2, Zap } from "@/components/ui/icons";
-import { api, type BillingDetails, type OfficeBilling, type Payment, type Plan, type PlanId } from "@/lib/api";
+import { AlertCircle, Check, CreditCard, Download, Info, Loader2 } from "@/components/ui/icons";
+import { api, type BillingDetails, type OfficeBilling, type Payment, type PlanId } from "@/lib/api";
 import { dollars, usePlans } from "@/lib/billing";
-import { Button } from "@/components/motion/button/base";
+import { FOUNDING, foundingOpen } from "@/lib/founding";
 import { Dialog } from "@/components/ui/Dialog";
 import { PlansSoon } from "@/components/ui/PlansSoon";
-import { PLAN_NAMES, PlanIncludes, ProOffer, paidPlan } from "@/components/billing/PlanCards";
+import { PLAN_NAMES, PlanIncludes, ProPrice, paidPlan } from "@/components/billing/PlanCards";
 import { usePlanChange } from "@/components/billing/usePlanChange";
 import { cn } from "@/lib/utils";
 import { useOfficeMaybe } from "./OfficeShell";
+import { Group } from "./SettingsView";
 import { SUPPORT_EMAIL } from "@/lib/site";
 
-type Asking = "cancel" | null;
+const DAY = 24 * 60 * 60 * 1000;
 
 /**
- * An office's plan and billing (docs/pricing.md): what it's on and what it
- * pays, how full it is and how much of its meeting hours are used, then Pro
- * for an office without it (on Pro, or trying it, what it includes instead),
- * the card and the next charge, and every past payment. Buying opens Creem's
- * checkout over the page; the card and the invoices are in Creem's portal, for
- * whoever pays; cancelling asks first. The plan itself only changes when Creem
- * says so.
+ * An office's plan and billing (docs/pricing.md), in the order it's looked
+ * for: anything that needs doing, as one notice; the plan the office is on,
+ * with the trial's progress or the next charge; then, for an office without a
+ * subscription, Free and Pro side by side, where both are chosen (keeping Pro,
+ * or continuing on Free after the trial); then the card and every payment.
+ * Buying opens Creem's checkout over the page; the card and the invoices are
+ * in Creem's portal, for whoever pays; cancelling asks first. The plan itself
+ * only changes when Creem says so.
  */
 export function PlanSection() {
   const t = useTranslations("billing");
+  const tp = useTranslations("billing.page");
   const tc = useTranslations("common");
   const format = useFormatter();
   const context = useOfficeMaybe();
   const catalog = usePlans();
   const [billing, setBilling] = useState<OfficeBilling | null>(null);
   const [details, setDetails] = useState<BillingDetails | null>(null);
-  const [asking, setAsking] = useState<Asking>(null);
+  const [asking, setAsking] = useState(false);
   const [staying, setStaying] = useState(false);
+  // Read once: the trial's days don't need to tick while the page is open.
+  const [now] = useState(() => Date.now());
 
   const office = context?.office;
   const admin = office?.role === "admin";
@@ -55,7 +60,7 @@ export function PlanSection() {
         const found = await api.billing(officeId).catch(() => null);
         if (found) setBilling(found);
       }
-      setAsking(null);
+      setAsking(false);
       await Promise.all([context?.refresh(), reloadDetails()]);
     },
     "billing",
@@ -78,26 +83,25 @@ export function PlanSection() {
   }, [officeId, admin, on]);
 
   if (!context || !office) return null;
+  const plans = catalog?.plans ?? [];
+  const pro = paidPlan(plans);
+  const freeSeats = plans.find((plan) => plan.price === null)?.seats ?? 3;
   const members = billing?.members ?? office.members;
   const sub = billing?.subscription ?? null;
   const trial = billing?.trial ?? null;
   const planId = (office.plan as PlanId) ?? "free";
-  const plans = catalog?.plans ?? [];
-  const current = plans.find((plan) => plan.id === planId);
-  const pro = paidPlan(plans);
+  const manage = on && admin;
+  const busy = change.busy;
   const date = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "long", year: "numeric" });
   const shortDate = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "short" });
   const money = (amount: number, currency: string) => format.number(amount / 100, { style: "currency", currency });
-  const manage = on && admin;
-  const busy = change.busy;
 
-  const hours = billing ? billing.usage.seconds / 3600 : null;
-  const allowance = billing?.meetingHours ?? current?.meetingHours ?? null;
-  const choose = (plan: Plan) => plan.id !== "free" && void change.buy(plan.id);
-  const freeSeats = plans[0]?.seats ?? 3;
-  // After the trial, the office decides here: Pro below, or settling on Free when it fits.
+  // After the trial and before a choice: the office is on Free, and decides below.
   const ended = manage && planId === "free" && !sub && !!billing?.trialEndedAt;
   const fits = members <= freeSeats;
+  const grace = billing?.graceEndsAt ?? office.graceEndsAt ?? null;
+  const hoursUsed = manage && billing && billing.usage.seconds / 3600 >= billing.meetingHours;
+
   const stayFree = async () => {
     setStaying(true);
     try {
@@ -108,242 +112,264 @@ export function PlanSection() {
     }
   };
 
-  // What the plan says for itself under its name: when it renews, or ends, or that it's free.
-  const status = (): ReactNode => {
-    if (trial) return null; // The banner below says it.
-    if (!sub) return t("freeNote", { seats: plans[0]?.seats ?? 3 });
-    if (sub.status === "past_due") return null;
-    if (sub.endsAt) return t("ends", { date: date(sub.endsAt) });
-    if (details?.nextCharge) {
-      return t("nextChargeLine", {
-        amount: money(details.nextCharge.amount, details.nextCharge.currency),
-        date: date(details.nextCharge.at),
-      });
+  // The one thing that needs doing, if anything does.
+  const notice = ((): { tone: "brand" | "alert"; title: string; body: string; action?: ReactNode } | null => {
+    if (!manage) return null;
+    if (sub?.status === "past_due") {
+      return {
+        tone: "alert",
+        title: tp("notice.pastDueTitle"),
+        body: tp("notice.pastDueBody"),
+        action: (
+          <NoticeButton busy={busy === "card"} disabled={!!busy} onClick={() => change.portal("card")}>
+            {tp("updateCard")}
+          </NoticeButton>
+        ),
+      };
     }
-    if (sub.renewsAt) return t("renews", { date: date(sub.renewsAt) });
+    if (sub?.endsAt) {
+      return {
+        tone: "brand",
+        title: tp("notice.endingTitle", { date: date(sub.endsAt) }),
+        body: tp("notice.endingBody", { free: freeSeats }),
+        action: (
+          <NoticeButton busy={busy === "resume"} disabled={!!busy} onClick={change.resume}>
+            {tp("keep")}
+          </NoticeButton>
+        ),
+      };
+    }
+    if (ended && fits) return { tone: "brand", title: tp("notice.endedTitle"), body: tp("notice.endedBody", { free: freeSeats }) };
+    if (ended && grace) {
+      return { tone: "brand", title: tp("notice.endedTitle"), body: tp("notice.graceBody", { date: date(grace), free: freeSeats }) };
+    }
+    if (planId === "free" && !sub && members > freeSeats) {
+      return { tone: "brand", title: tp("notice.overTitle", { free: freeSeats }), body: tp("notice.overBody", { members }) };
+    }
+    if (hoursUsed && billing) return { tone: "brand", title: tp("notice.hoursTitle"), body: tp("notice.hoursBody", { date: shortDate(billing.usage.resetsAt) }) };
     return null;
-  };
+  })();
+
+  // The plan card's second fact: when the trial ends, the next charge, or the price.
+  const fact = ((): { label: string; value: string } => {
+    if (trial) return { label: tp("trialEnds"), value: date(trial.endsAt) };
+    if (sub?.endsAt) return { label: tp("ends"), value: date(sub.endsAt) };
+    if (sub && details?.nextCharge) {
+      return {
+        label: tp("nextCharge"),
+        value: tp("chargeOn", { amount: money(details.nextCharge.amount, details.nextCharge.currency), date: shortDate(details.nextCharge.at) }),
+      };
+    }
+    if (sub?.renewsAt) return { label: tp("renews"), value: date(sub.renewsAt) };
+    if (sub && pro?.price) return { label: tp("price"), value: tp("perMonth", { price: dollars(pro.price) }) };
+    // On Free, what the floor holds: everyone while the grace runs, then the plan's seats.
+    return { label: tp("floor"), value: grace ? tp("floorEveryone", { date: shortDate(grace) }) : tp("floorAtOnce", { seats: office.seats }) };
+  })();
+
+  const trialDays = catalog?.trialDays || 14;
+  const subline = trial
+    ? tp("trialLine", { days: trialDays })
+    : sub && pro?.price
+      ? tp("proLine", { price: dollars(pro.price) })
+      : tp("freeLine", { seats: freeSeats });
+  const daysLeft = trial ? Math.max(0, Math.ceil((trial.endsAt - now) / DAY)) : 0;
 
   return (
-    <div className="space-y-8">
-      {/* What the office is on, what it pays, and how much of it is used. */}
+    <div className="space-y-6">
+      {notice && <Notice {...notice} />}
+
+      {/* The plan the office is on. */}
       <section className="overflow-hidden rounded-2xl border border-border bg-background">
-        <div className="flex items-start justify-between gap-4 p-5">
-          <div className="min-w-0">
-            <p className="text-[12.5px] font-medium text-muted-foreground">{t("current")}</p>
-            <p className="mt-1 flex flex-wrap items-center gap-2 text-[22px] font-semibold leading-tight tracking-tight text-foreground">
-              {PLAN_NAMES[planId] ?? office.plan}
-              {trial && <Pill tone="brand">{t("pillTrial")}</Pill>}
-              {sub?.status === "past_due" && <Pill tone="alert">{t("pillPastDue")}</Pill>}
-              {sub?.endsAt && <Pill>{t("pillEnding")}</Pill>}
-            </p>
-            {manage && status() && <p className="mt-1 text-[13px] text-muted-foreground">{status()}</p>}
-            {!on && <PlansSoon className="mt-2" />}
-          </div>
-          {current?.price && !trial ? (
-            <p className="shrink-0 text-end text-[12.5px] leading-tight text-muted-foreground">
-              <span className="block text-[20px] font-semibold tracking-tight text-foreground">{dollars(current.price)}</span>
-              {t("perMonth")}
-            </p>
-          ) : null}
+        <div className="p-5">
+          <p className="text-[12.5px] font-medium text-muted-foreground">{tp("yourPlan")}</p>
+          <h2 className="mt-1 flex flex-wrap items-center gap-2 text-[24px] font-semibold leading-tight tracking-tight text-foreground">
+            {PLAN_NAMES[planId] ?? office.plan}
+            {trial && <Pill tone="brand">{tp("pillTrial")}</Pill>}
+            {sub?.status === "past_due" && <Pill tone="alert">{tp("pillPastDue")}</Pill>}
+            {sub?.endsAt && <Pill>{tp("pillEnding")}</Pill>}
+          </h2>
+          <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">{subline}</p>
+          {!on && <PlansSoon className="mt-2" />}
+
+          {trial && (
+            // The trial as days, so how long is left reads at a glance.
+            <div className="mt-4">
+              <div className="h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden>
+                <div
+                  className="h-full rounded-full bg-brand"
+                  style={{ width: `${Math.min(100, Math.max(4, ((trialDays - daysLeft) / trialDays) * 100))}%` }}
+                />
+              </div>
+              <p className="mt-2 text-[12.5px] font-medium text-foreground">{tp("daysLeft", { count: daysLeft })}</p>
+            </div>
+          )}
         </div>
 
-        {manage && trial && (
-          <Banner tone="brand" icon={<Zap className="size-4 shrink-0 text-brand" />}>
-            <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">
-              {t("trialNote", { plan: PLAN_NAMES[trial.plan], date: shortDate(trial.endsAt), seats: plans[0]?.seats ?? 3 })}
-            </p>
-            {trial.plan !== "free" && (
-              <Button size="sm" className="h-8 shrink-0 px-3 text-[12.5px]" disabled={!!busy} onClick={() => change.buy("pro")}>
-                {busy === trial.plan && <Loader2 className="size-3.5 animate-spin" />}
-                {t("plans.keep", { plan: PLAN_NAMES[trial.plan] })}
-              </Button>
+        <dl className="grid grid-cols-2 divide-x divide-border border-t border-border rtl:divide-x-reverse">
+          <Fact label={tp("members")} value={planId === "free" && members <= office.seats ? tp("membersOf", { members, seats: office.seats }) : String(members)}>
+            {planId === "free" && <SeatBar used={members} seats={office.seats} />}
+          </Fact>
+          <Fact label={fact.label} value={fact.value} />
+        </dl>
+
+        {manage && sub && (
+          <div className="flex items-center gap-3 border-t border-border px-5 py-4">
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-muted text-muted-foreground">
+              <CreditCard className="size-4" />
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="text-[13.5px] font-medium text-foreground">{tp("paymentMethod")}</p>
+              <p className="truncate text-[12.5px] text-muted-foreground">{tp("card")}</p>
+            </div>
+            {sub.status !== "canceled" && (
+              <SmallButton busy={busy === "card"} disabled={!!busy} onClick={() => change.portal("card")}>
+                {tp("update")}
+              </SmallButton>
             )}
-          </Banner>
+          </div>
         )}
-        {ended && (fits || office.graceEndsAt) && (
-          // The text takes the row on a phone and the button drops beneath it.
-          <Banner>
-            <p className="min-w-[14rem] flex-1 text-[13px] leading-relaxed text-foreground">
-              {fits
-                ? t("endedNote", { free: freeSeats })
-                : t("graceNote", { date: shortDate(office.graceEndsAt!), free: freeSeats })}
-            </p>
-            {fits && (
-              <Button variant="secondary" size="sm" className="h-8 shrink-0 px-3 text-[12.5px]" disabled={staying} onClick={stayFree}>
-                {staying && <Loader2 className="size-3.5 animate-spin" />}
-                {t("stayFree")}
-              </Button>
-            )}
-          </Banner>
-        )}
-        {manage && sub?.status === "past_due" && (
-          <Banner icon={<AlertCircle className="size-4 shrink-0 text-destructive" />}>
-            <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">{t("pastDue")}</p>
-            <Button
-              size="sm"
-              variant="secondary"
-              className="h-8 shrink-0 px-3 text-[12.5px]"
-              disabled={!!busy}
-              onClick={() => change.portal("card")}
-            >
-              {t("updateCard")}
-            </Button>
-          </Banner>
-        )}
-        {manage && sub?.endsAt && (
-          <Banner>
-            <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">{t("endingNote", { date: date(sub.endsAt) })}</p>
-            <Button size="sm" className="h-8 shrink-0 px-3 text-[12.5px]" disabled={!!busy} onClick={change.resume}>
-              {busy === "resume" && <Loader2 className="size-3.5 animate-spin" />}
-              {t("keep")}
-            </Button>
-          </Banner>
-        )}
+
         {change.waiting && (
-          <p className="mx-5 mb-4 flex items-center gap-2 text-[13px] text-foreground">
+          <p className="flex items-center gap-2 border-t border-border px-5 py-3.5 text-[13px] text-foreground">
             {change.waiting === "now" ? <Loader2 className="size-4 animate-spin" /> : <Check className="size-4 text-ok" />}
             {change.waiting === "now" ? t("settingUp") : t("settingUpSlow")}
           </p>
         )}
-
-        {/*
-          Free's one limit is people, so it's shown as one: how many of the 3.
-          A paid office sees who's in it, not how many more it may have (docs/costs.md).
-        */}
-        <div className="border-t border-border">
-          {planId === "free" ? (
-            <Usage
-              label={t("membersLabel")}
-              value={members > office.seats ? String(members) : t("usageOf", { used: members, total: office.seats })}
-              note={
-                members > office.seats
-                  ? t("seatsOver", { seats: office.seats })
-                  : members === office.seats
-                    ? t("seatsFull")
-                    : t("seatsFree", { count: office.seats - members })
-              }
-            >
-              <SeatBar used={members} seats={office.seats} />
-            </Usage>
-          ) : (
-            <Usage label={t("membersLabel")} value={String(members)} />
-          )}
-        </div>
-        {manage && hours !== null && allowance !== null && hours >= allowance && billing && (
-          <p className="border-t border-border px-5 py-3 text-[12.5px] leading-relaxed text-muted-foreground">
-            {t("hoursUsedUp", { date: shortDate(billing.usage.resetsAt) })}
-          </p>
-        )}
-        {/* On Pro, or trying it, what it gives. */}
-        {planId === "pro" && current && (
-          <div className="border-t border-border p-5">
-            <p className="mb-3 text-[12.5px] font-medium text-muted-foreground">{t("plans.included")}</p>
-            <PlanIncludes plans={plans} />
-          </div>
-        )}
       </section>
 
-      {/* Pro, for an office on Free; a trial keeps it from the banner above. */}
-      {on && pro && planId === "free" && !sub && (
-        <div>
-          <div className="mb-3 flex items-baseline justify-between gap-3">
-            <h3 className="text-[13px] font-semibold text-foreground">{t("plans.upgradeTitle")}</h3>
-            <p className="text-[12px] text-faint">{t("plans.note")}</p>
+      {/* Free and Pro side by side, for an office without a subscription. */}
+      {on && pro?.price && !sub && (
+        <section>
+          <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+            <h3 className="text-[13px] font-semibold text-foreground">{tp("plans")}</h3>
+            <p className="text-[12px] text-faint">{tp("plansNote")}</p>
           </div>
-          <section className="rounded-2xl border border-border bg-background p-5">
-            <ProOffer plans={plans} members={members} busy={busy} disabled={!!change.waiting} canChange={manage} onChoose={choose} split />
-          </section>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {/* Pro first on a phone: it's the one with something to decide. */}
+            <PlanCard
+              className="sm:order-2"
+              highlight
+              name={PLAN_NAMES.pro}
+              pill={trial ? tp("pillYourTrial") : foundingOpen() ? tp("pillFounding") : undefined}
+              price={dollars(pro.price)}
+              per={tp("proPer")}
+              footer={
+                manage && (
+                  <>
+                    <button
+                      type="button"
+                      disabled={!!busy || !!change.waiting}
+                      onClick={() => change.buy("pro")}
+                      className="flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full bg-foreground px-4 text-[13.5px] font-medium text-background transition-[background-color,transform] hover:bg-foreground/85 active:scale-[0.99] disabled:cursor-default disabled:opacity-50"
+                    >
+                      {busy === "pro" && <Loader2 className="size-4 animate-spin" />}
+                      {trial || ended ? tp("keep") : tp("upgrade")}
+                    </button>
+                    <p className="mt-2 text-center text-[11.5px] text-muted-foreground">{t("offer.assurance")}</p>
+                  </>
+                )
+              }
+            >
+              <ProPrice price={pro.price} members={members} anchor={false} />
+              <PlanIncludes plans={plans} className="mt-4" />
+            </PlanCard>
+            <PlanCard
+              className="sm:order-1"
+              name={PLAN_NAMES.free}
+              price={dollars(0)}
+              per={tp("freePer")}
+              footer={
+                ended && fits ? (
+                  <button
+                    type="button"
+                    disabled={staying}
+                    onClick={stayFree}
+                    className="flex h-11 w-full cursor-pointer items-center justify-center gap-2 rounded-full border border-border-strong px-4 text-[13.5px] font-medium text-foreground transition-colors hover:bg-muted disabled:opacity-50"
+                  >
+                    {staying && <Loader2 className="size-4 animate-spin" />}
+                    {tp("stayFree")}
+                  </button>
+                ) : trial ? (
+                  <p className="text-[12px] leading-relaxed text-muted-foreground">{tp("afterTrial")}</p>
+                ) : (
+                  <p className="flex h-11 items-center justify-center rounded-full bg-muted text-[13.5px] font-medium text-muted-foreground">
+                    {tp("pillCurrent")}
+                  </p>
+                )
+              }
+            >
+              <ul className="space-y-2.5 text-[13.5px] text-foreground">
+                {[tp("freeSeats", { seats: freeSeats }), tp("freeEverything"), tp("freeNoCard")].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5">
+                    <span className="mt-0.5 flex size-[18px] shrink-0 items-center justify-center rounded-full bg-muted text-foreground">
+                      <Check className="size-3" strokeWidth={3} />
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </PlanCard>
+          </div>
+          {foundingOpen() && (
+            <p className="mt-3 text-[12px] leading-relaxed text-muted-foreground">
+              {t("offer.founding", {
+                price: dollars(FOUNDING.laterPrice * 100),
+                date: format.dateTime(new Date(FOUNDING.until), { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }),
+              })}
+            </p>
+          )}
           {change.error && !asking && <p className="mt-3 text-[12.5px] text-destructive">{change.error}</p>}
-        </div>
+        </section>
       )}
 
-      {/* The card and the next charge, once there is a subscription. */}
-      {manage && sub && (
-        <section>
-          <h3 className="mb-3 text-[13px] font-semibold text-foreground">{t("payment")}</h3>
-          <div className="divide-y divide-border rounded-2xl border border-border bg-background">
-            <div className="flex items-center gap-3 p-4">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-muted text-muted-foreground">
-                <CreditCard className="size-4" />
-              </span>
-              <p className="min-w-0 flex-1 truncate text-[13.5px] font-medium text-foreground">{t("cardUnknown")}</p>
-              {sub.status !== "canceled" && (
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  className="h-8 shrink-0 px-3 text-[12.5px]"
-                  disabled={!!busy}
-                  onClick={() => change.portal("card")}
-                >
-                  {busy === "card" && <Loader2 className="size-3.5 animate-spin" />}
-                  {t("update")}
-                </Button>
-              )}
-            </div>
-            <div className="flex items-center justify-between gap-3 p-4 text-[13px]">
-              <span className="text-muted-foreground">{t("nextCharge")}</span>
-              <span className="text-end font-medium tabular-nums text-foreground">
-                {details === null
-                  ? "…"
-                  : details.nextCharge
-                    ? t("chargeOn", {
-                        amount: money(details.nextCharge.amount, details.nextCharge.currency),
-                        date: shortDate(details.nextCharge.at),
-                      })
-                    : sub.endsAt
-                      ? t("noneAfter", { date: shortDate(sub.endsAt) })
-                      : "—"}
-              </span>
-            </div>
-          </div>
-        </section>
+      {/* On Pro: what it gives, as a reminder of what's paid for. */}
+      {sub && planId === "pro" && (
+        <Group title={tp("included")}>
+          <PlanIncludes plans={plans} className="p-4" />
+        </Group>
       )}
 
       {/* Every payment; the invoices are in Creem's portal. */}
       {manage && (sub || (details && details.history.length > 0)) && (
-        <section>
-          <h3 className="mb-3 text-[13px] font-semibold text-foreground">{t("history")}</h3>
+        <Group title={tp("invoices")}>
           {details === null ? (
-            <div className="h-24 animate-pulse rounded-2xl bg-muted" />
+            <div className="h-16 animate-pulse" />
           ) : details.history.length === 0 ? (
-            <p className="rounded-2xl border border-dashed border-border-strong px-4 py-6 text-center text-[12.5px] text-muted-foreground">
-              {t("noPayments")}
-            </p>
+            <p className="px-4 py-6 text-center text-[12.5px] text-muted-foreground">{tp("noInvoices")}</p>
           ) : (
-            <ul className="divide-y divide-border rounded-2xl border border-border bg-background">
-              {details.history.map((payment) => (
-                <li key={payment.id} className="flex items-center gap-3 px-4 py-3 text-[13px]">
-                  <span className="w-16 shrink-0 tabular-nums text-muted-foreground sm:w-20">{shortDate(payment.at)}</span>
-                  <span className="min-w-0 flex-1 truncate text-foreground">
-                    {payment.plan ? t("planPayment", { plan: PLAN_NAMES[payment.plan] }) : t("payment")}
-                  </span>
-                  <PaymentStatus status={payment.status} />
-                  <span className="shrink-0 text-end font-medium tabular-nums text-foreground">
-                    {money(payment.amount, payment.currency)}
-                  </span>
-                  <span className="flex w-8 shrink-0 justify-end">
-                    {payment.invoice && (
-                      <button
-                        type="button"
-                        aria-label={t("invoice")}
-                        title={t("invoice")}
-                        disabled={!!busy}
-                        onClick={() => change.portal(`invoice:${payment.id}`)}
-                        className="flex size-8 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:opacity-50"
-                      >
-                        {busy === `invoice:${payment.id}` ? <Loader2 className="size-4 animate-spin" /> : <Download className="size-4" />}
-                      </button>
-                    )}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            details.history.map((payment) => (
+              <div key={payment.id} className="flex items-center gap-3 px-4 py-3 text-[13px]">
+                <div className="min-w-0 flex-1">
+                  <p className="truncate font-medium text-foreground">
+                    {payment.plan ? tp("invoicePlan", { plan: PLAN_NAMES[payment.plan] }) : tp("invoice")}
+                  </p>
+                  <p className="text-[12px] tabular-nums text-muted-foreground">{date(payment.at)}</p>
+                </div>
+                <PaymentStatus status={payment.status} />
+                <span className="shrink-0 text-end font-medium tabular-nums text-foreground">{money(payment.amount, payment.currency)}</span>
+                <span className="flex w-8 shrink-0 justify-end">
+                  {payment.invoice && (
+                    <button
+                      type="button"
+                      aria-label={tp("download")}
+                      title={tp("download")}
+                      disabled={!!busy}
+                      onClick={() => change.portal(`invoice:${payment.id}`)}
+                      className="flex size-8 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:opacity-50"
+                    >
+                      {busy === `invoice:${payment.id}` ? <Loader2 className="size-4 animate-spin" /> : <Download className="size-4" />}
+                    </button>
+                  )}
+                </span>
+              </div>
+            ))
           )}
-        </section>
+        </Group>
       )}
 
-      {/* The rest, quietly: cancelling, and the small print. */}
+      {on && !admin && <p className="text-[12.5px] text-muted-foreground">{t("adminsOnly")}</p>}
+
+      {/* The rest, quietly: the small print, and cancelling. */}
       {manage && (
         <div className="flex flex-col gap-3 border-t border-border pt-5 sm:flex-row sm:items-start sm:justify-between">
           <p className="max-w-md text-[12px] leading-relaxed text-muted-foreground">
@@ -361,7 +387,7 @@ export function PlanSection() {
             <button
               type="button"
               disabled={!!busy}
-              onClick={() => setAsking("cancel")}
+              onClick={() => setAsking(true)}
               className="h-8 shrink-0 cursor-pointer self-start rounded-full px-3 text-[12.5px] font-medium text-muted-foreground hover:bg-muted hover:text-destructive"
             >
               {t("cancel")}
@@ -370,16 +396,14 @@ export function PlanSection() {
         </div>
       )}
 
-      {on && !admin && <p className="text-[12.5px] text-muted-foreground">{t("adminsOnly")}</p>}
-
       {/*
         Cancelling, said plainly: what the team would lose, and keeping the
         plan as the easy choice. Cancelling stays one click away; nothing is
         hidden or made hard.
       */}
       <Dialog
-        open={asking === "cancel"}
-        onClose={() => setAsking(null)}
+        open={asking}
+        onClose={() => setAsking(false)}
         title={t("cancelTitle")}
         description={sub?.renewsAt ? t("cancelWhen", { date: date(sub.renewsAt) }) : undefined}
         closeLabel={tc("close")}
@@ -394,18 +418,20 @@ export function PlanSection() {
               {busy === "cancel" && <Loader2 className="size-4 animate-spin" />}
               {t("cancelAnyway")}
             </button>
-            <Button size="sm" className="h-10 px-5" onClick={() => setAsking(null)}>
-              {t("plans.keep", { plan: PLAN_NAMES[planId] })}
-            </Button>
+            <button
+              type="button"
+              onClick={() => setAsking(false)}
+              className="h-10 cursor-pointer rounded-full bg-foreground px-5 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
+            >
+              {tp("keep")}
+            </button>
           </>
         }
       >
         <ul className="space-y-2.5 pb-2 text-[13px] leading-relaxed text-foreground">
           <li className="flex items-start gap-2.5">
             <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-foreground/40" />
-            {members > (plans[0]?.seats ?? 3)
-              ? t("loseSeatsOver", { members, free: plans[0]?.seats ?? 3 })
-              : t("loseSeats", { seats: office.seats, free: plans[0]?.seats ?? 3 })}
+            {members > freeSeats ? t("loseSeatsOver", { members, free: freeSeats }) : t("loseSeats", { seats: office.seats, free: freeSeats })}
           </li>
           <li className="flex items-start gap-2.5">
             <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-ok" />
@@ -418,53 +444,121 @@ export function PlanSection() {
   );
 }
 
-/** A note across the plan card: a trial, a card that failed, or a plan that's ending. */
-function Banner({ tone, icon, children }: { tone?: "brand"; icon?: ReactNode; children: ReactNode }) {
+/** What needs doing, above everything else: what happened, and the way to answer it. */
+function Notice({ tone, title, body, action }: { tone: "brand" | "alert"; title: string; body: string; action?: ReactNode }) {
   return (
-    <div className={cn("mx-5 mb-4 flex flex-wrap items-center gap-3 rounded-xl p-3", tone === "brand" ? "bg-muted" : "bg-muted")}>
-      {icon}
+    <div
+      role="status"
+      className={cn(
+        "flex flex-wrap items-center gap-x-3 gap-y-3 rounded-2xl border p-4",
+        tone === "alert" ? "border-destructive/25 bg-destructive/[0.06]" : "border-brand/25 bg-brand/[0.06]",
+      )}
+    >
+      <span
+        className={cn(
+          "flex size-8 shrink-0 items-center justify-center self-start rounded-full",
+          tone === "alert" ? "bg-destructive/12 text-destructive" : "bg-brand/12 text-brand",
+        )}
+      >
+        {tone === "alert" ? <AlertCircle className="size-4" /> : <Info className="size-4" />}
+      </span>
+      <div className="min-w-[12rem] flex-1">
+        <p className="text-[13.5px] font-semibold text-foreground">{title}</p>
+        <p className="mt-0.5 text-[13px] leading-relaxed text-muted-foreground">{body}</p>
+      </div>
+      {action && <div className="ms-11 shrink-0 sm:ms-0">{action}</div>}
+    </div>
+  );
+}
+
+function NoticeButton({ busy, disabled, onClick, children }: { busy: boolean; disabled: boolean; onClick: () => void; children: ReactNode }) {
+  return (
+    <button
+      type="button"
+      disabled={disabled}
+      onClick={onClick}
+      className="flex h-9 cursor-pointer items-center gap-1.5 rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85 disabled:opacity-50"
+    >
+      {busy && <Loader2 className="size-3.5 animate-spin" />}
+      {children}
+    </button>
+  );
+}
+
+function SmallButton({ busy, disabled, onClick, children }: { busy: boolean; disabled: boolean; onClick: () => void; children: ReactNode }) {
+  return (
+    <button
+      type="button"
+      disabled={disabled}
+      onClick={onClick}
+      className="flex h-8 shrink-0 cursor-pointer items-center gap-1.5 rounded-full border border-border-strong px-3 text-[12.5px] font-medium text-foreground transition-colors hover:bg-muted disabled:opacity-50"
+    >
+      {busy && <Loader2 className="size-3.5 animate-spin" />}
+      {children}
+    </button>
+  );
+}
+
+/** One fact about the plan, in the row under it. */
+function Fact({ label, value, children }: { label: string; value: string; children?: ReactNode }) {
+  return (
+    <div className="min-w-0 px-5 py-4">
+      <dt className="text-[12px] font-medium text-muted-foreground">{label}</dt>
+      <dd className="mt-1 truncate text-[14px] font-semibold tabular-nums text-foreground">{value}</dd>
       {children}
     </div>
   );
 }
 
-/** One of the plan's limits: how much of it is used, a meter, and a line under it. */
-function Usage({
-  label,
-  value,
-  note,
+/** A plan to choose: its name and price, what it gives, and its button at the foot. */
+function PlanCard({
+  name,
+  pill,
+  price,
+  per,
+  highlight,
+  footer,
   className,
   children,
 }: {
-  label: string;
-  value: string;
-  note?: string;
+  name: string;
+  pill?: string;
+  price: string;
+  per: string;
+  highlight?: boolean;
+  footer?: ReactNode;
   className?: string;
-  children?: ReactNode;
+  children: ReactNode;
 }) {
   return (
-    <div className={cn("p-5", className)}>
-      <div className="flex items-baseline justify-between gap-3">
-        <p className="text-[12.5px] font-medium text-muted-foreground">{label}</p>
-        <p className="text-[13.5px] font-medium tabular-nums text-foreground">{value}</p>
-      </div>
-      {children}
-      {note && <p className="mt-2 text-[12px] text-faint">{note}</p>}
+    <div
+      className={cn(
+        "flex flex-col rounded-2xl border bg-background p-5",
+        highlight ? "border-foreground/80 shadow-[0_1px_2px_rgb(0_0_0/0.06),0_8px_24px_-12px_rgb(0_0_0/0.2)]" : "border-border",
+        className,
+      )}
+    >
+      <p className="flex items-center gap-2 text-[14px] font-semibold text-foreground">
+        {name}
+        {pill && <Pill tone={highlight ? "brand" : undefined}>{pill}</Pill>}
+      </p>
+      <p className="mt-3 flex flex-wrap items-baseline gap-x-1.5">
+        <span className="text-[30px] font-semibold leading-none tabular-nums tracking-[-0.03em] text-foreground">{price}</span>
+        <span className="text-[12.5px] text-muted-foreground">{per}</span>
+      </p>
+      <div className="mt-3 flex-1">{children}</div>
+      {footer && <div className="mt-5">{footer}</div>}
     </div>
   );
 }
 
-/** A word beside the plan's name: on trial, its card failed, or it's ending. */
+/** A word beside a plan's name: on trial, its card failed, ending, current. */
 function Pill({ tone, children }: { tone?: "alert" | "brand"; children: ReactNode }) {
   return (
     <span
       className={cn(
-        "rounded-full px-2 py-0.5 text-[11.5px] font-semibold tracking-normal",
-        tone === "alert"
-          ? "bg-destructive/10 text-destructive"
-          : tone === "brand"
-            ? "bg-brand/15 text-brand"
-            : "bg-muted text-muted-foreground",
+        "rounded-full px-2 py-0.5 text-[11px] font-semibold tracking-normal",
+        tone === "alert" ? "bg-destructive/10 text-destructive" : tone === "brand" ? "bg-brand/12 text-brand" : "bg-muted text-muted-foreground",
       )}
     >
       {children}
@@ -487,26 +581,17 @@ function PaymentStatus({ status }: { status: Payment["status"] }) {
   );
 }
 
-export function Bar({ share }: { share: number }) {
-  return (
-    <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden>
-      <div
-        className="h-full rounded-full bg-foreground transition-[width] duration-500"
-        style={{ width: `${Math.min(100, Math.max(share > 0 ? 2 : 0, share * 100))}%` }}
-      />
-    </div>
-  );
-}
-
 /** One segment a seat while they're countable, a bar once they aren't. */
 function SeatBar({ used, seats }: { used: number; seats: number }) {
   return seats <= 25 ? (
-    <div className="mt-3 flex gap-1" aria-hidden>
+    <div className="mt-2.5 flex gap-1" aria-hidden>
       {Array.from({ length: seats }, (_, index) => (
         <span key={index} className={cn("h-1.5 flex-1 rounded-full", index < used ? "bg-foreground" : "bg-muted")} />
       ))}
     </div>
   ) : (
-    <Bar share={used / seats} />
+    <div className="mt-2.5 h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden>
+      <div className="h-full rounded-full bg-foreground" style={{ width: `${Math.min(100, (used / seats) * 100)}%` }} />
+    </div>
   );
 }

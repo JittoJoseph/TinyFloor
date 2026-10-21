@@ -13,7 +13,7 @@ export const PLAN_NAMES: Record<PlanId, string> = { free: "Free", pro: "Pro" };
 /** The one paid plan (docs/pricing.md), from the catalog. */
 export const paidPlan = (plans: Plan[]) => plans.find((plan) => plan.price !== null);
 
-/** What a per-person tool charges a person (Gather's $12, docs/pricing.md's survey), for the comparison. */
+/** What a per-person tool typically charges a person (docs/pricing.md's survey), for the comparison. */
 const PER_SEAT = 1200;
 
 /**
@@ -34,7 +34,6 @@ export function ProOffer({
   disabled,
   canChange,
   onChoose,
-  split,
   className,
 }: {
   plans: Plan[];
@@ -46,8 +45,6 @@ export function ProOffer({
   disabled?: boolean;
   canChange: boolean;
   onChoose: (plan: Plan) => void;
-  /** Price and button beside the list, for a wide page; stacked otherwise. */
-  split?: boolean;
   className?: string;
 }) {
   const t = useTranslations("billing.offer");
@@ -55,14 +52,9 @@ export function ProOffer({
   const pro = paidPlan(plans);
   if (!pro?.price) return null;
   const price = pro.price;
-  const cents = (amount: number) => `$${(Math.ceil(amount) / 100).toFixed(2)}`;
-  const each =
-    members >= 2
-      ? t("each", { count: members, price: cents(price / members) })
-      : t("daily", { price: dollars(Math.ceil(price / 30 / 100) * 100) });
 
   return (
-    <div className={cn("grid gap-5", split && "sm:grid-cols-[minmax(0,15rem)_minmax(0,1fr)] sm:gap-8", className)}>
+    <div className={cn("grid gap-5", className)}>
       <div className="min-w-0">
         <div className="rounded-2xl bg-muted/70 p-4">
           <p className="flex items-center gap-2 text-[13px] font-semibold text-foreground">
@@ -75,10 +67,7 @@ export function ProOffer({
             <span className="text-[32px] font-semibold leading-none tabular-nums tracking-[-0.03em] text-foreground">{dollars(price)}</span>
             <span className="text-[12.5px] text-muted-foreground">{t("perMonth")}</span>
           </p>
-          <p className="mt-3 text-[12.5px] leading-relaxed text-foreground">{each}</p>
-          {members >= 4 && (
-            <p className="mt-1 text-[12px] leading-relaxed text-muted-foreground">{t("anchor", { price: dollars(PER_SEAT * members) })}</p>
-          )}
+          <ProPrice price={price} members={members} className="mt-3" />
           {foundingOpen() && (
             <p className="mt-3 border-t border-foreground/[0.07] pt-3 text-[12px] leading-relaxed text-muted-foreground">
               {t("founding", {
@@ -88,16 +77,35 @@ export function ProOffer({
             </p>
           )}
         </div>
-        {canChange && split && (
-          <OfferButton price={price} trial={trial} busy={busy === pro.id} disabled={disabled || !!busy} onClick={() => onChoose(pro)} />
-        )}
       </div>
       <div className="min-w-0">
         <PlanIncludes plans={plans} />
-        {canChange && !split && (
+        {canChange && (
           <OfferButton price={price} trial={trial} busy={busy === pro.id} disabled={disabled || !!busy} onClick={() => onChoose(pro)} />
         )}
       </div>
+    </div>
+  );
+}
+
+/**
+ * Pro's price in this team's terms: what it comes to for each of them (or a
+ * day, for one person), and for a team of four or more, what per-person tools
+ * would charge it (unless `anchor` is off, where the page is already long).
+ */
+export function ProPrice({ price, members, anchor = true, className }: { price: number; members: number; anchor?: boolean; className?: string }) {
+  const t = useTranslations("billing.offer");
+  const cents = (amount: number) => `$${(Math.ceil(amount) / 100).toFixed(2)}`;
+  return (
+    <div className={className}>
+      <p className="text-[12.5px] leading-relaxed text-foreground">
+        {members >= 2
+          ? t("each", { count: members, price: cents(price / members) })
+          : t("daily", { price: dollars(Math.ceil(price / 30 / 100) * 100) })}
+      </p>
+      {anchor && members >= 4 && (
+        <p className="mt-1 text-[12px] leading-relaxed text-muted-foreground">{t("anchor", { price: dollars(PER_SEAT * members) })}</p>
+      )}
     </div>
   );
 }

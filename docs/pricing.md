@@ -87,6 +87,13 @@ ask Creem first.
   Admins' and members' lines differ on purpose: the admin pays, the team
   asks. Limits are said as room ("Free has room for 3 at a time"), never as
   what's withheld.
+- **The plan page decides, in one place.** Anything that needs doing comes
+  first as one notice (trial ended, card failed, plan ending). Then the plan
+  the office is on, with the trial's days as a bar and two facts under it.
+  Then Free and Pro side by side, equal height, Pro marked and first on a
+  phone: "Keep Pro" and "Continue on Free" are the two answers to the end of
+  a trial, so they sit as two plans, not a button and a footnote. On Pro, the
+  card, what's included and invoices instead.
 - **No card for the trial.** A card-up-front trial converts more of its
   trials, but forgotten charges come back as refunds and chargebacks; Creem
   charges for disputes, can close a store with many, and reviews stores for

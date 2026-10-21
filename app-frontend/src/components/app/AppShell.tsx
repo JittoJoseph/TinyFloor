@@ -1,7 +1,18 @@
 "use client";
 
 import { HelpCircle, ICON_STROKE } from "@/components/ui/icons";
-import { cloneElement, createContext, isValidElement, useCallback, useContext, useEffect, useId, useState, type ReactElement, type ReactNode } from "react";
+import {
+  cloneElement,
+  createContext,
+  isValidElement,
+  useCallback,
+  useContext,
+  useEffect,
+  useId,
+  useState,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
@@ -20,6 +31,10 @@ import { HELP_TRIGGER, HelpCompose } from "./HelpCompose";
  * the rail leaves you out, so your own face is never shown twice side by side.
  */
 const DockContext = createContext<((shown: boolean) => void) | null>(null);
+
+/** The panel beside the rail, for a menu from the rail to open in its corner. */
+const FrameContext = createContext<HTMLElement | null>(null);
+export const useShellFrame = () => useContext(FrameContext);
 
 /** Called by the presence dock: while it is mounted, it holds you. */
 export function useDockHoldsYou() {
@@ -77,6 +92,7 @@ export function AppShell({
   const reduce = useReducedMotion();
   const [docks, setDocks] = useState(0);
   const report = useCallback((shown: boolean) => setDocks((count) => count + (shown ? 1 : -1)), []);
+  const [frame, setFrame] = useState<HTMLElement | null>(null);
   // A view laid over the floor hides it completely, so the floor stops drawing.
   const floorShown = destinations.find((one) => one.key === "floor")?.active ?? true;
   useEffect(() => {
@@ -85,55 +101,60 @@ export function AppShell({
   }, [floorShown]);
   return (
     <DockContext.Provider value={report}>
-      <div className="fixed inset-0 flex flex-col bg-rail text-foreground md:flex-row [--face-ring:var(--ui-rail)]">
-        <nav className="relative hidden w-[72px] shrink-0 flex-col items-center py-3 md:flex">
-          <div className="mb-2">{mark}</div>
-          <span aria-hidden className="mb-2 h-px w-8 bg-border" />
-          <div className="flex w-full flex-col items-center gap-1.5">
-            {destinations.map((one) => (
-              <RailItem key={one.key} destination={one} indicator={indicator} />
-            ))}
-          </div>
-          <div className="mt-auto flex w-full flex-col items-center gap-2">
-            <HelpRailButton />
-            {leave && (
-              <RailItem
-                destination={{ key: "leave", href: leave.href, label: leave.label, icon: RailIcons.leave, active: false }}
-                indicator={indicator}
-                quiet
-              />
-            )}
-            {settings && <RailItem destination={settings} indicator={indicator} quiet />}
-            <AnimatePresence initial={false}>
-              {docks === 0 && (
-                <motion.div
-                  key="you"
-                  initial={reduce ? false : { opacity: 0, scale: 0.6, height: 0 }}
-                  animate={{ opacity: 1, scale: 1, height: "auto" }}
-                  exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.6, height: 0 }}
-                  transition={SPRING_LAYOUT}
-                  className="pt-1"
-                >
-                  {you}
-                </motion.div>
+      <FrameContext.Provider value={frame}>
+        <div className="fixed inset-0 flex flex-col bg-rail text-foreground md:flex-row [--face-ring:var(--ui-rail)]">
+          <nav className="relative hidden w-[72px] shrink-0 flex-col items-center py-3 md:flex">
+            <div className="mb-2">{mark}</div>
+            <span aria-hidden className="mb-2 h-px w-8 bg-border" />
+            <div className="flex w-full flex-col items-center gap-1.5">
+              {destinations.map((one) => (
+                <RailItem key={one.key} destination={one} indicator={indicator} />
+              ))}
+            </div>
+            <div className="mt-auto flex w-full flex-col items-center gap-2">
+              <HelpRailButton />
+              {leave && (
+                <RailItem
+                  destination={{ key: "leave", href: leave.href, label: leave.label, icon: RailIcons.leave, active: false }}
+                  indicator={indicator}
+                  quiet
+                />
               )}
-            </AnimatePresence>
-          </div>
-        </nav>
+              {settings && <RailItem destination={settings} indicator={indicator} quiet />}
+              <AnimatePresence initial={false}>
+                {docks === 0 && (
+                  <motion.div
+                    key="you"
+                    initial={reduce ? false : { opacity: 0, scale: 0.6, height: 0 }}
+                    animate={{ opacity: 1, scale: 1, height: "auto" }}
+                    exit={reduce ? { opacity: 0 } : { opacity: 0, scale: 0.6, height: 0 }}
+                    transition={SPRING_LAYOUT}
+                    className="pt-1"
+                  >
+                    {you}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </nav>
 
-        <main className="relative min-h-0 min-w-0 flex-1 overflow-hidden bg-card [--face-ring:var(--ui-card)] md:my-2 md:me-2 md:rounded-[18px] md:border md:border-border md:shadow-[0_1px_2px_rgb(0_0_0/0.04)]">
-          {floor}
-          {children}
-        </main>
+          <main
+            ref={setFrame}
+            className="relative min-h-0 min-w-0 flex-1 overflow-hidden bg-card [--face-ring:var(--ui-card)] md:my-2 md:me-2 md:rounded-[18px] md:border md:border-border md:shadow-[0_1px_2px_rgb(0_0_0/0.04)]"
+          >
+            {floor}
+            {children}
+          </main>
 
-        {/* Phones: the same places along the bottom, where a thumb is. */}
-        <nav className="flex shrink-0 items-stretch justify-around border-t border-border bg-rail px-1 pb-[max(env(safe-area-inset-bottom),0.25rem)] pt-1.5 md:hidden">
-          {destinations.map((one) => (
-            <BarItem key={one.key} destination={one} indicator={`${indicator}-bar`} />
-          ))}
-          <div className="flex min-w-14 flex-1 items-center justify-center">{you}</div>
-        </nav>
-      </div>
+          {/* Phones: the same places along the bottom, where a thumb is. */}
+          <nav className="flex shrink-0 items-stretch justify-around border-t border-border bg-rail px-1 pb-[max(env(safe-area-inset-bottom),0.25rem)] pt-1.5 md:hidden">
+            {destinations.map((one) => (
+              <BarItem key={one.key} destination={one} indicator={`${indicator}-bar`} />
+            ))}
+            <div className="flex min-w-14 flex-1 items-center justify-center">{you}</div>
+          </nav>
+        </div>
+      </FrameContext.Provider>
       <HelpCompose />
     </DockContext.Provider>
   );
@@ -222,7 +243,9 @@ function HelpRailButton() {
         <span
           className={cn(
             "relative flex size-10 items-center justify-center rounded-[12px] transition-[background-color,color,transform] duration-150 group-focus-visible:ring-2 group-focus-visible:ring-ring group-active:scale-95",
-            composing ? "bg-foreground/[0.08] text-foreground" : "text-muted-foreground group-hover:bg-foreground/[0.06] group-hover:text-foreground",
+            composing
+              ? "bg-foreground/[0.08] text-foreground"
+              : "text-muted-foreground group-hover:bg-foreground/[0.06] group-hover:text-foreground",
           )}
         >
           <Icon icon={<HelpCircle />} active={composing} />
@@ -260,9 +283,7 @@ function BarItem({ destination, indicator }: { destination: ShellDestination; in
         {dot && !badge && <span className="absolute end-3 top-1 size-2 rounded-full bg-brand ring-2 ring-rail" />}
         {!!live && !badge && <LiveBadge count={live} bar />}
       </span>
-      <span className={cn("text-[11px] leading-none", active ? "font-semibold text-foreground" : "text-muted-foreground")}>
-        {label}
-      </span>
+      <span className={cn("text-[11px] leading-none", active ? "font-semibold text-foreground" : "text-muted-foreground")}>{label}</span>
     </Link>
   );
 }

@@ -12,6 +12,7 @@ import { useWide } from "@/lib/hooks/use-wide";
 import { usePlans } from "@/lib/billing";
 import { useUpgrade } from "@/components/billing/Upgrade";
 import { useInvite } from "./Invite";
+import { useShellFrame } from "./AppShell";
 import { PLAN_NAMES } from "@/components/billing/PlanCards";
 import type { PlanId } from "@/lib/api";
 
@@ -28,6 +29,7 @@ export function OfficeSwitcher({ office }: { office: Office }) {
   const tSettings = useTranslations("office.settings");
   const router = useRouter();
   const wide = useWide();
+  const frame = useShellFrame();
   const [offices, setOffices] = useState<OfficeSummary[]>([]);
   const asked = useRef(false);
 
@@ -54,9 +56,8 @@ export function OfficeSwitcher({ office }: { office: Office }) {
 
   return (
     <Menu
-      side={wide ? "right" : "bottom"}
       align="start"
-      offset={wide ? 16 : 8}
+      within={wide ? frame : undefined}
       width={264}
       trigger={
         <button

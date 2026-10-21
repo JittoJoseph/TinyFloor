@@ -38,18 +38,17 @@ Measured on 16 October 2026 (English, words a reader sees):
   October it stopped after 11, then after 2 more, then took one at 07:00 UTC
   and stopped again. It behaves like a rolling 24 hours, so space requests
   through the day. Pages beyond that wait for the sitemap and the next crawl.
-- **Still to request in Search Console:** `/ko`
-  `/gather-alternative`, and `/de`, `/fr`, `/it`, `/ja`, `/ko`
-  `/guides/gather-pricing`; then the pages translated on 16 October, most
-  searched first: `/gather-alternative` and `/guides/gather-pricing` in nl,
-  pl, sv, da, no, fi, ru, ar, he, zh, and `/virtual-office` and
-  `/discord-for-work` in all 17 other languages; then the alternative pages
-  rewritten on 16 October (Kumospace, WorkAdventure, Teamflow, Roam, Sococo,
-  oVice, SpatialChat, Slack huddles, Gather vs Kumospace) and the use-case and
-  team pages given articles on 16 October. Requested on 16 October: the
-  English Gather guide, round-up, icebreaker tool, virtual office, Discord for
-  work and pricing pages, the Portuguese and Spanish Gather pages, and the
-  German, French, Italian and Japanese round-ups.
+- **Still to request in Search Console:** the main alternative page in
+  Korean, and the competitor pricing guide in German, French, Italian,
+  Japanese and Korean; then the pages translated on 16 October, most
+  searched first: those two pages in nl, pl, sv, da, no, fi, ru, ar, he, zh,
+  and `/virtual-office` and `/discord-for-work` in all 17 other languages;
+  then the other alternative and "X vs Y" pages rewritten on 16 October and
+  the use-case and team pages given articles on 16 October. Requested on 16
+  October: the English competitor pricing guide, round-up, icebreaker tool,
+  virtual office, Discord for work and pricing pages, the Portuguese and
+  Spanish alternative and pricing guide pages, and the German, French,
+  Italian and Japanese round-ups.
 - Every updated page went to Bing and the other IndexNow engines on 16 October
   (`pnpm run indexnow <path…>` from `marketing-frontend`, by hand: deploys
   don't run it). Under Git Bash,

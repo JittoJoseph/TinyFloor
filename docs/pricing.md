@@ -29,7 +29,6 @@ So the customer is **a team of 4 to 10**, and the plan is built for them.
 
 | Product | Free | Paid | Counted by |
 |---|---|---|---|
-| Gather | 30-day trial | $12 | member |
 | Kumospace | 5 members | $16, minimum 5 | member |
 | SoWork | 10 members, 30-min meetings | $5.40 / $12 | member |
 | WorkAdventure | 10 online at once | from €8 | person online |
@@ -39,7 +38,7 @@ So the customer is **a team of 4 to 10**, and the plan is built for them.
 | Linear | 250 issues | $10 / $16 | member |
 
 Everyone in the category charges per person: a team of 10 pays $54 at the
-cheapest and $120–160 at Gather or Kumospace. Nobody sells a flat price for a
+cheapest and $120–160 at the best-known ones. Nobody sells a flat price for a
 team, so that's the pitch.
 
 The per-person products all soften the per-invite tax: Slack charges only
@@ -52,7 +51,7 @@ ask Creem first.
 
 ## Why each part is the way it is
 
-- **$29.** About a third of what a six-person team pays Gather, more than
+- **$29.** About a third of what a six-person team pays per person elsewhere, more than
   per-person would earn from the 4–8 people who actually buy, and still a
   card purchase nobody needs approval for. $19 was below the ~$20 a team lead
   pays without asking; $29 earned more without crossing anything.

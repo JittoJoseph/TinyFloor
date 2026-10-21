@@ -5,16 +5,16 @@ assistants themselves, October 2026.
 
 ## What people search, and what to ignore
 
-- **Category searches are mostly brand names.** Gather gets ~23K search
-  visits a month, two thirds of it "gather"; its `/virtual-office` page gets
-  about 117.
+- **Category searches are mostly brand names.** The best-known product's
+  search traffic is mostly its own name; its virtual office page gets about
+  117 visits a month.
 - **The searches worth having are specific:** "<competitor> alternative",
-  "X vs Y", "gather town pricing", "best virtual office software" (many
+  "X vs Y", "<competitor> pricing", "best virtual office software" (many
   variants, several of them questions people type into assistants), and how
-  to run a remote team. People still say "Gather Town", so the Gather page
-  names it.
+  to run a remote team. Pages name a product the way people search it, old
+  names included.
 - **Competitors' traffic comes from guides, not product pages.** 97% of
-  Kumospace's is one game-night post; Gather's non-brand traffic is "virtual
+  Kumospace's is one game-night post; others get theirs from "virtual
   team building activities" and "games for virtual meetings". Their links
   come the same way.
 - **Traffic isn't the goal.** Our first clicks came from a study-room page in
@@ -34,7 +34,7 @@ Leave alone:
 
 Google: 65 clicks and 1,060 impressions in 28 days, average position 25.
 Pages rank for niche queries ("wonder me alternative", 8) but far down for the
-ones that matter ("gather town alternative", 57). That's authority, not the
+ones that matter (the biggest "<competitor> alternative" search, 57). That's authority, not the
 pages: Domain Rating 2.5, and the ~700 "linking sites" are spam directories
 that link to every new domain.
 
@@ -48,7 +48,7 @@ when asked about a product by name does it read that product's site.
 Measured on 7 October 2026:
 
 - For category questions, all four put SoWork first. Twelve of Perplexity's
-  24 sources were SoWork's own blog posts ("Best Gather alternatives 2026"),
+  24 sources were SoWork's own "best alternatives" blog posts,
   and Google's AI Mode repeated SoWork's line almost word for word. The rest
   were vendor lists, G2, Product Hunt's alternatives page, and an old Reddit
   thread. TinyFloor was in none.
@@ -69,7 +69,7 @@ and Wikidata (SoWork has none and is recommended everywhere).
 So what moves it: being on the pages that get retrieved (G2, AlternativeTo,
 Product Hunt, SaaSHub, Toolradar, vendor "best of" lists, Reddit, LinkedIn
 articles, which rank on Bing), pages in the format that wins ("best virtual
-office software", "Gather pricing"), and links, which also get us into
+office software", "<competitor> pricing"), and links, which also get us into
 Common Crawl. The README matters too: assistants that read GitHub describe
 what the README says first.
 
@@ -148,29 +148,20 @@ What the impressions are, by intent:
 | Intent | Impressions | Where we rank | Worth it? |
 |---|---|---|---|
 | Proximity chat (what it means) | ~350, guide ~500 | 7–9, no clicks | No: gamers. |
-| Gather and other alternatives, "X vs Y" | ~300 | 40–60 | Yes, but it's authority, not the pages. |
-| **Gather's price** ("gather pricing", "gather cost", "gather 料金", "gather planos") | small | **6–9** | **Yes: the one buyer search we already win.** |
+| Competitor alternatives, "X vs Y" | ~300 | 40–60 | Yes, but it's authority, not the pages. |
+| **A competitor's price** ("<competitor> pricing", "cost", "料金", "planos") | small | **6–9** | **Yes: the one buyer search we already win.** |
 | Virtual office (free, online, app) | ~250 | 27–80 | Mostly address-seekers and "free". |
 | Team-building activities and games | ~200 | 60–90 | No: one-off HR searches. |
 | Online study room | ~300, most of the clicks | 7–22 | No (students; the page redirects). |
 | Wonder.me alternative | ~70 | 13 | Little: Wonder.me closed in April 2023 and served events. |
 
 Who made offices: people arriving from GitHub (the README), ChatGPT, and
-Google on the Kumospace and Gather alternative pages and the virtual office
-page, from Brazil, India, Korea, Indonesia, the US and Germany. Search
+Google on the alternative pages and the virtual office page, from Brazil, India, Korea, Indonesia, the US and Germany. Search
 impressions lean to the US (682) and UK (236), but there we rank 37 and 55;
 the clicks come from Japan, Brazil, India and Italy.
 
 What's happening outside:
 
-- **Gather ended its free plan on 15 September 2025**: every office now pays
-  $12 a member a month yearly, $15 monthly. A team of 8 pays $96–120 a month
-  where it used to pay nothing. Reviewers in Brazil and Europe complain most.
-  Yearly plans locked in at the old $5.95 ran until September 2026, so many
-  teams meet the new price at this year's renewal (Gather's help center).
-- **Gather's buyers are small tech teams.** About 74% of its G2 reviewers
-  work at 50 people or fewer; Computer Software 26%, IT services 20%,
-  Marketing and Advertising 8%, Consulting 5%.
 - **Small teams use Discord voice channels as an office** (dev teams, agencies,
   a Japanese consultancy that went remote on it): cheap, drop-in, good audio,
   but built for gamers. Our "Discord for work" page ranks 8.
@@ -184,7 +175,7 @@ What's happening outside:
   camera on.
 
 So the audience: **a remote team of 4 to 15, mostly in software, agencies or
-consulting, often outside the US, that either lost Gather's free plan,
+consulting, often outside the US, that either lost a free plan elsewhere,
 already hangs out in a Discord voice channel, or has outgrown a 5–10 person
 free tier.** Not students, gamers, event hosts or anyone after an address.
 
@@ -202,7 +193,7 @@ sales pages. So:
   table, worked examples, what to do when it doesn't fit), an FAQ, a "how we
   checked" note and a last-checked date. No block shared across pages.
 - **Alternatives as round-ups**, not one-against-one sales pages: "the best
-  Gather alternatives in 2026", several products reviewed with TinyFloor
+  <competitor> alternatives in 2026", several products reviewed with TinyFloor
   among them, how we compared them, and an FAQ. Say honestly what each does
   better.
 - **One free tool that answers one concrete question** a remote team lead
@@ -225,9 +216,9 @@ average position 25 (property `sc-domain:tinyfloor.com`, under the second
 Google account in the team's Chrome). PostHog, 30 days: Google now sends the
 most visitors (315 people), then direct (237) and GitHub (62). The pages
 with impressions are the proximity chat guide (position 8, gamers), the
-virtual office page (43), the team building guide (77), the Gather
-alternative (38), the best virtual office software guide (29), Gather
-pricing (10) and games for virtual meetings (15).
+virtual office page (43), the team building guide (77), the main
+alternative page (38), the best virtual office software guide (29), the
+competitor pricing guide (10) and games for virtual meetings (15).
 
 More free tools, chosen from Ahrefs' free keyword tool (US, rough bands)
 for demand, ease and who searches:

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { AlertCircle, Check, CreditCard, Download, Info, Loader2, Office, Zap } from "@/components/ui/icons";
+import { AlertCircle, Check, CreditCard, Download, Info, Loader2 } from "@/components/ui/icons";
 import { api, type BillingDetails, type OfficeBilling, type Payment } from "@/lib/api";
 import { dollars, usePlans } from "@/lib/billing";
 import { FOUNDING, foundingOpen } from "@/lib/founding";
@@ -171,26 +171,16 @@ export function PlanSection() {
 
       {/* The plan the office is on: its name and where it stands, then its facts as rows. */}
       <section className="overflow-hidden rounded-2xl border border-border bg-background">
-        <div className="flex items-center gap-3.5 p-5">
-          <span
-            className={cn(
-              "flex size-11 shrink-0 items-center justify-center rounded-xl",
-              onPro ? "bg-brand/12 text-brand" : "bg-muted text-muted-foreground",
-            )}
-          >
-            {onPro ? <Zap className="size-5" /> : <Office className="size-5" />}
-          </span>
-          <div className="min-w-0 flex-1">
-            <h2 className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[18px] font-semibold leading-tight tracking-tight text-foreground">
-              {onPro ? PLAN_NAMES.pro : PLAN_NAMES.free}
-              {trial && <Pill tone="brand">{tp("pillTrial")}</Pill>}
-              {unpaid && <Pill tone="brand">{tp("pillBilling")}</Pill>}
-              {sub?.status === "past_due" && <Pill tone="alert">{tp("pillPastDue")}</Pill>}
-              {sub?.endsAt && <Pill>{tp("pillEnding")}</Pill>}
-            </h2>
-            <p className="mt-0.5 text-[13px] text-muted-foreground">{status}</p>
-            {!on && <PlansSoon className="mt-2" />}
-          </div>
+        <div className="p-5">
+          <h2 className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[20px] font-semibold leading-tight tracking-tight text-foreground">
+            {onPro ? PLAN_NAMES.pro : PLAN_NAMES.free}
+            {trial && <Pill tone="brand">{tp("pillTrial")}</Pill>}
+            {unpaid && <Pill tone="brand">{tp("pillBilling")}</Pill>}
+            {sub?.status === "past_due" && <Pill tone="alert">{tp("pillPastDue")}</Pill>}
+            {sub?.endsAt && <Pill>{tp("pillEnding")}</Pill>}
+          </h2>
+          <p className="mt-1 text-[13px] text-muted-foreground">{status}</p>
+          {!on && <PlansSoon className="mt-2" />}
         </div>
         {trial && (
           // The trial as days, so how long is left reads at a glance.
@@ -250,12 +240,9 @@ export function PlanSection() {
               per={tp("proPer")}
               footer={
                 manage && (
-                  <>
-                    <SolidButton busy={busy === "pro"} disabled={!!busy || !!change.waiting} onClick={() => change.buy("pro")}>
-                      {onPro ? tp("updateBilling") : tp("upgrade")}
-                    </SolidButton>
-                    <p className="mt-2 text-center text-[11.5px] text-muted-foreground">{t("offer.assurance")}</p>
-                  </>
+                  <SolidButton busy={busy === "pro"} disabled={!!busy || !!change.waiting} onClick={() => change.buy("pro")}>
+                    {onPro ? tp("updateBilling") : tp("upgrade")}
+                  </SolidButton>
                 )
               }
             >
@@ -340,11 +327,11 @@ export function PlanSection() {
 
       {on && !admin && <p className="text-[12.5px] text-muted-foreground">{t("adminsOnly")}</p>}
 
-      {/* The small print, and cancelling, quietly. */}
+      {/* The small print (cancelling any time, the refund), and cancelling itself, quietly. */}
       {manage && (
         <div className="flex flex-col gap-3 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[12px] leading-relaxed text-muted-foreground">
-            {tp("fine")}{" "}
+            {t("offer.assurance")} {tp("fine")}{" "}
             <a href={`mailto:${SUPPORT_EMAIL}`} className="font-medium text-foreground underline-offset-2 hover:underline" dir="ltr">
               {SUPPORT_EMAIL}
             </a>

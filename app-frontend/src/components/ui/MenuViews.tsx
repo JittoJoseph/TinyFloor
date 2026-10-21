@@ -1,62 +1,39 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { ChevronDown } from "@/components/ui/icons";
 import { EASE_OUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 
 /**
- * A menu that changes what it shows in place, instead of opening a dropdown
- * inside it: the rows that aren't needed fade out, the menu grows or shrinks
- * to what replaces them, and the row that was pressed heads the new view with
- * its chevron turned up, the way back. Only height, opacity and a few pixels
- * of movement animate.
+ * The choices under a menu row, opened in place: the menu grows to make room
+ * and they sit inset beneath the row, so they read as its options rather than
+ * a new menu. Only one is open at a time; only height and opacity animate.
  */
-export function MenuViews({ view, children }: { view: string; children: ReactNode }) {
+export function MenuExpand({ open, children }: { open: boolean; children: ReactNode }) {
   const reduce = useReducedMotion() ?? false;
-  const inner = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState<number | "auto">("auto");
-  // Into a view comes from below, back out of one from above.
-  const deeper = view !== "main";
-
-  useLayoutEffect(() => {
-    const element = inner.current;
-    if (!element) return;
-    const measure = () => setHeight(element.offsetHeight);
-    measure();
-    const observer = new ResizeObserver(measure);
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <motion.div
-      initial={false}
-      animate={{ height }}
-      transition={reduce ? { duration: 0 } : { duration: 0.26, ease: EASE_OUT }}
-      className="relative overflow-hidden"
-    >
-      <div ref={inner} className="flex flex-col">
-        <AnimatePresence mode="popLayout" initial={false}>
-          <motion.div
-            key={view}
-            initial={reduce ? { opacity: 0 } : { opacity: 0, y: deeper ? 8 : -8 }}
-            animate={{ opacity: 1, y: 0, transition: { duration: 0.2, ease: EASE_OUT, delay: 0.04 } }}
-            exit={{ opacity: 0, transition: { duration: 0.1 } }}
-            className="flex flex-col"
-          >
-            {children}
-          </motion.div>
-        </AnimatePresence>
-      </div>
-    </motion.div>
+    <AnimatePresence initial={false}>
+      {open && (
+        <motion.div
+          key="options"
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={reduce ? { duration: 0 } : { height: { duration: 0.26, ease: EASE_OUT }, opacity: { duration: 0.18 } }}
+          className="overflow-hidden"
+        >
+          <div className="mx-1 mb-1 mt-0.5 rounded-[12px] bg-foreground/[0.045] p-1">{children}</div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
 /**
- * A row that opens a view: what it is now, and a chevron. At the head of its
- * own view the chevron turns up, and pressing it goes back.
+ * A row that opens its choices beneath it: what it is now, and a chevron that
+ * turns up while they're open.
  */
 export function MenuRow({
   icon,
@@ -72,9 +49,8 @@ export function MenuRow({
   /** Something quiet before the chevron. */
   hint?: ReactNode;
   onClick?: () => void;
-  /** At the head of its view. */
   open?: boolean;
-  /** A small control of its own on the right (play, clear), pressed without opening the view. */
+  /** A small control of its own on the right (play, clear), pressed without opening the choices. */
   action?: ReactNode;
   label?: string;
 }) {
@@ -83,13 +59,12 @@ export function MenuRow({
       <button
         type="button"
         onClick={onClick}
-        aria-expanded={open}
+        aria-expanded={onClick ? open : undefined}
         aria-label={label}
         disabled={!onClick}
         className={cn(
           "flex min-h-9 w-full min-w-0 items-center gap-2.5 rounded-[10px] px-2.5 py-1.5 text-start text-[13px] text-foreground outline-none transition-colors",
           onClick && "cursor-pointer hover:bg-muted focus-visible:bg-muted",
-          open && "font-medium",
         )}
       >
         <span className="flex size-4 shrink-0 items-center justify-center text-muted-foreground [&_svg]:size-4">{icon}</span>

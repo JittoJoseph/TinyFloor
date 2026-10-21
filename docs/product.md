@@ -158,9 +158,11 @@ missing features on the map.
 ## Your menu (21 October)
 
 - **Status, note and music are one row each**, saying what they are now.
-  Pressing one turns the menu into its choices in place (the other rows fade,
-  the menu resizes, the row heads the choices with its chevron turned up, and
-  pressing it goes back). No dropdowns inside the menu, and no modal.
+  Pressing one opens its choices beneath it, inset, as the same menu grows;
+  one open at a time, and who you are and your profile stay where they are.
+  Switching the whole menu to a new view read as a new popup each time. No
+  dropdowns inside the menu, and no modal. Playing, the music row is what's
+  playing, so its choices add only the seek bar, stop and what to play next.
 - **A usual note is one press**: Heads down and Lunch clear in an hour, Back
   soon in 30 minutes, Out sick today, On holiday this week, so none goes stale.
   Your own words take Enter and last the day unless you pick 30 minutes, an

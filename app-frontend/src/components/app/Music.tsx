@@ -37,9 +37,9 @@ const SIGN_IN = "https://accounts.spotify.com/login?continue=https%3A%2F%2Fopen.
 
 /**
  * Music in your menu, as a row: what's playing, with play and pause to hand,
- * or a way to play something. Pressing it opens the music view.
+ * or a way to play something. Pressed, its controls and picks open beneath.
  */
-export function MusicRow({ onOpen }: { onOpen: () => void }) {
+export function MusicRow({ open, onToggle }: { open: boolean; onToggle: () => void }) {
   const t = useTranslations("music");
   const ts = useTranslations("spotify");
   const { item, playing, loading } = useMusic();
@@ -47,7 +47,7 @@ export function MusicRow({ onOpen }: { onOpen: () => void }) {
 
   if (!item) {
     return (
-      <MenuRow icon={<SpotifyMark className="text-[#1ed760]" />} onClick={onOpen}>
+      <MenuRow icon={<SpotifyMark className="text-[#1ed760]" />} onClick={onToggle} open={open}>
         {t("play")}
       </MenuRow>
     );
@@ -56,7 +56,8 @@ export function MusicRow({ onOpen }: { onOpen: () => void }) {
   return (
     <MenuRow
       icon={<Cover image={item.image} size="size-5" rounded="rounded-[4px]" />}
-      onClick={onOpen}
+      onClick={onToggle}
+      open={open}
       label={item.title ?? t("yourJam")}
       action={
         jam ? undefined : (
@@ -81,18 +82,15 @@ export function MusicRow({ onOpen }: { onOpen: () => void }) {
 }
 
 /**
- * The music view: what's playing with its controls, then what to play next,
- * one press each, and a field for any Spotify link.
+ * Beneath the music row: where what's playing is, with stop, then what to
+ * play next, one press each, and a field for any Spotify link. What's playing
+ * is the row itself, so it isn't said twice.
  */
-export function MusicView({ onDone }: { onDone: () => void }) {
-  const t = useTranslations("music");
+export function MusicOptions() {
   const { item } = useMusic();
   return (
     <>
-      <MenuRow open icon={<SpotifyMark className="text-[#1ed760]" />} onClick={onDone}>
-        {t("title")}
-      </MenuRow>
-      {item && <NowPlaying item={item} />}
+      {item && <Playing item={item} />}
       <Picker playing={item?.url ?? null} />
     </>
   );
@@ -121,8 +119,8 @@ function Picker({ playing }: { playing: string | null }) {
   );
 
   return (
-    <div className={cn("pb-1", playing && "border-t border-border pt-1")}>
-      {playing && <p className="px-2.5 pb-1 pt-1.5 text-[11px] font-medium text-faint">{t("next")}</p>}
+    <div className={cn(playing && "mt-1 border-t border-foreground/[0.07] pt-1")}>
+      {playing && <p className="px-2 pb-0.5 pt-1 text-[11px] font-medium text-faint">{t("next")}</p>}
       <ul>
         {shown.map((one) => (
           <li key={one.url}>
@@ -130,7 +128,7 @@ function Picker({ playing }: { playing: string | null }) {
               type="button"
               onClick={() => void playMusic(one)}
               disabled={!one.title}
-              className="flex w-full cursor-pointer items-center gap-2.5 rounded-[10px] px-2 py-1.5 text-start outline-none transition-colors hover:bg-muted focus-visible:bg-muted disabled:cursor-default"
+              className="flex w-full cursor-pointer items-center gap-2.5 rounded-[9px] px-1.5 py-1.5 text-start outline-none transition-colors hover:bg-foreground/[0.06] focus-visible:bg-foreground/[0.06] disabled:cursor-default"
             >
               <Cover image={one.image} size="size-8" />
               <span className="min-w-0 flex-1">
@@ -181,13 +179,13 @@ function LinkField({ onPlay }: { onPlay: (item: MusicItem) => void }) {
 
   return (
     <form
-      className="px-1 pt-1"
+      className="pt-1"
       onSubmit={(event) => {
         event.preventDefault();
         void go(text);
       }}
     >
-      <label className="flex h-9 items-center gap-2 rounded-[10px] bg-foreground/[0.05] px-2.5 focus-within:ring-2 focus-within:ring-foreground/15">
+      <label className="flex h-9 items-center gap-2 rounded-[9px] bg-background px-2.5 ring-1 ring-foreground/[0.08] focus-within:ring-2 focus-within:ring-foreground/20">
         <Link2 className={cn("size-3.5 shrink-0 text-muted-foreground", busy && "animate-pulse")} />
         <input
           value={text}
@@ -217,55 +215,40 @@ function LinkField({ onPlay }: { onPlay: (item: MusicItem) => void }) {
   );
 }
 
-/** What's playing: its cover, name and who made it, play and pause, where it is, and stop. */
-function NowPlaying({ item }: { item: MusicItem }) {
+/** Where what's playing is, and a way to stop it; a word on previews when Spotify only plays those here. */
+function Playing({ item }: { item: MusicItem }) {
   const t = useTranslations("music");
   const ts = useTranslations("spotify");
-  const { playing, loading, preview } = useMusic();
+  const { preview } = useMusic();
   const jam = item.kind === "jam";
 
   return (
-    <div className="px-2 pb-2.5 pt-1.5">
-      <div className="flex items-center gap-3">
-        <a href={item.url} target="_blank" rel="noopener noreferrer" title={ts("open")} className="shrink-0">
-          <Cover image={item.image} size="size-12" />
-        </a>
-        <div className="min-w-0 flex-1">
+    <div className="px-2 pb-1 pt-0.5">
+      <div className="flex items-center gap-2">
+        {jam ? (
           <a
             href={item.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="block truncate text-[13.5px] font-semibold text-foreground underline-offset-2 hover:underline"
+            className="min-w-0 flex-1 truncate py-1.5 text-[12.5px] font-medium text-foreground underline-offset-2 hover:underline"
           >
-            {item.title ?? t("yourJam")}
+            {ts("open")}
           </a>
-          <p className="truncate text-[12px] text-muted-foreground">{jam ? ts("jamNote") : (item.subtitle ?? kindLabel(item, ts))}</p>
-        </div>
+        ) : (
+          <Seek />
+        )}
         <button
           type="button"
           onClick={stopMusic}
           aria-label={t("stop")}
           title={t("stop")}
-          className="flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+          className="-me-1 flex size-6 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/[0.08] hover:text-foreground"
         >
           <X className="size-3.5" />
         </button>
-        {!jam && (
-          <button
-            type="button"
-            onClick={toggleMusic}
-            disabled={loading}
-            aria-label={playing ? t("pause") : t("resume")}
-            className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-foreground text-background transition-transform hover:scale-105 active:scale-95 disabled:opacity-60"
-          >
-            {loading ? <span className="size-3.5 animate-spin rounded-full border-2 border-background/30 border-t-background" /> : <PlayGlyph playing={playing} />}
-          </button>
-        )}
       </div>
-
-      {!jam && <Seek />}
       {preview && (
-        <p className="mt-1.5 text-[11px] text-muted-foreground">
+        <p className="pb-0.5 text-[11px] text-muted-foreground">
           {t("preview")}{" "}
           <a href={SIGN_IN} target="_blank" rel="noopener noreferrer" className="font-medium text-foreground underline-offset-2 hover:underline">
             {t("signIn")}
@@ -285,7 +268,7 @@ function Seek() {
   const share = duration ? Math.min(1, at / duration) : 0;
 
   return (
-    <div className="mt-2 flex items-center gap-2">
+    <div className="flex min-w-0 flex-1 items-center gap-2">
       <input
         type="range"
         min={0}

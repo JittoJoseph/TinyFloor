@@ -74,13 +74,13 @@ export function useNoteUntil() {
     });
 }
 
-/** Your note in the menu: what it says, with a way to clear it, or a way to set one. */
-export function NoteRow({ note, onOpen }: { note: StatusNote | null; onOpen: () => void }) {
+/** Your note in the menu: what it says, with a way to clear it, or a way to set one; pressed, its choices open beneath. */
+export function NoteRow({ note, open, onToggle }: { note: StatusNote | null; open: boolean; onToggle: () => void }) {
   const t = useTranslations("note");
   const until = useNoteUntil();
   if (!note) {
     return (
-      <MenuRow icon={<SmilePlus />} onClick={onOpen}>
+      <MenuRow icon={<SmilePlus />} onClick={onToggle} open={open}>
         {t("set")}
       </MenuRow>
     );
@@ -88,7 +88,8 @@ export function NoteRow({ note, onOpen }: { note: StatusNote | null; onOpen: () 
   return (
     <MenuRow
       icon={<span className="text-[15px] leading-none text-foreground">{note.emoji ?? "💬"}</span>}
-      onClick={onOpen}
+      onClick={onToggle}
+      open={open}
       label={noteLine(note)}
       action={
         <button
@@ -108,12 +109,12 @@ export function NoteRow({ note, onOpen }: { note: StatusNote | null; onOpen: () 
 }
 
 /**
- * Setting your note, in the menu itself: one press on a usual one sets it,
+ * Setting your note, beneath its row: one press on a usual one sets it,
  * clearing itself when it should; your own words take Enter, with how long
  * they last a press below. It shows beside your status everywhere your team
  * sees you, and on your name tag on the floor.
  */
-export function NoteView({ note, onDone }: { note: StatusNote | null; onDone: () => void }) {
+export function NoteOptions({ note, onDone }: { note: StatusNote | null; onDone: () => void }) {
   const t = useTranslations("note");
   const lastingLabel = useLastingLabel();
   const input = useRef<HTMLInputElement>(null);
@@ -142,17 +143,13 @@ export function NoteView({ note, onDone }: { note: StatusNote | null; onDone: ()
 
   return (
     <>
-      <MenuRow open icon={<SmilePlus />} onClick={onDone}>
-        {t("title")}
-      </MenuRow>
-
-      <div className="px-1 pb-1 pt-1">
+      <div className="pb-1">
         <form
           onSubmit={(event) => {
             event.preventDefault();
             submit();
           }}
-          className="flex h-10 items-center gap-1.5 rounded-[11px] bg-foreground/[0.05] pe-1 focus-within:ring-2 focus-within:ring-foreground/15"
+          className="flex h-10 items-center gap-1.5 rounded-[9px] bg-background pe-1 ring-1 ring-foreground/[0.08] focus-within:ring-2 focus-within:ring-foreground/20"
         >
           <button
             type="button"
@@ -161,7 +158,7 @@ export function NoteView({ note, onDone }: { note: StatusNote | null; onDone: ()
             onClick={() => setPicking((open) => !open)}
             className={cn(
               // Its emoji lines up with the usual ones' below.
-              "flex h-10 w-7 shrink-0 cursor-pointer items-center justify-center rounded-s-[11px] text-[15px] transition-colors hover:bg-foreground/[0.07]",
+              "flex h-10 w-8 shrink-0 cursor-pointer items-center justify-center rounded-s-[9px] text-[15px] transition-colors hover:bg-foreground/[0.07]",
               picking && "bg-foreground/[0.08]",
             )}
           >
@@ -192,7 +189,7 @@ export function NoteView({ note, onDone }: { note: StatusNote | null; onDone: ()
 
         {/* How long your own words last: shown once there are some. */}
         {typed && !picking && (
-          <div className="mt-2 flex flex-wrap gap-1 px-0.5" role="radiogroup" aria-label={t("clearAfter")}>
+          <div className="mt-1.5 flex flex-wrap gap-1" role="radiogroup" aria-label={t("clearAfter")}>
             {CHOICES.map((one) => (
               <Chip
                 key={one}
@@ -211,7 +208,7 @@ export function NoteView({ note, onDone }: { note: StatusNote | null; onDone: ()
       </div>
 
       {picking ? (
-        <div role="group" aria-label={t("emoji")} className="grid grid-cols-8 gap-0.5 px-1 pb-1.5 pt-0.5">
+        <div role="group" aria-label={t("emoji")} className="grid grid-cols-8 gap-0.5 pb-0.5 pt-0.5">
           {EMOJI.map((one) => (
             <button
               key={one}
@@ -232,7 +229,7 @@ export function NoteView({ note, onDone }: { note: StatusNote | null; onDone: ()
           ))}
         </div>
       ) : (
-        <ul className="flex flex-col pb-0.5 pt-0.5">
+        <ul className="flex flex-col">
           {PRESETS.map((preset) => {
             const label = t(`presets.${preset.key}`);
             const current = note?.emoji === preset.emoji && note.text === label;
@@ -242,8 +239,8 @@ export function NoteView({ note, onDone }: { note: StatusNote | null; onDone: ()
                   type="button"
                   onClick={() => (current ? onDone() : save({ emoji: preset.emoji, text: label, until: untilFor(preset.lasting) }))}
                   className={cn(
-                    "flex h-9 w-full cursor-pointer items-center gap-2.5 rounded-[10px] px-2.5 text-start text-[13px] outline-none transition-colors hover:bg-muted focus-visible:bg-muted",
-                    current && "bg-muted",
+                    "flex h-9 w-full cursor-pointer items-center gap-2.5 rounded-[9px] px-2 text-start text-[13px] outline-none transition-colors hover:bg-foreground/[0.06] focus-visible:bg-foreground/[0.06]",
+                    current && "bg-foreground/[0.06]",
                   )}
                 >
                   <span className="w-4 shrink-0 text-center text-[15px] leading-none">{preset.emoji}</span>
@@ -257,13 +254,13 @@ export function NoteView({ note, onDone }: { note: StatusNote | null; onDone: ()
       )}
 
       {(note || failed) && (
-        <div className="flex items-center justify-between border-t border-border px-2.5 pb-1 pt-2">
+        <div className="mt-1 flex items-center justify-between border-t border-foreground/[0.07] px-2 pt-1.5">
           {failed ? <p className="text-[12px] text-destructive">{t("failed")}</p> : <span />}
           {note && (
             <button
               type="button"
               onClick={() => save(null)}
-              className="cursor-pointer rounded-md px-1.5 py-0.5 text-[12px] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              className="-me-1 cursor-pointer rounded-md px-1.5 py-0.5 text-[12px] font-medium text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground"
             >
               {t("clear")}
             </button>

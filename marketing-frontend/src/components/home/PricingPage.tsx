@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { CalendarOff, Check, CreditCard, Minus, Refund, UserPlus, Users } from "@/components/ui/icons";
+import { CalendarOff, Check, CreditCard, Lock, Minus, Refund, UserPlus, Users } from "@/components/ui/icons";
+import { foundingOpen } from "@/lib/founding";
 import { SUPPORT_EMAIL } from "@/components/legal/LegalPage";
 import { PLANS } from "@/lib/plans";
 import { cn } from "@/lib/utils";
@@ -48,10 +49,13 @@ export function PricingPage() {
               { key: "cancel", icon: <CalendarOff /> },
               { key: "refund", icon: <Refund /> },
               { key: "change", icon: <UserPlus /> },
+              { key: "founding", icon: <Lock /> },
               { key: "size", icon: <Users /> },
               { key: "tax", icon: <CreditCard /> },
             ] as const
-          ).map((one) => ({
+          )
+            .filter((one) => one.key !== "founding" || foundingOpen())
+            .map((one) => ({
             icon: one.icon,
             title: t(`notes.${one.key}.title`),
             body: t(`notes.${one.key}.body`, { email: SUPPORT_EMAIL }),

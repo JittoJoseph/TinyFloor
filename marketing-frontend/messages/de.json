@@ -75,8 +75,8 @@
         "subtitle": "Gather hat seinen kostenlosen Tarif im September 2025 beendet und berechnet jetzt jedes Mitglied. Hier sind sieben Alternativen, verglichen danach, was ein echtes Team zahlt, was kostenlos ist und was jede am besten kann. Wir machen TinyFloor, deshalb steht es zuerst; alles andere stammt von den Seiten der jeweiligen Produkte.",
         "points": [
           {
-            "title": "Keine Testphase, die abläuft",
-            "body": "Bei Gather hast du 30 Tage, bevor du zahlst. Der kostenlose Plan von TinyFloor endet nie: bis zu 3 Personen, so lange du willst."
+            "title": "Gratis nach der Testphase",
+            "body": "Gather gibt dir 30 Tage und berechnet dann jedes Mitglied. TinyFloor startet dich 14 Tage auf Pro, und der kostenlose Plan hat kein Enddatum: bis zu 3 Personen, so lange du willst."
           },
           {
             "title": "Nichts zu installieren",
@@ -1639,7 +1639,8 @@
       "assurance": "Jederzeit kündbar · 14 Tage Erstattung",
       "noCard": "Keine Karte nötig",
       "perPerson": "{price} pro Person bei {team} Leuten",
-      "trial": "Jedes Team bekommt {days} Tage Pro gratis, sobald die vierte Person dazukommt.",
+      "trial": "Jedes neue Büro startet mit {days} Tagen Pro gratis. Keine Karte nötig.",
+      "founding": "Gründerpreis, deiner, solange dein Abo läuft. Ab 1. März 2027 kosten neue Abos 39 $.",
       "list": {
         "people": "Bis zu {people} Personen",
         "floor": "Die Fläche, Chat und Kanäle",
@@ -1675,7 +1676,7 @@
     },
     "title": "Ein Preis für das ganze Büro.",
     "muted": "Nicht einer pro Person.",
-    "body": "Starte kostenlos für bis zu 3 Personen, danach Pro für das ganze Team, zu einem Preis.",
+    "body": "Starte mit 14 Tagen Pro für das ganze Team, dann behalte es zu einem Preis oder bleib kostenlos für bis zu 3 Personen.",
     "seats": {
       "title": "Zehn Personen,",
       "muted": "eine kleine Rechnung.",
@@ -1704,8 +1705,12 @@
         "body": "Melde dich innerhalb von 14 Tagen nach einer Zahlung und du bekommst alles zurück."
       },
       "change": {
-        "title": "Eine Testphase, wenn das Team kommt",
-        "body": "Kommt eine 4. Person in ein kostenloses Büro, bekommt das ganze Team Pro 14 Tage kostenlos. Keine Karte nötig."
+        "title": "Pro 14 Tage gratis",
+        "body": "Jedes neue Büro startet 14 Tage auf Pro, mit Platz für das ganze Team. Keine Karte nötig. Danach Pro behalten oder bei Free bleiben."
+      },
+      "founding": {
+        "title": "Ein Gründerpreis",
+        "body": "Abonniere vor dem 1. März 2027, und 29 $ im Monat bleiben deine, solange dein Abo läuft. Ab diesem Datum kostet Pro für neue Abos 39 $ im Monat."
       },
       "tax": {
         "title": "Steuern an der Kasse",
@@ -1728,8 +1733,12 @@
         "a": "Nein. Ein Preis deckt das ganze Büro ab, und Gespräche zwischen zwei Personen werden nie gezählt."
       },
       {
-        "q": "Was passiert, wenn eine 4. Person einem kostenlosen Büro beitritt?",
-        "a": "Das ganze Team bekommt Pro 14 Tage kostenlos, ohne Karte. Danach bleibt das Büro bei Free, außer ihr wählt Pro: Alle bleiben Mitglieder, und bis zu 3 können gleichzeitig auf der Fläche sein."
+        "q": "Was passiert, wenn die Testphase endet?",
+        "a": "Das Büro wechselt zu Free, wenn ihr nicht Pro wählt. Niemand wird entfernt: Zwei Wochen lang können alle weiter hereinkommen, nur über 3 Personen hinaus tritt niemand Neues bei. Danach können 3 Personen gleichzeitig auf der Fläche sein, und der Chat bleibt für alle offen."
+      },
+      {
+        "q": "Steigt der Preis?",
+        "a": "Für neue Abos ja: Ab 1. März 2027 kostet Pro 39 $ im Monat. Büros, die vorher abonnieren, behalten 29 $, solange ihr Abo läuft."
       },
       {
         "q": "Gibt es einen Jahrestarif?",

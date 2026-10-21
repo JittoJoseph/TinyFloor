@@ -1,5 +1,5 @@
 import { requireOffice, seatsUsed } from "./access";
-import { endTrials, startTrialIfFull, trialWaiting } from "./billing";
+import { endTrials } from "./billing";
 import { HttpError, json, readJson } from "./http";
 import type { Router } from "./router";
 import { domainAccess, workDomain, type DomainAccess } from "./domains";
@@ -43,7 +43,7 @@ export interface TeamOffice {
   access: Exclude<DomainAccess, "off">;
   /** They've asked, and nobody has answered yet. */
   asked: boolean;
-  /** No room, and no trial left to make some. */
+  /** No room. */
   full: boolean;
 }
 
@@ -74,29 +74,22 @@ async function teamOffices(env: Env, userId: string, domain: string): Promise<Te
       faces: row.faces ? row.faces.split(",") : [],
       access,
       asked: !!row.asked,
-      full: row.members >= row.seats && !(await trialWaiting(env, row.id)),
+      full: row.members >= row.seats,
     });
   }
   return offices.sort((a, b) => Number(a.full) - Number(b.full)).slice(0, 5);
 }
 
 /**
- * Puts someone in an office, making room the way a team moving in does: a
- * full free office's trial starts rather than turn them away (docs/pricing.md).
- * Being a member already is fine. A request they had waiting is answered by it.
+ * Puts someone in an office, if it has room. Being a member already is fine.
+ * A request they had waiting is answered by it.
  */
 export async function admit(env: Env, officeId: string, userId: string): Promise<void> {
   await endTrials(env, officeId);
   const member = await env.DB.prepare("SELECT 1 FROM memberships WHERE office_id = ? AND user_id = ?").bind(officeId, userId).first();
   if (!member) {
-    const seats = async () =>
-      (await env.DB.prepare("SELECT seats FROM offices WHERE id = ?").bind(officeId).first<{ seats: number }>())?.seats ?? 0;
-    if ((await seatsUsed(env, officeId)) >= (await seats())) {
-      await startTrialIfFull(env, officeId);
-      if ((await seatsUsed(env, officeId)) >= (await seats())) {
-        throw new HttpError(409, "office_full", "This office is full");
-      }
-    }
+    const seats = (await env.DB.prepare("SELECT seats FROM offices WHERE id = ?").bind(officeId).first<{ seats: number }>())?.seats ?? 0;
+    if ((await seatsUsed(env, officeId)) >= seats) throw new HttpError(409, "office_full", "This office is full");
     await env.DB.prepare("INSERT OR IGNORE INTO memberships (office_id, user_id, role, joined_at) VALUES (?, ?, 'member', ?)")
       .bind(officeId, userId, Date.now())
       .run();

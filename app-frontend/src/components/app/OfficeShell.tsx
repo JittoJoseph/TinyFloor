@@ -13,11 +13,11 @@ import { useChat } from "@/lib/useChat";
 import { useHelp } from "@/lib/help";
 import { clearMeetings, usePeopleInMeetings } from "@/lib/meetings";
 import { clearFloor } from "@/lib/floor";
-import { UpgradeProvider } from "@/components/billing/Upgrade";
 import { InviteProvider } from "./Invite";
 import { Introduce } from "@/components/entry/Introduce";
 import { RoomView } from "@/components/room/RoomView";
 import { AppShell } from "./AppShell";
+import { PlanBar } from "./PlanBar";
 import { YouMenu } from "./YouMenu";
 import { OfficeSwitcher } from "./OfficeSwitcher";
 import { PlaceProvider, type Place } from "./place";
@@ -233,63 +233,62 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
 
   return (
     <Context.Provider value={{ office, overview: read.overview, readAt: read.at, refresh }}>
-      <UpgradeProvider>
-        <InviteProvider>
-          <PlaceProvider value={place}>
-            <AppShell
-              mark={<OfficeSwitcher office={office} />}
-              destinations={[
-                {
-                  key: "floor",
-                  href: floor,
-                  label: ts("floor"),
-                  icon: RailIcons.floor,
-                  active: !onChat && !onPeople && !onMeetings && !onSettings,
-                },
-                { key: "chat", href: lastChat ? officeChatPath(office.id, lastChat) : chatPath, label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread + helpUnread },
-                {
-                  key: "meetings",
-                  href: meetings,
-                  label: ts("meetings"),
-                  icon: RailIcons.meetings,
-                  active: onMeetings,
-                  // Green while a meeting is on: how many are in them.
-                  live: inMeetings || undefined,
-                },
-                {
-                  key: "people",
-                  href: people,
-                  label: ts("people"),
-                  icon: RailIcons.people,
-                  active: onPeople,
-                  // Colleagues asking to join, for whoever can let them in.
-                  badge: office.role === "admin" ? read.overview.requests?.length || undefined : undefined,
-                },
-              ]}
-              settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
-              you={<YouMenu onFloor settingsHref={settingsPath} />}
-              floor={
-                <>
-                  <RoomView
-                    title={office.name}
-                    user={user}
-                    ticketFor={ticket.ticketFor}
-                    // Once someone else has joined, inviting lives in People and the office menu, not over the floor.
-                    inviteChip={members.length <= 1}
-                    leaveHref={door}
-                    settingsHref={settingsPath}
-                  />
-                  {!onChat && <FloorNudges chatPath={(channel) => officeChatPath(office.id, channel)} />}
-                  <DesktopAlerts chatPath={(channel) => officeChatPath(office.id, channel)} waiting={waiting} />
-                  <WelcomeNote />
-                </>
-              }
-            >
-              {children}
-            </AppShell>
-          </PlaceProvider>
-        </InviteProvider>
-      </UpgradeProvider>
+      <InviteProvider>
+        <PlaceProvider value={place}>
+          <AppShell
+            mark={<OfficeSwitcher office={office} />}
+            destinations={[
+              {
+                key: "floor",
+                href: floor,
+                label: ts("floor"),
+                icon: RailIcons.floor,
+                active: !onChat && !onPeople && !onMeetings && !onSettings,
+              },
+              { key: "chat", href: lastChat ? officeChatPath(office.id, lastChat) : chatPath, label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread + helpUnread },
+              {
+                key: "meetings",
+                href: meetings,
+                label: ts("meetings"),
+                icon: RailIcons.meetings,
+                active: onMeetings,
+                // Green while a meeting is on: how many are in them.
+                live: inMeetings || undefined,
+              },
+              {
+                key: "people",
+                href: people,
+                label: ts("people"),
+                icon: RailIcons.people,
+                active: onPeople,
+                // Colleagues asking to join, for whoever can let them in.
+                badge: office.role === "admin" ? read.overview.requests?.length || undefined : undefined,
+              },
+            ]}
+            settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
+            you={<YouMenu onFloor settingsHref={settingsPath} />}
+            notice={<PlanBar />}
+            floor={
+              <>
+                <RoomView
+                  title={office.name}
+                  user={user}
+                  ticketFor={ticket.ticketFor}
+                  // Once someone else has joined, inviting lives in People and the office menu, not over the floor.
+                  inviteChip={members.length <= 1}
+                  leaveHref={door}
+                  settingsHref={settingsPath}
+                />
+                {!onChat && <FloorNudges chatPath={(channel) => officeChatPath(office.id, channel)} />}
+                <DesktopAlerts chatPath={(channel) => officeChatPath(office.id, channel)} waiting={waiting} />
+                <WelcomeNote />
+              </>
+            }
+          >
+            {children}
+          </AppShell>
+        </PlaceProvider>
+      </InviteProvider>
     </Context.Provider>
   );
 }

@@ -75,8 +75,8 @@
         "subtitle": "Gather terminó con su plan gratuito en septiembre de 2025 y ahora cobra por cada miembro. Aquí tienes siete alternativas, comparadas por lo que paga un equipo real, lo que es gratis y en qué destaca cada una. Nosotros hacemos TinyFloor, así que aparece primero; todo lo demás sale de las páginas de cada producto.",
         "points": [
           {
-            "title": "Sin cuenta atrás",
-            "body": "Gather te da 30 días antes de pagar. El plan gratuito de TinyFloor no caduca: hasta 3 personas, todo el tiempo que quieras."
+            "title": "Gratis después de la prueba",
+            "body": "Gather te da 30 días y luego cobra por cada miembro. TinyFloor te pone en Pro durante 14 días, y su plan gratuito no tiene fecha de fin: hasta 3 personas, el tiempo que quieras."
           },
           {
             "title": "Nada que instalar",
@@ -1639,7 +1639,8 @@
       "assurance": "Cancela cuando quieras · reembolso en 14 días",
       "noCard": "Sin tarjeta",
       "perPerson": "{price} por persona en un equipo de {team}",
-      "trial": "Cada equipo recibe {days} días de Pro gratis cuando se une su cuarta persona.",
+      "trial": "Cada oficina nueva empieza con {days} días de Pro gratis. Sin tarjeta.",
+      "founding": "Precio fundador, tuyo mientras sigas suscrito. Desde el 1 de marzo de 2027, las nuevas suscripciones cuestan 39 $.",
       "list": {
         "people": "Hasta {people} personas",
         "floor": "La planta, el chat y los canales",
@@ -1675,7 +1676,7 @@
     },
     "title": "Un solo precio para toda la oficina.",
     "muted": "No uno por persona.",
-    "body": "Empieza gratis para hasta 3 personas y después pasa a Pro para todo el equipo, a un solo precio.",
+    "body": "Empieza con 14 días de Pro para todo el equipo y luego mantenlo a un solo precio, o sigue gratis hasta 3 personas.",
     "seats": {
       "title": "Diez personas,",
       "muted": "una sola factura pequeña.",
@@ -1704,8 +1705,12 @@
         "body": "Pídelo en los 14 días siguientes a cualquier pago y te lo devolvemos entero."
       },
       "change": {
-        "title": "Una prueba cuando llega el equipo",
-        "body": "Cuando una 4.ª persona se une a una oficina gratuita, todo el equipo tiene Pro gratis durante 14 días. Sin tarjeta."
+        "title": "Pro gratis durante 14 días",
+        "body": "Cada oficina nueva empieza en Pro durante 14 días, con sitio para todo el equipo. Sin tarjeta. Después, mantén Pro o quédate en Free."
+      },
+      "founding": {
+        "title": "Un precio fundador",
+        "body": "Suscríbete antes del 1 de marzo de 2027 y 29 $ al mes serán tuyos mientras sigas suscrito. Desde esa fecha, Pro cuesta 39 $ al mes para las nuevas suscripciones."
       },
       "tax": {
         "title": "Impuestos al pagar",
@@ -1728,8 +1733,12 @@
         "a": "No. Un solo precio cubre toda la oficina, y las llamadas entre dos personas nunca se cuentan."
       },
       {
-        "q": "¿Qué pasa cuando una 4.ª persona se une a una oficina gratuita?",
-        "a": "Todo el equipo tiene Pro gratis durante 14 días, sin tarjeta. Después, la oficina sigue en Free salvo que elijas Pro: todos siguen siendo miembros, y hasta 3 pueden estar en la planta a la vez."
+        "q": "¿Qué pasa cuando termina la prueba?",
+        "a": "La oficina pasa a Free si no eliges Pro. No se elimina a nadie: durante dos semanas más todos pueden seguir entrando, aunque nadie nuevo puede unirse por encima de 3. Después, 3 personas pueden estar en la planta a la vez y el chat sigue abierto para todos."
+      },
+      {
+        "q": "¿Subirá el precio?",
+        "a": "Para las nuevas suscripciones, sí: desde el 1 de marzo de 2027 Pro cuesta 39 $ al mes. Las oficinas que se suscriban antes mantienen 29 $ mientras sigan suscritas."
       },
       {
         "q": "¿Hay un plan anual?",

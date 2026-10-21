@@ -2,6 +2,10 @@ import { env, exports } from "cloudflare:workers";
 import { hashToken, randomToken } from "../src/crypto";
 
 export const SITE = "http://localhost:3000";
+
+/** An office on Free, long past its trial: what a test about Free's 3 seats starts from. */
+export const onFree = (officeId: string) =>
+  env.DB.prepare("UPDATE offices SET plan = 'free', seats = 3, trial_ends_at = 0 WHERE id = ?").bind(officeId).run();
 const API = "https://api.tinyfloor.com";
 
 export interface TestUser {

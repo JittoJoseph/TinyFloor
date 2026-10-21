@@ -14,6 +14,8 @@ import { attachDesks } from "../lib/desks";
 import { MessageHandler } from "../lib/MessageHandler";
 import { WhiteboardObject } from "../lib/WhiteboardObject";
 import { whiteboard } from "../lib/WhiteboardManager";
+import { doAction, offerAction, type ActionAt } from "../lib/actions";
+import { typingElsewhere } from "../lib/typing";
 import { setTouchInput } from "../lib/input";
 import { touchFirst } from "../lib/touch";
 import { TILE_SIZE, pixelToTile, tileToPixel } from "@/lib/types";
@@ -135,13 +137,10 @@ class GameScene extends Phaser.Scene {
     whiteboard.attach(this.wsManager);
     const board = this.mapManager.getAnchors("Whiteboard")[0];
     if (board) {
-      this.whiteboardObject = new WhiteboardObject(
-        this,
-        this.player,
-        { x: board.x, y: board.y + 10, width: board.width, height: 52 },
-        approach,
-      );
+      this.whiteboardObject = new WhiteboardObject(this, this.player, board, approach, (id) => this.playerManager.getPlayerName(id));
     }
+    // E does whatever is at hand: sit, stand, open the whiteboard (lib/actions).
+    this.input.keyboard?.on("keydown-E", () => !typingElsewhere() && doAction());
     // nobody calls into a meeting or out of one, or rings someone already on the line
     this.proximityManager = new ProximityManager(
       this,
@@ -299,12 +298,26 @@ class GameScene extends Phaser.Scene {
     this.playerManager.declutterTags(time);
     this.proximityManager.update();
     if (this.meetingZone) this.watchMeetingRoom();
-    this.whiteboardObject?.update();
+    this.whiteboardObject?.update(time);
+    this.offerNearestAction();
+  }
+
+  /** The nearest thing you could do where you stand, for E and its hint; nothing while the board is open. */
+  private offerNearestAction() {
+    let best: ActionAt | null = null;
+    if (!whiteboard.getSnapshot().open) {
+      for (const one of [this.seatManager?.action(), this.whiteboardObject?.action()]) {
+        if (one && (!best || one.distance < best.distance)) best = one;
+      }
+    }
+    offerAction(best);
   }
 
   public cleanup() {
     this.windowListeners.forEach(([type, listener]) => window.removeEventListener(type, listener));
     this.windowListeners.length = 0;
+    this.input.keyboard?.off("keydown-E");
+    offerAction(null);
     this.unsubscribeShown?.();
     this.unsubscribeRename?.();
 

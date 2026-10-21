@@ -75,8 +75,8 @@
         "subtitle": "Gather ended its free plan in September 2025 and now charges for every member. Here are seven alternatives, compared on what a real team pays, what's free, and what each one is best at. We make TinyFloor, so it's listed first; everything else comes from each product's own pages.",
         "points": [
           {
-            "title": "No trial clock",
-            "body": "Gather gives you 30 days before you pay. TinyFloor's free plan has no end date: up to 3 people, for as long as you like."
+            "title": "Free after the trial",
+            "body": "Gather gives you 30 days, then charges for every member. TinyFloor starts you on Pro for 14 days, and its free plan has no end date: up to 3 people, for as long as you like."
           },
           {
             "title": "Nothing to install",
@@ -1639,7 +1639,8 @@
       "assurance": "Cancel any time · 14-day refunds",
       "noCard": "No card needed",
       "perPerson": "{price} a person in a team of {team}",
-      "trial": "Every team gets {days} days of Pro free when its fourth person joins.",
+      "trial": "Every new office starts with {days} days of Pro free. No card needed.",
+      "founding": "Founding price, yours for as long as you stay subscribed. From 1 March 2027, new subscriptions are $39.",
       "list": {
         "people": "Up to {people} people",
         "floor": "The floor, chat and channels",
@@ -1675,7 +1676,7 @@
     },
     "title": "One price for the whole office.",
     "muted": "Not one per person.",
-    "body": "Start free for up to 3 people, then Pro for the whole team, at one price.",
+    "body": "Start with 14 days of Pro for the whole team, then keep it at one price, or stay free for up to 3 people.",
     "seats": {
       "title": "Ten people,",
       "muted": "one small bill.",
@@ -1704,8 +1705,12 @@
         "body": "Ask within 14 days of any payment and you get all of it back."
       },
       "change": {
-        "title": "A trial when the team arrives",
-        "body": "When a 4th person joins a free office, the whole team gets Pro free for 14 days. No card needed."
+        "title": "Pro free for 14 days",
+        "body": "Every new office starts on Pro for 14 days, with room for the whole team. No card needed. Then keep Pro, or stay on Free."
+      },
+      "founding": {
+        "title": "A founding price",
+        "body": "Subscribe before 1 March 2027 and $29 a month is yours for as long as you stay subscribed. From that date, Pro is $39 a month for new subscriptions."
       },
       "tax": {
         "title": "Tax at checkout",
@@ -1728,8 +1733,12 @@
         "a": "No. One price covers the whole office, and calls between two people are never counted."
       },
       {
-        "q": "What happens when a 4th person joins a free office?",
-        "a": "The whole team gets Pro free for 14 days, with no card needed. After that the office stays on Free unless you choose Pro: everyone stays a member, and up to 3 can be on the floor at once."
+        "q": "What happens when the trial ends?",
+        "a": "The office moves to Free unless you choose Pro. Nobody is removed: for two more weeks everyone can still come in, though nobody new can join past 3. After that, 3 people can be on the floor at once, and chat stays open to everyone."
+      },
+      {
+        "q": "Will the price go up?",
+        "a": "For new subscriptions, yes: from 1 March 2027 Pro is $39 a month. Offices that subscribe before then keep $29 for as long as they stay subscribed."
       },
       {
         "q": "Is there a yearly plan?",

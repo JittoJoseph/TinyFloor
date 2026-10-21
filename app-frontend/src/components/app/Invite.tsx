@@ -2,25 +2,23 @@
 
 import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Copy, Link2, Mail, MessageSquare, Refresh, Share, UserPlus, Zap } from "@/components/ui/icons";
-import { FaceStack } from "@/components/ui/Face";
-import { DoneChip } from "@/components/ui/DoneChip";
+import { ArrowUpRight, Check, Copy, Mail, MessageSquare, Share } from "@/components/ui/icons";
 import { Modal } from "@/components/ui/Modal";
+import { useOpenPlans } from "@/components/billing/openPlans";
 import { track, withPostHog } from "@/lib/analytics";
-import { usePlans } from "@/lib/billing";
 import { resetInviteLink, useInviteLink } from "@/lib/inviteLink";
 import { shareUrl } from "@/lib/links";
 import { copyText } from "@/lib/share";
 import { cn } from "@/lib/utils";
-import { PLAN_NAMES } from "@/components/billing/PlanCards";
 import { useOfficeMaybe } from "./OfficeShell";
 
 /**
  * Bringing people in (docs/product.md). One dialog, opened from wherever someone
- * invites: the floor, People, the office menu. A link alone isn't an invite,
- * so it comes ready to send the ways people actually do it: a message to
- * paste into the team's chat, an email from their own address, the phone's
- * share sheet. The faces of who's here, with places waiting, say what it's for.
+ * invites: the floor, People, the office menu. The link first, with one
+ * button to copy it; then the other ways people actually send it, as plain
+ * rows: a message to paste into the team's chat, an email from their own
+ * address, the phone's share sheet. An office with no room says so instead,
+ * with the way to more.
  */
 const Context = createContext<(() => void) | null>(null);
 
@@ -49,49 +47,47 @@ export function InviteProvider({ children }: { children: ReactNode }) {
 
 function InviteDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
   const t = useTranslations("invite");
-  const tb = useTranslations("billing");
   const tc = useTranslations("common");
   const context = useOfficeMaybe();
-  const plans = usePlans();
+  const plans = useOpenPlans();
   if (!context) return null;
   const { office, overview } = context;
-  const members = overview.members;
-  const trial = office.plan === "free" && !!office.trialOpen && !!plans?.billing && !!plans.trialDays;
+  const admin = office.role === "admin";
+  const used = overview.members.length;
+  const full = used >= office.seats;
 
   return (
-    <Modal open={open} onClose={onClose} label={t("title")} closeLabel={tc("close")} className="sm:max-w-[30rem]">
-      <div className="px-6 pb-5 pt-7 sm:px-7">
-        <Gathering ids={members.map((one) => one.id)} />
-        <h2 className="mt-4 text-[20px] font-semibold leading-tight tracking-tight text-foreground">{t("title")}</h2>
-        <p className="mt-1.5 text-[13.5px] leading-relaxed text-muted-foreground">{t("body", { office: office.name })}</p>
+    <Modal open={open} onClose={onClose} label={t("title", { office: office.name })} closeLabel={tc("close")} className="sm:max-w-[27rem]">
+      <div className="px-5 pb-5 pt-6 sm:px-6">
+        <h2 className="pe-10 text-[18px] font-semibold leading-snug tracking-tight text-foreground">{t("title", { office: office.name })}</h2>
+        {!full && <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">{t("body")}</p>}
 
-        <InviteActions officeId={office.id} officeName={office.name} className="mt-5" />
-
-        {trial && (
-          <p className="mt-4 flex items-start gap-2.5 rounded-xl bg-muted px-3.5 py-2.5 text-[12.5px] leading-relaxed text-foreground">
-            <Zap className="mt-0.5 size-3.5 shrink-0 text-brand" />
-            {tb("trialWaiting", { free: office.seats, plan: PLAN_NAMES[plans?.trialPlan ?? "pro"], days: plans?.trialDays ?? 14 })}
-          </p>
+        {full ? (
+          // No room: the link would only turn them away, so the way to more takes its place.
+          <div className="mt-5 rounded-xl bg-muted/70 p-4">
+            <p className="text-[13px] leading-relaxed text-foreground">{t("full", { office: office.name, seats: office.seats })}</p>
+            {plans ? (
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  plans(office.plan === "free" && used > office.seats ? "over" : "full");
+                }}
+                className="mt-3 h-9 cursor-pointer rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
+              >
+                {t("keepPro")}
+              </button>
+            ) : (
+              <p className="mt-1.5 text-[12.5px] text-muted-foreground">{t("fullMember")}</p>
+            )}
+          </div>
+        ) : (
+          <InviteActions officeId={office.id} officeName={office.name} className="mt-5" />
         )}
 
-        <LinkFooter officeId={office.id} admin={office.role === "admin"} />
+        {!full && <LinkFooter officeId={office.id} admin={admin} />}
       </div>
     </Modal>
-  );
-}
-
-/**
- * Who's here already, as one stack, and the next seat in it, empty: the
- * office filling up. The seat overlaps the last face like another face would.
- */
-function Gathering({ ids }: { ids: string[] }) {
-  return (
-    <span className="flex items-center [--face-ring:var(--ui-card)]" aria-hidden>
-      <FaceStack seeds={ids} size={40} max={4} />
-      <span className="relative -ms-[13px] flex size-10 items-center justify-center rounded-full border-[1.5px] border-dashed border-border-strong bg-card text-faint ring-2 ring-[var(--ui-card)]">
-        <UserPlus className="size-4" />
-      </span>
-    </span>
   );
 }
 
@@ -131,64 +127,85 @@ export function InviteActions({ officeId, officeName, className }: { officeId: s
 
   return (
     <div className={className}>
-      <div className="flex h-12 items-center gap-1 rounded-full border border-border bg-background p-1 ps-4">
-        <Link2 className="size-4 shrink-0 text-faint" />
-        <span data-ph-mask className="min-w-0 flex-1 truncate ps-1.5 text-[13.5px] text-foreground" dir="ltr">
-          {url ? url.replace(/^https?:\/\//, "") : <span className="inline-block h-3 w-40 animate-pulse rounded-full bg-muted" />}
+      <p className="text-[12px] font-medium text-muted-foreground">{t("linkLabel")}</p>
+      <div className="mt-1.5 flex gap-2">
+        <span
+          data-ph-mask
+          dir="ltr"
+          className="flex h-10 min-w-0 flex-1 items-center rounded-xl border border-border bg-background px-3 text-[13px] text-foreground"
+        >
+          {url ? (
+            <span className="truncate">{url.replace(/^https?:\/\//, "")}</span>
+          ) : (
+            <span className="inline-block h-3 w-40 animate-pulse rounded-full bg-muted" />
+          )}
         </span>
-        {/* The floor's Invite chip: the dot turns green and the label says it's copied. */}
-        <DoneChip
-          done={sent === "link"}
-          icon={<Copy strokeWidth={2.25} />}
-          label={t("copyLink")}
-          doneLabel={t("copied")}
-          onClick={() => copy("link")}
+        <button
+          type="button"
           disabled={!url}
-        />
+          onClick={() => copy("link")}
+          className="flex h-10 w-[7.5rem] shrink-0 cursor-pointer items-center justify-center gap-1.5 rounded-xl bg-foreground text-[13px] font-medium text-background transition-colors hover:bg-foreground/85 disabled:opacity-50"
+        >
+          {sent === "link" && <Check className="size-4" />}
+          {sent === "link" ? t("copied") : t("copyLink")}
+        </button>
       </div>
-      <div className="mt-2 flex flex-wrap gap-2">
-        <Channel onClick={() => copy("message")} disabled={!url} icon={sent === "message" ? <Check /> : <MessageSquare />}>
-          {sent === "message" ? t("copied") : t("copyMessage")}
-        </Channel>
-        <Channel href={email} onClick={() => tell("email")} disabled={!url} icon={<Mail />}>
-          {t("email")}
-        </Channel>
-        {canShare && (
-          <Channel onClick={share} disabled={!url} icon={<Share />}>
-            {t("share")}
-          </Channel>
-        )}
+
+      <div className="mt-4 divide-y divide-border overflow-hidden rounded-xl border border-border">
+        <Way
+          icon={<MessageSquare />}
+          title={t("copyMessage")}
+          note={t("messageNote")}
+          onClick={() => copy("message")}
+          disabled={!url}
+          end={sent === "message" ? <Check className="size-4 shrink-0 text-ok" /> : <Copy className="size-4 shrink-0 text-faint transition-colors group-hover:text-foreground" />}
+        />
+        <Way icon={<Mail />} title={t("email")} note={t("emailNote")} href={email} onClick={() => tell("email")} disabled={!url} />
+        {canShare && <Way icon={<Share />} title={t("share")} note={t("shareNote")} onClick={share} disabled={!url} />}
       </div>
     </div>
   );
 }
 
-function Channel({
+/** One way to send it: what it is, and a line on what it does. */
+function Way({
+  icon,
+  title,
+  note,
   href,
   onClick,
   disabled,
-  icon,
-  children,
+  end,
 }: {
+  icon: ReactNode;
+  title: string;
+  note: string;
   href?: string;
   onClick?: () => void;
   disabled?: boolean;
-  icon: ReactNode;
-  children: ReactNode;
+  end?: ReactNode;
 }) {
+  const body = (
+    <>
+      <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted text-muted-foreground [&_svg]:size-4">{icon}</span>
+      <span className="min-w-0 flex-1">
+        <span className="block text-[13px] font-medium text-foreground">{title}</span>
+        <span className="block truncate text-[12px] text-muted-foreground">{note}</span>
+      </span>
+      {end ?? <ArrowUpRight className="size-4 shrink-0 text-faint transition-colors group-hover:text-foreground" />}
+    </>
+  );
   const style = cn(
-    "flex h-10 flex-auto cursor-pointer items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-border px-3.5 text-[12.5px] font-medium text-foreground transition-colors hover:bg-muted [&_svg]:size-3.5 [&_svg]:shrink-0",
+    "group flex w-full cursor-pointer items-center gap-3 px-3 py-2.5 text-start transition-colors hover:bg-muted/60",
     disabled && "pointer-events-none opacity-50",
   );
   return href ? (
     <a href={href} onClick={onClick} className={style}>
-      {icon}
-      {children}
+      {body}
     </a>
   ) : (
     <button type="button" onClick={onClick} disabled={disabled} className={style}>
-      {icon}
-      {children}
+      {body}
     </button>
   );
 }
@@ -207,11 +224,10 @@ function LinkFooter({ officeId, admin }: { officeId: string; admin: boolean }) {
       setBusy(false);
     }
   };
-  const note = asking ? t("resetAsk") : t("linkNote");
 
   return (
-    <div className="mt-5 flex min-h-8 items-center justify-between gap-3 border-t border-border pt-4 text-[12px] text-muted-foreground">
-      <span className="min-w-0">{note}</span>
+    <div className="mt-4 flex min-h-8 items-center justify-between gap-3 text-[12px] text-muted-foreground">
+      <span className="min-w-0">{asking ? t("resetAsk") : t("linkNote")}</span>
       {admin &&
         (asking ? (
           <span className="flex shrink-0 items-center gap-1">
@@ -235,9 +251,8 @@ function LinkFooter({ officeId, admin }: { officeId: string; admin: boolean }) {
           <button
             type="button"
             onClick={() => setAsking(true)}
-            className="flex h-8 shrink-0 cursor-pointer items-center gap-1.5 rounded-full px-2.5 font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            className="h-8 shrink-0 cursor-pointer rounded-full px-2.5 font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
-            <Refresh className="size-3.5" />
             {t("reset")}
           </button>
         ))}

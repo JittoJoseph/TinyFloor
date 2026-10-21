@@ -2,6 +2,16 @@
 
 import type { ServerMessage } from "@shared/messages";
 import type { RoomSocket } from "./RoomSocket";
+import { learned } from "./actions";
+
+/**
+ * The board's shape, width to height, wherever it's drawn on or shown: points
+ * are fractions of it, so every screen and the board on the wall need the same
+ * shape for a circle to stay a circle.
+ */
+export const BOARD_ASPECT = 2;
+/** Someone who drew this recently is still drawing, as far as the room can tell. */
+const DRAWING_MS = 6000;
 
 export interface Stroke {
   id: string;
@@ -50,15 +60,14 @@ class WhiteboardManager {
   private ready = false;
   private version = 0;
 
-  private openListener = () => this.setOpen(true);
-
   private live?: Stroke;
   private pending: number[] = [];
+  /** When each person last drew, by id; the room sends who drew each stroke. */
+  private drawers = new Map<string, number>();
   private flushTimer?: ReturnType<typeof setTimeout>;
 
   attach(ws: RoomSocket) {
     this.ws = ws;
-    window.addEventListener("openWhiteboard", this.openListener);
     this.ready = false;
     this.strokes.clear();
     this.bump();
@@ -70,10 +79,10 @@ class WhiteboardManager {
   }
 
   detach() {
-    window.removeEventListener("openWhiteboard", this.openListener);
     this.flush();
     this.ws = undefined;
     this.strokes.clear();
+    this.drawers.clear();
     this.open = false;
     this.ready = false;
     this.live = undefined;
@@ -98,9 +107,15 @@ class WhiteboardManager {
     return [...this.strokes.values()];
   }
 
+  /** Who else is drawing on it now. */
+  drawing(now = Date.now()): string[] {
+    return [...this.drawers].filter(([, at]) => now - at < DRAWING_MS).map(([id]) => id);
+  }
+
   setOpen(open: boolean) {
     if (this.open === open) return;
-    if (!open) this.flush();
+    if (open) learned("draw");
+    else this.flush();
     this.open = open;
     this.bump();
   }
@@ -119,6 +134,7 @@ class WhiteboardManager {
       case "board_draw": {
         const incoming = normalise(message);
         if (!incoming.id || !incoming.points.length) return;
+        this.drawers.set(message.by, Date.now());
 
         const existing = this.strokes.get(incoming.id);
         const from = existing ? existing.points.length : 0;

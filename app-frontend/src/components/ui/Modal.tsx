@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useDragControls, useReducedMotion, type PanInfo } from "motion/react";
 import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { X } from "@/components/ui/icons";
@@ -22,11 +22,14 @@ const subscribePhone = (change: () => void) => {
 const PANEL_IN = { duration: 0.2, ease: EASE_OUT } as const;
 const PANEL_OUT = { duration: 0.14, ease: EASE_OUT } as const;
 const SHEET = { duration: 0.28, ease: EASE_OUT } as const;
+/** A sheet pulled down this far, or flicked down this fast, closes. */
+const DISMISS_DISTANCE = 96;
+const DISMISS_SPEED = 500;
 
 /**
  * The app's modal: on a wide screen a card that settles into the middle (a
  * short fade and rise, nothing that unfolds or bounces), on a phone a sheet
- * from the bottom. The backdrop is a plain dim, not a blur: blurring the live
+ * from the bottom that its handle pulls down to close. The backdrop is a plain dim, not a blur: blurring the live
  * floor behind it would mean re-blurring the canvas every frame. Escape and the backdrop close it, focus stays inside while
  * it's open and goes back where it was after, and the page behind doesn't
  * scroll.
@@ -58,6 +61,12 @@ export function Modal({
   const [mounted, setMounted] = useState(false);
   const panel = useRef<HTMLDivElement>(null);
   const closeRef = useRef(onClose);
+  const drag = useDragControls();
+  // Only the handle starts a pull, so the sheet's own content still scrolls.
+  const swipe = phone && dismissible && !reduce;
+  const released = (_: unknown, info: PanInfo) => {
+    if (info.offset.y > DISMISS_DISTANCE || info.velocity.y > DISMISS_SPEED) onClose();
+  };
 
   useEffect(() => {
     closeRef.current = onClose;
@@ -149,13 +158,32 @@ export function Modal({
                   animate={shown}
                   exit={leaving}
                   {...gate}
+                  {...(swipe
+                    ? {
+                        drag: "y" as const,
+                        dragControls: drag,
+                        dragListener: false,
+                        dragConstraints: { top: 0, bottom: 0 },
+                        dragElastic: { top: 0, bottom: 0.9 },
+                        onDragEnd: released,
+                      }
+                    : {})}
                   className={cn(
                     "pointer-events-auto relative max-h-[92dvh] w-full overflow-y-auto overscroll-contain border border-border bg-card shadow-[0_24px_64px_-24px_rgb(0_0_0/0.45)] outline-none",
                     "rounded-t-[26px] pb-[env(safe-area-inset-bottom)] sm:max-h-[calc(100dvh-3rem)] sm:max-w-[28rem] sm:rounded-[26px] sm:pb-0",
                     className,
                   )}
                 >
-                  {phone && <span aria-hidden className="mx-auto mt-2.5 block h-1 w-9 rounded-full bg-foreground/15" />}
+                  {phone && (
+                    // The handle: pulled down, the sheet follows and closes past a point.
+                    <div
+                      aria-hidden
+                      onPointerDown={(event) => swipe && drag.start(event)}
+                      className="flex h-6 cursor-grab touch-none items-start justify-center pt-2.5 active:cursor-grabbing"
+                    >
+                      <span className="block h-1 w-9 rounded-full bg-foreground/15" />
+                    </div>
+                  )}
                   {children}
                   {dismissible && (
                     <button

@@ -75,8 +75,8 @@
         "subtitle": "Gather stopte in september 2025 met het gratis abonnement en rekent nu voor elk lid. Hier zijn zeven alternatieven, vergeleken op wat een echt team betaalt, wat gratis is en waar elk het best in is. Wij maken TinyFloor, dus dat staat bovenaan; al het andere komt van de pagina's van elk product.",
         "points": [
           {
-            "title": "Geen proefperiode die afloopt",
-            "body": "Gather geeft je 30 dagen voordat je betaalt. Het gratis abonnement van TinyFloor heeft geen einddatum: tot 3 mensen, zo lang als je wilt."
+            "title": "Gratis na de proefperiode",
+            "body": "Gather geeft je 30 dagen en rekent daarna per lid. TinyFloor zet je 14 dagen op Pro, en het gratis abonnement heeft geen einddatum: tot 3 mensen, zo lang als je wilt."
           },
           {
             "title": "Niets te installeren",
@@ -1639,7 +1639,8 @@
       "assurance": "Altijd opzegbaar · 14 dagen terugbetaling",
       "noCard": "Geen kaart nodig",
       "perPerson": "{price} per persoon bij een team van {team}",
-      "trial": "Elk team krijgt {days} dagen Pro gratis zodra de vierde persoon erbij komt.",
+      "trial": "Elk nieuw kantoor begint met {days} dagen Pro gratis. Geen kaart nodig.",
+      "founding": "Oprichtersprijs, van jou zolang je abonnement loopt. Vanaf 1 maart 2027 kosten nieuwe abonnementen $ 39.",
       "list": {
         "people": "Tot {people} mensen",
         "floor": "De vloer, chat en kanalen",
@@ -1675,7 +1676,7 @@
     },
     "title": "Eén prijs voor het hele kantoor.",
     "muted": "Niet één per persoon.",
-    "body": "Begin gratis voor maximaal 3 mensen, daarna Pro voor het hele team, voor één prijs.",
+    "body": "Begin met 14 dagen Pro voor het hele team, houd het daarna voor één prijs, of blijf gratis voor maximaal 3 mensen.",
     "seats": {
       "title": "Tien mensen,",
       "muted": "één kleine rekening.",
@@ -1704,8 +1705,12 @@
         "body": "Vraag het binnen 14 dagen na een betaling en je krijgt alles terug."
       },
       "change": {
-        "title": "Een proefperiode als het team komt",
-        "body": "Als een 4e persoon bij een gratis kantoor komt, krijgt het hele team Pro 14 dagen gratis. Geen kaart nodig."
+        "title": "Pro 14 dagen gratis",
+        "body": "Elk nieuw kantoor begint 14 dagen op Pro, met ruimte voor het hele team. Geen kaart nodig. Houd daarna Pro of blijf op Free."
+      },
+      "founding": {
+        "title": "Een oprichtersprijs",
+        "body": "Neem vóór 1 maart 2027 een abonnement en $ 29 per maand blijft van jou zolang je abonnement loopt. Vanaf die datum kost Pro $ 39 per maand voor nieuwe abonnementen."
       },
       "tax": {
         "title": "Btw bij het afrekenen",
@@ -1728,8 +1733,12 @@
         "a": "Nee. Eén prijs dekt het hele kantoor, en gesprekken tussen twee mensen worden nooit geteld."
       },
       {
-        "q": "Wat gebeurt er als een 4e persoon bij een gratis kantoor komt?",
-        "a": "Het hele team krijgt Pro 14 dagen gratis, zonder kaart. Daarna blijft het kantoor op Free tenzij je Pro kiest: iedereen blijft lid, en maximaal 3 mensen kunnen tegelijk op de vloer zijn."
+        "q": "Wat gebeurt er als de proefperiode eindigt?",
+        "a": "Het kantoor gaat naar Free, tenzij je Pro kiest. Niemand wordt verwijderd: nog twee weken kan iedereen binnenkomen, al kan niemand nieuw erbij boven de 3. Daarna kunnen 3 mensen tegelijk op de vloer zijn, en de chat blijft voor iedereen open."
+      },
+      {
+        "q": "Gaat de prijs omhoog?",
+        "a": "Voor nieuwe abonnementen wel: vanaf 1 maart 2027 kost Pro $ 39 per maand. Kantoren die eerder een abonnement nemen, houden $ 29 zolang hun abonnement loopt."
       },
       {
         "q": "Is er een jaarabonnement?",

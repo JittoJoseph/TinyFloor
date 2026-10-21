@@ -232,11 +232,7 @@ export function CreateOfficeFlow() {
               {selling && !!catalog?.trialDays ? (
                 <p className="mt-4 flex items-start gap-2.5 rounded-2xl bg-muted p-3.5 text-[13px] leading-relaxed text-foreground">
                   <Zap className="mt-0.5 size-4 shrink-0 text-brand" />
-                  {t("trialNote", {
-                    free: free?.seats ?? 3,
-                    plan: NAMES[catalog.trialPlan ?? "pro"],
-                    days: catalog.trialDays,
-                  })}
+                  {t("trialNote", { plan: NAMES[catalog.trialPlan ?? "pro"], days: catalog.trialDays })}
                 </p>
               ) : (
                 <p className="mt-4 text-[12.5px] leading-relaxed text-muted-foreground">{t("inviteLater")}</p>

@@ -1,19 +1,16 @@
 // Labels drawn inside the Phaser canvas. The scene lives outside React, so the
 // room page hands over the translated strings before the game boots.
 export interface SceneText {
-  sit: string;
-  stand: string;
   meeting: string;
-  draw: string;
+  /** On the whiteboard while someone else draws: "Drawing · Riley". */
+  drawing: string;
   /** On your own desk's plate while you're away from it. */
   yourDesk: string;
 }
 
 let text: SceneText = {
-  sit: "Press E to sit",
-  stand: "Press E to stand",
   meeting: "Meeting",
-  draw: "Click to draw",
+  drawing: "Drawing",
   yourDesk: "Your desk",
 };
 

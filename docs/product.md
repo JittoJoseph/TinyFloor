@@ -42,8 +42,10 @@ work happens. What we don't build, though each would raise usage numbers:
 - **Your own desk.** People value what's theirs more than what's merely
   available, and the feeling comes from choosing and using it (psychological
   ownership; the endowment and IKEA effects). A desk is a home base, and
-  being at it or away says whether you're available. So: you claim a desk by sitting at it (offered after you sit,
-  never as a prompt on approach), and nobody else sits there. While its owner
+  being at it or away says whether you're available. So: you claim a desk at it ("Make this my desk",
+  offered as you sit, never on approach; "Move my desk here" once you have
+  one), it's confirmed once, and nobody else sits there. The claim is the
+  base desk customisation will build on. While its owner
   isn't at it, a claimed desk carries their face, with a dot while they're in
   the office, so the floor reads as a seating chart from across the room;
   walk up and it opens to their name. Yours says "Your desk" from anywhere,
@@ -56,7 +58,7 @@ work happens. What we don't build, though each would raise usage numbers:
   walk in and sit down: half a second, no prompt. Arriving already seated was
   tried and dropped (static, and nobody sees you come in); making people walk
   and sit themselves was rejected (a click every day for nothing). Without a
-  desk yet, you appear beside a free one, where "Pick a desk" is something you
+  desk yet, you appear beside a free one, where claiming it is something you
   can act on.
 - **Being noticed when you come in.** In Gallup's 2024 data, 25% of fully
   remote workers reported loneliness against 16% on site, and what lowers it
@@ -228,8 +230,36 @@ missing features on the map.
   listeners. Listening in step is Spotify's Jam: a pasted Jam link goes on
   your card as Join Jam (starting one needs Premium).
 
+## What's at hand on the floor, and the whiteboard (21 October)
+
+- **One prompt for what you can do where you stand**: sit, stand up, open the
+  whiteboard. The nearest wins, E does it, and the prompt is a pill above the
+  dock, a button for a finger. It used to be a label drawn on the map, in the
+  same dark pill as name tags, stacked under your own and moving with the way
+  a chair faced.
+- **Never more than one thing above the dock.** The desk offer, its
+  confirmation and the action prompt share one place, and the plan lives in a
+  bar at the top of the office: a stack of floating notices read as clutter.
+- **Said once.** Each prompt shows until you've done that thing once, by any
+  way (E, the pill, clicking the chair), in this browser. Being sat at your
+  desk on arrival doesn't count.
+- **The whiteboard has one shape everywhere (2:1).** Points are fractions of
+  the board, and the drawing view used to fill the screen, so a circle drawn
+  on a laptop was an oval on a phone and on the wall. The view now keeps the
+  board's shape, and the wall shows it the same.
+- **A sketch going on is visible across the room**: while someone else draws,
+  the board carries "Drawing · Riley", like the meeting table's tag. Its frame
+  lightens when you're close, instead of an orange outline.
+- **Your own desk's plate folds back while you're at its chair**, rather than
+  open over your name.
+
 ## Small decisions worth remembering
 
+- **The accent is ink, not a hue** (21 October). Emphasis comes from
+  contrast (foreground on background); colour is kept for status (ok, warn,
+  destructive) and for the floor itself, which brings plenty. The orange
+  that was the accent everywhere read as generic; it stays only as `signal`:
+  the logo's square and the plan bar's warning, where it means "look here".
 - **"Office", not "workspace".** The whole product is the metaphor (a floor,
   desks, walking over), "workspace" is Slack's and Notion's abstract word,
   and "virtual office" is what people search for.
@@ -243,7 +273,10 @@ missing features on the map.
   One-use invitations piled up unread, and a link sent to a group chat only
   worked for the first person. An invite is sent the ways people actually
   send things: a ready message for the team's chat, an email from their own
-  address, the phone's share sheet.
+  address, the phone's share sheet. The link comes first with one button to copy it;
+  a full office says so instead of showing a link that would turn people away.
+- **A phone sheet closes the way its handle says**: pulled down past a point
+  or flicked, it goes; a small pull springs back.
 - **The doors' main button never moves**: every step is the same height, so
   people can keep pressing the same place, with a thumb on a phone.
 - **No way out within a click's reach** (17 October). The menu under your
@@ -291,8 +324,8 @@ missing features on the map.
   might), when the request waits in People for the office's admins, with a
   count on the rail, and the asker's page walks them in the moment they're
   let in; or keep the office out of sight. A university's domain is out of
-  sight until an admin changes it. A full free office's trial starts for the fourth, as with an
-  invite. Personal addresses (Gmail, Outlook, Yahoo, UOL and the like) never
+  sight until an admin changes it. A full office turns the next one away, as an invite
+  would. Personal addresses (Gmail, Outlook, Yahoo, UOL and the like) never
   match, only the owner's domain counts, and only Google-verified addresses
   do: a password account's email is never checked.
 - **Files, mentions and search in chat** (20 October), the three things that

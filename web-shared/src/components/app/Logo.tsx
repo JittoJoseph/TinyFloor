@@ -16,7 +16,7 @@ export function Logo({ size = 36, className }: { size?: number; className?: stri
         <rect x="1" y="1" width="6" height="6" rx="1.8" fill="currentColor" />
         <rect x="9" y="1" width="6" height="6" rx="1.8" fill="currentColor" opacity="0.45" />
         <rect x="1" y="9" width="6" height="6" rx="1.8" fill="currentColor" opacity="0.45" />
-        <rect x="9" y="9" width="6" height="6" rx="1.8" fill="var(--ui-brand)" />
+        <rect x="9" y="9" width="6" height="6" rx="1.8" fill="var(--ui-signal)" />
       </svg>
     </span>
   );

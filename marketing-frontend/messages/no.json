@@ -75,8 +75,8 @@
         "subtitle": "Gather sluttet med gratisplanen i september 2025 og tar nå betalt for hvert medlem. Her er sju alternativer, sammenlignet etter hva et ekte team betaler, hva som er gratis og hva hvert enkelt er best på. Vi lager TinyFloor, så det står først; alt annet kommer fra hvert produkts egne sider.",
         "points": [
           {
-            "title": "Ingen prøveperiode som går ut",
-            "body": "Gather gir deg 30 dager før du må betale. TinyFloors gratisplan har ingen sluttdato: opptil 3 personer, så lenge du vil."
+            "title": "Gratis etter prøveperioden",
+            "body": "Gather gir deg 30 dager og tar så betalt for hvert medlem. TinyFloor starter deg på Pro i 14 dager, og gratisplanen har ingen sluttdato: opptil 3 personer, så lenge du vil."
           },
           {
             "title": "Ingenting å installere",
@@ -1639,7 +1639,8 @@
       "assurance": "Si opp når som helst · 14 dagers refusjon",
       "noCard": "Ikke noe kort",
       "perPerson": "{price} per person i et team på {team}",
-      "trial": "Hvert team får {days} dager Pro gratis når den fjerde personen blir med.",
+      "trial": "Hvert nytt kontor starter med {days} dager Pro gratis. Ikke noe kort.",
+      "founding": "Grunnleggerpris, din så lenge abonnementet fortsetter. Fra 1. mars 2027 koster nye abonnementer 39 $.",
       "list": {
         "people": "Opptil {people} personer",
         "floor": "Gulvet, chat og kanaler",
@@ -1675,7 +1676,7 @@
     },
     "title": "Én pris for hele kontoret.",
     "muted": "Ikke én per person.",
-    "body": "Start gratis for opptil 3 personer, deretter Pro for hele teamet, til én pris.",
+    "body": "Start med 14 dager Pro for hele teamet, behold det deretter for én pris, eller fortsett gratis for opptil 3 personer.",
     "seats": {
       "title": "Ti personer,",
       "muted": "én liten regning.",
@@ -1704,8 +1705,12 @@
         "body": "Spør innen 14 dager etter en betaling, så får du alt tilbake."
       },
       "change": {
-        "title": "En prøveperiode når teamet kommer",
-        "body": "Når en 4. person blir med i et gratis kontor, får hele teamet Pro gratis i 14 dager. Ikke noe kort nødvendig."
+        "title": "Pro gratis i 14 dager",
+        "body": "Hvert nytt kontor starter på Pro i 14 dager, med plass til hele teamet. Ikke noe kort. Behold deretter Pro, eller bli på Free."
+      },
+      "founding": {
+        "title": "En grunnleggerpris",
+        "body": "Abonner før 1. mars 2027, så er 29 $ i måneden din så lenge abonnementet fortsetter. Fra den datoen koster Pro 39 $ i måneden for nye abonnementer."
       },
       "tax": {
         "title": "Mva. ved betaling",
@@ -1728,8 +1733,12 @@
         "a": "Nei. Én pris dekker hele kontoret, og samtaler mellom to personer telles aldri."
       },
       {
-        "q": "Hva skjer når en 4. person blir med i et gratis kontor?",
-        "a": "Hele teamet får Pro gratis i 14 dager, uten kort. Etter det blir kontoret på Free med mindre dere velger Pro: alle forblir medlemmer, og opptil 3 kan være på gulvet samtidig."
+        "q": "Hva skjer når prøveperioden slutter?",
+        "a": "Kontoret går over til Free hvis dere ikke velger Pro. Ingen fjernes: i to uker til kan alle komme inn, men ingen nye kan bli med utover 3. Deretter kan 3 personer være på etasjen samtidig, og chatten er åpen for alle."
+      },
+      {
+        "q": "Går prisen opp?",
+        "a": "For nye abonnementer, ja: fra 1. mars 2027 koster Pro 39 $ i måneden. Kontorer som abonnerer før, beholder 29 $ så lenge abonnementet fortsetter."
       },
       {
         "q": "Finnes det en årsplan?",

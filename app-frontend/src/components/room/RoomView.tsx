@@ -23,7 +23,8 @@ import { DoneChip } from "@/components/ui/DoneChip";
 import type { RoomTicket } from "@/lib/api";
 import type { ShareResult } from "@/lib/share";
 import { useInvite } from "@/components/app/Invite";
-import { DeskHint, DeskOffer } from "./Desks";
+import { useOfficeMaybe } from "@/components/app/OfficeShell";
+import { FloorPrompt } from "./FloorPrompt";
 import { FLOOR_ARRIVED_EVENT, floorRequested, sinceFloorRequested, useFloor } from "@/lib/floor";
 import { track } from "@/lib/analytics";
 import { EASE_OUT } from "@/lib/ease";
@@ -253,8 +254,10 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
         {inviteChip && canInvite && <InviteChip copied={copied} onClick={invite} />}
       </div>
 
-      <DeskHint />
-      <DeskOffer />
+      {/* Above the dock, one at a time: the desk you sat at, or what you can do where you stand. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-20 z-40 flex justify-center px-3 sm:bottom-24">
+        <FloorPrompt />
+      </div>
       <Joystick />
       <ProximityOverlay />
       <CallOverlay />
@@ -270,8 +273,11 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
 
 function RoomEnded({ reason, leaveHref, onRetry }: { reason: RoomEnd; leaveHref: string; onRetry: () => void }) {
   const t = useTranslations("room.ended");
+  const office = useOfficeMaybe();
+  // A Free office with more members than Free holds on the floor at once (docs/pricing.md) says why it's full.
+  const freeFull = !!office && office.office.plan === "free" && office.overview.members.length > office.office.seats;
   const copy: Record<RoomEnd, { title: string; body: string }> = {
-    full: { title: t("fullTitle"), body: t("full") },
+    full: { title: t("fullTitle"), body: freeFull ? t("fullFree", { free: office.office.seats }) : t("full") },
     replaced: { title: t("replacedTitle"), body: t("replaced") },
     closed: { title: t("closedTitle"), body: t("closed") },
     revoked: { title: t("revokedTitle"), body: t("revoked") },

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
 import { Eraser, Pencil, Trash2, X } from "@/components/ui/icons";
-import { whiteboard, Stroke } from "@/lib/WhiteboardManager";
+import { BOARD_ASPECT, whiteboard, Stroke } from "@/lib/WhiteboardManager";
 import { RoomIconButton, Divider, label } from "@/components/room/ui";
 
 const COLORS = ["#2c2c2c", "#ff4e00", "#0f5741", "#2f4ad0"];
@@ -19,13 +19,12 @@ interface Tool {
 
 export default function WhiteboardOverlay() {
   const t = useTranslations("whiteboard");
-  const board = useSyncExternalStore(
-    whiteboard.subscribe,
-    whiteboard.getSnapshot,
-    whiteboard.getServerSnapshot,
-  );
+  const board = useSyncExternalStore(whiteboard.subscribe, whiteboard.getSnapshot, whiteboard.getServerSnapshot);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const spaceRef = useRef<HTMLDivElement>(null);
+  /** The room the board has, inside its padding. */
+  const space = useRef({ width: 0, height: 0 });
   const [tool, setTool] = useState<Tool>({ color: COLORS[0], size: SIZES[0], erase: false });
   const drawingRef = useRef(false);
 
@@ -50,15 +49,20 @@ export default function WhiteboardOverlay() {
     ctx.stroke();
   }, []);
 
+  // The board keeps its shape (BOARD_ASPECT), as large as the room allows, so a
+  // stroke lands in the same place on every screen and on the board on the wall.
   const repaint = useCallback(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
-    if (!canvas || !ctx) return;
+    if (!canvas || !ctx || !space.current.width) return;
 
-    const rect = canvas.getBoundingClientRect();
+    const width = Math.min(space.current.width, space.current.height * BOARD_ASPECT);
+    const height = width / BOARD_ASPECT;
     const ratio = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.round(rect.width * ratio);
-    canvas.height = Math.round(rect.height * ratio);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    canvas.width = Math.round(width * ratio);
+    canvas.height = Math.round(height * ratio);
 
     ctx.fillStyle = "#ffffff";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -66,13 +70,16 @@ export default function WhiteboardOverlay() {
   }, [paint]);
 
   useEffect(() => {
-    if (!board.open) return;
-    repaint();
+    if (!board.open || !spaceRef.current) return;
+    const observer = new ResizeObserver(([entry]) => {
+      space.current = entry.contentRect;
+      repaint();
+    });
+    observer.observe(spaceRef.current);
     const unsubscribe = whiteboard.onStroke(paint);
-    window.addEventListener("resize", repaint);
     return () => {
+      observer.disconnect();
       unsubscribe();
-      window.removeEventListener("resize", repaint);
     };
   }, [board.open, board.ready, repaint, paint]);
 
@@ -107,9 +114,7 @@ export default function WhiteboardOverlay() {
     <div className="fixed inset-0 z-[70] flex flex-col bg-foreground/45 backdrop-blur-sm p-3 sm:p-5 md:p-8">
       <div className="w-full max-w-5xl mx-auto flex-1 min-h-0 flex flex-col rounded-3xl bg-card border border-border shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] overflow-hidden">
         <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-2.5 border-b border-border">
-          <span className={`${label} text-foreground ps-1 hidden md:block`}>
-            {t("title")}
-          </span>
+          <span className={`${label} text-foreground ps-1 hidden md:block`}>{t("title")}</span>
 
           {/* The tools scroll sideways on a narrow phone rather than pushing
               the way out of the board off the edge. */}
@@ -131,75 +136,72 @@ export default function WhiteboardOverlay() {
               );
             })}
 
-          <Divider className="mx-0 sm:mx-0.5" />
+            <Divider className="mx-0 sm:mx-0.5" />
 
-          {SIZES.map((size) => (
+            {SIZES.map((size) => (
+              <RoomIconButton
+                key={size}
+                size="sm"
+                tone={!tool.erase && tool.size === size ? "dark" : "quiet"}
+                aria-pressed={!tool.erase && tool.size === size}
+                title={t("penSize", { size })}
+                onClick={() => pen(size)}
+                icon={<Pencil style={{ width: 9 + size, height: 9 + size }} />}
+              />
+            ))}
+
             <RoomIconButton
-              key={size}
               size="sm"
-              tone={!tool.erase && tool.size === size ? "dark" : "quiet"}
-              aria-pressed={!tool.erase && tool.size === size}
-              title={t("penSize", { size })}
-              onClick={() => pen(size)}
-              icon={<Pencil style={{ width: 9 + size, height: 9 + size }} />}
+              tone={tool.erase ? "dark" : "quiet"}
+              aria-pressed={tool.erase}
+              title={t("eraser")}
+              onClick={() => setTool({ color: tool.color, size: ERASER_SIZE, erase: true })}
+              icon={<Eraser className="w-4 h-4" />}
             />
-          ))}
 
-          <RoomIconButton
-            size="sm"
-            tone={tool.erase ? "dark" : "quiet"}
-            aria-pressed={tool.erase}
-            title={t("eraser")}
-            onClick={() => setTool({ color: tool.color, size: ERASER_SIZE, erase: true })}
-            icon={<Eraser className="w-4 h-4" />}
-          />
+            <Divider className="mx-0 sm:mx-0.5" />
 
-          <Divider className="mx-0 sm:mx-0.5" />
-
-          <RoomIconButton
-            size="sm"
-            title={t("clear")}
-            onClick={() => {
-              whiteboard.clear();
-              repaint();
-            }}
-            icon={<Trash2 className="w-4 h-4" />}
-          />
+            <RoomIconButton
+              size="sm"
+              title={t("clear")}
+              onClick={() => {
+                whiteboard.clear();
+                repaint();
+              }}
+              icon={<Trash2 className="w-4 h-4" />}
+            />
           </div>
 
-          <RoomIconButton
-            tone="dark"
-            title={t("close")}
-            onClick={() => whiteboard.setOpen(false)}
-            icon={<X className="w-4 h-4" />}
-          />
+          <RoomIconButton tone="dark" title={t("close")} onClick={() => whiteboard.setOpen(false)} icon={<X className="w-4 h-4" />} />
         </div>
 
-        {/* What a team draws is theirs: never in a recording (lib/analytics). */}
-        <canvas
-          ref={canvasRef}
-          className="ph-no-capture flex-1 min-h-0 w-full touch-none cursor-crosshair bg-card"
-          onPointerDown={(event) => {
-            event.currentTarget.setPointerCapture(event.pointerId);
-            drawingRef.current = true;
-            const { x, y } = at(event);
-            whiteboard.beginStroke(tool.color, tool.size, tool.erase, x, y);
-          }}
-          onPointerMove={(event) => {
-            if (!drawingRef.current) return;
-            const { x, y } = at(event);
-            whiteboard.extendStroke(x, y);
-          }}
-          onPointerUp={() => {
-            drawingRef.current = false;
-            whiteboard.endStroke();
-          }}
-          onPointerLeave={() => {
-            if (!drawingRef.current) return;
-            drawingRef.current = false;
-            whiteboard.endStroke();
-          }}
-        />
+        <div ref={spaceRef} className="flex min-h-0 flex-1 items-center justify-center bg-muted/60 p-3 sm:p-5">
+          {/* What a team draws is theirs: never in a recording (lib/analytics). */}
+          <canvas
+            ref={canvasRef}
+            className="ph-no-capture touch-none cursor-crosshair rounded-xl bg-white shadow-sm ring-1 ring-border"
+            onPointerDown={(event) => {
+              event.currentTarget.setPointerCapture(event.pointerId);
+              drawingRef.current = true;
+              const { x, y } = at(event);
+              whiteboard.beginStroke(tool.color, tool.size, tool.erase, x, y);
+            }}
+            onPointerMove={(event) => {
+              if (!drawingRef.current) return;
+              const { x, y } = at(event);
+              whiteboard.extendStroke(x, y);
+            }}
+            onPointerUp={() => {
+              drawingRef.current = false;
+              whiteboard.endStroke();
+            }}
+            onPointerLeave={() => {
+              if (!drawingRef.current) return;
+              drawingRef.current = false;
+              whiteboard.endStroke();
+            }}
+          />
+        </div>
       </div>
 
       <p className="text-[11px] text-white/70 text-center mt-2.5">{t("hint")}</p>

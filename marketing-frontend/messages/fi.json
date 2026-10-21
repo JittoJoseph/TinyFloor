@@ -75,8 +75,8 @@
         "subtitle": "Gather lopetti ilmaisversion syyskuussa 2025 ja laskuttaa nyt jokaisesta jäsenestä. Tässä on seitsemän vaihtoehtoa vertailtuna sen mukaan, mitä oikea tiimi maksaa, mikä on ilmaista ja missä kukin on paras. Me teemme TinyFlooria, joten se on ensimmäisenä; kaikki muu on peräisin kunkin tuotteen omilta sivuilta.",
         "points": [
           {
-            "title": "Ei päättyvää kokeilujaksoa",
-            "body": "Gather antaa 30 päivää ennen kuin maksat. TinyFloorin ilmaisella paketilla ei ole loppupäivää: enintään 3 henkeä niin pitkään kuin haluat."
+            "title": "Ilmainen kokeilun jälkeen",
+            "body": "Gather antaa 30 päivää ja laskuttaa sitten jokaisesta jäsenestä. TinyFloor aloittaa sinut Prolla 14 päiväksi, eikä sen ilmaisella tilauksella ole päättymispäivää: enintään 3 henkeä, niin kauan kuin haluat."
           },
           {
             "title": "Ei mitään asennettavaa",
@@ -1639,7 +1639,8 @@
       "assurance": "Peru milloin vain · 14 päivän hyvitys",
       "noCard": "Ei korttia",
       "perPerson": "{price} henkeä kohden {team} hengen tiimissä",
-      "trial": "Jokainen tiimi saa {days} päivää Prota ilmaiseksi, kun neljäs henkilö liittyy.",
+      "trial": "Jokainen uusi toimisto alkaa {days} päivän ilmaisella Prolla. Korttia ei tarvita.",
+      "founding": "Perustajahinta, sinun niin kauan kuin tilaus jatkuu. 1. maaliskuuta 2027 alkaen uudet tilaukset maksavat 39 $.",
       "list": {
         "people": "Enintään {people} henkeä",
         "floor": "Kerros, chat ja kanavat",
@@ -1675,7 +1676,7 @@
     },
     "title": "Yksi hinta koko toimistolle.",
     "muted": "Ei henkeä kohden.",
-    "body": "Aloita ilmaiseksi enintään 3 hengelle, sitten Pro koko tiimille yhdellä hinnalla.",
+    "body": "Aloita 14 päivän Prolla koko tiimille, pidä se sitten yhdellä hinnalla tai jatka ilmaiseksi enintään 3 hengelle.",
     "seats": {
       "title": "Kymmenen henkeä,",
       "muted": "yksi pieni lasku.",
@@ -1704,8 +1705,12 @@
         "body": "Pyydä 14 päivän kuluessa mistä tahansa maksusta, niin saat kaiken takaisin."
       },
       "change": {
-        "title": "Kokeilu, kun tiimi saapuu",
-        "body": "Kun 4. henkilö liittyy ilmaiseen toimistoon, koko tiimi saa Pron ilmaiseksi 14 päiväksi. Korttia ei tarvita."
+        "title": "Pro ilmaiseksi 14 päivää",
+        "body": "Jokainen uusi toimisto alkaa Prolla 14 päiväksi, ja tilaa on koko tiimille. Korttia ei tarvita. Sen jälkeen pidä Pro tai jää Freehen."
+      },
+      "founding": {
+        "title": "Perustajahinta",
+        "body": "Tilaa ennen 1. maaliskuuta 2027, niin 29 $ kuukaudessa on sinun niin kauan kuin tilaus jatkuu. Siitä päivästä alkaen Pro maksaa uusille tilauksille 39 $ kuukaudessa."
       },
       "tax": {
         "title": "Verot kassalla",
@@ -1728,8 +1733,12 @@
         "a": "Ei. Yksi hinta kattaa koko toimiston, eikä kahden ihmisen välisiä puheluita lasketa koskaan."
       },
       {
-        "q": "Mitä tapahtuu, kun neljäs henkilö liittyy ilmaiseen toimistoon?",
-        "a": "Koko tiimi saa Pron ilmaiseksi 14 päiväksi, ilman korttia. Sen jälkeen toimisto pysyy Free-tasolla, ellette valitse Prota: kaikki pysyvät jäseninä, ja kerrallaan kerroksessa voi olla enintään 3."
+        "q": "Mitä tapahtuu, kun kokeilu päättyy?",
+        "a": "Toimisto siirtyy Freehen, ellette valitse Prota. Ketään ei poisteta: vielä kahden viikon ajan kaikki pääsevät sisään, mutta yli 3 hengen jälkeen uusia ei liity. Sen jälkeen kerroksessa voi olla 3 henkeä kerrallaan, ja chat pysyy kaikille auki."
+      },
+      {
+        "q": "Nouseeko hinta?",
+        "a": "Uusilla tilauksilla kyllä: 1. maaliskuuta 2027 alkaen Pro maksaa 39 $ kuukaudessa. Sitä ennen tilanneet toimistot pitävät 29 $ niin kauan kuin tilaus jatkuu."
       },
       {
         "q": "Onko vuosisopimusta?",

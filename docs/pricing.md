@@ -1,7 +1,9 @@
 # Pricing, and why it is what it is
 
-Free for up to 3 people, then **Pro: $29 a month for the whole team**,
-monthly only. Decided 11 October 2026 after three earlier shapes. The numbers
+Every office starts on **Pro, free for 14 days**. Then **Pro: $29 a month for
+the whole team** (the founding price, $39 for new subscriptions from 1 March
+2027), or Free for up to 3 people. Monthly only. The plans were decided on 11
+October 2026 and the trial and founding price on 21 October. The numbers
 behind it are in `costs.md`.
 
 ## What we tried first, and why it went
@@ -58,11 +60,42 @@ ask Creem first.
 - **Free for 3, forever.** The whole product, HD included, for a small group.
   The one limit is people, and it lands exactly when the product becomes
   valuable: the team arriving.
-- **The 4th person starts a 14-day Pro trial, no card.** Before the trial, a
-  team of four met a locked door at the moment it moved in, which is the
-  likeliest reason people left. With it, the team lives in Pro before anyone
-  decides, so paying is keeping something, not buying something. Once per
-  office; never for one that has paid.
+- **Every office starts on a 14-day Pro trial, no card (21 October).** The
+  first trial started only when a 4th person joined a full free office. On
+  21 October, of 43 offices, 34 had one person, 7 two and 2 three: none had
+  ever reached four, so no team had seen Pro, and nobody had paid. Starting
+  on Pro shows the whole product from the first minute, room for everyone
+  included, and paying becomes keeping something rather than buying it (a
+  "reverse trial"; reported conversion 7–21%, against 3–15% for freemium,
+  vendor figures). 14 days, not 7: the one large randomised test favoured 7,
+  but for single-user products; a team needs invites to land and a working
+  week of use. The clock starts when the office is made: simpler, and
+  nothing is lost by a solo tester running it down. Offices that had never
+  had a trial got one on 21 October (migration 0026).
+- **When the trial ends: soft, never locked, and every office is asked.**
+  Admins hear in its last 3 days. After it, the office still reads as Pro,
+  with billing to add ("Billing needed"): Pro's button is "Update billing",
+  Free's is "Downgrade to Free", whatever the office's size. Paying is
+  keeping what they have, not buying something new; Free is a step down they
+  choose, not where they were dropped. An office of 3 or fewer used to fall
+  to Free silently, so the smallest teams never saw the choice. Underneath
+  it's Free until they pay: up to 3 people nothing changes; more than 3,
+  nobody is removed and everyone keeps coming in for 14 more days while
+  nobody new joins, then the floor holds 3 at once; chat stays open to
+  everyone. Downgrading (during the trial too) settles it (`trial_ends_at =
+  0`) and gives up the rest of the grace, so it's asked once, with Keep Pro
+  as the easy answer.
+- **One bar on the floor, the plan page for everything else.** The bar is
+  solid, across the top of the office, hidden for the day by its ×; its one
+  action opens the plan page, and on a phone the whole bar is the button.
+  Every limit felt elsewhere (a full office, the meeting hours, the office
+  menu) also goes to the plan page: there's no upgrade dialog over the app.
+  Admins' and members' lines differ on purpose: the admin pays, the team
+  asks. Limits are said as room ("3 at a time"), never as what's withheld.
+- **The plan page is short.** A notice only when something needs doing (a
+  failed card, a plan ending). The plan, with the trial's days as a bar and
+  two facts. Pro and Free side by side, equal height, Pro first on a phone,
+  three lines and a price each. Subscribed: the card and invoices instead.
 - **No card for the trial.** A card-up-front trial converts more of its
   trials, but forgotten charges come back as refunds and chargebacks; Creem
   charges for disputes, can close a store with many, and reviews stores for
@@ -86,6 +119,18 @@ ask Creem first.
   limited. Each copy of the public lobby gets 2 meeting hours a day, since
   nobody pays for it.
 - **Monthly only.** One price, cancel any time, full refund within 14 days.
+- **A founding price, said with a real date (21 October).** $29 a month for
+  offices that subscribe before 1 March 2027, kept for as long as they stay
+  subscribed; new subscriptions after that pay $39. Not "$49, now $39" and
+  not "limited time" without an end: a crossed-out price must be one actually
+  charged for a substantial time (FTC, 16 CFR 233.1), we had charged nothing,
+  and Creem reviews stores for exactly that. A real date and a real later
+  price give the same pull honestly, and reward the first customers. $29 and
+  not $39 now: no paying customers yet, and $29 stays under what a team lead
+  puts on a card without asking. **On 1 March 2027:** raise the live Creem
+  product to $39 (subscriptions keep the price they started with), set
+  `FOUNDING` in `web-shared/src/lib/founding.ts` and the site's $29 copy
+  accordingly; the founding lines hide themselves after the date.
 
 ## How the price is said
 
@@ -98,6 +143,7 @@ pricing page):
 | Per day, before there's a team | "That's under $1 a day." |
 | An anchor beside it, never crossed out | "Per-person tools would charge about $72 a month for the same team." |
 | Price on the button, risk reversal under it | "Get Pro · $29 a month" / "Cancel any time. Full refund within 14 days." |
+| A real later price, until 1 March 2027 | "Founding price: yours for as long as you stay subscribed. Offices that subscribe from 1 March 2027 pay $39." |
 
 Not used on purpose: countdowns, crossed-out "was" prices, "most popular"
 badges, invented testimonials. They'd be false with one plan and few
@@ -110,6 +156,6 @@ within six months in ChartMogul's survey); free trials 15–25% of trials, from
 fewer starts; reverse trials (start on paid, fall back to free) 8–24%. Our
 team trial is a reverse trial that starts only when a team commits.
 
-The funnel that matters is: a new office → an invite sent on the first day →
-a second person arrives → a fourth (the trial) → Pro. Price only matters at
-the last step.
+The funnel that matters is: a new office (on the trial) → an invite sent on
+the first day → a second person arrives → the team settles in → Pro before
+the trial ends. Price only matters at the last step.

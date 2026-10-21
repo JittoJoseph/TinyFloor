@@ -1,7 +1,7 @@
 import { env } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
 import { verifyTicket } from "../../shared-protocol/src";
-import { call, fakeRealtime, makeUser, type TestUser } from "./helpers";
+import { call, fakeRealtime, makeUser, onFree, type TestUser } from "./helpers";
 
 async function officeOf(admin: TestUser, name = "Studio") {
   const { status, body } = await call<{ office: { id: string } }>(admin, "POST", "/v1/offices", { name });
@@ -20,23 +20,26 @@ async function join(user: TestUser, token: string) {
 }
 
 describe("offices", () => {
-  it("makes a free office with the creator as its admin and owner", async () => {
+  it("makes an office on the Pro trial, with the creator as its admin and owner", async () => {
     const olive = await makeUser("Olive");
     const { status, body } = await call<{ office: Record<string, unknown> }>(olive, "POST", "/v1/offices", {
       name: "  Design   Team ",
     });
     expect(status).toBe(201);
+    // The whole team can move in before anyone decides (docs/pricing.md).
     expect(body.office).toMatchObject({
       name: "Design Team",
-      plan: "free",
-      seats: 3,
+      plan: "pro",
+      seats: 15,
       members: 1,
       role: "admin",
       owner: olive.id,
+      graceEndsAt: null,
     });
+    expect((body.office.trialEndsAt as number) - Date.now()).toBeGreaterThan(13.9 * 86_400_000);
 
     const me = await call<{ offices: unknown[] }>(olive, "GET", "/v1/me");
-    expect(me.body.offices).toEqual([expect.objectContaining({ name: "Design Team", role: "admin", seats: 3 })]);
+    expect(me.body.offices).toEqual([expect.objectContaining({ name: "Design Team", role: "admin", seats: 15 })]);
   });
 
   it("tells the team's Discord about a new office", async () => {
@@ -76,7 +79,7 @@ describe("offices", () => {
     }>(olive, "GET", `/v1/offices/${officeId}/overview`);
 
     expect(status).toBe(200);
-    expect(body.office).toMatchObject({ name: "Overview", members: 1, role: "admin", seats: 3 });
+    expect(body.office).toMatchObject({ name: "Overview", members: 1, role: "admin", seats: 15 });
     expect(body.members.map((member) => member.displayName)).toEqual(["Olive"]);
     expect(body.people).toBe(2);
 
@@ -109,13 +112,12 @@ describe("offices", () => {
 });
 
 describe("seats", () => {
-  // These offices have had their team trial (test/billing.test.ts), so they hold the free plan's 3.
-  const trialUsed = (id: string) => env.DB.prepare("UPDATE offices SET trial_ends_at = 0 WHERE id = ?").bind(id).run();
+  // These offices are on Free, past their trial (test/billing.test.ts), so they hold Free's 3.
 
   it("counts members, and refuses the one that would overfill the office", async () => {
     const olive = await makeUser("Olive");
     const id = await officeOf(olive);
-    await trialUsed(id);
+    await onFree(id);
     const { code } = await inviteCode(olive, id);
 
     expect((await join(await makeUser("A"), code)).status).toBe(200);
@@ -131,7 +133,7 @@ describe("seats", () => {
     const bo = await makeUser("Bo");
     const cy = await makeUser("Cy");
     const id = await officeOf(olive);
-    await trialUsed(id);
+    await onFree(id);
     const { code } = await inviteCode(olive, id);
     await join(ada, code);
     await join(bo, code);
@@ -148,7 +150,7 @@ describe("seats", () => {
   it("tells the link's preview when the office is full", async () => {
     const olive = await makeUser("Olive");
     const id = await officeOf(olive, "Snug");
-    await trialUsed(id);
+    await onFree(id);
     const { code } = await inviteCode(olive, id);
     expect(
       (await call<{ invite: { full: boolean; officeName: string } }>(null, "GET", `/v1/invites/${code}`)).body.invite,
@@ -267,7 +269,7 @@ describe("walking in", () => {
       room: id,
       sub: olive.id,
       role: "admin",
-      cap: 3,
+      cap: 15,
     });
     expect((await call(await makeUser("Otto"), "POST", `/v1/offices/${id}/ticket`)).status).toBe(404);
   });
@@ -290,6 +292,6 @@ describe("office floors", () => {
     expect((await call(await makeUser("Gus", { guest: true }), "POST", `/v1/offices/${id}/ticket`)).status).toBe(404);
     expect((await call(await makeUser("Otto"), "POST", `/v1/offices/${id}/ticket`)).status).toBe(404);
     const { body } = await call<{ ticket: string }>(olive, "POST", `/v1/offices/${id}/ticket`);
-    expect(await verifyTicket(body.ticket, env.TICKET_SECRET)).toMatchObject({ room: id, role: "admin", cap: 3 });
+    expect(await verifyTicket(body.ticket, env.TICKET_SECRET)).toMatchObject({ room: id, role: "admin", cap: 15 });
   });
 });

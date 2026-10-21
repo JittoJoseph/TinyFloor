@@ -86,10 +86,12 @@ export interface OfficeSummary {
   here?: number;
   /** Who is on the floor right now, as they look (only from /v1/me). */
   inNow?: PresentPerson[];
-  /** When the team trial ends, while one runs (docs/pricing.md): the plan is the trial's until then. */
+  /** When the trial ends, while one runs (docs/pricing.md): the plan is the trial's until then. */
   trialEndsAt?: number | null;
-  /** Free, never trialled and never paid: past the free seats, the next person starts the trial (where plans are sold). */
-  trialOpen?: boolean;
+  /** When the trial ended, until a plan is bought or Free is chosen: every office is asked. */
+  trialEndedAt?: number | null;
+  /** After an ended trial, a Free office keeps everyone on the floor until then; nobody new joins meanwhile. */
+  graceEndsAt?: number | null;
 }
 
 export interface Office extends OfficeSummary {
@@ -310,9 +312,9 @@ export interface Plan {
 export interface Plans {
   plans: Plan[];
   billing: { mode: "test" | "live" } | null;
-  /** How long the team trial runs where plans are on sale; 0 where there's none (docs/pricing.md). */
+  /** How long a new office's trial runs where plans are on sale; 0 where there's none (docs/pricing.md). */
   trialDays: number;
-  /** The plan the team trial gives, where there is one. */
+  /** The plan the trial gives, where there is one. */
   trialPlan: PlanId | null;
 }
 
@@ -324,8 +326,12 @@ export interface OfficeBilling {
   meetingHours: number;
   /** Meeting seconds used this month (UTC), and when the count starts again. */
   usage: { seconds: number; resetsAt: number };
-  /** The team trial, while it runs and nothing is paid (docs/pricing.md). */
+  /** The trial, while it runs and nothing is paid (docs/pricing.md). */
   trial: { plan: PlanId; endsAt: number } | null;
+  /** When the trial ended, until a plan is bought or Free is chosen. */
+  trialEndedAt: number | null;
+  /** After an ended trial: everyone stays on the floor until then. */
+  graceEndsAt: number | null;
   subscription: {
     plan: PlanId;
     /** active, trialing, past_due (a card being retried) or scheduled_cancel. */
@@ -484,6 +490,8 @@ export const api = {
   syncCheckout: (officeId: string, checkoutId: string) =>
     post<OfficeBilling>(`/offices/${id(officeId)}/billing/sync`, { checkoutId }),
   cancelPlan: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/cancel`),
+  /** After the trial: stay on Free, on purpose. */
+  stayOnFree: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/free`),
   resumePlan: (officeId: string) => post<OfficeBilling>(`/offices/${id(officeId)}/billing/resume`),
   setRole: (officeId: string, userId: string, role: OfficeRole) =>
     patch<{ ok: true }>(`/offices/${id(officeId)}/members/${id(userId)}`, { role }),

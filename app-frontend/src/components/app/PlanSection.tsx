@@ -2,31 +2,33 @@
 
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { AlertCircle, Check, CreditCard, Download, Loader2, Zap } from "@/components/ui/icons";
-import { api, type BillingDetails, type OfficeBilling, type Payment, type Plan, type PlanId } from "@/lib/api";
+import { AlertCircle, Check, CreditCard, Download, Info, Loader2 } from "@/components/ui/icons";
+import { api, type BillingDetails, type OfficeBilling, type Payment } from "@/lib/api";
 import { dollars, usePlans } from "@/lib/billing";
-import { Button } from "@/components/motion/button/base";
+import { FOUNDING, foundingOpen } from "@/lib/founding";
 import { Dialog } from "@/components/ui/Dialog";
 import { PlansSoon } from "@/components/ui/PlansSoon";
-import { PLAN_NAMES, PlanIncludes, ProOffer, paidPlan } from "@/components/billing/PlanCards";
+import { PLAN_NAMES, PlanIncludes, paidPlan } from "@/components/billing/PlanCards";
 import { usePlanChange } from "@/components/billing/usePlanChange";
 import { cn } from "@/lib/utils";
 import { useOfficeMaybe } from "./OfficeShell";
+import { Group } from "./SettingsView";
 import { SUPPORT_EMAIL } from "@/lib/site";
 
-type Asking = "cancel" | null;
+const DAY = 24 * 60 * 60 * 1000;
+type Asking = "cancel" | "downgrade" | null;
 
 /**
- * An office's plan and billing (docs/pricing.md): what it's on and what it
- * pays, how full it is and how much of its meeting hours are used, then Pro
- * for an office without it (on Pro, or trying it, what it includes instead),
- * the card and the next charge, and every past payment. Buying opens Creem's
- * checkout over the page; the card and the invoices are in Creem's portal, for
- * whoever pays; cancelling asks first. The plan itself only changes when Creem
- * says so.
+ * An office's plan and billing (docs/pricing.md). A trial, and a trial that
+ * has ended with nothing chosen since, read as being on Pro with billing to
+ * add: Pro's button updates billing, Free's downgrades. Once Free is chosen
+ * it's the plan, and Pro is an upgrade. A subscribed office sees its plan,
+ * card and invoices instead. Words are kept to what's needed to decide;
+ * anything that needs doing (a failed card, a plan ending) comes first.
  */
 export function PlanSection() {
   const t = useTranslations("billing");
+  const tp = useTranslations("billing.page");
   const tc = useTranslations("common");
   const format = useFormatter();
   const context = useOfficeMaybe();
@@ -34,6 +36,9 @@ export function PlanSection() {
   const [billing, setBilling] = useState<OfficeBilling | null>(null);
   const [details, setDetails] = useState<BillingDetails | null>(null);
   const [asking, setAsking] = useState<Asking>(null);
+  const [downgrading, setDowngrading] = useState(false);
+  // Read once: the trial's days don't need to tick while the page is open.
+  const [now] = useState(() => Date.now());
 
   const office = context?.office;
   const admin = office?.role === "admin";
@@ -77,263 +82,266 @@ export function PlanSection() {
   }, [officeId, admin, on]);
 
   if (!context || !office) return null;
+  const plans = catalog?.plans ?? [];
+  const pro = paidPlan(plans);
+  const freeSeats = plans.find((plan) => plan.price === null)?.seats ?? 3;
   const members = billing?.members ?? office.members;
   const sub = billing?.subscription ?? null;
   const trial = billing?.trial ?? null;
-  const planId = (office.plan as PlanId) ?? "free";
-  const plans = catalog?.plans ?? [];
-  const current = plans.find((plan) => plan.id === planId);
-  const pro = paidPlan(plans);
+  const manage = on && admin;
+  const busy = change.busy;
   const date = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "long", year: "numeric" });
   const shortDate = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "short" });
   const money = (amount: number, currency: string) => format.number(amount / 100, { style: "currency", currency });
-  const manage = on && admin;
-  const busy = change.busy;
 
-  const hours = billing ? billing.usage.seconds / 3600 : null;
-  const allowance = billing?.meetingHours ?? current?.meetingHours ?? null;
-  const choose = (plan: Plan) => plan.id !== "free" && void change.buy(plan.id);
+  // A trial that ended with nothing chosen: still Pro to them, with billing to add.
+  const unpaid = !sub && office.plan === "free" && !!billing?.trialEndedAt;
+  const onPro = !!sub || !!trial || unpaid;
+  const grace = billing?.graceEndsAt ?? office.graceEndsAt ?? null;
+  const trialDays = catalog?.trialDays || 14;
+  const daysLeft = trial ? Math.max(0, Math.ceil((trial.endsAt - now) / DAY)) : 0;
 
-  // What the plan says for itself under its name: when it renews, or ends, or that it's free.
-  const status = (): ReactNode => {
-    if (trial) return null; // The banner below says it.
-    if (!sub) return t("freeNote", { seats: plans[0]?.seats ?? 3 });
-    if (sub.status === "past_due") return null;
-    if (sub.endsAt) return t("ends", { date: date(sub.endsAt) });
-    if (details?.nextCharge) {
-      return t("nextChargeLine", {
-        amount: money(details.nextCharge.amount, details.nextCharge.currency),
-        date: date(details.nextCharge.at),
-      });
+  const downgrade = async () => {
+    setDowngrading(true);
+    try {
+      setBilling(await api.stayOnFree(office.id));
+      setAsking(null);
+      await context.refresh();
+    } finally {
+      setDowngrading(false);
     }
-    if (sub.renewsAt) return t("renews", { date: date(sub.renewsAt) });
-    return null;
   };
 
-  return (
-    <div className="space-y-8">
-      {/* What the office is on, what it pays, and how much of it is used. */}
-      <section className="overflow-hidden rounded-2xl border border-border bg-background">
-        <div className="flex items-start justify-between gap-4 p-5">
-          <div className="min-w-0">
-            <p className="text-[12.5px] font-medium text-muted-foreground">{t("current")}</p>
-            <p className="mt-1 flex flex-wrap items-center gap-2 text-[22px] font-semibold leading-tight tracking-tight text-foreground">
-              {PLAN_NAMES[planId] ?? office.plan}
-              {trial && <Pill tone="brand">{t("pillTrial")}</Pill>}
-              {sub?.status === "past_due" && <Pill tone="alert">{t("pillPastDue")}</Pill>}
-              {sub?.endsAt && <Pill>{t("pillEnding")}</Pill>}
-            </p>
-            {manage && status() && <p className="mt-1 text-[13px] text-muted-foreground">{status()}</p>}
-            {!on && <PlansSoon className="mt-2" />}
-          </div>
-          {current?.price && !trial ? (
-            <p className="shrink-0 text-end text-[12.5px] leading-tight text-muted-foreground">
-              <span className="block text-[20px] font-semibold tracking-tight text-foreground">{dollars(current.price)}</span>
-              {t("perMonth")}
-            </p>
-          ) : null}
-        </div>
+  // Only what needs doing gets a notice.
+  const notice = ((): { tone: "brand" | "alert"; title: string; body: string; action: ReactNode } | null => {
+    if (!manage) return null;
+    if (sub?.status === "past_due") {
+      return {
+        tone: "alert",
+        title: tp("notice.pastDueTitle"),
+        body: tp("notice.pastDueBody"),
+        action: (
+          <SolidButton small busy={busy === "card"} disabled={!!busy} onClick={() => change.portal("card")}>
+            {tp("updateCard")}
+          </SolidButton>
+        ),
+      };
+    }
+    if (sub?.endsAt) {
+      return {
+        tone: "brand",
+        title: tp("notice.endingTitle", { date: date(sub.endsAt) }),
+        body: tp("notice.endingBody", { free: freeSeats }),
+        action: (
+          <SolidButton small busy={busy === "resume"} disabled={!!busy} onClick={change.resume}>
+            {tp("keep")}
+          </SolidButton>
+        ),
+      };
+    }
+    return null;
+  })();
 
-        {manage && trial && (
-          <Banner tone="brand" icon={<Zap className="size-4 shrink-0 text-brand" />}>
-            <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">
-              {t("trialNote", { plan: PLAN_NAMES[trial.plan], date: shortDate(trial.endsAt), seats: plans[0]?.seats ?? 3 })}
-            </p>
-            {trial.plan !== "free" && (
-              <Button size="sm" className="h-8 shrink-0 px-3 text-[12.5px]" disabled={!!busy} onClick={() => change.buy("pro")}>
-                {busy === trial.plan && <Loader2 className="size-3.5 animate-spin" />}
-                {t("plans.keep", { plan: PLAN_NAMES[trial.plan] })}
-              </Button>
-            )}
-          </Banner>
+  // One line under the plan's name: where it stands.
+  const status = trial
+    ? tp("daysLeft", { count: daysLeft })
+    : unpaid && billing?.trialEndedAt
+      ? tp("trialEnded", { date: date(billing.trialEndedAt) })
+      : sub && pro?.price
+        ? tp("priceLine", { price: dollars(pro.price) })
+        : tp("freeSeats", { seats: freeSeats });
+
+  // The plan's facts, one a row: who's in it, then the date that matters or what the floor holds.
+  const facts: { label: string; value: string }[] = [
+    { label: tp("members"), value: onPro || members > office.seats ? String(members) : tp("membersOf", { members, seats: office.seats }) },
+  ];
+  if (trial) facts.push({ label: tp("trialEnds"), value: date(trial.endsAt) });
+  else if (sub?.endsAt) facts.push({ label: tp("ends"), value: date(sub.endsAt) });
+  else if (sub && details?.nextCharge) {
+    facts.push({
+      label: tp("nextCharge"),
+      value: tp("chargeOn", { amount: money(details.nextCharge.amount, details.nextCharge.currency), date: shortDate(details.nextCharge.at) }),
+    });
+  } else if (sub?.renewsAt) facts.push({ label: tp("renews"), value: date(sub.renewsAt) });
+  else if (!sub) facts.push({ label: tp("floor"), value: grace ? tp("floorEveryone", { date: shortDate(grace) }) : tp("floorAtOnce", { seats: office.seats }) });
+
+  return (
+    <div className="space-y-6">
+      {notice && <Notice {...notice} />}
+
+      {/* The plan the office is on: its name and where it stands, then its facts as rows. */}
+      <section className="overflow-hidden rounded-2xl border border-border bg-background">
+        <div className="p-5">
+          <h2 className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[20px] font-semibold leading-tight tracking-tight text-foreground">
+            {onPro ? PLAN_NAMES.pro : PLAN_NAMES.free}
+            {trial && <Pill tone="brand">{tp("pillTrial")}</Pill>}
+            {unpaid && <Pill tone="brand">{tp("pillBilling")}</Pill>}
+            {sub?.status === "past_due" && <Pill tone="alert">{tp("pillPastDue")}</Pill>}
+            {sub?.endsAt && <Pill>{tp("pillEnding")}</Pill>}
+          </h2>
+          <p className="mt-1 text-[13px] text-muted-foreground">{status}</p>
+          {!on && <PlansSoon className="mt-2" />}
+        </div>
+        {trial && (
+          // The trial as days, so how long is left reads at a glance.
+          <div className="-mt-1 px-5 pb-5" aria-hidden>
+            <div className="h-1.5 overflow-hidden rounded-full bg-muted">
+              <div
+                className="h-full rounded-full bg-brand"
+                style={{ width: `${Math.min(100, Math.max(4, ((trialDays - daysLeft) / trialDays) * 100))}%` }}
+              />
+            </div>
+          </div>
         )}
-        {manage && !trial && !sub && office.trialOpen && !!catalog?.trialDays && (
-          <Banner tone="brand" icon={<Zap className="size-4 shrink-0 text-brand" />}>
-            <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">
-              {t("trialWaiting", { free: office.seats, plan: PLAN_NAMES[catalog.trialPlan ?? "pro"], days: catalog.trialDays })}
-            </p>
-          </Banner>
-        )}
-        {manage && sub?.status === "past_due" && (
-          <Banner icon={<AlertCircle className="size-4 shrink-0 text-destructive" />}>
-            <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">{t("pastDue")}</p>
-            <Button
-              size="sm"
-              variant="secondary"
-              className="h-8 shrink-0 px-3 text-[12.5px]"
-              disabled={!!busy}
-              onClick={() => change.portal("card")}
-            >
-              {t("updateCard")}
-            </Button>
-          </Banner>
-        )}
-        {manage && sub?.endsAt && (
-          <Banner>
-            <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">{t("endingNote", { date: date(sub.endsAt) })}</p>
-            <Button size="sm" className="h-8 shrink-0 px-3 text-[12.5px]" disabled={!!busy} onClick={change.resume}>
-              {busy === "resume" && <Loader2 className="size-3.5 animate-spin" />}
-              {t("keep")}
-            </Button>
-          </Banner>
-        )}
+
+        <dl className="divide-y divide-border border-t border-border">
+          {facts.map((fact) => (
+            <div key={fact.label} className="flex items-baseline justify-between gap-4 px-5 py-3.5 text-[13.5px]">
+              <dt className="shrink-0 text-muted-foreground">{fact.label}</dt>
+              <dd className="min-w-0 text-end font-medium tabular-nums text-foreground">{fact.value}</dd>
+            </div>
+          ))}
+          {manage && sub && (
+            <div className="flex items-center justify-between gap-4 px-5 py-3">
+              <dt className="flex min-w-0 items-center gap-2 text-[13.5px] text-muted-foreground">
+                <CreditCard className="size-4 shrink-0" />
+                <span className="truncate">{tp("card")}</span>
+              </dt>
+              <dd>
+                {sub.status !== "canceled" && (
+                  <QuietButton busy={busy === "card"} disabled={!!busy} onClick={() => change.portal("card")}>
+                    {tp("update")}
+                  </QuietButton>
+                )}
+              </dd>
+            </div>
+          )}
+        </dl>
+
         {change.waiting && (
-          <p className="mx-5 mb-4 flex items-center gap-2 text-[13px] text-foreground">
+          <p className="flex items-center gap-2 border-t border-border px-5 py-3.5 text-[13px] text-foreground">
             {change.waiting === "now" ? <Loader2 className="size-4 animate-spin" /> : <Check className="size-4 text-ok" />}
             {change.waiting === "now" ? t("settingUp") : t("settingUpSlow")}
           </p>
         )}
-
-        {/*
-          Free's one limit is people, so it's shown as one: how many of the 3.
-          A paid office sees who's in it, not how many more it may have (docs/costs.md).
-        */}
-        <div className="border-t border-border">
-          {planId === "free" ? (
-            <Usage
-              label={t("membersLabel")}
-              value={t("usageOf", { used: members, total: office.seats })}
-              note={members >= office.seats ? t("seatsFull") : t("seatsFree", { count: office.seats - members })}
-            >
-              <SeatBar used={members} seats={office.seats} />
-            </Usage>
-          ) : (
-            <Usage label={t("membersLabel")} value={String(members)} />
-          )}
-        </div>
-        {manage && hours !== null && allowance !== null && hours >= allowance && billing && (
-          <p className="border-t border-border px-5 py-3 text-[12.5px] leading-relaxed text-muted-foreground">
-            {t("hoursUsedUp", { date: shortDate(billing.usage.resetsAt) })}
-          </p>
-        )}
-        {/* On Pro, or trying it, what it gives. */}
-        {planId === "pro" && current && (
-          <div className="border-t border-border p-5">
-            <p className="mb-3 text-[12.5px] font-medium text-muted-foreground">{t("plans.included")}</p>
-            <PlanIncludes plans={plans} />
-          </div>
-        )}
       </section>
 
-      {/* Pro, for an office on Free; a trial keeps it from the banner above. */}
-      {on && pro && planId === "free" && !sub && (
-        <div>
-          <div className="mb-3 flex items-baseline justify-between gap-3">
-            <h3 className="text-[13px] font-semibold text-foreground">{t("plans.upgradeTitle")}</h3>
-            <p className="text-[12px] text-faint">{t("plans.note")}</p>
-          </div>
-          <section className="rounded-2xl border border-border bg-background p-5">
-            <ProOffer plans={plans} members={members} busy={busy} disabled={!!change.waiting} canChange={manage} onChoose={choose} split />
-          </section>
-          {change.error && !asking && <p className="mt-3 text-[12.5px] text-destructive">{change.error}</p>}
-        </div>
-      )}
-
-      {/* The card and the next charge, once there is a subscription. */}
-      {manage && sub && (
+      {/* Pro and Free side by side, for an office that hasn't subscribed. */}
+      {on && pro?.price && !sub && (
         <section>
-          <h3 className="mb-3 text-[13px] font-semibold text-foreground">{t("payment")}</h3>
-          <div className="divide-y divide-border rounded-2xl border border-border bg-background">
-            <div className="flex items-center gap-3 p-4">
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-muted text-muted-foreground">
-                <CreditCard className="size-4" />
-              </span>
-              <p className="min-w-0 flex-1 truncate text-[13.5px] font-medium text-foreground">{t("cardUnknown")}</p>
-              {sub.status !== "canceled" && (
-                <Button
-                  variant="secondary"
-                  size="sm"
-                  className="h-8 shrink-0 px-3 text-[12.5px]"
-                  disabled={!!busy}
-                  onClick={() => change.portal("card")}
-                >
-                  {busy === "card" && <Loader2 className="size-3.5 animate-spin" />}
-                  {t("update")}
-                </Button>
-              )}
-            </div>
-            <div className="flex items-center justify-between gap-3 p-4 text-[13px]">
-              <span className="text-muted-foreground">{t("nextCharge")}</span>
-              <span className="text-end font-medium tabular-nums text-foreground">
-                {details === null
-                  ? "…"
-                  : details.nextCharge
-                    ? t("chargeOn", {
-                        amount: money(details.nextCharge.amount, details.nextCharge.currency),
-                        date: shortDate(details.nextCharge.at),
-                      })
-                    : sub.endsAt
-                      ? t("noneAfter", { date: shortDate(sub.endsAt) })
-                      : "—"}
-              </span>
-            </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {/* Pro first on a phone: it's the one to act on. */}
+            <PlanCard
+              className="sm:order-2"
+              highlight
+              name={PLAN_NAMES.pro}
+              pill={onPro ? tp("pillCurrent") : foundingOpen() ? tp("pillFounding") : undefined}
+              price={dollars(pro.price)}
+              per={tp("proPer")}
+              footer={
+                manage && (
+                  <SolidButton busy={busy === "pro"} disabled={!!busy || !!change.waiting} onClick={() => change.buy("pro")}>
+                    {onPro ? tp("updateBilling") : tp("upgrade")}
+                  </SolidButton>
+                )
+              }
+            >
+              <PlanIncludes plans={plans} />
+            </PlanCard>
+            <PlanCard
+              className="sm:order-1"
+              name={PLAN_NAMES.free}
+              pill={!onPro ? tp("pillCurrent") : undefined}
+              price={dollars(0)}
+              per={tp("freePer")}
+              footer={
+                manage && onPro ? (
+                  <button
+                    type="button"
+                    onClick={() => setAsking("downgrade")}
+                    className="flex h-11 w-full cursor-pointer items-center justify-center rounded-full border border-border-strong px-4 text-[13.5px] font-medium text-foreground transition-colors hover:bg-muted"
+                  >
+                    {tp("downgrade")}
+                  </button>
+                ) : null
+              }
+            >
+              <ul className="space-y-2.5 text-[13.5px] text-foreground">
+                {[tp("freeSeats", { seats: freeSeats }), tp("freeEverything")].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5">
+                    <span className="mt-0.5 flex size-[18px] shrink-0 items-center justify-center rounded-full bg-muted text-foreground">
+                      <Check className="size-3" strokeWidth={3} />
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </PlanCard>
           </div>
+          {foundingOpen() && (
+            <p className="mt-3 text-[12px] text-muted-foreground">
+              {tp("founding", { date: format.dateTime(new Date(FOUNDING.until), { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }) })}
+            </p>
+          )}
+          {change.error && !asking && <p className="mt-3 text-[12.5px] text-destructive">{change.error}</p>}
         </section>
       )}
 
       {/* Every payment; the invoices are in Creem's portal. */}
       {manage && (sub || (details && details.history.length > 0)) && (
-        <section>
-          <h3 className="mb-3 text-[13px] font-semibold text-foreground">{t("history")}</h3>
+        <Group title={tp("invoices")}>
           {details === null ? (
-            <div className="h-24 animate-pulse rounded-2xl bg-muted" />
+            <div className="h-16 animate-pulse" />
           ) : details.history.length === 0 ? (
-            <p className="rounded-2xl border border-dashed border-border-strong px-4 py-6 text-center text-[12.5px] text-muted-foreground">
-              {t("noPayments")}
-            </p>
+            <p className="px-4 py-6 text-center text-[12.5px] text-muted-foreground">{tp("noInvoices")}</p>
           ) : (
-            <ul className="divide-y divide-border rounded-2xl border border-border bg-background">
-              {details.history.map((payment) => (
-                <li key={payment.id} className="flex items-center gap-3 px-4 py-3 text-[13px]">
-                  <span className="w-16 shrink-0 tabular-nums text-muted-foreground sm:w-20">{shortDate(payment.at)}</span>
-                  <span className="min-w-0 flex-1 truncate text-foreground">
-                    {payment.plan ? t("planPayment", { plan: PLAN_NAMES[payment.plan] }) : t("payment")}
-                  </span>
-                  <PaymentStatus status={payment.status} />
-                  <span className="shrink-0 text-end font-medium tabular-nums text-foreground">
-                    {money(payment.amount, payment.currency)}
-                  </span>
-                  <span className="flex w-8 shrink-0 justify-end">
-                    {payment.invoice && (
-                      <button
-                        type="button"
-                        aria-label={t("invoice")}
-                        title={t("invoice")}
-                        disabled={!!busy}
-                        onClick={() => change.portal(`invoice:${payment.id}`)}
-                        className="flex size-8 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:opacity-50"
-                      >
-                        {busy === `invoice:${payment.id}` ? <Loader2 className="size-4 animate-spin" /> : <Download className="size-4" />}
-                      </button>
-                    )}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            details.history.map((payment) => (
+              <div key={payment.id} className="flex items-center gap-3 px-4 py-3 text-[13px]">
+                <div className="min-w-0 flex-1">
+                  <p className="truncate font-medium text-foreground">
+                    {payment.plan ? tp("invoicePlan", { plan: PLAN_NAMES[payment.plan] }) : tp("invoice")}
+                  </p>
+                  <p className="text-[12px] tabular-nums text-muted-foreground">{date(payment.at)}</p>
+                </div>
+                <PaymentStatus status={payment.status} />
+                <span className="shrink-0 text-end font-medium tabular-nums text-foreground">{money(payment.amount, payment.currency)}</span>
+                <span className="flex w-8 shrink-0 justify-end">
+                  {payment.invoice && (
+                    <button
+                      type="button"
+                      aria-label={tp("download")}
+                      title={tp("download")}
+                      disabled={!!busy}
+                      onClick={() => change.portal(`invoice:${payment.id}`)}
+                      className="flex size-8 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground disabled:opacity-50"
+                    >
+                      {busy === `invoice:${payment.id}` ? <Loader2 className="size-4 animate-spin" /> : <Download className="size-4" />}
+                    </button>
+                  )}
+                </span>
+              </div>
+            ))
           )}
-        </section>
+        </Group>
       )}
 
-      {/* The rest, quietly: cancelling, and the small print. */}
+      {on && !admin && <p className="text-[12.5px] text-muted-foreground">{t("adminsOnly")}</p>}
+
+      {/* The small print (cancelling any time, the refund), and cancelling itself, quietly. */}
       {manage && (
-        <div className="flex flex-col gap-3 border-t border-border pt-5 sm:flex-row sm:items-start sm:justify-between">
-          <p className="max-w-md text-[12px] leading-relaxed text-muted-foreground">
-            {t("fine")}{" "}
-            {t.rich("billingEmail", {
-              email: SUPPORT_EMAIL,
-              link: (chunks) => (
-                <a href={`mailto:${SUPPORT_EMAIL}`} className="font-medium text-foreground underline-offset-2 hover:underline" dir="ltr">
-                  {chunks}
-                </a>
-              ),
-            })}
+        <div className="flex flex-col gap-3 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[12px] leading-relaxed text-muted-foreground">
+            {t("offer.assurance")} {tp("fine")}{" "}
+            <a href={`mailto:${SUPPORT_EMAIL}`} className="font-medium text-foreground underline-offset-2 hover:underline" dir="ltr">
+              {SUPPORT_EMAIL}
+            </a>
           </p>
           {sub && !sub.endsAt && (
             <button
               type="button"
               disabled={!!busy}
               onClick={() => setAsking("cancel")}
-              className="h-8 shrink-0 cursor-pointer self-start rounded-full px-3 text-[12.5px] font-medium text-muted-foreground hover:bg-muted hover:text-destructive"
+              className="h-8 shrink-0 cursor-pointer self-start rounded-full px-3 text-[12.5px] font-medium text-muted-foreground hover:bg-muted hover:text-destructive sm:self-auto"
             >
               {t("cancel")}
             </button>
@@ -341,101 +349,167 @@ export function PlanSection() {
         </div>
       )}
 
-      {on && !admin && <p className="text-[12.5px] text-muted-foreground">{t("adminsOnly")}</p>}
-
       {/*
-        Cancelling, said plainly: what the team would lose, and keeping the
-        plan as the easy choice. Cancelling stays one click away; nothing is
-        hidden or made hard.
+        Leaving Pro, by cancelling or downgrading, is asked once, plainly: what
+        changes for the team, with keeping Pro as the easy answer. Leaving
+        stays one click away; nothing is hidden or made hard.
       */}
       <Dialog
-        open={asking === "cancel"}
+        open={asking !== null}
         onClose={() => setAsking(null)}
-        title={t("cancelTitle")}
-        description={sub?.renewsAt ? t("cancelWhen", { date: date(sub.renewsAt) }) : undefined}
+        title={asking === "downgrade" ? tp("downgradeTitle") : t("cancelTitle")}
+        description={asking === "cancel" && sub?.renewsAt ? t("cancelWhen", { date: date(sub.renewsAt) }) : undefined}
         closeLabel={tc("close")}
         footer={
           <>
             <button
               type="button"
-              disabled={!!busy}
-              onClick={change.cancel}
+              disabled={!!busy || downgrading}
+              onClick={asking === "downgrade" ? downgrade : change.cancel}
               className="me-auto inline-flex h-10 cursor-pointer items-center gap-2 rounded-full px-3 text-[13px] font-medium text-muted-foreground transition-colors hover:text-destructive disabled:opacity-50"
             >
-              {busy === "cancel" && <Loader2 className="size-4 animate-spin" />}
-              {t("cancelAnyway")}
+              {(busy === "cancel" || downgrading) && <Loader2 className="size-4 animate-spin" />}
+              {asking === "downgrade" ? tp("downgradeConfirm") : t("cancelAnyway")}
             </button>
-            <Button size="sm" className="h-10 px-5" onClick={() => setAsking(null)}>
-              {t("plans.keep", { plan: PLAN_NAMES[planId] })}
-            </Button>
+            <button
+              type="button"
+              onClick={() => setAsking(null)}
+              className="h-10 cursor-pointer rounded-full bg-foreground px-5 text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
+            >
+              {tp("keep")}
+            </button>
           </>
         }
       >
-        <ul className="space-y-2.5 pb-2 text-[13px] leading-relaxed text-foreground">
-          <li className="flex items-start gap-2.5">
-            <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-foreground/40" />
-            {members > (plans[0]?.seats ?? 3)
-              ? t("loseSeatsOver", { members, free: plans[0]?.seats ?? 3 })
-              : t("loseSeats", { seats: office.seats, free: plans[0]?.seats ?? 3 })}
-          </li>
-          <li className="flex items-start gap-2.5">
-            <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-ok" />
-            {t("loseNothing")}
-          </li>
-        </ul>
+        {asking === "downgrade" ? (
+          <p className="pb-2 text-[13px] leading-relaxed text-foreground">
+            {members > freeSeats ? tp("downgradeOver", { free: freeSeats, members }) : tp("downgradeBody", { free: freeSeats })}
+          </p>
+        ) : (
+          <ul className="space-y-2.5 pb-2 text-[13px] leading-relaxed text-foreground">
+            <li className="flex items-start gap-2.5">
+              <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-foreground/40" />
+              {members > freeSeats ? t("loseSeatsOver", { members, free: freeSeats }) : t("loseSeats", { seats: office.seats, free: freeSeats })}
+            </li>
+            <li className="flex items-start gap-2.5">
+              <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-ok" />
+              {t("loseNothing")}
+            </li>
+          </ul>
+        )}
         {change.error && <p className="mt-2 text-[12.5px] text-destructive">{change.error}</p>}
       </Dialog>
     </div>
   );
 }
 
-/** A note across the plan card: a trial, a card that failed, or a plan that's ending. */
-function Banner({ tone, icon, children }: { tone?: "brand"; icon?: ReactNode; children: ReactNode }) {
+/** What needs doing, above everything else: what happened, and the way to answer it. */
+function Notice({ tone, title, body, action }: { tone: "brand" | "alert"; title: string; body: string; action: ReactNode }) {
   return (
-    <div className={cn("mx-5 mb-4 flex flex-wrap items-center gap-3 rounded-xl p-3", tone === "brand" ? "bg-muted" : "bg-muted")}>
-      {icon}
-      {children}
+    <div
+      role="status"
+      className={cn(
+        "flex flex-wrap items-center gap-3 rounded-2xl border p-4",
+        tone === "alert" ? "border-destructive/25 bg-destructive/[0.06]" : "border-brand/25 bg-brand/[0.06]",
+      )}
+    >
+      <span
+        className={cn(
+          "flex size-8 shrink-0 items-center justify-center self-start rounded-full",
+          tone === "alert" ? "bg-destructive/12 text-destructive" : "bg-brand/12 text-brand",
+        )}
+      >
+        {tone === "alert" ? <AlertCircle className="size-4" /> : <Info className="size-4" />}
+      </span>
+      <div className="min-w-[12rem] flex-1">
+        <p className="text-[13.5px] font-semibold text-foreground">{title}</p>
+        <p className="mt-0.5 text-[13px] leading-relaxed text-muted-foreground">{body}</p>
+      </div>
+      <div className="ms-11 shrink-0 sm:ms-0">{action}</div>
     </div>
   );
 }
 
-/** One of the plan's limits: how much of it is used, a meter, and a line under it. */
-function Usage({
-  label,
-  value,
-  note,
+function SolidButton({ small, busy, disabled, onClick, children }: { small?: boolean; busy: boolean; disabled: boolean; onClick: () => void; children: ReactNode }) {
+  return (
+    <button
+      type="button"
+      disabled={disabled}
+      onClick={onClick}
+      className={cn(
+        "flex cursor-pointer items-center justify-center gap-2 rounded-full bg-foreground font-medium text-background transition-[background-color,transform] hover:bg-foreground/85 active:scale-[0.99] disabled:cursor-default disabled:opacity-50",
+        small ? "h-9 px-4 text-[13px]" : "h-11 w-full px-4 text-[13.5px]",
+      )}
+    >
+      {busy && <Loader2 className="size-4 animate-spin" />}
+      {children}
+    </button>
+  );
+}
+
+function QuietButton({ busy, disabled, onClick, children }: { busy: boolean; disabled: boolean; onClick: () => void; children: ReactNode }) {
+  return (
+    <button
+      type="button"
+      disabled={disabled}
+      onClick={onClick}
+      className="flex h-8 shrink-0 cursor-pointer items-center gap-1.5 rounded-full border border-border-strong px-3 text-[12.5px] font-medium text-foreground transition-colors hover:bg-muted disabled:opacity-50"
+    >
+      {busy && <Loader2 className="size-3.5 animate-spin" />}
+      {children}
+    </button>
+  );
+}
+
+/** A plan to choose: its name and price, what it gives, and its button at the foot. */
+function PlanCard({
+  name,
+  pill,
+  price,
+  per,
+  highlight,
+  footer,
   className,
   children,
 }: {
-  label: string;
-  value: string;
-  note?: string;
+  name: string;
+  pill?: string;
+  price: string;
+  per: string;
+  highlight?: boolean;
+  footer?: ReactNode;
   className?: string;
-  children?: ReactNode;
+  children: ReactNode;
 }) {
   return (
-    <div className={cn("p-5", className)}>
-      <div className="flex items-baseline justify-between gap-3">
-        <p className="text-[12.5px] font-medium text-muted-foreground">{label}</p>
-        <p className="text-[13.5px] font-medium tabular-nums text-foreground">{value}</p>
-      </div>
-      {children}
-      {note && <p className="mt-2 text-[12px] text-faint">{note}</p>}
+    <div
+      className={cn(
+        "flex flex-col rounded-2xl border bg-background p-5",
+        highlight ? "border-foreground/80 shadow-[0_1px_2px_rgb(0_0_0/0.06),0_8px_24px_-12px_rgb(0_0_0/0.2)]" : "border-border",
+        className,
+      )}
+    >
+      <p className="flex items-center gap-2 text-[14px] font-semibold text-foreground">
+        {name}
+        {pill && <Pill tone={highlight ? "brand" : undefined}>{pill}</Pill>}
+      </p>
+      <p className="mt-3 flex flex-wrap items-baseline gap-x-1.5">
+        <span className="text-[30px] font-semibold leading-none tabular-nums tracking-[-0.03em] text-foreground">{price}</span>
+        <span className="text-[12.5px] text-muted-foreground">{per}</span>
+      </p>
+      <div className="mt-4 flex-1">{children}</div>
+      {footer && <div className="mt-5">{footer}</div>}
     </div>
   );
 }
 
-/** A word beside the plan's name: on trial, its card failed, or it's ending. */
+/** A word beside a plan's name: on trial, billing to add, its card failed, ending, current. */
 function Pill({ tone, children }: { tone?: "alert" | "brand"; children: ReactNode }) {
   return (
     <span
       className={cn(
-        "rounded-full px-2 py-0.5 text-[11.5px] font-semibold tracking-normal",
-        tone === "alert"
-          ? "bg-destructive/10 text-destructive"
-          : tone === "brand"
-            ? "bg-brand/15 text-brand"
-            : "bg-muted text-muted-foreground",
+        "rounded-full px-2 py-0.5 text-[11px] font-semibold tracking-normal",
+        tone === "alert" ? "bg-destructive/10 text-destructive" : tone === "brand" ? "bg-brand/12 text-brand" : "bg-muted text-muted-foreground",
       )}
     >
       {children}
@@ -455,29 +529,5 @@ function PaymentStatus({ status }: { status: Payment["status"] }) {
     >
       {t(status)}
     </span>
-  );
-}
-
-export function Bar({ share }: { share: number }) {
-  return (
-    <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden>
-      <div
-        className="h-full rounded-full bg-foreground transition-[width] duration-500"
-        style={{ width: `${Math.min(100, Math.max(share > 0 ? 2 : 0, share * 100))}%` }}
-      />
-    </div>
-  );
-}
-
-/** One segment a seat while they're countable, a bar once they aren't. */
-function SeatBar({ used, seats }: { used: number; seats: number }) {
-  return seats <= 25 ? (
-    <div className="mt-3 flex gap-1" aria-hidden>
-      {Array.from({ length: seats }, (_, index) => (
-        <span key={index} className={cn("h-1.5 flex-1 rounded-full", index < used ? "bg-foreground" : "bg-muted")} />
-      ))}
-    </div>
-  ) : (
-    <Bar share={used / seats} />
   );
 }

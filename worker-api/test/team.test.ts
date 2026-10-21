@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { env } from "cloudflare:workers";
 import { workDomain } from "../src/domains";
-import { call, makeUser, type TestUser } from "./helpers";
+import { call, makeUser, onFree, type TestUser } from "./helpers";
 
 /** A company domain no other test uses, so each test sees only its own offices. */
 const company = () => `co-${crypto.randomUUID().slice(0, 8)}.com`;
@@ -143,7 +143,7 @@ describe("finding your team by your work email", () => {
     expect((await team(stu)).offices.map((one) => one.id)).toEqual([classId]);
   });
 
-  it("starts the team trial for the fourth, as an invite would", async () => {
+  it("lets colleagues in past Free's 3 during the trial, and not once the office is over Free", async () => {
     const domain = company();
     const arv = await makeUser("Arv", { email: `arv@${domain}` });
     const officeId = await officeOf(arv);
@@ -156,8 +156,8 @@ describe("finding your team by your work email", () => {
     const office = await call<{ office: { plan: string; members: number } }>(arv, "GET", `/v1/offices/${officeId}`);
     expect(office.body.office).toMatchObject({ plan: "pro", members: 4 });
 
-    // A free office already past its trial is full for the next one, and says so before they ask.
-    await env.DB.prepare("UPDATE offices SET plan = 'free', seats = 3, trial_ends_at = 0 WHERE id = ?").bind(officeId).run();
+    // On Free, past its trial, the office is full for the next one, and says so before they ask.
+    await onFree(officeId);
     const jez = await makeUser("Jez", { email: `jez@${domain}` });
     expect((await team(jez)).offices[0]).toMatchObject({ id: officeId, full: true });
     await call(jez, "POST", `/v1/offices/${officeId}/join`);

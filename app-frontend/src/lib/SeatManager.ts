@@ -1,9 +1,9 @@
-import { typingElsewhere } from "./typing";
 import * as Phaser from "phaser";
 import { AnimationManager, CardinalDirection } from "./AnimationManager";
 import { ChairSpec, MapAnchor, depthForY } from "./MapManager";
 import type { RoomSocket } from "./RoomSocket";
-import type { GoTo } from "./Interactable";
+import type { GoTo } from "./MovementManager";
+import { learned, type ActionAt } from "./actions";
 import { meetingsState, peopleInMeetings, subscribeMeetings } from "./meetings";
 import { SceneLabel } from "./SceneLabel";
 import { sceneText } from "./sceneText";
@@ -12,7 +12,6 @@ import { isDesk } from "@shared/map";
 import { deskAt, deskState, setMySeat, subscribeDesks } from "./desks";
 import { floorStatusOf, subscribeFloor } from "./floor";
 import { DeskPlate } from "./DeskPlate";
-import { touchFirst } from "./touch";
 
 /**
  * Where a seated character sits relative to the chair's base, and whether they
@@ -31,7 +30,6 @@ const REACH = 56;
 const PLATE_REACH = 96;
 const HIGHLIGHT = 0xff4e00;
 const IDLE = 0x9ca3af;
-const PROMPT_DEPTH = 99000;
 const SELF = "self";
 
 /** The meeting room's zone: its table carries a tag saying whether a meeting is on. */
@@ -60,14 +58,11 @@ export class SeatManager {
   private seats: Seat[] = [];
   private byId = new Map<number, Seat>();
   private ring: Phaser.GameObjects.Graphics;
-  private prompt: SceneLabel;
   private tag?: SceneLabel;
   private hitAreas: Phaser.GameObjects.Zone[] = [];
-  private nearest?: Seat;
+  private nearest?: { seat: Seat; distance: number };
   private seated?: Seat;
   private dirty = false;
-  // the E hints mean nothing without a keyboard; on touch the outline and a tap do
-  private keyboard: boolean;
   private onSitChange?: (seated: boolean) => void;
   private goTo?: GoTo;
   private unsubscribe?: () => void;
@@ -89,18 +84,15 @@ export class SeatManager {
     this.scene = scene;
     this.player = player;
     this.animations = animations;
-    this.keyboard = scene.sys.game.device.os.desktop && !touchFirst();
     this.seats = chairs.map((c) => ({ ...c, baseY: c.y + 16 }));
     this.seats.forEach((seat) => this.byId.set(seat.id, seat));
 
     this.ring = scene.add.graphics();
-    this.prompt = new SceneLabel(scene, 0, 0, "");
-    this.prompt.container.setDepth(PROMPT_DEPTH).setVisible(false);
 
     // a tag in the middle of the meeting table, so anyone walking past can see
     // whether a meeting is on, and how many are in it
     if (table && this.seats.some((seat) => seat.zone === MEETING_ZONE)) {
-      this.tag = new SceneLabel(scene, table.x + table.width / 2, table.y + table.height / 2, "", true);
+      this.tag = new SceneLabel(scene, table.x + table.width / 2, table.y + table.height / 2, "");
       this.tag.container.setDepth(table.y + table.height + 1);
       this.showMeetings();
       this.unsubscribe = subscribeMeetings(() => this.showMeetings());
@@ -113,7 +105,14 @@ export class SeatManager {
       const y = up ? seat.y - 38 : seat.baseY - 2;
       this.plates.set(
         seat.id,
-        new DeskPlate(scene, seat.x, y, depthForY(up ? seat.baseY : seat.baseY + 48) + 1, () => sceneText().yourDesk, () => this.goToDesk(seat.id)),
+        new DeskPlate(
+          scene,
+          seat.x,
+          y,
+          depthForY(up ? seat.baseY : seat.baseY + 48) + 1,
+          () => sceneText().yourDesk,
+          () => this.goToDesk(seat.id),
+        ),
       );
     });
     this.unsubscribeDesks = subscribeDesks(() => this.changed());
@@ -130,8 +129,6 @@ export class SeatManager {
       });
       this.hitAreas.push(zone);
     });
-
-    scene.input.keyboard?.on("keydown-E", () => !typingElsewhere() && this.toggle());
   }
 
   attach(ws: RoomSocket, onSitChange: (seated: boolean) => void, goTo: GoTo) {
@@ -144,9 +141,11 @@ export class SeatManager {
     return this.seated?.direction;
   }
 
-  toggle() {
-    if (this.seated) this.stand();
-    else if (this.nearest && !this.nearest.occupant) this.sit(this.nearest);
+  /** What you can do here: stand up while sitting, or sit on the free chair beside you. */
+  action(): ActionAt | null {
+    if (this.seated) return { action: "stand", distance: 0, run: () => this.stand() };
+    const near = this.nearest;
+    return near ? { action: "sit", distance: near.distance, run: () => !near.seat.occupant && this.sit(near.seat) } : null;
   }
 
   leave() {
@@ -184,20 +183,21 @@ export class SeatManager {
   }
 
   /** Walks over and sits, unless someone beats us to it; from another seat this gets you up first. */
-  private walkTo(seat: Seat) {
+  private walkTo(seat: Seat, byYou = true) {
     const { standX, standY } = this.poseFor(seat);
     this.goTo?.(standX, standY, () => {
-      if (!seat.occupant && !this.seated) this.sit(seat);
+      if (!seat.occupant && !this.seated) this.sit(seat, byYou);
     });
   }
 
   /**
    * Arrived a few steps from your desk (docs/product.md): walk in and sit down, in
-   * sight of everyone. Steering or clicking elsewhere on the way lets it go.
+   * sight of everyone. Steering or clicking elsewhere on the way lets it go. It
+   * isn't you sitting, so the hint for sitting still shows.
    */
   walkToDesk(seatId: number) {
     const seat = this.byId.get(seatId);
-    if (seat && !this.seated) this.walkTo(seat);
+    if (seat && !this.seated) this.walkTo(seat, false);
   }
 
   /** Your desk's chip was pressed: walk there and sit, getting up first if you're sitting elsewhere. */
@@ -232,12 +232,12 @@ export class SeatManager {
     if (!seat) return;
     this.seated = undefined;
     seat.occupant = undefined;
-    this.sit(seat);
+    this.sit(seat, false);
   }
 
   /** The server gave the chair to whoever asked first. */
   rejected() {
-    this.stand();
+    this.stand(false);
   }
 
   private changed() {
@@ -254,8 +254,9 @@ export class SeatManager {
     this.tag?.setText(people ? `${label} · ${people}` : label).setDot(people ? HIGHLIGHT : IDLE);
   }
 
-  /** Sits down here, and tells the room. */
-  private sit(seat: Seat) {
+  /** Sits down here, and tells the room; `byYou` unless the floor sat you (arriving at your desk, a reconnect). */
+  private sit(seat: Seat, byYou = true) {
+    if (byYou) learned("sit");
     const pose = this.poseFor(seat);
     this.seated = seat;
     seat.occupant = SELF;
@@ -272,12 +273,13 @@ export class SeatManager {
     const tile = pixelToTile(seat.x, seat.y);
     this.ws?.send({ t: "sit", seat: seat.id, x: tile.tileX, y: tile.tileY });
     this.ring.clear();
-    this.prompt.setText(sceneText().stand).container.setVisible(this.keyboard);
   }
 
-  private stand() {
+  /** Gets up and tells the room; `byYou` unless the room gave the chair to someone else. */
+  private stand(byYou = true) {
     const seat = this.seated;
     if (!seat) return;
+    if (byYou) learned("stand");
     this.seated = undefined;
     if (seat.occupant === SELF) seat.occupant = undefined;
 
@@ -290,56 +292,41 @@ export class SeatManager {
 
     const tile = pixelToTile(pose.standX, pose.standY);
     this.ws?.send({ t: "stand", x: tile.tileX, y: tile.tileY });
-    this.prompt.container.setVisible(false);
-  }
-
-  /**
-   * Beside a far side chair the table is below you, so the hint rides above
-   * your head; beside a near side chair it sits under the chair.
-   */
-  private placePrompt(seat: Seat) {
-    this.prompt.container.setPosition(seat.x, seat.direction === "down" ? this.player.y - 80 : seat.baseY + 34);
   }
 
   update() {
+    if (!this.seated) this.findNearest();
     this.plates.forEach((plate, id) => {
       const seat = this.byId.get(id)!;
-      plate.setNear(Phaser.Math.Distance.Between(this.player.x, this.player.y, seat.x, seat.baseY) < PLATE_REACH);
+      // At the chair itself its outline says it; the plate folds back rather than cover your name.
+      const at = this.nearest?.seat === seat;
+      plate.setNear(!at && Phaser.Math.Distance.Between(this.player.x, this.player.y, seat.x, seat.baseY) < PLATE_REACH);
     });
+  }
 
-    if (this.seated) {
-      this.placePrompt(this.seated);
-      return;
-    }
-
-    let best: Seat | undefined;
-    let bestDistance = REACH;
+  /** The free chair within reach, outlined: what E or its hint sits you on. */
+  private findNearest() {
+    let best: { seat: Seat; distance: number } | undefined;
     for (const seat of this.seats) {
       if (seat.occupant || this.reserved(seat)) continue;
       const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, seat.x, seat.baseY);
-      if (distance < bestDistance) {
-        bestDistance = distance;
-        best = seat;
-      }
+      if (distance < (best?.distance ?? REACH)) best = { seat, distance };
     }
 
-    if (best) this.placePrompt(best);
-    if (best === this.nearest && !this.dirty) return;
+    const same = best?.seat === this.nearest?.seat;
     this.nearest = best;
+    if (same && !this.dirty) return;
     this.dirty = false;
 
     this.ring.clear();
-    if (!best) {
-      this.prompt.container.setVisible(false);
-      return;
-    }
+    if (!best) return;
 
     // sit the outline at the chair's own depth so a desk hides the half of it
     // that hides the chair
-    this.ring.setDepth(depthForY(best.baseY) + (best.direction === "down" ? -0.5 : 0.5));
+    const { seat } = best;
+    this.ring.setDepth(depthForY(seat.baseY) + (seat.direction === "down" ? -0.5 : 0.5));
     this.ring.lineStyle(2, HIGHLIGHT, 0.9);
-    this.ring.strokeRoundedRect(best.x - 17, best.baseY - 44, 34, 46, 6);
-    this.prompt.setText(sceneText().sit).container.setVisible(this.keyboard);
+    this.ring.strokeRoundedRect(seat.x - 17, seat.baseY - 44, 34, 46, 6);
   }
 
   destroy() {
@@ -348,10 +335,8 @@ export class SeatManager {
     this.unsubscribeFloor();
     this.plates.forEach((plate) => plate.destroy());
     setMySeat(null);
-    this.scene.input.keyboard?.off("keydown-E");
     this.hitAreas.forEach((zone) => zone.destroy());
     this.ring.destroy();
-    this.prompt.container.destroy();
     this.tag?.container.destroy();
   }
 }

@@ -14,15 +14,26 @@ const EMBEDS: Record<string, object> = {
   "playlist/37i9dQZF1DXcBWIGoYBM5M": {
     trackList: [song("1111111111aaaaaaaaaaaa", "One", "Ann"), { uri: "spotify:episode:2222222222bbbbbbbbbbbb", title: "Talk" }],
   },
-  // A song by Ann, featuring Ben; Ann's best-known songs; Ben's.
+  // A song by Ann, featuring Ben; Ann's best-known songs; Ben's; Cy's, whom Ann's fans also like.
   "track/3333333333cccccccccccc": {
     artists: [{ uri: "spotify:artist:aaaaaaaaaaaaaaaaaaaaaa" }, { uri: "spotify:artist:bbbbbbbbbbbbbbbbbbbbbb" }],
   },
   "artist/aaaaaaaaaaaaaaaaaaaaaa": {
-    trackList: [song("3333333333cccccccccccc", "Duet", "Ann, Ben"), song("4444444444dddddddddddd", "Solo", "Ann")],
+    trackList: [
+      song("3333333333cccccccccccc", "Duet", "Ann, Ben"),
+      ...["4444444444dddddddddddd", "4444444444ddddddddddd1", "4444444444ddddddddddd2", "4444444444ddddddddddd3"].map((id, n) =>
+        song(id, `Solo ${n + 1}`, "Ann"),
+      ),
+    ],
   },
   "artist/bbbbbbbbbbbbbbbbbbbbbb": { trackList: [song("5555555555eeeeeeeeeeee", "Ben's", "Ben")] },
+  "artist/cccccccccccccccccccccc": { trackList: [song("6666666666ffffffffffff", "Cy's", "Cy")] },
 };
+/** Ann's public page, with the row of artists her fans also like among others. */
+const ANN_PAGE =
+  '<h2 dir="auto">Popular releases</h2><a href="/artist/bbbbbbbbbbbbbbbbbbbbbb">Ben</a>' +
+  '<h2 data-encore-id="text" dir="auto">Fans also like</h2><div data-testid="carousel-mwp"><a href="/artist/cccccccccccccccccccccc">Cy</a></div>' +
+  '<h2 dir="auto">Appears on</h2><a href="/artist/dddddddddddddddddddddd">Di</a>';
 
 /** Spotify, as far as the share needs it: oEmbed for a couple of links, a few embeds, and one short link that redirects. */
 beforeEach(() => {
@@ -42,6 +53,8 @@ beforeEach(() => {
     if (url.href === "https://open.spotify.com/track/70cHKK8bHAfJrOGVnfRG9J") {
       return new Response('<meta property="og:description" content="Beyonc&#xe9; &amp; Friends · An Album · Song · 2024"/>');
     }
+    if (url.href === "https://open.spotify.com/artist/aaaaaaaaaaaaaaaaaaaaaa") return new Response(ANN_PAGE);
+    if (url.href.startsWith("https://open.spotify.com/artist/")) return new Response("<h2>Nothing here</h2>");
     const embedded = /^https:\/\/open\.spotify\.com\/embed\/(.+)$/.exec(url.href)?.[1];
     if (embedded) return EMBEDS[embedded] ? embed(EMBEDS[embedded]) : new Response("not found", { status: 404 });
     if (url.href === "https://spotify.link/AbCdEf1234") {
@@ -124,7 +137,7 @@ describe("sharing what you're playing", () => {
     expect(song.body.spotify).toMatchObject({ title: "A song", image: null, subtitle: "Beyoncé & Friends" });
   });
 
-  it("lists a playlist's songs to play one at a time, and plays on through the artists on them", async () => {
+  it("lists a playlist's songs to play one at a time, and plays on into artists Spotify calls close", async () => {
     const ada = await makeUser("Ada");
     const listed = await call<{ tracks: Share[] }>(
       ada,
@@ -142,22 +155,22 @@ describe("sharing what you're playing", () => {
 
     const duet = "https://open.spotify.com/track/3333333333cccccccccccc";
     type After = { artist: string | null; tracks: Share[] };
-    // After the duet, Ann's best-known songs, less the duet itself.
+    // After the duet, a few of Ann's best-known songs, less the duet itself.
     const first = await call<After>(ada, "GET", `/v1/spotify/after?song=${encodeURIComponent(duet)}`);
     expect(first.body.artist).toBe("https://open.spotify.com/artist/aaaaaaaaaaaaaaaaaaaaaa");
-    expect(first.body.tracks.map((one) => one.title)).toEqual(["Solo"]);
-    // Ann has had her turn: Ben, who's on the duet.
+    expect(first.body.tracks.map((one) => one.title)).toEqual(["Solo 1", "Solo 2", "Solo 3"]);
+    // Ann has had her turn: Cy, whom her fans also like, not Ben, who's only a guest on the duet.
     const next = await call<After>(
       ada,
       "GET",
       `/v1/spotify/after?song=${encodeURIComponent(duet)}&played=${encodeURIComponent(first.body.artist!)}`,
     );
-    expect(next.body).toMatchObject({ artist: "https://open.spotify.com/artist/bbbbbbbbbbbbbbbbbbbbbb", tracks: [{ title: "Ben's" }] });
+    expect(next.body).toMatchObject({ artist: "https://open.spotify.com/artist/cccccccccccccccccccccc", tracks: [{ title: "Cy's" }] });
     // Nobody new: it stops.
     const none = await call<After>(
       ada,
       "GET",
-      `/v1/spotify/after?song=${encodeURIComponent(duet)}&played=spotify:artist:aaaaaaaaaaaaaaaaaaaaaa&played=spotify:artist:bbbbbbbbbbbbbbbbbbbbbb`,
+      `/v1/spotify/after?song=${encodeURIComponent(duet)}&played=spotify:artist:aaaaaaaaaaaaaaaaaaaaaa&played=spotify:artist:cccccccccccccccccccccc`,
     );
     expect(none.body).toEqual({ artist: null, tracks: [] });
   });

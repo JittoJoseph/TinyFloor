@@ -22,8 +22,8 @@ export function tagName(name: string): string {
  * The dark pill every label in the room is drawn as: a centred hint, or, with a
  * dot, a tag like the one over each player's head, which hangs from the middle
  * of its bottom edge, so it grows upward, away from the head, when it's scaled.
- * A tag can fold down to its dot where the floor is crowded, keeps the whole
- * name for anyone asking, and can carry its person's status note emoji.
+ * A tag steps out of the way where the floor is crowded, keeps the whole name
+ * for anyone asking, and can carry its person's note icon and a mark for music.
  *
  * It's HTML laid over the canvas (plates.ts), in the app's own type, sharp at
  * any screen density; the canvas draws at one pixel per CSS pixel, so text
@@ -42,7 +42,8 @@ export class SceneLabel {
   private musicEl?: HTMLSpanElement;
   private icon: NoteIcon | null = null;
   private full = "";
-  private folded = false;
+  private crowded = false;
+  private fade?: Phaser.Tweens.Tween;
 
   constructor(scene: Phaser.Scene, x: number, y: number, text: string, dot = false) {
     this.tag = dot;
@@ -66,8 +67,8 @@ export class SceneLabel {
     return this.full;
   }
 
-  /** How wide it is with its name showing, in the floor's units before scaling. */
-  get fullWidth(): number {
+  /** How wide it is, in the floor's units before scaling. */
+  get width(): number {
     const icon = this.icon ? 15 : 0;
     const music = this.musicEl && !this.musicEl.hidden ? 13 : 0;
     return measure(this.name.textContent ?? "", FONT) + (this.tag ? 22 : 18) + icon + music;
@@ -108,11 +109,12 @@ export class SceneLabel {
     return this;
   }
 
-  /** Just the dot, or the dot and the name. */
-  setFolded(folded: boolean): this {
-    if (folded === this.folded) return this;
-    this.folded = folded;
-    this.root.toggleAttribute("data-folded", folded);
+  /** Where it would cover a nearer tag it fades away, and back when there's room. */
+  setCrowded(crowded: boolean): this {
+    if (crowded === this.crowded) return this;
+    this.crowded = crowded;
+    this.fade?.stop();
+    this.fade = this.container.scene.tweens.add({ targets: this.container, alpha: crowded ? 0 : 1, duration: 140 });
     return this;
   }
 

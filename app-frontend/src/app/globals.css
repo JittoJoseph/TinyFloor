@@ -64,13 +64,6 @@
   margin-inline-start: 1px;
 }
 
-.plate[data-folded] {
-  width: 14px;
-  justify-content: center;
-  padding: 0;
-}
-
-.plate[data-folded] .plate-name,
 /* Playing music (SceneLabel.setListening): three bars in Spotify's green. */
 .plate-music {
   display: inline-flex;
@@ -116,11 +109,6 @@
     animation: none;
     transform: scaleY(0.7);
   }
-}
-
-.plate[data-folded] .plate-music,
-.plate[data-folded] .plate-icon {
-  display: none;
 }
 
 /*

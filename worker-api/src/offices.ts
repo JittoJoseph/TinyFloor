@@ -305,7 +305,7 @@ export async function closeOffice(env: Env, officeId: string): Promise<void> {
 /** Everyone in an office, oldest member first. */
 export async function membersOf(env: Env, officeId: string) {
   const { results } = await env.DB.prepare(
-    `SELECT u.id, u.display_name, u.character, u.email, m.role, m.joined_at, u.status_emoji, u.status_text, u.status_until
+    `SELECT u.id, u.display_name, u.character, u.email, m.role, m.joined_at, u.status_icon, u.status_text, u.status_until
      FROM memberships m JOIN users u ON u.id = m.user_id
      WHERE m.office_id = ? ORDER BY m.joined_at`,
   )
@@ -317,7 +317,7 @@ export async function membersOf(env: Env, officeId: string) {
       email: string | null;
       role: OfficeRole;
       joined_at: number;
-      status_emoji: string | null;
+      status_icon: string | null;
       status_text: string | null;
       status_until: number | null;
     }>();

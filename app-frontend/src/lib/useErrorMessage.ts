@@ -29,6 +29,8 @@ export function useErrorMessage() {
         slow_down: t("too_many_attempts"),
         not_found: t("not_found"),
         bad_link: t("bad_link"),
+        not_spotify: t("not_spotify"),
+        spotify_unknown: t("spotify_unknown"),
         google_taken: t("google_taken"),
         google_failed: t("google_failed"),
         network: t("network"),

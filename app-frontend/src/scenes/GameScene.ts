@@ -14,8 +14,6 @@ import { attachDesks } from "../lib/desks";
 import { MessageHandler } from "../lib/MessageHandler";
 import { WhiteboardObject } from "../lib/WhiteboardObject";
 import { whiteboard } from "../lib/WhiteboardManager";
-import { JukeboxObject } from "../lib/JukeboxObject";
-import { jukebox } from "../lib/JukeboxManager";
 import { setTouchInput } from "../lib/input";
 import { touchFirst } from "../lib/touch";
 import { TILE_SIZE, pixelToTile, tileToPixel } from "@/lib/types";
@@ -56,7 +54,6 @@ class GameScene extends Phaser.Scene {
   private mapManager!: MapManager;
   private messageHandler!: MessageHandler;
   private whiteboardObject?: WhiteboardObject;
-  private jukeboxObject?: JukeboxObject;
   private seatManager?: SeatManager;
   private windowListeners: Array<[string, EventListener]> = [];
   private unsubscribeShown?: () => void;
@@ -141,11 +138,6 @@ class GameScene extends Phaser.Scene {
         approach,
       );
     }
-    jukebox.attach(this.wsManager);
-    const speaker = this.mapManager.getAnchors("Speaker")[0];
-    if (speaker) {
-      this.jukeboxObject = new JukeboxObject(this, this.player, { x: speaker.x, y: speaker.y }, approach);
-    }
     // nobody calls into a meeting or out of one, or rings someone already on the line
     this.proximityManager = new ProximityManager(
       this,
@@ -190,6 +182,10 @@ class GameScene extends Phaser.Scene {
     this.listen("noteChange", (event: CustomEvent<{ note: StatusNote | null }>) => {
       this.wsManager.send({ t: "note", note: event.detail.note });
       this.playerManager.updatePlayerNote(this.playerId, event.detail.note);
+    });
+    this.listen("listeningChange", (event: CustomEvent<{ on: boolean }>) => {
+      this.wsManager.send({ t: "listening", on: event.detail.on });
+      this.playerManager.updatePlayerListening(this.playerId, event.detail.on);
     });
     this.listen(WAVE_EVENT, (event: CustomEvent<{ id: string }>) => this.wsManager.send({ t: "wave", to: event.detail.id }));
     this.listen("chatFocused", () => this.movementManager.setInputEnabled(false));
@@ -281,7 +277,6 @@ class GameScene extends Phaser.Scene {
     this.proximityManager.update();
     if (this.meetingZone) this.watchMeetingRoom();
     this.whiteboardObject?.update();
-    this.jukeboxObject?.update(time, delta);
   }
 
   public cleanup() {
@@ -298,8 +293,6 @@ class GameScene extends Phaser.Scene {
     attachDesks(null);
     whiteboard.detach();
     this.whiteboardObject?.destroy();
-    jukebox.detach();
-    this.jukeboxObject?.destroy();
     this.seatManager?.destroy();
   }
 }

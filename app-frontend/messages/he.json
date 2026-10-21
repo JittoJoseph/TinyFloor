@@ -239,18 +239,6 @@
     "call": "התקשרות",
     "onCall": "בשיחה איתך"
   },
-  "jukebox": {
-    "title": "רמקול החדר",
-    "close": "סגירת פקדי הרמקול",
-    "tapToPlay": "נגיעה בהפעלה כדי לשמוע",
-    "playing": "מתנגן לכל מי שבחדר",
-    "paused": "מושהה לכל מי שבחדר",
-    "previous": "הרצועה הקודמת",
-    "next": "הרצועה הבאה",
-    "play": "הפעלה",
-    "pause": "השהיה",
-    "playTrack": "הפעלת {track}"
-  },
   "whiteboard": {
     "title": "לוח לבן",
     "penColor": "צבע העט {color}",
@@ -318,7 +306,6 @@
     "stand": "E לקימה",
     "joinMeeting": "E להצטרפות",
     "meeting": "פגישה",
-    "music": "לחיצה למוזיקה",
     "draw": "לחיצה לציור",
     "yourDesk": "השולחן שלך"
   },
@@ -513,7 +500,9 @@
       "generic": "משהו השתבש. נסו שוב.",
       "bad_link": "זה לא נראה כמו כתובת אתר.",
       "google_taken": "חשבון Google הזה כבר מחובר לחשבון TinyFloor אחר.",
-      "google_failed": "החיבור ל-Google לא הצליח. נסו שוב."
+      "google_failed": "החיבור ל-Google לא הצליח. נסו שוב.",
+      "not_spotify": "זה לא קישור של Spotify.",
+      "spotify_unknown": "Spotify לא מוצא את הקישור הזה."
     },
     "people": {
       "title": "אנשים",
@@ -808,7 +797,6 @@
     "clear": "ניקוי ההערה",
     "placeholder": "במה אתם עסוקים?",
     "empty": "ניקוי הטקסט",
-    "emoji": "בחירת אמוג׳י",
     "clearAfter": "ניקוי אחרי",
     "save": "שמירה",
     "failed": "השמירה לא הצליחה. נסו שוב.",
@@ -826,7 +814,28 @@
       "h4": "4 שעות",
       "today": "היום",
       "week": "השבוע"
-    }
+    },
+    "until": "עד {time}",
+    "icon": "בחירת סמל",
+    "icons": {
+      "chat": "הערה",
+      "focus": "ריכוז",
+      "lunch": "צהריים",
+      "coffee": "קפה",
+      "meeting": "פגישה",
+      "away": "לא בעמדה",
+      "sick": "חולה",
+      "holiday": "חופשה",
+      "travel": "בנסיעה",
+      "home": "בבית",
+      "commute": "בדרך",
+      "code": "קוד",
+      "writing": "כתיבה",
+      "presenting": "מציג",
+      "call": "בשיחה",
+      "night": "לילה"
+    },
+    "clearShort": "ניקוי"
   },
   "welcome": {
     "title": "ברוכים הבאים ל־{office}",
@@ -848,5 +857,41 @@
     "full": "מלא",
     "makeOwn": "ליצור משרד חדש במקום",
     "failed": "זה לא הצליח. נסו שוב."
+  },
+  "spotify": {
+    "listening": "מאזינים ב-Spotify",
+    "inJam": "ב-Jam ב-Spotify",
+    "listen": "האזנה",
+    "open": "פתיחה ב-Spotify",
+    "joinJam": "הצטרפות ל-Jam",
+    "jamOf": "ה-Jam של {name}",
+    "jamNote": "מאזינים יחד ב-Spotify",
+    "kinds": {
+      "track": "שיר",
+      "album": "אלבום",
+      "playlist": "פלייליסט",
+      "episode": "פרק פודקאסט",
+      "show": "פודקאסט",
+      "artist": "אמן",
+      "jam": "Jam"
+    },
+    "playing": "מתנגן"
+  },
+  "music": {
+    "title": "מוזיקה",
+    "play": "השמעת מוזיקה",
+    "close": "סגירה",
+    "change": "שינוי",
+    "stop": "עצירה",
+    "skip": "השיר הבא",
+    "pause": "השהיה",
+    "resume": "הפעלה",
+    "paste": "הדביקו קישור מ-Spotify",
+    "notSpotify": "זה לא קישור של Spotify.",
+    "preview": "מושמעות דגימות.",
+    "signIn": "התחברות ל-Spotify",
+    "seek": "המיקום בשיר",
+    "yourJam": "ה-Jam שלכם",
+    "next": "להשמיע משהו אחר"
   }
 }

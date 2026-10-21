@@ -241,7 +241,7 @@
           },
           {
             "title": "Aucune carte à construire",
-            "body": "Chaque bureau a un étage, une salle de réunion, un tableau blanc et une enceinte. Créez un bureau et entrez."
+            "body": "Chaque bureau a un étage, une salle de réunion et un tableau blanc. Créez un bureau et entrez."
           },
           {
             "title": "Rien à héberger",
@@ -306,7 +306,7 @@
           },
           {
             "q": "En quoi TinyFloor diffère-t-il de Wonder ?",
-            "a": "Wonder utilisait des cercles sur un canevas plat et était pensé pour les événements. TinyFloor est un bureau où l'on se déplace, avec des postes, une salle de réunion, un tableau blanc et de la musique, pensé pour les équipes qui travaillent ensemble chaque jour."
+            "a": "Wonder utilisait des cercles sur un canevas plat et était pensé pour les événements. TinyFloor est un bureau où l'on se déplace, avec des postes, une salle de réunion et un tableau blanc, pensé pour les équipes qui travaillent ensemble chaque jour."
           },
           {
             "q": "Combien de personnes peuvent rejoindre ?",
@@ -531,7 +531,7 @@
           },
           {
             "q": "Qu'est-ce qu'oVice a que TinyFloor n'a pas ?",
-            "a": "oVice ajoute des agencements et avatars personnalisés, l'intégration avec Google Agenda et Microsoft Teams, le SSO, l'enregistrement et la transcription avec Business Starter, et des offres ponctuelles pour les événements. TinyFloor se concentre sur le bureau du quotidien : aller voir quelqu'un, les réunions, la messagerie, un tableau blanc et de la musique."
+            "a": "oVice ajoute des agencements et avatars personnalisés, l'intégration avec Google Agenda et Microsoft Teams, le SSO, l'enregistrement et la transcription avec Business Starter, et des offres ponctuelles pour les événements. TinyFloor se concentre sur le bureau du quotidien : aller voir quelqu'un, les réunions, la messagerie et un tableau blanc."
           },
           {
             "q": "TinyFloor est-il disponible en japonais ?",
@@ -957,7 +957,7 @@
         "label": "Machine à café virtuelle",
         "meta": {
           "title": "Machine à café virtuelle pour les équipes à distance",
-          "description": "Les petites discussions qui manquent aux équipes à distance : croisez vos collègues sur l'étage, discutez au salon et mettez de la musique, dans un bureau virtuel pour votre équipe."
+          "description": "Les petites discussions qui manquent aux équipes à distance : croisez vos collègues sur l'étage, discutez au salon et voyez ce que chacun écoute, dans un bureau virtuel pour votre équipe."
         },
         "title": "Une <em>machine à café virtuelle</em> qui fonctionne toute seule.",
         "subtitle": "Les équipes à distance planifient des moments conviviaux parce que rien n'arrive par hasard. Sur un étage partagé, vous croisez des gens, voyez qui est là et vous arrêtez pour discuter.",
@@ -967,8 +967,8 @@
             "body": "En passant entre les bureaux et les salles, vous croisez des collègues et pouvez vous arrêter un instant."
           },
           {
-            "title": "De la musique au salon",
-            "body": "Mettez un morceau dans le jukebox pour l'après-midi, pour tous ceux qui sont dans la pièce."
+            "title": "Ce que chacun écoute",
+            "body": "Lancez Spotify directement dans TinyFloor. Ce qui passe s'affiche sur votre carte, et vos collègues écoutent en un clic."
           },
           {
             "title": "Aucune invitation d'agenda",
@@ -984,8 +984,8 @@
           },
           {
             "label": "Après-midi",
-            "title": "Mettre un morceau",
-            "body": "Lancez le jukebox du salon pour ceux qui sont là."
+            "title": "Rejoindre un Jam",
+            "body": "Lancez un Jam dans Spotify et partagez-le. Ceux qui sont là peuvent le rejoindre et écouter avec vous."
           },
           {
             "label": "Vendredi",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Peut-on écouter de la musique ensemble ?",
-            "a": "Oui. Approchez-vous de l'enceinte de la pièce pour lancer une musique que tout le monde dans la pièce entend."
+            "a": "Oui, avec Spotify. Lancez de la musique dans TinyFloor : elle s'affiche sur votre carte et vos collègues peuvent l'écouter aussi. Un Jam garde tout le monde sur le même morceau, dans Spotify."
           },
           {
             "q": "Est-ce seulement pour les moments conviviaux ?",
@@ -1603,8 +1603,8 @@
           "body": "Un tableau partagé au mur, pour le croquis qui explique tout."
         },
         "music": {
-          "title": "Musique",
-          "body": "Un jukebox dans le salon, pour les heures qui en ont besoin."
+          "title": "Spotify",
+          "body": "Lancez de la musique dans TinyFloor, et vos collègues l'écoutent depuis votre carte."
         },
         "noise": {
           "title": "Suppression du bruit",
@@ -1644,7 +1644,7 @@
         "people": "Jusqu’à {people} personnes",
         "floor": "Le plateau, le chat et les canaux",
         "meetings": "Réunions en vidéo HD avec partage d’écran",
-        "desks": "Bureaux, tableau blanc et musique",
+        "desks": "Des postes et un tableau blanc",
         "everything": "Tout ce qu’offre Free, plus",
         "team": "De la place pour toute votre équipe",
         "often": "Des réunions aussi souvent que nécessaire",

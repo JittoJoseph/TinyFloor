@@ -239,18 +239,6 @@
     "call": "Llamar",
     "onCall": "En llamada contigo"
   },
-  "jukebox": {
-    "title": "Altavoz de la sala",
-    "close": "Cerrar los controles del altavoz",
-    "tapToPlay": "Pulsa reproducir para escucharlo",
-    "playing": "Sonando para todos en la sala",
-    "paused": "En pausa para todos en la sala",
-    "previous": "Pista anterior",
-    "next": "Pista siguiente",
-    "play": "Reproducir",
-    "pause": "Pausa",
-    "playTrack": "Reproducir {track}"
-  },
   "whiteboard": {
     "title": "Pizarra",
     "penColor": "Color del lápiz {color}",
@@ -318,7 +306,6 @@
     "stand": "Pulsa E para levantarte",
     "joinMeeting": "Pulsa E para unirte",
     "meeting": "Reunión",
-    "music": "Haz clic para música",
     "draw": "Haz clic para dibujar",
     "yourDesk": "Tu escritorio"
   },
@@ -513,7 +500,9 @@
       "generic": "Algo salió mal. Inténtalo de nuevo.",
       "bad_link": "Eso no parece una dirección web.",
       "google_taken": "Esa cuenta de Google ya está conectada a otra cuenta de TinyFloor.",
-      "google_failed": "No se pudo con Google. Inténtalo de nuevo."
+      "google_failed": "No se pudo con Google. Inténtalo de nuevo.",
+      "not_spotify": "Eso no es un enlace de Spotify.",
+      "spotify_unknown": "Spotify no encuentra ese enlace."
     },
     "people": {
       "title": "Personas",
@@ -808,7 +797,6 @@
     "clear": "Borrar nota",
     "placeholder": "¿En qué andas?",
     "empty": "Borrar texto",
-    "emoji": "Elige un emoji",
     "clearAfter": "Borrar tras",
     "save": "Guardar",
     "failed": "No se ha guardado. Inténtalo de nuevo.",
@@ -826,7 +814,28 @@
       "h4": "4 horas",
       "today": "Hoy",
       "week": "Esta semana"
-    }
+    },
+    "until": "hasta las {time}",
+    "icon": "Elige un icono",
+    "icons": {
+      "chat": "Nota",
+      "focus": "Concentración",
+      "lunch": "Comida",
+      "coffee": "Café",
+      "meeting": "Reunión",
+      "away": "Fuera",
+      "sick": "Enfermo",
+      "holiday": "Vacaciones",
+      "travel": "De viaje",
+      "home": "En casa",
+      "commute": "De camino",
+      "code": "Programando",
+      "writing": "Escribiendo",
+      "presenting": "Presentando",
+      "call": "En una llamada",
+      "night": "Noche"
+    },
+    "clearShort": "Borrar"
   },
   "welcome": {
     "title": "Bienvenido a {office}",
@@ -848,5 +857,41 @@
     "full": "Llena",
     "makeOwn": "Crear una oficina nueva",
     "failed": "No funcionó. Inténtalo de nuevo."
+  },
+  "spotify": {
+    "listening": "Escuchando en Spotify",
+    "inJam": "En un Jam de Spotify",
+    "listen": "Escuchar",
+    "open": "Abrir en Spotify",
+    "joinJam": "Unirse al Jam",
+    "jamOf": "Jam de {name}",
+    "jamNote": "Escuchad juntos en Spotify",
+    "kinds": {
+      "track": "Canción",
+      "album": "Álbum",
+      "playlist": "Playlist",
+      "episode": "Episodio de pódcast",
+      "show": "Pódcast",
+      "artist": "Artista",
+      "jam": "Jam"
+    },
+    "playing": "Sonando"
+  },
+  "music": {
+    "title": "Música",
+    "play": "Poner música",
+    "close": "Cerrar",
+    "change": "Cambiar",
+    "stop": "Detener",
+    "skip": "Siguiente canción",
+    "pause": "Pausa",
+    "resume": "Reproducir",
+    "paste": "Pega un enlace de Spotify",
+    "notSpotify": "Eso no es un enlace de Spotify.",
+    "preview": "Solo fragmentos.",
+    "signIn": "Inicia sesión en Spotify",
+    "seek": "Posición en la canción",
+    "yourJam": "Tu Jam",
+    "next": "Poner otra cosa"
   }
 }

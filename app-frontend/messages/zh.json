@@ -239,18 +239,6 @@
     "call": "通话",
     "onCall": "正在与你通话"
   },
-  "jukebox": {
-    "title": "房间音箱",
-    "close": "关闭音箱控制",
-    "tapToPlay": "点击播放即可收听",
-    "playing": "正在为房间里的所有人播放",
-    "paused": "已为房间里的所有人暂停",
-    "previous": "上一首",
-    "next": "下一首",
-    "play": "播放",
-    "pause": "暂停",
-    "playTrack": "播放 {track}"
-  },
   "whiteboard": {
     "title": "白板",
     "penColor": "画笔颜色 {color}",
@@ -318,7 +306,6 @@
     "stand": "按 E 起身",
     "joinMeeting": "按 E 加入",
     "meeting": "会议",
-    "music": "点击播放音乐",
     "draw": "点击开始画画",
     "yourDesk": "你的工位"
   },
@@ -513,7 +500,9 @@
       "generic": "出了点问题，请重试。",
       "bad_link": "这看起来不像网址。",
       "google_taken": "这个 Google 账号已关联到另一个 TinyFloor 账号。",
-      "google_failed": "Google 未能完成，请重试。"
+      "google_failed": "Google 未能完成，请重试。",
+      "not_spotify": "这不是 Spotify 链接。",
+      "spotify_unknown": "Spotify 找不到这个链接。"
     },
     "people": {
       "title": "成员",
@@ -808,7 +797,6 @@
     "clear": "清除备注",
     "placeholder": "你在忙什么？",
     "empty": "清除文字",
-    "emoji": "选择表情",
     "clearAfter": "清除时间",
     "save": "保存",
     "failed": "没有保存成功，请重试。",
@@ -826,7 +814,28 @@
       "h4": "4 小时",
       "today": "今天",
       "week": "本周"
-    }
+    },
+    "until": "到 {time}",
+    "icon": "选择图标",
+    "icons": {
+      "chat": "备注",
+      "focus": "专注",
+      "lunch": "午餐",
+      "coffee": "咖啡",
+      "meeting": "会议",
+      "away": "离开",
+      "sick": "生病",
+      "holiday": "休假",
+      "travel": "出差",
+      "home": "在家",
+      "commute": "通勤",
+      "code": "写代码",
+      "writing": "写作",
+      "presenting": "演示",
+      "call": "通话中",
+      "night": "夜间"
+    },
+    "clearShort": "清除"
   },
   "welcome": {
     "title": "欢迎来到{office}",
@@ -848,5 +857,41 @@
     "full": "已满",
     "makeOwn": "仍然新建办公室",
     "failed": "没有成功，请再试一次。"
+  },
+  "spotify": {
+    "listening": "正在 Spotify 上收听",
+    "inJam": "正在 Spotify Jam 中",
+    "listen": "收听",
+    "open": "在 Spotify 中打开",
+    "joinJam": "加入 Jam",
+    "jamOf": "{name} 的 Jam",
+    "jamNote": "在 Spotify 里一起听",
+    "kinds": {
+      "track": "歌曲",
+      "album": "专辑",
+      "playlist": "歌单",
+      "episode": "播客单集",
+      "show": "播客",
+      "artist": "艺人",
+      "jam": "Jam"
+    },
+    "playing": "正在播放"
+  },
+  "music": {
+    "title": "音乐",
+    "play": "播放音乐",
+    "close": "关闭",
+    "change": "更换",
+    "stop": "停止",
+    "skip": "下一首",
+    "pause": "暂停",
+    "resume": "播放",
+    "paste": "粘贴 Spotify 链接",
+    "notSpotify": "这不是 Spotify 链接。",
+    "preview": "正在播放试听片段。",
+    "signIn": "登录 Spotify",
+    "seek": "歌曲播放位置",
+    "yourJam": "你的 Jam",
+    "next": "换一首"
   }
 }

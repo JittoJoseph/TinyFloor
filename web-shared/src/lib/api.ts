@@ -5,8 +5,9 @@
 import type { LobbyChatPage, PresentPerson } from "@shared/admin";
 import type { StatusNote } from "@shared/messages";
 import type { PushSubscriptionJson } from "@shared/push";
+import type { SpotifyShare } from "@shared/spotify";
 
-export type { LobbyChatPage, PresentPerson, StatusNote };
+export type { LobbyChatPage, PresentPerson, SpotifyShare, StatusNote };
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8787/v1";
 
 export class ApiError extends Error {
@@ -41,6 +42,8 @@ export interface SessionUser {
   timeZone?: string | null;
   /** Whether the zone follows their browser, rather than one they picked. */
   timeZoneAuto?: boolean;
+  /** What they last shared they're listening to on Spotify; cleared once `until` has passed. */
+  spotify?: SpotifyShare | null;
 }
 
 /** What PATCH /me changes. A timeZone picks one; null follows the browser, whose zone is detectedZone. */
@@ -61,6 +64,8 @@ export interface PersonProfile {
   guest: boolean;
   /** Their zone, for their local time, or null. */
   timeZone?: string | null;
+  /** What they're listening to on Spotify, while they share it. */
+  spotify?: SpotifyShare | null;
 }
 
 export type OfficeRole = "admin" | "member";
@@ -404,6 +409,17 @@ export const api = {
   changePassword: (body: { currentPassword: string; newPassword: string }) => post<{ ok: true }>("/me/password", body),
   /** Your status note, kept with your account; null clears it. The floor hears it from your own socket. */
   setStatusNote: (status: StatusNote | null) => put<{ status: StatusNote | null }>("/me/status", { status }),
+  /** What a Spotify link is, before it's shared. */
+  lookUpSpotify: (url: string) => get<{ found: Omit<SpotifyShare, "until"> }>(`/spotify?url=${encodeURIComponent(url)}`),
+  /** An album's, playlist's or artist's songs, to play one at a time. */
+  spotifySongs: (url: string) => get<{ tracks: Omit<SpotifyShare, "until">[] }>(`/spotify/songs?url=${encodeURIComponent(url)}`),
+  /** What plays on after these songs (newest first), from an artist not yet heard. */
+  spotifyAfter: (songs: string[], played: string[]) =>
+    get<{ artist: string | null; tracks: Omit<SpotifyShare, "until">[] }>(
+      `/spotify/after?${new URLSearchParams([...songs.map((one) => ["song", one]), ...played.map((one) => ["played", one])])}`,
+    ),
+  shareSpotify: (url: string) => put<{ spotify: SpotifyShare }>("/me/spotify", { url }),
+  stopSpotify: () => del<{ spotify: null }>("/me/spotify"),
 
   // The admin view
   adminSummary: () =>

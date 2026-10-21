@@ -59,9 +59,9 @@
   border-radius: 50%;
 }
 
-.plate-emoji {
-  font-size: 10px;
-  line-height: 1;
+.plate-icon {
+  display: flex;
+  margin-inline-start: 1px;
 }
 
 .plate[data-folded] {
@@ -71,7 +71,55 @@
 }
 
 .plate[data-folded] .plate-name,
-.plate[data-folded] .plate-emoji {
+/* Playing music (SceneLabel.setListening): three bars in Spotify's green. */
+.plate-music {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 1.5px;
+  height: 9px;
+  margin-inline-start: 2px;
+}
+
+.plate-music[hidden] {
+  display: none;
+}
+
+.plate-music i {
+  width: 2px;
+  height: 100%;
+  border-radius: 1px;
+  background: #1ed760;
+  transform-origin: bottom;
+  animation: plate-music 0.9s ease-in-out infinite;
+}
+
+.plate-music i:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.plate-music i:nth-child(3) {
+  animation-delay: -0.6s;
+}
+
+@keyframes plate-music {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plate-music i {
+    animation: none;
+    transform: scaleY(0.7);
+  }
+}
+
+.plate[data-folded] .plate-music,
+.plate[data-folded] .plate-icon {
   display: none;
 }
 
@@ -216,4 +264,64 @@
     animation: none;
     opacity: 0.6;
   }
+}
+
+/* The seek bar under what's playing (app/Music.tsx): thin like Spotify's, filled
+   to where it is, its knob showing only when you reach for it. */
+.music-seek {
+  appearance: none;
+  height: 12px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.music-seek:disabled {
+  cursor: default;
+}
+
+.music-seek::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--color-foreground) var(--share), color-mix(in oklab, var(--color-foreground) 16%, transparent) var(--share));
+}
+
+.music-seek::-moz-range-track {
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--color-foreground) var(--share), color-mix(in oklab, var(--color-foreground) 16%, transparent) var(--share));
+}
+
+.music-seek::-webkit-slider-thumb {
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  margin-top: -3.5px;
+  border-radius: 50%;
+  background: var(--color-foreground);
+  opacity: 0;
+  transition: opacity 120ms;
+}
+
+.music-seek::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-foreground);
+  opacity: 0;
+  transition: opacity 120ms;
+}
+
+.music-seek:hover:not(:disabled)::-webkit-slider-thumb,
+.music-seek:focus-visible::-webkit-slider-thumb {
+  opacity: 1;
+}
+
+.music-seek:hover:not(:disabled)::-moz-range-thumb,
+.music-seek:focus-visible::-moz-range-thumb {
+  opacity: 1;
+}
+
+.music-seek:focus-visible {
+  outline: none;
 }

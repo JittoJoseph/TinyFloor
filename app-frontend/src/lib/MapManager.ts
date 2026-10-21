@@ -156,7 +156,7 @@ export class MapManager {
   }
 
   private readAnchors() {
-    ["Computer", "Whiteboard", "Speaker", "Zones", "Table"].forEach((layer) => {
+    ["Computer", "Whiteboard", "Zones", "Table"].forEach((layer) => {
       this.anchors[layer] = (
         this.map.getObjectLayer(layer)?.objects ?? []
       ).map((obj) => ({

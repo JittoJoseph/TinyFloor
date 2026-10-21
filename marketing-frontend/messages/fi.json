@@ -241,7 +241,7 @@
           },
           {
             "title": "Ei rakennettavaa karttaa",
-            "body": "Jokaisessa toimistossa on kerros, neuvotteluhuone, taulu ja kaiutin. Tee toimisto ja kävele sisään."
+            "body": "Jokaisessa toimistossa on kerros, neuvotteluhuone ja taulu. Tee toimisto ja kävele sisään."
           },
           {
             "title": "Ei ylläpidettävää",
@@ -306,7 +306,7 @@
           },
           {
             "q": "Miten TinyFloor eroaa Wonderista?",
-            "a": "Wonder käytti ympyröitä tasaisella pohjalla ja oli tehty tapahtumiin. TinyFloor on toimisto, jossa voi kävellä: siinä on työpisteet, neuvotteluhuone, taulu ja musiikkia, ja se on tehty tiimeille, jotka tekevät töitä yhdessä joka päivä."
+            "a": "Wonder käytti ympyröitä tasaisella pohjalla ja oli tehty tapahtumiin. TinyFloor on toimisto, jossa voi kävellä: siinä on työpisteet, neuvotteluhuone ja taulu, ja se on tehty tiimeille, jotka tekevät töitä yhdessä joka päivä."
           },
           {
             "q": "Montako henkeä voi liittyä?",
@@ -531,7 +531,7 @@
           },
           {
             "q": "Mitä oVicessa on, mitä TinyFloorissa ei ole?",
-            "a": "oVicessa on omat asettelut ja avatarit, Google Kalenteri- ja Microsoft Teams -integraatio, SSO, tallennus ja litterointi Business Starterissa sekä kertaluonteiset tilaukset tapahtumiin. TinyFloor keskittyy päivittäiseen toimistoon: kävelemiseen ihmisten luo, kokouksiin, chattiin, tauluun ja musiikkiin."
+            "a": "oVicessa on omat asettelut ja avatarit, Google Kalenteri- ja Microsoft Teams -integraatio, SSO, tallennus ja litterointi Business Starterissa sekä kertaluonteiset tilaukset tapahtumiin. TinyFloor keskittyy päivittäiseen toimistoon: kävelemiseen ihmisten luo, kokouksiin, chattiin ja tauluun."
           },
           {
             "q": "Onko TinyFloor saatavilla japaniksi?",
@@ -957,7 +957,7 @@
         "label": "Virtuaalinen kahvinurkka",
         "meta": {
           "title": "Virtuaalinen kahvinurkka etätiimeille",
-          "description": "Jutustelu, jota etätiimit kaipaavat: törmää kollegoihin kerroksessa, juttele loungessa ja soita musiikkia, tiimisi virtuaalitoimistossa."
+          "description": "Jutustelu, jota etätiimit kaipaavat: törmää kollegoihin kerroksessa, juttele loungessa ja näe, mitä muut kuuntelevat, tiimisi virtuaalitoimistossa."
         },
         "title": "<em>Virtuaalinen kahvinurkka</em>, joka syntyy itsestään.",
         "subtitle": "Etätiimit varaavat aikaa yhdessäololle, koska mitään ei tapahdu sattumalta. Yhteisessä kerroksessa ohitat ihmisiä, näet kuka on paikalla ja pysähdyt juttelemaan.",
@@ -967,8 +967,8 @@
             "body": "Kulkiessasi työpisteiden ja huoneiden välillä ohitat kollegoita ja voit pysähtyä vaihtamaan sanan."
           },
           {
-            "title": "Musiikkia loungessa",
-            "body": "Laita jukeboksiin kappale iltapäiväksi, kaikille huoneessa oleville."
+            "title": "Mitä kaikki kuuntelevat",
+            "body": "Soita Spotifyta suoraan TinyFloorissa. Soiva kappale näkyy kortissasi, ja tiimi voi kuunnella yhdellä painalluksella."
           },
           {
             "title": "Ei kalenterikutsua",
@@ -984,8 +984,8 @@
           },
           {
             "label": "Iltapäivä",
-            "title": "Laita kappale soimaan",
-            "body": "Käynnistä loungen jukeboksi lähistöllä oleville."
+            "title": "Liity Jamiin",
+            "body": "Aloita Jam Spotifyssa ja jaa se. Lähellä olevat voivat liittyä ja kuunnella kanssasi."
           },
           {
             "label": "Perjantai",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Voimmeko kuunnella musiikkia yhdessä?",
-            "a": "Voitte. Kävele huoneen kaiuttimen luo soittaaksesi musiikkia, jonka kaikki huoneessa kuulevat."
+            "a": "Kyllä, Spotifyn kautta. Soita musiikkia suoraan TinyFloorissa, niin se näkyy kortissasi ja tiimi voi kuunnella mukana. Jam pitää kaikki samassa kappaleessa Spotifyssa."
           },
           {
             "q": "Onko se vain yhdessäoloon?",
@@ -1603,8 +1603,8 @@
           "body": "Yhteinen taulu seinällä, sille luonnokselle, joka selittää asian."
         },
         "music": {
-          "title": "Musiikki",
-          "body": "Jukeboksi loungessa niille tunneille, jotka sitä kaipaavat."
+          "title": "Spotify",
+          "body": "Soita musiikkia TinyFloorissa, ja tiimi voi kuunnella korttisi kautta."
         },
         "noise": {
           "title": "Kohinanpoisto",
@@ -1644,7 +1644,7 @@
         "people": "Enintään {people} henkeä",
         "floor": "Kerros, chat ja kanavat",
         "meetings": "Palaverit HD-videolla ja näytönjaolla",
-        "desks": "Työpöydät, valkotaulu ja musiikki",
+        "desks": "Työpisteet ja taulu",
         "everything": "Kaikki Freen ominaisuudet ja lisäksi",
         "team": "Tilaa koko tiimille",
         "often": "Palavereja niin usein kuin tiimi tarvitsee",

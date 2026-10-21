@@ -55,7 +55,7 @@ export function screen(request: NextRequest, home: URL): NextResponse | "file" |
   const prefixed = pathname.match(LOCALE_FILE);
   if (prefixed) return NextResponse.redirect(new URL(`/${prefixed[1]}${search}`, request.url), 308);
 
-  // Files (sitemap.xml, robots.txt, sprites, music) carry no locale.
+  // Files (sitemap.xml, robots.txt, sprites) carry no locale.
   if (/\.[^/]+$/.test(pathname)) return "file";
   return null;
 }

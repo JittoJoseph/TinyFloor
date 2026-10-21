@@ -241,7 +241,7 @@
           },
           {
             "title": "Ingen kart å bygge",
-            "body": "Hvert kontor har en etasje, et møterom, en tavle og en høyttaler. Lag et kontor og gå inn."
+            "body": "Hvert kontor har en etasje, et møterom og en tavle. Lag et kontor og gå inn."
           },
           {
             "title": "Ingenting å drifte",
@@ -306,7 +306,7 @@
           },
           {
             "q": "Hvordan skiller TinyFloor seg fra Wonder?",
-            "a": "Wonder brukte sirkler på et flatt lerret og var laget for arrangementer. TinyFloor er et kontor du kan gå rundt i, med pulter, et møterom, en tavle og musikk, laget for team som jobber sammen hver dag."
+            "a": "Wonder brukte sirkler på et flatt lerret og var laget for arrangementer. TinyFloor er et kontor du kan gå rundt i, med pulter, et møterom og en tavle, laget for team som jobber sammen hver dag."
           },
           {
             "q": "Hvor mange kan bli med?",
@@ -531,7 +531,7 @@
           },
           {
             "q": "Hva har oVice som TinyFloor ikke har?",
-            "a": "oVice har egne oppsett og avatarer, integrasjon med Google Kalender og Microsoft Teams, SSO, opptak og transkribering med Business Starter, og engangsplaner for arrangementer. TinyFloor konsentrerer seg om det daglige kontoret: gå bort til folk, møter, chat, en tavle og musikk."
+            "a": "oVice har egne oppsett og avatarer, integrasjon med Google Kalender og Microsoft Teams, SSO, opptak og transkribering med Business Starter, og engangsplaner for arrangementer. TinyFloor konsentrerer seg om det daglige kontoret: gå bort til folk, møter, chat og en tavle."
           },
           {
             "q": "Finnes TinyFloor på japansk?",
@@ -957,7 +957,7 @@
         "label": "Virtuell kaffekrok",
         "meta": {
           "title": "Virtuell kaffekrok for team som jobber eksternt",
-          "description": "Småpraten team på avstand savner: møt kolleger i etasjen, prat i loungen og spill musikk, i et virtuelt kontor for teamet ditt."
+          "description": "Småpraten team på avstand savner: møt kolleger i etasjen, prat i loungen og se hva alle hører på, i et virtuelt kontor for teamet ditt."
         },
         "title": "En <em>virtuell kaffekrok</em> som skjer av seg selv.",
         "subtitle": "Team som jobber eksternt setter av sosial tid fordi ingenting skjer tilfeldig. I en delt etasje går du forbi folk, ser hvem som er her og stopper for en prat.",
@@ -967,8 +967,8 @@
             "body": "Når du går mellom pulter og rom, går du forbi kolleger og kan stoppe for et ord."
           },
           {
-            "title": "Musikk i loungen",
-            "body": "Sett på en sang i jukeboksen for ettermiddagen, for alle i rommet."
+            "title": "Hva alle hører på",
+            "body": "Spill Spotify rett i TinyFloor. Det som spilles vises på kortet ditt, og kollegene lytter med ett klikk."
           },
           {
             "title": "Ingen kalenderinvitasjon",
@@ -984,8 +984,8 @@
           },
           {
             "label": "Ettermiddag",
-            "title": "Sett på en sang",
-            "body": "Start jukeboksen i loungen for den som er i nærheten."
+            "title": "Bli med i en Jam",
+            "body": "Start en Jam i Spotify og del den. De som er i nærheten, kan bli med og lytte sammen med deg."
           },
           {
             "label": "Fredag",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Kan vi høre på musikk sammen?",
-            "a": "Ja. Gå bort til høyttaleren i rommet for å spille musikk som alle i rommet hører."
+            "a": "Ja, med Spotify. Spill musikk rett i TinyFloor, så vises den på kortet ditt og kollegene kan lytte også. En Jam holder alle på samme sang, i Spotify."
           },
           {
             "q": "Er det bare for sosial tid?",
@@ -1603,8 +1603,8 @@
           "body": "En delt tavle på veggen, for skissen som forklarer det."
         },
         "music": {
-          "title": "Musikk",
-          "body": "En jukeboks i loungen, for timene som trenger en."
+          "title": "Spotify",
+          "body": "Spill musikk i TinyFloor, og kollegene lytter fra kortet ditt."
         },
         "noise": {
           "title": "Støyfjerning",
@@ -1644,7 +1644,7 @@
         "people": "Opptil {people} personer",
         "floor": "Gulvet, chat og kanaler",
         "meetings": "Møter med HD-video og skjermdeling",
-        "desks": "Pulter, tavle og musikk",
+        "desks": "Pulter og en tavle",
         "everything": "Alt i Free, pluss",
         "team": "Plass til hele teamet",
         "often": "Møter så ofte teamet trenger",

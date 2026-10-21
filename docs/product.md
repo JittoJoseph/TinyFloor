@@ -155,6 +155,74 @@ missing features on the map.
 - **The box's tools** are emoji, a picture (on a phone, the camera and
   gallery first) and a file, in that order, with send on the right.
 
+## Your menu (21 October)
+
+- **Status, note and music are one row each**, saying what they are now.
+  Pressing one opens its choices beneath it, inset, while the other two fold
+  away; who you are and your profile stay where they are. A pick closes it.
+  Every pick has its place before Spotify names it, since the menu grows
+  upward from the dock and a late row would move the rest under the pointer.
+  Switching the whole menu to a new view read as a new popup each time. No
+  dropdowns inside the menu, and no modal. Playing, the music row is what's
+  playing, so its choices add only the seek bar, stop and what to play next.
+- **Notes have icons, not emoji**: sixteen from the app's own icon set, each
+  in a colour of its own (headphones, a bowl, a thermometer, a beach…), the
+  same on every device and on the floor's name tags. Notes kept with an emoji
+  took the nearest icon.
+- **No email addresses in your menu or on chat cards**: the name is enough
+  there, and an address is for your profile and the office's member list.
+- **A usual note is one press**: Heads down and Lunch clear in an hour, Back
+  soon in 30 minutes, Out sick today, On holiday this week, so none goes stale.
+  Your own words take Enter and last the day unless you pick 30 minutes, an
+  hour or "Don't clear"; new words drop a usual note's icon. The old dialog
+  filled a usual note in and still wanted Save, and defaulted to never clearing.
+
+## Music, from Spotify (21 October)
+
+- **Music plays in TinyFloor, from your menu, not from signing in to
+  Spotify.** Reading what someone plays in Spotify needs its Web API, which
+  since February 2026 serves 5 hand-added accounts in development mode, is
+  "for personal, non-commercial" projects there, and needs the app owner on
+  Premium; more needs extended quota, open only to registered businesses with
+  250,000 monthly users. The same rules rule out search. So your menu offers
+  picks and a field for any Spotify link, and Spotify's oEmbed (no key) and
+  the Open Graph tags on its public pages give the name, cover and artist.
+- **One press to play.** The picks are The Office Theme first, then Spotify's
+  own work playlists (Deep Focus, lofi beats, Peaceful Piano, Jazz Vibes,
+  Chill Hits), with what you chose lately above them (up to 4, kept in the
+  browser), so the list turns into your own as you listen.
+- **Everything plays one song at a time, so what's playing is always a song.**
+  Signed in, Spotify's player reports only what it was given (a playlist, an
+  artist), never the song inside it. So an album, playlist or artist is
+  played from the song list its embed page shows (`__NEXT_DATA__`, up to
+  100), each song loaded on its own, playlists shuffled; the menu, the dock
+  and your card name the song, and Listen on someone's card plays that song.
+  A next button skips one.
+- **When the songs run out it plays on**, the nearest thing to radio Spotify's
+  player offers (it has no "up next" outside Spotify's apps): the
+  best-known songs of an artist on the last few played who hasn't had a turn,
+  read from the song's embed. Someone featured on a song is how it moves to a
+  new artist; it stops when there's no one new. What plays on by itself stays
+  out of the recent list.
+- **On your name tag, three small bars** while you play something, so people
+  walking past on the floor see it without opening your card.
+- **Spotify's own player plays it, out of sight; our controls drive it**
+  through its iFrame API: play and pause, a seek bar with the time, change
+  and stop, in the menu, and the name with Spotify's mark on the dock's
+  second line while it plays. It keeps playing from page to page, not across
+  a reload. The player has to sit in the viewport, see-through: Chrome stops
+  one off screen (it also lazy-loads, so off screen it never loads) or behind
+  the page. Signed in to Spotify in that browser it plays whole songs;
+  otherwise 30-second previews, and the menu says so with a sign-in link.
+- **What plays shows on your card** (the chat card, and a Spotify button on
+  the card you get walking up to someone) while it plays: shared when it
+  starts, said again every 10 minutes, gone 30 seconds after a pause, and a
+  closed tab's lapses in 15.
+- **Listen plays it for you too**, in your own player, so it shows on your
+  card as well. Never synced: Spotify's policy bars playing one source to many
+  listeners. Listening in step is Spotify's Jam: a pasted Jam link goes on
+  your card as Join Jam (starting one needs Premium).
+
 ## Small decisions worth remembering
 
 - **"Office", not "workspace".** The whole product is the metaphor (a floor,

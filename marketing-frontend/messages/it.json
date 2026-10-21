@@ -241,7 +241,7 @@
           },
           {
             "title": "Nessuna mappa da costruire",
-            "body": "Ogni ufficio ha un piano, una sala riunioni, una lavagna e una cassa. Crea un ufficio ed entra."
+            "body": "Ogni ufficio ha un piano, una sala riunioni e una lavagna. Crea un ufficio ed entra."
           },
           {
             "title": "Niente da ospitare",
@@ -306,7 +306,7 @@
           },
           {
             "q": "In cosa TinyFloor è diverso da Wonder?",
-            "a": "Wonder usava cerchi su una tela piatta ed era pensato per gli eventi. TinyFloor è un ufficio in cui camminare, con scrivanie, una sala riunioni, una lavagna e musica, pensato per team che lavorano insieme ogni giorno."
+            "a": "Wonder usava cerchi su una tela piatta ed era pensato per gli eventi. TinyFloor è un ufficio in cui camminare, con scrivanie, una sala riunioni e una lavagna, pensato per team che lavorano insieme ogni giorno."
           },
           {
             "q": "Quante persone possono entrare?",
@@ -531,7 +531,7 @@
           },
           {
             "q": "Cosa ha oVice che TinyFloor non ha?",
-            "a": "oVice aggiunge layout e avatar personalizzati, integrazione con Google Calendar e Microsoft Teams, SSO, registrazione e trascrizione con Business Starter, e piani una tantum per gli eventi. TinyFloor si concentra sull'ufficio di tutti i giorni: avvicinarsi, riunioni, chat, una lavagna e musica."
+            "a": "oVice aggiunge layout e avatar personalizzati, integrazione con Google Calendar e Microsoft Teams, SSO, registrazione e trascrizione con Business Starter, e piani una tantum per gli eventi. TinyFloor si concentra sull'ufficio di tutti i giorni: avvicinarsi, riunioni, chat e una lavagna."
           },
           {
             "q": "TinyFloor è disponibile in giapponese?",
@@ -957,7 +957,7 @@
         "label": "Macchinetta del caffè virtuale",
         "meta": {
           "title": "Macchinetta del caffè virtuale per team da remoto",
-          "description": "Le chiacchiere che mancano ai team da remoto: incontra i colleghi sul piano, chiacchiera nella lounge e metti musica, in un ufficio virtuale per il tuo team."
+          "description": "Le chiacchiere che mancano ai team da remoto: incontra i colleghi sul piano, chiacchiera nella lounge e scopri cosa ascoltano gli altri, in un ufficio virtuale per il tuo team."
         },
         "title": "Una <em>macchinetta del caffè virtuale</em> che succede da sola.",
         "subtitle": "I team da remoto pianificano momenti sociali perché niente succede per caso. Su un piano condiviso incroci le persone, vedi chi c'è e ti fermi a chiacchierare.",
@@ -967,8 +967,8 @@
             "body": "Passando tra scrivanie e sale incroci i colleghi e puoi fermarti a scambiare due parole."
           },
           {
-            "title": "Musica nella lounge",
-            "body": "Metti una canzone nel jukebox per il pomeriggio, per tutti quelli nella stanza."
+            "title": "Cosa ascoltano tutti",
+            "body": "Ascolta Spotify direttamente in TinyFloor. Quello che suona appare sulla tua scheda e il team può ascoltarlo con un clic."
           },
           {
             "title": "Nessun invito in calendario",
@@ -984,8 +984,8 @@
           },
           {
             "label": "Pomeriggio",
-            "title": "Metti una canzone",
-            "body": "Avvia il jukebox nella lounge per chi è in giro."
+            "title": "Unisciti a una Jam",
+            "body": "Avvia una Jam su Spotify e condividila. Chi è nei paraggi può unirsi e ascoltare con te."
           },
           {
             "label": "Venerdì",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Possiamo ascoltare musica insieme?",
-            "a": "Sì. Avvicinati all'altoparlante della stanza per mettere musica che sente tutta la stanza."
+            "a": "Sì, con Spotify. Metti musica direttamente in TinyFloor e appare sulla tua scheda, così anche il team può ascoltarla. Una Jam tiene tutti sullo stesso brano, in Spotify."
           },
           {
             "q": "È solo per i momenti sociali?",
@@ -1603,8 +1603,8 @@
           "body": "Una lavagna condivisa sul muro, per lo schizzo che spiega tutto."
         },
         "music": {
-          "title": "Musica",
-          "body": "Un jukebox nel salotto, per le ore che ne hanno bisogno."
+          "title": "Spotify",
+          "body": "Metti musica in TinyFloor e il team può ascoltarla dalla tua scheda."
         },
         "noise": {
           "title": "Rimozione del rumore",
@@ -1644,7 +1644,7 @@
         "people": "Fino a {people} persone",
         "floor": "Il piano, la chat e i canali",
         "meetings": "Riunioni con video HD e condivisione schermo",
-        "desks": "Scrivanie, lavagna e musica",
+        "desks": "Scrivanie e una lavagna",
         "everything": "Tutto di Free, più",
         "team": "Spazio per tutto il team",
         "often": "Riunioni ogni volta che serve al team",

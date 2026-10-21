@@ -24,7 +24,6 @@ import { motion, useReducedMotion } from "motion/react";
 import { GENERAL_CHANNEL, cleanChannelName, dmChannelId, dmMembers, isDm, type ChannelSummary } from "@shared/chat";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { chat } from "@/lib/ChatSocket";
-import { api, type PersonProfile } from "@/lib/api";
 import { useChat, useTyping } from "@/lib/useChat";
 import { useAuth } from "@/contexts/AuthContext";
 import { useFloorStatus, walkToPerson } from "@/lib/floor";
@@ -49,6 +48,8 @@ import { useWide } from "@/lib/hooks/use-wide";
 import { discard, upload } from "@/lib/chatFiles";
 import { mentionsIn } from "@/lib/mentions";
 import { hoursAhead, timeIn } from "@/lib/timeZone";
+import { usePerson } from "@/lib/people";
+import { SpotifyActivity } from "./SpotifyActivity";
 import type { ChatMessage } from "@shared/chat";
 
 /**
@@ -242,7 +243,6 @@ export function ChatView({ channel }: { channel?: string }) {
     <PersonCard
       id={id}
       name={personById.get(id)?.displayName ?? name}
-      detail={personById.get(id)?.email ?? undefined}
       role={personById.get(id)?.role}
       presence={presenceOf(id)}
       isMe={id === me}
@@ -816,7 +816,6 @@ function NewChannel({ onMade, trigger }: { onMade: (id: string) => void; trigger
 function PersonCard({
   id,
   name,
-  detail,
   role,
   presence,
   isMe,
@@ -826,7 +825,6 @@ function PersonCard({
 }: {
   id: string;
   name: string;
-  detail?: string;
   role?: string;
   presence: Presence;
   isMe: boolean;
@@ -847,12 +845,7 @@ function PersonCard({
             .filter(Boolean)
             .join(" · ")}
         </p>
-        {detail && (
-          <p data-ph-mask className="mt-0.5 truncate text-[12.5px] text-muted-foreground">
-            {detail}
-          </p>
-        )}
-        <Profile id={id} />
+        <Profile id={id} name={name} />
       </MenuHeader>
       {!isMe && onMessage && (
         <MenuItem icon={<MessageSquare />} onSelect={onMessage}>
@@ -868,22 +861,11 @@ function PersonCard({
   );
 }
 
-/** Profiles already looked up, so opening someone twice doesn't ask twice. */
-const profiles = new Map<string, Promise<PersonProfile | null>>();
-
-/** Their local time and the link on their profile, under their name wherever a card opens. */
-function Profile({ id }: { id: string }) {
+/** Their local time, the link on their profile and what they're listening to, under their name wherever a card opens. */
+function Profile({ id, name }: { id: string; name: string }) {
   const t = useTranslations("shell");
   const locale = useLocale();
-  const [profile, setProfile] = useState<PersonProfile | null>(null);
-  useEffect(() => {
-    let cancelled = false;
-    if (!profiles.has(id)) profiles.set(id, api.person(id).then(({ person }) => person, () => null));
-    profiles.get(id)!.then((found) => !cancelled && setProfile(found));
-    return () => {
-      cancelled = true;
-    };
-  }, [id]);
+  const profile = usePerson(id);
   if (!profile) return null;
   const time = profile.timeZone ? timeIn(profile.timeZone, locale) : null;
   const ahead = profile.timeZone ? hoursAhead(profile.timeZone) : 0;
@@ -906,6 +888,7 @@ function Profile({ id }: { id: string }) {
           <span className="truncate">{profile.link.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span>
         </a>
       )}
+      {profile.spotify && <SpotifyActivity share={profile.spotify} name={name} className="mt-3" />}
     </>
   );
 }

@@ -4,7 +4,6 @@ import { PlayerManager } from "./PlayerManager";
 import { SeatManager } from "./SeatManager";
 import { callManager } from "./CallManager";
 import { whiteboard } from "./WhiteboardManager";
-import { jukebox } from "./JukeboxManager";
 import { AnimationManager } from "./AnimationManager";
 import { playSound } from "./sounds";
 import { tileToPixel } from "@/lib/types";
@@ -12,6 +11,7 @@ import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import { setMeetings, setMeetingUsage } from "./meetings";
 import { deskOf, deskState, setDesks } from "./desks";
 import { FLOOR_ARRIVED_EVENT, myStatus, myStatusNote, sinceFloorRequested, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
+import { isListening } from "./music";
 import { track } from "@/lib/analytics";
 
 /** Applies what the room says to the scene and the React overlays. */
@@ -34,7 +34,6 @@ export class MessageHandler {
       case "welcome":
         setDesks(message.desks ?? []);
         this.welcome(message.self, message.players);
-        jukebox.handleMusic(message.music);
         whiteboard.sync();
         setMeetings(message.meetings ?? []);
         if (message.usage) this.meetingUsage(message.usage);
@@ -104,6 +103,9 @@ export class MessageHandler {
         this.playerManager.updatePlayerNote(message.id, message.note, () => this.dispatchPlayerList());
         this.dispatchPlayerList();
         break;
+      case "listening":
+        this.playerManager.updatePlayerListening(message.id, message.on);
+        break;
       case "renamed":
         this.playerManager.renamePlayer(message.id, message.name);
         this.dispatchPlayerList();
@@ -112,9 +114,6 @@ export class MessageHandler {
       case "board_draw":
       case "board_clear":
         whiteboard.handleMessage(message);
-        break;
-      case "music":
-        jukebox.handleMusic(message);
         break;
     }
   }
@@ -133,6 +132,8 @@ export class MessageHandler {
     // So is a note changed while the connection was down.
     const note = myStatusNote();
     if (!self.guest && JSON.stringify(note) !== JSON.stringify(self.note ?? null)) this.send({ t: "note", note });
+    // And music that kept playing through it.
+    if (isListening() !== !!self.listening) this.send({ t: "listening", on: isListening() });
     // Everyone else; our own sprite and nameplate stay.
     for (const { id } of this.playerManager.getPlayerList()) {
       if (id === this.playerId) continue;
@@ -144,6 +145,7 @@ export class MessageHandler {
     this.player.setPosition(spawn.x, spawn.y);
     this.playerManager.showLocalPlayer();
     this.playerManager.updatePlayerNote(this.playerId, self.guest ? null : myStatusNote(), () => this.dispatchPlayerList());
+    this.playerManager.updatePlayerListening(this.playerId, isListening());
     // The view starts where you are, rather than sweeping over from where it was.
     this.scene.cameras.main.centerOn(spawn.x, spawn.y);
     const spriteName = isCharacter(self.character) ? self.character : DEFAULT_CHARACTER;
@@ -168,6 +170,7 @@ export class MessageHandler {
   private addUser(player: PlayerState) {
     this.playerManager.addPlayer(player.id, player.name, player.x, player.y, player.character, player.status, player.guest);
     this.playerManager.updatePlayerNote(player.id, player.note, () => this.dispatchPlayerList());
+    this.playerManager.updatePlayerListening(player.id, !!player.listening);
     if (player.seat !== null) this.seatPlayer(player.id, player.seat, false);
   }
 

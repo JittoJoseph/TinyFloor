@@ -239,18 +239,6 @@
     "call": "통화",
     "onCall": "나와 통화 중"
   },
-  "jukebox": {
-    "title": "방 스피커",
-    "close": "스피커 컨트롤 닫기",
-    "tapToPlay": "재생을 탭해서 들어 보세요",
-    "playing": "방의 모두에게 재생 중",
-    "paused": "방의 모두에게 일시 정지됨",
-    "previous": "이전 곡",
-    "next": "다음 곡",
-    "play": "재생",
-    "pause": "일시 정지",
-    "playTrack": "{track} 재생"
-  },
   "whiteboard": {
     "title": "화이트보드",
     "penColor": "펜 색상 {color}",
@@ -318,7 +306,6 @@
     "stand": "E 키로 일어서기",
     "joinMeeting": "E 키로 참여",
     "meeting": "회의",
-    "music": "클릭해서 음악 듣기",
     "draw": "클릭해서 그리기",
     "yourDesk": "내 책상"
   },
@@ -513,7 +500,9 @@
       "generic": "문제가 생겼어요. 다시 시도해 주세요.",
       "bad_link": "웹 주소가 아닌 것 같아요.",
       "google_taken": "그 Google 계정은 이미 다른 TinyFloor 계정에 연결되어 있어요.",
-      "google_failed": "Google 연결이 완료되지 않았어요. 다시 시도해 주세요."
+      "google_failed": "Google 연결이 완료되지 않았어요. 다시 시도해 주세요.",
+      "not_spotify": "Spotify 링크가 아니에요.",
+      "spotify_unknown": "Spotify에서 그 링크를 찾을 수 없어요."
     },
     "people": {
       "title": "사람들",
@@ -808,7 +797,6 @@
     "clear": "메모 지우기",
     "placeholder": "지금 무엇을 하고 있나요?",
     "empty": "텍스트 지우기",
-    "emoji": "이모지 선택",
     "clearAfter": "지우기",
     "save": "저장",
     "failed": "저장하지 못했어요. 다시 시도해 주세요.",
@@ -826,7 +814,28 @@
       "h4": "4시간",
       "today": "오늘",
       "week": "이번 주"
-    }
+    },
+    "until": "{time}까지",
+    "icon": "아이콘 선택",
+    "icons": {
+      "chat": "메모",
+      "focus": "집중",
+      "lunch": "점심",
+      "coffee": "커피",
+      "meeting": "회의",
+      "away": "자리 비움",
+      "sick": "아픔",
+      "holiday": "휴가",
+      "travel": "출장",
+      "home": "재택",
+      "commute": "이동 중",
+      "code": "코딩",
+      "writing": "글쓰기",
+      "presenting": "발표",
+      "call": "통화 중",
+      "night": "밤"
+    },
+    "clearShort": "지우기"
   },
   "welcome": {
     "title": "{office}에 오신 걸 환영해요",
@@ -848,5 +857,41 @@
     "full": "가득 참",
     "makeOwn": "새 오피스 만들기",
     "failed": "잘 안 됐어요. 다시 시도해 주세요."
+  },
+  "spotify": {
+    "listening": "Spotify에서 듣는 중",
+    "inJam": "Spotify Jam에 참여 중",
+    "listen": "듣기",
+    "open": "Spotify에서 열기",
+    "joinJam": "Jam 참여",
+    "jamOf": "{name}님의 Jam",
+    "jamNote": "Spotify에서 함께 들어요",
+    "kinds": {
+      "track": "곡",
+      "album": "앨범",
+      "playlist": "플레이리스트",
+      "episode": "팟캐스트 에피소드",
+      "show": "팟캐스트",
+      "artist": "아티스트",
+      "jam": "Jam"
+    },
+    "playing": "재생 중"
+  },
+  "music": {
+    "title": "음악",
+    "play": "음악 재생",
+    "close": "닫기",
+    "change": "변경",
+    "stop": "중지",
+    "skip": "다음 곡",
+    "pause": "일시정지",
+    "resume": "재생",
+    "paste": "Spotify 링크 붙여넣기",
+    "notSpotify": "Spotify 링크가 아니에요.",
+    "preview": "미리듣기로 재생 중이에요.",
+    "signIn": "Spotify에 로그인",
+    "seek": "곡 재생 위치",
+    "yourJam": "내 Jam",
+    "next": "다른 음악 재생"
   }
 }

@@ -11,6 +11,10 @@ import { useCall } from "@/lib/useCall";
 import { Face, type Presence } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import type { StatusNote } from "@shared/messages";
+import { usePerson } from "@/lib/people";
+import { NoteText, noteLine } from "@/components/app/StatusNote";
+import { Menu } from "@/components/ui/Menu";
+import { SpotifyActivity, SpotifyMark } from "@/components/app/SpotifyActivity";
 
 /** Asks whichever shell holds the floor to open a conversation with someone. */
 export const OPEN_CONVERSATION_EVENT = "openConversation";
@@ -49,6 +53,7 @@ export const ProximityActions = memo(function ProximityActions({
   const tShell = useTranslations("shell");
   const tStatus = useTranslations("status");
   const tMeetings = useTranslations("meetings");
+  const tSpotify = useTranslations("spotify");
   const router = useRouter();
   const place = usePlace();
   const { peers } = useCall();
@@ -58,7 +63,9 @@ export const ProximityActions = memo(function ProximityActions({
   const asMeeting = !onCall && peers.length > 0 && !!meetingPath;
   const busy = !onCall && player.status === "in_call";
   const status = STATUSES.has(player.status) ? tStatus(`${player.status as "available"}.label`) : null;
-  const note = player.note ? [player.note.emoji, player.note.text].filter(Boolean).join(" ") : null;
+  const note = player.note ? noteLine(player.note) : null;
+  // What they're listening to, if they share it: their mark beside the message button, the rest a press away.
+  const spotify = usePerson(player.guest ? null : player.id)?.spotify ?? null;
 
   return (
     <div className={cn(surface, "flex items-center rounded-full", touch ? "gap-2.5 p-2" : "gap-2 p-1.5")}>
@@ -68,10 +75,27 @@ export const ProximityActions = memo(function ProximityActions({
         <p className={cn("truncate font-semibold text-foreground", touch ? "text-[14px]" : "text-[13px]")}>{player.name}</p>
         {(note || status) && (
           <p title={note ?? undefined} className={cn("mt-0.5 truncate text-muted-foreground", touch ? "text-[12px]" : "text-[11.5px]")}>
-            {note ?? status}
+            {player.note ? <NoteText note={player.note} /> : status}
           </p>
         )}
       </div>
+
+      {spotify && (
+        <Menu
+          side="top"
+          align="start"
+          width={264}
+          trigger={
+            <RoomIconButton
+              size={touch ? "md" : "sm"}
+              title={tSpotify(spotify.kind === "jam" ? "inJam" : "listening")}
+              icon={<SpotifyMark className={cn("text-[#1ed760]", touch ? "size-[18px]" : "size-[15px]")} />}
+            />
+          }
+        >
+          <SpotifyActivity share={spotify} name={player.name} className="bg-transparent p-1.5" />
+        </Menu>
+      )}
 
       <RoomIconButton
         size={touch ? "md" : "sm"}

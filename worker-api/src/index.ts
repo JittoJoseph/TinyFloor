@@ -8,6 +8,7 @@ import { googleRoutes } from "./google";
 import { helpRoutes } from "./help";
 import { officeRoutes } from "./offices";
 import { pushRoutes } from "./push";
+import { spotifyRoutes } from "./spotify";
 import { teamRoutes } from "./team";
 import { assertSafeUpload, fileRoutes, UPLOAD_PATH } from "./files";
 import { runRetention } from "./retention";
@@ -32,6 +33,7 @@ billingRoutes(router);
 adminRoutes(router);
 helpRoutes(router);
 pushRoutes(router);
+spotifyRoutes(router);
 
 export default {
   async fetch(request, env, ctx) {

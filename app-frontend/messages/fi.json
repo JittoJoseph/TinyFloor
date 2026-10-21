@@ -239,18 +239,6 @@
     "call": "Soita",
     "onCall": "Puhelussa kanssasi"
   },
-  "jukebox": {
-    "title": "Huoneen kaiutin",
-    "close": "Sulje kaiuttimen säätimet",
-    "tapToPlay": "Napauta toista kuullaksesi",
-    "playing": "Soi kaikille huoneessa",
-    "paused": "Tauolla kaikille huoneessa",
-    "previous": "Edellinen kappale",
-    "next": "Seuraava kappale",
-    "play": "Toista",
-    "pause": "Tauko",
-    "playTrack": "Toista {track}"
-  },
   "whiteboard": {
     "title": "Valkotaulu",
     "penColor": "Kynän väri {color}",
@@ -318,7 +306,6 @@
     "stand": "Paina E noustaksesi",
     "joinMeeting": "Paina E liittyäksesi",
     "meeting": "Palaveri",
-    "music": "Napsauta musiikkia varten",
     "draw": "Napsauta piirtääksesi",
     "yourDesk": "Työpöytäsi"
   },
@@ -513,7 +500,9 @@
       "generic": "Jokin meni vikaan. Yritä uudelleen.",
       "bad_link": "Tämä ei näytä verkko-osoitteelta.",
       "google_taken": "Tämä Google-tili on jo yhdistetty toiseen TinyFloor-tiliin.",
-      "google_failed": "Google ei onnistunut. Yritä uudelleen."
+      "google_failed": "Google ei onnistunut. Yritä uudelleen.",
+      "not_spotify": "Tämä ei ole Spotify-linkki.",
+      "spotify_unknown": "Spotify ei löydä tätä linkkiä."
     },
     "people": {
       "title": "Ihmiset",
@@ -808,7 +797,6 @@
     "clear": "Poista viesti",
     "placeholder": "Mitä olet tekemässä?",
     "empty": "Tyhjennä teksti",
-    "emoji": "Valitse emoji",
     "clearAfter": "Poista ajan kuluttua",
     "save": "Tallenna",
     "failed": "Tallennus ei onnistunut. Yritä uudelleen.",
@@ -826,7 +814,28 @@
       "h4": "4 tuntia",
       "today": "Tänään",
       "week": "Tällä viikolla"
-    }
+    },
+    "until": "klo {time} asti",
+    "icon": "Valitse kuvake",
+    "icons": {
+      "chat": "Muistiinpano",
+      "focus": "Keskittyminen",
+      "lunch": "Lounas",
+      "coffee": "Kahvi",
+      "meeting": "Kokous",
+      "away": "Poissa",
+      "sick": "Sairas",
+      "holiday": "Loma",
+      "travel": "Matkoilla",
+      "home": "Kotona",
+      "commute": "Työmatkalla",
+      "code": "Koodaus",
+      "writing": "Kirjoitus",
+      "presenting": "Esitys",
+      "call": "Puhelussa",
+      "night": "Yö"
+    },
+    "clearShort": "Tyhjennä"
   },
   "welcome": {
     "title": "Tervetuloa: {office}",
@@ -848,5 +857,41 @@
     "full": "Täynnä",
     "makeOwn": "Luo sittenkin uusi toimisto",
     "failed": "Se ei onnistunut. Yritä uudelleen."
+  },
+  "spotify": {
+    "listening": "Kuuntelee Spotifyssa",
+    "inJam": "Jamissa Spotifyssa",
+    "listen": "Kuuntele",
+    "open": "Avaa Spotifyssa",
+    "joinJam": "Liity Jamiin",
+    "jamOf": "Käyttäjän {name} Jam",
+    "jamNote": "Kuunnelkaa yhdessä Spotifyssa",
+    "kinds": {
+      "track": "Kappale",
+      "album": "Albumi",
+      "playlist": "Soittolista",
+      "episode": "Podcastjakso",
+      "show": "Podcast",
+      "artist": "Artisti",
+      "jam": "Jam"
+    },
+    "playing": "Soi"
+  },
+  "music": {
+    "title": "Musiikki",
+    "play": "Soita musiikkia",
+    "close": "Sulje",
+    "change": "Vaihda",
+    "stop": "Lopeta",
+    "skip": "Seuraava kappale",
+    "pause": "Tauko",
+    "resume": "Toista",
+    "paste": "Liitä Spotify-linkki",
+    "notSpotify": "Tämä ei ole Spotify-linkki.",
+    "preview": "Soitetaan näytteitä.",
+    "signIn": "Kirjaudu Spotifyhin",
+    "seek": "Kohta kappaleessa",
+    "yourJam": "Jamisi",
+    "next": "Soita jotain muuta"
   }
 }

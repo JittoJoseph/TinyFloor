@@ -241,7 +241,7 @@
           },
           {
             "title": "No map to build",
-            "body": "Every office comes with a floor, a meeting room, a whiteboard and a speaker. Make an office and walk in."
+            "body": "Every office comes with a floor, a meeting room and a whiteboard. Make an office and walk in."
           },
           {
             "title": "Nothing to host",
@@ -306,7 +306,7 @@
           },
           {
             "q": "How is TinyFloor different from Wonder?",
-            "a": "Wonder used circles on a flat canvas and was made for events. TinyFloor is a walkable office with desks, a meeting room, a whiteboard and music, made for teams that work together every day."
+            "a": "Wonder used circles on a flat canvas and was made for events. TinyFloor is a walkable office with desks, a meeting room and a whiteboard, made for teams that work together every day."
           },
           {
             "q": "How many people can join?",
@@ -531,7 +531,7 @@
           },
           {
             "q": "What does oVice have that TinyFloor does not?",
-            "a": "oVice adds custom layouts and avatars, Google Calendar and Microsoft Teams integration, SSO, recording and transcription on Business Starter, and one-time plans for events. TinyFloor focuses on the everyday office: walking up, meetings, chat, a whiteboard and music."
+            "a": "oVice adds custom layouts and avatars, Google Calendar and Microsoft Teams integration, SSO, recording and transcription on Business Starter, and one-time plans for events. TinyFloor focuses on the everyday office: walking up, meetings, chat and a whiteboard."
           },
           {
             "q": "Is TinyFloor available in Japanese?",
@@ -957,7 +957,7 @@
         "label": "Virtual watercooler",
         "meta": {
           "title": "Virtual Watercooler for Remote Teams",
-          "description": "The small talk remote teams miss: run into teammates on the floor, chat in the lounge and play music, in a virtual office for your team."
+          "description": "The small talk remote teams miss: run into teammates on the floor, chat in the lounge and see what everyone's listening to, in a virtual office for your team."
         },
         "title": "A <em>virtual watercooler</em> that happens on its own.",
         "subtitle": "Remote teams schedule social time because nothing happens by chance. On a shared floor you pass people, see who's around and stop to chat.",
@@ -967,8 +967,8 @@
             "body": "Walking between desks and rooms, you pass teammates and can stop for a word."
           },
           {
-            "title": "Music in the lounge",
-            "body": "Put a song on the jukebox for the afternoon, for everyone in the room."
+            "title": "What everyone's listening to",
+            "body": "Play Spotify right in TinyFloor. What's on shows on your card, and teammates can listen with one press."
           },
           {
             "title": "No calendar invite",
@@ -984,8 +984,8 @@
           },
           {
             "label": "Afternoon",
-            "title": "Put a song on",
-            "body": "Start the jukebox in the lounge for whoever's around."
+            "title": "Join a Jam",
+            "body": "Start a Jam in Spotify and share it. Whoever's around can join and listen with you."
           },
           {
             "label": "Friday",
@@ -1003,8 +1003,8 @@
             "a": "No. Chats between two people never count, and meetings come with every plan."
           },
           {
-            "q": "Can we play music together?",
-            "a": "Yes. Walk up to the speaker in the room to play music that everyone in the room hears."
+            "q": "Can we listen to music together?",
+            "a": "Yes, with Spotify. Play music right in TinyFloor and it shows on your card, so teammates can listen too. A Jam keeps everyone on the same song, in Spotify."
           },
           {
             "q": "Is it only for social time?",
@@ -1603,8 +1603,8 @@
           "body": "A shared board on the wall, for the sketch that explains it."
         },
         "music": {
-          "title": "Music",
-          "body": "A jukebox in the lounge, for the hours that need one."
+          "title": "Spotify",
+          "body": "Play music in TinyFloor, and teammates can listen from your card."
         },
         "noise": {
           "title": "Noise removal",
@@ -1644,7 +1644,7 @@
         "people": "Up to {people} people",
         "floor": "The floor, chat and channels",
         "meetings": "Meetings with HD video and screen sharing",
-        "desks": "Desks, a whiteboard and music",
+        "desks": "Desks and a whiteboard",
         "everything": "Everything in Free, plus",
         "team": "Room for your whole team",
         "often": "Meetings as often as your team needs",

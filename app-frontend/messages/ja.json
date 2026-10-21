@@ -239,18 +239,6 @@
     "call": "通話",
     "onCall": "あなたと通話中"
   },
-  "jukebox": {
-    "title": "ルームのスピーカー",
-    "close": "スピーカーの操作を閉じる",
-    "tapToPlay": "再生をタップして聴く",
-    "playing": "ルームの全員に再生中",
-    "paused": "ルームの全員に一時停止中",
-    "previous": "前の曲",
-    "next": "次の曲",
-    "play": "再生",
-    "pause": "一時停止",
-    "playTrack": "{track} を再生"
-  },
   "whiteboard": {
     "title": "ホワイトボード",
     "penColor": "ペンの色 {color}",
@@ -318,7 +306,6 @@
     "stand": "E キーで立つ",
     "joinMeeting": "E キーで参加",
     "meeting": "会議",
-    "music": "クリックで音楽",
     "draw": "クリックで描く",
     "yourDesk": "あなたのデスク"
   },
@@ -513,7 +500,9 @@
       "generic": "問題が発生しました。もう一度お試しください。",
       "bad_link": "ウェブアドレスではないようです。",
       "google_taken": "その Google アカウントは別の TinyFloor アカウントと連携済みです。",
-      "google_failed": "Google での処理に失敗しました。もう一度お試しください。"
+      "google_failed": "Google での処理に失敗しました。もう一度お試しください。",
+      "not_spotify": "Spotifyのリンクではありません。",
+      "spotify_unknown": "Spotifyでそのリンクが見つかりません。"
     },
     "people": {
       "title": "メンバー",
@@ -808,7 +797,6 @@
     "clear": "メモを消す",
     "placeholder": "いま何をしていますか？",
     "empty": "テキストを消去",
-    "emoji": "絵文字を選択",
     "clearAfter": "消すまでの時間",
     "save": "保存",
     "failed": "保存できませんでした。もう一度お試しください。",
@@ -826,7 +814,28 @@
       "h4": "4時間",
       "today": "今日",
       "week": "今週"
-    }
+    },
+    "until": "{time}まで",
+    "icon": "アイコンを選ぶ",
+    "icons": {
+      "chat": "メモ",
+      "focus": "集中",
+      "lunch": "ランチ",
+      "coffee": "コーヒー",
+      "meeting": "会議",
+      "away": "離席",
+      "sick": "体調不良",
+      "holiday": "休暇",
+      "travel": "移動中",
+      "home": "在宅",
+      "commute": "通勤中",
+      "code": "コーディング",
+      "writing": "執筆",
+      "presenting": "発表",
+      "call": "通話中",
+      "night": "夜"
+    },
+    "clearShort": "消去"
   },
   "welcome": {
     "title": "{office}へようこそ",
@@ -848,5 +857,41 @@
     "full": "満員",
     "makeOwn": "新しいオフィスを作る",
     "failed": "うまくいきませんでした。もう一度お試しください。"
+  },
+  "spotify": {
+    "listening": "Spotifyで再生中",
+    "inJam": "SpotifyのJamに参加中",
+    "listen": "聴く",
+    "open": "Spotifyで開く",
+    "joinJam": "Jamに参加",
+    "jamOf": "{name}さんのJam",
+    "jamNote": "Spotifyで一緒に聴く",
+    "kinds": {
+      "track": "曲",
+      "album": "アルバム",
+      "playlist": "プレイリスト",
+      "episode": "ポッドキャストのエピソード",
+      "show": "ポッドキャスト",
+      "artist": "アーティスト",
+      "jam": "Jam"
+    },
+    "playing": "再生中"
+  },
+  "music": {
+    "title": "音楽",
+    "play": "音楽を再生",
+    "close": "閉じる",
+    "change": "変更",
+    "stop": "停止",
+    "skip": "次の曲",
+    "pause": "一時停止",
+    "resume": "再生",
+    "paste": "Spotifyのリンクを貼り付け",
+    "notSpotify": "Spotifyのリンクではありません。",
+    "preview": "試聴版を再生中です。",
+    "signIn": "Spotifyにログイン",
+    "seek": "曲の再生位置",
+    "yourJam": "あなたのJam",
+    "next": "ほかの曲を再生"
   }
 }

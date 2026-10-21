@@ -7,7 +7,7 @@ import { Face, type Presence } from "@/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
 import { cn } from "@/lib/utils";
 import type { StatusNote } from "@shared/messages";
-import { noteLine } from "./StatusNote";
+import { NoteText, noteLine } from "./StatusNote";
 
 const STATUS_DOT: Record<string, string> = {
   available: "bg-ok",
@@ -73,13 +73,13 @@ export function MemberRow({
           {detail || t("guest")}
         </p>
         {/* On a phone the status column is gone, so a note goes under the name. */}
-        {note && <p className="truncate text-[12.5px] text-foreground/80 sm:hidden">{noteLine(note)}</p>}
+        {note && <p className="truncate text-[12.5px] text-foreground/80 sm:hidden"><NoteText note={note} /></p>}
       </div>
 
       <span className="hidden w-44 shrink-0 items-center gap-2 text-[12.5px] sm:flex">
         <span className={cn("size-1.5 shrink-0 rounded-full", onFloor ? STATUS_DOT[presence!] : "bg-faint")} />
         <span title={note ? noteLine(note) : undefined} className={cn("truncate", onFloor ? "text-foreground" : "text-muted-foreground")}>
-          {note ? noteLine(note) : onFloor ? tStatus(`${presence as "available"}.label`) : t("notOnFloor")}
+          {note ? <NoteText note={note} /> : onFloor ? tStatus(`${presence as "available"}.label`) : t("notOnFloor")}
         </span>
       </span>
       {role !== undefined && <span className="hidden w-20 shrink-0 truncate text-[12.5px] text-muted-foreground md:block">{role}</span>}

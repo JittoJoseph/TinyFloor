@@ -11,20 +11,61 @@ export const BOARD_MAX_STROKES = 400;
 export const BOARD_MAX_POINTS_PER_STROKE = 4000;
 
 /**
- * A few words beside someone's status, with an emoji their name tag on the
- * floor shows: "🍜 Lunch, back at 2". It can clear itself when they say, so a
- * note never goes stale and nobody has to remember to take it down.
+ * A few words beside someone's status, with an icon their name tag on the
+ * floor shows: "Lunch, back at 2" with a bowl. It can clear itself when they
+ * say, so a note never goes stale and nobody has to remember to take it down.
  */
 export interface StatusNote {
-  emoji: string | null;
+  /** One of NOTE_ICONS, drawn the same everywhere; null for words alone. */
+  icon: NoteIcon | null;
   text: string;
   /** When it clears itself, in milliseconds; null keeps it until it's changed. */
   until: number | null;
 }
 
+/**
+ * The icons a note can have. A fixed set rather than any emoji: they look the
+ * same on every device and match the rest of the app.
+ */
+export const NOTE_ICONS = [
+  "chat",
+  "focus",
+  "lunch",
+  "coffee",
+  "meeting",
+  "away",
+  "sick",
+  "holiday",
+  "travel",
+  "home",
+  "commute",
+  "code",
+  "writing",
+  "presenting",
+  "call",
+  "night",
+] as const;
+export type NoteIcon = (typeof NOTE_ICONS)[number];
+
+/** The emoji notes had before they had icons, for a tab opened before then. */
+const FROM_EMOJI: Record<string, NoteIcon> = {
+  "💬": "chat",
+  "🎧": "focus",
+  "🍜": "lunch",
+  "☕": "coffee",
+  "🚶": "away",
+  "📅": "meeting",
+  "🎯": "focus",
+  "🛠️": "code",
+  "📞": "call",
+  "🤒": "sick",
+  "🌴": "holiday",
+  "✈️": "travel",
+  "🏠": "home",
+  "🌙": "night",
+};
+
 export const STATUS_NOTE_MAX = 80;
-/** Room for an emoji built of several joined code points (👩🏽‍💻), and no more. */
-const NOTE_EMOJI_MAX = 16;
 /** A note can be set to last a week at most; longer than that, it's out of date. */
 const NOTE_LONGEST_MS = 8 * 24 * 60 * 60 * 1000;
 
@@ -36,7 +77,7 @@ export function liveNote(note: StatusNote | null | undefined, now = Date.now()):
 /** A note as someone sent it, made safe to keep and to show, or null for none. */
 export function cleanNote(value: unknown, now = Date.now()): StatusNote | null {
   if (!value || typeof value !== "object") return null;
-  const { emoji, text, until } = value as Record<string, unknown>;
+  const { icon, emoji, text, until } = value as Record<string, unknown>;
   const words =
     typeof text === "string"
       ? text
@@ -45,13 +86,14 @@ export function cleanNote(value: unknown, now = Date.now()): StatusNote | null {
           .trim()
           .slice(0, STATUS_NOTE_MAX)
       : "";
-  const mark =
-    typeof emoji === "string" && emoji.length <= NOTE_EMOJI_MAX && /^\p{Extended_Pictographic}/u.test(emoji.trim())
-      ? emoji.trim()
+  const mark = NOTE_ICONS.includes(icon as NoteIcon)
+    ? (icon as NoteIcon)
+    : typeof emoji === "string"
+      ? (FROM_EMOJI[emoji.trim().replace(/\uFE0F$/, "")] ?? FROM_EMOJI[emoji.trim()] ?? null)
       : null;
   if (!words && !mark) return null;
   const ends = typeof until === "number" && Number.isFinite(until) && until > now ? Math.min(until, now + NOTE_LONGEST_MS) : null;
-  return { emoji: mark, text: words, until: ends };
+  return { icon: mark, text: words, until: ends };
 }
 
 export interface PlayerState {
@@ -65,6 +107,8 @@ export interface PlayerState {
   seat: number | null;
   /** Their status note, while it lasts. */
   note?: StatusNote | null;
+  /** Playing music from Spotify in TinyFloor: a mark on their name tag says so. */
+  listening?: boolean;
 }
 
 /** A desk that is someone's own in an office (docs/product.md): they arrive sitting at it, and nobody else sits there. */
@@ -143,15 +187,6 @@ export interface BoardStroke {
   points: number[];
 }
 
-export interface MusicState {
-  track: number;
-  playing: boolean;
-  /** When playback of `offset` started, in server milliseconds. */
-  startedAt: number;
-  /** Seconds into the track at `startedAt`. */
-  offset: number;
-}
-
 /** Peer-to-peer call signalling kinds, relayed to one person. */
 export const CALL_KINDS = ["invite", "accept", "decline", "signal", "add", "end"] as const;
 export type CallKind = (typeof CALL_KINDS)[number];
@@ -212,6 +247,8 @@ export type ClientMessage =
   | { t: "status"; status: PresenceStatus }
   /** Your status note changed (the API keeps it; this tells the floor). */
   | { t: "note"; note: StatusNote | null }
+  /** You started or stopped playing music (the API keeps what it is; this marks your name tag). */
+  | { t: "listening"; on: boolean }
   /**
    * Your name changed while you're on the demo office's floor, signing up with
    * Google from it (the API keeps it; this tells the floor, without walking out and back in).
@@ -220,7 +257,6 @@ export type ClientMessage =
   | { t: "board_sync" }
   | ({ t: "board_draw" } & BoardStroke)
   | { t: "board_clear" }
-  | { t: "music_set"; track: number; playing: boolean; offset: number }
   | { t: "call"; kind: CallKind; to: string; data?: unknown }
   /** Join a meeting: the main one, or one someone started. Leaves any other first. */
   | { t: "meeting_join"; meeting: string }
@@ -248,7 +284,11 @@ export type ServerMessage =
       t: "welcome";
       self: PlayerState;
       players: PlayerState[];
-      music: MusicState;
+      /**
+       * Always silence: the floor's jukebox is gone (21 October 2026), but a tab
+       * opened before then reads this on arrival and breaks without it.
+       */
+      music?: { track: 0; playing: false; startedAt: 0; offset: 0 };
       meetings: MeetingInfo[];
       usage: MeetingUsage;
       /** Whose desk is whose, in an office; empty in the lobby. */
@@ -278,11 +318,11 @@ export type ServerMessage =
   | { t: "meeting_error"; code: MeetingErrorCode }
   | { t: "status"; id: string; status: PresenceStatus }
   | { t: "note"; id: string; note: StatusNote | null }
+  | { t: "listening"; id: string; on: boolean }
   | { t: "renamed"; id: string; name: string }
   | { t: "board_state"; strokes: BoardStroke[] }
   | ({ t: "board_draw"; by: string } & BoardStroke)
   | { t: "board_clear"; by: string }
-  | ({ t: "music" } & MusicState)
   | { t: "call"; kind: CallKind; from: string; fromName: string; data?: unknown }
   | ({ t: "sfu" } & SfuServerMessage)
   | { t: "error"; code: "slow_down" | "bad_message" };

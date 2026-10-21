@@ -239,18 +239,6 @@
     "call": "Appeler",
     "onCall": "En appel avec vous"
   },
-  "jukebox": {
-    "title": "Enceinte de la salle",
-    "close": "Fermer les commandes de l’enceinte",
-    "tapToPlay": "Appuyez sur lecture pour l’écouter",
-    "playing": "Lecture pour tout le monde dans la salle",
-    "paused": "En pause pour tout le monde dans la salle",
-    "previous": "Piste précédente",
-    "next": "Piste suivante",
-    "play": "Lecture",
-    "pause": "Pause",
-    "playTrack": "Lire {track}"
-  },
   "whiteboard": {
     "title": "Tableau blanc",
     "penColor": "Couleur du stylo {color}",
@@ -318,7 +306,6 @@
     "stand": "Appuyez sur E pour vous lever",
     "joinMeeting": "Appuyez sur E pour rejoindre",
     "meeting": "Réunion",
-    "music": "Cliquez pour la musique",
     "draw": "Cliquez pour dessiner",
     "yourDesk": "Votre bureau"
   },
@@ -513,7 +500,9 @@
       "generic": "Une erreur s’est produite. Réessayez.",
       "bad_link": "Cela ne ressemble pas à une adresse web.",
       "google_taken": "Ce compte Google est déjà associé à un autre compte TinyFloor.",
-      "google_failed": "La connexion avec Google n'a pas abouti. Réessayez."
+      "google_failed": "La connexion avec Google n'a pas abouti. Réessayez.",
+      "not_spotify": "Ce n'est pas un lien Spotify.",
+      "spotify_unknown": "Spotify ne trouve pas ce lien."
     },
     "people": {
       "title": "Personnes",
@@ -808,7 +797,6 @@
     "clear": "Effacer la note",
     "placeholder": "Que faites-vous ?",
     "empty": "Effacer le texte",
-    "emoji": "Choisir un emoji",
     "clearAfter": "Effacer après",
     "save": "Enregistrer",
     "failed": "Ce n'a pas été enregistré. Réessayez.",
@@ -826,7 +814,28 @@
       "h4": "4 heures",
       "today": "Aujourd'hui",
       "week": "Cette semaine"
-    }
+    },
+    "until": "jusqu'à {time}",
+    "icon": "Choisir une icône",
+    "icons": {
+      "chat": "Note",
+      "focus": "Concentration",
+      "lunch": "Déjeuner",
+      "coffee": "Café",
+      "meeting": "Réunion",
+      "away": "Absent",
+      "sick": "Malade",
+      "holiday": "Vacances",
+      "travel": "En voyage",
+      "home": "À la maison",
+      "commute": "En trajet",
+      "code": "Code",
+      "writing": "Écriture",
+      "presenting": "Présentation",
+      "call": "En appel",
+      "night": "Nuit"
+    },
+    "clearShort": "Effacer"
   },
   "welcome": {
     "title": "Bienvenue chez {office}",
@@ -848,5 +857,41 @@
     "full": "Complet",
     "makeOwn": "Créer plutôt un nouveau bureau",
     "failed": "Ça n'a pas marché. Réessayez."
+  },
+  "spotify": {
+    "listening": "Écoute sur Spotify",
+    "inJam": "Dans un Jam sur Spotify",
+    "listen": "Écouter",
+    "open": "Ouvrir dans Spotify",
+    "joinJam": "Rejoindre le Jam",
+    "jamOf": "Jam de {name}",
+    "jamNote": "Écouter ensemble dans Spotify",
+    "kinds": {
+      "track": "Titre",
+      "album": "Album",
+      "playlist": "Playlist",
+      "episode": "Épisode de podcast",
+      "show": "Podcast",
+      "artist": "Artiste",
+      "jam": "Jam"
+    },
+    "playing": "En lecture"
+  },
+  "music": {
+    "title": "Musique",
+    "play": "Écouter de la musique",
+    "close": "Fermer",
+    "change": "Changer",
+    "stop": "Arrêter",
+    "skip": "Morceau suivant",
+    "pause": "Pause",
+    "resume": "Lecture",
+    "paste": "Collez un lien Spotify",
+    "notSpotify": "Ce n'est pas un lien Spotify.",
+    "preview": "Extraits seulement.",
+    "signIn": "Se connecter à Spotify",
+    "seek": "Position dans le titre",
+    "yourJam": "Votre Jam",
+    "next": "Écouter autre chose"
   }
 }

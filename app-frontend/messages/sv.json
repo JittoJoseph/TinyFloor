@@ -239,18 +239,6 @@
     "call": "Ring",
     "onCall": "I samtal med dig"
   },
-  "jukebox": {
-    "title": "Rummets högtalare",
-    "close": "Stäng högtalarkontrollerna",
-    "tapToPlay": "Tryck på spela för att höra",
-    "playing": "Spelas för alla i rummet",
-    "paused": "Pausad för alla i rummet",
-    "previous": "Föregående spår",
-    "next": "Nästa spår",
-    "play": "Spela",
-    "pause": "Pausa",
-    "playTrack": "Spela {track}"
-  },
   "whiteboard": {
     "title": "Whiteboard",
     "penColor": "Pennfärg {color}",
@@ -318,7 +306,6 @@
     "stand": "Tryck E för att resa dig",
     "joinMeeting": "Tryck E för att gå med",
     "meeting": "Möte",
-    "music": "Klicka för musik",
     "draw": "Klicka för att rita",
     "yourDesk": "Ditt skrivbord"
   },
@@ -513,7 +500,9 @@
       "generic": "Något gick fel. Försök igen.",
       "bad_link": "Det ser inte ut som en webbadress.",
       "google_taken": "Det Google-kontot är redan kopplat till ett annat TinyFloor-konto.",
-      "google_failed": "Det gick inte med Google. Försök igen."
+      "google_failed": "Det gick inte med Google. Försök igen.",
+      "not_spotify": "Det där är ingen Spotify-länk.",
+      "spotify_unknown": "Spotify hittar inte den länken."
     },
     "people": {
       "title": "Personer",
@@ -808,7 +797,6 @@
     "clear": "Rensa notis",
     "placeholder": "Vad håller du på med?",
     "empty": "Rensa texten",
-    "emoji": "Välj en emoji",
     "clearAfter": "Rensa efter",
     "save": "Spara",
     "failed": "Det sparades inte. Försök igen.",
@@ -826,7 +814,28 @@
       "h4": "4 timmar",
       "today": "I dag",
       "week": "Den här veckan"
-    }
+    },
+    "until": "till {time}",
+    "icon": "Välj en ikon",
+    "icons": {
+      "chat": "Anteckning",
+      "focus": "Fokus",
+      "lunch": "Lunch",
+      "coffee": "Kaffe",
+      "meeting": "Möte",
+      "away": "Borta",
+      "sick": "Sjuk",
+      "holiday": "Semester",
+      "travel": "På resa",
+      "home": "Hemma",
+      "commute": "Pendlar",
+      "code": "Kodar",
+      "writing": "Skriver",
+      "presenting": "Presenterar",
+      "call": "I samtal",
+      "night": "Natt"
+    },
+    "clearShort": "Rensa"
   },
   "welcome": {
     "title": "Välkommen till {office}",
@@ -848,5 +857,41 @@
     "full": "Fullt",
     "makeOwn": "Skapa ett nytt kontor i stället",
     "failed": "Det gick inte. Försök igen."
+  },
+  "spotify": {
+    "listening": "Lyssnar på Spotify",
+    "inJam": "I en Jam på Spotify",
+    "listen": "Lyssna",
+    "open": "Öppna i Spotify",
+    "joinJam": "Gå med i Jam",
+    "jamOf": "{name}s Jam",
+    "jamNote": "Lyssna tillsammans i Spotify",
+    "kinds": {
+      "track": "Låt",
+      "album": "Album",
+      "playlist": "Spellista",
+      "episode": "Poddavsnitt",
+      "show": "Podd",
+      "artist": "Artist",
+      "jam": "Jam"
+    },
+    "playing": "Spelas"
+  },
+  "music": {
+    "title": "Musik",
+    "play": "Spela musik",
+    "close": "Stäng",
+    "change": "Ändra",
+    "stop": "Stoppa",
+    "skip": "Nästa låt",
+    "pause": "Pausa",
+    "resume": "Spela",
+    "paste": "Klistra in en Spotify-länk",
+    "notSpotify": "Det där är ingen Spotify-länk.",
+    "preview": "Spelar smakprov.",
+    "signIn": "Logga in på Spotify",
+    "seek": "Position i låten",
+    "yourJam": "Din Jam",
+    "next": "Spela något annat"
   }
 }

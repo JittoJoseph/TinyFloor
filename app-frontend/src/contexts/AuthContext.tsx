@@ -5,6 +5,7 @@ import { analyticsConfigured, withPostHog } from "@/lib/analytics";
 import { api, type ProfileChanges, type SessionUser } from "@/lib/api";
 import { readIdentity } from "@/lib/identity";
 import { browserZone } from "@/lib/timeZone";
+import { setMusicOwner } from "@/lib/music";
 import { adoptMyNote } from "@/lib/floor";
 import { posthogLog } from "@/lib/posthog-log";
 import { recallSession, rememberSession } from "@/lib/session-hint";
@@ -40,6 +41,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const identifiedUserId = useRef<string | null>(null);
 
   useLayoutEffect(recallSession, []);
+  // What you play shows on your card; yours is refreshed the moment it changes.
+  useEffect(() => setMusicOwner(user?.id ?? null), [user?.id]);
   useEffect(() => {
     if (isLoading) return;
     rememberSession(!!user);

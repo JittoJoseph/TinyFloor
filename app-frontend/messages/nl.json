@@ -239,18 +239,6 @@
     "call": "Bellen",
     "onCall": "In gesprek met jou"
   },
-  "jukebox": {
-    "title": "Ruimtespeaker",
-    "close": "Speakerbediening sluiten",
-    "tapToPlay": "Tik op afspelen om het te horen",
-    "playing": "Speelt voor iedereen in de ruimte",
-    "paused": "Gepauzeerd voor iedereen in de ruimte",
-    "previous": "Vorig nummer",
-    "next": "Volgend nummer",
-    "play": "Afspelen",
-    "pause": "Pauzeren",
-    "playTrack": "{track} afspelen"
-  },
   "whiteboard": {
     "title": "Whiteboard",
     "penColor": "Penkleur {color}",
@@ -318,7 +306,6 @@
     "stand": "Druk op E om op te staan",
     "joinMeeting": "Druk op E om mee te doen",
     "meeting": "Vergadering",
-    "music": "Klik voor muziek",
     "draw": "Klik om te tekenen",
     "yourDesk": "Jouw bureau"
   },
@@ -513,7 +500,9 @@
       "generic": "Er ging iets mis. Probeer het opnieuw.",
       "bad_link": "Dat lijkt geen webadres.",
       "google_taken": "Dat Google-account is al gekoppeld aan een ander TinyFloor-account.",
-      "google_failed": "Het is niet gelukt met Google. Probeer het opnieuw."
+      "google_failed": "Het is niet gelukt met Google. Probeer het opnieuw.",
+      "not_spotify": "Dat is geen Spotify-link.",
+      "spotify_unknown": "Spotify kan die link niet vinden."
     },
     "people": {
       "title": "Mensen",
@@ -808,7 +797,6 @@
     "clear": "Notitie wissen",
     "placeholder": "Waar ben je mee bezig?",
     "empty": "Tekst wissen",
-    "emoji": "Kies een emoji",
     "clearAfter": "Wissen na",
     "save": "Opslaan",
     "failed": "Dat is niet opgeslagen. Probeer het opnieuw.",
@@ -826,7 +814,28 @@
       "h4": "4 uur",
       "today": "Vandaag",
       "week": "Deze week"
-    }
+    },
+    "until": "tot {time}",
+    "icon": "Kies een pictogram",
+    "icons": {
+      "chat": "Notitie",
+      "focus": "Focus",
+      "lunch": "Lunch",
+      "coffee": "Koffie",
+      "meeting": "Vergadering",
+      "away": "Weg",
+      "sick": "Ziek",
+      "holiday": "Vakantie",
+      "travel": "Op reis",
+      "home": "Thuis",
+      "commute": "Onderweg",
+      "code": "Programmeren",
+      "writing": "Schrijven",
+      "presenting": "Presenteren",
+      "call": "In gesprek",
+      "night": "Nacht"
+    },
+    "clearShort": "Wissen"
   },
   "welcome": {
     "title": "Welkom bij {office}",
@@ -848,5 +857,41 @@
     "full": "Vol",
     "makeOwn": "Toch een nieuw kantoor maken",
     "failed": "Dat lukte niet. Probeer het opnieuw."
+  },
+  "spotify": {
+    "listening": "Luistert op Spotify",
+    "inJam": "In een Jam op Spotify",
+    "listen": "Luisteren",
+    "open": "Openen in Spotify",
+    "joinJam": "Meedoen met Jam",
+    "jamOf": "Jam van {name}",
+    "jamNote": "Samen luisteren in Spotify",
+    "kinds": {
+      "track": "Nummer",
+      "album": "Album",
+      "playlist": "Afspeellijst",
+      "episode": "Podcastaflevering",
+      "show": "Podcast",
+      "artist": "Artiest",
+      "jam": "Jam"
+    },
+    "playing": "Speelt"
+  },
+  "music": {
+    "title": "Muziek",
+    "play": "Muziek afspelen",
+    "close": "Sluiten",
+    "change": "Wijzigen",
+    "stop": "Stoppen",
+    "skip": "Volgend nummer",
+    "pause": "Pauzeren",
+    "resume": "Afspelen",
+    "paste": "Plak een Spotify-link",
+    "notSpotify": "Dat is geen Spotify-link.",
+    "preview": "Alleen fragmenten.",
+    "signIn": "Inloggen bij Spotify",
+    "seek": "Positie in het nummer",
+    "yourJam": "Jouw Jam",
+    "next": "Iets anders afspelen"
   }
 }

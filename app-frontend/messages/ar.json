@@ -239,18 +239,6 @@
     "call": "اتصال",
     "onCall": "في مكالمة معك"
   },
-  "jukebox": {
-    "title": "سماعة الغرفة",
-    "close": "إغلاق عناصر التحكم في السماعة",
-    "tapToPlay": "انقر على تشغيل للاستماع",
-    "playing": "يعمل للجميع في الغرفة",
-    "paused": "متوقف مؤقتًا للجميع في الغرفة",
-    "previous": "المقطع السابق",
-    "next": "المقطع التالي",
-    "play": "تشغيل",
-    "pause": "إيقاف مؤقت",
-    "playTrack": "تشغيل {track}"
-  },
   "whiteboard": {
     "title": "السبورة البيضاء",
     "penColor": "لون القلم {color}",
@@ -318,7 +306,6 @@
     "stand": "اضغط E للوقوف",
     "joinMeeting": "اضغط E للانضمام",
     "meeting": "اجتماع",
-    "music": "انقر للموسيقى",
     "draw": "انقر للرسم",
     "yourDesk": "مكتبك"
   },
@@ -513,7 +500,9 @@
       "generic": "حدث خطأ ما. حاول مرة أخرى.",
       "bad_link": "لا يبدو هذا عنوان موقع.",
       "google_taken": "حساب Google هذا مرتبط بالفعل بحساب TinyFloor آخر.",
-      "google_failed": "لم ينجح الأمر مع Google. حاول مرة أخرى."
+      "google_failed": "لم ينجح الأمر مع Google. حاول مرة أخرى.",
+      "not_spotify": "هذا ليس رابط Spotify.",
+      "spotify_unknown": "لا يجد Spotify هذا الرابط."
     },
     "people": {
       "title": "الأشخاص",
@@ -808,7 +797,6 @@
     "clear": "مسح الملاحظة",
     "placeholder": "بماذا أنت مشغول؟",
     "empty": "مسح النص",
-    "emoji": "اختر رمزًا تعبيريًا",
     "clearAfter": "المسح بعد",
     "save": "حفظ",
     "failed": "لم يتم الحفظ. حاول مرة أخرى.",
@@ -826,7 +814,28 @@
       "h4": "4 ساعات",
       "today": "اليوم",
       "week": "هذا الأسبوع"
-    }
+    },
+    "until": "حتى {time}",
+    "icon": "اختر رمزًا",
+    "icons": {
+      "chat": "ملاحظة",
+      "focus": "تركيز",
+      "lunch": "غداء",
+      "coffee": "قهوة",
+      "meeting": "اجتماع",
+      "away": "بالخارج",
+      "sick": "مريض",
+      "holiday": "إجازة",
+      "travel": "مسافر",
+      "home": "في المنزل",
+      "commute": "في الطريق",
+      "code": "برمجة",
+      "writing": "كتابة",
+      "presenting": "عرض تقديمي",
+      "call": "في مكالمة",
+      "night": "ليل"
+    },
+    "clearShort": "مسح"
   },
   "welcome": {
     "title": "مرحبًا بك في {office}",
@@ -848,5 +857,41 @@
     "full": "ممتلئ",
     "makeOwn": "أنشئ مكتبًا جديدًا بدلًا من ذلك",
     "failed": "لم ينجح ذلك. حاول مرة أخرى."
+  },
+  "spotify": {
+    "listening": "يستمع على Spotify",
+    "inJam": "في Jam على Spotify",
+    "listen": "استمع",
+    "open": "افتح في Spotify",
+    "joinJam": "انضم إلى Jam",
+    "jamOf": "Jam الخاص بـ {name}",
+    "jamNote": "استمعوا معًا في Spotify",
+    "kinds": {
+      "track": "أغنية",
+      "album": "ألبوم",
+      "playlist": "قائمة تشغيل",
+      "episode": "حلقة بودكاست",
+      "show": "بودكاست",
+      "artist": "فنان",
+      "jam": "Jam"
+    },
+    "playing": "قيد التشغيل"
+  },
+  "music": {
+    "title": "الموسيقى",
+    "play": "شغّل الموسيقى",
+    "close": "إغلاق",
+    "change": "تغيير",
+    "stop": "إيقاف",
+    "skip": "الأغنية التالية",
+    "pause": "إيقاف مؤقت",
+    "resume": "تشغيل",
+    "paste": "الصق رابط Spotify",
+    "notSpotify": "هذا ليس رابط Spotify.",
+    "preview": "يجري تشغيل مقتطفات.",
+    "signIn": "سجّل الدخول إلى Spotify",
+    "seek": "الموضع في الأغنية",
+    "yourJam": "Jam الخاص بك",
+    "next": "شغّل شيئًا آخر"
   }
 }

@@ -7,7 +7,7 @@ describe("status notes", () => {
     const ava = await Client.open(room, { sub: "ava" });
     await ava.next("welcome");
 
-    const note = { emoji: "🍜", text: "Lunch", until: null };
+    const note = { icon: "lunch", text: "Lunch", until: null };
     const ben = await Client.open(room, { sub: "ben", note });
     const welcome = await ben.next("welcome");
     expect(welcome.self.note).toEqual(note);
@@ -21,8 +21,8 @@ describe("status notes", () => {
     const ben = await Client.open(room, { sub: "ben" });
     await ben.next("welcome");
 
-    ava.send({ t: "note", note: { emoji: "🎧", text: "  Heads   down ", until: null } });
-    expect(await ben.next("note")).toEqual({ t: "note", id: "ava", note: { emoji: "🎧", text: "Heads down", until: null } });
+    ava.send({ t: "note", note: { icon: "focus", text: "  Heads   down ", until: null } });
+    expect(await ben.next("note")).toEqual({ t: "note", id: "ava", note: { icon: "focus", text: "Heads down", until: null } });
 
     ben.messages.length = 0;
     ava.send({ t: "note", note: null });
@@ -31,15 +31,15 @@ describe("status notes", () => {
 
   it("carries names and notes in any script through to the room", async () => {
     const room = uniqueRoom();
-    const li = await Client.open(room, { sub: "li", name: "李小龙", note: { emoji: "👩🏽‍💻", text: "Café, à bientôt", until: null } });
+    const li = await Client.open(room, { sub: "li", name: "李小龙", note: { icon: "code", text: "Café, à bientôt", until: null } });
     const welcome = await li.next("welcome");
     expect(welcome.self.name).toBe("李小龙");
-    expect(welcome.self.note).toEqual({ emoji: "👩🏽‍💻", text: "Café, à bientôt", until: null });
+    expect(welcome.self.note).toEqual({ icon: "code", text: "Café, à bientôt", until: null });
   });
 
   it("leaves out a note that has already ended", async () => {
     const room = uniqueRoom();
-    const ben = await Client.open(room, { sub: "ben", note: { emoji: "🚶", text: "Back soon", until: Date.now() - 1000 } });
+    const ben = await Client.open(room, { sub: "ben", note: { icon: "away", text: "Back soon", until: Date.now() - 1000 } });
     const welcome = await ben.next("welcome");
     expect(welcome.self.note).toBeNull();
   });
@@ -51,7 +51,7 @@ describe("status notes", () => {
     const gil = await Client.open(room, { sub: "gil", role: "guest" });
     await gil.next("welcome");
 
-    gil.send({ t: "note", note: { emoji: "🍜", text: "Lunch", until: null } });
+    gil.send({ t: "note", note: { icon: "lunch", text: "Lunch", until: null } });
     await settle();
     expect(ava.messages.some((message) => message.t === "note")).toBe(false);
   });
@@ -86,5 +86,25 @@ describe("a new name on the demo office's floor", () => {
     ben.send({ t: "rename", name: "Someone Else" });
     await settle();
     expect(ava.messages.some((message) => message.t === "renamed")).toBe(false);
+  });
+});
+
+describe("music on the name tag", () => {
+  it("says who started playing, keeps it for whoever arrives, and says when they stop", async () => {
+    const room = uniqueRoom();
+    const ava = await Client.open(room, { sub: "ava" });
+    await ava.next("welcome");
+    const ben = await Client.open(room, { sub: "ben" });
+    await ben.next("welcome");
+
+    ava.send({ t: "listening", on: true });
+    expect(await ben.next("listening")).toEqual({ t: "listening", id: "ava", on: true });
+
+    const cy = await Client.open(room, { sub: "cy" });
+    const welcome = await cy.next("welcome");
+    expect(welcome.players.find((player: { id: string }) => player.id === "ava")?.listening).toBe(true);
+
+    ava.send({ t: "listening", on: false });
+    expect(await cy.next("listening")).toEqual({ t: "listening", id: "ava", on: false });
   });
 });

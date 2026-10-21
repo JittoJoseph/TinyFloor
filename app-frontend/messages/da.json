@@ -239,18 +239,6 @@
     "call": "Ring op",
     "onCall": "I opkald med dig"
   },
-  "jukebox": {
-    "title": "Rummets højttaler",
-    "close": "Luk højttalerkontrollerne",
-    "tapToPlay": "Tryk på afspil for at høre det",
-    "playing": "Spiller for alle i rummet",
-    "paused": "Sat på pause for alle i rummet",
-    "previous": "Forrige nummer",
-    "next": "Næste nummer",
-    "play": "Afspil",
-    "pause": "Pause",
-    "playTrack": "Afspil {track}"
-  },
   "whiteboard": {
     "title": "Whiteboard",
     "penColor": "Pennefarve {color}",
@@ -318,7 +306,6 @@
     "stand": "Tryk på E for at rejse dig",
     "joinMeeting": "Tryk på E for at deltage",
     "meeting": "Møde",
-    "music": "Klik for musik",
     "draw": "Klik for at tegne",
     "yourDesk": "Dit skrivebord"
   },
@@ -513,7 +500,9 @@
       "generic": "Noget gik galt. Prøv igen.",
       "bad_link": "Det ligner ikke en webadresse.",
       "google_taken": "Den Google-konto er allerede forbundet med en anden TinyFloor-konto.",
-      "google_failed": "Det lykkedes ikke med Google. Prøv igen."
+      "google_failed": "Det lykkedes ikke med Google. Prøv igen.",
+      "not_spotify": "Det er ikke et Spotify-link.",
+      "spotify_unknown": "Spotify kan ikke finde det link."
     },
     "people": {
       "title": "Folk",
@@ -808,7 +797,6 @@
     "clear": "Ryd note",
     "placeholder": "Hvad laver du?",
     "empty": "Ryd teksten",
-    "emoji": "Vælg en emoji",
     "clearAfter": "Ryd efter",
     "save": "Gem",
     "failed": "Det blev ikke gemt. Prøv igen.",
@@ -826,7 +814,28 @@
       "h4": "4 timer",
       "today": "I dag",
       "week": "Denne uge"
-    }
+    },
+    "until": "indtil {time}",
+    "icon": "Vælg et ikon",
+    "icons": {
+      "chat": "Note",
+      "focus": "Fokus",
+      "lunch": "Frokost",
+      "coffee": "Kaffe",
+      "meeting": "Møde",
+      "away": "Væk",
+      "sick": "Syg",
+      "holiday": "Ferie",
+      "travel": "På rejse",
+      "home": "Hjemme",
+      "commute": "Pendler",
+      "code": "Koder",
+      "writing": "Skriver",
+      "presenting": "Præsenterer",
+      "call": "I et opkald",
+      "night": "Nat"
+    },
+    "clearShort": "Ryd"
   },
   "welcome": {
     "title": "Velkommen til {office}",
@@ -848,5 +857,41 @@
     "full": "Fuldt",
     "makeOwn": "Opret hellere et nyt kontor",
     "failed": "Det virkede ikke. Prøv igen."
+  },
+  "spotify": {
+    "listening": "Lytter på Spotify",
+    "inJam": "I en Jam på Spotify",
+    "listen": "Lyt",
+    "open": "Åbn i Spotify",
+    "joinJam": "Deltag i Jam",
+    "jamOf": "{name}s Jam",
+    "jamNote": "Lyt sammen i Spotify",
+    "kinds": {
+      "track": "Sang",
+      "album": "Album",
+      "playlist": "Playliste",
+      "episode": "Podcastafsnit",
+      "show": "Podcast",
+      "artist": "Kunstner",
+      "jam": "Jam"
+    },
+    "playing": "Afspiller"
+  },
+  "music": {
+    "title": "Musik",
+    "play": "Afspil musik",
+    "close": "Luk",
+    "change": "Skift",
+    "stop": "Stop",
+    "skip": "Næste sang",
+    "pause": "Pause",
+    "resume": "Afspil",
+    "paste": "Indsæt et Spotify-link",
+    "notSpotify": "Det er ikke et Spotify-link.",
+    "preview": "Afspiller smagsprøver.",
+    "signIn": "Log ind på Spotify",
+    "seek": "Position i sangen",
+    "yourJam": "Din Jam",
+    "next": "Afspil noget andet"
   }
 }

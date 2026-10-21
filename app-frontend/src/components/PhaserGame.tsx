@@ -35,7 +35,6 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
       sit: t("sit"),
       stand: t("stand"),
       meeting: t("meeting"),
-      music: t("music"),
       draw: t("draw"),
       yourDesk: t("yourDesk"),
     }),
@@ -80,9 +79,9 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         transparent: true,
         // Battery saver: half the frames, which a top-down floor barely shows.
         fps: prefs().batterySaver ? { limit: 30 } : undefined,
-        // The room has no Phaser sounds; the jukebox plays through an <audio>
-        // element. Without this, every game builds a WebAudio context it never
-        // uses, and complains about it once the game is torn down.
+        // The room has no Phaser sounds. Without this, every game builds a
+        // WebAudio context it never uses, and complains about it once the game
+        // is torn down.
         audio: { noAudio: true },
         // Only presses on the floor itself count. Listening on the window, Phaser
         // also takes clicks on whatever covers it (a meeting, a menu, a toast) as

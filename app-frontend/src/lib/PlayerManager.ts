@@ -283,13 +283,19 @@ export class PlayerManager {
    * Someone's status note: its emoji on their tag while it lasts, gone when its
    * time is up (and `expired` is told, so the lists can follow).
    */
+  /** Music playing for them in TinyFloor: a small moving mark on their name tag. */
+  updatePlayerListening(id: string, on: boolean) {
+    this.nameTags.get(id)?.setListening(on);
+  }
+
   updatePlayerNote(id: string, note: StatusNote | null | undefined, expired?: () => void) {
     this.noteTimers.get(id)?.remove();
     this.noteTimers.delete(id);
     const live = liveNote(note);
     if (live) this.notes.set(id, live);
     else this.notes.delete(id);
-    this.nameTags.get(id)?.setEmoji(live?.emoji ?? null);
+    // Words alone show as a speech bubble, so the tag still says there is a note.
+    this.nameTags.get(id)?.setIcon(live ? (live.icon ?? "chat") : null);
     if (live?.until) {
       const timer = this.scene.time.delayedCall(Math.max(0, live.until - Date.now()), () => {
         this.updatePlayerNote(id, null);

@@ -1,7 +1,10 @@
 /*
  * The app's design tokens. Components use the shadcn
  * names beUI is written against — background, card, muted, border — plus a
- * few of our own: rail, faint, brand, ok, warn. The app routes put `app` on
+ * few of our own: rail, faint, brand, signal, ok, warn. The accent (brand) is
+ * ink: emphasis comes from contrast, never a hue, and colour is kept for
+ * status. Signal is the one orange, for the logo and the plan bar's warning.
+ * The app routes put `app` on
  * <html>, and `dark` when the dark theme is on; the landing pages use none of
  * these, so they are unaffected.
  */
@@ -19,8 +22,10 @@
   --ui-foreground: #1a1a18;
   --ui-muted-foreground: #6b6b65;
   --ui-faint: #a3a39c;
-  --ui-brand: #ff5a1f;
-  --ui-brand-foreground: #ffffff;
+  --ui-brand: #1a1a18;
+  --ui-brand-foreground: #fafaf8;
+  --ui-signal: #ff5a1f;
+  --ui-signal-foreground: #ffffff;
   --ui-ok: #22a35a;
   --ui-warn: #e59a13;
   --ui-destructive: #e5484d;
@@ -39,8 +44,10 @@
   --ui-foreground: #ededeb;
   --ui-muted-foreground: #a0a09a;
   --ui-faint: #6a6a65;
-  --ui-brand: #ff6b35;
-  --ui-brand-foreground: #ffffff;
+  --ui-brand: #ededeb;
+  --ui-brand-foreground: #0f0f10;
+  --ui-signal: #ff6b35;
+  --ui-signal-foreground: #ffffff;
   --ui-ok: #3dd68c;
   --ui-warn: #f5b83d;
   --ui-destructive: #ff6369;
@@ -72,6 +79,8 @@
   --color-ring: var(--ui-ring);
   --color-brand: var(--ui-brand);
   --color-brand-foreground: var(--ui-brand-foreground);
+  --color-signal: var(--ui-signal);
+  --color-signal-foreground: var(--ui-signal-foreground);
   --color-ok: var(--ui-ok);
   --color-warn: var(--ui-warn);
   --color-destructive: var(--ui-destructive);

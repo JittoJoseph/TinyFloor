@@ -71,13 +71,13 @@ export function PlanBar() {
 
   const body = (
     <>
-      <span className="hidden shrink-0 rounded-full bg-brand-foreground px-2 py-0.5 text-[10.5px] font-bold uppercase tracking-[0.06em] text-brand sm:inline">
+      <span className="hidden shrink-0 rounded-full bg-signal-foreground px-2 py-0.5 text-[10.5px] font-bold uppercase tracking-[0.06em] text-signal sm:inline">
         {bar.label}
       </span>
       <span className="min-w-0 flex-1 text-[12.5px] font-medium leading-snug sm:text-[13.5px]">{bar.text}</span>
       {admin && (
         <>
-          <span className="hidden h-8 shrink-0 items-center rounded-full bg-brand-foreground px-3.5 text-[12.5px] font-semibold text-brand transition-opacity group-hover:opacity-90 sm:inline-flex">
+          <span className="hidden h-8 shrink-0 items-center rounded-full bg-signal-foreground px-3.5 text-[12.5px] font-semibold text-signal transition-opacity group-hover:opacity-90 sm:inline-flex">
             {t("billing")}
           </span>
           <ChevronRight aria-hidden className="size-4 shrink-0 sm:hidden" />
@@ -88,7 +88,7 @@ export function PlanBar() {
   const row = "flex min-w-0 flex-1 items-center gap-3 py-2.5 sm:py-2";
 
   return (
-    <div role="status" className="flex min-h-11 shrink-0 items-center gap-1 bg-brand ps-3.5 pe-1.5 text-brand-foreground sm:min-h-12 sm:ps-4 sm:pe-2">
+    <div role="status" className="flex min-h-11 shrink-0 items-center gap-1 bg-signal ps-3.5 pe-1.5 text-signal-foreground sm:min-h-12 sm:ps-4 sm:pe-2">
       {admin ? (
         <Link href={`${officeSettingsPath(office.id)}#plan`} className={`group ${row}`}>
           {body}
@@ -101,7 +101,7 @@ export function PlanBar() {
         aria-label={t("hide")}
         title={t("hide")}
         onClick={hide}
-        className="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-brand-foreground/80 transition-colors hover:bg-brand-foreground/15 hover:text-brand-foreground"
+        className="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-signal-foreground/80 transition-colors hover:bg-signal-foreground/15 hover:text-signal-foreground"
       >
         <X className="size-4" />
       </button>

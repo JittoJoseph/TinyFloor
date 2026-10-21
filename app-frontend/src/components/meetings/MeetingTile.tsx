@@ -114,7 +114,7 @@ export const MeetingTile = memo(function MeetingTile({
           className={cn(
             "absolute end-2 top-2 flex items-center justify-center rounded-full",
             compact ? "size-6" : "size-7",
-            talking ? "bg-brand text-white" : "bg-black/45 text-white backdrop-blur-sm",
+            talking ? "bg-brand text-brand-foreground" : "bg-black/45 text-white backdrop-blur-sm",
           )}
         >
           {talking ? <Bars /> : <MicOff className="size-3.5" />}

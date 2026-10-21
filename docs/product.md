@@ -255,6 +255,11 @@ missing features on the map.
 
 ## Small decisions worth remembering
 
+- **The accent is ink, not a hue** (21 October). Emphasis comes from
+  contrast (foreground on background); colour is kept for status (ok, warn,
+  destructive) and for the floor itself, which brings plenty. The orange
+  that was the accent everywhere read as generic; it stays only as `signal`:
+  the logo's square and the plan bar's warning, where it means "look here".
 - **"Office", not "workspace".** The whole product is the metaphor (a floor,
   desks, walking over), "workspace" is Slack's and Notion's abstract word,
   and "virtual office" is what people search for.

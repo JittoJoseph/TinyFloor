@@ -9,11 +9,11 @@ import { Logo } from "@/components/app/Logo";
 import { PixelAvatar } from "@/components/PixelAvatar";
 import { shareUrl } from "@/lib/links";
 
-/** The lobby is TinyFloor's own place, so it wears the logo, lit in the brand's colour. */
+/** The lobby is TinyFloor's own place, so it wears the logo, lit in the logo's orange. */
 export function LobbyMark() {
   return (
     <span className="relative inline-flex" aria-hidden>
-      <span className="pointer-events-none absolute inset-0 scale-125 rounded-[30%] bg-brand/25 blur-2xl" />
+      <span className="pointer-events-none absolute inset-0 scale-125 rounded-[30%] bg-signal/25 blur-2xl" />
       <span className="relative">
         <Logo size={48} />
       </span>

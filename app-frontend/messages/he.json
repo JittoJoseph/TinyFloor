@@ -797,7 +797,6 @@
     "clear": "ניקוי ההערה",
     "placeholder": "במה אתם עסוקים?",
     "empty": "ניקוי הטקסט",
-    "emoji": "בחירת אמוג׳י",
     "clearAfter": "ניקוי אחרי",
     "save": "שמירה",
     "failed": "השמירה לא הצליחה. נסו שוב.",
@@ -816,7 +815,26 @@
       "today": "היום",
       "week": "השבוע"
     },
-    "until": "עד {time}"
+    "until": "עד {time}",
+    "icon": "בחירת סמל",
+    "icons": {
+      "chat": "הערה",
+      "focus": "ריכוז",
+      "lunch": "צהריים",
+      "coffee": "קפה",
+      "meeting": "פגישה",
+      "away": "לא בעמדה",
+      "sick": "חולה",
+      "holiday": "חופשה",
+      "travel": "בנסיעה",
+      "home": "בבית",
+      "commute": "בדרך",
+      "code": "קוד",
+      "writing": "כתיבה",
+      "presenting": "מציג",
+      "call": "בשיחה",
+      "night": "לילה"
+    }
   },
   "welcome": {
     "title": "ברוכים הבאים ל־{office}",

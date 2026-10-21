@@ -797,7 +797,6 @@
     "clear": "Limpar nota",
     "placeholder": "O que você está fazendo?",
     "empty": "Apagar texto",
-    "emoji": "Escolha um emoji",
     "clearAfter": "Limpar depois de",
     "save": "Salvar",
     "failed": "Não foi salvo. Tente de novo.",
@@ -816,7 +815,26 @@
       "today": "Hoje",
       "week": "Esta semana"
     },
-    "until": "até {time}"
+    "until": "até {time}",
+    "icon": "Escolha um ícone",
+    "icons": {
+      "chat": "Nota",
+      "focus": "Foco",
+      "lunch": "Almoço",
+      "coffee": "Café",
+      "meeting": "Reunião",
+      "away": "Fora",
+      "sick": "Doente",
+      "holiday": "Férias",
+      "travel": "Viajando",
+      "home": "Em casa",
+      "commute": "No trajeto",
+      "code": "Programando",
+      "writing": "Escrevendo",
+      "presenting": "Apresentando",
+      "call": "Em ligação",
+      "night": "Noite"
+    }
   },
   "welcome": {
     "title": "Boas-vindas a {office}",

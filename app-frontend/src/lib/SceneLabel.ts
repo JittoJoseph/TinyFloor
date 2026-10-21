@@ -1,4 +1,6 @@
 import * as Phaser from "phaser";
+import type { NoteIcon } from "@shared/messages";
+import { noteIconSvg } from "./noteIcons";
 import { measure, plateLayer } from "./plates";
 
 /** Past this many characters a name tag shortens to a first name and an initial. */
@@ -36,7 +38,8 @@ export class SceneLabel {
   private readonly root: HTMLDivElement;
   private readonly name: HTMLSpanElement;
   private readonly dotEl?: HTMLSpanElement;
-  private emojiEl?: HTMLSpanElement;
+  private iconEl?: HTMLSpanElement;
+  private icon: NoteIcon | null = null;
   private full = "";
   private folded = false;
 
@@ -64,20 +67,21 @@ export class SceneLabel {
 
   /** How wide it is with its name showing, in the floor's units before scaling. */
   get fullWidth(): number {
-    const emoji = this.emojiEl?.textContent ? 14 : 0;
-    return measure(this.name.textContent ?? "", FONT) + (this.tag ? 22 : 18) + emoji;
+    const icon = this.icon ? 15 : 0;
+    return measure(this.name.textContent ?? "", FONT) + (this.tag ? 22 : 18) + icon;
   }
 
-  /** The emoji at the tag's end, or none. */
-  setEmoji(emoji: string | null): this {
-    if (!this.tag || (!emoji && !this.emojiEl)) return this;
-    if (!this.emojiEl) {
-      this.emojiEl = document.createElement("span");
-      this.emojiEl.className = "plate-emoji";
-      this.root.appendChild(this.emojiEl);
+  /** The note's icon at the tag's end, or none. */
+  setIcon(icon: NoteIcon | null): this {
+    if (!this.tag || icon === this.icon) return this;
+    this.icon = icon;
+    if (!this.iconEl) {
+      this.iconEl = document.createElement("span");
+      this.iconEl.className = "plate-icon";
+      this.root.appendChild(this.iconEl);
     }
-    this.emojiEl.textContent = emoji ?? "";
-    this.emojiEl.hidden = !emoji;
+    this.iconEl.innerHTML = icon ? noteIconSvg(icon) : "";
+    this.iconEl.hidden = !icon;
     return this;
   }
 

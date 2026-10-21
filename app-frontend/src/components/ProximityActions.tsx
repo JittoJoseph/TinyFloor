@@ -12,6 +12,7 @@ import { Face, type Presence } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
 import type { StatusNote } from "@shared/messages";
 import { usePerson } from "@/lib/people";
+import { NoteText, noteLine } from "@/components/app/StatusNote";
 import { Menu } from "@/components/ui/Menu";
 import { SpotifyActivity, SpotifyMark } from "@/components/app/SpotifyActivity";
 
@@ -62,7 +63,7 @@ export const ProximityActions = memo(function ProximityActions({
   const asMeeting = !onCall && peers.length > 0 && !!meetingPath;
   const busy = !onCall && player.status === "in_call";
   const status = STATUSES.has(player.status) ? tStatus(`${player.status as "available"}.label`) : null;
-  const note = player.note ? [player.note.emoji, player.note.text].filter(Boolean).join(" ") : null;
+  const note = player.note ? noteLine(player.note) : null;
   // What they're listening to, if they share it: their mark beside the message button, the rest a press away.
   const spotify = usePerson(player.guest ? null : player.id)?.spotify ?? null;
 
@@ -74,7 +75,7 @@ export const ProximityActions = memo(function ProximityActions({
         <p className={cn("truncate font-semibold text-foreground", touch ? "text-[14px]" : "text-[13px]")}>{player.name}</p>
         {(note || status) && (
           <p title={note ?? undefined} className={cn("mt-0.5 truncate text-muted-foreground", touch ? "text-[12px]" : "text-[11.5px]")}>
-            {note ?? status}
+            {player.note ? <NoteText note={player.note} /> : status}
           </p>
         )}
       </div>

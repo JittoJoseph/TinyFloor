@@ -797,7 +797,6 @@
     "clear": "Poista viesti",
     "placeholder": "Mitä olet tekemässä?",
     "empty": "Tyhjennä teksti",
-    "emoji": "Valitse emoji",
     "clearAfter": "Poista ajan kuluttua",
     "save": "Tallenna",
     "failed": "Tallennus ei onnistunut. Yritä uudelleen.",
@@ -816,7 +815,26 @@
       "today": "Tänään",
       "week": "Tällä viikolla"
     },
-    "until": "klo {time} asti"
+    "until": "klo {time} asti",
+    "icon": "Valitse kuvake",
+    "icons": {
+      "chat": "Muistiinpano",
+      "focus": "Keskittyminen",
+      "lunch": "Lounas",
+      "coffee": "Kahvi",
+      "meeting": "Kokous",
+      "away": "Poissa",
+      "sick": "Sairas",
+      "holiday": "Loma",
+      "travel": "Matkoilla",
+      "home": "Kotona",
+      "commute": "Työmatkalla",
+      "code": "Koodaus",
+      "writing": "Kirjoitus",
+      "presenting": "Esitys",
+      "call": "Puhelussa",
+      "night": "Yö"
+    }
   },
   "welcome": {
     "title": "Tervetuloa: {office}",

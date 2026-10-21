@@ -797,7 +797,6 @@
     "clear": "Notiz löschen",
     "placeholder": "Was machst du gerade?",
     "empty": "Text löschen",
-    "emoji": "Emoji wählen",
     "clearAfter": "Löschen nach",
     "save": "Speichern",
     "failed": "Das wurde nicht gespeichert. Versuch es nochmal.",
@@ -816,7 +815,26 @@
       "today": "Heute",
       "week": "Diese Woche"
     },
-    "until": "bis {time}"
+    "until": "bis {time}",
+    "icon": "Symbol wählen",
+    "icons": {
+      "chat": "Notiz",
+      "focus": "Fokus",
+      "lunch": "Mittagessen",
+      "coffee": "Kaffee",
+      "meeting": "Meeting",
+      "away": "Unterwegs",
+      "sick": "Krank",
+      "holiday": "Urlaub",
+      "travel": "Auf Reisen",
+      "home": "Zu Hause",
+      "commute": "Pendeln",
+      "code": "Programmieren",
+      "writing": "Schreiben",
+      "presenting": "Präsentieren",
+      "call": "Im Telefonat",
+      "night": "Nacht"
+    }
   },
   "welcome": {
     "title": "Willkommen bei {office}",

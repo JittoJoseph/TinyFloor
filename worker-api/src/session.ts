@@ -1,4 +1,4 @@
-import type { SpotifyShare, StatusNote } from "../../shared-protocol/src";
+import type { NoteIcon, SpotifyShare, StatusNote } from "../../shared-protocol/src";
 import { shareFrom } from "./spotify";
 import { hashToken, randomToken } from "./crypto";
 import { HttpError } from "./http";
@@ -59,7 +59,7 @@ interface SessionRow {
   time_zone: string | null;
   time_zone_auto: number;
   country: string | null;
-  status_emoji: string | null;
+  status_icon: string | null;
   status_text: string | null;
   status_until: number | null;
   spotify_url: string | null;
@@ -138,7 +138,7 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
     `SELECT s.user_id, s.last_seen_at, u.email, u.display_name, u.character, u.is_guest, u.password_hash IS NOT NULL AS has_password,
             u.google_sub IS NOT NULL AS has_google, u.link, u.introduced_at IS NOT NULL AS introduced, u.country,
             u.time_zone, u.time_zone_auto,
-            u.status_emoji, u.status_text, u.status_until,
+            u.status_icon, u.status_text, u.status_until,
             u.spotify_url, u.spotify_kind, u.spotify_title, u.spotify_image, u.spotify_subtitle, u.spotify_until
      FROM sessions s JOIN users u ON u.id = s.user_id
      WHERE s.id = ? AND s.expires_at > ?`,
@@ -176,9 +176,9 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
 }
 
 /** A status note from the three columns that keep it, or null when there is none. */
-export function noteFrom(row: { status_emoji: string | null; status_text: string | null; status_until: number | null }): StatusNote | null {
-  if (!row.status_emoji && !row.status_text) return null;
-  return { emoji: row.status_emoji, text: row.status_text ?? "", until: row.status_until };
+export function noteFrom(row: { status_icon: string | null; status_text: string | null; status_until: number | null }): StatusNote | null {
+  if (!row.status_icon && !row.status_text) return null;
+  return { icon: row.status_icon as NoteIcon | null, text: row.status_text ?? "", until: row.status_until };
 }
 
 export async function requireUser(env: Env, request: Request, ctx: ExecutionContext): Promise<User> {

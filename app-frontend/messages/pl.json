@@ -797,7 +797,6 @@
     "clear": "Wyczyść notatkę",
     "placeholder": "Czym się zajmujesz?",
     "empty": "Wyczyść tekst",
-    "emoji": "Wybierz emoji",
     "clearAfter": "Wyczyść po",
     "save": "Zapisz",
     "failed": "Nie udało się zapisać. Spróbuj ponownie.",
@@ -816,7 +815,26 @@
       "today": "Dziś",
       "week": "Ten tydzień"
     },
-    "until": "do {time}"
+    "until": "do {time}",
+    "icon": "Wybierz ikonę",
+    "icons": {
+      "chat": "Notatka",
+      "focus": "Skupienie",
+      "lunch": "Lunch",
+      "coffee": "Kawa",
+      "meeting": "Spotkanie",
+      "away": "Poza biurem",
+      "sick": "Chory",
+      "holiday": "Urlop",
+      "travel": "W podróży",
+      "home": "W domu",
+      "commute": "W drodze",
+      "code": "Kodowanie",
+      "writing": "Pisanie",
+      "presenting": "Prezentacja",
+      "call": "Na rozmowie",
+      "night": "Noc"
+    }
   },
   "welcome": {
     "title": "Witaj w {office}",

@@ -43,7 +43,11 @@ export function MusicRow({ open, onToggle }: { open: boolean; onToggle: () => vo
   const t = useTranslations("music");
   const ts = useTranslations("spotify");
   const { item, playing, loading } = useMusic();
-  useEffect(warmMusic, []);
+  // Ready before the row is pressed: the player's script, and the picks' names and covers.
+  useEffect(() => {
+    warmMusic();
+    PICKS.forEach((pick) => void lookUp(pick.url));
+  }, []);
 
   if (!item) {
     return (
@@ -86,18 +90,18 @@ export function MusicRow({ open, onToggle }: { open: boolean; onToggle: () => vo
  * play next, one press each, and a field for any Spotify link. What's playing
  * is the row itself, so it isn't said twice.
  */
-export function MusicOptions() {
+export function MusicOptions({ onDone }: { onDone: () => void }) {
   const { item } = useMusic();
   return (
     <>
       {item && <Playing item={item} />}
-      <Picker playing={item?.url ?? null} />
+      <Picker playing={item?.url ?? null} onPlay={onDone} />
     </>
   );
 }
 
 /** One press to play: recent plays first, then the picks, and any Spotify link pasted below. */
-function Picker({ playing }: { playing: string | null }) {
+function Picker({ playing, onPlay }: { playing: string | null; onPlay: () => void }) {
   const t = useTranslations("music");
   const ts = useTranslations("spotify");
   const [items, setItems] = useState<MusicItem[]>(() => recentMusic());
@@ -113,10 +117,16 @@ function Picker({ playing }: { playing: string | null }) {
       cancelled = true;
     };
   }, []);
+  // Every row has its place from the start, a placeholder until Spotify names it, so nothing
+  // moves under the pointer as the names arrive (the menu grows upward from the dock).
+  const waiting = PICKS.filter((pick) => !items.some((one) => one.url === pick.url)).map((pick) => ({
+    ...pick,
+    title: null,
+    image: null,
+    subtitle: null,
+  }));
   // What's playing is above, with its controls; the list is for what's next.
-  const shown = (items.length ? items : PICKS.map((pick) => ({ ...pick, title: null, image: null, subtitle: null }))).filter(
-    (one) => one.url !== playing,
-  );
+  const shown = [...items, ...waiting].slice(0, ROWS).filter((one) => one.url !== playing);
 
   return (
     <div className={cn(playing && "mt-1 border-t border-foreground/[0.07] pt-1")}>
@@ -126,7 +136,11 @@ function Picker({ playing }: { playing: string | null }) {
           <li key={one.url}>
             <button
               type="button"
-              onClick={() => void playMusic(one)}
+              onClick={() => {
+                void playMusic(one);
+                // It plays in the row above, which is all there is to see now.
+                onPlay();
+              }}
               disabled={!one.title}
               className="flex w-full cursor-pointer items-center gap-2.5 rounded-[9px] px-1.5 py-1.5 text-start outline-none transition-colors hover:bg-foreground/[0.06] focus-visible:bg-foreground/[0.06] disabled:cursor-default"
             >
@@ -148,7 +162,12 @@ function Picker({ playing }: { playing: string | null }) {
           </li>
         ))}
       </ul>
-      <LinkField onPlay={(found) => void playMusic(found)} />
+      <LinkField
+        onPlay={(found) => {
+          void playMusic(found);
+          onPlay();
+        }}
+      />
     </div>
   );
 }

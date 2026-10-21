@@ -11,7 +11,7 @@ import { MusicOptions, MusicRow } from "./Music";
 import type { PlayerStatus } from "@/lib/types";
 import { Face } from "@/components/ui/Face";
 import { Menu, MenuHeader, MenuItem, MenuSeparator } from "@/components/ui/Menu";
-import { MenuExpand, MenuRow } from "@/components/ui/MenuViews";
+import { MenuExpand, MenuFold, MenuRow } from "@/components/ui/MenuViews";
 import { cn } from "@/lib/utils";
 import { useWide } from "@/lib/hooks/use-wide";
 import { help } from "@/lib/help";
@@ -27,8 +27,9 @@ type Open = "status" | "note" | "music" | null;
  * You, at the bottom of the rail: your face with your status on it, and a
  * short menu of what you reach for while working. Your status, your note
  * ("🍜 Lunch") and music are a row each, saying what they are now; pressing
- * one opens its choices beneath it, inset, and the menu grows to fit. Who you
- * are stays at the top and your profile at the bottom.
+ * one opens its choices beneath it, inset, while the other two step aside, and
+ * the menu grows or shrinks to fit. Who you are stays at the top and your
+ * profile at the bottom.
  * Theme and devices live in Settings, and so does signing out: a slip in a
  * menu this close at hand would take you off the floor in front of your team.
  * A guest has no account settings, so a guest signs out here.
@@ -93,20 +94,19 @@ export function YouMenu({
       }
     >
       <MenuHeader>
+        {/* Your name, as everyone sees it; your email address is for your profile, not this menu. */}
         <div className="flex items-center gap-3">
-          <Face seed={user.id} size={40} />
+          <Face seed={user.id} size={36} />
           <div className="min-w-0">
             <p className="truncate text-[14px] font-medium text-foreground">{user.displayName}</p>
-            <p data-ph-mask className="truncate text-[12px] text-muted-foreground">
-              {user.email ?? t("guest")}
-            </p>
+            {isGuest && <p className="truncate text-[12px] text-muted-foreground">{t("guest")}</p>}
           </div>
         </div>
       </MenuHeader>
 
       <MenuSeparator />
       {onFloor && (
-        <>
+        <MenuFold shown={open === null || open === "status"}>
           <MenuRow
             icon={<span className={cn("size-2 rounded-full", STATUS_DOT[shownStatus])} />}
             // A call sets it, and ending the call gives yours back: nothing to pick until then.
@@ -138,24 +138,26 @@ export function YouMenu({
               </button>
             ))}
           </MenuExpand>
-        </>
+        </MenuFold>
       )}
 
       {/* A note says what a status can't: what you're doing. */}
       {!isGuest && (
-        <>
+        <MenuFold shown={open === null || open === "note"}>
           <NoteRow note={note} open={open === "note"} onToggle={() => toggle("note")} />
           <MenuExpand open={open === "note"}>
             <NoteOptions note={note} onDone={close} />
           </MenuExpand>
-        </>
+        </MenuFold>
       )}
 
       {/* Something to play while working, from Spotify; what plays shows on your card. */}
-      <MusicRow open={open === "music"} onToggle={() => toggle("music")} />
-      <MenuExpand open={open === "music"}>
-        <MusicOptions />
-      </MenuExpand>
+      <MenuFold shown={open === null || open === "music"}>
+        <MusicRow open={open === "music"} onToggle={() => toggle("music")} />
+        <MenuExpand open={open === "music"}>
+          <MusicOptions onDone={close} />
+        </MenuExpand>
+      </MenuFold>
 
       <MenuSeparator />
       {isGuest ? (

@@ -243,7 +243,6 @@ export function ChatView({ channel }: { channel?: string }) {
     <PersonCard
       id={id}
       name={personById.get(id)?.displayName ?? name}
-      detail={personById.get(id)?.email ?? undefined}
       role={personById.get(id)?.role}
       presence={presenceOf(id)}
       isMe={id === me}
@@ -817,7 +816,6 @@ function NewChannel({ onMade, trigger }: { onMade: (id: string) => void; trigger
 function PersonCard({
   id,
   name,
-  detail,
   role,
   presence,
   isMe,
@@ -827,7 +825,6 @@ function PersonCard({
 }: {
   id: string;
   name: string;
-  detail?: string;
   role?: string;
   presence: Presence;
   isMe: boolean;
@@ -848,11 +845,6 @@ function PersonCard({
             .filter(Boolean)
             .join(" · ")}
         </p>
-        {detail && (
-          <p data-ph-mask className="mt-0.5 truncate text-[12.5px] text-muted-foreground">
-            {detail}
-          </p>
-        )}
         <Profile id={id} name={name} />
       </MenuHeader>
       {!isMe && onMessage && (

@@ -3,7 +3,8 @@
 import { useRef, useState } from "react";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { ArrowUp, SmilePlus, X } from "@/components/ui/icons";
-import { STATUS_NOTE_MAX, type StatusNote } from "@shared/messages";
+import { STATUS_NOTE_MAX, type NoteIcon, type StatusNote } from "@shared/messages";
+import { NOTE_ICON_LIST, NoteGlyph } from "@/lib/noteIcons";
 import { saveMyNote } from "@/lib/floor";
 import { MenuRow } from "@/components/ui/MenuViews";
 import { cn } from "@/lib/utils";
@@ -39,18 +40,26 @@ function untilFor(lasting: Lasting, now = new Date()): number | null {
  * sets it and clears it when it should, as Slack's do, so a stale "Lunch"
  * doesn't sit there all afternoon.
  */
-const PRESETS: Array<{ key: "focus" | "lunch" | "back" | "sick" | "holiday"; emoji: string; lasting: Lasting }> = [
-  { key: "focus", emoji: "🎧", lasting: "h1" },
-  { key: "lunch", emoji: "🍜", lasting: "h1" },
-  { key: "back", emoji: "🚶", lasting: "m30" },
-  { key: "sick", emoji: "🤒", lasting: "today" },
-  { key: "holiday", emoji: "🌴", lasting: "week" },
+const PRESETS: Array<{ key: "focus" | "lunch" | "back" | "sick" | "holiday"; icon: NoteIcon; lasting: Lasting }> = [
+  { key: "focus", icon: "focus", lasting: "h1" },
+  { key: "lunch", icon: "lunch", lasting: "h1" },
+  { key: "back", icon: "away", lasting: "m30" },
+  { key: "sick", icon: "sick", lasting: "today" },
+  { key: "holiday", icon: "holiday", lasting: "week" },
 ];
 
-const EMOJI = ["💬", "🎧", "🍜", "☕", "🚶", "📅", "🎯", "🛠️", "📞", "🤒", "🌴", "✈️", "🏠", "🌙", "🎉", "👀"];
+/** A note as words, for a tooltip or a screen reader; its icon is drawn beside it (NoteText). */
+export const noteLine = (note: StatusNote) => note.text;
 
-/** A note as one line: its emoji, then its words. */
-export const noteLine = (note: StatusNote) => [note.emoji, note.text].filter(Boolean).join(" ");
+/** A note as people see it in a line: its icon, then its words. */
+export function NoteText({ note, className }: { note: StatusNote; className?: string }) {
+  return (
+    <span className={cn("inline-flex min-w-0 max-w-full items-center gap-1 align-[-2px]", className)}>
+      <NoteGlyph icon={note.icon} className="size-[13px]" />
+      <span className="truncate">{note.text}</span>
+    </span>
+  );
+}
 
 /** "30 min", "1 hr", "Today": how long something lasts, said short. */
 function useLastingLabel() {
@@ -87,7 +96,7 @@ export function NoteRow({ note, open, onToggle }: { note: StatusNote | null; ope
   }
   return (
     <MenuRow
-      icon={<span className="text-[15px] leading-none text-foreground">{note.emoji ?? "💬"}</span>}
+      icon={<NoteGlyph icon={note.icon} />}
       onClick={onToggle}
       open={open}
       label={noteLine(note)}
@@ -118,16 +127,16 @@ export function NoteOptions({ note, onDone }: { note: StatusNote | null; onDone:
   const t = useTranslations("note");
   const lastingLabel = useLastingLabel();
   const input = useRef<HTMLInputElement>(null);
-  const [emoji, setEmoji] = useState<string>(note?.emoji ?? "💬");
+  const [icon, setIcon] = useState<NoteIcon>(note?.icon ?? "chat");
   const [text, setText] = useState(note?.text ?? "");
   // Your own words last the day unless you say otherwise; a note that never cleared still doesn't.
   const [lasting, setLasting] = useState<Lasting>(note && !note.until ? "never" : "today");
-  // A usual note's emoji goes with its words: new words start from the plain one.
-  const fromPreset = !!note && PRESETS.some((preset) => preset.emoji === note.emoji && t(`presets.${preset.key}`) === note.text);
+  // A usual note's icon goes with its words: new words start from the plain one.
+  const fromPreset = !!note && PRESETS.some((preset) => preset.icon === note.icon && t(`presets.${preset.key}`) === note.text);
   const [picking, setPicking] = useState(false);
   const [failed, setFailed] = useState(false);
   const typed = text.trim();
-  const changed = !note || typed !== note.text || emoji !== (note.emoji ?? "💬") || (lasting === "never") !== !note.until;
+  const changed = !note || typed !== note.text || icon !== (note.icon ?? "chat") || (lasting === "never") !== !note.until;
 
   const save = (next: StatusNote | null) => {
     setFailed(false);
@@ -138,7 +147,7 @@ export function NoteOptions({ note, onDone }: { note: StatusNote | null; onDone:
   const submit = () => {
     if (!typed) return;
     if (!changed) return onDone();
-    save({ emoji, text: typed, until: untilFor(lasting) });
+    save({ icon, text: typed, until: untilFor(lasting) });
   };
 
   return (
@@ -153,16 +162,16 @@ export function NoteOptions({ note, onDone }: { note: StatusNote | null; onDone:
         >
           <button
             type="button"
-            aria-label={t("emoji")}
+            aria-label={t("icon")}
             aria-expanded={picking}
             onClick={() => setPicking((open) => !open)}
             className={cn(
-              // Its emoji lines up with the usual ones' below.
-              "flex h-10 w-8 shrink-0 cursor-pointer items-center justify-center rounded-s-[9px] text-[15px] transition-colors hover:bg-foreground/[0.07]",
+              // Its icon lines up with the usual ones below.
+              "flex h-10 w-8 shrink-0 cursor-pointer items-center justify-center rounded-s-[9px] transition-colors hover:bg-foreground/[0.07]",
               picking && "bg-foreground/[0.08]",
             )}
           >
-            {emoji}
+            <NoteGlyph icon={icon} />
           </button>
           <input
             ref={input}
@@ -171,7 +180,7 @@ export function NoteOptions({ note, onDone }: { note: StatusNote | null; onDone:
             maxLength={STATUS_NOTE_MAX}
             placeholder={t("placeholder")}
             onChange={(event) => {
-              if (fromPreset && emoji === note?.emoji) setEmoji("💬");
+              if (fromPreset && icon === note?.icon) setIcon("chat");
               setText(event.target.value);
             }}
             className="h-full min-w-0 flex-1 bg-transparent text-[16px] text-foreground outline-none placeholder:text-faint sm:text-[13px]"
@@ -208,23 +217,25 @@ export function NoteOptions({ note, onDone }: { note: StatusNote | null; onDone:
       </div>
 
       {picking ? (
-        <div role="group" aria-label={t("emoji")} className="grid grid-cols-8 gap-0.5 pb-0.5 pt-0.5">
-          {EMOJI.map((one) => (
+        <div role="group" aria-label={t("icon")} className="grid grid-cols-8 gap-0.5 pb-0.5 pt-0.5">
+          {NOTE_ICON_LIST.map((one) => (
             <button
               key={one}
               type="button"
-              aria-pressed={emoji === one}
+              aria-pressed={icon === one}
+              aria-label={t(`icons.${one}`)}
+              title={t(`icons.${one}`)}
               onClick={() => {
-                setEmoji(one);
+                setIcon(one);
                 setPicking(false);
                 input.current?.focus();
               }}
               className={cn(
-                "flex h-8 cursor-pointer items-center justify-center rounded-lg text-[17px] transition-colors hover:bg-foreground/[0.07]",
-                emoji === one && "bg-foreground/[0.09]",
+                "flex h-8 cursor-pointer items-center justify-center rounded-lg transition-colors hover:bg-foreground/[0.07]",
+                icon === one && "bg-foreground/[0.1] ring-1 ring-foreground/15",
               )}
             >
-              {one}
+              <NoteGlyph icon={one} />
             </button>
           ))}
         </div>
@@ -232,18 +243,18 @@ export function NoteOptions({ note, onDone }: { note: StatusNote | null; onDone:
         <ul className="flex flex-col">
           {PRESETS.map((preset) => {
             const label = t(`presets.${preset.key}`);
-            const current = note?.emoji === preset.emoji && note.text === label;
+            const current = note?.icon === preset.icon && note.text === label;
             return (
               <li key={preset.key}>
                 <button
                   type="button"
-                  onClick={() => (current ? onDone() : save({ emoji: preset.emoji, text: label, until: untilFor(preset.lasting) }))}
+                  onClick={() => (current ? onDone() : save({ icon: preset.icon, text: label, until: untilFor(preset.lasting) }))}
                   className={cn(
                     "flex h-9 w-full cursor-pointer items-center gap-2.5 rounded-[9px] px-2 text-start text-[13px] outline-none transition-colors hover:bg-foreground/[0.06] focus-visible:bg-foreground/[0.06]",
                     current && "bg-foreground/[0.06]",
                   )}
                 >
-                  <span className="w-4 shrink-0 text-center text-[15px] leading-none">{preset.emoji}</span>
+                  <NoteGlyph icon={preset.icon} />
                   <span className="min-w-0 flex-1 truncate text-foreground">{label}</span>
                   <span className="shrink-0 text-[12px] text-faint">{lastingLabel(preset.lasting)}</span>
                 </button>

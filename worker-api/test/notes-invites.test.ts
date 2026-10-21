@@ -17,32 +17,33 @@ describe("status notes", () => {
   it("keeps a note with the account, cleaned, and clears it", async () => {
     const ana = await makeUser("Ana");
     const set = await call<{ status: unknown }>(ana, "PUT", "/v1/me/status", {
-      status: { emoji: "🍜", text: "  Lunch,\n back   at 2 ", until: null },
+      status: { icon: "lunch", text: "  Lunch,\n back   at 2 ", until: null },
     });
     expect(set.status).toBe(200);
-    expect(set.body.status).toEqual({ emoji: "🍜", text: "Lunch, back at 2", until: null });
+    expect(set.body.status).toEqual({ icon: "lunch", text: "Lunch, back at 2", until: null });
 
     const session = await call<{ user: { status: unknown } }>(ana, "GET", "/v1/session");
-    expect(session.body.user.status).toEqual({ emoji: "🍜", text: "Lunch, back at 2", until: null });
+    expect(session.body.user.status).toEqual({ icon: "lunch", text: "Lunch, back at 2", until: null });
 
     await call(ana, "PUT", "/v1/me/status", { status: null });
     const after = await call<{ user: { status: unknown } }>(ana, "GET", "/v1/session");
     expect(after.body.user.status).toBeNull();
   });
 
-  it("drops what isn't an emoji, and a note that has already ended", async () => {
+  it("drops what isn't one of the icons, and a note that has already ended", async () => {
     const bo = await makeUser("Bo");
-    const odd = await call<{ status: unknown }>(bo, "PUT", "/v1/me/status", { status: { emoji: "abc", text: "Focusing", until: null } });
-    expect(odd.body.status).toEqual({ emoji: null, text: "Focusing", until: null });
+    const odd = await call<{ status: unknown }>(bo, "PUT", "/v1/me/status", { status: { icon: "abc", text: "Focusing", until: null } });
+    expect(odd.body.status).toEqual({ icon: null, text: "Focusing", until: null });
 
     // A note that ends in the past is no note.
     const ended = await call<{ status: unknown }>(bo, "PUT", "/v1/me/status", { status: { emoji: "🎧", text: "", until: Date.now() - 1000 } });
-    expect(ended.body.status).toEqual({ emoji: "🎧", text: "", until: null });
+    // A tab from before icons still sends an emoji: it becomes the matching icon.
+    expect(ended.body.status).toEqual({ icon: "focus", text: "", until: null });
   });
 
   it("stops showing a note once its time is up", async () => {
     const cy = await makeUser("Cy");
-    await call(cy, "PUT", "/v1/me/status", { status: { emoji: "🚶", text: "Back soon", until: Date.now() + 60_000 } });
+    await call(cy, "PUT", "/v1/me/status", { status: { icon: "away", text: "Back soon", until: Date.now() + 60_000 } });
     // Its time passes.
     await env.DB.prepare("UPDATE users SET status_until = ? WHERE id = ?").bind(Date.now() - 1, cy.id).run();
     const session = await call<{ user: { status: unknown } }>(cy, "GET", "/v1/session");
@@ -54,14 +55,14 @@ describe("status notes", () => {
     const eli = await makeUser("Eli");
     const officeId = await officeOf(dee);
     await joinOffice(dee, eli, officeId);
-    await call(eli, "PUT", "/v1/me/status", { status: { emoji: "🌴", text: "On holiday", until: null } });
+    await call(eli, "PUT", "/v1/me/status", { status: { icon: "holiday", text: "On holiday", until: null } });
 
     const ticket = await call<{ ticket: string }>(eli, "POST", `/v1/offices/${officeId}/ticket`);
     const claims = await verifyTicket(ticket.body.ticket, env.TICKET_SECRET);
-    expect(claims?.note).toEqual({ emoji: "🌴", text: "On holiday", until: null });
+    expect(claims?.note).toEqual({ icon: "holiday", text: "On holiday", until: null });
 
     const overview = await call<{ members: Array<{ id: string; status: unknown }> }>(dee, "GET", `/v1/offices/${officeId}/overview`);
-    expect(overview.body.members.find((member) => member.id === eli.id)?.status).toEqual({ emoji: "🌴", text: "On holiday", until: null });
+    expect(overview.body.members.find((member) => member.id === eli.id)?.status).toEqual({ icon: "holiday", text: "On holiday", until: null });
     expect(overview.body.members.find((member) => member.id === dee.id)?.status).toBeNull();
   });
 });

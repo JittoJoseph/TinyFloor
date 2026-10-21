@@ -59,9 +59,9 @@
   border-radius: 50%;
 }
 
-.plate-emoji {
-  font-size: 10px;
-  line-height: 1;
+.plate-icon {
+  display: flex;
+  margin-inline-start: 1px;
 }
 
 .plate[data-folded] {
@@ -71,7 +71,7 @@
 }
 
 .plate[data-folded] .plate-name,
-.plate[data-folded] .plate-emoji {
+.plate[data-folded] .plate-icon {
   display: none;
 }
 

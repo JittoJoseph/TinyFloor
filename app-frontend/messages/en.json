@@ -797,7 +797,6 @@
     "clear": "Clear note",
     "placeholder": "What are you up to?",
     "empty": "Clear text",
-    "emoji": "Choose an emoji",
     "clearAfter": "Clear after",
     "save": "Save",
     "failed": "That didn't save. Try again.",
@@ -816,7 +815,26 @@
       "today": "Today",
       "week": "This week"
     },
-    "until": "until {time}"
+    "until": "until {time}",
+    "icon": "Choose an icon",
+    "icons": {
+      "chat": "Note",
+      "focus": "Focus",
+      "lunch": "Lunch",
+      "coffee": "Coffee",
+      "meeting": "Meeting",
+      "away": "Away",
+      "sick": "Sick",
+      "holiday": "Holiday",
+      "travel": "Travelling",
+      "home": "At home",
+      "commute": "Commuting",
+      "code": "Coding",
+      "writing": "Writing",
+      "presenting": "Presenting",
+      "call": "On a call",
+      "night": "Night"
+    }
   },
   "welcome": {
     "title": "Welcome to {office}",

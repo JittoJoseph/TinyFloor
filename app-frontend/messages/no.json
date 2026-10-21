@@ -797,7 +797,6 @@
     "clear": "Fjern notat",
     "placeholder": "Hva holder du på med?",
     "empty": "Tøm teksten",
-    "emoji": "Velg en emoji",
     "clearAfter": "Fjern etter",
     "save": "Lagre",
     "failed": "Det ble ikke lagret. Prøv igjen.",
@@ -816,7 +815,26 @@
       "today": "I dag",
       "week": "Denne uken"
     },
-    "until": "til {time}"
+    "until": "til {time}",
+    "icon": "Velg et ikon",
+    "icons": {
+      "chat": "Notat",
+      "focus": "Fokus",
+      "lunch": "Lunsj",
+      "coffee": "Kaffe",
+      "meeting": "Møte",
+      "away": "Borte",
+      "sick": "Syk",
+      "holiday": "Ferie",
+      "travel": "På reise",
+      "home": "Hjemme",
+      "commute": "Pendler",
+      "code": "Koder",
+      "writing": "Skriver",
+      "presenting": "Presenterer",
+      "call": "I en samtale",
+      "night": "Natt"
+    }
   },
   "welcome": {
     "title": "Velkommen til {office}",

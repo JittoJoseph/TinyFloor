@@ -797,7 +797,6 @@
     "clear": "Notitie wissen",
     "placeholder": "Waar ben je mee bezig?",
     "empty": "Tekst wissen",
-    "emoji": "Kies een emoji",
     "clearAfter": "Wissen na",
     "save": "Opslaan",
     "failed": "Dat is niet opgeslagen. Probeer het opnieuw.",
@@ -816,7 +815,26 @@
       "today": "Vandaag",
       "week": "Deze week"
     },
-    "until": "tot {time}"
+    "until": "tot {time}",
+    "icon": "Kies een pictogram",
+    "icons": {
+      "chat": "Notitie",
+      "focus": "Focus",
+      "lunch": "Lunch",
+      "coffee": "Koffie",
+      "meeting": "Vergadering",
+      "away": "Weg",
+      "sick": "Ziek",
+      "holiday": "Vakantie",
+      "travel": "Op reis",
+      "home": "Thuis",
+      "commute": "Onderweg",
+      "code": "Programmeren",
+      "writing": "Schrijven",
+      "presenting": "Presenteren",
+      "call": "In gesprek",
+      "night": "Nacht"
+    }
   },
   "welcome": {
     "title": "Welkom bij {office}",

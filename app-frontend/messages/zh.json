@@ -797,7 +797,6 @@
     "clear": "清除备注",
     "placeholder": "你在忙什么？",
     "empty": "清除文字",
-    "emoji": "选择表情",
     "clearAfter": "清除时间",
     "save": "保存",
     "failed": "没有保存成功，请重试。",
@@ -816,7 +815,26 @@
       "today": "今天",
       "week": "本周"
     },
-    "until": "到 {time}"
+    "until": "到 {time}",
+    "icon": "选择图标",
+    "icons": {
+      "chat": "备注",
+      "focus": "专注",
+      "lunch": "午餐",
+      "coffee": "咖啡",
+      "meeting": "会议",
+      "away": "离开",
+      "sick": "生病",
+      "holiday": "休假",
+      "travel": "出差",
+      "home": "在家",
+      "commute": "通勤",
+      "code": "写代码",
+      "writing": "写作",
+      "presenting": "演示",
+      "call": "通话中",
+      "night": "夜间"
+    }
   },
   "welcome": {
     "title": "欢迎来到{office}",

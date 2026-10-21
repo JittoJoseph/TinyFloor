@@ -198,7 +198,7 @@ export async function saveMyNote(note: StatusNote | null) {
       changeNote(status);
       window.dispatchEvent(new CustomEvent("noteChange", { detail: { note: status } }));
     }
-    track("status_note_set", { cleared: !status, emoji: status?.emoji ?? null, lasts: !!status?.until });
+    track("status_note_set", { cleared: !status, icon: status?.icon ?? null, lasts: !!status?.until });
   } catch (error) {
     changeNote(before);
     window.dispatchEvent(new CustomEvent("noteChange", { detail: { note: before } }));

@@ -273,8 +273,8 @@ export function authRoutes(router: Router): void {
     .add("PUT", "/v1/me/status", async ({ request, env, ctx }) => {
       const user = await requireAccount(env, request, ctx);
       const note = cleanNote((await readJson(request)).status);
-      await env.DB.prepare("UPDATE users SET status_emoji = ?, status_text = ?, status_until = ? WHERE id = ?")
-        .bind(note?.emoji ?? null, note?.text || null, note?.until ?? null, user.id)
+      await env.DB.prepare("UPDATE users SET status_icon = ?, status_text = ?, status_until = ? WHERE id = ?")
+        .bind(note?.icon ?? null, note?.text || null, note?.until ?? null, user.id)
         .run();
       return json({ status: note });
     })

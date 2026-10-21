@@ -158,15 +158,23 @@ missing features on the map.
 ## Your menu (21 October)
 
 - **Status, note and music are one row each**, saying what they are now.
-  Pressing one opens its choices beneath it, inset, as the same menu grows;
-  one open at a time, and who you are and your profile stay where they are.
+  Pressing one opens its choices beneath it, inset, while the other two fold
+  away; who you are and your profile stay where they are. A pick closes it.
+  Every pick has its place before Spotify names it, since the menu grows
+  upward from the dock and a late row would move the rest under the pointer.
   Switching the whole menu to a new view read as a new popup each time. No
   dropdowns inside the menu, and no modal. Playing, the music row is what's
   playing, so its choices add only the seek bar, stop and what to play next.
+- **Notes have icons, not emoji**: sixteen from the app's own icon set, each
+  in a colour of its own (headphones, a bowl, a thermometer, a beach…), the
+  same on every device and on the floor's name tags. Notes kept with an emoji
+  took the nearest icon.
+- **No email addresses in your menu or on chat cards**: the name is enough
+  there, and an address is for your profile and the office's member list.
 - **A usual note is one press**: Heads down and Lunch clear in an hour, Back
   soon in 30 minutes, Out sick today, On holiday this week, so none goes stale.
   Your own words take Enter and last the day unless you pick 30 minutes, an
-  hour or "Don't clear"; new words drop a usual note's emoji. The old dialog
+  hour or "Don't clear"; new words drop a usual note's icon. The old dialog
   filled a usual note in and still wanted Save, and defaulted to never clearing.
 
 ## Music, from Spotify (21 October)

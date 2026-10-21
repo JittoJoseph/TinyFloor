@@ -797,7 +797,6 @@
     "clear": "Effacer la note",
     "placeholder": "Que faites-vous ?",
     "empty": "Effacer le texte",
-    "emoji": "Choisir un emoji",
     "clearAfter": "Effacer après",
     "save": "Enregistrer",
     "failed": "Ce n'a pas été enregistré. Réessayez.",
@@ -816,7 +815,26 @@
       "today": "Aujourd'hui",
       "week": "Cette semaine"
     },
-    "until": "jusqu'à {time}"
+    "until": "jusqu'à {time}",
+    "icon": "Choisir une icône",
+    "icons": {
+      "chat": "Note",
+      "focus": "Concentration",
+      "lunch": "Déjeuner",
+      "coffee": "Café",
+      "meeting": "Réunion",
+      "away": "Absent",
+      "sick": "Malade",
+      "holiday": "Vacances",
+      "travel": "En voyage",
+      "home": "À la maison",
+      "commute": "En trajet",
+      "code": "Code",
+      "writing": "Écriture",
+      "presenting": "Présentation",
+      "call": "En appel",
+      "night": "Nuit"
+    }
   },
   "welcome": {
     "title": "Bienvenue chez {office}",

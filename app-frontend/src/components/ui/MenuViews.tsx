@@ -32,6 +32,30 @@ export function MenuExpand({ open, children }: { open: boolean; children: ReactN
 }
 
 /**
+ * A row that steps aside while another row's choices are open, so the menu
+ * shows one thing at a time; it folds away and comes back the same way.
+ */
+export function MenuFold({ shown, children }: { shown: boolean; children: ReactNode }) {
+  const reduce = useReducedMotion() ?? false;
+  return (
+    <AnimatePresence initial={false}>
+      {shown && (
+        <motion.div
+          key="row"
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={reduce ? { duration: 0 } : { height: { duration: 0.26, ease: EASE_OUT }, opacity: { duration: 0.16 } }}
+          className="overflow-hidden"
+        >
+          {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
+/**
  * A row that opens its choices beneath it: what it is now, and a chevron that
  * turns up while they're open.
  */

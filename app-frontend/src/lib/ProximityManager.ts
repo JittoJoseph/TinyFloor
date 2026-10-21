@@ -78,7 +78,7 @@ export class ProximityManager {
         guest: this.playerManager.isGuest(id),
         note,
       });
-      signature += id + x + "," + y + status + (note ? note.emoji + note.text : "") + "|";
+      signature += id + x + "," + y + status + (note ? note.icon + note.text : "") + "|";
     });
 
     if (signature === this.lastSignature) return;

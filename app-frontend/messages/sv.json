@@ -797,7 +797,6 @@
     "clear": "Rensa notis",
     "placeholder": "Vad håller du på med?",
     "empty": "Rensa texten",
-    "emoji": "Välj en emoji",
     "clearAfter": "Rensa efter",
     "save": "Spara",
     "failed": "Det sparades inte. Försök igen.",
@@ -816,7 +815,26 @@
       "today": "I dag",
       "week": "Den här veckan"
     },
-    "until": "till {time}"
+    "until": "till {time}",
+    "icon": "Välj en ikon",
+    "icons": {
+      "chat": "Anteckning",
+      "focus": "Fokus",
+      "lunch": "Lunch",
+      "coffee": "Kaffe",
+      "meeting": "Möte",
+      "away": "Borta",
+      "sick": "Sjuk",
+      "holiday": "Semester",
+      "travel": "På resa",
+      "home": "Hemma",
+      "commute": "Pendlar",
+      "code": "Kodar",
+      "writing": "Skriver",
+      "presenting": "Presenterar",
+      "call": "I samtal",
+      "night": "Natt"
+    }
   },
   "welcome": {
     "title": "Välkommen till {office}",

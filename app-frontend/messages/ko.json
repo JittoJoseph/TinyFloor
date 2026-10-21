@@ -797,7 +797,6 @@
     "clear": "메모 지우기",
     "placeholder": "지금 무엇을 하고 있나요?",
     "empty": "텍스트 지우기",
-    "emoji": "이모지 선택",
     "clearAfter": "지우기",
     "save": "저장",
     "failed": "저장하지 못했어요. 다시 시도해 주세요.",
@@ -816,7 +815,26 @@
       "today": "오늘",
       "week": "이번 주"
     },
-    "until": "{time}까지"
+    "until": "{time}까지",
+    "icon": "아이콘 선택",
+    "icons": {
+      "chat": "메모",
+      "focus": "집중",
+      "lunch": "점심",
+      "coffee": "커피",
+      "meeting": "회의",
+      "away": "자리 비움",
+      "sick": "아픔",
+      "holiday": "휴가",
+      "travel": "출장",
+      "home": "재택",
+      "commute": "이동 중",
+      "code": "코딩",
+      "writing": "글쓰기",
+      "presenting": "발표",
+      "call": "통화 중",
+      "night": "밤"
+    }
   },
   "welcome": {
     "title": "{office}에 오신 걸 환영해요",

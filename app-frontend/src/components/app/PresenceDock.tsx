@@ -7,7 +7,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { useMyNote, useMyStatus } from "@/lib/floor";
-import { noteLine } from "./StatusNote";
+import { NoteText } from "./StatusNote";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
 import { Tooltip } from "@/components/motion/tooltip";
@@ -113,7 +113,7 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
                     {music.item && music.playing ? (
                       <MusicLine />
                     ) : note ? (
-                      noteLine(note)
+                      <NoteText note={note} />
                     ) : (
                       tStatus(`${status === "offline" ? "away" : status}.label`)
                     )}

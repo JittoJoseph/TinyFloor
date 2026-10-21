@@ -797,7 +797,6 @@
     "clear": "Ryd note",
     "placeholder": "Hvad laver du?",
     "empty": "Ryd teksten",
-    "emoji": "Vælg en emoji",
     "clearAfter": "Ryd efter",
     "save": "Gem",
     "failed": "Det blev ikke gemt. Prøv igen.",
@@ -816,7 +815,26 @@
       "today": "I dag",
       "week": "Denne uge"
     },
-    "until": "indtil {time}"
+    "until": "indtil {time}",
+    "icon": "Vælg et ikon",
+    "icons": {
+      "chat": "Note",
+      "focus": "Fokus",
+      "lunch": "Frokost",
+      "coffee": "Kaffe",
+      "meeting": "Møde",
+      "away": "Væk",
+      "sick": "Syg",
+      "holiday": "Ferie",
+      "travel": "På rejse",
+      "home": "Hjemme",
+      "commute": "Pendler",
+      "code": "Koder",
+      "writing": "Skriver",
+      "presenting": "Præsenterer",
+      "call": "I et opkald",
+      "night": "Nat"
+    }
   },
   "welcome": {
     "title": "Velkommen til {office}",

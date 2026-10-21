@@ -4,7 +4,6 @@ import { PlayerManager } from "./PlayerManager";
 import { SeatManager } from "./SeatManager";
 import { callManager } from "./CallManager";
 import { whiteboard } from "./WhiteboardManager";
-import { jukebox } from "./JukeboxManager";
 import { AnimationManager } from "./AnimationManager";
 import { playSound } from "./sounds";
 import { tileToPixel } from "@/lib/types";
@@ -34,7 +33,6 @@ export class MessageHandler {
       case "welcome":
         setDesks(message.desks ?? []);
         this.welcome(message.self, message.players);
-        jukebox.handleMusic(message.music);
         whiteboard.sync();
         setMeetings(message.meetings ?? []);
         if (message.usage) this.meetingUsage(message.usage);
@@ -112,9 +110,6 @@ export class MessageHandler {
       case "board_draw":
       case "board_clear":
         whiteboard.handleMessage(message);
-        break;
-      case "music":
-        jukebox.handleMusic(message);
         break;
     }
   }

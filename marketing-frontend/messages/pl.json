@@ -241,7 +241,7 @@
           },
           {
             "title": "Bez budowania mapy",
-            "body": "Każde biuro ma piętro, salę spotkań, tablicę i głośnik. Załóż biuro i wejdź."
+            "body": "Każde biuro ma piętro, salę spotkań i tablicę. Załóż biuro i wejdź."
           },
           {
             "title": "Nic do hostowania",
@@ -306,7 +306,7 @@
           },
           {
             "q": "Czym TinyFloor różni się od Wonder?",
-            "a": "Wonder używał kółek na płaskim płótnie i był stworzony z myślą o wydarzeniach. TinyFloor to biuro, po którym się chodzi, z biurkami, salą spotkań, tablicą i muzyką, stworzone dla zespołów pracujących razem na co dzień."
+            "a": "Wonder używał kółek na płaskim płótnie i był stworzony z myślą o wydarzeniach. TinyFloor to biuro, po którym się chodzi, z biurkami, salą spotkań i tablicą, stworzone dla zespołów pracujących razem na co dzień."
           },
           {
             "q": "Ile osób może dołączyć?",
@@ -531,7 +531,7 @@
           },
           {
             "q": "Co ma oVice, czego nie ma TinyFloor?",
-            "a": "oVice dodaje własne układy i awatary, integrację z Google Calendar i Microsoft Teams, SSO, nagrywanie i transkrypcję w Business Starter oraz jednorazowe plany na wydarzenia. TinyFloor skupia się na codziennym biurze: podchodzeniu do ludzi, spotkaniach, czacie, tablicy i muzyce."
+            "a": "oVice dodaje własne układy i awatary, integrację z Google Calendar i Microsoft Teams, SSO, nagrywanie i transkrypcję w Business Starter oraz jednorazowe plany na wydarzenia. TinyFloor skupia się na codziennym biurze: podchodzeniu do ludzi, spotkaniach, czacie i tablicy."
           },
           {
             "q": "Czy TinyFloor jest dostępny po japońsku?",
@@ -957,7 +957,7 @@
         "label": "Wirtualny ekspres do kawy",
         "meta": {
           "title": "Wirtualny ekspres do kawy dla zespołów zdalnych",
-          "description": "Pogawędki, których brakuje zespołom zdalnym: spotykaj współpracowników na piętrze, rozmawiaj w strefie relaksu i włączaj muzykę, w wirtualnym biurze twojego zespołu."
+          "description": "Pogawędki, których brakuje zespołom zdalnym: spotykaj współpracowników na piętrze, rozmawiaj w strefie relaksu i zobacz, czego słuchają inni, w wirtualnym biurze twojego zespołu."
         },
         "title": "<em>Wirtualny ekspres do kawy</em>, przy którym wszystko dzieje się samo.",
         "subtitle": "Zespoły zdalne planują czas na rozmowy, bo nic nie dzieje się przypadkiem. Na wspólnym piętrze mijasz ludzi, widzisz, kto jest, i zatrzymujesz się na pogawędkę.",
@@ -967,8 +967,8 @@
             "body": "Chodząc między biurkami i salami, mijasz współpracowników i możesz zatrzymać się na słowo."
           },
           {
-            "title": "Muzyka w strefie relaksu",
-            "body": "Puść piosenkę z szafy grającej na popołudnie, dla wszystkich w pokoju."
+            "title": "Czego słuchają inni",
+            "body": "Udostępnij w profilu utwór, playlistę albo Jam ze Spotify. Współpracownicy otworzą go z twojej karty i posłuchają."
           },
           {
             "title": "Bez zaproszenia w kalendarzu",
@@ -984,8 +984,8 @@
           },
           {
             "label": "Po południu",
-            "title": "Puść piosenkę",
-            "body": "Włącz szafę grającą w strefie relaksu dla tych, którzy są obok."
+            "title": "Dołącz do Jamu",
+            "body": "Zacznij Jam w Spotify i udostępnij go. Kto jest w pobliżu, może dołączyć i słuchać razem z tobą."
           },
           {
             "label": "Piątek",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Czy możemy słuchać muzyki razem?",
-            "a": "Tak. Podejdź do głośnika w pokoju, żeby puścić muzykę, którą słyszą wszyscy w pokoju."
+            "a": "Tak, przez Spotify. Udostępnij w profilu utwór, playlistę albo Jam, a współpracownicy posłuchają go z twojej karty. Jam utrzymuje wszystkich przy tym samym utworze, w Spotify."
           },
           {
             "q": "Czy to tylko na chwile towarzyskie?",
@@ -1603,8 +1603,8 @@
           "body": "Wspólna tablica na ścianie, na szkic, który wszystko wyjaśnia."
         },
         "music": {
-          "title": "Muzyka",
-          "body": "Szafa grająca w salonie, na godziny, które jej potrzebują."
+          "title": "Spotify",
+          "body": "Udostępnij, czego słuchasz, a współpracownicy posłuchają z twojej karty."
         },
         "noise": {
           "title": "Usuwanie szumów",
@@ -1644,7 +1644,7 @@
         "people": "Do {people} osób",
         "floor": "Piętro, czat i kanały",
         "meetings": "Spotkania z wideo HD i udostępnianiem ekranu",
-        "desks": "Biurka, tablica i muzyka",
+        "desks": "Biurka i tablica",
         "everything": "Wszystko z Free, a do tego",
         "team": "Miejsce dla całego zespołu",
         "often": "Spotkania tak często, jak potrzeba",

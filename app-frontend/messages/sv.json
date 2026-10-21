@@ -239,18 +239,6 @@
     "call": "Ring",
     "onCall": "I samtal med dig"
   },
-  "jukebox": {
-    "title": "Rummets högtalare",
-    "close": "Stäng högtalarkontrollerna",
-    "tapToPlay": "Tryck på spela för att höra",
-    "playing": "Spelas för alla i rummet",
-    "paused": "Pausad för alla i rummet",
-    "previous": "Föregående spår",
-    "next": "Nästa spår",
-    "play": "Spela",
-    "pause": "Pausa",
-    "playTrack": "Spela {track}"
-  },
   "whiteboard": {
     "title": "Whiteboard",
     "penColor": "Pennfärg {color}",
@@ -318,7 +306,6 @@
     "stand": "Tryck E för att resa dig",
     "joinMeeting": "Tryck E för att gå med",
     "meeting": "Möte",
-    "music": "Klicka för musik",
     "draw": "Klicka för att rita",
     "yourDesk": "Ditt skrivbord"
   },

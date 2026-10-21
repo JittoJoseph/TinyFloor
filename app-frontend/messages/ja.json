@@ -239,18 +239,6 @@
     "call": "通話",
     "onCall": "あなたと通話中"
   },
-  "jukebox": {
-    "title": "ルームのスピーカー",
-    "close": "スピーカーの操作を閉じる",
-    "tapToPlay": "再生をタップして聴く",
-    "playing": "ルームの全員に再生中",
-    "paused": "ルームの全員に一時停止中",
-    "previous": "前の曲",
-    "next": "次の曲",
-    "play": "再生",
-    "pause": "一時停止",
-    "playTrack": "{track} を再生"
-  },
   "whiteboard": {
     "title": "ホワイトボード",
     "penColor": "ペンの色 {color}",
@@ -318,7 +306,6 @@
     "stand": "E キーで立つ",
     "joinMeeting": "E キーで参加",
     "meeting": "会議",
-    "music": "クリックで音楽",
     "draw": "クリックで描く",
     "yourDesk": "あなたのデスク"
   },

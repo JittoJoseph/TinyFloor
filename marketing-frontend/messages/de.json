@@ -241,7 +241,7 @@
           },
           {
             "title": "Keine Karte zu bauen",
-            "body": "Jedes Büro hat eine Etage, einen Meetingraum, ein Whiteboard und einen Lautsprecher. Erstelle ein Büro und geh hinein."
+            "body": "Jedes Büro hat eine Etage, einen Meetingraum und ein Whiteboard. Erstelle ein Büro und geh hinein."
           },
           {
             "title": "Nichts zu hosten",
@@ -306,7 +306,7 @@
           },
           {
             "q": "Wie unterscheidet sich TinyFloor von Wonder?",
-            "a": "Wonder nutzte Kreise auf einer flachen Fläche und war für Events gemacht. TinyFloor ist ein begehbares Büro mit Schreibtischen, einem Meetingraum, einem Whiteboard und Musik, gemacht für Teams, die jeden Tag zusammenarbeiten."
+            "a": "Wonder nutzte Kreise auf einer flachen Fläche und war für Events gemacht. TinyFloor ist ein begehbares Büro mit Schreibtischen, einem Meetingraum und einem Whiteboard, gemacht für Teams, die jeden Tag zusammenarbeiten."
           },
           {
             "q": "Wie viele Personen können beitreten?",
@@ -531,7 +531,7 @@
           },
           {
             "q": "Was hat oVice, was TinyFloor nicht hat?",
-            "a": "oVice bietet eigene Layouts und Avatare, Integration mit Google Calendar und Microsoft Teams, SSO, Aufnahmen und Transkription mit Business Starter sowie einmalige Tarife für Events. TinyFloor konzentriert sich auf das tägliche Büro: hingehen, Meetings, Chat, ein Whiteboard und Musik."
+            "a": "oVice bietet eigene Layouts und Avatare, Integration mit Google Calendar und Microsoft Teams, SSO, Aufnahmen und Transkription mit Business Starter sowie einmalige Tarife für Events. TinyFloor konzentriert sich auf das tägliche Büro: hingehen, Meetings, Chat und ein Whiteboard."
           },
           {
             "q": "Gibt es TinyFloor auf Japanisch?",
@@ -957,7 +957,7 @@
         "label": "Virtuelle Kaffeeküche",
         "meta": {
           "title": "Virtuelle Kaffeeküche für Remote-Teams",
-          "description": "Der Smalltalk, der Remote-Teams fehlt: Begegne Kolleginnen und Kollegen auf der Etage, plaudere in der Lounge und spiel Musik, in einem virtuellen Büro für dein Team."
+          "description": "Der Smalltalk, der Remote-Teams fehlt: Begegne Kolleginnen und Kollegen auf der Etage, plaudere in der Lounge und sieh, was alle gerade hören, in einem virtuellen Büro für dein Team."
         },
         "title": "Eine <em>virtuelle Kaffeeküche</em>, die von selbst passiert.",
         "subtitle": "Remote-Teams planen soziale Zeit, weil nichts zufällig passiert. Auf einer gemeinsamen Etage gehst du an Leuten vorbei, siehst, wer da ist, und bleibst für ein Gespräch stehen.",
@@ -967,8 +967,8 @@
             "body": "Auf dem Weg zwischen Schreibtischen und Räumen kommst du an Kolleginnen und Kollegen vorbei und kannst kurz stehen bleiben."
           },
           {
-            "title": "Musik in der Lounge",
-            "body": "Leg nachmittags einen Song in die Jukebox, für alle im Raum."
+            "title": "Was alle gerade hören",
+            "body": "Teile einen Song, eine Playlist oder einen Jam von Spotify in deinem Profil. Dein Team öffnet ihn über deine Karte und hört rein."
           },
           {
             "title": "Keine Kalendereinladung",
@@ -984,8 +984,8 @@
           },
           {
             "label": "Nachmittags",
-            "title": "Einen Song auflegen",
-            "body": "Starte die Jukebox in der Lounge für alle, die gerade da sind."
+            "title": "Einem Jam beitreten",
+            "body": "Starte einen Jam in Spotify und teile ihn. Wer gerade da ist, kann beitreten und mithören."
           },
           {
             "label": "Freitag",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Können wir zusammen Musik hören?",
-            "a": "Ja. Geh zum Lautsprecher im Raum, um Musik zu spielen, die alle im Raum hören."
+            "a": "Ja, mit Spotify. Teile einen Song, eine Playlist oder einen Jam in deinem Profil, und dein Team kann über deine Karte reinhören. Ein Jam hält alle beim selben Song, in Spotify."
           },
           {
             "q": "Ist es nur für soziale Zeit?",
@@ -1603,8 +1603,8 @@
           "body": "Eine gemeinsame Tafel an der Wand, für die Skizze, die es erklärt."
         },
         "music": {
-          "title": "Musik",
-          "body": "Eine Jukebox in der Lounge, für die Stunden, die eine brauchen."
+          "title": "Spotify",
+          "body": "Teile, was du gerade hörst, und dein Team hört über deine Karte rein."
         },
         "noise": {
           "title": "Rauschunterdrückung",
@@ -1644,7 +1644,7 @@
         "people": "Bis zu {people} Personen",
         "floor": "Die Fläche, Chat und Kanäle",
         "meetings": "Meetings mit HD-Video und Bildschirmfreigabe",
-        "desks": "Schreibtische, ein Whiteboard und Musik",
+        "desks": "Schreibtische und ein Whiteboard",
         "everything": "Alles aus Free, dazu",
         "team": "Platz für dein ganzes Team",
         "often": "Meetings, so oft dein Team will",

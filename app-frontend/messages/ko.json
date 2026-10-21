@@ -239,18 +239,6 @@
     "call": "통화",
     "onCall": "나와 통화 중"
   },
-  "jukebox": {
-    "title": "방 스피커",
-    "close": "스피커 컨트롤 닫기",
-    "tapToPlay": "재생을 탭해서 들어 보세요",
-    "playing": "방의 모두에게 재생 중",
-    "paused": "방의 모두에게 일시 정지됨",
-    "previous": "이전 곡",
-    "next": "다음 곡",
-    "play": "재생",
-    "pause": "일시 정지",
-    "playTrack": "{track} 재생"
-  },
   "whiteboard": {
     "title": "화이트보드",
     "penColor": "펜 색상 {color}",
@@ -318,7 +306,6 @@
     "stand": "E 키로 일어서기",
     "joinMeeting": "E 키로 참여",
     "meeting": "회의",
-    "music": "클릭해서 음악 듣기",
     "draw": "클릭해서 그리기",
     "yourDesk": "내 책상"
   },

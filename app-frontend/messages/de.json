@@ -239,18 +239,6 @@
     "call": "Anrufen",
     "onCall": "Im Gespräch mit dir"
   },
-  "jukebox": {
-    "title": "Raumlautsprecher",
-    "close": "Lautsprecher-Steuerung schließen",
-    "tapToPlay": "Tippe auf Play, um es zu hören",
-    "playing": "Läuft für alle im Raum",
-    "paused": "Pausiert für alle im Raum",
-    "previous": "Vorheriger Titel",
-    "next": "Nächster Titel",
-    "play": "Abspielen",
-    "pause": "Pause",
-    "playTrack": "{track} abspielen"
-  },
   "whiteboard": {
     "title": "Whiteboard",
     "penColor": "Stiftfarbe {color}",
@@ -318,7 +306,6 @@
     "stand": "E drücken zum Aufstehen",
     "joinMeeting": "E drücken zum Beitreten",
     "meeting": "Meeting",
-    "music": "Klick für Musik",
     "draw": "Klick zum Zeichnen",
     "yourDesk": "Dein Schreibtisch"
   },

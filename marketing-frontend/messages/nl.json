@@ -241,7 +241,7 @@
           },
           {
             "title": "Geen kaart om te bouwen",
-            "body": "Elk kantoor heeft een verdieping, een vergaderruimte, een whiteboard en een speaker. Maak een kantoor en loop naar binnen."
+            "body": "Elk kantoor heeft een verdieping, een vergaderruimte en een whiteboard. Maak een kantoor en loop naar binnen."
           },
           {
             "title": "Niets te hosten",
@@ -306,7 +306,7 @@
           },
           {
             "q": "Hoe verschilt TinyFloor van Wonder?",
-            "a": "Wonder gebruikte cirkels op een plat canvas en was gemaakt voor evenementen. TinyFloor is een kantoor waar je rondloopt, met bureaus, een vergaderruimte, een whiteboard en muziek, gemaakt voor teams die elke dag samenwerken."
+            "a": "Wonder gebruikte cirkels op een plat canvas en was gemaakt voor evenementen. TinyFloor is een kantoor waar je rondloopt, met bureaus, een vergaderruimte en een whiteboard, gemaakt voor teams die elke dag samenwerken."
           },
           {
             "q": "Hoeveel mensen kunnen meedoen?",
@@ -531,7 +531,7 @@
           },
           {
             "q": "Wat heeft oVice dat TinyFloor niet heeft?",
-            "a": "oVice biedt eigen indelingen en avatars, integratie met Google Agenda en Microsoft Teams, SSO, opnames en transcriptie met Business Starter, en eenmalige abonnementen voor evenementen. TinyFloor richt zich op het dagelijkse kantoor: naar iemand toe lopen, vergaderen, chatten, een whiteboard en muziek."
+            "a": "oVice biedt eigen indelingen en avatars, integratie met Google Agenda en Microsoft Teams, SSO, opnames en transcriptie met Business Starter, en eenmalige abonnementen voor evenementen. TinyFloor richt zich op het dagelijkse kantoor: naar iemand toe lopen, vergaderen, chatten en een whiteboard."
           },
           {
             "q": "Is TinyFloor beschikbaar in het Japans?",
@@ -957,7 +957,7 @@
         "label": "Virtueel koffieapparaat",
         "meta": {
           "title": "Virtueel koffieapparaat voor remote teams",
-          "description": "Het praatje dat remote teams missen: kom collega's tegen op de verdieping, kletst in de lounge en zet muziek op, in een virtueel kantoor voor je team."
+          "description": "Het praatje dat remote teams missen: kom collega's tegen op de verdieping, klets in de lounge en zie waar iedereen naar luistert, in een virtueel kantoor voor je team."
         },
         "title": "Een <em>virtueel koffieapparaat</em> dat vanzelf gebeurt.",
         "subtitle": "Remote teams plannen sociale momenten omdat niets toevallig gebeurt. Op een gedeelde verdieping loop je langs mensen, zie je wie er is en blijf je even staan voor een praatje.",
@@ -967,8 +967,8 @@
             "body": "Als je tussen bureaus en ruimtes loopt, kom je collega's tegen en kun je even blijven staan."
           },
           {
-            "title": "Muziek in de lounge",
-            "body": "Zet een nummer op de jukebox voor de middag, voor iedereen in de ruimte."
+            "title": "Waar iedereen naar luistert",
+            "body": "Deel een nummer, afspeellijst of Jam van Spotify op je profiel. Collega's openen het vanaf je kaart en luisteren mee."
           },
           {
             "title": "Geen agenda-uitnodiging",
@@ -984,8 +984,8 @@
           },
           {
             "label": "Middag",
-            "title": "Zet een nummer op",
-            "body": "Start de jukebox in de lounge voor wie er is."
+            "title": "Doe mee met een Jam",
+            "body": "Start een Jam in Spotify en deel hem. Wie in de buurt is, kan meedoen en meeluisteren."
           },
           {
             "label": "Vrijdag",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Kunnen we samen muziek luisteren?",
-            "a": "Ja. Loop naar de speaker in de ruimte om muziek te spelen die iedereen in de ruimte hoort."
+            "a": "Ja, met Spotify. Deel een nummer, afspeellijst of Jam op je profiel, dan kunnen collega's luisteren vanaf je kaart. Met een Jam hoort iedereen hetzelfde nummer, in Spotify."
           },
           {
             "q": "Is het alleen voor sociale momenten?",
@@ -1603,8 +1603,8 @@
           "body": "Een gedeeld bord aan de muur, voor de schets die het uitlegt."
         },
         "music": {
-          "title": "Muziek",
-          "body": "Een jukebox in de lounge, voor de uren die er een nodig hebben."
+          "title": "Spotify",
+          "body": "Deel waar je naar luistert, dan kunnen collega's luisteren vanaf je kaart."
         },
         "noise": {
           "title": "Ruisonderdrukking",
@@ -1644,7 +1644,7 @@
         "people": "Tot {people} mensen",
         "floor": "De vloer, chat en kanalen",
         "meetings": "Meetings met HD-video en schermdelen",
-        "desks": "Bureaus, een whiteboard en muziek",
+        "desks": "Bureaus en een whiteboard",
         "everything": "Alles van Free, plus",
         "team": "Ruimte voor je hele team",
         "often": "Meetings zo vaak als je team wil",

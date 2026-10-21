@@ -7,7 +7,7 @@ export interface RealtimeAdminApi {
   /** Who is in each office right now, once each, with how they look and their status: for the dashboard. */
   officePresence(officeIds: string[]): Promise<Record<string, PresentPerson[]>>;
   closeRoom(roomId: string): Promise<void>;
-  /** The office was deleted: everyone leaves, and its floor (whiteboard, music) and its chat are deleted. */
+  /** The office was deleted: everyone leaves, and its floor (the whiteboard) and its chat are deleted. */
   forgetOffice(officeId: string): Promise<void>;
   /** Someone's membership ended: they leave the floor and the office's chat. */
   removeMember(officeId: string, userId: string): Promise<void>;

@@ -241,7 +241,7 @@
           },
           {
             "title": "Ningún mapa que construir",
-            "body": "Cada oficina incluye una planta, una sala de reuniones, una pizarra y un altavoz. Crea una oficina y entra."
+            "body": "Cada oficina incluye una planta, una sala de reuniones y una pizarra. Crea una oficina y entra."
           },
           {
             "title": "Nada que alojar",
@@ -306,7 +306,7 @@
           },
           {
             "q": "¿En qué se diferencia TinyFloor de Wonder?",
-            "a": "Wonder usaba círculos sobre un lienzo plano y estaba hecho para eventos. TinyFloor es una oficina que se recorre, con escritorios, sala de reuniones, pizarra y música, hecha para equipos que trabajan juntos cada día."
+            "a": "Wonder usaba círculos sobre un lienzo plano y estaba hecho para eventos. TinyFloor es una oficina que se recorre, con escritorios, sala de reuniones y pizarra, hecha para equipos que trabajan juntos cada día."
           },
           {
             "q": "¿Cuántas personas pueden entrar?",
@@ -531,7 +531,7 @@
           },
           {
             "q": "¿Qué tiene oVice que TinyFloor no tiene?",
-            "a": "oVice añade diseños y avatares personalizados, integración con Google Calendar y Microsoft Teams, SSO, grabación y transcripción con Business Starter, y planes puntuales para eventos. TinyFloor se centra en la oficina del día a día: acercarse, reuniones, chat, una pizarra y música."
+            "a": "oVice añade diseños y avatares personalizados, integración con Google Calendar y Microsoft Teams, SSO, grabación y transcripción con Business Starter, y planes puntuales para eventos. TinyFloor se centra en la oficina del día a día: acercarse, reuniones, chat y una pizarra."
           },
           {
             "q": "¿TinyFloor está disponible en japonés?",
@@ -957,7 +957,7 @@
         "label": "Máquina de café virtual",
         "meta": {
           "title": "Máquina de café virtual para equipos remotos",
-          "description": "La charla informal que echan de menos los equipos remotos: cruzarte con compañeros en la planta, charlar en la zona de descanso y poner música, en una oficina virtual para tu equipo."
+          "description": "La charla informal que echan de menos los equipos remotos: cruzarte con compañeros en la planta, charlar en la zona de descanso y ver qué escucha cada uno, en una oficina virtual para tu equipo."
         },
         "title": "Una <em>máquina de café virtual</em> que surge sola.",
         "subtitle": "Los equipos remotos agendan ratos sociales porque nada pasa por casualidad. En una planta compartida te cruzas con gente, ves quién está y te paras a charlar.",
@@ -967,8 +967,8 @@
             "body": "Al moverte entre escritorios y salas te cruzas con compañeros y puedes pararte a hablar."
           },
           {
-            "title": "Música en la zona de descanso",
-            "body": "Pon una canción en la gramola para la tarde, para todos los que están en la sala."
+            "title": "Lo que escucha cada uno",
+            "body": "Comparte una canción, una playlist o un Jam de Spotify en tu perfil. Tus compañeros lo abren desde tu tarjeta y lo escuchan."
           },
           {
             "title": "Sin invitación de calendario",
@@ -984,8 +984,8 @@
           },
           {
             "label": "Tarde",
-            "title": "Poner una canción",
-            "body": "Enciende la gramola de la zona de descanso para quien esté por allí."
+            "title": "Únete a un Jam",
+            "body": "Empieza un Jam en Spotify y compártelo. Quien esté por ahí puede unirse y escuchar contigo."
           },
           {
             "label": "Viernes",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "¿Podemos escuchar música juntos?",
-            "a": "Sí. Acércate al altavoz de la sala para poner música que oiga todo el que esté en la sala."
+            "a": "Sí, con Spotify. Comparte una canción, una playlist o un Jam en tu perfil y tus compañeros pueden escucharlo desde tu tarjeta. Un Jam mantiene a todos en la misma canción, en Spotify."
           },
           {
             "q": "¿Es solo para ratos sociales?",
@@ -1603,8 +1603,8 @@
           "body": "Una pizarra compartida en la pared, para el boceto que lo explica todo."
         },
         "music": {
-          "title": "Música",
-          "body": "Una gramola en la sala, para las horas que la necesitan."
+          "title": "Spotify",
+          "body": "Comparte lo que escuchas y tus compañeros pueden escucharlo desde tu tarjeta."
         },
         "noise": {
           "title": "Supresión de ruido",
@@ -1644,7 +1644,7 @@
         "people": "Hasta {people} personas",
         "floor": "La planta, el chat y los canales",
         "meetings": "Reuniones con video HD y pantalla compartida",
-        "desks": "Escritorios, pizarra y música",
+        "desks": "Escritorios y una pizarra",
         "everything": "Todo lo de Free, y además",
         "team": "Espacio para todo tu equipo",
         "often": "Reuniones tan a menudo como necesite tu equipo",

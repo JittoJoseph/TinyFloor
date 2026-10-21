@@ -63,7 +63,8 @@ It's a hosted service at **[tinyfloor.com](https://www.tinyfloor.com)**: make an
 - **A meeting room** for group video calls with screen sharing: walk in to join, walk out to leave. Meetings get a full page too, with whoever's talking up front.
 - **Your own desk.** Sit down and make it yours; from then on you arrive at it, and teammates walking past see whose it is.
 - **Invites that get sent:** copy the link, copy a ready message for your team's chat, email it, or share it from your phone. Teammates pick a name and a character and join with a free account.
-- **Whiteboard and a jukebox** for the moments between calls, and noise removal for the calls themselves.
+- **A whiteboard** for the moments between calls, and noise removal for the calls themselves.
+- **What you're listening to:** share a Spotify song, playlist or Jam on your profile, and teammates listen from your card.
 - **Works in the browser** on desktop and mobile, with nothing to download, in 18 languages.
 - **Private offices** for your team, joined by invite, and a demo office to try it first.
 

@@ -239,18 +239,6 @@
     "call": "Chiama",
     "onCall": "In chiamata con te"
   },
-  "jukebox": {
-    "title": "Altoparlante della stanza",
-    "close": "Chiudi i controlli dell’altoparlante",
-    "tapToPlay": "Tocca play per ascoltare",
-    "playing": "In riproduzione per tutti nella stanza",
-    "paused": "In pausa per tutti nella stanza",
-    "previous": "Brano precedente",
-    "next": "Brano successivo",
-    "play": "Riproduci",
-    "pause": "Pausa",
-    "playTrack": "Riproduci {track}"
-  },
   "whiteboard": {
     "title": "Lavagna",
     "penColor": "Colore penna {color}",
@@ -318,7 +306,6 @@
     "stand": "Premi E per alzarti",
     "joinMeeting": "Premi E per unirti",
     "meeting": "Riunione",
-    "music": "Clicca per la musica",
     "draw": "Clicca per disegnare",
     "yourDesk": "La tua scrivania"
   },

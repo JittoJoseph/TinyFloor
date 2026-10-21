@@ -239,18 +239,6 @@
     "call": "Soita",
     "onCall": "Puhelussa kanssasi"
   },
-  "jukebox": {
-    "title": "Huoneen kaiutin",
-    "close": "Sulje kaiuttimen säätimet",
-    "tapToPlay": "Napauta toista kuullaksesi",
-    "playing": "Soi kaikille huoneessa",
-    "paused": "Tauolla kaikille huoneessa",
-    "previous": "Edellinen kappale",
-    "next": "Seuraava kappale",
-    "play": "Toista",
-    "pause": "Tauko",
-    "playTrack": "Toista {track}"
-  },
   "whiteboard": {
     "title": "Valkotaulu",
     "penColor": "Kynän väri {color}",
@@ -318,7 +306,6 @@
     "stand": "Paina E noustaksesi",
     "joinMeeting": "Paina E liittyäksesi",
     "meeting": "Palaveri",
-    "music": "Napsauta musiikkia varten",
     "draw": "Napsauta piirtääksesi",
     "yourDesk": "Työpöytäsi"
   },

@@ -1,7 +1,7 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const PRIVACY_UPDATED = "10 October 2026";
+export const PRIVACY_UPDATED = "21 October 2026";
 
 export const privacySummary = (
   <>
@@ -66,8 +66,16 @@ export const privacySections: LegalSection[] = [
             people in that office, or to everyone in the demo office for its chat.
           </li>
           <li>
-            <strong>The floor:</strong> what is drawn on an office&apos;s whiteboard and the music that is playing, so they are still there when
-            people come back.
+            <strong>The floor:</strong> what is drawn on an office&apos;s whiteboard, so it is still there when people come back.
+          </li>
+          <li>
+            <strong>Your time zone:</strong> the one your browser reports, or one you pick in your settings, so the people you work with see
+            your local time on your profile.
+          </li>
+          <li>
+            <strong>Spotify:</strong> if you share what you&apos;re listening to, the Spotify link you paste and the name and cover art Spotify
+            gives for it. People in your offices see it on your profile card for four hours; the link stays in your settings until you
+            change it or your account is deleted. We don&apos;t connect to your Spotify account or see what you play.
           </li>
           <li>
             <strong>Activity:</strong> when your account was made and when you were last active.
@@ -172,6 +180,14 @@ export const privacySections: LegalSection[] = [
             <strong>Discord</strong> carries the team notes described above.
           </li>
           <li>
+            <strong>Spotify</strong> tells us the name and cover of a link you share. When you press Listen on someone&apos;s card, Spotify&apos;s
+            own player loads from Spotify, under its own{" "}
+            <a href="https://www.spotify.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">
+              privacy policy
+            </a>
+            .
+          </li>
+          <li>
             <strong>Creem</strong> (Armitage Labs OÜ, Estonia) sells paid plans as the merchant of record: it takes payments, charges tax,
             sends receipts and handles refunds, under its own{" "}
             <a href="https://www.creem.io/privacy" target="_blank" rel="noopener noreferrer">
@@ -212,6 +228,10 @@ export const privacySections: LegalSection[] = [
             <strong>Turnstile:</strong> Cloudflare may use cookies or browser signals for its bot check.
           </li>
           <li>
+            <strong>Spotify&apos;s player:</strong> if you open it from someone&apos;s card, Spotify may use its own cookies, for example to play
+            whole songs when you&apos;re signed in to Spotify.
+          </li>
+          <li>
             <strong>Your browser:</strong> TinyFloor keeps a few preferences on your own device, such as your theme, your microphone and camera
             choices, the name and character you last used and whether you&apos;ve seen the tour. They never leave your browser.
           </li>
@@ -239,8 +259,7 @@ export const privacySections: LegalSection[] = [
             <strong>Office chat:</strong> each channel keeps its most recent 5,000 messages. <strong>Demo office chat</strong> is deleted after a week.
           </li>
           <li>
-            <strong>Offices:</strong> when an office is deleted, its members, invitations, chat, whiteboard and music are deleted
-            with it.
+            <strong>Offices:</strong> when an office is deleted, its members, invitations, chat and whiteboard are deleted with it.
           </li>
           <li>
             <strong>Invite links:</strong> an office&apos;s link is deleted with the office, and replaced whenever an admin resets it.

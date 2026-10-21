@@ -10397,29 +10397,6 @@
   },
   {
    "draworder": "topdown",
-   "id": 7,
-   "name": "Speaker",
-   "objects": [
-    {
-     "id": 633,
-     "name": "break",
-     "rotation": 0,
-     "type": "",
-     "visible": true,
-     "x": 1248,
-     "y": 224,
-     "width": 32,
-     "height": 32
-    }
-   ],
-   "opacity": 1,
-   "type": "objectgroup",
-   "visible": true,
-   "x": 0,
-   "y": 0
-  },
-  {
-   "draworder": "topdown",
    "id": 8,
    "name": "Colliders",
    "objects": [

@@ -241,7 +241,7 @@
           },
           {
             "title": "Nenhum mapa para montar",
-            "body": "Todo escritório vem com um andar, uma sala de reunião, um quadro branco e uma caixa de som. Crie um escritório e entre."
+            "body": "Todo escritório vem com um andar, uma sala de reunião e um quadro branco. Crie um escritório e entre."
           },
           {
             "title": "Nada para hospedar",
@@ -306,7 +306,7 @@
           },
           {
             "q": "Qual a diferença entre o TinyFloor e o Wonder?",
-            "a": "O Wonder usava círculos em uma tela plana e era feito para eventos. O TinyFloor é um escritório para andar, com mesas, sala de reunião, quadro branco e música, feito para equipes que trabalham juntas todos os dias."
+            "a": "O Wonder usava círculos em uma tela plana e era feito para eventos. O TinyFloor é um escritório para andar, com mesas, sala de reunião e quadro branco, feito para equipes que trabalham juntas todos os dias."
           },
           {
             "q": "Quantas pessoas podem entrar?",
@@ -531,7 +531,7 @@
           },
           {
             "q": "O que o oVice tem que o TinyFloor não tem?",
-            "a": "O oVice traz layouts e avatares personalizados, integração com Google Agenda e Microsoft Teams, SSO, gravação e transcrição no Business Starter, e planos avulsos para eventos. O TinyFloor se concentra no escritório do dia a dia: chegar perto, reuniões, chat, um quadro branco e música."
+            "a": "O oVice traz layouts e avatares personalizados, integração com Google Agenda e Microsoft Teams, SSO, gravação e transcrição no Business Starter, e planos avulsos para eventos. O TinyFloor se concentra no escritório do dia a dia: chegar perto, reuniões, chat e um quadro branco."
           },
           {
             "q": "O TinyFloor está disponível em japonês?",
@@ -957,7 +957,7 @@
         "label": "Cafezinho virtual",
         "meta": {
           "title": "Cafezinho virtual para equipes remotas",
-          "description": "O papo informal que faz falta às equipes remotas: encontrar colegas no andar, conversar no lounge e tocar música, num escritório virtual para sua equipe."
+          "description": "O papo informal que faz falta às equipes remotas: encontrar colegas no andar, conversar no lounge e ver o que cada um está ouvindo, num escritório virtual para sua equipe."
         },
         "title": "Um <em>cafezinho virtual</em> que acontece sozinho.",
         "subtitle": "Equipes remotas agendam momentos sociais porque nada acontece por acaso. Num andar compartilhado você cruza com as pessoas, vê quem está por ali e para para conversar.",
@@ -967,8 +967,8 @@
             "body": "Andando entre mesas e salas, você cruza com colegas e pode parar para trocar uma ideia."
           },
           {
-            "title": "Música no lounge",
-            "body": "Coloque uma música na jukebox à tarde, para todos na sala."
+            "title": "O que cada um está ouvindo",
+            "body": "Compartilhe uma música, playlist ou Jam do Spotify no seu perfil. Os colegas abrem pelo seu cartão e ouvem."
           },
           {
             "title": "Sem convite na agenda",
@@ -984,8 +984,8 @@
           },
           {
             "label": "Tarde",
-            "title": "Colocar uma música",
-            "body": "Ligue a jukebox do lounge para quem estiver por perto."
+            "title": "Entre numa Jam",
+            "body": "Comece uma Jam no Spotify e compartilhe. Quem estiver por perto pode entrar e ouvir com você."
           },
           {
             "label": "Sexta",
@@ -1003,8 +1003,8 @@
             "a": "Não. Conversas entre duas pessoas nunca contam, e as reuniões vêm em todo plano."
           },
           {
-            "q": "Podemos ouvir música juntos?",
-            "a": "Sim. Vá até a caixa de som da sala para tocar uma música que todos na sala ouvem."
+            "q": "Dá para ouvir música juntos?",
+            "a": "Dá, com o Spotify. Compartilhe uma música, playlist ou Jam no seu perfil, e os colegas podem ouvir pelo seu cartão. Uma Jam deixa todo mundo na mesma música, no Spotify."
           },
           {
             "q": "É só para momentos sociais?",
@@ -1603,8 +1603,8 @@
           "body": "Um quadro compartilhado na parede, para o rabisco que explica tudo."
         },
         "music": {
-          "title": "Música",
-          "body": "Uma jukebox no lounge, para as horas que pedem uma."
+          "title": "Spotify",
+          "body": "Compartilhe o que você está ouvindo, e os colegas ouvem pelo seu cartão."
         },
         "noise": {
           "title": "Remoção de ruído",
@@ -1644,7 +1644,7 @@
         "people": "Até {people} pessoas",
         "floor": "O andar, o chat e os canais",
         "meetings": "Reuniões com vídeo HD e compartilhamento de tela",
-        "desks": "Mesas, quadro branco e música",
+        "desks": "Mesas e um quadro branco",
         "everything": "Tudo do Free, e mais",
         "team": "Espaço para o time inteiro",
         "often": "Reuniões sempre que o time precisar",

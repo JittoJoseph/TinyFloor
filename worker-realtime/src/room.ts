@@ -21,7 +21,6 @@ import {
   type MeetingErrorCode,
   type MeetingInfo,
   type MeetingMember,
-  type MusicState,
   type PlayerState,
   type PresenceStatus,
   type PresentPerson,
@@ -292,7 +291,7 @@ export class Room extends DurableObject<Env> {
       t: "welcome",
       self: playerState(attachment),
       players: others,
-      music: this.music(),
+      music: { track: 0, playing: false, startedAt: 0, offset: 0 },
       meetings: this.meetingsOf(room),
       usage: this.clock()!.usage(now),
       desks: office ? this.desks.list() : [],
@@ -362,9 +361,6 @@ export class Room extends DurableObject<Env> {
         break;
       case "board_clear":
         this.clearBoard(me);
-        break;
-      case "music_set":
-        this.setMusic(me, message, now);
         break;
       case "call":
         this.relayCall(socket, me, message);
@@ -536,28 +532,6 @@ export class Room extends DurableObject<Env> {
     if (!this.takeAction(me)) return;
     this.board.clear();
     this.broadcast({ t: "board_clear", by: me.userId });
-  }
-
-  private setMusic(me: Attachment, input: object, now: number): void {
-    if (!this.takeAction(me)) return;
-    const message = input as Record<string, unknown>;
-    const current = this.music();
-    const music: MusicState = {
-      track: Number.isInteger(message.track) ? Math.max(0, message.track as number) : current.track,
-      playing: typeof message.playing === "boolean" ? message.playing : current.playing,
-      startedAt: now,
-      offset: typeof message.offset === "number" && Number.isFinite(message.offset) ? Math.max(0, message.offset) : 0,
-    };
-    this.ctx.storage.sql.exec(
-      "INSERT INTO room_state (key, value) VALUES ('music', ?) ON CONFLICT (key) DO UPDATE SET value = excluded.value",
-      JSON.stringify(music),
-    );
-    this.broadcast({ t: "music", ...music });
-  }
-
-  private music(): MusicState {
-    const row = this.ctx.storage.sql.exec<{ value: string }>("SELECT value FROM room_state WHERE key = 'music'").toArray()[0];
-    return row ? (JSON.parse(row.value) as MusicState) : { track: 0, playing: false, startedAt: 0, offset: 0 };
   }
 
   /** Counts one of the shared per-second actions; false when over the limit. */

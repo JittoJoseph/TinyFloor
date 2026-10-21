@@ -239,18 +239,6 @@
     "call": "Ring op",
     "onCall": "I opkald med dig"
   },
-  "jukebox": {
-    "title": "Rummets højttaler",
-    "close": "Luk højttalerkontrollerne",
-    "tapToPlay": "Tryk på afspil for at høre det",
-    "playing": "Spiller for alle i rummet",
-    "paused": "Sat på pause for alle i rummet",
-    "previous": "Forrige nummer",
-    "next": "Næste nummer",
-    "play": "Afspil",
-    "pause": "Pause",
-    "playTrack": "Afspil {track}"
-  },
   "whiteboard": {
     "title": "Whiteboard",
     "penColor": "Pennefarve {color}",
@@ -318,7 +306,6 @@
     "stand": "Tryk på E for at rejse dig",
     "joinMeeting": "Tryk på E for at deltage",
     "meeting": "Møde",
-    "music": "Klik for musik",
     "draw": "Klik for at tegne",
     "yourDesk": "Dit skrivebord"
   },

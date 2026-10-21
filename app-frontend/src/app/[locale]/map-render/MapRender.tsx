@@ -11,7 +11,6 @@ export function MapRender() {
       const Phaser = await import("phaser");
       const { MapManager } = await import("@/lib/MapManager");
       const { WhiteboardObject } = await import("@/lib/WhiteboardObject");
-      const { JukeboxObject } = await import("@/lib/JukeboxObject");
       if (cancelled) return;
       class Render extends Phaser.Scene {
         map!: InstanceType<typeof MapManager>;
@@ -27,8 +26,6 @@ export function MapRender() {
           const nobody = this.add.sprite(-9999, -9999, "__DEFAULT").setVisible(false);
           const board = this.map.getAnchors("Whiteboard")[0];
           if (board) new WhiteboardObject(this, nobody, board, () => {});
-          const speaker = this.map.getAnchors("Speaker")[0];
-          if (speaker) new JukeboxObject(this, nobody, speaker, () => {});
           this.cameras.main.setZoom(1).centerOn(this.map.getMapWidth() / 2, this.map.getMapHeight() / 2);
           // Draw a frame, then hand the picture out as a PNG.
           this.time.delayedCall(300, () =>

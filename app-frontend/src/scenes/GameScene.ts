@@ -14,8 +14,6 @@ import { attachDesks } from "../lib/desks";
 import { MessageHandler } from "../lib/MessageHandler";
 import { WhiteboardObject } from "../lib/WhiteboardObject";
 import { whiteboard } from "../lib/WhiteboardManager";
-import { JukeboxObject } from "../lib/JukeboxObject";
-import { jukebox } from "../lib/JukeboxManager";
 import { setTouchInput } from "../lib/input";
 import { touchFirst } from "../lib/touch";
 import { TILE_SIZE, pixelToTile, tileToPixel } from "@/lib/types";
@@ -56,7 +54,6 @@ class GameScene extends Phaser.Scene {
   private mapManager!: MapManager;
   private messageHandler!: MessageHandler;
   private whiteboardObject?: WhiteboardObject;
-  private jukeboxObject?: JukeboxObject;
   private seatManager?: SeatManager;
   private windowListeners: Array<[string, EventListener]> = [];
   private unsubscribeShown?: () => void;
@@ -140,11 +137,6 @@ class GameScene extends Phaser.Scene {
         { x: board.x, y: board.y + 10, width: board.width, height: 52 },
         approach,
       );
-    }
-    jukebox.attach(this.wsManager);
-    const speaker = this.mapManager.getAnchors("Speaker")[0];
-    if (speaker) {
-      this.jukeboxObject = new JukeboxObject(this, this.player, { x: speaker.x, y: speaker.y }, approach);
     }
     // nobody calls into a meeting or out of one, or rings someone already on the line
     this.proximityManager = new ProximityManager(
@@ -281,7 +273,6 @@ class GameScene extends Phaser.Scene {
     this.proximityManager.update();
     if (this.meetingZone) this.watchMeetingRoom();
     this.whiteboardObject?.update();
-    this.jukeboxObject?.update(time, delta);
   }
 
   public cleanup() {
@@ -298,8 +289,6 @@ class GameScene extends Phaser.Scene {
     attachDesks(null);
     whiteboard.detach();
     this.whiteboardObject?.destroy();
-    jukebox.detach();
-    this.jukeboxObject?.destroy();
     this.seatManager?.destroy();
   }
 }

@@ -143,15 +143,6 @@ export interface BoardStroke {
   points: number[];
 }
 
-export interface MusicState {
-  track: number;
-  playing: boolean;
-  /** When playback of `offset` started, in server milliseconds. */
-  startedAt: number;
-  /** Seconds into the track at `startedAt`. */
-  offset: number;
-}
-
 /** Peer-to-peer call signalling kinds, relayed to one person. */
 export const CALL_KINDS = ["invite", "accept", "decline", "signal", "add", "end"] as const;
 export type CallKind = (typeof CALL_KINDS)[number];
@@ -220,7 +211,6 @@ export type ClientMessage =
   | { t: "board_sync" }
   | ({ t: "board_draw" } & BoardStroke)
   | { t: "board_clear" }
-  | { t: "music_set"; track: number; playing: boolean; offset: number }
   | { t: "call"; kind: CallKind; to: string; data?: unknown }
   /** Join a meeting: the main one, or one someone started. Leaves any other first. */
   | { t: "meeting_join"; meeting: string }
@@ -248,7 +238,11 @@ export type ServerMessage =
       t: "welcome";
       self: PlayerState;
       players: PlayerState[];
-      music: MusicState;
+      /**
+       * Always silence: the floor's jukebox is gone (21 October 2026), but a tab
+       * opened before then reads this on arrival and breaks without it.
+       */
+      music?: { track: 0; playing: false; startedAt: 0; offset: 0 };
       meetings: MeetingInfo[];
       usage: MeetingUsage;
       /** Whose desk is whose, in an office; empty in the lobby. */
@@ -282,7 +276,6 @@ export type ServerMessage =
   | { t: "board_state"; strokes: BoardStroke[] }
   | ({ t: "board_draw"; by: string } & BoardStroke)
   | { t: "board_clear"; by: string }
-  | ({ t: "music" } & MusicState)
   | { t: "call"; kind: CallKind; from: string; fromName: string; data?: unknown }
   | ({ t: "sfu" } & SfuServerMessage)
   | { t: "error"; code: "slow_down" | "bad_message" };

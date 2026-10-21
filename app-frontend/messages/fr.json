@@ -239,18 +239,6 @@
     "call": "Appeler",
     "onCall": "En appel avec vous"
   },
-  "jukebox": {
-    "title": "Enceinte de la salle",
-    "close": "Fermer les commandes de l’enceinte",
-    "tapToPlay": "Appuyez sur lecture pour l’écouter",
-    "playing": "Lecture pour tout le monde dans la salle",
-    "paused": "En pause pour tout le monde dans la salle",
-    "previous": "Piste précédente",
-    "next": "Piste suivante",
-    "play": "Lecture",
-    "pause": "Pause",
-    "playTrack": "Lire {track}"
-  },
   "whiteboard": {
     "title": "Tableau blanc",
     "penColor": "Couleur du stylo {color}",
@@ -318,7 +306,6 @@
     "stand": "Appuyez sur E pour vous lever",
     "joinMeeting": "Appuyez sur E pour rejoindre",
     "meeting": "Réunion",
-    "music": "Cliquez pour la musique",
     "draw": "Cliquez pour dessiner",
     "yourDesk": "Votre bureau"
   },

@@ -241,7 +241,7 @@
           },
           {
             "title": "Ingen karta att bygga",
-            "body": "Varje kontor har en våning, ett mötesrum, en whiteboard och en högtalare. Skapa ett kontor och gå in."
+            "body": "Varje kontor har en våning, ett mötesrum och en whiteboard. Skapa ett kontor och gå in."
           },
           {
             "title": "Inget att drifta",
@@ -306,7 +306,7 @@
           },
           {
             "q": "Hur skiljer sig TinyFloor från Wonder?",
-            "a": "Wonder använde cirklar på en platt yta och var gjort för evenemang. TinyFloor är ett kontor du kan gå runt i, med skrivbord, ett mötesrum, en whiteboard och musik, gjort för team som jobbar tillsammans varje dag."
+            "a": "Wonder använde cirklar på en platt yta och var gjort för evenemang. TinyFloor är ett kontor du kan gå runt i, med skrivbord, ett mötesrum och en whiteboard, gjort för team som jobbar tillsammans varje dag."
           },
           {
             "q": "Hur många kan gå med?",
@@ -531,7 +531,7 @@
           },
           {
             "q": "Vad har oVice som TinyFloor inte har?",
-            "a": "oVice har egna layouter och avatarer, integration med Google Kalender och Microsoft Teams, SSO, inspelning och transkribering med Business Starter, och engångsplaner för evenemang. TinyFloor fokuserar på det dagliga kontoret: gå fram till folk, möten, chatt, en whiteboard och musik."
+            "a": "oVice har egna layouter och avatarer, integration med Google Kalender och Microsoft Teams, SSO, inspelning och transkribering med Business Starter, och engångsplaner för evenemang. TinyFloor fokuserar på det dagliga kontoret: gå fram till folk, möten, chatt och en whiteboard."
           },
           {
             "q": "Finns TinyFloor på japanska?",
@@ -957,7 +957,7 @@
         "label": "Virtuell fikahörna",
         "meta": {
           "title": "Virtuell fikahörna för distansteam",
-          "description": "Småpratet distansteam saknar: stöt på kollegor på våningen, prata i loungen och spela musik, i ett virtuellt kontor för ditt team."
+          "description": "Småpratet distansteam saknar: stöt på kollegor på våningen, prata i loungen och se vad alla lyssnar på, i ett virtuellt kontor för ditt team."
         },
         "title": "En <em>virtuell fikahörna</em> som händer av sig själv.",
         "subtitle": "Distansteam bokar in social tid eftersom inget händer av en slump. På en delad våning passerar du folk, ser vem som är här och stannar för en pratstund.",
@@ -967,8 +967,8 @@
             "body": "När du går mellan skrivbord och rum passerar du kollegor och kan stanna för ett ord."
           },
           {
-            "title": "Musik i loungen",
-            "body": "Sätt på en låt i jukeboxen för eftermiddagen, för alla i rummet."
+            "title": "Vad alla lyssnar på",
+            "body": "Dela en låt, spellista eller Jam från Spotify på din profil. Kollegorna öppnar den från ditt kort och lyssnar."
           },
           {
             "title": "Ingen kalenderinbjudan",
@@ -984,8 +984,8 @@
           },
           {
             "label": "Eftermiddag",
-            "title": "Sätt på en låt",
-            "body": "Starta jukeboxen i loungen för den som är i närheten."
+            "title": "Gå med i en Jam",
+            "body": "Starta en Jam i Spotify och dela den. De som är i närheten kan gå med och lyssna tillsammans med dig."
           },
           {
             "label": "Fredag",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Kan vi lyssna på musik tillsammans?",
-            "a": "Ja. Gå fram till högtalaren i rummet för att spela musik som alla i rummet hör."
+            "a": "Ja, med Spotify. Dela en låt, spellista eller Jam på din profil, så kan kollegorna lyssna från ditt kort. En Jam håller alla på samma låt i Spotify."
           },
           {
             "q": "Är det bara för social tid?",
@@ -1603,8 +1603,8 @@
           "body": "En delad tavla på väggen, för skissen som förklarar det."
         },
         "music": {
-          "title": "Musik",
-          "body": "En jukebox i loungen, för timmarna som behöver en."
+          "title": "Spotify",
+          "body": "Dela vad du lyssnar på, så kan kollegorna lyssna från ditt kort."
         },
         "noise": {
           "title": "Brusreducering",
@@ -1644,7 +1644,7 @@
         "people": "Upp till {people} personer",
         "floor": "Golvet, chatt och kanaler",
         "meetings": "Möten med HD-video och skärmdelning",
-        "desks": "Skrivbord, whiteboard och musik",
+        "desks": "Skrivbord och en whiteboard",
         "everything": "Allt i Free, plus",
         "team": "Plats för hela teamet",
         "often": "Möten så ofta teamet behöver",

@@ -85,7 +85,6 @@ class Build:
         self.tables = []
         self.computers = []
         self.boards = []
-        self.speakers = []
         self.colliders = []
         self.zones = []
         self.nid = 1
@@ -303,7 +302,6 @@ def build():
     b.place("painting", 44, 0)
     b.place("sofa", 34, 3)
     b.place("plant", 45, 3)
-    b.obj(b.speakers, 39 * TS, 7 * TS, TS, TS, name="break")
 
     # the board fills the hall's north wall, in sight from the entrance
     b.obj(b.boards, 22 * TS, 0, 3 * TS, 2 * TS, name="main")
@@ -340,7 +338,6 @@ def main():
         objlayer("Chair", b.chairs, 4),
         objlayer("Computer", b.computers, 5),
         objlayer("Whiteboard", b.boards, 6),
-        objlayer("Speaker", b.speakers, 7),
         objlayer("Colliders", b.colliders, 8),
         objlayer("Zones", b.zones, 9),
         objlayer("Table", b.tables, 10),

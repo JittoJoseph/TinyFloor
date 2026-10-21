@@ -239,18 +239,6 @@
     "call": "Llamar",
     "onCall": "En llamada contigo"
   },
-  "jukebox": {
-    "title": "Altavoz de la sala",
-    "close": "Cerrar los controles del altavoz",
-    "tapToPlay": "Pulsa reproducir para escucharlo",
-    "playing": "Sonando para todos en la sala",
-    "paused": "En pausa para todos en la sala",
-    "previous": "Pista anterior",
-    "next": "Pista siguiente",
-    "play": "Reproducir",
-    "pause": "Pausa",
-    "playTrack": "Reproducir {track}"
-  },
   "whiteboard": {
     "title": "Pizarra",
     "penColor": "Color del lápiz {color}",
@@ -318,7 +306,6 @@
     "stand": "Pulsa E para levantarte",
     "joinMeeting": "Pulsa E para unirte",
     "meeting": "Reunión",
-    "music": "Haz clic para música",
     "draw": "Haz clic para dibujar",
     "yourDesk": "Tu escritorio"
   },

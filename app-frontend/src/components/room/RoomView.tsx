@@ -13,7 +13,6 @@ import WhiteboardOverlay from "@/components/WhiteboardOverlay";
 import { MeetingAudio } from "@/components/meetings/MeetingAudio";
 import { MeetingMini } from "@/components/meetings/MeetingMini";
 import { MeetingRoomPrompt } from "@/components/meetings/MeetingRoomPrompt";
-import JukeboxPanel from "@/components/JukeboxPanel";
 import { EntryHeader, EntryShell } from "@/components/entry/EntryShell";
 import { ActionButton, ActionLink } from "@/components/ui/Action";
 import { Button } from "@/components/motion/button/base";
@@ -263,7 +262,6 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
       <MeetingMini />
       <MeetingAudio />
       <WhiteboardOverlay />
-      <JukeboxPanel />
 
       <ControlBar settingsHref={settingsHref} />
     </div>

@@ -239,18 +239,6 @@
     "call": "Bellen",
     "onCall": "In gesprek met jou"
   },
-  "jukebox": {
-    "title": "Ruimtespeaker",
-    "close": "Speakerbediening sluiten",
-    "tapToPlay": "Tik op afspelen om het te horen",
-    "playing": "Speelt voor iedereen in de ruimte",
-    "paused": "Gepauzeerd voor iedereen in de ruimte",
-    "previous": "Vorig nummer",
-    "next": "Volgend nummer",
-    "play": "Afspelen",
-    "pause": "Pauzeren",
-    "playTrack": "{track} afspelen"
-  },
   "whiteboard": {
     "title": "Whiteboard",
     "penColor": "Penkleur {color}",
@@ -318,7 +306,6 @@
     "stand": "Druk op E om op te staan",
     "joinMeeting": "Druk op E om mee te doen",
     "meeting": "Vergadering",
-    "music": "Klik voor muziek",
     "draw": "Klik om te tekenen",
     "yourDesk": "Jouw bureau"
   },

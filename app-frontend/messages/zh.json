@@ -239,18 +239,6 @@
     "call": "通话",
     "onCall": "正在与你通话"
   },
-  "jukebox": {
-    "title": "房间音箱",
-    "close": "关闭音箱控制",
-    "tapToPlay": "点击播放即可收听",
-    "playing": "正在为房间里的所有人播放",
-    "paused": "已为房间里的所有人暂停",
-    "previous": "上一首",
-    "next": "下一首",
-    "play": "播放",
-    "pause": "暂停",
-    "playTrack": "播放 {track}"
-  },
   "whiteboard": {
     "title": "白板",
     "penColor": "画笔颜色 {color}",
@@ -318,7 +306,6 @@
     "stand": "按 E 起身",
     "joinMeeting": "按 E 加入",
     "meeting": "会议",
-    "music": "点击播放音乐",
     "draw": "点击开始画画",
     "yourDesk": "你的工位"
   },

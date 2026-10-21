@@ -302,12 +302,14 @@
     "turnOn": "Slå på"
   },
   "scene": {
-    "sit": "Tryck E för att sätta dig",
-    "stand": "Tryck E för att resa dig",
-    "joinMeeting": "Tryck E för att gå med",
     "meeting": "Möte",
-    "draw": "Klicka för att rita",
+    "drawing": "Ritar",
     "yourDesk": "Ditt skrivbord"
+  },
+  "actions": {
+    "sit": "Sätt dig",
+    "stand": "Res dig",
+    "draw": "Öppna whiteboarden"
   },
   "characters": {
     "previous": "Föregående karaktär",

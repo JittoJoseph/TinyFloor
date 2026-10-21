@@ -302,12 +302,14 @@
     "turnOn": "Attiva"
   },
   "scene": {
-    "sit": "Premi E per sederti",
-    "stand": "Premi E per alzarti",
-    "joinMeeting": "Premi E per unirti",
     "meeting": "Riunione",
-    "draw": "Clicca per disegnare",
+    "drawing": "Sta disegnando",
     "yourDesk": "La tua scrivania"
+  },
+  "actions": {
+    "sit": "Siediti",
+    "stand": "Alzati",
+    "draw": "Apri la lavagna"
   },
   "characters": {
     "previous": "Personaggio precedente",

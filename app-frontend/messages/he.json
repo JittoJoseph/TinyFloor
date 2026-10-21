@@ -302,12 +302,14 @@
     "turnOn": "הפעלה"
   },
   "scene": {
-    "sit": "E לישיבה",
-    "stand": "E לקימה",
-    "joinMeeting": "E להצטרפות",
     "meeting": "פגישה",
-    "draw": "לחיצה לציור",
+    "drawing": "מצייר/ת",
     "yourDesk": "השולחן שלך"
+  },
+  "actions": {
+    "sit": "לשבת",
+    "stand": "לקום",
+    "draw": "לפתוח את הלוח"
   },
   "characters": {
     "previous": "הדמות הקודמת",

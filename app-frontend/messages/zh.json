@@ -302,12 +302,14 @@
     "turnOn": "开启"
   },
   "scene": {
-    "sit": "按 E 坐下",
-    "stand": "按 E 起身",
-    "joinMeeting": "按 E 加入",
     "meeting": "会议",
-    "draw": "点击开始画画",
+    "drawing": "正在绘制",
     "yourDesk": "你的工位"
+  },
+  "actions": {
+    "sit": "坐下",
+    "stand": "站起来",
+    "draw": "打开白板"
   },
   "characters": {
     "previous": "上一个角色",

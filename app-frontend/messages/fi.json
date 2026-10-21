@@ -302,12 +302,14 @@
     "turnOn": "Ota käyttöön"
   },
   "scene": {
-    "sit": "Paina E istuaksesi",
-    "stand": "Paina E noustaksesi",
-    "joinMeeting": "Paina E liittyäksesi",
     "meeting": "Palaveri",
-    "draw": "Napsauta piirtääksesi",
+    "drawing": "Piirtää",
     "yourDesk": "Työpöytäsi"
+  },
+  "actions": {
+    "sit": "Istu alas",
+    "stand": "Nouse ylös",
+    "draw": "Avaa taulu"
   },
   "characters": {
     "previous": "Edellinen hahmo",

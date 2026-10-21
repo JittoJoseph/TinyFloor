@@ -302,12 +302,14 @@
     "turnOn": "켜기"
   },
   "scene": {
-    "sit": "E 키로 앉기",
-    "stand": "E 키로 일어서기",
-    "joinMeeting": "E 키로 참여",
     "meeting": "회의",
-    "draw": "클릭해서 그리기",
+    "drawing": "그리는 중",
     "yourDesk": "내 책상"
+  },
+  "actions": {
+    "sit": "앉기",
+    "stand": "일어서기",
+    "draw": "화이트보드 열기"
   },
   "characters": {
     "previous": "이전 캐릭터",

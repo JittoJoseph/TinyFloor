@@ -24,6 +24,7 @@ import type { RoomTicket } from "@/lib/api";
 import type { ShareResult } from "@/lib/share";
 import { useInvite } from "@/components/app/Invite";
 import { DeskHint, DeskOffer } from "./Desks";
+import { ActionHint } from "./ActionHint";
 import { FLOOR_ARRIVED_EVENT, floorRequested, sinceFloorRequested, useFloor } from "@/lib/floor";
 import { track } from "@/lib/analytics";
 import { EASE_OUT } from "@/lib/ease";
@@ -254,7 +255,11 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
       </div>
 
       <DeskHint />
-      <DeskOffer />
+      {/* Above the dock: what you can do where you stand, and the offer of the desk you sat at. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-20 z-40 flex flex-col items-center gap-2 px-3 sm:bottom-24">
+        <ActionHint />
+        <DeskOffer />
+      </div>
       <Joystick />
       <ProximityOverlay />
       <CallOverlay />

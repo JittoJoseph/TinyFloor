@@ -302,12 +302,14 @@
     "turnOn": "Włącz"
   },
   "scene": {
-    "sit": "Naciśnij E, aby usiąść",
-    "stand": "Naciśnij E, aby wstać",
-    "joinMeeting": "Naciśnij E, aby dołączyć",
     "meeting": "Spotkanie",
-    "draw": "Kliknij, aby rysować",
+    "drawing": "Rysuje",
     "yourDesk": "Twoje biurko"
+  },
+  "actions": {
+    "sit": "Usiądź",
+    "stand": "Wstań",
+    "draw": "Otwórz tablicę"
   },
   "characters": {
     "previous": "Poprzednia postać",

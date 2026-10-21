@@ -302,12 +302,14 @@
     "turnOn": "Turn on"
   },
   "scene": {
-    "sit": "Press E to sit",
-    "stand": "Press E to stand",
-    "joinMeeting": "Press E to join",
     "meeting": "Meeting",
-    "draw": "Click to draw",
+    "drawing": "Drawing",
     "yourDesk": "Your desk"
+  },
+  "actions": {
+    "sit": "Sit down",
+    "stand": "Stand up",
+    "draw": "Open the whiteboard"
   },
   "characters": {
     "previous": "Previous character",

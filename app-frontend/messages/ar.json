@@ -302,12 +302,14 @@
     "turnOn": "تفعيل"
   },
   "scene": {
-    "sit": "اضغط E للجلوس",
-    "stand": "اضغط E للوقوف",
-    "joinMeeting": "اضغط E للانضمام",
     "meeting": "اجتماع",
-    "draw": "انقر للرسم",
+    "drawing": "يرسم",
     "yourDesk": "مكتبك"
+  },
+  "actions": {
+    "sit": "اجلس",
+    "stand": "قف",
+    "draw": "افتح السبورة"
   },
   "characters": {
     "previous": "الشخصية السابقة",

@@ -302,12 +302,14 @@
     "turnOn": "Aktivieren"
   },
   "scene": {
-    "sit": "E drücken zum Hinsetzen",
-    "stand": "E drücken zum Aufstehen",
-    "joinMeeting": "E drücken zum Beitreten",
     "meeting": "Meeting",
-    "draw": "Klick zum Zeichnen",
+    "drawing": "Zeichnet",
     "yourDesk": "Dein Schreibtisch"
+  },
+  "actions": {
+    "sit": "Hinsetzen",
+    "stand": "Aufstehen",
+    "draw": "Whiteboard öffnen"
   },
   "characters": {
     "previous": "Vorheriger Charakter",

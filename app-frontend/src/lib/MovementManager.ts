@@ -1,10 +1,6 @@
 import { typingElsewhere } from "./typing";
 import * as Phaser from "phaser";
-import {
-  AnimationManager,
-  Direction,
-  directionFromVector,
-} from "./AnimationManager";
+import { AnimationManager, Direction, directionFromVector } from "./AnimationManager";
 import type { RoomSocket } from "./RoomSocket";
 import { joystick } from "./joystick";
 import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingOf } from "./Navigation";
@@ -18,6 +14,9 @@ const ARRIVE_RANGE = 3;
  * not one per tile.
  */
 const DRIFT_LIMIT = TILE_SIZE;
+
+/** Walk next to a world point, then run `arrive` (MovementManager.goTo). */
+export type GoTo = (x: number, y: number, arrive: () => void) => void;
 
 export class MovementManager {
   private scene: Phaser.Scene;
@@ -147,20 +146,12 @@ export class MovementManager {
     return isValidTile(tile.tileX, tile.tileY) && !this.collides(x, y);
   }
 
-  private onPointerDown(
-    pointer: Phaser.Input.Pointer,
-    over: Phaser.GameObjects.GameObject[],
-  ) {
+  private onPointerDown(pointer: Phaser.Input.Pointer, over: Phaser.GameObjects.GameObject[]) {
     if (!this.inputEnabled || over.length || pointer.button !== 0) return;
     if (!this.unfreeze()) return;
 
     const goal = pixelToTile(pointer.worldX, pointer.worldY);
-    const path = this.nav.buildPath(
-      this.player.x,
-      this.player.y,
-      goal.tileX,
-      goal.tileY,
-    );
+    const path = this.nav.buildPath(this.player.x, this.player.y, goal.tileX, goal.tileY);
     if (!path.length) return;
 
     this.follow(path, goal.tileX, goal.tileY);
@@ -229,9 +220,7 @@ export class MovementManager {
   }
 
   private signalMove(method: "manual" | "click") {
-    window.dispatchEvent(
-      new CustomEvent("playerMoved", { detail: { method } }),
-    );
+    window.dispatchEvent(new CustomEvent("playerMoved", { detail: { method } }));
   }
 
   private pulseTile({ x, y }: Vec) {
@@ -250,11 +239,7 @@ export class MovementManager {
 
   private playAnimation(moving: boolean) {
     this.player.play(
-      this.animationManager.getAnimationKey(
-        this.player.getData("spriteName") || "Adam",
-        moving ? "run" : "idle",
-        this.currentDirection,
-      ),
+      this.animationManager.getAnimationKey(this.player.getData("spriteName") || "Adam", moving ? "run" : "idle", this.currentDirection),
       true,
     );
   }

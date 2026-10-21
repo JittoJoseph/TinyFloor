@@ -302,12 +302,14 @@
     "turnOn": "Aanzetten"
   },
   "scene": {
-    "sit": "Druk op E om te zitten",
-    "stand": "Druk op E om op te staan",
-    "joinMeeting": "Druk op E om mee te doen",
     "meeting": "Vergadering",
-    "draw": "Klik om te tekenen",
+    "drawing": "Tekent",
     "yourDesk": "Jouw bureau"
+  },
+  "actions": {
+    "sit": "Gaan zitten",
+    "stand": "Opstaan",
+    "draw": "Whiteboard openen"
   },
   "characters": {
     "previous": "Vorig personage",

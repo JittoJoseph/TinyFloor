@@ -19,11 +19,12 @@ export function tagName(name: string): string {
 }
 
 /**
- * The dark pill every label in the room is drawn as: a centred hint, or, with a
- * dot, a tag like the one over each player's head, which hangs from the middle
- * of its bottom edge, so it grows upward, away from the head, when it's scaled.
- * A tag steps out of the way where the floor is crowded, keeps the whole name
- * for anyone asking, and can carry its person's note icon and a mark for music.
+ * The dark pill with a dot that labels things in the room: the tag over each
+ * person's head, the meeting table's, the whiteboard's. It hangs from the
+ * middle of its bottom edge, so it grows upward, away from the head, when it's
+ * scaled. A person's tag steps out of the way where the floor is crowded,
+ * shortens a long name while keeping the whole one for anyone asking, and can
+ * carry their note's icon and a mark for music.
  *
  * It's HTML laid over the canvas (plates.ts), in the app's own type, sharp at
  * any screen density; the canvas draws at one pixel per CSS pixel, so text
@@ -33,11 +34,11 @@ export function tagName(name: string): string {
  */
 export class SceneLabel {
   readonly container: Phaser.GameObjects.Container;
-  /** A tag (with a status dot) rather than a hint. */
-  readonly tag: boolean;
   private readonly root: HTMLDivElement;
   private readonly name: HTMLSpanElement;
-  private readonly dotEl?: HTMLSpanElement;
+  private readonly dotEl: HTMLSpanElement;
+  /** A person's name, shortened when long (tagName). */
+  private readonly person: boolean;
   private iconEl?: HTMLSpanElement;
   private musicEl?: HTMLSpanElement;
   private icon: NoteIcon | null = null;
@@ -45,20 +46,17 @@ export class SceneLabel {
   private crowded = false;
   private fade?: Phaser.Tweens.Tween;
 
-  constructor(scene: Phaser.Scene, x: number, y: number, text: string, dot = false) {
-    this.tag = dot;
+  constructor(scene: Phaser.Scene, x: number, y: number, text: string, { person = false }: { person?: boolean } = {}) {
+    this.person = person;
     this.container = scene.add.container(x, y);
     this.root = document.createElement("div");
-    this.root.className = dot ? "plate plate-tag" : "plate plate-hint";
-    if (dot) {
-      this.dotEl = document.createElement("span");
-      this.dotEl.className = "plate-dot";
-      this.root.appendChild(this.dotEl);
-    }
+    this.root.className = "plate plate-tag";
+    this.dotEl = document.createElement("span");
+    this.dotEl.className = "plate-dot";
     this.name = document.createElement("span");
     this.name.className = "plate-name";
-    this.root.appendChild(this.name);
-    const remove = plateLayer(scene).add(this.container, this.root, dot ? "bottom" : "center");
+    this.root.append(this.dotEl, this.name);
+    const remove = plateLayer(scene).add(this.container, this.root, "bottom");
     this.container.once(Phaser.GameObjects.Events.DESTROY, remove);
     this.setText(text);
   }
@@ -71,12 +69,12 @@ export class SceneLabel {
   get width(): number {
     const icon = this.icon ? 15 : 0;
     const music = this.musicEl && !this.musicEl.hidden ? 13 : 0;
-    return measure(this.name.textContent ?? "", FONT) + (this.tag ? 22 : 18) + icon + music;
+    return measure(this.name.textContent ?? "", FONT) + 22 + icon + music;
   }
 
   /** The note's icon at the tag's end, or none. */
   setIcon(icon: NoteIcon | null): this {
-    if (!this.tag || icon === this.icon) return this;
+    if (icon === this.icon) return this;
     this.icon = icon;
     if (!this.iconEl) {
       this.iconEl = document.createElement("span");
@@ -90,7 +88,7 @@ export class SceneLabel {
 
   /** Three bars moving to the music while they play some, after the name and the note's icon. */
   setListening(on: boolean): this {
-    if (!this.tag || (!on && !this.musicEl)) return this;
+    if (!on && !this.musicEl) return this;
     if (!this.musicEl) {
       this.musicEl = document.createElement("span");
       this.musicEl.className = "plate-music";
@@ -103,7 +101,7 @@ export class SceneLabel {
 
   setText(text: string): this {
     this.full = text;
-    const shown = this.tag ? tagName(text) : text;
+    const shown = this.person ? tagName(text) : text;
     this.name.textContent = shown;
     this.root.hidden = !shown;
     return this;
@@ -119,7 +117,7 @@ export class SceneLabel {
   }
 
   setDot(color: number): this {
-    if (this.dotEl) this.dotEl.style.background = `#${color.toString(16).padStart(6, "0")}`;
+    this.dotEl.style.background = `#${color.toString(16).padStart(6, "0")}`;
     return this;
   }
 }

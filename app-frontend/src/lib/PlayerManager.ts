@@ -110,7 +110,7 @@ export class PlayerManager {
 
     // Positioned every frame by updateLocalPlayerNameTag; a tween on it would fight
     // that and leave the name behind while the character walks off.
-    const tag = new SceneLabel(this.scene, x, y + TAG_OFFSET_Y, name, true);
+    const tag = new SceneLabel(this.scene, x, y + TAG_OFFSET_Y, name, { person: true });
     tag.container.setDepth(TAG_DEPTH).setScale(this.tagScale).setVisible(false);
 
     this.localPlayer = player;
@@ -145,7 +145,7 @@ export class PlayerManager {
     container.add(sprite);
     container.setDepth(depthForY(pos.y));
 
-    const tag = new SceneLabel(this.scene, 0, TAG_OFFSET_Y, name, true);
+    const tag = new SceneLabel(this.scene, 0, TAG_OFFSET_Y, name, { person: true });
     tag.container.setScale(this.tagScale);
     container.add(tag.container);
     this.nameTags.set(id, tag);
@@ -261,7 +261,7 @@ export class PlayerManager {
 
   updatePlayerStatus(id: string, status: PlayerStatus) {
     const tag = this.nameTags.get(id);
-    if (!tag?.tag) return;
+    if (!tag) return;
 
     const state = this.playerStates.get(id);
     if (state) state.status = status;

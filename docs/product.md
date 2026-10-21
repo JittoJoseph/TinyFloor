@@ -228,6 +228,26 @@ missing features on the map.
   listeners. Listening in step is Spotify's Jam: a pasted Jam link goes on
   your card as Join Jam (starting one needs Premium).
 
+## What's at hand on the floor, and the whiteboard (21 October)
+
+- **One prompt for what you can do where you stand**: sit, stand up, open the
+  whiteboard. The nearest wins, E does it, and the prompt is a pill above the
+  dock, a button for a finger. It used to be a label drawn on the map, in the
+  same dark pill as name tags, stacked under your own and moving with the way
+  a chair faced.
+- **Said once.** Each prompt shows until you've done that thing once, by any
+  way (E, the pill, clicking the chair), in this browser. Being sat at your
+  desk on arrival doesn't count.
+- **The whiteboard has one shape everywhere (2:1).** Points are fractions of
+  the board, and the drawing view used to fill the screen, so a circle drawn
+  on a laptop was an oval on a phone and on the wall. The view now keeps the
+  board's shape, and the wall shows it the same.
+- **A sketch going on is visible across the room**: while someone else draws,
+  the board carries "Drawing · Riley", like the meeting table's tag. Its frame
+  lightens when you're close, instead of an orange outline.
+- **Your own desk's plate folds back while you're at its chair**, rather than
+  open over your name.
+
 ## Small decisions worth remembering
 
 - **"Office", not "workspace".** The whole product is the metaphor (a floor,

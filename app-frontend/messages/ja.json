@@ -302,12 +302,14 @@
     "turnOn": "オンにする"
   },
   "scene": {
-    "sit": "E キーで座る",
-    "stand": "E キーで立つ",
-    "joinMeeting": "E キーで参加",
     "meeting": "会議",
-    "draw": "クリックで描く",
+    "drawing": "描画中",
     "yourDesk": "あなたのデスク"
+  },
+  "actions": {
+    "sit": "座る",
+    "stand": "立つ",
+    "draw": "ホワイトボードを開く"
   },
   "characters": {
     "previous": "前のキャラクター",

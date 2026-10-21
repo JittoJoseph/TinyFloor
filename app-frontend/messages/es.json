@@ -302,12 +302,14 @@
     "turnOn": "Activar"
   },
   "scene": {
-    "sit": "Pulsa E para sentarte",
-    "stand": "Pulsa E para levantarte",
-    "joinMeeting": "Pulsa E para unirte",
     "meeting": "Reunión",
-    "draw": "Haz clic para dibujar",
+    "drawing": "Dibujando",
     "yourDesk": "Tu escritorio"
+  },
+  "actions": {
+    "sit": "Sentarse",
+    "stand": "Levantarse",
+    "draw": "Abrir la pizarra"
   },
   "characters": {
     "previous": "Personaje anterior",

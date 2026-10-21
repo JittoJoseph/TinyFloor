@@ -36,6 +36,7 @@ describe("spotify links", () => {
     expect(spotifyLink("spotify:album:4aawyAB9vmqN3uQ7FjRGTy")?.url).toBe("https://open.spotify.com/album/4aawyAB9vmqN3uQ7FjRGTy");
     expect(spotifyLink("open.spotify.com/socialsession/5f9a7c3e2b1d4e6f8a0b")?.kind).toBe("jam");
     expect(spotifyLink("https://spotify.link/AbCdEf1234")).toEqual({ url: "https://spotify.link/AbCdEf1234", kind: null });
+    expect(spotifyLink("https://link.tospotify.com/XyZ987abc")).toEqual({ url: "https://link.tospotify.com/XyZ987abc", kind: null });
     for (const bad of ["https://evil.com/track/70cHKK8bHAfJrOGVnfRG9J", "javascript:alert(1)", "https://open.spotify.com/user/abc", "", 42]) {
       expect(spotifyLink(bad), String(bad)).toBeNull();
     }

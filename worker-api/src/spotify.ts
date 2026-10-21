@@ -36,9 +36,12 @@ export async function lookUp(value: unknown): Promise<Found> {
   return { url: link.url, kind: link.kind, title, image };
 }
 
-/** Where a short link leads, read from its redirect without loading the page. */
+/**
+ * Where a short link leads, read from its redirect without loading the page.
+ * Asked with no User-Agent, Spotify's short links answer with a page instead.
+ */
 async function follow(url: string): Promise<{ url: string; kind: SpotifyKind | null } | null> {
-  const response = await fetch(url, { redirect: "manual" }).catch(() => null);
+  const response = await fetch(url, { redirect: "manual", headers: { "User-Agent": "TinyFloor (+https://www.tinyfloor.com)" } }).catch(() => null);
   const location = response?.headers.get("Location");
   return location ? spotifyLink(new URL(location, url).href) : null;
 }

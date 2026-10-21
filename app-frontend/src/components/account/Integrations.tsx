@@ -239,6 +239,15 @@ function ShareDialog({
           </div>
         ) : shown ? (
           <p className="mt-3 text-[12.5px] text-destructive">{shown}</p>
+        ) : link ? (
+          // Spotify can take a second or two the first time it's asked about a link.
+          <div aria-hidden className="mt-3 flex items-center gap-3 rounded-xl bg-foreground/[0.04] p-2.5">
+            <span className="size-11 shrink-0 animate-pulse rounded-md bg-foreground/[0.08]" />
+            <div className="flex-1 space-y-2">
+              <span className="block h-3 w-2/5 animate-pulse rounded bg-foreground/[0.08]" />
+              <span className="block h-2.5 w-1/5 animate-pulse rounded bg-foreground/[0.06]" />
+            </div>
+          </div>
         ) : (
           <p className="mt-3 text-[12.5px] text-muted-foreground">{t("howTo")}</p>
         )}

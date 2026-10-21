@@ -19,6 +19,9 @@ export interface SpotifyShare {
 
 export type SpotifyKind = "track" | "album" | "playlist" | "episode" | "show" | "artist" | "jam";
 
+/** Where Spotify's apps put their short links. */
+const SHORT_HOSTS = ["spotify.link", "link.tospotify.com"];
+
 /** How long a shared link lasts: an afternoon's listening. */
 export const SPOTIFY_SHARE_MS = 4 * 60 * 60 * 1000;
 
@@ -35,9 +38,10 @@ const KINDS: Record<string, SpotifyKind> = {
 /**
  * A Spotify link or URI, written the one way Spotify does
  * (https://open.spotify.com/track/<id>), with its kind; null when it isn't one.
- * Regional paths ("/intl-de/") and tracking parameters are dropped. A
- * spotify.link short link can't be read without following it, so it is
- * returned as it is, with no kind, for the server to follow.
+ * Regional paths ("/intl-de/") and tracking parameters are dropped. A short
+ * link from Spotify's apps (spotify.link, or link.tospotify.com from older
+ * ones) can't be read without following it, so it is returned as it is, with
+ * no kind, for the server to follow.
  */
 export function spotifyLink(value: unknown): { url: string; kind: SpotifyKind | null } | null {
   const text = typeof value === "string" ? value.trim() : "";
@@ -51,7 +55,7 @@ export function spotifyLink(value: unknown): { url: string; kind: SpotifyKind | 
     return null;
   }
   if (url.protocol !== "https:" && url.protocol !== "http:") return null;
-  if (url.hostname === "spotify.link" && /^\/[A-Za-z0-9]{4,40}$/.test(url.pathname)) return { url: `https://spotify.link${url.pathname}`, kind: null };
+  if (SHORT_HOSTS.includes(url.hostname) && /^\/[A-Za-z0-9]{4,40}$/.test(url.pathname)) return { url: `https://${url.hostname}${url.pathname}`, kind: null };
   if (url.hostname !== "open.spotify.com") return null;
   const path = /^(?:\/intl-[a-z]{2}(?:-[A-Za-z]{2,4})?)?\/(?:embed\/)?([a-z]+)\/([A-Za-z0-9]{10,40})\/?$/.exec(url.pathname);
   const kind = path && KINDS[path[1]];

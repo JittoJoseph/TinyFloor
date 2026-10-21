@@ -171,7 +171,11 @@ as directions, not rates.
   and 12 never opened the invite dialog. Their makers tour every tab (chat,
   meetings, people, settings) within minutes and leave; 13 of 14 never came
   back on another day. Most "invites sent" were the link copied on the
-  create screen, and none of those brought anyone.
+  create screen, and none of those brought anyone. That reads less like a
+  funnel leak than like who arrives: the solo makers landed on the home
+  page, comparison pages ("alternative" pages, /virtual-office), a guide and
+  a feature page, from ten countries, one each. The offices that became
+  teams cluster in a couple of places and mostly started from an invite.
 - **The demo's "Your office" page is a dead end.** 13 of 28 guests opened it
   and almost all went straight back to the floor. Its button stays disabled
   until a name is typed.

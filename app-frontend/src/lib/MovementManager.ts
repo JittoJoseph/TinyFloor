@@ -185,41 +185,42 @@ export class MovementManager {
 
   /**
    * Walks to the reachable tile nearest a world point, then runs `arrive`.
-   * Everything you click in the room goes through here, so using it from across
-   * the room works the same with a mouse or a finger. Steering or clicking the
-   * floor on the way drops the errand.
+   * Everything you click in the room, and every errand the app sends you on,
+   * goes through here, so it works the same from across the room with a mouse
+   * or a finger. Steering or clicking the floor on the way drops the errand.
+   * `force`: the app sent you (into a meeting, over to someone), so it goes even
+   * while you're typing. `avoid`: tiles not to stop on, such as where people stand.
    */
-  goTo(worldX: number, worldY: number, arrive: () => void, force = false) {
-    // `force`: an errand the app sends you on (walking into a meeting), even while typing.
+  goTo(
+    worldX: number,
+    worldY: number,
+    arrive?: () => void,
+    { force = false, avoid }: { force?: boolean; avoid?: (tileX: number, tileY: number) => boolean } = {},
+  ) {
     if ((!force && !this.inputEnabled) || !this.unfreeze()) return;
 
     const goal = pixelToTile(worldX, worldY);
     const here = pixelToTile(this.player.x, this.player.y);
-    const spots: Array<{ tileX: number; tileY: number; away: number }> = [];
+    const spots: Array<{ tileX: number; tileY: number; away: number; near: number }> = [];
     for (let dy = -ARRIVE_RANGE; dy <= ARRIVE_RANGE; dy++) {
       for (let dx = -ARRIVE_RANGE; dx <= ARRIVE_RANGE; dx++) {
         const tileX = goal.tileX + dx;
         const tileY = goal.tileY + dy;
-        if (this.nav.isWalkable(tileX, tileY)) {
-          spots.push({ tileX, tileY, away: dx * dx + dy * dy });
-        }
+        if (!this.nav.isWalkable(tileX, tileY) || avoid?.(tileX, tileY)) continue;
+        spots.push({ tileX, tileY, away: dx * dx + dy * dy, near: (tileX - here.tileX) ** 2 + (tileY - here.tileY) ** 2 });
       }
     }
-    spots.sort((a, b) => a.away - b.away);
+    // Nearest the goal first; between equals, the one on our side, so we don't walk round to the far one.
+    spots.sort((a, b) => a.away - b.away || a.near - b.near);
 
     for (const spot of spots) {
-      if (spot.tileX === here.tileX && spot.tileY === here.tileY) {
+      if (spot.near === 0) {
         this.path.length = 0;
         this.arrive = undefined;
-        arrive();
+        arrive?.();
         return;
       }
-      const path = this.nav.buildPath(
-        this.player.x,
-        this.player.y,
-        spot.tileX,
-        spot.tileY,
-      );
+      const path = this.nav.buildPath(this.player.x, this.player.y, spot.tileX, spot.tileY);
       if (!path.length) continue;
       this.follow(path, spot.tileX, spot.tileY);
       this.arrive = arrive;

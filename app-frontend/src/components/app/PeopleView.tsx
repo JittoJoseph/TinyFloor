@@ -8,10 +8,10 @@ import { dmChannelId } from "@shared/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError } from "@/lib/api";
-import { lobbyPath, officeChatPath, officePath, officeSettingsPath, shareUrl } from "@/lib/links";
+import { lobbyPath, officeChatPath, officeSettingsPath, shareUrl } from "@/lib/links";
 import { useInvite } from "./Invite";
 import { shareLink } from "@/lib/share";
-import { useFloor, useFloorStatus, useMyNote, walkToPerson } from "@/lib/floor";
+import { useFloor, useFloorStatus, useMyNote } from "@/lib/floor";
 import { Button } from "@/components/motion/button/base";
 import { Face } from "@/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
@@ -20,7 +20,7 @@ import { Dialog } from "@/components/ui/Dialog";
 import { cn } from "@/lib/utils";
 import { Chip, Empty } from "@/components/ui/Empty";
 import { useOffice } from "./OfficeShell";
-import { usePlace } from "./place";
+import { usePlace, useWalkTo } from "./place";
 import { MemberRow, PRESENCE_ORDER } from "./MemberRow";
 import { Link } from "@/lib/i18n/navigation";
 import { useUpgrade } from "@/components/billing/Upgrade";
@@ -48,6 +48,7 @@ function OfficePeople() {
   const tc = useTranslations("common");
   const router = useRouter();
   const { user } = useAuth();
+  const walkTo = useWalkTo();
   const { office, overview: data, readAt, refresh } = useOffice();
   // Taking someone out of the office (or yourself) asks first: keeping them is the easy answer.
   const [removing, setRemoving] = useState<{ id: string; name: string; isMe: boolean } | null>(null);
@@ -224,10 +225,7 @@ function OfficePeople() {
                 isMe={isMe}
                 onProfile={() => router.push(`${officeSettingsPath(office.id)}#profile`)}
                 onMessage={() => user && router.push(officeChatPath(office.id, dmChannelId(user.id, member.id)))}
-                onWalk={() => {
-                  router.push(officePath(office.id));
-                  walkToPerson(member.id);
-                }}
+                onWalk={() => walkTo(member.id)}
                 menu={
                   admin && !owner ? (
                     <Menu align="end" width={208} trigger={<IconButton label={t("more")} size="sm" icon={<MoreHorizontal />} bare />}>
@@ -371,6 +369,7 @@ function LobbyPeople() {
   const router = useRouter();
   const { user } = useAuth();
   const place = usePlace();
+  const walkTo = useWalkTo();
   const everyone = useFloor();
   const [copied, setCopied] = useState(false);
   const here = [...everyone.filter((one) => one.id === user?.id), ...everyone.filter((one) => one.id !== user?.id)];
@@ -456,10 +455,7 @@ function LobbyPeople() {
                 isMe={one.id === user?.id}
                 onProfile={user?.guest ? undefined : () => router.push(`${place.paths.settings}#profile`)}
                 onMessage={user && one.id !== user.id ? () => router.push(place.paths.chat(dmChannelId(user.id, one.id))) : undefined}
-                onWalk={() => {
-                  router.push(place.paths.floor);
-                  walkToPerson(one.id);
-                }}
+                onWalk={() => walkTo(one.id)}
               />
             ))}
           </ul>

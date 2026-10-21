@@ -1,6 +1,8 @@
 "use client";
 
 import { createContext, useContext } from "react";
+import { useRouter } from "@/lib/i18n/navigation";
+import { walkToPerson } from "@/lib/floor";
 
 /**
  * Where you are: an office, or the public lobby. Chat, People and Settings are
@@ -52,4 +54,14 @@ export function usePlace(): Place {
   const value = useContext(Context);
   if (!value) throw new Error("usePlace outside a shell");
   return value;
+}
+
+/** "Walk to" someone from a view (Chat, People): back to the floor, which walks you over beside them. */
+export function useWalkTo(): (id: string) => void {
+  const { paths } = usePlace();
+  const router = useRouter();
+  return (id) => {
+    router.push(paths.floor);
+    walkToPerson(id);
+  };
 }

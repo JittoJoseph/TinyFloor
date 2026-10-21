@@ -29,6 +29,10 @@ const MIN_TILES_SHORT = 15;
 const MIN_TILES_LONG = 24;
 /** ...but never so far that people and their names get too small to read. */
 const MIN_ZOOM = 0.62;
+/** Walking over to someone who has since moved further than this, we follow. */
+const FOLLOW_AFTER = 2 * TILE_SIZE;
+
+const tileKey = ({ tileX, tileY }: { tileX: number; tileY: number }) => `${tileX},${tileY}`;
 
 /**
  * The camera's zoom for a floor this size. A big screen gets the usual close
@@ -169,12 +173,7 @@ class GameScene extends Phaser.Scene {
     this.scale.on(Phaser.Scale.Events.RESIZE, onResize);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.scale.off(Phaser.Scale.Events.RESIZE, onResize));
 
-    // "Walk to" beside someone in People or chat: the same walk a click on the
-    // floor makes, to the free tile nearest them.
-    this.listen(WALK_TO_PERSON_EVENT, (event: CustomEvent<{ id: string }>) => {
-      const spot = this.playerManager.positionOf(event.detail.id);
-      if (spot) this.movementManager.goTo(spot.x, spot.y, () => {});
-    });
+    this.listen(WALK_TO_PERSON_EVENT, (event: CustomEvent<{ id: string }>) => this.walkOver(event.detail.id));
     this.listen("statusChange", (event: CustomEvent) => {
       this.wsManager.send({ t: "status", status: event.detail.status });
       this.playerManager.updatePlayerStatus(this.playerId, event.detail.status);
@@ -215,16 +214,40 @@ class GameScene extends Phaser.Scene {
     this.playerManager.setTagScale(Math.max(1, (CAMERA_ZOOM * 0.9) / zoom));
   }
 
+  /** Where everyone else on the floor is, in world pixels. */
+  private others(): Array<{ x: number; y: number }> {
+    const spots: Array<{ x: number; y: number }> = [];
+    for (const [id, them] of this.playerManager.getPlayers()) if (id !== this.playerId) spots.push({ x: them.x, y: them.y });
+    return spots;
+  }
+
+  /**
+   * "Walk to" someone, from People or chat (floor.ts): to the free tile nearest
+   * them, never onto them or anyone else, from our side of them. If they've
+   * moved on by the time we get there, we follow, a few times at most.
+   */
+  private walkOver(id: string, tries = 3) {
+    const them = this.playerManager.positionOf(id);
+    if (!them || id === this.playerId) return;
+    const taken = new Set(this.others().map(({ x, y }) => tileKey(pixelToTile(x, y))));
+    this.movementManager.goTo(
+      them.x,
+      them.y,
+      () => {
+        const now = this.playerManager.positionOf(id);
+        if (now && tries > 1 && Math.hypot(now.x - them.x, now.y - them.y) > FOLLOW_AFTER) this.walkOver(id, tries - 1);
+      },
+      { force: true, avoid: (tileX, tileY) => taken.has(tileKey({ tileX, tileY })) },
+    );
+  }
+
   /** Walks to a free place in the meeting room, unless we are already standing in it. */
   private walkIntoMeetingRoom() {
     const zone = this.meetingZone;
     if (!zone || inZone(zone, this.player.x, this.player.y)) return;
-    const taken: Array<{ tileX: number; tileY: number }> = [];
-    for (const [id] of this.playerManager.getPlayers()) {
-      if (id === this.playerId) continue;
-      const at = this.playerManager.positionOf(id);
-      if (at && inZone(zone, at.x, at.y)) taken.push(pixelToTile(at.x, at.y));
-    }
+    const taken = this.others()
+      .filter(({ x, y }) => inZone(zone, x, y))
+      .map(({ x, y }) => pixelToTile(x, y));
     const spot = standingSpot({
       zone,
       table: this.mapManager.getAnchors("Table")[0],
@@ -233,7 +256,7 @@ class GameScene extends Phaser.Scene {
       taken,
       seed: this.playerId,
     });
-    if (spot) this.movementManager.goTo(spot.x, spot.y, () => {}, true);
+    if (spot) this.movementManager.goTo(spot.x, spot.y, undefined, { force: true });
   }
 
   /**

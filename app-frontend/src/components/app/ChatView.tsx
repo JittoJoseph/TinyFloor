@@ -26,7 +26,7 @@ import { Link, useRouter } from "@/lib/i18n/navigation";
 import { chat } from "@/lib/ChatSocket";
 import { useChat, useTyping } from "@/lib/useChat";
 import { useAuth } from "@/contexts/AuthContext";
-import { useFloorStatus, walkToPerson } from "@/lib/floor";
+import { useFloorStatus } from "@/lib/floor";
 import { CommandPalette, type CommandItem } from "@/components/motion/command-palette";
 import { Face, FaceStack, type Presence } from "@/components/ui/Face";
 import { IconButton, Kbd } from "@/components/ui/IconButton";
@@ -37,7 +37,7 @@ import { cn } from "@/lib/utils";
 import { ShellView } from "./AppShell";
 import { PresenceDock } from "./PresenceDock";
 import { NotifyCard } from "./chat/NotifyCard";
-import { usePlace, type PlacePerson } from "./place";
+import { usePlace, useWalkTo, type PlacePerson } from "./place";
 import { Conversation, ConversationIntro, type Line } from "./chat/Conversation";
 import { addToComposer, Composer, focusComposer } from "./chat/Composer";
 import { HelpTicket } from "./HelpTicket";
@@ -234,10 +234,7 @@ export function ChatView({ channel }: { channel?: string }) {
   const title = pair ? (other?.displayName ?? summary?.name ?? "") : (summary?.name ?? open);
   const go = (id: string) => router.push(place.paths.chat(id));
   const message = (id: string) => go(dmChannelId(me, id));
-  const walkTo = (id: string) => {
-    router.push(place.paths.floor);
-    walkToPerson(id);
-  };
+  const walkTo = useWalkTo();
 
   const personCard = (id: string, name: string, trigger: ReactNode) => (
     <PersonCard

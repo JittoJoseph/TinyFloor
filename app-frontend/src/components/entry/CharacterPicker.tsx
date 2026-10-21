@@ -5,17 +5,7 @@ import { useTranslations } from "next-intl";
 import { Check } from "@/components/ui/icons";
 import { PixelAvatar } from "@/components/PixelAvatar";
 import { cn } from "@/lib/utils";
-
-export const CHARACTER_IDS = [
-  "Adam",
-  "Alex",
-  "Amelia",
-  "Ash",
-  "Bob",
-  "Dan",
-  "Lucy",
-  "Molly",
-];
+import { CHARACTERS } from "@shared/profile";
 
 export const CharacterPicker: React.FC<{
   value: string;
@@ -27,7 +17,7 @@ export const CharacterPicker: React.FC<{
 
   return (
     <div role="radiogroup" aria-label={t("character")} className={cn("grid grid-cols-4 gap-1.5", className)}>
-      {CHARACTER_IDS.map((character) => {
+      {CHARACTERS.map((character) => {
         const selected = value === character;
         return (
           <button

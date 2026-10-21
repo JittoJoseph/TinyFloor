@@ -15,8 +15,6 @@ export const surface =
 
 /** Anything with words in it: never shouted, never smaller than 12px. */
 export const label = "text-[13px] font-medium";
-export const quietLabel = "text-[12px] text-muted-foreground";
-
 export type Tone = "quiet" | "on" | "alert" | "danger" | "dark";
 
 const TONES: Record<Tone, string> = {

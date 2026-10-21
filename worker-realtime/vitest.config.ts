@@ -24,5 +24,7 @@ export default defineConfig(async () => ({
       },
     }),
   ],
-  test: { setupFiles: ["./test/apply-migrations.ts"] },
+  // Two files at a time: the room tests time sockets and floods, and on a busy machine (dev servers
+  // running beside them) more workers starve each other into timeouts that never happen in the room itself.
+  test: { setupFiles: ["./test/apply-migrations.ts"], maxWorkers: 2 },
 }));

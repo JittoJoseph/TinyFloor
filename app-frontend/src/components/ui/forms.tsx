@@ -2,68 +2,9 @@
 
 import React, { useEffect, useId, useRef } from "react";
 import { useTranslations } from "next-intl";
-import { Loader2, X } from "@/components/ui/icons";
+import { X } from "@/components/ui/icons";
 
 const textClass = " text-foreground";
-
-export function Card({ className = "", children }: { className?: string; children: React.ReactNode }) {
-  return (
-    <section
-      className={`rounded-[1.25rem] border border-border bg-card p-5 sm:p-6 ${className}`}
-    >
-      {children}
-    </section>
-  );
-}
-
-export function CardTitle({
-  title,
-  detail,
-  action,
-}: {
-  title: string;
-  detail?: React.ReactNode;
-  action?: React.ReactNode;
-}) {
-  return (
-    <div className="flex items-start justify-between gap-3 mb-4">
-      <div className="min-w-0">
-        <h2 className={`${textClass} text-[15px] font-semibold tracking-tight`}>{title}</h2>
-        {detail && <p className={`text-[13px] text-muted-foreground mt-0.5`}>{detail}</p>}
-      </div>
-      {action}
-    </div>
-  );
-}
-
-type ButtonVariant = "primary" | "secondary" | "danger" | "ghost";
-
-const variants: Record<ButtonVariant, string> = {
-  primary: "bg-foreground text-background hover:bg-foreground/90 ",
-  secondary: "bg-card text-foreground border border-border hover:bg-muted",
-  danger: "bg-card text-destructive border border-destructive/25 hover:bg-destructive/10",
-  ghost: "text-muted-foreground hover:text-foreground hover:bg-muted",
-};
-
-export function Button({
-  variant = "secondary",
-  busy = false,
-  className = "",
-  children,
-  ...props
-}: React.ButtonHTMLAttributes<HTMLButtonElement> & { variant?: ButtonVariant; busy?: boolean }) {
-  return (
-    <button
-      type="button"
-      {...props}
-      disabled={props.disabled || busy}
-      className={`cursor-pointer inline-flex items-center justify-center gap-2 h-10 px-4 rounded-full text-[13px] font-medium transition-[background-color,opacity,transform] duration-150 active:scale-[0.98] disabled:opacity-45 disabled:cursor-not-allowed disabled:active:scale-100 ${variants[variant]} ${className}`}
-    >
-      {busy && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
-      {children}
-    </button>
-  );
-}
 
 export const fieldClass =
   "w-full h-11 px-3.5 rounded-xl bg-background border border-border text-[16px] sm:text-[14px] text-foreground placeholder:text-faint outline-none transition-[border-color,box-shadow] duration-200 focus:border-foreground/35 focus:ring-4 focus:ring-foreground/[0.06]";

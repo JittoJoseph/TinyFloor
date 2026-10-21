@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { MAIN_MEETING, type MeetingInfo, type MeetingUsage } from "@shared/messages";
+import { type MeetingInfo, type MeetingUsage } from "@shared/messages";
 
 /**
  * The office's meetings as the room tells them: the main one always, others
@@ -91,8 +91,6 @@ export function usePeopleInMeetings(): number {
   return useSyncExternalStore(subscribeMeetings, () => peopleInMeetings(state.meetings), () => 0);
 }
 
-export const isMain = (meeting: Pick<MeetingInfo, "id">) => meeting.id === MAIN_MEETING;
-
 /** Asks the floor to walk you into the meeting room (see GameScene). */
 export const WALK_TO_MEETING_EVENT = "walkToMeetingRoom";
 
@@ -119,6 +117,3 @@ export function useInMeetingRoom(): boolean {
   );
 }
 
-export function isInMeetingRoom(): boolean {
-  return inRoom;
-}

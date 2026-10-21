@@ -723,9 +723,7 @@
       "trialEnds": "Proefperiode eindigt",
       "ends": "Eindigt",
       "renews": "Verlengt",
-      "yourPlan": "Je abonnement",
       "daysLeft": "{count, plural, =0 {Laatste dag van je proefperiode} one {Nog # dag} other {Nog # dagen}}",
-      "paymentMethod": "Betaalmethode",
       "pillFounding": "Oprichtersprijs",
       "upgrade": "Overstappen op Pro",
       "pillCurrent": "Huidig abonnement",
@@ -753,7 +751,6 @@
       "floorEveryone": "Iedereen tot {date}",
       "floorAtOnce": "{seats} tegelijk",
       "pillBilling": "Facturering nodig",
-      "month": "per maand",
       "updateBilling": "Facturering bijwerken",
       "downgrade": "Overstappen op Free",
       "founding": "Oprichtersprijs: neem een abonnement vóór {date} en houd hem zolang je abonnee blijft.",
@@ -761,7 +758,9 @@
       "downgradeTitle": "Overstappen op Free?",
       "downgradeConfirm": "Overstappen",
       "downgradeBody": "Free biedt plek aan {free} mensen. Je kunt altijd weer upgraden.",
-      "downgradeOver": "Dan passen maar {free} van je {members} mensen tegelijk op de vloer, en kan niemand nieuw erbij."
+      "downgradeOver": "Dan passen maar {free} van je {members} mensen tegelijk op de vloer, en kan niemand nieuw erbij.",
+      "trialEnded": "Proefperiode afgelopen op {date}",
+      "priceLine": "{price} per maand"
     }
   },
   "planBar": {

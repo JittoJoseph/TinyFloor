@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { AlertCircle, Check, CreditCard, Download, Info, Loader2 } from "@/components/ui/icons";
+import { AlertCircle, Check, CreditCard, Download, Info, Loader2, Office, Zap } from "@/components/ui/icons";
 import { api, type BillingDetails, type OfficeBilling, type Payment } from "@/lib/api";
 import { dollars, usePlans } from "@/lib/billing";
 import { FOUNDING, foundingOpen } from "@/lib/founding";
@@ -142,83 +142,91 @@ export function PlanSection() {
     return null;
   })();
 
-  // The plan card's second fact: the date that matters, or what the floor holds.
-  const second = ((): { label: string; value: string } | null => {
-    if (trial) return { label: tp("trialEnds"), value: date(trial.endsAt) };
-    if (sub?.endsAt) return { label: tp("ends"), value: date(sub.endsAt) };
-    if (sub && details?.nextCharge) {
-      return {
-        label: tp("nextCharge"),
-        value: tp("chargeOn", { amount: money(details.nextCharge.amount, details.nextCharge.currency), date: shortDate(details.nextCharge.at) }),
-      };
-    }
-    if (sub?.renewsAt) return { label: tp("renews"), value: date(sub.renewsAt) };
-    if (sub) return null;
-    // The date kept whole ("Nov 4"), so a narrow cell breaks before it, not inside it.
-    return { label: tp("floor"), value: grace ? tp("floorEveryone", { date: shortDate(grace).replace(/ /g, " ") }) : tp("floorAtOnce", { seats: office.seats }) };
-  })();
+  // One line under the plan's name: where it stands.
+  const status = trial
+    ? tp("daysLeft", { count: daysLeft })
+    : unpaid && billing?.trialEndedAt
+      ? tp("trialEnded", { date: date(billing.trialEndedAt) })
+      : sub && pro?.price
+        ? tp("priceLine", { price: dollars(pro.price) })
+        : tp("freeSeats", { seats: freeSeats });
+
+  // The plan's facts, one a row: who's in it, then the date that matters or what the floor holds.
+  const facts: { label: string; value: string }[] = [
+    { label: tp("members"), value: onPro || members > office.seats ? String(members) : tp("membersOf", { members, seats: office.seats }) },
+  ];
+  if (trial) facts.push({ label: tp("trialEnds"), value: date(trial.endsAt) });
+  else if (sub?.endsAt) facts.push({ label: tp("ends"), value: date(sub.endsAt) });
+  else if (sub && details?.nextCharge) {
+    facts.push({
+      label: tp("nextCharge"),
+      value: tp("chargeOn", { amount: money(details.nextCharge.amount, details.nextCharge.currency), date: shortDate(details.nextCharge.at) }),
+    });
+  } else if (sub?.renewsAt) facts.push({ label: tp("renews"), value: date(sub.renewsAt) });
+  else if (!sub) facts.push({ label: tp("floor"), value: grace ? tp("floorEveryone", { date: shortDate(grace) }) : tp("floorAtOnce", { seats: office.seats }) });
 
   return (
     <div className="space-y-6">
       {notice && <Notice {...notice} />}
 
-      {/* The plan the office is on. */}
+      {/* The plan the office is on: its name and where it stands, then its facts as rows. */}
       <section className="overflow-hidden rounded-2xl border border-border bg-background">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-3 p-5">
+        <div className="flex items-center gap-3.5 p-5">
+          <span
+            className={cn(
+              "flex size-11 shrink-0 items-center justify-center rounded-xl",
+              onPro ? "bg-brand/12 text-brand" : "bg-muted text-muted-foreground",
+            )}
+          >
+            {onPro ? <Zap className="size-5" /> : <Office className="size-5" />}
+          </span>
           <div className="min-w-0 flex-1">
-            <p className="text-[12.5px] font-medium text-muted-foreground">{tp("yourPlan")}</p>
-            <h2 className="mt-1 flex flex-wrap items-center gap-2 text-[24px] font-semibold leading-tight tracking-tight text-foreground">
+            <h2 className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[18px] font-semibold leading-tight tracking-tight text-foreground">
               {onPro ? PLAN_NAMES.pro : PLAN_NAMES.free}
               {trial && <Pill tone="brand">{tp("pillTrial")}</Pill>}
               {unpaid && <Pill tone="brand">{tp("pillBilling")}</Pill>}
               {sub?.status === "past_due" && <Pill tone="alert">{tp("pillPastDue")}</Pill>}
               {sub?.endsAt && <Pill>{tp("pillEnding")}</Pill>}
             </h2>
+            <p className="mt-0.5 text-[13px] text-muted-foreground">{status}</p>
             {!on && <PlansSoon className="mt-2" />}
           </div>
-          {sub && pro?.price && (
-            <p className="shrink-0 text-end text-[12.5px] text-muted-foreground">
-              <span className="block text-[22px] font-semibold tabular-nums tracking-tight text-foreground">{dollars(pro.price)}</span>
-              {tp("month")}
-            </p>
-          )}
-          {trial && (
-            // The trial as days, so how long is left reads at a glance.
-            <div className="w-full">
-              <div className="h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden>
-                <div
-                  className="h-full rounded-full bg-brand"
-                  style={{ width: `${Math.min(100, Math.max(4, ((trialDays - daysLeft) / trialDays) * 100))}%` }}
-                />
-              </div>
-              <p className="mt-2 text-[12.5px] font-medium text-foreground">{tp("daysLeft", { count: daysLeft })}</p>
-            </div>
-          )}
         </div>
-
-        <dl className="grid grid-cols-2 divide-x divide-border border-t border-border rtl:divide-x-reverse">
-          <Fact label={tp("members")} value={!onPro && members <= office.seats ? tp("membersOf", { members, seats: office.seats }) : String(members)}>
-            {!onPro && <SeatBar used={members} seats={office.seats} />}
-          </Fact>
-          {second && <Fact label={second.label} value={second.value} />}
-        </dl>
-
-        {manage && sub && (
-          <div className="flex items-center gap-3 border-t border-border px-5 py-4">
-            <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-muted text-muted-foreground">
-              <CreditCard className="size-4" />
-            </span>
-            <div className="min-w-0 flex-1">
-              <p className="text-[13.5px] font-medium text-foreground">{tp("paymentMethod")}</p>
-              <p className="truncate text-[12.5px] text-muted-foreground">{tp("card")}</p>
+        {trial && (
+          // The trial as days, so how long is left reads at a glance.
+          <div className="-mt-1 px-5 pb-5" aria-hidden>
+            <div className="h-1.5 overflow-hidden rounded-full bg-muted">
+              <div
+                className="h-full rounded-full bg-brand"
+                style={{ width: `${Math.min(100, Math.max(4, ((trialDays - daysLeft) / trialDays) * 100))}%` }}
+              />
             </div>
-            {sub.status !== "canceled" && (
-              <QuietButton busy={busy === "card"} disabled={!!busy} onClick={() => change.portal("card")}>
-                {tp("update")}
-              </QuietButton>
-            )}
           </div>
         )}
+
+        <dl className="divide-y divide-border border-t border-border">
+          {facts.map((fact) => (
+            <div key={fact.label} className="flex items-baseline justify-between gap-4 px-5 py-3.5 text-[13.5px]">
+              <dt className="shrink-0 text-muted-foreground">{fact.label}</dt>
+              <dd className="min-w-0 text-end font-medium tabular-nums text-foreground">{fact.value}</dd>
+            </div>
+          ))}
+          {manage && sub && (
+            <div className="flex items-center justify-between gap-4 px-5 py-3">
+              <dt className="flex min-w-0 items-center gap-2 text-[13.5px] text-muted-foreground">
+                <CreditCard className="size-4 shrink-0" />
+                <span className="truncate">{tp("card")}</span>
+              </dt>
+              <dd>
+                {sub.status !== "canceled" && (
+                  <QuietButton busy={busy === "card"} disabled={!!busy} onClick={() => change.portal("card")}>
+                    {tp("update")}
+                  </QuietButton>
+                )}
+              </dd>
+            </div>
+          )}
+        </dl>
 
         {change.waiting && (
           <p className="flex items-center gap-2 border-t border-border px-5 py-3.5 text-[13px] text-foreground">
@@ -466,17 +474,6 @@ function QuietButton({ busy, disabled, onClick, children }: { busy: boolean; dis
   );
 }
 
-/** One fact about the plan, in the row under it. */
-function Fact({ label, value, children }: { label: string; value: string; children?: ReactNode }) {
-  return (
-    <div className="min-w-0 px-5 py-4">
-      <dt className="text-[12px] font-medium text-muted-foreground">{label}</dt>
-      <dd className="mt-1 text-[14px] font-semibold leading-snug tabular-nums text-foreground">{value}</dd>
-      {children}
-    </div>
-  );
-}
-
 /** A plan to choose: its name and price, what it gives, and its button at the foot. */
 function PlanCard({
   name,
@@ -545,20 +542,5 @@ function PaymentStatus({ status }: { status: Payment["status"] }) {
     >
       {t(status)}
     </span>
-  );
-}
-
-/** One segment a seat while they're countable, a bar once they aren't. */
-function SeatBar({ used, seats }: { used: number; seats: number }) {
-  return seats <= 25 ? (
-    <div className="mt-2.5 flex gap-1" aria-hidden>
-      {Array.from({ length: seats }, (_, index) => (
-        <span key={index} className={cn("h-1.5 flex-1 rounded-full", index < used ? "bg-foreground" : "bg-muted")} />
-      ))}
-    </div>
-  ) : (
-    <div className="mt-2.5 h-1.5 overflow-hidden rounded-full bg-muted" aria-hidden>
-      <div className="h-full rounded-full bg-foreground" style={{ width: `${Math.min(100, (used / seats) * 100)}%` }} />
-    </div>
   );
 }

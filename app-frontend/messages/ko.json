@@ -723,9 +723,7 @@
       "trialEnds": "체험 종료",
       "ends": "종료",
       "renews": "갱신",
-      "yourPlan": "내 플랜",
       "daysLeft": "{count, plural, =0 {체험 마지막 날} other {#일 남음}}",
-      "paymentMethod": "결제 수단",
       "pillFounding": "창립 멤버 가격",
       "upgrade": "Pro로 업그레이드",
       "pillCurrent": "현재 플랜",
@@ -753,7 +751,6 @@
       "floorEveryone": "{date}까지 모두",
       "floorAtOnce": "동시에 {seats}명",
       "pillBilling": "결제 정보 필요",
-      "month": "/월",
       "updateBilling": "결제 정보 업데이트",
       "downgrade": "Free로 다운그레이드",
       "founding": "창립 멤버 가격: {date} 전에 구독하면 구독하는 동안 이 가격이 유지돼요.",
@@ -761,7 +758,9 @@
       "downgradeTitle": "Free로 다운그레이드할까요?",
       "downgradeConfirm": "다운그레이드",
       "downgradeBody": "Free는 {free}명까지예요. 언제든 다시 업그레이드할 수 있어요.",
-      "downgradeOver": "{members}명 중 {free}명만 동시에 플로어에 있을 수 있고, 새로운 사람은 참여할 수 없어요."
+      "downgradeOver": "{members}명 중 {free}명만 동시에 플로어에 있을 수 있고, 새로운 사람은 참여할 수 없어요.",
+      "trialEnded": "체험이 {date}에 끝남",
+      "priceLine": "월 {price}"
     }
   },
   "planBar": {

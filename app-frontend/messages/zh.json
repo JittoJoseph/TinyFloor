@@ -723,9 +723,7 @@
       "trialEnds": "试用结束",
       "ends": "结束",
       "renews": "续订",
-      "yourPlan": "你的方案",
       "daysLeft": "{count, plural, =0 {试用最后一天} other {还剩 # 天}}",
-      "paymentMethod": "付款方式",
       "pillFounding": "创始价",
       "upgrade": "升级到 Pro",
       "pillCurrent": "当前方案",
@@ -753,7 +751,6 @@
       "floorEveryone": "{date} 前所有人",
       "floorAtOnce": "同时 {seats} 人",
       "pillBilling": "需要账单信息",
-      "month": "/月",
       "updateBilling": "更新账单信息",
       "downgrade": "降级到 Free",
       "founding": "创始价：在 {date} 前订阅，只要保持订阅，价格不变。",
@@ -761,7 +758,9 @@
       "downgradeTitle": "降级到 Free？",
       "downgradeConfirm": "降级",
       "downgradeBody": "Free 最多 {free} 人。你可以随时再升级。",
-      "downgradeOver": "你的 {members} 人中同时只有 {free} 人能在楼层，且新成员无法加入。"
+      "downgradeOver": "你的 {members} 人中同时只有 {free} 人能在楼层，且新成员无法加入。",
+      "trialEnded": "试用已于 {date} 结束",
+      "priceLine": "每月 {price}"
     }
   },
   "planBar": {

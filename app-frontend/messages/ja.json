@@ -723,9 +723,7 @@
       "trialEnds": "トライアル終了日",
       "ends": "終了日",
       "renews": "更新日",
-      "yourPlan": "現在のプラン",
       "daysLeft": "{count, plural, =0 {トライアル最終日} other {残り#日}}",
-      "paymentMethod": "お支払い方法",
       "pillFounding": "創業者価格",
       "upgrade": "Proにアップグレード",
       "pillCurrent": "現在のプラン",
@@ -753,7 +751,6 @@
       "floorEveryone": "{date}まで全員",
       "floorAtOnce": "同時に{seats}人",
       "pillBilling": "請求情報が必要",
-      "month": "/月",
       "updateBilling": "請求情報を更新",
       "downgrade": "Freeにダウングレード",
       "founding": "創業者価格:{date}までに登録すると、登録中はこの価格のままです。",
@@ -761,7 +758,9 @@
       "downgradeTitle": "Freeにダウングレードしますか?",
       "downgradeConfirm": "ダウングレード",
       "downgradeBody": "Freeは{free}人までです。いつでもProに戻せます。",
-      "downgradeOver": "{members}人のうち、フロアに同時に入れるのは{free}人だけになり、新しい人は参加できません。"
+      "downgradeOver": "{members}人のうち、フロアに同時に入れるのは{free}人だけになり、新しい人は参加できません。",
+      "trialEnded": "トライアルは{date}に終了",
+      "priceLine": "月額{price}"
     }
   },
   "planBar": {

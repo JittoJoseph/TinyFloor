@@ -723,9 +723,7 @@
       "trialEnds": "تنتهي التجربة",
       "ends": "ينتهي",
       "renews": "يتجدد",
-      "yourPlan": "خطتك",
       "daysLeft": "{count, plural, =0 {آخر يوم في التجربة} one {يوم واحد متبقٍ} two {يومان متبقيان} few {# أيام متبقية} many {# يومًا متبقيًا} other {# يوم متبقٍ}}",
-      "paymentMethod": "طريقة الدفع",
       "pillFounding": "سعر المؤسسين",
       "upgrade": "الترقية إلى Pro",
       "pillCurrent": "الخطة الحالية",
@@ -753,7 +751,6 @@
       "floorEveryone": "الجميع حتى {date}",
       "floorAtOnce": "{seats} في الوقت نفسه",
       "pillBilling": "الفوترة مطلوبة",
-      "month": "شهريًا",
       "updateBilling": "تحديث الفوترة",
       "downgrade": "الانتقال إلى Free",
       "founding": "سعر المؤسسين: اشترك قبل {date} واحتفظ به ما دمت مشتركًا.",
@@ -761,7 +758,9 @@
       "downgradeTitle": "الانتقال إلى Free؟",
       "downgradeConfirm": "الانتقال",
       "downgradeBody": "يتسع Free لـ {free} أشخاص. يمكنك الترقية مجددًا في أي وقت.",
-      "downgradeOver": "سيتسع الطابق لـ {free} فقط من أصل {members} أشخاص في الوقت نفسه، ولن يتمكن أحد جديد من الانضمام."
+      "downgradeOver": "سيتسع الطابق لـ {free} فقط من أصل {members} أشخاص في الوقت نفسه، ولن يتمكن أحد جديد من الانضمام.",
+      "trialEnded": "انتهت التجربة في {date}",
+      "priceLine": "{price} شهريًا"
     }
   },
   "planBar": {

@@ -723,9 +723,7 @@
       "trialEnds": "Trial ends",
       "ends": "Ends",
       "renews": "Renews",
-      "yourPlan": "Your plan",
       "daysLeft": "{count, plural, =0 {Last day of your trial} one {# day left} other {# days left}}",
-      "paymentMethod": "Payment method",
       "pillFounding": "Founding price",
       "upgrade": "Upgrade to Pro",
       "pillCurrent": "Current plan",
@@ -753,7 +751,6 @@
       "floorEveryone": "Everyone until {date}",
       "floorAtOnce": "{seats} at a time",
       "pillBilling": "Billing needed",
-      "month": "a month",
       "updateBilling": "Update billing",
       "downgrade": "Downgrade to Free",
       "founding": "Founding price: subscribe before {date} and keep it for as long as you stay subscribed.",
@@ -761,7 +758,9 @@
       "downgradeTitle": "Downgrade to Free?",
       "downgradeConfirm": "Downgrade",
       "downgradeBody": "Free has room for {free} people. You can upgrade again any time.",
-      "downgradeOver": "Only {free} of your {members} people will fit on the floor at once, and nobody new can join."
+      "downgradeOver": "Only {free} of your {members} people will fit on the floor at once, and nobody new can join.",
+      "trialEnded": "Trial ended {date}",
+      "priceLine": "{price} a month"
     }
   },
   "planBar": {

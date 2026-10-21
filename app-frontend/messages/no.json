@@ -723,9 +723,7 @@
       "trialEnds": "Prøveperioden slutter",
       "ends": "Slutter",
       "renews": "Fornyes",
-      "yourPlan": "Planen din",
       "daysLeft": "{count, plural, =0 {Siste dag av prøveperioden} one {# dag igjen} other {# dager igjen}}",
-      "paymentMethod": "Betalingsmåte",
       "pillFounding": "Grunnleggerpris",
       "upgrade": "Oppgrader til Pro",
       "pillCurrent": "Nåværende plan",
@@ -753,7 +751,6 @@
       "floorEveryone": "Alle til {date}",
       "floorAtOnce": "{seats} om gangen",
       "pillBilling": "Betaling mangler",
-      "month": "i måneden",
       "updateBilling": "Oppdater betaling",
       "downgrade": "Bytt til Free",
       "founding": "Grunnleggerpris: abonner før {date} og behold den så lenge du abonnerer.",
@@ -761,7 +758,9 @@
       "downgradeTitle": "Bytte til Free?",
       "downgradeConfirm": "Bytt",
       "downgradeBody": "Free har plass til {free} personer. Du kan oppgradere igjen når som helst.",
-      "downgradeOver": "Bare {free} av dine {members} personer får plass på etasjen samtidig, og ingen nye kan bli med."
+      "downgradeOver": "Bare {free} av dine {members} personer får plass på etasjen samtidig, og ingen nye kan bli med.",
+      "trialEnded": "Prøveperioden sluttet {date}",
+      "priceLine": "{price} i måneden"
     }
   },
   "planBar": {

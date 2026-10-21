@@ -723,9 +723,7 @@
       "trialEnds": "הניסיון מסתיים",
       "ends": "מסתיים",
       "renews": "מתחדש",
-      "yourPlan": "התוכנית שלכם",
       "daysLeft": "{count, plural, =0 {היום האחרון של הניסיון} one {נותר יום אחד} other {נותרו # ימים}}",
-      "paymentMethod": "אמצעי תשלום",
       "pillFounding": "מחיר מייסדים",
       "upgrade": "שדרוג ל-Pro",
       "pillCurrent": "התוכנית הנוכחית",
@@ -753,7 +751,6 @@
       "floorEveryone": "כולם עד {date}",
       "floorAtOnce": "{seats} בבת אחת",
       "pillBilling": "נדרש חיוב",
-      "month": "לחודש",
       "updateBilling": "עדכון חיוב",
       "downgrade": "מעבר ל-Free",
       "founding": "מחיר מייסדים: הירשמו לפני {date} ושמרו עליו כל עוד המנוי פעיל.",
@@ -761,7 +758,9 @@
       "downgradeTitle": "לעבור ל-Free?",
       "downgradeConfirm": "מעבר",
       "downgradeBody": "ב-Free יש מקום ל-{free} אנשים. אפשר לשדרג שוב בכל עת.",
-      "downgradeOver": "רק {free} מתוך {members} האנשים שלכם ייכנסו לקומה בבת אחת, ואף אחד חדש לא יוכל להצטרף."
+      "downgradeOver": "רק {free} מתוך {members} האנשים שלכם ייכנסו לקומה בבת אחת, ואף אחד חדש לא יוכל להצטרף.",
+      "trialEnded": "הניסיון הסתיים ב-{date}",
+      "priceLine": "{price} לחודש"
     }
   },
   "planBar": {

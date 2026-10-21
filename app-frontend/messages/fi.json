@@ -723,9 +723,7 @@
       "trialEnds": "Kokeilu päättyy",
       "ends": "Päättyy",
       "renews": "Uusiutuu",
-      "yourPlan": "Tilauksesi",
       "daysLeft": "{count, plural, =0 {Kokeilun viimeinen päivä} one {# päivä jäljellä} other {# päivää jäljellä}}",
-      "paymentMethod": "Maksutapa",
       "pillFounding": "Perustajahinta",
       "upgrade": "Siirry Prohon",
       "pillCurrent": "Nykyinen tilaus",
@@ -753,7 +751,6 @@
       "floorEveryone": "Kaikki {date} asti",
       "floorAtOnce": "{seats} kerrallaan",
       "pillBilling": "Laskutus puuttuu",
-      "month": "kuukaudessa",
       "updateBilling": "Päivitä laskutus",
       "downgrade": "Vaihda Freehen",
       "founding": "Perustajahinta: tilaa ennen {date}, niin hinta pysyy niin kauan kuin tilaus jatkuu.",
@@ -761,7 +758,9 @@
       "downgradeTitle": "Vaihdetaanko Freehen?",
       "downgradeConfirm": "Vaihda",
       "downgradeBody": "Freehen mahtuu {free} henkeä. Voit vaihtaa takaisin Prohon milloin vain.",
-      "downgradeOver": "Vain {free} {members} henkestäsi mahtuu kerrokseen kerrallaan, eikä uusia voi liittyä."
+      "downgradeOver": "Vain {free} {members} henkestäsi mahtuu kerrokseen kerrallaan, eikä uusia voi liittyä.",
+      "trialEnded": "Kokeilu päättyi {date}",
+      "priceLine": "{price} kuukaudessa"
     }
   },
   "planBar": {

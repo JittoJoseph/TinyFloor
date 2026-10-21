@@ -723,9 +723,7 @@
       "trialEnds": "Testphase endet",
       "ends": "Endet",
       "renews": "Verlängert sich",
-      "yourPlan": "Dein Plan",
       "daysLeft": "{count, plural, =0 {Letzter Tag deiner Testphase} one {Noch # Tag} other {Noch # Tage}}",
-      "paymentMethod": "Zahlungsmethode",
       "pillFounding": "Gründerpreis",
       "upgrade": "Auf Pro upgraden",
       "pillCurrent": "Aktueller Plan",
@@ -753,7 +751,6 @@
       "floorEveryone": "Alle bis {date}",
       "floorAtOnce": "{seats} gleichzeitig",
       "pillBilling": "Abrechnung nötig",
-      "month": "pro Monat",
       "updateBilling": "Abrechnung aktualisieren",
       "downgrade": "Auf Free wechseln",
       "founding": "Gründerpreis: Abonniere vor dem {date} und behalte ihn, solange du abonniert bleibst.",
@@ -761,7 +758,9 @@
       "downgradeTitle": "Auf Free wechseln?",
       "downgradeConfirm": "Wechseln",
       "downgradeBody": "Free hat Platz für {free} Personen. Du kannst jederzeit wieder upgraden.",
-      "downgradeOver": "Nur {free} deiner {members} Personen passen dann gleichzeitig auf die Fläche, und niemand Neues kann beitreten."
+      "downgradeOver": "Nur {free} deiner {members} Personen passen dann gleichzeitig auf die Fläche, und niemand Neues kann beitreten.",
+      "trialEnded": "Testphase beendet am {date}",
+      "priceLine": "{price} pro Monat"
     }
   },
   "planBar": {

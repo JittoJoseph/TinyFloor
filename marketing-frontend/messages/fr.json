@@ -968,7 +968,7 @@
           },
           {
             "title": "Ce que chacun écoute",
-            "body": "Partagez un titre, une playlist ou un Jam Spotify sur votre profil. Vos collègues l'ouvrent depuis votre fiche et l'écoutent."
+            "body": "Lancez Spotify directement dans TinyFloor. Ce qui passe s'affiche sur votre carte, et vos collègues écoutent en un clic."
           },
           {
             "title": "Aucune invitation d'agenda",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Peut-on écouter de la musique ensemble ?",
-            "a": "Oui, avec Spotify. Partagez un titre, une playlist ou un Jam sur votre profil, et vos collègues peuvent l'écouter depuis votre fiche. Un Jam garde tout le monde sur le même titre, dans Spotify."
+            "a": "Oui, avec Spotify. Lancez de la musique dans TinyFloor : elle s'affiche sur votre carte et vos collègues peuvent l'écouter aussi. Un Jam garde tout le monde sur le même morceau, dans Spotify."
           },
           {
             "q": "Est-ce seulement pour les moments conviviaux ?",
@@ -1604,7 +1604,7 @@
         },
         "music": {
           "title": "Spotify",
-          "body": "Partagez ce que vous écoutez, et vos collègues l'écoutent depuis votre fiche."
+          "body": "Lancez de la musique dans TinyFloor, et vos collègues l'écoutent depuis votre carte."
         },
         "noise": {
           "title": "Suppression du bruit",

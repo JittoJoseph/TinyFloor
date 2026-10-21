@@ -968,7 +968,7 @@
           },
           {
             "title": "Lo que escucha cada uno",
-            "body": "Comparte una canción, una playlist o un Jam de Spotify en tu perfil. Tus compañeros lo abren desde tu tarjeta y lo escuchan."
+            "body": "Pon Spotify directamente en TinyFloor. Lo que suena aparece en tu tarjeta y tu equipo puede escucharlo con un clic."
           },
           {
             "title": "Sin invitación de calendario",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "¿Podemos escuchar música juntos?",
-            "a": "Sí, con Spotify. Comparte una canción, una playlist o un Jam en tu perfil y tus compañeros pueden escucharlo desde tu tarjeta. Un Jam mantiene a todos en la misma canción, en Spotify."
+            "a": "Sí, con Spotify. Pon música directamente en TinyFloor y aparece en tu tarjeta, así tu equipo también puede escucharla. Un Jam mantiene a todos en la misma canción, en Spotify."
           },
           {
             "q": "¿Es solo para ratos sociales?",
@@ -1604,7 +1604,7 @@
         },
         "music": {
           "title": "Spotify",
-          "body": "Comparte lo que escuchas y tus compañeros pueden escucharlo desde tu tarjeta."
+          "body": "Pon música en TinyFloor y tu equipo puede escucharla desde tu tarjeta."
         },
         "noise": {
           "title": "Supresión de ruido",

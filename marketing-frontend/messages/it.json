@@ -968,7 +968,7 @@
           },
           {
             "title": "Cosa ascoltano tutti",
-            "body": "Condividi un brano, una playlist o una Jam di Spotify sul tuo profilo. I colleghi la aprono dalla tua scheda e la ascoltano."
+            "body": "Ascolta Spotify direttamente in TinyFloor. Quello che suona appare sulla tua scheda e il team può ascoltarlo con un clic."
           },
           {
             "title": "Nessun invito in calendario",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Possiamo ascoltare musica insieme?",
-            "a": "Sì, con Spotify. Condividi un brano, una playlist o una Jam sul tuo profilo e i colleghi possono ascoltarla dalla tua scheda. Una Jam tiene tutti sullo stesso brano, su Spotify."
+            "a": "Sì, con Spotify. Metti musica direttamente in TinyFloor e appare sulla tua scheda, così anche il team può ascoltarla. Una Jam tiene tutti sullo stesso brano, in Spotify."
           },
           {
             "q": "È solo per i momenti sociali?",
@@ -1604,7 +1604,7 @@
         },
         "music": {
           "title": "Spotify",
-          "body": "Condividi cosa stai ascoltando e i colleghi possono ascoltarlo dalla tua scheda."
+          "body": "Metti musica in TinyFloor e il team può ascoltarla dalla tua scheda."
         },
         "noise": {
           "title": "Rimozione del rumore",

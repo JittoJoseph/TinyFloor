@@ -968,7 +968,7 @@
           },
           {
             "title": "What everyone's listening to",
-            "body": "Share a Spotify song, playlist or Jam on your profile. Teammates open it from your card and listen."
+            "body": "Play Spotify right in TinyFloor. What's on shows on your card, and teammates can listen with one press."
           },
           {
             "title": "No calendar invite",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Can we listen to music together?",
-            "a": "Yes, with Spotify. Share a song, playlist or Jam on your profile, and teammates can listen from your card. A Jam keeps everyone on the same song, in Spotify."
+            "a": "Yes, with Spotify. Play music right in TinyFloor and it shows on your card, so teammates can listen too. A Jam keeps everyone on the same song, in Spotify."
           },
           {
             "q": "Is it only for social time?",
@@ -1604,7 +1604,7 @@
         },
         "music": {
           "title": "Spotify",
-          "body": "Share what you're listening to, and teammates can listen from your card."
+          "body": "Play music in TinyFloor, and teammates can listen from your card."
         },
         "noise": {
           "title": "Noise removal",

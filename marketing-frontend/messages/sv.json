@@ -968,7 +968,7 @@
           },
           {
             "title": "Vad alla lyssnar på",
-            "body": "Dela en låt, spellista eller Jam från Spotify på din profil. Kollegorna öppnar den från ditt kort och lyssnar."
+            "body": "Spela Spotify direkt i TinyFloor. Det som spelas syns på ditt kort, och kollegorna lyssnar med ett klick."
           },
           {
             "title": "Ingen kalenderinbjudan",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Kan vi lyssna på musik tillsammans?",
-            "a": "Ja, med Spotify. Dela en låt, spellista eller Jam på din profil, så kan kollegorna lyssna från ditt kort. En Jam håller alla på samma låt i Spotify."
+            "a": "Ja, med Spotify. Spela musik direkt i TinyFloor så syns den på ditt kort och kollegorna kan lyssna också. En Jam håller alla på samma låt, i Spotify."
           },
           {
             "q": "Är det bara för social tid?",
@@ -1604,7 +1604,7 @@
         },
         "music": {
           "title": "Spotify",
-          "body": "Dela vad du lyssnar på, så kan kollegorna lyssna från ditt kort."
+          "body": "Spela musik i TinyFloor, och kollegorna lyssnar från ditt kort."
         },
         "noise": {
           "title": "Brusreducering",

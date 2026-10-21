@@ -968,7 +968,7 @@
           },
           {
             "title": "Mitä kaikki kuuntelevat",
-            "body": "Jaa Spotify-kappale, -soittolista tai Jam profiilissasi. Kollegat avaavat sen kortiltasi ja kuuntelevat."
+            "body": "Soita Spotifyta suoraan TinyFloorissa. Soiva kappale näkyy kortissasi, ja tiimi voi kuunnella yhdellä painalluksella."
           },
           {
             "title": "Ei kalenterikutsua",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Voimmeko kuunnella musiikkia yhdessä?",
-            "a": "Kyllä, Spotifyn avulla. Jaa kappale, soittolista tai Jam profiilissasi, niin kollegat voivat kuunnella sitä kortiltasi. Jam pitää kaikki samassa kappaleessa Spotifyssa."
+            "a": "Kyllä, Spotifyn kautta. Soita musiikkia suoraan TinyFloorissa, niin se näkyy kortissasi ja tiimi voi kuunnella mukana. Jam pitää kaikki samassa kappaleessa Spotifyssa."
           },
           {
             "q": "Onko se vain yhdessäoloon?",
@@ -1604,7 +1604,7 @@
         },
         "music": {
           "title": "Spotify",
-          "body": "Jaa, mitä kuuntelet, niin kollegat voivat kuunnella kortiltasi."
+          "body": "Soita musiikkia TinyFloorissa, ja tiimi voi kuunnella korttisi kautta."
         },
         "noise": {
           "title": "Kohinanpoisto",

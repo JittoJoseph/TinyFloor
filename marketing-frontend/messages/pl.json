@@ -968,7 +968,7 @@
           },
           {
             "title": "Czego słuchają inni",
-            "body": "Udostępnij w profilu utwór, playlistę albo Jam ze Spotify. Współpracownicy otworzą go z twojej karty i posłuchają."
+            "body": "Odtwarzaj Spotify prosto w TinyFloor. To, co gra, widać na Twojej karcie, a zespół słucha jednym kliknięciem."
           },
           {
             "title": "Bez zaproszenia w kalendarzu",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Czy możemy słuchać muzyki razem?",
-            "a": "Tak, przez Spotify. Udostępnij w profilu utwór, playlistę albo Jam, a współpracownicy posłuchają go z twojej karty. Jam utrzymuje wszystkich przy tym samym utworze, w Spotify."
+            "a": "Tak, ze Spotify. Odtwarzaj muzykę prosto w TinyFloor, a pojawi się na Twojej karcie, więc zespół też może słuchać. Jam trzyma wszystkich przy tym samym utworze, w Spotify."
           },
           {
             "q": "Czy to tylko na chwile towarzyskie?",
@@ -1604,7 +1604,7 @@
         },
         "music": {
           "title": "Spotify",
-          "body": "Udostępnij, czego słuchasz, a współpracownicy posłuchają z twojej karty."
+          "body": "Odtwarzaj muzykę w TinyFloor, a zespół posłucha z Twojej karty."
         },
         "noise": {
           "title": "Usuwanie szumów",

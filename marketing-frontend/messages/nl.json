@@ -968,7 +968,7 @@
           },
           {
             "title": "Waar iedereen naar luistert",
-            "body": "Deel een nummer, afspeellijst of Jam van Spotify op je profiel. Collega's openen het vanaf je kaart en luisteren mee."
+            "body": "Speel Spotify direct in TinyFloor. Wat er speelt staat op je kaart, en collega's luisteren met één klik mee."
           },
           {
             "title": "Geen agenda-uitnodiging",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Kunnen we samen muziek luisteren?",
-            "a": "Ja, met Spotify. Deel een nummer, afspeellijst of Jam op je profiel, dan kunnen collega's luisteren vanaf je kaart. Met een Jam hoort iedereen hetzelfde nummer, in Spotify."
+            "a": "Ja, met Spotify. Speel muziek direct in TinyFloor af; het staat op je kaart, zodat collega's kunnen meeluisteren. Een Jam houdt iedereen bij hetzelfde nummer, in Spotify."
           },
           {
             "q": "Is het alleen voor sociale momenten?",
@@ -1604,7 +1604,7 @@
         },
         "music": {
           "title": "Spotify",
-          "body": "Deel waar je naar luistert, dan kunnen collega's luisteren vanaf je kaart."
+          "body": "Speel muziek in TinyFloor af, en collega's luisteren mee via je kaart."
         },
         "noise": {
           "title": "Ruisonderdrukking",

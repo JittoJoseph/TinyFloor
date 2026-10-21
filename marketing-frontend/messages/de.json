@@ -968,7 +968,7 @@
           },
           {
             "title": "Was alle gerade hören",
-            "body": "Teile einen Song, eine Playlist oder einen Jam von Spotify in deinem Profil. Dein Team öffnet ihn über deine Karte und hört rein."
+            "body": "Spiel Spotify direkt in TinyFloor. Was läuft, steht auf deiner Karte, und das Team hört mit einem Klick mit."
           },
           {
             "title": "Keine Kalendereinladung",
@@ -1004,7 +1004,7 @@
           },
           {
             "q": "Können wir zusammen Musik hören?",
-            "a": "Ja, mit Spotify. Teile einen Song, eine Playlist oder einen Jam in deinem Profil, und dein Team kann über deine Karte reinhören. Ein Jam hält alle beim selben Song, in Spotify."
+            "a": "Ja, mit Spotify. Spiel Musik direkt in TinyFloor ab, sie erscheint auf deiner Karte, und das Team kann mithören. Ein Jam hält alle in Spotify beim selben Song."
           },
           {
             "q": "Ist es nur für soziale Zeit?",
@@ -1604,7 +1604,7 @@
         },
         "music": {
           "title": "Spotify",
-          "body": "Teile, was du gerade hörst, und dein Team hört über deine Karte rein."
+          "body": "Spiel Musik in TinyFloor ab, und das Team hört über deine Karte mit."
         },
         "noise": {
           "title": "Rauschunterdrückung",

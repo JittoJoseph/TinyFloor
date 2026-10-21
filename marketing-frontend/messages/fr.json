@@ -75,8 +75,8 @@
         "subtitle": "Gather a mis fin à son offre gratuite en septembre 2025 et facture désormais chaque membre. Voici sept alternatives, comparées sur ce que paie une vraie équipe, ce qui est gratuit et ce que chacune fait le mieux. Nous faisons TinyFloor, il apparaît donc en premier ; tout le reste vient des pages de chaque produit.",
         "points": [
           {
-            "title": "Pas de compte à rebours",
-            "body": "Gather vous laisse 30 jours avant de payer. L'offre gratuite de TinyFloor n'a pas de date de fin : jusqu'à 3 personnes, aussi longtemps que vous voulez."
+            "title": "Gratuit après l'essai",
+            "body": "Gather vous donne 30 jours, puis facture chaque membre. TinyFloor vous met sur Pro pendant 14 jours, et son forfait gratuit n'a pas de fin : jusqu'à 3 personnes, aussi longtemps que vous voulez."
           },
           {
             "title": "Rien à installer",
@@ -1639,7 +1639,8 @@
       "assurance": "Résiliable à tout moment · remboursement sous 14 jours",
       "noCard": "Sans carte bancaire",
       "perPerson": "{price} par personne pour une équipe de {team}",
-      "trial": "Chaque équipe reçoit {days} jours de Pro offerts quand sa quatrième personne arrive.",
+      "trial": "Chaque nouveau bureau commence avec {days} jours de Pro gratuits. Aucune carte requise.",
+      "founding": "Prix fondateur, le vôtre tant que votre abonnement continue. À partir du 1er mars 2027, les nouveaux abonnements sont à 39 $.",
       "list": {
         "people": "Jusqu’à {people} personnes",
         "floor": "Le plateau, le chat et les canaux",
@@ -1675,7 +1676,7 @@
     },
     "title": "Un seul prix pour tout le bureau.",
     "muted": "Pas un par personne.",
-    "body": "Commencez gratuitement jusqu'à 3 personnes, puis passez à Pro pour toute l'équipe, à un seul prix.",
+    "body": "Commencez avec 14 jours de Pro pour toute l'équipe, puis gardez-le à un seul prix, ou restez gratuit jusqu'à 3 personnes.",
     "seats": {
       "title": "Dix personnes,",
       "muted": "une seule petite facture.",
@@ -1704,8 +1705,12 @@
         "body": "Demandez-le dans les 14 jours suivant un paiement et vous êtes remboursé en totalité."
       },
       "change": {
-        "title": "Un essai quand l'équipe arrive",
-        "body": "Quand une 4e personne rejoint un bureau gratuit, toute l'équipe profite de Pro gratuitement pendant 14 jours. Sans carte."
+        "title": "Pro gratuit pendant 14 jours",
+        "body": "Chaque nouveau bureau commence sur Pro pendant 14 jours, avec de la place pour toute l'équipe. Aucune carte requise. Ensuite, gardez Pro ou restez sur Free."
+      },
+      "founding": {
+        "title": "Un prix fondateur",
+        "body": "Abonnez-vous avant le 1er mars 2027 et 29 $ par mois restent les vôtres tant que votre abonnement continue. À partir de cette date, Pro coûte 39 $ par mois pour les nouveaux abonnements."
       },
       "tax": {
         "title": "Taxes au paiement",
@@ -1728,8 +1733,12 @@
         "a": "Non. Un seul prix couvre tout le bureau, et les appels entre deux personnes ne sont jamais comptés."
       },
       {
-        "q": "Que se passe-t-il quand une 4e personne rejoint un bureau gratuit ?",
-        "a": "Toute l'équipe a Pro gratuitement pendant 14 jours, sans carte. Ensuite, le bureau reste en Free sauf si vous choisissez Pro : tout le monde reste membre, et jusqu'à 3 personnes peuvent être à l'étage en même temps."
+        "q": "Que se passe-t-il à la fin de l'essai ?",
+        "a": "Le bureau passe à Free si vous ne choisissez pas Pro. Personne n'est retiré : pendant deux semaines encore, tout le monde peut entrer, mais personne de nouveau ne rejoint au-delà de 3. Ensuite, 3 personnes peuvent être sur l'étage en même temps, et le chat reste ouvert à tous."
+      },
+      {
+        "q": "Le prix va-t-il augmenter ?",
+        "a": "Pour les nouveaux abonnements, oui : à partir du 1er mars 2027, Pro coûte 39 $ par mois. Les bureaux abonnés avant cette date gardent 29 $ tant que leur abonnement continue."
       },
       {
         "q": "Y a-t-il une offre annuelle ?",

@@ -2,17 +2,15 @@
 
 import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Copy, Link2, Mail, MessageSquare, Refresh, Share, UserPlus, Zap } from "@/components/ui/icons";
+import { Check, Copy, Link2, Mail, MessageSquare, Refresh, Share, UserPlus } from "@/components/ui/icons";
 import { FaceStack } from "@/components/ui/Face";
 import { DoneChip } from "@/components/ui/DoneChip";
 import { Modal } from "@/components/ui/Modal";
 import { track, withPostHog } from "@/lib/analytics";
-import { usePlans } from "@/lib/billing";
 import { resetInviteLink, useInviteLink } from "@/lib/inviteLink";
 import { shareUrl } from "@/lib/links";
 import { copyText } from "@/lib/share";
 import { cn } from "@/lib/utils";
-import { PLAN_NAMES } from "@/components/billing/PlanCards";
 import { useOfficeMaybe } from "./OfficeShell";
 
 /**
@@ -49,14 +47,11 @@ export function InviteProvider({ children }: { children: ReactNode }) {
 
 function InviteDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
   const t = useTranslations("invite");
-  const tb = useTranslations("billing");
   const tc = useTranslations("common");
   const context = useOfficeMaybe();
-  const plans = usePlans();
   if (!context) return null;
   const { office, overview } = context;
   const members = overview.members;
-  const trial = office.plan === "free" && !!office.trialOpen && !!plans?.billing && !!plans.trialDays;
 
   return (
     <Modal open={open} onClose={onClose} label={t("title")} closeLabel={tc("close")} className="sm:max-w-[30rem]">
@@ -66,13 +61,6 @@ function InviteDialog({ open, onClose }: { open: boolean; onClose: () => void })
         <p className="mt-1.5 text-[13.5px] leading-relaxed text-muted-foreground">{t("body", { office: office.name })}</p>
 
         <InviteActions officeId={office.id} officeName={office.name} className="mt-5" />
-
-        {trial && (
-          <p className="mt-4 flex items-start gap-2.5 rounded-xl bg-muted px-3.5 py-2.5 text-[12.5px] leading-relaxed text-foreground">
-            <Zap className="mt-0.5 size-3.5 shrink-0 text-brand" />
-            {tb("trialWaiting", { free: office.seats, plan: PLAN_NAMES[plans?.trialPlan ?? "pro"], days: plans?.trialDays ?? 14 })}
-          </p>
-        )}
 
         <LinkFooter officeId={office.id} admin={office.role === "admin"} />
       </div>

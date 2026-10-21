@@ -74,6 +74,7 @@
       "back": "뒤로",
       "fullTitle": "이 방은 꽉 찼어요",
       "full": "들어올 수 있는 인원이 모두 안에 있어요. 잠시 후 다시 시도해 주세요.",
+      "fullFree": "Free에서는 플로어에 동시에 {free}명까지 있을 수 있고, 지금 모두 와 있어요. 잠시 후 다시 시도하세요. 관리자는 Pro를 유지해 모두가 들어오게 할 수 있어요.",
       "replacedTitle": "다른 탭에서 열렸어요",
       "replaced": "다른 탭이나 기기에서 이 방에 들어와서 여기서는 나갔어요.",
       "closedTitle": "이 방은 닫혔어요",
@@ -514,6 +515,7 @@
       "decline": "거절",
       "invite": "초대",
       "seats": "{seats}석 중 {used}석",
+      "seatsOver": "멤버 {used}명, Free는 {seats}명까지",
       "seatsFull": "자리가 모두 찼습니다.",
       "onFloorNow": "지금 플로어에 {count}명",
       "remove": "내보내기",
@@ -563,7 +565,7 @@
     "inviteBody": "이 링크가 있으면 누구나 {office}에 들어올 수 있어요. 팀이 이미 이야기하는 곳에 보내세요.",
     "copy": "링크 복사",
     "copied": "복사됨",
-    "trialNote": "{free}명까지 무료예요. 더 초대하면 팀 전체가 {days}일 동안 {plan}을(를) 무료로 써요. 카드는 필요 없어요.",
+    "trialNote": "이 오피스는 {days}일 동안 {plan}를 무료로 쓸 수 있어요. 팀 전체가 들어올 수 있어요. 카드는 필요 없어요.",
     "inviteLater": "이 링크는 사람 페이지에서도 찾을 수 있어요.",
     "walkIn": "들어가기",
     "choose": "{plan} 시작하기"
@@ -728,7 +730,7 @@
     "seatsFull": "자리가 모두 찼어요",
     "usageOf": "{used} / {total}",
     "pillTrial": "체험",
-    "trialNote": "팀이 {date}까지 {plan}을 체험하고 있어요. 그 후에는 요금제를 고르지 않으면 오피스가 무료 요금제(최대 {seats}명)로 바뀌어요.",
+    "trialNote": "팀은 {date}까지 {plan}를 사용해요. 계속하면 모두 그대로예요. 아니면 오피스는 Free(최대 {seats}명)로 바뀌어요.",
     "plans": {
       "note": "월 요금, 미국 달러, 세금 별도",
       "keep": "{plan} 계속 쓰기",
@@ -741,7 +743,10 @@
       "hoursTitle": "회의 영상을 계속 쓰세요",
       "hoursBody": "Pro는 영상을 바로 돌려주고, 팀 전체가 들어올 자리를 줘요.",
       "trialTitle": "팀의 Pro를 계속 쓰세요",
-      "trialBody": "체험은 {date}에 끝나요. 그 뒤로는 한 번에 {free}명만 오피스에 있을 수 있어요.",
+      "trialBody": "체험은 {date}에 끝나요. Pro를 계속하면 모두 그대로예요. Free에서는 {free}명까지예요.",
+      "overTitle": "팀 전체를 지키세요",
+      "overBody": "{office}에는 {members}명이 있고 Free는 {free}명까지예요. {date}까지는 모두 들어올 수 있고, 그 후에는 동시에 {free}명까지예요.",
+      "overBodyLater": "{office}에는 {members}명이 있고 Free는 {free}명까지예요. 플로어에는 동시에 {free}명만 있을 수 있고 새로운 사람은 참여할 수 없어요.",
       "plansTitle": "Pro, 팀 전체를 위해",
       "plansBody": "함께 일하는 모두에게 하나의 가격.",
       "membersOnly": "{office}의 요금제는 관리자만 바꿀 수 있어요.",
@@ -749,7 +754,6 @@
       "doneBody": "감사합니다. Creem에서 영수증을 보내드려요.",
       "doneLine": "{plan}의 모든 기능이 오피스 전체에 켜졌어요."
     },
-    "trialWaiting": "{free}명보다 많이 초대하면 팀 전체가 {days}일 동안 {plan}을 무료로 써요. 카드는 필요 없어요.",
     "cancelWhen": "요금제는 {date}까지 유지되고, 그 후 오피스는 무료 요금제가 돼요.",
     "cancelAnyway": "그래도 해지",
     "loseSeatsOver": "멤버는 {members}명이지만 층에는 동시에 {free}명만 있을 수 있고, 새로운 사람은 들어올 수 없어요.",
@@ -761,6 +765,7 @@
       "each": "팀원 {count}명이면 1인당 {price}예요.",
       "daily": "하루 {price}도 안 돼요.",
       "anchor": "1인당 요금을 받는 도구라면 같은 팀에 월 약 {price}가 들어요.",
+      "founding": "창립 가격: 구독을 유지하는 동안 이 가격 그대로예요. {date}부터 구독하는 오피스는 {price}예요.",
       "wholeTeam": "팀 전체가 한 층에",
       "support": "우리 팀의 우선 지원",
       "get": "Pro 시작하기 · 월 {price}",
@@ -769,6 +774,15 @@
       "meetings": "팀에 필요한 만큼 회의"
     },
     "billingEmail": "결제 문의: <link>{email}</link>"
+  },
+  "planNotice": {
+    "trialEnds": "Pro 체험이 {date}에 끝나요.",
+    "overAdmin": "{members}명, Free는 {free}명까지예요. {date}까지는 모두 들어올 수 있어요.",
+    "overMember": "이 오피스는 무료 플랜을 넘었어요. {date}까지는 모두 들어올 수 있어요.",
+    "overAdminLater": "{members}명, Free에서는 플로어에 동시에 {free}명까지예요.",
+    "overMemberLater": "Free에서는 플로어에 동시에 {free}명까지 있을 수 있어요.",
+    "keep": "Pro 유지하기",
+    "hide": "오늘은 숨기기"
   },
   "invite": {
     "title": "팀을 불러오세요",

@@ -9,7 +9,7 @@ import {
   type Office,
   type OfficeRole,
 } from "./access";
-import { endBillingForClosing, endTrials, startTrialIfFull, trialWaiting } from "./billing";
+import { endBillingForClosing, endTrials, startingPlan } from "./billing";
 import { DOMAIN_ACCESS, type DomainAccess } from "./domains";
 import { joinRequests } from "./team";
 import { hashToken, randomToken } from "./crypto";
@@ -31,12 +31,17 @@ export function officeRoutes(router: Router): void {
 
       const id = crypto.randomUUID();
       const now = Date.now();
+      // Every office starts on the trial (docs/pricing.md), so the whole team can move in.
+      const start = startingPlan(env, now);
       await env.DB.batch([
-        env.DB.prepare("INSERT INTO offices (id, name, owner_id, created_at) VALUES (?, ?, ?, ?)").bind(
+        env.DB.prepare("INSERT INTO offices (id, name, owner_id, created_at, plan, seats, trial_ends_at) VALUES (?, ?, ?, ?, ?, ?, ?)").bind(
           id,
           name,
           user.id,
           now,
+          start.plan,
+          start.seats,
+          start.trialEndsAt,
         ),
         env.DB.prepare("INSERT INTO memberships (office_id, user_id, role, joined_at) VALUES (?, ?, 'admin', ?)").bind(
           id,
@@ -191,10 +196,11 @@ export function officeRoutes(router: Router): void {
     })
 
     .add("GET", "/v1/invites/:token", async ({ env, params }) => {
-      const invite = await findInvite(env, params.token);
+      let invite = await findInvite(env, params.token);
+      // A trial that just ended leaves Free's seats.
+      if (await endTrials(env, invite.office_id)) invite = await findInvite(env, params.token);
       const used = await seatsUsed(env, invite.office_id);
-      // A full free office that still has its trial lets the next person in, and starts it.
-      const full = used >= invite.seats && !(await trialWaiting(env, invite.office_id));
+      const full = used >= invite.seats;
       return json({
         invite: {
           // The office's id seeds its mark, so the door shows the mark the office has inside.
@@ -221,13 +227,7 @@ export function officeRoutes(router: Router): void {
         .first();
       if (!existing) {
         if ((await seatsUsed(env, invite.office_id)) >= invite.seats) {
-          // The team is moving in: a free office's trial makes room instead of turning them away
-          // (or someone joining at the same moment just started it).
-          await startTrialIfFull(env, invite.office_id);
-          invite = await findInvite(env, params.token);
-          if ((await seatsUsed(env, invite.office_id)) >= invite.seats) {
-            throw new HttpError(409, "office_full", `This office is full at ${invite.seats} members`);
-          }
+          throw new HttpError(409, "office_full", `This office is full at ${invite.seats} members`);
         }
         const now = Date.now();
         if (!invite.id) {
@@ -350,7 +350,7 @@ export function officeJson(office: Office, members: number) {
     role: office.role,
     owner: office.ownerId,
     trialEndsAt: office.trialEndsAt,
-    trialOpen: office.trialOpen,
+    graceEndsAt: office.graceEndsAt,
     invitePolicy: office.invitePolicy,
     joinDomain: office.joinDomain,
     domainJoin: office.domainJoin,

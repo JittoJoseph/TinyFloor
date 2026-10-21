@@ -74,6 +74,7 @@
       "back": "Wróć",
       "fullTitle": "Ten pokój jest pełny",
       "full": "Wszyscy, którzy się mieszczą, są już w środku. Spróbuj za chwilę.",
+      "fullFree": "Na Free na piętrze może być naraz {free} osoby i wszystkie już tu są. Spróbuj za chwilę; administrator może zachować Pro dla wszystkich.",
       "replacedTitle": "Otwarty w innej karcie",
       "replaced": "Wszedłeś do pokoju z innej karty lub urządzenia, więc ta karta wyszła.",
       "closedTitle": "Ten pokój jest zamknięty",
@@ -514,6 +515,7 @@
       "decline": "Odrzuć",
       "invite": "Zaproś",
       "seats": "{used} z {seats} miejsc",
+      "seatsOver": "{used} członków, Free mieści {seats}",
       "seatsFull": "Wszystkie miejsca zajęte.",
       "onFloorNow": "{count} na piętrze teraz",
       "remove": "Usuń",
@@ -563,7 +565,7 @@
     "inviteBody": "Każdy, kto ma ten link, wejdzie do {office}. Wyślij go tam, gdzie twój zespół już rozmawia.",
     "copy": "Kopiuj link",
     "copied": "Skopiowano",
-    "trialNote": "Za darmo dla maksymalnie {free} osób. Zaproś więcej, a cały zespół dostanie {plan} za darmo na {days} dni. Bez karty.",
+    "trialNote": "Twoje biuro ma {plan} za darmo przez {days} dni, z miejscem dla całego zespołu. Bez karty.",
     "inviteLater": "Ten link znajdziesz też w zakładce Osoby.",
     "walkIn": "Wejdź",
     "choose": "Wybierz {plan}"
@@ -728,7 +730,7 @@
     "seatsFull": "Wszystkie miejsca są zajęte",
     "usageOf": "{used} z {total}",
     "pillTrial": "Próba",
-    "trialNote": "Twój zespół testuje {plan} do {date}. Potem biuro przechodzi na plan darmowy, dla maksymalnie {seats} osób, chyba że wybierzesz plan.",
+    "trialNote": "Twój zespół ma {plan} do {date}. Zachowaj go, a wszyscy zostaną; inaczej biuro przejdzie na Free, dla maksymalnie {seats} osób.",
     "plans": {
       "note": "Miesięcznie, w dolarach amerykańskich, bez podatku",
       "keep": "Zostań przy {plan}",
@@ -741,7 +743,10 @@
       "hoursTitle": "Zachowaj wideo na spotkaniach",
       "hoursBody": "Pro od razu przywraca wideo i daje miejsce dla całego zespołu.",
       "trialTitle": "Zachowaj Pro dla zespołu",
-      "trialBody": "Okres próbny kończy się {date}. Potem w biurze mogą być jednocześnie tylko {free} osoby.",
+      "trialBody": "Twój okres próbny kończy się {date}. Zachowaj Pro, a wszyscy zostaną; na Free biuro mieści {free} osoby.",
+      "overTitle": "Zachowaj cały zespół",
+      "overBody": "{office} ma {members} osób, a Free mieści {free}. Do {date} wszyscy mogą jeszcze wchodzić; potem {free} naraz.",
+      "overBodyLater": "{office} ma {members} osób, a Free mieści {free}: na piętrze może być {free} osoby naraz i nikt nowy nie może dołączyć.",
       "plansTitle": "Pro, dla całego zespołu",
       "plansBody": "Jedna cena za wszystkich, z którymi pracujesz.",
       "membersOnly": "Plan {office} mogą zmieniać tylko jego administratorzy.",
@@ -749,7 +754,6 @@
       "doneBody": "Dziękujemy. Potwierdzenie przyjdzie od Creem.",
       "doneLine": "Wszystko z {plan} działa w całym biurze."
     },
-    "trialWaiting": "Zaproś więcej niż {free} osoby, a cały twój zespół dostanie {plan} za darmo na {days} dni. Bez karty.",
     "cancelWhen": "Plan działa do {date}. Potem biuro przechodzi na plan darmowy.",
     "cancelAnyway": "Anuluj mimo to",
     "loseSeatsOver": "Członków jest {members}, ale na piętrze naraz mogłoby być tylko {free}, a nikt nowy nie mógłby dołączyć.",
@@ -761,6 +765,7 @@
       "each": "Dla waszych {count} osób to {price} na osobę.",
       "daily": "To mniej niż {price} dziennie.",
       "anchor": "Narzędzia z ceną za osobę wzięłyby od tego samego zespołu około {price} miesięcznie.",
+      "founding": "Cena założycielska: Twoja, dopóki trwa subskrypcja. Biura, które zasubskrybują od {date}, płacą {price}.",
       "wholeTeam": "Cały Twój zespół, na jednym piętrze",
       "support": "Pierwszeństwo w pomocy od naszego zespołu",
       "get": "Weź Pro · {price} miesięcznie",
@@ -769,6 +774,15 @@
       "meetings": "Spotkania tak często, jak potrzebuje Twój zespół"
     },
     "billingEmail": "Pytania o płatności: <link>{email}</link>."
+  },
+  "planNotice": {
+    "trialEnds": "Twój okres próbny Pro kończy się {date}.",
+    "overAdmin": "{members} osób, a Free mieści {free}. Do {date} wszyscy mogą wchodzić.",
+    "overMember": "To biuro przekracza swój darmowy plan. Do {date} wszyscy mogą wchodzić.",
+    "overAdminLater": "{members} osób, a Free mieści {free} naraz na piętrze.",
+    "overMemberLater": "Na Free na piętrze może być naraz {free} osoby.",
+    "keep": "Zachowaj Pro",
+    "hide": "Ukryj na dziś"
   },
   "invite": {
     "title": "Ściągnij swój zespół",

@@ -74,6 +74,7 @@
       "back": "返回",
       "fullTitle": "这个房间满了",
       "full": "能进的人都已经在里面了。稍后再试试吧。",
+      "fullFree": "在 Free 上，楼层同时最多 {free} 人，现在都已在场。请稍后再试；管理员可以继续使用 Pro，让所有人都能进来。",
       "replacedTitle": "已在其他标签页打开",
       "replaced": "你在其他标签页或设备上进入了这个房间，所以这里已退出。",
       "closedTitle": "这个房间已关闭",
@@ -514,6 +515,7 @@
       "decline": "拒绝",
       "invite": "邀请",
       "seats": "{seats} 个席位中的 {used} 个",
+      "seatsOver": "{used} 位成员，Free 最多 {seats} 人",
       "seatsFull": "席位已满。",
       "onFloorNow": "现在楼层里有 {count} 人",
       "remove": "移除",
@@ -563,7 +565,7 @@
     "inviteBody": "有这个链接的人都能进入 {office}。把它发到团队平时聊天的地方。",
     "copy": "复制链接",
     "copied": "已复制",
-    "trialNote": "最多 {free} 人免费。邀请更多人，整个团队即可免费使用 {plan} {days} 天。无需绑卡。",
+    "trialNote": "你的办公室可免费使用 {plan} {days} 天，整个团队都能进来。无需绑卡。",
     "inviteLater": "在「成员」页也能找到这个链接。",
     "walkIn": "进入",
     "choose": "开通 {plan}"
@@ -728,7 +730,7 @@
     "seatsFull": "座位已满",
     "usageOf": "{used} / {total}",
     "pillTrial": "试用",
-    "trialNote": "你的团队正在试用 {plan}，到 {date} 为止。之后，除非选择套餐，办公室会转为免费版，最多 {seats} 人。",
+    "trialNote": "你的团队在 {date} 前使用 {plan}。继续使用则所有人照旧；否则办公室将转为 Free，最多 {seats} 人。",
     "plans": {
       "note": "按月计费，美元，不含税",
       "keep": "保留 {plan}",
@@ -741,7 +743,10 @@
       "hoursTitle": "让会议保持视频",
       "hoursBody": "Pro 会立即恢复视频，并给整个团队留出位置。",
       "trialTitle": "为团队保留 Pro",
-      "trialBody": "你的试用将在 {date} 结束。之后，办公室同时只能有 {free} 个人。",
+      "trialBody": "你的试用将于 {date} 结束。继续使用 Pro，所有人照旧；Free 的办公室最多 {free} 人。",
+      "overTitle": "留住整个团队",
+      "overBody": "{office} 有 {members} 人，Free 最多 {free} 人。{date} 前所有人仍可进入；之后同时最多 {free} 人。",
+      "overBodyLater": "{office} 有 {members} 人，Free 最多 {free} 人：楼层上同时最多 {free} 人，新成员无法加入。",
       "plansTitle": "Pro，为整个团队",
       "plansBody": "和你一起工作的所有人，一个价格。",
       "membersOnly": "只有 {office} 的管理员可以更改套餐。",
@@ -749,7 +754,6 @@
       "doneBody": "谢谢。Creem 会发送收据给你。",
       "doneLine": "{plan} 的全部功能已为整个办公室开启。"
     },
-    "trialWaiting": "邀请超过 {free} 人，整个团队即可免费使用 {plan} {days} 天。无需绑卡。",
     "cancelWhen": "套餐有效期至 {date}，之后办公室转为免费版。",
     "cancelAnyway": "仍要取消",
     "loseSeatsOver": "办公室有 {members} 名成员，但同时只能有 {free} 人在楼层上，新人也无法加入。",
@@ -761,6 +765,7 @@
       "each": "你们 {count} 个人，每人 {price}。",
       "daily": "每天不到 {price}。",
       "anchor": "按人收费的工具，同一个团队每月大约要 {price}。",
+      "founding": "创始价格：只要订阅不中断，价格一直不变。{date} 起订阅的办公室价格为 {price}。",
       "wholeTeam": "整个团队，在同一层楼",
       "support": "我们团队的优先支持",
       "get": "开通 Pro · 每月 {price}",
@@ -769,6 +774,15 @@
       "meetings": "团队需要多少会议就开多少"
     },
     "billingEmail": "账单问题请联系：<link>{email}</link>"
+  },
+  "planNotice": {
+    "trialEnds": "你的 Pro 试用将于 {date} 结束。",
+    "overAdmin": "{members} 人，Free 最多 {free} 人。{date} 前所有人都能进入。",
+    "overMember": "这个办公室已超出免费方案。{date} 前所有人都能进入。",
+    "overAdminLater": "{members} 人，Free 在楼层上同时最多 {free} 人。",
+    "overMemberLater": "在 Free 上，楼层同时最多 {free} 人。",
+    "keep": "继续使用 Pro",
+    "hide": "今天不再显示"
   },
   "invite": {
     "title": "把团队叫进来",

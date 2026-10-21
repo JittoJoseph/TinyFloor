@@ -75,8 +75,8 @@
         "subtitle": "Gather zakończył darmowy plan we wrześniu 2025 i teraz pobiera opłatę za każdego członka. Oto siedem alternatyw porównanych pod kątem tego, ile płaci prawdziwy zespół, co jest za darmo i w czym każda jest najlepsza. TinyFloor robimy my, więc jest na pierwszym miejscu; wszystko inne pochodzi ze stron poszczególnych produktów.",
         "points": [
           {
-            "title": "Bez odliczania okresu próbnego",
-            "body": "Gather daje ci 30 dni, zanim zapłacisz. Darmowy plan TinyFloor nie wygasa: do 3 osób, tak długo, jak chcesz."
+            "title": "Za darmo po okresie próbnym",
+            "body": "Gather daje 30 dni, a potem pobiera opłatę za każdego członka. TinyFloor zaczyna Cię na Pro przez 14 dni, a jego darmowy plan nie ma daty końca: do 3 osób, jak długo chcesz."
           },
           {
             "title": "Nic do instalowania",
@@ -1639,7 +1639,8 @@
       "assurance": "Anuluj w dowolnej chwili · zwrot do 14 dni",
       "noCard": "Bez karty",
       "perPerson": "{price} za osobę w zespole {team} osób",
-      "trial": "Każdy zespół dostaje {days} dni Pro za darmo, gdy dołączy czwarta osoba.",
+      "trial": "Każde nowe biuro zaczyna od {days} dni Pro za darmo. Bez karty.",
+      "founding": "Cena założycielska, Twoja, dopóki trwa subskrypcja. Od 1 marca 2027 nowe subskrypcje kosztują 39 $.",
       "list": {
         "people": "Do {people} osób",
         "floor": "Piętro, czat i kanały",
@@ -1675,7 +1676,7 @@
     },
     "title": "Jedna cena za całe biuro.",
     "muted": "Nie za każdą osobę.",
-    "body": "Zacznij za darmo do 3 osób, potem Pro dla całego zespołu, w jednej cenie.",
+    "body": "Zacznij od 14 dni Pro dla całego zespołu, potem zachowaj je w jednej cenie albo zostań za darmo dla maksymalnie 3 osób.",
     "seats": {
       "title": "Dziesięć osób,",
       "muted": "jeden mały rachunek.",
@@ -1704,8 +1705,12 @@
         "body": "Poproś w ciągu 14 dni od dowolnej płatności, a oddamy całą kwotę."
       },
       "change": {
-        "title": "Okres próbny, gdy przychodzi zespół",
-        "body": "Gdy do darmowego biura dołącza 4. osoba, cały zespół dostaje Pro za darmo na 14 dni. Bez karty."
+        "title": "Pro za darmo przez 14 dni",
+        "body": "Każde nowe biuro zaczyna na Pro przez 14 dni, z miejscem dla całego zespołu. Bez karty. Potem zachowaj Pro albo zostań na Free."
+      },
+      "founding": {
+        "title": "Cena założycielska",
+        "body": "Zasubskrybuj przed 1 marca 2027, a 29 $ miesięcznie zostanie Twoje, dopóki trwa subskrypcja. Od tej daty Pro kosztuje 39 $ miesięcznie dla nowych subskrypcji."
       },
       "tax": {
         "title": "Podatek przy płatności",
@@ -1728,8 +1733,12 @@
         "a": "Nie. Jedna cena obejmuje całe biuro, a rozmowy między dwiema osobami nigdy nie są liczone."
       },
       {
-        "q": "Co się dzieje, gdy do darmowego biura dołącza 4. osoba?",
-        "a": "Cały zespół dostaje Pro za darmo na 14 dni, bez karty. Potem biuro zostaje na planie Free, chyba że wybierzecie Pro: wszyscy pozostają członkami, a na piętrze mogą być naraz do 3 osoby."
+        "q": "Co się dzieje, gdy kończy się okres próbny?",
+        "a": "Biuro przechodzi na Free, chyba że wybierzecie Pro. Nikt nie jest usuwany: przez kolejne dwa tygodnie wszyscy mogą wchodzić, ale nikt nowy nie dołączy ponad 3 osoby. Potem na piętrze mogą być naraz 3 osoby, a czat pozostaje otwarty dla wszystkich."
+      },
+      {
+        "q": "Czy cena wzrośnie?",
+        "a": "Dla nowych subskrypcji tak: od 1 marca 2027 Pro kosztuje 39 $ miesięcznie. Biura, które zasubskrybują wcześniej, zachowują 29 $, dopóki trwa subskrypcja."
       },
       {
         "q": "Czy jest plan roczny?",

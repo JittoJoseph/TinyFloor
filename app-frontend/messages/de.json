@@ -74,6 +74,7 @@
       "back": "Zurück",
       "fullTitle": "Dieser Raum ist voll",
       "full": "Alle, die hineinpassen, sind schon drin. Versuch es gleich noch einmal.",
+      "fullFree": "Mit Free können {free} Personen gleichzeitig auf der Fläche sein, und sie sind alle da. Versuch es gleich noch einmal; ein Admin kann Pro für alle behalten.",
       "replacedTitle": "In einem anderen Tab geöffnet",
       "replaced": "Du hast den Raum in einem anderen Tab oder auf einem anderen Gerät betreten, deshalb hat sich dieser abgemeldet.",
       "closedTitle": "Dieser Raum ist geschlossen",
@@ -514,6 +515,7 @@
       "decline": "Ablehnen",
       "invite": "Einladen",
       "seats": "{used} von {seats} Plätzen",
+      "seatsOver": "{used} Mitglieder, Free bietet Platz für {seats}",
       "seatsFull": "Alle Plätze sind belegt.",
       "onFloorNow": "{count} gerade auf der Etage",
       "remove": "Entfernen",
@@ -563,7 +565,7 @@
     "inviteBody": "Wer diesen Link hat, kommt in {office}. Schick ihn dorthin, wo dein Team sowieso schreibt.",
     "copy": "Link kopieren",
     "copied": "Kopiert",
-    "trialNote": "Kostenlos für bis zu {free} Personen. Lade mehr ein, und dein ganzes Team bekommt {plan} {days} Tage kostenlos. Keine Karte nötig.",
+    "trialNote": "Dein Büro hat {plan} {days} Tage kostenlos, mit Platz für dein ganzes Team. Keine Karte nötig.",
     "inviteLater": "Den Link findest du auch unter Personen.",
     "walkIn": "Reingehen",
     "choose": "{plan} holen"
@@ -728,7 +730,7 @@
     "seatsFull": "Alle Plätze sind belegt",
     "usageOf": "{used} von {total}",
     "pillTrial": "Test",
-    "trialNote": "Dein Team testet {plan} bis zum {date}. Danach ist das Büro im kostenlosen Tarif, für bis zu {seats} Personen, außer du wählst einen Tarif.",
+    "trialNote": "Dein Team nutzt {plan} bis {date}. Behaltet es und alle bleiben; sonst wechselt das Büro zu Free, für bis zu {seats} Personen.",
     "plans": {
       "note": "Monatlich, in US-Dollar, zzgl. Steuern",
       "keep": "{plan} behalten",
@@ -741,7 +743,10 @@
       "hoursTitle": "Meetings mit Video behalten",
       "hoursBody": "Pro bringt das Video sofort zurück, mit Platz für dein ganzes Team.",
       "trialTitle": "Pro für dein Team behalten",
-      "trialBody": "Deine Testphase endet am {date}. Danach können nur noch {free} Personen gleichzeitig im Büro sein.",
+      "trialBody": "Deine Testphase endet am {date}. Behalte Pro und alle bleiben; mit Free bietet das Büro Platz für {free} Personen.",
+      "overTitle": "Behalte dein ganzes Team",
+      "overBody": "{office} hat {members} Personen, Free bietet Platz für {free}. Bis {date} können alle weiter hereinkommen, danach {free} gleichzeitig.",
+      "overBodyLater": "{office} hat {members} Personen, Free bietet Platz für {free}: {free} können gleichzeitig auf der Fläche sein, und niemand Neues kann beitreten.",
       "plansTitle": "Pro, für das ganze Team",
       "plansBody": "Ein Preis für alle, mit denen du arbeitest.",
       "membersOnly": "Nur die Admins von {office} können den Tarif ändern.",
@@ -749,7 +754,6 @@
       "doneBody": "Danke. Die Quittung kommt gleich von Creem.",
       "doneLine": "Alles aus {plan} ist für das ganze Büro aktiv."
     },
-    "trialWaiting": "Lade mehr als {free} Personen ein, und dein ganzes Team bekommt {days} Tage lang {plan} gratis. Keine Karte nötig.",
     "cancelWhen": "Der Tarif läuft bis zum {date}. Danach ist das Büro im kostenlosen Tarif.",
     "cancelAnyway": "Trotzdem kündigen",
     "loseSeatsOver": "{members} Personen sind Mitglieder, aber nur {free} könnten gleichzeitig auf der Etage sein, und niemand Neues käme dazu.",
@@ -761,6 +765,7 @@
       "each": "Für eure {count} Personen sind das {price} pro Kopf.",
       "daily": "Das sind unter {price} am Tag.",
       "anchor": "Tools mit Preisen pro Person würden für dasselbe Team etwa {price} im Monat verlangen.",
+      "founding": "Gründerpreis: deiner, solange dein Abo läuft. Büros, die ab {date} abonnieren, zahlen {price}.",
       "wholeTeam": "Alle in deinem Team, auf einer Etage",
       "support": "Bevorzugte Hilfe von unserem Team",
       "get": "Pro holen · {price} im Monat",
@@ -769,6 +774,15 @@
       "meetings": "Meetings, so oft dein Team sie braucht"
     },
     "billingEmail": "Fragen zur Abrechnung: <link>{email}</link>."
+  },
+  "planNotice": {
+    "trialEnds": "Deine Pro-Testphase endet am {date}.",
+    "overAdmin": "{members} Personen, Free bietet Platz für {free}. Bis {date} können alle hereinkommen.",
+    "overMember": "Dieses Büro ist über seinem kostenlosen Plan. Bis {date} können alle hereinkommen.",
+    "overAdminLater": "{members} Personen, Free bietet Platz für {free} gleichzeitig auf der Fläche.",
+    "overMemberLater": "Mit Free können {free} Personen gleichzeitig auf der Fläche sein.",
+    "keep": "Pro behalten",
+    "hide": "Für heute ausblenden"
   },
   "invite": {
     "title": "Hol dein Team rein",

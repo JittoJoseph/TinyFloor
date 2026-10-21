@@ -1,7 +1,7 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const TERMS_UPDATED = "10 October 2026";
+export const TERMS_UPDATED = "21 October 2026";
 
 export const termsSummary = (
   <p>
@@ -69,7 +69,7 @@ export const termsSections: LegalSection[] = [
           An office on a paid plan that still renews has to cancel the plan first; deleting the office then ends the plan straight away.
         </li>
         <li>
-          Each office has a plan, which sets how many members it can hold and how many meeting hours it has each month: 3 members and 5
+          Each office has a plan, which sets how many members it can hold and how many meeting hours it has each month: 3 members and 40
           hours on the free plan, more on the paid plans below. People invited but not yet joined don&apos;t count.
         </li>
       </ul>
@@ -94,6 +94,10 @@ export const termsSections: LegalSection[] = [
             <Link href="/pricing">pricing</Link>, and are shown again before you pay.
           </li>
           <li>
+            <strong>Trial.</strong> A new office starts on Pro, free for 14 days, without a card. When the trial ends, the office moves
+            to the free plan unless a plan is chosen.
+          </li>
+          <li>
             <strong>Fair use.</strong> Meetings and calls aren&apos;t metered. To keep the price the same for everyone, an office whose
             meetings run far beyond a team&apos;s normal day (more than 120 hours of meetings with two or more people in a calendar month
             on Pro, or 40 on Free, in UTC) carries on with voice only in meetings until the 1st of the next month. Calls between two
@@ -113,8 +117,9 @@ export const termsSections: LegalSection[] = [
           </li>
           <li>
             <strong>More members than the plan holds.</strong> If an office ends up with more members than its plan allows, for example after
-            cancelling, nobody is removed, but no one new can join, and we may limit use of the floor until members are removed or a bigger
-            plan is chosen.
+            its trial or after cancelling, nobody is removed, but no one new can join. After a trial, everyone can still use the floor for 14
+            days; after that, and after a paid plan ends, only as many people as the plan holds can be on the floor at once, while chat stays
+            open to every member, until members are removed or a bigger plan is chosen.
           </li>
           <li>
             <strong>Failed payments.</strong> If a renewal can&apos;t be charged, Creem tries again over the following days. If it still
@@ -122,7 +127,8 @@ export const termsSections: LegalSection[] = [
           </li>
           <li>
             <strong>Price changes.</strong> We will tell an office&apos;s admins at least 30 days before a new price applies to its next
-            renewal, so there is time to cancel first.
+            renewal, so there is time to cancel first. An office that subscribed to Pro before 1 March 2027 keeps the price it subscribed at
+            for as long as its subscription continues without a break.
           </li>
           <li>
             <strong>Refunds.</strong> Ask within 14 days of any payment and it is refunded in full. The details are in our{" "}

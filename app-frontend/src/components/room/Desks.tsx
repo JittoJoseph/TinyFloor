@@ -134,9 +134,9 @@ export function DeskHint() {
   };
 
   const show = !!me && ready && !seen && !closed && !hasDesk && seat === null;
+  // In the stack at the top of the floor (RoomView).
   return (
-    <div className="pointer-events-none absolute inset-x-0 top-16 z-20 flex justify-center px-3 sm:top-[4.5rem]">
-      <AnimatePresence>
+    <AnimatePresence>
         {show && (
           <motion.div
             {...enter(reduce)}
@@ -157,7 +157,6 @@ export function DeskHint() {
             </button>
           </motion.div>
         )}
-      </AnimatePresence>
-    </div>
+    </AnimatePresence>
   );
 }

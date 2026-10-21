@@ -74,6 +74,7 @@
       "back": "Terug",
       "fullTitle": "Deze ruimte is vol",
       "full": "Iedereen die erin past, is al binnen. Probeer het zo nog eens.",
+      "fullFree": "Met Free kunnen {free} mensen tegelijk op de vloer zijn, en ze zijn er allemaal. Probeer het zo nog eens; een beheerder kan Pro voor iedereen houden.",
       "replacedTitle": "Geopend in een ander tabblad",
       "replaced": "Je bent deze ruimte binnengegaan vanuit een ander tabblad of apparaat, dus deze is gestopt.",
       "closedTitle": "Deze ruimte is gesloten",
@@ -514,6 +515,7 @@
       "decline": "Weigeren",
       "invite": "Uitnodigen",
       "seats": "{used} van {seats} plekken",
+      "seatsOver": "{used} leden, Free biedt plek aan {seats}",
       "seatsFull": "Alle plekken zijn bezet.",
       "onFloorNow": "{count} nu op de vloer",
       "remove": "Verwijderen",
@@ -563,7 +565,7 @@
     "inviteBody": "Iedereen met deze link komt binnen in {office}. Stuur hem waar je team al praat.",
     "copy": "Link kopiëren",
     "copied": "Gekopieerd",
-    "trialNote": "Gratis voor maximaal {free} mensen. Nodig meer mensen uit en je hele team krijgt {days} dagen gratis {plan}. Geen kaart nodig.",
+    "trialNote": "Je kantoor heeft {plan} {days} dagen gratis, met ruimte voor je hele team. Geen kaart nodig.",
     "inviteLater": "Je vindt deze link ook bij Mensen.",
     "walkIn": "Naar binnen",
     "choose": "{plan} nemen"
@@ -728,7 +730,7 @@
     "seatsFull": "Alle plekken zijn bezet",
     "usageOf": "{used} van {total}",
     "pillTrial": "Proef",
-    "trialNote": "Je team probeert {plan} tot {date}. Daarna staat het kantoor op Gratis, voor tot {seats} mensen, tenzij je een abonnement kiest.",
+    "trialNote": "Je team gebruikt {plan} tot {date}. Houd het en iedereen blijft; anders gaat het kantoor naar Free, voor maximaal {seats} mensen.",
     "plans": {
       "note": "Per maand, in Amerikaanse dollars, exclusief btw",
       "keep": "{plan} houden",
@@ -741,7 +743,10 @@
       "hoursTitle": "Houd video in meetings",
       "hoursBody": "Pro zet video meteen terug, met plek voor je hele team.",
       "trialTitle": "Houd Pro voor je team",
-      "trialBody": "Je proefperiode eindigt op {date}. Daarna kunnen er nog maar {free} mensen tegelijk in het kantoor zijn.",
+      "trialBody": "Je proefperiode eindigt op {date}. Houd Pro en iedereen blijft; met Free biedt het kantoor plek aan {free} mensen.",
+      "overTitle": "Houd je hele team",
+      "overBody": "{office} heeft {members} mensen, en Free biedt plek aan {free}. Tot {date} kan iedereen nog binnenkomen; daarna {free} tegelijk.",
+      "overBodyLater": "{office} heeft {members} mensen, en Free biedt plek aan {free}: {free} kunnen tegelijk op de vloer zijn en niemand nieuw kan erbij.",
       "plansTitle": "Pro, voor het hele team",
       "plansBody": "Eén prijs voor iedereen met wie je werkt.",
       "membersOnly": "Alleen de beheerders van {office} kunnen het abonnement wijzigen.",
@@ -749,7 +754,6 @@
       "doneBody": "Bedankt. Het bonnetje komt eraan van Creem.",
       "doneLine": "Alles uit {plan} staat aan voor het hele kantoor."
     },
-    "trialWaiting": "Nodig meer dan {free} mensen uit en je hele team krijgt {days} dagen {plan} gratis. Geen kaart nodig.",
     "cancelWhen": "Het abonnement loopt tot {date}. Daarna staat het kantoor op Gratis.",
     "cancelAnyway": "Toch opzeggen",
     "loseSeatsOver": "Er zijn {members} leden, maar maar {free} kunnen tegelijk op de vloer, en er kan niemand nieuw bij.",
@@ -761,6 +765,7 @@
       "each": "Voor jullie {count} mensen is dat {price} per persoon.",
       "daily": "Dat is minder dan {price} per dag.",
       "anchor": "Tools met een prijs per persoon zouden ongeveer {price} per maand vragen voor hetzelfde team.",
+      "founding": "Oprichtersprijs: van jou zolang je abonnement loopt. Kantoren die vanaf {date} een abonnement nemen, betalen {price}.",
       "wholeTeam": "Iedereen in je team, op één verdieping",
       "support": "Voorrang bij hulp van ons team",
       "get": "Pro nemen · {price} per maand",
@@ -769,6 +774,15 @@
       "meetings": "Meetings zo vaak als je team nodig heeft"
     },
     "billingEmail": "Vragen over facturatie: <link>{email}</link>."
+  },
+  "planNotice": {
+    "trialEnds": "Je Pro-proefperiode eindigt op {date}.",
+    "overAdmin": "{members} mensen, en Free biedt plek aan {free}. Tot {date} kan iedereen binnenkomen.",
+    "overMember": "Dit kantoor is over zijn gratis abonnement heen. Tot {date} kan iedereen binnenkomen.",
+    "overAdminLater": "{members} mensen, en Free biedt plek aan {free} tegelijk op de vloer.",
+    "overMemberLater": "Met Free kunnen {free} mensen tegelijk op de vloer zijn.",
+    "keep": "Pro houden",
+    "hide": "Verbergen voor vandaag"
   },
   "invite": {
     "title": "Haal je team binnen",

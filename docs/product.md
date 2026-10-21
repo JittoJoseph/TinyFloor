@@ -311,8 +311,8 @@ missing features on the map.
   might), when the request waits in People for the office's admins, with a
   count on the rail, and the asker's page walks them in the moment they're
   let in; or keep the office out of sight. A university's domain is out of
-  sight until an admin changes it. A full free office's trial starts for the fourth, as with an
-  invite. Personal addresses (Gmail, Outlook, Yahoo, UOL and the like) never
+  sight until an admin changes it. A full office turns the next one away, as an invite
+  would. Personal addresses (Gmail, Outlook, Yahoo, UOL and the like) never
   match, only the owner's domain counts, and only Google-verified addresses
   do: a password account's email is never checked.
 - **Files, mentions and search in chat** (20 October), the three things that

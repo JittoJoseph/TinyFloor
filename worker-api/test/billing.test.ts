@@ -1,6 +1,7 @@
 import { env, exports } from "cloudflare:workers";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { call, fakeRealtime, makeUser, type TestUser } from "./helpers";
+import { verifyTicket } from "../../shared-protocol/src";
+import { call, fakeRealtime, makeUser, onFree, type TestUser } from "./helpers";
 
 const SECRET = "whsec_test";
 
@@ -171,6 +172,7 @@ describe("billing", () => {
   it("shows the meeting hours the office has used this month", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
+    await onFree(officeId);
     const month = new Date().toISOString().slice(0, 7);
     await env.DB.prepare(
       "INSERT INTO usage_monthly (office_id, period, meeting_seconds, updated_at) VALUES (?, ?, ?, ?), (?, '2020-01', 999999, 0)",
@@ -188,6 +190,7 @@ describe("billing", () => {
   it("turns away webhooks that aren't signed by Creem", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
+    await onFree(officeId);
     const data = subscription(officeId);
 
     expect((await deliver("subscription.active", data, { signature: "abc" })).status).toBe(401);
@@ -300,6 +303,7 @@ describe("billing", () => {
   it("won't sync a checkout that was for another office", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
+    await onFree(officeId);
     creemApi(() => ({ id: "ch_1abcdefgh", status: "completed", metadata: { office_id: "someone-else" }, subscription: "sub_other" }));
     const { status } = await call(ada, "POST", `/v1/offices/${officeId}/billing/sync`, { checkoutId: "ch_1abcdefgh" });
     expect(status).toBe(404);
@@ -378,64 +382,70 @@ describe("billing", () => {
     expect(other.body.error.code).toBe("not_payer");
   });
 
-  it("lets a full free office's next person in, on a 14-day Pro trial for the whole team", async () => {
+  it("starts every office on a 14-day Pro trial, so the whole team can move in", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    const { body: link } = await call<{ code: string }>(ada, "GET", `/v1/offices/${officeId}/invite`);
-
-    // A pair or a trio trying it out stays on free: the trial isn't spent on them.
-    await call(await makeUser("Bo"), "POST", `/v1/invites/${link.code}/accept`);
-    await call(await makeUser("Cy"), "POST", `/v1/invites/${link.code}/accept`);
-    expect(await officeRow(officeId)).toEqual({ plan: "free", seats: 3 });
-
-    // Full, but the trial is waiting: the link doesn't say full, and the fourth gets in.
-    const preview = await call<{ invite: { full: boolean } }>(null, "GET", `/v1/invites/${link.code}`);
-    expect(preview.body.invite.full).toBe(false);
-    expect((await call(await makeUser("Di"), "POST", `/v1/invites/${link.code}/accept`)).status).toBe(200);
     expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 15 });
-    const billing = await call<{ trial: { plan: string; endsAt: number } | null }>(ada, "GET", `/v1/offices/${officeId}/billing`);
-    expect(billing.body.trial?.plan).toBe("pro");
-    expect(billing.body.trial!.endsAt - Date.now()).toBeGreaterThan(13 * 86_400_000);
-    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 120]);
-
-    // Over: back to free the moment the office is read, everyone still in it.
-    await env.DB.prepare("UPDATE offices SET trial_ends_at = ? WHERE id = ?")
-      .bind(Date.now() - 1000, officeId)
-      .run();
-    const after = await call<{ plan: string; seats: number; members: number; trial: unknown }>(
+    const billing = await call<{ trial: { plan: string; endsAt: number } | null; graceEndsAt: number | null }>(
       ada,
       "GET",
       `/v1/offices/${officeId}/billing`,
     );
-    expect(after.body).toMatchObject({ plan: "free", seats: 3, members: 4, trial: null });
+    expect(billing.body.trial?.plan).toBe("pro");
+    expect(billing.body.trial!.endsAt - Date.now()).toBeGreaterThan(13.9 * 86_400_000);
+    expect(billing.body.graceEndsAt).toBeNull();
 
-    // Never twice: now the office really is full.
-    const again = await call<{ error: { code: string } }>(await makeUser("Ed"), "POST", `/v1/invites/${link.code}/accept`);
-    expect(again.status).toBe(409);
-    expect(again.body.error.code).toBe("office_full");
+    // Five of them, well past Free's 3, without anyone asking.
+    const { body: link } = await call<{ code: string }>(ada, "GET", `/v1/offices/${officeId}/invite`);
+    for (const name of ["Bo", "Cy", "Di", "Ed"]) {
+      expect((await call(await makeUser(name), "POST", `/v1/invites/${link.code}/accept`)).status).toBe(200);
+    }
+  });
+
+  it("goes to Free when the trial ends, keeping everyone on the floor for two weeks while nobody new joins", async () => {
+    const ada = await makeUser("Ada");
+    const officeId = await officeOf(ada);
+    await addMembers(officeId, 4);
+    const { body: link } = await call<{ code: string }>(ada, "GET", `/v1/offices/${officeId}/invite`);
+    const ended = Date.now() - 1000;
+    await env.DB.prepare("UPDATE offices SET trial_ends_at = ? WHERE id = ?").bind(ended, officeId).run();
+
+    // Free the moment the office is read; nobody removed, and nobody locked out yet.
+    const after = await call<{ plan: string; seats: number; members: number; trial: unknown; graceEndsAt: number }>(
+      ada,
+      "GET",
+      `/v1/offices/${officeId}/billing`,
+    );
+    expect(after.body).toMatchObject({ plan: "free", seats: 3, members: 5, trial: null });
+    expect(after.body.graceEndsAt).toBe(ended + 14 * 86_400_000);
+    expect(await fakeRealtime().calls()).toContainEqual(["setMeetingAllowance", officeId, 40]);
+    const floor = await call<{ ticket: string }>(ada, "POST", `/v1/offices/${officeId}/ticket`);
+    expect(await verifyTicket(floor.body.ticket, env.TICKET_SECRET)).toMatchObject({ cap: 15 });
+
+    // Nobody new, though: the office is over Free's 3.
+    expect((await call<{ invite: { full: boolean } }>(null, "GET", `/v1/invites/${link.code}`)).body.invite.full).toBe(true);
+    const turned = await call<{ error: { code: string } }>(await makeUser("Fay"), "POST", `/v1/invites/${link.code}/accept`);
+    expect(turned.status).toBe(409);
+    expect(turned.body.error.code).toBe("office_full");
+
+    // Two weeks on, the floor holds Free's 3 at once; chat stays open to all five.
+    await env.DB.prepare("UPDATE offices SET trial_ends_at = ? WHERE id = ?")
+      .bind(Date.now() - 15 * 86_400_000, officeId)
+      .run();
+    const later = await call<{ ticket: string }>(ada, "POST", `/v1/offices/${officeId}/ticket`);
+    expect(await verifyTicket(later.body.ticket, env.TICKET_SECRET)).toMatchObject({ cap: 3 });
+    const chat = await call<{ ticket: string }>(ada, "POST", `/v1/offices/${officeId}/chat-ticket`);
+    expect(await verifyTicket(chat.body.ticket, env.TICKET_SECRET)).toMatchObject({ cap: 15 });
+    expect((await call<{ graceEndsAt: number | null }>(ada, "GET", `/v1/offices/${officeId}/billing`)).body.graceEndsAt).toBeNull();
   });
 
   it("lets the plan bought during the trial replace it", async () => {
     const ada = await makeUser("Ada");
     const officeId = await officeOf(ada);
-    await addMembers(officeId, 2);
-    const { body: link } = await call<{ code: string }>(ada, "GET", `/v1/offices/${officeId}/invite`);
-    await call(await makeUser("Di"), "POST", `/v1/invites/${link.code}/accept`);
-    expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 15 });
     await deliver("subscription.active", subscription(officeId));
     expect(await officeRow(officeId)).toEqual({ plan: "pro", seats: 15 });
     const trial = await env.DB.prepare("SELECT trial_ends_at FROM offices WHERE id = ?").bind(officeId).first<{ trial_ends_at: number }>();
     expect(trial?.trial_ends_at).toBe(0);
-  });
-
-  it("tells the office whether its trial is still there to start", async () => {
-    const ada = await makeUser("Ada");
-    const officeId = await officeOf(ada);
-    const open = await call<{ office: { trialOpen: boolean } }>(ada, "GET", `/v1/offices/${officeId}`);
-    expect(open.body.office.trialOpen).toBe(true);
-    await env.DB.prepare("UPDATE offices SET trial_ends_at = 0 WHERE id = ?").bind(officeId).run();
-    const used = await call<{ office: { trialOpen: boolean } }>(ada, "GET", `/v1/offices/${officeId}`);
-    expect(used.body.office.trialOpen).toBe(false);
   });
 
   it("ends every trial that's over in the daily run", async () => {

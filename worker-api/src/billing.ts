@@ -45,16 +45,20 @@ export const HOLDS_PLAN = new Set(["active", "trialing", "past_due", "scheduled_
 const HISTORY = 24;
 
 /**
- * The team trial (docs/pricing.md): when a free office is full and one more person
- * comes to join, instead of turning them away it goes on Pro for this many
- * days, without a card, so the whole team can move in. Then back to free
- * unless a plan was bought: everyone stays a member, but only the free plan's
- * number can be on the floor at once. Once per office, only where plans are
- * on sale. 0 turns it off.
+ * The trial (docs/pricing.md): every office starts on Pro for this many days,
+ * without a card, so the whole team moves in before anyone decides. Then it's
+ * Free unless a plan was bought. Nobody is removed, and nobody is locked out:
+ * an office with more people than Free holds keeps them all on the floor for
+ * GRACE_DAYS more, while nobody new joins, and after that the floor holds
+ * Free's number at once (chat stays open to everyone). Only where plans are
+ * on sale.
  */
 export const TRIAL_DAYS = 14;
+export const GRACE_DAYS = 14;
 const TRIAL_PLAN: PaidPlan = "pro";
 const DAY = 24 * 60 * 60 * 1000;
+/** The most an office holds, on any plan: Pro's. */
+export const MOST_SEATS = planById(TRIAL_PLAN)!.seats;
 
 type ProductIds = Partial<Record<PaidPlan, string>>;
 
@@ -309,6 +313,7 @@ async function billingJson(env: Env, office: Office) {
     meetingHours: meetingHoursOf(office.plan),
     usage: { seconds, resetsAt: thisMonth().resetsAt },
     trial: live ? null : trial,
+    graceEndsAt: office.graceEndsAt,
     subscription: live
       ? {
           plan: row.plan,
@@ -397,48 +402,28 @@ export async function givePlan(env: Env, officeId: string, planId: string): Prom
     .catch((error) => console.error("admin: couldn't tell the room", officeId, error));
 }
 
-/** The conditions under which an office still has its trial to give: free, never trialled, never paid. */
-const TRIAL_OPEN = `plan = 'free' AND trial_ends_at IS NULL AND NOT EXISTS (SELECT 1 FROM subscriptions WHERE office_id = offices.id)`;
-
-/** Whether the next person past a full office would start the trial rather than be turned away. */
-export async function trialWaiting(env: Env, officeId: string): Promise<boolean> {
-  if (!TRIAL_DAYS || !config(env)) return false;
-  return !!(await env.DB.prepare(`SELECT 1 FROM offices WHERE id = ? AND ${TRIAL_OPEN}`).bind(officeId).first());
+/** A new office's plan: the trial where plans are on sale, Free elsewhere. */
+export function startingPlan(env: Env, now = Date.now()): { plan: PlanId; seats: number; trialEndsAt: number | null } {
+  if (!config(env)) return { plan: FREE.id, seats: FREE.seats, trialEndsAt: null };
+  return { plan: TRIAL_PLAN, seats: MOST_SEATS, trialEndsAt: now + TRIAL_DAYS * DAY };
 }
 
 /**
- * Starts the team trial for a free office that is full, as someone else comes
- * to join it: once per office, only where plans are on sale.
+ * Trials past their end go to Free: every office's daily, or one office's the
+ * moment it's read after its trial ended. Nobody is removed. The end stays
+ * recorded (trial_ends_at), since the grace runs from it; a plan bought or
+ * given clears it to 0.
  */
-export async function startTrialIfFull(env: Env, officeId: string, now = Date.now()): Promise<boolean> {
-  if (!TRIAL_DAYS || !config(env)) return false;
-  const plan = planById(TRIAL_PLAN)!;
-  const started = await env.DB.prepare(
-    `UPDATE offices SET plan = ?, seats = ?, trial_ends_at = ?
-     WHERE id = ? AND ${TRIAL_OPEN} AND (SELECT COUNT(*) FROM memberships WHERE office_id = ?) >= seats`,
-  )
-    .bind(plan.id, plan.seats, now + TRIAL_DAYS * DAY, officeId, officeId)
-    .run();
-  if (!started.meta.changes) return false;
-  await realtime(env)
-    .setMeetingAllowance(officeId, plan.meetingHours)
-    .catch((error) => console.error("trial: couldn't tell the room", officeId, error));
-  return true;
-}
-
-/**
- * Trials past their end go back to free: every office's daily, or one office's
- * the moment it's read after its trial ended. Nobody is removed.
- */
+const TRIAL_OVER = "trial_ends_at > 0 AND trial_ends_at <= ? AND plan <> 'free'";
 export async function endTrials(env: Env, officeId?: string, now = Date.now()): Promise<number> {
   const { results } = await (
     officeId
-      ? env.DB.prepare("SELECT id FROM offices WHERE id = ? AND trial_ends_at > 0 AND trial_ends_at <= ?").bind(officeId, now)
-      : env.DB.prepare("SELECT id FROM offices WHERE trial_ends_at > 0 AND trial_ends_at <= ?").bind(now)
+      ? env.DB.prepare(`SELECT id FROM offices WHERE id = ? AND ${TRIAL_OVER}`).bind(officeId, now)
+      : env.DB.prepare(`SELECT id FROM offices WHERE ${TRIAL_OVER}`).bind(now)
   ).all<{ id: string }>();
   for (const { id } of results) {
-    await env.DB.prepare("UPDATE offices SET plan = 'free', seats = ?, trial_ends_at = 0 WHERE id = ? AND trial_ends_at > 0")
-      .bind(FREE.seats, id)
+    await env.DB.prepare(`UPDATE offices SET plan = 'free', seats = ? WHERE id = ? AND ${TRIAL_OVER}`)
+      .bind(FREE.seats, id, now)
       .run();
     await realtime(env)
       .setMeetingAllowance(id, FREE.meetingHours)
@@ -446,6 +431,19 @@ export async function endTrials(env: Env, officeId?: string, now = Date.now()): 
   }
   return results.length;
 }
+
+/**
+ * When the grace after an ended trial runs out, while it runs: a Free office
+ * whose trial ended less than GRACE_DAYS ago keeps everyone on the floor.
+ */
+export function graceEnd(plan: string, trialEndsAt: number | null, now = Date.now()): number | null {
+  if (plan !== FREE.id || !trialEndsAt || trialEndsAt > now) return null;
+  const end = trialEndsAt + GRACE_DAYS * DAY;
+  return end > now ? end : null;
+}
+
+/** How many can be on the floor at once: the plan's, or everyone while an ended trial's grace runs. */
+export const floorCap = (office: Pick<Office, "seats" | "graceEndsAt">) => (office.graceEndsAt ? MOST_SEATS : office.seats);
 
 /** The trial running for an office, if one is. */
 async function trialOf(env: Env, officeId: string, now = Date.now()): Promise<{ plan: PaidPlan; endsAt: number } | null> {

@@ -74,6 +74,7 @@
       "back": "Tilbake",
       "fullTitle": "Rommet er fullt",
       "full": "Alle som får plass, er allerede inne. Prøv igjen om litt.",
+      "fullFree": "Med Free kan {free} personer være på etasjen samtidig, og alle er her. Prøv igjen om litt; en administrator kan beholde Pro for alle.",
       "replacedTitle": "Åpnet i en annen fane",
       "replaced": "Du gikk inn i rommet fra en annen fane eller enhet, så denne gikk ut.",
       "closedTitle": "Rommet er stengt",
@@ -514,6 +515,7 @@
       "decline": "Avslå",
       "invite": "Inviter",
       "seats": "{used} av {seats} plasser",
+      "seatsOver": "{used} medlemmer, Free har plass til {seats}",
       "seatsFull": "Alle plassene er tatt.",
       "onFloorNow": "{count} på etasjen nå",
       "remove": "Fjern",
@@ -563,7 +565,7 @@
     "inviteBody": "Alle med denne lenken kommer inn i {office}. Send den dit teamet ditt allerede snakker.",
     "copy": "Kopier lenke",
     "copied": "Kopiert",
-    "trialNote": "Gratis for opptil {free} personer. Inviter flere, så får hele teamet {plan} gratis i {days} dager. Ikke noe kort nødvendig.",
+    "trialNote": "Kontoret ditt har {plan} gratis i {days} dager, med plass til hele teamet. Ikke noe kort.",
     "inviteLater": "Du finner også lenken under Personer.",
     "walkIn": "Gå inn",
     "choose": "Få {plan}"
@@ -728,7 +730,7 @@
     "seatsFull": "Alle plassene er tatt",
     "usageOf": "{used} av {total}",
     "pillTrial": "Prøve",
-    "trialNote": "Teamet ditt prøver {plan} til {date}. Etter det er kontoret på Gratis, for opptil {seats} personer, med mindre du velger en plan.",
+    "trialNote": "Teamet ditt har {plan} til {date}. Behold det, så blir alle; ellers går kontoret over til Free, for opptil {seats} personer.",
     "plans": {
       "note": "Månedlig, i amerikanske dollar, ekskl. mva.",
       "keep": "Behold {plan}",
@@ -741,7 +743,10 @@
       "hoursTitle": "Behold video i møtene",
       "hoursBody": "Pro gir deg video tilbake med en gang, med plass til hele teamet ditt.",
       "trialTitle": "Behold Pro for teamet ditt",
-      "trialBody": "Prøveperioden slutter {date}. Etter det kan bare {free} personer være på kontoret samtidig.",
+      "trialBody": "Prøveperioden din slutter {date}. Behold Pro, så blir alle; med Free har kontoret plass til {free} personer.",
+      "overTitle": "Behold hele teamet",
+      "overBody": "{office} har {members} personer, og Free har plass til {free}. Alle kan fortsatt komme inn til {date}; deretter {free} om gangen.",
+      "overBodyLater": "{office} har {members} personer, og Free har plass til {free}: {free} kan være på etasjen samtidig, og ingen nye kan bli med.",
       "plansTitle": "Pro, for hele teamet",
       "plansBody": "Én pris for alle du jobber med.",
       "membersOnly": "Bare administratorer i {office} kan endre planen.",
@@ -749,7 +754,6 @@
       "doneBody": "Takk. Kvitteringen er på vei fra Creem.",
       "doneLine": "Alt i {plan} er på for hele kontoret."
     },
-    "trialWaiting": "Inviter flere enn {free} personer, så får hele teamet ditt {plan} gratis i {days} dager. Ikke noe kort.",
     "cancelWhen": "Planen varer til {date}. Etter det er kontoret på Gratis.",
     "cancelAnyway": "Avslutt likevel",
     "loseSeatsOver": "{members} personer er medlemmer, men bare {free} kan være på etasjen samtidig, og ingen nye kan bli med.",
@@ -761,6 +765,7 @@
       "each": "For deres {count} personer blir det {price} per person.",
       "daily": "Det er under {price} om dagen.",
       "anchor": "Verktøy med pris per person ville tatt omtrent {price} i måneden for det samme teamet.",
+      "founding": "Grunnleggerpris: din så lenge abonnementet fortsetter. Kontorer som abonnerer fra {date}, betaler {price}.",
       "wholeTeam": "Hele teamet ditt, på én etasje",
       "support": "Prioritert hjelp fra teamet vårt",
       "get": "Få Pro · {price} i måneden",
@@ -769,6 +774,15 @@
       "meetings": "Møter så ofte teamet ditt trenger"
     },
     "billingEmail": "Spørsmål om betaling: <link>{email}</link>."
+  },
+  "planNotice": {
+    "trialEnds": "Pro-prøveperioden din slutter {date}.",
+    "overAdmin": "{members} personer, og Free har plass til {free}. Alle kan komme inn til {date}.",
+    "overMember": "Dette kontoret er over gratisplanen sin. Alle kan komme inn til {date}.",
+    "overAdminLater": "{members} personer, og Free har plass til {free} samtidig på etasjen.",
+    "overMemberLater": "Med Free kan {free} personer være på etasjen samtidig.",
+    "keep": "Behold Pro",
+    "hide": "Skjul i dag"
   },
   "invite": {
     "title": "Få teamet ditt inn",

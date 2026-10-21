@@ -74,6 +74,7 @@
       "back": "Back",
       "fullTitle": "This room is full",
       "full": "Everyone who fits is already inside. Try again in a little while.",
+      "fullFree": "On Free, {free} people can be on the floor at once, and they're all here. Try again in a little while; an admin can keep Pro for everyone.",
       "replacedTitle": "Open in another tab",
       "replaced": "You joined this room from another tab or device, so this one stepped out.",
       "closedTitle": "This room is closed",
@@ -514,6 +515,7 @@
       "decline": "Decline",
       "invite": "Invite",
       "seats": "{used} of {seats} seats",
+      "seatsOver": "{used} members, Free holds {seats}",
       "seatsFull": "Every seat is taken.",
       "onFloorNow": "{count} on the floor now",
       "remove": "Remove",
@@ -563,7 +565,7 @@
     "inviteBody": "Anyone with this link joins {office}. Send it wherever your team already talks.",
     "copy": "Copy link",
     "copied": "Copied",
-    "trialNote": "Free for up to {free} people. Invite more and your whole team gets {plan} free for {days} days. No card needed.",
+    "trialNote": "Your office has {plan} free for {days} days, with room for your whole team. No card needed.",
     "inviteLater": "You'll find this link on People too.",
     "walkIn": "Walk in",
     "choose": "Get {plan}"
@@ -728,7 +730,7 @@
     "seatsFull": "Every seat is taken",
     "usageOf": "{used} of {total}",
     "pillTrial": "Trial",
-    "trialNote": "Your team is trying {plan} until {date}. After that the office is on Free, for up to {seats} people, unless you choose a plan.",
+    "trialNote": "Your team is on {plan} until {date}. Keep it and everyone stays; otherwise the office moves to Free, for up to {seats} people.",
     "plans": {
       "note": "Monthly, in US dollars, before tax",
       "keep": "Keep {plan}",
@@ -741,7 +743,10 @@
       "hoursTitle": "Keep meetings on video",
       "hoursBody": "Pro brings video back straight away, with room for your whole team.",
       "trialTitle": "Keep Pro for your team",
-      "trialBody": "Your trial ends on {date}. After that, only {free} people can be on the floor at once.",
+      "trialBody": "Your trial ends on {date}. Keep Pro and everyone stays; on Free, the office holds {free} people.",
+      "overTitle": "Keep your whole team",
+      "overBody": "{office} has {members} people, and Free holds {free}. Everyone can still come in until {date}; after that, {free} at a time.",
+      "overBodyLater": "{office} has {members} people, and Free holds {free}, so {free} can be on the floor at once and nobody new can join.",
       "plansTitle": "Pro, for the whole team",
       "plansBody": "One price for everyone you work with.",
       "membersOnly": "Only {office}'s admins can change its plan.",
@@ -749,7 +754,6 @@
       "doneBody": "Thanks. Your receipt is on its way from Creem.",
       "doneLine": "Everything in {plan} is on for the whole office."
     },
-    "trialWaiting": "Invite more than {free} people and your whole team gets {plan} free for {days} days. No card needed.",
     "cancelWhen": "The plan runs until {date}. After that, the office is on Free.",
     "cancelAnyway": "Cancel anyway",
     "loseSeatsOver": "{members} people are members, but only {free} could be on the floor at once, and no one new could join.",
@@ -761,6 +765,7 @@
       "each": "For your {count} people, that's {price} each.",
       "daily": "That's under {price} a day.",
       "anchor": "Per-person tools would charge about {price} a month for the same team.",
+      "founding": "Founding price: yours for as long as you stay subscribed. Offices that subscribe from {date} pay {price}.",
       "wholeTeam": "Everyone on your team, on one floor",
       "support": "Priority help from our team",
       "get": "Get Pro · {price} a month",
@@ -769,6 +774,15 @@
       "meetings": "Meetings as often as your team needs"
     },
     "billingEmail": "Questions about billing: <link>{email}</link>."
+  },
+  "planNotice": {
+    "trialEnds": "Your Pro trial ends on {date}.",
+    "overAdmin": "{members} people, and Free holds {free}. Everyone can come in until {date}.",
+    "overMember": "This office is past its free plan. Everyone can come in until {date}.",
+    "overAdminLater": "{members} people, and Free holds {free} on the floor at once.",
+    "overMemberLater": "On Free, {free} people can be on the floor at once.",
+    "keep": "Keep Pro",
+    "hide": "Hide for today"
   },
   "invite": {
     "title": "Bring your team in",

@@ -9,7 +9,7 @@ import {
   type RoomTicket,
 } from "../../shared-protocol/src";
 import { realtime, requireOffice } from "./access";
-import { meetingHoursOf } from "./billing";
+import { floorCap, meetingHoursOf, MOST_SEATS } from "./billing";
 import { json } from "./http";
 import type { Router } from "./router";
 import { noteCountry, requireUser, type User } from "./session";
@@ -25,7 +25,7 @@ export function floorRoutes(router: Router): void {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id);
       noteCountry(env, request, ctx, user);
-      return json(await ticketFor(env, user, office.id, office.role, office.seats, meetingHoursOf(office.plan)));
+      return json(await ticketFor(env, user, office.id, office.role, floorCap(office), meetingHoursOf(office.plan)));
     })
 
     // The office's chat is its own object, so it gets its own ticket.
@@ -39,7 +39,8 @@ export function floorRoutes(router: Router): void {
         name: user.displayName,
         character: user.character,
         role: office.role,
-        cap: office.seats,
+        // Chat is open to everyone in the office, whatever the floor holds at once.
+        cap: MOST_SEATS,
         exp: Date.now() + TICKET_LIFETIME_MS,
       };
       return json({

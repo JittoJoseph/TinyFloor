@@ -147,13 +147,6 @@ export function PlanSection() {
             )}
           </Banner>
         )}
-        {manage && !trial && !sub && office.trialOpen && !!catalog?.trialDays && (
-          <Banner tone="brand" icon={<Zap className="size-4 shrink-0 text-brand" />}>
-            <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">
-              {t("trialWaiting", { free: office.seats, plan: PLAN_NAMES[catalog.trialPlan ?? "pro"], days: catalog.trialDays })}
-            </p>
-          </Banner>
-        )}
         {manage && sub?.status === "past_due" && (
           <Banner icon={<AlertCircle className="size-4 shrink-0 text-destructive" />}>
             <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">{t("pastDue")}</p>

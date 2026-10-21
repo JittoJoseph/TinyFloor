@@ -23,8 +23,10 @@ import { DoneChip } from "@/components/ui/DoneChip";
 import type { RoomTicket } from "@/lib/api";
 import type { ShareResult } from "@/lib/share";
 import { useInvite } from "@/components/app/Invite";
+import { useOfficeMaybe } from "@/components/app/OfficeShell";
 import { DeskHint, DeskOffer } from "./Desks";
 import { ActionHint } from "./ActionHint";
+import { PlanNotice } from "./PlanNotice";
 import { FLOOR_ARRIVED_EVENT, floorRequested, sinceFloorRequested, useFloor } from "@/lib/floor";
 import { track } from "@/lib/analytics";
 import { EASE_OUT } from "@/lib/ease";
@@ -254,7 +256,11 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
         {inviteChip && canInvite && <InviteChip copied={copied} onClick={invite} />}
       </div>
 
-      <DeskHint />
+      {/* At the top of the floor: what the plan changes, and that a desk can be yours. */}
+      <div className="pointer-events-none absolute inset-x-0 top-16 z-20 flex flex-col items-center gap-2 px-3 sm:top-[4.5rem]">
+        <PlanNotice />
+        <DeskHint />
+      </div>
       {/* Above the dock: what you can do where you stand, and the offer of the desk you sat at. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-20 z-40 flex flex-col items-center gap-2 px-3 sm:bottom-24">
         <ActionHint />
@@ -275,8 +281,11 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
 
 function RoomEnded({ reason, leaveHref, onRetry }: { reason: RoomEnd; leaveHref: string; onRetry: () => void }) {
   const t = useTranslations("room.ended");
+  const office = useOfficeMaybe();
+  // A Free office with more members than Free holds on the floor at once (docs/pricing.md) says why it's full.
+  const freeFull = !!office && office.office.plan === "free" && office.overview.members.length > office.office.seats;
   const copy: Record<RoomEnd, { title: string; body: string }> = {
-    full: { title: t("fullTitle"), body: t("full") },
+    full: { title: t("fullTitle"), body: freeFull ? t("fullFree", { free: office.office.seats }) : t("full") },
     replaced: { title: t("replacedTitle"), body: t("replaced") },
     closed: { title: t("closedTitle"), body: t("closed") },
     revoked: { title: t("revokedTitle"), body: t("revoked") },

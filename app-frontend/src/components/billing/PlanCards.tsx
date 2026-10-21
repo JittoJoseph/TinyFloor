@@ -1,6 +1,7 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
+import { FOUNDING, foundingOpen } from "@/lib/founding";
 import { Check, Loader2 } from "@/components/ui/icons";
 import type { Plan, PlanId } from "@/lib/api";
 import { dollars } from "@/lib/billing";
@@ -20,8 +21,10 @@ const PER_SEAT = 1200;
  * true for this team: the flat price, what it comes to for each of them (or a
  * day, for one person), and what per-person tools would charge the same team.
  * Then what changes, as three short lines. The button says the price again,
- * and under it the two things that make saying yes safe.
- * Nothing invented: no countdown, no crossed-out price, no "most popular".
+ * and under it the two things that make saying yes safe. Until the founding
+ * price closes, a line says the price is theirs to keep, and what it becomes
+ * for offices that come later: a real date and a real price, never a
+ * countdown, a crossed-out price or a "most popular".
  */
 export function ProOffer({
   plans,
@@ -48,6 +51,7 @@ export function ProOffer({
   className?: string;
 }) {
   const t = useTranslations("billing.offer");
+  const format = useFormatter();
   const pro = paidPlan(plans);
   if (!pro?.price) return null;
   const price = pro.price;
@@ -74,6 +78,14 @@ export function ProOffer({
           <p className="mt-3 text-[12.5px] leading-relaxed text-foreground">{each}</p>
           {members >= 4 && (
             <p className="mt-1 text-[12px] leading-relaxed text-muted-foreground">{t("anchor", { price: dollars(PER_SEAT * members) })}</p>
+          )}
+          {foundingOpen() && (
+            <p className="mt-3 border-t border-foreground/[0.07] pt-3 text-[12px] leading-relaxed text-muted-foreground">
+              {t("founding", {
+                price: dollars(FOUNDING.laterPrice * 100),
+                date: format.dateTime(new Date(FOUNDING.until), { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }),
+              })}
+            </p>
           )}
         </div>
         {canChange && split && (

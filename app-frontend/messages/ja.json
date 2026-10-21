@@ -74,6 +74,7 @@
       "back": "戻る",
       "fullTitle": "このルームは満員です",
       "full": "入れる人数に達しています。少し待ってからもう一度お試しください。",
+      "fullFree": "Freeでは、フロアに同時にいられるのは{free}人までで、今は全員そろっています。少ししてからもう一度試してください。管理者はProを続けて全員が入れるようにできます。",
       "replacedTitle": "別のタブで開かれています",
       "replaced": "別のタブか端末でこのルームに入ったため、こちらは退出しました。",
       "closedTitle": "このルームは閉じられました",
@@ -514,6 +515,7 @@
       "decline": "断る",
       "invite": "招待",
       "seats": "{seats} 席中 {used} 席",
+      "seatsOver": "メンバー{used}人、Freeは{seats}人まで",
       "seatsFull": "席はすべて埋まっています。",
       "onFloorNow": "いまフロアに {count} 人",
       "remove": "外す",
@@ -563,7 +565,7 @@
     "inviteBody": "このリンクを持っている人は誰でも {office} に入れます。チームがいつも話している場所に送ってください。",
     "copy": "リンクをコピー",
     "copied": "コピーしました",
-    "trialNote": "{free}人まで無料。さらに招待すると、チーム全員が{days}日間{plan}を無料で使えます。カードは不要です。",
+    "trialNote": "このオフィスは{days}日間{plan}を無料で使えます。チーム全員が入れます。カードは不要です。",
     "inviteLater": "このリンクは「メンバー」からもいつでも開けます。",
     "walkIn": "入る",
     "choose": "{plan}にする"
@@ -728,7 +730,7 @@
     "seatsFull": "すべての席が埋まっています",
     "usageOf": "{used} / {total}",
     "pillTrial": "お試し",
-    "trialNote": "チームは {date} まで {plan} をお試し中です。その後はプランを選ばない限り、オフィスは無料プラン（最大 {seats} 人）になります。",
+    "trialNote": "チームは{date}まで{plan}を利用中です。続ければ全員そのまま。続けない場合、オフィスはFree(最大{seats}人)になります。",
     "plans": {
       "note": "月額・米ドル・税別",
       "keep": "{plan} を続ける",
@@ -741,7 +743,10 @@
       "hoursTitle": "会議のビデオを続ける",
       "hoursBody": "Proならビデオがすぐに戻り、チーム全員が入れます。",
       "trialTitle": "チームでProを続ける",
-      "trialBody": "トライアルは{date}に終わります。その後、フロアに同時にいられるのは{free}人までです。",
+      "trialBody": "トライアルは{date}に終了します。Proを続ければ全員そのまま。Freeでは{free}人までです。",
+      "overTitle": "チーム全員を残す",
+      "overBody": "{office}には{members}人いますが、Freeは{free}人までです。{date}までは全員入れます。その後は同時に{free}人までです。",
+      "overBodyLater": "{office}には{members}人いますが、Freeは{free}人までです。フロアに同時にいられるのは{free}人で、新しい人は参加できません。",
       "plansTitle": "Pro、チーム全員で",
       "plansBody": "一緒に働く全員で、ひとつの料金。",
       "membersOnly": "{office} のプランを変えられるのは管理者だけです。",
@@ -749,7 +754,6 @@
       "doneBody": "ありがとうございます。Creem から領収書が届きます。",
       "doneLine": "{plan}のすべてがオフィス全体で使えるようになりました。"
     },
-    "trialWaiting": "{free} 人より多く招待すると、チーム全員が {plan} を {days} 日間無料で使えます。カードは不要です。",
     "cancelWhen": "プランは {date} まで続き、その後オフィスは無料プランになります。",
     "cancelAnyway": "それでも解約する",
     "loseSeatsOver": "メンバーは {members} 人いますが、フロアに同時にいられるのは {free} 人だけになり、新しい人は参加できません。",
@@ -761,6 +765,7 @@
       "each": "{count}人のチームなら、1人あたり{price}です。",
       "daily": "1日あたり{price}未満です。",
       "anchor": "1人ごとに課金するツールなら、同じチームで月およそ{price}かかります。",
+      "founding": "創業価格:購読を続ける限りこの価格のままです。{date}以降に購読するオフィスは{price}です。",
       "wholeTeam": "チーム全員が、ひとつのフロアに",
       "support": "チームからの優先サポート",
       "get": "Proにする・月{price}",
@@ -769,6 +774,15 @@
       "meetings": "チームに必要なだけ会議を"
     },
     "billingEmail": "お支払いに関するお問い合わせ: <link>{email}</link>"
+  },
+  "planNotice": {
+    "trialEnds": "Proのトライアルは{date}に終了します。",
+    "overAdmin": "{members}人、Freeは{free}人まで。{date}までは全員入れます。",
+    "overMember": "このオフィスは無料プランの上限を超えています。{date}までは全員入れます。",
+    "overAdminLater": "{members}人、Freeではフロアに同時に{free}人まで。",
+    "overMemberLater": "Freeでは、フロアに同時にいられるのは{free}人までです。",
+    "keep": "Proを続ける",
+    "hide": "今日は非表示"
   },
   "invite": {
     "title": "チームを呼びましょう",

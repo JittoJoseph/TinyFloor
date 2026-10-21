@@ -12,8 +12,12 @@ import { PLAN_NAMES, ProOffer, paidPlan } from "./PlanCards";
 import { usePlanChange } from "./usePlanChange";
 import { track } from "@/lib/analytics";
 
-/** What brought them to the plans: the office is full, the hours are (nearly) used, the trial is ending, or just looking. */
-export type UpgradeReason = "full" | "hours" | "trial" | "plans";
+/**
+ * What brought them to the plans: the office is full, the hours are (nearly)
+ * used, the trial is ending, the office is past Free since its trial ended, or
+ * just looking.
+ */
+export type UpgradeReason = "full" | "hours" | "trial" | "over" | "plans";
 
 interface Upgrade {
   /** Opens the plans over the page, for that reason. Null where nothing is on sale. */
@@ -95,6 +99,8 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
   const subscribed = !!billing?.subscription;
   const trialEndsAt = billing?.trial?.endsAt ?? office.trialEndsAt ?? null;
   const trying = !!trialEndsAt && current === pro?.id;
+  const freeSeats = free?.seats ?? 3;
+  const graceEndsAt = billing?.graceEndsAt ?? office.graceEndsAt ?? null;
   const date = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "long" });
 
   // The headline answers why they're here; the offer below is the same every time.
@@ -105,8 +111,15 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
       : reason === "hours"
         ? [t("hoursTitle"), t("hoursBody")]
         : reason === "trial" && trying && trialEndsAt
-          ? [t("trialTitle"), t("trialBody", { date: date(trialEndsAt), free: free?.seats ?? 3 })]
-          : [t("plansTitle"), t("plansBody")];
+          ? [t("trialTitle"), t("trialBody", { date: date(trialEndsAt), free: freeSeats })]
+          : reason === "over" && current === "free" && members > freeSeats
+            ? [
+                t("overTitle"),
+                graceEndsAt
+                  ? t("overBody", { office: office.name, members, free: freeSeats, date: date(graceEndsAt) })
+                  : t("overBodyLater", { office: office.name, members, free: freeSeats }),
+              ]
+            : [t("plansTitle"), t("plansBody")];
 
   const close = () => {
     setDone(false);

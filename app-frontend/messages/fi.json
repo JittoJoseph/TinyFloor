@@ -74,6 +74,7 @@
       "back": "Takaisin",
       "fullTitle": "Huone on täynnä",
       "full": "Kaikki mahtuvat ovat jo sisällä. Yritä hetken päästä uudelleen.",
+      "fullFree": "Freessä kerroksessa voi olla {free} henkeä kerrallaan, ja kaikki ovat jo täällä. Yritä hetken päästä uudelleen; ylläpitäjä voi pitää Pron kaikille.",
       "replacedTitle": "Avattu toisessa välilehdessä",
       "replaced": "Tulit huoneeseen toisesta välilehdestä tai laitteesta, joten tämä poistui.",
       "closedTitle": "Huone on suljettu",
@@ -514,6 +515,7 @@
       "decline": "Hylkää",
       "invite": "Kutsu",
       "seats": "{used}/{seats} paikkaa",
+      "seatsOver": "{used} jäsentä, Freehen mahtuu {seats}",
       "seatsFull": "Kaikki paikat ovat varattuja.",
       "onFloorNow": "{count} kerroksessa nyt",
       "remove": "Poista",
@@ -563,7 +565,7 @@
     "inviteBody": "Kuka tahansa tällä linkillä pääsee {office}-toimistoon. Lähetä se sinne, missä tiimisi jo juttelee.",
     "copy": "Kopioi linkki",
     "copied": "Kopioitu",
-    "trialNote": "Ilmainen enintään {free} hengelle. Kutsu lisää, niin koko tiimisi saa {plan}-tilauksen ilmaiseksi {days} päiväksi. Korttia ei tarvita.",
+    "trialNote": "Toimistollasi on {plan} ilmaiseksi {days} päivää, ja tilaa koko tiimille. Korttia ei tarvita.",
     "inviteLater": "Löydät linkin myös Ihmiset-sivulta.",
     "walkIn": "Astu sisään",
     "choose": "Ota {plan}"
@@ -728,7 +730,7 @@
     "seatsFull": "Kaikki paikat on varattu",
     "usageOf": "{used}/{total}",
     "pillTrial": "Kokeilu",
-    "trialNote": "Tiimisi kokeilee {plan}-pakettia {date} asti. Sen jälkeen toimisto on Ilmainen-paketissa, enintään {seats} hengelle, ellet valitse pakettia.",
+    "trialNote": "Tiimilläsi on {plan} {date} asti. Pidä se, niin kaikki jäävät; muuten toimisto siirtyy Freehen, enintään {seats} hengelle.",
     "plans": {
       "note": "Kuukausittain, Yhdysvaltain dollareina, ilman veroja",
       "keep": "Pidä {plan}",
@@ -741,7 +743,10 @@
       "hoursTitle": "Pidä video kokouksissa",
       "hoursBody": "Pro palauttaa videon heti, ja tilaa on koko tiimillesi.",
       "trialTitle": "Pidä Pro tiimilläsi",
-      "trialBody": "Kokeilusi päättyy {date}. Sen jälkeen toimistossa voi olla kerralla vain {free} henkeä.",
+      "trialBody": "Kokeilusi päättyy {date}. Pidä Pro, niin kaikki jäävät; Freessä toimistoon mahtuu {free} henkeä.",
+      "overTitle": "Pidä koko tiimisi",
+      "overBody": "Toimistossa {office} on {members} henkeä, ja Freehen mahtuu {free}. Kaikki pääsevät vielä sisään {date} asti; sen jälkeen {free} kerrallaan.",
+      "overBodyLater": "Toimistossa {office} on {members} henkeä, ja Freehen mahtuu {free}: kerroksessa voi olla {free} kerrallaan, eikä uusia voi liittyä.",
       "plansTitle": "Pro, koko tiimille",
       "plansBody": "Yksi hinta kaikille, joiden kanssa teet töitä.",
       "membersOnly": "Vain {office}-toimiston ylläpitäjät voivat vaihtaa pakettia.",
@@ -749,7 +754,6 @@
       "doneBody": "Kiitos. Kuitti tulee Creemiltä.",
       "doneLine": "Kaikki {plan}-paketin ominaisuudet ovat käytössä koko toimistolla."
     },
-    "trialWaiting": "Kutsu yli {free} henkeä, niin koko tiimisi saa {plan}-paketin ilmaiseksi {days} päiväksi. Korttia ei tarvita.",
     "cancelWhen": "Paketti on voimassa {date} asti. Sen jälkeen toimisto on Ilmainen-paketissa.",
     "cancelAnyway": "Peru silti",
     "loseSeatsOver": "Jäseniä on {members}, mutta vain {free} voisi olla kerroksessa yhtä aikaa, eikä uusia voisi liittyä.",
@@ -761,6 +765,7 @@
       "each": "Teidän {count} hengelle se on {price} per henkilö.",
       "daily": "Se on alle {price} päivässä.",
       "anchor": "Henkeä kohden hinnoitellut työkalut veloittaisivat samalta tiimiltä noin {price} kuukaudessa.",
+      "founding": "Perustajahinta: sinun niin kauan kuin tilaus jatkuu. Toimistot, jotka tilaavat {date} alkaen, maksavat {price}.",
       "wholeTeam": "Koko tiimisi, samassa kerroksessa",
       "support": "Ensisijainen apu tiimiltämme",
       "get": "Hanki Pro · {price} kuukaudessa",
@@ -769,6 +774,15 @@
       "meetings": "Kokouksia niin usein kuin tiimisi tarvitsee"
     },
     "billingEmail": "Kysymyksiä laskutuksesta: <link>{email}</link>."
+  },
+  "planNotice": {
+    "trialEnds": "Pro-kokeilusi päättyy {date}.",
+    "overAdmin": "{members} henkeä, ja Freehen mahtuu {free}. Kaikki pääsevät sisään {date} asti.",
+    "overMember": "Tämä toimisto on ylittänyt ilmaisen tilaajansa rajan. Kaikki pääsevät sisään {date} asti.",
+    "overAdminLater": "{members} henkeä, ja Freessä kerroksessa voi olla {free} kerrallaan.",
+    "overMemberLater": "Freessä kerroksessa voi olla {free} henkeä kerrallaan.",
+    "keep": "Pidä Pro",
+    "hide": "Piilota tältä päivältä"
   },
   "invite": {
     "title": "Tuo tiimisi sisään",

@@ -26,7 +26,6 @@ import { Link } from "@/lib/i18n/navigation";
 import { useUpgrade } from "@/components/billing/Upgrade";
 import { dollars, usePlans } from "@/lib/billing";
 import { PLAN_NAMES, paidPlan } from "@/components/billing/PlanCards";
-import type { PlanId } from "@/lib/api";
 
 /** Past this many people, the list gets a search box. */
 const SEARCH_FROM = 8;
@@ -79,13 +78,10 @@ function OfficePeople() {
     }
   };
 
-  const plans = usePlans();
   const admin = office.role === "admin";
   const members = data.members;
   const used = data.members.length;
-  // A free office with its trial still to give isn't full: the next person starts it (docs/pricing.md).
-  const trialWaiting = !!office.trialOpen && !!plans?.billing && !!plans.trialDays;
-  const full = used >= office.seats && !trialWaiting;
+  const full = used >= office.seats;
 
   const here = members.filter((one) => floor.has(one.id)).length;
   const rank = (id: string) => (floor.has(id) ? (PRESENCE_ORDER[floor.get(id)!] ?? 0) : 9);
@@ -98,7 +94,8 @@ function OfficePeople() {
         Number(b.id === user?.id) - Number(a.id === user?.id) || rank(a.id) - rank(b.id) || a.displayName.localeCompare(b.displayName),
     );
 
-  const seatsShown = office.plan === "free" || used >= office.seats - 2;
+  // On the trial too, so a new office sees the room it has for the whole team.
+  const seatsShown = office.plan === "free" || !!office.trialEndsAt || used >= office.seats - 2;
 
   return (
     <div className="absolute inset-0 z-[60] overflow-y-auto bg-card">
@@ -121,8 +118,6 @@ function OfficePeople() {
               seats={office.seats}
               full={full}
               upgrade={admin && office.plan === "free"}
-              trial={trialWaiting && used >= office.seats ? (plans?.trialDays ?? 0) : 0}
-              trialPlan={plans?.trialPlan ?? null}
             />
           </div>
         )}
@@ -285,24 +280,19 @@ function OfficePeople() {
 /**
  * Seats as a meter: how many are taken and how many are left. An admin of a
  * free office sees Pro under it where plans are sold: one quiet row while
- * there's room, the way to more once it's full. A free office with its trial
- * still to give says the next person starts it.
+ * there's room, the way to more once it's full.
  */
 function Seats({
   used,
   seats,
   full,
   upgrade,
-  trial,
-  trialPlan,
 }: {
   used: number;
   seats: number;
   full: boolean;
   /** An admin of a free office: Pro is the way to more room. */
   upgrade: boolean;
-  trial: number;
-  trialPlan: PlanId | null;
 }) {
   const t = useTranslations("office.people");
   const tb = useTranslations("billing");
@@ -311,7 +301,8 @@ function Seats({
   return (
     <section className="overflow-hidden rounded-2xl border border-border bg-background p-4">
       <div className="flex items-baseline justify-between gap-2">
-        <p className="text-[14px] font-semibold tabular-nums text-foreground">{t("seats", { used, seats })}</p>
+        {/* Past its seats (a trial that ended, a plan that did): how many are in it, and what the plan holds. */}
+        <p className="text-[14px] font-semibold tabular-nums text-foreground">{used > seats ? t("seatsOver", { used, seats }) : t("seats", { used, seats })}</p>
         <p className="text-[12px] text-muted-foreground">{full ? t("seatsFull") : t("seatsOpen", { count: Math.max(0, seats - used) })}</p>
       </div>
       {/* One segment a seat while they are countable; a bar once they are not. */}
@@ -326,16 +317,11 @@ function Seats({
           <div className="h-full rounded-full bg-foreground" style={{ width: `${Math.min(100, (used / seats) * 100)}%` }} />
         </div>
       )}
-      {trial > 0 && (
-        <p className="mt-3 rounded-xl bg-muted px-3 py-2 text-[12px] leading-relaxed text-foreground">
-          {tb("trialWaiting", { free: seats, plan: PLAN_NAMES[trialPlan ?? "pro"], days: trial })}
-        </p>
-      )}
       {full && upgrade && open && (
         // The plans, right here: the one with room for everyone already marked.
         <button
           type="button"
-          onClick={() => open("full")}
+          onClick={() => open(used > seats ? "over" : "full")}
           className="mt-3 flex h-9 w-full cursor-pointer items-center justify-center rounded-full bg-foreground text-[13px] font-medium text-background transition-colors hover:bg-foreground/85"
         >
           {tb("moreSeats")}

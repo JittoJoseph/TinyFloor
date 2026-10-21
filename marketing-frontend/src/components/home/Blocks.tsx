@@ -12,6 +12,7 @@ import { HomeNav } from "./HomeNav";
 import { HeroFilm } from "./HeroFilm";
 import { PlanAction } from "./PlanAction";
 import { PLANS } from "@/lib/plans";
+import { foundingOpen } from "@/lib/founding";
 import { GoogleOneTap } from "@/components/auth/GoogleOneTap";
 import { GitHubMark, SiteFooter } from "./SiteFooter";
 import { SiteTheme } from "@/components/home/SiteTheme";
@@ -309,7 +310,8 @@ export function Plans() {
  * the eye lands where the team ends up; on a phone it comes first. Each side
  * puts the decision first (price, what it comes to, the button, the promise
  * under it) and what you get after, as a list to scan. Pro's price is framed
- * the way it's paid: once, for everyone, under a dollar a day.
+ * the way it's paid: once, for everyone, under a dollar a day; until the
+ * founding price closes, a line says it's theirs to keep and what comes after.
  */
 export function PlanCards({ className }: { className?: string }) {
   const t = useTranslations("homepage.pricing");
@@ -329,6 +331,7 @@ export function PlanCards({ className }: { className?: string }) {
             {" · "}
             {t("perPerson", { price: `$${(pro.price / 10).toFixed(2)}`, team: 10 })}
           </p>
+          {foundingOpen() && <p className="mt-1.5 text-[12.5px] leading-[1.5] text-muted-foreground">{t("founding")}</p>}
           <PlanAction
             choose={t("choose", { plan: t("pro.name") })}
             soon={t("soon")}

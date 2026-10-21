@@ -13,6 +13,7 @@ import {
 import { GUIDES, GUIDES_PATH, guidePath, type GuideKey } from "@/lib/guides";
 import { guideCopies } from "@/lib/guide-copy";
 import { PLANS } from "@/lib/plans";
+import { foundingOpen } from "@/lib/founding";
 import { SUPPORT_EMAIL } from "@/lib/site";
 import { MORE_FEATURES, absoluteUrl } from "@/lib/structured-data";
 
@@ -124,7 +125,7 @@ export async function llmsFullTxt(): Promise<string> {
 
   const plans = () => {
     const name = (key: string) => key[0].toUpperCase() + key.slice(1);
-    const notes = ["cancel", "refund", "change", "size", "tax"] as const;
+    const notes = ["cancel", "refund", "change", ...(foundingOpen() ? (["founding"] as const) : []), "size", "tax"] as const;
     return [
       "## Plans",
       "",

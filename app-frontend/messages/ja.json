@@ -444,8 +444,7 @@
       "sections": {
         "profile": "プロフィール",
         "signin": "サインイン",
-        "appearance": "表示",
-        "integrations": "連携"
+        "appearance": "表示"
       },
       "profileNote": "どこに入っても表示される名前とリンク。",
       "password": "パスワード",
@@ -847,7 +846,6 @@
     "joinJam": "Jamに参加",
     "jamOf": "{name}さんのJam",
     "jamNote": "Spotifyで一緒に聴く",
-    "playerTitle": "{name}さんが聴いている曲",
     "kinds": {
       "track": "曲",
       "album": "アルバム",
@@ -856,26 +854,22 @@
       "show": "ポッドキャスト",
       "artist": "アーティスト",
       "jam": "Jam"
-    }
+    },
+    "playing": "再生中"
   },
-  "integrations": {
-    "spotify": "Spotify",
-    "spotifyNote": "聴いている音楽をプロフィールカードに表示します。",
-    "shareTitle": "共有していません",
-    "shareNote": "曲、アルバム、プレイリスト、Jamを共有できます。プロフィールに4時間表示されます。",
-    "share": "リンクを共有",
-    "shareAgain": "もう一度共有",
+  "music": {
+    "title": "音楽",
+    "play": "音楽を再生",
+    "close": "閉じる",
     "change": "変更",
-    "stop": "共有をやめる",
-    "until": "{time}までプロフィールに表示",
-    "ended": "プロフィールに表示されていません",
-    "jam": "あなたのJam",
-    "dialogTitle": "Spotifyから共有",
-    "dialogNote": "これから4時間、オフィスのメンバーがあなたのプロフィールを開くと表示されます。",
-    "placeholder": "Spotifyのリンクを貼り付け",
-    "howTo": "Spotifyで曲・アルバム・プレイリストのメニューを開き、「シェア」›「リンクをコピー」を選びます。",
+    "stop": "停止",
+    "pause": "一時停止",
+    "resume": "再生",
+    "paste": "Spotifyのリンクを貼り付け",
     "notSpotify": "Spotifyのリンクではありません。",
-    "shareButton": "共有",
-    "cancel": "キャンセル"
+    "preview": "試聴版を再生中です。",
+    "signIn": "Spotifyにログイン",
+    "seek": "曲の再生位置",
+    "yourJam": "あなたのJam"
   }
 }

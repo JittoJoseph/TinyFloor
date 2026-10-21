@@ -444,8 +444,7 @@
       "sections": {
         "profile": "Profiel",
         "signin": "Inloggen",
-        "appearance": "Weergave",
-        "integrations": "Integraties"
+        "appearance": "Weergave"
       },
       "profileNote": "Je naam en link, waar je ook binnenloopt.",
       "password": "Wachtwoord",
@@ -847,7 +846,6 @@
     "joinJam": "Meedoen met Jam",
     "jamOf": "Jam van {name}",
     "jamNote": "Samen luisteren in Spotify",
-    "playerTitle": "Waar {name} naar luistert",
     "kinds": {
       "track": "Nummer",
       "album": "Album",
@@ -856,26 +854,22 @@
       "show": "Podcast",
       "artist": "Artiest",
       "jam": "Jam"
-    }
+    },
+    "playing": "Speelt"
   },
-  "integrations": {
-    "spotify": "Spotify",
-    "spotifyNote": "Waar je naar luistert, op je profielkaart.",
-    "shareTitle": "Niets gedeeld",
-    "shareNote": "Deel een nummer, album, afspeellijst of Jam. Het blijft vier uur op je profiel.",
-    "share": "Link delen",
-    "shareAgain": "Opnieuw delen",
+  "music": {
+    "title": "Muziek",
+    "play": "Muziek afspelen",
+    "close": "Sluiten",
     "change": "Wijzigen",
-    "stop": "Stoppen met delen",
-    "until": "Op je profiel tot {time}",
-    "ended": "Niet meer op je profiel",
-    "jam": "Jouw Jam",
-    "dialogTitle": "Delen vanuit Spotify",
-    "dialogNote": "Mensen in je kantoor zien het de komende vier uur als ze je profiel openen.",
-    "placeholder": "Plak een Spotify-link",
-    "howTo": "Open in Spotify het menu van een nummer, album of afspeellijst en kies Delen › Link kopiëren.",
+    "stop": "Stoppen",
+    "pause": "Pauzeren",
+    "resume": "Afspelen",
+    "paste": "Plak een Spotify-link",
     "notSpotify": "Dat is geen Spotify-link.",
-    "shareButton": "Delen",
-    "cancel": "Annuleren"
+    "preview": "Alleen fragmenten.",
+    "signIn": "Inloggen bij Spotify",
+    "seek": "Positie in het nummer",
+    "yourJam": "Jouw Jam"
   }
 }

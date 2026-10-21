@@ -444,8 +444,7 @@
       "sections": {
         "profile": "个人资料",
         "signin": "登录",
-        "appearance": "外观",
-        "integrations": "集成"
+        "appearance": "外观"
       },
       "profileNote": "你的名字和链接，走到哪里都一样。",
       "password": "密码",
@@ -847,7 +846,6 @@
     "joinJam": "加入 Jam",
     "jamOf": "{name} 的 Jam",
     "jamNote": "在 Spotify 里一起听",
-    "playerTitle": "{name} 正在听的内容",
     "kinds": {
       "track": "歌曲",
       "album": "专辑",
@@ -856,26 +854,22 @@
       "show": "播客",
       "artist": "艺人",
       "jam": "Jam"
-    }
+    },
+    "playing": "正在播放"
   },
-  "integrations": {
-    "spotify": "Spotify",
-    "spotifyNote": "在你的资料卡上显示你正在听的内容。",
-    "shareTitle": "没有分享任何内容",
-    "shareNote": "分享一首歌、一张专辑、一个歌单或一个 Jam，会在你的资料上显示四小时。",
-    "share": "分享链接",
-    "shareAgain": "再次分享",
+  "music": {
+    "title": "音乐",
+    "play": "播放音乐",
+    "close": "关闭",
     "change": "更换",
-    "stop": "停止分享",
-    "until": "在你的资料上显示到 {time}",
-    "ended": "已不在你的资料上显示",
-    "jam": "你的 Jam",
-    "dialogTitle": "从 Spotify 分享",
-    "dialogNote": "接下来四小时内，办公室里的人打开你的资料就能看到。",
-    "placeholder": "粘贴 Spotify 链接",
-    "howTo": "在 Spotify 中打开歌曲、专辑或歌单的菜单，选择“分享” › “复制链接”。",
+    "stop": "停止",
+    "pause": "暂停",
+    "resume": "播放",
+    "paste": "粘贴 Spotify 链接",
     "notSpotify": "这不是 Spotify 链接。",
-    "shareButton": "分享",
-    "cancel": "取消"
+    "preview": "正在播放试听片段。",
+    "signIn": "登录 Spotify",
+    "seek": "歌曲播放位置",
+    "yourJam": "你的 Jam"
   }
 }

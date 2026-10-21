@@ -73,9 +73,10 @@ export const privacySections: LegalSection[] = [
             your local time on your profile.
           </li>
           <li>
-            <strong>Spotify:</strong> if you share what you&apos;re listening to, the Spotify link you paste and the name and cover art Spotify
-            gives for it. People in your offices see it on your profile card for four hours; the link stays in your settings until you
-            change it or your account is deleted. We don&apos;t connect to your Spotify account or see what you play.
+            <strong>Music:</strong> when you play something from Spotify in TinyFloor, its Spotify link and the name, cover art and artist
+            Spotify gives for it. People in your offices see it on your profile card while it plays, and for a few minutes after; the last
+            one stays with your account until you play another or your account is deleted. We don&apos;t connect to your Spotify account or
+            see what you play in Spotify itself.
           </li>
           <li>
             <strong>Activity:</strong> when your account was made and when you were last active.
@@ -180,8 +181,8 @@ export const privacySections: LegalSection[] = [
             <strong>Discord</strong> carries the team notes described above.
           </li>
           <li>
-            <strong>Spotify</strong> tells us the name and cover of a link you share. When you press Listen on someone&apos;s card, Spotify&apos;s
-            own player loads from Spotify, under its own{" "}
+            <strong>Spotify</strong> tells us the name, cover and artist of what you play. When you play music, Spotify&apos;s own player
+            loads from Spotify and plays it, under its own{" "}
             <a href="https://www.spotify.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">
               privacy policy
             </a>
@@ -228,8 +229,8 @@ export const privacySections: LegalSection[] = [
             <strong>Turnstile:</strong> Cloudflare may use cookies or browser signals for its bot check.
           </li>
           <li>
-            <strong>Spotify&apos;s player:</strong> if you open it from someone&apos;s card, Spotify may use its own cookies, for example to play
-            whole songs when you&apos;re signed in to Spotify.
+            <strong>Spotify&apos;s player:</strong> when you play music, Spotify may use its own cookies, for example to play whole songs
+            when you&apos;re signed in to Spotify.
           </li>
           <li>
             <strong>Your browser:</strong> TinyFloor keeps a few preferences on your own device, such as your theme, your microphone and camera

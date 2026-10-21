@@ -444,8 +444,7 @@
       "sections": {
         "profile": "Profil",
         "signin": "Anmelden",
-        "appearance": "Darstellung",
-        "integrations": "Integrationen"
+        "appearance": "Darstellung"
       },
       "profileNote": "Dein Name und dein Link, überall, wo du reingehst.",
       "password": "Passwort",
@@ -847,7 +846,6 @@
     "joinJam": "Jam beitreten",
     "jamOf": "Jam von {name}",
     "jamNote": "Gemeinsam in Spotify hören",
-    "playerTitle": "Was {name} gerade hört",
     "kinds": {
       "track": "Song",
       "album": "Album",
@@ -856,26 +854,22 @@
       "show": "Podcast",
       "artist": "Künstler",
       "jam": "Jam"
-    }
+    },
+    "playing": "Läuft"
   },
-  "integrations": {
-    "spotify": "Spotify",
-    "spotifyNote": "Was du gerade hörst, auf deiner Profilkarte.",
-    "shareTitle": "Gerade nichts geteilt",
-    "shareNote": "Teile einen Song, ein Album, eine Playlist oder einen Jam. Er bleibt vier Stunden in deinem Profil.",
-    "share": "Link teilen",
-    "shareAgain": "Erneut teilen",
+  "music": {
+    "title": "Musik",
+    "play": "Musik abspielen",
+    "close": "Schließen",
     "change": "Ändern",
-    "stop": "Nicht mehr teilen",
-    "until": "In deinem Profil bis {time}",
-    "ended": "Nicht mehr in deinem Profil",
-    "jam": "Dein Jam",
-    "dialogTitle": "Aus Spotify teilen",
-    "dialogNote": "Die Leute in deinem Büro sehen es in den nächsten vier Stunden, wenn sie dein Profil öffnen.",
-    "placeholder": "Spotify-Link einfügen",
-    "howTo": "Öffne in Spotify das Menü eines Songs, Albums oder einer Playlist und wähle Teilen › Link kopieren.",
+    "stop": "Stoppen",
+    "pause": "Pause",
+    "resume": "Abspielen",
+    "paste": "Spotify-Link einfügen",
     "notSpotify": "Das ist kein Spotify-Link.",
-    "shareButton": "Teilen",
-    "cancel": "Abbrechen"
+    "preview": "Es laufen Hörproben.",
+    "signIn": "Bei Spotify anmelden",
+    "seek": "Position im Song",
+    "yourJam": "Dein Jam"
   }
 }

@@ -444,8 +444,7 @@
       "sections": {
         "profile": "Profile",
         "signin": "Signing in",
-        "appearance": "Appearance",
-        "integrations": "Integrations"
+        "appearance": "Appearance"
       },
       "profileNote": "Your name and link, wherever you walk in.",
       "password": "Password",
@@ -855,27 +854,22 @@
       "artist": "Artist",
       "jam": "Jam"
     },
-    "playerTitle": "What {name} is listening to",
-    "jamNote": "Listen together in Spotify"
+    "jamNote": "Listen together in Spotify",
+    "playing": "Playing"
   },
-  "integrations": {
-    "spotify": "Spotify",
-    "spotifyNote": "What you're listening to, on your profile card.",
-    "shareTitle": "Not sharing anything",
-    "shareNote": "Share a song, album, playlist or Jam. It stays on your profile for four hours.",
-    "share": "Share a link",
-    "shareAgain": "Share again",
+  "music": {
+    "title": "Music",
+    "play": "Play music",
+    "close": "Close",
     "change": "Change",
-    "stop": "Stop sharing",
-    "until": "On your profile until {time}",
-    "ended": "No longer on your profile",
-    "jam": "Your Jam",
-    "dialogTitle": "Share from Spotify",
-    "dialogNote": "People in your office see it when they open your profile, for the next four hours.",
-    "placeholder": "Paste a Spotify link",
-    "howTo": "In Spotify, open the menu on a song, album or playlist, then Share › Copy link.",
+    "stop": "Stop",
+    "pause": "Pause",
+    "resume": "Play",
+    "paste": "Paste a Spotify link",
     "notSpotify": "That isn't a Spotify link.",
-    "shareButton": "Share",
-    "cancel": "Cancel"
+    "preview": "Playing previews.",
+    "signIn": "Sign in to Spotify",
+    "seek": "Position in the song",
+    "yourJam": "Your Jam"
   }
 }

@@ -1,9 +1,9 @@
 /**
- * What someone is listening to on Spotify, shared from a link they paste: a
- * song, album, playlist, podcast, artist, or a Jam the people they work with
- * can join. Spotify only lets an app read what someone plays for a handful of
- * hand-added accounts, so a link is how it travels; it clears itself after a
- * while, like a status note, so it never says what they played yesterday.
+ * What someone is playing from Spotify in TinyFloor: a song, album, playlist,
+ * podcast or artist they picked or pasted, playing in Spotify's own player in
+ * their browser, or a Jam the people they work with can join in Spotify.
+ * Spotify only lets an app read what someone plays in Spotify itself for a
+ * handful of hand-added accounts, so it is what they play here that shows.
  */
 export interface SpotifyShare {
   /** The link as Spotify writes it: https://open.spotify.com/<kind>/<id>. */
@@ -13,6 +13,8 @@ export interface SpotifyShare {
   title: string | null;
   /** Its cover art, from Spotify, or null. */
   image: string | null;
+  /** Who made it, for a song, album or episode ("Pitbull"), or null. */
+  subtitle: string | null;
   /** When it clears itself, in milliseconds. */
   until: number;
 }
@@ -22,8 +24,13 @@ export type SpotifyKind = "track" | "album" | "playlist" | "episode" | "show" | 
 /** Where Spotify's apps put their short links. */
 const SHORT_HOSTS = ["spotify.link", "link.tospotify.com"];
 
-/** How long a shared link lasts: an afternoon's listening. */
-export const SPOTIFY_SHARE_MS = 4 * 60 * 60 * 1000;
+/**
+ * How long a share lasts unless it is said again. The player says it again
+ * every SPOTIFY_REFRESH_MS while it plays, so one left by a closed tab clears
+ * itself within a quarter of an hour.
+ */
+export const SPOTIFY_SHARE_MS = 15 * 60 * 1000;
+export const SPOTIFY_REFRESH_MS = 10 * 60 * 1000;
 
 const KINDS: Record<string, SpotifyKind> = {
   track: "track",
@@ -62,10 +69,11 @@ export function spotifyLink(value: unknown): { url: string; kind: SpotifyKind | 
   return kind ? { url: `https://open.spotify.com/${path![1]}/${path![2]}`, kind } : null;
 }
 
-/** The embeddable player for a shared link, or null for a Jam, which only plays in Spotify. */
-export function spotifyEmbed(share: Pick<SpotifyShare, "url" | "kind">): string | null {
+/** The URI Spotify's player takes ("spotify:track:<id>"), or null for a Jam, which only plays in Spotify. */
+export function spotifyUri(share: Pick<SpotifyShare, "url" | "kind">): string | null {
   if (share.kind === "jam") return null;
-  return share.url.replace("https://open.spotify.com/", "https://open.spotify.com/embed/");
+  const [, kind, id] = /^https:\/\/open\.spotify\.com\/([a-z]+)\/([A-Za-z0-9]+)$/.exec(share.url) ?? [];
+  return kind && id ? `spotify:${kind}:${id}` : null;
 }
 
 /** The share while it lasts; null once it has cleared itself. */

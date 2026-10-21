@@ -444,8 +444,7 @@
       "sections": {
         "profile": "Profil",
         "signin": "Connexion",
-        "appearance": "Apparence",
-        "integrations": "Intégrations"
+        "appearance": "Apparence"
       },
       "profileNote": "Votre nom et votre lien, partout où vous entrez.",
       "password": "Mot de passe",
@@ -847,7 +846,6 @@
     "joinJam": "Rejoindre le Jam",
     "jamOf": "Jam de {name}",
     "jamNote": "Écouter ensemble dans Spotify",
-    "playerTitle": "Ce que {name} écoute",
     "kinds": {
       "track": "Titre",
       "album": "Album",
@@ -856,26 +854,22 @@
       "show": "Podcast",
       "artist": "Artiste",
       "jam": "Jam"
-    }
+    },
+    "playing": "En lecture"
   },
-  "integrations": {
-    "spotify": "Spotify",
-    "spotifyNote": "Ce que vous écoutez, sur votre fiche de profil.",
-    "shareTitle": "Rien de partagé",
-    "shareNote": "Partagez un titre, un album, une playlist ou un Jam. Il reste sur votre profil pendant quatre heures.",
-    "share": "Partager un lien",
-    "shareAgain": "Partager à nouveau",
-    "change": "Modifier",
-    "stop": "Arrêter le partage",
-    "until": "Sur votre profil jusqu'à {time}",
-    "ended": "N'est plus sur votre profil",
-    "jam": "Votre Jam",
-    "dialogTitle": "Partager depuis Spotify",
-    "dialogNote": "Les personnes de votre bureau le voient en ouvrant votre profil, pendant les quatre prochaines heures.",
-    "placeholder": "Collez un lien Spotify",
-    "howTo": "Dans Spotify, ouvrez le menu d'un titre, d'un album ou d'une playlist, puis Partager › Copier le lien.",
+  "music": {
+    "title": "Musique",
+    "play": "Écouter de la musique",
+    "close": "Fermer",
+    "change": "Changer",
+    "stop": "Arrêter",
+    "pause": "Pause",
+    "resume": "Lecture",
+    "paste": "Collez un lien Spotify",
     "notSpotify": "Ce n'est pas un lien Spotify.",
-    "shareButton": "Partager",
-    "cancel": "Annuler"
+    "preview": "Extraits seulement.",
+    "signIn": "Se connecter à Spotify",
+    "seek": "Position dans le titre",
+    "yourJam": "Votre Jam"
   }
 }

@@ -19,6 +19,9 @@ beforeEach(() => {
       }
       return new Response("not found", { status: 404 });
     }
+    if (url.href === "https://open.spotify.com/track/70cHKK8bHAfJrOGVnfRG9J") {
+      return new Response('<meta property="og:description" content="Beyonc&#xe9; &amp; Friends · An Album · Song · 2024"/>');
+    }
     if (url.href === "https://spotify.link/AbCdEf1234") {
       return new Response(null, { status: 307, headers: { Location: "https://open.spotify.com/socialsession/5f9a7c3e2b1d4e6f8a0b" } });
     }
@@ -43,8 +46,8 @@ describe("spotify links", () => {
   });
 });
 
-describe("sharing what you're listening to", () => {
-  it("shares a link with its name and cover, shows it to others while it lasts, and stops", async () => {
+describe("sharing what you're playing", () => {
+  it("shares what plays with its name and cover, shows it to others while it lasts, and stops", async () => {
     const ada = await makeUser("Ada");
     const bo = await makeUser("Bo");
 
@@ -53,27 +56,30 @@ describe("sharing what you're listening to", () => {
 
     const shared = await call<{ spotify: Share }>(ada, "PUT", "/v1/me/spotify", { url: "https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M" });
     expect(shared.status).toBe(200);
-    expect(shared.body.spotify).toMatchObject({ title: "Today's Top Hits", image: "https://image-cdn-fa.spotifycdn.com/image/abc" });
-    expect(shared.body.spotify.until).toBeGreaterThan(Date.now() + 3 * 60 * 60 * 1000);
+    // A playlist has nobody behind it to name.
+    expect(shared.body.spotify).toMatchObject({ title: "Today's Top Hits", image: "https://image-cdn-fa.spotifycdn.com/image/abc", subtitle: null });
+    // Said again while it plays; a closed tab's lapses within a quarter of an hour.
+    expect(shared.body.spotify.until).toBeGreaterThan(Date.now() + 14 * 60 * 1000);
+    expect(shared.body.spotify.until).toBeLessThanOrEqual(Date.now() + 15 * 60 * 1000);
 
     const seen = await call<{ person: { spotify: Share | null } }>(bo, "GET", `/v1/people/${ada.id}`);
     expect(seen.body.person.spotify?.title).toBe("Today's Top Hits");
 
     await call(ada, "DELETE", "/v1/me/spotify");
     expect((await call<{ person: { spotify: Share | null } }>(bo, "GET", `/v1/people/${ada.id}`)).body.person.spotify).toBeNull();
-    // You still see your last one, cleared, to share it again.
+    // You still see your last one, cleared, for your recent plays.
     const mine = (await call<{ user: { spotify: Share | null } }>(ada, "GET", "/v1/session")).body.user.spotify;
     expect(mine?.title).toBe("Today's Top Hits");
     expect(mine!.until).toBeLessThanOrEqual(Date.now());
   });
 
-  it("follows a short link to a Jam, and keeps only Spotify's own images", async () => {
+  it("follows a short link to a Jam, names a song's artist, and keeps only Spotify's own images", async () => {
     const ada = await makeUser("Ada");
     const jam = await call<{ spotify: Share }>(ada, "PUT", "/v1/me/spotify", { url: "https://spotify.link/AbCdEf1234" });
     expect(jam.body.spotify).toMatchObject({ kind: "jam", url: "https://open.spotify.com/socialsession/5f9a7c3e2b1d4e6f8a0b", title: null });
 
     const song = await call<{ spotify: Share }>(ada, "PUT", "/v1/me/spotify", { url: "spotify:track:70cHKK8bHAfJrOGVnfRG9J" });
-    expect(song.body.spotify).toMatchObject({ title: "A song", image: null });
+    expect(song.body.spotify).toMatchObject({ title: "A song", image: null, subtitle: "Beyoncé & Friends" });
   });
 
   it("refuses what isn't a Spotify link, and guests", async () => {

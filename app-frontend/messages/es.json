@@ -444,8 +444,7 @@
       "sections": {
         "profile": "Perfil",
         "signin": "Inicio de sesión",
-        "appearance": "Apariencia",
-        "integrations": "Integraciones"
+        "appearance": "Apariencia"
       },
       "profileNote": "Tu nombre y tu enlace, entres donde entres.",
       "password": "Contraseña",
@@ -847,7 +846,6 @@
     "joinJam": "Unirse al Jam",
     "jamOf": "Jam de {name}",
     "jamNote": "Escuchad juntos en Spotify",
-    "playerTitle": "Lo que escucha {name}",
     "kinds": {
       "track": "Canción",
       "album": "Álbum",
@@ -856,26 +854,22 @@
       "show": "Pódcast",
       "artist": "Artista",
       "jam": "Jam"
-    }
+    },
+    "playing": "Sonando"
   },
-  "integrations": {
-    "spotify": "Spotify",
-    "spotifyNote": "Lo que escuchas, en tu tarjeta de perfil.",
-    "shareTitle": "No compartes nada",
-    "shareNote": "Comparte una canción, un álbum, una playlist o un Jam. Se queda en tu perfil cuatro horas.",
-    "share": "Compartir un enlace",
-    "shareAgain": "Volver a compartir",
+  "music": {
+    "title": "Música",
+    "play": "Poner música",
+    "close": "Cerrar",
     "change": "Cambiar",
-    "stop": "Dejar de compartir",
-    "until": "En tu perfil hasta las {time}",
-    "ended": "Ya no está en tu perfil",
-    "jam": "Tu Jam",
-    "dialogTitle": "Compartir desde Spotify",
-    "dialogNote": "Las personas de tu oficina lo ven al abrir tu perfil durante las próximas cuatro horas.",
-    "placeholder": "Pega un enlace de Spotify",
-    "howTo": "En Spotify, abre el menú de una canción, un álbum o una playlist y elige Compartir › Copiar enlace.",
+    "stop": "Detener",
+    "pause": "Pausa",
+    "resume": "Reproducir",
+    "paste": "Pega un enlace de Spotify",
     "notSpotify": "Eso no es un enlace de Spotify.",
-    "shareButton": "Compartir",
-    "cancel": "Cancelar"
+    "preview": "Solo fragmentos.",
+    "signIn": "Inicia sesión en Spotify",
+    "seek": "Posición en la canción",
+    "yourJam": "Tu Jam"
   }
 }

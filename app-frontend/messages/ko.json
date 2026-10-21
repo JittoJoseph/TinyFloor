@@ -444,8 +444,7 @@
       "sections": {
         "profile": "프로필",
         "signin": "로그인",
-        "appearance": "화면",
-        "integrations": "연동"
+        "appearance": "화면"
       },
       "profileNote": "어디에 들어가든 보이는 이름과 링크예요.",
       "password": "비밀번호",
@@ -847,7 +846,6 @@
     "joinJam": "Jam 참여",
     "jamOf": "{name}님의 Jam",
     "jamNote": "Spotify에서 함께 들어요",
-    "playerTitle": "{name}님이 듣고 있는 음악",
     "kinds": {
       "track": "곡",
       "album": "앨범",
@@ -856,26 +854,22 @@
       "show": "팟캐스트",
       "artist": "아티스트",
       "jam": "Jam"
-    }
+    },
+    "playing": "재생 중"
   },
-  "integrations": {
-    "spotify": "Spotify",
-    "spotifyNote": "듣고 있는 음악을 프로필 카드에 보여줘요.",
-    "shareTitle": "공유 중인 음악이 없어요",
-    "shareNote": "곡, 앨범, 플레이리스트, Jam을 공유할 수 있어요. 프로필에 4시간 동안 보여요.",
-    "share": "링크 공유",
-    "shareAgain": "다시 공유",
+  "music": {
+    "title": "음악",
+    "play": "음악 재생",
+    "close": "닫기",
     "change": "변경",
-    "stop": "공유 중지",
-    "until": "{time}까지 프로필에 표시",
-    "ended": "더 이상 프로필에 표시되지 않아요",
-    "jam": "내 Jam",
-    "dialogTitle": "Spotify에서 공유",
-    "dialogNote": "앞으로 4시간 동안 오피스 사람들이 내 프로필을 열면 보여요.",
-    "placeholder": "Spotify 링크 붙여넣기",
-    "howTo": "Spotify에서 곡, 앨범, 플레이리스트의 메뉴를 열고 공유 › 링크 복사를 누르세요.",
+    "stop": "중지",
+    "pause": "일시정지",
+    "resume": "재생",
+    "paste": "Spotify 링크 붙여넣기",
     "notSpotify": "Spotify 링크가 아니에요.",
-    "shareButton": "공유",
-    "cancel": "취소"
+    "preview": "미리듣기로 재생 중이에요.",
+    "signIn": "Spotify에 로그인",
+    "seek": "곡 재생 위치",
+    "yourJam": "내 Jam"
   }
 }

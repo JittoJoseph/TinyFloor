@@ -444,8 +444,7 @@
       "sections": {
         "profile": "الملف الشخصي",
         "signin": "تسجيل الدخول",
-        "appearance": "المظهر",
-        "integrations": "التكاملات"
+        "appearance": "المظهر"
       },
       "profileNote": "اسمك ورابطك، أينما دخلت.",
       "password": "كلمة المرور",
@@ -847,7 +846,6 @@
     "joinJam": "انضم إلى Jam",
     "jamOf": "Jam الخاص بـ {name}",
     "jamNote": "استمعوا معًا في Spotify",
-    "playerTitle": "ما يستمع إليه {name}",
     "kinds": {
       "track": "أغنية",
       "album": "ألبوم",
@@ -856,26 +854,22 @@
       "show": "بودكاست",
       "artist": "فنان",
       "jam": "Jam"
-    }
+    },
+    "playing": "قيد التشغيل"
   },
-  "integrations": {
-    "spotify": "Spotify",
-    "spotifyNote": "ما تستمع إليه، على بطاقة ملفك الشخصي.",
-    "shareTitle": "لا تشارك شيئًا",
-    "shareNote": "شارك أغنية أو ألبومًا أو قائمة تشغيل أو Jam. يبقى في ملفك الشخصي أربع ساعات.",
-    "share": "شارك رابطًا",
-    "shareAgain": "شارك مجددًا",
+  "music": {
+    "title": "الموسيقى",
+    "play": "شغّل الموسيقى",
+    "close": "إغلاق",
     "change": "تغيير",
-    "stop": "أوقف المشاركة",
-    "until": "في ملفك الشخصي حتى {time}",
-    "ended": "لم يعد في ملفك الشخصي",
-    "jam": "Jam الخاص بك",
-    "dialogTitle": "شارك من Spotify",
-    "dialogNote": "يراه زملاؤك في المكتب عندما يفتحون ملفك الشخصي خلال الساعات الأربع القادمة.",
-    "placeholder": "الصق رابط Spotify",
-    "howTo": "في Spotify، افتح قائمة أغنية أو ألبوم أو قائمة تشغيل، ثم اختر مشاركة › نسخ الرابط.",
+    "stop": "إيقاف",
+    "pause": "إيقاف مؤقت",
+    "resume": "تشغيل",
+    "paste": "الصق رابط Spotify",
     "notSpotify": "هذا ليس رابط Spotify.",
-    "shareButton": "مشاركة",
-    "cancel": "إلغاء"
+    "preview": "يجري تشغيل مقتطفات.",
+    "signIn": "سجّل الدخول إلى Spotify",
+    "seek": "الموضع في الأغنية",
+    "yourJam": "Jam الخاص بك"
   }
 }

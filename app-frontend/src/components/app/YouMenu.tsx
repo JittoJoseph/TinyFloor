@@ -7,6 +7,7 @@ import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { setMyStatus, useMyNote, useMyStatus } from "@/lib/floor";
 import { StatusNoteDialog } from "./StatusNote";
+import { MusicSection } from "./Music";
 import type { PlayerStatus } from "@/lib/types";
 import { Face } from "@/components/ui/Face";
 import { Menu, MenuHeader, MenuItem, MenuLabel, MenuSeparator } from "@/components/ui/Menu";
@@ -22,7 +23,7 @@ const STATUS_DOT: Record<string, string> = { available: "bg-ok", busy: "bg-destr
 /**
  * You, at the bottom of the rail: your face with your status on it, and a
  * short menu of what you reach for while working — your status first, then
- * your note ("🍜 Lunch, back at 2"), then your profile. Theme and devices live in Settings, and so does signing out:
+ * your note ("🍜 Lunch, back at 2"), then music, then your profile. Theme and devices live in Settings, and so does signing out:
  * a slip in a menu this close at hand would take you off the floor in front of
  * your team. A guest has no account settings, so a guest signs out here.
  */
@@ -134,6 +135,10 @@ export function YouMenu({
           )}
         </>
       )}
+
+      {/* Something to play while working, from Spotify; what plays shows on your card. */}
+      <MenuSeparator />
+      <MusicSection />
 
       <MenuSeparator />
       {isGuest ? (

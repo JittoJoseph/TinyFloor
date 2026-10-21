@@ -217,3 +217,63 @@
     opacity: 0.6;
   }
 }
+
+/* The seek bar under what's playing (app/Music.tsx): thin like Spotify's, filled
+   to where it is, its knob showing only when you reach for it. */
+.music-seek {
+  appearance: none;
+  height: 12px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.music-seek:disabled {
+  cursor: default;
+}
+
+.music-seek::-webkit-slider-runnable-track {
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--color-foreground) var(--share), color-mix(in oklab, var(--color-foreground) 16%, transparent) var(--share));
+}
+
+.music-seek::-moz-range-track {
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--color-foreground) var(--share), color-mix(in oklab, var(--color-foreground) 16%, transparent) var(--share));
+}
+
+.music-seek::-webkit-slider-thumb {
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  margin-top: -3.5px;
+  border-radius: 50%;
+  background: var(--color-foreground);
+  opacity: 0;
+  transition: opacity 120ms;
+}
+
+.music-seek::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-foreground);
+  opacity: 0;
+  transition: opacity 120ms;
+}
+
+.music-seek:hover:not(:disabled)::-webkit-slider-thumb,
+.music-seek:focus-visible::-webkit-slider-thumb {
+  opacity: 1;
+}
+
+.music-seek:hover:not(:disabled)::-moz-range-thumb,
+.music-seek:focus-visible::-moz-range-thumb {
+  opacity: 1;
+}
+
+.music-seek:focus-visible {
+  outline: none;
+}

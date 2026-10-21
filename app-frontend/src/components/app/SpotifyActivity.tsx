@@ -1,11 +1,10 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
 import { ArrowUpRight, Play } from "@/components/ui/icons";
-import { spotifyEmbed, type SpotifyShare } from "@shared/spotify";
-import { Dialog } from "@/components/ui/Dialog";
+import { spotifyUri, type SpotifyShare } from "@shared/spotify";
 import { useCloseMenu } from "@/components/ui/Menu";
+import { playMusic, useMusic } from "@/lib/music";
 import { cn } from "@/lib/utils";
 
 /** Spotify's own mark, as its brand guidelines ask: whole, unaltered, in its green or in one plain colour. */
@@ -17,61 +16,19 @@ export function SpotifyMark({ className }: { className?: string }) {
   );
 }
 
-/** What is open in the player, app-wide: a card closes as you click away from it, the player doesn't. */
-let playing: { share: SpotifyShare; name: string } | null = null;
-const listeners = new Set<() => void>();
-function play(next: typeof playing) {
-  playing = next;
-  listeners.forEach((listener) => listener());
-}
-const subscribe = (listener: () => void) => {
-  listeners.add(listener);
-  return () => listeners.delete(listener);
-};
-
 /**
- * Spotify's own player, for what someone on a card is listening to: it plays
- * on the account of whoever opened it (the whole song when they're signed in
- * to Spotify in this browser, a preview otherwise) and stops when it closes.
- * Spotify asks that nothing of theirs plays without its cover and name on
- * screen, so it plays only here, never out of sight. Mounted once, at the root.
- */
-export function SpotifyPlayer() {
-  const t = useTranslations("spotify");
-  const tc = useTranslations("common");
-  const open = useSyncExternalStore(
-    subscribe,
-    () => playing,
-    () => null,
-  );
-  const embed = open && spotifyEmbed(open.share);
-  // A single song or episode is the short player; a list shows its songs.
-  const tall = !!open && !["track", "episode"].includes(open.share.kind);
-  return (
-    <Dialog open={!!embed} onClose={() => play(null)} title={open ? t("playerTitle", { name: open.name }) : ""} closeLabel={tc("close")}>
-      {embed && (
-        <iframe
-          src={`${embed}?utm_source=generator`}
-          title={open.share.title ?? t("kinds.track")}
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          className={cn("mb-3 block w-full rounded-xl border-0", tall ? "h-[352px]" : "h-[152px]")}
-        />
-      )}
-    </Dialog>
-  );
-}
-
-/**
- * What someone is listening to, on their card: the cover and the name Spotify
- * gives it, a link back to it (Spotify asks for one wherever its content
- * shows), and Listen, which opens Spotify's player (SpotifyPlayer). A Jam has
- * nothing to show but itself, and joining happens in Spotify.
+ * What someone is playing, on their card: the cover, the name and who made
+ * it, a link back to it (Spotify asks for one wherever its content shows), and
+ * Listen, which plays it for you too (lib/music.ts), so it shows on your card
+ * as well. A Jam has nothing to show but itself, and joining happens in Spotify.
  */
 export function SpotifyActivity({ share, name, className }: { share: SpotifyShare; name: string; className?: string }) {
   const t = useTranslations("spotify");
   const closeCard = useCloseMenu();
-  const embed = spotifyEmbed(share);
+  const music = useMusic();
+  const playable = !!spotifyUri(share);
   const jam = share.kind === "jam";
+  const already = music.item?.url === share.url && (music.playing || music.loading);
 
   return (
     <div className={cn("rounded-xl bg-foreground/[0.04] p-2.5", className)}>
@@ -92,21 +49,22 @@ export function SpotifyActivity({ share, name, className }: { share: SpotifyShar
           <span className="block truncate text-[13px] font-semibold text-foreground group-hover:underline">
             {share.title ?? t("jamOf", { name })}
           </span>
-          <span className="block truncate text-[12px] text-muted-foreground">{jam ? t("jamNote") : t(`kinds.${share.kind}`)}</span>
+          <span className="block truncate text-[12px] text-muted-foreground">{jam ? t("jamNote") : (share.subtitle ?? t(`kinds.${share.kind}`))}</span>
         </span>
       </a>
       <div className="mt-2.5 flex gap-1.5">
-        {embed ? (
+        {playable ? (
           <button
             type="button"
+            disabled={already}
             onClick={() => {
               closeCard();
-              play({ share, name });
+              void playMusic(share);
             }}
-            className="inline-flex h-8 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-foreground text-[12.5px] font-medium text-background transition-colors hover:bg-foreground/85"
+            className="inline-flex h-8 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-foreground text-[12.5px] font-medium text-background transition-colors hover:bg-foreground/85 disabled:cursor-default disabled:bg-foreground/[0.06] disabled:text-foreground"
           >
-            <Play className="size-3.5" />
-            {t("listen")}
+            {already ? <SpotifyMark className="size-3.5 text-[#1ed760]" /> : <Play className="size-3.5" />}
+            {already ? t("playing") : t("listen")}
           </button>
         ) : null}
         <a
@@ -115,7 +73,7 @@ export function SpotifyActivity({ share, name, className }: { share: SpotifyShar
           rel="noopener noreferrer"
           className={cn(
             "inline-flex h-8 items-center justify-center gap-1.5 whitespace-nowrap rounded-lg px-3 text-[12.5px] font-medium transition-colors",
-            (jam || !embed) && "flex-1",
+            (jam || !playable) && "flex-1",
             jam ? "bg-foreground text-background hover:bg-foreground/85" : "bg-foreground/[0.06] text-foreground hover:bg-foreground/[0.1]",
           )}
         >

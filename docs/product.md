@@ -155,29 +155,36 @@ missing features on the map.
 - **The box's tools** are emoji, a picture (on a phone, the camera and
   gallery first) and a file, in that order, with send on the right.
 
-## Spotify (21 October)
+## Music, from Spotify (21 October)
 
-- **What you're listening to comes from a link, not from signing in to
-  Spotify.** Reading what someone plays needs Spotify's Web API, which since
-  February 2026 lets an app in development mode serve 5 accounts added by
-  hand; more needs extended quota, open only to registered businesses with
-  250,000 monthly users (since May 2025). Its policy also bars products made
-  for businesses, and its in-browser player needs written approval for
-  commercial use. So Settings › Integrations takes a song, album, playlist,
-  podcast or Jam link, and oEmbed (no key) gives its name and cover.
-- **A share lasts four hours**, so a card never says what someone played
-  yesterday; the link stays in settings to share again with one press.
-- **It shows where people look someone up**: the chat card, and a Spotify
-  button on the card you get walking up to someone on the floor. The demo
-  office shows none, since everyone there is a guest.
-- **Listen opens Spotify's own player in a dialog**, on the listener's own
-  account (whole songs when they're signed in to Spotify in that browser,
-  30-second previews otherwise), and closing it stops it. Spotify asks that
-  nothing of theirs plays without its cover and name on screen, and the
-  player needs about 300px, more than a card has.
-- **Listening together is Spotify's Jam**: a shared Jam link shows Join Jam,
-  and Spotify keeps everyone in step. We never sync playback ourselves;
-  Spotify's policy bars playing one source to many listeners.
+- **Music plays in TinyFloor, from your menu, not from signing in to
+  Spotify.** Reading what someone plays in Spotify needs its Web API, which
+  since February 2026 serves 5 hand-added accounts in development mode, is
+  "for personal, non-commercial" projects there, and needs the app owner on
+  Premium; more needs extended quota, open only to registered businesses with
+  250,000 monthly users. The same rules rule out search. So your menu offers
+  picks and a field for any Spotify link, and Spotify's oEmbed (no key) and
+  the Open Graph tags on its public pages give the name, cover and artist.
+- **One press to play.** The picks are The Office Theme first, then Spotify's
+  own work playlists (Deep Focus, lofi beats, Peaceful Piano, Jazz Vibes,
+  Chill Hits), with your recent plays above them, kept in the browser.
+- **Spotify's own player plays it, out of sight; our controls drive it**
+  through its iFrame API: play and pause, a seek bar with the time, change
+  and stop, in the menu, and the name with Spotify's mark on the dock's
+  second line while it plays. It keeps playing from page to page, not across
+  a reload. The player has to sit in the viewport, see-through: Chrome stops
+  one off screen (it also lazy-loads, so off screen it never loads) or behind
+  the page. Signed in to Spotify in that browser it plays whole songs;
+  otherwise 30-second previews, and the menu says so with a sign-in link.
+- **What plays shows on your card** (the chat card, and a Spotify button on
+  the card you get walking up to someone) while it plays: shared when it
+  starts, said again every 10 minutes, gone 30 seconds after a pause, and a
+  closed tab's lapses in 15. Signed in, Spotify's player reports the playlist
+  or album, not each song, so the card shows what was picked.
+- **Listen plays it for you too**, in your own player, so it shows on your
+  card as well. Never synced: Spotify's policy bars playing one source to many
+  listeners. Listening in step is Spotify's Jam: a pasted Jam link goes on
+  your card as Join Jam (starting one needs Premium).
 
 ## Small decisions worth remembering
 

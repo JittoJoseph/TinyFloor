@@ -15,6 +15,8 @@ import { cn } from "@/lib/utils";
 import { useMeetingName, useMyMeeting } from "@/components/meetings/hooks";
 import { useDockHoldsYou } from "./AppShell";
 import { YouMenu } from "./YouMenu";
+import { MusicLine } from "./Music";
+import { useMusic } from "@/lib/music";
 
 /**
  * You, at the foot of every column — the way Discord keeps you in the corner.
@@ -30,6 +32,7 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
   const { user } = useAuth();
   const status = useMyStatus();
   const note = useMyNote();
+  const music = useMusic();
   useDockHoldsYou();
   const { peers, meeting, micEnabled, cameraEnabled, speakerEnabled, screenStream } = useCall();
   const myMeeting = useMyMeeting();
@@ -106,8 +109,14 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
                 <span className="min-w-0 leading-[1.25]">
                   <span className="block truncate text-[13.5px] font-semibold text-foreground">{user.displayName}</span>
                   <span className="block truncate text-[12px] text-muted-foreground">
-                    {/* Your note says more than your status, so it takes the line when there is one. */}
-                    {note ? noteLine(note) : tStatus(`${status === "offline" ? "away" : status}.label`)}
+                    {/* What's playing takes the line while it plays; then your note, which says more than your status. */}
+                    {music.item && music.playing ? (
+                      <MusicLine />
+                    ) : note ? (
+                      noteLine(note)
+                    ) : (
+                      tStatus(`${status === "offline" ? "away" : status}.label`)
+                    )}
                   </span>
                 </span>
               </button>

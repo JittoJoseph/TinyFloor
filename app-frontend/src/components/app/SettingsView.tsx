@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Accessibility, ArrowLeft, Bell, Building2, ChevronRight, CreditCard, Headphones, KeyRound, Mic, Monitor, Moon, Puzzle, SlidersHorizontal, Sun, UserRound, Video } from "@/components/ui/icons";
+import { Accessibility, ArrowLeft, Bell, Building2, ChevronRight, CreditCard, Headphones, KeyRound, Mic, Monitor, Moon, SlidersHorizontal, Sun, UserRound, Video } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { locales, type Locale } from "@/lib/i18n/routing";
@@ -27,15 +27,13 @@ import { usePlace } from "./place";
 import { useOfficeMaybe } from "./OfficeShell";
 import { PlanSection } from "./PlanSection";
 import { Profile, SignIn } from "@/components/account/AccountView";
-import { Integrations } from "@/components/account/Integrations";
 
-type Section = "profile" | "signin" | "integrations" | "general" | "media" | "notifications" | "accessibility" | "office" | "plan";
-const SECTIONS: Section[] = ["profile", "signin", "integrations", "general", "media", "notifications", "accessibility", "office", "plan"];
+type Section = "profile" | "signin" | "general" | "media" | "notifications" | "accessibility" | "office" | "plan";
+const SECTIONS: Section[] = ["profile", "signin", "general", "media", "notifications", "accessibility", "office", "plan"];
 
 const ICONS: Record<Section, ReactNode> = {
   profile: <UserRound />,
   signin: <KeyRound />,
-  integrations: <Puzzle />,
   general: <SlidersHorizontal />,
   media: <Headphones />,
   notifications: <Bell />,
@@ -56,7 +54,7 @@ export function SettingsView() {
   const tp = useTranslations("office.profile");
   const place = usePlace();
   const { user } = useAuth();
-  const account: Section[] = user && !user.guest ? ["profile", "signin", "integrations"] : [];
+  const account: Section[] = user && !user.guest ? ["profile", "signin"] : [];
   const yours: Section[] = ["general", "media", "notifications", "accessibility"];
   const office: Section[] = place.kind === "office" ? ["office", "plan"] : [];
   const shown = [...account, ...yours, ...office];
@@ -71,7 +69,7 @@ export function SettingsView() {
   const section = (handHolds(chosen) ? chosen.one : linked) ?? "general";
   const picked = handHolds(pickedByHand) ? pickedByHand.shown : !!linked;
   const reduce = useReducedMotion();
-  const label = (one: Section) => (one === "profile" || one === "signin" || one === "integrations" ? tp(`sections.${one}`) : t(`sections.${one}`));
+  const label = (one: Section) => (one === "profile" || one === "signin" ? tp(`sections.${one}`) : t(`sections.${one}`));
 
   const choose = (one: Section) => {
     setSection({ one, at: hashed });
@@ -144,7 +142,6 @@ export function SettingsView() {
         <div className="mx-auto w-full max-w-2xl px-4 pb-16 pt-6 sm:px-8">
           {section === "profile" && <Profile />}
           {section === "signin" && <SignIn />}
-          {section === "integrations" && <Integrations />}
           {section === "general" && <General />}
           {section === "media" && <Media />}
           {section === "notifications" && <Notifications />}

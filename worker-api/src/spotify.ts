@@ -4,9 +4,10 @@ import type { Router } from "./router";
 import { requireAccount } from "./session";
 
 /**
- * What you're listening to on Spotify, from a link you paste (docs/product.md):
- * its name and cover come from Spotify's oEmbed, which needs no key, and stay
- * with your account until the share clears itself.
+ * What you play from Spotify in TinyFloor (docs/product.md): its name and cover
+ * come from Spotify's oEmbed, which needs no key, and who made it from the
+ * Open Graph tags on its public page, the ones link previews read. The player
+ * in your browser shares it while it plays and stops sharing when it stops.
  */
 
 /** Spotify's answers for a link barely change, so Cloudflare keeps them a day. */
@@ -22,7 +23,7 @@ export async function lookUp(value: unknown): Promise<Found> {
   for (let hop = 0; link && !link.kind && hop < MOST_HOPS; hop++) link = await follow(link.url);
   if (!link?.kind) throw new HttpError(400, "not_spotify", "Paste a link from Spotify: a song, album, playlist or Jam", "url");
   // A Jam is someone's live session: Spotify has nothing to say about it but the link.
-  if (link.kind === "jam") return { url: link.url, kind: "jam", title: null, image: null };
+  if (link.kind === "jam") return { url: link.url, kind: "jam", title: null, image: null, subtitle: null };
 
   const response = await fetch(`https://open.spotify.com/oembed?url=${encodeURIComponent(link.url)}`, {
     cf: { cacheTtl: LOOKUP_TTL_SECONDS, cacheEverything: true },
@@ -31,9 +32,41 @@ export async function lookUp(value: unknown): Promise<Found> {
     throw new HttpError(response && response.status < 500 ? 400 : 502, "spotify_unknown", "Spotify can't find that link", "url");
   }
   const found = (await response.json()) as { title?: unknown; thumbnail_url?: unknown };
-  const title = typeof found.title === "string" ? found.title.slice(0, 200) : null;
+  const title = typeof found.title === "string" ? found.title.trim().slice(0, 200) : null;
   const image = typeof found.thumbnail_url === "string" && /^https:\/\/[a-z0-9.-]+\.(scdn\.co|spotifycdn\.com)\//.test(found.thumbnail_url) ? found.thumbnail_url : null;
-  return { url: link.url, kind: link.kind, title, image };
+  const subtitle = MADE_BY.includes(link.kind) ? await madeBy(link.url) : null;
+  return { url: link.url, kind: link.kind, title, image, subtitle };
+}
+
+/** What has someone behind it worth naming: a song's or album's artist, an episode's show. */
+const MADE_BY = ["track", "album", "episode"];
+
+/**
+ * Who made it, from the first part of the page's description ("Pitbull · album · 2012"),
+ * which oEmbed leaves out. Nothing, rather than a failure, when the page won't say.
+ */
+async function madeBy(url: string): Promise<string | null> {
+  const response = await fetch(url, {
+    headers: { "User-Agent": "TinyFloor (+https://www.tinyfloor.com)" },
+    cf: { cacheTtl: LOOKUP_TTL_SECONDS, cacheEverything: true },
+  }).catch(() => null);
+  if (!response?.ok) return null;
+  const page = await response.text();
+  const description = /<meta property="og:description" content="([^"]*)"/.exec(page)?.[1];
+  const first = description?.split(" · ")[0]?.trim();
+  return first ? decodeEntities(first).slice(0, 120) : null;
+}
+
+/** The few entities a page's meta tags use. */
+function decodeEntities(text: string): string {
+  return text
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex: string) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, code: string) => String.fromCodePoint(Number(code)))
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&amp;/g, "&");
 }
 
 /**
@@ -55,6 +88,7 @@ export function shareFrom(row: {
   spotify_kind: string | null;
   spotify_title: string | null;
   spotify_image: string | null;
+  spotify_subtitle: string | null;
   spotify_until: number | null;
 }): SpotifyShare | null {
   if (!row.spotify_url || !row.spotify_kind || row.spotify_until === null) return null;
@@ -63,31 +97,33 @@ export function shareFrom(row: {
     kind: row.spotify_kind as SpotifyKind,
     title: row.spotify_title,
     image: row.spotify_image,
+    subtitle: row.spotify_subtitle,
     until: row.spotify_until,
   };
 }
 
 export function spotifyRoutes(router: Router): void {
   router
-    // What a link is, for the box you paste it into, before you share it.
+    // What a link is: for a pick or a pasted link, before it plays.
     .add("GET", "/v1/spotify", async ({ request, env, ctx }) => {
       await requireAccount(env, request, ctx);
       return json({ found: await lookUp(new URL(request.url).searchParams.get("url")) });
     })
 
+    // Playing it, or still playing it: said again every SPOTIFY_REFRESH_MS while it plays.
     .add("PUT", "/v1/me/spotify", async ({ request, env, ctx }) => {
       const user = await requireAccount(env, request, ctx);
       const found = await lookUp((await readJson(request)).url);
       const share: SpotifyShare = { ...found, until: Date.now() + SPOTIFY_SHARE_MS };
       await env.DB.prepare(
-        "UPDATE users SET spotify_url = ?, spotify_kind = ?, spotify_title = ?, spotify_image = ?, spotify_until = ? WHERE id = ?",
+        "UPDATE users SET spotify_url = ?, spotify_kind = ?, spotify_title = ?, spotify_image = ?, spotify_subtitle = ?, spotify_until = ? WHERE id = ?",
       )
-        .bind(share.url, share.kind, share.title, share.image, share.until, user.id)
+        .bind(share.url, share.kind, share.title, share.image, share.subtitle, share.until, user.id)
         .run();
       return json({ spotify: share });
     })
 
-    // Stops sharing. The link stays, so sharing it again is one press.
+    // It stopped. What it was stays, for your recent plays.
     .add("DELETE", "/v1/me/spotify", async ({ request, env, ctx }) => {
       const user = await requireAccount(env, request, ctx);
       await env.DB.prepare("UPDATE users SET spotify_until = 0 WHERE id = ?").bind(user.id).run();

@@ -444,8 +444,7 @@
       "sections": {
         "profile": "פרופיל",
         "signin": "התחברות",
-        "appearance": "מראה",
-        "integrations": "שילובים"
+        "appearance": "מראה"
       },
       "profileNote": "השם והקישור שלך, בכל מקום שנכנסים אליו.",
       "password": "סיסמה",
@@ -847,7 +846,6 @@
     "joinJam": "הצטרפות ל-Jam",
     "jamOf": "ה-Jam של {name}",
     "jamNote": "מאזינים יחד ב-Spotify",
-    "playerTitle": "למה {name} מאזינים",
     "kinds": {
       "track": "שיר",
       "album": "אלבום",
@@ -856,26 +854,22 @@
       "show": "פודקאסט",
       "artist": "אמן",
       "jam": "Jam"
-    }
+    },
+    "playing": "מתנגן"
   },
-  "integrations": {
-    "spotify": "Spotify",
-    "spotifyNote": "מה שאתם מאזינים לו, בכרטיס הפרופיל שלכם.",
-    "shareTitle": "לא משתפים כלום",
-    "shareNote": "שתפו שיר, אלבום, פלייליסט או Jam. זה יישאר בפרופיל שלכם ארבע שעות.",
-    "share": "שיתוף קישור",
-    "shareAgain": "שיתוף שוב",
+  "music": {
+    "title": "מוזיקה",
+    "play": "השמעת מוזיקה",
+    "close": "סגירה",
     "change": "שינוי",
-    "stop": "הפסקת השיתוף",
-    "until": "בפרופיל שלכם עד {time}",
-    "ended": "כבר לא בפרופיל שלכם",
-    "jam": "ה-Jam שלכם",
-    "dialogTitle": "שיתוף מ-Spotify",
-    "dialogNote": "האנשים במשרד יראו את זה כשיפתחו את הפרופיל שלכם, בארבע השעות הקרובות.",
-    "placeholder": "הדביקו קישור מ-Spotify",
-    "howTo": "ב-Spotify, פתחו את התפריט של שיר, אלבום או פלייליסט ובחרו שיתוף › העתקת קישור.",
+    "stop": "עצירה",
+    "pause": "השהיה",
+    "resume": "הפעלה",
+    "paste": "הדביקו קישור מ-Spotify",
     "notSpotify": "זה לא קישור של Spotify.",
-    "shareButton": "שיתוף",
-    "cancel": "ביטול"
+    "preview": "מושמעות דגימות.",
+    "signIn": "התחברות ל-Spotify",
+    "seek": "המיקום בשיר",
+    "yourJam": "ה-Jam שלכם"
   }
 }

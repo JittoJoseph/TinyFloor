@@ -66,6 +66,7 @@ interface SessionRow {
   spotify_kind: string | null;
   spotify_title: string | null;
   spotify_image: string | null;
+  spotify_subtitle: string | null;
   spotify_until: number | null;
   last_seen_at: number;
 }
@@ -138,7 +139,7 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
             u.google_sub IS NOT NULL AS has_google, u.link, u.introduced_at IS NOT NULL AS introduced, u.country,
             u.time_zone, u.time_zone_auto,
             u.status_emoji, u.status_text, u.status_until,
-            u.spotify_url, u.spotify_kind, u.spotify_title, u.spotify_image, u.spotify_until
+            u.spotify_url, u.spotify_kind, u.spotify_title, u.spotify_image, u.spotify_subtitle, u.spotify_until
      FROM sessions s JOIN users u ON u.id = s.user_id
      WHERE s.id = ? AND s.expires_at > ?`,
   )

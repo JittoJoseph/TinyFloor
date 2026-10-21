@@ -444,8 +444,7 @@
       "sections": {
         "profile": "Profiili",
         "signin": "Kirjautuminen",
-        "appearance": "Ulkoasu",
-        "integrations": "Integraatiot"
+        "appearance": "Ulkoasu"
       },
       "profileNote": "Nimesi ja linkkisi, minne ikinä astut.",
       "password": "Salasana",
@@ -847,7 +846,6 @@
     "joinJam": "Liity Jamiin",
     "jamOf": "Käyttäjän {name} Jam",
     "jamNote": "Kuunnelkaa yhdessä Spotifyssa",
-    "playerTitle": "Mitä {name} kuuntelee",
     "kinds": {
       "track": "Kappale",
       "album": "Albumi",
@@ -856,26 +854,22 @@
       "show": "Podcast",
       "artist": "Artisti",
       "jam": "Jam"
-    }
+    },
+    "playing": "Soi"
   },
-  "integrations": {
-    "spotify": "Spotify",
-    "spotifyNote": "Mitä kuuntelet, profiilikortissasi.",
-    "shareTitle": "Et jaa mitään",
-    "shareNote": "Jaa kappale, albumi, soittolista tai Jam. Se näkyy profiilissasi neljä tuntia.",
-    "share": "Jaa linkki",
-    "shareAgain": "Jaa uudelleen",
+  "music": {
+    "title": "Musiikki",
+    "play": "Soita musiikkia",
+    "close": "Sulje",
     "change": "Vaihda",
-    "stop": "Lopeta jakaminen",
-    "until": "Profiilissasi klo {time} asti",
-    "ended": "Ei enää profiilissasi",
-    "jam": "Jamisi",
-    "dialogTitle": "Jaa Spotifysta",
-    "dialogNote": "Toimistosi ihmiset näkevät sen avatessaan profiilisi seuraavan neljän tunnin ajan.",
-    "placeholder": "Liitä Spotify-linkki",
-    "howTo": "Avaa Spotifyssa kappaleen, albumin tai soittolistan valikko ja valitse Jaa › Kopioi linkki.",
+    "stop": "Lopeta",
+    "pause": "Tauko",
+    "resume": "Toista",
+    "paste": "Liitä Spotify-linkki",
     "notSpotify": "Tämä ei ole Spotify-linkki.",
-    "shareButton": "Jaa",
-    "cancel": "Peruuta"
+    "preview": "Soitetaan näytteitä.",
+    "signIn": "Kirjaudu Spotifyhin",
+    "seek": "Kohta kappaleessa",
+    "yourJam": "Jamisi"
   }
 }

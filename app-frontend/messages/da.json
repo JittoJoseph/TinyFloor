@@ -444,8 +444,7 @@
       "sections": {
         "profile": "Profil",
         "signin": "Log ind",
-        "appearance": "Udseende",
-        "integrations": "Integrationer"
+        "appearance": "Udseende"
       },
       "profileNote": "Dit navn og dit link, uanset hvor du går ind.",
       "password": "Adgangskode",
@@ -847,7 +846,6 @@
     "joinJam": "Deltag i Jam",
     "jamOf": "{name}s Jam",
     "jamNote": "Lyt sammen i Spotify",
-    "playerTitle": "Hvad {name} lytter til",
     "kinds": {
       "track": "Sang",
       "album": "Album",
@@ -856,26 +854,22 @@
       "show": "Podcast",
       "artist": "Kunstner",
       "jam": "Jam"
-    }
+    },
+    "playing": "Afspiller"
   },
-  "integrations": {
-    "spotify": "Spotify",
-    "spotifyNote": "Hvad du lytter til, på dit profilkort.",
-    "shareTitle": "Intet delt",
-    "shareNote": "Del en sang, et album, en playliste eller en Jam. Den bliver på din profil i fire timer.",
-    "share": "Del et link",
-    "shareAgain": "Del igen",
+  "music": {
+    "title": "Musik",
+    "play": "Afspil musik",
+    "close": "Luk",
     "change": "Skift",
-    "stop": "Stop med at dele",
-    "until": "På din profil indtil {time}",
-    "ended": "Ikke længere på din profil",
-    "jam": "Din Jam",
-    "dialogTitle": "Del fra Spotify",
-    "dialogNote": "Folk på dit kontor ser det, når de åbner din profil, de næste fire timer.",
-    "placeholder": "Indsæt et Spotify-link",
-    "howTo": "Åbn menuen for en sang, et album eller en playliste i Spotify, og vælg Del › Kopiér link.",
+    "stop": "Stop",
+    "pause": "Pause",
+    "resume": "Afspil",
+    "paste": "Indsæt et Spotify-link",
     "notSpotify": "Det er ikke et Spotify-link.",
-    "shareButton": "Del",
-    "cancel": "Annuller"
+    "preview": "Afspiller smagsprøver.",
+    "signIn": "Log ind på Spotify",
+    "seek": "Position i sangen",
+    "yourJam": "Din Jam"
   }
 }

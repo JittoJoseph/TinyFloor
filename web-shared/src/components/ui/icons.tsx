@@ -71,7 +71,6 @@ import {
   Moon02Icon,
   MoreHorizontalIcon,
   MusicNote01Icon,
-  PuzzleIcon,
   NextIcon,
   Notification01Icon,
   PaintBoardIcon,
@@ -223,7 +222,6 @@ export const MonitorX = icon(ComputerRemoveIcon, "MonitorX");
 export const Moon = icon(Moon02Icon, "Moon");
 export const MoreHorizontal = icon(MoreHorizontalIcon, "MoreHorizontal");
 export const Music2 = icon(MusicNote01Icon, "Music2");
-export const Puzzle = icon(PuzzleIcon, "Puzzle");
 export const Office = icon(Building03Icon, "Office");
 export const Palette = icon(PaintBoardIcon, "Palette");
 export const Pause = icon(PauseIcon, "Pause");

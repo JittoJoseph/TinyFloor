@@ -444,8 +444,7 @@
       "sections": {
         "profile": "Profil",
         "signin": "Inloggning",
-        "appearance": "Utseende",
-        "integrations": "Integrationer"
+        "appearance": "Utseende"
       },
       "profileNote": "Ditt namn och din länk, var du än går in.",
       "password": "Lösenord",
@@ -847,7 +846,6 @@
     "joinJam": "Gå med i Jam",
     "jamOf": "{name}s Jam",
     "jamNote": "Lyssna tillsammans i Spotify",
-    "playerTitle": "Vad {name} lyssnar på",
     "kinds": {
       "track": "Låt",
       "album": "Album",
@@ -856,26 +854,22 @@
       "show": "Podd",
       "artist": "Artist",
       "jam": "Jam"
-    }
+    },
+    "playing": "Spelas"
   },
-  "integrations": {
-    "spotify": "Spotify",
-    "spotifyNote": "Vad du lyssnar på, på ditt profilkort.",
-    "shareTitle": "Inget delat",
-    "shareNote": "Dela en låt, ett album, en spellista eller en Jam. Den ligger kvar på din profil i fyra timmar.",
-    "share": "Dela en länk",
-    "shareAgain": "Dela igen",
+  "music": {
+    "title": "Musik",
+    "play": "Spela musik",
+    "close": "Stäng",
     "change": "Ändra",
-    "stop": "Sluta dela",
-    "until": "På din profil till {time}",
-    "ended": "Inte längre på din profil",
-    "jam": "Din Jam",
-    "dialogTitle": "Dela från Spotify",
-    "dialogNote": "Folk på ditt kontor ser det när de öppnar din profil, de närmaste fyra timmarna.",
-    "placeholder": "Klistra in en Spotify-länk",
-    "howTo": "Öppna menyn för en låt, ett album eller en spellista i Spotify och välj Dela › Kopiera länk.",
+    "stop": "Stoppa",
+    "pause": "Pausa",
+    "resume": "Spela",
+    "paste": "Klistra in en Spotify-länk",
     "notSpotify": "Det där är ingen Spotify-länk.",
-    "shareButton": "Dela",
-    "cancel": "Avbryt"
+    "preview": "Spelar smakprov.",
+    "signIn": "Logga in på Spotify",
+    "seek": "Position i låten",
+    "yourJam": "Din Jam"
   }
 }

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Check, Eye, EyeOff, KeyRound, Palette, Puzzle, Search, UserRound } from "@/components/ui/icons";
+import { Check, Eye, EyeOff, KeyRound, Palette, Search, UserRound } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError } from "@/lib/api";
@@ -18,18 +18,16 @@ import { LitFace } from "@/components/ui/LitFace";
 import { CharacterPicker } from "@/components/entry/CharacterPicker";
 import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
 import { General, Group, Row } from "@/components/app/SettingsView";
-import { Integrations } from "./Integrations";
 
-type Section = "profile" | "signin" | "integrations" | "appearance";
+type Section = "profile" | "signin" | "appearance";
 
 const ICONS: Record<Section, ReactNode> = {
   profile: <UserRound />,
   signin: <KeyRound />,
-  integrations: <Puzzle />,
   appearance: <Palette />,
 };
 
-const SECTIONS: Section[] = ["profile", "signin", "integrations", "appearance"];
+const SECTIONS: Section[] = ["profile", "signin", "appearance"];
 
 /**
  * Your account: who you are to everyone else, how you sign in, and how the
@@ -79,11 +77,7 @@ export function AccountView() {
       </div>
 
       <div className="mt-8 flex sm:justify-center">
-        {/* On a phone the tabs take the room their names need, scrolling sideways if they must, never cut short. */}
-        <div
-          role="tablist"
-          className="flex w-full gap-0.5 overflow-x-auto rounded-full border border-border bg-card/60 p-1 [scrollbar-width:none] sm:grid sm:w-auto sm:grid-cols-4 sm:gap-1"
-        >
+        <div role="tablist" className="grid w-full grid-cols-3 gap-1 rounded-full border border-border bg-card/60 p-1 sm:w-auto">
           {SECTIONS.map((one) => (
             <button
               key={one}
@@ -92,7 +86,7 @@ export function AccountView() {
               aria-selected={section === one}
               onClick={() => open(one)}
               className={cn(
-                "relative flex h-9 flex-1 shrink-0 cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-full px-2 text-[13.5px] transition-colors sm:min-w-0 sm:px-4 [&_svg]:size-4",
+                "relative flex h-9 min-w-0 cursor-pointer items-center justify-center gap-2 rounded-full px-3 text-[13.5px] transition-colors sm:px-4 [&_svg]:size-4",
                 section === one ? "font-medium text-foreground" : "text-muted-foreground hover:text-foreground",
               )}
             >
@@ -112,7 +106,6 @@ export function AccountView() {
       <div role="tabpanel" className="mt-10">
         {section === "profile" && <Profile />}
         {section === "signin" && <SignIn />}
-        {section === "integrations" && <Integrations />}
         {section === "appearance" && <General />}
       </div>
     </div>

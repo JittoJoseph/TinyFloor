@@ -284,7 +284,7 @@ export function authRoutes(router: Router): void {
     .add("GET", "/v1/people/:id", async ({ request, env, ctx, params }) => {
       await requireUser(env, request, ctx);
       const person = await env.DB.prepare(
-        `SELECT id, display_name, link, is_guest, time_zone, spotify_url, spotify_kind, spotify_title, spotify_image, spotify_until
+        `SELECT id, display_name, link, is_guest, time_zone, spotify_url, spotify_kind, spotify_title, spotify_image, spotify_subtitle, spotify_until
            FROM users WHERE id = ?`,
       )
         .bind(params.id)
@@ -298,6 +298,7 @@ export function authRoutes(router: Router): void {
           spotify_kind: string | null;
           spotify_title: string | null;
           spotify_image: string | null;
+          spotify_subtitle: string | null;
           spotify_until: number | null;
         }>();
       if (!person) throw new HttpError(404, "not_found", "No such person");

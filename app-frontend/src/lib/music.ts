@@ -42,7 +42,11 @@ interface PlaybackUpdate {
 }
 
 interface IFrameApi {
-  createController(element: HTMLElement, options: { uri: string; width: number; height: number }, ready: (controller: Controller) => void): void;
+  createController(
+    element: HTMLElement,
+    options: { uri: string; width: number; height: number },
+    ready: (controller: Controller) => void,
+  ): void;
 }
 
 declare global {
@@ -131,10 +135,16 @@ function player(uri: string): Promise<Controller> {
   return controllerReady;
 }
 
+/** Whether the last word from the player had a song playing in its last seconds: then a pause is its end. */
+let nearEnd = false;
+
 /** What Spotify's player says it is doing, several times a second while it plays. */
 function heard(update: PlaybackUpdate) {
   time = { position: update.position, duration: update.duration };
   const playing = !update.isPaused;
+  const ended = nearEnd && !playing && now.playing;
+  nearEnd = playing && update.duration > 0 && update.duration - update.position < 2500;
+  if (ended && now.item?.kind === "track") void playOn(now.item);
   const preview = update.duration > PREVIEW_MS.min && update.duration <= PREVIEW_MS.max;
   if (playing !== now.playing || preview !== now.preview || (now.loading && (playing || update.duration > 0))) {
     setNow({ playing, preview, loading: now.loading && !playing });
@@ -144,9 +154,13 @@ function heard(update: PlaybackUpdate) {
   }
 }
 
-/** Plays something, from a press: a pick, a pasted link, or Listen on someone's card. */
-export async function playMusic(item: MusicItem) {
-  remember(item);
+/**
+ * Plays something, from a press: a pick, a pasted link, or Listen on someone's
+ * card. What was chosen goes first in the picks next time; what played on by
+ * itself doesn't.
+ */
+export async function playMusic(item: MusicItem, chosen = true) {
+  if (chosen) remember(item);
   if (item.kind === "jam") {
     // A Jam plays in Spotify; here it goes on your card for others to join.
     controller?.pause();
@@ -162,6 +176,21 @@ export async function playMusic(item: MusicItem) {
   const made = controller;
   if (made) made.loadUri(uri);
   else await player(uri);
+}
+
+/**
+ * When a song ends, its artist's best-known songs play on, one after another,
+ * the nearest thing to radio Spotify's player offers. An album or playlist
+ * plays through on its own and stops at its end.
+ */
+async function playOn(song: MusicItem) {
+  try {
+    const artist = song.artist ?? (await api.lookUpSpotify(song.url)).found.artist;
+    // Something else was picked meanwhile: that wins.
+    if (!artist || now.item?.url !== song.url) return;
+    const { found } = await api.lookUpSpotify(artist);
+    if (now.item?.url === song.url) void playMusic(found, false);
+  } catch {}
 }
 
 export function toggleMusic() {
@@ -193,6 +222,7 @@ function sharing(playing: boolean) {
 }
 
 function share(url: string) {
+  setListening(now.item?.kind !== "jam");
   if (sharedUrl !== url) {
     sharedUrl = url;
     void api.shareSpotify(url).then(mine, () => {});
@@ -204,10 +234,20 @@ function share(url: string) {
 function unshare() {
   clearInterval(refreshTimer);
   clearTimeout(pauseTimer);
+  setListening(false);
   if (!sharedUrl) return;
   sharedUrl = null;
   void api.stopSpotify().then(mine, () => {});
 }
+
+/** Playing, for the mark on your name tag: the floor hears it from your own socket (GameScene listens for `listeningChange`). */
+let listening = false;
+function setListening(on: boolean) {
+  if (on === listening) return;
+  listening = on;
+  window.dispatchEvent(new CustomEvent("listeningChange", { detail: { on } }));
+}
+export const isListening = () => listening;
 
 /** Your own card shows the change at once. */
 let myId: string | null = null;
@@ -239,10 +279,18 @@ const serverNow: MusicNow = { item: null, playing: false, loading: false, previe
 const serverTime: MusicTime = { position: 0, duration: 0 };
 
 export function useMusic(): MusicNow {
-  return useSyncExternalStore(subscribe, () => now, () => serverNow);
+  return useSyncExternalStore(
+    subscribe,
+    () => now,
+    () => serverNow,
+  );
 }
 
 /** Where it is in what's playing: changes several times a second, so only the seek bar reads it. */
 export function useMusicTime(): MusicTime {
-  return useSyncExternalStore(subscribe, () => time, () => serverTime);
+  return useSyncExternalStore(
+    subscribe,
+    () => time,
+    () => serverTime,
+  );
 }

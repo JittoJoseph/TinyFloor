@@ -107,6 +107,8 @@ export interface PlayerState {
   seat: number | null;
   /** Their status note, while it lasts. */
   note?: StatusNote | null;
+  /** Playing music from Spotify in TinyFloor: a mark on their name tag says so. */
+  listening?: boolean;
 }
 
 /** A desk that is someone's own in an office (docs/product.md): they arrive sitting at it, and nobody else sits there. */
@@ -245,6 +247,8 @@ export type ClientMessage =
   | { t: "status"; status: PresenceStatus }
   /** Your status note changed (the API keeps it; this tells the floor). */
   | { t: "note"; note: StatusNote | null }
+  /** You started or stopped playing music (the API keeps what it is; this marks your name tag). */
+  | { t: "listening"; on: boolean }
   /**
    * Your name changed while you're on the demo office's floor, signing up with
    * Google from it (the API keeps it; this tells the floor, without walking out and back in).
@@ -314,6 +318,7 @@ export type ServerMessage =
   | { t: "meeting_error"; code: MeetingErrorCode }
   | { t: "status"; id: string; status: PresenceStatus }
   | { t: "note"; id: string; note: StatusNote | null }
+  | { t: "listening"; id: string; on: boolean }
   | { t: "renamed"; id: string; name: string }
   | { t: "board_state"; strokes: BoardStroke[] }
   | ({ t: "board_draw"; by: string } & BoardStroke)

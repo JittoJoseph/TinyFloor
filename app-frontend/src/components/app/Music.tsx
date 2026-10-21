@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link2, X } from "@/components/ui/icons";
+import { Link2 } from "@/components/ui/icons";
 import { MenuRow } from "@/components/ui/MenuViews";
 import { spotifyLink } from "@shared/spotify";
 import { api } from "@/lib/api";
@@ -29,7 +29,14 @@ const ROWS = 6;
 /** Picks as Spotify names them, asked once a session. */
 const named = new Map<string, Promise<MusicItem | null>>();
 function lookUp(url: string): Promise<MusicItem | null> {
-  if (!named.has(url)) named.set(url, api.lookUpSpotify(url).then(({ found }) => found, () => null));
+  if (!named.has(url))
+    named.set(
+      url,
+      api.lookUpSpotify(url).then(
+        ({ found }) => found,
+        () => null,
+      ),
+    );
   return named.get(url)!;
 }
 
@@ -52,7 +59,7 @@ export function MusicRow({ open, onToggle }: { open: boolean; onToggle: () => vo
   if (!item) {
     return (
       <MenuRow icon={<SpotifyMark className="text-[#1ed760]" />} onClick={onToggle} open={open}>
-        {t("play")}
+        {open ? t("title") : t("play")}
       </MenuRow>
     );
   }
@@ -78,9 +85,12 @@ export function MusicRow({ open, onToggle }: { open: boolean; onToggle: () => vo
       }
     >
       <span className="block truncate">{item.title ?? t("yourJam")}</span>
-      <span className="block truncate text-[11.5px] text-muted-foreground">
-        {jam ? ts("jamNote") : (item.subtitle ?? ts(`kinds.${item.kind}`))}
-      </span>
+      {/* Who made it, once it's open; folded, the row stays one line like the others. */}
+      {open && (
+        <span className="block truncate text-[11.5px] text-muted-foreground">
+          {jam ? ts("jamNote") : (item.subtitle ?? ts(`kinds.${item.kind}`))}
+        </span>
+      )}
     </MenuRow>
   );
 }
@@ -256,20 +266,28 @@ function Playing({ item }: { item: MusicItem }) {
         ) : (
           <Seek />
         )}
+        {/* A square: stop, as on every player. An × would read as closing the menu. */}
         <button
           type="button"
           onClick={stopMusic}
           aria-label={t("stop")}
           title={t("stop")}
-          className="-me-1 flex size-6 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/[0.08] hover:text-foreground"
+          className="-me-1 flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/[0.08] hover:text-foreground"
         >
-          <X className="size-3.5" />
+          <svg viewBox="0 0 16 16" className="size-[11px]" fill="currentColor" aria-hidden>
+            <rect x="2.5" y="2.5" width="11" height="11" rx="2" />
+          </svg>
         </button>
       </div>
       {preview && (
         <p className="pb-0.5 text-[11px] text-muted-foreground">
           {t("preview")}{" "}
-          <a href={SIGN_IN} target="_blank" rel="noopener noreferrer" className="font-medium text-foreground underline-offset-2 hover:underline">
+          <a
+            href={SIGN_IN}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-foreground underline-offset-2 hover:underline"
+          >
             {t("signIn")}
           </a>
         </p>

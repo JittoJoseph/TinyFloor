@@ -834,7 +834,8 @@
       "presenting": "מציג",
       "call": "בשיחה",
       "night": "לילה"
-    }
+    },
+    "clearShort": "ניקוי"
   },
   "welcome": {
     "title": "ברוכים הבאים ל־{office}",

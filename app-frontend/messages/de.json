@@ -834,7 +834,8 @@
       "presenting": "Präsentieren",
       "call": "Im Telefonat",
       "night": "Nacht"
-    }
+    },
+    "clearShort": "Löschen"
   },
   "welcome": {
     "title": "Willkommen bei {office}",

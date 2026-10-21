@@ -88,3 +88,23 @@ describe("a new name on the demo office's floor", () => {
     expect(ava.messages.some((message) => message.t === "renamed")).toBe(false);
   });
 });
+
+describe("music on the name tag", () => {
+  it("says who started playing, keeps it for whoever arrives, and says when they stop", async () => {
+    const room = uniqueRoom();
+    const ava = await Client.open(room, { sub: "ava" });
+    await ava.next("welcome");
+    const ben = await Client.open(room, { sub: "ben" });
+    await ben.next("welcome");
+
+    ava.send({ t: "listening", on: true });
+    expect(await ben.next("listening")).toEqual({ t: "listening", id: "ava", on: true });
+
+    const cy = await Client.open(room, { sub: "cy" });
+    const welcome = await cy.next("welcome");
+    expect(welcome.players.find((player: { id: string }) => player.id === "ava")?.listening).toBe(true);
+
+    ava.send({ t: "listening", on: false });
+    expect(await cy.next("listening")).toEqual({ t: "listening", id: "ava", on: false });
+  });
+});

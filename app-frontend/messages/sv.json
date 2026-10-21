@@ -834,7 +834,8 @@
       "presenting": "Presenterar",
       "call": "I samtal",
       "night": "Natt"
-    }
+    },
+    "clearShort": "Rensa"
   },
   "welcome": {
     "title": "Välkommen till {office}",

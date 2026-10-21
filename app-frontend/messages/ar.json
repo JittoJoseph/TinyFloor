@@ -834,7 +834,8 @@
       "presenting": "عرض تقديمي",
       "call": "في مكالمة",
       "night": "ليل"
-    }
+    },
+    "clearShort": "مسح"
   },
   "welcome": {
     "title": "مرحبًا بك في {office}",

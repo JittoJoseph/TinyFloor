@@ -34,8 +34,8 @@ export async function lookUp(value: unknown): Promise<Found> {
   const found = (await response.json()) as { title?: unknown; thumbnail_url?: unknown };
   const title = typeof found.title === "string" ? found.title.trim().slice(0, 200) : null;
   const image = typeof found.thumbnail_url === "string" && /^https:\/\/[a-z0-9.-]+\.(scdn\.co|spotifycdn\.com)\//.test(found.thumbnail_url) ? found.thumbnail_url : null;
-  const subtitle = MADE_BY.includes(link.kind) ? await madeBy(link.url) : null;
-  return { url: link.url, kind: link.kind, title, image, subtitle };
+  const facts = MADE_BY.includes(link.kind) ? await pageFacts(link.url) : { subtitle: null, artist: null };
+  return { url: link.url, kind: link.kind, title, image, subtitle: facts.subtitle, ...(link.kind === "track" ? { artist: facts.artist } : {}) };
 }
 
 /** What has someone behind it worth naming: a song's or album's artist, an episode's show. */
@@ -43,18 +43,20 @@ const MADE_BY = ["track", "album", "episode"];
 
 /**
  * Who made it, from the first part of the page's description ("Pitbull · album · 2012"),
- * which oEmbed leaves out. Nothing, rather than a failure, when the page won't say.
+ * which oEmbed leaves out, and a song's artist as a link. Nothing, rather than a
+ * failure, when the page won't say.
  */
-async function madeBy(url: string): Promise<string | null> {
+async function pageFacts(url: string): Promise<{ subtitle: string | null; artist: string | null }> {
   const response = await fetch(url, {
     headers: { "User-Agent": "TinyFloor (+https://www.tinyfloor.com)" },
     cf: { cacheTtl: LOOKUP_TTL_SECONDS, cacheEverything: true },
   }).catch(() => null);
-  if (!response?.ok) return null;
+  if (!response?.ok) return { subtitle: null, artist: null };
   const page = await response.text();
   const description = /<meta property="og:description" content="([^"]*)"/.exec(page)?.[1];
   const first = description?.split(" · ")[0]?.trim();
-  return first ? decodeEntities(first).slice(0, 120) : null;
+  const musician = /<meta name="music:musician" content="(https:\/\/open\.spotify\.com\/artist\/[A-Za-z0-9]+)"/.exec(page)?.[1] ?? null;
+  return { subtitle: first ? decodeEntities(first).slice(0, 120) : null, artist: musician };
 }
 
 /** The few entities a page's meta tags use. */

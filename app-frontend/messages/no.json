@@ -834,7 +834,8 @@
       "presenting": "Presenterer",
       "call": "I en samtale",
       "night": "Natt"
-    }
+    },
+    "clearShort": "Fjern"
   },
   "welcome": {
     "title": "Velkommen til {office}",

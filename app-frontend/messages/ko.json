@@ -834,7 +834,8 @@
       "presenting": "발표",
       "call": "통화 중",
       "night": "밤"
-    }
+    },
+    "clearShort": "지우기"
   },
   "welcome": {
     "title": "{office}에 오신 걸 환영해요",

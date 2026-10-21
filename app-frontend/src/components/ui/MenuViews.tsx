@@ -66,6 +66,8 @@ export function MenuRow({
   onClick,
   open = false,
   action,
+  actionWidth = "w-7",
+  actionOnHover = false,
   label,
 }: {
   icon: ReactNode;
@@ -76,6 +78,13 @@ export function MenuRow({
   open?: boolean;
   /** A small control of its own on the right (play, clear), pressed without opening the choices. */
   action?: ReactNode;
+  /** Room kept for it. */
+  actionWidth?: string;
+  /**
+   * The control shows only where the pointer is, in place of the hint (a note's
+   * time gives way to Clear); a finger, which can't hover, always sees it.
+   */
+  actionOnHover?: boolean;
   label?: string;
 }) {
   return (
@@ -91,18 +100,37 @@ export function MenuRow({
           onClick && "cursor-pointer hover:bg-muted focus-visible:bg-muted",
         )}
       >
-        <span className="flex size-4 shrink-0 items-center justify-center text-muted-foreground [&_svg]:size-4">{icon}</span>
+        <span className="flex size-5 shrink-0 items-center justify-center text-muted-foreground [&_svg]:size-4">{icon}</span>
         <span className="min-w-0 flex-1">{children}</span>
-        {hint && <span className="shrink-0 text-[12px] text-faint">{hint}</span>}
+        {hint && (
+          <span
+            className={cn(
+              "shrink-0 text-[12px] text-faint transition-opacity",
+              actionOnHover && "[@media(hover:hover)]:group-hover:opacity-0 [@media(hover:none)]:hidden",
+            )}
+          >
+            {hint}
+          </span>
+        )}
         {/* Room for the row's own control, which sits over the button. */}
-        {action && <span aria-hidden className="w-7 shrink-0" />}
+        {action && <span aria-hidden className={cn(actionWidth, "shrink-0", actionOnHover && "[@media(hover:hover)]:hidden")} />}
         {onClick && (
           <ChevronDown
             className={cn("size-3.5 shrink-0 text-faint transition-transform duration-200", open && "rotate-180 text-muted-foreground")}
           />
         )}
       </button>
-      {action && <span className="absolute end-7 top-1/2 -translate-y-1/2">{action}</span>}
+      {action && (
+        <span
+          className={cn(
+            "absolute end-7 top-1/2 -translate-y-1/2",
+            actionOnHover &&
+              "transition-opacity focus-within:opacity-100 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:opacity-100",
+          )}
+        >
+          {action}
+        </span>
+      )}
     </div>
   );
 }

@@ -189,7 +189,15 @@ missing features on the map.
   the Open Graph tags on its public pages give the name, cover and artist.
 - **One press to play.** The picks are The Office Theme first, then Spotify's
   own work playlists (Deep Focus, lofi beats, Peaceful Piano, Jazz Vibes,
-  Chill Hits), with your recent plays above them, kept in the browser.
+  Chill Hits), with what you chose lately above them (up to 4, kept in the
+  browser), so the list turns into your own as you listen.
+- **A song plays on into its artist's best-known songs** when it ends. Spotify
+  offers no radio or "up next" to anything but its own apps; the artist,
+  from the song page's `music:musician` tag, is the nearest. An album or
+  playlist plays through and stops. What plays on by itself stays out of the
+  recent list.
+- **On your name tag, three small bars** while you play something, so people
+  walking past on the floor see it without opening your card.
 - **Spotify's own player plays it, out of sight; our controls drive it**
   through its iFrame API: play and pause, a seek bar with the time, change
   and stop, in the menu, and the name with Spotify's mark on the dock's

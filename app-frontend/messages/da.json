@@ -834,7 +834,8 @@
       "presenting": "Præsenterer",
       "call": "I et opkald",
       "night": "Nat"
-    }
+    },
+    "clearShort": "Ryd"
   },
   "welcome": {
     "title": "Velkommen til {office}",

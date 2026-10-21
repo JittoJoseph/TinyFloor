@@ -71,6 +71,54 @@
 }
 
 .plate[data-folded] .plate-name,
+/* Playing music (SceneLabel.setListening): three bars in Spotify's green. */
+.plate-music {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 1.5px;
+  height: 9px;
+  margin-inline-start: 2px;
+}
+
+.plate-music[hidden] {
+  display: none;
+}
+
+.plate-music i {
+  width: 2px;
+  height: 100%;
+  border-radius: 1px;
+  background: #1ed760;
+  transform-origin: bottom;
+  animation: plate-music 0.9s ease-in-out infinite;
+}
+
+.plate-music i:nth-child(2) {
+  animation-delay: -0.3s;
+}
+
+.plate-music i:nth-child(3) {
+  animation-delay: -0.6s;
+}
+
+@keyframes plate-music {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .plate-music i {
+    animation: none;
+    transform: scaleY(0.7);
+  }
+}
+
+.plate[data-folded] .plate-music,
 .plate[data-folded] .plate-icon {
   display: none;
 }

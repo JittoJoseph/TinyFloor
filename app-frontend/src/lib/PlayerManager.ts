@@ -283,6 +283,11 @@ export class PlayerManager {
    * Someone's status note: its emoji on their tag while it lasts, gone when its
    * time is up (and `expired` is told, so the lists can follow).
    */
+  /** Music playing for them in TinyFloor: a small moving mark on their name tag. */
+  updatePlayerListening(id: string, on: boolean) {
+    this.nameTags.get(id)?.setListening(on);
+  }
+
   updatePlayerNote(id: string, note: StatusNote | null | undefined, expired?: () => void) {
     this.noteTimers.get(id)?.remove();
     this.noteTimers.delete(id);

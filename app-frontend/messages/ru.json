@@ -834,7 +834,8 @@
       "presenting": "Выступаю",
       "call": "На звонке",
       "night": "Ночь"
-    }
+    },
+    "clearShort": "Убрать"
   },
   "welcome": {
     "title": "Добро пожаловать в {office}",

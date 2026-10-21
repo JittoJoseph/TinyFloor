@@ -20,7 +20,10 @@ beforeEach(() => {
       return new Response("not found", { status: 404 });
     }
     if (url.href === "https://open.spotify.com/track/70cHKK8bHAfJrOGVnfRG9J") {
-      return new Response('<meta property="og:description" content="Beyonc&#xe9; &amp; Friends · An Album · Song · 2024"/>');
+      return new Response(
+        '<meta property="og:description" content="Beyonc&#xe9; &amp; Friends · An Album · Song · 2024"/>' +
+          '<meta name="music:musician" content="https://open.spotify.com/artist/6vWDO969PvNqNYHIOW5v0m"/>',
+      );
     }
     if (url.href === "https://spotify.link/AbCdEf1234") {
       return new Response(null, { status: 307, headers: { Location: "https://open.spotify.com/socialsession/5f9a7c3e2b1d4e6f8a0b" } });
@@ -80,6 +83,9 @@ describe("sharing what you're playing", () => {
 
     const song = await call<{ spotify: Share }>(ada, "PUT", "/v1/me/spotify", { url: "spotify:track:70cHKK8bHAfJrOGVnfRG9J" });
     expect(song.body.spotify).toMatchObject({ title: "A song", image: null, subtitle: "Beyoncé & Friends" });
+    // What plays when the song ends.
+    const looked = await call<{ found: Share & { artist: string } }>(ada, "GET", "/v1/spotify?url=spotify:track:70cHKK8bHAfJrOGVnfRG9J");
+    expect(looked.body.found.artist).toBe("https://open.spotify.com/artist/6vWDO969PvNqNYHIOW5v0m");
   });
 
   it("refuses what isn't a Spotify link, and guests", async () => {

@@ -834,7 +834,8 @@
       "presenting": "Presenteren",
       "call": "In gesprek",
       "night": "Nacht"
-    }
+    },
+    "clearShort": "Wissen"
   },
   "welcome": {
     "title": "Welkom bij {office}",

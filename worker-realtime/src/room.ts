@@ -76,6 +76,8 @@ interface Attachment {
   status: PresenceStatus;
   /** Their status note, as the API keeps it; the room only passes it on. */
   note?: StatusNote | null;
+  /** Playing music in TinyFloor, for the mark on their name tag. */
+  listening?: boolean;
   seat: number | null;
   meeting: string | null;
   /** When this person joined their meeting, for usage totals and the meeting's clock. */
@@ -350,6 +352,9 @@ export class Room extends DurableObject<Env> {
       case "note":
         this.setNote(me, message.note);
         break;
+      case "listening":
+        this.setListening(me, message.on);
+        break;
       case "rename":
         this.rename(me, message.name);
         break;
@@ -500,6 +505,14 @@ export class Room extends DurableObject<Env> {
   }
 
   /** A status note changed: the API has kept it, and everyone here sees it now. */
+  private setListening(me: Attachment, on: unknown): void {
+    if (!this.takeAction(me)) return;
+    const listening = on === true;
+    if (listening === !!me.listening) return;
+    me.listening = listening;
+    this.broadcast({ t: "listening", id: me.userId, on: listening });
+  }
+
   private setNote(me: Attachment, note: unknown): void {
     if (!this.takeAction(me) || me.guest) return;
     me.note = cleanNote(note);
@@ -1196,6 +1209,7 @@ function playerState(attachment: Attachment): PlayerState {
     guest: attachment.guest,
     seat: attachment.seat,
     note: liveNote(attachment.note),
+    ...(attachment.listening ? { listening: true } : {}),
   };
 }
 

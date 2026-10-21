@@ -834,7 +834,8 @@
       "presenting": "発表",
       "call": "通話中",
       "night": "夜"
-    }
+    },
+    "clearShort": "消去"
   },
   "welcome": {
     "title": "{office}へようこそ",

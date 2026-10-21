@@ -834,7 +834,8 @@
       "presenting": "Esitys",
       "call": "Puhelussa",
       "night": "Yö"
-    }
+    },
+    "clearShort": "Tyhjennä"
   },
   "welcome": {
     "title": "Tervetuloa: {office}",

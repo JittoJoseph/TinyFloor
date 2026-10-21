@@ -39,6 +39,7 @@ export class SceneLabel {
   private readonly name: HTMLSpanElement;
   private readonly dotEl?: HTMLSpanElement;
   private iconEl?: HTMLSpanElement;
+  private musicEl?: HTMLSpanElement;
   private icon: NoteIcon | null = null;
   private full = "";
   private folded = false;
@@ -68,7 +69,8 @@ export class SceneLabel {
   /** How wide it is with its name showing, in the floor's units before scaling. */
   get fullWidth(): number {
     const icon = this.icon ? 15 : 0;
-    return measure(this.name.textContent ?? "", FONT) + (this.tag ? 22 : 18) + icon;
+    const music = this.musicEl && !this.musicEl.hidden ? 13 : 0;
+    return measure(this.name.textContent ?? "", FONT) + (this.tag ? 22 : 18) + icon + music;
   }
 
   /** The note's icon at the tag's end, or none. */
@@ -82,6 +84,19 @@ export class SceneLabel {
     }
     this.iconEl.innerHTML = icon ? noteIconSvg(icon) : "";
     this.iconEl.hidden = !icon;
+    return this;
+  }
+
+  /** Three bars moving to the music while they play some, after the name and the note's icon. */
+  setListening(on: boolean): this {
+    if (!this.tag || (!on && !this.musicEl)) return this;
+    if (!this.musicEl) {
+      this.musicEl = document.createElement("span");
+      this.musicEl.className = "plate-music";
+      this.musicEl.append(document.createElement("i"), document.createElement("i"), document.createElement("i"));
+      this.root.appendChild(this.musicEl);
+    }
+    this.musicEl.hidden = !on;
     return this;
   }
 

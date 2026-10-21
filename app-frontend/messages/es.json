@@ -834,7 +834,8 @@
       "presenting": "Presentando",
       "call": "En una llamada",
       "night": "Noche"
-    }
+    },
+    "clearShort": "Borrar"
   },
   "welcome": {
     "title": "Bienvenido a {office}",

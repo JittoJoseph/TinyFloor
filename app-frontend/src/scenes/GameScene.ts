@@ -183,6 +183,10 @@ class GameScene extends Phaser.Scene {
       this.wsManager.send({ t: "note", note: event.detail.note });
       this.playerManager.updatePlayerNote(this.playerId, event.detail.note);
     });
+    this.listen("listeningChange", (event: CustomEvent<{ on: boolean }>) => {
+      this.wsManager.send({ t: "listening", on: event.detail.on });
+      this.playerManager.updatePlayerListening(this.playerId, event.detail.on);
+    });
     this.listen(WAVE_EVENT, (event: CustomEvent<{ id: string }>) => this.wsManager.send({ t: "wave", to: event.detail.id }));
     this.listen("chatFocused", () => this.movementManager.setInputEnabled(false));
     this.listen("chatBlurred", () => this.movementManager.setInputEnabled(true));

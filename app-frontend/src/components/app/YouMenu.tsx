@@ -114,7 +114,8 @@ export function YouMenu({
             open={open === "status"}
             hint={inCall ? tStatus("in_call.description") : undefined}
           >
-            {tStatus(`${shownStatus}.label`)}
+            {/* Open, it heads the choices, which say what each one is. */}
+            {open === "status" ? t("status") : tStatus(`${shownStatus}.label`)}
           </MenuRow>
           <MenuExpand open={open === "status"}>
             {STATUSES.map((one) => (

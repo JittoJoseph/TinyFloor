@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
-import { ArrowUp, SmilePlus, X } from "@/components/ui/icons";
+import { ArrowUp, Check, PenLine } from "@/components/ui/icons";
 import { STATUS_NOTE_MAX, type NoteIcon, type StatusNote } from "@shared/messages";
 import { NOTE_ICON_LIST, NoteGlyph } from "@/lib/noteIcons";
 import { saveMyNote } from "@/lib/floor";
@@ -61,6 +61,22 @@ export function NoteText({ note, className }: { note: StatusNote; className?: st
   );
 }
 
+/**
+ * How long a note was set to last, read back from it: a usual note's own
+ * stretch, or the nearest choice to when it clears, so editing one starts
+ * where it is rather than at "Today".
+ */
+function lastingOf(note: StatusNote | null, usual: Lasting | undefined, now = Date.now()): Lasting {
+  if (!note) return "today";
+  if (!note.until) return "never";
+  if (usual && CHOICES.includes(usual)) return usual;
+  const left = note.until - now;
+  const endOfDay = new Date(now);
+  endOfDay.setHours(23, 59, 59, 999);
+  if (Math.abs(note.until - endOfDay.getTime()) < 60_000) return "today";
+  return left <= 31 * 60_000 ? "m30" : left <= 61 * 60_000 ? "h1" : "today";
+}
+
 /** "30 min", "1 hr", "Today": how long something lasts, said short. */
 function useLastingLabel() {
   const t = useTranslations("note");
@@ -87,10 +103,11 @@ export function useNoteUntil() {
 export function NoteRow({ note, open, onToggle }: { note: StatusNote | null; open: boolean; onToggle: () => void }) {
   const t = useTranslations("note");
   const until = useNoteUntil();
-  if (!note) {
+  // Open, it heads the note's own choices, which hold the note and its icon themselves.
+  if (!note || open) {
     return (
-      <MenuRow icon={<SmilePlus />} onClick={onToggle} open={open}>
-        {t("set")}
+      <MenuRow icon={<PenLine />} onClick={onToggle} open={open}>
+        {open ? t("title") : t("set")}
       </MenuRow>
     );
   }
@@ -100,19 +117,21 @@ export function NoteRow({ note, open, onToggle }: { note: StatusNote | null; ope
       onClick={onToggle}
       open={open}
       label={noteLine(note)}
+      actionWidth="w-12"
+      actionOnHover
+      hint={note.until ? until(note.until) : undefined}
       action={
+        // A word, not an ×, which reads as closing the menu; shown where the pointer is, and always to a finger.
         <button
           type="button"
-          aria-label={t("clear")}
           onClick={() => void saveMyNote(null).catch(() => {})}
-          className="flex size-6 cursor-pointer items-center justify-center rounded-md text-faint transition-colors hover:bg-foreground/[0.08] hover:text-foreground"
+          className="h-6 cursor-pointer rounded-md px-1.5 text-[11.5px] font-medium text-muted-foreground transition-colors hover:bg-foreground/[0.08] hover:text-foreground"
         >
-          <X className="size-3.5" />
+          {t("clearShort")}
         </button>
       }
     >
       <span className="block truncate">{note.text}</span>
-      {note.until && <span className="block truncate text-[11.5px] text-muted-foreground">{t("until", { time: until(note.until) })}</span>}
     </MenuRow>
   );
 }
@@ -129,14 +148,16 @@ export function NoteOptions({ note, onDone }: { note: StatusNote | null; onDone:
   const input = useRef<HTMLInputElement>(null);
   const [icon, setIcon] = useState<NoteIcon>(note?.icon ?? "chat");
   const [text, setText] = useState(note?.text ?? "");
-  // Your own words last the day unless you say otherwise; a note that never cleared still doesn't.
-  const [lasting, setLasting] = useState<Lasting>(note && !note.until ? "never" : "today");
-  // A usual note's icon goes with its words: new words start from the plain one.
-  const fromPreset = !!note && PRESETS.some((preset) => preset.icon === note.icon && t(`presets.${preset.key}`) === note.text);
+  // A usual note's icon and stretch go with its words: new words start from the plain icon.
+  const preset = note ? PRESETS.find((one) => one.icon === note.icon && t(`presets.${one.key}`) === note.text) : undefined;
+  const fromPreset = !!preset;
+  // Your own words last the day unless you say otherwise; a note being edited keeps how long it was set for.
+  const [initial] = useState<Lasting>(() => lastingOf(note, preset?.lasting));
+  const [lasting, setLasting] = useState<Lasting>(initial);
   const [picking, setPicking] = useState(false);
   const [failed, setFailed] = useState(false);
   const typed = text.trim();
-  const changed = !note || typed !== note.text || icon !== (note.icon ?? "chat") || (lasting === "never") !== !note.until;
+  const changed = !note || typed !== note.text || icon !== (note.icon ?? "chat") || lasting !== initial;
 
   const save = (next: StatusNote | null) => {
     setFailed(false);
@@ -189,7 +210,11 @@ export function NoteOptions({ note, onDone }: { note: StatusNote | null; onDone:
             <button
               type="submit"
               aria-label={t("save")}
-              className="flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-full bg-foreground text-background transition-transform hover:scale-105 active:scale-95"
+              className={cn(
+                "flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-full transition-[transform,background-color,color]",
+                // Quiet until there's something new to set.
+                changed ? "bg-foreground text-background hover:scale-105 active:scale-95" : "bg-foreground/[0.08] text-faint",
+              )}
             >
               <ArrowUp className="size-3.5" />
             </button>
@@ -249,14 +274,17 @@ export function NoteOptions({ note, onDone }: { note: StatusNote | null; onDone:
                 <button
                   type="button"
                   onClick={() => (current ? onDone() : save({ icon: preset.icon, text: label, until: untilFor(preset.lasting) }))}
-                  className={cn(
-                    "flex h-9 w-full cursor-pointer items-center gap-2.5 rounded-[9px] px-2 text-start text-[13px] outline-none transition-colors hover:bg-foreground/[0.06] focus-visible:bg-foreground/[0.06]",
-                    current && "bg-foreground/[0.06]",
-                  )}
+                  aria-current={current || undefined}
+                  className="flex h-9 w-full cursor-pointer items-center gap-2.5 rounded-[9px] px-2 text-start text-[13px] outline-none transition-colors hover:bg-foreground/[0.06] focus-visible:bg-foreground/[0.06]"
                 >
                   <NoteGlyph icon={preset.icon} />
                   <span className="min-w-0 flex-1 truncate text-foreground">{label}</span>
-                  <span className="shrink-0 text-[12px] text-faint">{lastingLabel(preset.lasting)}</span>
+                  {/* The one you have is ticked, so it doesn't look like where the pointer is. */}
+                  {current ? (
+                    <Check className="size-3.5 shrink-0 text-foreground" />
+                  ) : (
+                    <span className="shrink-0 text-[12px] text-faint">{lastingLabel(preset.lasting)}</span>
+                  )}
                 </button>
               </li>
             );

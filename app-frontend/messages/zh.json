@@ -834,7 +834,8 @@
       "presenting": "演示",
       "call": "通话中",
       "night": "夜间"
-    }
+    },
+    "clearShort": "清除"
   },
   "welcome": {
     "title": "欢迎来到{office}",

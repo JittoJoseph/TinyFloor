@@ -18,9 +18,9 @@ export interface DeskOwner {
  * The chip on a claimed desk while its owner isn't sitting at it (docs/product.md):
  * their face, the same one they wear everywhere in the app, with a dot when
  * they're in the office, so the floor reads as a seating chart from across
- * the room. Walk up and it opens to their name; yours says "Your desk" and
- * shows from anywhere, so you can find it. A free desk has none. HTML over the
- * canvas (plates.ts), like the name tags.
+ * the room. Walk up and it opens, smoothly, to their name; yours, ringed in
+ * ink, opens to "Your desk", and pressing it walks you there from anywhere.
+ * A free desk has none. HTML over the canvas (plates.ts), like the name tags.
  */
 export class DeskPlate {
   private readonly anchor: Phaser.GameObjects.Container;
@@ -38,6 +38,7 @@ export class DeskPlate {
     y: number,
     depth: number,
     private readonly yourDesk: () => string,
+    goHome: () => void,
   ) {
     this.anchor = scene.add.container(x, y).setDepth(depth);
     this.root = document.createElement("div");
@@ -51,6 +52,7 @@ export class DeskPlate {
     this.name = document.createElement("span");
     this.name.className = "desk-plate-name";
     this.root.append(this.face, this.name);
+    this.root.addEventListener("click", () => this.owner?.mine && goHome());
     this.remove = plateLayer(scene).add(this.anchor, this.root);
   }
 
@@ -58,7 +60,7 @@ export class DeskPlate {
   setNear(near: boolean): this {
     if (near === this.near) return this;
     this.near = near;
-    this.root.toggleAttribute("data-open", near || !!this.owner?.mine);
+    this.root.toggleAttribute("data-open", near);
     return this;
   }
 
@@ -71,7 +73,7 @@ export class DeskPlate {
     if (before?.userId !== owner.userId) this.face.style.background = faceBackground(owner.userId);
     this.name.textContent = owner.mine ? this.yourDesk() : tagName(owner.name);
     this.root.toggleAttribute("data-mine", owner.mine);
-    this.root.toggleAttribute("data-open", this.near || owner.mine);
+    this.root.toggleAttribute("data-open", this.near);
     this.dot.hidden = !owner.status;
     if (owner.status) this.dot.style.background = statusColor(owner.status);
     this.root.title = owner.mine ? this.yourDesk() : owner.name;

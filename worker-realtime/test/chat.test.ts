@@ -284,19 +284,19 @@ describe("lobby chat", () => {
     expect((await bo.next("chat_page")).messages.find((one) => one.seq === answer.seq)?.reply).toEqual({ seq: asked, gone: true });
   });
 
-  it("tells the others in a conversation that someone is typing, not the typist, and not too often", async () => {
+  it("tells the others in a conversation that someone is typing, and that they stopped", async () => {
     const office = `office-typing-${sequence++}`;
     const ada = await ChatClient.open(office, { id: `typing-ada-${sequence++}`, name: "Ada" });
     const bo = await ChatClient.open(office, { id: `typing-bo-${sequence++}`, name: "Bo" });
     await ada.next("chat_ready");
     await bo.next("chat_ready");
 
-    ada.send({ t: "chat_typing", channel: GENERAL_CHANNEL });
-    ada.send({ t: "chat_typing", channel: GENERAL_CHANNEL });
-    expect(await bo.next("chat_typing")).toEqual({ t: "chat_typing", channel: GENERAL_CHANNEL, userId: ada.userId, name: "Ada" });
-    // The second, straight after, isn't passed on (`next` took the first).
-    await new Promise((resolve) => setTimeout(resolve, 150));
-    expect(bo.messages.some((one) => one.t === "chat_typing")).toBe(false);
+    ada.send({ t: "chat_typing", channel: GENERAL_CHANNEL, on: true });
+    ada.send({ t: "chat_typing", channel: GENERAL_CHANNEL, on: true });
+    expect(await bo.next("chat_typing")).toEqual({ t: "chat_typing", channel: GENERAL_CHANNEL, userId: ada.userId, name: "Ada", on: true });
+    // The second "on", straight after, isn't passed on; the "off" always is.
+    ada.send({ t: "chat_typing", channel: GENERAL_CHANNEL, on: false });
+    expect(await bo.next("chat_typing")).toMatchObject({ userId: ada.userId, on: false });
     expect(ada.messages.some((one) => one.t === "chat_typing")).toBe(false);
   });
 

@@ -69,6 +69,8 @@ class ChatSocket {
   /** Who's typing where; kept apart from the state, so a keystroke elsewhere doesn't redraw every conversation. */
   private typists = new Map<string, Typists>();
   private typingListeners = new Set<() => void>();
+  /** Where you last said you're typing, and when. */
+  private typingIn: string | null = null;
   private typedAt = 0;
   private typingSweep?: ReturnType<typeof setTimeout>;
   /** Which chat: an office's id, or the lobby. */
@@ -162,17 +164,34 @@ class ChatSocket {
   say(channel: string, body: string, files: ChatFile[] = [], mentions: string[] = [], replyTo?: number) {
     // A lobby direct message (below zero) was never stored, so it can't be answered by number.
     const answering = replyTo !== undefined && replyTo > 0 ? { replyTo } : {};
+    // The message itself tells the others you've stopped typing.
+    if (this.typingIn === channel) this.typingIn = null;
     this.send({ t: "chat_send", channel, body, ...(files.length ? { files } : {}), ...(mentions.length ? { mentions } : {}), ...answering });
     // Where and what kind, never the words.
     track("message_sent", { kind: isDm(channel) ? "dm" : "channel", picture: files.length > 0, mentions: mentions.length, reply: "replyTo" in answering });
   }
 
-  /** You're writing in this conversation: said at most every few seconds, and never in a lobby direct message's place. */
-  typing(channel: string) {
+  /**
+   * Whether your box here has words in it: "on" when it gets some, again now
+   * and then while you keep typing, "off" when it's emptied. Sending clears
+   * it for everyone without a word from us (they see the message arrive).
+   */
+  typing(channel: string, on: boolean) {
     const now = Date.now();
-    if (now - this.typedAt < TYPING_EVERY_MS) return;
-    this.typedAt = now;
-    if (this.ws?.readyState === WebSocket.OPEN) this.ws.send(JSON.stringify({ t: "chat_typing", channel }));
+    if (on) {
+      if (this.typingIn && this.typingIn !== channel) this.sayTyping(this.typingIn, false);
+      if (this.typingIn === channel && now - this.typedAt < TYPING_EVERY_MS) return;
+      this.typingIn = channel;
+      this.typedAt = now;
+      this.sayTyping(channel, true);
+    } else if (this.typingIn === channel) {
+      this.typingIn = null;
+      this.sayTyping(channel, false);
+    }
+  }
+
+  private sayTyping(channel: string, on: boolean) {
+    if (this.ws?.readyState === WebSocket.OPEN) this.ws.send(JSON.stringify({ t: "chat_typing", channel, on }));
   }
 
   /** For React: who's typing in a conversation (useTyping). */
@@ -480,7 +499,8 @@ class ChatSocket {
       }
       case "chat_typing": {
         const typists = new Map(this.typists.get(message.channel));
-        typists.set(message.userId, { name: message.name, until: Date.now() + TYPING_SHOWN_MS });
+        if (message.on) typists.set(message.userId, { name: message.name, until: Date.now() + TYPING_SHOWN_MS });
+        else if (!typists.delete(message.userId)) break;
         this.setTypists(message.channel, typists);
         break;
       }

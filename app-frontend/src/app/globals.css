@@ -78,8 +78,8 @@
 /*
  * A desk's chip (lib/DeskPlate.ts): light, like a card set on the desk, so it
  * reads as part of the office and not as someone standing there. The owner's
- * face, with a dot while they're in the office; it opens to their name up
- * close, and "Your desk" stays open.
+ * face in a circle, with a dot while they're in the office; it opens to their
+ * name as you walk up, and closes as you walk on.
  */
 .desk-plate {
   position: absolute;
@@ -132,10 +132,11 @@
   max-width: 0;
   overflow: hidden;
   opacity: 0;
+  /* Only width, margin and opacity move, on one small element, so opening costs next to nothing. */
   transition:
-    max-width 220ms cubic-bezier(0.22, 1, 0.36, 1),
-    margin 220ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 160ms ease-out;
+    max-width 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    margin 260ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 180ms ease-out;
 }
 
 .desk-plate[data-open] .desk-plate-name {
@@ -144,8 +145,10 @@
   opacity: 1;
 }
 
-/* Yours, in ink, so it's the one you spot. */
+/* Yours, in ink, so it's the one you spot; pressing it walks you there. */
 .desk-plate[data-mine] {
+  pointer-events: auto;
+  cursor: pointer;
   background: rgb(17 17 19 / 0.86);
   color: #fafaf9;
   box-shadow:
@@ -194,7 +197,21 @@
   }
 }
 
+.typing-in {
+  animation: typing-in 180ms cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+
+@keyframes typing-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .typing-in {
+    animation: none;
+  }
   .typing-dots span {
     animation: none;
     opacity: 0.6;

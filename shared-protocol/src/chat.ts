@@ -76,9 +76,14 @@ export function isPicture(file: Pick<ChatFile, "type">): boolean {
   return /^image\/(png|jpeg|webp|gif|avif)$/.test(file.type);
 }
 
-/** Someone typing says so at most this often; the others show it until a little after it stops coming. */
-export const TYPING_EVERY_MS = 3000;
-export const TYPING_SHOWN_MS = 6000;
+/**
+ * Typing: a browser says "on" when its box gets words and again at most this
+ * often while they keep typing, and "off" when the box empties; sending
+ * clears it too. Without a word for this long (a tab closed mid-sentence) it
+ * goes by itself.
+ */
+export const TYPING_EVERY_MS = 8000;
+export const TYPING_SHOWN_MS = 15000;
 
 /** How much of the message replied to a reply shows. */
 export const REPLY_SNIPPET = 160;
@@ -125,7 +130,7 @@ export type ChatClientMessage =
   | { t: "chat_history"; channel: string; before?: number; to?: number }
   | { t: "chat_search"; q: string }
   /** You're writing in this conversation: passed to the others in it, never stored. */
-  | { t: "chat_typing"; channel: string }
+  | { t: "chat_typing"; channel: string; on: boolean }
   | { t: "chat_read"; channel: string; seq: number }
   | { t: "chat_react"; seq: number; emoji: string; on: boolean }
   | { t: "chat_channel"; name: string }
@@ -146,7 +151,7 @@ export type ChatServerMessage =
   // the server can't check it; clients apply a change to one only when `by` is its author.
   | { t: "chat_edited"; seq: number; channel: string; body: string; edited: number; by: string; mentions?: string[] }
   | { t: "chat_found"; q: string; messages: ChatMessage[] }
-  | { t: "chat_typing"; channel: string; userId: string; name: string }
+  | { t: "chat_typing"; channel: string; userId: string; name: string; on: boolean }
   | { t: "chat_deleted"; seq: number; channel: string; by: string }
   /** Someone left the lobby: their direct messages go with them. */
   | { t: "chat_gone"; userId: string }

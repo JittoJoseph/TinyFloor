@@ -200,7 +200,7 @@ export function Conversation({
           atEnd.current = element.scrollHeight - element.scrollTop - element.clientHeight < 60;
           if (atEnd.current) setBehind(false);
         }}
-        className="absolute inset-0 overflow-y-auto overscroll-contain pb-4"
+        className="absolute inset-0 overflow-y-auto overscroll-contain pb-7"
       >
         <div ref={top} />
         {loading ? (
@@ -288,27 +288,28 @@ export function Conversation({
 function Quote({ reply, onOpen }: { reply: NonNullable<Line["reply"]>; onOpen?: (id: string) => void }) {
   const t = useTranslations("chat");
   return (
-    <div className="relative flex h-[22px] items-end ps-12 pt-1">
-      {/* From over the middle of the face below (its column is 36 wide) to the small face of the quote, 2px clear of the face. */}
-      <span aria-hidden className="absolute start-[17px] top-[13px] h-[7px] w-[47px] rounded-ss-md border-s-2 border-t-2 border-border" />
+    // 20 tall, 4 clear of the name under it; the small face sits on the text column, as the name does.
+    <div className="relative mb-1 flex h-5 items-center ps-12">
+      {/* From over the middle of the face below (its column is 36 wide) to 4 short of the small face, 3 clear of the face. */}
+      <span aria-hidden className="absolute start-[17px] top-[9px] h-[12px] w-[27px] rounded-ss-[6px] border-s-2 border-t-2 border-border" />
       <button
         type="button"
         disabled={reply.gone || !onOpen}
         onClick={() => onOpen?.(reply.id)}
-        className="relative z-[1] ms-[18px] flex min-w-0 max-w-full cursor-pointer items-center gap-1.5 text-[12.5px] leading-4 text-muted-foreground transition-colors hover:text-foreground disabled:cursor-default"
+        className="group/quote flex min-w-0 max-w-full cursor-pointer items-center gap-1.5 text-[13px] leading-5 disabled:cursor-default"
       >
         {reply.gone ? (
           <span className="italic text-faint">{t("replyGone")}</span>
         ) : (
           <>
-            <Face seed={reply.author ?? ""} size={16} />
-            <span className="shrink-0 font-semibold text-foreground/80">{reply.authorName}</span>
+            <Face seed={reply.author ?? ""} size={14} />
+            <span className="shrink-0 font-medium text-foreground/70 transition-colors group-hover/quote:text-foreground">{reply.authorName}</span>
             {reply.body ? (
-              <span className="truncate" data-ph-mask>
+              <span className="truncate text-muted-foreground transition-colors group-hover/quote:text-foreground/80" data-ph-mask>
                 {reply.body.replace(/\s+/g, " ")}
               </span>
             ) : reply.files ? (
-              <span className="flex items-center gap-1 text-faint">
+              <span className="flex items-center gap-1 text-muted-foreground">
                 <ImagePlus className="size-3.5" />
                 {t("replyFiles", { count: reply.files })}
               </span>

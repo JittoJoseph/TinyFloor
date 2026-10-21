@@ -111,7 +111,10 @@ export class SeatManager {
       if (!isDesk(seat.id)) return;
       const up = seat.direction === "up";
       const y = up ? seat.y - 38 : seat.baseY - 2;
-      this.plates.set(seat.id, new DeskPlate(scene, seat.x, y, depthForY(up ? seat.baseY : seat.baseY + 48) + 1, () => sceneText().yourDesk));
+      this.plates.set(
+        seat.id,
+        new DeskPlate(scene, seat.x, y, depthForY(up ? seat.baseY : seat.baseY + 48) + 1, () => sceneText().yourDesk, () => this.goToDesk(seat.id)),
+      );
     });
     this.unsubscribeDesks = subscribeDesks(() => this.changed());
     // An owner's dot follows them in and out of the office.
@@ -195,6 +198,14 @@ export class SeatManager {
   walkToDesk(seatId: number) {
     const seat = this.byId.get(seatId);
     if (seat && !this.seated) this.walkTo(seat);
+  }
+
+  /** Your desk's chip was pressed: walk there and sit, getting up first if you're sitting elsewhere. */
+  private goToDesk(seatId: number) {
+    const seat = this.byId.get(seatId);
+    if (!seat || this.seated === seat) return;
+    if (this.seated) this.stand();
+    this.walkTo(seat);
   }
 
   /** Someone else's desk: nobody but its owner sits there. */

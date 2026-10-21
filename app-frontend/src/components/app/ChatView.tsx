@@ -602,7 +602,7 @@ export function ChatView({ channel }: { channel?: string }) {
           }}
           replying={reply && { name: reply.authorName }}
           onCancelReply={() => setReplyingTo(null)}
-          onTyping={() => chat.typing(open)}
+          onTyping={(on) => chat.typing(open, on)}
           typing={typingLine}
           onFiles={onFiles}
           upload={lobby ? undefined : (file, progress, signal) => upload(place.id, file, progress, signal)}

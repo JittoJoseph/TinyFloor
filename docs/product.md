@@ -139,6 +139,30 @@ guides). Reviews of Gather and Kumospace complain about price per seat,
 audio problems, missing integrations and heavy clients, rarely about
 missing features on the map.
 
+## The floor's labels, and chat (21 October)
+
+- **Name tags are HTML over the floor, not drawn into it.** The canvas paints
+  one pixel per CSS pixel, so on any screen past 100% anything drawn in it is
+  scaled up and soft. Four tags were tried on the real floor: the pixel font,
+  the app's font in the canvas, and two HTML styles (dark glass, light
+  paper). The canvas ones stay soft; dark glass reads best on the pale floor
+  and matches the floor's own cards. Tags hang from their bottom edge 4 units
+  clear of the head, so one scaled up for a distant camera grows away from it.
+- **A claimed desk shows its owner's face in a circle**, with a dot while
+  they're in the office, and opens to their name as you walk up. Yours is
+  ringed in ink, and pressing it walks you there and sits you down.
+- **Replies** quote the message they answer above them, a line curling from
+  the reply's face to a small face, the name and how it began; pressing it
+  brings the message back into view. The quote is read whenever the reply is
+  sent out, so an edit shows and a deleted message says it's gone rather
+  than keeping its words.
+- **Typing** shows above the box while someone's box has words in it: their
+  browser says "on" when the box fills, again every few seconds while
+  they're in it, and "off" when it empties; the message itself ends it, and
+  a closed tab's goes by itself. Nothing is stored.
+- **The box's tools** are emoji, a picture (on a phone, the camera and
+  gallery first) and a file, in that order, with send on the right.
+
 ## Small decisions worth remembering
 
 - **"Office", not "workspace".** The whole product is the metaphor (a floor,

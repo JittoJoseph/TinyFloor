@@ -17,7 +17,6 @@ import {
   HEARTBEAT_PONG,
   MODERATOR,
   REPLY_SNIPPET,
-  TYPING_EVERY_MS,
   cleanChannelName,
   dmChannelId,
   dmMembers,
@@ -216,7 +215,7 @@ export class Chat extends DurableObject<Env> {
       case "chat_search":
         return this.search(socket, me, message.q);
       case "chat_typing":
-        return this.typing(socket, me, message.channel, now);
+        return this.typing(socket, me, message.channel, message.on !== false, now);
       case "chat_read":
         return this.markRead(me.userId, message.channel, message.seq);
       case "chat_react":
@@ -604,20 +603,22 @@ export class Chat extends DurableObject<Env> {
   }
 
   /**
-   * Someone is writing: the others in the conversation see it for a moment.
-   * Never stored, and at most every couple of seconds from one person, however
-   * often their browser says so.
+   * Someone is writing, or stopped: passed to the others in the conversation,
+   * never stored. An "on" from one person goes at most every couple of
+   * seconds, however often their browser says it; an "off" always goes.
    */
-  private typing(socket: WebSocket, me: Attachment, channel: unknown, now: number): void {
+  private typing(socket: WebSocket, me: Attachment, channel: unknown, on: boolean, now: number): void {
     if (typeof channel !== "string" || !this.mayPost(me.userId, channel)) return;
-    if (now - (me.typedAt ?? 0) < TYPING_EVERY_MS - 500) return;
-    me.typedAt = now;
-    this.remember(socket, me);
+    if (on) {
+      if (now - (me.typedAt ?? 0) < 2000) return;
+      me.typedAt = now;
+      this.remember(socket, me);
+    }
     const pair = dmMembers(channel);
     for (const other of this.ctx.getWebSockets()) {
       const who = this.attachmentOf(other);
       if (!who || who.userId === me.userId || (pair && !pair.includes(who.userId))) continue;
-      this.send(other, { t: "chat_typing", channel, userId: me.userId, name: me.name });
+      this.send(other, { t: "chat_typing", channel, userId: me.userId, name: me.name, on });
     }
   }
 

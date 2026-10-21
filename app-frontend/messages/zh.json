@@ -462,7 +462,13 @@
       "profileNote": "你的名字和链接，走到哪里都一样。",
       "password": "密码",
       "passwordSet": "用邮箱和密码登录。",
-      "signOutNote": "在此浏览器中退出 TinyFloor。"
+      "signOutNote": "在此浏览器中退出 TinyFloor。",
+      "timeZone": "时区",
+      "timeZoneNote": "你的当地时间会显示在个人资料中，方便同事查看。",
+      "timeZoneAuto": "自动",
+      "timeZoneChange": "更改",
+      "timeZoneSearch": "搜索城市",
+      "timeZoneNone": "没有匹配的时区"
     },
     "invite": {
       "invalidTitle": "这个邀请无法使用",

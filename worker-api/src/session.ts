@@ -33,6 +33,10 @@ export interface User {
   introduced?: boolean;
   /** Their status note, as kept; whether it still lasts is for the reader (liveNote). */
   status?: StatusNote | null;
+  /** Their zone ("Europe/Berlin"), or null until a browser has said. */
+  timeZone?: string | null;
+  /** Whether the zone follows their browser, rather than one they picked. */
+  timeZoneAuto?: boolean;
   /** The country they last walked onto a floor from (see noteCountry). */
   country?: string | null;
   /** The hashed id of the session this request came with. */
@@ -49,6 +53,8 @@ interface SessionRow {
   has_google: number;
   link: string | null;
   introduced: number;
+  time_zone: string | null;
+  time_zone_auto: number;
   country: string | null;
   status_emoji: string | null;
   status_text: string | null;
@@ -122,6 +128,7 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
   const row = await env.DB.prepare(
     `SELECT s.user_id, s.last_seen_at, u.email, u.display_name, u.character, u.is_guest, u.password_hash IS NOT NULL AS has_password,
             u.google_sub IS NOT NULL AS has_google, u.link, u.introduced_at IS NOT NULL AS introduced, u.country,
+            u.time_zone, u.time_zone_auto,
             u.status_emoji, u.status_text, u.status_until
      FROM sessions s JOIN users u ON u.id = s.user_id
      WHERE s.id = ? AND s.expires_at > ?`,
@@ -149,6 +156,8 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
     hasGoogle: row.has_google === 1,
     link: row.link,
     introduced: row.introduced === 1,
+    timeZone: row.time_zone,
+    timeZoneAuto: row.time_zone_auto !== 0,
     country: row.country,
     status: noteFrom(row),
     sessionId: id,

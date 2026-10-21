@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
   ArrowLeft,
   ChevronDown,
@@ -48,6 +48,7 @@ import { conversationToOpen, jumpTo, rememberConversation, takeJump } from "@/li
 import { useWide } from "@/lib/hooks/use-wide";
 import { discard, upload } from "@/lib/chatFiles";
 import { mentionsIn } from "@/lib/mentions";
+import { hoursAhead, timeIn } from "@/lib/timeZone";
 import type { ChatMessage } from "@shared/chat";
 
 /**
@@ -851,7 +852,7 @@ function PersonCard({
             {detail}
           </p>
         )}
-        <ProfileLink id={id} />
+        <Profile id={id} />
       </MenuHeader>
       {!isMe && onMessage && (
         <MenuItem icon={<MessageSquare />} onSelect={onMessage}>
@@ -870,8 +871,10 @@ function PersonCard({
 /** Profiles already looked up, so opening someone twice doesn't ask twice. */
 const profiles = new Map<string, Promise<PersonProfile | null>>();
 
-/** The link someone put on their profile, if they did, under their name wherever a card opens. */
-function ProfileLink({ id }: { id: string }) {
+/** Their local time and the link on their profile, under their name wherever a card opens. */
+function Profile({ id }: { id: string }) {
+  const t = useTranslations("shell");
+  const locale = useLocale();
   const [profile, setProfile] = useState<PersonProfile | null>(null);
   useEffect(() => {
     let cancelled = false;
@@ -881,18 +884,29 @@ function ProfileLink({ id }: { id: string }) {
       cancelled = true;
     };
   }, [id]);
-  if (!profile?.link) return null;
-  const shown = profile.link.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  if (!profile) return null;
+  const time = profile.timeZone ? timeIn(profile.timeZone, locale) : null;
+  const ahead = profile.timeZone ? hoursAhead(profile.timeZone) : 0;
+  const hours = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 }).format(Math.abs(ahead));
   return (
-    <a
-      href={profile.link}
-      target="_blank"
-      rel="noopener noreferrer nofollow ugc"
-      className="mt-2 flex max-w-full items-center gap-1.5 truncate text-[12.5px] font-medium text-foreground underline-offset-2 hover:underline"
-    >
-      <ExternalLink className="size-3.5 shrink-0 text-muted-foreground" />
-      <span className="truncate">{shown}</span>
-    </a>
+    <>
+      {time && (
+        <p className="truncate text-[12.5px] text-muted-foreground">
+          {[t("localTime", { time }), ahead ? t(ahead > 0 ? "hoursAhead" : "hoursBehind", { hours }) : null].filter(Boolean).join(" · ")}
+        </p>
+      )}
+      {profile.link && (
+        <a
+          href={profile.link}
+          target="_blank"
+          rel="noopener noreferrer nofollow ugc"
+          className="mt-2 flex max-w-full items-center gap-1.5 truncate text-[12.5px] font-medium text-foreground underline-offset-2 hover:underline"
+        >
+          <ExternalLink className="size-3.5 shrink-0 text-muted-foreground" />
+          <span className="truncate">{profile.link.replace(/^https?:\/\//, "").replace(/\/$/, "")}</span>
+        </a>
+      )}
+    </>
   );
 }
 

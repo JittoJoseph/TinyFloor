@@ -462,7 +462,13 @@
       "profileNote": "Ditt namn och din länk, var du än går in.",
       "password": "Lösenord",
       "passwordSet": "Logga in med din e-post och ditt lösenord.",
-      "signOutNote": "Logga ut från TinyFloor i den här webbläsaren."
+      "signOutNote": "Logga ut från TinyFloor i den här webbläsaren.",
+      "timeZone": "Tidszon",
+      "timeZoneNote": "Din lokala tid visas på din profil för dem du jobbar med.",
+      "timeZoneAuto": "Automatisk",
+      "timeZoneChange": "Ändra",
+      "timeZoneSearch": "Sök efter en stad",
+      "timeZoneNone": "Ingen tidszon matchar"
     },
     "invite": {
       "invalidTitle": "Inbjudan fungerar inte",

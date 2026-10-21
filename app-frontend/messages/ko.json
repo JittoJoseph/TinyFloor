@@ -462,7 +462,13 @@
       "profileNote": "어디에 들어가든 보이는 이름과 링크예요.",
       "password": "비밀번호",
       "passwordSet": "이메일과 비밀번호로 로그인해요.",
-      "signOutNote": "이 브라우저에서 TinyFloor 로그아웃"
+      "signOutNote": "이 브라우저에서 TinyFloor 로그아웃",
+      "timeZone": "시간대",
+      "timeZoneNote": "함께 일하는 사람들이 볼 수 있도록 현지 시간이 프로필에 표시됩니다.",
+      "timeZoneAuto": "자동",
+      "timeZoneChange": "변경",
+      "timeZoneSearch": "도시 검색",
+      "timeZoneNone": "일치하는 시간대가 없습니다"
     },
     "invite": {
       "invalidTitle": "이 초대는 사용할 수 없어요",

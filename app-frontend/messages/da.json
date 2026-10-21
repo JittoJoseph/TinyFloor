@@ -462,7 +462,13 @@
       "profileNote": "Dit navn og dit link, uanset hvor du går ind.",
       "password": "Adgangskode",
       "passwordSet": "Log ind med din e-mail og adgangskode.",
-      "signOutNote": "Log ud af TinyFloor i denne browser."
+      "signOutNote": "Log ud af TinyFloor i denne browser.",
+      "timeZone": "Tidszone",
+      "timeZoneNote": "Din lokale tid vises på din profil for dem, du arbejder med.",
+      "timeZoneAuto": "Automatisk",
+      "timeZoneChange": "Skift",
+      "timeZoneSearch": "Søg efter en by",
+      "timeZoneNone": "Ingen tidszone passer"
     },
     "invite": {
       "invalidTitle": "Invitationen virker ikke",

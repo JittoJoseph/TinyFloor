@@ -462,7 +462,13 @@
       "profileNote": "Ваше имя и ссылка, куда бы вы ни зашли.",
       "password": "Пароль",
       "passwordSet": "Вход по почте и паролю.",
-      "signOutNote": "Выйти из TinyFloor в этом браузере."
+      "signOutNote": "Выйти из TinyFloor в этом браузере.",
+      "timeZone": "Часовой пояс",
+      "timeZoneNote": "Ваше местное время видно в профиле тем, с кем вы работаете.",
+      "timeZoneAuto": "Автоматически",
+      "timeZoneChange": "Изменить",
+      "timeZoneSearch": "Найдите город",
+      "timeZoneNone": "Нет подходящего часового пояса"
     },
     "invite": {
       "invalidTitle": "Приглашение не работает",

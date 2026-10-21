@@ -34,3 +34,35 @@ describe("profile link", () => {
     expect(gus.body.person).toMatchObject({ link: null, guest: true });
   });
 });
+
+describe("time zone", () => {
+  type Me = { user: { timeZone: string | null; timeZoneAuto: boolean } };
+
+  it("follows the browser until someone picks one, and again once they go back to automatic", async () => {
+    const ada = await makeUser("Ada");
+    const seen = await call<Me>(ada, "PATCH", "/v1/me", { detectedZone: "Asia/Kolkata" });
+    expect(seen.body.user).toMatchObject({ timeZone: "Asia/Kolkata", timeZoneAuto: true });
+
+    const picked = await call<Me>(ada, "PATCH", "/v1/me", { timeZone: "Europe/Berlin" });
+    expect(picked.body.user).toMatchObject({ timeZone: "Europe/Berlin", timeZoneAuto: false });
+    // A browser elsewhere doesn't move a zone they picked.
+    const travelling = await call<Me>(ada, "PATCH", "/v1/me", { detectedZone: "America/New_York" });
+    expect(travelling.body.user).toMatchObject({ timeZone: "Europe/Berlin", timeZoneAuto: false });
+
+    const back = await call<Me>(ada, "PATCH", "/v1/me", { timeZone: null, detectedZone: "America/New_York" });
+    expect(back.body.user).toMatchObject({ timeZone: "America/New_York", timeZoneAuto: true });
+    expect((await call<Me>(ada, "GET", "/v1/session")).body.user).toMatchObject({ timeZone: "America/New_York", timeZoneAuto: true });
+
+    const person = await call<{ person: { timeZone: string | null } }>(await makeUser("Bo"), "GET", `/v1/people/${ada.id}`);
+    expect(person.body.person.timeZone).toBe("America/New_York");
+  });
+
+  it("refuses a zone that doesn't exist", async () => {
+    const ada = await makeUser("Ada");
+    for (const timeZone of ["Mars/Olympus", "", 5]) {
+      const result = await call<{ error: { code: string } }>(ada, "PATCH", "/v1/me", { timeZone });
+      expect(result.status, String(timeZone)).toBe(400);
+      expect(result.body.error.code).toBe("bad_time_zone");
+    }
+  });
+});

@@ -462,7 +462,13 @@
       "profileNote": "どこに入っても表示される名前とリンク。",
       "password": "パスワード",
       "passwordSet": "メールアドレスとパスワードでサインインします。",
-      "signOutNote": "このブラウザで TinyFloor からサインアウトします。"
+      "signOutNote": "このブラウザで TinyFloor からサインアウトします。",
+      "timeZone": "タイムゾーン",
+      "timeZoneNote": "一緒に働く人のために、あなたの現地時刻がプロフィールに表示されます。",
+      "timeZoneAuto": "自動",
+      "timeZoneChange": "変更",
+      "timeZoneSearch": "都市を検索",
+      "timeZoneNone": "一致するタイムゾーンはありません"
     },
     "invite": {
       "invalidTitle": "この招待は使えません",

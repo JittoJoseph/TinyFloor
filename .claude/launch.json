@@ -4,7 +4,6 @@
     { "name": "tinyfloor-site", "runtimeExecutable": "pnpm", "runtimeArgs": ["--dir", "marketing-frontend", "run", "dev"], "port": 3000 },
     { "name": "tinyfloor-app", "runtimeExecutable": "pnpm", "runtimeArgs": ["--dir", "app-frontend", "run", "dev"], "port": 3001 },
     { "name": "tinyfloor-api", "runtimeExecutable": "pnpm", "runtimeArgs": ["--dir", "worker-api", "run", "dev"], "port": 8787 },
-    { "name": "tinyfloor-realtime", "runtimeExecutable": "pnpm", "runtimeArgs": ["--dir", "worker-realtime", "run", "dev"], "port": 8788 },
-    { "name": "spatialmeet-api", "runtimeExecutable": "cmd", "runtimeArgs": ["/c", "cd backend-springboot && mvn -q spring-boot:run"], "port": 8080 }
+    { "name": "tinyfloor-realtime", "runtimeExecutable": "pnpm", "runtimeArgs": ["--dir", "worker-realtime", "run", "dev"], "port": 8788 }
   ]
 }

@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
-import { useTranslations } from "next-intl";
-import { Check, Eye, EyeOff, KeyRound, Palette, UserRound } from "@/components/ui/icons";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useLocale, useTranslations } from "next-intl";
+import { Check, Eye, EyeOff, KeyRound, Palette, Search, UserRound } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError } from "@/lib/api";
 import { saveIdentity } from "@/lib/identity";
+import { allZones, browserZone, offsetLabel, timeIn, zoneCity, zoneLabel } from "@/lib/timeZone";
 import { useSitePage } from "@/lib/links";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { SPRING_LAYOUT } from "@/lib/ease";
@@ -226,7 +227,112 @@ export function Profile() {
           {characterError && <ErrorText>{characterError}</ErrorText>}
         </div>
       </Group>
+
+      <TimeZone />
     </>
+  );
+}
+
+/** Your time zone, for the local time people see on your profile: your browser's, unless you pick one. */
+function TimeZone() {
+  const t = useTranslations("office.profile");
+  const locale = useLocale();
+  const { user, updateProfile } = useAuth();
+  const explain = useErrorMessage();
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState("");
+  if (!user) return null;
+
+  const auto = user.timeZoneAuto !== false;
+  const zone = (auto ? browserZone() : user.timeZone) ?? user.timeZone ?? null;
+  const pick = async (next: string | null) => {
+    setOpen(false);
+    setError("");
+    try {
+      await updateProfile(next ? { timeZone: next } : { timeZone: null, ...(browserZone() ? { detectedZone: browserZone()! } : {}) });
+    } catch (err) {
+      setError(explain(err));
+    }
+  };
+
+  return (
+    <Group title={t("timeZone")} note={t("timeZoneNote")}>
+      <Row
+        title={auto ? t("timeZoneAuto") : zone ? zoneCity(zone) : t("timeZoneAuto")}
+        description={zone ? [auto ? zoneCity(zone) : null, offsetLabel(zone), timeIn(zone, locale)].filter(Boolean).join(" · ") : undefined}
+        control={
+          <Button variant="secondary" size="sm" onClick={() => setOpen(true)} className="h-8 px-3.5 text-[13px]">
+            {t("timeZoneChange")}
+          </Button>
+        }
+      />
+      {error && <p className="px-4 py-3 text-[12.5px] text-destructive">{error}</p>}
+      {open && <ZonePicker current={auto ? null : zone} onPick={pick} onClose={() => setOpen(false)} />}
+    </Group>
+  );
+}
+
+/** Every zone, found by typing a city, with Automatic first. Only built while it's open. */
+function ZonePicker({
+  current,
+  onPick,
+  onClose,
+}: {
+  current: string | null;
+  onPick: (zone: string | null) => void;
+  onClose: () => void;
+}) {
+  const t = useTranslations("office.profile");
+  const locale = useLocale();
+  const [query, setQuery] = useState("");
+  const [zones] = useState(allZones);
+  const shown = useMemo(() => {
+    const words = query.trim().toLowerCase().replace(/\s+/g, "_");
+    return words ? zones.filter((zone) => `${zone} ${zoneLabel(zone)}`.toLowerCase().replace(/\s+/g, "_").includes(words)) : zones;
+  }, [zones, query]);
+  const now = new Date();
+  const here = browserZone();
+
+  const option = (zone: string | null, title: string, detail: string, key: string) => (
+    <li key={key}>
+      <button
+        type="button"
+        onClick={() => onPick(zone)}
+        aria-pressed={zone === current}
+        className={cn(
+          "flex w-full cursor-pointer items-center gap-3 rounded-lg px-2.5 py-2 text-start transition-colors hover:bg-muted",
+          zone === current && "bg-muted",
+        )}
+      >
+        <span className="min-w-0 flex-1 truncate text-[13.5px] text-foreground">{title}</span>
+        <span className="shrink-0 text-[12px] tabular-nums text-muted-foreground">{detail}</span>
+        <Check className={cn("size-3.5 shrink-0", zone === current ? "text-foreground" : "invisible")} />
+      </button>
+    </li>
+  );
+
+  return (
+    <Dialog open title={t("timeZone")} description={t("timeZoneNote")} onClose={onClose}>
+      <div className="relative">
+        <Search className="pointer-events-none absolute start-3.5 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
+        <input
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder={t("timeZoneSearch")}
+          aria-label={t("timeZoneSearch")}
+          autoComplete="off"
+          spellCheck={false}
+          className={cn(fieldClass, "ps-10")}
+        />
+      </div>
+      <ul className="-mx-2 mt-3 max-h-[min(20rem,50dvh)] overflow-y-auto overscroll-contain px-2">
+        {!query.trim() && option(null, t("timeZoneAuto"), here ? `${zoneCity(here)} · ${timeIn(here, locale, now)}` : "", "auto")}
+        {shown.map((zone) =>
+          option(zone, zoneLabel(zone), `${offsetLabel(zone, now)} · ${timeIn(zone, locale, now)}`, zone),
+        )}
+        {!shown.length && <li className="px-2.5 py-6 text-center text-[13px] text-muted-foreground">{t("timeZoneNone")}</li>}
+      </ul>
+    </Dialog>
   );
 }
 

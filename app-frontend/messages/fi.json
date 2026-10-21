@@ -462,7 +462,13 @@
       "profileNote": "Nimesi ja linkkisi, minne ikinä astut.",
       "password": "Salasana",
       "passwordSet": "Kirjaudu sähköpostilla ja salasanalla.",
-      "signOutNote": "Kirjaudu ulos TinyFloorista tässä selaimessa."
+      "signOutNote": "Kirjaudu ulos TinyFloorista tässä selaimessa.",
+      "timeZone": "Aikavyöhyke",
+      "timeZoneNote": "Paikallinen aikasi näkyy profiilissasi niille, joiden kanssa työskentelet.",
+      "timeZoneAuto": "Automaattinen",
+      "timeZoneChange": "Vaihda",
+      "timeZoneSearch": "Hae kaupunkia",
+      "timeZoneNone": "Ei vastaavaa aikavyöhykettä"
     },
     "invite": {
       "invalidTitle": "Kutsu ei toimi",

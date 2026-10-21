@@ -462,7 +462,13 @@
       "profileNote": "Je naam en link, waar je ook binnenloopt.",
       "password": "Wachtwoord",
       "passwordSet": "Log in met je e-mail en wachtwoord.",
-      "signOutNote": "Log uit bij TinyFloor in deze browser."
+      "signOutNote": "Log uit bij TinyFloor in deze browser.",
+      "timeZone": "Tijdzone",
+      "timeZoneNote": "Je lokale tijd staat op je profiel, voor de mensen met wie je werkt.",
+      "timeZoneAuto": "Automatisch",
+      "timeZoneChange": "Wijzigen",
+      "timeZoneSearch": "Zoek een stad",
+      "timeZoneNone": "Geen tijdzone gevonden"
     },
     "invite": {
       "invalidTitle": "Deze uitnodiging werkt niet",

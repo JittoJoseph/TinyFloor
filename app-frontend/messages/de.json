@@ -462,7 +462,13 @@
       "profileNote": "Dein Name und dein Link, überall, wo du reingehst.",
       "password": "Passwort",
       "passwordSet": "Melde dich mit E-Mail und Passwort an.",
-      "signOutNote": "Melde dich in diesem Browser von TinyFloor ab."
+      "signOutNote": "Melde dich in diesem Browser von TinyFloor ab.",
+      "timeZone": "Zeitzone",
+      "timeZoneNote": "Deine Ortszeit steht in deinem Profil, für die Leute, mit denen du arbeitest.",
+      "timeZoneAuto": "Automatisch",
+      "timeZoneChange": "Ändern",
+      "timeZoneSearch": "Nach einer Stadt suchen",
+      "timeZoneNone": "Keine passende Zeitzone"
     },
     "invite": {
       "invalidTitle": "Diese Einladung funktioniert nicht",

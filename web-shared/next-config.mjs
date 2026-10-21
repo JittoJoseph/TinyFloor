@@ -1,3 +1,5 @@
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
 import { availableParallelism } from "node:os";
 import path from "node:path";
 import createNextIntlPlugin from "next-intl/plugin";
@@ -29,6 +31,13 @@ export function frontendConfig({ serverLeavesOut = [] } = {}) {
       // out (static-pages.mjs), so that cache never answers one.
       prefetchInlining: true,
     },
+    // Next writes the build's id into every built page (its HTML, payload and every
+    // segment), and a random one made every page new on every build: some 4,000 files
+    // went up each deploy where a handful had changed. Named for the lockfile instead,
+    // a page that renders the same is the same file, and only changed pages go up. It
+    // still changes with any dependency, Next included, so a new version of the router
+    // is still told apart from the one an open tab is running.
+    generateBuildId: () => createHash("sha256").update(readFileSync(path.join(repository, "pnpm-lock.yaml"))).digest("hex").slice(0, 20),
     // The middleware strips trailing slashes itself (lib/edge.ts screen), so
     // PostHog's paths keep theirs on the way through the relay.
     skipTrailingSlashRedirect: true,

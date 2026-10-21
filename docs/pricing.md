@@ -79,8 +79,11 @@ ask Creem first.
   drop to Free silently, so the smallest teams never saw the choice. More
   than 3: nobody is removed and everyone keeps coming in for 14 more days
   while nobody new joins. After that the floor holds 3 at once; chat stays
-  open to everyone. All of it is one bar across the top of the office, part
-  of it rather than floating over the floor, hidden for the day by its ×.
+  open to everyone. All of it is one solid bar across the top of the office,
+  part of it rather than floating over the floor, hidden for the day by its ×.
+  Its one action is "Update billing", which opens the plan page, where Pro
+  and Free are both chosen; on a phone the whole bar is the button. It says
+  what happened and what to do, in that order.
   Admins' and members' lines differ on purpose: the admin pays, the team
   asks. Limits are said as room ("Free has room for 3 at a time"), never as
   what's withheld.

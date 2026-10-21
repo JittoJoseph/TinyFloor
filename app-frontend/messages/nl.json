@@ -743,11 +743,10 @@
       "hoursTitle": "Houd video in meetings",
       "hoursBody": "Pro zet video meteen terug, met plek voor je hele team.",
       "trialTitle": "Houd Pro voor je team",
-      "trialBody": "Je proefperiode eindigt op {date}. Houd Pro en iedereen blijft; met Free biedt het kantoor plek aan {free} mensen.",
-      "endedBody": "Je proefperiode eindigde op {date}. Houd Pro en iedereen blijft; met Free biedt het kantoor plek aan {free} mensen.",
+      "trialBody": "Je proefperiode eindigt op {date}. Houd Pro en iedereen blijft; Free biedt plek aan {free} mensen.",
       "overTitle": "Houd je hele team",
       "overBody": "{office} heeft {members} mensen, en Free biedt plek aan {free}. Tot {date} kan iedereen nog binnenkomen; daarna {free} tegelijk.",
-      "overBodyLater": "{office} heeft {members} mensen, en Free biedt plek aan {free}: {free} kunnen tegelijk op de vloer zijn en niemand nieuw kan erbij.",
+      "overBodyLater": "{office} heeft {members} mensen, en Free biedt plek aan {free} tegelijk, dus niemand nieuw kan erbij.",
       "plansTitle": "Pro, voor het hele team",
       "plansBody": "Eén prijs voor iedereen met wie je werkt.",
       "membersOnly": "Alleen de beheerders van {office} kunnen het abonnement wijzigen.",
@@ -775,21 +774,24 @@
       "assurance": "Altijd opzegbaar. Volledige terugbetaling binnen 14 dagen.",
       "meetings": "Meetings zo vaak als je team nodig heeft"
     },
-    "billingEmail": "Vragen over facturatie: <link>{email}</link>."
+    "billingEmail": "Vragen over facturatie: <link>{email}</link>.",
+    "endedNote": "Je Pro-proefperiode is afgelopen. Houd Pro voor je team, of ga verder met Free, voor maximaal {free} mensen.",
+    "graceNote": "Je Pro-proefperiode is afgelopen. Tot {date} kan iedereen nog binnenkomen; daarna biedt Free plek aan {free} tegelijk.",
+    "stayFree": "Verder met Free",
+    "seatsOver": "Free biedt plek aan {seats} tegelijk"
   },
   "planBar": {
     "labelTrial": "Pro-proefperiode",
     "labelEnded": "Proefperiode voorbij",
     "labelFree": "Free-abonnement",
-    "ending": "Eindigt op {date}. Houd Pro om je hele team op de vloer te houden.",
-    "ended": "Kies hoe je verdergaat: houd Pro voor je team, of ga verder met Free, voor maximaal {free} mensen.",
-    "grace": "Tot {date} kan iedereen nog binnenkomen. Daarna biedt Free plek aan {free} tegelijk.",
-    "full": "{free} mensen kunnen tegelijk op de vloer zijn. Houd Pro om iedereen binnen te halen.",
-    "graceMember": "Tot {date} kan iedereen nog binnenkomen. Daarna biedt Free plek aan {free} tegelijk.",
-    "fullMember": "{free} mensen kunnen tegelijk op de vloer zijn.",
-    "keep": "Pro houden",
-    "stayFree": "Verder met Free",
-    "hide": "Verbergen voor vandaag"
+    "ending": "Je Pro-proefperiode eindigt op {date}. Werk de facturering bij om Pro te houden.",
+    "ended": "Je Pro-proefperiode is afgelopen. Werk de facturering bij om Pro te houden, of ga verder met Free.",
+    "grace": "Je Pro-proefperiode is afgelopen. Werk de facturering bij vóór {date} om iedereen binnen te houden.",
+    "full": "Free biedt plek aan {free} tegelijk op de vloer. Werk de facturering bij om iedereen binnen te halen.",
+    "graceMember": "De Pro-proefperiode van dit kantoor is afgelopen. Vraag een admin de facturering bij te werken vóór {date}.",
+    "fullMember": "Free biedt plek aan {free} tegelijk op de vloer. Vraag een admin de facturering bij te werken.",
+    "hide": "Verbergen voor vandaag",
+    "billing": "Facturering bijwerken"
   },
   "invite": {
     "title": "Mensen uitnodigen voor {office}",

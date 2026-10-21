@@ -34,6 +34,7 @@ export function PlanSection() {
   const [billing, setBilling] = useState<OfficeBilling | null>(null);
   const [details, setDetails] = useState<BillingDetails | null>(null);
   const [asking, setAsking] = useState<Asking>(null);
+  const [staying, setStaying] = useState(false);
 
   const office = context?.office;
   const admin = office?.role === "admin";
@@ -93,6 +94,19 @@ export function PlanSection() {
   const hours = billing ? billing.usage.seconds / 3600 : null;
   const allowance = billing?.meetingHours ?? current?.meetingHours ?? null;
   const choose = (plan: Plan) => plan.id !== "free" && void change.buy(plan.id);
+  const freeSeats = plans[0]?.seats ?? 3;
+  // After the trial, the office decides here: Pro below, or settling on Free when it fits.
+  const ended = manage && planId === "free" && !sub && !!billing?.trialEndedAt;
+  const fits = members <= freeSeats;
+  const stayFree = async () => {
+    setStaying(true);
+    try {
+      setBilling(await api.stayOnFree(office.id));
+      await context.refresh();
+    } finally {
+      setStaying(false);
+    }
+  };
 
   // What the plan says for itself under its name: when it renews, or ends, or that it's free.
   const status = (): ReactNode => {
@@ -147,6 +161,22 @@ export function PlanSection() {
             )}
           </Banner>
         )}
+        {ended && (fits || office.graceEndsAt) && (
+          // The text takes the row on a phone and the button drops beneath it.
+          <Banner>
+            <p className="min-w-[14rem] flex-1 text-[13px] leading-relaxed text-foreground">
+              {fits
+                ? t("endedNote", { free: freeSeats })
+                : t("graceNote", { date: shortDate(office.graceEndsAt!), free: freeSeats })}
+            </p>
+            {fits && (
+              <Button variant="secondary" size="sm" className="h-8 shrink-0 px-3 text-[12.5px]" disabled={staying} onClick={stayFree}>
+                {staying && <Loader2 className="size-3.5 animate-spin" />}
+                {t("stayFree")}
+              </Button>
+            )}
+          </Banner>
+        )}
         {manage && sub?.status === "past_due" && (
           <Banner icon={<AlertCircle className="size-4 shrink-0 text-destructive" />}>
             <p className="min-w-0 flex-1 text-[13px] leading-relaxed text-foreground">{t("pastDue")}</p>
@@ -185,8 +215,14 @@ export function PlanSection() {
           {planId === "free" ? (
             <Usage
               label={t("membersLabel")}
-              value={t("usageOf", { used: members, total: office.seats })}
-              note={members >= office.seats ? t("seatsFull") : t("seatsFree", { count: office.seats - members })}
+              value={members > office.seats ? String(members) : t("usageOf", { used: members, total: office.seats })}
+              note={
+                members > office.seats
+                  ? t("seatsOver", { seats: office.seats })
+                  : members === office.seats
+                    ? t("seatsFull")
+                    : t("seatsFree", { count: office.seats - members })
+              }
             >
               <SeatBar used={members} seats={office.seats} />
             </Usage>

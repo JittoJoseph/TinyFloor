@@ -743,11 +743,10 @@
       "hoursTitle": "Zachowaj wideo na spotkaniach",
       "hoursBody": "Pro od razu przywraca wideo i daje miejsce dla całego zespołu.",
       "trialTitle": "Zachowaj Pro dla zespołu",
-      "trialBody": "Twój okres próbny kończy się {date}. Zachowaj Pro, a wszyscy zostaną; na Free biuro mieści {free} osoby.",
-      "endedBody": "Twój okres próbny skończył się {date}. Zachowaj Pro, a wszyscy zostaną; na Free biuro mieści {free} osoby.",
+      "trialBody": "Twój okres próbny kończy się {date}. Zachowaj Pro, a wszyscy zostaną; Free mieści {free} osoby.",
       "overTitle": "Zachowaj cały zespół",
       "overBody": "{office} ma {members} osób, a Free mieści {free}. Do {date} wszyscy mogą jeszcze wchodzić; potem {free} naraz.",
-      "overBodyLater": "{office} ma {members} osób, a Free mieści {free}: na piętrze może być {free} osoby naraz i nikt nowy nie może dołączyć.",
+      "overBodyLater": "{office} ma {members} osób, a Free mieści naraz {free}, więc nikt nowy nie może dołączyć.",
       "plansTitle": "Pro, dla całego zespołu",
       "plansBody": "Jedna cena za wszystkich, z którymi pracujesz.",
       "membersOnly": "Plan {office} mogą zmieniać tylko jego administratorzy.",
@@ -775,21 +774,24 @@
       "assurance": "Anuluj w dowolnej chwili. Pełny zwrot w ciągu 14 dni.",
       "meetings": "Spotkania tak często, jak potrzebuje Twój zespół"
     },
-    "billingEmail": "Pytania o płatności: <link>{email}</link>."
+    "billingEmail": "Pytania o płatności: <link>{email}</link>.",
+    "endedNote": "Twój okres próbny Pro się skończył. Zachowaj Pro dla zespołu albo zostań na Free, dla maksymalnie {free} osób.",
+    "graceNote": "Twój okres próbny Pro się skończył. Do {date} wszyscy mogą jeszcze wchodzić; potem Free mieści {free} osoby naraz.",
+    "stayFree": "Zostań na Free",
+    "seatsOver": "Free mieści naraz {seats} osoby"
   },
   "planBar": {
     "labelTrial": "Okres próbny Pro",
     "labelEnded": "Okres próbny minął",
     "labelFree": "Plan Free",
-    "ending": "Kończy się {date}. Zachowaj Pro, żeby cały zespół był na piętrze.",
-    "ended": "Wybierz, co dalej: zachowaj Pro dla zespołu albo zostań na Free, dla maksymalnie {free} osób.",
-    "grace": "Do {date} wszyscy mogą jeszcze wchodzić. Potem Free mieści {free} osoby naraz.",
-    "full": "Na piętrze może być naraz {free} osoby. Zachowaj Pro, żeby wpuścić wszystkich.",
-    "graceMember": "Do {date} wszyscy mogą jeszcze wchodzić. Potem Free mieści {free} osoby naraz.",
-    "fullMember": "Na piętrze może być naraz {free} osoby.",
-    "keep": "Zachowaj Pro",
-    "stayFree": "Zostań na Free",
-    "hide": "Ukryj na dziś"
+    "ending": "Twój okres próbny Pro kończy się {date}. Zaktualizuj płatności, żeby zachować Pro.",
+    "ended": "Twój okres próbny Pro się skończył. Zaktualizuj płatności, żeby zachować Pro, albo zostań na Free.",
+    "grace": "Twój okres próbny Pro się skończył. Zaktualizuj płatności do {date}, żeby wszyscy mogli wchodzić.",
+    "full": "Free mieści naraz {free} osoby na piętrze. Zaktualizuj płatności, żeby wpuścić wszystkich.",
+    "graceMember": "Okres próbny Pro tego biura się skończył. Poproś admina o aktualizację płatności do {date}.",
+    "fullMember": "Free mieści naraz {free} osoby na piętrze. Poproś admina o aktualizację płatności.",
+    "hide": "Ukryj na dziś",
+    "billing": "Zaktualizuj płatności"
   },
   "invite": {
     "title": "Zaproś ludzi do {office}",

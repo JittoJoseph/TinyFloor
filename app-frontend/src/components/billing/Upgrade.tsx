@@ -17,7 +17,7 @@ import { track } from "@/lib/analytics";
  * used, the trial is ending, it has ended (the choice every office makes), the
  * office is past Free since, or just looking.
  */
-export type UpgradeReason = "full" | "hours" | "trial" | "ended" | "over" | "plans";
+export type UpgradeReason = "full" | "hours" | "trial" | "over" | "plans";
 
 interface Upgrade {
   /** Opens the plans over the page, for that reason. Null where nothing is on sale. */
@@ -103,7 +103,7 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
   const freeSeats = free?.seats ?? 3;
   const graceEndsAt = billing?.graceEndsAt ?? office.graceEndsAt ?? null;
   const trialEndedAt = billing?.trialEndedAt ?? office.trialEndedAt ?? null;
-  // After the trial, an office Free holds can settle on it from here too (the bar offers it on a wide screen).
+  // After the trial, an office that fits Free can settle on it from here too, as from billing.
   const canStayFree = admin && !done && !!trialEndedAt && current === "free" && members <= freeSeats;
   const date = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "long" });
 
@@ -116,8 +116,6 @@ function UpgradeDialog({ reason, onClose }: { reason: UpgradeReason | null; onCl
         ? [t("hoursTitle"), t("hoursBody")]
         : reason === "trial" && trying && trialEndsAt
           ? [t("trialTitle"), t("trialBody", { date: date(trialEndsAt), free: freeSeats })]
-          : reason === "ended" && trialEndedAt
-            ? [t("trialTitle"), t("endedBody", { date: date(trialEndedAt), free: freeSeats })]
           : reason === "over" && current === "free" && members > freeSeats
             ? [
                 t("overTitle"),

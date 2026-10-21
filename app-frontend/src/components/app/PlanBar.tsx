@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { useFormatter, useTranslations } from "next-intl";
-import { Loader2, X } from "@/components/ui/icons";
-import { api } from "@/lib/api";
+import { ChevronRight, X } from "@/components/ui/icons";
 import { usePlans } from "@/lib/billing";
-import { useUpgrade, type UpgradeReason } from "@/components/billing/Upgrade";
+import { Link } from "@/lib/i18n/navigation";
+import { officeSettingsPath } from "@/lib/links";
 import { useOfficeMaybe } from "./OfficeShell";
 
 const DAY = 24 * 60 * 60 * 1000;
@@ -24,42 +25,39 @@ function hiddenToday(officeId: string, kind: string): boolean {
 /**
  * The plan, where it changes something (docs/pricing.md): one bar across the
  * top of the office, part of it rather than floating over it. To admins: the
- * trial's last days, and once it has ended, the choice every office makes,
- * whatever its size: keep Pro, or carry on with Free. To everyone, once the
- * office has more people than Free holds: what that means for them. A press
- * hides it for the day; a new state shows again.
+ * trial's last days, and once it has ended, that billing decides what's next,
+ * whatever the office's size; the bar goes to billing, where Pro and Free are
+ * both chosen. To everyone, once the office has more people than Free has
+ * room for: what that means, and who can change it. On a phone the whole bar
+ * is the way in. Its × hides it for the day; a new state shows again.
  */
 export function PlanBar() {
   const t = useTranslations("planBar");
   const format = useFormatter();
   const context = useOfficeMaybe();
   const catalog = usePlans();
-  const { open } = useUpgrade();
   const [hidden, setHidden] = useState<string | null>(null);
-  const [busy, setBusy] = useState(false);
   // Read once: the days left don't need to tick while the office is open.
   const [now] = useState(() => Date.now());
-  if (!context || !open) return null;
-  const { office, overview, refresh } = context;
+  const pathname = usePathname();
+  // Billing says it all itself.
+  if (!context || pathname.endsWith("/settings")) return null;
+  const { office, overview } = context;
   const admin = office.role === "admin";
-  const members = overview.members.length;
   const free = catalog?.plans.find((plan) => plan.price === null)?.seats ?? 3;
-  const over = members > free;
-  const date = (at: number) => format.dateTime(new Date(at), { weekday: "long", day: "numeric", month: "long" });
+  const over = overview.members.length > free;
+  const date = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "long" });
 
-  let bar: { kind: string; label: string; text: string; reason?: UpgradeReason; stayFree?: boolean } | null = null;
+  let bar: { kind: string; label: string; text: string } | null = null;
   if (office.trialEndsAt && office.trialEndsAt - now < WARN_DAYS * DAY) {
-    if (admin) bar = { kind: "ending", label: t("labelTrial"), text: t("ending", { date: date(office.trialEndsAt) }), reason: "trial" };
-  } else if (office.trialEndedAt) {
-    if (admin && !over) bar = { kind: "ended", label: t("labelEnded"), text: t("ended", { free }), reason: "ended", stayFree: true };
-    else if (admin && office.graceEndsAt) bar = { kind: "grace", label: t("labelEnded"), text: t("grace", { free, date: date(office.graceEndsAt) }), reason: "over" };
-    else if (admin) bar = { kind: "full", label: t("labelFree"), text: t("full", { free }), reason: "over" };
-    else if (office.graceEndsAt) bar = { kind: "grace", label: t("labelEnded"), text: t("graceMember", { free, date: date(office.graceEndsAt) }) };
-    else if (over) bar = { kind: "full", label: t("labelFree"), text: t("fullMember", { free }) };
+    if (admin) bar = { kind: "ending", label: t("labelTrial"), text: t("ending", { date: date(office.trialEndsAt) }) };
+  } else if (office.trialEndedAt && !over) {
+    if (admin) bar = { kind: "ended", label: t("labelEnded"), text: t("ended") };
+  } else if (office.trialEndedAt && office.graceEndsAt) {
+    const until = date(office.graceEndsAt);
+    bar = { kind: "grace", label: t("labelEnded"), text: admin ? t("grace", { date: until }) : t("graceMember", { date: until }) };
   } else if (office.plan === "free" && over) {
-    bar = admin
-      ? { kind: "full", label: t("labelFree"), text: t("full", { free }), reason: "over" }
-      : { kind: "full", label: t("labelFree"), text: t("fullMember", { free }) };
+    bar = { kind: "full", label: t("labelFree"), text: admin ? t("full", { free }) : t("fullMember", { free }) };
   }
   if (!bar || hidden === bar.kind || hiddenToday(office.id, bar.kind)) return null;
   const { kind } = bar;
@@ -70,58 +68,43 @@ export function PlanBar() {
       localStorage.setItem(hiddenKey(office.id, kind), new Date().toDateString());
     } catch {}
   };
-  const stayFree = async () => {
-    setBusy(true);
-    try {
-      await api.stayOnFree(office.id);
-      await refresh();
-    } finally {
-      setBusy(false);
-    }
-  };
 
-  return (
-    <div role="status" className="flex min-h-12 shrink-0 items-center gap-3 border-b border-border bg-muted/50 px-3 py-2 sm:px-4">
-      <span className="hidden shrink-0 items-center gap-1.5 rounded-full bg-brand/12 px-2.5 py-1 text-[11.5px] font-semibold text-brand sm:inline-flex">
-        <span aria-hidden className="size-1.5 rounded-full bg-brand" />
+  const body = (
+    <>
+      <span className="hidden shrink-0 rounded-full bg-brand-foreground px-2 py-0.5 text-[10.5px] font-bold uppercase tracking-[0.06em] text-brand sm:inline">
         {bar.label}
       </span>
-      <p className="min-w-0 flex-1 text-[12.5px] leading-snug text-foreground sm:text-[13px]">
-        {/* On a phone the label leads the sentence instead of standing beside it. */}
-        <span className="font-semibold text-brand sm:hidden">{bar.label} · </span>
-        {bar.text}
-      </p>
-      <div className="flex shrink-0 items-center gap-1">
-        {bar.stayFree && (
-          <button
-            type="button"
-            disabled={busy}
-            onClick={stayFree}
-            className="hidden h-8 cursor-pointer items-center gap-1.5 rounded-full px-3 text-[12.5px] font-medium text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground disabled:opacity-50 sm:flex"
-          >
-            {busy && <Loader2 className="size-3.5 animate-spin" />}
-            {t("stayFree")}
-          </button>
-        )}
-        {bar.reason && (
-          <button
-            type="button"
-            onClick={() => open(bar.reason)}
-            className="h-8 cursor-pointer rounded-full bg-foreground px-3.5 text-[12.5px] font-medium text-background transition-colors hover:bg-foreground/85"
-          >
-            {t("keep")}
-          </button>
-        )}
-        <button
-          type="button"
-          aria-label={t("hide")}
-          title={t("hide")}
-          onClick={hide}
-          className="flex size-8 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-foreground/[0.06] hover:text-foreground"
-        >
-          <X className="size-4" />
-        </button>
-      </div>
+      <span className="min-w-0 flex-1 text-[12.5px] font-medium leading-snug sm:text-[13.5px]">{bar.text}</span>
+      {admin && (
+        <>
+          <span className="hidden h-8 shrink-0 items-center rounded-full bg-brand-foreground px-3.5 text-[12.5px] font-semibold text-brand transition-opacity group-hover:opacity-90 sm:inline-flex">
+            {t("billing")}
+          </span>
+          <ChevronRight aria-hidden className="size-4 shrink-0 sm:hidden" />
+        </>
+      )}
+    </>
+  );
+  const row = "flex min-w-0 flex-1 items-center gap-3 py-2.5 sm:py-2";
+
+  return (
+    <div role="status" className="flex min-h-11 shrink-0 items-center gap-1 bg-brand ps-3.5 pe-1.5 text-brand-foreground sm:min-h-12 sm:ps-4 sm:pe-2">
+      {admin ? (
+        <Link href={`${officeSettingsPath(office.id)}#plan`} className={`group ${row}`}>
+          {body}
+        </Link>
+      ) : (
+        <div className={row}>{body}</div>
+      )}
+      <button
+        type="button"
+        aria-label={t("hide")}
+        title={t("hide")}
+        onClick={hide}
+        className="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-brand-foreground/80 transition-colors hover:bg-brand-foreground/15 hover:text-brand-foreground"
+      >
+        <X className="size-4" />
+      </button>
     </div>
   );
 }

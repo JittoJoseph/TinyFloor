@@ -743,11 +743,10 @@
       "hoursTitle": "Gardez la vidéo en réunion",
       "hoursBody": "Pro rétablit la vidéo tout de suite, avec de la place pour toute votre équipe.",
       "trialTitle": "Gardez Pro pour votre équipe",
-      "trialBody": "Votre essai se termine le {date}. Gardez Pro et tout le monde reste ; avec Free, le bureau accueille {free} personnes.",
-      "endedBody": "Votre essai s'est terminé le {date}. Gardez Pro et tout le monde reste ; avec Free, le bureau accueille {free} personnes.",
+      "trialBody": "Votre essai se termine le {date}. Gardez Pro et tout le monde reste ; Free accueille {free} personnes.",
       "overTitle": "Gardez toute votre équipe",
       "overBody": "{office} compte {members} personnes, et Free en accueille {free}. Tout le monde peut encore entrer jusqu'au {date} ; ensuite, {free} à la fois.",
-      "overBodyLater": "{office} compte {members} personnes, et Free en accueille {free} : {free} peuvent être sur l'étage en même temps, et personne de nouveau ne peut rejoindre.",
+      "overBodyLater": "{office} compte {members} personnes, et Free en accueille {free} à la fois, donc personne de nouveau ne peut rejoindre.",
       "plansTitle": "Pro, pour toute l'équipe",
       "plansBody": "Un seul prix pour toutes les personnes avec qui vous travaillez.",
       "membersOnly": "Seuls les admins de {office} peuvent changer son offre.",
@@ -775,21 +774,24 @@
       "assurance": "Résiliable à tout moment. Remboursement intégral sous 14 jours.",
       "meetings": "Des réunions aussi souvent que votre équipe en a besoin"
     },
-    "billingEmail": "Questions sur la facturation : <link>{email}</link>."
+    "billingEmail": "Questions sur la facturation : <link>{email}</link>.",
+    "endedNote": "Votre essai Pro est terminé. Gardez Pro pour votre équipe, ou continuez avec Free, jusqu'à {free} personnes.",
+    "graceNote": "Votre essai Pro est terminé. Tout le monde peut encore entrer jusqu'au {date} ; ensuite, Free accueille {free} personnes à la fois.",
+    "stayFree": "Continuer avec Free",
+    "seatsOver": "Free accueille {seats} personnes à la fois"
   },
   "planBar": {
     "labelTrial": "Essai Pro",
     "labelEnded": "Essai terminé",
     "labelFree": "Forfait Free",
-    "ending": "Se termine le {date}. Gardez Pro pour garder toute l'équipe sur l'étage.",
-    "ended": "Choisissez la suite : gardez Pro pour votre équipe, ou continuez avec Free, jusqu'à {free} personnes.",
-    "grace": "Tout le monde peut encore entrer jusqu'au {date}. Ensuite, Free accueille {free} personnes à la fois.",
-    "full": "{free} personnes peuvent être sur l'étage en même temps. Gardez Pro pour faire entrer tout le monde.",
-    "graceMember": "Tout le monde peut encore entrer jusqu'au {date}. Ensuite, Free accueille {free} personnes à la fois.",
-    "fullMember": "{free} personnes peuvent être sur l'étage en même temps.",
-    "keep": "Garder Pro",
-    "stayFree": "Continuer avec Free",
-    "hide": "Masquer pour aujourd'hui"
+    "ending": "Votre essai Pro se termine le {date}. Mettez à jour la facturation pour garder Pro.",
+    "ended": "Votre essai Pro est terminé. Mettez à jour la facturation pour garder Pro, ou continuez avec Free.",
+    "grace": "Votre essai Pro est terminé. Mettez à jour la facturation avant le {date} pour garder tout le monde.",
+    "full": "Free accueille {free} personnes à la fois sur l'étage. Mettez à jour la facturation pour faire entrer tout le monde.",
+    "graceMember": "L'essai Pro de ce bureau est terminé. Demandez à un admin de mettre à jour la facturation avant le {date}.",
+    "fullMember": "Free accueille {free} personnes à la fois sur l'étage. Demandez à un admin de mettre à jour la facturation.",
+    "hide": "Masquer pour aujourd'hui",
+    "billing": "Mettre à jour la facturation"
   },
   "invite": {
     "title": "Inviter dans {office}",

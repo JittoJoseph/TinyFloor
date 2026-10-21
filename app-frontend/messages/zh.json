@@ -743,11 +743,10 @@
       "hoursTitle": "让会议保持视频",
       "hoursBody": "Pro 会立即恢复视频，并给整个团队留出位置。",
       "trialTitle": "为团队保留 Pro",
-      "trialBody": "你的试用将于 {date} 结束。继续使用 Pro，所有人照旧；Free 的办公室最多 {free} 人。",
-      "endedBody": "你的试用已于 {date} 结束。继续使用 Pro，所有人照旧；Free 的办公室最多 {free} 人。",
+      "trialBody": "你的试用将于 {date} 结束。继续使用 Pro，所有人都能留下；Free 最多 {free} 人。",
       "overTitle": "留住整个团队",
       "overBody": "{office} 有 {members} 人，Free 最多 {free} 人。{date} 前所有人仍可进入；之后同时最多 {free} 人。",
-      "overBodyLater": "{office} 有 {members} 人，Free 最多 {free} 人：楼层上同时最多 {free} 人，新成员无法加入。",
+      "overBodyLater": "{office} 有 {members} 人，Free 同时最多 {free} 人，因此新成员无法加入。",
       "plansTitle": "Pro，为整个团队",
       "plansBody": "和你一起工作的所有人，一个价格。",
       "membersOnly": "只有 {office} 的管理员可以更改套餐。",
@@ -775,21 +774,24 @@
       "assurance": "随时可以取消。14 天内全额退款。",
       "meetings": "团队需要多少会议就开多少"
     },
-    "billingEmail": "账单问题请联系：<link>{email}</link>"
+    "billingEmail": "账单问题请联系：<link>{email}</link>",
+    "endedNote": "你的 Pro 试用已结束。为团队继续使用 Pro，或继续使用 Free，最多 {free} 人。",
+    "graceNote": "你的 Pro 试用已结束。{date} 前所有人仍可进入；之后 Free 同时最多 {free} 人。",
+    "stayFree": "继续使用 Free",
+    "seatsOver": "Free 同时最多 {seats} 人"
   },
   "planBar": {
     "labelTrial": "Pro 试用",
     "labelEnded": "试用已结束",
     "labelFree": "Free 方案",
-    "ending": "将于 {date} 结束。继续使用 Pro，让整个团队都留在楼层。",
-    "ended": "选择接下来的方式：为团队继续使用 Pro，或继续使用 Free，最多 {free} 人。",
-    "grace": "{date} 前所有人仍可进入。之后 Free 同时最多 {free} 人。",
-    "full": "楼层同时最多 {free} 人。继续使用 Pro，让所有人都能进来。",
-    "graceMember": "{date} 前所有人仍可进入。之后 Free 同时最多 {free} 人。",
-    "fullMember": "楼层同时最多 {free} 人。",
-    "keep": "继续使用 Pro",
-    "stayFree": "继续使用 Free",
-    "hide": "今天不再显示"
+    "ending": "你的 Pro 试用将于 {date} 结束。更新账单信息即可继续使用 Pro。",
+    "ended": "你的 Pro 试用已结束。更新账单信息继续使用 Pro，或继续使用 Free。",
+    "grace": "你的 Pro 试用已结束。请在 {date} 前更新账单信息，让所有人都能进来。",
+    "full": "Free 同时最多 {free} 人在楼层。更新账单信息，让所有人都能进来。",
+    "graceMember": "此办公室的 Pro 试用已结束。请让管理员在 {date} 前更新账单信息。",
+    "fullMember": "Free 同时最多 {free} 人在楼层。请让管理员更新账单信息。",
+    "hide": "今天不再显示",
+    "billing": "更新账单信息"
   },
   "invite": {
     "title": "邀请大家加入 {office}",

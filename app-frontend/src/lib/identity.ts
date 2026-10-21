@@ -1,7 +1,6 @@
-import { CHARACTER_IDS } from "@/components/entry/CharacterPicker";
+import { CHARACTERS, DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 
 const KEY = "tinyfloorIdentity";
-const DEFAULT_CHARACTER = "Adam";
 
 export interface Identity {
   name: string;
@@ -37,10 +36,10 @@ export function saveIdentity(identity: Identity) {
  * character. Only for a door's own state, never in what the server renders.
  */
 export function anyCharacter(): string {
-  return CHARACTER_IDS[Math.floor(Math.random() * CHARACTER_IDS.length)];
+  return CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)];
 }
 
 /** One of the characters we have art for, or the default. */
 export function character(value: unknown): string {
-  return typeof value === "string" && CHARACTER_IDS.includes(value) ? value : DEFAULT_CHARACTER;
+  return isCharacter(value) ? value : DEFAULT_CHARACTER;
 }

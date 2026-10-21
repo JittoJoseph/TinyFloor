@@ -626,12 +626,14 @@ export class Chat extends DurableObject<Env> {
   private withReplies(rows: MessageRow[], messages: ChatMessage[]): ChatMessage[] {
     const wanted = [...new Set(rows.filter((row) => row.reply_to !== null).map((row) => Number(row.reply_to)))];
     if (!wanted.length) return messages;
-    const found = new Map(
-      this.sql
-        .exec<MessageRow>(`SELECT ${COLUMNS} FROM messages WHERE seq IN (${wanted.map(() => "?").join(", ")})`, ...wanted)
-        .toArray()
-        .map((row) => [Number(row.seq), row]),
-    );
+    // In pieces: a query binds 100 values at most, and a page opened at a search result can hold hundreds of replies.
+    const found = new Map<number, MessageRow>();
+    for (let at = 0; at < wanted.length; at += 90) {
+      const some = wanted.slice(at, at + 90);
+      for (const row of this.sql.exec<MessageRow>(`SELECT ${COLUMNS} FROM messages WHERE seq IN (${some.map(() => "?").join(", ")})`, ...some)) {
+        found.set(Number(row.seq), row);
+      }
+    }
     return messages.map((message, index) => {
       const to = rows[index].reply_to;
       return to === null ? message : { ...message, reply: replyOf(Number(to), found.get(Number(to))) };

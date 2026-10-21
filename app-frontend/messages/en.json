@@ -223,7 +223,18 @@
     "notifyTitle": "Turn on notifications",
     "notifyBody": "Messages and mentions, even when TinyFloor is closed.",
     "notifyOn": "Turn on",
-    "notNow": "Not now"
+    "notNow": "Not now",
+    "add": "Add",
+    "photo": "Photo",
+    "file": "File",
+    "reply": "Reply",
+    "replyingTo": "Replying to <strong>{name}</strong>",
+    "cancelReply": "Stop replying",
+    "replyGone": "Original message was deleted",
+    "replyFiles": "{count, plural, one {# file} other {# files}}",
+    "typingOne": "{name} is typing",
+    "typingTwo": "{a} and {b} are typing",
+    "typingMany": "Several people are typing"
   },
   "proximity": {
     "call": "Call",

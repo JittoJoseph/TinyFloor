@@ -82,6 +82,7 @@ import {
   Presentation01Icon,
   PreviousIcon,
   RefreshIcon,
+  ReplyIcon,
   DiceIcon,
   Search01Icon,
   SecurityBlockIcon,
@@ -236,6 +237,7 @@ export const Presentation = icon(Presentation01Icon, "Presentation");
 export const Radio = icon(Wifi01Icon, "Radio");
 export const Refund = icon(MoneyReceive02Icon, "Refund");
 export const Refresh = icon(RefreshIcon, "Refresh");
+export const Reply = icon(ReplyIcon, "Reply");
 export const Dice = icon(DiceIcon, "Dice");
 export const Search = icon(Search01Icon, "Search");
 export const ServerOff = icon(ServerOffIcon, "ServerOff");

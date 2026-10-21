@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { ArrowUp, FileText, Loader2, Paperclip, Smile, X } from "@/components/ui/icons";
+import { ArrowUp, FileText, ImagePlus, Loader2, Paperclip, Plus, Reply, Smile, X } from "@/components/ui/icons";
+import { Menu, MenuItem } from "@/components/ui/Menu";
 import { FILES_PER_MESSAGE, isPicture, type ChatFile } from "@shared/chat";
 import { Kbd } from "@/components/ui/IconButton";
 import { Tooltip } from "@/components/motion/tooltip";
@@ -78,6 +79,10 @@ export function Composer({
   attach = true,
   draftKey,
   onEditLast,
+  replying,
+  onCancelReply,
+  onTyping,
+  typing,
 }: {
   placeholder: string;
   onSend: (text: string, files: ChatFile[]) => void;
@@ -98,6 +103,13 @@ export function Composer({
   draftKey?: string;
   /** Up in an empty box: edit your last message. */
   onEditLast?: () => void;
+  /** Who you're answering, shown over the box until you send or let it go. */
+  replying?: { name: string } | null;
+  onCancelReply?: () => void;
+  /** Called as you write, so the others can see you're typing (the socket says so every few seconds at most). */
+  onTyping?: () => void;
+  /** Who else is typing here, said under the box. */
+  typing?: string | null;
 }) {
   const t = useTranslations("chat");
   const locale = useLocale();
@@ -108,6 +120,7 @@ export function Composer({
   };
   const emojiBox = useRef<HTMLSpanElement>(null);
   const picker = useRef<HTMLInputElement>(null);
+  const photoPicker = useRef<HTMLInputElement>(null);
   const [emoji, setEmoji] = useState(false);
   const box = useRef<HTMLTextAreaElement>(null);
   const [pending, setPending] = useState<Pending[]>([]);
@@ -289,7 +302,18 @@ export function Composer({
   };
 
   return (
-    <div className="shrink-0 px-4 pb-4 sm:px-5">
+    <div className="relative shrink-0 px-4 pb-4 sm:px-5">
+      {/* In the padding under the box, so nothing moves when it comes and goes. */}
+      {typing && (
+        <p aria-live="polite" className="absolute bottom-0 start-8 flex h-4 items-center gap-1.5 text-[11.5px] text-muted-foreground sm:start-9">
+          <span className="typing-dots" aria-hidden>
+            <span />
+            <span />
+            <span />
+          </span>
+          <span className="truncate">{typing}</span>
+        </p>
+      )}
       {shownNote && (
         <p role="status" className="mb-2 px-1 text-[12px] text-muted-foreground">
           {shownNote}
@@ -297,6 +321,22 @@ export function Composer({
       )}
 
       <div className="relative rounded-2xl border border-border bg-card shadow-[0_1px_2px_rgb(0_0_0/0.04)] transition-colors focus-within:border-border-strong">
+        {replying && (
+          <div className="flex h-9 items-center gap-2 rounded-t-2xl border-b border-border bg-muted/60 ps-4 pe-1.5 text-[12.5px] text-muted-foreground">
+            <Reply className="size-3.5 shrink-0" />
+            <span className="min-w-0 flex-1 truncate">
+              {t.rich("replyingTo", { name: replying.name, strong: (chunks) => <strong className="font-semibold text-foreground">{chunks}</strong> })}
+            </span>
+            <button
+              type="button"
+              aria-label={t("cancelReply")}
+              onClick={onCancelReply}
+              className="flex size-6 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            >
+              <X className="size-3.5" />
+            </button>
+          </div>
+        )}
         {picking && (
           <div
             role="listbox"
@@ -376,6 +416,7 @@ export function Composer({
           placeholder={placeholder}
           onChange={(event) => {
             setBody(event.target.value);
+            if (event.target.value.trim()) onTyping?.();
             grow(event.target);
             follow(event.target);
           }}
@@ -407,6 +448,9 @@ export function Composer({
             if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing && pointing()) {
               event.preventDefault();
               send();
+            } else if (event.key === "Escape" && replying && onCancelReply) {
+              event.preventDefault();
+              onCancelReply();
             } else if (event.key === "ArrowUp" && !body && !pending.length && onEditLast) {
               event.preventDefault();
               onEditLast();
@@ -415,19 +459,31 @@ export function Composer({
           className="block max-h-[200px] w-full resize-none overflow-y-hidden bg-transparent px-4 pb-1 pt-3 text-[16px] leading-[1.45] text-foreground outline-none placeholder:text-faint md:text-[14px]"
         />
 
+        {/* Adding things on the left, the way out (emoji, then send) on the right. */}
         <div className="flex items-center gap-0.5 px-2 pb-2">
           {attach && (
             <>
-              <Tooltip content={t("attach")}>
-                <button
-                  type="button"
-                  aria-label={t("attach")}
-                  onClick={() => picker.current?.click()}
-                  className="flex size-8 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                >
-                  <Paperclip className="size-[18px]" />
-                </button>
-              </Tooltip>
+              <Menu
+                side="top"
+                align="start"
+                width={188}
+                trigger={
+                  <button
+                    type="button"
+                    aria-label={t("add")}
+                    className="flex size-8 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                  >
+                    <Plus className="size-[18px]" />
+                  </button>
+                }
+              >
+                <MenuItem icon={<ImagePlus className="size-4" />} onSelect={() => photoPicker.current?.click()}>
+                  {t("photo")}
+                </MenuItem>
+                <MenuItem icon={<Paperclip className="size-4" />} onSelect={() => picker.current?.click()}>
+                  {t("file")}
+                </MenuItem>
+              </Menu>
               <input
                 ref={picker}
                 type="file"
@@ -438,51 +494,66 @@ export function Composer({
                   event.target.value = "";
                 }}
               />
-              <span ref={emojiBox} className="relative">
-                <Tooltip content={t("emoji")}>
-                  <button
-                    type="button"
-                    aria-label={t("emoji")}
-                    aria-expanded={emoji}
-                    onClick={() => setEmoji((was) => !was)}
-                    className={cn(
-                      "flex size-8 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground",
-                      emoji && "bg-muted text-foreground",
-                    )}
-                  >
-                    <Smile className="size-[18px]" />
-                  </button>
-                </Tooltip>
-                {emoji && (
-                  <span className="absolute bottom-10 start-0 z-20 grid w-[232px] grid-cols-8 gap-0.5 rounded-xl border border-border bg-popover p-1.5 shadow-float">
-                    {EMOJI.map((one) => (
-                      <button
-                        key={one}
-                        type="button"
-                        onClick={() => insert(one)}
-                        className="flex size-7 cursor-pointer items-center justify-center rounded-lg text-[16px] hover:bg-muted"
-                      >
-                        {one}
-                      </button>
-                    ))}
-                  </span>
-                )}
-              </span>
+              {/* Photos only: on a phone this offers the camera and the gallery first. */}
+              <input
+                ref={photoPicker}
+                type="file"
+                accept="image/*"
+                multiple
+                hidden
+                onChange={(event) => {
+                  add([...(event.target.files ?? [])]);
+                  event.target.value = "";
+                }}
+              />
             </>
           )}
 
-          <span className="me-2 ms-auto hidden items-center gap-1 text-[11px] text-faint md:flex">
+          <span className="me-1 ms-auto hidden items-center gap-1 text-[11px] text-faint md:flex">
             <Kbd>⇧</Kbd>
             <Kbd>↵</Kbd>
             <span className="ms-0.5">{t("newLine")}</span>
           </span>
+          {attach && (
+            <span ref={emojiBox} className="relative max-md:ms-auto">
+              <Tooltip content={t("emoji")}>
+                <button
+                  type="button"
+                  aria-label={t("emoji")}
+                  aria-expanded={emoji}
+                  onClick={() => setEmoji((was) => !was)}
+                  className={cn(
+                    "flex size-8 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground",
+                    emoji && "bg-muted text-foreground",
+                  )}
+                >
+                  <Smile className="size-[18px]" />
+                </button>
+              </Tooltip>
+              {emoji && (
+                <span className="absolute bottom-10 end-0 z-20 grid w-[232px] grid-cols-8 gap-0.5 rounded-xl border border-border bg-popover p-1.5 shadow-float">
+                  {EMOJI.map((one) => (
+                    <button
+                      key={one}
+                      type="button"
+                      onClick={() => insert(one)}
+                      className="flex size-7 cursor-pointer items-center justify-center rounded-lg text-[16px] hover:bg-muted"
+                    >
+                      {one}
+                    </button>
+                  ))}
+                </span>
+              )}
+            </span>
+          )}
           <button
             type="button"
             onClick={send}
             disabled={(!canSend && !uploading) || waiting}
             aria-label={t("send")}
             className={cn(
-              "flex size-8 cursor-pointer items-center justify-center rounded-lg transition-colors max-md:ms-auto",
+              "ms-1 flex size-8 cursor-pointer items-center justify-center rounded-full transition-colors",
+              !attach && "max-md:ms-auto",
               canSend || uploading ? "bg-foreground text-background hover:bg-foreground/90" : "bg-muted text-faint",
             )}
           >

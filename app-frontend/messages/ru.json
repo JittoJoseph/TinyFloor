@@ -223,7 +223,18 @@
     "notifyTitle": "Включите уведомления",
     "notifyBody": "Сообщения и упоминания, даже когда TinyFloor закрыт.",
     "notifyOn": "Включить",
-    "notNow": "Не сейчас"
+    "notNow": "Не сейчас",
+    "add": "Добавить",
+    "photo": "Фото",
+    "file": "Файл",
+    "reply": "Ответить",
+    "replyingTo": "Ответ: <strong>{name}</strong>",
+    "cancelReply": "Отменить ответ",
+    "replyGone": "Исходное сообщение удалено",
+    "replyFiles": "{count, plural, one {# файл} few {# файла} many {# файлов} other {# файла}}",
+    "typingOne": "{name} печатает",
+    "typingTwo": "{a} и {b} печатают",
+    "typingMany": "Несколько человек печатают"
   },
   "proximity": {
     "call": "Позвонить",

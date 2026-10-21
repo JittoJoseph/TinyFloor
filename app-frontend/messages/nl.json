@@ -223,7 +223,18 @@
     "notifyTitle": "Meldingen aanzetten",
     "notifyBody": "Berichten en vermeldingen, ook als TinyFloor dicht is.",
     "notifyOn": "Aanzetten",
-    "notNow": "Niet nu"
+    "notNow": "Niet nu",
+    "add": "Toevoegen",
+    "photo": "Foto",
+    "file": "Bestand",
+    "reply": "Beantwoorden",
+    "replyingTo": "Antwoord aan <strong>{name}</strong>",
+    "cancelReply": "Niet meer beantwoorden",
+    "replyGone": "Het oorspronkelijke bericht is verwijderd",
+    "replyFiles": "{count, plural, one {# bestand} other {# bestanden}}",
+    "typingOne": "{name} is aan het typen",
+    "typingTwo": "{a} en {b} zijn aan het typen",
+    "typingMany": "Meerdere mensen zijn aan het typen"
   },
   "proximity": {
     "call": "Bellen",

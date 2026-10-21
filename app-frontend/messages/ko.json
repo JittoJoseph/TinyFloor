@@ -223,7 +223,18 @@
     "notifyTitle": "알림 켜기",
     "notifyBody": "TinyFloor를 닫아도 메시지와 멘션을 받아요.",
     "notifyOn": "켜기",
-    "notNow": "나중에"
+    "notNow": "나중에",
+    "add": "추가",
+    "photo": "사진",
+    "file": "파일",
+    "reply": "답장",
+    "replyingTo": "<strong>{name}</strong>님에게 답장",
+    "cancelReply": "답장 취소",
+    "replyGone": "원본 메시지가 삭제되었어요",
+    "replyFiles": "{count, plural, other {파일 #개}}",
+    "typingOne": "{name}님이 입력 중",
+    "typingTwo": "{a}님과 {b}님이 입력 중",
+    "typingMany": "여러 명이 입력 중"
   },
   "proximity": {
     "call": "통화",

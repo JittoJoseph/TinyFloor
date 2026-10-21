@@ -223,7 +223,18 @@
     "notifyTitle": "通知をオンにする",
     "notifyBody": "TinyFloor を閉じていても、メッセージとメンションが届きます。",
     "notifyOn": "オンにする",
-    "notNow": "後で"
+    "notNow": "後で",
+    "add": "追加",
+    "photo": "写真",
+    "file": "ファイル",
+    "reply": "返信",
+    "replyingTo": "<strong>{name}</strong> さんに返信",
+    "cancelReply": "返信をやめる",
+    "replyGone": "元のメッセージは削除されました",
+    "replyFiles": "{count, plural, other {# 件のファイル}}",
+    "typingOne": "{name} さんが入力中",
+    "typingTwo": "{a} さんと {b} さんが入力中",
+    "typingMany": "複数の人が入力中"
   },
   "proximity": {
     "call": "通話",

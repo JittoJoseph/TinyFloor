@@ -2,7 +2,7 @@
 
 import { Fragment, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { useFormatter, useLocale, useNow, useTranslations } from "next-intl";
-import { ArrowDown, Check, Copy, Download, FileText, Pencil, SmilePlus, Trash2 } from "@/components/ui/icons";
+import { ArrowDown, Check, Copy, Download, FileText, ImagePlus, Pencil, Reply, SmilePlus, Trash2 } from "@/components/ui/icons";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { isPicture, type ChatFile } from "@shared/chat";
 import { fileUrl, sizeOf } from "@/lib/chatFiles";
@@ -28,6 +28,8 @@ export interface Line {
   edited?: number;
   /** Drawn instead of the author's face: the TinyFloor mark on the team's answers in a ticket. */
   mark?: ReactNode;
+  /** The message this answers: who said it and how it began, or that it's gone. */
+  reply?: { id: string; author?: string; authorName?: string; body?: string; files?: number; gone?: boolean };
 }
 
 const QUICK = ["👍", "❤️", "😂", "🎉", "👀", "✅"];
@@ -54,6 +56,8 @@ export function Conversation({
   onReact,
   onEdit,
   onDelete,
+  onReply,
+  onOpenReply,
   personCard,
   editLast,
   names,
@@ -72,6 +76,10 @@ export function Conversation({
   /** Where your own messages can be changed (the lobby): change one, or take it back. */
   onEdit?: (line: Line, body: string) => void;
   onDelete?: (line: Line) => void;
+  /** Answer this message: the box below says who you're replying to. */
+  onReply?: (line: Line) => void;
+  /** A reply's quote was pressed: bring the message it answers into view. */
+  onOpenReply?: (id: string) => void;
   /** Wraps a face or a name so pressing it shows who that is. */
   personCard?: (id: string, name: string, trigger: ReactNode) => ReactNode;
   /** Changes when Up was pressed in an empty box: your last message opens for editing. */
@@ -153,6 +161,17 @@ export function Conversation({
     return () => clearTimeout(timer);
   }, [lit]);
 
+  // A reply's quote: the message it answers, brought into view and lit; asked for first if it isn't loaded.
+  const openReply = (id: string) => {
+    const row = box.current?.querySelector<HTMLElement>(`[data-line="${CSS.escape(id)}"]`);
+    if (!row) return onOpenReply?.(id);
+    row.scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" });
+    atEnd.current = false;
+    // Lit again even if it was the last one lit.
+    setLit(null);
+    requestAnimationFrame(() => setLit(id));
+  };
+
   // Reaching the top asks for the page before it.
   const top = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -205,7 +224,8 @@ export function Conversation({
                 <DayLabel at={day.at} />
                 {day.lines.map((line, index) => {
                   const previous = day.lines[index - 1];
-                  const grouped = !!previous && previous.author === line.author && line.at - previous.at < RUN_MS;
+                  // A reply always shows whose it is, under the message it answers.
+                  const grouped = !!previous && !line.reply && previous.author === line.author && line.at - previous.at < RUN_MS;
                   const fresh = settledAt !== null && line.at > settledAt;
                   return (
                     <Fragment key={line.id}>
@@ -218,6 +238,8 @@ export function Conversation({
                           onReact={onReact}
                           onEdit={line.author === me ? onEdit : undefined}
                           onDelete={line.author === me ? onDelete : undefined}
+                          onReply={onReply}
+                          onOpenReply={openReply}
                           personCard={personCard}
                           editing={editing === line.id}
                           onEditing={(on) => (on ? setEditing(line.id) : doneEditing())}
@@ -254,6 +276,46 @@ export function Conversation({
           </motion.button>
         )}
       </AnimatePresence>
+    </div>
+  );
+}
+
+/**
+ * The message a reply answers, above it: a thin line curling down from the
+ * face column into the reply, then a small face, the name and how it began,
+ * the way Discord shows it. Pressing it brings that message into view.
+ */
+function Quote({ reply, onOpen }: { reply: NonNullable<Line["reply"]>; onOpen?: (id: string) => void }) {
+  const t = useTranslations("chat");
+  return (
+    <div className="relative flex h-[22px] items-end ps-12 pt-1">
+      {/* From over the middle of the face below (its column is 36 wide) to the small face of the quote, 2px clear of the face. */}
+      <span aria-hidden className="absolute start-[17px] top-[13px] h-[7px] w-[47px] rounded-ss-md border-s-2 border-t-2 border-border" />
+      <button
+        type="button"
+        disabled={reply.gone || !onOpen}
+        onClick={() => onOpen?.(reply.id)}
+        className="relative z-[1] ms-[18px] flex min-w-0 max-w-full cursor-pointer items-center gap-1.5 text-[12.5px] leading-4 text-muted-foreground transition-colors hover:text-foreground disabled:cursor-default"
+      >
+        {reply.gone ? (
+          <span className="italic text-faint">{t("replyGone")}</span>
+        ) : (
+          <>
+            <Face seed={reply.author ?? ""} size={16} />
+            <span className="shrink-0 font-semibold text-foreground/80">{reply.authorName}</span>
+            {reply.body ? (
+              <span className="truncate" data-ph-mask>
+                {reply.body.replace(/\s+/g, " ")}
+              </span>
+            ) : reply.files ? (
+              <span className="flex items-center gap-1 text-faint">
+                <ImagePlus className="size-3.5" />
+                {t("replyFiles", { count: reply.files })}
+              </span>
+            ) : null}
+          </>
+        )}
+      </button>
     </div>
   );
 }
@@ -339,6 +401,8 @@ function Message({
   onReact,
   onEdit,
   onDelete,
+  onReply,
+  onOpenReply,
   personCard,
   editing: isEditing,
   onEditing,
@@ -351,6 +415,8 @@ function Message({
   onReact?: (line: Line, emoji: string, on: boolean) => void;
   onEdit?: (line: Line, body: string) => void;
   onDelete?: (line: Line) => void;
+  onReply?: (line: Line) => void;
+  onOpenReply?: (id: string) => void;
   personCard?: (id: string, name: string, trigger: ReactNode) => ReactNode;
   editing: boolean;
   onEditing: (on: boolean) => void;
@@ -385,12 +451,14 @@ function Message({
     <div
       data-line={line.id}
       className={cn(
-        "group relative flex gap-3 px-5 py-0.5 transition-colors duration-700 sm:px-6",
+        "group relative px-5 py-0.5 transition-colors duration-700 sm:px-6",
         !grouped && "mt-2 pt-1.5",
         lit ? "bg-brand/[0.12]" : forMe ? "bg-brand/[0.06] hover:bg-brand/[0.09]" : "hover:bg-muted/50",
         forMe && "shadow-[inset_2px_0_0_var(--color-brand)]",
       )}
     >
+      {line.reply && <Quote reply={line.reply} onOpen={onOpenReply} />}
+      <div className="flex gap-3">
       <div className="w-9 shrink-0">
         {grouped ? (
           // One line, wider than the face's column if it must: it reaches back into the padding, never under the text.
@@ -490,6 +558,8 @@ function Message({
         )}
       </div>
 
+      </div>
+
       {/* What you can do to a message, on hover or focus. */}
       <div className="absolute -top-3.5 end-5 z-[6] hidden items-center gap-0.5 rounded-xl border border-border bg-popover p-0.5 shadow-float group-focus-within:flex group-hover:flex">
         {onReact &&
@@ -506,6 +576,17 @@ function Message({
           ))}
         {onReact && (
           <MoreReactions onPick={(emoji) => onReact(line, emoji, !line.reactions?.[emoji]?.includes(me))} label={t("react")} />
+        )}
+        {onReply && editing === null && (
+          <button
+            type="button"
+            aria-label={t("reply")}
+            title={t("reply")}
+            onClick={() => onReply(line)}
+            className="flex size-7 cursor-pointer items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"
+          >
+            <Reply className="size-3.5" />
+          </button>
         )}
         {onEdit && editing === null && (
           <button

@@ -16,6 +16,8 @@ import {
   LOBBY_RETENTION_DAYS,
   HEARTBEAT_PONG,
   MODERATOR,
+  REPLY_SNIPPET,
+  TYPING_EVERY_MS,
   cleanChannelName,
   dmChannelId,
   dmMembers,
@@ -24,6 +26,7 @@ import {
   type ChatClientMessage,
   type ChatFile,
   type ChatMessage,
+  type ChatReply,
   type ChatServerMessage,
   type LobbyChatPage,
   type PushPayload,
@@ -39,6 +42,8 @@ interface Attachment {
   /** Sends in this window, to keep a runaway client from filling the office. */
   sends: number;
   window: number;
+  /** When they last said they were typing, so a chatty browser is heard every few seconds at most. */
+  typedAt?: number;
 }
 
 interface ChannelRow extends Record<string, SqlStorageValue> {
@@ -58,9 +63,10 @@ interface MessageRow extends Record<string, SqlStorageValue> {
   mentions: string | null;
   at: number;
   edited_at: SqlStorageValue;
+  reply_to: SqlStorageValue;
 }
 
-const COLUMNS = "seq, channel, author, author_name, body, files, mentions, at, edited_at";
+const COLUMNS = "seq, channel, author, author_name, body, files, mentions, at, edited_at, reply_to";
 
 /** A runaway client is stopped at ten messages a second; a person never gets near it. */
 const SENDS_PER_TEN_SECONDS = 100;
@@ -120,6 +126,8 @@ export class Chat extends DurableObject<Env> {
       // And with files and mentions, both JSON. (`image` is from before files, and was never used.)
       if (!columns.some((column) => column.name === "files")) this.sql.exec("ALTER TABLE messages ADD COLUMN files TEXT");
       if (!columns.some((column) => column.name === "mentions")) this.sql.exec("ALTER TABLE messages ADD COLUMN mentions TEXT");
+      // And replies: the message answered, by seq, read again whenever the reply is sent out.
+      if (!columns.some((column) => column.name === "reply_to")) this.sql.exec("ALTER TABLE messages ADD COLUMN reply_to INTEGER");
       this.sql.exec(`CREATE TABLE IF NOT EXISTS reads (
         member TEXT NOT NULL,
         channel TEXT NOT NULL,
@@ -202,11 +210,13 @@ export class Chat extends DurableObject<Env> {
         me.sends++;
         this.remember(socket, me);
         if (me.sends > SENDS_PER_TEN_SECONDS) return this.send(socket, { t: "chat_error", code: "slow_down" });
-        return this.post(socket, me, message.channel, message.body, message.files, message.mentions, now);
+        return this.post(socket, me, message.channel, message.body, message.files, message.mentions, message.replyTo, now);
       case "chat_history":
         return this.page(socket, me, message.channel, message.before, message.to);
       case "chat_search":
         return this.search(socket, me, message.q);
+      case "chat_typing":
+        return this.typing(socket, me, message.channel, now);
       case "chat_read":
         return this.markRead(me.userId, message.channel, message.seq);
       case "chat_react":
@@ -325,6 +335,7 @@ export class Chat extends DurableObject<Env> {
     body: unknown,
     files: unknown,
     mentions: unknown,
+    replyTo: unknown,
     now: number,
   ): void {
     const text = typeof body === "string" ? body.trim().slice(0, CHAT_BODY_MAX) : "";
@@ -336,8 +347,13 @@ export class Chat extends DurableObject<Env> {
     if (this.lobby && isDm(channel)) return this.pass(socket, me, channel, text, now);
 
     this.ensureChannel(channel, me.userId, now);
+    // A reply answers a message in the same conversation, or nothing.
+    const answered =
+      typeof replyTo === "number" && Number.isInteger(replyTo)
+        ? this.sql.exec<MessageRow>(`SELECT ${COLUMNS} FROM messages WHERE seq = ? AND channel = ?`, replyTo, channel).toArray()[0]
+        : undefined;
     this.sql.exec(
-      "INSERT INTO messages (channel, author, author_name, body, files, mentions, at) VALUES (?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO messages (channel, author, author_name, body, files, mentions, at, reply_to) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
       channel,
       me.userId,
       me.name,
@@ -345,6 +361,7 @@ export class Chat extends DurableObject<Env> {
       shared.length ? JSON.stringify(shared) : null,
       named.length ? JSON.stringify(named) : null,
       now,
+      answered ? Number(answered.seq) : null,
     );
     const seq = Number(this.sql.exec<{ seq: number }>("SELECT last_insert_rowid() AS seq").one().seq);
     const message: ChatMessage = {
@@ -356,6 +373,7 @@ export class Chat extends DurableObject<Env> {
       at: now,
       ...(shared.length ? { files: shared } : {}),
       ...(named.length ? { mentions: named } : {}),
+      ...(answered ? { reply: replyOf(Number(answered.seq), answered) } : {}),
     };
 
     // Your own message counts as read, so your unread badge stays quiet.
@@ -513,7 +531,7 @@ export class Chat extends DurableObject<Env> {
       )
       .toArray();
     const page = rows.slice(0, CHAT_PAGE).reverse();
-    return { channels, channel: open, messages: page.map((row) => toMessage(row)), more: rows.length > CHAT_PAGE };
+    return { channels, channel: open, messages: this.withReplies(page, page.map((row) => toMessage(row))), more: rows.length > CHAT_PAGE };
   }
 
   /** Changes or takes down any message; everyone connected sees it happen. */
@@ -581,7 +599,41 @@ export class Chat extends DurableObject<Env> {
       t: "chat_page",
       channel,
       more,
-      messages: page.map((row) => toMessage(row, reactions.get(row.seq))),
+      messages: this.withReplies(page, page.map((row) => toMessage(row, reactions.get(row.seq)))),
+    });
+  }
+
+  /**
+   * Someone is writing: the others in the conversation see it for a moment.
+   * Never stored, and at most every couple of seconds from one person, however
+   * often their browser says so.
+   */
+  private typing(socket: WebSocket, me: Attachment, channel: unknown, now: number): void {
+    if (typeof channel !== "string" || !this.mayPost(me.userId, channel)) return;
+    if (now - (me.typedAt ?? 0) < TYPING_EVERY_MS - 500) return;
+    me.typedAt = now;
+    this.remember(socket, me);
+    const pair = dmMembers(channel);
+    for (const other of this.ctx.getWebSockets()) {
+      const who = this.attachmentOf(other);
+      if (!who || who.userId === me.userId || (pair && !pair.includes(who.userId))) continue;
+      this.send(other, { t: "chat_typing", channel, userId: me.userId, name: me.name });
+    }
+  }
+
+  /** The messages these replies answer, looked up together, onto the messages made from the same rows. */
+  private withReplies(rows: MessageRow[], messages: ChatMessage[]): ChatMessage[] {
+    const wanted = [...new Set(rows.filter((row) => row.reply_to !== null).map((row) => Number(row.reply_to)))];
+    if (!wanted.length) return messages;
+    const found = new Map(
+      this.sql
+        .exec<MessageRow>(`SELECT ${COLUMNS} FROM messages WHERE seq IN (${wanted.map(() => "?").join(", ")})`, ...wanted)
+        .toArray()
+        .map((row) => [Number(row.seq), row]),
+    );
+    return messages.map((message, index) => {
+      const to = rows[index].reply_to;
+      return to === null ? message : { ...message, reply: replyOf(Number(to), found.get(Number(to))) };
     });
   }
 
@@ -603,15 +655,15 @@ export class Chat extends DurableObject<Env> {
         me.userId,
       )
       .toArray();
-    const found: ChatMessage[] = [];
+    const found: MessageRow[] = [];
     for (const row of rows) {
       if (found.length >= SEARCH_MAX) break;
       const named = parseStored(row.files).some((file) => fold(file.name).includes(needle));
       if (!named && !fold(String(row.body)).includes(needle)) continue;
       if (!this.mayPost(me.userId, String(row.channel))) continue;
-      found.push(toMessage(row));
+      found.push(row);
     }
-    this.send(socket, { t: "chat_found", q: words, messages: found });
+    this.send(socket, { t: "chat_found", q: words, messages: this.withReplies(found, found.map((row) => toMessage(row))) });
   }
 
   private markRead(userId: string, channel: string, seq: number): void {
@@ -859,6 +911,19 @@ function keysOf(files: SqlStorageValue): string[] {
 /** For matching: case and accents folded, so "cafe" finds "Café". */
 function fold(text: string): string {
   return text.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase();
+}
+
+/** A reply's view of the message it answers: who and how it begins, or that it was deleted. */
+function replyOf(seq: number, row: MessageRow | undefined): ChatReply {
+  if (!row) return { seq, gone: true };
+  const files = parseStored(row.files).length;
+  return {
+    seq,
+    author: String(row.author),
+    authorName: String(row.author_name),
+    body: String(row.body).slice(0, REPLY_SNIPPET),
+    ...(files ? { files } : {}),
+  };
 }
 
 function toMessage(row: MessageRow, reactions?: Record<string, string[]>): ChatMessage {

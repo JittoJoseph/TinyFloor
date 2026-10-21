@@ -223,7 +223,18 @@
     "notifyTitle": "Ota ilmoitukset käyttöön",
     "notifyBody": "Viestit ja maininnat, myös kun TinyFloor on suljettu.",
     "notifyOn": "Ota käyttöön",
-    "notNow": "Ei nyt"
+    "notNow": "Ei nyt",
+    "add": "Lisää",
+    "photo": "Kuva",
+    "file": "Tiedosto",
+    "reply": "Vastaa",
+    "replyingTo": "Vastaus: <strong>{name}</strong>",
+    "cancelReply": "Peru vastaus",
+    "replyGone": "Alkuperäinen viesti on poistettu",
+    "replyFiles": "{count, plural, one {# tiedosto} other {# tiedostoa}}",
+    "typingOne": "{name} kirjoittaa",
+    "typingTwo": "{a} ja {b} kirjoittavat",
+    "typingMany": "Useampi kirjoittaa"
   },
   "proximity": {
     "call": "Soita",

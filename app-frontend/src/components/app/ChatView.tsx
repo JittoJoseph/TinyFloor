@@ -25,7 +25,7 @@ import { GENERAL_CHANNEL, cleanChannelName, dmChannelId, dmMembers, isDm, type C
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { chat } from "@/lib/ChatSocket";
 import { api, type PersonProfile } from "@/lib/api";
-import { useChat } from "@/lib/useChat";
+import { useChat, useTyping } from "@/lib/useChat";
 import { useAuth } from "@/contexts/AuthContext";
 import { useFloorStatus, walkToPerson } from "@/lib/floor";
 import { CommandPalette, type CommandItem } from "@/components/motion/command-palette";
@@ -194,7 +194,30 @@ export function ChatView({ channel }: { channel?: string }) {
     mentions: message.mentions,
     reactions: message.reactions,
     edited: message.edited,
+    reply: message.reply && {
+      id: String(message.reply.seq),
+      author: message.reply.author,
+      authorName: (message.reply.author && personById.get(message.reply.author)?.displayName) || message.reply.authorName,
+      body: message.reply.body,
+      files: message.reply.files,
+      gone: message.reply.gone,
+    },
   }));
+
+  // Who else is writing here: one or two by name, more as "several".
+  const typists = [...useTyping(open).entries()].filter(([id]) => id !== me).map(([id, one]) => personById.get(id)?.displayName ?? one.name);
+  const typingLine =
+    typists.length === 0
+      ? null
+      : typists.length === 1
+        ? t("typingOne", { name: typists[0] })
+        : typists.length === 2
+          ? t("typingTwo", { a: typists[0], b: typists[1] })
+          : t("typingMany");
+
+  // The message being answered, in this conversation; another conversation forgets it.
+  const [replyingTo, setReplyingTo] = useState<{ channel: string; line: Line } | null>(null);
+  const reply = replyingTo?.channel === open ? replyingTo.line : null;
 
   // A lobby direct message is never stored: the conversation lasts while you are both here.
   const otherId = pair ? (pair[0] === me ? pair[1] : pair[0]) : null;
@@ -509,6 +532,12 @@ export function ChatView({ channel }: { channel?: string }) {
           // A lobby direct message is never stored, so there's nothing to wait for.
           loading={!history && !(lobby && pair)}
           onDelete={(line) => chat.remove(Number(line.id), open)}
+          // A lobby direct message was never stored, so there's nothing to point a reply at.
+          onReply={lobby && pair ? undefined : (line) => {
+            setReplyingTo({ channel: open, line });
+            focusComposer();
+          }}
+          onOpenReply={(id) => setTarget({ channel: open, seq: Number(id) })}
           personCard={personCard}
           intro={
             pair && other ? (
@@ -567,7 +596,14 @@ export function ChatView({ channel }: { channel?: string }) {
         <Composer
           key={`composer-${open}`}
           placeholder={pair ? t("sayTo", { name: title }) : t("say", { channel: `#${title}` })}
-          onSend={(text, files) => chat.say(open, text, files, mentionsIn(text, mentionable, me))}
+          onSend={(text, files) => {
+            chat.say(open, text, files, mentionsIn(text, mentionable, me), reply ? Number(reply.id) : undefined);
+            setReplyingTo(null);
+          }}
+          replying={reply && { name: reply.authorName }}
+          onCancelReply={() => setReplyingTo(null)}
+          onTyping={() => chat.typing(open)}
+          typing={typingLine}
           onFiles={onFiles}
           upload={lobby ? undefined : (file, progress, signal) => upload(place.id, file, progress, signal)}
           discard={lobby ? undefined : discard}

@@ -223,7 +223,18 @@
     "notifyTitle": "Włącz powiadomienia",
     "notifyBody": "Wiadomości i wzmianki, nawet gdy TinyFloor jest zamknięty.",
     "notifyOn": "Włącz",
-    "notNow": "Nie teraz"
+    "notNow": "Nie teraz",
+    "add": "Dodaj",
+    "photo": "Zdjęcie",
+    "file": "Plik",
+    "reply": "Odpowiedz",
+    "replyingTo": "Odpowiedź dla: <strong>{name}</strong>",
+    "cancelReply": "Anuluj odpowiedź",
+    "replyGone": "Oryginalna wiadomość została usunięta",
+    "replyFiles": "{count, plural, one {# plik} few {# pliki} many {# plików} other {# pliku}}",
+    "typingOne": "{name} pisze",
+    "typingTwo": "{a} i {b} piszą",
+    "typingMany": "Kilka osób pisze"
   },
   "proximity": {
     "call": "Zadzwoń",

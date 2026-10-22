@@ -13,6 +13,7 @@ const ROOT = resolve(HERE, "..");
 const LAB = join(HERE, "pages");
 const CATALOG = join(ROOT, "shared-protocol", "src", "catalog", "items.json");
 const LAYOUTS = join(ROOT, "shared-protocol", "src", "catalog", "layouts");
+const SHELLS = join(ROOT, "shared-protocol", "src", "catalog", "shells");
 const PORT = Number(process.env.PORT || 4400);
 
 // Where each kind of file is served from: /<mount>/<path inside it>.
@@ -95,17 +96,22 @@ createServer(async (request, response) => {
       await writeFile(CATALOG, JSON.stringify(catalog, null, 2) + "\n");
       return send(response, 200, { saved: catalog.items.length });
     }
-    if (path === "/api/layouts") {
-      const names = (await readdir(LAYOUTS).catch(() => [])).filter((name) => name.endsWith(".json"));
-      return send(response, 200, names.map((name) => name.slice(0, -5)));
-    }
-    const layout = path.match(/^\/api\/layouts\/([a-z0-9-]+)$/)?.[1];
-    if (layout && request.method === "GET") return send(response, 200, await readFile(join(LAYOUTS, `${layout}.json`), "utf8"));
-    if (layout && request.method === "PUT") {
-      const data = JSON.parse(await body(request));
-      await mkdir(LAYOUTS, { recursive: true });
-      await writeFile(join(LAYOUTS, `${layout}.json`), JSON.stringify(data, null, 1) + "\n");
-      return send(response, 200, { saved: data.items.length });
+    // Layouts and shells: a folder of JSON files each, listed, read and written by id.
+    const folder = path.match(/^\/api\/(layouts|shells)(?:\/([a-z0-9-]+))?$/);
+    if (folder) {
+      const [, kind, id] = folder;
+      const dir = kind === "layouts" ? LAYOUTS : SHELLS;
+      if (!id) {
+        const names = (await readdir(dir).catch(() => [])).filter((name) => name.endsWith(".json"));
+        return send(response, 200, names.map((name) => name.slice(0, -5)));
+      }
+      if (request.method === "GET") return send(response, 200, await readFile(join(dir, `${id}.json`), "utf8"));
+      if (request.method === "PUT") {
+        const data = JSON.parse(await body(request));
+        await mkdir(dir, { recursive: true });
+        await writeFile(join(dir, `${id}.json`), JSON.stringify(data, null, kind === "shells" ? 2 : 1) + "\n");
+        return send(response, 200, { saved: id });
+      }
     }
     const [, mount, ...rest] = path.split("/");
     const base = MOUNTS[mount];

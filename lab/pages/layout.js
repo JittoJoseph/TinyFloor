@@ -4,9 +4,11 @@
 // first ones are the template offices.
 /* global Phaser */
 import { TILE, SPEED, SEAT, SIT_FRAME, down16, loadAvatar, avatarAnims, itemFrame, drawItem, heldDirection } from "./common.js";
-import { bounds, check, expand, isBundle, spriteSize } from "./catalog.js";
+import { DESK_STEP, bounds, check, clusterSize, depthOf as pieceDepth, expand, isCluster, spriteSize } from "./catalog.js";
+import { FLOORS, WALLS, paint, renderShell, wallSolids } from "./shell.js";
 
 const $ = (selector) => document.querySelector(selector);
+const loadImage = (url) => new Promise((resolve, reject) => Object.assign(new Image(), { onload() { resolve(this); }, onerror: reject, src: url }));
 const COLS = 48;
 const ROWS = 32;
 const typing = () => ["INPUT", "SELECT", "TEXTAREA"].includes(document.activeElement?.tagName);
@@ -18,6 +20,10 @@ let placing = null;
 let selected = null;
 let dirty = false;
 let scene = null;
+/** "furnish" places items; "walls" paints the shell's walls and floors. */
+let mode = "furnish";
+let brush = "#";
+let shellDirty = false;
 
 function setDirty(value) {
   dirty = value;
@@ -26,6 +32,16 @@ function setDirty(value) {
   $("#status").textContent = layout ? `${layout.items.length} placed${dirty ? " · unsaved" : ""}${problems.length ? ` · ${problems.length} problems` : ""}` : "";
   $("#status").title = problems.join("\n");
 }
+
+/**
+ * What a placed thing needs besides where it is: a cluster's size, the
+ * office's seed, a key that stays put when it moves (so its desks keep their
+ * things), a shuffle count, and any desks decorated by hand.
+ */
+const place = (entry) => ({ size: entry.size, seed: layout?.seed ?? 0, key: entry.id, salt: entry.salt, decor: entry.decor });
+const newId = () => Math.random().toString(36).slice(2, 8);
+/** How a cluster is shown while you place it, and the size it starts at. */
+const GHOST = { size: { cols: 2, sides: 1 }, key: "ghost" };
 
 // ---------- layouts ----------
 
@@ -39,6 +55,8 @@ async function loadLayouts(wanted) {
 
 async function openLayout(id) {
   layout = await (await fetch(`/api/layouts/${id}`)).json();
+  layout.seed ??= Math.floor(Math.random() * 1e6);
+  for (const entry of layout.items) entry.id ??= newId();
   $("#layout-id").value = id;
   $("#layout-name").value = layout.name ?? "";
   history.replaceState(null, "", `?id=${id}`);
@@ -48,7 +66,7 @@ async function openLayout(id) {
 }
 
 function newLayout(id) {
-  layout = { id, name: "", shell: "office-map", items: [] };
+  layout = { id, name: "", shell: "office", seed: Math.floor(Math.random() * 1e6), items: [] };
   if (![...$("#layout-id").options].some((o) => o.value === id)) $("#layout-id").add(new Option(id, id));
   $("#layout-id").value = id;
   $("#layout-name").value = "";
@@ -59,6 +77,11 @@ function newLayout(id) {
 
 async function save() {
   layout.name = $("#layout-name").value;
+  if (shellDirty && scene?.shell) {
+    const response = await fetch(`/api/shells/${layout.shell}`, { method: "PUT", body: JSON.stringify(scene.shell) });
+    if (!response.ok) return alert(`Shell not saved: ${await response.text()}`);
+    shellDirty = false;
+  }
   const response = await fetch(`/api/layouts/${layout.id}`, { method: "PUT", body: JSON.stringify(layout) });
   if (!response.ok) return alert(`Not saved: ${await response.text()}`);
   setDirty(false);
@@ -67,18 +90,19 @@ async function save() {
 // ---------- palette ----------
 
 async function thumbnail(item, canvas) {
-  const [, , w, h] = bounds(byId, item.id);
+  const shown = { size: { cols: 1, sides: 1 }, key: "palette" };
+  const [bx, by, w, h] = bounds(byId, item.id, {}, shown);
   const scale = Math.min(2, 52 / w, 52 / h);
   canvas.width = Math.round(w * scale);
   canvas.height = Math.round(h * scale);
-  await drawItem(canvas.getContext("2d"), byId, item.id, 0, 0, scale);
+  await drawItem(canvas.getContext("2d"), byId, item.id, -bx * scale, -by * scale, scale, {}, shown);
 }
 
 function renderPalette() {
   const query = $("#search").value.trim().toLowerCase();
   const groups = new Map();
   // Parts are only placed inside their bundles: a desk top never without its chair.
-  for (const item of catalog.items.filter((i) => !i.part)) {
+  for (const item of catalog.items.filter((i) => !i.part && !i.generated)) {
     if (query && !`${item.id} ${item.name} ${item.category}`.toLowerCase().includes(query)) continue;
     if (!groups.has(item.category)) groups.set(item.category, []);
     groups.get(item.category).push(item);
@@ -111,17 +135,64 @@ function startPlacing(item) {
   scene?.updateGhost();
 }
 
-/** Selecting a placed desk offers its chair: the slot's options, never none. */
+/** Selecting desks offers their chairs, near side and far, from the chairs that suit; never none. */
 function select(entry) {
   selected = entry;
-  const slot = entry && byId.get(entry.item)?.parts?.find((part) => part.slot === "chair");
-  const chooser = $("#chair");
-  chooser.hidden = !slot;
-  if (slot) {
-    chooser.replaceChildren(...slot.options.map((id) => new Option(byId.get(id)?.name ?? id, id)));
-    chooser.value = entry.choose?.chair ?? slot.default;
-  }
+  const item = entry && byId.get(entry.item);
+  const slots = isCluster(item)
+    ? Object.entries(item.cluster.chairs).filter(([side]) => side === "front" || clusterSize(entry.size).sides === 2)
+    : (item?.parts ?? []).filter((part) => part.slot === "chair").map((part) => ["chair", part]);
+  $("#chairs").replaceChildren(
+    ...slots.map(([key, slot]) => {
+      const chooser = document.createElement("select");
+      chooser.title = key === "back" ? "Far side chairs" : "Chairs";
+      chooser.append(...slot.options.map((id) => new Option(`${key === "back" ? "Far: " : ""}${byId.get(id)?.name ?? id}`, id)));
+      chooser.value = entry.choose?.[key] ?? slot.default;
+      chooser.addEventListener("change", () => scene?.choose(key, chooser.value));
+      return chooser;
+    }),
+  );
+  $("#shuffle").hidden = !isCluster(item);
   scene?.drawOverlay();
+}
+
+// ---------- walls and floors ----------
+
+/**
+ * The brushes: every wall and floor material, and nothing. A material not yet
+ * in the shell's legend gets a character of its own when it is first used.
+ */
+function renderBrushes(shell) {
+  const select = $("#brush");
+  const options = [
+    ...Object.keys(WALLS).map((material) => ({ label: `Wall, ${material}`, entry: { kind: "wall", material } })),
+    ...Object.keys(FLOORS).map((material) => ({ label: `Floor, ${material}`, entry: { kind: "floor", material } })),
+    { label: "Nothing", entry: { kind: "void" } },
+  ];
+  const charFor = (entry) => {
+    const found = Object.entries(shell.legend).find(([, e]) => e.kind === entry.kind && (e.material ?? null) === (entry.material ?? null));
+    return found?.[0] ?? null;
+  };
+  select.replaceChildren(...options.map(({ label, entry }) => new Option(label, JSON.stringify(entry))));
+  const current = Object.entries(shell.legend).find(([c]) => c === brush)?.[1] ?? { kind: "wall", material: "lavender" };
+  select.value = JSON.stringify({ kind: current.kind, ...(current.material ? { material: current.material } : {}) });
+  select.onchange = () => {
+    const entry = JSON.parse(select.value);
+    let char = charFor(entry);
+    if (!char) {
+      char = [..."#%&@$abcdefghijklmnopqrstuvwxyz"].find((c) => !(c in shell.legend) && (entry.kind === "wall" ? "#%&@$".includes(c) : !"#%&@$".includes(c)));
+      shell.legend[char] = entry;
+    }
+    brush = char;
+  };
+}
+
+function setMode(next) {
+  mode = next;
+  $("#brush").hidden = mode !== "walls";
+  if (placing) startPlacing(placing);
+  select(null);
+  document.querySelectorAll("[data-mode]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.mode === mode)));
 }
 
 // ---------- the floor ----------
@@ -137,20 +208,12 @@ class Floor extends Phaser.Scene {
 
   preload() {
     loadAvatar(this);
-    this.load.tilemapTiledJSON("shell", "/app/tilesets/office-map.tmj");
-    this.load.image("RoomBuilderTiles", "/app/tilesets/textures/Room_Builder_Office_32x32.png");
-    this.load.image("ModernOfficeTiles", "/app/tilesets/textures/Modern_Office_Black_Shadow_32x32.png");
   }
 
   create() {
     scene = this;
-    const map = this.make.tilemap({ key: "shell" });
-    const tiles = [map.addTilesetImage("Room_Builder_Office_32x32", "RoomBuilderTiles"), map.addTilesetImage("Modern_Office_Black_Shadow_32x32", "ModernOfficeTiles")];
-    map.createLayer("Ground", tiles, 0, 0).setDepth(0);
-    const walls = map.createLayer("Walls", tiles, 0, 0).setDepth(1);
-    // The walls are what you can't walk through in the shell: every tile on that layer.
     this.wallSolids = [];
-    walls.forEachTile((tile) => tile.index > 0 && this.wallSolids.push([tile.pixelX, tile.pixelY, TILE, TILE]));
+    this.shellImage = this.add.image(0, 0, "__DEFAULT").setOrigin(0, 0).setDepth(0);
 
     this.overlay = this.add.graphics().setDepth(100000);
     this.ghost = this.add.container(0, 0).setAlpha(0.6).setDepth(99999).setVisible(false);
@@ -167,19 +230,37 @@ class Floor extends Phaser.Scene {
     });
     this.input.on("pointermove", (pointer) => this.pointerMove(pointer));
     this.input.on("pointerdown", (pointer) => this.pointerDown(pointer));
-    this.input.on("pointerup", () => (this.drag = null));
+    this.input.on("pointerup", () => {
+      this.drag = null;
+      if (this.painting) this.paintDone();
+    });
     this.rebuild();
   }
 
-  /** Every piece on the floor: [{ entry, item, x, y }], a bundle's parts each their own. */
+  /** Every piece on the floor: [{ entry, item, x, y }], a bundle's or cluster's parts each their own. */
   pieces() {
-    return (layout?.items ?? []).flatMap((entry) => expand(byId, entry.item, entry.x, entry.y, entry.choose).map((piece) => ({ entry, ...piece })));
+    return (layout?.items ?? []).flatMap((entry) => expand(byId, entry.item, entry.x, entry.y, entry.choose, place(entry)).map((piece) => ({ entry, ...piece })));
+  }
+
+  /** The walls and floors, drawn from the layout's shell (shell.js) into one picture. */
+  async drawShell(reload = true) {
+    if (!layout) return;
+    if (reload || !this.shell) this.shell = await (await fetch(`/api/shells/${layout.shell}`)).json();
+    const canvas = await renderShell(this.shell, loadImage);
+    const old = this.shellImage.texture.key;
+    const key = `shell:${layout.shell}:${performance.now()}`;
+    this.textures.addCanvas(key, canvas);
+    this.shellImage.setTexture(key);
+    if (old.startsWith("shell:")) this.textures.remove(old);
+    this.wallSolids = wallSolids(this.shell);
+    renderBrushes(this.shell);
   }
 
   async rebuild() {
     this.sprites.forEach((images) => images.forEach((image) => image.destroy()));
     this.sprites.clear();
     if (!layout) return;
+    await this.drawShell();
     for (const entry of layout.items) await this.draw(entry);
     this.sortAll();
     this.drawOverlay();
@@ -189,7 +270,7 @@ class Floor extends Phaser.Scene {
   /** (Re)draws one placed thing. */
   async draw(entry) {
     this.sprites.get(entry)?.forEach((image) => image.destroy());
-    const pieces = expand(byId, entry.item, entry.x, entry.y, entry.choose);
+    const pieces = expand(byId, entry.item, entry.x, entry.y, entry.choose, place(entry));
     const images = [];
     for (const piece of pieces) {
       const { key, frame } = await itemFrame(this, piece.item);
@@ -204,7 +285,10 @@ class Floor extends Phaser.Scene {
    */
   depthOf(piece, all) {
     const { item, x, y } = piece;
+    if (piece.host) return pieceDepth(piece, all);
     if (item.mount === "wall") return 2;
+    // A rug lies on the floor, under everything that stands on it.
+    if (item.mount === "rug") return 1.5;
     if (item.mount === "surface") {
       const [w, h] = spriteSize(item.sprite);
       const foot = { x: x + w / 2, y: y + h - 2 };
@@ -235,7 +319,7 @@ class Floor extends Phaser.Scene {
   }
 
   outline(entry) {
-    const [bx, by, w, h] = bounds(byId, entry.item, entry.choose);
+    const [bx, by, w, h] = bounds(byId, entry.item, entry.choose, place(entry));
     return [entry.x + bx, entry.y + by, w, h];
   }
 
@@ -255,19 +339,27 @@ class Floor extends Phaser.Scene {
     if (!placing) return this.ghost.setVisible(false);
     if (this.ghost.getData("id") !== placing.id) {
       this.ghost.removeAll(true);
-      for (const piece of expand(byId, placing.id, 0, 0)) {
+      for (const piece of expand(byId, placing.id, 0, 0, {}, GHOST)) {
         const { key, frame } = await itemFrame(this, piece.item);
         this.ghost.add(this.add.image(piece.x, piece.y, key, frame).setOrigin(0, 0).setFlipX(!!piece.item.sprite.flip));
       }
       this.ghost.setData("id", placing.id);
     }
-    const [bx, by, w, h] = bounds(byId, placing.id);
+    const [bx, by, w, h] = bounds(byId, placing.id, {}, GHOST);
     this.ghost.setVisible(true).setPosition(down16(pointer.worldX - w / 2 - bx + 8), down16(pointer.worldY - h / 2 - by + 8));
   }
 
   pointerMove(pointer) {
+    if (mode === "walls") {
+      if (this.painting) {
+        this.painting.to = [Math.floor(pointer.worldX / TILE), Math.floor(pointer.worldY / TILE)];
+        this.drawOverlay();
+      }
+      return;
+    }
     if (placing) return this.updateGhost(pointer);
     if (!this.drag || !pointer.isDown) return;
+    if (this.drag.resize) return this.resize(pointer);
     const entry = this.drag.entry;
     const x = down16(pointer.worldX - this.drag.dx + 8);
     const y = down16(pointer.worldY - this.drag.dy + 8);
@@ -282,8 +374,14 @@ class Floor extends Phaser.Scene {
   }
 
   async pointerDown(pointer) {
+    if (mode === "walls") {
+      const cell = [Math.floor(pointer.worldX / TILE), Math.floor(pointer.worldY / TILE)];
+      this.painting = { from: cell, to: cell };
+      this.drawOverlay();
+      return;
+    }
     if (placing) {
-      const entry = { item: placing.id, x: this.ghost.x, y: this.ghost.y };
+      const entry = { id: newId(), item: placing.id, x: this.ghost.x, y: this.ghost.y, ...(isCluster(placing) ? { size: GHOST.size } : {}) };
       layout.items.push(entry);
       await this.draw(entry);
       this.sortAll();
@@ -291,9 +389,54 @@ class Floor extends Phaser.Scene {
       if (!pointer.event.shiftKey) startPlacing(placing);
       return;
     }
+    const handle = this.handleAt(pointer.worldX, pointer.worldY);
+    if (handle) return (this.drag = { entry: selected, resize: handle });
     const entry = this.entryAt(pointer.worldX, pointer.worldY);
     select(entry);
     if (entry) this.drag = { entry, dx: pointer.worldX - entry.x, dy: pointer.worldY - entry.y };
+  }
+
+  /**
+   * A selected cluster's handles, like a widget's: the right edge makes the
+   * row longer or shorter, the top edge adds or takes away the far side.
+   */
+  handles() {
+    if (!selected || !isCluster(byId.get(selected.item))) return [];
+    const { cols, sides } = clusterSize(selected.size);
+    const width = cols * DESK_STEP + 32;
+    return [
+      { axis: "cols", x: selected.x + width, y: selected.y + 48 },
+      { axis: "sides", x: selected.x + width / 2, y: selected.y + (sides === 2 ? -48 : 0) },
+    ];
+  }
+
+  handleAt(px, py) {
+    return this.handles().find((h) => Math.abs(px - h.x) <= 12 && Math.abs(py - h.y) <= 12)?.axis ?? null;
+  }
+
+  async resize(pointer) {
+    const entry = this.drag.entry;
+    const was = clusterSize(entry.size);
+    const size = { ...was };
+    if (this.drag.resize === "cols") size.cols = clusterSize({ cols: (pointer.worldX - entry.x - 32) / DESK_STEP }).cols;
+    else size.sides = pointer.worldY < entry.y - 24 ? 2 : 1;
+    if (size.cols === was.cols && size.sides === was.sides) return;
+    entry.size = size;
+    await this.draw(entry);
+    this.sortAll();
+    select(entry);
+    setDirty(true);
+  }
+
+  /** The painted rectangle goes into the shell, and the walls and floors are worked out again. */
+  async paintDone() {
+    const { from, to } = this.painting;
+    this.painting = null;
+    paint(this.shell, from[0], from[1], to[0], to[1], brush);
+    shellDirty = true;
+    setDirty(true);
+    await this.drawShell(false);
+    this.drawOverlay();
   }
 
   removeSelected() {
@@ -306,9 +449,9 @@ class Floor extends Phaser.Scene {
     setDirty(true);
   }
 
-  async chooseChair(id) {
+  async choose(key, id) {
     if (!selected) return;
-    selected.choose = { ...selected.choose, chair: id };
+    selected.choose = { ...selected.choose, [key]: id };
     await this.draw(selected);
     this.sortAll();
     this.drawOverlay();
@@ -323,10 +466,20 @@ class Floor extends Phaser.Scene {
       for (const [x, y, w, h] of this.solids()) g.fillStyle(0xe5484d, 0.25).fillRect(x, y, w, h);
       for (const { item, x, y } of this.pieces()) for (const seat of item.seats) g.fillStyle(0x3e63dd, 1).fillCircle(x + seat.x, y + seat.y, 3);
     }
+    if (this.painting) {
+      const { from, to } = this.painting;
+      const [x0, y0] = [Math.min(from[0], to[0]), Math.min(from[1], to[1])];
+      const [x1, y1] = [Math.max(from[0], to[0]), Math.max(from[1], to[1])];
+      g.lineStyle(2, 0xe5484d, 1).strokeRect(x0 * TILE, y0 * TILE, (x1 - x0 + 1) * TILE, (y1 - y0 + 1) * TILE);
+    }
     if (selected) {
       const [x, y, w, h] = this.outline(selected);
       g.lineStyle(2, 0x1c1c1e, 1).strokeRect(x - 1, y - 1, w + 2, h + 2);
       g.lineStyle(1, 0xffffff, 1).strokeRect(x - 2.5, y - 2.5, w + 5, h + 5);
+      for (const h of this.handles()) {
+        g.fillStyle(0xffffff, 1).fillCircle(h.x, h.y, 8);
+        g.lineStyle(2, 0x1c1c1e, 1).strokeCircle(h.x, h.y, 8);
+      }
     }
   }
 
@@ -383,7 +536,19 @@ $("#save").addEventListener("click", save);
 $("#layout-id").addEventListener("change", (event) => openLayout(event.target.value));
 $("#layout-name").addEventListener("input", () => setDirty(true));
 $("#show-colliders").addEventListener("change", () => scene?.drawOverlay());
-$("#chair").addEventListener("change", (event) => scene?.chooseChair(event.target.value));
+$("#shuffle").addEventListener("click", async () => {
+  if (!selected) return;
+  selected.salt = (selected.salt ?? 0) + 1;
+  await scene.draw(selected);
+  scene.sortAll();
+  setDirty(true);
+});
+$("#reseed").addEventListener("click", () => {
+  layout.seed = Math.floor(Math.random() * 1e6);
+  scene.rebuild();
+  setDirty(true);
+});
+document.querySelectorAll("[data-mode]").forEach((b) => b.addEventListener("click", () => setMode(b.dataset.mode)));
 $("#new-layout").addEventListener("click", () => {
   const id = prompt("Layout id (a-z, 0-9, -)")?.trim().toLowerCase();
   if (id && /^[a-z0-9-]+$/.test(id)) newLayout(id);
@@ -400,8 +565,8 @@ window.layoutLab = {
   scene: () => scene,
   layout: () => layout,
   catalog: () => catalog,
-  place: async (id, x, y, choose) => {
-    const entry = { item: id, x, y, ...(choose ? { choose } : {}) };
+  place: async (id, x, y, extra = {}) => {
+    const entry = { id: newId(), item: id, x, y, ...extra };
     layout.items.push(entry);
     await scene.draw(entry);
     scene.sortAll();

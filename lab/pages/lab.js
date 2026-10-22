@@ -5,7 +5,7 @@
 /* global Phaser */
 
 import { TILE, SPEED, SEAT, SIT_FRAME, down16, up16, image, loadAvatar, avatarAnims, itemFrame, drawItem, heldDirection } from "./common.js";
-import { SEAT_DIRECTIONS, bounds, check, expand, isBundle, isComposite, spriteSize } from "./catalog.js";
+import { SEAT_DIRECTIONS, bounds, check, expand, isBundle, isCluster, isComposite, isGroup, spriteSize } from "./catalog.js";
 
 const COLS = 16;
 const ROWS = 11;
@@ -218,7 +218,7 @@ async function thumbnail(item, canvas) {
   await drawItem(context, byId, item.id, (32 - w * scale) / 2, 32 - h * scale, scale);
 }
 
-const describe = (item) => `${isBundle(item) ? "bundle" : item.part ? "part" : item.category} · ${item.themes.join(", ")}`;
+const describe = (item) => `${isCluster(item) ? "desks, sized when placed" : isBundle(item) ? "bundle" : item.part ? "part" : item.category} · ${item.themes.join(", ")}`;
 
 function renderListRow(item) {
   const li = document.querySelector(`#item-list li[data-id="${CSS.escape(item.id)}"]`);
@@ -260,7 +260,7 @@ async function loadSources() {
   select.addEventListener("change", renderSources);
 }
 
-const usedSources = () => new Set(catalog.items.flatMap((item) => (isBundle(item) ? [] : isComposite(item.sprite) ? item.sprite.layers.map((l) => l.src) : [item.sprite.src])));
+const usedSources = () => new Set(catalog.items.flatMap((item) => (isGroup(item) ? [] : isComposite(item.sprite) ? item.sprite.layers.map((l) => l.src) : [item.sprite.src])));
 
 async function renderSources() {
   const select = $("#source-dir");
@@ -308,7 +308,7 @@ async function renderSheet(src, label) {
     context.drawImage(img, 0, 0);
     context.strokeStyle = "rgba(48,164,108,0.9)";
     for (const item of catalog.items) {
-      if (isBundle(item)) continue;
+      if (isGroup(item)) continue;
       const cuts = isComposite(item.sprite) ? item.sprite.layers : [item.sprite];
       for (const cut of cuts.filter((c) => c.src === src)) context.strokeRect(cut.rect[0] + 0.5, cut.rect[1] + 0.5, cut.rect[2] - 1, cut.rect[3] - 1);
     }
@@ -411,7 +411,8 @@ function renderProps() {
   if (!current) return;
   const item = current;
   const bundle = isBundle(item);
-  $("#item-fields").hidden = bundle;
+  // A cluster is made to measure where it is placed: its desks and chairs are set in the catalog file and sized in the layout editor.
+  $("#item-fields").hidden = isGroup(item);
   $("#bundle-fields").hidden = !bundle;
   document.querySelectorAll(".item-only").forEach((el) => (el.hidden = bundle));
   form.id.value = item.id;
@@ -420,6 +421,7 @@ function renderProps() {
   form.themes.value = item.themes.join(", ");
   form.notes.value = item.notes ?? "";
   if (bundle) return renderParts();
+  if (isCluster(item)) return;
   form.mount.value = item.mount;
   form.part.checked = !!item.part;
   form.sortY.value = item.sortY;
@@ -433,7 +435,7 @@ function renderProps() {
 
 function renderShapes() {
   const item = current;
-  if (isBundle(item)) return;
+  if (isGroup(item)) return;
   $("#colliders").replaceChildren(
     ...item.colliders.map((rect, index) =>
       rectRow(rect, () => {
@@ -710,7 +712,7 @@ class Stage extends Phaser.Scene {
       for (let x = 0; x <= COLS * TILE; x += TILE) g.lineBetween(x, 0, x, ROWS * TILE);
       for (let y = 0; y <= ROWS * TILE; y += TILE) g.lineBetween(0, y, COLS * TILE, y);
     }
-    const editable = current && !isBundle(current);
+    const editable = current && !isGroup(current);
     for (const { item, x, y, main } of this.pieces()) {
       const [w, h] = spriteSize(item.sprite);
       g.lineStyle(1, 0xffffff, main ? 0.7 : 0.3).strokeRect(x + 0.5, y + 0.5, w - 1, h - 1);
@@ -798,6 +800,7 @@ class Stage extends Phaser.Scene {
   // On a bundle, its parts are.
   pointerDown(pointer) {
     if (!current) return;
+    if (isCluster(current)) return;
     if (isBundle(current)) {
       const hit = this.pieces()
         .filter((piece) => piece.main)

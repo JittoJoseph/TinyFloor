@@ -66,22 +66,24 @@ replace both: the floor must come from data, and so must its seats.
 Decided by looking, and checked by the lab on every change (`lab/check.mjs`):
 
 - **Nobody sits sideways.** Seated side-on, a character reads badly, so a seat
-  faces up (your back to us, at a desk or the far side of a table) or down.
-  The packs' side chairs aren't in the catalog.
-- **A desk is used from the front.** One person, one chair, in front of the
-  desk, facing it. Desks back to back, with people on both sides, put the far
-  person behind the desk, its monitors and the divider, and made what covers
-  whom hard to get right; a one-sided desk has one answer.
+  faces up (your back to us) or down (facing us). The packs' side chairs
+  aren't in the catalog.
+- **At a desk you face the desk**: up on its near side, down on its far side.
 - **A desk is the one the office has now**: wide (six tiles), with the glass
-  divider and its posts behind it, in one of five finishes (maple, oak,
-  graphite, white, beech). The packs' small three-tile desks looked cramped
-  and aren't used.
-- **A desk always has a chair.** A desk is a bundle of the desk and a chair
-  slot. The chair can be swapped for another office chair (black, low black,
-  tan) but never taken away, and the seat stays in the same spot whichever
+  divider and its posts, in one of five finishes (maple, oak, graphite, white,
+  beech). The packs' small three-tile desks looked cramped and aren't used.
+- **A desk always has a chair.** The chair can be swapped for another office
+  chair but never taken away, and the seat stays in the same spot whichever
   chair it is.
-- **Monitors and the like face the camera.** With everyone at a desk facing
-  up, what's on a desk shows its front; the backs of monitors aren't needed.
+- **Desks can be used from both sides.** Back to back across the divider
+  works, once each row of the bank is drawn as one piece with its own sort
+  line instead of tile by tile: the far person is drawn behind their desk and
+  their monitor's back, so you see their face over it; the near person is
+  drawn behind their chair, so you see the back of their head over the desk;
+  someone walking past either side is in front of or behind the whole row.
+  Tested sitting and walking on both sides in the layout editor.
+- **What's on a desk faces whoever sits there**: screens on the near side, the
+  backs of monitors on the far side; lamps, plants and papers on either.
 
 ## Items
 
@@ -89,23 +91,22 @@ An item is everything the floor needs to know about one thing:
 
 - **sprite**: a rectangle cut from a pack image, on the 16px grid, optionally
   mirrored; or layers cut from several places and drawn in order, for things
-  the packs draw in pieces (a six-tile desk is its divider, three desk pieces
-  with the middle repeated, and post caps, as the current map draws it);
-- **mount**: on the floor, on a wall, or on a surface (a monitor on a desk);
+  the packs draw in pieces (a meeting table is its nine table pieces);
+- **mount**: on the floor, on a wall, on a desk (surface), or a rug, under
+  everything;
 - **colliders**: rectangles you can't walk into, in the sprite's pixels;
 - **sort line**: above it you're behind the item, below it in front;
 - **seats**: a point and which way you face sitting there (up or down);
-- **surface**: where surface things can go (a desk's top);
-- **part**: only ever placed inside a bundle (a desk top without its chair);
+- **surface**: where things on top can go;
+- **facing**: for desk things, which side of a desk they suit (near, far, either);
 - name, category, themes.
 
-A **bundle** is items placed and moved together, each part at an offset; a
-part can be a slot with options (the chair). Desks and tables with their
-chairs are bundles.
-
-The first 55 (five desks, their desk tops, two meeting tables, chairs, sofas,
-plants, kitchen and tech pieces) are in `shared-protocol/src/catalog/items.json`.
-What making them taught us:
+A **bundle** is items placed and moved together, a part sometimes a slot of
+interchangeable items. A **cluster** is a bank of desks made to measure (next
+section). The catalog (`shared-protocol/src/catalog/items.json`) has 64:
+desk banks in five finishes, two meeting tables, chairs, sofas, egg chairs,
+a bench, plants, shelves, kitchen and tech pieces, desk things, rugs, windows
+and pictures. What making them taught us:
 
 - **Every item needs looking at.** A first guess (a collider as the bottom
   third of the item's pixels, the sort line at its foot) is right for plants
@@ -116,40 +117,100 @@ What making them taught us:
   most things but returns a row of four chairs as one, so cutting takes an eye.
 - **Office singles aren't desks.** The office pack's single images include
   desk pieces, not whole desks; the sheet, cut in layers, is the reliable source.
+- **Loud rugs look like objects.** The packs' big rugs are bright patterns; on
+  a quiet floor they read as furniture. Small and neutral ones read as rugs.
 - **Our characters' side-sitting frames are swapped** (frame 49 faces right,
   50 left, against `SIT_ORDER` in `AnimationManager`). With no sideways seats
   it never shows; worth fixing so it never surprises anyone.
 
+## Desk banks, sized like a widget
+
+A desk bank is placed with a size: how many desks along (one to six) and one
+side or two. Drag its right edge and a desk is added or taken away beside the
+others; drag its top edge and the far side appears or goes. Everything
+follows from the size: an end post at each end and a joining post between
+neighbours, the glass panels, the near desks, the strips of the far desks,
+and a chair at every desk, the way the current map's desk bank is drawn. It
+is worked out from the office sheet the floor already loads, so a bank of any
+size costs no extra art and is three pictures (the far row, the near row with
+its divider, and the chairs), not dozens of tiles.
+
+Each side of a bank has its own chair choice (near chairs face up, far ones
+down), and a cluster says which chairs suit it.
+
+## The things on desks: seeded, then yours
+
+Every desk gets a few things from the catalog's desk things, picked for its
+side: usually a screen, set to one side on the near desk so the person's head
+doesn't hide it, and a lamp, a plant, papers or a phone besides; now and then
+a clear desk. The picking is driven by a seed: the office's seed, the bank's
+id (which stays the same when the bank moves) and the desk's place in it. So
+every office looks its own, everyone in it sees the same desks, and nothing
+needs storing for a desk nobody has touched. Shuffle picks again for one bank;
+a new seed, for the whole office.
+
+When someone arranges their own desk, only that desk's list of things is
+stored (by bank and desk), and it replaces the picked one. An office of thirty
+desks with five arranged stores five short lists.
+
+## Walls and floors that work themselves out
+
+The office's walls and floors are a plain map: one character a tile, from a
+legend (a wall and its material, a floor and its material, or nothing),
+readable and easy to diff (`shared-protocol/src/catalog/shells/`). They are
+drawn from it, not placed piece by piece:
+
+- a wall with floor in front of it shows its face, two tiles tall; any other
+  wall shows its top;
+- every art pixel is sorted into wall top, wall face or floor, and the
+  outline (#3a3a50, one art pixel) goes wherever a top meets anything else and
+  wherever a face meets floor;
+- faces take their pattern from the material's tiles; floors take the
+  material's tile with the shadow from a wall above or beside it.
+
+So corners, joins, a wall's end at a doorway and two walls meeting come out
+right whatever the shape; the hand-placed map had a wall end with its outline
+missing, which this can't produce. Painting a rectangle of wall, floor or
+nothing in the layout editor redraws it at once. The whole shell is drawn once
+into a single picture when the floor loads (a few tens of milliseconds), and
+costs nothing after that.
+
+## Weight
+
+Nothing here makes the floor heavier to run: the shell is one picture, a desk
+bank three, each desk thing one small one; the layout an office loads is a
+few kilobytes (what's placed where, its size, the seed, the chairs chosen,
+the desks someone arranged). Desk things are worked out on each device from
+the seed, in well under a millisecond a desk.
+
 ## Layouts
 
-A layout is a shell (floors and walls) and a list of placed items and bundles,
-each with a position on the 16px grid and, for a desk, its chosen chair. The
-first, "Startup" (`shared-protocol/src/catalog/layouts/startup.json`),
-furnishes today's walls: four rows of three maple desks, joined so neighbours
-share a post, every chair in front; a meeting table with chairs above and
-below; a break corner; a lounge.
+A layout is a shell and a list of placed items, bundles and banks, each with
+an id, a position on the 16px grid and, for a bank, its size and chosen
+chairs; plus the office's seed. The first template, "Startup"
+(`layouts/startup.json` on the `startup` shell), is today's office with a
+focus room walled off in the hall, and furnished to feel used rather than
+gridded: banks of different sizes (three desks back to back, two back to
+back, a pair in a corner, a single pair), plants and shelves at the bank
+ends, windows and pictures on the walls, a break corner, a lounge round a rug,
+a bench by the wall.
 
 What a real office needs from it:
 
-- **Rooms as rectangles with materials.** A room is a rectangle with a floor
-  and a wall style; the floor and wall tiles are worked out from the
-  rectangles when the floor loads (the corner and edge logic in
-  `buildmap.py`). A theme is then materials plus item variants.
-- **Seats come from items.** A seat's id is the placed item and its seat's
-  index, not a tile number. Where you arrive for a desk is worked out when the
-  layout is saved, with the floor's own pathfinding, and saved with it, so the
-  realtime server needs no pathfinding and checks desk claims against the
-  layout's seats.
+- **Seats come from the layout.** A seat's id is the bank and its desk
+  ("front-1"), not a tile number. Where you arrive for a desk is worked out
+  when the layout is saved, with the floor's own pathfinding, and saved with
+  it, so the realtime server needs no pathfinding and checks desk claims
+  against the layout's seats.
 - **Saved per office, with versions.** An admin edits a draft and publishes
   it; while one person edits, no one else can, so two edits never cross.
   Everyone on the floor gets the new layout and redraws.
 - **A limit.** A ceiling on items per floor keeps drawing and loading
   bounded on phones.
 - **Templates.** A new office starts from a template chosen by size (how many
-  people) and look (a theme), all designed in the layout editor from catalog
-  items. Templates can be generated from a few room blocks (desk island,
-  meeting room, lounge, break corner) arranged for a headcount, rather than
-  drawn one by one.
+  people) and look (a theme), all designed in the layout editor. Templates can
+  be generated from a few blocks (desk banks, a meeting room, a lounge, a
+  break corner) arranged for a headcount, rather than drawn one by one.
 
 ## Themes
 
@@ -183,15 +244,14 @@ make an office feel lived in, and fit the floor's quiet tone if used sparingly.
   colours as swatches, a Randomize, and a preview walking, standing and
   sitting. Fantasy skins and costume pieces belong out of the default list.
 
-## Desks
+## Your desk
 
 A claimed desk is the natural place to start customization, because it's
 yours and it stays yours (`product.md`):
 
-- your desk's surface takes surface items (a monitor, a lamp, a plant, a
-  mug), up to a small number, all facing the camera;
+- you arrange what's on it, from the desk things that suit its side, starting
+  from what the seed gave it;
 - you choose its chair, from the office chairs; it always has one;
-- the desk can change finish (the same desk in another wood);
 - it's done on the floor, at the desk, not in a separate editor;
 - what you put on it stays with the desk, which is why desks are claimed and
   not moved.
@@ -208,7 +268,8 @@ there, and it is the only way art reaches the floor:
 3. **Check**: the house rules run on every change in the lab and in
    `pnpm --dir lab check`, which needs no art and can run anywhere.
 4. **Build**: `pnpm --dir lab build` bakes every drawn item into one atlas
-   (50 items, 70 KB) in `private-assets/catalog/`, writes where each one is
+   (59 items, 60 KB; desk banks are drawn from the office sheet the floor
+   already has) in `private-assets/catalog/`, writes where each one is
    to `shared-protocol/src/catalog/atlas.json`, and records the atlas in the
    asset manifest.
 5. **Upload** the atlas to R2 with the command the build prints; every build
@@ -221,9 +282,9 @@ only ever leaves `assets-pack/` as the baked atlas, through R2.
 
 Each of these needs the one before it:
 
-1. **The floor from data.** The atlas on the floor, an office drawn from a
-   layout, seats from the layout instead of `map.ts`. The one visible change:
-   one-sided desks.
+1. **The floor from data.** The shell drawn procedurally, an office drawn from
+   a layout with desk banks and seeded desk things, seats from the layout
+   instead of `map.ts`.
 2. **Characters.** The creator, the recipe on the profile, composing on the
    client; the premade eight as presets.
 3. **Desk decor.** Surface items on your own desk, on the floor.

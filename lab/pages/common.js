@@ -1,7 +1,7 @@
 // What the lab's pages share in the browser: the floor's numbers for walking
 // and sitting, the test character, and drawing items, single, layered or bundled.
 /* global Phaser */
-import { expand, isComposite, spriteSize } from "./catalog.js";
+import { depthOf, expand, isComposite, spriteSize } from "./catalog.js";
 
 export const TILE = 32;
 export const SPEED = 120; // the floor's MOVEMENT_SPEED
@@ -77,9 +77,10 @@ export async function drawSprite(context, sprite, x, y, scale = 1) {
   context.restore();
 }
 
-/** Draws a catalog item, a bundle's parts back to front, with its top left at x, y. */
-export async function drawItem(context, byId, id, x, y, scale = 1, choose = {}) {
-  const pieces = expand(byId, id, 0, 0, choose).sort((a, b) => a.y + a.item.sortY - (b.y + b.item.sortY));
+/** Draws a catalog item, a bundle's or cluster's pieces back to front, with its top left at x, y. */
+export async function drawItem(context, byId, id, x, y, scale = 1, choose = {}, place = {}) {
+  const all = expand(byId, id, 0, 0, choose, place);
+  const pieces = all.map((piece) => ({ piece, depth: depthOf(piece, all) })).sort((a, b) => a.depth - b.depth).map(({ piece }) => piece);
   for (const piece of pieces) await drawSprite(context, piece.item.sprite, x + piece.x * scale, y + piece.y * scale, scale);
 }
 

@@ -1,272 +1,360 @@
 {
  "id": "startup",
  "name": "Startup",
- "shell": "office-map",
+ "shell": "startup",
  "items": [
   {
-   "item": "desk-maple",
+   "id": "sxusme",
+   "item": "desk-cluster-maple",
+   "x": 576,
+   "y": 224,
+   "size": {
+    "cols": 3,
+    "sides": 2
+   }
+  },
+  {
+   "id": "714vvt",
+   "item": "plant-tall",
    "x": 528,
-   "y": 192
+   "y": 256
   },
   {
-   "item": "monitor-dual",
-   "x": 672,
-   "y": 224
+   "id": "y9uo82",
+   "item": "shelving",
+   "x": 1200,
+   "y": 256
   },
   {
-   "item": "desk-maple",
-   "x": 720,
-   "y": 192
+   "id": "2phqsg",
+   "item": "desk-cluster-maple",
+   "x": 576,
+   "y": 560,
+   "size": {
+    "cols": 2,
+    "sides": 2
+   }
   },
   {
-   "item": "monitor-blue",
-   "x": 864,
-   "y": 224
-  },
-  {
-   "item": "desk-maple",
-   "x": 912,
-   "y": 192
-  },
-  {
-   "item": "monitor-dual",
-   "x": 1056,
-   "y": 224
-  },
-  {
-   "item": "desk-maple",
+   "id": "xwn9z0",
+   "item": "plant-snake",
    "x": 528,
-   "y": 384
+   "y": 592
   },
   {
-   "item": "monitor-dual",
-   "x": 672,
-   "y": 416
+   "id": "u78vo3",
+   "item": "bookshelf",
+   "x": 1008,
+   "y": 592
   },
   {
-   "item": "desk-maple",
-   "x": 720,
-   "y": 384
-  },
-  {
-   "item": "monitor-blue",
-   "x": 864,
-   "y": 416
-  },
-  {
-   "item": "desk-maple",
-   "x": 912,
-   "y": 384
-  },
-  {
-   "item": "monitor-dual",
+   "id": "8qbq7e",
+   "item": "desk-cluster-oak",
    "x": 1056,
-   "y": 416
+   "y": 768,
+   "size": {
+    "cols": 2,
+    "sides": 1
+   }
   },
   {
-   "item": "desk-maple",
-   "x": 528,
-   "y": 576
+   "id": "dt8zum",
+   "item": "plant-small",
+   "x": 1008,
+   "y": 816
   },
   {
-   "item": "monitor-dual",
-   "x": 672,
-   "y": 608
+   "id": "elvotr",
+   "item": "window-wide",
+   "x": 608,
+   "y": 16
   },
   {
-   "item": "desk-maple",
-   "x": 720,
-   "y": 576
+   "id": "xhfij4",
+   "item": "window-wide",
+   "x": 800,
+   "y": 16
   },
   {
-   "item": "monitor-blue",
-   "x": 864,
-   "y": 608
+   "id": "zzrkqb",
+   "item": "window-wide",
+   "x": 992,
+   "y": 16
   },
   {
-   "item": "desk-maple",
-   "x": 912,
-   "y": 576
+   "id": "h2hej5",
+   "item": "picture-hills",
+   "x": 1376,
+   "y": 16
   },
   {
-   "item": "monitor-dual",
-   "x": 1056,
-   "y": 608
-  },
-  {
-   "item": "desk-maple",
-   "x": 528,
-   "y": 768
-  },
-  {
-   "item": "monitor-dual",
-   "x": 672,
-   "y": 800
-  },
-  {
-   "item": "desk-maple",
-   "x": 720,
-   "y": 768
-  },
-  {
-   "item": "monitor-blue",
-   "x": 864,
-   "y": 800
-  },
-  {
-   "item": "desk-maple",
-   "x": 912,
-   "y": 768
-  },
-  {
-   "item": "monitor-dual",
-   "x": 1056,
-   "y": 800
-  },
-  {
+   "id": "8xebxn",
    "item": "vending-drinks",
-   "x": 1184,
+   "x": 1232,
    "y": 64
   },
   {
+   "id": "fncc26",
    "item": "vending-snacks",
-   "x": 1248,
+   "x": 1296,
    "y": 64
   },
   {
+   "id": "mlnljn",
    "item": "water-cooler",
-   "x": 1328,
+   "x": 1376,
    "y": 80
   },
   {
+   "id": "5ns21e",
    "item": "mini-fridge",
-   "x": 1376,
+   "x": 1424,
    "y": 96
   },
   {
+   "id": "ims1to",
    "item": "coffee-table",
    "x": 1296,
-   "y": 240
+   "y": 224
   },
   {
+   "id": "gcjn81",
    "item": "egg-chair-blue",
    "x": 1248,
-   "y": 224
+   "y": 208
   },
   {
+   "id": "aktgdg",
    "item": "egg-chair-mustard",
-   "x": 1376,
-   "y": 224
+   "x": 1360,
+   "y": 208
   },
   {
+   "id": "mjd2yf",
+   "item": "bench-pale",
+   "x": 912,
+   "y": 912
+  },
+  {
+   "id": "mguek1",
+   "item": "plant-tall",
+   "x": 992,
+   "y": 896
+  },
+  {
+   "id": "6fsxi1",
+   "item": "plant-tall",
+   "x": 496,
+   "y": 896
+  },
+  {
+   "id": "s1vlhw",
+   "item": "window-wide",
+   "x": 96,
+   "y": 16
+  },
+  {
+   "id": "g92mqw",
+   "item": "picture-forest",
+   "x": 320,
+   "y": 16
+  },
+  {
+   "id": "y7p4z2",
    "item": "board-blank",
    "x": 192,
    "y": 80
   },
   {
+   "id": "r9p2eu",
    "item": "meeting-table",
    "x": 112,
    "y": 224
   },
   {
+   "id": "4u87wx",
    "item": "chair-black-down",
    "x": 144,
    "y": 192
   },
   {
+   "id": "kk7c25",
    "item": "chair-black-up",
    "x": 144,
    "y": 288
   },
   {
+   "id": "4pdxhc",
    "item": "chair-black-down",
    "x": 208,
    "y": 192
   },
   {
+   "id": "z3zrnm",
    "item": "chair-black-up",
    "x": 208,
    "y": 288
   },
   {
+   "id": "e56yeo",
    "item": "chair-black-down",
    "x": 272,
    "y": 192
   },
   {
+   "id": "4dz1sk",
    "item": "chair-black-up",
    "x": 272,
    "y": 288
   },
   {
+   "id": "71h34w",
    "item": "plant-tall",
    "x": 48,
    "y": 80
   },
   {
-   "item": "plant-tall",
+   "id": "70lab9",
+   "item": "plant-small",
    "x": 384,
-   "y": 80
+   "y": 96
   },
   {
-   "item": "sofa-corner",
-   "x": 64,
-   "y": 640
+   "id": "vgy09f",
+   "item": "window",
+   "x": 96,
+   "y": 512
   },
   {
-   "item": "coffee-table",
-   "x": 176,
+   "id": "7q2drr",
+   "item": "picture-hills",
+   "x": 320,
+   "y": 528
+  },
+  {
+   "id": "dpjrlv",
+   "item": "rug-grey",
+   "x": 144,
    "y": 720
   },
   {
-   "item": "armchair",
-   "x": 288,
-   "y": 688
+   "id": "bwqafv",
+   "item": "sofa-corner",
+   "x": 48,
+   "y": 656
   },
   {
+   "id": "txaeme",
+   "item": "coffee-table",
+   "x": 160,
+   "y": 736
+  },
+  {
+   "id": "q1i8oi",
+   "item": "armchair",
+   "x": 272,
+   "y": 704
+  },
+  {
+   "id": "d5l7by",
    "item": "bookshelf",
    "x": 336,
    "y": 592
   },
   {
+   "id": "5gxy80",
    "item": "plant-snake",
    "x": 48,
    "y": 912
   },
   {
+   "id": "njko3l",
    "item": "plant-small",
    "x": 384,
    "y": 912
   },
   {
-   "item": "plant-tall",
-   "x": 496,
-   "y": 80
+   "id": "3jyo9e",
+   "item": "egg-chair-grey",
+   "x": 272,
+   "y": 880
   },
   {
-   "item": "plant-tall",
-   "x": 1456,
-   "y": 80
+   "id": "swgzpk",
+   "item": "window-wide",
+   "x": 1312,
+   "y": 368
   },
   {
-   "item": "plant-tall",
-   "x": 496,
-   "y": 896
-  },
-  {
-   "item": "plant-tall",
-   "x": 1456,
-   "y": 896
-  },
-  {
-   "item": "printer",
+   "id": "95widk",
+   "item": "picture-forest",
    "x": 1408,
+   "y": 368
+  },
+  {
+   "id": "tnvuwb",
+   "item": "sofa-two",
+   "x": 1280,
+   "y": 432
+  },
+  {
+   "id": "b701j8",
+   "item": "coffee-table",
+   "x": 1280,
+   "y": 512
+  },
+  {
+   "id": "a2jptr",
+   "item": "egg-chair-lilac",
+   "x": 1376,
    "y": 448
   },
   {
+   "id": "4ix8j1",
+   "item": "plant-tall",
+   "x": 1440,
+   "y": 432
+  },
+  {
+   "id": "6uw2fd",
+   "item": "plant-small",
+   "x": 1440,
+   "y": 544
+  },
+  {
+   "id": "rz0vq7",
    "item": "copier",
-   "x": 1344,
-   "y": 448
+   "x": 1360,
+   "y": 688
+  },
+  {
+   "id": "vlb8sr",
+   "item": "printer",
+   "x": 1424,
+   "y": 688
+  },
+  {
+   "id": "r9493u",
+   "item": "desk-cluster-white",
+   "x": 576,
+   "y": 800,
+   "size": {
+    "cols": 1,
+    "sides": 2
+   }
+  },
+  {
+   "id": "np198j",
+   "item": "board-chart",
+   "x": 864,
+   "y": 768
+  },
+  {
+   "id": "r58bwf",
+   "item": "plant-small",
+   "x": 832,
+   "y": 800
   }
- ]
+ ],
+ "seed": 901567
 }

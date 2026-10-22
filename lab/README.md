@@ -28,9 +28,12 @@ Then open http://localhost:4400. It needs:
   change, at the bottom of the list.
 - **Review** (`/lab/review.html`): the whole catalog at once with every shape
   drawn and the rules' verdict. `?category=desks` or `?q=chair` narrow it.
-- **Layout editor** (`/lab/layout.html`): today's office walls and floors,
-  furnished from the catalog: place, move, delete, choose a desk's chair, walk
-  and sit.
+- **Layout editor** (`/lab/layout.html`): an office's walls and floors and
+  what's in it. Furnish: place, move and delete; size a desk bank by dragging
+  its handles (right edge for more desks, top edge for the far side), choose
+  its chairs, shuffle what's on its desks; walk and sit. Walls: paint
+  rectangles of wall, floor or nothing, and the walls work themselves out
+  (`pages/shell.js`). New seed picks every desk's things again.
 - **Character creator** (`/lab/avatar.html`): the packs' character generator
   layers combined and previewed walking, standing and sitting.
 

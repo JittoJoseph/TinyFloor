@@ -3,7 +3,7 @@
 // rules' verdict at the top: one page to look the whole catalog over.
 // ?category= or ?q= narrow it.
 import { drawSprite } from "./common.js";
-import { bounds, check, expand, isBundle, spriteSize } from "./catalog.js";
+import { bounds, check, depthOf, expand, isBundle, isCluster, spriteSize } from "./catalog.js";
 
 const SCALE = 2;
 const PAD = 8;
@@ -20,7 +20,9 @@ document.querySelector("#count").textContent = `${items.length} items · ${probl
 document.querySelector("#problems").replaceChildren(...problems.map((text) => Object.assign(document.createElement("li"), { textContent: text })));
 
 for (const item of items) {
-  const [bx, by, w, h] = bounds(byId, item.id);
+  // A cluster is shown two desks long and two sides deep.
+  const shown = isCluster(item) ? { size: { cols: 2, sides: 2 }, key: "review" } : {};
+  const [bx, by, w, h] = bounds(byId, item.id, {}, shown);
   const canvas = document.createElement("canvas");
   canvas.width = (w + PAD * 2) * SCALE;
   canvas.height = (h + PAD * 2) * SCALE;
@@ -33,7 +35,8 @@ for (const item of items) {
       c.fillRect(tx, ty, 16, 16);
     }
   }
-  const pieces = expand(byId, item.id, PAD - bx, PAD - by).sort((a, b) => a.y + a.item.sortY - (b.y + b.item.sortY));
+  const all = expand(byId, item.id, PAD - bx, PAD - by, {}, shown);
+  const pieces = all.map((piece) => ({ piece, depth: depthOf(piece, all) })).sort((a, b) => a.depth - b.depth).map(({ piece }) => piece);
   for (const { item: piece, x, y } of pieces) await drawSprite(c, piece.sprite, x, y);
   c.lineWidth = 1 / SCALE;
   for (const { item: piece, x, y } of pieces) {
@@ -74,7 +77,9 @@ for (const item of items) {
   figure.innerHTML = `<figcaption><b></b><small></small></figcaption>`;
   figure.prepend(canvas);
   figure.querySelector("b").textContent = item.id;
-  figure.querySelector("small").textContent = isBundle(item)
+  figure.querySelector("small").textContent = isCluster(item)
+    ? `desks, sized when placed · ${item.cluster.finish}`
+    : isBundle(item)
     ? `bundle · ${item.parts.map((p) => p.slot ? `${p.slot} (${p.options.length})` : p.item).join(" + ")}`
     : `${item.part ? "part" : item.category} · ${item.mount} · ${w}×${h}`;
   figure.addEventListener("click", () => window.open(`/lab/index.html?item=${encodeURIComponent(item.id)}`, "lab"));

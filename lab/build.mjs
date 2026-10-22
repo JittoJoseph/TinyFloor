@@ -1,5 +1,6 @@
-// Bakes the catalog for the floor: every item that is drawn (not bundles, which
-// are only their parts) cut from the packs, layered and mirrored as the
+// Bakes the catalog for the floor: every item that is drawn (not bundles or
+// clusters, which are only their parts; a cluster is drawn from the office
+// sheet the floor already loads) cut from the packs, layered and mirrored as the
 // catalog says, and packed into one atlas. Run after changing items:
 // `pnpm --dir lab build`. It needs the packs in assets-pack/.
 //
@@ -14,7 +15,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import pngjs from "pngjs";
-import { check, isBundle, isComposite, spriteSize } from "./pages/catalog.js";
+import { check, isComposite, isGroup, spriteSize } from "./pages/catalog.js";
 
 const { PNG } = pngjs;
 const ROOT = resolve(fileURLToPath(import.meta.url), "../..");
@@ -70,7 +71,7 @@ async function render(item) {
 }
 
 // Shelves, tallest first: simple, and tight enough for things this size.
-const drawn = await Promise.all(catalog.items.filter((item) => !isBundle(item)).map(async (item) => ({ item, image: await render(item) })));
+const drawn = await Promise.all(catalog.items.filter((item) => !isGroup(item)).map(async (item) => ({ item, image: await render(item) })));
 drawn.sort((a, b) => b.image.height - a.image.height || b.image.width - a.image.width);
 const frames = {};
 let x = 0, y = 0, shelf = 0;

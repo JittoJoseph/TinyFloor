@@ -22,6 +22,11 @@
       .grid button[aria-pressed="true"] {
         outline: 2px solid var(--ink);
       }
+      .tabs button[aria-pressed="true"] {
+        background: var(--bg);
+        color: var(--ink);
+        font-weight: 600;
+      }
       #status {
         color: var(--muted);
       }
@@ -42,10 +47,17 @@
       <div class="toolbar">
         <select id="layout-id"></select>
         <input id="layout-name" placeholder="Layout name" style="width: 200px" />
+        <span class="tabs">
+          <button data-mode="furnish" aria-pressed="true">Furnish</button>
+          <button data-mode="walls">Walls</button>
+        </span>
+        <select id="brush" hidden></select>
         <label><input type="checkbox" id="show-colliders" /> Colliders</label>
-        <select id="chair" title="This desk's chair" hidden></select>
+        <span id="chairs"></span>
+        <button id="shuffle" hidden title="Other things on these desks">Shuffle desks</button>
         <span id="status"></span>
         <span class="spacer"></span>
+        <button id="reseed" title="A new seed: every desk's things picked again">New seed</button>
         <button id="new-layout">New layout</button>
         <button id="save" class="primary" disabled>Save layout</button>
       </div>

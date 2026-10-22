@@ -10,6 +10,7 @@ import { tileToPixel } from "@/lib/types";
 import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import { setMeetings, setMeetingUsage } from "./meetings";
 import { deskOf, deskState, setDesks } from "./desks";
+import { applyPieceChange, setPieceChanges } from "./pieces";
 import { FLOOR_ARRIVED_EVENT, myStatus, myStatusNote, sinceFloorRequested, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
 import { isListening } from "./music";
 import { track } from "@/lib/analytics";
@@ -33,6 +34,7 @@ export class MessageHandler {
     switch (message.t) {
       case "welcome":
         setDesks(message.desks ?? []);
+        setPieceChanges(message.pieces ?? {});
         this.welcome(message.self, message.players);
         whiteboard.sync();
         setMeetings(message.meetings ?? []);
@@ -41,6 +43,12 @@ export class MessageHandler {
         break;
       case "desks":
         setDesks(message.desks);
+        break;
+      case "piece":
+        applyPieceChange(message.key, message.change);
+        break;
+      case "pieces":
+        setPieceChanges(message.pieces);
         break;
       case "player_joined":
         if (message.player.id === this.playerId) return;

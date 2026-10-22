@@ -11,6 +11,8 @@ import { MovementManager } from "../lib/MovementManager";
 import { MapManager } from "../lib/MapManager";
 import { SeatManager } from "../lib/SeatManager";
 import { attachDesks } from "../lib/desks";
+import { attachDecorate } from "../lib/decorate";
+import { DeskDecorator } from "../lib/DeskDecorator";
 import { MessageHandler } from "../lib/MessageHandler";
 import { WhiteboardObject } from "../lib/WhiteboardObject";
 import { whiteboard } from "../lib/WhiteboardManager";
@@ -61,6 +63,7 @@ class GameScene extends Phaser.Scene {
   private messageHandler!: MessageHandler;
   private whiteboardObject?: WhiteboardObject;
   private seatManager?: SeatManager;
+  private deskDecorator?: DeskDecorator;
   private windowListeners: Array<[string, EventListener]> = [];
   private unsubscribeShown?: () => void;
   private unsubscribeRename?: () => void;
@@ -133,6 +136,16 @@ class GameScene extends Phaser.Scene {
     this.seatManager.attach(this.wsManager, (seated) => this.movementManager.setFrozen(seated, () => this.seatManager?.leave()), approach);
     this.meetingZone = this.mapManager.getZone(MEETING_ZONE);
 
+    // Decorating your desk: the camera and your feet are the decorator's until it's done.
+    attachDecorate((message) => this.wsManager.send(message), this.playerId);
+    this.deskDecorator = new DeskDecorator(this, this.mapManager, (decorating) => {
+      this.movementManager.setInputEnabled(!decorating);
+      if (decorating) return;
+      const camera = this.cameras.main;
+      camera.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);
+      camera.zoomTo(zoomFor(this.scale.width, this.scale.height, this.mapManager.getMapWidth(), this.mapManager.getMapHeight()), 420, "Sine.easeInOut", true);
+    });
+
     callManager.attach(this.wsManager);
     whiteboard.attach(this.wsManager);
     const board = this.mapManager.getWhiteboard();
@@ -187,7 +200,7 @@ class GameScene extends Phaser.Scene {
     });
     this.listen(WAVE_EVENT, (event: CustomEvent<{ id: string }>) => this.wsManager.send({ t: "wave", to: event.detail.id }));
     this.listen("chatFocused", () => this.movementManager.setInputEnabled(false));
-    this.listen("chatBlurred", () => this.movementManager.setInputEnabled(true));
+    this.listen("chatBlurred", () => this.movementManager.setInputEnabled(!this.deskDecorator?.active()));
 
     // Under a view the floor isn't seen, so it isn't drawn; it keeps running.
     this.unsubscribeShown = onFloorShown((shown) => this.sys.setVisible(shown));
@@ -207,6 +220,8 @@ class GameScene extends Phaser.Scene {
    */
   private fitCamera(width: number, height: number) {
     const camera = this.cameras.main;
+    // Decorating holds its own close view; the usual one comes back when it's done.
+    if (this.deskDecorator?.active()) return;
     const zoom = zoomFor(width, height, this.mapManager.getMapWidth(), this.mapManager.getMapHeight());
     camera.setZoom(zoom);
     camera.setDeadzone(Math.min(120, width * 0.2), Math.min(90, height * 0.12));
@@ -301,6 +316,7 @@ class GameScene extends Phaser.Scene {
     this.proximityManager.update();
     if (this.meetingZone) this.watchMeetingRoom();
     this.whiteboardObject?.update(time);
+    this.deskDecorator?.update();
     this.offerNearestAction();
   }
 
@@ -329,6 +345,9 @@ class GameScene extends Phaser.Scene {
     this.proximityManager?.destroy();
     callManager.detach();
     attachDesks(null);
+    this.deskDecorator?.destroy();
+    attachDecorate(null, null);
+    this.mapManager?.destroy();
     whiteboard.detach();
     this.whiteboardObject?.destroy();
     this.seatManager?.destroy();

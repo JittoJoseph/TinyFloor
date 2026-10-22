@@ -11,8 +11,10 @@
 //   plain map they're drawn from: the app draws them from the room builder
 //   sheet it has anyway, which is far smaller than a picture of them), every
 //   piece with its key, item and depth, what you can't walk through, the seats
-//   (with ids, and where you arrive at each desk) and the spots the floor
-//   keeps. The app draws that and nothing else; the room reads its desks;
+//   (with ids, and where you arrive at each desk), the spots the floor keeps,
+//   and what decorating a desk needs: each desk's surface, the things that can
+//   stand on one and the chairs it can have. The app draws that and nothing
+//   else; the room reads its desks and checks changes to them against it;
 // - the atlas's size and hash go in web-shared/assets.manifest.json, so every
 //   build pulls it from R2 and checks it like the rest of the art.
 //
@@ -23,7 +25,7 @@ import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import pngjs from "pngjs";
 import { drawn as drawnArt } from "./pages/art.js";
-import { check, isComposite, isGroup, spriteSize } from "./pages/catalog.js";
+import { DESK_STEP, check, clusterSize, isComposite, isGroup, spriteSize } from "./pages/catalog.js";
 import { checkTemplate, officeFloor, seatsOf, solidsOf } from "./pages/floor.js";
 import { TILE, wallSolids } from "./pages/shell.js";
 
@@ -144,12 +146,85 @@ for (const { template, floor } of offices) {
     version: template.version,
     shell: template.shell,
     anchors: template.anchors,
-    pieces: floor.map((piece) => ({ key: piece.key, item: piece.item.id, x: piece.x, y: piece.y, depth: Math.round(piece.depth * 100) / 100 })),
+    pieces: floor.map((piece) => ({
+      key: piece.key,
+      item: piece.item.id,
+      x: piece.x,
+      y: piece.y,
+      depth: Math.round(piece.depth * 100) / 100,
+      // A desk's own pieces (its things, its chair), so who may change them is known.
+      ...(deskOfPiece(piece) ? { desk: deskOfPiece(piece) } : {}),
+    })),
     solids: [...wallSolids(template.shell), ...solidsOf(floor)],
     seats,
+    desks: desksOf(template, floor, seats),
+    things: Object.fromEntries(
+      catalog.items
+        .filter((item) => item.desk && item.facing)
+        .map((item) => [item.id, { facing: item.facing, size: spriteSize(item.sprite), ...(item.shelf ? { shelf: item.shelf } : {}) }]),
+    ),
+    chairs: chairOptions(),
   };
   await writeFile(join(CATALOG, "floors", `${template.id}.json`), JSON.stringify(compiled, null, 1) + "\n");
   console.log(`${template.id}@${template.version}: ${compiled.pieces.length} pieces, ${seats.length} seats (${seats.filter((seat) => seat.desk).length} desks)`);
+}
+
+/** Which desk a piece belongs to: a thing on it, or its chair. */
+function deskOfPiece(piece) {
+  if (piece.desk) return piece.desk;
+  return piece.seat && piece.key.endsWith("/chair") ? piece.key.slice(0, -"/chair".length) : null;
+}
+
+/**
+ * Every desk, by its key: its seat, its side, where things on it stand (the
+ * band their feet may be in, and how far along), the column its chair keeps
+ * clear on a near desk (whoever sits there is drawn over it), its chair, and
+ * the depth its things are drawn at (just over the desk's row).
+ */
+function desksOf(template, floor, seats) {
+  const desks = {};
+  for (const bank of template.pieces.filter((piece) => piece.size)) {
+    const { cols, sides } = clusterSize(bank.size);
+    for (let c = 0; c < cols; c++) {
+      for (const side of sides === 2 ? ["front", "back"] : ["front"]) {
+        const key = `${bank.key}/${side}-${c}`;
+        const seat = seats.find((one) => one.desk === key);
+        const chair = floor.find((piece) => piece.key === `${key}/chair`);
+        const row = floor.find((piece) => piece.key === `${bank.key}/${side}`);
+        if (!seat || !chair || !row) continue;
+        const x = bank.x + c * DESK_STEP + 32;
+        desks[key] = {
+          seat: seat.id,
+          side,
+          // Things stand along the desk's six tiles; a near desk's two rows, a far desk's strip.
+          along: [x, x + 192],
+          feet: side === "front" ? [bank.y + 64, bank.y + 96] : [bank.y + 20, bank.y + 32],
+          ...(side === "front" ? { clear: [chair.x, chair.x + 32] } : {}),
+          chair: { key: chair.key, item: chair.item.id, x: chair.x, y: chair.y },
+          depth: Math.round((row.y + row.item.sortY + 0.5) * 100) / 100,
+        };
+      }
+    }
+  }
+  return desks;
+}
+
+/** The chairs a desk can have, each side's, lined up by their seat so you sit in the same spot whichever it is. */
+function chairOptions() {
+  const cluster = catalog.items.find((item) => item.cluster);
+  return Object.fromEntries(
+    Object.entries(cluster.cluster.chairs).map(([side, slot]) => {
+      const want = byId.get(slot.default).seats[0];
+      return [
+        side,
+        slot.options.map((id) => {
+          const item = byId.get(id);
+          const have = item.seats[0];
+          return { item: id, dx: want.x - have.x, dy: want.y - have.y, sortY: item.sortY };
+        }),
+      ];
+    }),
+  );
 }
 
 // ---------- the manifest ----------

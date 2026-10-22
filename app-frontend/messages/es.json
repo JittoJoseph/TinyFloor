@@ -807,6 +807,32 @@
     "claimNote": "Tu escritorio actual quedará libre.",
     "claimed": "Reclamado"
   },
+  "decorate": {
+    "open": "Decorar",
+    "title": "Decora tu escritorio",
+    "close": "Cerrar",
+    "things": "Cosas",
+    "chair": "Silla",
+    "shelf": {
+      "all": "Todo",
+      "tech": "Tecnología",
+      "lamps": "Lámparas",
+      "personal": "Personal",
+      "setups": "Puestos"
+    },
+    "hint": "Elige algo para tu escritorio. Arrastra las cosas para moverlas.",
+    "swapHint": "Elige algo por lo que cambiarlo.",
+    "full": "Tu escritorio está lleno: quita algo para añadir más.",
+    "count": "Cosas: {count} de {max}",
+    "undo": "Deshacer",
+    "redo": "Rehacer",
+    "reset": "Restablecer",
+    "resetConfirm": "¿Dejar tu escritorio como venía?",
+    "cancel": "Cancelar",
+    "done": "Listo",
+    "remove": "Quitar del escritorio",
+    "deselect": "Listo con esto"
+  },
   "note": {
     "title": "Nota de estado",
     "set": "Poner una nota de estado",

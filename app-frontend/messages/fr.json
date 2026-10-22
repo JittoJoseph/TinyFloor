@@ -807,6 +807,32 @@
     "claimNote": "Votre bureau actuel sera libéré.",
     "claimed": "Pris"
   },
+  "decorate": {
+    "open": "Décorer",
+    "title": "Décorer votre bureau",
+    "close": "Fermer",
+    "things": "Objets",
+    "chair": "Chaise",
+    "shelf": {
+      "all": "Tout",
+      "tech": "Tech",
+      "lamps": "Lampes",
+      "personal": "Perso",
+      "setups": "Postes"
+    },
+    "hint": "Choisissez un objet pour votre bureau. Faites glisser les objets pour les déplacer.",
+    "swapHint": "Choisissez un objet pour le remplacer.",
+    "full": "Votre bureau est plein : retirez un objet pour en ajouter.",
+    "count": "Objets : {count} sur {max}",
+    "undo": "Annuler",
+    "redo": "Rétablir",
+    "reset": "Réinitialiser",
+    "resetConfirm": "Remettre votre bureau comme à l'origine ?",
+    "cancel": "Annuler",
+    "done": "Terminé",
+    "remove": "Retirer du bureau",
+    "deselect": "Terminé"
+  },
   "note": {
     "title": "Note de statut",
     "set": "Ajouter une note de statut",

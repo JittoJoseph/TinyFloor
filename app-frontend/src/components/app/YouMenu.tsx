@@ -2,11 +2,12 @@
 
 import { useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Check, ChevronRight, Desk, DoorOpen, HelpCircle, LogOut, MonitorDown, Settings2, UserPlus } from "@/components/ui/icons";
+import { Check, ChevronRight, Desk, DoorOpen, HelpCircle, LogOut, MonitorDown, Palette, Settings2, UserPlus } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { setMyStatus, useMyNote, useMyStatus } from "@/lib/floor";
 import { deskOf, goToMyDesk, useDesks } from "@/lib/desks";
+import { openDecorate } from "@/lib/decorate";
 import { NoteGlyph } from "@/lib/noteIcons";
 import type { NoteIcon } from "@shared/messages";
 import { NoteOptions, NoteRow } from "./StatusNote";
@@ -59,6 +60,7 @@ export function YouMenu({
 }) {
   const t = useTranslations("shell");
   const tDesk = useTranslations("desk");
+  const tDecorate = useTranslations("decorate");
   const tHelp = useTranslations("help");
   const tStatus = useTranslations("status");
   const router = useRouter();
@@ -209,6 +211,11 @@ export function YouMenu({
       {myDesk && (
         <MenuItem icon={<Desk />} onSelect={goToMyDesk}>
           {tDesk("goTo")}
+        </MenuItem>
+      )}
+      {desk && (
+        <MenuItem icon={<Palette />} onSelect={openDecorate}>
+          {tDecorate("title")}
         </MenuItem>
       )}
 

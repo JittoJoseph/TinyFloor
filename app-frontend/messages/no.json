@@ -807,6 +807,32 @@
     "claimNote": "Den nåværende pulten din blir ledig.",
     "claimed": "Tatt"
   },
+  "decorate": {
+    "open": "Innred",
+    "title": "Innred skrivebordet ditt",
+    "close": "Lukk",
+    "things": "Ting",
+    "chair": "Stol",
+    "shelf": {
+      "all": "Alle",
+      "tech": "Teknologi",
+      "lamps": "Lamper",
+      "personal": "Personlig",
+      "setups": "Oppsett"
+    },
+    "hint": "Velg noe å sette på skrivebordet. Dra ting for å flytte dem.",
+    "swapHint": "Velg noe å bytte det med.",
+    "full": "Skrivebordet er fullt: fjern noe for å legge til mer.",
+    "count": "Ting: {count} av {max}",
+    "undo": "Angre",
+    "redo": "Gjør om",
+    "reset": "Tilbakestill",
+    "resetConfirm": "Sette skrivebordet tilbake slik det var?",
+    "cancel": "Avbryt",
+    "done": "Ferdig",
+    "remove": "Fjern fra skrivebordet",
+    "deselect": "Ferdig med den"
+  },
   "note": {
     "title": "Statusnotat",
     "set": "Sett et statusnotat",

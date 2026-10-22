@@ -19,11 +19,31 @@ export interface Floor {
     table?: { x: number; y: number; width: number; height: number };
     whiteboard?: { x: number; y: number; width: number; height: number };
   };
-  /** Everything drawn, by its item on the atlas (catalog/atlas.json), at its top left, at its depth. */
-  pieces: Array<{ key: string; item: string; x: number; y: number; depth: number }>;
+  /** Everything drawn, by its item on the atlas (catalog/atlas.json), at its top left, at its depth; a desk's own pieces say whose desk. */
+  pieces: Array<{ key: string; item: string; x: number; y: number; depth: number; desk?: string }>;
   /** What you can't walk through: [x, y, width, height]. */
   solids: Array<[number, number, number, number]>;
   seats: FloorSeat[];
+  /** Every desk, by its key (office.ts). */
+  desks: Record<string, FloorDesk>;
+  /** What can stand on a desk: which side it suits, its size in pixels, and the shelf it's shown on. */
+  things: Record<string, { facing: "front" | "back" | "any"; size: [number, number]; shelf?: string }>;
+  /** The chairs each side of a desk can have, lined up by their seat (dx, dy from where the floor's chair stands). */
+  chairs: Record<"front" | "back", Array<{ item: string; dx: number; dy: number; sortY: number }>>;
+}
+
+export interface FloorDesk {
+  seat: number;
+  /** A near desk (you sit facing up, at its front) or a far one (facing down, behind its strip). */
+  side: "front" | "back";
+  /** Where things stand on it: how far along, and the band their feet are in (pixels). */
+  along: [number, number];
+  feet: [number, number];
+  /** On a near desk, the chair's column, kept clear: whoever sits there is drawn over it. */
+  clear?: [number, number];
+  chair: { key: string; item: string; x: number; y: number };
+  /** The depth things on it are drawn at, just over the desk. */
+  depth: number;
 }
 
 export interface FloorSeat {

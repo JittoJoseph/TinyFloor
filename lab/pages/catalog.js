@@ -246,7 +246,7 @@ function cluster(byId, item, x, y, choose, place) {
  */
 export function deskThings(things, side, sitAt, rand) {
   const pick = (list) => list[Math.floor(rand() * list.length)];
-  const of = (cols, rows) => things.filter((t) => t.facing === side && t.random !== false && t.desk.cols === cols && t.desk.rows === rows);
+  const of = (cols, rows) => things.filter((t) => (t.facing === side || t.facing === "any") && t.random !== false && t.desk.cols === cols && t.desk.rows === rows);
   const out = [];
   if (side === "front") {
     const setup = of(3, 2);

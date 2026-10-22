@@ -238,14 +238,16 @@
    "item": "chair-black-mesh",
    "x": 704,
    "y": 192,
-   "depth": 248
+   "depth": 248,
+   "desk": "lpadec/back-0"
   },
   {
    "key": "lpadec/back-1/chair",
    "item": "chair-black-mesh",
    "x": 896,
    "y": 192,
-   "depth": 248
+   "depth": 248,
+   "desk": "lpadec/back-1"
   },
   {
    "key": "z43bhw",
@@ -280,7 +282,8 @@
    "item": "back-monitors",
    "x": 864,
    "y": 224,
-   "depth": 254.5
+   "depth": 254.5,
+   "desk": "lpadec/back-1"
   },
   {
    "key": "lpadec/end-left",
@@ -315,35 +318,40 @@
    "item": "setup-laptop",
    "x": 704,
    "y": 256,
-   "depth": 316.5
+   "depth": 316.5,
+   "desk": "lpadec/front-0"
   },
   {
    "key": "lpadec/front-1/things/0",
    "item": "setup-monitors",
    "x": 800,
    "y": 256,
-   "depth": 316.5
+   "depth": 316.5,
+   "desk": "lpadec/front-1"
   },
   {
    "key": "lpadec/front-1/things/1",
    "item": "desk-plant",
    "x": 928,
    "y": 256,
-   "depth": 316.5
+   "depth": 316.5,
+   "desk": "lpadec/front-1"
   },
   {
    "key": "lpadec/front-0/chair",
    "item": "chair-black-back",
    "x": 672,
    "y": 288,
-   "depth": 336
+   "depth": 336,
+   "desk": "lpadec/front-0"
   },
   {
    "key": "lpadec/front-1/chair",
    "item": "chair-black-back",
    "x": 896,
    "y": 288,
-   "depth": 336
+   "depth": 336,
+   "desk": "lpadec/front-1"
   },
   {
    "key": "glog2r",
@@ -371,14 +379,16 @@
    "item": "chair-black-mesh",
    "x": 1120,
    "y": 352,
-   "depth": 408
+   "depth": 408,
+   "desk": "5agmx8/back-0"
   },
   {
    "key": "5agmx8/back-1/chair",
    "item": "chair-black-mesh",
    "x": 1344,
    "y": 352,
-   "depth": 408
+   "depth": 408,
+   "desk": "5agmx8/back-1"
   },
   {
    "key": "5agmx8/back",
@@ -392,14 +402,16 @@
    "item": "back-monitors",
    "x": 1088,
    "y": 384,
-   "depth": 414.5
+   "depth": 414.5,
+   "desk": "5agmx8/back-0"
   },
   {
    "key": "5agmx8/back-1/things/0",
    "item": "back-monitors",
    "x": 1312,
    "y": 384,
-   "depth": 414.5
+   "depth": 414.5,
+   "desk": "5agmx8/back-1"
   },
   {
    "key": "side:left:1,2/1",
@@ -441,35 +453,40 @@
    "item": "setup-monitors",
    "x": 1152,
    "y": 416,
-   "depth": 476.5
+   "depth": 476.5,
+   "desk": "5agmx8/front-0"
   },
   {
    "key": "5agmx8/front-1/things/0",
    "item": "setup-laptop-b",
    "x": 1344,
    "y": 416,
-   "depth": 476.5
+   "depth": 476.5,
+   "desk": "5agmx8/front-1"
   },
   {
    "key": "5agmx8/front-1/things/1",
    "item": "desk-phone-b",
    "x": 1248,
    "y": 416,
-   "depth": 476.5
+   "depth": 476.5,
+   "desk": "5agmx8/front-1"
   },
   {
    "key": "5agmx8/front-0/chair",
    "item": "chair-black-back",
    "x": 1120,
    "y": 448,
-   "depth": 496
+   "depth": 496,
+   "desk": "5agmx8/front-0"
   },
   {
    "key": "5agmx8/front-1/chair",
    "item": "chair-black-back",
    "x": 1312,
    "y": 448,
-   "depth": 496
+   "depth": 496,
+   "desk": "5agmx8/front-1"
   },
   {
    "key": "05imfh",
@@ -525,14 +542,16 @@
    "item": "chair-black-mesh",
    "x": 704,
    "y": 576,
-   "depth": 632
+   "depth": 632,
+   "desk": "yeqfol/back-0"
   },
   {
    "key": "yeqfol/back-1/chair",
    "item": "chair-black-mesh",
    "x": 896,
    "y": 576,
-   "depth": 632
+   "depth": 632,
+   "desk": "yeqfol/back-1"
   },
   {
    "key": "yeqfol/back",
@@ -546,14 +565,16 @@
    "item": "back-monitor-light",
    "x": 672,
    "y": 602,
-   "depth": 638.5
+   "depth": 638.5,
+   "desk": "yeqfol/back-0"
   },
   {
    "key": "yeqfol/back-1/things/0",
    "item": "back-monitors",
    "x": 864,
    "y": 608,
-   "depth": 638.5
+   "depth": 638.5,
+   "desk": "yeqfol/back-1"
   },
   {
    "key": "side:left:15,10/0",
@@ -602,28 +623,32 @@
    "item": "setup-laptop-b",
    "x": 640,
    "y": 640,
-   "depth": 700.5
+   "depth": 700.5,
+   "desk": "yeqfol/front-0"
   },
   {
    "key": "yeqfol/front-1/things/0",
    "item": "setup-laptop",
    "x": 832,
    "y": 640,
-   "depth": 700.5
+   "depth": 700.5,
+   "desk": "yeqfol/front-1"
   },
   {
    "key": "yeqfol/front-0/chair",
    "item": "chair-black-back",
    "x": 736,
    "y": 672,
-   "depth": 720
+   "depth": 720,
+   "desk": "yeqfol/front-0"
   },
   {
    "key": "yeqfol/front-1/chair",
    "item": "chair-black-back",
    "x": 928,
    "y": 672,
-   "depth": 720
+   "depth": 720,
+   "desk": "yeqfol/front-1"
   },
   {
    "key": "hdref1",
@@ -644,14 +669,16 @@
    "item": "chair-black-mesh",
    "x": 1184,
    "y": 736,
-   "depth": 792
+   "depth": 792,
+   "desk": "cx8d9m/back-0"
   },
   {
    "key": "cx8d9m/back-1/chair",
    "item": "chair-black-mesh",
    "x": 1344,
    "y": 736,
-   "depth": 792
+   "depth": 792,
+   "desk": "cx8d9m/back-1"
   },
   {
    "key": "cx8d9m/back",
@@ -665,14 +692,16 @@
    "item": "back-monitor",
    "x": 1216,
    "y": 762,
-   "depth": 798.5
+   "depth": 798.5,
+   "desk": "cx8d9m/back-0"
   },
   {
    "key": "cx8d9m/back-1/things/0",
    "item": "back-monitors",
    "x": 1312,
    "y": 768,
-   "depth": 798.5
+   "depth": 798.5,
+   "desk": "cx8d9m/back-1"
   },
   {
    "key": "ru2kty",
@@ -728,28 +757,32 @@
    "item": "setup-laptop",
    "x": 1184,
    "y": 800,
-   "depth": 860.5
+   "depth": 860.5,
+   "desk": "cx8d9m/front-0"
   },
   {
    "key": "cx8d9m/front-1/things/0",
    "item": "setup-laptop",
    "x": 1376,
    "y": 800,
-   "depth": 860.5
+   "depth": 860.5,
+   "desk": "cx8d9m/front-1"
   },
   {
    "key": "cx8d9m/front-0/chair",
    "item": "chair-black-back",
    "x": 1152,
    "y": 832,
-   "depth": 880
+   "depth": 880,
+   "desk": "cx8d9m/front-0"
   },
   {
    "key": "cx8d9m/front-1/chair",
    "item": "chair-black-back",
    "x": 1344,
    "y": 832,
-   "depth": 880
+   "depth": 880,
+   "desk": "cx8d9m/front-1"
   },
   {
    "key": "7z1k75",
@@ -2975,5 +3008,803 @@
     29
    ]
   }
- ]
+ ],
+ "desks": {
+  "lpadec/front-0": {
+   "seat": 501,
+   "side": "front",
+   "along": [
+    608,
+    800
+   ],
+   "feet": [
+    288,
+    320
+   ],
+   "clear": [
+    672,
+    704
+   ],
+   "chair": {
+    "key": "lpadec/front-0/chair",
+    "item": "chair-black-back",
+    "x": 672,
+    "y": 288
+   },
+   "depth": 316.5
+  },
+  "lpadec/back-0": {
+   "seat": 358,
+   "side": "back",
+   "along": [
+    608,
+    800
+   ],
+   "feet": [
+    244,
+    256
+   ],
+   "chair": {
+    "key": "lpadec/back-0/chair",
+    "item": "chair-black-mesh",
+    "x": 704,
+    "y": 192
+   },
+   "depth": 254.5
+  },
+  "lpadec/front-1": {
+   "seat": 508,
+   "side": "front",
+   "along": [
+    800,
+    992
+   ],
+   "feet": [
+    288,
+    320
+   ],
+   "clear": [
+    896,
+    928
+   ],
+   "chair": {
+    "key": "lpadec/front-1/chair",
+    "item": "chair-black-back",
+    "x": 896,
+    "y": 288
+   },
+   "depth": 316.5
+  },
+  "lpadec/back-1": {
+   "seat": 364,
+   "side": "back",
+   "along": [
+    800,
+    992
+   ],
+   "feet": [
+    244,
+    256
+   ],
+   "chair": {
+    "key": "lpadec/back-1/chair",
+    "item": "chair-black-mesh",
+    "x": 896,
+    "y": 192
+   },
+   "depth": 254.5
+  },
+  "5agmx8/front-0": {
+   "seat": 755,
+   "side": "front",
+   "along": [
+    1056,
+    1248
+   ],
+   "feet": [
+    448,
+    480
+   ],
+   "clear": [
+    1120,
+    1152
+   ],
+   "chair": {
+    "key": "5agmx8/front-0/chair",
+    "item": "chair-black-back",
+    "x": 1120,
+    "y": 448
+   },
+   "depth": 476.5
+  },
+  "5agmx8/back-0": {
+   "seat": 611,
+   "side": "back",
+   "along": [
+    1056,
+    1248
+   ],
+   "feet": [
+    404,
+    416
+   ],
+   "chair": {
+    "key": "5agmx8/back-0/chair",
+    "item": "chair-black-mesh",
+    "x": 1120,
+    "y": 352
+   },
+   "depth": 414.5
+  },
+  "5agmx8/front-1": {
+   "seat": 761,
+   "side": "front",
+   "along": [
+    1248,
+    1440
+   ],
+   "feet": [
+    448,
+    480
+   ],
+   "clear": [
+    1312,
+    1344
+   ],
+   "chair": {
+    "key": "5agmx8/front-1/chair",
+    "item": "chair-black-back",
+    "x": 1312,
+    "y": 448
+   },
+   "depth": 476.5
+  },
+  "5agmx8/back-1": {
+   "seat": 618,
+   "side": "back",
+   "along": [
+    1248,
+    1440
+   ],
+   "feet": [
+    404,
+    416
+   ],
+   "chair": {
+    "key": "5agmx8/back-1/chair",
+    "item": "chair-black-mesh",
+    "x": 1344,
+    "y": 352
+   },
+   "depth": 414.5
+  },
+  "yeqfol/front-0": {
+   "seat": 1079,
+   "side": "front",
+   "along": [
+    640,
+    832
+   ],
+   "feet": [
+    672,
+    704
+   ],
+   "clear": [
+    736,
+    768
+   ],
+   "chair": {
+    "key": "yeqfol/front-0/chair",
+    "item": "chair-black-back",
+    "x": 736,
+    "y": 672
+   },
+   "depth": 700.5
+  },
+  "yeqfol/back-0": {
+   "seat": 934,
+   "side": "back",
+   "along": [
+    640,
+    832
+   ],
+   "feet": [
+    628,
+    640
+   ],
+   "chair": {
+    "key": "yeqfol/back-0/chair",
+    "item": "chair-black-mesh",
+    "x": 704,
+    "y": 576
+   },
+   "depth": 638.5
+  },
+  "yeqfol/front-1": {
+   "seat": 1085,
+   "side": "front",
+   "along": [
+    832,
+    1024
+   ],
+   "feet": [
+    672,
+    704
+   ],
+   "clear": [
+    928,
+    960
+   ],
+   "chair": {
+    "key": "yeqfol/front-1/chair",
+    "item": "chair-black-back",
+    "x": 928,
+    "y": 672
+   },
+   "depth": 700.5
+  },
+  "yeqfol/back-1": {
+   "seat": 940,
+   "side": "back",
+   "along": [
+    832,
+    1024
+   ],
+   "feet": [
+    628,
+    640
+   ],
+   "chair": {
+    "key": "yeqfol/back-1/chair",
+    "item": "chair-black-mesh",
+    "x": 896,
+    "y": 576
+   },
+   "depth": 638.5
+  },
+  "cx8d9m/front-0": {
+   "seat": 1332,
+   "side": "front",
+   "along": [
+    1088,
+    1280
+   ],
+   "feet": [
+    832,
+    864
+   ],
+   "clear": [
+    1152,
+    1184
+   ],
+   "chair": {
+    "key": "cx8d9m/front-0/chair",
+    "item": "chair-black-back",
+    "x": 1152,
+    "y": 832
+   },
+   "depth": 860.5
+  },
+  "cx8d9m/back-0": {
+   "seat": 1189,
+   "side": "back",
+   "along": [
+    1088,
+    1280
+   ],
+   "feet": [
+    788,
+    800
+   ],
+   "chair": {
+    "key": "cx8d9m/back-0/chair",
+    "item": "chair-black-mesh",
+    "x": 1184,
+    "y": 736
+   },
+   "depth": 798.5
+  },
+  "cx8d9m/front-1": {
+   "seat": 1338,
+   "side": "front",
+   "along": [
+    1280,
+    1472
+   ],
+   "feet": [
+    832,
+    864
+   ],
+   "clear": [
+    1344,
+    1376
+   ],
+   "chair": {
+    "key": "cx8d9m/front-1/chair",
+    "item": "chair-black-back",
+    "x": 1344,
+    "y": 832
+   },
+   "depth": 860.5
+  },
+  "cx8d9m/back-1": {
+   "seat": 1194,
+   "side": "back",
+   "along": [
+    1280,
+    1472
+   ],
+   "feet": [
+    788,
+    800
+   ],
+   "chair": {
+    "key": "cx8d9m/back-1/chair",
+    "item": "chair-black-mesh",
+    "x": 1344,
+    "y": 736
+   },
+   "depth": 798.5
+  }
+ },
+ "things": {
+  "setup-laptop": {
+   "facing": "front",
+   "size": [
+    96,
+    64
+   ]
+  },
+  "setup-monitors": {
+   "facing": "front",
+   "size": [
+    96,
+    64
+   ]
+  },
+  "setup-laptop-b": {
+   "facing": "front",
+   "size": [
+    96,
+    64
+   ]
+  },
+  "setup-monitors-b": {
+   "facing": "front",
+   "size": [
+    96,
+    64
+   ]
+  },
+  "setup-printer": {
+   "facing": "front",
+   "size": [
+    96,
+    64
+   ]
+  },
+  "setup-printer-b": {
+   "facing": "front",
+   "size": [
+    96,
+    64
+   ]
+  },
+  "desk-plant": {
+   "facing": "any",
+   "size": [
+    32,
+    64
+   ]
+  },
+  "desk-phone-a": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ]
+  },
+  "desk-phone-b": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ]
+  },
+  "back-monitors": {
+   "facing": "back",
+   "size": [
+    96,
+    32
+   ]
+  },
+  "back-monitor": {
+   "facing": "back",
+   "size": [
+    32,
+    32
+   ]
+  },
+  "back-monitor-light": {
+   "facing": "back",
+   "size": [
+    32,
+    32
+   ]
+  },
+  "monitor-blue": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitor-blue-left": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitor-blue-right": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitor-wide": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitors-dual": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitors-dual-angled": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitors-dual-dark": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "laptop-open": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "shelf": "tech"
+  },
+  "laptop-dark": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "shelf": "tech"
+  },
+  "laptop-left": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "shelf": "tech"
+  },
+  "laptop-right": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "shelf": "tech"
+  },
+  "keyboard": {
+   "facing": "front",
+   "size": [
+    32,
+    16
+   ],
+   "shelf": "tech"
+  },
+  "keyboard-dark": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "tower-light": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "shelf": "tech"
+  },
+  "tower-dark": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "shelf": "tech"
+  },
+  "microphone": {
+   "facing": "front",
+   "size": [
+    16,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "phone-desk": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "phone-grey": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "shelf": "tech"
+  },
+  "phone-dark": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "printer-small": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "shelf": "tech"
+  },
+  "printer-white": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "shelf": "tech"
+  },
+  "lamp-black-left": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "shelf": "lamps"
+  },
+  "lamp-black-right": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "shelf": "lamps"
+  },
+  "lamp-grey-left": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "shelf": "lamps"
+  },
+  "lamp-white-left": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "shelf": "lamps"
+  },
+  "lamp-white-right": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "shelf": "lamps"
+  },
+  "photo-frame-a": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "photo-frame-b": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "photo-frame-c": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "photo-frame-d": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "picture-small-a": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "picture-small-b": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "picture-small-c": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "shelf": "personal"
+  },
+  "paper": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "papers": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "paper-stack": {
+   "facing": "any",
+   "size": [
+    32,
+    48
+   ],
+   "shelf": "personal"
+  },
+  "monitor-back-dark": {
+   "facing": "back",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitor-back-white": {
+   "facing": "back",
+   "size": [
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitor-back-small": {
+   "facing": "back",
+   "size": [
+    32,
+    48
+   ],
+   "shelf": "tech"
+  },
+  "monitor-back-small-white": {
+   "facing": "back",
+   "size": [
+    32,
+    48
+   ],
+   "shelf": "tech"
+  }
+ },
+ "chairs": {
+  "front": [
+   {
+    "item": "chair-black-back",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 48
+   },
+   {
+    "item": "chair-black-mesh-back",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 48
+   },
+   {
+    "item": "chair-tan-back",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 48
+   },
+   {
+    "item": "chair-tan-mesh-back",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 48
+   }
+  ],
+  "back": [
+   {
+    "item": "chair-black-mesh",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 56
+   },
+   {
+    "item": "chair-black",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 56
+   },
+   {
+    "item": "chair-tan-mesh",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 56
+   },
+   {
+    "item": "chair-tan",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 56
+   }
+  ]
+ }
 }

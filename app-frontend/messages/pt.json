@@ -807,6 +807,32 @@
     "claimNote": "Sua mesa atual ficará livre.",
     "claimed": "Reservada"
   },
+  "decorate": {
+    "open": "Decorar",
+    "title": "Decore sua mesa",
+    "close": "Fechar",
+    "things": "Itens",
+    "chair": "Cadeira",
+    "shelf": {
+      "all": "Tudo",
+      "tech": "Tecnologia",
+      "lamps": "Luminárias",
+      "personal": "Pessoal",
+      "setups": "Estações"
+    },
+    "hint": "Escolha algo para sua mesa. Arraste os itens para movê-los.",
+    "swapHint": "Escolha algo para trocar.",
+    "full": "Sua mesa está cheia: tire algo para adicionar mais.",
+    "count": "Itens: {count} de {max}",
+    "undo": "Desfazer",
+    "redo": "Refazer",
+    "reset": "Redefinir",
+    "resetConfirm": "Deixar sua mesa como era?",
+    "cancel": "Cancelar",
+    "done": "Pronto",
+    "remove": "Tirar da mesa",
+    "deselect": "Pronto com isto"
+  },
   "note": {
     "title": "Nota de status",
     "set": "Definir nota de status",

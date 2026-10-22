@@ -3944,7 +3944,7 @@
         "office"
       ],
       "mount": "surface",
-      "facing": "front",
+      "facing": "any",
       "desk": {
         "cols": 1,
         "rows": 2
@@ -4642,6 +4642,1166 @@
       "seats": [],
       "surface": null,
       "notes": "Drawn (art.js): the packs have no office windows."
+    },
+    {
+      "id": "monitor-blue",
+      "name": "Monitor",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_130.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "monitor-blue-left",
+      "name": "Monitor, turned left",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_129.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "monitor-blue-right",
+      "name": "Monitor, turned right",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_131.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "monitor-wide",
+      "name": "Wide monitor",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_133.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "monitors-dual",
+      "name": "Two monitors",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_132.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "monitors-dual-angled",
+      "name": "Two monitors, angled",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_134.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "monitors-dual-dark",
+      "name": "Two dark monitors",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_277.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "laptop-open",
+      "name": "Laptop",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_136.png",
+        "rect": [
+          0,
+          48,
+          32,
+          48
+        ]
+      },
+      "sortY": 48,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "laptop-dark",
+      "name": "Laptop, dark",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_139.png",
+        "rect": [
+          0,
+          48,
+          32,
+          48
+        ]
+      },
+      "sortY": 48,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "laptop-left",
+      "name": "Laptop, turned left",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_135.png",
+        "rect": [
+          0,
+          32,
+          32,
+          64
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "laptop-right",
+      "name": "Laptop, turned right",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_137.png",
+        "rect": [
+          0,
+          32,
+          32,
+          64
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "keyboard",
+      "name": "Keyboard",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_120.png",
+        "rect": [
+          0,
+          80,
+          32,
+          16
+        ]
+      },
+      "sortY": 16,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "keyboard-dark",
+      "name": "Keyboard, dark",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_128.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "tower-light",
+      "name": "Computer, light",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_279.png",
+        "rect": [
+          0,
+          48,
+          32,
+          48
+        ]
+      },
+      "sortY": 48,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "tower-dark",
+      "name": "Computer, dark",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_280.png",
+        "rect": [
+          0,
+          48,
+          32,
+          48
+        ]
+      },
+      "sortY": 48,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "microphone",
+      "name": "Microphone",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_272.png",
+        "rect": [
+          0,
+          64,
+          16,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "phone-desk",
+      "name": "Desk phone",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_119.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "phone-grey",
+      "name": "Phone, grey",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_273.png",
+        "rect": [
+          0,
+          48,
+          32,
+          48
+        ]
+      },
+      "sortY": 48,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "phone-dark",
+      "name": "Phone, dark",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_274.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "printer-small",
+      "name": "Small printer",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_148.png",
+        "rect": [
+          0,
+          32,
+          32,
+          64
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "printer-white",
+      "name": "Printer, white",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_151.png",
+        "rect": [
+          0,
+          32,
+          32,
+          64
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "lamp-black-left",
+      "name": "Lamp, black",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_141.png",
+        "rect": [
+          0,
+          32,
+          32,
+          64
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "lamps"
+    },
+    {
+      "id": "lamp-black-right",
+      "name": "Lamp, black, turned",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_143.png",
+        "rect": [
+          0,
+          32,
+          32,
+          64
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "lamps"
+    },
+    {
+      "id": "lamp-grey-left",
+      "name": "Lamp, grey",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_142.png",
+        "rect": [
+          0,
+          32,
+          32,
+          64
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "lamps"
+    },
+    {
+      "id": "lamp-white-left",
+      "name": "Lamp, white",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_144.png",
+        "rect": [
+          0,
+          32,
+          32,
+          64
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "lamps"
+    },
+    {
+      "id": "lamp-white-right",
+      "name": "Lamp, white, turned",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_146.png",
+        "rect": [
+          0,
+          32,
+          32,
+          64
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "lamps"
+    },
+    {
+      "id": "photo-frame-a",
+      "name": "Photo frame",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_157.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "personal"
+    },
+    {
+      "id": "photo-frame-b",
+      "name": "Photo frame, sunny",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_158.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "personal"
+    },
+    {
+      "id": "photo-frame-c",
+      "name": "Photo frame, warm",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_159.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "personal"
+    },
+    {
+      "id": "photo-frame-d",
+      "name": "Photo frame, gold",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_160.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "personal"
+    },
+    {
+      "id": "picture-small-a",
+      "name": "Small picture",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_161.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "personal"
+    },
+    {
+      "id": "picture-small-b",
+      "name": "Small picture, yellow",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_162.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "personal"
+    },
+    {
+      "id": "picture-small-c",
+      "name": "Small picture, colourful",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_163.png",
+        "rect": [
+          0,
+          48,
+          32,
+          48
+        ]
+      },
+      "sortY": 48,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "personal"
+    },
+    {
+      "id": "paper",
+      "name": "Paper",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_153.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "personal"
+    },
+    {
+      "id": "papers",
+      "name": "Papers",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_154.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "personal"
+    },
+    {
+      "id": "paper-stack",
+      "name": "Stack of papers",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_155.png",
+        "rect": [
+          0,
+          48,
+          32,
+          48
+        ]
+      },
+      "sortY": 48,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "personal"
+    },
+    {
+      "id": "monitor-back-dark",
+      "name": "Monitor, from behind",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_121.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "back",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "monitor-back-white",
+      "name": "White monitor, from behind",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_125.png",
+        "rect": [
+          0,
+          64,
+          32,
+          32
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "back",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "monitor-back-small",
+      "name": "Small monitor, from behind",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_122.png",
+        "rect": [
+          0,
+          48,
+          32,
+          48
+        ]
+      },
+      "sortY": 48,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "back",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "tech"
+    },
+    {
+      "id": "monitor-back-small-white",
+      "name": "Small white monitor, from behind",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_126.png",
+        "rect": [
+          0,
+          48,
+          32,
+          48
+        ]
+      },
+      "sortY": 48,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "back",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "tech"
     }
   ]
 }

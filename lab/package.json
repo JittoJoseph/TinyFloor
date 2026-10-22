@@ -4,9 +4,9 @@
   "type": "module",
   "description": "Local tool for making the floor's items, desks and layouts from the art packs. Not deployed.",
   "scripts": {
-    "start": "node server.mjs",
-    "check": "node check.mjs",
-    "build": "node build.mjs"
+    "start": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON server.mjs",
+    "check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON check.mjs",
+    "build": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON build.mjs"
   },
   "dependencies": {
     "phaser": "catalog:",

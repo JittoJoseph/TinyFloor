@@ -807,6 +807,32 @@
     "claimNote": "지금 자리는 비게 돼요.",
     "claimed": "맡았어요"
   },
+  "decorate": {
+    "open": "꾸미기",
+    "title": "책상 꾸미기",
+    "close": "닫기",
+    "things": "물건",
+    "chair": "의자",
+    "shelf": {
+      "all": "전체",
+      "tech": "기기",
+      "lamps": "조명",
+      "personal": "개인",
+      "setups": "세트"
+    },
+    "hint": "책상에 올릴 것을 고르세요. 끌어서 옮길 수 있어요.",
+    "swapHint": "바꿀 것을 고르세요.",
+    "full": "책상이 가득 찼어요. 무언가를 치워야 더 올릴 수 있어요.",
+    "count": "물건: {count}/{max}",
+    "undo": "실행 취소",
+    "redo": "다시 실행",
+    "reset": "초기화",
+    "resetConfirm": "책상을 처음 상태로 되돌릴까요?",
+    "cancel": "취소",
+    "done": "완료",
+    "remove": "책상에서 치우기",
+    "deselect": "선택 끝내기"
+  },
   "note": {
     "title": "상태 메모",
     "set": "상태 메모 설정",

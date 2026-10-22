@@ -117,6 +117,8 @@ import {
   PinIcon,
   PinOffIcon,
   MinusSignIcon,
+  Undo02Icon,
+  Redo02Icon,
 } from "@hugeicons/core-free-icons";
 
 /*
@@ -259,6 +261,8 @@ export const SquarePen = icon(PencilEdit02Icon, "SquarePen");
 export const Sun = icon(Sun03Icon, "Sun");
 export const TimerOff = icon(TimerOffIcon, "TimerOff");
 export const Trash2 = icon(Delete02Icon, "Trash2");
+export const Undo = icon(Undo02Icon, "Undo");
+export const Redo = icon(Redo02Icon, "Redo");
 export const Unlink = icon(Unlink01Icon, "Unlink");
 export const UserMinus = icon(UserRemove01Icon, "UserMinus");
 export const UserPlus = icon(UserAdd01Icon, "UserPlus");

@@ -25,6 +25,7 @@ import type { ShareResult } from "@/lib/share";
 import { useInvite } from "@/components/app/Invite";
 import { useOfficeMaybe } from "@/components/app/OfficeShell";
 import { FloorPrompt } from "./FloorPrompt";
+import { DecoratePanel } from "./DecoratePanel";
 import { FLOOR_ARRIVED_EVENT, floorRequested, sinceFloorRequested, useFloor } from "@/lib/floor";
 import { track } from "@/lib/analytics";
 import { EASE_OUT } from "@/lib/ease";
@@ -265,6 +266,7 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
       <MeetingMini />
       <MeetingAudio />
       <WhiteboardOverlay />
+      <DecoratePanel />
 
       <ControlBar settingsHref={settingsHref} />
     </div>

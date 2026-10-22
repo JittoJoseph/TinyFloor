@@ -807,6 +807,32 @@
     "claimNote": "Nykyinen työpisteesi vapautuu.",
     "claimed": "Varattu"
   },
+  "decorate": {
+    "open": "Sisusta",
+    "title": "Sisusta työpöytäsi",
+    "close": "Sulje",
+    "things": "Esineet",
+    "chair": "Tuoli",
+    "shelf": {
+      "all": "Kaikki",
+      "tech": "Tekniikka",
+      "lamps": "Valaisimet",
+      "personal": "Omat",
+      "setups": "Työpisteet"
+    },
+    "hint": "Valitse jotain työpöydällesi. Siirrä esineitä vetämällä.",
+    "swapHint": "Valitse jotain, millä vaihtaa se.",
+    "full": "Työpöytäsi on täynnä: poista jotain lisätäksesi.",
+    "count": "Esineet: {count}/{max}",
+    "undo": "Kumoa",
+    "redo": "Tee uudelleen",
+    "reset": "Palauta",
+    "resetConfirm": "Palautetaanko työpöytä alkuperäiseksi?",
+    "cancel": "Peruuta",
+    "done": "Valmis",
+    "remove": "Poista pöydältä",
+    "deselect": "Valmis tämän kanssa"
+  },
   "note": {
     "title": "Tilaviesti",
     "set": "Aseta tilaviesti",

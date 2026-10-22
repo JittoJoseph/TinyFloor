@@ -807,6 +807,32 @@
     "claimNote": "Ditt nuvarande skrivbord blir ledigt.",
     "claimed": "Tagen"
   },
+  "decorate": {
+    "open": "Inred",
+    "title": "Inred ditt skrivbord",
+    "close": "Stäng",
+    "things": "Saker",
+    "chair": "Stol",
+    "shelf": {
+      "all": "Alla",
+      "tech": "Teknik",
+      "lamps": "Lampor",
+      "personal": "Personligt",
+      "setups": "Arbetsplatser"
+    },
+    "hint": "Välj något att ställa på skrivbordet. Dra saker för att flytta dem.",
+    "swapHint": "Välj något att byta ut det mot.",
+    "full": "Skrivbordet är fullt: ta bort något för att lägga till mer.",
+    "count": "Saker: {count} av {max}",
+    "undo": "Ångra",
+    "redo": "Gör om",
+    "reset": "Återställ",
+    "resetConfirm": "Återställa skrivbordet som det var?",
+    "cancel": "Avbryt",
+    "done": "Klar",
+    "remove": "Ta bort från skrivbordet",
+    "deselect": "Klar med den"
+  },
   "note": {
     "title": "Statusnotis",
     "set": "Ange en statusnotis",

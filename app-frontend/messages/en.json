@@ -807,6 +807,32 @@
     "claimNote": "Your current desk will be freed.",
     "claimed": "Claimed"
   },
+  "decorate": {
+    "open": "Decorate",
+    "title": "Decorate your desk",
+    "close": "Close",
+    "things": "Things",
+    "chair": "Chair",
+    "shelf": {
+      "all": "All",
+      "tech": "Tech",
+      "lamps": "Lamps",
+      "personal": "Personal",
+      "setups": "Setups"
+    },
+    "hint": "Pick something to put on your desk. Drag things to move them.",
+    "swapHint": "Pick something to swap it for.",
+    "full": "Your desk is full: take something off to add more.",
+    "count": "Things: {count} of {max}",
+    "undo": "Undo",
+    "redo": "Redo",
+    "reset": "Reset",
+    "resetConfirm": "Put your desk back as it came?",
+    "cancel": "Cancel",
+    "done": "Done",
+    "remove": "Take off the desk",
+    "deselect": "Done with this"
+  },
   "note": {
     "title": "Status note",
     "set": "Set a status note",

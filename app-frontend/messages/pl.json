@@ -807,6 +807,32 @@
     "claimNote": "Twoje obecne biurko zostanie zwolnione.",
     "claimed": "Zajęte"
   },
+  "decorate": {
+    "open": "Urządź",
+    "title": "Urządź swoje biurko",
+    "close": "Zamknij",
+    "things": "Rzeczy",
+    "chair": "Krzesło",
+    "shelf": {
+      "all": "Wszystko",
+      "tech": "Sprzęt",
+      "lamps": "Lampy",
+      "personal": "Osobiste",
+      "setups": "Stanowiska"
+    },
+    "hint": "Wybierz coś na biurko. Przeciągaj rzeczy, aby je przesunąć.",
+    "swapHint": "Wybierz coś, na co to zamienić.",
+    "full": "Biurko jest pełne: zdejmij coś, aby dodać więcej.",
+    "count": "Rzeczy: {count} z {max}",
+    "undo": "Cofnij",
+    "redo": "Ponów",
+    "reset": "Przywróć",
+    "resetConfirm": "Przywrócić biurko do stanu początkowego?",
+    "cancel": "Anuluj",
+    "done": "Gotowe",
+    "remove": "Zdejmij z biurka",
+    "deselect": "Gotowe z tym"
+  },
   "note": {
     "title": "Notatka statusu",
     "set": "Ustaw notatkę statusu",

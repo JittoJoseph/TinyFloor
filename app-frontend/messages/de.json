@@ -807,6 +807,32 @@
     "claimNote": "Dein jetziger Platz wird frei.",
     "claimed": "Beansprucht"
   },
+  "decorate": {
+    "open": "Einrichten",
+    "title": "Schreibtisch einrichten",
+    "close": "Schließen",
+    "things": "Dinge",
+    "chair": "Stuhl",
+    "shelf": {
+      "all": "Alle",
+      "tech": "Technik",
+      "lamps": "Lampen",
+      "personal": "Persönlich",
+      "setups": "Arbeitsplätze"
+    },
+    "hint": "Wähle etwas für deinen Schreibtisch. Ziehe Dinge, um sie zu verschieben.",
+    "swapHint": "Wähle etwas zum Austauschen.",
+    "full": "Dein Schreibtisch ist voll: Nimm etwas weg, um mehr hinzuzufügen.",
+    "count": "Dinge: {count} von {max}",
+    "undo": "Rückgängig",
+    "redo": "Wiederholen",
+    "reset": "Zurücksetzen",
+    "resetConfirm": "Schreibtisch auf den Ursprungszustand zurücksetzen?",
+    "cancel": "Abbrechen",
+    "done": "Fertig",
+    "remove": "Vom Schreibtisch nehmen",
+    "deselect": "Fertig damit"
+  },
   "note": {
     "title": "Statusnotiz",
     "set": "Statusnotiz festlegen",

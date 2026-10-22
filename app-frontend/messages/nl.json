@@ -807,6 +807,32 @@
     "claimNote": "Je huidige bureau komt dan vrij.",
     "claimed": "Geclaimd"
   },
+  "decorate": {
+    "open": "Inrichten",
+    "title": "Je bureau inrichten",
+    "close": "Sluiten",
+    "things": "Spullen",
+    "chair": "Stoel",
+    "shelf": {
+      "all": "Alles",
+      "tech": "Techniek",
+      "lamps": "Lampen",
+      "personal": "Persoonlijk",
+      "setups": "Werkplekken"
+    },
+    "hint": "Kies iets voor je bureau. Sleep spullen om ze te verplaatsen.",
+    "swapHint": "Kies iets om het mee te ruilen.",
+    "full": "Je bureau is vol: haal iets weg om meer toe te voegen.",
+    "count": "Spullen: {count} van {max}",
+    "undo": "Ongedaan maken",
+    "redo": "Opnieuw",
+    "reset": "Herstellen",
+    "resetConfirm": "Je bureau terugzetten zoals het was?",
+    "cancel": "Annuleren",
+    "done": "Klaar",
+    "remove": "Van het bureau halen",
+    "deselect": "Klaar hiermee"
+  },
   "note": {
     "title": "Statusnotitie",
     "set": "Statusnotitie instellen",

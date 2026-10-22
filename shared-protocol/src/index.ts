@@ -2,6 +2,7 @@ export * from "./admin";
 export * from "./chat";
 export * from "./lobby";
 export * from "./map";
+export * from "./office";
 export * from "./messages";
 export * from "./profile";
 export * from "./push";

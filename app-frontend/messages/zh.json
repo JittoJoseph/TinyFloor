@@ -807,6 +807,32 @@
     "claimNote": "你当前的工位将被释放。",
     "claimed": "已认领"
   },
+  "decorate": {
+    "open": "装饰",
+    "title": "装饰你的工位",
+    "close": "关闭",
+    "things": "物品",
+    "chair": "椅子",
+    "shelf": {
+      "all": "全部",
+      "tech": "科技",
+      "lamps": "台灯",
+      "personal": "个人",
+      "setups": "整套"
+    },
+    "hint": "选择要放在桌上的东西，拖动即可移动。",
+    "swapHint": "选择要替换成的东西。",
+    "full": "桌面已满：拿走一些才能再放。",
+    "count": "物品：{count}/{max}",
+    "undo": "撤销",
+    "redo": "重做",
+    "reset": "重置",
+    "resetConfirm": "要把工位恢复原样吗？",
+    "cancel": "取消",
+    "done": "完成",
+    "remove": "从桌上拿走",
+    "deselect": "完成选择"
+  },
   "note": {
     "title": "状态备注",
     "set": "设置状态备注",

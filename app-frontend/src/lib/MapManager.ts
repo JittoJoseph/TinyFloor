@@ -3,7 +3,9 @@ import { NavGrid, Rect } from "./Navigation";
 import { TILE_SIZE } from "@/lib/types";
 import { FLOOR_FILES } from "@/lib/floorWarmup";
 import { FLOOR } from "@shared/map";
+import { officePieces, type OfficePiece } from "@shared/office";
 import { paintShell } from "@shared/shell";
+import { pieceChanges, subscribePieces } from "./pieces";
 import atlas from "@shared/catalog/atlas.json";
 
 export interface MapAnchor {
@@ -39,15 +41,20 @@ const WALLS = "floor-walls";
  * The floor: the Startup template as the lab worked it out (shared-protocol
  * map.ts, FLOOR). Its walls and floors are drawn once, here, from the room
  * builder sheet; everything on them is a frame of the catalog's atlas, at the
- * depth the lab gave it; what you can't walk through, the chairs and the
- * spots the floor keeps (the meeting room, its table, the whiteboard) are
- * read as they are.
+ * depth the lab gave it, with what people have made of their desks applied
+ * (lib/pieces.ts) and drawn again, piece by piece, as that changes; what you
+ * can't walk through, the chairs and the spots the floor keeps (the meeting
+ * room, its table, the whiteboard) are read as they are.
  */
 export class MapManager {
   private scene: Phaser.Scene;
   private solidRects: Rect[] = [];
   private nav!: NavGrid;
   private chairSpecs: ChairSpec[] = [];
+  /** Each piece's picture, by its key, and the pieces as they're drawn now. */
+  private images = new Map<string, Phaser.GameObjects.Image>();
+  private pieces: OfficePiece[] = [];
+  private unsubscribe?: () => void;
 
   constructor(scene: Phaser.Scene) {
     this.scene = scene;
@@ -61,6 +68,7 @@ export class MapManager {
   create() {
     this.drawWalls();
     this.drawPieces();
+    this.unsubscribe = subscribePieces(() => this.drawPieces());
     this.readChairs();
     this.solidRects = FLOOR.solids.map(([x, y, width, height]) => ({ x, y, width, height }));
     this.nav = new NavGrid(this.solidRects);
@@ -82,16 +90,49 @@ export class MapManager {
     this.scene.add.image(0, 0, WALLS).setOrigin(0, 0).setDepth(0);
   }
 
-  /** Everything on the floor, each a frame of the atlas, drawn from its top left at its depth. */
+  /**
+   * Everything on the floor, each a frame of the atlas, drawn from its top left
+   * at its depth. Drawn again whenever a desk changes: a piece keeps its
+   * picture and is only moved or given another frame; one gone is taken away.
+   */
   private drawPieces() {
     const texture = this.scene.textures.get(ITEMS);
     const frames = atlas.frames as unknown as Record<string, [number, number, number, number]>;
-    for (const piece of FLOOR.pieces) {
+    this.pieces = officePieces(pieceChanges());
+    const seen = new Set<string>();
+    for (const piece of this.pieces) {
       const frame = frames[piece.item];
       if (!frame) continue;
       if (!texture.has(piece.item)) texture.add(piece.item, 0, ...frame);
-      this.scene.add.image(piece.x, piece.y, ITEMS, piece.item).setOrigin(0, 0).setDepth(piece.depth);
+      seen.add(piece.key);
+      const image = this.images.get(piece.key) ?? this.scene.add.image(0, 0, ITEMS, piece.item).setOrigin(0, 0);
+      this.images.set(piece.key, image);
+      if (image.frame.name !== piece.item) image.setFrame(piece.item);
+      image.setPosition(piece.x, piece.y).setDepth(piece.depth);
     }
+    for (const [key, image] of this.images) {
+      if (seen.has(key)) continue;
+      image.destroy();
+      this.images.delete(key);
+    }
+  }
+
+  /** Every piece back where the office has it (a drag let go of somewhere it can't stand). */
+  refresh() {
+    this.drawPieces();
+  }
+
+  /** The pieces as they're drawn now, and each one's picture: what decorating picks up and moves. */
+  getPieces(): readonly OfficePiece[] {
+    return this.pieces;
+  }
+
+  getImage(key: string): Phaser.GameObjects.Image | undefined {
+    return this.images.get(key);
+  }
+
+  destroy() {
+    this.unsubscribe?.();
   }
 
   /**

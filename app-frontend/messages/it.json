@@ -807,6 +807,32 @@
     "claimNote": "La tua scrivania attuale verrà liberata.",
     "claimed": "Presa"
   },
+  "decorate": {
+    "open": "Arreda",
+    "title": "Arreda la tua scrivania",
+    "close": "Chiudi",
+    "things": "Oggetti",
+    "chair": "Sedia",
+    "shelf": {
+      "all": "Tutto",
+      "tech": "Tecnologia",
+      "lamps": "Lampade",
+      "personal": "Personale",
+      "setups": "Postazioni"
+    },
+    "hint": "Scegli qualcosa per la tua scrivania. Trascina gli oggetti per spostarli.",
+    "swapHint": "Scegli qualcosa con cui sostituirlo.",
+    "full": "La scrivania è piena: togli qualcosa per aggiungerne altri.",
+    "count": "Oggetti: {count} su {max}",
+    "undo": "Annulla",
+    "redo": "Ripeti",
+    "reset": "Ripristina",
+    "resetConfirm": "Rimettere la scrivania com'era?",
+    "cancel": "Annulla",
+    "done": "Fatto",
+    "remove": "Togli dalla scrivania",
+    "deselect": "Fatto con questo"
+  },
   "note": {
     "title": "Nota di stato",
     "set": "Imposta una nota di stato",

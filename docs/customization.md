@@ -139,7 +139,7 @@ An item is everything the floor needs to know about one thing:
 
 A **bundle** is items placed and moved together, a part sometimes a slot of
 interchangeable items. A **cluster** is a bank of desks made to measure (next
-section). The catalog (`shared-protocol/src/catalog/items.json`) has 64:
+section). The catalog (`shared-protocol/src/catalog/items.json`) has 127:
 desk banks in four finishes, two meeting tables, chairs, sofas, egg chairs,
 a bench, plants, shelves, kitchen and tech pieces, desk things, rugs, windows
 and pictures. What making them taught us:
@@ -252,7 +252,8 @@ piece's key:
 - `{ at: [x, y] }`: moved;
 - `{ item }`: swapped for another item that fits (same mount; for a desk
   thing, the same desk side and room on the desk);
-- a new piece, `{ item, at, host? }`, under a new key of its own.
+- a new piece, `{ item, at }`, under a new key of its own (on a desk,
+  `<desk>/+<id>`, so the key says which desk it's on).
 
 One function turns a template and its changes into the floor (pieces with
 keys, depth, seats, colliders). It lives in `shared-protocol`, so the lab,
@@ -262,8 +263,9 @@ milliseconds.
 **Who changes what:**
 
 - **Your desk**, once it's yours: the things on it (move along it, swap, take
-  away, add, up to six), its chair (any office chair; a desk always has
-  one) and its finish. The server checks that the piece is hosted on the desk you hold.
+  away, add, up to eight), its chair (any office chair; a desk always has
+  one) and its finish. The room checks that the piece is on the desk you hold
+  and that the thing fits there, with the same function the app uses.
 - **Admins**: the furniture. Move, add and take away tables, sofas, plants,
   wall pieces and desk banks, and put any piece back to the template's. Walls
   and floors stay as the template has them, so every room and doorway stays
@@ -272,7 +274,7 @@ milliseconds.
 - **Letting a desk go** (or leaving the team) puts its things back to the
   template's: the next person gets a clean desk.
 
-**Limits**, so every office stays light on a phone: six things a desk, 300
+**Limits**, so every office stays light on a phone: eight things a desk, 300
 pieces added to an office, a few edits a second per person.
 
 ## Serving it
@@ -284,15 +286,21 @@ pieces added to an office, a few edits a second per person.
   Nothing on the floor's hot path touches D1.
 - **Changes** live where the desks already do: in the office's room (its
   Durable Object's SQLite), one row per changed piece
-  (`key, change, by, at`), and a revision number. The room is the one writer
-  for its office, so two people changing things never race.
-- **Arriving**, the welcome message carries the revision and every change (a
-  few kilobytes for a busy office); the client works the floor out and draws
-  it. Reconnecting with the same revision skips them.
-- **Changing**, the client sends `{ key, change }`; the room checks who may
-  change it and that it fits, writes the row, and sends `{ rev, key, change }`
-  to everyone there. Each client redraws that one piece. So a coworker's desk
-  changes while you watch, and anyone arriving later sees it as it is.
+  (`key, desk, change, by, at`). The room is the one writer for its office,
+  so two people changing things never race.
+- **Arriving**, the welcome message carries every change (a few kilobytes for
+  a busy office, nothing for an untouched one); the client works the floor out
+  and draws it.
+- **Changing**, the client sends `{ key, change }` (or nothing, to put the
+  piece back); the room checks who may change it and that it fits, writes the
+  row, and sends `{ key, change, by }` to everyone there. Each client redraws
+  only the pieces that differ. So a coworker's desk changes while you watch,
+  and anyone arriving later sees it as it is. Resetting a desk, letting it go
+  or leaving the team deletes its rows and sends the office's changes again.
+- **Pacing**: the room takes a few actions a second from each person; the
+  client sends one change at a time, about four a second, and a change still
+  waiting is replaced by a newer one to the same piece, so dragging and
+  undoing quickly never trips the limit.
 - **Seats** are numbered by the tile they're on, on every floor (the
   hand-made map numbered its chairs by tile too), and each keeps its piece's
   key beside it; where you arrive for each desk is worked out when a
@@ -313,12 +321,35 @@ bottleneck.
 
 ## Your desk
 
-Claimed by sitting at a free one (as today). Then, sitting there, **Arrange**
-shows the desk's things with a handle each: drag it along the desk, swap it
-for something else that fits that side, take it away, or add from the desk
-things that suit it; the chair has its own picker; **Reset** puts the
-template's back. Coworkers see it as you do it. Everything is chosen on the
-floor, at the desk, never in a separate editor.
+Claimed by sitting at a free one (as today). Then **Decorate** (above the
+dock when you sit at your desk, or in your menu) brings the camera in to the
+desk, outlines where things can go, and opens a panel beside it (a sheet
+under it on a phone):
+
+- **Things**: what suits the desk's side, on shelves (tech, lamps, personal,
+  setups). Picking one puts it in the first free spot; with a thing selected,
+  picking swaps it.
+- **On the desk**: click a thing to select it (by its own pixels, the front
+  one first); drag it along the desk, snapped to the art's pixels and kept to
+  the desk, red where it can't stand (over the chair); its trash button or
+  Delete takes it away.
+- **Chair**: the office chairs, front or back views to suit the side.
+- **Undo, redo** (Ctrl+Z, Ctrl+Y), **Reset** after a confirm, **Done**.
+
+Coworkers see each change as it's made. Everything is chosen on the floor, at
+the desk, never in a separate editor.
+
+What the desk things are: 40 from the office pack's singles (monitors and
+monitor setups in several colours, laptops, keyboards, lamps facing either
+way, phones, photo frames, mugs, books, papers, a desk plant), and the backs
+of monitors for far desks. Each has which side of a desk it suits, its size,
+and its shelf; none is used by the lab's generators, so templates stay as
+they were.
+
+Where a thing may stand, worked out when a template is built and kept per
+desk: along the desk's length, its foot in a band near the front of the desk
+(near side) or along its back strip (far side), and on a near desk clear of
+the column above the chair, so an empty chair is never covered.
 
 ## Weight
 
@@ -339,7 +370,7 @@ every top wall furnished with windows and things in turn, the whiteboard's
 spot kept clear; plants by every bank.
 
 What the app loads for it: the room builder sheet (14 KB), which it draws the
-walls and floors from, and the catalog's atlas (91 KB), which everything else
+walls and floors from, and the catalog's atlas (108 KB), which everything else
 is a frame of; the floor file comes with the code (17 KB, a few compressed).
 The hand-made map took the room builder sheet, the office sheet (110 KB), the
 chairs and the map itself.
@@ -390,7 +421,7 @@ there, and it is the only way art reaches the floor:
    a new version only when something changed.
 5. **Build**: `pnpm --dir lab build` bakes every drawn item, and every desk
    row the templates' banks need, into one atlas in `private-assets/catalog/`
-   (85 items, 91 KB), writes where each one is to
+   (125 pictures, 108 KB), writes where each one is to
    `shared-protocol/src/catalog/atlas.json`, records the atlas in the asset
    manifest, and works each template out into `floors/<id>.json` for the
    floor.
@@ -410,7 +441,8 @@ Each step ships on its own and needs the one before it:
    needs; the app draws Startup from it instead of the hand-made map; the
    room's desks come from it, and claims move over once. The walls' drawing
    is one function in `shared-protocol` that both use.
-3. **Your desk.** Changes in the room, Arrange at your desk, reset when it's let go.
+3. **Your desk** (done). Changes in the room, Decorate at your desk, reset
+   when it's let go.
 4. **Characters.** The creator, the look on the profile, the premades.
 5. **Furnishing for admins.** Move, add and take away furniture; put back.
 6. **More themes**, on the same floor plan.

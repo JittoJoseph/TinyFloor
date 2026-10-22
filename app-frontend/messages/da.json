@@ -807,6 +807,32 @@
     "claimNote": "Dit nuværende skrivebord bliver ledigt.",
     "claimed": "Taget"
   },
+  "decorate": {
+    "open": "Indret",
+    "title": "Indret dit skrivebord",
+    "close": "Luk",
+    "things": "Ting",
+    "chair": "Stol",
+    "shelf": {
+      "all": "Alle",
+      "tech": "Teknik",
+      "lamps": "Lamper",
+      "personal": "Personligt",
+      "setups": "Opsætninger"
+    },
+    "hint": "Vælg noget at stille på dit skrivebord. Træk i tingene for at flytte dem.",
+    "swapHint": "Vælg noget at bytte det ud med.",
+    "full": "Dit skrivebord er fyldt: fjern noget for at tilføje mere.",
+    "count": "Ting: {count} af {max}",
+    "undo": "Fortryd",
+    "redo": "Gentag",
+    "reset": "Nulstil",
+    "resetConfirm": "Sæt dit skrivebord tilbage, som det var?",
+    "cancel": "Annuller",
+    "done": "Færdig",
+    "remove": "Fjern fra skrivebordet",
+    "deselect": "Færdig med den"
+  },
   "note": {
     "title": "Statusnote",
     "set": "Sæt en statusnote",

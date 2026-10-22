@@ -801,12 +801,7 @@
     "keepPro": "Pidä Pro"
   },
   "desk": {
-    "claim": "Varaa tämä työpiste",
-    "notNow": "Ei nyt",
-    "yours": "Työpisteesi",
-    "claimAsk": "Varataanko tämä työpiste? Nykyinen työpisteesi vapautuu.",
     "claimConfirm": "Varaa",
-    "keepMine": "Pidä omani",
     "goTo": "Mene työpisteellesi",
     "claimTitle": "Varataanko tämä työpiste?",
     "claimNote": "Nykyinen työpisteesi vapautuu.",

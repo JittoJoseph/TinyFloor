@@ -801,12 +801,7 @@
     "keepPro": "Pro behalten"
   },
   "desk": {
-    "claim": "Diesen Platz beanspruchen",
-    "notNow": "Nicht jetzt",
-    "yours": "Dein Schreibtisch",
-    "claimAsk": "Diesen Platz beanspruchen? Dein jetziger Platz wird frei.",
     "claimConfirm": "Beanspruchen",
-    "keepMine": "Meinen Platz behalten",
     "goTo": "Zu deinem Platz",
     "claimTitle": "Diesen Platz beanspruchen?",
     "claimNote": "Dein jetziger Platz wird frei.",

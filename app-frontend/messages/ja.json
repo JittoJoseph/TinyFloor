@@ -801,12 +801,7 @@
     "keepPro": "Proを続ける"
   },
   "desk": {
-    "claim": "このデスクを確保",
-    "notNow": "今はしない",
-    "yours": "あなたのデスク",
-    "claimAsk": "このデスクを確保しますか?今のデスクは空きになります。",
     "claimConfirm": "確保",
-    "keepMine": "今のデスクのまま",
     "goTo": "自分のデスクへ",
     "claimTitle": "このデスクを確保しますか?",
     "claimNote": "今のデスクは空きになります。",

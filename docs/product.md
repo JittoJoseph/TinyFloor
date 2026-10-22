@@ -43,8 +43,9 @@ work happens. What we don't build, though each would raise usage numbers:
   available, and the feeling comes from choosing and using it (psychological
   ownership; the endowment and IKEA effects). A desk is a home base, and
   being at it or away says whether you're available. So: you claim a desk, by walking to it. A free desk offers
-  "Claim desk" only when it's near and the one you mean: you're at its chair
-  (the outlined one), or pointing at it from a few steps away; from across
+  "Claim desk" only when it's near and the one you mean: you're sitting at it
+  or at its chair (the outlined one), or pointing at it from a few steps
+  away; never as a prompt above the dock; from across
   the room it's somewhere to walk to first, so nobody claims a desk by
   accident. The chip sits on the desk, clear of your head and name: just
   under a chair north of its desk, at the back of a desk south of its chair.
@@ -243,7 +244,7 @@ missing features on the map.
 ## What's at hand on the floor, and the whiteboard (21 October)
 
 - **One prompt for what you can do where you stand**: sit, stand up, open the
-  whiteboard. The nearest wins, E does it, and the prompt is a pill above the
+  whiteboard. Never desks: those are claimed on the desk itself. The nearest wins, E does it, and the prompt is a pill above the
   dock, a button for a finger. It used to be a label drawn on the map, in the
   same dark pill as name tags, stacked under your own and moving with the way
   a chair faced.

@@ -801,12 +801,7 @@
     "keepPro": "Behold Pro"
   },
   "desk": {
-    "claim": "Tag dette skrivebord",
-    "notNow": "Ikke nu",
-    "yours": "Dit skrivebord",
-    "claimAsk": "Tag dette skrivebord? Dit nuværende skrivebord bliver ledigt.",
     "claimConfirm": "Tag det",
-    "keepMine": "Behold mit",
     "goTo": "Gå til dit skrivebord",
     "claimTitle": "Tag dette skrivebord?",
     "claimNote": "Dit nuværende skrivebord bliver ledigt.",

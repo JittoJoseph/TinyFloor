@@ -801,12 +801,7 @@
     "keepPro": "Pro houden"
   },
   "desk": {
-    "claim": "Dit bureau claimen",
-    "notNow": "Niet nu",
-    "yours": "Je bureau",
-    "claimAsk": "Dit bureau claimen? Je huidige bureau komt dan vrij.",
     "claimConfirm": "Claimen",
-    "keepMine": "Mijn bureau houden",
     "goTo": "Naar je bureau",
     "claimTitle": "Dit bureau claimen?",
     "claimNote": "Je huidige bureau komt dan vrij.",

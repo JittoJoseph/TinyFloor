@@ -801,12 +801,7 @@
     "keepPro": "Manter o Pro"
   },
   "desk": {
-    "claim": "Reservar esta mesa",
-    "notNow": "Agora não",
-    "yours": "Sua mesa",
-    "claimAsk": "Reservar esta mesa? Sua mesa atual ficará livre.",
     "claimConfirm": "Reservar",
-    "keepMine": "Manter a minha",
     "goTo": "Ir para sua mesa",
     "claimTitle": "Reservar esta mesa?",
     "claimNote": "Sua mesa atual ficará livre.",

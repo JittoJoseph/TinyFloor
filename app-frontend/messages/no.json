@@ -801,12 +801,7 @@
     "keepPro": "Behold Pro"
   },
   "desk": {
-    "claim": "Ta denne pulten",
-    "notNow": "Ikke nå",
-    "yours": "Pulten din",
-    "claimAsk": "Ta denne pulten? Den nåværende pulten din blir ledig.",
     "claimConfirm": "Ta den",
-    "keepMine": "Behold min",
     "goTo": "Gå til pulten din",
     "claimTitle": "Ta denne pulten?",
     "claimNote": "Den nåværende pulten din blir ledig.",

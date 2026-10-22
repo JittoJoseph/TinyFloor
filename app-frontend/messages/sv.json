@@ -801,12 +801,7 @@
     "keepPro": "Behåll Pro"
   },
   "desk": {
-    "claim": "Ta det här skrivbordet",
-    "notNow": "Inte nu",
-    "yours": "Ditt skrivbord",
-    "claimAsk": "Ta det här skrivbordet? Ditt nuvarande skrivbord blir ledigt.",
     "claimConfirm": "Ta det",
-    "keepMine": "Behåll mitt",
     "goTo": "Gå till ditt skrivbord",
     "claimTitle": "Ta det här skrivbordet?",
     "claimNote": "Ditt nuvarande skrivbord blir ledigt.",

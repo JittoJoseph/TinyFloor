@@ -801,12 +801,7 @@
     "keepPro": "Tieni Pro"
   },
   "desk": {
-    "claim": "Prendi questa scrivania",
-    "notNow": "Non ora",
-    "yours": "La tua scrivania",
-    "claimAsk": "Prendere questa scrivania? La tua scrivania attuale verrà liberata.",
     "claimConfirm": "Prendi",
-    "keepMine": "Tieni la mia",
     "goTo": "Vai alla tua scrivania",
     "claimTitle": "Prendere questa scrivania?",
     "claimNote": "La tua scrivania attuale verrà liberata.",

@@ -293,13 +293,19 @@ pieces added to an office, a few edits a second per person.
   change it and that it fits, writes the row, and sends `{ rev, key, change }`
   to everyone there. Each client redraws that one piece. So a coworker's desk
   changes while you watch, and anyone arriving later sees it as it is.
-- **Seats** are numbered by the tile they're on, and each keeps its piece's
-  key beside it; where you arrive for each desk is worked out when a template
-  is baked and kept with it. When the floor changes, a room moves its claims
-  once (it records which floor its claims are on): each to the free desk
-  nearest the one it was, the earliest claim choosing first, so nobody loses
-  their desk while there are desks to go round. From the hand-made map's 19
-  desks to Startup's 16, that's everyone in an office of up to 16.
+- **Seats** are numbered by the tile they're on, on every floor (the
+  hand-made map numbered its chairs by tile too), and each keeps its piece's
+  key beside it; where you arrive for each desk is worked out when a
+  template is baked and kept with it.
+- **When the floor changes under a claim** (a desk it doesn't have any more,
+  as with every claim on the hand-made map's 19 desks), the room moves the
+  claim as it starts, before anything reads its claims: to the free desk
+  nearest the tile it was on, the earliest claim choosing first, so nobody
+  loses their desk while there are desks to go round (from 19 desks to
+  Startup's 16, everyone in an office of up to 16), and a claim with none
+  left is let go. It needs nothing of the old floor, so there's no old floor
+  kept, no record of which floor a room is on and no script to run over
+  every office: a room with nothing to move only reads its claims.
 
 Per office that's one row in D1, a few kilobytes in its room, and nothing
 else; a thousand offices cost what one does, a thousand times, with no shared

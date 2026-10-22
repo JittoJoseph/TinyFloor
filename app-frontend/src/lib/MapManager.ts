@@ -18,7 +18,8 @@ export interface ChairSpec {
   id: number;
   x: number;
   y: number;
-  direction: "up" | "down" | "left" | "right";
+  /** Which way you face sitting there: never sideways (docs/customization.md). */
+  direction: "up" | "down";
   zone?: string;
 }
 
@@ -47,7 +48,6 @@ export class MapManager {
   private solidRects: Rect[] = [];
   private nav!: NavGrid;
   private chairSpecs: ChairSpec[] = [];
-  private anchors: Record<string, MapAnchor[]> = {};
 
   constructor(scene: Phaser.Scene) {
     this.scene = scene;
@@ -61,7 +61,6 @@ export class MapManager {
   create() {
     this.drawWalls();
     this.drawPieces();
-    this.readAnchors();
     this.readChairs();
     this.solidRects = FLOOR.solids.map(([x, y, width, height]) => ({ x, y, width, height }));
     this.nav = new NavGrid(this.solidRects);
@@ -103,21 +102,25 @@ export class MapManager {
     this.chairSpecs = FLOOR.seats.map((seat) => ({ id: seat.id, x: seat.x, y: seat.y - TILE_SIZE / 2, direction: seat.dir, zone: seat.zone }));
   }
 
-  private readAnchors() {
-    const { zones = [], table, whiteboard } = FLOOR.anchors;
-    this.anchors = {
-      Zones: zones,
-      Table: table ? [{ name: "", ...table }] : [],
-      Whiteboard: whiteboard ? [{ name: "main", ...whiteboard }] : [],
-    };
-  }
-
   getChairs(): ChairSpec[] {
     return this.chairSpecs;
   }
 
-  getAnchors(layer: string): MapAnchor[] {
-    return this.anchors[layer] ?? [];
+  /** A room the floor names (the meeting room is "meeting"). */
+  getZone(name: string): MapAnchor | undefined {
+    return FLOOR.anchors.zones?.find((zone) => zone.name === name);
+  }
+
+  /** The meeting table, which carries the meeting room's tag. */
+  getTable(): MapAnchor | undefined {
+    const table = FLOOR.anchors.table;
+    return table && { name: "table", ...table };
+  }
+
+  /** The whiteboard's place on the wall. */
+  getWhiteboard(): MapAnchor | undefined {
+    const board = FLOOR.anchors.whiteboard;
+    return board && { name: "whiteboard", ...board };
   }
 
   getNavGrid(): NavGrid {

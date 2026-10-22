@@ -127,15 +127,15 @@ class GameScene extends Phaser.Scene {
       this.animationManager,
       this.mapManager.getChairs(),
       this.playerId,
-      this.mapManager.getAnchors("Table")[0],
+      this.mapManager.getTable(),
     );
     const approach = (x: number, y: number, arrive: () => void) => this.movementManager.goTo(x, y, arrive);
     this.seatManager.attach(this.wsManager, (seated) => this.movementManager.setFrozen(seated, () => this.seatManager?.leave()), approach);
-    this.meetingZone = this.mapManager.getAnchors("Zones").find((zone) => zone.name === MEETING_ZONE);
+    this.meetingZone = this.mapManager.getZone(MEETING_ZONE);
 
     callManager.attach(this.wsManager);
     whiteboard.attach(this.wsManager);
-    const board = this.mapManager.getAnchors("Whiteboard")[0];
+    const board = this.mapManager.getWhiteboard();
     if (board) {
       this.whiteboardObject = new WhiteboardObject(this, this.player, board, approach, (id) => this.playerManager.getPlayerName(id));
     }
@@ -251,7 +251,7 @@ class GameScene extends Phaser.Scene {
       .map(({ x, y }) => pixelToTile(x, y));
     const spot = standingSpot({
       zone,
-      table: this.mapManager.getAnchors("Table")[0],
+      table: this.mapManager.getTable(),
       nav: this.mapManager.getNavGrid(),
       chairs: this.mapManager.getChairs(),
       taken,

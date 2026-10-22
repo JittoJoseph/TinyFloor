@@ -1,13 +1,16 @@
 import { runInDurableObject } from "cloudflare:test";
 import { env, exports } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
-import { DESK_SEATS, FLOOR, deskArrival, deskPoint, oldDeskPoint, OLD_DESKS, seatTile } from "../../shared-protocol/src";
+import { DESK_SEATS, FLOOR, deskArrival, seatTile } from "../../shared-protocol/src";
 import { Desks } from "../src/desks";
 import { Client, settle, uniqueRoom } from "./client";
 
 const DESK = DESK_SEATS[0];
 const OTHER_DESK = DESK_SEATS[1];
 const MEETING_CHAIR = FLOOR.seats.find((seat) => seat.zone === "meeting")!.id;
+/** The desks of the hand-made map the Startup template replaced (October 2026), as claims on them were stored. */
+const OLD_DESKS = [404, 410, 548, 554, 658, 664, 802, 808, 981, 987, 1125, 1131, 1159, 1235, 1241, 1253, 1257, 1379, 1385];
+const tilesApart = (a: number, b: number) => Math.hypot(seatTile(a).x - seatTile(b).x, seatTile(a).y - seatTile(b).y);
 
 describe("desks", () => {
   it("lets a member make a desk theirs, and tells everyone", async () => {
@@ -96,14 +99,13 @@ describe("desks", () => {
     expect((await ben.next("desks")).desks).toEqual([]);
   });
 
-  it("moves claims from the old floor to the nearest new desks, earliest first, once", async () => {
+  it("moves claims on desks the floor doesn't have to the nearest free ones, earliest first", async () => {
     const room = uniqueRoom();
     const ava = await Client.open(room, { sub: "ava" });
     await ava.next("welcome");
     await runInDurableObject(env.ROOM.getByName(room), (_room, state) => {
       const sql = state.storage.sql;
       // An office as it was on the hand-made map: every old desk claimed, the first ones first.
-      sql.exec("DELETE FROM floor");
       OLD_DESKS.forEach((seat, n) => sql.exec("INSERT INTO desks (seat, user_id, name, claimed_at) VALUES (?, ?, ?, ?)", seat, `user-${n}`, `Person ${n}`, 1000 + n));
       const moved = new Desks(sql).list();
 
@@ -112,13 +114,19 @@ describe("desks", () => {
       expect(new Set(moved.map((desk) => desk.seat)).size).toBe(moved.length);
       for (const desk of moved) expect(DESK_SEATS).toContain(desk.seat);
       // The earliest claim got the desk nearest its old one; the latest, when there weren't enough, were let go.
-      const first = oldDeskPoint(OLD_DESKS[0]);
-      const nearest = [...DESK_SEATS].sort((a, b) => Math.hypot(deskPoint(a)!.x - first.x, deskPoint(a)!.y - first.y) - Math.hypot(deskPoint(b)!.x - first.x, deskPoint(b)!.y - first.y))[0];
+      const nearest = [...DESK_SEATS].sort((a, b) => tilesApart(a, OLD_DESKS[0]) - tilesApart(b, OLD_DESKS[0]))[0];
       expect(moved.find((desk) => desk.userId === "user-0")?.seat).toBe(nearest);
       expect(moved.some((desk) => desk.userId === `user-${OLD_DESKS.length - 1}`)).toBe(OLD_DESKS.length <= DESK_SEATS.length);
 
-      // Once: the room starting again leaves them where they are.
+      // With every claim on a desk, the room starting again leaves them where they are.
       expect(new Desks(sql).list()).toEqual(moved);
+      // A claim on a desk it has stays put while one beside it moves round it.
+      sql.exec("DELETE FROM desks");
+      sql.exec("INSERT INTO desks (seat, user_id, name, claimed_at) VALUES (?, 'stays', 'Stays', 2), (?, 'moves', 'Moves', 1)", nearest, OLD_DESKS[0]);
+      const after = new Desks(sql).list();
+      expect(after.find((desk) => desk.userId === "stays")?.seat).toBe(nearest);
+      expect(after.find((desk) => desk.userId === "moves")?.seat).not.toBe(nearest);
+      expect(DESK_SEATS).toContain(after.find((desk) => desk.userId === "moves")?.seat);
     });
   });
 

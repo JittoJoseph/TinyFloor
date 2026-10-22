@@ -9,8 +9,6 @@ export const MAP_HEIGHT_TILES = 32;
  * seats are numbered by the tile they're on (row × width + column).
  */
 export const FLOOR = startup as unknown as Floor;
-/** Which template and version the floor is, so a room knows when its desks need moving to it. */
-export const FLOOR_VERSION = `${FLOOR.id}@${FLOOR.version}`;
 
 export interface Floor {
   id: string;
@@ -56,27 +54,9 @@ export function deskArrival(seat: number): { x: number; y: number } | null {
   return tile ? { x: tile[0], y: tile[1] } : null;
 }
 
-/** Where a desk sits, in pixels: for moving a claim to the desk nearest it. */
-export function deskPoint(seat: number): { x: number; y: number } | null {
-  const desk = DESKS.find((one) => one.id === seat);
-  return desk ? { x: desk.x, y: desk.y } : null;
-}
-
 /** The tile a seat is on, from its id. */
 export function seatTile(seat: number): { x: number; y: number } {
   return { x: seat % MAP_WIDTH_TILES, y: Math.floor(seat / MAP_WIDTH_TILES) };
-}
-
-/**
- * The desks of the floor before the Startup template (the hand-made map, to
- * October 2026), by their old ids: each the tile of its chair's lower edge.
- * Kept only so a room can move its claims to the nearest new desk, once.
- */
-export const OLD_DESKS: readonly number[] = [404, 410, 548, 554, 658, 664, 802, 808, 981, 987, 1125, 1131, 1159, 1235, 1241, 1253, 1257, 1379, 1385];
-
-/** Where an old desk's chair stood, in pixels: the middle of the tile above its lower edge. */
-export function oldDeskPoint(seat: number): { x: number; y: number } {
-  return { x: (seat % MAP_WIDTH_TILES) * 32 + 16, y: Math.floor(seat / MAP_WIDTH_TILES) * 32 - 16 };
 }
 
 /** Inside the office walls. Walkability is the client's job; the server only keeps people on the map. */

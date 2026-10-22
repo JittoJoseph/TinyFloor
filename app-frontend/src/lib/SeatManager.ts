@@ -18,11 +18,9 @@ import { DeskPlate } from "./DeskPlate";
  * draw in front of the chair or behind it. Facing away puts you behind the
  * backrest, which is what makes the desk in front read as covering your legs.
  */
-const SEAT: Record<CardinalDirection, { dx: number; dy: number; depth: number; exit: number }> = {
+const SEAT: Record<ChairSpec["direction"], { dx: number; dy: number; depth: number; exit: number }> = {
   down: { dx: 0, dy: -12, depth: -0.5, exit: -54 },
   up: { dx: 0, dy: -32, depth: -2, exit: 20 },
-  left: { dx: 0, dy: -20, depth: 2, exit: 20 },
-  right: { dx: 0, dy: -20, depth: 2, exit: 20 },
 };
 
 const REACH = 56;

@@ -165,34 +165,97 @@ function backRow(finish, cols) {
   });
 }
 
-/** Where on each desk things can go, by side: the near desk's top, and the far desk's strip. */
-export const DESK_SURFACE = { front: { x: 36, w: 184, top: 34, bottom: 62 }, back: { x: 36, w: 184, top: 0, bottom: 26 } };
-
+/**
+ * A bank's desks, chairs and what's on them. Everything is keyed by the
+ * bank's id (place.key) and the desk ("front-1": the near side of the second
+ * desk), and everything random comes from the office's seed and that key, so
+ * a desk stays as it is when others are added, and anyone's device works out
+ * the same desk.
+ *
+ * Laid out the way the current office's desks are: each desk is six tiles
+ * wide; whoever sits there sits a tile left or right of its middle, with their
+ * setup (screens, or a laptop, a lamp and a phone) on the other side, and a
+ * plant, a phone or papers on theirs. On the far side, only the desk's strip
+ * shows: two screens seen from behind in front of whoever sits there, and a
+ * plant's top, papers or another screen along it. A desk's things can be
+ * replaced by its own list (overrides["<key>/<desk>/things"]), which is how a
+ * person's arrangement of their desk is kept.
+ */
 function cluster(byId, item, x, y, choose, place) {
   const { cols, sides } = clusterSize(place.size);
+  const key = place.key ?? `${x},${y}`;
+  const seed = place.seed ?? 0;
+  const overrides = place.overrides ?? {};
   const finish = item.cluster.finish;
   const front = frontRow(finish, cols);
   const back = sides === 2 ? backRow(finish, cols) : null;
   const pieces = [];
-  if (back) pieces.push({ item: back, x, y });
-  pieces.push({ item: front, x, y });
+  if (back) pieces.push({ key: `${key}/back`, item: back, x, y });
+  pieces.push({ key: `${key}/front`, item: front, x, y });
+  const things = [...byId.values()].filter((thing) => thing.desk);
   for (let c = 0; c < cols; c++) {
     const dx = x + c * DESK_STEP;
     for (const side of back ? ["front", "back"] : ["front"]) {
-      const key = `${side}-${c}`;
+      const desk = `${side}-${c}`;
+      const rand = random(`${seed}|${key}|${place.salt ?? 0}|${desk}`);
+      // A tile left or right of the desk's middle: tile 3 or 4 of the six.
+      const sitAt = rand() < 0.5 ? 3 : 4;
       const slot = item.cluster.chairs[side];
-      const { item: chair, dx: sx, dy: sy } = slotted(byId, slot, choose[key] ?? choose[side]);
-      if (chair) pieces.push({ item: chair, x: dx + slot.at[0] + sx, y: y + slot.at[1] + sy, seat: key });
-      const host = side === "front" ? front : back;
-      const area = DESK_SURFACE[side];
-      const things = place.decor?.[key] ?? decorate(byId, side, `${place.seed ?? 0}|${place.key ?? `${x},${y}`}|${place.salt ?? 0}|${key}`);
-      for (const thing of things) {
+      const { item: chair, dy } = slotted(byId, slot, choose[desk] ?? choose[side]);
+      if (chair) pieces.push({ key: `${key}/${desk}/chair`, item: chair, x: dx + sitAt * 32, y: y + slot.at[1] + dy, seat: desk });
+      const list = overrides[`${key}/${desk}/things`]?.things ?? deskThings(things, side, sitAt, rand);
+      list.forEach((thing, n) => {
         const inner = byId.get(thing.item);
-        if (inner) pieces.push({ item: inner, x: dx + area.x + thing.x, y: y + area.top + thing.y, host: host.id, desk: key });
-      }
+        if (!inner) return;
+        // Near desk things stand on its two rows (tiles 1 and 2 down); far ones on its strip (row 0).
+        pieces.push({ key: `${key}/${desk}/things/${n}`, item: inner, x: dx + thing.col * 32, y: y + thing.row * 32, host: `${key}/${side === "front" ? "front" : "back"}`, desk });
+      });
     }
   }
+  // Now and then a plant at a bank's end, standing by the desk.
+  const ends = random(`${seed}|${key}|${place.salt ?? 0}|ends`);
+  const plants = ["plant-tall", "plant-snake", "plant-small"].filter((id) => byId.has(id));
+  for (const [end, ex] of [["left", x - 32], ["right", x + cols * DESK_STEP + 32]]) {
+    if (ends() < 0.45 || !plants.length) continue;
+    const plant = byId.get(plants[Math.floor(ends() * plants.length)]);
+    const [, h] = spriteSize(plant.sprite);
+    pieces.push({ key: `${key}/end-${end}`, item: plant, x: ex, y: y + 92 - h });
+  }
   return pieces;
+}
+
+/**
+ * One desk side's things, in tiles of the desk: [{ item, col, row }]. Near
+ * side: a setup (three tiles) beside the person, small things (a tile) on
+ * the other side, the tile behind their head left clear. Far side: screens in
+ * front of the person, small things along the strip.
+ */
+export function deskThings(things, side, sitAt, rand) {
+  const pick = (list) => list[Math.floor(rand() * list.length)];
+  const of = (cols, rows) => things.filter((t) => t.facing === side && t.desk.cols === cols && t.desk.rows === rows);
+  const out = [];
+  if (side === "front") {
+    const setups = of(3, 2);
+    if (setups.length && rand() < 0.92) out.push({ item: pick(setups).id, col: sitAt === 3 ? 4 : 1, row: 1 });
+    const smallCols = sitAt === 3 ? [1, 2] : [5, 6];
+    for (const col of smallCols) {
+      const roll = rand();
+      if (roll < 0.3) out.push({ item: pick(of(1, 2)).id, col, row: 1 });
+      // Small things stand at the back of the desk, by the divider, not on its front edge.
+      else if (roll < 0.7) out.push({ item: pick(of(1, 1)).id, col, row: 1 });
+    }
+  } else {
+    const screens = of(3, 1);
+    if (screens.length && rand() < 0.8) out.push({ item: pick(screens).id, col: sitAt - 1, row: 0 });
+    else out.push({ item: pick(of(1, 1).filter((t) => /monitor/.test(t.id))).id, col: sitAt, row: 0 });
+    const taken = new Set(out.flatMap((t) => [t.col, t.col + 1, t.col + 2]));
+    for (let col = 1; col <= 6; col++) {
+      if (taken.has(col) || rand() < 0.55) continue;
+      out.push({ item: pick(of(1, 1)).id, col, row: 0 });
+      taken.add(col);
+    }
+  }
+  return out.filter((t) => t.item);
 }
 
 /** A small, fast, seeded random: the same seed gives the same desks, for everyone in the office. */
@@ -207,52 +270,6 @@ export function random(text) {
   };
 }
 
-/**
- * A desk's things, picked from the catalog's desk decor for its side: usually
- * a screen, set to one side on the near desk so the person's head doesn't hide
- * it, and a thing or two besides; now and then a clear desk. In the desk's
- * surface coordinates: [{ item, x, y }].
- */
-export function decorate(byId, side, key) {
-  const rand = random(key);
-  const pick = (list) => list[Math.floor(rand() * list.length)];
-  const suits = (item) => item.facing === side || item.facing === "any";
-  const all = [...byId.values()].filter((item) => item.facing && suits(item));
-  const screens = all.filter((item) => /monitor|laptop/.test(item.id));
-  const extras = all.filter((item) => !screens.includes(item));
-  const area = DESK_SURFACE[side];
-  const out = [];
-  const taken = [];
-  const fits = (x, w) => x >= 0 && x + w <= area.w && taken.every(([a, b]) => x + w <= a || x >= b);
-  const put = (item, x) => {
-    const [w, h] = spriteSize(item.sprite);
-    out.push({ item: item.id, x: Math.round(x / 2) * 2, y: area.bottom - area.top - h - Math.floor(rand() * 3) * 2 });
-    taken.push([x - 6, x + w + 6]);
-  };
-  if (rand() < 0.12) return out;
-  // On the near side the person sits in the middle, in front of the desk: their head would hide a screen there.
-  if (side === "front") taken.push([area.w / 2 - 30, area.w / 2 + 30]);
-  const screen = pick(screens);
-  if (screen) {
-    const [w] = spriteSize(screen.sprite);
-    const x = side === "back" ? area.w / 2 - w / 2 : rand() < 0.5 ? 16 + rand() * 36 : area.w - w - 16 - rand() * 36;
-    put(screen, x);
-  }
-  const count = rand() < 0.35 ? 0 : rand() < 0.7 ? 1 : 2;
-  for (let n = 0; n < count; n++) {
-    const extra = pick(extras);
-    if (!extra) break;
-    const [w] = spriteSize(extra.sprite);
-    for (let tries = 0; tries < 8; tries++) {
-      const x = rand() * (area.w - w);
-      if (fits(x, w)) {
-        put(extra, x);
-        break;
-      }
-    }
-  }
-  return out;
-}
 
 // ---------- the rules ----------
 
@@ -319,6 +336,9 @@ export function check(catalog, layouts = []) {
     if (item.sortY < 0 || item.sortY > h) say(`sort line ${item.sortY} is outside the sprite`);
     for (const seat of item.seats) {
       if (!SEAT_DIRECTIONS.includes(seat.dir)) say(`a seat faces ${seat.dir}: nobody sits sideways`);
+      // Facing down you sit in front of the seat, so it is drawn behind you; facing up its back covers you.
+      if (seat.dir === "down" && item.sortY >= seat.y - 0.5) say(`the seat faces down but would be drawn over whoever sits in it: sort line above ${seat.y - 0.5}`);
+      if (seat.dir === "up" && item.sortY <= seat.y - 2) say(`the seat faces up but its back would be drawn behind whoever sits in it`);
       if (seat.x < 0 || seat.x > w || seat.y < 0 || seat.y > h) say(`a seat is outside the sprite`);
     }
     if (["wall", "surface", "rug"].includes(item.mount) && item.colliders.length) say(`${item.mount} items don't block the floor`);
@@ -342,7 +362,7 @@ export function check(catalog, layouts = []) {
  */
 export function depthOf(piece, all) {
   if (piece.host) {
-    const host = all.find((other) => other.item.id === piece.host && piece.x >= other.x && piece.x < other.x + spriteSize(other.item.sprite)[0]);
+    const host = all.find((other) => other.key === piece.host);
     if (host) return host.y + host.item.sortY + 0.5;
   }
   return piece.y + piece.item.sortY;

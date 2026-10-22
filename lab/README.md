@@ -55,6 +55,10 @@ data (`shared-protocol/src/catalog/`) is ours and lives in git; the art leaves
 
 - `server.mjs`: serves the pages, Phaser, the packs and the app's public
   files, and reads and writes the catalog and layouts.
-- `pages/catalog.js`: the rules and bundle logic, shared by the pages and the
-  scripts.
+- `pages/catalog.js`: the rules, bundles and desk banks (with their seeded
+  desk things), shared by the pages and the scripts.
+- `pages/floor.js`: an office from what's stored (shell, layout, seed,
+  people's changes) to what's drawn, every piece with a stable key; the wall
+  dressing lives here.
+- `pages/shell.js`: walls and floors drawn from a plain map.
 - `check.mjs`, `build.mjs`: the pipeline above.

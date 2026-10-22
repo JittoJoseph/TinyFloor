@@ -75,6 +75,10 @@ Decided by looking, and checked by the lab on every change (`lab/check.mjs`):
 - **A desk always has a chair.** The chair can be swapped for another office
   chair but never taken away, and the seat stays in the same spot whichever
   chair it is.
+- **Seats facing down are drawn behind whoever sits in them, seats facing
+  up in front** (their back covers you). Egg chairs, a bench and a stool had
+  it the wrong way round, with the chair drawn over the person; the rule is
+  now checked.
 - **Desks can be used from both sides.** Back to back across the divider
   works, once each row of the bank is drawn as one piece with its own sort
   line instead of tile by tile: the far person is drawn behind their desk and
@@ -138,20 +142,59 @@ its divider, and the chairs), not dozens of tiles.
 Each side of a bank has its own chair choice (near chairs face up, far ones
 down), and a cluster says which chairs suit it.
 
-## The things on desks: seeded, then yours
+## One office: seeded, then changed by people
 
-Every desk gets a few things from the catalog's desk things, picked for its
-side: usually a screen, set to one side on the near desk so the person's head
-doesn't hide it, and a lamp, a plant, papers or a phone besides; now and then
-a clear desk. The picking is driven by a seed: the office's seed, the bank's
-id (which stays the same when the bank moves) and the desk's place in it. So
-every office looks its own, everyone in it sees the same desks, and nothing
-needs storing for a desk nobody has touched. Shuffle picks again for one bank;
-a new seed, for the whole office.
+An office is worked out in one place (`lab/pages/floor.js`, `buildFloor`),
+from what's stored to what's drawn:
 
-When someone arranges their own desk, only that desk's list of things is
-stored (by bank and desk), and it replaces the picked one. An office of thirty
-desks with five arranged stores five short lists.
+- **stored**: the shell (walls and floors), the layout (what's placed: desk
+  banks with their size and chairs, tables, sofas), the office's **seed**, and
+  people's **changes**;
+- **drawn**: a flat list of pieces, each with a **key** that stays the same
+  from one load to the next: `k3x9/front-1/things/0` is the first thing on
+  the near desk of bank k3x9's second desk, `wall:15,2/3` the fourth thing
+  along the wall starting at tile 15,2.
+
+Pieces come from three places:
+
+1. **Placed**: what someone put down.
+2. **Generated** from the seed: what a real office has without anyone
+   arranging it. Every desk is filled the way the current office's desks
+   are: a setup (screens and a tower, or a laptop, lamp and phone) beside
+   whoever sits there and a plant, phone or papers on their other side; on the
+   far side two screens seen from behind and odds and ends along the strip.
+   Every room's top wall is dressed: the longest wall gets the kitchen
+   (vending machines, water, coffee), and walls get shelves, coolers and
+   plants standing against them, with whiteboards, charts, notices and
+   pictures hung on them, and gaps between. Plants stand by walls and at the
+   ends of desk banks, never loose on the floor; nothing is put where
+   furniture already is, or in a doorway.
+3. **Changes**: what people did to generated pieces, kept by key and applied
+   last: `{ hidden }`, `{ at: [x, y] }`, `{ item }` (swapped for another
+   thing) or, for a desk, `{ things: [...] }` (the person's own arrangement,
+   replacing the generated one).
+
+Each generator draws its randomness from the seed and the piece's own key,
+not from a shared sequence, so adding a desk bank changes nothing about any
+other desk, and every device works out exactly the same office. A changed
+piece stays changed because its key doesn't move; a change to a piece that no
+longer exists (its bank was deleted) is simply ignored.
+
+**Where it lives, for the real floor:**
+
+- the layout and seed with the office (D1), versioned: an admin's edits are
+  a draft until published;
+- people's changes as one row each, by office and key, so changing your desk
+  writes one small row, never the whole layout, and two people changing
+  different things never collide;
+- the room (Durable Object) passes each change to everyone on the floor as
+  `{ key, change }`; clients apply it to that one piece and redraw it;
+- the seats (desk banks' chairs, by key) are worked out when a layout is
+  published and stored with it, so the server checks desk claims without
+  running any of this;
+- the generators are versioned with the layout: new desk art or a changed
+  rule would otherwise reshuffle every untouched desk, so an office moves to
+  a new generator deliberately.
 
 ## Walls and floors that work themselves out
 
@@ -177,40 +220,30 @@ costs nothing after that.
 
 ## Weight
 
-Nothing here makes the floor heavier to run: the shell is one picture, a desk
-bank three, each desk thing one small one; the layout an office loads is a
-few kilobytes (what's placed where, its size, the seed, the chairs chosen,
-the desks someone arranged). Desk things are worked out on each device from
-the seed, in well under a millisecond a desk.
+Nothing here makes the floor heavier to run: the shell is one picture drawn
+once, a desk bank three, each wall or desk thing one small one; working an
+office out takes a few milliseconds when the floor loads, and a change redraws
+only its piece. What's stored is a few kilobytes of layout and a row per
+change.
 
 ## Layouts
 
-A layout is a shell and a list of placed items, bundles and banks, each with
-an id, a position on the 16px grid and, for a bank, its size and chosen
-chairs; plus the office's seed. The first template, "Startup"
-(`layouts/startup.json` on the `startup` shell), is today's office with a
-focus room walled off in the hall, and furnished to feel used rather than
-gridded: banks of different sizes (three desks back to back, two back to
-back, a pair in a corner, a single pair), plants and shelves at the bank
-ends, windows and pictures on the walls, a break corner, a lounge round a rug,
-a bench by the wall.
+A layout is a shell, what's placed (each with an id, a position on the 16px
+grid and, for a desk bank, its size and chairs), the seed, and the changes.
+The first template, "Startup" (`layouts/startup.json`), is today's office
+furnished the way it is today: four two-sided banks of two maple desks,
+staggered rather than gridded; a meeting table; a lounge; a bench, copier and
+printer by the bottom wall. The walls, the desks' things and the plants by
+the banks are generated from its seed.
 
 What a real office needs from it:
 
-- **Seats come from the layout.** A seat's id is the bank and its desk
-  ("front-1"), not a tile number. Where you arrive for a desk is worked out
-  when the layout is saved, with the floor's own pathfinding, and saved with
-  it, so the realtime server needs no pathfinding and checks desk claims
-  against the layout's seats.
-- **Saved per office, with versions.** An admin edits a draft and publishes
-  it; while one person edits, no one else can, so two edits never cross.
-  Everyone on the floor gets the new layout and redraws.
-- **A limit.** A ceiling on items per floor keeps drawing and loading
-  bounded on phones.
 - **Templates.** A new office starts from a template chosen by size (how many
-  people) and look (a theme), all designed in the layout editor. Templates can
-  be generated from a few blocks (desk banks, a meeting room, a lounge, a
-  break corner) arranged for a headcount, rather than drawn one by one.
+  people) and look (a theme). Templates can be generated from a few blocks
+  (desk banks, a meeting room, a lounge) arranged for a headcount; the
+  dressing and the desks fill themselves in.
+- **A limit.** A ceiling on what's placed per floor keeps drawing and loading
+  bounded on phones.
 
 ## Themes
 

@@ -123,30 +123,6 @@
       "notes": ""
     },
     {
-      "id": "desk-lamp",
-      "name": "Desk lamp",
-      "category": "lighting",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          352,
-          480,
-          32,
-          48
-        ]
-      },
-      "sortY": 48,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "notes": "",
-      "facing": "any"
-    },
-    {
       "id": "plant-small",
       "name": "Plant, small",
       "category": "plants",
@@ -174,8 +150,7 @@
       ],
       "seats": [],
       "surface": null,
-      "notes": "Stands on the floor or on a desk.",
-      "facing": "any"
+      "notes": "Stands on the floor or on a desk."
     },
     {
       "id": "plant-snake",
@@ -506,7 +481,7 @@
           48
         ]
       },
-      "sortY": 48,
+      "sortY": 44,
       "colliders": [
         [
           2,
@@ -542,7 +517,7 @@
           48
         ]
       },
-      "sortY": 48,
+      "sortY": 44,
       "colliders": [
         [
           2,
@@ -578,7 +553,7 @@
           48
         ]
       },
-      "sortY": 48,
+      "sortY": 44,
       "colliders": [
         [
           2,
@@ -614,7 +589,7 @@
           48
         ]
       },
-      "sortY": 48,
+      "sortY": 44,
       "colliders": [
         [
           2,
@@ -932,7 +907,7 @@
       "themes": [
         "office"
       ],
-      "mount": "floor",
+      "mount": "wall",
       "sprite": {
         "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
         "rect": [
@@ -942,15 +917,8 @@
           64
         ]
       },
-      "sortY": 60,
-      "colliders": [
-        [
-          4,
-          44,
-          56,
-          16
-        ]
-      ],
+      "sortY": 0,
+      "colliders": [],
       "seats": [],
       "surface": null,
       "notes": ""
@@ -962,7 +930,7 @@
       "themes": [
         "office"
       ],
-      "mount": "floor",
+      "mount": "wall",
       "sprite": {
         "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
         "rect": [
@@ -972,15 +940,8 @@
           64
         ]
       },
-      "sortY": 60,
-      "colliders": [
-        [
-          4,
-          44,
-          56,
-          16
-        ]
-      ],
+      "sortY": 0,
+      "colliders": [],
       "seats": [],
       "surface": null,
       "notes": ""
@@ -992,7 +953,7 @@
       "themes": [
         "office"
       ],
-      "mount": "floor",
+      "mount": "wall",
       "sprite": {
         "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
         "rect": [
@@ -1002,15 +963,8 @@
           64
         ]
       },
-      "sortY": 60,
-      "colliders": [
-        [
-          4,
-          44,
-          56,
-          16
-        ]
-      ],
+      "sortY": 0,
+      "colliders": [],
       "seats": [],
       "surface": null,
       "notes": ""
@@ -1044,102 +998,6 @@
       "seats": [],
       "surface": null,
       "notes": ""
-    },
-    {
-      "id": "desk-phone",
-      "name": "Desk phone",
-      "category": "tech",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          320,
-          288,
-          32,
-          32
-        ]
-      },
-      "sortY": 32,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "notes": "",
-      "facing": "front"
-    },
-    {
-      "id": "laptop",
-      "name": "Laptop",
-      "category": "tech",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          448,
-          496,
-          32,
-          32
-        ]
-      },
-      "sortY": 32,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "notes": "",
-      "facing": "front"
-    },
-    {
-      "id": "monitor-blue",
-      "name": "Monitor",
-      "category": "tech",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          416,
-          384,
-          32,
-          32
-        ]
-      },
-      "sortY": 32,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "notes": "",
-      "facing": "front"
-    },
-    {
-      "id": "monitor-dual",
-      "name": "Monitors, two",
-      "category": "tech",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          448,
-          384,
-          32,
-          32
-        ]
-      },
-      "sortY": 32,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "notes": "",
-      "facing": "front"
     },
     {
       "id": "printer",
@@ -1853,126 +1711,6 @@
       "notes": "Chairs go above it facing down and below it facing up, never at its ends."
     },
     {
-      "id": "monitor-back",
-      "name": "Monitor, from behind",
-      "category": "tech",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "facing": "back",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          320,
-          224,
-          32,
-          32
-        ]
-      },
-      "sortY": 32,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "monitor-back-light",
-      "name": "Monitor, from behind, light",
-      "category": "tech",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "facing": "back",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          352,
-          224,
-          32,
-          32
-        ]
-      },
-      "sortY": 32,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "papers",
-      "name": "Papers",
-      "category": "decor",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "facing": "any",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          32,
-          448,
-          32,
-          32
-        ]
-      },
-      "sortY": 32,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "keyboard",
-      "name": "Keyboard",
-      "category": "tech",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "facing": "front",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          448,
-          448,
-          32,
-          16
-        ]
-      },
-      "sortY": 16,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "photo",
-      "name": "Photo frame",
-      "category": "decor",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "facing": "front",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          128,
-          384,
-          32,
-          32
-        ]
-      },
-      "sortY": 32,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "notes": ""
-    },
-    {
       "id": "desk-cluster-maple",
       "name": "Desks, maple",
       "category": "desks",
@@ -1984,7 +1722,7 @@
         "chairs": {
           "front": {
             "at": [
-              112,
+              0,
               48
             ],
             "options": [
@@ -1996,8 +1734,8 @@
           },
           "back": {
             "at": [
-              112,
-              -32
+              0,
+              -16
             ],
             "options": [
               "chair-black-down",
@@ -2022,7 +1760,7 @@
         "chairs": {
           "front": {
             "at": [
-              112,
+              0,
               48
             ],
             "options": [
@@ -2034,8 +1772,8 @@
           },
           "back": {
             "at": [
-              112,
-              -32
+              0,
+              -16
             ],
             "options": [
               "chair-black-down",
@@ -2060,7 +1798,7 @@
         "chairs": {
           "front": {
             "at": [
-              112,
+              0,
               48
             ],
             "options": [
@@ -2072,8 +1810,8 @@
           },
           "back": {
             "at": [
-              112,
-              -32
+              0,
+              -16
             ],
             "options": [
               "chair-black-down",
@@ -2098,7 +1836,7 @@
         "chairs": {
           "front": {
             "at": [
-              112,
+              0,
               48
             ],
             "options": [
@@ -2110,8 +1848,8 @@
           },
           "back": {
             "at": [
-              112,
-              -32
+              0,
+              -16
             ],
             "options": [
               "chair-black-down",
@@ -2136,7 +1874,7 @@
         "chairs": {
           "front": {
             "at": [
-              112,
+              0,
               48
             ],
             "options": [
@@ -2148,8 +1886,8 @@
           },
           "back": {
             "at": [
-              112,
-              -32
+              0,
+              -16
             ],
             "options": [
               "chair-black-down",
@@ -2370,7 +2108,7 @@
           48
         ]
       },
-      "sortY": 44
+      "sortY": 38
     },
     {
       "themes": [
@@ -2407,7 +2145,2519 @@
           48
         ]
       },
-      "sortY": 44
+      "sortY": 40
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-vending",
+      "name": "Vending machines",
+      "category": "kitchen",
+      "mount": "wallside",
+      "sprite": {
+        "size": [
+          128,
+          96
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              64,
+              736,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              96,
+              736,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              0,
+              736,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              32,
+              736,
+              32,
+              32
+            ],
+            "at": [
+              96,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              64,
+              768,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              96,
+              768,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              0,
+              768,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              32,
+              768,
+              32,
+              32
+            ],
+            "at": [
+              96,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              64,
+              800,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              64
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              96,
+              800,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              64
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              0,
+              800,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              64
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              32,
+              800,
+              32,
+              32
+            ],
+            "at": [
+              96,
+              64
+            ]
+          }
+        ]
+      },
+      "sortY": 92,
+      "colliders": [
+        [
+          2,
+          64,
+          124,
+          26
+        ]
+      ]
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-cooler",
+      "name": "Water cooler, tall",
+      "category": "kitchen",
+      "mount": "wallside",
+      "sprite": {
+        "size": [
+          32,
+          96
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              480,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              512,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              544,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              64
+            ]
+          }
+        ]
+      },
+      "sortY": 92,
+      "colliders": [
+        [
+          2,
+          64,
+          28,
+          26
+        ]
+      ]
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-counter",
+      "name": "Coffee counter",
+      "category": "kitchen",
+      "mount": "wallside",
+      "sprite": {
+        "size": [
+          64,
+          96
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              1216,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              416,
+              1216,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              1248,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              416,
+              1248,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              1280,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              64
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              416,
+              1280,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              64
+            ]
+          }
+        ]
+      },
+      "sortY": 92,
+      "colliders": [
+        [
+          2,
+          64,
+          60,
+          26
+        ]
+      ]
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-coffee",
+      "name": "Coffee station",
+      "category": "kitchen",
+      "mount": "wallside",
+      "sprite": {
+        "size": [
+          96,
+          96
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              224,
+              384,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              256,
+              384,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              480,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              224,
+              416,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              256,
+              416,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              512,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              224,
+              448,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              64
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              256,
+              448,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              64
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              544,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              64
+            ]
+          }
+        ]
+      },
+      "sortY": 92,
+      "colliders": [
+        [
+          2,
+          64,
+          92,
+          26
+        ]
+      ]
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-bookcase",
+      "name": "Bookcase",
+      "category": "storage",
+      "mount": "wallside",
+      "sprite": {
+        "size": [
+          64,
+          96
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              256,
+              1216,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              288,
+              1216,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              256,
+              1248,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              288,
+              1248,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              256,
+              1280,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              64
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              288,
+              1280,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              64
+            ]
+          }
+        ]
+      },
+      "sortY": 92,
+      "colliders": [
+        [
+          2,
+          64,
+          60,
+          26
+        ]
+      ]
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-shelf",
+      "name": "Wall shelf",
+      "category": "storage",
+      "mount": "wallside",
+      "sprite": {
+        "size": [
+          64,
+          96
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              224,
+              480,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              256,
+              480,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              224,
+              512,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              256,
+              512,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              224,
+              544,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              64
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              256,
+              544,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              64
+            ]
+          }
+        ]
+      },
+      "sortY": 92,
+      "colliders": [
+        [
+          2,
+          64,
+          60,
+          26
+        ]
+      ]
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-cabinet",
+      "name": "Cabinet",
+      "category": "storage",
+      "mount": "wallside",
+      "sprite": {
+        "size": [
+          64,
+          96
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              704,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              416,
+              704,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              736,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              416,
+              736,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              768,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              64
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              416,
+              768,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              64
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              320,
+              288,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 92,
+      "colliders": [
+        [
+          2,
+          64,
+          60,
+          26
+        ]
+      ]
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-plant",
+      "name": "Plant, by the wall",
+      "category": "plants",
+      "mount": "wallside",
+      "sprite": {
+        "size": [
+          32,
+          96
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              448,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              64
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              384,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              416,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 92,
+      "colliders": [
+        [
+          2,
+          64,
+          28,
+          26
+        ]
+      ]
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-plant2",
+      "name": "Plant, by the wall, tall",
+      "category": "plants",
+      "mount": "wallside",
+      "sprite": {
+        "size": [
+          32,
+          96
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              288,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              64
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              224,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              256,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 92,
+      "colliders": [
+        [
+          2,
+          64,
+          28,
+          26
+        ]
+      ]
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-painting",
+      "name": "Painting",
+      "category": "wall",
+      "mount": "wall",
+      "sprite": {
+        "size": [
+          64,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              0,
+              384,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              32,
+              384,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              0,
+              416,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              32,
+              416,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 0,
+      "colliders": []
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-notice",
+      "name": "Notice board",
+      "category": "wall",
+      "mount": "wall",
+      "sprite": {
+        "size": [
+          64,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              256,
+              256,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              288,
+              256,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              256,
+              288,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              288,
+              288,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 0,
+      "colliders": []
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-poster",
+      "name": "Poster",
+      "category": "wall",
+      "mount": "wall",
+      "sprite": {
+        "size": [
+          64,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              0,
+              384,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              32,
+              384,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              0,
+              416,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              32,
+              416,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 0,
+      "colliders": []
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-charts",
+      "name": "Charts",
+      "category": "wall",
+      "mount": "wall",
+      "sprite": {
+        "size": [
+          64,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              288,
+              448,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              320,
+              448,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              288,
+              480,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              320,
+              480,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 0,
+      "colliders": []
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-trophy",
+      "name": "Trophy shelf",
+      "category": "wall",
+      "mount": "wall",
+      "sprite": {
+        "size": [
+          32,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              160,
+              416,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 0,
+      "colliders": []
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-cert",
+      "name": "Certificate",
+      "category": "wall",
+      "mount": "wall",
+      "sprite": {
+        "size": [
+          32,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              256,
+              320,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              256,
+              352,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 0,
+      "colliders": []
+    },
+    {
+      "themes": [
+        "office"
+      ],
+      "seats": [],
+      "surface": null,
+      "notes": "",
+      "id": "wall-art",
+      "name": "Small picture",
+      "category": "wall",
+      "mount": "wall",
+      "sprite": {
+        "size": [
+          32,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              64,
+              384,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              64,
+              416,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 0,
+      "colliders": []
+    },
+    {
+      "id": "setup-laptop",
+      "name": "Laptop, lamp and phone",
+      "category": "tech",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "front",
+      "desk": {
+        "cols": 3,
+        "rows": 2
+      },
+      "sprite": {
+        "size": [
+          96,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              224,
+              832,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              256,
+              832,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              288,
+              832,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              224,
+              864,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              256,
+              864,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              288,
+              864,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "setup-monitors",
+      "name": "Two screens and a tower",
+      "category": "tech",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "front",
+      "desk": {
+        "cols": 3,
+        "rows": 2
+      },
+      "sprite": {
+        "size": [
+          96,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              320,
+              832,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              352,
+              832,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              832,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              320,
+              864,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              352,
+              864,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              864,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "setup-laptop-b",
+      "name": "Laptop, lamp and papers",
+      "category": "tech",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "front",
+      "desk": {
+        "cols": 3,
+        "rows": 2
+      },
+      "sprite": {
+        "size": [
+          96,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              416,
+              832,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              448,
+              832,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              480,
+              832,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              416,
+              864,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              448,
+              864,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              480,
+              864,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "setup-monitors-b",
+      "name": "Screens and a tablet",
+      "category": "tech",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "front",
+      "desk": {
+        "cols": 3,
+        "rows": 2
+      },
+      "sprite": {
+        "size": [
+          96,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              416,
+              896,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              448,
+              896,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              480,
+              896,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              416,
+              928,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              448,
+              928,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              480,
+              928,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "setup-printer",
+      "name": "Printer, laptop and a photo",
+      "category": "tech",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "front",
+      "desk": {
+        "cols": 3,
+        "rows": 2
+      },
+      "sprite": {
+        "size": [
+          96,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              320,
+              960,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              352,
+              960,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              960,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              320,
+              992,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              352,
+              992,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              992,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "setup-printer-b",
+      "name": "Printer, laptop and a photo",
+      "category": "tech",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "front",
+      "desk": {
+        "cols": 3,
+        "rows": 2
+      },
+      "sprite": {
+        "size": [
+          96,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              320,
+              1024,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              352,
+              1024,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              1024,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              320,
+              1056,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              352,
+              1056,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              32
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              384,
+              1056,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "desk-plant",
+      "name": "Plant, on a desk",
+      "category": "plants",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "sprite": {
+        "size": [
+          32,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              320,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              352,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              32
+            ]
+          }
+        ]
+      },
+      "sortY": 64,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "desk-phone-a",
+      "name": "Desk phone",
+      "category": "tech",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              320,
+              288,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "desk-phone-b",
+      "name": "Desk phone",
+      "category": "tech",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              352,
+              288,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "desk-paper",
+      "name": "Paper",
+      "category": "decor",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              32,
+              448,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "desk-papers",
+      "name": "Papers",
+      "category": "decor",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              64,
+              448,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "back-monitors",
+      "name": "Two screens, from behind",
+      "category": "tech",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "back",
+      "desk": {
+        "cols": 3,
+        "rows": 1
+      },
+      "sprite": {
+        "size": [
+          96,
+          32
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              416,
+              256,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              448,
+              256,
+              32,
+              32
+            ],
+            "at": [
+              32,
+              0
+            ]
+          },
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              480,
+              256,
+              32,
+              32
+            ],
+            "at": [
+              64,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "back-monitor",
+      "name": "Screen, from behind",
+      "category": "tech",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "back",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              320,
+              224,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "back-monitor-light",
+      "name": "Screen, from behind, light",
+      "category": "tech",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "back",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              352,
+              224,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "back-monitor-white",
+      "name": "Screen, from behind, white",
+      "category": "tech",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "back",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              480,
+              320,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "back-plant",
+      "name": "Plant, over the divider",
+      "category": "plants",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "back",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              320,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "back-papers",
+      "name": "Papers, from behind",
+      "category": "decor",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "facing": "back",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              64,
+              448,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": ""
     }
   ]
 }

@@ -1,10 +1,12 @@
-// The layout editor (lab/README.md): today's office walls and floors with
-// catalog items placed on them, by hand. A layout is a list of placed items
-// and bundles, each where it stands and, for a desk, which chair it has; the
-// first ones are the template offices.
+// The layout editor (lab/README.md): an office as the floor will draw it
+// (floor.js), and the controls to make one. What's placed is moved, sized
+// and removed directly; what the office generated (the things on desks,
+// what stands along the walls) is changed through overrides, kept by each
+// piece's key, which is how anyone's changes to their office stay changed.
 /* global Phaser */
 import { TILE, SPEED, SEAT, SIT_FRAME, down16, loadAvatar, avatarAnims, itemFrame, drawItem, heldDirection } from "./common.js";
-import { DESK_STEP, bounds, check, clusterSize, depthOf as pieceDepth, expand, isCluster, spriteSize } from "./catalog.js";
+import { DESK_STEP, bounds, check, clusterSize, expand, isCluster, spriteSize } from "./catalog.js";
+import { buildFloor, seatsOf, solidsOf } from "./floor.js";
 import { FLOORS, WALLS, paint, renderShell, wallSolids } from "./shell.js";
 
 const $ = (selector) => document.querySelector(selector);
@@ -12,15 +14,19 @@ const loadImage = (url) => new Promise((resolve, reject) => Object.assign(new Im
 const COLS = 48;
 const ROWS = 32;
 const typing = () => ["INPUT", "SELECT", "TEXTAREA"].includes(document.activeElement?.tagName);
+const newId = () => Math.random().toString(36).slice(2, 8);
+/** How a bank is shown while you place it, and the size it starts at. */
+const GHOST = { size: { cols: 2, sides: 2 }, key: "ghost" };
 
 let catalog = { items: [] };
 let byId = new Map();
 let layout = null;
 let placing = null;
+/** What's selected: { entry } for something placed, { key } for a generated piece. */
 let selected = null;
 let dirty = false;
 let scene = null;
-/** "furnish" places items; "walls" paints the shell's walls and floors. */
+/** "furnish" places and changes things; "walls" paints the shell's walls and floors. */
 let mode = "furnish";
 let brush = "#";
 let shellDirty = false;
@@ -28,20 +34,14 @@ let shellDirty = false;
 function setDirty(value) {
   dirty = value;
   $("#save").disabled = !dirty;
-  const problems = layout ? check(catalog, [layout]).filter((p) => p.startsWith("layout")) : [];
-  $("#status").textContent = layout ? `${layout.items.length} placed${dirty ? " · unsaved" : ""}${problems.length ? ` · ${problems.length} problems` : ""}` : "";
+  if (!layout) return ($("#status").textContent = "");
+  const problems = check(catalog, [layout]).filter((p) => p.startsWith("layout"));
+  const pieces = scene?.pieces ?? [];
+  const generated = pieces.filter((p) => !p.entry).length + pieces.filter((p) => p.entry && p.key !== p.entry.id).length;
+  const changed = Object.keys(layout.overrides ?? {}).length;
+  $("#status").textContent = `${layout.items.length} placed · ${generated} generated · ${changed} changed${dirty ? " · unsaved" : ""}${problems.length ? ` · ${problems.length} problems` : ""}`;
   $("#status").title = problems.join("\n");
 }
-
-/**
- * What a placed thing needs besides where it is: a cluster's size, the
- * office's seed, a key that stays put when it moves (so its desks keep their
- * things), a shuffle count, and any desks decorated by hand.
- */
-const place = (entry) => ({ size: entry.size, seed: layout?.seed ?? 0, key: entry.id, salt: entry.salt, decor: entry.decor });
-const newId = () => Math.random().toString(36).slice(2, 8);
-/** How a cluster is shown while you place it, and the size it starts at. */
-const GHOST = { size: { cols: 2, sides: 1 }, key: "ghost" };
 
 // ---------- layouts ----------
 
@@ -56,23 +56,24 @@ async function loadLayouts(wanted) {
 async function openLayout(id) {
   layout = await (await fetch(`/api/layouts/${id}`)).json();
   layout.seed ??= Math.floor(Math.random() * 1e6);
+  layout.overrides ??= {};
   for (const entry of layout.items) entry.id ??= newId();
   $("#layout-id").value = id;
   $("#layout-name").value = layout.name ?? "";
   history.replaceState(null, "", `?id=${id}`);
   select(null);
+  await scene?.loadShell();
   setDirty(false);
-  scene?.rebuild();
 }
 
 function newLayout(id) {
-  layout = { id, name: "", shell: "office", seed: Math.floor(Math.random() * 1e6), items: [] };
+  layout = { id, name: "", shell: "office", seed: Math.floor(Math.random() * 1e6), items: [], overrides: {} };
   if (![...$("#layout-id").options].some((o) => o.value === id)) $("#layout-id").add(new Option(id, id));
   $("#layout-id").value = id;
   $("#layout-name").value = "";
   select(null);
+  scene?.loadShell();
   setDirty(true);
-  scene?.rebuild();
 }
 
 async function save() {
@@ -85,6 +86,12 @@ async function save() {
   const response = await fetch(`/api/layouts/${layout.id}`, { method: "PUT", body: JSON.stringify(layout) });
   if (!response.ok) return alert(`Not saved: ${await response.text()}`);
   setDirty(false);
+}
+
+/** A change to the office: redraw, and remember it needs saving. */
+function changed() {
+  scene?.refresh();
+  setDirty(true);
 }
 
 // ---------- palette ----------
@@ -101,8 +108,8 @@ async function thumbnail(item, canvas) {
 function renderPalette() {
   const query = $("#search").value.trim().toLowerCase();
   const groups = new Map();
-  // Parts are only placed inside their bundles: a desk top never without its chair.
-  for (const item of catalog.items.filter((i) => !i.part && !i.generated)) {
+  // Parts only go in their bundles, and desk things on desks: neither is placed on its own.
+  for (const item of catalog.items.filter((i) => !i.part && !i.generated && !i.desk)) {
     if (query && !`${item.id} ${item.name} ${item.category}`.toLowerCase().includes(query)) continue;
     if (!groups.has(item.category)) groups.set(item.category, []);
     groups.get(item.category).push(item);
@@ -135,24 +142,32 @@ function startPlacing(item) {
   scene?.updateGhost();
 }
 
-/** Selecting desks offers their chairs, near side and far, from the chairs that suit; never none. */
-function select(entry) {
-  selected = entry;
-  const item = entry && byId.get(entry.item);
+/**
+ * Selecting a bank offers its chairs (near and far, from the chairs that suit;
+ * never none) and a shuffle; selecting a generated piece offers putting it back
+ * if it was changed.
+ */
+function select(next) {
+  selected = next;
+  const item = next?.entry && byId.get(next.entry.item);
   const slots = isCluster(item)
-    ? Object.entries(item.cluster.chairs).filter(([side]) => side === "front" || clusterSize(entry.size).sides === 2)
+    ? Object.entries(item.cluster.chairs).filter(([side]) => side === "front" || clusterSize(next.entry.size).sides === 2)
     : (item?.parts ?? []).filter((part) => part.slot === "chair").map((part) => ["chair", part]);
   $("#chairs").replaceChildren(
     ...slots.map(([key, slot]) => {
       const chooser = document.createElement("select");
       chooser.title = key === "back" ? "Far side chairs" : "Chairs";
       chooser.append(...slot.options.map((id) => new Option(`${key === "back" ? "Far: " : ""}${byId.get(id)?.name ?? id}`, id)));
-      chooser.value = entry.choose?.[key] ?? slot.default;
-      chooser.addEventListener("change", () => scene?.choose(key, chooser.value));
+      chooser.value = next.entry.choose?.[key] ?? slot.default;
+      chooser.addEventListener("change", () => {
+        next.entry.choose = { ...next.entry.choose, [key]: chooser.value };
+        changed();
+      });
       return chooser;
     }),
   );
   $("#shuffle").hidden = !isCluster(item);
+  $("#put-back").hidden = !(next?.key && layout?.overrides?.[next.key]);
   scene?.drawOverlay();
 }
 
@@ -169,12 +184,9 @@ function renderBrushes(shell) {
     ...Object.keys(FLOORS).map((material) => ({ label: `Floor, ${material}`, entry: { kind: "floor", material } })),
     { label: "Nothing", entry: { kind: "void" } },
   ];
-  const charFor = (entry) => {
-    const found = Object.entries(shell.legend).find(([, e]) => e.kind === entry.kind && (e.material ?? null) === (entry.material ?? null));
-    return found?.[0] ?? null;
-  };
+  const charFor = (entry) => Object.entries(shell.legend).find(([, e]) => e.kind === entry.kind && (e.material ?? null) === (entry.material ?? null))?.[0] ?? null;
   select.replaceChildren(...options.map(({ label, entry }) => new Option(label, JSON.stringify(entry))));
-  const current = Object.entries(shell.legend).find(([c]) => c === brush)?.[1] ?? { kind: "wall", material: "lavender" };
+  const current = shell.legend[brush] ?? { kind: "wall", material: "lavender" };
   select.value = JSON.stringify({ kind: current.kind, ...(current.material ? { material: current.material } : {}) });
   select.onchange = () => {
     const entry = JSON.parse(select.value);
@@ -200,7 +212,8 @@ function setMode(next) {
 class Floor extends Phaser.Scene {
   constructor() {
     super("floor");
-    this.sprites = new Map();
+    this.images = new Map();
+    this.pieces = [];
     this.drag = null;
     this.seated = null;
     this.facing = "down";
@@ -214,11 +227,10 @@ class Floor extends Phaser.Scene {
     scene = this;
     this.wallSolids = [];
     this.shellImage = this.add.image(0, 0, "__DEFAULT").setOrigin(0, 0).setDepth(0);
-
     this.overlay = this.add.graphics().setDepth(100000);
     this.ghost = this.add.container(0, 0).setAlpha(0.6).setDepth(99999).setVisible(false);
     avatarAnims(this);
-    this.avatar = this.add.sprite(23 * TILE, 16 * TILE, "avatar", 0).setScale(2).setOrigin(0.5, 1);
+    this.avatar = this.add.sprite(23 * TILE, 13 * TILE, "avatar", 0).setScale(2).setOrigin(0.5, 1);
     this.avatar.play("idle-down");
     this.keys = this.input.keyboard.addKeys("W,A,S,D,UP,LEFT,DOWN,RIGHT,E", false);
     this.keys.E.on("down", () => !typing() && this.toggleSit());
@@ -234,16 +246,11 @@ class Floor extends Phaser.Scene {
       this.drag = null;
       if (this.painting) this.paintDone();
     });
-    this.rebuild();
+    if (layout) this.loadShell();
   }
 
-  /** Every piece on the floor: [{ entry, item, x, y }], a bundle's or cluster's parts each their own. */
-  pieces() {
-    return (layout?.items ?? []).flatMap((entry) => expand(byId, entry.item, entry.x, entry.y, entry.choose, place(entry)).map((piece) => ({ entry, ...piece })));
-  }
-
-  /** The walls and floors, drawn from the layout's shell (shell.js) into one picture. */
-  async drawShell(reload = true) {
+  /** The walls and floors, drawn from the layout's shell (shell.js) into one picture, then everything on them. */
+  async loadShell(reload = true) {
     if (!layout) return;
     if (reload || !this.shell) this.shell = await (await fetch(`/api/shells/${layout.shell}`)).json();
     const canvas = await renderShell(this.shell, loadImage);
@@ -254,63 +261,43 @@ class Floor extends Phaser.Scene {
     if (old.startsWith("shell:")) this.textures.remove(old);
     this.wallSolids = wallSolids(this.shell);
     renderBrushes(this.shell);
+    await this.refresh();
   }
 
-  async rebuild() {
-    this.sprites.forEach((images) => images.forEach((image) => image.destroy()));
-    this.sprites.clear();
-    if (!layout) return;
-    await this.drawShell();
-    for (const entry of layout.items) await this.draw(entry);
-    this.sortAll();
+  /**
+   * Works the office out again (floor.js) and brings the picture up to date:
+   * a piece keeps its image while it is the same thing in the same place, so
+   * a change redraws only what changed.
+   */
+  async refresh() {
+    if (!layout || !this.shell) return;
+    const pieces = buildFloor(byId, this.shell, layout);
+    this.pieces = pieces;
+    const seen = new Set();
+    for (const piece of pieces) {
+      seen.add(piece.key);
+      const { key, frame } = await itemFrame(this, piece.item);
+      if (pieces !== this.pieces) return;
+      let image = this.images.get(piece.key);
+      if (!image || image.texture.key !== key || image.frame.name !== (frame ?? "__BASE")) {
+        image?.destroy();
+        image = this.add.image(0, 0, key, frame).setOrigin(0, 0);
+        this.images.set(piece.key, image);
+      }
+      image.setPosition(piece.x, piece.y).setFlipX(!!piece.item.sprite.flip).setDepth(piece.depth);
+    }
+    for (const [k, image] of this.images) {
+      if (!seen.has(k)) {
+        image.destroy();
+        this.images.delete(k);
+      }
+    }
     this.drawOverlay();
     setDirty(dirty);
   }
 
-  /** (Re)draws one placed thing. */
-  async draw(entry) {
-    this.sprites.get(entry)?.forEach((image) => image.destroy());
-    const pieces = expand(byId, entry.item, entry.x, entry.y, entry.choose, place(entry));
-    const images = [];
-    for (const piece of pieces) {
-      const { key, frame } = await itemFrame(this, piece.item);
-      images.push(this.add.image(piece.x, piece.y, key, frame).setOrigin(0, 0).setFlipX(!!piece.item.sprite.flip));
-    }
-    this.sprites.set(entry, images);
-  }
-
-  /**
-   * Draw order, as the floor does it: by where each thing stands. Things on a
-   * wall sit just over the wall, and things on a desk just over that desk.
-   */
-  depthOf(piece, all) {
-    const { item, x, y } = piece;
-    if (piece.host) return pieceDepth(piece, all);
-    if (item.mount === "wall") return 2;
-    // A rug lies on the floor, under everything that stands on it.
-    if (item.mount === "rug") return 1.5;
-    if (item.mount === "surface") {
-      const [w, h] = spriteSize(item.sprite);
-      const foot = { x: x + w / 2, y: y + h - 2 };
-      for (const host of all) {
-        if (!host.item.surface) continue;
-        const [sx, sy, sw, sh] = host.item.surface;
-        if (foot.x >= host.x + sx && foot.x <= host.x + sx + sw && foot.y >= host.y + sy && foot.y <= host.y + sy + sh) return host.y + host.item.sortY + 0.5;
-      }
-    }
-    return y + item.sortY;
-  }
-
-  sortAll() {
-    const all = this.pieces();
-    for (const [entry, images] of this.sprites) {
-      const pieces = all.filter((piece) => piece.entry === entry);
-      images.forEach((image, i) => pieces[i] && image.setDepth(this.depthOf(pieces[i], all)));
-    }
-  }
-
   solids() {
-    return [...this.wallSolids, ...this.pieces().flatMap(({ item, x, y }) => item.colliders.map(([cx, cy, w, h]) => [x + cx, y + cy, w, h]))];
+    return [...this.wallSolids, ...solidsOf(this.pieces)];
   }
 
   blocked(px, py) {
@@ -318,21 +305,34 @@ class Floor extends Phaser.Scene {
     return this.solids().some(([x, y, w, h]) => px >= x && px <= x + w && py >= y && py <= y + h);
   }
 
-  outline(entry) {
-    const [bx, by, w, h] = bounds(byId, entry.item, entry.choose, place(entry));
-    return [entry.x + bx, entry.y + by, w, h];
+  outlineOf(sel) {
+    if (sel?.entry) {
+      const [bx, by, w, h] = bounds(byId, sel.entry.item, sel.entry.choose, { size: sel.entry.size, key: sel.entry.id, seed: layout.seed, overrides: layout.overrides });
+      return [sel.entry.x + bx, sel.entry.y + by, w, h];
+    }
+    const piece = this.pieces.find((p) => p.key === sel?.key);
+    if (!piece) return null;
+    const [w, h] = spriteSize(piece.item.sprite);
+    return [piece.x, piece.y, w, h];
   }
 
-  /** The placed thing under the pointer, the one in front. */
-  entryAt(px, py) {
-    let best = null;
-    for (const entry of layout?.items ?? []) {
-      const [x, y, w, h] = this.outline(entry);
-      if (px < x || px >= x + w || py < y || py >= y + h) continue;
-      const front = y + h;
-      if (!best || front >= best.front) best = { entry, front };
+  /**
+   * What's under the pointer, the one in front, by its pixels rather than its
+   * box: a desk row's box covers the far desks behind it, but you click what
+   * you can see.
+   */
+  pieceAt(px, py) {
+    for (let i = this.pieces.length - 1; i >= 0; i--) {
+      const piece = this.pieces[i];
+      const [w, h] = spriteSize(piece.item.sprite);
+      if (px < piece.x || px >= piece.x + w || py < piece.y || py >= piece.y + h) continue;
+      const image = this.images.get(piece.key);
+      if (!image) continue;
+      const lx = Math.floor(piece.item.sprite.flip ? piece.x + w - 1 - px : px - piece.x);
+      const ly = Math.floor(py - piece.y);
+      if (this.textures.getPixelAlpha(lx, ly, image.texture.key, image.frame.name) > 0) return piece;
     }
-    return best?.entry ?? null;
+    return null;
   }
 
   async updateGhost(pointer = this.input.activePointer) {
@@ -360,17 +360,20 @@ class Floor extends Phaser.Scene {
     if (placing) return this.updateGhost(pointer);
     if (!this.drag || !pointer.isDown) return;
     if (this.drag.resize) return this.resize(pointer);
-    const entry = this.drag.entry;
     const x = down16(pointer.worldX - this.drag.dx + 8);
     const y = down16(pointer.worldY - this.drag.dy + 8);
-    if (x === entry.x && y === entry.y) return;
-    const [dx, dy] = [x - entry.x, y - entry.y];
-    entry.x = x;
-    entry.y = y;
-    this.sprites.get(entry)?.forEach((image) => image.setPosition(image.x + dx, image.y + dy));
-    this.sortAll();
-    this.drawOverlay();
-    setDirty(true);
+    if (this.drag.entry) {
+      const entry = this.drag.entry;
+      if (x === entry.x && y === entry.y) return;
+      entry.x = x;
+      entry.y = y;
+    } else {
+      // A generated piece moved by hand: kept as an override on its key.
+      const current = layout.overrides[this.drag.key]?.at ?? [this.drag.x0, this.drag.y0];
+      if (x === current[0] && y === current[1]) return;
+      layout.overrides[this.drag.key] = { ...layout.overrides[this.drag.key], at: [x, y] };
+    }
+    changed();
   }
 
   async pointerDown(pointer) {
@@ -381,32 +384,39 @@ class Floor extends Phaser.Scene {
       return;
     }
     if (placing) {
-      const entry = { id: newId(), item: placing.id, x: this.ghost.x, y: this.ghost.y, ...(isCluster(placing) ? { size: GHOST.size } : {}) };
+      const entry = { id: newId(), item: placing.id, x: this.ghost.x, y: this.ghost.y, ...(isCluster(placing) ? { size: { ...GHOST.size } } : {}) };
       layout.items.push(entry);
-      await this.draw(entry);
-      this.sortAll();
-      setDirty(true);
+      changed();
       if (!pointer.event.shiftKey) startPlacing(placing);
       return;
     }
     const handle = this.handleAt(pointer.worldX, pointer.worldY);
-    if (handle) return (this.drag = { entry: selected, resize: handle });
-    const entry = this.entryAt(pointer.worldX, pointer.worldY);
-    select(entry);
-    if (entry) this.drag = { entry, dx: pointer.worldX - entry.x, dy: pointer.worldY - entry.y };
+    if (handle) return (this.drag = { entry: selected.entry, resize: handle });
+    const piece = this.pieceAt(pointer.worldX, pointer.worldY);
+    if (!piece) return select(null);
+    // A placed thing's own pieces select the whole thing; a generated piece is selected alone.
+    const own = piece.entry && (piece.key === piece.entry.id || !/\/(things|end-)/.test(piece.key));
+    if (own) {
+      select({ entry: piece.entry });
+      this.drag = { entry: piece.entry, dx: pointer.worldX - piece.entry.x, dy: pointer.worldY - piece.entry.y };
+    } else {
+      select({ key: piece.key });
+      this.drag = { key: piece.key, x0: piece.x, y0: piece.y, dx: pointer.worldX - piece.x, dy: pointer.worldY - piece.y };
+    }
   }
 
   /**
-   * A selected cluster's handles, like a widget's: the right edge makes the
-   * row longer or shorter, the top edge adds or takes away the far side.
+   * A selected bank's handles, like a widget's: the right edge makes the row
+   * longer or shorter, the top edge adds or takes away the far side.
    */
   handles() {
-    if (!selected || !isCluster(byId.get(selected.item))) return [];
-    const { cols, sides } = clusterSize(selected.size);
+    const entry = selected?.entry;
+    if (!entry || !isCluster(byId.get(entry.item))) return [];
+    const { cols, sides } = clusterSize(entry.size);
     const width = cols * DESK_STEP + 32;
     return [
-      { axis: "cols", x: selected.x + width, y: selected.y + 48 },
-      { axis: "sides", x: selected.x + width / 2, y: selected.y + (sides === 2 ? -48 : 0) },
+      { axis: "cols", x: entry.x + width, y: entry.y + 48 },
+      { axis: "sides", x: entry.x + width / 2, y: entry.y + (sides === 2 ? -48 : 0) },
     ];
   }
 
@@ -414,7 +424,7 @@ class Floor extends Phaser.Scene {
     return this.handles().find((h) => Math.abs(px - h.x) <= 12 && Math.abs(py - h.y) <= 12)?.axis ?? null;
   }
 
-  async resize(pointer) {
+  resize(pointer) {
     const entry = this.drag.entry;
     const was = clusterSize(entry.size);
     const size = { ...was };
@@ -422,10 +432,8 @@ class Floor extends Phaser.Scene {
     else size.sides = pointer.worldY < entry.y - 24 ? 2 : 1;
     if (size.cols === was.cols && size.sides === was.sides) return;
     entry.size = size;
-    await this.draw(entry);
-    this.sortAll();
-    select(entry);
-    setDirty(true);
+    changed();
+    select({ entry });
   }
 
   /** The painted rectangle goes into the shell, and the walls and floors are worked out again. */
@@ -435,27 +443,16 @@ class Floor extends Phaser.Scene {
     paint(this.shell, from[0], from[1], to[0], to[1], brush);
     shellDirty = true;
     setDirty(true);
-    await this.drawShell(false);
-    this.drawOverlay();
+    await this.loadShell(false);
   }
 
+  /** Delete: something placed goes; something generated is hidden, as an override, so it stays gone. */
   removeSelected() {
     if (!selected || typing()) return;
-    layout.items = layout.items.filter((entry) => entry !== selected);
-    this.sprites.get(selected)?.forEach((image) => image.destroy());
-    this.sprites.delete(selected);
+    if (selected.entry) layout.items = layout.items.filter((entry) => entry !== selected.entry);
+    else layout.overrides[selected.key] = { hidden: true };
     select(null);
-    this.sortAll();
-    setDirty(true);
-  }
-
-  async choose(key, id) {
-    if (!selected) return;
-    selected.choose = { ...selected.choose, [key]: id };
-    await this.draw(selected);
-    this.sortAll();
-    this.drawOverlay();
-    setDirty(true);
+    changed();
   }
 
   drawOverlay() {
@@ -464,7 +461,7 @@ class Floor extends Phaser.Scene {
     g.clear();
     if ($("#show-colliders").checked) {
       for (const [x, y, w, h] of this.solids()) g.fillStyle(0xe5484d, 0.25).fillRect(x, y, w, h);
-      for (const { item, x, y } of this.pieces()) for (const seat of item.seats) g.fillStyle(0x3e63dd, 1).fillCircle(x + seat.x, y + seat.y, 3);
+      for (const seat of seatsOf(this.pieces)) g.fillStyle(0x3e63dd, 1).fillCircle(seat.x, seat.y, 3);
     }
     if (this.painting) {
       const { from, to } = this.painting;
@@ -472,13 +469,14 @@ class Floor extends Phaser.Scene {
       const [x1, y1] = [Math.max(from[0], to[0]), Math.max(from[1], to[1])];
       g.lineStyle(2, 0xe5484d, 1).strokeRect(x0 * TILE, y0 * TILE, (x1 - x0 + 1) * TILE, (y1 - y0 + 1) * TILE);
     }
-    if (selected) {
-      const [x, y, w, h] = this.outline(selected);
+    const box = selected && this.outlineOf(selected);
+    if (box) {
+      const [x, y, w, h] = box;
       g.lineStyle(2, 0x1c1c1e, 1).strokeRect(x - 1, y - 1, w + 2, h + 2);
       g.lineStyle(1, 0xffffff, 1).strokeRect(x - 2.5, y - 2.5, w + 5, h + 5);
-      for (const h of this.handles()) {
-        g.fillStyle(0xffffff, 1).fillCircle(h.x, h.y, 8);
-        g.lineStyle(2, 0x1c1c1e, 1).strokeCircle(h.x, h.y, 8);
+      for (const handle of this.handles()) {
+        g.fillStyle(0xffffff, 1).fillCircle(handle.x, handle.y, 8);
+        g.lineStyle(2, 0x1c1c1e, 1).strokeCircle(handle.x, handle.y, 8);
       }
     }
   }
@@ -492,12 +490,9 @@ class Floor extends Phaser.Scene {
       return;
     }
     let best = null;
-    for (const { item, x, y } of this.pieces()) {
-      for (const seat of item.seats) {
-        const sx = x + seat.x, sy = y + seat.y;
-        const distance = Math.hypot(sx - this.avatar.x, sy - this.avatar.y);
-        if (distance < 56 && (!best || distance < best.distance)) best = { x: sx, y: sy, dir: seat.dir, distance };
-      }
+    for (const seat of seatsOf(this.pieces)) {
+      const distance = Math.hypot(seat.x - this.avatar.x, seat.y - this.avatar.y);
+      if (distance < 56 && (!best || distance < best.distance)) best = { ...seat, distance };
     }
     if (!best) return;
     const shift = SEAT[best.dir];
@@ -536,19 +531,22 @@ $("#save").addEventListener("click", save);
 $("#layout-id").addEventListener("change", (event) => openLayout(event.target.value));
 $("#layout-name").addEventListener("input", () => setDirty(true));
 $("#show-colliders").addEventListener("change", () => scene?.drawOverlay());
-$("#shuffle").addEventListener("click", async () => {
-  if (!selected) return;
-  selected.salt = (selected.salt ?? 0) + 1;
-  await scene.draw(selected);
-  scene.sortAll();
-  setDirty(true);
+document.querySelectorAll("[data-mode]").forEach((b) => b.addEventListener("click", () => setMode(b.dataset.mode)));
+$("#shuffle").addEventListener("click", () => {
+  if (!selected?.entry) return;
+  selected.entry.salt = (selected.entry.salt ?? 0) + 1;
+  changed();
+});
+$("#put-back").addEventListener("click", () => {
+  if (!selected?.key) return;
+  delete layout.overrides[selected.key];
+  select(null);
+  changed();
 });
 $("#reseed").addEventListener("click", () => {
   layout.seed = Math.floor(Math.random() * 1e6);
-  scene.rebuild();
-  setDirty(true);
+  changed();
 });
-document.querySelectorAll("[data-mode]").forEach((b) => b.addEventListener("click", () => setMode(b.dataset.mode)));
 $("#new-layout").addEventListener("click", () => {
   const id = prompt("Layout id (a-z, 0-9, -)")?.trim().toLowerCase();
   if (id && /^[a-z0-9-]+$/.test(id)) newLayout(id);
@@ -565,19 +563,18 @@ window.layoutLab = {
   scene: () => scene,
   layout: () => layout,
   catalog: () => catalog,
-  place: async (id, x, y, extra = {}) => {
+  place: (id, x, y, extra = {}) => {
     const entry = { id: newId(), item: id, x, y, ...extra };
     layout.items.push(entry);
-    await scene.draw(entry);
-    scene.sortAll();
-    setDirty(true);
+    changed();
     return entry;
   },
   clear: () => {
     layout.items = [];
-    scene.rebuild();
-    setDirty(true);
+    layout.overrides = {};
+    changed();
   },
+  refresh: () => scene.refresh(),
   save,
   newLayout,
 };

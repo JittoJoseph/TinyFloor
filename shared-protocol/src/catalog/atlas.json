@@ -1,7 +1,7 @@
 {
  "image": "catalog/items.png",
  "width": 1024,
- "height": 410,
+ "height": 376,
  "frames": {
   "armchair": [
    284,
@@ -28,19 +28,13 @@
    64
   ],
   "back-monitor": [
-   874,
+   806,
    328,
    32,
    32
   ],
   "back-monitor-light": [
-   908,
-   328,
-   32,
-   32
-  ],
-  "back-monitor-white": [
-   942,
+   840,
    328,
    32,
    32
@@ -49,18 +43,6 @@
    442,
    328,
    96,
-   32
-  ],
-  "back-papers": [
-   0,
-   378,
-   32,
-   32
-  ],
-  "back-plant": [
-   976,
-   328,
-   32,
    32
   ],
   "bench-pale": [
@@ -99,37 +81,37 @@
    32,
    48
   ],
-  "chair-black-down": [
+  "chair-black-back": [
    34,
    328,
    32,
    48
   ],
-  "chair-black-down-high": [
+  "chair-black-back-high": [
    318,
    262,
    32,
    64
   ],
-  "chair-black-up": [
+  "chair-black-front": [
    352,
    262,
    32,
    64
   ],
-  "chair-black-up-low": [
+  "chair-black-front-low": [
    68,
    328,
    32,
    48
   ],
-  "chair-tan-down": [
+  "chair-tan-back": [
    102,
    328,
    32,
    48
   ],
-  "chair-tan-up": [
+  "chair-tan-front": [
    386,
    262,
    32,
@@ -146,18 +128,6 @@
    262,
    64,
    48
-  ],
-  "desk-paper": [
-   806,
-   328,
-   32,
-   32
-  ],
-  "desk-papers": [
-   840,
-   328,
-   32,
-   32
   ],
   "desk-phone-a": [
    738,

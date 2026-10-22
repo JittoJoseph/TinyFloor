@@ -249,8 +249,8 @@
       "notes": ""
     },
     {
-      "id": "chair-black-down",
-      "name": "Office chair, black",
+      "id": "chair-black-back",
+      "name": "Office chair, black, from behind",
       "category": "seating",
       "themes": [
         "office"
@@ -260,114 +260,6 @@
         "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
         "rect": [
           0,
-          272,
-          32,
-          48
-        ]
-      },
-      "sortY": 44,
-      "colliders": [
-        [
-          2,
-          28,
-          28,
-          16
-        ]
-      ],
-      "seats": [
-        {
-          "x": 16,
-          "y": 46,
-          "dir": "down"
-        }
-      ],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "chair-black-down-high",
-      "name": "Office chair, black",
-      "category": "seating",
-      "themes": [
-        "office"
-      ],
-      "mount": "floor",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          96,
-          256,
-          32,
-          64
-        ]
-      },
-      "sortY": 60,
-      "colliders": [
-        [
-          2,
-          44,
-          28,
-          16
-        ]
-      ],
-      "seats": [
-        {
-          "x": 16,
-          "y": 62,
-          "dir": "down"
-        }
-      ],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "chair-black-up",
-      "name": "Office chair, black",
-      "category": "seating",
-      "themes": [
-        "office"
-      ],
-      "mount": "floor",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          64,
-          256,
-          32,
-          64
-        ]
-      },
-      "sortY": 64,
-      "colliders": [
-        [
-          2,
-          44,
-          28,
-          16
-        ]
-      ],
-      "seats": [
-        {
-          "x": 16,
-          "y": 62,
-          "dir": "up"
-        }
-      ],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "chair-black-up-low",
-      "name": "Office chair, black",
-      "category": "seating",
-      "themes": [
-        "office"
-      ],
-      "mount": "floor",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          32,
           272,
           32,
           48
@@ -393,8 +285,8 @@
       "notes": ""
     },
     {
-      "id": "chair-tan-down",
-      "name": "Office chair, tan",
+      "id": "chair-black-back-high",
+      "name": "Office chair, black, from behind, high back",
       "category": "seating",
       "themes": [
         "office"
@@ -403,8 +295,80 @@
       "sprite": {
         "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
         "rect": [
-          0,
-          336,
+          96,
+          256,
+          32,
+          64
+        ]
+      },
+      "sortY": 64,
+      "colliders": [
+        [
+          2,
+          44,
+          28,
+          16
+        ]
+      ],
+      "seats": [
+        {
+          "x": 16,
+          "y": 62,
+          "dir": "up"
+        }
+      ],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "chair-black-front",
+      "name": "Office chair, black",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+        "rect": [
+          64,
+          256,
+          32,
+          64
+        ]
+      },
+      "sortY": 60,
+      "colliders": [
+        [
+          2,
+          44,
+          28,
+          16
+        ]
+      ],
+      "seats": [
+        {
+          "x": 16,
+          "y": 62,
+          "dir": "down"
+        }
+      ],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "chair-black-front-low",
+      "name": "Office chair, black, low back",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+        "rect": [
+          32,
+          272,
           32,
           48
         ]
@@ -429,7 +393,43 @@
       "notes": ""
     },
     {
-      "id": "chair-tan-up",
+      "id": "chair-tan-back",
+      "name": "Office chair, tan, from behind",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+        "rect": [
+          0,
+          336,
+          32,
+          48
+        ]
+      },
+      "sortY": 48,
+      "colliders": [
+        [
+          2,
+          28,
+          28,
+          16
+        ]
+      ],
+      "seats": [
+        {
+          "x": 16,
+          "y": 46,
+          "dir": "up"
+        }
+      ],
+      "surface": null,
+      "notes": ""
+    },
+    {
+      "id": "chair-tan-front",
       "name": "Office chair, tan",
       "category": "seating",
       "themes": [
@@ -445,7 +445,7 @@
           64
         ]
       },
-      "sortY": 64,
+      "sortY": 60,
       "colliders": [
         [
           2,
@@ -458,7 +458,7 @@
         {
           "x": 16,
           "y": 62,
-          "dir": "up"
+          "dir": "down"
         }
       ],
       "surface": null,
@@ -1726,23 +1726,23 @@
               48
             ],
             "options": [
-              "chair-black-up",
-              "chair-black-up-low",
-              "chair-tan-up"
+              "chair-black-back-high",
+              "chair-black-back",
+              "chair-tan-back"
             ],
-            "default": "chair-black-up"
+            "default": "chair-black-back-high"
           },
           "back": {
             "at": [
               0,
-              -16
+              -32
             ],
             "options": [
-              "chair-black-down",
-              "chair-black-down-high",
-              "chair-tan-down"
+              "chair-black-front",
+              "chair-black-front-low",
+              "chair-tan-front"
             ],
-            "default": "chair-black-down"
+            "default": "chair-black-front"
           }
         }
       },
@@ -1764,23 +1764,23 @@
               48
             ],
             "options": [
-              "chair-black-up",
-              "chair-black-up-low",
-              "chair-tan-up"
+              "chair-black-back-high",
+              "chair-black-back",
+              "chair-tan-back"
             ],
-            "default": "chair-black-up"
+            "default": "chair-black-back-high"
           },
           "back": {
             "at": [
               0,
-              -16
+              -32
             ],
             "options": [
-              "chair-black-down",
-              "chair-black-down-high",
-              "chair-tan-down"
+              "chair-black-front",
+              "chair-black-front-low",
+              "chair-tan-front"
             ],
-            "default": "chair-black-down"
+            "default": "chair-black-front"
           }
         }
       },
@@ -1802,23 +1802,23 @@
               48
             ],
             "options": [
-              "chair-black-up",
-              "chair-black-up-low",
-              "chair-tan-up"
+              "chair-black-back-high",
+              "chair-black-back",
+              "chair-tan-back"
             ],
-            "default": "chair-black-up"
+            "default": "chair-black-back-high"
           },
           "back": {
             "at": [
               0,
-              -16
+              -32
             ],
             "options": [
-              "chair-black-down",
-              "chair-black-down-high",
-              "chair-tan-down"
+              "chair-black-front",
+              "chair-black-front-low",
+              "chair-tan-front"
             ],
-            "default": "chair-black-down"
+            "default": "chair-black-front"
           }
         }
       },
@@ -1840,23 +1840,23 @@
               48
             ],
             "options": [
-              "chair-black-up",
-              "chair-black-up-low",
-              "chair-tan-up"
+              "chair-black-back-high",
+              "chair-black-back",
+              "chair-tan-back"
             ],
-            "default": "chair-black-up"
+            "default": "chair-black-back-high"
           },
           "back": {
             "at": [
               0,
-              -16
+              -32
             ],
             "options": [
-              "chair-black-down",
-              "chair-black-down-high",
-              "chair-tan-down"
+              "chair-black-front",
+              "chair-black-front-low",
+              "chair-tan-front"
             ],
-            "default": "chair-black-down"
+            "default": "chair-black-front"
           }
         }
       },
@@ -1878,23 +1878,23 @@
               48
             ],
             "options": [
-              "chair-black-up",
-              "chair-black-up-low",
-              "chair-tan-up"
+              "chair-black-back-high",
+              "chair-black-back",
+              "chair-tan-back"
             ],
-            "default": "chair-black-up"
+            "default": "chair-black-back-high"
           },
           "back": {
             "at": [
               0,
-              -16
+              -32
             ],
             "options": [
-              "chair-black-down",
-              "chair-black-down-high",
-              "chair-tan-down"
+              "chair-black-front",
+              "chair-black-front-low",
+              "chair-tan-front"
             ],
-            "default": "chair-black-down"
+            "default": "chair-black-front"
           }
         }
       },
@@ -4073,7 +4073,8 @@
       "colliders": [],
       "seats": [],
       "surface": null,
-      "notes": ""
+      "notes": "",
+      "random": false
     },
     {
       "id": "setup-printer-b",
@@ -4178,7 +4179,8 @@
       "colliders": [],
       "seats": [],
       "surface": null,
-      "notes": ""
+      "notes": "",
+      "random": false
     },
     {
       "id": "desk-plant",
@@ -4314,86 +4316,6 @@
       "notes": ""
     },
     {
-      "id": "desk-paper",
-      "name": "Paper",
-      "category": "decor",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "facing": "front",
-      "desk": {
-        "cols": 1,
-        "rows": 1
-      },
-      "sprite": {
-        "size": [
-          32,
-          32
-        ],
-        "layers": [
-          {
-            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-            "rect": [
-              32,
-              448,
-              32,
-              32
-            ],
-            "at": [
-              0,
-              0
-            ]
-          }
-        ]
-      },
-      "sortY": 32,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "desk-papers",
-      "name": "Papers",
-      "category": "decor",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "facing": "front",
-      "desk": {
-        "cols": 1,
-        "rows": 1
-      },
-      "sprite": {
-        "size": [
-          32,
-          32
-        ],
-        "layers": [
-          {
-            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-            "rect": [
-              64,
-              448,
-              32,
-              32
-            ],
-            "at": [
-              0,
-              0
-            ]
-          }
-        ]
-      },
-      "sortY": 32,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "notes": ""
-    },
-    {
       "id": "back-monitors",
       "name": "Two screens, from behind",
       "category": "tech",
@@ -4482,7 +4404,7 @@
             "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
             "rect": [
               320,
-              224,
+              240,
               32,
               32
             ],
@@ -4522,127 +4444,7 @@
             "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
             "rect": [
               352,
-              224,
-              32,
-              32
-            ],
-            "at": [
-              0,
-              0
-            ]
-          }
-        ]
-      },
-      "sortY": 32,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "back-monitor-white",
-      "name": "Screen, from behind, white",
-      "category": "tech",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "facing": "back",
-      "desk": {
-        "cols": 1,
-        "rows": 1
-      },
-      "sprite": {
-        "size": [
-          32,
-          32
-        ],
-        "layers": [
-          {
-            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-            "rect": [
-              480,
-              320,
-              32,
-              32
-            ],
-            "at": [
-              0,
-              0
-            ]
-          }
-        ]
-      },
-      "sortY": 32,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "back-plant",
-      "name": "Plant, over the divider",
-      "category": "plants",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "facing": "back",
-      "desk": {
-        "cols": 1,
-        "rows": 1
-      },
-      "sprite": {
-        "size": [
-          32,
-          32
-        ],
-        "layers": [
-          {
-            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-            "rect": [
-              192,
-              320,
-              32,
-              32
-            ],
-            "at": [
-              0,
-              0
-            ]
-          }
-        ]
-      },
-      "sortY": 32,
-      "colliders": [],
-      "seats": [],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "back-papers",
-      "name": "Papers, from behind",
-      "category": "decor",
-      "themes": [
-        "office"
-      ],
-      "mount": "surface",
-      "facing": "back",
-      "desk": {
-        "cols": 1,
-        "rows": 1
-      },
-      "sprite": {
-        "size": [
-          32,
-          32
-        ],
-        "layers": [
-          {
-            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-            "rect": [
-              64,
-              448,
+              240,
               32,
               32
             ],

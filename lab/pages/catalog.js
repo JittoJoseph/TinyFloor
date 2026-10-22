@@ -208,7 +208,7 @@ function cluster(byId, item, x, y, choose, place) {
         const inner = byId.get(thing.item);
         if (!inner) return;
         // Near desk things stand on its two rows (tiles 1 and 2 down); far ones on its strip (row 0).
-        pieces.push({ key: `${key}/${desk}/things/${n}`, item: inner, x: dx + thing.col * 32, y: y + thing.row * 32, host: `${key}/${side === "front" ? "front" : "back"}`, desk });
+        pieces.push({ key: `${key}/${desk}/things/${n}`, item: inner, x: dx + thing.col * 32, y: y + thing.row * 32 + (thing.dy ?? 0), host: `${key}/${side === "front" ? "front" : "back"}`, desk });
       });
     }
   }
@@ -225,35 +225,30 @@ function cluster(byId, item, x, y, choose, place) {
 }
 
 /**
- * One desk side's things, in tiles of the desk: [{ item, col, row }]. Near
- * side: a setup (three tiles) beside the person, small things (a tile) on
- * the other side, the tile behind their head left clear. Far side: screens in
- * front of the person, small things along the strip.
+ * One desk side's things, in tiles of the desk: [{ item, col, row, dy? }].
+ * Kept calm: a working desk, not a cluttered one. Near side: usually one
+ * setup (three tiles) beside the person, now and then a plant or a phone on
+ * their other side, the tile behind their head left clear. Far side: the
+ * screens in front of the person, nothing else. Things marked random: false
+ * are only ever put there by hand.
  */
 export function deskThings(things, side, sitAt, rand) {
   const pick = (list) => list[Math.floor(rand() * list.length)];
-  const of = (cols, rows) => things.filter((t) => t.facing === side && t.desk.cols === cols && t.desk.rows === rows);
+  const of = (cols, rows) => things.filter((t) => t.facing === side && t.random !== false && t.desk.cols === cols && t.desk.rows === rows);
   const out = [];
   if (side === "front") {
-    const setups = of(3, 2);
-    if (setups.length && rand() < 0.92) out.push({ item: pick(setups).id, col: sitAt === 3 ? 4 : 1, row: 1 });
-    const smallCols = sitAt === 3 ? [1, 2] : [5, 6];
-    for (const col of smallCols) {
-      const roll = rand();
-      if (roll < 0.3) out.push({ item: pick(of(1, 2)).id, col, row: 1 });
-      // Small things stand at the back of the desk, by the divider, not on its front edge.
-      else if (roll < 0.7) out.push({ item: pick(of(1, 1)).id, col, row: 1 });
-    }
+    const setup = of(3, 2);
+    const small = [...of(1, 2), ...of(1, 1)];
+    const other = sitAt === 3 ? [1, 2] : [5, 6];
+    if (setup.length && rand() < 0.78) out.push({ item: pick(setup).id, col: sitAt === 3 ? 4 : 1, row: 1 });
+    else if (small.length && rand() < 0.6) out.push({ item: pick(small).id, col: sitAt === 3 ? 5 : 2, row: 1 });
+    if (small.length && rand() < 0.3) out.push({ item: pick(small).id, col: other[Math.floor(rand() * 2)], row: 1 });
   } else {
     const screens = of(3, 1);
-    if (screens.length && rand() < 0.8) out.push({ item: pick(screens).id, col: sitAt - 1, row: 0 });
-    else out.push({ item: pick(of(1, 1).filter((t) => /monitor/.test(t.id))).id, col: sitAt, row: 0 });
-    const taken = new Set(out.flatMap((t) => [t.col, t.col + 1, t.col + 2]));
-    for (let col = 1; col <= 6; col++) {
-      if (taken.has(col) || rand() < 0.55) continue;
-      out.push({ item: pick(of(1, 1)).id, col, row: 0 });
-      taken.add(col);
-    }
+    const single = of(1, 1);
+    // The screens' backs sit a little above the strip's top edge, as on the current office's far desks.
+    if (screens.length && rand() < 0.65) out.push({ item: pick(screens).id, col: sitAt - 1, row: 0 });
+    else if (single.length && rand() < 0.7) out.push({ item: pick(single).id, col: sitAt, row: 0, dy: -6 });
   }
   return out.filter((t) => t.item);
 }

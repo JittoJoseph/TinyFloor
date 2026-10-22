@@ -86,8 +86,23 @@ Decided by looking, and checked by the lab on every change (`lab/check.mjs`):
   drawn behind their chair, so you see the back of their head over the desk;
   someone walking past either side is in front of or behind the whole row.
   Tested sitting and walking on both sides in the layout editor.
+- **The office chair's two views**: the plain one faces us, the patterned one
+  is its back. So the plain chair goes where you sit facing us (a desk's far
+  side, above a table), drawn behind you; the patterned one where you sit
+  facing away (a desk's near side, below a table), its back drawn over you.
+  The current floor has them the other way round (`CHAIR_FRAME` in
+  `tools/buildmap.py`), worth fixing with it.
+- **Chairs are tucked in**: a chair's bottom a tile into the desk or table on
+  either side, as the current office's far desks have it.
 - **What's on a desk faces whoever sits there**: screens on the near side, the
-  backs of monitors on the far side; lamps, plants and papers on either.
+  backs of screens on the far side.
+- **Desks are working desks, not cluttered ones.** The current office puts
+  everything on every desk and it reads as a mess; a desk gets one setup or a
+  phone or plant, the far side its screens and nothing else. Some desks are
+  clear.
+- **Things are cut where they are.** Several small things on the sheet sit
+  across a tile line, or overlap their neighbours (papers): cut on tile lines
+  they come out clipped. Cut by their pixels, or left out.
 
 ## Items
 
@@ -159,10 +174,10 @@ Pieces come from three places:
 
 1. **Placed**: what someone put down.
 2. **Generated** from the seed: what a real office has without anyone
-   arranging it. Every desk is filled the way the current office's desks
-   are: a setup (screens and a tower, or a laptop, lamp and phone) beside
-   whoever sits there and a plant, phone or papers on their other side; on the
-   far side two screens seen from behind and odds and ends along the strip.
+   arranging it. Every desk is set up the way the current office's are, but
+   calmer: usually a setup (screens and a tower, or a laptop, lamp and phone)
+   beside whoever sits there, now and then a plant or phone on their other
+   side; on the far side, the screens in front of them.
    Every room's top wall is dressed: the longest wall gets the kitchen
    (vending machines, water, coffee), and walls get shelves, coolers and
    plants standing against them, with whiteboards, charts, notices and

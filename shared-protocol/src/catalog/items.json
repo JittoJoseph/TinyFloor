@@ -2667,9 +2667,9 @@
       ],
       "seats": [],
       "surface": null,
-      "notes": "",
+      "notes": "A long desk seen from above, its drawn side flush against a right-hand wall.",
       "id": "wall-cabinet",
-      "name": "Cabinet",
+      "name": "Side desk",
       "category": "storage",
       "mount": "wallside",
       "sprite": {
@@ -2771,13 +2771,13 @@
           }
         ]
       },
-      "sortY": 92,
+      "sortY": 86,
       "colliders": [
         [
           2,
-          64,
-          60,
-          26
+          8,
+          62,
+          84
         ]
       ]
     },

@@ -42,7 +42,12 @@ export const FLOORS = {
   mauve: 189,
 };
 
-const floorTile = (base, above, left) => base + (above && left ? 1 : above ? 2 : left ? 17 : 18);
+/**
+ * A floor tile with the shadow the walls cast on it: from a wall above, from
+ * one on the left, from both, or, with neither, the small shadow of a wall's
+ * corner up and to the left (where a wall ends beside a doorway, say).
+ */
+const floorTile = (base, above, left, corner) => base + (above && left ? 1 : above ? 2 : left ? 17 : corner ? 3 : 18);
 
 /** A shell's rows as kinds: { kind: "wall" | "floor" | "void", material }. */
 export function cells(shell) {
@@ -138,7 +143,7 @@ export async function renderShell(shell, loadImage) {
         put(ax, ay, edge ? OUTLINE : sample(role(x, y) === "upper" ? material.upper : material.lower, lx, ly));
       } else if (cell.kind === "floor") {
         const base = FLOORS[cell.material] ?? FLOORS.plank;
-        put(ax, ay, sample(floorTile(base, wall(x, y - 1), wall(x - 1, y)), lx, ly));
+        put(ax, ay, sample(floorTile(base, wall(x, y - 1), wall(x - 1, y), wall(x - 1, y - 1)), lx, ly));
       } else {
         put(ax, ay, OUTLINE);
       }
@@ -151,11 +156,23 @@ export async function renderShell(shell, loadImage) {
   return canvas;
 }
 
-/** The tiles you can't walk through: every wall tile. */
+/** What you can't walk through: every wall tile, and a little in front of a wall at your side. */
 export function wallSolids(shell) {
-  const [w] = shell.size;
-  return cells(shell).flatMap((cell, i) => (cell.kind === "wall" ? [[(i % w) * TILE, Math.floor(i / w) * TILE, TILE, TILE]] : []));
+  const [w, h] = shell.size;
+  const grid = cells(shell);
+  const floor = (x, y) => x >= 0 && y >= 0 && x < w && y < h && grid[y * w + x].kind === "floor";
+  return grid.flatMap((cell, i) => {
+    if (cell.kind !== "wall") return [];
+    const x = i % w, y = Math.floor(i / w);
+    // Beside a wall running down the room you stop short of it, not with half of you on it.
+    const left = floor(x - 1, y) ? SIDE_GAP : 0;
+    const right = floor(x + 1, y) ? SIDE_GAP : 0;
+    return [[x * TILE - left, y * TILE, TILE + left + right, TILE]];
+  });
 }
+
+/** How far into the room a wall at your side keeps you: your feet are your middle, and you're about this wide either side of it. */
+const SIDE_GAP = 16;
 
 /** Fills a rectangle of tiles with one legend character: how the editor paints walls and floors. */
 export function paint(shell, x0, y0, x1, y1, char) {

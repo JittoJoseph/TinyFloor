@@ -79,6 +79,19 @@ Decided by looking, and checked by the lab on every change (`lab/check.mjs`):
   up in front** (their back covers you). Egg chairs, a bench and a stool had
   it the wrong way round, with the chair drawn over the person; the rule is
   now checked.
+- **You stop beside things, not in them.** Your feet are a point, but you're
+  about 24px wide: colliders keep that clearance. A wall at your side stops
+  you 16px short of it; a desk bank is one collider from its far desks (or,
+  one-sided, its divider) to just past the near desks' front, and 16px past
+  the posts at either end, so there's no way between its rows, under a desk or
+  half into its end; the side desk is solid over its whole top, not only its
+  front. Walked into from every side in the layout editor.
+- **A wall's corner casts a small shadow** on the floor diagonally below it
+  where no wall is beside or above that floor (where a wall ends at a
+  doorway); the room builder has a tile for it.
+- **Nothing on a desk stands over its chair**: a single screen goes beside the
+  chair, never in front of it, so an empty chair isn't covered. Checked over
+  300 seeds.
 - **Desks can be used from both sides.** Back to back across the divider
   works, once each row of the bank is drawn as one piece with its own sort
   line instead of tile by tile: the far person is drawn behind their desk and

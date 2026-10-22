@@ -102,9 +102,14 @@ function generated(key, build) {
   return made.get(key);
 }
 
-/** The divider, its posts and the near desks, for `cols` desks in a row. */
-function frontRow(finish, cols) {
-  return generated(`front:${finish}:${cols}`, () => {
+/**
+ * The divider, its posts and the near desks, for `cols` desks in a row; and
+ * what you can't walk through for the whole bank: from the divider (or, with
+ * a far side, the far desks' edge) to just in front of the near desks, one
+ * piece, so there's no way in between the rows or under a desk.
+ */
+function frontRow(finish, cols, sides) {
+  return generated(`front:${finish}:${cols}:${sides}`, () => {
     const [fr, fc] = DESK_FINISHES[finish] ?? DESK_FINISHES.maple;
     const width = cols * DESK_STEP + 32;
     const divider = [], desks = [], caps = [];
@@ -132,7 +137,8 @@ function frontRow(finish, cols) {
       mount: "floor",
       sprite: { size: [width, 96], layers: [...divider, ...desks, ...caps] },
       sortY: 92,
-      colliders: [[28, 40, width - 28, 52]],
+      // 16px past the end posts either side, about half of you, so you stop beside the bank rather than half inside it.
+      colliders: [sides === 2 ? [10, 4, width + 4, 102] : [10, 44, width + 4, 62]],
       seats: [],
       surface: null,
     };
@@ -158,7 +164,8 @@ function backRow(finish, cols) {
       mount: "floor",
       sprite: { size: [cols * DESK_STEP + 32, 32], layers },
       sortY: 30,
-      colliders: [[32, 4, cols * DESK_STEP, 28]],
+      // The near row's collider covers the whole bank.
+      colliders: [],
       seats: [],
       surface: null,
     };
@@ -187,7 +194,7 @@ function cluster(byId, item, x, y, choose, place) {
   const seed = place.seed ?? 0;
   const overrides = place.overrides ?? {};
   const finish = item.cluster.finish;
-  const front = frontRow(finish, cols);
+  const front = frontRow(finish, cols, sides);
   const back = sides === 2 ? backRow(finish, cols) : null;
   const pieces = [];
   if (back) pieces.push({ key: `${key}/back`, item: back, x, y });
@@ -249,7 +256,8 @@ export function deskThings(things, side, sitAt, rand) {
     const single = of(1, 1);
     // The screens' backs sit a little above the strip's top edge, as on the current office's far desks.
     if (screens.length && rand() < 0.65) out.push({ item: pick(screens).id, col: sitAt - 1, row: 0 });
-    else if (single.length && rand() < 0.7) out.push({ item: pick(single).id, col: sitAt, row: 0, dy: -6 });
+    // One screen stands beside the person, not in front of their chair, where it would cover it when they're away.
+    else if (single.length && rand() < 0.7) out.push({ item: pick(single).id, col: sitAt + (rand() < 0.5 ? -1 : 1), row: 0, dy: -6 });
   }
   return out.filter((t) => t.item);
 }

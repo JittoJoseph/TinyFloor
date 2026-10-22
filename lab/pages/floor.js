@@ -121,7 +121,9 @@ export function sideWalls(shell) {
  */
 const STANDING = ["wall-bookcase", "wall-shelf", "wall-plant", "wall-plant2", "wall-cooler", "wall-plant"];
 const HUNG = ["wall-painting", "wall-notice", "wall-poster", "wall-charts", "wall-cert", "wall-art", "wall-trophy", "board-blank", "board-chart", "window-wide", "picture-forest", "picture-hills"];
-const SIDE = ["plant-tall", "plant-snake", "wall-cabinet", "water-cooler", "plant-tall", "plant-small"];
+const SIDE = ["plant-tall", "plant-snake", "water-cooler", "plant-tall", "plant-small"];
+// The side desk is drawn from its left: it only stands flush against a wall on its right.
+const SIDE_RIGHT = [...SIDE, "wall-cabinet"];
 
 function dressWalls(byId, shell, seed, placed) {
   const blocked = placed.map(({ item, x, y }) => {
@@ -186,7 +188,7 @@ function dressWalls(byId, shell, seed, placed) {
     // Clear of the corner at the top (the top wall's things are there) and of the run's ends, where doorways are.
     for (let ty = run.y + 3; ty < run.y + run.length - 1; ) {
       if (rand() < 0.5) {
-        const options = SIDE.filter((id) => byId.has(id));
+        const options = (run.side === "right" ? SIDE_RIGHT : SIDE).filter((id) => byId.has(id));
         const item = byId.get(options[Math.floor(rand() * options.length)]);
         const [w, h] = spriteSize(item.sprite);
         const x = run.side === "left" ? run.x * TILE : (run.x + 1) * TILE - w;

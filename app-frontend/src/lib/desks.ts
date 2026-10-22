@@ -84,3 +84,13 @@ export function confirmClaim(seat: number) {
 export const cancelClaim = () => state.asking !== null && set({ asking: null });
 
 export const clearClaimed = () => state.claimed !== null && set({ claimed: null });
+
+let goHome: (() => void) | null = null;
+
+/** The floor says how to walk you to your desk, while it's open. */
+export const setGoHome = (walk: (() => void) | null) => {
+  goHome = walk;
+};
+
+/** Walks you to your desk and sits you down, from anywhere on the floor. */
+export const goToMyDesk = () => goHome?.();

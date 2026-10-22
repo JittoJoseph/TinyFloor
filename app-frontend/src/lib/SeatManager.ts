@@ -9,7 +9,7 @@ import { SceneLabel } from "./SceneLabel";
 import { sceneText } from "./sceneText";
 import { pixelToTile } from "@/lib/types";
 import { isDesk } from "@shared/map";
-import { cancelClaim, deskAt, deskState, requestClaim, setMySeat, subscribeDesks } from "./desks";
+import { cancelClaim, deskAt, deskOf, deskState, requestClaim, setGoHome, setMySeat, subscribeDesks } from "./desks";
 import { floorStatusOf, subscribeFloor } from "./floor";
 import { DeskPlate } from "./DeskPlate";
 
@@ -117,6 +117,10 @@ export class SeatManager {
       );
     });
     this.unsubscribeDesks = subscribeDesks(() => this.changed());
+    setGoHome(() => {
+      const mine = deskOf(deskState().desks, this.selfId);
+      if (mine) this.goToDesk(mine.seat);
+    });
     // An owner's dot follows them in and out of the office.
     this.unsubscribeFloor = subscribeFloor(() => this.showPlates());
 
@@ -340,6 +344,7 @@ export class SeatManager {
   destroy() {
     this.unsubscribe?.();
     this.unsubscribeDesks();
+    setGoHome(null);
     this.unsubscribeFloor();
     this.plates.forEach((plate) => plate.destroy());
     setMySeat(null);

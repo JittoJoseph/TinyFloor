@@ -806,7 +806,8 @@
     "yours": "Je bureau",
     "claimAsk": "Dit bureau claimen? Je huidige bureau komt dan vrij.",
     "claimConfirm": "Claimen",
-    "keepMine": "Mijn bureau houden"
+    "keepMine": "Mijn bureau houden",
+    "goTo": "Naar je bureau"
   },
   "note": {
     "title": "Statusnotitie",

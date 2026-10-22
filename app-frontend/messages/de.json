@@ -806,7 +806,8 @@
     "yours": "Dein Schreibtisch",
     "claimAsk": "Diesen Platz beanspruchen? Dein jetziger Platz wird frei.",
     "claimConfirm": "Beanspruchen",
-    "keepMine": "Meinen Platz behalten"
+    "keepMine": "Meinen Platz behalten",
+    "goTo": "Zu deinem Platz"
   },
   "note": {
     "title": "Statusnotiz",

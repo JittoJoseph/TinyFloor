@@ -806,7 +806,8 @@
     "yours": "Sua mesa",
     "claimAsk": "Reservar esta mesa? Sua mesa atual ficará livre.",
     "claimConfirm": "Reservar",
-    "keepMine": "Manter a minha"
+    "keepMine": "Manter a minha",
+    "goTo": "Ir para sua mesa"
   },
   "note": {
     "title": "Nota de status",

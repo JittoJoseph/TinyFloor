@@ -806,7 +806,8 @@
     "yours": "Ditt skrivbord",
     "claimAsk": "Ta det här skrivbordet? Ditt nuvarande skrivbord blir ledigt.",
     "claimConfirm": "Ta det",
-    "keepMine": "Behåll mitt"
+    "keepMine": "Behåll mitt",
+    "goTo": "Gå till ditt skrivbord"
   },
   "note": {
     "title": "Statusnotis",

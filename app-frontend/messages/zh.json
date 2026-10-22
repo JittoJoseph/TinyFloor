@@ -806,7 +806,8 @@
     "yours": "你的工位",
     "claimAsk": "认领这个工位？你当前的工位将被释放。",
     "claimConfirm": "认领",
-    "keepMine": "保留我的工位"
+    "keepMine": "保留我的工位",
+    "goTo": "前往你的工位"
   },
   "note": {
     "title": "状态备注",

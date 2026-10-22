@@ -806,7 +806,8 @@
     "yours": "Dit skrivebord",
     "claimAsk": "Tag dette skrivebord? Dit nuværende skrivebord bliver ledigt.",
     "claimConfirm": "Tag det",
-    "keepMine": "Behold mit"
+    "keepMine": "Behold mit",
+    "goTo": "Gå til dit skrivebord"
   },
   "note": {
     "title": "Statusnote",

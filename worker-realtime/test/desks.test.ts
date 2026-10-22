@@ -1,10 +1,13 @@
-import { exports } from "cloudflare:workers";
+import { runInDurableObject } from "cloudflare:test";
+import { env, exports } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
-import { DESK_SEATS, deskArrival, seatTile } from "../../shared-protocol/src";
+import { DESK_SEATS, FLOOR, deskArrival, deskPoint, oldDeskPoint, OLD_DESKS, seatTile } from "../../shared-protocol/src";
+import { Desks } from "../src/desks";
 import { Client, settle, uniqueRoom } from "./client";
 
 const DESK = DESK_SEATS[0];
 const OTHER_DESK = DESK_SEATS[1];
+const MEETING_CHAIR = FLOOR.seats.find((seat) => seat.zone === "meeting")!.id;
 
 describe("desks", () => {
   it("lets a member make a desk theirs, and tells everyone", async () => {
@@ -33,7 +36,7 @@ describe("desks", () => {
     const ben = await Client.open(room, { sub: "ben" });
     await ben.next("welcome");
     ben.send({ t: "desk_claim", seat: DESK });
-    ben.send({ t: "desk_claim", seat: 388 }); // a meeting room chair
+    ben.send({ t: "desk_claim", seat: MEETING_CHAIR });
     const guest = await Client.open(room, { sub: "gus", role: "guest" });
     await guest.next("welcome");
     guest.send({ t: "desk_claim", seat: OTHER_DESK });
@@ -91,6 +94,32 @@ describe("desks", () => {
 
     await exports.RealtimeAdmin.removeMember(room, "ava");
     expect((await ben.next("desks")).desks).toEqual([]);
+  });
+
+  it("moves claims from the old floor to the nearest new desks, earliest first, once", async () => {
+    const room = uniqueRoom();
+    const ava = await Client.open(room, { sub: "ava" });
+    await ava.next("welcome");
+    await runInDurableObject(env.ROOM.getByName(room), (_room, state) => {
+      const sql = state.storage.sql;
+      // An office as it was on the hand-made map: every old desk claimed, the first ones first.
+      sql.exec("DELETE FROM floor");
+      OLD_DESKS.forEach((seat, n) => sql.exec("INSERT INTO desks (seat, user_id, name, claimed_at) VALUES (?, ?, ?, ?)", seat, `user-${n}`, `Person ${n}`, 1000 + n));
+      const moved = new Desks(sql).list();
+
+      // Everyone who can have a desk keeps one, each on a desk of the new floor, no two on one.
+      expect(moved).toHaveLength(Math.min(OLD_DESKS.length, DESK_SEATS.length));
+      expect(new Set(moved.map((desk) => desk.seat)).size).toBe(moved.length);
+      for (const desk of moved) expect(DESK_SEATS).toContain(desk.seat);
+      // The earliest claim got the desk nearest its old one; the latest, when there weren't enough, were let go.
+      const first = oldDeskPoint(OLD_DESKS[0]);
+      const nearest = [...DESK_SEATS].sort((a, b) => Math.hypot(deskPoint(a)!.x - first.x, deskPoint(a)!.y - first.y) - Math.hypot(deskPoint(b)!.x - first.x, deskPoint(b)!.y - first.y))[0];
+      expect(moved.find((desk) => desk.userId === "user-0")?.seat).toBe(nearest);
+      expect(moved.some((desk) => desk.userId === `user-${OLD_DESKS.length - 1}`)).toBe(OLD_DESKS.length <= DESK_SEATS.length);
+
+      // Once: the room starting again leaves them where they are.
+      expect(new Desks(sql).list()).toEqual(moved);
+    });
   });
 
   it("keeps the lobby free of desks", async () => {

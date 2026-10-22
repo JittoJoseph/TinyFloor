@@ -1575,46 +1575,6 @@
       "notes": "Desks in a row, one or two sides, sized when placed: the divider, posts, chairs and what is on the desks follow."
     },
     {
-      "id": "desk-cluster-graphite",
-      "name": "Desks, graphite",
-      "category": "desks",
-      "themes": [
-        "office"
-      ],
-      "cluster": {
-        "finish": "graphite",
-        "chairs": {
-          "front": {
-            "at": [
-              0,
-              64
-            ],
-            "options": [
-              "chair-black-back",
-              "chair-black-mesh-back",
-              "chair-tan-back",
-              "chair-tan-mesh-back"
-            ],
-            "default": "chair-black-back"
-          },
-          "back": {
-            "at": [
-              0,
-              -32
-            ],
-            "options": [
-              "chair-black-mesh",
-              "chair-black",
-              "chair-tan-mesh",
-              "chair-tan"
-            ],
-            "default": "chair-black-mesh"
-          }
-        }
-      },
-      "notes": "Desks in a row, one or two sides, sized when placed: the divider, posts, chairs and what is on the desks follow."
-    },
-    {
       "id": "desk-cluster-white",
       "name": "Desks, white",
       "category": "desks",

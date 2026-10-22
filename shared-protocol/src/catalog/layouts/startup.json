@@ -2,6 +2,30 @@
  "id": "startup",
  "name": "Startup",
  "shell": "office",
+ "seed": 48213,
+ "anchors": {
+  "zones": [
+   {
+    "name": "meeting",
+    "x": 32,
+    "y": 64,
+    "width": 416,
+    "height": 448
+   }
+  ],
+  "table": {
+   "x": 96,
+   "y": 224,
+   "width": 224,
+   "height": 96
+  },
+  "whiteboard": {
+   "x": 704,
+   "y": 0,
+   "width": 96,
+   "height": 64
+  }
+ },
  "items": [
   {
    "id": "lpadec",
@@ -158,7 +182,6 @@
    "y": 768
   }
  ],
- "seed": 48213,
  "overrides": {
   "lpadec/back-0/things/0": {
    "hidden": true

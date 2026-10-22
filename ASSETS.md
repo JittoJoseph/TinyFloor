@@ -13,12 +13,17 @@ counts as redistributing, so these files are **not** in this repository:
 *-frontend/public/characters/*.png
 *-frontend/public/tilesets/textures/*.png
 *-frontend/public/tilesets/items/*.png
+*-frontend/public/catalog/*.png
 ```
 
-The map (`app-frontend/public/tilesets/office-map.tmj`) and the pictures
-rendered from it (`web-shared/public/floor.webp` and the social cards in
+The floor (`shared-protocol/src/catalog/floors/startup.json`, built by the lab
+from its template; `docs/customization.md`) is our own work and stays in the
+repository; what it draws is the room builder sheet and the catalog's atlas
+(`catalog/items.png`, baked by `pnpm --dir lab build`). The old hand-made map
+(`app-frontend/public/tilesets/office-map.tmj`) and the pictures rendered from
+it (`web-shared/public/floor.webp` and the social cards in
 `marketing-frontend/public/og/`, drawn by `marketing-frontend/scripts/pictures.mjs`)
-are our own work and stay in the repository.
+stay too, for the website.
 
 ## How a build gets them
 

@@ -200,16 +200,19 @@ function cluster(byId, item, x, y, choose, place) {
   if (back) pieces.push({ key: `${key}/back`, item: back, x, y });
   pieces.push({ key: `${key}/front`, item: front, x, y });
   const things = [...byId.values()].filter((thing) => thing.desk);
+  // A baked bank (a template's) says where each chair is, and its desk things and plants are pieces of their own.
+  const baked = place.desks;
   for (let c = 0; c < cols; c++) {
     const dx = x + c * DESK_STEP;
     for (const side of back ? ["front", "back"] : ["front"]) {
       const desk = `${side}-${c}`;
       const rand = random(`${seed}|${key}|${place.salt ?? 0}|${desk}`);
       // A tile left or right of the desk's middle: tile 3 or 4 of the six.
-      const sitAt = rand() < 0.5 ? 3 : 4;
+      const sitAt = baked ? (baked[desk] ?? 3) : rand() < 0.5 ? 3 : 4;
       const slot = item.cluster.chairs[side];
       const { item: chair, dy } = slotted(byId, slot, choose[desk] ?? choose[side]);
       if (chair) pieces.push({ key: `${key}/${desk}/chair`, item: chair, x: dx + sitAt * 32, y: y + slot.at[1] + dy, seat: desk });
+      if (baked) continue;
       const list = overrides[`${key}/${desk}/things`]?.things ?? deskThings(things, side, sitAt, rand);
       list.forEach((thing, n) => {
         const inner = byId.get(thing.item);
@@ -219,6 +222,7 @@ function cluster(byId, item, x, y, choose, place) {
       });
     }
   }
+  if (baked) return pieces;
   // A plant standing by every bank, at one end, and sometimes at the other too.
   const ends = random(`${seed}|${key}|${place.salt ?? 0}|ends`);
   const plants = ["plant-tall", "plant-snake", "plant-small"].filter((id) => byId.has(id));

@@ -6,7 +6,7 @@
 /* global Phaser */
 import { TILE, SPEED, SEAT, SIT_FRAME, down16, loadAvatar, avatarAnims, itemFrame, drawItem, heldDirection } from "./common.js";
 import { DESK_STEP, bounds, check, clusterSize, expand, isCluster, spriteSize } from "./catalog.js";
-import { buildFloor, seatsOf, solidsOf } from "./floor.js";
+import { bake, buildFloor, checkTemplate, seatsOf, solidsOf } from "./floor.js";
 import { FLOORS, WALLS, paint, renderShell, wallSolids } from "./shell.js";
 
 const $ = (selector) => document.querySelector(selector);
@@ -547,6 +547,24 @@ $("#reseed").addEventListener("click", () => {
   layout.seed = Math.floor(Math.random() * 1e6);
   changed();
 });
+/**
+ * Freezes the office into a template (floor.js, bake), under the layout's id:
+ * a new version when anything in it changed, the same one when nothing did.
+ * Templates are what offices are made from; layouts and seeds stay in the lab.
+ */
+async function bakeTemplate() {
+  if (!layout || !scene?.shell) return null;
+  const old = await fetch(`/api/templates/${layout.id}`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const template = bake(byId, scene.shell, layout, { version: old?.version ?? 1, theme: old?.theme ?? "startup" });
+  const same = old && JSON.stringify({ ...old, version: 0 }) === JSON.stringify({ ...template, version: 0 });
+  if (old && !same) template.version = old.version + 1;
+  const problems = checkTemplate(byId, template);
+  if (problems.length) return alert(`Not baked:\n${problems.join("\n")}`), null;
+  if (!same) await fetch(`/api/templates/${layout.id}`, { method: "PUT", body: JSON.stringify(template) });
+  $("#status").textContent += ` · ${same ? "unchanged" : "baked"} ${template.id}@${template.version}`;
+  return template;
+}
+$("#bake").addEventListener("click", () => bakeTemplate());
 $("#new-layout").addEventListener("click", () => {
   const id = prompt("Layout id (a-z, 0-9, -)")?.trim().toLowerCase();
   if (id && /^[a-z0-9-]+$/.test(id)) newLayout(id);
@@ -575,6 +593,7 @@ window.layoutLab = {
     changed();
   },
   refresh: () => scene.refresh(),
+  bake: bakeTemplate,
   save,
   newLayout,
 };

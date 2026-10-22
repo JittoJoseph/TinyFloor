@@ -1,39 +1,82 @@
+import startup from "./catalog/floors/startup.json";
+
 export const MAP_WIDTH_TILES = 48;
 export const MAP_HEIGHT_TILES = 32;
 
 /**
- * The chairs at desks: every chair on the floor outside the meeting room, by
- * the id the floor gives each chair (its tile, row × width + column, counted
- * from the chair's lower edge). A desk can be someone's own (docs/product.md); the
- * meeting room's chairs are everyone's.
- *
- * Each has the tile you arrive on (docs/product.md): two steps back from where you
- * stand to sit, with a straight walk in. Worked out by running the floor's own
- * NavGrid (app-frontend lib/Navigation.ts) over office-map.tmj: from each
- * chair's standing spot (SeatManager.poseFor), two tiles further from the desk,
- * walkable, with a path back of at most a few steps. 1159's standing spot is
- * inside a collider, so its arrival is the walkable tile straight above. Work
- * them out again if the map changes.
+ * The office everyone's floor is: the Startup template, worked out by the lab
+ * (lab/build.mjs) into everything the floor draws and the room checks. Its
+ * seats are numbered by the tile they're on (row × width + column).
  */
-const DESK_ARRIVALS: Readonly<Record<number, readonly [number, number]>> = {
-  404: [20, 4], 410: [26, 4], 548: [20, 13], 554: [26, 13], 658: [34, 9], 664: [40, 9], 802: [34, 18], 808: [40, 18],
-  981: [21, 16], 987: [27, 16], 1125: [21, 25], 1131: [27, 25], 1159: [7, 19], 1235: [35, 21], 1241: [41, 21],
-  1253: [5, 28], 1257: [9, 28], 1379: [35, 30], 1385: [41, 30],
-};
+export const FLOOR = startup as unknown as Floor;
+/** Which template and version the floor is, so a room knows when its desks need moving to it. */
+export const FLOOR_VERSION = `${FLOOR.id}@${FLOOR.version}`;
 
-export const DESK_SEATS: readonly number[] = Object.keys(DESK_ARRIVALS).map(Number);
+export interface Floor {
+  id: string;
+  version: number;
+  shell: { size: [number, number]; legend: Record<string, { kind: "wall" | "floor" | "void"; material?: string }>; rows: string[] };
+  anchors: {
+    zones?: Array<{ name: string; x: number; y: number; width: number; height: number }>;
+    table?: { x: number; y: number; width: number; height: number };
+    whiteboard?: { x: number; y: number; width: number; height: number };
+  };
+  /** Everything drawn, by its item on the atlas (catalog/atlas.json), at its top left, at its depth. */
+  pieces: Array<{ key: string; item: string; x: number; y: number; depth: number }>;
+  /** What you can't walk through: [x, y, width, height]. */
+  solids: Array<[number, number, number, number]>;
+  seats: FloorSeat[];
+}
 
-export const isDesk = (seat: number): boolean => seat in DESK_ARRIVALS;
+export interface FloorSeat {
+  id: number;
+  key: string;
+  /** Where whoever sits there is: the seat's point, in pixels. */
+  x: number;
+  y: number;
+  dir: "up" | "down";
+  /** A desk's own key; only desks can be someone's (docs/product.md). */
+  desk?: string;
+  /** Where you arrive for a desk: a walkable tile two steps back from it, worked out by the lab. */
+  arrival?: [number, number];
+  zone?: string;
+}
+
+const DESKS = FLOOR.seats.filter((seat) => seat.desk && seat.arrival);
+const ARRIVALS = new Map(DESKS.map((seat) => [seat.id, seat.arrival!] as const));
+
+/** The chairs at desks: the ones that can be someone's. The meeting room's and the break room's are everyone's. */
+export const DESK_SEATS: readonly number[] = DESKS.map((seat) => seat.id);
+
+export const isDesk = (seat: number): boolean => ARRIVALS.has(seat);
 
 /** Where you appear arriving for this desk: near it, standing, to walk in and sit down. */
 export function deskArrival(seat: number): { x: number; y: number } | null {
-  const tile = DESK_ARRIVALS[seat];
+  const tile = ARRIVALS.get(seat);
   return tile ? { x: tile[0], y: tile[1] } : null;
 }
 
-/** The tile someone sits on at a chair, from the chair's id: the row above its lower edge. */
+/** Where a desk sits, in pixels: for moving a claim to the desk nearest it. */
+export function deskPoint(seat: number): { x: number; y: number } | null {
+  const desk = DESKS.find((one) => one.id === seat);
+  return desk ? { x: desk.x, y: desk.y } : null;
+}
+
+/** The tile a seat is on, from its id. */
 export function seatTile(seat: number): { x: number; y: number } {
-  return { x: seat % MAP_WIDTH_TILES, y: Math.floor(seat / MAP_WIDTH_TILES) - 1 };
+  return { x: seat % MAP_WIDTH_TILES, y: Math.floor(seat / MAP_WIDTH_TILES) };
+}
+
+/**
+ * The desks of the floor before the Startup template (the hand-made map, to
+ * October 2026), by their old ids: each the tile of its chair's lower edge.
+ * Kept only so a room can move its claims to the nearest new desk, once.
+ */
+export const OLD_DESKS: readonly number[] = [404, 410, 548, 554, 658, 664, 802, 808, 981, 987, 1125, 1131, 1159, 1235, 1241, 1253, 1257, 1379, 1385];
+
+/** Where an old desk's chair stood, in pixels: the middle of the tile above its lower edge. */
+export function oldDeskPoint(seat: number): { x: number; y: number } {
+  return { x: (seat % MAP_WIDTH_TILES) * 32 + 16, y: Math.floor(seat / MAP_WIDTH_TILES) * 32 - 16 };
 }
 
 /** Inside the office walls. Walkability is the client's job; the server only keeps people on the map. */

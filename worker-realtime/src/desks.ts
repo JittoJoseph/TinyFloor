@@ -1,4 +1,4 @@
-import { isDesk, type Desk } from "../../shared-protocol/src";
+import { DESK_SEATS, FLOOR_VERSION, deskPoint, isDesk, oldDeskPoint, type Desk } from "../../shared-protocol/src";
 
 /**
  * Whose desk is whose in one office (docs/product.md), kept in the office room's own
@@ -11,6 +11,47 @@ export class Desks {
     sql.exec(
       "CREATE TABLE IF NOT EXISTS desks (seat INTEGER PRIMARY KEY, user_id TEXT NOT NULL UNIQUE, name TEXT NOT NULL, claimed_at INTEGER NOT NULL)",
     );
+    // Which floor the claims are on (shared-protocol map.ts, FLOOR_VERSION); none for the hand-made map before it.
+    sql.exec("CREATE TABLE IF NOT EXISTS floor (version TEXT NOT NULL)");
+    this.moveTo(FLOOR_VERSION);
+  }
+
+  /**
+   * The floor changed: each claim moves to the free desk nearest the one it
+   * was, the earliest claim choosing first, so nobody loses their desk while
+   * there are desks to go round; a claim with none left is let go. Once per
+   * floor. From the hand-made map, the old desks' places are known
+   * (OLD_DESKS); a later version of the template keeps its desks' ids, so a
+   * claim on a desk it still has stays where it is.
+   */
+  private moveTo(version: string): void {
+    const was = this.sql.exec<{ version: string }>("SELECT version FROM floor").toArray()[0]?.version ?? null;
+    if (was === version) return;
+    const claims = this.sql
+      .exec<{ seat: number; user_id: string; name: string; claimed_at: number }>("SELECT seat, user_id, name, claimed_at FROM desks ORDER BY claimed_at, seat")
+      .toArray();
+    const free = new Set(DESK_SEATS);
+    const placed: Array<{ seat: number; user_id: string; name: string; claimed_at: number }> = [];
+    for (const claim of claims) {
+      const from = was === null ? oldDeskPoint(claim.seat) : isDesk(claim.seat) && free.has(claim.seat) ? deskPoint(claim.seat) : null;
+      if (!from) continue;
+      let best: number | null = null;
+      let distance = Infinity;
+      for (const seat of free) {
+        const to = deskPoint(seat)!;
+        const away = Math.hypot(to.x - from.x, to.y - from.y);
+        if (away < distance) [best, distance] = [seat, away];
+      }
+      if (best === null) continue;
+      free.delete(best);
+      placed.push({ ...claim, seat: best });
+    }
+    this.sql.exec("DELETE FROM desks");
+    for (const claim of placed) {
+      this.sql.exec("INSERT INTO desks (seat, user_id, name, claimed_at) VALUES (?, ?, ?, ?)", claim.seat, claim.user_id, claim.name, claim.claimed_at);
+    }
+    this.sql.exec("DELETE FROM floor");
+    this.sql.exec("INSERT INTO floor (version) VALUES (?)", version);
   }
 
   list(): Desk[] {

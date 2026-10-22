@@ -4,6 +4,7 @@
 // assets-pack/ and our characters from private-assets/, and reads and writes
 // the item catalog. Local only; nothing here ships.
 import { createServer } from "node:http";
+import { stripTypeScriptTypes } from "node:module";
 import { mkdir, readFile, writeFile, readdir, stat } from "node:fs/promises";
 import { extname, join, normalize, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -14,6 +15,7 @@ const LAB = join(HERE, "pages");
 const CATALOG = join(ROOT, "shared-protocol", "src", "catalog", "items.json");
 const LAYOUTS = join(ROOT, "shared-protocol", "src", "catalog", "layouts");
 const SHELLS = join(ROOT, "shared-protocol", "src", "catalog", "shells");
+const TEMPLATES = join(ROOT, "shared-protocol", "src", "catalog", "templates");
 const PORT = Number(process.env.PORT || 4400);
 
 // Where each kind of file is served from: /<mount>/<path inside it>.
@@ -23,6 +25,8 @@ const MOUNTS = {
   private: join(ROOT, "private-assets"),
   phaser: join(HERE, "node_modules", "phaser", "dist"),
   app: join(ROOT, "app-frontend", "public"),
+  // What the lab and the app share (the walls' drawing): TypeScript, served with its types stripped.
+  "shared-protocol": join(ROOT, "shared-protocol"),
 };
 
 // What the lab offers to cut items from: folders of single objects, and whole
@@ -96,11 +100,11 @@ createServer(async (request, response) => {
       await writeFile(CATALOG, JSON.stringify(catalog, null, 2) + "\n");
       return send(response, 200, { saved: catalog.items.length });
     }
-    // Layouts and shells: a folder of JSON files each, listed, read and written by id.
-    const folder = path.match(/^\/api\/(layouts|shells)(?:\/([a-z0-9-]+))?$/);
+    // Layouts, shells and templates: a folder of JSON files each, listed, read and written by id.
+    const folder = path.match(/^\/api\/(layouts|shells|templates)(?:\/([a-z0-9-]+))?$/);
     if (folder) {
       const [, kind, id] = folder;
-      const dir = kind === "layouts" ? LAYOUTS : SHELLS;
+      const dir = { layouts: LAYOUTS, shells: SHELLS, templates: TEMPLATES }[kind];
       if (!id) {
         const names = (await readdir(dir).catch(() => [])).filter((name) => name.endsWith(".json"));
         return send(response, 200, names.map((name) => name.slice(0, -5)));
@@ -118,6 +122,7 @@ createServer(async (request, response) => {
     if (!base) return send(response, 404, "not found", "text/plain");
     const file = inside(base, rest.join("/"));
     if (!(await stat(file)).isFile()) return send(response, 404, "not found", "text/plain");
+    if (extname(file) === ".ts") return send(response, 200, stripTypeScriptTypes(await readFile(file, "utf8")), TYPES[".js"]);
     return send(response, 200, await readFile(file), TYPES[extname(file)] ?? "application/octet-stream");
   } catch (error) {
     send(response, error.status ?? (error.code === "ENOENT" ? 404 : 500), String(error.message ?? error), "text/plain");

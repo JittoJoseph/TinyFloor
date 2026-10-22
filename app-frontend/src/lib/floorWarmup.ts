@@ -1,12 +1,14 @@
 import type { RoomTicket } from "@/lib/api";
 import { CHARACTERS } from "@shared/profile";
 
-/** What the floor's scene loads (MapManager, AnimationManager), each file once. */
+/**
+ * What the floor's scene loads (MapManager, AnimationManager), each file once:
+ * the sheet its walls are drawn from, the atlas of everything on them, the
+ * characters. The office itself (shared-protocol map.ts) comes with the code.
+ */
 export const FLOOR_FILES = {
-  map: "/tilesets/office-map.tmj",
   roomBuilder: "/tilesets/textures/Room_Builder_Office_32x32.png",
-  modernOffice: "/tilesets/textures/Modern_Office_Black_Shadow_32x32.png",
-  chairs: "/tilesets/items/chair.png",
+  items: "/catalog/items.png",
   character: (name: string) => `/characters/${name}.png`,
 };
 
@@ -22,7 +24,7 @@ export function warmFloor() {
   if (warming || typeof window === "undefined") return;
   warming = true;
   void import("@/components/PhaserGame").catch(() => (warming = false));
-  const files = [FLOOR_FILES.map, FLOOR_FILES.roomBuilder, FLOOR_FILES.modernOffice, FLOOR_FILES.chairs, ...CHARACTERS.map(FLOOR_FILES.character)];
+  const files = [FLOOR_FILES.roomBuilder, FLOOR_FILES.items, ...CHARACTERS.map(FLOOR_FILES.character)];
   for (const file of files) void fetch(file).catch(() => {});
 }
 

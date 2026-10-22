@@ -1,0 +1,866 @@
+{
+ "id": "startup",
+ "version": 1,
+ "name": "Startup",
+ "theme": "startup",
+ "shell": {
+  "size": [
+   48,
+   32
+  ],
+  "legend": {
+   "#": {
+    "kind": "wall",
+    "material": "lavender"
+   },
+   "a": {
+    "kind": "floor",
+    "material": "plank"
+   },
+   "b": {
+    "kind": "floor",
+    "material": "plank-light"
+   },
+   "c": {
+    "kind": "floor",
+    "material": "maroon"
+   },
+   " ": {
+    "kind": "void"
+   }
+  },
+  "rows": [
+   "################################################",
+   "################################################",
+   "#bbbbbbbbbbbbb#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#bbbbbbbbbbbbb#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#bbbbbbbbbbbbb#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#bbbbbbbbbbbbb#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#bbbbbbbbbbbbb#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#bbbbbbbbbbbbb#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#bbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#bbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#bbbbbbbbbbbbb#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#bbbbbbbbbbbbb#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#bbbbbbbbbbbbb#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#bbbbbbbbbbbbb#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#bbbbbbbbbbbbb#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#bbbbbbbbbbbbb#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "###############aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "###############aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#ccccccccccccc#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#ccccccccccccc#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#ccccccccccccc#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#ccccccccccccc#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#ccccccccccccc#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#ccccccccccccc#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#cccccccccccccaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#cccccccccccccaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#ccccccccccccc#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#ccccccccccccc#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#ccccccccccccc#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#ccccccccccccc#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "#ccccccccccccc#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#",
+   "################################################"
+  ]
+ },
+ "anchors": {
+  "zones": [
+   {
+    "name": "meeting",
+    "x": 32,
+    "y": 64,
+    "width": 416,
+    "height": 448
+   }
+  ],
+  "table": {
+   "x": 96,
+   "y": 224,
+   "width": 224,
+   "height": 96
+  },
+  "whiteboard": {
+   "x": 704,
+   "y": 0,
+   "width": 96,
+   "height": 64
+  }
+ },
+ "pieces": [
+  {
+   "key": "lpadec",
+   "item": "desk-cluster-maple",
+   "x": 576,
+   "y": 224,
+   "size": {
+    "cols": 2,
+    "sides": 2
+   },
+   "desks": {
+    "back-0": 4,
+    "back-1": 4,
+    "front-0": 3,
+    "front-1": 4
+   }
+  },
+  {
+   "key": "5agmx8",
+   "item": "desk-cluster-maple",
+   "x": 1024,
+   "y": 384,
+   "size": {
+    "cols": 2,
+    "sides": 2
+   },
+   "desks": {
+    "back-0": 3,
+    "back-1": 4,
+    "front-0": 3,
+    "front-1": 3
+   }
+  },
+  {
+   "key": "yeqfol",
+   "item": "desk-cluster-maple",
+   "x": 608,
+   "y": 608,
+   "size": {
+    "cols": 2,
+    "sides": 2
+   },
+   "desks": {
+    "back-0": 3,
+    "back-1": 3,
+    "front-0": 4,
+    "front-1": 4
+   }
+  },
+  {
+   "key": "cx8d9m",
+   "item": "desk-cluster-maple",
+   "x": 1056,
+   "y": 768,
+   "size": {
+    "cols": 2,
+    "sides": 2
+   },
+   "desks": {
+    "back-0": 4,
+    "back-1": 3,
+    "front-0": 3,
+    "front-1": 3
+   }
+  },
+  {
+   "key": "wall:1,2/window-1",
+   "item": "window-office-2",
+   "x": 192,
+   "y": 0
+  },
+  {
+   "key": "wall:1,2/0",
+   "item": "wall-art",
+   "x": 64,
+   "y": 0
+  },
+  {
+   "key": "wall:1,2/1",
+   "item": "wall-poster",
+   "x": 96,
+   "y": 0
+  },
+  {
+   "key": "wall:15,2/window-3",
+   "item": "window-office-3",
+   "x": 1280,
+   "y": 0
+  },
+  {
+   "key": "wall:15,2/3",
+   "item": "wall-cert",
+   "x": 800,
+   "y": 0
+  },
+  {
+   "key": "wall:15,2/7",
+   "item": "picture-hills",
+   "x": 1120,
+   "y": 16
+  },
+  {
+   "key": "wall:1,2/2",
+   "item": "wall-shelf",
+   "x": 256,
+   "y": 0
+  },
+  {
+   "key": "wall:1,2/3",
+   "item": "wall-plant",
+   "x": 352,
+   "y": 0
+  },
+  {
+   "key": "wall:1,2/4",
+   "item": "wall-plant2",
+   "x": 416,
+   "y": 0
+  },
+  {
+   "key": "wall:15,2/0",
+   "item": "wall-plant2",
+   "x": 480,
+   "y": 0
+  },
+  {
+   "key": "wall:15,2/1",
+   "item": "wall-plant",
+   "x": 512,
+   "y": 0
+  },
+  {
+   "key": "wall:15,2/2",
+   "item": "wall-plant",
+   "x": 672,
+   "y": 0
+  },
+  {
+   "key": "wall:15,2/4",
+   "item": "wall-cooler",
+   "x": 832,
+   "y": 0
+  },
+  {
+   "key": "wall:15,2/5",
+   "item": "wall-vending",
+   "x": 896,
+   "y": 0
+  },
+  {
+   "key": "wall:15,2/6",
+   "item": "wall-shelf",
+   "x": 1024,
+   "y": 0
+  },
+  {
+   "key": "wall:15,2/8",
+   "item": "wall-plant",
+   "x": 1184,
+   "y": 0
+  },
+  {
+   "key": "wall:15,2/9",
+   "item": "wall-plant2",
+   "x": 1376,
+   "y": 0
+  },
+  {
+   "key": "wall:15,2/10",
+   "item": "wall-plant",
+   "x": 1408,
+   "y": 0
+  },
+  {
+   "key": "wall:15,2/11",
+   "item": "wall-plant2",
+   "x": 1472,
+   "y": 0
+  },
+  {
+   "key": "side:left:1,2/0",
+   "item": "plant-tall",
+   "x": 32,
+   "y": 128
+  },
+  {
+   "key": "side:right:46,2/0",
+   "item": "plant-snake",
+   "x": 1472,
+   "y": 128
+  },
+  {
+   "key": "z43bhw",
+   "item": "chair-black-mesh",
+   "x": 128,
+   "y": 192
+  },
+  {
+   "key": "ss7nl1",
+   "item": "chair-black-mesh",
+   "x": 192,
+   "y": 192
+  },
+  {
+   "key": "z44bp4",
+   "item": "chair-black-mesh",
+   "x": 256,
+   "y": 192
+  },
+  {
+   "key": "lpadec/back-1/things/0",
+   "item": "back-monitors",
+   "x": 864,
+   "y": 224,
+   "host": "lpadec/back",
+   "desk": "lpadec/back-1"
+  },
+  {
+   "key": "lpadec/end-left",
+   "item": "plant-small",
+   "x": 544,
+   "y": 268
+  },
+  {
+   "key": "lpadec/end-right",
+   "item": "plant-snake",
+   "x": 992,
+   "y": 252
+  },
+  {
+   "key": "he59g6",
+   "item": "meeting-table",
+   "x": 96,
+   "y": 224
+  },
+  {
+   "key": "lpadec/front-0/things/0",
+   "item": "setup-laptop",
+   "x": 704,
+   "y": 256,
+   "host": "lpadec/front",
+   "desk": "lpadec/front-0"
+  },
+  {
+   "key": "lpadec/front-1/things/0",
+   "item": "setup-monitors",
+   "x": 800,
+   "y": 256,
+   "host": "lpadec/front",
+   "desk": "lpadec/front-1"
+  },
+  {
+   "key": "lpadec/front-1/things/1",
+   "item": "desk-plant",
+   "x": 928,
+   "y": 256,
+   "host": "lpadec/front",
+   "desk": "lpadec/front-1"
+  },
+  {
+   "key": "glog2r",
+   "item": "chair-black-back",
+   "x": 128,
+   "y": 288
+  },
+  {
+   "key": "o7ltoz",
+   "item": "chair-black-back",
+   "x": 192,
+   "y": 288
+  },
+  {
+   "key": "2u8ufq",
+   "item": "chair-black-back",
+   "x": 256,
+   "y": 288
+  },
+  {
+   "key": "5agmx8/back-0/things/0",
+   "item": "back-monitors",
+   "x": 1088,
+   "y": 384,
+   "host": "5agmx8/back",
+   "desk": "5agmx8/back-0"
+  },
+  {
+   "key": "5agmx8/back-1/things/0",
+   "item": "back-monitors",
+   "x": 1312,
+   "y": 384,
+   "host": "5agmx8/back",
+   "desk": "5agmx8/back-1"
+  },
+  {
+   "key": "side:left:1,2/1",
+   "item": "plant-tall",
+   "x": 32,
+   "y": 384
+  },
+  {
+   "key": "side:right:13,10/0",
+   "item": "plant-tall",
+   "x": 416,
+   "y": 384
+  },
+  {
+   "key": "5agmx8/end-left",
+   "item": "plant-tall",
+   "x": 992,
+   "y": 412
+  },
+  {
+   "key": "5agmx8/end-right",
+   "item": "plant-tall",
+   "x": 1440,
+   "y": 412
+  },
+  {
+   "key": "5agmx8/front-0/things/0",
+   "item": "setup-monitors",
+   "x": 1152,
+   "y": 416,
+   "host": "5agmx8/front",
+   "desk": "5agmx8/front-0"
+  },
+  {
+   "key": "5agmx8/front-1/things/0",
+   "item": "setup-laptop-b",
+   "x": 1344,
+   "y": 416,
+   "host": "5agmx8/front",
+   "desk": "5agmx8/front-1"
+  },
+  {
+   "key": "5agmx8/front-1/things/1",
+   "item": "desk-phone-b",
+   "x": 1248,
+   "y": 416,
+   "host": "5agmx8/front",
+   "desk": "5agmx8/front-1"
+  },
+  {
+   "key": "05imfh",
+   "item": "mini-fridge",
+   "x": 368,
+   "y": 544
+  },
+  {
+   "key": "wall:1,18/0",
+   "item": "wall-plant2",
+   "x": 32,
+   "y": 512
+  },
+  {
+   "key": "wall:1,18/1",
+   "item": "wall-plant",
+   "x": 224,
+   "y": 512
+  },
+  {
+   "key": "wall:1,18/2",
+   "item": "wall-plant2",
+   "x": 416,
+   "y": 512
+  },
+  {
+   "key": "s2frh8",
+   "item": "wall-vending",
+   "x": 64,
+   "y": 512
+  },
+  {
+   "key": "154bjy",
+   "item": "wall-cooler",
+   "x": 192,
+   "y": 512
+  },
+  {
+   "key": "q4tqud",
+   "item": "wall-coffee-table",
+   "x": 256,
+   "y": 512
+  },
+  {
+   "key": "yeqfol/back-0/things/0",
+   "item": "back-monitor-light",
+   "x": 672,
+   "y": 602,
+   "host": "yeqfol/back",
+   "desk": "yeqfol/back-0"
+  },
+  {
+   "key": "yeqfol/back-1/things/0",
+   "item": "back-monitors",
+   "x": 864,
+   "y": 608,
+   "host": "yeqfol/back",
+   "desk": "yeqfol/back-1"
+  },
+  {
+   "key": "side:left:15,10/0",
+   "item": "water-cooler",
+   "x": 480,
+   "y": 608
+  },
+  {
+   "key": "side:right:46,2/1",
+   "item": "wall-cabinet",
+   "x": 1440,
+   "y": 608
+  },
+  {
+   "key": "yeqfol/end-left",
+   "item": "plant-tall",
+   "x": 576,
+   "y": 636
+  },
+  {
+   "key": "yeqfol/end-right",
+   "item": "plant-tall",
+   "x": 1024,
+   "y": 636
+  },
+  {
+   "key": "side:right:13,18/0",
+   "item": "plant-tall",
+   "x": 416,
+   "y": 640
+  },
+  {
+   "key": "yeqfol/front-0/things/0",
+   "item": "setup-laptop-b",
+   "x": 640,
+   "y": 640,
+   "host": "yeqfol/front",
+   "desk": "yeqfol/front-0"
+  },
+  {
+   "key": "yeqfol/front-1/things/0",
+   "item": "setup-laptop",
+   "x": 832,
+   "y": 640,
+   "host": "yeqfol/front",
+   "desk": "yeqfol/front-1"
+  },
+  {
+   "key": "hdref1",
+   "item": "chair-tan-mesh",
+   "x": 192,
+   "y": 704
+  },
+  {
+   "key": "j5kmha",
+   "item": "chair-tan-mesh",
+   "x": 256,
+   "y": 704
+  },
+  {
+   "key": "cx8d9m/back-0/things/0",
+   "item": "back-monitor",
+   "x": 1216,
+   "y": 762,
+   "host": "cx8d9m/back",
+   "desk": "cx8d9m/back-0"
+  },
+  {
+   "key": "cx8d9m/back-1/things/0",
+   "item": "back-monitors",
+   "x": 1312,
+   "y": 768,
+   "host": "cx8d9m/back",
+   "desk": "cx8d9m/back-1"
+  },
+  {
+   "key": "ru2kty",
+   "item": "plant-small",
+   "x": 336,
+   "y": 768
+  },
+  {
+   "key": "6nb5m8",
+   "item": "meeting-table-small",
+   "x": 160,
+   "y": 736
+  },
+  {
+   "key": "uxc2ff",
+   "item": "chair-tan-back",
+   "x": 192,
+   "y": 800
+  },
+  {
+   "key": "vfoow4",
+   "item": "chair-tan-back",
+   "x": 256,
+   "y": 800
+  },
+  {
+   "key": "cx8d9m/end-left",
+   "item": "plant-small",
+   "x": 1024,
+   "y": 812
+  },
+  {
+   "key": "cx8d9m/end-right",
+   "item": "plant-snake",
+   "x": 1472,
+   "y": 796
+  },
+  {
+   "key": "cx8d9m/front-0/things/0",
+   "item": "setup-laptop",
+   "x": 1184,
+   "y": 800,
+   "host": "cx8d9m/front",
+   "desk": "cx8d9m/front-0"
+  },
+  {
+   "key": "cx8d9m/front-1/things/0",
+   "item": "setup-laptop",
+   "x": 1376,
+   "y": 800,
+   "host": "cx8d9m/front",
+   "desk": "cx8d9m/front-1"
+  },
+  {
+   "key": "7z1k75",
+   "item": "plant-tall",
+   "x": 48,
+   "y": 912
+  },
+  {
+   "key": "0z4q8s",
+   "item": "plant-snake",
+   "x": 400,
+   "y": 912
+  }
+ ],
+ "seats": [
+  {
+   "key": "lpadec/back-0/chair",
+   "x": 720,
+   "y": 252,
+   "dir": "down",
+   "desk": "lpadec/back-0",
+   "arrival": [
+    22,
+    5
+   ]
+  },
+  {
+   "key": "lpadec/back-1/chair",
+   "x": 912,
+   "y": 252,
+   "dir": "down",
+   "desk": "lpadec/back-1",
+   "arrival": [
+    28,
+    5
+   ]
+  },
+  {
+   "key": "z43bhw",
+   "x": 144,
+   "y": 252,
+   "dir": "down"
+  },
+  {
+   "key": "ss7nl1",
+   "x": 208,
+   "y": 252,
+   "dir": "down"
+  },
+  {
+   "key": "z44bp4",
+   "x": 272,
+   "y": 252,
+   "dir": "down"
+  },
+  {
+   "key": "lpadec/front-0/chair",
+   "x": 688,
+   "y": 332,
+   "dir": "up",
+   "desk": "lpadec/front-0",
+   "arrival": [
+    21,
+    12
+   ]
+  },
+  {
+   "key": "lpadec/front-1/chair",
+   "x": 912,
+   "y": 332,
+   "dir": "up",
+   "desk": "lpadec/front-1",
+   "arrival": [
+    28,
+    12
+   ]
+  },
+  {
+   "key": "glog2r",
+   "x": 144,
+   "y": 332,
+   "dir": "up"
+  },
+  {
+   "key": "o7ltoz",
+   "x": 208,
+   "y": 332,
+   "dir": "up"
+  },
+  {
+   "key": "2u8ufq",
+   "x": 272,
+   "y": 332,
+   "dir": "up"
+  },
+  {
+   "key": "5agmx8/back-0/chair",
+   "x": 1136,
+   "y": 412,
+   "dir": "down",
+   "desk": "5agmx8/back-0",
+   "arrival": [
+    35,
+    10
+   ]
+  },
+  {
+   "key": "5agmx8/back-1/chair",
+   "x": 1360,
+   "y": 412,
+   "dir": "down",
+   "desk": "5agmx8/back-1",
+   "arrival": [
+    42,
+    10
+   ]
+  },
+  {
+   "key": "5agmx8/front-0/chair",
+   "x": 1136,
+   "y": 492,
+   "dir": "up",
+   "desk": "5agmx8/front-0",
+   "arrival": [
+    35,
+    17
+   ]
+  },
+  {
+   "key": "5agmx8/front-1/chair",
+   "x": 1328,
+   "y": 492,
+   "dir": "up",
+   "desk": "5agmx8/front-1",
+   "arrival": [
+    41,
+    17
+   ]
+  },
+  {
+   "key": "yeqfol/back-0/chair",
+   "x": 720,
+   "y": 636,
+   "dir": "down",
+   "desk": "yeqfol/back-0",
+   "arrival": [
+    22,
+    17
+   ]
+  },
+  {
+   "key": "yeqfol/back-1/chair",
+   "x": 912,
+   "y": 636,
+   "dir": "down",
+   "desk": "yeqfol/back-1",
+   "arrival": [
+    28,
+    17
+   ]
+  },
+  {
+   "key": "yeqfol/front-0/chair",
+   "x": 752,
+   "y": 716,
+   "dir": "up",
+   "desk": "yeqfol/front-0",
+   "arrival": [
+    23,
+    24
+   ]
+  },
+  {
+   "key": "yeqfol/front-1/chair",
+   "x": 944,
+   "y": 716,
+   "dir": "up",
+   "desk": "yeqfol/front-1",
+   "arrival": [
+    29,
+    24
+   ]
+  },
+  {
+   "key": "hdref1",
+   "x": 208,
+   "y": 764,
+   "dir": "down"
+  },
+  {
+   "key": "j5kmha",
+   "x": 272,
+   "y": 764,
+   "dir": "down"
+  },
+  {
+   "key": "cx8d9m/back-0/chair",
+   "x": 1200,
+   "y": 796,
+   "dir": "down",
+   "desk": "cx8d9m/back-0",
+   "arrival": [
+    37,
+    22
+   ]
+  },
+  {
+   "key": "cx8d9m/back-1/chair",
+   "x": 1360,
+   "y": 796,
+   "dir": "down",
+   "desk": "cx8d9m/back-1",
+   "arrival": [
+    42,
+    22
+   ]
+  },
+  {
+   "key": "uxc2ff",
+   "x": 208,
+   "y": 844,
+   "dir": "up"
+  },
+  {
+   "key": "vfoow4",
+   "x": 272,
+   "y": 844,
+   "dir": "up"
+  },
+  {
+   "key": "cx8d9m/front-0/chair",
+   "x": 1168,
+   "y": 876,
+   "dir": "up",
+   "desk": "cx8d9m/front-0",
+   "arrival": [
+    36,
+    29
+   ]
+  },
+  {
+   "key": "cx8d9m/front-1/chair",
+   "x": 1360,
+   "y": 876,
+   "dir": "up",
+   "desk": "cx8d9m/front-1",
+   "arrival": [
+    42,
+    29
+   ]
+  }
+ ]
+}

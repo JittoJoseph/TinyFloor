@@ -1,7 +1,10 @@
 import * as Phaser from "phaser";
 import { NavGrid, Rect } from "./Navigation";
-import { MAP_WIDTH_TILES, TILE_SIZE } from "@/lib/types";
+import { TILE_SIZE } from "@/lib/types";
 import { FLOOR_FILES } from "@/lib/floorWarmup";
+import { FLOOR } from "@shared/map";
+import { paintShell } from "@shared/shell";
+import atlas from "@shared/catalog/atlas.json";
 
 export interface MapAnchor {
   name: string;
@@ -19,12 +22,6 @@ export interface ChairSpec {
   zone?: string;
 }
 
-interface TilesetRef {
-  key: string;
-  firstgid: number;
-  lastgid: number;
-}
-
 /**
  * Objects are drawn at a depth equal to their base y, so whether a desk covers
  * you or you cover it falls out of where you are standing rather than out of
@@ -34,12 +31,21 @@ export function depthForY(y: number): number {
   return y;
 }
 
+const ITEMS = "floor-items";
+const WALLS = "floor-walls";
+
+/**
+ * The floor: the Startup template as the lab worked it out (shared-protocol
+ * map.ts, FLOOR). Its walls and floors are drawn once, here, from the room
+ * builder sheet; everything on them is a frame of the catalog's atlas, at the
+ * depth the lab gave it; what you can't walk through, the chairs and the
+ * spots the floor keeps (the meeting room, its table, the whiteboard) are
+ * read as they are.
+ */
 export class MapManager {
   private scene: Phaser.Scene;
-  private map!: Phaser.Tilemaps.Tilemap;
   private solidRects: Rect[] = [];
   private nav!: NavGrid;
-  private tilesetRefs: TilesetRef[] = [];
   private chairSpecs: ChairSpec[] = [];
   private anchors: Record<string, MapAnchor[]> = {};
 
@@ -47,143 +53,63 @@ export class MapManager {
     this.scene = scene;
   }
 
-  /** Each tileset once, as a sheet: the tile layers draw from its image, the furniture from its frames. */
   preload() {
-    this.scene.load.tilemapTiledJSON("office", FLOOR_FILES.map);
-    this.scene.load.spritesheet("RoomBuilderTiles", FLOOR_FILES.roomBuilder, {
-      frameWidth: TILE_SIZE,
-      frameHeight: TILE_SIZE,
-    });
-    this.scene.load.spritesheet("ModernOfficeTiles", FLOOR_FILES.modernOffice, {
-      frameWidth: TILE_SIZE,
-      frameHeight: TILE_SIZE,
-    });
-    this.scene.load.spritesheet("chairs", FLOOR_FILES.chairs, {
-      frameWidth: TILE_SIZE,
-      frameHeight: TILE_SIZE * 2,
-    });
+    this.scene.load.image(ITEMS, FLOOR_FILES.items);
+    this.scene.load.image("RoomBuilder", FLOOR_FILES.roomBuilder);
   }
 
   create() {
-    this.map = this.scene.make.tilemap({ key: "office" });
-    const rb = this.map.addTilesetImage(
-      "Room_Builder_Office_32x32",
-      "RoomBuilderTiles",
-    );
-    const mo = this.map.addTilesetImage(
-      "Modern_Office_Black_Shadow_32x32",
-      "ModernOfficeTiles",
-    );
-    if (!rb || !mo) throw new Error("Tilesets not found");
-
-    this.tilesetRefs = [
-      { key: "RoomBuilderTiles", firstgid: rb.firstgid, lastgid: rb.firstgid + rb.total - 1 },
-      { key: "ModernOfficeTiles", firstgid: mo.firstgid, lastgid: mo.firstgid + mo.total - 1 },
-      { key: "chairs", firstgid: 1073, lastgid: 1073 + 22 },
-    ];
-
-    this.map.createLayer("Ground", [rb, mo], 0, 0)!.setDepth(0);
-    this.map.createLayer("Walls", [rb, mo], 0, 0)!.setDepth(1);
-
-    this.createFurniture();
+    this.drawWalls();
+    this.drawPieces();
     this.readAnchors();
     this.readChairs();
-    this.createColliders();
+    this.solidRects = FLOOR.solids.map(([x, y, width, height]) => ({ x, y, width, height }));
     this.nav = new NavGrid(this.solidRects);
   }
 
-  private resolve(gid: number): { key: string; frame: number } | null {
-    const id = gid & 0x1fffffff;
-    for (const ref of this.tilesetRefs) {
-      if (id >= ref.firstgid && id <= ref.lastgid) {
-        return { key: ref.key, frame: id - ref.firstgid };
-      }
+  /** The walls and floors, painted from the room builder sheet into one texture (shared-protocol shell.ts). */
+  private drawWalls() {
+    if (!this.scene.textures.exists(WALLS)) {
+      const sheet = this.scene.textures.get("RoomBuilder").getSourceImage() as HTMLImageElement;
+      const source = document.createElement("canvas");
+      [source.width, source.height] = [sheet.width, sheet.height];
+      const context = source.getContext("2d", { willReadFrequently: true })!;
+      context.drawImage(sheet, 0, 0);
+      const pixels = paintShell(FLOOR.shell, { width: sheet.width, height: sheet.height, data: context.getImageData(0, 0, sheet.width, sheet.height).data });
+      const texture = this.scene.textures.createCanvas(WALLS, pixels.width, pixels.height)!;
+      texture.context.putImageData(new ImageData(pixels.data as Uint8ClampedArray<ArrayBuffer>, pixels.width, pixels.height), 0, 0);
+      texture.refresh();
     }
-    return null;
+    this.scene.add.image(0, 0, WALLS).setOrigin(0, 0).setDepth(0);
+  }
+
+  /** Everything on the floor, each a frame of the atlas, drawn from its top left at its depth. */
+  private drawPieces() {
+    const texture = this.scene.textures.get(ITEMS);
+    const frames = atlas.frames as unknown as Record<string, [number, number, number, number]>;
+    for (const piece of FLOOR.pieces) {
+      const frame = frames[piece.item];
+      if (!frame) continue;
+      if (!texture.has(piece.item)) texture.add(piece.item, 0, ...frame);
+      this.scene.add.image(piece.x, piece.y, ITEMS, piece.item).setOrigin(0, 0).setDepth(piece.depth);
+    }
   }
 
   /**
-   * Tiled anchors tile objects on their bottom edge, which is also where we want
-   * their depth measured from.
+   * Every seat, as the seat code reads a chair: its middle, a tile above where
+   * whoever sits there is (the seat's point is its base).
    */
-  private createFurniture() {
-    const objects = this.map.getObjectLayer("Furniture")?.objects ?? [];
-    objects.forEach((obj) => {
-      if (!obj.gid) return;
-      const tile = this.resolve(obj.gid);
-      if (!tile) return;
-      const x = obj.x ?? 0;
-      const y = obj.y ?? 0;
-      this.scene.add
-        .image(x, y, tile.key, tile.frame)
-        .setOrigin(0, 1)
-        .setDepth(depthForY(y));
-    });
-  }
-
   private readChairs() {
-    const objects = this.map.getObjectLayer("Chair")?.objects ?? [];
-    objects.forEach((obj) => {
-      if (!obj.gid) return;
-      const tile = this.resolve(obj.gid);
-      if (!tile) return;
-      const x = obj.x ?? 0;
-      const y = obj.y ?? 0;
-      const direction =
-        (obj.properties as Array<{ name: string; value: string }> | undefined)?.find(
-          (p) => p.name === "direction",
-        )?.value ?? "down";
-      // a chair the far side of a desk shares that desk row's depth, so nudge it
-      // behind or the seat draws on top of the desk it is tucked under
-      this.scene.add
-        .image(x, y, tile.key, tile.frame)
-        .setOrigin(0, 1)
-        .setDepth(depthForY(y) + (direction === "down" ? -1 : 0));
-      const cx = x + TILE_SIZE / 2;
-      const cy = y - TILE_SIZE / 2;
-      this.chairSpecs.push({
-        // the chair's tile, so ids survive the map being regenerated
-        id: (y / TILE_SIZE) * MAP_WIDTH_TILES + x / TILE_SIZE,
-        x: cx,
-        y: cy,
-        direction: direction as ChairSpec["direction"],
-        zone: this.getAnchors("Zones").find(
-          (z) =>
-            cx >= z.x && cx < z.x + z.width && cy >= z.y && cy < z.y + z.height,
-        )?.name,
-      });
-    });
+    this.chairSpecs = FLOOR.seats.map((seat) => ({ id: seat.id, x: seat.x, y: seat.y - TILE_SIZE / 2, direction: seat.dir, zone: seat.zone }));
   }
 
   private readAnchors() {
-    ["Computer", "Whiteboard", "Zones", "Table"].forEach((layer) => {
-      this.anchors[layer] = (
-        this.map.getObjectLayer(layer)?.objects ?? []
-      ).map((obj) => ({
-        name: obj.name || "",
-        x: obj.x ?? 0,
-        y: obj.y ?? 0,
-        width: obj.width || TILE_SIZE,
-        height: obj.height || TILE_SIZE,
-      }));
-    });
-  }
-
-  /**
-   * The walls and furniture you can't walk through, as plain rectangles: you
-   * are moved by hand against them (checkCollisionAt) and walk paths around
-   * them (NavGrid), so there's no physics engine running underneath.
-   */
-  private createColliders() {
-    const objects = this.map.getObjectLayer("Colliders")?.objects ?? [];
-
-    objects.forEach((obj) => {
-      const width = obj.width || 1;
-      const height = obj.height || 1;
-      const x = obj.x ?? 0;
-      const y = obj.y ?? 0;
-      this.solidRects.push({ x, y, width, height });
-    });
+    const { zones = [], table, whiteboard } = FLOOR.anchors;
+    this.anchors = {
+      Zones: zones,
+      Table: table ? [{ name: "", ...table }] : [],
+      Whiteboard: whiteboard ? [{ name: "main", ...whiteboard }] : [],
+    };
   }
 
   getChairs(): ChairSpec[] {
@@ -201,15 +127,16 @@ export class MapManager {
   getRandomSpawnTile(keepCentered = false): { tileX: number; tileY: number } {
     const camera = this.scene.cameras.main;
     const halfView = camera.height / camera.zoom / 2;
-    const lowest = this.map.heightInPixels - halfView;
+    const [width, height] = FLOOR.shell.size;
+    const lowest = height * TILE_SIZE - halfView;
 
     const preferred: Array<{ tileX: number; tileY: number }> = [];
     const fallback: Array<{ tileX: number; tileY: number }> = [];
 
-    for (let tileY = 2; tileY < this.map.height - 2; tileY++) {
+    for (let tileY = 2; tileY < height - 2; tileY++) {
       const worldY = tileY * TILE_SIZE + TILE_SIZE / 2;
       const centered = worldY >= halfView && worldY <= lowest;
-      for (let tileX = 2; tileX < this.map.width - 2; tileX++) {
+      for (let tileX = 2; tileX < width - 2; tileX++) {
         if (!this.nav.isWalkable(tileX, tileY)) continue;
         if (!keepCentered || centered) preferred.push({ tileX, tileY });
         else fallback.push({ tileX, tileY });
@@ -232,10 +159,10 @@ export class MapManager {
   }
 
   getMapWidth(): number {
-    return this.map.widthInPixels;
+    return FLOOR.shell.size[0] * TILE_SIZE;
   }
 
   getMapHeight(): number {
-    return this.map.heightInPixels;
+    return FLOOR.shell.size[1] * TILE_SIZE;
   }
 }

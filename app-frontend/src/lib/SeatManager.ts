@@ -28,10 +28,6 @@ const SEAT: Record<CardinalDirection, { dx: number; dy: number; depth: number; e
 const REACH = 56;
 /** How close a desk's plate shows: about the desk you're at or walking past. */
 const PLATE_REACH = 96;
-/** Within this, pointing at a free desk offers it; from further, it's somewhere to walk to first. */
-const POINT_REACH = 224;
-/** Moving this much further from a desk you were asked about takes the question away. */
-const WALKED_OFF = 48;
 const HIGHLIGHT = 0xff4e00;
 const IDLE = 0x9ca3af;
 const SELF = "self";
@@ -74,8 +70,6 @@ export class SeatManager {
   private unsubscribeFloor: () => void;
   /** Whose desk it is, on each desk while its owner is away (docs/product.md). */
   private plates = new Map<number, DeskPlate>();
-  /** How far you were from the desk you were asked about, when it asked. */
-  private askedAt: { seat: number; distance: number } | null = null;
   /** How many the table's tag says are in meetings; who's talking changes often, the count rarely. */
   private inMeetings = -1;
 
@@ -136,9 +130,6 @@ export class SeatManager {
 
     this.seats.forEach((seat) => {
       const zone = scene.add.zone(seat.x, seat.y, 40, 44).setOrigin(0.5).setInteractive({ useHandCursor: true });
-      // On a pointer, a free desk offers itself as you point at it, from anywhere.
-      zone.on("pointerover", () => this.plates.get(seat.id)?.setPointed(true));
-      zone.on("pointerout", () => this.plates.get(seat.id)?.setPointed(false));
       zone.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
         pointer.event.stopPropagation();
         if (this.seated === seat) return this.stand();
@@ -232,7 +223,7 @@ export class SeatManager {
     return !!desk && desk.userId !== this.selfId;
   }
 
-  /** Each desk's plate: whose it is while they're away from it, "Your desk" for yours, "Claim desk" on a free one you walk up to. */
+  /** Each desk's plate: whose it is while they're away from it, "Your desk" for yours, "Claim desk" on a free one you sit at. */
   private showPlates() {
     const { desks, canClaim, asking, claimed } = deskState();
     this.plates.forEach((plate, id) => {
@@ -320,27 +311,18 @@ export class SeatManager {
 
   update() {
     if (!this.seated) this.findNearest();
-    // Asked about a desk, from near or across the room, then walked away from it: the question goes.
-    const asking = deskState().asking;
-    const asked = asking === null ? undefined : this.byId.get(asking);
-    if (!asked) this.askedAt = null;
-    else {
-      const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, asked.x, asked.baseY);
-      if (this.askedAt?.seat !== asking) this.askedAt = { seat: asking!, distance };
-      else if (distance > this.askedAt.distance + WALKED_OFF) cancelClaim();
-    }
-    // The free desk you mean: the one you're sitting at, or, standing, the one whose chair is outlined.
-    const meant = this.seated ?? this.nearest?.seat;
-    const { desks, canClaim } = deskState();
-    const offered = canClaim && meant && isDesk(meant.id) && !deskAt(desks, meant.id) ? meant.id : null;
+    // A free desk offers itself while you sit at it, and only then; getting up takes its question with you.
+    const { desks, canClaim, asking } = deskState();
+    const at = this.seated;
+    const offered = canClaim && at && isDesk(at.id) && !deskAt(desks, at.id) ? at.id : null;
+    if (asking !== null && asking !== at?.id) cancelClaim();
     this.plates.forEach((plate, id) => {
       const seat = this.byId.get(id)!;
       // At the chair itself its outline says it; an owner's plate folds back rather than cover your name.
-      const at = this.nearest?.seat === seat;
+      const atChair = this.nearest?.seat === seat;
       // While a desk offers itself, the others keep to their faces, so the offer stands alone.
-      plate.setNear(offered === null && !at && Phaser.Math.Distance.Between(this.player.x, this.player.y, seat.x, seat.baseY) < PLATE_REACH);
+      plate.setNear(offered === null && !atChair && Phaser.Math.Distance.Between(this.player.x, this.player.y, seat.x, seat.baseY) < PLATE_REACH);
       plate.setOffered(id === offered);
-      plate.setReachable(Phaser.Math.Distance.Between(this.player.x, this.player.y, seat.x, seat.baseY) < POINT_REACH);
     });
   }
 

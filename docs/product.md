@@ -42,17 +42,19 @@ work happens. What we don't build, though each would raise usage numbers:
 - **Your own desk.** People value what's theirs more than what's merely
   available, and the feeling comes from choosing and using it (psychological
   ownership; the endowment and IKEA effects). A desk is a home base, and
-  being at it or away says whether you're available. So: you claim a desk, by walking to it. A free desk offers
-  "Claim desk" only when it's near and the one you mean: you're sitting at it
-  or at its chair (the outlined one), or pointing at it from a few steps
-  away; never as a prompt above the dock; from across
-  the room it's somewhere to walk to first, so nobody claims a desk by
-  accident. The chip sits on the desk, clear of your head and name: just
-  under a chair north of its desk, at the back of a desk south of its chair.
+  being at it or away says whether you're available. So: you claim a desk by
+  sitting at it. A free desk offers "Claim desk" while you sit there, and
+  only then: no hovering, nothing while standing beside it or passing by, and
+  never as a prompt above the dock, so nobody claims a desk by accident and
+  the floor stays quiet. Offering it on hover and from a few steps away was
+  tried; sitting down is the clearer signal of meaning that desk. The chip
+  sits on the desk, clear of your head and name: just under a chair north of
+  its desk, at the back of a desk south of its chair.
   A desk is claimed, not moved to: what you make of yours (customisation,
   later) stays with that desk, so claiming another while you have one asks
-  first, the chip opening into the question on that desk ("Your current desk
-  will be freed"); walking away takes the question with you. Claimed, the
+  first, the chip opening into the question on that desk, over everything
+  else on the floor ("Your current desk will be freed"); standing up takes
+  the question with you. Claimed, the
   chip says so itself, its plus turning into a check in a green dot, before
   your face takes its place; nothing pops up elsewhere. Nobody else sits
   there. The claim is the

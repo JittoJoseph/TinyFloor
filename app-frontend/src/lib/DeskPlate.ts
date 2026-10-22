@@ -19,6 +19,8 @@ export interface DeskOwner {
 
 /** How long "Claimed" stays on the desk before its owner's plate takes over. */
 const CLAIMED_MS = 1600;
+/** While it asks, the question sits over everything on the floor, name tags and the face on the desk across included. */
+const ASKING_DEPTH = 100002;
 
 const glyph = (path: string, className: string) =>
   `<svg class="${className}" viewBox="0 0 16 16" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${path}"/></svg>`;
@@ -32,10 +34,9 @@ const CHECK = glyph("M3.75 8.4l2.6 2.5 5.9-6.15", "desk-claim-check");
  * the room. Walk up and it opens, smoothly, to their name; yours, ringed in
  * ink, opens to "Your desk", and pressing it walks you there from anywhere.
  *
- * A free desk, for someone who can claim one, offers itself only when it's
- * near and the one you mean: you're at its chair, or pointing at it from close
- * by. It's an action, dark like the name tags: a plus in a dot, and "Claim
- * desk", on the desk. Claiming one while you have one asks there, the chip
+ * A free desk, for someone who can claim one, offers itself while you sit at
+ * it, and only then: an action, dark like the name tags, a plus in a dot and
+ * "Claim desk", on the desk. Claiming one while you have one asks there, the chip
  * opening into the question. Claimed, the chip itself says so, the plus
  * turning into a check in a green dot, before your plate takes its place.
  * HTML over the canvas (plates.ts).
@@ -53,21 +54,16 @@ export class DeskPlate {
   private owner: DeskOwner | null = null;
   private claimable = false;
   private near = false;
-  /** You're at its chair. */
+  /** You're sitting at it. */
   private offered = false;
-  /** Close enough that pointing at it means it. */
-  private reachable = false;
-  /** The pointer is on its chair, or on the chip itself. */
-  private pointed = false;
-  private onChip = false;
   /** Claiming it while you have a desk: it asks, here on the desk, before yours is freed. */
   private asking = false;
   /** Just claimed: the chip says so for a moment. */
   private claimed = false;
   /** This claim has been said, so the store still holding it doesn't say it again. */
   private said = false;
-  private leaveTimer: ReturnType<typeof setTimeout> | null = null;
   private claimedTimer: ReturnType<typeof setTimeout> | null = null;
+  private readonly depth: number;
 
   constructor(
     scene: Phaser.Scene,
@@ -80,6 +76,7 @@ export class DeskPlate {
     goHome: () => void,
     actions: { claim: () => void; confirm: () => void; cancel: () => void },
   ) {
+    this.depth = depth;
     this.anchor = scene.add.container(x, y).setDepth(depth);
     this.root = document.createElement("div");
     this.root.className = "desk-plate";
@@ -107,15 +104,6 @@ export class DeskPlate {
       else if (act === "confirm") actions.confirm();
       else if (act === "cancel") actions.cancel();
     });
-    // Moving from the chair onto the chip mustn't make it vanish on the way.
-    this.chip.addEventListener("pointerenter", () => {
-      this.onChip = true;
-      this.refresh();
-    });
-    this.chip.addEventListener("pointerleave", () => {
-      this.onChip = false;
-      this.refresh();
-    });
     this.render();
     this.removeChip = plateLayer(scene).add(this.chipAnchor, this.chip, chip.hang);
     // A press on a chip is that chip's, not the floor's: the floor also listens on the window, and would walk you there.
@@ -132,33 +120,11 @@ export class DeskPlate {
     return this;
   }
 
-  /** You're at its chair, and not sitting anywhere: a free desk offers itself. */
+  /** You're sitting at it: a free desk offers itself. */
   setOffered(offered: boolean): this {
     if (offered === this.offered) return this;
     this.offered = offered;
     return this.refresh();
-  }
-
-  /** You're close enough that pointing at it means it; from across the room, it doesn't offer itself. */
-  setReachable(reachable: boolean): this {
-    if (reachable === this.reachable) return this;
-    this.reachable = reachable;
-    return this.refresh();
-  }
-
-  /** The pointer is on its chair. Leaving waits a moment, for the pointer to reach the chip. */
-  setPointed(pointed: boolean): this {
-    if (this.leaveTimer) clearTimeout(this.leaveTimer);
-    this.leaveTimer = null;
-    if (pointed) {
-      this.pointed = true;
-      return this.refresh();
-    }
-    this.leaveTimer = setTimeout(() => {
-      this.pointed = false;
-      this.refresh();
-    }, 160);
-    return this;
   }
 
   /** Whether it's asking, on the desk, to free your desk for this one. */
@@ -195,6 +161,7 @@ export class DeskPlate {
   private render() {
     const t = this.text();
     this.chip.toggleAttribute("data-asking", this.asking);
+    this.chipAnchor.setDepth(this.asking ? ASKING_DEPTH : this.depth);
     this.chip.innerHTML = this.asking
       ? `<span class="desk-claim-ask"><strong>${escape(t.claimTitle)}</strong><span>${escape(t.claimNote)}</span></span>` +
         `<span class="desk-claim-row"><button type="button" data-act="cancel">${escape(t.cancel)}</button>` +
@@ -229,13 +196,11 @@ export class DeskPlate {
 
   /** The chip shows while it's the desk you mean, while it asks, and while it says it's yours. */
   private refresh(): this {
-    const meant = this.offered || (this.reachable && (this.pointed || this.onChip));
-    this.chip.hidden = !(this.claimed || (!this.owner && this.claimable && (this.asking || meant)));
+    this.chip.hidden = !(this.claimed || (!this.owner && this.claimable && (this.asking || this.offered)));
     return this;
   }
 
   destroy() {
-    if (this.leaveTimer) clearTimeout(this.leaveTimer);
     if (this.claimedTimer) clearTimeout(this.claimedTimer);
     this.remove();
     this.removeChip();

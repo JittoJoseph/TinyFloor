@@ -177,9 +177,9 @@
 }
 
 /*
- * A free desk you mean (at its chair, or pointing at it): an action, dark like
- * the name tags, with a desk and "Claim desk". Claiming it while you have a
- * desk asks right there, on the desk, before yours is freed.
+ * A free desk you're sitting at: an action, dark like the name tags, with a
+ * plus and "Claim desk". Claiming it while you have a desk asks right there,
+ * on the desk, before yours is freed.
  */
 .desk-claim {
   position: absolute;

@@ -42,16 +42,19 @@ work happens. What we don't build, though each would raise usage numbers:
 - **Your own desk.** People value what's theirs more than what's merely
   available, and the feeling comes from choosing and using it (psychological
   ownership; the endowment and IKEA effects). A desk is a home base, and
-  being at it or away says whether you're available. So: you claim a desk. A free desk offers "Claim desk" only
-  when it's the one you mean: you're standing at its chair (the outlined
-  one), or, with a mouse, pointing at it from anywhere. The chip hangs under
-  that chair, clear of your head and name; it used to sit on the desk, where
-  standing beside a chair it covered your name and, worse, offered the desk
-  across the table. A desk is claimed, not moved to: what you make of yours
-  (customisation, later) stays with that desk, so claiming another while you
-  have one asks first, on that desk ("Your current desk will be freed"), and
-  walking away takes the question with you. It's confirmed once, and nobody
-  else sits there. The claim is the
+  being at it or away says whether you're available. So: you claim a desk, by walking to it. A free desk offers
+  "Claim desk" only when it's near and the one you mean: you're at its chair
+  (the outlined one), or pointing at it from a few steps away; from across
+  the room it's somewhere to walk to first, so nobody claims a desk by
+  accident. The chip sits on the desk, clear of your head and name: just
+  under a chair north of its desk, at the back of a desk south of its chair.
+  A desk is claimed, not moved to: what you make of yours (customisation,
+  later) stays with that desk, so claiming another while you have one asks
+  first, the chip opening into the question on that desk ("Your current desk
+  will be freed"); walking away takes the question with you. Claimed, the
+  chip says so itself, its plus turning into a check in a green dot, before
+  your face takes its place; nothing pops up elsewhere. Nobody else sits
+  there. The claim is the
   base desk customisation will build on. While its owner
   isn't at it, a claimed desk carries their face, with a dot while they're in
   the office, so the floor reads as a seating chart from across the room;

@@ -809,7 +809,8 @@
     "keepMine": "Behold min",
     "goTo": "Gå til pulten din",
     "claimTitle": "Ta denne pulten?",
-    "claimNote": "Den nåværende pulten din blir ledig."
+    "claimNote": "Den nåværende pulten din blir ledig.",
+    "claimed": "Tatt"
   },
   "note": {
     "title": "Statusnotat",

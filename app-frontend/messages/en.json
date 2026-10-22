@@ -809,7 +809,8 @@
     "keepMine": "Keep my desk",
     "goTo": "Go to your desk",
     "claimTitle": "Claim this desk?",
-    "claimNote": "Your current desk will be freed."
+    "claimNote": "Your current desk will be freed.",
+    "claimed": "Claimed"
   },
   "note": {
     "title": "Status note",

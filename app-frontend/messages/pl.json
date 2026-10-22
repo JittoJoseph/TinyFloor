@@ -809,7 +809,8 @@
     "keepMine": "Zostaw moje",
     "goTo": "Idź do swojego biurka",
     "claimTitle": "Zająć to biurko?",
-    "claimNote": "Twoje obecne biurko zostanie zwolnione."
+    "claimNote": "Twoje obecne biurko zostanie zwolnione.",
+    "claimed": "Zajęte"
   },
   "note": {
     "title": "Notatka statusu",

@@ -56,7 +56,8 @@ export function FloorPrompt() {
   const mine = me ? deskOf(desks, me) : undefined;
   const freeDesk = seat !== null && isDesk(seat) && !deskAt(desks, seat);
   const offer = !!me && freeDesk && notNow !== seat && claimed === null ? seat : null;
-  const done = claimed !== null && mine?.seat === claimed;
+  // Claimed sitting at it, the prompt says so; claimed from the desk itself, the desk does.
+  const done = claimed !== null && mine?.seat === claimed && seat === claimed;
   const key = asking !== null && asking === seat ? `ask-${asking}` : done ? "claimed" : offer !== null ? `desk-${offer}` : (action ?? null);
 
   const motionProps = {

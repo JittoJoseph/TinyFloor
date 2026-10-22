@@ -13,6 +13,8 @@ export interface SceneText {
   claimNote: string;
   claimConfirm: string;
   cancel: string;
+  /** The chip, once the desk is yours. */
+  claimed: string;
 }
 
 let text: SceneText = {
@@ -24,6 +26,7 @@ let text: SceneText = {
   claimNote: "Your current desk will be freed.",
   claimConfirm: "Claim",
   cancel: "Cancel",
+  claimed: "Claimed",
 };
 
 export function setSceneText(next: SceneText) {

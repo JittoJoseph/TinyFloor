@@ -809,7 +809,8 @@
     "keepMine": "Meinen Platz behalten",
     "goTo": "Zu deinem Platz",
     "claimTitle": "Diesen Platz beanspruchen?",
-    "claimNote": "Dein jetziger Platz wird frei."
+    "claimNote": "Dein jetziger Platz wird frei.",
+    "claimed": "Beansprucht"
   },
   "note": {
     "title": "Statusnotiz",

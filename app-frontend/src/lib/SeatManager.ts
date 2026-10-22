@@ -28,6 +28,8 @@ const SEAT: Record<CardinalDirection, { dx: number; dy: number; depth: number; e
 const REACH = 56;
 /** How close a desk's plate shows: about the desk you're at or walking past. */
 const PLATE_REACH = 96;
+/** Within this, pointing at a free desk offers it; from further, it's somewhere to walk to first. */
+const POINT_REACH = 224;
 /** Moving this much further from a desk you were asked about takes the question away. */
 const WALKED_OFF = 48;
 const HIGHLIGHT = 0xff4e00;
@@ -107,15 +109,16 @@ export class SeatManager {
       if (!isDesk(seat.id)) return;
       const up = seat.direction === "up";
       const y = up ? seat.y - 38 : seat.baseY - 2;
-      // The claim chip hangs from the chair's foot, clear of whoever stands beside it, their head and name.
-      const chipY = up ? seat.baseY + 1 : seat.baseY - 6;
+      // The claim chip on the desk, clear of whoever stands at the chair and their name: at the back of a
+      // desk south of its chair, growing up when it asks; just under a chair north of its desk, growing down.
+      const chip = up ? { y: seat.y - 50, hang: "bottom" as const } : { y: seat.baseY - 6, hang: "top" as const };
       this.plates.set(
         seat.id,
         new DeskPlate(
           scene,
           seat.x,
           y,
-          chipY,
+          chip,
           depthForY(up ? seat.baseY : seat.baseY + 48) + 1,
           () => sceneText(),
           () => this.goToDesk(seat.id),
@@ -231,7 +234,7 @@ export class SeatManager {
 
   /** Each desk's plate: whose it is while they're away from it, "Your desk" for yours, "Claim desk" on a free one you walk up to. */
   private showPlates() {
-    const { desks, canClaim, asking } = deskState();
+    const { desks, canClaim, asking, claimed } = deskState();
     this.plates.forEach((plate, id) => {
       const desk = deskAt(desks, id);
       const seat = this.byId.get(id);
@@ -243,6 +246,7 @@ export class SeatManager {
       );
       // Asked about from the desk itself, it answers there; sitting at it, the prompt above the dock does.
       plate.setAsking(asking === id && this.seated !== seat);
+      plate.setClaimed(claimed === id);
     });
   }
 
@@ -333,6 +337,7 @@ export class SeatManager {
       const at = this.nearest?.seat === seat;
       plate.setNear(!at && Phaser.Math.Distance.Between(this.player.x, this.player.y, seat.x, seat.baseY) < PLATE_REACH);
       plate.setOffered(id === offered);
+      plate.setReachable(Phaser.Math.Distance.Between(this.player.x, this.player.y, seat.x, seat.baseY) < POINT_REACH);
     });
   }
 

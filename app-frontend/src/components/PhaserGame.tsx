@@ -42,6 +42,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
       claimNote: tDesk("claimNote"),
       claimConfirm: tDesk("claimConfirm"),
       cancel: tCommon("cancel"),
+      claimed: tDesk("claimed"),
     }),
   );
 

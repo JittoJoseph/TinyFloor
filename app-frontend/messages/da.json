@@ -809,7 +809,8 @@
     "keepMine": "Behold mit",
     "goTo": "Gå til dit skrivebord",
     "claimTitle": "Tag dette skrivebord?",
-    "claimNote": "Dit nuværende skrivebord bliver ledigt."
+    "claimNote": "Dit nuværende skrivebord bliver ledigt.",
+    "claimed": "Taget"
   },
   "note": {
     "title": "Statusnote",

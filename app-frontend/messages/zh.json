@@ -809,7 +809,8 @@
     "keepMine": "保留我的工位",
     "goTo": "前往你的工位",
     "claimTitle": "认领这个工位？",
-    "claimNote": "你当前的工位将被释放。"
+    "claimNote": "你当前的工位将被释放。",
+    "claimed": "已认领"
   },
   "note": {
     "title": "状态备注",

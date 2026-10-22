@@ -809,7 +809,8 @@
     "keepMine": "Tieni la mia",
     "goTo": "Vai alla tua scrivania",
     "claimTitle": "Prendere questa scrivania?",
-    "claimNote": "La tua scrivania attuale verrà liberata."
+    "claimNote": "La tua scrivania attuale verrà liberata.",
+    "claimed": "Presa"
   },
   "note": {
     "title": "Nota di stato",

@@ -305,7 +305,8 @@
   "scene": {
     "meeting": "会议",
     "drawing": "正在绘制",
-    "yourDesk": "你的工位"
+    "yourDesk": "你的工位",
+    "claimDesk": "认领工位"
   },
   "actions": {
     "sit": "坐下",
@@ -800,10 +801,11 @@
     "keepPro": "继续使用 Pro"
   },
   "desk": {
-    "claim": "设为我的工位",
-    "move": "把工位搬到这里",
-    "notNow": "暂不",
-    "yours": "你的工位"
+    "claimConfirm": "认领",
+    "goTo": "前往你的工位",
+    "claimTitle": "认领这个工位？",
+    "claimNote": "你当前的工位将被释放。",
+    "claimed": "已认领"
   },
   "note": {
     "title": "状态备注",

@@ -2,10 +2,13 @@
 
 import { useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Check, DoorOpen, HelpCircle, LogOut, MonitorDown, Settings2, UserRound, UserPlus } from "@/components/ui/icons";
+import { Check, ChevronRight, Desk, DoorOpen, HelpCircle, LogOut, MonitorDown, Settings2, UserPlus } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { setMyStatus, useMyNote, useMyStatus } from "@/lib/floor";
+import { deskOf, goToMyDesk, useDesks } from "@/lib/desks";
+import { NoteGlyph } from "@/lib/noteIcons";
+import type { NoteIcon } from "@shared/messages";
 import { NoteOptions, NoteRow } from "./StatusNote";
 import { MusicOptions, MusicRow } from "./Music";
 import { useShellFrame } from "./AppShell";
@@ -13,7 +16,7 @@ import { useOfficeMaybe } from "./OfficeShell";
 import { OfficeMenu, useOtherOffices } from "./OfficeSwitcher";
 import type { PlayerStatus } from "@/lib/types";
 import { Face } from "@/components/ui/Face";
-import { Menu, MenuHeader, MenuItem, MenuSeparator } from "@/components/ui/Menu";
+import { Menu, MenuHeader, MenuItem, MenuSeparator, useCloseMenu } from "@/components/ui/Menu";
 import { MenuExpand, MenuFold, MenuRow } from "@/components/ui/MenuViews";
 import { cn } from "@/lib/utils";
 import { useWide } from "@/lib/hooks/use-wide";
@@ -55,6 +58,7 @@ export function YouMenu({
   leave?: { href: string; label: string };
 }) {
   const t = useTranslations("shell");
+  const tDesk = useTranslations("desk");
   const tHelp = useTranslations("help");
   const tStatus = useTranslations("status");
   const router = useRouter();
@@ -68,6 +72,10 @@ export function YouMenu({
   const canInstall = useCanInstall();
   const office = useOfficeMaybe()?.office ?? null;
   const { others, load } = useOtherOffices(office?.id ?? "");
+  const { desks, seat } = useDesks();
+  // On the floor, the way back to your desk from anywhere on it, while you're not at it.
+  const desk = onFloor && office && user ? deskOf(desks, user.id) : undefined;
+  const myDesk = desk && desk.seat !== seat ? desk : undefined;
   if (!user) return null;
   const close = () => setOpen(null);
   const inCall = status === "in_call";
@@ -103,16 +111,31 @@ export function YouMenu({
         )
       }
     >
-      {/* Your name as everyone sees it; your email address is for your profile. */}
-      <MenuHeader>
-        <div className="flex items-center gap-3">
-          <Face seed={user.id} size={36} />
-          <div className="min-w-0">
-            <p className="truncate text-[14px] font-medium text-foreground">{user.displayName}</p>
-            {isGuest && <p className="truncate text-[12px] text-muted-foreground">{t("guest")}</p>}
+      {/*
+        You as the office sees you: your face with your status on it, your
+        name, and your note when you have one. Your email address is for your
+        profile, which this opens.
+      */}
+      {isGuest ? (
+        <MenuHeader>
+          <div className="flex items-center gap-3">
+            <Face seed={user.id} size={40} presence={onFloor ? status : null} />
+            <div className="min-w-0">
+              <p className="truncate text-[15px] font-semibold text-foreground">{user.displayName}</p>
+              <p className="truncate text-[12.5px] text-muted-foreground">{t("guest")}</p>
+            </div>
           </div>
-        </div>
-      </MenuHeader>
+        </MenuHeader>
+      ) : (
+        <ProfileCard
+          userId={user.id}
+          name={user.displayName}
+          // Your status is the row below and the dot on your face, so the line is your note, or where this goes.
+          line={onFloor && note ? { icon: note.icon, text: note.text } : { text: t("yourProfile") }}
+          presence={onFloor ? status : null}
+          onOpen={() => (settingsHref ? openSettings(router, settingsHref, "profile") : router.push("/account"))}
+        />
+      )}
 
       <MenuSeparator />
       {office &&
@@ -183,18 +206,17 @@ export function YouMenu({
         <MusicOptions onDone={close} />,
       )}
 
-      <MenuSeparator />
-      {isGuest ? (
+      {myDesk && (
+        <MenuItem icon={<Desk />} onSelect={goToMyDesk}>
+          {tDesk("goTo")}
+        </MenuItem>
+      )}
+
+      {/* A line only when something follows it: on a wide screen, Settings and Help are on the rail. */}
+      {(isGuest || (!!settingsHref && !wide) || (!wide && !bar) || canInstall) && <MenuSeparator />}
+      {isGuest && (
         <MenuItem icon={<UserPlus />} onSelect={() => router.push("/auth?mode=signup")}>
           {t("makeAccount")}
-        </MenuItem>
-      ) : (
-        // In a place, your profile is a section of its settings; outside one, its own page.
-        <MenuItem
-          icon={<UserRound />}
-          onSelect={() => (settingsHref ? openSettings(router, settingsHref, "profile") : router.push("/account"))}
-        >
-          {t("yourProfile")}
         </MenuItem>
       )}
       {/* A wide screen has Settings and Help on the rail; a phone has no rail. The dashboard's bar has no help dialog. */}
@@ -237,5 +259,42 @@ export function YouMenu({
         </>
       )}
     </Menu>
+  );
+}
+
+/** You, at the head of your menu: your face and status, your name, the line under it; pressed, your profile. */
+function ProfileCard({
+  userId,
+  name,
+  line,
+  presence,
+  onOpen,
+}: {
+  userId: string;
+  name: string;
+  line: { icon?: NoteIcon | null; text: string };
+  presence: PlayerStatus | null;
+  onOpen: () => void;
+}) {
+  const close = useCloseMenu();
+  return (
+    <button
+      type="button"
+      onClick={() => {
+        close();
+        onOpen();
+      }}
+      className="group flex w-full cursor-pointer items-center gap-3 rounded-[12px] px-2.5 py-2 text-start outline-none transition-colors hover:bg-muted focus-visible:bg-muted"
+    >
+      <Face seed={userId} size={40} presence={presence} />
+      <span className="min-w-0 flex-1">
+        <span className="block truncate text-[15px] font-semibold leading-snug text-foreground">{name}</span>
+        <span className="flex items-center gap-1.5 text-[12.5px] text-muted-foreground">
+          {line.icon !== undefined && <NoteGlyph icon={line.icon} className="size-3.5 shrink-0" />}
+          <span className="truncate">{line.text}</span>
+        </span>
+      </span>
+      <ChevronRight className="size-4 shrink-0 text-faint transition-transform group-hover:translate-x-0.5 group-hover:text-muted-foreground rtl:rotate-180" />
+    </button>
   );
 }

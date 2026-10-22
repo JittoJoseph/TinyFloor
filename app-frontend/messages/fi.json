@@ -305,7 +305,8 @@
   "scene": {
     "meeting": "Palaveri",
     "drawing": "Piirtää",
-    "yourDesk": "Työpöytäsi"
+    "yourDesk": "Työpöytäsi",
+    "claimDesk": "Varaa työpiste"
   },
   "actions": {
     "sit": "Istu alas",
@@ -800,10 +801,11 @@
     "keepPro": "Pidä Pro"
   },
   "desk": {
-    "claim": "Tee tästä työpöytäni",
-    "move": "Siirrä työpöytäni tähän",
-    "notNow": "Ei nyt",
-    "yours": "Työpisteesi"
+    "claimConfirm": "Varaa",
+    "goTo": "Mene työpisteellesi",
+    "claimTitle": "Varataanko tämä työpiste?",
+    "claimNote": "Nykyinen työpisteesi vapautuu.",
+    "claimed": "Varattu"
   },
   "note": {
     "title": "Tilaviesti",

@@ -10,8 +10,11 @@ import * as Phaser from "phaser";
 interface Item {
   object: Phaser.GameObjects.Container;
   element: HTMLElement;
-  /** Where the label hangs from its point: its centre, or the middle of its bottom edge (a name tag over a head). */
-  anchor: "center" | "bottom";
+  /**
+   * Where the label hangs from its point: its centre, the middle of its bottom
+   * edge (a name tag over a head), or of its top edge (a desk's claim chip under a chair, which grows downward).
+   */
+  anchor: "center" | "bottom" | "top";
   /** What was last written, so a label that hasn't moved costs no style change. */
   last: string;
 }
@@ -74,7 +77,7 @@ class PlateLayer {
       const x = ((matrix.tx - view.x) * camera.zoom + camera.x) * ratio;
       const y = ((matrix.ty - view.y) * camera.zoom + camera.y) * ratio;
       const scale = Math.hypot(matrix.a, matrix.b) * camera.zoom * ratio;
-      const lift = anchor === "bottom" ? "-100%" : "-50%";
+      const lift = anchor === "bottom" ? "-100%" : anchor === "top" ? "0%" : "-50%";
       const transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) translate(-50%, ${lift}) scale(${scale.toFixed(3)})`;
       const opacity = alpha < 1 ? alpha.toFixed(2) : "";
       const depth = String(Math.round(object.depth || object.parentContainer?.depth || 0));

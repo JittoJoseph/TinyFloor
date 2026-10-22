@@ -305,7 +305,8 @@
   "scene": {
     "meeting": "اجتماع",
     "drawing": "يرسم",
-    "yourDesk": "مكتبك"
+    "yourDesk": "مكتبك",
+    "claimDesk": "حجز المكتب"
   },
   "actions": {
     "sit": "اجلس",
@@ -800,10 +801,11 @@
     "keepPro": "احتفظ بـ Pro"
   },
   "desk": {
-    "claim": "اجعله مكتبي",
-    "move": "انقل مكتبي إلى هنا",
-    "notNow": "ليس الآن",
-    "yours": "مكتبك"
+    "claimConfirm": "حجز",
+    "goTo": "الذهاب إلى مكتبك",
+    "claimTitle": "حجز هذا المكتب؟",
+    "claimNote": "سيصبح مكتبك الحالي متاحًا.",
+    "claimed": "تم الحجز"
   },
   "note": {
     "title": "ملاحظة الحالة",

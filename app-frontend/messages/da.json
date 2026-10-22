@@ -305,7 +305,8 @@
   "scene": {
     "meeting": "Møde",
     "drawing": "Tegner",
-    "yourDesk": "Dit skrivebord"
+    "yourDesk": "Dit skrivebord",
+    "claimDesk": "Tag skrivebord"
   },
   "actions": {
     "sit": "Sæt dig",
@@ -800,10 +801,11 @@
     "keepPro": "Behold Pro"
   },
   "desk": {
-    "claim": "Gør det til mit skrivebord",
-    "move": "Flyt mit skrivebord hertil",
-    "notNow": "Ikke nu",
-    "yours": "Dit skrivebord"
+    "claimConfirm": "Tag det",
+    "goTo": "Gå til dit skrivebord",
+    "claimTitle": "Tag dette skrivebord?",
+    "claimNote": "Dit nuværende skrivebord bliver ledigt.",
+    "claimed": "Taget"
   },
   "note": {
     "title": "Statusnote",

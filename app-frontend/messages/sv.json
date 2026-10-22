@@ -305,7 +305,8 @@
   "scene": {
     "meeting": "Möte",
     "drawing": "Ritar",
-    "yourDesk": "Ditt skrivbord"
+    "yourDesk": "Ditt skrivbord",
+    "claimDesk": "Ta skrivbord"
   },
   "actions": {
     "sit": "Sätt dig",
@@ -800,10 +801,11 @@
     "keepPro": "Behåll Pro"
   },
   "desk": {
-    "claim": "Gör det till mitt skrivbord",
-    "move": "Flytta mitt skrivbord hit",
-    "notNow": "Inte nu",
-    "yours": "Ditt skrivbord"
+    "claimConfirm": "Ta det",
+    "goTo": "Gå till ditt skrivbord",
+    "claimTitle": "Ta det här skrivbordet?",
+    "claimNote": "Ditt nuvarande skrivbord blir ledigt.",
+    "claimed": "Tagen"
   },
   "note": {
     "title": "Statusnotis",

@@ -305,7 +305,8 @@
   "scene": {
     "meeting": "Vergadering",
     "drawing": "Tekent",
-    "yourDesk": "Jouw bureau"
+    "yourDesk": "Jouw bureau",
+    "claimDesk": "Bureau claimen"
   },
   "actions": {
     "sit": "Gaan zitten",
@@ -800,10 +801,11 @@
     "keepPro": "Pro houden"
   },
   "desk": {
-    "claim": "Maak dit mijn bureau",
-    "move": "Verhuis mijn bureau hierheen",
-    "notNow": "Niet nu",
-    "yours": "Je bureau"
+    "claimConfirm": "Claimen",
+    "goTo": "Naar je bureau",
+    "claimTitle": "Dit bureau claimen?",
+    "claimNote": "Je huidige bureau komt dan vrij.",
+    "claimed": "Geclaimd"
   },
   "note": {
     "title": "Statusnotitie",

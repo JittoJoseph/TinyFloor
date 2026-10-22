@@ -42,9 +42,22 @@ work happens. What we don't build, though each would raise usage numbers:
 - **Your own desk.** People value what's theirs more than what's merely
   available, and the feeling comes from choosing and using it (psychological
   ownership; the endowment and IKEA effects). A desk is a home base, and
-  being at it or away says whether you're available. So: you claim a desk at it ("Make this my desk",
-  offered as you sit, never on approach; "Move my desk here" once you have
-  one), it's confirmed once, and nobody else sits there. The claim is the
+  being at it or away says whether you're available. So: you claim a desk by
+  sitting at it. A free desk offers "Claim desk" while you sit there, and
+  only then: no hovering, nothing while standing beside it or passing by, and
+  never as a prompt above the dock, so nobody claims a desk by accident and
+  the floor stays quiet. Offering it on hover and from a few steps away was
+  tried; sitting down is the clearer signal of meaning that desk. The chip
+  sits on the desk, clear of your head and name: just under a chair north of
+  its desk, at the back of a desk south of its chair.
+  A desk is claimed, not moved to: what you make of yours (customisation,
+  later) stays with that desk, so claiming another while you have one asks
+  first, the chip opening into the question on that desk, over everything
+  else on the floor ("Your current desk will be freed"); standing up takes
+  the question with you. Claimed, the
+  chip says so itself, its plus turning into a check in a green dot, before
+  your face takes its place; nothing pops up elsewhere. Nobody else sits
+  there. The claim is the
   base desk customisation will build on. While its owner
   isn't at it, a claimed desk carries their face, with a dot while they're in
   the office, so the floor reads as a seating chart from across the room;
@@ -233,7 +246,7 @@ missing features on the map.
 ## What's at hand on the floor, and the whiteboard (21 October)
 
 - **One prompt for what you can do where you stand**: sit, stand up, open the
-  whiteboard. The nearest wins, E does it, and the prompt is a pill above the
+  whiteboard. Never desks: those are claimed on the desk itself. The nearest wins, E does it, and the prompt is a pill above the
   dock, a button for a finger. It used to be a label drawn on the map, in the
   same dark pill as name tags, stacked under your own and moving with the way
   a chair faced.

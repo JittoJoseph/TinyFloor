@@ -305,7 +305,8 @@
   "scene": {
     "meeting": "Meeting",
     "drawing": "Zeichnet",
-    "yourDesk": "Dein Schreibtisch"
+    "yourDesk": "Dein Schreibtisch",
+    "claimDesk": "Platz beanspruchen"
   },
   "actions": {
     "sit": "Hinsetzen",
@@ -800,10 +801,11 @@
     "keepPro": "Pro behalten"
   },
   "desk": {
-    "claim": "Mein Schreibtisch",
-    "move": "Schreibtisch hierher",
-    "notNow": "Nicht jetzt",
-    "yours": "Dein Schreibtisch"
+    "claimConfirm": "Beanspruchen",
+    "goTo": "Zu deinem Platz",
+    "claimTitle": "Diesen Platz beanspruchen?",
+    "claimNote": "Dein jetziger Platz wird frei.",
+    "claimed": "Beansprucht"
   },
   "note": {
     "title": "Statusnotiz",

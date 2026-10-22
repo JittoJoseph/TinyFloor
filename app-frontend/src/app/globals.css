@@ -176,6 +176,191 @@
   opacity: 1;
 }
 
+/*
+ * A free desk you're sitting at: an action, dark like the name tags, with a
+ * plus and "Claim desk". Claiming it while you have a desk asks right there,
+ * on the desk, before yours is freed.
+ */
+.desk-claim {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: auto;
+  will-change: transform;
+  font: 500 10.5px/1 Geist, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* It hangs from an edge (plates.ts), so it scales and grows from there too. */
+.desk-claim[data-hang="top"] {
+  transform-origin: top center;
+}
+
+.desk-claim[data-hang="bottom"] {
+  transform-origin: bottom center;
+}
+
+.desk-claim[hidden] {
+  display: none;
+}
+
+.desk-claim-go {
+  position: static;
+  cursor: pointer;
+  gap: 5px;
+  padding: 0 8px 0 2px;
+  border: 0;
+  background: rgb(17 17 19 / 0.88);
+  font-weight: 600;
+  transition: background-color 140ms ease;
+}
+
+.desk-claim-go:hover {
+  background: rgb(17 17 19 / 0.98);
+}
+
+/* The plus in its dot, which turns into a check in a green one once the desk is yours (like DoneChip). */
+.desk-claim-dot {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  flex: none;
+  border-radius: 50%;
+  background: #fafaf9;
+  color: #111113;
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+.desk-claim-dot svg {
+  position: absolute;
+  transition:
+    opacity 180ms ease,
+    transform 320ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.desk-claim-check {
+  opacity: 0;
+  transform: scale(0.5) rotate(-30deg);
+}
+
+.desk-claim-label {
+  display: grid;
+}
+
+.desk-claim-label > span {
+  grid-area: 1 / 1;
+  transition:
+    opacity 180ms ease,
+    transform 180ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.desk-claim-done {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
+.desk-claim-go[data-done] {
+  cursor: default;
+}
+
+.desk-claim-go[data-done] .desk-claim-dot {
+  background: #22a35a;
+  color: #fff;
+}
+
+.desk-claim-go[data-done] .desk-claim-plus {
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.desk-claim-go[data-done] .desk-claim-check {
+  opacity: 1;
+  transform: none;
+}
+
+.desk-claim-go[data-done] .desk-claim-ready {
+  opacity: 0;
+  transform: translateY(-6px);
+}
+
+.desk-claim-go[data-done] .desk-claim-done {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .desk-claim-dot svg,
+  .desk-claim-label > span {
+    transition: opacity 120ms ease;
+    transform: none !important;
+  }
+}
+
+.desk-claim[data-asking] {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 172px;
+  padding: 8px;
+  border-radius: 10px;
+  background: rgb(17 17 19 / 0.94);
+  color: #fafaf9;
+  box-shadow:
+    inset 0 0 0 0.5px rgb(255 255 255 / 0.14),
+    0 4px 14px rgb(0 0 0 / 0.32);
+}
+
+.desk-claim-ask {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  line-height: 1.25;
+}
+
+.desk-claim-ask strong {
+  font-weight: 600;
+}
+
+.desk-claim-ask span {
+  color: rgb(250 250 249 / 0.68);
+  font-size: 9.5px;
+}
+
+.desk-claim-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.desk-claim-row button {
+  height: 18px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.desk-claim-row button:hover {
+  background: rgb(255 255 255 / 0.1);
+}
+
+.desk-claim-row .desk-claim-yes {
+  background: #fafaf9;
+  color: #111113;
+}
+
+.desk-claim-row .desk-claim-yes:hover {
+  background: #fff;
+}
+
 /* Yours, in ink, so it's the one you spot; pressing it walks you there. */
 .desk-plate[data-mine] {
   pointer-events: auto;

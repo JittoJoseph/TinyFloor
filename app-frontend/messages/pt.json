@@ -305,7 +305,8 @@
   "scene": {
     "meeting": "Reunião",
     "drawing": "Desenhando",
-    "yourDesk": "Sua mesa"
+    "yourDesk": "Sua mesa",
+    "claimDesk": "Reservar mesa"
   },
   "actions": {
     "sit": "Sentar",
@@ -800,10 +801,11 @@
     "keepPro": "Manter o Pro"
   },
   "desk": {
-    "claim": "Tornar minha mesa",
-    "move": "Mudar minha mesa para cá",
-    "notNow": "Agora não",
-    "yours": "Sua mesa"
+    "claimConfirm": "Reservar",
+    "goTo": "Ir para sua mesa",
+    "claimTitle": "Reservar esta mesa?",
+    "claimNote": "Sua mesa atual ficará livre.",
+    "claimed": "Reservada"
   },
   "note": {
     "title": "Nota de status",

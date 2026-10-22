@@ -305,7 +305,8 @@
   "scene": {
     "meeting": "Møte",
     "drawing": "Tegner",
-    "yourDesk": "Pulten din"
+    "yourDesk": "Pulten din",
+    "claimDesk": "Ta pult"
   },
   "actions": {
     "sit": "Sett deg",
@@ -800,10 +801,11 @@
     "keepPro": "Behold Pro"
   },
   "desk": {
-    "claim": "Gjør den til min pult",
-    "move": "Flytt pulten min hit",
-    "notNow": "Ikke nå",
-    "yours": "Pulten din"
+    "claimConfirm": "Ta den",
+    "goTo": "Gå til pulten din",
+    "claimTitle": "Ta denne pulten?",
+    "claimNote": "Den nåværende pulten din blir ledig.",
+    "claimed": "Tatt"
   },
   "note": {
     "title": "Statusnotat",

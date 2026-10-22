@@ -305,7 +305,8 @@
   "scene": {
     "meeting": "Reunión",
     "drawing": "Dibujando",
-    "yourDesk": "Tu escritorio"
+    "yourDesk": "Tu escritorio",
+    "claimDesk": "Reclamar escritorio"
   },
   "actions": {
     "sit": "Sentarse",
@@ -800,10 +801,12 @@
     "keepPro": "Mantener Pro"
   },
   "desk": {
-    "claim": "Que sea mi escritorio",
-    "move": "Mover mi escritorio aquí",
+    "claim": "Reclamar este escritorio",
     "notNow": "Ahora no",
-    "yours": "Tu escritorio"
+    "yours": "Tu escritorio",
+    "claimAsk": "¿Reclamar este escritorio? Tu escritorio actual quedará libre.",
+    "claimConfirm": "Reclamar",
+    "keepMine": "Quedarme con el mío"
   },
   "note": {
     "title": "Nota de estado",

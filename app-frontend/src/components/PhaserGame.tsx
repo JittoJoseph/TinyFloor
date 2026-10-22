@@ -35,6 +35,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
       meeting: t("meeting"),
       drawing: t("drawing"),
       yourDesk: t("yourDesk"),
+      claimDesk: t("claimDesk"),
     }),
   );
 

@@ -176,6 +176,39 @@
   opacity: 1;
 }
 
+/* A free desk you walk up to: an empty place where a face would be, and "Claim desk". */
+.desk-plate[data-free] {
+  pointer-events: auto;
+  cursor: pointer;
+  transition: background-color 140ms ease;
+}
+
+.desk-plate[data-free]:hover {
+  background: #fff;
+}
+
+.desk-plate[data-free] .desk-plate-face {
+  border: 1px dashed rgb(28 28 30 / 0.45);
+  box-sizing: border-box;
+}
+
+.desk-plate[data-free] .desk-plate-face::before,
+.desk-plate[data-free] .desk-plate-face::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 5px;
+  height: 1px;
+  border-radius: 1px;
+  background: rgb(28 28 30 / 0.7);
+  transform: translate(-50%, -50%);
+}
+
+.desk-plate[data-free] .desk-plate-face::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
 /* Yours, in ink, so it's the one you spot; pressing it walks you there. */
 .desk-plate[data-mine] {
   pointer-events: auto;

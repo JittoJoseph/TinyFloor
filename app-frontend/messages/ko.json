@@ -305,7 +305,8 @@
   "scene": {
     "meeting": "회의",
     "drawing": "그리는 중",
-    "yourDesk": "내 책상"
+    "yourDesk": "내 책상",
+    "claimDesk": "자리 맡기"
   },
   "actions": {
     "sit": "앉기",
@@ -800,10 +801,12 @@
     "keepPro": "Pro 유지하기"
   },
   "desk": {
-    "claim": "내 책상으로 하기",
-    "move": "내 책상을 여기로",
+    "claim": "이 자리 맡기",
     "notNow": "나중에",
-    "yours": "내 책상"
+    "yours": "내 책상",
+    "claimAsk": "이 자리를 맡을까요? 지금 자리는 비게 돼요.",
+    "claimConfirm": "맡기",
+    "keepMine": "내 자리 유지"
   },
   "note": {
     "title": "상태 메모",

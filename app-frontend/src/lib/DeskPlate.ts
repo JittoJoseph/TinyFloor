@@ -20,7 +20,9 @@ export interface DeskOwner {
  * they're in the office, so the floor reads as a seating chart from across
  * the room. Walk up and it opens, smoothly, to their name; yours, ringed in
  * ink, opens to "Your desk", and pressing it walks you there from anywhere.
- * A free desk has none. HTML over the canvas (plates.ts), like the name tags.
+ * A free desk, for someone who can claim one, shows a plate only as you walk
+ * up: an empty place where a face would be, and "Claim desk". HTML over the
+ * canvas (plates.ts), like the name tags.
  */
 export class DeskPlate {
   private readonly anchor: Phaser.GameObjects.Container;
@@ -30,15 +32,18 @@ export class DeskPlate {
   private readonly name: HTMLSpanElement;
   private readonly remove: () => void;
   private owner: DeskOwner | null = null;
+  private claimable = false;
   private near = false;
+  private offering = true;
 
   constructor(
     scene: Phaser.Scene,
     x: number,
     y: number,
     depth: number,
-    private readonly yourDesk: () => string,
+    private readonly text: () => { yourDesk: string; claimDesk: string },
     goHome: () => void,
+    claim: () => void,
   ) {
     this.anchor = scene.add.container(x, y).setDepth(depth);
     this.root = document.createElement("div");
@@ -52,31 +57,53 @@ export class DeskPlate {
     this.name = document.createElement("span");
     this.name.className = "desk-plate-name";
     this.root.append(this.face, this.name);
-    this.root.addEventListener("click", () => this.owner?.mine && goHome());
+    this.root.addEventListener("click", () => {
+      if (this.owner?.mine) goHome();
+      else if (!this.owner && this.claimable) claim();
+    });
     this.remove = plateLayer(scene).add(this.anchor, this.root);
   }
 
-  /** Whether you are close enough to read it. */
-  setNear(near: boolean): this {
-    if (near === this.near) return this;
+  /**
+   * Whether you are close enough to read it, and whether a free desk should
+   * offer itself: not while you're sitting, settled somewhere already.
+   */
+  setNear(near: boolean, offering = true): this {
+    if (near === this.near && offering === this.offering) return this;
     this.near = near;
+    this.offering = offering;
     this.root.toggleAttribute("data-open", near);
+    if (!this.owner) this.root.hidden = !this.offered();
     return this;
   }
 
-  /** Whose desk it is, or null for a free one, or one its owner is sitting at. */
-  show(owner: DeskOwner | null): this {
+  private offered(): boolean {
+    return this.claimable && this.near && this.offering;
+  }
+
+  /** Whose desk it is, or null for a free one (`claimable` if you could claim it), or one its owner is sitting at. */
+  show(owner: DeskOwner | null, claimable = false): this {
     const before = this.owner;
     this.owner = owner;
-    this.root.hidden = !owner;
-    if (!owner) return this;
+    this.claimable = !owner && claimable;
+    this.root.toggleAttribute("data-free", this.claimable);
+    if (!owner) {
+      this.root.hidden = !this.offered();
+      this.face.style.background = "";
+      this.dot.hidden = true;
+      this.name.textContent = this.text().claimDesk;
+      this.root.toggleAttribute("data-mine", false);
+      this.root.title = this.text().claimDesk;
+      return this;
+    }
+    this.root.hidden = false;
     if (before?.userId !== owner.userId) this.face.style.background = faceBackground(owner.userId);
-    this.name.textContent = owner.mine ? this.yourDesk() : tagName(owner.name);
+    this.name.textContent = owner.mine ? this.text().yourDesk : tagName(owner.name);
     this.root.toggleAttribute("data-mine", owner.mine);
     this.root.toggleAttribute("data-open", this.near);
     this.dot.hidden = !owner.status;
     if (owner.status) this.dot.style.background = statusColor(owner.status);
-    this.root.title = owner.mine ? this.yourDesk() : owner.name;
+    this.root.title = owner.mine ? this.text().yourDesk : owner.name;
     return this;
   }
 

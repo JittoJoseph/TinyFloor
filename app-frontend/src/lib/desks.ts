@@ -13,9 +13,15 @@ interface DeskState {
   seat: number | null;
   /** The room has said, since this floor opened. */
   ready: boolean;
+  /** You can claim a desk here: a member of an office, not a guest, not in the lobby. */
+  canClaim: boolean;
+  /** A desk you asked to claim while you have another, waiting for you to say yes. */
+  asking: number | null;
+  /** The desk you just claimed, said once, briefly. */
+  claimed: number | null;
 }
 
-let state: DeskState = { desks: [], seat: null, ready: false };
+let state: DeskState = { desks: [], seat: null, ready: false, canClaim: false, asking: null, claimed: null };
 const listeners = new Set<() => void>();
 let send: ((message: ClientMessage) => void) | null = null;
 
@@ -50,11 +56,31 @@ export const deskOf = (desks: Desk[], userId: string) => desks.find((desk) => de
 /** The floor's socket, while there is one. */
 export function attachDesks(sender: ((message: ClientMessage) => void) | null) {
   send = sender;
-  if (!sender) set({ desks: [], seat: null, ready: false });
+  if (!sender) set({ desks: [], seat: null, ready: false, asking: null, claimed: null });
 }
 
-/** Asks the room to make this desk yours (any other goes); the answer comes back as the desks. */
-export function claimDesk(seat: number) {
+/** Whether this floor lets you claim desks; the page around it knows who you are here. */
+export const setCanClaim = (canClaim: boolean) => state.canClaim !== canClaim && set({ canClaim });
+
+/**
+ * Claiming a desk, from the desk itself or the prompt above the dock. A desk
+ * is claimed, not moved to: what you made of yours stays with that desk. So
+ * with one already, you're asked first, since claiming this one gives yours up.
+ */
+export function requestClaim(seat: number, me: string) {
+  if (!state.canClaim) return;
+  const mine = deskOf(state.desks, me);
+  if (mine && mine.seat !== seat) return set({ asking: seat });
+  confirmClaim(seat);
+}
+
+/** Asks the room to make this desk yours (any other is freed); the answer comes back as the desks. */
+export function confirmClaim(seat: number) {
   send?.({ t: "desk_claim", seat });
   track("desk_claimed");
+  set({ asking: null, claimed: seat });
 }
+
+export const cancelClaim = () => state.asking !== null && set({ asking: null });
+
+export const clearClaimed = () => state.claimed !== null && set({ claimed: null });

@@ -305,7 +305,8 @@
   "scene": {
     "meeting": "Spotkanie",
     "drawing": "Rysuje",
-    "yourDesk": "Twoje biurko"
+    "yourDesk": "Twoje biurko",
+    "claimDesk": "Zajmij biurko"
   },
   "actions": {
     "sit": "Usiądź",
@@ -800,10 +801,12 @@
     "keepPro": "Zachowaj Pro"
   },
   "desk": {
-    "claim": "To moje biurko",
-    "move": "Przenieś tu moje biurko",
+    "claim": "Zajmij to biurko",
     "notNow": "Nie teraz",
-    "yours": "Twoje biurko"
+    "yours": "Twoje biurko",
+    "claimAsk": "Zająć to biurko? Twoje obecne biurko zostanie zwolnione.",
+    "claimConfirm": "Zajmij",
+    "keepMine": "Zostaw moje"
   },
   "note": {
     "title": "Notatka statusu",

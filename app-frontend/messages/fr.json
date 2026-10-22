@@ -305,7 +305,8 @@
   "scene": {
     "meeting": "Réunion",
     "drawing": "Dessine",
-    "yourDesk": "Votre bureau"
+    "yourDesk": "Votre bureau",
+    "claimDesk": "Prendre ce bureau"
   },
   "actions": {
     "sit": "S'asseoir",
@@ -800,10 +801,12 @@
     "keepPro": "Garder Pro"
   },
   "desk": {
-    "claim": "En faire mon bureau",
-    "move": "Déplacer mon bureau ici",
+    "claim": "Prendre ce bureau",
     "notNow": "Pas maintenant",
-    "yours": "Votre bureau"
+    "yours": "Votre bureau",
+    "claimAsk": "Prendre ce bureau ? Votre bureau actuel sera libéré.",
+    "claimConfirm": "Prendre",
+    "keepMine": "Garder mon bureau"
   },
   "note": {
     "title": "Note de statut",

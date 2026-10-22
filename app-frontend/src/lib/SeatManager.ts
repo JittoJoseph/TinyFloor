@@ -9,7 +9,7 @@ import { SceneLabel } from "./SceneLabel";
 import { sceneText } from "./sceneText";
 import { pixelToTile } from "@/lib/types";
 import { isDesk } from "@shared/map";
-import { deskAt, deskState, setMySeat, subscribeDesks } from "./desks";
+import { cancelClaim, deskAt, deskState, requestClaim, setMySeat, subscribeDesks } from "./desks";
 import { floorStatusOf, subscribeFloor } from "./floor";
 import { DeskPlate } from "./DeskPlate";
 
@@ -110,8 +110,9 @@ export class SeatManager {
           seat.x,
           y,
           depthForY(up ? seat.baseY : seat.baseY + 48) + 1,
-          () => sceneText().yourDesk,
+          () => sceneText(),
           () => this.goToDesk(seat.id),
+          () => requestClaim(seat.id, this.selfId),
         ),
       );
     });
@@ -214,15 +215,18 @@ export class SeatManager {
     return !!desk && desk.userId !== this.selfId;
   }
 
-  /** Each desk's plate: whose it is while they're away from it, "Your desk" for yours, nothing on a free one. */
+  /** Each desk's plate: whose it is while they're away from it, "Your desk" for yours, "Claim desk" on a free one you walk up to. */
   private showPlates() {
-    const { desks } = deskState();
+    const { desks, canClaim } = deskState();
     this.plates.forEach((plate, id) => {
       const desk = deskAt(desks, id);
       const seat = this.byId.get(id);
       const mine = desk?.userId === this.selfId;
       const there = !!seat && (seat.occupant === desk?.userId || (mine && seat.occupant === SELF));
-      plate.show(desk && !there ? { userId: desk.userId, name: desk.name, mine, status: mine ? null : floorStatusOf(desk.userId) } : null);
+      plate.show(
+        desk && !there ? { userId: desk.userId, name: desk.name, mine, status: mine ? null : floorStatusOf(desk.userId) } : null,
+        !desk && canClaim && !seat?.occupant,
+      );
     });
   }
 
@@ -296,11 +300,15 @@ export class SeatManager {
 
   update() {
     if (!this.seated) this.findNearest();
+    // Asked about a desk and walked off: the question goes with you leaving it.
+    const asking = deskState().asking;
+    const asked = asking === null ? undefined : this.byId.get(asking);
+    if (asked && Phaser.Math.Distance.Between(this.player.x, this.player.y, asked.x, asked.baseY) > PLATE_REACH * 1.5) cancelClaim();
     this.plates.forEach((plate, id) => {
       const seat = this.byId.get(id)!;
       // At the chair itself its outline says it; the plate folds back rather than cover your name.
       const at = this.nearest?.seat === seat;
-      plate.setNear(!at && Phaser.Math.Distance.Between(this.player.x, this.player.y, seat.x, seat.baseY) < PLATE_REACH);
+      plate.setNear(!at && Phaser.Math.Distance.Between(this.player.x, this.player.y, seat.x, seat.baseY) < PLATE_REACH, !this.seated);
     });
   }
 

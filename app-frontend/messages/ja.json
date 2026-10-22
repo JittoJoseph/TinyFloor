@@ -305,7 +305,8 @@
   "scene": {
     "meeting": "会議",
     "drawing": "描画中",
-    "yourDesk": "あなたのデスク"
+    "yourDesk": "あなたのデスク",
+    "claimDesk": "デスクを確保"
   },
   "actions": {
     "sit": "座る",
@@ -800,10 +801,12 @@
     "keepPro": "Proを続ける"
   },
   "desk": {
-    "claim": "自分のデスクにする",
-    "move": "デスクをここに移す",
+    "claim": "このデスクを確保",
     "notNow": "今はしない",
-    "yours": "あなたのデスク"
+    "yours": "あなたのデスク",
+    "claimAsk": "このデスクを確保しますか?今のデスクは空きになります。",
+    "claimConfirm": "確保",
+    "keepMine": "今のデスクのまま"
   },
   "note": {
     "title": "ステータスメモ",

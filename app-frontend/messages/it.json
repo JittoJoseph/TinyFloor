@@ -305,7 +305,8 @@
   "scene": {
     "meeting": "Riunione",
     "drawing": "Sta disegnando",
-    "yourDesk": "La tua scrivania"
+    "yourDesk": "La tua scrivania",
+    "claimDesk": "Prendi scrivania"
   },
   "actions": {
     "sit": "Siediti",
@@ -800,10 +801,12 @@
     "keepPro": "Tieni Pro"
   },
   "desk": {
-    "claim": "La mia scrivania",
-    "move": "Sposta qui la mia scrivania",
+    "claim": "Prendi questa scrivania",
     "notNow": "Non ora",
-    "yours": "La tua scrivania"
+    "yours": "La tua scrivania",
+    "claimAsk": "Prendere questa scrivania? La tua scrivania attuale verrà liberata.",
+    "claimConfirm": "Prendi",
+    "keepMine": "Tieni la mia"
   },
   "note": {
     "title": "Nota di stato",

@@ -6,12 +6,15 @@ export interface SceneText {
   drawing: string;
   /** On your own desk's plate while you're away from it. */
   yourDesk: string;
+  /** On a free desk's plate as you walk up to it. */
+  claimDesk: string;
 }
 
 let text: SceneText = {
   meeting: "Meeting",
   drawing: "Drawing",
   yourDesk: "Your desk",
+  claimDesk: "Claim desk",
 };
 
 export function setSceneText(next: SceneText) {

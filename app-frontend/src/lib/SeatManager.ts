@@ -241,6 +241,11 @@ export class SeatManager {
     });
   }
 
+  /** The claim on a free desk keeps to the name tags' size as the camera pulls back. */
+  setClaimScale(scale: number) {
+    this.plates.forEach((plate) => plate.setClaimScale(scale));
+  }
+
   /** After a reconnect the room has forgotten where we sat, so sit down again. */
   resit() {
     const seat = this.seated;

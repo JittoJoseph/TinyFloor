@@ -15,6 +15,7 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import pngjs from "pngjs";
+import { drawn as drawnArt } from "./pages/art.js";
 import { check, isComposite, isGroup, spriteSize } from "./pages/catalog.js";
 
 const { PNG } = pngjs;
@@ -63,7 +64,10 @@ async function render(item) {
   const [w, h] = spriteSize(item.sprite);
   const image = new PNG({ width: w, height: h });
   const layers = isComposite(item.sprite) ? item.sprite.layers : [{ src: item.sprite.src, rect: item.sprite.rect, at: [0, 0] }];
-  for (const layer of layers) blit(await source(layer.src), layer.rect, image, layer.at[0], layer.at[1]);
+  for (const layer of layers) {
+    const from = layer.draw ? drawnArt(layer.draw, layer.rect[0] + layer.rect[2], layer.rect[1] + layer.rect[3]) : await source(layer.src);
+    blit(from, layer.rect, image, layer.at[0], layer.at[1]);
+  }
   if (!item.sprite.flip) return image;
   const flipped = new PNG({ width: w, height: h });
   blit(image, [0, 0, w, h], flipped, 0, 0, true, w);

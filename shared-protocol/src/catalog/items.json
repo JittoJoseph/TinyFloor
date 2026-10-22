@@ -4542,6 +4542,146 @@
       ],
       "surface": null,
       "notes": "A back view: only the chair's back shows."
+    },
+    {
+      "id": "window-office-2",
+      "name": "Window, 2 panes",
+      "category": "decor",
+      "themes": [
+        "office"
+      ],
+      "mount": "wall",
+      "sprite": {
+        "size": [
+          64,
+          64
+        ],
+        "layers": [
+          {
+            "draw": "window",
+            "rect": [
+              0,
+              0,
+              64,
+              64
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 0,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): the packs have no office windows."
+    },
+    {
+      "id": "window-office-3",
+      "name": "Window, 3 panes",
+      "category": "decor",
+      "themes": [
+        "office"
+      ],
+      "mount": "wall",
+      "sprite": {
+        "size": [
+          96,
+          64
+        ],
+        "layers": [
+          {
+            "draw": "window",
+            "rect": [
+              0,
+              0,
+              96,
+              64
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 0,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): the packs have no office windows."
+    },
+    {
+      "id": "window-blinds-2",
+      "name": "Window, blinds part way down, 2 panes",
+      "category": "decor",
+      "themes": [
+        "office"
+      ],
+      "mount": "wall",
+      "sprite": {
+        "size": [
+          64,
+          64
+        ],
+        "layers": [
+          {
+            "draw": "window-blinds",
+            "rect": [
+              0,
+              0,
+              64,
+              64
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 0,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): the packs have no office windows."
+    },
+    {
+      "id": "window-blinds-3",
+      "name": "Window, blinds part way down, 3 panes",
+      "category": "decor",
+      "themes": [
+        "office"
+      ],
+      "mount": "wall",
+      "sprite": {
+        "size": [
+          96,
+          64
+        ],
+        "layers": [
+          {
+            "draw": "window-blinds",
+            "rect": [
+              0,
+              0,
+              96,
+              64
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 0,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): the packs have no office windows."
     }
   ]
 }

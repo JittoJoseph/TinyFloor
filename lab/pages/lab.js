@@ -260,7 +260,7 @@ async function loadSources() {
   select.addEventListener("change", renderSources);
 }
 
-const usedSources = () => new Set(catalog.items.flatMap((item) => (isGroup(item) ? [] : isComposite(item.sprite) ? item.sprite.layers.map((l) => l.src) : [item.sprite.src])));
+const usedSources = () => new Set(catalog.items.flatMap((item) => (isGroup(item) ? [] : isComposite(item.sprite) ? item.sprite.layers.flatMap((l) => (l.src ? [l.src] : [])) : [item.sprite.src])));
 
 async function renderSources() {
   const select = $("#source-dir");

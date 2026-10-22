@@ -248,6 +248,14 @@ nothing in the layout editor redraws it at once. The whole shell is drawn once
 into a single picture when the floor loads (a few tens of milliseconds), and
 costs nothing after that.
 
+Windows: the packs have none in the office style, so they are drawn (lab/pages/art.js) in
+the walls' own style, a pane a tile, white frame, outline and sill, some with
+their blinds part way down. The same code draws them in the lab and into the
+atlas, so a window is an ordinary wall item. Along a top wall they come first,
+one size and spacing per wall, centred on it, clear of the kitchen and of
+anything placed against the wall; the rest of the dressing fills between them,
+and only plants may stand in front of one.
+
 ## Weight
 
 Nothing here makes the floor heavier to run: the shell is one picture drawn

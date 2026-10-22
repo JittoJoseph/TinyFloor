@@ -2,6 +2,7 @@
 // and sitting, the test character, and drawing items, single, layered or bundled.
 /* global Phaser */
 import { depthOf, expand, isComposite, spriteSize } from "./catalog.js";
+import { drawn } from "./art.js";
 
 export const TILE = 32;
 export const SPEED = 120; // the floor's MOVEMENT_SPEED
@@ -58,6 +59,15 @@ export function avatarAnims(scene) {
   }
 }
 
+/** A drawn layer's picture (art.js) as a canvas. */
+function drawnCanvas(name, width, height) {
+  const { data } = drawn(name, width, height);
+  const canvas = document.createElement("canvas");
+  [canvas.width, canvas.height] = [width, height];
+  canvas.getContext("2d").putImageData(new ImageData(data, width, height), 0, 0);
+  return canvas;
+}
+
 /** Draws a sprite (one cut, or layers of cuts) with its top left at x, y. */
 export async function drawSprite(context, sprite, x, y, scale = 1) {
   const [w, h] = spriteSize(sprite);
@@ -72,7 +82,7 @@ export async function drawSprite(context, sprite, x, y, scale = 1) {
   const layers = isComposite(sprite) ? sprite.layers : [{ src: sprite.src, rect: sprite.rect, at: [0, 0] }];
   for (const layer of layers) {
     const [sx, sy, sw, sh] = layer.rect;
-    context.drawImage(await image(layer.src), sx, sy, sw, sh, layer.at[0], layer.at[1], sw, sh);
+    context.drawImage(layer.draw ? drawnCanvas(layer.draw, sx + sw, sy + sh) : await image(layer.src), sx, sy, sw, sh, layer.at[0], layer.at[1], sw, sh);
   }
   context.restore();
 }

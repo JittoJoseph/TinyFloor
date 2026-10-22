@@ -64,6 +64,7 @@ __pycache__/
 /*-frontend/public/characters/*.png
 /*-frontend/public/tilesets/textures/
 /*-frontend/public/tilesets/items/
+/*-frontend/public/catalog/
 /*-frontend/public/fonts/
 /*-frontend/public/icon-*.png
 /*-frontend/public/credits.txt

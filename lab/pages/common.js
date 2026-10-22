@@ -1,6 +1,7 @@
-// What the item lab and the layout editor share: the floor's numbers for
-// walking and sitting, the test character, and loading an item's sprite.
+// What the lab's pages share in the browser: the floor's numbers for walking
+// and sitting, the test character, and drawing items, single, layered or bundled.
 /* global Phaser */
+import { expand, isComposite, spriteSize } from "./catalog.js";
 
 export const TILE = 32;
 export const SPEED = 120; // the floor's MOVEMENT_SPEED
@@ -57,9 +58,48 @@ export function avatarAnims(scene) {
   }
 }
 
-/** The item's sprite as a texture frame, loading its sheet the first time: { key, frame }. */
+/** Draws a sprite (one cut, or layers of cuts) with its top left at x, y. */
+export async function drawSprite(context, sprite, x, y, scale = 1) {
+  const [w, h] = spriteSize(sprite);
+  context.save();
+  context.imageSmoothingEnabled = false;
+  context.translate(x, y);
+  context.scale(scale, scale);
+  if (sprite.flip) {
+    context.translate(w, 0);
+    context.scale(-1, 1);
+  }
+  const layers = isComposite(sprite) ? sprite.layers : [{ src: sprite.src, rect: sprite.rect, at: [0, 0] }];
+  for (const layer of layers) {
+    const [sx, sy, sw, sh] = layer.rect;
+    context.drawImage(await image(layer.src), sx, sy, sw, sh, layer.at[0], layer.at[1], sw, sh);
+  }
+  context.restore();
+}
+
+/** Draws a catalog item, a bundle's parts back to front, with its top left at x, y. */
+export async function drawItem(context, byId, id, x, y, scale = 1, choose = {}) {
+  const pieces = expand(byId, id, 0, 0, choose).sort((a, b) => a.y + a.item.sortY - (b.y + b.item.sortY));
+  for (const piece of pieces) await drawSprite(context, piece.item.sprite, x + piece.x * scale, y + piece.y * scale, scale);
+}
+
+/**
+ * The item's sprite as a texture frame: { key, frame }. One cut is a frame of
+ * its sheet; layers are drawn once into a canvas texture of their own.
+ */
 export async function itemFrame(scene, item) {
-  const key = item.sprite.src;
+  const sprite = item.sprite;
+  if (isComposite(sprite)) {
+    const key = `layers:${item.id}:${hash(JSON.stringify(sprite))}`;
+    if (!scene.textures.exists(key)) {
+      const canvas = document.createElement("canvas");
+      [canvas.width, canvas.height] = sprite.size;
+      await drawSprite(canvas.getContext("2d"), { ...sprite, flip: false }, 0, 0);
+      if (!scene.textures.exists(key)) scene.textures.addCanvas(key, canvas);
+    }
+    return { key, frame: undefined };
+  }
+  const key = sprite.src;
   if (!scene.textures.exists(key)) {
     await new Promise((resolve) => {
       scene.load.image(key, `/pack/${key}`);
@@ -67,10 +107,16 @@ export async function itemFrame(scene, item) {
       scene.load.start();
     });
   }
-  const frame = item.sprite.rect.join(",");
+  const frame = sprite.rect.join(",");
   const texture = scene.textures.get(key);
-  if (!texture.has(frame)) texture.add(frame, 0, ...item.sprite.rect);
+  if (!texture.has(frame)) texture.add(frame, 0, ...sprite.rect);
   return { key, frame };
+}
+
+function hash(text) {
+  let h = 0;
+  for (let i = 0; i < text.length; i++) h = (h * 31 + text.charCodeAt(i)) | 0;
+  return (h >>> 0).toString(36);
 }
 
 /** Arrow and WASD input as a direction, nothing while you're typing in a field. */

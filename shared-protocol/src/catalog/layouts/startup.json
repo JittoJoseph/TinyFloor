@@ -4,279 +4,159 @@
  "shell": "office-map",
  "items": [
   {
-   "item": "chair-black-down",
-   "x": 576,
-   "y": 160
-  },
-  {
-   "item": "desk-oak",
-   "x": 544,
+   "item": "desk-maple",
+   "x": 528,
    "y": 192
   },
   {
-   "item": "monitor-back",
-   "x": 576,
-   "y": 184
-  },
-  {
-   "item": "desk-oak",
-   "x": 544,
-   "y": 240
-  },
-  {
-   "item": "monitor-blue",
-   "x": 576,
-   "y": 232
-  },
-  {
-   "item": "chair-black-up",
-   "x": 576,
-   "y": 256
-  },
-  {
-   "item": "chair-black-down",
+   "item": "monitor-dual",
    "x": 672,
-   "y": 160
+   "y": 224
   },
   {
-   "item": "desk-oak",
-   "x": 640,
+   "item": "desk-maple",
+   "x": 720,
    "y": 192
   },
   {
-   "item": "monitor-back",
-   "x": 672,
-   "y": 184
-  },
-  {
-   "item": "desk-oak",
-   "x": 640,
-   "y": 240
-  },
-  {
    "item": "monitor-blue",
-   "x": 672,
-   "y": 232
+   "x": 864,
+   "y": 224
   },
   {
-   "item": "chair-black-up",
-   "x": 672,
-   "y": 256
-  },
-  {
-   "item": "chair-black-down",
-   "x": 832,
-   "y": 160
-  },
-  {
-   "item": "desk-oak",
-   "x": 800,
+   "item": "desk-maple",
+   "x": 912,
    "y": 192
   },
   {
-   "item": "monitor-back",
-   "x": 832,
-   "y": 184
-  },
-  {
-   "item": "desk-oak",
-   "x": 800,
-   "y": 240
-  },
-  {
-   "item": "monitor-blue",
-   "x": 832,
-   "y": 232
-  },
-  {
-   "item": "chair-black-up",
-   "x": 832,
-   "y": 256
-  },
-  {
-   "item": "chair-black-down",
-   "x": 928,
-   "y": 160
-  },
-  {
-   "item": "desk-oak",
-   "x": 896,
-   "y": 192
-  },
-  {
-   "item": "monitor-back",
-   "x": 928,
-   "y": 184
-  },
-  {
-   "item": "desk-oak",
-   "x": 896,
-   "y": 240
-  },
-  {
-   "item": "monitor-blue",
-   "x": 928,
-   "y": 232
-  },
-  {
-   "item": "chair-black-up",
-   "x": 928,
-   "y": 256
-  },
-  {
-   "item": "chair-black-down",
-   "x": 576,
-   "y": 480
+   "item": "monitor-dual",
+   "x": 1056,
+   "y": 224
   },
   {
    "item": "desk-maple",
-   "x": 544,
-   "y": 512
+   "x": 528,
+   "y": 384
   },
   {
-   "item": "monitor-back",
-   "x": 576,
-   "y": 504
+   "item": "monitor-dual",
+   "x": 672,
+   "y": 416
   },
   {
    "item": "desk-maple",
-   "x": 544,
-   "y": 560
+   "x": 720,
+   "y": 384
   },
   {
    "item": "monitor-blue",
-   "x": 576,
-   "y": 552
+   "x": 864,
+   "y": 416
   },
   {
-   "item": "chair-black-up",
-   "x": 576,
+   "item": "desk-maple",
+   "x": 912,
+   "y": 384
+  },
+  {
+   "item": "monitor-dual",
+   "x": 1056,
+   "y": 416
+  },
+  {
+   "item": "desk-maple",
+   "x": 528,
    "y": 576
   },
   {
-   "item": "chair-black-down",
+   "item": "monitor-dual",
    "x": 672,
-   "y": 480
+   "y": 608
   },
   {
    "item": "desk-maple",
-   "x": 640,
-   "y": 512
-  },
-  {
-   "item": "monitor-back",
-   "x": 672,
-   "y": 504
-  },
-  {
-   "item": "desk-maple",
-   "x": 640,
-   "y": 560
-  },
-  {
-   "item": "monitor-blue",
-   "x": 672,
-   "y": 552
-  },
-  {
-   "item": "chair-black-up",
-   "x": 672,
+   "x": 720,
    "y": 576
   },
   {
-   "item": "chair-black-down",
-   "x": 832,
-   "y": 480
-  },
-  {
-   "item": "desk-maple",
-   "x": 800,
-   "y": 512
-  },
-  {
-   "item": "monitor-back",
-   "x": 832,
-   "y": 504
-  },
-  {
-   "item": "desk-maple",
-   "x": 800,
-   "y": 560
-  },
-  {
    "item": "monitor-blue",
-   "x": 832,
-   "y": 552
+   "x": 864,
+   "y": 608
   },
   {
-   "item": "chair-black-up",
-   "x": 832,
+   "item": "desk-maple",
+   "x": 912,
    "y": 576
   },
   {
-   "item": "chair-black-down",
-   "x": 928,
-   "y": 480
+   "item": "monitor-dual",
+   "x": 1056,
+   "y": 608
   },
   {
    "item": "desk-maple",
-   "x": 896,
-   "y": 512
+   "x": 528,
+   "y": 768
   },
   {
-   "item": "monitor-back",
-   "x": 928,
-   "y": 504
+   "item": "monitor-dual",
+   "x": 672,
+   "y": 800
   },
   {
    "item": "desk-maple",
-   "x": 896,
-   "y": 560
+   "x": 720,
+   "y": 768
   },
   {
    "item": "monitor-blue",
-   "x": 928,
-   "y": 552
+   "x": 864,
+   "y": 800
   },
   {
-   "item": "chair-black-up",
-   "x": 928,
-   "y": 576
+   "item": "desk-maple",
+   "x": 912,
+   "y": 768
+  },
+  {
+   "item": "monitor-dual",
+   "x": 1056,
+   "y": 800
   },
   {
    "item": "vending-drinks",
-   "x": 1088,
+   "x": 1184,
    "y": 64
   },
   {
    "item": "vending-snacks",
-   "x": 1152,
+   "x": 1248,
    "y": 64
   },
   {
    "item": "water-cooler",
-   "x": 1232,
+   "x": 1328,
    "y": 80
   },
   {
    "item": "mini-fridge",
-   "x": 1280,
+   "x": 1376,
    "y": 96
   },
   {
    "item": "coffee-table",
-   "x": 1152,
-   "y": 224
+   "x": 1296,
+   "y": 240
   },
   {
    "item": "egg-chair-blue",
-   "x": 1104,
-   "y": 208
+   "x": 1248,
+   "y": 224
   },
   {
    "item": "egg-chair-mustard",
-   "x": 1232,
-   "y": 208
+   "x": 1376,
+   "y": 224
   },
   {
    "item": "board-blank",
@@ -284,34 +164,39 @@
    "y": 80
   },
   {
-   "item": "desk-white",
-   "x": 128,
+   "item": "meeting-table",
+   "x": 112,
    "y": 224
   },
   {
-   "item": "desk-white",
-   "x": 224,
-   "y": 224
-  },
-  {
-   "item": "chair-tan-down",
-   "x": 160,
+   "item": "chair-black-down",
+   "x": 144,
    "y": 192
   },
   {
-   "item": "chair-tan-down",
-   "x": 256,
+   "item": "chair-black-up",
+   "x": 144,
+   "y": 288
+  },
+  {
+   "item": "chair-black-down",
+   "x": 208,
    "y": 192
   },
   {
-   "item": "chair-tan-up",
-   "x": 160,
-   "y": 256
+   "item": "chair-black-up",
+   "x": 208,
+   "y": 288
   },
   {
-   "item": "chair-tan-up",
-   "x": 256,
-   "y": 256
+   "item": "chair-black-down",
+   "x": 272,
+   "y": 192
+  },
+  {
+   "item": "chair-black-up",
+   "x": 272,
+   "y": 288
   },
   {
    "item": "plant-tall",
@@ -374,19 +259,14 @@
    "y": 896
   },
   {
-   "item": "plant-tall",
-   "x": 1008,
+   "item": "printer",
+   "x": 1408,
    "y": 448
   },
   {
-   "item": "printer",
-   "x": 1440,
-   "y": 416
-  },
-  {
    "item": "copier",
-   "x": 1376,
-   "y": 416
+   "x": 1344,
+   "y": 448
   }
  ]
 }

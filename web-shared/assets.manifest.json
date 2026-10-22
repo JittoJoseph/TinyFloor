@@ -147,6 +147,11 @@
       "key": "tilesets/textures/Room_Builder_Office_32x32.png",
       "sha256": "ec09a6a6b295eb0ccc872f48d5428456121c5d6987ff43aca750d65c22b4ca61",
       "bytes": 14590
+    },
+    {
+      "key": "catalog/items.png",
+      "sha256": "03974fa2bc91083ea86194c46eeb1e753a312c732e3959d5351b1f2d5edd6531",
+      "bytes": 71293
     }
   ]
 }

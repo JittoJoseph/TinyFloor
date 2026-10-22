@@ -1,5 +1,8 @@
 {
   "name": "tinyfloor",
   "private": true,
-  "packageManager": "pnpm@11.22.0"
+  "packageManager": "pnpm@11.22.0",
+  "scripts": {
+    "lab": "pnpm --dir lab start"
+  }
 }

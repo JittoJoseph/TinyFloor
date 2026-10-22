@@ -16,8 +16,15 @@
         </div>
       </header>
       <section data-panel="items">
-        <input id="item-search" type="search" placeholder="Search items" />
+        <div class="row">
+          <input id="item-search" type="search" placeholder="Search items" />
+          <button id="new-bundle" title="A desk and its chair, or anything else placed as one">New bundle</button>
+        </div>
         <ul id="item-list" class="list"></ul>
+        <details id="problems" class="problems">
+          <summary></summary>
+          <ul></ul>
+        </details>
       </section>
       <section data-panel="sources" hidden>
         <select id="source-dir"></select>
@@ -38,13 +45,13 @@
         <button id="clear-copies">Clear copies</button>
       </div>
       <div id="game"></div>
-      <p class="hint">Arrows or WASD walk. E sits at the nearest seat and stands. Drag a collider to move it, its corner to resize; Shift for single pixels.</p>
+      <p class="hint">Arrows or WASD walk; E sits and stands. Drag a collider to move it, its corner to resize, Shift for single pixels. On a bundle, drag its parts.</p>
     </main>
 
     <aside class="side props">
       <header class="head">
         <strong id="prop-title">No item</strong>
-        <button id="save" class="primary" disabled>Save catalog</button>
+        <button id="save" class="primary" disabled>Saved</button>
       </header>
       <form id="props" autocomplete="off" hidden>
         <label>Id <input name="id" required /></label>
@@ -57,38 +64,51 @@
               <option>lighting</option><option>kitchen</option><option>leisure</option><option>structure</option>
             </select>
           </label>
-          <label>Mount
+          <label class="item-only">Mount
             <select name="mount"><option>floor</option><option>wall</option><option>surface</option></select>
           </label>
         </div>
         <label>Themes <input name="themes" placeholder="office, cozy" /></label>
-        <fieldset>
-          <legend>Sprite</legend>
-          <code id="sprite-src"></code>
-          <label class="inline"><input type="checkbox" name="flip" /> Mirrored</label>
-          <div class="row4">
-            <label>x <input name="rx" type="number" step="1" /></label>
-            <label>y <input name="ry" type="number" step="1" /></label>
-            <label>w <input name="rw" type="number" step="1" /></label>
-            <label>h <input name="rh" type="number" step="1" /></label>
-          </div>
-        </fieldset>
-        <fieldset>
-          <legend>Sort line <small>y from the sprite's top; you're behind it above this line</small></legend>
-          <input name="sortY" type="number" step="1" />
-        </fieldset>
-        <fieldset>
-          <legend>Colliders <button type="button" id="add-collider">Add</button> <button type="button" id="auto-collider">Guess</button></legend>
-          <div id="colliders"></div>
-        </fieldset>
-        <fieldset>
-          <legend>Seats <button type="button" id="add-seat">Add</button></legend>
-          <div id="seats"></div>
-        </fieldset>
-        <fieldset>
-          <legend>Surface <small>where things on top can go</small> <button type="button" id="toggle-surface">Add</button></legend>
-          <div id="surface"></div>
-        </fieldset>
+
+        <div id="item-fields">
+          <label class="inline"><input type="checkbox" name="part" /> Only part of a bundle</label>
+          <fieldset>
+            <legend>Sprite</legend>
+            <code id="sprite-src"></code>
+            <div id="sprite-rect" class="row4">
+              <label>x <input name="rx" type="number" step="1" /></label>
+              <label>y <input name="ry" type="number" step="1" /></label>
+              <label>w <input name="rw" type="number" step="1" /></label>
+              <label>h <input name="rh" type="number" step="1" /></label>
+            </div>
+            <label class="inline"><input type="checkbox" name="flip" /> Mirrored</label>
+          </fieldset>
+          <fieldset>
+            <legend>Sort line <small>from the sprite's top; above it you're behind</small></legend>
+            <input name="sortY" type="number" step="1" />
+          </fieldset>
+          <fieldset>
+            <legend>Colliders <button type="button" id="add-collider">Add</button> <button type="button" id="auto-collider">Guess</button></legend>
+            <div id="colliders"></div>
+          </fieldset>
+          <fieldset>
+            <legend>Seats <button type="button" id="add-seat">Add</button> <small>up or down; nobody sits sideways</small></legend>
+            <div id="seats"></div>
+          </fieldset>
+          <fieldset>
+            <legend>Surface <small>where things on top can go</small> <button type="button" id="toggle-surface">Add</button></legend>
+            <div id="surface"></div>
+          </fieldset>
+        </div>
+
+        <div id="bundle-fields">
+          <fieldset>
+            <legend>Parts <button type="button" id="add-part">Add part</button> <button type="button" id="add-slot">Add chair slot</button></legend>
+            <div id="parts"></div>
+          </fieldset>
+          <label>Showing chair <select id="preview-chair"></select></label>
+        </div>
+
         <label>Notes <textarea name="notes" rows="2"></textarea></label>
         <div class="row">
           <button type="button" id="duplicate">Duplicate</button>

@@ -1,9 +1,11 @@
-// The item lab's page (tools/lab/README.md). One item on a small floor at a
-// time, with a character to walk round it: colliders, sort line, seats and
-// surface drawn over it and dragged into place, then saved to the catalog.
+// The item lab's page (lab/README.md). One item or bundle on a small floor at
+// a time, with a character to walk round it and sit in it: colliders, sort
+// line, seats and surface drawn over it and dragged into place, the house
+// rules checked as you go (catalog.js), then saved to the catalog.
 /* global Phaser */
 
-import { TILE, SPEED, SEAT, SIT_FRAME, down16, up16, image, loadAvatar, avatarAnims, itemFrame } from "./common.js";
+import { TILE, SPEED, SEAT, SIT_FRAME, down16, up16, image, loadAvatar, avatarAnims, itemFrame, drawItem, heldDirection } from "./common.js";
+import { SEAT_DIRECTIONS, bounds, check, expand, isBundle, isComposite, spriteSize } from "./catalog.js";
 
 const COLS = 16;
 const ROWS = 11;
@@ -13,8 +15,10 @@ const $ = (selector) => document.querySelector(selector);
 const show = { colliders: true, sort: true, seats: true, surface: true, grid: true };
 
 let catalog = { version: 1, tile: TILE, items: [] };
+let byId = new Map();
 let current = null;
 let copies = [];
+let choose = {};
 let dirty = false;
 let scene = null;
 
@@ -23,10 +27,15 @@ let scene = null;
 async function loadCatalog() {
   catalog = await (await fetch("/api/catalog")).json();
   catalog.items ??= [];
+  reindex();
   renderList();
   const wanted = new URLSearchParams(location.search).get("item");
-  const first = catalog.items.find((item) => item.id === wanted) ?? catalog.items[0];
+  const first = byId.get(wanted) ?? catalog.items[0];
   if (first) select(first);
+}
+
+function reindex() {
+  byId = new Map(catalog.items.map((item) => [item.id, item]));
 }
 
 async function save() {
@@ -41,12 +50,30 @@ function setDirty(value) {
   dirty = value;
   $("#save").disabled = !dirty;
   $("#save").textContent = dirty ? "Save catalog" : "Saved";
+  renderProblems();
 }
 
 function changed() {
   setDirty(true);
   scene?.rebuild();
   renderListRow(current);
+}
+
+/** The house rules (catalog.js), checked on every change. */
+function renderProblems() {
+  const problems = check(catalog);
+  const box = $("#problems");
+  box.querySelector("summary").textContent = problems.length ? `${problems.length} problem${problems.length === 1 ? "" : "s"}` : "No problems";
+  box.dataset.ok = String(!problems.length);
+  box.querySelector("ul").replaceChildren(
+    ...problems.map((text) => {
+      const li = document.createElement("li");
+      li.textContent = text;
+      const id = text.split(":")[0];
+      if (byId.has(id)) li.addEventListener("click", () => select(byId.get(id)));
+      return li;
+    }),
+  );
 }
 
 // ---------- images ----------
@@ -76,20 +103,10 @@ function opaque({ data, width, height }) {
   return x1 < 0 ? null : [x0, y0, x1 - x0 + 1, y1 - y0 + 1];
 }
 
-
-/** The source's objects drawn on a 16px grid: its opaque box, widened out to that grid so it lands on the floor's grid too. */
-async function gridBox(src) {
+/** The opaque part of a rectangle on a pack image, widened to the 16px grid: a loose selection still cuts tight. */
+async function gridBox(src, within) {
   const img = await image(src);
-  const box = opaque(pixels(img, [0, 0, img.width, img.height]));
-  if (!box) return [0, 0, img.width, img.height];
-  const [x, y, w, h] = box;
-  const x0 = down16(x), y0 = down16(y);
-  return [x0, y0, up16(x + w) - x0, up16(y + h) - y0];
-}
-
-/** The opaque part of a rectangle drawn on a sheet, widened to the 16px grid: a loose selection still cuts tight. */
-async function gridBoxWithin(src, [rx, ry, rw, rh]) {
-  const img = await image(src);
+  const [rx, ry, rw, rh] = within ?? [0, 0, img.width, img.height];
   const box = opaque(pixels(img, [rx, ry, rw, rh]));
   if (!box) return [rx, ry, rw, rh];
   const [x, y, w, h] = box;
@@ -103,13 +120,17 @@ async function gridBoxWithin(src, [rx, ry, rw, rh]) {
  * Things seen from above and in front stand on their lowest rows.
  */
 async function guessCollider(item) {
-  const img = await image(item.sprite.src);
-  const box = opaque(pixels(img, item.sprite.rect));
-  if (!box) return [0, 0, item.sprite.rect[2], item.sprite.rect[3]];
-  const [x, y, w, h] = box;
-  const band = Math.max(8, Math.min(h, Math.round((h * 0.35) / 4) * 4));
-  const inset = w > 12 ? 2 : 0;
-  return [x + inset, y + h - band, w - inset * 2, band];
+  const [w, h] = spriteSize(item.sprite);
+  const canvas = document.createElement("canvas");
+  canvas.width = w;
+  canvas.height = h;
+  await drawItem(canvas.getContext("2d"), byId, item.id, 0, 0);
+  const box = opaque(canvas.getContext("2d").getImageData(0, 0, w, h));
+  if (!box) return [0, 0, w, h];
+  const [x, y, bw, bh] = box;
+  const band = Math.max(8, Math.min(bh, Math.round((bh * 0.35) / 4) * 4));
+  const inset = bw > 12 ? 2 : 0;
+  return [x + inset, y + bh - band, bw - inset * 2, band];
 }
 
 // ---------- items ----------
@@ -120,13 +141,21 @@ function slug(text) {
 
 function uniqueId(base) {
   let id = base, n = 2;
-  while (catalog.items.some((item) => item.id === id)) id = `${base}-${n++}`;
+  while (byId.has(id)) id = `${base}-${n++}`;
   return id;
 }
 
+function add(item) {
+  catalog.items.push(item);
+  reindex();
+  renderList();
+  select(item);
+  setDirty(true);
+}
+
 async function fromSource(src, label, within) {
-  const rect = within ? await gridBoxWithin(src, within) : await gridBox(src);
-  const number = src.match(/(\d+)\.png$/)?.[1] ?? "";
+  const rect = await gridBox(src, within);
+  const number = src.match(/(\d+)\.png$/)?.[1] ?? rect.slice(0, 2).join("-");
   const item = {
     id: uniqueId(slug(`${label}-${number}`)),
     name: "",
@@ -140,19 +169,37 @@ async function fromSource(src, label, within) {
     surface: null,
     notes: "",
   };
+  catalog.items.push(item);
+  reindex();
   const collider = await guessCollider(item);
   item.colliders.push(collider);
   item.sortY = collider[1] + collider[3];
-  catalog.items.push(item);
-  renderList();
-  select(item);
-  setDirty(true);
+  catalog.items.pop();
+  add(item);
   if (!within) selectTab("items");
 }
 
+function newBundle() {
+  const desk = catalog.items.find((item) => item.part && item.category === "desks");
+  const chairs = catalog.items.filter((item) => item.seats.length === 1 && item.seats[0].dir === "up").map((item) => item.id);
+  add({
+    id: uniqueId("desk"),
+    name: "Desk",
+    category: "desks",
+    themes: ["office"],
+    parts: [
+      ...(desk ? [{ item: desk.id, at: [0, 0] }] : []),
+      ...(chairs.length ? [{ slot: "chair", at: [96, 48], options: chairs, default: chairs[0] }] : []),
+    ],
+    notes: "",
+  });
+}
+
 function select(item) {
+  if (!item) return;
   current = item;
   copies = [];
+  choose = {};
   history.replaceState(null, "", `?item=${encodeURIComponent(item.id)}`);
   document.querySelectorAll("#item-list li").forEach((li) => li.setAttribute("aria-selected", String(li.dataset.id === item.id)));
   renderProps();
@@ -162,25 +209,22 @@ function select(item) {
 // ---------- item list ----------
 
 async function thumbnail(item, canvas) {
-  const img = await image(item.sprite.src);
-  const [x, y, w, h] = item.sprite.rect;
-  const context = canvas.getContext("2d");
+  const [, , w, h] = bounds(byId, item.id);
   const scale = Math.min(1, 32 / Math.max(w, h));
   canvas.width = 32;
   canvas.height = 32;
-  context.imageSmoothingEnabled = false;
+  const context = canvas.getContext("2d");
   context.clearRect(0, 0, 32, 32);
-  context.save();
-  if (item.sprite.flip) context.setTransform(-1, 0, 0, 1, 32, 0);
-  context.drawImage(img, x, y, w, h, (32 - w * scale) / 2, 32 - h * scale, w * scale, h * scale);
-  context.restore();
+  await drawItem(context, byId, item.id, (32 - w * scale) / 2, 32 - h * scale, scale);
 }
+
+const describe = (item) => `${isBundle(item) ? "bundle" : item.part ? "part" : item.category} · ${item.themes.join(", ")}`;
 
 function renderListRow(item) {
   const li = document.querySelector(`#item-list li[data-id="${CSS.escape(item.id)}"]`);
   if (!li) return renderList();
   li.querySelector("b").textContent = item.name || item.id;
-  li.querySelector("small").textContent = `${item.category} · ${item.themes.join(", ")}`;
+  li.querySelector("small").textContent = describe(item);
   thumbnail(item, li.querySelector("canvas"));
 }
 
@@ -195,11 +239,12 @@ function renderList() {
     li.setAttribute("aria-selected", String(item === current));
     li.innerHTML = `<canvas></canvas><div><b></b><small></small></div>`;
     li.querySelector("b").textContent = item.name || item.id;
-    li.querySelector("small").textContent = `${item.category} · ${item.themes.join(", ")}`;
+    li.querySelector("small").textContent = describe(item);
     li.addEventListener("click", () => select(item));
     thumbnail(item, li.querySelector("canvas"));
     list.append(li);
   }
+  renderProblems();
 }
 
 // ---------- sources ----------
@@ -213,8 +258,9 @@ async function loadSources() {
     select.add(option);
   }
   select.addEventListener("change", renderSources);
-  renderSources();
 }
+
+const usedSources = () => new Set(catalog.items.flatMap((item) => (isBundle(item) ? [] : isComposite(item.sprite) ? item.sprite.layers.map((l) => l.src) : [item.sprite.src])));
 
 async function renderSources() {
   const select = $("#source-dir");
@@ -224,7 +270,7 @@ async function renderSources() {
   const names = await (await fetch(`/api/files?dir=${encodeURIComponent(dir)}`)).json();
   const grid = $("#source-grid");
   grid.replaceChildren();
-  const used = new Set(catalog.items.map((item) => item.sprite.src));
+  const used = usedSources();
   for (const name of names) {
     const src = `${dir}/${name}`;
     const button = document.createElement("button");
@@ -233,45 +279,48 @@ async function renderSources() {
     trimmedThumbnail(src, button.querySelector("canvas"));
     button.querySelector("span").textContent = name.match(/(\d+)\.png$/)?.[1] ?? "";
     if (used.has(src)) button.dataset.used = "";
-    button.addEventListener("click", () => fromSource(src, label));
+    button.addEventListener("click", () => fromSource(src, label.replace(/ singles$/, "")));
     grid.append(button);
   }
 }
 
 /**
  * A whole sheet to cut from: drag a rectangle round an object and it becomes
- * an item, trimmed to its pixels on the 16px grid. Items already cut from the
- * sheet are outlined.
+ * an item, trimmed to its pixels on the 16px grid. What's already cut from the
+ * sheet is outlined.
  */
 async function renderSheet(src, label) {
   const img = await image(src);
-  const scale = Math.min(1, 512 / img.width);
   const canvas = document.createElement("canvas");
   canvas.width = img.width;
   canvas.height = img.height;
   canvas.className = "sheet";
-  canvas.style.width = `${img.width * scale}px`;
-  const grid = $("#source-grid");
-  grid.replaceChildren(canvas);
+  canvas.style.width = `${img.width * Math.min(1, 512 / img.width)}px`;
+  $("#source-grid").replaceChildren(canvas);
   const context = canvas.getContext("2d");
   let drag = null;
+  const normalize = ({ x0, y0, x1, y1 }) => {
+    const ax = down16(Math.min(x0, x1)), ay = down16(Math.min(y0, y1));
+    return [ax, ay, Math.max(16, up16(Math.max(x0, x1)) - ax), Math.max(16, up16(Math.max(y0, y1)) - ay)];
+  };
   const draw = () => {
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.drawImage(img, 0, 0);
     context.strokeStyle = "rgba(48,164,108,0.9)";
-    for (const item of catalog.items.filter((i) => i.sprite.src === src)) context.strokeRect(item.sprite.rect[0] + 0.5, item.sprite.rect[1] + 0.5, item.sprite.rect[2] - 1, item.sprite.rect[3] - 1);
+    for (const item of catalog.items) {
+      if (isBundle(item)) continue;
+      const cuts = isComposite(item.sprite) ? item.sprite.layers : [item.sprite];
+      for (const cut of cuts.filter((c) => c.src === src)) context.strokeRect(cut.rect[0] + 0.5, cut.rect[1] + 0.5, cut.rect[2] - 1, cut.rect[3] - 1);
+    }
     if (drag) {
       context.strokeStyle = "#e5484d";
-      context.strokeRect(...normalize(drag).map((v, i) => (i < 2 ? v + 0.5 : v - 1)));
+      const [x, y, w, h] = normalize(drag);
+      context.strokeRect(x + 0.5, y + 0.5, w - 1, h - 1);
     }
   };
   const at = (event) => {
     const r = canvas.getBoundingClientRect();
     return [((event.clientX - r.left) / r.width) * canvas.width, ((event.clientY - r.top) / r.height) * canvas.height];
-  };
-  const normalize = ({ x0, y0, x1, y1 }) => {
-    const ax = down16(Math.min(x0, x1)), ay = down16(Math.min(y0, y1));
-    return [ax, ay, Math.max(16, up16(Math.max(x0, x1)) - ax), Math.max(16, up16(Math.max(y0, y1)) - ay)];
   };
   canvas.addEventListener("pointerdown", (event) => {
     const [x, y] = at(event);
@@ -297,8 +346,7 @@ async function renderSheet(src, label) {
 /** A source drawn by its pixels, not its canvas, so a chair on a big empty sheet still reads as a chair. */
 async function trimmedThumbnail(src, canvas) {
   const img = await image(src);
-  const box = opaque(pixels(img, [0, 0, img.width, img.height])) ?? [0, 0, img.width, img.height];
-  const [x, y, w, h] = box;
+  const [x, y, w, h] = opaque(pixels(img, [0, 0, img.width, img.height])) ?? [0, 0, img.width, img.height];
   const scale = Math.min(2, 56 / w, 56 / h);
   canvas.width = Math.max(1, Math.round(w * scale));
   canvas.height = Math.max(1, Math.round(h * scale));
@@ -337,13 +385,23 @@ function rectRow(rect, onRemove) {
   const row = document.createElement("div");
   row.className = "rect";
   rect.forEach((value, index) =>
-    row.append(numberInput(value, (v) => {
-      rect[index] = v;
-      changed();
-    })),
+    row.append(
+      numberInput(value, (v) => {
+        rect[index] = v;
+        changed();
+      }),
+    ),
   );
   if (onRemove) row.append(removeButton(onRemove));
   return row;
+}
+
+function itemSelect(value, filter, onChange) {
+  const select = document.createElement("select");
+  for (const item of catalog.items.filter(filter)) select.add(new Option(item.name ? `${item.name} (${item.id})` : item.id, item.id));
+  select.value = value;
+  select.addEventListener("change", () => onChange(select.value));
+  return select;
 }
 
 function renderProps() {
@@ -352,23 +410,31 @@ function renderProps() {
   $("#prop-title").textContent = current ? current.name || current.id : "No item";
   if (!current) return;
   const item = current;
+  const bundle = isBundle(item);
+  $("#item-fields").hidden = bundle;
+  $("#bundle-fields").hidden = !bundle;
+  document.querySelectorAll(".item-only").forEach((el) => (el.hidden = bundle));
   form.id.value = item.id;
   form.name.value = item.name;
   form.category.value = item.category;
-  form.mount.value = item.mount;
   form.themes.value = item.themes.join(", ");
   form.notes.value = item.notes ?? "";
+  if (bundle) return renderParts();
+  form.mount.value = item.mount;
+  form.part.checked = !!item.part;
   form.sortY.value = item.sortY;
-  [form.rx.value, form.ry.value, form.rw.value, form.rh.value] = item.sprite.rect;
+  const layered = isComposite(item.sprite);
+  $("#sprite-rect").hidden = layered;
+  $("#sprite-src").textContent = layered ? `${item.sprite.layers.length} layers, ${item.sprite.size.join("×")}` : item.sprite.src;
+  if (!layered) [form.rx.value, form.ry.value, form.rw.value, form.rh.value] = item.sprite.rect;
   form.flip.checked = !!item.sprite.flip;
-  $("#sprite-src").textContent = item.sprite.src;
   renderShapes();
 }
 
 function renderShapes() {
   const item = current;
-  const colliders = $("#colliders");
-  colliders.replaceChildren(
+  if (isBundle(item)) return;
+  $("#colliders").replaceChildren(
     ...item.colliders.map((rect, index) =>
       rectRow(rect, () => {
         item.colliders.splice(index, 1);
@@ -377,8 +443,7 @@ function renderShapes() {
       }),
     ),
   );
-  const seats = $("#seats");
-  seats.replaceChildren(
+  $("#seats").replaceChildren(
     ...item.seats.map((seat, index) => {
       const row = document.createElement("div");
       row.className = "seat";
@@ -387,7 +452,7 @@ function renderShapes() {
         numberInput(seat.y, (v) => ((seat.y = v), changed())),
       );
       const dir = document.createElement("select");
-      for (const d of ["down", "up", "left", "right"]) dir.add(new Option(d, d));
+      for (const d of SEAT_DIRECTIONS) dir.add(new Option(d, d));
       dir.value = seat.dir;
       dir.addEventListener("change", () => ((seat.dir = dir.value), changed()));
       row.append(dir, removeButton(() => (item.seats.splice(index, 1), renderShapes(), changed())));
@@ -398,22 +463,79 @@ function renderShapes() {
   $("#toggle-surface").textContent = item.surface ? "Remove" : "Add";
 }
 
+/** A bundle's parts: each an item at a place, or a slot of interchangeable items (the chair). */
+function renderParts() {
+  const item = current;
+  const chairs = (candidate) => candidate.seats?.length === 1 && candidate.seats[0].dir === "up";
+  $("#parts").replaceChildren(
+    ...item.parts.map((part, index) => {
+      const row = document.createElement("div");
+      row.className = "part";
+      const remove = removeButton(() => {
+        item.parts.splice(index, 1);
+        renderParts();
+        changed();
+      });
+      const at = [numberInput(part.at[0], (v) => ((part.at[0] = v), changed())), numberInput(part.at[1], (v) => ((part.at[1] = v), changed()))];
+      if (!part.slot) {
+        row.append(itemSelect(part.item, (i) => !isBundle(i), (v) => ((part.item = v), changed())), ...at, remove);
+        return row;
+      }
+      const label = document.createElement("b");
+      label.textContent = `${part.slot} slot`;
+      const options = document.createElement("div");
+      options.className = "options";
+      for (const candidate of catalog.items.filter(chairs)) {
+        const box = Object.assign(document.createElement("label"), { className: "inline" });
+        const input = Object.assign(document.createElement("input"), { type: "checkbox", checked: part.options.includes(candidate.id) });
+        input.addEventListener("change", () => {
+          part.options = input.checked ? [...part.options, candidate.id] : part.options.filter((id) => id !== candidate.id);
+          if (!part.options.includes(part.default)) part.default = part.options[0];
+          renderParts();
+          changed();
+        });
+        box.append(input, candidate.name ? `${candidate.name} (${candidate.id})` : candidate.id);
+        options.append(box);
+      }
+      row.append(label, ...at, remove, options);
+      return row;
+    }),
+  );
+  const slot = item.parts.find((part) => part.slot === "chair");
+  const preview = $("#preview-chair");
+  preview.replaceChildren(...(slot?.options ?? []).map((id) => new Option(byId.get(id)?.name ? `${byId.get(id).name} (${id})` : id, id)));
+  preview.value = choose.chair ?? slot?.default ?? "";
+  preview.parentElement.hidden = !slot;
+}
+
 function bindForm() {
   const form = $("#props");
   form.addEventListener("input", (event) => {
     const item = current;
-    if (!item) return;
+    if (!item || event.target.closest("#parts")) return;
     const { name, value } = event.target;
     if (name === "id") {
+      const id = slug(value);
+      if (!id || byId.has(id)) return;
       const li = document.querySelector(`#item-list li[data-id="${CSS.escape(item.id)}"]`);
-      item.id = slug(value) || item.id;
-      if (li) li.dataset.id = item.id;
+      // A renamed item keeps its place in every bundle that holds it.
+      for (const other of catalog.items) {
+        for (const part of other.parts ?? []) {
+          if (part.item === item.id) part.item = id;
+          if (part.options?.includes(item.id)) part.options = part.options.map((o) => (o === item.id ? id : o));
+          if (part.default === item.id) part.default = id;
+        }
+      }
+      item.id = id;
+      reindex();
+      if (li) li.dataset.id = id;
     } else if (name === "name") item.name = value;
     else if (name === "category") item.category = value;
     else if (name === "mount") item.mount = value;
     else if (name === "themes") item.themes = value.split(",").map((t) => t.trim()).filter(Boolean);
     else if (name === "notes") item.notes = value;
     else if (name === "sortY") item.sortY = Number(value);
+    else if (name === "part") item.part = event.target.checked || undefined;
     else if (name === "flip") item.sprite.flip = event.target.checked || undefined;
     else if (["rx", "ry", "rw", "rh"].includes(name)) item.sprite.rect[["rx", "ry", "rw", "rh"].indexOf(name)] = Number(value);
     else return;
@@ -421,7 +543,7 @@ function bindForm() {
     changed();
   });
   $("#add-collider").addEventListener("click", () => {
-    const [, , w, h] = current.sprite.rect;
+    const [w, h] = spriteSize(current.sprite);
     current.colliders.push([0, Math.max(0, h - 16), w, Math.min(16, h)]);
     renderShapes();
     changed();
@@ -434,28 +556,46 @@ function bindForm() {
     changed();
   });
   $("#add-seat").addEventListener("click", () => {
-    const [, , w, h] = current.sprite.rect;
-    current.seats.push({ x: w / 2, y: h, dir: "down" });
+    const [w, h] = spriteSize(current.sprite);
+    current.seats.push({ x: w / 2, y: h - 2, dir: "up" });
     renderShapes();
     changed();
   });
   $("#toggle-surface").addEventListener("click", () => {
-    const [, , w] = current.sprite.rect;
+    const [w] = spriteSize(current.sprite);
     current.surface = current.surface ? null : [2, 2, w - 4, 16];
     renderShapes();
     changed();
   });
+  $("#add-part").addEventListener("click", () => {
+    const first = catalog.items.find((i) => !isBundle(i));
+    current.parts.push({ item: first.id, at: [0, 0] });
+    renderParts();
+    changed();
+  });
+  $("#add-slot").addEventListener("click", () => {
+    if (current.parts.some((p) => p.slot === "chair")) return;
+    const chairs = catalog.items.filter((i) => i.seats?.length === 1 && i.seats[0].dir === "up").map((i) => i.id);
+    current.parts.push({ slot: "chair", at: [0, 32], options: chairs, default: chairs[0] });
+    renderParts();
+    changed();
+  });
+  $("#preview-chair").addEventListener("change", (event) => {
+    choose = { chair: event.target.value };
+    scene?.rebuild();
+  });
+  $("#new-bundle").addEventListener("click", newBundle);
   $("#duplicate").addEventListener("click", () => {
     const copy = structuredClone(current);
     copy.id = uniqueId(current.id);
-    catalog.items.push(copy);
-    renderList();
-    select(copy);
-    setDirty(true);
+    add(copy);
   });
   $("#delete").addEventListener("click", () => {
+    const users = catalog.items.filter((i) => i.parts?.some((p) => p.item === current.id || p.options?.includes(current.id)));
+    if (users.length) return alert(`${current.id} is part of ${users.map((u) => u.id).join(", ")}; take it out of those first.`);
     if (!confirm(`Delete ${current.id}?`)) return;
     catalog.items = catalog.items.filter((item) => item !== current);
+    reindex();
     current = null;
     renderList();
     renderProps();
@@ -471,23 +611,19 @@ function bindForm() {
       scene?.drawOverlays();
     }),
   );
-  $("#copy-right").addEventListener("click", () => {
+  const step = (dx, dy) => {
+    const [, , w, h] = bounds(byId, current.id, choose);
     const last = copies.at(-1) ?? { dx: 0, dy: 0 };
-    copies.push({ dx: last.dx + current.sprite.rect[2], dy: last.dy });
+    copies.push({ dx: last.dx + dx * w, dy: last.dy + dy * h });
     scene?.rebuild();
-  });
-  $("#copy-below").addEventListener("click", () => {
-    const last = copies.at(-1) ?? { dx: 0, dy: 0 };
-    copies.push({ dx: last.dx, dy: last.dy + current.sprite.rect[3] });
-    scene?.rebuild();
-  });
+  };
+  $("#copy-right").addEventListener("click", () => step(1, 0));
+  $("#copy-below").addEventListener("click", () => step(0, 1));
   $("#clear-copies").addEventListener("click", () => {
     copies = [];
     scene?.rebuild();
   });
-  addEventListener("beforeunload", (event) => {
-    if (dirty) event.preventDefault();
-  });
+  addEventListener("beforeunload", (event) => dirty && event.preventDefault());
   addEventListener("keydown", (event) => {
     if ((event.ctrlKey || event.metaKey) && event.key === "s") {
       event.preventDefault();
@@ -517,55 +653,50 @@ class Stage extends Phaser.Scene {
     scene = this;
     this.floor = this.add.graphics().setDepth(-10);
     this.overlay = this.add.graphics().setDepth(100000);
-    this.drawFloor();
-
+    for (let y = 0; y < ROWS; y++) {
+      for (let x = 0; x < COLS; x++) this.floor.fillStyle((x + y) % 2 ? 0xd9d5cc : 0xe2ded5, 1).fillRect(x * TILE, y * TILE, TILE, TILE);
+    }
     avatarAnims(this);
     this.avatar = this.add.sprite(COLS * TILE * 0.5, ROWS * TILE - 24, "avatar", 0).setScale(2).setOrigin(0.5, 1);
     this.avatar.play("idle-down");
     this.keys = this.input.keyboard.addKeys("W,A,S,D,UP,LEFT,DOWN,RIGHT,E", false);
     this.keys.E.on("down", () => !typing() && this.toggleSit());
-
     this.input.on("pointerdown", (pointer) => this.pointerDown(pointer));
     this.input.on("pointermove", (pointer) => this.pointerMove(pointer));
     this.input.on("pointerup", () => this.pointerUp());
     this.rebuild();
   }
 
-  drawFloor() {
-    const g = this.floor;
-    g.clear();
-    for (let y = 0; y < ROWS; y++) {
-      for (let x = 0; x < COLS; x++) {
-        g.fillStyle((x + y) % 2 ? 0xd9d5cc : 0xe2ded5, 1).fillRect(x * TILE, y * TILE, TILE, TILE);
-      }
-    }
+  /** Where the item or bundle sits on this floor: its top left, on the grid, about the middle. */
+  origin() {
+    const [bx, by, w, h] = bounds(byId, current.id, choose);
+    return { x: down16(COLS * TILE * 0.5 - w / 2) - bx, y: down16(ROWS * TILE * 0.45 - h / 2) - by };
   }
 
-  /** Where the item sits on this floor: its sprite's top left, on the grid, about the middle. */
-  origin() {
-    const [, , w, h] = current.sprite.rect;
-    return { x: down16(COLS * TILE * 0.5 - w / 2), y: down16(ROWS * TILE * 0.45 - h / 2) };
+  /** Everything drawn: each copy's pieces (a bundle's parts, or the item itself), with `main` on the first copy's. */
+  pieces() {
+    if (!current) return [];
+    const { x, y } = this.origin();
+    return [{ dx: 0, dy: 0 }, ...copies].flatMap((offset, index) =>
+      expand(byId, current.id, x + offset.dx, y + offset.dy, choose).map((piece, n) => ({ ...piece, main: index === 0, n })),
+    );
   }
 
   async rebuild() {
+    const target = current;
+    const pieces = this.pieces();
+    const frames = await Promise.all(pieces.map((piece) => itemFrame(this, piece.item)));
+    if (target !== current) return;
     this.placed.forEach((image) => image.destroy());
-    this.placed = [];
-    if (!current) return this.drawOverlays();
-    const item = current;
-    const { key, frame } = await itemFrame(this, item);
-    if (item !== current) return;
-    const { x, y } = this.origin();
-    for (const offset of [{ dx: 0, dy: 0 }, ...copies]) {
-      const px = x + offset.dx, py = y + offset.dy;
-      this.placed.push(this.add.image(px, py, key, frame).setOrigin(0, 0).setFlipX(!!item.sprite.flip).setDepth(py + item.sortY));
-    }
+    this.placed = pieces.map((piece, i) =>
+      this.add
+        .image(piece.x, piece.y, frames[i].key, frames[i].frame)
+        .setOrigin(0, 0)
+        .setFlipX(!!piece.item.sprite.flip)
+        .setDepth(piece.y + piece.item.sortY),
+    );
+    this.placedPieces = pieces;
     this.drawOverlays();
-  }
-
-  placements() {
-    if (!current) return [];
-    const { x, y } = this.origin();
-    return [{ dx: 0, dy: 0 }, ...copies].map((o) => ({ x: x + o.dx, y: y + o.dy }));
   }
 
   drawOverlays() {
@@ -579,17 +710,16 @@ class Stage extends Phaser.Scene {
       for (let x = 0; x <= COLS * TILE; x += TILE) g.lineBetween(x, 0, x, ROWS * TILE);
       for (let y = 0; y <= ROWS * TILE; y += TILE) g.lineBetween(0, y, COLS * TILE, y);
     }
-    if (!current) return;
-    const item = current;
-    const [, , w, h] = item.sprite.rect;
-    for (const [index, { x, y }] of this.placements().entries()) {
-      const main = index === 0;
+    const editable = current && !isBundle(current);
+    for (const { item, x, y, main } of this.pieces()) {
+      const [w, h] = spriteSize(item.sprite);
       g.lineStyle(1, 0xffffff, main ? 0.7 : 0.3).strokeRect(x + 0.5, y + 0.5, w - 1, h - 1);
+      const handles = main && editable;
       if (show.colliders) {
         for (const [cx, cy, cw, ch] of item.colliders) {
           g.fillStyle(0xe5484d, 0.28).fillRect(x + cx, y + cy, cw, ch);
           g.lineStyle(1, 0xe5484d, 0.95).strokeRect(x + cx + 0.5, y + cy + 0.5, cw - 1, ch - 1);
-          if (main) g.fillStyle(0xe5484d, 1).fillRect(x + cx + cw - 3, y + cy + ch - 3, 4, 4);
+          if (handles) g.fillStyle(0xe5484d, 1).fillRect(x + cx + cw - 3, y + cy + ch - 3, 4, 4);
         }
       }
       if (show.sort) {
@@ -599,14 +729,13 @@ class Stage extends Phaser.Scene {
       if (show.surface && item.surface) {
         const [sx, sy, sw, sh] = item.surface;
         g.lineStyle(1, 0x30a46c, 1).strokeRect(x + sx + 0.5, y + sy + 0.5, sw - 1, sh - 1);
-        if (main) g.fillStyle(0x30a46c, 1).fillRect(x + sx + sw - 3, y + sy + sh - 3, 4, 4);
+        if (handles) g.fillStyle(0x30a46c, 1).fillRect(x + sx + sw - 3, y + sy + sh - 3, 4, 4);
       }
       if (show.seats) {
         for (const seat of item.seats) {
           const sx = x + seat.x, sy = y + seat.y;
           g.fillStyle(0x3e63dd, 1).fillCircle(sx, sy, 3);
-          const v = { down: [0, 1], up: [0, -1], left: [-1, 0], right: [1, 0] }[seat.dir];
-          g.lineStyle(2, 0x3e63dd, 1).lineBetween(sx, sy, sx + v[0] * 10, sy + v[1] * 10);
+          g.lineStyle(2, 0x3e63dd, 1).lineBetween(sx, sy, sx, sy + (seat.dir === "up" ? -10 : 10));
         }
       }
     }
@@ -614,8 +743,7 @@ class Stage extends Phaser.Scene {
 
   /** The colliders of everything placed, in floor coordinates. */
   solids() {
-    if (!current) return [];
-    return this.placements().flatMap(({ x, y }) => current.colliders.map(([cx, cy, cw, ch]) => [x + cx, y + cy, cw, ch]));
+    return this.pieces().flatMap(({ item, x, y }) => item.colliders.map(([cx, cy, cw, ch]) => [x + cx, y + cy, cw, ch]));
   }
 
   /** As the floor does it (MapManager.checkCollisionAt): your feet, a point, against each rectangle. */
@@ -632,10 +760,9 @@ class Stage extends Phaser.Scene {
       this.avatar.play(`idle-${this.facing}`);
       return;
     }
-    if (!current) return;
     let best = null;
-    for (const { x, y } of this.placements()) {
-      for (const seat of current.seats) {
+    for (const { item, x, y } of this.pieces()) {
+      for (const seat of item.seats) {
         const sx = x + seat.x, sy = y + seat.y;
         const distance = Math.hypot(sx - this.avatar.x, sy - this.avatar.y);
         if (distance < 72 && (!best || distance < best.distance)) best = { x: sx, y: sy, dir: seat.dir, distance };
@@ -651,13 +778,8 @@ class Stage extends Phaser.Scene {
   }
 
   update(_, delta) {
-    if (this.seated || typing()) {
-      if (!this.seated && this.avatar.anims.currentAnim?.key.startsWith("run")) this.avatar.play(`idle-${this.facing}`);
-      return;
-    }
-    const k = this.keys;
-    const dx = (k.D.isDown || k.RIGHT.isDown ? 1 : 0) - (k.A.isDown || k.LEFT.isDown ? 1 : 0);
-    const dy = (k.S.isDown || k.DOWN.isDown ? 1 : 0) - (k.W.isDown || k.UP.isDown ? 1 : 0);
+    if (this.seated) return;
+    const { dx, dy } = heldDirection(this.keys);
     if (dx || dy) {
       const step = (SPEED * delta) / 1000 / Math.hypot(dx, dy);
       let { x, y } = this.avatar;
@@ -672,14 +794,26 @@ class Stage extends Phaser.Scene {
     this.avatar.setDepth(this.avatar.y);
   }
 
-  // Dragging shapes on the main copy: a corner handle resizes, inside moves; the sort line and seats move too.
+  // On an item, its shapes are dragged: a corner handle resizes, inside moves; seats and the sort line move too.
+  // On a bundle, its parts are.
   pointerDown(pointer) {
     if (!current) return;
+    if (isBundle(current)) {
+      const hit = this.pieces()
+        .filter((piece) => piece.main)
+        .filter(({ item, x, y }) => {
+          const [w, h] = spriteSize(item.sprite);
+          return pointer.worldX >= x && pointer.worldX < x + w && pointer.worldY >= y && pointer.worldY < y + h;
+        })
+        .sort((a, b) => b.y + b.item.sortY - (a.y + a.item.sortY))[0];
+      const part = hit && current.parts[hit.n];
+      if (part) this.drag = { kind: "part", target: part, start: { px: pointer.worldX, py: pointer.worldY, at: [...part.at] } };
+      return;
+    }
     const { x, y } = this.origin();
     const px = pointer.worldX - x, py = pointer.worldY - y;
     const near = (a, b, r = 4) => Math.abs(a - b) <= r;
-    const hit = (rect) => {
-      const [rx, ry, rw, rh] = rect;
+    const hit = ([rx, ry, rw, rh]) => {
       if (near(px, rx + rw - 1) && near(py, ry + rh - 1)) return "resize";
       if (px >= rx && px <= rx + rw && py >= ry && py <= ry + rh) return "move";
       return null;
@@ -697,9 +831,18 @@ class Stage extends Phaser.Scene {
   pointerMove(pointer) {
     const drag = this.drag;
     if (!drag || !pointer.isDown) return;
-    const { x, y } = this.origin();
     const fine = pointer.event.shiftKey;
     const snap = (v) => (fine ? Math.round(v) : Math.round(v / SNAP) * SNAP);
+    if (drag.kind === "part") {
+      // Parts stay on the floor's 16px grid, so a bundle lands on it whole.
+      const dx = Math.round((pointer.worldX - drag.start.px) / 16) * 16, dy = Math.round((pointer.worldY - drag.start.py) / 16) * 16;
+      const next = [drag.start.at[0] + dx, drag.start.at[1] + dy];
+      if (next[0] === drag.target.at[0] && next[1] === drag.target.at[1]) return;
+      drag.target.at = next;
+      setDirty(true);
+      return this.rebuild();
+    }
+    const { x, y } = this.origin();
     const dx = snap(pointer.worldX - x - drag.start.px), dy = snap(pointer.worldY - y - drag.start.py);
     if (drag.kind === "seat") {
       drag.target.x = drag.start.x + dx;
@@ -713,18 +856,16 @@ class Stage extends Phaser.Scene {
       drag.target.splice(0, 4, ...next);
     }
     setDirty(true);
-    this.rebuildDepths();
+    for (const [i, image] of this.placed.entries()) image.setDepth(this.placedPieces[i].y + this.placedPieces[i].item.sortY);
     this.drawOverlays();
   }
 
   pointerUp() {
     if (!this.drag) return;
+    const kind = this.drag.kind;
     this.drag = null;
-    renderShapes();
-  }
-
-  rebuildDepths() {
-    for (const image of this.placed) image.setDepth(image.y + current.sortY);
+    if (kind === "part") renderParts();
+    else renderShapes();
   }
 }
 
@@ -733,15 +874,13 @@ bindForm();
 window.lab = {
   scene: () => scene,
   catalog: () => catalog,
-  select: (id) => select(catalog.items.find((item) => item.id === id)),
-  /** Cuts an item from a sheet the way dragging a rectangle does, then applies the given properties. */
-  cut: async (src, rect, props = {}) => {
-    await fromSource(src, props.themes?.[0] ?? "office", rect);
-    Object.assign(current, props);
-    renderProps();
-    renderList();
+  select: (id) => select(byId.get(id)),
+  add,
+  reindex,
+  save,
+  choose: (value) => {
+    choose = value;
     scene?.rebuild();
-    return current.id;
   },
 };
 window.lab.game = new Phaser.Game({

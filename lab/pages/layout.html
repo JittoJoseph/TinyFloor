@@ -43,13 +43,14 @@
         <select id="layout-id"></select>
         <input id="layout-name" placeholder="Layout name" style="width: 200px" />
         <label><input type="checkbox" id="show-colliders" /> Colliders</label>
+        <select id="chair" title="This desk's chair" hidden></select>
         <span id="status"></span>
         <span class="spacer"></span>
         <button id="new-layout">New layout</button>
         <button id="save" class="primary" disabled>Save layout</button>
       </div>
       <div id="game"></div>
-      <p class="hint">Pick an item, then click the floor to place it (Shift keeps placing). Drag to move, Delete to remove, Escape to let go. Arrows or WASD walk; E sits.</p>
+      <p class="hint">Pick an item, then click the floor to place it (Shift keeps placing). Drag to move, Delete to remove, Escape to let go; a selected desk offers its chair. Arrows or WASD walk; E sits.</p>
     </main>
     <script src="/phaser/phaser.min.js"></script>
     <script type="module" src="/lab/layout.js"></script>

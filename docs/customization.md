@@ -61,50 +61,73 @@ chairs are desks, and where you arrive for each, is hard-coded in
 `shared-protocol/src/map.ts` by tile number. Anything customizable has to
 replace both: the floor must come from data, and so must its seats.
 
+## How the floor looks: the rules
+
+Decided by looking, and checked by the lab on every change (`lab/check.mjs`):
+
+- **Nobody sits sideways.** Seated side-on, a character reads badly, so a seat
+  faces up (your back to us, at a desk or the far side of a table) or down.
+  The packs' side chairs aren't in the catalog.
+- **A desk is used from the front.** One person, one chair, in front of the
+  desk, facing it. Desks back to back, with people on both sides, put the far
+  person behind the desk, its monitors and the divider, and made what covers
+  whom hard to get right; a one-sided desk has one answer.
+- **A desk is the one the office has now**: wide (six tiles), with the glass
+  divider and its posts behind it, in one of five finishes (maple, oak,
+  graphite, white, beech). The packs' small three-tile desks looked cramped
+  and aren't used.
+- **A desk always has a chair.** A desk is a bundle of the desk and a chair
+  slot. The chair can be swapped for another office chair (black, low black,
+  tan) but never taken away, and the seat stays in the same spot whichever
+  chair it is.
+- **Monitors and the like face the camera.** With everyone at a desk facing
+  up, what's on a desk shows its front; the backs of monitors aren't needed.
+
 ## Items
 
 An item is everything the floor needs to know about one thing:
 
-- **sprite**: a source image and a rectangle on it, on the 16px grid,
-  optionally mirrored;
+- **sprite**: a rectangle cut from a pack image, on the 16px grid, optionally
+  mirrored; or layers cut from several places and drawn in order, for things
+  the packs draw in pieces (a six-tile desk is its divider, three desk pieces
+  with the middle repeated, and post caps, as the current map draws it);
 - **mount**: on the floor, on a wall, or on a surface (a monitor on a desk);
 - **colliders**: rectangles you can't walk into, in the sprite's pixels;
 - **sort line**: above it you're behind the item, below it in front;
-- **seats**: a point and the way you face sitting there;
+- **seats**: a point and which way you face sitting there (up or down);
 - **surface**: where surface things can go (a desk's top);
+- **part**: only ever placed inside a bundle (a desk top without its chair);
 - name, category, themes.
 
-The first 54 are in `shared-protocol/src/catalog/items.json`, made with the
-lab (below). What making them taught us:
+A **bundle** is items placed and moved together, each part at an offset; a
+part can be a slot with options (the chair). Desks and tables with their
+chairs are bundles.
+
+The first 55 (five desks, their desk tops, two meeting tables, chairs, sofas,
+plants, kitchen and tech pieces) are in `shared-protocol/src/catalog/items.json`.
+What making them taught us:
 
 - **Every item needs looking at.** A first guess (a collider as the bottom
   third of the item's pixels, the sort line at its foot) is right for plants
   and cabinets and wrong for chairs, sofas and partitions.
-- **Sort lines depend on the seat.** A chair you sit in facing up needs its
-  line at its very bottom, so the backrest covers whoever sits there; a side
-  chair needs it at the seat, so the sitter is in front.
-- **Many things are drawn facing one way.** Side chairs only exist facing
-  left; mirroring gives the right-facing one, so items can be mirrored.
-- **Things on desks face someone.** A monitor showing its screen belongs on a
-  desk whose sitter faces up, away from us; the sitter facing down needs one
-  seen from behind. Desk decor needs both views, chosen by the desk's side.
+- **A chair you sit in facing up needs its sort line at its very bottom**, so
+  the backrest covers whoever sits there and their head shows over it.
 - **Shadows join objects on a sheet.** Finding boxes automatically works for
   most things but returns a row of four chairs as one, so cutting takes an eye.
-- **Our characters' side-sitting frames are swapped.** Frame 49 faces right
-  and 50 left, the other way round from `SIT_ORDER` in `AnimationManager`.
-  Nothing sits sideways today; it needs fixing before side chairs ship.
-
-To ship, the sprites the catalog uses get packed into atlases at build time
-(one per theme, say) and stored in R2 like today's sheets; the catalog points
-at atlas frames instead of pack files.
+- **Office singles aren't desks.** The office pack's single images include
+  desk pieces, not whole desks; the sheet, cut in layers, is the reliable source.
+- **Our characters' side-sitting frames are swapped** (frame 49 faces right,
+  50 left, against `SIT_ORDER` in `AnimationManager`). With no sideways seats
+  it never shows; worth fixing so it never surprises anyone.
 
 ## Layouts
 
-A layout is a shell (floors and walls) and a list of placed items, each an
-item id and a position on the 16px grid. The first, "Startup"
-(`shared-protocol/src/catalog/layouts/startup.json`, 77 items), furnishes
-today's walls with catalog items: four desk islands, a break corner, a
-meeting room and a lounge.
+A layout is a shell (floors and walls) and a list of placed items and bundles,
+each with a position on the 16px grid and, for a desk, its chosen chair. The
+first, "Startup" (`shared-protocol/src/catalog/layouts/startup.json`),
+furnishes today's walls: four rows of three maple desks, joined so neighbours
+share a post, every chair in front; a meeting table with chairs above and
+below; a break corner; a lounge.
 
 What a real office needs from it:
 
@@ -166,27 +189,41 @@ A claimed desk is the natural place to start customization, because it's
 yours and it stays yours (`product.md`):
 
 - your desk's surface takes surface items (a monitor, a lamp, a plant, a
-  mug), up to a small number;
-- the desk itself can change finish (the same desk in another wood);
+  mug), up to a small number, all facing the camera;
+- you choose its chair, from the office chairs; it always has one;
+- the desk can change finish (the same desk in another wood);
 - it's done on the floor, at the desk, not in a separate editor;
 - what you put on it stays with the desk, which is why desks are claimed and
   not moved.
 
-## The lab
+## The lab and the pipeline
 
-`tools/lab` (see its README) is where items, layouts and characters are made:
-cut an item from a sheet, drag its colliders, sort line and seats into place,
-walk a character round it and sit in it; look over the whole catalog on one
-page; furnish a floor; try characters. It runs locally and reads the packs
-from `assets-pack/`.
+`lab/` is a local tool, kept in the repository and never deployed (its
+README says how to run it). Items, bundles, layouts and characters are made
+there, and it is the only way art reaches the floor:
+
+1. **Cut** an item from a pack's sheet or singles, or layer it from pieces.
+2. **Fit** its colliders, sort line, seats and surface by dragging them on a
+   floor while a character walks round it and sits in it; bundle it.
+3. **Check**: the house rules run on every change in the lab and in
+   `pnpm --dir lab check`, which needs no art and can run anywhere.
+4. **Build**: `pnpm --dir lab build` bakes every drawn item into one atlas
+   (50 items, 70 KB) in `private-assets/catalog/`, writes where each one is
+   to `shared-protocol/src/catalog/atlas.json`, and records the atlas in the
+   asset manifest.
+5. **Upload** the atlas to R2 with the command the build prints; every build
+   of the app then pulls and checks it like the rest of the art (`ASSETS.md`).
+
+The catalog, bundles and layouts are our own data and live in git; the art
+only ever leaves `assets-pack/` as the baked atlas, through R2.
 
 ## What depends on what
 
 Each of these needs the one before it:
 
-1. **The floor from data, looking the same.** Catalog atlases, today's office
-   rebuilt as a layout, seats from the layout, the side-sitting frames fixed.
-   Nothing changes on screen; everything after builds on it.
+1. **The floor from data.** The atlas on the floor, an office drawn from a
+   layout, seats from the layout instead of `map.ts`. The one visible change:
+   one-sided desks.
 2. **Characters.** The creator, the recipe on the profile, composing on the
    client; the premade eight as presets.
 3. **Desk decor.** Surface items on your own desk, on the floor.

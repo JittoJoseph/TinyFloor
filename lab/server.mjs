@@ -1,4 +1,4 @@
-// The item lab (tools/lab/README.md): a local page for turning the bought art
+// The lab (lab/README.md): a local page for turning the bought art
 // into floor items, with their colliders, seats and sort lines checked against
 // a character walking round them. Serves the page, Phaser, the packs from
 // assets-pack/ and our characters from private-assets/, and reads and writes
@@ -8,8 +8,9 @@ import { mkdir, readFile, writeFile, readdir, stat } from "node:fs/promises";
 import { extname, join, normalize, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const ROOT = resolve(fileURLToPath(import.meta.url), "../../..");
-const LAB = join(ROOT, "tools", "lab");
+const HERE = resolve(fileURLToPath(import.meta.url), "..");
+const ROOT = resolve(HERE, "..");
+const LAB = join(HERE, "pages");
 const CATALOG = join(ROOT, "shared-protocol", "src", "catalog", "items.json");
 const LAYOUTS = join(ROOT, "shared-protocol", "src", "catalog", "layouts");
 const PORT = Number(process.env.PORT || 4400);
@@ -19,7 +20,7 @@ const MOUNTS = {
   lab: LAB,
   pack: join(ROOT, "assets-pack"),
   private: join(ROOT, "private-assets"),
-  phaser: join(ROOT, "app-frontend", "node_modules", "phaser", "dist"),
+  phaser: join(HERE, "node_modules", "phaser", "dist"),
   app: join(ROOT, "app-frontend", "public"),
 };
 

@@ -1,12 +1,15 @@
-// The layout editor (tools/lab/README.md): today's office walls and floors
-// with catalog items placed on them, by hand. A layout is a list of items and
-// where each stands; the first ones are the template offices.
+// The layout editor (lab/README.md): today's office walls and floors with
+// catalog items placed on them, by hand. A layout is a list of placed items
+// and bundles, each where it stands and, for a desk, which chair it has; the
+// first ones are the template offices.
 /* global Phaser */
-import { TILE, SPEED, SEAT, SIT_FRAME, down16, image, loadAvatar, avatarAnims, itemFrame, heldDirection } from "./common.js";
+import { TILE, SPEED, SEAT, SIT_FRAME, down16, loadAvatar, avatarAnims, itemFrame, drawItem, heldDirection } from "./common.js";
+import { bounds, check, expand, isBundle, spriteSize } from "./catalog.js";
 
 const $ = (selector) => document.querySelector(selector);
 const COLS = 48;
 const ROWS = 32;
+const typing = () => ["INPUT", "SELECT", "TEXTAREA"].includes(document.activeElement?.tagName);
 
 let catalog = { items: [] };
 let byId = new Map();
@@ -19,15 +22,16 @@ let scene = null;
 function setDirty(value) {
   dirty = value;
   $("#save").disabled = !dirty;
-  $("#status").textContent = layout ? `${layout.items.length} items${dirty ? " · unsaved" : ""}` : "";
+  const problems = layout ? check(catalog, [layout]).filter((p) => p.startsWith("layout")) : [];
+  $("#status").textContent = layout ? `${layout.items.length} placed${dirty ? " · unsaved" : ""}${problems.length ? ` · ${problems.length} problems` : ""}` : "";
+  $("#status").title = problems.join("\n");
 }
 
 // ---------- layouts ----------
 
 async function loadLayouts(wanted) {
   const ids = await (await fetch("/api/layouts")).json();
-  const select = $("#layout-id");
-  select.replaceChildren(...ids.map((id) => new Option(id, id)));
+  $("#layout-id").replaceChildren(...ids.map((id) => new Option(id, id)));
   const id = wanted ?? new URLSearchParams(location.search).get("id") ?? ids[0];
   if (id) await openLayout(id);
   else newLayout("startup");
@@ -38,7 +42,7 @@ async function openLayout(id) {
   $("#layout-id").value = id;
   $("#layout-name").value = layout.name ?? "";
   history.replaceState(null, "", `?id=${id}`);
-  selected = null;
+  select(null);
   setDirty(false);
   scene?.rebuild();
 }
@@ -48,7 +52,7 @@ function newLayout(id) {
   if (![...$("#layout-id").options].some((o) => o.value === id)) $("#layout-id").add(new Option(id, id));
   $("#layout-id").value = id;
   $("#layout-name").value = "";
-  selected = null;
+  select(null);
   setDirty(true);
   scene?.rebuild();
 }
@@ -63,21 +67,18 @@ async function save() {
 // ---------- palette ----------
 
 async function thumbnail(item, canvas) {
-  const img = await image(item.sprite.src);
-  const [x, y, w, h] = item.sprite.rect;
+  const [, , w, h] = bounds(byId, item.id);
   const scale = Math.min(2, 52 / w, 52 / h);
   canvas.width = Math.round(w * scale);
   canvas.height = Math.round(h * scale);
-  const context = canvas.getContext("2d");
-  context.imageSmoothingEnabled = false;
-  if (item.sprite.flip) context.setTransform(-1, 0, 0, 1, canvas.width, 0);
-  context.drawImage(img, x, y, w, h, 0, 0, canvas.width, canvas.height);
+  await drawItem(canvas.getContext("2d"), byId, item.id, 0, 0, scale);
 }
 
 function renderPalette() {
   const query = $("#search").value.trim().toLowerCase();
   const groups = new Map();
-  for (const item of catalog.items) {
+  // Parts are only placed inside their bundles: a desk top never without its chair.
+  for (const item of catalog.items.filter((i) => !i.part)) {
     if (query && !`${item.id} ${item.name} ${item.category}`.toLowerCase().includes(query)) continue;
     if (!groups.has(item.category)) groups.set(item.category, []);
     groups.get(item.category).push(item);
@@ -105,9 +106,21 @@ function renderPalette() {
 
 function startPlacing(item) {
   placing = placing === item ? null : item;
-  selected = null;
+  select(null);
   document.querySelectorAll("#palette button").forEach((b) => b.setAttribute("aria-pressed", String(placing?.id === b.dataset.id)));
   scene?.updateGhost();
+}
+
+/** Selecting a placed desk offers its chair: the slot's options, never none. */
+function select(entry) {
+  selected = entry;
+  const slot = entry && byId.get(entry.item)?.parts?.find((part) => part.slot === "chair");
+  const chooser = $("#chair");
+  chooser.hidden = !slot;
+  if (slot) {
+    chooser.replaceChildren(...slot.options.map((id) => new Option(byId.get(id)?.name ?? id, id)));
+    chooser.value = entry.choose?.chair ?? slot.default;
+  }
   scene?.drawOverlay();
 }
 
@@ -140,18 +153,17 @@ class Floor extends Phaser.Scene {
     walls.forEachTile((tile) => tile.index > 0 && this.wallSolids.push([tile.pixelX, tile.pixelY, TILE, TILE]));
 
     this.overlay = this.add.graphics().setDepth(100000);
-    this.ghost = this.add.image(0, 0, "__DEFAULT").setOrigin(0, 0).setAlpha(0.6).setDepth(99999).setVisible(false);
+    this.ghost = this.add.container(0, 0).setAlpha(0.6).setDepth(99999).setVisible(false);
     avatarAnims(this);
     this.avatar = this.add.sprite(23 * TILE, 16 * TILE, "avatar", 0).setScale(2).setOrigin(0.5, 1);
     this.avatar.play("idle-down");
     this.keys = this.input.keyboard.addKeys("W,A,S,D,UP,LEFT,DOWN,RIGHT,E", false);
-    this.keys.E.on("down", () => this.toggleSit());
+    this.keys.E.on("down", () => !typing() && this.toggleSit());
     this.input.keyboard.on("keydown-DELETE", () => this.removeSelected());
     this.input.keyboard.on("keydown-BACKSPACE", () => this.removeSelected());
     this.input.keyboard.on("keydown-ESC", () => {
       if (placing) startPlacing(placing);
-      selected = null;
-      this.drawOverlay();
+      select(null);
     });
     this.input.on("pointermove", (pointer) => this.pointerMove(pointer));
     this.input.on("pointerdown", (pointer) => this.pointerDown(pointer));
@@ -159,57 +171,62 @@ class Floor extends Phaser.Scene {
     this.rebuild();
   }
 
+  /** Every piece on the floor: [{ entry, item, x, y }], a bundle's parts each their own. */
+  pieces() {
+    return (layout?.items ?? []).flatMap((entry) => expand(byId, entry.item, entry.x, entry.y, entry.choose).map((piece) => ({ entry, ...piece })));
+  }
+
   async rebuild() {
-    this.sprites.forEach((sprite) => sprite.destroy());
+    this.sprites.forEach((images) => images.forEach((image) => image.destroy()));
     this.sprites.clear();
     if (!layout) return;
-    for (const entry of layout.items) await this.addSprite(entry);
+    for (const entry of layout.items) await this.draw(entry);
     this.sortAll();
     this.drawOverlay();
     setDirty(dirty);
   }
 
-  async addSprite(entry) {
-    const item = byId.get(entry.item);
-    if (!item) return;
-    const { key, frame } = await itemFrame(this, item);
-    const sprite = this.add.image(entry.x, entry.y, key, frame).setOrigin(0, 0).setFlipX(!!item.sprite.flip);
-    this.sprites.set(entry, sprite);
+  /** (Re)draws one placed thing. */
+  async draw(entry) {
+    this.sprites.get(entry)?.forEach((image) => image.destroy());
+    const pieces = expand(byId, entry.item, entry.x, entry.y, entry.choose);
+    const images = [];
+    for (const piece of pieces) {
+      const { key, frame } = await itemFrame(this, piece.item);
+      images.push(this.add.image(piece.x, piece.y, key, frame).setOrigin(0, 0).setFlipX(!!piece.item.sprite.flip));
+    }
+    this.sprites.set(entry, images);
   }
 
   /**
    * Draw order, as the floor does it: by where each thing stands. Things on a
    * wall sit just over the wall, and things on a desk just over that desk.
    */
-  depthOf(entry) {
-    const item = byId.get(entry.item);
+  depthOf(piece, all) {
+    const { item, x, y } = piece;
     if (item.mount === "wall") return 2;
     if (item.mount === "surface") {
-      const [, , w, h] = item.sprite.rect;
-      const foot = { x: entry.x + w / 2, y: entry.y + h - 2 };
-      for (const other of layout.items) {
-        const host = byId.get(other.item);
-        if (!host?.surface) continue;
-        const [sx, sy, sw, sh] = host.surface;
-        if (foot.x >= other.x + sx && foot.x <= other.x + sx + sw && foot.y >= other.y + sy && foot.y <= other.y + sy + sh) {
-          return other.y + host.sortY + 0.5;
-        }
+      const [w, h] = spriteSize(item.sprite);
+      const foot = { x: x + w / 2, y: y + h - 2 };
+      for (const host of all) {
+        if (!host.item.surface) continue;
+        const [sx, sy, sw, sh] = host.item.surface;
+        if (foot.x >= host.x + sx && foot.x <= host.x + sx + sw && foot.y >= host.y + sy && foot.y <= host.y + sy + sh) return host.y + host.item.sortY + 0.5;
       }
     }
-    return entry.y + item.sortY;
+    return y + item.sortY;
   }
 
   sortAll() {
-    for (const [entry, sprite] of this.sprites) sprite.setDepth(this.depthOf(entry));
+    const all = this.pieces();
+    for (const [entry, images] of this.sprites) {
+      const pieces = all.filter((piece) => piece.entry === entry);
+      images.forEach((image, i) => pieces[i] && image.setDepth(this.depthOf(pieces[i], all)));
+    }
   }
 
   solids() {
-    const out = [...this.wallSolids];
-    for (const entry of layout?.items ?? []) {
-      const item = byId.get(entry.item);
-      for (const [x, y, w, h] of item?.colliders ?? []) out.push([entry.x + x, entry.y + y, w, h]);
-    }
-    return out;
+    return [...this.wallSolids, ...this.pieces().flatMap(({ item, x, y }) => item.colliders.map(([cx, cy, w, h]) => [x + cx, y + cy, w, h]))];
   }
 
   blocked(px, py) {
@@ -217,24 +234,35 @@ class Floor extends Phaser.Scene {
     return this.solids().some(([x, y, w, h]) => px >= x && px <= x + w && py >= y && py <= y + h);
   }
 
-  /** The placed item under the pointer, the one drawn on top. */
-  itemAt(px, py) {
+  outline(entry) {
+    const [bx, by, w, h] = bounds(byId, entry.item, entry.choose);
+    return [entry.x + bx, entry.y + by, w, h];
+  }
+
+  /** The placed thing under the pointer, the one in front. */
+  entryAt(px, py) {
     let best = null;
-    for (const [entry, sprite] of this.sprites) {
-      const [, , w, h] = byId.get(entry.item).sprite.rect;
-      if (px >= entry.x && px < entry.x + w && py >= entry.y && py < entry.y + h && (!best || sprite.depth >= best.depth)) {
-        best = { entry, depth: sprite.depth };
-      }
+    for (const entry of layout?.items ?? []) {
+      const [x, y, w, h] = this.outline(entry);
+      if (px < x || px >= x + w || py < y || py >= y + h) continue;
+      const front = y + h;
+      if (!best || front >= best.front) best = { entry, front };
     }
     return best?.entry ?? null;
   }
 
   async updateGhost(pointer = this.input.activePointer) {
     if (!placing) return this.ghost.setVisible(false);
-    const { key, frame } = await itemFrame(this, placing);
-    const [, , w, h] = placing.sprite.rect;
-    this.ghost.setTexture(key, frame).setFlipX(!!placing.sprite.flip).setVisible(true);
-    this.ghost.setPosition(down16(pointer.worldX - w / 2 + 8), down16(pointer.worldY - h / 2 + 8));
+    if (this.ghost.getData("id") !== placing.id) {
+      this.ghost.removeAll(true);
+      for (const piece of expand(byId, placing.id, 0, 0)) {
+        const { key, frame } = await itemFrame(this, piece.item);
+        this.ghost.add(this.add.image(piece.x, piece.y, key, frame).setOrigin(0, 0).setFlipX(!!piece.item.sprite.flip));
+      }
+      this.ghost.setData("id", placing.id);
+    }
+    const [bx, by, w, h] = bounds(byId, placing.id);
+    this.ghost.setVisible(true).setPosition(down16(pointer.worldX - w / 2 - bx + 8), down16(pointer.worldY - h / 2 - by + 8));
   }
 
   pointerMove(pointer) {
@@ -244,9 +272,10 @@ class Floor extends Phaser.Scene {
     const x = down16(pointer.worldX - this.drag.dx + 8);
     const y = down16(pointer.worldY - this.drag.dy + 8);
     if (x === entry.x && y === entry.y) return;
+    const [dx, dy] = [x - entry.x, y - entry.y];
     entry.x = x;
     entry.y = y;
-    this.sprites.get(entry).setPosition(x, y);
+    this.sprites.get(entry)?.forEach((image) => image.setPosition(image.x + dx, image.y + dy));
     this.sortAll();
     this.drawOverlay();
     setDirty(true);
@@ -256,24 +285,31 @@ class Floor extends Phaser.Scene {
     if (placing) {
       const entry = { item: placing.id, x: this.ghost.x, y: this.ghost.y };
       layout.items.push(entry);
-      await this.addSprite(entry);
+      await this.draw(entry);
       this.sortAll();
       setDirty(true);
       if (!pointer.event.shiftKey) startPlacing(placing);
       return;
     }
-    const entry = this.itemAt(pointer.worldX, pointer.worldY);
-    selected = entry;
+    const entry = this.entryAt(pointer.worldX, pointer.worldY);
+    select(entry);
     if (entry) this.drag = { entry, dx: pointer.worldX - entry.x, dy: pointer.worldY - entry.y };
-    this.drawOverlay();
   }
 
   removeSelected() {
-    if (!selected || ["INPUT", "SELECT", "TEXTAREA"].includes(document.activeElement?.tagName)) return;
+    if (!selected || typing()) return;
     layout.items = layout.items.filter((entry) => entry !== selected);
-    this.sprites.get(selected)?.destroy();
+    this.sprites.get(selected)?.forEach((image) => image.destroy());
     this.sprites.delete(selected);
-    selected = null;
+    select(null);
+    this.sortAll();
+    setDirty(true);
+  }
+
+  async chooseChair(id) {
+    if (!selected) return;
+    selected.choose = { ...selected.choose, chair: id };
+    await this.draw(selected);
     this.sortAll();
     this.drawOverlay();
     setDirty(true);
@@ -281,23 +317,20 @@ class Floor extends Phaser.Scene {
 
   drawOverlay() {
     const g = this.overlay;
+    if (!g) return;
     g.clear();
     if ($("#show-colliders").checked) {
       for (const [x, y, w, h] of this.solids()) g.fillStyle(0xe5484d, 0.25).fillRect(x, y, w, h);
-      for (const entry of layout?.items ?? []) {
-        const item = byId.get(entry.item);
-        for (const seat of item?.seats ?? []) g.fillStyle(0x3e63dd, 1).fillCircle(entry.x + seat.x, entry.y + seat.y, 3);
-      }
+      for (const { item, x, y } of this.pieces()) for (const seat of item.seats) g.fillStyle(0x3e63dd, 1).fillCircle(x + seat.x, y + seat.y, 3);
     }
     if (selected) {
-      const [, , w, h] = byId.get(selected.item).sprite.rect;
-      g.lineStyle(2, 0x1c1c1e, 1).strokeRect(selected.x - 1, selected.y - 1, w + 2, h + 2);
-      g.lineStyle(1, 0xffffff, 1).strokeRect(selected.x - 2.5, selected.y - 2.5, w + 5, h + 5);
+      const [x, y, w, h] = this.outline(selected);
+      g.lineStyle(2, 0x1c1c1e, 1).strokeRect(x - 1, y - 1, w + 2, h + 2);
+      g.lineStyle(1, 0xffffff, 1).strokeRect(x - 2.5, y - 2.5, w + 5, h + 5);
     }
   }
 
   toggleSit() {
-    if (["INPUT", "SELECT", "TEXTAREA"].includes(document.activeElement?.tagName)) return;
     if (this.seated) {
       const { x, y, dir } = this.seated;
       this.seated = null;
@@ -306,9 +339,9 @@ class Floor extends Phaser.Scene {
       return;
     }
     let best = null;
-    for (const entry of layout?.items ?? []) {
-      for (const seat of byId.get(entry.item)?.seats ?? []) {
-        const sx = entry.x + seat.x, sy = entry.y + seat.y;
+    for (const { item, x, y } of this.pieces()) {
+      for (const seat of item.seats) {
+        const sx = x + seat.x, sy = y + seat.y;
         const distance = Math.hypot(sx - this.avatar.x, sy - this.avatar.y);
         if (distance < 56 && (!best || distance < best.distance)) best = { x: sx, y: sy, dir: seat.dir, distance };
       }
@@ -350,6 +383,7 @@ $("#save").addEventListener("click", save);
 $("#layout-id").addEventListener("change", (event) => openLayout(event.target.value));
 $("#layout-name").addEventListener("input", () => setDirty(true));
 $("#show-colliders").addEventListener("change", () => scene?.drawOverlay());
+$("#chair").addEventListener("change", (event) => scene?.chooseChair(event.target.value));
 $("#new-layout").addEventListener("click", () => {
   const id = prompt("Layout id (a-z, 0-9, -)")?.trim().toLowerCase();
   if (id && /^[a-z0-9-]+$/.test(id)) newLayout(id);
@@ -366,13 +400,18 @@ window.layoutLab = {
   scene: () => scene,
   layout: () => layout,
   catalog: () => catalog,
-  place: async (id, x, y) => {
-    const entry = { item: id, x, y };
+  place: async (id, x, y, choose) => {
+    const entry = { item: id, x, y, ...(choose ? { choose } : {}) };
     layout.items.push(entry);
-    await scene.addSprite(entry);
+    await scene.draw(entry);
     scene.sortAll();
     setDirty(true);
     return entry;
+  },
+  clear: () => {
+    layout.items = [];
+    scene.rebuild();
+    setDirty(true);
   },
   save,
   newLayout,

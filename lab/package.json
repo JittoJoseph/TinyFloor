@@ -1,0 +1,15 @@
+{
+  "name": "lab",
+  "private": true,
+  "type": "module",
+  "description": "Local tool for making the floor's items, desks and layouts from the art packs. Not deployed.",
+  "scripts": {
+    "start": "node server.mjs",
+    "check": "node check.mjs",
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "phaser": "catalog:",
+    "pngjs": "^7.0.0"
+  }
+}

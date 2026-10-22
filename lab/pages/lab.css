@@ -347,3 +347,55 @@ form label.inline input {
 .toolbar input:not([type="checkbox"]) {
   width: auto;
 }
+
+#item-fields[hidden],
+#bundle-fields[hidden],
+.item-only[hidden],
+label[hidden] {
+  display: none;
+}
+
+#item-fields,
+#bundle-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.part {
+  display: grid;
+  grid-template-columns: 1fr 56px 56px auto;
+  gap: 4px;
+  align-items: center;
+}
+
+.part .options {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px 0 6px;
+}
+
+.problems {
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+  max-height: 40%;
+  overflow-y: auto;
+}
+
+.problems summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--danger);
+}
+
+.problems[data-ok="true"] summary {
+  color: #3a7d44;
+}
+
+.problems li {
+  cursor: pointer;
+  color: var(--muted);
+  margin: 4px 0;
+}

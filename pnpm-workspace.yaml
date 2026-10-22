@@ -1,9 +1,11 @@
-# The two frontends and the code they share, installed together so every package
-# exists once. The Workers keep their own workspaces (their own pnpm-workspace.yaml).
+# The two frontends, the code they share and the lab (the local tool the floor's
+# items are made in), installed together so every package exists once. The
+# Workers keep their own workspaces (their own pnpm-workspace.yaml).
 packages:
   - app-frontend
   - marketing-frontend
   - web-shared
+  - lab
 
 catalog:
   "@creem_io/embed": 0.3.4

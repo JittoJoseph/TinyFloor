@@ -127,6 +127,12 @@ export class DeskPlate {
     return this.refresh();
   }
 
+  /** Kept as readable as the name tags when the camera pulls back, on a phone. */
+  setClaimScale(scale: number): this {
+    this.chipAnchor.setScale(scale);
+    return this;
+  }
+
   /** Whether it's asking, on the desk, to free your desk for this one. */
   setAsking(asking: boolean): this {
     if (asking === this.asking) return this;

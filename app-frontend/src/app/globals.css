@@ -361,6 +361,49 @@
   background: #fff;
 }
 
+/* By finger, on a phone or a tablet: a claim and its answers big enough to press without care. */
+@media (pointer: coarse), (max-width: 640px) {
+  .desk-claim {
+    font-size: 12px;
+  }
+
+  .desk-claim-go {
+    height: 24px;
+    gap: 6px;
+    padding: 0 10px 0 3px;
+  }
+
+  .desk-claim-dot {
+    width: 18px;
+    height: 18px;
+  }
+
+  .desk-claim-dot svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .desk-claim[data-asking] {
+    gap: 10px;
+    width: 204px;
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  .desk-claim-ask span {
+    font-size: 11px;
+  }
+
+  .desk-claim-row {
+    gap: 6px;
+  }
+
+  .desk-claim-row button {
+    height: 28px;
+    padding: 0 14px;
+  }
+}
+
 /* Yours, in ink, so it's the one you spot; pressing it walks you there. */
 .desk-plate[data-mine] {
   pointer-events: auto;

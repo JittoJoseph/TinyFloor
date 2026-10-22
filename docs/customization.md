@@ -86,11 +86,13 @@ Decided by looking, and checked by the lab on every change (`lab/check.mjs`):
   drawn behind their chair, so you see the back of their head over the desk;
   someone walking past either side is in front of or behind the whole row.
   Tested sitting and walking on both sides in the layout editor.
-- **The office chair's two views**: the patterned one faces us, the plain one
-  is its back. So the patterned chair goes where you sit facing us (a desk's
-  far side, above a table), drawn behind you; the plain one where you sit
-  facing away (a desk's near side, below a table), its back drawn over you,
-  as the current floor has it.
+- **A chair's two views**: the front view shows the seat and both armrests
+  towards us; the back view only the chair's rounded back. Front views go
+  where you sit facing us (a desk's far side, above a table), drawn behind
+  you; back views where you sit facing away (a desk's near side, below a
+  table), drawn over you, as the current floor has it. The office sheet's row
+  of chairs mixes both views side by side, so the chairs are taken from the
+  pack's single images, one picture each, and their facing is set by looking.
 - **Chairs are tucked in**: a chair's bottom a tile into the desk or table on
   either side, as the current office's far desks have it.
 - **What's on a desk faces whoever sits there**: screens on the near side, the

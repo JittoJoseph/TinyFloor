@@ -249,222 +249,6 @@
       "notes": ""
     },
     {
-      "id": "chair-black-back",
-      "name": "Office chair, black, from behind, low back",
-      "category": "seating",
-      "themes": [
-        "office"
-      ],
-      "mount": "floor",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          32,
-          272,
-          32,
-          48
-        ]
-      },
-      "sortY": 48,
-      "colliders": [
-        [
-          2,
-          30,
-          28,
-          16
-        ]
-      ],
-      "seats": [
-        {
-          "x": 16,
-          "y": 46,
-          "dir": "up"
-        }
-      ],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "chair-black-back-high",
-      "name": "Office chair, black, from behind",
-      "category": "seating",
-      "themes": [
-        "office"
-      ],
-      "mount": "floor",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          64,
-          256,
-          32,
-          64
-        ]
-      },
-      "sortY": 64,
-      "colliders": [
-        [
-          2,
-          46,
-          28,
-          16
-        ]
-      ],
-      "seats": [
-        {
-          "x": 16,
-          "y": 62,
-          "dir": "up"
-        }
-      ],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "chair-black-front",
-      "name": "Office chair, black, high back",
-      "category": "seating",
-      "themes": [
-        "office"
-      ],
-      "mount": "floor",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          96,
-          256,
-          32,
-          64
-        ]
-      },
-      "sortY": 60,
-      "colliders": [
-        [
-          2,
-          46,
-          28,
-          16
-        ]
-      ],
-      "seats": [
-        {
-          "x": 16,
-          "y": 62,
-          "dir": "down"
-        }
-      ],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "chair-black-front-low",
-      "name": "Office chair, black",
-      "category": "seating",
-      "themes": [
-        "office"
-      ],
-      "mount": "floor",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          0,
-          272,
-          32,
-          48
-        ]
-      },
-      "sortY": 44,
-      "colliders": [
-        [
-          2,
-          30,
-          28,
-          16
-        ]
-      ],
-      "seats": [
-        {
-          "x": 16,
-          "y": 46,
-          "dir": "down"
-        }
-      ],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "chair-tan-back",
-      "name": "Office chair, tan, from behind",
-      "category": "seating",
-      "themes": [
-        "office"
-      ],
-      "mount": "floor",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          64,
-          320,
-          32,
-          64
-        ]
-      },
-      "sortY": 64,
-      "colliders": [
-        [
-          2,
-          46,
-          28,
-          16
-        ]
-      ],
-      "seats": [
-        {
-          "x": 16,
-          "y": 62,
-          "dir": "up"
-        }
-      ],
-      "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "chair-tan-front",
-      "name": "Office chair, tan",
-      "category": "seating",
-      "themes": [
-        "office"
-      ],
-      "mount": "floor",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          0,
-          336,
-          32,
-          48
-        ]
-      },
-      "sortY": 44,
-      "colliders": [
-        [
-          2,
-          30,
-          28,
-          16
-        ]
-      ],
-      "seats": [
-        {
-          "x": 16,
-          "y": 46,
-          "dir": "down"
-        }
-      ],
-      "surface": null,
-      "notes": ""
-    },
-    {
       "id": "egg-chair-blue",
       "name": "Egg chair, blue",
       "category": "seating",
@@ -1723,14 +1507,15 @@
           "front": {
             "at": [
               0,
-              48
+              64
             ],
             "options": [
-              "chair-black-back-high",
               "chair-black-back",
-              "chair-tan-back"
+              "chair-black-mesh-back",
+              "chair-tan-back",
+              "chair-tan-mesh-back"
             ],
-            "default": "chair-black-back-high"
+            "default": "chair-black-back"
           },
           "back": {
             "at": [
@@ -1738,11 +1523,12 @@
               -32
             ],
             "options": [
-              "chair-black-front",
-              "chair-black-front-low",
-              "chair-tan-front"
+              "chair-black-mesh",
+              "chair-black",
+              "chair-tan-mesh",
+              "chair-tan"
             ],
-            "default": "chair-black-front"
+            "default": "chair-black-mesh"
           }
         }
       },
@@ -1761,14 +1547,15 @@
           "front": {
             "at": [
               0,
-              48
+              64
             ],
             "options": [
-              "chair-black-back-high",
               "chair-black-back",
-              "chair-tan-back"
+              "chair-black-mesh-back",
+              "chair-tan-back",
+              "chair-tan-mesh-back"
             ],
-            "default": "chair-black-back-high"
+            "default": "chair-black-back"
           },
           "back": {
             "at": [
@@ -1776,11 +1563,12 @@
               -32
             ],
             "options": [
-              "chair-black-front",
-              "chair-black-front-low",
-              "chair-tan-front"
+              "chair-black-mesh",
+              "chair-black",
+              "chair-tan-mesh",
+              "chair-tan"
             ],
-            "default": "chair-black-front"
+            "default": "chair-black-mesh"
           }
         }
       },
@@ -1799,14 +1587,15 @@
           "front": {
             "at": [
               0,
-              48
+              64
             ],
             "options": [
-              "chair-black-back-high",
               "chair-black-back",
-              "chair-tan-back"
+              "chair-black-mesh-back",
+              "chair-tan-back",
+              "chair-tan-mesh-back"
             ],
-            "default": "chair-black-back-high"
+            "default": "chair-black-back"
           },
           "back": {
             "at": [
@@ -1814,11 +1603,12 @@
               -32
             ],
             "options": [
-              "chair-black-front",
-              "chair-black-front-low",
-              "chair-tan-front"
+              "chair-black-mesh",
+              "chair-black",
+              "chair-tan-mesh",
+              "chair-tan"
             ],
-            "default": "chair-black-front"
+            "default": "chair-black-mesh"
           }
         }
       },
@@ -1837,14 +1627,15 @@
           "front": {
             "at": [
               0,
-              48
+              64
             ],
             "options": [
-              "chair-black-back-high",
               "chair-black-back",
-              "chair-tan-back"
+              "chair-black-mesh-back",
+              "chair-tan-back",
+              "chair-tan-mesh-back"
             ],
-            "default": "chair-black-back-high"
+            "default": "chair-black-back"
           },
           "back": {
             "at": [
@@ -1852,11 +1643,12 @@
               -32
             ],
             "options": [
-              "chair-black-front",
-              "chair-black-front-low",
-              "chair-tan-front"
+              "chair-black-mesh",
+              "chair-black",
+              "chair-tan-mesh",
+              "chair-tan"
             ],
-            "default": "chair-black-front"
+            "default": "chair-black-mesh"
           }
         }
       },
@@ -1875,14 +1667,15 @@
           "front": {
             "at": [
               0,
-              48
+              64
             ],
             "options": [
-              "chair-black-back-high",
               "chair-black-back",
-              "chair-tan-back"
+              "chair-black-mesh-back",
+              "chair-tan-back",
+              "chair-tan-mesh-back"
             ],
-            "default": "chair-black-back-high"
+            "default": "chair-black-back"
           },
           "back": {
             "at": [
@@ -1890,11 +1683,12 @@
               -32
             ],
             "options": [
-              "chair-black-front",
-              "chair-black-front-low",
-              "chair-tan-front"
+              "chair-black-mesh",
+              "chair-black",
+              "chair-tan-mesh",
+              "chair-tan"
             ],
-            "default": "chair-black-front"
+            "default": "chair-black-mesh"
           }
         }
       },
@@ -4460,6 +4254,294 @@
       "seats": [],
       "surface": null,
       "notes": ""
+    },
+    {
+      "id": "chair-black",
+      "name": "Office chair, black",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_101.png",
+        "rect": [
+          0,
+          32,
+          32,
+          64
+        ]
+      },
+      "sortY": 56,
+      "colliders": [
+        [
+          2,
+          44,
+          28,
+          16
+        ]
+      ],
+      "seats": [
+        {
+          "x": 16,
+          "y": 60,
+          "dir": "down"
+        }
+      ],
+      "surface": null,
+      "notes": "A front view: seat and armrests towards us."
+    },
+    {
+      "id": "chair-black-mesh",
+      "name": "Office chair, black, mesh back",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_102.png",
+        "rect": [
+          0,
+          32,
+          32,
+          64
+        ]
+      },
+      "sortY": 56,
+      "colliders": [
+        [
+          2,
+          44,
+          28,
+          16
+        ]
+      ],
+      "seats": [
+        {
+          "x": 16,
+          "y": 60,
+          "dir": "down"
+        }
+      ],
+      "surface": null,
+      "notes": "A front view: seat and armrests towards us."
+    },
+    {
+      "id": "chair-black-back",
+      "name": "Office chair, black, from behind",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_106.png",
+        "rect": [
+          0,
+          48,
+          32,
+          48
+        ]
+      },
+      "sortY": 48,
+      "colliders": [
+        [
+          2,
+          28,
+          28,
+          16
+        ]
+      ],
+      "seats": [
+        {
+          "x": 16,
+          "y": 44,
+          "dir": "up"
+        }
+      ],
+      "surface": null,
+      "notes": "A back view: only the chair's back shows."
+    },
+    {
+      "id": "chair-black-mesh-back",
+      "name": "Office chair, black, mesh back, from behind",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_105.png",
+        "rect": [
+          0,
+          48,
+          32,
+          48
+        ]
+      },
+      "sortY": 48,
+      "colliders": [
+        [
+          2,
+          28,
+          28,
+          16
+        ]
+      ],
+      "seats": [
+        {
+          "x": 16,
+          "y": 44,
+          "dir": "up"
+        }
+      ],
+      "surface": null,
+      "notes": "A back view: only the chair's back shows."
+    },
+    {
+      "id": "chair-tan",
+      "name": "Office chair, tan",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_107.png",
+        "rect": [
+          0,
+          32,
+          32,
+          64
+        ]
+      },
+      "sortY": 56,
+      "colliders": [
+        [
+          2,
+          44,
+          28,
+          16
+        ]
+      ],
+      "seats": [
+        {
+          "x": 16,
+          "y": 60,
+          "dir": "down"
+        }
+      ],
+      "surface": null,
+      "notes": "A front view: seat and armrests towards us."
+    },
+    {
+      "id": "chair-tan-mesh",
+      "name": "Office chair, tan, mesh back",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_108.png",
+        "rect": [
+          0,
+          32,
+          32,
+          64
+        ]
+      },
+      "sortY": 56,
+      "colliders": [
+        [
+          2,
+          44,
+          28,
+          16
+        ]
+      ],
+      "seats": [
+        {
+          "x": 16,
+          "y": 60,
+          "dir": "down"
+        }
+      ],
+      "surface": null,
+      "notes": "A front view: seat and armrests towards us."
+    },
+    {
+      "id": "chair-tan-back",
+      "name": "Office chair, tan, from behind",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_112.png",
+        "rect": [
+          0,
+          48,
+          32,
+          48
+        ]
+      },
+      "sortY": 48,
+      "colliders": [
+        [
+          2,
+          28,
+          28,
+          16
+        ]
+      ],
+      "seats": [
+        {
+          "x": 16,
+          "y": 44,
+          "dir": "up"
+        }
+      ],
+      "surface": null,
+      "notes": "A back view: only the chair's back shows."
+    },
+    {
+      "id": "chair-tan-mesh-back",
+      "name": "Office chair, tan, mesh back, from behind",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "src": "modernoffice/4_Modern_Office_singles/32x32/Modern_Office_Singles_32x32_111.png",
+        "rect": [
+          0,
+          48,
+          32,
+          48
+        ]
+      },
+      "sortY": 48,
+      "colliders": [
+        [
+          2,
+          28,
+          28,
+          16
+        ]
+      ],
+      "seats": [
+        {
+          "x": 16,
+          "y": 44,
+          "dir": "up"
+        }
+      ],
+      "surface": null,
+      "notes": "A back view: only the chair's back shows."
     }
   ]
 }

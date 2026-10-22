@@ -51,39 +51,39 @@
   },
   {
    "id": "z43bhw",
-   "item": "chair-black-front",
+   "item": "chair-black-mesh",
    "x": 128,
    "y": 192
   },
   {
    "id": "glog2r",
-   "item": "chair-black-back-high",
+   "item": "chair-black-back",
    "x": 128,
-   "y": 272
+   "y": 288
   },
   {
    "id": "ss7nl1",
-   "item": "chair-black-front",
+   "item": "chair-black-mesh",
    "x": 192,
    "y": 192
   },
   {
    "id": "o7ltoz",
-   "item": "chair-black-back-high",
+   "item": "chair-black-back",
    "x": 192,
-   "y": 272
+   "y": 288
   },
   {
    "id": "z44bp4",
-   "item": "chair-black-front",
+   "item": "chair-black-mesh",
    "x": 256,
    "y": 192
   },
   {
    "id": "2u8ufq",
-   "item": "chair-black-back-high",
+   "item": "chair-black-back",
    "x": 256,
-   "y": 272
+   "y": 288
   },
   {
    "id": "l3c5rm",

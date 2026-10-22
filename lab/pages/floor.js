@@ -87,26 +87,54 @@ export function topWalls(shell) {
 }
 
 /**
- * What stands against each room's top wall and hangs on it, picked from the
- * seed: along the longest wall, once, a kitchen (vending machines, water, coffee);
- * then shelves, cabinets and plants along the wall, pictures and boards above,
- * with gaps so it reads as an office and not a store. Nothing goes where
- * someone has put furniture.
+ * Each room's side walls, where floor runs down beside a wall: [{ x, y, length,
+ * side }] in tiles, side being which side of the floor the wall is on.
  */
-const KITCHEN = ["wall-vending", "wall-cooler", "wall-coffee", "wall-counter"];
-const STANDING = ["wall-bookcase", "wall-shelf", "wall-plant", "wall-plant2", "wall-cooler"];
+export function sideWalls(shell) {
+  const [w, h] = shell.size;
+  const grid = cells(shell);
+  const at = (x, y) => (x < 0 || y < 0 || x >= w || y >= h ? { kind: "void" } : grid[y * w + x]);
+  const runs = [];
+  for (const [side, dx] of [["left", -1], ["right", 1]]) {
+    const beside = (x, y) => at(x, y).kind === "floor" && at(x + dx, y).kind === "wall";
+    for (let x = 0; x < w; x++) {
+      for (let y = 0; y < h; y++) {
+        if (!beside(x, y) || beside(x, y - 1)) continue;
+        let length = 1;
+        while (beside(x, y + length)) length++;
+        if (length >= 4) runs.push({ x, y, length, side });
+      }
+    }
+  }
+  return runs;
+}
+
+/**
+ * What stands against the walls and hangs on them, picked from the seed.
+ *
+ * Along each room's top wall, things come in groups, the way an office fills
+ * up: a shelf beside a cooler, a picture over the gap next to them, a plant
+ * at the end; then some bare wall, then another group. The longest wall gets
+ * the kitchen (vending machines, water, coffee) once. Along the side walls, a
+ * plant, a cooler or a cabinet here and there, kept clear of the corners and
+ * doorways. Nothing goes where someone has put furniture.
+ */
+const STANDING = ["wall-bookcase", "wall-shelf", "wall-plant", "wall-plant2", "wall-cooler", "wall-plant"];
 const HUNG = ["wall-painting", "wall-notice", "wall-poster", "wall-charts", "wall-cert", "wall-art", "wall-trophy", "board-blank", "board-chart", "window-wide", "picture-forest", "picture-hills"];
+const SIDE = ["plant-tall", "plant-snake", "wall-cabinet", "water-cooler", "plant-tall", "plant-small"];
 
 function dressWalls(byId, shell, seed, placed) {
-  const runs = topWalls(shell);
-  // The kitchen goes along the longest wall: rooms joined by doorways are one floor, so wall length says which room is the main one.
-  const biggest = runs.reduce((best, run) => (!best || run.length > best.length ? run : best), null);
   const blocked = placed.map(({ item, x, y }) => {
     const [w, h] = spriteSize(item.sprite);
     return [x, y, w, h];
   });
   const free = (x, y, w, h) => blocked.every(([bx, by, bw, bh]) => x + w <= bx || x >= bx + bw || y + h <= by || y >= by + bh);
+  const tiles = (id) => Math.ceil(spriteSize(byId.get(id).sprite)[0] / TILE);
   const out = [];
+  const runs = topWalls(shell);
+  // The kitchen goes along the longest wall: rooms joined by doorways are one floor, so wall length says which room is the main one.
+  const longest = runs.reduce((best, run) => (!best || run.length > best.length ? run : best), null);
+
   for (const run of runs) {
     const key = `wall:${run.x},${run.y}`;
     const rand = random(`${seed}|${key}`);
@@ -115,51 +143,61 @@ function dressWalls(byId, shell, seed, placed) {
       return options[Math.floor(rand() * options.length)] ?? null;
     };
     const top = (run.y - 2) * TILE;
+    const end = run.x + run.length;
     let n = 0;
-    const put = (id, tx, dy = 0) => {
-      const item = byId.get(id);
+    /** Puts a thing at tile tx along the wall; its width in tiles, or 0 when it can't go there. */
+    const put = (id, tx) => {
+      const item = id && byId.get(id);
       if (!item) return 0;
       const [w, h] = spriteSize(item.sprite);
-      const x = tx * TILE, y = top + dy;
-      // Standing things only where the floor in front of the wall is free; hung ones anywhere on it.
-      if (item.mount !== "wall" && !free(x, top + 2 * TILE, w, h - 2 * TILE)) return 0;
-      out.push({ key: `${key}/${n++}`, item, x, y, generated: "wall" });
-      return Math.ceil(w / TILE);
+      const width = Math.ceil(w / TILE);
+      if (tx + width > end) return 0;
+      // Things cut from a wall start on its top edge; the packs' own pictures and windows sit lower on the face.
+      const y = top + (item.mount === "wall" && !id.startsWith("wall-") && h <= TILE ? 16 : 0);
+      if (item.mount !== "wall" && !free(tx * TILE, top + 2 * TILE, w, h - 2 * TILE)) return 0;
+      out.push({ key: `${key}/${n++}`, item, x: tx * TILE, y, generated: "wall" });
+      return width;
     };
-    const end = run.x + run.length;
-    let tx = run.x;
-    // The kitchen, once, somewhere along the biggest room's wall.
-    let kitchenAt = run === biggest ? run.x + 2 + Math.floor(rand() * Math.max(1, run.length - 12)) : -1;
-    if (rand() < 0.6) tx += put(pick(["wall-plant", "wall-plant2"]), tx) || 0;
+    let kitchen = run === longest ? run.x + 2 + Math.floor(rand() * Math.max(1, run.length - 14)) : -1;
+    let tx = run.x + (rand() < 0.55 ? put(pick(["wall-plant", "wall-plant2"]), run.x) : 0);
+    tx += Math.floor(rand() * 3);
     while (tx < end - 1) {
-      if (tx >= kitchenAt && kitchenAt >= 0) {
-        for (const id of ["wall-vending", "wall-cooler", pick(["wall-coffee", "wall-counter"])]) {
-          const w = Math.ceil(spriteSize(byId.get(id)?.sprite ?? { rect: [0, 0, 32, 0] })[0] / TILE);
-          if (tx + w > end) break;
-          tx += put(id, tx) || w;
+      if (kitchen >= 0 && tx >= kitchen) {
+        for (const id of ["wall-vending", "wall-cooler", pick(["wall-coffee", "wall-counter"])]) tx += put(id, tx) || 0;
+        kitchen = -1;
+      } else {
+        // A group: one to three things side by side, standing or hung.
+        const size = 1 + Math.floor(rand() * rand() * 3.5);
+        for (let i = 0; i < size && tx < end - 1; i++) {
+          const id = rand() < 0.55 ? pick(STANDING) : pick(HUNG);
+          tx += put(id, tx) || 1;
         }
-        kitchenAt = -1;
-        tx += 1;
-        continue;
       }
-      const roll = rand();
-      if (roll < 0.42) {
-        const id = pick(STANDING);
-        const w = Math.ceil(spriteSize(byId.get(id).sprite)[0] / TILE);
-        if (tx + w <= end) tx += put(id, tx) || w;
-        else tx++;
-      } else if (roll < 0.72) {
-        const id = pick(HUNG);
-        const item = byId.get(id);
-        const [w, h] = spriteSize(item.sprite);
-        const tiles = Math.ceil(w / TILE);
-        // Things cut from a wall start on its top edge; the packs' own pictures and windows sit lower on the face.
-        if (tx + tiles <= end) tx += put(id, tx, id.startsWith("wall-") || h > TILE ? 0 : 16) || tiles;
-        else tx++;
-      }
-      tx += 1 + Math.floor(rand() * 2);
+      // Bare wall before the next group: sometimes a step, mostly a stretch.
+      tx += rand() < 0.25 ? 1 : 2 + Math.floor(rand() * 4);
     }
-    if (rand() < 0.6 && end - 1 > run.x) put(pick(["wall-plant", "wall-plant2"]), end - 1);
+    if (rand() < 0.5) put(pick(["wall-plant", "wall-plant2"]), end - 1);
+  }
+
+  for (const run of sideWalls(shell)) {
+    const key = `side:${run.side}:${run.x},${run.y}`;
+    const rand = random(`${seed}|${key}`);
+    let n = 0;
+    // Clear of the corner at the top (the top wall's things are there) and of the run's ends, where doorways are.
+    for (let ty = run.y + 3; ty < run.y + run.length - 1; ) {
+      if (rand() < 0.5) {
+        const options = SIDE.filter((id) => byId.has(id));
+        const item = byId.get(options[Math.floor(rand() * options.length)]);
+        const [w, h] = spriteSize(item.sprite);
+        const x = run.side === "left" ? run.x * TILE : (run.x + 1) * TILE - w;
+        const y = (ty + 1) * TILE - h;
+        if (free(x, (ty + 1) * TILE - 24, w, 24)) {
+          out.push({ key: `${key}/${n++}`, item, x, y, generated: "wall" });
+          ty += Math.ceil(h / TILE);
+        }
+      }
+      ty += 3 + Math.floor(rand() * 5);
+    }
   }
   return out;
 }

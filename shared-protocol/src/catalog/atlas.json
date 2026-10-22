@@ -106,16 +106,16 @@
    48
   ],
   "chair-tan-back": [
-   102,
-   328,
-   32,
-   48
-  ],
-  "chair-tan-front": [
    386,
    262,
    32,
    64
+  ],
+  "chair-tan-front": [
+   102,
+   328,
+   32,
+   48
   ],
   "coffee-table": [
    556,

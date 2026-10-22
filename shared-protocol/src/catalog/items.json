@@ -250,7 +250,7 @@
     },
     {
       "id": "chair-black-back",
-      "name": "Office chair, black, from behind",
+      "name": "Office chair, black, from behind, low back",
       "category": "seating",
       "themes": [
         "office"
@@ -259,7 +259,7 @@
       "sprite": {
         "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
         "rect": [
-          0,
+          32,
           272,
           32,
           48
@@ -269,7 +269,7 @@
       "colliders": [
         [
           2,
-          28,
+          30,
           28,
           16
         ]
@@ -286,7 +286,7 @@
     },
     {
       "id": "chair-black-back-high",
-      "name": "Office chair, black, from behind, high back",
+      "name": "Office chair, black, from behind",
       "category": "seating",
       "themes": [
         "office"
@@ -295,7 +295,7 @@
       "sprite": {
         "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
         "rect": [
-          96,
+          64,
           256,
           32,
           64
@@ -305,7 +305,7 @@
       "colliders": [
         [
           2,
-          44,
+          46,
           28,
           16
         ]
@@ -322,7 +322,7 @@
     },
     {
       "id": "chair-black-front",
-      "name": "Office chair, black",
+      "name": "Office chair, black, high back",
       "category": "seating",
       "themes": [
         "office"
@@ -331,7 +331,7 @@
       "sprite": {
         "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
         "rect": [
-          64,
+          96,
           256,
           32,
           64
@@ -341,7 +341,7 @@
       "colliders": [
         [
           2,
-          44,
+          46,
           28,
           16
         ]
@@ -358,7 +358,7 @@
     },
     {
       "id": "chair-black-front-low",
-      "name": "Office chair, black, low back",
+      "name": "Office chair, black",
       "category": "seating",
       "themes": [
         "office"
@@ -367,7 +367,7 @@
       "sprite": {
         "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
         "rect": [
-          32,
+          0,
           272,
           32,
           48
@@ -377,7 +377,7 @@
       "colliders": [
         [
           2,
-          28,
+          30,
           28,
           16
         ]
@@ -403,17 +403,17 @@
       "sprite": {
         "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
         "rect": [
-          0,
-          336,
+          64,
+          320,
           32,
-          48
+          64
         ]
       },
-      "sortY": 48,
+      "sortY": 64,
       "colliders": [
         [
           2,
-          28,
+          46,
           28,
           16
         ]
@@ -421,7 +421,7 @@
       "seats": [
         {
           "x": 16,
-          "y": 46,
+          "y": 62,
           "dir": "up"
         }
       ],
@@ -439,17 +439,17 @@
       "sprite": {
         "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
         "rect": [
-          64,
-          320,
+          0,
+          336,
           32,
-          64
+          48
         ]
       },
-      "sortY": 60,
+      "sortY": 44,
       "colliders": [
         [
           2,
-          44,
+          30,
           28,
           16
         ]
@@ -457,7 +457,7 @@
       "seats": [
         {
           "x": 16,
-          "y": 62,
+          "y": 46,
           "dir": "down"
         }
       ],

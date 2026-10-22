@@ -212,11 +212,12 @@ function cluster(byId, item, x, y, choose, place) {
       });
     }
   }
-  // Now and then a plant at a bank's end, standing by the desk.
+  // A plant standing by every bank, at one end, and sometimes at the other too.
   const ends = random(`${seed}|${key}|${place.salt ?? 0}|ends`);
   const plants = ["plant-tall", "plant-snake", "plant-small"].filter((id) => byId.has(id));
+  const first = ends() < 0.5 ? "left" : "right";
   for (const [end, ex] of [["left", x - 32], ["right", x + cols * DESK_STEP + 32]]) {
-    if (ends() < 0.45 || !plants.length) continue;
+    if ((end !== first && ends() < 0.65) || !plants.length) continue;
     const plant = byId.get(plants[Math.floor(ends() * plants.length)]);
     const [, h] = spriteSize(plant.sprite);
     pieces.push({ key: `${key}/end-${end}`, item: plant, x: ex, y: y + 92 - h });

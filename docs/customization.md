@@ -86,12 +86,11 @@ Decided by looking, and checked by the lab on every change (`lab/check.mjs`):
   drawn behind their chair, so you see the back of their head over the desk;
   someone walking past either side is in front of or behind the whole row.
   Tested sitting and walking on both sides in the layout editor.
-- **The office chair's two views**: the plain one faces us, the patterned one
-  is its back. So the plain chair goes where you sit facing us (a desk's far
-  side, above a table), drawn behind you; the patterned one where you sit
-  facing away (a desk's near side, below a table), its back drawn over you.
-  The current floor has them the other way round (`CHAIR_FRAME` in
-  `tools/buildmap.py`), worth fixing with it.
+- **The office chair's two views**: the patterned one faces us, the plain one
+  is its back. So the patterned chair goes where you sit facing us (a desk's
+  far side, above a table), drawn behind you; the plain one where you sit
+  facing away (a desk's near side, below a table), its back drawn over you,
+  as the current floor has it.
 - **Chairs are tucked in**: a chair's bottom a tile into the desk or table on
   either side, as the current office's far desks have it.
 - **What's on a desk faces whoever sits there**: screens on the near side, the
@@ -178,12 +177,13 @@ Pieces come from three places:
    calmer: usually a setup (screens and a tower, or a laptop, lamp and phone)
    beside whoever sits there, now and then a plant or phone on their other
    side; on the far side, the screens in front of them.
-   Every room's top wall is dressed: the longest wall gets the kitchen
-   (vending machines, water, coffee), and walls get shelves, coolers and
-   plants standing against them, with whiteboards, charts, notices and
-   pictures hung on them, and gaps between. Plants stand by walls and at the
-   ends of desk banks, never loose on the floor; nothing is put where
-   furniture already is, or in a doorway.
+   Every room's top wall is dressed in groups, the way an office fills up: a
+   shelf beside a cooler with a picture over the gap, then bare wall, then
+   another group, never evenly spaced; the longest wall gets the kitchen
+   (vending machines, water, coffee). Side walls get a plant, a cooler or a
+   cabinet here and there, clear of corners and doorways. Every desk bank has
+   a plant standing at one end at least. Plants stand by walls and desks,
+   never loose on the floor; nothing is put where furniture already is.
 3. **Changes**: what people did to generated pieces, kept by key and applied
    last: `{ hidden }`, `{ at: [x, y] }`, `{ item }` (swapped for another
    thing) or, for a desk, `{ things: [...] }` (the person's own arrangement,

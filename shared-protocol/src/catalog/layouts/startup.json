@@ -86,30 +86,6 @@
    "y": 288
   },
   {
-   "id": "l3c5rm",
-   "item": "rug-grey",
-   "x": 144,
-   "y": 720
-  },
-  {
-   "id": "eupa0t",
-   "item": "sofa-corner",
-   "x": 48,
-   "y": 656
-  },
-  {
-   "id": "s3kqcl",
-   "item": "coffee-table",
-   "x": 160,
-   "y": 736
-  },
-  {
-   "id": "9gue93",
-   "item": "armchair",
-   "x": 272,
-   "y": 704
-  },
-  {
    "id": "zhteid",
    "item": "bench-pale",
    "x": 704,
@@ -126,6 +102,78 @@
    "item": "printer",
    "x": 1184,
    "y": 944
+  },
+  {
+   "id": "6nb5m8",
+   "item": "meeting-table-small",
+   "x": 160,
+   "y": 736
+  },
+  {
+   "id": "hdref1",
+   "item": "chair-tan-mesh",
+   "x": 192,
+   "y": 704
+  },
+  {
+   "id": "uxc2ff",
+   "item": "chair-tan-back",
+   "x": 192,
+   "y": 800
+  },
+  {
+   "id": "j5kmha",
+   "item": "chair-tan-mesh",
+   "x": 256,
+   "y": 704
+  },
+  {
+   "id": "vfoow4",
+   "item": "chair-tan-back",
+   "x": 256,
+   "y": 800
+  },
+  {
+   "id": "s2frh8",
+   "item": "wall-vending",
+   "x": 64,
+   "y": 512
+  },
+  {
+   "id": "154bjy",
+   "item": "wall-cooler",
+   "x": 192,
+   "y": 512
+  },
+  {
+   "id": "q4tqud",
+   "item": "wall-coffee-table",
+   "x": 256,
+   "y": 512
+  },
+  {
+   "id": "05imfh",
+   "item": "mini-fridge",
+   "x": 368,
+   "y": 544
+  },
+  {
+   "id": "7z1k75",
+   "item": "plant-tall",
+   "x": 48,
+   "y": 912
+  },
+  {
+   "id": "0z4q8s",
+   "item": "plant-snake",
+   "x": 400,
+   "y": 912
+  },
+  {
+   "id": "ru2kty",
+   "item": "plant-small",
+   "x": 336,
+   "y": 768
   }
  ],
  "seed": 48213,

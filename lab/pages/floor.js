@@ -156,7 +156,8 @@ function dressWalls(byId, shell, seed, placed) {
       if (tx + width > end) return 0;
       // Things cut from a wall start on its top edge; the packs' own pictures and windows sit lower on the face.
       const y = top + (item.mount === "wall" && !id.startsWith("wall-") && h <= TILE ? 16 : 0);
-      if (item.mount !== "wall" && !free(tx * TILE, top + 2 * TILE, w, h - 2 * TILE)) return 0;
+      // Standing things only where the floor in front of the wall is free; hung ones only where nothing placed stands up over the wall.
+      if (item.mount !== "wall" ? !free(tx * TILE, top + 2 * TILE, w, h - 2 * TILE) : !free(tx * TILE, y, w, h)) return 0;
       out.push({ key: `${key}/${n++}`, item, x: tx * TILE, y, generated: "wall" });
       return width;
     };
@@ -165,7 +166,7 @@ function dressWalls(byId, shell, seed, placed) {
     tx += Math.floor(rand() * 3);
     while (tx < end - 1) {
       if (kitchen >= 0 && tx >= kitchen) {
-        for (const id of ["wall-vending", "wall-cooler", pick(["wall-coffee", "wall-counter"])]) tx += put(id, tx) || 0;
+        for (const id of ["wall-vending", "wall-coffee-table", pick(["wall-shelf-cooler", "wall-cooler"])]) tx += put(id, tx) || 0;
         kitchen = -1;
       } else {
         // A group: one to three things side by side, standing or hung.

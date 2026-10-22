@@ -393,22 +393,16 @@
    64,
    64
   ],
-  "wall-coffee": [
-   924,
-   0,
-   96,
+  "wall-coffee-table": [
+   66,
+   98,
+   64,
    96
   ],
   "wall-cooler": [
    330,
    98,
    32,
-   96
-  ],
-  "wall-counter": [
-   66,
-   98,
-   64,
    96
   ],
   "wall-notice": [
@@ -445,6 +439,12 @@
    198,
    98,
    64,
+   96
+  ],
+  "wall-shelf-cooler": [
+   924,
+   0,
+   96,
    96
   ],
   "wall-trophy": [

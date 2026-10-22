@@ -2201,8 +2201,8 @@
       "seats": [],
       "surface": null,
       "notes": "",
-      "id": "wall-counter",
-      "name": "Coffee counter",
+      "id": "wall-coffee-table",
+      "name": "Coffee machine on a table",
       "category": "kitchen",
       "mount": "wallside",
       "sprite": {
@@ -2308,9 +2308,9 @@
       "seats": [],
       "surface": null,
       "notes": "",
-      "id": "wall-coffee",
-      "name": "Coffee station",
-      "category": "kitchen",
+      "id": "wall-shelf-cooler",
+      "name": "Shelf and water cooler",
+      "category": "storage",
       "mount": "wallside",
       "sprite": {
         "size": [

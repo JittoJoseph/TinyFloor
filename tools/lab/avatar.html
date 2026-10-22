@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Character creator</title>
+    <link rel="stylesheet" href="/lab/lab.css" />
+    <style>
+      body {
+        grid-template-columns: 220px 1fr 420px;
+      }
+      .parts button {
+        display: block;
+        width: 100%;
+        text-align: left;
+        border: 0;
+        border-radius: 6px;
+        background: none;
+        padding: 8px 10px;
+      }
+      .parts button[aria-selected="true"] {
+        background: var(--bg);
+        font-weight: 600;
+      }
+      .options {
+        padding: 12px;
+        overflow-y: auto;
+      }
+      .styles {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 76px);
+        gap: 6px;
+      }
+      .styles button {
+        height: 96px;
+        padding: 0;
+        background: #f1f1ee;
+        border: 2px solid transparent;
+      }
+      .styles button[aria-pressed="true"] {
+        border-color: var(--ink);
+      }
+      .styles canvas {
+        image-rendering: pixelated;
+      }
+      .swatches {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 12px 0;
+      }
+      .swatches button {
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        box-shadow: 0 0 0 1px var(--line);
+      }
+      .swatches button[aria-pressed="true"] {
+        box-shadow: 0 0 0 2px var(--ink);
+      }
+      .preview {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding: 16px;
+        background: var(--panel);
+        border-left: 1px solid var(--line);
+      }
+      .stage {
+        background: #e2ded5;
+        border-radius: 12px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 12px;
+        gap: 4px;
+        justify-items: center;
+      }
+      .stage canvas {
+        image-rendering: pixelated;
+      }
+      .stage small {
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="side">
+      <header class="head"><strong>Character</strong><a href="/lab/index.html">Item lab</a></header>
+      <nav class="parts" id="parts"></nav>
+    </aside>
+    <main class="options">
+      <div class="swatches" id="swatches"></div>
+      <div class="styles" id="styles"></div>
+    </main>
+    <aside class="preview">
+      <div class="stage" id="stage"></div>
+      <div class="row">
+        <button id="randomize">Randomize</button>
+        <button id="mode">Walking</button>
+      </div>
+      <code id="recipe"></code>
+    </aside>
+    <script type="module" src="/lab/avatar.js"></script>
+  </body>
+</html>

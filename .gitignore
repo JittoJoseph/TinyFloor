@@ -59,6 +59,8 @@ __pycache__/
 # in at build time by web-shared/scripts/fetch-assets.mjs, which also copies
 # web-shared/public into each frontend (edit them there).
 /private-assets/
+# The bought packs as downloaded, and what's unpacked from them while working on art.
+/assets-pack/
 /*-frontend/public/characters/*.png
 /*-frontend/public/tilesets/textures/
 /*-frontend/public/tilesets/items/

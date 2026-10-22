@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Item review</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 16px;
+        background: #f6f6f4;
+        font: 12px/1.3 ui-sans-serif, system-ui, sans-serif;
+        color: #1c1c1e;
+      }
+      header {
+        display: flex;
+        gap: 16px;
+        align-items: baseline;
+        margin-bottom: 12px;
+      }
+      .key span {
+        margin-right: 12px;
+      }
+      .key i {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-right: 4px;
+        vertical-align: -1px;
+      }
+      main {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: flex-end;
+      }
+      figure {
+        margin: 0;
+        padding: 6px;
+        background: #fff;
+        border: 1px solid #e4e4e0;
+        border-radius: 8px;
+      }
+      figcaption {
+        margin-top: 4px;
+        max-width: 200px;
+      }
+      figcaption small {
+        display: block;
+        color: #6b6b70;
+      }
+      canvas {
+        display: block;
+        image-rendering: pixelated;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <strong>Item review</strong>
+      <span class="key">
+        <span><i style="background: #e5484d"></i>collider</span>
+        <span><i style="background: #f5b700"></i>sort line</span>
+        <span><i style="background: #3e63dd"></i>seat</span>
+        <span><i style="background: #30a46c"></i>surface</span>
+      </span>
+      <span id="count"></span>
+    </header>
+    <main id="items"></main>
+    <script type="module" src="/lab/review.js"></script>
+  </body>
+</html>

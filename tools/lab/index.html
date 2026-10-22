@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Item lab</title>
+    <link rel="stylesheet" href="/lab/lab.css" />
+  </head>
+  <body>
+    <aside class="side">
+      <header class="head">
+        <strong>Item lab</strong>
+        <div class="tabs" role="tablist">
+          <button data-tab="items" aria-selected="true">Items</button>
+          <button data-tab="sources">Sources</button>
+        </div>
+      </header>
+      <section data-panel="items">
+        <input id="item-search" type="search" placeholder="Search items" />
+        <ul id="item-list" class="list"></ul>
+      </section>
+      <section data-panel="sources" hidden>
+        <select id="source-dir"></select>
+        <div id="source-grid" class="grid"></div>
+      </section>
+    </aside>
+
+    <main class="stage">
+      <div class="toolbar">
+        <label><input type="checkbox" data-show="colliders" checked /> Colliders</label>
+        <label><input type="checkbox" data-show="sort" checked /> Sort line</label>
+        <label><input type="checkbox" data-show="seats" checked /> Seats</label>
+        <label><input type="checkbox" data-show="surface" checked /> Surface</label>
+        <label><input type="checkbox" data-show="grid" checked /> Grid</label>
+        <span class="spacer"></span>
+        <button id="copy-right" title="Another copy one step to the right">+ Copy right</button>
+        <button id="copy-below" title="Another copy one step below">+ Copy below</button>
+        <button id="clear-copies">Clear copies</button>
+      </div>
+      <div id="game"></div>
+      <p class="hint">Arrows or WASD walk. E sits at the nearest seat and stands. Drag a collider to move it, its corner to resize; Shift for single pixels.</p>
+    </main>
+
+    <aside class="side props">
+      <header class="head">
+        <strong id="prop-title">No item</strong>
+        <button id="save" class="primary" disabled>Save catalog</button>
+      </header>
+      <form id="props" autocomplete="off" hidden>
+        <label>Id <input name="id" required /></label>
+        <label>Name <input name="name" /></label>
+        <div class="row">
+          <label>Category
+            <select name="category">
+              <option>desks</option><option>seating</option><option>tables</option><option>tech</option>
+              <option>storage</option><option>plants</option><option>decor</option><option>wall</option>
+              <option>lighting</option><option>kitchen</option><option>leisure</option><option>structure</option>
+            </select>
+          </label>
+          <label>Mount
+            <select name="mount"><option>floor</option><option>wall</option><option>surface</option></select>
+          </label>
+        </div>
+        <label>Themes <input name="themes" placeholder="office, cozy" /></label>
+        <fieldset>
+          <legend>Sprite</legend>
+          <code id="sprite-src"></code>
+          <label class="inline"><input type="checkbox" name="flip" /> Mirrored</label>
+          <div class="row4">
+            <label>x <input name="rx" type="number" step="1" /></label>
+            <label>y <input name="ry" type="number" step="1" /></label>
+            <label>w <input name="rw" type="number" step="1" /></label>
+            <label>h <input name="rh" type="number" step="1" /></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Sort line <small>y from the sprite's top; you're behind it above this line</small></legend>
+          <input name="sortY" type="number" step="1" />
+        </fieldset>
+        <fieldset>
+          <legend>Colliders <button type="button" id="add-collider">Add</button> <button type="button" id="auto-collider">Guess</button></legend>
+          <div id="colliders"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Seats <button type="button" id="add-seat">Add</button></legend>
+          <div id="seats"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Surface <small>where things on top can go</small> <button type="button" id="toggle-surface">Add</button></legend>
+          <div id="surface"></div>
+        </fieldset>
+        <label>Notes <textarea name="notes" rows="2"></textarea></label>
+        <div class="row">
+          <button type="button" id="duplicate">Duplicate</button>
+          <button type="button" id="delete" class="danger">Delete</button>
+        </div>
+      </form>
+    </aside>
+
+    <script src="/phaser/phaser.min.js"></script>
+    <script type="module" src="/lab/lab.js"></script>
+  </body>
+</html>

@@ -807,7 +807,9 @@
     "claimAsk": "Varataanko tämä työpiste? Nykyinen työpisteesi vapautuu.",
     "claimConfirm": "Varaa",
     "keepMine": "Pidä omani",
-    "goTo": "Mene työpisteellesi"
+    "goTo": "Mene työpisteellesi",
+    "claimTitle": "Varataanko tämä työpiste?",
+    "claimNote": "Nykyinen työpisteesi vapautuu."
   },
   "note": {
     "title": "Tilaviesti",

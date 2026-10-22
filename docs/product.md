@@ -42,12 +42,16 @@ work happens. What we don't build, though each would raise usage numbers:
 - **Your own desk.** People value what's theirs more than what's merely
   available, and the feeling comes from choosing and using it (psychological
   ownership; the endowment and IKEA effects). A desk is a home base, and
-  being at it or away says whether you're available. So: you claim a desk. A free desk says "Claim desk" as you walk
-  up to it (never while you're sitting, settled somewhere), and sitting at
-  one offers the same above the dock. A desk is claimed, not moved to: what
-  you make of yours (customisation, later) stays with that desk, so claiming
-  another while you have one asks first, since yours is freed. It's
-  confirmed once, and nobody else sits there. The claim is the
+  being at it or away says whether you're available. So: you claim a desk. A free desk offers "Claim desk" only
+  when it's the one you mean: you're standing at its chair (the outlined
+  one), or, with a mouse, pointing at it from anywhere. The chip hangs under
+  that chair, clear of your head and name; it used to sit on the desk, where
+  standing beside a chair it covered your name and, worse, offered the desk
+  across the table. A desk is claimed, not moved to: what you make of yours
+  (customisation, later) stays with that desk, so claiming another while you
+  have one asks first, on that desk ("Your current desk will be freed"), and
+  walking away takes the question with you. It's confirmed once, and nobody
+  else sits there. The claim is the
   base desk customisation will build on. While its owner
   isn't at it, a claimed desk carries their face, with a dot while they're in
   the office, so the floor reads as a seating chart from across the room;

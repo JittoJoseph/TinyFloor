@@ -807,7 +807,9 @@
     "claimAsk": "Claim this desk? Your current desk will be freed.",
     "claimConfirm": "Claim",
     "keepMine": "Keep my desk",
-    "goTo": "Go to your desk"
+    "goTo": "Go to your desk",
+    "claimTitle": "Claim this desk?",
+    "claimNote": "Your current desk will be freed."
   },
   "note": {
     "title": "Status note",

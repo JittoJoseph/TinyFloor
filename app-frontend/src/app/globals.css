@@ -176,37 +176,106 @@
   opacity: 1;
 }
 
-/* A free desk you walk up to: an empty place where a face would be, and "Claim desk". */
-.desk-plate[data-free] {
+/*
+ * A free desk you mean (at its chair, or pointing at it): an action, dark like
+ * the name tags, with a desk and "Claim desk". Claiming it while you have a
+ * desk asks right there, on the desk, before yours is freed.
+ */
+.desk-claim {
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* It hangs from its top edge (plates.ts), so it scales from there too. */
+  transform-origin: top center;
   pointer-events: auto;
+  will-change: transform;
+  font: 500 10.5px/1 Geist, ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.desk-claim[hidden] {
+  display: none;
+}
+
+.desk-claim-go {
+  position: static;
   cursor: pointer;
+  padding: 0 7px 0 6px;
+  border: 0;
+  background: rgb(17 17 19 / 0.88);
+  font-weight: 600;
   transition: background-color 140ms ease;
 }
 
-.desk-plate[data-free]:hover {
+.desk-claim-go:hover {
+  background: rgb(17 17 19 / 0.98);
+}
+
+.desk-claim-go svg {
+  flex: none;
+  opacity: 0.85;
+}
+
+.desk-claim[data-asking] {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 172px;
+  padding: 8px;
+  border-radius: 10px;
+  background: rgb(17 17 19 / 0.94);
+  color: #fafaf9;
+  box-shadow:
+    inset 0 0 0 0.5px rgb(255 255 255 / 0.14),
+    0 4px 14px rgb(0 0 0 / 0.32);
+}
+
+.desk-claim-ask {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  line-height: 1.25;
+}
+
+.desk-claim-ask strong {
+  font-weight: 600;
+}
+
+.desk-claim-ask span {
+  color: rgb(250 250 249 / 0.68);
+  font-size: 9.5px;
+}
+
+.desk-claim-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.desk-claim-row button {
+  height: 18px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.desk-claim-row button:hover {
+  background: rgb(255 255 255 / 0.1);
+}
+
+.desk-claim-row .desk-claim-yes {
+  background: #fafaf9;
+  color: #111113;
+}
+
+.desk-claim-row .desk-claim-yes:hover {
   background: #fff;
-}
-
-.desk-plate[data-free] .desk-plate-face {
-  border: 1px dashed rgb(28 28 30 / 0.45);
-  box-sizing: border-box;
-}
-
-.desk-plate[data-free] .desk-plate-face::before,
-.desk-plate[data-free] .desk-plate-face::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 5px;
-  height: 1px;
-  border-radius: 1px;
-  background: rgb(28 28 30 / 0.7);
-  transform: translate(-50%, -50%);
-}
-
-.desk-plate[data-free] .desk-plate-face::after {
-  transform: translate(-50%, -50%) rotate(90deg);
 }
 
 /* Yours, in ink, so it's the one you spot; pressing it walks you there. */

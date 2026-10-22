@@ -807,7 +807,9 @@
     "claimAsk": "이 자리를 맡을까요? 지금 자리는 비게 돼요.",
     "claimConfirm": "맡기",
     "keepMine": "내 자리 유지",
-    "goTo": "내 자리로 가기"
+    "goTo": "내 자리로 가기",
+    "claimTitle": "이 자리를 맡을까요?",
+    "claimNote": "지금 자리는 비게 돼요."
   },
   "note": {
     "title": "상태 메모",

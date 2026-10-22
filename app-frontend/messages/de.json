@@ -807,7 +807,9 @@
     "claimAsk": "Diesen Platz beanspruchen? Dein jetziger Platz wird frei.",
     "claimConfirm": "Beanspruchen",
     "keepMine": "Meinen Platz behalten",
-    "goTo": "Zu deinem Platz"
+    "goTo": "Zu deinem Platz",
+    "claimTitle": "Diesen Platz beanspruchen?",
+    "claimNote": "Dein jetziger Platz wird frei."
   },
   "note": {
     "title": "Statusnotiz",

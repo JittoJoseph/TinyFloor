@@ -57,7 +57,7 @@ export function FloorPrompt() {
   const freeDesk = seat !== null && isDesk(seat) && !deskAt(desks, seat);
   const offer = !!me && freeDesk && notNow !== seat && claimed === null ? seat : null;
   const done = claimed !== null && mine?.seat === claimed;
-  const key = asking !== null ? `ask-${asking}` : done ? "claimed" : offer !== null ? `desk-${offer}` : (action ?? null);
+  const key = asking !== null && asking === seat ? `ask-${asking}` : done ? "claimed" : offer !== null ? `desk-${offer}` : (action ?? null);
 
   const motionProps = {
     initial: reduce ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.98 },
@@ -79,7 +79,8 @@ export function FloorPrompt() {
 
   return (
     <AnimatePresence mode="wait">
-      {asking !== null && me ? (
+      {/* Asked from the desk itself, the desk answers; sitting at it, here. */}
+      {asking !== null && asking === seat && me ? (
         <motion.div key={key} role="alertdialog" aria-label={td("claimAsk")} {...motionProps} className={`${PILL} max-w-[min(30rem,calc(100vw-1.5rem))] gap-1 py-1 ps-4 pe-1`}>
           <span className="min-w-0 flex-1 text-[12.5px] leading-snug">{td("claimAsk")}</span>
           <button

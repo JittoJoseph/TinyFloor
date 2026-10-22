@@ -807,7 +807,9 @@
     "claimAsk": "¿Reclamar este escritorio? Tu escritorio actual quedará libre.",
     "claimConfirm": "Reclamar",
     "keepMine": "Quedarme con el mío",
-    "goTo": "Ir a tu escritorio"
+    "goTo": "Ir a tu escritorio",
+    "claimTitle": "¿Reclamar este escritorio?",
+    "claimNote": "Tu escritorio actual quedará libre."
   },
   "note": {
     "title": "Nota de estado",

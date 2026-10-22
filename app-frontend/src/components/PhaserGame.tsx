@@ -25,6 +25,8 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
   // The scene keeps the first function it was given; this always calls the current one.
   const nextTicket = useEffectEvent(() => ticketFor());
   const t = useTranslations("scene");
+  const tDesk = useTranslations("desk");
+  const tCommon = useTranslations("common");
   const gameRef = useRef<HTMLDivElement>(null);
   const game = useRef<Phaser.Game | null>(null);
 
@@ -36,6 +38,10 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
       drawing: t("drawing"),
       yourDesk: t("yourDesk"),
       claimDesk: t("claimDesk"),
+      claimTitle: tDesk("claimTitle"),
+      claimNote: tDesk("claimNote"),
+      claimConfirm: tDesk("claimConfirm"),
+      cancel: tCommon("cancel"),
     }),
   );
 

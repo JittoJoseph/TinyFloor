@@ -807,7 +807,9 @@
     "claimAsk": "Prendre ce bureau ? Votre bureau actuel sera libéré.",
     "claimConfirm": "Prendre",
     "keepMine": "Garder mon bureau",
-    "goTo": "Aller à votre bureau"
+    "goTo": "Aller à votre bureau",
+    "claimTitle": "Prendre ce bureau ?",
+    "claimNote": "Votre bureau actuel sera libéré."
   },
   "note": {
     "title": "Note de statut",

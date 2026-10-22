@@ -807,7 +807,9 @@
     "claimAsk": "Zająć to biurko? Twoje obecne biurko zostanie zwolnione.",
     "claimConfirm": "Zajmij",
     "keepMine": "Zostaw moje",
-    "goTo": "Idź do swojego biurka"
+    "goTo": "Idź do swojego biurka",
+    "claimTitle": "Zająć to biurko?",
+    "claimNote": "Twoje obecne biurko zostanie zwolnione."
   },
   "note": {
     "title": "Notatka statusu",

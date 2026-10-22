@@ -9,6 +9,8 @@ import { setMyStatus, useMyNote, useMyStatus } from "@/lib/floor";
 import { NoteOptions, NoteRow } from "./StatusNote";
 import { MusicOptions, MusicRow } from "./Music";
 import { useShellFrame } from "./AppShell";
+import { useOfficeMaybe } from "./OfficeShell";
+import { OfficeMenu, useOtherOffices } from "./OfficeSwitcher";
 import type { PlayerStatus } from "@/lib/types";
 import { Face } from "@/components/ui/Face";
 import { Menu, MenuHeader, MenuItem, MenuSeparator } from "@/components/ui/Menu";
@@ -22,14 +24,15 @@ import { install, useCanInstall } from "@/lib/install";
 const STATUSES: Array<Exclude<PlayerStatus, "in_call" | "offline">> = ["available", "busy", "away"];
 const STATUS_DOT: Record<string, string> = { available: "bg-ok", busy: "bg-destructive", away: "bg-warn", in_call: "bg-violet-500" };
 
-type Section = "status" | "note" | "music";
+type Section = "office" | "status" | "note" | "music";
 
 /**
  * You, at the bottom of the rail: your face with your status on it, and a
  * short menu of what you reach for while working. Status, note and music are
  * a row each, saying what they are now; pressing one opens its choices beneath
  * it while the others step aside. Who you are stays at the top, your profile
- * at the bottom.
+ * at the bottom. On a phone, which has no rail, the office you're in is the
+ * first row, and its menu (plan, invite, settings, other offices) opens beneath it.
  * Signing out is in Settings, so a slip here can't take you off the floor in
  * front of your team; a guest, who has no settings, signs out here.
  */
@@ -63,6 +66,8 @@ export function YouMenu({
   const wide = useWide();
   const frame = useShellFrame();
   const canInstall = useCanInstall();
+  const office = useOfficeMaybe()?.office ?? null;
+  const { others, load } = useOtherOffices(office?.id ?? "");
   if (!user) return null;
   const close = () => setOpen(null);
   const inCall = status === "in_call";
@@ -110,6 +115,25 @@ export function YouMenu({
       </MenuHeader>
 
       <MenuSeparator />
+      {office &&
+        !wide &&
+        section(
+          "office",
+          (shown, toggle) => (
+            <MenuRow
+              icon={<Face seed={office.id} size={18} square />}
+              onClick={() => {
+                load();
+                toggle();
+              }}
+              open={shown}
+              hint={t("members", { count: office.members })}
+            >
+              {office.name}
+            </MenuRow>
+          ),
+          <OfficeMenu office={office} others={others} />,
+        )}
       {onFloor &&
         section(
           "status",

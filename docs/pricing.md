@@ -110,9 +110,13 @@ ask Creem first.
   meter run (the "taxi-meter effect": Lambrecht & Skiera, 2006), and use less
   when each use feels like it costs (Prelec & Loewenstein, 1998). For a
   presence product, less use means less value means churn.
-- **Fair use in the terms only.** Past 120 meeting hours a month on Pro (40 on
-  Free), meetings carry on voice only until the 1st. That's 5½ hours of
-  meetings every working day; nobody normal gets near it. The room counts
+- **Fair use in the terms only.** Past 80 meeting hours a month on Pro (40 on
+  Free), meetings carry on voice only until the 1st. That's about 3½ hours
+  of meetings every working day; a normal team uses 40–60. It was 120 until
+  22 October: the hours count clock time, not people, so the worst case is a
+  big team on camera, and at 120 an office of 15 on camera all month lost
+  ~$21; at 80 it's ~$5, and break-even moves from ~8 people a meeting to ~13.
+  Raising it later is easy; cutting it is not. The room counts
   seconds a meeting has two or more people in it, per office per calendar
   month (UTC), and wakes by alarm when the hours would run out
   (`worker-realtime/src/meeting-clock.ts`). Floor calls are counted but never

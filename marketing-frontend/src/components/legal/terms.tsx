@@ -1,7 +1,7 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const TERMS_UPDATED = "21 October 2026";
+export const TERMS_UPDATED = "22 October 2026";
 
 export const termsSummary = (
   <p>
@@ -99,7 +99,7 @@ export const termsSections: LegalSection[] = [
           </li>
           <li>
             <strong>Fair use.</strong> Meetings and calls aren&apos;t metered. To keep the price the same for everyone, an office whose
-            meetings run far beyond a team&apos;s normal day (more than 120 hours of meetings with two or more people in a calendar month
+            meetings run far beyond a team&apos;s normal day (more than 80 hours of meetings with two or more people in a calendar month
             on Pro, or 40 on Free, in UTC) carries on with voice only in meetings until the 1st of the next month. Calls between two
             people on the floor are never limited. Meetings in the demo office have their own daily allowance.
           </li>

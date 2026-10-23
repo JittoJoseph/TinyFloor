@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { statusColor } from "@/lib/status";
-import { FRAME_H, FRAME_W, characterSheet, drawFrame, drawnSheet, frameOf, type Facing } from "@/lib/characterSheet";
+import { FRAME_H, FRAME_W, characterSheet, drawFrame, drawnSheet, frameOf, seatedStep, type Facing } from "@/lib/characterSheet";
 
 export type AvatarDirection = Facing;
 
@@ -75,11 +75,13 @@ export const PixelAvatar: React.FC<PixelAvatarProps> = ({
     let sheet = drawnSheet(character);
     let at = step;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const moves = !sitting && !still && !reduce;
+    const moves = !still && !reduce;
+    // Seated people each breathe in their own time, not in step with the whole room.
+    const offset = Math.floor(Math.random() * 20);
     const paint = () => {
       context.clearRect(0, 0, FRAME_W, FRAME_H);
       if (!sheet) return;
-      const frame = frameOf(sitting ? "sit" : running ? "walk" : "idle", direction, moves ? at : 0);
+      const frame = sitting ? frameOf("sit", direction, moves ? seatedStep(at + offset) : 0) : frameOf(running ? "walk" : "idle", direction, moves ? at : 0);
       context.drawImage(sheet, frame * FRAME_W, 0, FRAME_W, FRAME_H, 0, 0, FRAME_W, FRAME_H);
     };
     paint();

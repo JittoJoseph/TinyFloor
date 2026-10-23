@@ -1,6 +1,6 @@
 import * as Phaser from "phaser";
 import { characterOrDefault } from "@shared/character";
-import { FRAME_H, FRAME_W, SHEET_FRAMES, characterSheet, drawnSheet, frameOf } from "@/lib/characterSheet";
+import { FRAME_H, FRAME_W, SEATED_BREATH, SHEET_FRAMES, characterSheet, drawnSheet, frameOf } from "@/lib/characterSheet";
 
 export type AnimationState = "idle" | "run";
 export type Direction =
@@ -96,7 +96,7 @@ export class AnimationManager {
     this.show(sprite, pose);
   }
 
-  /** Seated, facing a way: one pose. */
+  /** Seated, facing a way. */
   sit(sprite: Phaser.GameObjects.Sprite, direction: CardinalDirection) {
     const pose: Pose = { sit: direction };
     sprite.setData("pose", pose);
@@ -115,8 +115,8 @@ export class AnimationManager {
     // Nearest keeps the art's pixels crisp. The map stays smooth: at a zoom that is not a whole
     // number, nearest makes every thin line on the floor flicker between two and three pixels thick.
     texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
-    for (const state of ["idle", "run"] as const) {
-      DIRECTION_ORDER.forEach((direction) => {
+    DIRECTION_ORDER.forEach((direction) => {
+      for (const state of ["idle", "run"] as const) {
         const start = frameOf(state === "run" ? "walk" : "idle", direction);
         this.scene.anims.create({
           key: `${key}_${state}_${direction}`,
@@ -124,8 +124,15 @@ export class AnimationManager {
           frameRate: FRAME_RATE,
           repeat: -1,
         });
+      }
+      // Seated, a breath at rest (lib/characterSheet): each frame held as long as it's meant to show.
+      this.scene.anims.create({
+        key: `${key}_sit_${direction}`,
+        frames: SEATED_BREATH.map(([step, ms]) => ({ key, frame: frameOf("sit", direction, step), duration: ms })),
+        frameRate: 1000,
+        repeat: -1,
       });
-    }
+    });
     return key;
   }
 
@@ -139,8 +146,9 @@ export class AnimationManager {
     const key = sprite.texture.key;
     if (key === BLANK || !pose) return;
     if ("sit" in pose) {
-      sprite.stop();
-      sprite.setFrame(frameOf("sit", pose.sit));
+      // Each from wherever in the loop it happens to be, so a row of desks doesn't breathe as one.
+      const anim = `${key}_sit_${pose.sit}`;
+      if (sprite.anims.currentAnim?.key !== anim) sprite.play({ key: anim, startFrame: Math.floor(Math.random() * SEATED_BREATH.length) });
     } else {
       sprite.play(`${key}_${pose.state}_${pose.direction}`, true);
     }

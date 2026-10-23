@@ -1533,18 +1533,45 @@
   "about": {
     "meta": {
       "title": "Over TinyFloor",
-      "description": "TinyFloor is een virtueel kantoor waar je doorheen loopt, gemaakt door Jitto Joseph. Waarom het bestaat, wie het maakt en hoe je ons bereikt."
+      "description": "TinyFloor is een virtueel kantoor voor remote teams: een gedeelde verdieping in de browser waar je ziet wie er is en even naar iemand toe loopt om te praten. Wie we zijn en hoe je ons bereikt."
     },
     "eyebrow": "Over ons",
     "title": "Op afstand werken verloor de gang. Wij bouwen hem terug.",
-    "p1": "Apart werken is goed voor je focus, maar het nam ongemerkt de kleine momenten weg: de snelle vraag bij iemands bureau, het hallo in het voorbijgaan, zien wie er is. Videogesprekken werken goed voor vergaderingen. Ze maakten van elk ander gesprek een afspraak.",
-    "p2": "TinyFloor is een verdieping in plaats van een link. Je team loopt rond in een gedeeld kantoor in pixel art, en naar iemand toe lopen is hoe je begint te praten. Doe mee aan een meeting en je loopt de vergaderruimte in. Loop naar buiten en het is weer stil.",
-    "p3": "Het draait in de browser op het netwerk van Cloudflare, in 18 talen, zonder iets te installeren, en het is gratis voor kleine teams.",
-    "founderTitle": "Gemaakt door Jitto Joseph",
-    "founderBody": "Ik ontwerp en bouw TinyFloor, van de pixelverdieping tot de servers waarop het draait. Heb je een idee, een probleem of wil je gewoon hallo zeggen? Ik hoor graag van je.",
-    "website": "Website",
-    "elsewhere": "TinyFloor elders",
-    "contact": "Schrijf ons"
+    "intro": "TinyFloor is een virtueel kantoor voor remote teams: een gedeelde verdieping in de browser waar je ziet wie er is en even naar iemand toe loopt om te praten.",
+    "why": {
+      "title": "Waarom we het bouwen",
+      "body": "Op afstand werken is goed voor focus, maar de kleine momenten zijn verdwenen: een snelle vraag, een groet in het voorbijgaan, weten wie er is. Videobellen maakte van elk gesprek een vergadering. TinyFloor geeft een team één plek om samen te zijn, zodat praten net zo makkelijk is als even langslopen."
+    },
+    "beliefs": {
+      "title": "Waar we in geloven",
+      "presence": {
+        "title": "Aanwezig, niet bekeken",
+        "body": "Geen camera blijft aan en geen gesprek wordt opgenomen. Jij bepaalt wanneer je er bent."
+      },
+      "price": {
+        "title": "Eén prijs per team",
+        "body": "Een kantoor kost iets voor het hele team, niet per persoon. Kleine teams gebruiken het gratis."
+      },
+      "browser": {
+        "title": "Niets te installeren",
+        "body": "TinyFloor werkt in elke moderne browser, in 18 talen."
+      }
+    },
+    "team": {
+      "title": "Wie we zijn",
+      "role": "Oprichter",
+      "body": "TinyFloor is een klein bedrijf. We bouwen in het openbaar en vormen het product met feedback van de teams die het gebruiken.",
+      "website": "Website"
+    },
+    "source": {
+      "title": "Open source",
+      "body": "De code van TinyFloor staat openbaar op GitHub. Een ster helpt meer teams het te vinden.",
+      "star": "Geef een ster op GitHub"
+    },
+    "contact": {
+      "title": "Contact",
+      "body": "Vragen, ideeën of feedback? Schrijf ons. We lezen elk bericht."
+    }
   },
   "homepage": {
     "nav": {

@@ -1,6 +1,6 @@
 import { adminRoutes } from "./admin";
 import { authRoutes } from "./auth";
-import { emailLinkRoutes } from "./email-links";
+import { emailCodeRoutes } from "./email-codes";
 import { billingRoutes, endTrials } from "./billing";
 import { callRoutes } from "./calls";
 import { allowedOrigin, assertSafeWrite, errorResponse, HttpError, json, preflight, withCors } from "./http";
@@ -15,7 +15,6 @@ import { assertSafeUpload, fileRoutes, UPLOAD_PATH } from "./files";
 import { runRetention } from "./retention";
 import { Router } from "./router";
 
-export { PasswordGuard } from "./password-guard";
 
 const WEBHOOK_PATH = "/v1/billing/webhook";
 
@@ -24,7 +23,7 @@ const router = new Router().add("GET", "/v1/health", async ({ env }) => {
   return json({ service: "tinyfloor-api", ok: true, database: database?.ok === 1 });
 });
 authRoutes(router);
-emailLinkRoutes(router);
+emailCodeRoutes(router);
 googleRoutes(router);
 officeRoutes(router);
 teamRoutes(router);

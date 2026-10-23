@@ -1,7 +1,7 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const TERMS_UPDATED = "22 October 2026";
+export const TERMS_UPDATED = "23 October 2026";
 
 export const termsSummary = (
   <p>
@@ -45,8 +45,8 @@ export const termsSections: LegalSection[] = [
     title: "Accounts and guests",
     body: (
       <ul>
-        <li>Give a real email address when you make an account, and keep your password to yourself. You are responsible for what happens on your account.</li>
-        <li>If you think someone else has used your account, change your password and write to <Mail />.</li>
+        <li>Give a real email address when you make an account, and keep access to it to yourself: anyone who can read it can sign in. You are responsible for what happens on your account.</li>
+        <li>If you think someone else has used your account, secure your email account and write to <Mail />.</li>
         <li>
           In the demo office, guests choose a name and a character and don&apos;t need an account. A guest is kept for a week after their
           last visit; to keep your name and join offices, make an account.

@@ -8,7 +8,7 @@ export interface RetentionReport {
   invites: number;
   usage: number;
   help: number;
-  emailLinks: number;
+  emailCodes: number;
 }
 
 /** The daily clean-up. Each job is safe to run again. */
@@ -54,9 +54,9 @@ export async function runRetention(env: Env, now = Date.now()): Promise<Retentio
     .bind(now - 365 * DAY_MS)
     .run();
 
-  // Email links past their hour or day (email-links.ts).
-  const emailLinks = await env.DB.prepare(
-    `DELETE FROM email_tokens WHERE id IN (SELECT id FROM email_tokens WHERE expires_at < ?1 LIMIT ${BATCH})`,
+  // Sign-in codes past their ten minutes, once their address's hour of sends is over too (email-codes.ts).
+  const emailCodes = await env.DB.prepare(
+    `DELETE FROM email_codes WHERE email IN (SELECT email FROM email_codes WHERE expires_at < ?1 AND window_start < ?1 - 3600000 LIMIT ${BATCH})`,
   )
     .bind(now)
     .run();
@@ -67,6 +67,6 @@ export async function runRetention(env: Env, now = Date.now()): Promise<Retentio
     invites: deleted(invites),
     usage: deleted(usage),
     help: deleted(help),
-    emailLinks: deleted(emailLinks),
+    emailCodes: deleted(emailCodes),
   };
 }

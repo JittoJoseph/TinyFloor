@@ -34,7 +34,6 @@ interface AccountRow {
   display_name: string;
   character: string;
   google_sub: string | null;
-  has_password?: number;
   link?: string | null;
   introduced?: number;
   time_zone?: string | null;
@@ -81,7 +80,7 @@ export function googleRoutes(router: Router): void {
 
     const current = await currentUser(env, request, ctx);
     const columns =
-      "id, email, display_name, character, google_sub, password_hash IS NOT NULL AS has_password, link, introduced_at IS NOT NULL AS introduced, time_zone, time_zone_auto";
+      "id, email, display_name, character, google_sub, link, introduced_at IS NOT NULL AS introduced, time_zone, time_zone_auto";
 
     let account =
       (await env.DB.prepare(`SELECT ${columns} FROM users WHERE google_sub = ?`).bind(google.sub).first<AccountRow>()) ??
@@ -150,8 +149,8 @@ export function googleRoutes(router: Router): void {
       displayName: account.display_name,
       character: account.character,
       isGuest: false,
-      hasPassword: account.has_password === 1,
       hasGoogle: true,
+      emailVerified: true,
       link: account.link ?? null,
       introduced: account.introduced === 1,
       timeZone: account.time_zone ?? null,

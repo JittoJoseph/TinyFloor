@@ -15,8 +15,8 @@ import { requireAccount } from "./session";
  * plan without payment, and change or take down any message in the lobby's
  * chat. Help and feedback has its own routes (help.ts). Plans themselves aren't configurable here: they live in code
  * (billing.ts) and in Creem. Open to the accounts named in ADMIN_EMAILS, and
- * only once Google has vouched for the address, since a password sign-up
- * proves nothing about owning it. Anyone else is told there is nothing here.
+ * only once the address is shown to be theirs (by Google, or a code sent to
+ * it). Anyone else is told there is nothing here.
  */
 
 const PAGE = 50;
@@ -129,7 +129,7 @@ export function adminRoutes(router: Router): void {
         env.DB.prepare(
           `SELECT u.id, u.display_name AS displayName, u.email, u.character, u.country,
                   u.created_at AS createdAt, u.last_active_at AS lastActiveAt,
-                  u.google_sub IS NOT NULL AS google, u.password_hash IS NOT NULL AS password,
+                  u.google_sub IS NOT NULL AS google,
                   (SELECT COUNT(*) FROM memberships m WHERE m.user_id = u.id) AS offices
              FROM users u WHERE ${where}
             ORDER BY u.last_active_at DESC, u.id LIMIT ?4 OFFSET ?5`,

@@ -278,6 +278,15 @@ missing features on the map.
   and "virtual office" is what people search for.
 - **Google sign-in first**, email behind "Continue with email": one tap, a
   verified email and a real name. Two equal choices slow people down.
+- **No passwords** (23 October). Email sign-in is a 6-digit code sent to the
+  address, which also makes the account the first time, so signing in and
+  signing up are one step. A password could already be reset by email, so it
+  was never safer than the inbox; it only added a reset flow, lockouts and
+  hashing. A code works when the email is read on another device, and email
+  scanners can't use it up the way they open links. Codes last 10 minutes,
+  take 5 tries, and an address gets 5 an hour. Sessions last 90 days from
+  the last visit, renewed once a day, so people who keep coming back rarely
+  need one; each sign-in is an email, and Resend's free plan sends 100 a day.
 - **Google One Tap costs the worker nothing until it's used**: whether to show
   it comes from the browser alone (a hint saved when an account signs in),
   never from asking the API, which was one request per landing view and why
@@ -339,8 +348,8 @@ missing features on the map.
   let in; or keep the office out of sight. A university's domain is out of
   sight until an admin changes it. A full office turns the next one away, as an invite
   would. Personal addresses (Gmail, Outlook, Yahoo, UOL and the like) never
-  match, only the owner's domain counts, and only Google-verified addresses
-  do: a password account's email is never checked.
+  match, only the owner's domain counts, and only verified addresses do (by
+  Google, or by signing in with a code sent to them).
 - **Files, mentions and search in chat** (20 October), the three things that
   kept a team in Slack beside us; threads were left out. Files go in by the
   paperclip, a paste or a drop, start going up at once and are sent the

@@ -18,7 +18,7 @@ asked about teams, not only people. In the demo office, `place: lobby`.
 
 | Event | Properties | Answers |
 |---|---|---|
-| `account_signed_up` | `sign_in_method` (google, google_one_tap, password); `place: lobby` when made on the demo floor | Who's new, and how they came in. A Google sign-in that creates an account counts here, not as a sign-in. |
+| `account_signed_up` | `sign_in_method` (google, google_one_tap, email); `place: lobby` when made on the demo floor | Who's new, and how they came in. A Google or email-code sign-in that creates an account counts here, not as a sign-in. |
 | `account_signed_in` | | |
 | `demo_cta_clicked` | `placement` (hero, closing, faq, guide, tool, nav, footer, page) | A link into the demo office was clicked on the marketing site, and where on the page. The first step of the demo's funnel. |
 | `door_viewed` | `door` (demo, introduce, invite), `step` on invites | Someone reached a door: the demo office's, a new account's first one, or an invitation's. Once per door. |

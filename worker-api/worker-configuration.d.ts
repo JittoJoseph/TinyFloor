@@ -24,15 +24,14 @@ interface __BaseEnv_Env {
 	CREEM_WEBHOOK_SECRET?: string;
 	/** Resend (src/email.ts). Without it, app mail is logged, not sent. */
 	RESEND_API_KEY?: string;
-	/** Where this deployment's app is, for links in email (email-links.ts); the first of SITE_ORIGINS otherwise. */
+	/** Where this deployment's app is, for links in email (email.ts); the first of SITE_ORIGINS otherwise. */
 	APP_URL?: string;
-	PASSWORD_GUARD: DurableObjectNamespace<import("./src/index").PasswordGuard>;
 	REALTIME: Service /* entrypoint RealtimeAdmin from tinyfloor-realtime-preview */ | Service /* entrypoint RealtimeAdmin from tinyfloor-realtime */;
 }
 declare namespace Cloudflare {
 	interface GlobalProps {
 		mainModule: typeof import("./src/index");
-		durableNamespaces: "PasswordGuard";
+		durableNamespaces: never;
 	}
 	interface PreviewEnv {
 		DB: D1Database;
@@ -52,7 +51,6 @@ declare namespace Cloudflare {
 		REALTIME_URL: string;
 		TURN_KEY_ID: string;
 		TURN_KEY_API_TOKEN: string;
-		PASSWORD_GUARD: DurableObjectNamespace<import("./src/index").PasswordGuard>;
 		REALTIME: Service /* entrypoint RealtimeAdmin from tinyfloor-realtime-preview */;
 	}
 	interface Env extends __BaseEnv_Env {}

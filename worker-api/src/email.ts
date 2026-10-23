@@ -20,7 +20,7 @@ export interface Email {
   subject: string;
   html: string;
   text: string;
-  /** What kind of mail it is, for Resend's logs: verify, reset, office, trial, pro, test. */
+  /** What kind of mail it is, for Resend's logs: code, office, trial, pro, test. */
   kind: string;
   /** The same key sends once, however often it's asked (a retried request, a cron run twice). */
   key?: string;
@@ -62,6 +62,8 @@ export interface Letter {
   preview: string;
   heading: string;
   paragraphs: string[];
+  /** A code to type in, set large under the paragraphs. */
+  code?: string;
   button?: { label: string; url: string };
   /** Why they got it, or what to do if it wasn't them. */
   footnote?: string;
@@ -73,8 +75,11 @@ export interface Letter {
  * as plain text, for clients that show only that (and for spam filters, which
  * trust mail that has both).
  */
-export function letter({ preview, heading, paragraphs, button, footnote }: Letter): { html: string; text: string } {
+export function letter({ preview, heading, paragraphs, code, button, footnote }: Letter): { html: string; text: string } {
   const body = paragraphs.map((paragraph) => `<p style="margin:0 0 16px;font-size:15px;line-height:1.6;color:#3f3f46;">${escape(paragraph)}</p>`).join("");
+  const codeBlock = code
+    ? `<p style="margin:8px 0 24px;padding:16px;border-radius:12px;background:#f4f4f5;text-align:center;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:30px;font-weight:600;letter-spacing:8px;color:#18181b;">${escape(code)}</p>`
+    : "";
   const action = button
     ? `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:8px 0 24px;"><tr><td style="border-radius:999px;background:#18181b;">
 <a href="${escape(button.url)}" style="display:inline-block;padding:12px 22px;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;border-radius:999px;">${escape(button.label)}</a>
@@ -95,7 +100,7 @@ export function letter({ preview, heading, paragraphs, button, footnote }: Lette
 </tr></table></td></tr>
 <tr><td style="background:#ffffff;border:1px solid #e4e4e7;border-radius:16px;padding:32px 28px;">
 <h1 style="margin:0 0 16px;font-size:21px;line-height:1.3;font-weight:600;color:#18181b;">${escape(heading)}</h1>
-${body}${action}${note}
+${body}${codeBlock}${action}${note}
 </td></tr>
 <tr><td style="padding:20px 4px 0;font-size:12px;line-height:1.5;color:#a1a1aa;">TinyFloor · <a href="https://tinyfloor.com" style="color:#a1a1aa;">tinyfloor.com</a> · Questions? Just reply to this email.</td></tr>
 </table>
@@ -106,6 +111,7 @@ ${body}${action}${note}
     heading,
     "",
     ...paragraphs.flatMap((paragraph) => [paragraph, ""]),
+    ...(code ? [code, ""] : []),
     ...(button ? [`${button.label}: ${button.url}`, ""] : []),
     ...(footnote ? [footnote, ""] : []),
     "TinyFloor · tinyfloor.com · Questions? Just reply to this email.",

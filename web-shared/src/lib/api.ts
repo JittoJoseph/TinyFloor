@@ -28,11 +28,9 @@ export interface SessionUser {
   displayName: string;
   character: string;
   guest: boolean;
-  /** Has a password; someone who only signs in with Google doesn't, until they set one. */
-  password?: boolean;
   /** Can sign in with Google. */
   google?: boolean;
-  /** Has opened the link we emailed, or signed in with Google, which proves it too. */
+  /** The email is shown to be theirs: by a code sent to it, or by Google. */
   emailVerified?: boolean;
   /** The link on their profile. */
   link?: string | null;
@@ -191,7 +189,6 @@ export interface AdminPerson {
   createdAt: number;
   lastActiveAt: number;
   google: number;
-  password: number;
   offices: number;
 }
 
@@ -398,21 +395,16 @@ const id = encodeURIComponent;
 export const api = {
   // Signing in
   session: () => get<{ user: SessionUser | null }>("/session"),
-  signUp: (body: { email: string; password: string; turnstileToken: string }) =>
-    post<{ user: SessionUser }>("/auth/signup", body),
-  signIn: (body: { email: string; password: string }) => post<{ user: SessionUser }>("/auth/login", body),
+  /** Emails a sign-in code to the address; the answer is the same whether or not it has an account. */
+  sendCode: (body: { email: string; turnstileToken: string }) => post<{ ok: true }>("/auth/code", body),
+  /** Signs in with the code, making the account the first time. */
+  verifyCode: (body: { email: string; code: string }) => post<{ user: SessionUser; created: boolean }>("/auth/code/verify", body),
   /** Signs in with the one-time code from Google's popup, making an account the first time. */
   /** Google's popup code (the button), or One Tap's signed ID token. */
   signInWithGoogle: (from: { code: string } | { credential: string }) => post<{ user: SessionUser; created: boolean }>("/auth/google", from),
   continueAsGuest: (body: { name: string; character: string; turnstileToken: string }) =>
     post<{ user: SessionUser; lobby?: RoomTicket }>("/auth/guest", body),
   signOut: () => post<{ ok: true }>("/auth/logout"),
-  /** Confirms an address, from the link in the email. */
-  verifyEmail: (token: string) => post<{ ok: true }>("/auth/verify", { token }),
-  /** Emails a reset link, if the address has an account; the answer is the same either way. */
-  requestPasswordReset: (body: { email: string; turnstileToken: string }) => post<{ ok: true }>("/auth/reset/request", body),
-  /** Sets the new password from the reset link, and signs in. */
-  resetPassword: (body: { token: string; password: string }) => post<{ ok: true }>("/auth/reset", body),
 
   // The signed-in person
   me: () => get<{ user: SessionUser; offices: OfficeSummary[] }>("/me"),
@@ -420,9 +412,8 @@ export const api = {
   /** Connects a Google account to the signed-in account, with the code from Google's popup. */
   connectGoogle: (code: string) => post<{ user: SessionUser }>("/me/google", { code }),
   person: (id: string) => get<{ person: PersonProfile }>(`/people/${encodeURIComponent(id)}`),
-  changePassword: (body: { currentPassword: string; newPassword: string }) => post<{ ok: true }>("/me/password", body),
-  /** Emails another confirmation link. */
-  sendVerifyEmail: () => post<{ sent: boolean; verified: boolean }>("/me/verify-email"),
+  /** Emails a code to your own address, to confirm it (with verifyCode). */
+  sendMyCode: () => post<{ ok: true }>("/me/email-code"),
   /** Your status note, kept with your account; null clears it. The floor hears it from your own socket. */
   setStatusNote: (status: StatusNote | null) => put<{ status: StatusNote | null }>("/me/status", { status }),
   /** What a Spotify link is, before it's shared. */

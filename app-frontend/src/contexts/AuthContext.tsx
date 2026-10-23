@@ -21,10 +21,10 @@ interface AuthContextType {
   isGuest: boolean;
   /** Signed in with an account (not a guest). */
   hasAccount: boolean;
-  signIn: (email: string, password: string) => Promise<SessionUser>;
+  /** Signs in with the code emailed to the address, making the account the first time. */
+  signInWithCode: (email: string, code: string) => Promise<{ user: SessionUser; created: boolean }>;
   /** `method` says which way in, for PostHog: the button ("google") or One Tap ("google_one_tap"). */
   signInWithGoogle: (from: { code: string } | { credential: string }, method?: string) => Promise<{ user: SessionUser; created: boolean }>;
-  signUp: (details: { email: string; password: string; turnstileToken: string }) => Promise<SessionUser>;
   continueAsGuest: (details: { name: string; character: string; turnstileToken: string }) => Promise<SessionUser>;
   signOut: () => Promise<void>;
   updateProfile: (changes: ProfileChanges) => Promise<SessionUser>;
@@ -151,12 +151,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       isAuthenticated: !!user,
       isGuest: user?.guest ?? false,
       hasAccount: !!user && !user.guest,
-      signIn: async (email, password) => {
-        const { user: next } = await api.signIn({ email, password });
+      signInWithCode: async (email, code) => {
+        const { user: next, created } = await api.verifyCode({ email, code });
         setUser(next);
-        withPostHog((posthog) => posthog.capture("account_signed_in", { sign_in_method: "password" }));
-        posthogLog.info("Account sign-in completed");
-        return next;
+        // The same code makes an account the first time, so a new one counts as a sign-up.
+        withPostHog((posthog) => posthog.capture(created ? "account_signed_up" : "account_signed_in", { sign_in_method: "email" }));
+        if (!created) posthogLog.info("Account sign-in completed");
+        return { user: next, created };
       },
       signInWithGoogle: async (from, method = "google") => {
         const { user: next, created } = await api.signInWithGoogle(from);
@@ -164,12 +165,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         // Most accounts are made this way, so a new one counts as a sign-up, not a sign-in.
         withPostHog((posthog) => posthog.capture(created ? "account_signed_up" : "account_signed_in", { sign_in_method: method }));
         return { user: next, created };
-      },
-      signUp: async (details) => {
-        const { user: next } = await api.signUp(details);
-        setUser(next);
-        withPostHog((posthog) => posthog.capture("account_signed_up", { sign_in_method: "password" }));
-        return next;
       },
       continueAsGuest: async (details) => {
         const { user: next, lobby } = await api.continueAsGuest(details);

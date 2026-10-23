@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Check, Eye, EyeOff, KeyRound, Palette, Search, UserRound } from "@/components/ui/icons";
+import { Check, KeyRound, Palette, Search, UserRound } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError } from "@/lib/api";
@@ -12,12 +12,13 @@ import { useErrorMessage } from "@/lib/useErrorMessage";
 import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/motion/button/base";
-import { Dialog, ErrorText, fieldClass, Label } from "@/components/ui/forms";
+import { Dialog, fieldClass } from "@/components/ui/forms";
 import { LitFace } from "@/components/ui/LitFace";
 import { CharacterStage } from "@/components/character/CharacterStage";
 import { isPreset } from "@shared/character";
 import { openCharacterCreator, warmCharacterCreator } from "@/components/character/creatorOpen";
 import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
+import { CodeField, CODE_LENGTH } from "@/components/auth/CodeField";
 import { General, Group, Row } from "@/components/app/SettingsView";
 
 type Section = "profile" | "signin" | "appearance";
@@ -339,26 +340,9 @@ export function SignIn() {
   const home = useSitePage();
   const { user, refresh, signOut } = useAuth();
   const explain = useErrorMessage();
-  const [passwordOpen, setPasswordOpen] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
-  const [resent, setResent] = useState(false);
   if (!user) return null;
-
-  const resend = async () => {
-    setBusy(true);
-    setError("");
-    try {
-      const { verified } = await api.sendVerifyEmail();
-      // Confirmed from another tab meanwhile: the row goes.
-      if (verified) await refresh();
-      else setResent(true);
-    } catch (err) {
-      setError(explain(err));
-    } finally {
-      setBusy(false);
-    }
-  };
 
   const connect = async (code: string) => {
     setBusy(true);
@@ -376,26 +360,12 @@ export function SignIn() {
   return (
     <>
       <Group title={t("methods")} note={user.email ? <span data-ph-mask>{user.email}</span> : undefined}>
-        {user.email && user.emailVerified === false && (
-          <Row
-            title={t("confirmEmail")}
-            description={resent ? t("confirmEmailSent") : t("confirmEmailNote")}
-            control={
-              <Button variant="secondary" size="sm" disabled={busy || resent} onClick={resend} className="h-8 px-3.5 text-[13px]">
-                {t("sendLink")}
-              </Button>
-            }
-          />
-        )}
-        <Row
-          title={t("password")}
-          description={user.password ? t("passwordSet") : t("setPasswordDescription")}
-          control={
-            <Button variant="secondary" size="sm" onClick={() => setPasswordOpen(true)} className="h-8 px-3.5 text-[13px]">
-              {user.password ? t("changePassword") : t("setPassword")}
-            </Button>
-          }
-        />
+        {user.email &&
+          (user.emailVerified === false ? (
+            <ConfirmEmail email={user.email} />
+          ) : (
+            <Row title={t("emailCode")} description={t("emailCodeNote")} control={null} />
+          ))}
         {(googleAvailable || user.google) && (
           <Row
             title={t("google")}
@@ -441,49 +411,29 @@ export function SignIn() {
           }
         />
       </Group>
-
-      <PasswordDialog
-        open={passwordOpen}
-        first={!user.password}
-        onClose={() => {
-          setPasswordOpen(false);
-          // A first password changes what the account can do; the session says so again.
-          void refresh();
-        }}
-      />
     </>
   );
 }
 
-/** Changing the password, or setting a first one for someone who has only used Google, which asks for no current password. */
-function PasswordDialog({ open, first, onClose }: { open: boolean; first: boolean; onClose: () => void }) {
+/**
+ * An address never confirmed (accounts from before sign-in moved to email
+ * codes): a code sent to it, typed in here, confirms it without signing in again.
+ */
+function ConfirmEmail({ email }: { email: string }) {
   const t = useTranslations("office.profile");
+  const { refresh } = useAuth();
   const explain = useErrorMessage();
-  const [current, setCurrent] = useState("");
-  const [next, setNext] = useState("");
-  const [show, setShow] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [code, setCode] = useState("");
   const [busy, setBusy] = useState(false);
-  const [done, setDone] = useState(false);
   const [error, setError] = useState("");
-  const ready = (first || !!current) && next.length >= 8;
 
-  const close = () => {
-    setCurrent("");
-    setNext("");
-    setShow(false);
-    setDone(false);
-    setError("");
-    onClose();
-  };
-
-  const submit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    if (!ready || busy) return;
+  const send = async () => {
     setBusy(true);
     setError("");
     try {
-      await api.changePassword({ currentPassword: first ? "" : current, newPassword: next });
-      setDone(true);
+      await api.sendMyCode();
+      setSent(true);
     } catch (err) {
       setError(explain(err));
     } finally {
@@ -491,79 +441,61 @@ function PasswordDialog({ open, first, onClose }: { open: boolean; first: boolea
     }
   };
 
+  const confirm = async (value = code) => {
+    if (busy || value.length !== CODE_LENGTH) return;
+    setBusy(true);
+    setError("");
+    try {
+      await api.verifyCode({ email, code: value });
+      await refresh();
+    } catch (err) {
+      setError(explain(err));
+      setCode("");
+      // A spent code can't be tried again: the button to send a new one comes back.
+      if (err instanceof ApiError && err.code === "code_expired") setSent(false);
+    } finally {
+      setBusy(false);
+    }
+  };
+
   return (
-    <Dialog
-      open={open}
-      title={first ? t("setPassword") : t("passwordTitle")}
-      description={done ? undefined : first ? t("setPasswordDescription") : t("passwordDescription")}
-      onClose={close}
-    >
-      {done ? (
-        <div className="space-y-4">
-          <p className="flex items-center gap-2 text-[14px] text-ok">
-            <Check className="size-4" />
-            {t("passwordChanged")}
-          </p>
-          <div className="flex justify-end">
-            <Button size="sm" onClick={close} className="h-9 px-4 text-[13px]">
-              {t("done")}
+    <div>
+      <Row
+        title={t("confirmEmail")}
+        description={sent ? t("confirmEmailSent") : t("confirmEmailNote")}
+        control={
+          sent ? null : (
+            <Button variant="secondary" size="sm" disabled={busy} onClick={send} className="h-8 px-3.5 text-[13px]">
+              {t("sendCode")}
             </Button>
-          </div>
-        </div>
-      ) : (
-        <form onSubmit={submit} className="space-y-4">
-          {/* Lets password managers know whose password this is. */}
-          <input type="email" autoComplete="username" className="hidden" readOnly tabIndex={-1} aria-hidden />
-          {!first && (
-            <div>
-              <Label htmlFor="password-current">{t("currentPassword")}</Label>
-              <input
-                id="password-current"
-                type={show ? "text" : "password"}
-                autoComplete="current-password"
-                value={current}
-                onChange={(event) => setCurrent(event.target.value)}
-                className={fieldClass}
-              />
-            </div>
-          )}
-          <div>
-            <Label htmlFor="password-new">{t("newPassword")}</Label>
-            <div className="relative">
-              <input
-                id="password-new"
-                type={show ? "text" : "password"}
-                autoComplete="new-password"
-                value={next}
-                onChange={(event) => setNext(event.target.value)}
-                className={`${fieldClass} pe-11`}
-              />
-              <button
-                type="button"
-                onClick={() => setShow((value) => !value)}
-                aria-label={show ? t("hidePasswords") : t("showPasswords")}
-                className="absolute end-1 top-1/2 flex size-9 -translate-y-1/2 cursor-pointer items-center justify-center text-foreground opacity-45 hover:opacity-80"
-              >
-                {show ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-              </button>
-            </div>
-            <p className={`mt-2 flex items-center gap-1.5 text-[12px] ${next.length >= 8 ? "text-ok" : "text-foreground opacity-50"}`}>
-              <Check className="size-3.5" />
-              {t("passwordRule")}
-            </p>
-          </div>
-          <p className="text-[12px] text-foreground opacity-55">{t("signsOutOthers")}</p>
-          {error && <ErrorText>{error}</ErrorText>}
-          <div className="flex justify-end gap-2">
-            <Button type="button" variant="secondary" size="sm" onClick={close} className="h-9 px-4 text-[13px]">
-              {t("cancel")}
-            </Button>
-            <Button type="submit" size="sm" disabled={busy || !ready} className="h-9 px-4 text-[13px]">
-              {first ? t("setPassword") : t("changePassword")}
-            </Button>
-          </div>
+          )
+        }
+      />
+      {sent && (
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            void confirm();
+          }}
+          className="flex items-center gap-2 px-4 pb-4"
+        >
+          <CodeField
+            value={code}
+            onChange={(next) => {
+              setCode(next);
+              setError("");
+            }}
+            onComplete={(complete) => void confirm(complete)}
+            invalid={!!error}
+            disabled={busy}
+            className="max-w-[220px] !h-10"
+          />
+          <Button type="submit" size="sm" disabled={busy || code.length !== CODE_LENGTH} className="h-10 px-4 text-[13px]">
+            {t("confirm")}
+          </Button>
         </form>
       )}
-    </Dialog>
+      {error && <p className="px-4 pb-3 text-[12.5px] text-destructive">{error}</p>}
+    </div>
   );
 }

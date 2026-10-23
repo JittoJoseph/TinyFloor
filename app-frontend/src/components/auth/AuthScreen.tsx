@@ -1,69 +1,80 @@
 "use client";
 
-import React, { useEffect, useId, useState } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Eye, EyeOff } from "@/components/ui/icons";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { ApiError } from "@/lib/api";
+import { api, ApiError } from "@/lib/api";
 import { Field, inputClass } from "@/components/entry/EntryShell";
 import { ActionButton } from "@/components/ui/Action";
 import { CenteredAuthLayout } from "./AuthLayout";
 import { ErrorNote } from "@/components/entry/ErrorNote";
 import { Turnstile, useTurnstileToken } from "./Turnstile";
 import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
+import { CodeField, CODE_LENGTH } from "./CodeField";
 import { Agree } from "@/components/legal/Agree";
 
 export type AuthMode = "signin" | "signup";
 
-const PASSWORD_MIN_LENGTH = 8;
-type FieldName = "email" | "password";
+/** How long after a code is sent before another can be asked for: the API sends nothing new sooner. */
+const RESEND_AFTER_MS = 60_000;
 
 /** Only paths on this site, so a crafted link can't bounce someone elsewhere after signing in. */
 export function safeRedirect(value: string | null): string {
   return value && value.startsWith("/") && !value.startsWith("//") && !value.startsWith("/\\") ? value : "/";
 }
 
-function FieldError({ id, message }: { id: string; message?: string }) {
-  return message ? (
-    <p id={id} className="mt-2 text-[12px] text-destructive">
-      {message}
-    </p>
-  ) : null;
-}
-
+/**
+ * Signing in and up are the same: Google, or an email and the code sent to it,
+ * which makes the account the first time (docs/product.md). The mode only
+ * changes the words, for people who came to make an account.
+ */
 export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; redirect: string }) {
   const t = useTranslations("auth");
   const router = useRouter();
-  const { user, isLoading, hasAccount, signIn, signUp, signInWithGoogle } = useAuth();
+  const { user, isLoading, hasAccount, signInWithCode, signInWithGoogle } = useAuth();
   const ids = useId();
 
   const [mode, setMode] = useState<AuthMode>(initialMode);
+  const [step, setStep] = useState<"email" | "code">("email");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
-  const [capsLock, setCapsLock] = useState(false);
-  const [fieldErrors, setFieldErrors] = useState<Partial<Record<FieldName, string>>>({});
+  const [code, setCode] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [codeWrong, setCodeWrong] = useState(false);
   const [formError, setFormError] = useState<React.ReactNode>(null);
+  const [notice, setNotice] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [googling, setGoogling] = useState(false);
+  const [resendAt, setResendAt] = useState(0);
+  const [now, setNow] = useState(() => Date.now());
   // Google is the way in we'd like most people to take (docs/product.md): the email form waits behind a button.
   const [withEmail, setWithEmail] = useState(!googleAvailable);
   const turnstile = useTurnstileToken();
+  const codeRef = useRef<HTMLInputElement>(null);
 
   const signingUp = mode === "signup";
-  // Only an email and a password: the name people see and the character are
-  // asked at the first door. A guest who signs up keeps the ones they chose.
+  const onCode = step === "code";
 
   // Already signed in with an account (or just did): carry on.
   useEffect(() => {
     if (!isLoading && hasAccount) router.replace(redirect);
   }, [isLoading, hasAccount, redirect, router]);
 
+  // The countdown to sending another code, while there is one.
+  useEffect(() => {
+    if (!onCode || resendAt <= Date.now()) return;
+    const timer = window.setInterval(() => setNow(Date.now()), 1000);
+    return () => window.clearInterval(timer);
+  }, [onCode, resendAt]);
+
+  useEffect(() => {
+    if (onCode) codeRef.current?.focus();
+  }, [onCode]);
+
   const switchMode = (next: AuthMode) => {
     if (next === mode) return;
     setMode(next);
-    setFieldErrors({});
+    setEmailError("");
     setFormError(null);
     const params = new URLSearchParams(window.location.search);
     if (next === "signup") params.set("mode", "signup");
@@ -72,119 +83,128 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
     window.history.replaceState(null, "", `${window.location.pathname}${query ? `?${query}` : ""}`);
   };
 
-  const validate = (): Partial<Record<FieldName, string>> => {
-    const errors: Partial<Record<FieldName, string>> = {};
-    if (!email.trim()) errors.email = t("errors.email_required");
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) errors.email = t("errors.bad_email");
-    if (!password) errors.password = t("errors.password_required");
-    else if (signingUp && password.length < PASSWORD_MIN_LENGTH) errors.password = t("errors.password_too_short");
-    return errors;
-  };
-
-  /** Typing into a field clears what was wrong with it. */
-  const edited = (field: FieldName) => {
-    if (field in fieldErrors) {
-      setFieldErrors((current) => {
-        const next = { ...current };
-        delete next[field];
-        return next;
-      });
-    }
-  };
-
-  const focusField = (field: FieldName) => document.getElementById(`${ids}-${field}`)?.focus();
-
   const explain = (error: unknown) => {
     const code = error instanceof ApiError ? error.code : "generic";
-    const field = error instanceof ApiError ? (error.field as FieldName | undefined) : undefined;
-
-    if (code === "email_taken") {
-      // Outline the field; the message and its way out sit below the form.
-      setFieldErrors({ email: "" });
-      setFormError(
-        <>
-          {t("errors.email_taken")}{" "}
-          <button
-            type="button"
-            onClick={() => switchMode("signin")}
-            className="cursor-pointer font-semibold underline underline-offset-2"
-          >
-            {t("signInInstead")}
-          </button>
-        </>,
-      );
-      focusField("email");
-      return;
-    }
-
     const messages: Record<string, string> = {
-      wrong_credentials: t("errors.wrong_credentials"),
+      wrong_code: t("errors.wrong_code"),
+      code_expired: t("errors.code_expired"),
+      too_many_codes: t("errors.too_many_codes"),
+      email_failed: t("errors.email_failed"),
       too_many_attempts: t("errors.too_many_attempts"),
       slow_down: t("errors.too_many_attempts"),
       bad_email: t("errors.bad_email"),
       email_required: t("errors.email_required"),
-      password_too_short: t("errors.password_too_short"),
-      password_too_long: t("errors.password_too_long"),
-      password_blank: t("errors.password_blank"),
       google_failed: t("errors.google_failed"),
       google_unverified: t("errors.google_unverified"),
       google_mismatch: t("errors.google_mismatch"),
       network: t("errors.network"),
     };
     const message = code.startsWith("turnstile") ? t("errors.turnstile") : (messages[code] ?? t("errors.generic"));
-
-    if (field && ["email", "password"].includes(field)) {
-      setFieldErrors({ [field]: message });
-      focusField(field);
-    } else {
-      setFormError(message);
-      if (code === "wrong_credentials") {
-        setPassword("");
-        focusField("password");
-      }
+    if (code === "bad_email" || code === "email_required") {
+      setEmailError(message);
+      document.getElementById(`${ids}-email`)?.focus();
+      return;
     }
+    if (code === "wrong_code" || code === "code_expired") {
+      setCodeWrong(true);
+      setCode("");
+      codeRef.current?.focus();
+    }
+    setFormError(message);
   };
 
-  const submit = async (event: React.FormEvent) => {
+  /** Asks for a code to the address: the first, or another. Turnstile's token is used once, so a new one is made after. */
+  const sendCode = async () => {
+    const token = await turnstile.waitForToken();
+    if (!token) throw new ApiError(0, "turnstile_failed", "");
+    try {
+      await api.sendCode({ email: email.trim(), turnstileToken: token });
+    } finally {
+      turnstile.reset();
+    }
+    setResendAt(Date.now() + RESEND_AFTER_MS);
+    setNow(Date.now());
+  };
+
+  const submitEmail = async (event: React.FormEvent) => {
     event.preventDefault();
     if (submitting) return;
     setFormError(null);
-
-    const errors = validate();
-    setFieldErrors(errors);
-    const first = (["email", "password"] as FieldName[]).find((field) => errors[field]);
-    if (first) {
-      focusField(first);
+    const address = email.trim();
+    const problem = !address ? t("errors.email_required") : !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(address) ? t("errors.bad_email") : "";
+    setEmailError(problem);
+    if (problem) {
+      document.getElementById(`${ids}-email`)?.focus();
       return;
     }
-
     setSubmitting(true);
     try {
-      if (signingUp) {
-        const token = await turnstile.waitForToken();
-        if (!token) {
-          setFormError(t("errors.turnstile"));
-          return;
-        }
-        await signUp({ email: email.trim(), password, turnstileToken: token });
-      } else {
-        await signIn(email.trim(), password);
-      }
-      // The effect above moves on once the session is in place.
+      await sendCode();
+      setCode("");
+      setCodeWrong(false);
+      setNotice("");
+      setStep("code");
     } catch (error) {
       explain(error);
-      if (signingUp) turnstile.reset();
     } finally {
       setSubmitting(false);
     }
   };
 
+  const submitCode = async (value = code) => {
+    if (submitting) return;
+    setFormError(null);
+    setNotice("");
+    if (value.length !== CODE_LENGTH) {
+      setCodeWrong(true);
+      setFormError(t("errors.code_required"));
+      codeRef.current?.focus();
+      return;
+    }
+    setSubmitting(true);
+    try {
+      await signInWithCode(email.trim(), value);
+      // The effect above moves on once the session is in place.
+    } catch (error) {
+      explain(error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const resend = async () => {
+    if (submitting || now < resendAt) return;
+    setFormError(null);
+    setNotice("");
+    setSubmitting(true);
+    try {
+      await sendCode();
+      setCode("");
+      setCodeWrong(false);
+      setNotice(t("codeSentAgain"));
+      codeRef.current?.focus();
+    } catch (error) {
+      explain(error);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const changeEmail = () => {
+    setStep("email");
+    setCode("");
+    setCodeWrong(false);
+    setFormError(null);
+    setNotice("");
+    window.setTimeout(() => document.getElementById(`${ids}-email`)?.focus());
+  };
+
   /** Google's popup came back with a code: the API signs in, links or makes the account, and the effect above moves on. */
-  const withGoogle = async (code: string) => {
+  const withGoogle = async (googleCode: string) => {
     setFormError(null);
     setGoogling(true);
     try {
-      await signInWithGoogle({ code });
+      await signInWithGoogle({ code: googleCode });
     } catch (error) {
       explain(error);
     } finally {
@@ -192,28 +212,25 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
     }
   };
 
-  const trackCapsLock = (event: React.KeyboardEvent<HTMLInputElement>) =>
-    setCapsLock(event.getModifierState?.("CapsLock") ?? false);
-
-  const describedBy = (field: FieldName, extra?: string) =>
-    [fieldErrors[field] ? `${ids}-${field}-error` : null, extra].filter(Boolean).join(" ") || undefined;
-
-  const fieldClass = (field: FieldName) =>
-    `${inputClass} ${field in fieldErrors ? "!border-destructive/50 focus:!ring-destructive/15" : ""}`;
-
-  const passwordLongEnough = password.length >= PASSWORD_MIN_LENGTH;
+  const waitSeconds = Math.max(0, Math.ceil((resendAt - now) / 1000));
 
   return (
     <CenteredAuthLayout>
       <div className="text-center">
         <h1 className="text-[26px] font-semibold leading-tight tracking-[-0.02em] text-foreground">
-          {signingUp ? t("signUpTitle") : t("signInTitle")}
+          {onCode ? t("codeTitle") : signingUp ? t("signUpTitle") : t("signInTitle")}
         </h1>
-        <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">{signingUp ? t("signUpSubtitle") : t("signInSubtitle")}</p>
+        <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">
+          {onCode
+            ? t.rich("codeSubtitle", { email: email.trim(), strong: (chunks) => <span className="font-medium text-foreground">{chunks}</span> })
+            : signingUp
+              ? t("signUpSubtitle")
+              : t("signInSubtitle")}
+        </p>
       </div>
 
       <div className="mt-8">
-        {googleAvailable && (
+        {googleAvailable && !onCode && (
           <>
             <GoogleButton
               label={t("continueWithGoogle")}
@@ -232,109 +249,116 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
           </>
         )}
 
-        {withEmail && (
-          <form onSubmit={submit} noValidate className="space-y-4">
+        {withEmail && !onCode && (
+          <form onSubmit={submitEmail} noValidate className="space-y-4">
             <Field label={t("email")} htmlFor={`${ids}-email`}>
               <input
                 id={`${ids}-email`}
                 type="email"
                 inputMode="email"
-                autoComplete={signingUp ? "email" : "username"}
+                autoComplete="email"
                 autoCapitalize="none"
                 spellCheck={false}
                 value={email}
                 onChange={(event) => {
                   setEmail(event.target.value);
-                  edited("email");
+                  setEmailError("");
                 }}
                 placeholder={t("emailPlaceholder")}
-                aria-invalid={"email" in fieldErrors}
-                aria-describedby={describedBy("email")}
-                className={fieldClass("email")}
+                aria-invalid={!!emailError}
+                aria-describedby={emailError ? `${ids}-email-error` : undefined}
+                className={`${inputClass} ${emailError ? "!border-destructive/50 focus:!ring-destructive/15" : ""}`}
               />
-              <FieldError id={`${ids}-email-error`} message={fieldErrors.email} />
-            </Field>
-
-            <Field label={t("password")} htmlFor={`${ids}-password`}>
-              <div className="relative">
-                <input
-                  id={`${ids}-password`}
-                  type={showPassword ? "text" : "password"}
-                  autoComplete={signingUp ? "new-password" : "current-password"}
-                  value={password}
-                  onChange={(event) => {
-                    setPassword(event.target.value);
-                    edited("password");
-                  }}
-                  onKeyDown={trackCapsLock}
-                  onKeyUp={trackCapsLock}
-                  onBlur={() => setCapsLock(false)}
-                  placeholder={signingUp ? t("newPasswordPlaceholder") : t("passwordPlaceholder")}
-                  aria-invalid={"password" in fieldErrors}
-                  aria-describedby={describedBy("password", signingUp ? `${ids}-password-rule` : undefined)}
-                  className={`${fieldClass("password")} pe-12`}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword((shown) => !shown)}
-                  aria-label={showPassword ? t("hidePassword") : t("showPassword")}
-                  aria-pressed={showPassword}
-                  className="absolute end-1.5 top-1/2 flex size-9 -translate-y-1/2 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                >
-                  {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-                </button>
-              </div>
-              <FieldError id={`${ids}-password-error`} message={fieldErrors.password} />
-              {capsLock && (
-                <p className="mt-2 text-[12px] text-warn" role="status">
-                  {t("capsLock")}
-                </p>
-              )}
-              {signingUp && !fieldErrors.password && (
-                <p
-                  id={`${ids}-password-rule`}
-                  className={`mt-2 flex items-center gap-1.5 text-[12px] transition-colors duration-200 ${
-                    passwordLongEnough ? "text-ok" : "text-muted-foreground"
-                  }`}
-                >
-                  <Check className={`size-3.5 transition-opacity ${passwordLongEnough ? "opacity-100" : "opacity-30"}`} />
-                  {t("passwordRule")}
-                </p>
-              )}
-              {!signingUp && (
-                <p className="mt-2 text-end text-[12.5px]">
-                  <Link href="/auth/reset" className="text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline">
-                    {t("forgotPassword")}
-                  </Link>
+              {emailError && (
+                <p id={`${ids}-email-error`} className="mt-2 text-[12px] text-destructive">
+                  {emailError}
                 </p>
               )}
             </Field>
-
-            {signingUp && <Turnstile controller={turnstile} action="signup" className="flex justify-center" />}
 
             {formError && <ErrorNote>{formError}</ErrorNote>}
 
-            <ActionButton type="submit" busy={submitting} busyLabel={signingUp ? t("creatingAccount") : t("signingIn")} className="!mt-6">
-              {signingUp ? t("createAccount") : t("signIn")}
+            <ActionButton type="submit" busy={submitting} busyLabel={t("sendingCode")} className="!mt-6">
+              {t("continue")}
             </ActionButton>
           </form>
         )}
 
-        {signingUp && <Agree className="mt-4 text-center" />}
+        {onCode && (
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+              void submitCode();
+            }}
+            noValidate
+            className="space-y-4"
+          >
+            <Field label={t("code")} htmlFor={`${ids}-code`}>
+              <CodeField
+                ref={codeRef}
+                id={`${ids}-code`}
+                value={code}
+                onChange={(next) => {
+                  setCode(next);
+                  setCodeWrong(false);
+                }}
+                onComplete={(complete) => void submitCode(complete)}
+                invalid={codeWrong}
+              />
+              <p className="mt-2 text-[12px] text-muted-foreground">{t("codeHint")}</p>
+            </Field>
+
+            {formError && <ErrorNote>{formError}</ErrorNote>}
+            {notice && !formError && (
+              <p className="text-center text-[12.5px] text-ok" role="status">
+                {notice}
+              </p>
+            )}
+
+            <ActionButton type="submit" busy={submitting} busyLabel={t("signingIn")} className="!mt-6">
+              {t("continue")}
+            </ActionButton>
+
+            <div className="flex flex-col items-center gap-2 pt-2 text-[13px]">
+              <button
+                type="button"
+                onClick={resend}
+                disabled={submitting || waitSeconds > 0}
+                className="cursor-pointer font-medium text-foreground underline-offset-2 hover:underline disabled:cursor-default disabled:text-muted-foreground disabled:no-underline"
+              >
+                {waitSeconds > 0 ? t("resendIn", { seconds: waitSeconds }) : t("resend")}
+              </button>
+              <button
+                type="button"
+                onClick={changeEmail}
+                className="cursor-pointer text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline"
+              >
+                {t("differentEmail")}
+              </button>
+            </div>
+          </form>
+        )}
+
+        {/* Kept across both steps: sending another code needs a token too. */}
+        {withEmail && <Turnstile controller={turnstile} action="code" className="mt-4 flex justify-center" />}
+
+        {!onCode && <Agree className="mt-4 text-center" />}
       </div>
 
-      <p className="mt-8 text-center text-[13.5px] text-foreground">
-        <span className="text-muted-foreground">{signingUp ? t("haveAccount") : t("noAccount")}</span>{" "}
-        <button
-          type="button"
-          onClick={() => switchMode(signingUp ? "signin" : "signup")}
-          className="cursor-pointer font-medium underline-offset-2 hover:underline"
-        >
-          {signingUp ? t("signInInstead") : t("createOne")}
-        </button>
-      </p>
+      {!onCode && (
+        <p className="mt-8 text-center text-[13.5px] text-foreground">
+          <span className="text-muted-foreground">{signingUp ? t("haveAccount") : t("noAccount")}</span>{" "}
+          <button
+            type="button"
+            onClick={() => switchMode(signingUp ? "signin" : "signup")}
+            className="cursor-pointer font-medium underline-offset-2 hover:underline"
+          >
+            {signingUp ? t("signInInstead") : t("createOne")}
+          </button>
+        </p>
+      )}
 
-      {!user && (
+      {!user && !onCode && (
         <p className="mt-3 text-center text-[12.5px]">
           <Link href="/lobby" className="text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline">
             {t("continueGuest")}
@@ -344,4 +368,3 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
     </CenteredAuthLayout>
   );
 }
-

@@ -26,9 +26,12 @@
     "CREEM_ENV": "live",
     "CREEM_PRODUCTS": "{\"pro\":\"prod_6iSp1sE8bOswtEIbp520VU\"}"
   },
-  "durable_objects": { "bindings": [{ "name": "PASSWORD_GUARD", "class_name": "PasswordGuard" }] },
-  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["PasswordGuard"] }],
-  // Per-IP limit on sign-up, sign-in and guest creation (src/limits.ts).
+  // PasswordGuard hashed and checked passwords until sign-in moved to email codes (src/email-codes.ts).
+  "migrations": [
+    { "tag": "v1", "new_sqlite_classes": ["PasswordGuard"] },
+    { "tag": "v2", "deleted_classes": ["PasswordGuard"] }
+  ],
+  // Per-IP limit on email codes, sign-in and guest creation (src/limits.ts).
   // Secrets, set with `wrangler secret put` (and in .dev.vars locally): TICKET_SECRET,
   // TURNSTILE_SECRET, TURN_KEY_ID, TURN_KEY_API_TOKEN, GOOGLE_CLIENT_SECRET, and
   // ADMIN_EMAILS, the comma-separated accounts that can open /admin, and
@@ -74,7 +77,6 @@
         "CREEM_ENV": "test",
         "CREEM_PRODUCTS": "{\"pro\":\"prod_2bvC3UGSNphGww4yBDFhl4\"}"
       },
-      "durable_objects": { "bindings": [{ "name": "PASSWORD_GUARD", "class_name": "PasswordGuard" }] },
       "ratelimits": [
         { "name": "AUTH_LIMIT", "namespace_id": "1002", "simple": { "limit": 10, "period": 60 } },
         { "name": "UPLOAD_LIMIT", "namespace_id": "1004", "simple": { "limit": 30, "period": 60 } }

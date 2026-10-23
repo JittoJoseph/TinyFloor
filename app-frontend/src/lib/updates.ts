@@ -6,8 +6,6 @@ import { decorateState } from "@/lib/decorate";
 import { ROOM_CONNECTION_EVENT } from "@/lib/RoomSocket";
 import { characterCreatorShown } from "@/components/character/creatorOpen";
 
-/** How often an open page asks, besides when the room comes back after a drop and when it's looked at again. */
-const CHECK_EVERY_MS = 30 * 60_000;
 /** A deploy drops the room before the new app is up: asked again a little after it's back. */
 const CHECK_AGAIN_MS = 5 * 60_000;
 /** Shown and in use, the page waits until it's been left alone this long. */
@@ -22,13 +20,14 @@ const RELOADED_FOR = "tf-reloaded-for";
  * when that interrupts nothing. Never during a call or a meeting, while
  * something is being typed, a dialog is open, a desk is being decorated or a
  * look changed; and only while the page is hidden, or shown but untouched for
- * a minute. Every other deploy leaves open pages alone.
+ * a minute. It asks only when the room comes back after a drop (a deploy that
+ * matters redeploys the room too) and when the page is looked at again; every
+ * other deploy leaves open pages alone.
  */
 export function useAppUpdates() {
   useEffect(() => {
     let due: string | null = null;
     let checking = false;
-    let lastCheck = Date.now();
     let lastInput = Date.now();
     let again: ReturnType<typeof setTimeout> | undefined;
 
@@ -42,7 +41,6 @@ export function useAppUpdates() {
     const check = async () => {
       if (due || checking) return;
       checking = true;
-      lastCheck = Date.now();
       due = await newer();
       checking = false;
       reloadIfQuiet();
@@ -60,10 +58,8 @@ export function useAppUpdates() {
     };
     const onVisibility = () => (document.visibilityState === "visible" ? void check() : reloadIfQuiet());
     const onInput = () => (lastInput = Date.now());
-    const tick = setInterval(() => {
-      if (due) reloadIfQuiet();
-      else if (Date.now() - lastCheck > CHECK_EVERY_MS) void check();
-    }, 5_000);
+    // Once there's a new app to go to, the quiet moment is looked for here; nothing is asked of the network.
+    const tick = setInterval(reloadIfQuiet, 5_000);
 
     window.addEventListener(ROOM_CONNECTION_EVENT, onConnection);
     document.addEventListener("visibilitychange", onVisibility);

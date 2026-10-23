@@ -115,30 +115,36 @@ export function YouCard({
     >
       <AnimatePresence initial={false} mode="popLayout">
         {!wide && (
-          // Resting: you, and your name beside you once pointed at.
+          // Resting: you. Pointed at, your name opens out to your left, as a desk's plate opens:
+          // only the name's width and opacity move, so you stay exactly where you are.
           <motion.button
             key="pill"
-            layout="position"
-            transition={layout}
             {...fade}
             type="button"
             aria-label={tShell("you")}
             aria-expanded={false}
             onClick={() => setOpen(true)}
-            className={cn("flex h-[38px] items-center gap-2.5 p-[3px] outline-none", mode === "peek" && "ps-3.5")}
+            className="flex h-[38px] items-center p-[3px] outline-none"
           >
-            {mode === "peek" && <span className="max-w-[12rem] truncate text-[13px] font-medium text-foreground">{name}</span>}
+            <span
+              className={cn(
+                "max-w-0 truncate whitespace-nowrap text-[13px] font-medium text-foreground opacity-0 transition-[max-width,margin,opacity] duration-[260ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+                mode === "peek" && "ms-3 me-2.5 max-w-[12rem] opacity-100",
+              )}
+            >
+              {name}
+            </span>
             <CharacterBust character={character} presence={presence} />
           </motion.button>
         )}
 
         {mode === "open" && (
           <motion.div key="open" {...fade} className="flex flex-col">
-            {/* You, standing, as the creator shows you; who and how you are under you. */}
-            <div className="flex flex-col items-center px-2 pt-2">
-              <CharacterStage character={character} scale={2} ground={12} className="h-[7.25rem] w-full rounded-[10px]" />
-              <p className="mt-3 max-w-full truncate px-2 text-[15px] font-semibold leading-snug text-foreground">{name}</p>
-              <p className="mt-1 flex max-w-full items-center gap-1.5 px-2 text-[12.5px] text-muted-foreground">
+            {/* You, standing, as the creator shows you; who and how you are under you. Pressed, the card folds back. */}
+            <button type="button" aria-label={tShell("you")} aria-expanded onClick={() => setOpen(false)} className="group flex flex-col items-center px-2 pt-2 outline-none">
+              <CharacterStage character={character} scale={2} ground={12} className="h-[7.25rem] w-full rounded-[10px] transition-[filter] duration-150 group-hover:brightness-[1.06]" />
+              <span className="mt-3 block max-w-full truncate px-2 text-[15px] font-semibold leading-snug text-foreground">{name}</span>
+              <span className="mt-1 flex max-w-full items-center gap-1.5 px-2 text-[12.5px] text-muted-foreground">
                 <span className={cn("size-2 shrink-0 rounded-full", STATUS_DOT[presence] ?? "bg-faint")} />
                 <span className="shrink-0">{tStatus(`${presence}.label`)}</span>
                 {(note || atDesk) && <span aria-hidden className="text-faint">·</span>}
@@ -150,8 +156,8 @@ export function YouCard({
                 ) : (
                   atDesk && <span className="truncate">{t("atDesk")}</span>
                 )}
-              </p>
-            </div>
+              </span>
+            </button>
             <div className="mt-3 flex flex-col gap-px border-t border-border p-1.5">
               <Row
                 icon={<Desk />}

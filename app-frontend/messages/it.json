@@ -833,6 +833,32 @@
     "remove": "Togli dalla scrivania",
     "deselect": "Fatto con questo"
   },
+  "look": {
+    "open": "Cambia aspetto",
+    "title": "Il tuo aspetto",
+    "walk": "Cammina",
+    "turnLeft": "Gira a sinistra",
+    "turnRight": "Gira a destra",
+    "randomize": "A caso",
+    "tabs": {
+      "presets": "Modelli",
+      "skin": "Pelle",
+      "hair": "Capelli",
+      "beard": "Barba",
+      "outfit": "Abiti",
+      "glasses": "Occhiali",
+      "hat": "Cappello",
+      "bag": "Zaino",
+      "extras": "Extra"
+    },
+    "preset": "Parti da questo",
+    "skin": "Pelle",
+    "eyes": "Occhi",
+    "none": "Nessuno",
+    "cancel": "Annulla",
+    "save": "Salva",
+    "edit": "Cambia"
+  },
   "note": {
     "title": "Nota di stato",
     "set": "Imposta una nota di stato",

@@ -833,6 +833,32 @@
     "remove": "Quitar del escritorio",
     "deselect": "Listo con esto"
   },
+  "look": {
+    "open": "Cambiar tu aspecto",
+    "title": "Tu aspecto",
+    "walk": "Caminar",
+    "turnLeft": "Girar a la izquierda",
+    "turnRight": "Girar a la derecha",
+    "randomize": "Al azar",
+    "tabs": {
+      "presets": "Modelos",
+      "skin": "Piel",
+      "hair": "Pelo",
+      "beard": "Barba",
+      "outfit": "Ropa",
+      "glasses": "Gafas",
+      "hat": "Gorro",
+      "bag": "Mochila",
+      "extras": "Extras"
+    },
+    "preset": "Empezar con este",
+    "skin": "Piel",
+    "eyes": "Ojos",
+    "none": "Ninguno",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "edit": "Cambiar"
+  },
   "note": {
     "title": "Nota de estado",
     "set": "Poner una nota de estado",

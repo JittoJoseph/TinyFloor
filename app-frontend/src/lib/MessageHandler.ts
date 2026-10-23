@@ -7,7 +7,6 @@ import { whiteboard } from "./WhiteboardManager";
 import { AnimationManager } from "./AnimationManager";
 import { playSound } from "./sounds";
 import { tileToPixel } from "@/lib/types";
-import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import { setMeetings, setMeetingUsage } from "./meetings";
 import { deskOf, deskState, setDesks } from "./desks";
 import { applyPieceChange, setPieceChanges } from "./pieces";
@@ -114,6 +113,9 @@ export class MessageHandler {
       case "listening":
         this.playerManager.updatePlayerListening(message.id, message.on);
         break;
+      case "look":
+        this.playerManager.changeLook(message.id, message.character);
+        break;
       case "renamed":
         this.playerManager.renamePlayer(message.id, message.name);
         this.dispatchPlayerList();
@@ -156,9 +158,8 @@ export class MessageHandler {
     this.playerManager.updatePlayerListening(this.playerId, isListening());
     // The view starts where you are, rather than sweeping over from where it was.
     this.scene.cameras.main.centerOn(spawn.x, spawn.y);
-    const spriteName = isCharacter(self.character) ? self.character : DEFAULT_CHARACTER;
-    this.player.setData("spriteName", spriteName);
-    this.player.play(this.animationManager.getAnimationKey(spriteName, "idle", "down"));
+    this.animationManager.wear(this.player, self.character);
+    this.player.play(this.animationManager.getAnimationKey(this.player.getData("spriteName"), "idle", "down"));
 
     players.forEach((player) => this.addUser(player));
     this.dispatchPlayerList();

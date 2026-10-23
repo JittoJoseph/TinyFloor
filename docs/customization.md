@@ -3,9 +3,6 @@
 Findings from going through the bought art and building a lab to try it,
 October 2026: what the packs hold, what an item, a layout and a character
 need to be, what went wrong when we tried, and an order to build it in.
-Today an office is one fixed floor and eight premade characters; the packs
-hold enough for people to dress themselves, decorate their desks, and admins
-to furnish and theme their offices.
 
 ## What the packs hold
 
@@ -57,8 +54,9 @@ something to offer.
 
 The floor is the Startup template (below), drawn from data: the lab bakes it
 and builds it (`lab/build.mjs`) into `shared-protocol/src/catalog/floors/startup.json`,
-which the app draws and the room reads its desks from. Characters are still
-the eight legacy 16px ones at twice their size.
+which the app draws and the room reads its desks from. People look as they
+make themselves in the creator (Characters, below), or as one of the eight
+earlier 16px characters at twice their size.
 
 The hand-made map it replaced (`office-map.tmj`, from `tools/buildmap.py`)
 is now only what the website's pictures of the floor were drawn from.
@@ -378,33 +376,47 @@ chairs and the map itself.
 ## Characters
 
 - **Layers compose exactly.** Body, eyes, outfit, hair, accessory, drawn in
-  that order, line up on every frame; nothing needs adjusting.
+  that order, line up on every frame; nothing needs adjusting. Hair carries
+  faint shading that falls on the face beneath it, so a premade only matches
+  its parts where nothing at all lies above.
 - **Sitting is drawn from the side only.** Facing up or down, a seated
   character is their standing pose, as our characters already are.
 - **Sharper at the same size.** The 32px generator draws 32×64 frames at
   1×; on the floor they're the size of today's 16px characters at 2×, with
   twice the detail.
-- **Cheap to load.** Cropped to the rows the floor uses (idle, walk, sit),
-  the 432 part sheets come to 2.75 MB, about 6.5 KB each; a character is
-  about 30 KB, and parts are shared and cached.
+- **Cheap to load.** Cropped to the two rows the floor uses (idle and walk,
+  48 frames in one strip) and written with a palette (a part has well under
+  256 colours), a part is a kilobyte or two: all 366 offered come to 468 KB,
+  and someone's look is about 7 KB, fetched only when someone wears it.
+- **What's offered** is for an office: six natural skins (not the yellow,
+  pink or lavender ones), seven eye colours, 29 outfits (not the ninja,
+  swimwear or robes), 29 hairstyles in every colour, and the pack's
+  accessories split into slots, so they can go together: a beard or
+  moustache, glasses, a cap or beanie, a backpack. Costume pieces stay out.
+- **The pack's premades are recipes.** Matched part by part from the top
+  layer down, 14 of its 20 premade characters come out as exactly a look;
+  the other six wear a costume piece or a fantasy skin. They are the
+  creator's presets.
 
-Everyone arrives as a premade character, picked at their first door (as
-today), and can change how they look at any time: body, eyes, hair and its
-colour, outfit and its colour, one accessory. The premades are recipes in the
-same terms, so picking one and then changing the hair is one step.
+A **look** is a short string, `body.1/eyes.1/outfit.1-2/hair.4-3/glasses.15-1`,
+kept where the character's name always was (the profile in D1, the room
+ticket, the room's players), so nothing else changed to carry it. The eight
+characters people picked before still work as they did, until they change.
+`pnpm --dir lab looks` crops the parts, matches the premades and writes
+`shared-protocol/src/catalog/looks.json` (what's offered, a swatch for each
+colour, the presets), which the creator, the API and the room all check
+looks against.
 
-- the **look** is a small recipe on the profile in D1, carried on the room
-  ticket like the character name is today, so everyone sees it as you arrive;
-- each client composes the parts into one texture per look and keeps it; the
-  parts come from R2, cropped to the rows the floor uses, a few kilobytes
-  each, fetched only when someone wears them;
-- today's eight characters map to the matching premades, so nobody's look
-  changes until they change it.
+On the floor, each look is drawn once into a texture in the same frame order
+as the premades' (idle, walk, then a seated pose a direction), so walking,
+sitting and everything else work unchanged; your own look starts loading with
+the floor. Saving a look keeps it on the profile and tells the room, which
+shows everyone the new look where you stand, and whoever arrives later.
 
-The creator lives with the profile: the person walking, standing and sitting
-as they are now, every style shown on them, colours as swatches, Randomize,
-and the premades along the top. Fantasy skins and costume pieces stay out of
-the default list.
+The creator opens from your menu and your profile: you on the left, turning
+and walking; presets, skin and eyes, hair, outfit and extras (the accessory
+slots) on the right, each style drawn on you as you are, colours as swatches;
+Randomize; on a phone, a sheet with you beside your buttons.
 
 ## The lab and the pipeline
 
@@ -443,6 +455,7 @@ Each step ships on its own and needs the one before it:
    is one function in `shared-protocol` that both use.
 3. **Your desk** (done). Changes in the room, Decorate at your desk, reset
    when it's let go.
-4. **Characters.** The creator, the look on the profile, the premades.
+4. **Characters** (done). The creator, the look on the profile, the presets.
+   The first door still offers the eight earlier characters.
 5. **Furnishing for admins.** Move, add and take away furniture; put back.
 6. **More themes**, on the same floor plan.

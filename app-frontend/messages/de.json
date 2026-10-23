@@ -833,6 +833,32 @@
     "remove": "Vom Schreibtisch nehmen",
     "deselect": "Fertig damit"
   },
+  "look": {
+    "open": "Aussehen ändern",
+    "title": "Dein Aussehen",
+    "walk": "Gehen",
+    "turnLeft": "Nach links drehen",
+    "turnRight": "Nach rechts drehen",
+    "randomize": "Zufällig",
+    "tabs": {
+      "presets": "Vorlagen",
+      "skin": "Haut",
+      "hair": "Haare",
+      "beard": "Bart",
+      "outfit": "Kleidung",
+      "glasses": "Brille",
+      "hat": "Mütze",
+      "bag": "Tasche",
+      "extras": "Extras"
+    },
+    "preset": "Damit anfangen",
+    "skin": "Haut",
+    "eyes": "Augen",
+    "none": "Keine",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "edit": "Ändern"
+  },
   "note": {
     "title": "Statusnotiz",
     "set": "Statusnotiz festlegen",

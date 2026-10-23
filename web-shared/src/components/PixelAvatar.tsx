@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./pixel.module.css";
 import { statusColor } from "@/lib/status";
+import { lookLayers, parseLook } from "@shared/look";
 
 export type AvatarDirection = "up" | "down" | "left" | "right";
 
@@ -22,18 +23,23 @@ export const PixelAvatar: React.FC<PixelAvatarProps> = ({
   style,
 }) => {
   const sheet = running ? "run_16x16" : "idle_anim_16x16";
+  // A look is its parts stacked, the top one first.
+  const look = parseLook(character);
+  const backgroundImage = look
+    ? lookLayers(look).reverse().map((url) => `url(${url})`).join(", ")
+    : `url(/characters/${character}_${sheet}.png)`;
 
   return (
     <span
       aria-hidden="true"
       className={`${styles.sprite} ${styles[direction]} ${
         running ? styles.running : ""
-      } ${className}`}
+      } ${look ? styles.look : ""} ${className}`}
       style={{
         ...style,
         ["--sprite-w" as string]:
           typeof width === "number" ? `${width}px` : width,
-        backgroundImage: `url(/characters/${character}_${sheet}.png)`,
+        backgroundImage,
       }}
     />
   );

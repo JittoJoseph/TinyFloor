@@ -256,6 +256,8 @@ export type ClientMessage =
    * Google from it (the API keeps it; this tells the floor, without walking out and back in).
    */
   | { t: "rename"; name: string }
+  /** You changed how you look (the API keeps it; this tells the floor): a premade or a look (look.ts). */
+  | { t: "look"; character: string }
   | { t: "board_sync" }
   | ({ t: "board_draw" } & BoardStroke)
   | { t: "board_clear" }
@@ -332,6 +334,7 @@ export type ServerMessage =
   | { t: "note"; id: string; note: StatusNote | null }
   | { t: "listening"; id: string; on: boolean }
   | { t: "renamed"; id: string; name: string }
+  | { t: "look"; id: string; character: string }
   | { t: "board_state"; strokes: BoardStroke[] }
   | ({ t: "board_draw"; by: string } & BoardStroke)
   | { t: "board_clear"; by: string }

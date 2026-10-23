@@ -4,6 +4,7 @@ import type { Locale } from "@/lib/i18n/routing";
 import { AppTheme } from "@/components/app/AppTheme";
 import { LocalTimeZone } from "@/components/LocalTimeZone";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { LookCreatorHost } from "@/components/looks/LookCreator";
 
 /** What only pages put together on the server say (the shared messages the app's screens never read). */
 const SITE_ONLY = new Set(["home", "metadata", "notFound"]);
@@ -26,6 +27,7 @@ export default async function AppLayout({ children, params }: { children: React.
       <LocalTimeZone>
         <AuthProvider>
           <AppTheme>{children}</AppTheme>
+          <LookCreatorHost />
         </AuthProvider>
       </LocalTimeZone>
     </NextIntlClientProvider>

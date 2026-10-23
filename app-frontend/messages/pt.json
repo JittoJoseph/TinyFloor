@@ -833,6 +833,32 @@
     "remove": "Tirar da mesa",
     "deselect": "Pronto com isto"
   },
+  "look": {
+    "open": "Mudar sua aparência",
+    "title": "Sua aparência",
+    "walk": "Andar",
+    "turnLeft": "Virar à esquerda",
+    "turnRight": "Virar à direita",
+    "randomize": "Aleatório",
+    "tabs": {
+      "presets": "Modelos",
+      "skin": "Pele",
+      "hair": "Cabelo",
+      "beard": "Barba",
+      "outfit": "Roupa",
+      "glasses": "Óculos",
+      "hat": "Chapéu",
+      "bag": "Mochila",
+      "extras": "Extras"
+    },
+    "preset": "Começar por este",
+    "skin": "Pele",
+    "eyes": "Olhos",
+    "none": "Nenhum",
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "edit": "Mudar"
+  },
   "note": {
     "title": "Nota de status",
     "set": "Definir nota de status",

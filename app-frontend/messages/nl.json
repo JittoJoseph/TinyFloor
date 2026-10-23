@@ -833,6 +833,32 @@
     "remove": "Van het bureau halen",
     "deselect": "Klaar hiermee"
   },
+  "look": {
+    "open": "Uiterlijk aanpassen",
+    "title": "Je uiterlijk",
+    "walk": "Lopen",
+    "turnLeft": "Naar links draaien",
+    "turnRight": "Naar rechts draaien",
+    "randomize": "Willekeurig",
+    "tabs": {
+      "presets": "Voorbeelden",
+      "skin": "Huid",
+      "hair": "Haar",
+      "beard": "Baard",
+      "outfit": "Kleding",
+      "glasses": "Bril",
+      "hat": "Hoed",
+      "bag": "Tas",
+      "extras": "Extra's"
+    },
+    "preset": "Hiermee beginnen",
+    "skin": "Huid",
+    "eyes": "Ogen",
+    "none": "Geen",
+    "cancel": "Annuleren",
+    "save": "Opslaan",
+    "edit": "Aanpassen"
+  },
   "note": {
     "title": "Statusnotitie",
     "set": "Statusnotitie instellen",

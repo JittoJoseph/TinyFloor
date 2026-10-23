@@ -6,7 +6,6 @@ import { Check, Eye, EyeOff, KeyRound, Palette, Search, UserRound } from "@/comp
 import { motion, useReducedMotion } from "motion/react";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError } from "@/lib/api";
-import { saveIdentity } from "@/lib/identity";
 import { allZones, browserZone, offsetLabel, timeIn, zoneCity, zoneLabel } from "@/lib/timeZone";
 import { useSitePage } from "@/lib/links";
 import { useErrorMessage } from "@/lib/useErrorMessage";
@@ -15,7 +14,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/motion/button/base";
 import { Dialog, ErrorText, fieldClass, Label } from "@/components/ui/forms";
 import { LitFace } from "@/components/ui/LitFace";
-import { CharacterPicker } from "@/components/entry/CharacterPicker";
+import { PixelAvatar } from "@/components/PixelAvatar";
+import { openLookCreator } from "@/components/looks/LookCreator";
 import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
 import { General, Group, Row } from "@/components/app/SettingsView";
 
@@ -133,6 +133,7 @@ const field =
 /** Who you are to everyone else: your name, your link, and who you walk in as. */
 export function Profile() {
   const t = useTranslations("office.profile");
+  const tLook = useTranslations("look");
   const { user, updateProfile } = useAuth();
   const explain = useErrorMessage();
   const [name, setName] = useState<string | null>(null);
@@ -140,7 +141,6 @@ export function Profile() {
   const [busy, setBusy] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
-  const [characterError, setCharacterError] = useState("");
   if (!user) return null;
 
   const currentName = name ?? user.displayName;
@@ -162,18 +162,6 @@ export function Profile() {
       setError(explain(err));
     } finally {
       setBusy(false);
-    }
-  };
-
-  // Saved the moment it's picked, and remembered in this browser for the doors that ask.
-  const pick = async (character: string) => {
-    if (character === user.character) return;
-    setCharacterError("");
-    try {
-      await updateProfile({ character });
-      saveIdentity({ name: user.displayName, character });
-    } catch (err) {
-      setCharacterError(explain(err));
     }
   };
 
@@ -222,9 +210,14 @@ export function Profile() {
       </Group>
 
       <Group title={t("character")} note={t("characterNote")}>
-        <div className="p-3">
-          <CharacterPicker value={user.character} onChange={pick} className="sm:grid-cols-8" />
-          {characterError && <ErrorText>{characterError}</ErrorText>}
+        {/* You as you walk in, and the creator to change it (LookCreator, which saves it). */}
+        <div className="flex items-center gap-4 p-4">
+          <span className="relative block size-16 shrink-0 rounded-2xl bg-muted/70" style={{ containerType: "size" }}>
+            <PixelAvatar character={user.character} width="52cqw" style={{ left: "50%", top: "88%" }} />
+          </span>
+          <Button type="button" size="sm" variant="secondary" onClick={openLookCreator} className="h-8 px-4 text-[13px]">
+            {tLook("open")}
+          </Button>
         </div>
       </Group>
 

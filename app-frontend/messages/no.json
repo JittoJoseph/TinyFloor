@@ -833,6 +833,32 @@
     "remove": "Fjern fra skrivebordet",
     "deselect": "Ferdig med den"
   },
+  "look": {
+    "open": "Endre utseende",
+    "title": "Utseendet ditt",
+    "walk": "Gå",
+    "turnLeft": "Snu mot venstre",
+    "turnRight": "Snu mot høyre",
+    "randomize": "Tilfeldig",
+    "tabs": {
+      "presets": "Forslag",
+      "skin": "Hud",
+      "hair": "Hår",
+      "beard": "Skjegg",
+      "outfit": "Klær",
+      "glasses": "Briller",
+      "hat": "Lue",
+      "bag": "Sekk",
+      "extras": "Ekstra"
+    },
+    "preset": "Start herfra",
+    "skin": "Hud",
+    "eyes": "Øyne",
+    "none": "Ingen",
+    "cancel": "Avbryt",
+    "save": "Lagre",
+    "edit": "Endre"
+  },
   "note": {
     "title": "Statusnotat",
     "set": "Sett et statusnotat",

@@ -1,4 +1,4 @@
-import { onFloorRename, onFloorShown, WALK_TO_PERSON_EVENT, WAVE_EVENT } from "../lib/floor";
+import { onFloorLook, onFloorRename, onFloorShown, WALK_TO_PERSON_EVENT, WAVE_EVENT } from "../lib/floor";
 import type { StatusNote } from "@shared/messages";
 import * as Phaser from "phaser";
 import type { RoomTicket } from "@/lib/api";
@@ -67,6 +67,7 @@ class GameScene extends Phaser.Scene {
   private windowListeners: Array<[string, EventListener]> = [];
   private unsubscribeShown?: () => void;
   private unsubscribeRename?: () => void;
+  private unsubscribeLook?: () => void;
   /** The meeting room, and whether we stand in it. */
   private meetingZone?: MapAnchor;
   private insideRoom = false;
@@ -90,7 +91,7 @@ class GameScene extends Phaser.Scene {
     this.mapManager.preload();
 
     this.animationManager = new AnimationManager(this);
-    this.animationManager.preload();
+    this.animationManager.preload(this.character);
   }
 
   create() {
@@ -136,10 +137,12 @@ class GameScene extends Phaser.Scene {
     this.seatManager.attach(this.wsManager, (seated) => this.movementManager.setFrozen(seated, () => this.seatManager?.leave()), approach);
     this.meetingZone = this.mapManager.getZone(MEETING_ZONE);
 
-    // Decorating your desk: the camera and your feet are the decorator's until it's done.
+    // Decorating your desk: the camera and your feet are the decorator's until it's done,
+    // and you fade, so you're not sitting in front of what you're arranging.
     attachDecorate((message) => this.wsManager.send(message), this.playerId);
     this.deskDecorator = new DeskDecorator(this, this.mapManager, (decorating) => {
       this.movementManager.setInputEnabled(!decorating);
+      this.tweens.add({ targets: this.player, alpha: decorating ? 0.3 : 1, duration: 200 });
       if (decorating) return;
       const camera = this.cameras.main;
       camera.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);
@@ -207,6 +210,10 @@ class GameScene extends Phaser.Scene {
     this.unsubscribeRename = onFloorRename((name) => {
       this.wsManager.send({ t: "rename", name });
       this.playerManager.renamePlayer(this.playerId, name);
+    });
+    this.unsubscribeLook = onFloorLook((character) => {
+      this.wsManager.send({ t: "look", character });
+      this.playerManager.changeLook(this.playerId, character);
     });
 
     // Everything is listening now, so nothing the room says first is missed.
@@ -338,6 +345,7 @@ class GameScene extends Phaser.Scene {
     offerAction(null);
     this.unsubscribeShown?.();
     this.unsubscribeRename?.();
+    this.unsubscribeLook?.();
 
     this.movementManager?.destroy();
     this.wsManager?.disconnect();

@@ -2,7 +2,8 @@
 
 import { useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Check, ChevronRight, Desk, DoorOpen, HelpCircle, LogOut, MonitorDown, Palette, Settings2, UserPlus } from "@/components/ui/icons";
+import { Check, ChevronRight, Desk, DoorOpen, HelpCircle, LogOut, MonitorDown, Palette, Settings2, Shirt, UserPlus } from "@/components/ui/icons";
+import { openLookCreator } from "@/components/looks/LookCreator";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { setMyStatus, useMyNote, useMyStatus } from "@/lib/floor";
@@ -61,6 +62,7 @@ export function YouMenu({
   const t = useTranslations("shell");
   const tDesk = useTranslations("desk");
   const tDecorate = useTranslations("decorate");
+  const tLook = useTranslations("look");
   const tHelp = useTranslations("help");
   const tStatus = useTranslations("status");
   const router = useRouter();
@@ -218,6 +220,9 @@ export function YouMenu({
           {tDecorate("title")}
         </MenuItem>
       )}
+      <MenuItem icon={<Shirt />} onSelect={openLookCreator}>
+        {tLook("open")}
+      </MenuItem>
 
       {/* A line only when something follows it: on a wide screen, Settings and Help are on the rail. */}
       {(isGuest || (!!settingsHref && !wide) || (!wide && !bar) || canInstall) && <MenuSeparator />}

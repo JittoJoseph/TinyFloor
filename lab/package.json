@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON server.mjs",
     "check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON check.mjs",
-    "build": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON build.mjs"
+    "build": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON build.mjs",
+    "looks": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON looks.mjs"
   },
   "dependencies": {
     "phaser": "catalog:",

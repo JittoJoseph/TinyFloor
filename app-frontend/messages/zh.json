@@ -833,6 +833,32 @@
     "remove": "从桌上拿走",
     "deselect": "完成选择"
   },
+  "look": {
+    "open": "更换形象",
+    "title": "你的形象",
+    "walk": "行走",
+    "turnLeft": "向左转",
+    "turnRight": "向右转",
+    "randomize": "随机",
+    "tabs": {
+      "presets": "预设",
+      "skin": "肤色",
+      "hair": "发型",
+      "beard": "胡子",
+      "outfit": "服装",
+      "glasses": "眼镜",
+      "hat": "帽子",
+      "bag": "背包",
+      "extras": "配饰"
+    },
+    "preset": "从这个开始",
+    "skin": "肤色",
+    "eyes": "眼睛",
+    "none": "无",
+    "cancel": "取消",
+    "save": "保存",
+    "edit": "更换"
+  },
   "note": {
     "title": "状态备注",
     "set": "设置状态备注",

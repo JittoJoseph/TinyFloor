@@ -833,6 +833,32 @@
     "remove": "Poista pöydältä",
     "deselect": "Valmis tämän kanssa"
   },
+  "look": {
+    "open": "Muuta ulkonäköäsi",
+    "title": "Ulkonäkösi",
+    "walk": "Kävele",
+    "turnLeft": "Käänny vasemmalle",
+    "turnRight": "Käänny oikealle",
+    "randomize": "Satunnainen",
+    "tabs": {
+      "presets": "Valmiit",
+      "skin": "Iho",
+      "hair": "Hiukset",
+      "beard": "Parta",
+      "outfit": "Vaatteet",
+      "glasses": "Lasit",
+      "hat": "Hattu",
+      "bag": "Reppu",
+      "extras": "Lisät"
+    },
+    "preset": "Aloita tästä",
+    "skin": "Iho",
+    "eyes": "Silmät",
+    "none": "Ei mitään",
+    "cancel": "Peruuta",
+    "save": "Tallenna",
+    "edit": "Muuta"
+  },
   "note": {
     "title": "Tilaviesti",
     "set": "Aseta tilaviesti",

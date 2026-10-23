@@ -108,3 +108,36 @@ describe("music on the name tag", () => {
     expect(await cy.next("listening")).toEqual({ t: "listening", id: "ava", on: false });
   });
 });
+
+describe("a new look", () => {
+  const LOOK = "body.1/eyes.1/outfit.1-2/hair.4-3/glasses.15-1";
+
+  it("shows everyone how someone looks now, and whoever arrives later", async () => {
+    const room = uniqueRoom();
+    const ava = await Client.open(room, { sub: "ava" });
+    await ava.next("welcome");
+    const ben = await Client.open(room, { sub: "ben" });
+    await ben.next("welcome");
+
+    ben.send({ t: "look", character: LOOK });
+    expect(await ava.next("look")).toEqual({ t: "look", id: "ben", character: LOOK });
+
+    const cy = await Client.open(room, { sub: "cy" });
+    const welcome = await cy.next("welcome");
+    expect(welcome.players.find((player) => player.id === "ben")?.character).toBe(LOOK);
+  });
+
+  it("takes no look that isn't one we offer", async () => {
+    const room = uniqueRoom();
+    const ava = await Client.open(room, { sub: "ava" });
+    await ava.next("welcome");
+    const ben = await Client.open(room, { sub: "ben" });
+    await ben.next("welcome");
+
+    for (const character of ["body.9/eyes.1/outfit.1-2", "body.1/eyes.1", "body.1/eyes.1/outfit.31-1", "hair.4-3/body.1/eyes.1/outfit.1-2", "Nobody"]) {
+      ben.send({ t: "look", character });
+    }
+    await settle();
+    expect(ava.messages.some((message) => message.t === "look")).toBe(false);
+  });
+});

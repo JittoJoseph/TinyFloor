@@ -14,6 +14,7 @@ counts as redistributing, so these files are **not** in this repository:
 *-frontend/public/tilesets/textures/*.png
 *-frontend/public/tilesets/items/*.png
 *-frontend/public/catalog/*.png
+*-frontend/public/looks/*/*.png
 ```
 
 The floor (`shared-protocol/src/catalog/floors/startup.json`, built by the lab

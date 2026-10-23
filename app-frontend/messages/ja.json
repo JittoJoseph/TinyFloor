@@ -833,6 +833,32 @@
     "remove": "デスクから外す",
     "deselect": "選択を終える"
   },
+  "look": {
+    "open": "見た目を変える",
+    "title": "あなたの見た目",
+    "walk": "歩く",
+    "turnLeft": "左を向く",
+    "turnRight": "右を向く",
+    "randomize": "ランダム",
+    "tabs": {
+      "presets": "プリセット",
+      "skin": "肌",
+      "hair": "髪",
+      "beard": "ひげ",
+      "outfit": "服",
+      "glasses": "メガネ",
+      "hat": "帽子",
+      "bag": "バッグ",
+      "extras": "小物"
+    },
+    "preset": "これから始める",
+    "skin": "肌",
+    "eyes": "目",
+    "none": "なし",
+    "cancel": "キャンセル",
+    "save": "保存",
+    "edit": "変更"
+  },
   "note": {
     "title": "ステータスメモ",
     "set": "ステータスメモを設定",

@@ -222,6 +222,20 @@ export function onFloorRename(listener: (name: string) => void): () => void {
   return () => window.removeEventListener(RENAME_EVENT, hear);
 }
 
+const LOOK_EVENT = "floorLook";
+
+/** How you look now, told to the floor you're on (the API has it already): you change over where you are. */
+export function changeLookOnFloor(character: string) {
+  window.dispatchEvent(new CustomEvent(LOOK_EVENT, { detail: { character } }));
+}
+
+/** For the scene: hears a new look of yours. */
+export function onFloorLook(listener: (character: string) => void): () => void {
+  const hear = (event: Event) => listener((event as CustomEvent<{ character: string }>).detail.character);
+  window.addEventListener(LOOK_EVENT, hear);
+  return () => window.removeEventListener(LOOK_EVENT, hear);
+}
+
 export function useMyNote(): StatusNote | null {
   return useSyncExternalStore(
     (listener) => {

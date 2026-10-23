@@ -19,7 +19,6 @@
 //   build pulls it from R2 and checks it like the rest of the art.
 //
 // Then upload what changed with the commands it prints (ASSETS.md).
-import { createHash } from "node:crypto";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -28,14 +27,13 @@ import { drawn as drawnArt } from "./pages/art.js";
 import { DESK_STEP, check, clusterSize, isComposite, isGroup, spriteSize } from "./pages/catalog.js";
 import { checkTemplate, officeFloor, seatsOf, solidsOf } from "./pages/floor.js";
 import { TILE, wallSolids } from "./pages/shell.js";
+import { record } from "./manifest.mjs";
 
 const { PNG } = pngjs;
 const ROOT = resolve(fileURLToPath(import.meta.url), "../..");
 const PACKS = join(ROOT, "assets-pack");
-const PRIVATE = join(ROOT, "private-assets");
 const CATALOG = join(ROOT, "shared-protocol", "src", "catalog");
 const ATLAS_KEY = "catalog/items.png";
-const MANIFEST = join(ROOT, "web-shared", "assets.manifest.json");
 const WIDTH = 1024;
 const GAP = 2;
 
@@ -229,18 +227,6 @@ function chairOptions() {
 
 // ---------- the manifest ----------
 
-const manifest = JSON.parse(await readFile(MANIFEST, "utf8"));
-const changed = [];
-for (const { key, png } of pictures) {
-  await mkdir(join(PRIVATE, key, ".."), { recursive: true });
-  await writeFile(join(PRIVATE, key), png);
-  const entry = { key, sha256: createHash("sha256").update(png).digest("hex"), bytes: png.length };
-  const known = manifest.files.findIndex((file) => file.key === key);
-  if (known >= 0 && manifest.files[known].sha256 === entry.sha256) continue;
-  if (known < 0) manifest.files.push(entry);
-  else manifest.files[known] = entry;
-  changed.push(key);
-}
-await writeFile(MANIFEST, JSON.stringify(manifest, null, 2) + "\n");
+const { bucket, changed } = await record(pictures);
 if (!changed.length) console.log("Same as before: nothing to upload.");
-for (const key of changed) console.log(`Changed. Upload it: wrangler r2 object put ${manifest.bucket}/${key} --file=private-assets/${key} --remote`);
+for (const key of changed) console.log(`Changed. Upload it: wrangler r2 object put ${bucket}/${key} --file=private-assets/${key} --remote`);

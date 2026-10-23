@@ -833,6 +833,32 @@
     "remove": "Ta bort från skrivbordet",
     "deselect": "Klar med den"
   },
+  "look": {
+    "open": "Ändra utseende",
+    "title": "Ditt utseende",
+    "walk": "Gå",
+    "turnLeft": "Vänd åt vänster",
+    "turnRight": "Vänd åt höger",
+    "randomize": "Slumpa",
+    "tabs": {
+      "presets": "Förslag",
+      "skin": "Hud",
+      "hair": "Hår",
+      "beard": "Skägg",
+      "outfit": "Kläder",
+      "glasses": "Glasögon",
+      "hat": "Hatt",
+      "bag": "Väska",
+      "extras": "Extra"
+    },
+    "preset": "Börja med den här",
+    "skin": "Hud",
+    "eyes": "Ögon",
+    "none": "Ingen",
+    "cancel": "Avbryt",
+    "save": "Spara",
+    "edit": "Ändra"
+  },
   "note": {
     "title": "Statusnotis",
     "set": "Ange en statusnotis",

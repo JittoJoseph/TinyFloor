@@ -9,6 +9,7 @@ import {
   PRESENCE_STATUSES,
   cleanDisplayName,
   cleanNote,
+  isCharacter,
   liveNote,
   type StatusNote,
   isInsideMap,
@@ -368,6 +369,9 @@ export class Room extends DurableObject<Env> {
       case "rename":
         this.rename(me, message.name);
         break;
+      case "look":
+        this.changeLook(socket, me, message.character);
+        break;
       case "board_sync":
         send(socket, { t: "board_state", strokes: this.board.strokes() });
         break;
@@ -576,6 +580,14 @@ export class Room extends DurableObject<Env> {
     if (!clean || clean === me.name) return;
     me.name = clean;
     this.broadcast({ t: "renamed", id: me.userId, name: clean });
+  }
+
+  /** How you look changed: kept through hibernation, for whoever arrives next, and shown to everyone here. */
+  private changeLook(socket: WebSocket, me: Attachment, character: unknown): void {
+    if (!this.takeAction(me) || !isCharacter(character) || character === me.character) return;
+    me.character = character;
+    this.remember(socket, me);
+    this.broadcast({ t: "look", id: me.userId, character });
   }
 
   private draw(socket: WebSocket, me: Attachment, message: object): void {

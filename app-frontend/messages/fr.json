@@ -833,6 +833,32 @@
     "remove": "Retirer du bureau",
     "deselect": "Terminé"
   },
+  "look": {
+    "open": "Changer d'apparence",
+    "title": "Votre apparence",
+    "walk": "Marcher",
+    "turnLeft": "Tourner à gauche",
+    "turnRight": "Tourner à droite",
+    "randomize": "Au hasard",
+    "tabs": {
+      "presets": "Modèles",
+      "skin": "Peau",
+      "hair": "Cheveux",
+      "beard": "Barbe",
+      "outfit": "Tenue",
+      "glasses": "Lunettes",
+      "hat": "Chapeau",
+      "bag": "Sac",
+      "extras": "Accessoires"
+    },
+    "preset": "Partir de celui-ci",
+    "skin": "Peau",
+    "eyes": "Yeux",
+    "none": "Aucun",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "edit": "Changer"
+  },
   "note": {
     "title": "Note de statut",
     "set": "Ajouter une note de statut",

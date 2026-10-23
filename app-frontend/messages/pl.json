@@ -833,6 +833,32 @@
     "remove": "Zdejmij z biurka",
     "deselect": "Gotowe z tym"
   },
+  "look": {
+    "open": "Zmień wygląd",
+    "title": "Twój wygląd",
+    "walk": "Chodź",
+    "turnLeft": "Obróć w lewo",
+    "turnRight": "Obróć w prawo",
+    "randomize": "Losowo",
+    "tabs": {
+      "presets": "Gotowe",
+      "skin": "Skóra",
+      "hair": "Włosy",
+      "beard": "Broda",
+      "outfit": "Strój",
+      "glasses": "Okulary",
+      "hat": "Czapka",
+      "bag": "Plecak",
+      "extras": "Dodatki"
+    },
+    "preset": "Zacznij od tego",
+    "skin": "Skóra",
+    "eyes": "Oczy",
+    "none": "Brak",
+    "cancel": "Anuluj",
+    "save": "Zapisz",
+    "edit": "Zmień"
+  },
   "note": {
     "title": "Notatka statusu",
     "set": "Ustaw notatkę statusu",

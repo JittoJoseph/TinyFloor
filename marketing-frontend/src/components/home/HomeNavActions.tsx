@@ -2,9 +2,9 @@ import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 
 /**
  * The nav's right side: sign in, and the main ask. The site's pages know
- * nothing of who is signed in; the app does. Sign in takes someone already
- * signed in straight on to their offices, and making an office asks for an
- * account on the way.
+ * nothing of who is signed in; the app does. Both go to the app's front door
+ * (/home) in the end: someone signed in lands on their office's floor, and
+ * someone new signs up and makes one.
  */
 export function HomeNavActions({ signIn, start }: { signIn: string; start: string }) {
   return (
@@ -16,7 +16,7 @@ export function HomeNavActions({ signIn, start }: { signIn: string; start: strin
         {signIn}
       </Link>
       <Link
-        href="/create"
+        href="/home?mode=signup"
         className="inline-flex h-9 items-center whitespace-nowrap rounded-full bg-foreground px-4 text-[14.5px] text-background transition-[background-color,transform] hover:bg-foreground/85 active:scale-[0.98]"
       >
         {start}

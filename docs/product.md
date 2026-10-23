@@ -278,6 +278,13 @@ missing features on the map.
   and "virtual office" is what people search for.
 - **Google sign-in first**, email behind "Continue with email": one tap, a
   verified email and a real name. Two equal choices slow people down.
+- **No dashboard, no account page** (23 October). Everything happens inside
+  an office: your profile and how you sign in are in its settings. The app's
+  front door, `/home`, has nothing on it; it only sends you on: signed out,
+  to the sign-in; with an office, onto the floor you were last on (else the
+  busiest); with none, to making one, which also offers your team's office.
+  The site's "Get started" goes there, so it suits someone new and someone
+  coming back alike. `/`, `/dashboard` and `/account` redirect to it.
 - **No passwords** (23 October). Email sign-in is a 6-digit code sent to the
   address, which also makes the account the first time, so signing in and
   signing up are one step. A password could already be reset by email, so it

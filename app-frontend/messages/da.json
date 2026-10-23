@@ -663,28 +663,6 @@
     "nothingOpen": "Der er intet åbent hos TinyFloor-teamet lige nu.",
     "emailUs": "Hellere e-mail? <link>{email}</link>"
   },
-  "dashboard": {
-    "newOffice": "Nyt kontor",
-    "walkIn": "Gå ind",
-    "home": "Hjem",
-    "invite": "Inviter folk",
-    "inNow": "{count, plural, =0 {Ingen her} other {# her nu}}",
-    "seats": "{used} af {seats} pladser",
-    "lobbyNote": "Eller prøv demokontoret først",
-    "welcome": "Velkommen, {name}",
-    "welcomeAnonymous": "Velkommen",
-    "welcomeBody": "Én etage til dit team, med kanaler og opkald indbygget.",
-    "invited": "Er du blevet inviteret?",
-    "invitedBody": "Indsæt linket, dit team sendte dig.",
-    "invitePlaceholder": "Indsæt et invitationslink",
-    "join": "Deltag",
-    "badLink": "Det ligner ikke et invitationslink. Indsæt hele linket.",
-    "makeTitle": "Lad os lave dit kontor",
-    "otherWays": "Andre veje ind",
-    "lobbyBody": "Gå rundt, og se, hvordan et kontor fungerer.",
-    "yourAccount": "Din konto",
-    "createOffice": "Opret dit kontor"
-  },
   "billing": {
     "settingUp": "Betaling modtaget. Planen sættes op…",
     "settingUpSlow": "Betaling modtaget. Planen kan tage et minut om at vise sig; genindlæs, hvis den ikke er der.",

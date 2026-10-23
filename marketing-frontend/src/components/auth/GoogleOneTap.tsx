@@ -47,7 +47,7 @@ export function GoogleOneTap() {
                   const go = () => {
                     if (gone) return;
                     gone = true;
-                    window.location.assign(appHref(locale, "/"));
+                    window.location.assign(appHref(locale, "/home"));
                   };
                   const event = created ? "account_signed_up" : "account_signed_in";
                   withPostHog((posthog) => {

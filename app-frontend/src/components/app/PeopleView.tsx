@@ -8,7 +8,7 @@ import { dmChannelId } from "@shared/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError } from "@/lib/api";
-import { lobbyPath, officeChatPath, officeSettingsPath, shareUrl } from "@/lib/links";
+import { leftPath, lobbyPath, officeChatPath, officeSettingsPath, shareUrl } from "@/lib/links";
 import { useInvite } from "./Invite";
 import { shareLink } from "@/lib/share";
 import { useFloor, useFloorStatus, useMyNote } from "@/lib/floor";
@@ -258,7 +258,7 @@ function OfficePeople() {
                     const { id, isMe } = removing;
                     setRemoving(null);
                     // Leaving yourself goes straight out: there is no office left to read again.
-                    if (isMe) void api.removeMember(office.id, id).then(() => router.replace("/"), () => setError(t("wrong")));
+                    if (isMe) void api.removeMember(office.id, id).then(() => router.replace(leftPath(office.id)), () => setError(t("wrong")));
                     else void run(() => api.removeMember(office.id, id).then());
                   }}
                   className="me-auto inline-flex h-10 cursor-pointer items-center rounded-full px-3 text-[13px] font-medium text-muted-foreground transition-colors hover:text-destructive"

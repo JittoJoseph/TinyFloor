@@ -663,28 +663,6 @@
     "nothingOpen": "目前没有与 TinyFloor 团队进行中的工单。",
     "emailUs": "更想用邮件？<link>{email}</link>"
   },
-  "dashboard": {
-    "newOffice": "新建办公室",
-    "walkIn": "走进去",
-    "home": "首页",
-    "invite": "邀请成员",
-    "inNow": "{count, plural, =0 {没有人} other {现在 # 人}}",
-    "seats": "{used}/{seats} 个座位",
-    "lobbyNote": "或者先试用演示办公室",
-    "welcome": "欢迎，{name}",
-    "welcomeAnonymous": "欢迎",
-    "welcomeBody": "给团队的一层楼，频道和通话都已内置。",
-    "invited": "收到邀请了吗？",
-    "invitedBody": "粘贴团队发给你的链接。",
-    "invitePlaceholder": "粘贴邀请链接",
-    "join": "加入",
-    "badLink": "这看起来不是邀请链接。请粘贴完整链接。",
-    "makeTitle": "来创建你的办公室",
-    "otherWays": "其他进入方式",
-    "lobbyBody": "四处走走，看看办公室是怎么运作的。",
-    "yourAccount": "你的账户",
-    "createOffice": "创建你的办公室"
-  },
   "billing": {
     "settingUp": "已收到付款，正在启用方案…",
     "settingUpSlow": "已收到付款。方案可能需要一分钟才会显示；如未显示请刷新页面。",

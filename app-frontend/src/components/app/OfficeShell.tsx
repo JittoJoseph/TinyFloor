@@ -7,7 +7,7 @@ import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError, type Office, type OfficeOverview } from "@/lib/api";
-import { officeChatPath, officeMeetingsPath, officePath, officePeoplePath, officeSettingsPath } from "@/lib/links";
+import { homePath, leftPath, officeChatPath, officeMeetingsPath, officePath, officePeoplePath, officeSettingsPath } from "@/lib/links";
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
 import { useHelp } from "@/lib/help";
@@ -115,7 +115,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
         // Gone to straight (the one you were last in, say) and it isn't yours any more: the front door reads which are.
         if (ahead) {
           forgetOffice(officeId);
-          router.replace("/");
+          router.replace(homePath);
         } else setGone(true);
       })),
     [load, ahead, router, officeId],
@@ -201,7 +201,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
         <div className="max-w-sm text-center">
           <h1 className="mb-2 text-xl font-semibold tracking-tight text-foreground">{t("goneTitle")}</h1>
           <p className="mb-6 text-[14px] text-muted-foreground">{t("gone")}</p>
-          <Link href="/" className="inline-flex h-10 items-center rounded-full bg-foreground px-5 text-[13px] font-medium text-background">
+          <Link href={homePath} className="inline-flex h-10 items-center rounded-full bg-foreground px-5 text-[13px] font-medium text-background">
             {t("backToOffices")}
           </Link>
         </div>
@@ -247,8 +247,8 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   };
 
   // An office is home: there's no button out of it, only the switcher to another. Where the
-  // room itself sends you out (open elsewhere, removed), it's to the office's door.
-  const door = `/?${new URLSearchParams({ left: office.id })}`;
+  // room itself sends you out (open elsewhere, removed), it's on to another office, or to making one.
+  const door = leftPath(office.id);
 
   return (
     <Context.Provider value={{ office, overview: read.overview, readAt: read.at, refresh }}>

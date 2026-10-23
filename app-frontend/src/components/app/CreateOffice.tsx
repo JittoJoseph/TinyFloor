@@ -2,14 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Link2, Zap } from "@/components/ui/icons";
+import { Zap } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, type Office, type PlanId } from "@/lib/api";
 import { dollars, usePlans } from "@/lib/billing";
 import { openCheckout, waitForPlan } from "@/lib/checkout";
-import { officePath } from "@/lib/links";
+import { officePath, useSitePage } from "@/lib/links";
+import { lastOffice } from "@/lib/lastOffice";
 import { openOfficeAhead } from "@/lib/officeAhead";
 import { warmFloor } from "@/lib/floorWarmup";
 import { InviteActions } from "./Invite";
@@ -38,6 +39,21 @@ type Step = "name" | "invite" | "plan";
  * (/create?plan=pro) gets it right after the name instead. The office is made
  * as soon as it has a name, so leaving at any point still leaves an office.
  */
+/**
+ * Back out of making an office: to the office you were last in, or, with
+ * none, out to the site (the front door would only bring you back here).
+ */
+export function useCreateBack(): string {
+  const site = useSitePage();
+  const [back, setBack] = useState(site);
+  useEffect(() => {
+    const last = lastOffice();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (last) setBack(officePath(last));
+  }, []);
+  return back;
+}
+
 export function CreateOfficeFlow() {
   const t = useTranslations("create");
   const tEntry = useTranslations("entry");
@@ -51,6 +67,7 @@ export function CreateOfficeFlow() {
   // Colleagues with an office already: joining it beats making a second one for the same team.
   const team = useTeamOffices();
   const tTeam = useTranslations("team");
+  const back = useCreateBack();
   const selling = !!catalog?.billing;
 
   const [step, setStep] = useState<Step>("name");
@@ -153,7 +170,7 @@ export function CreateOfficeFlow() {
 
   return (
     <EntryShell
-      backHref="/"
+      backHref={back}
       header={
         <EntryHeader
           mark={<LitFace seed={typed.toLowerCase() || user?.id || "your-office"} size={48} phone={44} square />}
@@ -278,55 +295,5 @@ export function CreateOfficeFlow() {
         </DoorSteps>
       </form>
     </EntryShell>
-  );
-}
-
-/** Pasting the link a team sent: it opens that office's invite as if it had been clicked. */
-export function JoinByLink() {
-  const t = useTranslations("dashboard");
-  const router = useRouter();
-  const [link, setLink] = useState("");
-  const [error, setError] = useState("");
-
-  const join = (event: React.FormEvent) => {
-    event.preventDefault();
-    const found = link.trim().match(/\/invite\/([^/?#\s]+)/);
-    if (!found) {
-      setError(t("badLink"));
-      return;
-    }
-    router.push(`/invite/${found[1]}`);
-  };
-
-  return (
-    <form onSubmit={join}>
-      <div className="flex h-11 items-center gap-1 rounded-full border border-border p-1 ps-4 transition-colors focus-within:border-foreground/25">
-        <Link2 className="size-4 shrink-0 text-faint" />
-        <label className="sr-only" htmlFor="invite-link">
-          {t("invitePlaceholder")}
-        </label>
-        <input
-          id="invite-link"
-          value={link}
-          onChange={(event) => {
-            setLink(event.target.value);
-            setError("");
-          }}
-          placeholder={t("invitePlaceholder")}
-          inputMode="url"
-          autoComplete="off"
-          spellCheck={false}
-          className="h-full min-w-0 flex-1 bg-transparent ps-1.5 text-[16px] text-foreground outline-none placeholder:text-faint sm:text-[13.5px]"
-        />
-        <button
-          type="submit"
-          disabled={!link.trim()}
-          className="h-9 shrink-0 cursor-pointer rounded-full px-4 text-[13px] font-medium text-foreground transition-colors hover:bg-foreground/[0.06] disabled:cursor-not-allowed disabled:opacity-40"
-        >
-          {t("join")}
-        </button>
-      </div>
-      {error && <p className="mt-2 ps-4 text-[12.5px] text-destructive">{error}</p>}
-    </form>
   );
 }

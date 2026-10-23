@@ -663,28 +663,6 @@
     "nothingOpen": "لا يوجد شيء مفتوح مع فريق TinyFloor الآن.",
     "emailUs": "تفضّل البريد الإلكتروني؟ <link>{email}</link>"
   },
-  "dashboard": {
-    "newOffice": "مكتب جديد",
-    "walkIn": "ادخل",
-    "home": "الرئيسية",
-    "invite": "دعوة أشخاص",
-    "inNow": "{count, plural, =0 {لا أحد} other {الآن: #}}",
-    "seats": "{used} من {seats} مقاعد",
-    "lobbyNote": "أو جرّب المكتب التجريبي أولًا",
-    "welcome": "أهلًا، {name}",
-    "welcomeAnonymous": "أهلًا بك",
-    "welcomeBody": "طابق واحد لفريقك، فيه القنوات والمكالمات.",
-    "invited": "هل تلقيت دعوة؟",
-    "invitedBody": "الصق الرابط الذي أرسله فريقك.",
-    "invitePlaceholder": "الصق رابط دعوة",
-    "join": "انضم",
-    "badLink": "لا يبدو هذا رابط دعوة. الصق الرابط كاملًا.",
-    "makeTitle": "لنصنع مكتبك",
-    "otherWays": "طرق أخرى للدخول",
-    "lobbyBody": "تجوّل وشاهد كيف يعمل المكتب.",
-    "yourAccount": "حسابك",
-    "createOffice": "أنشئ مكتبك"
-  },
   "billing": {
     "settingUp": "تم استلام الدفعة. جارٍ تجهيز الخطة…",
     "settingUpSlow": "تم استلام الدفعة. قد تحتاج الخطة إلى دقيقة لتظهر؛ حدّث الصفحة إن لم تظهر.",

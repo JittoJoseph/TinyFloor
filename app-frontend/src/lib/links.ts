@@ -6,6 +6,11 @@ import { APP_URL, siteHref } from "@/lib/site";
 // copied from the Japanese UI opens in English for an English teammate. Inside
 // the app, pass them to the locale-aware `Link` / router, which adds the prefix.
 
+/** The app's front door: on to your office, the sign-in, or making one (components/app/Home). */
+export const homePath = "/home";
+/** The front door, having just left this office: it goes on to another, or to making one. */
+export const leftPath = (officeId: string) => `${homePath}?${new URLSearchParams({ left: officeId })}`;
+
 /** The free public lobby, open to anyone. */
 export const lobbyPath = "/lobby";
 export const lobbyChatPath = (channel?: string) =>

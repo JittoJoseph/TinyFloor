@@ -663,28 +663,6 @@
     "nothingOpen": "TinyFloor-tiimillä ei ole nyt mitään avoinna.",
     "emailUs": "Mieluummin sähköpostilla? <link>{email}</link>"
   },
-  "dashboard": {
-    "newOffice": "Uusi toimisto",
-    "walkIn": "Kävele sisään",
-    "home": "Koti",
-    "invite": "Kutsu ihmisiä",
-    "inNow": "{count, plural, =0 {Ei ketään} other {# paikalla}}",
-    "seats": "{used}/{seats} paikkaa",
-    "lobbyNote": "Tai kokeile ensin demotoimistoa",
-    "welcome": "Tervetuloa, {name}",
-    "welcomeAnonymous": "Tervetuloa",
-    "welcomeBody": "Yksi kerros tiimillesi, kanavat ja puhelut mukana.",
-    "invited": "Saitko kutsun?",
-    "invitedBody": "Liitä linkki, jonka tiimisi lähetti.",
-    "invitePlaceholder": "Liitä kutsulinkki",
-    "join": "Liity",
-    "badLink": "Tuo ei näytä kutsulinkiltä. Liitä koko linkki.",
-    "makeTitle": "Tehdään toimistosi",
-    "otherWays": "Muita tapoja sisään",
-    "lobbyBody": "Kävele ympäriinsä ja katso, miten toimisto toimii.",
-    "yourAccount": "Tilisi",
-    "createOffice": "Luo toimistosi"
-  },
   "billing": {
     "settingUp": "Maksu vastaanotettu. Pakettia otetaan käyttöön…",
     "settingUpSlow": "Maksu vastaanotettu. Paketin näkymiseen voi mennä minuutti; päivitä sivu, jos sitä ei näy.",

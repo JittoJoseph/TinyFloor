@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError } from "@/lib/api";
+import { homePath } from "@/lib/links";
 import { Field, inputClass } from "@/components/entry/EntryShell";
 import { ActionButton } from "@/components/ui/Action";
 import { CenteredAuthLayout } from "./AuthLayout";
@@ -21,7 +22,7 @@ const RESEND_AFTER_MS = 60_000;
 
 /** Only paths on this site, so a crafted link can't bounce someone elsewhere after signing in. */
 export function safeRedirect(value: string | null): string {
-  return value && value.startsWith("/") && !value.startsWith("//") && !value.startsWith("/\\") ? value : "/";
+  return value && value.startsWith("/") && !value.startsWith("//") && !value.startsWith("/\\") ? value : homePath;
 }
 
 /**

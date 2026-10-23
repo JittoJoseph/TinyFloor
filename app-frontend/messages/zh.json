@@ -818,7 +818,8 @@
       "tech": "科技",
       "lamps": "台灯",
       "personal": "个人",
-      "setups": "整套"
+      "setups": "整套",
+      "chairs": "椅子"
     },
     "hint": "选择要放在桌上的东西，拖动即可移动。",
     "swapHint": "选择要替换成的东西。",

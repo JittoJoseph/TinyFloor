@@ -818,7 +818,8 @@
       "tech": "Tech",
       "lamps": "Lampes",
       "personal": "Perso",
-      "setups": "Postes"
+      "setups": "Postes",
+      "chairs": "Chaises"
     },
     "hint": "Choisissez un objet pour votre bureau. Faites glisser les objets pour les déplacer.",
     "swapHint": "Choisissez un objet pour le remplacer.",

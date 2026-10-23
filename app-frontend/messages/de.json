@@ -818,7 +818,8 @@
       "tech": "Technik",
       "lamps": "Lampen",
       "personal": "Persönlich",
-      "setups": "Arbeitsplätze"
+      "setups": "Arbeitsplätze",
+      "chairs": "Stühle"
     },
     "hint": "Wähle etwas für deinen Schreibtisch. Ziehe Dinge, um sie zu verschieben.",
     "swapHint": "Wähle etwas zum Austauschen.",

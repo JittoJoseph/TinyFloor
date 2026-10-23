@@ -818,7 +818,8 @@
       "tech": "Tecnologia",
       "lamps": "Luminárias",
       "personal": "Pessoal",
-      "setups": "Estações"
+      "setups": "Estações",
+      "chairs": "Cadeiras"
     },
     "hint": "Escolha algo para sua mesa. Arraste os itens para movê-los.",
     "swapHint": "Escolha algo para trocar.",

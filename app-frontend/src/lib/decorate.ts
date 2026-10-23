@@ -1,17 +1,18 @@
 import { useSyncExternalStore } from "react";
 import type { ClientMessage } from "@shared/messages";
 import { FLOOR } from "@shared/map";
-import { addedKey, canChange, deskOfSeat, fitsOn, officePieces, thingsOn, type PieceChange } from "@shared/office";
+import { addedKey, canChange, deskOfSeat, officePieces, placeOn, thingsOn, type PieceChange } from "@shared/office";
 import { deskOf, deskState } from "./desks";
 import { applyPieceChange, pieceChanges } from "./pieces";
 import { track } from "@/lib/analytics";
 
 /**
- * Decorating your desk (docs/customization.md): the floor zooms onto it and
- * the panel beside it offers what can stand on it and the chairs it can have.
- * Everything you do shows at once and goes to the room, which says yes (and
- * tells everyone) or sends the office's pieces back. The floor (DeskDecorator)
- * picks things up and moves them; the panel (DecoratePanel) adds and swaps;
+ * Decorating your desk (docs/customization.md): the floor brings your desk
+ * into view and dims the rest, and a tray rises with what can stand on it and
+ * the chairs it can have. Everything you do shows at once and goes to the
+ * room, which says yes (and tells everyone) or sends the office's pieces
+ * back. The floor (DeskDecorator) picks things up, moves them and takes what's
+ * carried in from the tray; the tray (DecoratePanel) adds, swaps and carries;
  * both go through here.
  */
 interface DecorateState {
@@ -21,6 +22,13 @@ interface DecorateState {
   selected: string | null;
   /** Where the picked piece's buttons go on screen (page pixels, its top middle), while one is picked. */
   anchor: { x: number; y: number } | null;
+  /** A thing being carried in from the tray, until it's dropped on the desk or let go of. */
+  carrying: string | null;
+  /**
+   * Not decorating, with the pointer over your desk: where its Decorate chip
+   * goes (page pixels), over the desk or, where you sit above it, under it.
+   */
+  hint: { x: number; y: number; below: boolean } | null;
   undo: number;
   redo: number;
 }
@@ -32,7 +40,7 @@ interface Step {
   after: PieceChange | null;
 }
 
-let state: DecorateState = { desk: null, selected: null, anchor: null, undo: 0, redo: 0 };
+let state: DecorateState = { desk: null, selected: null, anchor: null, carrying: null, hint: null, undo: 0, redo: 0 };
 const listeners = new Set<() => void>();
 let send: ((message: ClientMessage) => void) | null = null;
 let me: string | null = null;
@@ -74,26 +82,36 @@ export function openDecorate() {
   past = [];
   ahead = [];
   track("desk_decorate_opened");
-  set({ desk, selected: null, anchor: null });
+  set({ desk, selected: null, anchor: null, carrying: null, hint: null });
 }
 
 export function close() {
   if (state.desk === null) return;
   past = [];
   ahead = [];
-  set({ desk: null, selected: null, anchor: null });
+  set({ desk: null, selected: null, anchor: null, carrying: null });
 }
 
 export const closeDecorate = close;
 
 export const select = (key: string | null) => state.selected !== key && set({ selected: key, anchor: key ? state.anchor : null });
 
+const samePoint = (a: { x: number; y: number } | null, b: { x: number; y: number } | null) =>
+  a === b || (!!a && !!b && Math.abs(a.x - b.x) < 0.5 && Math.abs(a.y - b.y) < 0.5);
+
 /** The floor says where the picked piece's buttons go. */
 export function setAnchor(anchor: { x: number; y: number } | null) {
-  const now = state.anchor;
-  if (now === anchor || (now && anchor && Math.abs(now.x - anchor.x) < 0.5 && Math.abs(now.y - anchor.y) < 0.5)) return;
-  set({ anchor });
+  if (!samePoint(state.anchor, anchor)) set({ anchor });
 }
+
+/** The floor says where your desk's Decorate chip goes while the pointer is over it, or that it isn't. */
+export function setDeskHint(hint: { x: number; y: number; below: boolean } | null) {
+  if (!samePoint(state.hint, hint)) set({ hint });
+}
+
+/** A thing picked up from the tray, to be carried onto the desk. */
+export const startCarry = (item: string) => state.desk && set({ carrying: item, selected: null });
+export const endCarry = () => state.carrying && set({ carrying: null });
 
 // ---------- sending: no faster than the room takes them (a few a second) ----------
 
@@ -153,40 +171,44 @@ function thingChange(key: string, item: string, at: [number, number]): PieceChan
   return { ...(piece.item === item ? {} : { item }), ...(piece.x === at[0] && piece.y === at[1] ? {} : { at }) };
 }
 
+/** A thing's pixels where it stands: [left, top, right, bottom] on the floor. */
+function artBox(item: string, x: number, y: number): [number, number, number, number] {
+  const [left, top, right, bottom] = FLOOR.things[item]?.art ?? [0, 0, 32, 32];
+  return [x + left, y + top, x + right, y + bottom];
+}
+
 /**
- * Where a thing could go on the desk: the first spot it fits that nothing is
- * standing on, from the left along the desk, back row first on a near desk;
- * failing that, the first spot it fits at all.
+ * Where a thing could go on the desk: the first spot along it, from the
+ * left, where its pixels don't stand on another thing's; at the back of a near
+ * desk first, then at its front; failing that, the first spot it fits at all.
  */
 export function spotFor(item: string, except?: string): [number, number] | null {
   const desk = state.desk;
-  const thing = FLOOR.things[item];
-  if (!desk || !thing) return null;
+  if (!desk || !FLOOR.things[item]) return null;
   const spec = FLOOR.desks[desk];
-  const [w, h] = thing.size;
-  const others = thingsOn(desk, pieceChanges()).filter((piece) => piece.key !== except);
-  const overlaps = (x: number, y: number) =>
-    others.some((one) => {
-      const [ow, oh] = FLOOR.things[one.item]?.size ?? [32, 32];
-      return x < one.x + ow && x + w > one.x && y < one.y + oh && y + h > one.y;
-    });
-  const feet = spec.side === "front" ? [spec.feet[0], spec.feet[1]] : [spec.feet[1]];
+  const others = thingsOn(desk, pieceChanges())
+    .filter((piece) => piece.key !== except)
+    .map((piece) => artBox(piece.item, piece.x, piece.y));
+  const [left, , right] = FLOOR.things[item].art;
+  const width = right - left;
+  const feet = spec.side === "front" ? [spec.feet[0] + 8, spec.feet[1] - 2] : [spec.feet[1] - 2];
   let any: [number, number] | null = null;
   for (const foot of feet) {
-    for (let x = spec.along[0]; x + w <= spec.along[1]; x += 16) {
-      const at: [number, number] = [x, foot - h];
-      if (!fitsOn(desk, item, at)) continue;
+    for (let middle = spec.along[0] + width / 2; middle <= spec.along[1] - width / 2; middle += 8) {
+      const at = placeOn(desk, item, middle, foot);
+      if (!at) continue;
       any ??= at;
-      if (!overlaps(...at)) return at;
+      const [x0, y0, x1, y1] = artBox(item, ...at);
+      if (!others.some(([a0, b0, a1, b1]) => x0 < a1 && x1 > a0 && y0 < b1 && y1 > b0)) return at;
     }
   }
   return any;
 }
 
-/** Puts a new thing on your desk, where there's room, and picks it. */
-export function addThing(item: string): boolean {
+/** Puts a new thing on your desk, where it's dropped or else where there's room, and picks it. */
+export function addThing(item: string, dropped?: [number, number]): boolean {
   const desk = state.desk;
-  const at = spotFor(item);
+  const at = dropped ?? spotFor(item);
   if (!desk || !at) return false;
   const key = addedKey(desk);
   if (!change(key, { item, at })) return false;
@@ -199,7 +221,9 @@ export function addThing(item: string): boolean {
 export function swapThing(key: string, item: string): boolean {
   const now = officePieces(pieceChanges()).find((piece) => piece.key === key);
   if (!now || !state.desk) return false;
-  const at = fitsOn(state.desk, item, [now.x, now.y]) ? ([now.x, now.y] as [number, number]) : spotFor(item, key);
+  // Standing where the old one stood: the same middle, the same foot.
+  const [left, , right, bottom] = FLOOR.things[now.item]?.art ?? [0, 0, 32, 32];
+  const at = placeOn(state.desk, item, now.x + (left + right) / 2, now.y + bottom) ?? spotFor(item, key);
   return !!at && change(key, thingChange(key, item, at));
 }
 

@@ -48,7 +48,7 @@ script: stepping the game, sitting, placing.
 ```
 pnpm --dir lab check   # the house rules, on the catalog, layouts and templates; needs no art
 pnpm --dir lab build   # bakes the atlas and the floors (floors/<id>.json), updates the asset manifest
-pnpm --dir lab looks   # crops the character parts and works out the presets (looks.json); a couple of minutes
+pnpm --dir lab characters   # the presets and the character parts as strips, and characters.json
 ```
 
 Each says what to upload to R2 when something changed. The
@@ -65,7 +65,8 @@ data (`shared-protocol/src/catalog/`) is ours and lives in git; the art leaves
   piece with a stable key: in the lab from a layout and its seed (the wall
   dressing lives here), on the floor from a template and its changes
   (`officeFloor`, no seed); `bake` turns the one into the other.
-- `looks.mjs`, `png8.mjs`: the character parts, as 8-bit strips, and the presets.
+- `characters.mjs`, `png8.mjs`: the presets and character parts, as 8-bit strips, and what's offered.
+- `pages/characters.html`: characters compared on a patch of floor, at the floor's scale.
 - `manifest.mjs`: records what the scripts bake in the asset manifest.
 - `pages/art.js`: what's drawn rather than cut (windows).
 - `pages/shell.js`: walls and floors drawn from a plain map, by

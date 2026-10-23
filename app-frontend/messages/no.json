@@ -818,7 +818,8 @@
       "tech": "Teknologi",
       "lamps": "Lamper",
       "personal": "Personlig",
-      "setups": "Oppsett"
+      "setups": "Oppsett",
+      "chairs": "Stoler"
     },
     "hint": "Velg noe å sette på skrivebordet. Dra ting for å flytte dem.",
     "swapHint": "Velg noe å bytte det med.",

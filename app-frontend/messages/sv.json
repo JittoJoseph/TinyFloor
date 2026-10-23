@@ -818,7 +818,8 @@
       "tech": "Teknik",
       "lamps": "Lampor",
       "personal": "Personligt",
-      "setups": "Arbetsplatser"
+      "setups": "Arbetsplatser",
+      "chairs": "Stolar"
     },
     "hint": "Välj något att ställa på skrivbordet. Dra saker för att flytta dem.",
     "swapHint": "Välj något att byta ut det mot.",

@@ -60,8 +60,11 @@ function chairAt(floor: Floor, desk: string, item: string): { x: number; y: numb
   return { x, y, depth: y + option.sortY };
 }
 
-/** A thing on a desk is drawn just over the desk, the lower one over the higher. */
-const thingDepth = (floor: Floor, desk: string, y: number, item: string) => floor.desks[desk].depth + (y + floor.things[item].size[1]) / 10000;
+/** Where a thing at `y` stands: the foot of its pixels. */
+export const footOf = (item: string, y: number, floor: Floor = FLOOR) => y + (floor.things[item]?.art[3] ?? floor.things[item]?.size[1] ?? 0);
+
+/** A thing on a desk is drawn just over the desk, the nearer one (lower on screen) over the farther. */
+const thingDepth = (floor: Floor, desk: string, y: number, item: string) => floor.desks[desk].depth + footOf(item, y, floor) / 10000;
 
 /**
  * The office as it's drawn: the floor's pieces with the changes applied, and
@@ -102,17 +105,35 @@ export function thingsOn(desk: string, changes: PieceChanges, floor: Floor = FLO
   return officePieces(changes, floor).filter((piece) => piece.desk === desk && piece.key !== chair);
 }
 
-/** Where a thing could stand on a desk: within its length, its foot in the desk's band, clear of a near desk's chair. */
+/** Where a thing could stand on a desk: its pixels within the desk's length and under its ceiling, their foot on its top. */
 export function fitsOn(desk: string, item: string, [x, y]: [number, number], floor: Floor = FLOOR): boolean {
   const spec = floor.desks[desk];
   const thing = floor.things[item];
   if (!spec || !thing) return false;
   if (thing.facing !== "any" && thing.facing !== spec.side) return false;
   if (!Number.isInteger(x) || !Number.isInteger(y) || x % GRID || y % GRID) return false;
-  const [w, h] = thing.size;
-  if (x < spec.along[0] || x + w > spec.along[1]) return false;
-  if (y + h < spec.feet[0] || y + h > spec.feet[1]) return false;
-  return !spec.clear || x + w <= spec.clear[0] || x >= spec.clear[1];
+  const [left, top, right] = thing.art;
+  if (x + left < spec.along[0] || x + right > spec.along[1]) return false;
+  if (spec.ceiling !== undefined && y + top < spec.ceiling) return false;
+  const foot = footOf(item, y, floor);
+  return foot >= spec.feet[0] && foot <= spec.feet[1];
+}
+
+/**
+ * Where a thing goes to stand at a point, kept on the desk: its pixels'
+ * middle at `x` and their foot at `y`, snapped to the art's pixels, within
+ * the desk's length and its band. Null if it can't stand on this desk at all.
+ */
+export function placeOn(desk: string, item: string, x: number, y: number, floor: Floor = FLOOR): [number, number] | null {
+  const spec = floor.desks[desk];
+  const thing = floor.things[item];
+  if (!spec || !thing || (thing.facing !== "any" && thing.facing !== spec.side)) return null;
+  const [left, top, right, bottom] = thing.art;
+  // Within the desk's length and band (and under its ceiling), rounded in to the art's pixels.
+  const fit = (value: number, low: number, high: number) =>
+    Math.min(Math.max(Math.round(value / GRID) * GRID, Math.ceil(low / GRID) * GRID), Math.floor(high / GRID) * GRID);
+  const at: [number, number] = [fit(x - (left + right) / 2, spec.along[0] - left, spec.along[1] - right), fit(y - bottom, Math.max(spec.feet[0] - bottom, (spec.ceiling ?? -Infinity) - top), spec.feet[1] - bottom)];
+  return fitsOn(desk, item, at, floor) ? at : null;
 }
 
 /**

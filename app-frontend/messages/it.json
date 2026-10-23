@@ -818,7 +818,8 @@
       "tech": "Tecnologia",
       "lamps": "Lampade",
       "personal": "Personale",
-      "setups": "Postazioni"
+      "setups": "Postazioni",
+      "chairs": "Sedie"
     },
     "hint": "Scegli qualcosa per la tua scrivania. Trascina gli oggetti per spostarli.",
     "swapHint": "Scegli qualcosa con cui sostituirlo.",

@@ -54,9 +54,9 @@ something to offer.
 
 The floor is the Startup template (below), drawn from data: the lab bakes it
 and builds it (`lab/build.mjs`) into `shared-protocol/src/catalog/floors/startup.json`,
-which the app draws and the room reads its desks from. People look as they
-make themselves in the creator (Characters, below), or as one of the eight
-earlier 16px characters at twice their size.
+which the app draws and the room reads its desks from. Everyone walks in as
+one of the pack's characters, drawn at 32px, and can make their own look in
+the creator (Characters, below).
 
 The hand-made map it replaced (`office-map.tmj`, from `tools/buildmap.py`)
 is now only what the website's pictures of the floor were drawn from.
@@ -319,35 +319,48 @@ bottleneck.
 
 ## Your desk
 
-Claimed by sitting at a free one (as today). Then **Decorate** (above the
-dock when you sit at your desk, or in your menu) brings the camera in to the
-desk, outlines where things can go, and opens a panel beside it (a sheet
-under it on a phone):
+Claimed by sitting at a free one (as today). Nothing appears when you sit:
+pointing at your own desk outlines it and shows a **Decorate** chip, on the
+side away from the chair, and your menu has it too (the way in on a phone).
 
-- **Things**: what suits the desk's side, on shelves (tech, lamps, personal,
-  setups). Picking one puts it in the first free spot; with a thing selected,
-  picking swaps it.
-- **On the desk**: click a thing to select it (by its own pixels, the front
-  one first); drag it along the desk, snapped to the art's pixels and kept to
-  the desk, red where it can't stand (over the chair); its trash button or
-  Delete takes it away.
-- **Chair**: the office chairs, front or back views to suit the side.
-- **Undo, redo** (Ctrl+Z, Ctrl+Y), **Reset** after a confirm, **Done**.
+Decorating, the camera glides to the desk without zooming (pixel art blown
+up looks worse, not better), the rest of the floor dims around a soft-edged
+lit window over the desk and its chair, you fade, and a tray rises from the
+bottom:
 
-Coworkers see each change as it's made. Everything is chosen on the floor, at
-the desk, never in a separate editor.
+- **The tray**: what suits the desk's side, on shelves (tech, lamps,
+  personal, setups) and the chairs. Each card is the thing cropped to its
+  pixels, at twice its size when small and its own size when not, never in
+  between. A card clicked goes where there's room; with a thing picked on the
+  desk, it takes that one's place, standing where it stood. A card dragged
+  out is carried: over the desk it shows where it would stand, and it's put
+  down there.
+- **On the desk**: pointed at, a thing is outlined; pressed, picked and
+  framed, with a little bar over it (take it away, done); dragged, it lifts,
+  slides along the desk kept to where it can stand, and settles where it's
+  let go. Delete, Escape, Ctrl+Z and Ctrl+Y work too.
+- **Undo, redo**, **Reset** after a confirm, and **Done**, on the tray.
+
+Changes are seen happening, by everyone: a new thing drops onto the desk, one
+taken away lifts off, one moved slides, one swapped hops. A coworker's desk
+changes like this while you watch.
 
 What the desk things are: 40 from the office pack's singles (monitors and
 monitor setups in several colours, laptops, keyboards, lamps facing either
 way, phones, photo frames, mugs, books, papers, a desk plant), and the backs
-of monitors for far desks. Each has which side of a desk it suits, its size,
-and its shelf; none is used by the lab's generators, so templates stay as
-they were.
+of monitors for far desks. Each has which side of a desk it suits, its frame,
+where its pixels are in the frame, and its shelf.
 
-Where a thing may stand, worked out when a template is built and kept per
-desk: along the desk's length, its foot in a band near the front of the desk
-(near side) or along its back strip (far side), and on a near desk clear of
-the column above the chair, so an empty chair is never covered.
+Where a thing may stand is measured from the art, not the frames (the
+frames carry margins: a laptop's pixels end 16px above its frame's foot):
+
+- along the desk's length, by its pixels, right up to the posts;
+- the foot of its pixels on the desk's top: a near desk's wood, from under
+  the divider to its front edge; a far desk's strip behind the divider;
+- on a near desk, nothing rising over the divider's top: before this, a tall
+  setup dragged to the back stood over onto the far desk;
+- anywhere along it, in front of whoever sits there included: things on a
+  desk are behind the person at it either way.
 
 ## Weight
 
@@ -375,48 +388,59 @@ chairs and the map itself.
 
 ## Characters
 
-- **Layers compose exactly.** Body, eyes, outfit, hair, accessory, drawn in
-  that order, line up on every frame; nothing needs adjusting. Hair carries
-  faint shading that falls on the face beneath it, so a premade only matches
-  its parts where nothing at all lies above.
-- **Sitting is drawn from the side only.** Facing up or down, a seated
-  character is their standing pose, as our characters already are.
-- **Sharper at the same size.** The 32px generator draws 32×64 frames at
-  1×; on the floor they're the size of today's 16px characters at 2×, with
-  twice the detail.
-- **Cheap to load.** Cropped to the two rows the floor uses (idle and walk,
-  48 frames in one strip) and written with a palette (a part has well under
-  256 colours), a part is a kilobyte or two: all 366 offered come to 468 KB,
-  and someone's look is about 7 KB, fetched only when someone wears it.
-- **What's offered** is for an office: six natural skins (not the yellow,
-  pink or lavender ones), seven eye colours, 29 outfits (not the ninja,
-  swimwear or robes), 29 hairstyles in every colour, and the pack's
-  accessories split into slots, so they can go together: a beard or
-  moustache, glasses, a cap or beanie, a backpack. Costume pieces stay out.
-- **The pack's premades are recipes.** Matched part by part from the top
-  layer down, 14 of its 20 premade characters come out as exactly a look;
-  the other six wear a costume piece or a fantasy skin. They are the
-  creator's presets.
+- **The earlier characters come at 32px too.** The pack has every one of its
+  earlier characters (the eight the floor began with, and twenty-odd more) at
+  16, 32 and 48px. At 32px they're the same people, the same size on the
+  floor as the 16px ones at twice their size, with twice the detail. 48px
+  would have to be scaled down, which pixel art doesn't survive.
+- **They aren't made of the generator's parts.** Matched part by part, none
+  of them comes out exactly: they're an older drawing of the same style. So
+  they stay whole pictures, the presets, and for each the lab finds the look
+  nearest it (its skin, eyes, outfit and hair, as close as the parts come),
+  which is close enough that changing one part of a preset doesn't change
+  the rest.
+- **The generator's own premades are looks**: matched from the top layer
+  down, 18 of its 20 are exactly a set of parts.
+- **Layers compose exactly.** Body, eyes, outfit, hair, accessories, drawn in
+  that order, line up on every frame. Hair carries faint shading that falls
+  on the face beneath it, so a premade only matches its parts where nothing
+  at all lies above.
+- **Whole pixels only.** Shown off the floor, a character is drawn at twice
+  or three times its size, never in between; head-and-shoulders crops and
+  fractional sizes made the art look wrong.
+- **Cheap to load.** Every part and preset is one strip of the two rows the
+  floor uses (idle and walk, 48 frames), written with a palette: a kilobyte
+  or two each, 587 KB for all 448. A preset is one strip, a look about five.
 
-A **look** is a short string, `body.1/eyes.1/outfit.1-2/hair.4-3/glasses.15-1`,
-kept where the character's name always was (the profile in D1, the room
-ticket, the room's players), so nothing else changed to carry it. The eight
-characters people picked before still work as they did, until they change.
-`pnpm --dir lab looks` crops the parts, matches the premades and writes
-`shared-protocol/src/catalog/looks.json` (what's offered, a swatch for each
-colour, the presets), which the creator, the API and the room all check
-looks against.
+Everyone starts as a preset, picked at their first door from the eight the
+floor began with; the creator has those and eight more of the pack's
+(Bruce, Samuel, Edward, Rob, Roki, Pier, Josh, Jenny), the generator's
+characters to start from, and every part: all nine skins, seven eye colours,
+33 outfits, 29 hairstyles in every colour, and accessories in slots that go
+together (face: beard, moustache, mask, monocle, balaclava; glasses; hat;
+gloves; backpack).
 
-On the floor, each look is drawn once into a texture in the same frame order
-as the premades' (idle, walk, then a seated pose a direction), so walking,
-sitting and everything else work unchanged; your own look starts loading with
-the floor. Saving a look keeps it on the profile and tells the room, which
-shows everyone the new look where you stand, and whoever arrives later.
+Someone's character is one short string, kept on their account, so it's the
+same in every office: a preset by name, `Adam`, or a look,
+`body.1/eyes.1/outfit.1-2/hair.4-3/glasses.15-1`. It's carried where the name
+always was (the profile in D1, the room ticket, the room's players), and
+existing accounts, which have one of the eight names, look as they did, only
+sharper. `shared-protocol/src/character.ts` says what's valid, from
+`catalog/characters.json` (`pnpm --dir lab characters`), for the creator,
+the API and the room alike.
 
-The creator opens from your menu and your profile: you on the left, turning
-and walking; presets, skin and eyes, hair, outfit and extras (the accessory
-slots) on the right, each style drawn on you as you are, colours as swatches;
-Randomize; on a phone, a sheet with you beside your buttons.
+Every character anywhere is drawn by one thing,
+`web-shared/src/lib/characterSheet.ts`: its layers stacked once into a sheet
+(idle, walking, a seated pose a direction), kept for whoever wears it. The
+floor makes its sprites' textures from it; the doors, the creator and the
+website's pictures draw from it onto a canvas, in whole pixels. Saving a look
+keeps it on the account and tells the room, which shows everyone the new look
+where you stand.
+
+The creator: you on the left, standing on the office's own floor at three
+times your size, turning and walking, trying on whatever the pointer is
+over; characters, skin and eyes, hair, outfit and extras on the right, each
+choice drawn on you, colours as swatches; Randomize; on a phone, a sheet.
 
 ## The lab and the pipeline
 
@@ -453,9 +477,9 @@ Each step ships on its own and needs the one before it:
    needs; the app draws Startup from it instead of the hand-made map; the
    room's desks come from it, and claims move over once. The walls' drawing
    is one function in `shared-protocol` that both use.
-3. **Your desk** (done). Changes in the room, Decorate at your desk, reset
-   when it's let go.
-4. **Characters** (done). The creator, the look on the profile, the presets,
-   which the doors offer too, with a roll of the dice.
+3. **Your desk** (done). Changes in the room, decorating from your desk,
+   reset when it's let go.
+4. **Characters** (done). The presets at 32px, the creator, the look on the
+   account.
 5. **Furnishing for admins.** Move, add and take away furniture; put back.
 6. **More themes**, on the same floor plan.

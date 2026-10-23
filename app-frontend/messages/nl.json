@@ -818,7 +818,8 @@
       "tech": "Techniek",
       "lamps": "Lampen",
       "personal": "Persoonlijk",
-      "setups": "Werkplekken"
+      "setups": "Werkplekken",
+      "chairs": "Stoelen"
     },
     "hint": "Kies iets voor je bureau. Sleep spullen om ze te verplaatsen.",
     "swapHint": "Kies iets om het mee te ruilen.",

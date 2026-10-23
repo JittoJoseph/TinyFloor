@@ -818,7 +818,8 @@
       "tech": "Tech",
       "lamps": "Lamps",
       "personal": "Personal",
-      "setups": "Setups"
+      "setups": "Setups",
+      "chairs": "Chairs"
     },
     "hint": "Pick something to put on your desk. Drag things to move them.",
     "swapHint": "Pick something to swap it for.",

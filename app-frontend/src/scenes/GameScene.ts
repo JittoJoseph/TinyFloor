@@ -144,9 +144,8 @@ class GameScene extends Phaser.Scene {
       this.movementManager.setInputEnabled(!decorating);
       this.tweens.add({ targets: this.player, alpha: decorating ? 0.3 : 1, duration: 200 });
       if (decorating) return;
-      const camera = this.cameras.main;
-      camera.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);
-      camera.zoomTo(zoomFor(this.scale.width, this.scale.height, this.mapManager.getMapWidth(), this.mapManager.getMapHeight()), 420, "Sine.easeInOut", true);
+      // Back to following you: the camera glides there.
+      this.cameras.main.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);
     });
 
     callManager.attach(this.wsManager);

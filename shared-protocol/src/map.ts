@@ -26,8 +26,12 @@ export interface Floor {
   seats: FloorSeat[];
   /** Every desk, by its key (office.ts). */
   desks: Record<string, FloorDesk>;
-  /** What can stand on a desk: which side it suits, its size in pixels, and the shelf it's shown on. */
-  things: Record<string, { facing: "front" | "back" | "any"; size: [number, number]; shelf?: string }>;
+  /**
+   * What can stand on a desk: which side it suits, its frame's size in pixels,
+   * where its pixels are in the frame ([left, top, right, bottom], right and
+   * bottom past the last), and the shelf it's shown on.
+   */
+  things: Record<string, { facing: "front" | "back" | "any"; size: [number, number]; art: [number, number, number, number]; shelf?: string }>;
   /** The chairs each side of a desk can have, lined up by their seat (dx, dy from where the floor's chair stands). */
   chairs: Record<"front" | "back", Array<{ item: string; dx: number; dy: number; sortY: number }>>;
 }
@@ -36,11 +40,11 @@ export interface FloorDesk {
   seat: number;
   /** A near desk (you sit facing up, at its front) or a far one (facing down, behind its strip). */
   side: "front" | "back";
-  /** Where things stand on it: how far along, and the band their feet are in (pixels). */
+  /** Where things stand on it: how far along, and the band the foot of their pixels is in (pixels). */
   along: [number, number];
   feet: [number, number];
-  /** On a near desk, the chair's column, kept clear: whoever sits there is drawn over it. */
-  clear?: [number, number];
+  /** On a near desk, how high a thing's pixels may rise: the divider's top, so nothing stands over onto the far side. */
+  ceiling?: number;
   chair: { key: string; item: string; x: number; y: number };
   /** The depth things on it are drawn at, just over the desk. */
   depth: number;

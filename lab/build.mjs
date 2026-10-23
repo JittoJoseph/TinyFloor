@@ -117,6 +117,22 @@ for (const { item, image } of drawn) {
 const atlas = new PNG({ width: WIDTH, height: y + shelf });
 for (const { item, image } of drawn) blit(image, [0, 0, image.width, image.height], atlas, frames[item.id][0], frames[item.id][1]);
 const sorted = Object.fromEntries(Object.entries(frames).sort(([a], [b]) => a.localeCompare(b)));
+/** Where an item's pixels are in its frame, [left, top, right, bottom] (right and bottom past the last): frames carry margins. */
+const artOf = new Map(
+  drawn.map(({ item, image }) => {
+    let [left, top, right, bottom] = [image.width, image.height, 0, 0];
+    for (let py = 0; py < image.height; py++) {
+      for (let px = 0; px < image.width; px++) {
+        if (!image.data[(py * image.width + px) * 4 + 3]) continue;
+        left = Math.min(left, px);
+        top = Math.min(top, py);
+        right = Math.max(right, px + 1);
+        bottom = Math.max(bottom, py + 1);
+      }
+    }
+    return [item.id, [left, top, right, bottom]];
+  }),
+);
 await writeFile(join(CATALOG, "atlas.json"), JSON.stringify({ image: ATLAS_KEY, width: atlas.width, height: atlas.height, frames: sorted }, null, 1) + "\n");
 const pictures = [{ key: ATLAS_KEY, png: PNG.sync.write(atlas, { colorType: 6 }) }];
 console.log(`${drawn.length} items on a ${atlas.width}×${atlas.height} atlas, ${(pictures[0].png.length / 1024).toFixed(1)} KB`);
@@ -159,7 +175,7 @@ for (const { template, floor } of offices) {
     things: Object.fromEntries(
       catalog.items
         .filter((item) => item.desk && item.facing)
-        .map((item) => [item.id, { facing: item.facing, size: spriteSize(item.sprite), ...(item.shelf ? { shelf: item.shelf } : {}) }]),
+        .map((item) => [item.id, { facing: item.facing, size: spriteSize(item.sprite), art: artOf.get(item.id), ...(item.shelf ? { shelf: item.shelf } : {}) }]),
     ),
     chairs: chairOptions(),
   };
@@ -175,8 +191,7 @@ function deskOfPiece(piece) {
 
 /**
  * Every desk, by its key: its seat, its side, where things on it stand (the
- * band their feet may be in, and how far along), the column its chair keeps
- * clear on a near desk (whoever sits there is drawn over it), its chair, and
+ * band the foot of their pixels may be in, and how far along), its chair, and
  * the depth its things are drawn at (just over the desk's row).
  */
 function desksOf(template, floor, seats) {
@@ -194,10 +209,12 @@ function desksOf(template, floor, seats) {
         desks[key] = {
           seat: seat.id,
           side,
-          // Things stand along the desk's six tiles; a near desk's two rows, a far desk's strip.
+          // Things stand along the desk's six tiles, the foot of their pixels on its top: a near
+          // desk's, from under the divider to its front edge; a far desk's strip behind the divider.
           along: [x, x + 192],
-          feet: side === "front" ? [bank.y + 64, bank.y + 96] : [bank.y + 20, bank.y + 32],
-          ...(side === "front" ? { clear: [chair.x, chair.x + 32] } : {}),
+          feet: side === "front" ? [bank.y + 56, bank.y + 86] : [bank.y + 24, bank.y + 34],
+          // On a near desk nothing rises over the divider's top onto the far side.
+          ...(side === "front" ? { ceiling: bank.y + 30 } : {}),
           chair: { key: chair.key, item: chair.item.id, x: chair.x, y: chair.y },
           depth: Math.round((row.y + row.item.sortY + 0.5) * 100) / 100,
         };

@@ -818,7 +818,8 @@
       "tech": "Sprzęt",
       "lamps": "Lampy",
       "personal": "Osobiste",
-      "setups": "Stanowiska"
+      "setups": "Stanowiska",
+      "chairs": "Krzesła"
     },
     "hint": "Wybierz coś na biurko. Przeciągaj rzeczy, aby je przesunąć.",
     "swapHint": "Wybierz coś, na co to zamienić.",

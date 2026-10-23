@@ -36,6 +36,11 @@ export function depthForY(y: number): number {
 
 const ITEMS = "floor-items";
 const WALLS = "floor-walls";
+/** How far a thing drops onto a desk from, lifts off it by, and hops when it's swapped, in the floor's pixels. */
+const DROP = 10;
+const LIFT = 8;
+const HOP = 4;
+const reducedMotion = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /**
  * The floor: the Startup template as the lab worked it out (shared-protocol
@@ -54,6 +59,9 @@ export class MapManager {
   /** Each piece's picture, by its key, and the pieces as they're drawn now. */
   private images = new Map<string, Phaser.GameObjects.Image>();
   private pieces: OfficePiece[] = [];
+  /** Whether the floor has been drawn once: changes after that are seen happening. */
+  private drawn = false;
+  private held: string | null = null;
   private unsubscribe?: () => void;
 
   constructor(scene: Phaser.Scene) {
@@ -92,12 +100,17 @@ export class MapManager {
 
   /**
    * Everything on the floor, each a frame of the atlas, drawn from its top left
-   * at its depth. Drawn again whenever a desk changes: a piece keeps its
-   * picture and is only moved or given another frame; one gone is taken away.
+   * at its depth. Drawn again whenever a desk changes, yours or a coworker's,
+   * and the change is seen happening: a new thing drops onto the desk, one
+   * taken away lifts off and fades, one moved slides there, one swapped hops.
+   * A piece keeps its picture throughout; the one being dragged (held) is
+   * where the hand is, so it's left alone.
    */
   private drawPieces() {
     const texture = this.scene.textures.get(ITEMS);
     const frames = atlas.frames as unknown as Record<string, [number, number, number, number]>;
+    const tweens = this.scene.tweens;
+    const animate = this.drawn && !reducedMotion();
     this.pieces = officePieces(pieceChanges());
     const seen = new Set<string>();
     for (const piece of this.pieces) {
@@ -105,16 +118,57 @@ export class MapManager {
       if (!frame) continue;
       if (!texture.has(piece.item)) texture.add(piece.item, 0, ...frame);
       seen.add(piece.key);
-      const image = this.images.get(piece.key) ?? this.scene.add.image(0, 0, ITEMS, piece.item).setOrigin(0, 0);
-      this.images.set(piece.key, image);
-      if (image.frame.name !== piece.item) image.setFrame(piece.item);
-      image.setPosition(piece.x, piece.y).setDepth(piece.depth);
+      let image = this.images.get(piece.key);
+      const fresh = !image;
+      if (!image) {
+        image = this.scene.add.image(piece.x, piece.y, ITEMS, piece.item).setOrigin(0, 0);
+        this.images.set(piece.key, image);
+      }
+      image.setDepth(piece.depth);
+      if (piece.key === this.held) continue;
+      const swapped = image.frame.name !== piece.item;
+      if (swapped) image.setFrame(piece.item);
+      const moved = image.x !== piece.x || image.y !== piece.y;
+      if (!animate) {
+        image.setPosition(piece.x, piece.y);
+        continue;
+      }
+      if (fresh) {
+        image.setPosition(piece.x, piece.y - DROP).setAlpha(0);
+        tweens.add({ targets: image, y: piece.y, alpha: 1, duration: 260, ease: "Back.easeOut" });
+      } else if (moved) {
+        tweens.killTweensOf(image);
+        tweens.add({ targets: image, x: piece.x, y: piece.y, alpha: 1, duration: 180, ease: "Cubic.easeOut" });
+      } else if (swapped) {
+        tweens.killTweensOf(image);
+        image.setY(piece.y - HOP);
+        tweens.add({ targets: image, y: piece.y, duration: 220, ease: "Back.easeOut" });
+      }
     }
     for (const [key, image] of this.images) {
       if (seen.has(key)) continue;
-      image.destroy();
       this.images.delete(key);
+      if (!animate) {
+        image.destroy();
+        continue;
+      }
+      tweens.killTweensOf(image);
+      tweens.add({ targets: image, y: image.y - LIFT, alpha: 0, duration: 180, ease: "Cubic.easeIn", onComplete: () => image.destroy() });
     }
+    this.drawn = true;
+  }
+
+  /** The texture a thing is a frame of, its frame added if it isn't yet: for a picture of one that isn't on the floor. */
+  itemsTexture(item: string): string {
+    const texture = this.scene.textures.get(ITEMS);
+    const frame = (atlas.frames as unknown as Record<string, [number, number, number, number]>)[item];
+    if (frame && !texture.has(item)) texture.add(item, 0, ...frame);
+    return ITEMS;
+  }
+
+  /** The piece being dragged, which drawing leaves where the hand put it; null when it's let go. */
+  hold(key: string | null) {
+    this.held = key;
   }
 
   /** Every piece back where the office has it (a drag let go of somewhere it can't stand). */

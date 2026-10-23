@@ -818,7 +818,8 @@
       "tech": "Tekniikka",
       "lamps": "Valaisimet",
       "personal": "Omat",
-      "setups": "Työpisteet"
+      "setups": "Työpisteet",
+      "chairs": "Tuolit"
     },
     "hint": "Valitse jotain työpöydällesi. Siirrä esineitä vetämällä.",
     "swapHint": "Valitse jotain, millä vaihtaa se.",

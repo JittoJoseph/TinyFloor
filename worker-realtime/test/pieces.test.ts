@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { DESK_THINGS_MAX, FLOOR, deskOfSeat, type PieceChange, type ServerMessage } from "../../shared-protocol/src";
+import { DESK_THINGS_MAX, FLOOR, deskOfSeat, placeOn, type PieceChange, type ServerMessage } from "../../shared-protocol/src";
 import { Client, settle, uniqueRoom } from "./client";
 
 /** The next message of a kind, taken off the list, so the one after it is next. */
@@ -16,12 +16,10 @@ const [DESK, SPEC] = Object.entries(FLOOR.desks).find(([, desk]) => desk.side ==
 const [OTHER] = Object.entries(FLOOR.desks).find(([key, desk]) => desk.side === "front" && key !== DESK)!;
 const SEAT = SPEC.seat;
 const PAPER = FLOOR.things.paper.size;
-/** A spot on the desk for a paper: its first tile, or past the chair's column if that's where the chair is. */
-const spot = (n = 0): [number, number] => {
-  let x = SPEC.along[0] + n * PAPER[0];
-  if (SPEC.clear && x + PAPER[0] > SPEC.clear[0] && x < SPEC.clear[1]) x = SPEC.clear[1] + n * PAPER[0];
-  return [x, SPEC.feet[1] - PAPER[1]];
-};
+/** A spot on the desk for a paper: the n-th along it, at its front. */
+const spot = (n = 0): [number, number] => placeOn(DESK, "paper", SPEC.along[0] + 16 + n * PAPER[0], SPEC.feet[1])!;
+/** The middle of the desk, where whoever sits there is. */
+const MIDDLE = (SPEC.along[0] + SPEC.along[1]) / 2;
 const ownThing = FLOOR.pieces.find((piece) => piece.desk === DESK && !piece.key.endsWith("/chair"));
 
 /** Ava in an office with her desk claimed, and Ben there to see. */
@@ -46,6 +44,14 @@ describe("desk pieces", () => {
 
     const cara = await Client.open(room, { sub: "cara" });
     expect((await cara.next("welcome")).pieces).toEqual({ [`${DESK}/+a1`]: change });
+  });
+
+  it("lets a thing stand anywhere along the desk, in front of whoever sits there too", async () => {
+    const { ava, ben } = await office();
+    const at = placeOn(DESK, "monitor-blue", MIDDLE, SPEC.feet[0] + 8)!;
+    await pace();
+    ava.send({ t: "piece", key: `${DESK}/+a1`, change: { item: "monitor-blue", at } });
+    expect((await take(ben, "piece")).change).toEqual({ item: "monitor-blue", at });
   });
 
   it("lets you take away, move and put back what your desk came with, and change your chair", async () => {
@@ -78,11 +84,10 @@ describe("desk pieces", () => {
     await pace();
     ava.send({ t: "piece", key: `${DESK}/+a3`, change: { item: "paper", at: [SPEC.along[1], spot()[1]] } }); // off its end
     await take(ava, "pieces");
-    if (SPEC.clear) {
-      await pace();
-      ava.send({ t: "piece", key: `${DESK}/+a4`, change: { item: "paper", at: [SPEC.clear[0], spot()[1]] } }); // over the chair
-      await take(ava, "pieces");
-    }
+    await pace();
+    const tall = placeOn(DESK, "setup-laptop", MIDDLE, SPEC.feet[1])!;
+    ava.send({ t: "piece", key: `${DESK}/+a4`, change: { item: "setup-laptop", at: [tall[0], tall[1] - 16] } }); // over the divider
+    await take(ava, "pieces");
     await pace();
     ava.send({ t: "piece", key: SPEC.chair.key, change: { item: "sofa-two" } });
     await take(ava, "pieces");

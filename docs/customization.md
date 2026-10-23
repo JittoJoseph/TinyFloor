@@ -320,22 +320,26 @@ bottleneck.
 ## Your desk
 
 Claimed by sitting at a free one (as today). Nothing appears when you sit
-or when you point at it. Your desk is reached through **you**, at the
-floor's top right, opposite where you are and who's here, and as tall:
+or when you point at it. Your desk is reached through **you on the floor**,
+at its top right, opposite where you are and who's here, and as tall:
 
-- at rest, your face, with your status on it;
+- at rest, your character, head and shoulders, a pixel to a pixel, with your
+  status on it: the rail's face (bottom left) is you everywhere, your
+  account; this is you here, so the two never look alike or do the same job;
 - pointed at, it widens to your name, as a desk's plate does;
-- pressed, it grows down into a card, its name and face staying put as the
-  card's head: your desk (go to it, or, sitting at it, customize it), how
-  you look, your music, your profile;
+- pressed, it grows down into a card: you standing on the office's floor,
+  head to waist at twice your size, your name, status and note (or that
+  you're at your desk); then your desk (go to it, or, sitting at it,
+  customize it) and how you look;
 - customizing, the same card grows into the desk's things, and the floor
   brings the desk into the middle of what the card leaves showing, without
   zooming (pixel art blown up looks worse, not better). Nothing is dimmed
   and you aren't faded: the floor stays the floor.
 
 One thing changing shape, never two things trading places. The rail's menu
-(bottom left) keeps what's yours everywhere (status, note, music,
-settings); the card keeps what's yours on this floor.
+keeps what's yours everywhere (profile, status, note, music, settings); the
+card keeps what's yours on this floor, and nothing is in both. Away from the
+floor, how you look is changed from your profile's Character section.
 
 In the card:
 

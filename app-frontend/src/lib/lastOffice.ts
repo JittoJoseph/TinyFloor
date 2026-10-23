@@ -5,6 +5,16 @@
  */
 const KEY = "tf-last-office";
 
+/**
+ * The front door's first step, run as its HTML is read, before any of its
+ * code has loaded: back to the office you were last in, whose page then
+ * arrives with all its own code at once, rather than the front door's code
+ * loading, then asking the router for the office's page, then that page's
+ * code, one after the other. Anything in the address (leaving an office,
+ * coming back from somewhere) is the front door's to read (AppHome).
+ */
+export const LAST_OFFICE_SCRIPT = `try{var o=localStorage.getItem(${JSON.stringify(KEY)}),p=location.pathname;if(o&&!location.search)location.replace((p==="/"?"":p)+"/office/"+encodeURIComponent(o))}catch(e){}`;
+
 export function rememberOffice(officeId: string) {
   try {
     localStorage.setItem(KEY, officeId);

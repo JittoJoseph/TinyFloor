@@ -16,6 +16,13 @@ export const FLOOR_FILES = {
 let warming = false;
 
 /**
+ * The floor's code, from one place: the room's view loads it from here too
+ * (RoomView), so what the warmup fetched is what it uses, not a second copy
+ * of the same code fetched after the office has been read.
+ */
+export const loadPhaserGame = () => import("@/components/PhaserGame");
+
+/**
  * Starts what the floor needs while the page before it is still showing (the
  * lobby's door, an office being read): its code, its walls painted, and its sprites,
  * which the scene then finds in the browser's cache (public/_headers). Without
@@ -24,7 +31,7 @@ let warming = false;
 export function warmFloor() {
   if (warming || typeof window === "undefined") return;
   warming = true;
-  void import("@/components/PhaserGame").catch(() => (warming = false));
+  void loadPhaserGame().catch(() => (warming = false));
   void floorWalls().catch(() => {});
   const files = [FLOOR_FILES.items, ...PRESETS.flatMap(characterLayers)];
   for (const file of files) void fetch(file).catch(() => {});

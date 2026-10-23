@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import { loadPhaserGame } from "@/lib/floorWarmup";
 import { useTranslations } from "next-intl";
 import { AlertCircle, Check, UserPlus } from "@/components/ui/icons";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
@@ -46,7 +47,7 @@ function Connecting() {
 }
 
 // The loader over the floor stays until the room has welcomed you (below), not just until this arrives.
-const PhaserGame = dynamic(() => import("@/components/PhaserGame"), { ssr: false });
+const PhaserGame = dynamic(loadPhaserGame, { ssr: false });
 
 export interface RoomViewProps {
   title: string;

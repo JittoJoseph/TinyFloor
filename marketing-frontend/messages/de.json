@@ -1533,18 +1533,45 @@
   "about": {
     "meta": {
       "title": "Über TinyFloor",
-      "description": "TinyFloor ist ein virtuelles Büro zum Herumlaufen, gebaut von Jitto Joseph. Warum es das gibt, wer es macht und wie du uns erreichst."
+      "description": "TinyFloor ist ein virtuelles Büro für Remote-Teams: eine gemeinsame Etage im Browser, auf der du siehst, wer da ist, und einfach rübergehst, um zu reden. Wer wir sind und wie du uns erreichst."
     },
     "eyebrow": "Über uns",
     "title": "Remote-Arbeit hat den Flur verloren. Wir bauen ihn wieder auf.",
-    "p1": "Getrennt zu arbeiten ist gut für die Konzentration, aber es hat die kleinen Momente still mitgenommen: die kurze Frage am Schreibtisch, das Hallo im Vorbeigehen, zu sehen, wer da ist. Videocalls sind gut für Meetings. Sie haben jedes andere Gespräch zu einem Termin gemacht.",
-    "p2": "TinyFloor ist eine Etage statt eines Links. Dein Team läuft durch ein gemeinsames Pixel-Art-Büro, und wer auf jemanden zugeht, fängt an zu reden. Tritt einem Meeting bei, und du gehst in den Meetingraum. Geh hinaus, und es ist wieder ruhig.",
-    "p3": "Es läuft im Browser auf dem Netzwerk von Cloudflare, in 18 Sprachen, ohne Installation, und für kleine Teams kostenlos.",
-    "founderTitle": "Gebaut von Jitto Joseph",
-    "founderBody": "Ich gestalte und baue TinyFloor, von der Pixel-Etage bis zu den Servern, auf denen sie läuft. Wenn du eine Idee, ein Problem hast oder einfach Hallo sagen willst, freue ich mich von dir zu hören.",
-    "website": "Website",
-    "elsewhere": "TinyFloor im Netz",
-    "contact": "Schreib uns"
+    "intro": "TinyFloor ist ein virtuelles Büro für Remote-Teams: eine gemeinsame Etage im Browser, auf der du siehst, wer da ist, und einfach rübergehst, um zu reden.",
+    "why": {
+      "title": "Warum wir es bauen",
+      "body": "Remote-Arbeit ist gut für den Fokus, aber sie hat die kleinen Momente verloren: die kurze Frage, das Hallo im Vorbeigehen, zu wissen, wer da ist. Videocalls haben jedes Gespräch zu einem Meeting gemacht. TinyFloor gibt einem Team einen Ort, an dem es zusammen ist, damit Reden so einfach ist wie Rübergehen."
+    },
+    "beliefs": {
+      "title": "Woran wir glauben",
+      "presence": {
+        "title": "Da, nicht beobachtet",
+        "body": "Keine Kamera bleibt an und kein Anruf wird aufgezeichnet. Du entscheidest, wann du da bist."
+      },
+      "price": {
+        "title": "Ein Preis pro Team",
+        "body": "Ein Büro kostet für das ganze Team, nicht pro Person. Kleine Teams nutzen es kostenlos."
+      },
+      "browser": {
+        "title": "Nichts zu installieren",
+        "body": "TinyFloor läuft in jedem modernen Browser, in 18 Sprachen."
+      }
+    },
+    "team": {
+      "title": "Wer wir sind",
+      "role": "Gründer",
+      "body": "TinyFloor ist ein kleines Unternehmen. Wir entwickeln offen und gestalten das Produkt nach dem Feedback der Teams, die es nutzen.",
+      "website": "Website"
+    },
+    "source": {
+      "title": "Open Source",
+      "body": "Der Code von TinyFloor ist öffentlich auf GitHub. Ein Stern hilft mehr Teams, es zu finden.",
+      "star": "Auf GitHub einen Stern geben"
+    },
+    "contact": {
+      "title": "Kontakt",
+      "body": "Fragen, Ideen oder Feedback? Schreib uns. Wir lesen jede Nachricht."
+    }
   },
   "homepage": {
     "nav": {

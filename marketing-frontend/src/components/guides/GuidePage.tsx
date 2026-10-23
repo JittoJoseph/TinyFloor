@@ -12,26 +12,7 @@ import { emphasised } from "@/lib/words";
 import { CJK_HEADLINE, COLUMN, Closing, H2, INK, LEAD, MarketingShell, Questions, quiet } from "@/components/home/Blocks";
 import { RelatedTools } from "@/components/tools/RelatedTools";
 import { ArticleContents, ArticleSections, READ, numberItems } from "./ArticleSections";
-
-/** "By Jitto Joseph" in the page's language, the name linking to LinkedIn wherever the language puts it. */
-function byline(text: string) {
-  const at = text.indexOf(AUTHOR.name);
-  if (at < 0) return text;
-  return (
-    <>
-      {text.slice(0, at)}
-      <a
-        href={AUTHOR.linkedin}
-        target="_blank"
-        rel="author noopener noreferrer"
-        className="text-foreground underline decoration-foreground/25 underline-offset-[3px] transition-colors hover:decoration-foreground"
-      >
-        {AUTHOR.name}
-      </a>
-      {text.slice(at + AUTHOR.name.length)}
-    </>
-  );
-}
+import { byline } from "./Byline";
 
 const dateIn = (locale: string, date: string) =>
   new Intl.DateTimeFormat(locale, { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${date}T00:00:00Z`));

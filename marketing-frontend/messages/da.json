@@ -1533,18 +1533,45 @@
   "about": {
     "meta": {
       "title": "Om TinyFloor",
-      "description": "TinyFloor er et virtuelt kontor, du går rundt i, lavet af Jitto Joseph. Hvorfor det findes, hvem der laver det, og hvordan du fanger os."
+      "description": "TinyFloor er et virtuelt kontor til remote teams: en fælles etage i browseren, hvor du kan se, hvem der er her, og gå hen og snakke. Hvem vi er, og hvordan du fanger os."
     },
     "eyebrow": "Om os",
     "title": "Fjernarbejde mistede gangen. Vi bygger den op igen.",
-    "p1": "At arbejde hver for sig er godt for fokus, men det tog stille og roligt de små øjeblikke: det hurtige spørgsmål ved nogens skrivebord, hej'et i forbifarten, at se hvem der er der. Videoopkald klarer møder fint. De gjorde alle andre samtaler til en aftale.",
-    "p2": "TinyFloor er en etage i stedet for et link. Dit team går rundt på et fælles kontor i pixelart, og at gå hen til nogen er måden, man begynder at tale på. Deltag i et møde, og du går ind i mødelokalet. Gå ud, og der er stille igen.",
-    "p3": "Det kører i browseren på Cloudflares netværk, på 18 sprog, uden noget at installere, og det er gratis for små teams.",
-    "founderTitle": "Lavet af Jitto Joseph",
-    "founderBody": "Jeg designer og bygger TinyFloor, fra pixel-etagen til serverne, den kører på. Har du en idé, et problem eller vil du bare sige hej, hører jeg meget gerne fra dig.",
-    "website": "Hjemmeside",
-    "elsewhere": "TinyFloor andre steder",
-    "contact": "Skriv til os"
+    "intro": "TinyFloor er et virtuelt kontor til remote teams: en fælles etage i browseren, hvor du kan se, hvem der er her, og gå hen og snakke.",
+    "why": {
+      "title": "Hvorfor vi bygger det",
+      "body": "Fjernarbejde er godt for fokus, men det har mistet de små øjeblikke: et hurtigt spørgsmål, et hej i forbifarten, at vide, hvem der er her. Videoopkald gjorde hver samtale til et møde. TinyFloor giver et team ét sted at være sammen, så det er lige så nemt at snakke som at gå hen til nogen."
+    },
+    "beliefs": {
+      "title": "Det tror vi på",
+      "presence": {
+        "title": "Til stede, ikke overvåget",
+        "body": "Intet kamera står tændt, og intet opkald bliver optaget. Du bestemmer, hvornår du er her."
+      },
+      "price": {
+        "title": "Én pris pr. team",
+        "body": "Et kontor koster for hele teamet, ikke pr. person. Små teams kan bruge det gratis."
+      },
+      "browser": {
+        "title": "Intet at installere",
+        "body": "TinyFloor kører i enhver moderne browser, på 18 sprog."
+      }
+    },
+    "team": {
+      "title": "Hvem vi er",
+      "role": "Stifter",
+      "body": "TinyFloor er en lille virksomhed. Vi bygger åbent og former produktet ud fra feedback fra de teams, der bruger det.",
+      "website": "Hjemmeside"
+    },
+    "source": {
+      "title": "Open source",
+      "body": "TinyFloors kode er offentlig på GitHub. En stjerne hjælper flere teams med at finde det.",
+      "star": "Giv en stjerne på GitHub"
+    },
+    "contact": {
+      "title": "Kontakt os",
+      "body": "Spørgsmål, idéer eller feedback? Skriv til os. Vi læser alle beskeder."
+    }
   },
   "homepage": {
     "nav": {

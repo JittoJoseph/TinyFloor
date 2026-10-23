@@ -35,7 +35,9 @@ import {
 } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { COMPARE_ROWS, HUBS, LANDINGS, LANDING_GROUPS, landingByKey, type Landing, type LandingKey } from "@/lib/landings";
-import { faqNode, pageGraph } from "@/lib/structured-data";
+import { articleNode, faqNode, pageGraph } from "@/lib/structured-data";
+import { AUTHOR } from "@/lib/site";
+import { byline } from "@/components/guides/Byline";
 import { JsonLd } from "@/components/JsonLd";
 import { Logo } from "@/components/app/Logo";
 import { cn } from "@/lib/utils";
@@ -98,6 +100,7 @@ const POINT_ICONS: Record<LandingKey, [AppIcon, AppIcon, AppIcon]> = {
  */
 export async function LandingPage({ page, locale }: { page: Landing; locale: string }) {
   const t = await getTranslations("landings");
+  const tg = await getTranslations("guides");
   const copyOf = (key: LandingKey) => t.raw(`pages.${key}` as Parameters<typeof t.raw>[0]) as LandingCopy;
   const copy = copyOf(page.key);
   // The page's own long text where this language has it (lib/landing-articles): it takes
@@ -133,7 +136,21 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
           path,
           name: t(`pages.${page.key}.meta.title`),
           description: t(`pages.${page.key}.meta.description`),
-          nodes: [faqNode(locale, path, copy.faq)],
+          nodes: [
+            // A page with its own long text is an article, written by someone: the guides' author.
+            ...(article
+              ? [
+                  articleNode({
+                    locale,
+                    path,
+                    headline: t(`pages.${page.key}.meta.title`),
+                    description: t(`pages.${page.key}.meta.description`),
+                    updated: page.checked ? `${page.checked}-01` : undefined,
+                  }),
+                ]
+              : []),
+            faqNode(locale, path, copy.faq),
+          ],
         })}
       />
 
@@ -147,6 +164,16 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
       {article ? (
         <div className={cn(COLUMN, "pb-4")}>
           <div className={READ}>
+            {/* Who wrote it, and when the facts in it were last checked. */}
+            <p className="mb-10 mt-14 flex flex-wrap items-center gap-x-2 gap-y-1 border-b border-border pb-6 text-[14px] text-muted-foreground sm:mt-20">
+              <span>{byline(tg("by", { name: AUTHOR.name }))}</span>
+              {checked && (
+                <>
+                  <span aria-hidden>·</span>
+                  <span>{tg("updated", { date: checked })}</span>
+                </>
+              )}
+            </p>
             <ArticleSections sections={numberItems(article)} />
           </div>
         </div>

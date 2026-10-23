@@ -1533,18 +1533,45 @@
   "about": {
     "meta": {
       "title": "Tietoa TinyFloorista",
-      "description": "TinyFloor on virtuaalitoimisto, jossa voi kävellä, ja sen on tehnyt Jitto Joseph. Miksi se on olemassa, kuka sitä tekee ja miten meihin saa yhteyden."
+      "description": "TinyFloor on virtuaalitoimisto etätiimeille: yhteinen kerros selaimessa, jossa näet, kuka on paikalla, ja voit kävellä juttelemaan. Keitä olemme ja miten tavoitat meidät."
     },
     "eyebrow": "Tietoa meistä",
     "title": "Etätyö menetti käytävän. Rakennamme sen takaisin.",
-    "p1": "Erillään työskentely auttaa keskittymään, mutta se vei hiljaa pienet hetket: nopean kysymyksen jonkun työpöydän ääressä, ohimennen sanotun moikan, näkymän siihen, kuka on paikalla. Videopuhelut hoitavat kokoukset hyvin. Ne tekivät kaikista muista keskusteluista sovittuja tapaamisia.",
-    "p2": "TinyFloor on kerros eikä linkki. Tiimisi kävelee yhteisessä pikseligrafiikkatoimistossa, ja jonkun luo käveleminen on tapa aloittaa puhuminen. Liity kokoukseen, niin kävelet kokoushuoneeseen. Kävele ulos, niin on taas hiljaista.",
-    "p3": "Se toimii selaimessa Cloudflaren verkossa, 18 kielellä, ilman asennuksia, ja se on ilmainen pienille tiimeille.",
-    "founderTitle": "Tekijä: Jitto Joseph",
-    "founderBody": "Suunnittelen ja rakennan TinyFlooria pikselikerroksesta palvelimiin, joilla se pyörii. Jos sinulla on idea, ongelma tai haluat vain tervehtiä, kuulen sinusta mielelläni.",
-    "website": "Verkkosivusto",
-    "elsewhere": "TinyFloor muualla",
-    "contact": "Kirjoita meille"
+    "intro": "TinyFloor on virtuaalitoimisto etätiimeille: yhteinen kerros selaimessa, jossa näet, kuka on paikalla, ja voit kävellä juttelemaan.",
+    "why": {
+      "title": "Miksi rakennamme sitä",
+      "body": "Etätyö auttaa keskittymään, mutta pienet hetket katosivat: nopea kysymys, ohimennen sanottu moi, tieto siitä, kuka on paikalla. Videopuhelut tekivät jokaisesta keskustelusta palaverin. TinyFloor antaa tiimille yhden paikan olla yhdessä, jotta puhuminen on yhtä helppoa kuin kävellä jonkun luo."
+    },
+    "beliefs": {
+      "title": "Mihin uskomme",
+      "presence": {
+        "title": "Läsnä, ei valvottuna",
+        "body": "Mikään kamera ei jää päälle, eikä puheluita tallenneta. Sinä päätät, milloin olet paikalla."
+      },
+      "price": {
+        "title": "Yksi hinta tiimille",
+        "body": "Toimiston hinta on koko tiimille, ei henkeä kohden. Pienet tiimit voivat käyttää sitä ilmaiseksi."
+      },
+      "browser": {
+        "title": "Ei mitään asennettavaa",
+        "body": "TinyFloor toimii kaikissa nykyaikaisissa selaimissa, 18 kielellä."
+      }
+    },
+    "team": {
+      "title": "Keitä olemme",
+      "role": "Perustaja",
+      "body": "TinyFloor on pieni yritys. Rakennamme avoimesti ja muokkaamme tuotetta sitä käyttävien tiimien palautteen pohjalta.",
+      "website": "Verkkosivusto"
+    },
+    "source": {
+      "title": "Avoin lähdekoodi",
+      "body": "TinyFloorin koodi on julkinen GitHubissa. Tähti auttaa useampia tiimejä löytämään sen.",
+      "star": "Anna tähti GitHubissa"
+    },
+    "contact": {
+      "title": "Ota yhteyttä",
+      "body": "Kysyttävää, ideoita tai palautetta? Kirjoita meille. Luemme jokaisen viestin."
+    }
   },
   "homepage": {
     "nav": {

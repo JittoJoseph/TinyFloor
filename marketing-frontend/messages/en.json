@@ -1533,18 +1533,45 @@
   "about": {
     "meta": {
       "title": "About TinyFloor",
-      "description": "TinyFloor is a virtual office you walk around in, made by Jitto Joseph. Why it exists, who makes it and how to get in touch."
+      "description": "TinyFloor is a virtual office for remote teams: a shared floor in the browser where you can see who's around and walk over to talk. Who we are and how to reach us."
     },
     "eyebrow": "About",
     "title": "Remote work lost the hallway. We're building it back.",
-    "p1": "Working apart is great for focus, but it quietly took away the small moments: the quick question at someone's desk, the hello on the way past, seeing who's around. Video calls handle meetings well. They made every other conversation a scheduled one.",
-    "p2": "TinyFloor is a floor instead of a link. Your team walks around a shared pixel-art office, and walking up to someone is how you start talking. Join a meeting and you walk into the meeting room. Walk out and it's quiet again.",
-    "p3": "It runs in the browser on Cloudflare's network, in 18 languages, with nothing to install, and it's free for small teams.",
-    "founderTitle": "Made by Jitto Joseph",
-    "founderBody": "I design and build TinyFloor, from the pixel floor to the servers it runs on. If you have an idea, a problem or just want to say hello, I'd love to hear from you.",
-    "website": "Website",
-    "elsewhere": "TinyFloor elsewhere",
-    "contact": "Write to us"
+    "intro": "TinyFloor is a virtual office for remote teams: a shared floor in the browser where you can see who's around and walk over to talk.",
+    "why": {
+      "title": "Why we're building it",
+      "body": "Remote work is good for focus, but it lost the small moments: a quick question, a hello in passing, knowing who's around. Video calls turned every conversation into a meeting. TinyFloor gives a team one place to be together, so talking is as easy as walking over."
+    },
+    "beliefs": {
+      "title": "What we believe",
+      "presence": {
+        "title": "Present, not watched",
+        "body": "No camera stays on and no call is recorded. You decide when you're around."
+      },
+      "price": {
+        "title": "One price per team",
+        "body": "An office is priced for the team, not per person. Small teams can use it free."
+      },
+      "browser": {
+        "title": "Nothing to install",
+        "body": "TinyFloor runs in any modern browser, in 18 languages."
+      }
+    },
+    "team": {
+      "title": "Who we are",
+      "role": "Founder",
+      "body": "TinyFloor is a small company. We build in the open and shape the product around feedback from the teams who use it.",
+      "website": "Website"
+    },
+    "source": {
+      "title": "Open source",
+      "body": "TinyFloor's code is public on GitHub. A star helps more teams find it.",
+      "star": "Star on GitHub"
+    },
+    "contact": {
+      "title": "Get in touch",
+      "body": "Questions, ideas or feedback? Write to us. We read every message."
+    }
   },
   "homepage": {
     "nav": {

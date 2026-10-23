@@ -1533,18 +1533,45 @@
   "about": {
     "meta": {
       "title": "O TinyFloor",
-      "description": "TinyFloor to wirtualne biuro, po którym się chodzi, stworzone przez Jitto Josepha. Dlaczego powstało, kto je tworzy i jak się z nami skontaktować."
+      "description": "TinyFloor to wirtualne biuro dla zespołów zdalnych: wspólne piętro w przeglądarce, na którym widzisz, kto jest obecny, i podchodzisz, żeby porozmawiać. Kim jesteśmy i jak się z nami skontaktować."
     },
     "eyebrow": "O nas",
     "title": "Praca zdalna straciła korytarz. Budujemy go na nowo.",
-    "p1": "Praca osobno sprzyja skupieniu, ale po cichu zabrała drobne chwile: szybkie pytanie przy czyimś biurku, cześć w przelocie, widok tego, kto jest na miejscu. Rozmowy wideo dobrze sprawdzają się na spotkaniach. Z każdej innej rozmowy zrobiły termin w kalendarzu.",
-    "p2": "TinyFloor to piętro zamiast linku. Twój zespół chodzi po wspólnym biurze w pixel arcie, a podejście do kogoś to sposób na rozpoczęcie rozmowy. Dołącz do spotkania, a wejdziesz do sali spotkań. Wyjdź, a znów jest cicho.",
-    "p3": "Działa w przeglądarce w sieci Cloudflare, w 18 językach, bez instalowania czegokolwiek, i jest darmowe dla małych zespołów.",
-    "founderTitle": "Tworzy je Jitto Joseph",
-    "founderBody": "Projektuję i buduję TinyFloor, od pikselowego piętra po serwery, na których działa. Masz pomysł, problem albo chcesz się po prostu przywitać? Chętnie się odezwę.",
-    "website": "Strona",
-    "elsewhere": "TinyFloor w sieci",
-    "contact": "Napisz do nas"
+    "intro": "TinyFloor to wirtualne biuro dla zespołów zdalnych: wspólne piętro w przeglądarce, na którym widzisz, kto jest obecny, i podchodzisz, żeby porozmawiać.",
+    "why": {
+      "title": "Dlaczego to budujemy",
+      "body": "Praca zdalna sprzyja skupieniu, ale zniknęły drobne chwile: szybkie pytanie, cześć w przelocie, wiedza o tym, kto jest obecny. Wideorozmowy zamieniły każdą rozmowę w spotkanie. TinyFloor daje zespołowi jedno miejsce, w którym może być razem, żeby rozmowa była tak prosta jak podejście do kogoś."
+    },
+    "beliefs": {
+      "title": "W co wierzymy",
+      "presence": {
+        "title": "Obecni, nie obserwowani",
+        "body": "Żadna kamera nie zostaje włączona i żadna rozmowa nie jest nagrywana. To ty decydujesz, kiedy jesteś dostępny."
+      },
+      "price": {
+        "title": "Jedna cena za zespół",
+        "body": "Biuro kosztuje za cały zespół, nie za osobę. Małe zespoły mogą korzystać za darmo."
+      },
+      "browser": {
+        "title": "Nic do instalowania",
+        "body": "TinyFloor działa w każdej nowoczesnej przeglądarce, w 18 językach."
+      }
+    },
+    "team": {
+      "title": "Kim jesteśmy",
+      "role": "Założyciel",
+      "body": "TinyFloor to mała firma. Budujemy otwarcie i kształtujemy produkt na podstawie opinii zespołów, które z niego korzystają.",
+      "website": "Strona"
+    },
+    "source": {
+      "title": "Open source",
+      "body": "Kod TinyFloor jest publiczny na GitHubie. Gwiazdka pomaga kolejnym zespołom go znaleźć.",
+      "star": "Daj gwiazdkę na GitHubie"
+    },
+    "contact": {
+      "title": "Kontakt",
+      "body": "Pytania, pomysły lub opinie? Napisz do nas. Czytamy każdą wiadomość."
+    }
   },
   "homepage": {
     "nav": {

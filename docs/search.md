@@ -245,3 +245,46 @@ some languages: the page, the sitemap, the language versions in its head and
 the footer's language menu follow `lib/tools/catalog.ts`, and the middleware
 sends any other language to the 404. Every tool page ends with the other
 tools in its language, and `/tools` lists them all.
+
+## Where search stands, and the next pages (24 October)
+
+Search Console, 28 days: 104 clicks, 4,460 impressions (about 450 a day by
+the 21st, up from under 100 in September), average position 24.8. The domain
+property also counts other subdomains' pages; filter to www when reading it.
+
+- **What gets clicks:** the brand (home page, position 2.5), the Japanese
+  pricing guide (position 6, the one buyer search we win), games for virtual
+  meetings (16), and the virtual coworking pages in Japanese and Korean.
+- **What gets seen but not clicked:** the virtual office page (171
+  impressions, position 50), the main alternative page (204, position 33),
+  the proximity chat guide (position 8, gamers).
+- **Assistants search Google too.** Queries like "<product> alternative
+  site:reddit.com" and long comparison questions ending in site:reddit.com
+  show up with us at position 4: an assistant's fan-out, looking for Reddit
+  threads. Being discussed on Reddit is how to be in those answers.
+
+Ahrefs' free keyword tool (US, rough bands), searches near what TinyFloor
+solves:
+
+| Search | Volume | Difficulty | Page |
+|---|---|---|---|
+| remote work tools | >1,000 | easy | A guide: the tools a small remote team needs, by job (chat, calls, docs, presence). |
+| remote team communication (tools, strategies) | >100 each | easy | A guide. |
+| how to manage a remote team, managing a remote team, remote team management tools | >100 each | easy | A guide. |
+| how to motivate a remote team | >100 | easy | A section of the one above. |
+| remote team collaboration (tools, software) | >100 each | easy | Close to remote work tools; one page, not two. |
+| async standup (tool, template, best tools) | <100 each, many | easy | The standup template tool, with an async section. |
+| best virtual office for remote teams 2026, most recommended / highest rated … | <100 each | — | Phrasings assistants generate: the best virtual office software guide should say "for remote teams", the year and "comparison" in its headings. |
+| virtual water cooler (ideas, apps) | <100 | easy | Fold into an existing guide. |
+
+## Launch places (24 October)
+
+- **Hacker News:** TinyFloor has never been posted. Earlier "virtual office"
+  Show HNs mostly got under 10 points; the one that did well (125 points)
+  led with "free" and "in the browser". What HN responds to: open source
+  (AGPL), something to try without an account (the demo lobby), and how it's
+  built. The lobby holds 1,000 at once (50 copies of 20).
+- **Product Hunt:** no page yet. Its alternatives pages are among the pages
+  assistants read for category questions, so a listing helps there too.
+- **Email is the bottleneck in a spike:** Resend's free plan sends 100 a day,
+  and every email sign-in is one.

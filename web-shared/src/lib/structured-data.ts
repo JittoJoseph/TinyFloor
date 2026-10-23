@@ -150,8 +150,9 @@ export function articleNode({
   path: string;
   headline: string;
   description: string;
-  published: string;
-  updated: string;
+  /** When it was first written and last changed, where the page says (a guide does; a landing page may only have a month). */
+  published?: string;
+  updated?: string;
 }): Schema {
   const url = absoluteUrl(locale, path);
   return {
@@ -163,8 +164,8 @@ export function articleNode({
     mainEntityOfPage: { "@id": `${url}#webpage` },
     inLanguage: locale,
     image: socialImage(locale, path),
-    datePublished: published,
-    dateModified: updated,
+    ...(published ? { datePublished: published } : {}),
+    ...(updated ? { dateModified: updated } : {}),
     author: AUTHOR_NODE,
     publisher: { "@id": ORG_ID },
   };

@@ -306,12 +306,12 @@ export function Plans() {
 /**
  * The two plans, for the home page and the pricing page, as one panel split
  * down the middle (the way Vercel and Linear lay theirs out), not two floating
- * cards. Pro is the lifted side with the one solid button and warm ticks, so
- * the eye lands where the team ends up; on a phone it comes first. Each side
- * puts the decision first (price, what it comes to, the button, the promise
- * under it) and what you get after, as a list to scan. Pro's price is framed
- * the way it's paid: once, for everyone, under a dollar a day; until the
- * founding price closes, a line says it's theirs to keep and what comes after.
+ * cards. Both sides are built the same, so everything lines up across them:
+ * name and what it's for, the price, how many people, the button and the one
+ * promise under it, what you get, and a last line pinned to the bottom. Pro is
+ * the lifted side with the one solid button and warm ticks, so the eye lands
+ * where the team ends up; on a phone it comes first. The fine print (per
+ * office, tax, the founding price) sits once under the panel.
  */
 export function PlanCards({ className }: { className?: string }) {
   const t = useTranslations("homepage.pricing");
@@ -319,59 +319,61 @@ export function PlanCards({ className }: { className?: string }) {
   const [free, pro] = PLANS;
   const action =
     "inline-flex h-11 w-full items-center justify-center rounded-full text-[14.5px] font-medium transition-[background-color,transform] active:scale-[0.98]";
-  const side = "flex flex-col p-6 sm:p-9";
+  const side = "flex flex-col p-6 sm:p-8";
 
   return (
     <div className={className}>
-      <div className="mx-auto grid max-w-[480px] overflow-hidden rounded-[28px] border border-border lg:max-w-[880px] lg:grid-cols-2">
+      <div className="mx-auto grid max-w-[460px] overflow-hidden rounded-[28px] border border-border lg:max-w-[860px] lg:grid-cols-2">
         <section className={cn(side, "bg-foreground/[0.04] lg:order-2")}>
-          <PlanTop name={t("pro.name")} tagline={t("pro.tagline")} amount={pro.price} per={t("month")} />
-          <p className="mt-2 text-[13px] text-muted-foreground">
-            <span className="font-medium text-foreground">{t("daily", { price: `$${Math.ceil(pro.price / 30)}` })}</span>
-            {" · "}
-            {t("perPerson", { price: `$${(pro.price / 10).toFixed(2)}`, team: 10 })}
-          </p>
-          {foundingOpen() && <p className="mt-1.5 text-[12.5px] leading-[1.5] text-muted-foreground">{t("founding")}</p>}
+          <PlanTop
+            name={t("pro.name")}
+            tagline={t("pro.tagline")}
+            amount={pro.price}
+            per={t("month")}
+            size={`${t("list.people", { people: pro.people })} · ${t("daily", { price: `$${Math.ceil(pro.price / 30)}` })}`}
+          />
           <PlanAction
             choose={t("choose", { plan: t("pro.name") })}
             soon={t("soon")}
-            className={cn(action, "mt-7 bg-foreground text-background hover:bg-foreground/85")}
-            soonClassName={cn(action, "mt-7 bg-foreground/[0.07] text-muted-foreground")}
+            className={cn(action, "mt-6 bg-foreground text-background hover:bg-foreground/85")}
+            soonClassName={cn(action, "mt-6 bg-foreground/[0.07] text-muted-foreground")}
           />
-          <p className="mt-3 text-center text-[12px] text-muted-foreground">{t("assurance")}</p>
+          <p className="mt-3 text-center text-[12.5px] text-muted-foreground">{t("assurance")}</p>
           <PlanList warm lead={t("list.everything")} items={[t("list.team"), t("list.often"), t("list.help")]} />
-          <p className="mt-7 flex items-start gap-2 text-[12.5px] leading-[1.5] text-muted-foreground">
+          <PlanFoot>
             <Zap className="mt-px size-3.5 shrink-0 text-brand" />
             {t("trial", { days: 14 })}
-          </p>
+          </PlanFoot>
         </section>
 
         <section className={cn(side, "border-t border-border lg:order-1 lg:border-e lg:border-t-0")}>
-          <PlanTop name={t("free.name")} tagline={t("free.tagline")} amount={free.price} per={t("forever")} />
-          <p className="mt-2 text-[13px] text-muted-foreground">{t("noCard")}</p>
-          <Link href="/create" className={cn(action, "mt-7 bg-foreground/[0.07] text-foreground hover:bg-foreground/[0.12]")}>
+          <PlanTop
+            name={t("free.name")}
+            tagline={t("free.tagline")}
+            amount={free.price}
+            per={t("forever")}
+            size={t("list.people", { people: free.people })}
+          />
+          <Link href="/create" className={cn(action, "mt-6 bg-foreground/[0.07] text-foreground hover:bg-foreground/[0.12]")}>
             {th("cta")}
           </Link>
-          {/* Holds the line Pro has under its button, so the two lists start level side by side. */}
-          <p className="mt-3 hidden select-none text-center text-[12px] text-transparent lg:block" aria-hidden>
-            {t("assurance")}
-          </p>
-          <PlanList
-            lead={t("list.included")}
-            items={[t("list.people", { people: free.people }), t("list.floor"), t("list.meetings"), t("list.desks")]}
-          />
-          <p className="mt-7 text-[12.5px] leading-[1.5] text-muted-foreground">{t("grow")}</p>
+          <p className="mt-3 text-center text-[12.5px] text-muted-foreground">{t("noCard")}</p>
+          <PlanList lead={t("list.included")} items={[t("list.floor"), t("list.meetings"), t("list.desks")]} />
+          <PlanFoot>{t("grow")}</PlanFoot>
         </section>
       </div>
-      <p className="mx-auto mt-8 max-w-[34rem] text-balance text-center text-[13px] leading-relaxed text-muted-foreground">
-        {t("note")} {t("tax")}
-      </p>
+      <div className="mx-auto mt-6 max-w-[36rem] space-y-1 text-balance text-center text-[12.5px] leading-relaxed text-muted-foreground">
+        <p>
+          {t("note")} {t("tax")}
+        </p>
+        {foundingOpen() && <p>{t("founding")}</p>}
+      </div>
     </div>
   );
 }
 
-/** A plan's name, what it's for, and its price. */
-function PlanTop({ name, tagline, amount, per }: { name: string; tagline: string; amount: number; per: string }) {
+/** A plan's name, what it's for, its price, and how many people it holds. */
+function PlanTop({ name, tagline, amount, per, size }: { name: string; tagline: string; amount: number; per: string; size: string }) {
   return (
     <>
       <h3 className="text-[16px] font-semibold tracking-[-0.01em]">{name}</h3>
@@ -380,18 +382,24 @@ function PlanTop({ name, tagline, amount, per }: { name: string; tagline: string
         <span className="text-[44px] font-semibold leading-none tracking-[-0.045em] sm:text-[52px]">${amount}</span>
         <span className="text-[14px] text-muted-foreground">{per}</span>
       </p>
+      <p className="mt-3 text-[13px] font-medium text-foreground">{size}</p>
     </>
   );
+}
+
+/** A plan's last line, pinned to the bottom so both sides end level. */
+function PlanFoot({ children }: { children: ReactNode }) {
+  return <p className="mt-7 flex items-start gap-2 text-[12.5px] leading-[1.5] text-muted-foreground">{children}</p>;
 }
 
 /** What a plan comes with, ticked, under a hairline; Pro's ticks are warm. */
 function PlanList({ lead, items, warm = false }: { lead?: string; items: string[]; warm?: boolean }) {
   return (
-    <div className="mt-7 flex-1 border-t border-border pt-6">
+    <div className="mt-6 flex-1 border-t border-border pt-6">
       {lead && <p className="mb-4 text-[13px] font-medium">{lead}</p>}
       <ul className="space-y-3.5">
         {items.map((item) => (
-          <li key={item} className="flex items-start gap-3 text-[14px] leading-[1.45]">
+          <li key={item} className="flex items-start gap-3 text-pretty text-[14px] leading-[1.45]">
             <span
               className={cn(
                 "mt-px flex size-[19px] shrink-0 items-center justify-center rounded-full [&_svg]:size-3",

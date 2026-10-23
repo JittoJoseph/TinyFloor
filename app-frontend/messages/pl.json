@@ -865,6 +865,11 @@
     "cancel": "Anuluj",
     "save": "Zapisz"
   },
+  "you": {
+    "customizeDesk": "Dostosuj swoje biurko",
+    "noDeskTitle": "Nie masz jeszcze biurka",
+    "noDesk": "Usiądź przy wolnym biurku, aby je zająć"
+  },
   "note": {
     "title": "Notatka statusu",
     "set": "Ustaw notatkę statusu",

@@ -3,26 +3,13 @@
 import { useRef, useState, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
-import { Check, Palette, Redo, Trash2, Undo } from "@/components/ui/icons";
+import { Check, Redo, Trash2, Undo } from "@/components/ui/icons";
 import { FLOOR } from "@shared/map";
 import { DESK_THINGS_MAX, officePieces, thingsOn } from "@shared/office";
 import atlas from "@shared/catalog/atlas.json";
 import { FLOOR_FILES } from "@/lib/floorWarmup";
 import { usePieceChanges } from "@/lib/pieces";
-import {
-  addThing,
-  closeDecorate,
-  openDecorate,
-  redo,
-  removeThing,
-  resetDesk,
-  select,
-  setChair,
-  startCarry,
-  swapThing,
-  undo,
-  useDecorate,
-} from "@/lib/decorate";
+import { addThing, closeDecorate, redo, removeThing, resetDesk, select, setChair, startCarry, swapThing, undo, useDecorate } from "@/lib/decorate";
 import { EASE_OUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 
@@ -63,90 +50,54 @@ function Thumb({ item, art }: { item: string; art?: [number, number, number, num
   );
 }
 
+/** Whether a thing, at the size its card shows it, needs two columns. */
+const isWide = ([left, top, right, bottom]: [number, number, number, number]) => {
+  const scale = Math.max(right - left, bottom - top) <= 34 ? 2 : 1;
+  return (right - left) * scale > 60;
+};
+
 /**
- * Decorating your desk (lib/decorate.ts), over the floor: the chip that opens
- * it from your desk, the tray it brings up, and the little bar over whatever
- * is picked on the desk. The floor (DeskDecorator) moves things and takes what
- * the tray carries in.
+ * Over the thing picked on your desk, while decorating (lib/decorate.ts): take
+ * it away, or let go of it. Where it is comes from the floor (DeskDecorator).
  */
-export function DecoratePanel() {
+export function PickedBar() {
   const t = useTranslations("decorate");
-  const { desk, selected, anchor, hint } = useDecorate();
+  const { desk, selected, anchor } = useDecorate();
   const reduce = useReducedMotion() ?? false;
   const isChair = !!desk && selected === FLOOR.desks[desk].chair.key;
   return (
-    <>
-      {/* Pointing at your desk: the way in, over it. */}
-      <AnimatePresence>
-        {!desk && hint && (
-          <motion.button
-            key="hint"
-            type="button"
-            onClick={openDecorate}
-            initial={reduce ? { opacity: 0 } : { opacity: 0, y: hint.below ? -4 : 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, transition: { duration: 0.1 } }}
-            transition={{ duration: 0.16, ease: EASE_OUT }}
-            className={cn(
-              "fixed z-[55] flex h-8 -translate-x-1/2 cursor-pointer items-center gap-1.5 rounded-full bg-[#1f2937]/90 ps-2.5 pe-3 text-[12.5px] font-medium text-white shadow-float backdrop-blur-sm hover:bg-[#1f2937]",
-              !hint.below && "-translate-y-full",
-            )}
-            style={{ left: hint.x, top: hint.y }}
-          >
-            <Palette className="size-3.5" />
-            {t("open")}
-          </motion.button>
-        )}
-      </AnimatePresence>
-
-      {/* Over the picked thing: take it away, or let go of it. */}
-      <AnimatePresence>
-        {desk && selected && anchor && !isChair && (
-          <motion.div
-            key={selected}
-            initial={reduce ? { opacity: 0 } : { opacity: 0, y: 4, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.08 } }}
-            transition={{ duration: 0.14, ease: EASE_OUT }}
-            className="fixed z-[61] flex -translate-x-1/2 -translate-y-[calc(100%+8px)] items-center gap-0.5 rounded-full border border-border bg-card/95 p-0.5 shadow-float backdrop-blur-md"
-            style={{ left: anchor.x, top: anchor.y }}
-          >
-            <BarButton label={t("remove")} onClick={() => removeThing(selected)}>
-              <Trash2 className="size-4" />
-            </BarButton>
-            <BarButton label={t("deselect")} onClick={() => select(null)}>
-              <Check className="size-4" />
-            </BarButton>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <AnimatePresence>
-        {desk && (
-          <motion.div
-            key="tray"
-            initial={reduce ? { opacity: 0 } : { y: "110%" }}
-            animate={reduce ? { opacity: 1 } : { y: 0 }}
-            exit={reduce ? { opacity: 0 } : { y: "110%", transition: { duration: 0.22, ease: [0.4, 0, 1, 1] } }}
-            transition={{ type: "spring", stiffness: 420, damping: 38 }}
-            className="pointer-events-none fixed inset-x-0 bottom-0 z-[60] flex justify-center px-2 pb-[max(env(safe-area-inset-bottom),0.5rem)] md:px-4 md:pb-4"
-          >
-            <Tray key={desk} desk={desk} />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+    <AnimatePresence>
+      {desk && selected && anchor && !isChair && (
+        <motion.div
+          key={selected}
+          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 4, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, transition: { duration: 0.08 } }}
+          transition={{ duration: 0.14, ease: EASE_OUT }}
+          className="fixed z-[61] flex -translate-x-1/2 -translate-y-[calc(100%+8px)] items-center gap-0.5 rounded-full border border-border bg-card/95 p-0.5 shadow-float backdrop-blur-md"
+          style={{ left: anchor.x, top: anchor.y }}
+        >
+          <IconAction label={t("remove")} onClick={() => removeThing(selected)}>
+            <Trash2 className="size-4" />
+          </IconAction>
+          <IconAction label={t("deselect")} onClick={() => select(null)}>
+            <Check className="size-4" />
+          </IconAction>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
-function BarButton({ label, onClick, children }: { label: string; onClick: () => void; children: ReactNode }) {
+function IconAction({ label, onClick, disabled, children }: { label: string; onClick: () => void; disabled?: boolean; children: ReactNode }) {
   return (
     <button
       type="button"
       aria-label={label}
       title={label}
       onClick={onClick}
-      className="flex size-8 cursor-pointer items-center justify-center rounded-full text-foreground transition-colors hover:bg-muted"
+      disabled={disabled}
+      className="flex size-8 cursor-pointer items-center justify-center rounded-full text-foreground transition-colors hover:bg-muted disabled:cursor-default disabled:opacity-35 disabled:hover:bg-transparent"
     >
       {children}
     </button>
@@ -154,13 +105,13 @@ function BarButton({ label, onClick, children }: { label: string; onClick: () =>
 }
 
 /**
- * The tray: what can go on the desk, on shelves (only what suits its side),
- * and its chairs. A card clicked goes onto the desk where there's room, or,
- * with something on the desk picked, takes its place; a card dragged out is
- * carried, and dropped onto the desk where the pointer says. How full the
- * desk is, undo and redo, putting it back as it came, and Done.
+ * Decorating your desk, inside your card (YouCard): what can go on it, on
+ * shelves (only what suits its side), and its chairs. A card clicked goes onto
+ * the desk where there's room, or, with something on the desk picked, takes
+ * its place; a card dragged out is carried, and put down on the desk where the
+ * pointer says. How full it is, undo and redo, putting it back as it came.
  */
-function Tray({ desk }: { desk: string }) {
+export function DeskCustomizer({ desk }: { desk: string }) {
   const t = useTranslations("decorate");
   const { selected, undo: canUndo, redo: canRedo } = useDecorate();
   const changes = usePieceChanges();
@@ -168,9 +119,10 @@ function Tray({ desk }: { desk: string }) {
   const things = thingsOn(desk, changes);
   const full = things.length >= DESK_THINGS_MAX;
   const picked = selected && selected !== spec.chair.key ? selected : null;
-  const [shelf, setShelf] = useState<Shelf>(selected === spec.chair.key ? "chairs" : "all");
+  const [shelf, setShelf] = useState<Shelf>("all");
   const [confirming, setConfirming] = useState(false);
   const chair = officePieces(changes).find((piece) => piece.key === spec.chair.key)?.item ?? spec.chair.item;
+  // Pressing the chair on the floor shows the chairs.
   const shownShelf = selected === spec.chair.key ? "chairs" : shelf;
 
   const suits = Object.keys(FLOOR.things).filter((item) => {
@@ -179,51 +131,11 @@ function Tray({ desk }: { desk: string }) {
   });
   const shelves = SHELVES.filter((one) => one === "all" || one === "chairs" || suits.some((item) => shelfOf(item) === one));
   const shown = suits.filter((item) => shownShelf === "all" || shelfOf(item) === shownShelf);
+  const hint = shownShelf === "chairs" ? null : picked ? t("swapHint") : full ? t("full") : t("hint");
 
   return (
-    <div className="pointer-events-auto w-full max-w-[56rem] overflow-hidden rounded-2xl border border-border bg-card/95 shadow-float backdrop-blur-md">
-      <div className="flex items-center gap-2 px-3 pt-2.5 md:px-4">
-        <p className="min-w-0 truncate text-[14px] font-semibold text-foreground">{t("title")}</p>
-        <span className="shrink-0 rounded-full bg-muted px-2 py-0.5 text-[11.5px] font-medium tabular-nums text-muted-foreground">
-          {t("count", { count: things.length, max: DESK_THINGS_MAX })}
-        </span>
-        <div className="ms-auto flex items-center gap-0.5">
-          {confirming ? (
-            <>
-              <span className="me-1 hidden text-[12.5px] text-muted-foreground sm:inline">{t("resetConfirm")}</span>
-              <TextButton onClick={() => setConfirming(false)}>{t("cancel")}</TextButton>
-              <TextButton
-                tone="danger"
-                onClick={() => {
-                  resetDesk();
-                  setConfirming(false);
-                }}
-              >
-                {t("reset")}
-              </TextButton>
-            </>
-          ) : (
-            <>
-              <BarButton label={t("undo")} onClick={undo}>
-                <Undo className={cn("size-4", !canUndo && "opacity-35")} />
-              </BarButton>
-              <BarButton label={t("redo")} onClick={redo}>
-                <Redo className={cn("size-4", !canRedo && "opacity-35")} />
-              </BarButton>
-              <TextButton onClick={() => setConfirming(true)}>{t("reset")}</TextButton>
-              <button
-                type="button"
-                onClick={closeDecorate}
-                className="ms-1 h-8 cursor-pointer rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-opacity hover:opacity-90"
-              >
-                {t("done")}
-              </button>
-            </>
-          )}
-        </div>
-      </div>
-
-      <div className="flex gap-1 overflow-x-auto px-3 pt-2 md:px-4 [&::-webkit-scrollbar]:hidden">
+    <div className="flex min-h-0 flex-1 flex-col">
+      <div className="flex gap-0.5 overflow-x-auto px-3 pb-2 [&::-webkit-scrollbar]:hidden">
         {shelves.map((one) => (
           <button
             key={one}
@@ -234,49 +146,91 @@ function Tray({ desk }: { desk: string }) {
               if (one !== "chairs" && selected === spec.chair.key) select(null);
             }}
             className={cn(
-              "h-7 shrink-0 cursor-pointer rounded-full px-3 text-[12.5px] font-medium transition-colors",
+              "h-7 shrink-0 cursor-pointer rounded-full px-2 text-[12.5px] font-medium transition-colors",
               shownShelf === one ? "bg-foreground text-background" : "text-muted-foreground hover:bg-muted hover:text-foreground",
             )}
           >
             {t(`shelf.${one}`)}
           </button>
         ))}
-        <p className="ms-auto hidden shrink-0 self-center ps-3 text-[12px] text-muted-foreground lg:block">
-          {shownShelf === "chairs" ? "" : picked ? t("swapHint") : full ? t("full") : t("hint")}
-        </p>
       </div>
 
-      <div className="flex gap-1.5 overflow-x-auto px-3 pb-3 pt-2 md:px-4 [&::-webkit-scrollbar]:hidden">
-        {shownShelf === "chairs"
-          ? FLOOR.chairs[spec.side].map(({ item }) => (
-              <Card key={item} label={item} selected={chair === item} onPick={() => setChair(item)}>
-                <Thumb item={item} />
-              </Card>
-            ))
-          : shown.map((item) => (
-              <Card
-                key={item}
-                label={item}
-                disabled={full && !picked}
-                onPick={() => (picked ? swapThing(picked, item) : addThing(item))}
-                onCarry={picked || full ? undefined : () => startCarry(item)}
-              >
-                <Thumb item={item} art={FLOOR.things[item].art} />
-              </Card>
-            ))}
+      <div className="min-h-0 flex-1 overflow-y-auto px-3 pb-3">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(4.25rem,1fr))] gap-1.5">
+          {shownShelf === "chairs"
+            ? FLOOR.chairs[spec.side].map(({ item }) => (
+                <Card key={item} label={item} selected={chair === item} onPick={() => setChair(item)}>
+                  <Thumb item={item} />
+                </Card>
+              ))
+            : shown.map((item) => (
+                <Card
+                  key={item}
+                  label={item}
+                  wide={isWide(FLOOR.things[item].art)}
+                  disabled={full && !picked}
+                  onPick={() => (picked ? swapThing(picked, item) : addThing(item))}
+                  onCarry={picked || full ? undefined : () => startCarry(item)}
+                >
+                  <Thumb item={item} art={FLOOR.things[item].art} />
+                </Card>
+              ))}
+        </div>
+        {hint && <p className="mt-2.5 px-0.5 text-[12px] leading-relaxed text-muted-foreground">{hint}</p>}
+      </div>
+
+      <div className="flex items-center gap-1 border-t border-border px-2 py-2">
+        {confirming ? (
+          <>
+            <span className="min-w-0 flex-1 truncate px-1.5 text-[12.5px] text-muted-foreground">{t("resetConfirm")}</span>
+            <TextAction onClick={() => setConfirming(false)}>{t("cancel")}</TextAction>
+            <TextAction
+              tone="danger"
+              onClick={() => {
+                resetDesk();
+                setConfirming(false);
+              }}
+            >
+              {t("reset")}
+            </TextAction>
+          </>
+        ) : (
+          <>
+            <IconAction label={t("undo")} onClick={undo} disabled={!canUndo}>
+              <Undo className="size-4" />
+            </IconAction>
+            <IconAction label={t("redo")} onClick={redo} disabled={!canRedo}>
+              <Redo className="size-4" />
+            </IconAction>
+            <span className="ms-1 rounded-full bg-muted px-2 py-0.5 text-[11.5px] font-medium tabular-nums text-muted-foreground">
+              {t("count", { count: things.length, max: DESK_THINGS_MAX })}
+            </span>
+            <TextAction onClick={() => setConfirming(true)} className="ms-auto">
+              {t("reset")}
+            </TextAction>
+            <button
+              type="button"
+              onClick={closeDecorate}
+              className="h-8 cursor-pointer rounded-full bg-foreground px-4 text-[13px] font-medium text-background transition-opacity hover:opacity-90"
+            >
+              {t("done")}
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
 }
 
-function TextButton({ onClick, tone, children }: { onClick: () => void; tone?: "danger"; children: ReactNode }) {
+function TextAction({ onClick, tone, className, children }: { onClick: () => void; tone?: "danger"; className?: string; children: ReactNode }) {
   return (
     <button
       type="button"
       onClick={onClick}
       className={cn(
-        "h-8 cursor-pointer rounded-full px-3 text-[13px] font-medium transition-colors hover:bg-muted",
+        "h-8 shrink-0 cursor-pointer rounded-full px-3 text-[13px] font-medium transition-colors hover:bg-muted",
         tone === "danger" ? "text-destructive" : "text-muted-foreground hover:text-foreground",
+        className,
       )}
     >
       {children}
@@ -285,11 +239,12 @@ function TextButton({ onClick, tone, children }: { onClick: () => void; tone?: "
 }
 
 /**
- * A card on the tray: clicked, it's picked; dragged past a few pixels, it's
- * carried (the floor takes it from there, lib/DeskDecorator).
+ * A card: clicked, it's picked; dragged past a few pixels, it's carried (the
+ * floor takes it from there, lib/DeskDecorator).
  */
 function Card({
   label,
+  wide = false,
   selected = false,
   disabled = false,
   onPick,
@@ -297,6 +252,8 @@ function Card({
   children,
 }: {
   label: string;
+  /** Two columns, for a thing too wide for one at its own size. */
+  wide?: boolean;
   selected?: boolean;
   disabled?: boolean;
   onPick: () => void;
@@ -337,8 +294,9 @@ function Card({
         }
       }}
       className={cn(
-        "flex h-[4.75rem] min-w-[4.75rem] shrink-0 cursor-grab touch-pan-x items-end justify-center rounded-xl bg-muted/60 px-2.5 pb-3 transition-[background-color,box-shadow,transform,opacity] duration-150 active:cursor-grabbing focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-40",
-        selected ? "bg-muted shadow-[inset_0_0_0_2px_var(--ui-foreground)]" : "hover:-translate-y-0.5 hover:bg-muted",
+        wide && "col-span-2",
+        "flex h-[4.5rem] cursor-grab touch-none items-center justify-center rounded-xl bg-foreground/[0.05] transition-[background-color,box-shadow,transform,opacity] duration-150 active:cursor-grabbing focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-40",
+        selected ? "bg-foreground/[0.09] shadow-[inset_0_0_0_2px_var(--ui-foreground)]" : "hover:-translate-y-0.5 hover:bg-foreground/[0.09]",
       )}
     >
       {children}

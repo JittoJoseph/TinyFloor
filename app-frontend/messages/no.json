@@ -865,6 +865,11 @@
     "cancel": "Avbryt",
     "save": "Lagre"
   },
+  "you": {
+    "customizeDesk": "Tilpass skrivebordet ditt",
+    "noDeskTitle": "Ingen skrivebord ennå",
+    "noDesk": "Sett deg ved et ledig skrivebord for å ta det"
+  },
   "note": {
     "title": "Statusnotat",
     "set": "Sett et statusnotat",

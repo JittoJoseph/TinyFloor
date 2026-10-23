@@ -865,6 +865,11 @@
     "cancel": "Peruuta",
     "save": "Tallenna"
   },
+  "you": {
+    "customizeDesk": "Muokkaa työpöytääsi",
+    "noDeskTitle": "Ei vielä työpöytää",
+    "noDesk": "Istu vapaan työpöydän ääreen ottaaksesi sen"
+  },
   "note": {
     "title": "Tilaviesti",
     "set": "Aseta tilaviesti",

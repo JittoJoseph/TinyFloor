@@ -865,6 +865,11 @@
     "cancel": "Cancelar",
     "save": "Salvar"
   },
+  "you": {
+    "customizeDesk": "Personalize sua mesa",
+    "noDeskTitle": "Ainda sem mesa",
+    "noDesk": "Sente-se em uma mesa livre para ficar com ela"
+  },
   "note": {
     "title": "Nota de status",
     "set": "Definir nota de status",

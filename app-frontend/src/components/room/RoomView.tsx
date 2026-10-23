@@ -25,7 +25,8 @@ import type { ShareResult } from "@/lib/share";
 import { useInvite } from "@/components/app/Invite";
 import { useOfficeMaybe } from "@/components/app/OfficeShell";
 import { FloorPrompt } from "./FloorPrompt";
-import { DecoratePanel } from "./DecoratePanel";
+import { PickedBar } from "./DecoratePanel";
+import { YouCard } from "./YouCard";
 import { FLOOR_ARRIVED_EVENT, floorRequested, sinceFloorRequested, useFloor } from "@/lib/floor";
 import { track } from "@/lib/analytics";
 import { EASE_OUT } from "@/lib/ease";
@@ -252,7 +253,14 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
           </AnimatePresence>
         </div>
 
-        {inviteChip && canInvite && <InviteChip copied={copied} onClick={invite} />}
+        {/* Invite while it's worth asking, then you: the card grows down and over it when it opens. */}
+        <div className="relative flex items-start gap-2">
+          {inviteChip && canInvite && <InviteChip copied={copied} onClick={invite} />}
+          <div className="h-10 w-10 shrink-0" aria-hidden />
+          <div className="absolute end-0 top-0 z-10">
+            <YouCard userId={user.id} name={user.displayName} settingsHref={settingsHref} />
+          </div>
+        </div>
       </div>
 
       {/* Above the dock, one at a time: the desk you sat at, or what you can do where you stand. */}
@@ -266,7 +274,7 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
       <MeetingMini />
       <MeetingAudio />
       <WhiteboardOverlay />
-      <DecoratePanel />
+      <PickedBar />
 
       <ControlBar settingsHref={settingsHref} />
     </div>

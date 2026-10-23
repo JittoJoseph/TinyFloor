@@ -865,6 +865,11 @@
     "cancel": "Cancelar",
     "save": "Guardar"
   },
+  "you": {
+    "customizeDesk": "Personaliza tu escritorio",
+    "noDeskTitle": "Aún sin escritorio",
+    "noDesk": "Siéntate en un escritorio libre para quedártelo"
+  },
   "note": {
     "title": "Nota de estado",
     "set": "Poner una nota de estado",

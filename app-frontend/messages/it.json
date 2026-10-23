@@ -865,6 +865,11 @@
     "cancel": "Annulla",
     "save": "Salva"
   },
+  "you": {
+    "customizeDesk": "Personalizza la tua scrivania",
+    "noDeskTitle": "Ancora nessuna scrivania",
+    "noDesk": "Siediti a una scrivania libera per prenderla"
+  },
   "note": {
     "title": "Nota di stato",
     "set": "Imposta una nota di stato",

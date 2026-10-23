@@ -7,13 +7,13 @@ import { applyPieceChange, pieceChanges } from "./pieces";
 import { track } from "@/lib/analytics";
 
 /**
- * Decorating your desk (docs/customization.md): the floor brings your desk
- * into view and dims the rest, and a tray rises with what can stand on it and
- * the chairs it can have. Everything you do shows at once and goes to the
- * room, which says yes (and tells everyone) or sends the office's pieces
+ * Decorating your desk (docs/customization.md): your card (YouCard) grows into
+ * what can stand on the desk and the chairs it can have, and the floor brings
+ * the desk into view beside it. Everything you do shows at once and goes to
+ * the room, which says yes (and tells everyone) or sends the office's pieces
  * back. The floor (DeskDecorator) picks things up, moves them and takes what's
- * carried in from the tray; the tray (DecoratePanel) adds, swaps and carries;
- * both go through here.
+ * carried in from the card; the card (DeskCustomizer) adds, swaps and
+ * carries; both go through here.
  */
 interface DecorateState {
   /** The desk being decorated: yours, while decorating. */
@@ -22,13 +22,8 @@ interface DecorateState {
   selected: string | null;
   /** Where the picked piece's buttons go on screen (page pixels, its top middle), while one is picked. */
   anchor: { x: number; y: number } | null;
-  /** A thing being carried in from the tray, until it's dropped on the desk or let go of. */
+  /** A thing being carried in from the card, until it's dropped on the desk or let go of. */
   carrying: string | null;
-  /**
-   * Not decorating, with the pointer over your desk: where its Decorate chip
-   * goes (page pixels), over the desk or, where you sit above it, under it.
-   */
-  hint: { x: number; y: number; below: boolean } | null;
   undo: number;
   redo: number;
 }
@@ -40,7 +35,7 @@ interface Step {
   after: PieceChange | null;
 }
 
-let state: DecorateState = { desk: null, selected: null, anchor: null, carrying: null, hint: null, undo: 0, redo: 0 };
+let state: DecorateState = { desk: null, selected: null, anchor: null, carrying: null, undo: 0, redo: 0 };
 const listeners = new Set<() => void>();
 let send: ((message: ClientMessage) => void) | null = null;
 let me: string | null = null;
@@ -82,7 +77,7 @@ export function openDecorate() {
   past = [];
   ahead = [];
   track("desk_decorate_opened");
-  set({ desk, selected: null, anchor: null, carrying: null, hint: null });
+  set({ desk, selected: null, anchor: null, carrying: null });
 }
 
 export function close() {
@@ -104,12 +99,7 @@ export function setAnchor(anchor: { x: number; y: number } | null) {
   if (!samePoint(state.anchor, anchor)) set({ anchor });
 }
 
-/** The floor says where your desk's Decorate chip goes while the pointer is over it, or that it isn't. */
-export function setDeskHint(hint: { x: number; y: number; below: boolean } | null) {
-  if (!samePoint(state.hint, hint)) set({ hint });
-}
-
-/** A thing picked up from the tray, to be carried onto the desk. */
+/** A thing picked up from the card, to be carried onto the desk. */
 export const startCarry = (item: string) => state.desk && set({ carrying: item, selected: null });
 export const endCarry = () => state.carrying && set({ carrying: null });
 

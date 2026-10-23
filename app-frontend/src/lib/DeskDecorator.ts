@@ -2,33 +2,19 @@ import * as Phaser from "phaser";
 import { FLOOR } from "@shared/map";
 import { placeOn } from "@shared/office";
 import type { MapManager } from "./MapManager";
-import {
-  addThing,
-  closeDecorate,
-  decorateState,
-  endCarry,
-  moveThing,
-  myDesk,
-  redo,
-  removeThing,
-  select,
-  setAnchor,
-  setDeskHint,
-  subscribeDecorate,
-  undo,
-} from "./decorate";
+import { addThing, closeDecorate, decorateState, endCarry, moveThing, redo, removeThing, select, setAnchor, subscribeDecorate, undo } from "./decorate";
 import { typingElsewhere } from "./typing";
 
-/** How long the camera takes to bring the desk into view, and the floor to dim. */
+/** How long the camera takes to bring the desk into view. */
 const FOCUS_MS = 460;
-/** How dark the rest of the floor goes while a desk is decorated. */
-const DIM = 0.5;
-const DIM_COLOUR = 0x0b0b12;
-/** How far the lit window's edge fades over, in the floor's pixels, and in how many steps. */
-const FEATHER = 14;
-const FEATHER_STEPS = 7;
-/** The tray over the bottom of the floor (DecoratePanel): the desk is brought into the middle of what's left above it. */
-const TRAY = 236;
+/**
+ * Your card while it holds the desk's things (YouCard): beside the floor at
+ * the top right on a wide screen, over its top half on a phone. The desk is
+ * brought into the middle of the floor the card leaves showing.
+ */
+const CARD_WIDE = 352 + 16;
+const PHONE = 640;
+const CARD_PHONE_SHARE = 0.5;
 /** How far a thing lifts while it's held. */
 const LIFT = 3;
 const OUTLINE = 0xffffff;
@@ -38,27 +24,24 @@ const DEPTH = 99980;
 type Box = { x: number; y: number; w: number; h: number };
 
 /**
- * The floor's half of decorating your desk (lib/decorate.ts).
- *
- * Not decorating, the pointer over your own desk outlines it and puts its
- * Decorate chip over it (DecoratePanel): one way in, there when you look for
- * it and never in the way. Decorating, the camera glides to the desk, without
- * zooming, and the rest of the floor dims around it. Things on it are found
- * by their own pixels: pointed at, outlined; pressed, picked and framed (its
- * buttons follow it); dragged, they lift and slide along the desk, kept to
- * its top and snapped to the art's pixels, and settle where they're let go.
- * A thing carried in from the tray follows the pointer and, over the desk,
- * shows where it would stand. Keys: Delete takes the picked thing away,
- * Escape lets go (then closes), Ctrl+Z and Ctrl+Y undo and redo.
+ * The floor's half of decorating your desk (lib/decorate.ts). The camera
+ * glides to the desk, without zooming, so it sits in the floor your card
+ * leaves showing; the rest of the floor stays as it is. Things on the desk are
+ * found by their own pixels: pointed at, outlined; pressed, picked and framed
+ * (its bar follows it, PickedBar); dragged, they lift and slide along the
+ * desk, kept to where they can stand and snapped to the art's pixels, and
+ * settle where they're let go. A thing carried in from the card follows the
+ * pointer and, over the desk, shows where it would stand. While something is
+ * held or carried, a faint outline says where things can go. Keys: Delete
+ * takes the picked thing away, Escape lets go (then closes), Ctrl+Z and
+ * Ctrl+Y undo and redo.
  */
 export class DeskDecorator {
-  private shade: Phaser.GameObjects.Graphics;
+  private zone: Phaser.GameObjects.Graphics;
   private outline: Phaser.GameObjects.Graphics;
   private frame: Phaser.GameObjects.Graphics;
   private ghost: Phaser.GameObjects.Image | null = null;
   private desk: string | null = null;
-  private spot: Box | null = null;
-  private dim = { value: 0 };
   private hovered: string | null = null;
   private dragging: { key: string; item: string; grab: [number, number]; from: [number, number]; at: [number, number]; moved: boolean } | null = null;
   private carried: [number, number] | null = null;
@@ -73,7 +56,7 @@ export class DeskDecorator {
     /** Hands the camera and your feet over to decorating (true) and back (false). */
     private hold: (decorating: boolean) => void,
   ) {
-    this.shade = scene.add.graphics().setDepth(DEPTH);
+    this.zone = scene.add.graphics().setDepth(DEPTH);
     this.outline = scene.add.graphics().setDepth(DEPTH + 1);
     this.frame = scene.add.graphics().setDepth(DEPTH + 2);
     this.unsubscribe = subscribeDecorate(() => this.follow());
@@ -98,26 +81,30 @@ export class DeskDecorator {
     if (!carrying && this.ghost) this.putDown();
   }
 
-  /** The desk and its chair, with room around them: what stays lit, and what's brought into view. */
-  private areaOf(desk: string): Box {
+  /** Where things can stand on the desk: along it, from the highest a thing may reach to its front edge. */
+  private surface(desk: string): Box {
     const spec = FLOOR.desks[desk];
-    const top = Math.min(spec.feet[0] - 52, spec.chair.y - 6);
-    const bottom = Math.max(spec.feet[1] + 18, spec.chair.y + 70);
-    return { x: spec.along[0] - 20, y: top, w: spec.along[1] - spec.along[0] + 40, h: bottom - top };
+    const top = spec.ceiling ?? spec.feet[0] - 24;
+    return { x: spec.along[0], y: top, w: spec.along[1] - spec.along[0], h: spec.feet[1] - top };
   }
 
   private enter(desk: string) {
     this.desk = desk;
-    this.spot = this.areaOf(desk);
-    this.clearHint();
     this.hold(true);
     const camera = this.scene.cameras.main;
-    const { x, y, w, h } = this.spot;
-    // Into the middle of the floor the tray leaves showing, at the zoom it's at.
+    const spec = FLOOR.desks[desk];
+    // The desk and its chair, in the middle of the floor the card leaves showing, at the zoom it's at.
+    const x = (spec.along[0] + spec.along[1]) / 2;
+    const y = (Math.min(spec.feet[0] - 40, spec.chair.y) + Math.max(spec.feet[1], spec.chair.y + 64)) / 2;
+    const phone = window.innerWidth < PHONE;
     camera.stopFollow();
-    camera.pan(x + w / 2, y + h / 2 + TRAY / 2 / camera.zoom, FOCUS_MS, "Cubic.easeInOut", true);
-    this.scene.tweens.killTweensOf(this.dim);
-    this.scene.tweens.add({ targets: this.dim, value: DIM, duration: FOCUS_MS, ease: "Cubic.easeOut", onUpdate: () => this.paintShade() });
+    camera.pan(
+      x + (phone ? 0 : CARD_WIDE / 2 / camera.zoom),
+      y - (phone ? (window.innerHeight * CARD_PHONE_SHARE) / 2 / camera.zoom : 0),
+      FOCUS_MS,
+      "Cubic.easeInOut",
+      true,
+    );
   }
 
   private leave() {
@@ -125,48 +112,12 @@ export class DeskDecorator {
     this.dragging = null;
     this.hovered = null;
     this.map.hold(null);
+    this.zone.clear();
     this.outline.clear();
     this.frame.clear();
     this.putDown();
     this.scene.game.canvas.style.cursor = "";
     this.hold(false);
-    this.scene.tweens.killTweensOf(this.dim);
-    this.scene.tweens.add({
-      targets: this.dim,
-      value: 0,
-      duration: FOCUS_MS * 0.7,
-      ease: "Cubic.easeIn",
-      onUpdate: () => this.paintShade(),
-      onComplete: () => {
-        this.spot = null;
-        this.shade.clear();
-      },
-    });
-  }
-
-  /**
-   * The floor dimmed all round the desk: panels about a lit window, so nothing
-   * on the desk is covered, laid a few times over, each a little further out,
-   * so the window's edge fades rather than cuts.
-   */
-  private paintShade() {
-    this.shade.clear();
-    if (!this.spot || this.dim.value <= 0) return;
-    const far = 100000;
-    // Each layer's share, so all of them together come to the dim wanted.
-    const alpha = 1 - Math.pow(1 - this.dim.value, 1 / FEATHER_STEPS);
-    this.shade.fillStyle(DIM_COLOUR, alpha);
-    for (let step = 0; step < FEATHER_STEPS; step++) {
-      const out = (FEATHER * step) / FEATHER_STEPS;
-      const x = this.spot.x - out;
-      const y = this.spot.y - out;
-      const w = this.spot.w + out * 2;
-      const h = this.spot.h + out * 2;
-      this.shade.fillRect(-far, -far, far * 2, far + y);
-      this.shade.fillRect(-far, y + h, far * 2, far);
-      this.shade.fillRect(-far, y, far + x, h);
-      this.shade.fillRect(x + w, y, far, h);
-    }
   }
 
   // ---------- things on the desk ----------
@@ -198,11 +149,7 @@ export class DeskDecorator {
   }
 
   private down(pointer: Phaser.Input.Pointer) {
-    if (!this.desk) {
-      // Your desk's chip is over the desk; a press elsewhere puts it away.
-      if (!this.overMyDesk(pointer.worldX, pointer.worldY)) this.clearHint();
-      return;
-    }
+    if (!this.desk) return;
     const key = this.pieceAt(pointer.worldX, pointer.worldY);
     select(key);
     if (!key || this.isChair(key)) return;
@@ -212,7 +159,7 @@ export class DeskDecorator {
   }
 
   private move(pointer: Phaser.Input.Pointer) {
-    if (!this.desk) return this.hintAt(pointer.worldX, pointer.worldY);
+    if (!this.desk) return;
     const drag = this.dragging;
     if (!drag) {
       const key = this.pieceAt(pointer.worldX, pointer.worldY);
@@ -272,7 +219,7 @@ export class DeskDecorator {
     }
   }
 
-  // ---------- carried in from the tray ----------
+  // ---------- carried in from the card ----------
 
   private pickUp(item: string) {
     this.ghost = this.scene.add.image(-1000, -1000, this.map.itemsTexture(item), item).setOrigin(0, 0).setAlpha(0).setDepth(DEPTH + 3);
@@ -288,7 +235,7 @@ export class DeskDecorator {
     this.carried = null;
   }
 
-  /** A page point on the floor. */
+  /** A page point on the floor, if it's over the floor. */
   private worldAt(clientX: number, clientY: number): Phaser.Math.Vector2 | null {
     const rect = this.scene.game.canvas.getBoundingClientRect();
     if (clientX < rect.left || clientX > rect.right || clientY < rect.top || clientY > rect.bottom) return null;
@@ -297,20 +244,22 @@ export class DeskDecorator {
     return this.scene.cameras.main.getWorldPoint(x, y);
   }
 
-  /** Over the desk, where it would stand; elsewhere, under the pointer, faint. */
+  /** Over the desk, where it would stand; elsewhere on the floor, under the pointer, faint. */
   private carryTo(event: PointerEvent) {
     const ghost = this.ghost;
     const item = decorateState().carrying;
     const art = item ? FLOOR.things[item]?.art : undefined;
-    if (!ghost || !item || !art || !this.desk || !this.spot) return;
-    const point = this.worldAt(event.clientX, event.clientY);
-    const { x, y, w, h } = this.spot;
-    const over = !!point && point.x >= x && point.x <= x + w && point.y >= y - 24 && point.y <= y + h;
-    this.carried = over && point ? placeOn(this.desk, item, point.x, point.y + (art[3] - art[1]) / 2) : null;
+    if (!ghost || !item || !art || !this.desk) return;
+    // Over the card, it isn't on the floor yet.
+    const overFloor = (event.target as Element | null)?.closest?.("canvas") === this.scene.game.canvas;
+    const point = overFloor ? this.worldAt(event.clientX, event.clientY) : null;
+    const { x, y, w, h } = this.surface(this.desk);
+    const near = !!point && point.x >= x - 24 && point.x <= x + w + 24 && point.y >= y - 40 && point.y <= y + h + 40;
+    this.carried = near && point ? placeOn(this.desk, item, point.x, point.y + (art[3] - art[1]) / 2) : null;
     if (this.carried) {
       ghost.setPosition(this.carried[0], this.carried[1] - LIFT).setAlpha(0.95);
     } else if (point) {
-      ghost.setPosition(point.x - (art[0] + art[2]) / 2, point.y - (art[1] + art[3]) / 2).setAlpha(0.55);
+      ghost.setPosition(point.x - (art[0] + art[2]) / 2, point.y - (art[1] + art[3]) / 2).setAlpha(0.5);
     } else {
       ghost.setAlpha(0);
     }
@@ -323,34 +272,6 @@ export class DeskDecorator {
     if (item && at) addThing(item, at);
   }
 
-  // ---------- your desk, not decorating ----------
-
-  private overMyDesk(x: number, y: number): boolean {
-    const desk = myDesk();
-    if (!desk) return false;
-    const spec = FLOOR.desks[desk];
-    return x >= spec.along[0] && x <= spec.along[1] && y >= spec.feet[0] - 40 && y <= spec.feet[1] + 4;
-  }
-
-  private hintAt(x: number, y: number) {
-    const desk = myDesk();
-    if (!desk || !this.overMyDesk(x, y)) return this.clearHint();
-    const spec = FLOOR.desks[desk];
-    this.outline.clear();
-    const line = 1 / this.scene.cameras.main.zoom;
-    const top = spec.feet[0] - 40;
-    this.outline.lineStyle(2 * line, OUTLINE, 0.85).strokeRoundedRect(spec.along[0] - 4, top, spec.along[1] - spec.along[0] + 8, spec.feet[1] + 8 - top, 6);
-    // Away from whoever sits there: over a near desk, under a far one.
-    const below = spec.side === "back";
-    setDeskHint({ ...this.toPage((spec.along[0] + spec.along[1]) / 2, below ? spec.feet[1] + 12 : top - 4), below });
-  }
-
-  private clearHint() {
-    if (!decorateState().hint) return;
-    this.outline.clear();
-    setDeskHint(null);
-  }
-
   /** A floor point on the page. */
   private toPage(x: number, y: number) {
     const camera = this.scene.cameras.main;
@@ -359,12 +280,18 @@ export class DeskDecorator {
     return { x: canvas.left + (x - camera.worldView.x) * camera.zoom * scale, y: canvas.top + (y - camera.worldView.y) * camera.zoom * scale };
   }
 
-  /** Outlines what's pointed at, frames what's picked, and says where its buttons go. */
+  /** Outlines what's pointed at, frames what's picked, says where its bar goes, and shows the desk's top while something's in hand. */
   update() {
     if (!this.desk) return;
+    this.zone.clear();
     this.outline.clear();
     this.frame.clear();
     const line = 1 / this.scene.cameras.main.zoom;
+    if (this.dragging?.moved || decorateState().carrying) {
+      const { x, y, w, h } = this.surface(this.desk);
+      this.zone.fillStyle(OUTLINE, 0.06).fillRoundedRect(x - 2, y - 2, w + 4, h + 4, 4);
+      this.zone.lineStyle(1.5 * line, OUTLINE, 0.55).strokeRoundedRect(x - 2, y - 2, w + 4, h + 4, 4);
+    }
     const { selected } = decorateState();
     if (this.hovered && this.hovered !== selected && !this.dragging) {
       const box = this.boxOf(this.hovered);
@@ -387,10 +314,9 @@ export class DeskDecorator {
     this.scene.input.off("pointerdown", this.down, this);
     this.scene.input.off("pointermove", this.move, this);
     this.scene.input.off("pointerup", this.up, this);
-    this.shade.destroy();
+    this.zone.destroy();
     this.outline.destroy();
     this.frame.destroy();
     if (this.desk) this.leave();
-    setDeskHint(null);
   }
 }

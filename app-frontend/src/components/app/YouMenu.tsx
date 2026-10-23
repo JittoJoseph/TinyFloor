@@ -2,13 +2,11 @@
 
 import { useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Check, ChevronRight, Desk, DoorOpen, HelpCircle, LogOut, MonitorDown, Palette, Settings2, Shirt, UserPlus } from "@/components/ui/icons";
+import { Check, ChevronRight, DoorOpen, HelpCircle, LogOut, MonitorDown, Settings2, Shirt, UserPlus } from "@/components/ui/icons";
 import { openCharacterCreator } from "@/components/character/CharacterCreator";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { setMyStatus, useMyNote, useMyStatus } from "@/lib/floor";
-import { deskOf, goToMyDesk, useDesks } from "@/lib/desks";
-import { openDecorate } from "@/lib/decorate";
 import { NoteGlyph } from "@/lib/noteIcons";
 import type { NoteIcon } from "@shared/messages";
 import { NoteOptions, NoteRow } from "./StatusNote";
@@ -60,8 +58,6 @@ export function YouMenu({
   leave?: { href: string; label: string };
 }) {
   const t = useTranslations("shell");
-  const tDesk = useTranslations("desk");
-  const tDecorate = useTranslations("decorate");
   const tLook = useTranslations("look");
   const tHelp = useTranslations("help");
   const tStatus = useTranslations("status");
@@ -76,10 +72,6 @@ export function YouMenu({
   const canInstall = useCanInstall();
   const office = useOfficeMaybe()?.office ?? null;
   const { others, load } = useOtherOffices(office?.id ?? "");
-  const { desks, seat } = useDesks();
-  // On the floor, the way back to your desk from anywhere on it, while you're not at it.
-  const desk = onFloor && office && user ? deskOf(desks, user.id) : undefined;
-  const myDesk = desk && desk.seat !== seat ? desk : undefined;
   if (!user) return null;
   const close = () => setOpen(null);
   const inCall = status === "in_call";
@@ -210,16 +202,6 @@ export function YouMenu({
         <MusicOptions onDone={close} />,
       )}
 
-      {myDesk && (
-        <MenuItem icon={<Desk />} onSelect={goToMyDesk}>
-          {tDesk("goTo")}
-        </MenuItem>
-      )}
-      {desk && (
-        <MenuItem icon={<Palette />} onSelect={openDecorate}>
-          {tDecorate("title")}
-        </MenuItem>
-      )}
       <MenuItem icon={<Shirt />} onSelect={openCharacterCreator}>
         {tLook("open")}
       </MenuItem>

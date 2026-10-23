@@ -865,6 +865,11 @@
     "cancel": "Cancel",
     "save": "Save"
   },
+  "you": {
+    "customizeDesk": "Customize your desk",
+    "noDeskTitle": "No desk yet",
+    "noDesk": "Sit at a free desk to claim it"
+  },
   "note": {
     "title": "Status note",
     "set": "Set a status note",

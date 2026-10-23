@@ -865,6 +865,11 @@
     "cancel": "Annuleren",
     "save": "Opslaan"
   },
+  "you": {
+    "customizeDesk": "Je bureau aanpassen",
+    "noDeskTitle": "Nog geen bureau",
+    "noDesk": "Ga aan een vrij bureau zitten om het te claimen"
+  },
   "note": {
     "title": "Statusnotitie",
     "set": "Statusnotitie instellen",

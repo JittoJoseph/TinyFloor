@@ -865,6 +865,11 @@
     "cancel": "Annuler",
     "save": "Enregistrer"
   },
+  "you": {
+    "customizeDesk": "Personnaliser votre bureau",
+    "noDeskTitle": "Pas encore de bureau",
+    "noDesk": "Asseyez-vous à un bureau libre pour le réserver"
+  },
   "note": {
     "title": "Note de statut",
     "set": "Ajouter une note de statut",

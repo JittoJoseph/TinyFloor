@@ -865,6 +865,11 @@
     "cancel": "Annuller",
     "save": "Gem"
   },
+  "you": {
+    "customizeDesk": "Tilpas dit skrivebord",
+    "noDeskTitle": "Intet skrivebord endnu",
+    "noDesk": "Sæt dig ved et ledigt skrivebord for at tage det"
+  },
   "note": {
     "title": "Statusnote",
     "set": "Sæt en statusnote",

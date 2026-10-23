@@ -865,6 +865,11 @@
     "cancel": "Avbryt",
     "save": "Spara"
   },
+  "you": {
+    "customizeDesk": "Anpassa ditt skrivbord",
+    "noDeskTitle": "Inget skrivbord än",
+    "noDesk": "Sätt dig vid ett ledigt skrivbord för att ta det"
+  },
   "note": {
     "title": "Statusnotis",
     "set": "Ange en statusnotis",

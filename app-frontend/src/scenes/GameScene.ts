@@ -137,12 +137,10 @@ class GameScene extends Phaser.Scene {
     this.seatManager.attach(this.wsManager, (seated) => this.movementManager.setFrozen(seated, () => this.seatManager?.leave()), approach);
     this.meetingZone = this.mapManager.getZone(MEETING_ZONE);
 
-    // Decorating your desk: the camera and your feet are the decorator's until it's done,
-    // and you fade, so you're not sitting in front of what you're arranging.
+    // Decorating your desk: the camera and your feet are the decorator's until it's done.
     attachDecorate((message) => this.wsManager.send(message), this.playerId);
     this.deskDecorator = new DeskDecorator(this, this.mapManager, (decorating) => {
       this.movementManager.setInputEnabled(!decorating);
-      this.tweens.add({ targets: this.player, alpha: decorating ? 0.3 : 1, duration: 200 });
       if (decorating) return;
       // Back to following you: the camera glides there.
       this.cameras.main.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);

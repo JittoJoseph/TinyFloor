@@ -865,6 +865,11 @@
     "cancel": "取消",
     "save": "保存"
   },
+  "you": {
+    "customizeDesk": "自定义你的工位",
+    "noDeskTitle": "还没有工位",
+    "noDesk": "坐到空工位上即可认领"
+  },
   "note": {
     "title": "状态备注",
     "set": "设置状态备注",

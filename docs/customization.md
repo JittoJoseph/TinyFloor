@@ -319,27 +319,38 @@ bottleneck.
 
 ## Your desk
 
-Claimed by sitting at a free one (as today). Nothing appears when you sit:
-pointing at your own desk outlines it and shows a **Decorate** chip, on the
-side away from the chair, and your menu has it too (the way in on a phone).
+Claimed by sitting at a free one (as today). Nothing appears when you sit
+or when you point at it. Your desk is reached through **you**, at the
+floor's top right, opposite where you are and who's here, and as tall:
 
-Decorating, the camera glides to the desk without zooming (pixel art blown
-up looks worse, not better), the rest of the floor dims around a soft-edged
-lit window over the desk and its chair, you fade, and a tray rises from the
-bottom:
+- at rest, your face, with your status on it;
+- pointed at, it widens to your name, as a desk's plate does;
+- pressed, it grows down into a card, its name and face staying put as the
+  card's head: your desk (go to it, or, sitting at it, customize it), how
+  you look, your music, your profile;
+- customizing, the same card grows into the desk's things, and the floor
+  brings the desk into the middle of what the card leaves showing, without
+  zooming (pixel art blown up looks worse, not better). Nothing is dimmed
+  and you aren't faded: the floor stays the floor.
 
-- **The tray**: what suits the desk's side, on shelves (tech, lamps,
-  personal, setups) and the chairs. Each card is the thing cropped to its
-  pixels, at twice its size when small and its own size when not, never in
-  between. A card clicked goes where there's room; with a thing picked on the
-  desk, it takes that one's place, standing where it stood. A card dragged
-  out is carried: over the desk it shows where it would stand, and it's put
-  down there.
+One thing changing shape, never two things trading places. The rail's menu
+(bottom left) keeps what's yours everywhere (status, note, music,
+settings); the card keeps what's yours on this floor.
+
+In the card:
+
+- **Things**: what suits the desk's side, on shelves (tech, lamps,
+  personal, setups) and the chairs, each cropped to its pixels, at twice its
+  size when small and its own size when not, never in between. A card
+  clicked goes where there's room; with a thing picked on the desk, it takes
+  that one's place, standing where it stood. A card dragged out is carried:
+  over the desk it shows where it would stand, and it's put down there.
 - **On the desk**: pointed at, a thing is outlined; pressed, picked and
   framed, with a little bar over it (take it away, done); dragged, it lifts,
   slides along the desk kept to where it can stand, and settles where it's
-  let go. Delete, Escape, Ctrl+Z and Ctrl+Y work too.
-- **Undo, redo**, **Reset** after a confirm, and **Done**, on the tray.
+  let go. While something is in hand, a faint outline shows the desk's top.
+  Delete, Escape, Ctrl+Z and Ctrl+Y work too.
+- **Undo, redo**, **Reset** after a confirm, and **Done**.
 
 Changes are seen happening, by everyone: a new thing drops onto the desk, one
 taken away lifts off, one moved slides, one swapped hops. A coworker's desk

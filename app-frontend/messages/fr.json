@@ -863,12 +863,17 @@
     "eyes": "Yeux",
     "none": "Aucun",
     "cancel": "Annuler",
-    "save": "Enregistrer"
+    "save": "Enregistrer",
+    "own": "Votre propre apparence",
+    "presetNote": "Un des personnages prêts à l’emploi",
+    "ownNote": "Créé dans l’éditeur de personnage",
+    "change": "Changer"
   },
   "you": {
     "customizeDesk": "Personnaliser votre bureau",
     "noDeskTitle": "Pas encore de bureau",
-    "noDesk": "Asseyez-vous à un bureau libre pour le réserver"
+    "noDesk": "Asseyez-vous à un bureau libre pour le réserver",
+    "atDesk": "À votre bureau"
   },
   "note": {
     "title": "Note de statut",

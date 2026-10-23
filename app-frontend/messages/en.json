@@ -863,12 +863,17 @@
     "eyes": "Eyes",
     "none": "None",
     "cancel": "Cancel",
-    "save": "Save"
+    "save": "Save",
+    "own": "Your own look",
+    "presetNote": "One of the ready-made characters",
+    "ownNote": "Made in the character creator",
+    "change": "Change"
   },
   "you": {
     "customizeDesk": "Customize your desk",
     "noDeskTitle": "No desk yet",
-    "noDesk": "Sit at a free desk to claim it"
+    "noDesk": "Sit at a free desk to claim it",
+    "atDesk": "At your desk"
   },
   "note": {
     "title": "Status note",

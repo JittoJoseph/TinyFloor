@@ -258,7 +258,7 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
           {inviteChip && canInvite && <InviteChip copied={copied} onClick={invite} />}
           <div className="h-10 w-10 shrink-0" aria-hidden />
           <div className="absolute end-0 top-0 z-10">
-            <YouCard userId={user.id} name={user.displayName} settingsHref={settingsHref} />
+            <YouCard userId={user.id} name={user.displayName} />
           </div>
         </div>
       </div>

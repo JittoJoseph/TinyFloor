@@ -863,12 +863,17 @@
     "eyes": "Augen",
     "none": "Keine",
     "cancel": "Abbrechen",
-    "save": "Speichern"
+    "save": "Speichern",
+    "own": "Dein eigener Look",
+    "presetNote": "Eine der fertigen Figuren",
+    "ownNote": "Im Figuren-Editor erstellt",
+    "change": "Ändern"
   },
   "you": {
     "customizeDesk": "Schreibtisch gestalten",
     "noDeskTitle": "Noch kein Schreibtisch",
-    "noDesk": "Setz dich an einen freien Schreibtisch, um ihn zu beanspruchen"
+    "noDesk": "Setz dich an einen freien Schreibtisch, um ihn zu beanspruchen",
+    "atDesk": "Am Schreibtisch"
   },
   "note": {
     "title": "Statusnotiz",

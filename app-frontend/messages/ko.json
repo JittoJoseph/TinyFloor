@@ -863,12 +863,17 @@
     "eyes": "눈",
     "none": "없음",
     "cancel": "취소",
-    "save": "저장"
+    "save": "저장",
+    "own": "나만의 모습",
+    "presetNote": "준비된 캐릭터",
+    "ownNote": "캐릭터 만들기에서 만듦",
+    "change": "바꾸기"
   },
   "you": {
     "customizeDesk": "내 책상 꾸미기",
     "noDeskTitle": "아직 책상이 없어요",
-    "noDesk": "빈 책상에 앉아 내 자리로 만드세요"
+    "noDesk": "빈 책상에 앉아 내 자리로 만드세요",
+    "atDesk": "내 책상에 있음"
   },
   "note": {
     "title": "상태 메모",

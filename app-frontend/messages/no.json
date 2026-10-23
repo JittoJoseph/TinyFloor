@@ -863,12 +863,17 @@
     "eyes": "Øyne",
     "none": "Ingen",
     "cancel": "Avbryt",
-    "save": "Lagre"
+    "save": "Lagre",
+    "own": "Ditt eget utseende",
+    "presetNote": "En av de ferdige figurene",
+    "ownNote": "Laget i figurverktøyet",
+    "change": "Endre"
   },
   "you": {
     "customizeDesk": "Tilpass skrivebordet ditt",
     "noDeskTitle": "Ingen skrivebord ennå",
-    "noDesk": "Sett deg ved et ledig skrivebord for å ta det"
+    "noDesk": "Sett deg ved et ledig skrivebord for å ta det",
+    "atDesk": "Ved skrivebordet ditt"
   },
   "note": {
     "title": "Statusnotat",

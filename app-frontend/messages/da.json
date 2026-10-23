@@ -863,12 +863,17 @@
     "eyes": "Øjne",
     "none": "Ingen",
     "cancel": "Annuller",
-    "save": "Gem"
+    "save": "Gem",
+    "own": "Dit eget udseende",
+    "presetNote": "En af de færdige figurer",
+    "ownNote": "Lavet i figurværktøjet",
+    "change": "Skift"
   },
   "you": {
     "customizeDesk": "Tilpas dit skrivebord",
     "noDeskTitle": "Intet skrivebord endnu",
-    "noDesk": "Sæt dig ved et ledigt skrivebord for at tage det"
+    "noDesk": "Sæt dig ved et ledigt skrivebord for at tage det",
+    "atDesk": "Ved dit skrivebord"
   },
   "note": {
     "title": "Statusnote",

@@ -156,7 +156,7 @@ export function DeskCustomizer({ desk }: { desk: string }) {
       </div>
 
       <div className="min-h-0 flex-1 overflow-y-auto px-3 pb-3">
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(4.25rem,1fr))] gap-1.5">
+        <div className="grid grid-flow-row-dense grid-cols-[repeat(auto-fill,minmax(4.25rem,1fr))] gap-1.5">
           {shownShelf === "chairs"
             ? FLOOR.chairs[spec.side].map(({ item }) => (
                 <Card key={item} label={item} selected={chair === item} onPick={() => setChair(item)}>

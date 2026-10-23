@@ -863,12 +863,17 @@
     "eyes": "Ojos",
     "none": "Ninguno",
     "cancel": "Cancelar",
-    "save": "Guardar"
+    "save": "Guardar",
+    "own": "Tu propio aspecto",
+    "presetNote": "Uno de los personajes listos",
+    "ownNote": "Hecho en el creador de personajes",
+    "change": "Cambiar"
   },
   "you": {
     "customizeDesk": "Personaliza tu escritorio",
     "noDeskTitle": "Aún sin escritorio",
-    "noDesk": "Siéntate en un escritorio libre para quedártelo"
+    "noDesk": "Siéntate en un escritorio libre para quedártelo",
+    "atDesk": "En tu escritorio"
   },
   "note": {
     "title": "Nota de estado",

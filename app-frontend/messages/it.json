@@ -863,12 +863,17 @@
     "eyes": "Occhi",
     "none": "Nessuno",
     "cancel": "Annulla",
-    "save": "Salva"
+    "save": "Salva",
+    "own": "Il tuo aspetto",
+    "presetNote": "Uno dei personaggi pronti",
+    "ownNote": "Creato nell’editor del personaggio",
+    "change": "Cambia"
   },
   "you": {
     "customizeDesk": "Personalizza la tua scrivania",
     "noDeskTitle": "Ancora nessuna scrivania",
-    "noDesk": "Siediti a una scrivania libera per prenderla"
+    "noDesk": "Siediti a una scrivania libera per prenderla",
+    "atDesk": "Alla tua scrivania"
   },
   "note": {
     "title": "Nota di stato",

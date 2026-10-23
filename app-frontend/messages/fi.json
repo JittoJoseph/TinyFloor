@@ -863,12 +863,17 @@
     "eyes": "Silmät",
     "none": "Ei mitään",
     "cancel": "Peruuta",
-    "save": "Tallenna"
+    "save": "Tallenna",
+    "own": "Oma ulkonäkösi",
+    "presetNote": "Yksi valmiista hahmoista",
+    "ownNote": "Tehty hahmoeditorissa",
+    "change": "Vaihda"
   },
   "you": {
     "customizeDesk": "Muokkaa työpöytääsi",
     "noDeskTitle": "Ei vielä työpöytää",
-    "noDesk": "Istu vapaan työpöydän ääreen ottaaksesi sen"
+    "noDesk": "Istu vapaan työpöydän ääreen ottaaksesi sen",
+    "atDesk": "Työpöydän ääressä"
   },
   "note": {
     "title": "Tilaviesti",

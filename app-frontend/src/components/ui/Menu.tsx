@@ -92,7 +92,7 @@ export function MenuItem({
       )}
     >
       {icon && (
-        <span className={cn("flex size-4 shrink-0 items-center justify-center", danger ? "" : "text-muted-foreground")}>{icon}</span>
+        <span className={cn("flex size-5 shrink-0 items-center justify-center [&_svg]:size-4", danger ? "" : "text-muted-foreground")}>{icon}</span>
       )}
       <span className="min-w-0 flex-1 truncate">{children}</span>
       {hint && <span className="shrink-0 text-[12px] text-faint">{hint}</span>}

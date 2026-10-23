@@ -863,12 +863,17 @@
     "eyes": "Ogen",
     "none": "Geen",
     "cancel": "Annuleren",
-    "save": "Opslaan"
+    "save": "Opslaan",
+    "own": "Je eigen uiterlijk",
+    "presetNote": "Een van de kant-en-klare figuren",
+    "ownNote": "Gemaakt in de figuurmaker",
+    "change": "Wijzigen"
   },
   "you": {
     "customizeDesk": "Je bureau aanpassen",
     "noDeskTitle": "Nog geen bureau",
-    "noDesk": "Ga aan een vrij bureau zitten om het te claimen"
+    "noDesk": "Ga aan een vrij bureau zitten om het te claimen",
+    "atDesk": "Aan je bureau"
   },
   "note": {
     "title": "Statusnotitie",

@@ -863,12 +863,17 @@
     "eyes": "Oczy",
     "none": "Brak",
     "cancel": "Anuluj",
-    "save": "Zapisz"
+    "save": "Zapisz",
+    "own": "Twój własny wygląd",
+    "presetNote": "Jedna z gotowych postaci",
+    "ownNote": "Stworzone w kreatorze postaci",
+    "change": "Zmień"
   },
   "you": {
     "customizeDesk": "Dostosuj swoje biurko",
     "noDeskTitle": "Nie masz jeszcze biurka",
-    "noDesk": "Usiądź przy wolnym biurku, aby je zająć"
+    "noDesk": "Usiądź przy wolnym biurku, aby je zająć",
+    "atDesk": "Przy swoim biurku"
   },
   "note": {
     "title": "Notatka statusu",

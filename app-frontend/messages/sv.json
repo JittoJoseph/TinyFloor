@@ -863,12 +863,17 @@
     "eyes": "Ögon",
     "none": "Ingen",
     "cancel": "Avbryt",
-    "save": "Spara"
+    "save": "Spara",
+    "own": "Ditt eget utseende",
+    "presetNote": "En av de färdiga figurerna",
+    "ownNote": "Gjord i figurverktyget",
+    "change": "Ändra"
   },
   "you": {
     "customizeDesk": "Anpassa ditt skrivbord",
     "noDeskTitle": "Inget skrivbord än",
-    "noDesk": "Sätt dig vid ett ledigt skrivbord för att ta det"
+    "noDesk": "Sätt dig vid ett ledigt skrivbord för att ta det",
+    "atDesk": "Vid ditt skrivbord"
   },
   "note": {
     "title": "Statusnotis",

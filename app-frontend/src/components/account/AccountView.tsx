@@ -14,7 +14,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/motion/button/base";
 import { Dialog, ErrorText, fieldClass, Label } from "@/components/ui/forms";
 import { LitFace } from "@/components/ui/LitFace";
-import { PixelAvatar } from "@/components/PixelAvatar";
+import { CharacterPortrait } from "@/components/character/CharacterPortrait";
+import { isPreset } from "@shared/character";
 import { openCharacterCreator } from "@/components/character/CharacterCreator";
 import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
 import { General, Group, Row } from "@/components/app/SettingsView";
@@ -210,13 +211,15 @@ export function Profile() {
       </Group>
 
       <Group title={t("character")} note={t("characterNote")}>
-        {/* You as you walk in, and the creator to change it (LookCreator, which saves it). */}
-        <div className="flex items-center gap-4 p-4">
-          <span className="relative block size-16 shrink-0 rounded-2xl bg-muted/70" style={{ containerType: "size" }}>
-            <PixelAvatar character={user.character} width="52cqw" style={{ left: "50%", top: "88%" }} />
-          </span>
-          <Button type="button" size="sm" variant="secondary" onClick={openCharacterCreator} className="h-8 px-4 text-[13px]">
-            {tLook("open")}
+        {/* You as you walk in, the way the floor shows you, and the creator to change it (CharacterCreator, which saves it). */}
+        <div className="flex items-center gap-4 px-4 py-3">
+          <CharacterPortrait character={user.character} />
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-[13.5px] font-medium text-foreground">{isPreset(user.character) ? user.character : tLook("own")}</p>
+            <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{tLook(isPreset(user.character) ? "presetNote" : "ownNote")}</p>
+          </div>
+          <Button type="button" size="sm" variant="secondary" onClick={openCharacterCreator} className="h-8 px-3.5 text-[13px]">
+            {tLook("change")}
           </Button>
         </div>
       </Group>

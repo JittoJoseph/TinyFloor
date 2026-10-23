@@ -863,12 +863,17 @@
     "eyes": "Olhos",
     "none": "Nenhum",
     "cancel": "Cancelar",
-    "save": "Salvar"
+    "save": "Salvar",
+    "own": "Sua aparência própria",
+    "presetNote": "Um dos personagens prontos",
+    "ownNote": "Feito no criador de personagens",
+    "change": "Mudar"
   },
   "you": {
     "customizeDesk": "Personalize sua mesa",
     "noDeskTitle": "Ainda sem mesa",
-    "noDesk": "Sente-se em uma mesa livre para ficar com ela"
+    "noDesk": "Sente-se em uma mesa livre para ficar com ela",
+    "atDesk": "Na sua mesa"
   },
   "note": {
     "title": "Nota de status",

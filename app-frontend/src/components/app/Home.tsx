@@ -11,6 +11,19 @@ import { openOfficeAhead } from "@/lib/officeAhead";
 import { hadSession } from "@/lib/session-hint";
 
 /**
+ * Your offices, asked for once per visit: the front door can be drawn twice
+ * on the way in (its query waits on Suspense), and both draws want the same
+ * answer. A few seconds later it's a new visit, and asked again.
+ */
+let asked: { at: number; offices: Promise<OfficeSummary[] | null> } | null = null;
+function askOffices() {
+  if (!asked || Date.now() - asked.at > 5000) {
+    asked = { at: Date.now(), offices: api.me().then(({ offices }) => offices ?? [], () => null) };
+  }
+  return asked.offices;
+}
+
+/**
  * The app's front door (/home): nothing to look at, only a way on. Signed
  * out, the sign-in, which comes back here; in an office, straight onto its
  * floor (the one you were last in, else the busiest); in none yet, making
@@ -37,9 +50,7 @@ export function Home() {
   }, [straight, router]);
   // Otherwise your offices are asked for alongside the session rather than after it.
   // If that early ask fails (signed out, as it turns out), they're asked again once signed in.
-  const [early] = useState(() =>
-    typeof window === "undefined" || straight ? null : api.me().then(({ offices }) => offices ?? [], () => null),
-  );
+  const [early] = useState(() => (typeof window === "undefined" || straight ? null : askOffices()));
 
   useEffect(() => {
     if (straight || isLoading || signedIn) return;

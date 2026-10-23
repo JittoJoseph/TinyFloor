@@ -80,10 +80,10 @@ describe("sign in with Google", () => {
     expect(result.status).toBe(201);
     expect(result.body).toMatchObject({ created: true, user: { email: String(claims.email).toLowerCase(), displayName: "Zoë Park", guest: false } });
 
-    const row = await env.DB.prepare("SELECT google_sub, email_verified, password_hash FROM users WHERE id = ?")
+    const row = await env.DB.prepare("SELECT google_sub, email_verified FROM users WHERE id = ?")
       .bind(result.body.user.id)
-      .first<{ google_sub: string; email_verified: number; password_hash: string | null }>();
-    expect(row).toMatchObject({ google_sub: claims.sub, email_verified: 1, password_hash: null });
+      .first<{ google_sub: string; email_verified: number }>();
+    expect(row).toMatchObject({ google_sub: claims.sub, email_verified: 1 });
 
     const session = await call({ id: "", cookie: result.cookie! }, "GET", "/v1/session");
     expect(session.body.user).toMatchObject({ id: result.body.user.id, guest: false });
@@ -132,27 +132,7 @@ describe("sign in with Google", () => {
     expect(result.body.user).toMatchObject({ id: guest.id, displayName: "Gus" });
   });
 
-  it("lets someone who came in with Google set a first password, and then sign in with it", async () => {
-    claims = person();
-    const made = await google();
-    expect(made.body.user.password).toBe(false);
-    const set = await exports.default.fetch(`${API}/v1/me/password`, {
-      method: "POST",
-      headers: { Origin: SITE, "Content-Type": "application/json", Cookie: made.cookie! },
-      body: JSON.stringify({ newPassword: "a new password" }),
-    });
-    expect(set.status).toBe(200);
-    const login = await exports.default.fetch(`${API}/v1/auth/login`, {
-      method: "POST",
-      headers: { Origin: SITE, "Content-Type": "application/json", "CF-Connecting-IP": "10.9.200.1" },
-      body: JSON.stringify({ email: String(claims.email).toLowerCase(), password: "a new password" }),
-    });
-    expect(login.status).toBe(200);
-    expect(((await login.json()) as { user: { password: boolean } }).user.password).toBe(true);
-    // Two bcrypt runs, which take a while when every test file runs at once.
-  }, 20_000);
-
-  it("connects Google to an account that signed up with a password, once", async () => {
+  it("connects Google to an account that signs in by email, once", async () => {
     const email = `connect${Date.now()}@example.com`;
     const ada = await makeUser("Ada", { email });
     claims = person({ email });

@@ -1,13 +1,13 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const PRIVACY_UPDATED = "21 October 2026";
+export const PRIVACY_UPDATED = "23 October 2026";
 
 export const privacySummary = (
   <>
     <p>
       TinyFloor keeps what it needs to run your office and nothing more. We don&apos;t sell your data, we don&apos;t show ads, and calls
-      aren&apos;t recorded. Passwords and session tokens are stored only as hashes. We use Google Analytics and PostHog to
+      aren&apos;t recorded. There are no passwords: you sign in with Google or a code we email you, and codes and session tokens are stored only as hashes. We use Google Analytics and PostHog to
       understand how TinyFloor is used. Write to <Mail /> for a copy of your data or to have it deleted.
     </p>
   </>
@@ -38,8 +38,8 @@ export const privacySections: LegalSection[] = [
         <h3>When you make an account</h3>
         <ul>
           <li>
-            <strong>With an email and password:</strong> your name, your email address and your password. The password is stored only as a
-            bcrypt hash; we never see or keep the password itself.
+            <strong>With your email:</strong> your email address, and the name you choose. To sign in we email you a 6-digit code; we keep
+            only a hash of it, and only until it&apos;s used or 10 minutes pass.
           </li>
           <li>
             <strong>With Google:</strong> your name, your email address, whether Google has verified that address, and the ID Google gives
@@ -99,8 +99,9 @@ export const privacySections: LegalSection[] = [
 
         <h3>Security</h3>
         <p>
-          To stop abuse we process your IP address briefly: to limit how many sign-ups and sign-ins can come from one address, to lock out
-          repeated wrong passwords for a short time, and for Cloudflare Turnstile, which checks that sign-ups and new guests aren&apos;t bots.
+          To stop abuse we process your IP address briefly: to limit how many sign-in codes and attempts can come from one address,
+          and for Cloudflare Turnstile, which checks that sign-in requests and new guests aren&apos;t bots. We also limit how many codes one
+          email address can receive, and how many tries each code allows.
           These counters clear themselves within minutes.
         </p>
 
@@ -175,6 +176,9 @@ export const privacySections: LegalSection[] = [
             <strong>Google</strong> signs you in, if you choose Google, and provides Google Analytics.
           </li>
           <li>
+            <strong>Resend</strong> delivers the emails TinyFloor sends you, such as sign-in codes.
+          </li>
+          <li>
             <strong>PostHog</strong> shows us how TinyFloor is used: which pages and features people use, and errors the app runs into.
           </li>
           <li>
@@ -216,7 +220,7 @@ export const privacySections: LegalSection[] = [
       <>
         <ul>
           <li>
-            <strong>Session cookie:</strong> keeps you signed in, for 30 days with an account or 7 days as a guest. It can&apos;t be read by
+            <strong>Session cookie:</strong> keeps you signed in, for 90 days after your last visit with an account, or 7 days as a guest. It can&apos;t be read by
             scripts on the page. TinyFloor doesn&apos;t work without it.
           </li>
           <li>
@@ -257,6 +261,9 @@ export const privacySections: LegalSection[] = [
             <strong>Sessions:</strong> deleted once they expire.
           </li>
           <li>
+            <strong>Sign-in codes:</strong> deleted once used, or within a day of being sent.
+          </li>
+          <li>
             <strong>Office chat:</strong> each channel keeps its most recent 5,000 messages. <strong>Demo office chat</strong> is deleted after a week.
           </li>
           <li>
@@ -287,7 +294,7 @@ export const privacySections: LegalSection[] = [
           portable form, object to or restrict how we use it, withdraw consent, and nominate someone to exercise your rights if you can&apos;t.
         </p>
         <p>
-          You can change your name, character and password in your account settings at any time. For everything else, including deleting
+          You can change your name and character in your account settings at any time. For everything else, including deleting
           your account, write to <Mail /> from the address on your account. We will reply within 30 days, and may need to confirm it&apos;s
           you first.
         </p>
@@ -314,8 +321,8 @@ export const privacySections: LegalSection[] = [
     title: "Security",
     body: (
       <p>
-        Everything travels over encrypted connections. Passwords are hashed with bcrypt, session tokens are stored only as hashes,
-        and sign-ins are rate limited. An office&apos;s invite link is kept so its members can see and share it again. Access to the service&apos;s data is limited to the people who run it. No system is perfectly
+        Everything travels over encrypted connections. There are no passwords to leak: sign-in codes and session tokens are stored
+        only as hashes, and sign-ins are rate limited. An office&apos;s invite link is kept so its members can see and share it again. Access to the service&apos;s data is limited to the people who run it. No system is perfectly
         secure, and if a breach ever affects your data we will tell you and the authorities as the law requires.
       </p>
     ),

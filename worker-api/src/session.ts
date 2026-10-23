@@ -10,7 +10,13 @@ import { HttpError } from "./http";
  */
 const sessionCookieName = (env: Env) => env.SESSION_COOKIE || "tf_session";
 const GUEST_SESSION_MS = 7 * 24 * 60 * 60 * 1000;
-export const ACCOUNT_SESSION_MS = 30 * 24 * 60 * 60 * 1000;
+const DAY_MS = 24 * 60 * 60 * 1000;
+/**
+ * An account stays signed in this long after it was last used: each day it's
+ * used, the session is renewed (renewSession). Signing in again means an
+ * email code, so someone who comes back every few weeks shouldn't need one.
+ */
+export const ACCOUNT_SESSION_MS = 90 * DAY_MS;
 /**
  * How stale "last active" may get: one small write, after the response, at
  * most this often per session. Who is on a floor right now comes from the
@@ -24,10 +30,10 @@ export interface User {
   displayName: string;
   character: string;
   isGuest: boolean;
-  /** Has a password, not only Google. */
-  hasPassword?: boolean;
   /** Can sign in with Google. */
   hasGoogle?: boolean;
+  /** Their email is shown to be theirs: by Google, or by a code sent to it (email-codes.ts). */
+  emailVerified?: boolean;
   /** The link on their profile. */
   link?: string | null;
   /** Has said who they are on the floor: a name and a character, at their first door. */
@@ -44,6 +50,8 @@ export interface User {
   country?: string | null;
   /** The hashed id of the session this request came with. */
   sessionId: string;
+  /** When that session ends, unless it's renewed. */
+  sessionExpiresAt?: number;
 }
 
 interface SessionRow {
@@ -52,8 +60,8 @@ interface SessionRow {
   display_name: string;
   character: string;
   is_guest: number;
-  has_password: number;
   has_google: number;
+  email_verified: number;
   link: string | null;
   introduced: number;
   time_zone: string | null;
@@ -69,6 +77,7 @@ interface SessionRow {
   spotify_subtitle: string | null;
   spotify_until: number | null;
   last_seen_at: number;
+  expires_at: number;
 }
 
 export async function createGuest(
@@ -135,8 +144,8 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
   const now = Date.now();
   const id = await hashToken(token);
   const row = await env.DB.prepare(
-    `SELECT s.user_id, s.last_seen_at, u.email, u.display_name, u.character, u.is_guest, u.password_hash IS NOT NULL AS has_password,
-            u.google_sub IS NOT NULL AS has_google, u.link, u.introduced_at IS NOT NULL AS introduced, u.country,
+    `SELECT s.user_id, s.last_seen_at, s.expires_at, u.email, u.display_name, u.character, u.is_guest,
+            u.google_sub IS NOT NULL AS has_google, u.email_verified, u.link, u.introduced_at IS NOT NULL AS introduced, u.country,
             u.time_zone, u.time_zone_auto,
             u.status_icon, u.status_text, u.status_until,
             u.spotify_url, u.spotify_kind, u.spotify_title, u.spotify_image, u.spotify_subtitle, u.spotify_until
@@ -162,8 +171,8 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
     displayName: row.display_name,
     character: row.character,
     isGuest: row.is_guest === 1,
-    hasPassword: row.has_password === 1,
     hasGoogle: row.has_google === 1,
+    emailVerified: row.email_verified === 1,
     link: row.link,
     introduced: row.introduced === 1,
     timeZone: row.time_zone,
@@ -172,7 +181,21 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
     status: noteFrom(row),
     spotify: shareFrom(row),
     sessionId: id,
+    sessionExpiresAt: row.expires_at,
   };
+}
+
+/**
+ * Pushes an account's session out to ACCOUNT_SESSION_MS from now, at most
+ * once a day, and returns the cookie that says so (same token, new lifetime).
+ * Guests' sessions end when they end.
+ */
+export async function renewSession(env: Env, request: Request, ctx: ExecutionContext, user: User): Promise<string | null> {
+  const token = readCookie(request, sessionCookieName(env));
+  const now = Date.now();
+  if (!token || user.isGuest || !user.sessionExpiresAt || user.sessionExpiresAt > now + ACCOUNT_SESSION_MS - DAY_MS) return null;
+  ctx.waitUntil(env.DB.prepare("UPDATE sessions SET expires_at = ? WHERE id = ?").bind(now + ACCOUNT_SESSION_MS, user.sessionId).run());
+  return sessionCookie(env, token, ACCOUNT_SESSION_MS / 1000);
 }
 
 /** A status note from the three columns that keep it, or null when there is none. */

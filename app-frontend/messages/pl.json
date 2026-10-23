@@ -867,7 +867,9 @@
     "own": "Twój własny wygląd",
     "presetNote": "Jedna z gotowych postaci",
     "ownNote": "Stworzone w kreatorze postaci",
-    "change": "Zmień"
+    "change": "Zmień",
+    "colour": "Kolor",
+    "style": "Styl"
   },
   "you": {
     "customizeDesk": "Dostosuj swoje biurko",

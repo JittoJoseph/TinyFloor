@@ -867,7 +867,9 @@
     "own": "나만의 모습",
     "presetNote": "준비된 캐릭터",
     "ownNote": "캐릭터 만들기에서 만듦",
-    "change": "바꾸기"
+    "change": "바꾸기",
+    "colour": "색상",
+    "style": "스타일"
   },
   "you": {
     "customizeDesk": "내 책상 꾸미기",

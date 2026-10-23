@@ -57,6 +57,11 @@ function image(url: string): Promise<HTMLImageElement> {
  * (drawFrame) rather than sheets.
  */
 const SHEETS_KEPT = 40;
+/** Starts loading what these characters are drawn from, so they draw at once when they're shown. */
+export function preloadCharacters(characters: string[]) {
+  for (const character of characters) for (const url of characterLayers(character)) void image(url).catch(() => {});
+}
+
 const sheets = new Map<string, Promise<HTMLCanvasElement>>();
 const ready = new Map<string, HTMLCanvasElement>();
 

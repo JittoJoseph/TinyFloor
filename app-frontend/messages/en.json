@@ -867,7 +867,9 @@
     "own": "Your own look",
     "presetNote": "One of the ready-made characters",
     "ownNote": "Made in the character creator",
-    "change": "Change"
+    "change": "Change",
+    "colour": "Colour",
+    "style": "Style"
   },
   "you": {
     "customizeDesk": "Customize your desk",

@@ -867,7 +867,9 @@
     "own": "Je eigen uiterlijk",
     "presetNote": "Een van de kant-en-klare figuren",
     "ownNote": "Gemaakt in de figuurmaker",
-    "change": "Wijzigen"
+    "change": "Wijzigen",
+    "colour": "Kleur",
+    "style": "Stijl"
   },
   "you": {
     "customizeDesk": "Je bureau aanpassen",

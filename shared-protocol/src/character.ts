@@ -88,14 +88,30 @@ export function characterLayers(character: unknown): string[] {
 
 const pickOne = <T>(list: T[]): T => list[Math.floor(Math.random() * list.length)];
 
-/** Someone new: everyday clothes, hair most of the time, now and then a beard, glasses or a hat. */
+/**
+ * What a roll of the dice picks from: an everyday person. Every part is still
+ * there to choose by hand; a roll stays with natural skins, clothes for work
+ * (not the ninja, swimwear or robes), and what people wear to the office.
+ */
+const EVERYDAY: Partial<Record<CharacterPart, (style: number) => boolean>> = {
+  body: (style) => [1, 2, 3, 4, 6, 7].includes(style),
+  outfit: (style) => style < 30,
+  face: (style) => style === 12 || style === 13,
+  hat: (style) => style === 4 || style === 11,
+};
+
+/** Someone new: everyday clothes, hair most of the time, now and then a beard, glasses or a cap. */
 export function randomLook(): Look {
-  const any = (part: CharacterPart) => pickOne(Object.keys(CHARACTER_CATALOG.parts[part].options));
+  const any = (part: CharacterPart) => {
+    const ids = Object.keys(CHARACTER_CATALOG.parts[part].options);
+    const everyday = EVERYDAY[part];
+    return pickOne(everyday ? ids.filter((id) => everyday(Number(id.split("-")[0]))) : ids);
+  };
   const look: Look = { body: any("body"), eyes: any("eyes"), outfit: any("outfit") };
   if (Math.random() < 0.95) look.hair = any("hair");
   if (Math.random() < 0.2) look.face = any("face");
   if (Math.random() < 0.25) look.glasses = any("glasses");
-  if (Math.random() < 0.15) look.hat = any("hat");
-  if (Math.random() < 0.1) look.bag = any("bag");
+  if (Math.random() < 0.12) look.hat = any("hat");
+  if (Math.random() < 0.08) look.bag = any("bag");
   return look;
 }

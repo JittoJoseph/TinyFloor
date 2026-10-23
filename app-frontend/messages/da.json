@@ -867,7 +867,9 @@
     "own": "Dit eget udseende",
     "presetNote": "En af de færdige figurer",
     "ownNote": "Lavet i figurværktøjet",
-    "change": "Skift"
+    "change": "Skift",
+    "colour": "Farve",
+    "style": "Stil"
   },
   "you": {
     "customizeDesk": "Tilpas dit skrivebord",

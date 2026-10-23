@@ -867,7 +867,9 @@
     "own": "Oma ulkonäkösi",
     "presetNote": "Yksi valmiista hahmoista",
     "ownNote": "Tehty hahmoeditorissa",
-    "change": "Vaihda"
+    "change": "Vaihda",
+    "colour": "Väri",
+    "style": "Tyyli"
   },
   "you": {
     "customizeDesk": "Muokkaa työpöytääsi",

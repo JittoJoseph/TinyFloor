@@ -867,7 +867,9 @@
     "own": "Votre propre apparence",
     "presetNote": "Un des personnages prêts à l’emploi",
     "ownNote": "Créé dans l’éditeur de personnage",
-    "change": "Changer"
+    "change": "Changer",
+    "colour": "Couleur",
+    "style": "Style"
   },
   "you": {
     "customizeDesk": "Personnaliser votre bureau",

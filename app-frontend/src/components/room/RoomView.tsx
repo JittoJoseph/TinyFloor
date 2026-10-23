@@ -74,6 +74,7 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
   const [ended, setEnded] = useState<RoomEnd | null>(null);
   const [attempt, setAttempt] = useState(0);
   const [peopleOpen, setPeopleOpen] = useState(false);
+  const [youActive, setYouActive] = useState(false);
   // From here until the room's welcome, the code, map, ticket and connection
   // are still on their way: one loader covers all of it, then the floor fades in.
   // Which attempt arrived: a retry (Try again) starts covered again.
@@ -253,12 +254,32 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
           </AnimatePresence>
         </div>
 
-        {/* Invite while it's worth asking, then you: the card grows down and over it when it opens. */}
+        {/* Invite while it's worth asking, then you. Pointed at or opened, your card grows over where Invite
+            was, Invite stepping aside into it as one of its rows. */}
         <div className="relative flex items-start gap-2">
-          {inviteChip && canInvite && <InviteChip copied={copied} onClick={invite} />}
+          <AnimatePresence initial={false}>
+            {inviteChip && canInvite && !youActive && (
+              <motion.div
+                key="invite"
+                initial={reduce ? { opacity: 0 } : { opacity: 0, x: 12, scale: 0.96 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={reduce ? { opacity: 0 } : { opacity: 0, x: 12, scale: 0.96 }}
+                transition={{ duration: 0.18, ease: EASE_OUT }}
+                style={{ transformOrigin: "right center" }}
+              >
+                <InviteChip copied={copied} onClick={invite} />
+              </motion.div>
+            )}
+          </AnimatePresence>
           <div className="h-10 w-10 shrink-0" aria-hidden />
           <div className="absolute end-0 top-0 z-10">
-            <YouCard userId={user.id} name={user.displayName} />
+            <YouCard
+              userId={user.id}
+              name={user.displayName}
+              onActive={setYouActive}
+              onInvite={inviteChip && canInvite ? invite : undefined}
+              inviteLabel={t("invite")}
+            />
           </div>
         </div>
       </div>

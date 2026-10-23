@@ -867,7 +867,9 @@
     "own": "Sua aparência própria",
     "presetNote": "Um dos personagens prontos",
     "ownNote": "Feito no criador de personagens",
-    "change": "Mudar"
+    "change": "Mudar",
+    "colour": "Cor",
+    "style": "Estilo"
   },
   "you": {
     "customizeDesk": "Personalize sua mesa",

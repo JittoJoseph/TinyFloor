@@ -867,7 +867,9 @@
     "own": "Dein eigener Look",
     "presetNote": "Eine der fertigen Figuren",
     "ownNote": "Im Figuren-Editor erstellt",
-    "change": "Ändern"
+    "change": "Ändern",
+    "colour": "Farbe",
+    "style": "Stil"
   },
   "you": {
     "customizeDesk": "Schreibtisch gestalten",

@@ -867,7 +867,9 @@
     "own": "自分だけの見た目",
     "presetNote": "用意されたキャラクター",
     "ownNote": "キャラクター作成で作成",
-    "change": "変更"
+    "change": "変更",
+    "colour": "色",
+    "style": "スタイル"
   },
   "you": {
     "customizeDesk": "デスクをカスタマイズ",

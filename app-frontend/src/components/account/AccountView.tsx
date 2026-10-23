@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/motion/button/base";
 import { Dialog, ErrorText, fieldClass, Label } from "@/components/ui/forms";
 import { LitFace } from "@/components/ui/LitFace";
-import { CharacterPortrait } from "@/components/character/CharacterPortrait";
+import { CharacterStage } from "@/components/character/CharacterStage";
 import { isPreset } from "@shared/character";
 import { openCharacterCreator } from "@/components/character/CharacterCreator";
 import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
@@ -213,7 +213,7 @@ export function Profile() {
       <Group title={t("character")} note={t("characterNote")}>
         {/* You as you walk in, the way the floor shows you, and the creator to change it (CharacterCreator, which saves it). */}
         <div className="flex items-center gap-4 px-4 py-3">
-          <CharacterPortrait character={user.character} />
+          <CharacterStage character={user.character} scale={2} ground={10} still className="h-28 w-[5.5rem] shrink-0" />
           <div className="min-w-0 flex-1">
             <p className="truncate text-[13.5px] font-medium text-foreground">{isPreset(user.character) ? user.character : tLook("own")}</p>
             <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{tLook(isPreset(user.character) ? "presetNote" : "ownNote")}</p>

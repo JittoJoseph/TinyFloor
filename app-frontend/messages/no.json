@@ -867,7 +867,9 @@
     "own": "Ditt eget utseende",
     "presetNote": "En av de ferdige figurene",
     "ownNote": "Laget i figurverktøyet",
-    "change": "Endre"
+    "change": "Endre",
+    "colour": "Farge",
+    "style": "Stil"
   },
   "you": {
     "customizeDesk": "Tilpass skrivebordet ditt",

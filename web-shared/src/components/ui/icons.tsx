@@ -119,6 +119,9 @@ import {
   MinusSignIcon,
   Undo02Icon,
   TShirtIcon,
+  UserMultiple02Icon,
+  ScissorIcon,
+  HatGlassesIcon,
   RotateLeft01Icon,
   RotateRight01Icon,
   Redo02Icon,
@@ -266,6 +269,9 @@ export const TimerOff = icon(TimerOffIcon, "TimerOff");
 export const Trash2 = icon(Delete02Icon, "Trash2");
 export const Undo = icon(Undo02Icon, "Undo");
 export const Shirt = icon(TShirtIcon, "Shirt");
+export const Characters = icon(UserMultiple02Icon, "Characters");
+export const Scissors = icon(ScissorIcon, "Scissors");
+export const HatGlasses = icon(HatGlassesIcon, "HatGlasses");
 export const TurnLeft = icon(RotateLeft01Icon, "TurnLeft");
 export const TurnRight = icon(RotateRight01Icon, "TurnRight");
 export const Redo = icon(Redo02Icon, "Redo");

@@ -22,6 +22,8 @@ interface __BaseEnv_Env {
 	CREEM_PRODUCTS?: string;
 	CREEM_API_KEY?: string;
 	CREEM_WEBHOOK_SECRET?: string;
+	/** Resend (src/email.ts). Without it, app mail is logged, not sent. */
+	RESEND_API_KEY?: string;
 	PASSWORD_GUARD: DurableObjectNamespace<import("./src/index").PasswordGuard>;
 	REALTIME: Service /* entrypoint RealtimeAdmin from tinyfloor-realtime-preview */ | Service /* entrypoint RealtimeAdmin from tinyfloor-realtime */;
 }

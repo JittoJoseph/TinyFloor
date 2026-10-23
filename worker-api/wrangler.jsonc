@@ -29,7 +29,8 @@
   // Per-IP limit on sign-up, sign-in and guest creation (src/limits.ts).
   // Secrets, set with `wrangler secret put` (and in .dev.vars locally): TICKET_SECRET,
   // TURNSTILE_SECRET, TURN_KEY_ID, TURN_KEY_API_TOKEN, GOOGLE_CLIENT_SECRET, and
-  // ADMIN_EMAILS, the comma-separated accounts that can open /admin.
+  // ADMIN_EMAILS, the comma-separated accounts that can open /admin, and
+  // RESEND_API_KEY, for app mail from mail.tinyfloor.com (src/email.ts).
   // UPLOAD_LIMIT: per-person uploads to chat (src/files.ts).
   "ratelimits": [
     { "name": "AUTH_LIMIT", "namespace_id": "1001", "simple": { "limit": 10, "period": 60 } },

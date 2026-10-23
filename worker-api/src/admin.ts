@@ -2,6 +2,7 @@ import { cleanDisplayName } from "../../shared-protocol/src";
 import { cleanName, realtime } from "./access";
 import { givePlan, HOLDS_PLAN, liveSubscription, thisMonth } from "./billing";
 import { HttpError, json, readJson } from "./http";
+import { letter, sendEmail } from "./email";
 import { closeOffice } from "./offices";
 import type { Router } from "./router";
 import { requireAccount } from "./session";
@@ -235,6 +236,22 @@ export function adminRoutes(router: Router): void {
       if (!office) throw new HttpError(404, "no_office", "No such office");
       await closeOffice(env, params.id);
       return json({ ok: true });
+    })
+
+    // What the app's email looks like in a real inbox, sent to the admin (or an address they give).
+    .add("POST", "/v1/admin/email-test", async ({ request, env, ctx }) => {
+      const admin = await requireAdmin(env, request, ctx);
+      const { to } = await readJson(request);
+      const address = typeof to === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to.trim()) ? to.trim() : admin.email!;
+      const { html, text } = letter({
+        preview: "A test of how TinyFloor's email looks and arrives.",
+        heading: "This is a test email",
+        paragraphs: ["It shows how email from TinyFloor looks, and checks that it arrives in the inbox, not in spam.", "Replies go to support@tinyfloor.com."],
+        button: { label: "Open TinyFloor", url: "https://app.tinyfloor.com" },
+        footnote: "Sent from the admin page to test email.",
+      });
+      const sent = await sendEmail(env, { to: address, subject: "TinyFloor test email", html, text, kind: "test" });
+      return json({ sent, to: address });
     })
 
     .add("GET", "/v1/admin/lobby-chat", async ({ request, env, ctx }) => {

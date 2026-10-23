@@ -1,12 +1,16 @@
 /**
- * App mail, through Resend: from TinyFloor at mail.tinyfloor.com (its own
- * subdomain, signed there, so it never weighs on the main domain), with
- * replies going to support@tinyfloor.com, the inbox people actually read
- * (Zoho). Only mail the app has a reason to send: no reminders or nudges.
- * Without RESEND_API_KEY (locally) nothing is sent; what would have been is logged.
+ * App mail, through Resend: from hello@tinyfloor.com, signed for the main
+ * domain (Resend's DKIM key beside Zoho's; bounces go to send.tinyfloor.com,
+ * so the main domain's SPF stays Zoho's alone), with replies going to
+ * support@tinyfloor.com, the inbox people actually read (Zoho, where hello@ is
+ * an alias too). Sign-in codes are few and expected, so they're safe on the
+ * main domain; bulk mail (news) belongs on a subdomain of its own, so its
+ * complaints can't weigh on this. Only mail the app has a reason to send: no
+ * reminders or nudges. Without RESEND_API_KEY (locally) nothing is sent; what
+ * would have been is logged.
  */
 
-const FROM = "TinyFloor <hello@mail.tinyfloor.com>";
+const FROM = "TinyFloor <hello@tinyfloor.com>";
 const REPLY_TO = "support@tinyfloor.com";
 const LOGO = "https://app.tinyfloor.com/icon-192.png";
 /**

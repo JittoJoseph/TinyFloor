@@ -663,28 +663,6 @@
     "nothingOpen": "כרגע אין שום דבר פתוח מול הצוות של TinyFloor.",
     "emailUs": "מעדיפים אימייל? <link>{email}</link>"
   },
-  "dashboard": {
-    "newOffice": "משרד חדש",
-    "walkIn": "להיכנס",
-    "home": "בית",
-    "invite": "הזמנת אנשים",
-    "inNow": "{count, plural, =0 {אין אף אחד} other {# כאן עכשיו}}",
-    "seats": "{used} מתוך {seats} מקומות",
-    "lobbyNote": "או נסו קודם את משרד ההדגמה",
-    "welcome": "ברוכים הבאים, {name}",
-    "welcomeAnonymous": "ברוכים הבאים",
-    "welcomeBody": "קומה אחת לצוות, עם ערוצים ושיחות מובנים.",
-    "invited": "קיבלתם הזמנה?",
-    "invitedBody": "הדביקו את הקישור שהצוות שלח.",
-    "invitePlaceholder": "הדביקו קישור הזמנה",
-    "join": "הצטרפות",
-    "badLink": "זה לא נראה כמו קישור הזמנה. הדביקו את הקישור המלא.",
-    "makeTitle": "בואו ניצור את המשרד שלכם",
-    "otherWays": "דרכים אחרות להיכנס",
-    "lobbyBody": "הסתובבו וראו איך משרד עובד.",
-    "yourAccount": "החשבון שלכם",
-    "createOffice": "צרו את המשרד שלכם"
-  },
   "billing": {
     "settingUp": "התשלום התקבל. מגדירים את התוכנית…",
     "settingUpSlow": "התשלום התקבל. ייתכן שיעבור רגע עד שהתוכנית תופיע; רעננו אם לא.",

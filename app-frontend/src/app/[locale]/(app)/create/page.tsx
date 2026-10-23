@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { CreateOfficeFlow } from "@/components/app/CreateOffice";
+import { CreateOfficeFlow, useCreateBack } from "@/components/app/CreateOffice";
 import { Introduce } from "@/components/entry/Introduce";
 import { DoorHeaderSkeleton, DoorSkeleton } from "@/components/entry/InviteEntry";
 import { EntryShell } from "@/components/entry/EntryShell";
@@ -17,6 +17,7 @@ export default function CreateOfficePage() {
   const router = useRouter();
   const { user, isLoading } = useAuth();
   const signedIn = !isLoading && !!user && !user.guest;
+  const back = useCreateBack();
 
   useEffect(() => {
     if (!isLoading && !signedIn) router.replace(`/auth?${new URLSearchParams({ redirect: "/create", mode: "signup" })}`);
@@ -24,11 +25,11 @@ export default function CreateOfficePage() {
 
   if (!signedIn) {
     return (
-      <EntryShell backHref="/" header={<DoorHeaderSkeleton />}>
+      <EntryShell backHref={back} header={<DoorHeaderSkeleton />}>
         <DoorSkeleton />
       </EntryShell>
     );
   }
-  if (user.introduced === false) return <Introduce backHref="/" />;
+  if (user.introduced === false) return <Introduce backHref={back} />;
   return <CreateOfficeFlow />;
 }

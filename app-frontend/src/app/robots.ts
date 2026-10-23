@@ -10,7 +10,7 @@ export default function robots(): MetadataRoute.Robots {
   if (new URL(APP_URL).hostname !== "app.tinyfloor.com") {
     return { rules: { userAgent: "*", disallow: "/" } };
   }
-  const hidden = ["/office/", "/invite/", "/join", "/dashboard", "/account", "/admin", "/auth", "/create"];
+  const hidden = ["/office/", "/invite/", "/join", "/home", "/dashboard", "/account", "/admin", "/auth", "/create"];
   return {
     rules: { userAgent: "*", allow: "/", disallow: [...hidden, ...hidden.map((path) => `/*${path}`)] },
     sitemap: `${APP_URL}/sitemap.xml`,

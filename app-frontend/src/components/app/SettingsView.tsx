@@ -26,6 +26,7 @@ import { usePlace } from "./place";
 import { useOfficeMaybe } from "./OfficeShell";
 import { PlanSection } from "./PlanSection";
 import { Profile, SignIn } from "@/components/account/AccountView";
+import { leftPath } from "@/lib/links";
 
 type Section = "profile" | "signin" | "general" | "media" | "notifications" | "accessibility" | "office" | "plan";
 const SECTIONS: Section[] = ["profile", "signin", "general", "media", "notifications", "accessibility", "office", "plan"];
@@ -685,7 +686,7 @@ function LeaveOrClose({ officeId, officeName, owner, userId }: { officeId: strin
     try {
       if (owner) await api.closeOffice(officeId);
       else await api.removeMember(officeId, userId);
-      router.replace("/");
+      router.replace(leftPath(officeId));
     } catch (problem) {
       // A paid plan is cancelled first, on purpose, from the plan section (docs/pricing.md).
       if (problem instanceof ApiError && problem.code === "cancel_plan_first") setError(t("cancelPlanFirst"));

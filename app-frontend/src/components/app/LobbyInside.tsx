@@ -16,6 +16,7 @@ import {
   lobbyPath,
   lobbyPeoplePath,
   lobbySettingsPath,
+  homePath,
   shareUrl,
   useSitePage,
 } from "@/lib/links";
@@ -252,7 +253,7 @@ function LobbyMark() {
         {ts("yourOffice")}
       </MenuItem>
       <MenuSeparator />
-      <MenuItem icon={guest ? <LogOut className="rtl:rotate-180" /> : <DoorOpen />} onSelect={() => goTo(router, guest ? home : "/")}>
+      <MenuItem icon={guest ? <LogOut className="rtl:rotate-180" /> : <DoorOpen />} onSelect={() => goTo(router, guest ? home : homePath)}>
         {ts("leaveLobby")}
       </MenuItem>
     </Menu>

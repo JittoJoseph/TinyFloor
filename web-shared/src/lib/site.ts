@@ -13,7 +13,7 @@ export const APP_URL =
  * on to the app, path and query intact, so links shared before the split
  * (invitations, offices, the lobby) still work; the app sends everything else back.
  */
-export const APP_PATH = /^\/(account|admin|auth|create|dashboard|join|lobby|invite|office|map-render|video-demo)(\/|$)/;
+export const APP_PATH = /^\/(account|admin|auth|create|dashboard|home|join|lobby|invite|office|map-render|video-demo)(?=[/?#]|$)/;
 
 /**
  * A path on the other site in a locale, addressed the way that site serves it:

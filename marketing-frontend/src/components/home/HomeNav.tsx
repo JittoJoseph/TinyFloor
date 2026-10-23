@@ -171,7 +171,7 @@ export function HomeNav({ fade = true }: { fade?: boolean }) {
             actions={
               <>
                 <Link
-                  href="/create"
+                  href="/home?mode=signup"
                   className="flex h-12 w-full items-center justify-center rounded-full bg-foreground text-[15px] font-medium text-background active:scale-[0.98]"
                 >
                   {t("nav.start")}

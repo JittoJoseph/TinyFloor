@@ -663,28 +663,6 @@
     "nothingOpen": "Nothing is open with the TinyFloor team right now.",
     "emailUs": "Rather email? <link>{email}</link>"
   },
-  "dashboard": {
-    "newOffice": "New office",
-    "walkIn": "Walk in",
-    "home": "Home",
-    "invite": "Invite people",
-    "inNow": "{count, plural, =0 {Nobody in} other {# in now}}",
-    "seats": "{used} of {seats} seats",
-    "lobbyNote": "Or try the demo office first",
-    "welcome": "Welcome, {name}",
-    "welcomeAnonymous": "Welcome",
-    "welcomeBody": "One floor for your team, with channels and calls built in.",
-    "invited": "Were you invited?",
-    "invitedBody": "Paste the link your team sent you.",
-    "invitePlaceholder": "Paste an invite link",
-    "join": "Join",
-    "badLink": "That doesn't look like an invite link. Paste the whole link.",
-    "makeTitle": "Let's make your office",
-    "otherWays": "Other ways in",
-    "lobbyBody": "Walk around and see how an office works.",
-    "yourAccount": "Your account",
-    "createOffice": "Create your office"
-  },
   "billing": {
     "settingUp": "Payment received. Setting up the plan…",
     "settingUpSlow": "Payment received. The plan can take a minute to show; refresh if it hasn't.",

@@ -1,118 +1,24 @@
 "use client";
 
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Check, KeyRound, Palette, Search, UserRound } from "@/components/ui/icons";
-import { motion, useReducedMotion } from "motion/react";
+import { Check, Search } from "@/components/ui/icons";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError } from "@/lib/api";
 import { allZones, browserZone, offsetLabel, timeIn, zoneCity, zoneLabel } from "@/lib/timeZone";
 import { useSitePage } from "@/lib/links";
 import { useErrorMessage } from "@/lib/useErrorMessage";
-import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/motion/button/base";
 import { Dialog, fieldClass } from "@/components/ui/forms";
-import { LitFace } from "@/components/ui/LitFace";
 import { CharacterStage } from "@/components/character/CharacterStage";
 import { isPreset } from "@shared/character";
 import { openCharacterCreator, warmCharacterCreator } from "@/components/character/creatorOpen";
 import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
 import { CodeField, CODE_LENGTH } from "@/components/auth/CodeField";
-import { General, Group, Row } from "@/components/app/SettingsView";
+import { Group, Row } from "@/components/app/SettingsView";
 
-type Section = "profile" | "signin" | "appearance";
-
-const ICONS: Record<Section, ReactNode> = {
-  profile: <UserRound />,
-  signin: <KeyRound />,
-  appearance: <Palette />,
-};
-
-const SECTIONS: Section[] = ["profile", "signin", "appearance"];
-
-/**
- * Your account: who you are to everyone else, how you sign in, and how the
- * app looks to you, one section at a time under its title. The section is in
- * the address, so a link can open the right one.
- */
-export function AccountView() {
-  const t = useTranslations("office.profile");
-  const td = useTranslations("dashboard");
-  const reduce = useReducedMotion();
-  const [section, setSection] = useState<Section>("profile");
-
-  // Read once the page is in the browser, so the first render matches the server's.
-  useEffect(() => {
-    const wanted = new URLSearchParams(window.location.search).get("section") as Section | null;
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (wanted && SECTIONS.includes(wanted)) setSection(wanted);
-  }, []);
-
-  const open = (next: Section) => {
-    setSection(next);
-    const url = new URL(window.location.href);
-    if (next === "profile") url.searchParams.delete("section");
-    else url.searchParams.set("section", next);
-    window.history.replaceState(null, "", url);
-  };
-
-  const { user } = useAuth();
-  if (!user) return null;
-
-  return (
-    <div className="mx-auto max-w-[640px]">
-      {/* You, the way everyone else sees you: centered where there is room, beside your name on a phone. */}
-      <div className="flex items-center gap-4 sm:flex-col sm:gap-0 sm:text-center">
-        <LitFace seed={user.id} size={80} phone={60} />
-        <div className="min-w-0 sm:mt-7">
-          <p className="text-[13px] font-medium text-muted-foreground">{td("yourAccount")}</p>
-          <h1 className="truncate text-[24px] font-semibold leading-tight tracking-[-0.02em] text-foreground sm:mt-0.5 sm:text-[30px] sm:tracking-[-0.025em]">
-            {user.displayName}
-          </h1>
-          {user.email && (
-            <p data-ph-mask className="truncate text-[13.5px] text-muted-foreground">
-              {user.email}
-            </p>
-          )}
-        </div>
-      </div>
-
-      <div className="mt-8 flex sm:justify-center">
-        <div role="tablist" className="grid w-full grid-cols-3 gap-1 rounded-full border border-border bg-card/60 p-1 sm:w-auto">
-          {SECTIONS.map((one) => (
-            <button
-              key={one}
-              type="button"
-              role="tab"
-              aria-selected={section === one}
-              onClick={() => open(one)}
-              className={cn(
-                "relative flex h-9 min-w-0 cursor-pointer items-center justify-center gap-2 rounded-full px-3 text-[13.5px] transition-colors sm:px-4 [&_svg]:size-4",
-                section === one ? "font-medium text-foreground" : "text-muted-foreground hover:text-foreground",
-              )}
-            >
-              {section === one && (
-                <motion.span
-                  layoutId="account-tab"
-                  transition={reduce ? { duration: 0 } : SPRING_LAYOUT}
-                  className="absolute inset-0 rounded-full bg-foreground/[0.08]"
-                />
-              )}
-              <span className="relative hidden sm:inline-flex">{ICONS[one]}</span>
-              <span className="relative truncate">{t(`sections.${one}`)}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-      <div role="tabpanel" className="mt-10">
-        {section === "profile" && <Profile />}
-        {section === "signin" && <SignIn />}
-        {section === "appearance" && <General />}
-      </div>
-    </div>
-  );
-}
+// Your profile and how you sign in: sections of an office's (and the lobby's) settings (SettingsView).
 
 /** A setting with a text field: side by side where there is room, stacked on a phone. */
 function FieldRow({ id, title, description, children }: { id: string; title: string; description?: string; children: ReactNode }) {

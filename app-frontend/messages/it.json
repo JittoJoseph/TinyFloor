@@ -663,28 +663,6 @@
     "nothingOpen": "Al momento non c'è niente di aperto con il team di TinyFloor.",
     "emailUs": "Preferisci l'email? <link>{email}</link>"
   },
-  "dashboard": {
-    "newOffice": "Nuovo ufficio",
-    "walkIn": "Entra",
-    "home": "Home",
-    "invite": "Invita persone",
-    "inNow": "{count, plural, =0 {Nessuno} other {# presenti}}",
-    "seats": "{used} di {seats} posti",
-    "lobbyNote": "Oppure prova prima l'ufficio demo",
-    "welcome": "Benvenuto, {name}",
-    "welcomeAnonymous": "Benvenuto",
-    "welcomeBody": "Un piano per il tuo team, con canali e chiamate inclusi.",
-    "invited": "Sei stato invitato?",
-    "invitedBody": "Incolla il link che ti ha mandato il tuo team.",
-    "invitePlaceholder": "Incolla un link d’invito",
-    "join": "Entra",
-    "badLink": "Non sembra un link d’invito. Incolla il link completo.",
-    "makeTitle": "Creiamo il tuo ufficio",
-    "otherWays": "Altri modi per entrare",
-    "lobbyBody": "Fai un giro e scopri come funziona un ufficio.",
-    "yourAccount": "Il tuo account",
-    "createOffice": "Crea il tuo ufficio"
-  },
   "billing": {
     "settingUp": "Pagamento ricevuto. Attivazione del piano…",
     "settingUpSlow": "Pagamento ricevuto. Il piano può metterci un minuto a comparire; ricarica se non lo vedi.",

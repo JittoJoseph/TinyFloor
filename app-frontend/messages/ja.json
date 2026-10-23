@@ -663,28 +663,6 @@
     "nothingOpen": "いま TinyFloor チームとのやり取りはありません。",
     "emailUs": "メールの方がよければ: <link>{email}</link>"
   },
-  "dashboard": {
-    "newOffice": "新しいオフィス",
-    "walkIn": "入る",
-    "home": "ホーム",
-    "invite": "メンバーを招待",
-    "inNow": "{count, plural, =0 {誰もいません} other {#人がいます}}",
-    "seats": "{seats}席中{used}席",
-    "lobbyNote": "まずはデモオフィスを試す",
-    "welcome": "ようこそ、{name}さん",
-    "welcomeAnonymous": "ようこそ",
-    "welcomeBody": "チームのためのフロア。チャンネルと通話つき。",
-    "invited": "招待されましたか？",
-    "invitedBody": "チームから届いたリンクを貼り付けてください。",
-    "invitePlaceholder": "招待リンクを貼り付け",
-    "join": "参加",
-    "badLink": "招待リンクではないようです。リンク全体を貼り付けてください。",
-    "makeTitle": "オフィスをつくりましょう",
-    "otherWays": "ほかの入りかた",
-    "lobbyBody": "歩き回って、オフィスの使い方を確かめましょう。",
-    "yourAccount": "あなたのアカウント",
-    "createOffice": "オフィスを作る"
-  },
   "billing": {
     "settingUp": "お支払いを受け付けました。プランを準備しています…",
     "settingUpSlow": "お支払いを受け付けました。プランの反映に 1 分ほどかかる場合があります。表示されない場合は再読み込みしてください。",

@@ -20,7 +20,7 @@ import { MenuExpand, MenuFold, MenuRow } from "@/components/ui/MenuViews";
 import { cn } from "@/lib/utils";
 import { useWide } from "@/lib/hooks/use-wide";
 import { help } from "@/lib/help";
-import { goTo, openSettings, useSitePage } from "@/lib/links";
+import { goTo, homePath, openSettings, useSitePage } from "@/lib/links";
 import { install, useCanInstall } from "@/lib/install";
 
 const STATUSES: Array<Exclude<PlayerStatus, "in_call" | "offline">> = ["available", "busy", "away"];
@@ -127,7 +127,7 @@ export function YouMenu({
           // Your status is the row below and the dot on your face, so the line is your note, or where this goes.
           line={onFloor && note ? { icon: note.icon, text: note.text } : { text: t("yourProfile") }}
           presence={onFloor ? status : null}
-          onOpen={() => (settingsHref ? openSettings(router, settingsHref, "profile") : router.push("/account"))}
+          onOpen={() => (settingsHref ? openSettings(router, settingsHref, "profile") : router.push(homePath))}
         />
       )}
 

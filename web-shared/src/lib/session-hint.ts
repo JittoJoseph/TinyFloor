@@ -15,6 +15,15 @@ export function rememberSession(signedIn: boolean) {
   document.documentElement.classList.toggle("known", signedIn);
 }
 
+/** Whether this browser had a session when it last asked: a hint, never proof. */
+export function hadSession(): boolean {
+  try {
+    return !!localStorage.getItem(SESSION_HINT_KEY);
+  } catch {
+    return false;
+  }
+}
+
 /** For an app page reached from the site, where the first script has already run. */
 export function recallSession() {
   try {

@@ -7,7 +7,7 @@ import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
 import { anyCharacter, character as cleanCharacter, saveIdentity } from "@/lib/identity";
-import { invitePath, officePath } from "@/lib/links";
+import { homePath, invitePath, officePath } from "@/lib/links";
 import { openOfficeAhead } from "@/lib/officeAhead";
 import { warmFloor } from "@/lib/floorWarmup";
 import { EntryDetail, EntryHeader, EntryShell } from "@/components/entry/EntryShell";
@@ -21,7 +21,6 @@ import { Agree } from "@/components/legal/Agree";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { posthogLog } from "@/lib/posthog-log";
 import { track, withPostHog } from "@/lib/analytics";
-import { Link } from "@/lib/i18n/navigation";
 
 export interface InvitePreview {
   officeId: string;
@@ -46,7 +45,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
   const tAuth = useTranslations("auth");
   const router = useRouter();
   const explain = useErrorMessage();
-  const { user, isLoading, updateProfile, signInWithGoogle } = useAuth();
+  const { user, isLoading, updateProfile, signInWithGoogle, signOut } = useAuth();
   const [invite, setInvite] = useState(initialPreview);
   const [state, setState] = useState<"loading" | "ready" | "invalid">(initialPreview ? "ready" : "loading");
   const [identity, setIdentity] = useState<"name" | "character">("name");
@@ -146,8 +145,8 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
 
   if (state === "invalid" || !invite) {
     return (
-      <EntryProblem backHref="/" title={t("invalidTitle")} body={t("invalid")}>
-        <ActionLink href="/">{t("home")}</ActionLink>
+      <EntryProblem backHref={homePath} title={t("invalidTitle")} body={t("invalid")}>
+        <ActionLink href={homePath}>{t("home")}</ActionLink>
         <ActionLink href="/create" tone="secondary" icon={null}>
           {tc("createOffice")}
         </ActionLink>
@@ -168,7 +167,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
 
   return (
     <EntryShell
-      backHref="/"
+      backHref={homePath}
       header={
         <EntryHeader
           mark={<OfficeMark officeId={invite.officeId} />}
@@ -252,9 +251,17 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
               <YouSummary name={user.displayName} character={character} />
               <p className="mt-3 text-[12.5px] text-muted-foreground">
                 <span data-ph-mask>{t("joiningAs", { email: user.email ?? user.displayName })}</span>{" "}
-                <Link href="/account" className="underline-offset-2 hover:text-foreground hover:underline">
+                {/* Another account: signed out, and back here once signed in as them. */}
+                <button
+                  type="button"
+                  onClick={async () => {
+                    await signOut();
+                    router.replace(`/auth?${new URLSearchParams({ redirect: here })}`);
+                  }}
+                  className="cursor-pointer underline-offset-2 hover:text-foreground hover:underline"
+                >
                   {t("change")}
-                </Link>
+                </button>
               </p>
             </>
           )}

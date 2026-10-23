@@ -663,28 +663,6 @@
     "nothingOpen": "Er staat nu niets open bij het TinyFloor-team.",
     "emailUs": "Liever per e-mail? <link>{email}</link>"
   },
-  "dashboard": {
-    "newOffice": "Nieuw kantoor",
-    "walkIn": "Naar binnen",
-    "home": "Home",
-    "invite": "Mensen uitnodigen",
-    "inNow": "{count, plural, =0 {Niemand binnen} other {# nu binnen}}",
-    "seats": "{used} van {seats} plekken",
-    "lobbyNote": "Of probeer eerst het demokantoor",
-    "welcome": "Welkom, {name}",
-    "welcomeAnonymous": "Welkom",
-    "welcomeBody": "Eén verdieping voor je team, met kanalen en gesprekken ingebouwd.",
-    "invited": "Ben je uitgenodigd?",
-    "invitedBody": "Plak de link die je team je stuurde.",
-    "invitePlaceholder": "Plak een uitnodigingslink",
-    "join": "Meedoen",
-    "badLink": "Dat lijkt geen uitnodigingslink. Plak de hele link.",
-    "makeTitle": "Laten we je kantoor maken",
-    "otherWays": "Andere manieren om binnen te komen",
-    "lobbyBody": "Loop rond en zie hoe een kantoor werkt.",
-    "yourAccount": "Je account",
-    "createOffice": "Maak je kantoor"
-  },
   "billing": {
     "settingUp": "Betaling ontvangen. Het abonnement wordt ingesteld…",
     "settingUpSlow": "Betaling ontvangen. Het abonnement kan een minuut nodig hebben; vernieuw als het er nog niet is.",

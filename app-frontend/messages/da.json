@@ -265,10 +265,8 @@
       "office": "Kontor",
       "plan": "Plan og betaling"
     },
-    "appearance": "Udseende",
     "themeNote": "\"System\" følger din enhed.",
-    "language": "Sprog",
-    "languageTitle": "Sprog",
+    "languageTitle": "Visningssprog",
     "languageNote": "Til menuer, knapper og beskeder fra TinyFloor.",
     "devices": "Enheder",
     "devicesNote": "Bruges næste gang, du tænder mikrofonen eller kameraet.",
@@ -300,7 +298,16 @@
     "desktopNotifications": "Vis notifikationer",
     "desktopNote": "Direkte beskeder og omtaler, også når TinyFloor er lukket. Opkald og vink, mens det er åbent i et andet vindue.",
     "desktopBlocked": "Blokeret af din browser. Tillad notifikationer for siden via ikonet ved adresselinjen.",
-    "turnOn": "Slå til"
+    "turnOn": "Slå til",
+    "descriptions": {
+      "profile": "Sådan ser andre dig, i alle kontorer.",
+      "signin": "Sådan kommer du ind på din konto.",
+      "general": "Hvordan TinyFloor ser ud, og hvilket sprog det bruger.",
+      "media": "Din mikrofon og dit kamera, og hvordan du lyder.",
+      "notifications": "Hvad der gør dig opmærksom på, at noget sker.",
+      "accessibility": "Bevægelse og ydeevne, så det passer til dig og din enhed.",
+      "plan": "Hvilken plan dit kontor har, og hvordan den betales."
+    }
   },
   "scene": {
     "meeting": "Møde",
@@ -415,7 +422,8 @@
       "domainOff": "Kan ikke finde det",
       "domainAskNote": "De finder kontoret via deres arbejdsmail og spørger. En admin lukker dem ind.",
       "domainOpenNote": "Alle, der er logget ind med en @{domain}-adresse, kan gå direkte ind.",
-      "domainOffNote": "Kun dem med invitationslinket kan deltage."
+      "domainOffNote": "Kun dem med invitationslinket kan deltage.",
+      "leaveButton": "Forlad"
     },
     "profile": {
       "changePassword": "Skift adgangskode",
@@ -450,7 +458,6 @@
         "signin": "Log ind",
         "appearance": "Udseende"
       },
-      "profileNote": "Dit navn og dit link, uanset hvor du går ind.",
       "password": "Adgangskode",
       "passwordSet": "Log ind med din e-mail og adgangskode.",
       "signOutNote": "Log ud af TinyFloor i denne browser.",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "Automatisk",
       "timeZoneChange": "Skift",
       "timeZoneSearch": "Søg efter en by",
-      "timeZoneNone": "Ingen tidszone passer"
+      "timeZoneNone": "Ingen tidszone passer",
+      "methods": "Måder at logge ind på",
+      "thisBrowser": "Denne browser",
+      "signedInAs": "Logget ind som {name}"
     },
     "invite": {
       "invalidTitle": "Invitationen virker ikke",

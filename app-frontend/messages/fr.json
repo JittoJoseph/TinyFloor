@@ -265,10 +265,8 @@
       "office": "Bureau",
       "plan": "Offre et facturation"
     },
-    "appearance": "Apparence",
     "themeNote": "« Système » suit votre appareil.",
-    "language": "Langue",
-    "languageTitle": "Langue",
+    "languageTitle": "Langue d'affichage",
     "languageNote": "Pour les menus, les boutons et les messages de TinyFloor.",
     "devices": "Appareils",
     "devicesNote": "Utilisés la prochaine fois que vous activez micro ou caméra.",
@@ -300,7 +298,16 @@
     "desktopNotifications": "Afficher les notifications",
     "desktopNote": "Messages privés et mentions, même quand TinyFloor est fermé. Appels et saluts quand il est ouvert dans une autre fenêtre.",
     "desktopBlocked": "Bloquées par votre navigateur. Autorisez les notifications pour ce site depuis l'icône à côté de la barre d'adresse.",
-    "turnOn": "Activer"
+    "turnOn": "Activer",
+    "descriptions": {
+      "profile": "Comment les autres vous voient, dans chaque bureau.",
+      "signin": "Comment vous accédez à votre compte.",
+      "general": "L'apparence de TinyFloor et sa langue.",
+      "media": "Votre micro et votre caméra, et comment vous sonnez.",
+      "notifications": "Ce qui vous signale qu'il se passe quelque chose.",
+      "accessibility": "Animations et performances, selon vous et votre appareil.",
+      "plan": "La formule de votre bureau et son paiement."
+    }
   },
   "scene": {
     "meeting": "Réunion",
@@ -415,7 +422,8 @@
       "domainOff": "Ne le trouvent pas",
       "domainAskNote": "Elles trouvent ce bureau grâce à leur adresse pro et demandent à entrer. Un admin les fait entrer.",
       "domainOpenNote": "Toute personne connectée avec une adresse @{domain} peut entrer directement.",
-      "domainOffNote": "Seules les personnes qui ont le lien d'invitation peuvent rejoindre."
+      "domainOffNote": "Seules les personnes qui ont le lien d'invitation peuvent rejoindre.",
+      "leaveButton": "Quitter"
     },
     "profile": {
       "changePassword": "Changer le mot de passe",
@@ -450,7 +458,6 @@
         "signin": "Connexion",
         "appearance": "Apparence"
       },
-      "profileNote": "Votre nom et votre lien, partout où vous entrez.",
       "password": "Mot de passe",
       "passwordSet": "Connectez-vous avec votre e-mail et votre mot de passe.",
       "signOutNote": "Déconnectez-vous de TinyFloor dans ce navigateur.",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "Automatique",
       "timeZoneChange": "Modifier",
       "timeZoneSearch": "Rechercher une ville",
-      "timeZoneNone": "Aucun fuseau horaire ne correspond"
+      "timeZoneNone": "Aucun fuseau horaire ne correspond",
+      "methods": "Moyens de connexion",
+      "thisBrowser": "Ce navigateur",
+      "signedInAs": "Connecté en tant que {name}"
     },
     "invite": {
       "invalidTitle": "Cette invitation ne fonctionne pas",

@@ -12,7 +12,6 @@ import { useMyNote, useMyStatus } from "@/lib/floor";
 import { deskOf, goToMyDesk, useDesks } from "@/lib/desks";
 import { openDecorate, useDecorate } from "@/lib/decorate";
 import { NoteGlyph } from "@/lib/noteIcons";
-import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { DeskCustomizer } from "./DecoratePanel";
 
@@ -73,11 +72,22 @@ export function YouCard({
 
   useEffect(() => onActive?.(mode !== "closed"), [mode, onActive]);
 
+  // The card or the desk's panel going away under the pointer: your circle comes back as itself, not opened to your name.
+  const close = () => {
+    setHover(false);
+    setOpen(false);
+  };
+  const [wasDecorating, setWasDecorating] = useState(!!decorating);
+  if (wasDecorating !== !!decorating) {
+    setWasDecorating(!!decorating);
+    if (!decorating) setHover(false);
+  }
+
   // Open, it closes when you press anywhere else (the floor too) or Escape. Decorating, only Done closes it.
   useEffect(() => {
     if (mode !== "open") return;
     const away = (event: PointerEvent) => !box.current?.contains(event.target as Node) && setOpen(false);
-    const key = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
+    const key = (event: KeyboardEvent) => event.key === "Escape" && close();
     window.addEventListener("pointerdown", away);
     window.addEventListener("keydown", key);
     return () => {
@@ -86,62 +96,58 @@ export function YouCard({
     };
   }, [mode]);
 
-  const layout = reduce ? { duration: 0 } : SPRING_LAYOUT;
-  const fade = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 0.2, delay: reduce ? 0 : 0.08 } },
-    exit: { opacity: 0, transition: { duration: 0.08 } },
+  // The card grows out of your circle's corner and goes back into it: only its opacity and scale move, from the top right.
+  const card = {
+    initial: reduce ? { opacity: 0 } : { opacity: 0, scale: 0.94, y: -4 },
+    animate: { opacity: 1, scale: 1, y: 0, transition: reduce ? { duration: 0.12 } : { type: "spring" as const, stiffness: 520, damping: 38, mass: 0.7 } },
+    exit: reduce ? { opacity: 0, transition: { duration: 0.1 } } : { opacity: 0, scale: 0.96, y: -2, transition: { duration: 0.14, ease: [0.4, 0, 1, 1] as const } },
   };
+  const surface = "absolute end-0 top-0 flex origin-top-right flex-col overflow-hidden rounded-[18px] border border-border bg-card shadow-float [--face-ring:var(--ui-card)]";
 
   return (
-    <motion.div
+    <div
       ref={box}
-      layout
-      transition={layout}
+      className="pointer-events-auto relative"
       onPointerEnter={(event) => {
         if (event.pointerType !== "mouse") return;
         setHover(true);
         warmCharacterCreator();
       }}
       onPointerLeave={() => setHover(false)}
-      style={{ borderRadius: wide ? 18 : 20 }}
-      className={cn(
-        "pointer-events-auto flex flex-col border border-border bg-card/95 shadow-float backdrop-blur-md [--face-ring:var(--ui-card)]",
-        // Only the card clips what's in it: the face's status dot stands outside its circle.
-        wide && "overflow-hidden",
-        mode === "open" && "w-[18rem]",
-        mode === "desk" && "h-[min(34rem,calc(100dvh-9.5rem))] w-[min(22rem,calc(100vw-1.5rem))] max-sm:h-[50dvh]",
-      )}
     >
-      <AnimatePresence initial={false} mode="popLayout">
-        {!wide && (
-          // Resting: you. Pointed at, your name opens out to your left, as a desk's plate opens:
-          // only the name's width and opacity move, so you stay exactly where you are.
-          <motion.button
-            key="pill"
-            {...fade}
-            type="button"
-            aria-label={tShell("you")}
-            aria-expanded={false}
-            onClick={() => setOpen(true)}
-            className="flex h-[38px] items-center p-[3px] outline-none"
-          >
-            <span
-              className={cn(
-                "max-w-0 truncate whitespace-nowrap text-[13px] font-medium text-foreground opacity-0 transition-[max-width,margin,opacity] duration-[260ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
-                mode === "peek" && "ms-3 me-2.5 max-w-[12rem] opacity-100",
-              )}
-            >
-              {name}
-            </span>
-            <CharacterBust character={character} presence={presence} />
-          </motion.button>
-        )}
+      {/* Resting: you. Pointed at, your name opens out to your left, as a desk's plate opens:
+          only the name's width and opacity move, so you stay exactly where you are. Always
+          here, under the card when it's open, so closing it is the card going back into it. */}
+      <button
+        type="button"
+        aria-label={tShell("you")}
+        aria-expanded={wide}
+        onClick={() => setOpen((now) => !now)}
+        className="flex h-10 items-center rounded-[20px] border border-border bg-card/95 p-[3px] shadow-float outline-none backdrop-blur-md [--face-ring:var(--ui-card)]"
+      >
+        <span
+          className={cn(
+            "max-w-0 truncate whitespace-nowrap text-[13px] font-medium text-foreground opacity-0 transition-[max-width,margin,opacity] duration-[260ms] ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+            mode === "peek" && "ms-3 me-2.5 max-w-[12rem] opacity-100",
+          )}
+        >
+          {name}
+        </span>
+        <CharacterBust character={character} presence={presence} />
+      </button>
 
+      {/* One at a time: the card goes back into your circle before the desk's panel comes out of it, and back. */}
+      <AnimatePresence mode="wait">
         {mode === "open" && (
-          <motion.div key="open" {...fade} className="flex flex-col">
+          <motion.div key="open" {...card} className={cn(surface, "w-[18rem]")}>
             {/* You, standing, as the creator shows you; who and how you are under you. Pressed, the card folds back. */}
-            <button type="button" aria-label={tShell("you")} aria-expanded onClick={() => setOpen(false)} className="group flex flex-col items-center px-2 pt-2 outline-none">
+            <button
+              type="button"
+              aria-label={tShell("you")}
+              aria-expanded
+              onClick={close}
+              className="group flex flex-col items-center px-2 pt-2 outline-none"
+            >
               <CharacterStage character={character} scale={2} ground={12} className="h-[7.25rem] w-full rounded-[10px] transition-[filter] duration-150 group-hover:brightness-[1.06]" />
               <span className="mt-3 block max-w-full truncate px-2 text-[15px] font-semibold leading-snug text-foreground">{name}</span>
               <span className="mt-1 flex max-w-full items-center gap-1.5 px-2 text-[12.5px] text-muted-foreground">
@@ -164,7 +170,7 @@ export function YouCard({
                 disabled={!mine}
                 hint={!mine ? t("noDesk") : undefined}
                 onClick={() => {
-                  setOpen(false);
+                  close();
                   if (atDesk) openDecorate();
                   else if (mine) goToMyDesk();
                 }}
@@ -174,7 +180,7 @@ export function YouCard({
               <Row
                 icon={<Shirt />}
                 onClick={() => {
-                  setOpen(false);
+                  close();
                   openCharacterCreator();
                 }}
               >
@@ -184,7 +190,7 @@ export function YouCard({
                 <Row
                   icon={<UserPlus />}
                   onClick={() => {
-                    setOpen(false);
+                    close();
                     onInvite();
                   }}
                 >
@@ -194,9 +200,8 @@ export function YouCard({
             </div>
           </motion.div>
         )}
-
         {mode === "desk" && decorating && (
-          <motion.div key="desk" {...fade} className="flex min-h-0 flex-1 flex-col">
+          <motion.div key="desk" {...card} className={cn(surface, "h-[min(34rem,calc(100dvh-9.5rem))] w-[min(22rem,calc(100vw-1.5rem))] max-sm:h-[50dvh]")}>
             <div className="flex h-[38px] shrink-0 items-center gap-2.5 p-[3px] ps-3.5">
               <span className="min-w-0 flex-1 truncate text-[13px] font-semibold text-foreground">{t("customizeDesk")}</span>
               <CharacterBust character={character} presence={presence} />
@@ -207,7 +212,7 @@ export function YouCard({
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 }
 

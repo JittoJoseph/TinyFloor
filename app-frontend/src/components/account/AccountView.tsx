@@ -168,7 +168,7 @@ export function Profile() {
 
   return (
     <>
-      <Group title={t("sections.profile")} note={t("profileNote")}>
+      <Group>
         <form onSubmit={save}>
           <div>
             <FieldRow id="profile-name" title={t("name")}>
@@ -359,7 +359,7 @@ export function SignIn() {
 
   return (
     <>
-      <Group title={t("sections.signin")} note={user.email ? <span data-ph-mask>{user.email}</span> : undefined}>
+      <Group title={t("methods")} note={user.email ? <span data-ph-mask>{user.email}</span> : undefined}>
         <Row
           title={t("password")}
           description={user.password ? t("passwordSet") : t("setPasswordDescription")}
@@ -395,9 +395,9 @@ export function SignIn() {
         {error && <p className="px-4 py-3 text-[12.5px] text-destructive">{error}</p>}
       </Group>
 
-      <Group title={ts("signOut")}>
+      <Group title={t("thisBrowser")}>
         <Row
-          title={ts("signOut")}
+          title={t("signedInAs", { name: user.displayName })}
           description={t("signOutNote")}
           control={
             <Button

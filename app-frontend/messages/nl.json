@@ -265,10 +265,8 @@
       "office": "Kantoor",
       "plan": "Abonnement en facturering"
     },
-    "appearance": "Weergave",
     "themeNote": "'Systeem' volgt je apparaat.",
-    "language": "Taal",
-    "languageTitle": "Taal",
+    "languageTitle": "Weergavetaal",
     "languageNote": "Voor menu's, knoppen en berichten van TinyFloor.",
     "devices": "Apparaten",
     "devicesNote": "Gebruikt als je je microfoon of camera de volgende keer aanzet.",
@@ -300,7 +298,16 @@
     "desktopNotifications": "Meldingen tonen",
     "desktopNote": "Directe berichten en vermeldingen, ook als TinyFloor dicht is. Oproepen en zwaaien terwijl het in een ander venster open staat.",
     "desktopBlocked": "Geblokkeerd door je browser. Sta meldingen voor deze site toe via het pictogram naast de adresbalk.",
-    "turnOn": "Aanzetten"
+    "turnOn": "Aanzetten",
+    "descriptions": {
+      "profile": "Hoe anderen je zien, in elk kantoor.",
+      "signin": "Hoe je in je account komt.",
+      "general": "Hoe TinyFloor eruitziet en welke taal het gebruikt.",
+      "media": "Je microfoon en camera, en hoe je klinkt.",
+      "notifications": "Wat je laat weten dat er iets gebeurt.",
+      "accessibility": "Beweging en prestaties, passend bij jou en je apparaat.",
+      "plan": "Welk abonnement je kantoor heeft en hoe het wordt betaald."
+    }
   },
   "scene": {
     "meeting": "Vergadering",
@@ -415,7 +422,8 @@
       "domainOff": "Vinden het niet",
       "domainAskNote": "Ze vinden dit kantoor via hun werkadres en vragen het. Een admin laat ze binnen.",
       "domainOpenNote": "Wie inlogt met een @{domain}-adres kan meteen binnenlopen.",
-      "domainOffNote": "Alleen wie de uitnodigingslink heeft, kan meedoen."
+      "domainOffNote": "Alleen wie de uitnodigingslink heeft, kan meedoen.",
+      "leaveButton": "Verlaten"
     },
     "profile": {
       "changePassword": "Wachtwoord wijzigen",
@@ -450,7 +458,6 @@
         "signin": "Inloggen",
         "appearance": "Weergave"
       },
-      "profileNote": "Je naam en link, waar je ook binnenloopt.",
       "password": "Wachtwoord",
       "passwordSet": "Log in met je e-mail en wachtwoord.",
       "signOutNote": "Log uit bij TinyFloor in deze browser.",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "Automatisch",
       "timeZoneChange": "Wijzigen",
       "timeZoneSearch": "Zoek een stad",
-      "timeZoneNone": "Geen tijdzone gevonden"
+      "timeZoneNone": "Geen tijdzone gevonden",
+      "methods": "Manieren om in te loggen",
+      "thisBrowser": "Deze browser",
+      "signedInAs": "Ingelogd als {name}"
     },
     "invite": {
       "invalidTitle": "Deze uitnodiging werkt niet",

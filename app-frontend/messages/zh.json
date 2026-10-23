@@ -265,10 +265,8 @@
       "office": "办公室",
       "plan": "方案与账单"
     },
-    "appearance": "外观",
     "themeNote": "“系统”会跟随你的设备。",
-    "language": "语言",
-    "languageTitle": "语言",
+    "languageTitle": "显示语言",
     "languageNote": "用于 TinyFloor 的菜单、按钮和消息。",
     "devices": "设备",
     "devicesNote": "下次打开麦克风或摄像头时使用。",
@@ -300,7 +298,16 @@
     "desktopNotifications": "显示通知",
     "desktopNote": "即使关闭了 TinyFloor，也会通知私信和提及；在其他窗口打开时，还会通知通话和挥手。",
     "desktopBlocked": "已被浏览器阻止。请通过地址栏旁的图标允许本站的通知。",
-    "turnOn": "开启"
+    "turnOn": "开启",
+    "descriptions": {
+      "profile": "在每个办公室里，别人看到的你。",
+      "signin": "如何登录你的账号。",
+      "general": "TinyFloor 的外观和界面语言。",
+      "media": "你的麦克风和摄像头，以及你的声音效果。",
+      "notifications": "有事发生时如何提醒你。",
+      "accessibility": "动画与性能，适合你和你的设备。",
+      "plan": "你的办公室的方案和付款方式。"
+    }
   },
   "scene": {
     "meeting": "会议",
@@ -415,7 +422,8 @@
       "domainOff": "找不到这里",
       "domainAskNote": "他们用工作邮箱找到这个办公室并申请，管理员同意后即可进入。",
       "domainOpenNote": "用 @{domain} 邮箱登录的人都可以直接进来。",
-      "domainOffNote": "只有拿到邀请链接的人才能加入。"
+      "domainOffNote": "只有拿到邀请链接的人才能加入。",
+      "leaveButton": "离开"
     },
     "profile": {
       "changePassword": "修改密码",
@@ -450,7 +458,6 @@
         "signin": "登录",
         "appearance": "外观"
       },
-      "profileNote": "你的名字和链接，走到哪里都一样。",
       "password": "密码",
       "passwordSet": "用邮箱和密码登录。",
       "signOutNote": "在此浏览器中退出 TinyFloor。",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "自动",
       "timeZoneChange": "更改",
       "timeZoneSearch": "搜索城市",
-      "timeZoneNone": "没有匹配的时区"
+      "timeZoneNone": "没有匹配的时区",
+      "methods": "登录方式",
+      "thisBrowser": "此浏览器",
+      "signedInAs": "已以 {name} 身份登录"
     },
     "invite": {
       "invalidTitle": "这个邀请无法使用",

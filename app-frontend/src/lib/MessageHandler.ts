@@ -10,7 +10,7 @@ import { tileToPixel } from "@/lib/types";
 import { setMeetings, setMeetingUsage } from "./meetings";
 import { deskOf, deskState, setDesks } from "./desks";
 import { applyPieceChange, setPieceChanges } from "./pieces";
-import { FLOOR_ARRIVED_EVENT, myStatus, myStatusNote, sinceFloorRequested, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
+import { FLOOR_ARRIVED_EVENT, floorSteps, myStatus, myStatusNote, sinceFloorRequested, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
 import { isListening } from "./music";
 import { track } from "@/lib/analytics";
 
@@ -169,7 +169,7 @@ export class MessageHandler {
     this.arrived = true;
     // Who shows up, and with how many already there: whether a team is on the floor together.
     // And how long they waited for it, from the floor being asked for to here.
-    track("floor_entered", { people_here: players.length, load_ms: sinceFloorRequested() });
+    track("floor_entered", { people_here: players.length, load_ms: sinceFloorRequested(), ...floorSteps() });
     this.scene.tweens.add({ targets: this.scene.cameras.main, alpha: 1, duration: 260, ease: "Cubic.easeOut" });
     window.dispatchEvent(new Event(FLOOR_ARRIVED_EVENT));
     const desk = deskOf(deskState().desks, this.playerId);

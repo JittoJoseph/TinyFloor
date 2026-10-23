@@ -37,11 +37,26 @@ if (typeof window !== "undefined") {
 export const FLOOR_ARRIVED_EVENT = "floorArrived";
 
 let requestedAt = 0;
+let steps: Record<string, number> = {};
 /** The floor was asked for (it mounted); how long it takes to show is counted from here. */
 export function floorRequested() {
   requestedAt = performance.now();
+  steps = {};
+  performance.mark("floor:requested");
 }
 export const sinceFloorRequested = () => Math.round(performance.now() - requestedAt);
+
+/**
+ * How far into the wait a step of the floor's loading came, the first time:
+ * sent with floor_entered, so a slow arrival says what it waited on
+ * (docs/analytics.md), and marked for the browser's performance panel.
+ */
+export function floorStep(step: "scene" | "built" | "open" | "welcome") {
+  if (`${step}_ms` in steps) return;
+  steps[`${step}_ms`] = sinceFloorRequested();
+  performance.mark(`floor:${step}`);
+}
+export const floorSteps = () => steps;
 
 /** A teammate walked into the office while you were on the floor (docs/product.md). */
 export const TEAMMATE_ARRIVED_EVENT = "teammateArrived";

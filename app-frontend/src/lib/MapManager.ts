@@ -4,7 +4,7 @@ import { TILE_SIZE } from "@/lib/types";
 import { FLOOR_FILES } from "@/lib/floorWarmup";
 import { FLOOR } from "@shared/map";
 import { officePieces, type OfficePiece } from "@shared/office";
-import { paintShell } from "@shared/shell";
+import { floorWalls, floorWallsNow } from "./floorWalls";
 import { pieceChanges, subscribePieces } from "./pieces";
 import atlas from "@shared/catalog/atlas.json";
 
@@ -44,12 +44,13 @@ const reducedMotion = () => typeof window !== "undefined" && window.matchMedia("
 
 /**
  * The floor: the Startup template as the lab worked it out (shared-protocol
- * map.ts, FLOOR). Its walls and floors are drawn once, here, from the room
- * builder sheet; everything on them is a frame of the catalog's atlas, at the
- * depth the lab gave it, with what people have made of their desks applied
- * (lib/pieces.ts) and drawn again, piece by piece, as that changes; what you
- * can't walk through, the chairs and the spots the floor keeps (the meeting
- * room, its table, the whiteboard) are read as they are.
+ * map.ts, FLOOR). Its walls and floors are one picture, painted ahead from
+ * the room builder sheet (lib/floorWalls); everything on them is a frame of
+ * the catalog's atlas, at the depth the lab gave it, with what people have
+ * made of their desks applied (lib/pieces.ts) and drawn again, piece by
+ * piece, as that changes; what you can't walk through, the chairs and the
+ * spots the floor keeps (the meeting room, its table, the whiteboard) are
+ * read as they are.
  */
 export class MapManager {
   private scene: Phaser.Scene;
@@ -63,14 +64,18 @@ export class MapManager {
   private drawn = false;
   private held: string | null = null;
   private unsubscribe?: () => void;
+  private gone = false;
 
   constructor(scene: Phaser.Scene) {
     this.scene = scene;
   }
 
+  /** The files to load, and what can be known before they are: where you can walk, so where you appear. */
   preload() {
     this.scene.load.image(ITEMS, FLOOR_FILES.items);
-    this.scene.load.image("RoomBuilder", FLOOR_FILES.roomBuilder);
+    void floorWalls().catch(() => {});
+    this.solidRects = FLOOR.solids.map(([x, y, width, height]) => ({ x, y, width, height }));
+    this.nav = new NavGrid(this.solidRects);
   }
 
   create() {
@@ -78,24 +83,21 @@ export class MapManager {
     this.drawPieces();
     this.unsubscribe = subscribePieces(() => this.drawPieces());
     this.readChairs();
-    this.solidRects = FLOOR.solids.map(([x, y, width, height]) => ({ x, y, width, height }));
-    this.nav = new NavGrid(this.solidRects);
   }
 
-  /** The walls and floors, painted from the room builder sheet into one texture (shared-protocol shell.ts). */
+  /** The walls and floors, as one picture painted ahead (lib/floorWalls); in the rare case it isn't yet, as soon as it is. */
   private drawWalls() {
-    if (!this.scene.textures.exists(WALLS)) {
-      const sheet = this.scene.textures.get("RoomBuilder").getSourceImage() as HTMLImageElement;
-      const source = document.createElement("canvas");
-      [source.width, source.height] = [sheet.width, sheet.height];
-      const context = source.getContext("2d", { willReadFrequently: true })!;
-      context.drawImage(sheet, 0, 0);
-      const pixels = paintShell(FLOOR.shell, { width: sheet.width, height: sheet.height, data: context.getImageData(0, 0, sheet.width, sheet.height).data });
-      const texture = this.scene.textures.createCanvas(WALLS, pixels.width, pixels.height)!;
-      texture.context.putImageData(new ImageData(pixels.data as Uint8ClampedArray<ArrayBuffer>, pixels.width, pixels.height), 0, 0);
-      texture.refresh();
-    }
-    this.scene.add.image(0, 0, WALLS).setOrigin(0, 0).setDepth(0);
+    const draw = (walls: ImageBitmap | HTMLCanvasElement) => {
+      if (this.gone) return;
+      if (!this.scene.textures.exists(WALLS)) {
+        if (walls instanceof HTMLCanvasElement) this.scene.textures.addCanvas(WALLS, walls);
+        else this.scene.textures.addImage(WALLS, walls as unknown as HTMLImageElement);
+      }
+      this.scene.add.image(0, 0, WALLS).setOrigin(0, 0).setDepth(0);
+    };
+    const ready = floorWallsNow();
+    if (ready) draw(ready);
+    else void floorWalls().then(draw, (error) => console.error("The floor's walls didn't paint", error));
   }
 
   /**
@@ -186,6 +188,7 @@ export class MapManager {
   }
 
   destroy() {
+    this.gone = true;
     this.unsubscribe?.();
   }
 

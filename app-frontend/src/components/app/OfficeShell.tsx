@@ -29,9 +29,11 @@ import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
 import { dmChannelId, dmMembers } from "@shared/chat";
 import { conversationToOpen } from "@/lib/chatMemory";
 import { useWide } from "@/lib/hooks/use-wide";
-import { rememberOffice } from "@/lib/lastOffice";
+import { forgetOffice, rememberOffice } from "@/lib/lastOffice";
+import { clearOfficeAhead, officeAhead } from "@/lib/officeAhead";
 import { withPostHog } from "@/lib/analytics";
 import { earlyTicket, warmFloor } from "@/lib/floorWarmup";
+import { warmPlans } from "@/lib/billing";
 
 interface OfficeContext {
   office: Office;
@@ -90,23 +92,37 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
   const office = overview?.office ?? null;
   const members = overview?.members ?? [];
 
+  // Opened from the app's front door, the office and its ticket were asked for on the way here (lib/officeAhead).
+  const [ahead] = useState(() => officeAhead(officeId));
+  const firstRead = useRef(ahead?.overview ?? null);
   // The office is read on arrival, and again by any screen that changed it; both land here.
-  const load = useCallback(() => api.overview(officeId).then((found) => setRead({ overview: found, at: Date.now() })), [officeId]);
+  const load = useCallback(() => {
+    const reading = firstRead.current ?? api.overview(officeId);
+    firstRead.current = null;
+    return reading.then((found) => setRead({ overview: found, at: Date.now() }));
+  }, [officeId]);
   // The office, and the floor's code, files and ticket, are all asked for at
   // once and alongside the session, not after it: the cookie is enough. Signed
   // out, they fail and the redirect below takes over.
-  const [ticket] = useState(() => earlyTicket(() => api.officeTicket(officeId)));
+  const [ticket] = useState(() => ahead?.ticket ?? earlyTicket(() => api.officeTicket(officeId)));
   const arriving = useRef<Promise<void> | null>(null);
   const arrive = useCallback(
     () =>
       (arriving.current ??= load().catch((error) => {
         arriving.current = null;
-        if (error instanceof ApiError && error.status === 404) setGone(true);
+        if (!(error instanceof ApiError && error.status === 404)) return;
+        // Gone to straight (the one you were last in, say) and it isn't yours any more: the front door reads which are.
+        if (ahead) {
+          forgetOffice(officeId);
+          router.replace("/");
+        } else setGone(true);
       })),
-    [load],
+    [load, ahead, router, officeId],
   );
   useEffect(() => {
+    clearOfficeAhead();
     warmFloor();
+    warmPlans();
     void arrive();
     ticket.start();
   }, [arrive, ticket]);

@@ -50,6 +50,7 @@ import { mentionsIn } from "@/lib/mentions";
 import { hoursAhead, timeIn } from "@/lib/timeZone";
 import { usePerson } from "@/lib/people";
 import { SpotifyActivity } from "./SpotifyActivity";
+import { Bone } from "./HomeSkeletons";
 import type { ChatMessage } from "@shared/chat";
 
 /**
@@ -347,6 +348,16 @@ export function ChatView({ channel }: { channel?: string }) {
 
           <nav className="min-h-0 flex-1 overflow-y-auto px-2 pb-3">
             <Section title={t("channels")}>
+              {/* Until the chat has connected its channels aren't known: their rows' shapes hold the place, so nothing below moves. */}
+              {!state.ready &&
+                ["w-20", "w-14"].map((width) => (
+                  <span key={width} aria-hidden className="flex h-8 items-center gap-2.5 px-2.5">
+                    <span className="flex size-5 shrink-0 items-center justify-center">
+                      <Hash className="size-4 text-faint" />
+                    </span>
+                    <Bone className={cn("h-2.5", width)} />
+                  </span>
+                ))}
               {channels.map((one) => (
                 <Row
                   key={one.id}

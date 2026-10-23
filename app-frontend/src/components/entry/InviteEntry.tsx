@@ -8,6 +8,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
 import { anyCharacter, character as cleanCharacter, saveIdentity } from "@/lib/identity";
 import { invitePath, officePath } from "@/lib/links";
+import { openOfficeAhead } from "@/lib/officeAhead";
 import { EntryDetail, EntryHeader, EntryShell } from "@/components/entry/EntryShell";
 import { OfficeMark, YouSummary } from "@/components/entry/DoorParts";
 import { EntryProblem } from "@/components/entry/EntryProblem";
@@ -106,6 +107,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
         }),
       );
       posthogLog.info("Office invitation acceptance completed");
+      openOfficeAhead(officeId);
       router.replace(officePath(officeId));
     } catch (err) {
       setError(explain(err));

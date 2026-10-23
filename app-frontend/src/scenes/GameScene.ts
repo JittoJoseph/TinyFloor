@@ -1,4 +1,4 @@
-import { onFloorLook, onFloorRename, onFloorShown, WALK_TO_PERSON_EVENT, WAVE_EVENT } from "../lib/floor";
+import { floorStep, onFloorLook, onFloorRename, onFloorShown, WALK_TO_PERSON_EVENT, WAVE_EVENT } from "../lib/floor";
 import type { StatusNote } from "@shared/messages";
 import * as Phaser from "phaser";
 import type { RoomTicket } from "@/lib/api";
@@ -55,6 +55,8 @@ function zoomFor(width: number, height: number, mapWidth: number, mapHeight: num
 class GameScene extends Phaser.Scene {
   private player!: Phaser.GameObjects.Sprite;
   private wsManager!: RoomSocket;
+  /** Where you appear, chosen before the room is joined. */
+  private spawnTile!: { tileX: number; tileY: number };
   private playerManager!: PlayerManager;
   private proximityManager!: ProximityManager;
   private animationManager!: AnimationManager;
@@ -87,11 +89,29 @@ class GameScene extends Phaser.Scene {
   }
 
   preload() {
+    floorStep("scene");
     this.mapManager = new MapManager(this);
     this.mapManager.preload();
 
     this.animationManager = new AnimationManager(this);
     this.animationManager.preload(this.character);
+
+    const mapWidth = this.mapManager.getMapWidth();
+    const mapHeight = this.mapManager.getMapHeight();
+    this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
+    this.cameras.main.setZoom(zoomFor(this.scale.width, this.scale.height, mapWidth, mapHeight));
+    this.spawnTile = this.mapManager.getRandomSpawnTile();
+
+    // The room is joined now, while the files load and the floor is built, not
+    // after: what it says meanwhile waits for create to listen (below). A
+    // reconnect puts you back where you were, not at the spawn tile.
+    this.wsManager = new RoomSocket(this.ticketFor, () => {
+      const tile = this.player ? pixelToTile(this.player.x, this.player.y) : this.spawnTile;
+      return { x: tile.tileX, y: tile.tileY };
+    });
+    this.wsManager.connect();
+    // A game torn down before it was built (the page left at once) still lets go of the room.
+    this.events.once(Phaser.Scenes.Events.DESTROY, () => this.wsManager.disconnect());
   }
 
   create() {
@@ -99,19 +119,7 @@ class GameScene extends Phaser.Scene {
     this.mapManager.create();
 
     const nav = this.mapManager.getNavGrid();
-    const mapWidth = this.mapManager.getMapWidth();
-    const mapHeight = this.mapManager.getMapHeight();
-    this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
-    this.cameras.main.setZoom(zoomFor(this.scale.width, this.scale.height, mapWidth, mapHeight));
-
-    const spawnTile = this.mapManager.getRandomSpawnTile();
-    const spawn = tileToPixel(spawnTile.tileX, spawnTile.tileY);
-
-    // A reconnect puts you back where you were, not at the spawn tile.
-    this.wsManager = new RoomSocket(this.ticketFor, () => {
-      const tile = this.player ? pixelToTile(this.player.x, this.player.y) : spawnTile;
-      return { x: tile.tileX, y: tile.tileY };
-    });
+    const spawn = tileToPixel(this.spawnTile.tileX, this.spawnTile.tileY);
     attachDesks((message) => this.wsManager.send(message));
 
     this.playerManager = new PlayerManager(this, this.animationManager, nav, this.playerId);
@@ -171,7 +179,6 @@ class GameScene extends Phaser.Scene {
       this.player,
       (message) => this.wsManager.send(message),
     );
-    this.wsManager.setOnMessage((message) => this.messageHandler.handleMessage(message));
     // Joining a meeting from anywhere walks you into the meeting room, where everyone sees you go.
     this.listen(WALK_TO_MEETING_EVENT, () => this.walkIntoMeetingRoom());
 
@@ -213,8 +220,9 @@ class GameScene extends Phaser.Scene {
       this.playerManager.changeLook(this.playerId, character);
     });
 
-    // Everything is listening now, so nothing the room says first is missed.
-    this.wsManager.connect();
+    // Everything is listening now: what the room has said so far, its welcome first, is heard from here.
+    floorStep("built");
+    this.wsManager.listen((message) => this.messageHandler.handleMessage(message));
   }
 
   /**

@@ -18,7 +18,6 @@ import { Button } from "@/components/motion/button/base";
 import { Face } from "@/components/ui/Face";
 import { Dialog } from "@/components/ui/Dialog";
 import { IconButton } from "@/components/ui/IconButton";
-import { PlansSoon } from "@/components/ui/PlansSoon";
 import { SPRING_LAYOUT } from "@/lib/ease";
 import { cn } from "@/lib/utils";
 import { ShellView } from "./AppShell";
@@ -128,18 +127,18 @@ export function SettingsView() {
         </>
       }
     >
-      <header className="flex h-14 shrink-0 items-center gap-2 border-b border-border px-3 sm:px-6">
-        <IconButton
-          label={ts("back")}
-          size="sm"
-          className="md:hidden"
-          onClick={() => setPicked({ shown: false, at: hashed })}
-          icon={<ArrowLeft className="rtl:rotate-180" />}
-        />
+      {/* On a phone the page is a step in from the list, and this is the way back to it. */}
+      <header className="flex h-14 shrink-0 items-center gap-2 border-b border-border px-3 md:hidden">
+        <IconButton label={ts("back")} size="sm" onClick={() => setPicked({ shown: false, at: hashed })} icon={<ArrowLeft className="rtl:rotate-180" />} />
         <span className="text-[15px] font-semibold text-foreground">{label(section)}</span>
       </header>
       <div className="min-h-0 flex-1 overflow-y-auto">
-        <div className="mx-auto w-full max-w-2xl px-4 pb-16 pt-6 sm:px-8">
+        <div className="mx-auto w-full max-w-2xl px-4 pb-16 pt-6 sm:px-8 md:pt-12">
+          {/* The page's name and what it's for, over its groups and lined up with them. */}
+          <div className="mb-6 md:mb-8">
+            <h1 className="mb-1 text-[22px] font-semibold tracking-tight text-foreground max-md:hidden">{label(section)}</h1>
+            <p className="text-[13.5px] text-muted-foreground">{section === "office" ? <OfficeLine /> : t(`descriptions.${section}`)}</p>
+          </div>
           {section === "profile" && <Profile />}
           {section === "signin" && <SignIn />}
           {section === "general" && <General />}
@@ -160,18 +159,21 @@ function subscribeHash(listener: () => void) {
 }
 
 /** A group of settings on one card, the way every settings page reads. */
-export function Group({ title, note, action, children }: { title: string; note?: ReactNode; action?: ReactNode; children: ReactNode }) {
+export function Group({ title, note, action, children }: { title?: string; note?: ReactNode; action?: ReactNode; children: ReactNode }) {
   return (
     <section className="mb-8">
-      <div className="flex items-end justify-between gap-3">
-        <div className="min-w-0">
-          <h3 className="text-[13px] font-semibold text-foreground">{title}</h3>
-          {note && <p className="mt-0.5 text-[12.5px] text-muted-foreground">{note}</p>}
+      {/* Untitled, it's the page's own: the page's name over it says what it is. */}
+      {(title || note || action) && (
+        <div className="mb-3 flex items-end justify-between gap-3">
+          <div className="min-w-0">
+            {title && <h3 className="text-[13px] font-semibold text-foreground">{title}</h3>}
+            {note && <p className="mt-0.5 text-[12.5px] text-muted-foreground">{note}</p>}
+          </div>
+          {action}
         </div>
-        {action}
-      </div>
+      )}
       {/* Inside a place's panel it sits in; on Home's ground the frame raises it into a panel of its own. */}
-      <div className="mt-3 divide-y divide-border rounded-2xl border border-border bg-[var(--group-bg,var(--ui-background))] shadow-[var(--group-shadow,none)] [--face-ring:var(--group-bg,var(--ui-background))]">
+      <div className="divide-y divide-border rounded-2xl border border-border bg-[var(--group-bg,var(--ui-background))] shadow-[var(--group-shadow,none)] [--face-ring:var(--group-bg,var(--ui-background))]">
         {children}
       </div>
     </section>
@@ -231,59 +233,55 @@ export function General() {
     { value: "dark", icon: <Moon className="size-4" /> },
   ];
   return (
-    <>
-      <Group title={t("appearance")}>
-        <div className="px-4 py-3.5">
-          <p className="text-[13.5px] font-medium text-foreground">{ts("theme")}</p>
-          <p className="mt-0.5 text-[12.5px] text-muted-foreground">{t("themeNote")}</p>
-          <div className="mt-3 grid grid-cols-3 gap-2">
-            {themes.map((one) => (
-              <button
-                key={one.value}
-                type="button"
-                aria-pressed={theme === one.value}
-                onClick={() => setTheme(one.value)}
-                className={cn(
-                  "group overflow-hidden rounded-xl border text-start transition-colors",
-                  theme === one.value ? "border-foreground/40 ring-1 ring-foreground/20" : "border-border hover:border-border-strong",
-                )}
-              >
-                <ThemePreview kind={one.value} />
-                <span className="flex items-center gap-1.5 px-2.5 py-2 text-[12.5px] font-medium text-foreground">
-                  {one.icon}
-                  {ts(`themes.${one.value}`)}
-                </span>
-              </button>
-            ))}
-          </div>
+    <Group>
+      <div className="px-4 py-3.5">
+        <p className="text-[13.5px] font-medium text-foreground">{ts("theme")}</p>
+        <p className="mt-0.5 text-[12.5px] text-muted-foreground">{t("themeNote")}</p>
+        <div className="mt-3 grid grid-cols-3 gap-2">
+          {themes.map((one) => (
+            <button
+              key={one.value}
+              type="button"
+              aria-pressed={theme === one.value}
+              onClick={() => setTheme(one.value)}
+              className={cn(
+                "group overflow-hidden rounded-xl border text-start transition-colors",
+                theme === one.value ? "border-foreground/40 ring-1 ring-foreground/20" : "border-border hover:border-border-strong",
+              )}
+            >
+              <ThemePreview kind={one.value} />
+              <span className="flex items-center gap-1.5 px-2.5 py-2 text-[12.5px] font-medium text-foreground">
+                {one.icon}
+                {ts(`themes.${one.value}`)}
+              </span>
+            </button>
+          ))}
         </div>
-      </Group>
-      <Group title={t("language")}>
-        <Row
-          title={t("languageTitle")}
-          description={t("languageNote")}
-          control={
-            <div className="w-44">
-              <Select
-                value={locale}
-                onValueChange={(code) => router.replace(`${pathname}${window.location.search}`, { locale: code as Locale })}
-              >
-                <SelectTrigger className="h-9 bg-card text-[13px]">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {locales.map((one) => (
-                    <SelectItem key={one.code} value={one.code}>
-                      {one.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-          }
-        />
-      </Group>
-    </>
+      </div>
+      <Row
+        title={t("languageTitle")}
+        description={t("languageNote")}
+        control={
+          <div className="w-44">
+            <Select
+              value={locale}
+              onValueChange={(code) => router.replace(`${pathname}${window.location.search}`, { locale: code as Locale })}
+            >
+              <SelectTrigger className="h-9 bg-card text-[13px]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {locales.map((one) => (
+                  <SelectItem key={one.code} value={one.code}>
+                    {one.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+        }
+      />
+    </Group>
   );
 }
 
@@ -461,15 +459,13 @@ function AccessibilitySection() {
 }
 
 /**
- * The office's own settings: its name, and for its owner, handing it to
- * someone else. Leaving or closing it is the quiet last line, and each asks
- * first, with staying as the answer that's easiest to give.
+ * The office's own settings: its name, who can invite, and, last, who it
+ * belongs to: handing it on (its owner), leaving or closing it. Each of those
+ * asks first, with staying as the answer that's easiest to give.
  */
 function OfficeSection() {
   const t = useTranslations("office.settings");
-  const tPeople = useTranslations("office.people");
   const tc = useTranslations("common");
-  const tPlans = useTranslations("office.plans");
   const { user } = useAuth();
   const context = useOfficeMaybe();
   const [name, setName] = useState(context?.office.name ?? "");
@@ -493,54 +489,50 @@ function OfficeSection() {
     }
   };
 
+  const renamed = name.trim() && name.trim() !== office.name;
+
   return (
     <>
-      <div className="mb-8 flex items-center gap-4">
-        <Face seed={office.id} size={56} square />
-        <div className="min-w-0">
-          <p className="truncate text-[17px] font-semibold text-foreground">{office.name}</p>
-          <p className="text-[13px] text-muted-foreground">
-            {t("plan", {
-              plan: tPlans.has(office.plan as "free") ? tPlans(office.plan as "free") : office.plan,
-              used: office.members,
-              seats: office.seats,
-            })}
-            {" · "}
-            {owner ? tPeople("owner") : tPeople(office.role)}
-          </p>
-          <PlansSoon className="mt-1" />
-        </div>
-      </div>
-
-      <Group title={t("name")} note={admin ? undefined : t("nameAdminsOnly")}>
-        <div className="flex gap-2 px-4 py-3.5">
-          <input
-            value={name}
-            maxLength={64}
-            disabled={!admin || busy}
-            aria-label={t("name")}
-            onChange={(event) => setName(event.target.value)}
-            className="h-10 min-w-0 flex-1 rounded-xl border border-border bg-card px-3.5 text-[16px] text-foreground outline-none transition-colors focus:border-foreground/35 disabled:opacity-60 sm:text-[14px]"
-          />
-          {admin && name.trim() && name.trim() !== office.name && (
-            <Button
-              size="md"
-              className="h-10 px-4 text-[13px]"
-              disabled={busy}
-              onClick={() =>
-                run(async () => {
-                  await api.renameOffice(office.id, name.trim());
-                  await refresh();
-                })
-              }
-            >
-              {tc("save")}
-            </Button>
+      <Group>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            if (!admin || !renamed) return;
+            run(async () => {
+              await api.renameOffice(office.id, name.trim());
+              await refresh();
+            });
+          }}
+        >
+          <div className="flex flex-col gap-2 px-4 py-3.5 sm:flex-row sm:items-center sm:gap-4">
+            <div className="flex min-w-0 flex-1 items-center gap-3">
+              <Face seed={office.id} size={36} square />
+              <div className="min-w-0">
+                <label htmlFor="office-name" className="text-[13.5px] font-medium text-foreground">
+                  {t("name")}
+                </label>
+                {!admin && <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{t("nameAdminsOnly")}</p>}
+              </div>
+            </div>
+            <input
+              id="office-name"
+              value={name}
+              maxLength={64}
+              disabled={!admin || busy}
+              onChange={(event) => setName(event.target.value)}
+              className="h-9 w-full rounded-lg border border-border bg-card px-3 text-[16px] text-foreground outline-none transition-[border-color,box-shadow] focus:border-foreground/35 focus:ring-4 focus:ring-foreground/[0.06] disabled:opacity-60 sm:w-64 sm:text-[13.5px]"
+            />
+          </div>
+          {admin && (
+            <div className="flex items-center justify-end gap-3 border-t border-border px-4 py-3">
+              {error && <p className="me-auto text-[12.5px] text-destructive">{error}</p>}
+              <Button type="submit" size="sm" disabled={busy || !renamed} className="h-8 px-4 text-[13px]">
+                {tc("save")}
+              </Button>
+            </div>
           )}
-        </div>
+        </form>
       </Group>
-
-      {error && <p className="-mt-4 mb-6 text-[12.5px] text-destructive">{error}</p>}
 
       {admin && (
         <InvitePolicyRow
@@ -551,11 +543,27 @@ function OfficeSection() {
         />
       )}
 
-      {owner && others.length > 0 && <HandOver officeId={office.id} officeName={office.name} paid={office.plan !== "free"} members={others} />}
-
-      <LeaveOrClose officeId={office.id} officeName={office.name} owner={owner} userId={user.id} />
+      {/* Who it belongs to, and the way out: handing it on, then leaving or closing it, each asking first. */}
+      <Group>
+        {owner && others.length > 0 && <HandOver officeId={office.id} officeName={office.name} paid={office.plan !== "free"} members={others} />}
+        <LeaveOrClose officeId={office.id} officeName={office.name} owner={owner} userId={user.id} />
+      </Group>
     </>
   );
+}
+
+/** The office at a glance, under its page's name: its plan, its seats, and who you are in it. */
+function OfficeLine() {
+  const t = useTranslations("office.settings");
+  const tPeople = useTranslations("office.people");
+  const tPlans = useTranslations("office.plans");
+  const { user } = useAuth();
+  const context = useOfficeMaybe();
+  if (!context || !user) return null;
+  const { office } = context;
+  const plan = tPlans.has(office.plan as "free") ? tPlans(office.plan as "free") : office.plan;
+  const role = user.id === office.owner ? tPeople("owner") : tPeople(office.role);
+  return `${t("plan", { plan, used: office.members, seats: office.seats })} · ${role}`;
 }
 
 /**
@@ -600,11 +608,15 @@ function HandOver({
   };
 
   return (
-    <Group title={t("handOver")} note={paid ? `${t("handOverNote")} ${t("handOverBilling")}` : t("handOverNote")}>
-      <div className="flex flex-wrap items-center gap-2 px-4 py-3.5">
-        <div className="min-w-0 flex-1 basis-48">
+    <>
+      <div className="flex flex-col gap-3 px-4 py-3.5 sm:flex-row sm:items-center sm:gap-4">
+        <div className="min-w-0 flex-1">
+          <p className="text-[13.5px] font-medium text-foreground">{t("handOver")}</p>
+          <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{paid ? `${t("handOverNote")} ${t("handOverBilling")}` : t("handOverNote")}</p>
+        </div>
+        <div className="flex shrink-0 items-center gap-2">
           <Select value={to} onValueChange={setTo}>
-            <SelectTrigger className="h-10 bg-card text-[13px]" aria-label={t("handOverPick")}>
+            <SelectTrigger className="h-8 w-40 bg-card text-[13px]" aria-label={t("handOverPick")}>
               <SelectValue placeholder={t("handOverPick")} />
             </SelectTrigger>
             <SelectContent>
@@ -615,10 +627,10 @@ function HandOver({
               ))}
             </SelectContent>
           </Select>
+          <Button variant="secondary" size="sm" className="h-8 px-3.5 text-[13px]" disabled={!picked} onClick={() => setAsking(true)}>
+            {t("handOverButton")}
+          </Button>
         </div>
-        <Button variant="secondary" size="md" className="h-10 px-4 text-[13px]" disabled={!picked} onClick={() => setAsking(true)}>
-          {t("handOverButton")}
-        </Button>
       </div>
       {picked && (
         <Dialog
@@ -641,15 +653,15 @@ function HandOver({
           {error && <p className="text-[12.5px] text-destructive">{error}</p>}
         </Dialog>
       )}
-    </Group>
+    </>
   );
 }
 
 /**
- * The way out, kept to one quiet line at the foot of the page: leaving for a
- * member, closing for the owner (who has to hand it over to leave). Either
- * asks first. Staying is the button; going is the plain words beside it, and
- * closing for everyone also wants the office's name typed out.
+ * The way out, the last row of the page: leaving for a member, closing for the
+ * owner (who has to hand it over to leave). Either asks first. Staying is the
+ * dialog's button; going is the plain words beside it, and closing for
+ * everyone also wants the office's name typed out.
  */
 function LeaveOrClose({ officeId, officeName, owner, userId }: { officeId: string; officeName: string; owner: boolean; userId: string }) {
   const t = useTranslations("office.settings");
@@ -684,15 +696,15 @@ function LeaveOrClose({ officeId, officeName, owner, userId }: { officeId: strin
 
   return (
     <>
-      <div className="mt-12 border-t border-border pt-5">
-        <button
-          type="button"
-          onClick={() => setAsking(true)}
-          className="cursor-pointer text-[13px] text-muted-foreground underline-offset-4 transition-colors hover:text-destructive hover:underline"
-        >
-          {owner ? t("close") : t("leave")}
-        </button>
-      </div>
+      <Row
+        title={owner ? t("close") : t("leave")}
+        description={owner ? t("closeSure") : t("leaveSure")}
+        control={
+          <Button variant="secondary" size="sm" onClick={() => setAsking(true)} className="h-8 px-3.5 text-[13px] text-destructive">
+            {owner ? tc("close") : t("leaveButton")}
+          </Button>
+        }
+      />
       <Dialog
         open={asking}
         onClose={close}

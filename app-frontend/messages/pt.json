@@ -265,10 +265,8 @@
       "office": "Escritório",
       "plan": "Plano e cobrança"
     },
-    "appearance": "Aparência",
     "themeNote": "\"Sistema\" segue seu dispositivo.",
-    "language": "Idioma",
-    "languageTitle": "Idioma",
+    "languageTitle": "Idioma de exibição",
     "languageNote": "Para menus, botões e mensagens do TinyFloor.",
     "devices": "Dispositivos",
     "devicesNote": "Usados na próxima vez que você ligar o microfone ou a câmera.",
@@ -300,7 +298,16 @@
     "desktopNotifications": "Mostrar notificações",
     "desktopNote": "Mensagens diretas e menções, mesmo com o TinyFloor fechado. Chamadas e acenos enquanto ele está aberto em outra janela.",
     "desktopBlocked": "Bloqueadas pelo navegador. Permita notificações deste site pelo ícone ao lado da barra de endereço.",
-    "turnOn": "Ativar"
+    "turnOn": "Ativar",
+    "descriptions": {
+      "profile": "Como os outros veem você, em todos os escritórios.",
+      "signin": "Como você entra na sua conta.",
+      "general": "A aparência do TinyFloor e o idioma que ele usa.",
+      "media": "Seu microfone e sua câmera, e como você soa.",
+      "notifications": "O que avisa você de que algo está acontecendo.",
+      "accessibility": "Movimento e desempenho, do seu jeito e do seu dispositivo.",
+      "plan": "O plano do seu escritório e como ele é pago."
+    }
   },
   "scene": {
     "meeting": "Reunião",
@@ -415,7 +422,8 @@
       "domainOff": "Não encontram",
       "domainAskNote": "Elas encontram este escritório pelo e-mail de trabalho e pedem para entrar. Um admin libera.",
       "domainOpenNote": "Quem entrar com um e-mail @{domain} pode entrar direto.",
-      "domainOffNote": "Só quem tem o link de convite pode entrar."
+      "domainOffNote": "Só quem tem o link de convite pode entrar.",
+      "leaveButton": "Sair"
     },
     "profile": {
       "changePassword": "Alterar senha",
@@ -450,7 +458,6 @@
         "signin": "Iniciar sessão",
         "appearance": "Aparência"
       },
-      "profileNote": "O seu nome e o seu link, onde quer que entre.",
       "password": "Palavra-passe",
       "passwordSet": "Inicie sessão com o seu email e palavra-passe.",
       "signOutNote": "Termine a sessão no TinyFloor neste navegador.",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "Automático",
       "timeZoneChange": "Alterar",
       "timeZoneSearch": "Procurar uma cidade",
-      "timeZoneNone": "Nenhum fuso horário corresponde"
+      "timeZoneNone": "Nenhum fuso horário corresponde",
+      "methods": "Formas de entrar",
+      "thisBrowser": "Este navegador",
+      "signedInAs": "Conectado como {name}"
     },
     "invite": {
       "invalidTitle": "Este convite não funciona",

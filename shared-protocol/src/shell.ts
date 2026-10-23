@@ -101,14 +101,6 @@ export function paintShell(shell: ShellMap, sheet: Pixels): Pixels & { data: Uin
 
   const pixels = sheet.data;
   const columns = sheet.width / TILE;
-  /** An art pixel of a room builder tile (1-based ids, as Tiled numbers them). */
-  const sample = (tile: number, ax: number, ay: number): Rgba => {
-    const i = tile - 1;
-    const px = (i % columns) * TILE + ax * ART;
-    const py = Math.floor(i / columns) * TILE + ay * ART;
-    const o = (py * sheet.width + px) * 4;
-    return [pixels[o], pixels[o + 1], pixels[o + 2], pixels[o + 3]];
-  };
 
   // Art pixels: which are the wall's top (T) and which its face (F).
   const AW = w * N, AH = h * N;
@@ -132,36 +124,53 @@ export function paintShell(shell: ShellMap, sheet: Pixels): Pixels & { data: Uin
   const isWall = (ax: number, ay: number) => (ax < 0 || ay < 0 || ax >= AW || ay >= AH ? 1 : T[ay * AW + ax] || F[ay * AW + ax]);
 
   const out = { width: w * TILE, height: h * TILE, data: new Uint8ClampedArray(w * TILE * h * TILE * 4) };
-  const put = (ax: number, ay: number, [r, g, b, a = 255]: Rgba) => {
+  const data = out.data;
+  const stride = w * TILE * 4;
+  // Each art pixel is ART by ART screen pixels, of one colour.
+  const put = (ax: number, ay: number, r: number, g: number, b: number, a: number) => {
     for (let dy = 0; dy < ART; dy++) {
-      for (let dx = 0; dx < ART; dx++) {
-        const o = ((ay * ART + dy) * w * TILE + ax * ART + dx) * 4;
-        out.data[o] = r;
-        out.data[o + 1] = g;
-        out.data[o + 2] = b;
-        out.data[o + 3] = a;
+      let o = (ay * ART + dy) * stride + ax * ART * 4;
+      for (let dx = 0; dx < ART; dx++, o += 4) {
+        data[o] = r;
+        data[o + 1] = g;
+        data[o + 2] = b;
+        data[o + 3] = a;
       }
     }
   };
+  const fill = (ax: number, ay: number, [r, g, b, a = 255]: Rgba) => put(ax, ay, r, g, b, a);
+  /** An art pixel of a room builder tile (1-based ids, as Tiled numbers them), copied. */
+  const copy = (ax: number, ay: number, tile: number, lx: number, ly: number) => {
+    const i = tile - 1;
+    const o = ((Math.floor(i / columns) * TILE + ly * ART) * sheet.width + (i % columns) * TILE + lx * ART) * 4;
+    put(ax, ay, pixels[o], pixels[o + 1], pixels[o + 2], pixels[o + 3]);
+  };
 
-  for (let ay = 0; ay < AH; ay++) {
-    for (let ax = 0; ax < AW; ax++) {
-      const x = Math.floor(ax / N), y = Math.floor(ay / N), lx = ax % N, ly = ay % N;
-      const i = ay * AW + ax;
+  // A tile at a time: what it is, and the tile its pattern comes from, are worked out once for all its art pixels.
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
       const cell = at(x, y);
-      if (T[i]) {
-        let edge = false;
-        for (let dy = -1; dy <= 1 && !edge; dy++) for (let dx = -1; dx <= 1; dx++) if (!isT(ax + dx, ay + dy)) edge = true;
-        put(ax, ay, edge ? OUTLINE : TOP);
-      } else if (F[i]) {
-        const edge = !isWall(ax - 1, ay) || !isWall(ax + 1, ay) || !isWall(ax, ay + 1) || !isWall(ax, ay - 1);
-        const material = WALLS[cell.material ?? ""] ?? WALLS.lavender;
-        put(ax, ay, edge ? OUTLINE : sample(role(x, y) === "upper" ? material.upper : material.lower, lx, ly));
-      } else if (cell.kind === "floor") {
-        const base = FLOORS[cell.material ?? ""] ?? FLOORS.plank;
-        put(ax, ay, sample(floorTile(base, wall(x, y - 1), wall(x - 1, y), wall(x - 1, y - 1)), lx, ly));
-      } else {
-        put(ax, ay, OUTLINE);
+      const face = cell.kind === "wall" ? (WALLS[cell.material ?? ""] ?? WALLS.lavender)[role(x, y) === "upper" ? "upper" : "lower"] : 0;
+      const ground = cell.kind === "floor" ? floorTile(FLOORS[cell.material ?? ""] ?? FLOORS.plank, wall(x, y - 1), wall(x - 1, y), wall(x - 1, y - 1)) : 0;
+      for (let ly = 0; ly < N; ly++) {
+        const ay = y * N + ly;
+        for (let lx = 0; lx < N; lx++) {
+          const ax = x * N + lx;
+          const i = ay * AW + ax;
+          if (T[i]) {
+            let edge = false;
+            for (let dy = -1; dy <= 1 && !edge; dy++) for (let dx = -1; dx <= 1; dx++) if (!isT(ax + dx, ay + dy)) edge = true;
+            fill(ax, ay, edge ? OUTLINE : TOP);
+          } else if (F[i]) {
+            const edge = !isWall(ax - 1, ay) || !isWall(ax + 1, ay) || !isWall(ax, ay + 1) || !isWall(ax, ay - 1);
+            if (edge) fill(ax, ay, OUTLINE);
+            else copy(ax, ay, face, lx, ly);
+          } else if (cell.kind === "floor") {
+            copy(ax, ay, ground, lx, ly);
+          } else {
+            fill(ax, ay, OUTLINE);
+          }
+        }
       }
     }
   }

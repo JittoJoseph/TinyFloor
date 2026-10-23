@@ -93,6 +93,9 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         // also takes clicks on whatever covers it (a meeting, a menu, a toast) as
         // clicks on the floor underneath: a pin in a meeting walked you to the whiteboard.
         input: { windowEvents: false },
+        // Nothing on the floor uses Phaser's effects; without these it doesn't build their shaders while starting.
+        disablePreFX: true,
+        disablePostFX: true,
       };
       game.current = new Phaser.Game(config);
       game.current.events.once(Phaser.Core.Events.READY, onResize);

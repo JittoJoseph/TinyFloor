@@ -265,10 +265,8 @@
       "office": "オフィス",
       "plan": "プランと請求"
     },
-    "appearance": "外観",
     "themeNote": "「システム」はデバイスの設定に従います。",
-    "language": "言語",
-    "languageTitle": "言語",
+    "languageTitle": "表示言語",
     "languageNote": "TinyFloorのメニュー、ボタン、メッセージに使われます。",
     "devices": "デバイス",
     "devicesNote": "次にマイクやカメラをオンにしたときに使われます。",
@@ -300,7 +298,16 @@
     "desktopNotifications": "通知を表示",
     "desktopNote": "TinyFloor を閉じていても、ダイレクトメッセージとメンションを通知します。通話と手振りは別のウィンドウで開いている間に通知します。",
     "desktopBlocked": "ブラウザでブロックされています。アドレスバー横のアイコンから、このサイトの通知を許可してください。",
-    "turnOn": "オンにする"
+    "turnOn": "オンにする",
+    "descriptions": {
+      "profile": "どのオフィスでも、ほかの人にどう見えるか。",
+      "signin": "アカウントへのサインイン方法。",
+      "general": "TinyFloor の見た目と表示言語。",
+      "media": "マイクとカメラ、そして声の聞こえ方。",
+      "notifications": "何かが起きたときの知らせ方。",
+      "accessibility": "あなたとデバイスに合わせた動きとパフォーマンス。",
+      "plan": "オフィスのプランと支払い方法。"
+    }
   },
   "scene": {
     "meeting": "会議",
@@ -415,7 +422,8 @@
       "domainOff": "見つけられない",
       "domainAskNote": "仕事用のメールアドレスでこのオフィスを見つけてリクエストします。管理者が承認します。",
       "domainOpenNote": "@{domain} のメールアドレスでサインインした人は、そのまま入れます。",
-      "domainOffNote": "招待リンクを持っている人だけが参加できます。"
+      "domainOffNote": "招待リンクを持っている人だけが参加できます。",
+      "leaveButton": "退出"
     },
     "profile": {
       "changePassword": "パスワードを変更",
@@ -450,7 +458,6 @@
         "signin": "サインイン",
         "appearance": "表示"
       },
-      "profileNote": "どこに入っても表示される名前とリンク。",
       "password": "パスワード",
       "passwordSet": "メールアドレスとパスワードでサインインします。",
       "signOutNote": "このブラウザで TinyFloor からサインアウトします。",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "自動",
       "timeZoneChange": "変更",
       "timeZoneSearch": "都市を検索",
-      "timeZoneNone": "一致するタイムゾーンはありません"
+      "timeZoneNone": "一致するタイムゾーンはありません",
+      "methods": "サインイン方法",
+      "thisBrowser": "このブラウザ",
+      "signedInAs": "{name} としてサインイン中"
     },
     "invite": {
       "invalidTitle": "この招待は使えません",

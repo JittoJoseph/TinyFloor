@@ -10,6 +10,7 @@ import { api } from "@/lib/api";
 import { track } from "@/lib/analytics";
 import { saveIdentity } from "@/lib/identity";
 import { lobbyPath, officePath } from "@/lib/links";
+import { openOfficeAhead } from "@/lib/officeAhead";
 import { renameOnFloor } from "@/lib/floor";
 import { rememberPendingOffice } from "@/lib/pendingOffice";
 import { useErrorMessage } from "@/lib/useErrorMessage";
@@ -147,6 +148,7 @@ function OfficePrompt({ open, onClose }: { open: boolean; onClose: () => void })
     try {
       const { office } = await api.createOffice(typed);
       track("office_created", { office_id: office.id, from: "demo_prompt" });
+      openOfficeAhead(office.id);
       router.push(officePath(office.id));
     } catch (err) {
       setError(explain(err));

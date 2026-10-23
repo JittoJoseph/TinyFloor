@@ -10,6 +10,7 @@ import { api, type Office, type PlanId } from "@/lib/api";
 import { dollars, usePlans } from "@/lib/billing";
 import { openCheckout, waitForPlan } from "@/lib/checkout";
 import { officePath } from "@/lib/links";
+import { openOfficeAhead } from "@/lib/officeAhead";
 import { InviteActions } from "./Invite";
 import { TeamOffices, useTeamOffices } from "./TeamOffices";
 import { forgetPendingOffice, pendingOffice } from "@/lib/pendingOffice";
@@ -85,6 +86,7 @@ export function CreateOfficeFlow() {
 
   const walkIn = (id: string) => {
     forgetPendingOffice();
+    openOfficeAhead(id);
     router.replace(officePath(id));
   };
 
@@ -208,17 +210,20 @@ export function CreateOfficeFlow() {
                 autoComplete="organization"
                 className={pillInputClass}
               />
-              {/* Their floor, with them already at a desk: what the name is for. A team's office takes its place. */}
+              {/* Their floor, with them already at a desk: what the name is for. A team's office takes its place,
+                  so the floor waits until it's known whether there is one, rather than showing and then going. */}
               {!(team && !office) && (
                 <div className="relative mt-4 h-[6.5rem] overflow-hidden rounded-2xl sm:mt-5 sm:h-[8.5rem] border border-border" aria-hidden>
-                  <FloorScene
-                    view={[18, 4.2, 16, 8]}
-                    sitting={
-                      user ? [{ character: user.character, chair: [20, 8], name: user.displayName.split(" ")[0], status: "available" }] : []
-                    }
-                    priority
-                    className="absolute inset-0"
-                  />
+                  {team !== undefined && (
+                    <FloorScene
+                      view={[18, 4.2, 16, 8]}
+                      sitting={
+                        user ? [{ character: user.character, chair: [20, 8], name: user.displayName.split(" ")[0], status: "available" }] : []
+                      }
+                      priority
+                      className="absolute inset-0"
+                    />
+                  )}
                 </div>
               )}
             </>

@@ -265,10 +265,8 @@
       "office": "오피스",
       "plan": "요금제 및 결제"
     },
-    "appearance": "화면",
     "themeNote": "'시스템'은 기기 설정을 따라요.",
-    "language": "언어",
-    "languageTitle": "언어",
+    "languageTitle": "표시 언어",
     "languageNote": "TinyFloor의 메뉴, 버튼, 메시지에 쓰여요.",
     "devices": "기기",
     "devicesNote": "다음에 마이크나 카메라를 켤 때 사용돼요.",
@@ -300,7 +298,16 @@
     "desktopNotifications": "알림 표시",
     "desktopNote": "TinyFloor를 닫아도 다이렉트 메시지와 멘션을 알려요. 통화와 손 흔들기는 다른 창에 열려 있을 때 알려요.",
     "desktopBlocked": "브라우저에서 차단했어요. 주소창 옆 아이콘에서 이 사이트의 알림을 허용하세요.",
-    "turnOn": "켜기"
+    "turnOn": "켜기",
+    "descriptions": {
+      "profile": "모든 오피스에서 다른 사람에게 보이는 모습.",
+      "signin": "계정에 들어가는 방법.",
+      "general": "TinyFloor의 모양과 사용하는 언어.",
+      "media": "마이크와 카메라, 그리고 목소리가 들리는 방식.",
+      "notifications": "무슨 일이 생겼을 때 알려 주는 방식.",
+      "accessibility": "나와 기기에 맞춘 움직임과 성능.",
+      "plan": "오피스의 요금제와 결제 방법."
+    }
   },
   "scene": {
     "meeting": "회의",
@@ -415,7 +422,8 @@
       "domainOff": "찾을 수 없음",
       "domainAskNote": "업무용 이메일로 이 오피스를 찾아 요청해요. 관리자가 들여보내 줘요.",
       "domainOpenNote": "@{domain} 이메일로 로그인한 사람은 바로 들어올 수 있어요.",
-      "domainOffNote": "초대 링크가 있는 사람만 참여할 수 있어요."
+      "domainOffNote": "초대 링크가 있는 사람만 참여할 수 있어요.",
+      "leaveButton": "나가기"
     },
     "profile": {
       "changePassword": "비밀번호 변경",
@@ -450,7 +458,6 @@
         "signin": "로그인",
         "appearance": "화면"
       },
-      "profileNote": "어디에 들어가든 보이는 이름과 링크예요.",
       "password": "비밀번호",
       "passwordSet": "이메일과 비밀번호로 로그인해요.",
       "signOutNote": "이 브라우저에서 TinyFloor 로그아웃",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "자동",
       "timeZoneChange": "변경",
       "timeZoneSearch": "도시 검색",
-      "timeZoneNone": "일치하는 시간대가 없습니다"
+      "timeZoneNone": "일치하는 시간대가 없습니다",
+      "methods": "로그인 방법",
+      "thisBrowser": "이 브라우저",
+      "signedInAs": "{name}(으)로 로그인됨"
     },
     "invite": {
       "invalidTitle": "이 초대는 사용할 수 없어요",

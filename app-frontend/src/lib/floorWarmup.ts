@@ -1,15 +1,15 @@
 import type { RoomTicket } from "@/lib/api";
 import { PRESETS, characterLayers } from "@shared/character";
+import { floorWalls } from "./floorWalls";
 
 /**
  * What the floor's scene loads (MapManager, AnimationManager), each file once:
- * the sheet its walls are drawn from and the atlas of everything on them.
- * Characters are drawn from their own strips (lib/characterSheet); the
- * presets, a few kilobytes each, are fetched ahead. The office itself
- * (shared-protocol map.ts) comes with the code.
+ * the atlas of everything on the floor. Its walls are painted ahead
+ * (lib/floorWalls), and characters are drawn from their own strips
+ * (lib/characterSheet); the presets, a few kilobytes each, are fetched ahead.
+ * The office itself (shared-protocol map.ts) comes with the code.
  */
 export const FLOOR_FILES = {
-  roomBuilder: "/tilesets/textures/Room_Builder_Office_32x32.png",
   items: "/catalog/items.png",
 };
 
@@ -17,7 +17,7 @@ let warming = false;
 
 /**
  * Starts what the floor needs while the page before it is still showing (the
- * lobby's door, an office being read): its code, and the map and sprites,
+ * lobby's door, an office being read): its code, its walls painted, and its sprites,
  * which the scene then finds in the browser's cache (public/_headers). Without
  * it each waited for the one before: code, then files, then the ticket.
  */
@@ -25,7 +25,8 @@ export function warmFloor() {
   if (warming || typeof window === "undefined") return;
   warming = true;
   void import("@/components/PhaserGame").catch(() => (warming = false));
-  const files = [FLOOR_FILES.roomBuilder, FLOOR_FILES.items, ...PRESETS.flatMap(characterLayers)];
+  void floorWalls().catch(() => {});
+  const files = [FLOOR_FILES.items, ...PRESETS.flatMap(characterLayers)];
   for (const file of files) void fetch(file).catch(() => {});
 }
 

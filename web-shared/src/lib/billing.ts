@@ -24,6 +24,11 @@ function load() {
   );
 }
 
+/** Reads the plans ahead, for the pages that show them (an office's settings, its people) to have them at once. */
+export function warmPlans() {
+  load();
+}
+
 /** The plans read so far, outside React. */
 export function currentPlans(): Plans | null {
   return plans;

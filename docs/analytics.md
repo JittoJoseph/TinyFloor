@@ -33,7 +33,7 @@ asked about teams, not only people. In the demo office, `place: lobby`.
 | `office_invite_accepted` | `office_id`, `character` (offered, chosen, account) | A teammate arrived. |
 | `office_joined_by_domain` | `office_id`, `members` | A colleague found their team's office by their work email and walked in, without the link. |
 | `office_join_requested` | `office_id`, `members` | They found it, but its admins let people in: they asked. |
-| `floor_entered` | `people_here`, `load_ms` | Who shows up, and to whom. The base of the one number. `load_ms` is the wait from the floor being asked for to it showing. |
+| `floor_entered` | `people_here`, `load_ms`, `scene_ms`, `open_ms`, `built_ms`, `welcome_ms` | Who shows up, and to whom. The base of the one number. `load_ms` is the wait from the floor being asked for to it showing; the others are when each step of it came, on the same clock: the scene starting (code and engine), the room's connection open, the floor built, the room's welcome. The connection opens while the floor is built, so a slow arrival says which of the two it waited on. |
 | `floor_abandoned` | `waited_ms` | Left before the floor ever showed. Missed if PostHog hadn't loaded yet (it loads once the page is idle). |
 | `floor_failed` | `reason` (full, replaced, closed, revoked, signedOut, notFound) | The room turned them away. |
 | `call_connected`, `meeting_joined` | `people_here` on meetings | Do people actually talk? |

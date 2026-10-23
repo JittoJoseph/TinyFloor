@@ -265,10 +265,8 @@
       "office": "Kontor",
       "plan": "Plan och betalning"
     },
-    "appearance": "Utseende",
     "themeNote": "”System” följer din enhet.",
-    "language": "Språk",
-    "languageTitle": "Språk",
+    "languageTitle": "Visningsspråk",
     "languageNote": "För menyer, knappar och meddelanden från TinyFloor.",
     "devices": "Enheter",
     "devicesNote": "Används nästa gång du slår på mikrofonen eller kameran.",
@@ -300,7 +298,16 @@
     "desktopNotifications": "Visa aviseringar",
     "desktopNote": "Direktmeddelanden och omnämnanden, även när TinyFloor är stängt. Samtal och vinkningar medan det är öppet i ett annat fönster.",
     "desktopBlocked": "Blockerade av webbläsaren. Tillåt aviseringar för webbplatsen via ikonen bredvid adressfältet.",
-    "turnOn": "Slå på"
+    "turnOn": "Slå på",
+    "descriptions": {
+      "profile": "Hur andra ser dig, i alla kontor.",
+      "signin": "Hur du kommer in på ditt konto.",
+      "general": "Hur TinyFloor ser ut och vilket språk det använder.",
+      "media": "Din mikrofon och kamera, och hur du låter.",
+      "notifications": "Det som säger till när något händer.",
+      "accessibility": "Rörelse och prestanda, efter dig och din enhet.",
+      "plan": "Vilken plan ditt kontor har och hur den betalas."
+    }
   },
   "scene": {
     "meeting": "Möte",
@@ -415,7 +422,8 @@
       "domainOff": "Hittar det inte",
       "domainAskNote": "De hittar kontoret via sin jobbadress och frågar. En admin släpper in dem.",
       "domainOpenNote": "Den som är inloggad med en @{domain}-adress kan gå in direkt.",
-      "domainOffNote": "Bara den som har inbjudningslänken kan gå med."
+      "domainOffNote": "Bara den som har inbjudningslänken kan gå med.",
+      "leaveButton": "Lämna"
     },
     "profile": {
       "changePassword": "Byt lösenord",
@@ -450,7 +458,6 @@
         "signin": "Inloggning",
         "appearance": "Utseende"
       },
-      "profileNote": "Ditt namn och din länk, var du än går in.",
       "password": "Lösenord",
       "passwordSet": "Logga in med din e-post och ditt lösenord.",
       "signOutNote": "Logga ut från TinyFloor i den här webbläsaren.",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "Automatisk",
       "timeZoneChange": "Ändra",
       "timeZoneSearch": "Sök efter en stad",
-      "timeZoneNone": "Ingen tidszon matchar"
+      "timeZoneNone": "Ingen tidszon matchar",
+      "methods": "Sätt att logga in",
+      "thisBrowser": "Den här webbläsaren",
+      "signedInAs": "Inloggad som {name}"
     },
     "invite": {
       "invalidTitle": "Inbjudan fungerar inte",

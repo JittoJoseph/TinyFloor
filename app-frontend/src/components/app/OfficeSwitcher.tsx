@@ -6,6 +6,7 @@ import { ChevronRight, Plus, Settings2, UserPlus } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { api, type Office, type OfficeSummary } from "@/lib/api";
 import { officePath, officeSettingsPath, openSettings } from "@/lib/links";
+import { openOfficeAhead } from "@/lib/officeAhead";
 import { Face } from "@/components/ui/Face";
 import { Menu, MenuItem, MenuLabel, MenuSeparator, useCloseMenu } from "@/components/ui/Menu";
 import { useWide } from "@/lib/hooks/use-wide";
@@ -109,7 +110,10 @@ export function OfficeMenu({ office, others, header = false }: { office: Office;
         <MenuItem
           key={one.id}
           icon={<Face seed={one.id} size={22} square />}
-          onSelect={() => router.push(officePath(one.id))}
+          onSelect={() => {
+            openOfficeAhead(one.id);
+            router.push(officePath(one.id));
+          }}
           hint={
             one.here ? (
               <span className="flex items-center gap-1.5 tabular-nums">

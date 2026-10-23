@@ -11,6 +11,7 @@ import { PlansSoon } from "@/components/ui/PlansSoon";
 import { PLAN_NAMES, PlanIncludes, paidPlan } from "@/components/billing/PlanCards";
 import { usePlanChange } from "@/components/billing/usePlanChange";
 import { cn } from "@/lib/utils";
+import { Bone } from "./HomeSkeletons";
 import { useOfficeMaybe } from "./OfficeShell";
 import { Group } from "./SettingsView";
 import { SUPPORT_EMAIL } from "@/lib/site";
@@ -34,6 +35,8 @@ export function PlanSection() {
   const context = useOfficeMaybe();
   const catalog = usePlans();
   const [billing, setBilling] = useState<OfficeBilling | null>(null);
+  // Whether the office's billing has answered (or failed): until then the page shows its shape, not a guess.
+  const [billingRead, setBillingRead] = useState(false);
   const [details, setDetails] = useState<BillingDetails | null>(null);
   const [asking, setAsking] = useState<Asking>(null);
   const [downgrading, setDowngrading] = useState(false);
@@ -68,10 +71,13 @@ export function PlanSection() {
   useEffect(() => {
     if (!officeId || !admin || !on) return;
     let cancelled = false;
-    api.billing(officeId).then(
-      (found) => !cancelled && setBilling(found),
-      () => {},
-    );
+    api
+      .billing(officeId)
+      .then(
+        (found) => !cancelled && setBilling(found),
+        () => {},
+      )
+      .finally(() => !cancelled && setBillingRead(true));
     api.billingDetails(officeId).then(
       (found) => !cancelled && setDetails(found),
       () => !cancelled && setDetails({ nextCharge: null, card: null, history: [] }),
@@ -82,12 +88,16 @@ export function PlanSection() {
   }, [officeId, admin, on]);
 
   if (!context || !office) return null;
-  const plans = catalog?.plans ?? [];
+  // The plan list, and for its admins the office's billing: drawn once both are in, so it never shows one plan then another.
+  if (!catalog || (admin && catalog.billing && !billingRead)) return <PlanSkeleton />;
+  const plans = catalog.plans;
   const pro = paidPlan(plans);
   const freeSeats = plans.find((plan) => plan.price === null)?.seats ?? 3;
   const members = billing?.members ?? office.members;
   const sub = billing?.subscription ?? null;
-  const trial = billing?.trial ?? null;
+  // Members don't read billing: the office says whether a trial runs or has ended.
+  const trial = billing ? billing.trial : office.trialEndsAt ? { plan: "pro" as const, endsAt: office.trialEndsAt } : null;
+  const trialEndedAt = billing ? billing.trialEndedAt : (office.trialEndedAt ?? null);
   const manage = on && admin;
   const busy = change.busy;
   const date = (at: number) => format.dateTime(new Date(at), { day: "numeric", month: "long", year: "numeric" });
@@ -95,8 +105,8 @@ export function PlanSection() {
   const money = (amount: number, currency: string) => format.number(amount / 100, { style: "currency", currency });
 
   // A trial that ended with nothing chosen: still Pro to them, with billing to add.
-  const unpaid = !sub && office.plan === "free" && !!billing?.trialEndedAt;
-  const onPro = !!sub || !!trial || unpaid;
+  const unpaid = !sub && office.plan === "free" && !!trialEndedAt;
+  const onPro = !!sub || !!trial || unpaid || office.plan !== "free";
   const grace = billing?.graceEndsAt ?? office.graceEndsAt ?? null;
   const trialDays = catalog?.trialDays || 14;
   const daysLeft = trial ? Math.max(0, Math.ceil((trial.endsAt - now) / DAY)) : 0;
@@ -145,9 +155,9 @@ export function PlanSection() {
   // One line under the plan's name: where it stands.
   const status = trial
     ? tp("daysLeft", { count: daysLeft })
-    : unpaid && billing?.trialEndedAt
-      ? tp("trialEnded", { date: date(billing.trialEndedAt) })
-      : sub && pro?.price
+    : unpaid && trialEndedAt
+      ? tp("trialEnded", { date: date(trialEndedAt) })
+      : onPro && pro?.price
         ? tp("priceLine", { price: dollars(pro.price) })
         : tp("freeSeats", { seats: freeSeats });
 
@@ -163,7 +173,7 @@ export function PlanSection() {
       value: tp("chargeOn", { amount: money(details.nextCharge.amount, details.nextCharge.currency), date: shortDate(details.nextCharge.at) }),
     });
   } else if (sub?.renewsAt) facts.push({ label: tp("renews"), value: date(sub.renewsAt) });
-  else if (!sub) facts.push({ label: tp("floor"), value: grace ? tp("floorEveryone", { date: shortDate(grace) }) : tp("floorAtOnce", { seats: office.seats }) });
+  else if (!sub && (unpaid || office.plan === "free")) facts.push({ label: tp("floor"), value: grace ? tp("floorEveryone", { date: shortDate(grace) }) : tp("floorAtOnce", { seats: office.seats }) });
 
   return (
     <div className="space-y-6">
@@ -499,6 +509,39 @@ function PlanCard({
       </p>
       <div className="mt-4 flex-1">{children}</div>
       {footer && <div className="mt-5">{footer}</div>}
+    </div>
+  );
+}
+
+/** The page's shape while the plan is read: the plan with its facts, then the two plans side by side. */
+function PlanSkeleton() {
+  const card = "rounded-2xl border border-border bg-background";
+  return (
+    <div className="space-y-6" aria-busy>
+      <div className={card}>
+        <div className="p-5">
+          <Bone className="h-5 w-20" />
+          <Bone className="mt-2.5 h-3 w-28" />
+        </div>
+        <div className="divide-y divide-border border-t border-border">
+          {[0, 1].map((row) => (
+            <div key={row} className="flex h-[49px] items-center justify-between px-5">
+              <Bone className="h-3 w-20" />
+              <Bone className="h-3 w-24" />
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="grid gap-3 sm:grid-cols-2">
+        {[0, 1].map((one) => (
+          <div key={one} className={cn(card, "h-[16.5rem] p-5")}>
+            <Bone className="h-3.5 w-12" />
+            <Bone className="mt-3 h-7 w-16" />
+            <Bone className="mt-6 h-3 w-3/4" />
+            <Bone className="mt-3 h-3 w-2/3" />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -265,10 +265,8 @@
       "office": "Office",
       "plan": "Plan and billing"
     },
-    "appearance": "Appearance",
     "themeNote": "System follows your device.",
-    "language": "Language",
-    "languageTitle": "Language",
+    "languageTitle": "Display language",
     "languageNote": "For menus, buttons and messages from TinyFloor.",
     "devices": "Devices",
     "devicesNote": "Used the next time you turn your microphone or camera on.",
@@ -300,7 +298,16 @@
     "desktopNotifications": "Show notifications",
     "desktopNote": "Direct messages and mentions, even when TinyFloor is closed. Calls and waves while it's open in another window.",
     "desktopBlocked": "Blocked by your browser. Allow notifications for this site from the icon beside the address bar.",
-    "turnOn": "Turn on"
+    "turnOn": "Turn on",
+    "descriptions": {
+      "profile": "How people see you, in every office.",
+      "signin": "How you get into your account.",
+      "general": "How TinyFloor looks, and the language it uses.",
+      "media": "Your microphone and camera, and how you sound.",
+      "notifications": "What lets you know something's happening.",
+      "accessibility": "Motion and performance, to suit you and your device.",
+      "plan": "What your office is on, and how it's paid for."
+    }
   },
   "scene": {
     "meeting": "Meeting",
@@ -415,7 +422,8 @@
       "domainOff": "Can't find it",
       "domainAskNote": "They find this office by their work email and ask. An admin lets them in.",
       "domainOpenNote": "Anyone signed in with an @{domain} email can walk straight in.",
-      "domainOffNote": "Only people with the invite link can join."
+      "domainOffNote": "Only people with the invite link can join.",
+      "leaveButton": "Leave"
     },
     "profile": {
       "changePassword": "Change password",
@@ -450,7 +458,6 @@
         "signin": "Signing in",
         "appearance": "Appearance"
       },
-      "profileNote": "Your name and link, wherever you walk in.",
       "password": "Password",
       "passwordSet": "Sign in with your email and password.",
       "signOutNote": "Sign out of TinyFloor in this browser.",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "Automatic",
       "timeZoneChange": "Change",
       "timeZoneSearch": "Search for a city",
-      "timeZoneNone": "No time zone matches"
+      "timeZoneNone": "No time zone matches",
+      "methods": "Ways to sign in",
+      "thisBrowser": "This browser",
+      "signedInAs": "Signed in as {name}"
     },
     "invite": {
       "invalidTitle": "This invite doesn't work",

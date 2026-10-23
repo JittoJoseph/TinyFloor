@@ -395,9 +395,11 @@ break room bottom left with a table, vending machines, water and coffee;
 every top wall furnished with windows and things in turn, the whiteboard's
 spot kept clear; plants by every bank.
 
-What the app loads for it: the room builder sheet (14 KB), which it draws the
-walls and floors from, and the catalog's atlas (108 KB), which everything else
-is a frame of; the floor file comes with the code (17 KB, a few compressed).
+What the app loads for it: the room builder sheet (14 KB), which it paints the
+walls and floors from (in a worker, while the office is still being read: on
+the page it cost the floor's start over 100 ms), and the catalog's atlas
+(108 KB), which everything else is a frame of; the floor file comes with the
+code (17 KB, a few compressed).
 The hand-made map took the room builder sheet, the office sheet (110 KB), the
 chairs and the map itself.
 

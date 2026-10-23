@@ -265,10 +265,8 @@
       "office": "Toimisto",
       "plan": "Paketti ja laskutus"
     },
-    "appearance": "Ulkoasu",
     "themeNote": "”Järjestelmä” seuraa laitettasi.",
-    "language": "Kieli",
-    "languageTitle": "Kieli",
+    "languageTitle": "Näyttökieli",
     "languageNote": "Valikoille, painikkeille ja TinyFloorin viesteille.",
     "devices": "Laitteet",
     "devicesNote": "Käytetään, kun seuraavan kerran laitat mikrofonin tai kameran päälle.",
@@ -300,7 +298,16 @@
     "desktopNotifications": "Näytä ilmoitukset",
     "desktopNote": "Yksityisviestit ja maininnat, myös kun TinyFloor on suljettu. Puhelut ja vilkutukset, kun se on auki toisessa ikkunassa.",
     "desktopBlocked": "Selaimesi estää ne. Salli tämän sivuston ilmoitukset osoiterivin vieressä olevasta kuvakkeesta.",
-    "turnOn": "Ota käyttöön"
+    "turnOn": "Ota käyttöön",
+    "descriptions": {
+      "profile": "Miltä näyt muille, jokaisessa toimistossa.",
+      "signin": "Miten pääset tilillesi.",
+      "general": "Miltä TinyFloor näyttää ja mitä kieltä se käyttää.",
+      "media": "Mikrofonisi ja kamerasi, ja miltä kuulostat.",
+      "notifications": "Mikä kertoo, että jotain tapahtuu.",
+      "accessibility": "Liike ja suorituskyky, sinulle ja laitteellesi sopiviksi.",
+      "plan": "Toimistosi tilaus ja sen maksaminen."
+    }
   },
   "scene": {
     "meeting": "Palaveri",
@@ -415,7 +422,8 @@
       "domainOff": "Eivät löydä sitä",
       "domainAskNote": "He löytävät toimiston työosoitteellaan ja pyytävät pääsyä. Ylläpitäjä päästää heidät sisään.",
       "domainOpenNote": "Kuka tahansa @{domain}-osoitteella kirjautunut voi tulla suoraan sisään.",
-      "domainOffNote": "Vain kutsulinkin saaneet voivat liittyä."
+      "domainOffNote": "Vain kutsulinkin saaneet voivat liittyä.",
+      "leaveButton": "Poistu"
     },
     "profile": {
       "changePassword": "Vaihda salasana",
@@ -450,7 +458,6 @@
         "signin": "Kirjautuminen",
         "appearance": "Ulkoasu"
       },
-      "profileNote": "Nimesi ja linkkisi, minne ikinä astut.",
       "password": "Salasana",
       "passwordSet": "Kirjaudu sähköpostilla ja salasanalla.",
       "signOutNote": "Kirjaudu ulos TinyFloorista tässä selaimessa.",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "Automaattinen",
       "timeZoneChange": "Vaihda",
       "timeZoneSearch": "Hae kaupunkia",
-      "timeZoneNone": "Ei vastaavaa aikavyöhykettä"
+      "timeZoneNone": "Ei vastaavaa aikavyöhykettä",
+      "methods": "Kirjautumistavat",
+      "thisBrowser": "Tämä selain",
+      "signedInAs": "Kirjautuneena: {name}"
     },
     "invite": {
       "invalidTitle": "Kutsu ei toimi",

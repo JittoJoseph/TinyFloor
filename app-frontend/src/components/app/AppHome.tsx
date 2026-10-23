@@ -9,13 +9,14 @@ import { useAuth } from "@/contexts/AuthContext";
 import { api, type OfficeSummary } from "@/lib/api";
 import { officePath, useSitePage } from "@/lib/links";
 import { lastOffice } from "@/lib/lastOffice";
+import { openOfficeAhead } from "@/lib/officeAhead";
 import { Face } from "@/components/ui/Face";
 import { LitFace } from "@/components/ui/LitFace";
 import { ActionLink } from "@/components/ui/Action";
 import { HomeFrame } from "./HomeFrame";
 import { NoOffice } from "./NoOffice";
 import { Introduce } from "@/components/entry/Introduce";
-import { TeamOffices, useTeamOffices } from "./TeamOffices";
+import { askTeamOffices, TeamOffices, useTeamOffices } from "./TeamOffices";
 
 /**
  * The app's front door (app.tinyfloor.com). There is no dashboard: signed
@@ -31,18 +32,30 @@ export function AppHome() {
   const signedIn = !isLoading && !!user && !user.guest;
   const ready = signedIn && user.introduced !== false;
   const [offices, setOffices] = useState<OfficeSummary[] | null>(null);
+  // The office you were last in is gone straight to, asked for on the way
+  // (lib/officeAhead), without first reading which offices are yours: that's
+  // only read when there's none to go back to, or you just left one.
+  const [straight] = useState(() => (typeof window === "undefined" || left ? null : lastOffice()));
+  useEffect(() => {
+    if (!straight) return;
+    openOfficeAhead(straight);
+    router.replace(officePath(straight));
+  }, [straight, router]);
   // Your offices are asked for alongside the session rather than after it. If
   // that early ask fails (signed out, as it turns out), they're asked again once signed in.
-  const [early] = useState(() =>
-    typeof window === "undefined" ? null : api.me().then(({ offices: found }) => found ?? [], () => null),
-  );
+  const [early] = useState(() => {
+    if (typeof window === "undefined" || straight) return null;
+    // Back outside an office you left, your team's offices show too: asked for at the same time.
+    if (left) askTeamOffices();
+    return api.me().then(({ offices: found }) => found ?? [], () => null);
+  });
 
   useEffect(() => {
-    if (!isLoading && !signedIn) router.replace(`/auth?${new URLSearchParams({ redirect: "/" })}`);
-  }, [isLoading, signedIn, router]);
+    if (!straight && !isLoading && !signedIn) router.replace(`/auth?${new URLSearchParams({ redirect: "/" })}`);
+  }, [straight, isLoading, signedIn, router]);
 
   useEffect(() => {
-    if (!ready) return;
+    if (!ready || straight) return;
     let cancelled = false;
     Promise.resolve(early)
       .then((found) => found ?? api.me().then(({ offices: again }) => again ?? []))
@@ -53,7 +66,7 @@ export function AppHome() {
     return () => {
       cancelled = true;
     };
-  }, [ready, early]);
+  }, [ready, early, straight]);
 
   const leftOffice = offices?.find((one) => one.id === left);
 
@@ -65,6 +78,7 @@ export function AppHome() {
     router.replace(officePath(office.id));
   }, [offices, leftOffice, router]);
 
+  if (straight) return <div className="min-h-dvh bg-background" aria-busy="true" />;
   if (signedIn && user.introduced === false) return <Introduce backHref={home} />;
   if (offices && leftOffice) {
     return (
@@ -89,6 +103,8 @@ function Outside({ office, others }: { office: OfficeSummary; others: OfficeSumm
   const t = useTranslations("dashboard");
   const ts = useTranslations("shell");
   const team = useTeamOffices();
+  // Drawn once your team's offices are known too, so the page doesn't move when they arrive under it.
+  if (team === undefined) return <div className="min-h-[50dvh]" aria-busy="true" />;
   const row =
     "flex h-12 items-center gap-3 px-4 text-[13.5px] text-foreground transition-colors hover:bg-foreground/[0.04]";
   return (

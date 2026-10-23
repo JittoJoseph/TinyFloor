@@ -15,6 +15,7 @@ import {
 } from "./session";
 import { shareFrom } from "./spotify";
 import { verifyTurnstile } from "./turnstile";
+import { lobbyTicket } from "./floor";
 
 const PASSWORD_MIN_LENGTH = 8;
 /** bcrypt only reads the first 72 bytes, so longer passwords are refused rather than silently cut. */
@@ -38,7 +39,9 @@ export function authRoutes(router: Router): void {
       await verifyTurnstile(env, request, body.turnstileToken);
 
       const { user, cookie } = await createGuest(env, request, name, character);
-      return json({ user: publicUser(user) }, { status: 201, headers: { "Set-Cookie": cookie } });
+      // A guest is made at the demo office's door, on the way onto its floor: the ticket
+      // for it comes with them, rather than being asked for once they're made.
+      return json({ user: publicUser(user), lobby: await lobbyTicket(env, user) }, { status: 201, headers: { "Set-Cookie": cookie } });
     })
 
     .add("POST", "/v1/auth/signup", async ({ request, env, ctx }) => {

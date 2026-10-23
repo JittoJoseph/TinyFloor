@@ -6,7 +6,6 @@ import { Check, Eye, EyeOff, KeyRound, Palette, Search, UserRound } from "@/comp
 import { motion, useReducedMotion } from "motion/react";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError } from "@/lib/api";
-import { saveIdentity } from "@/lib/identity";
 import { allZones, browserZone, offsetLabel, timeIn, zoneCity, zoneLabel } from "@/lib/timeZone";
 import { useSitePage } from "@/lib/links";
 import { useErrorMessage } from "@/lib/useErrorMessage";
@@ -15,7 +14,9 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/motion/button/base";
 import { Dialog, ErrorText, fieldClass, Label } from "@/components/ui/forms";
 import { LitFace } from "@/components/ui/LitFace";
-import { CharacterPicker } from "@/components/entry/CharacterPicker";
+import { CharacterStage } from "@/components/character/CharacterStage";
+import { isPreset } from "@shared/character";
+import { openCharacterCreator, warmCharacterCreator } from "@/components/character/creatorOpen";
 import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
 import { General, Group, Row } from "@/components/app/SettingsView";
 
@@ -133,6 +134,7 @@ const field =
 /** Who you are to everyone else: your name, your link, and who you walk in as. */
 export function Profile() {
   const t = useTranslations("office.profile");
+  const tLook = useTranslations("look");
   const { user, updateProfile } = useAuth();
   const explain = useErrorMessage();
   const [name, setName] = useState<string | null>(null);
@@ -140,7 +142,6 @@ export function Profile() {
   const [busy, setBusy] = useState(false);
   const [saved, setSaved] = useState(false);
   const [error, setError] = useState("");
-  const [characterError, setCharacterError] = useState("");
   if (!user) return null;
 
   const currentName = name ?? user.displayName;
@@ -165,21 +166,9 @@ export function Profile() {
     }
   };
 
-  // Saved the moment it's picked, and remembered in this browser for the doors that ask.
-  const pick = async (character: string) => {
-    if (character === user.character) return;
-    setCharacterError("");
-    try {
-      await updateProfile({ character });
-      saveIdentity({ name: user.displayName, character });
-    } catch (err) {
-      setCharacterError(explain(err));
-    }
-  };
-
   return (
     <>
-      <Group title={t("sections.profile")} note={t("profileNote")}>
+      <Group>
         <form onSubmit={save}>
           <div>
             <FieldRow id="profile-name" title={t("name")}>
@@ -222,9 +211,16 @@ export function Profile() {
       </Group>
 
       <Group title={t("character")} note={t("characterNote")}>
-        <div className="p-3">
-          <CharacterPicker value={user.character} onChange={pick} className="sm:grid-cols-8" />
-          {characterError && <ErrorText>{characterError}</ErrorText>}
+        {/* You as you walk in, the way the floor shows you, and the creator to change it (CharacterCreator, which saves it). */}
+        <div className="flex items-center gap-4 px-4 py-3">
+          <CharacterStage character={user.character} scale={2} ground={10} still className="h-28 w-[5.5rem] shrink-0" />
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-[13.5px] font-medium text-foreground">{isPreset(user.character) ? user.character : tLook("own")}</p>
+            <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{tLook(isPreset(user.character) ? "presetNote" : "ownNote")}</p>
+          </div>
+          <Button type="button" size="sm" variant="secondary" onClick={openCharacterCreator} onPointerEnter={warmCharacterCreator} className="h-8 px-3.5 text-[13px]">
+            {tLook("change")}
+          </Button>
         </div>
       </Group>
 
@@ -363,7 +359,7 @@ export function SignIn() {
 
   return (
     <>
-      <Group title={t("sections.signin")} note={user.email ? <span data-ph-mask>{user.email}</span> : undefined}>
+      <Group title={t("methods")} note={user.email ? <span data-ph-mask>{user.email}</span> : undefined}>
         <Row
           title={t("password")}
           description={user.password ? t("passwordSet") : t("setPasswordDescription")}
@@ -399,9 +395,9 @@ export function SignIn() {
         {error && <p className="px-4 py-3 text-[12.5px] text-destructive">{error}</p>}
       </Group>
 
-      <Group title={ts("signOut")}>
+      <Group title={t("thisBrowser")}>
         <Row
-          title={ts("signOut")}
+          title={t("signedInAs", { name: user.displayName })}
           description={t("signOutNote")}
           control={
             <Button

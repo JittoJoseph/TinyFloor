@@ -11,6 +11,7 @@ import { EntryHeader, EntryShell } from "./EntryShell";
 import { DoorSteps, StepDots, StepError } from "./DoorSteps";
 import { NameQuestion, CharacterQuestion } from "./IdentitySteps";
 import { YouMark } from "./DoorParts";
+import { warmFloor } from "@/lib/floorWarmup";
 
 /**
  * A new account's first door (docs/product.md): the name people will see, then who
@@ -36,6 +37,8 @@ export function Introduce({ backHref = "/" }: { backHref?: string }) {
   useEffect(() => {
     if (here) track("door_viewed", { door: "introduce" });
   }, [here]);
+  // An office's floor comes next: its code and files load while they say who they are.
+  useEffect(warmFloor, []);
 
   if (!user) return null;
 

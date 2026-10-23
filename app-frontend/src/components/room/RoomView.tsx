@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import dynamic from "next/dynamic";
+import { loadPhaserGame } from "@/lib/floorWarmup";
 import { useTranslations } from "next-intl";
 import { AlertCircle, Check, UserPlus } from "@/components/ui/icons";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
@@ -25,6 +26,8 @@ import type { ShareResult } from "@/lib/share";
 import { useInvite } from "@/components/app/Invite";
 import { useOfficeMaybe } from "@/components/app/OfficeShell";
 import { FloorPrompt } from "./FloorPrompt";
+import { PickedBar } from "./DecoratePanel";
+import { YouCard } from "./YouCard";
 import { FLOOR_ARRIVED_EVENT, floorRequested, sinceFloorRequested, useFloor } from "@/lib/floor";
 import { track } from "@/lib/analytics";
 import { EASE_OUT } from "@/lib/ease";
@@ -44,7 +47,7 @@ function Connecting() {
 }
 
 // The loader over the floor stays until the room has welcomed you (below), not just until this arrives.
-const PhaserGame = dynamic(() => import("@/components/PhaserGame"), { ssr: false });
+const PhaserGame = dynamic(loadPhaserGame, { ssr: false });
 
 export interface RoomViewProps {
   title: string;
@@ -72,6 +75,7 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
   const [ended, setEnded] = useState<RoomEnd | null>(null);
   const [attempt, setAttempt] = useState(0);
   const [peopleOpen, setPeopleOpen] = useState(false);
+  const [youActive, setYouActive] = useState(false);
   // From here until the room's welcome, the code, map, ticket and connection
   // are still on their way: one loader covers all of it, then the floor fades in.
   // Which attempt arrived: a retry (Try again) starts covered again.
@@ -251,7 +255,34 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
           </AnimatePresence>
         </div>
 
-        {inviteChip && canInvite && <InviteChip copied={copied} onClick={invite} />}
+        {/* Invite while it's worth asking, then you. Pointed at or opened, your card grows over where Invite
+            was, Invite stepping aside into it as one of its rows. */}
+        <div className="relative flex items-start gap-2">
+          <AnimatePresence initial={false}>
+            {inviteChip && canInvite && !youActive && (
+              <motion.div
+                key="invite"
+                initial={reduce ? { opacity: 0 } : { opacity: 0, x: 12, scale: 0.96 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={reduce ? { opacity: 0 } : { opacity: 0, x: 12, scale: 0.96 }}
+                transition={{ duration: 0.18, ease: EASE_OUT }}
+                style={{ transformOrigin: "right center" }}
+              >
+                <InviteChip copied={copied} onClick={invite} />
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <div className="h-10 w-10 shrink-0" aria-hidden />
+          <div className="absolute end-0 top-0 z-10">
+            <YouCard
+              userId={user.id}
+              name={user.displayName}
+              onActive={setYouActive}
+              onInvite={inviteChip && canInvite ? invite : undefined}
+              inviteLabel={t("invite")}
+            />
+          </div>
+        </div>
       </div>
 
       {/* Above the dock, one at a time: the desk you sat at, or what you can do where you stand. */}
@@ -265,6 +296,7 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
       <MeetingMini />
       <MeetingAudio />
       <WhiteboardOverlay />
+      <PickedBar />
 
       <ControlBar settingsHref={settingsHref} />
     </div>

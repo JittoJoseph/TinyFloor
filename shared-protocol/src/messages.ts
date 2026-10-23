@@ -1,8 +1,17 @@
+import type { PieceChange, PieceChanges } from "./office";
+
 export type PresenceStatus = "available" | "busy" | "away" | "in_call";
 
 export const PRESENCE_STATUSES: readonly PresenceStatus[] = ["available", "busy", "away", "in_call"];
 
 /** The plain-text heartbeat. The room answers it without waking up. */
+/**
+ * Raised when what the room and a page say to each other changes so that a
+ * page from before can't follow: open pages then reload to the new app
+ * (app-frontend lib/updates.ts). Anything else a deploy changes leaves them be.
+ */
+export const PROTOCOL_VERSION = 1;
+
 export const HEARTBEAT_PING = "ping";
 export const HEARTBEAT_PONG = "pong";
 
@@ -254,6 +263,8 @@ export type ClientMessage =
    * Google from it (the API keeps it; this tells the floor, without walking out and back in).
    */
   | { t: "rename"; name: string }
+  /** You changed how you look (the API keeps it; this tells the floor): a premade or a look (look.ts). */
+  | { t: "look"; character: string }
   | { t: "board_sync" }
   | ({ t: "board_draw" } & BoardStroke)
   | { t: "board_clear" }
@@ -275,6 +286,10 @@ export type ClientMessage =
   | { t: "call_usage"; call: boolean; video: boolean }
   /** Make this desk yours, in an office: any desk you had before is let go. */
   | { t: "desk_claim"; seat: number }
+  /** A change to a piece of your own desk (office.ts, canChange): null puts it back as the floor has it. */
+  | { t: "piece"; key: string; change: PieceChange | null }
+  /** Your desk back as the floor has it: everything on it, and its chair. */
+  | { t: "desk_reset" }
   /** A wave to someone on the floor, as they come in or back to one (docs/product.md). */
   | { t: "wave"; to: string }
   | ({ t: "sfu" } & SfuClientMessage);
@@ -293,7 +308,13 @@ export type ServerMessage =
       usage: MeetingUsage;
       /** Whose desk is whose, in an office; empty in the lobby. */
       desks: Desk[];
+      /** What people have made of their desks, by piece (office.ts); empty in the lobby. */
+      pieces?: PieceChanges;
     }
+  /** Someone changed a piece of their desk; null when it went back to how the floor has it. */
+  | { t: "piece"; key: string; change: PieceChange | null; by: string }
+  /** Many pieces changed at once (a desk let go goes back to the floor's): all of them, whole. */
+  | { t: "pieces"; pieces: PieceChanges }
   /** The desks changed: someone made one theirs, moved, or left the office. */
   | { t: "desks"; desks: Desk[] }
   /** Someone came onto the floor; `arrived` when they walked into an office, not back after a dropped connection. */
@@ -320,6 +341,7 @@ export type ServerMessage =
   | { t: "note"; id: string; note: StatusNote | null }
   | { t: "listening"; id: string; on: boolean }
   | { t: "renamed"; id: string; name: string }
+  | { t: "look"; id: string; character: string }
   | { t: "board_state"; strokes: BoardStroke[] }
   | ({ t: "board_draw"; by: string } & BoardStroke)
   | { t: "board_clear"; by: string }

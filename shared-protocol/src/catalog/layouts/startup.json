@@ -1,0 +1,190 @@
+{
+ "id": "startup",
+ "name": "Startup",
+ "shell": "office",
+ "seed": 48213,
+ "anchors": {
+  "zones": [
+   {
+    "name": "meeting",
+    "x": 32,
+    "y": 64,
+    "width": 416,
+    "height": 448
+   }
+  ],
+  "table": {
+   "x": 96,
+   "y": 224,
+   "width": 224,
+   "height": 96
+  },
+  "whiteboard": {
+   "x": 704,
+   "y": 0,
+   "width": 96,
+   "height": 64
+  }
+ },
+ "items": [
+  {
+   "id": "lpadec",
+   "item": "desk-cluster-maple",
+   "x": 576,
+   "y": 224,
+   "size": {
+    "cols": 2,
+    "sides": 2
+   }
+  },
+  {
+   "id": "5agmx8",
+   "item": "desk-cluster-maple",
+   "x": 1024,
+   "y": 384,
+   "size": {
+    "cols": 2,
+    "sides": 2
+   }
+  },
+  {
+   "id": "yeqfol",
+   "item": "desk-cluster-maple",
+   "x": 608,
+   "y": 608,
+   "size": {
+    "cols": 2,
+    "sides": 2
+   }
+  },
+  {
+   "id": "cx8d9m",
+   "item": "desk-cluster-maple",
+   "x": 1056,
+   "y": 768,
+   "size": {
+    "cols": 2,
+    "sides": 2
+   }
+  },
+  {
+   "id": "he59g6",
+   "item": "meeting-table",
+   "x": 96,
+   "y": 224
+  },
+  {
+   "id": "z43bhw",
+   "item": "chair-black-mesh",
+   "x": 128,
+   "y": 192
+  },
+  {
+   "id": "glog2r",
+   "item": "chair-black-back",
+   "x": 128,
+   "y": 288
+  },
+  {
+   "id": "ss7nl1",
+   "item": "chair-black-mesh",
+   "x": 192,
+   "y": 192
+  },
+  {
+   "id": "o7ltoz",
+   "item": "chair-black-back",
+   "x": 192,
+   "y": 288
+  },
+  {
+   "id": "z44bp4",
+   "item": "chair-black-mesh",
+   "x": 256,
+   "y": 192
+  },
+  {
+   "id": "2u8ufq",
+   "item": "chair-black-back",
+   "x": 256,
+   "y": 288
+  },
+  {
+   "id": "6nb5m8",
+   "item": "meeting-table-small",
+   "x": 160,
+   "y": 736
+  },
+  {
+   "id": "hdref1",
+   "item": "chair-tan-mesh",
+   "x": 192,
+   "y": 704
+  },
+  {
+   "id": "uxc2ff",
+   "item": "chair-tan-back",
+   "x": 192,
+   "y": 800
+  },
+  {
+   "id": "j5kmha",
+   "item": "chair-tan-mesh",
+   "x": 256,
+   "y": 704
+  },
+  {
+   "id": "vfoow4",
+   "item": "chair-tan-back",
+   "x": 256,
+   "y": 800
+  },
+  {
+   "id": "s2frh8",
+   "item": "wall-vending",
+   "x": 64,
+   "y": 512
+  },
+  {
+   "id": "154bjy",
+   "item": "wall-cooler",
+   "x": 192,
+   "y": 512
+  },
+  {
+   "id": "q4tqud",
+   "item": "wall-coffee-table",
+   "x": 256,
+   "y": 512
+  },
+  {
+   "id": "05imfh",
+   "item": "mini-fridge",
+   "x": 368,
+   "y": 544
+  },
+  {
+   "id": "7z1k75",
+   "item": "plant-tall",
+   "x": 48,
+   "y": 912
+  },
+  {
+   "id": "0z4q8s",
+   "item": "plant-snake",
+   "x": 400,
+   "y": 912
+  },
+  {
+   "id": "ru2kty",
+   "item": "plant-small",
+   "x": 336,
+   "y": 768
+  }
+ ],
+ "overrides": {
+  "lpadec/back-0/things/0": {
+   "hidden": true
+  }
+ }
+}

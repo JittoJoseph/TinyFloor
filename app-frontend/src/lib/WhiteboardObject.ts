@@ -4,6 +4,7 @@ import { sceneText } from "./sceneText";
 import type { GoTo } from "./MovementManager";
 import type { ActionAt } from "./actions";
 import { SceneLabel, tagName } from "./SceneLabel";
+import { decorateState } from "./decorate";
 
 /** Close enough to open it with E, and for it to light up. */
 const REACH = 210;
@@ -73,6 +74,7 @@ export class WhiteboardObject {
       .setDepth(bottom + 0.1)
       .setInteractive({ useHandCursor: true })
       .on("pointerdown", (pointer: Phaser.Input.Pointer) => {
+        if (decorateState().desk) return;
         pointer.event.stopPropagation();
         goTo(this.spot.x, this.spot.y + STAND_GAP, () => whiteboard.setOpen(true));
       });

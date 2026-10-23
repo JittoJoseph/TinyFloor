@@ -265,10 +265,8 @@
       "office": "Bureau",
       "plan": "Offre et facturation"
     },
-    "appearance": "Apparence",
     "themeNote": "« Système » suit votre appareil.",
-    "language": "Langue",
-    "languageTitle": "Langue",
+    "languageTitle": "Langue d'affichage",
     "languageNote": "Pour les menus, les boutons et les messages de TinyFloor.",
     "devices": "Appareils",
     "devicesNote": "Utilisés la prochaine fois que vous activez micro ou caméra.",
@@ -300,7 +298,16 @@
     "desktopNotifications": "Afficher les notifications",
     "desktopNote": "Messages privés et mentions, même quand TinyFloor est fermé. Appels et saluts quand il est ouvert dans une autre fenêtre.",
     "desktopBlocked": "Bloquées par votre navigateur. Autorisez les notifications pour ce site depuis l'icône à côté de la barre d'adresse.",
-    "turnOn": "Activer"
+    "turnOn": "Activer",
+    "descriptions": {
+      "profile": "Comment les autres vous voient, dans chaque bureau.",
+      "signin": "Comment vous accédez à votre compte.",
+      "general": "L'apparence de TinyFloor et sa langue.",
+      "media": "Votre micro et votre caméra, et comment vous sonnez.",
+      "notifications": "Ce qui vous signale qu'il se passe quelque chose.",
+      "accessibility": "Animations et performances, selon vous et votre appareil.",
+      "plan": "La formule de votre bureau et son paiement."
+    }
   },
   "scene": {
     "meeting": "Réunion",
@@ -415,7 +422,8 @@
       "domainOff": "Ne le trouvent pas",
       "domainAskNote": "Elles trouvent ce bureau grâce à leur adresse pro et demandent à entrer. Un admin les fait entrer.",
       "domainOpenNote": "Toute personne connectée avec une adresse @{domain} peut entrer directement.",
-      "domainOffNote": "Seules les personnes qui ont le lien d'invitation peuvent rejoindre."
+      "domainOffNote": "Seules les personnes qui ont le lien d'invitation peuvent rejoindre.",
+      "leaveButton": "Quitter"
     },
     "profile": {
       "changePassword": "Changer le mot de passe",
@@ -450,7 +458,6 @@
         "signin": "Connexion",
         "appearance": "Apparence"
       },
-      "profileNote": "Votre nom et votre lien, partout où vous entrez.",
       "password": "Mot de passe",
       "passwordSet": "Connectez-vous avec votre e-mail et votre mot de passe.",
       "signOutNote": "Déconnectez-vous de TinyFloor dans ce navigateur.",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "Automatique",
       "timeZoneChange": "Modifier",
       "timeZoneSearch": "Rechercher une ville",
-      "timeZoneNone": "Aucun fuseau horaire ne correspond"
+      "timeZoneNone": "Aucun fuseau horaire ne correspond",
+      "methods": "Moyens de connexion",
+      "thisBrowser": "Ce navigateur",
+      "signedInAs": "Connecté en tant que {name}"
     },
     "invite": {
       "invalidTitle": "Cette invitation ne fonctionne pas",
@@ -806,6 +816,76 @@
     "claimTitle": "Prendre ce bureau ?",
     "claimNote": "Votre bureau actuel sera libéré.",
     "claimed": "Pris"
+  },
+  "decorate": {
+    "open": "Décorer",
+    "title": "Décorer votre bureau",
+    "close": "Fermer",
+    "things": "Objets",
+    "chair": "Chaise",
+    "shelf": {
+      "all": "Tout",
+      "tech": "Tech",
+      "lamps": "Lampes",
+      "personal": "Perso",
+      "setups": "Postes",
+      "chairs": "Chaises"
+    },
+    "hint": "Choisissez un objet pour votre bureau. Faites glisser les objets pour les déplacer.",
+    "swapHint": "Choisissez un objet pour le remplacer.",
+    "full": "Votre bureau est plein : retirez un objet pour en ajouter.",
+    "count": "Objets : {count} sur {max}",
+    "undo": "Annuler",
+    "redo": "Rétablir",
+    "reset": "Réinitialiser",
+    "resetConfirm": "Remettre votre bureau comme à l'origine ?",
+    "cancel": "Annuler",
+    "done": "Terminé",
+    "remove": "Retirer du bureau",
+    "deselect": "Terminé"
+  },
+  "look": {
+    "open": "Changer d'apparence",
+    "title": "Votre apparence",
+    "walk": "Marcher",
+    "turnLeft": "Tourner à gauche",
+    "turnRight": "Tourner à droite",
+    "randomize": "Au hasard",
+    "tabs": {
+      "characters": "Personnages",
+      "skin": "Peau",
+      "hair": "Cheveux",
+      "outfit": "Tenue",
+      "extras": "Accessoires"
+    },
+    "presets": "Personnages",
+    "starts": "Créez le vôtre à partir de",
+    "parts": {
+      "hair": "Cheveux",
+      "outfit": "Tenue",
+      "face": "Visage",
+      "glasses": "Lunettes",
+      "hat": "Chapeau",
+      "gloves": "Gants",
+      "bag": "Sac"
+    },
+    "skin": "Peau",
+    "eyes": "Yeux",
+    "none": "Aucun",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "own": "Votre propre apparence",
+    "presetNote": "Un des personnages prêts à l’emploi",
+    "ownNote": "Créé dans l’éditeur de personnage",
+    "change": "Changer",
+    "colour": "Couleur",
+    "style": "Style"
+  },
+  "you": {
+    "customizeDesk": "Personnaliser votre bureau",
+    "noDeskTitle": "Pas encore de bureau",
+    "noDesk": "Asseyez-vous à un bureau libre pour le réserver",
+    "atDesk": "À votre bureau"
   },
   "note": {
     "title": "Note de statut",

@@ -126,3 +126,12 @@ html.app {
     outline: none;
   }
 }
+
+/* Whatever can be pressed shows the hand: every button, link-like control and
+   label for one, unless it's disabled. A control that means otherwise (grab,
+   text) says so itself. */
+@layer base {
+  :where(button, [role="button"], [role="tab"], [role="radio"], [role="menuitem"], [role="option"], [role="switch"], [role="checkbox"], summary, label[for], select):not(:disabled, [aria-disabled="true"]) {
+    cursor: pointer;
+  }
+}

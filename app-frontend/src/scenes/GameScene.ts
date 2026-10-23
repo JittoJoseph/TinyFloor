@@ -1,4 +1,4 @@
-import { onFloorRename, onFloorShown, WALK_TO_PERSON_EVENT, WAVE_EVENT } from "../lib/floor";
+import { floorStep, onFloorLook, onFloorRename, onFloorShown, WALK_TO_PERSON_EVENT, WAVE_EVENT } from "../lib/floor";
 import type { StatusNote } from "@shared/messages";
 import * as Phaser from "phaser";
 import type { RoomTicket } from "@/lib/api";
@@ -11,6 +11,8 @@ import { MovementManager } from "../lib/MovementManager";
 import { MapManager } from "../lib/MapManager";
 import { SeatManager } from "../lib/SeatManager";
 import { attachDesks } from "../lib/desks";
+import { attachDecorate } from "../lib/decorate";
+import { DeskDecorator } from "../lib/DeskDecorator";
 import { MessageHandler } from "../lib/MessageHandler";
 import { WhiteboardObject } from "../lib/WhiteboardObject";
 import { whiteboard } from "../lib/WhiteboardManager";
@@ -53,6 +55,10 @@ function zoomFor(width: number, height: number, mapWidth: number, mapHeight: num
 class GameScene extends Phaser.Scene {
   private player!: Phaser.GameObjects.Sprite;
   private wsManager!: RoomSocket;
+  /** Left before or after starting (leave): the room isn't joined. */
+  private left = false;
+  /** Where you appear, chosen before the room is joined. */
+  private spawnTile!: { tileX: number; tileY: number };
   private playerManager!: PlayerManager;
   private proximityManager!: ProximityManager;
   private animationManager!: AnimationManager;
@@ -61,9 +67,11 @@ class GameScene extends Phaser.Scene {
   private messageHandler!: MessageHandler;
   private whiteboardObject?: WhiteboardObject;
   private seatManager?: SeatManager;
+  private deskDecorator?: DeskDecorator;
   private windowListeners: Array<[string, EventListener]> = [];
   private unsubscribeShown?: () => void;
   private unsubscribeRename?: () => void;
+  private unsubscribeLook?: () => void;
   /** The meeting room, and whether we stand in it. */
   private meetingZone?: MapAnchor;
   private insideRoom = false;
@@ -83,11 +91,36 @@ class GameScene extends Phaser.Scene {
   }
 
   preload() {
+    floorStep("scene");
     this.mapManager = new MapManager(this);
     this.mapManager.preload();
 
     this.animationManager = new AnimationManager(this);
-    this.animationManager.preload();
+    this.animationManager.preload(this.character);
+
+    const mapWidth = this.mapManager.getMapWidth();
+    const mapHeight = this.mapManager.getMapHeight();
+    this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
+    this.cameras.main.setZoom(zoomFor(this.scale.width, this.scale.height, mapWidth, mapHeight));
+    this.spawnTile = this.mapManager.getRandomSpawnTile();
+
+    // The room is joined now, while the files load and the floor is built, not
+    // after: what it says meanwhile waits for create to listen (below). A
+    // reconnect puts you back where you were, not at the spawn tile.
+    this.wsManager = new RoomSocket(this.ticketFor, () => {
+      const tile = this.player ? pixelToTile(this.player.x, this.player.y) : this.spawnTile;
+      return { x: tile.tileX, y: tile.tileY };
+    });
+    if (!this.left) this.wsManager.connect();
+  }
+
+  /**
+   * Leaving, whether or not the game ever got going: a game torn down while it
+   * was still starting never joins the room, and one that has lets go of it.
+   */
+  leave() {
+    this.left = true;
+    this.wsManager?.disconnect();
   }
 
   create() {
@@ -95,19 +128,7 @@ class GameScene extends Phaser.Scene {
     this.mapManager.create();
 
     const nav = this.mapManager.getNavGrid();
-    const mapWidth = this.mapManager.getMapWidth();
-    const mapHeight = this.mapManager.getMapHeight();
-    this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
-    this.cameras.main.setZoom(zoomFor(this.scale.width, this.scale.height, mapWidth, mapHeight));
-
-    const spawnTile = this.mapManager.getRandomSpawnTile();
-    const spawn = tileToPixel(spawnTile.tileX, spawnTile.tileY);
-
-    // A reconnect puts you back where you were, not at the spawn tile.
-    this.wsManager = new RoomSocket(this.ticketFor, () => {
-      const tile = this.player ? pixelToTile(this.player.x, this.player.y) : spawnTile;
-      return { x: tile.tileX, y: tile.tileY };
-    });
+    const spawn = tileToPixel(this.spawnTile.tileX, this.spawnTile.tileY);
     attachDesks((message) => this.wsManager.send(message));
 
     this.playerManager = new PlayerManager(this, this.animationManager, nav, this.playerId);
@@ -127,15 +148,24 @@ class GameScene extends Phaser.Scene {
       this.animationManager,
       this.mapManager.getChairs(),
       this.playerId,
-      this.mapManager.getAnchors("Table")[0],
+      this.mapManager.getTable(),
     );
     const approach = (x: number, y: number, arrive: () => void) => this.movementManager.goTo(x, y, arrive);
     this.seatManager.attach(this.wsManager, (seated) => this.movementManager.setFrozen(seated, () => this.seatManager?.leave()), approach);
-    this.meetingZone = this.mapManager.getAnchors("Zones").find((zone) => zone.name === MEETING_ZONE);
+    this.meetingZone = this.mapManager.getZone(MEETING_ZONE);
+
+    // Decorating your desk: the camera and your feet are the decorator's until it's done.
+    attachDecorate((message) => this.wsManager.send(message), this.playerId);
+    this.deskDecorator = new DeskDecorator(this, this.mapManager, (decorating) => {
+      this.movementManager.setInputEnabled(!decorating);
+      if (decorating) return;
+      // Back to following you: the camera glides there.
+      this.cameras.main.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);
+    });
 
     callManager.attach(this.wsManager);
     whiteboard.attach(this.wsManager);
-    const board = this.mapManager.getAnchors("Whiteboard")[0];
+    const board = this.mapManager.getWhiteboard();
     if (board) {
       this.whiteboardObject = new WhiteboardObject(this, this.player, board, approach, (id) => this.playerManager.getPlayerName(id));
     }
@@ -158,7 +188,6 @@ class GameScene extends Phaser.Scene {
       this.player,
       (message) => this.wsManager.send(message),
     );
-    this.wsManager.setOnMessage((message) => this.messageHandler.handleMessage(message));
     // Joining a meeting from anywhere walks you into the meeting room, where everyone sees you go.
     this.listen(WALK_TO_MEETING_EVENT, () => this.walkIntoMeetingRoom());
 
@@ -187,7 +216,7 @@ class GameScene extends Phaser.Scene {
     });
     this.listen(WAVE_EVENT, (event: CustomEvent<{ id: string }>) => this.wsManager.send({ t: "wave", to: event.detail.id }));
     this.listen("chatFocused", () => this.movementManager.setInputEnabled(false));
-    this.listen("chatBlurred", () => this.movementManager.setInputEnabled(true));
+    this.listen("chatBlurred", () => this.movementManager.setInputEnabled(!this.deskDecorator?.active()));
 
     // Under a view the floor isn't seen, so it isn't drawn; it keeps running.
     this.unsubscribeShown = onFloorShown((shown) => this.sys.setVisible(shown));
@@ -195,9 +224,14 @@ class GameScene extends Phaser.Scene {
       this.wsManager.send({ t: "rename", name });
       this.playerManager.renamePlayer(this.playerId, name);
     });
+    this.unsubscribeLook = onFloorLook((character) => {
+      this.wsManager.send({ t: "look", character });
+      this.playerManager.changeLook(this.playerId, character);
+    });
 
-    // Everything is listening now, so nothing the room says first is missed.
-    this.wsManager.connect();
+    // Everything is listening now: what the room has said so far, its welcome first, is heard from here.
+    floorStep("built");
+    this.wsManager.listen((message) => this.messageHandler.handleMessage(message));
   }
 
   /**
@@ -207,6 +241,8 @@ class GameScene extends Phaser.Scene {
    */
   private fitCamera(width: number, height: number) {
     const camera = this.cameras.main;
+    // Decorating holds its own close view; the usual one comes back when it's done.
+    if (this.deskDecorator?.active()) return;
     const zoom = zoomFor(width, height, this.mapManager.getMapWidth(), this.mapManager.getMapHeight());
     camera.setZoom(zoom);
     camera.setDeadzone(Math.min(120, width * 0.2), Math.min(90, height * 0.12));
@@ -251,7 +287,7 @@ class GameScene extends Phaser.Scene {
       .map(({ x, y }) => pixelToTile(x, y));
     const spot = standingSpot({
       zone,
-      table: this.mapManager.getAnchors("Table")[0],
+      table: this.mapManager.getTable(),
       nav: this.mapManager.getNavGrid(),
       chairs: this.mapManager.getChairs(),
       taken,
@@ -301,6 +337,7 @@ class GameScene extends Phaser.Scene {
     this.proximityManager.update();
     if (this.meetingZone) this.watchMeetingRoom();
     this.whiteboardObject?.update(time);
+    this.deskDecorator?.update();
     this.offerNearestAction();
   }
 
@@ -322,6 +359,7 @@ class GameScene extends Phaser.Scene {
     offerAction(null);
     this.unsubscribeShown?.();
     this.unsubscribeRename?.();
+    this.unsubscribeLook?.();
 
     this.movementManager?.destroy();
     this.wsManager?.disconnect();
@@ -329,6 +367,9 @@ class GameScene extends Phaser.Scene {
     this.proximityManager?.destroy();
     callManager.detach();
     attachDesks(null);
+    this.deskDecorator?.destroy();
+    attachDecorate(null, null);
+    this.mapManager?.destroy();
     whiteboard.detach();
     this.whiteboardObject?.destroy();
     this.seatManager?.destroy();

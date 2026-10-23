@@ -53,8 +53,6 @@ const pct = (value: number, of: number) => `${((value / of) * 100).toFixed(4)}%`
 
 /** The seated pose's offset from the chair, from SeatManager's SEAT table, in tiles. */
 const SEAT_DY: Record<Face, number> = { down: -12 / TILE_PX, up: -1, left: -20 / TILE_PX, right: -20 / TILE_PX };
-/** Frame of each seated pose in the character atlas (24 idle, 24 run, then down, left, right, up). */
-const SIT_FRAME: Record<Face, number> = { down: 48, left: 49, right: 50, up: 51 };
 
 export function FloorScene({
   view,
@@ -185,15 +183,7 @@ function Seated({ character, name, status, chair }: Sitter) {
   return (
     <>
       <div className="absolute" style={{ left: pct(x, MAP.width), top: pct(y, MAP.height) }}>
-        <span
-          className="absolute left-0 top-0 aspect-square -translate-x-1/2 -translate-y-full bg-no-repeat [image-rendering:pixelated]"
-          style={{
-            width: `calc(${TILE} * 2)`,
-            backgroundImage: `url(/characters/${character}.png)`,
-            backgroundSize: "5200% 100%",
-            backgroundPositionX: `${((SIT_FRAME[face] / 51) * 100).toFixed(4)}%`,
-          }}
-        />
+        <PixelAvatar character={character} direction={face} sitting width={TILE} style={{ left: 0, top: 0 }} />
         {face !== "up" && <Plate name={name} status={status} />}
       </div>
       {/* Whatever the app draws in front of them: the desk over their legs, or the chair's back. */}

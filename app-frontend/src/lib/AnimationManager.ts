@@ -1,15 +1,7 @@
 import * as Phaser from "phaser";
-import { FLOOR_FILES } from "@/lib/floorWarmup";
+import { characterOrDefault } from "@shared/character";
+import { FRAME_H, FRAME_W, SHEET_FRAMES, characterSheet, drawnSheet, frameOf } from "@/lib/characterSheet";
 
-export type CharacterName =
-  | "Adam"
-  | "Alex"
-  | "Amelia"
-  | "Ash"
-  | "Bob"
-  | "Dan"
-  | "Lucy"
-  | "Molly";
 export type AnimationState = "idle" | "run";
 export type Direction =
   | "right"
@@ -23,19 +15,10 @@ export type Direction =
 
 export type CardinalDirection = "right" | "up" | "left" | "down";
 
-/**
- * Frame layout of the generated character atlases: 24 idle, 24 run, then one
- * seated pose per direction. Every frame is 32x32 so a single spritesheet and a
- * single origin cover standing and sitting alike.
- */
-const IDLE_BASE = 0;
-const RUN_BASE = 24;
-const SIT_BASE = 48;
-const PER_DIRECTION = 6;
 const DIRECTION_ORDER: CardinalDirection[] = ["right", "up", "left", "down"];
-const SIT_ORDER: CardinalDirection[] = ["down", "left", "right", "up"];
-
-const FRAME_SIZE = 32;
+const FRAME_RATE = 10;
+/** What a sprite shows while its character's sheet is still being drawn: nothing. */
+const BLANK = "character:blank";
 
 export function directionFromVector(
   x: number,
@@ -62,72 +45,104 @@ function toCardinal(direction: Direction): CardinalDirection {
   return mapping[direction] ?? "down";
 }
 
+/** What a sprite is doing, kept on it so it carries on when its character changes or finishes drawing. */
+type Pose = { state: AnimationState; direction: CardinalDirection } | { sit: CardinalDirection };
+
+/**
+ * Characters on the floor. Every character's sheet comes from the one place
+ * every character is drawn (lib/characterSheet), as a texture of its own at
+ * the art's size, with its walking and standing animations; sprites wear one,
+ * and are told what to do (play, sit), which they keep doing through a change
+ * of character. A sheet takes a moment the first time anyone wears it; until
+ * then the sprite shows nothing.
+ */
 export class AnimationManager {
-  private scene: Phaser.Scene;
-  private static readonly CHARACTERS: CharacterName[] = [
-    "Adam",
-    "Alex",
-    "Amelia",
-    "Ash",
-    "Bob",
-    "Dan",
-    "Lucy",
-    "Molly",
-  ];
-  private static readonly FRAME_RATE = 10;
+  constructor(private scene: Phaser.Scene) {}
 
-  constructor(scene: Phaser.Scene) {
-    this.scene = scene;
-  }
-
-  preload() {
-    AnimationManager.CHARACTERS.forEach((char) => {
-      this.scene.load.spritesheet(char, FLOOR_FILES.character(char), {
-        frameWidth: FRAME_SIZE,
-        frameHeight: FRAME_SIZE,
-      });
-    });
+  /** Your own character starts drawing with the floor, so you arrive as yourself. */
+  preload(own?: string) {
+    void characterSheet(characterOrDefault(own)).catch(() => {});
   }
 
   create() {
-    AnimationManager.CHARACTERS.forEach((char) => {
-      // A character is 16px art drawn at 2.4x, so smooth sampling smears it and
-      // nearest keeps it crisp. The map stays smooth: at a zoom that is not a
-      // whole number, nearest makes every thin line on the floor flicker between
-      // two and three pixels thick as the camera moves.
-      this.scene.textures
-        .get(char)
-        .setFilter(Phaser.Textures.FilterMode.NEAREST);
-      this.createAnimSet(char, "idle", IDLE_BASE);
-      this.createAnimSet(char, "run", RUN_BASE);
-    });
+    if (!this.scene.textures.exists(BLANK)) this.scene.textures.addCanvas(BLANK, Object.assign(document.createElement("canvas"), { width: FRAME_W, height: FRAME_H }));
   }
 
-  private createAnimSet(char: CharacterName, state: AnimationState, base: number) {
-    DIRECTION_ORDER.forEach((name, index) => {
-      const start = base + index * PER_DIRECTION;
-      this.scene.anims.create({
-        key: `${char}_${state}_${name}`,
-        frames: this.scene.anims.generateFrameNumbers(char, {
-          start,
-          end: start + PER_DIRECTION - 1,
-        }),
-        frameRate: AnimationManager.FRAME_RATE,
-        repeat: -1,
+  /** A new sprite for a character, standing at its feet. */
+  sprite(x: number, y: number, character: string): Phaser.GameObjects.Sprite {
+    const sprite = this.scene.add.sprite(x, y, BLANK).setOrigin(0.5, 1);
+    this.wear(sprite, character);
+    return sprite;
+  }
+
+  /** Puts a character on a sprite, drawing its sheet if nobody's worn it yet: it carries on as it was. */
+  wear(sprite: Phaser.GameObjects.Sprite, character: string) {
+    const wearing = characterOrDefault(character);
+    sprite.setData("wearing", wearing);
+    const key = this.textureFor(wearing);
+    if (key) return this.dress(sprite, key);
+    characterSheet(wearing)
+      .then(() => {
+        const ready = this.textureFor(wearing);
+        if (ready && sprite.active && sprite.getData("wearing") === wearing) this.dress(sprite, ready);
+      })
+      .catch(() => {});
+  }
+
+  /** Standing or walking, facing a way. */
+  play(sprite: Phaser.GameObjects.Sprite, state: AnimationState, direction: Direction) {
+    const pose: Pose = { state, direction: toCardinal(direction) };
+    sprite.setData("pose", pose);
+    this.show(sprite, pose);
+  }
+
+  /** Seated, facing a way: one pose. */
+  sit(sprite: Phaser.GameObjects.Sprite, direction: CardinalDirection) {
+    const pose: Pose = { sit: direction };
+    sprite.setData("pose", pose);
+    this.show(sprite, pose);
+  }
+
+  /** The texture for a character, made from its sheet once it's drawn. */
+  private textureFor(character: string): string | null {
+    const key = `character:${character}`;
+    if (this.scene.textures.exists(key)) return key;
+    const sheet = drawnSheet(character);
+    if (!sheet) return null;
+    const texture = this.scene.textures.addCanvas(key, sheet);
+    if (!texture) return null;
+    for (let n = 0; n < SHEET_FRAMES; n++) texture.add(n, 0, n * FRAME_W, 0, FRAME_W, FRAME_H);
+    // Nearest keeps the art's pixels crisp. The map stays smooth: at a zoom that is not a whole
+    // number, nearest makes every thin line on the floor flicker between two and three pixels thick.
+    texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
+    for (const state of ["idle", "run"] as const) {
+      DIRECTION_ORDER.forEach((direction) => {
+        const start = frameOf(state === "run" ? "walk" : "idle", direction);
+        this.scene.anims.create({
+          key: `${key}_${state}_${direction}`,
+          frames: this.scene.anims.generateFrameNumbers(key, { start, end: start + 5 }),
+          frameRate: FRAME_RATE,
+          repeat: -1,
+        });
       });
-    });
+    }
+    return key;
   }
 
-  getAnimationKey(
-    char: string,
-    state: AnimationState,
-    direction: Direction,
-  ): string {
-    return `${char}_${state}_${toCardinal(direction)}`;
+  private dress(sprite: Phaser.GameObjects.Sprite, key: string) {
+    if (sprite.texture.key === key) return;
+    sprite.setTexture(key, 0);
+    this.show(sprite, sprite.getData("pose") as Pose | undefined);
   }
 
-  /** Sitting is a single pose, so it is a frame index rather than an animation. */
-  getSitFrame(direction: CardinalDirection): number {
-    return SIT_BASE + SIT_ORDER.indexOf(direction);
+  private show(sprite: Phaser.GameObjects.Sprite, pose: Pose | undefined) {
+    const key = sprite.texture.key;
+    if (key === BLANK || !pose) return;
+    if ("sit" in pose) {
+      sprite.stop();
+      sprite.setFrame(frameOf("sit", pose.sit));
+    } else {
+      sprite.play(`${key}_${pose.state}_${pose.direction}`, true);
+    }
   }
 }

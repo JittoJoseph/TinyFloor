@@ -2,11 +2,10 @@
 
 import { useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Check, ChevronRight, Desk, DoorOpen, HelpCircle, LogOut, MonitorDown, Settings2, UserPlus } from "@/components/ui/icons";
+import { Check, ChevronRight, DoorOpen, HelpCircle, LogOut, MonitorDown, Settings2, UserPlus } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { setMyStatus, useMyNote, useMyStatus } from "@/lib/floor";
-import { deskOf, goToMyDesk, useDesks } from "@/lib/desks";
 import { NoteGlyph } from "@/lib/noteIcons";
 import type { NoteIcon } from "@shared/messages";
 import { NoteOptions, NoteRow } from "./StatusNote";
@@ -58,7 +57,6 @@ export function YouMenu({
   leave?: { href: string; label: string };
 }) {
   const t = useTranslations("shell");
-  const tDesk = useTranslations("desk");
   const tHelp = useTranslations("help");
   const tStatus = useTranslations("status");
   const router = useRouter();
@@ -72,10 +70,6 @@ export function YouMenu({
   const canInstall = useCanInstall();
   const office = useOfficeMaybe()?.office ?? null;
   const { others, load } = useOtherOffices(office?.id ?? "");
-  const { desks, seat } = useDesks();
-  // On the floor, the way back to your desk from anywhere on it, while you're not at it.
-  const desk = onFloor && office && user ? deskOf(desks, user.id) : undefined;
-  const myDesk = desk && desk.seat !== seat ? desk : undefined;
   if (!user) return null;
   const close = () => setOpen(null);
   const inCall = status === "in_call";
@@ -206,11 +200,6 @@ export function YouMenu({
         <MusicOptions onDone={close} />,
       )}
 
-      {myDesk && (
-        <MenuItem icon={<Desk />} onSelect={goToMyDesk}>
-          {tDesk("goTo")}
-        </MenuItem>
-      )}
 
       {/* A line only when something follows it: on a wide screen, Settings and Help are on the rail. */}
       {(isGuest || (!!settingsHref && !wide) || (!wide && !bar) || canInstall) && <MenuSeparator />}

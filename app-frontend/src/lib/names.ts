@@ -14,8 +14,8 @@ const MEN = [
   "Liam", "Noah", "Oliver", "James", "Elijah", "Lucas", "Mason", "Logan", "Ethan", "Jacob",
   "Jack", "Henry", "Owen", "Ryan", "Nathan", "Caleb", "Dylan", "Tyler", "Austin", "Jordan",
 ];
-/** The characters drawn as women (public/characters); the rest are men. */
-const DRAWN_AS_WOMEN = new Set(["Amelia", "Lucy", "Molly"]);
+/** The presets drawn as women (shared-protocol character.ts); the rest are men. */
+const DRAWN_AS_WOMEN = new Set(["Amelia", "Lucy", "Molly", "Jenny"]);
 
 export interface Persona {
   name: string;

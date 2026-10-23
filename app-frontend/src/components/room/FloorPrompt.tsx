@@ -8,6 +8,7 @@ import { usePlace } from "@/components/app/place";
 import { useAuth } from "@/contexts/AuthContext";
 import { doAction, useActionHint } from "@/lib/actions";
 import { clearClaimed, setCanClaim, useDesks } from "@/lib/desks";
+import { useDecorate } from "@/lib/decorate";
 import { EASE_OUT } from "@/lib/ease";
 import { touchFirst } from "@/lib/touch";
 
@@ -27,6 +28,8 @@ export function FloorPrompt() {
   const place = usePlace();
   const { user } = useAuth();
   const { claimed } = useDesks();
+  // Decorating a desk, the floor is the desk's: nothing to do here meanwhile.
+  const { desk: decorating } = useDecorate();
 
   // A desk is a member's, in an office: not a guest's, and not in the lobby.
   const canClaim = place.kind === "office" && place.role !== "guest" && !!user;
@@ -45,7 +48,7 @@ export function FloorPrompt() {
 
   return (
     <AnimatePresence mode="wait">
-      {action && (
+      {action && !decorating && (
         <motion.button
           key={action}
           type="button"

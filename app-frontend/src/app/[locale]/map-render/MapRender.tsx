@@ -24,7 +24,7 @@ export function MapRender() {
         create() {
           this.map.create();
           const nobody = this.add.sprite(-9999, -9999, "__DEFAULT").setVisible(false);
-          const board = this.map.getAnchors("Whiteboard")[0];
+          const board = this.map.getWhiteboard();
           if (board) new WhiteboardObject(this, nobody, board, () => {}, () => undefined);
           this.cameras.main.setZoom(1).centerOn(this.map.getMapWidth() / 2, this.map.getMapHeight() / 2);
           // Draw a frame, then hand the picture out as a PNG.

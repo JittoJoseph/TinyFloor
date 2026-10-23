@@ -1,0 +1,401 @@
+:root {
+  --bg: #f6f6f4;
+  --panel: #ffffff;
+  --line: #e4e4e0;
+  --ink: #1c1c1e;
+  --muted: #6b6b70;
+  --accent: #1c1c1e;
+  --danger: #c4372b;
+  font: 13px/1.4 ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--ink);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--panel);
+  border-right: 1px solid var(--line);
+}
+
+.props {
+  border-right: 0;
+  border-left: 1px solid var(--line);
+  overflow-y: auto;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.tabs button {
+  border: 0;
+  background: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.tabs button[aria-selected="true"] {
+  background: var(--bg);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  min-height: 0;
+  flex: 1;
+}
+
+section[hidden] {
+  display: none;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 5px 7px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font: inherit;
+  background: #fff;
+}
+
+button {
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--bg);
+}
+
+button.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+button.primary:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+button.danger {
+  color: var(--danger);
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.list li:hover {
+  background: var(--bg);
+}
+
+.list li[aria-selected="true"] {
+  background: #ececea;
+}
+
+.list li canvas {
+  width: 32px;
+  height: 32px;
+  flex: none;
+  image-rendering: pixelated;
+}
+
+.list li small {
+  display: block;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(56px, 1fr));
+  gap: 4px;
+  overflow-y: auto;
+  flex: 1;
+  align-content: start;
+}
+
+.grid button {
+  position: relative;
+  height: 64px;
+  padding: 2px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: #f1f1ee;
+  border-color: transparent;
+}
+
+.grid button canvas {
+  max-width: 100%;
+  max-height: 100%;
+  image-rendering: pixelated;
+}
+
+.grid button span {
+  position: absolute;
+  top: 1px;
+  left: 3px;
+  font-size: 9px;
+  color: var(--muted);
+}
+
+.grid button[data-used] {
+  outline: 2px solid #3a7d44;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.toolbar label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.toolbar input {
+  width: auto;
+}
+
+.spacer {
+  flex: 1;
+}
+
+#game {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#game canvas {
+  image-rendering: pixelated;
+}
+
+.hint {
+  margin: 0;
+  padding: 8px 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  background: var(--panel);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px;
+}
+
+form[hidden] {
+  display: none;
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  color: var(--muted);
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+legend {
+  padding: 0 4px;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+legend small {
+  color: var(--muted);
+  font-weight: 400;
+}
+
+legend button {
+  padding: 1px 7px;
+  font-size: 12px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.row4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.rect {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr) auto;
+  gap: 4px;
+  align-items: center;
+}
+
+.seat {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.4fr auto;
+  gap: 4px;
+  align-items: center;
+}
+
+.rect button,
+.seat button {
+  padding: 3px 7px;
+}
+
+code {
+  font-size: 11px;
+  word-break: break-all;
+  color: var(--muted);
+}
+
+.sheet {
+  grid-column: 1 / -1;
+  image-rendering: pixelated;
+  cursor: crosshair;
+  background: #f1f1ee;
+}
+
+/* Cutting from a sheet wants it at full size. */
+body[data-tab="sources"] {
+  grid-template-columns: 540px 1fr 320px;
+}
+
+form label.inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
+form label.inline input {
+  width: auto;
+}
+
+.toolbar select,
+.toolbar input:not([type="checkbox"]) {
+  width: auto;
+}
+
+#item-fields[hidden],
+#bundle-fields[hidden],
+.item-only[hidden],
+label[hidden] {
+  display: none;
+}
+
+#item-fields,
+#bundle-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.part {
+  display: grid;
+  grid-template-columns: 1fr 56px 56px auto;
+  gap: 4px;
+  align-items: center;
+}
+
+.part .options {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 4px 0 6px;
+}
+
+.problems {
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+  max-height: 40%;
+  overflow-y: auto;
+}
+
+.problems summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--danger);
+}
+
+.problems[data-ok="true"] summary {
+  color: #3a7d44;
+}
+
+.problems li {
+  cursor: pointer;
+  color: var(--muted);
+  margin: 4px 0;
+}

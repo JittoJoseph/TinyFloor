@@ -1,5 +1,6 @@
 import { CloseCode, HEARTBEAT_PING, HEARTBEAT_PONG, type ClientMessage, type ServerMessage } from "@shared/messages";
 import { ApiError, type RoomTicket } from "@/lib/api";
+import { floorStep } from "@/lib/floor";
 
 const HEARTBEAT_MS = 30_000;
 const RECONNECT_BASE_MS = 1_000;
@@ -26,6 +27,8 @@ export const ROOM_CONNECTION_EVENT = "roomConnection";
 export class RoomSocket {
   private ws: WebSocket | null = null;
   private onMessage?: (message: ServerMessage) => void;
+  /** What the room said before anyone was listening: the floor is joined while it's still being built. */
+  private held: ServerMessage[] = [];
   private queue: ClientMessage[] = [];
   private stopped = false;
   private attempts = 0;
@@ -40,8 +43,10 @@ export class RoomSocket {
     private readonly spawn: () => { x: number; y: number },
   ) {}
 
-  setOnMessage(callback: (message: ServerMessage) => void) {
+  /** Hears the room from now on, starting with whatever it has said already. */
+  listen(callback: (message: ServerMessage) => void) {
     this.onMessage = callback;
+    for (const message of this.held.splice(0)) callback(message);
   }
 
   connect() {
@@ -91,6 +96,7 @@ export class RoomSocket {
     this.ws = ws;
 
     ws.onopen = () => {
+      floorStep("open");
       this.attempts = 0;
       announce("connected");
       this.startHeartbeat();
@@ -101,8 +107,12 @@ export class RoomSocket {
       if (event.data === HEARTBEAT_PONG) return;
       try {
         const message = JSON.parse(event.data) as ServerMessage;
-        if (message.t === "welcome") this.welcomed = true;
-        this.onMessage?.(message);
+        if (message.t === "welcome") {
+          this.welcomed = true;
+          floorStep("welcome");
+        }
+        if (this.onMessage) this.onMessage(message);
+        else this.held.push(message);
       } catch (error) {
         console.error("Bad message from the room", error);
       }

@@ -108,6 +108,13 @@ describe("lobby tickets", () => {
     });
   });
 
+  it("comes with a new guest, for the floor they're walking onto", async () => {
+    const { response } = await becomeGuest("Ava", "Molly");
+    const { lobby } = await response.json<{ lobby: { ticket: string; url: string } }>();
+    expect(lobby.url).toBe("ws://localhost:8788/lobby");
+    expect(await verifyTicket(lobby.ticket, env.TICKET_SECRET)).toMatchObject({ room: "lobby", name: "Ava", role: "guest" });
+  });
+
   it("needs a session", async () => {
     const response = await post("/v1/lobby/ticket", {});
     expect(response.status).toBe(401);

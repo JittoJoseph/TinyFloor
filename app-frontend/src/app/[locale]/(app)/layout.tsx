@@ -1,9 +1,12 @@
+import { preconnect } from "react-dom";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { AppTheme } from "@/components/app/AppTheme";
 import { LocalTimeZone } from "@/components/LocalTimeZone";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { CharacterCreatorHost } from "@/components/character/CharacterCreatorHost";
+import { API_URL } from "@/lib/api";
 
 /** What only pages put together on the server say (the shared messages the app's screens never read). */
 const SITE_ONLY = new Set(["home", "metadata", "notFound"]);
@@ -21,11 +24,14 @@ const SITE_ONLY = new Set(["home", "metadata", "notFound"]);
 export default async function AppLayout({ children, params }: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale as Locale);
+  // Every screen here asks the API first thing (who you are, your office): its connection is opened while the page's code still loads.
+  preconnect(new URL(API_URL).origin, { crossOrigin: "use-credentials" });
   return (
     <NextIntlClientProvider messages={Object.fromEntries(Object.entries(await getMessages()).filter(([key]) => !SITE_ONLY.has(key)))}>
       <LocalTimeZone>
         <AuthProvider>
           <AppTheme>{children}</AppTheme>
+          <CharacterCreatorHost />
         </AuthProvider>
       </LocalTimeZone>
     </NextIntlClientProvider>

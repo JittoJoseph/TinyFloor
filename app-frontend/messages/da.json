@@ -265,10 +265,8 @@
       "office": "Kontor",
       "plan": "Plan og betaling"
     },
-    "appearance": "Udseende",
     "themeNote": "\"System\" følger din enhed.",
-    "language": "Sprog",
-    "languageTitle": "Sprog",
+    "languageTitle": "Visningssprog",
     "languageNote": "Til menuer, knapper og beskeder fra TinyFloor.",
     "devices": "Enheder",
     "devicesNote": "Bruges næste gang, du tænder mikrofonen eller kameraet.",
@@ -300,7 +298,16 @@
     "desktopNotifications": "Vis notifikationer",
     "desktopNote": "Direkte beskeder og omtaler, også når TinyFloor er lukket. Opkald og vink, mens det er åbent i et andet vindue.",
     "desktopBlocked": "Blokeret af din browser. Tillad notifikationer for siden via ikonet ved adresselinjen.",
-    "turnOn": "Slå til"
+    "turnOn": "Slå til",
+    "descriptions": {
+      "profile": "Sådan ser andre dig, i alle kontorer.",
+      "signin": "Sådan kommer du ind på din konto.",
+      "general": "Hvordan TinyFloor ser ud, og hvilket sprog det bruger.",
+      "media": "Din mikrofon og dit kamera, og hvordan du lyder.",
+      "notifications": "Hvad der gør dig opmærksom på, at noget sker.",
+      "accessibility": "Bevægelse og ydeevne, så det passer til dig og din enhed.",
+      "plan": "Hvilken plan dit kontor har, og hvordan den betales."
+    }
   },
   "scene": {
     "meeting": "Møde",
@@ -415,7 +422,8 @@
       "domainOff": "Kan ikke finde det",
       "domainAskNote": "De finder kontoret via deres arbejdsmail og spørger. En admin lukker dem ind.",
       "domainOpenNote": "Alle, der er logget ind med en @{domain}-adresse, kan gå direkte ind.",
-      "domainOffNote": "Kun dem med invitationslinket kan deltage."
+      "domainOffNote": "Kun dem med invitationslinket kan deltage.",
+      "leaveButton": "Forlad"
     },
     "profile": {
       "changePassword": "Skift adgangskode",
@@ -450,7 +458,6 @@
         "signin": "Log ind",
         "appearance": "Udseende"
       },
-      "profileNote": "Dit navn og dit link, uanset hvor du går ind.",
       "password": "Adgangskode",
       "passwordSet": "Log ind med din e-mail og adgangskode.",
       "signOutNote": "Log ud af TinyFloor i denne browser.",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "Automatisk",
       "timeZoneChange": "Skift",
       "timeZoneSearch": "Søg efter en by",
-      "timeZoneNone": "Ingen tidszone passer"
+      "timeZoneNone": "Ingen tidszone passer",
+      "methods": "Måder at logge ind på",
+      "thisBrowser": "Denne browser",
+      "signedInAs": "Logget ind som {name}"
     },
     "invite": {
       "invalidTitle": "Invitationen virker ikke",
@@ -806,6 +816,76 @@
     "claimTitle": "Tag dette skrivebord?",
     "claimNote": "Dit nuværende skrivebord bliver ledigt.",
     "claimed": "Taget"
+  },
+  "decorate": {
+    "open": "Indret",
+    "title": "Indret dit skrivebord",
+    "close": "Luk",
+    "things": "Ting",
+    "chair": "Stol",
+    "shelf": {
+      "all": "Alle",
+      "tech": "Teknik",
+      "lamps": "Lamper",
+      "personal": "Personligt",
+      "setups": "Opsætninger",
+      "chairs": "Stole"
+    },
+    "hint": "Vælg noget at stille på dit skrivebord. Træk i tingene for at flytte dem.",
+    "swapHint": "Vælg noget at bytte det ud med.",
+    "full": "Dit skrivebord er fyldt: fjern noget for at tilføje mere.",
+    "count": "Ting: {count} af {max}",
+    "undo": "Fortryd",
+    "redo": "Gentag",
+    "reset": "Nulstil",
+    "resetConfirm": "Sæt dit skrivebord tilbage, som det var?",
+    "cancel": "Annuller",
+    "done": "Færdig",
+    "remove": "Fjern fra skrivebordet",
+    "deselect": "Færdig med den"
+  },
+  "look": {
+    "open": "Skift udseende",
+    "title": "Dit udseende",
+    "walk": "Gå",
+    "turnLeft": "Drej til venstre",
+    "turnRight": "Drej til højre",
+    "randomize": "Tilfældig",
+    "tabs": {
+      "characters": "Figurer",
+      "skin": "Hud",
+      "hair": "Hår",
+      "outfit": "Tøj",
+      "extras": "Ekstra"
+    },
+    "presets": "Figurer",
+    "starts": "Lav din egen ud fra",
+    "parts": {
+      "hair": "Hår",
+      "outfit": "Tøj",
+      "face": "Ansigt",
+      "glasses": "Briller",
+      "hat": "Hat",
+      "gloves": "Handsker",
+      "bag": "Taske"
+    },
+    "skin": "Hud",
+    "eyes": "Øjne",
+    "none": "Ingen",
+    "cancel": "Annuller",
+    "save": "Gem",
+    "own": "Dit eget udseende",
+    "presetNote": "En af de færdige figurer",
+    "ownNote": "Lavet i figurværktøjet",
+    "change": "Skift",
+    "colour": "Farve",
+    "style": "Stil"
+  },
+  "you": {
+    "customizeDesk": "Tilpas dit skrivebord",
+    "noDeskTitle": "Intet skrivebord endnu",
+    "noDesk": "Sæt dig ved et ledigt skrivebord for at tage det",
+    "atDesk": "Ved dit skrivebord"
   },
   "note": {
     "title": "Statusnote",

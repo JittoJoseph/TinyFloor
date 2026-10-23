@@ -9,11 +9,16 @@ import {
   PRESENCE_STATUSES,
   cleanDisplayName,
   cleanNote,
+  isCharacter,
   liveNote,
   type StatusNote,
   isInsideMap,
   DESK_SEATS,
+  canChange,
   deskArrival,
+  deskOfKey,
+  deskOfSeat,
+  type PieceChange,
   MAIN_MEETING,
   MEETING_ID,
   MEETING_NAME_MAX,
@@ -39,6 +44,7 @@ import { Reporter } from "./discord";
 import { readTicket, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER, WHERE_HEADER } from "./headers";
 import { lobbyCopyNumber } from "./lobby";
 import { Desks } from "./desks";
+import { Pieces } from "./pieces";
 import { MeetingClock } from "./meeting-clock";
 import { SfuApi, SfuError, type SfuTrack } from "./sfu";
 import { Usage } from "./usage";
@@ -133,6 +139,7 @@ export class Room extends DurableObject<Env> {
   private readonly sfuApi: SfuApi;
   private usage!: Usage;
   private desks!: Desks;
+  private pieces!: Pieces;
   /** Meeting hours, made once the room knows whether it is an office or a lobby copy. */
   private clockCache: MeetingClock | null = null;
 
@@ -153,6 +160,7 @@ export class Room extends DurableObject<Env> {
     this.board = new Board(this.ctx.storage.sql);
     this.usage = new Usage(this.ctx.storage.sql, this.env.DB);
     this.desks = new Desks(this.ctx.storage.sql);
+    this.pieces = new Pieces(this.ctx.storage.sql);
   }
 
   presenceCount(): number {
@@ -207,7 +215,9 @@ export class Room extends DurableObject<Env> {
 
   /** A membership ended: that person leaves the floor, and their desk is free again. */
   async disconnectMember(userId: string): Promise<void> {
+    const desk = this.desks.of(userId);
     if (this.desks.release(userId)) this.broadcastDesks();
+    if (desk !== null) this.resetDesk(desk);
     let room: string | null = null;
     for (const socket of this.present()) {
       const attachment = this.attachmentOf(socket);
@@ -297,6 +307,7 @@ export class Room extends DurableObject<Env> {
       meetings: this.meetingsOf(room),
       usage: this.clock()!.usage(now),
       desks: office ? this.desks.list() : [],
+      pieces: office ? this.pieces.all() : {},
     });
     this.broadcast({ t: "player_joined", player: playerState(attachment), ...(arriving ? { arrived: true } : {}) }, server);
     if (renamed) this.broadcastDesks(server);
@@ -358,6 +369,9 @@ export class Room extends DurableObject<Env> {
       case "rename":
         this.rename(me, message.name);
         break;
+      case "look":
+        this.changeLook(socket, me, message.character);
+        break;
       case "board_sync":
         send(socket, { t: "board_state", strokes: this.board.strokes() });
         break;
@@ -394,6 +408,14 @@ export class Room extends DurableObject<Env> {
       case "desk_claim":
         this.claimDesk(me, message.seat, now);
         break;
+      case "piece":
+        this.changePiece(socket, me, message.key, message.change, now);
+        break;
+      case "desk_reset": {
+        const mine = this.desks.of(me.userId);
+        if (this.takeAction(me) && !me.guest && mine !== null) this.resetDesk(mine);
+        break;
+      }
       case "sfu":
         // SFU calls wait on the network, and other messages from this person may
         // be handled meanwhile, so save first and let the handler re-read.
@@ -482,7 +504,35 @@ export class Room extends DurableObject<Env> {
   private claimDesk(me: Attachment, seat: unknown, now: number): void {
     if (!this.takeAction(me) || me.guest || lobbyCopyNumber(me.room) !== null || !Number.isInteger(seat)) return;
     const before = this.desks.of(me.userId);
-    if (this.desks.claim(seat as number, me.userId, me.name, now) && before !== seat) this.broadcastDesks();
+    if (!this.desks.claim(seat as number, me.userId, me.name, now) || before === seat) return;
+    this.broadcastDesks();
+    // The desk given up goes back to the floor's own: the next person gets a clean one.
+    if (before !== null) this.resetDesk(before);
+  }
+
+  /**
+   * Someone changes a piece of their own desk (shared-protocol office.ts says
+   * what may change): everyone sees it. A change that isn't theirs to make, or
+   * doesn't fit, gets the office's pieces back, so their floor shows what's so.
+   */
+  private changePiece(socket: WebSocket, me: Attachment, key: unknown, change: unknown, now: number): void {
+    if (!this.takeAction(me) || me.guest || lobbyCopyNumber(me.room) !== null || typeof key !== "string" || key.length > 80) return;
+    const mine = this.desks.of(me.userId);
+    const desk = mine === null ? null : deskOfSeat(mine);
+    const next = (change ?? null) as PieceChange | null;
+    const changes = this.pieces.all();
+    if (!isPieceChange(next) || !canChange(key, next, desk, changes)) {
+      send(socket, { t: "pieces", pieces: changes });
+      return;
+    }
+    this.pieces.set(key, deskOfKey(key)!, next, me.userId, now);
+    this.broadcast({ t: "piece", key, change: next, by: me.userId });
+  }
+
+  /** A desk's pieces back to the floor's own, and everyone told. */
+  private resetDesk(seat: number): void {
+    const desk = deskOfSeat(seat);
+    if (desk && this.pieces.clearDesk(desk)) this.broadcast({ t: "pieces", pieces: this.pieces.all() });
   }
 
   /** A wave to someone who is here: the whole floor sees it, a hello in passing (docs/product.md). */
@@ -530,6 +580,14 @@ export class Room extends DurableObject<Env> {
     if (!clean || clean === me.name) return;
     me.name = clean;
     this.broadcast({ t: "renamed", id: me.userId, name: clean });
+  }
+
+  /** How you look changed: kept through hibernation, for whoever arrives next, and shown to everyone here. */
+  private changeLook(socket: WebSocket, me: Attachment, character: unknown): void {
+    if (!this.takeAction(me) || !isCharacter(character) || character === me.character) return;
+    me.character = character;
+    this.remember(socket, me);
+    this.broadcast({ t: "look", id: me.userId, character });
   }
 
   private draw(socket: WebSocket, me: Attachment, message: object): void {
@@ -1271,6 +1329,22 @@ function sendText(socket: WebSocket, text: string): void {
 function spawnFrom(header: string | null): { x: number; y: number; arrive: boolean } {
   const [x, y, arrive] = (header ?? "").split(",").map(Number);
   return { ...(isInsideMap(x, y) ? { x, y } : DEFAULT_SPAWN), arrive: arrive === 1 };
+}
+
+/** A change shaped as one: taken away, or an item and a place on the 2px grid; nothing else rides along. */
+function isPieceChange(change: unknown): change is PieceChange | null {
+  if (change === null) return true;
+  if (!change || typeof change !== "object" || Array.isArray(change)) return false;
+  const entries = Object.entries(change);
+  if (entries.length === 1 && entries[0][0] === "hidden") return entries[0][1] === true;
+  return (
+    entries.length > 0 &&
+    entries.every(([name, value]) =>
+      name === "item"
+        ? typeof value === "string" && value.length <= 60
+        : name === "at" && Array.isArray(value) && value.length === 2 && value.every((n) => Number.isInteger(n) && n >= 0 && n < 4096),
+    )
+  );
 }
 
 function parse(raw: string | ArrayBuffer): ClientMessage | null {

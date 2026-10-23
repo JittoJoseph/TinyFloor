@@ -2,7 +2,7 @@
 
 import React, { useEffect, useId, useRef } from "react";
 import { useTranslations } from "next-intl";
-import { X } from "@/components/ui/icons";
+import { CloseButton } from "@/components/ui/CloseButton";
 
 const textClass = " text-foreground";
 
@@ -57,15 +57,7 @@ export function Dialog({
         aria-labelledby={titleId}
         className="entry-rise relative w-full max-w-md rounded-[1.5rem] bg-card border border-border p-5 sm:p-6 shadow-float"
       >
-        <button
-          type="button"
-          data-close
-          onClick={onClose}
-          aria-label={tc("close")}
-          className="cursor-pointer absolute top-4 end-4 w-8 h-8 rounded-full flex items-center justify-center hover:bg-muted transition-colors"
-        >
-          <X className="w-4 h-4 text-foreground opacity-60" />
-        </button>
+        <CloseButton label={tc("close")} onClick={onClose} className="absolute end-4 top-4" />
         <h2 id={titleId} className={`${textClass} text-lg font-semibold tracking-tight pe-8`}>
           {title}
         </h2>

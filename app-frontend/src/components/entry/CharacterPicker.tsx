@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Check } from "@/components/ui/icons";
 import { PixelAvatar } from "@/components/PixelAvatar";
 import { cn } from "@/lib/utils";
-import { CHARACTERS } from "@shared/profile";
+import { DOOR_PRESETS } from "@shared/character";
 
 export const CharacterPicker: React.FC<{
   value: string;
@@ -17,7 +17,7 @@ export const CharacterPicker: React.FC<{
 
   return (
     <div role="radiogroup" aria-label={t("character")} className={cn("grid grid-cols-4 gap-1.5", className)}>
-      {CHARACTERS.map((character) => {
+      {DOOR_PRESETS.map((character) => {
         const selected = value === character;
         return (
           <button

@@ -265,10 +265,8 @@
       "office": "办公室",
       "plan": "方案与账单"
     },
-    "appearance": "外观",
     "themeNote": "“系统”会跟随你的设备。",
-    "language": "语言",
-    "languageTitle": "语言",
+    "languageTitle": "显示语言",
     "languageNote": "用于 TinyFloor 的菜单、按钮和消息。",
     "devices": "设备",
     "devicesNote": "下次打开麦克风或摄像头时使用。",
@@ -300,7 +298,16 @@
     "desktopNotifications": "显示通知",
     "desktopNote": "即使关闭了 TinyFloor，也会通知私信和提及；在其他窗口打开时，还会通知通话和挥手。",
     "desktopBlocked": "已被浏览器阻止。请通过地址栏旁的图标允许本站的通知。",
-    "turnOn": "开启"
+    "turnOn": "开启",
+    "descriptions": {
+      "profile": "在每个办公室里，别人看到的你。",
+      "signin": "如何登录你的账号。",
+      "general": "TinyFloor 的外观和界面语言。",
+      "media": "你的麦克风和摄像头，以及你的声音效果。",
+      "notifications": "有事发生时如何提醒你。",
+      "accessibility": "动画与性能，适合你和你的设备。",
+      "plan": "你的办公室的方案和付款方式。"
+    }
   },
   "scene": {
     "meeting": "会议",
@@ -415,7 +422,8 @@
       "domainOff": "找不到这里",
       "domainAskNote": "他们用工作邮箱找到这个办公室并申请，管理员同意后即可进入。",
       "domainOpenNote": "用 @{domain} 邮箱登录的人都可以直接进来。",
-      "domainOffNote": "只有拿到邀请链接的人才能加入。"
+      "domainOffNote": "只有拿到邀请链接的人才能加入。",
+      "leaveButton": "离开"
     },
     "profile": {
       "changePassword": "修改密码",
@@ -450,7 +458,6 @@
         "signin": "登录",
         "appearance": "外观"
       },
-      "profileNote": "你的名字和链接，走到哪里都一样。",
       "password": "密码",
       "passwordSet": "用邮箱和密码登录。",
       "signOutNote": "在此浏览器中退出 TinyFloor。",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "自动",
       "timeZoneChange": "更改",
       "timeZoneSearch": "搜索城市",
-      "timeZoneNone": "没有匹配的时区"
+      "timeZoneNone": "没有匹配的时区",
+      "methods": "登录方式",
+      "thisBrowser": "此浏览器",
+      "signedInAs": "已以 {name} 身份登录"
     },
     "invite": {
       "invalidTitle": "这个邀请无法使用",
@@ -806,6 +816,76 @@
     "claimTitle": "认领这个工位？",
     "claimNote": "你当前的工位将被释放。",
     "claimed": "已认领"
+  },
+  "decorate": {
+    "open": "装饰",
+    "title": "装饰你的工位",
+    "close": "关闭",
+    "things": "物品",
+    "chair": "椅子",
+    "shelf": {
+      "all": "全部",
+      "tech": "科技",
+      "lamps": "台灯",
+      "personal": "个人",
+      "setups": "整套",
+      "chairs": "椅子"
+    },
+    "hint": "选择要放在桌上的东西，拖动即可移动。",
+    "swapHint": "选择要替换成的东西。",
+    "full": "桌面已满：拿走一些才能再放。",
+    "count": "物品：{count}/{max}",
+    "undo": "撤销",
+    "redo": "重做",
+    "reset": "重置",
+    "resetConfirm": "要把工位恢复原样吗？",
+    "cancel": "取消",
+    "done": "完成",
+    "remove": "从桌上拿走",
+    "deselect": "完成选择"
+  },
+  "look": {
+    "open": "更换形象",
+    "title": "你的形象",
+    "walk": "行走",
+    "turnLeft": "向左转",
+    "turnRight": "向右转",
+    "randomize": "随机",
+    "tabs": {
+      "characters": "角色",
+      "skin": "肤色",
+      "hair": "发型",
+      "outfit": "服装",
+      "extras": "配饰"
+    },
+    "presets": "角色",
+    "starts": "从这些开始自己搭配",
+    "parts": {
+      "hair": "发型",
+      "outfit": "服装",
+      "face": "面部",
+      "glasses": "眼镜",
+      "hat": "帽子",
+      "gloves": "手套",
+      "bag": "背包"
+    },
+    "skin": "肤色",
+    "eyes": "眼睛",
+    "none": "无",
+    "cancel": "取消",
+    "save": "保存",
+    "own": "你的自定义形象",
+    "presetNote": "一个现成角色",
+    "ownNote": "在角色编辑器中制作",
+    "change": "更换",
+    "colour": "颜色",
+    "style": "款式"
+  },
+  "you": {
+    "customizeDesk": "自定义你的工位",
+    "noDeskTitle": "还没有工位",
+    "noDesk": "坐到空工位上即可认领",
+    "atDesk": "在工位上"
   },
   "note": {
     "title": "状态备注",

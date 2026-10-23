@@ -265,10 +265,8 @@
       "office": "Kantoor",
       "plan": "Abonnement en facturering"
     },
-    "appearance": "Weergave",
     "themeNote": "'Systeem' volgt je apparaat.",
-    "language": "Taal",
-    "languageTitle": "Taal",
+    "languageTitle": "Weergavetaal",
     "languageNote": "Voor menu's, knoppen en berichten van TinyFloor.",
     "devices": "Apparaten",
     "devicesNote": "Gebruikt als je je microfoon of camera de volgende keer aanzet.",
@@ -300,7 +298,16 @@
     "desktopNotifications": "Meldingen tonen",
     "desktopNote": "Directe berichten en vermeldingen, ook als TinyFloor dicht is. Oproepen en zwaaien terwijl het in een ander venster open staat.",
     "desktopBlocked": "Geblokkeerd door je browser. Sta meldingen voor deze site toe via het pictogram naast de adresbalk.",
-    "turnOn": "Aanzetten"
+    "turnOn": "Aanzetten",
+    "descriptions": {
+      "profile": "Hoe anderen je zien, in elk kantoor.",
+      "signin": "Hoe je in je account komt.",
+      "general": "Hoe TinyFloor eruitziet en welke taal het gebruikt.",
+      "media": "Je microfoon en camera, en hoe je klinkt.",
+      "notifications": "Wat je laat weten dat er iets gebeurt.",
+      "accessibility": "Beweging en prestaties, passend bij jou en je apparaat.",
+      "plan": "Welk abonnement je kantoor heeft en hoe het wordt betaald."
+    }
   },
   "scene": {
     "meeting": "Vergadering",
@@ -415,7 +422,8 @@
       "domainOff": "Vinden het niet",
       "domainAskNote": "Ze vinden dit kantoor via hun werkadres en vragen het. Een admin laat ze binnen.",
       "domainOpenNote": "Wie inlogt met een @{domain}-adres kan meteen binnenlopen.",
-      "domainOffNote": "Alleen wie de uitnodigingslink heeft, kan meedoen."
+      "domainOffNote": "Alleen wie de uitnodigingslink heeft, kan meedoen.",
+      "leaveButton": "Verlaten"
     },
     "profile": {
       "changePassword": "Wachtwoord wijzigen",
@@ -450,7 +458,6 @@
         "signin": "Inloggen",
         "appearance": "Weergave"
       },
-      "profileNote": "Je naam en link, waar je ook binnenloopt.",
       "password": "Wachtwoord",
       "passwordSet": "Log in met je e-mail en wachtwoord.",
       "signOutNote": "Log uit bij TinyFloor in deze browser.",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "Automatisch",
       "timeZoneChange": "Wijzigen",
       "timeZoneSearch": "Zoek een stad",
-      "timeZoneNone": "Geen tijdzone gevonden"
+      "timeZoneNone": "Geen tijdzone gevonden",
+      "methods": "Manieren om in te loggen",
+      "thisBrowser": "Deze browser",
+      "signedInAs": "Ingelogd als {name}"
     },
     "invite": {
       "invalidTitle": "Deze uitnodiging werkt niet",
@@ -806,6 +816,76 @@
     "claimTitle": "Dit bureau claimen?",
     "claimNote": "Je huidige bureau komt dan vrij.",
     "claimed": "Geclaimd"
+  },
+  "decorate": {
+    "open": "Inrichten",
+    "title": "Je bureau inrichten",
+    "close": "Sluiten",
+    "things": "Spullen",
+    "chair": "Stoel",
+    "shelf": {
+      "all": "Alles",
+      "tech": "Techniek",
+      "lamps": "Lampen",
+      "personal": "Persoonlijk",
+      "setups": "Werkplekken",
+      "chairs": "Stoelen"
+    },
+    "hint": "Kies iets voor je bureau. Sleep spullen om ze te verplaatsen.",
+    "swapHint": "Kies iets om het mee te ruilen.",
+    "full": "Je bureau is vol: haal iets weg om meer toe te voegen.",
+    "count": "Spullen: {count} van {max}",
+    "undo": "Ongedaan maken",
+    "redo": "Opnieuw",
+    "reset": "Herstellen",
+    "resetConfirm": "Je bureau terugzetten zoals het was?",
+    "cancel": "Annuleren",
+    "done": "Klaar",
+    "remove": "Van het bureau halen",
+    "deselect": "Klaar hiermee"
+  },
+  "look": {
+    "open": "Uiterlijk aanpassen",
+    "title": "Je uiterlijk",
+    "walk": "Lopen",
+    "turnLeft": "Naar links draaien",
+    "turnRight": "Naar rechts draaien",
+    "randomize": "Willekeurig",
+    "tabs": {
+      "characters": "Figuren",
+      "skin": "Huid",
+      "hair": "Haar",
+      "outfit": "Kleding",
+      "extras": "Extra's"
+    },
+    "presets": "Figuren",
+    "starts": "Maak je eigen, vanuit",
+    "parts": {
+      "hair": "Haar",
+      "outfit": "Kleding",
+      "face": "Gezicht",
+      "glasses": "Bril",
+      "hat": "Hoed",
+      "gloves": "Handschoenen",
+      "bag": "Tas"
+    },
+    "skin": "Huid",
+    "eyes": "Ogen",
+    "none": "Geen",
+    "cancel": "Annuleren",
+    "save": "Opslaan",
+    "own": "Je eigen uiterlijk",
+    "presetNote": "Een van de kant-en-klare figuren",
+    "ownNote": "Gemaakt in de figuurmaker",
+    "change": "Wijzigen",
+    "colour": "Kleur",
+    "style": "Stijl"
+  },
+  "you": {
+    "customizeDesk": "Je bureau aanpassen",
+    "noDeskTitle": "Nog geen bureau",
+    "noDesk": "Ga aan een vrij bureau zitten om het te claimen",
+    "atDesk": "Aan je bureau"
   },
   "note": {
     "title": "Statusnotitie",

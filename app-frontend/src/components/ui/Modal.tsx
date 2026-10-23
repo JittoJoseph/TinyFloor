@@ -3,7 +3,7 @@
 import { AnimatePresence, motion, useDragControls, useReducedMotion, type PanInfo } from "motion/react";
 import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { createPortal } from "react-dom";
-import { X } from "@/components/ui/icons";
+import { CloseButton } from "@/components/ui/CloseButton";
 import { EASE_OUT } from "@/lib/ease";
 import { PresenceGate } from "@/lib/presence-gate";
 import { cn } from "@/lib/utils";
@@ -185,16 +185,7 @@ export function Modal({
                     </div>
                   )}
                   {children}
-                  {dismissible && (
-                    <button
-                      type="button"
-                      aria-label={closeLabel}
-                      onClick={onClose}
-                      className="absolute end-3.5 top-3.5 flex size-8 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    >
-                      <X className="size-4" />
-                    </button>
-                  )}
+                  {dismissible && <CloseButton label={closeLabel} onClick={onClose} className="absolute end-4 top-4" />}
                 </motion.div>
               </div>
             </>

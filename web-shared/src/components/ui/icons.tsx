@@ -117,6 +117,14 @@ import {
   PinIcon,
   PinOffIcon,
   MinusSignIcon,
+  Undo02Icon,
+  TShirtIcon,
+  UserMultiple02Icon,
+  ScissorIcon,
+  HatGlassesIcon,
+  RotateLeft01Icon,
+  RotateRight01Icon,
+  Redo02Icon,
 } from "@hugeicons/core-free-icons";
 
 /*
@@ -259,6 +267,14 @@ export const SquarePen = icon(PencilEdit02Icon, "SquarePen");
 export const Sun = icon(Sun03Icon, "Sun");
 export const TimerOff = icon(TimerOffIcon, "TimerOff");
 export const Trash2 = icon(Delete02Icon, "Trash2");
+export const Undo = icon(Undo02Icon, "Undo");
+export const Shirt = icon(TShirtIcon, "Shirt");
+export const Characters = icon(UserMultiple02Icon, "Characters");
+export const Scissors = icon(ScissorIcon, "Scissors");
+export const HatGlasses = icon(HatGlassesIcon, "HatGlasses");
+export const TurnLeft = icon(RotateLeft01Icon, "TurnLeft");
+export const TurnRight = icon(RotateRight01Icon, "TurnRight");
+export const Redo = icon(Redo02Icon, "Redo");
 export const Unlink = icon(Unlink01Icon, "Unlink");
 export const UserMinus = icon(UserRemove01Icon, "UserMinus");
 export const UserPlus = icon(UserAdd01Icon, "UserPlus");

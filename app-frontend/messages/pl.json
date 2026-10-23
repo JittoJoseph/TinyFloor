@@ -265,10 +265,8 @@
       "office": "Biuro",
       "plan": "Plan i płatności"
     },
-    "appearance": "Wygląd",
     "themeNote": "„Systemowy” podąża za urządzeniem.",
-    "language": "Język",
-    "languageTitle": "Język",
+    "languageTitle": "Język interfejsu",
     "languageNote": "Dla menu, przycisków i wiadomości TinyFloor.",
     "devices": "Urządzenia",
     "devicesNote": "Użyte przy następnym włączeniu mikrofonu lub kamery.",
@@ -300,7 +298,16 @@
     "desktopNotifications": "Pokazuj powiadomienia",
     "desktopNote": "Wiadomości prywatne i wzmianki, nawet gdy TinyFloor jest zamknięty. Połączenia i machnięcia, gdy jest otwarty w innym oknie.",
     "desktopBlocked": "Zablokowane przez przeglądarkę. Zezwól na powiadomienia dla tej strony przez ikonę obok paska adresu.",
-    "turnOn": "Włącz"
+    "turnOn": "Włącz",
+    "descriptions": {
+      "profile": "Jak widzą cię inni, w każdym biurze.",
+      "signin": "Jak dostajesz się na swoje konto.",
+      "general": "Wygląd TinyFloor i jego język.",
+      "media": "Twój mikrofon i kamera, i jak brzmisz.",
+      "notifications": "Co daje ci znać, że coś się dzieje.",
+      "accessibility": "Ruch i wydajność, dopasowane do ciebie i urządzenia.",
+      "plan": "Plan twojego biura i sposób płatności."
+    }
   },
   "scene": {
     "meeting": "Spotkanie",
@@ -415,7 +422,8 @@
       "domainOff": "Nie widzą biura",
       "domainAskNote": "Znajdują to biuro po służbowym adresie i proszą o dostęp. Admin ich wpuszcza.",
       "domainOpenNote": "Każdy zalogowany adresem @{domain} może od razu wejść.",
-      "domainOffNote": "Dołączyć mogą tylko osoby z linkiem z zaproszeniem."
+      "domainOffNote": "Dołączyć mogą tylko osoby z linkiem z zaproszeniem.",
+      "leaveButton": "Opuść"
     },
     "profile": {
       "changePassword": "Zmień hasło",
@@ -450,7 +458,6 @@
         "signin": "Logowanie",
         "appearance": "Wygląd"
       },
-      "profileNote": "Twoje imię i link, gdziekolwiek wejdziesz.",
       "password": "Hasło",
       "passwordSet": "Logujesz się e-mailem i hasłem.",
       "signOutNote": "Wyloguj się z TinyFloor w tej przeglądarce.",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "Automatycznie",
       "timeZoneChange": "Zmień",
       "timeZoneSearch": "Szukaj miasta",
-      "timeZoneNone": "Brak pasującej strefy czasowej"
+      "timeZoneNone": "Brak pasującej strefy czasowej",
+      "methods": "Sposoby logowania",
+      "thisBrowser": "Ta przeglądarka",
+      "signedInAs": "Zalogowano jako {name}"
     },
     "invite": {
       "invalidTitle": "To zaproszenie nie działa",
@@ -806,6 +816,76 @@
     "claimTitle": "Zająć to biurko?",
     "claimNote": "Twoje obecne biurko zostanie zwolnione.",
     "claimed": "Zajęte"
+  },
+  "decorate": {
+    "open": "Urządź",
+    "title": "Urządź swoje biurko",
+    "close": "Zamknij",
+    "things": "Rzeczy",
+    "chair": "Krzesło",
+    "shelf": {
+      "all": "Wszystko",
+      "tech": "Sprzęt",
+      "lamps": "Lampy",
+      "personal": "Osobiste",
+      "setups": "Stanowiska",
+      "chairs": "Krzesła"
+    },
+    "hint": "Wybierz coś na biurko. Przeciągaj rzeczy, aby je przesunąć.",
+    "swapHint": "Wybierz coś, na co to zamienić.",
+    "full": "Biurko jest pełne: zdejmij coś, aby dodać więcej.",
+    "count": "Rzeczy: {count} z {max}",
+    "undo": "Cofnij",
+    "redo": "Ponów",
+    "reset": "Przywróć",
+    "resetConfirm": "Przywrócić biurko do stanu początkowego?",
+    "cancel": "Anuluj",
+    "done": "Gotowe",
+    "remove": "Zdejmij z biurka",
+    "deselect": "Gotowe z tym"
+  },
+  "look": {
+    "open": "Zmień wygląd",
+    "title": "Twój wygląd",
+    "walk": "Chodź",
+    "turnLeft": "Obróć w lewo",
+    "turnRight": "Obróć w prawo",
+    "randomize": "Losowo",
+    "tabs": {
+      "characters": "Postacie",
+      "skin": "Skóra",
+      "hair": "Włosy",
+      "outfit": "Strój",
+      "extras": "Dodatki"
+    },
+    "presets": "Postacie",
+    "starts": "Stwórz własną, zaczynając od",
+    "parts": {
+      "hair": "Włosy",
+      "outfit": "Strój",
+      "face": "Twarz",
+      "glasses": "Okulary",
+      "hat": "Czapka",
+      "gloves": "Rękawiczki",
+      "bag": "Plecak"
+    },
+    "skin": "Skóra",
+    "eyes": "Oczy",
+    "none": "Brak",
+    "cancel": "Anuluj",
+    "save": "Zapisz",
+    "own": "Twój własny wygląd",
+    "presetNote": "Jedna z gotowych postaci",
+    "ownNote": "Stworzone w kreatorze postaci",
+    "change": "Zmień",
+    "colour": "Kolor",
+    "style": "Styl"
+  },
+  "you": {
+    "customizeDesk": "Dostosuj swoje biurko",
+    "noDeskTitle": "Nie masz jeszcze biurka",
+    "noDesk": "Usiądź przy wolnym biurku, aby je zająć",
+    "atDesk": "Przy swoim biurku"
   },
   "note": {
     "title": "Notatka statusu",

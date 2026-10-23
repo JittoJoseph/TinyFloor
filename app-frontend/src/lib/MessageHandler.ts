@@ -7,10 +7,10 @@ import { whiteboard } from "./WhiteboardManager";
 import { AnimationManager } from "./AnimationManager";
 import { playSound } from "./sounds";
 import { tileToPixel } from "@/lib/types";
-import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import { setMeetings, setMeetingUsage } from "./meetings";
 import { deskOf, deskState, setDesks } from "./desks";
-import { FLOOR_ARRIVED_EVENT, myStatus, myStatusNote, sinceFloorRequested, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
+import { applyPieceChange, setPieceChanges } from "./pieces";
+import { FLOOR_ARRIVED_EVENT, floorSteps, myStatus, myStatusNote, sinceFloorRequested, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
 import { isListening } from "./music";
 import { track } from "@/lib/analytics";
 
@@ -33,6 +33,7 @@ export class MessageHandler {
     switch (message.t) {
       case "welcome":
         setDesks(message.desks ?? []);
+        setPieceChanges(message.pieces ?? {});
         this.welcome(message.self, message.players);
         whiteboard.sync();
         setMeetings(message.meetings ?? []);
@@ -41,6 +42,12 @@ export class MessageHandler {
         break;
       case "desks":
         setDesks(message.desks);
+        break;
+      case "piece":
+        applyPieceChange(message.key, message.change);
+        break;
+      case "pieces":
+        setPieceChanges(message.pieces);
         break;
       case "player_joined":
         if (message.player.id === this.playerId) return;
@@ -106,6 +113,9 @@ export class MessageHandler {
       case "listening":
         this.playerManager.updatePlayerListening(message.id, message.on);
         break;
+      case "look":
+        this.playerManager.changeLook(message.id, message.character);
+        break;
       case "renamed":
         this.playerManager.renamePlayer(message.id, message.name);
         this.dispatchPlayerList();
@@ -148,9 +158,8 @@ export class MessageHandler {
     this.playerManager.updatePlayerListening(this.playerId, isListening());
     // The view starts where you are, rather than sweeping over from where it was.
     this.scene.cameras.main.centerOn(spawn.x, spawn.y);
-    const spriteName = isCharacter(self.character) ? self.character : DEFAULT_CHARACTER;
-    this.player.setData("spriteName", spriteName);
-    this.player.play(this.animationManager.getAnimationKey(spriteName, "idle", "down"));
+    this.animationManager.wear(this.player, self.character);
+    this.animationManager.play(this.player, "idle", "down");
 
     players.forEach((player) => this.addUser(player));
     this.dispatchPlayerList();
@@ -160,7 +169,7 @@ export class MessageHandler {
     this.arrived = true;
     // Who shows up, and with how many already there: whether a team is on the floor together.
     // And how long they waited for it, from the floor being asked for to here.
-    track("floor_entered", { people_here: players.length, load_ms: sinceFloorRequested() });
+    track("floor_entered", { people_here: players.length, load_ms: sinceFloorRequested(), ...floorSteps() });
     this.scene.tweens.add({ targets: this.scene.cameras.main, alpha: 1, duration: 260, ease: "Cubic.easeOut" });
     window.dispatchEvent(new Event(FLOOR_ARRIVED_EVENT));
     const desk = deskOf(deskState().desks, this.playerId);

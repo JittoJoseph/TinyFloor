@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Layout editor</title>
+    <link rel="stylesheet" href="/lab/lab.css" />
+    <style>
+      body {
+        grid-template-columns: 280px 1fr;
+      }
+      .palette-group h3 {
+        margin: 10px 4px 4px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+      }
+      .palette-group .grid {
+        overflow: visible;
+      }
+      .grid button[aria-pressed="true"] {
+        outline: 2px solid var(--ink);
+      }
+      .tabs button[aria-pressed="true"] {
+        background: var(--bg);
+        color: var(--ink);
+        font-weight: 600;
+      }
+      #status {
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="side">
+      <header class="head">
+        <strong>Layout editor</strong>
+        <a href="/lab/index.html">Item lab</a>
+      </header>
+      <section>
+        <input id="search" type="search" placeholder="Search items" />
+        <div id="palette" style="overflow-y: auto; flex: 1"></div>
+      </section>
+    </aside>
+    <main class="stage">
+      <div class="toolbar">
+        <select id="layout-id"></select>
+        <input id="layout-name" placeholder="Layout name" style="width: 200px" />
+        <span class="tabs">
+          <button data-mode="furnish" aria-pressed="true">Furnish</button>
+          <button data-mode="walls">Walls</button>
+        </span>
+        <select id="brush" hidden></select>
+        <label><input type="checkbox" id="show-colliders" /> Colliders</label>
+        <span id="chairs"></span>
+        <button id="shuffle" hidden title="Other things on these desks">Shuffle desks</button>
+        <button id="put-back" hidden title="Undo the change to this piece">Put back</button>
+        <span id="status"></span>
+        <span class="spacer"></span>
+        <button id="reseed" title="A new seed: every desk's things picked again">New seed</button>
+        <button id="new-layout">New layout</button>
+        <button id="bake" title="Freeze this office into a template: everything the seed put there, written down">Bake template</button>
+        <button id="save" class="primary" disabled>Save layout</button>
+      </div>
+      <div id="game"></div>
+      <p class="hint">Pick an item, then click the floor to place it (Shift keeps placing). Drag to move, Delete to remove: what the office made itself (desk things, wall pieces) is hidden or moved as a kept change. A bank has handles and chairs. Arrows or WASD walk; E sits.</p>
+    </main>
+    <script src="/phaser/phaser.min.js"></script>
+    <script type="module" src="/lab/layout.js"></script>
+  </body>
+</html>

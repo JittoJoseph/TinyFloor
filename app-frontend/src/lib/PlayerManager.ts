@@ -12,7 +12,6 @@ import type { SeatPose } from "./SeatManager";
 import { SceneLabel } from "./SceneLabel";
 import { TILE_SIZE, MOVEMENT_SPEED, pixelToTile, tileToPixel } from "@/lib/types";
 import { statusColorValue } from "@/lib/status";
-import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
 import { liveNote, type StatusNote } from "@shared/messages";
 import type { PlayerStatus } from "@/lib/types";
 
@@ -101,12 +100,9 @@ export class PlayerManager {
   ): Phaser.GameObjects.Sprite {
     // Out of sight until the room says where you are (showLocalPlayer): you'd
     // otherwise appear here first and jump.
-    const player = this.scene.add.sprite(x, y, character).setVisible(false);
+    const player = this.animationManager.sprite(x, y, character).setVisible(false);
     player.setName("localPlayer");
-    player.setScale(2.0);
-    player.setOrigin(0.5, 1.0);
-    player.setData("spriteName", character);
-    player.play(this.animationManager.getAnimationKey(character, "idle", "down"));
+    this.animationManager.play(player, "idle", "down");
 
     // Positioned every frame by updateLocalPlayerNameTag; a tween on it would fight
     // that and leave the name behind while the character walks off.
@@ -132,16 +128,9 @@ export class PlayerManager {
     if (this.players.has(id)) return;
 
     const pos = tileToPixel(tileX, tileY);
-    const safeSpriteKey = isCharacter(spriteKey) ? spriteKey : DEFAULT_CHARACTER;
-
     const container = this.scene.add.container(pos.x, pos.y);
-    const sprite = this.scene.add.sprite(0, 0, safeSpriteKey);
-    sprite.setOrigin(0.5, 1.0);
-    sprite.setScale(2.0);
-    sprite.setData("spriteName", safeSpriteKey);
-    sprite.play(
-      this.animationManager.getAnimationKey(safeSpriteKey, "idle", "down"),
-    );
+    const sprite = this.animationManager.sprite(0, 0, spriteKey);
+    this.animationManager.play(sprite, "idle", "down");
     container.add(sprite);
     container.setDepth(depthForY(pos.y));
 
@@ -268,6 +257,13 @@ export class PlayerManager {
 
     // The colour says it; the dot holds still, in a call like any other status.
     tag.setDot(statusColorValue(status));
+  }
+
+  /** How someone looks now, you included: they change over where they stand or sit. */
+  changeLook(id: string, character: string) {
+    const container = this.players.get(id);
+    const sprite = id === this.playerId ? this.localPlayer : container && this.spriteOf(container);
+    if (sprite) this.animationManager.wear(sprite, character);
   }
 
   /** Someone's new name, on their tag. */
@@ -443,23 +439,13 @@ export class PlayerManager {
     state: AnimationState,
     direction: Direction,
   ) {
-    const sprite = this.spriteOf(container);
-    sprite.play(
-      this.animationManager.getAnimationKey(
-        sprite.getData("spriteName") || "Adam",
-        state,
-        direction,
-      ),
-      true,
-    );
+    this.animationManager.play(this.spriteOf(container), state, direction);
   }
 
   private settle(id: string, pose: SeatPose) {
     const container = this.players.get(id);
     if (!container) return;
-    const sprite = this.spriteOf(container);
-    sprite.anims.stop();
-    sprite.setFrame(pose.frame);
+    this.animationManager.sit(this.spriteOf(container), pose.direction);
     this.nameTags.get(id)?.container.setY(nameTagOffset(pose.direction));
   }
 

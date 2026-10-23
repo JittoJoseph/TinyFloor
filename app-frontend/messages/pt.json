@@ -265,10 +265,8 @@
       "office": "Escritório",
       "plan": "Plano e cobrança"
     },
-    "appearance": "Aparência",
     "themeNote": "\"Sistema\" segue seu dispositivo.",
-    "language": "Idioma",
-    "languageTitle": "Idioma",
+    "languageTitle": "Idioma de exibição",
     "languageNote": "Para menus, botões e mensagens do TinyFloor.",
     "devices": "Dispositivos",
     "devicesNote": "Usados na próxima vez que você ligar o microfone ou a câmera.",
@@ -300,7 +298,16 @@
     "desktopNotifications": "Mostrar notificações",
     "desktopNote": "Mensagens diretas e menções, mesmo com o TinyFloor fechado. Chamadas e acenos enquanto ele está aberto em outra janela.",
     "desktopBlocked": "Bloqueadas pelo navegador. Permita notificações deste site pelo ícone ao lado da barra de endereço.",
-    "turnOn": "Ativar"
+    "turnOn": "Ativar",
+    "descriptions": {
+      "profile": "Como os outros veem você, em todos os escritórios.",
+      "signin": "Como você entra na sua conta.",
+      "general": "A aparência do TinyFloor e o idioma que ele usa.",
+      "media": "Seu microfone e sua câmera, e como você soa.",
+      "notifications": "O que avisa você de que algo está acontecendo.",
+      "accessibility": "Movimento e desempenho, do seu jeito e do seu dispositivo.",
+      "plan": "O plano do seu escritório e como ele é pago."
+    }
   },
   "scene": {
     "meeting": "Reunião",
@@ -415,7 +422,8 @@
       "domainOff": "Não encontram",
       "domainAskNote": "Elas encontram este escritório pelo e-mail de trabalho e pedem para entrar. Um admin libera.",
       "domainOpenNote": "Quem entrar com um e-mail @{domain} pode entrar direto.",
-      "domainOffNote": "Só quem tem o link de convite pode entrar."
+      "domainOffNote": "Só quem tem o link de convite pode entrar.",
+      "leaveButton": "Sair"
     },
     "profile": {
       "changePassword": "Alterar senha",
@@ -450,7 +458,6 @@
         "signin": "Iniciar sessão",
         "appearance": "Aparência"
       },
-      "profileNote": "O seu nome e o seu link, onde quer que entre.",
       "password": "Palavra-passe",
       "passwordSet": "Inicie sessão com o seu email e palavra-passe.",
       "signOutNote": "Termine a sessão no TinyFloor neste navegador.",
@@ -459,7 +466,10 @@
       "timeZoneAuto": "Automático",
       "timeZoneChange": "Alterar",
       "timeZoneSearch": "Procurar uma cidade",
-      "timeZoneNone": "Nenhum fuso horário corresponde"
+      "timeZoneNone": "Nenhum fuso horário corresponde",
+      "methods": "Formas de entrar",
+      "thisBrowser": "Este navegador",
+      "signedInAs": "Conectado como {name}"
     },
     "invite": {
       "invalidTitle": "Este convite não funciona",
@@ -806,6 +816,76 @@
     "claimTitle": "Reservar esta mesa?",
     "claimNote": "Sua mesa atual ficará livre.",
     "claimed": "Reservada"
+  },
+  "decorate": {
+    "open": "Decorar",
+    "title": "Decore sua mesa",
+    "close": "Fechar",
+    "things": "Itens",
+    "chair": "Cadeira",
+    "shelf": {
+      "all": "Tudo",
+      "tech": "Tecnologia",
+      "lamps": "Luminárias",
+      "personal": "Pessoal",
+      "setups": "Estações",
+      "chairs": "Cadeiras"
+    },
+    "hint": "Escolha algo para sua mesa. Arraste os itens para movê-los.",
+    "swapHint": "Escolha algo para trocar.",
+    "full": "Sua mesa está cheia: tire algo para adicionar mais.",
+    "count": "Itens: {count} de {max}",
+    "undo": "Desfazer",
+    "redo": "Refazer",
+    "reset": "Redefinir",
+    "resetConfirm": "Deixar sua mesa como era?",
+    "cancel": "Cancelar",
+    "done": "Pronto",
+    "remove": "Tirar da mesa",
+    "deselect": "Pronto com isto"
+  },
+  "look": {
+    "open": "Mudar sua aparência",
+    "title": "Sua aparência",
+    "walk": "Andar",
+    "turnLeft": "Virar à esquerda",
+    "turnRight": "Virar à direita",
+    "randomize": "Aleatório",
+    "tabs": {
+      "characters": "Personagens",
+      "skin": "Pele",
+      "hair": "Cabelo",
+      "outfit": "Roupa",
+      "extras": "Extras"
+    },
+    "presets": "Personagens",
+    "starts": "Crie o seu a partir de",
+    "parts": {
+      "hair": "Cabelo",
+      "outfit": "Roupa",
+      "face": "Rosto",
+      "glasses": "Óculos",
+      "hat": "Chapéu",
+      "gloves": "Luvas",
+      "bag": "Mochila"
+    },
+    "skin": "Pele",
+    "eyes": "Olhos",
+    "none": "Nenhum",
+    "cancel": "Cancelar",
+    "save": "Salvar",
+    "own": "Sua aparência própria",
+    "presetNote": "Um dos personagens prontos",
+    "ownNote": "Feito no criador de personagens",
+    "change": "Mudar",
+    "colour": "Cor",
+    "style": "Estilo"
+  },
+  "you": {
+    "customizeDesk": "Personalize sua mesa",
+    "noDeskTitle": "Ainda sem mesa",
+    "noDesk": "Sente-se em uma mesa livre para ficar com ela",
+    "atDesk": "Na sua mesa"
   },
   "note": {
     "title": "Nota de status",

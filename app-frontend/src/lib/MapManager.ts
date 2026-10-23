@@ -1,7 +1,12 @@
 import * as Phaser from "phaser";
 import { NavGrid, Rect } from "./Navigation";
-import { MAP_WIDTH_TILES, TILE_SIZE } from "@/lib/types";
+import { TILE_SIZE } from "@/lib/types";
 import { FLOOR_FILES } from "@/lib/floorWarmup";
+import { FLOOR } from "@shared/map";
+import { officePieces, type OfficePiece } from "@shared/office";
+import { floorWalls, floorWallsNow } from "./floorWalls";
+import { pieceChanges, subscribePieces } from "./pieces";
+import atlas from "@shared/catalog/atlas.json";
 
 export interface MapAnchor {
   name: string;
@@ -15,14 +20,9 @@ export interface ChairSpec {
   id: number;
   x: number;
   y: number;
-  direction: "up" | "down" | "left" | "right";
+  /** Which way you face sitting there: never sideways (docs/customization.md). */
+  direction: "up" | "down";
   zone?: string;
-}
-
-interface TilesetRef {
-  key: string;
-  firstgid: number;
-  lastgid: number;
 }
 
 /**
@@ -34,164 +34,188 @@ export function depthForY(y: number): number {
   return y;
 }
 
+const ITEMS = "floor-items";
+const WALLS = "floor-walls";
+/** How far a thing drops onto a desk from, lifts off it by, and hops when it's swapped, in the floor's pixels. */
+const DROP = 10;
+const LIFT = 8;
+const HOP = 4;
+const reducedMotion = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/**
+ * The floor: the Startup template as the lab worked it out (shared-protocol
+ * map.ts, FLOOR). Its walls and floors are one picture, painted ahead from
+ * the room builder sheet (lib/floorWalls); everything on them is a frame of
+ * the catalog's atlas, at the depth the lab gave it, with what people have
+ * made of their desks applied (lib/pieces.ts) and drawn again, piece by
+ * piece, as that changes; what you can't walk through, the chairs and the
+ * spots the floor keeps (the meeting room, its table, the whiteboard) are
+ * read as they are.
+ */
 export class MapManager {
   private scene: Phaser.Scene;
-  private map!: Phaser.Tilemaps.Tilemap;
   private solidRects: Rect[] = [];
   private nav!: NavGrid;
-  private tilesetRefs: TilesetRef[] = [];
   private chairSpecs: ChairSpec[] = [];
-  private anchors: Record<string, MapAnchor[]> = {};
+  /** Each piece's picture, by its key, and the pieces as they're drawn now. */
+  private images = new Map<string, Phaser.GameObjects.Image>();
+  private pieces: OfficePiece[] = [];
+  /** Whether the floor has been drawn once: changes after that are seen happening. */
+  private drawn = false;
+  private held: string | null = null;
+  private unsubscribe?: () => void;
+  private gone = false;
 
   constructor(scene: Phaser.Scene) {
     this.scene = scene;
   }
 
-  /** Each tileset once, as a sheet: the tile layers draw from its image, the furniture from its frames. */
+  /** The files to load, and what can be known before they are: where you can walk, so where you appear. */
   preload() {
-    this.scene.load.tilemapTiledJSON("office", FLOOR_FILES.map);
-    this.scene.load.spritesheet("RoomBuilderTiles", FLOOR_FILES.roomBuilder, {
-      frameWidth: TILE_SIZE,
-      frameHeight: TILE_SIZE,
-    });
-    this.scene.load.spritesheet("ModernOfficeTiles", FLOOR_FILES.modernOffice, {
-      frameWidth: TILE_SIZE,
-      frameHeight: TILE_SIZE,
-    });
-    this.scene.load.spritesheet("chairs", FLOOR_FILES.chairs, {
-      frameWidth: TILE_SIZE,
-      frameHeight: TILE_SIZE * 2,
-    });
-  }
-
-  create() {
-    this.map = this.scene.make.tilemap({ key: "office" });
-    const rb = this.map.addTilesetImage(
-      "Room_Builder_Office_32x32",
-      "RoomBuilderTiles",
-    );
-    const mo = this.map.addTilesetImage(
-      "Modern_Office_Black_Shadow_32x32",
-      "ModernOfficeTiles",
-    );
-    if (!rb || !mo) throw new Error("Tilesets not found");
-
-    this.tilesetRefs = [
-      { key: "RoomBuilderTiles", firstgid: rb.firstgid, lastgid: rb.firstgid + rb.total - 1 },
-      { key: "ModernOfficeTiles", firstgid: mo.firstgid, lastgid: mo.firstgid + mo.total - 1 },
-      { key: "chairs", firstgid: 1073, lastgid: 1073 + 22 },
-    ];
-
-    this.map.createLayer("Ground", [rb, mo], 0, 0)!.setDepth(0);
-    this.map.createLayer("Walls", [rb, mo], 0, 0)!.setDepth(1);
-
-    this.createFurniture();
-    this.readAnchors();
-    this.readChairs();
-    this.createColliders();
+    this.scene.load.image(ITEMS, FLOOR_FILES.items);
+    void floorWalls().catch(() => {});
+    this.solidRects = FLOOR.solids.map(([x, y, width, height]) => ({ x, y, width, height }));
     this.nav = new NavGrid(this.solidRects);
   }
 
-  private resolve(gid: number): { key: string; frame: number } | null {
-    const id = gid & 0x1fffffff;
-    for (const ref of this.tilesetRefs) {
-      if (id >= ref.firstgid && id <= ref.lastgid) {
-        return { key: ref.key, frame: id - ref.firstgid };
+  create() {
+    this.drawWalls();
+    this.drawPieces();
+    this.unsubscribe = subscribePieces(() => this.drawPieces());
+    this.readChairs();
+  }
+
+  /** The walls and floors, as one picture painted ahead (lib/floorWalls); in the rare case it isn't yet, as soon as it is. */
+  private drawWalls() {
+    const draw = (walls: HTMLCanvasElement) => {
+      if (this.gone) return;
+      if (!this.scene.textures.exists(WALLS)) this.scene.textures.addCanvas(WALLS, walls);
+      this.scene.add.image(0, 0, WALLS).setOrigin(0, 0).setDepth(0);
+    };
+    const ready = floorWallsNow();
+    if (ready) draw(ready);
+    else void floorWalls().then(draw, (error) => console.error("The floor's walls didn't paint", error));
+  }
+
+  /**
+   * Everything on the floor, each a frame of the atlas, drawn from its top left
+   * at its depth. Drawn again whenever a desk changes, yours or a coworker's,
+   * and the change is seen happening: a new thing drops onto the desk, one
+   * taken away lifts off and fades, one moved slides there, one swapped hops.
+   * A piece keeps its picture throughout; the one being dragged (held) is
+   * where the hand is, so it's left alone.
+   */
+  private drawPieces() {
+    const texture = this.scene.textures.get(ITEMS);
+    const frames = atlas.frames as unknown as Record<string, [number, number, number, number]>;
+    const tweens = this.scene.tweens;
+    const animate = this.drawn && !reducedMotion();
+    this.pieces = officePieces(pieceChanges());
+    const seen = new Set<string>();
+    for (const piece of this.pieces) {
+      const frame = frames[piece.item];
+      if (!frame) continue;
+      if (!texture.has(piece.item)) texture.add(piece.item, 0, ...frame);
+      seen.add(piece.key);
+      let image = this.images.get(piece.key);
+      const fresh = !image;
+      if (!image) {
+        image = this.scene.add.image(piece.x, piece.y, ITEMS, piece.item).setOrigin(0, 0);
+        this.images.set(piece.key, image);
+      }
+      image.setDepth(piece.depth);
+      if (piece.key === this.held) continue;
+      const swapped = image.frame.name !== piece.item;
+      if (swapped) image.setFrame(piece.item);
+      const moved = image.x !== piece.x || image.y !== piece.y;
+      if (!animate) {
+        image.setPosition(piece.x, piece.y);
+        continue;
+      }
+      if (fresh) {
+        image.setPosition(piece.x, piece.y - DROP).setAlpha(0);
+        tweens.add({ targets: image, y: piece.y, alpha: 1, duration: 260, ease: "Back.easeOut" });
+      } else if (moved) {
+        tweens.killTweensOf(image);
+        tweens.add({ targets: image, x: piece.x, y: piece.y, alpha: 1, duration: 180, ease: "Cubic.easeOut" });
+      } else if (swapped) {
+        tweens.killTweensOf(image);
+        image.setY(piece.y - HOP);
+        tweens.add({ targets: image, y: piece.y, duration: 220, ease: "Back.easeOut" });
       }
     }
-    return null;
+    for (const [key, image] of this.images) {
+      if (seen.has(key)) continue;
+      this.images.delete(key);
+      if (!animate) {
+        image.destroy();
+        continue;
+      }
+      tweens.killTweensOf(image);
+      tweens.add({ targets: image, y: image.y - LIFT, alpha: 0, duration: 180, ease: "Cubic.easeIn", onComplete: () => image.destroy() });
+    }
+    this.drawn = true;
+  }
+
+  /** The texture a thing is a frame of, its frame added if it isn't yet: for a picture of one that isn't on the floor. */
+  itemsTexture(item: string): string {
+    const texture = this.scene.textures.get(ITEMS);
+    const frame = (atlas.frames as unknown as Record<string, [number, number, number, number]>)[item];
+    if (frame && !texture.has(item)) texture.add(item, 0, ...frame);
+    return ITEMS;
+  }
+
+  /** The piece being dragged, which drawing leaves where the hand put it; null when it's let go. */
+  hold(key: string | null) {
+    this.held = key;
+  }
+
+  /** Every piece back where the office has it (a drag let go of somewhere it can't stand). */
+  refresh() {
+    this.drawPieces();
+  }
+
+  /** The pieces as they're drawn now, and each one's picture: what decorating picks up and moves. */
+  getPieces(): readonly OfficePiece[] {
+    return this.pieces;
+  }
+
+  getImage(key: string): Phaser.GameObjects.Image | undefined {
+    return this.images.get(key);
+  }
+
+  destroy() {
+    this.gone = true;
+    this.unsubscribe?.();
   }
 
   /**
-   * Tiled anchors tile objects on their bottom edge, which is also where we want
-   * their depth measured from.
+   * Every seat, as the seat code reads a chair: its middle, a tile above where
+   * whoever sits there is (the seat's point is its base).
    */
-  private createFurniture() {
-    const objects = this.map.getObjectLayer("Furniture")?.objects ?? [];
-    objects.forEach((obj) => {
-      if (!obj.gid) return;
-      const tile = this.resolve(obj.gid);
-      if (!tile) return;
-      const x = obj.x ?? 0;
-      const y = obj.y ?? 0;
-      this.scene.add
-        .image(x, y, tile.key, tile.frame)
-        .setOrigin(0, 1)
-        .setDepth(depthForY(y));
-    });
-  }
-
   private readChairs() {
-    const objects = this.map.getObjectLayer("Chair")?.objects ?? [];
-    objects.forEach((obj) => {
-      if (!obj.gid) return;
-      const tile = this.resolve(obj.gid);
-      if (!tile) return;
-      const x = obj.x ?? 0;
-      const y = obj.y ?? 0;
-      const direction =
-        (obj.properties as Array<{ name: string; value: string }> | undefined)?.find(
-          (p) => p.name === "direction",
-        )?.value ?? "down";
-      // a chair the far side of a desk shares that desk row's depth, so nudge it
-      // behind or the seat draws on top of the desk it is tucked under
-      this.scene.add
-        .image(x, y, tile.key, tile.frame)
-        .setOrigin(0, 1)
-        .setDepth(depthForY(y) + (direction === "down" ? -1 : 0));
-      const cx = x + TILE_SIZE / 2;
-      const cy = y - TILE_SIZE / 2;
-      this.chairSpecs.push({
-        // the chair's tile, so ids survive the map being regenerated
-        id: (y / TILE_SIZE) * MAP_WIDTH_TILES + x / TILE_SIZE,
-        x: cx,
-        y: cy,
-        direction: direction as ChairSpec["direction"],
-        zone: this.getAnchors("Zones").find(
-          (z) =>
-            cx >= z.x && cx < z.x + z.width && cy >= z.y && cy < z.y + z.height,
-        )?.name,
-      });
-    });
-  }
-
-  private readAnchors() {
-    ["Computer", "Whiteboard", "Zones", "Table"].forEach((layer) => {
-      this.anchors[layer] = (
-        this.map.getObjectLayer(layer)?.objects ?? []
-      ).map((obj) => ({
-        name: obj.name || "",
-        x: obj.x ?? 0,
-        y: obj.y ?? 0,
-        width: obj.width || TILE_SIZE,
-        height: obj.height || TILE_SIZE,
-      }));
-    });
-  }
-
-  /**
-   * The walls and furniture you can't walk through, as plain rectangles: you
-   * are moved by hand against them (checkCollisionAt) and walk paths around
-   * them (NavGrid), so there's no physics engine running underneath.
-   */
-  private createColliders() {
-    const objects = this.map.getObjectLayer("Colliders")?.objects ?? [];
-
-    objects.forEach((obj) => {
-      const width = obj.width || 1;
-      const height = obj.height || 1;
-      const x = obj.x ?? 0;
-      const y = obj.y ?? 0;
-      this.solidRects.push({ x, y, width, height });
-    });
+    this.chairSpecs = FLOOR.seats.map((seat) => ({ id: seat.id, x: seat.x, y: seat.y - TILE_SIZE / 2, direction: seat.dir, zone: seat.zone }));
   }
 
   getChairs(): ChairSpec[] {
     return this.chairSpecs;
   }
 
-  getAnchors(layer: string): MapAnchor[] {
-    return this.anchors[layer] ?? [];
+  /** A room the floor names (the meeting room is "meeting"). */
+  getZone(name: string): MapAnchor | undefined {
+    return FLOOR.anchors.zones?.find((zone) => zone.name === name);
+  }
+
+  /** The meeting table, which carries the meeting room's tag. */
+  getTable(): MapAnchor | undefined {
+    const table = FLOOR.anchors.table;
+    return table && { name: "table", ...table };
+  }
+
+  /** The whiteboard's place on the wall. */
+  getWhiteboard(): MapAnchor | undefined {
+    const board = FLOOR.anchors.whiteboard;
+    return board && { name: "whiteboard", ...board };
   }
 
   getNavGrid(): NavGrid {
@@ -201,15 +225,16 @@ export class MapManager {
   getRandomSpawnTile(keepCentered = false): { tileX: number; tileY: number } {
     const camera = this.scene.cameras.main;
     const halfView = camera.height / camera.zoom / 2;
-    const lowest = this.map.heightInPixels - halfView;
+    const [width, height] = FLOOR.shell.size;
+    const lowest = height * TILE_SIZE - halfView;
 
     const preferred: Array<{ tileX: number; tileY: number }> = [];
     const fallback: Array<{ tileX: number; tileY: number }> = [];
 
-    for (let tileY = 2; tileY < this.map.height - 2; tileY++) {
+    for (let tileY = 2; tileY < height - 2; tileY++) {
       const worldY = tileY * TILE_SIZE + TILE_SIZE / 2;
       const centered = worldY >= halfView && worldY <= lowest;
-      for (let tileX = 2; tileX < this.map.width - 2; tileX++) {
+      for (let tileX = 2; tileX < width - 2; tileX++) {
         if (!this.nav.isWalkable(tileX, tileY)) continue;
         if (!keepCentered || centered) preferred.push({ tileX, tileY });
         else fallback.push({ tileX, tileY });
@@ -232,10 +257,10 @@ export class MapManager {
   }
 
   getMapWidth(): number {
-    return this.map.widthInPixels;
+    return FLOOR.shell.size[0] * TILE_SIZE;
   }
 
   getMapHeight(): number {
-    return this.map.heightInPixels;
+    return FLOOR.shell.size[1] * TILE_SIZE;
   }
 }

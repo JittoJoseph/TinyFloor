@@ -1,4 +1,4 @@
-import { isDesk, type Desk } from "../../shared-protocol/src";
+import { DESK_SEATS, isDesk, seatTile, type Desk } from "../../shared-protocol/src";
 
 /**
  * Whose desk is whose in one office (docs/product.md), kept in the office room's own
@@ -11,6 +11,42 @@ export class Desks {
     sql.exec(
       "CREATE TABLE IF NOT EXISTS desks (seat INTEGER PRIMARY KEY, user_id TEXT NOT NULL UNIQUE, name TEXT NOT NULL, claimed_at INTEGER NOT NULL)",
     );
+    this.settle();
+  }
+
+  /**
+   * A claim on a desk the floor doesn't have (the floor changed under it: the
+   * hand-made map's desks, to October 2026, aren't the Startup template's)
+   * moves to the free desk nearest the tile it was on, the earliest claim
+   * choosing first, so nobody loses their desk while there are desks to go
+   * round; with none left, it's let go. A seat's id is its tile, on any floor,
+   * so this needs nothing of the old floor but the claim. Every room does it
+   * as it starts, before its claims are read; with nothing to move, it only
+   * reads them.
+   */
+  private settle(): void {
+    const claims = this.sql
+      .exec<{ seat: number; user_id: string }>("SELECT seat, user_id FROM desks ORDER BY claimed_at, seat")
+      .toArray();
+    const moving = claims.filter((claim) => !isDesk(claim.seat));
+    if (!moving.length) return;
+    const free = new Set(DESK_SEATS.filter((seat) => !claims.some((claim) => claim.seat === seat)));
+    for (const claim of moving) {
+      const from = seatTile(claim.seat);
+      let best: number | null = null;
+      let distance = Infinity;
+      for (const seat of free) {
+        const to = seatTile(seat);
+        const away = Math.hypot(to.x - from.x, to.y - from.y);
+        if (away < distance) [best, distance] = [seat, away];
+      }
+      if (best === null) {
+        this.sql.exec("DELETE FROM desks WHERE user_id = ?", claim.user_id);
+        continue;
+      }
+      free.delete(best);
+      this.sql.exec("UPDATE desks SET seat = ? WHERE user_id = ?", best, claim.user_id);
+    }
   }
 
   list(): Desk[] {

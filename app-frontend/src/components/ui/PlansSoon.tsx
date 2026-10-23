@@ -12,7 +12,8 @@ import { cn } from "@/lib/utils";
 export function PlansSoon({ className }: { className?: string }) {
   const t = useTranslations("common");
   const plans = usePlans();
-  if (plans?.billing) return null;
+  // Said only once the plans are known not to be on sale, never while they're still being read.
+  if (!plans || plans.billing) return null;
   return (
     <p className={cn("flex items-center gap-1.5 text-[12px] text-muted-foreground", className)}>
       {t("plansSoon")}

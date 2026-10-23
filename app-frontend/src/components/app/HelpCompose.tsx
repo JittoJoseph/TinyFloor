@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { X } from "@/components/ui/icons";
+import { CloseButton } from "@/components/ui/CloseButton";
 import { useRouter } from "@/lib/i18n/navigation";
 import { ApiError } from "@/lib/api";
 import { help, SUPPORT_CHANNEL, useHelp } from "@/lib/help";
@@ -118,14 +118,7 @@ export function HelpCompose() {
                 })}
               </p>
             </div>
-            <button
-              type="button"
-              aria-label={tc("close")}
-              onClick={() => help.compose(false)}
-              className="-me-1 -mt-1 flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            >
-              <X className="size-4" />
-            </button>
+            <CloseButton label={tc("close")} onClick={() => help.compose(false)} className="-me-1 -mt-1" />
           </div>
           <form
             className="mt-3"

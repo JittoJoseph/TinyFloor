@@ -112,10 +112,16 @@ const only = process.argv.find((arg) => arg.startsWith("--only="))?.slice("--onl
 const files = only ? manifest.files.filter((file) => only.some((prefix) => file.key.startsWith(prefix))) : manifest.files;
 let fetched = 0;
 
-for (const file of files) {
+// A few at a time: there are hundreds of small ones (the characters' parts).
+const queue = [...files];
+async function worker() {
+  for (let file = queue.shift(); file; file = queue.shift()) await put(file);
+}
+
+async function put(file) {
   const destination = path.join(root, "public", file.key);
   if (!forceRemote && existsSync(destination) && sha256(await readFile(destination)) === file.sha256)
-    continue;
+    return;
 
   let buffer;
   if (useLocal) {
@@ -135,6 +141,8 @@ for (const file of files) {
   await writeFile(destination, buffer);
   fetched += 1;
 }
+
+await Promise.all(Array.from({ length: 12 }, worker));
 
 console.log(
   fetched

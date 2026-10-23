@@ -8,6 +8,8 @@ import { useAuth } from "@/contexts/AuthContext";
 import { api } from "@/lib/api";
 import { anyCharacter, character as cleanCharacter, saveIdentity } from "@/lib/identity";
 import { invitePath, officePath } from "@/lib/links";
+import { openOfficeAhead } from "@/lib/officeAhead";
+import { warmFloor } from "@/lib/floorWarmup";
 import { EntryDetail, EntryHeader, EntryShell } from "@/components/entry/EntryShell";
 import { OfficeMark, YouSummary } from "@/components/entry/DoorParts";
 import { EntryProblem } from "@/components/entry/EntryProblem";
@@ -73,6 +75,14 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
     };
   }, [initialPreview, token]);
 
+  // While they read the invite and say who they are, the office's page and the floor's code and files load.
+  const officeId = invite?.officeId;
+  useEffect(() => {
+    if (!officeId) return;
+    warmFloor();
+    router.prefetch(officePath(officeId));
+  }, [officeId, router]);
+
   const account = !!user && !user.guest;
   const introduced = account && user.introduced !== false;
   const step: Step = !account ? "account" : introduced ? "join" : identity;
@@ -106,6 +116,7 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
         }),
       );
       posthogLog.info("Office invitation acceptance completed");
+      openOfficeAhead(officeId);
       router.replace(officePath(officeId));
     } catch (err) {
       setError(explain(err));

@@ -6,6 +6,7 @@ import { Loader2 } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { api, type TeamOffice } from "@/lib/api";
 import { officePath } from "@/lib/links";
+import { openOfficeAhead } from "@/lib/officeAhead";
 import { track } from "@/lib/analytics";
 import { Face, FaceStack } from "@/components/ui/Face";
 import { cn } from "@/lib/utils";
@@ -18,6 +19,19 @@ export interface Team {
 /** How often a waiting request looks to see whether it was answered. */
 const CHECK_MS = 15_000;
 
+let early: Promise<Team | null> | null = null;
+
+const askTeam = () =>
+  api.myTeam().then(
+    ({ domain, offices }) => (domain && offices.length > 0 ? { domain, offices } : null),
+    () => null,
+  );
+
+/** Asks for your team's offices ahead, alongside what decides the page, for the page that shows them next to use. */
+export function askTeamOffices() {
+  early ??= askTeam();
+}
+
 /**
  * The offices your colleagues are in, found by your work email (docs/product.md):
  * undefined until known, null when there are none. Someone who signed up on
@@ -27,10 +41,10 @@ export function useTeamOffices(): Team | null | undefined {
   const [team, setTeam] = useState<Team | null | undefined>(undefined);
   useEffect(() => {
     let cancelled = false;
-    api.myTeam().then(
-      ({ domain, offices }) => !cancelled && setTeam(domain && offices.length > 0 ? { domain, offices } : null),
-      () => !cancelled && setTeam(null),
-    );
+    // An answer asked for ahead is used once; anything later asks again, so a request since made or taken back shows.
+    const asked = early ?? askTeam();
+    early = null;
+    void asked.then((found) => !cancelled && setTeam(found));
     return () => {
       cancelled = true;
     };
@@ -79,7 +93,10 @@ export function TeamOffices({ team, label, className }: { team: Team; label?: st
       } else {
         const { joined } = await api.joinTeamOffice(office.id);
         track(joined ? "office_joined_by_domain" : "office_join_requested", { office_id: office.id, members: office.members });
-        if (joined) return router.replace(officePath(office.id));
+        if (joined) {
+          openOfficeAhead(office.id);
+          return router.replace(officePath(office.id));
+        }
         mark(office.id, true);
       }
     } catch {

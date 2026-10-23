@@ -12,17 +12,16 @@ import { isDesk } from "@shared/map";
 import { cancelClaim, confirmClaim, deskAt, deskOf, deskState, requestClaim, setGoHome, setMySeat, subscribeDesks } from "./desks";
 import { floorStatusOf, subscribeFloor } from "./floor";
 import { DeskPlate } from "./DeskPlate";
+import { decorateState, subscribeDecorate } from "./decorate";
 
 /**
  * Where a seated character sits relative to the chair's base, and whether they
  * draw in front of the chair or behind it. Facing away puts you behind the
  * backrest, which is what makes the desk in front read as covering your legs.
  */
-const SEAT: Record<CardinalDirection, { dx: number; dy: number; depth: number; exit: number }> = {
+const SEAT: Record<ChairSpec["direction"], { dx: number; dy: number; depth: number; exit: number }> = {
   down: { dx: 0, dy: -12, depth: -0.5, exit: -54 },
   up: { dx: 0, dy: -32, depth: -2, exit: 20 },
-  left: { dx: 0, dy: -20, depth: 2, exit: 20 },
-  right: { dx: 0, dy: -20, depth: 2, exit: 20 },
 };
 
 const REACH = 56;
@@ -39,7 +38,6 @@ export interface SeatPose {
   x: number;
   y: number;
   depth: number;
-  frame: number;
   direction: CardinalDirection;
   standX: number;
   standY: number;
@@ -68,6 +66,7 @@ export class SeatManager {
   private unsubscribe?: () => void;
   private unsubscribeDesks: () => void;
   private unsubscribeFloor: () => void;
+  private unsubscribeDecorate: () => void;
   /** Whose desk it is, on each desk while its owner is away (docs/product.md). */
   private plates = new Map<number, DeskPlate>();
   /** How many the table's tag says are in meetings; who's talking changes often, the count rarely. */
@@ -127,10 +126,13 @@ export class SeatManager {
     });
     // An owner's dot follows them in and out of the office.
     this.unsubscribeFloor = subscribeFloor(() => this.showPlates());
+    // While a desk is decorated the plates step aside, so nothing sits over what's being arranged.
+    this.unsubscribeDecorate = subscribeDecorate(() => this.showPlates());
 
     this.seats.forEach((seat) => {
       const zone = scene.add.zone(seat.x, seat.y, 40, 44).setOrigin(0.5).setInteractive({ useHandCursor: true });
       zone.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
+        if (decorateState().desk) return;
         pointer.event.stopPropagation();
         if (this.seated === seat) return this.stand();
         if (seat.occupant || this.reserved(seat)) return;
@@ -167,7 +169,6 @@ export class SeatManager {
       x: seat.x + shift.dx,
       y: seat.baseY + shift.dy,
       depth: depthForY(seat.baseY) + shift.depth,
-      frame: this.animations.getSitFrame(seat.direction),
       direction: seat.direction,
       standX: seat.x,
       standY: seat.baseY + shift.exit,
@@ -226,7 +227,9 @@ export class SeatManager {
   /** Each desk's plate: whose it is while they're away from it, "Your desk" for yours, "Claim desk" on a free one you sit at. */
   private showPlates() {
     const { desks, canClaim, asking, claimed } = deskState();
+    const decorating = decorateState().desk !== null;
     this.plates.forEach((plate, id) => {
+      if (decorating) return plate.show(null, false);
       const desk = deskAt(desks, id);
       const seat = this.byId.get(id);
       const mine = desk?.userId === this.selfId;
@@ -282,8 +285,7 @@ export class SeatManager {
     seat.occupant = SELF;
 
     this.player.setPosition(pose.x, pose.y);
-    this.player.anims.stop();
-    this.player.setFrame(pose.frame);
+    this.animations.sit(this.player, seat.direction);
     this.player.setDepth(pose.depth);
 
     this.onSitChange?.(true);
@@ -305,7 +307,7 @@ export class SeatManager {
 
     const pose = this.poseFor(seat);
     this.player.setPosition(pose.standX, pose.standY);
-    this.player.play(this.animations.getAnimationKey(this.player.getData("spriteName") || "Adam", "idle", seat.direction), true);
+    this.animations.play(this.player, "idle", seat.direction);
     this.onSitChange?.(false);
     setMySeat(null);
     this.changed();
@@ -361,6 +363,7 @@ export class SeatManager {
     this.unsubscribeDesks();
     setGoHome(null);
     this.unsubscribeFloor();
+    this.unsubscribeDecorate();
     this.plates.forEach((plate) => plate.destroy());
     setMySeat(null);
     this.hitAreas.forEach((zone) => zone.destroy());

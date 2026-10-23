@@ -71,6 +71,8 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
     const watcher = new ResizeObserver(onResize);
     if (gameRef.current) watcher.observe(gameRef.current);
 
+    // The scene, from the start: a game torn down before it has finished starting still has it leave the room.
+    let scene: GameScene | null = null;
     const start = (box: HTMLDivElement) => {
       applySceneText();
 
@@ -79,7 +81,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         width: box.clientWidth,
         height: box.clientHeight,
         parent: box,
-        scene: new GameScene(name, character, userId, () => nextTicket()),
+        scene: (scene = new GameScene(name, character, userId, () => nextTicket())),
         // The panel behind the canvas paints the space around the map, so it
         // follows the light or dark theme.
         transparent: true,
@@ -93,6 +95,9 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         // also takes clicks on whatever covers it (a meeting, a menu, a toast) as
         // clicks on the floor underneath: a pin in a meeting walked you to the whiteboard.
         input: { windowEvents: false },
+        // Nothing on the floor uses Phaser's effects; without these it doesn't build their shaders while starting.
+        disablePreFX: true,
+        disablePostFX: true,
       };
       game.current = new Phaser.Game(config);
       game.current.events.once(Phaser.Core.Events.READY, onResize);
@@ -105,10 +110,11 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
     return () => {
       window.removeEventListener("resize", onResize);
       watcher.disconnect();
+      scene?.leave();
       if (game.current) {
-        const scene = game.current.scene.getScene("GameScene") as GameScene;
-        if (scene) {
-          scene.cleanup();
+        const running = game.current.scene.getScene("GameScene") as GameScene;
+        if (running) {
+          running.cleanup();
         }
 
         try {

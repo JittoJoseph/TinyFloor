@@ -117,11 +117,11 @@ async function sendCode(env: Env, email: string): Promise<void> {
     .run();
 
   const { html, text } = letter({
-    preview: "Enter it to continue to TinyFloor. It works for 10 minutes.",
-    heading: "Your TinyFloor code",
-    paragraphs: ["Enter this code to continue to TinyFloor:"],
+    preview: "Enter it in the TinyFloor window you have open. It works for 10 minutes.",
+    heading: "Your sign-in code",
+    paragraphs: ["Enter this code in the TinyFloor window you have open to continue."],
     code,
-    footnote: "It works for 10 minutes. If you didn't ask for it, you can ignore this email. Nobody can sign in without the code.",
+    footnote: "It works for 10 minutes. If you didn't ask for it, you can ignore this email: nobody can sign in without the code.",
   });
   const sent = await sendEmail(env, { to: email, subject: `${code} is your TinyFloor code`, html, text, kind: "code" });
   // Without a key (locally) the code is in the log instead; with one, a failed send leaves nothing waiting for it.

@@ -403,7 +403,7 @@ export const api = {
   /** Google's popup code (the button), or One Tap's signed ID token. */
   signInWithGoogle: (from: { code: string } | { credential: string }) => post<{ user: SessionUser; created: boolean }>("/auth/google", from),
   continueAsGuest: (body: { name: string; character: string; turnstileToken: string }) =>
-    post<{ user: SessionUser }>("/auth/guest", body),
+    post<{ user: SessionUser; lobby?: RoomTicket }>("/auth/guest", body),
   signOut: () => post<{ ok: true }>("/auth/logout"),
 
   // The signed-in person

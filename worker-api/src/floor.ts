@@ -52,7 +52,7 @@ export function floorRoutes(router: Router): void {
     .add("POST", "/v1/lobby/ticket", async ({ request, env, ctx }) => {
       const user = await requireUser(env, request, ctx);
       noteCountry(env, request, ctx, user);
-      return json(await ticketFor(env, user, LOBBY_ROOM, user.isGuest ? "guest" : "member", LOBBY_COPY_CAPACITY));
+      return json(await lobbyTicket(env, user));
     })
 
     // The lobby's one chat, shared by every copy of its floor. Guests post too,
@@ -90,6 +90,11 @@ export function floorRoutes(router: Router): void {
       );
       return json(people);
     });
+}
+
+/** A ticket to a copy of the lobby's floor, as whoever you are there. */
+export function lobbyTicket(env: Env, user: User): Promise<{ ticket: string; url: string }> {
+  return ticketFor(env, user, LOBBY_ROOM, user.isGuest ? "guest" : "member", LOBBY_COPY_CAPACITY);
 }
 
 async function ticketFor(

@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { ChevronRight, Desk, Shirt, UserPlus } from "@/components/ui/icons";
 import { CharacterBust } from "@/components/character/CharacterBust";
 import { CharacterStage } from "@/components/character/CharacterStage";
-import { openCharacterCreator, warmCharacterCreator } from "@/components/character/CharacterCreator";
+import { openCharacterCreator, warmCharacterCreator } from "@/components/character/creatorOpen";
 import { useAuth } from "@/contexts/AuthContext";
 import { useMyNote, useMyStatus } from "@/lib/floor";
 import { deskOf, goToMyDesk, useDesks } from "@/lib/desks";

@@ -55,6 +55,8 @@ function zoomFor(width: number, height: number, mapWidth: number, mapHeight: num
 class GameScene extends Phaser.Scene {
   private player!: Phaser.GameObjects.Sprite;
   private wsManager!: RoomSocket;
+  /** Left before or after starting (leave): the room isn't joined. */
+  private left = false;
   /** Where you appear, chosen before the room is joined. */
   private spawnTile!: { tileX: number; tileY: number };
   private playerManager!: PlayerManager;
@@ -109,9 +111,16 @@ class GameScene extends Phaser.Scene {
       const tile = this.player ? pixelToTile(this.player.x, this.player.y) : this.spawnTile;
       return { x: tile.tileX, y: tile.tileY };
     });
-    this.wsManager.connect();
-    // A game torn down before it was built (the page left at once) still lets go of the room.
-    this.events.once(Phaser.Scenes.Events.DESTROY, () => this.wsManager.disconnect());
+    if (!this.left) this.wsManager.connect();
+  }
+
+  /**
+   * Leaving, whether or not the game ever got going: a game torn down while it
+   * was still starting never joins the room, and one that has lets go of it.
+   */
+  leave() {
+    this.left = true;
+    this.wsManager?.disconnect();
   }
 
   create() {

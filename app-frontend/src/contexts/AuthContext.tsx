@@ -7,6 +7,7 @@ import { readIdentity } from "@/lib/identity";
 import { browserZone } from "@/lib/timeZone";
 import { setMusicOwner } from "@/lib/music";
 import { adoptMyNote } from "@/lib/floor";
+import { handTicket } from "@/lib/handedTicket";
 import { posthogLog } from "@/lib/posthog-log";
 import { recallSession, rememberSession } from "@/lib/session-hint";
 import { rememberAccount } from "@/lib/accountHint";
@@ -171,7 +172,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return next;
       },
       continueAsGuest: async (details) => {
-        const { user: next } = await api.continueAsGuest(details);
+        const { user: next, lobby } = await api.continueAsGuest(details);
+        // The demo office's floor, which they're walking onto, takes the ticket that came with them.
+        if (lobby) handTicket(lobby);
         setUser(next);
         return next;
       },

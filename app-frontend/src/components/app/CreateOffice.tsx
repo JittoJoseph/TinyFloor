@@ -11,6 +11,7 @@ import { dollars, usePlans } from "@/lib/billing";
 import { openCheckout, waitForPlan } from "@/lib/checkout";
 import { officePath } from "@/lib/links";
 import { openOfficeAhead } from "@/lib/officeAhead";
+import { warmFloor } from "@/lib/floorWarmup";
 import { InviteActions } from "./Invite";
 import { TeamOffices, useTeamOffices } from "./TeamOffices";
 import { forgetPendingOffice, pendingOffice } from "@/lib/pendingOffice";
@@ -56,6 +57,12 @@ export function CreateOfficeFlow() {
   const [wentBack, setWentBack] = useState(false);
   const [name, setName] = useState("");
   const [office, setOffice] = useState<Office | null>(null);
+  // Their floor loads while they name it and invite people, and once it's made, its page.
+  useEffect(warmFloor, []);
+  const officeId = office?.id;
+  useEffect(() => {
+    if (officeId) router.prefetch(officePath(officeId));
+  }, [officeId, router]);
   // Chosen on the pricing page (/create?plan=pro): bought straight after the name. Old links said plus.
   const [asked] = useState(() => {
     if (typeof window === "undefined") return false;

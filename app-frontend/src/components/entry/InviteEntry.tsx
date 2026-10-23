@@ -9,6 +9,7 @@ import { api } from "@/lib/api";
 import { anyCharacter, character as cleanCharacter, saveIdentity } from "@/lib/identity";
 import { invitePath, officePath } from "@/lib/links";
 import { openOfficeAhead } from "@/lib/officeAhead";
+import { warmFloor } from "@/lib/floorWarmup";
 import { EntryDetail, EntryHeader, EntryShell } from "@/components/entry/EntryShell";
 import { OfficeMark, YouSummary } from "@/components/entry/DoorParts";
 import { EntryProblem } from "@/components/entry/EntryProblem";
@@ -73,6 +74,14 @@ export function InviteEntry({ token, initialPreview }: { token: string; initialP
       cancelled = true;
     };
   }, [initialPreview, token]);
+
+  // While they read the invite and say who they are, the office's page and the floor's code and files load.
+  const officeId = invite?.officeId;
+  useEffect(() => {
+    if (!officeId) return;
+    warmFloor();
+    router.prefetch(officePath(officeId));
+  }, [officeId, router]);
 
   const account = !!user && !user.guest;
   const introduced = account && user.introduced !== false;

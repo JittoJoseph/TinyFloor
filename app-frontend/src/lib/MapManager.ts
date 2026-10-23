@@ -87,12 +87,9 @@ export class MapManager {
 
   /** The walls and floors, as one picture painted ahead (lib/floorWalls); in the rare case it isn't yet, as soon as it is. */
   private drawWalls() {
-    const draw = (walls: ImageBitmap | HTMLCanvasElement) => {
+    const draw = (walls: HTMLCanvasElement) => {
       if (this.gone) return;
-      if (!this.scene.textures.exists(WALLS)) {
-        if (walls instanceof HTMLCanvasElement) this.scene.textures.addCanvas(WALLS, walls);
-        else this.scene.textures.addImage(WALLS, walls as unknown as HTMLImageElement);
-      }
+      if (!this.scene.textures.exists(WALLS)) this.scene.textures.addCanvas(WALLS, walls);
       this.scene.add.image(0, 0, WALLS).setOrigin(0, 0).setDepth(0);
     };
     const ready = floorWallsNow();

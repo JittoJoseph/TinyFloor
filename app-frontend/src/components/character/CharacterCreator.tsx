@@ -5,7 +5,6 @@ import {
   isValidElement,
   useEffect,
   useState,
-  useSyncExternalStore,
   type ReactElement,
   type ReactNode,
 } from "react";
@@ -23,14 +22,12 @@ import {
   Shirt,
   Smile,
 } from "@/components/ui/icons";
-import { Modal } from "@/components/ui/Modal";
 import { Button } from "@/components/motion/button/base";
 import { PixelAvatar, type AvatarDirection } from "@/components/PixelAvatar";
 import { CharacterStage } from "./CharacterStage";
 import { useAuth } from "@/contexts/AuthContext";
 import { changeLookOnFloor } from "@/lib/floor";
 import { saveIdentity } from "@/lib/identity";
-import { preloadCharacters } from "@/lib/characterSheet";
 import { track } from "@/lib/analytics";
 import { EASE_OUT, SPRING_LAYOUT } from "@/lib/ease";
 import { useErrorMessage } from "@/lib/useErrorMessage";
@@ -83,50 +80,6 @@ function stylesOf(
   return styles;
 }
 
-let shown = false;
-const listeners = new Set<() => void>();
-const setShown = (value: boolean) => {
-  shown = value;
-  listeners.forEach((listener) => listener());
-};
-const subscribe = (listener: () => void) => {
-  listeners.add(listener);
-  return () => listeners.delete(listener);
-};
-
-/** Starts loading the creator's characters, for a creator about to open: it then opens without waiting on them. */
-export const warmCharacterCreator = () =>
-  preloadCharacters([...PRESETS, ...CHARACTER_CATALOG.starts]);
-
-/** Opens the creator, from anywhere (your card on the floor, your profile). */
-export const openCharacterCreator = () => {
-  warmCharacterCreator();
-  setShown(true);
-};
-
-/** The one creator every screen opens: in the app's layout, so it outlives whatever opened it. */
-export function CharacterCreatorHost() {
-  const open = useSyncExternalStore(
-    subscribe,
-    () => shown,
-    () => false,
-  );
-  const t = useTranslations("look");
-  const tc = useTranslations("common");
-  const close = () => setShown(false);
-  return (
-    <Modal
-      open={open}
-      onClose={close}
-      label={t("title")}
-      closeLabel={tc("close")}
-      className="sm:max-w-[56rem]"
-    >
-      {open && <Creator onClose={close} />}
-    </Modal>
-  );
-}
-
 /**
  * Changing how you look. You on the left, three times the art's size, turning
  * and walking, trying on whatever the pointer is over. The categories in the
@@ -140,7 +93,7 @@ export function CharacterCreatorHost() {
  * The choices are drawn once the dialog has opened, so it opens smoothly
  * however many there are.
  */
-function Creator({ onClose }: { onClose: () => void }) {
+export function Creator({ onClose }: { onClose: () => void }) {
   const t = useTranslations("look");
   const { user, updateProfile } = useAuth();
   const explain = useErrorMessage();

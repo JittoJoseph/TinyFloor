@@ -16,7 +16,7 @@ import { Dialog, ErrorText, fieldClass, Label } from "@/components/ui/forms";
 import { LitFace } from "@/components/ui/LitFace";
 import { CharacterStage } from "@/components/character/CharacterStage";
 import { isPreset } from "@shared/character";
-import { openCharacterCreator } from "@/components/character/CharacterCreator";
+import { openCharacterCreator, warmCharacterCreator } from "@/components/character/creatorOpen";
 import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
 import { General, Group, Row } from "@/components/app/SettingsView";
 
@@ -218,7 +218,7 @@ export function Profile() {
             <p className="truncate text-[13.5px] font-medium text-foreground">{isPreset(user.character) ? user.character : tLook("own")}</p>
             <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{tLook(isPreset(user.character) ? "presetNote" : "ownNote")}</p>
           </div>
-          <Button type="button" size="sm" variant="secondary" onClick={openCharacterCreator} className="h-8 px-3.5 text-[13px]">
+          <Button type="button" size="sm" variant="secondary" onClick={openCharacterCreator} onPointerEnter={warmCharacterCreator} className="h-8 px-3.5 text-[13px]">
             {tLook("change")}
           </Button>
         </div>

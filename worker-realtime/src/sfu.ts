@@ -11,7 +11,7 @@ export interface SfuTrack {
 export interface TracksResponse {
   requiresImmediateRenegotiation?: boolean;
   sessionDescription?: { type: "offer" | "answer"; sdp: string };
-  tracks?: { mid?: string; trackName?: string; errorCode?: string }[];
+  tracks?: { mid?: string; trackName?: string; errorCode?: string; errorDescription?: string }[];
 }
 
 export class SfuError extends Error {
@@ -68,10 +68,21 @@ export class SfuApi {
       headers: { Authorization: `Bearer ${this.secret}`, "Content-Type": "application/json" },
       body: body === undefined ? undefined : JSON.stringify(body),
     });
-    const result = (await response.json().catch(() => ({}))) as T & { errorCode?: string };
+    const result = (await response.json().catch(() => ({}))) as T & { errorCode?: string; errorDescription?: string };
+    const trackError = (result as TracksResponse).tracks?.find((track) => track.errorCode);
+    if (!response.ok || result.errorCode || trackError) {
+      // Each refusal in the worker's logs, by what was asked and why, so a meeting that
+      // lost its sound can be traced to it; the session's id is left out of the path.
+      console.warn("sfu request failed", {
+        method,
+        path: path.replace(/^\/sessions\/[^/]+/, "/sessions/:id"),
+        status: response.status,
+        code: result.errorCode ?? trackError?.errorCode ?? null,
+        description: result.errorDescription ?? trackError?.errorDescription ?? null,
+      });
+    }
     if (!response.ok || result.errorCode) throw new SfuError(result.errorCode ?? `sfu_http_${response.status}`);
-    const trackError = (result as TracksResponse).tracks?.find((track) => track.errorCode)?.errorCode;
-    if (trackError) throw new SfuError(trackError);
+    if (trackError?.errorCode) throw new SfuError(trackError.errorCode);
     return result;
   }
 }

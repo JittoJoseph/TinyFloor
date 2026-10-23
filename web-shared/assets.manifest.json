@@ -29,11 +29,6 @@
       "bytes": 14590
     },
     {
-      "key": "catalog/items.png",
-      "sha256": "4448322d9366d54a4a2293e5349eac013e91e924c0a3d7dc0fdd63d278372baf",
-      "bytes": 110702
-    },
-    {
       "key": "characters/parts/body/1.png",
       "sha256": "cc36af768555650ae39943635588c7fadc7e45126a39dccc5d28c37a3f7cc049",
       "bytes": 2357
@@ -2272,6 +2267,11 @@
       "key": "characters/presets/Jenny.png",
       "sha256": "608cbeb5924470ceb0ac616dbe16048816c0301fda840feca7434afc3030a6dd",
       "bytes": 2787
+    },
+    {
+      "key": "catalog/floor-items.png",
+      "sha256": "3855a3d35dd256017013fc256b08d473304d359528ddb03825731bcd1e465b38",
+      "bytes": 23365
     }
   ]
 }

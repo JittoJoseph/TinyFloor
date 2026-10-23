@@ -19,7 +19,7 @@ counts as redistributing, so these files are **not** in this repository:
 The floor (`shared-protocol/src/catalog/floors/startup.json`, built by the lab
 from its template; `docs/customization.md`) is our own work and stays in the
 repository; what it draws is the room builder sheet and the catalog's atlas
-(`catalog/items.png`, baked by `pnpm --dir lab build`). The old hand-made map
+(`catalog/floor-items.png`, baked by `pnpm --dir lab build`). The old hand-made map
 (`app-frontend/public/tilesets/office-map.tmj`) and the pictures rendered from
 it (`web-shared/public/floor.webp` and the social cards in
 `marketing-frontend/public/og/`, drawn by `marketing-frontend/scripts/pictures.mjs`)

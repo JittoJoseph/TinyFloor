@@ -5,7 +5,7 @@
 // - every drawn item (not bundles or clusters, which are only their parts),
 //   and every desk row a template's banks need, cut from the packs, layered and
 //   mirrored as the catalog says, packed into one atlas:
-//   private-assets/catalog/items.png, its frames in shared-protocol/src/catalog/atlas.json;
+//   private-assets/catalog/floor-items.png, its frames in shared-protocol/src/catalog/atlas.json;
 // - for each template, the office worked out into
 //   shared-protocol/src/catalog/floors/<id>.json: its walls and floors (as the
 //   plain map they're drawn from: the app draws them from the room builder
@@ -28,12 +28,14 @@ import { DESK_STEP, check, clusterSize, isComposite, isGroup, spriteSize } from 
 import { checkTemplate, officeFloor, seatsOf, solidsOf } from "./pages/floor.js";
 import { TILE, wallSolids } from "./pages/shell.js";
 import { record } from "./manifest.mjs";
+import { png8 } from "./png8.mjs";
 
 const { PNG } = pngjs;
 const ROOT = resolve(fileURLToPath(import.meta.url), "../..");
 const PACKS = join(ROOT, "assets-pack");
 const CATALOG = join(ROOT, "shared-protocol", "src", "catalog");
-const ATLAS_KEY = "catalog/items.png";
+// Named for this palette version: production builds keep pulling the full-colour one under its old name until they have this.
+const ATLAS_KEY = "catalog/floor-items.png";
 const WIDTH = 1024;
 const GAP = 2;
 
@@ -134,7 +136,8 @@ const artOf = new Map(
   }),
 );
 await writeFile(join(CATALOG, "atlas.json"), JSON.stringify({ image: ATLAS_KEY, width: atlas.width, height: atlas.height, frames: sorted }, null, 1) + "\n");
-const pictures = [{ key: ATLAS_KEY, png: PNG.sync.write(atlas, { colorType: 6 }) }];
+// Under 256 colours (the packs' art is), it's an 8-bit palette PNG: a third of the size, for every first visit.
+const pictures = [{ key: ATLAS_KEY, png: png8(atlas) ?? PNG.sync.write(atlas, { colorType: 6 }) }];
 console.log(`${drawn.length} items on a ${atlas.width}×${atlas.height} atlas, ${(pictures[0].png.length / 1024).toFixed(1)} KB`);
 
 // ---------- each office: what the floor needs ----------

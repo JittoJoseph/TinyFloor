@@ -10,7 +10,7 @@ import { floorWalls } from "./floorWalls";
  * The office itself (shared-protocol map.ts) comes with the code.
  */
 export const FLOOR_FILES = {
-  items: "/catalog/items.png",
+  items: "/catalog/floor-items.png",
 };
 
 let warming = false;

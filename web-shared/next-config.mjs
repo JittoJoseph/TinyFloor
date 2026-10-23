@@ -9,12 +9,13 @@ const withNextIntl = createNextIntlPlugin("./src/lib/i18n/request.ts");
 /**
  * The Next config both frontends build with, from their own next.config.ts.
  * `serverLeavesOut` names packages the server build leaves out because the code
- * that uses them only ever runs in the browser.
+ * that uses them only ever runs in the browser; `browserUses` puts a module of
+ * the frontend's own in place of one of them in the browser build.
  *
- * @param {{ serverLeavesOut?: string[] }} [options]
+ * @param {{ serverLeavesOut?: string[], browserUses?: Record<string, string> }} [options]
  * @returns {import("next").NextConfig}
  */
-export function frontendConfig({ serverLeavesOut = [] } = {}) {
+export function frontendConfig({ serverLeavesOut = [], browserUses = {} } = {}) {
   const repository = path.join(process.cwd(), "..");
   return withNextIntl({
     // The wire protocol lives in ../shared-protocol, shared with the Workers; what the two
@@ -50,7 +51,9 @@ export function frontendConfig({ serverLeavesOut = [] } = {}) {
     turbopack: {
       root: repository,
       // The server build gets an empty module for these instead (empty.cjs: named imports are undefined).
-      resolveAlias: Object.fromEntries(serverLeavesOut.map((name) => [name, { browser: name, default: "../web-shared/empty.cjs" }])),
+      resolveAlias: Object.fromEntries(
+        serverLeavesOut.map((name) => [name, { browser: browserUses[name] ?? name, default: "../web-shared/empty.cjs" }]),
+      ),
     },
     // What the server needs is traced from the same root, so OpenNext finds the workspace's packages.
     outputFileTracingRoot: repository,

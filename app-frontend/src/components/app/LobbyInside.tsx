@@ -37,6 +37,7 @@ import { YouMenu } from "./YouMenu";
 import { FloorNudges } from "./FloorNudges";
 import { DemoPrompts } from "./DemoPrompts";
 import { PlaceProvider, type OfficeFeature, type Place } from "./place";
+import { useAppUpdates } from "@/lib/updates";
 
 /**
  * Inside the lobby, past its door (LobbyShell): the same shell an office has
@@ -86,6 +87,9 @@ export default function LobbyInside({
     window.addEventListener(OPEN_CONVERSATION_EVENT, open);
     return () => window.removeEventListener(OPEN_CONVERSATION_EVENT, open);
   }, [me, router]);
+
+  // Left open, the lobby keeps up with deploys that change what its floor has to agree on.
+  useAppUpdates();
 
   const people = useMemo(() => everyone.map((one) => ({ id: one.id, displayName: one.name })), [everyone]);
 

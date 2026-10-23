@@ -34,6 +34,9 @@ export const openCharacterCreator = () => {
 
 export const closeCharacterCreator = () => setShown(false);
 
+/** Whether it's open, outside React. */
+export const characterCreatorShown = () => shown;
+
 export const useCharacterCreatorShown = () =>
   useSyncExternalStore(
     subscribe,

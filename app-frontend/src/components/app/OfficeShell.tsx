@@ -31,6 +31,7 @@ import { conversationToOpen } from "@/lib/chatMemory";
 import { useWide } from "@/lib/hooks/use-wide";
 import { forgetOffice, rememberOffice } from "@/lib/lastOffice";
 import { clearOfficeAhead, officeAhead } from "@/lib/officeAhead";
+import { useAppUpdates } from "@/lib/updates";
 import { withPostHog } from "@/lib/analytics";
 import { earlyTicket, warmFloor } from "@/lib/floorWarmup";
 import { warmPlans } from "@/lib/billing";
@@ -119,6 +120,8 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
       })),
     [load, ahead, router, officeId],
   );
+  // Left open for days, the office keeps up with deploys that change what its floor has to agree on.
+  useAppUpdates();
   useEffect(() => {
     clearOfficeAhead();
     warmFloor();

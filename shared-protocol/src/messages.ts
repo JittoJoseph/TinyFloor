@@ -5,6 +5,13 @@ export type PresenceStatus = "available" | "busy" | "away" | "in_call";
 export const PRESENCE_STATUSES: readonly PresenceStatus[] = ["available", "busy", "away", "in_call"];
 
 /** The plain-text heartbeat. The room answers it without waking up. */
+/**
+ * Raised when what the room and a page say to each other changes so that a
+ * page from before can't follow: open pages then reload to the new app
+ * (app-frontend lib/updates.ts). Anything else a deploy changes leaves them be.
+ */
+export const PROTOCOL_VERSION = 1;
+
 export const HEARTBEAT_PING = "ping";
 export const HEARTBEAT_PONG = "pong";
 

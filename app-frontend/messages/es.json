@@ -555,8 +555,8 @@
       "removeSure": "{name} pierde la planta y el chat, y su plaza queda libre. Puedes volver a invitarle más adelante."
     },
     "office": "Oficina",
-    "goneTitle": "Esta oficina ya no existe",
-    "gone": "Se cerró, o ya no eres miembro.",
+    "goneTitle": "No puedes abrir esta oficina",
+    "gone": "Aún no eres miembro, o se cerró. Si alguien te invitó, abre el enlace de invitación que te envió.",
     "backToOffices": "Volver a tus oficinas"
   },
   "create": {

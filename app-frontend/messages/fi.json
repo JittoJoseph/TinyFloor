@@ -555,8 +555,8 @@
       "removeSure": "{name} menettää kerroksen ja chatin, ja hänen paikkansa vapautuu. Voit kutsua hänet takaisin myöhemmin."
     },
     "office": "Toimisto",
-    "goneTitle": "Tätä toimistoa ei enää ole",
-    "gone": "Se suljettiin, tai et ole enää jäsen.",
+    "goneTitle": "Et voi avata tätä toimistoa",
+    "gone": "Et ole vielä sen jäsen, tai se on suljettu. Jos joku kutsui sinut, avaa kutsulinkki, jonka hän lähetti.",
     "backToOffices": "Takaisin toimistoihisi"
   },
   "create": {

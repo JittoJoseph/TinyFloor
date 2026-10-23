@@ -555,8 +555,8 @@
       "removeSure": "{name} straci dostęp do piętra i czatu, a miejsce się zwolni. Możesz zaprosić tę osobę ponownie później."
     },
     "office": "Biuro",
-    "goneTitle": "Tego biura już nie ma",
-    "gone": "Zostało zamknięte albo nie jesteś już członkiem.",
+    "goneTitle": "Nie możesz otworzyć tego biura",
+    "gone": "Nie jesteś jeszcze jego członkiem albo zostało zamknięte. Jeśli ktoś cię zaprosił, otwórz link z zaproszeniem, który ci wysłał.",
     "backToOffices": "Wróć do swoich biur"
   },
   "create": {

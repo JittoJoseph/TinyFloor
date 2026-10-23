@@ -555,8 +555,8 @@
       "removeSure": "{name} perd l'étage et le chat, et sa place se libère. Vous pourrez l'inviter à nouveau plus tard."
     },
     "office": "Bureau",
-    "goneTitle": "Ce bureau n'existe plus",
-    "gone": "Il a été fermé, ou vous n'en êtes plus membre.",
+    "goneTitle": "Vous ne pouvez pas ouvrir ce bureau",
+    "gone": "Vous n'en êtes pas encore membre, ou il a été fermé. Si quelqu'un vous a invité, ouvrez le lien d'invitation qu'il vous a envoyé.",
     "backToOffices": "Retour à vos bureaux"
   },
   "create": {

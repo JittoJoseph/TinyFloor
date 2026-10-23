@@ -555,8 +555,8 @@
       "removeSure": "{name} mister gulvet og chatten, og pladsen bliver fri. Du kan invitere personen igen senere."
     },
     "office": "Kontor",
-    "goneTitle": "Kontoret findes ikke længere",
-    "gone": "Det blev lukket, eller du er ikke medlem mere.",
+    "goneTitle": "Du kan ikke åbne dette kontor",
+    "gone": "Du er ikke medlem endnu, eller det er lukket. Hvis nogen har inviteret dig, så åbn det invitationslink, de sendte.",
     "backToOffices": "Tilbage til dine kontorer"
   },
   "create": {

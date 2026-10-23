@@ -555,8 +555,8 @@
       "removeSure": "{name} loses the floor and the chat, and their seat frees up. You can invite them back later."
     },
     "office": "Office",
-    "goneTitle": "This office is gone",
-    "gone": "It was closed, or you are no longer a member.",
+    "goneTitle": "You can't open this office",
+    "gone": "You're not a member of it yet, or it was closed. If someone invited you, open the invite link they sent.",
     "backToOffices": "Back to your offices"
   },
   "create": {

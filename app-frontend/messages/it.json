@@ -555,8 +555,8 @@
       "removeSure": "{name} perde il piano e la chat, e il suo posto si libera. Potrai invitarlo di nuovo più avanti."
     },
     "office": "Ufficio",
-    "goneTitle": "Questo ufficio non c'è più",
-    "gone": "È stato chiuso, o non ne fai più parte.",
+    "goneTitle": "Non puoi aprire questo ufficio",
+    "gone": "Non ne fai ancora parte, oppure è stato chiuso. Se qualcuno ti ha invitato, apri il link di invito che ti ha mandato.",
     "backToOffices": "Torna ai tuoi uffici"
   },
   "create": {

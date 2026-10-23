@@ -555,8 +555,8 @@
       "removeSure": "{name} perde o andar e o chat, e o lugar fica livre. Você pode convidar de novo depois."
     },
     "office": "Escritório",
-    "goneTitle": "Este escritório já não existe",
-    "gone": "Foi fechado, ou já não és membro.",
+    "goneTitle": "Você não pode abrir este escritório",
+    "gone": "Você ainda não é membro, ou ele foi fechado. Se alguém te convidou, abra o link de convite que recebeu.",
     "backToOffices": "Voltar aos teus escritórios"
   },
   "create": {

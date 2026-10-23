@@ -555,8 +555,8 @@
       "removeSure": "{name} verliert die Fläche und den Chat, und der Platz wird frei. Du kannst die Person später wieder einladen."
     },
     "office": "Büro",
-    "goneTitle": "Dieses Büro gibt es nicht mehr",
-    "gone": "Es wurde geschlossen, oder du bist kein Mitglied mehr.",
+    "goneTitle": "Du kannst dieses Büro nicht öffnen",
+    "gone": "Du bist noch kein Mitglied, oder es wurde geschlossen. Wenn dich jemand eingeladen hat, öffne den Einladungslink, den du bekommen hast.",
     "backToOffices": "Zurück zu deinen Büros"
   },
   "create": {

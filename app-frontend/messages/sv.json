@@ -555,8 +555,8 @@
       "removeSure": "{name} förlorar golvet och chatten, och platsen blir ledig. Du kan bjuda in personen igen senare."
     },
     "office": "Kontor",
-    "goneTitle": "Det här kontoret finns inte längre",
-    "gone": "Det stängdes, eller så är du inte medlem längre.",
+    "goneTitle": "Du kan inte öppna det här kontoret",
+    "gone": "Du är inte medlem än, eller så har det stängts. Om någon har bjudit in dig, öppna inbjudningslänken du fick.",
     "backToOffices": "Tillbaka till dina kontor"
   },
   "create": {

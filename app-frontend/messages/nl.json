@@ -555,8 +555,8 @@
       "removeSure": "{name} verliest de vloer en de chat, en de plek komt vrij. Je kunt diegene later opnieuw uitnodigen."
     },
     "office": "Kantoor",
-    "goneTitle": "Dit kantoor bestaat niet meer",
-    "gone": "Het is gesloten, of je bent geen lid meer.",
+    "goneTitle": "Je kunt dit kantoor niet openen",
+    "gone": "Je bent er nog geen lid van, of het is gesloten. Heeft iemand je uitgenodigd? Open dan de uitnodigingslink die je kreeg.",
     "backToOffices": "Terug naar je kantoren"
   },
   "create": {

@@ -28,6 +28,8 @@ export interface User {
   hasPassword?: boolean;
   /** Can sign in with Google. */
   hasGoogle?: boolean;
+  /** Their email is shown to be theirs: by Google, or by a link sent to it (email-links.ts). */
+  emailVerified?: boolean;
   /** The link on their profile. */
   link?: string | null;
   /** Has said who they are on the floor: a name and a character, at their first door. */
@@ -54,6 +56,7 @@ interface SessionRow {
   is_guest: number;
   has_password: number;
   has_google: number;
+  email_verified: number;
   link: string | null;
   introduced: number;
   time_zone: string | null;
@@ -136,7 +139,7 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
   const id = await hashToken(token);
   const row = await env.DB.prepare(
     `SELECT s.user_id, s.last_seen_at, u.email, u.display_name, u.character, u.is_guest, u.password_hash IS NOT NULL AS has_password,
-            u.google_sub IS NOT NULL AS has_google, u.link, u.introduced_at IS NOT NULL AS introduced, u.country,
+            u.google_sub IS NOT NULL AS has_google, u.email_verified, u.link, u.introduced_at IS NOT NULL AS introduced, u.country,
             u.time_zone, u.time_zone_auto,
             u.status_icon, u.status_text, u.status_until,
             u.spotify_url, u.spotify_kind, u.spotify_title, u.spotify_image, u.spotify_subtitle, u.spotify_until
@@ -164,6 +167,7 @@ export async function currentUser(env: Env, request: Request, ctx: ExecutionCont
     isGuest: row.is_guest === 1,
     hasPassword: row.has_password === 1,
     hasGoogle: row.has_google === 1,
+    emailVerified: row.email_verified === 1,
     link: row.link,
     introduced: row.introduced === 1,
     timeZone: row.time_zone,

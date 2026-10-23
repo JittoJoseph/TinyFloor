@@ -42,7 +42,36 @@
       "google_unverified": "请先在 Google 验证你的邮箱，然后重试。",
       "google_mismatch": "此邮箱已关联到另一个 Google 账号。"
     },
-    "continueWithEmail": "使用邮箱继续"
+    "continueWithEmail": "使用邮箱继续",
+    "forgotPassword": "忘记密码？",
+    "verify": {
+      "checking": "正在确认你的邮箱…",
+      "doneTitle": "邮箱已确认",
+      "done": "谢谢，你的邮箱已确认。",
+      "continue": "继续",
+      "failedTitle": "此链接无法使用",
+      "failed": "它可能已过期，或你已经用过了。我们可以给你发一个新的。",
+      "failedSignedOut": "它可能已过期，或你已经用过了。登录后即可获取新链接。",
+      "sendAgain": "发送新链接",
+      "sent": "我们已发送新链接，请查收邮件。",
+      "signIn": "登录"
+    },
+    "reset": {
+      "askTitle": "重置密码",
+      "askSubtitle": "输入你的邮箱，我们会发送一个链接，让你设置新密码。",
+      "send": "发送链接",
+      "sending": "正在发送…",
+      "sentTitle": "请查收邮件",
+      "sent": "如果 {email} 有 TinyFloor 账号，我们已向其发送链接。链接 1 小时内有效。",
+      "backToSignIn": "返回登录",
+      "chooseTitle": "设置新密码",
+      "chooseSubtitle": "保存后，你会在这里登录，并在其他所有地方退出登录。",
+      "newPassword": "新密码",
+      "save": "保存密码",
+      "saving": "正在保存…",
+      "linkInvalid": "此链接已过期或已被使用。",
+      "askAgain": "获取新链接"
+    }
   },
   "entry": {
     "yourName": "你的名字",
@@ -469,7 +498,11 @@
       "timeZoneNone": "没有匹配的时区",
       "methods": "登录方式",
       "thisBrowser": "此浏览器",
-      "signedInAs": "已以 {name} 身份登录"
+      "signedInAs": "已以 {name} 身份登录",
+      "confirmEmail": "确认你的邮箱",
+      "confirmEmailNote": "打开我们发给你的链接。这样团队能找到你，你也能重置密码。",
+      "confirmEmailSent": "我们已发送新链接，请查收邮件。",
+      "sendAgain": "再次发送"
     },
     "invite": {
       "invalidTitle": "这个邀请无法使用",

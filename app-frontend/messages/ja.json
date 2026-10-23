@@ -42,7 +42,36 @@
       "google_unverified": "先に Google でメールアドレスを確認してから、もう一度お試しください。",
       "google_mismatch": "このメールアドレスは別の Google アカウントに紐づいています。"
     },
-    "continueWithEmail": "メールで続ける"
+    "continueWithEmail": "メールで続ける",
+    "forgotPassword": "パスワードをお忘れですか？",
+    "verify": {
+      "checking": "メールアドレスを確認しています…",
+      "doneTitle": "メールアドレスを確認しました",
+      "done": "ありがとうございます。メールアドレスの確認が完了しました。",
+      "continue": "続ける",
+      "failedTitle": "このリンクは使えません",
+      "failed": "有効期限が切れたか、すでに使用された可能性があります。新しいリンクを送信できます。",
+      "failedSignedOut": "有効期限が切れたか、すでに使用された可能性があります。ログインすると新しいリンクを受け取れます。",
+      "sendAgain": "新しいリンクを送信",
+      "sent": "新しいリンクを送信しました。メールをご確認ください。",
+      "signIn": "ログイン"
+    },
+    "reset": {
+      "askTitle": "パスワードの再設定",
+      "askSubtitle": "メールアドレスを入力してください。新しいパスワードを設定するリンクをお送りします。",
+      "send": "リンクを送信",
+      "sending": "送信中…",
+      "sentTitle": "メールをご確認ください",
+      "sent": "{email} に TinyFloor のアカウントがある場合、リンクを送信しました。リンクの有効期限は1時間です。",
+      "backToSignIn": "ログインに戻る",
+      "chooseTitle": "新しいパスワードを設定",
+      "chooseSubtitle": "保存すると、この端末でログインし、他のすべての端末からはログアウトします。",
+      "newPassword": "新しいパスワード",
+      "save": "パスワードを保存",
+      "saving": "保存中…",
+      "linkInvalid": "このリンクは有効期限切れか、すでに使用されています。",
+      "askAgain": "新しいリンクを受け取る"
+    }
   },
   "entry": {
     "yourName": "あなたの名前",
@@ -469,7 +498,11 @@
       "timeZoneNone": "一致するタイムゾーンはありません",
       "methods": "サインイン方法",
       "thisBrowser": "このブラウザ",
-      "signedInAs": "{name} としてサインイン中"
+      "signedInAs": "{name} としてサインイン中",
+      "confirmEmail": "メールアドレスを確認",
+      "confirmEmailNote": "お送りしたメールのリンクを開いてください。チームがあなたを見つけやすくなり、パスワードの再設定もできるようになります。",
+      "confirmEmailSent": "新しいリンクを送信しました。メールをご確認ください。",
+      "sendAgain": "再送信"
     },
     "invite": {
       "invalidTitle": "この招待は使えません",

@@ -9,6 +9,18 @@ async function admin(verified = true) {
   return boss;
 }
 
+describe("admin email test", () => {
+  it("sends the admin a test email, and isn't there for anyone else", async () => {
+    expect((await call(null, "POST", "/v1/admin/email-test", {})).status).toBe(401);
+    const boss = await admin();
+    const response = await call(boss, "POST", "/v1/admin/email-test", { to: "inbox@example.com" });
+    expect(response.status).toBe(200);
+    // No RESEND_API_KEY in tests: what would have gone out is logged, not sent.
+    expect(response.body).toEqual({ sent: false, to: "inbox@example.com" });
+    await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
+  });
+});
+
 describe("admin", () => {
   it("is not there for anyone who isn't an admin, or whose address isn't verified", async () => {
     const someone = await makeUser("Someone");

@@ -1,5 +1,6 @@
 import { adminRoutes } from "./admin";
 import { authRoutes } from "./auth";
+import { emailLinkRoutes } from "./email-links";
 import { billingRoutes, endTrials } from "./billing";
 import { callRoutes } from "./calls";
 import { allowedOrigin, assertSafeWrite, errorResponse, HttpError, json, preflight, withCors } from "./http";
@@ -23,6 +24,7 @@ const router = new Router().add("GET", "/v1/health", async ({ env }) => {
   return json({ service: "tinyfloor-api", ok: true, database: database?.ok === 1 });
 });
 authRoutes(router);
+emailLinkRoutes(router);
 googleRoutes(router);
 officeRoutes(router);
 teamRoutes(router);

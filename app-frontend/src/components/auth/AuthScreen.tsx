@@ -301,6 +301,13 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
                   {t("passwordRule")}
                 </p>
               )}
+              {!signingUp && (
+                <p className="mt-2 text-end text-[12.5px]">
+                  <Link href="/auth/reset" className="text-muted-foreground underline-offset-2 transition-colors hover:text-foreground hover:underline">
+                    {t("forgotPassword")}
+                  </Link>
+                </p>
+              )}
             </Field>
 
             {signingUp && <Turnstile controller={turnstile} action="signup" className="flex justify-center" />}

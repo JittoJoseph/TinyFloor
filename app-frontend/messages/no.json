@@ -42,7 +42,36 @@
       "google_unverified": "Bekreft e-postadressen din hos Google først, og prøv så igjen.",
       "google_mismatch": "Denne e-postadressen er knyttet til en annen Google-konto."
     },
-    "continueWithEmail": "Fortsett med e-post"
+    "continueWithEmail": "Fortsett med e-post",
+    "forgotPassword": "Glemt passordet?",
+    "verify": {
+      "checking": "Bekrefter e-posten din…",
+      "doneTitle": "E-post bekreftet",
+      "done": "Takk. E-posten din er bekreftet.",
+      "continue": "Fortsett",
+      "failedTitle": "Denne lenken virker ikke",
+      "failed": "Den kan ha utløpt, eller du har allerede brukt den. Vi kan sende deg en ny.",
+      "failedSignedOut": "Den kan ha utløpt, eller du har allerede brukt den. Logg inn for å få en ny.",
+      "sendAgain": "Send en ny lenke",
+      "sent": "Vi har sendt en ny lenke. Sjekk e-posten din.",
+      "signIn": "Logg inn"
+    },
+    "reset": {
+      "askTitle": "Tilbakestill passordet",
+      "askSubtitle": "Skriv inn e-posten din, så sender vi en lenke der du kan velge et nytt passord.",
+      "send": "Send lenke",
+      "sending": "Sender…",
+      "sentTitle": "Sjekk e-posten din",
+      "sent": "Hvis {email} har en TinyFloor-konto, har vi sendt en lenke dit. Lenken virker i 1 time.",
+      "backToSignIn": "Tilbake til innlogging",
+      "chooseTitle": "Velg et nytt passord",
+      "chooseSubtitle": "Når du lagrer det, er du logget inn her og logget ut alle andre steder.",
+      "newPassword": "Nytt passord",
+      "save": "Lagre passord",
+      "saving": "Lagrer…",
+      "linkInvalid": "Denne lenken har utløpt eller er allerede brukt.",
+      "askAgain": "Få en ny lenke"
+    }
   },
   "entry": {
     "yourName": "Navnet ditt",
@@ -469,7 +498,11 @@
       "timeZoneNone": "Ingen tidssone passer",
       "methods": "Måter å logge inn på",
       "thisBrowser": "Denne nettleseren",
-      "signedInAs": "Logget inn som {name}"
+      "signedInAs": "Logget inn som {name}",
+      "confirmEmail": "Bekreft e-posten din",
+      "confirmEmailNote": "Åpne lenken vi sendte deg. Da kan teamet ditt finne deg, og du kan tilbakestille passordet.",
+      "confirmEmailSent": "Vi har sendt en ny lenke. Sjekk e-posten din.",
+      "sendAgain": "Send på nytt"
     },
     "invite": {
       "invalidTitle": "Invitasjonen virker ikke",

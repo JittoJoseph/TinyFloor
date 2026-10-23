@@ -9,6 +9,11 @@
 const FROM = "TinyFloor <hello@mail.tinyfloor.com>";
 const REPLY_TO = "support@tinyfloor.com";
 const LOGO = "https://app.tinyfloor.com/icon-192.png";
+/**
+ * Blank space after the preview text, so an inbox list shows only it and not
+ * the email's first words after it, which repeat the subject.
+ */
+const PREVIEW_PAD = "&#847;&zwnj;&nbsp;".repeat(60);
 
 export interface Email {
   to: string;
@@ -81,7 +86,7 @@ export function letter({ preview, heading, paragraphs, button, footnote }: Lette
   const html = `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><meta name="supported-color-schemes" content="light"><title>${escape(heading)}</title></head>
 <body style="margin:0;padding:0;background:#f4f4f5;">
-<div style="display:none;max-height:0;overflow:hidden;opacity:0;">${escape(preview)}</div>
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">${escape(preview)}${PREVIEW_PAD}</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f5;"><tr><td align="center" style="padding:32px 16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:480px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
 <tr><td style="padding:0 4px 20px;"><table role="presentation" cellpadding="0" cellspacing="0"><tr>

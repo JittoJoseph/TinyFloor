@@ -42,7 +42,36 @@
       "google_unverified": "Verifiera först din e-postadress hos Google och försök sedan igen.",
       "google_mismatch": "Den här e-postadressen är kopplad till ett annat Google-konto."
     },
-    "continueWithEmail": "Fortsätt med e-post"
+    "continueWithEmail": "Fortsätt med e-post",
+    "forgotPassword": "Glömt lösenordet?",
+    "verify": {
+      "checking": "Bekräftar din e-post…",
+      "doneTitle": "E-post bekräftad",
+      "done": "Tack. Din e-post är bekräftad.",
+      "continue": "Fortsätt",
+      "failedTitle": "Den här länken fungerar inte",
+      "failed": "Den kan ha gått ut, eller så har du redan använt den. Vi kan skicka en ny.",
+      "failedSignedOut": "Den kan ha gått ut, eller så har du redan använt den. Logga in för att få en ny.",
+      "sendAgain": "Skicka en ny länk",
+      "sent": "Vi har skickat en ny länk. Kolla din e-post.",
+      "signIn": "Logga in"
+    },
+    "reset": {
+      "askTitle": "Återställ ditt lösenord",
+      "askSubtitle": "Ange din e-post så skickar vi en länk där du väljer ett nytt lösenord.",
+      "send": "Skicka länk",
+      "sending": "Skickar…",
+      "sentTitle": "Kolla din e-post",
+      "sent": "Om {email} har ett TinyFloor-konto har vi skickat en länk dit. Länken fungerar i 1 timme.",
+      "backToSignIn": "Tillbaka till inloggning",
+      "chooseTitle": "Välj ett nytt lösenord",
+      "chooseSubtitle": "När du sparar det är du inloggad här och utloggad överallt annars.",
+      "newPassword": "Nytt lösenord",
+      "save": "Spara lösenord",
+      "saving": "Sparar…",
+      "linkInvalid": "Den här länken har gått ut eller redan använts.",
+      "askAgain": "Få en ny länk"
+    }
   },
   "entry": {
     "yourName": "Ditt namn",
@@ -469,7 +498,11 @@
       "timeZoneNone": "Ingen tidszon matchar",
       "methods": "Sätt att logga in",
       "thisBrowser": "Den här webbläsaren",
-      "signedInAs": "Inloggad som {name}"
+      "signedInAs": "Inloggad som {name}",
+      "confirmEmail": "Bekräfta din e-post",
+      "confirmEmailNote": "Öppna länken vi mejlade dig. Då kan ditt team hitta dig, och du kan återställa ditt lösenord.",
+      "confirmEmailSent": "Vi har skickat en ny länk. Kolla din e-post.",
+      "sendAgain": "Skicka igen"
     },
     "invite": {
       "invalidTitle": "Inbjudan fungerar inte",

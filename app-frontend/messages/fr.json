@@ -42,7 +42,36 @@
       "google_unverified": "Validez d'abord votre adresse e-mail auprès de Google, puis réessayez.",
       "google_mismatch": "Cette adresse e-mail est liée à un autre compte Google."
     },
-    "continueWithEmail": "Continuer avec l'e-mail"
+    "continueWithEmail": "Continuer avec l'e-mail",
+    "forgotPassword": "Mot de passe oublié ?",
+    "verify": {
+      "checking": "Confirmation de votre e-mail…",
+      "doneTitle": "E-mail confirmé",
+      "done": "Merci. Votre e-mail est confirmé.",
+      "continue": "Continuer",
+      "failedTitle": "Ce lien ne fonctionne pas",
+      "failed": "Il a peut-être expiré, ou vous l'avez déjà utilisé. Nous pouvons vous en envoyer un nouveau.",
+      "failedSignedOut": "Il a peut-être expiré, ou vous l'avez déjà utilisé. Connectez-vous pour en recevoir un nouveau.",
+      "sendAgain": "Envoyer un nouveau lien",
+      "sent": "Nous avons envoyé un nouveau lien. Consultez vos e-mails.",
+      "signIn": "Se connecter"
+    },
+    "reset": {
+      "askTitle": "Réinitialiser votre mot de passe",
+      "askSubtitle": "Saisissez votre e-mail : nous vous enverrons un lien pour choisir un nouveau mot de passe.",
+      "send": "Envoyer le lien",
+      "sending": "Envoi…",
+      "sentTitle": "Consultez vos e-mails",
+      "sent": "Si {email} a un compte TinyFloor, nous lui avons envoyé un lien. Il fonctionne pendant 1 heure.",
+      "backToSignIn": "Retour à la connexion",
+      "chooseTitle": "Choisissez un nouveau mot de passe",
+      "chooseSubtitle": "Une fois enregistré, vous êtes connecté ici et déconnecté partout ailleurs.",
+      "newPassword": "Nouveau mot de passe",
+      "save": "Enregistrer le mot de passe",
+      "saving": "Enregistrement…",
+      "linkInvalid": "Ce lien a expiré ou a déjà été utilisé.",
+      "askAgain": "Demander un nouveau lien"
+    }
   },
   "entry": {
     "yourName": "Votre nom",
@@ -469,7 +498,11 @@
       "timeZoneNone": "Aucun fuseau horaire ne correspond",
       "methods": "Moyens de connexion",
       "thisBrowser": "Ce navigateur",
-      "signedInAs": "Connecté en tant que {name}"
+      "signedInAs": "Connecté en tant que {name}",
+      "confirmEmail": "Confirmez votre e-mail",
+      "confirmEmailNote": "Ouvrez le lien que nous vous avons envoyé. Votre équipe peut ainsi vous trouver, et vous pouvez réinitialiser votre mot de passe.",
+      "confirmEmailSent": "Nous avons envoyé un nouveau lien. Consultez vos e-mails.",
+      "sendAgain": "Renvoyer"
     },
     "invite": {
       "invalidTitle": "Cette invitation ne fonctionne pas",

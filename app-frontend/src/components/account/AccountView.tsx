@@ -342,7 +342,23 @@ export function SignIn() {
   const [passwordOpen, setPasswordOpen] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [resent, setResent] = useState(false);
   if (!user) return null;
+
+  const resend = async () => {
+    setBusy(true);
+    setError("");
+    try {
+      const { verified } = await api.sendVerifyEmail();
+      // Confirmed from another tab meanwhile: the row goes.
+      if (verified) await refresh();
+      else setResent(true);
+    } catch (err) {
+      setError(explain(err));
+    } finally {
+      setBusy(false);
+    }
+  };
 
   const connect = async (code: string) => {
     setBusy(true);
@@ -360,6 +376,17 @@ export function SignIn() {
   return (
     <>
       <Group title={t("methods")} note={user.email ? <span data-ph-mask>{user.email}</span> : undefined}>
+        {user.email && user.emailVerified === false && (
+          <Row
+            title={t("confirmEmail")}
+            description={resent ? t("confirmEmailSent") : t("confirmEmailNote")}
+            control={
+              <Button variant="secondary" size="sm" disabled={busy || resent} onClick={resend} className="h-8 px-3.5 text-[13px]">
+                {t("sendAgain")}
+              </Button>
+            }
+          />
+        )}
         <Row
           title={t("password")}
           description={user.password ? t("passwordSet") : t("setPasswordDescription")}

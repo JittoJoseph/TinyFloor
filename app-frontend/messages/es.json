@@ -42,7 +42,36 @@
       "google_unverified": "Primero verifica tu correo con Google y vuelve a intentarlo.",
       "google_mismatch": "Este correo está vinculado a otra cuenta de Google."
     },
-    "continueWithEmail": "Continuar con el correo"
+    "continueWithEmail": "Continuar con el correo",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "verify": {
+      "checking": "Confirmando tu correo…",
+      "doneTitle": "Correo confirmado",
+      "done": "Gracias. Tu correo está confirmado.",
+      "continue": "Continuar",
+      "failedTitle": "Este enlace no funciona",
+      "failed": "Puede que haya caducado o que ya lo hayas usado. Podemos enviarte uno nuevo.",
+      "failedSignedOut": "Puede que haya caducado o que ya lo hayas usado. Inicia sesión para recibir uno nuevo.",
+      "sendAgain": "Enviar un enlace nuevo",
+      "sent": "Te enviamos un enlace nuevo. Revisa tu correo.",
+      "signIn": "Iniciar sesión"
+    },
+    "reset": {
+      "askTitle": "Restablece tu contraseña",
+      "askSubtitle": "Escribe tu correo y te enviaremos un enlace para elegir una contraseña nueva.",
+      "send": "Enviar enlace",
+      "sending": "Enviando…",
+      "sentTitle": "Revisa tu correo",
+      "sent": "Si {email} tiene una cuenta de TinyFloor, le enviamos un enlace. Funciona durante 1 hora.",
+      "backToSignIn": "Volver a iniciar sesión",
+      "chooseTitle": "Elige una contraseña nueva",
+      "chooseSubtitle": "Al guardarla, inicias sesión aquí y se cierra la sesión en todos los demás sitios.",
+      "newPassword": "Contraseña nueva",
+      "save": "Guardar contraseña",
+      "saving": "Guardando…",
+      "linkInvalid": "Este enlace caducó o ya se usó.",
+      "askAgain": "Pedir un enlace nuevo"
+    }
   },
   "entry": {
     "yourName": "Tu nombre",
@@ -469,7 +498,11 @@
       "timeZoneNone": "Ninguna zona horaria coincide",
       "methods": "Formas de iniciar sesión",
       "thisBrowser": "Este navegador",
-      "signedInAs": "Sesión iniciada como {name}"
+      "signedInAs": "Sesión iniciada como {name}",
+      "confirmEmail": "Confirma tu correo",
+      "confirmEmailNote": "Abre el enlace que te enviamos. Así tu equipo puede encontrarte y puedes restablecer tu contraseña.",
+      "confirmEmailSent": "Te enviamos un enlace nuevo. Revisa tu correo.",
+      "sendAgain": "Enviar de nuevo"
     },
     "invite": {
       "invalidTitle": "Esta invitación no funciona",

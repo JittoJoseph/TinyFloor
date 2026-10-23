@@ -96,6 +96,11 @@ export class PasswordGuard extends DurableObject<Env> {
     if (count === 1) await this.ctx.storage.setAlarm(since + WINDOW_MS);
   }
 
+  /** Lifts any lock and forgets the failures: the password was just reset by someone who could read the inbox. */
+  async unlock(): Promise<void> {
+    await this.forget();
+  }
+
   private async forget(): Promise<void> {
     await this.ctx.storage.deleteAlarm();
     await this.ctx.storage.deleteAll();

@@ -42,7 +42,36 @@
       "google_unverified": "Najpierw potwierdź adres e-mail w Google, a potem spróbuj ponownie.",
       "google_mismatch": "Ten adres e-mail jest powiązany z innym kontem Google."
     },
-    "continueWithEmail": "Kontynuuj z e-mailem"
+    "continueWithEmail": "Kontynuuj z e-mailem",
+    "forgotPassword": "Nie pamiętasz hasła?",
+    "verify": {
+      "checking": "Potwierdzamy Twój e-mail…",
+      "doneTitle": "E-mail potwierdzony",
+      "done": "Dziękujemy. Twój e-mail jest potwierdzony.",
+      "continue": "Dalej",
+      "failedTitle": "Ten link nie działa",
+      "failed": "Mógł wygasnąć albo został już użyty. Możemy wysłać nowy.",
+      "failedSignedOut": "Mógł wygasnąć albo został już użyty. Zaloguj się, aby dostać nowy.",
+      "sendAgain": "Wyślij nowy link",
+      "sent": "Wysłaliśmy nowy link. Sprawdź pocztę.",
+      "signIn": "Zaloguj się"
+    },
+    "reset": {
+      "askTitle": "Zresetuj hasło",
+      "askSubtitle": "Wpisz swój e-mail, a wyślemy link do ustawienia nowego hasła.",
+      "send": "Wyślij link",
+      "sending": "Wysyłanie…",
+      "sentTitle": "Sprawdź pocztę",
+      "sent": "Jeśli {email} ma konto TinyFloor, wysłaliśmy tam link. Działa przez 1 godzinę.",
+      "backToSignIn": "Wróć do logowania",
+      "chooseTitle": "Ustaw nowe hasło",
+      "chooseSubtitle": "Po zapisaniu będziesz zalogowany tutaj i wylogowany wszędzie indziej.",
+      "newPassword": "Nowe hasło",
+      "save": "Zapisz hasło",
+      "saving": "Zapisywanie…",
+      "linkInvalid": "Ten link wygasł lub został już użyty.",
+      "askAgain": "Poproś o nowy link"
+    }
   },
   "entry": {
     "yourName": "Twoje imię",
@@ -469,7 +498,11 @@
       "timeZoneNone": "Brak pasującej strefy czasowej",
       "methods": "Sposoby logowania",
       "thisBrowser": "Ta przeglądarka",
-      "signedInAs": "Zalogowano jako {name}"
+      "signedInAs": "Zalogowano jako {name}",
+      "confirmEmail": "Potwierdź swój e-mail",
+      "confirmEmailNote": "Otwórz link, który wysłaliśmy. Dzięki temu zespół Cię znajdzie, a Ty możesz zresetować hasło.",
+      "confirmEmailSent": "Wysłaliśmy nowy link. Sprawdź pocztę.",
+      "sendAgain": "Wyślij ponownie"
     },
     "invite": {
       "invalidTitle": "To zaproszenie nie działa",

@@ -8,6 +8,7 @@ export interface RetentionReport {
   invites: number;
   usage: number;
   help: number;
+  emailLinks: number;
 }
 
 /** The daily clean-up. Each job is safe to run again. */
@@ -53,11 +54,19 @@ export async function runRetention(env: Env, now = Date.now()): Promise<Retentio
     .bind(now - 365 * DAY_MS)
     .run();
 
+  // Email links past their hour or day (email-links.ts).
+  const emailLinks = await env.DB.prepare(
+    `DELETE FROM email_tokens WHERE id IN (SELECT id FROM email_tokens WHERE expires_at < ?1 LIMIT ${BATCH})`,
+  )
+    .bind(now)
+    .run();
+
   return {
     sessions: deleted(sessions),
     guests: deleted(guests),
     invites: deleted(invites),
     usage: deleted(usage),
     help: deleted(help),
+    emailLinks: deleted(emailLinks),
   };
 }

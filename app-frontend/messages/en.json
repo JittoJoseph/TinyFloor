@@ -42,7 +42,36 @@
       "google_unverified": "Verify your email with Google first, then try again.",
       "google_mismatch": "This email is linked to a different Google account."
     },
-    "continueWithEmail": "Continue with email"
+    "continueWithEmail": "Continue with email",
+    "forgotPassword": "Forgot password?",
+    "verify": {
+      "checking": "Confirming your email…",
+      "doneTitle": "Email confirmed",
+      "done": "Thanks. Your email is confirmed.",
+      "continue": "Continue",
+      "failedTitle": "This link doesn't work",
+      "failed": "It may have expired, or you already used it. We can send you a new one.",
+      "failedSignedOut": "It may have expired, or you already used it. Sign in to get a new one.",
+      "sendAgain": "Send a new link",
+      "sent": "We sent a new link. Check your email.",
+      "signIn": "Sign in"
+    },
+    "reset": {
+      "askTitle": "Reset your password",
+      "askSubtitle": "Enter your email and we'll send you a link to choose a new password.",
+      "send": "Send link",
+      "sending": "Sending…",
+      "sentTitle": "Check your email",
+      "sent": "If {email} has a TinyFloor account, we sent it a link. The link works for 1 hour.",
+      "backToSignIn": "Back to sign in",
+      "chooseTitle": "Choose a new password",
+      "chooseSubtitle": "When you save it, you're signed in here and signed out everywhere else.",
+      "newPassword": "New password",
+      "save": "Save password",
+      "saving": "Saving…",
+      "linkInvalid": "This link has expired or was already used.",
+      "askAgain": "Get a new link"
+    }
   },
   "entry": {
     "yourName": "Your name",
@@ -469,7 +498,11 @@
       "timeZoneNone": "No time zone matches",
       "methods": "Ways to sign in",
       "thisBrowser": "This browser",
-      "signedInAs": "Signed in as {name}"
+      "signedInAs": "Signed in as {name}",
+      "confirmEmail": "Confirm your email",
+      "confirmEmailNote": "Open the link we emailed you. It lets your team find you, and lets you reset your password.",
+      "confirmEmailSent": "We sent a new link. Check your email.",
+      "sendAgain": "Send again"
     },
     "invite": {
       "invalidTitle": "This invite doesn't work",

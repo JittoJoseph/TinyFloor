@@ -13,6 +13,8 @@
   "triggers": { "crons": ["0 3 * * *"] },
   "vars": {
     "SITE_ORIGINS": "https://app.tinyfloor.com,https://www.tinyfloor.com,https://tinyfloor.com",
+    // Where links in email go (src/email-links.ts).
+    "APP_URL": "https://app.tinyfloor.com",
     "COOKIE_DOMAIN": ".tinyfloor.com",
     "SESSION_COOKIE": "tf_session",
     "REALTIME_URL": "wss://realtime.tinyfloor.com",
@@ -60,6 +62,7 @@
       "routes": [{ "pattern": "api-preview.tinyfloor.com", "custom_domain": true }],
       "vars": {
         "SITE_ORIGINS": "https://app-preview.tinyfloor.com,https://preview.tinyfloor.com,http://localhost:3001,http://localhost:3000",
+        "APP_URL": "https://app-preview.tinyfloor.com",
         // No Domain on the cookie, and a name of its own, so a live session in
         // the same browser neither reaches preview nor shadows it.
         "COOKIE_DOMAIN": "",

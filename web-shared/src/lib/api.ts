@@ -32,6 +32,8 @@ export interface SessionUser {
   password?: boolean;
   /** Can sign in with Google. */
   google?: boolean;
+  /** Has opened the link we emailed, or signed in with Google, which proves it too. */
+  emailVerified?: boolean;
   /** The link on their profile. */
   link?: string | null;
   /** Has said who they are on the floor. A new account hasn't, until its first door. */
@@ -405,6 +407,12 @@ export const api = {
   continueAsGuest: (body: { name: string; character: string; turnstileToken: string }) =>
     post<{ user: SessionUser; lobby?: RoomTicket }>("/auth/guest", body),
   signOut: () => post<{ ok: true }>("/auth/logout"),
+  /** Confirms an address, from the link in the email. */
+  verifyEmail: (token: string) => post<{ ok: true }>("/auth/verify", { token }),
+  /** Emails a reset link, if the address has an account; the answer is the same either way. */
+  requestPasswordReset: (body: { email: string; turnstileToken: string }) => post<{ ok: true }>("/auth/reset/request", body),
+  /** Sets the new password from the reset link, and signs in. */
+  resetPassword: (body: { token: string; password: string }) => post<{ ok: true }>("/auth/reset", body),
 
   // The signed-in person
   me: () => get<{ user: SessionUser; offices: OfficeSummary[] }>("/me"),
@@ -413,6 +421,8 @@ export const api = {
   connectGoogle: (code: string) => post<{ user: SessionUser }>("/me/google", { code }),
   person: (id: string) => get<{ person: PersonProfile }>(`/people/${encodeURIComponent(id)}`),
   changePassword: (body: { currentPassword: string; newPassword: string }) => post<{ ok: true }>("/me/password", body),
+  /** Emails another confirmation link. */
+  sendVerifyEmail: () => post<{ sent: boolean; verified: boolean }>("/me/verify-email"),
   /** Your status note, kept with your account; null clears it. The floor hears it from your own socket. */
   setStatusNote: (status: StatusNote | null) => put<{ status: StatusNote | null }>("/me/status", { status }),
   /** What a Spotify link is, before it's shared. */

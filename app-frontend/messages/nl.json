@@ -42,7 +42,36 @@
       "google_unverified": "Bevestig eerst je e-mailadres bij Google en probeer het dan opnieuw.",
       "google_mismatch": "Dit e-mailadres is gekoppeld aan een ander Google-account."
     },
-    "continueWithEmail": "Doorgaan met e-mail"
+    "continueWithEmail": "Doorgaan met e-mail",
+    "forgotPassword": "Wachtwoord vergeten?",
+    "verify": {
+      "checking": "Je e-mail wordt bevestigd…",
+      "doneTitle": "E-mail bevestigd",
+      "done": "Bedankt. Je e-mail is bevestigd.",
+      "continue": "Doorgaan",
+      "failedTitle": "Deze link werkt niet",
+      "failed": "Hij is misschien verlopen, of je hebt hem al gebruikt. We kunnen je een nieuwe sturen.",
+      "failedSignedOut": "Hij is misschien verlopen, of je hebt hem al gebruikt. Log in om een nieuwe te krijgen.",
+      "sendAgain": "Nieuwe link sturen",
+      "sent": "We hebben een nieuwe link gestuurd. Kijk in je e-mail.",
+      "signIn": "Inloggen"
+    },
+    "reset": {
+      "askTitle": "Wachtwoord opnieuw instellen",
+      "askSubtitle": "Vul je e-mail in. We sturen je een link om een nieuw wachtwoord te kiezen.",
+      "send": "Link sturen",
+      "sending": "Versturen…",
+      "sentTitle": "Kijk in je e-mail",
+      "sent": "Als {email} een TinyFloor-account heeft, hebben we er een link naartoe gestuurd. De link werkt 1 uur.",
+      "backToSignIn": "Terug naar inloggen",
+      "chooseTitle": "Kies een nieuw wachtwoord",
+      "chooseSubtitle": "Als je het opslaat, ben je hier ingelogd en overal anders uitgelogd.",
+      "newPassword": "Nieuw wachtwoord",
+      "save": "Wachtwoord opslaan",
+      "saving": "Opslaan…",
+      "linkInvalid": "Deze link is verlopen of al gebruikt.",
+      "askAgain": "Nieuwe link aanvragen"
+    }
   },
   "entry": {
     "yourName": "Je naam",
@@ -469,7 +498,11 @@
       "timeZoneNone": "Geen tijdzone gevonden",
       "methods": "Manieren om in te loggen",
       "thisBrowser": "Deze browser",
-      "signedInAs": "Ingelogd als {name}"
+      "signedInAs": "Ingelogd als {name}",
+      "confirmEmail": "Bevestig je e-mail",
+      "confirmEmailNote": "Open de link die we je mailden. Zo kan je team je vinden, en kun je je wachtwoord opnieuw instellen.",
+      "confirmEmailSent": "We hebben een nieuwe link gestuurd. Kijk in je e-mail.",
+      "sendAgain": "Opnieuw sturen"
     },
     "invite": {
       "invalidTitle": "Deze uitnodiging werkt niet",

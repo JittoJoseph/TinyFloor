@@ -42,7 +42,36 @@
       "google_unverified": "Verifique primeiro seu e-mail com o Google e tente de novo.",
       "google_mismatch": "Este e-mail está vinculado a outra conta do Google."
     },
-    "continueWithEmail": "Continuar com e-mail"
+    "continueWithEmail": "Continuar com e-mail",
+    "forgotPassword": "Esqueceu a senha?",
+    "verify": {
+      "checking": "Confirmando seu e-mail…",
+      "doneTitle": "E-mail confirmado",
+      "done": "Obrigado. Seu e-mail está confirmado.",
+      "continue": "Continuar",
+      "failedTitle": "Este link não funciona",
+      "failed": "Ele pode ter expirado, ou você já o usou. Podemos enviar um novo.",
+      "failedSignedOut": "Ele pode ter expirado, ou você já o usou. Entre para receber um novo.",
+      "sendAgain": "Enviar um novo link",
+      "sent": "Enviamos um novo link. Confira seu e-mail.",
+      "signIn": "Entrar"
+    },
+    "reset": {
+      "askTitle": "Redefinir sua senha",
+      "askSubtitle": "Digite seu e-mail e enviaremos um link para você escolher uma nova senha.",
+      "send": "Enviar link",
+      "sending": "Enviando…",
+      "sentTitle": "Confira seu e-mail",
+      "sent": "Se {email} tiver uma conta no TinyFloor, enviamos um link para ele. O link funciona por 1 hora.",
+      "backToSignIn": "Voltar para entrar",
+      "chooseTitle": "Escolha uma nova senha",
+      "chooseSubtitle": "Ao salvar, você entra aqui e sai de todos os outros lugares.",
+      "newPassword": "Nova senha",
+      "save": "Salvar senha",
+      "saving": "Salvando…",
+      "linkInvalid": "Este link expirou ou já foi usado.",
+      "askAgain": "Pedir um novo link"
+    }
   },
   "entry": {
     "yourName": "Seu nome",
@@ -469,7 +498,11 @@
       "timeZoneNone": "Nenhum fuso horário corresponde",
       "methods": "Formas de entrar",
       "thisBrowser": "Este navegador",
-      "signedInAs": "Conectado como {name}"
+      "signedInAs": "Conectado como {name}",
+      "confirmEmail": "Confirme seu e-mail",
+      "confirmEmailNote": "Abra o link que enviamos. Assim sua equipe encontra você, e você pode redefinir sua senha.",
+      "confirmEmailSent": "Enviamos um novo link. Confira seu e-mail.",
+      "sendAgain": "Enviar de novo"
     },
     "invite": {
       "invalidTitle": "Este convite não funciona",

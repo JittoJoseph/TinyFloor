@@ -42,7 +42,36 @@
       "google_unverified": "Vahvista ensin sähköpostiosoitteesi Googlessa ja yritä sitten uudelleen.",
       "google_mismatch": "Tämä sähköpostiosoite on liitetty toiseen Google-tiliin."
     },
-    "continueWithEmail": "Jatka sähköpostilla"
+    "continueWithEmail": "Jatka sähköpostilla",
+    "forgotPassword": "Unohditko salasanan?",
+    "verify": {
+      "checking": "Vahvistetaan sähköpostia…",
+      "doneTitle": "Sähköposti vahvistettu",
+      "done": "Kiitos. Sähköpostisi on vahvistettu.",
+      "continue": "Jatka",
+      "failedTitle": "Tämä linkki ei toimi",
+      "failed": "Se on ehkä vanhentunut, tai olet jo käyttänyt sen. Voimme lähettää uuden.",
+      "failedSignedOut": "Se on ehkä vanhentunut, tai olet jo käyttänyt sen. Kirjaudu sisään saadaksesi uuden.",
+      "sendAgain": "Lähetä uusi linkki",
+      "sent": "Lähetimme uuden linkin. Tarkista sähköpostisi.",
+      "signIn": "Kirjaudu sisään"
+    },
+    "reset": {
+      "askTitle": "Nollaa salasana",
+      "askSubtitle": "Kirjoita sähköpostisi, niin lähetämme linkin uuden salasanan valitsemiseen.",
+      "send": "Lähetä linkki",
+      "sending": "Lähetetään…",
+      "sentTitle": "Tarkista sähköpostisi",
+      "sent": "Jos osoitteella {email} on TinyFloor-tili, lähetimme sinne linkin. Linkki toimii 1 tunnin.",
+      "backToSignIn": "Takaisin kirjautumiseen",
+      "chooseTitle": "Valitse uusi salasana",
+      "chooseSubtitle": "Kun tallennat sen, olet kirjautuneena täällä ja uloskirjautuneena kaikkialla muualla.",
+      "newPassword": "Uusi salasana",
+      "save": "Tallenna salasana",
+      "saving": "Tallennetaan…",
+      "linkInvalid": "Tämä linkki on vanhentunut tai jo käytetty.",
+      "askAgain": "Pyydä uusi linkki"
+    }
   },
   "entry": {
     "yourName": "Nimesi",
@@ -469,7 +498,11 @@
       "timeZoneNone": "Ei vastaavaa aikavyöhykettä",
       "methods": "Kirjautumistavat",
       "thisBrowser": "Tämä selain",
-      "signedInAs": "Kirjautuneena: {name}"
+      "signedInAs": "Kirjautuneena: {name}",
+      "confirmEmail": "Vahvista sähköpostisi",
+      "confirmEmailNote": "Avaa lähettämämme linkki. Silloin tiimisi löytää sinut, ja voit nollata salasanasi.",
+      "confirmEmailSent": "Lähetimme uuden linkin. Tarkista sähköpostisi.",
+      "sendAgain": "Lähetä uudelleen"
     },
     "invite": {
       "invalidTitle": "Kutsu ei toimi",

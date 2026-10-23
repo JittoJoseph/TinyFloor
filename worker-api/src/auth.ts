@@ -16,6 +16,7 @@ import {
 import { shareFrom } from "./spotify";
 import { verifyTurnstile } from "./turnstile";
 import { lobbyTicket } from "./floor";
+import { sendVerification } from "./email-links";
 
 const PASSWORD_MIN_LENGTH = 8;
 /** bcrypt only reads the first 72 bytes, so longer passwords are refused rather than silently cut. */
@@ -84,6 +85,8 @@ export function authRoutes(router: Router): void {
       }
 
       const { sessionId, cookie } = await createSession(env, request, userId, ACCOUNT_SESSION_MS);
+      // The address is theirs until shown otherwise: the link to confirm it goes out after the answer.
+      ctx.waitUntil(sendVerification(env, { id: userId, email, displayName }).catch((error) => console.error("verification email failed", error)));
       // A guest who signs up was introduced at the door they came in by.
       const user: User = { id: userId, email, displayName, character, isGuest: false, hasPassword: true, introduced: !!upgrading, sessionId };
       return json({ user: publicUser(user) }, { status: 201, headers: { "Set-Cookie": cookie } });
@@ -323,11 +326,11 @@ export function authRoutes(router: Router): void {
     });
 }
 
-function guard(env: Env, key: string) {
+export function guard(env: Env, key: string) {
   return env.PASSWORD_GUARD.getByName(key);
 }
 
-function cleanEmail(value: unknown): string {
+export function cleanEmail(value: unknown): string {
   const email = typeof value === "string" ? value.trim().toLowerCase() : "";
   if (!email) throw new HttpError(400, "email_required", "Enter your email", "email");
   if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
@@ -368,7 +371,7 @@ function cleanZone(value: unknown, field: string): string {
   throw new HttpError(400, "bad_time_zone", "Pick a time zone from the list", field);
 }
 
-function checkPassword(value: unknown, field = "password"): string {
+export function checkPassword(value: unknown, field = "password"): string {
   const password = typeof value === "string" ? value : "";
   if (password.length < PASSWORD_MIN_LENGTH) {
     throw new HttpError(400, "password_too_short", `Use at least ${PASSWORD_MIN_LENGTH} characters`, field);
@@ -388,6 +391,7 @@ export function publicUser(user: User) {
     character: user.character,
     guest: user.isGuest,
     password: !!user.hasPassword,
+    emailVerified: !!user.emailVerified,
     google: !!user.hasGoogle,
     link: user.link ?? null,
     // Guests always are: they said who they are at the door.

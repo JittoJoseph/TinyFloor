@@ -42,7 +42,36 @@
       "google_unverified": "Prima verifica la tua email con Google, poi riprova.",
       "google_mismatch": "Questa email è collegata a un altro account Google."
     },
-    "continueWithEmail": "Continua con l'email"
+    "continueWithEmail": "Continua con l'email",
+    "forgotPassword": "Password dimenticata?",
+    "verify": {
+      "checking": "Conferma dell'email in corso…",
+      "doneTitle": "Email confermata",
+      "done": "Grazie. La tua email è confermata.",
+      "continue": "Continua",
+      "failedTitle": "Questo link non funziona",
+      "failed": "Forse è scaduto, o l'hai già usato. Possiamo inviartene uno nuovo.",
+      "failedSignedOut": "Forse è scaduto, o l'hai già usato. Accedi per riceverne uno nuovo.",
+      "sendAgain": "Invia un nuovo link",
+      "sent": "Ti abbiamo inviato un nuovo link. Controlla la tua email.",
+      "signIn": "Accedi"
+    },
+    "reset": {
+      "askTitle": "Reimposta la password",
+      "askSubtitle": "Inserisci la tua email e ti invieremo un link per scegliere una nuova password.",
+      "send": "Invia link",
+      "sending": "Invio…",
+      "sentTitle": "Controlla la tua email",
+      "sent": "Se {email} ha un account TinyFloor, gli abbiamo inviato un link. Funziona per 1 ora.",
+      "backToSignIn": "Torna all'accesso",
+      "chooseTitle": "Scegli una nuova password",
+      "chooseSubtitle": "Quando la salvi, accedi qui ed esci da tutti gli altri dispositivi.",
+      "newPassword": "Nuova password",
+      "save": "Salva password",
+      "saving": "Salvataggio…",
+      "linkInvalid": "Questo link è scaduto o è già stato usato.",
+      "askAgain": "Richiedi un nuovo link"
+    }
   },
   "entry": {
     "yourName": "Il tuo nome",
@@ -469,7 +498,11 @@
       "timeZoneNone": "Nessun fuso orario corrispondente",
       "methods": "Modi per accedere",
       "thisBrowser": "Questo browser",
-      "signedInAs": "Accesso effettuato come {name}"
+      "signedInAs": "Accesso effettuato come {name}",
+      "confirmEmail": "Conferma la tua email",
+      "confirmEmailNote": "Apri il link che ti abbiamo inviato. Così il tuo team può trovarti e puoi reimpostare la password.",
+      "confirmEmailSent": "Ti abbiamo inviato un nuovo link. Controlla la tua email.",
+      "sendAgain": "Invia di nuovo"
     },
     "invite": {
       "invalidTitle": "Questo invito non funziona",

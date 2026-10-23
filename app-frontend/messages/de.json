@@ -42,7 +42,36 @@
       "google_unverified": "Bestätige zuerst deine E-Mail-Adresse bei Google und versuch es dann noch einmal.",
       "google_mismatch": "Diese E-Mail-Adresse ist mit einem anderen Google-Konto verknüpft."
     },
-    "continueWithEmail": "Weiter mit E-Mail"
+    "continueWithEmail": "Weiter mit E-Mail",
+    "forgotPassword": "Passwort vergessen?",
+    "verify": {
+      "checking": "E-Mail wird bestätigt …",
+      "doneTitle": "E-Mail bestätigt",
+      "done": "Danke. Deine E-Mail ist bestätigt.",
+      "continue": "Weiter",
+      "failedTitle": "Dieser Link funktioniert nicht",
+      "failed": "Er ist vielleicht abgelaufen, oder du hast ihn schon benutzt. Wir können dir einen neuen schicken.",
+      "failedSignedOut": "Er ist vielleicht abgelaufen, oder du hast ihn schon benutzt. Melde dich an, um einen neuen zu bekommen.",
+      "sendAgain": "Neuen Link senden",
+      "sent": "Wir haben einen neuen Link geschickt. Sieh in deinen E-Mails nach.",
+      "signIn": "Anmelden"
+    },
+    "reset": {
+      "askTitle": "Passwort zurücksetzen",
+      "askSubtitle": "Gib deine E-Mail ein. Wir schicken dir einen Link, mit dem du ein neues Passwort wählst.",
+      "send": "Link senden",
+      "sending": "Wird gesendet …",
+      "sentTitle": "Sieh in deinen E-Mails nach",
+      "sent": "Wenn es für {email} ein TinyFloor-Konto gibt, haben wir einen Link dorthin geschickt. Er gilt 1 Stunde.",
+      "backToSignIn": "Zurück zur Anmeldung",
+      "chooseTitle": "Neues Passwort wählen",
+      "chooseSubtitle": "Wenn du es speicherst, bist du hier angemeldet und überall sonst abgemeldet.",
+      "newPassword": "Neues Passwort",
+      "save": "Passwort speichern",
+      "saving": "Wird gespeichert …",
+      "linkInvalid": "Dieser Link ist abgelaufen oder wurde schon benutzt.",
+      "askAgain": "Neuen Link anfordern"
+    }
   },
   "entry": {
     "yourName": "Dein Name",
@@ -469,7 +498,11 @@
       "timeZoneNone": "Keine passende Zeitzone",
       "methods": "Anmeldemöglichkeiten",
       "thisBrowser": "Dieser Browser",
-      "signedInAs": "Angemeldet als {name}"
+      "signedInAs": "Angemeldet als {name}",
+      "confirmEmail": "E-Mail bestätigen",
+      "confirmEmailNote": "Öffne den Link aus unserer E-Mail. So findet dich dein Team, und du kannst dein Passwort zurücksetzen.",
+      "confirmEmailSent": "Wir haben einen neuen Link geschickt. Sieh in deinen E-Mails nach.",
+      "sendAgain": "Erneut senden"
     },
     "invite": {
       "invalidTitle": "Diese Einladung funktioniert nicht",

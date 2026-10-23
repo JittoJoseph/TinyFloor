@@ -42,7 +42,36 @@
       "google_unverified": "Bekræft først din e-mail hos Google, og prøv så igen.",
       "google_mismatch": "Denne e-mail er knyttet til en anden Google-konto."
     },
-    "continueWithEmail": "Fortsæt med e-mail"
+    "continueWithEmail": "Fortsæt med e-mail",
+    "forgotPassword": "Glemt adgangskode?",
+    "verify": {
+      "checking": "Bekræfter din e-mail…",
+      "doneTitle": "E-mail bekræftet",
+      "done": "Tak. Din e-mail er bekræftet.",
+      "continue": "Fortsæt",
+      "failedTitle": "Dette link virker ikke",
+      "failed": "Det er måske udløbet, eller du har allerede brugt det. Vi kan sende dig et nyt.",
+      "failedSignedOut": "Det er måske udløbet, eller du har allerede brugt det. Log ind for at få et nyt.",
+      "sendAgain": "Send et nyt link",
+      "sent": "Vi har sendt et nyt link. Tjek din e-mail.",
+      "signIn": "Log ind"
+    },
+    "reset": {
+      "askTitle": "Nulstil din adgangskode",
+      "askSubtitle": "Skriv din e-mail, så sender vi et link, hvor du kan vælge en ny adgangskode.",
+      "send": "Send link",
+      "sending": "Sender…",
+      "sentTitle": "Tjek din e-mail",
+      "sent": "Hvis {email} har en TinyFloor-konto, har vi sendt et link dertil. Linket virker i 1 time.",
+      "backToSignIn": "Tilbage til log ind",
+      "chooseTitle": "Vælg en ny adgangskode",
+      "chooseSubtitle": "Når du gemmer den, er du logget ind her og logget ud alle andre steder.",
+      "newPassword": "Ny adgangskode",
+      "save": "Gem adgangskode",
+      "saving": "Gemmer…",
+      "linkInvalid": "Dette link er udløbet eller allerede brugt.",
+      "askAgain": "Få et nyt link"
+    }
   },
   "entry": {
     "yourName": "Dit navn",
@@ -469,7 +498,11 @@
       "timeZoneNone": "Ingen tidszone passer",
       "methods": "Måder at logge ind på",
       "thisBrowser": "Denne browser",
-      "signedInAs": "Logget ind som {name}"
+      "signedInAs": "Logget ind som {name}",
+      "confirmEmail": "Bekræft din e-mail",
+      "confirmEmailNote": "Åbn linket, vi sendte dig. Så kan dit team finde dig, og du kan nulstille din adgangskode.",
+      "confirmEmailSent": "Vi har sendt et nyt link. Tjek din e-mail.",
+      "sendAgain": "Send igen"
     },
     "invite": {
       "invalidTitle": "Invitationen virker ikke",

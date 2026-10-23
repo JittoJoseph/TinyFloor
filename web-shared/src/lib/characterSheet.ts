@@ -6,18 +6,23 @@ import { CHARACTER_CATALOG, characterLayers, characterOrDefault } from "@shared/
  * character.ts) stacked once into one sheet, kept for everyone who wears it.
  *
  * A sheet is frames of 32×64: idle (0 to 23) and walking (24 to 47), six a
- * direction (right, up, left, down), then one seated pose a direction (48 to
- * 51: down, left, right, up), as the floor counts them.
+ * direction (right, up, left, down), then seated, six a direction too (48 to
+ * 71: down, left, right, up), as the floor counts them.
  */
 export const [FRAME_W, FRAME_H] = CHARACTER_CATALOG.frame;
 const MOVING = CHARACTER_CATALOG.frames;
 export type Facing = "right" | "up" | "left" | "down";
 const FACINGS: Facing[] = ["right", "up", "left", "down"];
 export const SIT_ORDER: Facing[] = ["down", "left", "right", "up"];
-export const SHEET_FRAMES = MOVING + SIT_ORDER.length;
+/** Frames a pose loops through: the pack's idle, six a direction. */
+const STEPS = 6;
+export const SHEET_FRAMES = MOVING + SIT_ORDER.length * STEPS;
 /**
- * A seated pose: the standing one for that direction, nudged: sitting facing
- * up sinks into the chair, side views lean towards the desk.
+ * Seated: the pack draws sitting only side on, and nobody sits sideways
+ * here, so it's the standing idle for that direction, nudged: sitting facing
+ * up sinks into the chair, side views lean towards the desk. The desk and the
+ * chair hide the legs, so what shows is the idle's breathing and the turn of
+ * the head: someone at their desk, not a picture of one.
  */
 const SIT: Record<Facing, { frame: number; dx: number; dy: number }> = {
   down: { frame: 18, dx: 0, dy: 0 },
@@ -26,10 +31,36 @@ const SIT: Record<Facing, { frame: number; dx: number; dy: number }> = {
   up: { frame: 6, dx: 0, dy: 14 },
 };
 
-/** The frame to show: standing or walking, the step of six it's on; seated, one pose. */
+/**
+ * Seated, the idle's breath at rest: the pack's idle (still, still, in, held,
+ * out, settling) runs evenly, a breath every 0.6s, right for someone waiting
+ * about; at a desk it's a long still, then the breath, about one every two
+ * seconds. Each step of the idle (the first of its two still frames) and how
+ * long it shows.
+ */
+export const SEATED_BREATH: ReadonlyArray<readonly [step: number, ms: number]> = [
+  [0, 1400],
+  [2, 100],
+  [3, 200],
+  [4, 100],
+  [5, 100],
+];
+const BREATH_MS = SEATED_BREATH.reduce((total, [, ms]) => total + ms, 0);
+
+/** Where in a seated breath a page's clock (lib's ten steps a second) is. */
+export function seatedStep(step: number): number {
+  let at = (step * 100) % BREATH_MS;
+  for (const [frame, ms] of SEATED_BREATH) {
+    if (at < ms) return frame;
+    at -= ms;
+  }
+  return 0;
+}
+
+/** The frame to show: standing, walking or seated, facing a way, on the step of six it's at. */
 export function frameOf(motion: "idle" | "walk" | "sit", facing: Facing, step = 0): number {
-  if (motion === "sit") return MOVING + SIT_ORDER.indexOf(facing);
-  return (motion === "walk" ? 24 : 0) + FACINGS.indexOf(facing) * 6 + (step % 6);
+  if (motion === "sit") return MOVING + SIT_ORDER.indexOf(facing) * STEPS + (step % STEPS);
+  return (motion === "walk" ? 24 : 0) + FACINGS.indexOf(facing) * STEPS + (step % STEPS);
 }
 
 const images = new Map<string, Promise<HTMLImageElement>>();
@@ -115,11 +146,14 @@ async function draw(urls: string[]): Promise<HTMLCanvasElement> {
   const context = canvas.getContext("2d")!;
   context.imageSmoothingEnabled = false;
   for (const layer of layers) context.drawImage(layer, 0, 0, FRAME_W * MOVING, FRAME_H, 0, 0, FRAME_W * MOVING, FRAME_H);
-  // The seated poses, each kept to its own frame as it's nudged.
+  // The seated poses, each frame kept to its own as it's nudged.
   SIT_ORDER.forEach((facing, n) => {
     const { frame, dx, dy } = SIT[facing];
     const width = FRAME_W - Math.abs(dx);
-    context.drawImage(canvas, frame * FRAME_W + Math.max(0, -dx), 0, width, FRAME_H - dy, (MOVING + n) * FRAME_W + Math.max(0, dx), dy, width, FRAME_H - dy);
+    for (let step = 0; step < STEPS; step++) {
+      const from = (frame + step) * FRAME_W + Math.max(0, -dx);
+      context.drawImage(canvas, from, 0, width, FRAME_H - dy, (MOVING + n * STEPS + step) * FRAME_W + Math.max(0, dx), dy, width, FRAME_H - dy);
+    }
   });
   return canvas;
 }

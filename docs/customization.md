@@ -455,7 +455,7 @@ Each step ships on its own and needs the one before it:
    is one function in `shared-protocol` that both use.
 3. **Your desk** (done). Changes in the room, Decorate at your desk, reset
    when it's let go.
-4. **Characters** (done). The creator, the look on the profile, the presets.
-   The first door still offers the eight earlier characters.
+4. **Characters** (done). The creator, the look on the profile, the presets,
+   which the doors offer too, with a roll of the dice.
 5. **Furnishing for admins.** Move, add and take away furniture; put back.
 6. **More themes**, on the same floor plan.

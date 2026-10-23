@@ -500,9 +500,9 @@
       "thisBrowser": "Deze browser",
       "signedInAs": "Ingelogd als {name}",
       "confirmEmail": "Bevestig je e-mail",
-      "confirmEmailNote": "Open de link die we je mailden. Zo kan je team je vinden, en kun je je wachtwoord opnieuw instellen.",
-      "confirmEmailSent": "We hebben een nieuwe link gestuurd. Kijk in je e-mail.",
-      "sendAgain": "Opnieuw sturen"
+      "confirmEmailNote": "Zo kan je team je vinden, en kun je je wachtwoord opnieuw instellen als je het vergeet.",
+      "confirmEmailSent": "We hebben je een link gestuurd. Open hem om te bevestigen.",
+      "sendLink": "Link sturen"
     },
     "invite": {
       "invalidTitle": "Deze uitnodiging werkt niet",

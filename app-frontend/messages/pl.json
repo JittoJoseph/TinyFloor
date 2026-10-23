@@ -500,9 +500,9 @@
       "thisBrowser": "Ta przeglądarka",
       "signedInAs": "Zalogowano jako {name}",
       "confirmEmail": "Potwierdź swój e-mail",
-      "confirmEmailNote": "Otwórz link, który wysłaliśmy. Dzięki temu zespół Cię znajdzie, a Ty możesz zresetować hasło.",
-      "confirmEmailSent": "Wysłaliśmy nowy link. Sprawdź pocztę.",
-      "sendAgain": "Wyślij ponownie"
+      "confirmEmailNote": "Dzięki temu zespół Cię znajdzie, a Ty zresetujesz hasło, jeśli je zapomnisz.",
+      "confirmEmailSent": "Wysłaliśmy Ci link. Otwórz go, aby potwierdzić.",
+      "sendLink": "Wyślij link"
     },
     "invite": {
       "invalidTitle": "To zaproszenie nie działa",

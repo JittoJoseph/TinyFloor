@@ -500,9 +500,9 @@
       "thisBrowser": "Den här webbläsaren",
       "signedInAs": "Inloggad som {name}",
       "confirmEmail": "Bekräfta din e-post",
-      "confirmEmailNote": "Öppna länken vi mejlade dig. Då kan ditt team hitta dig, och du kan återställa ditt lösenord.",
-      "confirmEmailSent": "Vi har skickat en ny länk. Kolla din e-post.",
-      "sendAgain": "Skicka igen"
+      "confirmEmailNote": "Så att ditt team hittar dig, och så att du kan återställa lösenordet om du glömmer det.",
+      "confirmEmailSent": "Vi har skickat en länk. Öppna den för att bekräfta.",
+      "sendLink": "Skicka länk"
     },
     "invite": {
       "invalidTitle": "Inbjudan fungerar inte",

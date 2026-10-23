@@ -500,9 +500,9 @@
       "thisBrowser": "このブラウザ",
       "signedInAs": "{name} としてサインイン中",
       "confirmEmail": "メールアドレスを確認",
-      "confirmEmailNote": "お送りしたメールのリンクを開いてください。チームがあなたを見つけやすくなり、パスワードの再設定もできるようになります。",
-      "confirmEmailSent": "新しいリンクを送信しました。メールをご確認ください。",
-      "sendAgain": "再送信"
+      "confirmEmailNote": "チームがあなたを見つけられるように、またパスワードを忘れたときに再設定できるようにします。",
+      "confirmEmailSent": "リンクを送信しました。開いて確認してください。",
+      "sendLink": "リンクを送信"
     },
     "invite": {
       "invalidTitle": "この招待は使えません",

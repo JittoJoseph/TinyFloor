@@ -500,9 +500,9 @@
       "thisBrowser": "Este navegador",
       "signedInAs": "Sesión iniciada como {name}",
       "confirmEmail": "Confirma tu correo",
-      "confirmEmailNote": "Abre el enlace que te enviamos. Así tu equipo puede encontrarte y puedes restablecer tu contraseña.",
-      "confirmEmailSent": "Te enviamos un enlace nuevo. Revisa tu correo.",
-      "sendAgain": "Enviar de nuevo"
+      "confirmEmailNote": "Para que tu equipo pueda encontrarte y puedas restablecer tu contraseña si la olvidas.",
+      "confirmEmailSent": "Te enviamos un enlace. Ábrelo para confirmar.",
+      "sendLink": "Enviar enlace"
     },
     "invite": {
       "invalidTitle": "Esta invitación no funciona",

@@ -500,9 +500,9 @@
       "thisBrowser": "Denne browser",
       "signedInAs": "Logget ind som {name}",
       "confirmEmail": "Bekræft din e-mail",
-      "confirmEmailNote": "Åbn linket, vi sendte dig. Så kan dit team finde dig, og du kan nulstille din adgangskode.",
-      "confirmEmailSent": "Vi har sendt et nyt link. Tjek din e-mail.",
-      "sendAgain": "Send igen"
+      "confirmEmailNote": "Så dit team kan finde dig, og så du kan nulstille din adgangskode, hvis du glemmer den.",
+      "confirmEmailSent": "Vi har sendt dig et link. Åbn det for at bekræfte.",
+      "sendLink": "Send link"
     },
     "invite": {
       "invalidTitle": "Invitationen virker ikke",

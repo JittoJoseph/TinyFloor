@@ -500,9 +500,9 @@
       "thisBrowser": "此浏览器",
       "signedInAs": "已以 {name} 身份登录",
       "confirmEmail": "确认你的邮箱",
-      "confirmEmailNote": "打开我们发给你的链接。这样团队能找到你，你也能重置密码。",
-      "confirmEmailSent": "我们已发送新链接，请查收邮件。",
-      "sendAgain": "再次发送"
+      "confirmEmailNote": "这样团队能找到你，忘记密码时你也能重置。",
+      "confirmEmailSent": "我们已给你发送链接，打开即可确认。",
+      "sendLink": "发送链接"
     },
     "invite": {
       "invalidTitle": "这个邀请无法使用",

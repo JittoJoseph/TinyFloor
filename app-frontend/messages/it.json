@@ -500,9 +500,9 @@
       "thisBrowser": "Questo browser",
       "signedInAs": "Accesso effettuato come {name}",
       "confirmEmail": "Conferma la tua email",
-      "confirmEmailNote": "Apri il link che ti abbiamo inviato. Così il tuo team può trovarti e puoi reimpostare la password.",
-      "confirmEmailSent": "Ti abbiamo inviato un nuovo link. Controlla la tua email.",
-      "sendAgain": "Invia di nuovo"
+      "confirmEmailNote": "Così il tuo team può trovarti e puoi reimpostare la password se la dimentichi.",
+      "confirmEmailSent": "Ti abbiamo inviato un link. Aprilo per confermare.",
+      "sendLink": "Invia link"
     },
     "invite": {
       "invalidTitle": "Questo invito non funziona",

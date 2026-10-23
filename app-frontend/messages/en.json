@@ -500,9 +500,9 @@
       "thisBrowser": "This browser",
       "signedInAs": "Signed in as {name}",
       "confirmEmail": "Confirm your email",
-      "confirmEmailNote": "Open the link we emailed you. It lets your team find you, and lets you reset your password.",
-      "confirmEmailSent": "We sent a new link. Check your email.",
-      "sendAgain": "Send again"
+      "confirmEmailNote": "So your team can find you, and so you can reset your password if you forget it.",
+      "confirmEmailSent": "We sent you a link. Open it to confirm.",
+      "sendLink": "Send link"
     },
     "invite": {
       "invalidTitle": "This invite doesn't work",

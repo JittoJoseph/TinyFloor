@@ -500,9 +500,9 @@
       "thisBrowser": "Tämä selain",
       "signedInAs": "Kirjautuneena: {name}",
       "confirmEmail": "Vahvista sähköpostisi",
-      "confirmEmailNote": "Avaa lähettämämme linkki. Silloin tiimisi löytää sinut, ja voit nollata salasanasi.",
-      "confirmEmailSent": "Lähetimme uuden linkin. Tarkista sähköpostisi.",
-      "sendAgain": "Lähetä uudelleen"
+      "confirmEmailNote": "Jotta tiimisi löytää sinut ja voit nollata salasanan, jos unohdat sen.",
+      "confirmEmailSent": "Lähetimme sinulle linkin. Avaa se vahvistaaksesi.",
+      "sendLink": "Lähetä linkki"
     },
     "invite": {
       "invalidTitle": "Kutsu ei toimi",

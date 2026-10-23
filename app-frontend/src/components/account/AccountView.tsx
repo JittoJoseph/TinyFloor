@@ -382,7 +382,7 @@ export function SignIn() {
             description={resent ? t("confirmEmailSent") : t("confirmEmailNote")}
             control={
               <Button variant="secondary" size="sm" disabled={busy || resent} onClick={resend} className="h-8 px-3.5 text-[13px]">
-                {t("sendAgain")}
+                {t("sendLink")}
               </Button>
             }
           />

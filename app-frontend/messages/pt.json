@@ -500,9 +500,9 @@
       "thisBrowser": "Este navegador",
       "signedInAs": "Conectado como {name}",
       "confirmEmail": "Confirme seu e-mail",
-      "confirmEmailNote": "Abra o link que enviamos. Assim sua equipe encontra você, e você pode redefinir sua senha.",
-      "confirmEmailSent": "Enviamos um novo link. Confira seu e-mail.",
-      "sendAgain": "Enviar de novo"
+      "confirmEmailNote": "Para sua equipe encontrar você e para você redefinir a senha se esquecê-la.",
+      "confirmEmailSent": "Enviamos um link. Abra-o para confirmar.",
+      "sendLink": "Enviar link"
     },
     "invite": {
       "invalidTitle": "Este convite não funciona",

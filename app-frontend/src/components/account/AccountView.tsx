@@ -15,7 +15,7 @@ import { Button } from "@/components/motion/button/base";
 import { Dialog, ErrorText, fieldClass, Label } from "@/components/ui/forms";
 import { LitFace } from "@/components/ui/LitFace";
 import { PixelAvatar } from "@/components/PixelAvatar";
-import { openLookCreator } from "@/components/looks/LookCreator";
+import { openCharacterCreator } from "@/components/character/CharacterCreator";
 import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
 import { General, Group, Row } from "@/components/app/SettingsView";
 
@@ -215,7 +215,7 @@ export function Profile() {
           <span className="relative block size-16 shrink-0 rounded-2xl bg-muted/70" style={{ containerType: "size" }}>
             <PixelAvatar character={user.character} width="52cqw" style={{ left: "50%", top: "88%" }} />
           </span>
-          <Button type="button" size="sm" variant="secondary" onClick={openLookCreator} className="h-8 px-4 text-[13px]">
+          <Button type="button" size="sm" variant="secondary" onClick={openCharacterCreator} className="h-8 px-4 text-[13px]">
             {tLook("open")}
           </Button>
         </div>

@@ -4,8 +4,8 @@
   "private": true,
   "packageManager": "pnpm@11.22.0",
   "scripts": {
-    "dev": "node ../web-shared/scripts/fetch-assets.mjs --only=characters/ && next dev",
-    "build": "node ../web-shared/scripts/fetch-assets.mjs --only=characters/ && next build",
+    "dev": "node ../web-shared/scripts/fetch-assets.mjs --only=characters/presets/ && next dev",
+    "build": "node ../web-shared/scripts/fetch-assets.mjs --only=characters/presets/ && next build",
     "start": "next start",
     "lint": "eslint",
     "build:worker": "opennextjs-cloudflare build && node ../web-shared/scripts/static-pages.mjs",
@@ -16,7 +16,7 @@
     "worker:preview": "opennextjs-cloudflare deploy --env preview",
     "upload:worker": "opennextjs-cloudflare upload",
     "indexnow": "node scripts/indexnow.mjs",
-    "assets": "node ../web-shared/scripts/fetch-assets.mjs --only=characters/"
+    "assets": "node ../web-shared/scripts/fetch-assets.mjs --only=characters/presets/"
   },
   "dependencies": {
     "@hugeicons/core-free-icons": "catalog:",

@@ -238,10 +238,7 @@ export class MovementManager {
   }
 
   private playAnimation(moving: boolean) {
-    this.player.play(
-      this.animationManager.getAnimationKey(this.player.getData("spriteName") || "Adam", moving ? "run" : "idle", this.currentDirection),
-      true,
-    );
+    this.animationManager.play(this.player, moving ? "run" : "idle", this.currentDirection);
   }
 
   /**

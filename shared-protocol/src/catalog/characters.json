@@ -4,6 +4,56 @@
   64
  ],
  "frames": 48,
+ "presets": {
+  "Adam": {
+   "nearest": "body.2/eyes.1/outfit.1-1/hair.17-4"
+  },
+  "Alex": {
+   "nearest": "body.2/eyes.1/outfit.2-1/hair.18-2"
+  },
+  "Amelia": {
+   "nearest": "body.1/eyes.1/outfit.7-4/hair.15-2"
+  },
+  "Ash": {
+   "nearest": "body.2/eyes.3/outfit.3-1/hair.2-4"
+  },
+  "Bob": {
+   "nearest": "body.2/eyes.4/outfit.5-1/hair.16-7"
+  },
+  "Dan": {
+   "nearest": "body.2/eyes.2/outfit.4-1/hair.12-7"
+  },
+  "Lucy": {
+   "nearest": "body.2/eyes.1/outfit.11-1/hair.10-2"
+  },
+  "Molly": {
+   "nearest": "body.2/eyes.6/outfit.1-3/hair.9-1"
+  },
+  "Bruce": {
+   "nearest": "body.2/eyes.1/outfit.7-1/hair.5-4"
+  },
+  "Samuel": {
+   "nearest": "body.1/eyes.1/outfit.2-2/hair.20-4"
+  },
+  "Edward": {
+   "nearest": "body.2/eyes.1/outfit.10-1/hair.1-3"
+  },
+  "Rob": {
+   "nearest": "body.3/eyes.6/outfit.1-4/hair.22-1"
+  },
+  "Roki": {
+   "nearest": "body.2/eyes.4/outfit.14-1/hair.21-7"
+  },
+  "Pier": {
+   "nearest": "body.2/eyes.4/outfit.10-2/hair.12-2"
+  },
+  "Josh": {
+   "nearest": "body.2/eyes.1/outfit.3-1/hair.6-5"
+  },
+  "Jenny": {
+   "nearest": "body.2/eyes.4/outfit.11-3/hair.19-5"
+  }
+ },
  "parts": {
   "body": {
    "required": true,
@@ -12,8 +62,11 @@
     "2": "#ffcbb0",
     "3": "#ffb893",
     "4": "#bb845c",
+    "5": "#cdb57a",
     "6": "#d4cabb",
-    "7": "#f0ae80"
+    "7": "#f0ae80",
+    "8": "#e6b8d7",
+    "9": "#bab8d7"
    }
   },
   "eyes": {
@@ -146,7 +199,23 @@
     "29-1": "#a1abd4",
     "29-2": "#5babd4",
     "29-3": "#c2c8ea",
-    "29-4": "#7471d6"
+    "29-4": "#7471d6",
+    "30-1": "#565972",
+    "30-2": "#71729e",
+    "30-3": "#8a837c",
+    "31-1": "#335789",
+    "31-2": "#6c3e89",
+    "31-3": "#453e85",
+    "31-4": "#276858",
+    "31-5": "#694334",
+    "32-1": "#335789",
+    "32-2": "#644074",
+    "32-3": "#5e5b60",
+    "32-4": "#464965",
+    "32-5": "#683f3d",
+    "33-1": "#fdf8ec",
+    "33-2": "#e7f8ec",
+    "33-3": "#e7e5ec"
    }
   },
   "hair": {
@@ -354,9 +423,12 @@
     "29-6": "#fc5c46"
    }
   },
-  "beard": {
+  "face": {
    "required": false,
    "options": {
+    "7-1": "#51506f",
+    "7-2": "#71729e",
+    "7-3": "#8a837c",
     "12-1": "#8a6552",
     "12-2": "#975426",
     "12-3": "#ac7e1e",
@@ -366,7 +438,15 @@
     "13-2": "#8a4830",
     "13-3": "#a16a3b",
     "13-4": "#a69e97",
-    "13-5": "#666e8c"
+    "13-5": "#666e8c",
+    "16-1": "#795237",
+    "16-2": "#965752",
+    "16-3": "#526096",
+    "17-1": "#ffffff",
+    "17-2": "#a3b7e6",
+    "17-3": "#95dbf4",
+    "17-4": "#afb2ba",
+    "17-5": "#77db5c"
    }
   },
   "glasses": {
@@ -383,17 +463,58 @@
   "hat": {
    "required": false,
    "options": {
+    "1-1": "#e63f38",
+    "1-2": "#f8d239",
+    "1-3": "#368f38",
+    "1-4": "#3682a7",
+    "2-1": "#f8d239",
+    "2-2": "#e5ea8e",
+    "2-3": "#f87639",
     "4-1": "#e63f38",
     "4-2": "#4995e3",
     "4-3": "#74b453",
     "4-4": "#9da3b7",
     "4-5": "#e88dad",
     "4-6": "#bda766",
+    "5-1": "#9bc246",
+    "5-2": "#89bcc6",
+    "5-3": "#e0a146",
+    "6-1": "#6c6e85",
+    "6-2": "#5d74a4",
+    "6-3": "#875fa4",
+    "6-4": "#6c6e85",
+    "6-5": "#5d74a4",
+    "6-6": "#875fa4",
+    "8-1": "#c37759",
+    "8-2": "#c36459",
+    "8-3": "#b99b8f",
+    "9-1": "#c6a755",
+    "9-2": "#c6a755",
+    "9-3": "#6d0bc9",
+    "10-1": "#b9c3d5",
+    "10-2": "#b9c3d5",
+    "10-3": "#b9c3d5",
     "11-1": "#676e8d",
     "11-2": "#a59992",
     "11-3": "#a57992",
     "11-4": "#57969d",
-    "11-5": "#a0574c"
+    "11-5": "#a0574c",
+    "18-1": "#ebe4f2",
+    "18-2": "#d2c9c6",
+    "18-3": "#9a9492",
+    "19-1": "#e63f38",
+    "19-2": "#cf3f75",
+    "19-3": "#4aaed9",
+    "19-4": "#c4e1ee"
+   }
+  },
+  "gloves": {
+   "required": false,
+   "options": {
+    "14-1": "#f4eae2",
+    "14-2": "#c8e9d9",
+    "14-3": "#c8a7d9",
+    "14-4": "#b7723c"
    }
   },
   "bag": {
@@ -412,7 +533,7 @@
    }
   }
  },
- "premades": [
+ "starts": [
   "body.1/eyes.1/outfit.1-2/hair.4-3",
   "body.1/eyes.1/outfit.5-1/hair.9-3",
   "body.1/eyes.1/outfit.1-5/hair.8-3",
@@ -420,12 +541,16 @@
   "body.2/eyes.2/outfit.1-1/hair.1-7",
   "body.2/eyes.2/outfit.2-3/hair.7-3",
   "body.2/eyes.3/outfit.10-2/hair.10-6/hat.11-4",
+  "body.2/eyes.3/outfit.18-2/hair.21-2/face.16-1",
   "body.3/eyes.1/outfit.19-2/hair.26-6",
+  "body.3/eyes.5/outfit.33-3/hair.25-2",
   "body.3/eyes.5/outfit.11-4/hair.16-3/bag.3-1",
   "body.3/eyes.1/outfit.1-10/hair.1-6/hat.4-6",
   "body.4/eyes.1/outfit.1-9/hair.3-3",
   "body.4/eyes.1/outfit.6-3/hair.18-3",
+  "body.4/eyes.1/outfit.9-3/hat.9-1",
   "body.7/eyes.2/outfit.5-2/hair.24-3",
-  "body.7/eyes.6/outfit.10-4/hair.23-7/hat.4-5"
+  "body.7/eyes.6/outfit.10-4/hair.23-7/hat.4-5",
+  "body.7/eyes.6/outfit.29-3/hair.22-3/face.12-2/hat.6-1"
  ]
 }

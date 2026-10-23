@@ -841,23 +841,28 @@
     "turnRight": "Drej til højre",
     "randomize": "Tilfældig",
     "tabs": {
-      "presets": "Forslag",
+      "characters": "Figurer",
       "skin": "Hud",
       "hair": "Hår",
-      "beard": "Skæg",
       "outfit": "Tøj",
-      "glasses": "Briller",
-      "hat": "Hat",
-      "bag": "Taske",
       "extras": "Ekstra"
     },
-    "preset": "Start herfra",
+    "presets": "Figurer",
+    "starts": "Lav din egen ud fra",
+    "parts": {
+      "hair": "Hår",
+      "outfit": "Tøj",
+      "face": "Ansigt",
+      "glasses": "Briller",
+      "hat": "Hat",
+      "gloves": "Handsker",
+      "bag": "Taske"
+    },
     "skin": "Hud",
     "eyes": "Øjne",
     "none": "Ingen",
     "cancel": "Annuller",
-    "save": "Gem",
-    "edit": "Skift"
+    "save": "Gem"
   },
   "note": {
     "title": "Statusnote",

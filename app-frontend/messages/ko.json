@@ -841,23 +841,28 @@
     "turnRight": "오른쪽으로 돌기",
     "randomize": "무작위",
     "tabs": {
-      "presets": "프리셋",
+      "characters": "캐릭터",
       "skin": "피부",
       "hair": "머리",
-      "beard": "수염",
       "outfit": "옷",
-      "glasses": "안경",
-      "hat": "모자",
-      "bag": "가방",
       "extras": "소품"
     },
-    "preset": "이걸로 시작",
+    "presets": "캐릭터",
+    "starts": "여기서 시작해 직접 만들기",
+    "parts": {
+      "hair": "머리",
+      "outfit": "옷",
+      "face": "얼굴",
+      "glasses": "안경",
+      "hat": "모자",
+      "gloves": "장갑",
+      "bag": "가방"
+    },
     "skin": "피부",
     "eyes": "눈",
     "none": "없음",
     "cancel": "취소",
-    "save": "저장",
-    "edit": "바꾸기"
+    "save": "저장"
   },
   "note": {
     "title": "상태 메모",

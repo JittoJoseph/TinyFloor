@@ -841,23 +841,28 @@
     "turnRight": "右を向く",
     "randomize": "ランダム",
     "tabs": {
-      "presets": "プリセット",
+      "characters": "キャラクター",
       "skin": "肌",
       "hair": "髪",
-      "beard": "ひげ",
       "outfit": "服",
-      "glasses": "メガネ",
-      "hat": "帽子",
-      "bag": "バッグ",
       "extras": "小物"
     },
-    "preset": "これから始める",
+    "presets": "キャラクター",
+    "starts": "ここから自分で作る",
+    "parts": {
+      "hair": "髪",
+      "outfit": "服",
+      "face": "顔",
+      "glasses": "メガネ",
+      "hat": "帽子",
+      "gloves": "手袋",
+      "bag": "バッグ"
+    },
     "skin": "肌",
     "eyes": "目",
     "none": "なし",
     "cancel": "キャンセル",
-    "save": "保存",
-    "edit": "変更"
+    "save": "保存"
   },
   "note": {
     "title": "ステータスメモ",

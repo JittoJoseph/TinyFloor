@@ -3,7 +3,7 @@
 import { useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { Check, ChevronRight, Desk, DoorOpen, HelpCircle, LogOut, MonitorDown, Palette, Settings2, Shirt, UserPlus } from "@/components/ui/icons";
-import { openLookCreator } from "@/components/looks/LookCreator";
+import { openCharacterCreator } from "@/components/character/CharacterCreator";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { setMyStatus, useMyNote, useMyStatus } from "@/lib/floor";
@@ -220,7 +220,7 @@ export function YouMenu({
           {tDecorate("title")}
         </MenuItem>
       )}
-      <MenuItem icon={<Shirt />} onSelect={openLookCreator}>
+      <MenuItem icon={<Shirt />} onSelect={openCharacterCreator}>
         {tLook("open")}
       </MenuItem>
 

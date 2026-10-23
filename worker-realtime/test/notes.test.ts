@@ -134,7 +134,7 @@ describe("a new look", () => {
     const ben = await Client.open(room, { sub: "ben" });
     await ben.next("welcome");
 
-    for (const character of ["body.9/eyes.1/outfit.1-2", "body.1/eyes.1", "body.1/eyes.1/outfit.31-1", "hair.4-3/body.1/eyes.1/outfit.1-2", "Nobody"]) {
+    for (const character of ["body.12/eyes.1/outfit.1-2", "body.1/eyes.1", "body.1/eyes.1/outfit.1-2/hair.99-1", "hair.4-3/body.1/eyes.1/outfit.1-2", "Nobody"]) {
       ben.send({ t: "look", character });
     }
     await settle();

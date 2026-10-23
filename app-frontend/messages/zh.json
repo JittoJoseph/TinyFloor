@@ -841,23 +841,28 @@
     "turnRight": "向右转",
     "randomize": "随机",
     "tabs": {
-      "presets": "预设",
+      "characters": "角色",
       "skin": "肤色",
       "hair": "发型",
-      "beard": "胡子",
       "outfit": "服装",
-      "glasses": "眼镜",
-      "hat": "帽子",
-      "bag": "背包",
       "extras": "配饰"
     },
-    "preset": "从这个开始",
+    "presets": "角色",
+    "starts": "从这些开始自己搭配",
+    "parts": {
+      "hair": "发型",
+      "outfit": "服装",
+      "face": "面部",
+      "glasses": "眼镜",
+      "hat": "帽子",
+      "gloves": "手套",
+      "bag": "背包"
+    },
     "skin": "肤色",
     "eyes": "眼睛",
     "none": "无",
     "cancel": "取消",
-    "save": "保存",
-    "edit": "更换"
+    "save": "保存"
   },
   "note": {
     "title": "状态备注",

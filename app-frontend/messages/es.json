@@ -841,23 +841,28 @@
     "turnRight": "Girar a la derecha",
     "randomize": "Al azar",
     "tabs": {
-      "presets": "Modelos",
+      "characters": "Personajes",
       "skin": "Piel",
       "hair": "Pelo",
-      "beard": "Barba",
       "outfit": "Ropa",
-      "glasses": "Gafas",
-      "hat": "Gorro",
-      "bag": "Mochila",
       "extras": "Extras"
     },
-    "preset": "Empezar con este",
+    "presets": "Personajes",
+    "starts": "Crea el tuyo a partir de",
+    "parts": {
+      "hair": "Pelo",
+      "outfit": "Ropa",
+      "face": "Cara",
+      "glasses": "Gafas",
+      "hat": "Gorro",
+      "gloves": "Guantes",
+      "bag": "Mochila"
+    },
     "skin": "Piel",
     "eyes": "Ojos",
     "none": "Ninguno",
     "cancel": "Cancelar",
-    "save": "Guardar",
-    "edit": "Cambiar"
+    "save": "Guardar"
   },
   "note": {
     "title": "Nota de estado",

@@ -841,23 +841,28 @@
     "turnRight": "Naar rechts draaien",
     "randomize": "Willekeurig",
     "tabs": {
-      "presets": "Voorbeelden",
+      "characters": "Figuren",
       "skin": "Huid",
       "hair": "Haar",
-      "beard": "Baard",
       "outfit": "Kleding",
-      "glasses": "Bril",
-      "hat": "Hoed",
-      "bag": "Tas",
       "extras": "Extra's"
     },
-    "preset": "Hiermee beginnen",
+    "presets": "Figuren",
+    "starts": "Maak je eigen, vanuit",
+    "parts": {
+      "hair": "Haar",
+      "outfit": "Kleding",
+      "face": "Gezicht",
+      "glasses": "Bril",
+      "hat": "Hoed",
+      "gloves": "Handschoenen",
+      "bag": "Tas"
+    },
     "skin": "Huid",
     "eyes": "Ogen",
     "none": "Geen",
     "cancel": "Annuleren",
-    "save": "Opslaan",
-    "edit": "Aanpassen"
+    "save": "Opslaan"
   },
   "note": {
     "title": "Statusnotitie",

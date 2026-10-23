@@ -841,23 +841,28 @@
     "turnRight": "Vänd åt höger",
     "randomize": "Slumpa",
     "tabs": {
-      "presets": "Förslag",
+      "characters": "Figurer",
       "skin": "Hud",
       "hair": "Hår",
-      "beard": "Skägg",
       "outfit": "Kläder",
-      "glasses": "Glasögon",
-      "hat": "Hatt",
-      "bag": "Väska",
       "extras": "Extra"
     },
-    "preset": "Börja med den här",
+    "presets": "Figurer",
+    "starts": "Gör din egen utifrån",
+    "parts": {
+      "hair": "Hår",
+      "outfit": "Kläder",
+      "face": "Ansikte",
+      "glasses": "Glasögon",
+      "hat": "Hatt",
+      "gloves": "Handskar",
+      "bag": "Väska"
+    },
     "skin": "Hud",
     "eyes": "Ögon",
     "none": "Ingen",
     "cancel": "Avbryt",
-    "save": "Spara",
-    "edit": "Ändra"
+    "save": "Spara"
   },
   "note": {
     "title": "Statusnotis",

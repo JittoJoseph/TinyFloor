@@ -841,23 +841,28 @@
     "turnRight": "Nach rechts drehen",
     "randomize": "Zufällig",
     "tabs": {
-      "presets": "Vorlagen",
+      "characters": "Figuren",
       "skin": "Haut",
       "hair": "Haare",
-      "beard": "Bart",
       "outfit": "Kleidung",
-      "glasses": "Brille",
-      "hat": "Mütze",
-      "bag": "Tasche",
       "extras": "Extras"
     },
-    "preset": "Damit anfangen",
+    "presets": "Figuren",
+    "starts": "Eigene gestalten, ausgehend von",
+    "parts": {
+      "hair": "Haare",
+      "outfit": "Kleidung",
+      "face": "Gesicht",
+      "glasses": "Brille",
+      "hat": "Mütze",
+      "gloves": "Handschuhe",
+      "bag": "Tasche"
+    },
     "skin": "Haut",
     "eyes": "Augen",
     "none": "Keine",
     "cancel": "Abbrechen",
-    "save": "Speichern",
-    "edit": "Ändern"
+    "save": "Speichern"
   },
   "note": {
     "title": "Statusnotiz",

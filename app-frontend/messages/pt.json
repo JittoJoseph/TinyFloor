@@ -841,23 +841,28 @@
     "turnRight": "Virar à direita",
     "randomize": "Aleatório",
     "tabs": {
-      "presets": "Modelos",
+      "characters": "Personagens",
       "skin": "Pele",
       "hair": "Cabelo",
-      "beard": "Barba",
       "outfit": "Roupa",
-      "glasses": "Óculos",
-      "hat": "Chapéu",
-      "bag": "Mochila",
       "extras": "Extras"
     },
-    "preset": "Começar por este",
+    "presets": "Personagens",
+    "starts": "Crie o seu a partir de",
+    "parts": {
+      "hair": "Cabelo",
+      "outfit": "Roupa",
+      "face": "Rosto",
+      "glasses": "Óculos",
+      "hat": "Chapéu",
+      "gloves": "Luvas",
+      "bag": "Mochila"
+    },
     "skin": "Pele",
     "eyes": "Olhos",
     "none": "Nenhum",
     "cancel": "Cancelar",
-    "save": "Salvar",
-    "edit": "Mudar"
+    "save": "Salvar"
   },
   "note": {
     "title": "Nota de status",

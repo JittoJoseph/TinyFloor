@@ -841,23 +841,28 @@
     "turnRight": "Turn right",
     "randomize": "Randomize",
     "tabs": {
-      "presets": "Presets",
+      "characters": "Characters",
       "skin": "Skin",
       "hair": "Hair",
-      "beard": "Beard",
       "outfit": "Outfit",
-      "glasses": "Glasses",
-      "hat": "Hat",
-      "bag": "Bag",
       "extras": "Extras"
     },
-    "preset": "Start from this",
+    "presets": "Characters",
+    "starts": "Make your own from",
+    "parts": {
+      "hair": "Hair",
+      "outfit": "Outfit",
+      "face": "Face",
+      "glasses": "Glasses",
+      "hat": "Hat",
+      "gloves": "Gloves",
+      "bag": "Bag"
+    },
     "skin": "Skin",
     "eyes": "Eyes",
     "none": "None",
     "cancel": "Cancel",
-    "save": "Save",
-    "edit": "Change"
+    "save": "Save"
   },
   "note": {
     "title": "Status note",

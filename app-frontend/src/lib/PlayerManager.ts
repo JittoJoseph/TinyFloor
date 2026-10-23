@@ -12,7 +12,6 @@ import type { SeatPose } from "./SeatManager";
 import { SceneLabel } from "./SceneLabel";
 import { TILE_SIZE, MOVEMENT_SPEED, pixelToTile, tileToPixel } from "@/lib/types";
 import { statusColorValue } from "@/lib/status";
-import { DEFAULT_CHARACTER } from "@shared/profile";
 import { liveNote, type StatusNote } from "@shared/messages";
 import type { PlayerStatus } from "@/lib/types";
 
@@ -101,11 +100,9 @@ export class PlayerManager {
   ): Phaser.GameObjects.Sprite {
     // Out of sight until the room says where you are (showLocalPlayer): you'd
     // otherwise appear here first and jump.
-    const player = this.scene.add.sprite(x, y, DEFAULT_CHARACTER).setVisible(false);
+    const player = this.animationManager.sprite(x, y, character).setVisible(false);
     player.setName("localPlayer");
-    player.setOrigin(0.5, 1.0);
-    this.animationManager.wear(player, character);
-    player.play(this.animationManager.getAnimationKey(player.getData("spriteName"), "idle", "down"));
+    this.animationManager.play(player, "idle", "down");
 
     // Positioned every frame by updateLocalPlayerNameTag; a tween on it would fight
     // that and leave the name behind while the character walks off.
@@ -132,10 +129,8 @@ export class PlayerManager {
 
     const pos = tileToPixel(tileX, tileY);
     const container = this.scene.add.container(pos.x, pos.y);
-    const sprite = this.scene.add.sprite(0, 0, DEFAULT_CHARACTER);
-    sprite.setOrigin(0.5, 1.0);
-    this.animationManager.wear(sprite, spriteKey);
-    sprite.play(this.animationManager.getAnimationKey(sprite.getData("spriteName"), "idle", "down"));
+    const sprite = this.animationManager.sprite(0, 0, spriteKey);
+    this.animationManager.play(sprite, "idle", "down");
     container.add(sprite);
     container.setDepth(depthForY(pos.y));
 
@@ -444,23 +439,13 @@ export class PlayerManager {
     state: AnimationState,
     direction: Direction,
   ) {
-    const sprite = this.spriteOf(container);
-    sprite.play(
-      this.animationManager.getAnimationKey(
-        sprite.getData("spriteName") || "Adam",
-        state,
-        direction,
-      ),
-      true,
-    );
+    this.animationManager.play(this.spriteOf(container), state, direction);
   }
 
   private settle(id: string, pose: SeatPose) {
     const container = this.players.get(id);
     if (!container) return;
-    const sprite = this.spriteOf(container);
-    sprite.anims.stop();
-    sprite.setFrame(pose.frame);
+    this.animationManager.sit(this.spriteOf(container), pose.direction);
     this.nameTags.get(id)?.container.setY(nameTagOffset(pose.direction));
   }
 

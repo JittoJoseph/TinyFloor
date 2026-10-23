@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Characters compared</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        font: 13px/1.4 system-ui, sans-serif;
+      }
+      body {
+        margin: 0;
+        padding: 20px 24px 60px;
+        background: #121214;
+        color: #e8e8ea;
+      }
+      h1 {
+        font-size: 17px;
+        margin: 0 0 4px;
+      }
+      h2 {
+        font-size: 13px;
+        font-weight: 600;
+        margin: 22px 0 8px;
+        color: #c9c9cf;
+      }
+      p.note {
+        margin: 0 0 8px;
+        color: #8d8d96;
+        max-width: 70ch;
+      }
+      .bar {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin: 10px 0 0;
+      }
+      .bar button {
+        border: 0;
+        border-radius: 999px;
+        padding: 6px 12px;
+        background: #26262b;
+        color: inherit;
+        cursor: pointer;
+      }
+      .bar button[aria-pressed="true"] {
+        background: #e8e8ea;
+        color: #121214;
+      }
+      /* A patch of the office floor, at the floor's own tile size. */
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0;
+        padding: 10px 12px;
+        border-radius: 10px;
+        background-color: #b9b9bd;
+        background-image: linear-gradient(#aeaeb2 1px, transparent 1px), linear-gradient(90deg, #aeaeb2 1px, transparent 1px);
+        background-size: var(--tile) var(--tile);
+        width: fit-content;
+        max-width: 100%;
+      }
+      .cell {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .cell small {
+        color: #3a3a44;
+        font-size: 10px;
+        margin-top: 2px;
+      }
+      canvas {
+        image-rendering: pixelated;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Characters compared</h1>
+    <p class="note">Each row on a patch of floor at the floor's scale: a tile is 32 of the floor's pixels, drawn at the chosen zoom. The 16px art is drawn at twice its size, as the floor draws it.</p>
+    <div class="bar" id="zoom"></div>
+    <div class="bar" id="motion"></div>
+    <main id="rows"></main>
+    <script type="module" src="/lab/characters.js"></script>
+  </body>
+</html>

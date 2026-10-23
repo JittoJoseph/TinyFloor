@@ -1,46 +1,117 @@
-import React from "react";
-import styles from "./pixel.module.css";
-import { statusColor } from "@/lib/status";
-import { lookLayers, parseLook } from "@shared/look";
+"use client";
 
-export type AvatarDirection = "up" | "down" | "left" | "right";
+import React, { useEffect, useRef } from "react";
+import { statusColor } from "@/lib/status";
+import { FRAME_H, FRAME_W, characterSheet, drawFrame, drawnSheet, frameOf, type Facing } from "@/lib/characterSheet";
+
+export type AvatarDirection = Facing;
 
 interface PixelAvatarProps {
   character: string;
   direction?: AvatarDirection;
   running?: boolean;
+  /** Seated, facing `direction`: one pose. */
+  sitting?: boolean;
+  /** Standing still on one frame, rather than breathing. */
+  still?: boolean;
+  /**
+   * How wide its frame is drawn (32 of the art's pixels). In whole pixels a
+   * multiple of 32 keeps every pixel the same size; a size from its container
+   * (cqw) follows the container instead.
+   */
   width?: number | string;
   className?: string;
   style?: React.CSSProperties;
 }
 
+/** Every character on the page steps together, ten times a second, as on the floor. */
+const STEP_MS = 100;
+const steppers = new Set<(step: number) => void>();
+let step = 0;
+let timer: ReturnType<typeof setInterval> | undefined;
+function onStep(listener: (step: number) => void): () => void {
+  steppers.add(listener);
+  timer ??= setInterval(() => {
+    step++;
+    steppers.forEach((one) => one(step));
+  }, STEP_MS);
+  return () => {
+    steppers.delete(listener);
+    if (!steppers.size && timer) {
+      clearInterval(timer);
+      timer = undefined;
+    }
+  };
+}
+
+/**
+ * A character, standing at its feet: `style` places that point (left, top),
+ * and it rises from there. Drawn from its sheet (lib/characterSheet) onto a
+ * canvas at the art's own size, scaled up in whole pixels.
+ */
 export const PixelAvatar: React.FC<PixelAvatarProps> = ({
   character,
   direction = "down",
   running = false,
-  width = 34,
+  sitting = false,
+  still = false,
+  width = 32,
   className = "",
   style,
 }) => {
-  const sheet = running ? "run_16x16" : "idle_anim_16x16";
-  // A look is its parts stacked, the top one first.
-  const look = parseLook(character);
-  const backgroundImage = look
-    ? lookLayers(look).reverse().map((url) => `url(${url})`).join(", ")
-    : `url(/characters/${character}_${sheet}.png)`;
+  const canvas = useRef<HTMLCanvasElement>(null);
+
+  useEffect(() => {
+    const context = canvas.current?.getContext("2d");
+    if (!context) return;
+    let live = true;
+    // Standing still: one frame, drawn from its layers, without a sheet.
+    if (still && !sitting) {
+      void drawFrame(context, character, frameOf(running ? "walk" : "idle", direction), () => live).catch(() => {});
+      return () => {
+        live = false;
+      };
+    }
+    let sheet = drawnSheet(character);
+    let at = step;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const moves = !sitting && !still && !reduce;
+    const paint = () => {
+      context.clearRect(0, 0, FRAME_W, FRAME_H);
+      if (!sheet) return;
+      const frame = frameOf(sitting ? "sit" : running ? "walk" : "idle", direction, moves ? at : 0);
+      context.drawImage(sheet, frame * FRAME_W, 0, FRAME_W, FRAME_H, 0, 0, FRAME_W, FRAME_H);
+    };
+    paint();
+    if (!sheet) {
+      characterSheet(character)
+        .then((drawn) => {
+          if (!live) return;
+          sheet = drawn;
+          paint();
+        })
+        .catch(() => {});
+    }
+    const stop = moves
+      ? onStep((now) => {
+          at = now;
+          paint();
+        })
+      : undefined;
+    return () => {
+      live = false;
+      stop?.();
+    };
+  }, [character, direction, running, sitting, still]);
 
   return (
-    <span
+    <canvas
+      ref={canvas}
       aria-hidden="true"
-      className={`${styles.sprite} ${styles[direction]} ${
-        running ? styles.running : ""
-      } ${look ? styles.look : ""} ${className}`}
-      style={{
-        ...style,
-        ["--sprite-w" as string]:
-          typeof width === "number" ? `${width}px` : width,
-        backgroundImage,
-      }}
+      width={FRAME_W}
+      height={FRAME_H}
+      className={`pointer-events-none absolute -translate-x-1/2 -translate-y-full [image-rendering:pixelated] ${className}`}
+      style={{ ...style, width: typeof width === "number" ? `${width}px` : width, aspectRatio: `${FRAME_W} / ${FRAME_H}` }}
     />
   );
 };

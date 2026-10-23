@@ -159,7 +159,7 @@ export class MessageHandler {
     // The view starts where you are, rather than sweeping over from where it was.
     this.scene.cameras.main.centerOn(spawn.x, spawn.y);
     this.animationManager.wear(this.player, self.character);
-    this.player.play(this.animationManager.getAnimationKey(this.player.getData("spriteName"), "idle", "down"));
+    this.animationManager.play(this.player, "idle", "down");
 
     players.forEach((player) => this.addUser(player));
     this.dispatchPlayerList();

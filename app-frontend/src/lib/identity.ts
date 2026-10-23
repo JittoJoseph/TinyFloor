@@ -1,5 +1,4 @@
-import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
-import { PREMADE_LOOKS } from "@shared/look";
+import { DEFAULT_CHARACTER, DOOR_PRESETS, isCharacter } from "@shared/character";
 
 const KEY = "tinyfloorIdentity";
 
@@ -37,7 +36,7 @@ export function saveIdentity(identity: Identity) {
  * person. Only for a door's own state, never in what the server renders.
  */
 export function anyCharacter(): string {
-  return PREMADE_LOOKS[Math.floor(Math.random() * PREMADE_LOOKS.length)];
+  return DOOR_PRESETS[Math.floor(Math.random() * DOOR_PRESETS.length)];
 }
 
 /** One of the characters we have art for, or the default. */

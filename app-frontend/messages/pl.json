@@ -841,23 +841,28 @@
     "turnRight": "Obróć w prawo",
     "randomize": "Losowo",
     "tabs": {
-      "presets": "Gotowe",
+      "characters": "Postacie",
       "skin": "Skóra",
       "hair": "Włosy",
-      "beard": "Broda",
       "outfit": "Strój",
-      "glasses": "Okulary",
-      "hat": "Czapka",
-      "bag": "Plecak",
       "extras": "Dodatki"
     },
-    "preset": "Zacznij od tego",
+    "presets": "Postacie",
+    "starts": "Stwórz własną, zaczynając od",
+    "parts": {
+      "hair": "Włosy",
+      "outfit": "Strój",
+      "face": "Twarz",
+      "glasses": "Okulary",
+      "hat": "Czapka",
+      "gloves": "Rękawiczki",
+      "bag": "Plecak"
+    },
     "skin": "Skóra",
     "eyes": "Oczy",
     "none": "Brak",
     "cancel": "Anuluj",
-    "save": "Zapisz",
-    "edit": "Zmień"
+    "save": "Zapisz"
   },
   "note": {
     "title": "Notatka statusu",

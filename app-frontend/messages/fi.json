@@ -841,23 +841,28 @@
     "turnRight": "Käänny oikealle",
     "randomize": "Satunnainen",
     "tabs": {
-      "presets": "Valmiit",
+      "characters": "Hahmot",
       "skin": "Iho",
       "hair": "Hiukset",
-      "beard": "Parta",
       "outfit": "Vaatteet",
-      "glasses": "Lasit",
-      "hat": "Hattu",
-      "bag": "Reppu",
       "extras": "Lisät"
     },
-    "preset": "Aloita tästä",
+    "presets": "Hahmot",
+    "starts": "Tee oma, pohjana",
+    "parts": {
+      "hair": "Hiukset",
+      "outfit": "Vaatteet",
+      "face": "Kasvot",
+      "glasses": "Lasit",
+      "hat": "Hattu",
+      "gloves": "Hanskat",
+      "bag": "Reppu"
+    },
     "skin": "Iho",
     "eyes": "Silmät",
     "none": "Ei mitään",
     "cancel": "Peruuta",
-    "save": "Tallenna",
-    "edit": "Muuta"
+    "save": "Tallenna"
   },
   "note": {
     "title": "Tilaviesti",

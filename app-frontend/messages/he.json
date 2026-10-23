@@ -841,23 +841,28 @@
     "turnRight": "סיבוב ימינה",
     "randomize": "אקראי",
     "tabs": {
-      "presets": "מוכנים",
+      "characters": "דמויות",
       "skin": "עור",
       "hair": "שיער",
-      "beard": "זקן",
       "outfit": "לבוש",
-      "glasses": "משקפיים",
-      "hat": "כובע",
-      "bag": "תיק",
       "extras": "תוספות"
     },
-    "preset": "להתחיל מזה",
+    "presets": "דמויות",
+    "starts": "צרו משלכם מתוך",
+    "parts": {
+      "hair": "שיער",
+      "outfit": "לבוש",
+      "face": "פנים",
+      "glasses": "משקפיים",
+      "hat": "כובע",
+      "gloves": "כפפות",
+      "bag": "תיק"
+    },
     "skin": "עור",
     "eyes": "עיניים",
     "none": "ללא",
     "cancel": "ביטול",
-    "save": "שמירה",
-    "edit": "שינוי"
+    "save": "שמירה"
   },
   "note": {
     "title": "הערת סטטוס",

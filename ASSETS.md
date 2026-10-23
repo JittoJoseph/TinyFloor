@@ -10,11 +10,10 @@ not, and both forbid redistributing the art itself. A public git repository
 counts as redistributing, so these files are **not** in this repository:
 
 ```
-*-frontend/public/characters/*.png
+*-frontend/public/characters/*/*.png
 *-frontend/public/tilesets/textures/*.png
 *-frontend/public/tilesets/items/*.png
 *-frontend/public/catalog/*.png
-*-frontend/public/looks/*/*.png
 ```
 
 The floor (`shared-protocol/src/catalog/floors/startup.json`, built by the lab
@@ -68,12 +67,13 @@ R2 API token with read access:
 Uploading a changed file: `wrangler r2 object put tinyfloor/<key> --file=<path>
 --remote`, then update the manifest entry's size and SHA-256.
 
-## Regenerating a character
+## The characters
 
-`tools/buildcharacters.py Ash Dan` builds a character atlas from the Modern
-Interiors sheets: 24 idle frames, 24 run frames and a seated pose per
-direction. Point `MODERN_INTERIORS` at your copy of the pack if it is not in
-the default location.
+`pnpm --dir lab characters` crops the presets (the pack's earlier characters
+at 32px) and the character generator's parts into strips of the frames the
+floor uses, under `characters/presets/` and `characters/parts/`, and records
+them here. Characters are drawn from them in the browser
+(`web-shared/src/lib/characterSheet.ts`).
 
 ## Credit
 

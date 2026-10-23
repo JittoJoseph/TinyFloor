@@ -14,10 +14,8 @@ const MEN = [
   "Liam", "Noah", "Oliver", "James", "Elijah", "Lucas", "Mason", "Logan", "Ethan", "Jacob",
   "Jack", "Henry", "Owen", "Ryan", "Nathan", "Caleb", "Dylan", "Tyler", "Austin", "Jordan",
 ];
-/** The earlier characters drawn as women (public/characters), and as men; a look could be anyone. */
-const DRAWN_AS_WOMEN = new Set(["Amelia", "Lucy", "Molly"]);
-const DRAWN_AS_MEN = new Set(["Adam", "Alex", "Ash", "Bob", "Dan"]);
-const ANYONE = [...WOMEN, ...MEN];
+/** The presets drawn as women (shared-protocol character.ts); the rest are men. */
+const DRAWN_AS_WOMEN = new Set(["Amelia", "Lucy", "Molly", "Jenny"]);
 
 export interface Persona {
   name: string;
@@ -33,5 +31,5 @@ const pick = <T,>(choices: readonly T[], not?: T) => {
 export function randomPersona(not?: Persona): Persona {
   let character = anyCharacter();
   while (character === not?.character) character = anyCharacter();
-  return { character, name: pick(DRAWN_AS_WOMEN.has(character) ? WOMEN : DRAWN_AS_MEN.has(character) ? MEN : ANYONE, not?.name) };
+  return { character, name: pick(DRAWN_AS_WOMEN.has(character) ? WOMEN : MEN, not?.name) };
 }

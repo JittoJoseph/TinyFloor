@@ -38,7 +38,6 @@ export interface SeatPose {
   x: number;
   y: number;
   depth: number;
-  frame: number;
   direction: CardinalDirection;
   standX: number;
   standY: number;
@@ -170,7 +169,6 @@ export class SeatManager {
       x: seat.x + shift.dx,
       y: seat.baseY + shift.dy,
       depth: depthForY(seat.baseY) + shift.depth,
-      frame: this.animations.getSitFrame(seat.direction),
       direction: seat.direction,
       standX: seat.x,
       standY: seat.baseY + shift.exit,
@@ -287,8 +285,7 @@ export class SeatManager {
     seat.occupant = SELF;
 
     this.player.setPosition(pose.x, pose.y);
-    this.player.anims.stop();
-    this.player.setFrame(pose.frame);
+    this.animations.sit(this.player, seat.direction);
     this.player.setDepth(pose.depth);
 
     this.onSitChange?.(true);
@@ -310,7 +307,7 @@ export class SeatManager {
 
     const pose = this.poseFor(seat);
     this.player.setPosition(pose.standX, pose.standY);
-    this.player.play(this.animations.getAnimationKey(this.player.getData("spriteName") || "Adam", "idle", seat.direction), true);
+    this.animations.play(this.player, "idle", seat.direction);
     this.onSitChange?.(false);
     setMySeat(null);
     this.changed();

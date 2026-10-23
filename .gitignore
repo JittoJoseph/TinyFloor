@@ -61,11 +61,10 @@ __pycache__/
 /private-assets/
 # The bought packs as downloaded, and what's unpacked from them while working on art.
 /assets-pack/
-/*-frontend/public/characters/*.png
+/*-frontend/public/characters/
 /*-frontend/public/tilesets/textures/
 /*-frontend/public/tilesets/items/
 /*-frontend/public/catalog/
-/*-frontend/public/looks/
 /*-frontend/public/fonts/
 /*-frontend/public/icon-*.png
 /*-frontend/public/credits.txt

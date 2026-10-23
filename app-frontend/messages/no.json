@@ -841,23 +841,28 @@
     "turnRight": "Snu mot høyre",
     "randomize": "Tilfeldig",
     "tabs": {
-      "presets": "Forslag",
+      "characters": "Figurer",
       "skin": "Hud",
       "hair": "Hår",
-      "beard": "Skjegg",
       "outfit": "Klær",
-      "glasses": "Briller",
-      "hat": "Lue",
-      "bag": "Sekk",
       "extras": "Ekstra"
     },
-    "preset": "Start herfra",
+    "presets": "Figurer",
+    "starts": "Lag din egen ut fra",
+    "parts": {
+      "hair": "Hår",
+      "outfit": "Klær",
+      "face": "Ansikt",
+      "glasses": "Briller",
+      "hat": "Lue",
+      "gloves": "Hansker",
+      "bag": "Sekk"
+    },
     "skin": "Hud",
     "eyes": "Øyne",
     "none": "Ingen",
     "cancel": "Avbryt",
-    "save": "Lagre",
-    "edit": "Endre"
+    "save": "Lagre"
   },
   "note": {
     "title": "Statusnotat",

@@ -16,9 +16,6 @@
 /characters/*
   Cache-Control: public,max-age=600,stale-while-revalidate=86400
 
-/looks/*
-  Cache-Control: public,max-age=600,stale-while-revalidate=86400
-
 /credits.txt
   X-Robots-Tag: noindex
 

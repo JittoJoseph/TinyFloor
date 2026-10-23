@@ -12,7 +12,7 @@ import { saveIdentity } from "@/lib/identity";
 import { track } from "@/lib/analytics";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { cn } from "@/lib/utils";
-import { LOOKS, PREMADE_LOOKS, lookLayers, lookString, parseLook, type Look, type LookPart } from "@shared/look";
+import { LOOKS, PREMADE_LOOKS, lookLayers, lookString, parseLook, randomLook, type Look, type LookPart } from "@shared/look";
 
 /** What the creator shows, a tab each: the presets, then the parts, the small ones together. */
 const TABS = ["presets", "skin", "hair", "outfit", "extras"] as const;
@@ -37,20 +37,6 @@ const STYLES = Object.fromEntries((["hair", "beard", "outfit", "glasses", "hat",
   Exclude<LookPart, "body" | "eyes">,
   ReturnType<typeof stylesOf>
 >;
-
-const pickOne = <T,>(list: T[]): T => list[Math.floor(Math.random() * list.length)];
-
-/** Someone new: everyday clothes, hair most of the time, now and then a beard, glasses or a cap. */
-function randomLook(): Look {
-  const any = (part: LookPart) => pickOne(Object.keys(LOOKS.parts[part].options));
-  const look: Look = { body: any("body"), eyes: any("eyes"), outfit: any("outfit") };
-  if (Math.random() < 0.95) look.hair = any("hair");
-  if (Math.random() < 0.2) look.beard = any("beard");
-  if (Math.random() < 0.25) look.glasses = any("glasses");
-  if (Math.random() < 0.12) look.hat = any("hat");
-  if (Math.random() < 0.1) look.bag = any("bag");
-  return look;
-}
 
 /**
  * One still frame of a look, facing us: its parts stacked in CSS, the way

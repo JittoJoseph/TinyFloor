@@ -1,4 +1,5 @@
-import { CHARACTERS, DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
+import { DEFAULT_CHARACTER, isCharacter } from "@shared/profile";
+import { PREMADE_LOOKS } from "@shared/look";
 
 const KEY = "tinyfloorIdentity";
 
@@ -31,12 +32,12 @@ export function saveIdentity(identity: Identity) {
 }
 
 /**
- * Who a door has picked for someone before they choose: one at random, so a
- * team that presses straight through doesn't arrive as eight of the same
- * character. Only for a door's own state, never in what the server renders.
+ * Who a door has picked for someone before they choose: one of the presets at
+ * random, so a team that presses straight through doesn't arrive as the same
+ * person. Only for a door's own state, never in what the server renders.
  */
 export function anyCharacter(): string {
-  return CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)];
+  return PREMADE_LOOKS[Math.floor(Math.random() * PREMADE_LOOKS.length)];
 }
 
 /** One of the characters we have art for, or the default. */

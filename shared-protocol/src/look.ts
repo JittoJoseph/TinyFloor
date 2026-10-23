@@ -50,6 +50,20 @@ export const isLook = (value: unknown): value is string => parseLook(value) !== 
 export const lookString = (look: Look): string =>
   LOOK_PARTS.filter((part) => look[part]).map((part) => `${part}.${look[part]}`).join("/");
 
+const pickOne = <T>(list: T[]): T => list[Math.floor(Math.random() * list.length)];
+
+/** Someone new: everyday clothes, hair most of the time, now and then a beard, glasses or a cap. */
+export function randomLook(): Look {
+  const any = (part: LookPart) => pickOne(Object.keys(LOOKS.parts[part].options));
+  const look: Look = { body: any("body"), eyes: any("eyes"), outfit: any("outfit") };
+  if (Math.random() < 0.95) look.hair = any("hair");
+  if (Math.random() < 0.2) look.beard = any("beard");
+  if (Math.random() < 0.25) look.glasses = any("glasses");
+  if (Math.random() < 0.12) look.hat = any("hat");
+  if (Math.random() < 0.1) look.bag = any("bag");
+  return look;
+}
+
 /** The pictures a look is drawn from, bottom first: paths under the site's root. */
 export const lookLayers = (look: Look): string[] =>
   LOOK_PARTS.filter((part) => look[part]).map((part) => `/looks/${part}/${look[part]}.png`);

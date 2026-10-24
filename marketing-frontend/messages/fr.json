@@ -800,8 +800,8 @@
         "label": "Salle de réunion virtuelle",
         "line": "Entrez pour vous réunir, sortez pour partir",
         "meta": {
-          "title": "Salle de réunion virtuelle pour équipes à distance",
-          "description": "Une salle de réunion où votre équipe entre à pied : rejoignez-la et votre personnage prend place à la table, avec caméras, partage d'écran et sans lien de réunion."
+          "title": "Salle de réunion virtuelle gratuite pour équipes : toujours ouverte, sans lien",
+          "description": "Une salle de réunion virtuelle où votre équipe entre, gratuite jusqu'à 3 personnes : rejoignez et votre personnage s'installe à la table, avec caméras, partage d'écran et aucun lien de réunion à envoyer."
         },
         "title": "Une <em>salle de réunion virtuelle</em> au bout du couloir.",
         "subtitle": "Chaque bureau a une salle de réunion toujours là. Rejoignez une réunion et votre personnage entre ; sortez et vous êtes parti. Pas de lien, pas de salle d'attente.",
@@ -907,6 +907,167 @@
             "a": "Oui. Chaque formule a toutes les fonctionnalités, la gratuite comprise."
           }
         ]
+      },
+      "sowork": {
+        "label": "Alternative à SoWork",
+        "meta": {
+          "title": "Alternative à SoWork : tarifs, limite de 30 min et prix fixe",
+          "description": "L'offre gratuite de SoWork accueille 10 membres pour des réunions de 30 minutes, puis coûte 5,40 à 15 $ par membre par mois. Ce que paie une petite équipe, ce que SoWork fait mieux, et TinyFloor à 29 $ pour toute l'équipe."
+        },
+        "title": "Une <em>alternative à SoWork</em> avec un seul prix pour l'équipe.",
+        "subtitle": "L'offre gratuite de SoWork limite les réunions à 30 minutes, et ses formules payantes sont facturées par membre. TinyFloor est gratuit jusqu'à 3, puis un seul prix pour toute l'équipe : 29 $ par mois.",
+        "them": {
+          "price": "Basic à partir de 5,40 $ par membre par mois",
+          "freePlan": "Jusqu'à 10 membres, réunions limitées à 30 minutes",
+          "browser": "Oui, avec des applications de bureau et mobiles",
+          "screenShare": "Oui"
+        },
+        "faq": [
+          {
+            "q": "SoWork est-il gratuit ?",
+            "a": "SoWork propose une offre gratuite jusqu'à 10 membres, avec une limite de 30 minutes par réunion, une messagerie et une personnalisation limitées, et sans enregistrement, statistiques ni IA. Basic coûte 5,40 $ par membre et par mois à l'année, ou 6 $ au mois. TinyFloor est gratuit jusqu'à 3 personnes et coûte 29 $ par mois pour toute l'équipe."
+          },
+          {
+            "q": "Combien coûte SoWork pour 10 personnes ?",
+            "a": "Avec Basic, 54 $ par mois à l'année ou 60 $ au mois. Avec Premium, 120 $ par mois à l'année ou 150 $ au mois. TinyFloor coûte 29 $ par mois pour la même équipe."
+          },
+          {
+            "q": "Qu'est-ce que SoWork a que TinyFloor n'a pas ?",
+            "a": "L'enregistrement des réunions, les résumés et transcriptions par IA (avec Premium), la synchronisation du calendrier pour définir votre statut, un bureau personnalisable, des statistiques d'équipe et des applications pour Mac, Windows, iOS et Android. TinyFloor fonctionne dans le navigateur et n'enregistre pas."
+          },
+          {
+            "q": "Les réunions sur TinyFloor ont-elles une limite de temps ?",
+            "a": "Aucune réunion n'est interrompue. Chaque formule comprend des heures de réunions de groupe par mois, et les appels à deux ne sont jamais comptés."
+          },
+          {
+            "q": "Mes collègues ont-ils besoin d'un compte ?",
+            "a": "Oui, un compte gratuit, pour que votre bureau reste privé. Pour faire un tour avant, essayez le bureau de démonstration avec juste un nom."
+          }
+        ]
+      },
+      "zep": {
+        "label": "Alternative à ZEP",
+        "meta": {
+          "title": "Alternative à ZEP pour le travail : tarifs, limites et bureau privé",
+          "description": "L'offre gratuite de ZEP accueille 10 personnes à la fois, avec un seul partage d'écran par carte et sans mot de passe. Ce qu'une équipe paie sur ZEP, ce qu'il fait mieux, et TinyFloor, un bureau privé pour petites équipes."
+        },
+        "title": "Une <em>alternative à ZEP</em> conçue pour la journée de travail.",
+        "subtitle": "ZEP est un grand espace virtuel pour les cours, les événements et les bureaux. TinyFloor ne fait qu'une chose : un bureau privé où une petite équipe voit qui est là et se parle. Gratuit jusqu'à 3, puis 29 $ par mois pour toute l'équipe.",
+        "them": {
+          "price": "Basic à partir de 4 $ par utilisateur par mois",
+          "freePlan": "Jusqu'à 10 personnes à la fois, un partage d'écran par carte",
+          "browser": "Oui, avec des applications mobiles",
+          "screenShare": "Oui"
+        },
+        "faq": [
+          {
+            "q": "ZEP est-il gratuit ?",
+            "a": "ZEP propose une offre gratuite jusqu'à 10 personnes connectées à la fois, avec un seul projecteur, un seul partage d'écran par carte et une seule application. La protection par mot de passe, le masquage de l'espace dans les recherches et l'accès réservé aux personnes connectées commencent avec Basic, à 4 $ par utilisateur et par mois à l'année, ou 5 $ au mois."
+          },
+          {
+            "q": "ZEP est-il un bureau virtuel ?",
+            "a": "Il peut l'être. ZEP est un espace virtuel généraliste, utilisé pour des cours, des quiz, des événements et des bureaux ; récemment, une grande partie s'est tournée vers l'éducation. TinyFloor est uniquement un bureau pour une équipe de travail."
+          },
+          {
+            "q": "Qu'est-ce que ZEP a que TinyFloor n'a pas ?",
+            "a": "Des cartes que vous construisez et décorez, de la place pour de grands événements, des quiz et des outils d'apprentissage, des applications à ajouter à l'espace, des statistiques de visite et des applications mobiles. Si vous organisez des cours ou des événements, ZEP offre bien plus."
+          },
+          {
+            "q": "Un bureau TinyFloor est-il privé ?",
+            "a": "Oui, dans toutes les formules, y compris la gratuite. Les collègues entrent avec un compte gratuit grâce à votre lien d'invitation ; personne ne peut trouver le bureau en faisant une recherche."
+          },
+          {
+            "q": "TinyFloor fonctionne-t-il sur téléphone ?",
+            "a": "Oui. Il fonctionne dans les navigateurs mobiles avec un joystick à l'écran, sans application à télécharger."
+          }
+        ]
+      },
+      "hybrid": {
+        "label": "Équipes hybrides",
+        "meta": {
+          "title": "Bureau virtuel pour équipes hybrides : un étage pour tous",
+          "description": "Un bureau virtuel pour les équipes hybrides, pour que les personnes à la maison ne soient pas exclues. Tout le monde sur un même étage, depuis son ordinateur portable. Gratuit pour 3, puis 29 $ par mois pour toute l'équipe."
+        },
+        "title": "Un bureau pour une <em>équipe hybride.</em>",
+        "subtitle": "Quand la moitié de l'équipe est au bureau, les personnes à la maison manquent les conversations qui s'y déroulent. TinyFloor rassemble tout le monde sur un même étage, peu importe où chacun est installé aujourd'hui.",
+        "faq": [
+          {
+            "q": "Comment une équipe hybride utilise-t-elle un bureau virtuel ?",
+            "a": "Tout le monde ouvre le même bureau depuis son propre ordinateur portable, qu'on soit à la maison ou à un poste dans l'immeuble. Ainsi, les personnes à la maison voient qui est là et peuvent leur parler de la même manière."
+          },
+          {
+            "q": "Les personnes au bureau doivent-elles aussi l'utiliser ?",
+            "a": "C'est ce qui fait que ça marche. Si seules les personnes à la maison sont sur l'étage, cela devient une salle d'attente. Avec tout le monde présent, poser une question à n'importe qui ne demande qu'un pas."
+          },
+          {
+            "q": "TinyFloor fonctionne-t-il avec le matériel de salle de réunion ?",
+            "a": "Non. Il n'y a pas d'intégration avec les systèmes de salle de conférence ; chacun se connecte depuis son propre ordinateur portable ou téléphone, idéalement avec un casque."
+          },
+          {
+            "q": "Combien ça coûte ?",
+            "a": "Gratuit jusqu'à 3 personnes. Pro coûte 29 $ par mois pour toute l'équipe, jusqu'à 15 personnes, quels que soient leurs jours de présence au bureau."
+          }
+        ]
+      },
+      "zepVsGather": {
+        "label": "ZEP vs Gather",
+        "meta": {
+          "title": "ZEP ou Gather : tarifs, offres gratuites et une troisième option",
+          "description": "ZEP et Gather côte à côte : ce que coûte chacun, offres gratuites, confidentialité, enregistrement, ce pour quoi ils sont faits, et la place de TinyFloor pour une petite équipe à 29 $ par mois pour tout le monde."
+        },
+        "title": "<em>ZEP vs Gather</em>, et une troisième option.",
+        "subtitle": "Les deux sont des espaces virtuels en 2D où vous vous déplacez. ZEP est gratuit jusqu'à 10 personnes à la fois et s'oriente vers les cours et les événements ; Gather n'a pas d'offre gratuite et est conçu pour les bureaux à distance. TinyFloor est un bureau privé pour une petite équipe, à un prix unique.",
+        "faq": [
+          {
+            "q": "Lequel est le moins cher, ZEP ou Gather ?",
+            "a": "ZEP. Son offre gratuite couvre jusqu'à 10 personnes connectées à la fois, et Basic coûte 4 à 5 $ par utilisateur et par mois. Gather n'a pas d'offre gratuite et coûte 12 $ par membre et par mois à l'année, ou 15 $ au mois. TinyFloor est gratuit pour 3 personnes et coûte 29 $ par mois pour toute l'équipe."
+          },
+          {
+            "q": "Lequel est le mieux pour le bureau d'une équipe à distance ?",
+            "a": "Gather est conçu pour les bureaux, avec des postes de travail, l'enregistrement et une application de bureau. ZEP peut aussi servir de bureau, mais il s'adresse aujourd'hui principalement aux cours, aux quiz et aux événements. Pour une petite équipe qui veut un bureau privé prêt à l'emploi, TinyFloor est plus simple et coûte moins cher."
+          },
+          {
+            "q": "ZEP et Gather sont-ils privés ?",
+            "a": "Les espaces Gather sont réservés à votre équipe. Avec l'offre gratuite de ZEP, un espace ne peut pas avoir de mot de passe ni être limité aux personnes connectées ; ces contrôles arrivent avec Basic. Les bureaux TinyFloor sont privés avec toutes les offres."
+          },
+          {
+            "q": "Pouvons-nous passer à TinyFloor plus tard ?",
+            "a": "Oui. Créez un bureau, partagez un lien d'invitation et passez-y une semaine en parallèle de votre espace actuel. Il n'y a rien à migrer."
+          }
+        ]
+      },
+      "spot": {
+        "label": "Alternative à Spot",
+        "meta": {
+          "title": "Alternative à Spot Virtual : tarifs, pas d'offre gratuite et prix fixe",
+          "description": "Spot Virtual n'a pas d'offre gratuite : après un essai de 30 jours, il coûte 4,80 à 10 $ par utilisateur par mois. Ce que paie une petite équipe, ce que Spot fait mieux, et TinyFloor, gratuit jusqu'à 3 et 29 $ pour toute l'équipe."
+        },
+        "title": "Une <em>alternative à Spot</em> avec un seul prix pour l'équipe.",
+        "subtitle": "Spot Virtual facture chaque utilisateur et ne propose pas d'offre gratuite après son essai de 30 jours. TinyFloor est gratuit jusqu'à 3 personnes, puis un seul prix pour toute l'équipe : 29 $ par mois.",
+        "them": {
+          "price": "Basic à partir de 4,80 $ par utilisateur par mois",
+          "freePlan": "Aucune, seulement un essai de 30 jours",
+          "browser": "Oui, avec une application de bureau",
+          "screenShare": "Oui"
+        },
+        "faq": [
+          {
+            "q": "Combien coûte Spot Virtual ?",
+            "a": "Basic coûte 4,80 $ par utilisateur et par mois à l'année, ou 6 $ au mois. Growth, avec un bureau entièrement personnalisable, de l'audio et de la vidéo HD et une assistance en direct, coûte 8 $ ou 10 $. Enterprise, à partir de 50 personnes, est sur devis. TinyFloor coûte 29 $ par mois pour toute l'équipe."
+          },
+          {
+            "q": "Spot propose-t-il une offre gratuite ?",
+            "a": "Non. Spot propose un essai gratuit de 30 jours ; après cela, chaque utilisateur doit avoir une formule payante. TinyFloor est gratuit jusqu'à 3 personnes avec toutes les fonctions, aussi longtemps que vous le souhaitez."
+          },
+          {
+            "q": "Combien coûte Spot pour 10 personnes ?",
+            "a": "Avec Basic, 48 $ par mois à l'année ou 60 $ au mois. Avec Growth, 80 $ par mois à l'année ou 100 $ au mois. TinyFloor coûte 29 $ par mois pour la même équipe."
+          },
+          {
+            "q": "Qu'est-ce que Spot a que TinyFloor n'a pas ?",
+            "a": "Un bureau que vous concevez vous-même, avec votre image de marque, vos agencements et vos éléments graphiques, des canaux de discussion comme sur Slack, une application de bureau, des événements à partir de 3 $ par personne et par jour, et l'authentification unique avec Enterprise. TinyFloor propose un bureau prêt à l'emploi et fonctionne dans le navigateur."
+          }
+        ]
       }
     },
     "teams": "Équipes",
@@ -933,8 +1094,8 @@
       },
       "teams": {
         "meta": {
-          "title": "TinyFloor pour l'ingénierie, le design, les startups et les agences",
-          "description": "Un bureau virtuel pensé pour la façon dont votre équipe travaille : équipes d'ingénierie, équipes de design, startups et agences."
+          "title": "TinyFloor pour l'ingénierie, le design, les startups, les agences et les équipes hybrides",
+          "description": "Un bureau virtuel adapté au fonctionnement de votre équipe, pour les équipes d'ingénierie, de design, les startups, les agences et les équipes hybrides."
         },
         "title": "Fait pour <em>des équipes comme la vôtre.</em>",
         "body": "Chaque équipe utilise l'étage un peu différemment. Voici comment il s'adapte à la vôtre."

@@ -781,42 +781,42 @@
           {
             "title": "Gather",
             "detail": "No free plan · $12 a member a month billed yearly, $15 monthly",
-            "body": "The best-known virtual office, with the most features: a custom office you design, recordings and transcription, Google Calendar, GitHub and Spotify integrations, and guests. It ended its free plan in 2025, so it's one of the more expensive choices for a small team."
+            "body": "The best-known virtual office, with the most features: a custom office you design, recordings and transcription, Google Calendar, GitHub and Spotify integrations, and guests. It ended its free plan in 2025, so it's one of the more expensive choices for a small team. [Full comparison](/gather-alternative)."
           },
           {
             "title": "SoWork",
             "detail": "Free for 10 members · Basic $5.40 a member a month billed yearly",
-            "body": "A virtual office with meeting rooms, team chat and calendar integration. The free plan fits up to 10 members but limits meetings to 30 minutes and has no recordings. Premium, at $12 a member a month billed yearly, adds AI summaries, unlimited recordings and analytics."
+            "body": "A virtual office with meeting rooms, team chat and calendar integration. The free plan fits up to 10 members but limits meetings to 30 minutes and has no recordings. Premium, at $12 a member a month billed yearly, adds AI summaries, unlimited recordings and analytics. [Full comparison](/sowork-alternative)."
           },
           {
             "title": "Kumospace",
             "detail": "Free for 5 members · Business $16 a user a month",
-            "body": "A polished space with spatial audio and desktop and mobile apps, popular for social events as well as offices. The free plan covers 5 members and one floor. It's among the more expensive for a team of 10 or more."
+            "body": "A polished space with spatial audio and desktop and mobile apps, popular for social events as well as offices. The free plan covers 5 members and one floor. It's among the more expensive for a team of 10 or more. [Full comparison](/kumospace-alternative)."
           },
           {
             "title": "WorkAdventure",
             "detail": "Free for 10 people at once · Business $9 a user a month",
-            "body": "An open-source pixel-art world you can host yourself, with maps you build in the Tiled editor. Good for technical teams and events that want full control. Setting up a custom map or your own server takes real work."
+            "body": "An open-source pixel-art world you can host yourself, with maps you build in the Tiled editor. Good for technical teams and events that want full control. Setting up a custom map or your own server takes real work. [Full comparison](/workadventure-alternative)."
           },
           {
             "title": "SpatialChat",
             "detail": "Free 2 hours a day for 12 · Business $8 a user a month",
-            "body": "Rooms with spatial audio and video bubbles, used a lot for events, classes and workshops. The free plan suits occasional sessions; a team that's in all day needs a Business plan."
+            "body": "Rooms with spatial audio and video bubbles, used a lot for events, classes and workshops. The free plan suits occasional sessions; a team that's in all day needs a Business plan. [Full comparison](/spatialchat-alternative)."
           },
           {
             "title": "Roam",
             "detail": "No free plan · $19.50 an active member a month",
-            "body": "A desktop app for Mac and Windows that bundles a virtual office with meetings, chat, an AI assistant and webinars. You only pay for members who use it that month. It's a whole workplace suite, priced like one."
+            "body": "A desktop app for Mac and Windows that bundles a virtual office with meetings, chat, an AI assistant and webinars. You only pay for members who use it that month. It's a whole workplace suite, priced like one. [Full comparison](/roam-alternative)."
           },
           {
             "title": "oVice",
             "detail": "Free version without support · $65 a month a space, billed yearly",
-            "body": "A 2D office priced per space: Entry-S suits about 10 regular members, and Business Starter is $16 a user a month from 20 users. Strong in Japan and with larger companies. The free plan runs on a pre-release version without support."
+            "body": "A 2D office priced per space: Entry-S suits about 10 regular members, and Business Starter is $16 a user a month from 20 users. Strong in Japan and with larger companies. The free plan runs on a pre-release version without support. [Full comparison](/ovice-alternative)."
           },
           {
             "title": "Sococo",
             "detail": "No free plan · $13.49 a seat a month, billed yearly, 10 seats minimum",
-            "body": "A bird's-eye floor plan of rooms rather than characters, with several screen shares at once. Each seat includes 500 meeting minutes a month. Built for companies that buy software by the year."
+            "body": "A bird's-eye floor plan of rooms rather than characters, with several screen shares at once. Each seat includes 500 meeting minutes a month. Built for companies that buy software by the year. [Full comparison](/sococo-alternative)."
           }
         ]
       },
@@ -2862,6 +2862,198 @@
       {
         "q": "What's the hardest part of remote onboarding?",
         "a": "Knowing who to ask and when it's fine to interrupt. A buddy and visible presence fix most of it."
+      }
+    ]
+  },
+  "bodyDoubling": {
+    "label": "Body doubling",
+    "meta": {
+      "title": "Body Doubling: What It Is and How to Do It Online",
+      "description": "What body doubling is, why working next to someone makes it easier to start and keep going, the ways to do it online, how to run a session and how to body double with your own team."
+    },
+    "title": "Body doubling: <em>work next to someone, get more done.</em>",
+    "intro": "Body doubling means working with another person nearby, in the same room or on a screen, so it's easier to start a task and stay on it. The other person isn't helping with the work; they're just there. Many people with ADHD describe it as one of the few things that reliably works, and plenty of remote workers use it to replace the quiet company of an office. Here's what it is, the ways to do it online and how to run a session that works.",
+    "sections": [
+      {
+        "title": "What body doubling is",
+        "body": [
+          "A body double is someone who works alongside you while you do a task you'd otherwise put off: paperwork, a report, studying, cleaning, a hard email. They can be doing their own work, or just reading. What matters is that someone is there.",
+          "The idea comes from ADHD coaching, and the name has spread well beyond it. Students use it to study, freelancers to get through admin, and remote teams to keep the feeling of working in a room together."
+        ]
+      },
+      {
+        "title": "Why it seems to help",
+        "body": [
+          "Research on body doubling itself is still thin; most of what's known comes from people's own experience. The reasons people give are consistent, though."
+        ],
+        "items": [
+          {
+            "title": "Starting is easier",
+            "body": "Saying out loud what you're about to do, to someone who's sitting down to work too, makes it harder to put off."
+          },
+          {
+            "title": "Gentle accountability",
+            "body": "Nobody checks your work, but knowing someone will ask \"how did it go?\" at the end is often enough."
+          },
+          {
+            "title": "Fewer drifts",
+            "body": "With someone there, reaching for the phone or opening another tab feels more noticeable, so it happens less."
+          },
+          {
+            "title": "Less lonely",
+            "body": "For people working from home, the quiet company of another person makes long stretches of work feel lighter."
+          }
+        ]
+      },
+      {
+        "title": "Ways to body double online",
+        "table": {
+          "head": [
+            "Way",
+            "Who's there",
+            "Good for"
+          ],
+          "rows": [
+            [
+              "A video call with a friend",
+              "Someone you know",
+              "Free and simple; agree a time and keep cameras on or off"
+            ],
+            [
+              "Matching services",
+              "A stranger, booked for a timed session",
+              "When nobody you know is free, and you like a fixed slot"
+            ],
+            [
+              "Study-with-me videos",
+              "A recording of someone working",
+              "A quick start when no one is around; no accountability"
+            ],
+            [
+              "A virtual office",
+              "Your teammates or a small group",
+              "All-day company with people you know, talking when you need"
+            ]
+          ],
+          "note": "Each suits a different need. Many people mix them: a friend for hard tasks, a recording for small ones."
+        }
+      },
+      {
+        "title": "How to run a body doubling session",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Agree a time and a length",
+            "body": "Fifty minutes of work is a common choice; start with 25 if a task feels heavy."
+          },
+          {
+            "title": "Say what you'll do",
+            "body": "One sentence each: the task and what done looks like. Specific beats ambitious."
+          },
+          {
+            "title": "Work quietly",
+            "body": "Microphones off, cameras up to you. Resist chatting; the point is the work."
+          },
+          {
+            "title": "Check in at the end",
+            "body": "One sentence each again: done, not done, what's next. No judgement either way."
+          },
+          {
+            "title": "Take a short break",
+            "body": "Five or ten minutes, then start another session or call it a day."
+          }
+        ]
+      },
+      {
+        "title": "A simple session plan",
+        "table": {
+          "head": [
+            "Part",
+            "Time",
+            "What happens"
+          ],
+          "rows": [
+            [
+              "Check-in",
+              "2 min",
+              "Each person says their task"
+            ],
+            [
+              "Work",
+              "45 to 50 min",
+              "Quiet, microphones off"
+            ],
+            [
+              "Check-out",
+              "3 min",
+              "Done, not done, what's next"
+            ],
+            [
+              "Break",
+              "5 to 10 min",
+              "Away from the screen"
+            ]
+          ],
+          "note": "Repeat as many times as suits the day. Keep the same start time to make it a habit."
+        }
+      },
+      {
+        "title": "Tips that make it work",
+        "items": [
+          {
+            "title": "Same time, every day",
+            "body": "A standing slot removes the decision about whether to start."
+          },
+          {
+            "title": "Cameras are optional",
+            "body": "Some people need to be seen, others find it distracting. Agree what suits everyone."
+          },
+          {
+            "title": "Keep tasks small",
+            "body": "\"Write the first page\" works better than \"write the report\"."
+          },
+          {
+            "title": "Don't turn it into a meeting",
+            "body": "If the session becomes a chat, the work doesn't happen. Talk at the check-in and the break."
+          },
+          {
+            "title": "Be kind about bad sessions",
+            "body": "Some days nothing gets done. Saying so at the check-out, without excuses, is part of what keeps people coming back."
+          }
+        ]
+      },
+      {
+        "title": "Body doubling with your team",
+        "body": [
+          "Remote teams can body double without any extra app: the team is already there. In a shared [virtual coworking space](/virtual-coworking) everyone can see who's working, sit at their own desk and set themselves busy, so a quiet afternoon still feels shared.",
+          "For more structure, start a meeting called Focus, ask in whoever wants to join, and run the session plan above. People who'd rather not talk can simply be on the floor, working near everyone else."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "TinyFloor is a private virtual office for people who know each other: a small team, a few friends, a study group. Sit at your desks, set yourself busy, start a focus session in the meeting room, and talk when you need to. It's free for up to 3 people, so two friends can body double there at no cost. It doesn't match you with strangers."
+    },
+    "faq": [
+      {
+        "q": "What is body doubling?",
+        "a": "Working with another person nearby, in person or online, to make it easier to start a task and keep going. The other person doesn't help with the work; they're just there."
+      },
+      {
+        "q": "Is body doubling only for ADHD?",
+        "a": "No. The term comes from ADHD coaching and many people with ADHD find it useful, but students, freelancers and remote workers use it too."
+      },
+      {
+        "q": "Does body doubling need video?",
+        "a": "Not necessarily. Some people need to be seen; others only need to know someone is working too. Voice, a shared virtual office or cameras on all work."
+      },
+      {
+        "q": "How long should a body doubling session be?",
+        "a": "Around 50 minutes of work with a short check-in and check-out is common. Start with 25 minutes if a task feels hard to begin."
+      },
+      {
+        "q": "Can I body double for free?",
+        "a": "Yes. A video call with a friend costs nothing, and TinyFloor is free for up to 3 people, so a small group can body double there every day."
       }
     ]
   }

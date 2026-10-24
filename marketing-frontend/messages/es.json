@@ -800,8 +800,8 @@
         "label": "Sala de reuniones virtual",
         "line": "Entra para reunirte, sal para irte",
         "meta": {
-          "title": "Sala de reuniones virtual para equipos remotos",
-          "description": "Una sala de reuniones a la que tu equipo entra caminando: únete y tu personaje se sienta a la mesa, con cámaras, pantalla compartida y sin enlace de reunión."
+          "title": "Sala de reuniones virtual gratis para equipos: siempre abierta, sin enlaces",
+          "description": "Una sala de reuniones virtual a la que entra tu equipo, gratis para hasta 3 personas: únete y tu personaje se sienta a la mesa, con cámaras, pantalla compartida y sin enlaces de reunión que enviar."
         },
         "title": "Una <em>sala de reuniones virtual</em> al final del pasillo.",
         "subtitle": "Cada oficina tiene una sala de reuniones que siempre está ahí. Únete a una reunión y tu personaje entra; sal y ya te has ido. Sin enlaces ni sala de espera.",
@@ -907,6 +907,167 @@
             "a": "Sí. Todos los planes tienen todas las funciones, el gratuito incluido."
           }
         ]
+      },
+      "sowork": {
+        "label": "Alternativa a SoWork",
+        "meta": {
+          "title": "Alternativa a SoWork: precios, límite de 30 minutos y precio fijo",
+          "description": "El plan gratis de SoWork es para 10 miembros con reuniones de 30 minutos, y luego cuesta de 5,40 a 15 $ por miembro al mes. Lo que paga un equipo pequeño, lo que SoWork hace mejor y TinyFloor a 29 $ para todo el equipo."
+        },
+        "title": "Una <em>alternativa a SoWork</em> con un solo precio para el equipo.",
+        "subtitle": "El plan gratis de SoWork limita las reuniones a 30 minutos, y sus planes de pago se cobran por miembro. TinyFloor es gratis para 3 y luego tiene un solo precio para todo el equipo: 29 $ al mes.",
+        "them": {
+          "price": "Basic desde 5,40 $ por miembro al mes",
+          "freePlan": "Hasta 10 miembros, reuniones limitadas a 30 minutos",
+          "browser": "Sí, con apps de escritorio y móvil",
+          "screenShare": "Sí"
+        },
+        "faq": [
+          {
+            "q": "¿SoWork es gratis?",
+            "a": "SoWork tiene un plan gratis para hasta 10 miembros, con un límite de 30 minutos por reunión, chat y personalización limitados, y sin grabación, estadísticas ni IA. Basic cuesta 5,40 $ por miembro al mes con facturación anual, o 6 $ mensual. TinyFloor es gratis para hasta 3 personas y cuesta 29 $ al mes para todo el equipo."
+          },
+          {
+            "q": "¿Cuánto cuesta SoWork para 10 personas?",
+            "a": "Con Basic, 54 $ al mes con facturación anual o 60 $ con facturación mensual. Con Premium, 120 $ al mes con facturación anual o 150 $ con facturación mensual. TinyFloor cuesta 29 $ al mes para el mismo equipo."
+          },
+          {
+            "q": "¿Qué tiene SoWork que TinyFloor no tiene?",
+            "a": "Grabación de reuniones, resúmenes y transcripciones por IA (en Premium), sincronización de calendario que cambia tu estado, una oficina que puedes personalizar, estadísticas de equipo y apps para Mac, Windows, iOS y Android. TinyFloor funciona en el navegador y no graba."
+          },
+          {
+            "q": "¿Las reuniones en TinyFloor tienen límite de tiempo?",
+            "a": "Ninguna reunión se corta. Cada plan incluye horas de reuniones grupales al mes, y las llamadas entre dos personas nunca cuentan."
+          },
+          {
+            "q": "¿Mis compañeros necesitan una cuenta?",
+            "a": "Sí, una gratis, para que tu oficina sea privada para tu equipo. Para echar un vistazo antes, prueba la oficina de demostración solo con un nombre."
+          }
+        ]
+      },
+      "zep": {
+        "label": "Alternativa a ZEP",
+        "meta": {
+          "title": "Alternativa a ZEP para trabajar: precios, límites y oficina privada",
+          "description": "El plan gratis de ZEP admite 10 personas a la vez, con una pantalla compartida por mapa y sin contraseña. Lo que paga un equipo en ZEP, lo que ZEP hace mejor y TinyFloor, una oficina privada para equipos pequeños."
+        },
+        "title": "Una <em>alternativa a ZEP</em> diseñada para la jornada laboral del equipo.",
+        "subtitle": "ZEP es un espacio virtual amplio para clases, eventos y oficinas. TinyFloor hace una sola cosa: una oficina privada donde un equipo pequeño ve quién está y habla. Gratis para 3, luego 29 $ al mes para todo el equipo.",
+        "them": {
+          "price": "Basic desde 4 $ por usuario al mes",
+          "freePlan": "Hasta 10 personas a la vez, una pantalla compartida por mapa",
+          "browser": "Sí, con apps móviles",
+          "screenShare": "Sí"
+        },
+        "faq": [
+          {
+            "q": "¿ZEP es gratis?",
+            "a": "ZEP tiene un plan gratis para hasta 10 personas conectadas a la vez, con un foco de atención y una pantalla compartida por mapa, y una app. La protección por contraseña, ocultar el espacio de las búsquedas y el acceso solo para usuarios registrados empiezan en Basic, a 4 $ por usuario al mes con facturación anual o 5 $ mensual."
+          },
+          {
+            "q": "¿ZEP es una oficina virtual?",
+            "a": "Puede serlo. ZEP es un espacio virtual general que se usa para clases, cuestionarios, eventos y oficinas; últimamente se orienta mucho a la educación. TinyFloor es únicamente una oficina para un equipo de trabajo."
+          },
+          {
+            "q": "¿Qué tiene ZEP que TinyFloor no tiene?",
+            "a": "Mapas que creas y decoras tú, sitio para eventos grandes, cuestionarios y herramientas de aprendizaje, apps que puedes añadir al espacio, estadísticas de visitas y apps móviles. Si organizas clases o eventos, ZEP abarca mucho más."
+          },
+          {
+            "q": "¿Una oficina de TinyFloor es privada?",
+            "a": "Sí, en todos los planes, incluido el gratis. Tus compañeros entran con una cuenta gratis desde tu enlace de invitación; nadie encontrará la oficina buscando en internet."
+          },
+          {
+            "q": "¿TinyFloor funciona en el móvil?",
+            "a": "Sí. Funciona en navegadores móviles con un joystick en pantalla, así que no hay que descargar ninguna app."
+          }
+        ]
+      },
+      "hybrid": {
+        "label": "Equipos híbridos",
+        "meta": {
+          "title": "Oficina virtual para equipos híbridos: una planta para la oficina y casa",
+          "description": "Una oficina virtual para equipos híbridos, para que la gente en casa no se pierda lo que pasa en la oficina. Todos en una misma planta, desde su propio portátil. Gratis para 3, después $29 al mes para todo el equipo."
+        },
+        "title": "Una oficina para un <em>equipo híbrido.</em>",
+        "subtitle": "Cuando la mitad del equipo está en la oficina, la gente en casa se pierde las conversaciones que surgen allí. TinyFloor reúne a todos en una misma planta, estén donde estén sentados hoy.",
+        "faq": [
+          {
+            "q": "¿Cómo usa una oficina virtual un equipo híbrido?",
+            "a": "Todos abren la misma oficina desde su propio portátil, ya estén en casa o en una mesa del edificio, para que la gente en casa pueda ver quién está y hablar con ellos de la misma manera."
+          },
+          {
+            "q": "¿La gente de la oficina también tiene que usarla?",
+            "a": "Eso es lo que hace que funcione. Si solo la gente en casa está en la planta, se convierte en una sala de espera. Con todo el mundo dentro, hacer una pregunta a cualquiera está a un paso."
+          },
+          {
+            "q": "¿Funciona TinyFloor con el equipamiento de las salas de reuniones?",
+            "a": "No. No hay integración con sistemas de salas de conferencias; la gente entra desde su propio portátil o teléfono, idealmente con auriculares."
+          },
+          {
+            "q": "¿Cuánto cuesta?",
+            "a": "Gratis para hasta 3 personas. Pro cuesta $29 al mes para todo el equipo, hasta 15 personas, sin importar los días que vayan a la oficina."
+          }
+        ]
+      },
+      "zepVsGather": {
+        "label": "ZEP vs Gather",
+        "meta": {
+          "title": "ZEP vs Gather: precios, planes gratis y una tercera opción",
+          "description": "ZEP y Gather frente a frente: lo que cuesta cada uno, planes gratis, privacidad, grabación y para qué sirve cada uno, y dónde encaja TinyFloor para un equipo pequeño, a 29 $ al mes para todos."
+        },
+        "title": "<em>ZEP vs Gather</em>, y una tercera opción.",
+        "subtitle": "Los dos son espacios virtuales en 2D por los que te puedes mover. ZEP es gratis para hasta 10 personas a la vez y se orienta más a clases y eventos; Gather no tiene plan gratis y está pensado para oficinas remotas. TinyFloor es una oficina privada para un equipo pequeño, por un solo precio.",
+        "faq": [
+          {
+            "q": "¿Cuál es más barato, ZEP o Gather?",
+            "a": "ZEP. Su plan gratis cubre hasta 10 personas conectadas a la vez, y Basic cuesta de 4 a 5 $ por usuario al mes. Gather no tiene plan gratis y cuesta 12 $ por miembro al mes con facturación anual o 15 $ mensual. TinyFloor es gratis para 3 personas y cuesta 29 $ al mes para todo el equipo."
+          },
+          {
+            "q": "¿Cuál es mejor para la oficina de un equipo remoto?",
+            "a": "Gather está pensado para oficinas, con mesas, grabación y app de escritorio. ZEP también puede servir como oficina, pero ahora se orienta sobre todo a clases, cuestionarios y eventos. Para un equipo pequeño que quiere una oficina privada lista para usar, TinyFloor es más sencillo y cuesta menos."
+          },
+          {
+            "q": "¿Son privados ZEP y Gather?",
+            "a": "Los espacios de Gather son para tu equipo. En el plan gratis de ZEP, un espacio no puede tener contraseña ni limitarse a usuarios registrados; esos controles vienen con Basic. Las oficinas de TinyFloor son privadas en todos los planes."
+          },
+          {
+            "q": "¿Podemos pasarnos a TinyFloor más adelante?",
+            "a": "Sí. Crea una oficina, comparte un enlace de invitación y pruébala durante una semana junto con tu espacio actual. No hay nada que migrar."
+          }
+        ]
+      },
+      "spot": {
+        "label": "Alternativa a Spot",
+        "meta": {
+          "title": "Alternativa a Spot: precios de Spot Virtual, sin plan gratis y precio fijo",
+          "description": "Spot Virtual no tiene plan gratis: tras una prueba de 30 días, cuesta de 4,80 a 10 $ por usuario al mes. Lo que paga un equipo pequeño, lo que Spot hace mejor y TinyFloor, gratis para 3 y a 29 $ para todo el equipo."
+        },
+        "title": "Una <em>alternativa a Spot</em> con un solo precio para el equipo.",
+        "subtitle": "Spot Virtual cobra por cada usuario y no tiene plan gratis tras su prueba de 30 días. TinyFloor es gratis para hasta 3 personas y luego tiene un solo precio para todo el equipo: 29 $ al mes.",
+        "them": {
+          "price": "Basic desde 4,80 $ por usuario al mes",
+          "freePlan": "Ninguno, solo una prueba de 30 días",
+          "browser": "Sí, con app de escritorio",
+          "screenShare": "Sí"
+        },
+        "faq": [
+          {
+            "q": "¿Cuánto cuesta Spot Virtual?",
+            "a": "Basic cuesta 4,80 $ por usuario al mes con facturación anual, o 6 $ mensual. Growth, con una oficina totalmente personalizable, audio y vídeo HD y soporte en vivo, cuesta 8 o 10 $. Enterprise, para 50 personas o más, se define mediante una llamada. TinyFloor cuesta 29 $ al mes para todo el equipo."
+          },
+          {
+            "q": "¿Spot tiene un plan gratis?",
+            "a": "No. Spot tiene una prueba gratis de 30 días; después, cada usuario necesita un plan de pago. TinyFloor es gratis para hasta 3 personas con todas las funciones, durante todo el tiempo que quieras."
+          },
+          {
+            "q": "¿Cuánto cuesta Spot para 10 personas?",
+            "a": "Con Basic, 48 $ al mes con facturación anual o 60 $ con facturación mensual. Con Growth, 80 $ al mes con facturación anual o 100 $ con facturación mensual. TinyFloor cuesta 29 $ al mes para el mismo equipo."
+          },
+          {
+            "q": "¿Qué tiene Spot que TinyFloor no tiene?",
+            "a": "Una oficina que diseñas tú mismo, con tu marca, distribuciones y elementos, canales de chat al estilo de Slack, una app de escritorio, eventos desde 3 $ por persona al día e inicio de sesión único en Enterprise. TinyFloor tiene una oficina lista para usar y funciona en el navegador."
+          }
+        ]
       }
     },
     "teams": "Equipos",
@@ -933,8 +1094,8 @@
       },
       "teams": {
         "meta": {
-          "title": "TinyFloor para ingeniería, diseño, startups y agencias",
-          "description": "Una oficina virtual adaptada a cómo trabaja tu equipo: equipos de ingeniería, equipos de diseño, startups y agencias."
+          "title": "TinyFloor para ingeniería, diseño, startups, agencias y equipos híbridos",
+          "description": "Una oficina virtual adaptada a cómo trabaja tu equipo, para equipos de ingeniería, diseño, startups, agencias y equipos híbridos."
         },
         "title": "Hecho para <em>equipos como el tuyo.</em>",
         "body": "Cada equipo usa la planta de forma un poco distinta. Así encaja con el tuyo."

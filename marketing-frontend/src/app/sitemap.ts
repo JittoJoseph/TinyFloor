@@ -40,9 +40,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ),
     // The legal pages are in English only; the other languages' copies point here.
     ...['/privacy', '/terms', '/refunds'].map((path) => ({ url: absolute(path), changeFrequency: 'yearly' as const, priority: 0.3 })),
-    // The guides and the free tools, each in the languages it's written in.
+    // The guides and the free tools, each in the languages it's written in. A guide's
+    // date is the day its words last changed, so it's a lastmod crawlers can trust.
     ...GUIDES.flatMap((guide) =>
-      guideLocales(guide).map((locale) => ({ url: absolute(localePath(locale, guidePath(guide))), changeFrequency: 'monthly' as const, priority: 0.6 })),
+      guideLocales(guide).map((locale) => ({
+        url: absolute(localePath(locale, guidePath(guide))),
+        lastModified: guide.updated,
+        changeFrequency: 'monthly' as const,
+        priority: 0.6,
+      })),
     ),
     ...TOOLS.flatMap((tool) =>
       tool.locales.map((locale) => ({ url: absolute(localePath(locale, tool.path)), changeFrequency: 'monthly' as const, priority: 0.6 })),

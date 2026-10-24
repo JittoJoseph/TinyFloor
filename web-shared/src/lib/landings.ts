@@ -2,6 +2,9 @@ export type LandingKey =
   | "gather"
   | "kumospace"
   | "spatialchat"
+  | "sowork"
+  | "spot"
+  | "zep"
   | "workadventure"
   | "wonder"
   | "sococo"
@@ -11,6 +14,7 @@ export type LandingKey =
   | "slackHuddles"
   | "discord"
   | "gatherVsKumospace"
+  | "zepVsGather"
   | "virtualOffice"
   | "virtualCoworking"
   | "proximityChat"
@@ -25,7 +29,8 @@ export type LandingKey =
   | "engineering"
   | "design"
   | "startups"
-  | "agencies";
+  | "agencies"
+  | "hybrid";
 
 export type LandingGroup = "features" | "teams" | "useCases" | "compare";
 
@@ -52,11 +57,15 @@ export const LANDINGS: Landing[] = [
   { slug: "roam-alternative", key: "roam", group: "compare", competitor: "Roam", checked: "2026-10" },
   { slug: "teamflow-alternative", key: "teamflow", group: "compare", competitor: "Teamflow", checked: "2026-10" },
   { slug: "spatialchat-alternative", key: "spatialchat", group: "compare", competitor: "SpatialChat", checked: "2026-10" },
+  { slug: "sowork-alternative", key: "sowork", group: "compare", competitor: "SoWork", checked: "2026-10" },
+  { slug: "spot-alternative", key: "spot", group: "compare", competitor: "Spot", checked: "2026-10" },
+  { slug: "zep-alternative", key: "zep", group: "compare", competitor: "ZEP", checked: "2026-10" },
   { slug: "workadventure-alternative", key: "workadventure", group: "compare", competitor: "WorkAdventure", checked: "2026-10" },
   { slug: "wonder-alternative", key: "wonder", group: "compare", product: "Wonder" },
   { slug: "slack-huddles-alternative", key: "slackHuddles", group: "compare", competitor: "Slack huddles", checked: "2026-10" },
   { slug: "discord-for-work", key: "discord", group: "compare", competitor: "Discord", checked: "2026-10" },
   { slug: "gather-vs-kumospace", key: "gatherVsKumospace", group: "compare", versus: ["gather", "kumospace"], checked: "2026-10" },
+  { slug: "zep-vs-gather", key: "zepVsGather", group: "compare", versus: ["zep", "gather"], checked: "2026-10" },
   { slug: "proximity-chat", key: "proximityChat", group: "features" },
   { slug: "virtual-meeting-room", key: "meetingRoom", group: "features" },
   { slug: "team-chat", key: "teamChat", group: "features" },
@@ -66,6 +75,7 @@ export const LANDINGS: Landing[] = [
   { slug: "design-teams", key: "design", group: "teams" },
   { slug: "startups", key: "startups", group: "teams" },
   { slug: "agencies", key: "agencies", group: "teams" },
+  { slug: "hybrid-teams", key: "hybrid", group: "teams" },
   { slug: "virtual-office", key: "virtualOffice", group: "useCases" },
   { slug: "virtual-standup", key: "standup", group: "useCases" },
   { slug: "remote-pair-programming", key: "pairProgramming", group: "useCases" },

@@ -3,6 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
 import { absoluteUrl, faqNode, pageGraph } from "@/lib/structured-data";
+import { PLANS } from "@/lib/plans";
 import { JsonLd } from "@/components/JsonLd";
 import { PricingPage } from "@/components/home/PricingPage";
 
@@ -19,6 +20,26 @@ export default async function Page({ params }: Props) {
   setRequestLocale(locale as Locale);
   const t = await getTranslations("pricingPage.meta");
   const tq = await getTranslations("pricingFaq");
+  // The product with each plan as its own offer, so search engines read the prices off the pricing page itself.
+  const app = {
+    "@type": "WebApplication",
+    "@id": `${absoluteUrl(locale, "/")}#app`,
+    name: "TinyFloor",
+    url: absoluteUrl(locale, "/"),
+    applicationCategory: "BusinessApplication",
+    applicationSubCategory: "Virtual office",
+    operatingSystem: "Any",
+    offers: PLANS.map((plan) => ({
+      "@type": "Offer",
+      name: plan.key === "free" ? "Free" : "Pro",
+      price: String(plan.price),
+      priceCurrency: "USD",
+      url: absoluteUrl(locale, "/pricing"),
+      ...(plan.price
+        ? { priceSpecification: { "@type": "UnitPriceSpecification", price: String(plan.price), priceCurrency: "USD", unitCode: "MON", referenceQuantity: { "@type": "QuantitativeValue", value: 1, unitCode: "MON" } } }
+        : {}),
+    })),
+  };
   return (
     <>
       <JsonLd
@@ -28,7 +49,7 @@ export default async function Page({ params }: Props) {
           name: t("title"),
           description: t("description"),
           mainEntity: `${absoluteUrl(locale, "/")}#app`,
-          nodes: [faqNode(locale, "/pricing", tq.raw("items") as Array<{ q: string; a: string }>)],
+          nodes: [app, faqNode(locale, "/pricing", tq.raw("items") as Array<{ q: string; a: string }>)],
         })}
       />
       <PricingPage />

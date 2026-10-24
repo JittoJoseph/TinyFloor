@@ -800,8 +800,8 @@
         "label": "Virtuellt mötesrum",
         "line": "Gå in för att mötas, gå ut för att lämna",
         "meta": {
-          "title": "Virtuellt mötesrum för distansteam",
-          "description": "Ett mötesrum som teamet går in i: gå med så sätter sig din figur vid bordet, med kameror, skärmdelning och ingen möteslänk."
+          "title": "Gratis virtuellt mötesrum för team: alltid öppet, inga länkar",
+          "description": "Ett virtuellt mötesrum som ditt team går in i, gratis för upp till 3 personer: gå med så tar din figur plats vid bordet, med kameror, skärmdelning och ingen möteslänk att skicka."
         },
         "title": "Ett <em>virtuellt mötesrum</em> längre ner i korridoren.",
         "subtitle": "Varje kontor har ett mötesrum som alltid finns där. Gå med i ett möte så går din figur in; gå ut så har du lämnat. Inga länkar, inget väntrum.",
@@ -907,6 +907,167 @@
             "a": "Ja. Varje plan har alla funktioner, även gratisplanen."
           }
         ]
+      },
+      "sowork": {
+        "label": "Alternativ till SoWork",
+        "meta": {
+          "title": "Alternativ till SoWork: priser, 30-minutersgräns och ett fast pris",
+          "description": "SoWork är gratis för 10 medlemmar med 30-minutersmöten, sedan 5,40 till 15 $ per medlem och månad. Vad ett litet team betalar, vad SoWork gör bättre och TinyFloor för 29 $ för hela teamet."
+        },
+        "title": "Ett <em>alternativ till SoWork</em> med ett pris för teamet.",
+        "subtitle": "SoWorks gratisplan begränsar möten till 30 minuter, och dess betalplaner tar betalt för varje medlem. TinyFloor är gratis för 3, sedan ett pris för hela teamet: 29 $ per månad.",
+        "them": {
+          "price": "Basic från 5,40 $ per medlem och månad",
+          "freePlan": "Upp till 10 medlemmar, möten begränsade till 30 minuter",
+          "browser": "Ja, med dator- och mobilappar",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Är SoWork gratis?",
+            "a": "SoWork har en gratisplan för upp till 10 medlemmar, med en gräns på 30 minuter per möte, begränsad chatt och anpassning, och ingen inspelning, statistik eller AI. Basic kostar 5,40 $ per medlem och månad vid årsbetalning, eller 6 $ månadsvis. TinyFloor är gratis för upp till 3 personer och kostar 29 $ per månad för hela teamet."
+          },
+          {
+            "q": "Vad kostar SoWork för 10 personer?",
+            "a": "Med Basic 54 $ per månad vid årsbetalning eller 60 $ vid månadsbetalning. Med Premium 120 $ per månad vid årsbetalning eller 150 $ vid månadsbetalning. TinyFloor kostar 29 $ per månad för samma team."
+          },
+          {
+            "q": "Vad har SoWork som TinyFloor inte har?",
+            "a": "Mötesinspelning, AI-sammanfattningar och transkriptioner (med Premium), kalendersynk som ställer in din status, ett kontor som du kan anpassa, teamstatistik samt appar för Mac, Windows, iOS och Android. TinyFloor körs i webbläsaren och spelar inte in."
+          },
+          {
+            "q": "Har möten på TinyFloor en tidsgräns?",
+            "a": "Inget enskilt möte avbryts. Varje plan innehåller timmar av gruppmöten per månad, och samtal mellan två personer räknas aldrig."
+          },
+          {
+            "q": "Behöver mina kollegor ett konto?",
+            "a": "Ja, ett gratis konto, så att kontoret förblir privat för teamet. Vill du titta runt först kan du prova demokontoret med bara ett namn."
+          }
+        ]
+      },
+      "zep": {
+        "label": "Alternativ till ZEP",
+        "meta": {
+          "title": "Alternativ till ZEP för arbete: priser, gränser och privat kontor",
+          "description": "ZEPs gratisplan rymmer 10 personer samtidigt, med en skärmdelning per karta och utan lösenord. Vad ett team betalar på ZEP, vad ZEP gör bättre och TinyFloor, ett privat kontor för små team."
+        },
+        "title": "Ett <em>alternativ till ZEP</em> byggt för teamets arbetsdag.",
+        "subtitle": "ZEP är ett brett virtuellt space för klasser, evenemang och kontor. TinyFloor gör en sak: ett privat kontor där ett litet team ser vem som är där och pratar. Gratis för 3, sedan 29 $ per månad för hela teamet.",
+        "them": {
+          "price": "Basic från 4 $ per användare i månaden",
+          "freePlan": "Upp till 10 personer samtidigt, en skärmdelning per karta",
+          "browser": "Ja, med mobilappar",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Är ZEP gratis?",
+            "a": "ZEP har en gratisplan för upp till 10 personer anslutna samtidigt, med en spotlight och en skärmdelning per karta samt en app. Lösenordsskydd, att dölja sitt space från sökningar och inloggningskrav börjar med Basic, för 4 $ per användare och månad vid årsbetalning eller 5 $ månadsvis."
+          },
+          {
+            "q": "Är ZEP ett virtuellt kontor?",
+            "a": "Det kan det vara. ZEP är ett allmänt virtuellt space som används för klasser, frågesporter, evenemang och kontor; på senare tid är mycket av det riktat mot utbildning. TinyFloor är bara ett kontor för ett arbetande team."
+          },
+          {
+            "q": "Vad har ZEP som TinyFloor inte har?",
+            "a": "Kartor som du bygger och dekorerar, plats för stora evenemang, frågesporter och lärverktyg, appar som du kan lägga till i ett space, besöksstatistik och mobilappar. Om du håller klasser eller evenemang täcker ZEP mycket mer."
+          },
+          {
+            "q": "Är ett TinyFloor-kontor privat?",
+            "a": "Ja, i alla planer, även gratisplanen. Kollegorna går in med ett gratis konto via din inbjudningslänk; ingen kan hitta kontoret genom att söka."
+          },
+          {
+            "q": "Fungerar TinyFloor på mobilen?",
+            "a": "Ja. Det körs i mobilens webbläsare med en joystick på skärmen, så det finns ingen app att ladda ner."
+          }
+        ]
+      },
+      "hybrid": {
+        "label": "Hybridteam",
+        "meta": {
+          "title": "Virtuellt kontor för hybridteam: En våning för kontor och hem",
+          "description": "Ett virtuellt kontor för hybridteam, så att de som är hemma inte hamnar utanför det som händer på kontoret. Alla på en våning, från sin egen laptop. Gratis för 3, sedan $29 i månaden för hela teamet."
+        },
+        "title": "Ett kontor för ett <em>hybridteam.</em>",
+        "subtitle": "När halva teamet är på kontoret missar de som är hemma samtalen som sker där. TinyFloor samlar alla på en våning, var de än sitter för dagen.",
+        "faq": [
+          {
+            "q": "Hur använder ett hybridteam ett virtuellt kontor?",
+            "a": "Alla öppnar samma kontor från sin egen laptop, oavsett om de är hemma eller vid ett skrivbord i byggnaden, så att de som är hemma kan se vem som är där och prata med dem på samma sätt."
+          },
+          {
+            "q": "Måste de som är på kontoret också använda det?",
+            "a": "Det är det som gör att det fungerar. Om bara de som är hemma är på våningen blir det som ett väntrum. När alla är där är en fråga till vem som helst bara en kort promenad bort."
+          },
+          {
+            "q": "Fungerar TinyFloor med hårdvara för mötesrum?",
+            "a": "Nej. Det finns ingen integration med konferensrumssystem; folk går med från sina egna laptops eller telefoner, helst med hörlurar."
+          },
+          {
+            "q": "Vad kostar det?",
+            "a": "Gratis för upp till 3 personer. Pro kostar $29 i månaden för hela teamet, upp till 15 personer, oavsett vilka dagar de är på kontoret."
+          }
+        ]
+      },
+      "zepVsGather": {
+        "label": "ZEP vs Gather",
+        "meta": {
+          "title": "ZEP vs Gather: priser, gratisplaner och ett tredje alternativ",
+          "description": "ZEP och Gather sida vid sida: vad de kostar, gratisplaner, integritet, inspelning och vad de är byggda för, och var TinyFloor passar för ett litet team för 29 $ i månaden för alla."
+        },
+        "title": "<em>ZEP vs Gather</em>, och ett tredje alternativ.",
+        "subtitle": "Båda är virtuella 2D-utrymmen som du går runt i. ZEP är gratis för 10 personer samtidigt och lutar mer åt lektioner och evenemang; Gather har ingen gratisplan och är byggt för distanskontor. TinyFloor är ett privat kontor för ett litet team, till ett pris.",
+        "faq": [
+          {
+            "q": "Vilket är billigast, ZEP eller Gather?",
+            "a": "ZEP. Dess gratisplan täcker upp till 10 personer anslutna samtidigt, och Basic kostar 4 till 5 $ per användare i månaden. Gather har ingen gratisplan och kostar 12 $ per medlem i månaden med årsbetalning, eller 15 $ månadsvis. TinyFloor är gratis för 3 och kostar 29 $ i månaden för hela teamet."
+          },
+          {
+            "q": "Vilket är bäst för ett distansteams kontor?",
+            "a": "Gather är byggt för kontor, med skrivbord, inspelning och en datorapp. ZEP kan också vara ett kontor, men mycket av det riktar sig nu mot lektioner, frågesporter och evenemang. För ett litet team som vill ha ett färdigt privat kontor är TinyFloor enklare och kostar mindre."
+          },
+          {
+            "q": "Är ZEP och Gather privata?",
+            "a": "Gathers utrymmen är till för ditt team. På ZEPs gratisplan kan ett utrymme inte lösenordsskyddas eller begränsas till inloggade personer; de kontrollerna ingår i Basic. TinyFloors kontor är privata på alla planer."
+          },
+          {
+            "q": "Kan vi byta till TinyFloor senare?",
+            "a": "Ja. Skapa ett kontor, dela en inbjudningslänk och kör en vecka där parallellt med ert nuvarande utrymme. Det finns inget att flytta."
+          }
+        ]
+      },
+      "spot": {
+        "label": "Alternativ till Spot",
+        "meta": {
+          "title": "Alternativ till Spot: priser, ingen gratisplan och ett fast pris",
+          "description": "Spot Virtual har ingen gratisplan: efter en 30-dagars testperiod kostar det 4,80 till 10 $ per användare och månad. Vad ett litet team betalar, vad Spot gör bättre och TinyFloor, gratis för 3 och 29 $ för hela teamet."
+        },
+        "title": "Ett <em>alternativ till Spot</em> med ett pris för teamet.",
+        "subtitle": "Spot Virtual tar betalt för varje användare och har ingen gratisplan efter sin 30-dagars testperiod. TinyFloor är gratis för upp till 3 personer, sedan ett pris för hela teamet: 29 $ per månad.",
+        "them": {
+          "price": "Basic från 4,80 $ per användare och månad",
+          "freePlan": "Ingen, bara en 30-dagars testperiod",
+          "browser": "Ja, med en datorapp",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Vad kostar Spot Virtual?",
+            "a": "Basic kostar 4,80 $ per användare och månad vid årsbetalning, eller 6 $ månadsvis. Growth, med ett helt anpassningsbart kontor, HD-ljud och -video samt livesupport, kostar 8 $ eller 10 $. Enterprise, för 50 eller fler, prissätts efter förfrågan. TinyFloor kostar 29 $ per månad för hela teamet."
+          },
+          {
+            "q": "Har Spot en gratisplan?",
+            "a": "Nej. Spot har en 30-dagars gratis testperiod; därefter behöver varje användare en betalplan. TinyFloor är gratis för upp till 3 personer med alla funktioner, så länge du vill."
+          },
+          {
+            "q": "Vad kostar Spot för 10 personer?",
+            "a": "Med Basic 48 $ per månad vid årsbetalning eller 60 $ vid månadsbetalning. Med Growth 80 $ per månad vid årsbetalning eller 100 $ vid månadsbetalning. TinyFloor kostar 29 $ per månad för samma team."
+          },
+          {
+            "q": "Vad har Spot som TinyFloor inte har?",
+            "a": "Ett kontor du designar själv, med ditt eget varumärke, layouter och tillgångar, chattkanaler som i Slack, en datorapp, event från 3 $ per person och dag, samt enkel inloggning med Enterprise. TinyFloor har ett färdigt kontor och körs i webbläsaren."
+          }
+        ]
       }
     },
     "teams": "Team",
@@ -933,8 +1094,8 @@
       },
       "teams": {
         "meta": {
-          "title": "TinyFloor för utveckling, design, startups och byråer",
-          "description": "Ett virtuellt kontor som passar hur ditt team arbetar: för utvecklingsteam, designteam, startups och byråer."
+          "title": "TinyFloor för utveckling, design, startups, byråer och hybridteam",
+          "description": "Ett virtuellt kontor utformat efter hur ditt team arbetar, för utvecklingsteam, designteam, startups, byråer och hybridteam."
         },
         "title": "Gjort för <em>team som ditt.</em>",
         "body": "Varje team använder våningen lite olika. Så här passar den ditt."

@@ -800,8 +800,8 @@
         "label": "Virtual meeting room",
         "line": "Walk in to meet, walk out to leave",
         "meta": {
-          "title": "Virtual Meeting Room for Remote Teams",
-          "description": "A meeting room your team walks into: join and your character takes a place at the table, with cameras, screen sharing and no meeting link."
+          "title": "Free Virtual Meeting Room for Teams: Always Open, No Links",
+          "description": "A virtual meeting room your team walks into, free for up to 3 people: join and your character takes a seat at the table, with cameras, screen sharing and no meeting link to send."
         },
         "title": "A <em>virtual meeting room</em> down the hall.",
         "subtitle": "Every office has a meeting room that's always there. Join a meeting and your character walks in; walk out and you've left. No links, no waiting room.",
@@ -907,6 +907,167 @@
             "a": "Yes. Every plan has every feature, the free one included."
           }
         ]
+      },
+      "sowork": {
+        "label": "SoWork alternative",
+        "meta": {
+          "title": "SoWork Alternative: Pricing, the 30-Minute Free Plan and a Flat Price",
+          "description": "SoWork is free for 10 members with 30-minute meetings, then $5.40 to $15 per member a month. What a small team pays, what SoWork does better, and TinyFloor at $29 for the whole team."
+        },
+        "title": "A <em>SoWork alternative</em> with one price for the team.",
+        "subtitle": "SoWork's free plan caps meetings at 30 minutes, and its paid plans are billed for every member. TinyFloor is free for 3, then one price for the whole team: $29 a month.",
+        "them": {
+          "price": "Basic from $5.40 per member per month",
+          "freePlan": "Up to 10 members, meetings capped at 30 minutes",
+          "browser": "Yes, with desktop and mobile apps",
+          "screenShare": "Yes"
+        },
+        "faq": [
+          {
+            "q": "Is SoWork free?",
+            "a": "SoWork has a free plan for up to 10 members, with a 30-minute limit on each meeting, limited chat and customization, and no recording, analytics or AI. Basic is $5.40 per member a month billed yearly, or $6 monthly. TinyFloor is free for up to 3 people and $29 a month for the whole team."
+          },
+          {
+            "q": "How much does SoWork cost for 10 people?",
+            "a": "On Basic, $54 a month billed yearly or $60 billed monthly. On Premium, $120 a month billed yearly or $150 monthly. TinyFloor is $29 a month for the same team."
+          },
+          {
+            "q": "What does SoWork have that TinyFloor does not?",
+            "a": "Meeting recording, AI summaries and transcripts (on Premium), calendar sync that sets your status, an office you can customize, team analytics and apps for Mac, Windows, iOS and Android. TinyFloor runs in the browser and doesn't record."
+          },
+          {
+            "q": "Do meetings on TinyFloor have a time limit?",
+            "a": "No single meeting is cut off. Each plan includes hours of group meetings a month, and calls between two people are never counted."
+          },
+          {
+            "q": "Do my teammates need an account?",
+            "a": "Yes, a free one, which keeps your office private to your team. To look around first, try the demo office with just a name."
+          }
+        ]
+      },
+      "zep": {
+        "label": "ZEP alternative",
+        "meta": {
+          "title": "ZEP Alternative for Work: Pricing, Free Plan Limits and a Private Office",
+          "description": "ZEP's free plan holds 10 people at once, with one screen share per map and no password. What a team pays on ZEP, what ZEP does better, and TinyFloor, a private office for small teams."
+        },
+        "title": "A <em>ZEP alternative</em> built for a team's workday.",
+        "subtitle": "ZEP is a broad virtual space for classes, events and offices. TinyFloor does one thing: a private office where a small team sees who's in and talks. Free for 3, then $29 a month for the whole team.",
+        "them": {
+          "price": "Basic from $4 per user per month",
+          "freePlan": "Up to 10 people at once, one screen share per map",
+          "browser": "Yes, with mobile apps",
+          "screenShare": "Yes"
+        },
+        "faq": [
+          {
+            "q": "Is ZEP free?",
+            "a": "ZEP has a free plan for up to 10 people connected at once, with one spotlight and one screen share per map and one app. Password protection, hiding the space from search and signed-in-only entry start on Basic, at $4 per user a month billed yearly or $5 monthly."
+          },
+          {
+            "q": "Is ZEP a virtual office?",
+            "a": "It can be. ZEP is a general virtual space, used for classes, quizzes, events and offices; recently much of it is aimed at education. TinyFloor is only an office for a working team."
+          },
+          {
+            "q": "What does ZEP have that TinyFloor does not?",
+            "a": "Maps you build and decorate, room for large events, quizzes and learning tools, apps you can add to a space, visitor analytics and mobile apps. If you run classes or events, ZEP covers far more."
+          },
+          {
+            "q": "Is a TinyFloor office private?",
+            "a": "Yes, on every plan, the free one included. Teammates join with a free account through your invite link; nobody finds the office by searching."
+          },
+          {
+            "q": "Does TinyFloor work on phones?",
+            "a": "Yes. It runs in mobile browsers with an on-screen joystick, so there is no app to download."
+          }
+        ]
+      },
+      "hybrid": {
+        "label": "Hybrid teams",
+        "meta": {
+          "title": "Virtual Office for Hybrid Teams: One Floor for Office and Home",
+          "description": "A virtual office for hybrid teams, so the people at home aren't left out of what happens at the office. Everyone on one floor, from their own laptop. Free for 3, then $29 a month for the whole team."
+        },
+        "title": "One office for a <em>hybrid team.</em>",
+        "subtitle": "When half the team is in the office, the people at home miss the conversations that happen there. TinyFloor puts everyone on one floor, wherever they're sitting today.",
+        "faq": [
+          {
+            "q": "How does a hybrid team use a virtual office?",
+            "a": "Everyone opens the same office from their own laptop, whether they're at home or at a desk in the building, so the people at home can see who's around and talk to them the same way."
+          },
+          {
+            "q": "Do people in the office need to use it too?",
+            "a": "That's what makes it work. If only the people at home are on the floor, it becomes a waiting room. With everyone on it, a question to anyone is one walk away."
+          },
+          {
+            "q": "Does TinyFloor work with meeting room hardware?",
+            "a": "No. There's no integration with conference room systems; people join from their own laptops or phones, ideally with headphones."
+          },
+          {
+            "q": "How much does it cost?",
+            "a": "Free for up to 3 people. Pro is $29 a month for the whole team, up to 15 people, whatever days they're in the office."
+          }
+        ]
+      },
+      "zepVsGather": {
+        "label": "ZEP vs Gather",
+        "meta": {
+          "title": "ZEP vs Gather: Pricing, Free Plans and a Third Option",
+          "description": "ZEP vs Gather side by side: what each costs, free plans, privacy, recording and what each is built for, and where TinyFloor fits for a small team at $29 a month for everyone."
+        },
+        "title": "<em>ZEP vs Gather</em>, and a third option.",
+        "subtitle": "Both are 2D virtual spaces you walk around in. ZEP is free for 10 people at once and leans toward classes and events; Gather has no free plan and is built for remote offices. TinyFloor is a private office for a small team, at one price.",
+        "faq": [
+          {
+            "q": "Which is cheaper, ZEP or Gather?",
+            "a": "ZEP. Its free plan covers up to 10 people connected at once, and Basic is $4 to $5 per user a month. Gather has no free plan and costs $12 a member a month billed yearly, or $15 monthly. TinyFloor is free for 3 and $29 a month for the whole team."
+          },
+          {
+            "q": "Which is better for a remote team's office?",
+            "a": "Gather is built for offices, with desks, recording and a desktop app. ZEP can be an office too, but much of it now aims at classes, quizzes and events. For a small team that wants a ready-made private office, TinyFloor is simpler and costs less."
+          },
+          {
+            "q": "Are ZEP and Gather private?",
+            "a": "Gather spaces are for your team. On ZEP's free plan a space can't have a password or be limited to signed-in people; those controls come with Basic. TinyFloor offices are private on every plan."
+          },
+          {
+            "q": "Can we switch to TinyFloor later?",
+            "a": "Yes. Make an office, share one invite link and run a week there alongside your current space. There's nothing to migrate."
+          }
+        ]
+      },
+      "spot": {
+        "label": "Spot alternative",
+        "meta": {
+          "title": "Spot Alternative: Spot Virtual Pricing, No Free Plan and a Flat Price",
+          "description": "Spot Virtual has no free plan: after a 30-day trial it's $4.80 to $10 per user a month. What a small team pays, what Spot does better, and TinyFloor, free for 3 and $29 for the whole team."
+        },
+        "title": "A <em>Spot alternative</em> with one price for the team.",
+        "subtitle": "Spot Virtual bills every user and has no free plan after its 30-day trial. TinyFloor is free for up to 3 people, then one price for the whole team: $29 a month.",
+        "them": {
+          "price": "Basic from $4.80 per user per month",
+          "freePlan": "None, only a 30-day trial",
+          "browser": "Yes, with a desktop app",
+          "screenShare": "Yes"
+        },
+        "faq": [
+          {
+            "q": "How much does Spot Virtual cost?",
+            "a": "Basic is $4.80 a user a month billed yearly, or $6 monthly. Growth, with a fully customizable office, HD audio and video and live support, is $8 or $10. Enterprise, for 50 or more, is priced on a call. TinyFloor is $29 a month for the whole team."
+          },
+          {
+            "q": "Does Spot have a free plan?",
+            "a": "No. Spot has a 30-day free trial; after that, every user needs a paid plan. TinyFloor is free for up to 3 people with every feature, for as long as you like."
+          },
+          {
+            "q": "How much does Spot cost for 10 people?",
+            "a": "On Basic, $48 a month billed yearly or $60 monthly. On Growth, $80 a month billed yearly or $100 monthly. TinyFloor is $29 a month for the same team."
+          },
+          {
+            "q": "What does Spot have that TinyFloor does not?",
+            "a": "An office you design yourself, with your branding, layouts and assets, chat channels like Slack's, a desktop app, events from $3 a person a day, and single sign-on on Enterprise. TinyFloor has one ready-made office and runs in the browser."
+          }
+        ]
       }
     },
     "teams": "Teams",
@@ -933,8 +1094,8 @@
       },
       "teams": {
         "meta": {
-          "title": "TinyFloor for Engineering, Design, Startups and Agencies",
-          "description": "A virtual office shaped around how your team works, for engineering teams, design teams, startups and agencies."
+          "title": "TinyFloor for Engineering, Design, Startups, Agencies and Hybrid Teams",
+          "description": "A virtual office shaped around how your team works, for engineering teams, design teams, startups, agencies and hybrid teams."
         },
         "title": "Made for <em>teams like yours.</em>",
         "body": "Every team uses the floor a little differently. Here is how it fits yours."

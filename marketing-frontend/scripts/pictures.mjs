@@ -42,6 +42,10 @@ const LOCALES = [
 const LANDINGS = [
   "gather-alternative",
   "kumospace-alternative",
+  "sowork-alternative",
+  "spot-alternative",
+  "hybrid-teams",
+  "zep-alternative",
   "sococo-alternative",
   "ovice-alternative",
   "roam-alternative",
@@ -52,6 +56,7 @@ const LANDINGS = [
   "slack-huddles-alternative",
   "discord-for-work",
   "gather-vs-kumospace",
+  "zep-vs-gather",
   "engineering-teams",
   "design-teams",
   "startups",
@@ -157,6 +162,7 @@ const GUIDES = [
   "one-on-one-meeting-questions",
   "retrospective-ideas",
   "remote-onboarding-checklist",
+  "body-doubling",
 ];
 // SLUGS=a,b redraws just those pages (and guides, as guide-<slug>).
 const slugs = process.env.SLUGS?.split(",") ?? LANDINGS;

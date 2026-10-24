@@ -781,42 +781,42 @@
           {
             "title": "Gather",
             "detail": "Ingen gratisplan · 12 $ pr. medlem om måneden ved årlig betaling, 15 $ månedligt",
-            "body": "Det mest kendte virtuelle kontor og det mest komplette: et kontor, du selv designer, optagelse og transskription, integrationer med Google Calendar, GitHub og Spotify, og gæster. Stoppede med gratisplanen i 2025, så for et lille team er det et af de dyrere valg."
+            "body": "Det mest kendte virtuelle kontor og det mest komplette: et kontor, du selv designer, optagelse og transskription, integrationer med Google Calendar, GitHub og Spotify, og gæster. Stoppede med gratisplanen i 2025, så for et lille team er det et af de dyrere valg. [Fuld sammenligning](/gather-alternative)."
           },
           {
             "title": "SoWork",
             "detail": "Gratis for 10 medlemmer · Basic 5,40 $ pr. medlem om måneden ved årlig betaling",
-            "body": "Et virtuelt kontor med mødelokaler, teamchat og kalenderintegration. Gratisplanen har plads til op til 10 medlemmer, men begrænser møder til 30 minutter og har ingen optagelser. Premium, til 12 $ pr. medlem om måneden ved årlig betaling, tilføjer AI-resuméer, ubegrænsede optagelser og statistik."
+            "body": "Et virtuelt kontor med mødelokaler, teamchat og kalenderintegration. Gratisplanen har plads til op til 10 medlemmer, men begrænser møder til 30 minutter og har ingen optagelser. Premium, til 12 $ pr. medlem om måneden ved årlig betaling, tilføjer AI-resuméer, ubegrænsede optagelser og statistik. [Fuld sammenligning](/sowork-alternative)."
           },
           {
             "title": "Kumospace",
             "detail": "Gratis for 5 medlemmer · Business 16 $ pr. bruger om måneden",
-            "body": "Et flot rum med rumlig lyd og apps til computer og telefon, populært både til sociale arrangementer og som kontor. Gratisplanen dækker 5 medlemmer og én etage. For et team på 10 eller flere hører det til de dyreste."
+            "body": "Et flot rum med rumlig lyd og apps til computer og telefon, populært både til sociale arrangementer og som kontor. Gratisplanen dækker 5 medlemmer og én etage. For et team på 10 eller flere hører det til de dyreste. [Fuld sammenligning](/kumospace-alternative)."
           },
           {
             "title": "WorkAdventure",
             "detail": "Gratis for 10 personer ad gangen · Business 9 $ pr. bruger om måneden",
-            "body": "En verden i pixelkunst med åben kildekode, som du kan hoste selv, med kort bygget i editoren Tiled. God til tekniske teams og arrangementer, der vil have fuld kontrol. At bygge sit eget kort eller drive sin egen server er rigtigt arbejde."
+            "body": "En verden i pixelkunst med åben kildekode, som du kan hoste selv, med kort bygget i editoren Tiled. God til tekniske teams og arrangementer, der vil have fuld kontrol. At bygge sit eget kort eller drive sin egen server er rigtigt arbejde. [Fuld sammenligning](/workadventure-alternative)."
           },
           {
             "title": "SpatialChat",
             "detail": "Gratis 2 timer om dagen for 12 · Business 8 $ pr. bruger om måneden",
-            "body": "Rum med rumlig lyd og videobobler, meget brugt til arrangementer, undervisning og workshops. Gratisplanen passer til enkelte sessioner; et team, der er der hele dagen, har brug for en Business-plan."
+            "body": "Rum med rumlig lyd og videobobler, meget brugt til arrangementer, undervisning og workshops. Gratisplanen passer til enkelte sessioner; et team, der er der hele dagen, har brug for en Business-plan. [Fuld sammenligning](/spatialchat-alternative)."
           },
           {
             "title": "Roam",
             "detail": "Ingen gratisplan · 19,50 $ pr. aktivt medlem om måneden",
-            "body": "En computerapp til Mac og Windows, der samler et virtuelt kontor med møder, chat, en AI-assistent og webinarer. Du betaler kun for de medlemmer, der bruger den i løbet af måneden. Det er en komplet arbejdspakke med en pris derefter."
+            "body": "En computerapp til Mac og Windows, der samler et virtuelt kontor med møder, chat, en AI-assistent og webinarer. Du betaler kun for de medlemmer, der bruger den i løbet af måneden. Det er en komplet arbejdspakke med en pris derefter. [Fuld sammenligning](/roam-alternative)."
           },
           {
             "title": "oVice",
             "detail": "Gratisversion uden support · 65 $ om måneden pr. rum, ved årlig betaling",
-            "body": "Et kontor i 2D med pris pr. rum: Entry-S passer til omkring 10 faste medlemmer, og Business Starter koster 16 $ pr. bruger om måneden fra 20 brugere. Stærkt i Japan og hos større virksomheder. Gratisplanen kører på en prøveversion uden support."
+            "body": "Et kontor i 2D med pris pr. rum: Entry-S passer til omkring 10 faste medlemmer, og Business Starter koster 16 $ pr. bruger om måneden fra 20 brugere. Stærkt i Japan og hos større virksomheder. Gratisplanen kører på en prøveversion uden support. [Fuld sammenligning](/ovice-alternative)."
           },
           {
             "title": "Sococo",
             "detail": "Ingen gratisplan · 13,49 $ pr. plads om måneden, ved årlig betaling, mindst 10 pladser",
-            "body": "En plantegning af rum set ovenfra i stedet for figurer, med flere skærmdelinger på én gang. Hver plads har 500 mødeminutter om måneden. Lavet til virksomheder, der køber software for et år ad gangen."
+            "body": "En plantegning af rum set ovenfra i stedet for figurer, med flere skærmdelinger på én gang. Hver plads har 500 mødeminutter om måneden. Lavet til virksomheder, der køber software for et år ad gangen. [Fuld sammenligning](/sococo-alternative)."
           }
         ]
       },
@@ -2862,6 +2862,198 @@
       {
         "q": "Hvad er sværest ved remote onboarding?",
         "a": "At vide, hvem man skal spørge, og hvornår det er okay at forstyrre. En buddy og synlig tilstedeværelse løser det meste."
+      }
+    ]
+  },
+  "bodyDoubling": {
+    "label": "Body doubling",
+    "meta": {
+      "title": "Body doubling: Hvad det er, og hvordan du gør det online",
+      "description": "Hvad body doubling er, hvorfor det er lettere at komme i gang og fortsætte, når du arbejder ved siden af en anden, hvordan du gør det online, og hvordan du holder en session."
+    },
+    "title": "Body doubling: <em>arbejd ved siden af en anden, og få mere fra hånden.</em>",
+    "intro": "Body doubling betyder at arbejde med en anden person i nærheden, i samme rum eller på en skærm, så det er lettere at komme i gang med en opgave og holde fokus. Den anden person hjælper ikke med arbejdet – de er der bare. Mange med ADHD beskriver det som en af de få ting, der rent faktisk virker, og masser af fjernarbejdere bruger det til at erstatte det rolige selskab på et kontor. Her kan du læse om, hvad det er, hvordan du gør det online, og hvordan du holder en session, der virker.",
+    "sections": [
+      {
+        "title": "Hvad body doubling er",
+        "body": [
+          "En body double er en, der arbejder ved siden af dig, mens du laver en opgave, du ellers ville udskyde: papirarbejde, en rapport, lektier, rengøring eller en svær e-mail. De kan lave deres eget arbejde eller bare læse. Det afgørende er, at der er en til stede.",
+          "Idéen stammer fra ADHD-coaching, og navnet har spredt sig langt ud over det. Studerende bruger det til at læse, freelancere til at komme igennem administration, og fjernteams til at bevare følelsen af at arbejde i samme rum."
+        ]
+      },
+      {
+        "title": "Hvorfor det ser ud til at hjælpe",
+        "body": [
+          "Forskningen i selve body doubling er stadig begrænset. Det meste af det, vi ved, kommer fra folks egne erfaringer. Men de grunde, folk angiver, er de samme."
+        ],
+        "items": [
+          {
+            "title": "Det er lettere at komme i gang",
+            "body": "Når du siger højt, hvad du skal til at gøre, til en, der også sætter sig for at arbejde, bliver det sværere at udskyde det."
+          },
+          {
+            "title": "Mild forpligtelse",
+            "body": "Ingen tjekker dit arbejde, men at vide, at nogen vil spørge »hvordan gik det?« til sidst, er ofte nok."
+          },
+          {
+            "title": "Færre afsporinger",
+            "body": "Når der er en anden til stede, føles det mere synligt at række ud efter telefonen eller åbne en ny fane, så det sker sjældnere."
+          },
+          {
+            "title": "Mindre ensomt",
+            "body": "For folk, der arbejder hjemmefra, gør det rolige selskab fra en anden person lange arbejdsperioder lettere."
+          }
+        ]
+      },
+      {
+        "title": "Måder at lave body doubling på online",
+        "table": {
+          "head": [
+            "Metode",
+            "Hvem der er med",
+            "Godt til"
+          ],
+          "rows": [
+            [
+              "Et videoopkald med en ven",
+              "En, du kender",
+              "Gratis og enkelt. Aftal en tid, og hav kameraet tændt eller slukket"
+            ],
+            [
+              "Matchingtjenester",
+              "En fremmed, booket til en tidsbestemt session",
+              "Når ingen, du kender, er ledig, og du godt kan lide et fast tidsrum"
+            ],
+            [
+              "»Study with me«-videoer",
+              "En optagelse af en, der arbejder",
+              "En hurtig start, når der ikke er nogen i nærheden. Ingen forpligtelse"
+            ],
+            [
+              "Et virtuelt kontor",
+              "Dine teammedlemmer eller en lille gruppe",
+              "Selskab hele dagen med folk, du kender, hvor I kan snakke, når der er brug for det"
+            ]
+          ],
+          "note": "Hver metode passer til forskellige behov. Mange blander dem: en ven til de svære opgaver, en optagelse til de små."
+        }
+      },
+      {
+        "title": "Sådan holder du en body doubling-session",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Aftal tid og varighed",
+            "body": "Halvtreds minutters arbejde er et populært valg. Start med 25, hvis en opgave føles uoverskuelig."
+          },
+          {
+            "title": "Sig, hvad du vil lave",
+            "body": "Én sætning hver: opgaven, og hvordan det ser ud, når den er færdig. Det er bedre at være konkret end ambitiøs."
+          },
+          {
+            "title": "Arbejd i stilhed",
+            "body": "Mikrofoner slukket, kameraer er valgfrit. Undgå at snakke – pointen er at arbejde."
+          },
+          {
+            "title": "Tjek ud til sidst",
+            "body": "Én sætning hver igen: færdig, ikke færdig, hvad er det næste. Ingen fordømmelse uanset hvad."
+          },
+          {
+            "title": "Hold en kort pause",
+            "body": "Fem eller ti minutter, og start så en ny session, eller sig tak for i dag."
+          }
+        ]
+      },
+      {
+        "title": "En enkel plan for en session",
+        "table": {
+          "head": [
+            "Del",
+            "Tid",
+            "Hvad der sker"
+          ],
+          "rows": [
+            [
+              "Tjek ind",
+              "2 min.",
+              "Hver person fortæller om sin opgave"
+            ],
+            [
+              "Arbejde",
+              "45 til 50 min.",
+              "Stilhed, mikrofoner slukket"
+            ],
+            [
+              "Tjek ud",
+              "3 min.",
+              "Færdig, ikke færdig, hvad er det næste"
+            ],
+            [
+              "Pause",
+              "5 til 10 min.",
+              "Væk fra skærmen"
+            ]
+          ],
+          "note": "Gentag så mange gange, som det passer ind i dagen. Hold det samme starttidspunkt for at gøre det til en vane."
+        }
+      },
+      {
+        "title": "Tips, der får det til at virke",
+        "items": [
+          {
+            "title": "Samme tid hver dag",
+            "body": "Et fast tidspunkt fjerner beslutningen om, hvorvidt du skal gå i gang."
+          },
+          {
+            "title": "Kameraer er valgfri",
+            "body": "Nogle har brug for at blive set, mens andre finder det forstyrrende. Aftal, hvad der passer alle bedst."
+          },
+          {
+            "title": "Hold opgaverne små",
+            "body": "»Skriv den første side« virker bedre end »skriv rapporten«."
+          },
+          {
+            "title": "Gør det ikke til et møde",
+            "body": "Hvis sessionen bliver til snak, bliver arbejdet ikke lavet. Snak under tjek ind og i pausen."
+          },
+          {
+            "title": "Vær overbærende med dårlige sessioner",
+            "body": "Nogle dage får man intet lavet. At sige det højt ved tjek ud, uden undskyldninger, er en del af det, der gør, at folk bliver ved med at være med."
+          }
+        ]
+      },
+      {
+        "title": "Body doubling med dit team",
+        "body": [
+          "Fjernteams kan lave body doubling uden ekstra apps – teamet er her allerede. I et fælles [virtuelt coworking-område](/virtual-coworking) kan alle se, hvem der arbejder, sidde ved deres eget skrivebord og markere sig som optaget, så en rolig eftermiddag stadig føles fælles.",
+          "Hvis du vil have mere struktur, kan du starte et møde kaldet Fokus, invitere dem, der har lyst til at være med, og følge planen ovenfor. Folk, der helst ikke vil snakke, kan bare være på etagen og arbejde tæt på de andre."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Hvor TinyFloor passer ind",
+      "body": "TinyFloor er et privat virtuelt kontor for folk, der kender hinanden: et lille team, nogle venner eller en studiegruppe. Sid ved jeres skriveborde, marker jer som optaget, start en fokussession i mødelokalet, og snak, når I har brug for det. Det er gratis for op til 3 personer, så to venner kan lave body doubling der uden beregning. Det matcher dig ikke med fremmede."
+    },
+    "faq": [
+      {
+        "q": "Hvad er body doubling?",
+        "a": "At arbejde med en anden person i nærheden, enten fysisk eller online, for at gøre det lettere at komme i gang med en opgave og fortsætte. Den anden person hjælper ikke med arbejdet – de er der bare."
+      },
+      {
+        "q": "Er body doubling kun for folk med ADHD?",
+        "a": "Nej. Begrebet stammer fra ADHD-coaching, og mange med ADHD har stor glæde af det, men studerende, freelancere og fjernarbejdere bruger det også."
+      },
+      {
+        "q": "Kræver body doubling video?",
+        "a": "Ikke nødvendigvis. Nogle har brug for at blive set, mens andre blot har brug for at vide, at en anden også arbejder. Lyd, et fælles virtuelt kontor eller tændte kameraer virker alt sammen."
+      },
+      {
+        "q": "Hvor lang bør en body doubling-session være?",
+        "a": "Omkring 50 minutters arbejde med et kort tjek ind og tjek ud er det mest almindelige. Start med 25 minutter, hvis en opgave føles svær at komme i gang med."
+      },
+      {
+        "q": "Kan jeg lave body doubling gratis?",
+        "a": "Ja. Et videoopkald med en ven koster ingenting, og TinyFloor er gratis for op til 3 personer, så en lille gruppe kan lave body doubling der hver dag."
       }
     ]
   }

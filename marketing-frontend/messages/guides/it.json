@@ -781,42 +781,42 @@
           {
             "title": "Gather",
             "detail": "Nessun piano gratuito · 12 $ per membro al mese con fatturazione annuale, 15 $ mensile",
-            "body": "L'ufficio virtuale più conosciuto e il più completo: un ufficio che disegni tu, registrazione e trascrizione, integrazioni con Google Calendar, GitHub e Spotify, e ospiti. Ha tolto il piano gratuito nel 2025, quindi per un team piccolo è tra le scelte più costose."
+            "body": "L'ufficio virtuale più conosciuto e il più completo: un ufficio che disegni tu, registrazione e trascrizione, integrazioni con Google Calendar, GitHub e Spotify, e ospiti. Ha tolto il piano gratuito nel 2025, quindi per un team piccolo è tra le scelte più costose. [Confronto completo](/gather-alternative)."
           },
           {
             "title": "SoWork",
             "detail": "Gratis per 10 membri · Basic 5,40 $ per membro al mese con fatturazione annuale",
-            "body": "Un ufficio virtuale con sale riunioni, chat del team e integrazione con il calendario. Il piano gratuito ospita fino a 10 membri, ma limita le riunioni a 30 minuti e non ha registrazioni. Premium, a 12 $ per membro al mese con fatturazione annuale, aggiunge riassunti con IA, registrazioni illimitate e statistiche."
+            "body": "Un ufficio virtuale con sale riunioni, chat del team e integrazione con il calendario. Il piano gratuito ospita fino a 10 membri, ma limita le riunioni a 30 minuti e non ha registrazioni. Premium, a 12 $ per membro al mese con fatturazione annuale, aggiunge riassunti con IA, registrazioni illimitate e statistiche. [Confronto completo](/sowork-alternative)."
           },
           {
             "title": "Kumospace",
             "detail": "Gratis per 5 membri · Business 16 $ per utente al mese",
-            "body": "Uno spazio curato con audio spaziale e app per desktop e telefono, apprezzato sia per eventi sociali sia come ufficio. Il piano gratuito copre 5 membri e un piano. Per un team di 10 o più è tra i più costosi."
+            "body": "Uno spazio curato con audio spaziale e app per desktop e telefono, apprezzato sia per eventi sociali sia come ufficio. Il piano gratuito copre 5 membri e un piano. Per un team di 10 o più è tra i più costosi. [Confronto completo](/kumospace-alternative)."
           },
           {
             "title": "WorkAdventure",
             "detail": "Gratis per 10 persone contemporaneamente · Business 9 $ per utente al mese",
-            "body": "Un mondo open source in pixel art che puoi ospitare da solo, con mappe create nell'editor Tiled. Adatto a team tecnici ed eventi che vogliono il pieno controllo. Creare una mappa propria o gestire il proprio server richiede un lavoro vero."
+            "body": "Un mondo open source in pixel art che puoi ospitare da solo, con mappe create nell'editor Tiled. Adatto a team tecnici ed eventi che vogliono il pieno controllo. Creare una mappa propria o gestire il proprio server richiede un lavoro vero. [Confronto completo](/workadventure-alternative)."
           },
           {
             "title": "SpatialChat",
             "detail": "Gratis 2 ore al giorno per 12 · Business 8 $ per utente al mese",
-            "body": "Stanze con audio spaziale e bolle video, molto usate per eventi, lezioni e workshop. Il piano gratuito va bene per sessioni occasionali; un team che ci resta tutto il giorno ha bisogno di un piano Business."
+            "body": "Stanze con audio spaziale e bolle video, molto usate per eventi, lezioni e workshop. Il piano gratuito va bene per sessioni occasionali; un team che ci resta tutto il giorno ha bisogno di un piano Business. [Confronto completo](/spatialchat-alternative)."
           },
           {
             "title": "Roam",
             "detail": "Nessun piano gratuito · 19,50 $ per membro attivo al mese",
-            "body": "Un'app desktop per Mac e Windows che unisce un ufficio virtuale a riunioni, chat, un assistente IA e webinar. Paghi solo i membri che la usano nel mese. È una suite di lavoro completa, con il prezzo di una suite completa."
+            "body": "Un'app desktop per Mac e Windows che unisce un ufficio virtuale a riunioni, chat, un assistente IA e webinar. Paghi solo i membri che la usano nel mese. È una suite di lavoro completa, con il prezzo di una suite completa. [Confronto completo](/roam-alternative)."
           },
           {
             "title": "oVice",
             "detail": "Versione gratuita senza supporto · 65 $ al mese per spazio, con fatturazione annuale",
-            "body": "Un ufficio in 2D con prezzo per spazio: Entry-S va bene per circa 10 membri fissi, e Business Starter costa 16 $ per utente al mese da 20 utenti. Forte in Giappone e nelle aziende più grandi. Il piano gratuito gira su una versione di anteprima senza supporto."
+            "body": "Un ufficio in 2D con prezzo per spazio: Entry-S va bene per circa 10 membri fissi, e Business Starter costa 16 $ per utente al mese da 20 utenti. Forte in Giappone e nelle aziende più grandi. Il piano gratuito gira su una versione di anteprima senza supporto. [Confronto completo](/ovice-alternative)."
           },
           {
             "title": "Sococo",
             "detail": "Nessun piano gratuito · 13,49 $ per postazione al mese, con fatturazione annuale, minimo 10 postazioni",
-            "body": "Una pianta di stanze vista dall'alto invece dei personaggi, con più condivisioni dello schermo contemporaneamente. Ogni postazione include 500 minuti di riunione al mese. Pensato per aziende che comprano software per anno."
+            "body": "Una pianta di stanze vista dall'alto invece dei personaggi, con più condivisioni dello schermo contemporaneamente. Ogni postazione include 500 minuti di riunione al mese. Pensato per aziende che comprano software per anno. [Confronto completo](/sococo-alternative)."
           }
         ]
       },
@@ -2862,6 +2862,198 @@
       {
         "q": "Qual è la parte più difficile dell'onboarding da remoto?",
         "a": "Sapere a chi chiedere e quando va bene disturbare. Un buddy e una presenza visibile risolvono quasi tutto."
+      }
+    ]
+  },
+  "bodyDoubling": {
+    "label": "Body doubling",
+    "meta": {
+      "title": "Body doubling: cos'è e come farlo online",
+      "description": "Cos'è il body doubling, perché lavorare accanto a qualcuno aiuta a iniziare e continuare, come farlo online e come organizzare una sessione con il tuo team."
+    },
+    "title": "Body doubling: <em>lavora accanto a qualcuno, fai di più.</em>",
+    "intro": "Body doubling significa lavorare con un'altra persona vicina, nella stessa stanza o su uno schermo, per rendere più facile iniziare un compito e non distrarsi. L'altra persona non ti aiuta nel lavoro; è semplicemente lì. Molte persone con ADHD lo descrivono come una delle poche cose che funziona davvero, e molti lavoratori da remoto lo usano per ritrovare la tranquilla compagnia dell'ufficio. Ecco cos'è, come farlo online e come organizzare una sessione che funzioni.",
+    "sections": [
+      {
+        "title": "Cos'è il body doubling",
+        "body": [
+          "Un «body double» è qualcuno che lavora al tuo fianco mentre svolgi un compito che altrimenti rimanderesti: scartoffie, un report, studiare, pulire, una email difficile. Può fare il suo lavoro o semplicemente leggere. Ciò che conta è che ci sia qualcuno.",
+          "L'idea nasce dal coaching per l'ADHD e il nome si è diffuso ben oltre questo ambito. Gli studenti lo usano per studiare, i freelance per sbrigare l'amministrazione e i team da remoto per mantenere la sensazione di lavorare insieme in una stanza."
+        ]
+      },
+      {
+        "title": "Perché sembra aiutare",
+        "body": [
+          "Le ricerche sul body doubling in sé sono ancora scarse; la maggior parte di ciò che sappiamo viene dall'esperienza diretta delle persone. Tuttavia, i motivi indicati sono sempre gli stessi."
+        ],
+        "items": [
+          {
+            "title": "Iniziare è più facile",
+            "body": "Dire ad alta voce cosa stai per fare, a qualcuno che si sta sedendo a lavorare a sua volta, rende più difficile rimandare."
+          },
+          {
+            "title": "Una leggera responsabilità",
+            "body": "Nessuno controlla il tuo lavoro, ma sapere che alla fine qualcuno ti chiederà «com'è andata?» spesso è sufficiente."
+          },
+          {
+            "title": "Meno distrazioni",
+            "body": "Con qualcuno presente, prendere il telefono o aprire un'altra scheda del browser si nota di più, quindi succede meno spesso."
+          },
+          {
+            "title": "Meno solitudine",
+            "body": "Per chi lavora da casa, la tranquilla compagnia di un'altra persona rende più leggere le lunghe sessioni di lavoro."
+          }
+        ]
+      },
+      {
+        "title": "Modi per fare body doubling online",
+        "table": {
+          "head": [
+            "Modalità",
+            "Chi c'è",
+            "Ideale per"
+          ],
+          "rows": [
+            [
+              "Una videochiamata con un amico",
+              "Qualcuno che conosci",
+              "Gratuito e semplice; concordate un orario e tenete la videocamera accesa o spenta"
+            ],
+            [
+              "Servizi di abbinamento",
+              "Uno sconosciuto, prenotato per una sessione a tempo",
+              "Quando nessuno dei tuoi conoscenti è libero e preferisci una fascia oraria fissa"
+            ],
+            [
+              "Video «studia con me»",
+              "La registrazione di qualcuno che lavora",
+              "Un avvio rapido quando non c'è nessuno; nessuna responsabilità reciproca"
+            ],
+            [
+              "Un ufficio virtuale",
+              "I tuoi colleghi o un piccolo gruppo",
+              "Compagnia per tutto il giorno con persone che conosci, parlando quando serve"
+            ]
+          ],
+          "note": "Ognuno risponde a un'esigenza diversa. Molti li alternano: un amico per i compiti difficili, una registrazione per quelli più piccoli."
+        }
+      },
+      {
+        "title": "Come organizzare una sessione di body doubling",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Concorda un orario e una durata",
+            "body": "Cinquanta minuti di lavoro è una scelta comune; inizia con 25 se un compito ti sembra pesante."
+          },
+          {
+            "title": "Dì cosa farai",
+            "body": "Una frase a testa: il compito e come si presenta una volta finito. Meglio essere specifici che ambiziosi."
+          },
+          {
+            "title": "Lavora in silenzio",
+            "body": "Microfoni spenti, videocamere a scelta. Evita di chiacchierare; l'obiettivo è lavorare."
+          },
+          {
+            "title": "Un rapido confronto alla fine",
+            "body": "Ancora una frase a testa: fatto, non fatto, cosa farai dopo. Nessun giudizio in ogni caso."
+          },
+          {
+            "title": "Fai una breve pausa",
+            "body": "Cinque o dieci minuti, poi inizia un'altra sessione o stacca per oggi."
+          }
+        ]
+      },
+      {
+        "title": "Un semplice schema di sessione",
+        "table": {
+          "head": [
+            "Fase",
+            "Durata",
+            "Cosa succede"
+          ],
+          "rows": [
+            [
+              "Confronto iniziale",
+              "2 min",
+              "Ognuno dice qual è il suo compito"
+            ],
+            [
+              "Lavoro",
+              "Da 45 a 50 min",
+              "Silenzio, microfoni spenti"
+            ],
+            [
+              "Confronto finale",
+              "3 min",
+              "Fatto, non fatto, cosa farai dopo"
+            ],
+            [
+              "Pausa",
+              "Da 5 a 10 min",
+              "Lontano dallo schermo"
+            ]
+          ],
+          "note": "Ripeti tutte le volte che vuoi durante la giornata. Mantieni lo stesso orario di inizio per farla diventare un'abitudine."
+        }
+      },
+      {
+        "title": "Consigli per farlo funzionare",
+        "items": [
+          {
+            "title": "Stessa ora, ogni giorno",
+            "body": "Un appuntamento fisso elimina il dubbio se iniziare o meno."
+          },
+          {
+            "title": "La videocamera è facoltativa",
+            "body": "Alcuni hanno bisogno di farsi vedere, altri lo trovano fonte di distrazione. Scegliete ciò che funziona per tutti."
+          },
+          {
+            "title": "Scegli compiti piccoli",
+            "body": "«Scrivi la prima pagina» funziona meglio di «scrivi il report»."
+          },
+          {
+            "title": "Non trasformarlo in una riunione",
+            "body": "Se la sessione si trasforma in una chiacchierata, non si lavora. Parlate durante il confronto iniziale e la pausa."
+          },
+          {
+            "title": "Non colpevolizzarti per le sessioni andate male",
+            "body": "Ci sono giorni in cui non si conclude nulla. Ammetterlo al confronto finale, senza scuse, è parte di ciò che spinge le persone a tornare."
+          }
+        ]
+      },
+      {
+        "title": "Fare body doubling con il tuo team",
+        "body": [
+          "I team da remoto possono fare body doubling senza app aggiuntive: il team è già lì. In uno [spazio di coworking virtuale](/virtual-coworking) condiviso ognuno può vedere chi sta lavorando, sedersi alla propria scrivania e impostare lo stato su «occupato», così anche un pomeriggio silenzioso sembrerà condiviso.",
+          "Per una struttura maggiore, avvia una riunione chiamata Focus, invita chi vuole partecipare e segui lo schema di sessione descritto sopra. Chi preferisce non parlare può semplicemente restare al piano, lavorando vicino a tutti gli altri."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Dove si inserisce TinyFloor",
+      "body": "TinyFloor è un ufficio virtuale privato per persone che si conoscono: un piccolo team, qualche amico, un gruppo di studio. Siediti alla tua scrivania, impostati su «occupato», avvia una sessione di focus nella sala riunioni e parla quando ne hai bisogno. È gratuito fino a 3 persone, quindi due amici possono fare body doubling senza alcun costo. Non ti abbina a sconosciuti."
+    },
+    "faq": [
+      {
+        "q": "Cos'è il body doubling?",
+        "a": "Lavorare con un'altra persona vicina, di persona o online, per rendere più facile iniziare un compito e continuare a farlo. L'altra persona non ti aiuta nel lavoro; è semplicemente lì."
+      },
+      {
+        "q": "Il body doubling è solo per l'ADHD?",
+        "a": "No. Il termine nasce dal coaching per l'ADHD e molte persone con ADHD lo trovano utile, ma lo usano anche studenti, freelance e lavoratori da remoto."
+      },
+      {
+        "q": "Il body doubling richiede l'uso del video?",
+        "a": "Non necessariamente. Alcuni hanno bisogno di farsi vedere; ad altri basta sapere che anche qualcun altro sta lavorando. Audio, un ufficio virtuale condiviso o le videocamere accese funzionano tutti benissimo."
+      },
+      {
+        "q": "Quanto deve durare una sessione di body doubling?",
+        "a": "Di solito circa 50 minuti di lavoro con un breve confronto iniziale e finale. Inizia con 25 minuti se un compito ti sembra difficile da avviare."
+      },
+      {
+        "q": "Posso fare body doubling gratuitamente?",
+        "a": "Sì. Una videochiamata con un amico non costa nulla e TinyFloor è gratuito fino a 3 persone, quindi un piccolo gruppo può fare body doubling lì ogni giorno."
       }
     ]
   }

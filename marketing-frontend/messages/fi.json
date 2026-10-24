@@ -800,8 +800,8 @@
         "label": "Virtuaalinen kokoushuone",
         "line": "Kävele sisään kokoukseen, ulos lähteäksesi",
         "meta": {
-          "title": "Virtuaalinen kokoushuone etätiimeille",
-          "description": "Kokoushuone, johon tiimi kävelee sisään: liity, niin hahmosi istuu pöydän ääreen. Kamerat, näytön jako eikä kokouslinkkiä."
+          "title": "Ilmainen virtuaalinen kokoushuone tiimeille: aina auki, ei linkkejä",
+          "description": "Virtuaalinen kokoushuone, johon tiimisi kävelee sisään, ilmainen jopa 3 hengelle: liity ja hahmosi istuu pöydän ääreen kameroiden ja näytönjaon kera ilman lähetettäviä kokouslinkkejä."
         },
         "title": "<em>Virtuaalinen kokoushuone</em> käytävän päässä.",
         "subtitle": "Jokaisessa toimistossa on kokoushuone, joka on aina paikallaan. Liity kokoukseen, niin hahmosi kävelee sisään; kävele ulos, niin olet lähtenyt. Ei linkkejä, ei odotushuonetta.",
@@ -907,6 +907,167 @@
             "a": "Kyllä. Jokaisessa paketissa on kaikki ominaisuudet, myös ilmaisessa."
           }
         ]
+      },
+      "sowork": {
+        "label": "SoWork-vaihtoehto",
+        "meta": {
+          "title": "Vaihtoehto SoWorkille: hinnat, 30 minuutin ilmaisversio ja kiinteä hinta",
+          "description": "SoWork on ilmainen 10 jäsenelle 30 minuutin kokouksilla, sitten 5,40–15 $ jäseneltä kuukaudessa. Mitä pieni tiimi maksaa, missä SoWork on parempi ja TinyFloor 29 $:lla koko tiimiltä."
+        },
+        "title": "<em>SoWork-vaihtoehto</em> yhdellä hinnalla koko tiimille.",
+        "subtitle": "SoWorkin ilmaisversiossa kokoukset on rajattu 30 minuuttiin, ja sen maksulliset tilaukset laskutetaan jäseneltä. TinyFloor on ilmainen 3 hengelle, sitten yksi hinta koko tiimille: 29 $ kuukaudessa.",
+        "them": {
+          "price": "Basic alkaen 5,40 $ jäseneltä kuukaudessa",
+          "freePlan": "Enintään 10 jäsentä, kokoukset rajattu 30 minuuttiin",
+          "browser": "Kyllä, lisäksi työpöytä- ja mobiilisovellukset",
+          "screenShare": "Kyllä"
+        },
+        "faq": [
+          {
+            "q": "Onko SoWork ilmainen?",
+            "a": "SoWorkilla on ilmaisversio enintään 10 jäsenelle, jossa on 30 minuutin aikaraja kokouksille, rajoitettu chat ja muokkaus, eikä lainkaan tallennusta, tilastoja tai tekoälyä. Basic maksaa 5,40 $ jäseneltä kuukaudessa vuosimaksulla tai 6 $ kuukausimaksulla. TinyFloor on ilmainen enintään 3 hengelle ja maksaa 29 $ kuukaudessa koko tiimiltä."
+          },
+          {
+            "q": "Mitä SoWork maksaa 10 hengelle?",
+            "a": "Basic-tilauksella 54 $ kuukaudessa vuosimaksulla tai 60 $ kuukausimaksulla. Premium-tilauksella 120 $ kuukaudessa vuosimaksulla tai 150 $ kuukausimaksulla. TinyFloor maksaa samalle tiimille 29 $ kuukaudessa."
+          },
+          {
+            "q": "Mitä SoWorkissa on, mitä TinyFloorissa ei ole?",
+            "a": "Kokousten tallennus, tekoäly-yhteenvedot ja litteroinnit (Premiumissa), kalenterisynkronointi joka asettaa tilasi, itse muokattava toimisto, tiimitilastot sekä sovellukset Macille, Windowsille, iOS:lle ja Androidille. TinyFloor toimii selaimessa eikä tallenna."
+          },
+          {
+            "q": "Onko TinyFloorin kokouksilla aikarajaa?",
+            "a": "Yhtäkään kokousta ei katkaista. Jokainen tilaus sisältää tietyn määrän ryhmäkokoustunteja kuukaudessa, eikä kahdenkeskisiä puheluita lasketa koskaan."
+          },
+          {
+            "q": "Tarvitsevatko kollegani tilin?",
+            "a": "Kyllä, ilmaisen tilin, jotta toimisto pysyy tiimin omana. Jos haluat ensin katsella ympärillesi, kokeile demotoimistoa pelkällä nimellä."
+          }
+        ]
+      },
+      "zep": {
+        "label": "ZEP-vaihtoehto",
+        "meta": {
+          "title": "Vaihtoehto ZEPille: hinnat, ilmaisversion rajat ja yksityinen toimisto",
+          "description": "ZEPin ilmaisversioon mahtuu 10 henkeä kerrallaan, ja siinä on yksi näytönjako karttaa kohden ilman salasanaa. Mitä tiimi maksaa ZEPissä, missä ZEP on parempi ja TinyFloor, yksityinen toimisto pienille tiimeille."
+        },
+        "title": "<em>ZEP-vaihtoehto</em> tiimin työpäivää varten.",
+        "subtitle": "ZEP on laaja virtuaalinen tila oppitunneille, tapahtumille ja toimistoille. TinyFloor tekee vain yhden asian: yksityisen toimiston, jossa pieni tiimi näkee kuka on paikalla ja juttelee. Ilmainen 3 hengelle, sitten 29 $ kuukaudessa koko tiimiltä.",
+        "them": {
+          "price": "Basic alkaen 4 $ käyttäjältä kuukaudessa",
+          "freePlan": "Enintään 10 henkeä kerrallaan, yksi näytönjako karttaa kohden",
+          "browser": "Kyllä, lisäksi mobiilisovellukset",
+          "screenShare": "Kyllä"
+        },
+        "faq": [
+          {
+            "q": "Onko ZEP ilmainen?",
+            "a": "ZEPillä on ilmaisversio enintään 10 samanaikaisesti yhdistetylle hengelle, jossa on yksi valokeila ja yksi näytönjako karttaa kohden sekä yksi sovellus. Salasanasuojaus, tilan piilottaminen haulta ja kirjautumispakko tulevat Basic-tilauksessa, joka maksaa 4 $ käyttäjältä kuukaudessa vuosimaksulla tai 5 $ kuukausimaksulla."
+          },
+          {
+            "q": "Onko ZEP virtuaalitoimisto?",
+            "a": "Voi olla. ZEP on yleinen virtuaalinen tila, jota käytetään oppitunteihin, tietovisoihin, tapahtumiin ja toimistoihin; viime aikoina suuri osa siitä on suunnattu opetusalalle. TinyFloor on pelkästään toimisto työtä tekevälle tiimille."
+          },
+          {
+            "q": "Mitä ZEPissä on, mitä TinyFloorissa ei ole?",
+            "a": "Itse rakennettavat ja sisustettavat kartat, tilaa suurille tapahtumille, tietovisat ja oppimistyökalut, tilaan lisättävät sovellukset, kävijätilastot ja mobiilisovellukset. Jos järjestät oppitunteja tai tapahtumia, ZEP tarjoaa paljon enemmän."
+          },
+          {
+            "q": "Onko TinyFloor-toimisto yksityinen?",
+            "a": "Kyllä, jokaisessa tilauksessa, myös ilmaisessa. Tiimi liittyy ilmaisella tilillä kutsulinkkisi kautta; kukaan ei löydä toimistoa hakemalla."
+          },
+          {
+            "q": "Toimiiko TinyFloor puhelimella?",
+            "a": "Kyllä. Se toimii mobiiliselaimissa näytön ohjaimella, joten sovellusta ei tarvitse ladata."
+          }
+        ]
+      },
+      "hybrid": {
+        "label": "Hybriditiimit",
+        "meta": {
+          "title": "Virtuaalitoimisto hybriditiimeille: Kerros toimistolle ja kotiin",
+          "description": "Virtuaalitoimisto hybriditiimeille, jotta kotona olevat eivät jää paitsi toimiston tapahtumista. Kaikki samassa kerroksessa omalta kannettavaltaan. Ilmainen 3 hengelle, sitten $29 kuukaudessa koko tiimille."
+        },
+        "title": "Yksi toimisto <em>hybriditiimille.</em>",
+        "subtitle": "Kun puolet tiimistä on toimistolla, kotona olevat jäävät paitsi siellä käytävistä keskusteluista. TinyFloor tuo kaikki samaan kerrokseen riippumatta siitä, missä he kulloinkin istuvat.",
+        "faq": [
+          {
+            "q": "Miten hybriditiimi käyttää virtuaalitoimistoa?",
+            "a": "Jokainen avaa saman toimiston omalta kannettavaltaan riippumatta siitä, onko hän kotona vai työpisteellä toimistorakennuksessa. Näin kotona olevat näkevät, kuka on paikalla, ja voivat jutella heille samalla tavalla."
+          },
+          {
+            "q": "Pitääkö toimistolla olevienkin käyttää sitä?",
+            "a": "Se on koko homman ydin. Jos vain kotona olevat ovat kerroksessa, siitä tulee odotushuone. Kun kaikki ovat mukana, kysymys kenelle tahansa on vain lyhyen kävelymatkan päässä."
+          },
+          {
+            "q": "Toimiiko TinyFloor kokoushuoneiden laitteiston kanssa?",
+            "a": "Ei. Siinä ei ole integraatiota neuvotteluhuoneiden järjestelmiin. Ihmiset liittyvät omalta kannettavaltaan tai puhelimeltaan, mieluiten kuulokkeet päässä."
+          },
+          {
+            "q": "Paljonko se maksaa?",
+            "a": "Ilmainen enintään 3 hengelle. Pro maksaa $29 kuukaudessa koko tiimille, enintään 15 hengelle, riippumatta siitä, minä päivinä he ovat toimistolla."
+          }
+        ]
+      },
+      "zepVsGather": {
+        "label": "ZEP vs Gather",
+        "meta": {
+          "title": "ZEP vs Gather: hinnat, ilmaiset paketit ja kolmas vaihtoehto",
+          "description": "ZEP ja Gather rinnakkain: mitä kumpikin maksaa, ilmaiset paketit, yksityisyys, tallennus ja mihin kumpikin on tehty, sekä mihin TinyFloor sopii pienelle tiimille, 29 $ kuukaudessa kaikilta."
+        },
+        "title": "<em>ZEP vs Gather</em>, ja kolmas vaihtoehto.",
+        "subtitle": "Molemmat ovat 2D-virtuaalitiloja, joissa kävellään ympäriinsä. ZEP on ilmainen enintään 10 hengelle kerrallaan ja painottuu oppitunteihin ja tapahtumiin; Gatherilla ei ole ilmaista pakettia, ja se on tehty etätoimistoille. TinyFloor on yksityinen toimisto pienelle tiimille yhdellä hinnalla.",
+        "faq": [
+          {
+            "q": "Kumpi on halvempi, ZEP vai Gather?",
+            "a": "ZEP. Sen ilmainen paketti kattaa enintään 10 yhtäaikaista käyttäjää, ja Basic maksaa 4–5 $ käyttäjältä kuukaudessa. Gatherilla ei ole ilmaista pakettia, ja se maksaa 12 $ jäseneltä kuukaudessa vuosilaskutuksella tai 15 $ kuukausittain. TinyFloor on ilmainen 3 hengelle ja maksaa 29 $ kuukaudessa koko tiimiltä."
+          },
+          {
+            "q": "Kumpi sopii paremmin etätiimin toimistoksi?",
+            "a": "Gather on tehty toimistoille, ja siinä on työpisteet, tallennus ja tietokonesovellus. ZEP voi myös olla toimisto, mutta suuri osa siitä on nykyään suunnattu oppitunneille, tietovisoille ja tapahtumille. Pienelle tiimille, joka haluaa valmiin yksityisen toimiston, TinyFloor on yksinkertaisempi ja halvempi."
+          },
+          {
+            "q": "Ovatko ZEP ja Gather yksityisiä?",
+            "a": "Gather-tilat ovat vain omalle tiimillesi. ZEPin ilmaisessa paketissa tilaan ei voi asettaa salasanaa eikä sitä voi rajata vain kirjautuneille käyttäjille; nämä hallintatyökalut tulevat Basic-paketissa. TinyFloor-toimistot ovat yksityisiä kaikissa paketeissa."
+          },
+          {
+            "q": "Voimmeko vaihtaa TinyFlooriin myöhemmin?",
+            "a": "Kyllä. Luo toimisto, jaa yksi kutsulinkki ja kokeile sitä viikko nykyisen tilasi rinnalla. Mitään ei tarvitse siirtää."
+          }
+        ]
+      },
+      "spot": {
+        "label": "Spot-vaihtoehto",
+        "meta": {
+          "title": "Vaihtoehto Spotille: hinnat, ei ilmaisversiota ja kiinteä hinta",
+          "description": "Spot Virtualilla ei ole ilmaisversiota: 30 päivän kokeilujakson jälkeen se maksaa 4,80–10 $ käyttäjältä kuukaudessa. Mitä pieni tiimi maksaa, missä Spot on parempi ja TinyFloor 29 $:lla koko tiimiltä."
+        },
+        "title": "<em>Spot-vaihtoehto</em> yhdellä hinnalla koko tiimille.",
+        "subtitle": "Spot Virtual laskuttaa jokaisesta käyttäjästä eikä sillä ole ilmaisversiota 30 päivän kokeilujakson jälkeen. TinyFloor on ilmainen enintään 3 hengelle, sitten yksi hinta koko tiimille: 29 $ kuukaudessa.",
+        "them": {
+          "price": "Basic alkaen 4,80 $ käyttäjältä kuukaudessa",
+          "freePlan": "Ei ole, vain 30 päivän kokeilujakso",
+          "browser": "Kyllä, lisäksi työpöytäsovellus",
+          "screenShare": "Kyllä"
+        },
+        "faq": [
+          {
+            "q": "Mitä Spot Virtual maksaa?",
+            "a": "Basic maksaa 4,80 $ käyttäjältä kuukaudessa vuosimaksulla tai 6 $ kuukausimaksulla. Growth, joka sisältää täysin muokattavan toimiston, HD-äänen ja -videon sekä live-tuen, maksaa 8 $ tai 10 $. Enterprise vähintään 50 hengelle hinnoitellaan erikseen. TinyFloor maksaa koko tiimiltä 29 $ kuukaudessa."
+          },
+          {
+            "q": "Onko Spotilla ilmaisversiota?",
+            "a": "Ei ole. Spotilla on 30 päivän ilmainen kokeilujakso, jonka jälkeen jokainen käyttäjä tarvitsee maksullisen tilauksen. TinyFloor on ilmainen enintään 3 hengelle kaikilla ominaisuuksilla niin pitkään kuin haluatte."
+          },
+          {
+            "q": "Mitä Spot maksaa 10 hengelle?",
+            "a": "Basic-tilauksella 48 $ kuukaudessa vuosimaksulla tai 60 $ kuukausimaksulla. Growth-tilauksella 80 $ kuukaudessa vuosimaksulla tai 100 $ kuukausimaksulla. TinyFloor maksaa samalle tiimille 29 $ kuukaudessa."
+          },
+          {
+            "q": "Mitä Spotissa on, mitä TinyFloorissa ei ole?",
+            "a": "Itse suunniteltava toimisto omalla brändäyksellä, pohjaratkaisuilla ja sisustuksella, Slackin kaltaiset chat-kanavat, työpöytäsovellus, tapahtumat alkaen 3 $ henkilöltä päivässä sekä Enterprisessa kertakirjautuminen. TinyFloorissa on yksi valmis toimisto ja se toimii selaimessa."
+          }
+        ]
       }
     },
     "teams": "Tiimit",
@@ -933,8 +1094,8 @@
       },
       "teams": {
         "meta": {
-          "title": "TinyFloor kehitys- ja designtiimeille, startupeille ja toimistoille",
-          "description": "Virtuaalitoimisto, joka sopii tiimisi tapaan tehdä töitä: kehitystiimeille, designtiimeille, startupeille ja toimistoille."
+          "title": "TinyFloor kehitys-, suunnittelu-, startup-, toimisto- ja hybriditiimeille",
+          "description": "Virtuaalitoimisto, joka on muotoiltu tiiminne työtapojen mukaan. Kehitystiimeille, suunnittelutiimeille, startupeille, toimistoille ja hybriditiimeille."
         },
         "title": "Tehty <em>kaltaisillesi tiimeille.</em>",
         "body": "Jokainen tiimi käyttää kerrosta vähän eri tavalla. Näin se sopii teille."

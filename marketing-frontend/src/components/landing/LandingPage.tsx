@@ -50,14 +50,12 @@ type Row = (typeof COMPARE_ROWS)[number];
 
 interface LandingCopy {
   subtitle: string;
-  points: Array<{ title: string; body: string }>;
+  /** A page without its own article (lib/landing-articles): three short points. */
+  points?: Array<{ title: string; body: string }>;
   /** The other product, row by row. A row it has no answer for is left out of the table. */
   them?: Partial<Record<Row, string>>;
   /** Feature pages: a few words for the nav's Product menu. */
   line?: string;
-  /** Team, use-case and feature pages: three moments of the day, each with a short label (a time, a size, a step). */
-  momentsTitle?: string;
-  moments?: Array<{ label: string; title: string; body: string }>;
   faq: Array<{ q: string; a: string }>;
 }
 
@@ -179,21 +177,17 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
         </div>
       ) : (
         <Points
-          items={copy.points.map((point, index) => {
+          items={(copy.points ?? []).map((point, index) => {
             const Icon = icons[index % icons.length];
             return { icon: <Icon />, title: point.title, body: point.body };
           })}
         />
       )}
 
-      {!article && copy.moments && copy.momentsTitle && (
-        <Moments title={emphasised(copy.momentsTitle, locale, "text-muted-foreground/75")} items={copy.moments} />
-      )}
-
       {others.length > 0 && <Compare title={compareTitle} note={note} others={others} t={t} />}
 
-      {/* The home page's three moments, for pages that have no day of their own to show. */}
-      {!copy.moments && !article && <FloorMoments className={SECTION_GAP} />}
+      {/* The home page's three moments, for a page without its own article. */}
+      {!article && <FloorMoments className={SECTION_GAP} />}
 
       <div className={SECTION}>
         <Questions items={copy.faq} title={t.rich("faqTitle", { em: quiet })} />
@@ -264,34 +258,6 @@ function Points({ items }: { items: Array<{ icon: ReactNode; title: string; body
           </li>
         ))}
       </ul>
-    </section>
-  );
-}
-
-/**
- * Three moments of the day as a timeline: a rail with a dot for each, its
- * label (a time, a team size, a step) by the dot. Across on wide screens,
- * down the side on a phone.
- */
-function Moments({ title, items }: { title: ReactNode; items: NonNullable<LandingCopy["moments"]> }) {
-  return (
-    <section className={cn(COLUMN, SECTION)}>
-      <h2 className={cn(H2, CJK_HEADLINE, "mx-auto max-w-[20ch] text-center")}>{title}</h2>
-      <ol className="relative mx-auto mt-12 grid max-w-[1040px] gap-8 ps-8 sm:mt-16 md:grid-cols-3 md:gap-6 md:ps-0 md:pt-10">
-        {/* The rail: down the side on a phone, across the top on wider screens. */}
-        <span aria-hidden className="absolute bottom-2 start-[7px] top-2 w-0.5 rounded-full bg-foreground/10 md:inset-x-0 md:bottom-auto md:top-[6px] md:h-0.5 md:w-auto" />
-        {items.map((one) => (
-          <li key={one.title} className="relative">
-            <span
-              aria-hidden
-              className="absolute -start-8 top-1 size-[15px] rounded-full border-[3px] border-background bg-brand shadow-[0_0_0_1px_var(--ui-border)] md:-top-10 md:start-0"
-            />
-            <p className="text-[13px] font-medium tabular-nums text-brand">{one.label}</p>
-            <h3 className="mt-2 text-[18px] font-semibold tracking-[-0.01em]">{one.title}</h3>
-            <p className="mt-2 max-w-[22rem] text-[15px] leading-[1.6] text-muted-foreground">{one.body}</p>
-          </li>
-        ))}
-      </ol>
     </section>
   );
 }

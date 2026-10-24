@@ -10,7 +10,8 @@ import {
   type LandingGroup,
   type LandingKey,
 } from "@/lib/landings";
-import { GUIDES, GUIDES_PATH, guidePath, type GuideKey } from "@/lib/guides";
+import { GUIDES, GUIDES_PATH, guidePath, type GuideKey, type GuideSection } from "@/lib/guides";
+import { landingArticle } from "@/lib/landing-articles";
 import { guideCopies } from "@/lib/guide-copy";
 import { PLANS } from "@/lib/plans";
 import { foundingOpen } from "@/lib/founding";
@@ -29,10 +30,8 @@ interface PageCopy {
   label: string;
   meta: { title: string; description: string };
   subtitle: string;
-  points: Array<{ title: string; body: string }>;
+  points?: Array<{ title: string; body: string }>;
   them?: Partial<Record<Row, string>>;
-  momentsTitle?: string;
-  moments?: Array<{ label: string; title: string; body: string }>;
   faq: Array<{ q: string; a: string }>;
 }
 
@@ -122,6 +121,9 @@ export async function llmsTxt(): Promise<string> {
 
 export async function llmsFullTxt(): Promise<string> {
   const { text, raw, page, pagesOf, features, faq, guide } = await common();
+  const articles = Object.fromEntries(
+    await Promise.all(LANDINGS.map(async (landing) => [landing.key, await landingArticle("en", landing.key)] as const)),
+  );
 
   const plans = () => {
     const name = (key: string) => key[0].toUpperCase() + key.slice(1);
@@ -180,8 +182,40 @@ export async function llmsFullTxt(): Promise<string> {
     ];
   };
 
+  // Links to the site's own pages, written `[words](/path)`, made whole.
+  const linked = (value: string) => value.replace(/\]\((\/[^)]*)\)/g, (_, to: string) => `](${url(to)})`);
+
+  /** Long text in sections, as a guide or a page's article reads; numbered items count on through the text, as on the page. */
+  const sections = (list: GuideSection[]) => {
+    let number = 0;
+    return list.flatMap((section) => [
+      `#### ${section.title}`,
+      "",
+      ...(section.body ?? []).flatMap((paragraph) => [linked(paragraph), ""]),
+      ...(section.items ?? []).map((item) =>
+        item.detail
+          ? `${++number}. **${item.title}** (${item.detail}): ${linked(item.body)}`
+          : section.numbered
+            ? `${++number}. **${item.title}** ${linked(item.body)}`
+            : `- **${item.title}:** ${linked(item.body)}`,
+      ),
+      ...(section.items ? [""] : []),
+      ...(section.table
+        ? [
+            `| ${section.table.head.join(" | ")} |`,
+            `|${section.table.head.map(() => "---").join("|")}|`,
+            ...section.table.rows.map((row) => `| ${row.join(" | ")} |`),
+            "",
+            ...(section.table.note ? [section.table.note, ""] : []),
+          ]
+        : []),
+    ]);
+  };
+
+  /** A page: its own article where it has one, as the page shows it; otherwise its short points. */
   const landingPage = (landing: Landing) => {
     const copy = page(landing.key);
+    const article = articles[landing.key];
     return [
       `### ${copy.meta.title}`,
       "",
@@ -189,29 +223,15 @@ export async function llmsFullTxt(): Promise<string> {
       "",
       copy.subtitle,
       "",
-      ...copy.points.map((point) => `- **${point.title}:** ${point.body}`),
-      "",
-      ...(copy.moments && copy.momentsTitle
-        ? [
-            `${plain(copy.momentsTitle)}`,
-            "",
-            ...copy.moments.map((one) =>
-              /^\d+$/.test(one.label)
-                ? `${one.label}. **${one.title}:** ${one.body}`
-                : `- **${one.label}, ${one.title.toLowerCase()}:** ${one.body}`,
-            ),
-            "",
-          ]
-        : []),
+      ...(article ? sections(article) : [...(copy.points ?? []).map((point) => `- **${point.title}:** ${point.body}`), ""]),
       ...table(landing, copy),
       ...copy.faq.flatMap(({ q, a }) => [`**${q}** ${a}`, ""]),
     ];
   };
 
-  /** A guide, section by section; numbered items count on through the guide, as on the page. */
+  /** A guide, section by section. */
   const guidePage = (key: GuideKey, path: string) => {
     const copy = guide(key);
-    let number = 0;
     return [
       `### ${copy.meta.title}`,
       "",
@@ -219,24 +239,7 @@ export async function llmsFullTxt(): Promise<string> {
       "",
       copy.intro,
       "",
-      ...copy.sections.flatMap((section) => [
-        `#### ${section.title}`,
-        "",
-        ...(section.body ?? []).flatMap((paragraph) => [paragraph, ""]),
-        ...(section.items ?? []).map((item) =>
-          item.detail ? `${++number}. **${item.title}** (${item.detail}): ${item.body}` : `- **${item.title}:** ${item.body}`,
-        ),
-        ...(section.items ? [""] : []),
-        ...(section.table
-          ? [
-              `| ${section.table.head.join(" | ")} |`,
-              `|${section.table.head.map(() => "---").join("|")}|`,
-              ...section.table.rows.map((row) => `| ${row.join(" | ")} |`),
-              "",
-              ...(section.table.note ? [section.table.note, ""] : []),
-            ]
-          : []),
-      ]),
+      ...sections(copy.sections),
       `#### ${copy.fit.title}`,
       "",
       copy.fit.body,

@@ -1,4 +1,6 @@
+import type { ReactNode } from "react";
 import type { GuideSection } from "@/lib/guides";
+import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { cn } from "@/lib/utils";
 import { CJK_HEADLINE } from "@/components/home/Blocks";
 
@@ -7,13 +9,26 @@ export const READ = "mx-auto w-full max-w-[44rem]";
 
 type Numbered = Omit<GuideSection, "items"> & { items?: Array<NonNullable<GuideSection["items"]>[number] & { number: number }> };
 
-/** Items with a detail line (an activity, a product reviewed) are numbered on through the whole text. */
+/** Items with a detail line (an activity, a product reviewed), or in a numbered section, are numbered on through the whole text. */
 export function numberItems(sections: GuideSection[]): Numbered[] {
   let number = 0;
   return sections.map((section) => ({
     ...section,
-    items: section.items?.map((item) => ({ ...item, number: item.detail ? ++number : 0 })),
+    items: section.items?.map((item) => ({ ...item, number: item.detail || section.numbered ? ++number : 0 })),
   }));
+}
+
+/** Text with its `[words](/path)` parts as links to the site's own pages, in the reader's language. */
+export function linked(text: string): ReactNode {
+  return text.split(/\[([^\]]+)\]\((\/[^)]*)\)/).map((part, i, parts) =>
+    i % 3 === 1 ? (
+      <Link key={i} href={parts[i + 1]} className="text-foreground underline decoration-foreground/25 underline-offset-[3px] transition-colors hover:decoration-foreground">
+        {part}
+      </Link>
+    ) : i % 3 === 2 ? null : (
+      part
+    ),
+  );
 }
 
 /** A list of the sections, each linking to its place below. */
@@ -46,7 +61,7 @@ export function ArticleSections({ sections, first = 1 }: { sections: Numbered[];
       <h2 className={cn("text-balance text-[27px] font-normal leading-[1.12] tracking-[-0.035em] sm:text-[34px]", CJK_HEADLINE)}>{section.title}</h2>
       {section.body?.map((paragraph) => (
         <p key={paragraph} className="mt-5 text-pretty text-[17px] leading-[1.75] text-foreground/80">
-          {paragraph}
+          {linked(paragraph)}
         </p>
       ))}
       {section.items && section.items.some((item) => item.number) ? (
@@ -58,7 +73,7 @@ export function ArticleSections({ sections, first = 1 }: { sections: Numbered[];
                 <div className="min-w-0">
                   <h3 className="text-[18px] font-semibold tracking-[-0.01em]">{item.title}</h3>
                   {item.detail && <p className="mt-1 text-[13px] text-faint">{item.detail}</p>}
-                  <p className="mt-2.5 text-[15.5px] leading-[1.65] text-muted-foreground">{item.body}</p>
+                  <p className="mt-2.5 text-[15.5px] leading-[1.65] text-muted-foreground">{linked(item.body)}</p>
                 </div>
               </div>
             </li>
@@ -70,7 +85,7 @@ export function ArticleSections({ sections, first = 1 }: { sections: Numbered[];
             {section.items.map((item) => (
               <li key={item.title} className="relative ps-6 text-[17px] leading-[1.7] text-foreground/80">
                 <span aria-hidden className="absolute start-0 top-[0.7em] size-1.5 rounded-full bg-brand" />
-                <strong className="font-semibold text-foreground">{item.title}.</strong> {item.body}
+                <strong className="font-semibold text-foreground">{item.title}.</strong> {linked(item.body)}
               </li>
             ))}
           </ul>

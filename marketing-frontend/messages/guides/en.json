@@ -105,7 +105,7 @@
       {
         "title": "An hour, once a month or a quarter",
         "body": [
-          "Bigger events need some planning or a small budget. Run them less often and make them count."
+          "Bigger events need some planning or a small budget. Run them less often and make them count. For a team social, see our [virtual happy hour ideas](/guides/virtual-happy-hour-ideas)."
         ],
         "items": [
           {
@@ -387,7 +387,7 @@
           },
           {
             "title": "Give new people a buddy",
-            "body": "Onboarding should be a person, not just a document: someone to ask the silly questions in the first month."
+            "body": "Onboarding should be a person, not just a document: someone to ask the silly questions in the first month. Our [remote onboarding checklist](/guides/remote-onboarding-checklist) covers the rest."
           },
           {
             "title": "Celebrate in public",
@@ -475,8 +475,8 @@
   "remoteCommunication": {
     "label": "Remote team communication",
     "meta": {
-      "title": "Remote Team Communication: When to Write and When to Talk",
-      "description": "A practical guide to remote team communication: when to write, when to talk, simple team rules and fixes for the most common problems."
+      "title": "Remote Team Communication: Tools, Rules and When to Talk",
+      "description": "A practical guide to remote team communication: when to write, when to talk, the tools for each, simple team rules and fixes for the most common problems."
     },
     "title": "Remote team communication: <em>when to write, when to talk.</em>",
     "intro": "Most communication problems on remote teams come from using the wrong mode: a long thread that should have been a two-minute call, or a meeting that should have been a message. Here's how to choose, and a few simple rules to agree as a team.",
@@ -524,6 +524,34 @@
         ]
       },
       {
+        "title": "The tools for each kind of conversation",
+        "body": [
+          "Give each kind of conversation one home, so nobody has to guess where to look. Our [guide to remote work tools](/guides/remote-work-tools) covers each in more depth."
+        ],
+        "items": [
+          {
+            "title": "Chat",
+            "detail": "Slack, Microsoft Teams, Google Chat",
+            "body": "Questions and updates that can wait a few minutes. Channels by topic, threads for replies."
+          },
+          {
+            "title": "Meetings",
+            "detail": "Google Meet, Zoom, Microsoft Teams",
+            "body": "Scheduled conversations that need everyone at once, with an agenda first and decisions written down after."
+          },
+          {
+            "title": "Presence",
+            "detail": "A virtual office or an open voice channel",
+            "body": "Quick conversations right now, and seeing who's free before you interrupt."
+          },
+          {
+            "title": "Docs",
+            "detail": "Notion, Google Docs, Confluence",
+            "body": "Anything people will need again: decisions, how-tos and the team handbook."
+          }
+        ]
+      },
+      {
         "title": "Simple rules to agree as a team",
         "body": [
           "Write these down once and point new people to them. They prevent most of the friction."
@@ -564,7 +592,7 @@
           },
           {
             "title": "Too many meetings",
-            "body": "Replace status meetings with written updates and keep calls for decisions and problems."
+            "body": "Replace status meetings with [written updates](/guides/async-communication) and keep calls for decisions and problems."
           },
           {
             "title": "People go quiet",
@@ -704,10 +732,10 @@
   "bestVirtualOffice": {
     "label": "Best virtual office software",
     "meta": {
-      "title": "Best Virtual Office Software in 2026, Honestly Compared",
+      "title": "Best Virtual Office Software for Remote Teams (2026 Comparison)",
       "description": "Nine virtual offices for remote teams compared on price, free plan and what each is best at, with what a team of 10 pays each month."
     },
-    "title": "The best virtual office software in <em>2026, honestly compared.</em>",
+    "title": "The best virtual office software for remote teams, <em>honestly compared.</em>",
     "intro": "A virtual office gives a remote team one place to be all day: you see who's around and talk by walking up to them, not by sending a link. Here are the nine worth looking at, what each costs and who each is for. We make TinyFloor, so we're not neutral; we say where each product is stronger than ours, and every price comes from its own pricing page, checked in October 2026.",
     "sections": [
       {
@@ -1194,6 +1222,1646 @@
       {
         "q": "What is a cheaper alternative to Gather?",
         "a": "TinyFloor is $29 a month for the whole team and free for up to 3. SoWork's Basic plan is $5.40 a member a month billed yearly, and its free plan covers 10 members with 30-minute meetings."
+      }
+    ]
+  },
+  "remoteTools": {
+    "label": "Remote work tools",
+    "meta": {
+      "title": "Remote Work Tools for Small Teams: What You Actually Need in 2026",
+      "description": "The remote work tools a small team needs, job by job: chat, meetings, presence, docs, tasks and time zones. A short list, starter stacks and how to choose."
+    },
+    "title": "Remote work tools for small teams: <em>what you actually need.</em>",
+    "intro": "A small remote team doesn't need twenty apps. It needs one good tool for each of six jobs: talking later, talking on a schedule, talking right away, writing things down, tracking work and working across time zones. Here is what each job needs, the tools worth a look, and three starter stacks for a team of 3 to 15.",
+    "sections": [
+      {
+        "title": "The six jobs at a glance",
+        "body": [
+          "Most friction in remote work comes from using the wrong place for the job: a quick question that turns into a meeting, or a decision buried in chat. Give every job one home."
+        ],
+        "table": {
+          "head": [
+            "Job",
+            "What it's for",
+            "Tools worth a look"
+          ],
+          "rows": [
+            [
+              "Chat",
+              "Questions and updates that can wait a few minutes",
+              "Slack, Microsoft Teams, Discord, Google Chat"
+            ],
+            [
+              "Meetings",
+              "Scheduled calls with video and screen sharing",
+              "Google Meet, Zoom, Microsoft Teams"
+            ],
+            [
+              "Presence",
+              "Seeing who's around and talking right away",
+              "A virtual office such as TinyFloor, or an open voice channel"
+            ],
+            [
+              "Docs",
+              "Decisions, how-tos and anything needed again",
+              "Notion, Google Docs, Confluence"
+            ],
+            [
+              "Tasks",
+              "Who is doing what, and by when",
+              "Linear, Trello, Asana, GitHub Issues"
+            ],
+            [
+              "Time zones",
+              "Finding hours that work for everyone",
+              "Shared calendars and a time zone planner"
+            ]
+          ],
+          "note": "Not a ranking: each is a common choice for that job. Free plans and their limits change, so check each tool's own pricing page."
+        }
+      },
+      {
+        "title": "Chat: talking later",
+        "body": [
+          "Chat is where most remote work happens, so pick one app and stick to it. Make channels by topic or project rather than by person, so answers are easy to find later."
+        ],
+        "items": [
+          {
+            "title": "Slack",
+            "detail": "Most software and agency teams",
+            "body": "Channels, threads and a huge range of integrations. The free plan limits how far back you can see, which starts to matter once the team relies on it."
+          },
+          {
+            "title": "Microsoft Teams",
+            "detail": "Teams already on Microsoft 365",
+            "body": "Chat, meetings and files in one place, and often already paid for."
+          },
+          {
+            "title": "Discord",
+            "detail": "Very small, informal teams",
+            "body": "Free, with good voice channels. It's built for communities and gaming, so admin tools and search are thinner for work."
+          },
+          {
+            "title": "Google Chat",
+            "detail": "Teams on Google Workspace",
+            "body": "Included with Workspace and tied into Gmail and Docs, though simpler than Slack."
+          }
+        ]
+      },
+      {
+        "title": "Meetings: talking on a schedule",
+        "body": [
+          "Meetings are for what needs everyone at once: planning, reviews, hard conversations. Keep them short, share an agenda first, and write down what was decided."
+        ],
+        "items": [
+          {
+            "title": "Google Meet",
+            "detail": "Teams who want nothing to install",
+            "body": "Runs in the browser and comes with Google Workspace."
+          },
+          {
+            "title": "Zoom",
+            "detail": "Large calls and patchy connections",
+            "body": "Reliable with big groups and slow internet, with good recording. Free meetings have a time limit."
+          },
+          {
+            "title": "Microsoft Teams",
+            "detail": "Teams that already chat in Teams",
+            "body": "Keeps calls next to the conversation they came from."
+          }
+        ]
+      },
+      {
+        "title": "Presence: talking right away",
+        "body": [
+          "This is the job most remote teams leave empty. In an office you can see who's free and ask a quick question in passing. Remotely, every question becomes a message or a booked call, and small things wait.",
+          "A [virtual office](/virtual-office) fills that gap: a shared space where you see who's around, who's in a meeting and who wants quiet, and start talking without booking anything."
+        ],
+        "items": [
+          {
+            "title": "A virtual office",
+            "detail": "Teams that want to feel together all day",
+            "body": "A shared floor in the browser, like TinyFloor: walk up to someone to talk, step into a room to meet, and see at a glance who's around."
+          },
+          {
+            "title": "An open voice channel",
+            "detail": "Very small teams on Slack or Discord",
+            "body": "A huddle or voice channel left open for people to drop into. Simple, but you can't see who's busy or focused."
+          },
+          {
+            "title": "Clear status messages",
+            "detail": "Every team, whatever else it uses",
+            "body": "\"In a meeting\", \"heads down\" or \"back at 2\" saves a lot of \"are you there?\" messages."
+          }
+        ]
+      },
+      {
+        "title": "Docs: writing things down",
+        "body": [
+          "Anything people will ask about twice belongs in a doc, not in chat: how you work, what was decided and why, how to set up a laptop. A short team handbook saves every new person weeks."
+        ],
+        "items": [
+          {
+            "title": "Notion",
+            "detail": "Handbooks, wikis and planning",
+            "body": "Docs, wikis and simple databases in one place."
+          },
+          {
+            "title": "Google Docs",
+            "detail": "Quick shared writing",
+            "body": "Fast to share and edit together, and everyone already knows how to use it."
+          },
+          {
+            "title": "Confluence",
+            "detail": "Teams already on Jira",
+            "body": "Common in larger teams that plan their work in Jira."
+          }
+        ]
+      },
+      {
+        "title": "Tasks: who is doing what",
+        "body": [
+          "One shared board, kept current, ends most \"what's the status?\" messages. Pick one that matches how technical your team is."
+        ],
+        "items": [
+          {
+            "title": "Linear",
+            "detail": "Software teams",
+            "body": "Fast and opinionated, built around issues, cycles and projects."
+          },
+          {
+            "title": "Trello",
+            "detail": "Anyone, in minutes",
+            "body": "Simple boards and cards that need no explaining."
+          },
+          {
+            "title": "Asana",
+            "detail": "Non-technical teams",
+            "body": "Projects, timelines and workload views."
+          },
+          {
+            "title": "GitHub Issues",
+            "detail": "Small engineering teams",
+            "body": "Enough if your work already lives on GitHub."
+          }
+        ]
+      },
+      {
+        "title": "Time zones and written updates",
+        "body": [
+          "Teams spread across time zones need fewer live meetings and better written updates. Agree on a few hours of overlap, share calendars, and replace the daily standup call with a written check-in where you can. Our guide to [async communication](/guides/async-communication) shows how."
+        ],
+        "items": [
+          {
+            "title": "A time zone planner",
+            "body": "Find hours that work for everyone before you book. Our free [time zone meeting planner](/tools/time-zone-meeting-planner) shows the overlap at a glance."
+          },
+          {
+            "title": "A written standup",
+            "body": "Yesterday, today and anything blocking, posted in one channel. Our free [daily standup template](/tools/daily-standup-template) gives you a format to copy."
+          },
+          {
+            "title": "Short screen recordings",
+            "body": "A two-minute recording, with a tool like Loom, often explains more than a long message."
+          }
+        ]
+      },
+      {
+        "title": "Three starter stacks",
+        "body": [
+          "Start small. You can always add a tool later; taking one away is harder."
+        ],
+        "items": [
+          {
+            "title": "The free stack",
+            "body": "A team of 2 or 3 with no budget: Slack's free plan or Discord for chat, Google Meet for calls, Google Docs for writing, Trello for tasks, and TinyFloor's free plan as the office."
+          },
+          {
+            "title": "The Google stack",
+            "body": "Teams on Google Workspace: Google Chat, Meet, Docs and Calendar, with Linear or Trello for tasks and a virtual office for the time between meetings."
+          },
+          {
+            "title": "The Microsoft stack",
+            "body": "Teams on Microsoft 365: Teams for chat and meetings, SharePoint or OneNote for docs, Planner for tasks, and a virtual office for presence."
+          }
+        ]
+      },
+      {
+        "title": "How to choose",
+        "items": [
+          {
+            "title": "One home for each job",
+            "body": "Two chat apps means every question gets asked twice. Decide where each kind of thing goes, and write it down."
+          },
+          {
+            "title": "Start on free plans",
+            "body": "Most of these tools have one. Use it for a month, then pay for the tools the team actually opens every day."
+          },
+          {
+            "title": "Fewer tools, used well",
+            "body": "Every new tool is one more place to check. Add one only when a job has no home."
+          },
+          {
+            "title": "Check where your data lives",
+            "body": "If you work with customers in Europe or for a strict employer, read each tool's privacy and data location pages before you commit."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "TinyFloor covers the presence job: a virtual office in the browser where your team sees who's around and walks over to talk, with a meeting room, chat and screen sharing built in. It works alongside your chat, docs and task tools rather than replacing them. It's free for up to 3 people, so you can try it with your team today."
+    },
+    "faq": [
+      {
+        "q": "What tools do remote teams need?",
+        "a": "Most small remote teams need one tool for each of six jobs: chat, meetings, presence (seeing who's around), docs, tasks and time zones. Many cover them with four or five apps."
+      },
+      {
+        "q": "What are the best free tools for a remote team?",
+        "a": "There's no single answer, but Slack's free plan or Discord, Google Meet, Google Docs and Trello cover most jobs for a small team, and TinyFloor is free for up to 3 people."
+      },
+      {
+        "q": "Does a remote team need a virtual office?",
+        "a": "Not always. If chat and booked calls work well for you, you may not. If small questions keep turning into meetings, or people feel cut off, a virtual office fills that gap."
+      },
+      {
+        "q": "How many tools is too many?",
+        "a": "If people often don't know where to post something or where to find it, you have too many. One home for each job is a good rule."
+      },
+      {
+        "q": "Slack or Microsoft Teams?",
+        "a": "If your company already pays for Microsoft 365, Teams is usually the simpler choice. Otherwise most small software and agency teams prefer Slack."
+      }
+    ]
+  },
+  "manageRemote": {
+    "label": "How to manage a remote team",
+    "meta": {
+      "title": "How to Manage a Remote Team: 9 Practices That Work",
+      "description": "How to manage a remote team well: written ways of working, overlap hours, a simple meeting rhythm, visible work, motivation without surveillance and the mistakes to avoid."
+    },
+    "title": "How to manage a remote team <em>without micromanaging.</em>",
+    "intro": "Managing a remote team is mostly managing what you can no longer see: who's stuck, who's overloaded and who feels left out. The answer isn't more meetings or tracking software. It's clear writing, a steady rhythm, and making both work and people visible. Here's what works for small teams.",
+    "sections": [
+      {
+        "title": "What changes when the team is remote",
+        "body": [
+          "In an office a lot of management happens without trying. You notice someone looks stuck, hear about a problem in passing, and catch people between meetings. Remotely, all of that disappears unless you build it back on purpose.",
+          "Three things need more care: clarity (what we're doing and why), connection (people knowing each other) and visibility (seeing work and people without checking up on them)."
+        ]
+      },
+      {
+        "title": "Nine practices that work",
+        "items": [
+          {
+            "title": "Write down how you work",
+            "body": "A one-page team handbook: where to ask questions, how fast to reply, when to meet and where decisions live. New people read it on day one."
+          },
+          {
+            "title": "Agree on overlap hours",
+            "body": "Pick two to four hours when everyone is online for quick questions and meetings. Outside them, people work when it suits them."
+          },
+          {
+            "title": "Write first, then talk",
+            "body": "Write first for anything that needs thought. Switch to a call when a thread goes back and forth more than three times."
+          },
+          {
+            "title": "Keep a steady meeting rhythm",
+            "body": "A few predictable meetings beat many last-minute ones. There's a simple rhythm below."
+          },
+          {
+            "title": "Hold weekly one-to-ones",
+            "body": "Thirty minutes a week with each person, about them rather than status. It's where you hear about problems early. Here are [40 questions to ask](/guides/one-on-one-meeting-questions)."
+          },
+          {
+            "title": "Make work visible",
+            "body": "One shared task board, kept current, answers \"what's the status?\" before anyone asks."
+          },
+          {
+            "title": "Make presence visible",
+            "body": "Let people see who's around and who's busy, with status messages or a [virtual office](/team-presence), so they know when it's fine to interrupt."
+          },
+          {
+            "title": "Judge results, not hours",
+            "body": "Agree on what done looks like and check outcomes. Activity trackers and screenshots damage trust and measure the wrong thing."
+          },
+          {
+            "title": "Make time for the social side",
+            "body": "A short weekly social, an [icebreaker](/tools/icebreaker-questions) at the start of a meeting, a channel for non-work chat. Connection doesn't happen by accident when you're remote."
+          }
+        ]
+      },
+      {
+        "title": "A simple meeting rhythm",
+        "body": [
+          "This rhythm suits most teams of 3 to 15. Adjust the lengths, not the idea, and keep the retrospective fresh with a [new format](/guides/retrospective-ideas) now and then."
+        ],
+        "table": {
+          "head": [
+            "Meeting",
+            "How often",
+            "Length",
+            "What it's for"
+          ],
+          "rows": [
+            [
+              "Standup",
+              "Daily, or written",
+              "15 min",
+              "Today's plan and anything blocking"
+            ],
+            [
+              "Team meeting",
+              "Weekly",
+              "30 to 45 min",
+              "Priorities, decisions and wins"
+            ],
+            [
+              "One-to-one",
+              "Weekly or fortnightly",
+              "30 min",
+              "The person: growth, problems, feedback"
+            ],
+            [
+              "Retrospective",
+              "Every 2 to 4 weeks",
+              "45 min",
+              "What to keep, change and stop"
+            ],
+            [
+              "Social time",
+              "Weekly or monthly",
+              "15 to 30 min",
+              "Getting to know each other"
+            ]
+          ],
+          "note": "A written standup posted in one channel works well across time zones."
+        }
+      },
+      {
+        "title": "How to motivate a remote team",
+        "body": [
+          "Motivation comes from the same places it does in an office, but remotely it has to be said out loud more often."
+        ],
+        "items": [
+          {
+            "title": "Recognise work in public",
+            "body": "Thank people specifically, in the team channel, for what they did and why it mattered."
+          },
+          {
+            "title": "Give real ownership",
+            "body": "Hand over whole problems, not just tasks. People care more about work they decided how to do."
+          },
+          {
+            "title": "Show where the work goes",
+            "body": "Share customer feedback and results, so people see the effect of what they make."
+          },
+          {
+            "title": "Invest in growth",
+            "body": "Ask what each person wants to learn, and give them work that stretches them."
+          },
+          {
+            "title": "Protect their time",
+            "body": "Fewer meetings and quiet focus hours are a reward in themselves."
+          }
+        ]
+      },
+      {
+        "title": "Mistakes to avoid",
+        "items": [
+          {
+            "title": "Monitoring software",
+            "body": "Keystroke loggers and webcam checks tell people you don't trust them, and your best people are the first to leave."
+          },
+          {
+            "title": "Too many meetings",
+            "body": "Video calls are more tiring than meeting in person. If a meeting could be a written update, make it one."
+          },
+          {
+            "title": "Everything in private messages",
+            "body": "Work discussed in direct messages is invisible to everyone else. Default to team channels."
+          },
+          {
+            "title": "No onboarding plan",
+            "body": "New remote hires can go weeks without knowing who to ask. Give them a buddy and a [plan for their first two weeks](/guides/remote-onboarding-checklist)."
+          },
+          {
+            "title": "Ignoring time zones",
+            "body": "Rotate meeting times, write down what you can, and never make the same people take every late call."
+          }
+        ]
+      },
+      {
+        "title": "Tools that help",
+        "body": [
+          "You need fewer tools than you think: one each for chat, meetings, docs and tasks, plus a way to see who's around. Our [guide to remote work tools](/guides/remote-work-tools) goes through each job, with starter stacks for small teams."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "TinyFloor makes presence visible: a virtual office in the browser where your team sees who's around, who's in a meeting and who wants quiet, and walks over to talk. It brings back the hallway moments a remote team misses, without cameras left on or tracking. It's free for up to 3 people."
+    },
+    "faq": [
+      {
+        "q": "How do you manage a remote team well?",
+        "a": "Write down how the team works, agree on overlap hours, keep a steady meeting rhythm with weekly one-to-ones, make work and people visible, and judge results rather than hours."
+      },
+      {
+        "q": "How do you keep a remote team motivated?",
+        "a": "Recognise work in public, give people ownership, share the effect of their work, invest in their growth and make regular time to connect."
+      },
+      {
+        "q": "How often should a remote team meet?",
+        "a": "A short daily standup (or a written one), a weekly team meeting, weekly or fortnightly one-to-ones and a retrospective every few weeks is enough for most small teams."
+      },
+      {
+        "q": "Should you monitor remote employees?",
+        "a": "Activity tracking tends to damage trust without improving results. Agree on clear goals and check the outcomes instead."
+      },
+      {
+        "q": "What is hardest about managing a remote team?",
+        "a": "Seeing problems early. Without a shared office you won't notice someone is stuck or struggling unless you make room for it, which is what one-to-ones and visible presence are for."
+      }
+    ]
+  },
+  "happyHour": {
+    "label": "Virtual happy hour ideas",
+    "meta": {
+      "title": "20 Virtual Happy Hour Ideas Your Remote Team Will Actually Join",
+      "description": "20 virtual happy hour ideas for remote teams: no-prep ideas, games, activities worth a little planning and ideas for big or spread-out teams, plus how to host one people enjoy."
+    },
+    "title": "Virtual happy hour ideas <em>people actually show up for.</em>",
+    "intro": "Most virtual happy hours fail the same way: twenty people in one video call, two talking, everyone else waiting for it to end. The ones that work are short, optional and give people something to do, in groups small enough to talk. Here are 20 ideas, sorted by how much preparation they need, and how to host one.",
+    "sections": [
+      {
+        "title": "What makes a virtual happy hour work",
+        "items": [
+          {
+            "title": "Short",
+            "body": "Thirty to forty-five minutes. People stay longer when they want to, and come back when it didn't drag."
+          },
+          {
+            "title": "Optional",
+            "body": "Inside working hours, and truly optional. A happy hour people must attend is a meeting."
+          },
+          {
+            "title": "Something to do",
+            "body": "A game, a question or a theme gives quieter people an easy way in."
+          },
+          {
+            "title": "Small groups",
+            "body": "More than six or seven people in one conversation, and most of them stop talking. Split up."
+          },
+          {
+            "title": "Not about drinks",
+            "body": "Coffee, tea or a soft drink is just as welcome. Call it a social if the name puts people off."
+          }
+        ]
+      },
+      {
+        "title": "No-prep ideas",
+        "body": [
+          "Start here. Each of these works with five minutes' notice."
+        ],
+        "items": [
+          {
+            "title": "Show and tell",
+            "detail": "Any size · no prep",
+            "body": "Everyone shows one thing within reach and tells its story. A mug, a book, a plant, a pet that wandered in."
+          },
+          {
+            "title": "Two truths and a lie",
+            "detail": "Up to 10 · no prep",
+            "body": "Each person says three things about themselves; the others guess the lie. Our [two truths and a lie ideas](/tools/two-truths-and-a-lie) help anyone stuck for something to say."
+          },
+          {
+            "title": "Would you rather",
+            "detail": "Any size · no prep",
+            "body": "Read out a question, let everyone answer and defend their choice. Our [would you rather questions](/tools/would-you-rather-questions) are sorted for work."
+          },
+          {
+            "title": "Desk tour",
+            "detail": "Up to 8 · no prep",
+            "body": "Turn the camera round for thirty seconds each. It's surprising how much people learn about each other from a bookshelf."
+          },
+          {
+            "title": "Photo of the week",
+            "detail": "Any size · no prep",
+            "body": "Each person shares one photo from their week and says why they took it."
+          },
+          {
+            "title": "Question round",
+            "detail": "Any size · no prep",
+            "body": "One light question, everyone answers: best meal this year, first concert, a skill they'd like to learn. Pick from our [icebreaker questions](/tools/icebreaker-questions)."
+          }
+        ]
+      },
+      {
+        "title": "Games",
+        "body": [
+          "Games give a happy hour a shape, so nobody has to think of what to say next."
+        ],
+        "items": [
+          {
+            "title": "Trivia",
+            "detail": "Teams of 3 to 5 · 15 minutes to prepare",
+            "body": "Five rounds of five questions, one round about the company. Rotate who writes the questions each month."
+          },
+          {
+            "title": "Draw and guess",
+            "detail": "Up to 8 · no prep",
+            "body": "One person draws a word on a shared whiteboard, the rest guess. Free browser games such as skribbl.io run the rounds for you."
+          },
+          {
+            "title": "Baby photo guess",
+            "detail": "Any size · collect photos first",
+            "body": "Collect a childhood photo from each person beforehand, then show them one by one and guess who's who."
+          },
+          {
+            "title": "Team bingo",
+            "detail": "Any size · 10 minutes to prepare",
+            "body": "Bingo cards of facts about the team: \"has lived in three countries\", \"plays an instrument\". People ask each other to fill the squares."
+          },
+          {
+            "title": "Word and party games online",
+            "detail": "4 to 10 · no prep",
+            "body": "Codenames, Gartic Phone and similar browser games need only a link, and most are free."
+          }
+        ]
+      },
+      {
+        "title": "Ideas worth a little planning",
+        "body": [
+          "Keep these for once a month or a special occasion; a bit of preparation makes them feel like an event."
+        ],
+        "items": [
+          {
+            "title": "Tasting",
+            "detail": "Any size · order a week ahead",
+            "body": "Send everyone the same coffee, tea, chocolate or snacks, then taste and rate them together."
+          },
+          {
+            "title": "Cook or mix along",
+            "detail": "Up to 12 · share a list ahead",
+            "body": "One person who loves cooking leads a simple recipe or a drink, with or without alcohol."
+          },
+          {
+            "title": "Lightning talks",
+            "detail": "Up to 15 · a few days' notice",
+            "body": "Three volunteers each talk for five minutes about anything but work: a hobby, a trip, how to make bread."
+          },
+          {
+            "title": "Playlist party",
+            "detail": "Any size · collect songs first",
+            "body": "Everyone adds two songs to a shared playlist; play them and guess who picked what."
+          },
+          {
+            "title": "Online escape room",
+            "detail": "Teams of 4 to 6 · book ahead",
+            "body": "Hosted escape rooms run over video and suit teams that like puzzles. Most charge per person."
+          }
+        ]
+      },
+      {
+        "title": "Ideas for big or spread-out teams",
+        "body": [
+          "Above fifteen people, or across many time zones, one shared call stops working. Mix small groups and written formats."
+        ],
+        "items": [
+          {
+            "title": "Rotating small groups",
+            "detail": "15 people or more",
+            "body": "Groups of four for ten minutes, then reshuffle. In a virtual office people simply walk from one group to another, as at a real party."
+          },
+          {
+            "title": "Random coffee pairs",
+            "detail": "Any size · weekly or monthly",
+            "body": "Pair people at random for a fifteen-minute chat at a time that suits them both. Over a few months everyone meets everyone."
+          },
+          {
+            "title": "A happy hour that moves with the sun",
+            "detail": "Many time zones",
+            "body": "Hold it twice, at a time that suits each half of the team, or start a photo thread that runs all day."
+          },
+          {
+            "title": "Seasonal theme",
+            "detail": "Any size · a few days' notice",
+            "body": "Hats in winter, favourite snacks from home, a fancy-dress Friday. A theme gives people something to talk about before anyone speaks."
+          }
+        ]
+      },
+      {
+        "title": "How to host one",
+        "items": [
+          {
+            "title": "Pick a time inside working hours",
+            "body": "Late afternoon on a Thursday or Friday works for many teams. Across time zones, use our [time zone meeting planner](/tools/time-zone-meeting-planner) to find the overlap."
+          },
+          {
+            "title": "Invite with a plan",
+            "body": "\"30 minutes, two rounds of trivia, then chat\" gets more people than \"happy hour, 5pm\"."
+          },
+          {
+            "title": "Open with one easy question",
+            "body": "Everyone answers in a sentence. It gets every voice in the room in the first five minutes."
+          },
+          {
+            "title": "Split groups above six",
+            "body": "Use breakout rooms, or a space where people can drift between groups on their own."
+          },
+          {
+            "title": "End on time",
+            "body": "Close at the time you said. Anyone who wants to stay can, but nobody feels trapped."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "On TinyFloor a happy hour feels more like a room than a call. Everyone walks onto the same floor, small groups form where people stand, and you join a conversation by walking over, so nobody is stuck in one twenty-person grid. A whiteboard for drawing games is on the wall. It's free for up to 3 people."
+    },
+    "faq": [
+      {
+        "q": "What do you do at a virtual happy hour?",
+        "a": "Talk in small groups and do something light together: a question round, a game such as trivia or draw and guess, show and tell or a tasting."
+      },
+      {
+        "q": "How long should a virtual happy hour be?",
+        "a": "Thirty to forty-five minutes is enough for most teams. Shorter and people don't settle in; longer and the energy drops."
+      },
+      {
+        "q": "How do you make a virtual happy hour fun?",
+        "a": "Keep it optional, give it a plan, start with an easy question for everyone and split into groups of four to six so everyone talks."
+      },
+      {
+        "q": "Does a virtual happy hour need alcohol?",
+        "a": "No. Make it clear that any drink is fine, and consider calling it a social. Many of the best ideas have nothing to do with drinks."
+      },
+      {
+        "q": "How often should a remote team have a happy hour?",
+        "a": "Once a month suits most teams. A short weekly social works too, if it stays optional and short."
+      }
+    ]
+  },
+  "oneOnOne": {
+    "label": "One-on-one meeting questions",
+    "meta": {
+      "title": "40 One-on-One Meeting Questions for Managers (and to Ask Your Manager)",
+      "description": "40 one-on-one meeting questions sorted by topic: check-ins, workload, blockers, feedback, growth, the team and remote work, plus questions to ask your manager and a simple 1:1 agenda."
+    },
+    "title": "One-on-one meeting questions <em>that get real answers.</em>",
+    "intro": "A one-on-one is the one meeting that belongs to the other person. It's where a manager hears about problems early, and on a remote team, often the only place they will. Here are 40 questions, sorted by topic, a simple agenda, and how to keep the meeting from turning into a status update.",
+    "sections": [
+      {
+        "title": "How to run a good one-on-one",
+        "items": [
+          {
+            "title": "It's their meeting",
+            "body": "Let them bring topics first. Your topics come after."
+          },
+          {
+            "title": "Not a status update",
+            "body": "Status belongs on the task board. Use the time for the person: how they feel, what's in the way, where they want to go."
+          },
+          {
+            "title": "Same time, every week or two",
+            "body": "Thirty minutes, rarely moved. Cancelling often tells people they come last."
+          },
+          {
+            "title": "One shared document",
+            "body": "Both add topics during the week and note what you agreed, so nothing is lost between meetings."
+          },
+          {
+            "title": "A few questions, followed up",
+            "body": "Two good questions and a real follow-up beat ten read from a list."
+          }
+        ]
+      },
+      {
+        "title": "A simple agenda",
+        "table": {
+          "head": [
+            "Part",
+            "Time",
+            "What happens"
+          ],
+          "rows": [
+            [
+              "Check-in",
+              "5 min",
+              "How they are, in their own words"
+            ],
+            [
+              "Their topics",
+              "10 to 15 min",
+              "Whatever they brought"
+            ],
+            [
+              "Your topics",
+              "5 to 10 min",
+              "Feedback, context, changes coming"
+            ],
+            [
+              "Next steps",
+              "5 min",
+              "What each of you will do before next time"
+            ]
+          ],
+          "note": "Thirty minutes in all. If their topics run long, move yours to next time."
+        }
+      },
+      {
+        "title": "Check-in questions",
+        "numbered": true,
+        "items": [
+          {
+            "title": "How are you, really?",
+            "body": "The \"really\" invites more than \"fine\". Wait for the answer."
+          },
+          {
+            "title": "What's been on your mind this week?",
+            "body": "Open enough to bring up anything, work or not."
+          },
+          {
+            "title": "What was the best part of your week?",
+            "body": "Starts on something good and shows what energises them."
+          },
+          {
+            "title": "What drained your energy this week?",
+            "body": "Points to the work, meetings or people that wear them down."
+          },
+          {
+            "title": "On a scale of one to ten, how was your week?",
+            "body": "A quick number makes changes easy to spot over a few weeks."
+          }
+        ]
+      },
+      {
+        "title": "Workload and priorities",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Is your workload too much, too little or about right?",
+            "body": "Ask it plainly; people rarely volunteer that they're overloaded."
+          },
+          {
+            "title": "What are you working on that you think matters most?",
+            "body": "Checks that their priorities match yours."
+          },
+          {
+            "title": "Is there anything you're working on that feels pointless?",
+            "body": "Often finds work that can simply stop."
+          },
+          {
+            "title": "What would you drop if you had to?",
+            "body": "Shows what they value, and what they'd quietly like to hand off."
+          },
+          {
+            "title": "Do you have enough focus time?",
+            "body": "Too many meetings is one of the most common remote complaints."
+          }
+        ]
+      },
+      {
+        "title": "Blockers and frustrations",
+        "numbered": true,
+        "items": [
+          {
+            "title": "What's slowing you down right now?",
+            "body": "The most useful question a manager can ask, and the most often skipped."
+          },
+          {
+            "title": "Is there a decision you're waiting on?",
+            "body": "Waiting on someone else is invisible until you ask."
+          },
+          {
+            "title": "What's one thing I could do to make your work easier?",
+            "body": "Gives them permission to ask for help."
+          },
+          {
+            "title": "Is anything frustrating you that you haven't mentioned?",
+            "body": "Small frustrations grow when they go unsaid."
+          },
+          {
+            "title": "Who do you find it hard to work with, and why?",
+            "body": "Ask carefully; it surfaces friction before it becomes conflict."
+          }
+        ]
+      },
+      {
+        "title": "Feedback, both ways",
+        "numbered": true,
+        "items": [
+          {
+            "title": "What's one thing I should do differently as your manager?",
+            "body": "Ask it regularly and react calmly, or the answers stop."
+          },
+          {
+            "title": "Is there anything I do that gets in your way?",
+            "body": "A gentler form of the same question."
+          },
+          {
+            "title": "How do you like to receive feedback?",
+            "body": "Some want it written, some in the moment, some saved for the one-on-one."
+          },
+          {
+            "title": "What are you proudest of from the last month?",
+            "body": "Gives you something specific to recognise."
+          },
+          {
+            "title": "Is there feedback you'd like that you're not getting?",
+            "body": "People often want more feedback than managers think."
+          }
+        ]
+      },
+      {
+        "title": "Growth and career",
+        "numbered": true,
+        "items": [
+          {
+            "title": "What would you like to be doing in a year?",
+            "body": "Starts a career conversation without asking for a five-year plan."
+          },
+          {
+            "title": "What skill would you like to get better at?",
+            "body": "Lets you look for work that builds it."
+          },
+          {
+            "title": "What part of your work do you enjoy most?",
+            "body": "More of it is often the cheapest reward there is."
+          },
+          {
+            "title": "Is there a project you'd love to be part of?",
+            "body": "Interest is half of what makes someone good at something new."
+          },
+          {
+            "title": "Who would you like to learn from?",
+            "body": "A mentor or pairing can do more than a course."
+          }
+        ]
+      },
+      {
+        "title": "The team and the company",
+        "numbered": true,
+        "items": [
+          {
+            "title": "How do you feel about the team right now?",
+            "body": "Picks up on tension before anyone names it."
+          },
+          {
+            "title": "Is there anything about how we work that you'd change?",
+            "body": "People who do the work see what's broken first."
+          },
+          {
+            "title": "Do you understand why we're doing what we're doing?",
+            "body": "If not, the problem is the explanation, not the person."
+          },
+          {
+            "title": "Who on the team deserves more credit?",
+            "body": "A good way to hear about quiet work."
+          },
+          {
+            "title": "Is there anything you've heard that worries you?",
+            "body": "Rumours travel fast on remote teams and are rarely said out loud."
+          }
+        ]
+      },
+      {
+        "title": "Questions for remote teams",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Do you feel connected to the team?",
+            "body": "Isolation is the most common remote problem, and the least likely to be raised."
+          },
+          {
+            "title": "Do you know who to ask when you're stuck?",
+            "body": "If not, they're probably waiting quietly."
+          },
+          {
+            "title": "Are your working hours working for you?",
+            "body": "Covers time zones, late calls and the line between work and home."
+          },
+          {
+            "title": "Is your home setup slowing you down?",
+            "body": "A chair, a screen or better internet is a cheap fix."
+          },
+          {
+            "title": "Are there too many meetings, or too few?",
+            "body": "Remote teams drift into both."
+          }
+        ]
+      },
+      {
+        "title": "Questions to ask your manager",
+        "body": [
+          "One-on-ones go both ways. If you're the one being managed, these help you get more from the meeting."
+        ],
+        "numbered": true,
+        "items": [
+          {
+            "title": "What should I focus on most right now?",
+            "body": "Makes sure your effort goes where it counts."
+          },
+          {
+            "title": "What would make my work more useful to you?",
+            "body": "Shows what they need, not just what they ask for."
+          },
+          {
+            "title": "What's one thing I could do better?",
+            "body": "Ask for one thing; it's easier to answer honestly."
+          },
+          {
+            "title": "What's coming up for the team that I should know about?",
+            "body": "Context you'd otherwise hear last."
+          },
+          {
+            "title": "What would I need to show to take on more?",
+            "body": "Turns a vague wish to grow into something concrete."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "On TinyFloor a one-on-one doesn't need a calendar link: walk into a meeting room together, or step aside on the floor and talk. Between one-on-ones, you can see who's around, so a quick check-in doesn't have to wait a week. It's free for up to 3 people."
+    },
+    "faq": [
+      {
+        "q": "What should you talk about in a one-on-one?",
+        "a": "The person, not the status: how they are, what's in their way, feedback in both directions and where they want to grow."
+      },
+      {
+        "q": "How often should you have one-on-ones?",
+        "a": "Weekly or every two weeks, for about thirty minutes. Weekly suits new team members and remote teams best."
+      },
+      {
+        "q": "What are good one-on-one questions for employees to ask?",
+        "a": "What should I focus on most, what would make my work more useful, what could I do better, and what's coming up that I should know about."
+      },
+      {
+        "q": "How do you start a one-on-one?",
+        "a": "With an open check-in question such as \"How are you, really?\", then let them bring their topics before yours."
+      },
+      {
+        "q": "What should a manager avoid in a one-on-one?",
+        "a": "Turning it into a status update, talking more than listening, and cancelling or moving it often."
+      }
+    ]
+  },
+  "async": {
+    "label": "Async communication",
+    "meta": {
+      "title": "Async Communication: What It Is and How Remote Teams Do It Well",
+      "description": "What async communication is, how it differs from sync, when to use each, how to write messages that work without a reply, rituals and tools, and the problems to watch for."
+    },
+    "title": "Async communication, <em>and when to stop and talk.</em>",
+    "intro": "Async communication means sending a message without expecting an answer right away: the other person replies when it suits them. It lets remote teams work across time zones and protect focus time. It also makes simple things slow when it's used for everything. Here's how to use it well, and when to switch to a conversation instead.",
+    "sections": [
+      {
+        "title": "What async communication is",
+        "body": [
+          "Synchronous (sync) communication happens live: a call, a meeting, a chat at someone's desk. Asynchronous (async) communication doesn't: a message, a document, a comment or a recorded video that people read or watch later.",
+          "Most remote teams use both. The skill is choosing the right one for each conversation, and writing async messages that don't need three rounds of questions to understand."
+        ],
+        "table": {
+          "head": [
+            "",
+            "Sync",
+            "Async"
+          ],
+          "rows": [
+            [
+              "Examples",
+              "Calls, meetings, talking in person",
+              "Messages, docs, comments, recorded video"
+            ],
+            [
+              "Answer",
+              "Right away",
+              "Within hours, or a day"
+            ],
+            [
+              "Good for",
+              "Urgent, sensitive or tangled topics",
+              "Updates, questions that can wait, decisions that need thought"
+            ],
+            [
+              "Cost",
+              "Interrupts focus, needs shared hours",
+              "Slower round trips, more writing"
+            ]
+          ]
+        }
+      },
+      {
+        "title": "When to go async",
+        "items": [
+          {
+            "title": "Updates",
+            "body": "Status, progress and what's next. A [written standup](/tools/daily-standup-template) replaces most daily calls."
+          },
+          {
+            "title": "Questions that can wait",
+            "body": "If the answer can come this afternoon, send a message."
+          },
+          {
+            "title": "Decisions that need thought",
+            "body": "Write the proposal down and give people a day to comment. You'll get better input than in a meeting."
+          },
+          {
+            "title": "Anything across time zones",
+            "body": "When the team's hours barely overlap, async is the default and live time is for what needs it."
+          }
+        ]
+      },
+      {
+        "title": "When to talk instead",
+        "items": [
+          {
+            "title": "A thread has gone back and forth three times",
+            "body": "Two minutes of talking will settle it. Write down what you decided afterwards."
+          },
+          {
+            "title": "Someone is blocked",
+            "body": "Unblocking a teammate is worth an interruption."
+          },
+          {
+            "title": "The topic is sensitive",
+            "body": "Feedback, conflict and bad news land better in a conversation, where tone comes through."
+          },
+          {
+            "title": "You're starting something new",
+            "body": "Kickoffs and brainstorms move faster when people can build on each other's ideas live."
+          }
+        ]
+      },
+      {
+        "title": "How to write async messages that work",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Lead with the point",
+            "body": "Put the question or the decision in the first line, then the background."
+          },
+          {
+            "title": "Give all the context",
+            "body": "Links, screenshots and what you've already tried, so nobody has to ask."
+          },
+          {
+            "title": "Say what you need, and by when",
+            "body": "\"Can you review this by Thursday?\" gets an answer; \"thoughts?\" often doesn't."
+          },
+          {
+            "title": "One message, not five",
+            "body": "Write it in full before sending. A stream of short messages interrupts people five times."
+          },
+          {
+            "title": "Use threads",
+            "body": "Keep replies with the message they answer, so the channel stays readable."
+          },
+          {
+            "title": "Write the decision down",
+            "body": "When a thread ends, post the outcome in one line where people will find it."
+          }
+        ]
+      },
+      {
+        "title": "Async rituals that help",
+        "items": [
+          {
+            "title": "A written daily standup",
+            "body": "Yesterday, today and anything blocking, posted in one channel at any time in each person's morning."
+          },
+          {
+            "title": "A weekly update",
+            "body": "Each person or team writes a few lines on progress, problems and plans. Easy to skim on Monday."
+          },
+          {
+            "title": "Decision documents",
+            "body": "A short page per important decision: the problem, the options, the choice and why."
+          },
+          {
+            "title": "Recorded demos",
+            "body": "A few minutes of screen recording shows a feature better than a meeting, and people watch it when it suits them."
+          }
+        ]
+      },
+      {
+        "title": "Agree on response times",
+        "body": [
+          "Async only works when everyone knows how long \"later\" is. Write it down in your team handbook."
+        ],
+        "table": {
+          "head": [
+            "Channel",
+            "Expected reply",
+            "Use it for"
+          ],
+          "rows": [
+            [
+              "Team chat",
+              "Within a few hours",
+              "Questions and updates"
+            ],
+            [
+              "Direct message",
+              "Same day",
+              "Things for one person"
+            ],
+            [
+              "Comment on a doc or task",
+              "Within a day or two",
+              "Reviews and decisions"
+            ],
+            [
+              "Call or walk over",
+              "Right away",
+              "Urgent or blocked"
+            ]
+          ],
+          "note": "An example, not a rule: pick times that fit your team, and say what counts as urgent."
+        }
+      },
+      {
+        "title": "Problems to watch for",
+        "items": [
+          {
+            "title": "Decisions crawl",
+            "body": "Set a deadline for comments, and give one person the final say."
+          },
+          {
+            "title": "Too much to read",
+            "body": "Fewer channels, shorter messages and a weekly summary help more than reading faster."
+          },
+          {
+            "title": "People feel cut off",
+            "body": "All-async teams can feel lonely. Keep some live time: a weekly meeting, a social, or a shared space to see who's around. Our guide to [remote team communication](/guides/remote-team-communication) covers the balance."
+          },
+          {
+            "title": "Urgent things wait",
+            "body": "Agree on one clear way to reach someone right away, and keep it for what's really urgent."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "TinyFloor is the sync half that async teams miss. Your chat, docs and recordings stay where they are; when a thread stalls, you can see who's around on the floor and walk over to talk for two minutes. Statuses show who's focused, so live conversations don't cost anyone their deep work. It's free for up to 3 people."
+    },
+    "faq": [
+      {
+        "q": "What is async communication?",
+        "a": "Communication where people don't reply right away: messages, documents, comments and recorded videos that others read or watch when it suits them."
+      },
+      {
+        "q": "What's the difference between sync and async communication?",
+        "a": "Sync happens live, like a call or a meeting, and gets an answer right away. Async doesn't need everyone at once, and answers come later."
+      },
+      {
+        "q": "What are examples of async communication?",
+        "a": "A chat message, an email, a comment on a document, a written standup, a weekly update or a recorded video demo."
+      },
+      {
+        "q": "Is async communication better for remote teams?",
+        "a": "For updates, questions that can wait and teams across time zones, yes. For urgent, sensitive or tangled topics, a live conversation is usually better. Most teams need both."
+      },
+      {
+        "q": "What tools are used for async communication?",
+        "a": "Team chat with threads, shared documents, task boards and screen recording tools. Our guide to remote work tools covers each."
+      }
+    ]
+  },
+  "retro": {
+    "label": "Retrospective ideas",
+    "meta": {
+      "title": "15 Retrospective Ideas for Remote Teams (Formats and Tips)",
+      "description": "15 retrospective ideas for remote teams: quick formats, visual formats, deeper formats and ones that lift the mood, with how to run a retro online and keep the actions moving."
+    },
+    "title": "Retrospective ideas <em>for teams that are tired of the same three questions.</em>",
+    "intro": "A retrospective is a short meeting where a team looks back on a stretch of work and agrees what to change. It's one of the most useful habits a team can have, and one of the easiest to let go stale. Here are 15 formats to keep retros fresh, how to run one online, and how to make sure something actually changes afterwards.",
+    "sections": [
+      {
+        "title": "How a retro runs",
+        "body": [
+          "Whatever the format, most good retros follow the same five steps. The formats below change the middle; keep the start and the end."
+        ],
+        "table": {
+          "head": [
+            "Step",
+            "Time",
+            "What happens"
+          ],
+          "rows": [
+            [
+              "Set the stage",
+              "5 min",
+              "A quick check-in, and a reminder that it's about the work, not blame"
+            ],
+            [
+              "Gather input",
+              "10 min",
+              "Everyone writes notes on their own, then shares"
+            ],
+            [
+              "Find themes",
+              "10 to 15 min",
+              "Group the notes and vote on what matters most"
+            ],
+            [
+              "Decide actions",
+              "10 min",
+              "Two or three concrete changes, each with an owner"
+            ],
+            [
+              "Close",
+              "5 min",
+              "Check last time's actions, and a one-line round on the retro itself"
+            ]
+          ],
+          "note": "Forty-five minutes suits a team of up to ten, every two to four weeks."
+        }
+      },
+      {
+        "title": "Quick formats",
+        "body": [
+          "For short retros, or a team new to them."
+        ],
+        "items": [
+          {
+            "title": "Start, stop, continue",
+            "detail": "The classic",
+            "body": "What should we start doing, stop doing and keep doing? Simple and always useful."
+          },
+          {
+            "title": "Mad, sad, glad",
+            "detail": "For feelings, not just process",
+            "body": "What made people angry, disappointed or pleased. Good after a hard stretch."
+          },
+          {
+            "title": "Keep, add, less, more",
+            "detail": "Finer than start, stop, continue",
+            "body": "Four columns that let people suggest turning something up or down rather than on or off."
+          },
+          {
+            "title": "One word",
+            "detail": "Five minutes",
+            "body": "Each person describes the last sprint in one word, then explains it. A good opener, or a whole retro on a busy week."
+          }
+        ]
+      },
+      {
+        "title": "Visual formats",
+        "body": [
+          "Pictures make people think differently. Draw the frame on a shared whiteboard and let everyone add notes."
+        ],
+        "items": [
+          {
+            "title": "Sailboat",
+            "detail": "Wind, anchors, rocks, island",
+            "body": "The island is the goal; wind is what pushed us forward, anchors held us back, rocks are risks ahead."
+          },
+          {
+            "title": "Rose, thorn, bud",
+            "detail": "Good, bad, promising",
+            "body": "A rose is something that went well, a thorn a problem, a bud an idea or opportunity starting to grow."
+          },
+          {
+            "title": "Starfish",
+            "detail": "Five arms",
+            "body": "Keep doing, less of, more of, stop doing, start doing. Useful when start, stop, continue feels too blunt."
+          },
+          {
+            "title": "Timeline",
+            "detail": "For long or eventful stretches",
+            "body": "Draw the period as a line and let everyone mark highs and lows. Patterns show up that a list hides."
+          }
+        ]
+      },
+      {
+        "title": "Deeper formats",
+        "body": [
+          "For when a problem keeps coming back, or a project has ended."
+        ],
+        "items": [
+          {
+            "title": "Five whys",
+            "detail": "One problem, to the root",
+            "body": "Pick one problem and ask \"why?\" until you reach a cause you can change."
+          },
+          {
+            "title": "Pre-mortem",
+            "detail": "Looking ahead",
+            "body": "Imagine the next project has failed. What went wrong? Then plan to prevent the likeliest causes."
+          },
+          {
+            "title": "Lean coffee",
+            "detail": "The team sets the agenda",
+            "body": "Everyone suggests topics, the team votes, and you discuss them in order with a timer."
+          },
+          {
+            "title": "Liked, learned, lacked, longed for",
+            "detail": "After a project",
+            "body": "Four questions that balance what went well with what was missing."
+          }
+        ]
+      },
+      {
+        "title": "Formats that lift the mood",
+        "body": [
+          "After a tough release or a long quarter, start with what went right."
+        ],
+        "items": [
+          {
+            "title": "Kudos round",
+            "detail": "Ten minutes",
+            "body": "Everyone thanks someone for something specific. Then move on to what to change."
+          },
+          {
+            "title": "Three little pigs",
+            "detail": "Straw, sticks, bricks",
+            "body": "What's fragile, what holds but could be stronger, and what's solid. Light-hearted, but it finds real risks."
+          },
+          {
+            "title": "Hopes and worries",
+            "detail": "Before a big stretch",
+            "body": "What people hope for and what worries them about what's next. Pair it with a few [team building questions](/tools/team-building-questions) if the team is new."
+          }
+        ]
+      },
+      {
+        "title": "Running a retro online",
+        "items": [
+          {
+            "title": "Write first, in silence",
+            "body": "Five minutes of everyone writing notes on their own gets ideas from quiet people, not just the loudest."
+          },
+          {
+            "title": "Use a shared board",
+            "body": "A shared [online whiteboard](/online-whiteboard) or a simple doc with columns. Keep the same board from retro to retro so you can look back."
+          },
+          {
+            "title": "Keep cameras optional, voices on",
+            "body": "What matters is that people talk; nobody needs to stare at a grid of faces for forty-five minutes."
+          },
+          {
+            "title": "Rotate the facilitator",
+            "body": "Someone different each time keeps the format fresh and lets the manager just take part."
+          },
+          {
+            "title": "Allow anonymous notes when trust is low",
+            "body": "Honest input beats polite input. Move back to named notes as trust grows."
+          }
+        ]
+      },
+      {
+        "title": "Make the actions stick",
+        "items": [
+          {
+            "title": "Two or three actions, no more",
+            "body": "A long list of actions means none of them happen."
+          },
+          {
+            "title": "An owner for each",
+            "body": "\"We should\" isn't an action. A name and a date are."
+          },
+          {
+            "title": "Put them on the board",
+            "body": "Add the actions to your task board with the rest of the work, not in a separate document."
+          },
+          {
+            "title": "Open with last time's actions",
+            "body": "Start each retro by checking what happened to the last ones. It's the fastest way to show retros matter."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "On TinyFloor the retro happens where the team already is. Walk into the meeting room together, draw the sailboat on the whiteboard on the wall, and leave it up for next time. It's free for up to 3 people."
+    },
+    "faq": [
+      {
+        "q": "What is a retrospective?",
+        "a": "A short, regular meeting where a team looks back on a stretch of work, talks about what went well and what didn't, and agrees on a few changes."
+      },
+      {
+        "q": "How do you make a retrospective fun?",
+        "a": "Change the format every few retros, use visual formats such as the sailboat, open with kudos, and make sure the actions actually happen, so the time feels worth it."
+      },
+      {
+        "q": "How long should a retrospective be?",
+        "a": "About forty-five minutes for a two-week sprint and a team of up to ten. Longer projects or bigger teams may need an hour."
+      },
+      {
+        "q": "How often should a team hold a retrospective?",
+        "a": "At the end of each sprint, or every two to four weeks, plus one at the end of any big project."
+      },
+      {
+        "q": "How do you run a retrospective remotely?",
+        "a": "Use a shared board, give people a few minutes to write on their own before discussing, keep it to a few actions with owners, and rotate who facilitates."
+      }
+    ]
+  },
+  "onboardingChecklist": {
+    "label": "Remote onboarding checklist",
+    "meta": {
+      "title": "Remote Onboarding Checklist: From Before Day One to Day 90",
+      "description": "A remote onboarding checklist for managers: what to do before day one, on the first day, in the first week and the first 90 days, who owns each step, and the mistakes to avoid."
+    },
+    "title": "A remote onboarding checklist, <em>from before day one to day 90.</em>",
+    "intro": "Starting a new job remotely is lonely in a way an office isn't: no one to sit next to, no sense of who's around, and every question feels like an interruption. A good checklist fixes most of that. Here's what to do before day one, on the first day, and through the first three months, and who should own each step.",
+    "sections": [
+      {
+        "title": "Who owns what",
+        "body": [
+          "Onboarding goes wrong when everyone assumes someone else is doing it. Name an owner for each part."
+        ],
+        "table": {
+          "head": [
+            "Who",
+            "Owns"
+          ],
+          "rows": [
+            [
+              "Manager",
+              "The plan, goals for the first 90 days, weekly one-to-ones"
+            ],
+            [
+              "Buddy",
+              "Everyday questions, introductions, how things really work"
+            ],
+            [
+              "Operations or IT",
+              "Equipment, accounts, access and paperwork"
+            ],
+            [
+              "The new hire",
+              "Asking questions, writing down what was confusing, a first small piece of work"
+            ]
+          ]
+        }
+      },
+      {
+        "title": "Before day one",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Send the equipment",
+            "body": "Laptop and anything else they need, timed to arrive a few days early."
+          },
+          {
+            "title": "Create every account",
+            "body": "Email, chat, docs, the task board and anything role-specific, tested before they log in."
+          },
+          {
+            "title": "Pick a buddy",
+            "body": "A teammate who isn't their manager, with time set aside for the first two weeks."
+          },
+          {
+            "title": "Write the first-week plan",
+            "body": "Who they'll meet, what they'll read and a first small task, shared before they start."
+          },
+          {
+            "title": "Tell the team",
+            "body": "A short introduction in the team channel, so people say hello on day one."
+          },
+          {
+            "title": "Send a welcome message",
+            "body": "Start time, first meeting and who to contact if anything doesn't work."
+          }
+        ]
+      },
+      {
+        "title": "Day one",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Start with a call with the manager",
+            "body": "Welcome, the plan for the week and what good looks like in the first month."
+          },
+          {
+            "title": "Check every login works",
+            "body": "Nothing kills a first day like an afternoon waiting on access."
+          },
+          {
+            "title": "Meet the buddy",
+            "body": "A first chat, and an agreement to talk at least once a day for the first week."
+          },
+          {
+            "title": "A team welcome",
+            "body": "A short, informal call or gathering. A light [icebreaker question](/tools/icebreaker-questions) helps everyone say something."
+          },
+          {
+            "title": "Point them to the handbook",
+            "body": "How the team works, where to ask what, and where decisions live."
+          },
+          {
+            "title": "End the day with a check-in",
+            "body": "Five minutes: how was it, and what's still unclear?"
+          }
+        ]
+      },
+      {
+        "title": "The first week",
+        "numbered": true,
+        "items": [
+          {
+            "title": "One-to-one intros",
+            "body": "Fifteen minutes with each person they'll work with most."
+          },
+          {
+            "title": "Shadow real work",
+            "body": "Sit in on calls, reviews and planning, with the buddy explaining what's going on."
+          },
+          {
+            "title": "Ship something small",
+            "body": "A first task they can finish this week. Finishing something early builds confidence."
+          },
+          {
+            "title": "Agree on working hours",
+            "body": "When they're online, the team's overlap hours and how fast people usually reply."
+          },
+          {
+            "title": "First weekly one-to-one",
+            "body": "What's going well, what's confusing, and what they need."
+          }
+        ]
+      },
+      {
+        "title": "The first 30, 60 and 90 days",
+        "numbered": true,
+        "items": [
+          {
+            "title": "30 days: settled in",
+            "body": "Knows the tools, the people and how work flows. Owns small pieces of work on their own."
+          },
+          {
+            "title": "60 days: contributing",
+            "body": "Takes on bigger work with less guidance and starts to spot what could be better."
+          },
+          {
+            "title": "90 days: fully part of the team",
+            "body": "Works independently, helps others, and has had a proper review of how onboarding went."
+          },
+          {
+            "title": "Ask what to fix",
+            "body": "At 30 and 90 days, ask what was confusing or missing, and update the checklist for the next person."
+          }
+        ]
+      },
+      {
+        "title": "Remote onboarding mistakes to avoid",
+        "items": [
+          {
+            "title": "A week of reading",
+            "body": "Documents matter, but people learn faster by doing real work with someone beside them."
+          },
+          {
+            "title": "No one to ask",
+            "body": "Without a buddy, new people sit on questions for hours rather than interrupt."
+          },
+          {
+            "title": "Invisible teammates",
+            "body": "When you can't see who's around, it's hard to know when it's fine to ask. Make presence visible."
+          },
+          {
+            "title": "Too many meetings at once",
+            "body": "Spread the introductions over the first two weeks rather than ten calls on day one."
+          },
+          {
+            "title": "Onboarding stops after week one",
+            "body": "The first three months shape whether people stay. Keep the one-to-ones and the check-ins going."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "On TinyFloor a new hire can see the whole team on one floor from day one: who's around, who's in a meeting and who's free. Asking a question is a short walk, not a booked call, and the buddy is a few desks away. It's free for up to 3 people."
+    },
+    "faq": [
+      {
+        "q": "What should a remote onboarding checklist include?",
+        "a": "Equipment and accounts before day one, a buddy, a first-week plan, introductions, a small first task, weekly one-to-ones and goals for 30, 60 and 90 days."
+      },
+      {
+        "q": "How long should remote onboarding take?",
+        "a": "Most people need about three months to be fully settled, with the most support in the first two weeks."
+      },
+      {
+        "q": "How do you make remote employees feel welcome?",
+        "a": "Have everything ready on day one, give them a buddy, introduce them to the team early and check in every day in the first week."
+      },
+      {
+        "q": "What is an onboarding buddy?",
+        "a": "A teammate, not the manager, who answers everyday questions and makes introductions during a new hire's first weeks."
+      },
+      {
+        "q": "What's the hardest part of remote onboarding?",
+        "a": "Knowing who to ask and when it's fine to interrupt. A buddy and visible presence fix most of it."
       }
     ]
   }

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
-import { GUIDES, GUIDES_PATH } from "@/lib/guides";
+import { GUIDES_PATH, guidesIn } from "@/lib/guides";
 import { guideCopies } from "@/lib/guide-copy";
 import { pageMetadata } from "@/lib/seo";
 import { pageGraph } from "@/lib/structured-data";
@@ -45,7 +45,7 @@ export async function GuidesHub({ params }: Props) {
           <p className={cn(LEAD, "mt-7 max-w-[34rem] text-balance")}>{t("hub.body")}</p>
         </div>
         <ul className="mx-auto mt-14 grid max-w-[1040px] gap-3 sm:mt-20 md:grid-cols-2">
-          {GUIDES.map((guide) => (
+          {guidesIn(locale).map((guide) => (
             <li key={guide.slug}>
               <GuideCard guide={guide} title={copies[guide.key].label} description={copies[guide.key].meta.description} />
             </li>

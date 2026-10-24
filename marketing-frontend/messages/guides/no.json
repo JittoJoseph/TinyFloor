@@ -105,7 +105,7 @@
       {
         "title": "En time, én gang i måneden eller kvartalet",
         "body": [
-          "Større arrangementer krever litt planlegging eller et lite budsjett. Gjør dem sjeldnere, og gjør dem skikkelig."
+          "Større arrangementer krever litt planlegging eller et lite budsjett. Gjør dem sjeldnere, og gjør dem skikkelig. For en sosial stund med teamet, se våre [idéer til digitalt afterwork](/guides/virtual-happy-hour-ideas)."
         ],
         "items": [
           {
@@ -387,7 +387,7 @@
           },
           {
             "title": "Gi nye en fadder",
-            "body": "Onboarding skal være en person, ikke bare et dokument: noen å stille de dumme spørsmålene til den første måneden."
+            "body": "Onboarding skal være en person, ikke bare et dokument: noen å stille de dumme spørsmålene til den første måneden. Resten står i vår [sjekkliste for ekstern onboarding](/guides/remote-onboarding-checklist)."
           },
           {
             "title": "Feir offentlig",
@@ -524,6 +524,34 @@
         ]
       },
       {
+        "title": "Verktøyene for hver type samtale",
+        "body": [
+          "Gi hver type samtale ett hjem, så ingen trenger å gjette hvor de skal se. Vår guide til [verktøy for fjernarbeid](/guides/remote-work-tools) går grundigere gjennom hver av dem."
+        ],
+        "items": [
+          {
+            "title": "Chat",
+            "detail": "Slack, Microsoft Teams, Google Chat",
+            "body": "Spørsmål og oppdateringer som kan vente noen minutter. Kanaler etter tema, tråder for svar."
+          },
+          {
+            "title": "Møter",
+            "detail": "Google Meet, Zoom, Microsoft Teams",
+            "body": "Planlagte samtaler som krever alle samtidig, med agenda før og nedskrevne beslutninger etter."
+          },
+          {
+            "title": "Tilstedeværelse",
+            "detail": "Et virtuelt kontor eller en åpen talekanal",
+            "body": "Raske samtaler med en gang, og å se hvem som er ledig før du forstyrrer."
+          },
+          {
+            "title": "Dokumenter",
+            "detail": "Notion, Google Docs, Confluence",
+            "body": "Alt som trengs igjen: beslutninger, veiledninger og teamhåndboken."
+          }
+        ]
+      },
+      {
         "title": "Enkle regler teamet kan bli enige om",
         "body": [
           "Skriv dem ned én gang og vis nye dem. De forebygger det meste av friksjonen."
@@ -564,7 +592,7 @@
           },
           {
             "title": "For mange møter",
-            "body": "Bytt ut statusmøter med skriftlige oppdateringer og spar samtalene til beslutninger og problemer."
+            "body": "Bytt ut statusmøter med skriftlige oppdateringer og spar samtalene til beslutninger og problemer. Hvordan man gjør det godt, viser vår guide til [asynkron kommunikasjon](/guides/async-communication)."
           },
           {
             "title": "Folk blir stille",
@@ -1194,6 +1222,1646 @@
       {
         "q": "Hva er et billigere alternativ til Gather?",
         "a": "TinyFloor koster 29 $ i måneden for hele teamet og er gratis for opptil 3. SoWorks Basic-plan koster 5,40 $ per medlem i måneden ved årlig betaling, og gratisplanen dekker 10 medlemmer med møter på 30 minutter."
+      }
+    ]
+  },
+  "remoteTools": {
+    "label": "Verktøy for fjernarbeid",
+    "meta": {
+      "title": "Verktøy for fjernarbeid: hva et lite team virkelig trenger i 2026",
+      "description": "Verktøyene for fjernarbeid et lite team trenger, oppgave for oppgave: chat, møter, tilstedeværelse, dokumenter, oppgaver og tidssoner. En kort liste, startpakker og hvordan du velger."
+    },
+    "title": "Verktøy for fjernarbeid: <em>hva et lite team virkelig trenger.</em>",
+    "intro": "Et lite team som jobber eksternt, trenger ikke tjue apper. Det trenger ett godt verktøy for hver av seks oppgaver: snakke senere, snakke til avtalt tid, snakke med en gang, skrive ting ned, følge arbeidet og jobbe på tvers av tidssoner. Her er hva hver oppgave krever, verktøyene som er verdt en titt, og tre startpakker for et team på 3 til 15 personer.",
+    "sections": [
+      {
+        "title": "De seks oppgavene kort fortalt",
+        "body": [
+          "Det meste av friksjonen i fjernarbeid kommer av at ting havner på feil sted: et raskt spørsmål som blir et møte, eller en beslutning som forsvinner i chatten. Gi hver oppgave ett hjem."
+        ],
+        "table": {
+          "head": [
+            "Oppgave",
+            "Hva den er til",
+            "Verktøy verdt en titt"
+          ],
+          "rows": [
+            [
+              "Chat",
+              "Spørsmål og oppdateringer som kan vente noen minutter",
+              "Slack, Microsoft Teams, Discord, Google Chat"
+            ],
+            [
+              "Møter",
+              "Planlagte samtaler med video og skjermdeling",
+              "Google Meet, Zoom, Microsoft Teams"
+            ],
+            [
+              "Tilstedeværelse",
+              "Se hvem som er der, og snakke med en gang",
+              "Et virtuelt kontor som TinyFloor, eller en åpen talekanal"
+            ],
+            [
+              "Dokumenter",
+              "Beslutninger, veiledninger og alt som trengs igjen",
+              "Notion, Google Docs, Confluence"
+            ],
+            [
+              "Oppgaver",
+              "Hvem gjør hva, og innen når",
+              "Linear, Trello, Asana, GitHub Issues"
+            ],
+            [
+              "Tidssoner",
+              "Finne tider som passer alle",
+              "Delte kalendere og en tidssoneplanlegger"
+            ]
+          ],
+          "note": "Ikke en rangering: hvert er et vanlig valg for oppgaven. Gratisplaner og grensene deres endres, så sjekk prissiden til hvert verktøy."
+        }
+      },
+      {
+        "title": "Chat: snakke senere",
+        "body": [
+          "Mesteparten av fjernarbeidet skjer i chatten, så velg én app og hold deg til den. Lag kanaler etter tema eller prosjekt i stedet for etter person, så svarene er lette å finne igjen."
+        ],
+        "items": [
+          {
+            "title": "Slack",
+            "detail": "De fleste programvareteam og byråer",
+            "body": "Kanaler, tråder og et enormt utvalg integrasjoner. Gratisplanen begrenser hvor langt tilbake du ser, noe som betyr mye når teamet begynner å lene seg på den."
+          },
+          {
+            "title": "Microsoft Teams",
+            "detail": "Team som allerede har Microsoft 365",
+            "body": "Chat, møter og filer på ett sted, og ofte allerede betalt."
+          },
+          {
+            "title": "Discord",
+            "detail": "Svært små, uformelle team",
+            "body": "Gratis, med gode talekanaler. Det er laget for fellesskap og gaming, så administrasjon og søk er tynnere for jobb."
+          },
+          {
+            "title": "Google Chat",
+            "detail": "Team på Google Workspace",
+            "body": "Inkludert i Workspace og koblet til Gmail og Docs, men enklere enn Slack."
+          }
+        ]
+      },
+      {
+        "title": "Møter: snakke til avtalt tid",
+        "body": [
+          "Møter er for det som krever alle samtidig: planlegging, gjennomganger, vanskelige samtaler. Hold dem korte, send en agenda på forhånd, og skriv ned hva som ble bestemt."
+        ],
+        "items": [
+          {
+            "title": "Google Meet",
+            "detail": "Team som ikke vil installere noe",
+            "body": "Kjører i nettleseren og er inkludert i Google Workspace."
+          },
+          {
+            "title": "Zoom",
+            "detail": "Store samtaler og ustabile forbindelser",
+            "body": "Pålitelig med store grupper og tregt internett, med god opptak. Gratismøter har en tidsgrense."
+          },
+          {
+            "title": "Microsoft Teams",
+            "detail": "Team som allerede chatter i Teams",
+            "body": "Holder samtalene ved siden av chatten de kom fra."
+          }
+        ]
+      },
+      {
+        "title": "Tilstedeværelse: snakke med en gang",
+        "body": [
+          "Dette er oppgaven de fleste team som jobber eksternt lar stå tom. På kontoret ser du hvem som er ledig, og stiller et spørsmål i forbifarten. På avstand blir hvert spørsmål en melding eller en booket samtale, og småting blir liggende.",
+          "Et [virtuelt kontor](/virtual-office) fyller hullet: et felles sted der du ser hvem som er der, hvem som er i møte og hvem som vil ha ro, og begynner å snakke uten å booke noe."
+        ],
+        "items": [
+          {
+            "title": "Et virtuelt kontor",
+            "detail": "Team som vil føle seg sammen hele dagen",
+            "body": "En felles etasje i nettleseren, som TinyFloor: gå bort til noen for å snakke, gå inn i et rom for møte, og se med en gang hvem som er der."
+          },
+          {
+            "title": "En åpen talekanal",
+            "detail": "Svært små team på Slack eller Discord",
+            "body": "En huddle eller talekanal som står åpen så folk kan stikke innom. Enkelt, men du ser ikke hvem som er opptatt eller fokusert."
+          },
+          {
+            "title": "Tydelige statuser",
+            "detail": "Alle team, uansett hva de bruker",
+            "body": "«I møte», «fokus» eller «tilbake kl. 14» sparer mange «er du der?»."
+          }
+        ]
+      },
+      {
+        "title": "Dokumenter: skrive ting ned",
+        "body": [
+          "Alt noen spør om to ganger, hører hjemme i et dokument, ikke i chatten: hvordan dere jobber, hva som ble bestemt og hvorfor, hvordan man setter opp en PC. En kort teamhåndbok sparer hver nye person for uker."
+        ],
+        "items": [
+          {
+            "title": "Notion",
+            "detail": "Håndbøker, wikier og planlegging",
+            "body": "Dokumenter, wikier og enkle databaser på ett sted."
+          },
+          {
+            "title": "Google Docs",
+            "detail": "Rask felles skriving",
+            "body": "Raskt å dele og redigere sammen, og alle kan det allerede."
+          },
+          {
+            "title": "Confluence",
+            "detail": "Team som allerede bruker Jira",
+            "body": "Vanlig i større team som planlegger arbeidet i Jira."
+          }
+        ]
+      },
+      {
+        "title": "Oppgaver: hvem gjør hva",
+        "body": [
+          "Én felles tavle som holdes oppdatert, tar knekken på de fleste «hvordan går det?». Velg en som passer hvor teknisk teamet ditt er."
+        ],
+        "items": [
+          {
+            "title": "Linear",
+            "detail": "Programvareteam",
+            "body": "Raskt og med tydelige meninger, bygget rundt saker, sykluser og prosjekter."
+          },
+          {
+            "title": "Trello",
+            "detail": "Alle, på få minutter",
+            "body": "Enkle tavler og kort som ikke trenger forklaring."
+          },
+          {
+            "title": "Asana",
+            "detail": "Ikke-tekniske team",
+            "body": "Prosjekter, tidslinjer og oversikt over arbeidsmengde."
+          },
+          {
+            "title": "GitHub Issues",
+            "detail": "Små utviklerteam",
+            "body": "Holder hvis arbeidet deres allerede ligger på GitHub."
+          }
+        ]
+      },
+      {
+        "title": "Tidssoner og skriftlige oppdateringer",
+        "body": [
+          "Team spredt over tidssoner trenger færre direktemøter og bedre skriftlige oppdateringer. Bli enige om noen felles timer, del kalendere, og bytt ut den daglige standupsamtalen med en skriftlig innsjekk der det går. Hvordan det gjøres, viser vår guide til [asynkron kommunikasjon](/guides/async-communication)."
+        ],
+        "items": [
+          {
+            "title": "En tidssoneplanlegger",
+            "body": "Finn tider som passer alle før du booker. Vår gratis [møteplanlegger for tidssoner](/tools/time-zone-meeting-planner) viser overlappet med en gang."
+          },
+          {
+            "title": "En skriftlig standup",
+            "body": "I går, i dag og hva som stopper deg, i én kanal. Vår gratis [mal for daglig standup](/tools/daily-standup-template) gir deg et format å kopiere."
+          },
+          {
+            "title": "Korte skjermopptak",
+            "body": "Et opptak på to minutter, med et verktøy som Loom, forklarer ofte mer enn en lang melding."
+          }
+        ]
+      },
+      {
+        "title": "Tre startpakker",
+        "body": [
+          "Start i det små. Et verktøy kan du alltid legge til senere; å fjerne et er vanskeligere."
+        ],
+        "items": [
+          {
+            "title": "Gratispakken",
+            "body": "Et team på 2 eller 3 uten budsjett: Slacks gratisplan eller Discord for chat, Google Meet for samtaler, Google Docs for skriving, Trello for oppgaver og TinyFloors gratisplan som kontor."
+          },
+          {
+            "title": "Google-pakken",
+            "body": "Team på Google Workspace: Google Chat, Meet, Docs og Kalender, med Linear eller Trello for oppgaver og et virtuelt kontor for tiden mellom møtene."
+          },
+          {
+            "title": "Microsoft-pakken",
+            "body": "Team på Microsoft 365: Teams for chat og møter, SharePoint eller OneNote for dokumenter, Planner for oppgaver og et virtuelt kontor for tilstedeværelse."
+          }
+        ]
+      },
+      {
+        "title": "Hvordan du velger",
+        "items": [
+          {
+            "title": "Ett hjem per oppgave",
+            "body": "To chatapper betyr at hvert spørsmål blir stilt to ganger. Bestem hvor ting hører hjemme, og skriv det ned."
+          },
+          {
+            "title": "Start med gratisplaner",
+            "body": "De fleste av verktøyene har en. Bruk den en måned, og betal så for verktøyene teamet faktisk åpner hver dag."
+          },
+          {
+            "title": "Færre verktøy, godt brukt",
+            "body": "Hvert nye verktøy er ett sted til å sjekke. Legg bare til et når en oppgave mangler hjem."
+          },
+          {
+            "title": "Sjekk hvor dataene ligger",
+            "body": "Jobber du med kunder i Europa eller for en streng arbeidsgiver, les sidene om personvern og datalagring for hvert verktøy før du bestemmer deg."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Der TinyFloor passer inn",
+      "body": "TinyFloor tar seg av tilstedeværelsen: et virtuelt kontor i nettleseren der teamet ditt ser hvem som er der og går bort for å snakke, med møterom, chat og skjermdeling innebygd. Det jobber ved siden av verktøyene deres for chat, dokumenter og oppgaver i stedet for å erstatte dem. Det er gratis for opptil 3 personer, så du kan prøve det med teamet ditt allerede i dag."
+    },
+    "faq": [
+      {
+        "q": "Hvilke verktøy trenger et team som jobber eksternt?",
+        "a": "De fleste små team som jobber eksternt, trenger et verktøy for hver av seks oppgaver: chat, møter, tilstedeværelse (se hvem som er der), dokumenter, oppgaver og tidssoner. Mange klarer seg med fire eller fem apper."
+      },
+      {
+        "q": "Hva er de beste gratisverktøyene for et team som jobber eksternt?",
+        "a": "Det finnes ikke ett svar, men Slacks gratisplan eller Discord, Google Meet, Google Docs og Trello dekker det meste for et lite team, og TinyFloor er gratis for opptil 3 personer."
+      },
+      {
+        "q": "Trenger et team som jobber eksternt et virtuelt kontor?",
+        "a": "Ikke alltid. Hvis chat og bookede samtaler fungerer godt for dere, kanskje ikke. Hvis små spørsmål stadig blir møter, eller folk føler seg avskåret, fyller et virtuelt kontor det hullet."
+      },
+      {
+        "q": "Hvor mange verktøy er for mange?",
+        "a": "Hvis folk ofte ikke vet hvor de skal poste noe eller finne det, er det for mange. Ett hjem per oppgave er en god regel."
+      },
+      {
+        "q": "Slack eller Microsoft Teams?",
+        "a": "Hvis bedriften din allerede betaler for Microsoft 365, er Teams som regel det enkleste valget. Ellers foretrekker de fleste små programvareteam og byråer Slack."
+      }
+    ]
+  },
+  "manageRemote": {
+    "label": "Lede et team som jobber eksternt",
+    "meta": {
+      "title": "Lede et team som jobber eksternt: 9 vaner som virker",
+      "description": "Hvordan du leder et team som jobber eksternt godt: nedskrevne arbeidsmåter, felles timer, en enkel møterytme, synlig arbeid, motivasjon uten overvåking og feilene du bør unngå."
+    },
+    "title": "Lede et team som jobber eksternt, <em>uten å detaljstyre.</em>",
+    "intro": "Å lede et team som jobber eksternt handler mest om å lede det du ikke lenger ser: hvem som står fast, hvem som har for mye, og hvem som føler seg utenfor. Svaret er ikke flere møter eller overvåkingsprogramvare. Det er tydelig skriving, en jevn rytme og å gjøre både arbeidet og menneskene synlige. Her er det som virker for små team.",
+    "sections": [
+      {
+        "title": "Hva som endres når teamet jobber eksternt",
+        "body": [
+          "På kontoret skjer mye ledelse av seg selv. Du merker at noen står fast, hører om et problem i forbifarten og får tak i folk mellom møtene. På avstand forsvinner alt dette, med mindre du bygger det opp igjen med vilje.",
+          "Tre ting krever mer omsorg: klarhet (hva vi gjør og hvorfor), samhold (at folk kjenner hverandre) og synlighet (å se arbeid og mennesker uten å kontrollere dem)."
+        ]
+      },
+      {
+        "title": "Ni vaner som virker",
+        "items": [
+          {
+            "title": "Skriv ned hvordan dere jobber",
+            "body": "En teamhåndbok på én side: hvor man stiller spørsmål, hvor raskt man svarer, når man møtes og hvor beslutningene ligger. Nye leser den første dag."
+          },
+          {
+            "title": "Bli enige om felles timer",
+            "body": "Velg to til fire timer da alle er pålogget for raske spørsmål og møter. Utenom dem jobber alle når det passer."
+          },
+          {
+            "title": "Skriv først, snakk etterpå",
+            "body": "Skriv først om alt som krever ettertanke. Bytt til en samtale når en tråd går frem og tilbake mer enn tre ganger."
+          },
+          {
+            "title": "Hold en jevn møterytme",
+            "body": "Noen få forutsigbare møter er bedre enn mange i siste liten. En enkel rytme står lenger ned."
+          },
+          {
+            "title": "Ha en-til-en-samtaler hver uke",
+            "body": "Tretti minutter i uken med hver person, om personen heller enn status. Det er der du hører om problemer tidlig. Her er [40 spørsmål å stille](/guides/one-on-one-meeting-questions)."
+          },
+          {
+            "title": "Gjør arbeidet synlig",
+            "body": "Én felles oppgavetavle som holdes oppdatert, svarer på «hvordan går det?» før noen spør."
+          },
+          {
+            "title": "Gjør tilstedeværelsen synlig",
+            "body": "La folk se hvem som er der og hvem som er opptatt, med statuser eller et [virtuelt kontor](/team-presence), så de vet når det er greit å forstyrre."
+          },
+          {
+            "title": "Vurder resultater, ikke timer",
+            "body": "Bli enige om hvordan «ferdig» ser ut, og sjekk resultatet. Aktivitetsmålere og skjermbilder skader tilliten og måler feil ting."
+          },
+          {
+            "title": "Sett av tid til det sosiale",
+            "body": "En kort sosial stund hver uke, en [isbryter](/tools/icebreaker-questions) i starten av et møte, en kanal for prat om annet enn jobb. På avstand oppstår samhold ikke av seg selv."
+          }
+        ]
+      },
+      {
+        "title": "En enkel møterytme",
+        "body": [
+          "Denne rytmen passer de fleste team på 3 til 15 personer. Juster lengden, ikke ideen. Og hold retrospektiven frisk med et [nytt format](/guides/retrospective-ideas) innimellom."
+        ],
+        "table": {
+          "head": [
+            "Møte",
+            "Hvor ofte",
+            "Lengde",
+            "Hva det er til"
+          ],
+          "rows": [
+            [
+              "Standup",
+              "Daglig, eller skriftlig",
+              "15 min",
+              "Dagens plan og hva som stopper"
+            ],
+            [
+              "Teammøte",
+              "Ukentlig",
+              "30–45 min",
+              "Prioriteringer, beslutninger og seire"
+            ],
+            [
+              "En-til-en",
+              "Hver eller annenhver uke",
+              "30 min",
+              "Personen: utvikling, problemer, tilbakemeldinger"
+            ],
+            [
+              "Retrospektiv",
+              "Hver 2.–4. uke",
+              "45 min",
+              "Hva vi beholder, endrer og slutter med"
+            ],
+            [
+              "Sosial tid",
+              "Ukentlig eller månedlig",
+              "15–30 min",
+              "Bli kjent med hverandre"
+            ]
+          ],
+          "note": "En skriftlig standup i én kanal fungerer godt på tvers av tidssoner."
+        }
+      },
+      {
+        "title": "Hvordan motivere et team som jobber eksternt",
+        "body": [
+          "Motivasjon kommer fra de samme stedene som på kontoret, men på avstand må den sies høyt oftere."
+        ],
+        "items": [
+          {
+            "title": "Anerkjenn arbeid offentlig",
+            "body": "Takk konkret i teamkanalen for hva noen gjorde og hvorfor det betydde noe."
+          },
+          {
+            "title": "Gi ekte eierskap",
+            "body": "Gi bort hele problemer, ikke bare oppgaver. Folk bryr seg mer om arbeid der de selv valgte hvordan."
+          },
+          {
+            "title": "Vis hvor arbeidet havner",
+            "body": "Del tilbakemeldinger fra kunder og resultater, så folk ser effekten av det de gjør."
+          },
+          {
+            "title": "Invester i utvikling",
+            "body": "Spør hver person hva de vil lære, og gi dem arbeid som får dem til å vokse."
+          },
+          {
+            "title": "Beskytt tiden deres",
+            "body": "Færre møter og rolige fokustimer er en belønning i seg selv."
+          }
+        ]
+      },
+      {
+        "title": "Feil du bør unngå",
+        "items": [
+          {
+            "title": "Overvåkingsprogramvare",
+            "body": "Tastaturloggere og webkamerasjekker forteller folk at du ikke stoler på dem, og de beste går først."
+          },
+          {
+            "title": "For mange møter",
+            "body": "Videosamtaler er mer slitsomme enn å møtes fysisk. Hvis et møte kunne vært en skriftlig oppdatering, gjør det til en."
+          },
+          {
+            "title": "Alt i private meldinger",
+            "body": "Arbeid som diskuteres i private meldinger er usynlig for alle andre. Bruk teamkanalene som standard."
+          },
+          {
+            "title": "Ingen onboardingplan",
+            "body": "Nyansatte som jobber eksternt, kan gå i ukevis uten å vite hvem de skal spørre. Gi dem en buddy og en [plan for de to første ukene](/guides/remote-onboarding-checklist)."
+          },
+          {
+            "title": "Å overse tidssoner",
+            "body": "Bytt på møtetidene, skriv ned det som kan skrives ned, og la aldri de samme ta alle de sene samtalene."
+          }
+        ]
+      },
+      {
+        "title": "Verktøy som hjelper",
+        "body": [
+          "Du trenger færre verktøy enn du tror: ett hver for chat, møter, dokumenter og oppgaver, pluss en måte å se hvem som er der. Vår guide til [verktøy for fjernarbeid](/guides/remote-work-tools) går gjennom hver oppgave, med startpakker for små team."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Der TinyFloor passer inn",
+      "body": "TinyFloor gjør tilstedeværelsen synlig: et virtuelt kontor i nettleseren der teamet ditt ser hvem som er der, hvem som er i møte og hvem som vil ha ro, og går bort for å snakke. Det gir tilbake gangpratene et team som jobber eksternt mister, uten kameraer som står på hele dagen og uten sporing. Det er gratis for opptil 3 personer."
+    },
+    "faq": [
+      {
+        "q": "Hvordan leder man et team som jobber eksternt godt?",
+        "a": "Skriv ned hvordan teamet jobber, bli enige om felles timer, hold en jevn møterytme med ukentlige en-til-en-samtaler, gjør arbeid og mennesker synlige, og vurder resultater i stedet for timer."
+      },
+      {
+        "q": "Hvordan holder man et team som jobber eksternt motivert?",
+        "a": "Anerkjenn arbeid offentlig, gi eierskap, vis effekten av arbeidet, invester i folks utvikling, og sett jevnlig av tid til samhold."
+      },
+      {
+        "q": "Hvor ofte bør et team som jobber eksternt møtes?",
+        "a": "En kort daglig standup (eller en skriftlig), et ukentlig teammøte, en-til-en-samtaler hver eller annenhver uke og en retrospektiv med noen ukers mellomrom holder for de fleste små team."
+      },
+      {
+        "q": "Bør man overvåke ansatte som jobber eksternt?",
+        "a": "Aktivitetssporing skader som regel tilliten uten å forbedre resultatene. Bli enige om tydelige mål, og sjekk resultatene i stedet."
+      },
+      {
+        "q": "Hva er vanskeligst med å lede et team som jobber eksternt?",
+        "a": "Å se problemer tidlig. Uten felles kontor merker du ikke at noen står fast eller har det tungt med mindre du gir rom for det, og det er det en-til-en-samtaler og synlig tilstedeværelse er til for."
+      }
+    ]
+  },
+  "happyHour": {
+    "label": "Idéer til digitalt afterwork",
+    "meta": {
+      "title": "20 idéer til digitalt afterwork som teamet ditt faktisk vil være med på",
+      "description": "20 idéer til digitalt afterwork og sosiale stunder for team som jobber eksternt: uten forberedelser, spill, aktiviteter med litt planlegging og for store eller spredte team, pluss hvordan du leder det."
+    },
+    "title": "Idéer til digitalt afterwork <em>som folk faktisk møter opp på.</em>",
+    "intro": "De fleste digitale afterworks går galt på samme måte: tjue personer i én videosamtale, to som snakker og resten som venter på at det skal være over. De som fungerer, er korte, frivillige og gir folk noe å gjøre, i grupper små nok til å prate. Her er 20 idéer, sortert etter hvor mye forberedelse de krever, og hvordan du leder et.",
+    "sections": [
+      {
+        "title": "Hva som får et digitalt afterwork til å fungere",
+        "items": [
+          {
+            "title": "Kort",
+            "body": "Tretti til førtifem minutter. De som vil, blir lenger, og de som ikke kjedet seg, kommer igjen."
+          },
+          {
+            "title": "Frivillig",
+            "body": "I arbeidstiden og ordentlig frivillig. Et afterwork man må gå på, er et møte."
+          },
+          {
+            "title": "Noe å gjøre",
+            "body": "Et spill, et spørsmål eller et tema gir de stille en enkel vei inn."
+          },
+          {
+            "title": "Små grupper",
+            "body": "Med flere enn seks eller sju i én samtale slutter de fleste å snakke. Del dere opp."
+          },
+          {
+            "title": "Det handler ikke om alkohol",
+            "body": "Kaffe, te eller brus er like velkomment. Kall det en sosial stund hvis ordet skremmer folk bort."
+          }
+        ]
+      },
+      {
+        "title": "Idéer uten forberedelser",
+        "body": [
+          "Start her. Alle fungerer med fem minutters varsel."
+        ],
+        "items": [
+          {
+            "title": "Vis og fortell",
+            "detail": "Alle størrelser · ingen forberedelser",
+            "body": "Alle viser noe innen rekkevidde og forteller historien bak. En kopp, en bok, en plante, et kjæledyr som går forbi."
+          },
+          {
+            "title": "To sannheter og en løgn",
+            "detail": "Opptil 10 · ingen forberedelser",
+            "body": "Hver person sier tre ting om seg selv, de andre gjetter løgnen. Våre [idéer til to sannheter og en løgn](/tools/two-truths-and-a-lie) hjelper dem som ikke kommer på noe."
+          },
+          {
+            "title": "Hva ville du heller",
+            "detail": "Alle størrelser · ingen forberedelser",
+            "body": "Les opp et spørsmål, alle svarer og forsvarer valget sitt. Våre [hva-ville-du-heller-spørsmål](/tools/would-you-rather-questions) er valgt ut for jobb."
+          },
+          {
+            "title": "Skrivebordsomvisning",
+            "detail": "Opptil 8 · ingen forberedelser",
+            "body": "Alle snur kameraet i tretti sekunder. Det er overraskende hvor mye man lærer om noen fra en bokhylle."
+          },
+          {
+            "title": "Ukens bilde",
+            "detail": "Alle størrelser · ingen forberedelser",
+            "body": "Alle deler ett bilde fra uken sin og forteller hvorfor de tok det."
+          },
+          {
+            "title": "Spørsmålsrunde",
+            "detail": "Alle størrelser · ingen forberedelser",
+            "body": "Ett lett spørsmål som alle svarer på: årets beste måltid, første konsert, noe man vil lære. Velg blant våre [isbryterspørsmål](/tools/icebreaker-questions)."
+          }
+        ]
+      },
+      {
+        "title": "Spill",
+        "body": [
+          "Spill gir afterworket en form, så ingen trenger å tenke på hva de skal si som det neste."
+        ],
+        "items": [
+          {
+            "title": "Quiz",
+            "detail": "Lag på 3–5 · 15 minutters forberedelse",
+            "body": "Fem runder med fem spørsmål, én runde om bedriften. Bytt hver måned hvem som lager spørsmålene."
+          },
+          {
+            "title": "Tegn og gjett",
+            "detail": "Opptil 8 · ingen forberedelser",
+            "body": "Én tegner et ord på en felles tavle, de andre gjetter. Gratis nettleserspill som skribbl.io styrer rundene for dere."
+          },
+          {
+            "title": "Gjett babyen",
+            "detail": "Alle størrelser · samle bilder på forhånd",
+            "body": "Samle inn et barnebilde fra alle på forhånd, vis dem ett om gangen, og gjett hvem som er hvem."
+          },
+          {
+            "title": "Teambingo",
+            "detail": "Alle størrelser · 10 minutters forberedelse",
+            "body": "Bingobrett med fakta om teamet: «har bodd i tre land», «spiller et instrument». Folk spør hverandre for å fylle rutene."
+          },
+          {
+            "title": "Ord- og selskapsspill på nett",
+            "detail": "4–10 · ingen forberedelser",
+            "body": "Codenames, Gartic Phone og lignende nettleserspill trenger bare en lenke, og de fleste er gratis."
+          }
+        ]
+      },
+      {
+        "title": "Idéer som er verdt litt planlegging",
+        "body": [
+          "Spar dem til én gang i måneden eller en spesiell anledning; litt forberedelse gjør det til en begivenhet."
+        ],
+        "items": [
+          {
+            "title": "Smaking",
+            "detail": "Alle størrelser · bestill en uke før",
+            "body": "Send den samme kaffen, teen, sjokoladen eller snacksen til alle, og smak og gi karakter sammen."
+          },
+          {
+            "title": "Lag mat eller drinker sammen",
+            "detail": "Opptil 12 · del en liste på forhånd",
+            "body": "Noen som elsker å lage mat, leder en enkel oppskrift eller en drink, med eller uten alkohol."
+          },
+          {
+            "title": "Lynforedrag",
+            "detail": "Opptil 15 · noen dagers varsel",
+            "body": "Tre frivillige snakker fem minutter hver om alt annet enn jobb: en hobby, en reise, hvordan man baker brød."
+          },
+          {
+            "title": "Spillelistefest",
+            "detail": "Alle størrelser · samle sanger på forhånd",
+            "body": "Alle legger to sanger i en felles spilleliste; spill dem, og gjett hvem som valgte hva."
+          },
+          {
+            "title": "Escape room på nett",
+            "detail": "Lag på 4–6 · book på forhånd",
+            "body": "Escape rooms med spilleder går over video og passer team som liker gåter. De fleste koster per person."
+          }
+        ]
+      },
+      {
+        "title": "Idéer for store eller spredte team",
+        "body": [
+          "Over femten personer, eller på tvers av mange tidssoner, slutter én felles samtale å fungere. Bland små grupper og skriftlige formater."
+        ],
+        "items": [
+          {
+            "title": "Skiftende små grupper",
+            "detail": "15 personer eller flere",
+            "body": "Grupper på fire i ti minutter, så blander dere på nytt. I et virtuelt kontor går folk bare fra én gruppe til en annen, som på en ekte fest."
+          },
+          {
+            "title": "Tilfeldige kaffepar",
+            "detail": "Alle størrelser · ukentlig eller månedlig",
+            "body": "Sett folk tilfeldig sammen to og to for femten minutters prat på et tidspunkt som passer begge. Etter noen måneder har alle møtt alle."
+          },
+          {
+            "title": "Et afterwork som følger solen",
+            "detail": "Mange tidssoner",
+            "body": "Hold det to ganger, på tider som passer hver halvdel av teamet, eller start en bildetråd som går hele dagen."
+          },
+          {
+            "title": "Sesongtema",
+            "detail": "Alle størrelser · noen dagers varsel",
+            "body": "Luer om vinteren, favorittsnacks hjemmefra, en utkledningsfredag. Et tema gir noe å snakke om før noen har sagt noe."
+          }
+        ]
+      },
+      {
+        "title": "Hvordan du leder det",
+        "items": [
+          {
+            "title": "Velg et tidspunkt i arbeidstiden",
+            "body": "Sen ettermiddag torsdag eller fredag passer mange team. På tvers av tidssoner finner vår [møteplanlegger for tidssoner](/tools/time-zone-meeting-planner) overlappet."
+          },
+          {
+            "title": "Inviter med en plan",
+            "body": "«30 minutter, to quizrunder, så prat» lokker flere enn «afterwork, kl. 17»."
+          },
+          {
+            "title": "Start med et lett spørsmål",
+            "body": "Alle svarer med én setning. Da høres hver stemme i løpet av de første fem minuttene."
+          },
+          {
+            "title": "Del grupper over seks",
+            "body": "Bruk grupperom, eller et sted der folk selv kan gå mellom grupper."
+          },
+          {
+            "title": "Avslutt i tide",
+            "body": "Avslutt når du sa. De som vil bli, kan det, men ingen føler seg fanget."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Der TinyFloor passer inn",
+      "body": "På TinyFloor føles et afterwork mer som et rom enn en samtale. Alle kommer til den samme etasjen, små grupper oppstår der folk stanser, og du blir med i en samtale ved å gå dit, uten å sitte fast i et rutenett med tjue ansikter. En tavle for tegnespill henger på veggen. Det er gratis for opptil 3 personer."
+    },
+    "faq": [
+      {
+        "q": "Hva gjør man på et digitalt afterwork?",
+        "a": "Prater i små grupper og gjør noe lett sammen: en spørsmålsrunde, et spill som quiz eller tegn og gjett, vis og fortell eller en smaking."
+      },
+      {
+        "q": "Hvor langt bør et digitalt afterwork være?",
+        "a": "Tretti til førtifem minutter holder for de fleste team. Kortere, og folk kommer ikke i gang; lengre, og energien synker."
+      },
+      {
+        "q": "Hvordan gjør man et digitalt afterwork morsomt?",
+        "a": "Hold det frivillig, gi det en plan, start med et lett spørsmål til alle, og del opp i grupper på fire til seks så alle snakker."
+      },
+      {
+        "q": "Trenger et digitalt afterwork alkohol?",
+        "a": "Nei. Gjør det klart at all drikke er greit, og kall det gjerne en sosial stund. Mange av de beste idéene har ingenting med drikke å gjøre."
+      },
+      {
+        "q": "Hvor ofte bør et team som jobber eksternt ha afterwork?",
+        "a": "Én gang i måneden passer de fleste team. En kort ukentlig sosial stund fungerer også, så lenge den er kort og frivillig."
+      }
+    ]
+  },
+  "oneOnOne": {
+    "label": "Spørsmål til en-til-en-samtaler",
+    "meta": {
+      "title": "40 spørsmål til en-til-en-samtaler (1:1) for ledere, og til din egen leder",
+      "description": "40 spørsmål til en-til-en-samtaler sortert etter tema: trivsel, arbeidsmengde, hindringer, tilbakemeldinger, utvikling, teamet og fjernarbeid, pluss spørsmål til din egen leder og en enkel agenda."
+    },
+    "title": "Spørsmål til en-til-en-samtaler <em>som gir ekte svar.</em>",
+    "intro": "En-til-en-samtalen (1:1) er det eneste møtet som tilhører den andre personen. Det er der en leder hører om problemer tidlig, og i et team som jobber eksternt ofte bare der. Her er 40 spørsmål sortert etter tema, en enkel agenda og hvordan du hindrer at samtalen blir en statusoppdatering.",
+    "sections": [
+      {
+        "title": "Slik holder du en god en-til-en",
+        "items": [
+          {
+            "title": "Det er deres møte",
+            "body": "La personen ta opp sine temaer først. Dine kommer etterpå."
+          },
+          {
+            "title": "Ikke en statusoppdatering",
+            "body": "Status hører hjemme på oppgavetavlen. Bruk tiden på personen: hvordan det går, hva som står i veien, hvor de vil."
+          },
+          {
+            "title": "Samme tid, hver eller annenhver uke",
+            "body": "Tretti minutter, sjelden flyttet. Å avlyse ofte forteller folk at de kommer sist."
+          },
+          {
+            "title": "Ett felles dokument",
+            "body": "Dere legger begge inn temaer i løpet av uken og noterer hva dere ble enige om, så ingenting forsvinner mellom samtalene."
+          },
+          {
+            "title": "Få spørsmål, fulgt opp",
+            "body": "To gode spørsmål og ekte oppfølging slår ti lest opp fra en liste."
+          }
+        ]
+      },
+      {
+        "title": "En enkel agenda",
+        "table": {
+          "head": [
+            "Del",
+            "Tid",
+            "Hva som skjer"
+          ],
+          "rows": [
+            [
+              "Innsjekk",
+              "5 min",
+              "Hvordan det går, med egne ord"
+            ],
+            [
+              "Deres temaer",
+              "10–15 min",
+              "Det de har tatt med"
+            ],
+            [
+              "Dine temaer",
+              "5–10 min",
+              "Tilbakemeldinger, bakgrunn, endringer som kommer"
+            ],
+            [
+              "Neste steg",
+              "5 min",
+              "Hva hver av dere gjør til neste gang"
+            ]
+          ],
+          "note": "Tretti minutter totalt. Drar deres temaer ut, flytt dine til neste gang."
+        }
+      },
+      {
+        "title": "Spørsmål å starte med",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Hvordan har du det, ærlig talt?",
+            "body": "«Ærlig talt» inviterer til mer enn «bra». Vent på svaret."
+          },
+          {
+            "title": "Hva har du tenkt mest på denne uken?",
+            "body": "Åpent nok til å ta opp hva som helst, jobb eller ikke."
+          },
+          {
+            "title": "Hva var det beste med uken din?",
+            "body": "Starter med noe godt og viser hva som gir personen energi."
+          },
+          {
+            "title": "Hva tok energi fra deg denne uken?",
+            "body": "Peker på arbeidet, møtene eller menneskene som sliter."
+          },
+          {
+            "title": "På en skala fra én til ti, hvordan var uken din?",
+            "body": "Et raskt tall gjør endringer lette å se over noen uker."
+          }
+        ]
+      },
+      {
+        "title": "Arbeidsmengde og prioriteringer",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Er arbeidsmengden for stor, for liten eller omtrent riktig?",
+            "body": "Spør rett ut; få sier av seg selv at de har for mye."
+          },
+          {
+            "title": "Hva jobber du med som du synes er viktigst?",
+            "body": "Sjekker at prioriteringene deres stemmer med dine."
+          },
+          {
+            "title": "Jobber du med noe som føles meningsløst?",
+            "body": "Finner ofte arbeid som bare kan stoppe."
+          },
+          {
+            "title": "Hva ville du droppet hvis du måtte?",
+            "body": "Viser hva personen verdsetter, og hva de gjerne vil gi fra seg."
+          },
+          {
+            "title": "Har du nok tid til fokus?",
+            "body": "For mange møter er en av de vanligste klagene på avstand."
+          }
+        ]
+      },
+      {
+        "title": "Hindringer og frustrasjoner",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Hva bremser deg akkurat nå?",
+            "body": "Det nyttigste spørsmålet en leder kan stille, og det som oftest hoppes over."
+          },
+          {
+            "title": "Venter du på en beslutning?",
+            "body": "Å vente på noen andre er usynlig til du spør."
+          },
+          {
+            "title": "Hva kan jeg gjøre for å gjøre jobben din lettere?",
+            "body": "Gir lov til å be om hjelp."
+          },
+          {
+            "title": "Er det noe som frustrerer deg som du ikke har nevnt?",
+            "body": "Små frustrasjoner vokser når de ikke blir sagt."
+          },
+          {
+            "title": "Hvem synes du det er vanskelig å jobbe med, og hvorfor?",
+            "body": "Spør forsiktig; det får frem gnisninger før de blir konflikt."
+          }
+        ]
+      },
+      {
+        "title": "Tilbakemeldinger begge veier",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Hva burde jeg gjøre annerledes som lederen din?",
+            "body": "Spør jevnlig og reager rolig, ellers slutter svarene å komme."
+          },
+          {
+            "title": "Gjør jeg noe som står i veien for deg?",
+            "body": "En mildere versjon av det samme spørsmålet."
+          },
+          {
+            "title": "Hvordan liker du best å få tilbakemeldinger?",
+            "body": "Noen vil ha det skriftlig, noen med en gang, noen spart til en-til-en-samtalen."
+          },
+          {
+            "title": "Hva er du mest stolt av fra den siste måneden?",
+            "body": "Gir deg noe konkret å anerkjenne."
+          },
+          {
+            "title": "Er det tilbakemeldinger du skulle ønske du fikk, men ikke får?",
+            "body": "Folk vil ofte ha flere tilbakemeldinger enn ledere tror."
+          }
+        ]
+      },
+      {
+        "title": "Utvikling og karriere",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Hva vil du helst jobbe med om et år?",
+            "body": "Starter en karrieresamtale uten å kreve en femårsplan."
+          },
+          {
+            "title": "Hvilken ferdighet vil du bli bedre på?",
+            "body": "Lar deg finne arbeid som bygger den opp."
+          },
+          {
+            "title": "Hvilken del av jobben liker du best?",
+            "body": "Mer av det er ofte den billigste belønningen som finnes."
+          },
+          {
+            "title": "Er det et prosjekt du gjerne vil være med på?",
+            "body": "Interesse er halve veien til å bli god på noe nytt."
+          },
+          {
+            "title": "Hvem vil du gjerne lære av?",
+            "body": "En mentor eller å jobbe i par kan gi mer enn et kurs."
+          }
+        ]
+      },
+      {
+        "title": "Teamet og bedriften",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Hvordan har du det med teamet akkurat nå?",
+            "body": "Fanger opp spenninger før noen setter ord på dem."
+          },
+          {
+            "title": "Ville du endret noe ved hvordan vi jobber?",
+            "body": "De som gjør jobben, ser først hva som ikke fungerer."
+          },
+          {
+            "title": "Forstår du hvorfor vi gjør det vi gjør?",
+            "body": "Hvis ikke, ligger problemet i forklaringen, ikke i personen."
+          },
+          {
+            "title": "Hvem i teamet fortjener mer anerkjennelse?",
+            "body": "En god måte å høre om stille arbeid på."
+          },
+          {
+            "title": "Har du hørt noe som bekymrer deg?",
+            "body": "Rykter sprer seg raskt i team som jobber eksternt, og blir sjelden sagt høyt."
+          }
+        ]
+      },
+      {
+        "title": "Spørsmål for team som jobber eksternt",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Føler du deg knyttet til teamet?",
+            "body": "Isolasjon er det vanligste problemet på avstand, og det som nevnes minst."
+          },
+          {
+            "title": "Vet du hvem du skal spørre når du står fast?",
+            "body": "Hvis ikke, venter personen sannsynligvis i stillhet."
+          },
+          {
+            "title": "Fungerer arbeidstidene dine for deg?",
+            "body": "Dekker tidssoner, sene samtaler og grensen mellom jobb og hjem."
+          },
+          {
+            "title": "Bremser arbeidsplassen hjemme deg?",
+            "body": "En stol, en skjerm eller bedre internett er en billig løsning."
+          },
+          {
+            "title": "Er det for mange møter, eller for få?",
+            "body": "Team som jobber eksternt, glir i begge retninger."
+          }
+        ]
+      },
+      {
+        "title": "Spørsmål til din egen leder",
+        "body": [
+          "En-til-en-samtaler går begge veier. Har du selv en leder, hjelper disse spørsmålene deg å få mer ut av møtet."
+        ],
+        "numbered": true,
+        "items": [
+          {
+            "title": "Hva bør jeg fokusere mest på akkurat nå?",
+            "body": "Sørger for at innsatsen havner der den teller."
+          },
+          {
+            "title": "Hva ville gjort arbeidet mitt mer nyttig for deg?",
+            "body": "Viser hva personen trenger, ikke bare hva de ber om."
+          },
+          {
+            "title": "Hva kan jeg gjøre bedre?",
+            "body": "Be om én ting; det er lettere å svare ærlig på."
+          },
+          {
+            "title": "Hva er på vei for teamet som jeg bør vite om?",
+            "body": "Bakgrunn du ellers ville hørt sist."
+          },
+          {
+            "title": "Hva må jeg vise for å få mer ansvar?",
+            "body": "Gjør et vagt ønske om å vokse til noe konkret."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Der TinyFloor passer inn",
+      "body": "På TinyFloor trenger en en-til-en ingen kalenderlenke: gå inn i et møterom sammen, eller trekk dere litt til side i etasjen og snakk. Mellom samtalene ser du hvem som er der, så en kort prat trenger ikke vente en uke. Det er gratis for opptil 3 personer."
+    },
+    "faq": [
+      {
+        "q": "Hva snakker man om i en en-til-en?",
+        "a": "Om personen, ikke status: hvordan det går, hva som står i veien, tilbakemeldinger begge veier og hvor de vil utvikle seg."
+      },
+      {
+        "q": "Hvor ofte bør man ha en-til-en-samtaler?",
+        "a": "Hver eller annenhver uke, omtrent tretti minutter. Hver uke passer best for nye i teamet og for team som jobber eksternt."
+      },
+      {
+        "q": "Hvilke spørsmål kan en ansatt stille i en en-til-en?",
+        "a": "Hva bør jeg fokusere på, hva ville gjort arbeidet mitt mer nyttig, hva kan jeg gjøre bedre, og hva er på vei som jeg bør vite."
+      },
+      {
+        "q": "Hvordan starter man en en-til-en?",
+        "a": "Med et åpent spørsmål som «Hvordan har du det, ærlig talt?», og la så personen ta opp sine temaer før dine."
+      },
+      {
+        "q": "Hva bør en leder unngå i en en-til-en?",
+        "a": "Å gjøre den til en statusoppdatering, å snakke mer enn å lytte og å avlyse eller flytte den ofte."
+      }
+    ]
+  },
+  "async": {
+    "label": "Asynkron kommunikasjon",
+    "meta": {
+      "title": "Asynkron kommunikasjon: hva det er og hvordan team som jobber eksternt gjør det godt",
+      "description": "Hva asynkron kommunikasjon er, hvordan den skiller seg fra synkron, når du bruker hvilken, hvordan du skriver meldinger som fungerer uten svar med en gang, rutiner, verktøy og problemer å se opp for."
+    },
+    "title": "Asynkron kommunikasjon, <em>og når det er bedre å snakke sammen.</em>",
+    "intro": "Asynkron kommunikasjon betyr å sende en melding uten å forvente svar med en gang: mottakeren svarer når det passer. Det lar team som jobber eksternt, jobbe på tvers av tidssoner og beskytte fokustiden sin. Men brukes det til alt, blir enkle ting trege. Slik bruker du det godt, og slik vet du når en samtale er bedre.",
+    "sections": [
+      {
+        "title": "Hva asynkron kommunikasjon er",
+        "body": [
+          "Synkron kommunikasjon skjer direkte: en samtale, et møte, en prat ved noens pult. Asynkron gjør ikke det: en melding, et dokument, en kommentar eller en innspilt video som andre leser eller ser senere.",
+          "De fleste team som jobber eksternt, bruker begge. Kunsten er å velge riktig for hver samtale og å skrive asynkrone meldinger som ikke trenger tre runder med spørsmål for å bli forstått."
+        ],
+        "table": {
+          "head": [
+            "",
+            "Synkron",
+            "Asynkron"
+          ],
+          "rows": [
+            [
+              "Eksempler",
+              "Samtaler, møter, prate ansikt til ansikt",
+              "Meldinger, dokumenter, kommentarer, innspilte videoer"
+            ],
+            [
+              "Svar",
+              "Med en gang",
+              "Innen timer eller en dag"
+            ],
+            [
+              "Bra for",
+              "Hastesaker, følsomme eller floker",
+              "Oppdateringer, spørsmål som kan vente, beslutninger som krever ettertanke"
+            ],
+            [
+              "Pris",
+              "Avbryter fokus, krever felles timer",
+              "Tregere utveksling, mer skriving"
+            ]
+          ]
+        }
+      },
+      {
+        "title": "Når asynkront",
+        "items": [
+          {
+            "title": "Oppdateringer",
+            "body": "Status, fremdrift og neste steg. En [skriftlig standup](/tools/daily-standup-template) erstatter de fleste daglige samtaler."
+          },
+          {
+            "title": "Spørsmål som kan vente",
+            "body": "Hvis svaret kan komme i ettermiddag, send en melding."
+          },
+          {
+            "title": "Beslutninger som krever ettertanke",
+            "body": "Skriv ned forslaget og gi folk en dag til å kommentere. Du får bedre innspill enn på et møte."
+          },
+          {
+            "title": "Alt på tvers av tidssoner",
+            "body": "Når arbeidstidene knapt overlapper, er asynkront standard, og direkte tid er for det som trenger det."
+          }
+        ]
+      },
+      {
+        "title": "Når det er bedre å snakke",
+        "items": [
+          {
+            "title": "En tråd har gått frem og tilbake tre ganger",
+            "body": "To minutters prat løser det. Skriv ned hva dere bestemte etterpå."
+          },
+          {
+            "title": "Noen står fast",
+            "body": "Å hjelpe en kollega videre er verdt et avbrudd."
+          },
+          {
+            "title": "Temaet er følsomt",
+            "body": "Tilbakemeldinger, konflikter og dårlige nyheter blir bedre tatt imot i en samtale, der tonen kommer frem."
+          },
+          {
+            "title": "Dere starter på noe nytt",
+            "body": "Oppstartsmøter og idémyldring går raskere når folk bygger videre på hverandres idéer direkte."
+          }
+        ]
+      },
+      {
+        "title": "Asynkrone meldinger som fungerer",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Start med poenget",
+            "body": "Spørsmålet eller beslutningen på første linje, så bakgrunnen."
+          },
+          {
+            "title": "Gi hele sammenhengen",
+            "body": "Lenker, skjermbilder og hva du allerede har prøvd, så ingen trenger å spørre."
+          },
+          {
+            "title": "Si hva du trenger, og innen når",
+            "body": "«Kan du se på dette innen torsdag?» får svar; «tanker?» gjør ofte ikke det."
+          },
+          {
+            "title": "Én melding, ikke fem",
+            "body": "Skriv ferdig før du sender. Fem korte meldinger avbryter folk fem ganger."
+          },
+          {
+            "title": "Bruk tråder",
+            "body": "Svarene blir liggende ved meldingen de hører til, og kanalen forblir lesbar."
+          },
+          {
+            "title": "Skriv ned beslutningen",
+            "body": "Når en tråd er ferdig, skriv resultatet på én linje der folk finner det."
+          }
+        ]
+      },
+      {
+        "title": "Asynkrone rutiner som hjelper",
+        "items": [
+          {
+            "title": "En skriftlig daglig standup",
+            "body": "I går, i dag og hva som stopper, i én kanal, når som helst i løpet av hver persons morgen."
+          },
+          {
+            "title": "En ukentlig oppdatering",
+            "body": "Hver person eller hvert team skriver noen linjer om fremdrift, problemer og planer. Lett å skumme på mandag."
+          },
+          {
+            "title": "Beslutningsdokumenter",
+            "body": "En kort side per viktig beslutning: problemet, alternativene, valget og hvorfor."
+          },
+          {
+            "title": "Innspilte demoer",
+            "body": "Noen minutters skjermopptak viser en funksjon bedre enn et møte, og alle ser det når det passer."
+          }
+        ]
+      },
+      {
+        "title": "Bli enige om svartider",
+        "body": [
+          "Asynkront fungerer bare hvis alle vet hvor lang tid «senere» er. Skriv det inn i teamhåndboken."
+        ],
+        "table": {
+          "head": [
+            "Kanal",
+            "Forventet svar",
+            "Til hva"
+          ],
+          "rows": [
+            [
+              "Teamchat",
+              "Innen noen timer",
+              "Spørsmål og oppdateringer"
+            ],
+            [
+              "Privat melding",
+              "Samme dag",
+              "Ting for én person"
+            ],
+            [
+              "Kommentar på dokument eller oppgave",
+              "Innen en eller to dager",
+              "Gjennomganger og beslutninger"
+            ],
+            [
+              "Ringe eller gå bort",
+              "Med en gang",
+              "Hastesaker eller fastlåst"
+            ]
+          ],
+          "note": "Et eksempel, ikke en regel: velg tider som passer teamet deres, og si hva som regnes som hastesak."
+        }
+      },
+      {
+        "title": "Problemer å se opp for",
+        "items": [
+          {
+            "title": "Beslutninger drar ut",
+            "body": "Sett en frist for kommentarer, og gi én person det siste ordet."
+          },
+          {
+            "title": "For mye å lese",
+            "body": "Færre kanaler, kortere meldinger og et ukentlig sammendrag hjelper mer enn å lese raskere."
+          },
+          {
+            "title": "Folk føler seg avskåret",
+            "body": "Helt asynkrone team kan bli ensomme. Behold litt direkte tid: et ukentlig møte, en sosial stund eller et felles sted der man ser hvem som er der. Vår guide til [kommunikasjon i team som jobber eksternt](/guides/remote-team-communication) handler om balansen."
+          },
+          {
+            "title": "Hastesaker venter",
+            "body": "Bli enige om én tydelig måte å nå noen med en gang, og spar den til det som virkelig haster."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Der TinyFloor passer inn",
+      "body": "TinyFloor er den synkrone halvdelen som asynkrone team mangler. Chat, dokumenter og opptak blir der de er; når en tråd stopper opp, ser du i etasjen hvem som er der, og går bort og prater i to minutter. Statuser viser hvem som er i fokus, så direkte samtaler ikke koster noen fordypningen deres. Det er gratis for opptil 3 personer."
+    },
+    "faq": [
+      {
+        "q": "Hva er asynkron kommunikasjon?",
+        "a": "Kommunikasjon der man ikke svarer med en gang: meldinger, dokumenter, kommentarer og innspilte videoer som andre leser eller ser når det passer."
+      },
+      {
+        "q": "Hva er forskjellen på synkron og asynkron kommunikasjon?",
+        "a": "Synkron skjer direkte, som en samtale eller et møte, og får svar med en gang. Asynkron krever ikke alle samtidig, og svarene kommer senere."
+      },
+      {
+        "q": "Hva er eksempler på asynkron kommunikasjon?",
+        "a": "En chatmelding, en e-post, en kommentar i et dokument, en skriftlig standup, en ukentlig oppdatering eller en innspilt videodemo."
+      },
+      {
+        "q": "Er asynkron kommunikasjon bedre for team som jobber eksternt?",
+        "a": "For oppdateringer, spørsmål som kan vente, og team på tvers av tidssoner, ja. For hastesaker, følsomme temaer eller floker er en direkte samtale som regel bedre. De fleste team trenger begge."
+      },
+      {
+        "q": "Hvilke verktøy brukes til asynkron kommunikasjon?",
+        "a": "Teamchat med tråder, delte dokumenter, oppgavetavler og verktøy for skjermopptak. Vår guide til verktøy for fjernarbeid går gjennom hvert av dem."
+      }
+    ]
+  },
+  "retro": {
+    "label": "Idéer til retrospektiver",
+    "meta": {
+      "title": "15 idéer til retrospektiver for team som jobber eksternt (formater og tips)",
+      "description": "15 idéer til retrospektiver for team som jobber eksternt: raske, visuelle og dypere formater og formater som løfter stemningen, pluss hvordan du leder en retro på nett og får tiltakene gjennomført."
+    },
+    "title": "Idéer til retrospektiver <em>for team som er lei av de samme tre spørsmålene.</em>",
+    "intro": "En retrospektiv er et kort møte der et team ser tilbake på en arbeidsperiode og blir enige om hva som skal endres. Det er en av de nyttigste vanene et team kan ha, og en av dem som lettest blir rutine. Her er 15 formater som holder retroen levende, hvordan du leder en på nett, og hvordan du sørger for at noe faktisk endrer seg etterpå.",
+    "sections": [
+      {
+        "title": "Slik går en retro",
+        "body": [
+          "Uansett format følger de fleste gode retroer de samme fem stegene. Formatene nedenfor endrer midten; behold starten og slutten."
+        ],
+        "table": {
+          "head": [
+            "Steg",
+            "Tid",
+            "Hva som skjer"
+          ],
+          "rows": [
+            [
+              "Sett scenen",
+              "5 min",
+              "En kort innsjekk og en påminnelse om at det handler om arbeidet, ikke om skyld"
+            ],
+            [
+              "Samle innspill",
+              "10 min",
+              "Alle skriver lapper alene først, så deler dere"
+            ],
+            [
+              "Finn temaer",
+              "10–15 min",
+              "Grupper lappene og stem på det som betyr mest"
+            ],
+            [
+              "Bestem tiltak",
+              "10 min",
+              "To eller tre konkrete endringer, hver med en ansvarlig"
+            ],
+            [
+              "Avslutt",
+              "5 min",
+              "Gå gjennom tiltakene fra sist og en runde med én setning om selve retroen"
+            ]
+          ],
+          "note": "Førtifem minutter passer et team på opptil ti, hver andre til fjerde uke."
+        }
+      },
+      {
+        "title": "Raske formater",
+        "body": [
+          "For korte retroer, eller et team som er nytt med dem."
+        ],
+        "items": [
+          {
+            "title": "Start, stopp, fortsett",
+            "detail": "Klassikeren",
+            "body": "Hva bør vi begynne med, slutte med og fortsette med? Enkelt og alltid nyttig."
+          },
+          {
+            "title": "Sint, lei seg, glad",
+            "detail": "For følelser, ikke bare prosess",
+            "body": "Hva gjorde folk sinte, skuffet eller glade. Bra etter en tung periode."
+          },
+          {
+            "title": "Behold, legg til, mindre, mer",
+            "detail": "Finere enn start, stopp, fortsett",
+            "body": "Fire kolonner der folk kan foreslå å skru opp eller ned noe i stedet for å slå det av eller på."
+          },
+          {
+            "title": "Ett ord",
+            "detail": "Fem minutter",
+            "body": "Alle beskriver forrige sprint med ett ord og forklarer det. En god start, eller en hel retro i en travel uke."
+          }
+        ]
+      },
+      {
+        "title": "Visuelle formater",
+        "body": [
+          "Bilder får folk til å tenke annerledes. Tegn rammen på en felles tavle og la alle legge til lapper."
+        ],
+        "items": [
+          {
+            "title": "Seilbåten",
+            "detail": "Vind, ankre, skjær, øy",
+            "body": "Øya er målet; vinden dyttet oss fremover, ankrene holdt oss tilbake, skjærene er risikoer foran oss."
+          },
+          {
+            "title": "Rose, torn, knopp",
+            "detail": "Bra, dårlig, lovende",
+            "body": "En rose er noe som gikk bra, en torn et problem, en knopp en idé eller mulighet som begynner å vokse."
+          },
+          {
+            "title": "Sjøstjernen",
+            "detail": "Fem armer",
+            "body": "Fortsett, mindre, mer, stopp, start. Nyttig når start, stopp, fortsett føles for grovt."
+          },
+          {
+            "title": "Tidslinje",
+            "detail": "For lange eller begivenhetsrike perioder",
+            "body": "Tegn perioden som en linje og la alle markere opp- og nedturer. Mønstre dukker opp som en liste skjuler."
+          }
+        ]
+      },
+      {
+        "title": "Dypere formater",
+        "body": [
+          "Når et problem stadig kommer tilbake, eller et prosjekt er ferdig."
+        ],
+        "items": [
+          {
+            "title": "Fem ganger hvorfor",
+            "detail": "Ett problem, helt til roten",
+            "body": "Velg ett problem og spør «hvorfor?» til dere når en årsak dere kan endre."
+          },
+          {
+            "title": "Pre-mortem",
+            "detail": "Å se fremover",
+            "body": "Se for dere at neste prosjekt har mislyktes. Hva gikk galt? Planlegg så mot de mest sannsynlige årsakene."
+          },
+          {
+            "title": "Lean coffee",
+            "detail": "Teamet setter agendaen",
+            "body": "Alle foreslår temaer, teamet stemmer, og dere tar dem i rekkefølge med en tidtaker."
+          },
+          {
+            "title": "Likte, lærte, manglet, lengtet etter",
+            "detail": "Etter et prosjekt",
+            "body": "Fire spørsmål som balanserer det som gikk bra med det som manglet."
+          }
+        ]
+      },
+      {
+        "title": "Formater som løfter stemningen",
+        "body": [
+          "Etter en tung lansering eller et langt kvartal: start med det som gikk bra."
+        ],
+        "items": [
+          {
+            "title": "Takkerunde",
+            "detail": "Ti minutter",
+            "body": "Alle takker noen for noe konkret. Gå så videre til hva som skal endres."
+          },
+          {
+            "title": "De tre små grisene",
+            "detail": "Halm, tre, murstein",
+            "body": "Hva er skjørt, hva holder, men kunne vært sterkere, og hva er solid. Lett, men finner ekte risikoer."
+          },
+          {
+            "title": "Håp og bekymringer",
+            "detail": "Før en stor periode",
+            "body": "Hva folk håper på og hva som bekymrer dem ved det som kommer. Kombiner med noen [teambuildingspørsmål](/tools/team-building-questions) hvis teamet er nytt."
+          }
+        ]
+      },
+      {
+        "title": "Lede en retro på nett",
+        "items": [
+          {
+            "title": "Skriv først, i stillhet",
+            "body": "Fem minutter der alle skriver lapper alene, henter idéer fra de stille, ikke bare fra dem som snakker mest."
+          },
+          {
+            "title": "Bruk en felles tavle",
+            "body": "En felles [nettbasert tavle](/online-whiteboard) eller et enkelt dokument med kolonner. Behold den samme fra retro til retro, så dere kan se tilbake."
+          },
+          {
+            "title": "Kamera valgfritt, stemme på",
+            "body": "Det viktige er at folk snakker; ingen trenger å stirre på et rutenett av ansikter i førtifem minutter."
+          },
+          {
+            "title": "Bytt på hvem som leder",
+            "body": "En ny hver gang holder formatet friskt og lar lederen bare delta."
+          },
+          {
+            "title": "Anonyme lapper når tilliten er lav",
+            "body": "Ærlige innspill slår høflige. Gå tilbake til lapper med navn etter hvert som tilliten vokser."
+          }
+        ]
+      },
+      {
+        "title": "Få tiltakene gjennomført",
+        "items": [
+          {
+            "title": "To eller tre tiltak, ikke flere",
+            "body": "En lang liste med tiltak betyr at ingen av dem blir gjort."
+          },
+          {
+            "title": "En ansvarlig for hvert",
+            "body": "«Vi burde» er ikke et tiltak. Et navn og en dato er det."
+          },
+          {
+            "title": "Legg dem på tavlen",
+            "body": "Legg tiltakene på oppgavetavlen sammen med resten av arbeidet, ikke i et eget dokument."
+          },
+          {
+            "title": "Start med tiltakene fra sist",
+            "body": "Begynn hver retro med hva som skjedde med de forrige. Det er den raskeste måten å vise at retroer betyr noe."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Der TinyFloor passer inn",
+      "body": "På TinyFloor holdes retroen der teamet allerede er. Gå inn i møterommet sammen, tegn seilbåten på tavlen på veggen, og la den henge til neste gang. Det er gratis for opptil 3 personer."
+    },
+    "faq": [
+      {
+        "q": "Hva er en retrospektiv?",
+        "a": "Et kort, jevnlig møte der et team ser tilbake på en arbeidsperiode, snakker om hva som gikk bra og hva som ikke gjorde det, og blir enige om noen endringer."
+      },
+      {
+        "q": "Hvordan gjør man en retrospektiv morsom?",
+        "a": "Bytt format med noen retroers mellomrom, bruk visuelle formater som seilbåten, start med takk, og sørg for at tiltakene blir gjort, så tiden føles verdt det."
+      },
+      {
+        "q": "Hvor lang bør en retrospektiv være?",
+        "a": "Rundt førtifem minutter for en sprint på to uker og et team på opptil ti. Lengre prosjekter eller større team kan trenge en time."
+      },
+      {
+        "q": "Hvor ofte bør man ha retrospektiv?",
+        "a": "På slutten av hver sprint, eller hver andre til fjerde uke, pluss én på slutten av hvert stort prosjekt."
+      },
+      {
+        "q": "Hvordan holder man en retrospektiv eksternt?",
+        "a": "Med en felles tavle, noen minutters skriving hver for seg før diskusjonen, få tiltak med ansvarlige og skiftende leder."
+      }
+    ]
+  },
+  "onboardingChecklist": {
+    "label": "Sjekkliste for ekstern onboarding",
+    "meta": {
+      "title": "Sjekkliste for ekstern onboarding: fra før første dag til dag 90",
+      "description": "En sjekkliste for ekstern onboarding for ledere: hva du gjør før første dag, første dag, første uke og de første 90 dagene, hvem som eier hvert steg og feilene du bør unngå."
+    },
+    "title": "En sjekkliste for ekstern onboarding, <em>fra før første dag til dag 90.</em>",
+    "intro": "Å starte i en ny jobb på avstand er ensomt på en måte et kontor ikke er: ingen ved siden av, ingen følelse av hvem som er der, og hvert spørsmål føles som å forstyrre. En god sjekkliste løser det meste. Her er hva du gjør før første dag, første dag og gjennom de tre første månedene, og hvem som skal eie hvert steg.",
+    "sections": [
+      {
+        "title": "Hvem gjør hva",
+        "body": [
+          "Onboarding går galt når alle tror noen andre tar seg av det. Utpek en ansvarlig for hver del."
+        ],
+        "table": {
+          "head": [
+            "Hvem",
+            "Eier"
+          ],
+          "rows": [
+            [
+              "Leder",
+              "Planen, mål for de første 90 dagene, ukentlige en-til-en-samtaler"
+            ],
+            [
+              "Buddy",
+              "Hverdagsspørsmål, introduksjoner, hvordan ting faktisk fungerer"
+            ],
+            [
+              "Drift eller IT",
+              "Utstyr, kontoer, tilganger og papirarbeid"
+            ],
+            [
+              "Den nye",
+              "Stille spørsmål, skrive ned det som var forvirrende, en første liten oppgave"
+            ]
+          ]
+        }
+      },
+      {
+        "title": "Før første dag",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Send utstyret",
+            "body": "PC og alt annet som trengs, så det kommer frem noen dager før."
+          },
+          {
+            "title": "Opprett alle kontoer",
+            "body": "E-post, chat, dokumenter, oppgavetavlen og alt for rollen, testet før personen logger inn."
+          },
+          {
+            "title": "Velg en buddy",
+            "body": "En kollega som ikke er lederen, med tid satt av til de to første ukene."
+          },
+          {
+            "title": "Skriv planen for første uke",
+            "body": "Hvem personen møter, hva de skal lese og en første liten oppgave, delt før oppstart."
+          },
+          {
+            "title": "Si fra til teamet",
+            "body": "En kort presentasjon i teamkanalen, så alle sier hei første dag."
+          },
+          {
+            "title": "Send en velkomstmelding",
+            "body": "Starttid, første møte og hvem man kontakter hvis noe ikke fungerer."
+          }
+        ]
+      },
+      {
+        "title": "Første dag",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Start med en samtale med lederen",
+            "body": "Velkommen, ukens plan og hvordan «bra» ser ut den første måneden."
+          },
+          {
+            "title": "Sjekk at hver pålogging fungerer",
+            "body": "Ingenting ødelegger en første dag som en ettermiddag i venting på tilgang."
+          },
+          {
+            "title": "Møt buddyen",
+            "body": "En første prat og en avtale om å snakke minst én gang om dagen den første uken."
+          },
+          {
+            "title": "En velkomst fra teamet",
+            "body": "En kort, uformell samtale eller samling. Et lett [isbryterspørsmål](/tools/icebreaker-questions) hjelper alle å si noe."
+          },
+          {
+            "title": "Vis håndboken",
+            "body": "Hvordan teamet jobber, hvor man spør om hva og hvor beslutningene ligger."
+          },
+          {
+            "title": "Avslutt dagen med en innsjekk",
+            "body": "Fem minutter: hvordan var det, og hva er fortsatt uklart?"
+          }
+        ]
+      },
+      {
+        "title": "Første uke",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Introduksjoner én og én",
+            "body": "Femten minutter med hver av dem den nye skal jobbe mest med."
+          },
+          {
+            "title": "Følg ekte arbeid",
+            "body": "Sitt med på samtaler, gjennomganger og planlegging, mens buddyen forklarer hva som skjer."
+          },
+          {
+            "title": "Gjør ferdig noe lite",
+            "body": "En første oppgave som kan bli ferdig denne uken. Å bli ferdig med noe tidlig gir selvtillit."
+          },
+          {
+            "title": "Bli enige om arbeidstider",
+            "body": "Når personen er pålogget, teamets felles timer og hvor raskt folk pleier å svare."
+          },
+          {
+            "title": "Første ukentlige en-til-en",
+            "body": "Hva som går bra, hva som er forvirrende og hva personen trenger."
+          }
+        ]
+      },
+      {
+        "title": "De første 30, 60 og 90 dagene",
+        "numbered": true,
+        "items": [
+          {
+            "title": "30 dager: på plass",
+            "body": "Kjenner verktøyene, menneskene og hvordan arbeidet flyter. Tar små oppgaver selv."
+          },
+          {
+            "title": "60 dager: bidrar",
+            "body": "Tar større oppgaver med mindre støtte og begynner å se hva som kan bli bedre."
+          },
+          {
+            "title": "90 dager: helt med i teamet",
+            "body": "Jobber selvstendig, hjelper andre og har hatt en skikkelig gjennomgang av hvordan onboardingen gikk."
+          },
+          {
+            "title": "Spør hva som bør fikses",
+            "body": "Spør etter 30 og 90 dager hva som var forvirrende eller manglet, og oppdater sjekklisten til neste person."
+          }
+        ]
+      },
+      {
+        "title": "Feil ved ekstern onboarding",
+        "items": [
+          {
+            "title": "En uke med lesing",
+            "body": "Dokumenter betyr noe, men folk lærer raskere av ekte arbeid med noen ved siden av."
+          },
+          {
+            "title": "Ingen å spørre",
+            "body": "Uten buddy sitter nye i timevis med spørsmål heller enn å forstyrre."
+          },
+          {
+            "title": "Usynlige kolleger",
+            "body": "Når man ikke ser hvem som er der, er det vanskelig å vite når det er greit å spørre. Gjør tilstedeværelsen synlig."
+          },
+          {
+            "title": "For mange møter på én gang",
+            "body": "Spre introduksjonene over de to første ukene i stedet for ti samtaler første dag."
+          },
+          {
+            "title": "Onboardingen stopper etter uke én",
+            "body": "De tre første månedene avgjør om folk blir. Hold en-til-en-samtaler og innsjekker i gang."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Der TinyFloor passer inn",
+      "body": "På TinyFloor ser en nyansatt hele teamet i én etasje fra første dag: hvem som er der, hvem som er i møte og hvem som er ledig. Et spørsmål er en kort spasertur, ikke en booket samtale, og buddyen sitter noen pulter unna. Det er gratis for opptil 3 personer."
+    },
+    "faq": [
+      {
+        "q": "Hva bør en sjekkliste for ekstern onboarding inneholde?",
+        "a": "Utstyr og kontoer før første dag, en buddy, en plan for første uke, introduksjoner, en liten første oppgave, ukentlige en-til-en-samtaler og mål for 30, 60 og 90 dager."
+      },
+      {
+        "q": "Hvor lang tid tar ekstern onboarding?",
+        "a": "De fleste trenger rundt tre måneder for å komme helt på plass, med mest støtte de to første ukene."
+      },
+      {
+        "q": "Hvordan får man en ny ekstern ansatt til å føle seg velkommen?",
+        "a": "Ha alt klart første dag, gi personen en buddy, presenter dem tidlig for teamet, og sjekk inn hver dag den første uken."
+      },
+      {
+        "q": "Hva er en onboarding-buddy?",
+        "a": "En kollega, ikke lederen, som svarer på hverdagsspørsmål og introduserer folk i den nyes første uker."
+      },
+      {
+        "q": "Hva er vanskeligst med ekstern onboarding?",
+        "a": "Å vite hvem man skal spørre og når det er greit å forstyrre. En buddy og synlig tilstedeværelse løser det meste."
       }
     ]
   }

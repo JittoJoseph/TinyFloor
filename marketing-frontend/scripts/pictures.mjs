@@ -150,10 +150,17 @@ const GUIDES = [
   "what-is-proximity-chat",
   "best-virtual-office-software",
   "gather-pricing",
+  "remote-work-tools",
+  "how-to-manage-a-remote-team",
+  "virtual-happy-hour-ideas",
+  "async-communication",
+  "one-on-one-meeting-questions",
+  "retrospective-ideas",
+  "remote-onboarding-checklist",
 ];
 // SLUGS=a,b redraws just those pages (and guides, as guide-<slug>).
 const slugs = process.env.SLUGS?.split(",") ?? LANDINGS;
 if (wants("pages")) for (const slug of slugs) await card("en", slug, `${slug}.jpg`);
-if (wants("guides")) for (const slug of GUIDES) await card("en", `guide-${slug}`, `guide-${slug}.jpg`);
+if (wants("guides")) for (const slug of GUIDES.filter((one) => !process.env.SLUGS || slugs.includes(one))) await card("en", `guide-${slug}`, `guide-${slug}.jpg`);
 if (wants("neutral")) await card("en", "neutral", "neutral.jpg");
 await browser.close();

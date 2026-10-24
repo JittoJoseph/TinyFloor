@@ -105,7 +105,7 @@
       {
         "title": "Tunti kerran kuukaudessa tai neljännesvuodessa",
         "body": [
-          "Isommat tapahtumat vaativat vähän suunnittelua tai pienen budjetin. Järjestä niitä harvemmin ja kunnolla."
+          "Isommat tapahtumat vaativat vähän suunnittelua tai pienen budjetin. Järjestä niitä harvemmin ja kunnolla. Tiimin yhteiseen hetkeen löydät vinkkejä [etä-afterwork-ideoistamme](/guides/virtual-happy-hour-ideas)."
         ],
         "items": [
           {
@@ -387,7 +387,7 @@
           },
           {
             "title": "Anna uusille kummi",
-            "body": "Perehdytyksen pitäisi olla ihminen, ei pelkkä dokumentti: joku, jolta kysyä tyhmät kysymykset ensimmäisenä kuukautena."
+            "body": "Perehdytyksen pitäisi olla ihminen, ei pelkkä dokumentti: joku, jolta kysyä tyhmät kysymykset ensimmäisenä kuukautena. Loput löytyvät [etäperehdytyksen tarkistuslistastamme](/guides/remote-onboarding-checklist)."
           },
           {
             "title": "Juhli julkisesti",
@@ -524,6 +524,34 @@
         ]
       },
       {
+        "title": "Työkalut kullekin keskustelulle",
+        "body": [
+          "Anna jokaiselle keskustelutyypille yksi koti, niin kenenkään ei tarvitse arvata, mistä katsoa. Oppaamme [etätyön työkaluista](/guides/remote-work-tools) käsittelee jokaisen tarkemmin."
+        ],
+        "items": [
+          {
+            "title": "Chat",
+            "detail": "Slack, Microsoft Teams, Google Chat",
+            "body": "Kysymykset ja päivitykset, jotka voivat odottaa muutaman minuutin. Kanavat aiheittain, vastaukset ketjuihin."
+          },
+          {
+            "title": "Palaverit",
+            "detail": "Google Meet, Zoom, Microsoft Teams",
+            "body": "Sovitut keskustelut, joihin tarvitaan kaikki yhtä aikaa, asialista etukäteen ja päätökset kirjattuina jälkikäteen."
+          },
+          {
+            "title": "Läsnäolo",
+            "detail": "Virtuaalitoimisto tai auki pidetty äänikanava",
+            "body": "Nopeat keskustelut heti, ja näet, kuka on vapaana, ennen kuin häiritset."
+          },
+          {
+            "title": "Dokumentit",
+            "detail": "Notion, Google Docs, Confluence",
+            "body": "Kaikki, mitä tarvitaan uudelleen: päätökset, ohjeet ja tiimin käsikirja."
+          }
+        ]
+      },
+      {
         "title": "Yksinkertaiset säännöt tiimille",
         "body": [
           "Kirjoita ne kerran ja näytä uusille. Ne estävät suurimman osan kitkasta."
@@ -564,7 +592,7 @@
           },
           {
             "title": "Liikaa palavereja",
-            "body": "Korvaa tilannepalaverit kirjallisilla päivityksillä ja säästä puhelut päätöksiin ja ongelmiin."
+            "body": "Korvaa tilannepalaverit kirjallisilla päivityksillä ja säästä puhelut päätöksiin ja ongelmiin. Miten se tehdään hyvin, kerrotaan oppaassamme [asynkronisesta viestinnästä](/guides/async-communication)."
           },
           {
             "title": "Ihmiset hiljenevät",
@@ -1194,6 +1222,1646 @@
       {
         "q": "Mikä on Gatheria edullisempi vaihtoehto?",
         "a": "TinyFloor maksaa 29 $ kuukaudessa koko tiimille ja on ilmainen enintään 3 hengelle. SoWorkin Basic-paketti maksaa 5,40 $ jäseneltä kuukaudessa vuosilaskutuksella, ja sen ilmaispaketti kattaa 10 jäsentä 30 minuutin kokouksilla."
+      }
+    ]
+  },
+  "remoteTools": {
+    "label": "Etätyön työkalut",
+    "meta": {
+      "title": "Etätyön työkalut: mitä pieni tiimi oikeasti tarvitsee vuonna 2026",
+      "description": "Etätyön työkalut, joita pieni tiimi tarvitsee, tehtävä kerrallaan: chat, palaverit, läsnäolo, dokumentit, tehtävät ja aikavyöhykkeet. Lyhyt lista, aloituspaketit ja ohjeet valintaan."
+    },
+    "title": "Etätyön työkalut: <em>mitä pieni tiimi oikeasti tarvitsee.</em>",
+    "intro": "Pieni etätiimi ei tarvitse kahtakymmentä sovellusta. Se tarvitsee yhden hyvän työkalun kuhunkin kuudesta tehtävästä: puhumiseen myöhemmin, puhumiseen sovittuna aikana, puhumiseen heti, asioiden kirjaamiseen, työn seuraamiseen ja työskentelyyn aikavyöhykkeiden yli. Tässä on, mitä kukin tehtävä vaatii, mihin työkaluihin kannattaa tutustua ja kolme aloituspakettia 3–15 hengen tiimille.",
+    "sections": [
+      {
+        "title": "Kuusi tehtävää lyhyesti",
+        "body": [
+          "Suurin osa etätyön kitkasta syntyy, kun asia päätyy väärään paikkaan: nopea kysymys muuttuu palaveriksi tai päätös hukkuu chattiin. Anna jokaiselle tehtävälle yksi koti."
+        ],
+        "table": {
+          "head": [
+            "Tehtävä",
+            "Mihin se on",
+            "Tutustumisen arvoiset työkalut"
+          ],
+          "rows": [
+            [
+              "Chat",
+              "Kysymykset ja päivitykset, jotka voivat odottaa muutaman minuutin",
+              "Slack, Microsoft Teams, Discord, Google Chat"
+            ],
+            [
+              "Palaverit",
+              "Sovitut puhelut videolla ja näytönjaolla",
+              "Google Meet, Zoom, Microsoft Teams"
+            ],
+            [
+              "Läsnäolo",
+              "Näkee, kuka on paikalla, ja voi puhua heti",
+              "Virtuaalitoimisto kuten TinyFloor tai auki pidetty äänikanava"
+            ],
+            [
+              "Dokumentit",
+              "Päätökset, ohjeet ja kaikki, mitä tarvitaan uudelleen",
+              "Notion, Google Docs, Confluence"
+            ],
+            [
+              "Tehtävät",
+              "Kuka tekee mitä ja mihin mennessä",
+              "Linear, Trello, Asana, GitHub Issues"
+            ],
+            [
+              "Aikavyöhykkeet",
+              "Kaikille sopivien aikojen löytäminen",
+              "Jaetut kalenterit ja aikavyöhykesuunnittelija"
+            ]
+          ],
+          "note": "Ei paremmuusjärjestys: jokainen on yleinen valinta kyseiseen tehtävään. Ilmaisversiot ja niiden rajat muuttuvat, joten tarkista kunkin työkalun hinnasto."
+        }
+      },
+      {
+        "title": "Chat: puhuminen myöhemmin",
+        "body": [
+          "Suurin osa etätyöstä tapahtuu chatissa, joten valitse yksi sovellus ja pysy siinä. Tee kanavat aiheen tai projektin mukaan, älä henkilön, niin vastaukset löytyvät myöhemmin helposti."
+        ],
+        "items": [
+          {
+            "title": "Slack",
+            "detail": "Useimmat ohjelmistotiimit ja toimistot",
+            "body": "Kanavat, ketjut ja valtava määrä integraatioita. Ilmaisversio rajoittaa, kuinka pitkälle taaksepäin näet, mikä alkaa tuntua, kun tiimi nojaa siihen."
+          },
+          {
+            "title": "Microsoft Teams",
+            "detail": "Tiimit, joilla on jo Microsoft 365",
+            "body": "Chat, palaverit ja tiedostot samassa paikassa, ja usein jo maksettu."
+          },
+          {
+            "title": "Discord",
+            "detail": "Hyvin pienet, rennot tiimit",
+            "body": "Ilmainen, ja äänikanavat ovat hyvät. Se on tehty yhteisöille ja pelaamiseen, joten hallinta ja haku ovat työkäytössä ohuempia."
+          },
+          {
+            "title": "Google Chat",
+            "detail": "Google Workspacea käyttävät tiimit",
+            "body": "Sisältyy Workspaceen ja on yhteydessä Gmailiin ja Docsiin, mutta Slackia yksinkertaisempi."
+          }
+        ]
+      },
+      {
+        "title": "Palaverit: puhuminen sovittuna aikana",
+        "body": [
+          "Palaverit ovat sitä varten, mikä vaatii kaikki yhtä aikaa: suunnittelua, katselmointeja, vaikeita keskusteluja. Pidä ne lyhyinä, jaa asialista etukäteen ja kirjaa, mitä päätettiin."
+        ],
+        "items": [
+          {
+            "title": "Google Meet",
+            "detail": "Tiimit, jotka eivät halua asentaa mitään",
+            "body": "Toimii selaimessa ja sisältyy Google Workspaceen."
+          },
+          {
+            "title": "Zoom",
+            "detail": "Isot puhelut ja epävakaat yhteydet",
+            "body": "Luotettava isoissa ryhmissä ja hitaalla netillä, ja tallennus on hyvä. Ilmaisissa palavereissa on aikaraja."
+          },
+          {
+            "title": "Microsoft Teams",
+            "detail": "Tiimit, jotka jo chattailevat Teamsissa",
+            "body": "Pitää puhelut sen keskustelun vieressä, josta ne syntyivät."
+          }
+        ]
+      },
+      {
+        "title": "Läsnäolo: puhuminen heti",
+        "body": [
+          "Tämän tehtävän useimmat etätiimit jättävät tyhjäksi. Toimistolla näet, kuka on vapaana, ja voit kysyä ohimennen. Etänä jokaisesta kysymyksestä tulee viesti tai varattu puhelu, ja pienet asiat jäävät odottamaan.",
+          "[Virtuaalitoimisto](/virtual-office) täyttää aukon: yhteinen paikka, jossa näet, kuka on paikalla, kuka on palaverissa ja kuka haluaa rauhaa, ja voit aloittaa keskustelun varaamatta mitään."
+        ],
+        "items": [
+          {
+            "title": "Virtuaalitoimisto",
+            "detail": "Tiimit, jotka haluavat tuntea olevansa yhdessä koko päivän",
+            "body": "Yhteinen kerros selaimessa, kuten TinyFloor: kävele jonkun luo puhumaan, astu huoneeseen palaveria varten ja näe yhdellä silmäyksellä, kuka on paikalla."
+          },
+          {
+            "title": "Auki pidetty äänikanava",
+            "detail": "Hyvin pienet tiimit Slackissa tai Discordissa",
+            "body": "Huddle tai äänikanava, joka pidetään auki, jotta kuka tahansa voi poiketa. Yksinkertainen, mutta et näe, kuka on kiireinen tai keskittynyt."
+          },
+          {
+            "title": "Selkeät tilat",
+            "detail": "Kaikki tiimit, käyttivät ne mitä tahansa",
+            "body": "”Palaverissa”, ”keskittymässä” tai ”takaisin klo 14” säästää monelta ”oletko paikalla?” -viestiltä."
+          }
+        ]
+      },
+      {
+        "title": "Dokumentit: asioiden kirjaaminen",
+        "body": [
+          "Kaikki, mitä kysytään kahdesti, kuuluu dokumenttiin eikä chattiin: miten teette töitä, mitä päätettiin ja miksi, miten tietokone otetaan käyttöön. Lyhyt tiimin käsikirja säästää jokaiselta uudelta viikkoja."
+        ],
+        "items": [
+          {
+            "title": "Notion",
+            "detail": "Käsikirjat, wikit ja suunnittelu",
+            "body": "Dokumentit, wikit ja yksinkertaiset tietokannat samassa paikassa."
+          },
+          {
+            "title": "Google Docs",
+            "detail": "Nopea yhteinen kirjoittaminen",
+            "body": "Nopea jakaa ja muokata yhdessä, ja kaikki osaavat jo käyttää sitä."
+          },
+          {
+            "title": "Confluence",
+            "detail": "Tiimit, jotka käyttävät jo Jiraa",
+            "body": "Yleinen isommissa tiimeissä, jotka suunnittelevat työnsä Jirassa."
+          }
+        ]
+      },
+      {
+        "title": "Tehtävät: kuka tekee mitä",
+        "body": [
+          "Yksi jaettu, ajan tasalla pidetty taulu lopettaa suurimman osan ”missä mennään?” -viesteistä. Valitse sellainen, joka sopii tiimisi teknisyyteen."
+        ],
+        "items": [
+          {
+            "title": "Linear",
+            "detail": "Ohjelmistotiimit",
+            "body": "Nopea ja selkeälinjainen, rakennettu tikettien, syklien ja projektien ympärille."
+          },
+          {
+            "title": "Trello",
+            "detail": "Kuka tahansa, muutamassa minuutissa",
+            "body": "Yksinkertaisia tauluja ja kortteja, jotka eivät kaipaa selityksiä."
+          },
+          {
+            "title": "Asana",
+            "detail": "Ei-tekniset tiimit",
+            "body": "Projektit, aikajanat ja työkuormanäkymät."
+          },
+          {
+            "title": "GitHub Issues",
+            "detail": "Pienet kehitystiimit",
+            "body": "Riittää, jos työnne on jo GitHubissa."
+          }
+        ]
+      },
+      {
+        "title": "Aikavyöhykkeet ja kirjalliset päivitykset",
+        "body": [
+          "Useille aikavyöhykkeille hajautuneet tiimit tarvitsevat vähemmän live-palavereja ja parempia kirjallisia päivityksiä. Sopikaa muutama yhteinen tunti, jakakaa kalenterit ja korvatkaa päivittäinen stand-up-puhelu kirjallisella kuulumiskierroksella aina kun voitte. Miten se tehdään, kerrotaan oppaassamme [asynkronisesta viestinnästä](/guides/async-communication)."
+        ],
+        "items": [
+          {
+            "title": "Aikavyöhykesuunnittelija",
+            "body": "Löydä kaikille sopivat ajat ennen varaamista. Ilmainen [aikavyöhykkeiden palaverisuunnittelijamme](/tools/time-zone-meeting-planner) näyttää päällekkäiset tunnit yhdellä silmäyksellä."
+          },
+          {
+            "title": "Kirjallinen stand-up",
+            "body": "Eilen, tänään ja mikä on esteenä, yhdellä kanavalla. Ilmainen [päivittäisen stand-upin pohjamme](/tools/daily-standup-template) antaa valmiin muodon."
+          },
+          {
+            "title": "Lyhyet näyttötallenteet",
+            "body": "Kahden minuutin tallenne esimerkiksi Loomilla selittää usein enemmän kuin pitkä viesti."
+          }
+        ]
+      },
+      {
+        "title": "Kolme aloituspakettia",
+        "body": [
+          "Aloita pienestä. Työkalun voi aina lisätä myöhemmin; poistaminen on vaikeampaa."
+        ],
+        "items": [
+          {
+            "title": "Ilmainen paketti",
+            "body": "2–3 hengen tiimi ilman budjettia: Slackin ilmaisversio tai Discord chattiin, Google Meet puheluihin, Google Docs kirjoittamiseen, Trello tehtäviin ja TinyFloorin ilmaisversio toimistoksi."
+          },
+          {
+            "title": "Google-paketti",
+            "body": "Google Workspacea käyttävät tiimit: Google Chat, Meet, Docs ja Kalenteri, Linear tai Trello tehtäviin ja virtuaalitoimisto palaverien väliseen aikaan."
+          },
+          {
+            "title": "Microsoft-paketti",
+            "body": "Microsoft 365:tä käyttävät tiimit: Teams chattiin ja palavereihin, SharePoint tai OneNote dokumentteihin, Planner tehtäviin ja virtuaalitoimisto läsnäoloon."
+          }
+        ]
+      },
+      {
+        "title": "Miten valita",
+        "items": [
+          {
+            "title": "Yksi koti tehtävää kohden",
+            "body": "Kaksi chat-sovellusta tarkoittaa, että jokainen kysymys kysytään kahdesti. Päättäkää, mikä menee minnekin, ja kirjatkaa se."
+          },
+          {
+            "title": "Aloita ilmaisversioista",
+            "body": "Useimmissa näistä työkaluista on sellainen. Käytä kuukauden ajan ja maksa sitten niistä, joita tiimi oikeasti avaa joka päivä."
+          },
+          {
+            "title": "Vähemmän työkaluja, hyvin käytettyinä",
+            "body": "Jokainen uusi työkalu on yksi paikka lisää tarkistettavaksi. Lisää uusi vain, kun jollakin tehtävällä ei ole kotia."
+          },
+          {
+            "title": "Tarkista, missä tietosi ovat",
+            "body": "Jos teet töitä eurooppalaisten asiakkaiden kanssa tai tiukalle työnantajalle, lue kunkin työkalun tietosuoja- ja tietojen sijaintisivut ennen päätöstä."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloor hoitaa läsnäolon: virtuaalitoimisto selaimessa, jossa tiimisi näkee, kuka on paikalla, ja kävelee juttelemaan, ja jossa on valmiina palaverihuone, chat ja näytönjako. Se toimii chat-, dokumentti- ja tehtävätyökalujesi rinnalla eikä korvaa niitä. Se on ilmainen enintään 3 hengelle, joten voit kokeilla sitä tiimisi kanssa jo tänään."
+    },
+    "faq": [
+      {
+        "q": "Mitä työkaluja etätiimi tarvitsee?",
+        "a": "Useimmat pienet etätiimit tarvitsevat työkalun kuhunkin kuudesta tehtävästä: chat, palaverit, läsnäolo (kuka on paikalla), dokumentit, tehtävät ja aikavyöhykkeet. Moni pärjää neljällä tai viidellä sovelluksella."
+      },
+      {
+        "q": "Mitkä ovat parhaat ilmaiset työkalut etätiimille?",
+        "a": "Yhtä vastausta ei ole, mutta Slackin ilmaisversio tai Discord, Google Meet, Google Docs ja Trello kattavat suurimman osan pienen tiimin tehtävistä, ja TinyFloor on ilmainen enintään 3 hengelle."
+      },
+      {
+        "q": "Tarvitseeko etätiimi virtuaalitoimiston?",
+        "a": "Ei aina. Jos chat ja varatut puhelut toimivat teillä hyvin, ehkä ei. Jos pienet kysymykset muuttuvat jatkuvasti palavereiksi tai joku tuntee itsensä ulkopuoliseksi, virtuaalitoimisto täyttää aukon."
+      },
+      {
+        "q": "Montako työkalua on liikaa?",
+        "a": "Jos ihmiset eivät usein tiedä, minne jotain pitäisi kirjoittaa tai mistä sen löytää, niitä on liikaa. Yksi koti tehtävää kohden on hyvä sääntö."
+      },
+      {
+        "q": "Slack vai Microsoft Teams?",
+        "a": "Jos yrityksesi maksaa jo Microsoft 365:stä, Teams on yleensä yksinkertaisin valinta. Muuten useimmat pienet ohjelmistotiimit ja toimistot suosivat Slackia."
+      }
+    ]
+  },
+  "manageRemote": {
+    "label": "Etätiimin johtaminen",
+    "meta": {
+      "title": "Etätiimin johtaminen: 9 toimivaa käytäntöä",
+      "description": "Miten johtaa etätiimiä hyvin: kirjatut toimintatavat, yhteiset tunnit, yksinkertainen palaverirytmi, näkyvä työ, motivointi ilman valvontaa ja vältettävät virheet."
+    },
+    "title": "Etätiimin johtaminen <em>ilman mikromanagerointia.</em>",
+    "intro": "Etätiimin johtaminen on enimmäkseen sen johtamista, mitä et enää näe: kuka on jumissa, kuka on ylikuormittunut ja kuka tuntee jäävänsä ulkopuolelle. Vastaus ei ole lisää palavereja tai valvontaohjelmistoja. Se on selkeää kirjoittamista, tasaista rytmiä ja sekä työn että ihmisten näkyväksi tekemistä. Tässä on, mikä toimii pienissä tiimeissä.",
+    "sections": [
+      {
+        "title": "Mikä muuttuu, kun tiimi on etänä",
+        "body": [
+          "Toimistolla paljon johtamisesta tapahtuu itsestään. Huomaat, että joku näyttää olevan jumissa, kuulet ongelmasta ohimennen ja nappaat ihmisiä palaverien välissä. Etänä kaikki tämä katoaa, ellet rakenna sitä tietoisesti uudelleen.",
+          "Kolme asiaa vaatii enemmän huolenpitoa: selkeys (mitä teemme ja miksi), yhteys (että ihmiset tuntevat toisensa) ja näkyvyys (työn ja ihmisten näkeminen ilman valvomista)."
+        ]
+      },
+      {
+        "title": "Yhdeksän toimivaa käytäntöä",
+        "items": [
+          {
+            "title": "Kirjaa, miten teette töitä",
+            "body": "Yhden sivun tiimin käsikirja: missä kysytään, kuinka nopeasti vastataan, milloin kokoonnutaan ja missä päätökset ovat. Uudet lukevat sen ensimmäisenä päivänä."
+          },
+          {
+            "title": "Sopikaa yhteiset tunnit",
+            "body": "Valitkaa kahdesta neljään tuntia, jolloin kaikki ovat paikalla nopeita kysymyksiä ja palavereja varten. Muulloin jokainen tekee töitä silloin, kun itselle sopii."
+          },
+          {
+            "title": "Kirjoita ensin, puhu sitten",
+            "body": "Kirjoita ensin kaikesta, mikä vaatii pohdintaa. Vaihda puheluun, kun ketju kulkee edestakaisin yli kolme kertaa."
+          },
+          {
+            "title": "Pidä palaverirytmi tasaisena",
+            "body": "Muutama ennustettava palaveri on parempi kuin monta viime hetken palaveria. Yksinkertainen rytmi on alempana."
+          },
+          {
+            "title": "Pidä kahdenkeskiset keskustelut viikoittain",
+            "body": "Puoli tuntia viikossa kunkin kanssa, ihmisestä eikä tilanteesta. Siellä kuulet ongelmista ajoissa. Tässä [40 kysymystä, joita kysyä](/guides/one-on-one-meeting-questions)."
+          },
+          {
+            "title": "Tee työ näkyväksi",
+            "body": "Yksi jaettu, ajan tasalla pidetty tehtävätaulu vastaa ”missä mennään?” -kysymykseen ennen kuin kukaan ehtii kysyä."
+          },
+          {
+            "title": "Tee läsnäolo näkyväksi",
+            "body": "Anna ihmisten nähdä, kuka on paikalla ja kuka kiireinen, tilojen tai [virtuaalitoimiston](/team-presence) avulla, jotta he tietävät, milloin saa häiritä."
+          },
+          {
+            "title": "Arvioi tuloksia, älä tunteja",
+            "body": "Sopikaa, miltä ”valmis” näyttää, ja tarkistakaa lopputulos. Aktiivisuusmittarit ja kuvakaappaukset vahingoittavat luottamusta ja mittaavat väärää asiaa."
+          },
+          {
+            "title": "Varaa aikaa sosiaaliselle",
+            "body": "Lyhyt viikoittainen yhteinen hetki, [jäänmurtaja](/tools/icebreaker-questions) palaverin alussa, kanava muulle kuin työjutuille. Etänä yhteys ei synny sattumalta."
+          }
+        ]
+      },
+      {
+        "title": "Yksinkertainen palaverirytmi",
+        "body": [
+          "Tämä rytmi sopii useimmille 3–15 hengen tiimeille. Säädä kestoja, älä ajatusta. Ja pidä retrospektiivi raikkaana kokeilemalla välillä [uutta formaattia](/guides/retrospective-ideas)."
+        ],
+        "table": {
+          "head": [
+            "Palaveri",
+            "Kuinka usein",
+            "Kesto",
+            "Mihin se on"
+          ],
+          "rows": [
+            [
+              "Stand-up",
+              "Päivittäin tai kirjallisesti",
+              "15 min",
+              "Päivän suunnitelma ja esteet"
+            ],
+            [
+              "Tiimipalaveri",
+              "Viikoittain",
+              "30–45 min",
+              "Prioriteetit, päätökset ja onnistumiset"
+            ],
+            [
+              "Kahdenkeskinen",
+              "Viikoittain tai joka toinen viikko",
+              "30 min",
+              "Ihminen: kehittyminen, ongelmat, palaute"
+            ],
+            [
+              "Retrospektiivi",
+              "2–4 viikon välein",
+              "45 min",
+              "Mitä pidetään, muutetaan ja lopetetaan"
+            ],
+            [
+              "Yhteinen hetki",
+              "Viikoittain tai kuukausittain",
+              "15–30 min",
+              "Toisiin tutustuminen"
+            ]
+          ],
+          "note": "Yhdelle kanavalle kirjoitettu stand-up toimii hyvin aikavyöhykkeiden yli."
+        }
+      },
+      {
+        "title": "Miten motivoida etätiimiä",
+        "body": [
+          "Motivaatio tulee samoista lähteistä kuin toimistolla, mutta etänä se pitää sanoa ääneen useammin."
+        ],
+        "items": [
+          {
+            "title": "Kiitä työstä julkisesti",
+            "body": "Kiitä tiimin kanavalla konkreettisesti siitä, mitä joku teki ja miksi sillä oli väliä."
+          },
+          {
+            "title": "Anna todellista vastuuta",
+            "body": "Anna kokonaisia ongelmia, älä pelkkiä tehtäviä. Ihmiset välittävät enemmän työstä, jonka tekotavan he ovat itse valinneet."
+          },
+          {
+            "title": "Näytä, mihin työ päätyy",
+            "body": "Jaa asiakaspalautetta ja tuloksia, jotta ihmiset näkevät työnsä vaikutuksen."
+          },
+          {
+            "title": "Panosta kehittymiseen",
+            "body": "Kysy jokaiselta, mitä hän haluaa oppia, ja anna työtä, jossa hän kasvaa."
+          },
+          {
+            "title": "Suojele heidän aikaansa",
+            "body": "Vähemmän palavereja ja rauhallisia keskittymistunteja on jo itsessään palkinto."
+          }
+        ]
+      },
+      {
+        "title": "Vältettävät virheet",
+        "items": [
+          {
+            "title": "Valvontaohjelmistot",
+            "body": "Näppäilyjen tallentajat ja web-kameratarkistukset kertovat ihmisille, ettet luota heihin, ja parhaat lähtevät ensimmäisinä."
+          },
+          {
+            "title": "Liikaa palavereja",
+            "body": "Videopuhelut väsyttävät enemmän kuin kasvokkain tapaaminen. Jos palaverin voisi korvata kirjallisella päivityksellä, korvaa se."
+          },
+          {
+            "title": "Kaikki yksityisviesteissä",
+            "body": "Yksityisviesteissä käsitelty työ on näkymätöntä kaikille muille. Käytä oletuksena tiimin kanavia."
+          },
+          {
+            "title": "Ei perehdytyssuunnitelmaa",
+            "body": "Uudet etätyöntekijät voivat olla viikkoja tietämättä, keneltä kysyä. Anna heille kummi ja [suunnitelma kahdelle ensimmäiselle viikolle](/guides/remote-onboarding-checklist)."
+          },
+          {
+            "title": "Aikavyöhykkeiden sivuuttaminen",
+            "body": "Vaihtele palaveriaikoja, kirjaa mitä voit, äläkä koskaan jätä kaikkia myöhäisiä puheluita samoille ihmisille."
+          }
+        ]
+      },
+      {
+        "title": "Työkalut, jotka auttavat",
+        "body": [
+          "Tarvitset vähemmän työkaluja kuin luulet: yhden kutakin chattiin, palavereihin, dokumentteihin ja tehtäviin, sekä tavan nähdä, kuka on paikalla. Oppaamme [etätyön työkaluista](/guides/remote-work-tools) käy läpi jokaisen tehtävän ja pienten tiimien aloituspaketit."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloor tekee läsnäolon näkyväksi: virtuaalitoimisto selaimessa, jossa tiimisi näkee, kuka on paikalla, kuka palaverissa ja kuka haluaa rauhaa, ja kävelee juttelemaan. Se tuo takaisin käytäväkeskustelut, joita etätiimiltä puuttuu, ilman koko päivän päällä olevia kameroita ja ilman seurantaa. Se on ilmainen enintään 3 hengelle."
+    },
+    "faq": [
+      {
+        "q": "Miten etätiimiä johdetaan hyvin?",
+        "a": "Kirjaa tiimin toimintatavat, sopikaa yhteiset tunnit, pidä tasainen palaverirytmi viikoittaisine kahdenkeskisine keskusteluineen, tee työ ja ihmiset näkyviksi ja arvioi tuloksia tuntien sijaan."
+      },
+      {
+        "q": "Miten etätiimi pysyy motivoituneena?",
+        "a": "Kiitä työstä julkisesti, anna vastuuta, näytä työn vaikutus, panosta ihmisten kehittymiseen ja varaa säännöllisesti aikaa yhteydelle."
+      },
+      {
+        "q": "Kuinka usein etätiimin pitäisi kokoontua?",
+        "a": "Lyhyt päivittäinen stand-up (tai kirjallinen), viikoittainen tiimipalaveri, kahdenkeskiset viikoittain tai joka toinen viikko ja retrospektiivi muutaman viikon välein riittävät useimmille pienille tiimeille."
+      },
+      {
+        "q": "Pitäisikö etätyöntekijöitä valvoa?",
+        "a": "Aktiivisuuden seuranta yleensä heikentää luottamusta parantamatta tuloksia. Sopikaa selkeät tavoitteet ja tarkistakaa sen sijaan lopputulokset."
+      },
+      {
+        "q": "Mikä on vaikeinta etätiimin johtamisessa?",
+        "a": "Ongelmien huomaaminen ajoissa. Ilman yhteistä toimistoa et huomaa, että joku on jumissa tai voi huonosti, ellet tee sille tilaa, ja juuri sitä varten ovat kahdenkeskiset keskustelut ja näkyvä läsnäolo."
+      }
+    ]
+  },
+  "happyHour": {
+    "label": "Ideoita etä-afterworkiin",
+    "meta": {
+      "title": "20 ideaa etä-afterworkiin, johon etätiimisi oikeasti haluaa tulla",
+      "description": "20 ideaa etä-afterworkiin ja virtuaaliseen yhteiseen hetkeen: ilman valmistelua, pelejä, vähän suunnittelua vaativia aktiviteetteja ja ideoita isoille tai hajautuneille tiimeille, sekä miten sen vetää."
+    },
+    "title": "Ideoita etä-afterworkiin, <em>johon ihmiset oikeasti tulevat.</em>",
+    "intro": "Useimmat etä-afterworkit epäonnistuvat samalla tavalla: kaksikymmentä ihmistä yhdessä videopuhelussa, kaksi puhuu ja muut odottavat loppua. Toimivat ovat lyhyitä, vapaaehtoisia ja antavat ihmisille tekemistä, ryhmissä, jotka ovat tarpeeksi pieniä juttelemiseen. Tässä 20 ideaa valmistelun määrän mukaan järjestettyinä ja ohjeet sen vetämiseen.",
+    "sections": [
+      {
+        "title": "Mikä saa etä-afterworkin toimimaan",
+        "items": [
+          {
+            "title": "Lyhyt",
+            "body": "Kolmestakymmenestä neljäänkymmeneenviiteen minuuttia. Halukkaat jäävät pidempään, ja ne, joilla ei ollut tylsää, tulevat uudelleen."
+          },
+          {
+            "title": "Vapaaehtoinen",
+            "body": "Työaikana ja aidosti vapaaehtoinen. Pakollinen afterwork on palaveri."
+          },
+          {
+            "title": "Tekemistä",
+            "body": "Peli, kysymys tai teema antaa hiljaisemmille helpon tavan tulla mukaan."
+          },
+          {
+            "title": "Pienet ryhmät",
+            "body": "Kun keskustelussa on yli kuusi tai seitsemän ihmistä, useimmat lakkaavat puhumasta. Jakautukaa."
+          },
+          {
+            "title": "Kyse ei ole alkoholista",
+            "body": "Kahvi, tee tai limsa ovat yhtä tervetulleita. Kutsu sitä yhteiseksi hetkeksi, jos nimi karkottaa."
+          }
+        ]
+      },
+      {
+        "title": "Ideat ilman valmistelua",
+        "body": [
+          "Aloita näistä. Jokainen toimii viiden minuutin varoitusajalla."
+        ],
+        "items": [
+          {
+            "title": "Näytä ja kerro",
+            "detail": "Mikä tahansa koko · ei valmistelua",
+            "body": "Jokainen näyttää jotain käden ulottuvilta ja kertoo sen tarinan. Mukin, kirjan, kasvin, ohi kulkevan lemmikin."
+          },
+          {
+            "title": "Kaksi totuutta ja yksi valhe",
+            "detail": "Enintään 10 · ei valmistelua",
+            "body": "Jokainen kertoo itsestään kolme asiaa, muut arvaavat valheen. [Ideamme kahteen totuuteen ja yhteen valheeseen](/tools/two-truths-and-a-lie) auttavat, jos ei keksi mitään."
+          },
+          {
+            "title": "Kumman valitsisit",
+            "detail": "Mikä tahansa koko · ei valmistelua",
+            "body": "Lue kysymys, kaikki vastaavat ja perustelevat valintansa. [Kumman valitsisit -kysymyksemme](/tools/would-you-rather-questions) on valittu työpaikalle."
+          },
+          {
+            "title": "Työpöytäkierros",
+            "detail": "Enintään 8 · ei valmistelua",
+            "body": "Jokainen kääntää kameran kolmeksikymmeneksi sekunniksi. On yllättävää, kuinka paljon ihmisestä oppii kirjahyllystä."
+          },
+          {
+            "title": "Viikon kuva",
+            "detail": "Mikä tahansa koko · ei valmistelua",
+            "body": "Jokainen jakaa yhden kuvan viikoltaan ja kertoo, miksi otti sen."
+          },
+          {
+            "title": "Kysymyskierros",
+            "detail": "Mikä tahansa koko · ei valmistelua",
+            "body": "Yksi kevyt kysymys, johon kaikki vastaavat: vuoden paras ateria, ensimmäinen keikka, jotain, mitä haluaisi oppia. Valitse [jäänmurtajakysymyksistämme](/tools/icebreaker-questions)."
+          }
+        ]
+      },
+      {
+        "title": "Pelit",
+        "body": [
+          "Pelit antavat afterworkille muodon, eikä kenenkään tarvitse miettiä, mitä sanoa seuraavaksi."
+        ],
+        "items": [
+          {
+            "title": "Tietovisa",
+            "detail": "3–5 hengen joukkueet · 15 minuuttia valmistelua",
+            "body": "Viisi kierrosta, viisi kysymystä kussakin, yksi kierros yrityksestä. Vaihtakaa joka kuukausi, kuka laatii kysymykset."
+          },
+          {
+            "title": "Piirrä ja arvaa",
+            "detail": "Enintään 8 · ei valmistelua",
+            "body": "Yksi piirtää sanan yhteiselle taululle, muut arvaavat. Ilmaiset selainpelit kuten skribbl.io hoitavat kierrokset puolestanne."
+          },
+          {
+            "title": "Arvaa vauva",
+            "detail": "Mikä tahansa koko · kerää kuvat etukäteen",
+            "body": "Kerää etukäteen jokaiselta lapsuuskuva, näytä ne yksi kerrallaan ja arvatkaa, kuka on kukin."
+          },
+          {
+            "title": "Tiimibingo",
+            "detail": "Mikä tahansa koko · 10 minuuttia valmistelua",
+            "body": "Bingoruudukot tiimiä koskevilla faktoilla: ”on asunut kolmessa maassa”, ”soittaa jotain soitinta”. Ihmiset kyselevät toisiltaan täyttääkseen ruudut."
+          },
+          {
+            "title": "Sana- ja seurapelit verkossa",
+            "detail": "4–10 · ei valmistelua",
+            "body": "Codenames, Gartic Phone ja vastaavat selainpelit tarvitsevat vain linkin, ja useimmat ovat ilmaisia."
+          }
+        ]
+      },
+      {
+        "title": "Ideat, jotka kannattaa vähän suunnitella",
+        "body": [
+          "Säästä nämä kerran kuussa järjestettäviksi tai erityistilaisuuksiin; vähän valmistelua tekee niistä tapahtuman."
+        ],
+        "items": [
+          {
+            "title": "Maistelu",
+            "detail": "Mikä tahansa koko · tilaa viikkoa ennen",
+            "body": "Lähetä kaikille samaa kahvia, teetä, suklaata tai naposteltavaa, ja maistelkaa ja arvioikaa yhdessä."
+          },
+          {
+            "title": "Kokataan tai sekoitetaan juomia yhdessä",
+            "detail": "Enintään 12 · jaa lista etukäteen",
+            "body": "Joku ruoanlaitosta innostunut vetää yksinkertaisen reseptin tai juoman, alkoholilla tai ilman."
+          },
+          {
+            "title": "Salamapuheet",
+            "detail": "Enintään 15 · muutaman päivän varoitus",
+            "body": "Kolme vapaaehtoista puhuu viisi minuuttia kukin mistä tahansa paitsi työstä: harrastuksesta, matkasta, leivän leipomisesta."
+          },
+          {
+            "title": "Soittolistabileet",
+            "detail": "Mikä tahansa koko · kerää kappaleet etukäteen",
+            "body": "Jokainen lisää kaksi kappaletta yhteiselle soittolistalle; kuunnelkaa ja arvatkaa, kuka valitsi minkäkin."
+          },
+          {
+            "title": "Pakohuone verkossa",
+            "detail": "4–6 hengen joukkueet · varaa etukäteen",
+            "body": "Ohjatut pakohuoneet pelataan videon välityksellä, ja ne sopivat arvoituksista pitäville tiimeille. Useimmat veloittavat henkeä kohden."
+          }
+        ]
+      },
+      {
+        "title": "Ideat isoille tai hajautuneille tiimeille",
+        "body": [
+          "Yli viidentoista hengen tai monen aikavyöhykkeen tiimissä yksi yhteinen puhelu ei enää toimi. Yhdistä pieniä ryhmiä ja kirjallisia muotoja."
+        ],
+        "items": [
+          {
+            "title": "Vaihtuvat pienryhmät",
+            "detail": "15 henkeä tai enemmän",
+            "body": "Neljän hengen ryhmät kymmeneksi minuutiksi, sitten sekoitetaan. Virtuaalitoimistossa ihmiset vain kävelevät ryhmästä toiseen kuin oikeissa juhlissa."
+          },
+          {
+            "title": "Satunnaiset kahviparit",
+            "detail": "Mikä tahansa koko · viikoittain tai kuukausittain",
+            "body": "Muodosta satunnaiset parit viidentoista minuutin juttutuokioon molemmille sopivaan aikaan. Muutamassa kuukaudessa kaikki ovat tavanneet kaikki."
+          },
+          {
+            "title": "Auringon mukana kulkeva afterwork",
+            "detail": "Monta aikavyöhykettä",
+            "body": "Pitäkää se kahdesti, kummallekin tiimin puolikkaalle sopivaan aikaan, tai aloittakaa koko päivän kestävä kuvaketju."
+          },
+          {
+            "title": "Vuodenajan teema",
+            "detail": "Mikä tahansa koko · muutaman päivän varoitus",
+            "body": "Pipot talvella, lempiherkku kotoa, naamiaisperjantai. Teema antaa puheenaiheen ennen kuin kukaan on sanonut mitään."
+          }
+        ]
+      },
+      {
+        "title": "Miten sen vetää",
+        "items": [
+          {
+            "title": "Valitse aika työajalta",
+            "body": "Torstai- tai perjantai-iltapäivä sopii monelle tiimille. Aikavyöhykkeiden yli [aikavyöhykkeiden palaverisuunnittelijamme](/tools/time-zone-meeting-planner) löytää yhteisen ajan."
+          },
+          {
+            "title": "Kutsu suunnitelman kanssa",
+            "body": "”30 minuuttia, kaksi visakierrosta, sitten juttelua” houkuttelee enemmän kuin ”afterwork klo 17”."
+          },
+          {
+            "title": "Aloita helpolla kysymyksellä",
+            "body": "Kaikki vastaavat yhdellä lauseella. Näin jokainen ääni kuuluu ensimmäisten viiden minuutin aikana."
+          },
+          {
+            "title": "Jaa yli kuuden hengen ryhmät",
+            "body": "Käytä pienryhmähuoneita tai paikkaa, jossa ihmiset voivat itse siirtyä ryhmästä toiseen."
+          },
+          {
+            "title": "Lopeta ajallaan",
+            "body": "Lopeta sanottuun aikaan. Halukkaat voivat jäädä, mutta kukaan ei tunne olevansa jumissa."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloorissa afterwork tuntuu enemmän huoneelta kuin puhelulta. Kaikki tulevat samaan kerrokseen, pienet porukat muodostuvat sinne, mihin ihmiset pysähtyvät, ja keskusteluun liitytään kävelemällä sen luo, eikä kukaan jää jumiin kahdenkymmenen kasvon ruudukkoon. Seinällä on taulu piirtämispelejä varten. Se on ilmainen enintään 3 hengelle."
+    },
+    "faq": [
+      {
+        "q": "Mitä etä-afterworkissa tehdään?",
+        "a": "Jutellaan pienissä ryhmissä ja tehdään yhdessä jotain kevyttä: kysymyskierros, peli kuten tietovisa tai piirrä ja arvaa, näytä ja kerro tai maistelu."
+      },
+      {
+        "q": "Kuinka pitkä etä-afterworkin pitäisi olla?",
+        "a": "Kolmestakymmenestä neljäänkymmeneenviiteen minuuttia riittää useimmille tiimeille. Lyhyemmässä ihmiset eivät ehdi rentoutua; pidemmässä tunnelma hiipuu."
+      },
+      {
+        "q": "Miten etä-afterworkista saa hauskan?",
+        "a": "Pidä se vapaaehtoisena, tee suunnitelma, aloita kaikille helpolla kysymyksellä ja jakaudu neljän–kuuden hengen ryhmiin, jotta kaikki puhuvat."
+      },
+      {
+        "q": "Tarvitaanko etä-afterworkissa alkoholia?",
+        "a": "Ei. Kerro selvästi, että mikä tahansa juoma käy, ja kutsu sitä vaikka yhteiseksi hetkeksi. Monella parhaista ideoista ei ole mitään tekemistä juomien kanssa."
+      },
+      {
+        "q": "Kuinka usein etätiimin kannattaa pitää afterwork?",
+        "a": "Kerran kuussa sopii useimmille tiimeille. Lyhyt viikoittainen yhteinen hetki toimii myös, kunhan se pysyy lyhyenä ja vapaaehtoisena."
+      }
+    ]
+  },
+  "oneOnOne": {
+    "label": "Kysymyksiä kahdenkeskisiin keskusteluihin",
+    "meta": {
+      "title": "40 kysymystä kahdenkeskisiin keskusteluihin (1:1) esihenkilöille ja omalle esihenkilölle",
+      "description": "40 kysymystä kahdenkeskisiin keskusteluihin aiheittain: kuulumiset, työkuorma, esteet, palaute, kehittyminen, tiimi ja etätyö, sekä kysymyksiä omalle esihenkilölle ja yksinkertainen asialista."
+    },
+    "title": "Kysymyksiä kahdenkeskisiin keskusteluihin, <em>joihin saa oikeita vastauksia.</em>",
+    "intro": "Kahdenkeskinen keskustelu (one-on-one tai 1:1) on ainoa palaveri, joka kuuluu toiselle. Siellä esihenkilö kuulee ongelmista ajoissa, ja etätiimissä usein vain siellä. Tässä on 40 kysymystä aiheittain, yksinkertainen asialista ja keino estää keskustelua muuttumasta tilannekatsaukseksi.",
+    "sections": [
+      {
+        "title": "Näin pidät hyvän kahdenkeskisen",
+        "items": [
+          {
+            "title": "Se on hänen palaverinsa",
+            "body": "Anna hänen tuoda aiheensa ensin. Omasi tulevat sen jälkeen."
+          },
+          {
+            "title": "Ei tilannekatsaus",
+            "body": "Tilanne kuuluu tehtävätaululle. Käytä aika ihmiseen: miten hän voi, mikä on esteenä, mihin hän haluaa."
+          },
+          {
+            "title": "Sama aika, viikoittain tai joka toinen viikko",
+            "body": "Puoli tuntia, harvoin siirrettynä. Jatkuva peruminen kertoo ihmiselle, että hän tulee viimeisenä."
+          },
+          {
+            "title": "Yksi jaettu dokumentti",
+            "body": "Molemmat lisäävät aiheita viikon aikana ja kirjaavat, mitä sovittiin, jotta mitään ei katoa keskustelujen välillä."
+          },
+          {
+            "title": "Vähän kysymyksiä, jatkokysymysten kera",
+            "body": "Kaksi hyvää kysymystä ja aito jatkokysymys voittavat kymmenen listalta luettua."
+          }
+        ]
+      },
+      {
+        "title": "Yksinkertainen asialista",
+        "table": {
+          "head": [
+            "Osa",
+            "Aika",
+            "Mitä tapahtuu"
+          ],
+          "rows": [
+            [
+              "Kuulumiset",
+              "5 min",
+              "Miten hän voi, omin sanoin"
+            ],
+            [
+              "Hänen aiheensa",
+              "10–15 min",
+              "Mitä hän toi mukanaan"
+            ],
+            [
+              "Sinun aiheesi",
+              "5–10 min",
+              "Palaute, taustat, tulevat muutokset"
+            ],
+            [
+              "Seuraavat askeleet",
+              "5 min",
+              "Mitä kumpikin tekee ennen seuraavaa kertaa"
+            ]
+          ],
+          "note": "Yhteensä puoli tuntia. Jos hänen aiheensa venyvät, siirrä omasi seuraavaan kertaan."
+        }
+      },
+      {
+        "title": "Kysymyksiä aloitukseen",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Mitä sinulle oikeasti kuuluu?",
+            "body": "”Oikeasti” kutsuu kertomaan enemmän kuin ”hyvää”. Odota vastausta."
+          },
+          {
+            "title": "Mikä on pyörinyt mielessäsi tällä viikolla?",
+            "body": "Tarpeeksi avoin, jotta voi ottaa esiin mitä tahansa, työtä tai ei."
+          },
+          {
+            "title": "Mikä oli viikkosi paras hetki?",
+            "body": "Alkaa hyvästä ja näyttää, mikä antaa energiaa."
+          },
+          {
+            "title": "Mikä vei energiaasi tällä viikolla?",
+            "body": "Osoittaa työn, palaverit tai ihmiset, jotka kuluttavat."
+          },
+          {
+            "title": "Asteikolla yhdestä kymmeneen, millainen viikkosi oli?",
+            "body": "Nopea numero tekee muutokset helpoiksi huomata muutaman viikon aikana."
+          }
+        ]
+      },
+      {
+        "title": "Työkuorma ja prioriteetit",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Onko työkuormasi liian suuri, liian pieni vai suunnilleen sopiva?",
+            "body": "Kysy suoraan; harva kertoo oma-aloitteisesti olevansa ylikuormittunut."
+          },
+          {
+            "title": "Minkä työsi koet tärkeimmäksi?",
+            "body": "Tarkistaa, että hänen prioriteettinsa vastaavat sinun."
+          },
+          {
+            "title": "Teetkö jotain, mikä tuntuu turhalta?",
+            "body": "Löytää usein työtä, jonka voi yksinkertaisesti lopettaa."
+          },
+          {
+            "title": "Mistä luopuisit, jos olisi pakko?",
+            "body": "Näyttää, mitä hän arvostaa ja mistä hän luopuisi mielellään."
+          },
+          {
+            "title": "Onko sinulla tarpeeksi aikaa keskittymiseen?",
+            "body": "Liian monet palaverit ovat yksi yleisimmistä etätyön valituksista."
+          }
+        ]
+      },
+      {
+        "title": "Esteet ja turhautumiset",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Mikä hidastaa sinua juuri nyt?",
+            "body": "Hyödyllisin kysymys, jonka esihenkilö voi esittää, ja useimmin ohitettu."
+          },
+          {
+            "title": "Odotatko jotain päätöstä?",
+            "body": "Toisen odottaminen on näkymätöntä, kunnes kysyt."
+          },
+          {
+            "title": "Mitä voisin tehdä helpottaakseni työtäsi?",
+            "body": "Antaa luvan pyytää apua."
+          },
+          {
+            "title": "Turhauttaako sinua jokin, mistä et ole vielä puhunut?",
+            "body": "Pienet turhautumiset kasvavat, kun niistä ei puhuta."
+          },
+          {
+            "title": "Kenen kanssa sinun on vaikea tehdä töitä, ja miksi?",
+            "body": "Kysy varovasti; se nostaa kitkan esiin ennen kuin siitä tulee ristiriita."
+          }
+        ]
+      },
+      {
+        "title": "Palaute molempiin suuntiin",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Mitä minun pitäisi tehdä toisin esihenkilönäsi?",
+            "body": "Kysy säännöllisesti ja reagoi rauhallisesti, muuten vastaukset loppuvat."
+          },
+          {
+            "title": "Teenkö jotain, mikä on tielläsi?",
+            "body": "Pehmeämpi versio samasta kysymyksestä."
+          },
+          {
+            "title": "Miten haluat mieluiten saada palautetta?",
+            "body": "Jotkut haluavat sen kirjallisesti, jotkut heti, jotkut säästettynä kahdenkeskiseen."
+          },
+          {
+            "title": "Mistä olet ylpein viime kuukaudelta?",
+            "body": "Antaa sinulle jotain konkreettista, josta kiittää."
+          },
+          {
+            "title": "Onko palautetta, jota toivoisit mutta et saa?",
+            "body": "Ihmiset haluavat usein enemmän palautetta kuin esihenkilöt luulevat."
+          }
+        ]
+      },
+      {
+        "title": "Kehittyminen ja ura",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Mitä haluaisit tehdä vuoden päästä?",
+            "body": "Aloittaa urakeskustelun vaatimatta viiden vuoden suunnitelmaa."
+          },
+          {
+            "title": "Missä taidossa haluaisit kehittyä?",
+            "body": "Antaa sinun etsiä työtä, joka kehittää sitä."
+          },
+          {
+            "title": "Mistä työsi osasta pidät eniten?",
+            "body": "Sen lisääminen on usein halvin palkinto, mitä on olemassa."
+          },
+          {
+            "title": "Onko jokin projekti, jossa haluaisit olla mukana?",
+            "body": "Kiinnostus on puolet siitä, mikä tekee jostakusta hyvän uudessa asiassa."
+          },
+          {
+            "title": "Keneltä haluaisit oppia?",
+            "body": "Mentori tai parityö voi antaa enemmän kuin kurssi."
+          }
+        ]
+      },
+      {
+        "title": "Tiimi ja yritys",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Miltä tiimi tuntuu sinusta juuri nyt?",
+            "body": "Havaitsee jännitteet ennen kuin kukaan sanoo niitä ääneen."
+          },
+          {
+            "title": "Muuttaisitko jotain tavassamme tehdä töitä?",
+            "body": "Työn tekijät näkevät ensimmäisinä, mikä ei toimi."
+          },
+          {
+            "title": "Ymmärrätkö, miksi teemme sitä, mitä teemme?",
+            "body": "Jos et, ongelma on selityksessä, ei ihmisessä."
+          },
+          {
+            "title": "Kuka tiimissä ansaitsisi enemmän tunnustusta?",
+            "body": "Hyvä tapa kuulla hiljaisesta työstä."
+          },
+          {
+            "title": "Oletko kuullut jotain, mikä huolestuttaa sinua?",
+            "body": "Huhut leviävät etätiimeissä nopeasti, ja niitä sanotaan harvoin ääneen."
+          }
+        ]
+      },
+      {
+        "title": "Kysymyksiä etätiimeille",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Tunnetko yhteyttä tiimiin?",
+            "body": "Eristäytyminen on etätyön yleisin ongelma, ja siitä puhutaan vähiten."
+          },
+          {
+            "title": "Tiedätkö, keneltä kysyä, kun olet jumissa?",
+            "body": "Jos et, hän todennäköisesti odottaa hiljaa."
+          },
+          {
+            "title": "Sopivatko työaikasi sinulle?",
+            "body": "Kattaa aikavyöhykkeet, myöhäiset puhelut ja työn ja kodin rajan."
+          },
+          {
+            "title": "Hidastaako kotityöpisteesi sinua?",
+            "body": "Tuoli, näyttö tai parempi netti on halpa ratkaisu."
+          },
+          {
+            "title": "Onko palavereja liikaa vai liian vähän?",
+            "body": "Etätiimit liukuvat kumpaankin suuntaan."
+          }
+        ]
+      },
+      {
+        "title": "Kysymyksiä omalle esihenkilöllesi",
+        "body": [
+          "Kahdenkeskiset keskustelut kulkevat kumpaankin suuntaan. Jos sinulla on esihenkilö, nämä kysymykset auttavat saamaan keskustelusta enemmän irti."
+        ],
+        "numbered": true,
+        "items": [
+          {
+            "title": "Mihin minun pitäisi keskittyä eniten juuri nyt?",
+            "body": "Varmistaa, että vaivannäkösi osuu sinne, missä sillä on väliä."
+          },
+          {
+            "title": "Mikä tekisi työstäni sinulle hyödyllisempää?",
+            "body": "Näyttää, mitä hän tarvitsee, eikä vain sitä, mitä hän pyytää."
+          },
+          {
+            "title": "Mitä voisin tehdä paremmin?",
+            "body": "Pyydä yhtä asiaa; siihen on helpompi vastata rehellisesti."
+          },
+          {
+            "title": "Mitä tiimille on tulossa, mistä minun pitäisi tietää?",
+            "body": "Taustaa, josta muuten kuulisit viimeisenä."
+          },
+          {
+            "title": "Mitä minun pitäisi osoittaa saadakseni lisää vastuuta?",
+            "body": "Muuttaa epämääräisen kasvuhalun konkreettiseksi."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloorissa kahdenkeskinen ei tarvitse kalenterilinkkiä: menkää yhdessä palaverihuoneeseen tai siirtykää kerroksessa sivummalle juttelemaan. Keskustelujen välilläkin näet, kuka on paikalla, joten lyhyt kuulumisten vaihto ei odota viikkoa. Se on ilmainen enintään 3 hengelle."
+    },
+    "faq": [
+      {
+        "q": "Mistä kahdenkeskisessä puhutaan?",
+        "a": "Ihmisestä, ei tilanteesta: miten hän voi, mikä on esteenä, palaute molempiin suuntiin ja mihin hän haluaa kehittyä."
+      },
+      {
+        "q": "Kuinka usein kahdenkeskisiä pitäisi pitää?",
+        "a": "Viikoittain tai joka toinen viikko, noin puoli tuntia. Viikoittain sopii parhaiten uusille ja etätiimeille."
+      },
+      {
+        "q": "Mitä työntekijä voi kysyä kahdenkeskisessä?",
+        "a": "Mihin keskittyä, mikä tekisi työstä hyödyllisempää, mitä voisi tehdä paremmin ja mitä on tulossa, mistä pitäisi tietää."
+      },
+      {
+        "q": "Miten kahdenkeskinen aloitetaan?",
+        "a": "Avoimella kysymyksellä kuten ”Mitä sinulle oikeasti kuuluu?”, ja anna hänen tuoda aiheensa ennen omiasi."
+      },
+      {
+        "q": "Mitä esihenkilön pitää välttää kahdenkeskisessä?",
+        "a": "Sen muuttamista tilannekatsaukseksi, puhumista enemmän kuin kuuntelemista ja sen jatkuvaa perumista tai siirtämistä."
+      }
+    ]
+  },
+  "async": {
+    "label": "Asynkroninen viestintä",
+    "meta": {
+      "title": "Asynkroninen viestintä: mitä se on ja miten etätiimit tekevät sen hyvin",
+      "description": "Mitä asynkroninen viestintä on, miten se eroaa synkronisesta, milloin käyttää kumpaakin, miten kirjoittaa viestejä, jotka toimivat ilman heti tulevaa vastausta, rutiinit, työkalut ja ongelmat, joita vahtia."
+    },
+    "title": "Asynkroninen viestintä, <em>ja milloin kannattaa puhua.</em>",
+    "intro": "Asynkroninen viestintä tarkoittaa viestin lähettämistä odottamatta vastausta heti: vastaanottaja vastaa, kun hänelle sopii. Sen avulla etätiimit tekevät töitä aikavyöhykkeiden yli ja suojaavat keskittymisaikansa. Kaikkeen käytettynä se kuitenkin hidastaa yksinkertaisiakin asioita. Näin käytät sitä hyvin ja tiedät, milloin keskustelu on parempi.",
+    "sections": [
+      {
+        "title": "Mitä asynkroninen viestintä on",
+        "body": [
+          "Synkroninen viestintä tapahtuu reaaliajassa: puhelu, palaveri, juttutuokio jonkun työpöydän ääressä. Asynkroninen ei: viesti, dokumentti, kommentti tai tallennettu video, jonka muut lukevat tai katsovat myöhemmin.",
+          "Useimmat etätiimit käyttävät molempia. Taito on valita kuhunkin keskusteluun oikea ja kirjoittaa asynkronisia viestejä, joiden ymmärtäminen ei vaadi kolmea kysymyskierrosta."
+        ],
+        "table": {
+          "head": [
+            "",
+            "Synkroninen",
+            "Asynkroninen"
+          ],
+          "rows": [
+            [
+              "Esimerkit",
+              "Puhelut, palaverit, kasvokkain puhuminen",
+              "Viestit, dokumentit, kommentit, tallennetut videot"
+            ],
+            [
+              "Vastaus",
+              "Heti",
+              "Tuntien tai päivän sisällä"
+            ],
+            [
+              "Sopii",
+              "Kiireisiin, arkaluonteisiin tai sotkuisiin aiheisiin",
+              "Päivityksiin, odottaviin kysymyksiin, harkintaa vaativiin päätöksiin"
+            ],
+            [
+              "Hinta",
+              "Katkaisee keskittymisen, vaatii yhteisiä tunteja",
+              "Hitaampi vuorovaikutus, enemmän kirjoittamista"
+            ]
+          ]
+        }
+      },
+      {
+        "title": "Milloin asynkronisesti",
+        "items": [
+          {
+            "title": "Päivitykset",
+            "body": "Tilanne, eteneminen ja seuraavat askeleet. [Kirjallinen stand-up](/tools/daily-standup-template) korvaa useimmat päivittäiset puhelut."
+          },
+          {
+            "title": "Kysymykset, jotka voivat odottaa",
+            "body": "Jos vastaus voi tulla iltapäivällä, lähetä viesti."
+          },
+          {
+            "title": "Harkintaa vaativat päätökset",
+            "body": "Kirjoita ehdotus ja anna ihmisille päivä aikaa kommentoida. Saat parempia näkemyksiä kuin palaverissa."
+          },
+          {
+            "title": "Kaikki aikavyöhykkeiden yli",
+            "body": "Kun työajat tuskin kohtaavat, asynkroninen on oletus, ja reaaliaikainen aika on sitä varten, mikä sitä tarvitsee."
+          }
+        ]
+      },
+      {
+        "title": "Milloin kannattaa puhua",
+        "items": [
+          {
+            "title": "Ketju on kulkenut edestakaisin kolmesti",
+            "body": "Kahden minuutin keskustelu ratkaisee sen. Kirjaa päätös jälkikäteen."
+          },
+          {
+            "title": "Joku on jumissa",
+            "body": "Kollegan auttaminen eteenpäin on keskeytyksen arvoista."
+          },
+          {
+            "title": "Aihe on arkaluonteinen",
+            "body": "Palaute, ristiriidat ja huonot uutiset otetaan paremmin vastaan keskustelussa, jossa äänensävy välittyy."
+          },
+          {
+            "title": "Aloitatte jotain uutta",
+            "body": "Aloituspalaverit ja ideoinnit etenevät nopeammin, kun ihmiset voivat jatkaa toistensa ajatuksia reaaliajassa."
+          }
+        ]
+      },
+      {
+        "title": "Toimivat asynkroniset viestit",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Aloita pääasiasta",
+            "body": "Kysymys tai päätös ensimmäiselle riville, sitten tausta."
+          },
+          {
+            "title": "Anna koko konteksti",
+            "body": "Linkit, kuvakaappaukset ja se, mitä olet jo kokeillut, jotta kenenkään ei tarvitse kysyä."
+          },
+          {
+            "title": "Kerro, mitä tarvitset ja mihin mennessä",
+            "body": "”Ehditkö katsoa tämän torstaihin mennessä?” saa vastauksen; ”ajatuksia?” ei usein saa."
+          },
+          {
+            "title": "Yksi viesti, ei viittä",
+            "body": "Kirjoita kaikki ennen lähettämistä. Viisi lyhyttä viestiä keskeyttää ihmiset viidesti."
+          },
+          {
+            "title": "Käytä ketjuja",
+            "body": "Vastaukset pysyvät viestin yhteydessä, johon ne liittyvät, ja kanava pysyy luettavana."
+          },
+          {
+            "title": "Kirjaa päätös",
+            "body": "Kun ketju päättyy, kirjoita lopputulos yhdelle riville sinne, mistä ihmiset sen löytävät."
+          }
+        ]
+      },
+      {
+        "title": "Hyödylliset asynkroniset rutiinit",
+        "items": [
+          {
+            "title": "Kirjallinen päivittäinen stand-up",
+            "body": "Eilen, tänään ja esteet, yhdelle kanavalle, milloin tahansa kunkin aamupäivän aikana."
+          },
+          {
+            "title": "Viikkopäivitys",
+            "body": "Jokainen henkilö tai tiimi kirjoittaa muutaman rivin edistymisestä, ongelmista ja suunnitelmista. Helppo silmäillä maanantaina."
+          },
+          {
+            "title": "Päätösdokumentit",
+            "body": "Lyhyt sivu jokaisesta tärkeästä päätöksestä: ongelma, vaihtoehdot, valinta ja perustelu."
+          },
+          {
+            "title": "Tallennetut demot",
+            "body": "Muutaman minuutin näyttötallenne esittelee ominaisuuden paremmin kuin palaveri, ja jokainen katsoo sen, kun sopii."
+          }
+        ]
+      },
+      {
+        "title": "Sopikaa vastausajoista",
+        "body": [
+          "Asynkroninen toimii vain, jos kaikki tietävät, kuinka pitkä ”myöhemmin” on. Kirjatkaa se tiimin käsikirjaan."
+        ],
+        "table": {
+          "head": [
+            "Kanava",
+            "Odotettu vastaus",
+            "Mihin"
+          ],
+          "rows": [
+            [
+              "Tiimichat",
+              "Muutaman tunnin sisällä",
+              "Kysymykset ja päivitykset"
+            ],
+            [
+              "Yksityisviesti",
+              "Saman päivän aikana",
+              "Yhtä ihmistä koskevat asiat"
+            ],
+            [
+              "Kommentti dokumenttiin tai tehtävään",
+              "Päivän tai kahden sisällä",
+              "Katselmoinnit ja päätökset"
+            ],
+            [
+              "Soitto tai luo käveleminen",
+              "Heti",
+              "Kiireellinen tai jumissa"
+            ]
+          ],
+          "note": "Esimerkki, ei sääntö: valitkaa tiimillenne sopivat ajat ja sopikaa, mikä on kiireellistä."
+        }
+      },
+      {
+        "title": "Ongelmat, joita vahtia",
+        "items": [
+          {
+            "title": "Päätökset venyvät",
+            "body": "Aseta kommenteille määräaika ja anna yhdelle ihmiselle viimeinen sana."
+          },
+          {
+            "title": "Liikaa luettavaa",
+            "body": "Vähemmän kanavia, lyhyemmät viestit ja viikoittainen yhteenveto auttavat enemmän kuin nopeampi lukeminen."
+          },
+          {
+            "title": "Ihmiset tuntevat itsensä ulkopuolisiksi",
+            "body": "Täysin asynkroniset tiimit voivat tuntua yksinäisiltä. Pitäkää jonkin verran reaaliaikaista aikaa: viikkopalaveri, yhteinen hetki tai jaettu paikka, jossa näkee, kuka on paikalla. Oppaamme [etätiimin viestinnästä](/guides/remote-team-communication) käsittelee tasapainoa."
+          },
+          {
+            "title": "Kiireelliset asiat odottavat",
+            "body": "Sopikaa yksi selkeä tapa tavoittaa joku heti, ja säästäkää se todella kiireellisiin asioihin."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloor on se synkroninen puolisko, joka asynkronisilta tiimeiltä puuttuu. Chat, dokumentit ja tallenteet pysyvät paikallaan; kun ketju pysähtyy, näet kerroksessa, kuka on paikalla, ja kävelet juttelemaan kahdeksi minuutiksi. Tilat näyttävät, kuka on keskittymässä, joten reaaliaikaiset keskustelut eivät vie keneltäkään syventymisaikaa. Se on ilmainen enintään 3 hengelle."
+    },
+    "faq": [
+      {
+        "q": "Mitä asynkroninen viestintä on?",
+        "a": "Viestintää, jossa ei vastata heti: viestit, dokumentit, kommentit ja tallennetut videot, jotka muut lukevat tai katsovat, kun heille sopii."
+      },
+      {
+        "q": "Mitä eroa on synkronisella ja asynkronisella viestinnällä?",
+        "a": "Synkroninen tapahtuu reaaliajassa, kuten puhelu tai palaveri, ja vastaus tulee heti. Asynkroninen ei vaadi kaikkia yhtä aikaa, ja vastaukset tulevat myöhemmin."
+      },
+      {
+        "q": "Mitkä ovat esimerkkejä asynkronisesta viestinnästä?",
+        "a": "Chat-viesti, sähköposti, kommentti dokumentissa, kirjallinen stand-up, viikkopäivitys tai tallennettu videodemo."
+      },
+      {
+        "q": "Onko asynkroninen viestintä parempi etätiimeille?",
+        "a": "Päivityksiin, odottaviin kysymyksiin ja aikavyöhykkeiden yli toimiville tiimeille kyllä. Kiireellisissä, arkaluonteisissa tai sotkuisissa aiheissa reaaliaikainen keskustelu on yleensä parempi. Useimmat tiimit tarvitsevat molempia."
+      },
+      {
+        "q": "Mitä työkaluja asynkroniseen viestintään käytetään?",
+        "a": "Tiimichat ketjuineen, jaetut dokumentit, tehtävätaulut ja näyttötallennustyökalut. Oppaamme etätyön työkaluista käy ne kaikki läpi."
+      }
+    ]
+  },
+  "retro": {
+    "label": "Ideoita retrospektiiveihin",
+    "meta": {
+      "title": "15 ideaa etätiimin retrospektiiviin (formaatit ja vinkit)",
+      "description": "15 ideaa etätiimin retrospektiiviin: nopeat, visuaaliset ja syvemmät formaatit sekä tunnelmaa nostavat, lisäksi miten retro vedetään verkossa ja miten toimenpiteet viedään loppuun."
+    },
+    "title": "Ideoita retrospektiiveihin <em>tiimeille, jotka ovat kyllästyneet samoihin kolmeen kysymykseen.</em>",
+    "intro": "Retrospektiivi on lyhyt palaveri, jossa tiimi katsoo taaksepäin työjaksoon ja sopii, mitä muuttaa. Se on yksi tiimin hyödyllisimmistä tavoista ja yksi niistä, jotka helpoimmin urautuvat. Tässä 15 formaattia, jotka pitävät retron raikkaana, miten sen vetää verkossa ja miten varmistat, että jotain oikeasti muuttuu.",
+    "sections": [
+      {
+        "title": "Miten retro etenee",
+        "body": [
+          "Formaatista riippumatta useimmat hyvät retrot kulkevat samat viisi vaihetta. Alla olevat formaatit muuttavat keskiosaa; pidä alku ja loppu."
+        ],
+        "table": {
+          "head": [
+            "Vaihe",
+            "Aika",
+            "Mitä tapahtuu"
+          ],
+          "rows": [
+            [
+              "Virittäytyminen",
+              "5 min",
+              "Lyhyt kuulumiskierros ja muistutus, että puhutaan työstä, ei syyllisistä"
+            ],
+            [
+              "Havaintojen keruu",
+              "10 min",
+              "Kaikki kirjoittavat ensin omat lappunsa, sitten jaetaan"
+            ],
+            [
+              "Teemojen löytäminen",
+              "10–15 min",
+              "Lappujen ryhmittely ja äänestys tärkeimmistä"
+            ],
+            [
+              "Toimenpiteistä päättäminen",
+              "10 min",
+              "Kaksi tai kolme konkreettista muutosta, kullekin vastuuhenkilö"
+            ],
+            [
+              "Lopetus",
+              "5 min",
+              "Edellisen kerran toimenpiteiden tarkistus ja yhden lauseen kierros itse retrosta"
+            ]
+          ],
+          "note": "Neljäkymmentäviisi minuuttia sopii enintään kymmenen hengen tiimille 2–4 viikon välein."
+        }
+      },
+      {
+        "title": "Nopeat formaatit",
+        "body": [
+          "Lyhyisiin retroihin tai tiimille, jolle ne ovat uusia."
+        ],
+        "items": [
+          {
+            "title": "Aloita, lopeta, jatka",
+            "detail": "Klassikko",
+            "body": "Mitä meidän pitäisi aloittaa, lopettaa ja jatkaa? Yksinkertainen ja aina hyödyllinen."
+          },
+          {
+            "title": "Vihainen, surullinen, iloinen",
+            "detail": "Tunteille, ei vain prosessille",
+            "body": "Mikä suututti, harmitti tai ilahdutti. Hyvä raskaan jakson jälkeen."
+          },
+          {
+            "title": "Pidä, lisää, vähemmän, enemmän",
+            "detail": "Hienojakoisempi kuin aloita, lopeta, jatka",
+            "body": "Neljä saraketta, joissa voi ehdottaa jonkin säätämistä ylös tai alas sen sijaan, että sen laittaa päälle tai pois."
+          },
+          {
+            "title": "Yksi sana",
+            "detail": "Viisi minuuttia",
+            "body": "Jokainen kuvaa edellistä sprinttiä yhdellä sanalla ja selittää sen. Hyvä aloitus tai kokonainen retro kiireisellä viikolla."
+          }
+        ]
+      },
+      {
+        "title": "Visuaaliset formaatit",
+        "body": [
+          "Kuvat saavat ajattelemaan toisin. Piirrä kehys yhteiselle taululle ja anna kaikkien lisätä lappuja."
+        ],
+        "items": [
+          {
+            "title": "Purjevene",
+            "detail": "Tuuli, ankkurit, karit, saari",
+            "body": "Saari on tavoite; tuuli vei meitä eteenpäin, ankkurit pidättelivät ja karit ovat edessä olevia riskejä."
+          },
+          {
+            "title": "Ruusu, piikki, nuppu",
+            "detail": "Hyvä, huono, lupaava",
+            "body": "Ruusu on jotain, mikä meni hyvin, piikki ongelma ja nuppu idea tai mahdollisuus, joka alkaa kasvaa."
+          },
+          {
+            "title": "Meritähti",
+            "detail": "Viisi sakaraa",
+            "body": "Jatka, vähemmän, enemmän, lopeta, aloita. Hyödyllinen, kun aloita, lopeta, jatka tuntuu liian karkealta."
+          },
+          {
+            "title": "Aikajana",
+            "detail": "Pitkiin tai tapahtumarikkaisiin jaksoihin",
+            "body": "Piirrä jakso viivaksi ja anna kaikkien merkitä nousut ja laskut. Esiin nousee kuvioita, jotka lista piilottaa."
+          }
+        ]
+      },
+      {
+        "title": "Syvemmät formaatit",
+        "body": [
+          "Kun ongelma toistuu tai projekti on päättynyt."
+        ],
+        "items": [
+          {
+            "title": "Viisi miksi-kysymystä",
+            "detail": "Yksi ongelma juurisyyhyn asti",
+            "body": "Valitse yksi ongelma ja kysy ”miksi?”, kunnes löydätte syyn, johon voitte vaikuttaa."
+          },
+          {
+            "title": "Pre-mortem",
+            "detail": "Katse eteenpäin",
+            "body": "Kuvitelkaa, että seuraava projekti on epäonnistunut. Mikä meni pieleen? Suunnitelkaa sitten todennäköisimpien syiden välttämistä."
+          },
+          {
+            "title": "Lean coffee",
+            "detail": "Tiimi päättää asialistan",
+            "body": "Kaikki ehdottavat aiheita, tiimi äänestää, ja käsittelette ne järjestyksessä ajastimen kanssa."
+          },
+          {
+            "title": "Pidin, opin, puuttui, kaipasin",
+            "detail": "Projektin jälkeen",
+            "body": "Neljä kysymystä, jotka tasapainottavat onnistumiset sen kanssa, mikä puuttui."
+          }
+        ]
+      },
+      {
+        "title": "Tunnelmaa nostavat formaatit",
+        "body": [
+          "Raskaan julkaisun tai pitkän neljänneksen jälkeen aloita siitä, mikä onnistui."
+        ],
+        "items": [
+          {
+            "title": "Kiitoskierros",
+            "detail": "Kymmenen minuuttia",
+            "body": "Jokainen kiittää jotakuta jostain konkreettisesta. Sitten siirrytään siihen, mitä muutetaan."
+          },
+          {
+            "title": "Kolme pientä porsasta",
+            "detail": "Olki, puu, tiili",
+            "body": "Mikä on hauras, mikä kestää mutta voisi olla vahvempi ja mikä on vankkaa. Kevyt, mutta löytää todellisia riskejä."
+          },
+          {
+            "title": "Toiveet ja huolet",
+            "detail": "Ison jakson alussa",
+            "body": "Mitä ihmiset toivovat tulevalta ja mikä heitä huolestuttaa. Yhdistä se muutamaan [tiimiytymiskysymykseen](/tools/team-building-questions), jos tiimi on uusi."
+          }
+        ]
+      },
+      {
+        "title": "Retron vetäminen verkossa",
+        "items": [
+          {
+            "title": "Kirjoita ensin, hiljaa",
+            "body": "Viisi minuuttia omaa kirjoittamista tuo esiin hiljaistenkin ideat, ei vain äänekkäimpien."
+          },
+          {
+            "title": "Käytä yhteistä taulua",
+            "body": "Yhteinen [verkkotaulu](/online-whiteboard) tai yksinkertainen sarakkeellinen dokumentti. Pitäkää sama taulu retrosta toiseen, niin voitte katsoa taaksepäin."
+          },
+          {
+            "title": "Kamera vapaaehtoinen, ääni päällä",
+            "body": "Tärkeintä on, että ihmiset puhuvat; kenenkään ei tarvitse tuijottaa kasvoruudukkoa neljääkymmentäviittä minuuttia."
+          },
+          {
+            "title": "Vaihtakaa vetäjää",
+            "body": "Joka kerta eri vetäjä pitää formaatin raikkaana ja antaa esihenkilön vain osallistua."
+          },
+          {
+            "title": "Nimettömät laput, kun luottamus on vähissä",
+            "body": "Rehellinen palaute voittaa kohteliaan. Palatkaa nimellisiin lappuihin luottamuksen kasvaessa."
+          }
+        ]
+      },
+      {
+        "title": "Toimenpiteet loppuun asti",
+        "items": [
+          {
+            "title": "Kaksi tai kolme toimenpidettä, ei enempää",
+            "body": "Pitkä toimenpidelista tarkoittaa, ettei mikään niistä toteudu."
+          },
+          {
+            "title": "Vastuuhenkilö jokaiselle",
+            "body": "”Meidän pitäisi” ei ole toimenpide. Nimi ja päivämäärä ovat."
+          },
+          {
+            "title": "Laita ne taululle",
+            "body": "Lisää toimenpiteet tehtävätaululle muun työn joukkoon, ei erilliseen dokumenttiin."
+          },
+          {
+            "title": "Aloita edellisen kerran toimenpiteistä",
+            "body": "Aloita jokainen retro katsomalla, mitä edellisille tapahtui. Se on nopein tapa osoittaa, että retroilla on merkitystä."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloorissa retro pidetään siellä, missä tiimi jo on. Menkää yhdessä palaverihuoneeseen, piirtäkää purjevene seinällä olevalle taululle ja jättäkää se seuraavaa kertaa varten. Se on ilmainen enintään 3 hengelle."
+    },
+    "faq": [
+      {
+        "q": "Mikä on retrospektiivi?",
+        "a": "Lyhyt, säännöllinen palaveri, jossa tiimi katsoo taaksepäin työjaksoon, puhuu siitä, mikä meni hyvin ja mikä ei, ja sopii muutamasta muutoksesta."
+      },
+      {
+        "q": "Miten retrospektiivista saa hauskan?",
+        "a": "Vaihda formaattia muutaman retron välein, käytä visuaalisia formaatteja kuten purjevenettä, aloita kiitoksilla ja varmista, että toimenpiteet toteutuvat, jotta aika tuntuu kannattavalta."
+      },
+      {
+        "q": "Kuinka pitkä retrospektiivin pitäisi olla?",
+        "a": "Noin neljäkymmentäviisi minuuttia kahden viikon sprintille ja enintään kymmenen hengen tiimille. Pidemmät projektit tai isommat tiimit voivat tarvita tunnin."
+      },
+      {
+        "q": "Kuinka usein retrospektiivi pidetään?",
+        "a": "Jokaisen sprintin lopussa tai 2–4 viikon välein, sekä yksi jokaisen ison projektin päätteeksi."
+      },
+      {
+        "q": "Miten retrospektiivi pidetään etänä?",
+        "a": "Yhteisellä taululla, muutaman minuutin omalla kirjoittamisella ennen keskustelua, harvoilla vastuutetuilla toimenpiteillä ja vaihtuvalla vetäjällä."
+      }
+    ]
+  },
+  "onboardingChecklist": {
+    "label": "Etäperehdytyksen tarkistuslista",
+    "meta": {
+      "title": "Etäperehdytyksen tarkistuslista: ennen ensimmäistä päivää päivään 90",
+      "description": "Etäperehdytyksen tarkistuslista esihenkilöille: mitä tehdä ennen ensimmäistä päivää, ensimmäisenä päivänä, ensimmäisellä viikolla ja ensimmäisten 90 päivän aikana, kuka vastaa mistäkin ja vältettävät virheet."
+    },
+    "title": "Etäperehdytyksen tarkistuslista, <em>ennen ensimmäistä päivää päivään 90.</em>",
+    "intro": "Uuden työn aloittaminen etänä on yksinäistä tavalla, jolla toimisto ei ole: kukaan ei istu vieressä, ei ole tuntumaa siitä, kuka on paikalla, ja jokainen kysymys tuntuu häiritsemiseltä. Hyvä tarkistuslista korjaa suurimman osan tästä. Tässä on, mitä tehdä ennen ensimmäistä päivää, ensimmäisenä päivänä ja kolmen ensimmäisen kuukauden aikana, ja kuka vastaa mistäkin.",
+    "sections": [
+      {
+        "title": "Kuka vastaa mistäkin",
+        "body": [
+          "Perehdytys menee pieleen, kun kaikki olettavat jonkun muun hoitavan sen. Nimeä jokaiselle osalle vastuuhenkilö."
+        ],
+        "table": {
+          "head": [
+            "Kuka",
+            "Vastaa"
+          ],
+          "rows": [
+            [
+              "Esihenkilö",
+              "Suunnitelmasta, ensimmäisten 90 päivän tavoitteista, viikoittaisista kahdenkeskisistä"
+            ],
+            [
+              "Kummi",
+              "Arjen kysymyksistä, esittelyistä, siitä miten asiat oikeasti toimivat"
+            ],
+            [
+              "Hallinto tai IT",
+              "Laitteista, tunnuksista, käyttöoikeuksista ja paperitöistä"
+            ],
+            [
+              "Uusi työntekijä",
+              "Kysymisestä, epäselvien asioiden kirjaamisesta, ensimmäisestä pienestä tehtävästä"
+            ]
+          ]
+        }
+      },
+      {
+        "title": "Ennen ensimmäistä päivää",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Lähetä laitteet",
+            "body": "Tietokone ja muut tarvittavat niin, että ne ehtivät perille muutamaa päivää aiemmin."
+          },
+          {
+            "title": "Luo kaikki tunnukset",
+            "body": "Sähköposti, chat, dokumentit, tehtävätaulu ja kaikki tehtävään liittyvä, testattuina ennen ensimmäistä kirjautumista."
+          },
+          {
+            "title": "Valitse kummi",
+            "body": "Tiimin jäsen, joka ei ole esihenkilö, ja jolla on aikaa varattuna kahdelle ensimmäiselle viikolle."
+          },
+          {
+            "title": "Kirjoita ensimmäisen viikon suunnitelma",
+            "body": "Keitä uusi tapaa, mitä hän lukee ja ensimmäinen pieni tehtävä, jaettuna ennen aloitusta."
+          },
+          {
+            "title": "Kerro tiimille",
+            "body": "Lyhyt esittely tiimin kanavalla, jotta kaikki tervehtivät ensimmäisenä päivänä."
+          },
+          {
+            "title": "Lähetä tervetuloviesti",
+            "body": "Aloitusaika, ensimmäinen palaveri ja keneen ottaa yhteyttä, jos jokin ei toimi."
+          }
+        ]
+      },
+      {
+        "title": "Ensimmäinen päivä",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Aloita puhelulla esihenkilön kanssa",
+            "body": "Tervetuloa, viikon suunnitelma ja miltä ”hyvin menee” näyttää ensimmäisen kuukauden aikana."
+          },
+          {
+            "title": "Tarkista, että jokainen kirjautuminen toimii",
+            "body": "Mikään ei pilaa ensimmäistä päivää kuten iltapäivä käyttöoikeuksia odotellessa."
+          },
+          {
+            "title": "Tutustu kummiin",
+            "body": "Ensimmäinen keskustelu ja sopimus jutella ainakin kerran päivässä ensimmäisen viikon ajan."
+          },
+          {
+            "title": "Tiimin tervetulotoivotus",
+            "body": "Lyhyt, rento puhelu tai kokoontuminen. Kevyt [jäänmurtajakysymys](/tools/icebreaker-questions) auttaa kaikkia sanomaan jotain."
+          },
+          {
+            "title": "Näytä käsikirja",
+            "body": "Miten tiimi tekee töitä, mistä kysytään mitäkin ja missä päätökset ovat."
+          },
+          {
+            "title": "Päätä päivä kuulumisten vaihtoon",
+            "body": "Viisi minuuttia: miten meni, ja mikä on vielä epäselvää?"
+          }
+        ]
+      },
+      {
+        "title": "Ensimmäinen viikko",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Esittelyt yksi kerrallaan",
+            "body": "Viisitoista minuuttia jokaisen kanssa, jonka kanssa uusi tekee eniten töitä."
+          },
+          {
+            "title": "Oikean työn seuraaminen",
+            "body": "Mukana puheluissa, katselmoinneissa ja suunnittelussa, kun kummi selittää, mitä tapahtuu."
+          },
+          {
+            "title": "Jotain pientä valmiiksi",
+            "body": "Ensimmäinen tehtävä, jonka saa valmiiksi tällä viikolla. Varhainen onnistuminen tuo itsevarmuutta."
+          },
+          {
+            "title": "Sovi työajoista",
+            "body": "Milloin uusi on paikalla, tiimin yhteiset tunnit ja kuinka nopeasti ihmiset yleensä vastaavat."
+          },
+          {
+            "title": "Ensimmäinen viikoittainen kahdenkeskinen",
+            "body": "Mikä sujuu, mikä on epäselvää ja mitä hän tarvitsee."
+          }
+        ]
+      },
+      {
+        "title": "Ensimmäiset 30, 60 ja 90 päivää",
+        "numbered": true,
+        "items": [
+          {
+            "title": "30 päivää: kotiutunut",
+            "body": "Tuntee työkalut, ihmiset ja työn kulun. Hoitaa pieniä tehtäviä itsenäisesti."
+          },
+          {
+            "title": "60 päivää: antaa panoksensa",
+            "body": "Ottaa isompia tehtäviä vähemmällä tuella ja alkaa nähdä, mitä voisi parantaa."
+          },
+          {
+            "title": "90 päivää: täysin osa tiimiä",
+            "body": "Työskentelee itsenäisesti, auttaa muita ja on käynyt perusteellisesti läpi, miten perehdytys meni."
+          },
+          {
+            "title": "Kysy, mitä korjata",
+            "body": "Kysy 30 ja 90 päivän kohdalla, mikä oli epäselvää tai puuttui, ja päivitä tarkistuslista seuraavaa varten."
+          }
+        ]
+      },
+      {
+        "title": "Etäperehdytyksen vältettävät virheet",
+        "items": [
+          {
+            "title": "Viikko pelkkää lukemista",
+            "body": "Dokumentit ovat tärkeitä, mutta ihmiset oppivat nopeammin tekemällä oikeaa työtä jonkun vierellä."
+          },
+          {
+            "title": "Ei ketään, keneltä kysyä",
+            "body": "Ilman kummia uudet istuvat kysymystensä kanssa tuntikausia mieluummin kuin häiritsevät."
+          },
+          {
+            "title": "Näkymättömät kollegat",
+            "body": "Kun ei näe, kuka on paikalla, on vaikea tietää, milloin saa kysyä. Tee läsnäolo näkyväksi."
+          },
+          {
+            "title": "Liikaa palavereja kerralla",
+            "body": "Jaa esittelyt kahdelle ensimmäiselle viikolle kymmenen ensimmäisen päivän puhelun sijaan."
+          },
+          {
+            "title": "Perehdytys loppuu ensimmäiseen viikkoon",
+            "body": "Kolme ensimmäistä kuukautta ratkaisevat, jääkö ihminen. Jatka kahdenkeskisiä ja kuulumisten vaihtoa."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloorissa uusi työntekijä näkee koko tiimin yhdessä kerroksessa ensimmäisestä päivästä: kuka on paikalla, kuka palaverissa ja kuka vapaana. Kysyminen on lyhyt kävely eikä varattu puhelu, ja kummi istuu muutaman pöydän päässä. Se on ilmainen enintään 3 hengelle."
+    },
+    "faq": [
+      {
+        "q": "Mitä etäperehdytyksen tarkistuslistaan kuuluu?",
+        "a": "Laitteet ja tunnukset ennen ensimmäistä päivää, kummi, ensimmäisen viikon suunnitelma, esittelyt, pieni ensimmäinen tehtävä, viikoittaiset kahdenkeskiset ja tavoitteet 30, 60 ja 90 päivälle."
+      },
+      {
+        "q": "Kuinka kauan etäperehdytys kestää?",
+        "a": "Useimmat tarvitsevat noin kolme kuukautta kotiutuakseen kunnolla, ja eniten tukea kahden ensimmäisen viikon aikana."
+      },
+      {
+        "q": "Miten uusi etätyöntekijä saadaan tuntemaan itsensä tervetulleeksi?",
+        "a": "Pidä kaikki valmiina ensimmäisenä päivänä, anna hänelle kummi, esittele hänet tiimille aikaisin ja vaihda kuulumisia joka päivä ensimmäisellä viikolla."
+      },
+      {
+        "q": "Mikä on perehdytyskummi?",
+        "a": "Tiimin jäsen, ei esihenkilö, joka vastaa arjen kysymyksiin ja esittelee ihmisiä uuden ensimmäisillä viikoilla."
+      },
+      {
+        "q": "Mikä on vaikeinta etäperehdytyksessä?",
+        "a": "Tietää, keneltä kysyä ja milloin saa häiritä. Kummi ja näkyvä läsnäolo ratkaisevat suurimman osan."
       }
     ]
   }

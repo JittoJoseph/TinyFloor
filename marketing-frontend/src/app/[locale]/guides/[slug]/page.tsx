@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { pageMetadata } from "@/lib/seo";
-import { GUIDES, guideBySlug, guidePath } from "@/lib/guides";
+import { GUIDES, guideBySlug, guideLocales, guidePath } from "@/lib/guides";
 import { guideCopy } from "@/lib/guide-copy";
 import { GuidePage } from "@/components/guides/GuidePage";
 
@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: meta.description,
     path: guidePath(guide),
     locale,
+    locales: guideLocales(guide),
     imageAlt: tm("ogAlt"),
   });
 }
@@ -33,7 +34,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Page({ params }: Props) {
   const { locale, slug } = await params;
   const guide = guideBySlug(slug);
-  if (!guide) notFound();
+  // A guide not written in this language (the middleware turns these away first).
+  if (!guide || !guideLocales(guide).includes(locale as Locale)) notFound();
   setRequestLocale(locale as Locale);
   return <GuidePage guide={guide} locale={locale} />;
 }

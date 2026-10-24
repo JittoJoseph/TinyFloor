@@ -3,54 +3,46 @@
 What we know is missing or behind, so it isn't forgotten. Not a log of what
 was built: when an item is done, delete it.
 
-## Adding a page in every language
+## Languages
 
-Nothing is missing in any language today. A language without a page's deeper
-version shows the shorter one, never English text under a translated headline;
-the icebreaker lists are typed per locale, so a new language fails the
-typecheck until it has one.
+Nothing is missing in any language today: every page, article, guide and free
+tool is in all 18. A language without a page's article shows the shorter page,
+never English text under a translated headline; the icebreaker lists are typed
+per locale, so a new language fails the typecheck until it has one.
 
-When a new article is translated, its table rows need the language's own
-number format (`1.152 $`, `1 152 $`, `$1,152`, `US$ 1.152`), as the existing
-ones have, and the site's own word for the floor in each language.
+When a guide is written English-first, give it `locales` in
+`web-shared/src/lib/guides.ts` until the rest are done: elsewhere it's not
+found and nothing links to it. List it here while it waits.
 
-## Pages that are still thin
+When a page or guide is translated:
 
-Measured on 16 October 2026 (English, words a reader sees):
+- Table rows take the language's own number format (`1.152 $`, `1 152 $`,
+  `$1,152`, `US$ 1.152`) and the site's own word for the floor.
+- In-text links (`[words](/path)`) only point at pages that exist in that
+  language. Running a shape check against English (same sections, items,
+  numbering and link count) catches dropped links and miscounted lists.
+- Older guides link to newer ones by a sentence appended at the same place in
+  every language, so a new link means a sentence in all 18.
 
-- **The About page** (208 words) is mostly about the founder. The four index
-  pages now carry a short text under their lists (`hubs` in
-  `messages/landing-articles/<locale>.json`); /about was left alone because
-  anything more about the person who makes TinyFloor is theirs to write.
-- **Unused copy:** every feature, team and use-case page now has its own
-  article in every language, which replaces its three short points and its
-  moments timeline. Those keys (`points`, `moments`, `momentsTitle` under
-  `landings.pages.<key>` in each `messages/<locale>.json`) are no longer shown
-  and can be deleted, once the Wonder.me page is decided (it still uses its
-  points).
+## Pages
+
 - **The Wonder.me page** serves a product that closed in 2023; decide whether
-  to keep it.
+  to keep it. It's the last page without an article, so it's the only one
+  still on the short points layout (`points` in `landings.pages.wonder`).
+- **The About page** has a monogram where the founder's photo would go, until
+  there's a portrait to use.
 
 ## Search Console and Bing
 
-- Search Console allows only a handful of manual indexing requests per
-  property, and the quota doesn't simply reset at Pacific midnight: on 16
-  October it stopped after 11, then after 2 more, then took one at 07:00 UTC
-  and stopped again. It behaves like a rolling 24 hours, so space requests
-  through the day. Pages beyond that wait for the sitemap and the next crawl.
-- **Still to request in Search Console:** the main alternative page in
-  Korean, and the competitor pricing guide in German, French, Italian,
-  Japanese and Korean; then the pages translated on 16 October, most
-  searched first: those two pages in nl, pl, sv, da, no, fi, ru, ar, he, zh,
-  and `/virtual-office` and `/discord-for-work` in all 17 other languages;
-  then the other alternative and "X vs Y" pages rewritten on 16 October and
-  the use-case and team pages given articles on 16 October. Requested on 16
-  October: the English competitor pricing guide, round-up, icebreaker tool,
-  virtual office, Discord for work and pricing pages, the Portuguese and
-  Spanish alternative and pricing guide pages, and the German, French,
-  Italian and Japanese round-ups.
-- Every updated page went to Bing and the other IndexNow engines on 16 October
-  (`pnpm run indexnow <path…>` from `marketing-frontend`, by hand: deploys
-  don't run it). Under Git Bash,
-  run it with `MSYS_NO_PATHCONV=1`, or paths like `/pt/pricing` turn into
-  Windows paths and IndexNow refuses them all (422).
+- Search Console takes only a handful of manual indexing requests a day, on a
+  rolling 24 hours rather than a reset at midnight; space them out. Pages
+  beyond that wait for the sitemap.
+- **Still to request in Search Console**, most searched first: the remote work
+  tools guide (English, Japanese, German), then the happy hour, one-on-one,
+  retrospective, async and onboarding checklist guides in English, then the
+  same in the other languages. Earlier lists of untouched pages are covered by
+  the sitemap now; check Pages > Indexed before requesting old ones.
+- Deploys don't notify Bing and the other IndexNow engines: after a deploy
+  that changes pages, run `pnpm run indexnow <path…>` (or `all`) from
+  `marketing-frontend`. Under Git Bash, set `MSYS_NO_PATHCONV=1`, or paths like
+  `/pt/pricing` turn into Windows paths and IndexNow refuses them all (422).

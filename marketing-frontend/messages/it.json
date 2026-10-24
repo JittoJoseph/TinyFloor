@@ -68,25 +68,11 @@
       "gather": {
         "label": "Alternative a Gather",
         "meta": {
-          "title": "Le 7 migliori alternative a Gather nel 2026, con i prezzi per il tuo team",
+          "title": "Le 7 migliori alternative a Gather Town nel 2026, con i prezzi per il tuo team",
           "description": "Gather ha chiuso il piano gratuito e fa pagare ogni membro. Sette alternative a Gather confrontate su quanto paga un team di 8, piani gratuiti, app e punto di forza di ciascuna, con TinyFloor tra queste."
         },
         "title": "Le migliori <em>alternative a Gather</em> nel 2026.",
-        "subtitle": "Gather ha chiuso il piano gratuito a settembre 2025 e ora fa pagare ogni membro. Ecco sette alternative, confrontate su quanto paga un team vero, cosa è gratis e in cosa riesce meglio ciascuna. TinyFloor lo facciamo noi, quindi è il primo; tutto il resto viene dalle pagine di ciascun prodotto.",
-        "points": [
-          {
-            "title": "Gratis dopo la prova",
-            "body": "Gather ti dà 30 giorni, poi fa pagare ogni membro. TinyFloor ti mette su Pro per 14 giorni, e il suo piano gratuito non ha scadenza: fino a 3 persone, per tutto il tempo che vuoi."
-          },
-          {
-            "title": "Niente da installare",
-            "body": "Tutto funziona nel browser, su computer e su mobile. Condividi un link e il tuo team entra in pochi secondi."
-          },
-          {
-            "title": "Un link per entrare",
-            "body": "Manda un link d'invito. I colleghi scelgono nome e personaggio, creano un account gratuito ed entrano."
-          }
-        ],
+        "subtitle": "Gather (un tempo Gather Town) ha chiuso il piano gratuito a settembre 2025 e ora fa pagare ogni membro. Ecco sette alternative, confrontate su quanto paga un team vero, cosa è gratis e in cosa riesce meglio ciascuna. TinyFloor lo facciamo noi, quindi è il primo; tutto il resto viene dalle pagine di ciascun prodotto.",
         "them": {
           "price": "Da 12 $ per membro al mese",
           "freePlan": "Nessuno, solo una prova di 30 giorni",
@@ -128,20 +114,6 @@
         },
         "title": "Un’<em>alternativa a Kumospace</em> per tutto il team.",
         "subtitle": "Il piano gratuito di Kumospace accoglie 5 membri su un piano pubblico, e Business si paga per membro, con un minimo di 5. TinyFloor è gratis fino a 3, poi un solo prezzo per tutto il team: 29 $ al mese.",
-        "points": [
-          {
-            "title": "Nessun limite di 5 membri",
-            "body": "Invita tutto il tuo team: un solo prezzo per ufficio con Pro, non a persona."
-          },
-          {
-            "title": "Provalo prima di iscriverti",
-            "body": "Prova l'ufficio demo di TinyFloor con un semplice nome e fai un giro prima di creare il tuo."
-          },
-          {
-            "title": "Pensato anche per il telefono",
-            "body": "Sul telefono ti muovi con un joystick sullo schermo e le chiamate si adattano allo schermo piccolo, tutto nel browser mobile."
-          }
-        ],
         "them": {
           "price": "Business da 16 $ per utente al mese",
           "freePlan": "Fino a 5 membri, 50 ospiti e 1 piano",
@@ -183,20 +155,6 @@
         },
         "title": "Un’<em>alternativa a SpatialChat</em> aperta tutto il giorno.",
         "subtitle": "SpatialChat è nato attorno agli eventi, e il piano gratuito si ferma dopo 2 ore di riunioni al giorno. Il piano per l'ufficio virtuale costa 8 $ a utente al mese. TinyFloor è un ufficio, quindi la stanza resta aperta finché il team lavora, a un prezzo per team.",
-        "points": [
-          {
-            "title": "Nessun limite giornaliero",
-            "body": "Tieni la stanza aperta dalla riunione del mattino all’ultimo messaggio della giornata. Niente scade."
-          },
-          {
-            "title": "Un ufficio, non un evento",
-            "body": "L'ufficio resta aperto quando finisce una riunione. Il tuo team torna sullo stesso piano domani."
-          },
-          {
-            "title": "Avvicinati per parlare",
-            "body": "Avvicinati a un collega per avviare una chiamata. Per un gruppo, entra in una riunione e tutti vanno nella sala riunioni."
-          }
-        ],
         "them": {
           "price": "Business 8 $ a utente al mese, 76 $ all'anno (piano ufficio virtuale)",
           "freePlan": "2 ore di riunioni al giorno, fino a 12 persone",
@@ -234,20 +192,6 @@
         },
         "title": "Un’<em>alternativa a WorkAdventure</em> con spazio per crescere.",
         "subtitle": "Anche WorkAdventure è un ufficio in pixel art: il piano gratuito accoglie 10 persone alla volta in stanze pubbliche, e Business si paga in base a quante persone possono essere online insieme. TinyFloor è gratis fino a 3, poi un solo prezzo per tutto il team: 29 $ al mese.",
-        "points": [
-          {
-            "title": "Il doppio dello spazio",
-            "body": "Una mappa gratuita di WorkAdventure accoglie 10 persone alla volta. Un ufficio TinyFloor è fatto per un piccolo team che lavora insieme tutto il giorno, e puoi aprire tutti gli uffici che vuoi."
-          },
-          {
-            "title": "Nessuna mappa da costruire",
-            "body": "Ogni ufficio ha un piano, una sala riunioni e una lavagna. Crea un ufficio ed entra."
-          },
-          {
-            "title": "Niente da ospitare",
-            "body": "Nessun server da gestire, nessuna configurazione. Condividi un link e il tuo team è già in ufficio."
-          }
-        ],
         "them": {
           "price": "Business da 9 $ per utente al mese",
           "freePlan": "Fino a 10 persone alla volta, in stanze pubbliche",
@@ -326,20 +270,6 @@
         },
         "title": "Un <em>ufficio virtuale</em> per team da remoto.",
         "subtitle": "Dai al tuo team un posto dove stare durante la giornata. Vedi chi c’è, passa per una domanda veloce ed entra nella sala riunioni quando è ora di parlare.",
-        "points": [
-          {
-            "title": "Vedi chi c’è",
-            "body": "Ognuno ha un personaggio, un cartellino con il nome e uno stato, così sai chi è libero prima di avvicinarti."
-          },
-          {
-            "title": "Le domande veloci restano veloci",
-            "body": "Avvicinati e tocca per chiamare. Nessun invito in calendario, nessun link della riunione, nessuna sala d’attesa."
-          },
-          {
-            "title": "Un tavolo per le riunioni",
-            "body": "Entra in una riunione e il tuo personaggio va nella sala riunioni. Solo chi parla è in video, con una scheda per ognuno."
-          }
-        ],
         "faq": [
           {
             "q": "Cos’è un ufficio virtuale?",
@@ -367,20 +297,6 @@
         },
         "title": "<em>Coworking virtuale</em> per il tuo team da remoto.",
         "subtitle": "Lavorare da casa è più facile con il team intorno. Condividete un piano d'ufficio, andate avanti con il lavoro e raggiungete qualcuno quando vi serve.",
-        "points": [
-          {
-            "title": "Compagnia senza chiamate",
-            "body": "Vedi i tuoi colleghi lavorare senza stare in camera. Una chiamata parte solo quando qualcuno si avvicina."
-          },
-          {
-            "title": "Il piano del tuo team",
-            "body": "Un ufficio è privato per il tuo team. Invita tutti con un solo link, ed è aperto ogni volta che ci sono."
-          },
-          {
-            "title": "Imposta il tuo stato",
-            "body": "Segnati come occupato quando ti concentri e disponibile quando hai voglia di fare due chiacchiere."
-          }
-        ],
         "faq": [
           {
             "q": "Cos’è il coworking virtuale?",
@@ -408,20 +324,6 @@
         },
         "title": "Una <em>chat di prossimità</em> che parte quando ti avvicini.",
         "subtitle": "In TinyFloor, dove ti trovi decide con chi parli. Avvicinati a qualcuno per chiamarlo, entra in una riunione per parlare in gruppo e prosegui quando hai finito.",
-        "points": [
-          {
-            "title": "Avvicinarsi la avvia",
-            "body": "Mettiti accanto a un collega e compare una scheda di chiamata. Un tocco avvia la chiamata."
-          },
-          {
-            "title": "Gruppi nella sala riunioni",
-            "body": "Entra in una riunione e il tuo personaggio va nella sala riunioni, insieme a tutti gli altri."
-          },
-          {
-            "title": "Funziona su qualsiasi rete",
-            "body": "Le chiamate passano su WebRTC attraverso la rete di relay di Cloudflare, quindi si collegano anche dietro i firewall aziendali e non c'è nulla da installare."
-          }
-        ],
         "faq": [
           {
             "q": "Cos’è la chat di prossimità?",
@@ -450,20 +352,6 @@
         },
         "title": "Un'<em>alternativa a Sococo</em> senza il minimo di 10 posti.",
         "subtitle": "Sococo vende posti a blocchi di almeno 10, a 13,49 $ a posto con pagamento annuale anticipato o 14,99 $ mese per mese, con 500 minuti a posto. TinyFloor è un prezzo mensile per tutto l'ufficio, e un piccolo team può iniziare gratis.",
-        "points": [
-          {
-            "title": "Parti dalla tua vera dimensione",
-            "body": "Gratis fino a 3 persone, poi $29 al mese per tutto il team. Nessun minimo di posti e nessun pagamento annuale anticipato."
-          },
-          {
-            "title": "Un piano in cui muoversi",
-            "body": "Il tuo team condivide un piano d'ufficio e inizia a parlare avvicinandosi."
-          },
-          {
-            "title": "Le chiamate non consumano minuti",
-            "body": "Sococo conta i minuti per posto. Su TinyFloor le chiamate a due non contano mai; solo le riunioni di gruppo hanno ore mensili."
-          }
-        ],
         "them": {
           "price": "13,49 $ a posto al mese con pagamento annuale anticipato, 14,99 $ mensile, minimo 10 posti",
           "freePlan": "Nessuno, solo una prova gratuita",
@@ -500,20 +388,6 @@
         },
         "title": "Un'<em>alternativa a oVice</em> a misura di piccolo team.",
         "subtitle": "oVice è fatto per aziende e community, con un prezzo fisso per spazio o per utente da 20 utenti in su. TinyFloor è fatto per piccoli team, con un prezzo semplice per ufficio: 29 $ al mese.",
-        "points": [
-          {
-            "title": "Un prezzo per ufficio",
-            "body": "Gratis fino a 3 persone, poi $29 al mese per tutto il team. Nessuna dimensione di spazio da calcolare."
-          },
-          {
-            "title": "Avvicinati e parla",
-            "body": "Come su oVice, ti avvicini a qualcuno per parlare. Le chiamate a due non vengono mai conteggiate."
-          },
-          {
-            "title": "Una chat che resta",
-            "body": "Ogni ufficio ha canali e messaggi diretti con la loro cronologia, accanto al piano e sul telefono."
-          }
-        ],
         "them": {
           "price": "$65 al mese per spazio, o $16 a utente da 20 utenti, fatturato annualmente",
           "freePlan": "Sì, su una versione preliminare senza assistenza",
@@ -547,20 +421,6 @@
         },
         "title": "Un'<em>alternativa a Teamflow</em> senza niente da scaricare.",
         "subtitle": "Teamflow è gratis per 5 con riunioni di 45 minuti, poi si paga a dipendente e funziona come app sul computer. TinyFloor si apre in una scheda del browser, su portatile o telefono, a un prezzo per ufficio: 29 $ al mese.",
-        "points": [
-          {
-            "title": "Un prezzo per l'ufficio",
-            "body": "Il piano Seed di Teamflow costa $15 a persona. TinyFloor Pro costa $29 al mese per tutto il tuo team insieme."
-          },
-          {
-            "title": "Nessuno stop a 45 minuti",
-            "body": "Il piano gratuito di Teamflow chiude le riunioni dopo 45 minuti. Le riunioni di TinyFloor non hanno un limite per riunione; ogni piano ha ore mensili per le riunioni di gruppo."
-          },
-          {
-            "title": "In una scheda del browser",
-            "body": "Nessuna app da installare o aggiornare. Apri il link su qualsiasi laptop o telefono e sei sul piano."
-          }
-        ],
         "them": {
           "price": "Seed 15 $ a dipendente al mese con fatturazione annuale, 20 $ mensile",
           "freePlan": "Fino a 5 dipendenti, con riunioni di 45 minuti",
@@ -598,20 +458,6 @@
         },
         "title": "Un'<em>alternativa a Roam</em> che si apre nel browser.",
         "subtitle": "Roam riunisce un ufficio virtuale con note IA, un assistente, webinar e altro in un'app desktop, a 19,50 $ per membro attivo al mese. TinyFloor fa la parte dell'ufficio in modo semplice, nel browser: avvicinarsi, riunirsi e chattare, a un prezzo per team.",
-        "points": [
-          {
-            "title": "Solo l'ufficio",
-            "body": "Nessun pacchetto da adottare. Un piano dove vedi chi c'è, ti avvicini per parlare ed entri in sala riunioni."
-          },
-          {
-            "title": "Niente da installare",
-            "body": "TinyFloor gira in una scheda su qualsiasi laptop o telefono, così chiunque nel team entra in pochi secondi."
-          },
-          {
-            "title": "Un prezzo per team",
-            "body": "Gratis per 3 persone, poi $29 al mese per tutto il team, qualunque sia il numero di persone che lo usa quel mese."
-          }
-        ],
         "them": {
           "price": "19,50 $ per membro attivo al mese",
           "freePlan": "Nessuno, 14 giorni di prova per ogni nuovo membro",
@@ -649,20 +495,6 @@
         },
         "title": "Un'<em>alternativa agli huddle di Slack</em> dove vedi prima chi è libero.",
         "subtitle": "Un huddle è una chiamata che avvii senza sapere se è il momento giusto, e con il piano gratuito di Slack ospita due persone. In TinyFloor vedi chi c'è, chi è occupato e chi sta già parlando, poi ti avvicini.",
-        "points": [
-          {
-            "title": "Guarda prima di chiamare",
-            "body": "Tutti hanno uno stato e un posto sul piano, quindi sai chi è concentrato prima di chiedere."
-          },
-          {
-            "title": "Chiamate di gruppo in ogni piano",
-            "body": "Nel piano gratuito di Slack gli huddle sono a due. Su TinyFloor ogni piano ha chiamate e riunioni di gruppo."
-          },
-          {
-            "title": "Tieni Slack se vuoi",
-            "body": "TinyFloor ha la sua chat, ma molti team tengono Slack per i messaggi e usano il piano per parlare."
-          }
-        ],
         "them": {
           "price": "Gli huddle di gruppo richiedono un piano Slack a pagamento, per utente",
           "freePlan": "Slack Free: huddle fino a 2 persone",
@@ -696,20 +528,6 @@
         },
         "title": "Come <em>Discord per lavoro</em>, fatto per il tuo team.",
         "subtitle": "I canali vocali hanno dimostrato che stare a un clic l'uno dall'altro funziona. TinyFloor mantiene questa sensazione in un ufficio privato per il tuo team, senza la community di gaming intorno.",
-        "points": [
-          {
-            "title": "Un ufficio privato, non un server",
-            "body": "Il tuo piano è solo per il tuo team. Si entra con il tuo link d'invito e un account gratuito."
-          },
-          {
-            "title": "Vedi chi è libero",
-            "body": "Stati, scrivanie e chi è in chiamata, tutto su un piano, così passare a trovare qualcuno viene naturale."
-          },
-          {
-            "title": "Riunioni con una sala",
-            "body": "Entra in sala riunioni per chiamate di gruppo con condivisione dello schermo, ed esci quando avete finito."
-          }
-        ],
         "them": {
           "price": "Gratis, con Nitro a parte per ogni persona",
           "freePlan": "Sì",
@@ -743,20 +561,6 @@
         },
         "title": "<em>Gather vs Kumospace</em>, e una terza opzione.",
         "subtitle": "Entrambi fanno pagare per membro appena superi la parte gratuita: Gather non ha un piano gratuito, quello di Kumospace si ferma a 5. Se il tuo team è piccolo e vuole un ufficio semplice, TinyFloor è un unico prezzo per tutto il piano.",
-        "points": [
-          {
-            "title": "Gather",
-            "body": "Un ufficio in pixel art con note delle riunioni con IA e personalizzazione. Prova di 30 giorni, poi da $12 a membro al mese."
-          },
-          {
-            "title": "Kumospace",
-            "body": "Un piano gratuito fino a 5 membri su un piano, poi Business da $16 a utente al mese."
-          },
-          {
-            "title": "TinyFloor",
-            "body": "Gratis per 3 persone, poi $29 al mese per tutto il team, non a persona."
-          }
-        ],
         "faq": [
           {
             "q": "Quale costa meno, Gather o Kumospace?",
@@ -784,38 +588,6 @@
         },
         "title": "<em>Pair programming da remoto</em> che inizia con due passi.",
         "subtitle": "Il pairing funziona meglio quando è facile iniziare. Su TinyFloor vedi chi è libero, vai alla sua scrivania, condividi lo schermo e parli, poi torni al tuo lavoro.",
-        "points": [
-          {
-            "title": "Sbloccati in pochi minuti",
-            "body": "Bloccato su qualcosa? Avvicinati a chi lo conosce. Un tocco avvia la chiamata, senza link da mandare."
-          },
-          {
-            "title": "Condividi lo schermo",
-            "body": "Attiva la condivisione dello schermo nella chiamata per esaminare insieme codice, log o un test che fallisce."
-          },
-          {
-            "title": "Coinvolgi una terza persona",
-            "body": "Avvicinati a qualcun altro durante la chiamata e trasformala in una riunione a tre."
-          }
-        ],
-        "momentsTitle": "<em>Una sessione di pairing,</em> dall'inizio alla fine.",
-        "moments": [
-          {
-            "label": "1",
-            "title": "Vedi chi è libero",
-            "body": "Stati e scrivanie mostrano chi è concentrato e chi è disponibile per una domanda."
-          },
-          {
-            "label": "2",
-            "title": "Avvicinati e condividi",
-            "body": "Mettiti accanto, tocca per chiamare e condividi lo schermo."
-          },
-          {
-            "label": "3",
-            "title": "Torna indietro",
-            "body": "Riattacca e sei di nuovo alla tua scrivania. Niente da pianificare, niente da sistemare."
-          }
-        ],
         "faq": [
           {
             "q": "Cosa serve per il pair programming da remoto?",
@@ -843,38 +615,6 @@
         },
         "title": "Uno <em>standup virtuale</em> in cui il team entra a piedi.",
         "subtitle": "Nessun link nel calendario e nessuna sala d'attesa. All'ora dello standup il tuo team entra in sala riunioni, dice a cosa sta lavorando e torna al lavoro.",
-        "points": [
-          {
-            "title": "Sempre la stessa sala",
-            "body": "Ogni ufficio ha una riunione principale sempre aperta, quindi lo standup è in fondo al corridoio."
-          },
-          {
-            "title": "Vedi chi manca",
-            "body": "Il piano mostra chi c'è e chi è assente, così sai chi aspettare."
-          },
-          {
-            "title": "Breve di default",
-            "body": "Quando finisce, tutti escono dalla sala e vanno avanti. Il resto si chiarisce alla scrivania di qualcuno."
-          }
-        ],
-        "momentsTitle": "<em>Lo standup</em> in tre passi.",
-        "moments": [
-          {
-            "label": "9:58",
-            "title": "Entra",
-            "body": "Unisciti alla riunione principale e il tuo personaggio entra in sala riunioni."
-          },
-          {
-            "label": "10:00",
-            "title": "Parlatene",
-            "body": "Con o senza videocamera, con la condivisione dello schermo per ciò che vale la pena mostrare."
-          },
-          {
-            "label": "10:10",
-            "title": "Esci",
-            "body": "Esci dalla sala per andartene. Le domande continuano alla scrivania di qualcuno."
-          }
-        ],
         "faq": [
           {
             "q": "Come si fa uno standup virtuale?",
@@ -902,38 +642,6 @@
         },
         "title": "Un <em>onboarding da remoto</em> in cui i nuovi vedono a chi chiedere.",
         "subtitle": "La parte più difficile dell'iniziare da remoto è non sapere chi c'è, né se va bene chiedere. Su TinyFloor il team è lì, e per chiedere bastano pochi passi.",
-        "points": [
-          {
-            "title": "Un link per entrare",
-            "body": "Manda il link d'invito dell'ufficio. Creano un account gratuito, scelgono un nome e un personaggio e sono sul piano."
-          },
-          {
-            "title": "Conosci il team",
-            "body": "Vedono chi è chi, chi è occupato e chi è libero, senza una lista di nomi da imparare."
-          },
-          {
-            "title": "Domande senza riunioni",
-            "body": "Avvicinarsi per chiedere sembra facile come in ufficio, quindi i nuovi chiedono prima."
-          }
-        ],
-        "momentsTitle": "<em>Il primo giorno</em> sul piano.",
-        "moments": [
-          {
-            "label": "Mattina",
-            "title": "Entrare",
-            "body": "Aprono il link d'invito, scelgono un personaggio e arrivano sul piano con tutti."
-          },
-          {
-            "label": "Mezzogiorno",
-            "title": "Conoscere persone",
-            "body": "Un collega li accompagna in giro e salutano ad alcune scrivanie."
-          },
-          {
-            "label": "Pomeriggio",
-            "title": "Chiedere",
-            "body": "Quando si bloccano, vedono chi è libero e vanno da lui."
-          }
-        ],
         "faq": [
           {
             "q": "Come entrano i nuovi assunti?",
@@ -961,38 +669,6 @@
         },
         "title": "Una <em>macchinetta del caffè virtuale</em> che succede da sola.",
         "subtitle": "I team da remoto pianificano momenti sociali perché niente succede per caso. Su un piano condiviso incroci le persone, vedi chi c'è e ti fermi a chiacchierare.",
-        "points": [
-          {
-            "title": "Incrociare le persone",
-            "body": "Passando tra scrivanie e sale incroci i colleghi e puoi fermarti a scambiare due parole."
-          },
-          {
-            "title": "Cosa ascoltano tutti",
-            "body": "Ascolta Spotify direttamente in TinyFloor. Quello che suona appare sulla tua scheda e il team può ascoltarlo con un clic."
-          },
-          {
-            "title": "Nessun invito in calendario",
-            "body": "Il piano è aperto tutto il giorno: una chiacchierata inizia quando vuoi e finisce quando te ne vai."
-          }
-        ],
-        "momentsTitle": "<em>I piccoli momenti</em> sono tornati.",
-        "moments": [
-          {
-            "label": "Mattina",
-            "title": "Salutare",
-            "body": "Passa da qualche scrivania arrivando e dai il buongiorno."
-          },
-          {
-            "label": "Pomeriggio",
-            "title": "Unisciti a una Jam",
-            "body": "Avvia una Jam su Spotify e condividila. Chi è nei paraggi può unirsi e ascoltare con te."
-          },
-          {
-            "label": "Venerdì",
-            "title": "Staccare",
-            "body": "Trovatevi in sala riunioni per un drink e due chiacchiere, con o senza videocamera."
-          }
-        ],
         "faq": [
           {
             "q": "Cos'è una macchinetta del caffè virtuale?",
@@ -1020,38 +696,6 @@
         },
         "title": "Un ufficio virtuale per <em>team di engineering da remoto.</em>",
         "subtitle": "Chi sviluppa ha bisogno di lunghi momenti di concentrazione e di risposte rapide quando è bloccato. TinyFloor offre entrambe le cose: silenzio di default e un collega a pochi passi.",
-        "points": [
-          {
-            "title": "Silenzio di default",
-            "body": "Nessuno ti sente finché non avvii una chiamata. Mettiti occupato e tutti sanno di dover aspettare."
-          },
-          {
-            "title": "Sbloccati in fretta",
-            "body": "Avvicinati a chi conosce il codice, condividi lo schermo e risolvete in pochi minuti."
-          },
-          {
-            "title": "Lo standup in fondo al corridoio",
-            "body": "La riunione principale è sempre lì per standup, incidenti e demo."
-          }
-        ],
-        "momentsTitle": "<em>Una giornata</em> su un piano di engineering.",
-        "moments": [
-          {
-            "label": "10:00",
-            "title": "Standup",
-            "body": "Il team entra in sala riunioni, parla dieci minuti ed esce."
-          },
-          {
-            "label": "14:00",
-            "title": "Concentrazione",
-            "body": "Gli stati occupato mantengono il pomeriggio tranquillo."
-          },
-          {
-            "label": "16:30",
-            "title": "Sblocco",
-            "body": "Due passi, uno schermo condiviso, e il bug è trovato."
-          }
-        ],
         "faq": [
           {
             "q": "TinyFloor si collega a GitHub o Jira?",
@@ -1079,38 +723,6 @@
         },
         "title": "Un ufficio virtuale per <em>team di design da remoto.</em>",
         "subtitle": "Il design migliora con feedback rapidi e sinceri. Su TinyFloor una revisione è attraversare il piano, non un invito in calendario.",
-        "points": [
-          {
-            "title": "Revisioni senza prenotare",
-            "body": "Avvicinati a un designer, condividi lo schermo e parlate del lavoro."
-          },
-          {
-            "title": "Disegnalo",
-            "body": "La lavagna sulla parete è lì per il disegno che spiega tutto."
-          },
-          {
-            "title": "Concentrazione quando conta",
-            "body": "Mettiti occupato per il lavoro profondo, e il piano resta tranquillo intorno a te."
-          }
-        ],
-        "momentsTitle": "<em>Una giornata di design</em> sul piano.",
-        "moments": [
-          {
-            "label": "Mattina",
-            "title": "Revisione di team",
-            "body": "Entrate in sala riunioni e condividete gli schermi a turno."
-          },
-          {
-            "label": "Mezzogiorno",
-            "title": "Schizzi",
-            "body": "Lavorate insieme a un flusso sulla lavagna."
-          },
-          {
-            "label": "Pomeriggio",
-            "title": "Controllo veloce",
-            "body": "Vai da uno sviluppatore per controllare un dettaglio prima del rilascio."
-          }
-        ],
         "faq": [
           {
             "q": "TinyFloor si collega a Figma?",
@@ -1138,38 +750,6 @@
         },
         "title": "Un ufficio virtuale per <em>startup da remoto.</em>",
         "subtitle": "I team giovani vanno veloci perché sono tutti nella stessa stanza. TinyFloor riporta una startup da remoto in una stanza, a un prezzo per ufficio, non per assunzione.",
-        "points": [
-          {
-            "title": "Gratis finché siete i fondatori",
-            "body": "Gratis fino a 3 persone, per tutto il tempo che volete."
-          },
-          {
-            "title": "Nessun costo per assunzione",
-            "body": "$29 al mese per tutto il team. Assumere qualcuno non aggiunge un costo per posto."
-          },
-          {
-            "title": "Decisioni in pochi minuti",
-            "body": "Vedi chi c'è, avvicinati e decidete, invece di aspettare la prossima riunione."
-          }
-        ],
-        "momentsTitle": "<em>Crescere</em> su un solo piano.",
-        "moments": [
-          {
-            "label": "3 persone",
-            "title": "Free",
-            "body": "I fondatori condividono un piano gratis, tutto incluso."
-          },
-          {
-            "label": "4ª persona",
-            "title": "Prova di Pro",
-            "body": "Tutto il team ha Pro gratis per 14 giorni, senza carta."
-          },
-          {
-            "label": "Tutto il team",
-            "title": "Pro",
-            "body": "$29 al mese per tutto l'ufficio, con riunioni tutte le volte che vi servono."
-          }
-        ],
         "faq": [
           {
             "q": "Quanto costa TinyFloor per una startup?",
@@ -1197,38 +777,6 @@
         },
         "title": "Un ufficio virtuale per <em>agenzie da remoto.</em>",
         "subtitle": "Un'agenzia vive di revisioni rapide e del sapere chi può aiutare. TinyFloor dà a uno studio da remoto un piano dove entrambe le cose succedono senza link di riunione.",
-        "points": [
-          {
-            "title": "Chi può aiutare",
-            "body": "Gli stati mostrano chi è immerso in una scadenza e chi può dare un'occhiata."
-          },
-          {
-            "title": "Revisioni al volo",
-            "body": "Avvicinati, condividi lo schermo e ottieni un feedback su una bozza in pochi minuti."
-          },
-          {
-            "title": "Un canale per cliente",
-            "body": "Crea un canale per ogni cliente o progetto, così ogni conversazione resta in un solo posto."
-          }
-        ],
-        "momentsTitle": "<em>Una giornata da studio,</em> da remoto.",
-        "moments": [
-          {
-            "label": "Mattina",
-            "title": "Pianificare la giornata",
-            "body": "Il team si trova in sala riunioni per dividersi il lavoro."
-          },
-          {
-            "label": "Pomeriggio",
-            "title": "Revisione veloce",
-            "body": "Una designer va dalla responsabile e condivide lo schermo per un feedback."
-          },
-          {
-            "label": "Sera",
-            "title": "Chiusura",
-            "body": "Note e link finiscono nel canale del cliente, per domani."
-          }
-        ],
         "faq": [
           {
             "q": "I clienti possono entrare nel nostro ufficio?",
@@ -1257,38 +805,6 @@
         },
         "title": "Una <em>sala riunioni virtuale</em> in fondo al corridoio.",
         "subtitle": "Ogni ufficio ha una sala riunioni sempre lì. Partecipa a una riunione e il tuo personaggio entra; esci e te ne sei andato. Niente link, niente sala d'attesa.",
-        "points": [
-          {
-            "title": "Sempre aperta",
-            "body": "La riunione principale è sempre lì per standup e confronti veloci. Chiunque può avviarne un'altra e invitare persone."
-          },
-          {
-            "title": "Una scheda per tutti",
-            "body": "Chi non usa la videocamera appare come una scheda che si illumina quando parla, così la sala non sembra mai vuota."
-          },
-          {
-            "title": "Condividi lo schermo",
-            "body": "Condividi una finestra con la sala in un clic, per demo, revisioni e pianificazione."
-          }
-        ],
-        "momentsTitle": "<em>Una riunione</em>, dall'inizio alla fine.",
-        "moments": [
-          {
-            "label": "1",
-            "title": "Partecipa",
-            "body": "Partecipa dall'elenco delle riunioni e il tuo personaggio entra nella sala."
-          },
-          {
-            "label": "2",
-            "title": "Parla",
-            "body": "Videocamera accesa o spenta, con la condivisione schermo per tutto ciò che vale la pena mostrare."
-          },
-          {
-            "label": "3",
-            "title": "Esci",
-            "body": "Esci dalla sala e te ne sei andato. Il piano torna tranquillo."
-          }
-        ],
         "faq": [
           {
             "q": "Quante persone possono partecipare a una riunione?",
@@ -1317,38 +833,6 @@
         },
         "title": "Una <em>chat di team</em> proprio accanto al piano.",
         "subtitle": "Ogni ufficio ha la sua chat con canali, messaggi diretti e reazioni. I messaggi restano, così puoi recuperare dal telefono senza entrare.",
-        "points": [
-          {
-            "title": "Un canale per tutto",
-            "body": "Crea un canale per ogni progetto, cliente o argomento, e tieni la conversazione in un posto solo."
-          },
-          {
-            "title": "Messaggi diretti",
-            "body": "Scrivi a chiunque in ufficio in privato e riprendi domani."
-          },
-          {
-            "title": "Un avviso discreto",
-            "body": "Quando qualcuno scrive, ricevi un avviso discreto sul piano invece di una raffica di pop-up."
-          }
-        ],
-        "momentsTitle": "<em>La chat</em> durante la giornata.",
-        "moments": [
-          {
-            "label": "Mattina",
-            "title": "Recupera",
-            "body": "Leggi sul telefono quello che ti sei perso prima di entrare."
-          },
-          {
-            "label": "Mezzogiorno",
-            "title": "Condividi",
-            "body": "Lascia uno screenshot in un canale perché lo veda tutto il team."
-          },
-          {
-            "label": "Pomeriggio",
-            "title": "Avvicinati",
-            "body": "Quando un thread si allunga, avvicinati e parlatene."
-          }
-        ],
         "faq": [
           {
             "q": "La chat conserva la cronologia?",
@@ -1377,38 +861,6 @@
         },
         "title": "La <em>presenza del team</em> a colpo d'occhio.",
         "subtitle": "Tutti hanno una scrivania e uno stato sul piano. Vedi chi è libero, chi è concentrato e chi è già in chiamata, prima di chiedere.",
-        "points": [
-          {
-            "title": "Uno stato che conta",
-            "body": "Disponibile, occupato o assente, scelto da te, così gli altri sanno quando aspettare."
-          },
-          {
-            "title": "Chi è in chiamata",
-            "body": "Vedi chi sta già parlando o è in riunione, senza interrompere."
-          },
-          {
-            "title": "Raggiungi",
-            "body": "Tocca Raggiungi accanto a chiunque e il tuo personaggio trova la strada da solo."
-          }
-        ],
-        "momentsTitle": "<em>La presenza</em> in tre sguardi.",
-        "moments": [
-          {
-            "label": "1",
-            "title": "Guarda",
-            "body": "Apri il piano e vedi chi c'è."
-          },
-          {
-            "label": "2",
-            "title": "Controlla",
-            "body": "Uno stato ti dice se è il momento giusto."
-          },
-          {
-            "label": "3",
-            "title": "Avvicinati",
-            "body": "Tocca Raggiungi e il tuo personaggio va alla sua scrivania."
-          }
-        ],
         "faq": [
           {
             "q": "Quali stati ci sono?",
@@ -1437,38 +889,6 @@
         },
         "title": "Una <em>lavagna online</em> sulla parete dell'ufficio.",
         "subtitle": "Avvicinati alla lavagna e disegna. Tutto l'ufficio vede la stessa lavagna, e quello che c'è sopra resta per la prossima volta.",
-        "points": [
-          {
-            "title": "Avvicinati e disegna",
-            "body": "Nessuna lavagna da creare e nessun link da condividere. È sulla parete, pronta quando lo sei tu."
-          },
-          {
-            "title": "La vedono tutti",
-            "body": "Tutto l'ufficio guarda la stessa lavagna, così uno schizzo si spiega da solo."
-          },
-          {
-            "title": "Resta",
-            "body": "Ciò che è disegnato viene conservato, quindi lo schema di lunedì è ancora lì venerdì."
-          }
-        ],
-        "momentsTitle": "<em>Uno schizzo</em> che lo spiega.",
-        "moments": [
-          {
-            "label": "1",
-            "title": "Avvicinati",
-            "body": "Vai alla lavagna sulla parete."
-          },
-          {
-            "label": "2",
-            "title": "Disegna",
-            "body": "Abbozza il flusso mentre ne parlate."
-          },
-          {
-            "label": "3",
-            "title": "Lascialo",
-            "body": "Allontanati e il disegno resta per il team."
-          }
-        ],
         "faq": [
           {
             "q": "La lavagna è condivisa con tutto l'ufficio?",

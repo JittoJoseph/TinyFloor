@@ -105,7 +105,7 @@
       {
         "title": "Godzina raz w miesiącu lub kwartale",
         "body": [
-          "Większe wydarzenia wymagają trochę planowania lub małego budżetu. Rób je rzadziej, ale porządnie."
+          "Większe wydarzenia wymagają trochę planowania lub małego budżetu. Rób je rzadziej, ale porządnie. Na spotkanie integracyjne zobacz nasze [pomysły na wirtualny happy hour](/guides/virtual-happy-hour-ideas)."
         ],
         "items": [
           {
@@ -387,7 +387,7 @@
           },
           {
             "title": "Opiekun dla nowych",
-            "body": "Onboarding powinien być człowiekiem, nie tylko dokumentem: kimś od głupich pytań w pierwszym miesiącu."
+            "body": "Onboarding powinien być człowiekiem, nie tylko dokumentem: kimś od głupich pytań w pierwszym miesiącu. Resztę obejmuje nasza [checklista onboardingu zdalnego](/guides/remote-onboarding-checklist)."
           },
           {
             "title": "Chwal publicznie",
@@ -524,6 +524,34 @@
         ]
       },
       {
+        "title": "Narzędzia do każdego rodzaju rozmowy",
+        "body": [
+          "Daj każdemu rodzajowi rozmowy jedno miejsce, żeby nikt nie musiał zgadywać, gdzie szukać. Nasz przewodnik po [narzędziach do pracy zdalnej](/guides/remote-work-tools) omawia każde dokładniej."
+        ],
+        "items": [
+          {
+            "title": "Czat",
+            "detail": "Slack, Microsoft Teams, Google Chat",
+            "body": "Pytania i informacje, które mogą poczekać kilka minut. Kanały według tematu, wątki na odpowiedzi."
+          },
+          {
+            "title": "Spotkania",
+            "detail": "Google Meet, Zoom, Microsoft Teams",
+            "body": "Zaplanowane rozmowy, które wymagają wszystkich naraz, z agendą przed i zapisanymi decyzjami po."
+          },
+          {
+            "title": "Obecność",
+            "detail": "Wirtualne biuro albo otwarty kanał głosowy",
+            "body": "Szybkie rozmowy od razu i widzenie, kto jest wolny, zanim przeszkodzisz."
+          },
+          {
+            "title": "Dokumenty",
+            "detail": "Notion, Google Docs, Confluence",
+            "body": "Wszystko, co jeszcze się przyda: decyzje, instrukcje i podręcznik zespołu."
+          }
+        ]
+      },
+      {
         "title": "Proste zasady do ustalenia w zespole",
         "body": [
           "Zapisz je raz i pokazuj nowym osobom. Zapobiegają większości tarć."
@@ -564,7 +592,7 @@
           },
           {
             "title": "Za dużo spotkań",
-            "body": "Zastąp spotkania statusowe pisemnymi aktualizacjami, a rozmowy zostaw na decyzje i problemy."
+            "body": "Zastąp spotkania statusowe pisemnymi aktualizacjami, a rozmowy zostaw na decyzje i problemy. Jak robić to dobrze, pokazuje nasz przewodnik po [komunikacji asynchronicznej](/guides/async-communication)."
           },
           {
             "title": "Ludzie milkną",
@@ -1194,6 +1222,1646 @@
       {
         "q": "Jaka jest tańsza alternatywa dla Gather?",
         "a": "TinyFloor kosztuje 29 $ miesięcznie za cały zespół i jest darmowy dla maksymalnie 3. Plan Basic w SoWork kosztuje 5,40 $ za członka miesięcznie przy płatności rocznej, a jego darmowy plan obejmuje 10 członków ze spotkaniami do 30 minut."
+      }
+    ]
+  },
+  "remoteTools": {
+    "label": "Narzędzia do pracy zdalnej",
+    "meta": {
+      "title": "Narzędzia do pracy zdalnej: czego mały zespół naprawdę potrzebuje w 2026",
+      "description": "Narzędzia do pracy zdalnej, których potrzebuje mały zespół, zadanie po zadaniu: czat, spotkania, obecność, dokumenty, zadania i strefy czasowe. Krótka lista, zestawy na start i jak wybrać."
+    },
+    "title": "Narzędzia do pracy zdalnej: <em>czego mały zespół naprawdę potrzebuje.</em>",
+    "intro": "Mały zespół zdalny nie potrzebuje dwudziestu aplikacji. Potrzebuje jednego dobrego narzędzia do każdego z sześciu zadań: rozmowy później, rozmowy o ustalonej porze, rozmowy od razu, zapisywania, śledzenia pracy i pracy w różnych strefach czasowych. Oto czego wymaga każde zadanie, które narzędzia warto znać i trzy zestawy na start dla zespołu od 3 do 15 osób.",
+    "sections": [
+      {
+        "title": "Sześć zadań w skrócie",
+        "body": [
+          "Większość tarcia w pracy zdalnej bierze się ze złego miejsca na daną rzecz: szybkie pytanie, które zamienia się w spotkanie, albo decyzja zagubiona na czacie. Daj każdemu zadaniu jedno miejsce."
+        ],
+        "table": {
+          "head": [
+            "Zadanie",
+            "Do czego służy",
+            "Narzędzia warte uwagi"
+          ],
+          "rows": [
+            [
+              "Czat",
+              "Pytania i informacje, które mogą poczekać kilka minut",
+              "Slack, Microsoft Teams, Discord, Google Chat"
+            ],
+            [
+              "Spotkania",
+              "Zaplanowane rozmowy z wideo i udostępnianiem ekranu",
+              "Google Meet, Zoom, Microsoft Teams"
+            ],
+            [
+              "Obecność",
+              "Widzieć, kto jest, i rozmawiać od razu",
+              "Wirtualne biuro, takie jak TinyFloor, albo otwarty kanał głosowy"
+            ],
+            [
+              "Dokumenty",
+              "Decyzje, instrukcje i wszystko, co jeszcze się przyda",
+              "Notion, Google Docs, Confluence"
+            ],
+            [
+              "Zadania",
+              "Kto co robi i na kiedy",
+              "Linear, Trello, Asana, GitHub Issues"
+            ],
+            [
+              "Strefy czasowe",
+              "Znajdowanie godzin, które pasują wszystkim",
+              "Wspólne kalendarze i planer stref czasowych"
+            ]
+          ],
+          "note": "To nie ranking: każde jest częstym wyborem do danego zadania. Darmowe plany i ich limity się zmieniają, więc sprawdź cennik każdego narzędzia."
+        }
+      },
+      {
+        "title": "Czat: rozmowa później",
+        "body": [
+          "Na czacie dzieje się większość pracy zdalnej, więc wybierz jedną aplikację i trzymaj się jej. Twórz kanały według tematu lub projektu, a nie osoby, żeby odpowiedzi łatwo było potem znaleźć."
+        ],
+        "items": [
+          {
+            "title": "Slack",
+            "detail": "Większość zespołów programistycznych i agencji",
+            "body": "Kanały, wątki i ogromny wybór integracji. Darmowy plan ogranicza, jak daleko wstecz widzisz historię, co zaczyna mieć znaczenie, gdy zespół na nim polega."
+          },
+          {
+            "title": "Microsoft Teams",
+            "detail": "Zespoły, które już mają Microsoft 365",
+            "body": "Czat, spotkania i pliki w jednym miejscu, często już opłacone."
+          },
+          {
+            "title": "Discord",
+            "detail": "Bardzo małe, nieformalne zespoły",
+            "body": "Darmowy, z dobrymi kanałami głosowymi. Powstał z myślą o społecznościach i grach, więc administracja i wyszukiwanie są do pracy uboższe."
+          },
+          {
+            "title": "Google Chat",
+            "detail": "Zespoły na Google Workspace",
+            "body": "W pakiecie Workspace i połączony z Gmailem i Dokumentami, ale prostszy niż Slack."
+          }
+        ]
+      },
+      {
+        "title": "Spotkania: rozmowa o ustalonej porze",
+        "body": [
+          "Spotkania są na to, co wymaga wszystkich naraz: planowanie, przeglądy, trudne rozmowy. Niech będą krótkie, z agendą wysłaną wcześniej i zapisanymi decyzjami."
+        ],
+        "items": [
+          {
+            "title": "Google Meet",
+            "detail": "Zespoły, które nie chcą nic instalować",
+            "body": "Działa w przeglądarce i jest w pakiecie Google Workspace."
+          },
+          {
+            "title": "Zoom",
+            "detail": "Duże spotkania i słabe łącza",
+            "body": "Niezawodny przy dużych grupach i wolnym internecie, z dobrym nagrywaniem. Darmowe spotkania mają limit czasu."
+          },
+          {
+            "title": "Microsoft Teams",
+            "detail": "Zespoły, które już piszą w Teams",
+            "body": "Trzyma rozmowy obok czatu, z którego wyrosły."
+          }
+        ]
+      },
+      {
+        "title": "Obecność: rozmowa od razu",
+        "body": [
+          "To zadanie większość zespołów zdalnych zostawia puste. W biurze widzisz, kto jest wolny, i zadajesz pytanie w przelocie. Zdalnie każde pytanie staje się wiadomością albo umówioną rozmową, a drobiazgi czekają.",
+          "[Wirtualne biuro](/virtual-office) wypełnia tę lukę: wspólne miejsce, w którym widzisz, kto jest, kto ma spotkanie, a kto chce ciszy, i zaczynasz rozmowę bez umawiania się."
+        ],
+        "items": [
+          {
+            "title": "Wirtualne biuro",
+            "detail": "Zespoły, które chcą czuć się razem przez cały dzień",
+            "body": "Wspólne piętro w przeglądarce, takie jak TinyFloor: podchodzisz do kogoś, żeby porozmawiać, wchodzisz do sali na spotkanie i od razu widzisz, kto jest."
+          },
+          {
+            "title": "Otwarty kanał głosowy",
+            "detail": "Bardzo małe zespoły na Slacku lub Discordzie",
+            "body": "Huddle albo kanał głosowy zostawiony otwarty, żeby można było wpaść. Proste, ale nie widać, kto jest zajęty lub skupiony."
+          },
+          {
+            "title": "Jasne statusy",
+            "detail": "Każdy zespół, czegokolwiek używa",
+            "body": "„Na spotkaniu”, „skupiony” czy „wracam o 14” oszczędzają mnóstwo wiadomości „jesteś?”."
+          }
+        ]
+      },
+      {
+        "title": "Dokumenty: zapisywanie",
+        "body": [
+          "Wszystko, o co ktoś zapyta dwa razy, powinno trafić do dokumentu, nie na czat: jak pracujecie, co postanowiono i dlaczego, jak skonfigurować laptopa. Krótki podręcznik zespołu oszczędza każdej nowej osobie tygodnie."
+        ],
+        "items": [
+          {
+            "title": "Notion",
+            "detail": "Podręczniki, wiki i planowanie",
+            "body": "Dokumenty, wiki i proste bazy danych w jednym miejscu."
+          },
+          {
+            "title": "Google Docs",
+            "detail": "Szybkie wspólne pisanie",
+            "body": "Łatwo udostępnić i edytować razem, a każdy już umie z niego korzystać."
+          },
+          {
+            "title": "Confluence",
+            "detail": "Zespoły, które już używają Jiry",
+            "body": "Popularny w większych zespołach, które planują pracę w Jirze."
+          }
+        ]
+      },
+      {
+        "title": "Zadania: kto co robi",
+        "body": [
+          "Jedna wspólna tablica, na bieżąco aktualizowana, kończy większość pytań „na jakim jesteśmy etapie?”. Wybierz taką, która pasuje do tego, jak techniczny jest twój zespół."
+        ],
+        "items": [
+          {
+            "title": "Linear",
+            "detail": "Zespoły programistyczne",
+            "body": "Szybki i z wyraźnym podejściem, zbudowany wokół zgłoszeń, cykli i projektów."
+          },
+          {
+            "title": "Trello",
+            "detail": "Każdy, w kilka minut",
+            "body": "Proste tablice i karty, które nie wymagają tłumaczenia."
+          },
+          {
+            "title": "Asana",
+            "detail": "Zespoły nietechniczne",
+            "body": "Projekty, osie czasu i widoki obciążenia."
+          },
+          {
+            "title": "GitHub Issues",
+            "detail": "Małe zespoły inżynierskie",
+            "body": "Wystarczy, jeśli wasza praca i tak jest na GitHubie."
+          }
+        ]
+      },
+      {
+        "title": "Strefy czasowe i pisemne aktualizacje",
+        "body": [
+          "Zespoły rozrzucone po strefach czasowych potrzebują mniej spotkań na żywo i lepszych pisemnych aktualizacji. Ustalcie kilka wspólnych godzin, udostępnijcie kalendarze i tam, gdzie się da, zastąpcie codzienny stand-up pisemnym check-inem. Jak to zrobić, pokazuje nasz przewodnik po [komunikacji asynchronicznej](/guides/async-communication)."
+        ],
+        "items": [
+          {
+            "title": "Planer stref czasowych",
+            "body": "Znajdź godziny pasujące wszystkim, zanim coś zarezerwujesz. Nasz darmowy [planer spotkań w różnych strefach czasowych](/tools/time-zone-meeting-planner) pokazuje wspólny czas na pierwszy rzut oka."
+          },
+          {
+            "title": "Pisemny stand-up",
+            "body": "Wczoraj, dziś i co blokuje, w jednym kanale. Nasz darmowy [szablon daily stand-upu](/tools/daily-standup-template) daje format do skopiowania."
+          },
+          {
+            "title": "Krótkie nagrania ekranu",
+            "body": "Dwuminutowe nagranie, na przykład w Loomie, często wyjaśnia więcej niż długa wiadomość."
+          }
+        ]
+      },
+      {
+        "title": "Trzy zestawy na start",
+        "body": [
+          "Zacznij od małego. Narzędzie zawsze można dodać później; usunąć jest trudniej."
+        ],
+        "items": [
+          {
+            "title": "Zestaw darmowy",
+            "body": "Zespół 2 lub 3 osób bez budżetu: darmowy Slack albo Discord do czatu, Google Meet do rozmów, Google Docs do pisania, Trello do zadań i darmowy plan TinyFloor jako biuro."
+          },
+          {
+            "title": "Zestaw Google",
+            "body": "Zespoły na Google Workspace: Google Chat, Meet, Dokumenty i Kalendarz, do tego Linear lub Trello do zadań i wirtualne biuro na czas między spotkaniami."
+          },
+          {
+            "title": "Zestaw Microsoft",
+            "body": "Zespoły na Microsoft 365: Teams do czatu i spotkań, SharePoint lub OneNote do dokumentów, Planner do zadań i wirtualne biuro do obecności."
+          }
+        ]
+      },
+      {
+        "title": "Jak wybrać",
+        "items": [
+          {
+            "title": "Jedno miejsce na zadanie",
+            "body": "Dwie aplikacje do czatu to każde pytanie zadane dwa razy. Ustalcie, co gdzie trafia, i zapiszcie to."
+          },
+          {
+            "title": "Zacznij od darmowych planów",
+            "body": "Większość tych narzędzi je ma. Używaj przez miesiąc, potem płać za te, które zespół naprawdę otwiera codziennie."
+          },
+          {
+            "title": "Mniej narzędzi, dobrze używanych",
+            "body": "Każde nowe narzędzie to jeszcze jedno miejsce do sprawdzania. Dodawaj je tylko, gdy jakieś zadanie nie ma miejsca."
+          },
+          {
+            "title": "Sprawdź, gdzie są dane",
+            "body": "Jeśli pracujesz z klientami w Europie albo dla wymagającego pracodawcy, przeczytaj strony o prywatności i lokalizacji danych każdego narzędzia, zanim się zdecydujesz."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Gdzie pasuje TinyFloor",
+      "body": "TinyFloor zajmuje się obecnością: to wirtualne biuro w przeglądarce, w którym zespół widzi, kto jest, i podchodzi do kogoś, żeby porozmawiać, z wbudowaną salą spotkań, czatem i udostępnianiem ekranu. Działa obok twoich narzędzi do czatu, dokumentów i zadań, zamiast je zastępować. Jest darmowe dla maksymalnie 3 osób, więc możesz wypróbować je z zespołem jeszcze dziś."
+    },
+    "faq": [
+      {
+        "q": "Jakich narzędzi potrzebuje zespół zdalny?",
+        "a": "Większość małych zespołów zdalnych potrzebuje narzędzia do każdego z sześciu zadań: czatu, spotkań, obecności (widzenia, kto jest), dokumentów, zadań i stref czasowych. Wiele radzi sobie z czterema lub pięcioma aplikacjami."
+      },
+      {
+        "q": "Jakie są najlepsze darmowe narzędzia dla zespołu zdalnego?",
+        "a": "Nie ma jednej odpowiedzi, ale darmowy Slack lub Discord, Google Meet, Google Docs i Trello pokrywają większość zadań małego zespołu, a TinyFloor jest darmowe dla maksymalnie 3 osób."
+      },
+      {
+        "q": "Czy zespół zdalny potrzebuje wirtualnego biura?",
+        "a": "Nie zawsze. Jeśli czat i umówione rozmowy dobrze wam działają, może nie. Jeśli drobne pytania ciągle zamieniają się w spotkania albo ludzie czują się odcięci, wirtualne biuro wypełnia tę lukę."
+      },
+      {
+        "q": "Ile narzędzi to za dużo?",
+        "a": "Jeśli ludzie często nie wiedzą, gdzie coś napisać albo gdzie tego szukać, jest ich za dużo. Jedno miejsce na każde zadanie to dobra zasada."
+      },
+      {
+        "q": "Slack czy Microsoft Teams?",
+        "a": "Jeśli twoja firma już płaci za Microsoft 365, Teams jest zwykle prostszym wyborem. W innym razie większość małych zespołów programistycznych i agencji woli Slacka."
+      }
+    ]
+  },
+  "manageRemote": {
+    "label": "Jak zarządzać zespołem zdalnym",
+    "meta": {
+      "title": "Jak zarządzać zespołem zdalnym: 9 praktyk, które działają",
+      "description": "Jak dobrze zarządzać zespołem zdalnym: spisane zasady pracy, wspólne godziny, prosty rytm spotkań, widoczna praca, motywacja bez inwigilacji i błędy, których warto unikać."
+    },
+    "title": "Jak zarządzać zespołem zdalnym <em>bez mikrozarządzania.</em>",
+    "intro": "Zarządzanie zespołem zdalnym to głównie zarządzanie tym, czego już nie widzisz: kto utknął, kto ma za dużo pracy i kto czuje się pominięty. Odpowiedzią nie są kolejne spotkania ani oprogramowanie do monitorowania. Są nią jasne pisanie, stały rytm i pokazywanie zarówno pracy, jak i ludzi. Oto co działa w małych zespołach.",
+    "sections": [
+      {
+        "title": "Co się zmienia, gdy zespół pracuje zdalnie",
+        "body": [
+          "W biurze sporo zarządzania dzieje się samo. Zauważasz, że ktoś utknął, słyszysz o problemie w przelocie, łapiesz ludzi między spotkaniami. Zdalnie to wszystko znika, jeśli świadomie tego nie odbudujesz.",
+          "Trzy rzeczy wymagają więcej troski: jasność (co robimy i po co), więź (żeby ludzie się znali) i widoczność (widzieć pracę i ludzi bez sprawdzania ich)."
+        ]
+      },
+      {
+        "title": "Dziewięć praktyk, które działają",
+        "items": [
+          {
+            "title": "Spisz, jak pracujecie",
+            "body": "Jednostronicowy podręcznik zespołu: gdzie zadawać pytania, jak szybko odpowiadać, kiedy się spotykać i gdzie są decyzje. Nowe osoby czytają go pierwszego dnia."
+          },
+          {
+            "title": "Ustalcie wspólne godziny",
+            "body": "Wybierzcie od dwóch do czterech godzin, kiedy wszyscy są online na szybkie pytania i spotkania. Poza nimi każdy pracuje, kiedy mu pasuje."
+          },
+          {
+            "title": "Najpierw pisz, potem rozmawiaj",
+            "body": "Pisz najpierw o wszystkim, co wymaga namysłu. Przejdź na rozmowę, gdy wątek idzie tam i z powrotem więcej niż trzy razy."
+          },
+          {
+            "title": "Trzymaj stały rytm spotkań",
+            "body": "Kilka przewidywalnych spotkań jest lepszych niż wiele zwoływanych w ostatniej chwili. Prosty rytm znajdziesz niżej."
+          },
+          {
+            "title": "Prowadź cotygodniowe one-on-one",
+            "body": "Trzydzieści minut tygodniowo z każdą osobą, o niej, a nie o statusie. Tam najwcześniej słyszysz o problemach. Oto [40 pytań, które warto zadać](/guides/one-on-one-meeting-questions)."
+          },
+          {
+            "title": "Pokaż pracę",
+            "body": "Jedna wspólna, aktualna tablica zadań odpowiada na „na jakim jesteśmy etapie?”, zanim ktoś zapyta."
+          },
+          {
+            "title": "Pokaż obecność",
+            "body": "Niech ludzie widzą, kto jest i kto jest zajęty, przez statusy albo [wirtualne biuro](/team-presence), żeby wiedzieli, kiedy można przeszkodzić."
+          },
+          {
+            "title": "Oceniaj wyniki, nie godziny",
+            "body": "Ustalcie, jak wygląda „zrobione”, i sprawdzajcie efekty. Trackery aktywności i zrzuty ekranu niszczą zaufanie i mierzą nie to, co trzeba."
+          },
+          {
+            "title": "Zrób miejsce na relacje",
+            "body": "Krótkie cotygodniowe spotkanie towarzyskie, [lodołamacz](/tools/icebreaker-questions) na początku spotkania, kanał do rozmów nie o pracy. Zdalnie więź nie powstaje przypadkiem."
+          }
+        ]
+      },
+      {
+        "title": "Prosty rytm spotkań",
+        "body": [
+          "Ten rytm pasuje większości zespołów od 3 do 15 osób. Dopasuj długość, nie ideę. A retrospektywę odświeżaj od czasu do czasu [nowym formatem](/guides/retrospective-ideas)."
+        ],
+        "table": {
+          "head": [
+            "Spotkanie",
+            "Jak często",
+            "Długość",
+            "Po co"
+          ],
+          "rows": [
+            [
+              "Stand-up",
+              "Codziennie lub pisemnie",
+              "15 min",
+              "Plan na dziś i co blokuje"
+            ],
+            [
+              "Spotkanie zespołu",
+              "Co tydzień",
+              "30–45 min",
+              "Priorytety, decyzje i sukcesy"
+            ],
+            [
+              "One-on-one",
+              "Co tydzień lub co dwa tygodnie",
+              "30 min",
+              "Ta osoba: rozwój, problemy, feedback"
+            ],
+            [
+              "Retrospektywa",
+              "Co 2–4 tygodnie",
+              "45 min",
+              "Co zostawić, zmienić i porzucić"
+            ],
+            [
+              "Czas towarzyski",
+              "Co tydzień lub co miesiąc",
+              "15–30 min",
+              "Poznawanie się"
+            ]
+          ],
+          "note": "Pisemny stand-up w jednym kanale dobrze działa w różnych strefach czasowych."
+        }
+      },
+      {
+        "title": "Jak motywować zespół zdalny",
+        "body": [
+          "Motywacja bierze się z tych samych źródeł co w biurze, ale zdalnie trzeba o niej częściej mówić na głos."
+        ],
+        "items": [
+          {
+            "title": "Doceniaj publicznie",
+            "body": "Dziękuj konkretnie, na kanale zespołu, za to, co ktoś zrobił i dlaczego to było ważne."
+          },
+          {
+            "title": "Dawaj prawdziwą odpowiedzialność",
+            "body": "Przekazuj całe problemy, nie tylko zadania. Ludziom bardziej zależy na pracy, o której sposobie sami zdecydowali."
+          },
+          {
+            "title": "Pokazuj, dokąd trafia praca",
+            "body": "Dziel się opiniami klientów i wynikami, żeby ludzie widzieli efekt tego, co robią."
+          },
+          {
+            "title": "Inwestuj w rozwój",
+            "body": "Zapytaj każdego, czego chce się nauczyć, i daj mu pracę, na której urośnie."
+          },
+          {
+            "title": "Chroń ich czas",
+            "body": "Mniej spotkań i spokojne godziny skupienia same w sobie są nagrodą."
+          }
+        ]
+      },
+      {
+        "title": "Błędy, których warto unikać",
+        "items": [
+          {
+            "title": "Oprogramowanie do inwigilacji",
+            "body": "Keyloggery i kontrole przez kamerę mówią ludziom, że im nie ufasz, a najlepsi odchodzą pierwsi."
+          },
+          {
+            "title": "Za dużo spotkań",
+            "body": "Rozmowy wideo męczą bardziej niż spotkania na żywo. Jeśli spotkanie może być pisemną aktualizacją, niech nią będzie."
+          },
+          {
+            "title": "Wszystko w prywatnych wiadomościach",
+            "body": "Praca omawiana w prywatnych wiadomościach jest niewidoczna dla reszty. Domyślnie korzystajcie z kanałów zespołu."
+          },
+          {
+            "title": "Brak planu wdrożenia",
+            "body": "Nowe osoby zdalne potrafią tygodniami nie wiedzieć, kogo pytać. Daj im buddy'ego i [plan na pierwsze dwa tygodnie](/guides/remote-onboarding-checklist)."
+          },
+          {
+            "title": "Ignorowanie stref czasowych",
+            "body": "Zmieniajcie godziny spotkań, zapisujcie, co się da, i nigdy nie zostawiajcie tym samym osobom wszystkich późnych rozmów."
+          }
+        ]
+      },
+      {
+        "title": "Narzędzia, które pomagają",
+        "body": [
+          "Potrzebujesz mniej narzędzi, niż myślisz: po jednym do czatu, spotkań, dokumentów i zadań, plus sposób, żeby widzieć, kto jest. Nasz przewodnik po [narzędziach do pracy zdalnej](/guides/remote-work-tools) omawia każde zadanie, z zestawami dla małych zespołów."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Gdzie pasuje TinyFloor",
+      "body": "TinyFloor pokazuje obecność: to wirtualne biuro w przeglądarce, w którym zespół widzi, kto jest, kto ma spotkanie, a kto chce ciszy, i podchodzi, żeby porozmawiać. Przywraca rozmowy na korytarzu, których brakuje zespołom zdalnym, bez kamer włączonych na stałe i bez śledzenia. Jest darmowe dla maksymalnie 3 osób."
+    },
+    "faq": [
+      {
+        "q": "Jak dobrze zarządzać zespołem zdalnym?",
+        "a": "Spisz, jak zespół pracuje, ustalcie wspólne godziny, trzymaj stały rytm spotkań z cotygodniowymi one-on-one, pokazuj pracę i ludzi, i oceniaj wyniki zamiast godzin."
+      },
+      {
+        "q": "Jak utrzymać motywację zespołu zdalnego?",
+        "a": "Doceniaj publicznie, dawaj odpowiedzialność, pokazuj efekty pracy, inwestuj w rozwój ludzi i regularnie rób czas na relacje."
+      },
+      {
+        "q": "Jak często zespół zdalny powinien się spotykać?",
+        "a": "Krótki codzienny stand-up (albo pisemny), cotygodniowe spotkanie zespołu, one-on-one co tydzień lub co dwa tygodnie i retrospektywa co kilka tygodni wystarczą większości małych zespołów."
+      },
+      {
+        "q": "Czy monitorować pracowników zdalnych?",
+        "a": "Śledzenie aktywności zwykle niszczy zaufanie, nie poprawiając wyników. Ustalcie jasne cele i zamiast tego sprawdzajcie efekty."
+      },
+      {
+        "q": "Co jest najtrudniejsze w zarządzaniu zespołem zdalnym?",
+        "a": "Wczesne dostrzeganie problemów. Bez wspólnego biura nie zauważysz, że ktoś utknął albo ma trudności, jeśli nie zrobisz na to miejsca, a do tego służą one-on-one i widoczna obecność."
+      }
+    ]
+  },
+  "happyHour": {
+    "label": "Pomysły na wirtualny happy hour",
+    "meta": {
+      "title": "20 pomysłów na wirtualny happy hour, na który zespół zdalny naprawdę przyjdzie",
+      "description": "20 pomysłów na wirtualny happy hour i spotkanie integracyjne online: bez przygotowania, gry, aktywności wymagające trochę planowania i dla dużych lub rozproszonych zespołów, plus jak je poprowadzić."
+    },
+    "title": "Pomysły na wirtualny happy hour, <em>na który ludzie naprawdę przychodzą.</em>",
+    "intro": "Większość wirtualnych happy hourów kończy się tak samo: dwadzieścia osób na jednym wideo, dwie mówią, reszta czeka na koniec. Te udane są krótkie, dobrowolne i dają ludziom coś do zrobienia, w grupach na tyle małych, żeby dało się rozmawiać. Oto 20 pomysłów ułożonych według tego, ile przygotowania wymagają, i jak takie spotkanie poprowadzić.",
+    "sections": [
+      {
+        "title": "Co sprawia, że wirtualny happy hour działa",
+        "items": [
+          {
+            "title": "Krótko",
+            "body": "Od trzydziestu do czterdziestu pięciu minut. Kto chce, zostaje dłużej, a kto się nie nudził, przyjdzie znowu."
+          },
+          {
+            "title": "Dobrowolnie",
+            "body": "W godzinach pracy i naprawdę dobrowolnie. Obowiązkowy happy hour to spotkanie służbowe."
+          },
+          {
+            "title": "Coś do zrobienia",
+            "body": "Gra, pytanie albo motyw dają cichszym osobom łatwy sposób, żeby się włączyć."
+          },
+          {
+            "title": "Małe grupy",
+            "body": "Przy więcej niż sześciu czy siedmiu osobach w rozmowie większość przestaje mówić. Podzielcie się."
+          },
+          {
+            "title": "Nie chodzi o alkohol",
+            "body": "Kawa, herbata czy napój są tak samo mile widziane. Nazwij to spotkaniem integracyjnym, jeśli nazwa kogoś zniechęca."
+          }
+        ]
+      },
+      {
+        "title": "Pomysły bez przygotowania",
+        "body": [
+          "Zacznij tutaj. Każdy działa z pięciominutowym wyprzedzeniem."
+        ],
+        "items": [
+          {
+            "title": "Pokaż i opowiedz",
+            "detail": "Dowolna liczba osób · bez przygotowania",
+            "body": "Każdy pokazuje coś, co ma pod ręką, i opowiada jego historię. Kubek, książkę, roślinę, zwierzaka, który akurat przechodzi."
+          },
+          {
+            "title": "Dwie prawdy i jedno kłamstwo",
+            "detail": "Do 10 osób · bez przygotowania",
+            "body": "Każdy mówi trzy rzeczy o sobie, reszta zgaduje kłamstwo. Nasze [pomysły na dwie prawdy i jedno kłamstwo](/tools/two-truths-and-a-lie) pomogą tym, którym nic nie przychodzi do głowy."
+          },
+          {
+            "title": "Co wolisz",
+            "detail": "Dowolna liczba osób · bez przygotowania",
+            "body": "Przeczytaj pytanie, wszyscy odpowiadają i bronią wyboru. Nasze [pytania „co wolisz”](/tools/would-you-rather-questions) są dobrane do pracy."
+          },
+          {
+            "title": "Wycieczka po biurku",
+            "detail": "Do 8 osób · bez przygotowania",
+            "body": "Każdy na trzydzieści sekund odwraca kamerę. Zaskakujące, ile można się o kimś dowiedzieć z półki z książkami."
+          },
+          {
+            "title": "Zdjęcie tygodnia",
+            "detail": "Dowolna liczba osób · bez przygotowania",
+            "body": "Każdy pokazuje jedno zdjęcie ze swojego tygodnia i mówi, dlaczego je zrobił."
+          },
+          {
+            "title": "Runda pytań",
+            "detail": "Dowolna liczba osób · bez przygotowania",
+            "body": "Jedno lekkie pytanie, wszyscy odpowiadają: najlepszy posiłek w tym roku, pierwszy koncert, czego chcielibyście się nauczyć. Wybierz z naszych [pytań na przełamanie lodów](/tools/icebreaker-questions)."
+          }
+        ]
+      },
+      {
+        "title": "Gry",
+        "body": [
+          "Gry nadają spotkaniu kształt, więc nikt nie musi wymyślać, co powiedzieć dalej."
+        ],
+        "items": [
+          {
+            "title": "Quiz",
+            "detail": "Drużyny 3–5 osób · 15 minut przygotowania",
+            "body": "Pięć rund po pięć pytań, jedna runda o firmie. Co miesiąc pytania układa ktoś inny."
+          },
+          {
+            "title": "Rysuj i zgaduj",
+            "detail": "Do 8 osób · bez przygotowania",
+            "body": "Jedna osoba rysuje słowo na wspólnej tablicy, reszta zgaduje. Darmowe gry w przeglądarce, jak skribbl.io, prowadzą rundy za ciebie."
+          },
+          {
+            "title": "Zgadnij, kto to",
+            "detail": "Dowolna liczba osób · wcześniej zebrać zdjęcia",
+            "body": "Zbierz wcześniej od każdego zdjęcie z dzieciństwa, pokazuj je po kolei i zgadujcie, kto jest kim."
+          },
+          {
+            "title": "Zespołowe bingo",
+            "detail": "Dowolna liczba osób · 10 minut przygotowania",
+            "body": "Karty bingo z faktami o zespole: „mieszkał w trzech krajach”, „gra na instrumencie”. Ludzie wypytują się nawzajem, żeby wypełnić pola."
+          },
+          {
+            "title": "Gry słowne i imprezowe online",
+            "detail": "4–10 osób · bez przygotowania",
+            "body": "Codenames, Gartic Phone i podobne gry w przeglądarce wymagają tylko linku, a większość jest darmowa."
+          }
+        ]
+      },
+      {
+        "title": "Pomysły warte odrobiny planowania",
+        "body": [
+          "Zostaw je na raz w miesiącu albo na specjalną okazję; trochę przygotowania robi z nich wydarzenie."
+        ],
+        "items": [
+          {
+            "title": "Degustacja",
+            "detail": "Dowolna liczba osób · zamówić tydzień wcześniej",
+            "body": "Wyślij wszystkim tę samą kawę, herbatę, czekoladę albo przekąski, a potem razem próbujcie i oceniajcie."
+          },
+          {
+            "title": "Wspólne gotowanie lub drinki",
+            "detail": "Do 12 osób · wcześniej wysłać listę",
+            "body": "Ktoś, kto lubi gotować, prowadzi prosty przepis albo drinka, z alkoholem lub bez."
+          },
+          {
+            "title": "Błyskawiczne wystąpienia",
+            "detail": "Do 15 osób · kilka dni wcześniej",
+            "body": "Trzech ochotników mówi po pięć minut o czymkolwiek poza pracą: hobby, podróży, pieczeniu chleba."
+          },
+          {
+            "title": "Playlista",
+            "detail": "Dowolna liczba osób · wcześniej zebrać utwory",
+            "body": "Każdy dodaje dwa utwory do wspólnej playlisty; puszczajcie je i zgadujcie, kto co wybrał."
+          },
+          {
+            "title": "Escape room online",
+            "detail": "Drużyny 4–6 osób · wcześniej zarezerwować",
+            "body": "Escape roomy z prowadzącym działają przez wideo i pasują zespołom, które lubią zagadki. Większość płaci się od osoby."
+          }
+        ]
+      },
+      {
+        "title": "Pomysły dla dużych lub rozproszonych zespołów",
+        "body": [
+          "Powyżej piętnastu osób albo przy wielu strefach czasowych jedna rozmowa przestaje działać. Łącz małe grupy i formy pisemne."
+        ],
+        "items": [
+          {
+            "title": "Zmieniające się małe grupy",
+            "detail": "15 osób lub więcej",
+            "body": "Grupy po cztery osoby na dziesięć minut, potem przetasowanie. W wirtualnym biurze ludzie po prostu przechodzą od grupy do grupy, jak na prawdziwej imprezie."
+          },
+          {
+            "title": "Losowe pary na kawę",
+            "detail": "Dowolna liczba osób · co tydzień lub co miesiąc",
+            "body": "Łącz ludzi losowo w pary na piętnastominutową rozmowę w porze pasującej obojgu. Po kilku miesiącach wszyscy się znają."
+          },
+          {
+            "title": "Happy hour za słońcem",
+            "detail": "Wiele stref czasowych",
+            "body": "Zróbcie go dwa razy, o porach dobrych dla każdej połowy zespołu, albo załóżcie wątek ze zdjęciami na cały dzień."
+          },
+          {
+            "title": "Motyw sezonowy",
+            "detail": "Dowolna liczba osób · kilka dni wcześniej",
+            "body": "Czapki zimą, ulubiona przekąska z domu, piątek w przebraniu. Motyw daje temat do rozmowy, zanim ktokolwiek się odezwie."
+          }
+        ]
+      },
+      {
+        "title": "Jak to poprowadzić",
+        "items": [
+          {
+            "title": "Wybierz porę w godzinach pracy",
+            "body": "Późne popołudnie w czwartek lub piątek pasuje wielu zespołom. Przy różnych strefach czasowych nasz [planer spotkań w różnych strefach czasowych](/tools/time-zone-meeting-planner) znajdzie wspólny czas."
+          },
+          {
+            "title": "Zaproś z planem",
+            "body": "„30 minut, dwie rundy quizu, potem pogaduchy” przyciąga więcej osób niż „happy hour, 17:00”."
+          },
+          {
+            "title": "Zacznij od łatwego pytania",
+            "body": "Każdy odpowiada jednym zdaniem. Dzięki temu w pierwszych pięciu minutach słychać każdy głos."
+          },
+          {
+            "title": "Dziel grupy większe niż sześć osób",
+            "body": "Użyj osobnych pokoi albo miejsca, gdzie ludzie sami mogą przechodzić między grupami."
+          },
+          {
+            "title": "Kończ o czasie",
+            "body": "Zakończ o zapowiedzianej godzinie. Kto chce, może zostać, ale nikt nie czuje się uwięziony."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Gdzie pasuje TinyFloor",
+      "body": "W TinyFloor happy hour przypomina bardziej salę niż rozmowę wideo. Wszyscy wchodzą na to samo piętro, małe grupy tworzą się tam, gdzie ludzie się zatrzymują, a do rozmowy dołączasz, podchodząc do niej, bez utknięcia w siatce dwudziestu twarzy. Na ścianie wisi tablica do gier rysunkowych. Jest darmowe dla maksymalnie 3 osób."
+    },
+    "faq": [
+      {
+        "q": "Co robić na wirtualnym happy hourze?",
+        "a": "Rozmawiać w małych grupach i robić razem coś lekkiego: rundę pytań, grę taką jak quiz albo rysuj i zgaduj, pokaż i opowiedz albo degustację."
+      },
+      {
+        "q": "Jak długo powinien trwać wirtualny happy hour?",
+        "a": "Od trzydziestu do czterdziestu pięciu minut wystarcza większości zespołów. Krócej i ludzie się nie rozkręcą; dłużej i energia spada."
+      },
+      {
+        "q": "Jak sprawić, żeby wirtualny happy hour był fajny?",
+        "a": "Niech będzie dobrowolny i ma plan, zacznij od łatwego pytania dla wszystkich i podziel ludzi na grupy po cztery do sześciu osób, żeby każdy mówił."
+      },
+      {
+        "q": "Czy wirtualny happy hour wymaga alkoholu?",
+        "a": "Nie. Daj jasno znać, że każdy napój jest w porządku, i rozważ nazwę spotkanie integracyjne. Wiele najlepszych pomysłów nie ma nic wspólnego z napojami."
+      },
+      {
+        "q": "Jak często zespół zdalny powinien robić happy hour?",
+        "a": "Raz w miesiącu pasuje większości zespołów. Krótkie cotygodniowe spotkanie też działa, jeśli zostaje krótkie i dobrowolne."
+      }
+    ]
+  },
+  "oneOnOne": {
+    "label": "Pytania na spotkanie one-on-one",
+    "meta": {
+      "title": "40 pytań na spotkanie one-on-one (dla menedżerów i do zadania szefowi)",
+      "description": "40 pytań na spotkania one-on-one według tematów: samopoczucie, obciążenie, przeszkody, feedback, rozwój, zespół i praca zdalna, plus pytania do własnego przełożonego i prosta agenda."
+    },
+    "title": "Pytania na spotkanie one-on-one, <em>które dają prawdziwe odpowiedzi.</em>",
+    "intro": "Spotkanie one-on-one (1:1) to jedyne spotkanie, które należy do drugiej osoby. Tu menedżer wcześnie dowiaduje się o problemach, a w zespole zdalnym często tylko tu. Oto 40 pytań według tematów, prosta agenda i sposób, żeby rozmowa nie zamieniła się w raport ze statusu.",
+    "sections": [
+      {
+        "title": "Jak prowadzić dobre one-on-one",
+        "items": [
+          {
+            "title": "To jej spotkanie",
+            "body": "Niech druga osoba pierwsza przyniesie swoje tematy. Twoje są później."
+          },
+          {
+            "title": "To nie raport ze statusu",
+            "body": "Status jest na tablicy zadań. Wykorzystaj czas dla człowieka: jak się ma, co przeszkadza, dokąd chce iść."
+          },
+          {
+            "title": "Ta sama pora, co tydzień lub co dwa",
+            "body": "Trzydzieści minut, rzadko przesuwane. Częste odwoływanie mówi ludziom, że są na końcu kolejki."
+          },
+          {
+            "title": "Jeden wspólny dokument",
+            "body": "Oboje dopisujecie tematy w tygodniu i notujecie ustalenia, żeby nic nie zginęło między spotkaniami."
+          },
+          {
+            "title": "Mało pytań, z dopytaniem",
+            "body": "Dwa dobre pytania i prawdziwe dopytanie są lepsze niż dziesięć odczytanych z listy."
+          }
+        ]
+      },
+      {
+        "title": "Prosta agenda",
+        "table": {
+          "head": [
+            "Część",
+            "Czas",
+            "Co się dzieje"
+          ],
+          "rows": [
+            [
+              "Check-in",
+              "5 min",
+              "Jak się ma, jej słowami"
+            ],
+            [
+              "Jej tematy",
+              "10–15 min",
+              "To, co przyniosła"
+            ],
+            [
+              "Twoje tematy",
+              "5–10 min",
+              "Feedback, kontekst, nadchodzące zmiany"
+            ],
+            [
+              "Kolejne kroki",
+              "5 min",
+              "Co każde z was zrobi do następnego razu"
+            ]
+          ],
+          "note": "W sumie trzydzieści minut. Jeśli jej tematy się przeciągną, przenieś swoje na kolejny raz."
+        }
+      },
+      {
+        "title": "Pytania na początek",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Jak się masz, tak naprawdę?",
+            "body": "To „tak naprawdę” zaprasza do czegoś więcej niż „dobrze”. Poczekaj na odpowiedź."
+          },
+          {
+            "title": "Co zaprzątało ci głowę w tym tygodniu?",
+            "body": "Na tyle otwarte, żeby poruszyć cokolwiek, związanego z pracą lub nie."
+          },
+          {
+            "title": "Co było najlepsze w twoim tygodniu?",
+            "body": "Zaczyna od czegoś dobrego i pokazuje, co daje energię."
+          },
+          {
+            "title": "Co zabrało ci energię w tym tygodniu?",
+            "body": "Wskazuje pracę, spotkania albo ludzi, którzy męczą."
+          },
+          {
+            "title": "W skali od jednego do dziesięciu, jak minął ci tydzień?",
+            "body": "Szybka liczba ułatwia zauważenie zmian na przestrzeni tygodni."
+          }
+        ]
+      },
+      {
+        "title": "Obciążenie i priorytety",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Masz za dużo pracy, za mało, czy w sam raz?",
+            "body": "Zapytaj wprost; mało kto sam przyznaje, że jest przeciążony."
+          },
+          {
+            "title": "Nad czym pracujesz, co uważasz za najważniejsze?",
+            "body": "Sprawdza, czy jej priorytety zgadzają się z twoimi."
+          },
+          {
+            "title": "Czy pracujesz nad czymś, co wydaje się bez sensu?",
+            "body": "Często znajduje pracę, którą można po prostu zakończyć."
+          },
+          {
+            "title": "Z czego byś zrezygnował, gdybyś musiał?",
+            "body": "Pokazuje, co jest dla niej ważne, a co chętnie by oddała."
+          },
+          {
+            "title": "Masz wystarczająco czasu na skupienie?",
+            "body": "Za dużo spotkań to jedna z najczęstszych skarg w pracy zdalnej."
+          }
+        ]
+      },
+      {
+        "title": "Przeszkody i frustracje",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Co cię teraz spowalnia?",
+            "body": "Najbardziej przydatne pytanie, jakie może zadać menedżer, i najczęściej pomijane."
+          },
+          {
+            "title": "Czekasz na jakąś decyzję?",
+            "body": "Czekanie na kogoś jest niewidoczne, dopóki nie zapytasz."
+          },
+          {
+            "title": "Co mógłbym zrobić, żeby ułatwić ci pracę?",
+            "body": "Daje przyzwolenie, żeby poprosić o pomoc."
+          },
+          {
+            "title": "Czy coś cię frustruje, o czym jeszcze nie mówiłeś?",
+            "body": "Drobne frustracje rosną, gdy nikt o nich nie mówi."
+          },
+          {
+            "title": "Z kim trudno ci się pracuje i dlaczego?",
+            "body": "Pytaj ostrożnie; wydobywa tarcia, zanim staną się konfliktem."
+          }
+        ]
+      },
+      {
+        "title": "Feedback w obie strony",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Co powinienem robić inaczej jako twój menedżer?",
+            "body": "Pytaj regularnie i reaguj spokojnie, inaczej odpowiedzi się skończą."
+          },
+          {
+            "title": "Czy robię coś, co ci przeszkadza?",
+            "body": "Łagodniejsza wersja tego samego pytania."
+          },
+          {
+            "title": "Jak wolisz dostawać feedback?",
+            "body": "Jedni chcą na piśmie, inni od razu, inni zostawiony na one-on-one."
+          },
+          {
+            "title": "Z czego jesteś najbardziej dumny w ostatnim miesiącu?",
+            "body": "Daje ci coś konkretnego do docenienia."
+          },
+          {
+            "title": "Czy jest feedback, którego chciałbyś, a nie dostajesz?",
+            "body": "Ludzie często chcą więcej feedbacku, niż sądzą menedżerowie."
+          }
+        ]
+      },
+      {
+        "title": "Rozwój i kariera",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Co chciałbyś robić za rok?",
+            "body": "Otwiera rozmowę o karierze bez żądania planu na pięć lat."
+          },
+          {
+            "title": "Jaką umiejętność chciałbyś rozwinąć?",
+            "body": "Pozwala szukać pracy, która ją buduje."
+          },
+          {
+            "title": "Którą część pracy lubisz najbardziej?",
+            "body": "Więcej tego to często najtańsza nagroda, jaka istnieje."
+          },
+          {
+            "title": "Jest projekt, przy którym chciałbyś pracować?",
+            "body": "Zainteresowanie to połowa tego, co sprawia, że ktoś staje się dobry w czymś nowym."
+          },
+          {
+            "title": "Od kogo chciałbyś się uczyć?",
+            "body": "Mentor albo praca w parze może dać więcej niż kurs."
+          }
+        ]
+      },
+      {
+        "title": "Zespół i firma",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Jak się czujesz w zespole w tej chwili?",
+            "body": "Wyłapuje napięcia, zanim ktoś je nazwie."
+          },
+          {
+            "title": "Zmieniłbyś coś w tym, jak pracujemy?",
+            "body": "Ci, którzy wykonują pracę, pierwsi widzą, co nie działa."
+          },
+          {
+            "title": "Rozumiesz, dlaczego robimy to, co robimy?",
+            "body": "Jeśli nie, problemem jest wyjaśnienie, nie człowiek."
+          },
+          {
+            "title": "Kto w zespole zasługuje na więcej uznania?",
+            "body": "Dobry sposób, żeby usłyszeć o cichej pracy."
+          },
+          {
+            "title": "Słyszałeś coś, co cię niepokoi?",
+            "body": "Plotki szybko krążą w zespołach zdalnych i rzadko są mówione na głos."
+          }
+        ]
+      },
+      {
+        "title": "Pytania dla zespołów zdalnych",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Czujesz więź z zespołem?",
+            "body": "Izolacja to najczęstszy problem w pracy zdalnej i najrzadziej poruszany."
+          },
+          {
+            "title": "Wiesz, kogo pytać, gdy utkniesz?",
+            "body": "Jeśli nie, ta osoba prawdopodobnie czeka w ciszy."
+          },
+          {
+            "title": "Czy twoje godziny pracy ci pasują?",
+            "body": "Obejmuje strefy czasowe, późne rozmowy i granicę między pracą a domem."
+          },
+          {
+            "title": "Czy twoje stanowisko w domu cię spowalnia?",
+            "body": "Krzesło, monitor albo lepszy internet to tanie rozwiązanie."
+          },
+          {
+            "title": "Jest za dużo spotkań czy za mało?",
+            "body": "Zespoły zdalne zsuwają się w obie strony."
+          }
+        ]
+      },
+      {
+        "title": "Pytania do twojego przełożonego",
+        "body": [
+          "One-on-one działa w obie strony. Jeśli to ty masz przełożonego, te pytania pomogą ci wynieść więcej ze spotkania."
+        ],
+        "numbered": true,
+        "items": [
+          {
+            "title": "Na czym powinienem się teraz najbardziej skupić?",
+            "body": "Dba o to, żeby twój wysiłek szedł tam, gdzie się liczy."
+          },
+          {
+            "title": "Co sprawiłoby, że moja praca byłaby dla ciebie bardziej przydatna?",
+            "body": "Pokazuje, czego ta osoba potrzebuje, a nie tylko, o co prosi."
+          },
+          {
+            "title": "Co mógłbym robić lepiej?",
+            "body": "Poproś o jedną rzecz; łatwiej na to szczerze odpowiedzieć."
+          },
+          {
+            "title": "Co czeka zespół, o czym powinienem wiedzieć?",
+            "body": "Kontekst, o którym inaczej dowiedziałbyś się ostatni."
+          },
+          {
+            "title": "Co musiałbym pokazać, żeby wziąć na siebie więcej?",
+            "body": "Zamienia mgliste pragnienie rozwoju w coś konkretnego."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Gdzie pasuje TinyFloor",
+      "body": "W TinyFloor one-on-one nie potrzebuje linku z kalendarza: wejdźcie razem do sali spotkań albo odejdźcie na bok na piętrze i porozmawiajcie. Między spotkaniami widzisz, kto jest, więc krótka rozmowa nie musi czekać tygodnia. Jest darmowe dla maksymalnie 3 osób."
+    },
+    "faq": [
+      {
+        "q": "O czym rozmawiać na one-on-one?",
+        "a": "O człowieku, nie o statusie: jak się ma, co mu przeszkadza, feedback w obie strony i gdzie chce się rozwijać."
+      },
+      {
+        "q": "Jak często robić one-on-one?",
+        "a": "Co tydzień lub co dwa tygodnie, około trzydziestu minut. Co tydzień najlepiej sprawdza się dla nowych osób i zespołów zdalnych."
+      },
+      {
+        "q": "Jakie pytania może zadać pracownik na one-on-one?",
+        "a": "Na czym się skupić, co zrobi moją pracę bardziej przydatną, co mogę robić lepiej i co nadchodzi, o czym powinienem wiedzieć."
+      },
+      {
+        "q": "Jak zacząć one-on-one?",
+        "a": "Od otwartego pytania, na przykład „Jak się masz, tak naprawdę?”, a potem niech druga osoba przedstawi swoje tematy przed twoimi."
+      },
+      {
+        "q": "Czego menedżer powinien unikać na one-on-one?",
+        "a": "Zamieniania go w raport ze statusu, mówienia więcej niż słuchania oraz częstego odwoływania lub przesuwania."
+      }
+    ]
+  },
+  "async": {
+    "label": "Komunikacja asynchroniczna",
+    "meta": {
+      "title": "Komunikacja asynchroniczna: czym jest i jak zespoły zdalne robią to dobrze",
+      "description": "Czym jest komunikacja asynchroniczna, czym różni się od synchronicznej, kiedy używać której, jak pisać wiadomości działające bez natychmiastowej odpowiedzi, rytuały, narzędzia i problemy, na które warto uważać."
+    },
+    "title": "Komunikacja asynchroniczna, <em>i kiedy lepiej porozmawiać.</em>",
+    "intro": "Komunikacja asynchroniczna to wysyłanie wiadomości bez oczekiwania natychmiastowej odpowiedzi: druga osoba odpisze, kiedy jej pasuje. Dzięki niej zespoły zdalne pracują w różnych strefach czasowych i chronią czas na skupienie. Używana do wszystkiego spowalnia jednak proste sprawy. Oto jak korzystać z niej dobrze i kiedy przejść do rozmowy.",
+    "sections": [
+      {
+        "title": "Czym jest komunikacja asynchroniczna",
+        "body": [
+          "Komunikacja synchroniczna odbywa się na żywo: rozmowa, spotkanie, pogawędka przy czyimś biurku. Asynchroniczna nie: wiadomość, dokument, komentarz albo nagrane wideo, które inni czytają lub oglądają później.",
+          "Większość zespołów zdalnych korzysta z obu. Sztuka polega na wyborze właściwej dla każdej rozmowy i pisaniu wiadomości asynchronicznych, które nie wymagają trzech rund pytań, żeby je zrozumieć."
+        ],
+        "table": {
+          "head": [
+            "",
+            "Synchroniczna",
+            "Asynchroniczna"
+          ],
+          "rows": [
+            [
+              "Przykłady",
+              "Rozmowy, spotkania, rozmowa twarzą w twarz",
+              "Wiadomości, dokumenty, komentarze, nagrania wideo"
+            ],
+            [
+              "Odpowiedź",
+              "Od razu",
+              "W ciągu godzin lub dnia"
+            ],
+            [
+              "Dobra do",
+              "Pilnych, delikatnych lub zagmatwanych tematów",
+              "Aktualizacji, pytań, które mogą poczekać, decyzji wymagających namysłu"
+            ],
+            [
+              "Koszt",
+              "Przerywa skupienie, wymaga wspólnych godzin",
+              "Wolniejsza wymiana, więcej pisania"
+            ]
+          ]
+        }
+      },
+      {
+        "title": "Kiedy asynchronicznie",
+        "items": [
+          {
+            "title": "Aktualizacje",
+            "body": "Status, postęp i dalsze kroki. [Pisemny stand-up](/tools/daily-standup-template) zastępuje większość codziennych rozmów."
+          },
+          {
+            "title": "Pytania, które mogą poczekać",
+            "body": "Jeśli odpowiedź może przyjść po południu, wyślij wiadomość."
+          },
+          {
+            "title": "Decyzje wymagające namysłu",
+            "body": "Spisz propozycję i daj ludziom dzień na komentarze. Dostaniesz lepsze uwagi niż na spotkaniu."
+          },
+          {
+            "title": "Wszystko między strefami czasowymi",
+            "body": "Gdy godziny pracy ledwo się pokrywają, asynchroniczność jest normą, a czas na żywo zostaje dla tego, co go potrzebuje."
+          }
+        ]
+      },
+      {
+        "title": "Kiedy lepiej porozmawiać",
+        "items": [
+          {
+            "title": "Wątek poszedł tam i z powrotem trzy razy",
+            "body": "Dwie minuty rozmowy to załatwią. Potem zapisz, co ustaliliście."
+          },
+          {
+            "title": "Ktoś utknął",
+            "body": "Odblokowanie kolegi jest warte przerwania."
+          },
+          {
+            "title": "Temat jest delikatny",
+            "body": "Feedback, konflikty i złe wiadomości lepiej trafiają w rozmowie, gdzie słychać ton."
+          },
+          {
+            "title": "Zaczynacie coś nowego",
+            "body": "Kick-offy i burze mózgów idą szybciej, gdy ludzie na żywo rozwijają nawzajem swoje pomysły."
+          }
+        ]
+      },
+      {
+        "title": "Jak pisać wiadomości asynchroniczne, które działają",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Zacznij od sedna",
+            "body": "Pytanie lub decyzja w pierwszej linijce, potem kontekst."
+          },
+          {
+            "title": "Daj cały kontekst",
+            "body": "Linki, zrzuty ekranu i to, co już próbowałeś, żeby nikt nie musiał dopytywać."
+          },
+          {
+            "title": "Napisz, czego potrzebujesz i na kiedy",
+            "body": "„Możesz to przejrzeć do czwartku?” dostaje odpowiedź; „jakieś przemyślenia?” często nie."
+          },
+          {
+            "title": "Jedna wiadomość, nie pięć",
+            "body": "Napisz całość przed wysłaniem. Pięć krótkich wiadomości przerywa ludziom pięć razy."
+          },
+          {
+            "title": "Używaj wątków",
+            "body": "Odpowiedzi zostają przy wiadomości, której dotyczą, a kanał pozostaje czytelny."
+          },
+          {
+            "title": "Zapisz decyzję",
+            "body": "Gdy wątek się kończy, opublikuj wynik w jednym zdaniu tam, gdzie ludzie go znajdą."
+          }
+        ]
+      },
+      {
+        "title": "Asynchroniczne rytuały, które pomagają",
+        "items": [
+          {
+            "title": "Pisemny codzienny stand-up",
+            "body": "Wczoraj, dziś i co blokuje, w jednym kanale, o dowolnej porze czyjegoś poranka."
+          },
+          {
+            "title": "Cotygodniowa aktualizacja",
+            "body": "Każda osoba lub zespół pisze kilka zdań o postępach, problemach i planach. Łatwo przejrzeć w poniedziałek."
+          },
+          {
+            "title": "Dokumenty decyzyjne",
+            "body": "Krótka strona na każdą ważną decyzję: problem, opcje, wybór i uzasadnienie."
+          },
+          {
+            "title": "Nagrane dema",
+            "body": "Kilka minut nagrania ekranu pokazuje funkcję lepiej niż spotkanie, a każdy ogląda je, kiedy chce."
+          }
+        ]
+      },
+      {
+        "title": "Ustalcie czasy odpowiedzi",
+        "body": [
+          "Asynchroniczność działa tylko wtedy, gdy wszyscy wiedzą, ile trwa „później”. Zapiszcie to w podręczniku zespołu."
+        ],
+        "table": {
+          "head": [
+            "Kanał",
+            "Oczekiwana odpowiedź",
+            "Do czego"
+          ],
+          "rows": [
+            [
+              "Czat zespołu",
+              "W ciągu kilku godzin",
+              "Pytania i aktualizacje"
+            ],
+            [
+              "Wiadomość prywatna",
+              "Tego samego dnia",
+              "Sprawy dla jednej osoby"
+            ],
+            [
+              "Komentarz w dokumencie lub zadaniu",
+              "W ciągu jednego lub dwóch dni",
+              "Przeglądy i decyzje"
+            ],
+            [
+              "Telefon lub podejście do kogoś",
+              "Od razu",
+              "Pilne sprawy i blokady"
+            ]
+          ],
+          "note": "Przykład, nie reguła: wybierzcie czasy pasujące do zespołu i powiedzcie, co uznajecie za pilne."
+        }
+      },
+      {
+        "title": "Problemy, na które warto uważać",
+        "items": [
+          {
+            "title": "Decyzje się wloką",
+            "body": "Ustal termin na komentarze i daj jednej osobie ostatnie słowo."
+          },
+          {
+            "title": "Za dużo do czytania",
+            "body": "Mniej kanałów, krótsze wiadomości i cotygodniowe podsumowanie pomagają bardziej niż szybsze czytanie."
+          },
+          {
+            "title": "Ludzie czują się odcięci",
+            "body": "W pełni asynchroniczne zespoły mogą czuć się samotne. Zostawcie trochę czasu na żywo: cotygodniowe spotkanie, chwilę integracji albo wspólne miejsce, gdzie widać, kto jest. Nasz przewodnik po [komunikacji w zespole zdalnym](/guides/remote-team-communication) mówi o tej równowadze."
+          },
+          {
+            "title": "Pilne sprawy czekają",
+            "body": "Ustalcie jeden jasny sposób na natychmiastowy kontakt i zostawcie go dla tego, co naprawdę pilne."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Gdzie pasuje TinyFloor",
+      "body": "TinyFloor to synchroniczna połowa, której brakuje zespołom asynchronicznym. Czat, dokumenty i nagrania zostają tam, gdzie są; gdy wątek utknie, widzisz na piętrze, kto jest, i podchodzisz na dwie minuty rozmowy. Statusy pokazują, kto jest skupiony, więc rozmowy na żywo nie kosztują nikogo głębokiej pracy. Jest darmowe dla maksymalnie 3 osób."
+    },
+    "faq": [
+      {
+        "q": "Czym jest komunikacja asynchroniczna?",
+        "a": "To komunikacja, w której nie odpowiada się od razu: wiadomości, dokumenty, komentarze i nagrane wideo, które inni czytają lub oglądają, kiedy im pasuje."
+      },
+      {
+        "q": "Czym różni się komunikacja synchroniczna od asynchronicznej?",
+        "a": "Synchroniczna odbywa się na żywo, jak rozmowa czy spotkanie, i daje odpowiedź od razu. Asynchroniczna nie wymaga obecności wszystkich naraz, a odpowiedzi przychodzą później."
+      },
+      {
+        "q": "Jakie są przykłady komunikacji asynchronicznej?",
+        "a": "Wiadomość na czacie, e-mail, komentarz w dokumencie, pisemny stand-up, cotygodniowa aktualizacja albo nagrane demo."
+      },
+      {
+        "q": "Czy komunikacja asynchroniczna jest lepsza dla zespołów zdalnych?",
+        "a": "Do aktualizacji, pytań, które mogą poczekać, i zespołów w różnych strefach czasowych tak. Do pilnych, delikatnych lub zagmatwanych tematów zwykle lepsza jest rozmowa na żywo. Większość zespołów potrzebuje obu."
+      },
+      {
+        "q": "Jakich narzędzi używa się do komunikacji asynchronicznej?",
+        "a": "Czatu zespołowego z wątkami, wspólnych dokumentów, tablic zadań i narzędzi do nagrywania ekranu. Nasz przewodnik po narzędziach do pracy zdalnej omawia każde z nich."
+      }
+    ]
+  },
+  "retro": {
+    "label": "Pomysły na retrospektywę",
+    "meta": {
+      "title": "15 pomysłów na retrospektywę w zespole zdalnym (formaty i wskazówki)",
+      "description": "15 pomysłów na retrospektywę w zespole zdalnym: szybkie, wizualne i głębsze formaty oraz takie, które poprawiają nastrój, plus jak prowadzić retro online i dopilnować działań."
+    },
+    "title": "Pomysły na retrospektywę <em>dla zespołów zmęczonych tymi samymi trzema pytaniami.</em>",
+    "intro": "Retrospektywa to krótkie spotkanie, na którym zespół patrzy wstecz na okres pracy i ustala, co zmienić. To jeden z najbardziej przydatnych nawyków zespołu i jeden z tych, które najłatwiej popadają w rutynę. Oto 15 formatów, które utrzymują retro świeże, jak poprowadzić je online i jak sprawić, żeby potem coś naprawdę się zmieniło.",
+    "sections": [
+      {
+        "title": "Jak przebiega retro",
+        "body": [
+          "Bez względu na format większość dobrych retro przechodzi przez te same pięć kroków. Formaty poniżej zmieniają środek; początek i koniec zostają."
+        ],
+        "table": {
+          "head": [
+            "Krok",
+            "Czas",
+            "Co się dzieje"
+          ],
+          "rows": [
+            [
+              "Przygotowanie",
+              "5 min",
+              "Krótki check-in i przypomnienie, że chodzi o pracę, nie o winnych"
+            ],
+            [
+              "Zbieranie uwag",
+              "10 min",
+              "Każdy najpierw sam pisze notatki, potem dzielimy się nimi"
+            ],
+            [
+              "Szukanie tematów",
+              "10–15 min",
+              "Grupowanie notatek i głosowanie na to, co najważniejsze"
+            ],
+            [
+              "Ustalenie działań",
+              "10 min",
+              "Dwie lub trzy konkretne zmiany, każda z właścicielem"
+            ],
+            [
+              "Zamknięcie",
+              "5 min",
+              "Sprawdzenie działań z poprzedniego razu i runda jednego zdania o samym retro"
+            ]
+          ],
+          "note": "Czterdzieści pięć minut pasuje do zespołu do dziesięciu osób, co dwa do czterech tygodni."
+        }
+      },
+      {
+        "title": "Szybkie formaty",
+        "body": [
+          "Na krótkie retro albo dla zespołu, który dopiero zaczyna."
+        ],
+        "items": [
+          {
+            "title": "Zacznij, przestań, kontynuuj",
+            "detail": "Klasyk",
+            "body": "Co powinniśmy zacząć robić, przestać robić i dalej robić? Proste i zawsze przydatne."
+          },
+          {
+            "title": "Zły, smutny, zadowolony",
+            "detail": "Na emocje, nie tylko procesy",
+            "body": "Co ludzi złościło, rozczarowało albo ucieszyło. Dobre po trudnym okresie."
+          },
+          {
+            "title": "Zostaw, dodaj, mniej, więcej",
+            "detail": "Subtelniej niż zacznij, przestań, kontynuuj",
+            "body": "Cztery kolumny, w których można zaproponować podkręcenie albo przyciszenie czegoś zamiast włączania lub wyłączania."
+          },
+          {
+            "title": "Jedno słowo",
+            "detail": "Pięć minut",
+            "body": "Każdy opisuje ostatni sprint jednym słowem i je wyjaśnia. Dobry początek albo całe retro w zabieganym tygodniu."
+          }
+        ]
+      },
+      {
+        "title": "Formaty wizualne",
+        "body": [
+          "Obrazy skłaniają do innego myślenia. Narysuj ramę na wspólnej tablicy i pozwól wszystkim dodawać notatki."
+        ],
+        "items": [
+          {
+            "title": "Żaglówka",
+            "detail": "Wiatr, kotwice, skały, wyspa",
+            "body": "Wyspa to cel; wiatr pchał nas naprzód, kotwice nas trzymały, skały to ryzyka przed nami."
+          },
+          {
+            "title": "Róża, cierń, pąk",
+            "detail": "Dobre, złe, obiecujące",
+            "body": "Róża to coś, co poszło dobrze, cierń to problem, pąk to pomysł albo szansa, która zaczyna rosnąć."
+          },
+          {
+            "title": "Rozgwiazda",
+            "detail": "Pięć ramion",
+            "body": "Dalej robić, mniej, więcej, przestać, zacząć. Przydatne, gdy zacznij, przestań, kontynuuj wydaje się zbyt toporne."
+          },
+          {
+            "title": "Oś czasu",
+            "detail": "Na długie lub burzliwe okresy",
+            "body": "Narysuj okres jako linię i niech każdy zaznaczy wzloty i upadki. Wychodzą wzorce, które lista ukrywa."
+          }
+        ]
+      },
+      {
+        "title": "Głębsze formaty",
+        "body": [
+          "Gdy problem ciągle wraca albo projekt się skończył."
+        ],
+        "items": [
+          {
+            "title": "Pięć razy dlaczego",
+            "detail": "Jeden problem, do korzenia",
+            "body": "Wybierz jeden problem i pytaj „dlaczego?”, aż dojdziesz do przyczyny, którą możecie zmienić."
+          },
+          {
+            "title": "Pre-mortem",
+            "detail": "Patrzenie w przód",
+            "body": "Wyobraźcie sobie, że następny projekt się nie udał. Co poszło nie tak? Potem zaplanujcie, jak uniknąć najbardziej prawdopodobnych przyczyn."
+          },
+          {
+            "title": "Lean coffee",
+            "detail": "Zespół ustala agendę",
+            "body": "Każdy proponuje tematy, zespół głosuje, a potem omawiacie je po kolei z minutnikiem."
+          },
+          {
+            "title": "Podobało się, nauczyłem się, brakowało, chciałbym",
+            "detail": "Po projekcie",
+            "body": "Cztery pytania, które równoważą to, co poszło dobrze, z tym, czego zabrakło."
+          }
+        ]
+      },
+      {
+        "title": "Formaty poprawiające nastrój",
+        "body": [
+          "Po trudnym wdrożeniu albo długim kwartale zacznij od tego, co się udało."
+        ],
+        "items": [
+          {
+            "title": "Runda podziękowań",
+            "detail": "Dziesięć minut",
+            "body": "Każdy dziękuje komuś za coś konkretnego. Potem przechodzicie do tego, co zmienić."
+          },
+          {
+            "title": "Trzy małe świnki",
+            "detail": "Słoma, drewno, cegła",
+            "body": "Co jest kruche, co się trzyma, ale mogłoby być mocniejsze, i co jest solidne. Lekko, ale wyłapuje prawdziwe ryzyka."
+          },
+          {
+            "title": "Nadzieje i obawy",
+            "detail": "Przed dużym okresem",
+            "body": "Na co ludzie liczą w tym, co nadchodzi, i czego się obawiają. Połącz to z kilkoma [pytaniami integracyjnymi](/tools/team-building-questions), jeśli zespół jest nowy."
+          }
+        ]
+      },
+      {
+        "title": "Jak prowadzić retro online",
+        "items": [
+          {
+            "title": "Najpierw pisz w ciszy",
+            "body": "Pięć minut, w których każdy sam pisze notatki, wydobywa pomysły cichych osób, nie tylko najgłośniejszych."
+          },
+          {
+            "title": "Używaj wspólnej tablicy",
+            "body": "Wspólna [tablica online](/online-whiteboard) albo prosty dokument z kolumnami. Trzymajcie tę samą od retro do retro, żeby móc spojrzeć wstecz."
+          },
+          {
+            "title": "Kamera dowolnie, głos włączony",
+            "body": "Liczy się to, żeby ludzie mówili; nikt nie musi wpatrywać się w siatkę twarzy przez czterdzieści pięć minut."
+          },
+          {
+            "title": "Zmieniaj prowadzącego",
+            "body": "Za każdym razem ktoś inny utrzymuje świeżość formatu i pozwala menedżerowi po prostu uczestniczyć."
+          },
+          {
+            "title": "Anonimowe notatki, gdy brakuje zaufania",
+            "body": "Szczere uwagi są lepsze niż uprzejme. Wracajcie do podpisanych notatek, gdy zaufanie rośnie."
+          }
+        ]
+      },
+      {
+        "title": "Jak dopilnować działań",
+        "items": [
+          {
+            "title": "Dwa, trzy działania, nie więcej",
+            "body": "Długa lista działań oznacza, że żadne się nie wydarzy."
+          },
+          {
+            "title": "Właściciel dla każdego",
+            "body": "„Powinniśmy” to nie działanie. Imię i data już tak."
+          },
+          {
+            "title": "Wrzuć je na tablicę",
+            "body": "Dodaj działania do tablicy zadań razem z resztą pracy, a nie do osobnego dokumentu."
+          },
+          {
+            "title": "Zaczynaj od działań z ostatniego razu",
+            "body": "Każde retro zaczynaj od sprawdzenia, co stało się z poprzednimi. To najszybszy sposób, żeby pokazać, że retro ma sens."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Gdzie pasuje TinyFloor",
+      "body": "W TinyFloor retro odbywa się tam, gdzie zespół już jest. Wejdźcie razem do sali spotkań, narysujcie żaglówkę na tablicy na ścianie i zostawcie ją na następny raz. Jest darmowe dla maksymalnie 3 osób."
+    },
+    "faq": [
+      {
+        "q": "Czym jest retrospektywa?",
+        "a": "Krótkim, regularnym spotkaniem, na którym zespół patrzy wstecz na okres pracy, rozmawia o tym, co poszło dobrze, a co nie, i ustala kilka zmian."
+      },
+      {
+        "q": "Jak sprawić, żeby retrospektywa była ciekawa?",
+        "a": "Zmieniaj format co kilka retro, używaj formatów wizualnych jak żaglówka, zaczynaj od podziękowań i dopilnuj, żeby działania się wydarzyły, wtedy czas jest tego wart."
+      },
+      {
+        "q": "Ile powinna trwać retrospektywa?",
+        "a": "Około czterdziestu pięciu minut dla dwutygodniowego sprintu i zespołu do dziesięciu osób. Dłuższe projekty lub większe zespoły mogą potrzebować godziny."
+      },
+      {
+        "q": "Jak często robić retrospektywę?",
+        "a": "Na koniec każdego sprintu albo co dwa do czterech tygodni, plus jedną na koniec każdego dużego projektu."
+      },
+      {
+        "q": "Jak przeprowadzić retrospektywę zdalnie?",
+        "a": "Ze wspólną tablicą, kilkoma minutami samodzielnego pisania przed dyskusją, niewieloma działaniami z właścicielami i zmieniającym się prowadzącym."
+      }
+    ]
+  },
+  "onboardingChecklist": {
+    "label": "Checklista onboardingu zdalnego",
+    "meta": {
+      "title": "Checklista onboardingu zdalnego: od przed pierwszym dniem do 90. dnia",
+      "description": "Checklista onboardingu zdalnego dla menedżerów: co zrobić przed pierwszym dniem, pierwszego dnia, w pierwszym tygodniu i w pierwszych 90 dniach, kto odpowiada za każdy krok i jakich błędów unikać."
+    },
+    "title": "Checklista onboardingu zdalnego, <em>od przed pierwszym dniem do 90. dnia.</em>",
+    "intro": "Rozpoczęcie nowej pracy zdalnie jest samotne w sposób, w jaki biuro nie jest: nikogo obok, żadnego poczucia, kto jest, a każde pytanie wydaje się przeszkadzać. Dobra checklista rozwiązuje większość z tego. Oto co zrobić przed pierwszym dniem, pierwszego dnia i przez pierwsze trzy miesiące, i kto powinien za co odpowiadać.",
+    "sections": [
+      {
+        "title": "Kto za co odpowiada",
+        "body": [
+          "Onboarding się sypie, gdy wszyscy zakładają, że zajmuje się nim ktoś inny. Wyznacz właściciela każdej części."
+        ],
+        "table": {
+          "head": [
+            "Kto",
+            "Odpowiada za"
+          ],
+          "rows": [
+            [
+              "Menedżer",
+              "Plan, cele na pierwsze 90 dni, cotygodniowe one-on-one"
+            ],
+            [
+              "Buddy",
+              "Codzienne pytania, przedstawianie ludzi, jak naprawdę działają sprawy"
+            ],
+            [
+              "Operacje lub IT",
+              "Sprzęt, konta, dostępy i formalności"
+            ],
+            [
+              "Nowa osoba",
+              "Zadawanie pytań, zapisywanie tego, co było niejasne, pierwsze małe zadanie"
+            ]
+          ]
+        }
+      },
+      {
+        "title": "Przed pierwszym dniem",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Wyślij sprzęt",
+            "body": "Laptop i wszystko, co potrzebne, tak żeby dotarło kilka dni wcześniej."
+          },
+          {
+            "title": "Załóż wszystkie konta",
+            "body": "E-mail, czat, dokumenty, tablica zadań i wszystko związane z rolą, sprawdzone przed pierwszym logowaniem."
+          },
+          {
+            "title": "Wybierz buddy'ego",
+            "body": "Członka zespołu, który nie jest menedżerem, z zarezerwowanym czasem na pierwsze dwa tygodnie."
+          },
+          {
+            "title": "Spisz plan pierwszego tygodnia",
+            "body": "Kogo nowa osoba pozna, co przeczyta i pierwsze małe zadanie, udostępnione przed startem."
+          },
+          {
+            "title": "Powiedz zespołowi",
+            "body": "Krótkie przedstawienie na kanale zespołu, żeby pierwszego dnia wszyscy się przywitali."
+          },
+          {
+            "title": "Wyślij wiadomość powitalną",
+            "body": "Godzina startu, pierwsze spotkanie i do kogo się zwrócić, jeśli coś nie działa."
+          }
+        ]
+      },
+      {
+        "title": "Pierwszy dzień",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Zacznij od rozmowy z menedżerem",
+            "body": "Powitanie, plan na tydzień i jak wygląda dobra praca w pierwszym miesiącu."
+          },
+          {
+            "title": "Sprawdź każde logowanie",
+            "body": "Nic tak nie psuje pierwszego dnia jak popołudnie czekania na dostępy."
+          },
+          {
+            "title": "Poznaj buddy'ego",
+            "body": "Pierwsza rozmowa i umowa, żeby w pierwszym tygodniu rozmawiać przynajmniej raz dziennie."
+          },
+          {
+            "title": "Powitanie zespołu",
+            "body": "Krótka, luźna rozmowa albo spotkanie. Lekkie [pytanie na przełamanie lodów](/tools/icebreaker-questions) pomaga każdemu coś powiedzieć."
+          },
+          {
+            "title": "Pokaż podręcznik",
+            "body": "Jak pracuje zespół, gdzie o co pytać i gdzie są decyzje."
+          },
+          {
+            "title": "Zakończ dzień check-inem",
+            "body": "Pięć minut: jak było i co jest wciąż niejasne?"
+          }
+        ]
+      },
+      {
+        "title": "Pierwszy tydzień",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Indywidualne poznanie",
+            "body": "Piętnaście minut z każdą osobą, z którą nowa osoba będzie najwięcej pracować."
+          },
+          {
+            "title": "Obserwowanie prawdziwej pracy",
+            "body": "Udział w rozmowach, przeglądach i planowaniu, a buddy tłumaczy, co się dzieje."
+          },
+          {
+            "title": "Skończ coś małego",
+            "body": "Pierwsze zadanie do skończenia w tym tygodniu. Wczesne ukończenie czegoś daje pewność siebie."
+          },
+          {
+            "title": "Ustal godziny pracy",
+            "body": "Kiedy nowa osoba jest online, wspólne godziny zespołu i jak szybko ludzie zwykle odpisują."
+          },
+          {
+            "title": "Pierwsze cotygodniowe one-on-one",
+            "body": "Co idzie dobrze, co jest niejasne i czego nowa osoba potrzebuje."
+          }
+        ]
+      },
+      {
+        "title": "Pierwsze 30, 60 i 90 dni",
+        "numbered": true,
+        "items": [
+          {
+            "title": "30 dni: zadomowiony",
+            "body": "Zna narzędzia, ludzi i przepływ pracy. Samodzielnie bierze małe zadania."
+          },
+          {
+            "title": "60 dni: wnosi wkład",
+            "body": "Bierze większą pracę przy mniejszym wsparciu i zaczyna widzieć, co można poprawić."
+          },
+          {
+            "title": "90 dni: w pełni w zespole",
+            "body": "Pracuje samodzielnie, pomaga innym i ma za sobą prawdziwe podsumowanie tego, jak przebiegł onboarding."
+          },
+          {
+            "title": "Zapytaj, co poprawić",
+            "body": "Po 30 i 90 dniach zapytaj, co było niejasne lub czego brakowało, i zaktualizuj checklistę dla następnej osoby."
+          }
+        ]
+      },
+      {
+        "title": "Błędy onboardingu zdalnego",
+        "items": [
+          {
+            "title": "Tydzień samego czytania",
+            "body": "Dokumenty są ważne, ale szybciej uczy się, robiąc prawdziwą pracę z kimś obok."
+          },
+          {
+            "title": "Nie ma kogo zapytać",
+            "body": "Bez buddy'ego nowe osoby godzinami siedzą z pytaniami, zamiast przeszkadzać."
+          },
+          {
+            "title": "Niewidoczni współpracownicy",
+            "body": "Gdy nie widać, kto jest, trudno wiedzieć, kiedy można pytać. Pokaż obecność."
+          },
+          {
+            "title": "Za dużo spotkań naraz",
+            "body": "Rozłóż przedstawianie na pierwsze dwa tygodnie zamiast dziesięciu rozmów pierwszego dnia."
+          },
+          {
+            "title": "Onboarding kończy się po pierwszym tygodniu",
+            "body": "Pierwsze trzy miesiące decydują, czy ludzie zostaną. Kontynuuj one-on-one i check-iny."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Gdzie pasuje TinyFloor",
+      "body": "W TinyFloor nowa osoba od pierwszego dnia widzi cały zespół na jednym piętrze: kto jest, kto ma spotkanie i kto jest wolny. Zadanie pytania to krótki spacer, a nie umówiona rozmowa, a buddy siedzi kilka biurek dalej. Jest darmowe dla maksymalnie 3 osób."
+    },
+    "faq": [
+      {
+        "q": "Co powinna zawierać checklista onboardingu zdalnego?",
+        "a": "Sprzęt i konta przed pierwszym dniem, buddy'ego, plan pierwszego tygodnia, przedstawienie ludziom, małe pierwsze zadanie, cotygodniowe one-on-one i cele na 30, 60 i 90 dni."
+      },
+      {
+        "q": "Ile trwa onboarding zdalny?",
+        "a": "Większość ludzi potrzebuje około trzech miesięcy, żeby w pełni się zadomowić, z największym wsparciem w pierwszych dwóch tygodniach."
+      },
+      {
+        "q": "Jak sprawić, żeby nowa osoba zdalna czuła się mile widziana?",
+        "a": "Przygotuj wszystko na pierwszy dzień, daj jej buddy'ego, wcześnie przedstaw ją zespołowi i rób check-in codziennie w pierwszym tygodniu."
+      },
+      {
+        "q": "Kim jest buddy w onboardingu?",
+        "a": "Członkiem zespołu, nie menedżerem, który w pierwszych tygodniach odpowiada na codzienne pytania i przedstawia ludzi."
+      },
+      {
+        "q": "Co jest najtrudniejsze w onboardingu zdalnym?",
+        "a": "Wiedzieć, kogo pytać i kiedy można przeszkodzić. Buddy i widoczna obecność rozwiązują większość z tego."
       }
     ]
   }

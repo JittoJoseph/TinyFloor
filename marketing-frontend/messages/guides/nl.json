@@ -105,7 +105,7 @@
       {
         "title": "Een uur, één keer per maand of kwartaal",
         "body": [
-          "Grotere events vragen wat planning of een klein budget. Doe ze minder vaak en maak er iets van."
+          "Grotere events vragen wat planning of een klein budget. Doe ze minder vaak en maak er iets van. Voor een teammoment, zie onze [ideeën voor een online borrel](/guides/virtual-happy-hour-ideas)."
         ],
         "items": [
           {
@@ -387,7 +387,7 @@
           },
           {
             "title": "Geef nieuwe mensen een buddy",
-            "body": "Onboarding moet een persoon zijn, niet alleen een document: iemand voor de domme vragen in de eerste maand."
+            "body": "Onboarding moet een persoon zijn, niet alleen een document: iemand voor de domme vragen in de eerste maand. Onze [checklist voor remote onboarding](/guides/remote-onboarding-checklist) dekt de rest."
           },
           {
             "title": "Vier het publiek",
@@ -524,6 +524,34 @@
         ]
       },
       {
+        "title": "De tools voor elk soort gesprek",
+        "body": [
+          "Geef elk soort gesprek één thuis, zodat niemand hoeft te raden waar hij moet kijken. Onze gids over [tools voor thuiswerken](/guides/remote-work-tools) gaat dieper op elk in."
+        ],
+        "items": [
+          {
+            "title": "Chat",
+            "detail": "Slack, Microsoft Teams, Google Chat",
+            "body": "Vragen en updates die een paar minuten kunnen wachten. Kanalen per onderwerp, threads voor antwoorden."
+          },
+          {
+            "title": "Vergaderen",
+            "detail": "Google Meet, Zoom, Microsoft Teams",
+            "body": "Geplande gesprekken die iedereen tegelijk nodig hebben, met vooraf een agenda en achteraf de besluiten op papier."
+          },
+          {
+            "title": "Aanwezigheid",
+            "detail": "Een virtueel kantoor of een open spraakkanaal",
+            "body": "Snelle gesprekken nu meteen, en zien wie vrij is voordat je stoort."
+          },
+          {
+            "title": "Documenten",
+            "detail": "Notion, Google Docs, Confluence",
+            "body": "Alles wat je weer nodig hebt: besluiten, handleidingen en het teamhandboek."
+          }
+        ]
+      },
+      {
         "title": "Simpele regels om als team af te spreken",
         "body": [
           "Schrijf ze één keer op en wijs nieuwe mensen erop. Ze voorkomen de meeste wrijving."
@@ -564,7 +592,7 @@
           },
           {
             "title": "Te veel meetings",
-            "body": "Vervang statusmeetings door geschreven updates en bewaar calls voor besluiten en problemen."
+            "body": "Vervang statusmeetings door geschreven updates en bewaar calls voor besluiten en problemen. Onze gids over [asynchrone communicatie](/guides/async-communication) laat zien hoe je dat goed doet."
           },
           {
             "title": "Mensen worden stil",
@@ -1194,6 +1222,1646 @@
       {
         "q": "Wat is een goedkoper alternatief voor Gather?",
         "a": "TinyFloor kost $ 29 per maand voor het hele team en is gratis voor maximaal 3. Het Basic-abonnement van SoWork kost $ 5,40 per lid per maand bij jaarbetaling, en het gratis abonnement dekt 10 leden met vergaderingen van 30 minuten."
+      }
+    ]
+  },
+  "remoteTools": {
+    "label": "Tools voor thuiswerken",
+    "meta": {
+      "title": "Tools voor thuiswerken: wat een klein team in 2026 echt nodig heeft",
+      "description": "De tools voor remote werken die een klein team nodig heeft, taak voor taak: chat, vergaderen, aanwezigheid, documenten, taken en tijdzones. Een korte lijst, startpakketten en hoe je kiest."
+    },
+    "title": "Tools voor thuiswerken: <em>wat een klein team echt nodig heeft.</em>",
+    "intro": "Een klein remote team heeft geen twintig apps nodig. Het heeft één goede tool nodig voor elk van zes taken: later praten, op afspraak praten, meteen praten, dingen opschrijven, werk bijhouden en werken over tijdzones heen. Hier lees je wat elke taak vraagt, welke tools het bekijken waard zijn en drie startpakketten voor een team van 3 tot 15 mensen.",
+    "sections": [
+      {
+        "title": "De zes taken in één oogopslag",
+        "body": [
+          "De meeste wrijving bij remote werken komt van de verkeerde plek voor de taak: een snelle vraag die een vergadering wordt, of een besluit dat in de chat verdwijnt. Geef elke taak één thuis."
+        ],
+        "table": {
+          "head": [
+            "Taak",
+            "Waarvoor",
+            "Tools die het bekijken waard zijn"
+          ],
+          "rows": [
+            [
+              "Chat",
+              "Vragen en updates die een paar minuten kunnen wachten",
+              "Slack, Microsoft Teams, Discord, Google Chat"
+            ],
+            [
+              "Vergaderen",
+              "Geplande gesprekken met video en schermdelen",
+              "Google Meet, Zoom, Microsoft Teams"
+            ],
+            [
+              "Aanwezigheid",
+              "Zien wie er is en meteen praten",
+              "Een virtueel kantoor zoals TinyFloor, of een open spraakkanaal"
+            ],
+            [
+              "Documenten",
+              "Besluiten, handleidingen en alles wat je weer nodig hebt",
+              "Notion, Google Docs, Confluence"
+            ],
+            [
+              "Taken",
+              "Wie doet wat, en wanneer",
+              "Linear, Trello, Asana, GitHub Issues"
+            ],
+            [
+              "Tijdzones",
+              "Tijden vinden die voor iedereen werken",
+              "Gedeelde agenda's en een tijdzoneplanner"
+            ]
+          ],
+          "note": "Geen ranglijst: elk is een gangbare keuze voor die taak. Gratis abonnementen en hun grenzen veranderen, dus check de prijspagina van elke tool."
+        }
+      },
+      {
+        "title": "Chat: later praten",
+        "body": [
+          "In de chat gebeurt het meeste remote werk, dus kies één app en blijf erbij. Maak kanalen per onderwerp of project in plaats van per persoon, zodat antwoorden later makkelijk te vinden zijn."
+        ],
+        "items": [
+          {
+            "title": "Slack",
+            "detail": "De meeste softwareteams en bureaus",
+            "body": "Kanalen, threads en een enorme keuze aan koppelingen. Het gratis abonnement beperkt hoe ver je terug kunt kijken, en dat gaat tellen zodra het team erop leunt."
+          },
+          {
+            "title": "Microsoft Teams",
+            "detail": "Teams die al Microsoft 365 hebben",
+            "body": "Chat, vergaderen en bestanden op één plek, en vaak al betaald."
+          },
+          {
+            "title": "Discord",
+            "detail": "Heel kleine, informele teams",
+            "body": "Gratis, met goede spraakkanalen. Het is gebouwd voor community's en gaming, dus beheer en zoeken zijn voor werk magerder."
+          },
+          {
+            "title": "Google Chat",
+            "detail": "Teams op Google Workspace",
+            "body": "Inbegrepen bij Workspace en gekoppeld aan Gmail en Docs, maar eenvoudiger dan Slack."
+          }
+        ]
+      },
+      {
+        "title": "Vergaderen: op afspraak praten",
+        "body": [
+          "Vergaderingen zijn voor wat iedereen tegelijk nodig heeft: planning, reviews, moeilijke gesprekken. Houd ze kort, deel vooraf een agenda en schrijf op wat er besloten is."
+        ],
+        "items": [
+          {
+            "title": "Google Meet",
+            "detail": "Teams die niets willen installeren",
+            "body": "Werkt in de browser en zit bij Google Workspace."
+          },
+          {
+            "title": "Zoom",
+            "detail": "Grote gesprekken en wankele verbindingen",
+            "body": "Betrouwbaar met grote groepen en traag internet, met goede opnames. Gratis vergaderingen hebben een tijdslimiet."
+          },
+          {
+            "title": "Microsoft Teams",
+            "detail": "Teams die al in Teams chatten",
+            "body": "Houdt gesprekken naast de chat waar ze uit voortkomen."
+          }
+        ]
+      },
+      {
+        "title": "Aanwezigheid: meteen praten",
+        "body": [
+          "Dit is de taak die de meeste remote teams leeg laten. Op kantoor zie je wie vrij is en stel je in het voorbijgaan een vraag. Remote wordt elke vraag een bericht of een geplande call, en kleine dingen blijven liggen.",
+          "Een [virtueel kantoor](/virtual-office) vult dat gat: een gedeelde plek waar je ziet wie er is, wie in een vergadering zit en wie rust wil, en waar je zonder afspraak begint te praten."
+        ],
+        "items": [
+          {
+            "title": "Een virtueel kantoor",
+            "detail": "Teams die zich de hele dag samen willen voelen",
+            "body": "Een gedeelde verdieping in de browser, zoals TinyFloor: loop naar iemand toe om te praten, stap een ruimte in om te vergaderen en zie in één oogopslag wie er is."
+          },
+          {
+            "title": "Een open spraakkanaal",
+            "detail": "Heel kleine teams op Slack of Discord",
+            "body": "Een huddle of spraakkanaal dat openblijft zodat mensen kunnen binnenvallen. Simpel, maar je ziet niet wie bezig of geconcentreerd is."
+          },
+          {
+            "title": "Duidelijke statussen",
+            "detail": "Elk team, wat het ook gebruikt",
+            "body": "'In een vergadering', 'focus' of 'terug om 14.00' scheelt een hoop 'ben je er?'-berichten."
+          }
+        ]
+      },
+      {
+        "title": "Documenten: dingen opschrijven",
+        "body": [
+          "Alles waar twee keer naar gevraagd wordt, hoort in een document, niet in de chat: hoe jullie werken, wat er besloten is en waarom, hoe je een laptop inricht. Een kort teamhandboek scheelt elke nieuwe collega weken."
+        ],
+        "items": [
+          {
+            "title": "Notion",
+            "detail": "Handboeken, wiki's en planning",
+            "body": "Documenten, wiki's en eenvoudige databases op één plek."
+          },
+          {
+            "title": "Google Docs",
+            "detail": "Snel samen schrijven",
+            "body": "Snel te delen en samen te bewerken, en iedereen weet al hoe het werkt."
+          },
+          {
+            "title": "Confluence",
+            "detail": "Teams die al Jira gebruiken",
+            "body": "Gangbaar in grotere teams die hun werk in Jira plannen."
+          }
+        ]
+      },
+      {
+        "title": "Taken: wie doet wat",
+        "body": [
+          "Eén gedeeld bord dat actueel blijft, maakt een einde aan de meeste 'hoe staat het ervoor?'-berichten. Kies er een die past bij hoe technisch je team is."
+        ],
+        "items": [
+          {
+            "title": "Linear",
+            "detail": "Softwareteams",
+            "body": "Snel en uitgesproken, gebouwd rond issues, cycli en projecten."
+          },
+          {
+            "title": "Trello",
+            "detail": "Iedereen, binnen een paar minuten",
+            "body": "Eenvoudige borden en kaarten die geen uitleg nodig hebben."
+          },
+          {
+            "title": "Asana",
+            "detail": "Niet-technische teams",
+            "body": "Projecten, tijdlijnen en overzichten van werkdruk."
+          },
+          {
+            "title": "GitHub Issues",
+            "detail": "Kleine engineeringteams",
+            "body": "Genoeg als je werk al op GitHub staat."
+          }
+        ]
+      },
+      {
+        "title": "Tijdzones en geschreven updates",
+        "body": [
+          "Teams verspreid over tijdzones hebben minder live vergaderingen en betere geschreven updates nodig. Spreek een paar overlapuren af, deel agenda's en vervang waar het kan de dagelijkse stand-upcall door een geschreven check-in. Onze gids over [asynchrone communicatie](/guides/async-communication) laat zien hoe."
+        ],
+        "items": [
+          {
+            "title": "Een tijdzoneplanner",
+            "body": "Vind tijden die voor iedereen werken voordat je iets plant. Onze gratis [tijdzone-vergaderplanner](/tools/time-zone-meeting-planner) toont de overlap in één oogopslag."
+          },
+          {
+            "title": "Een geschreven stand-up",
+            "body": "Gisteren, vandaag en wat je tegenhoudt, in één kanaal. Onze gratis [dagelijkse stand-up-template](/tools/daily-standup-template) geeft je een format om te kopiëren."
+          },
+          {
+            "title": "Korte schermopnames",
+            "body": "Een opname van twee minuten, met een tool als Loom, legt vaak meer uit dan een lang bericht."
+          }
+        ]
+      },
+      {
+        "title": "Drie startpakketten",
+        "body": [
+          "Begin klein. Een tool toevoegen kan altijd later; er een weghalen is lastiger."
+        ],
+        "items": [
+          {
+            "title": "Het gratis pakket",
+            "body": "Een team van 2 of 3 zonder budget: het gratis abonnement van Slack of Discord voor chat, Google Meet voor gesprekken, Google Docs om te schrijven, Trello voor taken en het gratis abonnement van TinyFloor als kantoor."
+          },
+          {
+            "title": "Het Google-pakket",
+            "body": "Teams op Google Workspace: Google Chat, Meet, Docs en Agenda, met Linear of Trello voor taken en een virtueel kantoor voor de tijd tussen vergaderingen."
+          },
+          {
+            "title": "Het Microsoft-pakket",
+            "body": "Teams op Microsoft 365: Teams voor chat en vergaderen, SharePoint of OneNote voor documenten, Planner voor taken en een virtueel kantoor voor aanwezigheid."
+          }
+        ]
+      },
+      {
+        "title": "Hoe je kiest",
+        "items": [
+          {
+            "title": "Eén thuis per taak",
+            "body": "Twee chatapps betekent dat elke vraag twee keer gesteld wordt. Spreek af waar wat hoort, en schrijf het op."
+          },
+          {
+            "title": "Begin met gratis abonnementen",
+            "body": "De meeste van deze tools hebben er een. Gebruik het een maand en betaal dan voor de tools die het team echt elke dag opent."
+          },
+          {
+            "title": "Minder tools, goed gebruikt",
+            "body": "Elke nieuwe tool is een plek meer om te checken. Voeg er alleen een toe als een taak geen thuis heeft."
+          },
+          {
+            "title": "Check waar je data staat",
+            "body": "Werk je met klanten in Europa of voor een strenge werkgever, lees dan vooraf de privacy- en datalocatiepagina's van elke tool."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "TinyFloor neemt de aanwezigheid voor zijn rekening: een virtueel kantoor in de browser waar je team ziet wie er is en naar iemand toe loopt om te praten, met vergaderruimte, chat en schermdelen ingebouwd. Het werkt naast je tools voor chat, documenten en taken in plaats van ze te vervangen. Het is gratis voor maximaal 3 mensen, dus je kunt het vandaag nog met je team proberen."
+    },
+    "faq": [
+      {
+        "q": "Welke tools heeft een remote team nodig?",
+        "a": "De meeste kleine remote teams hebben een tool nodig voor elk van zes taken: chat, vergaderen, aanwezigheid (zien wie er is), documenten, taken en tijdzones. Velen redden het met vier of vijf apps."
+      },
+      {
+        "q": "Wat zijn de beste gratis tools voor een remote team?",
+        "a": "Er is geen eenduidig antwoord, maar het gratis abonnement van Slack of Discord, Google Meet, Google Docs en Trello dekken de meeste taken van een klein team, en TinyFloor is gratis voor maximaal 3 mensen."
+      },
+      {
+        "q": "Heeft een remote team een virtueel kantoor nodig?",
+        "a": "Niet altijd. Als chat en geplande gesprekken goed werken, misschien niet. Als kleine vragen steeds vergaderingen worden of mensen zich afgesneden voelen, vult een virtueel kantoor dat gat."
+      },
+      {
+        "q": "Hoeveel tools is te veel?",
+        "a": "Als mensen vaak niet weten waar ze iets moeten posten of vinden, zijn het er te veel. Eén thuis per taak is een goede regel."
+      },
+      {
+        "q": "Slack of Microsoft Teams?",
+        "a": "Betaalt je bedrijf al voor Microsoft 365, dan is Teams meestal de eenvoudigste keuze. Anders kiezen de meeste kleine softwareteams en bureaus voor Slack."
+      }
+    ]
+  },
+  "manageRemote": {
+    "label": "Een remote team leiden",
+    "meta": {
+      "title": "Een remote team leiden: 9 gewoontes die werken",
+      "description": "Hoe je een remote team goed leidt: opgeschreven werkafspraken, overlapuren, een eenvoudig vergaderritme, zichtbaar werk, motivatie zonder controle en de fouten die je moet vermijden."
+    },
+    "title": "Een remote team leiden <em>zonder te micromanagen.</em>",
+    "intro": "Een remote team leiden draait vooral om wat je niet meer ziet: wie vastzit, wie overbelast is en wie zich buitengesloten voelt. Het antwoord is niet meer vergaderingen of volgsoftware. Het is helder schrijven, een vast ritme en zowel werk als mensen zichtbaar maken. Dit werkt voor kleine teams.",
+    "sections": [
+      {
+        "title": "Wat er verandert als het team remote is",
+        "body": [
+          "Op kantoor gebeurt veel leidinggeven vanzelf. Je merkt dat iemand vastzit, hoort in het voorbijgaan over een probleem en spreekt mensen tussen vergaderingen. Remote verdwijnt dat allemaal, tenzij je het bewust opnieuw opbouwt.",
+          "Drie dingen vragen meer zorg: duidelijkheid (wat we doen en waarom), verbinding (dat mensen elkaar kennen) en zichtbaarheid (werk en mensen zien zonder ze te controleren)."
+        ]
+      },
+      {
+        "title": "Negen gewoontes die werken",
+        "items": [
+          {
+            "title": "Schrijf op hoe jullie werken",
+            "body": "Een teamhandboek van één pagina: waar je vragen stelt, hoe snel je antwoordt, wanneer je samenkomt en waar besluiten staan. Nieuwe mensen lezen het op dag één."
+          },
+          {
+            "title": "Spreek overlapuren af",
+            "body": "Kies twee tot vier uur waarin iedereen online is voor snelle vragen en vergaderingen. Daarbuiten werkt iedereen wanneer het uitkomt."
+          },
+          {
+            "title": "Eerst schrijven, dan praten",
+            "body": "Schrijf eerst bij alles wat nadenken vraagt. Stap over op een gesprek als een thread meer dan drie keer heen en weer gaat."
+          },
+          {
+            "title": "Houd een vast vergaderritme",
+            "body": "Een paar voorspelbare vergaderingen zijn beter dan veel last-minute. Hieronder staat een eenvoudig ritme."
+          },
+          {
+            "title": "Houd wekelijkse één-op-ééns",
+            "body": "Dertig minuten per week met elke persoon, over hen in plaats van de status. Daar hoor je vroeg over problemen. Hier zijn [40 vragen om te stellen](/guides/one-on-one-meeting-questions)."
+          },
+          {
+            "title": "Maak werk zichtbaar",
+            "body": "Eén gedeeld takenbord dat actueel blijft, beantwoordt 'hoe staat het ervoor?' voordat iemand het vraagt."
+          },
+          {
+            "title": "Maak aanwezigheid zichtbaar",
+            "body": "Laat mensen zien wie er is en wie bezig is, met statussen of een [virtueel kantoor](/team-presence), zodat ze weten wanneer storen mag."
+          },
+          {
+            "title": "Beoordeel resultaten, niet uren",
+            "body": "Spreek af hoe 'klaar' eruitziet en kijk naar de uitkomst. Activiteitstrackers en screenshots beschadigen vertrouwen en meten het verkeerde."
+          },
+          {
+            "title": "Maak tijd voor het sociale",
+            "body": "Een kort wekelijks sociaal moment, een [ijsbreker](/tools/icebreaker-questions) aan het begin van een vergadering, een kanaal voor niet-werkpraat. Remote ontstaat verbinding niet vanzelf."
+          }
+        ]
+      },
+      {
+        "title": "Een eenvoudig vergaderritme",
+        "body": [
+          "Dit ritme past bij de meeste teams van 3 tot 15 mensen. Pas de duur aan, niet het idee. En houd de retrospective fris met af en toe een [nieuwe werkvorm](/guides/retrospective-ideas)."
+        ],
+        "table": {
+          "head": [
+            "Vergadering",
+            "Hoe vaak",
+            "Duur",
+            "Waarvoor"
+          ],
+          "rows": [
+            [
+              "Stand-up",
+              "Dagelijks, of geschreven",
+              "15 min",
+              "Het plan voor vandaag en wat tegenhoudt"
+            ],
+            [
+              "Teamoverleg",
+              "Wekelijks",
+              "30 tot 45 min",
+              "Prioriteiten, besluiten en successen"
+            ],
+            [
+              "Eén-op-één",
+              "Wekelijks of tweewekelijks",
+              "30 min",
+              "De persoon: groei, problemen, feedback"
+            ],
+            [
+              "Retrospective",
+              "Elke 2 tot 4 weken",
+              "45 min",
+              "Wat we houden, veranderen en stoppen"
+            ],
+            [
+              "Sociale tijd",
+              "Wekelijks of maandelijks",
+              "15 tot 30 min",
+              "Elkaar leren kennen"
+            ]
+          ],
+          "note": "Een geschreven stand-up in één kanaal werkt goed over tijdzones heen."
+        }
+      },
+      {
+        "title": "Hoe je een remote team motiveert",
+        "body": [
+          "Motivatie komt van dezelfde plekken als op kantoor, maar remote moet je het vaker hardop zeggen."
+        ],
+        "items": [
+          {
+            "title": "Erken werk in het openbaar",
+            "body": "Bedank mensen concreet in het teamkanaal, voor wat ze deden en waarom het ertoe deed."
+          },
+          {
+            "title": "Geef echte eigenaarschap",
+            "body": "Geef hele problemen, niet alleen taken. Mensen geven meer om werk waarvan ze zelf de aanpak kozen."
+          },
+          {
+            "title": "Laat zien waar het werk heen gaat",
+            "body": "Deel klantfeedback en resultaten, zodat mensen het effect van hun werk zien."
+          },
+          {
+            "title": "Investeer in groei",
+            "body": "Vraag iedereen wat ze willen leren, en geef ze werk waar ze van groeien."
+          },
+          {
+            "title": "Bescherm hun tijd",
+            "body": "Minder vergaderingen en rustige focusuren zijn op zichzelf al een beloning."
+          }
+        ]
+      },
+      {
+        "title": "Fouten om te vermijden",
+        "items": [
+          {
+            "title": "Controlesoftware",
+            "body": "Keyloggers en webcamcontroles vertellen mensen dat je ze niet vertrouwt, en je beste mensen vertrekken als eerste."
+          },
+          {
+            "title": "Te veel vergaderingen",
+            "body": "Videogesprekken zijn vermoeiender dan elkaar in het echt zien. Kan een vergadering een geschreven update zijn, maak er dan een van."
+          },
+          {
+            "title": "Alles in privéberichten",
+            "body": "Werk dat in privéberichten besproken wordt, is onzichtbaar voor de rest. Gebruik standaard de teamkanalen."
+          },
+          {
+            "title": "Geen inwerkplan",
+            "body": "Nieuwe remote collega's weten soms wekenlang niet wie ze iets kunnen vragen. Geef ze een buddy en een [plan voor hun eerste twee weken](/guides/remote-onboarding-checklist)."
+          },
+          {
+            "title": "Tijdzones negeren",
+            "body": "Wissel vergadertijden af, schrijf op wat kan en laat nooit dezelfde mensen elke late call doen."
+          }
+        ]
+      },
+      {
+        "title": "Tools die helpen",
+        "body": [
+          "Je hebt minder tools nodig dan je denkt: één voor chat, één voor vergaderen, één voor documenten en één voor taken, plus een manier om te zien wie er is. Onze gids over [tools voor thuiswerken](/guides/remote-work-tools) loopt elke taak door, met startpakketten voor kleine teams."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "TinyFloor maakt aanwezigheid zichtbaar: een virtueel kantoor in de browser waar je team ziet wie er is, wie in een vergadering zit en wie rust wil, en naar iemand toe loopt om te praten. Het brengt de gangmomenten terug die een remote team mist, zonder camera's die de hele dag aanstaan en zonder volgen. Het is gratis voor maximaal 3 mensen."
+    },
+    "faq": [
+      {
+        "q": "Hoe leid je een remote team goed?",
+        "a": "Schrijf op hoe het team werkt, spreek overlapuren af, houd een vast vergaderritme met wekelijkse één-op-ééns, maak werk en mensen zichtbaar en beoordeel resultaten in plaats van uren."
+      },
+      {
+        "q": "Hoe houd je een remote team gemotiveerd?",
+        "a": "Erken werk in het openbaar, geef eigenaarschap, deel het effect van hun werk, investeer in hun groei en maak regelmatig tijd voor verbinding."
+      },
+      {
+        "q": "Hoe vaak moet een remote team samenkomen?",
+        "a": "Een korte dagelijkse stand-up (of een geschreven), een wekelijks teamoverleg, wekelijkse of tweewekelijkse één-op-ééns en om de paar weken een retrospective is genoeg voor de meeste kleine teams."
+      },
+      {
+        "q": "Moet je remote medewerkers controleren?",
+        "a": "Activiteiten volgen schaadt meestal het vertrouwen zonder de resultaten te verbeteren. Spreek duidelijke doelen af en kijk naar de uitkomst."
+      },
+      {
+        "q": "Wat is het lastigste aan een remote team leiden?",
+        "a": "Problemen vroeg zien. Zonder gedeeld kantoor merk je niet dat iemand vastzit of het moeilijk heeft, tenzij je er ruimte voor maakt, en daar zijn één-op-ééns en zichtbare aanwezigheid voor."
+      }
+    ]
+  },
+  "happyHour": {
+    "label": "Ideeën voor een online borrel",
+    "meta": {
+      "title": "20 ideeën voor een online borrel waar je remote team echt bij wil zijn",
+      "description": "20 ideeën voor een online borrel met je remote team: zonder voorbereiding, spellen, activiteiten met wat planning en voor grote of verspreide teams, plus hoe je er een leidt."
+    },
+    "title": "Ideeën voor een online borrel <em>waar mensen echt voor komen.</em>",
+    "intro": "De meeste online borrels mislukken op dezelfde manier: twintig mensen in één videogesprek, twee die praten, de rest die wacht tot het voorbij is. De borrels die werken zijn kort, vrijblijvend en geven mensen iets te doen, in groepjes die klein genoeg zijn om te praten. Hier zijn 20 ideeën, gesorteerd op hoeveel voorbereiding ze vragen, en hoe je er een leidt.",
+    "sections": [
+      {
+        "title": "Wat een online borrel laat werken",
+        "items": [
+          {
+            "title": "Kort",
+            "body": "Dertig tot vijfenveertig minuten. Wie wil, blijft langer, en wie zich niet verveelde, komt de volgende keer terug."
+          },
+          {
+            "title": "Vrijblijvend",
+            "body": "Binnen werktijd en echt vrijblijvend. Een verplichte borrel is een vergadering."
+          },
+          {
+            "title": "Iets te doen",
+            "body": "Een spel, een vraag of een thema geeft stillere mensen een makkelijke ingang."
+          },
+          {
+            "title": "Kleine groepjes",
+            "body": "Met meer dan zes of zeven mensen in één gesprek stoppen de meesten met praten. Splits op."
+          },
+          {
+            "title": "Niet om de drank",
+            "body": "Koffie, thee of fris is net zo welkom. Noem het een teammoment als het woord mensen afschrikt."
+          }
+        ]
+      },
+      {
+        "title": "Ideeën zonder voorbereiding",
+        "body": [
+          "Begin hier. Elk werkt met vijf minuten aankondiging."
+        ],
+        "items": [
+          {
+            "title": "Laten zien en vertellen",
+            "detail": "Elke grootte · geen voorbereiding",
+            "body": "Iedereen laat iets zien dat binnen handbereik ligt en vertelt het verhaal erachter. Een mok, een boek, een plant, een huisdier dat langsloopt."
+          },
+          {
+            "title": "Twee waarheden en een leugen",
+            "detail": "Tot 10 · geen voorbereiding",
+            "body": "Iedereen zegt drie dingen over zichzelf, de anderen raden de leugen. Onze [ideeën voor twee waarheden en een leugen](/tools/two-truths-and-a-lie) helpen wie niets weet te zeggen."
+          },
+          {
+            "title": "Wat zou je liever",
+            "detail": "Elke grootte · geen voorbereiding",
+            "body": "Lees een vraag voor, iedereen antwoordt en verdedigt zijn keuze. Onze [wat-zou-je-liever-vragen](/tools/would-you-rather-questions) zijn uitgezocht voor werk."
+          },
+          {
+            "title": "Bureautour",
+            "detail": "Tot 8 · geen voorbereiding",
+            "body": "Iedereen draait dertig seconden de camera om. Verrassend hoeveel je van iemand leert door een boekenkast."
+          },
+          {
+            "title": "Foto van de week",
+            "detail": "Elke grootte · geen voorbereiding",
+            "body": "Iedereen deelt een foto uit zijn week en vertelt waarom hij die maakte."
+          },
+          {
+            "title": "Vragenrondje",
+            "detail": "Elke grootte · geen voorbereiding",
+            "body": "Eén luchtige vraag, iedereen antwoordt: beste maaltijd dit jaar, eerste concert, iets wat je wilt leren. Kies er een uit onze [ijsbrekervragen](/tools/icebreaker-questions)."
+          }
+        ]
+      },
+      {
+        "title": "Spellen",
+        "body": [
+          "Spellen geven de borrel een vorm, zodat niemand hoeft te bedenken wat hij hierna zegt."
+        ],
+        "items": [
+          {
+            "title": "Pubquiz",
+            "detail": "Teams van 3 tot 5 · 15 minuten voorbereiding",
+            "body": "Vijf rondes van vijf vragen, één ronde over het bedrijf. Wissel elke maand wie de vragen schrijft."
+          },
+          {
+            "title": "Tekenen en raden",
+            "detail": "Tot 8 · geen voorbereiding",
+            "body": "Iemand tekent een woord op een gedeeld whiteboard, de rest raadt. Gratis browserspellen zoals skribbl.io regelen de rondes voor je."
+          },
+          {
+            "title": "Raad de baby",
+            "detail": "Elke grootte · vooraf foto's verzamelen",
+            "body": "Verzamel vooraf van iedereen een kinderfoto, laat ze een voor een zien en raad wie wie is."
+          },
+          {
+            "title": "Teambingo",
+            "detail": "Elke grootte · 10 minuten voorbereiding",
+            "body": "Bingokaarten met weetjes over het team: 'heeft in drie landen gewoond', 'speelt een instrument'. Mensen vragen elkaar om de vakjes te vullen."
+          },
+          {
+            "title": "Woord- en partyspellen online",
+            "detail": "4 tot 10 · geen voorbereiding",
+            "body": "Codenames, Gartic Phone en vergelijkbare browserspellen hebben alleen een link nodig, en de meeste zijn gratis."
+          }
+        ]
+      },
+      {
+        "title": "Ideeën die wat planning waard zijn",
+        "body": [
+          "Bewaar deze voor eens per maand of een speciale gelegenheid; een beetje voorbereiding maakt er een evenement van."
+        ],
+        "items": [
+          {
+            "title": "Proeverij",
+            "detail": "Elke grootte · een week vooraf bestellen",
+            "body": "Stuur iedereen dezelfde koffie, thee, chocolade of snacks, en proef en beoordeel samen."
+          },
+          {
+            "title": "Samen koken of een drankje maken",
+            "detail": "Tot 12 · vooraf een lijst delen",
+            "body": "Iemand die graag kookt, leidt een eenvoudig recept of drankje, met of zonder alcohol."
+          },
+          {
+            "title": "Flitspresentaties",
+            "detail": "Tot 15 · een paar dagen vooraf",
+            "body": "Drie vrijwilligers praten elk vijf minuten over alles behalve werk: een hobby, een reis, hoe je brood bakt."
+          },
+          {
+            "title": "Playlistfeest",
+            "detail": "Elke grootte · vooraf nummers verzamelen",
+            "body": "Iedereen zet twee nummers op een gedeelde playlist; speel ze af en raad wie wat koos."
+          },
+          {
+            "title": "Online escaperoom",
+            "detail": "Teams van 4 tot 6 · vooraf boeken",
+            "body": "Escaperooms met spelleider werken via video en passen bij teams die van puzzels houden. De meeste rekenen per persoon."
+          }
+        ]
+      },
+      {
+        "title": "Ideeën voor grote of verspreide teams",
+        "body": [
+          "Boven de vijftien mensen, of over veel tijdzones, werkt één gesprek niet meer. Combineer kleine groepjes en geschreven vormen."
+        ],
+        "items": [
+          {
+            "title": "Wisselende groepjes",
+            "detail": "15 mensen of meer",
+            "body": "Groepjes van vier voor tien minuten, dan door elkaar. In een virtueel kantoor lopen mensen gewoon van groepje naar groepje, zoals op een echt feest."
+          },
+          {
+            "title": "Willekeurige koffieduo's",
+            "detail": "Elke grootte · wekelijks of maandelijks",
+            "body": "Koppel mensen willekeurig voor vijftien minuten praten op een tijd die beiden uitkomt. Na een paar maanden kent iedereen iedereen."
+          },
+          {
+            "title": "Een borrel die met de zon meegaat",
+            "detail": "Veel tijdzones",
+            "body": "Houd hem twee keer, op een tijd die elke helft van het team uitkomt, of start een fotothread die de hele dag loopt."
+          },
+          {
+            "title": "Seizoensthema",
+            "detail": "Elke grootte · een paar dagen vooraf",
+            "body": "Mutsen in de winter, de lievelingssnack van thuis, een verkleedvrijdag. Een thema geeft gespreksstof voordat iemand iets zegt."
+          }
+        ]
+      },
+      {
+        "title": "Hoe je er een leidt",
+        "items": [
+          {
+            "title": "Kies een tijd binnen werktijd",
+            "body": "Donderdag- of vrijdagmiddag laat werkt voor veel teams. Over tijdzones heen vindt onze [tijdzone-vergaderplanner](/tools/time-zone-meeting-planner) de overlap."
+          },
+          {
+            "title": "Nodig uit met een plan",
+            "body": "'30 minuten, twee quizrondes, dan bijpraten' trekt meer mensen dan 'borrel, 17.00'."
+          },
+          {
+            "title": "Open met een makkelijke vraag",
+            "body": "Iedereen antwoordt in één zin. Zo klinkt elke stem in de eerste vijf minuten."
+          },
+          {
+            "title": "Splits groepen boven de zes",
+            "body": "Gebruik aparte ruimtes, of een plek waar mensen zelf tussen groepjes kunnen wisselen."
+          },
+          {
+            "title": "Stop op tijd",
+            "body": "Sluit af op de tijd die je noemde. Wie wil blijven, kan dat, maar niemand voelt zich vastgezet."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "Op TinyFloor voelt een borrel meer als een ruimte dan als een gesprek. Iedereen komt op dezelfde verdieping, groepjes ontstaan waar mensen blijven staan, en je doet mee aan een gesprek door ernaartoe te lopen, zonder vast te zitten in een raster van twintig gezichten. Aan de muur hangt een whiteboard voor tekenspellen. Het is gratis voor maximaal 3 mensen."
+    },
+    "faq": [
+      {
+        "q": "Wat doe je op een online borrel?",
+        "a": "Praten in kleine groepjes en samen iets luchtigs doen: een vragenrondje, een spel zoals een pubquiz of tekenen en raden, laten zien en vertellen of een proeverij."
+      },
+      {
+        "q": "Hoe lang moet een online borrel duren?",
+        "a": "Dertig tot vijfenveertig minuten is genoeg voor de meeste teams. Korter en mensen komen niet los; langer en de energie zakt."
+      },
+      {
+        "q": "Hoe maak je een online borrel leuk?",
+        "a": "Houd het vrijblijvend, geef het een plan, begin met een makkelijke vraag voor iedereen en splits in groepjes van vier tot zes zodat iedereen praat."
+      },
+      {
+        "q": "Heb je alcohol nodig voor een online borrel?",
+        "a": "Nee. Maak duidelijk dat elk drankje goed is, en noem het eventueel een teammoment. Veel van de beste ideeën hebben niets met drank te maken."
+      },
+      {
+        "q": "Hoe vaak moet een remote team borrelen?",
+        "a": "Eens per maand past bij de meeste teams. Een kort wekelijks teammoment werkt ook, zolang het kort en vrijblijvend blijft."
+      }
+    ]
+  },
+  "oneOnOne": {
+    "label": "Vragen voor een één-op-één",
+    "meta": {
+      "title": "40 vragen voor een één-op-één gesprek (voor managers en om je manager te stellen)",
+      "description": "40 vragen voor één-op-één gesprekken per thema: hoe het gaat, werkdruk, obstakels, feedback, groei, het team en remote werken, plus vragen voor je eigen manager en een eenvoudige agenda."
+    },
+    "title": "Vragen voor een één-op-één <em>die echte antwoorden opleveren.</em>",
+    "intro": "Een één-op-één (of 1:1) is de enige vergadering die van de ander is. Daar hoort een manager vroeg over problemen, en in een remote team vaak alleen daar. Hier zijn 40 vragen per thema, een eenvoudige agenda en hoe je voorkomt dat het een statusupdate wordt.",
+    "sections": [
+      {
+        "title": "Hoe je een goede één-op-één houdt",
+        "items": [
+          {
+            "title": "Het is hun vergadering",
+            "body": "Laat de ander eerst onderwerpen inbrengen. Die van jou komen daarna."
+          },
+          {
+            "title": "Geen statusupdate",
+            "body": "De status hoort op het takenbord. Gebruik de tijd voor de persoon: hoe het gaat, wat in de weg zit, waar diegene heen wil."
+          },
+          {
+            "title": "Zelfde tijd, elke week of twee weken",
+            "body": "Dertig minuten, zelden verschoven. Vaak afzeggen vertelt mensen dat ze als laatste komen."
+          },
+          {
+            "title": "Eén gedeeld document",
+            "body": "Jullie zetten er allebei door de week onderwerpen in en noteren wat jullie afspraken, zodat er tussen gesprekken niets verloren gaat."
+          },
+          {
+            "title": "Weinig vragen, goed doorgevraagd",
+            "body": "Twee goede vragen met echt doorvragen werken beter dan tien voorgelezen van een lijst."
+          }
+        ]
+      },
+      {
+        "title": "Een eenvoudige agenda",
+        "table": {
+          "head": [
+            "Onderdeel",
+            "Tijd",
+            "Wat er gebeurt"
+          ],
+          "rows": [
+            [
+              "Check-in",
+              "5 min",
+              "Hoe het gaat, in eigen woorden"
+            ],
+            [
+              "Hun onderwerpen",
+              "10 tot 15 min",
+              "Wat ze hebben meegenomen"
+            ],
+            [
+              "Jouw onderwerpen",
+              "5 tot 10 min",
+              "Feedback, context, veranderingen die eraan komen"
+            ],
+            [
+              "Volgende stappen",
+              "5 min",
+              "Wat ieder doet voor de volgende keer"
+            ]
+          ],
+          "note": "Dertig minuten in totaal. Lopen hun onderwerpen uit, schuif die van jou dan naar de volgende keer."
+        }
+      },
+      {
+        "title": "Vragen om mee te beginnen",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Hoe gaat het, echt?",
+            "body": "Het 'echt' nodigt uit tot meer dan 'goed'. Wacht op het antwoord."
+          },
+          {
+            "title": "Waar dacht je deze week veel aan?",
+            "body": "Open genoeg om alles aan te snijden, werk of niet."
+          },
+          {
+            "title": "Wat was het beste deel van je week?",
+            "body": "Begint met iets goeds en laat zien waar iemand energie van krijgt."
+          },
+          {
+            "title": "Wat kostte je deze week energie?",
+            "body": "Wijst naar het werk, de vergaderingen of de mensen die iemand uitputten."
+          },
+          {
+            "title": "Op een schaal van één tot tien, hoe was je week?",
+            "body": "Een snel cijfer maakt veranderingen over een paar weken makkelijk te zien."
+          }
+        ]
+      },
+      {
+        "title": "Werkdruk en prioriteiten",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Is je werkdruk te hoog, te laag of ongeveer goed?",
+            "body": "Vraag het gewoon; bijna niemand zegt uit zichzelf dat hij overbelast is."
+          },
+          {
+            "title": "Waar werk je aan dat jij het belangrijkst vindt?",
+            "body": "Checkt of hun prioriteiten aansluiten bij die van jou."
+          },
+          {
+            "title": "Werk je ergens aan dat zinloos voelt?",
+            "body": "Vindt vaak werk dat gewoon kan stoppen."
+          },
+          {
+            "title": "Wat zou je laten vallen als het moest?",
+            "body": "Laat zien wat iemand belangrijk vindt, en wat hij graag zou overdragen."
+          },
+          {
+            "title": "Heb je genoeg tijd om je te concentreren?",
+            "body": "Te veel vergaderingen is een van de meest gehoorde klachten bij remote werken."
+          }
+        ]
+      },
+      {
+        "title": "Obstakels en frustraties",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Wat houdt je op dit moment tegen?",
+            "body": "De nuttigste vraag die een manager kan stellen, en de vraag die het vaakst wordt overgeslagen."
+          },
+          {
+            "title": "Wacht je op een besluit?",
+            "body": "Wachten op iemand anders is onzichtbaar tot je ernaar vraagt."
+          },
+          {
+            "title": "Wat kan ik doen om je werk makkelijker te maken?",
+            "body": "Geeft toestemming om om hulp te vragen."
+          },
+          {
+            "title": "Is er iets wat je frustreert en wat je nog niet hebt genoemd?",
+            "body": "Kleine frustraties groeien als ze niet uitgesproken worden."
+          },
+          {
+            "title": "Met wie werk je lastig samen, en waarom?",
+            "body": "Vraag het voorzichtig; zo komt wrijving boven voordat het een conflict wordt."
+          }
+        ]
+      },
+      {
+        "title": "Feedback, twee kanten op",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Wat zou ik als je manager anders moeten doen?",
+            "body": "Vraag het regelmatig en reageer rustig, anders stoppen de antwoorden."
+          },
+          {
+            "title": "Doe ik iets wat je in de weg zit?",
+            "body": "Een zachtere vorm van dezelfde vraag."
+          },
+          {
+            "title": "Hoe krijg je het liefst feedback?",
+            "body": "Sommigen willen het op schrift, sommigen meteen, sommigen bewaard voor de één-op-één."
+          },
+          {
+            "title": "Waar ben je het meest trots op van de afgelopen maand?",
+            "body": "Geeft je iets concreets om te erkennen."
+          },
+          {
+            "title": "Is er feedback die je zou willen krijgen maar niet krijgt?",
+            "body": "Mensen willen vaak meer feedback dan managers denken."
+          }
+        ]
+      },
+      {
+        "title": "Groei en loopbaan",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Wat zou je over een jaar willen doen?",
+            "body": "Opent een loopbaangesprek zonder om een vijfjarenplan te vragen."
+          },
+          {
+            "title": "Welke vaardigheid wil je verbeteren?",
+            "body": "Zo kun je werk zoeken dat die vaardigheid opbouwt."
+          },
+          {
+            "title": "Welk deel van je werk vind je het leukst?",
+            "body": "Daar meer van is vaak de goedkoopste beloning die er is."
+          },
+          {
+            "title": "Is er een project waar je graag aan zou meedoen?",
+            "body": "Interesse is de helft van wat iemand goed maakt in iets nieuws."
+          },
+          {
+            "title": "Van wie zou je graag leren?",
+            "body": "Een mentor of samen werken kan meer doen dan een cursus."
+          }
+        ]
+      },
+      {
+        "title": "Het team en het bedrijf",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Hoe voel je je op dit moment in het team?",
+            "body": "Pikt spanning op voordat iemand die benoemt."
+          },
+          {
+            "title": "Zou je iets veranderen aan hoe we werken?",
+            "body": "Wie het werk doet, ziet als eerste wat er niet werkt."
+          },
+          {
+            "title": "Snap je waarom we doen wat we doen?",
+            "body": "Zo niet, dan zit het probleem in de uitleg, niet in de persoon."
+          },
+          {
+            "title": "Wie in het team verdient meer erkenning?",
+            "body": "Een goede manier om te horen over stil werk."
+          },
+          {
+            "title": "Heb je iets gehoord wat je zorgen baart?",
+            "body": "Geruchten gaan snel in remote teams en worden zelden hardop gezegd."
+          }
+        ]
+      },
+      {
+        "title": "Vragen voor remote teams",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Voel je je verbonden met het team?",
+            "body": "Isolatie is het meest voorkomende remote probleem, en het minst vaak genoemd."
+          },
+          {
+            "title": "Weet je wie je kunt vragen als je vastzit?",
+            "body": "Zo niet, dan wacht diegene waarschijnlijk stilletjes."
+          },
+          {
+            "title": "Werken je werktijden voor jou?",
+            "body": "Gaat over tijdzones, late gesprekken en de grens tussen werk en thuis."
+          },
+          {
+            "title": "Houdt je werkplek thuis je tegen?",
+            "body": "Een stoel, een scherm of beter internet is een goedkope oplossing."
+          },
+          {
+            "title": "Zijn er te veel vergaderingen, of te weinig?",
+            "body": "Remote teams glijden naar allebei."
+          }
+        ]
+      },
+      {
+        "title": "Vragen voor je eigen manager",
+        "body": [
+          "Een één-op-één gaat twee kanten op. Heb jij een manager, dan helpen deze vragen je meer uit het gesprek te halen."
+        ],
+        "numbered": true,
+        "items": [
+          {
+            "title": "Waar moet ik me nu vooral op richten?",
+            "body": "Zorgt dat je inzet terechtkomt waar het telt."
+          },
+          {
+            "title": "Wat zou mijn werk nuttiger voor je maken?",
+            "body": "Laat zien wat diegene nodig heeft, niet alleen waar om gevraagd wordt."
+          },
+          {
+            "title": "Wat kan ik beter doen?",
+            "body": "Vraag om één ding; dat is makkelijker eerlijk te beantwoorden."
+          },
+          {
+            "title": "Wat komt er op het team af dat ik moet weten?",
+            "body": "Context die je anders als laatste hoort."
+          },
+          {
+            "title": "Wat moet ik laten zien om meer verantwoordelijkheid te krijgen?",
+            "body": "Maakt van een vage wens om te groeien iets concreets."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "Op TinyFloor heeft een één-op-één geen agendalink nodig: loop samen een vergaderruimte in of ga even apart staan op de verdieping en praat. Tussen de gesprekken door zie je wie er is, dus een korte check-in hoeft geen week te wachten. Het is gratis voor maximaal 3 mensen."
+    },
+    "faq": [
+      {
+        "q": "Waar praat je over in een één-op-één?",
+        "a": "Over de persoon, niet de status: hoe het gaat, wat in de weg zit, feedback twee kanten op en waar diegene in wil groeien."
+      },
+      {
+        "q": "Hoe vaak houd je een één-op-één?",
+        "a": "Wekelijks of tweewekelijks, zo'n dertig minuten. Wekelijks werkt het best voor nieuwe teamleden en remote teams."
+      },
+      {
+        "q": "Welke vragen kan een medewerker stellen in een één-op-één?",
+        "a": "Waar moet ik me op richten, wat maakt mijn werk nuttiger, wat kan ik beter doen en wat komt eraan dat ik moet weten."
+      },
+      {
+        "q": "Hoe begin je een één-op-één?",
+        "a": "Met een open vraag zoals 'Hoe gaat het, echt?', en laat de ander dan eerst zijn onderwerpen inbrengen."
+      },
+      {
+        "q": "Wat moet een manager vermijden in een één-op-één?",
+        "a": "Er een statusupdate van maken, meer praten dan luisteren, en het vaak afzeggen of verzetten."
+      }
+    ]
+  },
+  "async": {
+    "label": "Asynchrone communicatie",
+    "meta": {
+      "title": "Asynchrone communicatie: wat het is en hoe remote teams het goed doen",
+      "description": "Wat asynchrone communicatie is, hoe het verschilt van synchroon, wanneer je welke gebruikt, hoe je berichten schrijft die werken zonder direct antwoord, rituelen, tools en problemen om op te letten."
+    },
+    "title": "Asynchrone communicatie, <em>en wanneer je beter even praat.</em>",
+    "intro": "Asynchrone communicatie betekent een bericht sturen zonder direct antwoord te verwachten: de ander reageert wanneer het uitkomt. Zo werken remote teams over tijdzones heen en beschermen ze hun focustijd. Maar gebruik je het voor alles, dan worden simpele dingen traag. Zo gebruik je het goed, en zo weet je wanneer een gesprek beter is.",
+    "sections": [
+      {
+        "title": "Wat asynchrone communicatie is",
+        "body": [
+          "Synchrone communicatie gebeurt live: een gesprek, een vergadering, een praatje bij iemands bureau. Asynchrone communicatie niet: een bericht, een document, een opmerking of een opgenomen video die anderen later lezen of bekijken.",
+          "De meeste remote teams gebruiken allebei. De kunst is per gesprek de juiste kiezen, en asynchrone berichten schrijven die niet drie rondes vragen nodig hebben om begrepen te worden."
+        ],
+        "table": {
+          "head": [
+            "",
+            "Synchroon",
+            "Asynchroon"
+          ],
+          "rows": [
+            [
+              "Voorbeelden",
+              "Gesprekken, vergaderingen, in het echt praten",
+              "Berichten, documenten, opmerkingen, opgenomen video's"
+            ],
+            [
+              "Antwoord",
+              "Meteen",
+              "Binnen uren, of een dag"
+            ],
+            [
+              "Goed voor",
+              "Urgente, gevoelige of ingewikkelde onderwerpen",
+              "Updates, vragen die kunnen wachten, besluiten die bedenktijd vragen"
+            ],
+            [
+              "Prijs",
+              "Onderbreekt focus, vraagt gedeelde uren",
+              "Tragere rondes, meer schrijven"
+            ]
+          ]
+        }
+      },
+      {
+        "title": "Wanneer asynchroon",
+        "items": [
+          {
+            "title": "Updates",
+            "body": "Status, voortgang en wat er komt. Een [geschreven stand-up](/tools/daily-standup-template) vervangt de meeste dagelijkse gesprekken."
+          },
+          {
+            "title": "Vragen die kunnen wachten",
+            "body": "Mag het antwoord vanmiddag komen, stuur dan een bericht."
+          },
+          {
+            "title": "Besluiten die bedenktijd vragen",
+            "body": "Schrijf het voorstel op en geef mensen een dag om te reageren. Je krijgt betere input dan in een vergadering."
+          },
+          {
+            "title": "Alles over tijdzones heen",
+            "body": "Als de werktijden nauwelijks overlappen, is asynchroon de norm en is live tijd voor wat het echt nodig heeft."
+          }
+        ]
+      },
+      {
+        "title": "Wanneer je beter praat",
+        "items": [
+          {
+            "title": "Een thread ging drie keer heen en weer",
+            "body": "Twee minuten praten lost het op. Schrijf daarna op wat jullie besloten."
+          },
+          {
+            "title": "Iemand zit vast",
+            "body": "Een collega weer op gang helpen is een onderbreking waard."
+          },
+          {
+            "title": "Het onderwerp is gevoelig",
+            "body": "Feedback, conflict en slecht nieuws komen beter aan in een gesprek, waar de toon meekomt."
+          },
+          {
+            "title": "Jullie beginnen iets nieuws",
+            "body": "Kick-offs en brainstorms gaan sneller als mensen live op elkaars ideeën voortbouwen."
+          }
+        ]
+      },
+      {
+        "title": "Asynchrone berichten die werken",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Begin met de kern",
+            "body": "De vraag of het besluit in de eerste regel, daarna de achtergrond."
+          },
+          {
+            "title": "Geef alle context",
+            "body": "Links, screenshots en wat je al geprobeerd hebt, zodat niemand hoeft te vragen."
+          },
+          {
+            "title": "Zeg wat je nodig hebt, en wanneer",
+            "body": "'Kun je dit voor donderdag bekijken?' krijgt antwoord; 'gedachten?' vaak niet."
+          },
+          {
+            "title": "Eén bericht, niet vijf",
+            "body": "Schrijf het helemaal voordat je het stuurt. Vijf korte berichten onderbreken mensen vijf keer."
+          },
+          {
+            "title": "Gebruik threads",
+            "body": "Antwoorden blijven bij het bericht waar ze bij horen, en het kanaal blijft leesbaar."
+          },
+          {
+            "title": "Schrijf het besluit op",
+            "body": "Is een thread klaar, zet de uitkomst dan in één regel waar mensen hem vinden."
+          }
+        ]
+      },
+      {
+        "title": "Asynchrone rituelen die helpen",
+        "items": [
+          {
+            "title": "Een geschreven dagelijkse stand-up",
+            "body": "Gisteren, vandaag en wat tegenhoudt, in één kanaal, op elk moment in ieders ochtend."
+          },
+          {
+            "title": "Een wekelijkse update",
+            "body": "Elke persoon of elk team schrijft een paar regels over voortgang, problemen en plannen. Makkelijk door te lezen op maandag."
+          },
+          {
+            "title": "Besluitdocumenten",
+            "body": "Een korte pagina per belangrijk besluit: het probleem, de opties, de keuze en waarom."
+          },
+          {
+            "title": "Opgenomen demo's",
+            "body": "Een paar minuten schermopname laat een functie beter zien dan een vergadering, en iedereen kijkt wanneer het uitkomt."
+          }
+        ]
+      },
+      {
+        "title": "Spreek reactietijden af",
+        "body": [
+          "Asynchroon werkt alleen als iedereen weet hoe lang 'later' is. Zet het in het teamhandboek."
+        ],
+        "table": {
+          "head": [
+            "Kanaal",
+            "Verwachte reactie",
+            "Waarvoor"
+          ],
+          "rows": [
+            [
+              "Teamchat",
+              "Binnen een paar uur",
+              "Vragen en updates"
+            ],
+            [
+              "Privébericht",
+              "Dezelfde dag",
+              "Dingen voor één persoon"
+            ],
+            [
+              "Opmerking in document of taak",
+              "Binnen een of twee dagen",
+              "Reviews en besluiten"
+            ],
+            [
+              "Bellen of langslopen",
+              "Meteen",
+              "Urgent of vastgelopen"
+            ]
+          ],
+          "note": "Een voorbeeld, geen regel: kies tijden die bij je team passen, en zeg wat als urgent telt."
+        }
+      },
+      {
+        "title": "Problemen om op te letten",
+        "items": [
+          {
+            "title": "Besluiten slepen",
+            "body": "Zet een deadline voor reacties en geef één persoon het laatste woord."
+          },
+          {
+            "title": "Te veel om te lezen",
+            "body": "Minder kanalen, kortere berichten en een wekelijkse samenvatting helpen meer dan sneller lezen."
+          },
+          {
+            "title": "Mensen voelen zich afgesneden",
+            "body": "Volledig asynchrone teams kunnen eenzaam worden. Houd wat live tijd: een wekelijks overleg, een teammoment of een gedeelde plek waar je ziet wie er is. Onze gids over [communicatie in remote teams](/guides/remote-team-communication) gaat over die balans."
+          },
+          {
+            "title": "Urgente dingen wachten",
+            "body": "Spreek één duidelijke manier af om iemand meteen te bereiken, en bewaar die voor wat echt urgent is."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "TinyFloor is de synchrone helft die asynchrone teams missen. Je chat, documenten en opnames blijven waar ze zijn; loopt een thread vast, dan zie je op de verdieping wie er is en loop je even twee minuten langs. Statussen laten zien wie in focus is, zodat live gesprekken niemand zijn diepe werk kosten. Het is gratis voor maximaal 3 mensen."
+    },
+    "faq": [
+      {
+        "q": "Wat is asynchrone communicatie?",
+        "a": "Communicatie waarbij je niet meteen antwoordt: berichten, documenten, opmerkingen en opgenomen video's die anderen lezen of bekijken wanneer het uitkomt."
+      },
+      {
+        "q": "Wat is het verschil tussen synchrone en asynchrone communicatie?",
+        "a": "Synchroon gebeurt live, zoals een gesprek of vergadering, en krijgt meteen antwoord. Asynchroon heeft niet iedereen tegelijk nodig, en antwoorden komen later."
+      },
+      {
+        "q": "Wat zijn voorbeelden van asynchrone communicatie?",
+        "a": "Een chatbericht, een e-mail, een opmerking in een document, een geschreven stand-up, een wekelijkse update of een opgenomen videodemo."
+      },
+      {
+        "q": "Is asynchrone communicatie beter voor remote teams?",
+        "a": "Voor updates, vragen die kunnen wachten en teams over tijdzones heen, ja. Voor urgente, gevoelige of ingewikkelde onderwerpen is een live gesprek meestal beter. De meeste teams hebben beide nodig."
+      },
+      {
+        "q": "Welke tools gebruik je voor asynchrone communicatie?",
+        "a": "Teamchat met threads, gedeelde documenten, takenborden en tools voor schermopnames. Onze gids over tools voor thuiswerken loopt ze allemaal door."
+      }
+    ]
+  },
+  "retro": {
+    "label": "Ideeën voor retrospectives",
+    "meta": {
+      "title": "15 ideeën voor retrospectives in remote teams (werkvormen en tips)",
+      "description": "15 ideeën voor retrospectives in remote teams: snelle, visuele en diepere werkvormen en vormen die de sfeer opkrikken, plus hoe je een retro online leidt en de acties laat landen."
+    },
+    "title": "Ideeën voor retrospectives <em>voor teams die de vaste drie vragen beu zijn.</em>",
+    "intro": "Een retrospective is een korte vergadering waarin een team terugkijkt op een periode werk en afspreekt wat het verandert. Het is een van de nuttigste gewoontes van een team, en een van de makkelijkste om in te laten slapen. Hier zijn 15 werkvormen om retro's fris te houden, hoe je er online een leidt en hoe je zorgt dat er daarna echt iets verandert.",
+    "sections": [
+      {
+        "title": "Hoe een retro verloopt",
+        "body": [
+          "Welke vorm je ook kiest, de meeste goede retro's volgen dezelfde vijf stappen. De werkvormen hieronder veranderen het midden; houd het begin en het einde."
+        ],
+        "table": {
+          "head": [
+            "Stap",
+            "Tijd",
+            "Wat er gebeurt"
+          ],
+          "rows": [
+            [
+              "De toon zetten",
+              "5 min",
+              "Een korte check-in en de herinnering dat het om het werk gaat, niet om schuld"
+            ],
+            [
+              "Input verzamelen",
+              "10 min",
+              "Iedereen schrijft eerst zelf notities, daarna wordt gedeeld"
+            ],
+            [
+              "Thema's vinden",
+              "10 tot 15 min",
+              "Notities groeperen en stemmen op wat het meest telt"
+            ],
+            [
+              "Acties kiezen",
+              "10 min",
+              "Twee of drie concrete veranderingen, elk met een eigenaar"
+            ],
+            [
+              "Afsluiten",
+              "5 min",
+              "De acties van vorige keer nalopen en een rondje van één zin over de retro zelf"
+            ]
+          ],
+          "note": "Vijfenveertig minuten past bij een team tot tien mensen, elke twee tot vier weken."
+        }
+      },
+      {
+        "title": "Snelle werkvormen",
+        "body": [
+          "Voor korte retro's, of een team dat er nieuw in is."
+        ],
+        "items": [
+          {
+            "title": "Start, stop, doorgaan",
+            "detail": "De klassieker",
+            "body": "Waar moeten we mee beginnen, mee stoppen en mee doorgaan? Simpel en altijd nuttig."
+          },
+          {
+            "title": "Boos, verdrietig, blij",
+            "detail": "Voor gevoel, niet alleen proces",
+            "body": "Wat maakte mensen boos, teleurgesteld of blij. Goed na een zware periode."
+          },
+          {
+            "title": "Houden, toevoegen, minder, meer",
+            "detail": "Fijner dan start, stop, doorgaan",
+            "body": "Vier kolommen waarmee mensen kunnen voorstellen iets op te schroeven of terug te schroeven in plaats van aan of uit."
+          },
+          {
+            "title": "Eén woord",
+            "detail": "Vijf minuten",
+            "body": "Iedereen beschrijft de laatste sprint in één woord en legt het uit. Een goede opening, of een hele retro in een drukke week."
+          }
+        ]
+      },
+      {
+        "title": "Visuele werkvormen",
+        "body": [
+          "Beelden laten mensen anders denken. Teken het kader op een gedeeld whiteboard en laat iedereen notities toevoegen."
+        ],
+        "items": [
+          {
+            "title": "Zeilboot",
+            "detail": "Wind, ankers, rotsen, eiland",
+            "body": "Het eiland is het doel; de wind duwde ons vooruit, ankers hielden ons tegen, rotsen zijn risico's verderop."
+          },
+          {
+            "title": "Roos, doorn, knop",
+            "detail": "Goed, slecht, veelbelovend",
+            "body": "Een roos is iets wat goed ging, een doorn een probleem, een knop een idee of kans die begint te groeien."
+          },
+          {
+            "title": "Zeester",
+            "detail": "Vijf armen",
+            "body": "Blijven doen, minder, meer, stoppen, beginnen. Handig als start, stop, doorgaan te grof voelt."
+          },
+          {
+            "title": "Tijdlijn",
+            "detail": "Voor lange of bewogen periodes",
+            "body": "Teken de periode als een lijn en laat iedereen hoogte- en dieptepunten markeren. Er verschijnen patronen die een lijst verbergt."
+          }
+        ]
+      },
+      {
+        "title": "Diepere werkvormen",
+        "body": [
+          "Voor als een probleem steeds terugkomt, of een project is afgerond."
+        ],
+        "items": [
+          {
+            "title": "Vijf keer waarom",
+            "detail": "Eén probleem, tot de kern",
+            "body": "Kies één probleem en vraag 'waarom?' tot je bij een oorzaak komt die je kunt veranderen."
+          },
+          {
+            "title": "Pre-mortem",
+            "detail": "Vooruitkijken",
+            "body": "Stel je voor dat het volgende project mislukt is. Wat ging er mis? Plan dan tegen de waarschijnlijkste oorzaken."
+          },
+          {
+            "title": "Lean coffee",
+            "detail": "Het team bepaalt de agenda",
+            "body": "Iedereen stelt onderwerpen voor, het team stemt, en je bespreekt ze op volgorde met een timer."
+          },
+          {
+            "title": "Leuk, geleerd, gemist, gewenst",
+            "detail": "Na een project",
+            "body": "Vier vragen die wat goed ging in balans brengen met wat ontbrak."
+          }
+        ]
+      },
+      {
+        "title": "Werkvormen die de sfeer opkrikken",
+        "body": [
+          "Na een zware release of een lang kwartaal: begin met wat goed ging."
+        ],
+        "items": [
+          {
+            "title": "Complimentenrondje",
+            "detail": "Tien minuten",
+            "body": "Iedereen bedankt iemand voor iets concreets. Daarna ga je door naar wat er moet veranderen."
+          },
+          {
+            "title": "De drie biggetjes",
+            "detail": "Stro, hout, steen",
+            "body": "Wat is wankel, wat houdt het maar kan sterker, en wat staat als een huis. Luchtig, maar vindt echte risico's."
+          },
+          {
+            "title": "Hoop en zorgen",
+            "detail": "Voor een grote periode",
+            "body": "Wat mensen hopen van wat komt en waar ze zich zorgen over maken. Combineer het met een paar [teambuildingvragen](/tools/team-building-questions) als het team nieuw is."
+          }
+        ]
+      },
+      {
+        "title": "Een retro online leiden",
+        "items": [
+          {
+            "title": "Eerst stil schrijven",
+            "body": "Vijf minuten waarin iedereen zelf notities schrijft, halen ideeën op bij stille mensen, niet alleen bij de luidste."
+          },
+          {
+            "title": "Gebruik een gedeeld bord",
+            "body": "Een gedeeld [online whiteboard](/online-whiteboard) of een simpel document met kolommen. Houd hetzelfde bord van retro tot retro, zodat je kunt terugkijken."
+          },
+          {
+            "title": "Camera vrij, stem aan",
+            "body": "Waar het om gaat is dat mensen praten; niemand hoeft vijfenveertig minuten naar een raster van gezichten te staren."
+          },
+          {
+            "title": "Wissel de begeleider",
+            "body": "Elke keer iemand anders houdt de vorm fris en laat de manager gewoon meedoen."
+          },
+          {
+            "title": "Anonieme notities bij weinig vertrouwen",
+            "body": "Eerlijke input is beter dan beleefde. Ga terug naar notities met naam als het vertrouwen groeit."
+          }
+        ]
+      },
+      {
+        "title": "Zorg dat de acties landen",
+        "items": [
+          {
+            "title": "Twee of drie acties, niet meer",
+            "body": "Een lange lijst acties betekent dat er geen enkele gebeurt."
+          },
+          {
+            "title": "Een eigenaar voor elke actie",
+            "body": "'We zouden moeten' is geen actie. Een naam en een datum wel."
+          },
+          {
+            "title": "Zet ze op het bord",
+            "body": "Voeg de acties toe aan het takenbord bij de rest van het werk, niet in een apart document."
+          },
+          {
+            "title": "Begin met de acties van vorige keer",
+            "body": "Start elke retro met wat er van de vorige acties terechtkwam. Zo laat je het snelst zien dat retro's ertoe doen."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "Op TinyFloor vindt de retro plaats waar het team al is. Loop samen de vergaderruimte in, teken de zeilboot op het whiteboard aan de muur en laat hem hangen voor de volgende keer. Het is gratis voor maximaal 3 mensen."
+    },
+    "faq": [
+      {
+        "q": "Wat is een retrospective?",
+        "a": "Een korte, terugkerende vergadering waarin een team terugkijkt op een periode werk, bespreekt wat goed en minder goed ging, en een paar veranderingen afspreekt."
+      },
+      {
+        "q": "Hoe maak je een retrospective leuk?",
+        "a": "Wissel om de paar retro's van werkvorm, gebruik visuele vormen zoals de zeilboot, begin met complimenten en zorg dat de acties echt gebeuren, zodat de tijd het waard voelt."
+      },
+      {
+        "q": "Hoe lang duurt een retrospective?",
+        "a": "Zo'n vijfenveertig minuten voor een sprint van twee weken en een team tot tien mensen. Langere projecten of grotere teams hebben soms een uur nodig."
+      },
+      {
+        "q": "Hoe vaak houd je een retrospective?",
+        "a": "Aan het eind van elke sprint, of elke twee tot vier weken, plus één aan het eind van elk groot project."
+      },
+      {
+        "q": "Hoe doe je een retrospective op afstand?",
+        "a": "Met een gedeeld bord, een paar minuten zelf schrijven voor de bespreking, weinig acties met een eigenaar en een wisselende begeleider."
+      }
+    ]
+  },
+  "onboardingChecklist": {
+    "label": "Checklist voor remote onboarding",
+    "meta": {
+      "title": "Checklist voor remote onboarding: van voor dag één tot dag 90",
+      "description": "Een checklist voor remote onboarding voor managers: wat je doet voor de eerste dag, op de eerste dag, in de eerste week en de eerste 90 dagen, wie elke stap oppakt en welke fouten je vermijdt."
+    },
+    "title": "Een checklist voor remote onboarding, <em>van voor dag één tot dag 90.</em>",
+    "intro": "Remote aan een nieuwe baan beginnen is eenzaam op een manier die een kantoor niet is: niemand naast je, geen idee wie er is, en elke vraag voelt als storen. Een goede checklist lost het meeste daarvan op. Dit doe je voor de eerste dag, op de eerste dag en in de eerste drie maanden, en dit is wie elke stap oppakt.",
+    "sections": [
+      {
+        "title": "Wie doet wat",
+        "body": [
+          "Onboarding gaat mis als iedereen denkt dat een ander het doet. Wijs voor elk onderdeel een eigenaar aan."
+        ],
+        "table": {
+          "head": [
+            "Wie",
+            "Doet"
+          ],
+          "rows": [
+            [
+              "Manager",
+              "Het plan, doelen voor de eerste 90 dagen, wekelijkse één-op-ééns"
+            ],
+            [
+              "Buddy",
+              "Alledaagse vragen, introducties, hoe dingen echt gaan"
+            ],
+            [
+              "Operations of IT",
+              "Apparatuur, accounts, toegang en papierwerk"
+            ],
+            [
+              "De nieuwe collega",
+              "Vragen stellen, opschrijven wat verwarrend was, een eerste kleine klus"
+            ]
+          ]
+        }
+      },
+      {
+        "title": "Voor de eerste dag",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Stuur de apparatuur",
+            "body": "Laptop en alles wat nodig is, zo dat het een paar dagen eerder aankomt."
+          },
+          {
+            "title": "Maak elk account aan",
+            "body": "E-mail, chat, documenten, het takenbord en alles voor de rol, getest voordat diegene inlogt."
+          },
+          {
+            "title": "Kies een buddy",
+            "body": "Een teamlid dat niet de manager is, met tijd vrijgemaakt voor de eerste twee weken."
+          },
+          {
+            "title": "Schrijf het plan voor week één",
+            "body": "Wie diegene ontmoet, wat er te lezen is en een eerste kleine taak, gedeeld voor de start."
+          },
+          {
+            "title": "Vertel het het team",
+            "body": "Een korte introductie in het teamkanaal, zodat iedereen op dag één hallo zegt."
+          },
+          {
+            "title": "Stuur een welkomstbericht",
+            "body": "Begintijd, eerste vergadering en bij wie je terechtkunt als iets niet werkt."
+          }
+        ]
+      },
+      {
+        "title": "Dag één",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Begin met een gesprek met de manager",
+            "body": "Welkom, het plan voor de week en hoe 'goed' eruitziet in de eerste maand."
+          },
+          {
+            "title": "Check of elke login werkt",
+            "body": "Niets verpest een eerste dag zo als een middag wachten op toegang."
+          },
+          {
+            "title": "Kennismaken met de buddy",
+            "body": "Een eerste gesprek en de afspraak om de eerste week minstens één keer per dag te praten."
+          },
+          {
+            "title": "Een welkom van het team",
+            "body": "Een kort, informeel gesprek of samenzijn. Een luchtige [ijsbrekervraag](/tools/icebreaker-questions) helpt iedereen iets te zeggen."
+          },
+          {
+            "title": "Wijs het handboek aan",
+            "body": "Hoe het team werkt, waar je wat vraagt en waar besluiten staan."
+          },
+          {
+            "title": "Sluit de dag af met een check-in",
+            "body": "Vijf minuten: hoe was het, en wat is nog onduidelijk?"
+          }
+        ]
+      },
+      {
+        "title": "De eerste week",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Kennismakingen één op één",
+            "body": "Vijftien minuten met elke persoon met wie diegene het meest gaat werken."
+          },
+          {
+            "title": "Meekijken met echt werk",
+            "body": "Aanschuiven bij gesprekken, reviews en planning, met de buddy die uitlegt wat er gebeurt."
+          },
+          {
+            "title": "Iets kleins afronden",
+            "body": "Een eerste taak die deze week af kan. Vroeg iets afronden geeft vertrouwen."
+          },
+          {
+            "title": "Werktijden afspreken",
+            "body": "Wanneer diegene online is, de overlapuren van het team en hoe snel mensen meestal reageren."
+          },
+          {
+            "title": "Eerste wekelijkse één-op-één",
+            "body": "Wat goed gaat, wat verwarrend is en wat diegene nodig heeft."
+          }
+        ]
+      },
+      {
+        "title": "De eerste 30, 60 en 90 dagen",
+        "numbered": true,
+        "items": [
+          {
+            "title": "30 dagen: gesetteld",
+            "body": "Kent de tools, de mensen en hoe het werk loopt. Pakt zelfstandig kleine stukken werk op."
+          },
+          {
+            "title": "60 dagen: draagt bij",
+            "body": "Pakt groter werk op met minder begeleiding en begint te zien wat beter kan."
+          },
+          {
+            "title": "90 dagen: helemaal in het team",
+            "body": "Werkt zelfstandig, helpt anderen en heeft een echt gesprek gehad over hoe de onboarding ging."
+          },
+          {
+            "title": "Vraag wat beter kan",
+            "body": "Vraag na 30 en 90 dagen wat verwarrend was of ontbrak, en werk de checklist bij voor de volgende."
+          }
+        ]
+      },
+      {
+        "title": "Fouten bij remote onboarding",
+        "items": [
+          {
+            "title": "Een week alleen lezen",
+            "body": "Documenten zijn belangrijk, maar mensen leren sneller door echt werk te doen met iemand naast zich."
+          },
+          {
+            "title": "Niemand om te vragen",
+            "body": "Zonder buddy blijven nieuwe mensen urenlang met vragen zitten in plaats van te storen."
+          },
+          {
+            "title": "Onzichtbare collega's",
+            "body": "Als je niet ziet wie er is, weet je moeilijk wanneer vragen oké is. Maak aanwezigheid zichtbaar."
+          },
+          {
+            "title": "Te veel vergaderingen tegelijk",
+            "body": "Spreid de kennismakingen over de eerste twee weken in plaats van tien gesprekken op dag één."
+          },
+          {
+            "title": "Onboarding stopt na week één",
+            "body": "De eerste drie maanden bepalen of mensen blijven. Houd de één-op-ééns en check-ins vol."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "Op TinyFloor ziet een nieuwe collega vanaf dag één het hele team op één verdieping: wie er is, wie in een vergadering zit en wie vrij is. Een vraag stellen is een kort loopje, geen geplande call, en de buddy zit een paar bureaus verderop. Het is gratis voor maximaal 3 mensen."
+    },
+    "faq": [
+      {
+        "q": "Wat hoort er op een checklist voor remote onboarding?",
+        "a": "Apparatuur en accounts voor dag één, een buddy, een plan voor de eerste week, kennismakingen, een kleine eerste taak, wekelijkse één-op-ééns en doelen voor 30, 60 en 90 dagen."
+      },
+      {
+        "q": "Hoe lang duurt remote onboarding?",
+        "a": "De meeste mensen hebben ongeveer drie maanden nodig om helemaal gesetteld te zijn, met de meeste steun in de eerste twee weken."
+      },
+      {
+        "q": "Hoe laat je een nieuwe remote collega zich welkom voelen?",
+        "a": "Zorg dat alles op dag één klaarstaat, geef een buddy, stel diegene vroeg voor aan het team en check de eerste week elke dag in."
+      },
+      {
+        "q": "Wat is een onboardingbuddy?",
+        "a": "Een teamlid, niet de manager, dat in de eerste weken alledaagse vragen beantwoordt en mensen aan elkaar voorstelt."
+      },
+      {
+        "q": "Wat is het lastigste aan remote onboarding?",
+        "a": "Weten wie je kunt vragen en wanneer storen oké is. Een buddy en zichtbare aanwezigheid lossen het meeste op."
       }
     ]
   }

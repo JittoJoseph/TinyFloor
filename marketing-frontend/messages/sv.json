@@ -68,25 +68,11 @@
       "gather": {
         "label": "Alternativ till Gather",
         "meta": {
-          "title": "De 7 bästa alternativen till Gather 2026, med priser för ditt team",
+          "title": "De 7 bästa alternativen till Gather Town 2026, med priser för ditt team",
           "description": "Gather slutade med gratisplanen och tar betalt per medlem. Sju alternativ till Gather jämförda efter vad ett team på 8 betalar, gratisplaner, appar och vad vart och ett är bäst på, med TinyFloor."
         },
         "title": "De bästa <em>alternativen till Gather</em> 2026.",
-        "subtitle": "Gather slutade med gratisplanen i september 2025 och tar nu betalt för varje medlem. Här är sju alternativ, jämförda efter vad ett riktigt team betalar, vad som är gratis och vad vart och ett är bäst på. Vi gör TinyFloor, så det står först; allt annat kommer från varje produkts egna sidor.",
-        "points": [
-          {
-            "title": "Gratis efter provperioden",
-            "body": "Gather ger dig 30 dagar och tar sedan betalt för varje medlem. TinyFloor börjar dig på Pro i 14 dagar, och gratisplanen har inget slutdatum: upp till 3 personer, så länge du vill."
-          },
-          {
-            "title": "Inget att installera",
-            "body": "Allt fungerar i webbläsaren, på datorn och i mobilen. Dela en länk så är teamet inne på några sekunder."
-          },
-          {
-            "title": "En länk för att gå med",
-            "body": "Skicka en inbjudningslänk. Kollegor väljer namn och figur, skapar ett gratiskonto och går in."
-          }
-        ],
+        "subtitle": "Gather (tidigare Gather Town) slutade med gratisplanen i september 2025 och tar nu betalt för varje medlem. Här är sju alternativ, jämförda efter vad ett riktigt team betalar, vad som är gratis och vad vart och ett är bäst på. Vi gör TinyFloor, så det står först; allt annat kommer från varje produkts egna sidor.",
         "them": {
           "price": "Från 12 $ per medlem i månaden",
           "freePlan": "Ingen, bara 30 dagars provperiod",
@@ -128,20 +114,6 @@
         },
         "title": "Ett <em>alternativ till Kumospace</em> för hela teamet.",
         "subtitle": "Kumospaces gratisplan rymmer 5 medlemmar på en offentlig våning, och Business tar betalt per medlem, minst 5. TinyFloor är gratis för 3, sedan ett pris för hela teamet: 29 $ per månad.",
-        "points": [
-          {
-            "title": "Ingen gräns på 5 medlemmar",
-            "body": "Bjud in hela teamet: ett pris per kontor på Pro, inte per person."
-          },
-          {
-            "title": "Prova innan du registrerar dig",
-            "body": "Prova TinyFloors demokontor med bara ett namn och gå runt innan du skapar ditt eget."
-          },
-          {
-            "title": "Gjort för mobilen också",
-            "body": "I mobilen rör du dig med en joystick på skärmen och samtalen anpassas till den mindre skärmen, allt i mobilens webbläsare."
-          }
-        ],
         "them": {
           "price": "Business från 16 $ per användare i månaden",
           "freePlan": "Upp till 5 medlemmar, 50 gäster och 1 våning",
@@ -183,20 +155,6 @@
         },
         "title": "Ett <em>alternativ till SpatialChat</em> som är öppet hela dagen.",
         "subtitle": "SpatialChat växte fram kring evenemang, och gratisplanen tar slut efter 2 timmars möten om dagen. Planen för virtuellt kontor kostar 8 $ per användare och månad. TinyFloor är ett kontor, så rummet är öppet så länge teamet jobbar, för ett pris per team.",
-        "points": [
-          {
-            "title": "Ingen daglig gräns",
-            "body": "Ha rummet öppet från morgonmötet till dagens sista meddelande. Ingenting räknar ner."
-          },
-          {
-            "title": "Ett kontor, inte ett evenemang",
-            "body": "Kontoret är öppet även när ett möte tar slut. Ditt team kommer tillbaka till samma våning i morgon."
-          },
-          {
-            "title": "Gå fram för att prata",
-            "body": "Gå nära en kollega för att starta ett samtal. För en grupp går ni med i ett möte, och alla går in i mötesrummet."
-          }
-        ],
         "them": {
           "price": "Business 8 $ per användare och månad, 76 $ per år (plan för virtuellt kontor)",
           "freePlan": "2 timmars möten om dagen, upp till 12 personer",
@@ -234,20 +192,6 @@
         },
         "title": "Ett <em>alternativ till WorkAdventure</em> med plats att växa.",
         "subtitle": "WorkAdventure är också ett kontor i pixelkonst: gratisplanen rymmer 10 personer samtidigt i offentliga rum, och Business tar betalt efter hur många som kan vara online samtidigt. TinyFloor är gratis för 3, sedan ett pris för hela teamet: 29 $ per månad.",
-        "points": [
-          {
-            "title": "Dubbelt så mycket plats",
-            "body": "En gratis WorkAdventure-karta rymmer 10 personer åt gången. Ett TinyFloor-kontor är gjort för ett litet team som jobbar ihop hela dagen, och du kan öppna så många kontor du vill."
-          },
-          {
-            "title": "Ingen karta att bygga",
-            "body": "Varje kontor har en våning, ett mötesrum och en whiteboard. Skapa ett kontor och gå in."
-          },
-          {
-            "title": "Inget att drifta",
-            "body": "Ingen server att sköta och ingen installation. Dela en länk så står teamet redan på kontoret."
-          }
-        ],
         "them": {
           "price": "Business från 9 $ per användare och månad",
           "freePlan": "Upp till 10 personer samtidigt, i offentliga rum",
@@ -326,20 +270,6 @@
         },
         "title": "Ett <em>virtuellt kontor</em> för distansteam.",
         "subtitle": "Ge ditt team en plats att vara på under dagen. Se vilka som är här, gå över med en snabb fråga och gå in i mötesrummet när det är dags att prata.",
-        "points": [
-          {
-            "title": "Se vem som är inne",
-            "body": "Alla har en figur, en namnskylt och en status, så du vet vem som är ledig innan du går fram."
-          },
-          {
-            "title": "Snabba frågor förblir snabba",
-            "body": "Gå fram och tryck för att ringa. Ingen kalenderinbjudan, ingen möteslänk, inget väntrum."
-          },
-          {
-            "title": "Ett bord för möten",
-            "body": "Gå med i ett möte så går din figur in i mötesrummet. Bara de som pratar syns på video, med ett kort för alla."
-          }
-        ],
         "faq": [
           {
             "q": "Vad är ett virtuellt kontor?",
@@ -367,20 +297,6 @@
         },
         "title": "<em>Virtuell coworking</em> för ditt distansteam.",
         "subtitle": "Det är lättare att jobba hemifrån med teamet omkring sig. Dela en kontorsvåning, jobba på och gå fram till någon när du behöver.",
-        "points": [
-          {
-            "title": "Sällskap utan samtal",
-            "body": "Se dina kollegor jobba utan att vara i bild. Ett samtal startar först när någon går fram till dig."
-          },
-          {
-            "title": "Teamets egen våning",
-            "body": "Ett kontor är privat för ditt team. Bjud in alla med en länk, så är det öppet när de är där."
-          },
-          {
-            "title": "Sätt din status",
-            "body": "Markera dig som upptagen när du fokuserar och tillgänglig när du är sugen på att prata."
-          }
-        ],
         "faq": [
           {
             "q": "Vad är virtuell coworking?",
@@ -408,20 +324,6 @@
         },
         "title": "<em>Närhetschatt</em> som börjar när du går fram.",
         "subtitle": "I TinyFloor avgör var du står vem du pratar med. Gå fram till någon för att ringa, gå med i ett möte för att prata som grupp och gå vidare när ni är klara.",
-        "points": [
-          {
-            "title": "Närhet startar samtalet",
-            "body": "Ställ dig bredvid en kollega så visas ett samtalskort. Ett tryck startar samtalet."
-          },
-          {
-            "title": "Grupper i mötesrummet",
-            "body": "Gå med i ett möte så går din figur in i mötesrummet, med alla andra."
-          },
-          {
-            "title": "Fungerar på alla nätverk",
-            "body": "Samtal går över WebRTC genom Cloudflares relänät, så de ansluter även bakom företagsbrandväggar och det finns inget att installera."
-          }
-        ],
         "faq": [
           {
             "q": "Vad är närhetschatt?",
@@ -450,20 +352,6 @@
         },
         "title": "Ett <em>Sococo-alternativ</em> utan minimum på 10 platser.",
         "subtitle": "Sococo säljer platser i minst tiotal, för 13,49 $ per plats med årlig förskottsbetalning eller 14,99 $ månadsvis, med 500 minuter per plats. TinyFloor är ett månadspris för hela kontoret, och ett litet team kan börja gratis.",
-        "points": [
-          {
-            "title": "Börja i din riktiga storlek",
-            "body": "Gratis för upp till 3 personer, sedan $29 i månaden för hela teamet. Inget minsta antal platser och ingen årlig förskottsbetalning."
-          },
-          {
-            "title": "En våning att gå runt på",
-            "body": "Teamet delar en kontorsvåning och börjar prata genom att gå fram till varandra."
-          },
-          {
-            "title": "Samtal drar inga minuter",
-            "body": "Sococo räknar minuter per plats. På TinyFloor räknas samtal mellan två aldrig; bara gruppmöten har timmar per månad."
-          }
-        ],
         "them": {
           "price": "13,49 $ per plats och månad med årlig förskottsbetalning, 14,99 $ månadsvis, minst 10 platser",
           "freePlan": "Ingen, bara en gratis provperiod",
@@ -500,20 +388,6 @@
         },
         "title": "Ett <em>oVice-alternativ</em> i storlek för små team.",
         "subtitle": "oVice är byggt för företag och communityn, med ett fast pris per utrymme eller per användare från 20 användare. TinyFloor är gjort för små team, med ett enkelt pris per kontor: 29 $ per månad.",
-        "points": [
-          {
-            "title": "Ett pris per kontor",
-            "body": "Gratis för upp till 3 personer, sedan $29 i månaden för hela teamet. Inga rumsstorlekar att räkna på."
-          },
-          {
-            "title": "Gå fram och prata",
-            "body": "Precis som i oVice går du fram till någon för att prata. Samtal mellan två räknas aldrig mot något."
-          },
-          {
-            "title": "Chatt som stannar",
-            "body": "Varje kontor har kanaler och direktmeddelanden med historik, bredvid våningen och i mobilen."
-          }
-        ],
         "them": {
           "price": "$65 i månaden per yta, eller $16 per användare från 20 användare, faktureras årsvis",
           "freePlan": "Ja, på en förhandsversion utan support",
@@ -547,20 +421,6 @@
         },
         "title": "Ett <em>Teamflow-alternativ</em> utan något att ladda ner.",
         "subtitle": "Teamflow är gratis för 5 med möten på 45 minuter, tar sedan betalt per anställd och körs som en app på datorn. TinyFloor öppnas i en webbläsarflik, på dator eller mobil, för ett pris per kontor: 29 $ per månad.",
-        "points": [
-          {
-            "title": "Ett pris för kontoret",
-            "body": "Teamflows Seed-plan kostar $15 per person. TinyFloor Pro kostar $29 i månaden för hela ditt team tillsammans."
-          },
-          {
-            "title": "Inget stopp efter 45 minuter",
-            "body": "I Teamflows gratisplan slutar möten efter 45 minuter. Möten på TinyFloor har ingen gräns per möte; varje plan har timmar per månad för gruppmöten."
-          },
-          {
-            "title": "I en webbläsarflik",
-            "body": "Ingen app att installera eller uppdatera. Öppna länken på valfri laptop eller mobil så står du på våningen."
-          }
-        ],
         "them": {
           "price": "Seed 15 $ per anställd och månad vid årsbetalning, 20 $ månadsvis",
           "freePlan": "Upp till 5 anställda, med möten på 45 minuter",
@@ -598,20 +458,6 @@
         },
         "title": "Ett <em>Roam-alternativ</em> som öppnas i webbläsaren.",
         "subtitle": "Roam paketerar ett virtuellt kontor med AI-anteckningar, en assistent, webbinarier med mera i en datorapp, för 19,50 $ per aktiv medlem och månad. TinyFloor gör kontorsdelen enkelt, i webbläsaren: gå fram, träffas och chatta, för ett pris per team.",
-        "points": [
-          {
-            "title": "Bara kontoret",
-            "body": "Inget paket att införa. En våning där du ser vem som är här, går fram för att prata och kliver in i mötesrummet."
-          },
-          {
-            "title": "Inget att installera",
-            "body": "TinyFloor körs i en webbläsarflik på vilken laptop eller mobil som helst, så alla i teamet är med på några sekunder."
-          },
-          {
-            "title": "Ett pris per team",
-            "body": "Gratis för 3 personer, sedan $29 i månaden för hela teamet, oavsett hur många som använder det den månaden."
-          }
-        ],
         "them": {
           "price": "19,50 $ per aktiv medlem och månad",
           "freePlan": "Ingen, 14 dagars provperiod för varje ny medlem",
@@ -649,20 +495,6 @@
         },
         "title": "Ett <em>alternativ till Slack-huddles</em> där du först ser vem som är ledig.",
         "subtitle": "En huddle är ett samtal du startar utan att veta om det passar, och på Slacks gratisplan rymmer den två personer. I TinyFloor ser du vem som är där, vem som är upptagen och vem som redan pratar, och sedan går du fram.",
-        "points": [
-          {
-            "title": "Se innan du ringer",
-            "body": "Alla har en status och en plats på våningen, så du vet vem som är fokuserad innan du frågar."
-          },
-          {
-            "title": "Gruppsamtal i alla planer",
-            "body": "I Slacks gratisplan är huddles bara för två. På TinyFloor har alla planer samtal och gruppmöten."
-          },
-          {
-            "title": "Behåll Slack om du vill",
-            "body": "TinyFloor har egen chatt, men många team behåller Slack för meddelanden och använder våningen för att prata."
-          }
-        ],
         "them": {
           "price": "Grupphuddles kräver en betald Slack-plan, per användare",
           "freePlan": "Slack Free: huddles med upp till 2 personer",
@@ -696,20 +528,6 @@
         },
         "title": "Som <em>Discord för jobbet</em>, gjort för ditt team.",
         "subtitle": "Röstkanalerna visade att det fungerar att vara ett klick från varandra. TinyFloor behåller den känslan i ett privat kontor för ditt team, utan gamingcommunityn runt omkring.",
-        "points": [
-          {
-            "title": "Ett privat kontor, ingen server",
-            "body": "Din våning är bara för ditt team. Man går med via din inbjudningslänk och ett gratis konto."
-          },
-          {
-            "title": "Se vem som är ledig",
-            "body": "Statusar, skrivbord och vem som är i samtal, allt på en våning, så att titta förbi känns naturligt."
-          },
-          {
-            "title": "Möten med ett rum",
-            "body": "Gå in i mötesrummet för gruppsamtal med skärmdelning, och gå ut när ni är klara."
-          }
-        ],
         "them": {
           "price": "Gratis, med Nitro extra per person",
           "freePlan": "Ja",
@@ -743,20 +561,6 @@
         },
         "title": "<em>Gather vs Kumospace</em>, och ett tredje alternativ.",
         "subtitle": "Båda tar betalt per medlem när du passerat gratisnivån: Gather har ingen gratisplan och Kumospaces stannar vid 5. Om ert team är litet och vill ha ett enkelt kontor är TinyFloor ett pris för hela våningen.",
-        "points": [
-          {
-            "title": "Gather",
-            "body": "Ett kontor i pixelkonst med AI-mötesanteckningar och anpassning. 30 dagars provperiod, sedan från $12 per medlem i månaden."
-          },
-          {
-            "title": "Kumospace",
-            "body": "En gratisplan för upp till 5 medlemmar på en våning, sedan Business från $16 per användare i månaden."
-          },
-          {
-            "title": "TinyFloor",
-            "body": "Gratis för 3 personer, sedan $29 i månaden för hela teamet, inte per person."
-          }
-        ],
         "faq": [
           {
             "q": "Vilket är billigast, Gather eller Kumospace?",
@@ -784,38 +588,6 @@
         },
         "title": "<em>Parprogrammering på distans</em> som börjar med att gå fram.",
         "subtitle": "Parprogrammering fungerar bäst när den är lätt att starta. På TinyFloor ser du vem som är ledig, går till skrivbordet, delar skärmen och pratar, och sedan går du tillbaka till ditt eget arbete.",
-        "points": [
-          {
-            "title": "Loss på några minuter",
-            "body": "Fastnat? Gå fram till den som kan det. Ett tryck startar samtalet, utan någon länk att skicka."
-          },
-          {
-            "title": "Dela skärmen",
-            "body": "Slå på skärmdelning i samtalet för att gå igenom kod, loggar eller ett test som fallerar tillsammans."
-          },
-          {
-            "title": "Ta in en tredje",
-            "body": "Gå fram till någon annan under samtalet och gör det till ett möte för tre."
-          }
-        ],
-        "momentsTitle": "<em>Ett parpass</em> från början till slut.",
-        "moments": [
-          {
-            "label": "1",
-            "title": "Se vem som är ledig",
-            "body": "Statusar och skrivbord visar vem som är fokuserad och vem som är öppen för en fråga."
-          },
-          {
-            "label": "2",
-            "title": "Gå fram och dela",
-            "body": "Ställ dig bredvid, tryck för att ringa och dela skärmen."
-          },
-          {
-            "label": "3",
-            "title": "Gå tillbaka",
-            "body": "Lägg på så är du tillbaka vid ditt skrivbord. Inget att boka, inget att städa upp."
-          }
-        ],
         "faq": [
           {
             "q": "Vad behöver jag för parprogrammering på distans?",
@@ -843,38 +615,6 @@
         },
         "title": "En <em>virtuell standup</em> som ditt team går till.",
         "subtitle": "Ingen kalenderlänk och inget väntrum. När det är dags för standup går teamet in i mötesrummet, berättar vad de jobbar med och går tillbaka till jobbet.",
-        "points": [
-          {
-            "title": "Alltid samma rum",
-            "body": "Varje kontor har ett huvudmöte som alltid finns, så standupen är en promenad längs korridoren."
-          },
-          {
-            "title": "Se vem som saknas",
-            "body": "Våningen visar vem som är här och vem som är borta, så du vet vem ni väntar på."
-          },
-          {
-            "title": "Kort som standard",
-            "body": "När det är klart går alla ut ur rummet och fortsätter. Följdfrågor tas vid någons skrivbord."
-          }
-        ],
-        "momentsTitle": "<em>Standup</em> i tre steg.",
-        "moments": [
-          {
-            "label": "9:58",
-            "title": "Gå in",
-            "body": "Gå med i huvudmötet så går din figur in i mötesrummet."
-          },
-          {
-            "label": "10:00",
-            "title": "Prata igenom",
-            "body": "Kameran på eller av, med skärmdelning för det som är värt att visa."
-          },
-          {
-            "label": "10:10",
-            "title": "Gå ut",
-            "body": "Gå ut ur rummet för att lämna. Frågor fortsätter vid någons skrivbord."
-          }
-        ],
         "faq": [
           {
             "q": "Hur håller jag en virtuell standup?",
@@ -902,38 +642,6 @@
         },
         "title": "<em>Onboarding på distans</em> där nya ser vem de kan fråga.",
         "subtitle": "Det svåraste med att börja på distans är att inte veta vem som är här, eller om det är okej att fråga. På TinyFloor är teamet precis där, och en fråga är bara några steg bort.",
-        "points": [
-          {
-            "title": "En länk för att gå med",
-            "body": "Skicka kontorets inbjudningslänk. De skapar ett gratis konto, väljer ett namn och en figur och står på våningen."
-          },
-          {
-            "title": "Lär känna teamet",
-            "body": "De ser vem som är vem, vem som är upptagen och vem som är ledig, utan en namnlista att lära sig utantill."
-          },
-          {
-            "title": "Frågor utan möte",
-            "body": "Att gå fram och fråga känns lika litet som på kontoret, så nya frågar tidigare."
-          }
-        ],
-        "momentsTitle": "<em>Första dagen</em> på våningen.",
-        "moments": [
-          {
-            "label": "Morgon",
-            "title": "Gå in",
-            "body": "De öppnar inbjudningslänken, väljer en figur och landar på våningen med alla andra."
-          },
-          {
-            "label": "Lunch",
-            "title": "Träffa folk",
-            "body": "En kollega visar dem runt, och de säger hej vid några skrivbord."
-          },
-          {
-            "label": "Eftermiddag",
-            "title": "Fråga på",
-            "body": "När de fastnar ser de vem som är ledig och går fram."
-          }
-        ],
         "faq": [
           {
             "q": "Hur går nyanställda med?",
@@ -961,38 +669,6 @@
         },
         "title": "En <em>virtuell fikahörna</em> som händer av sig själv.",
         "subtitle": "Distansteam bokar in social tid eftersom inget händer av en slump. På en delad våning passerar du folk, ser vem som är här och stannar för en pratstund.",
-        "points": [
-          {
-            "title": "Stöt på folk",
-            "body": "När du går mellan skrivbord och rum passerar du kollegor och kan stanna för ett ord."
-          },
-          {
-            "title": "Vad alla lyssnar på",
-            "body": "Spela Spotify direkt i TinyFloor. Det som spelas syns på ditt kort, och kollegorna lyssnar med ett klick."
-          },
-          {
-            "title": "Ingen kalenderinbjudan",
-            "body": "Våningen är öppen hela dagen, så en pratstund börjar när du vill och slutar när du går vidare."
-          }
-        ],
-        "momentsTitle": "<em>De små stunderna</em> är tillbaka.",
-        "moments": [
-          {
-            "label": "Morgon",
-            "title": "Säg hej",
-            "body": "Gå förbi några skrivbord på vägen in och säg god morgon."
-          },
-          {
-            "label": "Eftermiddag",
-            "title": "Gå med i en Jam",
-            "body": "Starta en Jam i Spotify och dela den. De som är i närheten kan gå med och lyssna tillsammans med dig."
-          },
-          {
-            "label": "Fredag",
-            "title": "Varva ner",
-            "body": "Träffas i mötesrummet för en drink och en pratstund, med eller utan kamera."
-          }
-        ],
         "faq": [
           {
             "q": "Vad är en virtuell fikahörna?",
@@ -1020,38 +696,6 @@
         },
         "title": "Ett virtuellt kontor för <em>utvecklingsteam på distans.</em>",
         "subtitle": "Utvecklare behöver långa stunder av fokus och snabba svar när de fastnar. TinyFloor ger båda: tyst som standard, och en kollega några steg bort.",
-        "points": [
-          {
-            "title": "Tyst som standard",
-            "body": "Ingen hör dig förrän du startar ett samtal. Sätt dig som upptagen så vet alla att de ska vänta."
-          },
-          {
-            "title": "Snabbt vidare",
-            "body": "Gå fram till den som kan koden, dela skärmen och lös det på några minuter."
-          },
-          {
-            "title": "Standupen längre ner i korridoren",
-            "body": "Huvudmötet finns alltid där, för standups, incidenter och demos."
-          }
-        ],
-        "momentsTitle": "<em>En dag</em> på en utvecklingsvåning.",
-        "moments": [
-          {
-            "label": "10:00",
-            "title": "Standup",
-            "body": "Teamet går in i mötesrummet, pratar i tio minuter och går ut."
-          },
-          {
-            "label": "14:00",
-            "title": "Fokus",
-            "body": "Upptagen-statusar håller eftermiddagen tyst."
-          },
-          {
-            "label": "16:30",
-            "title": "Vidare",
-            "body": "En snabb promenad, en delad skärm, och buggen är hittad."
-          }
-        ],
         "faq": [
           {
             "q": "Kopplas TinyFloor till GitHub eller Jira?",
@@ -1079,38 +723,6 @@
         },
         "title": "Ett virtuellt kontor för <em>designteam på distans.</em>",
         "subtitle": "Design blir bättre med snabb och ärlig feedback. På TinyFloor är en granskning en promenad över våningen, inte en kalenderinbjudan.",
-        "points": [
-          {
-            "title": "Granskningar utan bokning",
-            "body": "Gå fram till en designer, dela skärmen och prata igenom arbetet."
-          },
-          {
-            "title": "Skissa det",
-            "body": "Whiteboarden på väggen finns för teckningen som förklarar allt."
-          },
-          {
-            "title": "Fokus när det gäller",
-            "body": "Sätt dig som upptagen för djupt arbete, så förblir våningen tyst omkring dig."
-          }
-        ],
-        "momentsTitle": "<em>En designdag</em> på våningen.",
-        "moments": [
-          {
-            "label": "Morgon",
-            "title": "Teamgranskning",
-            "body": "Gå in i mötesrummet och dela skärmar en i taget."
-          },
-          {
-            "label": "Lunch",
-            "title": "Skissa",
-            "body": "Arbeta igenom ett flöde tillsammans på whiteboarden."
-          },
-          {
-            "label": "Eftermiddag",
-            "title": "Snabbkoll",
-            "body": "Gå fram till en utvecklare för att kolla en detalj innan den släpps."
-          }
-        ],
         "faq": [
           {
             "q": "Kopplas TinyFloor till Figma?",
@@ -1138,38 +750,6 @@
         },
         "title": "Ett virtuellt kontor för <em>startups på distans.</em>",
         "subtitle": "Tidiga team är snabba för att alla sitter i samma rum. TinyFloor samlar en startup på distans i ett rum igen, för ett pris per kontor, inte per anställning.",
-        "points": [
-          {
-            "title": "Gratis medan ni är grundare",
-            "body": "Gratis för upp till 3 personer, så länge ni vill."
-          },
-          {
-            "title": "Ingen avgift per anställd",
-            "body": "$29 i månaden för hela teamet. Att anställa någon lägger inte till en platsavgift."
-          },
-          {
-            "title": "Beslut på några minuter",
-            "body": "Se vem som är här, gå fram och bestäm, i stället för att vänta på nästa möte."
-          }
-        ],
-        "momentsTitle": "<em>Växa</em> på en våning.",
-        "moments": [
-          {
-            "label": "3 personer",
-            "title": "Free",
-            "body": "Grundarna delar en våning gratis, allt ingår."
-          },
-          {
-            "label": "4:e personen",
-            "title": "Pro-provperiod",
-            "body": "Hela teamet får Pro gratis i 14 dagar, utan kort."
-          },
-          {
-            "label": "Hela teamet",
-            "title": "Pro",
-            "body": "$29 i månaden för hela kontoret, med möten så ofta ni behöver."
-          }
-        ],
         "faq": [
           {
             "q": "Vad kostar TinyFloor för en startup?",
@@ -1197,38 +777,6 @@
         },
         "title": "Ett virtuellt kontor för <em>byråer på distans.</em>",
         "subtitle": "En byrå går på snabba granskningar och på att veta vem som kan hjälpa till. TinyFloor ger en studio på distans en våning där båda sker utan möteslänk.",
-        "points": [
-          {
-            "title": "Vem kan hjälpa till",
-            "body": "Statusar visar vem som är djupt inne i en deadline och vem som kan titta en stund."
-          },
-          {
-            "title": "Granskning på plats",
-            "body": "Gå fram, dela skärmen och få feedback på ett utkast på några minuter."
-          },
-          {
-            "title": "En kanal per kund",
-            "body": "Skapa en kanal för varje kund eller projekt, så att varje samtal stannar på ett ställe."
-          }
-        ],
-        "momentsTitle": "<em>En studiodag</em> på distans.",
-        "moments": [
-          {
-            "label": "Morgon",
-            "title": "Planera dagen",
-            "body": "Teamet träffas i mötesrummet för att fördela arbetet."
-          },
-          {
-            "label": "Eftermiddag",
-            "title": "Snabb granskning",
-            "body": "En designer går fram till den ansvariga och delar skärmen för feedback."
-          },
-          {
-            "label": "Kväll",
-            "title": "Avsluta",
-            "body": "Anteckningar och länkar hamnar i kundens kanal, till i morgon."
-          }
-        ],
         "faq": [
           {
             "q": "Kan kunder gå in i vårt kontor?",
@@ -1257,38 +805,6 @@
         },
         "title": "Ett <em>virtuellt mötesrum</em> längre ner i korridoren.",
         "subtitle": "Varje kontor har ett mötesrum som alltid finns där. Gå med i ett möte så går din figur in; gå ut så har du lämnat. Inga länkar, inget väntrum.",
-        "points": [
-          {
-            "title": "Alltid öppet",
-            "body": "Huvudmötet finns alltid för standups och snabba avstämningar. Vem som helst kan starta ett till och bjuda in folk."
-          },
-          {
-            "title": "Ett kort för alla",
-            "body": "Den som inte har kamera visas som ett kort som lyser upp när personen pratar, så rummet ser aldrig tomt ut."
-          },
-          {
-            "title": "Dela din skärm",
-            "body": "Dela ett fönster med rummet med ett klick, för demos, granskningar och planering."
-          }
-        ],
-        "momentsTitle": "<em>Ett möte</em>, från start till slut.",
-        "moments": [
-          {
-            "label": "1",
-            "title": "Gå med",
-            "body": "Gå med från listan över möten så går din figur in i mötesrummet."
-          },
-          {
-            "label": "2",
-            "title": "Prata",
-            "body": "Kamera på eller av, med skärmdelning för allt som är värt att visa."
-          },
-          {
-            "label": "3",
-            "title": "Gå ut",
-            "body": "Gå ut ur rummet så har du lämnat. Våningen är tyst igen."
-          }
-        ],
         "faq": [
           {
             "q": "Hur många kan vara med i ett möte?",
@@ -1317,38 +833,6 @@
         },
         "title": "<em>Teamchatt</em> precis bredvid våningen.",
         "subtitle": "Varje kontor har en egen chatt med kanaler, direktmeddelanden och reaktioner. Meddelanden finns kvar, så du kan komma ikapp från mobilen utan att gå in.",
-        "points": [
-          {
-            "title": "En kanal för allt",
-            "body": "Skapa en kanal för varje projekt, kund eller ämne, och håll samtalet på ett ställe."
-          },
-          {
-            "title": "Direktmeddelanden",
-            "body": "Skriv till vem som helst på kontoret en till en, och fortsätt i morgon."
-          },
-          {
-            "title": "En tyst knuff",
-            "body": "När någon skriver får du en tyst knuff på våningen i stället för en ström av popup-fönster."
-          }
-        ],
-        "momentsTitle": "<em>Chatt</em> genom dagen.",
-        "moments": [
-          {
-            "label": "Morgon",
-            "title": "Kom ikapp",
-            "body": "Läs vad du missat på mobilen innan du går in."
-          },
-          {
-            "label": "Lunch",
-            "title": "Dela",
-            "body": "Släpp en skärmdump i en kanal så hela teamet ser den."
-          },
-          {
-            "label": "Eftermiddag",
-            "title": "Gå dit",
-            "body": "När en tråd blir lång, gå dit och prata igenom den."
-          }
-        ],
         "faq": [
           {
             "q": "Sparar chatten historiken?",
@@ -1377,38 +861,6 @@
         },
         "title": "<em>Teamnärvaro</em> med en blick.",
         "subtitle": "Alla har ett skrivbord och en status på våningen. Du ser vem som är ledig, vem som fokuserar och vem som redan är i ett samtal, innan du frågar.",
-        "points": [
-          {
-            "title": "En status som betyder något",
-            "body": "Tillgänglig, upptagen eller borta, satt av dig, så att andra vet när de ska vänta."
-          },
-          {
-            "title": "Vem som är i samtal",
-            "body": "Se vem som redan pratar eller är i ett möte, utan att avbryta."
-          },
-          {
-            "title": "Gå till",
-            "body": "Tryck på Gå till bredvid någon så hittar din figur själv dit."
-          }
-        ],
-        "momentsTitle": "<em>Närvaro</em> i tre blickar.",
-        "moments": [
-          {
-            "label": "1",
-            "title": "Titta",
-            "body": "Öppna våningen och se vem som är där."
-          },
-          {
-            "label": "2",
-            "title": "Kolla",
-            "body": "En status visar om det passar just nu."
-          },
-          {
-            "label": "3",
-            "title": "Gå dit",
-            "body": "Tryck på Gå till så går din figur till personens skrivbord."
-          }
-        ],
         "faq": [
           {
             "q": "Vilka statusar finns?",
@@ -1437,38 +889,6 @@
         },
         "title": "En <em>online-whiteboard</em> på kontorsväggen.",
         "subtitle": "Gå fram till whiteboarden och rita. Alla på kontoret ser samma tavla, och det som står på den finns kvar till nästa gång.",
-        "points": [
-          {
-            "title": "Gå fram och rita",
-            "body": "Ingen tavla att skapa och ingen länk att dela. Den sitter på väggen, redo när du är det."
-          },
-          {
-            "title": "Alla ser den",
-            "body": "Hela kontoret tittar på samma tavla, så en skiss förklarar sig själv."
-          },
-          {
-            "title": "Den finns kvar",
-            "body": "Det som ritas sparas, så måndagens diagram finns kvar på fredag."
-          }
-        ],
-        "momentsTitle": "<em>En skiss</em> som förklarar det.",
-        "moments": [
-          {
-            "label": "1",
-            "title": "Gå fram",
-            "body": "Gå till whiteboarden på väggen."
-          },
-          {
-            "label": "2",
-            "title": "Rita",
-            "body": "Skissa flödet medan ni pratar igenom det."
-          },
-          {
-            "label": "3",
-            "title": "Låt den vara",
-            "body": "Gå därifrån så finns teckningen kvar för teamet."
-          }
-        ],
         "faq": [
           {
             "q": "Delas whiteboarden med hela kontoret?",

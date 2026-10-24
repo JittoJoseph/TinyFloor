@@ -3,7 +3,7 @@ import { SITE_URL } from '@/lib/site';
 import { localeCodes } from '@/lib/i18n/routing';
 import { localePath } from '@/lib/seo';
 import { HUBS, LANDINGS } from '@/lib/landings';
-import { GUIDES, GUIDES_PATH, guidePath } from '@/lib/guides';
+import { GUIDES, GUIDES_PATH, guideLocales, guidePath } from '@/lib/guides';
 import { TOOLS, TOOLS_PATH } from '@/lib/tools/catalog';
 
 const routes: Array<{
@@ -22,7 +22,6 @@ const routes: Array<{
   })),
   { path: GUIDES_PATH, changeFrequency: 'weekly', priority: 0.6 },
   { path: TOOLS_PATH, changeFrequency: 'monthly', priority: 0.6 },
-  ...GUIDES.map((guide) => ({ path: guidePath(guide), changeFrequency: 'monthly' as const, priority: 0.6 })),
 ];
 
 const absolute = (path: string) => `${SITE_URL}${path === '/' ? '' : path}`;
@@ -41,7 +40,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ),
     // The legal pages are in English only; the other languages' copies point here.
     ...['/privacy', '/terms', '/refunds'].map((path) => ({ url: absolute(path), changeFrequency: 'yearly' as const, priority: 0.3 })),
-    // The free tools, each in the languages it's written in.
+    // The guides and the free tools, each in the languages it's written in.
+    ...GUIDES.flatMap((guide) =>
+      guideLocales(guide).map((locale) => ({ url: absolute(localePath(locale, guidePath(guide))), changeFrequency: 'monthly' as const, priority: 0.6 })),
+    ),
     ...TOOLS.flatMap((tool) =>
       tool.locales.map((locale) => ({ url: absolute(localePath(locale, tool.path)), changeFrequency: 'monthly' as const, priority: 0.6 })),
     ),

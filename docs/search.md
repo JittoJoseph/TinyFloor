@@ -262,20 +262,41 @@ property also counts other subdomains' pages; filter to www when reading it.
   site:reddit.com" and long comparison questions ending in site:reddit.com
   show up with us at position 4: an assistant's fan-out, looking for Reddit
   threads. Being discussed on Reddit is how to be in those answers.
+- **Translated pages rank far higher than English ones.** The proximity chat
+  guide sits at 3 to 4 in Italian, Korean and Russian and 7.5 in German,
+  against 8.4 in English; the Gather pricing guide is 5.9 in Japanese.
+  Translation is the cheapest way up, even where Ahrefs shows under 100
+  searches, so every guide is written in all 18 languages.
+- **People still search "Gather Town".** The alternatives page is found for
+  "gather town alternative(s)" (over 100 impressions, position 40) and "gather
+  town alternativen"; its title and subtitle say Gather Town.
+- **/virtual-office is found for "free" and "online"** ("virtual office
+  online", "virtual office free", "free virtual meeting room", positions 30 to
+  70). "Free virtual office" alone is under 100 a month and mostly means a
+  mailing address, so it gets no page of its own.
+- **Definition searches get seen, not clicked.** "proximity chat", "what is
+  proximity chat", "proximity chat meaning": almost 300 impressions at 8 to 9
+  and one click; the answer is shown above the results.
 
 Ahrefs' free keyword tool (US, rough bands), searches near what TinyFloor
-solves:
+solves, and the page that answers each:
 
 | Search | Volume | Difficulty | Page |
 |---|---|---|---|
-| remote work tools | >1,000 | easy | A guide: the tools a small remote team needs, by job (chat, calls, docs, presence). |
-| remote team communication (tools, strategies) | >100 each | easy | A guide. |
-| how to manage a remote team, managing a remote team, remote team management tools | >100 each | easy | A guide. |
-| how to motivate a remote team | >100 | easy | A section of the one above. |
-| remote team collaboration (tools, software) | >100 each | easy | Close to remote work tools; one page, not two. |
-| async standup (tool, template, best tools) | <100 each, many | easy | The standup template tool, with an async section. |
-| best virtual office for remote teams 2026, most recommended / highest rated … | <100 each | — | Phrasings assistants generate: the best virtual office software guide should say "for remote teams", the year and "comparison" in its headings. |
-| virtual water cooler (ideas, apps) | <100 | easy | Fold into an existing guide. |
+| remote work tools | >1,000 | easy | Remote work tools guide |
+| remote team communication (tools, strategies) | >100 each | easy | Remote team communication guide |
+| how to manage / motivate a remote team | >100 each | easy | How to manage a remote team guide |
+| remote team collaboration (tools, software) | >100 each | easy | Remote work tools guide; one page, not two |
+| virtual happy hour ideas | >100 | easy | Virtual happy hour ideas guide |
+| one on one meeting questions | >100 | easy | One-on-one questions guide |
+| async communication | >100 | medium | Async communication guide |
+| retrospective ideas (for remote teams) | >100 | easy | Retrospective ideas guide |
+| remote onboarding checklist | >100 | easy | Checklist guide; /remote-onboarding stays the product page |
+| async standup (tool, template) | <100 each, many | easy | The standup template tool |
+| hybrid work model (best practices) | >100 | easy | Not built: a fit only if hybrid teams become a target |
+| virtual coffee chat, remote work loneliness | <100 | easy–medium | Folded into the happy hour and culture guides |
+| リモートワーク ツール (Japan) | >100 | easy | Remote work tools guide in Japanese |
+| outils télétravail, strumenti smart working, remote work tools (DE) | <100 each | easy | The same guide, translated |
 
 ## Launch places (24 October)
 

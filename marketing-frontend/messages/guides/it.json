@@ -733,10 +733,10 @@
     "label": "Miglior software per ufficio virtuale",
     "meta": {
       "title": "Il miglior software per ufficio virtuale nel 2026, confrontato onestamente",
-      "description": "Nove uffici virtuali per team da remoto confrontati per prezzo, piano gratuito e punti di forza, con quanto paga al mese un team di 10."
+      "description": "Dieci uffici virtuali per team da remoto messi a confronto su prezzi, piano gratuito e punti di forza, con quanto paga un team di 10 persone al mese."
     },
     "title": "Il miglior software per ufficio virtuale <em>nel 2026, confrontato onestamente.</em>",
-    "intro": "Un ufficio virtuale dà a un team da remoto un posto dove stare tutto il giorno: vedi chi c'è e parli con qualcuno andandogli vicino, non mandandogli un link. Ecco i nove che vale la pena guardare, quanto costa ciascuno e per chi è fatto. TinyFloor lo facciamo noi, quindi non siamo neutrali; diciamo dove ogni prodotto è migliore del nostro, e ogni prezzo viene dalla sua pagina dei prezzi, verificata a ottobre 2026.",
+    "intro": "Un ufficio virtuale offre a un team da remoto un unico posto in cui stare tutto il giorno: vedi chi c'è e parli semplicemente avvicinandoti, senza inviare link. Ecco i dieci che vale la pena considerare, quanto costa ciascuno e a chi si rivolge. Noi produciamo TinyFloor, quindi non siamo neutrali; indichiamo dove ogni prodotto è più forte del nostro, e ogni prezzo proviene dalla relativa pagina dei prezzi, verificata a ottobre 2026.",
     "sections": [
       {
         "title": "Cos'è un ufficio virtuale",
@@ -771,7 +771,7 @@
         ]
       },
       {
-        "title": "I nove che vale la pena guardare",
+        "title": "I dieci che vale la pena considerare",
         "items": [
           {
             "title": "TinyFloor",
@@ -787,6 +787,11 @@
             "title": "SoWork",
             "detail": "Gratis per 10 membri · Basic 5,40 $ per membro al mese con fatturazione annuale",
             "body": "Un ufficio virtuale con sale riunioni, chat del team e integrazione con il calendario. Il piano gratuito ospita fino a 10 membri, ma limita le riunioni a 30 minuti e non ha registrazioni. Premium, a 12 $ per membro al mese con fatturazione annuale, aggiunge riassunti con IA, registrazioni illimitate e statistiche. [Confronto completo](/sowork-alternative)."
+          },
+          {
+            "title": "Spot",
+            "detail": "Nessun piano gratuito · Basic 4,80 $ per utente al mese con fatturazione annuale",
+            "body": "Un ufficio virtuale da progettare da soli, con la propria planimetria e il proprio marchio, canali di chat in stile Slack e un'app per desktop oltre al browser. Basic include layout di partenza e audio e video standard; Growth, a 8 $ per utente al mese con fatturazione annuale, aggiunge l'editor completo dell'ufficio e l'alta definizione. È disponibile una prova di 30 giorni e nessun piano gratuito. [Confronto completo](/spot-alternative)."
           },
           {
             "title": "Kumospace",
@@ -838,6 +843,12 @@
               "Un prezzo per ufficio",
               "Fino a 3 persone",
               "$29"
+            ],
+            [
+              "Spot Basic",
+              "Per utente",
+              "Nessuno, prova di 30 giorni",
+              "48 $ con fatturazione annuale, 60 $ al mese"
             ],
             [
               "SoWork Basic",
@@ -904,7 +915,7 @@
           },
           {
             "title": "Vuoi disegnare il tuo ufficio o organizzare eventi",
-            "body": "Gather, WorkAdventure, Kumospace o SpatialChat."
+            "body": "Gather, Spot, WorkAdventure, Kumospace o SpatialChat."
           },
           {
             "title": "Devi ospitarlo da solo",
@@ -912,7 +923,7 @@
           },
           {
             "title": "Preferisci un'app desktop",
-            "body": "Roam, oppure Gather e Kumospace, che hanno app oltre al browser."
+            "body": "Roam, oppure Gather, Kumospace e Spot, che offrono app in aggiunta al browser."
           },
           {
             "title": "Un'azienda più grande",
@@ -931,8 +942,12 @@
         "a": "Dipende dalla dimensione del tuo team. Il piano gratuito di SoWork copre 10 membri con riunioni di 30 minuti, quello di WorkAdventure 10 persone contemporaneamente, quello di Kumospace 5 membri e quello di TinyFloor 3 persone con tutte le funzioni."
       },
       {
+        "q": "Qual è il miglior software per ufficio virtuale per una piccola azienda?",
+        "a": "Per un team da 4 a 15 persone che vuole un prezzo unico e semplice, TinyFloor, a 29 $ al mese per l'intero team. Se le tue riunioni rientrano nei 30 minuti, il piano gratuito di SoWork copre 10 membri. Se hai bisogno di registrazioni, note dell'IA o di un'app desktop, valuta Gather, SoWork Premium o Spot; per il single sign-on e contratti annuali, Gather, Roam, oVice o Sococo."
+      },
+      {
         "q": "Qual è l'ufficio virtuale più economico per un team piccolo?",
-        "a": "Per un team di 10 su un piano a pagamento, TinyFloor Pro costa $29 al mese per tutto l'ufficio. Gli strumenti a persona costano da $54 a $195 al mese per lo stesso team."
+        "a": "Per un team di 10 persone con un piano a pagamento, TinyFloor Pro costa 29 $ al mese per l'intero ufficio. Gli strumenti con tariffazione a persona costano da 48 $ a 195 $ al mese per lo stesso team."
       },
       {
         "q": "Gather è ancora gratis?",
@@ -940,14 +955,14 @@
       },
       {
         "q": "Devo installare qualcosa?",
-        "a": "No per TinyFloor, Gather, SoWork, WorkAdventure, SpatialChat e oVice, che funzionano nel browser. Roam è un'app desktop, e anche Kumospace e Gather offrono app."
+        "a": "Non per TinyFloor, Gather, SoWork, WorkAdventure, SpatialChat o oVice, che funzionano nel browser. Roam è un'app per desktop, mentre Kumospace, Gather e Spot offrono anche delle app."
       }
     ]
   },
   "gatherPricing": {
     "label": "Prezzi di Gather",
     "meta": {
-      "title": "Prezzi di Gather nel 2026: quanto paga il tuo team, ospiti compresi",
+      "title": "Prezzi di Gather 2026: 12 $ per membro, senza piano gratuito",
       "description": "Gather costa 12 $ per membro al mese con fatturazione annuale o 15 $ mensile, senza piano gratuito da settembre 2025. Quanto significa per team da 4 a 50, cosa includono ospiti e registrazioni, e quanto paga lo stesso team altrove."
     },
     "title": "Quanto costa <em>Gather?</em>",

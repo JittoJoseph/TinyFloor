@@ -733,10 +733,10 @@
     "label": "Paras virtuaalitoimisto-ohjelmisto",
     "meta": {
       "title": "Paras virtuaalitoimisto-ohjelmisto vuonna 2026, rehellisesti vertailtuna",
-      "description": "Yhdeksän virtuaalitoimistoa etätiimeille vertailtuna hinnan, ilmaisen paketin ja vahvuuksien mukaan, sekä mitä 10 hengen tiimi maksaa kuukaudessa."
+      "description": "Kymmenen etätiimien virtuaalitoimistoa vertailussa hinnan, ilmaisen paketin ja vahvuuksien mukaan. Katso, mitä 10 hengen tiimi maksaa kuukaudessa."
     },
     "title": "Paras virtuaalitoimisto-ohjelmisto <em>vuonna 2026, rehellisesti vertailtuna.</em>",
-    "intro": "Virtuaalitoimisto antaa etätiimille paikan, jossa olla koko päivän: näet, kuka on paikalla, ja juttelet jonkun kanssa kävelemällä hänen luokseen etkä lähettämällä linkkiä. Tässä ovat yhdeksän katsomisen arvoista vaihtoehtoa, niiden hinnat ja kenelle kukin sopii. Me teemme TinyFlooria, joten emme ole puolueettomia; kerromme, missä kukin tuote on omaamme parempi, ja jokainen hinta on tuotteen omalta hintasivulta, tarkistettu lokakuussa 2026.",
+    "intro": "Virtuaalitoimisto antaa etätiimille yhteisen paikan koko päiväksi: näet kuka on paikalla ja voit puhua heille kävelemällä heidän luokseen linkkien lähettelyn sijaan. Tässä on kymmenen tutustumisen arvoista vaihtoehtoa, niiden hinnat ja kenelle ne sopivat. Me teemme TinyFlooria, joten emme ole puolueettomia; kerromme, missä kukin tuote on meitä vahvempi. Kaikki hinnat on otettu palveluiden omilta hinnoittelusivuilta lokakuussa 2026.",
     "sections": [
       {
         "title": "Mikä virtuaalitoimisto on",
@@ -771,7 +771,7 @@
         ]
       },
       {
-        "title": "Yhdeksän katsomisen arvoista",
+        "title": "Kymmenen tutustumisen arvoista",
         "items": [
           {
             "title": "TinyFloor",
@@ -787,6 +787,11 @@
             "title": "SoWork",
             "detail": "Ilmainen 10 jäsenelle · Basic 5,40 $ jäseneltä kuukaudessa vuosilaskutuksella",
             "body": "Virtuaalitoimisto, jossa on neuvotteluhuoneet, tiimichat ja kalenteri-integraatio. Ilmaiseen pakettiin mahtuu enintään 10 jäsentä, mutta palaverit on rajattu 30 minuuttiin eikä tallenteita ole. Premium, 12 $ jäseneltä kuukaudessa vuosilaskutuksella, tuo tekoälyyhteenvedot, rajattomat tallenteet ja analytiikan. [Koko vertailu](/sowork-alternative)."
+          },
+          {
+            "title": "Spot",
+            "detail": "Ei ilmaista pakettia · Basic 4,80 $ käyttäjältä kuukaudessa vuosilaskutuksella",
+            "body": "Virtuaalitoimisto, jonka suunnittelet itse omalla pohjakartalla ja brändäyksellä. Mukana on Slack-tyyliset chat-kanavat sekä työpöytäsovellus selaimen lisäksi. Basic sisältää aloituspohjat sekä tavallisen äänen ja videon. Growth, 8 $ käyttäjältä kuukaudessa vuosilaskutuksella, tuo mukanaan täyden toimistoeditorin ja HD-laadun. Tarjolla on 30 päivän kokeilu, ei ilmaista pakettia. [Koko vertailu](/spot-alternative)."
           },
           {
             "title": "Kumospace",
@@ -838,6 +843,12 @@
               "Yksi hinta toimistolle",
               "Enintään 3 henkeä",
               "$29"
+            ],
+            [
+              "Spot Basic",
+              "Käyttäjältä",
+              "Ei ole, 30 päivän kokeilu",
+              "48 $ vuosittain, 60 $ kuukausittain"
             ],
             [
               "SoWork Basic",
@@ -904,7 +915,7 @@
           },
           {
             "title": "Haluat suunnitella toimistosi tai järjestää tapahtumia",
-            "body": "Gather, WorkAdventure, Kumospace tai SpatialChat."
+            "body": "Gather, Spot, WorkAdventure, Kumospace tai SpatialChat."
           },
           {
             "title": "Sinun on ylläpidettävä sitä itse",
@@ -912,7 +923,7 @@
           },
           {
             "title": "Pidät enemmän työpöytäsovelluksesta",
-            "body": "Roam, tai Gather ja Kumospace, joilla on sovellukset selaimen lisäksi."
+            "body": "Roam, tai Gather, Kumospace ja Spot, joilla on sovellukset selaimen lisäksi."
           },
           {
             "title": "Suurempi yritys",
@@ -931,8 +942,12 @@
         "a": "Se riippuu tiimisi koosta. SoWorkin ilmainen paketti kattaa 10 jäsentä 30 minuutin palavereilla, WorkAdventuren 10 henkeä yhtä aikaa, Kumospacen 5 jäsentä ja TinyFloorin 3 henkeä kaikilla ominaisuuksilla."
       },
       {
+        "q": "Mikä on paras virtuaalitoimisto-ohjelmisto pienelle yritykselle?",
+        "a": "4–15 hengen tiimille, joka haluaa yhden selkeän hinnan, TinyFloor maksaa 29 $ kuukaudessa koko tiimiltä. Jos palaverisi mahtuvat 30 minuuttiin, SoWorkin ilmainen paketti kattaa 10 jäsentä. Jos tarvitset tallenteita, tekoälymuistiinpanoja tai työpöytäsovelluksen, tutustu palveluihin Gather, SoWork Premium tai Spot; kertakirjautumista ja vuosisopimuksia varten sopivat Gather, Roam, oVice tai Sococo."
+      },
+      {
         "q": "Mikä on halvin virtuaalitoimisto pienelle tiimille?",
-        "a": "10 hengen tiimille maksullisella tilauksella TinyFloor Pro maksaa $29 kuukaudessa koko toimistolle. Henkeä kohden hinnoitellut työkalut maksavat samalle tiimille $54–$195 kuukaudessa."
+        "a": "Maksullisella paketilla 10 hengen tiimille TinyFloor Pro maksaa 29 $ kuukaudessa koko toimistolta. Käyttäjäkohtaiset työkalut maksavat samalle tiimille 48–195 $ kuukaudessa."
       },
       {
         "q": "Onko Gather yhä ilmainen?",
@@ -940,14 +955,14 @@
       },
       {
         "q": "Pitääkö minun asentaa jotain?",
-        "a": "Ei TinyFlooria, Gatheria, SoWorkia, WorkAdventurea, SpatialChatia eikä oVicea varten, sillä ne toimivat selaimessa. Roam on työpöytäsovellus, ja myös Kumospacella ja Gatherilla on sovellukset."
+        "a": "Ei TinyFloorin, Gatherin, SoWorkin, WorkAdventuren, SpatialChatin tai oVicen kohdalla, sillä ne toimivat selaimessa. Roam on työpöytäsovellus, ja myös Kumospace, Gather ja Spot tarjoavat sovelluksia."
       }
     ]
   },
   "gatherPricing": {
     "label": "Gatherin hinta",
     "meta": {
-      "title": "Gatherin hinta 2026: mitä tiimisi maksaa, vieraat mukaan lukien",
+      "title": "Gatherin hinta 2026: 12 $ jäseneltä, ei ilmaista pakettia",
       "description": "Gather maksaa 12 $ jäseneltä kuukaudessa vuosilaskutuksella tai 15 $ kuukausilaskutuksella, eikä ilmaista pakettia ole ollut syyskuun 2025 jälkeen. Mitä se tekee 4–50 hengen tiimeille, mitä vieraat ja tallenteet kattavat ja mitä sama tiimi maksaa muualla."
     },
     "title": "Paljonko <em>Gather maksaa?</em>",

@@ -733,10 +733,10 @@
     "label": "Meilleur logiciel de bureau virtuel",
     "meta": {
       "title": "Meilleur logiciel de bureau virtuel en 2026, comparé honnêtement",
-      "description": "Neuf bureaux virtuels pour équipes à distance comparés sur le prix, l'offre gratuite et ce que chacun fait le mieux, avec ce que paie une équipe de 10 chaque mois."
+      "description": "Dix bureaux virtuels pour équipes à distance comparés sur le prix, l'offre gratuite et leurs points forts, avec ce qu'une équipe de 10 personnes paie chaque mois."
     },
     "title": "Le meilleur logiciel de bureau virtuel <em>en 2026, comparé honnêtement.</em>",
-    "intro": "Un bureau virtuel donne à une équipe à distance un endroit où être toute la journée : vous voyez qui est là et vous parlez à quelqu'un en vous approchant de lui, pas en envoyant un lien. Voici les neuf qui valent le coup d'œil, ce que chacun coûte et à qui il convient. Nous faisons TinyFloor, nous ne sommes donc pas neutres : nous disons où chaque produit fait mieux que le nôtre, et chaque prix vient de sa propre page de tarifs, vérifiée en octobre 2026.",
+    "intro": "Un bureau virtuel offre à une équipe à distance un lieu unique pour la journée : vous voyez qui est là et vous discutez en vous approchant d'eux, sans envoyer de lien. Voici les dix qui valent le détour, leur coût et à qui ils s'adressent. Nous créons TinyFloor, nous ne sommes donc pas neutres ; nous indiquons où chaque produit est plus fort que le nôtre, et chaque tarif provient de sa propre page de prix, vérifiée en octobre 2026.",
     "sections": [
       {
         "title": "Ce qu'est un bureau virtuel",
@@ -771,7 +771,7 @@
         ]
       },
       {
-        "title": "Les neuf qui valent le coup d'œil",
+        "title": "Les dix qui valent le détour",
         "items": [
           {
             "title": "TinyFloor",
@@ -787,6 +787,11 @@
             "title": "SoWork",
             "detail": "Gratuit pour 10 membres · Basic 5,40 $ par membre et par mois en facturation annuelle",
             "body": "Un bureau virtuel avec salles de réunion, chat d'équipe et intégration au calendrier. L'offre gratuite accueille jusqu'à 10 membres mais limite les réunions à 30 minutes et n'a pas d'enregistrements. Premium, à 12 $ par membre et par mois en facturation annuelle, ajoute des résumés par IA, des enregistrements illimités et des analyses. [Comparaison détaillée](/sowork-alternative)."
+          },
+          {
+            "title": "Spot",
+            "detail": "Pas d'offre gratuite · Basic 4,80 $ par utilisateur et par mois en facturation annuelle",
+            "body": "Un bureau virtuel que vous concevez vous-même, avec votre propre plan de bureau et votre image de marque, des canaux de discussion de style Slack et une application de bureau en plus du navigateur. Basic comprend des configurations de départ et de l'audio et de la vidéo standard ; Growth, à 8 $ par utilisateur et par mois en facturation annuelle, ajoute l'éditeur de bureau complet et la HD. Il y a un essai de 30 jours et pas d'offre gratuite. [Comparaison détaillée](/spot-alternative)."
           },
           {
             "title": "Kumospace",
@@ -838,6 +843,12 @@
               "Un prix par bureau",
               "Jusqu'à 3 personnes",
               "$29"
+            ],
+            [
+              "Spot Basic",
+              "Par utilisateur",
+              "Aucune, essai de 30 jours",
+              "48 $ à l'année, 60 $ par mois"
             ],
             [
               "SoWork Basic",
@@ -904,7 +915,7 @@
           },
           {
             "title": "Vous voulez concevoir votre bureau ou organiser des événements",
-            "body": "Gather, WorkAdventure, Kumospace ou SpatialChat."
+            "body": "Gather, Spot, WorkAdventure, Kumospace ou SpatialChat."
           },
           {
             "title": "Vous devez l'héberger vous-même",
@@ -912,7 +923,7 @@
           },
           {
             "title": "Vous préférez une application de bureau",
-            "body": "Roam, ou Gather et Kumospace, qui ont des applications en plus du navigateur."
+            "body": "Roam, ou Gather, Kumospace et Spot, qui proposent des applications en plus du navigateur."
           },
           {
             "title": "Une plus grande entreprise",
@@ -931,8 +942,12 @@
         "a": "Cela dépend de la taille de votre équipe. L'offre gratuite de SoWork couvre 10 membres avec des réunions de 30 minutes, celle de WorkAdventure 10 personnes en même temps, celle de Kumospace 5 membres et celle de TinyFloor 3 personnes avec toutes les fonctionnalités."
       },
       {
+        "q": "Quel est le meilleur logiciel de bureau virtuel pour une petite entreprise ?",
+        "a": "Pour une équipe de 4 à 15 personnes qui souhaite un tarif simple, TinyFloor, à 29 $ par mois pour toute l'équipe. Si vos réunions durent moins de 30 minutes, l'offre gratuite de SoWork couvre 10 membres. Si vous avez besoin d'enregistrements, de notes par IA ou d'une application de bureau, tournez-vous vers Gather, SoWork Premium ou Spot ; pour l'authentification unique et des contrats annuels, regardez du côté de Gather, Roam, oVice ou Sococo."
+      },
+      {
         "q": "Quel est le bureau virtuel le moins cher pour une petite équipe ?",
-        "a": "Pour une équipe de 10 sur une offre payante, TinyFloor Pro coûte 29 $ par mois pour tout le bureau. Les outils facturés par personne coûtent de 54 $ à 195 $ par mois pour la même équipe."
+        "a": "Pour une équipe de 10 personnes avec une offre payante, TinyFloor Pro coûte 29 $ par mois pour tout le bureau. Les outils par personne coûtent entre 48 $ et 195 $ par mois pour la même équipe."
       },
       {
         "q": "Gather est-il toujours gratuit ?",
@@ -940,14 +955,14 @@
       },
       {
         "q": "Faut-il installer quelque chose ?",
-        "a": "Pas pour TinyFloor, Gather, SoWork, WorkAdventure, SpatialChat ou oVice, qui fonctionnent dans le navigateur. Roam est une application de bureau, et Kumospace et Gather proposent aussi des applications."
+        "a": "Pas pour TinyFloor, Gather, SoWork, WorkAdventure, SpatialChat ou oVice, qui fonctionnent dans le navigateur. Roam est une application de bureau, et Kumospace, Gather et Spot proposent également des applications."
       }
     ]
   },
   "gatherPricing": {
     "label": "Prix de Gather",
     "meta": {
-      "title": "Prix de Gather en 2026 : ce que paie votre équipe, invités compris",
+      "title": "Tarifs Gather 2026 : 12 $ par membre, sans offre gratuite, ce que paient les équipes",
       "description": "Gather coûte 12 $ par membre et par mois en facturation annuelle ou 15 $ au mois, sans offre gratuite depuis septembre 2025. Ce que cela représente pour des équipes de 4 à 50, ce que comprennent les invités et les enregistrements, et ce que paie la même équipe ailleurs."
     },
     "title": "Combien coûte <em>Gather ?</em>",

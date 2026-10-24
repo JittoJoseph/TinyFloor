@@ -154,15 +154,15 @@
       "items": [
         {
           "title": "Zien wie er is",
-          "body": "Iedereen staat in het kantoor, met een status, dus je weet wie aan zijn bureau zit, wie bezig is en wie in een vergadering zit voordat je stoort."
+          "body": "Iedereen staat in het kantoor met een [status](/team-presence), dus je weet wie aan zijn bureau zit, wie bezig is en wie in een vergadering zit voordat je stoort."
         },
         {
           "title": "Praten zonder afspraak",
-          "body": "Loop naar een collega en begin te praten. Een vraag van twee minuten blijft twee minuten, in plaats van een agenda-uitnodiging voor morgen te worden."
+          "body": "[Loop naar een collega](/proximity-chat) en begin te praten. Een vraag van twee minuten blijft twee minuten, in plaats van een agenda-uitnodiging voor morgen te worden."
         },
         {
           "title": "Afspreken in een ruimte",
-          "body": "Groepsgesprekken vinden plaats in een vergaderruimte die je binnenloopt, met video en schermdelen, en die je weer verlaat als het klaar is."
+          "body": "Groepsgesprekken vinden plaats in een [vergaderruimte](/virtual-meeting-room) waar je binnenloopt, met video en schermdelen, en je loopt weer naar buiten als het klaar is."
         },
         {
           "title": "Een eigen bureau hebben",
@@ -170,7 +170,7 @@
         },
         {
           "title": "Ernaast chatten",
-          "body": "Berichten en kanalen staan naast de vloer, voor alles wat geen gesprek nodig heeft."
+          "body": "[Berichten en kanalen](/team-chat) staan naast de werkvloer, voor wat niet besproken hoeft te worden."
         }
       ]
     },
@@ -220,30 +220,30 @@
       "items": [
         {
           "title": "Kleine remote teams",
-          "body": "Vier tot vijftien mensen die geen gebouw delen en missen dat ze zich even kunnen omdraaien om iets te vragen."
+          "body": "Vier tot vijftien mensen die geen gebouw delen, of een [hybride team](/hybrid-teams) verdeeld tussen thuis en kantoor, die missen dat ze zich even kunnen omdraaien om iets te vragen."
         },
         {
           "title": "Startups",
-          "body": "Jonge teams die snel beslissen en niet een dag op de volgende vergadering kunnen wachten."
+          "body": "Jonge [startup-teams](/startups) die snel beslissingen nemen en niet een dag kunnen wachten op de volgende vergadering."
         },
         {
           "title": "Bureaus en studio's",
-          "body": "Mensen die de hele dag tussen klantprojecten schakelen en elkaar snel moeten vinden."
+          "body": "Mensen bij [bureaus en studio's](/agencies) die de hele dag door wisselen tussen klantprojecten en elkaar snel moeten kunnen vinden."
         },
         {
           "title": "Engineering- en designteams",
-          "body": "Pairen, reviewen en werk op het scherm laten zien zonder daar een gesprek voor in te plannen."
+          "body": "Samenwerken, werk beoordelen en op het scherm laten zien zonder er een gesprek voor te boeken. Vooral voor [engineering-](/engineering-teams) en [designteams](/design-teams)."
         },
         {
           "title": "Teams die iemand inwerken",
-          "body": "Een nieuwe collega ziet wie er is en vraagt het gewoon, in plaats van te raden wie er tijd heeft voor een berichtje."
+          "body": "Een nieuwe medewerker kan zien wie er is en iets vragen, in plaats van te moeten gokken wie er beschikbaar is voor een bericht. Zie [onboarding op afstand](/remote-onboarding)."
         }
       ]
     },
     {
       "title": "Wat het kost",
       "body": [
-        "Wat een team van 8 per maand betaalt bij bekende virtuele kantoren, op het goedkoopste passende abonnement."
+        "Wat een team van 8 per maand betaalt bij bekende virtuele kantoren, op het goedkoopste passende abonnement. Lees onze [vergelijking van virtuele kantoorsoftware](/guides/best-virtual-office-software) om alle opties naast elkaar te zien, of bereken de prijs voor je eigen team met de [kostencalculator](/tools/virtual-office-cost-calculator)."
       ],
       "table": {
         "head": [
@@ -302,7 +302,7 @@
         {
           "title": "Houd de volgende standup in de vergaderruimte",
           "detail": "De eerste gewoonte",
-          "body": "Eén dagelijkse vergadering naar het kantoor verplaatsen is wat mensen de volgende dag terugbrengt."
+          "body": "Eén dagelijkse vergadering, zoals de [standup](/virtual-standup), naar het kantoor verplaatsen is wat mensen de volgende dag terugbrengt."
         },
         {
           "title": "Laat het een week open",
@@ -337,7 +337,7 @@
     {
       "title": "Waarom teams Discord als kantoor gebruiken",
       "body": [
-        "Veel kleine teams, vooral developers, studio's en startups, draaien hun werkdag in Discord. Ze maken een server, openen een spraakkanaal en mensen komen en gaan zoals in een gedeelde ruimte. Het is gratis, het geluid is goed, schermdelen werkt in spraakkanalen en wie het al gebruikt, hoeft niets nieuws te leren.",
+        "Veel kleine teams, vooral developers, studio's en [startups](/startups), draaien hun werkdag in Discord. Ze maken een server, openen een spraakkanaal en mensen komen en gaan zoals in een gedeelde ruimte. Het is gratis, het geluid is goed, schermdelen werkt in spraakkanalen en wie het al gebruikt, hoeft niets nieuws te leren.",
         "Het laat zien dat één klik van elkaar af zijn beter werkt dan elk gesprek inplannen. De vraag is of een app voor gamecommunity's daar de beste plek voor is."
       ]
     },
@@ -350,7 +350,7 @@
         },
         {
           "title": "Kanalen in plaats van een plek",
-          "body": "Je ziet wie in welk spraakkanaal zit, maar niet wie aan zijn bureau zit en even tijd heeft. Een kanaal binnengaan is een alles-of-niets-manier om een gesprek te beginnen."
+          "body": "Je ziet wie in welk spraakkanaal zit, maar niet [wie aan zijn bureau zit en even tijd heeft](/team-presence). Een kanaal binnengaan is een alles-of-niets-manier om een gesprek te beginnen."
         },
         {
           "title": "Geen duidelijke vergaderruimte",
@@ -358,7 +358,7 @@
         },
         {
           "title": "Gebouwd voor community's",
-          "body": "Rollen, servers en bots zijn gemaakt voor grote groepen onbekenden. Een team van acht heeft veel minder nodig, en meer van wat een kantoor heeft."
+          "body": "Rollen, servers en bots zijn gemaakt voor grote groepen onbekenden. Een team van acht heeft veel minder nodig, en meer van wat een [kantoor](/virtual-office) heeft."
         }
       ]
     },
@@ -2079,7 +2079,7 @@
         {
           "title": "Binnenlopen",
           "detail": "9:58",
-          "body": "Doe mee aan de hoofdmeeting en je poppetje loopt de vergaderruimte in. Iedereen op de verdieping ziet de ruimte vollopen."
+          "body": "Doe mee aan de hoofdmeeting en je poppetje loopt de [vergaderruimte](/virtual-meeting-room) in. Iedereen op de verdieping ziet de ruimte vollopen."
         },
         {
           "title": "Het rondje",
@@ -2164,7 +2164,7 @@
       "items": [
         {
           "title": "Op tijd beginnen",
-          "body": "Begin op de minuut, ook als iemand ontbreekt. De verdieping laat zien wie er is, wie afwezig is en wie nog in een gesprek zit, dus je weet op wie je moet wachten en op wie niet."
+          "body": "Begin op de minuut, ook als iemand ontbreekt. De verdieping laat zien [wie er is, wie afwezig is](/team-presence) en wie nog in een gesprek zit, dus je weet op wie je moet wachten en op wie niet."
         },
         {
           "title": "Vervolgvragen naar een bureau",
@@ -2183,7 +2183,7 @@
     {
       "title": "Live, geschreven of allebei",
       "body": [
-        "Een team verspreid over tijdzones kan niet altijd op één tijdstip afspreken. Veel teams posten een geschreven update in een kanaal van de chat van het kantoor en houden de live standup voor dagen waarop er iets te beslissen valt: een release, een probleem, een nieuwe collega."
+        "Een team verspreid over tijdzones kan niet altijd op één tijdstip afspreken. Veel teams posten een geschreven update in een kanaal van de [chat van het kantoor](/team-chat) en houden de live standup voor dagen waarop er iets te beslissen valt: een release, een probleem, een nieuwe collega."
       ],
       "items": [
         {
@@ -2192,11 +2192,11 @@
         },
         {
           "title": "Geschreven",
-          "body": "Werkt over tijdzones heen en laat iets na om op terug te kijken. Makkelijk te scannen en makkelijk over te slaan, dus knelpunten kunnen onopgemerkt blijven."
+          "body": "Werkt over [tijdzones](/tools/time-zone-meeting-planner) heen en laat iets na om op terug te kijken. Makkelijk te scannen en makkelijk over te slaan, dus knelpunten kunnen onopgemerkt blijven."
         },
         {
           "title": "Allebei",
-          "body": "Elke dag geschreven updates, en een of twee keer per week een kort live rondje, op een tijd die iedereen uitkomt."
+          "body": "Elke dag [geschreven updates](/guides/async-communication), en een of twee keer per week een kort live rondje, op een tijd die iedereen uitkomt."
         }
       ]
     },
@@ -2217,7 +2217,7 @@
         {
           "title": "Zien wie vrij is",
           "detail": "1",
-          "body": "Bureaus en statussen laten zien wie geconcentreerd werkt, wie afwezig is en wie al in een gesprek zit. Bezet betekent wachten; beschikbaar betekent erheen lopen."
+          "body": "Bureaus en [statussen](/team-presence) laten zien wie geconcentreerd werkt, wie afwezig is en wie al in een gesprek zit. Bezet betekent wachten; beschikbaar betekent erheen lopen."
         },
         {
           "title": "Erheen lopen en praten",
@@ -2295,7 +2295,7 @@
     {
       "title": "Als twee er drie worden",
       "body": [
-        "Loop tijdens een gesprek naar een derde collega en TinyFloor biedt aan er een meeting voor jullie drieën van te maken. Voor een geplande mob- of ensemble-sessie gebruik je de vergaderruimte: wie praat krijgt de grote kaart, en het gedeelde scherm staat naast de mensen."
+        "Loop tijdens een gesprek naar een derde collega en TinyFloor biedt aan er een meeting voor jullie drieën van te maken. Voor een geplande mob- of ensemble-sessie gebruik je de [vergaderruimte](/virtual-meeting-room): wie praat krijgt de grote kaart, en het gedeelde scherm staat naast de mensen."
       ]
     },
     {
@@ -2314,7 +2314,7 @@
         },
         {
           "title": "Geen opname",
-          "body": "Sessies worden niet opgenomen. Schrijf op wat jullie besloten in de pull request of de teamchat."
+          "body": "Sessies worden niet opgenomen. Schrijf op wat jullie besloten in de pull request of de [teamchat](/team-chat)."
         },
         {
           "title": "Geen koppeling met GitHub of Jira",
@@ -2335,7 +2335,7 @@
         },
         {
           "title": "Maak vragen normaal",
-          "body": "Een team waarin mensen met vragen naar elkaar toe lopen, lost knelpunten op in minuten, niet morgen. Ervaren mensen die naar nieuwere lopen helpen evenveel als andersom."
+          "body": "Een team waarin mensen met vragen [naar elkaar toe lopen](/proximity-chat), lost knelpunten op in minuten, niet morgen. Ervaren mensen die naar nieuwere lopen helpen evenveel als andersom."
         }
       ]
     }
@@ -2365,7 +2365,7 @@
         {
           "title": "Hallo zeggen bij de standup",
           "detail": "10:00",
-          "body": "Loop met iedereen de vergaderruimte in. Eén minuut om jezelf voor te stellen, en het team kent je."
+          "body": "Loop met iedereen de [vergaderruimte](/virtual-meeting-room) in. Eén minuut om jezelf voor te stellen, en het team kent je."
         },
         {
           "title": "Bij je buddy zitten",
@@ -2444,7 +2444,7 @@
         },
         {
           "title": "Plan tijd op de eerste twee dagen",
-          "body": "Het grootste deel van maandag en een deel van dinsdag samen, met een gedeeld scherm. Daarna loopt de nieuwe collega langs wanneer dat nodig is."
+          "body": "Het grootste deel van maandag en een deel van dinsdag samen, [met een gedeeld scherm](/remote-pair-programming). Daarna loopt de nieuwe collega langs wanneer dat nodig is."
         },
         {
           "title": "Doe het eerste bezoek zelf",
@@ -2452,14 +2452,14 @@
         },
         {
           "title": "Houd een kanaal voor vragen",
-          "body": "Een kanaal in de teamchat voor vragen waar niemand zich dom bij hoeft te voelen. Berichten blijven staan, dus de volgende nieuwe collega kan de antwoorden teruglezen."
+          "body": "Een kanaal in de [teamchat](/team-chat) voor vragen waar niemand zich dom bij hoeft te voelen. Berichten blijven staan, dus de volgende nieuwe collega kan de antwoorden teruglezen."
         }
       ]
     },
     {
       "title": "Wat TinyFloor niet doet voor onboarding",
       "body": [
-        "Het is geen HR-tool. Er zijn geen onboardingchecklists, geen documenten ondertekenen, geen accounts aanmaken en geen single sign-on. Houd je handboek in je documentatietool en accounts in je beheertools; TinyFloor is waar de nieuwe collega het team ontmoet en hulp krijgt. Uitnodigen kost één link, en een minuut later kan die aan een bureau zitten."
+        "Het is geen HR-tool. Er zijn geen [onboardingchecklists](/guides/remote-onboarding-checklist), geen documenten ondertekenen, geen accounts aanmaken en geen single sign-on. Houd je handboek in je documentatietool en accounts in je beheertools; TinyFloor is waar de nieuwe collega het team ontmoet en hulp krijgt. Uitnodigen kost één link, en een minuut later kan die aan een bureau zitten."
       ]
     }
   ],
@@ -2480,7 +2480,7 @@
         },
         {
           "title": "Je loopt langs iemand",
-          "body": "Op weg naar de vergaderruimte of het whiteboard loop je langs bureaus. Blijf naast iemand staan en een gesprek is één tik weg; loop door en er gebeurt niets."
+          "body": "Op weg naar de [vergaderruimte](/virtual-meeting-room) of het whiteboard loop je langs bureaus. Blijf naast iemand staan en een gesprek is één tik weg; loop door en er gebeurt niets."
         },
         {
           "title": "Muziek in de ruimte",
@@ -2488,14 +2488,14 @@
         },
         {
           "title": "De chat tussen calls door",
-          "body": "Een kanaal voor alles wat geen werk is, met emoji en reacties. Berichten blijven staan, dus niemand mist de grap omdat die in een meeting zat."
+          "body": "Een [kanaal](/team-chat) voor alles wat geen werk is, met emoji en reacties. Berichten blijven staan, dus niemand mist de grap omdat die in een meeting zat."
         }
       ]
     },
     {
       "title": "Rituelen die werken voor een klein team",
       "body": [
-        "Houd ze kort, vrijwillig en regelmatig. Een team van acht heeft geen evenementenprogramma nodig, maar een paar gewoontes waar mensen echt op afkomen."
+        "Houd ze kort, vrijwillig en regelmatig. Een team van acht heeft geen evenementenprogramma nodig, maar een paar [gewoontes](/guides/how-to-build-remote-team-culture) waar mensen echt op afkomen."
       ],
       "table": {
         "head": [
@@ -2556,7 +2556,7 @@
     {
       "title": "Wat TinyFloor niet doet",
       "body": [
-        "Er zijn geen spelletjes, geen quiz, geen YouTube-schermen en geen evenementruimtes voor honderd gasten. Het is een klein kantoor voor een team dat elke dag samenwerkt, en het koffieapparaat is het stukje tussen de taken. Voor een bedrijfsfeest of een groot sociaal evenement hebben Kumospace en Gather meer aan boord."
+        "Er zijn geen spelletjes, geen quiz, geen YouTube-schermen en geen evenementruimtes voor honderd gasten. Het is een klein kantoor voor een team dat elke dag samenwerkt, en het koffieapparaat is het stukje tussen de taken. Voor een bedrijfsfeest of een groot sociaal evenement hebben [Kumospace en Gather](/gather-vs-kumospace) meer aan boord."
       ]
     }
   ],
@@ -2570,7 +2570,7 @@
         {
           "title": "Standup",
           "detail": "10:00",
-          "body": "Het team loopt de vergaderruimte in, doet het rondje in tien minuten en loopt weer naar buiten."
+          "body": "Het team loopt de [vergaderruimte](/virtual-meeting-room) in, doet het rondje in tien minuten en loopt weer naar buiten."
         },
         {
           "title": "Geconcentreerd",
@@ -2580,12 +2580,12 @@
         {
           "title": "Losgemaakt",
           "detail": "14:30",
-          "body": "Faalt de build? Kijk wie beschikbaar is, loop erheen, deel de logs en los het in tien minuten op in plaats van morgen."
+          "body": "Faalt de build? [Kijk wie beschikbaar is](/team-presence), loop erheen, deel de logs en los het in tien minuten op in plaats van morgen."
         },
         {
           "title": "Review",
           "detail": "16:00",
-          "body": "Twee of drie mensen in een meeting, één deelt de pull request, en jullie bespreken hem in plaats van veertig opmerkingen te schrijven."
+          "body": "Twee of drie mensen in een meeting, één deelt de pull request, en jullie [bespreken hem](/remote-pair-programming) in plaats van veertig opmerkingen te schrijven."
         }
       ]
     },
@@ -2750,11 +2750,11 @@
         },
         {
           "title": "Vanuit een gesprek",
-          "body": "In gesprek met één persoon en wil je een derde erbij? Loop naar die persoon en TinyFloor biedt aan er een meeting voor jullie drieën van te maken."
+          "body": "In gesprek met één persoon en wil je een derde erbij? [Loop naar die persoon](/proximity-chat) en TinyFloor biedt aan er een meeting voor jullie drieën van te maken."
         },
         {
           "title": "Eerst zien wie vrij is",
-          "body": "De lijst met mensen laat zien wie vrij is om te praten, wie bezet is en wie al in een andere meeting zit, dus je vraagt alleen mensen die kunnen komen."
+          "body": "De lijst met mensen laat zien [wie vrij is om te praten, wie bezet is](/team-presence) en wie al in een andere meeting zit, dus je vraagt alleen mensen die kunnen komen."
         }
       ]
     },
@@ -2782,7 +2782,7 @@
     {
       "title": "Wat het niet doet",
       "body": [
-        "Er is geen opname, geen transcriptie en geen AI-notities. Meetings vinden plaats in je kantoor: er zijn geen inbelnummers en geen webinarmodus voor een groot publiek. Gedeelde schermen sturen het beeld, geen geluid. Heb je dat nodig, gebruik dan Zoom of Google Meet voor die meeting en TinyFloor voor de dagelijkse."
+        "Er is geen opname, geen transcriptie en geen AI-notities. Meetings vinden plaats in je [kantoor](/virtual-office): er zijn geen inbelnummers en geen webinarmodus voor een groot publiek. Gedeelde schermen sturen het beeld, geen geluid. Heb je dat nodig, gebruik dan Zoom of Google Meet voor die meeting en TinyFloor voor de dagelijkse."
       ]
     }
   ],
@@ -2790,7 +2790,7 @@
     {
       "title": "Een chat vlak naast de verdieping",
       "body": [
-        "Bij de meeste tools is de chat de hele werkplek. In TinyFloor is het de helft: de verdieping laat zien wie er is en laat je praten, en de chat bewaart alles wat op papier moet. Omdat ze naast elkaar staan, wordt een lang heen-en-weer met één klik een gesprek van twee minuten."
+        "Bij de meeste tools is de chat de hele werkplek. In TinyFloor is het de helft: [de verdieping laat zien wie er is](/team-presence) en laat je praten, en de chat bewaart alles wat op papier moet. Omdat ze naast elkaar staan, wordt een lang heen-en-weer met één klik een gesprek van twee minuten."
       ]
     },
     {
@@ -2837,11 +2837,11 @@
       "items": [
         {
           "title": "Erheen lopen vanuit een gesprek",
-          "body": "Een direct bericht met iemand op de verdieping biedt aan erheen te lopen. Je poppetje vindt zelf de weg naar het bureau, en een gesprek is één tik weg."
+          "body": "Een direct bericht met iemand op de verdieping biedt aan [erheen te lopen](/proximity-chat). Je poppetje vindt zelf de weg naar het bureau, en een gesprek is één tik weg."
         },
         {
           "title": "Zien wie er is voordat je schrijft",
-          "body": "De lijst met mensen laat zien wie op de verdieping is, wie bezet is en wie in een meeting zit, dus je weet of je moet schrijven of wachten."
+          "body": "De lijst met mensen laat zien wie op de verdieping is, wie bezet is en wie in een meeting zit, dus je weet [of je moet schrijven of wachten](/guides/remote-team-communication)."
         },
         {
           "title": "Een rustig seintje in plaats van pop-ups",
@@ -2888,7 +2888,7 @@
     {
       "title": "Wat het niet doet",
       "body": [
-        "Er zijn geen threads, geen integraties of bots, en nog geen zoekfunctie voor berichten. Afbeeldingen delen in de chat kan nog niet, dus screenshots gaan op het scherm in een gesprek. Meldingen volgen je niet naar je telefoon: TinyFloor stuurt geen pushmeldingen of e-mails om mensen terug te halen. Is je team daarvan afhankelijk, houd dan Slack voor het schrijven en gebruik TinyFloor voor aanwezigheid, gesprekken en meetings; veel teams doen dat."
+        "Er zijn geen threads, geen integraties of bots, en nog geen zoekfunctie voor berichten. Afbeeldingen delen in de chat kan nog niet, dus screenshots gaan op het scherm in een gesprek. Meldingen volgen je niet naar je telefoon: TinyFloor stuurt geen pushmeldingen of e-mails om mensen terug te halen. Is je team daarvan afhankelijk, houd dan [Slack voor het schrijven](/slack-huddles-alternative) en gebruik TinyFloor voor aanwezigheid, gesprekken en meetings; veel teams doen dat."
       ]
     }
   ],
@@ -2896,7 +2896,7 @@
     {
       "title": "Wat aanwezigheid betekent in TinyFloor",
       "body": [
-        "Op kantoor zie je in één oogopslag wie er is, wie ergens in verdiept is en wie aan de telefoon hangt. Remote zegt een groen bolletje in een chatapp weinig. Op de verdieping is aanwezigheid waar mensen zijn en wat ze zelf over zichzelf aangeven, meer niet."
+        "Op [kantoor](/virtual-office) zie je in één oogopslag wie er is, wie ergens in verdiept is en wie aan de telefoon hangt. Remote zegt een groen bolletje in een chatapp weinig. Op de verdieping is aanwezigheid waar mensen zijn en wat ze zelf over zichzelf aangeven, meer niet."
       ]
     },
     {
@@ -2972,7 +2972,7 @@
       "items": [
         {
           "title": "Spreek af wat bezet betekent",
-          "body": "De meeste teams komen hierop uit: bezet betekent schrijven, niet langslopen, tenzij er iets in brand staat."
+          "body": "De meeste teams komen hierop uit: bezet betekent [schrijven, niet langslopen](/guides/remote-team-communication), tenzij er iets in brand staat."
         },
         {
           "title": "Ga aan je bureau zitten als je werkt",
@@ -2997,7 +2997,7 @@
         },
         {
           "title": "Loop erheen",
-          "body": "Druk op Loop erheen op iemands kaart en je poppetje vindt zelf de weg over de verdieping."
+          "body": "Druk op [Loop erheen](/proximity-chat) op iemands kaart en je poppetje vindt zelf de weg over de verdieping."
         },
         {
           "title": "Binnenkomers",
@@ -3016,7 +3016,7 @@
     {
       "title": "Een whiteboard aan de muur, niet in een ander tabblad",
       "body": [
-        "De meeste online whiteboards zijn een aparte app: bord aanmaken, link delen, wachten tot mensen het openen. In TinyFloor hangt het bord aan de kantoormuur. Loop erheen en teken, en iedereen die kijkt, ziet je lijnen terwijl je ze zet."
+        "De meeste online whiteboards zijn een aparte app: bord aanmaken, link delen, wachten tot mensen het openen. In TinyFloor hangt het bord aan de [kantoor](/virtual-office)muur. Loop erheen en teken, en iedereen die kijkt, ziet je lijnen terwijl je ze zet."
       ]
     },
     {
@@ -3080,7 +3080,7 @@
       "items": [
         {
           "title": "Praat terwijl je tekent",
-          "body": "Start eerst een gesprek of meeting. Een schets met uitleg wint van een perfect diagram in stilte."
+          "body": "Start eerst een gesprek of [meeting](/virtual-meeting-room). Een schets met uitleg wint van een perfect diagram in stilte."
         },
         {
           "title": "Ieder een kleur",
@@ -3088,7 +3088,7 @@
         },
         {
           "title": "Maak een screenshot van wat telt",
-          "body": "Leg vast wat je nodig hebt voordat je het bord wist, en zet het besluit in de teamchat."
+          "body": "Leg vast wat je nodig hebt voordat je het bord wist, en zet het besluit in de [teamchat](/team-chat)."
         },
         {
           "title": "Grote diagrammen elders",
@@ -3099,7 +3099,7 @@
     {
       "title": "Wat het niet doet",
       "body": [
-        "Het is een bord met stift en gum. Er is geen teksttool, geen vormen of plakbriefjes, geen afbeeldingen, geen ongedaan maken, geen sjablonen en geen export, en een kantoor heeft één bord. Voor workshops, retro's met plakbriefjes of gedetailleerde diagrammen kunnen Miro, FigJam of Excalidraw veel meer. Het bord van TinyFloor is voor de snelle schets terwijl je praat."
+        "Het is een bord met stift en gum. Er is geen teksttool, geen vormen of plakbriefjes, geen afbeeldingen, geen ongedaan maken, geen sjablonen en geen export, en een kantoor heeft één bord. Voor workshops, [retro's](/guides/retrospective-ideas) met plakbriefjes of gedetailleerde diagrammen kunnen Miro, FigJam of Excalidraw veel meer. Het bord van TinyFloor is voor de snelle schets terwijl je praat."
       ]
     }
   ],
@@ -3113,7 +3113,7 @@
         {
           "title": "Prioriteiten",
           "detail": "9:30",
-          "body": "Tien minuten in de vergaderruimte: wat vandaag af moet voor welke klant, en wie hulp nodig heeft."
+          "body": "Tien minuten in de [vergaderruimte](/virtual-meeting-room): wat vandaag af moet voor welke klant, en wie hulp nodig heeft."
         },
         {
           "title": "Een snelle review",
@@ -3123,7 +3123,7 @@
         {
           "title": "Deadlinemodus",
           "detail": "14:00",
-          "body": "Zet jezelf op bezet. Mensen zien dat je er bent en werkt, en weten dat ze moeten schrijven in plaats van langslopen."
+          "body": "Zet jezelf op bezet. Mensen [zien dat je er bent](/team-presence) en werkt, en weten dat ze moeten schrijven in plaats van langslopen."
         },
         {
           "title": "Klantvoorbereiding",
@@ -3233,7 +3233,7 @@
     {
       "title": "Wat het kost terwijl je groeit",
       "body": [
-        "TinyFloor kost per kantoor, niet per persoon. Een nieuwe collega verandert de rekening niet."
+        "TinyFloor [kost per kantoor](/pricing), niet per persoon. Een nieuwe collega verandert de rekening niet."
       ],
       "table": {
         "head": [
@@ -3261,11 +3261,11 @@
       "items": [
         {
           "title": "Beslissen in de gang",
-          "body": "Zien wie er is, erheen lopen, beslissen en teruglopen. Voor een vraag van twee minuten is geen meeting nodig."
+          "body": "[Zien wie er is](/team-presence), erheen lopen, beslissen en teruglopen. Voor een vraag van twee minuten is geen meeting nodig."
         },
         {
           "title": "Eén standup, dezelfde ruimte",
-          "body": "De hoofdmeeting is er altijd. Tien minuten in de ochtend houdt iedereen op één lijn."
+          "body": "De [hoofdmeeting](/virtual-standup) is er altijd. Tien minuten in de ochtend houdt iedereen op één lijn."
         },
         {
           "title": "Gesprekken met investeerders en klanten elders",
@@ -3273,7 +3273,7 @@
         },
         {
           "title": "Aannemen in een plek, niet in een kanalenlijst",
-          "body": "Een nieuwe collega krijgt een bureau en ziet op dag één wie wie is, in plaats van het team te leren kennen uit een zijbalk vol namen."
+          "body": "Een [nieuwe collega](/remote-onboarding) krijgt een bureau en ziet op dag één wie wie is, in plaats van het team te leren kennen uit een zijbalk vol namen."
         }
       ]
     },
@@ -3309,7 +3309,7 @@
     {
       "title": "Feedback is de bottleneck",
       "body": [
-        "Designwerk wordt elke keer beter als iemand er met je naar kijkt. In een studio gebeurt dat over je schouder, vele keren per dag. Remote krimpt het tot een wekelijkse crit en opmerkingen in een bestand. Op de verdieping is een tweede paar ogen weer een paar stappen verderop."
+        "Designwerk wordt elke keer beter als iemand er met je naar kijkt. In een studio gebeurt dat over je schouder, vele keren per dag. Remote krimpt het tot een wekelijkse crit en opmerkingen in een bestand. Op de verdieping is een tweede paar ogen weer een [paar stappen verderop](/proximity-chat)."
       ]
     },
     {
@@ -3366,7 +3366,7 @@
         },
         {
           "title": "Schrijf de besluiten op",
-          "body": "Zet wat besloten is in de teamchat, zodat het niet alleen in iemands hoofd zit."
+          "body": "Zet wat besloten is in de [teamchat](/team-chat), zodat het niet alleen in iemands hoofd zit."
         }
       ]
     },
@@ -3375,7 +3375,7 @@
       "items": [
         {
           "title": "Bezet is bezet",
-          "body": "Zet een bezet-status voor diep werk. Collega's zien dat je er bent en schrijven liever dan langs te komen."
+          "body": "Zet een bezet-status voor diep werk. Collega's [zien dat je er bent](/team-presence) en schrijven liever dan langs te komen."
         },
         {
           "title": "Geen camera verplicht",
@@ -3383,7 +3383,7 @@
         },
         {
           "title": "Eerst schetsen",
-          "body": "Het whiteboard aan de muur is er voor de ruwe versie, voordat iemand een designtool opent."
+          "body": "Het [whiteboard](/online-whiteboard) aan de muur is er voor de ruwe versie, voordat iemand een designtool opent."
         }
       ]
     },
@@ -3451,12 +3451,12 @@
         {
           "title": "Muziek op de achtergrond",
           "detail": "11:00",
-          "body": "Iemand zet een nummer op de speaker. Dichtbij is het hard en over de verdieping zachter, dus het is gezelschap in plaats van herrie."
+          "body": "Iemand zet een nummer op de speaker. Dichtbij is het hard en [over de verdieping zachter](/proximity-chat), dus het is gezelschap in plaats van herrie."
         },
         {
           "title": "Een pauze",
           "detail": "13:00",
-          "body": "Zet jezelf op afwezig voor de lunch. Terug aan je bureau, twee minuten kletsen met wie er is voordat de middag begint."
+          "body": "Zet jezelf op afwezig voor de lunch. Terug aan je bureau, [twee minuten kletsen](/virtual-watercooler) met wie er is voordat de middag begint."
         }
       ]
     },
@@ -3484,13 +3484,13 @@
     {
       "title": "Waarom werken in de buurt van anderen helpt",
       "body": [
-        "Onderzoek naar omgevingsbewustzijn op het werk vond dat het in één oogopslag zien van de aanwezigheid van collega's mensen het gevoel gaf dat anderen ook werkten, en tot meer informeel contact leidde. In de cijfers van Gallup uit 2024 gaven volledig remote werkenden vaker aan zich eenzaam te voelen dan mensen op locatie, 25% tegenover 16%. Een verdieping waar je team zichtbaar is, helpt bij allebei, zonder dat iemand in beeld hoeft te zijn."
+        "Onderzoek naar omgevingsbewustzijn op het werk vond dat het in één oogopslag zien van de [aanwezigheid](/team-presence) van collega's mensen het gevoel gaf dat anderen ook werkten, en tot meer informeel contact leidde. In de cijfers van Gallup uit 2024 gaven volledig remote werkenden vaker aan zich eenzaam te voelen dan mensen op locatie, 25% tegenover 16%. Een verdieping waar je team zichtbaar is, helpt bij allebei, zonder dat iemand in beeld hoeft te zijn."
       ]
     },
     {
       "title": "Wat het niet is",
       "body": [
-        "TinyFloor is geen openbare coworkingruimte. Een kantoor is privé voor je team, dus er zijn geen onbekenden om naast te werken en geen koppeling met andere mensen. Er zijn geen sessietimers, geen streaks en niets dat telt hoe lang je hebt gewerkt. Werk je alleen en zoek je gezelschap van onbekenden, dan past een body-doublingdienst beter; wil je je team om je heen terwijl je werkt, dan is dit het."
+        "TinyFloor is geen openbare coworkingruimte. Een [kantoor](/virtual-office) is privé voor je team, dus er zijn geen onbekenden om naast te werken en geen koppeling met andere mensen. Er zijn geen sessietimers, geen streaks en niets dat telt hoe lang je hebt gewerkt. Werk je alleen en zoek je gezelschap van onbekenden, dan past een body-doublingdienst beter; wil je je team om je heen terwijl je werkt, dan is dit het."
       ]
     }
   ],
@@ -3498,7 +3498,7 @@
     {
       "title": "Wat proximity chat betekent",
       "body": [
-        "Proximity chat komt uit games: je hoort de spelers bij je in de buurt en niet die aan de andere kant van de kaart, zoals geluid op een echte plek werkt. Virtuele kantoren namen het idee over, zodat waar je staat bepaalt met wie je praat. Er zijn twee manieren om het te doen, en op het werk voelen ze heel anders."
+        "Proximity chat komt uit games: je hoort de spelers bij je in de buurt en niet die aan de andere kant van de kaart, zoals geluid op een echte plek werkt. [Virtuele kantoren](/virtual-office) namen het idee over, zodat waar je staat bepaalt met wie je praat. Er zijn twee manieren om het te doen, en op het werk voelen ze heel anders."
       ],
       "table": {
         "head": [
@@ -3546,7 +3546,7 @@
         {
           "title": "Bellen",
           "detail": "2",
-          "body": "Die ziet \"Belt je\" en kan opnemen of weigeren. Is die bezet of neemt die niet op, dan hoor je dat, en verder gebeurt er niets."
+          "body": "Die ziet \"Belt je\" en kan opnemen of weigeren. Is die [bezet](/team-presence) of neemt die niet op, dan hoor je dat, en verder gebeurt er niets."
         },
         {
           "title": "Praten",
@@ -3561,7 +3561,7 @@
         {
           "title": "Een derde erbij",
           "detail": "5",
-          "body": "Een gesprek is twee mensen. Loop naar een derde en TinyFloor biedt aan er een meeting voor jullie drieën van te maken."
+          "body": "Een gesprek is twee mensen. Loop naar een derde en TinyFloor biedt aan er een [meeting](/virtual-meeting-room) voor jullie drieën van te maken."
         }
       ]
     },
@@ -4060,7 +4060,7 @@
         },
         {
           "title": "Meetings in één ruimte",
-          "body": "Houd de standup in de meetingruimte met iedereen op de eigen laptop, in plaats van een kamer vol mensen en een paar gezichten op een scherm."
+          "body": "Houd de [standup](/virtual-standup) in de meetingruimte met iedereen op de eigen laptop, in plaats van een kamer vol mensen en een paar gezichten op een scherm."
         }
       ]
     },
@@ -4073,7 +4073,7 @@
         },
         {
           "title": "Beslissingen worden opgeschreven",
-          "body": "Alles wat in het gebouw wordt besloten, gaat in de teamchat, zodat de mensen thuis het dezelfde dag nog zien."
+          "body": "Alles wat in het gebouw wordt besloten, gaat in de [teamchat](/team-chat), zodat de mensen thuis het dezelfde dag nog zien."
         },
         {
           "title": "Koptelefoons op kantoor",
@@ -4081,14 +4081,14 @@
         },
         {
           "title": "Kantoordagen zijn geen meetingdagen",
-          "body": "Bewaar niet alle meetings voor de dagen dat iedereen er is. Als de meetingruimte voor iedereen werkt, gebruik hem dan elke dag."
+          "body": "Bewaar niet alle meetings voor de dagen dat iedereen er is. Als de [meetingruimte](/virtual-meeting-room) voor iedereen werkt, gebruik hem dan elke dag."
         }
       ]
     },
     {
       "title": "Wat het kost",
       "body": [
-        "TinyFloor kost per kantoor, niet per persoon, dus het maakt niet uit hoeveel dagen mensen binnenkomen."
+        "TinyFloor [kost per kantoor](/pricing), niet per persoon, dus het maakt niet uit hoeveel dagen mensen binnenkomen."
       ],
       "table": {
         "head": [

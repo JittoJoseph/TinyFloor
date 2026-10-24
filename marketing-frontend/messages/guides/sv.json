@@ -39,7 +39,7 @@
       {
         "title": "Fem minuter i början av ett möte",
         "body": [
-          "Inga förberedelser, vilken teamstorlek som helst. Använd en för att öppna ett standup eller veckomöte."
+          "Inga förberedelser, vilken teamstorlek som helst. Använd en för att öppna ett [standup](/virtual-standup) eller veckomöte."
         ],
         "items": [
           {
@@ -78,7 +78,7 @@
           {
             "title": "Pictionary på en delad whiteboard",
             "detail": "20 min · 4 till 12 personer",
-            "body": "En person ritar ett ord på en whiteboard som alla ser medan de andra gissar. En lista med jobbord ger extra skratt."
+            "body": "En person ritar ett ord på en [whiteboard](/online-whiteboard) som alla ser medan de andra gissar. En lista med jobbord ger extra skratt."
           },
           {
             "title": "Teamquiz",
@@ -138,7 +138,7 @@
       {
         "title": "Helt utan möte",
         "body": [
-          "Allt behöver inte ett samtal. De här pågår en vecka i en chattkanal och passar team över flera tidszoner."
+          "Allt behöver inte ett samtal. De här pågår en vecka i en [chattkanal](/team-chat) och passar team över flera tidszoner."
         ],
         "items": [
           {
@@ -171,7 +171,7 @@
       {
         "title": "Gör det till en vana, inte ett event",
         "body": [
-          "De team som står varandra närmast förlitar sig sällan på stora event. Det de har är massor av små, oplanerade stunder: ett ord före ett möte, en fråga som blir ett samtal, en låt någon sätter på.",
+          "De team som står varandra närmast förlitar sig sällan på stora event. Det de har är massor av [små, oplanerade stunder](/virtual-watercooler): ett ord före ett möte, en fråga som blir ett samtal, en låt någon sätter på.",
           "På kontoret händer de av sig själva. På distans behövs en plats där folk ser varandra och kan titta förbi utan att boka ett samtal. Ge ditt team det, så blir aktiviteterna ovan en bonus i stället för det enda tillfället att prata."
         ]
       }
@@ -231,7 +231,7 @@
           {
             "title": "Hellre eller",
             "detail": "Inga förberedelser · valfri storlek",
-            "body": "Värden ger ett val mellan två alternativ, alla svarar med ett ord och två personer förklarar sitt val."
+            "body": "Värden ger ett [val mellan två alternativ](/tools/would-you-rather-questions), alla svarar med ett ord och två personer förklarar sitt val."
           },
           {
             "title": "Heta åsikter",
@@ -291,7 +291,7 @@
           {
             "title": "Trettiosekundersteckning",
             "detail": "Inga förberedelser · 3 till 12 personer",
-            "body": "Säg ett ord, ställ en timer på 30 sekunder och alla ritar det samtidigt på en delad whiteboard."
+            "body": "Säg ett ord, ställ en timer på 30 sekunder och alla ritar det samtidigt på en [delad whiteboard](/online-whiteboard)."
           },
           {
             "title": "Gartic Phone",
@@ -311,14 +311,14 @@
           {
             "title": "Quiz med fem frågor",
             "detail": "Lite förberedelser · valfri storlek",
-            "body": "Fem snabba frågor om veckan, produkten eller teamet. Svar i chatten; snabbaste rätta svaret vinner."
+            "body": "Fem snabba [frågor om veckan](/tools/team-building-questions), produkten eller teamet. Svar i chatten; snabbaste rätta svaret vinner."
           }
         ]
       },
       {
         "title": "Så kör ni det bra",
         "body": [
-          "Spela i början av mötet, inte i slutet, när alla är pigga och ingen måste rusa iväg. Kör samma spel några veckor så att ingen behöver lära sig regler varje gång, och byt sedan.",
+          "Spela i början av [mötet](/virtual-meeting-room), inte i slutet, när alla är pigga och ingen måste rusa iväg. Kör samma spel några veckor så att ingen behöver lära sig regler varje gång, och byt sedan.",
           "Dela upp stora möten i små grupper om fyra till sex. Spel slutar fungera när de flesta tittar i stället för att spela."
         ]
       }
@@ -375,15 +375,15 @@
           },
           {
             "title": "Gör folk synliga",
-            "body": "Visa vem som är där, vem som är upptagen och vem som har tid att prata, så att be om hjälp inte känns som att störa."
+            "body": "Visa [vem som är där, vem som är upptagen](/team-presence) och vem som har tid att prata, så att be om hjälp inte känns som att störa."
           },
           {
             "title": "Ha en plats att titta förbi",
-            "body": "Ett rum som alltid är öppet eller fasta tider då man kan dyka upp utan att boka."
+            "body": "Ett [rum som alltid är öppet](/virtual-meeting-room) eller fasta tider då man kan dyka upp utan att boka."
           },
           {
             "title": "Små ritualer",
-            "body": "En veckodemo, en tråd med fredagens framsteg, ett femminutersspel. Små, regelbundna och likadana varje vecka."
+            "body": "En veckodemo, en tråd med fredagens framsteg, ett [femminutersspel](/guides/games-for-virtual-meetings). Små, regelbundna och likadana varje vecka."
           },
           {
             "title": "Ge nya en fadder",
@@ -420,7 +420,7 @@
           },
           {
             "title": "Möten för att känna sig nära",
-            "body": "Ett dagligt allmöte för att känna samhörighet känns oftast som en plikt. Ge folk en plats i stället för en tid."
+            "body": "Ett dagligt allmöte för att känna samhörighet känns oftast som en plikt. Ge folk en [plats](/virtual-office) i stället för en tid."
           }
         ]
       },
@@ -667,8 +667,8 @@
       {
         "title": "Närhetschatt på jobbet",
         "body": [
-          "Virtuella kontor använder samma idé för distansteam. Ditt team delar en 2D-våning, alla är en figur och ni pratar genom att gå fram till någon i stället för att skicka en möteslänk.",
-          "Det ger tillbaka det videosamtal tappar: att se vem som är där, snabba frågor och sidosamtal. Två personer kan prata i ett hörn medan andra jobbar, som på ett riktigt kontor."
+          "[Virtuella kontor](/virtual-office) använder samma idé för distansteam. Ditt team delar en 2D-våning, alla är en figur och ni pratar genom att gå fram till någon i stället för att skicka en möteslänk.",
+          "Det ger tillbaka det videosamtal tappar: att se vem som är där, snabba frågor och [sidosamtal](/virtual-watercooler). Två personer kan prata i ett hörn medan andra jobbar, som på ett riktigt kontor."
         ]
       },
       {
@@ -732,8 +732,8 @@
   "bestVirtualOffice": {
     "label": "Bästa programvaran för virtuellt kontor",
     "meta": {
-      "title": "Bästa programvaran för virtuellt kontor 2026, ärligt jämförd",
-      "description": "Tio virtuella kontor för distansteam jämförda utifrån pris, gratisplan och vad de är bäst på, samt vad ett team på 10 personer betalar varje månad."
+      "title": "Bästa programvaran för virtuellt kontor 2026: 10 jämförda, med priser",
+      "description": "Tio virtuella kontor för team på distans jämförda utifrån pris, gratisplaner, appar, inspelning och enkel inloggning, samt vad ett team på 10 personer betalar varje månad och vilket som passar vem."
     },
     "title": "Bästa programvaran för virtuellt kontor <em>2026, ärligt jämförd.</em>",
     "intro": "Ett virtuellt kontor ger ett distansteam en plats att vara på hela dagen: du ser vem som är på plats och pratar genom att gå fram till dem, inte genom att skicka en länk. Här är de tio som är värda att titta på, vad de kostar och vem de är till för. Vi gör TinyFloor, så vi är inte neutrala; vi berättar var varje produkt är starkare än vår, och alla priser kommer från deras egna prissidor, kontrollerade i oktober 2026.",
@@ -903,6 +903,172 @@
         }
       },
       {
+        "title": "Gratis programvara för virtuellt kontor, en jämförelse",
+        "body": [
+          "Åtta av dessa har en gratisplan eller en gratisversion; fyra har bara en provperiod. Begränsningarna skiljer sig mer än priserna, så anpassa dem efter hur ditt team arbetar."
+        ],
+        "table": {
+          "head": [
+            "Produkt",
+            "Gratisplan",
+            "Begränsningen som spelar roll"
+          ],
+          "rows": [
+            [
+              "TinyFloor",
+              "Upp till 3 personer",
+              "Alla funktioner, ingen tidsgräns"
+            ],
+            [
+              "SoWork",
+              "Upp till 10 medlemmar",
+              "Möten avslutas efter 30 minuter; inga inspelningar"
+            ],
+            [
+              "WorkAdventure",
+              "Upp till 10 personer samtidigt",
+              "Offentliga rum"
+            ],
+            [
+              "ZEP",
+              "Upp till 10 personer samtidigt",
+              "En skärmdelning per karta; inget lösenord"
+            ],
+            [
+              "SpatialChat",
+              "Upp till 12 personer",
+              "2 timmars möten om dagen"
+            ],
+            [
+              "Kumospace",
+              "Upp till 5 medlemmar och 50 gäster",
+              "En våning"
+            ],
+            [
+              "Teamflow",
+              "Upp till 5 personer",
+              "Möten avslutas efter 45 minuter; datorapp"
+            ],
+            [
+              "oVice",
+              "En gratisversion",
+              "Förhandsversion, utan support eller åtkomstkontroller"
+            ],
+            [
+              "Gather, Spot, Roam, Sococo",
+              "Ingen",
+              "En provperiod: 30 dagar för Gather och Spot, 14 för Roam"
+            ]
+          ],
+          "note": "Från varje produkts prissida i oktober 2026. En gratisplan som täcker hela teamet slår alla betalplaner; en plan som avbryter alla möten i förtid gör det inte."
+        }
+      },
+      {
+        "title": "Appar, inspelning och enkel inloggning",
+        "body": [
+          "Vad de körs på, om de spelar in möten och om man kan logga in via företagets identitetsleverantör."
+        ],
+        "table": {
+          "head": [
+            "Produkt",
+            "Körs på",
+            "Inspelning och AI-anteckningar",
+            "Enkel inloggning"
+          ],
+          "rows": [
+            [
+              "TinyFloor",
+              "Webbläsaren, på dator och telefon",
+              "Nej",
+              "Nej"
+            ],
+            [
+              "Gather",
+              "Webbläsare och en datorapp",
+              "Inspelning, transkribering och AI-anteckningar, inom månatliga timmar",
+              "På Custom"
+            ],
+            [
+              "SoWork",
+              "Webbläsare, Mac, Windows, iOS och Android",
+              "2 inspelningar på Basic; AI-sammanfattningar på Premium",
+              "På Enterprise"
+            ],
+            [
+              "Spot",
+              "Webbläsare och en datorapp",
+              "Inte angivet",
+              "På Enterprise"
+            ],
+            [
+              "Kumospace",
+              "Webbläsare, Windows, macOS, iOS och Android",
+              "Inspelning på Business",
+              "På Enterprise"
+            ],
+            [
+              "WorkAdventure",
+              "Webbläsare; kan driftas själv",
+              "Inspelning",
+              "Inte angivet"
+            ],
+            [
+              "SpatialChat",
+              "Webbläsare",
+              "Upp till 7 sparade inspelningar på Business",
+              "På Enterprise"
+            ],
+            [
+              "Roam",
+              "Dator- och mobilappar",
+              "Inspelning och AI-anteckningar",
+              "Inte angivet"
+            ],
+            [
+              "oVice",
+              "Webbläsare, dator- och mobilappar",
+              "Inspelning, transkribering och AI-protokoll på Business Starter",
+              "På betalplaner"
+            ],
+            [
+              "Sococo",
+              "På dator, samt iOS- och Android-appar",
+              "Inte angivet",
+              "Inte angivet"
+            ]
+          ],
+          "note": "Från varje produkts prissida och funktionssida i oktober 2026. Inte angivet betyder att vi inte kunde hitta information om det, inte att det saknas."
+        }
+      },
+      {
+        "title": "Integritet och säkerhet",
+        "body": [
+          "Ett virtuellt kontor visar vem som arbetar och när, så kontrollera vem som kan komma in och vad som sparas innan ditt team flyttar in."
+        ],
+        "items": [
+          {
+            "title": "Vem som kan komma in",
+            "body": "Vissa gratisplaner lämnar utrymmet öppet för alla med länken: ZEP:s gratisplan har inget lösenord eller inloggningsregel, och WorkAdventures gratisrum är offentliga. Betalplaner lägger till lösenord, inloggningsregler eller åtkomstkontroller. TinyFloors kontor är privata på alla planer: man går med via inbjudan och loggar in."
+          },
+          {
+            "title": "Enkel inloggning",
+            "body": "Att logga in via företagets identitetsleverantör är en enterprise-funktion hos de flesta av dem: Gathers Custom-plan, samt SoWork, Spot, Kumospace och SpatialChat Enterprise. oVice inkluderar det från sin första betalplan. TinyFloor har ingen; man loggar in med Google eller en kod som skickas via e-post."
+          },
+          {
+            "title": "Drifta det själv",
+            "body": "WorkAdventure har öppen källkod och kan köras på egna servrar, om någon i teamet underhåller det. De andra driftas åt dig."
+          },
+          {
+            "title": "Inspelningar och AI-anteckningar",
+            "body": "De är användbara, men de är också en dokumentation av ditt teams samtal som sparas på någon annans servrar. Bestäm vem som får spela in och hur länge inspelningar sparas innan du slår på dem."
+          },
+          {
+            "title": "Vad kontoret visar",
+            "body": "Att se vem som är på plats är hela poängen, men det kan kännas som att vara övervakad. Föredra ett verktyg som visar en status man ställer in själv, inte ett som spårar aktivitet eller tid vid skrivbordet."
+          }
+        ]
+      },
+      {
         "title": "Vilken för vilket team",
         "items": [
           {
@@ -928,6 +1094,30 @@
           {
             "title": "Ett större företag",
             "body": "Gather, Roam, oVice Business eller Sococo, som säljer till större team med årsavtal."
+          }
+        ]
+      },
+      {
+        "title": "Också värt en titt",
+        "body": [
+          "Inte med på listan över de tio, men jämförs ofta med dem. Jämför du två av de tio? Läs [Gather mot Kumospace](/gather-vs-kumospace) eller [ZEP mot Gather](/zep-vs-gather)."
+        ],
+        "items": [
+          {
+            "title": "Teamflow",
+            "body": "En datorapp för Mac och Windows med appar inuti kontoret, gratis för 5 personer med möten på 45 minuter, därefter 15 $ per anställd i månaden vid årsbetalning. [Fullständig jämförelse](/teamflow-alternative)."
+          },
+          {
+            "title": "ZEP",
+            "body": "Ett 2D-utrymme från Korea, gratis för 10 personer samtidigt, därefter från 4 $ per användare i månaden. Mycket av det används nu för lektioner och evenemang. [Fullständig jämförelse](/zep-alternative)."
+          },
+          {
+            "title": "Discord",
+            "body": "Inget virtuellt kontor, men många små team använder dess röstkanaler som ett. Gratis, med bra ljud och byggt för spelcommunities. [Fullständig jämförelse](/discord-for-work)."
+          },
+          {
+            "title": "Slack huddles",
+            "body": "Samtal inuti Slack. På Slacks gratisplan rymmer en huddle 2 personer; grupphuddles kräver en betalplan för alla. [Fullständig jämförelse](/slack-huddles-alternative)."
           }
         ]
       }
@@ -956,6 +1146,18 @@
       {
         "q": "Behöver jag installera något?",
         "a": "Inte för TinyFloor, Gather, SoWork, WorkAdventure, SpatialChat eller oVice, som körs i webbläsaren. Roam är en skrivbordsapp, och Kumospace, Gather och Spot erbjuder även appar."
+      },
+      {
+        "q": "Vilken programvara för virtuellt kontor har AI-sammanfattningar av möten?",
+        "a": "Gather inkluderar AI-mötesanteckningar, SoWork Premium skriver sammanfattningar, transkriberingar och åtgärdspunkter, Roam har AI-anteckningar och oVice lägger till AI-protokoll på Business Starter. TinyFloor har inga inspelningar eller AI-anteckningar."
+      },
+      {
+        "q": "Vilken programvara för virtuellt kontor har enkel inloggning?",
+        "a": "Gather på sin Custom-plan, SoWork, Spot, Kumospace och SpatialChat på Enterprise, och oVice från sin första betalplan. TinyFloor har inte enkel inloggning; man loggar in med Google eller en kod via e-post."
+      },
+      {
+        "q": "Är ett virtuellt kontor samma sak som en virtuell arbetsyta?",
+        "a": "Oftast ja: båda namnen används för en gemensam plats online där ett distansteam arbetar, ser vem som är där och pratar. ”Virtuell arbetsyta” betyder också något annat inom IT: ett fjärrskrivbord, en hel dator som körs i molnet, vilket är en helt annan produkt."
       }
     ]
   },
@@ -1109,7 +1311,7 @@
       {
         "title": "Samma team på andra håll",
         "body": [
-          "Vad samma team betalar i månaden på andra virtuella kontor, på den billigaste plan som passar."
+          "Vad samma team betalar i månaden på andra [virtuella kontor](/guides/best-virtual-office-software), på den billigaste plan som passar."
         ],
         "table": {
           "head": [
@@ -1150,7 +1352,7 @@
         "items": [
           {
             "title": "Du vill utforma ditt kontor själv",
-            "body": "I Gather lägger du ut våningar, rum och över 200 objekt. De flesta alternativ ger dig ett färdigt kontor."
+            "body": "I Gather lägger du ut våningar, rum och över 200 objekt. De flesta [alternativ](/gather-alternative) ger dig ett färdigt kontor."
           },
           {
             "title": "Du behöver inspelningar och transkriberingar",
@@ -1166,7 +1368,7 @@
           },
           {
             "title": "När det inte är det",
-            "body": "Om ditt team mest behöver se vem som är där, prata och ha möten, betalar du för funktioner du inte använder, varje månad, för varje person."
+            "body": "Om ditt team mest behöver [se vem som är där](/team-presence), prata och ha möten, betalar du för funktioner du inte använder, varje månad, för varje person."
           }
         ]
       },
@@ -2035,7 +2237,7 @@
           },
           {
             "title": "Har du tillräckligt med tid för fokus?",
-            "body": "För många möten är ett av de vanligaste klagomålen på distans."
+            "body": "[För många möten](/guides/async-communication) är ett av de vanligaste klagomålen på distans."
           }
         ]
       },
@@ -2113,7 +2315,7 @@
           },
           {
             "title": "Vem skulle du vilja lära dig av?",
-            "body": "En mentor eller att jobba i par kan ge mer än en kurs."
+            "body": "En mentor eller [att jobba i par](/remote-pair-programming) kan ge mer än en kurs."
           }
         ]
       },
@@ -2157,7 +2359,7 @@
           },
           {
             "title": "Fungerar dina arbetstider för dig?",
-            "body": "Täcker tidszoner, sena samtal och gränsen mellan jobb och hem."
+            "body": "Täcker [tidszoner](/tools/time-zone-meeting-planner), sena samtal och gränsen mellan jobb och hem."
           },
           {
             "title": "Bromsar din arbetsplats hemma dig?",
@@ -2692,7 +2894,7 @@
       {
         "title": "Vem gör vad",
         "body": [
-          "Onboarding går snett när alla tror att någon annan sköter det. Utse en ansvarig för varje del."
+          "[Onboarding](/remote-onboarding) går snett när alla tror att någon annan sköter det. Utse en ansvarig för varje del."
         ],
         "table": {
           "head": [
@@ -2797,7 +2999,7 @@
           },
           {
             "title": "Kom överens om arbetstider",
-            "body": "När personen är online, teamets gemensamma timmar och hur snabbt folk brukar svara."
+            "body": "När personen är online, teamets [gemensamma timmar](/guides/how-to-manage-a-remote-team) och hur snabbt folk brukar svara."
           },
           {
             "title": "Första enskilda samtalet",
@@ -2840,7 +3042,7 @@
           },
           {
             "title": "Osynliga kollegor",
-            "body": "När man inte ser vem som är där är det svårt att veta när det är okej att fråga. Gör närvaron synlig."
+            "body": "När man inte ser vem som är där är det svårt att veta när det är okej att fråga. Gör [närvaron synlig](/team-presence)."
           },
           {
             "title": "För många möten på en gång",
@@ -2848,7 +3050,7 @@
           },
           {
             "title": "Onboardingen slutar efter vecka ett",
-            "body": "De tre första månaderna avgör om folk stannar. Fortsätt med enskilda samtal och avstämningar."
+            "body": "De tre första månaderna avgör om folk stannar. Fortsätt med [enskilda samtal](/guides/one-on-one-meeting-questions) och avstämningar."
           }
         ]
       }
@@ -2883,7 +3085,7 @@
   "bodyDoubling": {
     "label": "Body doubling",
     "meta": {
-      "title": "Body doubling: Vad det är och så gör du det online",
+      "title": "Body doubling: Vad det är, apparna och hur du gör det online",
       "description": "Vad body doubling är, varför det är lättare att komma igång bredvid någon, hur du gör det online, hur du håller i en session och hur ni gör det i teamet."
     },
     "title": "Body doubling: <em>jobba bredvid någon, få mer gjort.</em>",
@@ -2916,7 +3118,7 @@
           },
           {
             "title": "Mindre ensamt",
-            "body": "För de som jobbar hemifrån gör det tysta sällskapet från en annan person att långa arbetspass känns lättare."
+            "body": "För de som [jobbar hemifrån](/virtual-office) gör det tysta sällskapet från en annan person att långa arbetspass känns lättare."
           }
         ]
       },
@@ -2935,9 +3137,14 @@
               "Gratis och enkelt. Bestäm en tid och ha kameran på eller av"
             ],
             [
-              "Matchningstjänster",
+              "Matchningstjänster, som Focusmate",
               "En främling, bokad för ett tidsbestämt pass",
               "Når ingen du känner är ledig och du vill ha en fast tid"
+            ],
+            [
+              "Gruppass, som Flow Club",
+              "En värd och en grupp, på bestämda tider",
+              "Struktur och sällskap, med folk som dyker upp för att arbeta"
             ],
             [
               "”Study with me”-videor",
@@ -3040,8 +3247,8 @@
       {
         "title": "Body doubling med ditt team",
         "body": [
-          "Distansteam kan köra body doubling utan någon extra app – teamet är redan där. På en gemensam [virtuell coworking-yta](/virtual-coworking) kan alla se vem som arbetar, sitta vid sitt eget skrivbord och sätta sig som upptagen, så att en tyst eftermiddag ändå känns delad.",
-          "För mer struktur kan du starta ett möte som heter Fokus, bjuda in de som vill vara med och köra upplägget ovan. De som hellre inte vill prata kan helt enkelt bara vara på våningen och arbeta nära alla andra."
+          "Distansteam kan köra body doubling utan någon extra app – teamet är redan där. På en gemensam [virtuell coworking-yta](/virtual-coworking) kan alla [se vem som arbetar](/team-presence), sitta vid sitt eget skrivbord och sätta sig som upptagen, så att en tyst eftermiddag ändå känns delad.",
+          "För mer struktur kan du starta ett [möte](/virtual-meeting-room) som heter Fokus, bjuda in de som vill vara med och köra upplägget ovan. De som hellre inte vill prata kan helt enkelt bara vara på våningen och arbeta nära alla andra."
         ]
       }
     ],
@@ -3053,6 +3260,10 @@
       {
         "q": "Vad är body doubling?",
         "a": "Att arbeta med en annan person i närheten, fysiskt eller online, för att göra det lättare att påbörja en uppgift och fortsätta arbeta. Den andra personen hjälper inte till med arbetet, utan är bara där."
+      },
+      {
+        "q": "Vilken är den bästa appen för body doubling?",
+        "a": "Det beror på vem du vill ha där. Focusmate matchar dig med en främling för ett tidsbestämt pass, gruppappar som Flow Club kör ledda pass, och ett virtuellt kontor som TinyFloor placerar dig bredvid folk du redan känner, hela dagen. Ett videosamtal med en vän fungerar också och kostar ingenting."
       },
       {
         "q": "Är body doubling bara för personer med ADHD?",

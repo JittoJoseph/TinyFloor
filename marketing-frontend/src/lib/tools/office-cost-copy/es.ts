@@ -2,15 +2,15 @@ import type { OfficeCostsContent } from "@/lib/tools/office-costs";
 
 const es: OfficeCostsContent = {
   meta: {
-    title: "Calculadora de coste de oficina virtual: lo que 9 herramientas cuestan a tu equipo",
+    title: "Calculadora de coste de oficina virtual: lo que 10 herramientas cuestan a tu equipo",
     description:
-      "Indica el tamaño de tu equipo y mira cuánto cuestan al mes Gather, SoWork, Kumospace, WorkAdventure, SpatialChat, Roam, oVice, Sococo y TinyFloor, con pago anual o mensual, según la página de precios de cada uno.",
+      "Indica el tamaño de tu equipo y mira cuánto cuestan al mes Gather, SoWork, Spot, Kumospace, WorkAdventure, SpatialChat, Roam, oVice, Sococo y TinyFloor, con pago anual o mensual, según la página de precios de cada uno.",
   },
   eyebrow: "Herramientas gratis",
   updated: "Precios revisados el",
   title: "Lo que una oficina virtual <em>cuesta a tu equipo.</em>",
   intro:
-    "La mayoría de las oficinas virtuales cobran por persona, algunas por espacio o por oficina, y los planes gratuitos se quedan en tamaños distintos. Indica cuántas personas hay en tu equipo para ver cuánto cuesta al mes cada una de nueve herramientas, de la más barata a la más cara.",
+    "La mayoría de las oficinas virtuales cobran por persona, algunas por espacio o por oficina, y los planes gratuitos se quedan en tamaños distintos. Indica cuántas personas hay en tu equipo para ver cuánto cuesta al mes cada una de diez herramientas, de la más barata a la más cara.",
   calculator: {
     people: "Personas en el equipo",
     count: "{count} personas",
@@ -50,7 +50,7 @@ const es: OfficeCostsContent = {
       items: [
         {
           title: "Por miembro",
-          detail: "Gather, SoWork, Kumospace, WorkAdventure, SpatialChat",
+          detail: "Gather, SoWork, Spot, Kumospace, WorkAdventure, SpatialChat",
           body: "Pagas por todas las personas con cuenta, cada mes, entren o no. La factura crece con cada contratación: un equipo de 10 paga el doble que uno de 5.",
         },
         {
@@ -107,7 +107,7 @@ const es: OfficeCostsContent = {
         { title: "Impuestos", body: "Todos los precios de aquí son sin impuestos. Según dónde estéis, el IVA o el impuesto sobre ventas se añade al pagar." },
         {
           title: "Pruebas",
-          body: "Gather tiene una prueba de 30 días, Roam y oVice de 14, SoWork de 7. La prueba te dice si el equipo lo va a usar; el precio, si vais a seguir pagando.",
+          body: "Gather y Spot tienen una prueba de 30 días, Roam y oVice de 14, SoWork de 7. La prueba te dice si el equipo lo va a usar; el precio, si vais a seguir pagando.",
         },
       ],
     },
@@ -127,11 +127,11 @@ const es: OfficeCostsContent = {
   faq: [
     {
       q: "¿Cuánto cuesta una oficina virtual al mes?",
-      a: "Para un equipo de 10 con un plan de pago, de 29 $ a 195 $ al mes según la herramienta: TinyFloor cuesta 29 $ por toda la oficina, y las herramientas por persona van de 54 $ (SoWork Basic, pago anual) a 195 $ (Roam).",
+      a: "Para un equipo de 10 con un plan de pago, de 29 $ a 195 $ al mes según la herramienta: TinyFloor cuesta 29 $ por toda la oficina, y las herramientas por persona van de 48 $ (Spot Basic, pago anual) a 195 $ (Roam).",
     },
     {
       q: "¿Cuál es la oficina virtual más barata para un equipo pequeño?",
-      a: "Un plan gratuito que os sirva: el de SoWork cubre 10 miembros con reuniones de 30 minutos, el de WorkAdventure 10 personas a la vez, el de Kumospace 5 miembros y el de TinyFloor 3 personas. A partir de ahí, TinyFloor, a 29 $ al mes por todo el equipo, es el precio de pago más bajo desde 6 personas.",
+      a: "Un plan gratuito que os sirva: el de SoWork cubre 10 miembros con reuniones de 30 minutos, el de WorkAdventure 10 personas a la vez, el de Kumospace 5 miembros y el de TinyFloor 3 personas. A partir de ahí, TinyFloor, a 29 $ al mes por todo el equipo, es el precio de pago más bajo desde 7 personas.",
     },
     {
       q: "¿Gather es gratis?",

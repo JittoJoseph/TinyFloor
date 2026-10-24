@@ -2,15 +2,15 @@ import type { OfficeCostsContent } from "@/lib/tools/office-costs";
 
 const nl: OfficeCostsContent = {
   meta: {
-    title: "Kostencalculator virtueel kantoor: wat 9 tools je team kosten",
+    title: "Kostencalculator virtueel kantoor: wat 10 tools je team kosten",
     description:
-      "Vul in hoe groot je team is en zie wat Gather, SoWork, Kumospace, WorkAdventure, SpatialChat, Roam, oVice, Sococo en TinyFloor per maand kosten, bij jaarlijkse of maandelijkse betaling, volgens de prijspagina van elk.",
+      "Vul in hoe groot je team is en zie wat Gather, SoWork, Spot, Kumospace, WorkAdventure, SpatialChat, Roam, oVice, Sococo en TinyFloor per maand kosten, bij jaarlijkse of maandelijkse betaling, volgens de prijspagina van elk.",
   },
   eyebrow: "Gratis tools",
   updated: "Prijzen gecontroleerd op",
   title: "Wat een virtueel kantoor <em>je team kost.</em>",
   intro:
-    "De meeste virtuele kantoren rekenen per persoon, een paar per ruimte of per kantoor, en de gratis abonnementen houden op bij verschillende groottes. Vul in hoeveel mensen er in je team zitten en zie wat elk van negen tools per maand kost, de goedkoopste eerst.",
+    "De meeste virtuele kantoren rekenen per persoon, een paar per ruimte of per kantoor, en de gratis abonnementen houden op bij verschillende groottes. Vul in hoeveel mensen er in je team zitten en zie wat elk van tien tools per maand kost, de goedkoopste eerst.",
   calculator: {
     people: "Mensen in het team",
     count: "{count} mensen",
@@ -50,7 +50,7 @@ const nl: OfficeCostsContent = {
       items: [
         {
           title: "Per lid",
-          detail: "Gather, SoWork, Kumospace, WorkAdventure, SpatialChat",
+          detail: "Gather, SoWork, Spot, Kumospace, WorkAdventure, SpatialChat",
           body: "Je betaalt elke maand voor iedereen met een account, of ze nu binnenkomen of niet. De rekening groeit met elke nieuwe collega: een team van 10 betaalt het dubbele van een team van 5.",
         },
         {
@@ -107,7 +107,7 @@ const nl: OfficeCostsContent = {
         { title: "Btw", body: "Alle prijzen hier zijn exclusief btw. Afhankelijk van waar jullie zitten, komt er bij het afrekenen btw of omzetbelasting bij." },
         {
           title: "Proefperiodes",
-          body: "Gather heeft een proefperiode van 30 dagen, Roam en oVice 14 dagen, SoWork 7 dagen. De proefperiode vertelt je of het team het gaat gebruiken; de prijs of jullie blijven betalen.",
+          body: "Gather en Spot hebben een proefperiode van 30 dagen, Roam en oVice 14 dagen, SoWork 7 dagen. De proefperiode vertelt je of het team het gaat gebruiken; de prijs of jullie blijven betalen.",
         },
       ],
     },
@@ -127,11 +127,11 @@ const nl: OfficeCostsContent = {
   faq: [
     {
       q: "Wat kost een virtueel kantoor per maand?",
-      a: "Voor een team van 10 met een betaald abonnement $ 29 tot $ 195 per maand, afhankelijk van de tool: TinyFloor kost $ 29 voor het hele kantoor, tools per persoon lopen van $ 54 (SoWork Basic, jaarlijks) tot $ 195 (Roam).",
+      a: "Voor een team van 10 met een betaald abonnement $ 29 tot $ 195 per maand, afhankelijk van de tool: TinyFloor kost $ 29 voor het hele kantoor, tools per persoon lopen van $ 48 (Spot Basic, jaarlijks) tot $ 195 (Roam).",
     },
     {
       q: "Wat is het goedkoopste virtuele kantoor voor een klein team?",
-      a: "Een gratis abonnement dat past: dat van SoWork dekt 10 leden met meetings van 30 minuten, dat van WorkAdventure 10 mensen tegelijk, dat van Kumospace 5 leden en dat van TinyFloor 3 mensen. Daarboven is TinyFloor, voor $ 29 per maand voor het hele team, vanaf 6 mensen de laagste betaalde prijs.",
+      a: "Een gratis abonnement dat past: dat van SoWork dekt 10 leden met meetings van 30 minuten, dat van WorkAdventure 10 mensen tegelijk, dat van Kumospace 5 leden en dat van TinyFloor 3 mensen. Daarboven is TinyFloor, voor $ 29 per maand voor het hele team, vanaf 7 mensen de laagste betaalde prijs.",
     },
     {
       q: "Is Gather gratis?",

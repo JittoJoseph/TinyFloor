@@ -39,7 +39,7 @@
       {
         "title": "Cinq minutes, en début de réunion",
         "body": [
-          "Sans préparation, quelle que soit la taille de l'équipe. Utilisez-en une pour ouvrir un point du matin ou une réunion hebdomadaire."
+          "Sans préparation, quelle que soit la taille de l'équipe. Utilisez-en une pour ouvrir [un point du matin](/virtual-standup) ou une réunion hebdomadaire."
         ],
         "items": [
           {
@@ -78,7 +78,7 @@
           {
             "title": "Pictionary sur un tableau blanc partagé",
             "detail": "20 min · 4 à 12 personnes",
-            "body": "Une personne dessine un mot sur un tableau que tout le monde voit pendant que les autres lancent des réponses. Une liste de mots du boulot ajoute des fous rires."
+            "body": "Une personne dessine un mot sur un [tableau](/online-whiteboard) que tout le monde voit pendant que les autres lancent des réponses. Une liste de mots du boulot ajoute des fous rires."
           },
           {
             "title": "Quiz sur l'équipe",
@@ -138,7 +138,7 @@
       {
         "title": "Sans aucune réunion",
         "body": [
-          "Tout n'a pas besoin d'un appel. Ces idées se déroulent sur une semaine dans un canal de chat et conviennent aux équipes sur plusieurs fuseaux."
+          "Tout n'a pas besoin d'un appel. Ces idées se déroulent sur une semaine dans [un canal de chat](/team-chat) et conviennent aux équipes sur plusieurs fuseaux."
         ],
         "items": [
           {
@@ -171,7 +171,7 @@
       {
         "title": "Une habitude, pas un événement",
         "body": [
-          "Les équipes les plus soudées comptent rarement sur les grands événements. Elles ont surtout plein de petits moments imprévus : un mot avant une réunion, une question qui devient une conversation, une chanson que quelqu'un lance.",
+          "Les équipes les plus soudées comptent rarement sur les grands événements. Elles ont surtout plein de [petits moments imprévus](/virtual-watercooler) : un mot avant une réunion, une question qui devient une conversation, une chanson que quelqu'un lance.",
           "Au bureau, cela arrive tout seul. À distance, il faut un lieu où l'on se voit et où l'on peut passer sans réserver d'appel. Donnez-le à votre équipe, et les activités ci-dessus deviennent un bonus plutôt que le seul moment où l'on se parle."
         ]
       }
@@ -231,7 +231,7 @@
           {
             "title": "Tu préfères",
             "detail": "Sans préparation · toute taille",
-            "body": "L'animateur propose un choix entre deux options, chacun répond en un mot, et deux personnes expliquent le leur."
+            "body": "L'animateur propose un [choix entre deux options](/tools/would-you-rather-questions), chacun répond en un mot, et deux personnes expliquent le leur."
           },
           {
             "title": "Opinions tranchées",
@@ -291,7 +291,7 @@
           {
             "title": "Dessin en trente secondes",
             "detail": "Sans préparation · 3 à 12 personnes",
-            "body": "Donnez un mot, lancez 30 secondes, et tout le monde le dessine en même temps sur un tableau blanc partagé."
+            "body": "Donnez un mot, lancez 30 secondes, et tout le monde le dessine en même temps sur un [tableau blanc partagé](/online-whiteboard)."
           },
           {
             "title": "Gartic Phone",
@@ -311,14 +311,14 @@
           {
             "title": "Quiz en cinq questions",
             "detail": "Peu de préparation · toute taille",
-            "body": "Cinq questions rapides sur la semaine, le produit ou l'équipe. Réponses dans le chat ; la plus rapide juste gagne."
+            "body": "Cinq [questions rapides sur la semaine](/tools/team-building-questions), le produit ou l'équipe. Réponses dans le chat ; la plus rapide juste gagne."
           }
         ]
       },
       {
         "title": "Bien l'animer",
         "body": [
-          "Jouez en début de réunion, pas à la fin, quand chacun est frais et que personne ne doit filer. Gardez le même jeu quelques semaines pour que personne n'ait à réapprendre les règles, puis changez.",
+          "Jouez en début de [réunion](/virtual-meeting-room), pas à la fin, quand chacun est frais et que personne ne doit filer. Gardez le même jeu quelques semaines pour que personne n'ait à réapprendre les règles, puis changez.",
           "Pour les grandes réunions, faites de petits groupes de quatre à six. Un jeu ne marche plus quand la plupart regardent au lieu de jouer."
         ]
       }
@@ -375,15 +375,15 @@
           },
           {
             "title": "Rendez les gens visibles",
-            "body": "Montrez qui est là, qui est occupé et qui est libre pour parler, pour que demander de l'aide ne ressemble pas à déranger."
+            "body": "Montrez [qui est là, qui est occupé](/team-presence) et qui est libre pour parler, pour que demander de l'aide ne ressemble pas à déranger."
           },
           {
             "title": "Gardez un lieu où passer",
-            "body": "Une salle toujours ouverte ou des permanences où l'on peut venir sans rien réserver."
+            "body": "Une [salle toujours ouverte](/virtual-meeting-room) ou des permanences où l'on peut venir sans rien réserver."
           },
           {
             "title": "Ayez de petits rituels",
-            "body": "Une démo hebdomadaire, un fil des réussites du vendredi, un jeu de cinq minutes. Petits, réguliers et identiques chaque semaine."
+            "body": "Une démo hebdomadaire, un fil des réussites du vendredi, [un jeu de cinq minutes](/guides/games-for-virtual-meetings). Petits, réguliers et identiques chaque semaine."
           },
           {
             "title": "Donnez un parrain aux nouveaux",
@@ -420,7 +420,7 @@
           },
           {
             "title": "Les réunions pour rester connectés",
-            "body": "Une réunion générale quotidienne pour se sentir ensemble devient vite une corvée. Donnez un lieu plutôt qu'un horaire."
+            "body": "Une réunion générale quotidienne pour se sentir ensemble devient vite une corvée. Donnez [un lieu](/virtual-office) plutôt qu'un horaire."
           }
         ]
       },
@@ -667,8 +667,8 @@
       {
         "title": "Le chat de proximité au travail",
         "body": [
-          "Les bureaux virtuels reprennent l'idée pour les équipes à distance. Votre équipe partage un étage en 2D, chacun est un personnage, et l'on parle en s'approchant de quelqu'un au lieu d'envoyer un lien de réunion.",
-          "Cela rend ce que les appels vidéo font perdre : voir qui est là, les questions rapides et les conversations en aparté. Deux personnes peuvent parler dans un coin pendant que d'autres travaillent, comme dans un vrai bureau."
+          "Les [bureaux virtuels](/virtual-office) reprennent l'idée pour les équipes à distance. Votre équipe partage un étage en 2D, chacun est un personnage, et l'on parle en s'approchant de quelqu'un au lieu d'envoyer un lien de réunion.",
+          "Cela rend ce que les appels vidéo font perdre : voir qui est là, les questions rapides et les [conversations en aparté](/virtual-watercooler). Deux personnes peuvent parler dans un coin pendant que d'autres travaillent, comme dans un vrai bureau."
         ]
       },
       {
@@ -732,8 +732,8 @@
   "bestVirtualOffice": {
     "label": "Meilleur logiciel de bureau virtuel",
     "meta": {
-      "title": "Meilleur logiciel de bureau virtuel en 2026, comparé honnêtement",
-      "description": "Dix bureaux virtuels pour équipes à distance comparés sur le prix, l'offre gratuite et leurs points forts, avec ce qu'une équipe de 10 personnes paie chaque mois."
+      "title": "Meilleurs logiciels de bureau virtuel 2026 : 10 comparés et prix",
+      "description": "Dix bureaux virtuels pour équipes à distance comparés selon les tarifs, les forfaits gratuits, les applications, l'enregistrement et l'authentification unique, avec ce que paie une équipe de 10 personnes par mois et l'outil adapté à chaque besoin."
     },
     "title": "Le meilleur logiciel de bureau virtuel <em>en 2026, comparé honnêtement.</em>",
     "intro": "Un bureau virtuel offre à une équipe à distance un lieu unique pour la journée : vous voyez qui est là et vous discutez en vous approchant d'eux, sans envoyer de lien. Voici les dix qui valent le détour, leur coût et à qui ils s'adressent. Nous créons TinyFloor, nous ne sommes donc pas neutres ; nous indiquons où chaque produit est plus fort que le nôtre, et chaque tarif provient de sa propre page de prix, vérifiée en octobre 2026.",
@@ -903,6 +903,172 @@
         }
       },
       {
+        "title": "Comparatif des logiciels de bureau virtuel gratuits",
+        "body": [
+          "Huit d'entre eux proposent une offre gratuite ou une version gratuite ; quatre n'offrent qu'un essai. Leurs limites diffèrent plus que leurs prix, choisissez donc celle qui correspond au fonctionnement de votre équipe."
+        ],
+        "table": {
+          "head": [
+            "Produit",
+            "Offre gratuite",
+            "La limite importante"
+          ],
+          "rows": [
+            [
+              "TinyFloor",
+              "Jusqu'à 3 personnes",
+              "Toutes les fonctionnalités, sans limite de temps"
+            ],
+            [
+              "SoWork",
+              "Jusqu'à 10 membres",
+              "Réunions limitées à 30 minutes ; pas d'enregistrements"
+            ],
+            [
+              "WorkAdventure",
+              "Jusqu'à 10 personnes en même temps",
+              "Salles publiques"
+            ],
+            [
+              "ZEP",
+              "Jusqu'à 10 personnes en même temps",
+              "Un seul partage d'écran par carte ; pas de mot de passe"
+            ],
+            [
+              "SpatialChat",
+              "Jusqu'à 12 personnes",
+              "2 heures de réunions par jour"
+            ],
+            [
+              "Kumospace",
+              "Jusqu'à 5 membres et 50 invités",
+              "Un seul étage"
+            ],
+            [
+              "Teamflow",
+              "Jusqu'à 5 personnes",
+              "Réunions limitées à 45 minutes ; application de bureau"
+            ],
+            [
+              "oVice",
+              "Une version gratuite",
+              "Version préliminaire, sans assistance ni contrôle d'accès"
+            ],
+            [
+              "Gather, Spot, Roam, Sococo",
+              "Aucune",
+              "Un essai : 30 jours pour Gather et Spot, 14 pour Roam"
+            ]
+          ],
+          "note": "Tirés de la page de tarifs de chaque produit en octobre 2026. Une offre gratuite qui couvre toute votre équipe vaut mieux que n'importe quelle offre payante ; ce n'est pas le cas d'une offre qui écourte toutes vos réunions."
+        }
+      },
+      {
+        "title": "Applications, enregistrement et authentification unique",
+        "body": [
+          "Les plateformes compatibles, la possibilité d'enregistrer les réunions et la connexion via le fournisseur d'identité de votre entreprise."
+        ],
+        "table": {
+          "head": [
+            "Produit",
+            "Compatible avec",
+            "Enregistrement et notes par IA",
+            "Authentification unique"
+          ],
+          "rows": [
+            [
+              "TinyFloor",
+              "Le navigateur, sur ordinateur et mobile",
+              "Non",
+              "Non"
+            ],
+            [
+              "Gather",
+              "Navigateur et application de bureau",
+              "Enregistrement, transcription et notes par IA, dans la limite d'heures mensuelles",
+              "Sur l'offre Custom"
+            ],
+            [
+              "SoWork",
+              "Navigateur, Mac, Windows, iOS et Android",
+              "2 enregistrements avec l'offre Basic ; résumés par IA avec l'offre Premium",
+              "Sur l'offre Enterprise"
+            ],
+            [
+              "Spot",
+              "Navigateur et application de bureau",
+              "Non indiqué",
+              "Sur l'offre Enterprise"
+            ],
+            [
+              "Kumospace",
+              "Navigateur, Windows, macOS, iOS et Android",
+              "Enregistrement avec l'offre Business",
+              "Sur l'offre Enterprise"
+            ],
+            [
+              "WorkAdventure",
+              "Navigateur ; peut être auto-hébergé",
+              "Enregistrement",
+              "Non indiqué"
+            ],
+            [
+              "SpatialChat",
+              "Navigateur",
+              "Jusqu'à 7 enregistrements stockés avec l'offre Business",
+              "Sur l'offre Enterprise"
+            ],
+            [
+              "Roam",
+              "Applications de bureau et mobiles",
+              "Enregistrement et notes par IA",
+              "Non indiqué"
+            ],
+            [
+              "oVice",
+              "Navigateur, applications de bureau et mobiles",
+              "Enregistrement, transcription et comptes-rendus par IA avec l'offre Business Starter",
+              "Avec les offres payantes"
+            ],
+            [
+              "Sococo",
+              "Sur ordinateur, ainsi que des applications iOS et Android",
+              "Non indiqué",
+              "Non indiqué"
+            ]
+          ],
+          "note": "Tirés des pages de tarifs et de fonctionnalités de chaque produit en octobre 2026. « Non indiqué » signifie que nous n'avons pas trouvé la mention, pas que la fonctionnalité est absente."
+        }
+      },
+      {
+        "title": "Confidentialité et sécurité",
+        "body": [
+          "Un bureau virtuel montre qui travaille et quand. Vérifiez donc qui peut y accéder et quelles données sont conservées avant que votre équipe ne s'y installe."
+        ],
+        "items": [
+          {
+            "title": "Qui peut entrer",
+            "body": "Certaines offres gratuites laissent l'espace ouvert à toute personne disposant du lien : l'offre gratuite de ZEP n'a pas de mot de passe ni de règle de connexion, et les salles gratuites de WorkAdventure sont publiques. Les offres payantes ajoutent des mots de passe, des règles de connexion ou des contrôles d'accès. Les bureaux TinyFloor sont privés dans toutes les offres : on y accède sur invitation et après connexion."
+          },
+          {
+            "title": "Authentification unique",
+            "body": "La connexion via le fournisseur d'identité de votre entreprise est une fonctionnalité d'entreprise pour la plupart d'entre eux : l'offre Custom de Gather, et les offres Enterprise de SoWork, Spot, Kumospace et SpatialChat. oVice l'inclut dès sa première offre payante. TinyFloor n'en propose pas ; les utilisateurs se connectent avec Google ou un code envoyé par e-mail."
+          },
+          {
+            "title": "L'auto-hébergement",
+            "body": "WorkAdventure est open source et peut fonctionner sur vos propres serveurs, si quelqu'un dans l'équipe s'occupe de sa maintenance. Les autres sont hébergés pour vous."
+          },
+          {
+            "title": "Enregistrements et notes par IA",
+            "body": "Ils sont utiles, mais ils constituent aussi un historique des conversations de votre équipe conservé sur les serveurs d'un tiers. Décidez de qui peut enregistrer et de la durée de conservation des enregistrements avant de les activer."
+          },
+          {
+            "title": "Ce que montre le bureau",
+            "body": "Voir qui est présent est tout l'intérêt, mais cela peut donner l'impression d'être surveillé. Privilégiez un outil qui affiche un statut défini par l'utilisateur, plutôt qu'un outil qui suit l'activité ou le temps passé au bureau."
+          }
+        ]
+      },
+      {
         "title": "Lequel pour quelle équipe",
         "items": [
           {
@@ -928,6 +1094,30 @@
           {
             "title": "Une plus grande entreprise",
             "body": "Gather, Roam, oVice Business ou Sococo, qui vendent aux grandes équipes avec des contrats annuels."
+          }
+        ]
+      },
+      {
+        "title": "Autres options à découvrir",
+        "body": [
+          "Ils ne figurent pas dans la liste des dix, mais leur sont souvent comparés. Vous hésitez entre deux des dix ? Lisez [Gather vs Kumospace](/gather-vs-kumospace) ou [ZEP vs Gather](/zep-vs-gather)."
+        ],
+        "items": [
+          {
+            "title": "Teamflow",
+            "body": "Une application de bureau pour Mac et Windows avec des applications intégrées au bureau, gratuite pour 5 personnes avec des réunions de 45 minutes, puis 15 $ par employé et par mois en facturation annuelle. [Comparaison détaillée](/teamflow-alternative)."
+          },
+          {
+            "title": "ZEP",
+            "body": "Un espace en 2D venu de Corée, gratuit pour 10 personnes en même temps, puis à partir de 4 $ par utilisateur et par mois. Il sert aujourd'hui principalement pour des cours et des événements. [Comparaison détaillée](/zep-alternative)."
+          },
+          {
+            "title": "Discord",
+            "body": "Ce n'est pas un bureau virtuel, mais de nombreuses petites équipes utilisent ses salons de discussion vocale comme tel. Gratuit, avec un son de qualité, et conçu pour les communautés de joueurs. [Comparaison détaillée](/discord-for-work)."
+          },
+          {
+            "title": "Slack huddles",
+            "body": "Des appels au sein de Slack. Avec l'offre gratuite de Slack, un huddle peut accueillir 2 personnes ; les huddles de groupe nécessitent une offre payante pour tout le monde. [Comparaison détaillée](/slack-huddles-alternative)."
           }
         ]
       }
@@ -956,6 +1146,18 @@
       {
         "q": "Faut-il installer quelque chose ?",
         "a": "Pas pour TinyFloor, Gather, SoWork, WorkAdventure, SpatialChat ou oVice, qui fonctionnent dans le navigateur. Roam est une application de bureau, et Kumospace, Gather et Spot proposent également des applications."
+      },
+      {
+        "q": "Quel logiciel de bureau virtuel propose des résumés de réunion par IA ?",
+        "a": "Gather inclut des notes de réunion par IA, SoWork Premium rédige des résumés, des transcriptions et des plans d'action, Roam propose des notes par IA, et oVice ajoute des comptes-rendus par IA avec l'offre Business Starter. TinyFloor ne propose ni enregistrements ni notes par IA."
+      },
+      {
+        "q": "Quel logiciel de bureau virtuel propose l'authentification unique ?",
+        "a": "Gather avec son offre Custom, SoWork, Spot, Kumospace et SpatialChat avec l'offre Enterprise, et oVice dès sa première offre payante. TinyFloor ne propose pas l'authentification unique ; les utilisateurs se connectent avec Google ou un code envoyé par e-mail."
+      },
+      {
+        "q": "Un bureau virtuel est-il la même chose qu'un espace de travail virtuel ?",
+        "a": "En général, oui : les deux termes désignent un espace en ligne partagé où une équipe à distance travaille, voit qui est là et discute. « Espace de travail virtuel » a aussi un autre sens en informatique : un bureau à distance, soit un ordinateur entier qui fonctionne dans le cloud, ce qui est un produit différent."
       }
     ]
   },
@@ -1109,7 +1311,7 @@
       {
         "title": "La même équipe ailleurs",
         "body": [
-          "Ce que paient par mois les mêmes équipes sur d'autres bureaux virtuels, avec l'offre la moins chère qui leur convient."
+          "Ce que paient par mois les mêmes équipes sur d'autres [bureaux virtuels](/guides/best-virtual-office-software), avec l'offre la moins chère qui leur convient."
         ],
         "table": {
           "head": [
@@ -1150,7 +1352,7 @@
         "items": [
           {
             "title": "Vous voulez concevoir votre bureau",
-            "body": "Gather vous laisse aménager des étages, des salles et plus de 200 objets. La plupart des alternatives vous donnent un bureau tout prêt."
+            "body": "Gather vous laisse aménager des étages, des salles et plus de 200 objets. La plupart des [alternatives](/gather-alternative) vous donnent un bureau tout prêt."
           },
           {
             "title": "Vous avez besoin d'enregistrements et de transcriptions",
@@ -1166,7 +1368,7 @@
           },
           {
             "title": "Quand ce n'est pas le cas",
-            "body": "Si votre équipe veut surtout voir qui est là, discuter et se réunir, vous payez des fonctions dont vous ne vous servirez pas, chaque mois, pour chaque personne."
+            "body": "Si votre équipe veut surtout [voir qui est là](/team-presence), discuter et se réunir, vous payez des fonctions dont vous ne vous servirez pas, chaque mois, pour chaque personne."
           }
         ]
       },
@@ -2035,7 +2237,7 @@
           },
           {
             "title": "As-tu assez de temps pour te concentrer ?",
-            "body": "Trop de réunions est l'une des plaintes les plus courantes à distance."
+            "body": "[Trop de réunions](/guides/async-communication) est l'une des plaintes les plus courantes à distance."
           }
         ]
       },
@@ -2113,7 +2315,7 @@
           },
           {
             "title": "De qui aimerais-tu apprendre ?",
-            "body": "Un mentor ou du travail en binôme peut faire plus qu'une formation."
+            "body": "Un mentor ou du [travail en binôme](/remote-pair-programming) peut faire plus qu'une formation."
           }
         ]
       },
@@ -2157,7 +2359,7 @@
           },
           {
             "title": "Tes horaires te conviennent-ils ?",
-            "body": "Couvre les fuseaux horaires, les appels tardifs et la frontière entre travail et maison."
+            "body": "Couvre les [fuseaux horaires](/tools/time-zone-meeting-planner), les appels tardifs et la frontière entre travail et maison."
           },
           {
             "title": "Ton installation à la maison te ralentit-elle ?",
@@ -2692,7 +2894,7 @@
       {
         "title": "Qui s'occupe de quoi",
         "body": [
-          "L'onboarding déraille quand chacun croit que quelqu'un d'autre s'en occupe. Nommez un responsable pour chaque partie."
+          "L'[onboarding](/remote-onboarding) déraille quand chacun croit que quelqu'un d'autre s'en occupe. Nommez un responsable pour chaque partie."
         ],
         "table": {
           "head": [
@@ -2797,7 +2999,7 @@
           },
           {
             "title": "Convenir des horaires",
-            "body": "Quand la personne est en ligne, les heures communes de l'équipe et le délai de réponse habituel."
+            "body": "Quand la personne est en ligne, les [heures communes](/guides/how-to-manage-a-remote-team) de l'équipe et le délai de réponse habituel."
           },
           {
             "title": "Premier entretien individuel hebdomadaire",
@@ -2840,7 +3042,7 @@
           },
           {
             "title": "Des collègues invisibles",
-            "body": "Quand on ne voit pas qui est là, difficile de savoir quand on peut demander. Rendez la présence visible."
+            "body": "Quand on ne voit pas qui est là, difficile de savoir quand on peut demander. Rendez [la présence visible](/team-presence)."
           },
           {
             "title": "Trop de réunions d'un coup",
@@ -2848,7 +3050,7 @@
           },
           {
             "title": "L'onboarding s'arrête après la première semaine",
-            "body": "Les trois premiers mois décident si les gens restent. Maintenez les entretiens individuels et les points."
+            "body": "Les trois premiers mois décident si les gens restent. Maintenez les [entretiens individuels](/guides/one-on-one-meeting-questions) et les points."
           }
         ]
       }
@@ -2883,7 +3085,7 @@
   "bodyDoubling": {
     "label": "Body doubling",
     "meta": {
-      "title": "Le body doubling : qu'est-ce que c'est et comment le faire en ligne",
+      "title": "Body doubling : qu'est-ce que c'est, les applications et comment faire en ligne",
       "description": "Découvrez le body doubling, pourquoi travailler à côté de quelqu'un aide à s'y mettre, comment le pratiquer en ligne et l'organiser avec votre équipe."
     },
     "title": "Body doubling : <em>travaillez à côté de quelqu'un, accomplissez plus.</em>",
@@ -2916,7 +3118,7 @@
           },
           {
             "title": "Moins de solitude",
-            "body": "Pour les personnes en télétravail, la présence calme d'une autre personne rend les longues sessions de travail plus légères."
+            "body": "Pour les personnes [en télétravail](/virtual-office), la présence calme d'une autre personne rend les longues sessions de travail plus légères."
           }
         ]
       },
@@ -2935,9 +3137,14 @@
               "Gratuit et simple ; convenez d'une heure et gardez la caméra allumée ou éteinte"
             ],
             [
-              "Les services de mise en relation",
+              "Les services de mise en relation, comme Focusmate",
               "Un inconnu, réservé pour une session minutée",
               "Quand personne dans votre entourage n'est libre et que vous aimez les créneaux fixes"
+            ],
+            [
+              "Les sessions de groupe, comme Flow Club",
+              "Un animateur et un groupe, à heures fixes",
+              "De la structure et de la compagnie, avec des personnes qui viennent pour travailler"
             ],
             [
               "Les vidéos « study with me »",
@@ -3040,8 +3247,8 @@
       {
         "title": "Le body doubling en équipe",
         "body": [
-          "Les équipes à distance peuvent pratiquer le body doubling sans application supplémentaire : l'équipe est déjà là. Dans un [espace de coworking virtuel](/virtual-coworking) partagé, chacun peut voir qui travaille, s'installer à son bureau et se mettre en statut occupé, pour qu'un après-midi calme reste un moment partagé.",
-          "Pour plus de structure, lancez une réunion appelée Focus, invitez ceux qui le souhaitent et suivez le déroulement ci-dessus. Ceux qui préfèrent ne pas parler peuvent simplement rester à l'étage, à travailler près des autres."
+          "Les équipes à distance peuvent pratiquer le body doubling sans application supplémentaire : l'équipe est déjà là. Dans un [espace de coworking virtuel](/virtual-coworking) partagé, chacun peut [voir qui travaille](/team-presence), s'installer à son bureau et se mettre en statut occupé, pour qu'un après-midi calme reste un moment partagé.",
+          "Pour plus de structure, lancez une [réunion](/virtual-meeting-room) appelée Focus, invitez ceux qui le souhaitent et suivez le déroulement ci-dessus. Ceux qui préfèrent ne pas parler peuvent simplement rester à l'étage, à travailler près des autres."
         ]
       }
     ],
@@ -3053,6 +3260,10 @@
       {
         "q": "Qu'est-ce que le body doubling ?",
         "a": "C'est le fait de travailler avec une autre personne à proximité, en vrai ou en ligne, pour qu'il soit plus facile de commencer une tâche et de continuer. L'autre personne n'aide pas à faire le travail ; elle est simplement là."
+      },
+      {
+        "q": "Quelle est la meilleure application de body doubling ?",
+        "a": "Cela dépend de qui vous voulez avec vous. Focusmate vous met en relation avec un inconnu pour une session minutée, les applications de groupe comme Flow Club organisent des sessions animées, et un bureau virtuel comme TinyFloor vous place à côté de personnes que vous connaissez déjà, toute la journée. Un appel vidéo avec un ami fonctionne aussi, et ne coûte rien."
       },
       {
         "q": "Le body doubling est-il réservé aux personnes atteintes de TDAH ?",

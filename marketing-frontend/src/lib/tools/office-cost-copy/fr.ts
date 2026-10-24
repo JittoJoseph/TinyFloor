@@ -2,15 +2,15 @@ import type { OfficeCostsContent } from "@/lib/tools/office-costs";
 
 const fr: OfficeCostsContent = {
   meta: {
-    title: "Calculateur de coût de bureau virtuel : ce que 9 outils coûtent à votre équipe",
+    title: "Calculateur de coût de bureau virtuel : ce que 10 outils coûtent à votre équipe",
     description:
-      "Indiquez la taille de votre équipe et voyez ce que Gather, SoWork, Kumospace, WorkAdventure, SpatialChat, Roam, oVice, Sococo et TinyFloor coûtent par mois, en facturation annuelle ou mensuelle, d’après la page de tarifs de chacun.",
+      "Indiquez la taille de votre équipe et voyez ce que Gather, SoWork, Spot, Kumospace, WorkAdventure, SpatialChat, Roam, oVice, Sococo et TinyFloor coûtent par mois, en facturation annuelle ou mensuelle, d’après la page de tarifs de chacun.",
   },
   eyebrow: "Outils gratuits",
   updated: "Prix vérifiés le",
   title: "Ce qu’un bureau virtuel <em>coûte à votre équipe.</em>",
   intro:
-    "La plupart des bureaux virtuels facturent par personne, quelques-uns par espace ou par bureau, et les offres gratuites s’arrêtent à des tailles différentes. Indiquez combien de personnes compte votre équipe pour voir ce que coûte chacun de neuf outils par mois, du moins cher au plus cher.",
+    "La plupart des bureaux virtuels facturent par personne, quelques-uns par espace ou par bureau, et les offres gratuites s’arrêtent à des tailles différentes. Indiquez combien de personnes compte votre équipe pour voir ce que coûte chacun de dix outils par mois, du moins cher au plus cher.",
   calculator: {
     people: "Personnes dans l’équipe",
     count: "{count} personnes",
@@ -50,7 +50,7 @@ const fr: OfficeCostsContent = {
       items: [
         {
           title: "Par membre",
-          detail: "Gather, SoWork, Kumospace, WorkAdventure, SpatialChat",
+          detail: "Gather, SoWork, Spot, Kumospace, WorkAdventure, SpatialChat",
           body: "Vous payez pour toutes les personnes qui ont un compte, chaque mois, qu’elles viennent ou non. La facture grandit à chaque recrutement : une équipe de 10 paie deux fois plus qu’une équipe de 5.",
         },
         {
@@ -107,7 +107,7 @@ const fr: OfficeCostsContent = {
         { title: "Taxes", body: "Tous les prix ici sont hors taxes. Selon votre pays, la TVA ou la taxe de vente s’ajoute au paiement." },
         {
           title: "Essais",
-          body: "Gather propose un essai de 30 jours, Roam et oVice de 14 jours, SoWork de 7 jours. L’essai vous dit si l’équipe va s’en servir ; le prix, si vous allez continuer à payer.",
+          body: "Gather et Spot proposent un essai de 30 jours, Roam et oVice de 14 jours, SoWork de 7 jours. L’essai vous dit si l’équipe va s’en servir ; le prix, si vous allez continuer à payer.",
         },
       ],
     },
@@ -127,11 +127,11 @@ const fr: OfficeCostsContent = {
   faq: [
     {
       q: "Combien coûte un bureau virtuel par mois ?",
-      a: "Pour une équipe de 10 sur une offre payante, de 29 $ à 195 $ par mois selon l’outil : TinyFloor coûte 29 $ pour tout le bureau, les outils par personne vont de 54 $ (SoWork Basic, facturation annuelle) à 195 $ (Roam).",
+      a: "Pour une équipe de 10 sur une offre payante, de 29 $ à 195 $ par mois selon l’outil : TinyFloor coûte 29 $ pour tout le bureau, les outils par personne vont de 48 $ (Spot Basic, facturation annuelle) à 195 $ (Roam).",
     },
     {
       q: "Quel est le bureau virtuel le moins cher pour une petite équipe ?",
-      a: "Une offre gratuite qui convient : celle de SoWork couvre 10 membres avec des réunions de 30 minutes, celle de WorkAdventure 10 personnes en même temps, celle de Kumospace 5 membres et celle de TinyFloor 3 personnes. Au-delà, TinyFloor, à 29 $ par mois pour toute l’équipe, est le prix payant le plus bas à partir de 6 personnes.",
+      a: "Une offre gratuite qui convient : celle de SoWork couvre 10 membres avec des réunions de 30 minutes, celle de WorkAdventure 10 personnes en même temps, celle de Kumospace 5 membres et celle de TinyFloor 3 personnes. Au-delà, TinyFloor, à 29 $ par mois pour toute l’équipe, est le prix payant le plus bas à partir de 7 personnes.",
     },
     {
       q: "Gather est-il gratuit ?",

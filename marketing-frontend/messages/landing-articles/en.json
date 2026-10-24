@@ -154,15 +154,15 @@
       "items": [
         {
           "title": "See who's in",
-          "body": "Everyone appears in the office, with a status, so you know who's at their desk, who's busy and who's in a meeting before you interrupt."
+          "body": "Everyone appears in the office with a [status](/team-presence), so you know who's at their desk, who's busy and who's in a meeting before you interrupt."
         },
         {
           "title": "Talk without scheduling",
-          "body": "Walk up to a teammate and start talking. A two-minute question stays two minutes, instead of becoming a calendar invite for tomorrow."
+          "body": "[Walk up to a teammate](/proximity-chat) and start talking. A two-minute question stays two minutes, instead of becoming a calendar invite for tomorrow."
         },
         {
           "title": "Meet in a room",
-          "body": "Group conversations happen in a meeting room you walk into, with video and screen sharing, and you walk out when it's done."
+          "body": "Group conversations happen in a [meeting room](/virtual-meeting-room) you walk into, with video and screen sharing, and you walk out when it's done."
         },
         {
           "title": "Have a desk of your own",
@@ -170,7 +170,7 @@
         },
         {
           "title": "Chat beside it",
-          "body": "Messages and channels sit next to the floor, for what doesn't need talking."
+          "body": "[Messages and channels](/team-chat) sit next to the floor, for what doesn't need talking."
         }
       ]
     },
@@ -220,30 +220,30 @@
       "items": [
         {
           "title": "Small remote teams",
-          "body": "Four to fifteen people who don't share a building, and miss being able to turn around and ask."
+          "body": "Four to fifteen people who don't share a building, or a [hybrid team](/hybrid-teams) split between home and office, who miss being able to turn around and ask."
         },
         {
           "title": "Startups",
-          "body": "Early teams that decide things quickly and can't wait a day for the next meeting."
+          "body": "Early [startup teams](/startups) that decide things quickly and can't wait a day for the next meeting."
         },
         {
           "title": "Agencies and studios",
-          "body": "People who move between client projects all day and need to find each other fast."
+          "body": "People at [agencies and studios](/agencies) who move between client projects all day and need to find each other fast."
         },
         {
           "title": "Engineering and design teams",
-          "body": "Pairing, reviewing and showing work on screen without booking a call for it."
+          "body": "Pairing, reviewing and showing work on screen without booking a call for it. More for [engineering](/engineering-teams) and [design teams](/design-teams)."
         },
         {
           "title": "Teams onboarding someone",
-          "body": "A new hire can see who's around and ask, instead of guessing who is free to message."
+          "body": "A new hire can see who's around and ask, instead of guessing who is free to message. See [remote onboarding](/remote-onboarding)."
         }
       ]
     },
     {
       "title": "What one costs",
       "body": [
-        "What a team of 8 pays a month on popular virtual offices, on the cheapest plan that fits."
+        "What a team of 8 pays a month on popular virtual offices, on the cheapest plan that fits. For every option side by side, read our [virtual office software comparison](/guides/best-virtual-office-software), or work out your own team's price with the [cost calculator](/tools/virtual-office-cost-calculator)."
       ],
       "table": {
         "head": [
@@ -302,7 +302,7 @@
         {
           "title": "Hold the next standup in the meeting room",
           "detail": "The first habit",
-          "body": "Moving one daily meeting into the office is what brings people back the next day."
+          "body": "Moving one daily meeting, like the [standup](/virtual-standup), into the office is what brings people back the next day."
         },
         {
           "title": "Leave it open for a week",
@@ -337,7 +337,7 @@
     {
       "title": "Why teams use Discord as an office",
       "body": [
-        "Plenty of small teams, especially developers, studios and startups, run their day in Discord. They make a server, open a voice channel, and people drop in and out the way they would walk into a shared room. It's free, the audio is good, screen sharing works in voice channels, and there's nothing new to learn for anyone who already uses it.",
+        "Plenty of small teams, especially developers, studios and [startups](/startups), run their day in Discord. They make a server, open a voice channel, and people drop in and out the way they would walk into a shared room. It's free, the audio is good, screen sharing works in voice channels, and there's nothing new to learn for anyone who already uses it.",
         "What it shows is that being one click from each other works better than scheduling every conversation. The question is whether an app built for gaming communities is the best home for that."
       ]
     },
@@ -350,7 +350,7 @@
         },
         {
           "title": "Channels instead of a place",
-          "body": "You see who's in which voice channel, but not who's at their desk and free for a minute. Joining a channel is an all-or-nothing way to start talking."
+          "body": "You see who's in which voice channel, but not [who's at their desk and free](/team-presence) for a minute. Joining a channel is an all-or-nothing way to start talking."
         },
         {
           "title": "No obvious meeting room",
@@ -358,7 +358,7 @@
         },
         {
           "title": "Built around communities",
-          "body": "Roles, servers and bots are made for large groups of strangers. A team of eight needs much less, and more of what an office has."
+          "body": "Roles, servers and bots are made for large groups of strangers. A team of eight needs much less, and more of what an [office](/virtual-office) has."
         }
       ]
     },
@@ -2079,7 +2079,7 @@
         {
           "title": "Walk in",
           "detail": "9:58",
-          "body": "Join the main meeting and your character walks into the meeting room. Everyone on the floor can see the room filling up."
+          "body": "Join the main meeting and your character walks into the [meeting room](/virtual-meeting-room). Everyone on the floor can see the room filling up."
         },
         {
           "title": "Go round",
@@ -2164,7 +2164,7 @@
       "items": [
         {
           "title": "Start on time",
-          "body": "Start at the minute even if someone's missing. The floor shows who's in, who's away and who's still on a call, so you can tell who to wait for and who not to."
+          "body": "Start at the minute even if someone's missing. The floor shows [who's in, who's away](/team-presence) and who's still on a call, so you can tell who to wait for and who not to."
         },
         {
           "title": "Take follow-ups to a desk",
@@ -2183,7 +2183,7 @@
     {
       "title": "Live, written, or both",
       "body": [
-        "A team spread across time zones can't always meet at one time. Many post a written update in a channel of the office's chat, and keep the live standup for the days with something to decide: a release, a problem, a new person."
+        "A team spread across time zones can't always meet at one time. Many post a written update in a channel of the [office's chat](/team-chat), and keep the live standup for the days with something to decide: a release, a problem, a new person."
       ],
       "items": [
         {
@@ -2192,11 +2192,11 @@
         },
         {
           "title": "Written",
-          "body": "Works across time zones and leaves a record. Easy to skim, easy to skip, so blockers can sit unnoticed."
+          "body": "Works across [time zones](/tools/time-zone-meeting-planner) and leaves a record. Easy to skim, easy to skip, so blockers can sit unnoticed."
         },
         {
           "title": "Both",
-          "body": "Written updates every day, and a short live round once or twice a week, at a time that suits everyone."
+          "body": "[Written updates](/guides/async-communication) every day, and a short live round once or twice a week, at a time that suits everyone."
         }
       ]
     },
@@ -2217,7 +2217,7 @@
         {
           "title": "See who's free",
           "detail": "1",
-          "body": "Desks and statuses show who's heads down, who's away and who's already in a call. Busy means wait; available means walk over."
+          "body": "Desks and [statuses](/team-presence) show who's heads down, who's away and who's already in a call. Busy means wait; available means walk over."
         },
         {
           "title": "Walk over and talk",
@@ -2295,7 +2295,7 @@
     {
       "title": "When two becomes three",
       "body": [
-        "Walk up to a third teammate during a call and TinyFloor offers to make it a meeting for the three of you. For a planned mob or ensemble session, use the meeting room: whoever is talking takes the big card, and the shared screen sits beside the people."
+        "Walk up to a third teammate during a call and TinyFloor offers to make it a meeting for the three of you. For a planned mob or ensemble session, use the [meeting room](/virtual-meeting-room): whoever is talking takes the big card, and the shared screen sits beside the people."
       ]
     },
     {
@@ -2314,7 +2314,7 @@
         },
         {
           "title": "No recording",
-          "body": "Sessions aren't recorded. Write down what you decided in the pull request or the team chat."
+          "body": "Sessions aren't recorded. Write down what you decided in the pull request or the [team chat](/team-chat)."
         },
         {
           "title": "No GitHub or Jira connection",
@@ -2335,7 +2335,7 @@
         },
         {
           "title": "Make asking normal",
-          "body": "A team where people walk over with questions unblocks in minutes, not tomorrow. Seniors walking over to juniors helps as much as the other way round."
+          "body": "A team where people [walk over](/proximity-chat) with questions unblocks in minutes, not tomorrow. Seniors walking over to juniors helps as much as the other way round."
         }
       ]
     }
@@ -2365,7 +2365,7 @@
         {
           "title": "Say hello at standup",
           "detail": "10:00",
-          "body": "Walk into the meeting room with everyone else. One minute to introduce yourself, and the team has met you."
+          "body": "Walk into the [meeting room](/virtual-meeting-room) with everyone else. One minute to introduce yourself, and the team has met you."
         },
         {
           "title": "Sit with your buddy",
@@ -2444,7 +2444,7 @@
         },
         {
           "title": "Book time on the first two days",
-          "body": "Most of Monday and some of Tuesday together, sharing a screen. After that, the new person walks over when they need to."
+          "body": "Most of Monday and some of Tuesday together, [sharing a screen](/remote-pair-programming). After that, the new person walks over when they need to."
         },
         {
           "title": "Make the first visit for them",
@@ -2452,14 +2452,14 @@
         },
         {
           "title": "Keep a channel for questions",
-          "body": "A channel in the team chat for questions nobody should feel silly asking. Messages stay, so the next new person can read the answers."
+          "body": "A channel in the [team chat](/team-chat) for questions nobody should feel silly asking. Messages stay, so the next new person can read the answers."
         }
       ]
     },
     {
       "title": "What TinyFloor doesn't do for onboarding",
       "body": [
-        "It isn't an HR tool. There are no onboarding checklists, document signing, account provisioning or single sign-on. Keep your handbook in your docs tool and your accounts in your admin tools; TinyFloor is where the new person meets the team and gets help. Inviting them takes one link, and they can be at a desk a minute later."
+        "It isn't an HR tool. There are no [onboarding checklists](/guides/remote-onboarding-checklist), document signing, account provisioning or single sign-on. Keep your handbook in your docs tool and your accounts in your admin tools; TinyFloor is where the new person meets the team and gets help. Inviting them takes one link, and they can be at a desk a minute later."
       ]
     }
   ],
@@ -2480,7 +2480,7 @@
         },
         {
           "title": "You pass someone",
-          "body": "Walking to the meeting room or the whiteboard, you go past desks. Stop next to someone and a call is one tap away; walk on and nothing happens."
+          "body": "Walking to the [meeting room](/virtual-meeting-room) or the whiteboard, you go past desks. Stop next to someone and a call is one tap away; walk on and nothing happens."
         },
         {
           "title": "Music in the room",
@@ -2488,14 +2488,14 @@
         },
         {
           "title": "The chat between calls",
-          "body": "A channel for anything that isn't work, with emoji and reactions. Messages stay, so nobody misses the joke because they were in a meeting."
+          "body": "A [channel](/team-chat) for anything that isn't work, with emoji and reactions. Messages stay, so nobody misses the joke because they were in a meeting."
         }
       ]
     },
     {
       "title": "Rituals that work for a small team",
       "body": [
-        "Keep them short, optional and regular. A team of eight doesn't need an events programme; it needs a few habits people actually turn up for."
+        "Keep them short, optional and regular. A team of eight doesn't need an events programme; it needs a few [habits](/guides/how-to-build-remote-team-culture) people actually turn up for."
       ],
       "table": {
         "head": [
@@ -2556,7 +2556,7 @@
     {
       "title": "What TinyFloor doesn't do",
       "body": [
-        "There are no games, no trivia, no YouTube screens and no event spaces for a hundred guests. It's a small office for a team that works together every day, and the watercooler is the part between tasks. For a company party or a large social event, Kumospace and Gather have more built in."
+        "There are no games, no trivia, no YouTube screens and no event spaces for a hundred guests. It's a small office for a team that works together every day, and the watercooler is the part between tasks. For a company party or a large social event, [Kumospace and Gather](/gather-vs-kumospace) have more built in."
       ]
     }
   ],
@@ -2570,7 +2570,7 @@
         {
           "title": "Standup",
           "detail": "10:00",
-          "body": "The team walks into the meeting room, goes round in ten minutes and walks back out."
+          "body": "The team walks into the [meeting room](/virtual-meeting-room), goes round in ten minutes and walks back out."
         },
         {
           "title": "Heads down",
@@ -2580,12 +2580,12 @@
         {
           "title": "Unblocked",
           "detail": "14:30",
-          "body": "Stuck on a failing build? See who's available, walk over, share the logs and sort it out in ten minutes instead of tomorrow."
+          "body": "Stuck on a failing build? [See who's available](/team-presence), walk over, share the logs and sort it out in ten minutes instead of tomorrow."
         },
         {
           "title": "Review",
           "detail": "16:00",
-          "body": "Two or three people in a meeting, one sharing the pull request, talking it through instead of forty comments."
+          "body": "Two or three people in a meeting, one sharing the pull request, [talking it through](/remote-pair-programming) instead of forty comments."
         }
       ]
     },
@@ -2750,11 +2750,11 @@
         },
         {
           "title": "From a call",
-          "body": "On a call with one person and want a third? Walk up to them and TinyFloor offers to make it a meeting for the three of you."
+          "body": "On a call with one person and want a third? [Walk up to them](/proximity-chat) and TinyFloor offers to make it a meeting for the three of you."
         },
         {
           "title": "See who's free first",
-          "body": "The list of people shows who's free to talk, who's busy and who's already in another meeting, so you only ask people who can come."
+          "body": "The list of people shows [who's free to talk, who's busy](/team-presence) and who's already in another meeting, so you only ask people who can come."
         }
       ]
     },
@@ -2782,7 +2782,7 @@
     {
       "title": "What it doesn't do",
       "body": [
-        "There's no recording, no transcription and no AI notes. Meetings happen inside your office: there are no dial-in numbers and no webinar mode for a big audience. Shared screens carry the picture, not sound. If you need any of those, keep Zoom or Google Meet for that meeting and use TinyFloor for the everyday ones."
+        "There's no recording, no transcription and no AI notes. Meetings happen inside your [office](/virtual-office): there are no dial-in numbers and no webinar mode for a big audience. Shared screens carry the picture, not sound. If you need any of those, keep Zoom or Google Meet for that meeting and use TinyFloor for the everyday ones."
       ]
     }
   ],
@@ -2790,7 +2790,7 @@
     {
       "title": "A chat that lives next to the floor",
       "body": [
-        "Most team chat is the whole workplace. On TinyFloor it's half of it: the floor shows who's around and lets you talk, and the chat holds everything that should be written down. Because they sit side by side, a long back-and-forth can turn into a two-minute conversation with one press."
+        "Most team chat is the whole workplace. On TinyFloor it's half of it: [the floor shows who's around](/team-presence) and lets you talk, and the chat holds everything that should be written down. Because they sit side by side, a long back-and-forth can turn into a two-minute conversation with one press."
       ]
     },
     {
@@ -2837,11 +2837,11 @@
       "items": [
         {
           "title": "Walk over from a conversation",
-          "body": "A direct message with someone on the floor offers to walk over. Your character finds its own way to their desk, and a call is one tap away."
+          "body": "A direct message with someone on the floor offers to [walk over](/proximity-chat). Your character finds its own way to their desk, and a call is one tap away."
         },
         {
           "title": "See who's around before you write",
-          "body": "The people list shows who's on the floor, who's busy and who's in a meeting, so you know whether to write or wait."
+          "body": "The people list shows who's on the floor, who's busy and who's in a meeting, so you know [whether to write or wait](/guides/remote-team-communication)."
         },
         {
           "title": "A quiet nudge instead of pop-ups",
@@ -2888,7 +2888,7 @@
     {
       "title": "What it doesn't do",
       "body": [
-        "There are no threads, no integrations or bots, and no message search yet. You can't share images in the chat yet, so screenshots go on screen in a call. Notifications don't follow you to your phone: TinyFloor doesn't send push notifications or emails to bring people back. If your team relies on any of that, keep Slack for writing and use TinyFloor for presence, calls and meetings; plenty of teams do."
+        "There are no threads, no integrations or bots, and no message search yet. You can't share images in the chat yet, so screenshots go on screen in a call. Notifications don't follow you to your phone: TinyFloor doesn't send push notifications or emails to bring people back. If your team relies on any of that, [keep Slack for writing](/slack-huddles-alternative) and use TinyFloor for presence, calls and meetings; plenty of teams do."
       ]
     }
   ],
@@ -2896,7 +2896,7 @@
     {
       "title": "What presence means on TinyFloor",
       "body": [
-        "In an office you know at a glance who's in, who's deep in something and who's on the phone. Remote, a green dot in a chat app tells you very little. On the floor, presence is where people are and what they've said about themselves, nothing more."
+        "In an [office](/virtual-office) you know at a glance who's in, who's deep in something and who's on the phone. Remote, a green dot in a chat app tells you very little. On the floor, presence is where people are and what they've said about themselves, nothing more."
       ]
     },
     {
@@ -2972,7 +2972,7 @@
       "items": [
         {
           "title": "Agree what busy means",
-          "body": "Most teams settle on: busy means write, don't walk over, unless something's on fire."
+          "body": "Most teams settle on: busy means [write, don't walk over](/guides/remote-team-communication), unless something's on fire."
         },
         {
           "title": "Sit at your desk when you're working",
@@ -2997,7 +2997,7 @@
         },
         {
           "title": "Walk over",
-          "body": "Press Walk over on anyone's card and your character finds its own way across the floor to them."
+          "body": "Press [Walk over](/proximity-chat) on anyone's card and your character finds its own way across the floor to them."
         },
         {
           "title": "Arrivals",
@@ -3016,7 +3016,7 @@
     {
       "title": "A whiteboard on the wall, not in another tab",
       "body": [
-        "Most online whiteboards are a separate app: make a board, share a link, wait for people to open it. On TinyFloor the board hangs on the office wall. Walk up to it and draw, and everyone looking sees the same strokes as you make them."
+        "Most online whiteboards are a separate app: make a board, share a link, wait for people to open it. On TinyFloor the board hangs on the [office](/virtual-office) wall. Walk up to it and draw, and everyone looking sees the same strokes as you make them."
       ]
     },
     {
@@ -3080,7 +3080,7 @@
       "items": [
         {
           "title": "Talk while you draw",
-          "body": "Start a call or a meeting first. A sketch with someone explaining it beats a perfect diagram in silence."
+          "body": "Start a call or a [meeting](/virtual-meeting-room) first. A sketch with someone explaining it beats a perfect diagram in silence."
         },
         {
           "title": "Pick a colour each",
@@ -3088,7 +3088,7 @@
         },
         {
           "title": "Take a screenshot of what matters",
-          "body": "Before you clear the board, capture anything you'll need and post the decision in the team chat."
+          "body": "Before you clear the board, capture anything you'll need and post the decision in the [team chat](/team-chat)."
         },
         {
           "title": "Keep the big diagrams elsewhere",
@@ -3099,7 +3099,7 @@
     {
       "title": "What it doesn't do",
       "body": [
-        "It's a pen-and-eraser board. There's no text tool, no shapes or sticky notes, no images, no undo, no templates and no export, and an office has one board rather than many. For workshops, retrospectives with sticky notes or detailed diagrams, Miro, FigJam or Excalidraw do far more. The TinyFloor board is for the quick sketch while you talk."
+        "It's a pen-and-eraser board. There's no text tool, no shapes or sticky notes, no images, no undo, no templates and no export, and an office has one board rather than many. For workshops, [retrospectives](/guides/retrospective-ideas) with sticky notes or detailed diagrams, Miro, FigJam or Excalidraw do far more. The TinyFloor board is for the quick sketch while you talk."
       ]
     }
   ],
@@ -3113,7 +3113,7 @@
         {
           "title": "Priorities",
           "detail": "9:30",
-          "body": "Ten minutes in the meeting room: what's due for which client today, and who needs help."
+          "body": "Ten minutes in the [meeting room](/virtual-meeting-room): what's due for which client today, and who needs help."
         },
         {
           "title": "A quick review",
@@ -3123,7 +3123,7 @@
         {
           "title": "Deadline mode",
           "detail": "14:00",
-          "body": "Set yourself busy. People can see you're in and working, and know to write instead of walking over."
+          "body": "Set yourself busy. People can [see you're in](/team-presence) and working, and know to write instead of walking over."
         },
         {
           "title": "Client prep",
@@ -3233,7 +3233,7 @@
     {
       "title": "What it costs as you grow",
       "body": [
-        "TinyFloor is priced per office, not per person. A hire doesn't change the bill."
+        "TinyFloor is [priced per office](/pricing), not per person. A hire doesn't change the bill."
       ],
       "table": {
         "head": [
@@ -3261,11 +3261,11 @@
       "items": [
         {
           "title": "Decide in the hallway",
-          "body": "See who's around, walk over, decide, and walk back. No meeting needed for a two-minute question."
+          "body": "[See who's around](/team-presence), walk over, decide, and walk back. No meeting needed for a two-minute question."
         },
         {
           "title": "One standup, same room",
-          "body": "The main meeting is always there. Ten minutes in the morning keeps everyone pointed the same way."
+          "body": "The [main meeting](/virtual-standup) is always there. Ten minutes in the morning keeps everyone pointed the same way."
         },
         {
           "title": "Investor and customer calls elsewhere",
@@ -3273,7 +3273,7 @@
         },
         {
           "title": "Hire into a place, not a channel list",
-          "body": "A new person gets a desk and can see who's who on day one, instead of learning the team from a sidebar of names."
+          "body": "A [new person](/remote-onboarding) gets a desk and can see who's who on day one, instead of learning the team from a sidebar of names."
         }
       ]
     },
@@ -3309,7 +3309,7 @@
     {
       "title": "Feedback is the bottleneck",
       "body": [
-        "Design work gets better each time someone looks at it with you. In a studio that happens over a shoulder, many times a day. Remote, it shrinks to a weekly crit and comments left in a file. On the floor, a second pair of eyes is a short walk away again."
+        "Design work gets better each time someone looks at it with you. In a studio that happens over a shoulder, many times a day. Remote, it shrinks to a weekly crit and comments left in a file. On the floor, a second pair of eyes is a [short walk away](/proximity-chat) again."
       ]
     },
     {
@@ -3366,7 +3366,7 @@
         },
         {
           "title": "Write the decisions down",
-          "body": "Post what was decided in the team chat, so the notes don't live only in someone's memory."
+          "body": "Post what was decided in the [team chat](/team-chat), so the notes don't live only in someone's memory."
         }
       ]
     },
@@ -3375,7 +3375,7 @@
       "items": [
         {
           "title": "Busy means busy",
-          "body": "Set a busy status for deep work. Teammates can see you're in, and know to write instead of walking over."
+          "body": "Set a busy status for deep work. Teammates can [see you're in](/team-presence), and know to write instead of walking over."
         },
         {
           "title": "No camera required",
@@ -3383,7 +3383,7 @@
         },
         {
           "title": "Sketch first",
-          "body": "The whiteboard on the wall is there for the rough version, before anyone opens a design tool."
+          "body": "The [whiteboard](/online-whiteboard) on the wall is there for the rough version, before anyone opens a design tool."
         }
       ]
     },
@@ -3451,12 +3451,12 @@
         {
           "title": "Background music",
           "detail": "11:00",
-          "body": "Someone puts a track on the speaker. It's loud near the speaker and fades across the floor, so it's company rather than noise."
+          "body": "Someone puts a track on the speaker. It's loud near the speaker and [fades across the floor](/proximity-chat), so it's company rather than noise."
         },
         {
           "title": "A break",
           "detail": "13:00",
-          "body": "Set yourself away for lunch. Back at your desk, a two-minute chat with whoever's around before the afternoon."
+          "body": "Set yourself away for lunch. Back at your desk, a [two-minute chat](/virtual-watercooler) with whoever's around before the afternoon."
         }
       ]
     },
@@ -3484,13 +3484,13 @@
     {
       "title": "Why working near others helps",
       "body": [
-        "Studies of ambient awareness at work found that seeing colleagues' presence at a glance made people feel others were working too, and led to more informal contact. In Gallup's 2024 data, fully remote workers reported loneliness more often than people on site, 25% against 16%. A floor where your team is visibly around addresses both, without anyone having to be on camera."
+        "Studies of ambient awareness at work found that seeing colleagues' [presence](/team-presence) at a glance made people feel others were working too, and led to more informal contact. In Gallup's 2024 data, fully remote workers reported loneliness more often than people on site, 25% against 16%. A floor where your team is visibly around addresses both, without anyone having to be on camera."
       ]
     },
     {
       "title": "What it isn't",
       "body": [
-        "TinyFloor isn't a public coworking space. An office is private to your team, so there are no strangers to work alongside and no matching with other people. There are no session timers, no streaks and nothing that counts how long you worked. If you work alone and want company from strangers, a body-doubling service is the better fit; if you want your team around while you work, this is it."
+        "TinyFloor isn't a public coworking space. An [office](/virtual-office) is private to your team, so there are no strangers to work alongside and no matching with other people. There are no session timers, no streaks and nothing that counts how long you worked. If you work alone and want company from strangers, a body-doubling service is the better fit; if you want your team around while you work, this is it."
       ]
     }
   ],
@@ -3498,7 +3498,7 @@
     {
       "title": "What proximity chat means",
       "body": [
-        "Proximity chat comes from games: you hear the players near you and not the ones across the map, the way sound works in a real place. Virtual offices borrowed the idea so that where you stand decides who you talk to. There are two ways to do it, and they feel very different at work."
+        "Proximity chat comes from games: you hear the players near you and not the ones across the map, the way sound works in a real place. [Virtual offices](/virtual-office) borrowed the idea so that where you stand decides who you talk to. There are two ways to do it, and they feel very different at work."
       ],
       "table": {
         "head": [
@@ -3546,7 +3546,7 @@
         {
           "title": "Call",
           "detail": "2",
-          "body": "They see \"Calling you\" and can answer or decline. If they're busy or don't answer, you're told, and nothing else happens."
+          "body": "They see \"Calling you\" and can answer or decline. If they're [busy](/team-presence) or don't answer, you're told, and nothing else happens."
         },
         {
           "title": "Talk",
@@ -3561,7 +3561,7 @@
         {
           "title": "Add a third",
           "detail": "5",
-          "body": "A call is two people. Walk up to a third and TinyFloor offers to make it a meeting for the three of you."
+          "body": "A call is two people. Walk up to a third and TinyFloor offers to make it a [meeting](/virtual-meeting-room) for the three of you."
         }
       ]
     },
@@ -4060,7 +4060,7 @@
         },
         {
           "title": "Meetings in one room",
-          "body": "Hold the standup in the meeting room with everyone on their own laptop, instead of a room full of people and a few faces on a screen."
+          "body": "Hold the [standup](/virtual-standup) in the meeting room with everyone on their own laptop, instead of a room full of people and a few faces on a screen."
         }
       ]
     },
@@ -4073,7 +4073,7 @@
         },
         {
           "title": "Decisions get written down",
-          "body": "Anything decided in the building goes in the team chat, so the people at home see it the same day."
+          "body": "Anything decided in the building goes in the [team chat](/team-chat), so the people at home see it the same day."
         },
         {
           "title": "Headphones in the office",
@@ -4081,14 +4081,14 @@
         },
         {
           "title": "Office days aren't meeting days",
-          "body": "Don't save every meeting for the days people are in. If the meeting room works for everyone, use it every day."
+          "body": "Don't save every meeting for the days people are in. If the [meeting room](/virtual-meeting-room) works for everyone, use it every day."
         }
       ]
     },
     {
       "title": "What it costs",
       "body": [
-        "TinyFloor is priced per office, not per person, so it doesn't matter how many days people come in."
+        "TinyFloor is [priced per office](/pricing), not per person, so it doesn't matter how many days people come in."
       ],
       "table": {
         "head": [

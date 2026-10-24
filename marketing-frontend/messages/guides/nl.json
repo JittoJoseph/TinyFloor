@@ -39,7 +39,7 @@
       {
         "title": "Vijf minuten, aan het begin van een meeting",
         "body": [
-          "Geen voorbereiding, elke teamgrootte. Gebruik er een om een standup of weekoverleg te openen."
+          "Geen voorbereiding, elke teamgrootte. Gebruik er een om een [standup](/virtual-standup) of weekoverleg te openen."
         ],
         "items": [
           {
@@ -78,7 +78,7 @@
           {
             "title": "Pictionary op een gedeeld whiteboard",
             "detail": "20 min · 4 tot 12 mensen",
-            "body": "Iemand tekent een woord op een whiteboard dat iedereen ziet, terwijl de rest gokt. Een lijst met werkwoorden zorgt voor extra lol."
+            "body": "Iemand tekent een woord op een [whiteboard](/online-whiteboard) dat iedereen ziet, terwijl de rest gokt. Een lijst met werkwoorden zorgt voor extra lol."
           },
           {
             "title": "Teamquiz",
@@ -138,7 +138,7 @@
       {
         "title": "Helemaal zonder meeting",
         "body": [
-          "Niet alles heeft een call nodig. Deze lopen een week in een chatkanaal en passen bij teams verspreid over tijdzones."
+          "Niet alles heeft een call nodig. Deze lopen een week in een [chatkanaal](/team-chat) en passen bij teams verspreid over tijdzones."
         ],
         "items": [
           {
@@ -171,7 +171,7 @@
       {
         "title": "Maak er een gewoonte van, geen event",
         "body": [
-          "De teams die het dichtst bij elkaar staan, leunen zelden op grote events. Wat ze hebben, zijn veel kleine, ongeplande momenten: een kort woord voor een meeting, een vraag die een gesprek wordt, een nummer dat iemand opzet.",
+          "De teams die het dichtst bij elkaar staan, leunen zelden op grote events. Wat ze hebben, zijn veel [kleine, ongeplande momenten](/virtual-watercooler): een kort woord voor een meeting, een vraag die een gesprek wordt, een nummer dat iemand opzet.",
           "Op kantoor gebeurt dat vanzelf. Op afstand is er een plek nodig waar mensen elkaar zien en kunnen binnenlopen zonder een call te plannen. Geef je team die plek, en de activiteiten hierboven worden een extraatje in plaats van het enige moment dat mensen praten."
         ]
       }
@@ -231,7 +231,7 @@
           {
             "title": "Wat heb je liever",
             "detail": "Geen voorbereiding · elke grootte",
-            "body": "De host geeft een keuze tussen twee opties, iedereen antwoordt in één woord en twee mensen leggen hun keuze uit."
+            "body": "De host geeft een [keuze tussen twee opties](/tools/would-you-rather-questions), iedereen antwoordt in één woord en twee mensen leggen hun keuze uit."
           },
           {
             "title": "Stellingen",
@@ -291,7 +291,7 @@
           {
             "title": "Tekenen in dertig seconden",
             "detail": "Geen voorbereiding · 3 tot 12 mensen",
-            "body": "Geef een woord, zet een timer van 30 seconden en iedereen tekent het tegelijk op een gedeeld whiteboard."
+            "body": "Geef een woord, zet een timer van 30 seconden en iedereen tekent het tegelijk op een [gedeeld whiteboard](/online-whiteboard)."
           },
           {
             "title": "Gartic Phone",
@@ -311,14 +311,14 @@
           {
             "title": "Quiz van vijf vragen",
             "detail": "Weinig voorbereiding · elke grootte",
-            "body": "Vijf snelle vragen over de week, het product of het team. Antwoorden in de chat; het snelste goede antwoord wint."
+            "body": "Vijf snelle [vragen over de week](/tools/team-building-questions), het product of het team. Antwoorden in de chat; het snelste goede antwoord wint."
           }
         ]
       },
       {
         "title": "Zo pak je het goed aan",
         "body": [
-          "Speel aan het begin van de meeting, niet aan het eind, als iedereen fris is en niemand weg moet. Houd hetzelfde spel een paar weken aan zodat niemand steeds nieuwe regels hoeft te leren, en wissel dan.",
+          "Speel aan het begin van de [meeting](/virtual-meeting-room), niet aan het eind, als iedereen fris is en niemand weg moet. Houd hetzelfde spel een paar weken aan zodat niemand steeds nieuwe regels hoeft te leren, en wissel dan.",
           "Splits grote meetings op in groepjes van vier tot zes. Spellen werken niet meer als de meeste mensen kijken in plaats van meespelen."
         ]
       }
@@ -375,15 +375,15 @@
           },
           {
             "title": "Maak mensen zichtbaar",
-            "body": "Laat zien wie er is, wie bezig is en wie tijd heeft om te praten, zodat hulp vragen niet voelt als storen."
+            "body": "Laat zien [wie er is, wie bezig is](/team-presence) en wie tijd heeft om te praten, zodat hulp vragen niet voelt als storen."
           },
           {
             "title": "Houd een plek om binnen te lopen",
-            "body": "Een altijd open ruimte of vaste spreekuren waar je zonder afspraak kunt verschijnen."
+            "body": "Een [altijd open ruimte](/virtual-meeting-room) of vaste spreekuren waar je zonder afspraak kunt verschijnen."
           },
           {
             "title": "Kleine rituelen",
-            "body": "Een wekelijkse demo, een vrijdag-successen-thread, een spel van vijf minuten. Klein, regelmatig en elke week hetzelfde."
+            "body": "Een wekelijkse demo, een vrijdag-successen-thread, een [spel van vijf minuten](/guides/games-for-virtual-meetings). Klein, regelmatig en elke week hetzelfde."
           },
           {
             "title": "Geef nieuwe mensen een buddy",
@@ -420,7 +420,7 @@
           },
           {
             "title": "Meetings om verbonden te blijven",
-            "body": "Een dagelijkse all-hands om je samen te voelen, voelt meestal als een klus. Geef mensen een plek in plaats van een tijdstip."
+            "body": "Een dagelijkse all-hands om je samen te voelen, voelt meestal als een klus. Geef mensen een [plek](/virtual-office) in plaats van een tijdstip."
           }
         ]
       },
@@ -667,8 +667,8 @@
       {
         "title": "Proximity chat op het werk",
         "body": [
-          "Virtuele kantoren gebruiken hetzelfde idee voor remote teams. Je team deelt een 2D-verdieping, iedereen is een personage en je praat door naar iemand toe te lopen in plaats van een meetinglink te sturen.",
-          "Het brengt terug wat videocalls kwijtraken: zien wie er is, snelle vragen en gesprekjes aan de zijlijn. Twee mensen kunnen in een hoek praten terwijl anderen werken, net als op een echt kantoor."
+          "[Virtuele kantoren](/virtual-office) gebruiken hetzelfde idee voor remote teams. Je team deelt een 2D-verdieping, iedereen is een personage en je praat door naar iemand toe te lopen in plaats van een meetinglink te sturen.",
+          "Het brengt terug wat videocalls kwijtraken: zien wie er is, snelle vragen en [gesprekjes aan de zijlijn](/virtual-watercooler). Twee mensen kunnen in een hoek praten terwijl anderen werken, net als op een echt kantoor."
         ]
       },
       {
@@ -732,8 +732,8 @@
   "bestVirtualOffice": {
     "label": "Beste virtuele-kantoorsoftware",
     "meta": {
-      "title": "De beste virtuele-kantoorsoftware in 2026, eerlijk vergeleken",
-      "description": "Tien virtuele kantoren voor remote teams vergeleken op prijs, gratis abonnement en waar ze het best in zijn, inclusief wat een team van 10 mensen per maand betaalt."
+      "title": "Beste virtuele-kantoorsoftware en -platformen 2026: 10 vergeleken, met prijzen",
+      "description": "Tien virtuele kantoren voor remote teams vergeleken op prijs, gratis abonnementen, apps, opnames en single sign-on, met wat een team van 10 personen per maand betaalt en welke bij wie past."
     },
     "title": "De beste virtuele-kantoorsoftware <em>in 2026, eerlijk vergeleken.</em>",
     "intro": "Een virtueel kantoor geeft een remote team één plek om de hele dag te zijn: je ziet wie er is en praat met elkaar door naar iemand toe te lopen, in plaats van een link te sturen. Hier zijn de tien die het bekijken waard zijn, wat ze kosten en voor wie ze bedoeld zijn. Wij maken TinyFloor, dus we zijn niet neutraal; we vertellen waar elk product sterker is dan het onze, en alle prijzen komen van hun eigen prijzenpagina, gecontroleerd in oktober 2026.",
@@ -903,6 +903,172 @@
         }
       },
       {
+        "title": "Gratis virtuele-kantoorsoftware vergeleken",
+        "body": [
+          "Acht hiervan hebben een gratis abonnement of een gratis versie; vier hebben alleen een proefperiode. De limieten verschillen onderling meer dan de prijzen, dus stem ze af op hoe je team werkt."
+        ],
+        "table": {
+          "head": [
+            "Product",
+            "Gratis abonnement",
+            "De belangrijkste limiet"
+          ],
+          "rows": [
+            [
+              "TinyFloor",
+              "Tot 3 mensen",
+              "Alle functies, geen tijdslimiet"
+            ],
+            [
+              "SoWork",
+              "Tot 10 leden",
+              "Vergaderingen stoppen na 30 minuten; geen opnames"
+            ],
+            [
+              "WorkAdventure",
+              "Tot 10 mensen tegelijk",
+              "Openbare ruimtes"
+            ],
+            [
+              "ZEP",
+              "Tot 10 mensen tegelijk",
+              "Eén schermdeling per kaart; geen wachtwoord"
+            ],
+            [
+              "SpatialChat",
+              "Tot 12 mensen",
+              "2 uur vergaderen per dag"
+            ],
+            [
+              "Kumospace",
+              "Tot 5 leden en 50 gasten",
+              "Eén verdieping"
+            ],
+            [
+              "Teamflow",
+              "Tot 5 mensen",
+              "Vergaderingen stoppen na 45 minuten; desktopapp"
+            ],
+            [
+              "oVice",
+              "Een gratis versie",
+              "Previewversie, zonder support of toegangsbeheer"
+            ],
+            [
+              "Gather, Spot, Roam, Sococo",
+              "Geen",
+              "Een proefperiode: 30 dagen voor Gather en Spot, 14 voor Roam"
+            ]
+          ],
+          "note": "Van de prijspagina van elk product in oktober 2026. Een gratis abonnement dat je hele team dekt, verslaat elk betaald abonnement; een abonnement dat elke vergadering inkort niet."
+        }
+      },
+      {
+        "title": "Apps, opnames en single sign-on",
+        "body": [
+          "Waar elk product op draait, of het vergaderingen opneemt en of mensen kunnen inloggen via de identiteitsprovider van je bedrijf."
+        ],
+        "table": {
+          "head": [
+            "Product",
+            "Draait op",
+            "Opnames en AI-notities",
+            "Single sign-on"
+          ],
+          "rows": [
+            [
+              "TinyFloor",
+              "De browser, op computer en telefoon",
+              "Nee",
+              "Nee"
+            ],
+            [
+              "Gather",
+              "Browser en een desktopapp",
+              "Opnames, transcriptie en AI-notities, binnen een maandelijks aantal uren",
+              "Bij Custom"
+            ],
+            [
+              "SoWork",
+              "Browser, Mac, Windows, iOS en Android",
+              "2 opnames bij Basic; AI-samenvattingen bij Premium",
+              "Bij Enterprise"
+            ],
+            [
+              "Spot",
+              "Browser en een desktopapp",
+              "Niet vermeld",
+              "Bij Enterprise"
+            ],
+            [
+              "Kumospace",
+              "Browser, Windows, macOS, iOS and Android",
+              "Opnames bij Business",
+              "Bij Enterprise"
+            ],
+            [
+              "WorkAdventure",
+              "Browser; kan zelf gehost worden",
+              "Opnames",
+              "Niet vermeld"
+            ],
+            [
+              "SpatialChat",
+              "Browser",
+              "Tot 7 opgeslagen opnames bij Business",
+              "Bij Enterprise"
+            ],
+            [
+              "Roam",
+              "Desktop- en mobiele apps",
+              "Opnames en AI-notities",
+              "Niet vermeld"
+            ],
+            [
+              "oVice",
+              "Browser, desktop- en mobiele apps",
+              "Opnames, transcriptie en AI-notulen bij Business Starter",
+              "Bij betaalde abonnementen"
+            ],
+            [
+              "Sococo",
+              "Op de computer, plus iOS- en Android-apps",
+              "Niet vermeld",
+              "Niet vermeld"
+            ]
+          ],
+          "note": "Van de prijs- en functiepagina's van elk product in oktober 2026. 'Niet vermeld' betekent dat we het niet vermeld konden vinden, niet dat het ontbreekt."
+        }
+      },
+      {
+        "title": "Privacy en beveiliging",
+        "body": [
+          "Een virtueel kantoor laat zien wie er werkt en wanneer, dus controleer wie er binnen kan komen en wat er bewaard wordt voordat je team er intrekt."
+        ],
+        "items": [
+          {
+            "title": "Wie er binnen kan lopen",
+            "body": "Sommige gratis abonnementen laten een ruimte open voor iedereen met de link: het gratis abonnement van ZEP heeft geen wachtwoord of inlogregels, en de gratis ruimtes van WorkAdventure zijn openbaar. Betaalde abonnementen voegen wachtwoorden, inlogregels of toegangsbeheer toe. De kantoren van TinyFloor zijn bij elk abonnement privé: mensen nemen deel op uitnodiging en loggen in."
+          },
+          {
+            "title": "Single sign-on",
+            "body": "Inloggen via de identiteitsprovider van je bedrijf is bij de meeste een enterprise-functie: het Custom-abonnement van Gather, en Enterprise van SoWork, Spot, Kumospace en SpatialChat. oVice biedt dit vanaf het eerste betaalde abonnement. TinyFloor heeft dit niet; mensen loggen in met Google of een code per e-mail."
+          },
+          {
+            "title": "Zelf hosten",
+            "body": "WorkAdventure is open source en kan op je eigen servers draaien, mits iemand in het team het onderhoudt. De andere worden voor je gehost."
+          },
+          {
+            "title": "Opnames en AI-notities",
+            "body": "Ze zijn handig, maar ze zijn ook een vastlegging van de gesprekken van je team op de servers van iemand anders. Bepaal wie er mag opnemen en hoe lang opnames worden bewaard voordat je ze inschakelt."
+          },
+          {
+            "title": "Wat het kantoor laat zien",
+            "body": "Zien wie er is, is juist het hele idee, maar het kan voelen alsof je in de gaten gehouden wordt. Kies liever voor een tool die een status toont die mensen zelf instellen, in plaats van een tool die activiteit of tijd aan het bureau bijhoudt."
+          }
+        ]
+      },
+      {
         "title": "Welke voor welk team",
         "items": [
           {
@@ -928,6 +1094,30 @@
           {
             "title": "Een groter bedrijf",
             "body": "Gather, Roam, oVice Business of Sococo, die aan grotere teams verkopen met jaarcontracten."
+          }
+        ]
+      },
+      {
+        "title": "Ook het bekijken waard",
+        "body": [
+          "Niet in de lijst van tien, maar er wel vaak mee vergeleken. Vergelijk je twee van de tien? Lees dan [Gather vs Kumospace](/gather-vs-kumospace) of [ZEP vs Gather](/zep-vs-gather)."
+        ],
+        "items": [
+          {
+            "title": "Teamflow",
+            "body": "Een desktopapp voor Mac en Windows met apps binnen het kantoor, gratis voor 5 mensen met vergaderingen van 45 minuten, daarna $ 15 per medewerker per maand bij jaarbetaling. [Volledige vergelijking](/teamflow-alternative)."
+          },
+          {
+            "title": "ZEP",
+            "body": "Een 2D-ruimte uit Korea, gratis voor 10 mensen tegelijk, daarna vanaf $ 4 per gebruiker per maand. Tegenwoordig vooral gebruikt voor lessen en evenementen. [Volledige vergelijking](/zep-alternative)."
+          },
+          {
+            "title": "Discord",
+            "body": "Geen virtueel kantoor, maar veel kleine teams gebruiken de spraakkanalen hiervoor. Gratis, met goede audio en gebouwd voor gaming-community's. [Volledige vergelijking](/discord-for-work)."
+          },
+          {
+            "title": "Slack huddles",
+            "body": "Bellen binnen Slack. In het gratis abonnement van Slack is een huddle voor maximaal 2 mensen; voor groepshuddles is een betaald abonnement voor iedereen nodig. [Volledige vergelijking](/slack-huddles-alternative)."
           }
         ]
       }
@@ -956,6 +1146,18 @@
       {
         "q": "Moet ik iets installeren?",
         "a": "Niet voor TinyFloor, Gather, SoWork, WorkAdventure, SpatialChat of oVice, die in de browser draaien. Roam is een desktop-app, en Kumospace, Gather en Spot bieden ook apps aan."
+      },
+      {
+        "q": "Welke virtuele-kantoorsoftware heeft AI-samenvattingen van vergaderingen?",
+        "a": "Gather biedt AI-notities van vergaderingen, SoWork Premium maakt samenvattingen, transcripties en actiepunten, Roam heeft AI-notities en oVice voegt AI-notulen toe bij Business Starter. TinyFloor heeft geen opnames of AI-notities."
+      },
+      {
+        "q": "Welke virtuele-kantoorsoftware heeft single sign-on?",
+        "a": "Gather bij het Custom-abonnement, SoWork, Spot, Kumospace en SpatialChat bij Enterprise, en oVice vanaf het eerste betaalde abonnement. TinyFloor heeft geen single sign-on; mensen loggen in met Google of een code per e-mail."
+      },
+      {
+        "q": "Is een virtueel kantoor hetzelfde als een virtuele werkplek?",
+        "a": "Meestal wel: beide namen worden gebruikt voor een gedeelde online plek waar een extern team werkt, ziet wie er is en praat. “Virtuele werkplek” betekent in de IT ook iets anders: een extern bureaublad, een hele computer die in de cloud draait, wat een ander product is."
       }
     ]
   },
@@ -1109,7 +1311,7 @@
       {
         "title": "Hetzelfde team elders",
         "body": [
-          "Wat dezelfde teams per maand betalen bij andere virtuele kantoren, op het goedkoopste passende abonnement."
+          "Wat dezelfde teams per maand betalen bij andere [virtuele kantoren](/guides/best-virtual-office-software), op het goedkoopste passende abonnement."
         ],
         "table": {
           "head": [
@@ -1150,7 +1352,7 @@
         "items": [
           {
             "title": "Je wilt je kantoor zelf ontwerpen",
-            "body": "In Gather richt je verdiepingen, kamers en meer dan 200 objecten in. De meeste alternatieven geven je een kant-en-klaar kantoor."
+            "body": "In Gather richt je verdiepingen, kamers en meer dan 200 objecten in. De meeste [alternatieven](/gather-alternative) geven je een kant-en-klaar kantoor."
           },
           {
             "title": "Je hebt opnames en transcripties nodig",
@@ -1166,7 +1368,7 @@
           },
           {
             "title": "Wanneer niet",
-            "body": "Als je team vooral wil zien wie er is, wil praten en wil vergaderen, betaal je voor functies die je niet gebruikt, elke maand, voor elke persoon."
+            "body": "Als je team vooral wil [zien wie er is](/team-presence), wil praten en wil vergaderen, betaal je voor functies die je niet gebruikt, elke maand, voor elke persoon."
           }
         ]
       },
@@ -2035,7 +2237,7 @@
           },
           {
             "title": "Heb je genoeg tijd om je te concentreren?",
-            "body": "Te veel vergaderingen is een van de meest gehoorde klachten bij remote werken."
+            "body": "[Te veel vergaderingen](/guides/async-communication) is een van de meest gehoorde klachten bij remote werken."
           }
         ]
       },
@@ -2113,7 +2315,7 @@
           },
           {
             "title": "Van wie zou je graag leren?",
-            "body": "Een mentor of samen werken kan meer doen dan een cursus."
+            "body": "Een mentor of [samen werken](/remote-pair-programming) kan meer doen dan een cursus."
           }
         ]
       },
@@ -2157,7 +2359,7 @@
           },
           {
             "title": "Werken je werktijden voor jou?",
-            "body": "Gaat over tijdzones, late gesprekken en de grens tussen werk en thuis."
+            "body": "Gaat over [tijdzones](/tools/time-zone-meeting-planner), late gesprekken en de grens tussen werk en thuis."
           },
           {
             "title": "Houdt je werkplek thuis je tegen?",
@@ -2692,7 +2894,7 @@
       {
         "title": "Wie doet wat",
         "body": [
-          "Onboarding gaat mis als iedereen denkt dat een ander het doet. Wijs voor elk onderdeel een eigenaar aan."
+          "[Onboarding](/remote-onboarding) gaat mis als iedereen denkt dat een ander het doet. Wijs voor elk onderdeel een eigenaar aan."
         ],
         "table": {
           "head": [
@@ -2797,7 +2999,7 @@
           },
           {
             "title": "Werktijden afspreken",
-            "body": "Wanneer diegene online is, de overlapuren van het team en hoe snel mensen meestal reageren."
+            "body": "Wanneer diegene online is, de [overlapuren](/guides/how-to-manage-a-remote-team) van het team en hoe snel mensen meestal reageren."
           },
           {
             "title": "Eerste wekelijkse één-op-één",
@@ -2840,7 +3042,7 @@
           },
           {
             "title": "Onzichtbare collega's",
-            "body": "Als je niet ziet wie er is, weet je moeilijk wanneer vragen oké is. Maak aanwezigheid zichtbaar."
+            "body": "Als je niet ziet wie er is, weet je moeilijk wanneer vragen oké is. Maak [aanwezigheid zichtbaar](/team-presence)."
           },
           {
             "title": "Te veel vergaderingen tegelijk",
@@ -2848,7 +3050,7 @@
           },
           {
             "title": "Onboarding stopt na week één",
-            "body": "De eerste drie maanden bepalen of mensen blijven. Houd de één-op-ééns en check-ins vol."
+            "body": "De eerste drie maanden bepalen of mensen blijven. Houd de [één-op-ééns](/guides/one-on-one-meeting-questions) en check-ins vol."
           }
         ]
       }
@@ -2883,7 +3085,7 @@
   "bodyDoubling": {
     "label": "Body doubling",
     "meta": {
-      "title": "Body doubling: wat het is en hoe je het online doet",
+      "title": "Body doubling: wat het is, de apps en hoe je het online doet",
       "description": "Wat body doubling is, waarom samenwerken het makkelijker maakt om te beginnen, hoe je het online doet en hoe je een sessie start met je eigen team."
     },
     "title": "Body doubling: <em>werk naast elkaar, krijg meer gedaan.</em>",
@@ -2916,7 +3118,7 @@
           },
           {
             "title": "Minder eenzaam",
-            "body": "Voor thuiswerkers maakt het rustige gezelschap van een ander lange werkblokken een stuk lichter."
+            "body": "Voor [thuiswerkers](/virtual-office) maakt het rustige gezelschap van een ander lange werkblokken een stuk lichter."
           }
         ]
       },
@@ -2935,9 +3137,14 @@
               "Gratis en simpel; spreek een tijd af en zet de camera aan of uit"
             ],
             [
-              "Matchingdiensten",
+              "Matchingapps, zoals Focusmate",
               "Een vreemde, geboekt voor een vaste sessie",
               "Als er niemand die je kent beschikbaar is en je houdt van een vast tijdstip"
+            ],
+            [
+              "Groepssessies, zoals Flow Club",
+              "Een host en een groep, op vaste tijden",
+              "Structuur en gezelschap, met mensen die komen om te werken"
             ],
             [
               "Study-with-me-video's",
@@ -3040,8 +3247,8 @@
       {
         "title": "Body doubling met je team",
         "body": [
-          "Remote teams kunnen body doublen zonder extra app: het team is er immers al. In een gedeelde [virtuele coworkingruimte](/virtual-coworking) ziet iedereen wie er werkt, zit je aan je eigen bureau en zet je je status op bezig, zodat een rustige middag toch gezamenlijk voelt.",
-          "Wil je meer structuur? Start een meeting genaamd Focus, nodig iedereen uit die wil meedoen en volg het sessieplan hierboven. Mensen die liever niet praten, kunnen gewoon op de verdieping zijn en dicht bij de rest werken."
+          "Remote teams kunnen body doublen zonder extra app: het team is er immers al. In een gedeelde [virtuele coworkingruimte](/virtual-coworking) [ziet iedereen wie er werkt](/team-presence), zit je aan je eigen bureau en zet je je status op bezig, zodat een rustige middag toch gezamenlijk voelt.",
+          "Wil je meer structuur? Start een [meeting](/virtual-meeting-room) genaamd Focus, nodig iedereen uit die wil meedoen en volg het sessieplan hierboven. Mensen die liever niet praten, kunnen gewoon op de verdieping zijn en dicht bij de rest werken."
         ]
       }
     ],
@@ -3053,6 +3260,10 @@
       {
         "q": "Wat is body doubling?",
         "a": "Werken met iemand anders in de buurt, fysiek of online, zodat het makkelijker is om aan een taak te beginnen en door te gaan. De ander helpt niet met het werk, maar is er gewoon."
+      },
+      {
+        "q": "Wat is de beste body doubling-app?",
+        "a": "Dat hangt ervan af wie je erbij wilt hebben. Focusmate koppelt je aan een vreemde voor een geplande sessie, groepsapps zoals Flow Club organiseren sessies met een host, en een virtueel kantoor zoals TinyFloor zet je de hele dag naast mensen die je al kent. Een videocall met een vriend werkt ook en kost niets."
       },
       {
         "q": "Is body doubling alleen voor ADHD?",

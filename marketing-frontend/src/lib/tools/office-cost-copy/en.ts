@@ -2,15 +2,15 @@ import type { OfficeCostsContent } from "@/lib/tools/office-costs";
 
 const en: OfficeCostsContent = {
   meta: {
-    title: "Virtual Office Cost Calculator: What 9 Tools Cost Your Team",
+    title: "Virtual Office Cost Calculator: What 10 Tools Cost Your Team",
     description:
-      "Enter your team's size and see what Gather, SoWork, Kumospace, WorkAdventure, SpatialChat, Roam, oVice, Sococo and TinyFloor cost a month, billed yearly or monthly, from each one's own pricing page.",
+      "Enter your team's size and see what Gather, SoWork, Spot, Kumospace, WorkAdventure, SpatialChat, Roam, oVice, Sococo and TinyFloor cost a month, billed yearly or monthly, from each one's own pricing page.",
   },
   eyebrow: "Free tools",
   updated: "Prices checked",
   title: "What a virtual office <em>costs your team.</em>",
   intro:
-    "Most virtual offices charge per person, a few per space or per office, and the free plans stop at different sizes. Enter how many people are on your team to see what each of nine tools costs a month, cheapest first.",
+    "Most virtual offices charge per person, a few per space or per office, and the free plans stop at different sizes. Enter how many people are on your team to see what each of ten tools costs a month, cheapest first.",
   calculator: {
     people: "People on the team",
     count: "{count} people",
@@ -52,7 +52,7 @@ const en: OfficeCostsContent = {
       items: [
         {
           title: "Per member",
-          detail: "Gather, SoWork, Kumospace, WorkAdventure, SpatialChat",
+          detail: "Gather, SoWork, Spot, Kumospace, WorkAdventure, SpatialChat",
           body: "You pay for everyone with an account, every month, whether they come in or not. The bill grows with every hire: a team of 10 pays twice what a team of 5 pays.",
         },
         {
@@ -112,7 +112,7 @@ const en: OfficeCostsContent = {
         },
         {
           title: "Trials",
-          body: "Gather has a 30-day trial, Roam and oVice 14 days, SoWork 7 days. A trial tells you whether the team will use it; the price tells you whether you'll keep paying.",
+          body: "Gather and Spot have a 30-day trial, Roam and oVice 14 days, SoWork 7 days. A trial tells you whether the team will use it; the price tells you whether you'll keep paying.",
         },
       ],
     },
@@ -132,11 +132,11 @@ const en: OfficeCostsContent = {
   faq: [
     {
       q: "How much does a virtual office cost a month?",
-      a: "For a team of 10 on a paid plan, $29 to $195 a month depending on the tool: TinyFloor is $29 for the whole office, per-person tools run from $54 (SoWork Basic, billed yearly) to $195 (Roam).",
+      a: "For a team of 10 on a paid plan, $29 to $195 a month depending on the tool: TinyFloor is $29 for the whole office, per-person tools run from $48 (Spot Basic, billed yearly) to $195 (Roam).",
     },
     {
       q: "What is the cheapest virtual office for a small team?",
-      a: "A free plan that fits: SoWork's covers 10 members with 30-minute meetings, WorkAdventure's 10 people at once, Kumospace's 5 members and TinyFloor's 3 people. Past that, TinyFloor at $29 a month for the whole team is the lowest paid price from 6 people up.",
+      a: "A free plan that fits: SoWork's covers 10 members with 30-minute meetings, WorkAdventure's 10 people at once, Kumospace's 5 members and TinyFloor's 3 people. Past that, TinyFloor at $29 a month for the whole team is the lowest paid price from 7 people up.",
     },
     {
       q: "Is Gather free?",

@@ -18,7 +18,11 @@ New copy is translated with Gemini (`gemini-3.5-flash` on Vertex, credentials
 in the root `.env.local`), giving each language its own published copy of a
 similar page as the reference for voice, terms and number format, and
 rejecting any answer whose shape, `<em>` marks or link paths differ from the
-English.
+English. Send it short texts by id (a long page in one request runs away or
+drops items) in batches of about ten. In-text links are added the same way:
+the model wraps existing words as `[words](/path)` in the English, then the
+matching words of each published translation, and any answer whose text
+changes beyond the link markup is dropped.
 
 When a page or guide is translated:
 

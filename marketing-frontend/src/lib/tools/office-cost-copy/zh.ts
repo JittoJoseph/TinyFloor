@@ -2,15 +2,15 @@ import type { OfficeCostsContent } from "@/lib/tools/office-costs";
 
 const zh: OfficeCostsContent = {
   meta: {
-    title: "虚拟办公室费用计算器：9 款工具让你的团队花多少钱",
+    title: "虚拟办公室费用计算器：10 款工具让你的团队花多少钱",
     description:
-      "输入团队人数，查看 Gather、SoWork、Kumospace、WorkAdventure、SpatialChat、Roam、oVice、Sococo 和 TinyFloor 按年付或按月付每月要花多少钱，价格来自各自的定价页。",
+      "输入团队人数，查看 Gather、SoWork、Spot、Kumospace、WorkAdventure、SpatialChat、Roam、oVice、Sococo 和 TinyFloor 按年付或按月付每月要花多少钱，价格来自各自的定价页。",
   },
   eyebrow: "免费工具",
   updated: "价格核对于",
   title: "虚拟办公室<em>让你的团队花多少钱。</em>",
   intro:
-    "大多数虚拟办公室按人收费，少数按空间或按办公室收费，免费版能容纳的人数也各不相同。输入团队人数，就能看到九款工具每月各要多少钱，从便宜到贵排列。",
+    "大多数虚拟办公室按人收费，少数按空间或按办公室收费，免费版能容纳的人数也各不相同。输入团队人数，就能看到十款工具每月各要多少钱，从便宜到贵排列。",
   calculator: {
     people: "团队人数",
     count: "{count} 人",
@@ -50,7 +50,7 @@ const zh: OfficeCostsContent = {
       items: [
         {
           title: "按成员",
-          detail: "Gather、SoWork、Kumospace、WorkAdventure、SpatialChat",
+          detail: "Gather、SoWork、Spot、Kumospace、WorkAdventure、SpatialChat",
           body: "每个有账号的人都要按月付费，不管来不来。每招一个人账单就涨一次：10 人的团队要付 5 人团队的两倍。",
         },
         {
@@ -105,7 +105,7 @@ const zh: OfficeCostsContent = {
         { title: "税费", body: "这里所有价格都不含税。根据你们所在的地区，结账时会加上增值税或销售税。" },
         {
           title: "试用",
-          body: "Gather 有 30 天试用，Roam 和 oVice 14 天，SoWork 7 天。试用告诉你团队会不会用；价格告诉你会不会一直付下去。",
+          body: "Gather 和 Spot 有 30 天试用，Roam 和 oVice 14 天，SoWork 7 天。试用告诉你团队会不会用；价格告诉你会不会一直付下去。",
         },
       ],
     },
@@ -125,11 +125,11 @@ const zh: OfficeCostsContent = {
   faq: [
     {
       q: "虚拟办公室每月要多少钱？",
-      a: "10 人的团队用付费方案，视工具不同每月 $29 到 $195：TinyFloor 整个办公室 $29，按人收费的工具从 $54（SoWork Basic，按年付）到 $195（Roam）。",
+      a: "10 人的团队用付费方案，视工具不同每月 $29 到 $195：TinyFloor 整个办公室 $29，按人收费的工具从 $48（Spot Basic，按年付）到 $195（Roam）。",
     },
     {
       q: "小团队最便宜的虚拟办公室是哪个？",
-      a: "够用的免费版：SoWork 的支持 10 位成员、会议限 30 分钟，WorkAdventure 的支持 10 人同时在线，Kumospace 的支持 5 位成员，TinyFloor 的支持 3 个人。超过这些，整个团队每月 $29 的 TinyFloor 是 6 人起最便宜的付费价格。",
+      a: "够用的免费版：SoWork 的支持 10 位成员、会议限 30 分钟，WorkAdventure 的支持 10 人同时在线，Kumospace 的支持 5 位成员，TinyFloor 的支持 3 个人。超过这些，整个团队每月 $29 的 TinyFloor 是 7 人起最便宜的付费价格。",
     },
     {
       q: "Gather 免费吗？",

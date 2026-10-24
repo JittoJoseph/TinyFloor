@@ -154,15 +154,15 @@
       "items": [
         {
           "title": "Ver quem está",
-          "body": "Todo mundo aparece no escritório, com um status, então você sabe quem está na mesa, quem está ocupado e quem está em reunião antes de interromper."
+          "body": "Todo mundo aparece no escritório com um [status](/team-presence), então você sabe quem está na mesa, quem está ocupado e quem está em reunião antes de interromper."
         },
         {
           "title": "Conversar sem agendar",
-          "body": "Vá até um colega e comece a falar. Uma pergunta de dois minutos continua sendo de dois minutos, em vez de virar um convite na agenda para amanhã."
+          "body": "[Vá até um colega](/proximity-chat) e comece a falar. Uma pergunta de dois minutos continua sendo de dois minutos, em vez de virar um convite na agenda para amanhã."
         },
         {
           "title": "Reunir-se numa sala",
-          "body": "Conversas em grupo acontecem numa sala de reunião em que você entra, com vídeo e compartilhamento de tela, e de onde sai quando termina."
+          "body": "Conversas em grupo acontecem em uma [sala de reunião](/virtual-meeting-room) onde você entra, com vídeo e compartilhamento de tela, e sai quando terminar."
         },
         {
           "title": "Ter uma mesa sua",
@@ -170,7 +170,7 @@
         },
         {
           "title": "Conversar por chat ao lado",
-          "body": "Mensagens e canais ficam ao lado do andar, para o que não precisa de conversa."
+          "body": "[Mensagens e canais](/team-chat) ficam ao lado da planta, para o que não precisa de conversa."
         }
       ]
     },
@@ -220,30 +220,30 @@
       "items": [
         {
           "title": "Equipes remotas pequenas",
-          "body": "De quatro a quinze pessoas que não dividem um prédio e sentem falta de poder virar para o lado e perguntar."
+          "body": "De quatro a quinze pessoas que não dividem um prédio, ou uma [equipe híbrida](/hybrid-teams) dividida entre a casa e o escritório, que sentem falta de poder virar para o lado e perguntar."
         },
         {
           "title": "Startups",
-          "body": "Equipes no começo que decidem rápido e não podem esperar um dia pela próxima reunião."
+          "body": "Equipes de [startups](/startups) em estágio inicial que decidem as coisas rapidamente e não podem esperar um dia pela próxima reunião."
         },
         {
           "title": "Agências e estúdios",
-          "body": "Pessoas que passam o dia entre projetos de clientes e precisam se encontrar rápido."
+          "body": "Pessoas em [agências e estúdios](/agencies) que transitam entre projetos de clientes o dia todo e precisam se encontrar rapidamente."
         },
         {
           "title": "Equipes de engenharia e design",
-          "body": "Programar em par, revisar e mostrar trabalho na tela sem marcar uma chamada para isso."
+          "body": "Parear, revisar e mostrar o trabalho na tela sem precisar agendar uma chamada. Mais para [engenharia](/engineering-teams) e [equipes de design](/design-teams)."
         },
         {
           "title": "Equipes recebendo alguém novo",
-          "body": "Quem acabou de chegar vê quem está por lá e pergunta, em vez de adivinhar para quem pode mandar mensagem."
+          "body": "Um novo contratado pode ver quem está por perto e perguntar, em vez de adivinhar quem está livre para receber mensagens. Veja [integração remota](/remote-onboarding)."
         }
       ]
     },
     {
       "title": "Quanto custa",
       "body": [
-        "Quanto uma equipe de 8 paga por mês nos escritórios virtuais mais conhecidos, no plano mais barato que serve."
+        "Quanto uma equipe de 8 paga por mês nos escritórios virtuais mais conhecidos, no plano mais barato que serve. Para ver todas as opções lado a lado, leia nossa [comparação de softwares de escritório virtual](/guides/best-virtual-office-software) ou calcule o preço para a sua própria equipe com a [calculadora de custos](/tools/virtual-office-cost-calculator)."
       ],
       "table": {
         "head": [
@@ -302,7 +302,7 @@
         {
           "title": "Faça a próxima daily na sala de reunião",
           "detail": "O primeiro hábito",
-          "body": "Levar uma reunião diária para o escritório é o que faz as pessoas voltarem no dia seguinte."
+          "body": "Levar uma reunião diária, como a [standup](/virtual-standup), para o escritório é o que faz as pessoas voltarem no dia seguinte."
         },
         {
           "title": "Deixe aberto por uma semana",
@@ -337,7 +337,7 @@
     {
       "title": "Por que equipes usam o Discord como escritório",
       "body": [
-        "Muitas equipes pequenas, principalmente desenvolvedores, estúdios e startups, passam o dia no Discord. Elas criam um servidor, abrem um canal de voz e as pessoas entram e saem como numa sala compartilhada. É grátis, o áudio é bom, dá para compartilhar tela nos canais de voz e não há nada novo para aprender para quem já usa.",
+        "Muitas equipes pequenas, principalmente desenvolvedores, estúdios e [startups](/startups), passam o dia no Discord. Elas criam um servidor, abrem um canal de voz e as pessoas entram e saem como numa sala compartilhada. É grátis, o áudio é bom, dá para compartilhar tela nos canais de voz e não há nada novo para aprender para quem já usa.",
         "Isso mostra que estar a um clique de distância funciona melhor do que agendar toda conversa. A questão é se um app feito para comunidades de games é o melhor lugar para isso."
       ]
     },
@@ -350,7 +350,7 @@
         },
         {
           "title": "Canais em vez de um lugar",
-          "body": "Você vê quem está em cada canal de voz, mas não quem está na mesa e livre por um minuto. Entrar num canal é um jeito tudo ou nada de começar a conversar."
+          "body": "Você vê quem está em cada canal de voz, mas não [quem está na mesa e livre](/team-presence) por um minuto. Entrar num canal é um jeito tudo ou nada de começar a conversar."
         },
         {
           "title": "Sem uma sala de reunião clara",
@@ -358,7 +358,7 @@
         },
         {
           "title": "Feito para comunidades",
-          "body": "Cargos, servidores e bots são feitos para grupos grandes de desconhecidos. Uma equipe de oito precisa de muito menos disso, e de mais do que um escritório tem."
+          "body": "Cargos, servidores e bots são feitos para grupos grandes de desconhecidos. Uma equipe de oito precisa de muito menos disso, e de mais do que um [escritório](/virtual-office) tem."
         }
       ]
     },
@@ -2079,7 +2079,7 @@
         {
           "title": "Entrar",
           "detail": "9:58",
-          "body": "Entre na reunião principal e seu personagem vai até a sala de reunião. Todo mundo no andar vê a sala enchendo."
+          "body": "Entre na reunião principal e seu personagem vai até a [sala de reunião](/virtual-meeting-room). Todo mundo no andar vê a sala enchendo."
         },
         {
           "title": "Fazer a rodada",
@@ -2164,7 +2164,7 @@
       "items": [
         {
           "title": "Comece na hora",
-          "body": "Comece no horário mesmo se faltar alguém. O andar mostra quem está, quem está ausente e quem ainda está numa chamada, então você sabe por quem esperar e por quem não."
+          "body": "Comece no horário mesmo se faltar alguém. O andar mostra [quem está, quem está ausente](/team-presence) e quem ainda está numa chamada, então você sabe por quem esperar e por quem não."
         },
         {
           "title": "Leve os desdobramentos para uma mesa",
@@ -2183,7 +2183,7 @@
     {
       "title": "Ao vivo, por escrito ou os dois",
       "body": [
-        "Uma equipe espalhada por fusos horários nem sempre consegue se reunir no mesmo horário. Muitas postam uma atualização por escrito num canal do chat do escritório e deixam a daily ao vivo para os dias com algo a decidir: um lançamento, um problema, uma pessoa nova."
+        "Uma equipe espalhada por fusos horários nem sempre consegue se reunir no mesmo horário. Muitas postam uma atualização por escrito num canal do [chat do escritório](/team-chat) e deixam a daily ao vivo para os dias com algo a decidir: um lançamento, um problema, uma pessoa nova."
       ],
       "items": [
         {
@@ -2192,11 +2192,11 @@
         },
         {
           "title": "Por escrito",
-          "body": "Funciona entre fusos e deixa registro. Fácil de passar o olho e fácil de pular, então um bloqueio pode ficar sem ninguém ver."
+          "body": "Funciona entre [fusos](/tools/time-zone-meeting-planner) e deixa registro. Fácil de passar o olho e fácil de pular, então um bloqueio pode ficar sem ninguém ver."
         },
         {
           "title": "Os dois",
-          "body": "Atualizações escritas todo dia e uma rodada curta ao vivo uma ou duas vezes por semana, num horário bom para todos."
+          "body": "[Atualizações escritas](/guides/async-communication) todo dia e uma rodada curta ao vivo uma ou duas vezes por semana, num horário bom para todos."
         }
       ]
     },
@@ -2217,7 +2217,7 @@
         {
           "title": "Ver quem está livre",
           "detail": "1",
-          "body": "Mesas e status mostram quem está concentrado, quem está ausente e quem já está numa chamada. Ocupado quer dizer esperar; disponível quer dizer ir até lá."
+          "body": "Mesas e [status](/team-presence) mostram quem está concentrado, quem está ausente e quem já está numa chamada. Ocupado quer dizer esperar; disponível quer dizer ir até lá."
         },
         {
           "title": "Ir até a pessoa e falar",
@@ -2295,7 +2295,7 @@
     {
       "title": "Quando dois viram três",
       "body": [
-        "Vá até uma terceira pessoa durante uma chamada e o TinyFloor oferece transformar tudo numa reunião para os três. Para uma sessão de mob programming planejada, use a sala de reunião: quem está falando fica no card grande, e a tela compartilhada fica ao lado das pessoas."
+        "Vá até uma terceira pessoa durante uma chamada e o TinyFloor oferece transformar tudo numa reunião para os três. Para uma sessão de mob programming planejada, use a [sala de reunião](/virtual-meeting-room): quem está falando fica no card grande, e a tela compartilhada fica ao lado das pessoas."
       ]
     },
     {
@@ -2314,7 +2314,7 @@
         },
         {
           "title": "Sem gravação",
-          "body": "As sessões não são gravadas. Anotem o que decidiram no pull request ou no chat da equipe."
+          "body": "As sessões não são gravadas. Anotem o que decidiram no pull request ou no [chat da equipe](/team-chat)."
         },
         {
           "title": "Sem conexão com GitHub ou Jira",
@@ -2335,7 +2335,7 @@
         },
         {
           "title": "Torne normal perguntar",
-          "body": "Uma equipe em que as pessoas vão até as outras com dúvidas destrava em minutos, não amanhã. Os mais experientes irem até os mais novos ajuda tanto quanto o contrário."
+          "body": "Uma equipe em que as pessoas [vão até as outras](/proximity-chat) com dúvidas destrava em minutos, não amanhã. Os mais experientes irem até os mais novos ajuda tanto quanto o contrário."
         }
       ]
     }
@@ -2365,7 +2365,7 @@
         {
           "title": "Dizer oi na daily",
           "detail": "10:00",
-          "body": "Entre na sala de reunião com todo mundo. Um minuto para se apresentar, e a equipe já conhece você."
+          "body": "Entre na [sala de reunião](/virtual-meeting-room) com todo mundo. Um minuto para se apresentar, e a equipe já conhece você."
         },
         {
           "title": "Sentar com seu padrinho",
@@ -2444,7 +2444,7 @@
         },
         {
           "title": "Reserve tempo nos dois primeiros dias",
-          "body": "A maior parte da segunda e parte da terça juntos, compartilhando a tela. Depois disso, a pessoa nova vai até lá quando precisar."
+          "body": "A maior parte da segunda e parte da terça juntos, [compartilhando a tela](/remote-pair-programming). Depois disso, a pessoa nova vai até lá quando precisar."
         },
         {
           "title": "Faça a primeira visita por ela",
@@ -2452,14 +2452,14 @@
         },
         {
           "title": "Tenha um canal para perguntas",
-          "body": "Um canal no chat da equipe para as perguntas que ninguém deveria ter vergonha de fazer. As mensagens ficam, então a próxima pessoa nova pode ler as respostas."
+          "body": "Um canal no [chat da equipe](/team-chat) para as perguntas que ninguém deveria ter vergonha de fazer. As mensagens ficam, então a próxima pessoa nova pode ler as respostas."
         }
       ]
     },
     {
       "title": "O que o TinyFloor não faz no onboarding",
       "body": [
-        "Ele não é uma ferramenta de RH. Não há checklists de onboarding, assinatura de documentos, criação de contas nem login único. Mantenha seu manual na sua ferramenta de documentação e as contas nas suas ferramentas de administração; o TinyFloor é onde a pessoa nova conhece a equipe e encontra ajuda. Convidar leva um link, e um minuto depois ela pode estar numa mesa."
+        "Ele não é uma ferramenta de RH. Não há [checklists de onboarding](/guides/remote-onboarding-checklist), assinatura de documentos, criação de contas nem login único. Mantenha seu manual na sua ferramenta de documentação e as contas nas suas ferramentas de administração; o TinyFloor é onde a pessoa nova conhece a equipe e encontra ajuda. Convidar leva um link, e um minuto depois ela pode estar numa mesa."
       ]
     }
   ],
@@ -2480,7 +2480,7 @@
         },
         {
           "title": "Você passa por alguém",
-          "body": "No caminho para a sala de reunião ou para o quadro branco, você passa por mesas. Pare do lado de alguém e a chamada está a um toque; siga andando e nada acontece."
+          "body": "No caminho para a [sala de reunião](/virtual-meeting-room) ou para o quadro branco, você passa por mesas. Pare do lado de alguém e a chamada está a um toque; siga andando e nada acontece."
         },
         {
           "title": "Música na sala",
@@ -2488,14 +2488,14 @@
         },
         {
           "title": "O chat entre as chamadas",
-          "body": "Um canal para tudo que não é trabalho, com emojis e reações. As mensagens ficam, então ninguém perde a piada por estar numa reunião."
+          "body": "Um [canal](/team-chat) para tudo que não é trabalho, com emojis e reações. As mensagens ficam, então ninguém perde a piada por estar numa reunião."
         }
       ]
     },
     {
       "title": "Rituais que funcionam numa equipe pequena",
       "body": [
-        "Curtos, opcionais e regulares. Uma equipe de oito não precisa de um programa de eventos; precisa de alguns hábitos que as pessoas realmente frequentem."
+        "Curtos, opcionais e regulares. Uma equipe de oito não precisa de um programa de eventos; precisa de alguns [hábitos](/guides/how-to-build-remote-team-culture) que as pessoas realmente frequentem."
       ],
       "table": {
         "head": [
@@ -2556,7 +2556,7 @@
     {
       "title": "O que o TinyFloor não faz",
       "body": [
-        "Não há jogos, quiz, telas do YouTube nem espaços de evento para cem convidados. É um escritório pequeno para uma equipe que trabalha junta todo dia, e o cafezinho é a parte entre as tarefas. Para uma festa da empresa ou um grande evento social, o Kumospace e o Gather têm mais recursos."
+        "Não há jogos, quiz, telas do YouTube nem espaços de evento para cem convidados. É um escritório pequeno para uma equipe que trabalha junta todo dia, e o cafezinho é a parte entre as tarefas. Para uma festa da empresa ou um grande evento social, o [Kumospace e o Gather](/gather-vs-kumospace) têm mais recursos."
       ]
     }
   ],
@@ -2570,7 +2570,7 @@
         {
           "title": "Daily",
           "detail": "10:00",
-          "body": "A equipe entra na sala de reunião, faz a rodada em dez minutos e sai."
+          "body": "A equipe entra na [sala de reunião](/virtual-meeting-room), faz a rodada em dez minutos e sai."
         },
         {
           "title": "Foco",
@@ -2580,12 +2580,12 @@
         {
           "title": "Destravado",
           "detail": "14:30",
-          "body": "Build falhando? Veja quem está disponível, vá até lá, compartilhe os logs e resolva em dez minutos em vez de amanhã."
+          "body": "Build falhando? [Veja quem está disponível](/team-presence), vá até lá, compartilhe os logs e resolva em dez minutos em vez de amanhã."
         },
         {
           "title": "Revisão",
           "detail": "16:00",
-          "body": "Duas ou três pessoas numa reunião, uma compartilha o pull request, e vocês conversam em vez de trocar quarenta comentários."
+          "body": "Duas ou três pessoas numa reunião, uma compartilha o pull request, e [vocês conversam](/remote-pair-programming) em vez de trocar quarenta comentários."
         }
       ]
     },
@@ -2750,11 +2750,11 @@
         },
         {
           "title": "A partir de uma chamada",
-          "body": "Numa chamada com uma pessoa e quer incluir uma terceira? Vá até ela e o TinyFloor oferece transformar tudo numa reunião para os três."
+          "body": "Numa chamada com uma pessoa e quer incluir uma terceira? [Vá até ela](/proximity-chat) e o TinyFloor oferece transformar tudo numa reunião para os três."
         },
         {
           "title": "Veja antes quem está livre",
-          "body": "A lista de pessoas mostra quem está livre para conversar, quem está ocupado e quem já está em outra reunião, então você só chama quem pode vir."
+          "body": "A lista de pessoas mostra [quem está livre para conversar, quem está ocupado](/team-presence) e quem já está em outra reunião, então você só chama quem pode vir."
         }
       ]
     },
@@ -2782,7 +2782,7 @@
     {
       "title": "O que ele não faz",
       "body": [
-        "Não há gravação, transcrição nem notas com IA. As reuniões acontecem dentro do seu escritório: não há números para ligar por telefone nem modo webinar para um público grande. Telas compartilhadas levam a imagem, não o som. Se você precisa disso, use Zoom ou Google Meet para essa reunião e o TinyFloor para as do dia a dia."
+        "Não há gravação, transcrição nem notas com IA. As reuniões acontecem dentro do seu [escritório](/virtual-office): não há números para ligar por telefone nem modo webinar para um público grande. Telas compartilhadas levam a imagem, não o som. Se você precisa disso, use Zoom ou Google Meet para essa reunião e o TinyFloor para as do dia a dia."
       ]
     }
   ],
@@ -2790,7 +2790,7 @@
     {
       "title": "Um chat bem ao lado do andar",
       "body": [
-        "Na maioria das ferramentas, o chat é o local de trabalho inteiro. No TinyFloor ele é metade: o andar mostra quem está por perto e deixa vocês conversarem, e o chat guarda tudo o que precisa ficar por escrito. Como os dois ficam lado a lado, um vai e vem longo pode virar uma conversa de dois minutos com um clique."
+        "Na maioria das ferramentas, o chat é o local de trabalho inteiro. No TinyFloor ele é metade: [o andar mostra quem está por perto](/team-presence) e deixa vocês conversarem, e o chat guarda tudo o que precisa ficar por escrito. Como os dois ficam lado a lado, um vai e vem longo pode virar uma conversa de dois minutos com um clique."
       ]
     },
     {
@@ -2837,11 +2837,11 @@
       "items": [
         {
           "title": "Ir até a pessoa a partir de uma conversa",
-          "body": "Uma mensagem direta com alguém que está no andar oferece ir até a pessoa. Seu personagem acha sozinho o caminho até a mesa dela, e a chamada fica a um toque."
+          "body": "Uma mensagem direta com alguém que está no andar oferece [ir até a pessoa](/proximity-chat). Seu personagem acha sozinho o caminho até a mesa dela, e a chamada fica a um toque."
         },
         {
           "title": "Veja quem está por perto antes de escrever",
-          "body": "A lista de pessoas mostra quem está no andar, quem está ocupado e quem está em reunião, então você sabe se é melhor escrever ou esperar."
+          "body": "A lista de pessoas mostra quem está no andar, quem está ocupado e quem está em reunião, então você sabe [se é melhor escrever ou esperar](/guides/remote-team-communication)."
         },
         {
           "title": "Um aviso discreto em vez de pop-ups",
@@ -2888,7 +2888,7 @@
     {
       "title": "O que ele não faz",
       "body": [
-        "Não há threads, integrações ou bots, e ainda não há busca nas mensagens. Ainda não dá para compartilhar imagens no chat, então capturas de tela vão para a tela numa chamada. As notificações não seguem você no celular: o TinyFloor não manda notificações push nem e-mails para trazer as pessoas de volta. Se sua equipe depende disso, mantenha o Slack para a escrita e use o TinyFloor para presença, chamadas e reuniões; muitas equipes fazem assim."
+        "Não há threads, integrações ou bots, e ainda não há busca nas mensagens. Ainda não dá para compartilhar imagens no chat, então capturas de tela vão para a tela numa chamada. As notificações não seguem você no celular: o TinyFloor não manda notificações push nem e-mails para trazer as pessoas de volta. Se sua equipe depende disso, [mantenha o Slack para a escrita](/slack-huddles-alternative) e use o TinyFloor para presença, chamadas e reuniões; muitas equipes fazem assim."
       ]
     }
   ],
@@ -2896,7 +2896,7 @@
     {
       "title": "O que presença significa no TinyFloor",
       "body": [
-        "No escritório você sabe de relance quem está, quem está concentrado em algo e quem está no telefone. Remoto, uma bolinha verde num app de chat diz muito pouco. No andar, presença é onde as pessoas estão e o que elas dizem sobre si mesmas, nada além disso."
+        "No [escritório](/virtual-office) você sabe de relance quem está, quem está concentrado em algo e quem está no telefone. Remoto, uma bolinha verde num app de chat diz muito pouco. No andar, presença é onde as pessoas estão e o que elas dizem sobre si mesmas, nada além disso."
       ]
     },
     {
@@ -2972,7 +2972,7 @@
       "items": [
         {
           "title": "Combinem o que ocupado significa",
-          "body": "A maioria das equipes chega nisto: ocupado quer dizer escrever, não ir até lá, a menos que algo esteja pegando fogo."
+          "body": "A maioria das equipes chega nisto: ocupado quer dizer [escrever, não ir até lá](/guides/remote-team-communication), a menos que algo esteja pegando fogo."
         },
         {
           "title": "Sente na sua mesa quando estiver trabalhando",
@@ -2997,7 +2997,7 @@
         },
         {
           "title": "Ir até lá",
-          "body": "Aperte Ir até lá no card de alguém e seu personagem acha sozinho o caminho pelo andar."
+          "body": "Aperte [Ir até lá](/proximity-chat) no card de alguém e seu personagem acha sozinho o caminho pelo andar."
         },
         {
           "title": "Chegadas",
@@ -3016,7 +3016,7 @@
     {
       "title": "Um quadro branco na parede, não em outra aba",
       "body": [
-        "A maioria dos quadros brancos online é um app separado: criar um quadro, compartilhar um link, esperar as pessoas abrirem. No TinyFloor o quadro fica pendurado na parede do escritório. Vá até ele e desenhe, e todo mundo que estiver olhando vê seus traços enquanto você desenha."
+        "A maioria dos quadros brancos online é um app separado: criar um quadro, compartilhar um link, esperar as pessoas abrirem. No TinyFloor o quadro fica pendurado na parede do [escritório](/virtual-office). Vá até ele e desenhe, e todo mundo que estiver olhando vê seus traços enquanto você desenha."
       ]
     },
     {
@@ -3080,7 +3080,7 @@
       "items": [
         {
           "title": "Fale enquanto desenha",
-          "body": "Comece antes uma chamada ou uma reunião. Um rascunho explicado ganha de um diagrama perfeito em silêncio."
+          "body": "Comece antes uma chamada ou uma [reunião](/virtual-meeting-room). Um rascunho explicado ganha de um diagrama perfeito em silêncio."
         },
         {
           "title": "Uma cor para cada um",
@@ -3088,7 +3088,7 @@
         },
         {
           "title": "Faça captura do que importa",
-          "body": "Antes de limpar, capture o que vai precisar e registre a decisão no chat da equipe."
+          "body": "Antes de limpar, capture o que vai precisar e registre a decisão no [chat da equipe](/team-chat)."
         },
         {
           "title": "Diagramas grandes ficam em outro lugar",
@@ -3099,7 +3099,7 @@
     {
       "title": "O que ele não faz",
       "body": [
-        "É um quadro de caneta e borracha. Não há ferramenta de texto, formas ou post-its, imagens, desfazer, modelos nem exportação, e um escritório tem um quadro só. Para workshops, retrospectivas com post-its ou diagramas detalhados, Miro, FigJam ou Excalidraw fazem muito mais. O quadro do TinyFloor é para o rascunho rápido enquanto vocês conversam."
+        "É um quadro de caneta e borracha. Não há ferramenta de texto, formas ou post-its, imagens, desfazer, modelos nem exportação, e um escritório tem um quadro só. Para workshops, [retrospectivas](/guides/retrospective-ideas) com post-its ou diagramas detalhados, Miro, FigJam ou Excalidraw fazem muito mais. O quadro do TinyFloor é para o rascunho rápido enquanto vocês conversam."
       ]
     }
   ],
@@ -3113,7 +3113,7 @@
         {
           "title": "Prioridades",
           "detail": "9:30",
-          "body": "Dez minutos na sala de reunião: o que vence hoje para qual cliente, e quem precisa de ajuda."
+          "body": "Dez minutos na [sala de reunião](/virtual-meeting-room): o que vence hoje para qual cliente, e quem precisa de ajuda."
         },
         {
           "title": "Uma revisão rápida",
@@ -3123,7 +3123,7 @@
         {
           "title": "Modo prazo",
           "detail": "14:00",
-          "body": "Fique como ocupado. As pessoas veem que você está lá trabalhando e sabem que é para escrever, não para ir até você."
+          "body": "Fique como ocupado. As pessoas [veem que você está lá](/team-presence) trabalhando e sabem que é para escrever, não para ir até você."
         },
         {
           "title": "Preparação do cliente",
@@ -3233,7 +3233,7 @@
     {
       "title": "Quanto custa conforme vocês crescem",
       "body": [
-        "O TinyFloor é cobrado por escritório, não por pessoa. Uma contratação não muda a conta."
+        "O TinyFloor é [cobrado por escritório](/pricing), não por pessoa. Uma contratação não muda a conta."
       ],
       "table": {
         "head": [
@@ -3261,11 +3261,11 @@
       "items": [
         {
           "title": "Decidir no corredor",
-          "body": "Ver quem está por perto, ir até lá, decidir e voltar. Uma pergunta de dois minutos não precisa de reunião."
+          "body": "[Ver quem está por perto](/team-presence), ir até lá, decidir e voltar. Uma pergunta de dois minutos não precisa de reunião."
         },
         {
           "title": "Uma daily, a mesma sala",
-          "body": "A reunião principal está sempre lá. Dez minutos de manhã mantêm todo mundo na mesma direção."
+          "body": "A [reunião principal](/virtual-standup) está sempre lá. Dez minutos de manhã mantêm todo mundo na mesma direção."
         },
         {
           "title": "Chamadas com investidores e clientes em outro lugar",
@@ -3273,7 +3273,7 @@
         },
         {
           "title": "Contratar para um lugar, não para uma lista de canais",
-          "body": "Uma pessoa nova ganha uma mesa e vê quem é quem no primeiro dia, em vez de conhecer a equipe por uma barra lateral de nomes."
+          "body": "Uma [pessoa nova](/remote-onboarding) ganha uma mesa e vê quem é quem no primeiro dia, em vez de conhecer a equipe por uma barra lateral de nomes."
         }
       ]
     },
@@ -3309,7 +3309,7 @@
     {
       "title": "O gargalo é o feedback",
       "body": [
-        "Um trabalho de design melhora toda vez que alguém olha junto com você. Num estúdio, isso acontece por cima do ombro, muitas vezes por dia. No remoto, encolhe para uma crítica semanal e comentários num arquivo. No andar, um segundo par de olhos volta a estar a poucos passos."
+        "Um trabalho de design melhora toda vez que alguém olha junto com você. Num estúdio, isso acontece por cima do ombro, muitas vezes por dia. No remoto, encolhe para uma crítica semanal e comentários num arquivo. No andar, um segundo par de olhos volta a estar [a poucos passos](/proximity-chat)."
       ]
     },
     {
@@ -3366,7 +3366,7 @@
         },
         {
           "title": "Registre as decisões",
-          "body": "Poste o que foi decidido no chat da equipe, para não ficar só na memória de alguém."
+          "body": "Poste o que foi decidido no [chat da equipe](/team-chat), para não ficar só na memória de alguém."
         }
       ]
     },
@@ -3375,7 +3375,7 @@
       "items": [
         {
           "title": "Ocupado é ocupado",
-          "body": "Coloque status ocupado para o trabalho profundo. A equipe vê que você está lá e escreve em vez de aparecer."
+          "body": "Coloque status ocupado para o trabalho profundo. A equipe [vê que você está lá](/team-presence) e escreve em vez de aparecer."
         },
         {
           "title": "Sem câmera obrigatória",
@@ -3383,7 +3383,7 @@
         },
         {
           "title": "Rascunhe antes",
-          "body": "O quadro branco na parede existe para a versão bruta, antes de alguém abrir uma ferramenta de design."
+          "body": "O [quadro branco](/online-whiteboard) na parede existe para a versão bruta, antes de alguém abrir uma ferramenta de design."
         }
       ]
     },
@@ -3451,12 +3451,12 @@
         {
           "title": "Música de fundo",
           "detail": "11:00",
-          "body": "Alguém coloca uma faixa na caixa de som. Perto, fica alto; pelo andar, vai sumindo, então é companhia e não barulho."
+          "body": "Alguém coloca uma faixa na caixa de som. Perto, fica alto; [pelo andar, vai sumindo](/proximity-chat), então é companhia e não barulho."
         },
         {
           "title": "Uma pausa",
           "detail": "13:00",
-          "body": "Fique como ausente no almoço. De volta à mesa, dois minutos de conversa com quem estiver por perto antes da tarde."
+          "body": "Fique como ausente no almoço. De volta à mesa, [dois minutos de conversa](/virtual-watercooler) com quem estiver por perto antes da tarde."
         }
       ]
     },
@@ -3484,13 +3484,13 @@
     {
       "title": "Por que trabalhar perto de outras pessoas ajuda",
       "body": [
-        "Estudos sobre percepção ambiente no trabalho mostraram que ver de relance a presença dos colegas dava a sensação de que outras pessoas também estavam trabalhando, e levava a mais contato informal. Nos dados da Gallup de 2024, quem trabalha totalmente remoto relatou solidão com mais frequência do que quem está no escritório, 25% contra 16%. Um andar onde sua equipe está visivelmente por perto ajuda nas duas coisas, sem ninguém precisar ficar na câmera."
+        "Estudos sobre percepção ambiente no trabalho mostraram que ver de relance a [presença](/team-presence) dos colegas dava a sensação de que outras pessoas também estavam trabalhando, e levava a mais contato informal. Nos dados da Gallup de 2024, quem trabalha totalmente remoto relatou solidão com mais frequência do que quem está no escritório, 25% contra 16%. Um andar onde sua equipe está visivelmente por perto ajuda nas duas coisas, sem ninguém precisar ficar na câmera."
       ]
     },
     {
       "title": "O que ele não é",
       "body": [
-        "O TinyFloor não é um espaço de coworking público. Um escritório é privado da sua equipe, então não há desconhecidos para trabalhar junto nem pareamento com outras pessoas. Não há cronômetro de sessão, sequências nem nada que conte quanto tempo você trabalhou. Se você trabalha sozinho e quer a companhia de desconhecidos, um serviço de body doubling serve melhor; se você quer sua equipe por perto enquanto trabalha, é aqui."
+        "O TinyFloor não é um espaço de coworking público. Um [escritório](/virtual-office) é privado da sua equipe, então não há desconhecidos para trabalhar junto nem pareamento com outras pessoas. Não há cronômetro de sessão, sequências nem nada que conte quanto tempo você trabalhou. Se você trabalha sozinho e quer a companhia de desconhecidos, um serviço de body doubling serve melhor; se você quer sua equipe por perto enquanto trabalha, é aqui."
       ]
     }
   ],
@@ -3498,7 +3498,7 @@
     {
       "title": "O que é chat por proximidade",
       "body": [
-        "O chat por proximidade vem dos games: você ouve os jogadores perto de você e não os do outro lado do mapa, como o som funciona num lugar de verdade. Escritórios virtuais pegaram a ideia para que o lugar onde você está decida com quem você fala. Há dois jeitos de fazer isso, e no trabalho eles são bem diferentes."
+        "O chat por proximidade vem dos games: você ouve os jogadores perto de você e não os do outro lado do mapa, como o som funciona num lugar de verdade. [Escritórios virtuais](/virtual-office) pegaram a ideia para que o lugar onde você está decida com quem você fala. Há dois jeitos de fazer isso, e no trabalho eles são bem diferentes."
       ],
       "table": {
         "head": [
@@ -3546,7 +3546,7 @@
         {
           "title": "Ligar",
           "detail": "2",
-          "body": "A pessoa vê \"Está ligando para você\" e pode atender ou recusar. Se estiver ocupada ou não atender, você fica sabendo, e nada mais acontece."
+          "body": "A pessoa vê \"Está ligando para você\" e pode atender ou recusar. Se estiver [ocupada](/team-presence) ou não atender, você fica sabendo, e nada mais acontece."
         },
         {
           "title": "Conversar",
@@ -3561,7 +3561,7 @@
         {
           "title": "Incluir uma terceira pessoa",
           "detail": "5",
-          "body": "Uma chamada é de duas pessoas. Vá até uma terceira e o TinyFloor oferece transformar tudo numa reunião para os três."
+          "body": "Uma chamada é de duas pessoas. Vá até uma terceira e o TinyFloor oferece transformar tudo numa [reunião](/virtual-meeting-room) para os três."
         }
       ]
     },
@@ -4060,7 +4060,7 @@
         },
         {
           "title": "Reuniões em uma sala só",
-          "body": "Faça a daily na sala de reunião com cada um no seu próprio notebook, em vez de uma sala cheia de pessoas e alguns rostos em uma tela."
+          "body": "Faça a [daily](/virtual-standup) na sala de reunião com cada um no seu próprio notebook, em vez de uma sala cheia de pessoas e alguns rostos em uma tela."
         }
       ]
     },
@@ -4073,7 +4073,7 @@
         },
         {
           "title": "As decisões são registradas por escrito",
-          "body": "Tudo o que for decidido no prédio vai para o chat da equipe, para que quem está em casa veja no mesmo dia."
+          "body": "Tudo o que for decidido no prédio vai para o [chat da equipe](/team-chat), para que quem está em casa veja no mesmo dia."
         },
         {
           "title": "Fones de ouvido no escritório",
@@ -4081,14 +4081,14 @@
         },
         {
           "title": "Dias de escritório não são dias de reunião",
-          "body": "Não guarde todas as reuniões para os dias presenciais. Se a sala de reunião funciona para todos, use-a todos os dias."
+          "body": "Não guarde todas as reuniões para os dias presenciais. Se a [sala de reunião](/virtual-meeting-room) funciona para todos, use-a todos os dias."
         }
       ]
     },
     {
       "title": "Quanto custa",
       "body": [
-        "O TinyFloor é cobrado por escritório, não por pessoa, então não importa quantos dias as pessoas vão ao escritório."
+        "O TinyFloor é [cobrado por escritório](/pricing), não por pessoa, então não importa quantos dias as pessoas vão ao escritório."
       ],
       "table": {
         "head": [

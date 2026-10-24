@@ -131,7 +131,10 @@ some still showing the old "$19/month for 10" repo description.
   Japanese, with the Spanish remote work tools and happy hour guides and the
   retitled Gather alternatives and virtual office pages: 25 URLs, each
   accepted. The human check passes on its own but takes 10 to 15 seconds;
-  leaving the page sooner drops the submission.
+  leaving the page sooner drops the submission. Later that day the Spot,
+  SoWork, ZEP, ZEP vs Gather, hybrid teams and body doubling pages went in,
+  in English and Portuguese, with the ZEP pages in Japanese and Korean: 16
+  URLs, each accepted.
 - So what grows Brave's index of us is the same as for everything else:
   visitors arriving from Google and Bing, and links from pages Brave already
   has (the GitHub repo links to the site).
@@ -342,6 +345,28 @@ solves, and the page that answers each:
 - **The free tools draw few product searches.** Out-of-office messages and
   two truths and a lie get impressions in many languages, but not from people
   looking for an office; they aren't where to invest next.
+
+## Copilot cites the comparison guide, and Gather pricing goes unclicked (24 October, evening)
+
+- **Copilot cites us daily.** Bing Webmaster Tools' AI Performance report
+  shows 164 citations in a month, rising from none to 20 to 37 a day in the
+  last week. The best virtual office software guide has 102 of them, the
+  proximity chat guide 38, the Japanese Gather pricing guide 6. The grounding
+  queries: "affordable virtual office software options", "best virtual
+  office apps 2026", "best virtual office software for small business
+  2026". So that guide is the page to keep current: it now lists ten
+  (Spot added) and answers the small business question in its FAQ.
+- **Bing search itself is small:** 373 impressions in three months, mostly
+  the brand and the old study room pages.
+- **The Gather pricing guide ranks on page one but isn't clicked** in
+  English (position 9, 121 impressions, no clicks) or Portuguese (8.7, 103,
+  one click); Japanese (5.9) gets 6. The queries ask whether Gather is still
+  free ("gather é pago?", "gather 無料 終了", "is gather free"), so the titles
+  now lead with the price and "no free plan" (Portuguese and Spanish as the
+  question). Japanese, which works, is unchanged.
+- **The Gather alternatives page is a list of seven at position 38** for
+  "gather town alternatives" (115 impressions). Its content matches; it
+  lacks authority. Each product in it now links to its full comparison.
 
 ## Launch places (24 October)
 

@@ -1109,7 +1109,8 @@
         "body": "Elk abonnement heeft alle functies. Dit staat er op de verdieping."
       }
     },
-    "features": "Functies"
+    "features": "Functies",
+    "guidesTitle": "Gerelateerde <em>gidsen.</em>"
   },
   "about": {
     "meta": {

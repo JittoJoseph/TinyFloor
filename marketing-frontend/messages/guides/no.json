@@ -733,10 +733,10 @@
     "label": "Beste programvare for virtuelt kontor",
     "meta": {
       "title": "Beste programvare for virtuelt kontor i 2026, ærlig sammenlignet",
-      "description": "Ni virtuelle kontorer for fjernteam sammenlignet på pris, gratisplan og hva hvert av dem er best på, med hva et team på 10 betaler i måneden."
+      "description": "Ti virtuelle kontorer for distribuerte team sammenlignet på pris, gratisplan og hva de er best på, samt hva et team på 10 betaler per måned."
     },
     "title": "Beste programvare for virtuelt kontor <em>i 2026, ærlig sammenlignet.</em>",
-    "intro": "Et virtuelt kontor gir et fjernteam et sted å være hele dagen: du ser hvem som er der, og du snakker med noen ved å gå bort til dem, ikke ved å sende en lenke. Her er de ni som er verdt å se på, hva de koster og hvem de passer for. Vi lager TinyFloor, så vi er ikke nøytrale; vi sier hvor hvert produkt er bedre enn vårt, og hver pris kommer fra produktets egen prisside, sjekket i oktober 2026.",
+    "intro": "Et virtuelt kontor gir et distribuert team ett sted å være hele dagen: du ser hvem som er der og snakker med dem ved å gå bort til dem, ikke ved å sende en lenke. Her er de ti som er verdt å se på, hva de koster og hvem de passer for. Vi lager TinyFloor, så vi er ikke nøytrale; vi forteller hvor hvert produkt er sterkere enn vårt, og alle priser er hentet fra deres egne prissider, sjekket i oktober 2026.",
     "sections": [
       {
         "title": "Hva et virtuelt kontor er",
@@ -771,7 +771,7 @@
         ]
       },
       {
-        "title": "De ni som er verdt å se på",
+        "title": "De ti som er verdt å se på",
         "items": [
           {
             "title": "TinyFloor",
@@ -787,6 +787,11 @@
             "title": "SoWork",
             "detail": "Gratis for 10 medlemmer · Basic 5,40 $ per medlem i måneden ved årlig betaling",
             "body": "Et virtuelt kontor med møterom, teamchat og kalenderintegrasjon. Gratisplanen har plass til opptil 10 medlemmer, men begrenser møter til 30 minutter og har ikke opptak. Premium, til 12 $ per medlem i måneden ved årlig betaling, legger til AI-sammendrag, ubegrensede opptak og statistikk. [Full sammenligning](/sowork-alternative)."
+          },
+          {
+            "title": "Spot",
+            "detail": "Ingen gratisplan · Basic 4,80 $ per bruker i måneden ved årlig betaling",
+            "body": "Et virtuelt kontor du designer selv, med din egen planløsning og merkevarebygging, Slack-lignende chatkanaler og en skrivebordsapp i tillegg til nettleseren. Basic leveres med startoppsett og standard lyd og video; Growth, til 8 $ per bruker i måneden ved årlig betaling, legger til hele kontorredigeringsverktøyet og HD. Det finnes en 30-dagers prøveperiode og ingen gratisplan. [Full sammenligning](/spot-alternative)."
           },
           {
             "title": "Kumospace",
@@ -838,6 +843,12 @@
               "Én pris per kontor",
               "Opptil 3 personer",
               "$29"
+            ],
+            [
+              "Spot Basic",
+              "Per bruker",
+              "Ingen, en 30-dagers prøveperiode",
+              "48 $ ved årlig betaling, 60 $ månedlig"
             ],
             [
               "SoWork Basic",
@@ -904,7 +915,7 @@
           },
           {
             "title": "Du vil designe kontoret ditt eller holde arrangementer",
-            "body": "Gather, WorkAdventure, Kumospace eller SpatialChat."
+            "body": "Gather, Spot, WorkAdventure, Kumospace eller SpatialChat."
           },
           {
             "title": "Du må drifte det selv",
@@ -912,7 +923,7 @@
           },
           {
             "title": "Du foretrekker en dataapp",
-            "body": "Roam, eller Gather og Kumospace, som har apper i tillegg til nettleseren."
+            "body": "Roam, eller Gather, Kumospace og Spot, som har apper i tillegg til nettleseren."
           },
           {
             "title": "En større bedrift",
@@ -931,8 +942,12 @@
         "a": "Det kommer an på hvor stort teamet ditt er. SoWorks gratisplan dekker 10 medlemmer med møter på 30 minutter, WorkAdventures 10 personer samtidig, Kumospaces 5 medlemmer og TinyFloors 3 personer med alle funksjoner."
       },
       {
+        "q": "Hva er den beste programvaren for virtuelt kontor for en liten bedrift?",
+        "a": "For et team på 4 til 15 som ønsker én enkel pris, TinyFloor til 29 $ i måneden for hele teamet. Hvis møtene deres passer innenfor 30 minutter, dekker SoWorks gratisplan 10 medlemmer. Hvis du trenger opptak, AI-notater eller en skrivebordsapp, se på Gather, SoWork Premium eller Spot; for enkel pålogging og årlige kontrakter, Gather, Roam, oVice eller Sococo."
+      },
+      {
         "q": "Hva er det billigste virtuelle kontoret for et lite team?",
-        "a": "For et team på 10 på en betalt plan koster TinyFloor Pro $29 i måneden for hele kontoret. Verktøy med pris per person koster $54 til $195 i måneden for det samme teamet."
+        "a": "For et team på 10 på en betalt plan koster TinyFloor Pro 29 $ i måneden for hele kontoret. Verktøy med pris per person koster fra 48 $ til 195 $ i måneden for det samme teamet."
       },
       {
         "q": "Er Gather fortsatt gratis?",
@@ -940,14 +955,14 @@
       },
       {
         "q": "Må jeg installere noe?",
-        "a": "Ikke for TinyFloor, Gather, SoWork, WorkAdventure, SpatialChat eller oVice, som fungerer i nettleseren. Roam er en dataapp, og Kumospace og Gather tilbyr også apper."
+        "a": "Ikke for TinyFloor, Gather, SoWork, WorkAdventure, SpatialChat eller oVice, som kjører i nettleseren. Roam er en skrivebordsapp, og Kumospace, Gather og Spot tilbyr også apper."
       }
     ]
   },
   "gatherPricing": {
     "label": "Gathers pris",
     "meta": {
-      "title": "Gathers pris 2026: hva teamet ditt betaler, gjester medregnet",
+      "title": "Gathers priser 2026: 12 $ per medlem, ingen gratisplan, hva team betaler",
       "description": "Gather koster 12 $ per medlem i måneden ved årlig betaling eller 15 $ i måneden, uten gratisplan siden september 2025. Hva det blir for team på 4 til 50, hva gjester og opptak omfatter, og hva det samme teamet betaler andre steder."
     },
     "title": "Hva koster <em>Gather?</em>",

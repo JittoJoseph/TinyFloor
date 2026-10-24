@@ -1109,7 +1109,8 @@
         "body": "Jokaisessa paketissa on kaikki ominaisuudet. Tässä on, mitä kerroksessa on."
       }
     },
-    "features": "Ominaisuudet"
+    "features": "Ominaisuudet",
+    "guidesTitle": "Liittyviä <em>oppaita.</em>"
   },
   "about": {
     "meta": {

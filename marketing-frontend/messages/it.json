@@ -1109,7 +1109,8 @@
         "body": "Ogni piano ha tutte le funzionalità. Ecco cosa c'è sul piano."
       }
     },
-    "features": "Funzionalità"
+    "features": "Funzionalità",
+    "guidesTitle": "Guide <em>correlate.</em>"
   },
   "about": {
     "meta": {

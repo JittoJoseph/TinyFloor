@@ -1109,7 +1109,8 @@
         "body": "Todos los planes tienen todas las funciones. Esto es lo que hay en la planta."
       }
     },
-    "features": "Funciones"
+    "features": "Funciones",
+    "guidesTitle": "Guías <em>relacionadas.</em>"
   },
   "about": {
     "meta": {

@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { ArrowRight } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import { GUIDES_PATH, guidePath, guidesIn, readingMinutes, type Guide } from "@/lib/guides";
+import { GUIDES_PATH, guidePath, guidesAfter, readingMinutes, type Guide } from "@/lib/guides";
 import { guideCopies } from "@/lib/guide-copy";
 import { landingByKey } from "@/lib/landings";
 import { absoluteUrl, articleNode, faqNode, pageGraph } from "@/lib/structured-data";
@@ -118,12 +118,8 @@ export async function GuidePage({ guide, locale }: { guide: Guide; locale: strin
       <section className={cn(COLUMN, "pb-24 sm:pb-32")}>
         <h2 className={cn(H2, CJK_HEADLINE, "text-center")}>{t.rich("moreTitle", { em: quiet })}</h2>
         <ul className="mx-auto mt-12 grid max-w-[1040px] gap-3 md:grid-cols-2">
-          {/* The four after this one, round the list: every guide is linked from others, the newest too. */}
-          {guidesIn(locale)
-            .flatMap((_, index, list) => list[(list.findIndex((one) => one.key === guide.key) + 1 + index) % list.length])
-            .filter((other) => other.key !== guide.key)
-            .slice(0, 4)
-            .map((other) => (
+          {/* The closest guides first, then the ones after it, round the list: every guide is linked from others, the newest too. */}
+          {guidesAfter(guide, locale, 4).map((other) => (
               <li key={other.slug}>
                 <GuideCard guide={other} title={copies[other.key].label} description={copies[other.key].meta.description} />
               </li>

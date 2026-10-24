@@ -8,7 +8,10 @@ import {
   type AppIcon,
 } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import { COMPARE_ROWS, HUBS, LANDINGS, LANDING_GROUPS, landingByKey, type Landing, type LandingKey } from "@/lib/landings";
+import { COMPARE_ROWS, HUBS, LANDINGS, LANDING_GROUPS, landingByKey, relatedLandings, type Landing, type LandingKey } from "@/lib/landings";
+import { guidesFor } from "@/lib/guides";
+import { guideCopies } from "@/lib/guide-copy";
+import { GuideCard } from "@/components/guides/GuidePage";
 import { articleNode, faqNode, pageGraph } from "@/lib/structured-data";
 import { AUTHOR } from "@/lib/site";
 import { byline } from "@/components/guides/Byline";
@@ -52,6 +55,9 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
   // The page's own long text where this language has it (lib/landing-articles): it takes
   // the place of the three short points and the home page's moments, so nothing is shared.
   const article = await landingArticle(locale, page.key);
+  // The guides that lead here, so the link goes both ways.
+  const guides = guidesFor(page.key, page.group === "compare", locale).slice(0, 4);
+  const guideCopy = guides.length ? await guideCopies(locale) : null;
   const path = `/${page.slug}`;
   const icons = POINT_ICONS[page.key] ?? [Footprints, Globe, Sun];
   const checked = page.checked
@@ -141,6 +147,19 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
         <Questions items={copy.faq} title={t.rich("faqTitle", { em: quiet })} />
       </div>
 
+      {guideCopy && (
+        <section className={cn(COLUMN, "pb-24 sm:pb-32")}>
+          <h2 className={cn(H2, CJK_HEADLINE, "text-center")}>{t.rich("guidesTitle", { em: quiet })}</h2>
+          <ul className="mx-auto mt-12 grid max-w-[1040px] gap-3 md:grid-cols-2">
+            {guides.map((guide) => (
+              <li key={guide.slug}>
+                <GuideCard guide={guide} title={guideCopy[guide.key].label} description={guideCopy[guide.key].meta.description} />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       <section className={cn(COLUMN, "pb-24 sm:pb-32")}>
         <h2 className={cn(H2, CJK_HEADLINE, "text-center")}>{t.rich("relatedTitle", { em: quiet })}</h2>
         <div className="mx-auto mt-12 grid max-w-[1120px] gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
@@ -149,9 +168,8 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
             <nav key={group} aria-label={t(group)}>
               <p className="px-1 text-[12px] font-medium uppercase tracking-[0.16em] text-faint">{t(group)}</p>
               <ul className="mt-4 grid gap-2">
-                {LANDINGS.filter((other) => other.group === group && other.key !== page.key)
-                  .slice(0, 3)
-                  .map((other) => (
+                {(group === page.group ? relatedLandings(page, 3) : LANDINGS.filter((other) => other.group === group).slice(0, 3)).map(
+                  (other) => (
                     <li key={other.slug}>
                       <Link
                         href={`/${other.slug}`}

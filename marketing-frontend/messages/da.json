@@ -1109,7 +1109,8 @@
         "body": "Hver plan har alle funktioner. Det her findes på etagen."
       }
     },
-    "features": "Funktioner"
+    "features": "Funktioner",
+    "guidesTitle": "Relaterede <em>guides.</em>"
   },
   "about": {
     "meta": {

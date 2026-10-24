@@ -1109,7 +1109,8 @@
         "body": "Hver plan har alle funksjoner. Dette finnes på etasjen."
       }
     },
-    "features": "Funksjoner"
+    "features": "Funksjoner",
+    "guidesTitle": "Relaterte <em>guider.</em>"
   },
   "about": {
     "meta": {

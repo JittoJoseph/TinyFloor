@@ -1109,7 +1109,8 @@
         "body": "Varje plan har alla funktioner. Det här finns på våningen."
       }
     },
-    "features": "Funktioner"
+    "features": "Funktioner",
+    "guidesTitle": "Relaterade <em>guider.</em>"
   },
   "about": {
     "meta": {

@@ -1109,7 +1109,8 @@
         "body": "Chaque formule a toutes les fonctionnalités. Voici ce qu'il y a sur l'étage."
       }
     },
-    "features": "Fonctionnalités"
+    "features": "Fonctionnalités",
+    "guidesTitle": "Guides <em>associés.</em>"
   },
   "about": {
     "meta": {

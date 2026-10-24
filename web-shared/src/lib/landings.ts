@@ -46,26 +46,28 @@ export interface Landing {
   versus?: [LandingKey, LandingKey];
   /** When the other products' details were last checked against their own sites (YYYY-MM). */
   checked?: string;
+  /** The pages in its own group to link first, closest first; otherwise the ones after it in the list. */
+  related?: LandingKey[];
 }
 
 /** Pages written for what people search (docs/search.md). Copy lives under `landings.pages.<key>`. */
 export const LANDINGS: Landing[] = [
-  { slug: "gather-alternative", key: "gather", group: "compare", competitor: "Gather", checked: "2026-10" },
-  { slug: "kumospace-alternative", key: "kumospace", group: "compare", competitor: "Kumospace", checked: "2026-10" },
-  { slug: "sococo-alternative", key: "sococo", group: "compare", competitor: "Sococo", checked: "2026-10" },
-  { slug: "ovice-alternative", key: "ovice", group: "compare", competitor: "oVice", checked: "2026-10" },
-  { slug: "roam-alternative", key: "roam", group: "compare", competitor: "Roam", checked: "2026-10" },
-  { slug: "teamflow-alternative", key: "teamflow", group: "compare", competitor: "Teamflow", checked: "2026-10" },
-  { slug: "spatialchat-alternative", key: "spatialchat", group: "compare", competitor: "SpatialChat", checked: "2026-10" },
-  { slug: "sowork-alternative", key: "sowork", group: "compare", competitor: "SoWork", checked: "2026-10" },
-  { slug: "spot-alternative", key: "spot", group: "compare", competitor: "Spot", checked: "2026-10" },
-  { slug: "zep-alternative", key: "zep", group: "compare", competitor: "ZEP", checked: "2026-10" },
-  { slug: "workadventure-alternative", key: "workadventure", group: "compare", competitor: "WorkAdventure", checked: "2026-10" },
-  { slug: "wonder-alternative", key: "wonder", group: "compare", product: "Wonder" },
-  { slug: "slack-huddles-alternative", key: "slackHuddles", group: "compare", competitor: "Slack huddles", checked: "2026-10" },
-  { slug: "discord-for-work", key: "discord", group: "compare", competitor: "Discord", checked: "2026-10" },
-  { slug: "gather-vs-kumospace", key: "gatherVsKumospace", group: "compare", versus: ["gather", "kumospace"], checked: "2026-10" },
-  { slug: "zep-vs-gather", key: "zepVsGather", group: "compare", versus: ["zep", "gather"], checked: "2026-10" },
+  { slug: "gather-alternative", key: "gather", group: "compare", competitor: "Gather", checked: "2026-10", related: ["gatherVsKumospace", "zepVsGather", "kumospace"] },
+  { slug: "kumospace-alternative", key: "kumospace", group: "compare", competitor: "Kumospace", checked: "2026-10", related: ["gatherVsKumospace", "gather", "sowork"] },
+  { slug: "sococo-alternative", key: "sococo", group: "compare", competitor: "Sococo", checked: "2026-10", related: ["ovice", "roam", "gather"] },
+  { slug: "ovice-alternative", key: "ovice", group: "compare", competitor: "oVice", checked: "2026-10", related: ["zep", "sococo", "gather"] },
+  { slug: "roam-alternative", key: "roam", group: "compare", competitor: "Roam", checked: "2026-10", related: ["teamflow", "sococo", "gather"] },
+  { slug: "teamflow-alternative", key: "teamflow", group: "compare", competitor: "Teamflow", checked: "2026-10", related: ["roam", "gather", "spatialchat"] },
+  { slug: "spatialchat-alternative", key: "spatialchat", group: "compare", competitor: "SpatialChat", checked: "2026-10", related: ["kumospace", "workadventure", "gather"] },
+  { slug: "sowork-alternative", key: "sowork", group: "compare", competitor: "SoWork", checked: "2026-10", related: ["spot", "gather", "kumospace"] },
+  { slug: "spot-alternative", key: "spot", group: "compare", competitor: "Spot", checked: "2026-10", related: ["sowork", "gather", "kumospace"] },
+  { slug: "zep-alternative", key: "zep", group: "compare", competitor: "ZEP", checked: "2026-10", related: ["zepVsGather", "gather", "ovice"] },
+  { slug: "workadventure-alternative", key: "workadventure", group: "compare", competitor: "WorkAdventure", checked: "2026-10", related: ["gather", "spatialchat", "zep"] },
+  { slug: "wonder-alternative", key: "wonder", group: "compare", product: "Wonder", related: ["spatialchat", "kumospace", "gather"] },
+  { slug: "slack-huddles-alternative", key: "slackHuddles", group: "compare", competitor: "Slack huddles", checked: "2026-10", related: ["discord", "roam", "gather"] },
+  { slug: "discord-for-work", key: "discord", group: "compare", competitor: "Discord", checked: "2026-10", related: ["slackHuddles", "workadventure", "gather"] },
+  { slug: "gather-vs-kumospace", key: "gatherVsKumospace", group: "compare", versus: ["gather", "kumospace"], checked: "2026-10", related: ["gather", "kumospace", "zepVsGather"] },
+  { slug: "zep-vs-gather", key: "zepVsGather", group: "compare", versus: ["zep", "gather"], checked: "2026-10", related: ["zep", "gather", "gatherVsKumospace"] },
   { slug: "proximity-chat", key: "proximityChat", group: "features" },
   { slug: "virtual-meeting-room", key: "meetingRoom", group: "features" },
   { slug: "team-chat", key: "teamChat", group: "features" },
@@ -96,3 +98,12 @@ export const landingBySlug = (slug: string) =>
 
 export const landingByKey = (key: LandingKey) =>
   LANDINGS.find((landing) => landing.key === key)!;
+
+/** Pages in the same group to link from this one: its `related` first, then the ones after it, round the list. */
+export function relatedLandings(page: Landing, count: number): Landing[] {
+  const group = LANDINGS.filter((other) => other.group === page.group);
+  const at = group.findIndex((other) => other.key === page.key);
+  const after = group.map((_, index) => group[(at + 1 + index) % group.length]);
+  const picked = [...(page.related ?? []).map(landingByKey), ...after].filter((other) => other.key !== page.key);
+  return [...new Set(picked)].slice(0, count);
+}

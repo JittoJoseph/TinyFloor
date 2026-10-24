@@ -1109,7 +1109,8 @@
         "body": "Todos os planos têm todos os recursos. Veja o que há no andar."
       }
     },
-    "features": "Recursos"
+    "features": "Recursos",
+    "guidesTitle": "Guias <em>relacionados.</em>"
   },
   "about": {
     "meta": {

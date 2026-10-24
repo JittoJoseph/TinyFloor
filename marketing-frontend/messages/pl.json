@@ -1109,7 +1109,8 @@
         "body": "Każdy plan ma wszystkie funkcje. Oto co jest na piętrze."
       }
     },
-    "features": "Funkcje"
+    "features": "Funkcje",
+    "guidesTitle": "Powiązane <em>poradniki.</em>"
   },
   "about": {
     "meta": {

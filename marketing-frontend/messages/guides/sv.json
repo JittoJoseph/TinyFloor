@@ -781,42 +781,42 @@
           {
             "title": "Gather",
             "detail": "Ingen gratisplan · 12 $ per medlem i månaden vid årsbetalning, 15 $ per månad",
-            "body": "Det mest kända virtuella kontoret och det mest kompletta: ett kontor du designar själv, inspelning och transkribering, integrationer med Google Calendar, GitHub och Spotify, och gäster. Slutade med gratisplanen 2025, så för ett litet team är det ett av de dyrare valen."
+            "body": "Det mest kända virtuella kontoret och det mest kompletta: ett kontor du designar själv, inspelning och transkribering, integrationer med Google Calendar, GitHub och Spotify, och gäster. Slutade med gratisplanen 2025, så för ett litet team är det ett av de dyrare valen. [Fullständig jämförelse](/gather-alternative)."
           },
           {
             "title": "SoWork",
             "detail": "Gratis för 10 medlemmar · Basic 5,40 $ per medlem i månaden vid årsbetalning",
-            "body": "Ett virtuellt kontor med mötesrum, teamchatt och kalenderintegration. Gratisplanen rymmer upp till 10 medlemmar men begränsar möten till 30 minuter och har inga inspelningar. Premium, för 12 $ per medlem i månaden vid årsbetalning, lägger till AI-sammanfattningar, obegränsade inspelningar och statistik."
+            "body": "Ett virtuellt kontor med mötesrum, teamchatt och kalenderintegration. Gratisplanen rymmer upp till 10 medlemmar men begränsar möten till 30 minuter och har inga inspelningar. Premium, för 12 $ per medlem i månaden vid årsbetalning, lägger till AI-sammanfattningar, obegränsade inspelningar och statistik. [Fullständig jämförelse](/sowork-alternative)."
           },
           {
             "title": "Kumospace",
             "detail": "Gratis för 5 medlemmar · Business 16 $ per användare i månaden",
-            "body": "Ett snyggt utrymme med spatialt ljud och appar för dator och telefon, populärt både för sociala evenemang och som kontor. Gratisplanen täcker 5 medlemmar och en våning. För ett team på 10 eller fler hör det till de dyraste."
+            "body": "Ett snyggt utrymme med spatialt ljud och appar för dator och telefon, populärt både för sociala evenemang och som kontor. Gratisplanen täcker 5 medlemmar och en våning. För ett team på 10 eller fler hör det till de dyraste. [Fullständig jämförelse](/kumospace-alternative)."
           },
           {
             "title": "WorkAdventure",
             "detail": "Gratis för 10 personer samtidigt · Business 9 $ per användare i månaden",
-            "body": "En värld i pixelkonst med öppen källkod som du kan driva själv, med kartor byggda i redigeraren Tiled. Passar tekniska team och evenemang som vill ha full kontroll. Att bygga en egen karta eller driva en egen server är riktigt arbete."
+            "body": "En värld i pixelkonst med öppen källkod som du kan driva själv, med kartor byggda i redigeraren Tiled. Passar tekniska team och evenemang som vill ha full kontroll. Att bygga en egen karta eller driva en egen server är riktigt arbete. [Fullständig jämförelse](/workadventure-alternative)."
           },
           {
             "title": "SpatialChat",
             "detail": "Gratis 2 timmar om dagen för 12 · Business 8 $ per användare i månaden",
-            "body": "Rum med spatialt ljud och videobubblor, mycket använda för evenemang, lektioner och workshoppar. Gratisplanen passar enstaka pass; ett team som är där hela dagen behöver en Business-plan."
+            "body": "Rum med spatialt ljud och videobubblor, mycket använda för evenemang, lektioner och workshoppar. Gratisplanen passar enstaka pass; ett team som är där hela dagen behöver en Business-plan. [Fullständig jämförelse](/spatialchat-alternative)."
           },
           {
             "title": "Roam",
             "detail": "Ingen gratisplan · 19,50 $ per aktiv medlem i månaden",
-            "body": "En datorapp för Mac och Windows som kombinerar ett virtuellt kontor med möten, chatt, en AI-assistent och webbinarier. Du betalar bara för medlemmar som använder den under månaden. Det är en komplett arbetssvit, med prislapp därefter."
+            "body": "En datorapp för Mac och Windows som kombinerar ett virtuellt kontor med möten, chatt, en AI-assistent och webbinarier. Du betalar bara för medlemmar som använder den under månaden. Det är en komplett arbetssvit, med prislapp därefter. [Fullständig jämförelse](/roam-alternative)."
           },
           {
             "title": "oVice",
             "detail": "Gratisversion utan support · 65 $ i månaden per utrymme, vid årsbetalning",
-            "body": "Ett kontor i 2D med pris per utrymme: Entry-S passar runt 10 fasta medlemmar, och Business Starter kostar 16 $ per användare i månaden från 20 användare. Starkt i Japan och hos större företag. Gratisplanen körs på en förhandsversion utan support."
+            "body": "Ett kontor i 2D med pris per utrymme: Entry-S passar runt 10 fasta medlemmar, och Business Starter kostar 16 $ per användare i månaden från 20 användare. Starkt i Japan och hos större företag. Gratisplanen körs på en förhandsversion utan support. [Fullständig jämförelse](/ovice-alternative)."
           },
           {
             "title": "Sococo",
             "detail": "Ingen gratisplan · 13,49 $ per plats i månaden, vid årsbetalning, minst 10 platser",
-            "body": "En planritning av rum sedd uppifrån i stället för figurer, med flera skärmdelningar samtidigt. Varje plats ingår med 500 mötesminuter i månaden. Byggt för företag som köper programvara per år."
+            "body": "En planritning av rum sedd uppifrån i stället för figurer, med flera skärmdelningar samtidigt. Varje plats ingår med 500 mötesminuter i månaden. Byggt för företag som köper programvara per år. [Fullständig jämförelse](/sococo-alternative)."
           }
         ]
       },
@@ -2862,6 +2862,198 @@
       {
         "q": "Vad är svårast med distansonboarding?",
         "a": "Att veta vem man ska fråga och när det är okej att störa. En buddy och synlig närvaro löser det mesta."
+      }
+    ]
+  },
+  "bodyDoubling": {
+    "label": "Body doubling",
+    "meta": {
+      "title": "Body doubling: Vad det är och så gör du det online",
+      "description": "Vad body doubling är, varför det är lättare att komma igång bredvid någon, hur du gör det online, hur du håller i en session och hur ni gör det i teamet."
+    },
+    "title": "Body doubling: <em>jobba bredvid någon, få mer gjort.</em>",
+    "intro": "Body doubling innebär att du arbetar med en annan person i närheten, i samma rum eller på en skärm, så att det blir lättare att påbörja en uppgift och hålla fokus. Den andra personen hjälper inte till med arbetet, utan är bara där. Många med ADHD beskriver det som en av få saker som faktiskt fungerar, och många distansarbetare använder det för att ersätta det tysta sällskapet på ett kontor. Här är vad det är, hur du gör det online och hur du håller i en session som fungerar.",
+    "sections": [
+      {
+        "title": "Vad body doubling är",
+        "body": [
+          "En body double är någon som arbetar vid din sida medan du gör en uppgift som du annars skulle skjuta upp: pappersarbete, en rapport, studier, städning eller ett svårt mejl. De kan göra sitt eget arbete eller bara läsa. Det viktiga är att någon är där.",
+          "Idén kommer från ADHD-coaching, och namnet har spridit sig långt utanför det området. Studenter använder det för att plugga, frilansare för att ta sig igenom administration och distansteam för att behålla känslan av att arbeta i samma rum."
+        ]
+      },
+      {
+        "title": "Varför det verkar hjälpa",
+        "body": [
+          "Forskningen om just body doubling är fortfarande begränsad. Det mesta vi vet kommer från folks egna erfarenheter, men skälen som anges är väldigt samstämmiga."
+        ],
+        "items": [
+          {
+            "title": "Lättare att komma igång",
+            "body": "Att säga högt vad du ska göra, till någon som också sätter sig ner för att arbeta, gör det svårare att skjuta upp."
+          },
+          {
+            "title": "Mjuk ansvarskänsla",
+            "body": "Ingen kontrollerar ditt arbete, men att veta att någon kommer att fråga ”hur gick det?” i slutet räcker ofta långt."
+          },
+          {
+            "title": "Färre sidospår",
+            "body": "När någon är där känns det mer märkbart att plocka upp telefonen eller öppna en ny flik, så det händer mer sällan."
+          },
+          {
+            "title": "Mindre ensamt",
+            "body": "För de som jobbar hemifrån gör det tysta sällskapet från en annan person att långa arbetspass känns lättare."
+          }
+        ]
+      },
+      {
+        "title": "Sätt att köra body doubling online",
+        "table": {
+          "head": [
+            "Metod",
+            "Vem som är där",
+            "Passar för"
+          ],
+          "rows": [
+            [
+              "Videosamtal med en vän",
+              "Någon du känner",
+              "Gratis och enkelt. Bestäm en tid och ha kameran på eller av"
+            ],
+            [
+              "Matchningstjänster",
+              "En främling, bokad för ett tidsbestämt pass",
+              "Når ingen du känner är ledig och du vill ha en fast tid"
+            ],
+            [
+              "”Study with me”-videor",
+              "En inspelning av någon som arbetar",
+              "En snabbstart när ingen annan är i närheten. Ger dock inget externt ansvar"
+            ],
+            [
+              "Ett virtuellt kontor",
+              "Dina kollegor eller en liten grupp",
+              "Sällskap hela dagen med folk du känner, där ni pratar när det behövs"
+            ]
+          ],
+          "note": "Alla passar för olika behov. Många blandar dem: en vän för svåra uppgifter, en inspelning för mindre saker."
+        }
+      },
+      {
+        "title": "Så håller du i en body doubling-session",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Bestäm tid och längd",
+            "body": "Femtio minuters arbete är ett vanligt val. Börja med 25 om en uppgift känns tung."
+          },
+          {
+            "title": "Berätta vad du ska göra",
+            "body": "En mening var: uppgiften och hur det ser ut när den är klar. Specifikt är bättre än ambitiöst."
+          },
+          {
+            "title": "Arbeta under tystnad",
+            "body": "Mikrofonerna av, kamerorna väljer ni själva. Undvik att småprata – poängen är att arbeta."
+          },
+          {
+            "title": "Stäm av i slutet",
+            "body": "En mening var igen: klar, inte klar, vad som händer näst. Ingen dömande attityd oavsett."
+          },
+          {
+            "title": "Ta en kort paus",
+            "body": "Fem eller tio minuter, starta sedan en ny session eller runda av för dagen."
+          }
+        ]
+      },
+      {
+        "title": "Ett enkelt upplägg för en session",
+        "table": {
+          "head": [
+            "Del",
+            "Tid",
+            "Vad som händer"
+          ],
+          "rows": [
+            [
+              "Incheckning",
+              "2 min",
+              "Varje person berättar om sin uppgift"
+            ],
+            [
+              "Arbete",
+              "45 till 50 min",
+              "Tystnad, mikrofonerna av"
+            ],
+            [
+              "Utcheckning",
+              "3 min",
+              "Klar, inte klar, vad som händer näst"
+            ],
+            [
+              "Paus",
+              "5 till 10 min",
+              "Bort från skärmen"
+            ]
+          ],
+          "note": "Upprepa så många gånger som passar för dagen. Håll samma starttid för att göra det till en vana."
+        }
+      },
+      {
+        "title": "Tips som får det att fungera",
+        "items": [
+          {
+            "title": "Samma tid varje dag",
+            "body": "En fast tid tar bort beslutet om huruvida du ska komma igång."
+          },
+          {
+            "title": "Kameran är valfri",
+            "body": "Vissa behöver synas, andra tycker att det distraherar. Kom överens om vad som passar alla."
+          },
+          {
+            "title": "Håll uppgifterna små",
+            "body": "”Skriv första sidan” fungerar bättre än ”skriv rapporten”."
+          },
+          {
+            "title": "Gör det inte till ett möte",
+            "body": "Om sessionen blir till småprat blir inget arbete gjort. Prata under incheckningen och pausen."
+          },
+          {
+            "title": "Var snäll mot dig själv vid sämre pass",
+            "body": "Vissa dagar blir ingenting gjort. Att säga det vid utcheckningen, utan ursäkter, är en del av det som gör att folk fortsätter komma tillbaka."
+          }
+        ]
+      },
+      {
+        "title": "Body doubling med ditt team",
+        "body": [
+          "Distansteam kan köra body doubling utan någon extra app – teamet är redan där. På en gemensam [virtuell coworking-yta](/virtual-coworking) kan alla se vem som arbetar, sitta vid sitt eget skrivbord och sätta sig som upptagen, så att en tyst eftermiddag ändå känns delad.",
+          "För mer struktur kan du starta ett möte som heter Fokus, bjuda in de som vill vara med och köra upplägget ovan. De som hellre inte vill prata kan helt enkelt bara vara på våningen och arbeta nära alla andra."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Där TinyFloor passar in",
+      "body": "TinyFloor är ett privat virtuellt kontor för personer som känner varandra: ett litet team, några vänner eller en studiegrupp. Sitt vid era skrivbord, sätt er som upptagna, starta en fokussession i mötesrummet och prata när ni behöver. Det är gratis för upp till 3 personer, så två vänner kan köra body doubling där helt utan kostnad. Det matchar dig inte med främlingar."
+    },
+    "faq": [
+      {
+        "q": "Vad är body doubling?",
+        "a": "Att arbeta med en annan person i närheten, fysiskt eller online, för att göra det lättare att påbörja en uppgift och fortsätta arbeta. Den andra personen hjälper inte till med arbetet, utan är bara där."
+      },
+      {
+        "q": "Är body doubling bara för personer med ADHD?",
+        "a": "Nej. Begreppet kommer från ADHD-coaching och många med ADHD tycker att det är till stor hjälp, men även studenter, frilansare och distansarbetare använder det."
+      },
+      {
+        "q": "Krävs det video för body doubling?",
+        "a": "Inte nödvändigtvis. Vissa behöver synas, medan andra bara behöver veta att någon annan också arbetar. Röstsamtal, ett gemensamt virtuellt kontor eller kameror på fungerar lika bra."
+      },
+      {
+        "q": "Hur lång bör en body doubling-session vara?",
+        "a": "Det är vanligt med runt 50 minuters arbete med en kort incheckning och utcheckning. Börja med 25 minuter om en uppgift känns svår att ta tag i."
+      },
+      {
+        "q": "Kan jag köra body doubling gratis?",
+        "a": "Ja. Ett videosamtal med en vän kostar ingenting, och TinyFloor är gratis för upp till 3 personer, så en liten grupp kan köra body doubling där varje dag."
       }
     ]
   }

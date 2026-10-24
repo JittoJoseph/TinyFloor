@@ -14,6 +14,12 @@ When a guide is written English-first, give it `locales` in
 `web-shared/src/lib/guides.ts` until the rest are done: elsewhere it's not
 found and nothing links to it. List it here while it waits.
 
+New copy is translated with Gemini (`gemini-3.5-flash` on Vertex, credentials
+in the root `.env.local`), giving each language its own published copy of a
+similar page as the reference for voice, terms and number format, and
+rejecting any answer whose shape, `<em>` marks or link paths differ from the
+English.
+
 When a page or guide is translated:
 
 - Table rows take the language's own number format (`1.152 $`, `1 152 $`,

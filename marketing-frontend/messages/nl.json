@@ -800,8 +800,8 @@
         "label": "Virtuele vergaderruimte",
         "line": "Loop naar binnen om te vergaderen, loop weg om te gaan",
         "meta": {
-          "title": "Virtuele vergaderruimte voor remote teams",
-          "description": "Een vergaderruimte waar je team naar binnen loopt: doe mee en je personage neemt plaats aan tafel, met camera's, schermdelen en zonder meetinglink."
+          "title": "Gratis virtuele vergaderruimte voor teams: altijd open, geen links",
+          "description": "Een virtuele vergaderruimte waar je team zo binnenloopt, gratis tot 3 personen: doe mee en je personage neemt plaats aan tafel, met camera's, schermdelen en geen meetinglink om te sturen."
         },
         "title": "Een <em>virtuele vergaderruimte</em> verderop in de gang.",
         "subtitle": "Elk kantoor heeft een vergaderruimte die er altijd is. Doe mee aan een meeting en je personage loopt naar binnen; loop naar buiten en je bent weg. Geen links, geen wachtkamer.",
@@ -907,6 +907,167 @@
             "a": "Ja. Elk abonnement heeft alle functies, ook het gratis abonnement."
           }
         ]
+      },
+      "sowork": {
+        "label": "SoWork-alternatief",
+        "meta": {
+          "title": "Alternatief voor SoWork: prijzen, gratis limiet en een vaste prijs",
+          "description": "SoWork is gratis voor 10 leden met vergaderingen van 30 minuten, daarna $ 5,40 tot $ 15 per lid per maand. Wat een klein team betaalt, wat SoWork beter doet en TinyFloor voor $ 29 voor het hele team."
+        },
+        "title": "Een <em>SoWork-alternatief</em> met één prijs voor het team.",
+        "subtitle": "Het gratis abonnement van SoWork beperkt vergaderingen tot 30 minuten, en de betaalde abonnementen rekenen per lid. TinyFloor is gratis voor 3, daarna één prijs voor het hele team: $ 29 per maand.",
+        "them": {
+          "price": "Basic vanaf $ 5,40 per lid per maand",
+          "freePlan": "Tot 10 leden, vergaderingen beperkt tot 30 minuten",
+          "browser": "Ja, met desktop- en mobiele apps",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Is SoWork gratis?",
+            "a": "SoWork heeft een gratis abonnement voor maximaal 10 leden, met een limiet van 30 minuten per vergadering, beperkte chat en aanpassingen, en zonder opnames, statistieken of AI. Basic kost $ 5,40 per lid per maand bij jaarbetaling, of $ 6 maandelijks. TinyFloor is gratis voor maximaal 3 mensen en kost $ 29 per maand voor het hele team."
+          },
+          {
+            "q": "Wat kost SoWork voor 10 mensen?",
+            "a": "Met Basic $ 54 per maand bij jaarbetaling of $ 60 bij maandbetaling. Met Premium $ 120 per maand bij jaarbetaling of $ 150 maandelijks. TinyFloor kost $ 29 per maand voor hetzelfde team."
+          },
+          {
+            "q": "Wat heeft SoWork dat TinyFloor niet heeft?",
+            "a": "Opnames van vergaderingen, AI-samenvattingen en transcripties (met Premium), agendakoppeling die je status bijwerkt, een kantoor dat je kunt aanpassen, teamstatistieken en apps voor Mac, Windows, iOS en Android. TinyFloor werkt in de browser en neemt niet op."
+          },
+          {
+            "q": "Hebben vergaderingen op TinyFloor een tijdslimiet?",
+            "a": "Geen enkele vergadering wordt afgebroken. Elk abonnement bevat een aantal uur groepsgesprekken per maand, en gesprekken tussen twee personen tellen nooit mee."
+          },
+          {
+            "q": "Hebben mijn collega's een account nodig?",
+            "a": "Ja, een gratis account, zodat je kantoor privé blijft voor je team. Wil je eerst rondkijken, probeer dan het demokantoor met alleen een naam."
+          }
+        ]
+      },
+      "zep": {
+        "label": "ZEP-alternatief",
+        "meta": {
+          "title": "Alternatief voor ZEP: prijzen, gratis limieten en een privé kantoor",
+          "description": "Het gratis abonnement van ZEP is voor 10 personen tegelijk, met één keer schermdelen per kaart en geen wachtwoord. Wat een team betaalt op ZEP, wat ZEP beter doet en TinyFloor, een privé kantoor voor kleine teams."
+        },
+        "title": "Een <em>ZEP-alternatief</em> gemaakt voor de werkdag van je team.",
+        "subtitle": "ZEP is een brede virtuele space voor lessen, evenementen en kantoren. TinyFloor doet één ding: een privé kantoor waarin een klein team ziet wie er is en met elkaar praat. Gratis voor 3, daarna $ 29 per maand voor het hele team.",
+        "them": {
+          "price": "Basic vanaf $ 4 per gebruiker per maand",
+          "freePlan": "Tot 10 mensen tegelijk, één keer schermdelen per kaart",
+          "browser": "Ja, met mobiele apps",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Is ZEP gratis?",
+            "a": "ZEP heeft een gratis abonnement voor maximaal 10 mensen die tegelijk verbonden zijn, met één spotlight, één keer schermdelen per kaart en één app. Wachtwoordbeveiliging, de space verbergen in zoekresultaten en toegang voor alleen ingelogde gebruikers beginnen bij Basic, voor $ 4 per gebruiker per maand bij jaarbetaling of $ 5 maandelijks."
+          },
+          {
+            "q": "Is ZEP een virtueel kantoor?",
+            "a": "Dat kan. ZEP is een algemene virtuele space die wordt gebruikt voor lessen, quizzen, evenementen en kantoren; de laatste tijd is veel daarvan gericht op het onderwijs. TinyFloor is puur een kantoor voor een werkend team."
+          },
+          {
+            "q": "Wat heeft ZEP dat TinyFloor niet heeft?",
+            "a": "Kaarten die je zelf bouwt en inricht, ruimte voor grote evenementen, quizzen en leermiddelen, apps die je aan een space kunt toevoegen, bezoekersstatistieken en mobiele apps. Als je lessen of evenementen organiseert, biedt ZEP veel meer."
+          },
+          {
+            "q": "Is een TinyFloor-kantoor privé?",
+            "a": "Ja, op elk abonnement, inclusief het gratis abonnement. Collega's komen binnen met een gratis account via jouw uitnodigingslink; niemand kan het kantoor via de zoekfunctie vinden."
+          },
+          {
+            "q": "Werkt TinyFloor op een telefoon?",
+            "a": "Ja. Het werkt in mobiele browsers met een joystick op het scherm, dus je hoeft geen app te downloaden."
+          }
+        ]
+      },
+      "hybrid": {
+        "label": "Hybride teams",
+        "meta": {
+          "title": "Virtueel kantoor voor hybride teams: één verdieping voor kantoor en thuis",
+          "description": "Een virtueel kantoor voor hybride teams, zodat de mensen thuis niets missen van wat er op kantoor gebeurt. Iedereen op één verdieping, vanaf de eigen laptop. Gratis voor 3, daarna $29 per maand voor het hele team."
+        },
+        "title": "Eén kantoor voor een <em>hybride team.</em>",
+        "subtitle": "Als de helft van het team op kantoor is, missen de mensen thuis de gesprekken die daar plaatsvinden. TinyFloor zet iedereen op één verdieping, waar ze vandaag ook zitten.",
+        "faq": [
+          {
+            "q": "Hoe gebruikt een hybride team een virtueel kantoor?",
+            "a": "Iedereen opent hetzelfde kantoor vanaf de eigen laptop, of ze nu thuiswerken of aan een bureau in het gebouw zitten. Zo kunnen de mensen thuis zien wie er is en op dezelfde manier met hen praten."
+          },
+          {
+            "q": "Moeten de mensen op kantoor het ook gebruiken?",
+            "a": "Dat is juist wat het laat werken. Als alleen de mensen thuis op de verdieping zijn, wordt het een wachtruimte. Met iedereen erbij is een vraag aan wie dan ook maar één loopje verwijderd."
+          },
+          {
+            "q": "Werkt TinyFloor met hardware voor meetingruimtes?",
+            "a": "Nee. Er is geen integratie met systemen voor vergaderruimtes; mensen nemen deel vanaf hun eigen laptop of telefoon, idealiter met een koptelefoon."
+          },
+          {
+            "q": "Wat kost het?",
+            "a": "Gratis voor maximaal 3 mensen. Pro kost $29 per maand voor het hele team, tot 15 mensen, op welke dagen ze ook op kantoor zijn."
+          }
+        ]
+      },
+      "zepVsGather": {
+        "label": "ZEP vs Gather",
+        "meta": {
+          "title": "ZEP vs Gather: prijzen, gratis abonnementen en een derde optie",
+          "description": "ZEP en Gather naast elkaar: wat elk kost, gratis abonnementen, privacy, opnemen en waarvoor ze gemaakt zijn, en waar TinyFloor past voor een klein team, voor $ 29 per maand voor iedereen."
+        },
+        "title": "<em>ZEP vs Gather</em>, en een derde optie.",
+        "subtitle": "Beide zijn virtuele 2D-ruimtes waar je in rondloopt. ZEP is gratis voor 10 mensen tegelijk en richt zich meer op lessen en events; Gather heeft geen gratis abonnement en is gemaakt voor remote kantoren. TinyFloor is een privékantoor voor een klein team, voor één prijs.",
+        "faq": [
+          {
+            "q": "Wat is goedkoper, ZEP of Gather?",
+            "a": "ZEP. Het gratis abonnement dekt maximaal 10 mensen die tegelijk verbonden zijn, en Basic kost $ 4 tot $ 5 per gebruiker per maand. Gather heeft geen gratis abonnement en kost $ 12 per lid per maand bij jaarlijkse betaling, of $ 15 maandelijks. TinyFloor is gratis voor 3 mensen en kost $ 29 per maand voor het hele team."
+          },
+          {
+            "q": "Wat is beter voor het kantoor van een remote team?",
+            "a": "Gather is gemaakt voor kantoren, met bureaus, opnemen en een desktop-app. ZEP kan ook een kantoor zijn, maar richt zich nu vooral op lessen, quizzen en events. Voor een klein team dat een kant-en-klaar privékantoor wil, is TinyFloor eenvoudiger en goedkoper."
+          },
+          {
+            "q": "Zijn ZEP en Gather privé?",
+            "a": "Ruimtes in Gather zijn voor jouw team. Bij het gratis abonnement van ZEP kan een ruimte geen wachtwoord hebben of beperkt worden tot ingelogde mensen; die opties krijg je bij Basic. De kantoren van TinyFloor zijn privé bij elk abonnement."
+          },
+          {
+            "q": "Kunnen we later overstappen naar TinyFloor?",
+            "a": "Ja. Maak een kantoor, deel één uitnodigingslink en draai er een week proef naast je huidige ruimte. Er is niets te migreren."
+          }
+        ]
+      },
+      "spot": {
+        "label": "Spot-alternatief",
+        "meta": {
+          "title": "Alternatief voor Spot: prijzen van Spot Virtual, geen gratis abonnement en een vaste prijs",
+          "description": "Spot Virtual heeft geen gratis abonnement: na een proefperiode van 30 dagen kost het $ 4,80 tot $ 10 per gebruiker per maand. Wat een klein team betaalt, wat Spot beter doet en TinyFloor, gratis voor 3 en $ 29 voor het hele team."
+        },
+        "title": "Een <em>Spot-alternatief</em> met één prijs voor het team.",
+        "subtitle": "Spot Virtual rekent per gebruiker en heeft geen gratis abonnement na de proefperiode van 30 dagen. TinyFloor is gratis voor maximaal 3 mensen, daarna één prijs voor het hele team: $ 29 per maand.",
+        "them": {
+          "price": "Basic vanaf $ 4,80 per gebruiker per maand",
+          "freePlan": "Geen, alleen een proefperiode van 30 dagen",
+          "browser": "Ja, met een desktop-app",
+          "screenShare": "Ja"
+        },
+        "faq": [
+          {
+            "q": "Wat kost Spot Virtual?",
+            "a": "Basic kost $ 4,80 per gebruiker per maand bij jaarbetaling, of $ 6 maandelijks. Growth, met een volledig aanpasbaar kantoor, HD-audio en -video en live ondersteuning, kost $ 8 of $ 10. Enterprise, voor 50 of meer personen, is op aanvraag. TinyFloor kost $ 29 per maand voor het hele team."
+          },
+          {
+            "q": "Heeft Spot een gratis abonnement?",
+            "a": "Nee. Spot heeft een gratis proefperiode van 30 dagen; daarna heeft elke gebruiker een betaald abonnement nodig. TinyFloor is gratis voor maximaal 3 mensen met alle functies, zo lang als je wilt."
+          },
+          {
+            "q": "Wat kost Spot voor 10 mensen?",
+            "a": "Met Basic $ 48 per maand bij jaarbetaling of $ 60 bij maandbetaling. Met Growth $ 80 per maand bij jaarbetaling of $ 100 maandelijks. TinyFloor kost $ 29 per maand voor hetzelfde team."
+          },
+          {
+            "q": "Wat heeft Spot dat TinyFloor niet heeft?",
+            "a": "Een kantoor dat je zelf ontwerpt, met je eigen huisstijl, indelingen en elementen, chatkanalen zoals in Slack, een desktop-app, evenementen vanaf $ 3 per persoon per dag, en single sign-on met Enterprise. TinyFloor heeft één kant-en-klaar kantoor en werkt in de browser."
+          }
+        ]
       }
     },
     "teams": "Teams",
@@ -933,8 +1094,8 @@
       },
       "teams": {
         "meta": {
-          "title": "TinyFloor voor engineering, design, startups en bureaus",
-          "description": "Een virtueel kantoor dat past bij hoe je team werkt: engineeringteams, designteams, startups en bureaus."
+          "title": "TinyFloor voor engineering, design, startups, bureaus en hybride teams",
+          "description": "Een virtueel kantoor afgestemd op hoe jouw team werkt, voor engineeringteams, designteams, startups, bureaus en hybride teams."
         },
         "title": "Gemaakt voor <em>teams zoals het jouwe.</em>",
         "body": "Elk team gebruikt de verdieping een beetje anders. Zo past het bij het jouwe."

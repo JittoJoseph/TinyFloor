@@ -2,35 +2,9 @@ import type { ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
 import {
   ArrowRight,
-  Building2,
-  CalendarOff,
-  Coffee,
-  DoorOpen,
-  Eye,
   Footprints,
   Globe,
-  Hand,
-  Hash,
-  Link2,
-  Lock,
-  MapIcon,
-  MessagesSquare,
-  MonitorUp,
-  Moon,
-  Music2,
-  PenLine,
-  Presentation,
-  Radio,
-  ServerOff,
-  ShieldCheck,
-  Smartphone,
   Sun,
-  TimerOff,
-  UserPlus,
-  Users,
-  Video,
-  VolumeX,
-  Zap,
   type AppIcon,
 } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
@@ -59,35 +33,9 @@ interface LandingCopy {
   faq: Array<{ q: string; a: string }>;
 }
 
-/** An icon for each of a page's three reasons, in the order its copy lists them. */
-const POINT_ICONS: Record<LandingKey, [AppIcon, AppIcon, AppIcon]> = {
-  gather: [CalendarOff, Globe, UserPlus],
-  kumospace: [Users, DoorOpen, Smartphone],
-  spatialchat: [TimerOff, Building2, Footprints],
-  workadventure: [Users, MapIcon, ServerOff],
+/** An icon for each of the three reasons on a page without its own article, in the order its copy lists them. */
+const POINT_ICONS: Partial<Record<LandingKey, [AppIcon, AppIcon, AppIcon]>> = {
   wonder: [Footprints, Globe, Sun],
-  sococo: [Users, Footprints, TimerOff],
-  ovice: [Users, Footprints, MessagesSquare],
-  teamflow: [Users, TimerOff, Globe],
-  roam: [DoorOpen, Globe, Users],
-  slackHuddles: [Eye, Users, Hash],
-  discord: [Lock, Eye, Presentation],
-  gatherVsKumospace: [MapIcon, Users, Zap],
-  virtualOffice: [Eye, Zap, Video],
-  virtualCoworking: [Coffee, DoorOpen, Radio],
-  proximityChat: [Footprints, Users, ShieldCheck],
-  meetingRoom: [DoorOpen, Users, MonitorUp],
-  teamChat: [Hash, MessagesSquare, Zap],
-  presence: [Eye, Radio, Footprints],
-  whiteboard: [PenLine, Users, CalendarOff],
-  pairProgramming: [Zap, MonitorUp, UserPlus],
-  standup: [Presentation, Eye, TimerOff],
-  onboarding: [Link2, Users, Hand],
-  watercooler: [Footprints, Music2, CalendarOff],
-  engineering: [VolumeX, Zap, Presentation],
-  design: [MonitorUp, PenLine, Moon],
-  startups: [Users, Building2, Zap],
-  agencies: [Eye, MonitorUp, Hash],
 };
 
 /**
@@ -105,7 +53,7 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
   // the place of the three short points and the home page's moments, so nothing is shared.
   const article = await landingArticle(locale, page.key);
   const path = `/${page.slug}`;
-  const icons = POINT_ICONS[page.key];
+  const icons = POINT_ICONS[page.key] ?? [Footprints, Globe, Sun];
   const checked = page.checked
     ? new Intl.DateTimeFormat(locale, { month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${page.checked}-01T00:00:00Z`))
     : "";

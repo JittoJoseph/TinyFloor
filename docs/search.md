@@ -303,6 +303,46 @@ solves, and the page that answers each:
 | リモートワーク ツール (Japan) | >100 | easy | Remote work tools guide in Japanese |
 | outils télétravail, strumenti smart working, remote work tools (DE) | <100 each | easy | The same guide, translated |
 
+## What the money pages rank for, and the next gaps (24 October, later)
+
+- **"Virtual office software" lands on the comparison guide, not the product
+  page:** the best virtual office software guide gets 96 impressions for it at
+  position 31 (7.8 in German); /virtual-office ranks 60 to 80. So the guide is
+  the page to strengthen for the head term, and it now links each product to
+  its full comparison page, and every comparison page links back to it.
+- **"Virtual office app" (over 100, hard) and "virtual meeting room" (over
+  100, medium)** are the other head terms; we sit at 50 for both. The meeting
+  room page now says "free" in its title, as people search it.
+- **Assistants ask about products we had no page for.** A fan-out query
+  comparing SoWork, Teamflow and Sococo pricing on Reddit showed us at 4.6.
+  SoWork (free for 10 with 30-minute meetings, $5.40 to $15 a member) and
+  ZEP (Korean, free for 10 at once, big in Korea and Japan, now leaning toward
+  education) each have a comparison page, with ZEP vs Gather beside them.
+  Another fan-out, Spot vs SoWork vs Remo, put us at 6, so Spot (no free
+  plan, $4.80 to $10 a user after a 30-day trial) has one too. Remo is for
+  events and gets none.
+- **ZEP's Korean searches are games** ("zep quiz", hide and seek, mafia,
+  escape rooms: over 1,000 each), classes rather than offices. The ZEP pages
+  are for teams comparing it, not for those searches.
+- **oVice is over 10,000 a month in Japan**, mostly the brand and its login;
+  "oViceとは" is over 100 and "oVice 料金" under 100. The oVice alternative
+  page already covers its prices, so no separate pricing guide.
+- **Japan searches "バーチャルオフィスツール"** (over 100, easy; "ランキング"
+  and "比較" too). Plain "バーチャルオフィス" also means a rented address, so
+  the Japanese titles now say ツール.
+- **"Body doubling" is over 10,000 a month and easy; "body doubling app" over
+  100.** It's working next to someone to get started, which a TinyFloor
+  office does for people who know each other (not matched strangers). A guide
+  covers it honestly, without health claims, and the virtual coworking page's
+  focus sessions link to it. Chinese, Arabic and Russian titles carry the
+  English term too, since their own words for it are new.
+- **"Hybrid team" (over 100, easy) and "hybrid team building activities"**
+  (over 100): a hybrid teams page puts the office half and the home half on
+  one floor.
+- **The free tools draw few product searches.** Out-of-office messages and
+  two truths and a lie get impressions in many languages, but not from people
+  looking for an office; they aren't where to invest next.
+
 ## Launch places (24 October)
 
 - **Hacker News:** TinyFloor has never been posted. Earlier "virtual office"

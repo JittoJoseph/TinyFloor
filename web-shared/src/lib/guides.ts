@@ -15,7 +15,8 @@ export type GuideKey =
   | "oneOnOne"
   | "async"
   | "retro"
-  | "onboardingChecklist";
+  | "onboardingChecklist"
+  | "bodyDoubling";
 
 export interface Guide {
   slug: string;
@@ -35,10 +36,10 @@ export interface Guide {
 
 /** Guides for remote team leads (docs/search.md). Their words are in messages/guides/<locale>.json, keyed by `key` (lib/guide-copy). */
 export const GUIDES: Guide[] = [
-  { slug: "virtual-team-building-activities", key: "teamBuilding", published: "2026-10-04", updated: "2026-10-04", pages: ["watercooler", "whiteboard", "virtualOffice"] },
+  { slug: "virtual-team-building-activities", key: "teamBuilding", published: "2026-10-04", updated: "2026-10-24", pages: ["watercooler", "whiteboard", "virtualOffice"] },
   { slug: "games-for-virtual-meetings", key: "meetingGames", published: "2026-10-04", updated: "2026-10-04", pages: ["meetingRoom", "whiteboard", "standup"] },
   { slug: "virtual-happy-hour-ideas", key: "happyHour", published: "2026-10-24", updated: "2026-10-24", pages: ["watercooler", "proximityChat", "virtualOffice"] },
-  { slug: "how-to-build-remote-team-culture", key: "remoteCulture", published: "2026-10-04", updated: "2026-10-04", pages: ["presence", "onboarding", "watercooler"] },
+  { slug: "how-to-build-remote-team-culture", key: "remoteCulture", published: "2026-10-04", updated: "2026-10-24", pages: ["presence", "onboarding", "watercooler"] },
   { slug: "remote-team-communication", key: "remoteCommunication", published: "2026-10-04", updated: "2026-10-24", pages: ["teamChat", "presence", "slackHuddles"] },
   { slug: "async-communication", key: "async", published: "2026-10-24", updated: "2026-10-24", pages: ["teamChat", "presence", "standup"] },
   { slug: "remote-work-tools", key: "remoteTools", published: "2026-10-24", updated: "2026-10-24", pages: ["virtualOffice", "teamChat", "presence"] },
@@ -46,9 +47,10 @@ export const GUIDES: Guide[] = [
   { slug: "one-on-one-meeting-questions", key: "oneOnOne", published: "2026-10-24", updated: "2026-10-24", pages: ["meetingRoom", "presence", "onboarding"] },
   { slug: "retrospective-ideas", key: "retro", published: "2026-10-24", updated: "2026-10-24", pages: ["whiteboard", "meetingRoom", "engineering"] },
   { slug: "remote-onboarding-checklist", key: "onboardingChecklist", published: "2026-10-24", updated: "2026-10-24", pages: ["onboarding", "presence", "virtualOffice"] },
+  { slug: "body-doubling", key: "bodyDoubling", published: "2026-10-24", updated: "2026-10-24", pages: ["virtualCoworking", "presence", "virtualOffice"] },
   { slug: "what-is-proximity-chat", key: "proximityChat", published: "2026-10-04", updated: "2026-10-04", pages: ["proximityChat", "virtualOffice", "gather"] },
   // Buyers comparing products and prices (docs/search.md). Competitors' prices are checked against their own pages; bump `updated` when they are.
-  { slug: "best-virtual-office-software", key: "bestVirtualOffice", published: "2026-10-07", updated: "2026-10-16", pages: ["virtualOffice", "gather", "kumospace"] },
+  { slug: "best-virtual-office-software", key: "bestVirtualOffice", published: "2026-10-07", updated: "2026-10-24", pages: ["virtualOffice", "gather", "kumospace"] },
   { slug: "gather-pricing", key: "gatherPricing", published: "2026-10-07", updated: "2026-10-16", pages: ["gather", "gatherVsKumospace", "virtualOffice"] },
 ];
 

@@ -154,15 +154,15 @@
       "items": [
         {
           "title": "Näe, kuka on paikalla",
-          "body": "Kaikki näkyvät toimistossa tilan kanssa, joten tiedät, kuka istuu pöytänsä ääressä, kuka on kiireinen ja kuka on kokouksessa, ennen kuin keskeytät."
+          "body": "Kaikki näkyvät toimistossa [tilan](/team-presence) kanssa, joten tiedät, kuka istuu pöytänsä ääressä, kuka on kiireinen ja kuka on kokouksessa, ennen kuin keskeytät."
         },
         {
           "title": "Juttele sopimatta aikaa",
-          "body": "Kävele kollegan luo ja ala jutella. Kahden minuutin kysymys pysyy kahden minuutin kysymyksenä eikä muutu huomisen kalenterikutsuksi."
+          "body": "[Kävele kollegan luo](/proximity-chat) ja ala jutella. Kahden minuutin kysymys pysyy kahden minuutin kysymyksenä eikä muutu huomisen kalenterikutsuksi."
         },
         {
           "title": "Kokoonnu huoneessa",
-          "body": "Ryhmäkeskustelut käydään neuvotteluhuoneessa, johon kävelet sisään, videon ja näytönjaon kanssa, ja josta lähdet, kun olette valmiita."
+          "body": "Ryhmäkeskustelut käydään [kokoushuoneessa](/virtual-meeting-room), johon kävelet sisään videon ja näytönjaon kera, ja josta kävelet ulos, kun se on ohi."
         },
         {
           "title": "Oma työpöytä",
@@ -170,7 +170,7 @@
         },
         {
           "title": "Chattaa vieressä",
-          "body": "Viestit ja kanavat ovat kerroksen vieressä kaikelle, mikä ei vaadi keskustelua."
+          "body": "[Viestit ja kanavat](/team-chat) ovat kerroksen vieressä asioille, joista ei tarvitse puhua."
         }
       ]
     },
@@ -220,30 +220,30 @@
       "items": [
         {
           "title": "Pienet etätiimit",
-          "body": "Neljästä viiteentoista henkeä, jotka eivät jaa rakennusta ja kaipaavat sitä, että voi kääntyä ja kysyä."
+          "body": "Neljästä viiteentoista henkeä, jotka eivät jaa rakennusta, tai kodin ja toimiston välillä jakautunut [hybriditiimi](/hybrid-teams), jotka kaipaavat sitä, että voi kääntyä ja kysyä."
         },
         {
           "title": "Startupit",
-          "body": "Nuoret tiimit, jotka päättävät nopeasti eivätkä voi odottaa päivää seuraavaan kokoukseen."
+          "body": "Alkuvaiheen [startup-tiimit](/startups), jotka tekevät päätökset nopeasti eivätkä voi odottaa päivää seuraavaan kokoukseen."
         },
         {
           "title": "Toimistot ja studiot",
-          "body": "Ihmiset, jotka siirtyvät asiakasprojektista toiseen koko päivän ja joiden pitää löytää toisensa nopeasti."
+          "body": "[Toimistojen ja studioiden](/agencies) työntekijät, jotka siirtyvät asiakasprojektien välillä pitkin päivää ja joiden täytyy löytää toisensa nopeasti."
         },
         {
           "title": "Kehitys- ja suunnittelutiimit",
-          "body": "Pariohjelmointia, katselmointeja ja työn näyttämistä ruudulla ilman, että sitä varten varataan puhelu."
+          "body": "Parityöskentely, katselmointi ja työn näyttäminen näytöltä ilman puhelun varaamista. Sopii erityisesti [kehitys-](/engineering-teams) ja [suunnittelutiimeille](/design-teams)."
         },
         {
           "title": "Tiimit, joihin tulee uusi jäsen",
-          "body": "Uusi työntekijä näkee, kuka on paikalla, ja kysyy sen sijaan, että arvailisi, kenelle voi kirjoittaa."
+          "body": "Uusi työntekijä näkee, kuka on paikalla ja voi kysyä, sen sijaan että arvailee, kuka on vapaa viestittelyyn. Katso [etäperehdytys](/remote-onboarding)."
         }
       ]
     },
     {
       "title": "Mitä se maksaa",
       "body": [
-        "Mitä 8 hengen tiimi maksaa kuukaudessa suosituista virtuaalitoimistoista halvimmalla sopivalla tilauksella."
+        "Mitä 8 hengen tiimi maksaa kuukaudessa suosituista virtuaalitoimistoista halvimmalla sopivalla tilauksella. Jos haluat nähdä kaikki vaihtoehdot rinnakkain, lue [virtuaalitoimistojen ohjelmistovertailumme](/guides/best-virtual-office-software) tai laske oman tiimisi hinta [hintalaskurilla](/tools/virtual-office-cost-calculator)."
       ],
       "table": {
         "head": [
@@ -302,7 +302,7 @@
         {
           "title": "Pidä seuraava standup neuvotteluhuoneessa",
           "detail": "Ensimmäinen tapa",
-          "body": "Yhden päivittäisen kokouksen siirtäminen toimistoon saa ihmiset palaamaan seuraavana päivänä."
+          "body": "Yhden päivittäisen kokouksen, kuten [standupin](/virtual-standup), siirtäminen toimistoon saa ihmiset palaamaan seuraavana päivänä."
         },
         {
           "title": "Pidä se auki viikon",
@@ -337,7 +337,7 @@
     {
       "title": "Miksi tiimit käyttävät Discordia toimistona",
       "body": [
-        "Moni pieni tiimi, etenkin kehittäjät, studiot ja startupit, viettää työpäivänsä Discordissa. Ne luovat palvelimen, avaavat puhekanavan, ja ihmiset tulevat ja menevät kuin yhteiseen huoneeseen. Se on ilmainen, ääni on hyvä, näytönjako toimii puhekanavilla, eikä sen jo osaavan tarvitse opetella mitään uutta.",
+        "Moni pieni tiimi, etenkin kehittäjät, studiot ja [startupit](/startups), viettää työpäivänsä Discordissa. Ne luovat palvelimen, avaavat puhekanavan, ja ihmiset tulevat ja menevät kuin yhteiseen huoneeseen. Se on ilmainen, ääni on hyvä, näytönjako toimii puhekanavilla, eikä sen jo osaavan tarvitse opetella mitään uutta.",
         "Se osoittaa, että yhden klikkauksen päässä toisistaan oleminen toimii paremmin kuin jokaisen keskustelun aikatauluttaminen. Kysymys on, onko peliyhteisöille tehty sovellus paras koti sille."
       ]
     },
@@ -350,7 +350,7 @@
         },
         {
           "title": "Kanavia paikan sijaan",
-          "body": "Näet, kuka on millä puhekanavalla, mutta et sitä, kuka istuu pöytänsä ääressä ja ehtii hetken. Kanavalle liittyminen on kaikki tai ei mitään -tapa aloittaa keskustelu."
+          "body": "Näet, kuka on millä puhekanavalla, mutta et sitä, [kuka istuu pöytänsä ääressä ja ehtii hetken](/team-presence). Kanavalle liittyminen on kaikki tai ei mitään -tapa aloittaa keskustelu."
         },
         {
           "title": "Ei selvää neuvotteluhuonetta",
@@ -358,7 +358,7 @@
         },
         {
           "title": "Tehty yhteisöille",
-          "body": "Roolit, palvelimet ja botit on tehty suurille tuntemattomien ryhmille. Kahdeksan hengen tiimi tarvitsee paljon vähemmän, ja enemmän sitä, mitä toimistossa on."
+          "body": "Roolit, palvelimet ja botit on tehty suurille tuntemattomien ryhmille. Kahdeksan hengen tiimi tarvitsee paljon vähemmän, ja enemmän sitä, mitä [toimistossa](/virtual-office) on."
         }
       ]
     },
@@ -2079,7 +2079,7 @@
         {
           "title": "Sisään",
           "detail": "9.58",
-          "body": "Liity pääkokoukseen, niin hahmosi kävelee kokoushuoneeseen. Kaikki kerroksessa näkevät huoneen täyttyvän."
+          "body": "Liity pääkokoukseen, niin hahmosi kävelee [kokoushuoneeseen](/virtual-meeting-room). Kaikki kerroksessa näkevät huoneen täyttyvän."
         },
         {
           "title": "Kierros",
@@ -2164,7 +2164,7 @@
       "items": [
         {
           "title": "Aloita ajallaan",
-          "body": "Aloita minuutilleen, vaikka joku puuttuisi. Kerros näyttää, kuka on paikalla, kuka poissa ja kuka vielä puhelussa, joten tiedät, ketä odottaa ja ketä ei."
+          "body": "Aloita minuutilleen, vaikka joku puuttuisi. Kerros näyttää, [kuka on paikalla, kuka poissa](/team-presence) ja kuka vielä puhelussa, joten tiedät, ketä odottaa ja ketä ei."
         },
         {
           "title": "Jatkokysymykset työpisteelle",
@@ -2183,7 +2183,7 @@
     {
       "title": "Livenä, kirjallisesti vai molemmat",
       "body": [
-        "Eri aikavyöhykkeille hajautunut tiimi ei aina voi tavata samaan aikaan. Moni kirjoittaa päivityksen toimiston chatin kanavalle ja pitää livepalaverin päiville, jolloin on jotain päätettävää: julkaisu, ongelma, uusi ihminen."
+        "Eri aikavyöhykkeille hajautunut tiimi ei aina voi tavata samaan aikaan. Moni kirjoittaa päivityksen [toimiston chatin](/team-chat) kanavalle ja pitää livepalaverin päiville, jolloin on jotain päätettävää: julkaisu, ongelma, uusi ihminen."
       ],
       "items": [
         {
@@ -2192,11 +2192,11 @@
         },
         {
           "title": "Kirjallisesti",
-          "body": "Toimii aikavyöhykkeiden yli ja jättää jäljen. Helppo silmäillä ja helppo ohittaa, joten esteet voivat jäädä huomaamatta."
+          "body": "Toimii [aikavyöhykkeiden](/tools/time-zone-meeting-planner) yli ja jättää jäljen. Helppo silmäillä ja helppo ohittaa, joten esteet voivat jäädä huomaamatta."
         },
         {
           "title": "Molemmat",
-          "body": "Kirjalliset päivitykset joka päivä ja lyhyt livekierros kerran tai kaksi viikossa, kaikille sopivaan aikaan."
+          "body": "[Kirjalliset päivitykset](/guides/async-communication) joka päivä ja lyhyt livekierros kerran tai kaksi viikossa, kaikille sopivaan aikaan."
         }
       ]
     },
@@ -2217,7 +2217,7 @@
         {
           "title": "Katso, kuka on vapaana",
           "detail": "1",
-          "body": "Työpisteet ja tilat näyttävät, kuka keskittyy, kuka on poissa ja kuka on jo puhelussa. Varattu tarkoittaa odota; tavoitettavissa tarkoittaa mene."
+          "body": "Työpisteet ja [tilat](/team-presence) näyttävät, kuka keskittyy, kuka on poissa ja kuka on jo puhelussa. Varattu tarkoittaa odota; tavoitettavissa tarkoittaa mene."
         },
         {
           "title": "Mene ja puhu",
@@ -2295,7 +2295,7 @@
     {
       "title": "Kun kahdesta tulee kolme",
       "body": [
-        "Kävele puhelun aikana kolmannen kollegan luo, niin TinyFloor tarjoaa tehdä siitä kokouksen teille kolmelle. Suunniteltuun mob- tai ensemble-istuntoon käyttäkää kokoushuonetta: puhuja saa ison kortin, ja jaettu näyttö on ihmisten vieressä."
+        "Kävele puhelun aikana kolmannen kollegan luo, niin TinyFloor tarjoaa tehdä siitä kokouksen teille kolmelle. Suunniteltuun mob- tai ensemble-istuntoon käyttäkää [kokoushuonetta](/virtual-meeting-room): puhuja saa ison kortin, ja jaettu näyttö on ihmisten vieressä."
       ]
     },
     {
@@ -2314,7 +2314,7 @@
         },
         {
           "title": "Ei tallennusta",
-          "body": "Istuntoja ei tallenneta. Kirjatkaa päätökset pull requestiin tai tiimin chattiin."
+          "body": "Istuntoja ei tallenneta. Kirjatkaa päätökset pull requestiin tai [tiimin chattiin](/team-chat)."
         },
         {
           "title": "Ei yhteyttä GitHubiin tai Jiraan",
@@ -2335,7 +2335,7 @@
         },
         {
           "title": "Tee kysymisestä tavallista",
-          "body": "Tiimi, jossa kysymysten kanssa mennään toisen luo, purkaa esteet minuuteissa eikä huomenna. Kokeneiden meneminen uudempien luo auttaa yhtä paljon kuin toisin päin."
+          "body": "Tiimi, jossa kysymysten kanssa [mennään toisen luo](/proximity-chat), purkaa esteet minuuteissa eikä huomenna. Kokeneiden meneminen uudempien luo auttaa yhtä paljon kuin toisin päin."
         }
       ]
     }
@@ -2365,7 +2365,7 @@
         {
           "title": "Sano hei päiväpalaverissa",
           "detail": "10.00",
-          "body": "Kävele kokoushuoneeseen muiden kanssa. Minuutti esittäytymiseen, ja tiimi on tavannut sinut."
+          "body": "Kävele [kokoushuoneeseen](/virtual-meeting-room) muiden kanssa. Minuutti esittäytymiseen, ja tiimi on tavannut sinut."
         },
         {
           "title": "Istu kummisi kanssa",
@@ -2444,7 +2444,7 @@
         },
         {
           "title": "Varaa aikaa kahdelle ensimmäiselle päivälle",
-          "body": "Suurin osa maanantaista ja osa tiistaista yhdessä, näyttöä jakaen. Sen jälkeen uusi tulee käymään, kun tarvitsee."
+          "body": "Suurin osa maanantaista ja osa tiistaista yhdessä, [näyttöä jakaen](/remote-pair-programming). Sen jälkeen uusi tulee käymään, kun tarvitsee."
         },
         {
           "title": "Tee ensimmäinen käynti itse",
@@ -2452,14 +2452,14 @@
         },
         {
           "title": "Pidä kanava kysymyksille",
-          "body": "Kanava tiimin chatissa kysymyksille, joita kenenkään ei tarvitse hävetä. Viestit säilyvät, joten seuraava uusi voi lukea vastaukset."
+          "body": "Kanava [tiimin chatissa](/team-chat) kysymyksille, joita kenenkään ei tarvitse hävetä. Viestit säilyvät, joten seuraava uusi voi lukea vastaukset."
         }
       ]
     },
     {
       "title": "Mitä TinyFloor ei tee perehdytykselle",
       "body": [
-        "Se ei ole HR-työkalu. Siinä ei ole perehdytyksen tarkistuslistoja, asiakirjojen allekirjoitusta, tunnusten luontia eikä kertakirjautumista. Pitäkää käsikirja dokumenttityökalussanne ja tunnukset hallintatyökaluissanne; TinyFloor on paikka, jossa uusi tapaa tiimin ja saa apua. Kutsuminen vaatii yhden linkin, ja minuuttia myöhemmin hän voi istua työpisteellä."
+        "Se ei ole HR-työkalu. Siinä ei ole [perehdytyksen tarkistuslistoja](/guides/remote-onboarding-checklist), asiakirjojen allekirjoitusta, tunnusten luontia eikä kertakirjautumista. Pitäkää käsikirja dokumenttityökalussanne ja tunnukset hallintatyökaluissanne; TinyFloor on paikka, jossa uusi tapaa tiimin ja saa apua. Kutsuminen vaatii yhden linkin, ja minuuttia myöhemmin hän voi istua työpisteellä."
       ]
     }
   ],
@@ -2480,7 +2480,7 @@
         },
         {
           "title": "Kuljet jonkun ohi",
-          "body": "Matkalla kokoushuoneeseen tai taululle kuljet työpisteiden ohi. Pysähdy jonkun viereen, niin puhelu on yhden napautuksen päässä; jatka matkaa, niin mitään ei tapahdu."
+          "body": "Matkalla [kokoushuoneeseen](/virtual-meeting-room) tai taululle kuljet työpisteiden ohi. Pysähdy jonkun viereen, niin puhelu on yhden napautuksen päässä; jatka matkaa, niin mitään ei tapahdu."
         },
         {
           "title": "Musiikkia huoneessa",
@@ -2488,14 +2488,14 @@
         },
         {
           "title": "Chat puheluiden välissä",
-          "body": "Kanava kaikelle, mikä ei ole työtä, emojeineen ja reaktioineen. Viestit säilyvät, joten kukaan ei missaa vitsiä sen takia, että oli kokouksessa."
+          "body": "[Kanava](/team-chat) kaikelle, mikä ei ole työtä, emojeineen ja reaktioineen. Viestit säilyvät, joten kukaan ei missaa vitsiä sen takia, että oli kokouksessa."
         }
       ]
     },
     {
       "title": "Pienelle tiimille sopivat rituaalit",
       "body": [
-        "Lyhyitä, vapaaehtoisia ja säännöllisiä. Kahdeksan hengen tiimi ei tarvitse tapahtumaohjelmaa, vaan muutaman tavan, joihin ihmiset oikeasti tulevat."
+        "Lyhyitä, vapaaehtoisia ja säännöllisiä. Kahdeksan hengen tiimi ei tarvitse tapahtumaohjelmaa, vaan muutaman [tavan](/guides/how-to-build-remote-team-culture), joihin ihmiset oikeasti tulevat."
       ],
       "table": {
         "head": [
@@ -2556,7 +2556,7 @@
     {
       "title": "Mitä TinyFloor ei tee",
       "body": [
-        "Siinä ei ole pelejä, tietovisoja, YouTube-näyttöjä eikä tapahtumatiloja sadalle vieraalle. Se on pieni toimisto tiimille, joka tekee töitä yhdessä joka päivä, ja kahvinkeitin on hetki tehtävien välissä. Yrityksen juhliin tai isoon sosiaaliseen tapahtumaan Kumospacessa ja Gatherissa on enemmän valmiina."
+        "Siinä ei ole pelejä, tietovisoja, YouTube-näyttöjä eikä tapahtumatiloja sadalle vieraalle. Se on pieni toimisto tiimille, joka tekee töitä yhdessä joka päivä, ja kahvinkeitin on hetki tehtävien välissä. Yrityksen juhliin tai isoon sosiaaliseen tapahtumaan [Kumospacessa ja Gatherissa](/gather-vs-kumospace) on enemmän valmiina."
       ]
     }
   ],
@@ -2570,7 +2570,7 @@
         {
           "title": "Päiväpalaveri",
           "detail": "10.00",
-          "body": "Tiimi kävelee kokoushuoneeseen, käy kierroksen kymmenessä minuutissa ja kävelee ulos."
+          "body": "Tiimi kävelee [kokoushuoneeseen](/virtual-meeting-room), käy kierroksen kymmenessä minuutissa ja kävelee ulos."
         },
         {
           "title": "Keskittyminen",
@@ -2580,12 +2580,12 @@
         {
           "title": "Jumi purettu",
           "detail": "14.30",
-          "body": "Kaatuuko build? Katso, kuka on tavoitettavissa, mene hänen luokseen, jaa lokit ja ratkaiskaa se kymmenessä minuutissa eikä huomenna."
+          "body": "Kaatuuko build? [Katso, kuka on tavoitettavissa](/team-presence), mene hänen luokseen, jaa lokit ja ratkaiskaa se kymmenessä minuutissa eikä huomenna."
         },
         {
           "title": "Katselmointi",
           "detail": "16.00",
-          "body": "Kaksi tai kolme ihmistä kokouksessa, yksi jakaa pull requestin, ja käytte sen läpi puhumalla neljänkymmenen kommentin sijaan."
+          "body": "Kaksi tai kolme ihmistä kokouksessa, yksi jakaa pull requestin, ja [käytte sen läpi puhumalla](/remote-pair-programming) neljänkymmenen kommentin sijaan."
         }
       ]
     },
@@ -2750,11 +2750,11 @@
         },
         {
           "title": "Puhelusta",
-          "body": "Puhelussa yhden kanssa ja haluat kolmannen mukaan? Kävele hänen luokseen, niin TinyFloor tarjoaa tehdä siitä kokouksen teille kolmelle."
+          "body": "Puhelussa yhden kanssa ja haluat kolmannen mukaan? [Kävele hänen luokseen](/proximity-chat), niin TinyFloor tarjoaa tehdä siitä kokouksen teille kolmelle."
         },
         {
           "title": "Katso ensin, kuka on vapaana",
-          "body": "Ihmisten luettelo näyttää, kuka on vapaana puhumaan, kuka varattu ja kuka jo toisessa kokouksessa, joten pyydät vain niitä, jotka pääsevät."
+          "body": "Ihmisten luettelo näyttää, [kuka on vapaana puhumaan, kuka varattu](/team-presence) ja kuka jo toisessa kokouksessa, joten pyydät vain niitä, jotka pääsevät."
         }
       ]
     },
@@ -2782,7 +2782,7 @@
     {
       "title": "Mitä se ei tee",
       "body": [
-        "Siinä ei ole tallennusta, litterointia eikä tekoälymuistiinpanoja. Kokoukset pidetään toimistosi sisällä: ei soittonumeroita eikä webinaaritilaa suurelle yleisölle. Jaetut näytöt välittävät kuvan, eivät ääntä. Jos tarvitset jotain näistä, käytä siihen kokoukseen Zoomia tai Google Meetiä ja TinyFlooria arjen kokouksiin."
+        "Siinä ei ole tallennusta, litterointia eikä tekoälymuistiinpanoja. Kokoukset pidetään [toimistosi](/virtual-office) sisällä: ei soittonumeroita eikä webinaaritilaa suurelle yleisölle. Jaetut näytöt välittävät kuvan, eivät ääntä. Jos tarvitset jotain näistä, käytä siihen kokoukseen Zoomia tai Google Meetiä ja TinyFlooria arjen kokouksiin."
       ]
     }
   ],
@@ -2790,7 +2790,7 @@
     {
       "title": "Chat aivan kerroksen vieressä",
       "body": [
-        "Useimmissa työkaluissa chat on koko työpaikka. TinyFloorissa se on puolet: kerros näyttää, kuka on paikalla, ja antaa teidän puhua, ja chat pitää tallessa kaiken, mikä kuuluu kirjoittaa ylös. Koska ne ovat vierekkäin, pitkästä viestittelystä tulee yhdellä painalluksella kahden minuutin keskustelu."
+        "Useimmissa työkaluissa chat on koko työpaikka. TinyFloorissa se on puolet: [kerros näyttää, kuka on paikalla](/team-presence), ja antaa teidän puhua, ja chat pitää tallessa kaiken, mikä kuuluu kirjoittaa ylös. Koska ne ovat vierekkäin, pitkästä viestittelystä tulee yhdellä painalluksella kahden minuutin keskustelu."
       ]
     },
     {
@@ -2837,11 +2837,11 @@
       "items": [
         {
           "title": "Mene keskustelusta paikan päälle",
-          "body": "Yksityisviesti kerroksessa olevan kanssa tarjoaa mahdollisuuden kävellä hänen luokseen. Hahmosi löytää itse tien työpisteelle, ja puhelu on yhden napautuksen päässä."
+          "body": "Yksityisviesti kerroksessa olevan kanssa tarjoaa mahdollisuuden [kävellä hänen luokseen](/proximity-chat). Hahmosi löytää itse tien työpisteelle, ja puhelu on yhden napautuksen päässä."
         },
         {
           "title": "Katso ensin, kuka on paikalla",
-          "body": "Ihmisten luettelo näyttää, kuka on kerroksessa, kuka varattu ja kuka kokouksessa, joten tiedät, kirjoittaako vai odottaa."
+          "body": "Ihmisten luettelo näyttää, kuka on kerroksessa, kuka varattu ja kuka kokouksessa, joten tiedät, [kirjoittaako vai odottaa](/guides/remote-team-communication)."
         },
         {
           "title": "Hillitty merkki ponnahdusikkunoiden sijaan",
@@ -2888,7 +2888,7 @@
     {
       "title": "Mitä se ei tee",
       "body": [
-        "Siinä ei ole ketjuja, integraatioita tai botteja, eikä viestihakua vielä. Kuvia ei voi vielä jakaa chatissa, joten kuvakaappaukset näytetään puhelun aikana näytöllä. Ilmoitukset eivät seuraa puhelimeesi: TinyFloor ei lähetä push-ilmoituksia tai sähköposteja houkutellakseen ihmisiä takaisin. Jos tiiminne tarvitsee jotain näistä, pitäkää Slack kirjoittamiseen ja käyttäkää TinyFlooria läsnäoloon, puheluihin ja kokouksiin; moni tiimi tekee niin."
+        "Siinä ei ole ketjuja, integraatioita tai botteja, eikä viestihakua vielä. Kuvia ei voi vielä jakaa chatissa, joten kuvakaappaukset näytetään puhelun aikana näytöllä. Ilmoitukset eivät seuraa puhelimeesi: TinyFloor ei lähetä push-ilmoituksia tai sähköposteja houkutellakseen ihmisiä takaisin. Jos tiiminne tarvitsee jotain näistä, [pitäkää Slack kirjoittamiseen](/slack-huddles-alternative) ja käyttäkää TinyFlooria läsnäoloon, puheluihin ja kokouksiin; moni tiimi tekee niin."
       ]
     }
   ],
@@ -2896,7 +2896,7 @@
     {
       "title": "Mitä läsnäolo tarkoittaa TinyFloorissa",
       "body": [
-        "Toimistolla näet yhdellä silmäyksellä, kuka on paikalla, kuka on syventynyt johonkin ja kuka puhuu puhelimessa. Etänä vihreä pallo chat-sovelluksessa kertoo hyvin vähän. Kerroksessa läsnäolo on sitä, missä ihmiset ovat ja mitä he itse kertovat itsestään, ei mitään muuta."
+        "[Toimistolla](/virtual-office) näet yhdellä silmäyksellä, kuka on paikalla, kuka on syventynyt johonkin ja kuka puhuu puhelimessa. Etänä vihreä pallo chat-sovelluksessa kertoo hyvin vähän. Kerroksessa läsnäolo on sitä, missä ihmiset ovat ja mitä he itse kertovat itsestään, ei mitään muuta."
       ]
     },
     {
@@ -2972,7 +2972,7 @@
       "items": [
         {
           "title": "Sopikaa, mitä varattu tarkoittaa",
-          "body": "Useimmat tiimit päätyvät tähän: varattu tarkoittaa kirjoita, älä tule, ellei jokin ole tulessa."
+          "body": "Useimmat tiimit päätyvät tähän: varattu tarkoittaa [kirjoita, älä tule](/guides/remote-team-communication), ellei jokin ole tulessa."
         },
         {
           "title": "Istu työpisteelläsi, kun teet töitä",
@@ -2997,7 +2997,7 @@
         },
         {
           "title": "Kävele luo",
-          "body": "Paina jonkun kortissa Kävele luo, niin hahmosi löytää itse tien kerroksen poikki."
+          "body": "Paina jonkun kortissa [Kävele luo](/proximity-chat), niin hahmosi löytää itse tien kerroksen poikki."
         },
         {
           "title": "Saapumiset",
@@ -3016,7 +3016,7 @@
     {
       "title": "Taulu seinällä, ei toisessa välilehdessä",
       "body": [
-        "Useimmat verkkotaulut ovat oma sovelluksensa: luo taulu, jaa linkki, odota, että ihmiset avaavat sen. TinyFloorissa taulu roikkuu toimiston seinällä. Kävele sen luo ja piirrä, niin kaikki katsojat näkevät vetosi sitä mukaa kuin piirrät."
+        "Useimmat verkkotaulut ovat oma sovelluksensa: luo taulu, jaa linkki, odota, että ihmiset avaavat sen. TinyFloorissa taulu roikkuu [toimiston](/virtual-office) seinällä. Kävele sen luo ja piirrä, niin kaikki katsojat näkevät vetosi sitä mukaa kuin piirrät."
       ]
     },
     {
@@ -3080,7 +3080,7 @@
       "items": [
         {
           "title": "Puhu piirtäessäsi",
-          "body": "Aloita ensin puhelu tai kokous. Selitetty luonnos voittaa täydellisen kaavion hiljaisuudessa."
+          "body": "Aloita ensin puhelu tai [kokous](/virtual-meeting-room). Selitetty luonnos voittaa täydellisen kaavion hiljaisuudessa."
         },
         {
           "title": "Jokaiselle oma väri",
@@ -3088,7 +3088,7 @@
         },
         {
           "title": "Ota kuvakaappaus tärkeästä",
-          "body": "Ennen tyhjentämistä tallenna se, mitä tarvitset, ja kirjaa päätös tiimin chattiin."
+          "body": "Ennen tyhjentämistä tallenna se, mitä tarvitset, ja kirjaa päätös [tiimin chattiin](/team-chat)."
         },
         {
           "title": "Isot kaaviot muualle",
@@ -3099,7 +3099,7 @@
     {
       "title": "Mitä se ei tee",
       "body": [
-        "Se on taulu kynällä ja pyyhekumilla. Siinä ei ole tekstityökalua, muotoja tai lappuja, kuvia, kumoamista, malleja eikä vientiä, ja toimistossa on yksi taulu. Työpajoihin, lappuretrospektiiveihin tai yksityiskohtaisiin kaavioihin Miro, FigJam tai Excalidraw tekevät paljon enemmän. TinyFloorin taulu on nopeaa luonnosta varten puhuessa."
+        "Se on taulu kynällä ja pyyhekumilla. Siinä ei ole tekstityökalua, muotoja tai lappuja, kuvia, kumoamista, malleja eikä vientiä, ja toimistossa on yksi taulu. Työpajoihin, [lappuretrospektiiveihin](/guides/retrospective-ideas) tai yksityiskohtaisiin kaavioihin Miro, FigJam tai Excalidraw tekevät paljon enemmän. TinyFloorin taulu on nopeaa luonnosta varten puhuessa."
       ]
     }
   ],
@@ -3113,7 +3113,7 @@
         {
           "title": "Prioriteetit",
           "detail": "9.30",
-          "body": "Kymmenen minuuttia kokoushuoneessa: mitä millekin asiakkaalle pitää toimittaa tänään ja kuka tarvitsee apua."
+          "body": "Kymmenen minuuttia [kokoushuoneessa](/virtual-meeting-room): mitä millekin asiakkaalle pitää toimittaa tänään ja kuka tarvitsee apua."
         },
         {
           "title": "Nopea katselmointi",
@@ -3123,7 +3123,7 @@
         {
           "title": "Deadline-tila",
           "detail": "14.00",
-          "body": "Laita tilaksi varattu. Ihmiset näkevät, että olet paikalla ja töissä, ja tietävät kirjoittaa eikä tulla luo."
+          "body": "Laita tilaksi varattu. Ihmiset [näkevät, että olet paikalla](/team-presence) ja töissä, ja tietävät kirjoittaa eikä tulla luo."
         },
         {
           "title": "Asiakastapaamisen valmistelu",
@@ -3233,7 +3233,7 @@
     {
       "title": "Mitä se maksaa kasvaessanne",
       "body": [
-        "TinyFloor maksaa toimistolta, ei henkilöltä. Uusi palkkaus ei muuta laskua."
+        "TinyFloor [maksaa toimistolta](/pricing), ei henkilöltä. Uusi palkkaus ei muuta laskua."
       ],
       "table": {
         "head": [
@@ -3261,11 +3261,11 @@
       "items": [
         {
           "title": "Päätökset käytävällä",
-          "body": "Katso, kuka on paikalla, mene luo, päätä ja palaa. Kahden minuutin kysymys ei tarvitse kokousta."
+          "body": "[Katso, kuka on paikalla](/team-presence), mene luo, päätä ja palaa. Kahden minuutin kysymys ei tarvitse kokousta."
         },
         {
           "title": "Yksi päiväpalaveri, sama huone",
-          "body": "Pääkokous on aina auki. Kymmenen minuuttia aamulla pitää kaikki samassa suunnassa."
+          "body": "[Pääkokous](/virtual-standup) on aina auki. Kymmenen minuuttia aamulla pitää kaikki samassa suunnassa."
         },
         {
           "title": "Sijoittaja- ja asiakaspuhelut muualla",
@@ -3273,7 +3273,7 @@
         },
         {
           "title": "Palkkaa paikkaan, ei kanavalistaan",
-          "body": "Uusi ihminen saa työpisteen ja näkee ensimmäisenä päivänä, kuka on kuka, sen sijaan että tutustuisi tiimiin nimilistasta sivupalkissa."
+          "body": "[Uusi ihminen](/remote-onboarding) saa työpisteen ja näkee ensimmäisenä päivänä, kuka on kuka, sen sijaan että tutustuisi tiimiin nimilistasta sivupalkissa."
         }
       ]
     },
@@ -3309,7 +3309,7 @@
     {
       "title": "Palaute on pullonkaula",
       "body": [
-        "Suunnittelutyö paranee joka kerta, kun joku katsoo sitä kanssasi. Studiossa se tapahtuu olan yli monta kertaa päivässä. Etänä se kutistuu viikoittaiseksi critiksi ja tiedoston kommenteiksi. Kerroksessa toinen silmäpari on taas muutaman askeleen päässä."
+        "Suunnittelutyö paranee joka kerta, kun joku katsoo sitä kanssasi. Studiossa se tapahtuu olan yli monta kertaa päivässä. Etänä se kutistuu viikoittaiseksi critiksi ja tiedoston kommenteiksi. Kerroksessa toinen silmäpari on taas [muutaman askeleen päässä](/proximity-chat)."
       ]
     },
     {
@@ -3366,7 +3366,7 @@
         },
         {
           "title": "Kirjaa päätökset",
-          "body": "Kirjoita päätökset tiimin chattiin, etteivät ne jää vain jonkun muistiin."
+          "body": "Kirjoita päätökset [tiimin chattiin](/team-chat), etteivät ne jää vain jonkun muistiin."
         }
       ]
     },
@@ -3375,7 +3375,7 @@
       "items": [
         {
           "title": "Varattu tarkoittaa varattua",
-          "body": "Laita varattu-tila syventymistä varten. Kollegat näkevät, että olet paikalla, ja kirjoittavat sen sijaan, että tulisivat luo."
+          "body": "Laita varattu-tila syventymistä varten. Kollegat [näkevät, että olet paikalla](/team-presence), ja kirjoittavat sen sijaan, että tulisivat luo."
         },
         {
           "title": "Ei kamerapakkoa",
@@ -3383,7 +3383,7 @@
         },
         {
           "title": "Luonnostele ensin",
-          "body": "Seinän taulu on karkeaa versiota varten, ennen kuin kukaan avaa suunnittelutyökalua."
+          "body": "Seinän [taulu](/online-whiteboard) on karkeaa versiota varten, ennen kuin kukaan avaa suunnittelutyökalua."
         }
       ]
     },
@@ -3451,12 +3451,12 @@
         {
           "title": "Taustamusiikkia",
           "detail": "11.00",
-          "body": "Joku laittaa kappaleen soimaan kaiuttimesta. Lähellä se soi kovaa ja vaimenee kerroksen poikki, joten se on seuraa eikä melua."
+          "body": "Joku laittaa kappaleen soimaan kaiuttimesta. Lähellä se soi kovaa ja [vaimenee kerroksen poikki](/proximity-chat), joten se on seuraa eikä melua."
         },
         {
           "title": "Tauko",
           "detail": "13.00",
-          "body": "Laita tilaksi poissa lounaan ajaksi. Takaisin työpisteellä kahden minuutin juttelu paikalla olevien kanssa ennen iltapäivää."
+          "body": "Laita tilaksi poissa lounaan ajaksi. Takaisin työpisteellä [kahden minuutin juttelu](/virtual-watercooler) paikalla olevien kanssa ennen iltapäivää."
         }
       ]
     },
@@ -3484,13 +3484,13 @@
     {
       "title": "Miksi muiden lähellä työskentely auttaa",
       "body": [
-        "Työpaikan ympäristötietoisuutta koskevat tutkimukset havaitsivat, että kollegoiden läsnäolon näkeminen yhdellä silmäyksellä sai ihmiset tuntemaan, että muutkin tekevät töitä, ja johti epävirallisempaan kanssakäymiseen. Gallupin vuoden 2024 aineistossa täysin etänä työskentelevät kertoivat yksinäisyydestä useammin kuin paikan päällä työskentelevät, 25 % vastaan 16 %. Kerros, jossa tiimisi näkyy, auttaa molemmissa ilman, että kenenkään tarvitsee olla kameralla."
+        "Työpaikan ympäristötietoisuutta koskevat tutkimukset havaitsivat, että kollegoiden [läsnäolon](/team-presence) näkeminen yhdellä silmäyksellä sai ihmiset tuntemaan, että muutkin tekevät töitä, ja johti epävirallisempaan kanssakäymiseen. Gallupin vuoden 2024 aineistossa täysin etänä työskentelevät kertoivat yksinäisyydestä useammin kuin paikan päällä työskentelevät, 25 % vastaan 16 %. Kerros, jossa tiimisi näkyy, auttaa molemmissa ilman, että kenenkään tarvitsee olla kameralla."
       ]
     },
     {
       "title": "Mitä se ei ole",
       "body": [
-        "TinyFloor ei ole julkinen coworking-tila. Toimisto on tiimisi yksityinen, joten tuntemattomia, joiden kanssa työskennellä, ei ole, eikä muiden ihmisten kanssa yhdistämistä. Ei istuntoajastimia, ei putkia eikä mitään, mikä laskisi, kuinka kauan teit töitä. Jos työskentelet yksin ja kaipaat tuntemattomien seuraa, body doubling -palvelu sopii paremmin; jos haluat tiimisi ympärillesi töitä tehdessäsi, tämä on se."
+        "TinyFloor ei ole julkinen coworking-tila. [Toimisto](/virtual-office) on tiimisi yksityinen, joten tuntemattomia, joiden kanssa työskennellä, ei ole, eikä muiden ihmisten kanssa yhdistämistä. Ei istuntoajastimia, ei putkia eikä mitään, mikä laskisi, kuinka kauan teit töitä. Jos työskentelet yksin ja kaipaat tuntemattomien seuraa, body doubling -palvelu sopii paremmin; jos haluat tiimisi ympärillesi töitä tehdessäsi, tämä on se."
       ]
     }
   ],
@@ -3498,7 +3498,7 @@
     {
       "title": "Mitä lähichat tarkoittaa",
       "body": [
-        "Lähichat tulee peleistä: kuulet lähelläsi olevat pelaajat etkä kartan toisella puolella olevia, kuten ääni kulkee oikeassa paikassa. Virtuaalitoimistot lainasivat idean, jotta sijaintisi ratkaisee, kenen kanssa puhut. Sen voi toteuttaa kahdella tavalla, ja töissä ne tuntuvat hyvin erilaisilta."
+        "Lähichat tulee peleistä: kuulet lähelläsi olevat pelaajat etkä kartan toisella puolella olevia, kuten ääni kulkee oikeassa paikassa. [Virtuaalitoimistot](/virtual-office) lainasivat idean, jotta sijaintisi ratkaisee, kenen kanssa puhut. Sen voi toteuttaa kahdella tavalla, ja töissä ne tuntuvat hyvin erilaisilta."
       ],
       "table": {
         "head": [
@@ -3546,7 +3546,7 @@
         {
           "title": "Soita",
           "detail": "2",
-          "body": "Hän näkee ”Soittaa sinulle” ja voi vastata tai hylätä. Jos hän on varattu tai ei vastaa, saat tiedon, eikä muuta tapahdu."
+          "body": "Hän näkee ”Soittaa sinulle” ja voi vastata tai hylätä. Jos hän on [varattu](/team-presence) tai ei vastaa, saat tiedon, eikä muuta tapahdu."
         },
         {
           "title": "Puhu",
@@ -3561,7 +3561,7 @@
         {
           "title": "Lisää kolmas",
           "detail": "5",
-          "body": "Puhelu on kahden ihmisen. Kävele kolmannen luo, niin TinyFloor tarjoaa tehdä siitä kokouksen teille kolmelle."
+          "body": "Puhelu on kahden ihmisen. Kävele kolmannen luo, niin TinyFloor tarjoaa tehdä siitä [kokouksen](/virtual-meeting-room) teille kolmelle."
         }
       ]
     },
@@ -4060,7 +4060,7 @@
         },
         {
           "title": "Kokoukset samassa huoneessa",
-          "body": "Pitäkää päiväpalaveri kokoushuoneessa niin, että jokainen on mukana omalla kannettavallaan, sen sijaan että huone olisi täynnä ihmisiä ja muutama naama näkyisi ruudulla."
+          "body": "Pitäkää [päiväpalaveri](/virtual-standup) kokoushuoneessa niin, että jokainen on mukana omalla kannettavallaan, sen sijaan että huone olisi täynnä ihmisiä ja muutama naama näkyisi ruudulla."
         }
       ]
     },
@@ -4073,7 +4073,7 @@
         },
         {
           "title": "Päätökset kirjataan ylös",
-          "body": "Kaikki toimistolla päätetyt asiat viedään tiimin chattiin, jotta kotona olevat näkevät ne samana päivänä."
+          "body": "Kaikki toimistolla päätetyt asiat viedään [tiimin chattiin](/team-chat), jotta kotona olevat näkevät ne samana päivänä."
         },
         {
           "title": "Kuulokkeet päähän toimistolla",
@@ -4081,14 +4081,14 @@
         },
         {
           "title": "Toimistopäivät eivät ole kokouspäiviä",
-          "body": "Älkää säästäkö kaikkia kokouksia niille päiville, jolloin ihmiset ovat paikalla. Jos kokoushuone toimii kaikille, käyttäkää sitä joka päivä."
+          "body": "Älkää säästäkö kaikkia kokouksia niille päiville, jolloin ihmiset ovat paikalla. Jos [kokoushuone](/virtual-meeting-room) toimii kaikille, käyttäkää sitä joka päivä."
         }
       ]
     },
     {
       "title": "Mitä se maksaa",
       "body": [
-        "TinyFloor maksaa toimistolta, ei henkilöltä, joten sillä ei ole väliä, kuinka monena päivänä ihmiset tulevat paikalle."
+        "TinyFloor [maksaa toimistolta](/pricing), ei henkilöltä, joten sillä ei ole väliä, kuinka monena päivänä ihmiset tulevat paikalle."
       ],
       "table": {
         "head": [

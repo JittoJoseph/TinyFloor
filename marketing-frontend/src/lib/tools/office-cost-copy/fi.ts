@@ -2,15 +2,15 @@ import type { OfficeCostsContent } from "@/lib/tools/office-costs";
 
 const fi: OfficeCostsContent = {
   meta: {
-    title: "Virtuaalitoimiston hintalaskuri: mitä 9 työkalua maksaa tiimillesi",
+    title: "Virtuaalitoimiston hintalaskuri: mitä 10 työkalua maksaa tiimillesi",
     description:
-      "Syötä tiimisi koko ja näe, mitä Gather, SoWork, Kumospace, WorkAdventure, SpatialChat, Roam, oVice, Sococo ja TinyFloor maksavat kuukaudessa vuosi- tai kuukausilaskutuksella, kunkin oman hintasivun mukaan.",
+      "Syötä tiimisi koko ja näe, mitä Gather, SoWork, Spot, Kumospace, WorkAdventure, SpatialChat, Roam, oVice, Sococo ja TinyFloor maksavat kuukaudessa vuosi- tai kuukausilaskutuksella, kunkin oman hintasivun mukaan.",
   },
   eyebrow: "Ilmaiset työkalut",
   updated: "Hinnat tarkistettu",
   title: "Mitä virtuaalitoimisto <em>maksaa tiimillesi.</em>",
   intro:
-    "Useimmat virtuaalitoimistot laskuttavat henkeä kohden, muutamat tilaa tai toimistoa kohden, ja ilmaisversiot loppuvat eri kokoihin. Syötä tiiminne koko, niin näet, mitä kukin yhdeksästä työkalusta maksaa kuukaudessa, halvin ensin.",
+    "Useimmat virtuaalitoimistot laskuttavat henkeä kohden, muutamat tilaa tai toimistoa kohden, ja ilmaisversiot loppuvat eri kokoihin. Syötä tiiminne koko, niin näet, mitä kukin kymmenestä työkalusta maksaa kuukaudessa, halvin ensin.",
   calculator: {
     people: "Henkilöitä tiimissä",
     count: "{count} henkilöä",
@@ -50,7 +50,7 @@ const fi: OfficeCostsContent = {
       items: [
         {
           title: "Jäsentä kohden",
-          detail: "Gather, SoWork, Kumospace, WorkAdventure, SpatialChat",
+          detail: "Gather, SoWork, Spot, Kumospace, WorkAdventure, SpatialChat",
           body: "Maksat jokaisesta, jolla on tili, joka kuukausi, tuli hän paikalle tai ei. Lasku kasvaa jokaisen rekrytoinnin myötä: 10 hengen tiimi maksaa kaksinkertaisesti 5 hengen tiimiin verrattuna.",
         },
         {
@@ -107,7 +107,7 @@ const fi: OfficeCostsContent = {
         { title: "Verot", body: "Kaikki hinnat tässä ovat ilman veroja. Sijainnistanne riippuen arvonlisävero tai myyntivero lisätään maksaessa." },
         {
           title: "Kokeilujaksot",
-          body: "Gatherissa on 30 päivän kokeilu, Roamissa ja oVicessa 14 päivää, SoWorkissa 7 päivää. Kokeilu kertoo, käyttääkö tiimi sitä; hinta, jatkatteko maksamista.",
+          body: "Gatherissa ja Spotissa on 30 päivän kokeilu, Roamissa ja oVicessa 14 päivää, SoWorkissa 7 päivää. Kokeilu kertoo, käyttääkö tiimi sitä; hinta, jatkatteko maksamista.",
         },
       ],
     },
@@ -127,11 +127,11 @@ const fi: OfficeCostsContent = {
   faq: [
     {
       q: "Mitä virtuaalitoimisto maksaa kuukaudessa?",
-      a: "10 hengen tiimille maksullisella versiolla 29–195 $ kuukaudessa työkalusta riippuen: TinyFloor maksaa 29 $ koko toimistolta, henkeä kohden laskuttavat työkalut 54 $:sta (SoWork Basic, vuosilaskutus) 195 $:iin (Roam).",
+      a: "10 hengen tiimille maksullisella versiolla 29–195 $ kuukaudessa työkalusta riippuen: TinyFloor maksaa 29 $ koko toimistolta, henkeä kohden laskuttavat työkalut 48 $:sta (Spot Basic, vuosilaskutus) 195 $:iin (Roam).",
     },
     {
       q: "Mikä on halvin virtuaalitoimisto pienelle tiimille?",
-      a: "Ilmaisversio, joka riittää: SoWorkin kattaa 10 jäsentä 30 minuutin palavereilla, WorkAdventuren 10 henkeä yhtä aikaa, Kumospacen 5 jäsentä ja TinyFloorin 3 henkeä. Sen jälkeen TinyFloor, 29 $ kuukaudessa koko tiimiltä, on edullisin maksullinen hinta 6 hengestä ylöspäin.",
+      a: "Ilmaisversio, joka riittää: SoWorkin kattaa 10 jäsentä 30 minuutin palavereilla, WorkAdventuren 10 henkeä yhtä aikaa, Kumospacen 5 jäsentä ja TinyFloorin 3 henkeä. Sen jälkeen TinyFloor, 29 $ kuukaudessa koko tiimiltä, on edullisin maksullinen hinta 7 hengestä ylöspäin.",
     },
     {
       q: "Onko Gather ilmainen?",

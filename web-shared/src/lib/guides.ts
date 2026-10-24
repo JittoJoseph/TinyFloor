@@ -49,10 +49,10 @@ export const GUIDES: Guide[] = [
   { slug: "one-on-one-meeting-questions", key: "oneOnOne", published: "2026-10-24", updated: "2026-10-24", pages: ["meetingRoom", "presence", "onboarding"], related: ["manageRemote", "retro", "onboardingChecklist"] },
   { slug: "retrospective-ideas", key: "retro", published: "2026-10-24", updated: "2026-10-24", pages: ["whiteboard", "meetingRoom", "engineering"], related: ["meetingGames", "oneOnOne", "manageRemote"] },
   { slug: "remote-onboarding-checklist", key: "onboardingChecklist", published: "2026-10-24", updated: "2026-10-24", pages: ["onboarding", "presence", "virtualOffice"], related: ["remoteCulture", "manageRemote", "oneOnOne"] },
-  { slug: "body-doubling", key: "bodyDoubling", published: "2026-10-24", updated: "2026-10-24", pages: ["virtualCoworking", "presence", "virtualOffice"], related: ["remoteCulture", "remoteTools", "bestVirtualOffice"] },
+  { slug: "body-doubling", key: "bodyDoubling", published: "2026-10-24", updated: "2026-10-25", pages: ["virtualCoworking", "presence", "virtualOffice"], related: ["remoteCulture", "remoteTools", "bestVirtualOffice"] },
   { slug: "what-is-proximity-chat", key: "proximityChat", published: "2026-10-04", updated: "2026-10-04", pages: ["proximityChat", "virtualOffice", "gather"], related: ["bestVirtualOffice", "gatherPricing", "remoteTools"] },
   // Buyers comparing products and prices (docs/search.md). Competitors' prices are checked against their own pages; bump `updated` when they are.
-  { slug: "best-virtual-office-software", key: "bestVirtualOffice", published: "2026-10-07", updated: "2026-10-24", pages: ["virtualOffice", "gather", "kumospace"], related: ["gatherPricing", "remoteTools", "proximityChat"] },
+  { slug: "best-virtual-office-software", key: "bestVirtualOffice", published: "2026-10-07", updated: "2026-10-25", pages: ["virtualOffice", "gather", "kumospace"], related: ["gatherPricing", "remoteTools", "proximityChat"] },
   { slug: "gather-pricing", key: "gatherPricing", published: "2026-10-07", updated: "2026-10-16", pages: ["gather", "gatherVsKumospace", "virtualOffice"], related: ["bestVirtualOffice", "proximityChat", "remoteTools"] },
 ];
 

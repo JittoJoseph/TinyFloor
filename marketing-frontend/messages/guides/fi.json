@@ -39,7 +39,7 @@
       {
         "title": "Viisi minuuttia palaverin alussa",
         "body": [
-          "Ei valmistelua, mikä tahansa tiimin koko. Käytä yhtä aloittaaksesi päivittäispalaverin tai viikkopalaverin."
+          "Ei valmistelua, mikä tahansa tiimin koko. Käytä yhtä aloittaaksesi [päivittäispalaverin](/virtual-standup) tai viikkopalaverin."
         ],
         "items": [
           {
@@ -78,7 +78,7 @@
           {
             "title": "Pictionary jaetulla taululla",
             "detail": "20 min · 4–12 henkeä",
-            "body": "Yksi piirtää sanan taululle, jonka kaikki näkevät, ja muut huutelevat arvauksia. Lista työsanoja tuo lisänaurua."
+            "body": "Yksi piirtää sanan [taululle](/online-whiteboard), jonka kaikki näkevät, ja muut huutelevat arvauksia. Lista työsanoja tuo lisänaurua."
           },
           {
             "title": "Tiimivisa",
@@ -138,7 +138,7 @@
       {
         "title": "Täysin ilman palaveria",
         "body": [
-          "Kaikki ei tarvitse puhelua. Nämä kulkevat viikon chat-kanavassa ja sopivat tiimeille eri aikavyöhykkeillä."
+          "Kaikki ei tarvitse puhelua. Nämä kulkevat viikon [chat-kanavassa](/team-chat) ja sopivat tiimeille eri aikavyöhykkeillä."
         ],
         "items": [
           {
@@ -171,7 +171,7 @@
       {
         "title": "Tee siitä tapa, ei tapahtumaa",
         "body": [
-          "Läheisimmät tiimit nojaavat harvoin isoihin tapahtumiin. Heillä on paljon pieniä, suunnittelemattomia hetkiä: sana ennen palaveria, kysymys joka muuttuu keskusteluksi, kappale jonka joku laittaa soimaan.",
+          "Läheisimmät tiimit nojaavat harvoin isoihin tapahtumiin. Heillä on paljon [pieniä, suunnittelemattomia hetkiä](/virtual-watercooler): sana ennen palaveria, kysymys joka muuttuu keskusteluksi, kappale jonka joku laittaa soimaan.",
           "Toimistolla ne tapahtuvat itsestään. Etänä tarvitaan paikka, jossa ihmiset näkevät toisensa ja voivat poiketa ilman puhelun varaamista. Anna tiimillesi sellainen, niin yllä olevista aktiviteeteista tulee bonus eikä ainoa hetki, jolloin puhutaan."
         ]
       }
@@ -231,7 +231,7 @@
           {
             "title": "Kumpi mieluummin",
             "detail": "Ei valmistelua · mikä tahansa koko",
-            "body": "Vetäjä antaa valinnan kahdesta vaihtoehdosta, kaikki vastaavat yhdellä sanalla ja kaksi kertoo perustelunsa."
+            "body": "Vetäjä antaa [valinnan kahdesta vaihtoehdosta](/tools/would-you-rather-questions), kaikki vastaavat yhdellä sanalla ja kaksi kertoo perustelunsa."
           },
           {
             "title": "Kuumat mielipiteet",
@@ -291,7 +291,7 @@
           {
             "title": "Kolmenkymmenen sekunnin piirros",
             "detail": "Ei valmistelua · 3–12 henkeä",
-            "body": "Anna sana, aseta 30 sekunnin ajastin, ja kaikki piirtävät sen yhtä aikaa jaetulle taululle."
+            "body": "Anna sana, aseta 30 sekunnin ajastin, ja kaikki piirtävät sen yhtä aikaa [jaetulle taululle](/online-whiteboard)."
           },
           {
             "title": "Gartic Phone",
@@ -311,14 +311,14 @@
           {
             "title": "Viiden kysymyksen visa",
             "detail": "Vähän valmistelua · mikä tahansa koko",
-            "body": "Viisi nopeaa kysymystä viikosta, tuotteesta tai tiimistä. Vastaukset chattiin; nopein oikea voittaa."
+            "body": "Viisi nopeaa [kysymystä viikosta](/tools/team-building-questions), tuotteesta tai tiimistä. Vastaukset chattiin; nopein oikea voittaa."
           }
         ]
       },
       {
         "title": "Näin onnistut",
         "body": [
-          "Pelatkaa palaverin alussa, ei lopussa, kun kaikki ovat virkeitä eikä kenelläkään ole kiire. Pitäkää sama peli muutaman viikon, jottei kenenkään tarvitse opetella sääntöjä joka kerta, ja vaihtakaa sitten.",
+          "Pelatkaa [palaverin](/virtual-meeting-room) alussa, ei lopussa, kun kaikki ovat virkeitä eikä kenelläkään ole kiire. Pitäkää sama peli muutaman viikon, jottei kenenkään tarvitse opetella sääntöjä joka kerta, ja vaihtakaa sitten.",
           "Jakakaa isot palaverit neljän–kuuden hengen ryhmiin. Pelit lakkaavat toimimasta, kun useimmat katsovat eivätkä pelaa."
         ]
       }
@@ -375,15 +375,15 @@
           },
           {
             "title": "Tee ihmisistä näkyviä",
-            "body": "Näytä, kuka on paikalla, kuka on kiireinen ja kuka ehtii jutella, jottei avun pyytäminen tunnu häiritsemiseltä."
+            "body": "Näytä, [kuka on paikalla, kuka on kiireinen](/team-presence) ja kuka ehtii jutella, jottei avun pyytäminen tunnu häiritsemiseltä."
           },
           {
             "title": "Pidä paikka, jonne voi poiketa",
-            "body": "Aina auki oleva huone tai kiinteät ajat, joihin voi tulla varaamatta."
+            "body": "[Aina auki oleva huone](/virtual-meeting-room) tai kiinteät ajat, joihin voi tulla varaamatta."
           },
           {
             "title": "Pienet rituaalit",
-            "body": "Viikoittainen demo, perjantain onnistumisketju, viiden minuutin peli. Pieniä, säännöllisiä ja joka viikko samanlaisia."
+            "body": "Viikoittainen demo, perjantain onnistumisketju, [viiden minuutin peli](/guides/games-for-virtual-meetings). Pieniä, säännöllisiä ja joka viikko samanlaisia."
           },
           {
             "title": "Anna uusille kummi",
@@ -420,7 +420,7 @@
           },
           {
             "title": "Palaverit yhteyden tunteen vuoksi",
-            "body": "Päivittäinen koko porukan palaveri yhteenkuuluvuuden takia tuntuu yleensä velvollisuudelta. Anna ihmisille paikka, älä aikaa."
+            "body": "Päivittäinen koko porukan palaveri yhteenkuuluvuuden takia tuntuu yleensä velvollisuudelta. Anna ihmisille [paikka](/virtual-office), älä aikaa."
           }
         ]
       },
@@ -667,8 +667,8 @@
       {
         "title": "Lähichat töissä",
         "body": [
-          "Virtuaalitoimistot käyttävät samaa ideaa etätiimeille. Tiimisi jakaa 2D-kerroksen, jokainen on hahmo, ja puhutte kävelemällä jonkun luo palaverilinkin lähettämisen sijaan.",
-          "Se tuo takaisin sen, minkä videopuhelut menettävät: näkee, kuka on paikalla, nopeat kysymykset ja sivukeskustelut. Kaksi voi jutella nurkassa muiden tehdessä töitä, kuten oikeassa toimistossa."
+          "[Virtuaalitoimistot](/virtual-office) käyttävät samaa ideaa etätiimeille. Tiimisi jakaa 2D-kerroksen, jokainen on hahmo, ja puhutte kävelemällä jonkun luo palaverilinkin lähettämisen sijaan.",
+          "Se tuo takaisin sen, minkä videopuhelut menettävät: näkee, kuka on paikalla, nopeat kysymykset ja [sivukeskustelut](/virtual-watercooler). Kaksi voi jutella nurkassa muiden tehdessä töitä, kuten oikeassa toimistossa."
         ]
       },
       {
@@ -732,8 +732,8 @@
   "bestVirtualOffice": {
     "label": "Paras virtuaalitoimisto-ohjelmisto",
     "meta": {
-      "title": "Paras virtuaalitoimisto-ohjelmisto vuonna 2026, rehellisesti vertailtuna",
-      "description": "Kymmenen etätiimien virtuaalitoimistoa vertailussa hinnan, ilmaisen paketin ja vahvuuksien mukaan. Katso, mitä 10 hengen tiimi maksaa kuukaudessa."
+      "title": "Parhaat virtuaalitoimisto-ohjelmistot 2026: 10 vertailussa hintoineen",
+      "description": "Kymmenen etätiimien virtuaalitoimistoa vertailussa hinnan, ilmaispakettien, sovellusten, tallennuksen ja kertakirjautumisen osalta. Katso, mitä 10 hengen tiimi maksaa kuukaudessa ja mikä sopii kenellekin."
     },
     "title": "Paras virtuaalitoimisto-ohjelmisto <em>vuonna 2026, rehellisesti vertailtuna.</em>",
     "intro": "Virtuaalitoimisto antaa etätiimille yhteisen paikan koko päiväksi: näet kuka on paikalla ja voit puhua heille kävelemällä heidän luokseen linkkien lähettelyn sijaan. Tässä on kymmenen tutustumisen arvoista vaihtoehtoa, niiden hinnat ja kenelle ne sopivat. Me teemme TinyFlooria, joten emme ole puolueettomia; kerromme, missä kukin tuote on meitä vahvempi. Kaikki hinnat on otettu palveluiden omilta hinnoittelusivuilta lokakuussa 2026.",
@@ -903,6 +903,172 @@
         }
       },
       {
+        "title": "Ilmaiset virtuaalitoimisto-ohjelmistot vertailussa",
+        "body": [
+          "Kahdeksalla näistä on ilmainen paketti tai ilmainen versio, neljällä vain kokeilu. Rajoitukset eroavat toisistaan enemmän kuin hinnat, joten valitse niistä tiimisi työtapoihin sopivin."
+        ],
+        "table": {
+          "head": [
+            "Tuote",
+            "Ilmainen paketti",
+            "Tärkein rajoitus"
+          ],
+          "rows": [
+            [
+              "TinyFloor",
+              "Enintään 3 henkeä",
+              "Kaikki ominaisuudet, ei aikarajaa"
+            ],
+            [
+              "SoWork",
+              "Enintään 10 jäsentä",
+              "Palaverit päättyvät 30 minuutissa, ei tallenteita"
+            ],
+            [
+              "WorkAdventure",
+              "Enintään 10 henkeä yhtä aikaa",
+              "Julkiset huoneet"
+            ],
+            [
+              "ZEP",
+              "Enintään 10 henkeä yhtä aikaa",
+              "Yksi näytön jako karttaa kohden, ei salasanaa"
+            ],
+            [
+              "SpatialChat",
+              "Enintään 12 henkeä",
+              "2 tuntia palavereita päivässä"
+            ],
+            [
+              "Kumospace",
+              "Enintään 5 jäsentä ja 50 vierasta",
+              "Yksi kerros"
+            ],
+            [
+              "Teamflow",
+              "Enintään 5 henkeä",
+              "Palaverit päättyvät 45 minuutissa, työpöytäsovellus"
+            ],
+            [
+              "oVice",
+              "Ilmainen versio",
+              "Esiversio, ilman tukea tai pääsynhallintaa"
+            ],
+            [
+              "Gather, Spot, Roam, Sococo",
+              "Ei ole",
+              "Kokeilu: 30 päivää Gatherille ja Spotille, 14 Roamille"
+            ]
+          ],
+          "note": "Kunkin tuotteen omalta hintasivulta lokakuussa 2026. Koko tiimisi kattava ilmainen paketti voittaa minkä tahansa maksullisen, mutta kaikki palaverit katkaiseva paketti ei."
+        }
+      },
+      {
+        "title": "Sovellukset, tallennus ja kertakirjautuminen",
+        "body": [
+          "Millä alustoilla kukin toimii, voiko sillä tallentaa palavereita ja voivatko käyttäjät kirjautua sisään yrityksesi henkilöllisyydentarjoajan kautta."
+        ],
+        "table": {
+          "head": [
+            "Tuote",
+            "Toimii alustoilla",
+            "Tallennus ja tekoälymuistiinpanot",
+            "Kertakirjautuminen"
+          ],
+          "rows": [
+            [
+              "TinyFloor",
+              "Selain, tietokoneella ja puhelimella",
+              "Ei",
+              "Ei"
+            ],
+            [
+              "Gather",
+              "Selain ja työpöytäsovellus",
+              "Tallennus, litterointi ja tekoälymuistiinpanot kuukausittaisten tuntien puitteissa",
+              "Custom-paketissa"
+            ],
+            [
+              "SoWork",
+              "Selain, Mac, Windows, iOS ja Android",
+              "2 tallennetta Basic-paketissa, tekoälyyhteenvedot Premium-paketissa",
+              "Enterprise-paketissa"
+            ],
+            [
+              "Spot",
+              "Selain ja työpöytäsovellus",
+              "Ei ilmoitettu",
+              "Enterprise-paketissa"
+            ],
+            [
+              "Kumospace",
+              "Selain, Windows, macOS, iOS ja Android",
+              "Tallennus Business-paketissa",
+              "Enterprise-paketissa"
+            ],
+            [
+              "WorkAdventure",
+              "Selain, voidaan ylläpitää itse",
+              "Tallennus",
+              "Ei ilmoitettu"
+            ],
+            [
+              "SpatialChat",
+              "Selain",
+              "Enintään 7 tallennetta Business-paketissa",
+              "Enterprise-paketissa"
+            ],
+            [
+              "Roam",
+              "Tietokone- ja puhelinsovellukset",
+              "Tallennus ja tekoälymuistiinpanot",
+              "Ei ilmoitettu"
+            ],
+            [
+              "oVice",
+              "Selain, tietokone- ja puhelinsovellukset",
+              "Tallennus, litterointi ja tekoälypöytäkirjat Business Starter -paketissa",
+              "Maksullisissa paketeissa"
+            ],
+            [
+              "Sococo",
+              "Tietokoneella sekä iOS- ja Android-sovelluksilla",
+              "Ei ilmoitettu",
+              "Ei ilmoitettu"
+            ]
+          ],
+          "note": "Kunkin tuotteen omilta hinta- ja ominaisuussivuilta lokakuussa 2026. ”Ei ilmoitettu” tarkoittaa, ettemme löytäneet siitä mainintaa, ei sitä, että ominaisuus puuttuisi."
+        }
+      },
+      {
+        "title": "Yksityisyys ja tietoturva",
+        "body": [
+          "Virtuaalitoimisto näyttää, kuka on töissä ja milloin, joten tarkista kuka pääsee sisään ja mitä tietoja palveluun jää ennen kuin tiimisi muuttaa sinne."
+        ],
+        "items": [
+          {
+            "title": "Kuka voi kävellä sisään",
+            "body": "Jotkut ilmaiset paketit jättävät tilan avoimeksi kenelle tahansa, jolla on linkki: ZEPin ilmaisessa paketissa ei ole salasanaa tai kirjautumissääntöä, ja WorkAdventuren ilmaiset huoneet ovat julkisia. Maksulliset paketit tuovat salasanat, kirjautumissäännöt tai pääsynhallinnan. TinyFloor-toimistot ovat yksityisiä kaikissa paketeissa: niihin liitytään kutsulla ja kirjautumalla sisään."
+          },
+          {
+            "title": "Kertakirjautuminen",
+            "body": "Kirjautuminen yrityksen henkilöllisyydentarjoajan kautta on useimmissa palveluissa suuryritysominaisuus: Gatherin Custom-paketissa sekä SoWorkin, Spotin, Kumospacen ja SpatialChatin Enterprise-paketissa. oVice sisältää sen ensimmäisestä maksullisesta paketistaan alkaen. TinyFloorissa sitä ei ole; käyttäjät kirjautuvat sisään Google-tilillä tai sähköpostitse lähetettävällä koodilla."
+          },
+          {
+            "title": "Ylläpito itse",
+            "body": "WorkAdventure on avointa lähdekoodia ja voi toimia omilla palvelimillasi, jos joku tiimistä ylläpitää sitä. Muut palvelut ylläpidetään puolestasi."
+          },
+          {
+            "title": "Tallenteet ja tekoälymuistiinpanot",
+            "body": "Ne ovat hyödyllisiä, mutta ne ovat myös tallenne tiimisi keskusteluista jonkun toisen palvelimilla. Päätä kuka voi tallentaa ja kuinka kauan tallenteita säilytetään ennen kuin otat ne käyttöön."
+          },
+          {
+            "title": "Mitä toimisto näyttää",
+            "body": "Se, että näkee kuka on paikalla, on koko homman ydin, mutta se voi tuntua valvotuksi tulemiselta. Suosi työkalua, joka näyttää käyttäjien itse asettaman tilan, eikä sellaista, joka seuraa aktiivisuutta tai työpöydän ääressä vietettyä aikaa."
+          }
+        ]
+      },
+      {
         "title": "Mikä millekin tiimille",
         "items": [
           {
@@ -928,6 +1094,30 @@
           {
             "title": "Suurempi yritys",
             "body": "Gather, Roam, oVice Business tai Sococo, jotka myyvät suuremmille tiimeille vuosisopimuksilla."
+          }
+        ]
+      },
+      {
+        "title": "Myös tutustumisen arvoisia",
+        "body": [
+          "Eivät ole kymmenen kärjessä -listalla, mutta niitä verrataan usein niihin. Vertaatko kahta kymmenestä? Lue [Gather vs Kumospace](/gather-vs-kumospace) tai [ZEP vs Gather](/zep-vs-gather)."
+        ],
+        "items": [
+          {
+            "title": "Teamflow",
+            "body": "Työpöytäsovellus Macille ja Windowsille sovelluksilla toimiston sisällä, ilmainen 5 hengelle 45 minuutin palavereilla, sen jälkeen 15 $ työntekijältä kuukaudessa vuosilaskutuksella. [Koko vertailu](/teamflow-alternative)."
+          },
+          {
+            "title": "ZEP",
+            "body": "Korealainen 2D-tila, ilmainen 10 hengelle yhtä aikaa, sen jälkeen alkaen 4 $ käyttäjältä kuukaudessa. Suuri osa siitä palvelee nykyään oppitunteja ja tapahtumia. [Koko vertailu](/zep-alternative)."
+          },
+          {
+            "title": "Discord",
+            "body": "Ei varsinainen virtuaalitoimisto, mutta monet pienet tiimit käyttävät sen puhekanavia sellaisena. Ilmainen, hyvä äänenlaatu ja tehty peliyhteisöille. [Koko vertailu](/discord-for-work)."
+          },
+          {
+            "title": "Slack-pikapuhelut",
+            "body": "Puhelut Slackin sisällä. Slackin ilmaisessa paketissa pikapuheluun mahtuu 2 henkeä; ryhmäpuhelut vaativat maksullisen paketin kaikille. [Koko vertailu](/slack-huddles-alternative)."
           }
         ]
       }
@@ -956,6 +1146,18 @@
       {
         "q": "Pitääkö minun asentaa jotain?",
         "a": "Ei TinyFloorin, Gatherin, SoWorkin, WorkAdventuren, SpatialChatin tai oVicen kohdalla, sillä ne toimivat selaimessa. Roam on työpöytäsovellus, ja myös Kumospace, Gather ja Spot tarjoavat sovelluksia."
+      },
+      {
+        "q": "Millä virtuaalitoimisto-ohjelmistolla on tekoälyyhteenvedot palavereista?",
+        "a": "Gather sisältää tekoälymuistiinpanot palavereista, SoWork Premium kirjoittaa yhteenvedot, litteroinnit ja tehtävälistat, Roamissa on tekoälymuistiinpanot ja oVice lisää tekoälypöytäkirjat Business Starter -paketissa. TinyFloorissa ei ole tallenteita eikä tekoälymuistiinpanoja."
+      },
+      {
+        "q": "Millä virtuaalitoimisto-ohjelmistolla on kertakirjautuminen?",
+        "a": "Gatherilla Custom-paketissa, SoWorkilla, Spotilla, Kumospacella ja SpatialChatilla Enterprise-paketissa sekä oVicella sen ensimmäisestä maksullisesta paketista alkaen. TinyFloorissa ei ole kertakirjautumista; käyttäjät kirjautuvat sisään Google-tilillä tai sähköpostitse lähetettävällä koodilla."
+      },
+      {
+        "q": "Onko virtuaalitoimisto sama asia kuin virtuaalinen työtila?",
+        "a": "Yleensä kyllä: kumpaakin nimeä käytetään yhteisestä verkkopaikasta, jossa etätiimi työskentelee, näkee kuka on paikalla ja keskustelee. ”Virtuaalinen työtila” tarkoittaa IT-alalla myös jotain muuta: etätyöpöytää eli pilvessä toimivaa tietokonetta, joka on aivan eri tuote."
       }
     ]
   },
@@ -1109,7 +1311,7 @@
       {
         "title": "Sama tiimi muualla",
         "body": [
-          "Mitä samat tiimit maksavat kuukaudessa muissa virtuaalitoimistoissa halvimmalla sopivalla paketilla."
+          "Mitä samat tiimit maksavat kuukaudessa muissa [virtuaalitoimistoissa](/guides/best-virtual-office-software) halvimmalla sopivalla paketilla."
         ],
         "table": {
           "head": [
@@ -1150,7 +1352,7 @@
         "items": [
           {
             "title": "Haluat suunnitella toimiston itse",
-            "body": "Gatherissa sijoittelet kerrokset, huoneet ja yli 200 esinettä. Useimmat vaihtoehdot antavat valmiin toimiston."
+            "body": "Gatherissa sijoittelet kerrokset, huoneet ja yli 200 esinettä. Useimmat [vaihtoehdot](/gather-alternative) antavat valmiin toimiston."
           },
           {
             "title": "Tarvitset tallenteita ja litterointeja",
@@ -1166,7 +1368,7 @@
           },
           {
             "title": "Milloin ei",
-            "body": "Jos tiimisi tarvitsee lähinnä nähdä, kuka on paikalla, jutella ja pitää kokouksia, maksat ominaisuuksista, joita et käytä, joka kuukausi, jokaisesta henkilöstä."
+            "body": "Jos tiimisi tarvitsee lähinnä [nähdä, kuka on paikalla](/team-presence), jutella ja pitää kokouksia, maksat ominaisuuksista, joita et käytä, joka kuukausi, jokaisesta henkilöstä."
           }
         ]
       },
@@ -2035,7 +2237,7 @@
           },
           {
             "title": "Onko sinulla tarpeeksi aikaa keskittymiseen?",
-            "body": "Liian monet palaverit ovat yksi yleisimmistä etätyön valituksista."
+            "body": "[Liian monet palaverit](/guides/async-communication) ovat yksi yleisimmistä etätyön valituksista."
           }
         ]
       },
@@ -2113,7 +2315,7 @@
           },
           {
             "title": "Keneltä haluaisit oppia?",
-            "body": "Mentori tai parityö voi antaa enemmän kuin kurssi."
+            "body": "Mentori tai [parityö](/remote-pair-programming) voi antaa enemmän kuin kurssi."
           }
         ]
       },
@@ -2157,7 +2359,7 @@
           },
           {
             "title": "Sopivatko työaikasi sinulle?",
-            "body": "Kattaa aikavyöhykkeet, myöhäiset puhelut ja työn ja kodin rajan."
+            "body": "Kattaa [aikavyöhykkeet](/tools/time-zone-meeting-planner), myöhäiset puhelut ja työn ja kodin rajan."
           },
           {
             "title": "Hidastaako kotityöpisteesi sinua?",
@@ -2692,7 +2894,7 @@
       {
         "title": "Kuka vastaa mistäkin",
         "body": [
-          "Perehdytys menee pieleen, kun kaikki olettavat jonkun muun hoitavan sen. Nimeä jokaiselle osalle vastuuhenkilö."
+          "[Perehdytys](/remote-onboarding) menee pieleen, kun kaikki olettavat jonkun muun hoitavan sen. Nimeä jokaiselle osalle vastuuhenkilö."
         ],
         "table": {
           "head": [
@@ -2797,7 +2999,7 @@
           },
           {
             "title": "Sovi työajoista",
-            "body": "Milloin uusi on paikalla, tiimin yhteiset tunnit ja kuinka nopeasti ihmiset yleensä vastaavat."
+            "body": "Milloin uusi on paikalla, tiimin [yhteiset tunnit](/guides/how-to-manage-a-remote-team) ja kuinka nopeasti ihmiset yleensä vastaavat."
           },
           {
             "title": "Ensimmäinen viikoittainen kahdenkeskinen",
@@ -2840,7 +3042,7 @@
           },
           {
             "title": "Näkymättömät kollegat",
-            "body": "Kun ei näe, kuka on paikalla, on vaikea tietää, milloin saa kysyä. Tee läsnäolo näkyväksi."
+            "body": "Kun ei näe, kuka on paikalla, on vaikea tietää, milloin saa kysyä. Tee [läsnäolo näkyväksi](/team-presence)."
           },
           {
             "title": "Liikaa palavereja kerralla",
@@ -2848,7 +3050,7 @@
           },
           {
             "title": "Perehdytys loppuu ensimmäiseen viikkoon",
-            "body": "Kolme ensimmäistä kuukautta ratkaisevat, jääkö ihminen. Jatka kahdenkeskisiä ja kuulumisten vaihtoa."
+            "body": "Kolme ensimmäistä kuukautta ratkaisevat, jääkö ihminen. Jatka [kahdenkeskisiä](/guides/one-on-one-meeting-questions) ja kuulumisten vaihtoa."
           }
         ]
       }
@@ -2883,7 +3085,7 @@
   "bodyDoubling": {
     "label": "Body doubling",
     "meta": {
-      "title": "Body doubling: mitä se on ja miten sitä tehdään verkossa",
+      "title": "Body doubling: mitä se on, sovellukset ja miten sitä tehdään verkossa",
       "description": "Mitä body doubling on, miksi toisen vierellä työskentely helpottaa aloittamista ja jatkamista, miten sitä tehdään verkossa ja miten järjestät session tiimillesi."
     },
     "title": "Body doubling: <em>työskentele toisen vierellä, saa enemmän aikaan.</em>",
@@ -2916,7 +3118,7 @@
           },
           {
             "title": "Vähemmän yksinäistä",
-            "body": "Kotona työskenteleville toisen ihmisen hiljainen seura tekee pitkistä työrupeamista kevyempiä."
+            "body": "[Kotona työskenteleville](/virtual-office) toisen ihmisen hiljainen seura tekee pitkistä työrupeamista kevyempiä."
           }
         ]
       },
@@ -2935,9 +3137,14 @@
               "Ilmainen ja yksinkertainen; sopikaa aika ja pitäkää kamerat päällä tai pois päältä"
             ],
             [
-              "Yhdistämispalvelut",
+              "Yhdistämispalvelut, kuten Focusmate",
               "Tuntematon ihminen, varattu tiettyyn aikaan",
               "Kun kukaan tuttusi ei ole vapaana ja haluat kiinteän ajan"
+            ],
+            [
+              "Ryhmätuokiot, kuten Flow Club",
+              "Vetäjä ja ryhmä, sovittuina aikoina",
+              "Rakennetta ja seuraa ihmisistä, jotka saapuvat tekemään töitä"
             ],
             [
               "Study with me -videot",
@@ -3040,8 +3247,8 @@
       {
         "title": "Body doubling tiimisi kanssa",
         "body": [
-          "Etätiimit voivat tehdä body doublingia ilman erillistä sovellusta: tiimi on jo valmiiksi koossa. Yhteisessä [virtuaalisessa coworking-tilassa](/virtual-coworking) kaikki näkevät, kuka työskentelee, istuvat omassa pöydässään ja asettavat itsensä kiireiseksi, jolloin hiljainenkin iltapäivä tuntuu yhteiseltä.",
-          "Jos haluat enemmän rakennetta, aloita kokous nimeltä Focus, kutsu mukaan halukkaat ja noudata yllä olevaa session kulkua. Ne, jotka eivät halua puhua, voivat vain olla kerroksessa ja työskennellä muiden lähellä."
+          "Etätiimit voivat tehdä body doublingia ilman erillistä sovellusta: tiimi on jo valmiiksi koossa. Yhteisessä [virtuaalisessa coworking-tilassa](/virtual-coworking) kaikki [näkevät, kuka työskentelee](/team-presence), istuvat omassa pöydässään ja asettavat itsensä kiireiseksi, jolloin hiljainenkin iltapäivä tuntuu yhteiseltä.",
+          "Jos haluat enemmän rakennetta, aloita [kokous](/virtual-meeting-room) nimeltä Focus, kutsu mukaan halukkaat ja noudata yllä olevaa session kulkua. Ne, jotka eivät halua puhua, voivat vain olla kerroksessa ja työskennellä muiden lähellä."
         ]
       }
     ],
@@ -3053,6 +3260,10 @@
       {
         "q": "Mitä body doubling on?",
         "a": "Työskentelyä toisen ihmisen läheisyydessä, joko kasvokkain tai verkossa, jotta tehtävän aloittaminen ja jatkaminen on helpompaa. Toinen ihminen ei auta työssä, hän on vain paikalla."
+      },
+      {
+        "q": "Mikä on paras body doubling -sovellus?",
+        "a": "Se riippuu siitä, kenen haluat olevan paikalla. Focusmate yhdistää sinut tuntemattoman kanssa varatuksi ajaksi, ryhmäsovellukset kuten Flow Club järjestävät ohjattuja tuokioita, ja TinyFloorin kaltainen virtuaalitoimisto tuo sinut tuttujen ihmisten viereen koko päiväksi. Myös videopuhelu ystävän kanssa toimii eikä maksa mitään."
       },
       {
         "q": "Onko body doubling vain ADHD-oireisille?",

@@ -154,15 +154,15 @@
       "items": [
         {
           "title": "Se, hvem der er der",
-          "body": "Alle vises på kontoret med en status, så du ved, hvem der sidder ved deres skrivebord, hvem der er optaget, og hvem der er i et møde, før du forstyrrer."
+          "body": "Alle vises på kontoret med en [status](/team-presence), så du ved, hvem der sidder ved deres skrivebord, hvem der er optaget, og hvem der er i et møde, før du forstyrrer."
         },
         {
           "title": "Snak uden at aftale tid",
-          "body": "Gå hen til en kollega og begynd at snakke. Et spørgsmål på to minutter bliver ved med at være to minutter i stedet for at blive en kalenderinvitation til i morgen."
+          "body": "[Gå hen til en kollega](/proximity-chat) og begynd at snakke. Et spørgsmål på to minutter bliver ved med at være to minutter i stedet for at blive en kalenderinvitation til i morgen."
         },
         {
           "title": "Mødes i et lokale",
-          "body": "Gruppesamtaler foregår i et mødelokale, du går ind i, med video og skærmdeling, og som du går ud af, når I er færdige."
+          "body": "Gruppesamtaler foregår i et [mødelokale](/virtual-meeting-room), du går ind i, med video og skærmdeling, og du går ud igen, når I er færdige."
         },
         {
           "title": "Hav dit eget skrivebord",
@@ -170,7 +170,7 @@
         },
         {
           "title": "Chat ved siden af",
-          "body": "Beskeder og kanaler ligger ved siden af gulvet, til det, der ikke behøver en samtale."
+          "body": "[Beskeder og kanaler](/team-chat) ligger lige ved siden af etagen til det, der ikke kræver samtale."
         }
       ]
     },
@@ -220,30 +220,30 @@
       "items": [
         {
           "title": "Små remote teams",
-          "body": "Fire til femten personer, der ikke deler en bygning og savner at kunne vende sig om og spørge."
+          "body": "Fire til femten personer, der ikke deler en bygning, eller et [hybridt team](/hybrid-teams) opdelt mellem hjemmet og kontoret, som savner at kunne vende sig om og spørge."
         },
         {
           "title": "Startups",
-          "body": "Unge teams, der beslutter hurtigt og ikke kan vente en dag på det næste møde."
+          "body": "Tidlige [startup-teams](/startups), der beslutter ting hurtigt og ikke kan vente en dag på det næste møde."
         },
         {
           "title": "Bureauer og studier",
-          "body": "Folk, der skifter mellem kundeprojekter hele dagen og skal finde hinanden hurtigt."
+          "body": "Folk på [bureauer og studier](/agencies), der bevæger sig mellem kundeprojekter hele dagen og har brug for at finde hinanden hurtigt."
         },
         {
           "title": "Udviklings- og designteams",
-          "body": "Parprogrammering, reviews og at vise arbejde på skærmen uden at booke et opkald til det."
+          "body": "Pararbejde, review og fremvisning af arbejde på skærmen uden at booke et opkald. Mest til [udviklerteams](/engineering-teams) og [designteams](/design-teams)."
         },
         {
           "title": "Teams, der tager imod en ny",
-          "body": "En nyansat kan se, hvem der er der, og spørge i stedet for at gætte, hvem der har tid til en besked."
+          "body": "En nyansat kan se, hvem der er der, og spørge i stedet for at gætte på, hvem der er ledig til en besked. Se [remote onboarding](/remote-onboarding)."
         }
       ]
     },
     {
       "title": "Hvad det koster",
       "body": [
-        "Hvad et team på 8 betaler om måneden for populære virtuelle kontorer på den billigste plan, der passer."
+        "Hvad et team på 8 betaler om måneden for populære virtuelle kontorer på den billigste plan, der passer. For at se alle muligheder side om side kan du læse vores [sammenligning af virtuel kontorsoftware](/guides/best-virtual-office-software) eller beregne dit eget teams pris med vores [omkostningsberegner](/tools/virtual-office-cost-calculator)."
       ],
       "table": {
         "head": [
@@ -302,7 +302,7 @@
         {
           "title": "Hold næste standup i mødelokalet",
           "detail": "Den første vane",
-          "body": "At flytte ét dagligt møde ind på kontoret er det, der får folk til at komme tilbage næste dag."
+          "body": "At flytte ét dagligt møde, som f.eks. [standup](/virtual-standup), ind på kontoret er det, der får folk til at komme tilbage næste dag."
         },
         {
           "title": "Lad det stå åbent i en uge",
@@ -337,7 +337,7 @@
     {
       "title": "Hvorfor teams bruger Discord som kontor",
       "body": [
-        "Mange små teams, især udviklere, studier og startups, har deres arbejdsdag i Discord. De opretter en server, åbner en talekanal, og folk kommer og går som i et fælles rum. Det er gratis, lyden er god, skærmdeling virker i talekanaler, og den, der allerede bruger det, skal ikke lære noget nyt.",
+        "Mange små teams, især udviklere, studier og [startups](/startups), har deres arbejdsdag i Discord. De opretter en server, åbner en talekanal, og folk kommer og går som i et fælles rum. Det er gratis, lyden er god, skærmdeling virker i talekanaler, og den, der allerede bruger det, skal ikke lære noget nyt.",
         "Det viser, at det virker bedre at være ét klik fra hinanden end at planlægge hver samtale. Spørgsmålet er, om en app bygget til gaming-fællesskaber er det bedste hjem for det."
       ]
     },
@@ -350,7 +350,7 @@
         },
         {
           "title": "Kanaler i stedet for et sted",
-          "body": "Du ser, hvem der er i hvilken talekanal, men ikke hvem der sidder ved deres skrivebord og har et minut. At gå ind i en kanal er en alt-eller-intet-måde at starte en samtale på."
+          "body": "Du ser, hvem der er i hvilken talekanal, men ikke [hvem der sidder ved deres skrivebord og har et minut](/team-presence). At gå ind i en kanal er en alt-eller-intet-måde at starte en samtale på."
         },
         {
           "title": "Intet tydeligt mødelokale",
@@ -358,7 +358,7 @@
         },
         {
           "title": "Bygget til fællesskaber",
-          "body": "Roller, servere og bots er lavet til store grupper af fremmede. Et team på otte har brug for meget mindre, og mere af det, et kontor har."
+          "body": "Roller, servere og bots er lavet til store grupper af fremmede. Et team på otte har brug for meget mindre, og mere af det, et [kontor](/virtual-office) har."
         }
       ]
     },
@@ -2079,7 +2079,7 @@
         {
           "title": "Gå ind",
           "detail": "9:58",
-          "body": "Deltag i hovedmødet, og din figur går ind i mødelokalet. Alle på etagen kan se rummet fylde op."
+          "body": "Deltag i hovedmødet, og din figur går ind i [mødelokalet](/virtual-meeting-room). Alle på etagen kan se rummet fylde op."
         },
         {
           "title": "Runden",
@@ -2164,7 +2164,7 @@
       "items": [
         {
           "title": "Start til tiden",
-          "body": "Start på minuttet, også selvom nogen mangler. Etagen viser, hvem der er der, hvem der er væk, og hvem der stadig er i et opkald, så du ved, hvem du skal vente på, og hvem ikke."
+          "body": "Start på minuttet, også selvom nogen mangler. Etagen viser, [hvem der er der, hvem der er væk](/team-presence), og hvem der stadig er i et opkald, så du ved, hvem du skal vente på, og hvem ikke."
         },
         {
           "title": "Tag opfølgning ved et skrivebord",
@@ -2183,7 +2183,7 @@
     {
       "title": "Live, skriftligt eller begge dele",
       "body": [
-        "Et team spredt over tidszoner kan ikke altid mødes på samme tid. Mange skriver en opdatering i en kanal i kontorets chat og gemmer den levende standup til dage, hvor der skal besluttes noget: en release, et problem, en ny kollega."
+        "Et team spredt over tidszoner kan ikke altid mødes på samme tid. Mange skriver en opdatering i en kanal i [kontorets chat](/team-chat) og gemmer den levende standup til dage, hvor der skal besluttes noget: en release, et problem, en ny kollega."
       ],
       "items": [
         {
@@ -2192,11 +2192,11 @@
         },
         {
           "title": "Skriftligt",
-          "body": "Virker på tværs af tidszoner og efterlader et spor. Let at skimme, let at springe over, så problemer kan ligge ubemærket hen."
+          "body": "Virker på tværs af [tidszoner](/tools/time-zone-meeting-planner) og efterlader et spor. Let at skimme, let at springe over, så problemer kan ligge ubemærket hen."
         },
         {
           "title": "Begge dele",
-          "body": "Skriftlige opdateringer hver dag og en kort levende runde en eller to gange om ugen, på et tidspunkt, der passer alle."
+          "body": "[Skriftlige opdateringer](/guides/async-communication) hver dag og en kort levende runde en eller to gange om ugen, på et tidspunkt, der passer alle."
         }
       ]
     },
@@ -2217,7 +2217,7 @@
         {
           "title": "Se, hvem der er ledig",
           "detail": "1",
-          "body": "Skriveborde og statusser viser, hvem der arbejder koncentreret, hvem der er væk, og hvem der allerede er i et opkald. Optaget betyder vent; tilgængelig betyder gå derhen."
+          "body": "Skriveborde og [statusser](/team-presence) viser, hvem der arbejder koncentreret, hvem der er væk, og hvem der allerede er i et opkald. Optaget betyder vent; tilgængelig betyder gå derhen."
         },
         {
           "title": "Gå derhen og snak",
@@ -2295,7 +2295,7 @@
     {
       "title": "Når to bliver til tre",
       "body": [
-        "Gå hen til en tredje kollega under et opkald, og TinyFloor tilbyder at gøre det til et møde for jer tre. Til en planlagt mob- eller ensemblesession bruger I mødelokalet: Den, der taler, får det store kort, og den delte skærm står ved siden af personerne."
+        "Gå hen til en tredje kollega under et opkald, og TinyFloor tilbyder at gøre det til et møde for jer tre. Til en planlagt mob- eller ensemblesession bruger I [mødelokalet](/virtual-meeting-room): Den, der taler, får det store kort, og den delte skærm står ved siden af personerne."
       ]
     },
     {
@@ -2314,7 +2314,7 @@
         },
         {
           "title": "Ingen optagelse",
-          "body": "Sessioner optages ikke. Skriv det, I besluttede, i pull requesten eller teamchatten."
+          "body": "Sessioner optages ikke. Skriv det, I besluttede, i pull requesten eller [teamchatten](/team-chat)."
         },
         {
           "title": "Ingen forbindelse til GitHub eller Jira",
@@ -2335,7 +2335,7 @@
         },
         {
           "title": "Gør det normalt at spørge",
-          "body": "Et team, hvor folk går hen med spørgsmål, løser problemer på minutter, ikke i morgen. At de erfarne går hen til de nyere, hjælper lige så meget som omvendt."
+          "body": "Et team, hvor folk [går hen](/proximity-chat) med spørgsmål, løser problemer på minutter, ikke i morgen. At de erfarne går hen til de nyere, hjælper lige så meget som omvendt."
         }
       ]
     }
@@ -2365,7 +2365,7 @@
         {
           "title": "Sig hej til standuppen",
           "detail": "10:00",
-          "body": "Gå ind i mødelokalet med alle de andre. Et minut til at præsentere dig, og teamet har mødt dig."
+          "body": "Gå ind i [mødelokalet](/virtual-meeting-room) med alle de andre. Et minut til at præsentere dig, og teamet har mødt dig."
         },
         {
           "title": "Sid med din buddy",
@@ -2444,7 +2444,7 @@
         },
         {
           "title": "Sæt tid af de første to dage",
-          "body": "Det meste af mandagen og noget af tirsdagen sammen med delt skærm. Derefter kommer den nye forbi, når der er brug for det."
+          "body": "Det meste af mandagen og noget af tirsdagen sammen med [delt skærm](/remote-pair-programming). Derefter kommer den nye forbi, når der er brug for det."
         },
         {
           "title": "Tag det første besøg selv",
@@ -2452,14 +2452,14 @@
         },
         {
           "title": "Hav en kanal til spørgsmål",
-          "body": "En kanal i teamchatten til spørgsmål, ingen skal føle sig dumme over at stille. Beskederne bliver, så den næste nye kan læse svarene."
+          "body": "En kanal i [teamchatten](/team-chat) til spørgsmål, ingen skal føle sig dumme over at stille. Beskederne bliver, så den næste nye kan læse svarene."
         }
       ]
     },
     {
       "title": "Hvad TinyFloor ikke gør for onboarding",
       "body": [
-        "Det er ikke et HR-værktøj. Der er ingen onboarding-tjeklister, ingen dokumentsignering, ingen kontooprettelse og ingen single sign-on. Hold jeres håndbog i jeres dokumentværktøj og kontiene i jeres admin-værktøjer; TinyFloor er stedet, hvor den nye møder teamet og får hjælp. At invitere kræver ét link, og et minut senere kan de sidde ved et skrivebord."
+        "Det er ikke et HR-værktøj. Der er ingen [onboarding-tjeklister](/guides/remote-onboarding-checklist), ingen dokumentsignering, ingen kontooprettelse og ingen single sign-on. Hold jeres håndbog i jeres dokumentværktøj og kontiene i jeres admin-værktøjer; TinyFloor er stedet, hvor den nye møder teamet og får hjælp. At invitere kræver ét link, og et minut senere kan de sidde ved et skrivebord."
       ]
     }
   ],
@@ -2480,7 +2480,7 @@
         },
         {
           "title": "Du går forbi nogen",
-          "body": "På vej til mødelokalet eller whiteboardet går du forbi skriveborde. Stop ved siden af nogen, og et opkald er ét tryk væk; gå videre, og der sker ingenting."
+          "body": "På vej til [mødelokalet](/virtual-meeting-room) eller whiteboardet går du forbi skriveborde. Stop ved siden af nogen, og et opkald er ét tryk væk; gå videre, og der sker ingenting."
         },
         {
           "title": "Musik i rummet",
@@ -2488,14 +2488,14 @@
         },
         {
           "title": "Chatten mellem opkaldene",
-          "body": "En kanal til alt, der ikke er arbejde, med emojis og reaktioner. Beskederne bliver, så ingen går glip af joken, fordi de sad i et møde."
+          "body": "En [kanal](/team-chat) til alt, der ikke er arbejde, med emojis og reaktioner. Beskederne bliver, så ingen går glip af joken, fordi de sad i et møde."
         }
       ]
     },
     {
       "title": "Ritualer, der virker for et lille team",
       "body": [
-        "Korte, frivillige og faste. Et team på otte har ikke brug for et eventprogram, men for nogle få vaner, folk faktisk dukker op til."
+        "Korte, frivillige og faste. Et team på otte har ikke brug for et eventprogram, men for nogle få [vaner](/guides/how-to-build-remote-team-culture), folk faktisk dukker op til."
       ],
       "table": {
         "head": [
@@ -2556,7 +2556,7 @@
     {
       "title": "Hvad TinyFloor ikke gør",
       "body": [
-        "Der er ingen spil, ingen quiz, ingen YouTube-skærme og ingen eventområder til hundrede gæster. Det er et lille kontor til et team, der arbejder sammen hver dag, og kaffemaskinen er pausen mellem opgaverne. Til en firmafest eller et stort socialt arrangement har Kumospace og Gather mere indbygget."
+        "Der er ingen spil, ingen quiz, ingen YouTube-skærme og ingen eventområder til hundrede gæster. Det er et lille kontor til et team, der arbejder sammen hver dag, og kaffemaskinen er pausen mellem opgaverne. Til en firmafest eller et stort socialt arrangement har [Kumospace og Gather](/gather-vs-kumospace) mere indbygget."
       ]
     }
   ],
@@ -2570,7 +2570,7 @@
         {
           "title": "Standup",
           "detail": "10:00",
-          "body": "Teamet går ind i mødelokalet, tager runden på ti minutter og går ud igen."
+          "body": "Teamet går ind i [mødelokalet](/virtual-meeting-room), tager runden på ti minutter og går ud igen."
         },
         {
           "title": "Fokus",
@@ -2580,12 +2580,12 @@
         {
           "title": "Løst",
           "detail": "14:30",
-          "body": "Fejler buildet? Se, hvem der er tilgængelig, gå derhen, del loggene, og løs det på ti minutter i stedet for i morgen."
+          "body": "Fejler buildet? [Se, hvem der er tilgængelig](/team-presence), gå derhen, del loggene, og løs det på ti minutter i stedet for i morgen."
         },
         {
           "title": "Review",
           "detail": "16:00",
-          "body": "To eller tre personer i et møde, én deler pull requesten, og I snakker den igennem i stedet for fyrre kommentarer."
+          "body": "To eller tre personer i et møde, én deler pull requesten, og I [snakker den igennem](/remote-pair-programming) i stedet for fyrre kommentarer."
         }
       ]
     },
@@ -2750,11 +2750,11 @@
         },
         {
           "title": "Fra et opkald",
-          "body": "I et opkald med én og vil have en tredje med? Gå hen til personen, og TinyFloor tilbyder at gøre det til et møde for jer tre."
+          "body": "I et opkald med én og vil have en tredje med? [Gå hen til personen](/proximity-chat), og TinyFloor tilbyder at gøre det til et møde for jer tre."
         },
         {
           "title": "Se først, hvem der er ledig",
-          "body": "Listen over personer viser, hvem der er ledig til at snakke, hvem der er optaget, og hvem der allerede er i et andet møde, så du kun inviterer dem, der kan komme."
+          "body": "Listen over personer viser, [hvem der er ledig til at snakke, hvem der er optaget](/team-presence), og hvem der allerede er i et andet møde, så du kun inviterer dem, der kan komme."
         }
       ]
     },
@@ -2782,7 +2782,7 @@
     {
       "title": "Hvad det ikke gør",
       "body": [
-        "Der er ingen optagelse, ingen transskription og ingen AI-noter. Møder foregår inde i dit kontor: Der er ingen opkaldsnumre og ingen webinartilstand til et stort publikum. Delte skærme sender billedet, ikke lyden. Har du brug for det, så brug Zoom eller Google Meet til det møde og TinyFloor til de daglige."
+        "Der er ingen optagelse, ingen transskription og ingen AI-noter. Møder foregår inde i dit [kontor](/virtual-office): Der er ingen opkaldsnumre og ingen webinartilstand til et stort publikum. Delte skærme sender billedet, ikke lyden. Har du brug for det, så brug Zoom eller Google Meet til det møde og TinyFloor til de daglige."
       ]
     }
   ],
@@ -2790,7 +2790,7 @@
     {
       "title": "En chat lige ved siden af etagen",
       "body": [
-        "I de fleste værktøjer er chatten hele arbejdspladsen. I TinyFloor er den halvdelen: Etagen viser, hvem der er der, og lader jer tale, og chatten holder på alt det, der skal skrives ned. Fordi de ligger side om side, kan en lang frem-og-tilbage blive til en snak på to minutter med ét klik."
+        "I de fleste værktøjer er chatten hele arbejdspladsen. I TinyFloor er den halvdelen: [Etagen viser, hvem der er der](/team-presence), og lader jer tale, og chatten holder på alt det, der skal skrives ned. Fordi de ligger side om side, kan en lang frem-og-tilbage blive til en snak på to minutter med ét klik."
       ]
     },
     {
@@ -2837,11 +2837,11 @@
       "items": [
         {
           "title": "Gå derhen fra en samtale",
-          "body": "En direkte besked med en, der er på etagen, tilbyder at gå derhen. Din figur finder selv vej til skrivebordet, og et opkald er ét tryk væk."
+          "body": "En direkte besked med en, der er på etagen, tilbyder at [gå derhen](/proximity-chat). Din figur finder selv vej til skrivebordet, og et opkald er ét tryk væk."
         },
         {
           "title": "Se, hvem der er der, før du skriver",
-          "body": "Listen over personer viser, hvem der er på etagen, hvem der er optaget, og hvem der er i et møde, så du ved, om du skal skrive eller vente."
+          "body": "Listen over personer viser, hvem der er på etagen, hvem der er optaget, og hvem der er i et møde, så du ved, [om du skal skrive eller vente](/guides/remote-team-communication)."
         },
         {
           "title": "Et diskret signal i stedet for pop-ups",
@@ -2888,7 +2888,7 @@
     {
       "title": "Hvad den ikke gør",
       "body": [
-        "Der er ingen tråde, ingen integrationer eller bots og endnu ingen søgning i beskeder. Du kan ikke dele billeder i chatten endnu, så skærmbilleder vises på skærmen i et opkald. Notifikationer følger dig ikke til telefonen: TinyFloor sender ingen pushbeskeder eller mails for at trække folk tilbage. Er jeres team afhængigt af noget af det, så behold Slack til skrivning og brug TinyFloor til tilstedeværelse, opkald og møder; mange teams gør sådan."
+        "Der er ingen tråde, ingen integrationer eller bots og endnu ingen søgning i beskeder. Du kan ikke dele billeder i chatten endnu, så skærmbilleder vises på skærmen i et opkald. Notifikationer følger dig ikke til telefonen: TinyFloor sender ingen pushbeskeder eller mails for at trække folk tilbage. Er jeres team afhængigt af noget af det, så [behold Slack til skrivning](/slack-huddles-alternative) og brug TinyFloor til tilstedeværelse, opkald og møder; mange teams gør sådan."
       ]
     }
   ],
@@ -2896,7 +2896,7 @@
     {
       "title": "Hvad tilstedeværelse betyder i TinyFloor",
       "body": [
-        "På et kontor ser du med ét blik, hvem der er der, hvem der er dybt nede i noget, og hvem der taler i telefon. Remote siger en grøn prik i en chatapp meget lidt. På etagen er tilstedeværelse, hvor folk er, og hvad de selv siger om sig, intet mere."
+        "På et [kontor](/virtual-office) ser du med ét blik, hvem der er der, hvem der er dybt nede i noget, og hvem der taler i telefon. Remote siger en grøn prik i en chatapp meget lidt. På etagen er tilstedeværelse, hvor folk er, og hvad de selv siger om sig, intet mere."
       ]
     },
     {
@@ -2972,7 +2972,7 @@
       "items": [
         {
           "title": "Aftal, hvad optaget betyder",
-          "body": "De fleste teams lander på: optaget betyder skriv, gå ikke derhen, medmindre det brænder."
+          "body": "De fleste teams lander på: optaget betyder [skriv, gå ikke derhen](/guides/remote-team-communication), medmindre det brænder."
         },
         {
           "title": "Sæt dig ved dit skrivebord, når du arbejder",
@@ -2997,7 +2997,7 @@
         },
         {
           "title": "Gå derhen",
-          "body": "Tryk Gå derhen på nogens kort, så finder din figur selv vej hen over etagen."
+          "body": "Tryk [Gå derhen](/proximity-chat) på nogens kort, så finder din figur selv vej hen over etagen."
         },
         {
           "title": "Ankomster",
@@ -3016,7 +3016,7 @@
     {
       "title": "Et whiteboard på væggen, ikke i en anden fane",
       "body": [
-        "De fleste online-whiteboards er en app for sig: opret et board, del et link, vent på, at folk åbner det. I TinyFloor hænger tavlen på kontorets væg. Gå hen og tegn, og alle, der kigger, ser dine streger, mens du tegner dem."
+        "De fleste online-whiteboards er en app for sig: opret et board, del et link, vent på, at folk åbner det. I TinyFloor hænger tavlen på [kontorets](/virtual-office) væg. Gå hen og tegn, og alle, der kigger, ser dine streger, mens du tegner dem."
       ]
     },
     {
@@ -3080,7 +3080,7 @@
       "items": [
         {
           "title": "Tal, mens du tegner",
-          "body": "Start et opkald eller et møde først. En skitse med forklaring slår et perfekt diagram i stilhed."
+          "body": "Start et opkald eller et [møde](/virtual-meeting-room) først. En skitse med forklaring slår et perfekt diagram i stilhed."
         },
         {
           "title": "Én farve hver",
@@ -3088,7 +3088,7 @@
         },
         {
           "title": "Tag et skærmbillede af det vigtige",
-          "body": "Før I rydder tavlen, så gem det, I får brug for, og skriv beslutningen i teamchatten."
+          "body": "Før I rydder tavlen, så gem det, I får brug for, og skriv beslutningen i [teamchatten](/team-chat)."
         },
         {
           "title": "Store diagrammer et andet sted",
@@ -3099,7 +3099,7 @@
     {
       "title": "Hvad den ikke gør",
       "body": [
-        "Det er en tavle med pen og viskelæder. Der er intet tekstværktøj, ingen figurer eller sedler, ingen billeder, ingen fortryd, ingen skabeloner og ingen eksport, og et kontor har én tavle. Til workshops, retrospektiver med sedler eller detaljerede diagrammer kan Miro, FigJam eller Excalidraw langt mere. Tavlen i TinyFloor er til den hurtige skitse, mens I taler."
+        "Det er en tavle med pen og viskelæder. Der er intet tekstværktøj, ingen figurer eller sedler, ingen billeder, ingen fortryd, ingen skabeloner og ingen eksport, og et kontor har én tavle. Til workshops, [retrospektiver](/guides/retrospective-ideas) med sedler eller detaljerede diagrammer kan Miro, FigJam eller Excalidraw langt mere. Tavlen i TinyFloor er til den hurtige skitse, mens I taler."
       ]
     }
   ],
@@ -3113,7 +3113,7 @@
         {
           "title": "Prioriteter",
           "detail": "9:30",
-          "body": "Ti minutter i mødelokalet: hvad der skal leveres til hvilken kunde i dag, og hvem der har brug for hjælp."
+          "body": "Ti minutter i [mødelokalet](/virtual-meeting-room): hvad der skal leveres til hvilken kunde i dag, og hvem der har brug for hjælp."
         },
         {
           "title": "Et hurtigt review",
@@ -3123,7 +3123,7 @@
         {
           "title": "Deadlinetilstand",
           "detail": "14:00",
-          "body": "Sæt dig som optaget. Folk kan se, at du er der og arbejder, og ved, at de skal skrive i stedet for at komme forbi."
+          "body": "Sæt dig som optaget. Folk kan [se, at du er der](/team-presence) og arbejder, og ved, at de skal skrive i stedet for at komme forbi."
         },
         {
           "title": "Kundeforberedelse",
@@ -3233,7 +3233,7 @@
     {
       "title": "Hvad det koster, når I vokser",
       "body": [
-        "TinyFloor koster pr. kontor, ikke pr. person. En ansættelse ændrer ikke regningen."
+        "TinyFloor [koster pr. kontor](/pricing), ikke pr. person. En ansættelse ændrer ikke regningen."
       ],
       "table": {
         "head": [
@@ -3261,11 +3261,11 @@
       "items": [
         {
           "title": "Beslut på gangen",
-          "body": "Se, hvem der er der, gå derhen, beslut og gå tilbage. Et spørgsmål på to minutter kræver ikke et møde."
+          "body": "[Se, hvem der er der](/team-presence), gå derhen, beslut og gå tilbage. Et spørgsmål på to minutter kræver ikke et møde."
         },
         {
           "title": "Én standup, samme rum",
-          "body": "Hovedmødet er der altid. Ti minutter om morgenen holder alle i samme retning."
+          "body": "[Hovedmødet](/virtual-standup) er der altid. Ti minutter om morgenen holder alle i samme retning."
         },
         {
           "title": "Investor- og kundeopkald et andet sted",
@@ -3273,7 +3273,7 @@
         },
         {
           "title": "Ansæt til et sted, ikke til en kanalliste",
-          "body": "En ny person får et skrivebord og kan se, hvem der er hvem, fra dag ét, i stedet for at lære teamet at kende fra en sidebar fuld af navne."
+          "body": "En [ny person](/remote-onboarding) får et skrivebord og kan se, hvem der er hvem, fra dag ét, i stedet for at lære teamet at kende fra en sidebar fuld af navne."
         }
       ]
     },
@@ -3309,7 +3309,7 @@
     {
       "title": "Feedback er flaskehalsen",
       "body": [
-        "Designarbejde bliver bedre, hver gang nogen kigger på det sammen med dig. I et studie sker det over skulderen, mange gange om dagen. Remote skrumper det til en ugentlig crit og kommentarer i en fil. På etagen er et ekstra sæt øjne igen få skridt væk."
+        "Designarbejde bliver bedre, hver gang nogen kigger på det sammen med dig. I et studie sker det over skulderen, mange gange om dagen. Remote skrumper det til en ugentlig crit og kommentarer i en fil. På etagen er et ekstra sæt øjne igen [få skridt væk](/proximity-chat)."
       ]
     },
     {
@@ -3366,7 +3366,7 @@
         },
         {
           "title": "Skriv beslutningerne ned",
-          "body": "Læg det besluttede i teamchatten, så det ikke kun lever i nogens hukommelse."
+          "body": "Læg det besluttede i [teamchatten](/team-chat), så det ikke kun lever i nogens hukommelse."
         }
       ]
     },
@@ -3375,7 +3375,7 @@
       "items": [
         {
           "title": "Optaget betyder optaget",
-          "body": "Sæt en optaget-status til fordybet arbejde. Kollegerne kan se, at du er der, og skriver i stedet for at komme forbi."
+          "body": "Sæt en optaget-status til fordybet arbejde. Kollegerne kan [se, at du er der](/team-presence), og skriver i stedet for at komme forbi."
         },
         {
           "title": "Intet krav om kamera",
@@ -3383,7 +3383,7 @@
         },
         {
           "title": "Skitsér først",
-          "body": "Whiteboardet på væggen er til den grove version, før nogen åbner et designværktøj."
+          "body": "[Whiteboardet](/online-whiteboard) på væggen er til den grove version, før nogen åbner et designværktøj."
         }
       ]
     },
@@ -3451,12 +3451,12 @@
         {
           "title": "Baggrundsmusik",
           "detail": "11:00",
-          "body": "Nogen sætter et nummer på højttaleren. Tæt på er det højt, og det aftager hen over etagen, så det er selskab frem for larm."
+          "body": "Nogen sætter et nummer på højttaleren. Tæt på er det højt, og det [aftager hen over etagen](/proximity-chat), så det er selskab frem for larm."
         },
         {
           "title": "En pause",
           "detail": "13:00",
-          "body": "Sæt dig som væk til frokost. Tilbage ved skrivebordet, to minutters snak med dem, der er der, før eftermiddagen."
+          "body": "Sæt dig som væk til frokost. Tilbage ved skrivebordet, [to minutters snak](/virtual-watercooler) med dem, der er der, før eftermiddagen."
         }
       ]
     },
@@ -3484,13 +3484,13 @@
     {
       "title": "Hvorfor det hjælper at arbejde tæt på andre",
       "body": [
-        "Studier af omgivelsesbevidsthed på arbejdspladsen fandt, at det gav folk en følelse af, at andre også arbejdede, når de med ét blik kunne se kollegernes tilstedeværelse, og at det førte til mere uformel kontakt. I Gallups data fra 2024 svarede dem, der arbejder helt remote, oftere end dem på stedet, at de følte sig ensomme, 25 % mod 16 %. En etage, hvor dit team synligt er til stede, hjælper på begge dele, uden at nogen skal sidde på kamera."
+        "Studier af omgivelsesbevidsthed på arbejdspladsen fandt, at det gav folk en følelse af, at andre også arbejdede, når de med ét blik kunne se kollegernes [tilstedeværelse](/team-presence), og at det førte til mere uformel kontakt. I Gallups data fra 2024 svarede dem, der arbejder helt remote, oftere end dem på stedet, at de følte sig ensomme, 25 % mod 16 %. En etage, hvor dit team synligt er til stede, hjælper på begge dele, uden at nogen skal sidde på kamera."
       ]
     },
     {
       "title": "Hvad det ikke er",
       "body": [
-        "TinyFloor er ikke et offentligt coworkingområde. Et kontor er privat for dit team, så der er ingen fremmede at arbejde ved siden af og ingen matchning med andre. Der er ingen sessionstimere, ingen streaks og intet, der tæller, hvor længe du har arbejdet. Arbejder du alene og vil have selskab af fremmede, passer en body doubling-tjeneste bedre; vil du have dit team omkring dig, mens du arbejder, er det her."
+        "TinyFloor er ikke et offentligt coworkingområde. Et [kontor](/virtual-office) er privat for dit team, så der er ingen fremmede at arbejde ved siden af og ingen matchning med andre. Der er ingen sessionstimere, ingen streaks og intet, der tæller, hvor længe du har arbejdet. Arbejder du alene og vil have selskab af fremmede, passer en body doubling-tjeneste bedre; vil du have dit team omkring dig, mens du arbejder, er det her."
       ]
     }
   ],
@@ -3498,7 +3498,7 @@
     {
       "title": "Hvad nærhedschat betyder",
       "body": [
-        "Nærhedschat kommer fra spil: Du hører spillerne tæt på dig og ikke dem på den anden side af kortet, sådan som lyd virker på et rigtigt sted. Virtuelle kontorer har lånt idéen, så hvor du står, afgør, hvem du taler med. Der er to måder at gøre det på, og på arbejdet føles de meget forskellige."
+        "Nærhedschat kommer fra spil: Du hører spillerne tæt på dig og ikke dem på den anden side af kortet, sådan som lyd virker på et rigtigt sted. [Virtuelle kontorer](/virtual-office) har lånt idéen, så hvor du står, afgør, hvem du taler med. Der er to måder at gøre det på, og på arbejdet føles de meget forskellige."
       ],
       "table": {
         "head": [
@@ -3546,7 +3546,7 @@
         {
           "title": "Ring op",
           "detail": "2",
-          "body": "De ser \"Ringer til dig\" og kan svare eller afvise. Er de optaget eller svarer ikke, får du besked, og der sker ikke mere."
+          "body": "De ser \"Ringer til dig\" og kan svare eller afvise. Er de [optaget](/team-presence) eller svarer ikke, får du besked, og der sker ikke mere."
         },
         {
           "title": "Tal",
@@ -3561,7 +3561,7 @@
         {
           "title": "Tilføj en tredje",
           "detail": "5",
-          "body": "Et opkald er to personer. Gå hen til en tredje, og TinyFloor tilbyder at gøre det til et møde for jer tre."
+          "body": "Et opkald er to personer. Gå hen til en tredje, og TinyFloor tilbyder at gøre det til et [møde](/virtual-meeting-room) for jer tre."
         }
       ]
     },
@@ -4060,7 +4060,7 @@
         },
         {
           "title": "Møder i ét rum",
-          "body": "Hold jeres standup i mødelokalet med alle på hver deres bærbare, i stedet for et rum fuldt af mennesker og et par ansigter på en skærm."
+          "body": "Hold jeres [standup](/virtual-standup) i mødelokalet med alle på hver deres bærbare, i stedet for et rum fuldt af mennesker og et par ansigter på en skærm."
         }
       ]
     },
@@ -4073,7 +4073,7 @@
         },
         {
           "title": "Beslutninger bliver skrevet ned",
-          "body": "Alt, hvad der besluttes i bygningen, skrives i teamchatten, så dem derhjemme ser det samme dag."
+          "body": "Alt, hvad der besluttes i bygningen, skrives i [teamchatten](/team-chat), så dem derhjemme ser det samme dag."
         },
         {
           "title": "Hovedtelefoner på kontoret",
@@ -4081,14 +4081,14 @@
         },
         {
           "title": "Kontordage er ikke mødedage",
-          "body": "Gem ikke alle møder til de dage, folk er inde. Hvis mødelokalet fungerer for alle, så brug det hver dag."
+          "body": "Gem ikke alle møder til de dage, folk er inde. Hvis [mødelokalet](/virtual-meeting-room) fungerer for alle, så brug det hver dag."
         }
       ]
     },
     {
       "title": "Hvad det koster",
       "body": [
-        "TinyFloor koster pr. kontor, ikke pr. person, så det gør ingen forskel, hvor mange dage folk kommer ind."
+        "TinyFloor [koster pr. kontor](/pricing), ikke pr. person, så det gør ingen forskel, hvor mange dage folk kommer ind."
       ],
       "table": {
         "head": [

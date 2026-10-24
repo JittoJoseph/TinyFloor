@@ -39,7 +39,7 @@
       {
         "title": "Fünf Minuten zu Beginn eines Meetings",
         "body": [
-          "Ohne Vorbereitung, für jede Teamgröße. Nutze eine davon zum Start eines Standups oder Wochenmeetings."
+          "Ohne Vorbereitung, für jede Teamgröße. Nutze eine davon zum Start eines [Standups](/virtual-standup) oder Wochenmeetings."
         ],
         "items": [
           {
@@ -78,7 +78,7 @@
           {
             "title": "Montagsmaler am gemeinsamen Whiteboard",
             "detail": "20 Min. · 4 bis 12 Personen",
-            "body": "Eine Person zeichnet einen Begriff auf ein Whiteboard, das alle sehen, die anderen rufen Tipps. Eine Liste mit Arbeitsbegriffen sorgt für extra Lacher."
+            "body": "Eine Person zeichnet einen Begriff auf ein [Whiteboard](/online-whiteboard), das alle sehen, die anderen rufen Tipps. Eine Liste mit Arbeitsbegriffen sorgt für extra Lacher."
           },
           {
             "title": "Team-Quiz",
@@ -138,7 +138,7 @@
       {
         "title": "Ganz ohne Meeting",
         "body": [
-          "Nicht alles braucht einen Call. Diese Ideen laufen eine Woche lang in einem Chat-Kanal und passen zu Teams über Zeitzonen hinweg."
+          "Nicht alles braucht einen Call. Diese Ideen laufen eine Woche lang in einem [Chat-Kanal](/team-chat) und passen zu Teams über Zeitzonen hinweg."
         ],
         "items": [
           {
@@ -171,7 +171,7 @@
       {
         "title": "Mach es zur Gewohnheit, nicht zum Event",
         "body": [
-          "Die Teams, die sich am nächsten sind, verlassen sich selten auf große Events. Sie haben viele kleine, ungeplante Momente: ein kurzes Wort vor einem Meeting, eine Frage, aus der ein Gespräch wird, ein Song, den jemand auflegt.",
+          "Die Teams, die sich am nächsten sind, verlassen sich selten auf große Events. Sie haben viele [kleine, ungeplante Momente](/virtual-watercooler): ein kurzes Wort vor einem Meeting, eine Frage, aus der ein Gespräch wird, ein Song, den jemand auflegt.",
           "Im Büro passiert das von selbst. Remote braucht es einen Ort, an dem man sich sieht und vorbeischauen kann, ohne einen Call zu buchen. Gib deinem Team diesen Ort, und die Aktivitäten oben werden zur Zugabe statt zur einzigen Gelegenheit zum Reden."
         ]
       }
@@ -231,7 +231,7 @@
           {
             "title": "Würdest du lieber",
             "detail": "Ohne Vorbereitung · jede Größe",
-            "body": "Die Moderation stellt eine Wahl zwischen zwei Optionen, alle antworten mit einem Wort, und zwei Leute erklären ihre Wahl."
+            "body": "Die Moderation stellt eine [Wahl zwischen zwei Optionen](/tools/would-you-rather-questions), alle antworten mit einem Wort, und zwei Leute erklären ihre Wahl."
           },
           {
             "title": "Steile Thesen",
@@ -291,7 +291,7 @@
           {
             "title": "Zeichnen in dreißig Sekunden",
             "detail": "Ohne Vorbereitung · 3 bis 12 Personen",
-            "body": "Nenn einen Begriff, stell einen 30-Sekunden-Timer, und alle zeichnen ihn gleichzeitig auf ein gemeinsames Whiteboard."
+            "body": "Nenn einen Begriff, stell einen 30-Sekunden-Timer, und alle zeichnen ihn gleichzeitig auf ein [gemeinsames Whiteboard](/online-whiteboard)."
           },
           {
             "title": "Gartic Phone",
@@ -311,14 +311,14 @@
           {
             "title": "Quiz mit fünf Fragen",
             "detail": "Wenig Vorbereitung · jede Größe",
-            "body": "Fünf kurze Fragen zur Woche, zum Produkt oder zum Team. Antworten im Chat, die schnellste richtige gewinnt."
+            "body": "Fünf kurze [Fragen zur Woche](/tools/team-building-questions), zum Produkt oder zum Team. Antworten im Chat, die schnellste richtige gewinnt."
           }
         ]
       },
       {
         "title": "So läuft es gut",
         "body": [
-          "Spielt zu Beginn des Meetings, nicht am Ende, wenn alle frisch sind und niemand weg muss. Bleibt ein paar Wochen beim selben Spiel, damit niemand jedes Mal Regeln lernen muss, und wechselt dann.",
+          "Spielt zu Beginn des [Meetings](/virtual-meeting-room), nicht am Ende, wenn alle frisch sind und niemand weg muss. Bleibt ein paar Wochen beim selben Spiel, damit niemand jedes Mal Regeln lernen muss, und wechselt dann.",
           "Teilt große Meetings in kleine Gruppen von vier bis sechs Leuten auf. Spiele funktionieren nicht mehr, wenn die meisten zuschauen statt mitzuspielen."
         ]
       }
@@ -375,15 +375,15 @@
           },
           {
             "title": "Mach Menschen sichtbar",
-            "body": "Zeig, wer da ist, wer beschäftigt ist und wer Zeit zum Reden hat, damit Hilfe holen sich nicht wie Stören anfühlt."
+            "body": "Zeig, [wer da ist, wer beschäftigt ist](/team-presence) und wer Zeit zum Reden hat, damit Hilfe holen sich nicht wie Stören anfühlt."
           },
           {
             "title": "Halte einen Ort zum Vorbeischauen",
-            "body": "Ein immer offener Raum oder feste Sprechzeiten, zu denen man ohne Buchung auftauchen kann."
+            "body": "Ein [immer offener Raum](/virtual-meeting-room) oder feste Sprechzeiten, zu denen man ohne Buchung auftauchen kann."
           },
           {
             "title": "Pflege kleine Rituale",
-            "body": "Eine wöchentliche Demo, ein Freitags-Erfolge-Thread, ein Fünf-Minuten-Spiel. Klein, regelmäßig und jede Woche gleich."
+            "body": "Eine wöchentliche Demo, ein Freitags-Erfolge-Thread, ein [Fünf-Minuten-Spiel](/guides/games-for-virtual-meetings). Klein, regelmäßig und jede Woche gleich."
           },
           {
             "title": "Gib Neuen eine Patenschaft",
@@ -420,7 +420,7 @@
           },
           {
             "title": "Meetings fürs Zusammengehörigkeitsgefühl",
-            "body": "Ein tägliches All-Hands, um sich verbunden zu fühlen, wirkt meist wie eine Pflicht. Gib den Leuten einen Ort statt eines Termins."
+            "body": "Ein tägliches All-Hands, um sich verbunden zu fühlen, wirkt meist wie eine Pflicht. Gib den Leuten einen [Ort](/virtual-office) statt eines Termins."
           }
         ]
       },
@@ -667,8 +667,8 @@
       {
         "title": "Proximity-Chat im Job",
         "body": [
-          "Virtuelle Büros nutzen dieselbe Idee für Remote-Teams. Dein Team teilt eine 2D-Etage, jede Person ist eine Figur, und ihr redet, indem ihr zu jemandem hingeht, statt einen Meeting-Link zu schicken.",
-          "Das bringt zurück, was Videocalls verlieren: sehen, wer da ist, schnelle Fragen und Nebengespräche. Zwei Leute können in einer Ecke reden, während andere arbeiten, wie in einem echten Büro."
+          "[Virtuelle Büros](/virtual-office) nutzen dieselbe Idee für Remote-Teams. Dein Team teilt eine 2D-Etage, jede Person ist eine Figur, und ihr redet, indem ihr zu jemandem hingeht, statt einen Meeting-Link zu schicken.",
+          "Das bringt zurück, was Videocalls verlieren: sehen, wer da ist, schnelle Fragen und [Nebengespräche](/virtual-watercooler). Zwei Leute können in einer Ecke reden, während andere arbeiten, wie in einem echten Büro."
         ]
       },
       {
@@ -732,8 +732,8 @@
   "bestVirtualOffice": {
     "label": "Die beste Virtual-Office-Software",
     "meta": {
-      "title": "Die beste Virtual-Office-Software 2026, ehrlich verglichen",
-      "description": "Zehn virtuelle Büros für Remote-Teams im Vergleich nach Preis, Gratis-Tarif und Stärken, inklusive der monatlichen Kosten für ein 10-Personen-Team."
+      "title": "Beste Virtual-Office-Software und Plattformen 2026: 10 im Vergleich",
+      "description": "Zehn virtuelle Büros für Remote-Teams im Vergleich nach Preis, kostenlosen Tarifen, Apps, Aufzeichnung und Single Sign-On – inklusive der monatlichen Kosten für ein Team von 10 Personen und der Frage, welches Tool für wen am besten geeignet ist."
     },
     "title": "Die beste Virtual-Office-Software <em>2026, ehrlich verglichen.</em>",
     "intro": "Ein virtuelles Büro gibt einem Remote-Team den ganzen Tag über einen gemeinsamen Ort: Du siehst, wer da ist, und sprichst mit ihnen, indem du einfach zu ihnen hingehst, statt einen Link zu senden. Hier sind die zehn, die einen Blick wert sind, was sie kosten und für wen sie sich eignen. Wir machen TinyFloor, sind also nicht neutral; wir sagen offen, wo andere Produkte stärker sind als unseres, und alle Preise stammen von den jeweiligen Preisseiten, geprüft im Oktober 2026.",
@@ -903,6 +903,172 @@
         }
       },
       {
+        "title": "Kostenlose Virtual-Office-Software im Vergleich",
+        "body": [
+          "Acht davon haben einen Gratis-Tarif oder eine kostenlose Version; vier bieten nur eine Testphase. Die Einschränkungen unterscheiden sich deutlicher als die Preise, passe sie also an die Arbeitsweise deines Teams an."
+        ],
+        "table": {
+          "head": [
+            "Produkt",
+            "Gratis-Tarif",
+            "Die entscheidende Einschränkung"
+          ],
+          "rows": [
+            [
+              "TinyFloor",
+              "Bis zu 3 Personen",
+              "Alle Funktionen, kein Zeitlimit"
+            ],
+            [
+              "SoWork",
+              "Bis zu 10 Mitglieder",
+              "Meetings enden nach 30 Minuten; keine Aufzeichnungen"
+            ],
+            [
+              "WorkAdventure",
+              "Bis zu 10 Personen gleichzeitig",
+              "Öffentliche Räume"
+            ],
+            [
+              "ZEP",
+              "Bis zu 10 Personen gleichzeitig",
+              "Eine Bildschirmfreigabe pro Karte; kein Passwort"
+            ],
+            [
+              "SpatialChat",
+              "Bis zu 12 Personen",
+              "2 Stunden Meetings am Tag"
+            ],
+            [
+              "Kumospace",
+              "Bis zu 5 Mitglieder und 50 Gäste",
+              "Eine Etage"
+            ],
+            [
+              "Teamflow",
+              "Bis zu 5 Personen",
+              "Meetings enden nach 45 Minuten; Desktop-App"
+            ],
+            [
+              "oVice",
+              "Eine kostenlose Version",
+              "Vorabversion, ohne Support oder Zugriffskontrollen"
+            ],
+            [
+              "Gather, Spot, Roam, Sococo",
+              "Keiner",
+              "Eine Testphase: 30 Tage bei Gather und Spot, 14 bei Roam"
+            ]
+          ],
+          "note": "Von der eigenen Preisseite jedes Produkts im Oktober 2026. Ein Gratis-Tarif, der für das ganze Team reicht, schlägt jeden bezahlten; einer, der jedes Meeting vorzeitig beendet, allerdings nicht."
+        }
+      },
+      {
+        "title": "Apps, Aufzeichnung und Single Sign-On",
+        "body": [
+          "Worauf die Software läuft, ob sie Meetings aufzeichnet und ob sich Nutzer über den Identity-Provider deines Unternehmens anmelden können."
+        ],
+        "table": {
+          "head": [
+            "Produkt",
+            "Läuft auf",
+            "Aufzeichnung und KI-Notizen",
+            "Single Sign-On"
+          ],
+          "rows": [
+            [
+              "TinyFloor",
+              "Im Browser, auf Desktop und Mobilgeräten",
+              "Nein",
+              "Nein"
+            ],
+            [
+              "Gather",
+              "Browser und eine Desktop-App",
+              "Aufzeichnung, Transkription und KI-Notizen, im Rahmen monatlicher Stunden",
+              "Bei Custom"
+            ],
+            [
+              "SoWork",
+              "Browser, Mac, Windows, iOS und Android",
+              "2 Aufzeichnungen bei Basic; KI-Zusammenfassungen bei Premium",
+              "Bei Enterprise"
+            ],
+            [
+              "Spot",
+              "Browser und eine Desktop-App",
+              "Nicht angegeben",
+              "Bei Enterprise"
+            ],
+            [
+              "Kumospace",
+              "Browser, Windows, macOS, iOS und Android",
+              "Aufzeichnung bei Business",
+              "Bei Enterprise"
+            ],
+            [
+              "WorkAdventure",
+              "Browser; kann selbst gehostet werden",
+              "Aufzeichnung",
+              "Nicht angegeben"
+            ],
+            [
+              "SpatialChat",
+              "Browser",
+              "Bis zu 7 gespeicherte Aufzeichnungen bei Business",
+              "Bei Enterprise"
+            ],
+            [
+              "Roam",
+              "Desktop- und Mobil-Apps",
+              "Aufzeichnung und KI-Notizen",
+              "Nicht angegeben"
+            ],
+            [
+              "oVice",
+              "Browser, Desktop- und Mobil-Apps",
+              "Aufzeichnung, Transkription und KI-Protokolle bei Business Starter",
+              "Bei kostenpflichtigen Tarifen"
+            ],
+            [
+              "Sococo",
+              "Auf dem Computer sowie iOS- und Android-Apps",
+              "Nicht angegeben",
+              "Nicht angegeben"
+            ]
+          ],
+          "note": "Von den eigenen Preis- und Funktionsseiten jedes Produkts im Oktober 2026. „Nicht angegeben“ bedeutet, dass wir keine Angaben dazu finden konnten, nicht, dass die Funktion fehlt."
+        }
+      },
+      {
+        "title": "Privatsphäre und Sicherheit",
+        "body": [
+          "Ein virtuelles Büro zeigt, wer wann arbeitet. Prüfe also, wer hineinkommt und was gespeichert wird, bevor dein Team einzieht."
+        ],
+        "items": [
+          {
+            "title": "Wer einfach hereinkommen kann",
+            "body": "Einige Gratis-Tarife lassen einen Raum für jeden offen, der den Link hat: Der Gratis-Tarif von ZEP hat kein Passwort und keine Anmelde-Regeln, und die kostenlosen Räume von WorkAdventure sind öffentlich. Kostenpflichtige Tarife bringen Passwörter, Anmelde-Regeln oder Zugriffskontrollen. TinyFloor-Büros sind in jedem Tarif privat: Personen treten per Einladung bei und melden sich an."
+          },
+          {
+            "title": "Single Sign-On",
+            "body": "Die Anmeldung über den Identity-Provider deines Unternehmens ist bei den meisten ein Enterprise-Feature: im Custom-Tarif von Gather sowie bei SoWork, Spot, Kumospace und SpatialChat Enterprise. oVice bietet es ab dem ersten kostenpflichtigen Tarif an. TinyFloor hat keines; die Anmeldung erfolgt über Google oder einen per E-Mail gesendeten Code."
+          },
+          {
+            "title": "Selbst hosten",
+            "body": "WorkAdventure ist Open Source und kann auf eigenen Servern laufen, wenn sich jemand im Team um die Wartung kümmert. Die anderen werden für dich gehostet."
+          },
+          {
+            "title": "Aufzeichnungen und KI-Notizen",
+            "body": "Sie sind praktisch, aber sie sind auch ein Protokoll der Gespräche deines Teams, das auf fremden Servern liegt. Entscheide, wer aufzeichnen darf und wie lange Aufzeichnungen aufbewahrt werden, bevor du sie aktivierst."
+          },
+          {
+            "title": "Was das Büro zeigt",
+            "body": "Zu sehen, wer da ist, ist der Sinn der Sache, aber es kann sich wie Überwachung anfühlen. Bevorzuge ein Tool, das einen selbst festgelegten Status anzeigt, statt die Aktivität oder die Zeit am Schreibtisch zu erfassen."
+          }
+        ]
+      },
+      {
         "title": "Welches für welches Team",
         "items": [
           {
@@ -928,6 +1094,30 @@
           {
             "title": "Ein größeres Unternehmen",
             "body": "Gather, Roam, oVice Business oder Sococo, die an größere Teams mit Jahresverträgen verkaufen."
+          }
+        ]
+      },
+      {
+        "title": "Auch einen Blick wert",
+        "body": [
+          "Nicht auf der Liste der zehn, aber oft mit ihnen verglichen. Du vergleichst zwei der zehn? Lies [Gather vs. Kumospace](/gather-vs-kumospace) oder [ZEP vs. Gather](/zep-vs-gather)."
+        ],
+        "items": [
+          {
+            "title": "Teamflow",
+            "body": "Eine Desktop-App für Mac und Windows mit Apps innerhalb des Büros, kostenlos für 5 Personen mit 45-Minuten-Meetings, danach 15 $ pro Mitarbeiter im Monat bei jährlicher Abrechnung. [Ausführlicher Vergleich](/teamflow-alternative)."
+          },
+          {
+            "title": "ZEP",
+            "body": "Ein 2D-Raum aus Korea, kostenlos für bis zu 10 Personen gleichzeitig, danach ab 4 $ pro Nutzer im Monat. Ein Großteil davon dient heute für Unterricht und Events. [Ausführlicher Vergleich](/zep-alternative)."
+          },
+          {
+            "title": "Discord",
+            "body": "Kein virtuelles Büro, aber viele kleine Teams nutzen seine Sprachkanäle als solches. Kostenlos, mit gutem Ton und für Gaming-Communitys gebaut. [Ausführlicher Vergleich](/discord-for-work)."
+          },
+          {
+            "title": "Slack-Huddles",
+            "body": "Anrufe innerhalb von Slack. Im Gratis-Tarif von Slack kann ein Huddle 2 Personen umfassen; Gruppen-Huddles erfordern einen kostenpflichtigen Tarif für alle. [Ausführlicher Vergleich](/slack-huddles-alternative)."
           }
         ]
       }
@@ -956,6 +1146,18 @@
       {
         "q": "Muss ich etwas installieren?",
         "a": "Nicht für TinyFloor, Gather, SoWork, WorkAdventure, SpatialChat oder oVice, die im Browser laufen. Roam ist eine Desktop-App, und Kumospace, Gather und Spot bieten ebenfalls Apps an."
+      },
+      {
+        "q": "Welche Virtual-Office-Software bietet KI-Meeting-Zusammenfassungen?",
+        "a": "Gather enthält KI-Meeting-Notizen, SoWork Premium schreibt Zusammenfassungen, Transkripte und To-do-Listen, Roam hat KI-Notizen und oVice bietet KI-Protokolle bei Business Starter. TinyFloor hat keine Aufzeichnungen oder KI-Notizen."
+      },
+      {
+        "q": "Welche Virtual-Office-Software bietet Single Sign-On?",
+        "a": "Gather im Custom-Tarif, SoWork, Spot, Kumospace und SpatialChat bei Enterprise sowie oVice ab dem ersten kostenpflichtigen Tarif. TinyFloor bietet kein Single Sign-On; die Anmeldung erfolgt über Google oder einen per E-Mail gesendeten Code."
+      },
+      {
+        "q": "Ist ein virtuelles Büro das Gleiche wie ein virtueller Workspace?",
+        "a": "Meistens ja: Beide Begriffe werden für einen gemeinsamen Online-Ort verwendet, an dem ein Remote-Team arbeitet, sieht, wer da ist, und spricht. „Virtueller Workspace“ bedeutet in der IT aber auch etwas anderes: ein Remote-Desktop, also ein ganzer Computer, der in der Cloud läuft – das ist ein anderes Produkt."
       }
     ]
   },
@@ -1109,7 +1311,7 @@
       {
         "title": "Dasselbe Team anderswo",
         "body": [
-          "Was dieselben Teams im Monat in anderen virtuellen Büros zahlen, im günstigsten passenden Tarif."
+          "Was dieselben Teams im Monat in anderen [virtuellen Büros](/guides/best-virtual-office-software) zahlen, im günstigsten passenden Tarif."
         ],
         "table": {
           "head": [
@@ -1150,7 +1352,7 @@
         "items": [
           {
             "title": "Du willst dein Büro selbst gestalten",
-            "body": "Mit Gather legst du Etagen, Räume und über 200 Objekte an. Die meisten Alternativen geben dir ein fertiges Büro."
+            "body": "Mit Gather legst du Etagen, Räume und über 200 Objekte an. Die meisten [Alternativen](/gather-alternative) geben dir ein fertiges Büro."
           },
           {
             "title": "Du brauchst Aufnahmen und Transkripte",
@@ -1166,7 +1368,7 @@
           },
           {
             "title": "Wann nicht",
-            "body": "Wenn dein Team vor allem sehen will, wer da ist, reden und sich treffen, zahlst du für Funktionen, die du nicht nutzt, jeden Monat, für jede Person."
+            "body": "Wenn dein Team vor allem [sehen will, wer da ist](/team-presence), reden und sich treffen, zahlst du für Funktionen, die du nicht nutzt, jeden Monat, für jede Person."
           }
         ]
       },
@@ -2035,7 +2237,7 @@
           },
           {
             "title": "Hast du genug Zeit für konzentrierte Arbeit?",
-            "body": "Zu viele Meetings sind eine der häufigsten Klagen im Remote-Team."
+            "body": "[Zu viele Meetings](/guides/async-communication) sind eine der häufigsten Klagen im Remote-Team."
           }
         ]
       },
@@ -2113,7 +2315,7 @@
           },
           {
             "title": "Von wem würdest du gern lernen?",
-            "body": "Ein Mentor oder gemeinsames Arbeiten bewirkt oft mehr als ein Kurs."
+            "body": "Ein Mentor oder [gemeinsames Arbeiten](/remote-pair-programming) bewirkt oft mehr als ein Kurs."
           }
         ]
       },
@@ -2157,7 +2359,7 @@
           },
           {
             "title": "Passen deine Arbeitszeiten für dich?",
-            "body": "Deckt Zeitzonen, späte Calls und die Grenze zwischen Arbeit und Zuhause ab."
+            "body": "Deckt [Zeitzonen](/tools/time-zone-meeting-planner), späte Calls und die Grenze zwischen Arbeit und Zuhause ab."
           },
           {
             "title": "Bremst dich dein Arbeitsplatz zu Hause aus?",
@@ -2692,7 +2894,7 @@
       {
         "title": "Wer wofür zuständig ist",
         "body": [
-          "Onboarding geht schief, wenn alle denken, jemand anderes kümmert sich. Benenne für jeden Teil eine verantwortliche Person."
+          "[Onboarding](/remote-onboarding) geht schief, wenn alle denken, jemand anderes kümmert sich. Benenne für jeden Teil eine verantwortliche Person."
         ],
         "table": {
           "head": [
@@ -2797,7 +2999,7 @@
           },
           {
             "title": "Arbeitszeiten vereinbaren",
-            "body": "Wann die Person online ist, die gemeinsamen Stunden des Teams und wie schnell Leute meist antworten."
+            "body": "Wann die Person online ist, die [gemeinsamen Stunden](/guides/how-to-manage-a-remote-team) des Teams und wie schnell Leute meist antworten."
           },
           {
             "title": "Erstes wöchentliches Einzelgespräch",
@@ -2840,7 +3042,7 @@
           },
           {
             "title": "Unsichtbare Teammitglieder",
-            "body": "Wer nicht sieht, wer da ist, weiß schwer, wann Fragen okay ist. Mach Präsenz sichtbar."
+            "body": "Wer nicht sieht, wer da ist, weiß schwer, wann Fragen okay ist. Mach [Präsenz sichtbar](/team-presence)."
           },
           {
             "title": "Zu viele Meetings auf einmal",
@@ -2848,7 +3050,7 @@
           },
           {
             "title": "Onboarding endet nach Woche eins",
-            "body": "Die ersten drei Monate entscheiden, ob Leute bleiben. Haltet Einzelgespräche und Check-ins am Laufen."
+            "body": "Die ersten drei Monate entscheiden, ob Leute bleiben. Haltet [Einzelgespräche](/guides/one-on-one-meeting-questions) und Check-ins am Laufen."
           }
         ]
       }
@@ -2883,7 +3085,7 @@
   "bodyDoubling": {
     "label": "Body Doubling",
     "meta": {
-      "title": "Body Doubling: Was es ist und wie es online funktioniert",
+      "title": "Body Doubling: Was es ist, die Apps und wie man es online macht",
       "description": "Was Body Doubling ist, warum das Arbeiten neben jemandem den Einstieg erleichtert, wie es online funktioniert und wie du es im Team nutzt."
     },
     "title": "Body Doubling: <em>neben jemandem arbeiten, mehr schaffen.</em>",
@@ -2916,7 +3118,7 @@
           },
           {
             "title": "Weniger einsam",
-            "body": "Für Menschen im Homeoffice lässt die stille Gesellschaft einer anderen Person lange Arbeitsphasen leichter wirken."
+            "body": "Für Menschen [im Homeoffice](/virtual-office) lässt die stille Gesellschaft einer anderen Person lange Arbeitsphasen leichter wirken."
           }
         ]
       },
@@ -2935,9 +3137,14 @@
               "Kostenlos und einfach; vereinbart eine Zeit und lasst die Kamera an oder aus"
             ],
             [
-              "Matching-Dienste",
+              "Matching-Dienste wie Focusmate",
               "Eine fremde Person, gebucht für eine feste Session",
               "Wenn niemand Zeit hat, den du kennst, und du feste Zeiten magst"
+            ],
+            [
+              "Gruppen-Sessions wie Flow Club",
+              "Ein Host und eine Gruppe zu festen Zeiten",
+              "Struktur und Gesellschaft mit Leuten, die zum Arbeiten da sind"
             ],
             [
               "„Study with me“-Videos",
@@ -3040,8 +3247,8 @@
       {
         "title": "Body Doubling mit deinem Team",
         "body": [
-          "Remote-Teams können ohne zusätzliche App Body Doubling nutzen: Das Team ist ja schon da. In einem gemeinsamen [virtuellen Coworking-Space](/virtual-coworking) sieht jeder, wer arbeitet, sitzt am eigenen Schreibtisch und stellt sich auf „beschäftigt“ – so fühlt sich selbst ein ruhiger Nachmittag gemeinsam an.",
-          "Für mehr Struktur kannst du ein Meeting namens „Fokus“ starten, alle einladen, die mitmachen wollen, und den obigen Ablaufplan nutzen. Wer lieber nicht sprechen möchte, kann einfach auf der Etage sein und in der Nähe der anderen arbeiten."
+          "Remote-Teams können ohne zusätzliche App Body Doubling nutzen: Das Team ist ja schon da. In einem gemeinsamen [virtuellen Coworking-Space](/virtual-coworking) [sieht jeder, wer arbeitet](/team-presence), sitzt am eigenen Schreibtisch und stellt sich auf „beschäftigt“ – so fühlt sich selbst ein ruhiger Nachmittag gemeinsam an.",
+          "Für mehr Struktur kannst du ein [Meeting](/virtual-meeting-room) namens „Fokus“ starten, alle einladen, die mitmachen wollen, und den obigen Ablaufplan nutzen. Wer lieber nicht sprechen möchte, kann einfach auf der Etage sein und in der Nähe der anderen arbeiten."
         ]
       }
     ],
@@ -3053,6 +3260,10 @@
       {
         "q": "Was ist Body Doubling?",
         "a": "Mit einer anderen Person in der Nähe zu arbeiten – persönlich oder online –, um leichter mit einer Aufgabe anzufangen und dranzubleiben. Die andere Person hilft nicht bei der Arbeit, sie ist einfach nur da."
+      },
+      {
+        "q": "Welche ist die beste Body-Doubling-App?",
+        "a": "Das hängt davon ab, wen du dabei haben möchtest. Focusmate bringt dich für eine feste Session mit einer fremden Person zusammen, Gruppen-Apps wie Flow Club bieten moderierte Sessions an und ein virtuelles Büro wie TinyFloor platziert dich den ganzen Tag neben Menschen, die du bereits kennst. Ein Video-Call mit einem Freund funktioniert auch und kostet nichts."
       },
       {
         "q": "Ist Body Doubling nur bei ADHS sinnvoll?",

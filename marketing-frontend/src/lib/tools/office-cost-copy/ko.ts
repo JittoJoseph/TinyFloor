@@ -2,15 +2,15 @@ import type { OfficeCostsContent } from "@/lib/tools/office-costs";
 
 const ko: OfficeCostsContent = {
   meta: {
-    title: "가상 오피스 비용 계산기: 9가지 도구가 우리 팀에 드는 비용",
+    title: "가상 오피스 비용 계산기: 10가지 도구가 우리 팀에 드는 비용",
     description:
-      "팀 인원을 입력하면 Gather, SoWork, Kumospace, WorkAdventure, SpatialChat, Roam, oVice, Sococo, TinyFloor의 월 비용을 연간 결제와 월간 결제로 보여 드려요. 가격은 각 제품의 요금 페이지 기준이에요.",
+      "팀 인원을 입력하면 Gather, SoWork, Spot, Kumospace, WorkAdventure, SpatialChat, Roam, oVice, Sococo, TinyFloor의 월 비용을 연간 결제와 월간 결제로 보여 드려요. 가격은 각 제품의 요금 페이지 기준이에요.",
   },
   eyebrow: "무료 도구",
   updated: "가격 확인일",
   title: "가상 오피스, <em>우리 팀에는 얼마일까.</em>",
   intro:
-    "가상 오피스는 대부분 1인당 요금을 받고, 일부는 공간이나 오피스 단위로 받으며, 무료 플랜이 끝나는 인원도 제각각이에요. 팀 인원을 입력하면 9가지 도구의 월 비용을 저렴한 순서대로 보여 드려요.",
+    "가상 오피스는 대부분 1인당 요금을 받고, 일부는 공간이나 오피스 단위로 받으며, 무료 플랜이 끝나는 인원도 제각각이에요. 팀 인원을 입력하면 10가지 도구의 월 비용을 저렴한 순서대로 보여 드려요.",
   calculator: {
     people: "팀 인원",
     count: "{count}명",
@@ -50,7 +50,7 @@ const ko: OfficeCostsContent = {
       items: [
         {
           title: "멤버당",
-          detail: "Gather, SoWork, Kumospace, WorkAdventure, SpatialChat",
+          detail: "Gather, SoWork, Spot, Kumospace, WorkAdventure, SpatialChat",
           body: "계정이 있는 모든 사람의 요금을 들어오든 안 들어오든 매달 내요. 채용할 때마다 청구액이 늘어서, 10명 팀은 5명 팀의 두 배를 내요.",
         },
         {
@@ -105,7 +105,7 @@ const ko: OfficeCostsContent = {
         { title: "세금", body: "여기 있는 가격은 모두 세금 별도예요. 지역에 따라 부가세나 판매세가 결제할 때 더해져요." },
         {
           title: "무료 체험",
-          body: "Gather는 30일, Roam과 oVice는 14일, SoWork는 7일 무료 체험이 있어요. 체험으로는 팀이 쓸지를, 가격으로는 계속 낼지를 알 수 있어요.",
+          body: "Gather와 Spot은 30일, Roam과 oVice는 14일, SoWork는 7일 무료 체험이 있어요. 체험으로는 팀이 쓸지를, 가격으로는 계속 낼지를 알 수 있어요.",
         },
       ],
     },
@@ -125,11 +125,11 @@ const ko: OfficeCostsContent = {
   faq: [
     {
       q: "가상 오피스는 한 달에 얼마인가요?",
-      a: "10명 팀이 유료 플랜을 쓰면 도구에 따라 월 $29~$195예요. TinyFloor는 오피스 전체 $29이고, 1인당 도구는 $54(SoWork Basic, 연간 결제)부터 $195(Roam)까지예요.",
+      a: "10명 팀이 유료 플랜을 쓰면 도구에 따라 월 $29~$195예요. TinyFloor는 오피스 전체 $29이고, 1인당 도구는 $48(Spot Basic, 연간 결제)부터 $195(Roam)까지예요.",
     },
     {
       q: "작은 팀에게 가장 저렴한 가상 오피스는 무엇인가요?",
-      a: "맞는 무료 플랜이에요. SoWork는 30분 회의로 10명, WorkAdventure는 동시 접속 10명, Kumospace는 5명, TinyFloor는 3명까지예요. 그 이상이면 팀 전체 월 $29인 TinyFloor가 6명부터 가장 저렴한 유료 가격이에요.",
+      a: "맞는 무료 플랜이에요. SoWork는 30분 회의로 10명, WorkAdventure는 동시 접속 10명, Kumospace는 5명, TinyFloor는 3명까지예요. 그 이상이면 팀 전체 월 $29인 TinyFloor가 7명부터 가장 저렴한 유료 가격이에요.",
     },
     {
       q: "Gather는 무료인가요?",

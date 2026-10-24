@@ -26,7 +26,7 @@ import zh from "@/lib/tools/office-cost-copy/zh";
  * copy around them is per language (lib/tools/office-cost-copy).
  */
 export const OFFICE_COSTS_PATH = "/tools/virtual-office-cost-calculator";
-export const OFFICE_COSTS_UPDATED = "2026-10-16";
+export const OFFICE_COSTS_UPDATED = "2026-10-24";
 export const OFFICE_COSTS_CHECKED = "2026-10";
 
 export type Billing = "yearly" | "monthly";
@@ -88,6 +88,14 @@ export const OFFICE_PRODUCTS: OfficeProduct[] = [
     basis: "member",
     free: { upTo: 10, limit: "thirtyMinutes" },
     cost: perPerson(5.4, 6),
+  },
+  {
+    key: "spot",
+    name: "Spot",
+    plan: "Basic",
+    pricing: "https://www.spotvirtual.com/pricing",
+    basis: "member",
+    cost: perPerson(4.8, 6),
   },
   {
     key: "kumospace",

@@ -368,6 +368,44 @@ solves, and the page that answers each:
   "gather town alternatives" (115 impressions). Its content matches; it
   lacks authority. Each product in it now links to its full comparison.
 
+## Keyword volumes from OpenSEO (24 October, night)
+
+OpenSEO (app.openseo.so, DataForSEO data) is connected as a Claude Code
+plugin; scoring a list of keywords costs about a credit per three. Monthly
+searches, keyword difficulty out of 100:
+
+| Market | Search | Volume | KD | Page |
+|---|---|---|---|---|
+| US | virtual workspace | 880 | 9 | Comparison guide (half the results are IT remote desktops) |
+| US | body doubling app | 880 | 11 | Body doubling guide, now naming the apps |
+| US | virtual office cost / pricing | 210 | 4 | Cost calculator, comparison guide |
+| US | gather alternative(s) | 170 | 0 | Gather alternatives |
+| US | virtual office software / platforms | 140 each | 11–21 | Comparison guide |
+| US | roam virtual office | 260 | 5 | Roam alternative |
+| US | virtual office for startups, virtual watercooler | 70 each | 4 | Their pages |
+| US | best virtual office software | 10 | 7 | The head term is "virtual office software", not "best" |
+| Brazil | trabalho híbrido | 4,400 | 0 | Hybrid teams page |
+| Brazil | body doubling | 2,400 | 16 | Body doubling guide |
+| Brazil | comunicação assíncrona | 720 | 0 | Async guide |
+| Brazil | escritório virtual | 4,400 | 4 | Mostly a business address |
+| Japan | ハイブリッドワーク | 880 | 0 | Hybrid teams page |
+| Japan | 非同期コミュニケーション | 480 | 0 | Async guide |
+| Japan | oViceとは / oVice 料金 | 390 / 110 | 0 | oVice alternative, retitled to answer both |
+| Japan | オンラインオフィス / 仮想オフィス | 320 / 210 | 0–24 | Virtual office page |
+| Japan | オンライン飲み会 ゲーム, 振り返り 手法 | 210 / 140 | 0 | Happy hour and retrospective guides |
+
+Internal links, 25 October: most product pages and half the guides had no
+links in their text, so their only links were the menus and the same first
+three pages of each group. Now every comparison page leads to its closest
+comparisons, every product page lists the guides that point to it, guides
+lead to related guides, and 85 links sit in the text of 24 pages and guides
+(three or four each, in all 18 languages). The comparison guide links to
+all 15 comparison pages.
+
+Brand searches dwarf the rest (Gather 22,200 in Brazil and 18,100 in Japan;
+ZEP 9,900 and oVice 6,600 in Japan), which is why the comparison pages
+matter more than any head term.
+
 ## Launch places (24 October)
 
 - **Hacker News:** TinyFloor has never been posted. Earlier "virtual office"

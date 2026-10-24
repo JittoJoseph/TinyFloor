@@ -2,15 +2,15 @@ import type { OfficeCostsContent } from "@/lib/tools/office-costs";
 
 const ja: OfficeCostsContent = {
   meta: {
-    title: "バーチャルオフィス料金計算：9つのツールがチームにいくらかかるか",
+    title: "バーチャルオフィス料金計算：10のツールがチームにいくらかかるか",
     description:
-      "チームの人数を入れると、Gather、SoWork、Kumospace、WorkAdventure、SpatialChat、Roam、oVice、Sococo、TinyFloor の月額が、年払いと月払いでわかります。料金は各社の料金ページから。",
+      "チームの人数を入れると、Gather、SoWork、Spot、Kumospace、WorkAdventure、SpatialChat、Roam、oVice、Sococo、TinyFloor の月額が、年払いと月払いでわかります。料金は各社の料金ページから。",
   },
   eyebrow: "無料ツール",
   updated: "料金の確認日",
   title: "バーチャルオフィスは<em>チームにいくらかかるか。</em>",
   intro:
-    "バーチャルオフィスの多くは1人あたりの料金で、スペース単位やオフィス単位のものもあり、無料プランの上限人数もまちまちです。チームの人数を入れると、9つのツールの月額が安い順に並びます。",
+    "バーチャルオフィスの多くは1人あたりの料金で、スペース単位やオフィス単位のものもあり、無料プランの上限人数もまちまちです。チームの人数を入れると、10のツールの月額が安い順に並びます。",
   calculator: {
     people: "チームの人数",
     count: "{count}人",
@@ -50,7 +50,7 @@ const ja: OfficeCostsContent = {
       items: [
         {
           title: "メンバーごと",
-          detail: "Gather、SoWork、Kumospace、WorkAdventure、SpatialChat",
+          detail: "Gather、SoWork、Spot、Kumospace、WorkAdventure、SpatialChat",
           body: "アカウントを持つ全員の分を、来ても来なくても毎月払います。採用のたびに請求が増え、10人のチームは5人のチームの2倍を払います。",
         },
         {
@@ -105,7 +105,7 @@ const ja: OfficeCostsContent = {
         { title: "税金", body: "ここの料金はすべて税抜きです。地域によって、消費税や売上税が支払い時に加わります。" },
         {
           title: "無料トライアル",
-          body: "Gather は30日、Roam と oVice は14日、SoWork は7日のトライアルがあります。トライアルでわかるのはチームが使うかどうか、料金でわかるのは払い続けるかどうかです。",
+          body: "Gather と Spot は30日、Roam と oVice は14日、SoWork は7日のトライアルがあります。トライアルでわかるのはチームが使うかどうか、料金でわかるのは払い続けるかどうかです。",
         },
       ],
     },
@@ -125,11 +125,11 @@ const ja: OfficeCostsContent = {
   faq: [
     {
       q: "バーチャルオフィスは月にいくらかかりますか？",
-      a: "10人のチームで有料プランなら、ツールによって月 $29〜$195 です。TinyFloor はオフィス全体で $29、1人あたりのツールは $54（SoWork Basic、年払い）から $195（Roam）まで。",
+      a: "10人のチームで有料プランなら、ツールによって月 $29〜$195 です。TinyFloor はオフィス全体で $29、1人あたりのツールは $48（Spot Basic、年払い）から $195（Roam）まで。",
     },
     {
       q: "小さなチームにいちばん安いバーチャルオフィスは？",
-      a: "使える無料プランです。SoWork は30分の会議で10人、WorkAdventure は同時接続10人、Kumospace は5人、TinyFloor は3人まで。それを超えると、チーム全体で月 $29 の TinyFloor が、6人以上で最も安い有料プランです。",
+      a: "使える無料プランです。SoWork は30分の会議で10人、WorkAdventure は同時接続10人、Kumospace は5人、TinyFloor は3人まで。それを超えると、チーム全体で月 $29 の TinyFloor が、7人以上で最も安い有料プランです。",
     },
     {
       q: "Gather は無料ですか？",

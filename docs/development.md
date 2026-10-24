@@ -37,12 +37,17 @@ When a page or guide is translated:
 - Search Console takes only a handful of manual indexing requests a day, on a
   rolling 24 hours rather than a reset at midnight; space them out. Pages
   beyond that wait for the sitemap.
-- **Still to request in Search Console**, most searched first: the remote work
-  tools guide (English, Japanese, German), then the happy hour, one-on-one,
-  retrospective, async and onboarding checklist guides in English, then the
-  same in the other languages. Earlier lists of untouched pages are covered by
-  the sitemap now; check Pages > Indexed before requesting old ones.
+- **Still to request in Search Console.** Requested on 24 October, before
+  the day's quota ran out: the remote work tools guide (English, Portuguese;
+  Japanese was already indexed), and the happy hour, one-on-one,
+  retrospective, async, onboarding checklist and remote team management
+  guides in English, plus the happy hour guide in Portuguese. Next, one or two
+  days' worth: the Portuguese one-on-one, retrospective, async, onboarding
+  and management guides, then the Japanese and Spanish ones. The sitemap was
+  resubmitted the same day, so the rest will be found without asking.
 - Deploys don't notify Bing and the other IndexNow engines: after a deploy
   that changes pages, run `pnpm run indexnow <path…>` (or `all`) from
-  `marketing-frontend`. Under Git Bash, set `MSYS_NO_PATHCONV=1`, or paths like
-  `/pt/pricing` turn into Windows paths and IndexNow refuses them all (422).
+  `marketing-frontend`. Under Git Bash, paths like `/pt/pricing` turn into
+  Windows paths and IndexNow refuses them all (422); `MSYS_NO_PATHCONV=1`
+  stops that but also breaks pnpm itself, so run
+  `MSYS_NO_PATHCONV=1 node scripts/indexnow.mjs <path…>` instead.

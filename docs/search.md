@@ -127,6 +127,11 @@ some still showing the old "$19/month for 10" repo description.
   study room pages now redirect to, team building guides in Danish, Swedish,
   Dutch and German, and the like). The Portuguese copy is Brazilian (você,
   equipe), which suits who is arriving.
+- On 24 October the seven newest guides went in, in English, Portuguese and
+  Japanese, with the Spanish remote work tools and happy hour guides and the
+  retitled Gather alternatives and virtual office pages: 25 URLs, each
+  accepted. The human check passes on its own but takes 10 to 15 seconds;
+  leaving the page sooner drops the submission.
 - So what grows Brave's index of us is the same as for everything else:
   visitors arriving from Google and Bing, and links from pages Brave already
   has (the GitHub repo links to the site).

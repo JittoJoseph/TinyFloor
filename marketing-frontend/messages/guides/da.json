@@ -2,7 +2,7 @@
   "teamBuilding": {
     "label": "Virtuelle teambuildingaktiviteter",
     "meta": {
-      "title": "20 virtuelle teambuildingaktiviteter, som fjernteams kan lide",
+      "title": "20 virtuelle teambuildingaktiviteter og spil til fjernarbejdende teams",
       "description": "20 virtuelle teambuildingaktiviteter sorteret efter tid: 5-minutters startere, 30-minutters spil, månedlige arrangementer og idéer helt uden møder."
     },
     "title": "Virtuelle teambuildingaktiviteter, <em>folk faktisk kan lide.</em>",
@@ -202,7 +202,7 @@
   "meetingGames": {
     "label": "Spil til online møder",
     "meta": {
-      "title": "15 hurtige spil til online møder (højst 5 minutter)",
+      "title": "15 hurtige icebreaker-spil til online møder (5 minutter eller mindre)",
       "description": "15 hurtige spil til online møder uden forberedelse: snakkespil, gættespil og tegnespil, der kan klares på fem minutter."
     },
     "title": "Hurtige spil til <em>online møder.</em>",
@@ -1281,11 +1281,12 @@
         ]
       },
       {
-        "title": "Hvad der ændrede sig i 2025",
+        "title": "Hvad ændrede sig i 2025 og 2026",
         "body": [
           "Indtil september 2025 kunne små teams bruge Gather gratis, og betalende teams betalte 7 $ pr. person om måneden, eller 5,95 $ ved årlig betaling, for antallet af personer online på samme tid.",
           "Den 15. september 2025 lancerede Gather Gather 2.0 og flyttede begge versioner til 15 $ pr. medlem om måneden, eller 12 $ ved årlig betaling. Gratisplanen stoppede: kontorer, der ikke havde opgraderet inden den dato, blev lukket.",
-          "De, der allerede betalte, fik tid til at omstille sig. Månedlige planer beholdt deres gamle pris til udgangen af 2025 og gik over til 15 $ ved første fornyelse efter 1. januar 2026. Teams, der låste en årlig plan før ændringen, beholdt 5,95 $ til september 2026, så mange af dem møder den nye pris ved årets fornyelse."
+          "De, der allerede betalte, fik tid til at omstille sig. Månedlige planer beholdt deres gamle pris til udgangen af 2025 og gik over til 15 $ ved første fornyelse efter 1. januar 2026. Teams, der låste en årlig plan før ændringen, beholdt 5,95 $ til september 2026, så mange af dem møder den nye pris ved årets fornyelse.",
+          "I februar 2026 blev Gather en selvstændig virksomhed, og teamet, der byggede dets AI-produkter, forlod dem for at slutte sig til Figma. Gather udtalte, at intet ændrede sig for kunderne, og priserne forblev som ovenfor."
         ]
       },
       {
@@ -1415,6 +1416,10 @@
       {
         "q": "Har Gather en gratisplan?",
         "a": "Nej. Gather stoppede gratisplanen den 15. september 2025. I stedet er der en gratis prøveperiode på 30 dage for op til 50 personer."
+      },
+      {
+        "q": "Lukker Gather?",
+        "a": "Nej. I februar 2026 blev Gather udskilt som en selvstændig virksomhed, som de beskriver som rentabel, mens AI-teamet sluttede sig til Figma. Gather udtalte, at intet ændrede sig for kunderne; planerne og priserne på denne side er aktuelle."
       },
       {
         "q": "Hvad koster Gather for 10 personer?",
@@ -2125,7 +2130,7 @@
   "oneOnOne": {
     "label": "Spørgsmål til én-til-én-samtaler",
     "meta": {
-      "title": "40 spørgsmål til én-til-én-samtaler (1:1) for ledere, og til din egen leder",
+      "title": "Skabelon til én-til-én-samtaler og 40 spørgsmål til ledere",
       "description": "40 spørgsmål til én-til-én-samtaler sorteret efter emne: trivsel, arbejdsbyrde, forhindringer, feedback, udvikling, teamet og fjernarbejde, plus spørgsmål til din egen leder og en enkel dagsorden."
     },
     "title": "Spørgsmål til én-til-én-samtaler, <em>der giver rigtige svar.</em>",
@@ -2157,7 +2162,7 @@
         ]
       },
       {
-        "title": "En enkel dagsorden",
+        "title": "En skabelon til én-til-én-samtaler",
         "table": {
           "head": [
             "Del",
@@ -2654,7 +2659,7 @@
   "retro": {
     "label": "Idéer til retrospektiver",
     "meta": {
-      "title": "15 idéer til retrospektiver i remote teams (formater og tips)",
+      "title": "15 idéer til retrospektiver og en skabelon til remote-team",
       "description": "15 idéer til retrospektiver i remote teams: hurtige, visuelle og dybere formater samt formater, der løfter stemningen, plus hvordan du styrer en retro online og får handlingerne gennemført."
     },
     "title": "Idéer til retrospektiver <em>til teams, der er trætte af de samme tre spørgsmål.</em>",
@@ -3280,6 +3285,1375 @@
       {
         "q": "Kan jeg lave body doubling gratis?",
         "a": "Ja. Et videoopkald med en ven koster ingenting, og TinyFloor er gratis for op til 3 personer, så en lille gruppe kan lave body doubling der hver dag."
+      }
+    ]
+  },
+  "teamMeetingAgenda": {
+    "label": "Dagsorden for teammødet",
+    "meta": {
+      "title": "Skabelon til teammødets dagsorden: Et ugentligt møde, der fungerer",
+      "description": "En skabelon til det ugentlige teammødes dagsorden, som du kan kopiere, hvad der hører til i den og hvad der ikke gør, idéer til at holde det friskt, og hvordan du afvikler det med et remote team på 30 minutter."
+    },
+    "title": "En dagsorden for teammødet, <em>der er den halve time værd.</em>",
+    "intro": "Det ugentlige teammøde er det eneste tidspunkt, hvor alle er i samme rum, så det bør gøre det, som skriftlige opdateringer ikke kan: træffe beslutninger, fjerne forhindringer og bevare følelsen af at være et team. Her er en 30-minutters dagsordenskabelon, du kan kopiere, hvad du skal tage med, hvad du skal udelade, og hvordan du afvikler det, når teamet arbejder remote.",
+    "sections": [
+      {
+        "title": "Hvad et teammøde er til for",
+        "body": [
+          "Statusopdateringer er det mest almindelige punkt på et teammødes dagsorden og det mindst nyttige. At alle læser op, hvad de har lavet, er langsomt, og det meste kunne have været en besked.",
+          "Brug mødet til det, der kræver, at folk er sammen: beslutninger, der påvirker flere personer, problemer, nogen sidder fast med, ugens prioriteter og et par minutter, der bare handler om teamet. Alt andet kan skrives ned før eller efter."
+        ]
+      },
+      {
+        "title": "En skabelon til det ugentlige teammødes dagsorden",
+        "body": [
+          "Kopier dette ind i din kalenderinvitation eller dit teams noter. Tiderne er for et team på 5 til 10 personer; et større team har brug for mere tid til beslutninger, ikke flere opdateringer."
+        ],
+        "table": {
+          "head": [
+            "Del",
+            "Tid",
+            "Hvad der sker"
+          ],
+          "rows": [
+            [
+              "Check-in",
+              "3 min",
+              "Ét spørgsmål, som alle svarer på med en enkelt sætning"
+            ],
+            [
+              "Succeser",
+              "3 min",
+              "Noget, der er lanceret, løst eller lært siden sidste uge"
+            ],
+            [
+              "Tal",
+              "4 min",
+              "De to eller tre tal, teamet holder øje med, og om de har rykket sig"
+            ],
+            [
+              "Prioriteter",
+              "6 min",
+              "Hvad der især er vigtigt i denne uge, og hvem der har ansvaret"
+            ],
+            [
+              "Forhindringer og beslutninger",
+              "10 min",
+              "Punkter, folk har tilføjet på forhånd, i rækkefølge"
+            ],
+            [
+              "Afrunding",
+              "4 min",
+              "Beslutninger, ansvarlige og deadlines, læst op"
+            ]
+          ],
+          "note": "Tredive minutter i alt. Hvis der ikke er noget under forhindringer og beslutninger, så slut tidligt."
+        }
+      },
+      {
+        "title": "Dagsordenspunkter, der er værd at have med",
+        "items": [
+          {
+            "title": "En fælles liste inden mødet",
+            "body": "Alle kan tilføje et punkt i løbet af ugen med deres navn og hvad de har brug for: en beslutning, et godt råd eller bare at dele noget. Mødet arbejder sig igennem listen i rækkefølge."
+          },
+          {
+            "title": "Beslutninger, skrevet som spørgsmål",
+            "body": "»Flytter vi lanceringen til torsdag?« bliver besluttet. »Lancering« bliver diskuteret i ti minutter og ender uden svar."
+          },
+          {
+            "title": "Ét tal pr. område",
+            "body": "Tilmeldinger, åbne fejl, timer til første svar: hvad end teamet rent faktisk styrer efter. Fortæl, om det har rykket sig; gem historien bagved til, når det er vigtigt."
+          },
+          {
+            "title": "Hvem der er væk",
+            "body": "Ferie, halve dage og kommende lanceringer, så ingen venter på en, der ikke er der."
+          },
+          {
+            "title": "Tak",
+            "body": "Et minut til at nævne, hvem der hjalp hvem. Det koster ingenting, og det er ofte den del, folk husker."
+          }
+        ]
+      },
+      {
+        "title": "Hvad du skal udelade",
+        "items": [
+          {
+            "title": "Opdateringer bordet rundt",
+            "body": "Bed om dem skriftligt dagen før. Mødet kan så bruge tiden på de to opdateringer, der gav anledning til spørgsmål."
+          },
+          {
+            "title": "Lange debatter",
+            "body": "Hvis et punkt tager mere end ti minutter, kræver det sit eget mindre møde med de personer, det berører."
+          },
+          {
+            "title": "Meddelelser",
+            "body": "Slå dem op i [teamchatten](/team-chat), hvor folk kan læse dem senere og reagere."
+          },
+          {
+            "title": "Ting, som kun to personer går op i",
+            "body": "Lad dem tale sammen efter mødet, eller med det samme, hvis de sidder i nærheden af hinanden."
+          }
+        ]
+      },
+      {
+        "title": "Idéer til at holde det friskt",
+        "items": [
+          {
+            "title": "Lad det gå på skift, hvem der leder det",
+            "body": "En ny person hver uge holder styr på tiden og listen. Det udbreder vanen med at holde et godt møde."
+          },
+          {
+            "title": "En fem minutters demo",
+            "body": "En gang om måneden viser en medarbejder, hvad de har bygget eller fundet, live og uden slides."
+          },
+          {
+            "title": "Et bedre check-in-spørgsmål",
+            "body": "»Hvordan var din weekend?« giver de samme svar hver uge. Brug et [spørgsmål, der fortæller teamet noget nyt](/guides/check-in-questions)."
+          },
+          {
+            "title": "Et spil i ny og næ",
+            "body": "Et fem minutters [spil](/guides/games-for-virtual-meetings) i starten, en gang om måneden, er nok til at ændre stemningen uden at overtage mødet."
+          },
+          {
+            "title": "Spring en uge over",
+            "body": "Ifg listen er tom, så aflys det. Ingen har noget imod at få en halv time foræret, og det næste møde får mere opmærksomhed."
+          }
+        ]
+      },
+      {
+        "title": "Afvikling med et remote team",
+        "body": [
+          "I et videoopkald starter mødet med et link, som nogen skal finde, og slutter med, at alle forsvinder. I et virtuelt kontor går teamet ind i det samme [mødelokale](/virtual-meeting-room) på samme tid, og de, der har brug for at tale videre bagefter, kan blive siddende ved deres skriveborde ved siden af hinanden.",
+          "Gør kameraer valgfrie, del dagsordenen på skærmen, så alle kigger på det samme punkt, og læg noterne i teamchatten, inden lokalet tømmes. Hvis teamet spænder over flere tidszoner, så lad mødetidspunktet gå på skift, så det ikke altid er de samme, der skal på om aftenen."
+        ]
+      },
+      {
+        "title": "Efter mødet",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Del noterne",
+            "body": "[Beslutninger, ansvarlige og deadlines](/guides/meeting-minutes-template), i teamchatten inden for en time."
+          },
+          {
+            "title": "Flyt de uafsluttede punkter",
+            "body": "Alt, hvad I ikke nåede, ryger øverst på næste uges liste eller over i sit eget møde."
+          },
+          {
+            "title": "Giv besked til dem, der ikke var der",
+            "body": "En enkelt linje til hver om, hvad der berører dem, så ingen hører om en beslutning ved et tilfælde."
+          },
+          {
+            "title": "Tjek tiden",
+            "body": "Hvis mødet trak ud to uger i træk, så skær et punkt ud af skabelonen i stedet for at lægge tid til."
+          }
+        ]
+      },
+      {
+        "title": "Dagsordener til andre teammøder",
+        "items": [
+          {
+            "title": "Kickoff-møde",
+            "body": "Hvorfor projektet eksisterer (5 minutter), hvordan et færdigt resultat ser ud (10), hvem der har ansvaret for hvad (10), de første milepæle og datoer (10), risici og åbne spørgsmål (10), og hvordan teamet vil holde kontakten (5). En time i alt, én gang per projekt."
+          },
+          {
+            "title": "All-hands-møde",
+            "body": "Succeser og tak (10 minutter), de tal, der betyder noget (10), hvad der har ændret sig og hvorfor (15), et team, der viser sit arbejde (10), og spørgsmål fra alle (15). En time, månedligt eller kvartalsvist, med spørgsmål indsamlet på forhånd, så de mere stille personer også kommer til orde."
+          },
+          {
+            "title": "Daglig standup",
+            "body": "Ti til femten minutter: hvad hver person arbejder på i dag, og om der er noget, der blokerer dem. Vores [skabelon til daglig standup](/tools/daily-standup-template) indeholder spørgsmålene og en skriftlig version til teams på tværs af tidszoner."
+          },
+          {
+            "title": "Retrospektivt møde",
+            "body": "Hvad der gik godt, hvad der ikke gjorde, og hvad der skal ændres, hver anden til fjerde uge. Se [ideer til retrospektive møder](/guides/retrospective-ideas) for formater, der holder det friskt."
+          },
+          {
+            "title": "En-til-en-møde",
+            "body": "Tredive minutter mellem en leder og en medarbejder, styret af medarbejderens liste frem for lederens. Brug vores [skabelon og spørgsmål til en-til-en-møder](/guides/one-on-one-meeting-questions)."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Hvor TinyFloor passer ind",
+      "body": "TinyFloor er et virtuelt kontor til små teams. Det ugentlige møde foregår i det mødelokale, alle går ind i, med video, skærmdeling og et whiteboard, og bagefter er folk tilbage ved deres skriveborde på samme etage, kun en kort gåtur væk, hvis noget kræver opfølgning. Det er gratis for op til 3 personer og koster $29 om måneden for hele teamet."
+    },
+    "faq": [
+      {
+        "q": "Hvad bør der være på et teammødes dagsorden?",
+        "a": "Et kort check-in, succeser, de få tal, teamet holder øje med, ugens prioriteter, forhindringer og beslutninger, som folk har tilføjet på forhånd, og en afrunding med ansvarlige og deadlines. Gem rutinemæssige statusopdateringer til skriftlig form."
+      },
+      {
+        "q": "Hvor langt bør et ugentligt teammøde være?",
+        "a": "Cirka 30 minutter for et team på 5 til 10 personer. Hvis det bliver ved med at trække ud, er problemet normalt for mange opdateringer eller en debat, der kræver sit eget møde."
+      },
+      {
+        "q": "Hvordan gør man teammøder mindre kedelige?",
+        "a": "Skær opdateringerne væk, lad mødelederen gå på skift, brug et check-in-spørgsmål, der fortæller teamet noget nyt, og vis rigtigt arbejde frem i ny og næ. Et møde, der slutter tidligt, når der ikke er noget at beslutte, bliver sjældent kaldt kedeligt."
+      },
+      {
+        "q": "Hvem skal lede teammødet?",
+        "a": "Ikke altid lederen. At lade det gå på skift holder folk engagerede og lærer alle at overholde tiden og styre en diskussion."
+      },
+      {
+        "q": "Bør dagsordenen deles inden mødet?",
+        "a": "Ja. En fælles liste, som alle kan tilføje til i løbet af ugen, betyder, at mødet starter med det, folk rent faktisk har brug for, i rækkefølge."
+      },
+      {
+        "q": "Hvad bør dagsordenen til et kickoff-møde indeholde?",
+        "a": "Hvorfor projektet eksisterer, hvordan et færdigt resultat ser ud, hvem der har ansvaret for hvad, de første milepæle, risici og åbne spørgsmål, og hvordan teamet vil holde kontakten. Cirka en time, én gang i starten."
+      }
+    ]
+  },
+  "checkInQuestions": {
+    "label": "Spørgsmål at starte med",
+    "meta": {
+      "title": "50 check-in-spørgsmål til møder: Hurtige, dybe og sjove",
+      "description": "50 check-in-spørgsmål til at åbne et teammøde, standup eller én-til-én-samtale: hurtige runder med ét ord, arbejds-check-ins, dybere spørgsmål, sjove spørgsmål og spørgsmål til remote teams."
+    },
+    "title": "Check-in-spørgsmål <em>til at åbne ethvert møde.</em>",
+    "intro": "Et check-in er ét spørgsmål, som alle svarer på i starten af et møde, med en enkelt sætning eller et enkelt ord. Det bringer alles stemmer i spil tidligt, fortæller dig, hvordan folk reelt har det, og tager to eller tre minutter. Her er 50 at vælge imellem, opdelt efter hvor meget tid du har, og hvad du gerne vil vide.",
+    "sections": [
+      {
+        "title": "Sådan holder du et check-in",
+        "items": [
+          {
+            "title": "Ét spørgsmål, alle svarer",
+            "body": "Gå runden rundt i en fast rækkefølge, eller lad den sidste person vælge den næste. Giv mulighed for at sige pas."
+          },
+          {
+            "title": "Hold svarene korte",
+            "body": "Et ord eller en sætning. Hvis noget kræver mere, så noter det, og vend tilbage til det efter mødet."
+          },
+          {
+            "title": "Tilpas spørgsmålet til mødet",
+            "body": "En hurtig runde før en [standup](/virtual-standup), et dybere spørgsmål før en [retro](/guides/retrospective-ideas) eller en [én-til-én-samtale](/guides/one-on-one-meeting-questions)."
+          },
+          {
+            "title": "Svar selv på det først",
+            "body": "Mødelederen lægger ud og angiver længden og tonen."
+          }
+        ]
+      },
+      {
+        "title": "Hurtige check-ins (ét ord eller et tal)",
+        "items": [
+          {
+            "title": "Ét ord for, hvordan du lander i dag?",
+            "detail": "Hurtig",
+            "body": "Enkelt og overraskende ærligt."
+          },
+          {
+            "title": "På een skala fra 1 til 10, hvordan er dit energiniveau?",
+            "detail": "Hurtig",
+            "body": "Nyttigt til at beslutte, hvor meget der skal på dagsordenen."
+          },
+          {
+            "title": "Hvordan er vejret i dit hoved lige nu?",
+            "detail": "Hurtig",
+            "body": "En blidere måde at spørge, hvordan en person har det."
+          },
+          {
+            "title": "Grøn, gul eller rød for denne uge?",
+            "detail": "Hurtig",
+            "body": "En hurtig temperaturmåling på arbejdsbyrden inden planlægning."
+          },
+          {
+            "title": "Hvad fylder i dine tanker lige nu, som ikke handler om dette møde?",
+            "detail": "Hurtig",
+            "body": "At sige det højt gør det ofte lettere at lægge til side."
+          },
+          {
+            "title": "Kaffe, te eller noget helt tredje i dag?",
+            "detail": "Hurtig",
+            "body": "Ufarligt, godt til et nyt team."
+          },
+          {
+            "title": "Hvilken emoji beskriver din uge indtil videre?",
+            "detail": "Hurtig",
+            "body": "Fungerer godt, hvis alle skriver i chatten samtidig."
+          },
+          {
+            "title": "Hvor mange timer har du sovet, sådan cirka?",
+            "detail": "Hurtig",
+            "body": "Kun til et team, der er trygge ved det."
+          },
+          {
+            "title": "Hvad ser du frem til i denne uge?",
+            "detail": "Hurtig",
+            "body": "Starter mødet med noget positivt."
+          },
+          {
+            "title": "Fokuseret, adspredt eller et sted midtimellem?",
+            "detail": "Hurtig",
+            "body": "Praktisk inden en arbejdssession."
+          }
+        ]
+      },
+      {
+        "title": "Arbejds-check-ins",
+        "items": [
+          {
+            "title": "Hvad er den ene ting, du mest har brug for at gøre færdig i denne uge?",
+            "detail": "Arbejde",
+            "body": "Bringer prioriteter frem uden en hel statusrunde."
+          },
+          {
+            "title": "Hvad bremser dig lige nu?",
+            "detail": "Arbejde",
+            "body": "Bringer problemer frem i lyset tidligt."
+          },
+          {
+            "title": "Hvad har du lært, siden vi mødtes sidst?",
+            "detail": "Arbejde",
+            "body": "Deler viden på tværs af teamet."
+          },
+          {
+            "title": "Hvad venter du på fra en af de andre her?",
+            "detail": "Arbejde",
+            "body": "Gør skjulte afhængigheder til en hurtig snak."
+          },
+          {
+            "title": "Hvad tog længere tid, end du havde forventet i sidste uge?",
+            "detail": "Arbejde",
+            "body": "Godt inden planlægning."
+          },
+          {
+            "title": "Hvad ville gøre i dag til en god dag?",
+            "detail": "Arbejde",
+            "body": "Giver alle et lille, opnåeligt mål."
+          },
+          {
+            "title": "Hvad er én ting, du ville droppe, hvis du kunne?",
+            "detail": "Arbejde",
+            "body": "Viser, hvor belastningen er for stor."
+          },
+          {
+            "title": "Hvem har hjulpet dig i denne uge?",
+            "detail": "Arbejde",
+            "body": "Opbygger en vane med at bemærke hinandens hjælp."
+          },
+          {
+            "title": "Hvad har du leveret, som du er stolt af?",
+            "detail": "Arbejde",
+            "body": "Succeser bliver nævnt, ikke bare afsluttet."
+          },
+          {
+            "title": "Hvilket spørgsmål vil du gerne have svar på i dette møde?",
+            "detail": "Arbejde",
+            "body": "Sikrer, at mødet dækker det, folk har brug for."
+          }
+        ]
+      },
+      {
+        "title": "Dybere check-ins",
+        "items": [
+          {
+            "title": "Hvad optager mest af din opmærksomhed uden for arbejdet?",
+            "detail": "Dybere",
+            "body": "Svares kun på i det omfang, man selv har lyst til."
+          },
+          {
+            "title": "Hvornår følte du dig sidst rigtig nyttig på arbejdet?",
+            "detail": "Dybere",
+            "body": "Godt i en én-til-én-samtale eller en retro."
+          },
+          {
+            "title": "Hvad synes du er svært lige nu?",
+            "detail": "Dybere",
+            "body": "Kræver tillid; svar selv på det først."
+          },
+          {
+            "title": "Hvad ville du ændre ved, hvordan vi arbejder sammen?",
+            "detail": "Dybere",
+            "body": "En god start på en retro."
+          },
+          {
+            "title": "Hvad har du brug for mere af fra dette team?",
+            "detail": "Dybere",
+            "body": "Gør følelser til noget, teamet kan handle på."
+          },
+          {
+            "title": "Hvilken beslutning er du stadig usikker på?",
+            "detail": "Dybere",
+            "body": "Inviterer til hjælp uden direkte at bede om det."
+          },
+          {
+            "title": "Hvad er du nysgerrig på for tiden?",
+            "detail": "Dybere",
+            "body": "Viser en side af folk, som arbejdet sjældent gør."
+          },
+          {
+            "title": "Hvad ville gøre næste måned bedre end denne?",
+            "detail": "Dybere",
+            "body": "Godt til et månedligt møde."
+          },
+          {
+            "title": "Hvad har du ændret mening om?",
+            "detail": "Dybere",
+            "body": "Viser et godt eksempel på at turde tage fejl."
+          },
+          {
+            "title": "Hvordan går det, helt ærligt?",
+            "detail": "Dybere",
+            "body": "Spørg langsomt, og vent på svaret."
+          }
+        ]
+      },
+      {
+        "title": "Sjove check-ins",
+        "items": [
+          {
+            "title": "Hvad er det bedste, du har spist i denne uge?",
+            "detail": "Sjov",
+            "body": "Alle har et svar."
+          },
+          {
+            "title": "Hvad står der på dit skrivebord, som vi ikke kan se?",
+            "detail": "Sjov",
+            "body": "Får folk til at se sig omkring og grine."
+          },
+          {
+            "title": "Hvis i dag var en filmgenre, hvilken ville det så være?",
+            "detail": "Sjov",
+            "body": "En hurtig, legende temperaturmåling på ugen."
+          },
+          {
+            "title": "Hvad er en lille ting, der har gjort dig glad for nylig?",
+            "detail": "Sjov",
+            "body": "Ender med at blive de hyggeligste par minutter af mødet."
+          },
+          {
+            "title": "Hvilken sang har du på hjernen?",
+            "detail": "Sjov",
+            "body": "Valgfrit: Spil ti sekunder af den."
+          },
+          {
+            "title": "Hvilken app kunne du ikke leve uden i denne uge?",
+            "detail": "Sjov",
+            "body": "Ender ofte med at blive til nyttige tips."
+          },
+          {
+            "title": "Hvilken færdighed ville du lære på et øjeblik, hvis du kunne?",
+            "detail": "Sjov",
+            "body": "Viser, hvad folk går op i."
+          },
+          {
+            "title": "Hvad er det bedste, du har set eller læst på det seneste?",
+            "detail": "Sjov",
+            "body": "Opbygger en liste med anbefalinger."
+          },
+          {
+            "title": "Hvad ville dit autosvar sige i dag?",
+            "detail": "Sjov",
+            "body": "Giver kreative svar."
+          },
+          {
+            "title": "Vinduesplads eller gangplads?",
+            "detail": "Sjov",
+            "body": "Afgør intet, og alle har en holdning."
+          }
+        ]
+      },
+      {
+        "title": "Check-ins til remote teams",
+        "items": [
+          {
+            "title": "Hvordan er udsigten derfra, hvor du arbejder i dag?",
+            "detail": "Remote",
+            "body": "Viser stederne bag videofelterne."
+          },
+          {
+            "title": "Hvad er klokken hos dig, og hvad skal du bagefter?",
+            "detail": "Remote",
+            "body": "Synliggør tidszoner."
+          },
+          {
+            "title": "Hvem har du talt med i dag, udover os?",
+            "detail": "Remote",
+            "body": "En omsorgsfuld måde at opdage, hvis nogen har været alene hele dagen."
+          },
+          {
+            "title": "Hvordan fungerer din arbejdsplads derhjemme?",
+            "detail": "Remote",
+            "body": "Bringer små problemer med stole, skærme eller internet frem."
+          },
+          {
+            "title": "Hvad er én ting, du savner ved at arbejde i samme rum?",
+            "detail": "Remote",
+            "body": "Godt til at beslutte, hvad teamet skal prøve af næste gang."
+          },
+          {
+            "title": "Hvad er én ting ved at arbejde remote, som du aldrig vil give afkald på?",
+            "detail": "Remote",
+            "body": "Slutter på en god måde."
+          },
+          {
+            "title": "Hvornår på dagen er du mest fokuseret?",
+            "detail": "Remote",
+            "body": "Hjælper teamet med at beskytte hinandens tid til fordybelse."
+          },
+          {
+            "title": "Hvad er din yndlingsmåde at holde pause på derhjemme?",
+            "detail": "Remote",
+            "body": "Udveksler idéer til rigtige pauser."
+          },
+          {
+            "title": "Var der noget, der fik dig til at grine i denne uge?",
+            "detail": "Remote",
+            "body": "Bringer nogle af kontorets små øjeblikke tilbage."
+          },
+          {
+            "title": "Hvad er én ting, teamet kunne gøre for at føle sig tættere på hinanden?",
+            "detail": "Remote",
+            "body": "Gør check-in-runden til en idé."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Hvor TinyFloor passer ind",
+      "body": "TinyFloor er et virtuelt kontor til små teams. Check-ins foregår i det mødelokale, som alle går ind i, med video, og resten af dagen sidder folk ved deres skriveborde på samme etage, hvor et hurtigt spørgsmål kun er en kort gåtur væk. Det er gratis for op til 3 personer og koster $29 om måneden for hele teamet."
+    },
+    "faq": [
+      {
+        "q": "Hvad er et check-in-spørgsmål?",
+        "a": "Ét spørgsmål, som alle svarer kort på i starten af et møde. Det får alle til at tale tidligt og viser, hvordan folk har det, inden arbejdet går i gang."
+      },
+      {
+        "q": "Hvad er et godt check-in-spørgsmål til et teammøde?",
+        "a": "»Hvad er den ene ting, du har mest brug for at få gjort færdig i denne uge?« til et arbejdsmøde, eller »Ét ord om, hvordan du lander i dag?« når tiden er knap."
+      },
+      {
+        "q": "Hvor lang tid bør et check-in tage?",
+        "a": "To eller tre minutter for et team på op til ti: et ord eller en sætning hver."
+      },
+      {
+        "q": "Er check-ins det samme som icebreakers?",
+        "a": "Tæt på. Icebreakers hjælper folk, der ikke kender hinanden, med at begynde at tale sammen; check-ins hjælper et team, der allerede arbejder sammen, med at dele, hvordan de har det, og hvad de har brug for."
+      }
+    ]
+  },
+  "discordVsSlack": {
+    "label": "Discord vs Slack",
+    "meta": {
+      "title": "Discord vs Slack til arbejde: Hvilket skal et lille team bruge?",
+      "description": "Discord vs Slack til et arbejdsteam: hvad de koster, tale og opkald, beskedhistorik, integrationer og privatliv, hvad der passer til et lille team, og en tredje mulighed bygget som et kontor."
+    },
+    "title": "Discord vs Slack <em>til et arbejdsteam.</em>",
+    "intro": "Masser af små teams klarer hverdagen i Discord: det er gratis, talekanaler føles som et fælles rum, og mange har det allerede åbent. Andre bruger Slack, fordi det er det, arbejdsværktøjer forbinder til. Her er, hvordan de klarer sig over for hinanden til et arbejdsteam, hvad de hver især gør bedst, og hvornår ingen af dem helt passer.",
+    "sections": [
+      {
+        "title": "Discord og Slack i korte træk",
+        "table": {
+          "head": [
+            "",
+            "Discord",
+            "Slack"
+          ],
+          "rows": [
+            [
+              "Bygget til",
+              "Fællesskaber og gaming",
+              "Arbejde"
+            ],
+            [
+              "Pris",
+              "Gratis; Nitro koster ekstra per person",
+              "Gratis abonnement; betalte abonnementer per bruger"
+            ],
+            [
+              "Beskedhistorik",
+              "Gemmes",
+              "90 dage på det gratis abonnement"
+            ],
+            [
+              "Tale",
+              "Talekanaler, du dumper ind i",
+              "Huddles: 2 personer på det gratis abonnement, op til 50 på betalte abonnementer"
+            ],
+            [
+              "Integrationer",
+              "Botter",
+              "Op til 10 apps gratis, mange flere på betalte abonnementer"
+            ],
+            [
+              "Konti",
+              "Personlige konti, delt med alt andet",
+              "Et arbejdsområde, din virksomhed ejer"
+            ]
+          ],
+          "note": "Fra Slacks prisside og hjælpecenter samt Discords egne sider, læst i oktober 2026."
+        }
+      },
+      {
+        "title": "Hvor Discord er bedre",
+        "items": [
+          {
+            "title": "Tale er standarden",
+            "body": "En talekanal er et rum, folk sidder i. Dump ind, spørg, gå igen: intet opkald, der skal startes, og ingen, der skal inviteres."
+          },
+          {
+            "title": "Gratis for hele teamet",
+            "body": "Tale, video, skærmdeling og fuld historik koster ingenting. Nitro giver ekstra fordele per person, men et team har ikke brug for det."
+          },
+          {
+            "title": "Kendt af mange",
+            "body": "Mange udviklere, designere og studerende bruger det allerede hver dag, så der er intet at installere eller lære."
+          }
+        ]
+      },
+      {
+        "title": "Hvor Slack is bedre",
+        "items": [
+          {
+            "title": "Skabt til arbejde",
+            "body": "Tråde, søgning, arbejdsgange og de integrationer, arbejdsværktøjer forventer, fra kalendere til opgavestyring."
+          },
+          {
+            "title": "Virksomheden ejer arbejdsområdet",
+            "body": "Konti, opbevaring og adgang administreres af virksomheden, og arbejde holdes adskilt fra folks personlige servere."
+          },
+          {
+            "title": "Nemmere for kunder og nyansatte",
+            "body": "Delte kanaler med andre virksomheder, gæstekonti og single sign-on på de større abonnementer."
+          }
+        ]
+      },
+      {
+        "title": "Hvad ingen af dem gør godt",
+        "body": [
+          "Discord viser, hvem der er i hvilken talekanal, men ikke hvem der sidder ved deres skrivebord og har tid et øjeblik. Slack viser en grøn prik, som fortæller, at nogen er online, men ikke om de kan tale. I begge betyder det at starte en samtale enten at ringe til nogen ud af det blå eller at skrive og vente.",
+          "Det tomrum er det, et [virtuelt kontor](/virtual-office) udfylder: alle har et skrivebord på samme etage, angiver en status og går hen for at tale, så et team med et enkelt blik kan se, hvem der er ledig, og gå ind i et rum sammen. Mange teams beholder Slack eller Discord til skrift og bruger et kontor til tale."
+        ]
+      },
+      {
+        "title": "Hvilket skal du vælge",
+        "items": [
+          {
+            "title": "Discord til et team, der mest taler",
+            "body": "Et lille team, der lever i talekanaler, har det fint med personlige konti og har brug for få integrationer."
+          },
+          {
+            "title": "Slack til et team, der mest skriver",
+            "body": "Et team, der har brug for søgning, integrationer, kundekanaler og virksomhedsejede konti, og som vil betale per person for gruppeopkald."
+          },
+          {
+            "title": "Et virtuelt kontor ved siden af",
+            "body": "Hvis problemet er at vide, hvem der er ledig, og at tale sammen uden at planlægge, kan I tilføje et kontor for dagen og beholde det chatværktøj, I har. Sammenlign [Discord til arbejde](/discord-for-work) og [Slack huddles](/slack-huddles-alternative) med TinyFloor."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Hvor TinyFloor passer ind",
+      "body": "TinyFloor er et privat virtuelt kontor til små teams: et skrivebord til hver person, statusser, walk-up-opkald, et mødelokale, teamchat og et whiteboard, direkte i browseren. Det er bygget til arbejde, i modsætning til Discord, og tale er standarden, i modsætning til Slack. Det er gratis for op til 3 personer og 29 $ om måneden for hele teamet, og det fungerer fint ved siden af det chatværktøj, I allerede bruger."
+    },
+    "faq": [
+      {
+        "q": "Er Discord godt til arbejde?",
+        "a": "Til et lille team, der mest taler, ja: talekanaler er gratis og hurtige. Det er svagere til søgning, integrationer og virksomhedsejede konti, og arbejde ligger lige ved siden af folks personlige servere."
+      },
+      {
+        "q": "Er Discord gratis for teams?",
+        "a": "Ja. Tale, video, skærmdeling og beskedhistorik er gratis. Nitro er et valgfrit betalt tillæg per person."
+      },
+      {
+        "q": "Hvor mange kan deltage i et Slack huddle?",
+        "a": "To på Slacks gratis abonnement. Betalte abonnementer tillader op til 50, med op til 25 på video."
+      },
+      {
+        "q": "Kan vi bruge Discord og Slack sammen?",
+        "a": "Nogle teams gør det, hvor de skriver i Slack og taler i Discord, men to værktøjer til ét team betyder normalt, at det ene bliver stille. Et virtuelt kontor ved siden af jeres chatværktøj dækker talen uden endnu en chat."
+      }
+    ]
+  },
+  "thisOrThat": {
+    "label": "Enten-eller-spørgsmål",
+    "meta": {
+      "title": "100 enten-eller-spørgsmål til arbejde, teams og icebreakers",
+      "description": "100 enten-eller-spørgsmål til arbejde og teammøder: lynhurtige, mad, rejser, hverdag, teknologi, remote arbejde og kontoret, med tips til at bruge dem som icebreaker."
+    },
+    "title": "Enten-eller-spørgsmål <em>til arbejde og teams.</em>",
+    "intro": "Et enten-eller-spørgsmål giver to valgmuligheder og beder dig vælge én. Det tager kun få sekunder at svare, der er intet forkert svar, og folks begrundelser er ofte det bedste af det hele. De er en nem icebreaker til et teammøde, en ny gruppe eller et stille videoopkald. Her er 100, opdelt efter emne, samt et par måder at bruge dem på.",
+    "sections": [
+      {
+        "title": "Sådan bruger du dem",
+        "items": [
+          {
+            "title": "Tag runden i teamet",
+            "body": "Stil ét spørgsmål, og lad alle svare på skift. To eller tre spørgsmål er nok til at åbne et møde."
+          },
+          {
+            "title": "Spørg hvorfor",
+            "body": "Selve valget tager et sekund; det er begrundelsen, der får folk til at tale sammen. Tillad ét opfølgende spørgsmål per person."
+          },
+          {
+            "title": "Stem i chatten",
+            "body": "Ved en større gruppe skriver alle deres svar på samme tid, hvorefter de to sider forklarer deres valg."
+          },
+          {
+            "title": "Lynhurtige",
+            "body": "Fem spørgsmål i træk, besvaret uden at tænke. Godt til at vække folk i starten af en lang session."
+          }
+        ]
+      },
+      {
+        "title": "Lynhurtige",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Kaffe eller te?",
+            "body": ""
+          },
+          {
+            "title": "Morgen eller aften?",
+            "body": ""
+          },
+          {
+            "title": "Katte eller hunde?",
+            "body": ""
+          },
+          {
+            "title": "Solopgang eller solnedgang?",
+            "body": ""
+          },
+          {
+            "title": "Sommer eller vinter?",
+            "body": ""
+          },
+          {
+            "title": "Strand eller bjerge?",
+            "body": ""
+          },
+          {
+            "title": "Ring eller sms?",
+            "body": ""
+          },
+          {
+            "title": "Bøger eller podcasts?",
+            "body": ""
+          },
+          {
+            "title": "Sødt eller salt?",
+            "body": ""
+          },
+          {
+            "title": "By eller land?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Arbejde",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Tidlig start eller sen fyraften?",
+            "body": ""
+          },
+          {
+            "title": "Stille fokus eller livlig summen?",
+            "body": ""
+          },
+          {
+            "title": "Store projekter eller hurtige sejre?",
+            "body": ""
+          },
+          {
+            "title": "Planlæg alt eller find ud af det hen ad vejen?",
+            "body": ""
+          },
+          {
+            "title": "Skriftlig opdatering eller et hurtigt opkald?",
+            "body": ""
+          },
+          {
+            "title": "Inbox zero eller inbox-kaos?",
+            "body": ""
+          },
+          {
+            "title": "Lister på papir eller i en app?",
+            "body": ""
+          },
+          {
+            "title": "Præsentere idéen eller bygge idéen?",
+            "body": ""
+          },
+          {
+            "title": "Et langt møde eller tre korte?",
+            "body": ""
+          },
+          {
+            "title": "Mandagsmotivation eller fredagsenergi?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Remote arbejde og kontoret",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Arbejde hjemmefra eller arbejde fra en café?",
+            "body": ""
+          },
+          {
+            "title": "Kamera tændt eller kamera slukket?",
+            "body": ""
+          },
+          {
+            "title": "Hæve-sænkebord eller behagelig stol?",
+            "body": ""
+          },
+          {
+            "title": "Hovedtelefoner eller højttalere?",
+            "body": ""
+          },
+          {
+            "title": "Skrivebord ved vinduet eller skrivebord ved døren?",
+            "body": ""
+          },
+          {
+            "title": "Kontorsnacks eller frokost derhjemme?",
+            "body": ""
+          },
+          {
+            "title": "Pendler-podcast eller pendler-playliste?",
+            "body": ""
+          },
+          {
+            "title": "Hybrid eller fuldt remote?",
+            "body": ""
+          },
+          {
+            "title": "Hjemmesko eller sko, når du arbejder hjemmefra?",
+            "body": ""
+          },
+          {
+            "title": "Kontorplanter eller kontorkæledyr?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Mad og drikke",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Pizza eller burgere?",
+            "body": ""
+          },
+          {
+            "title": "Morgenmad eller aftensmad?",
+            "body": ""
+          },
+          {
+            "title": "Lave mad derhjemme eller spise ude?",
+            "body": ""
+          },
+          {
+            "title": "Chokolade eller chips?",
+            "body": ""
+          },
+          {
+            "title": "Stærkt eller mildt?",
+            "body": ""
+          },
+          {
+            "title": "Pandekager eller vafler?",
+            "body": ""
+          },
+          {
+            "title": "Smoothie eller juice?",
+            "body": ""
+          },
+          {
+            "title": "Takeaway eller levering?",
+            "body": ""
+          },
+          {
+            "title": "Frugt eller dessert?",
+            "body": ""
+          },
+          {
+            "title": "Frokost ved skrivebordet eller frokost væk fra det?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Rejser",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Vinduesplads eller gangplads?",
+            "body": ""
+          },
+          {
+            "title": "Planlægge turen eller tage det, som det kommer?",
+            "body": ""
+          },
+          {
+            "title": "Roadtrip eller flyvetur?",
+            "body": ""
+          },
+          {
+            "title": "Hotel eller feriebolig?",
+            "body": ""
+          },
+          {
+            "title": "Museer eller markeder?",
+            "body": ""
+          },
+          {
+            "title": "Kun håndbagage eller tjekke en kuffert ind?",
+            "body": ""
+          },
+          {
+            "title": "Varm ferie eller kold ferie?",
+            "body": ""
+          },
+          {
+            "title": "Rejse alene eller med venner?",
+            "body": ""
+          },
+          {
+            "title": "Gammel bydel eller ny by?",
+            "body": ""
+          },
+          {
+            "title": "Souvenirs eller billeder?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Hverdag",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "A-menneske eller B-menneske?",
+            "body": ""
+          },
+          {
+            "title": "Bad om morgenen eller om aftenen?",
+            "body": ""
+          },
+          {
+            "title": "Telefonopkald eller talebesked?",
+            "body": ""
+          },
+          {
+            "title": "Fitnesscenter eller en gåtur udenfor?",
+            "body": ""
+          },
+          {
+            "title": "Ryddeligt skrivebord eller kreativt rod?",
+            "body": ""
+          },
+          {
+            "title": "Spare op eller bruge løs?",
+            "body": ""
+          },
+          {
+            "title": "Brætspil eller computerspil?",
+            "body": ""
+          },
+          {
+            "title": "Film derhjemme eller i biografen?",
+            "body": ""
+          },
+          {
+            "title": "Regn eller sne?",
+            "body": ""
+          },
+          {
+            "title": "Weekend derhjemme eller i byen?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Teknologi",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Mac eller Windows?",
+            "body": ""
+          },
+          {
+            "title": "Android eller iPhone?",
+            "body": ""
+          },
+          {
+            "title": "Dark mode eller light mode?",
+            "body": ""
+          },
+          {
+            "title": "Tastaturgenveje eller mus?",
+            "body": ""
+          },
+          {
+            "title": "Tabs eller spaces?",
+            "body": ""
+          },
+          {
+            "title": "Bærbar eller stationær?",
+            "body": ""
+          },
+          {
+            "title": "Notesbog i papir eller note-app?",
+            "body": ""
+          },
+          {
+            "title": "Hovedtelefoner med eller uden ledning?",
+            "body": ""
+          },
+          {
+            "title": "Emoji-reaktioner eller skriftlige svar?",
+            "body": ""
+          },
+          {
+            "title": "Opdater nu eller påmind mig senere?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Underholdning",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Film eller serier?",
+            "body": ""
+          },
+          {
+            "title": "Komedie eller thriller?",
+            "body": ""
+          },
+          {
+            "title": "Livekoncert eller festival?",
+            "body": ""
+          },
+          {
+            "title": "Læse bogen eller se filmen?",
+            "body": ""
+          },
+          {
+            "title": "Binge det hele eller ét afsnit om ugen?",
+            "body": ""
+          },
+          {
+            "title": "Podcast eller lydbog?",
+            "body": ""
+          },
+          {
+            "title": "Karaoke eller dans?",
+            "body": ""
+          },
+          {
+            "title": "Klassiker eller ny udgivelse?",
+            "body": ""
+          },
+          {
+            "title": "Spoilers eller ingen spoilers?",
+            "body": ""
+          },
+          {
+            "title": "Dyrke sport eller se sport?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Hypotetisk",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Kunne flyve eller være usynlig?",
+            "body": ""
+          },
+          {
+            "title": "Tidsrejse til fortiden eller fremtiden?",
+            "body": ""
+          },
+          {
+            "title": "Tale alle sprog eller spille alle instrumenter?",
+            "body": ""
+          },
+          {
+            "title": "Gratis kaffe resten af livet eller gratis frokost resten af livet?",
+            "body": ""
+          },
+          {
+            "title": "Fire dages arbejdsuge eller to ugers ekstra ferie?",
+            "body": ""
+          },
+          {
+            "title": "Aldrig besvare en e-mail igen eller aldrig deltage i et møde igen?",
+            "body": ""
+          },
+          {
+            "title": "Arbejde fra en strand eller fra en hytte i skoven?",
+            "body": ""
+          },
+          {
+            "title": "Læse tanker eller se fremtiden?",
+            "body": ""
+          },
+          {
+            "title": "Leve uden musik eller uden film?",
+            "body": ""
+          },
+          {
+            "title": "Være berømt eller være rig?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Team og møder",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Brainstorme højt eller tænke først og skrive ned?",
+            "body": ""
+          },
+          {
+            "title": "Lede mødet eller tage noter?",
+            "body": ""
+          },
+          {
+            "title": "Teamfrokost eller team-leg?",
+            "body": ""
+          },
+          {
+            "title": "Fejre succeser med manér eller i stilhed?",
+            "body": ""
+          },
+          {
+            "title": "Spørge om hjælp tidligt eller prøve selv først?",
+            "body": ""
+          },
+          {
+            "title": "Feedback ansigt til ansigt eller skriftligt?",
+            "body": ""
+          },
+          {
+            "title": "Retro med sticky notes eller en simpel liste?",
+            "body": ""
+          },
+          {
+            "title": "Planlægge kvartalet eller planlægge ugen?",
+            "body": ""
+          },
+          {
+            "title": "Faste mødetider eller fleksible mødetider?",
+            "body": ""
+          },
+          {
+            "title": "Vise demoen eller forklare idéen?",
+            "body": ""
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Hvor TinyFloor passer ind",
+      "body": "TinyFloor er et virtuelt kontor til små teams. Åbn mødet med et enten-eller-spørgsmål i mødelokalet, hvor alle er på video, og resten af dagen sidder folk ved deres skriveborde på samme etage, hvor en hurtig snak kun er en kort gåtur væk. Det er gratis for op til 3 personer og koster $29 om måneden for hele teamet."
+    },
+    "faq": [
+      {
+        "q": "Hvad er enten-eller-spørgsmål?",
+        "a": "Spørgsmål, der giver to valgmuligheder og beder dig vælge én, som f.eks. »Kaffe eller te?«. De er hurtige at svare på og fungerer godt som icebreakers."
+      },
+      {
+        "q": "Hvordan bruger man enten-eller-spørgsmål på arbejdet?",
+        "a": "Stil ét spørgsmål og gå runden rundt i teamet, eller lad alle stemme i chatten på samme tid. Spørg et par stykker om, hvorfor de valgte, som de gjorde – det er der, samtalen starter."
+      },
+      {
+        "q": "Er enten-eller-spørgsmål gode til virtuelle møder?",
+        "a": "Ja. De kræver ingen opsætning eller forberedelse, alle kan svare med et enkelt ord, og de fungerer lige så godt i chatten som sagt højt."
+      },
+      {
+        "q": "Hvor mange spørgsmål skal man stille?",
+        "a": "To eller tre til at åbne et møde, eller en lynhurtig runde med fem for at vække gruppen. Hold det til et par minutter."
+      }
+    ]
+  },
+  "meetingMinutes": {
+    "label": "Skabelon til mødereferat",
+    "meta": {
+      "title": "Skabelon til mødereferat: Sådan tager du noter, folk rent faktisk læser",
+      "description": "En skabelon til mødereferat, du kan kopiere, hvad du skal inkludere og udelade, et eksempel, samt hvordan du tager og deler referater i et remote møde."
+    },
+    "title": "En skabelon til mødereferat, <em>folk rent faktisk læser.</em>",
+    "intro": "Et mødereferat er en kort, skriftlig oversigt over, hvad der blev besluttet på et møde, og hvem der gør hvad bagefter. Et godt referat er læst på et minut og forhindrer, at det næste møde bliver en gentagelse af dette. Her er en skabelon, du kan kopiere, hvad der skal med i den, et eksempel, og hvordan du tager referat, når mødet er remote.",
+    "sections": [
+      {
+        "title": "Hvad referatet skal bruges til",
+        "body": [
+          "Et referat er ikke en ordret afskrift. Ingen læser et ord-for-ord-referat, og at skrive et sådant holder referenten ude af samtalen.",
+          "Skriv det ned, der betyder noget i næste uge: hvad der blev besluttet, hvad der forblev uafklaret, og hvem der aftalte at gøre hvad hvornår. Hvis nogen gik glip af mødet, bør referatet være nok til, at de kan handle på det."
+        ]
+      },
+      {
+        "title": "En skabelon til mødereferat",
+        "body": [
+          "Kopier dette ind i dine noter eller jeres teamchat i starten af mødet, og udfyld det undervejs."
+        ],
+        "table": {
+          "head": [
+            "Afsnit",
+            "Hvad du skal skrive"
+          ],
+          "rows": [
+            [
+              "Møde",
+              "Navn, dato og hvem der var med"
+            ],
+            [
+              "Formål",
+              "Én linje: Hvorfor mødet blev holdt"
+            ],
+            [
+              "Beslutninger",
+              "Hver beslutning i én sætning, som den blev aftalt"
+            ],
+            [
+              "Opgaver",
+              "Hvad, hvem og hvornår, én pr. linje"
+            ],
+            [
+              "Åbne spørgsmål",
+              "Hvad der ikke blev afgjort, og hvem der følger op"
+            ],
+            [
+              "Næste møde",
+              "Hvornår, og om der er noget, der skal forberedes"
+            ]
+          ],
+          "note": "Seks korte afsnit. Hvis et afsnit er tomt, så udelad det i stedet for at skrive »ingen«."
+        }
+      },
+      {
+        "title": "Hvad du skal tage med",
+        "items": [
+          {
+            "title": "Beslutninger, ord for ord",
+            "body": "Skriv beslutningen, som gruppen blev enig om den, så ingen husker en anden version senere."
+          },
+          {
+            "title": "Opgaver med navn og dato",
+            "body": "»Undersøg priser« bliver glemt. »Sam: tre prismuligheder senest fredag« bliver gjort."
+          },
+          {
+            "title": "Åbne spørgsmål",
+            "body": "Hvad der blev bragt op, men ikke afgjort, så det ikke forsvinder mellem møderne."
+          },
+          {
+            "title": "Hvem der var med",
+            "body": "Én linje. Den fortæller læserne, hvem de skal spørge om det, der blev sagt."
+          }
+        ]
+      },
+      {
+        "title": "Hvad du skal udelade",
+        "items": [
+          {
+            "title": "Hvem der sagde hvad",
+            "body": "Medmindre det er et formelt møde, der kræver det, gør det kun referatet langsommere at skrive og læse, hvis alle kommentarer skal tilskrives en bestemt person."
+          },
+          {
+            "title": "Hele diskussionen",
+            "body": "Én linje med kontekst til en beslutning er nok. Referatet er resultatet, ikke debatten."
+          },
+          {
+            "title": "Holdninger til mødet",
+            "body": "Hold referatet neutralt. Feedback på, hvordan mødet gik, hører til i en retro."
+          }
+        ]
+      },
+      {
+        "title": "Et eksempel",
+        "body": [
+          "Ugentligt produktmøde, 14. oktober. Ana, Sam, Priya, Tom. Formål: Beslutte lanceringsdato og prisside.",
+          "Beslutninger: Lanceringen flyttes til torsdag den 23. oktober. Prissiden viser kun månedlige priser. Opgaver: Sam, endelig tekst til prisside senest mandag. Priya, udkast til lancerings-e-mail senest tirsdag. Tom, tjek tilmeldingsflow på mobilen senest onsdag. Åbent spørgsmål: Om vi skal tilbyde en årsplan senere; Ana tager tal med i næste uge. Næste møde: 21. oktober."
+        ]
+      },
+      {
+        "title": "Sådan tager du referat på et remote møde",
+        "items": [
+          {
+            "title": "Del noterne på skærmen",
+            "body": "Når alle kan se referatet blive skrevet, bliver fejl rettet med det samme, og ingen diskuterer dem bagefter."
+          },
+          {
+            "title": "Læs opgaverne op til sidst",
+            "body": "Brug de sidste to minutter på at læse hver opgave, ansvarlig og dato op. Det er de mest nyttige to minutter på hele mødet."
+          },
+          {
+            "title": "Lad referentrollen gå på skift",
+            "body": "Den, der skriver, kan ikke lede diskussionen. Skiftes til det, og lad være med altid at spørge den nyeste eller mest stille person."
+          },
+          {
+            "title": "Del dem der, hvor teamet arbejder",
+            "body": "I teamchatten inden for en time, så de, der ikke var med, ser dem samme dag."
+          }
+        ]
+      },
+      {
+        "title": "Efter mødet",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Send referatet",
+            "body": "Samme dag, i teamchatten eller i kanalen for det pågældende projekt."
+          },
+          {
+            "title": "Tjek opgaverne",
+            "body": "Start næste møde med at gå igennem opgaverne fra sidst: udført, i gang eller gået i stå."
+          },
+          {
+            "title": "Gem dem ét sted",
+            "body": "Et enkelt dokument eller en enkelt kanal pr. møde, med det nyeste først, så beslutninger er nemme at finde senere."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Hvor TinyFloor passer ind",
+      "body": "TinyFloor er et virtuelt kontor til små teams. Møder foregår i det mødelokale, som alle går ind i, med skærmdeling til noterne, og teamchatten ligger lige ved siden af etagen, så man nemt kan dele referatet. Det tager ikke noter eller optager møder for dig. Det er gratis for op til 3 personer og koster $29 om måneden for hele teamet."
+    },
+    "faq": [
+      {
+        "q": "Hvad skal et mødereferat indeholde?",
+        "a": "Hvem der var med, formålet, beslutningerne, opgaverne med en ansvarlig og en dato, åbne spørgsmål, og hvornår næste møde holdes."
+      },
+      {
+        "q": "Hvordan skriver man et mødereferat hurtigt?",
+        "a": "Brug en skabelon, skriv beslutninger og opgaver i stedet for selve diskussionen, og læs opgaverne op til sidst, så referatet er færdigt, når mødet slutter."
+      },
+      {
+        "q": "Hvem skal tage referat?",
+        "a": "Lad det gå på skift. Den, der leder mødet, bør ikke også tage noter, og det bør ikke altid være den samme person, der gør det."
+      },
+      {
+        "q": "Hvad er forskellen på en dagsorden og et referat?",
+        "a": "Dagsordenen er planen for mødet, skrevet på forhånd. Referatet er dokumentationen for, hvad der blev besluttet, skrevet under og efter mødet."
       }
     ]
   }

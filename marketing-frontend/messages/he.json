@@ -490,7 +490,7 @@
       "slackHuddles": {
         "label": "חלופה ל-huddles של Slack",
         "meta": {
-          "title": "חלופה ל־Slack huddles: רואים מי פנוי, ואז ניגשים",
+          "title": "huddles של Slack: מגבלות, תמחור וחלופה שמראה מי פנוי",
           "description": "huddle ב־Slack הוא שיחה בלי לדעת מה מצבו של הצד השני, והתוכנית החינמית של Slack מגבילה אותו לשני אנשים. TinyFloor מראה קודם מי פנוי, ואז ניגשים. משרד וירטואלי לצד Slack, חינם עד 3, ‏$29 לחודש לכל הצוות."
         },
         "title": "<em>חלופה ל-huddles של Slack</em> שבה רואים קודם מי פנוי.",

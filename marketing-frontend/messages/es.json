@@ -1,6 +1,6 @@
 {
   "landing": {
-    "description": "Una oficina virtual para equipos remotos, en el navegador. Recorre una planta pixel art con tu equipo e inicia una videollamada con solo ponerte al lado de alguien.",
+    "description": "Oficina virtual para equipos remotos en el navegador. Recorre una planta pixel art con tu equipo y haz videollamadas con solo ponerte al lado de alguien.",
     "features": [
       "Llamadas de vídeo y voz por proximidad",
       "Compartir pantalla en llamadas y reuniones",
@@ -490,7 +490,7 @@
       "slackHuddles": {
         "label": "Alternativa a los huddles de Slack",
         "meta": {
-          "title": "Alternativa a los huddles de Slack: mira quién está libre y acércate",
+          "title": "Huddles de Slack: límites, precios y una alternativa que muestra quién está libre",
           "description": "Un huddle de Slack es una llamada a ciegas, y el plan gratis de Slack lo limita a dos personas. TinyFloor te muestra primero quién está libre y luego te acercas. Una oficina virtual junto a Slack, gratis para 3 y 29 $ al mes para todo el equipo."
         },
         "title": "Una <em>alternativa a los huddles de Slack</em> donde ves primero quién está libre.",
@@ -1281,7 +1281,7 @@
   "pricingPage": {
     "meta": {
       "title": "Precios: un solo precio para toda la oficina",
-      "description": "TinyFloor es gratis para hasta 3 personas. Pro cuesta $29 al mes para todo el equipo, con reuniones tan a menudo como necesitéis y ayuda prioritaria. Un precio por oficina, no por persona."
+      "description": "TinyFloor es gratis hasta 3 personas. Pro: $29/mes por equipo, reuniones cuando necesitéis y ayuda prioritaria. Precio por oficina, no por persona."
     },
     "title": "Un solo precio para toda la oficina.",
     "muted": "No uno por persona.",

@@ -219,7 +219,7 @@ function Points({ items }: { items: Array<{ icon: ReactNode; title: string; body
             <span className="flex size-11 items-center justify-center rounded-[14px] bg-background text-foreground shadow-[0_1px_2px_rgb(0_0_0/0.06)] [&_svg]:size-5">
               {one.icon}
             </span>
-            <h3 className="mt-5 text-[18px] font-semibold tracking-[-0.01em]">{one.title}</h3>
+            <h2 className="mt-5 text-[18px] font-semibold tracking-[-0.01em]">{one.title}</h2>
             <p className="mt-2 text-[15px] leading-[1.6] text-muted-foreground">{one.body}</p>
           </li>
         ))}

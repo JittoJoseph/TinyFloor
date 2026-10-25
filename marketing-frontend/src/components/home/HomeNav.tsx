@@ -1,14 +1,19 @@
 import type { ReactNode } from "react";
-import { useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import {
   ArrowRight,
+  BookOpen,
   Building2,
   ChevronDown,
   Coffee,
+  CreditCard,
   DoorOpen,
   Eye,
+  FileText,
   Footprints,
+  Globe,
   Hash,
+  MessagesSquare,
   MonitorUp,
   Palette,
   PenLine,
@@ -19,8 +24,15 @@ import {
   Zap,
 } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import { GUIDES_PATH } from "@/lib/guides";
-import { HUBS, LANDINGS, type Landing, type LandingKey } from "@/lib/landings";
+import { GUIDES_PATH, guidePath, guidesIn, type GuideKey } from "@/lib/guides";
+import { guideCopies } from "@/lib/guide-copy";
+import { HUBS, LANDINGS, landingByKey, type Landing, type LandingKey } from "@/lib/landings";
+import type { Locale } from "@/lib/i18n/routing";
+import { STANDUP_PATH, TOOLS_PATH } from "@/lib/tools/catalog";
+import { FEW_TOOL_NAMES } from "@/lib/tools/hub-copy";
+import { ICEBREAKERS_PATH } from "@/lib/tools/icebreakers";
+import { OFFICE_COSTS_PATH } from "@/lib/tools/office-costs";
+import { TIME_ZONES_PATH } from "@/lib/tools/time-zones";
 import { Logo } from "@/components/app/Logo";
 import { cn } from "@/lib/utils";
 import { HomeNavActions } from "./HomeNavActions";
@@ -54,18 +66,45 @@ const TEAMS = LANDINGS.filter((page) => page.group === "teams");
 const USE_CASES = LANDINGS.filter((page) => page.group === "useCases");
 const COMPARE = LANDINGS.filter((page) => page.group === "compare");
 
+/** The alternatives people search for most (docs/search.md); the rest are on the compare index. */
+export const TOP_ALTERNATIVES: LandingKey[] = ["gather", "kumospace", "sowork", "spot", "roam", "ovice", "zep", "workadventure"];
+const HEAD_TO_HEAD = COMPARE.filter((page) => page.versus);
+
+/** The guides a buyer or a team lead reads first, for the Resources menu and the footer. */
+export const TOP_GUIDES: GuideKey[] = ["bestVirtualOffice", "gatherPricing", "remoteTools", "manageRemote", "remoteCommunication"];
+
+/** The top guides written in this language, in TOP_GUIDES's order. */
+export const topGuidesIn = (locale: string) =>
+  TOP_GUIDES.map((key) => guidesIn(locale).find((guide) => guide.key === key)).filter((guide) => guide !== undefined);
+
+/** The free tools written in every language, with an icon each; the footer's own name for them where it has one. */
+export const TOP_TOOLS: Array<{ path: string; icon: ReactNode; name?: "officeCosts" | "timeZones" | "icebreakers" }> = [
+  { path: OFFICE_COSTS_PATH, icon: <CreditCard />, name: "officeCosts" },
+  { path: TIME_ZONES_PATH, icon: <Globe />, name: "timeZones" },
+  { path: ICEBREAKERS_PATH, icon: <MessagesSquare />, name: "icebreakers" },
+  { path: STANDUP_PATH, icon: <FileText /> },
+];
+
 /**
  * The site's nav. At the top of a page it lies flat; once the page moves it
- * floats (ScrollHeader). Wider screens get three menus that open on hover or
+ * floats (ScrollHeader). Wider screens get four menus that open on hover or
  * focus: the product (its features, and the demo office to try it), who it's
- * for (teams and use cases), and how it compares. A phone gets one
+ * for (teams and use cases), how it compares (the alternatives people search
+ * for, the head-to-heads, and the guide that compares them all), and
+ * resources (the guides and free tools read most). A phone gets one
  * full-screen menu with the same links in sections that fold, and the two
  * ways in at the bottom where a thumb is.
  */
-export function HomeNav({ fade = true }: { fade?: boolean }) {
-  const t = useTranslations("home");
-  const tl = useTranslations("landings");
-  const tg = useTranslations("guides");
+export async function HomeNav({ fade = true }: { fade?: boolean }) {
+  const t = await getTranslations("home");
+  const tl = await getTranslations("landings");
+  const tg = await getTranslations("guides");
+  const locale = await getLocale();
+  const guides = await guideCopies(locale);
+  const topGuides = topGuidesIn(locale);
+  const compareGuide = guidesIn(locale).find((guide) => guide.key === "bestVirtualOffice");
+  const toolName = (tool: (typeof TOP_TOOLS)[number]) => (tool.name ? t(`footer.${tool.name}`) : (FEW_TOOL_NAMES[locale as Locale]?.[tool.path] ?? ""));
+  const tools = TOP_TOOLS.filter((tool) => toolName(tool));
   const plain =
     "flex h-9 items-center rounded-full px-3.5 text-[14.5px] text-foreground/70 transition-colors hover:bg-foreground/[0.05] hover:text-foreground";
   const compareLabel = (page: Landing) => {
@@ -107,19 +146,7 @@ export function HomeNav({ fade = true }: { fade?: boolean }) {
                 </ul>
                 <MenuAll href={`/${HUBS.features}`} label={tl("all")} />
               </div>
-              <Link
-                href="/lobby"
-                className="group/demo flex flex-col justify-between rounded-[16px] bg-brand/[0.08] p-4 transition-colors hover:bg-brand/[0.12]"
-              >
-                <span className="flex size-9 items-center justify-center rounded-[11px] bg-brand/15 text-brand [&_svg]:size-[18px]">
-                  <DoorOpen className="rtl:-scale-x-100" />
-                </span>
-                <span>
-                  <span className="block text-[14px] font-semibold leading-tight">{t("nav.lobbyTitle")}</span>
-                  <span className="mt-1 block text-[12.5px] leading-snug text-muted-foreground">{t("nav.lobbyLine")}</span>
-                  <ArrowRight className="mt-3 size-4 text-brand transition-transform group-hover/demo:translate-x-0.5 rtl:rotate-180" />
-                </span>
-              </Link>
+              <FeatureCard href="/lobby" icon={<DoorOpen className="rtl:-scale-x-100" />} title={t("nav.lobbyTitle")} line={t("nav.lobbyLine")} />
             </div>
           </Menu>
 
@@ -139,28 +166,54 @@ export function HomeNav({ fade = true }: { fade?: boolean }) {
             </div>
           </Menu>
 
-          <Menu label={t("footer.compare")} width="w-[480px]">
-            <ul className="grid grid-cols-2 gap-0.5">
-              {COMPARE.map((page) => (
-                <li key={page.slug}>
-                  <Link
-                    href={`/${page.slug}`}
-                    className="group/item flex h-9 items-center justify-between gap-2 rounded-[11px] px-3 text-[13.5px] text-foreground/85 transition-colors hover:bg-foreground/[0.045] hover:text-foreground"
-                  >
-                    <span className="truncate">{compareLabel(page)}</span>
-                    <ArrowRight className="size-3 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover/item:opacity-100 rtl:rotate-180" />
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <MenuAll href={`/${HUBS.compare}`} label={tl("all")} />
+          <Menu label={t("footer.compare")} width="w-[640px]">
+            <div className="grid grid-cols-[minmax(0,1fr)_200px] gap-1.5">
+              <div className="min-w-0">
+                <MenuHeading>{t("nav.alternatives")}</MenuHeading>
+                <ul className="grid grid-cols-2 gap-0.5">
+                  {TOP_ALTERNATIVES.map(landingByKey).map((page) => (
+                    <MenuLink key={page.slug} href={`/${page.slug}`} label={compareLabel(page)} />
+                  ))}
+                </ul>
+                <MenuHeading>{t("nav.headToHead")}</MenuHeading>
+                <ul className="grid grid-cols-2 gap-0.5">
+                  {HEAD_TO_HEAD.map((page) => (
+                    <MenuLink key={page.slug} href={`/${page.slug}`} label={tl(`pages.${page.key}.label`)} />
+                  ))}
+                </ul>
+                <MenuAll href={`/${HUBS.compare}`} label={tl("all")} />
+              </div>
+              {compareGuide && (
+                <FeatureCard href={guidePath(compareGuide)} icon={<BookOpen />} title={guides.bestVirtualOffice.label} line={t("nav.compareGuide")} />
+              )}
+            </div>
+          </Menu>
+
+          <Menu label={t("footer.resources")} width="w-[600px]">
+            <div className="grid grid-cols-2 gap-1.5">
+              <div className="min-w-0">
+                <MenuHeading>{tg("label")}</MenuHeading>
+                <ul className="grid gap-0.5">
+                  {topGuides.map((guide) => (
+                    <MenuLink key={guide.slug} href={guidePath(guide)} label={guides[guide.key].label} />
+                  ))}
+                </ul>
+                <MenuAll href={GUIDES_PATH} label={tg("all")} />
+              </div>
+              <div className="min-w-0">
+                <MenuHeading>{t("footer.tools")}</MenuHeading>
+                <ul className="grid gap-0.5">
+                  {tools.map((tool) => (
+                    <MenuLink key={tool.path} href={tool.path} label={toolName(tool)} />
+                  ))}
+                </ul>
+                <MenuAll href={TOOLS_PATH} label={tl("all")} />
+              </div>
+            </div>
           </Menu>
 
           <Link href="/pricing" className={plain}>
             {t("nav.pricing")}
-          </Link>
-          <Link href={GUIDES_PATH} className={plain}>
-            {tg("label")}
           </Link>
         </div>
 
@@ -202,14 +255,23 @@ export function HomeNav({ fade = true }: { fade?: boolean }) {
               ))}
             </MobileSection>
             <MobileSection title={t("footer.compare")}>
-              {COMPARE.map((page) => (
-                <MobileItem key={page.slug} href={`/${page.slug}`} title={compareLabel(page)} />
+              {[...TOP_ALTERNATIVES.map(landingByKey), ...HEAD_TO_HEAD].map((page) => (
+                <MobileItem key={page.slug} href={`/${page.slug}`} title={page.versus ? tl(`pages.${page.key}.label`) : compareLabel(page)} />
               ))}
               <MobileItem href={`/${HUBS.compare}`} title={tl("all")} />
             </MobileSection>
+            <MobileSection title={t("footer.resources")}>
+              {topGuides.map((guide) => (
+                <MobileItem key={guide.slug} href={guidePath(guide)} icon={<BookOpen />} title={guides[guide.key].label} />
+              ))}
+              {tools.map((tool) => (
+                <MobileItem key={tool.path} href={tool.path} icon={tool.icon} title={toolName(tool)} />
+              ))}
+              <MobileItem href={GUIDES_PATH} title={tg("all")} />
+              <MobileItem href={TOOLS_PATH} title={t("footer.tools")} />
+            </MobileSection>
             <div className="divide-y divide-border border-b border-border">
               <MobileLink href="/pricing">{t("nav.pricing")}</MobileLink>
-              <MobileLink href={GUIDES_PATH}>{tg("label")}</MobileLink>
               <MobileLink href="/#faq">{t("nav.faq")}</MobileLink>
             </div>
           </MobileMenu>
@@ -222,6 +284,35 @@ export function HomeNav({ fade = true }: { fade?: boolean }) {
 /** A small heading over a column of a menu. */
 function MenuHeading({ children }: { children: ReactNode }) {
   return <p className="px-2.5 pb-1 pt-2 text-[11.5px] font-medium uppercase tracking-[0.14em] text-faint">{children}</p>;
+}
+
+/** A plain row in a menu: the name, and an arrow on hover. For lists of names, like comparisons and guides. */
+function MenuLink({ href, label }: { href: string; label: string }) {
+  return (
+    <li>
+      <Link
+        href={href}
+        className="group/item flex h-9 items-center justify-between gap-2 rounded-[11px] px-2.5 text-[13.5px] text-foreground/85 transition-colors hover:bg-foreground/[0.045] hover:text-foreground"
+      >
+        <span className="truncate">{label}</span>
+        <ArrowRight className="size-3 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover/item:opacity-100 rtl:rotate-180" />
+      </Link>
+    </li>
+  );
+}
+
+/** The tinted card at the side of a menu: the one place to go first (the demo office, the comparison guide). */
+function FeatureCard({ href, icon, title, line }: { href: string; icon: ReactNode; title: string; line: string }) {
+  return (
+    <Link href={href} className="group/demo flex flex-col justify-between gap-6 rounded-[16px] bg-brand/[0.08] p-4 transition-colors hover:bg-brand/[0.12]">
+      <span className="flex size-9 items-center justify-center rounded-[11px] bg-brand/15 text-brand [&_svg]:size-[18px]">{icon}</span>
+      <span>
+        <span className="block text-[14px] font-semibold leading-tight">{title}</span>
+        <span className="mt-1 block text-[12.5px] leading-snug text-muted-foreground">{line}</span>
+        <ArrowRight className="mt-3 size-4 text-brand transition-transform group-hover/demo:translate-x-0.5 rtl:rotate-180" />
+      </span>
+    </Link>
+  );
 }
 
 /** The last line of a menu column: everything else of its kind, on its index page. */

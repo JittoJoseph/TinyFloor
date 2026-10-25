@@ -110,7 +110,10 @@
       "menu": "Valikko",
       "teams": "Tiimeille",
       "getStarted": "Aloita",
-      "lobbyLine": "Katso, miten toimisto toimii. Tiliä ei tarvita."
+      "lobbyLine": "Katso, miten toimisto toimii. Tiliä ei tarvita.",
+      "alternatives": "Vaihtoehdot",
+      "headToHead": "Vastakkain",
+      "compareGuide": "Kymmenen virtuaalitoimistoa rinnakkain, hintoineen tiimillesi."
     },
     "hero": {
       "title": "Virtuaalitoimisto, jossa tiimisi voi kävellä.",

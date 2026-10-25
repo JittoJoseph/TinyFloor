@@ -490,7 +490,7 @@
       "slackHuddles": {
         "label": "Slack 허들 대안",
         "meta": {
-          "title": "Slack 허들 대안: 누가 한가한지 보고 다가가기",
+          "title": "Slack 허들: 제한, 요금, 그리고 누가 한가한지 보여주는 대안",
           "description": "Slack 허들은 상대 상황을 모르는 채 거는 통화이고, Slack 무료 요금제에서는 2명까지예요. TinyFloor는 먼저 누가 한가한지 보여 주고, 그다음에 다가가서 말을 걸어요. Slack 옆에 두는 가상 오피스로, 3명까지 무료, 팀 전체 월 $29예요."
         },
         "title": "누가 한가한지 먼저 보이는 <em>Slack 허들 대안.</em>",

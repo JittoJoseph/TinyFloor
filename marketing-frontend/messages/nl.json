@@ -1,6 +1,6 @@
 {
   "landing": {
-    "description": "Een virtueel kantoor voor remote teams, in de browser. Loop met je team over een pixelart-verdieping en start een videogesprek door gewoon naast iemand te gaan staan.",
+    "description": "Een virtueel kantoor voor remote teams, in de browser. Loop met je team over een pixelart-verdieping en start een videogesprek door naast iemand te staan.",
     "features": [
       "Video- en spraakgesprekken op nabijheid",
       "Scherm delen in gesprekken en vergaderingen",
@@ -490,7 +490,7 @@
       "slackHuddles": {
         "label": "Alternatief voor Slack huddles",
         "meta": {
-          "title": "Alternatief voor Slack-huddles: zie wie vrij is en loop erheen",
+          "title": "Slack huddles: limieten, prijzen en een alternatief dat laat zien wie vrij is",
           "description": "Een Slack-huddle is een gesprek in het wilde weg, en het gratis abonnement van Slack beperkt het tot twee mensen. TinyFloor laat eerst zien wie vrij is, daarna loop je erheen. Een virtueel kantoor naast Slack, gratis voor 3, $ 29 per maand voor het hele team."
         },
         "title": "Een <em>alternatief voor Slack huddles</em> waarbij je eerst ziet wie vrij is.",
@@ -1281,7 +1281,7 @@
   "pricingPage": {
     "meta": {
       "title": "Prijzen: één prijs voor het hele kantoor",
-      "description": "TinyFloor is gratis voor maximaal 3 mensen. Pro kost $29 per maand voor het hele team, met meetings zo vaak als nodig en voorrang bij hulp. Een prijs per kantoor, niet per persoon."
+      "description": "TinyFloor is gratis tot 3 personen. Pro kost $29/maand voor het hele team, met meetings zo vaak als nodig. Prijs per kantoor, niet per persoon."
     },
     "title": "Eén prijs voor het hele kantoor.",
     "muted": "Niet één per persoon.",

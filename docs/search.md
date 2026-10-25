@@ -406,6 +406,81 @@ Brand searches dwarf the rest (Gather 22,200 in Brazil and 18,100 in Japan;
 ZEP 9,900 and oVice 6,600 in Japan), which is why the comparison pages
 matter more than any head term.
 
+## Links in, and a crawl of every page (25 October)
+
+- **We have almost no real backlinks.** DataForSEO counts about 2,400
+  referring domains, but nearly all appeared on 23 and 24 October: one
+  "professional SEO links" directory page cloned across throwaway domains,
+  anchored "Build Powerful SEO Authority with Premium Backlinks
+  tinyfloor.com", plus link shorteners. Leave them: Google ignores this kind
+  of spam, and a disavow file is only for links we bought or a manual
+  action. Without them, the real links are AlternativeTo (nofollow) and a
+  handful of others. That, not the copy, is why the comparison pages sit at
+  30 to 40 for terms with almost no difficulty.
+- **Where links would come from:** the pages that rank for our searches
+  are listings and roundups that take submissions or suggestions: Product
+  Hunt's alternatives and virtual office category, G2's virtual workspaces
+  category, AlternativeTo, tool directories, roundup posts ("Gather.town
+  alternatives", "best virtual office software"), and Reddit threads
+  (r/gathertown, r/remotework), which also feed assistants' answers.
+- **A crawl of all 1,155 sitemap pages** found every page answering 200
+  with one H1 and the right canonical. Pricing and the Wonder page skipped
+  from H1 to H3 (fixed). Home and pricing descriptions were cut off in most
+  languages and are now under 155 characters. Danish, Norwegian and Swedish
+  share some titles, which is fine across languages. OpenSEO's own audit
+  stops at 50 pages on this plan, and counts Japanese and Chinese words by
+  spaces, so it calls those pages thin.
+- **Gather became an independent company in February 2026** (its AI team
+  joined Figma; nothing changed for customers or prices, per Gather's blog).
+  The pricing guide says so, for people asking whether Gather is ending.
+
+## Meeting searches, and the menus (25 October)
+
+Team-lead searches near what the product does, with almost no difficulty
+(OpenSEO, US unless marked):
+
+| Search | Volume | KD | Page |
+|---|---|---|---|
+| 1 on 1 meeting template / one on one meeting agenda | 1,300 / 590 | 0–1 | One-on-one guide, retitled around its template |
+| team meeting agenda (template, weekly) | 720 / 590 / 110 | 2–7 | Team meeting agenda guide |
+| pauta de reunião / modelo de pauta de reunião (Brazil) | 1,900 / 880 | 0 | The same guide in Portuguese |
+| discord vs slack / teams vs slack | 590 each | 0–1 | Discord vs Slack guide (small teams run their day in Discord) |
+| check in questions for meetings / team check in questions | 480 / 210 | 2–13 | Check-in questions guide |
+| slack huddles | 1,600 | 14 | The Slack huddles page leads with huddle limits |
+| virtual team building games | 2,900 | 19 | Team building guide's title says games |
+| perguntas quebra gelo (Brazil), アイスブレイク 質問 (Japan) | 480 / 210 | 0 | Icebreaker tool titles use these words |
+
+Skipped: pomodoro, deep work and "study with me" (students and solo
+workers), "remote first company" (lists of companies).
+
+Then two more guides, for the biggest searches near meetings:
+
+| Search | Volume | KD | Page |
+|---|---|---|---|
+| this or that questions (US) | 33,100 | 0 | This or that questions guide |
+| entweder oder fragen / this or that fragen (Germany) | 5,400 / 590 | 0 | The same guide in German |
+| meeting minutes template (US) | 18,100 | 19 | Meeting minutes guide |
+| ata de reunião / modelo de ata (Brazil) | 8,100 / 5,400 | 0 | The same guide in Portuguese |
+| protokoll vorlage / besprechungsprotokoll vorlage (Germany) | 3,600 / 480 | 0 | The same guide in German |
+| icebreaker games (US) | 14,800 | 2 | Games guide's title |
+| check in fragen, icebreaker fragen, agenda vorlage, retrospektive methoden (Germany) | 1,000 / 590 / 320 / 260 | 0 | German titles of those pages |
+| kickoff / all hands meeting agenda (US) | 260 / 140 | 0 | A section of the agenda guide |
+
+Germany is the second country by impressions (321 in 28 days, after the US
+at 579; then the UK, Denmark, Brazil and Japan). Germans search
+"gather town alternative" in English and get the English page at 40, while
+the German page ranks 9 for "gather alternative"; its title now leads with
+"Gather Town Alternativen". "Gather town alternative" was also split between
+the alternatives page and Gather vs Kumospace; the latter now sends readers
+to the former.
+
+The nav now has four menus: Product, For teams, Compare (the eight most
+searched alternatives, the head-to-heads, and the comparison guide as the
+featured card) and Resources (the five guides buyers and team leads read
+first, and the four free tools in every language). The footer has the same
+six groups as columns, with company and legal links in one row at the
+bottom.
+
 ## Launch places (24 October)
 
 - **Hacker News:** TinyFloor has never been posted. Earlier "virtual office"

@@ -1,6 +1,6 @@
 {
   "landing": {
-    "description": "Un bureau virtuel pour les équipes à distance, dans le navigateur. Promenez-vous avec votre équipe sur un étage en pixel art et lancez un appel vidéo simplement en vous plaçant à côté de quelqu'un.",
+    "description": "Bureau virtuel sur navigateur pour équipes à distance. Promenez-vous sur un étage en pixel art et lancez un appel vidéo en vous tenant à côté de quelqu'un.",
     "features": [
       "Appels vidéo et audio de proximité",
       "Partage d’écran dans les appels et les réunions",
@@ -490,7 +490,7 @@
       "slackHuddles": {
         "label": "Alternative aux huddles Slack",
         "meta": {
-          "title": "Alternative aux huddles Slack : voir qui est libre, puis aller le voir",
+          "title": "Huddles Slack : limites, tarifs et alternative qui montre qui est libre",
           "description": "Un huddle Slack est un appel à l'aveugle, et l'offre gratuite de Slack le limite à deux personnes. TinyFloor montre d'abord qui est libre, puis vous allez le voir. Un bureau virtuel à côté de Slack, gratuit pour 3, 29 $ par mois pour toute l'équipe."
         },
         "title": "Une <em>alternative aux huddles Slack</em> où vous voyez d'abord qui est libre.",
@@ -1281,7 +1281,7 @@
   "pricingPage": {
     "meta": {
       "title": "Tarifs : un seul prix pour tout le bureau",
-      "description": "TinyFloor est gratuit jusqu'à 3 personnes. Pro coûte 29 $ par mois pour toute l'équipe, avec des réunions aussi souvent que nécessaire et une aide prioritaire. Un prix par bureau, pas par personne."
+      "description": "TinyFloor est gratuit jusqu'à 3 personnes. Pro : 29 $ par mois pour toute l'équipe, avec des réunions à volonté. Prix par bureau, pas par personne."
     },
     "title": "Un seul prix pour tout le bureau.",
     "muted": "Pas un par personne.",

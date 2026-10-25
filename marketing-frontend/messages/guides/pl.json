@@ -2,7 +2,7 @@
   "teamBuilding": {
     "label": "Wirtualne zabawy integracyjne",
     "meta": {
-      "title": "20 wirtualnych zabaw integracyjnych, które lubią zespoły zdalne",
+      "title": "20 wirtualnych zabaw integracyjnych i gier dla zespołów zdalnych",
       "description": "20 wirtualnych zabaw integracyjnych według czasu: 5-minutowe rozgrzewki, 30-minutowe gry, comiesięczne wydarzenia i pomysły bez spotkań."
     },
     "title": "Wirtualne zabawy integracyjne, <em>które naprawdę się podobają.</em>",
@@ -202,7 +202,7 @@
   "meetingGames": {
     "label": "Gry na spotkania online",
     "meta": {
-      "title": "15 szybkich gier na spotkania online (do 5 minut)",
+      "title": "15 szybkich gier na przełamanie lodów na spotkania online (5 minut lub mniej)",
       "description": "15 szybkich gier na spotkania online bez przygotowań: gry słowne, zgadywanki i gry rysunkowe, które mieszczą się w pięciu minutach."
     },
     "title": "Szybkie gry na <em>spotkania online.</em>",
@@ -1281,11 +1281,12 @@
         ]
       },
       {
-        "title": "Co zmieniło się w 2025 roku",
+        "title": "Co się zmieniło w latach 2025 i 2026",
         "body": [
           "Do września 2025 małe zespoły mogły korzystać z Gather za darmo, a zespoły płacące płaciły 7 $ za osobę miesięcznie albo 5,95 $ przy płatności rocznej, za liczbę osób obecnych online jednocześnie.",
           "15 września 2025 Gather uruchomił Gather 2.0 i przeniósł obie wersje na 15 $ za członka miesięcznie albo 12 $ przy płatności rocznej. Darmowy plan się skończył: biura, które do tego dnia nie przeszły na płatny plan, zostały zamknięte.",
-          "Zespoły, które już płaciły, dostały czas na dostosowanie się. Plany miesięczne zachowały starą cenę do końca 2025 roku i przeszły na 15 $ przy pierwszym odnowieniu po 1 stycznia 2026. Zespoły, które przed zmianą zablokowały plan roczny, zachowały 5,95 $ do września 2026, więc wiele z nich trafia na nową cenę przy tegorocznym odnowieniu."
+          "Zespoły, które już płaciły, dostały czas na dostosowanie się. Plany miesięczne zachowały starą cenę do końca 2025 roku i przeszły na 15 $ przy pierwszym odnowieniu po 1 stycznia 2026. Zespoły, które przed zmianą zablokowały plan roczny, zachowały 5,95 $ do września 2026, więc wiele z nich trafia na nową cenę przy tegorocznym odnowieniu.",
+          "W lutym 2026 Gather stał się niezależną firmą, a zespół tworzący jego produkty AI przeszedł do Figma. Gather poinformował, że dla klientów nic się nie zmieniło, a ceny pozostały takie jak wyżej."
         ]
       },
       {
@@ -1415,6 +1416,10 @@
       {
         "q": "Czy Gather ma darmowy plan?",
         "a": "Nie. Gather zakończył darmowy plan 15 września 2025. Zamiast tego oferuje 30-dniowy darmowy okres próbny dla maksymalnie 50 osób."
+      },
+      {
+        "q": "Czy Gather się zamyka?",
+        "a": "Nie. W lutym 2026 Gather wydzielił się jako niezależna firma, którą określa jako rentowną, podczas gdy jego zespół AI przeszedł do Figma. Gather poinformował, że dla klientów nic się nie zmieniło; plany i ceny na tej stronie są aktualne."
       },
       {
         "q": "Ile kosztuje Gather dla 10 osób?",
@@ -2125,7 +2130,7 @@
   "oneOnOne": {
     "label": "Pytania na spotkanie one-on-one",
     "meta": {
-      "title": "40 pytań na spotkanie one-on-one (dla menedżerów i do zadania szefowi)",
+      "title": "Szablon spotkania one-on-one i 40 pytań dla menedżerów",
       "description": "40 pytań na spotkania one-on-one według tematów: samopoczucie, obciążenie, przeszkody, feedback, rozwój, zespół i praca zdalna, plus pytania do własnego przełożonego i prosta agenda."
     },
     "title": "Pytania na spotkanie one-on-one, <em>które dają prawdziwe odpowiedzi.</em>",
@@ -2157,7 +2162,7 @@
         ]
       },
       {
-        "title": "Prosta agenda",
+        "title": "Szablon spotkania one-on-one",
         "table": {
           "head": [
             "Część",
@@ -2654,7 +2659,7 @@
   "retro": {
     "label": "Pomysły na retrospektywę",
     "meta": {
-      "title": "15 pomysłów na retrospektywę w zespole zdalnym (formaty i wskazówki)",
+      "title": "15 pomysłów na retrospektywę i szablon dla zespołów zdalnych",
       "description": "15 pomysłów na retrospektywę w zespole zdalnym: szybkie, wizualne i głębsze formaty oraz takie, które poprawiają nastrój, plus jak prowadzić retro online i dopilnować działań."
     },
     "title": "Pomysły na retrospektywę <em>dla zespołów zmęczonych tymi samymi trzema pytaniami.</em>",
@@ -3280,6 +3285,1375 @@
       {
         "q": "Czy mogę stosować body doubling za darmo?",
         "a": "Tak. Rozmowa wideo ze znajomym nic nie kosztuje, a TinyFloor jest bezpłatny dla maksymalnie 3 osób, więc mała grupa może tam stosować body doubling każdego dnia."
+      }
+    ]
+  },
+  "teamMeetingAgenda": {
+    "label": "Agenda spotkania zespołu",
+    "meta": {
+      "title": "Szablon agendy spotkania zespołu: cotygodniowe spotkanie, które działa",
+      "description": "Szablon agendy cotygodniowego spotkania zespołu, który możesz skopiować, co powinno się w nim znaleźć, a co nie, pomysły na odświeżenie formuły i jak przeprowadzić je z zespołem zdalnym w 30 minut."
+    },
+    "title": "Agenda spotkania zespołu, <em>która jest warta tych trzydziestu minut.</em>",
+    "intro": "Cotygodniowe spotkanie zespołu to jedyny moment, kiedy wszyscy są w jednym pokoju, powinno więc służyć temu, czego nie zastąpią pisemne aktualizacje: podejmowaniu decyzji, odblokowywaniu ludzi i dbaniu o to, by zespół czuł się zespołem. Oto szablon 30-minutowej agendy, który możesz skopiować, wskazówki, co do niej dodać, co z niej usunąć i jak prowadzić takie spotkanie w zespole zdalnym.",
+    "sections": [
+      {
+        "title": "Po co jest spotkanie zespołu",
+        "body": [
+          "Raporty ze statusu to najczęstszy punkt agendy spotkań zespołu i zarazem najmniej przydatny. Odczytywanie przez każdego, co zrobił, ciągnie się powoli, a większość z tego mogłaby być po prostu wiadomością.",
+          "Zostaw spotkanie na to, co wymaga obecności ludzi: decyzje wpływające na kilka osób, problemy, na których ktoś utknął, priorytety na ten tydzień i kilka minut tylko dla zespołu. Całą resztę można spisać przed spotkaniem lub po nim."
+        ]
+      },
+      {
+        "title": "Szablon agendy cotygodniowego spotkania zespołu",
+        "body": [
+          "Skopiuj to do zaproszenia w kalendarzu lub notatek zespołu. Podany czas jest przewidziany dla zespołu liczącego od 5 do 10 osób; większy zespół potrzebuje więcej czasu na decyzje, a nie na więcej raportów."
+        ],
+        "table": {
+          "head": [
+            "Część",
+            "Czas",
+            "Co się dzieje"
+          ],
+          "rows": [
+            [
+              "Check-in",
+              "3 min",
+              "Jedno pytanie, na które każdy odpowiada jednym zdaniem"
+            ],
+            [
+              "Sukcesy",
+              "3 min",
+              "Coś wdrożonego, rozwiązanego lub czego się nauczyliśmy od zeszłego tygodnia"
+            ],
+            [
+              "Liczby",
+              "4 min",
+              "Dwie lub trzy liczby, które śledzi zespół, i informacja, czy się zmieniły"
+            ],
+            [
+              "Priorytety",
+              "6 min",
+              "Co jest najważniejsze w tym tygodniu i kto za to odpowiada"
+            ],
+            [
+              "Przeszkody i decyzje",
+              "10 min",
+              "Punkty dodane wcześniej przez zespół, po kolei"
+            ],
+            [
+              "Podsumowanie",
+              "4 min",
+              "Odczytanie podjętych decyzji, osób odpowiedzialnych i terminów"
+            ]
+          ],
+          "note": "W sumie trzydzieści minut. Jeśli w przeszkodach i decyzjach nic nie ma, skończcie wcześniej."
+        }
+      },
+      {
+        "title": "Punkty agendy, które warto mieć",
+        "items": [
+          {
+            "title": "Wspólna lista przed spotkaniem",
+            "body": "Każdy może dodać punkt w ciągu tygodnia, wpisując swoje imię i to, czego potrzebuje: decyzji, rady czy po prostu podzielenia się informacją. Na spotkaniu przechodzi się przez tę listę po kolei."
+          },
+          {
+            "title": "Decyzje zapisane jako pytania",
+            "body": "Pytanie „Czy przesuwamy wdrożenie na czwartek?” kończy się decyzją. Punkt „Wdrożenie” jest dyskutowany przez dziesięć minut i kończy się brakiem odpowiedzi."
+          },
+          {
+            "title": "Jedna liczba na obszar",
+            "body": "Rejestracje, otwarte błędy, czas do pierwszej odpowiedzi: cokolwiek, czym zespół rzeczywiście się kieruje. Powiedzcie, czy liczba się zmieniła; historię, która za tym stoi, zostawcie na moment, kiedy będzie to ważne."
+          },
+          {
+            "title": "Kto jest nieobecny",
+            "body": "Nadchodzące urlopy, wyjścia i wdrożenia, żeby nikt nie czekał na kogoś, kogo nie ma."
+          },
+          {
+            "title": "Podziękowania",
+            "body": "Minuta na wymienienie, kto komu pomógł. Nic nie kosztuje, a często to właśnie ten moment zapada ludziom w pamięć."
+          }
+        ]
+      },
+      {
+        "title": "Co usunąć",
+        "items": [
+          {
+            "title": "Rundka przy stole",
+            "body": "Poproś o nie na piśmie dzień wcześniej. Dzięki temu na spotkaniu możecie poświęcić czas na te dwa statusy, które wywołały pytania."
+          },
+          {
+            "title": "Długie debaty",
+            "body": "Jeśli jakiś punkt zajmuje więcej niż dziesięć minut, wymaga osobnego, mniejszego spotkania z osobami, których dotyczy."
+          },
+          {
+            "title": "Ogłoszenia",
+            "body": "Wrzuć je na [czat zespołu](/team-chat), gdzie każdy będzie mógł je przeczytać później i zareagować."
+          },
+          {
+            "title": "Sprawy, które obchodzą tylko dwie osoby",
+            "body": "Niech porozmawiają po spotkaniu albo od razu, jeśli siedzą blisko siebie."
+          }
+        ]
+      },
+      {
+        "title": "Pomysły na odświeżenie formuły",
+        "items": [
+          {
+            "title": "Zmieniajcie osobę prowadzącą",
+            "body": "Co tydzień inna osoba pilnuje czasu i listy. To upowszechnia nawyk prowadzenia dobrych spotkań."
+          },
+          {
+            "title": "Pięciominutowe demo",
+            "body": "Raz w miesiącu ktoś pokazuje na żywo, bez slajdów, co zbudował lub odkrył."
+          },
+          {
+            "title": "Lepsze pytanie na początek",
+            "body": "Pytanie „Jak minął weekend?” co tydzień przynosi te same odpowiedzi. Użyj [pytania, które powie zespołowi coś nowego](/guides/check-in-questions)."
+          },
+          {
+            "title": "Gra od czasu do czasu",
+            "body": "Pięciominutowa [gra](/guides/games-for-virtual-meetings) na początku, raz w miesiącu, wystarczy, by zmienić atmosferę, nie dominując całego spotkania."
+          },
+          {
+            "title": "Opuśćcie tydzień",
+            "body": "Jeśli lista jest pusta, odwołaj spotkanie. Nikt nie pogniewa się za odzyskanie pół godziny, a kolejne spotkanie zyska więcej uwagi."
+          }
+        ]
+      },
+      {
+        "title": "Prowadzenie spotkania w zespole zdalnym",
+        "body": [
+          "Podczas zwykłego połączenia spotkanie zaczyna się od linku, który ktoś musi znaleźć, a kończy tym, że wszyscy nagle znikają. W wirtualnym biurze zespół wchodzi do tej samej [sali spotkań](/virtual-meeting-room) w tym samym czasie, a osoby, które po wszystkim muszą jeszcze porozmawiać, mogą zostać przy swoich biurkach obok siebie.",
+          "Kamery zostaw jako opcjonalne, udostępnij agendę na ekranie, aby wszyscy patrzyli na ten sam punkt, i wrzuć notatki na czat zespołu, zanim sala opustoszeje. Jeśli zespół działa w różnych strefach czasowych, zmieniajcie godziny spotkań, żeby te same osoby nie musiały stale łączyć się w nocy."
+        ]
+      },
+      {
+        "title": "Po spotkaniu",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Wrzuć notatki",
+            "body": "[Decyzje, osoby odpowiedzialne i terminy](/guides/meeting-minutes-template) na czacie zespołu, w ciągu godziny."
+          },
+          {
+            "title": "Przenieś otwarte punkty",
+            "body": "Wszystko, do czego nie doszliście, trafia na górę listy w przyszłym tygodniu lub na osobne spotkanie."
+          },
+          {
+            "title": "Poinformuj nieobecnych",
+            "body": "Po jednym zdaniu o tym, co ich dotyczy, żeby nikt nie dowiedział się o decyzji przez przypadek."
+          },
+          {
+            "title": "Kontroluj czas",
+            "body": "Jeśli spotkanie przedłużyło się dwa razy z rzędu, usuń jakiś punkt z szablonu, zamiast dodawać czas."
+          }
+        ]
+      },
+      {
+        "title": "Agendy innych spotkań zespołu",
+        "items": [
+          {
+            "title": "Spotkanie startowe",
+            "body": "Dlaczego projekt powstaje (5 minut), jak wygląda gotowy projekt (10), kto za co odpowiada (10), pierwsze kamienie milowe i terminy (10), ryzyka i otwarte pytania (10) oraz jak zespół będzie utrzymywać kontakt (5). W sumie godzina, raz na projekt."
+          },
+          {
+            "title": "Spotkanie all-hands",
+            "body": "Sukcesy i podziękowania (10 minut), kluczowe liczby (10), co się zmieniło i dlaczego (15), prezentacja pracy jednego z zespołów (10) oraz pytania od każdego (15). Godzina, raz w miesiącu lub raz na kwartał, z pytaniami zbieranymi wcześniej, aby bardziej skryte osoby również mogły je zadać."
+          },
+          {
+            "title": "Codzienny standup",
+            "body": "Od dziesięciu do piętnastu minut: nad czym dzisiaj pracuje każda osoba i czy ma jakieś przeszkody. Nasz [szablon codziennego standupu](/tools/daily-standup-template) zawiera pytania oraz wersję pisemną dla zespołów pracujących w różnych strefach czasowych."
+          },
+          {
+            "title": "Retrospektywa",
+            "body": "Co poszło dobrze, co nie i co należy zmienić – co dwa do czterech tygodni. Zobacz [pomysły na retrospektywę](/guides/retrospective-ideas), aby poznać formaty, które pozwolą uniknąć rutyny."
+          },
+          {
+            "title": "Spotkanie jeden na jeden",
+            "body": "Trzydzieści minut między menedżerem a jedną osobą, prowadzone na podstawie listy tematów tej osoby, a nie menedżera. Skorzystaj z naszego [szablonu i pytań do spotkań jeden na jeden](/guides/one-on-one-meeting-questions)."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Gdzie pasuje TinyFloor",
+      "body": "TinyFloor to wirtualne biuro dla małych zespołów. Cotygodniowe spotkanie odbywa się w sali spotkań, do której każdy wchodzi, z wideo, udostępnianiem ekranu i tablicą. Po wszystkim ludzie wracają do swoich biurek na tym samym piętrze, zaledwie kilka kroków dalej, jeśli coś wymaga dopytania. Jest darmowe dla maksymalnie 3 osób i kosztuje 29 USD miesięcznie dla całego zespołu."
+    },
+    "faq": [
+      {
+        "q": "Co powinno znaleźć się w agendzie spotkania zespołu?",
+        "a": "Krótki check-in, sukcesy, kilka liczb, które śledzi zespół, priorytety na ten tydzień, przeszkody i decyzje dodane wcześniej przez zespół oraz podsumowanie z osobami odpowiedzialnymi i terminami. Rutynowe raporty ze statusu zostawcie na piśmie."
+      },
+      {
+        "q": "Jak długo powinno trwać cotygodniowe spotkanie zespołu?",
+        "a": "Około 30 minut dla zespołu liczącego od 5 do 10 osób. Jeśli stale się przedłuża, problemem jest zazwyczaj zbyt wiele raportów ze statusu lub debata, która wymaga osobnego spotkania."
+      },
+      {
+        "q": "Jak sprawić, by spotkania zespołu były mniej nudne?",
+        "a": "Zrezygnujcie z raportów ze statusu, zmieniajcie osobę prowadzącą, używajcie pytań na początek, które mówią zespołowi coś nowego, i od czasu do czasu pokazujcie efekty pracy na żywo. Spotkanie, które kończy się wcześniej, gdy nie ma nic do decydowania, rzadko bywa nudne."
+      },
+      {
+        "q": "Kto powinien prowadzić spotkanie zespołu?",
+        "a": "Nie zawsze menedżer. Zmiana prowadzącego angażuje ludzi i uczy każdego pilnowania czasu oraz kierowania dyskusją."
+      },
+      {
+        "q": "Czy agenda powinna być udostępniona przed spotkaniem?",
+        "a": "Tak. Wspólna lista, do której każdy może dopisywać punkty w ciągu tygodnia, sprawia, że spotkanie zaczyna się od tego, czego ludzie naprawdę potrzebują, po kolei."
+      },
+      {
+        "q": "Co powinno znaleźć się w agendzie spotkania startowego?",
+        "a": "Cel istnienia projektu, jak wygląda gotowy projekt, kto za co odpowiada, pierwsze kamienie milowe, ryzyka i otwarte pytania oraz jak zespół będzie utrzymywać kontakt. Około godziny, raz na początku."
+      }
+    ]
+  },
+  "checkInQuestions": {
+    "label": "Pytania na początek",
+    "meta": {
+      "title": "50 pytań na check-in przed spotkaniem: szybkie, głębokie i zabawne",
+      "description": "50 pytań na check-in, które rozpoczną spotkanie zespołu, standup lub one-on-one: szybkie rundy jednosłowne, pytania o pracę, głębsze, zabawne oraz dla zespołów zdalnych."
+    },
+    "title": "Pytania na check-in, <em>które rozpoczną każde spotkanie.</em>",
+    "intro": "Check-in to jedno pytanie, na które każdy odpowiada na początku spotkania jednym zdaniem lub słowem. Pozwala od razu usłyszeć każdego w pokoju, pokazuje, jak ludzie naprawdę się mają, i zajmuje dwie lub trzy minuty. Oto 50 pytań do wyboru, podzielonych według czasu i tego, czego chcesz się dowiedzieć.",
+    "sections": [
+      {
+        "title": "Jak prowadzić check-in",
+        "items": [
+          {
+            "title": "Jedno pytanie, każdy odpowiada",
+            "body": "Idźcie w ustalonej kolejności lub niech ostatnia osoba wybiera kolejną. Pozwól na pominięcie."
+          },
+          {
+            "title": "Krótkie odpowiedzi",
+            "body": "Słowo lub zdanie. Jeśli jakiś temat wymaga dłuższego omówienia, zanotuj go i wróć do niego po spotkaniu."
+          },
+          {
+            "title": "Dopasuj pytanie do spotkania",
+            "body": "Szybka runda przed [standupem](/virtual-standup), głębsze pytanie przed [retro](/guides/retrospective-ideas) lub na [one-on-one](/guides/one-on-one-meeting-questions)."
+          },
+          {
+            "title": "Odpowiedz jako pierwszy",
+            "body": "Osoba prowadząca spotkanie zaczyna i nadaje ton oraz określa długość wypowiedzi."
+          }
+        ]
+      },
+      {
+        "title": "Szybkie check-iny (jedno słowo lub liczba)",
+        "items": [
+          {
+            "title": "Jedno słowo na to, z czym dzisiaj przychodzisz?",
+            "detail": "Szybkie",
+            "body": "Proste i zaskakująco szczere."
+          },
+          {
+            "title": "W skali od 1 do 10, jak z twoją energią?",
+            "detail": "Szybkie",
+            "body": "Przydatne do oceny, ile uda się zmieścić na spotkaniu."
+          },
+          {
+            "title": "Jaka pogoda panuje teraz w twojej głowie?",
+            "detail": "Szybkie",
+            "body": "Łagodniejszy sposób na zapytanie, jak ktoś się ma."
+          },
+          {
+            "title": "Zielony, żółty czy czerwony na ten tydzień?",
+            "detail": "Szybkie",
+            "body": "Szybka ocena obciążenia pracą przed planowaniem."
+          },
+          {
+            "title": "Co zaprząta ci głowę poza tym spotkaniem?",
+            "detail": "Szybkie",
+            "body": "Wypowiedzenie tego na głos często ułatwia odłożenie tego na bok."
+          },
+          {
+            "title": "Kawa, herbata czy coś innego dzisiaj?",
+            "detail": "Szybkie",
+            "body": "Niski próg wejścia, dobre dla nowego zespołu."
+          },
+          {
+            "title": "Emoji opisujące twój dotychczasowy tydzień?",
+            "detail": "Szybkie",
+            "body": "Świetnie sprawdza się wpisane jednocześnie na czacie."
+          },
+          {
+            "title": "Ile mniej więcej godzin przespałeś?",
+            "detail": "Szybkie",
+            "body": "Tylko dla zespołu, który czuje się z tym komfortowo."
+          },
+          {
+            "title": "Na co najbardziej czekasz w tym tygodniu?",
+            "detail": "Szybkie",
+            "body": "Zacznij spotkanie od czegoś miłego."
+          },
+          {
+            "title": "Skupiony, rozproszony czy coś pomiędzy?",
+            "detail": "Szybkie",
+            "body": "Przydatne przed sesją pracy."
+          }
+        ]
+      },
+      {
+        "title": "Check-iny o pracy",
+        "items": [
+          {
+            "title": "Jaka jest ta jedna rzecz, którą najbardziej musisz skończyć w tym tygodniu?",
+            "detail": "Praca",
+            "body": "Pokazuje priorytety bez pełnej rundy statusów."
+          },
+          {
+            "title": "Co cię teraz blokuje?",
+            "detail": "Praca",
+            "body": "Wcześnie wyciąga problemy na światło dzienne."
+          },
+          {
+            "title": "Czego się nauczyłeś od naszego ostatniego spotkania?",
+            "detail": "Praca",
+            "body": "Służy dzieleniu się wiedzą w zespole."
+          },
+          {
+            "title": "Na co czekasz od kogoś z obecnych?",
+            "detail": "Praca",
+            "body": "Zamienia ukryte zależności w krótką rozmowę."
+          },
+          {
+            "title": "Co zajęło ci więcej czasu, niż się spodziewałeś w zeszłym tygodniu?",
+            "detail": "Praca",
+            "body": "Dobre przed planowaniem."
+          },
+          {
+            "title": "Co sprawiłoby, że dzisiejszy dzień byłby udany?",
+            "detail": "Praca",
+            "body": "Daje każdemu mały, osiągalny cel."
+          },
+          {
+            "title": "Z czego byś zrezygnował, gdybyś mógł?",
+            "detail": "Praca",
+            "body": "Pokazuje, gdzie obciążenie jest zbyt duże."
+          },
+          {
+            "title": "Kto ci pomógł w tym tygodniu?",
+            "detail": "Praca",
+            "body": "Buduje nawyk dostrzegania wzajemnej pomocy."
+          },
+          {
+            "title": "Z wdrożenia czego jesteś dumny?",
+            "detail": "Praca",
+            "body": "Sukcesy zostają nazwane, a nie tylko odhaczone."
+          },
+          {
+            "title": "Na jakie jedno pytanie chcesz poznać odpowiedź na tym spotkaniu?",
+            "detail": "Praca",
+            "body": "Dba o to, by spotkanie poruszało to, czego ludzie potrzebują."
+          }
+        ]
+      },
+      {
+        "title": "Głębsze check-iny",
+        "items": [
+          {
+            "title": "Co najbardziej zaprząta ci głowę poza pracą?",
+            "detail": "Głębsze",
+            "body": "Odpowiedź tylko na tyle, na ile ktoś ma ochotę."
+          },
+          {
+            "title": "Kiedy ostatnio czułeś się naprawdę przydatny w pracy?",
+            "detail": "Głębsze",
+            "body": "Dobre na one-on-one lub retro."
+          },
+          {
+            "title": "Co sprawia ci teraz trudność?",
+            "detail": "Głębsze",
+            "body": "Wymaga zaufania; odpowiedz jako pierwszy."
+          },
+          {
+            "title": "Co zmieniłbyś w tym, jak razem pracujemy?",
+            "detail": "Głębsze",
+            "body": "Dobry wstęp do retro."
+          },
+          {
+            "title": "Czego potrzebujesz więcej od tego zespołu?",
+            "detail": "Głębsze",
+            "body": "Zamienia odczucia w coś, na co zespół może zareagować."
+          },
+          {
+            "title": "Co do której decyzji wciąż nie masz pewności?",
+            "detail": "Głębsze",
+            "body": "Zaprasza do pomocy bez bezpośredniego proszenia o nią."
+          },
+          {
+            "title": "Co cię ostatnio ciekawi?",
+            "detail": "Głębsze",
+            "body": "Pokazuje stronę ludzi, której praca rzadko dotyka."
+          },
+          {
+            "title": "Co sprawiłoby, że kolejny miesiąc byłby lepszy od obecnego?",
+            "detail": "Głębsze",
+            "body": "Dobre na spotkanie miesięczne."
+          },
+          {
+            "title": "W jakiej kwestii zmieniłeś zdanie?",
+            "detail": "Głębsze",
+            "body": "Daje przykład otwartości na błędy."
+          },
+          {
+            "title": "Jak się masz, tak naprawdę?",
+            "detail": "Głębsze",
+            "body": "Zadaj je powoli i poczekaj na odpowiedź."
+          }
+        ]
+      },
+      {
+        "title": "Zabawne check-iny",
+        "items": [
+          {
+            "title": "Co najlepszego zjadłeś w tym tygodniu?",
+            "detail": "Zabawne",
+            "body": "Każdy ma na to odpowiedź."
+          },
+          {
+            "title": "Co masz na biurku, czego nie widzimy?",
+            "detail": "Zabawne",
+            "body": "Sprawia, że ludzie rozglądają się i śmieją."
+          },
+          {
+            "title": "Gdyby dzisiejszy dzień był gatunkiem filmowym, to jakim?",
+            "detail": "Zabawne",
+            "body": "Szybkie, zabawne podsumowanie tygodnia."
+          },
+          {
+            "title": "Jaka mała rzecz uszczęśliwiła cię ostatnio?",
+            "detail": "Zabawne",
+            "body": "Zazwyczaj to najcieplejsze kilka minut spotkania."
+          },
+          {
+            "title": "Jaka piosenka chodzi ci po głowie?",
+            "detail": "Zabawne",
+            "body": "Opcjonalnie: puśćcie jej dziesięć sekund."
+          },
+          {
+            "title": "Bez której aplikacji nie mógłbyś się obejść w tym tygodniu?",
+            "detail": "Zabawne",
+            "body": "Często zamienia się w przydatne wskazówki."
+          },
+          {
+            "title": "Jaką umiejętność opanowałbyś natychmiast, gdyby to było możliwe?",
+            "detail": "Zabawne",
+            "body": "Pokazuje, na czym ludziom zależy."
+          },
+          {
+            "title": "Najlepsza rzecz, jaką ostatnio obejrzałeś lub przeczytałeś?",
+            "detail": "Zabawne",
+            "body": "Tworzy listę poleceń."
+          },
+          {
+            "title": "Co napisałbyś dzisiaj w wiadomości o nieobecności?",
+            "detail": "Zabawne",
+            "body": "Przynosi kreatywne odpowiedzi."
+          },
+          {
+            "title": "Miejsce przy oknie czy przy przejściu?",
+            "detail": "Zabawne",
+            "body": "Niczego nie rozstrzyga, a każdy ma swoje zdanie."
+          }
+        ]
+      },
+      {
+        "title": "Check-iny dla zespołów zdalnych",
+        "items": [
+          {
+            "title": "Jaki masz widok z miejsca, w którym dzisiaj pracujesz?",
+            "detail": "Zdalne",
+            "body": "Pokazuje miejsca kryjące się za kafelkami wideo."
+          },
+          {
+            "title": "Która jest u ciebie godzina i co robisz zaraz po tym?",
+            "detail": "Zdalne",
+            "body": "Uwidacznia strefy czasowe."
+          },
+          {
+            "title": "Z kim dzisiaj rozmawiałeś, poza nami?",
+            "detail": "Zdalne",
+            "body": "Łagodny sposób na zauważenie, że ktoś spędził cały dzień sam."
+          },
+          {
+            "title": "Jak się trzyma twoje stanowisko pracy?",
+            "detail": "Zdalne",
+            "body": "Ujawnia drobne problemy z krzesłem, monitorem lub internetem."
+          },
+          {
+            "title": "Czego najbardziej ci brakuje z pracy w jednym pokoju?",
+            "detail": "Zdalne",
+            "body": "Dobre do decydowania, czego zespół powinien spróbować w następnej kolejności."
+          },
+          {
+            "title": "Z jakiej jednej rzeczy w pracy zdalnej nigdy byś nie zrezygnował?",
+            "detail": "Zdalne",
+            "body": "Kończy miłym akcentem."
+          },
+          {
+            "title": "Kiedy jesteś najbardziej skupiony w ciągu dnia?",
+            "detail": "Zdalne",
+            "body": "Pomaga zespołowi chronić nawzajem swój czas na skupienie."
+          },
+          {
+            "title": "Jaki jest twój ulubiony sposób na przerwę w domu?",
+            "detail": "Zdalne",
+            "body": "To okazja do wymiany pomysłów na prawdziwy odpoczynek."
+          },
+          {
+            "title": "Czy coś cię rozśmieszyło w tym tygodniu?",
+            "detail": "Zdalne",
+            "body": "Przywraca niektóre z tych drobnych, biurowych chwil."
+          },
+          {
+            "title": "Co takiego zespół mógłby zrobić, żeby poczuć się bliżej?",
+            "detail": "Zdalne",
+            "body": "Zamienia check-in w pomysł."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Gdzie pasuje TinyFloor",
+      "body": "TinyFloor to wirtualne biuro dla małych zespołów. Check-iny odbywają się w sali spotkań, do której każdy wchodzi z włączonym wideo, a przez resztę dnia ludzie siedzą przy swoich biurkach na tym samym piętrze, gdzie zadanie szybkiego pytania wymaga tylko podejścia na chwilę. Jest darmowe dla maksymalnie 3 osób i kosztuje 29 USD miesięcznie dla całego zespołu."
+    },
+    "faq": [
+      {
+        "q": "Co to jest pytanie na check-in?",
+        "a": "To jedno pytanie, na które każdy krótko odpowiada na początku spotkania. Pozwala od razu zaangażować wszystkich do rozmowy i pokazuje, jak ludzie się mają, zanim zacznie się praca."
+      },
+      {
+        "q": "Jakie jest dobre pytanie na check-in na spotkanie zespołu?",
+        "a": "„Co jest tą jedną rzeczą, którą najbardziej musisz skończyć w tym tygodniu?” na spotkanie robocze, albo „Jedno słowo o tym, z czym dziś przychodzisz?” gdy jest mało czasu."
+      },
+      {
+        "q": "Jak długo powinien trwać check-in?",
+        "a": "Dwie lub trzy minuty dla zespołu do dziesięciu osób: po jednym słowie lub zdaniu od każdego."
+      },
+      {
+        "q": "Czy check-iny to to samo co icebreakery?",
+        "a": "Blisko. Icebreakery pomagają zacząć rozmawiać ludziom, którzy się nie znają; check-iny pomagają zespołowi, który już ze sobą pracuje, podzielić się tym, jak się czuje i czego potrzebuje."
+      }
+    ]
+  },
+  "discordVsSlack": {
+    "label": "Discord vs Slack",
+    "meta": {
+      "title": "Discord vs Slack do pracy: co powinien wybrać mały zespół?",
+      "description": "Discord vs Slack dla zespołu: koszty, głos i rozmowy, historia wiadomości, integracje i prywatność, co pasuje do małego zespołu oraz trzecia opcja stworzona jako biuro."
+    },
+    "title": "Discord vs Slack <em>dla zespołu w pracy.</em>",
+    "intro": "Wiele małych zespołów organizuje swój dzień na Discordzie: jest bezpłatny, kanały głosowe dają poczucie wspólnego pokoju, a wiele osób ma go już otwartego. Inni używają Slacka, bo z nim łączą się narzędzia do pracy. Oto jak wypada ich porównanie dla zespołu, w czym każdy z nich jest lepszy i kiedy żaden nie jest idealnym rozwiązaniem.",
+    "sections": [
+      {
+        "title": "Discord i Slack w skrócie",
+        "table": {
+          "head": [
+            "",
+            "Discord",
+            "Slack"
+          ],
+          "rows": [
+            [
+              "Stworzony dla",
+              "Społeczności i graczy",
+              "Pracy"
+            ],
+            [
+              "Cena",
+              "Bezpłatny; Nitro jest dodatkowo płatne za każdą osobę",
+              "Bezpłatny plan; płatne plany za użytkownika"
+            ],
+            [
+              "Historia wiadomości",
+              "Zachowywana",
+              "90 dni w bezpłatnym planie"
+            ],
+            [
+              "Rozmowy",
+              "Kanały głosowe, do których po prostu wchodzisz",
+              "Huddle: 2 osoby w bezpłatnym planie, do 50 w płatnych planach"
+            ],
+            [
+              "Integracje",
+              "Boty",
+              "Do 10 aplikacji bezpłatnie, znacznie więcej w płatnych planach"
+            ],
+            [
+              "Konta",
+              "Konta osobiste, dzielone ze wszystkim innym",
+              "Obszar roboczy należący do firmy"
+            ]
+          ],
+          "note": "Na podstawie cennika i centrum pomocy Slacka oraz stron Discorda, stan na październik 2026 roku."
+        }
+      },
+      {
+        "title": "W czym lepszy jest Discord",
+        "items": [
+          {
+            "title": "Rozmowa to domyślny sposób",
+            "body": "Kanał głosowy to pokój, w którym siedzą ludzie. Wchodzisz, pytasz, wychodzisz: bez rozpoczynania połączenia i zapraszania kogokolwiek."
+          },
+          {
+            "title": "Bezpłatny dla całego zespołu",
+            "body": "Głos, wideo, udostępnianie ekranu i pełna historia nic nie kosztują. Nitro dodaje korzyści dla poszczególnych osób, ale zespół tego nie potrzebuje."
+          },
+          {
+            "title": "Znany wielu osobom",
+            "body": "Wielu programistów, projektantów i studentów korzysta z niego na co dzień, więc nie trzeba niczego instalować ani się uczyć."
+          }
+        ]
+      },
+      {
+        "title": "W czym lepszy jest Slack",
+        "items": [
+          {
+            "title": "Stworzony do pracy",
+            "body": "Wątki, wyszukiwanie, przepływy pracy i integracje, których wymagają narzędzia biznesowe – od kalendarzy po systemy śledzenia zadań."
+          },
+          {
+            "title": "Firma jest właścicielem obszaru roboczego",
+            "body": "Konta, przechowywanie danych i dostęp są zarządzane przez firmę, a praca pozostaje oddzielona od prywatnych serwerów pracowników."
+          },
+          {
+            "title": "Łatwiejszy dla klientów i nowych pracowników",
+            "body": "Współdzielone kanały z innymi firmami, konta gości i pojedyncze logowanie (SSO) w wyższych planach."
+          }
+        ]
+      },
+      {
+        "title": "W czym żaden nie radzi sobie dobrze",
+        "body": [
+          "Discord pokazuje, kto jest na którym kanale głosowym, ale nie to, kto siedzi przy biurku i ma wolną chwilę. Slack pokazuje zieloną kropkę, która oznacza jedynie, że ktoś jest online, a nie czy może rozmawiać. W obu przypadkach rozpoczęcie rozmowy wymaga dzwonienia bez zapowiedzi albo pisania i czekania.",
+          "Tę lukę zapełnia [wirtualne biuro](/virtual-office): każdy ma biurko na jednym piętrze, ustawia status i podchodzi, by porozmawiać. Dzięki temu zespół od razu widzi, kto jest wolny, i może wejść razem do pokoju. Wiele zespołów zachowuje Slacka lub Discorda do pisania, a biura używa do rozmów."
+        ]
+      },
+      {
+        "title": "Co wybrać",
+        "items": [
+          {
+            "title": "Discord – dla zespołu, który głównie rozmawia",
+            "body": "Mały zespół, który stale korzysta z połączeń głosowych, nie przeszkadzają mu konta osobiste i potrzebuje niewielu integracji."
+          },
+          {
+            "title": "Slack – dla zespołu, który głównie pisze",
+            "body": "Zespół, który potrzebuje wyszukiwania, integracji, kanałów dla klientów i kont należących do firmy, oraz jest gotów płacić za użytkownika za rozmowy grupowe."
+          },
+          {
+            "title": "Wirtualne biuro obok jednego z nich",
+            "body": "Jeśli problemem jest wiedza o tym, kto jest wolny, i rozmawianie bez planowania spotkań, dodaj biuro do codziennej pracy i zachowaj obecny czat. Porównaj [Discord do pracy](/discord-for-work) oraz [Slack huddles](/slack-huddles-alternative) z TinyFloor."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Gdzie pasuje TinyFloor",
+      "body": "TinyFloor to prywatne wirtualne biuro dla małych zespołów: biurko dla każdej osoby, statusy, podchodzenie do rozmów, pokój spotkań, czat zespołu i tablica – wszystko w przeglądarce. Jest stworzone do pracy, w przeciwieństwie do Discorda, a rozmowa to domyślny sposób kontaktu, w przeciwieństwie do Slacka. Jest bezpłatne dla maksymalnie 3 osób i kosztuje $29 miesięcznie dla całego zespołu, i dobrze działa obok czatu, którego już używacie."
+    },
+    "faq": [
+      {
+        "q": "Czy Discord jest dobry do pracy?",
+        "a": "Dla małego zespołu, który głównie rozmawia – tak: kanały głosowe są bezpłatne i szybkie. Gorzej radzi sobie z wyszukiwaniem, integracjami i kontami należącymi do firmy, a praca sąsiaduje z prywatnymi serwerami użytkowników."
+      },
+      {
+        "q": "Czy Discord jest bezpłatny dla zespołów?",
+        "a": "Tak. Głos, wideo, udostępnianie ekranu i historia wiadomości są bezpłatne. Nitro to opcjonalny, płatny dodatek dla każdej osoby."
+      },
+      {
+        "q": "Ile osób może dołączyć do Slack huddle?",
+        "a": "Dwie w bezpłatnym planie Slacka. Płatne plany pozwalają na maksymalnie 50 osób, w tym do 25 na wideo."
+      },
+      {
+        "q": "Czy możemy używać Discorda i Slacka razem?",
+        "a": "Niektóre zespoły tak robią – piszą na Slacku, a rozmawiają na Discordzie – ale dwa narzędzia dla jednego zespołu zazwyczaj oznaczają, że jedno z nich milknie. Wirtualne biuro obok Twojego czatu załatwia sprawę rozmów bez potrzeby wprowadzania drugiego komunikatora."
+      }
+    ]
+  },
+  "thisOrThat": {
+    "label": "Pytania „to czy tamto”",
+    "meta": {
+      "title": "100 pytań „to czy tamto” do pracy, dla zespołów i jako icebreaker",
+      "description": "100 pytań „to czy tamto” do pracy i na spotkania zespołu: szybkie rundy, jedzenie, podróże, codzienne życie, technologia, praca zdalna i biuro, wraz ze wskazówkami, jak przeprowadzić je jako icebreaker."
+    },
+    "title": "Pytania „to czy tamto” <em>do pracy i dla zespołów.</em>",
+    "intro": "Pytanie „to czy tamto” daje dwie opcje i wymaga wyboru jednej z nich. Odpowiedź zajmuje sekundy, nie ma złych odpowiedzi, a powody podawane przez ludzi są często najciekawszą częścią. To prosty icebreaker na spotkanie zespołu, dla nowej grupy lub na ciche połączenie wideo. Oto 100 pytań podzielonych tematycznie wraz z kilkoma sposobami na ich wykorzystanie.",
+    "sections": [
+      {
+        "title": "Jak ich używać",
+        "items": [
+          {
+            "title": "Runda po zespole",
+            "body": "Zadaj jedno pytanie, a każdy odpowiada po kolei. Dwa lub trzy pytania wystarczą, by rozpocząć spotkanie."
+          },
+          {
+            "title": "Zapytaj dlaczego",
+            "body": "Wybór zajmuje sekundę, ale to uzasadnienie skłania ludzi do rozmowy. Pozwól na jedno dopytanie na osobę."
+          },
+          {
+            "title": "Głosowanie na czacie",
+            "body": "W większej grupie każdy wpisuje swoją odpowiedź w tym samym czasie, a potem obie strony wyjaśniają swój wybór."
+          },
+          {
+            "title": "Szybka runda",
+            "body": "Pięć pytań z rzędu, na które odpowiada się bez zastanowienia. Dobre na rozbudzenie uczestników na początku długiej sesji."
+          }
+        ]
+      },
+      {
+        "title": "Szybka runda",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Kawa czy herbata?",
+            "body": ""
+          },
+          {
+            "title": "Rano czy wieczorem?",
+            "body": ""
+          },
+          {
+            "title": "Koty czy psy?",
+            "body": ""
+          },
+          {
+            "title": "Wschód czy zachód słońca?",
+            "body": ""
+          },
+          {
+            "title": "Lato czy zima?",
+            "body": ""
+          },
+          {
+            "title": "Plaża czy góry?",
+            "body": ""
+          },
+          {
+            "title": "Telefon czy wiadomość?",
+            "body": ""
+          },
+          {
+            "title": "Książki czy podcasty?",
+            "body": ""
+          },
+          {
+            "title": "Słodkie czy słone?",
+            "body": ""
+          },
+          {
+            "title": "Miasto czy wieś?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Praca",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Wczesny start czy późny koniec?",
+            "body": ""
+          },
+          {
+            "title": "Ciche skupienie czy biurowy gwar?",
+            "body": ""
+          },
+          {
+            "title": "Duże projekty czy szybkie sukcesy?",
+            "body": ""
+          },
+          {
+            "title": "Zaplanować wszystko czy wymyślać na bieżąco?",
+            "body": ""
+          },
+          {
+            "title": "Pisemne podsumowanie czy krótka rozmowa?",
+            "body": ""
+          },
+          {
+            "title": "Inbox zero czy chaos w skrzynce?",
+            "body": ""
+          },
+          {
+            "title": "Listy na papierze czy w aplikacji?",
+            "body": ""
+          },
+          {
+            "title": "Zaprezentować pomysł czy go zbudować?",
+            "body": ""
+          },
+          {
+            "title": "Jedno długie spotkanie czy trzy krótkie?",
+            "body": ""
+          },
+          {
+            "title": "Poniedziałkowa motywacja czy piątkowa energia?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Praca zdalna i biuro",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Praca z domu czy praca z kawiarni?",
+            "body": ""
+          },
+          {
+            "title": "Kamera włączona czy wyłączona?",
+            "body": ""
+          },
+          {
+            "title": "Biurko do pracy na stojąco czy wygodny fotel?",
+            "body": ""
+          },
+          {
+            "title": "Słuchawki czy głośniki?",
+            "body": ""
+          },
+          {
+            "title": "Biurko przy oknie czy przy drzwiach?",
+            "body": ""
+          },
+          {
+            "title": "Biurowe przekąski czy domowy obiad?",
+            "body": ""
+          },
+          {
+            "title": "Podcast czy playlista w drodze do pracy?",
+            "body": ""
+          },
+          {
+            "title": "Praca hybrydowa czy w pełni zdalna?",
+            "body": ""
+          },
+          {
+            "title": "Kapcie czy buty podczas pracy z domu?",
+            "body": ""
+          },
+          {
+            "title": "Biurowe rośliny czy biurowe zwierzaki?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Jedzenie i picie",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Pizza czy burgery?",
+            "body": ""
+          },
+          {
+            "title": "Śniadanie czy kolacja?",
+            "body": ""
+          },
+          {
+            "title": "Gotowanie w domu czy jeść na mieście?",
+            "body": ""
+          },
+          {
+            "title": "Czekolada czy chipsy?",
+            "body": ""
+          },
+          {
+            "title": "Ostre czy łagodne?",
+            "body": ""
+          },
+          {
+            "title": "Naleśniki czy gofry?",
+            "body": ""
+          },
+          {
+            "title": "Smoothie czy sok?",
+            "body": ""
+          },
+          {
+            "title": "Na wynos czy z dostawą?",
+            "body": ""
+          },
+          {
+            "title": "Owoce czy deser?",
+            "body": ""
+          },
+          {
+            "title": "Lunch przy biurku czy z dala od niego?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Podróże",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Miejsce przy oknie czy przy przejściu?",
+            "body": ""
+          },
+          {
+            "title": "Zaplanować podróż czy iść na żywioł?",
+            "body": ""
+          },
+          {
+            "title": "Podróż samochodem czy lot samolotem?",
+            "body": ""
+          },
+          {
+            "title": "Hotel czy wynajęte mieszkanie?",
+            "body": ""
+          },
+          {
+            "title": "Muzea czy targi?",
+            "body": ""
+          },
+          {
+            "title": "Tylko bagaż podręczny czy bagaż rejestrowany?",
+            "body": ""
+          },
+          {
+            "title": "Wakacje w ciepłych czy w zimnych krajach?",
+            "body": ""
+          },
+          {
+            "title": "Podróżować samemu czy ze znajomymi?",
+            "body": ""
+          },
+          {
+            "title": "Stare miasto czy nowoczesne miasto?",
+            "body": ""
+          },
+          {
+            "title": "Pamiątki czy zdjęcia?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Codzienne życie",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Ranny ptaszek czy nocny marek?",
+            "body": ""
+          },
+          {
+            "title": "Brać prysznic rano czy wieczorem?",
+            "body": ""
+          },
+          {
+            "title": "Rozmowa telefoniczna czy wiadomość głosowa?",
+            "body": ""
+          },
+          {
+            "title": "Siłownia czy spacer na świeżym powietrzu?",
+            "body": ""
+          },
+          {
+            "title": "Uporządkowane biurko czy artystyczny nieład?",
+            "body": ""
+          },
+          {
+            "title": "Oszczędzać czy wydawać?",
+            "body": ""
+          },
+          {
+            "title": "Gry planszowe czy gry wideo?",
+            "body": ""
+          },
+          {
+            "title": "Film w domu czy w kinie?",
+            "body": ""
+          },
+          {
+            "title": "Deszcz czy śnieg?",
+            "body": ""
+          },
+          {
+            "title": "Weekend w domu czy na mieście?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Technologia",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Mac czy Windows?",
+            "body": ""
+          },
+          {
+            "title": "Android czy iPhone?",
+            "body": ""
+          },
+          {
+            "title": "Tryb ciemny czy jasny?",
+            "body": ""
+          },
+          {
+            "title": "Skróty klawiszowe czy myszka?",
+            "body": ""
+          },
+          {
+            "title": "Tabulatory czy spacje?",
+            "body": ""
+          },
+          {
+            "title": "Laptop czy komputer stacjonarny?",
+            "body": ""
+          },
+          {
+            "title": "Papierowy notes czy aplikacja do notatek?",
+            "body": ""
+          },
+          {
+            "title": "Słuchawki przewodowe czy bezprzewodowe?",
+            "body": ""
+          },
+          {
+            "title": "Reakcje emoji czy odpowiedzi pisemne?",
+            "body": ""
+          },
+          {
+            "title": "Aktualizować teraz czy przypomnieć później?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Rozrywka",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Filmy czy seriale?",
+            "body": ""
+          },
+          {
+            "title": "Komedia czy thriller?",
+            "body": ""
+          },
+          {
+            "title": "Koncert na żywo czy festiwal?",
+            "body": ""
+          },
+          {
+            "title": "Przeczytać książkę czy obejrzeć film?",
+            "body": ""
+          },
+          {
+            "title": "Obejrzeć cały sezon na raz czy jeden odcinek tygodniowo?",
+            "body": ""
+          },
+          {
+            "title": "Podcast czy audiobook?",
+            "body": ""
+          },
+          {
+            "title": "Karaoke czy taniec?",
+            "body": ""
+          },
+          {
+            "title": "Klasyka czy nowości?",
+            "body": ""
+          },
+          {
+            "title": "Spoilery czy bez spoilerów?",
+            "body": ""
+          },
+          {
+            "title": "Uprawianie sportu czy oglądanie sportu?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Hipotetyczne",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Latać czy być niewidzialnym?",
+            "body": ""
+          },
+          {
+            "title": "Podróż w czasie do przeszłości czy do przyszłości?",
+            "body": ""
+          },
+          {
+            "title": "Mówić we wszystkich językach czy grać na każdym instrumencie?",
+            "body": ""
+          },
+          {
+            "title": "Darmowa kawa do końca życia czy darmowy lunch do końca życia?",
+            "body": ""
+          },
+          {
+            "title": "Czterodniowy tydzień pracy czy dwa dodatkowe tygodnie urlopu?",
+            "body": ""
+          },
+          {
+            "title": "Nigdy więcej nie odpowiadać na e-maile czy nigdy więcej nie brać udziału w spotkaniach?",
+            "body": ""
+          },
+          {
+            "title": "Praca z plaży czy z domku w lesie?",
+            "body": ""
+          },
+          {
+            "title": "Czytanie w myślach czy przewidywanie przyszłości?",
+            "body": ""
+          },
+          {
+            "title": "Życie bez muzyki czy bez filmów?",
+            "body": ""
+          },
+          {
+            "title": "Być sławnym czy być bogatym?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Zespół i spotkania",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Burza mózgów na głos czy najpierw pomyśleć i zapisać?",
+            "body": ""
+          },
+          {
+            "title": "Prowadzić spotkanie czy robić notatki?",
+            "body": ""
+          },
+          {
+            "title": "Wspólny lunch czy gra zespołowa?",
+            "body": ""
+          },
+          {
+            "title": "Świętować sukcesy hucznie czy po cichu?",
+            "body": ""
+          },
+          {
+            "title": "Prosić o pomoc od razu czy najpierw spróbować samemu?",
+            "body": ""
+          },
+          {
+            "title": "Feedback osobiście czy na piśmie?",
+            "body": ""
+          },
+          {
+            "title": "Retro z żółtymi karteczkami czy z prostą listą?",
+            "body": ""
+          },
+          {
+            "title": "Planować kwartał czy planować tydzień?",
+            "body": ""
+          },
+          {
+            "title": "Stałe godziny spotkań czy elastyczne?",
+            "body": ""
+          },
+          {
+            "title": "Pokazać demo czy wyjaśnić pomysł?",
+            "body": ""
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Gdzie pasuje TinyFloor",
+      "body": "TinyFloor to wirtualne biuro dla małych zespołów. Rozpocznij spotkanie od pytania „to czy tamto” w sali spotkań, gdzie każdy ma włączone wideo, a przez resztę dnia ludzie siedzą przy swoich biurkach na tym samym piętrze, gdzie szybka rozmowa wymaga tylko podejścia na chwilę. Jest darmowe dla maksymalnie 3 osób i kosztuje 29 USD miesięcznie dla całego zespołu."
+    },
+    "faq": [
+      {
+        "q": "Czym są pytania „to czy tamto”?",
+        "a": "To pytania, które oferują dwie opcje i wymagają wyboru jednej z nich, jak „Kawa czy herbata?”. Odpowiedź na nie jest szybka i świetnie sprawdzają się jako icebreakery."
+      },
+      {
+        "q": "Jak grać w „to czy tamto” w pracy?",
+        "a": "Zadaj jedno pytanie i zrób rundę po zespole albo pozwól wszystkim zagłosować na czacie w tym samym czasie. Zapytaj kilka osób, dlaczego dokonały takiego wyboru – to od tego zaczyna się rozmowa."
+      },
+      {
+        "q": "Czy pytania „to czy tamto” sprawdzają się na wirtualnych spotkaniach?",
+        "a": "Tak. Nie wymagają konfiguracji ani przygotowań, każdy może odpowiedzieć jednym słowem i działają równie dobrze wpisane na czacie, jak i wypowiedziane na głos."
+      },
+      {
+        "q": "Ile pytań należy zadać?",
+        "a": "Dwa lub trzy, aby rozpocząć spotkanie, albo szybką rundę pięciu pytań, aby rozbudzić grupę. Ogranicz się do kilku minut."
+      }
+    ]
+  },
+  "meetingMinutes": {
+    "label": "Szablon protokołu ze spotkania",
+    "meta": {
+      "title": "Szablon protokołu ze spotkania: jak sporządzać notatki, które ludzie naprawdę czytają",
+      "description": "Szablon protokołu ze spotkania, który możesz skopiować, co w nim uwzględnić, a co pominąć, przykład oraz sposób sporządzania i udostępniania protokołu podczas spotkania zdalnego."
+    },
+    "title": "Szablon protokołu ze spotkania, <em>który ludzie naprawdę czytają.</em>",
+    "intro": "Protokół ze spotkania to krótki pisemny zapis podjętych decyzji oraz kolejnych kroków przypisanych do poszczególnych osób. Dobry protokół można przeczytać w minutę, co zapobiega powtarzaniu tych samych tematów na kolejnym spotkaniu. Oto szablon, który możesz skopiować, opis tego, co powinno się w nim znaleźć, przykład oraz wskazówki, jak sporządzać protokół, gdy spotkanie odbywa się zdalnie.",
+    "sections": [
+      {
+        "title": "Do czego służy protokół",
+        "body": [
+          "Protokół to nie transkrypcja. Nikt nie czyta zapisu słowo w słowo, a jego sporządzanie wyłącza osobę notującą z dyskusji.",
+          "Zapisz to, co będzie miało znaczenie w przyszłym tygodniu: co zostało postanowione, co pozostało otwarte i kto zobowiązał się do zrobienia czego i na kiedy. Jeśli kogoś zabrakło na spotkaniu, protokół powinien mu wystarczyć do podjęcia działań."
+        ]
+      },
+      {
+        "title": "Szablon protokołu ze spotkania",
+        "body": [
+          "Skopiuj to do swoich notatek lub na czat zespołu na początku spotkania i uzupełniaj na bieżąco."
+        ],
+        "table": {
+          "head": [
+            "Sekcja",
+            "Co zapisać"
+          ],
+          "rows": [
+            [
+              "Spotkanie",
+              "Nazwa, data i kto był obecny"
+            ],
+            [
+              "Cel",
+              "Jedna linijka: dlaczego spotkanie się odbyło"
+            ],
+            [
+              "Decyzje",
+              "Każda decyzja w jednym zdaniu, tak jak została uzgodniona"
+            ],
+            [
+              "Zadania",
+              "Co, kto i na kiedy, po jednym w linijce"
+            ],
+            [
+              "Otwarte pytania",
+              "Co nie zostało rozstrzygnięte i kto się tym zajmie"
+            ],
+            [
+              "Następne spotkanie",
+              "Kiedy i co należy przygotować"
+            ]
+          ],
+          "note": "Sześć krótkich sekcji. Jeśli sekcja jest pusta, pomiń ją, zamiast wpisywać „brak”."
+        }
+      },
+      {
+        "title": "Co uwzględnić",
+        "items": [
+          {
+            "title": "Decyzje, słowo w słowo",
+            "body": "Zapisz decyzję tak, jak uzgodniła ją grupa, aby nikt później nie pamiętał innej wersji."
+          },
+          {
+            "title": "Zadania z przypisaną osobą i terminem",
+            "body": "„Przyjrzeć się cenom” odejdzie w zapomnienie. „Sam: trzy opcje cennika do piątku” zostanie zrobione."
+          },
+          {
+            "title": "Otwarte pytania",
+            "body": "Co zostało poruszone i nie rozstrzygnięte, aby nie przepadło między spotkaniami."
+          },
+          {
+            "title": "Kto był obecny",
+            "body": "Jedna linijka. Mówi czytelnikom, kogo zapytać o to, co zostało powiedziane."
+          }
+        ]
+      },
+      {
+        "title": "Co pominąć",
+        "items": [
+          {
+            "title": "Kto co powiedział",
+            "body": "O ile nie jest to formalne spotkanie, które tego wymaga, przypisywanie każdego komentarza spowalnia pisanie i czytanie."
+          },
+          {
+            "title": "Cała dyskusja",
+            "body": "Jedna linijka kontekstu dla decyzji w zupełności wystarczy. Notatka to wynik, a nie debata."
+          },
+          {
+            "title": "Opinie o spotkaniu",
+            "body": "Zadbaj o neutralny ton notatek. Informacje zwrotne o przebiegu spotkania powinny trafić na retro."
+          }
+        ]
+      },
+      {
+        "title": "Przykład",
+        "body": [
+          "Cotygodniowe spotkanie produktowe, 14 października. Ana, Sam, Priya, Tom. Cel: ustalenie daty premiery i strony z cennikiem.",
+          "Decyzje: premiera zostaje przesunięta na czwartek 23 października. Strona z cennikiem pokazuje tylko ceny miesięczne. Zadania: Sam, ostateczny tekst cennika do poniedziałku. Priya, projekt e-maila o premierze do wtorku. Tom, sprawdzenie procesu rejestracji na telefonach do środy. Otwarte pytanie: czy zaoferować plan roczny w późniejszym terminie; Ana przyniesie dane w przyszłym tygodniu. Następne spotkanie: 21 października."
+        ]
+      },
+      {
+        "title": "Sporządzanie notatek ze spotkań zdalnych",
+        "items": [
+          {
+            "title": "Udostępniaj notatki na ekranie",
+            "body": "Gdy wszyscy widzą, jak powstaje notatka, błędy są poprawiane na bieżąco i nikt później się o nie nie kłóci."
+          },
+          {
+            "title": "Odczytaj zadania na głos",
+            "body": "Przeznacz ostatnie dwie minuty na odczytanie każdego zadania, osoby odpowiedzialnej i terminu. To najbardziej pożyteczne dwie minuty spotkania."
+          },
+          {
+            "title": "Zmieniajcie osobę sporządzającą notatki",
+            "body": "Osoba, która pisze, nie może prowadzić dyskusji. Róbcie to na zmianę i nie obarczajcie tym zawsze najnowszej lub najcichszej osoby."
+          },
+          {
+            "title": "Publikuj je tam, gdzie pracuje zespół",
+            "body": "Na czacie zespołu, w ciągu godziny, aby osoby nieobecne zobaczyły je jeszcze tego samego dnia."
+          }
+        ]
+      },
+      {
+        "title": "Po spotkaniu",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Wyślij notatki",
+            "body": "Tego samego dnia, na czacie zespołu lub kanale dedykowanym temu projektowi."
+          },
+          {
+            "title": "Sprawdź zadania",
+            "body": "Zacznij następne spotkanie od przejrzenia zadań z poprzedniego razu: zrobione, w toku lub zablokowane."
+          },
+          {
+            "title": "Trzymaj je w jednym miejscu",
+            "body": "Jeden dokument lub kanał na spotkanie, najnowsze wpisy na początku, aby łatwo było później znaleźć decyzje."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Gdzie pasuje TinyFloor",
+      "body": "TinyFloor to wirtualne biuro dla małych zespołów. Spotkania odbywają się w sali spotkań, do której każdy wchodzi, z udostępnianiem ekranu na notatki, a czat zespołu znajduje się tuż obok piętra, by ułatwić publikowanie notatek. Nie sporządza notatek ani nie nagrywa spotkań za Ciebie. Jest darmowe dla maksymalnie 3 osób i kosztuje 29 USD miesięcznie dla całego zespołu."
+    },
+    "faq": [
+      {
+        "q": "Co powinno znaleźć się w notatkach ze spotkania?",
+        "a": "Informacja o tym, kto był obecny, cel, decyzje, zadania z przypisaną osobą i terminem, otwarte pytania oraz termin kolejnego spotkania."
+      },
+      {
+        "q": "Jak szybko sporządzać notatki ze spotkań?",
+        "a": "Używaj szablonu, zapisuj decyzje i zadania zamiast przebiegu dyskusji, a na koniec odczytaj zadania na głos, aby notatki były gotowe wraz z zakończeniem spotkania."
+      },
+      {
+        "q": "Kto powinien sporządzać notatki?",
+        "a": "Róbcie to na zmianę. Osoba prowadząca spotkanie nie powinna jednocześnie pisać notatek, a zadanie to nie powinno zawsze spadać na tę samą osobę."
+      },
+      {
+        "q": "Czym różni się agenda od notatek ze spotkania?",
+        "a": "Agenda to plan spotkania sporządzony przed jego rozpoczęciem. Notatki to zapis podjętych decyzji, tworzony w trakcie i po spotkaniu."
       }
     ]
   }

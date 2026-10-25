@@ -169,8 +169,8 @@ const count = groups.reduce((sum, group) => sum + group.questions.length, 0);
 const en: IcebreakersContent = {
   groups,
   meta: {
-    title: `${count} Icebreaker Questions for Work (Standups, Meetings, New Teammates)`,
-    description: `${count} icebreaker questions for work, sorted by how much time you have: quick ones for standups, getting-to-know-you questions for new teammates, remote work and retro questions. Pick one at random or browse them all.`,
+    title: `${count} Icebreaker Questions for Work: Fun Questions to Ask Coworkers`,
+    description: `${count} icebreaker questions for work, sorted by how much time you have: quick ones for standups, get-to-know-you questions for new teammates, remote work and retro questions. Pick one at random or browse them all.`,
   },
   eyebrow: "Free tools",
   updated: "Updated",

@@ -64,7 +64,16 @@ export function ArticleSections({ sections, first = 1 }: { sections: Numbered[];
           {linked(paragraph)}
         </p>
       ))}
-      {section.items && section.items.some((item) => item.number) ? (
+      {section.list && section.items ? (
+        <ol className="mt-6 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
+          {section.items.map((item) => (
+            <li key={item.title} className="flex items-baseline gap-3 border-b border-border/70 pb-2.5 text-[16.5px] leading-[1.55] text-foreground/85">
+              <span className="w-7 shrink-0 text-[14px] font-semibold tabular-nums text-brand">{item.number}.</span>
+              <span className="min-w-0">{item.title}</span>
+            </li>
+          ))}
+        </ol>
+      ) : section.items && section.items.some((item) => item.number) ? (
         <ol className="mt-8 grid gap-3">
           {section.items.map((item) => (
             <li key={item.title} className="rounded-[20px] bg-muted/80 p-5 sm:p-6">

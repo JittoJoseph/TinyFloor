@@ -41,6 +41,11 @@ When a page or guide is translated:
   still on the short points layout (`points` in `landings.pages.wonder`).
 - **The About page** has a monogram where the founder's photo would go, until
   there's a portrait to use.
+- **Sitemap dates are kept by hand.** When a page's words change, bump its
+  date in the same commit: a guide's `updated`, a tool's `*_UPDATED`,
+  `LANDINGS_UPDATED` (or one page's `updated`) for the pages written for a
+  search, `PAGES_UPDATED` in `sitemap.ts` for home, pricing, the indexes and
+  about. Google trusts a lastmod only while it matches real changes.
 
 ## Search Console and Bing
 

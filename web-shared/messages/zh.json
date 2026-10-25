@@ -110,7 +110,10 @@
       "menu": "菜单",
       "teams": "团队方案",
       "getStarted": "开始使用",
-      "lobbyLine": "看看办公室是怎么运作的。无需账号。"
+      "lobbyLine": "看看办公室是怎么运作的。无需账号。",
+      "alternatives": "替代方案",
+      "headToHead": "正面对比",
+      "compareGuide": "十款虚拟办公室横向对比，提供适合您团队的价格。"
     },
     "hero": {
       "title": "一个团队可以四处走动的虚拟办公室。",

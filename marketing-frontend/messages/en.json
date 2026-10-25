@@ -491,7 +491,7 @@
       "slackHuddles": {
         "label": "Slack huddles alternative",
         "meta": {
-          "title": "Slack Huddles Alternative: See Who's Free, Then Walk Over",
+          "title": "Slack Huddles: Limits, Pricing and an Alternative That Shows Who's Free",
           "description": "A Slack huddle is a call into the unknown, and Slack's free plan limits it to two people. TinyFloor shows who's free first, then you walk over to talk. A virtual office beside Slack, free for 3 people, $29 a month for the whole team."
         },
         "title": "A <em>Slack huddles alternative</em> where you see who's free first.",
@@ -1281,7 +1281,7 @@
   "pricingPage": {
     "meta": {
       "title": "Pricing: One Price for the Whole Office",
-      "description": "TinyFloor is free for up to 3 people. Pro is $29 a month for the whole team, with meetings as often as you need and priority help. Priced by the office, not the person."
+      "description": "TinyFloor is free for up to 3 people. Pro is $29 a month for the whole team, with meetings as often as you need. Priced by the office, not the person."
     },
     "title": "One price for the whole office.",
     "muted": "Not one per person.",

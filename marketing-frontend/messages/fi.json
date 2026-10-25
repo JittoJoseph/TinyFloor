@@ -490,7 +490,7 @@
       "slackHuddles": {
         "label": "Vaihtoehto Slackin huddleille",
         "meta": {
-          "title": "Vaihtoehto Slackin huddleille: näe ensin kuka on vapaana, kävele sitten luo",
+          "title": "Slackin huddlet: rajoitukset, hinnoittelu ja vaihtoehto, joka näyttää kuka on vapaana",
           "description": "Slackin huddle on soitto sokkona, ja Slackin ilmaisversio rajaa sen kahteen henkeen. TinyFloor näyttää ensin, kuka on vapaana, sitten kävelet luo. Virtuaalitoimisto Slackin rinnalle, ilmainen 3 hengelle, 29 $ kuukaudessa koko tiimiltä."
         },
         "title": "<em>Vaihtoehto Slackin huddleille</em>, jossa näet ensin, kuka on vapaana.",
@@ -1281,7 +1281,7 @@
   "pricingPage": {
     "meta": {
       "title": "Hinnoittelu: yksi hinta koko toimistolle",
-      "description": "TinyFloor on ilmainen enintään 3 hengelle. Pro maksaa $29 kuukaudessa koko tiimille, ja siinä on kokouksia niin usein kuin tarvitsette sekä ensisijainen apu. Hinta toimistoa kohden, ei henkeä kohden."
+      "description": "TinyFloor on ilmainen enintään 3 hengelle. Pro maksaa $29/kk koko tiimille, kokouksia niin usein kuin tarvitsette. Hinta per toimisto, ei per henkilö."
     },
     "title": "Yksi hinta koko toimistolle.",
     "muted": "Ei henkeä kohden.",

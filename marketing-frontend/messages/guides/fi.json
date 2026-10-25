@@ -2,7 +2,7 @@
   "teamBuilding": {
     "label": "Virtuaaliset tiimiytymisaktiviteetit",
     "meta": {
-      "title": "20 virtuaalista tiimiytymisaktiviteettia, joista etätiimit pitävät",
+      "title": "20 virtuaalista tiimiytymisaktiviteettia ja peliä etätiimeille",
       "description": "20 virtuaalista tiimiytymisaktiviteettia ajan mukaan: 5 minuutin aloitukset, 30 minuutin pelit, kuukausittaiset tapahtumat ja ideat ilman palavereja."
     },
     "title": "Virtuaalista tiimiytymistä, <em>josta ihmiset oikeasti pitävät.</em>",
@@ -202,7 +202,7 @@
   "meetingGames": {
     "label": "Pelit etäpalavereihin",
     "meta": {
-      "title": "15 nopeaa peliä etäpalavereihin (enintään 5 minuuttia)",
+      "title": "15 nopeaa jäänmurtajapeliä etäpalavereihin (enintään 5 minuuttia)",
       "description": "15 nopeaa peliä etäpalavereihin ilman valmistelua: puhepelejä, arvauspelejä ja piirtopelejä, jotka mahtuvat viiteen minuuttiin."
     },
     "title": "Nopeat pelit <em>etäpalavereihin.</em>",
@@ -1281,11 +1281,12 @@
         ]
       },
       {
-        "title": "Mikä muuttui vuonna 2025",
+        "title": "Mikä muuttui vuosina 2025 ja 2026",
         "body": [
           "Syyskuuhun 2025 asti pienet tiimit saivat käyttää Gatheria ilmaiseksi, ja maksavat tiimit maksoivat 7 $ henkeä kohden kuukaudessa tai 5,95 $ vuosilaskutuksella samaan aikaan verkossa olevien määrän mukaan.",
           "15. syyskuuta 2025 Gather julkaisi Gather 2.0:n ja siirsi molemmat versiot hintaan 15 $ jäseneltä kuukaudessa tai 12 $ vuosilaskutuksella. Ilmaispaketti loppui: toimistot, jotka eivät siirtyneet maksulliseen pakettiin siihen mennessä, suljettiin.",
-          "Jo maksaneet saivat aikaa sopeutua. Kuukausipaketit pitivät vanhan hintansa vuoden 2025 loppuun ja siirtyivät 15 $:iin ensimmäisessä uusinnassa 1. tammikuuta 2026 jälkeen. Tiimit, jotka lukitsivat vuosipaketin ennen muutosta, pitivät 5,95 $ syyskuuhun 2026 asti, joten moni kohtaa uuden hinnan tämän vuoden uusinnassa."
+          "Jo maksaneet saivat aikaa sopeutua. Kuukausipaketit pitivät vanhan hintansa vuoden 2025 loppuun ja siirtyivät 15 $:iin ensimmäisessä uusinnassa 1. tammikuuta 2026 jälkeen. Tiimit, jotka lukitsivat vuosipaketin ennen muutosta, pitivät 5,95 $ syyskuuhun 2026 asti, joten moni kohtaa uuden hinnan tämän vuoden uusinnassa.",
+          "Helmikuussa 2026 Gatherista tuli itsenäinen yritys, ja sen tekoälytuotteita kehittävä tiimi siirtyi Figmalle. Gather ilmoitti, ettei mikään muuttunut asiakkaille, ja sen hinnat pysyivät edellä mainittuina."
         ]
       },
       {
@@ -1415,6 +1416,10 @@
       {
         "q": "Onko Gatherilla ilmaista pakettia?",
         "a": "Ei. Gather lopetti ilmaispaketin 15. syyskuuta 2025. Sen sijaan tarjolla on 30 päivän ilmainen kokeilu enintään 50 hengelle."
+      },
+      {
+        "q": "Onko Gather lopettamassa toimintaansa?",
+        "a": "Ei. Helmikuussa 2026 Gather eriytyi itsenäiseksi yritykseksi, jota se kuvailee kannattavaksi, samalla kun sen tekoälytiimi siirtyi Figmalle. Gather ilmoitti, ettei mikään muuttunut asiakkaille; tämän sivun paketit ja hinnat ovat voimassa."
       },
       {
         "q": "Paljonko Gather maksaa 10 hengelle?",
@@ -2125,7 +2130,7 @@
   "oneOnOne": {
     "label": "Kysymyksiä kahdenkeskisiin keskusteluihin",
     "meta": {
-      "title": "40 kysymystä kahdenkeskisiin keskusteluihin (1:1) esihenkilöille ja omalle esihenkilölle",
+      "title": "Kahdenkeskisen keskustelun malli ja 40 kysymystä esihenkilöille",
       "description": "40 kysymystä kahdenkeskisiin keskusteluihin aiheittain: kuulumiset, työkuorma, esteet, palaute, kehittyminen, tiimi ja etätyö, sekä kysymyksiä omalle esihenkilölle ja yksinkertainen asialista."
     },
     "title": "Kysymyksiä kahdenkeskisiin keskusteluihin, <em>joihin saa oikeita vastauksia.</em>",
@@ -2157,7 +2162,7 @@
         ]
       },
       {
-        "title": "Yksinkertainen asialista",
+        "title": "Kahdenkeskisen keskustelun malli",
         "table": {
           "head": [
             "Osa",
@@ -2654,7 +2659,7 @@
   "retro": {
     "label": "Ideoita retrospektiiveihin",
     "meta": {
-      "title": "15 ideaa etätiimin retrospektiiviin (formaatit ja vinkit)",
+      "title": "15 ideaa retrospektiiveihin ja mallipohja etätiimeille",
       "description": "15 ideaa etätiimin retrospektiiviin: nopeat, visuaaliset ja syvemmät formaatit sekä tunnelmaa nostavat, lisäksi miten retro vedetään verkossa ja miten toimenpiteet viedään loppuun."
     },
     "title": "Ideoita retrospektiiveihin <em>tiimeille, jotka ovat kyllästyneet samoihin kolmeen kysymykseen.</em>",
@@ -3280,6 +3285,1375 @@
       {
         "q": "Voiko body doublingia tehdä ilmaiseksi?",
         "a": "Voi. Videopuhelu ystävän kanssa ei maksa mitään, ja TinyFloor on ilmainen enintään 3 hengelle, joten pieni ryhmä voi tehdä siellä body doublingia joka päivä."
+      }
+    ]
+  },
+  "teamMeetingAgenda": {
+    "label": "Tiimipalaverin asialista",
+    "meta": {
+      "title": "Tiimipalaverin asialistamalli: viikkopalaveri, joka toimii",
+      "description": "Kopioitava viikkopalaverin asialistamalli, mitä siihen kuuluu ja mitä ei, ideoita sen pitämiseen mielenkiintoisena ja miten se vedetään etätiimille 30 minuutissa."
+    },
+    "title": "Tiimipalaverin asialista, <em>joka on puolen tunnin arvoinen.</em>",
+    "intro": "Viikoittainen tiimipalaveri on ainoa hetki, jolloin kaikki ovat samassa huoneessa, joten sen pitäisi tehdä se, mihin kirjalliset päivitykset eivät pysty: päättää asioista, poistaa esteitä ja pitää tiimi tiiminä. Tässä on kopioitava 30 minuutin asialistamalli, mitä siihen kannattaa laittaa, mitä jättää pois ja miten se vedetään, kun tiimi tekee etätyötä.",
+    "sections": [
+      {
+        "title": "Mitä varten tiimipalaveri on",
+        "body": [
+          "Tilannekatsaukset ovat tiimipalaverin asialistan yleisin kohta ja kaikkein vähiten hyödyllinen. Se, että jokainen lukee ääneen omat tekemisensä, on hidasta, ja suurin osa siitä olisi voinut olla viesti.",
+          "Säästä palaveri asioille, jotka vaativat ihmisten kohtaamista: useampaan ihmiseen vaikuttavat päätökset, ongelmat, joihin joku on juuttunut, viikon prioriteetit ja muutama minuutti pelkille tiimin kuulumisille. Kaiken muun voi kirjoittaa ylös ennen tai jälkeen."
+        ]
+      },
+      {
+        "title": "Viikoittaisen tiimipalaverin asialistamalli",
+        "body": [
+          "Kopioi tämä kalenterikutsuusi tai tiimin muistiinpanoihin. Ajat on laskettu 5–10 hengen tiimille; suurempi tiimi tarvitsee enemmän aikaa päätöksille, ei useammille päivityksille."
+        ],
+        "table": {
+          "head": [
+            "Osa",
+            "Aika",
+            "Mitä tapahtuu"
+          ],
+          "rows": [
+            [
+              "Kuulumiset",
+              "3 min",
+              "Yksi kysymys, johon jokainen vastaa yhdellä lauseella"
+            ],
+            [
+              "Onnistumiset",
+              "3 min",
+              "Jotain julkaistua, ratkaistua tai opittua viime viikon jälkeen"
+            ],
+            [
+              "Luvut",
+              "4 min",
+              "Ne kaksi tai kolme lukua, joita tiimi seuraa, ja ovatko ne muuttuneet"
+            ],
+            [
+              "Prioriteetit",
+              "6 min",
+              "Mikä on tärkeintä tällä viikolla ja kuka siitä vastaa"
+            ],
+            [
+              "Esteet ja päätökset",
+              "10 min",
+              "Ihmisten etukäteen lisäämät asiat järjestyksessä"
+            ],
+            [
+              "Yhteenveto",
+              "4 min",
+              "Päätökset, vastuuhenkilöt ja määräajat ääneen luettuina"
+            ]
+          ],
+          "note": "Yhteensä 30 minuuttia. Jos esteitä ja päätöksiä ei ole, lopettakaa ajoissa."
+        }
+      },
+      {
+        "title": "Asialistan kohdat, jotka kannattaa pitää",
+        "items": [
+          {
+            "title": "Yhteinen lista ennen palaveria",
+            "body": "Kuka tahansa voi lisätä kohdan viikon aikana nimensä ja tarpeensa kera: päätös, neuvo tai vain tiedoksi. Palaverissa käydään lista läpi järjestyksessä."
+          },
+          {
+            "title": "Päätökset kysymyksiksi kirjoitettuina",
+            "body": "”Siirretäänkö julkaisu torstaihin?” johtaa päätökseen. ”Julkaisu” johtaa kymmenen minuutin keskusteluun ja päättyy ilman vastausta."
+          },
+          {
+            "title": "Yksi luku per alue",
+            "body": "Rekisteröitymiset, avoimet bugit, vastausaika: mikä tahansa, millä tiimi todella ohjaa toimintaansa. Kerro, muuttuiko se; säästä tarina sen takana tilanteisiin, joissa sillä on väliä."
+          },
+          {
+            "title": "Ketkä ovat poissa",
+            "body": "Tulevat lomat, puolikkaat päivät ja julkaisut, jotta kukaan ei odota sellaista, joka ei ole paikalla."
+          },
+          {
+            "title": "Kiitokset",
+            "body": "Minuutti sille, että mainitaan kuka auttoi ketä. Se ei maksa mitään ja on usein se osa, jonka ihmiset muistavat."
+          }
+        ]
+      },
+      {
+        "title": "Mitä jättää pois",
+        "items": [
+          {
+            "title": "Kierros pöydän ympäri",
+            "body": "Pyydä ne kirjallisina edellisenä päivänä. Palaverissa voidaan sitten käyttää aika niihin kahteen päivitykseen, jotka herättivät kysymyksiä."
+          },
+          {
+            "title": "Pitkät väittelyt",
+            "body": "Jos jokin asia vie yli kymmenen minuuttia, se vaatii oman pienemmän palaverinsa niiden kanssa, joita se koskee."
+          },
+          {
+            "title": "Ilmoitukset",
+            "body": "Postaa ne [tiimichattiin](/team-chat), josta ihmiset voivat lukea ne myöhemmin ja reagoida niihin."
+          },
+          {
+            "title": "Asiat, jotka kiinnostavat vain kahta ihmistä",
+            "body": "Anna heidän puhua palaverin jälkeen, tai heti, jos he istuvat lähekkäin."
+          }
+        ]
+      },
+      {
+        "title": "Ideoita palaverin pitämiseen mielenkiintoisena",
+        "items": [
+          {
+            "title": "Kierrättäkää vetäjää",
+            "body": "Eri henkilö pitää huolta ajasta ja listasta joka viikko. Se levittää tapaa vetää hyvä palaveri."
+          },
+          {
+            "title": "Viiden minuutin demo",
+            "body": "Kerran kuussa joku näyttää livenä ilman kalvoja, mitä on rakentanut tai löytänyt."
+          },
+          {
+            "title": "Parempi kysymys aloitukseen",
+            "body": "”Miten viikonloppusi meni?” saa samat vastaukset joka viikko. Käytä [kysymystä, joka kertoo tiimille jotain uutta](/guides/check-in-questions)."
+          },
+          {
+            "title": "Peli silloin tällöin",
+            "body": "Viiden minuutin [peli](/guides/games-for-virtual-meetings) alussa kerran kuussa riittää muuttamaan tunnelmaa viemättä koko palaveria."
+          },
+          {
+            "title": "Jätä viikko väliin",
+            "body": "Jos lista on tyhjä, peruuta palaveri. Ketään ei haittaa saada puolta tuntia takaisin, ja seuraavaan keskitytään paremmin."
+          }
+        ]
+      },
+      {
+        "title": "Palaverin vetäminen etätiimille",
+        "body": [
+          "Puhelussa palaveri alkaa linkistä, joka jonkun on etsittävä, ja päättyy kaikkien katoamiseen. Virtuaalisessa toimistossa tiimi kävelee samaan [palaverihuoneeseen](/virtual-meeting-room) samaan aikaan, ja ne, joiden täytyy jatkaa puhumista sen jälkeen, voivat jäädä omien pöytiensä ääreen vierekkäin.",
+          "Pidä kamerat vapaaehtoisina, jaa asialista näytölle, jotta kaikki katsovat samaa kohtaa, ja laita muistiinpanot tiimichattiin ennen kuin huone tyhjenee. Jos tiimi jakautuu eri aikavyöhykkeille, kierrätä aikaa, jotta samat ihmiset eivät ole aina linjoilla yöllä."
+        ]
+      },
+      {
+        "title": "Palaverin jälkeen",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Postaa muistiinpanot",
+            "body": "[Päätökset, vastuuhenkilöt ja määräajat](/guides/meeting-minutes-template) tiimin chatissa tunnin kuluessa."
+          },
+          {
+            "title": "Siirrä avoimet asiat",
+            "body": "Kaikki asiat, joihin ei ehditty, siirtyvät ensi viikon listan kärkeen tai omaan palaveriinsa."
+          },
+          {
+            "title": "Kerro poissa olleille",
+            "body": "Yksi rivi kullekin heitä koskevista asioista, jotta kukaan ei kuule päätöksestä vahingossa."
+          },
+          {
+            "title": "Tarkista aika",
+            "body": "Jos palaveri venyi kahtena viikkona peräkkäin, karsi asialistamallista jokin kohta sen sijaan, että lisäisit aikaa."
+          }
+        ]
+      },
+      {
+        "title": "Asialistat muihin tiimipalavereihin",
+        "items": [
+          {
+            "title": "Aloituspalaveri",
+            "body": "Miksi projekti on olemassa (5 minuuttia), miltä valmis näyttää (10), kuka vastaa mistäkin (10), ensimmäiset virstanpylväät ja päivämäärät (10), riskit ja avoimet kysymykset (10) sekä miten tiimi pitää yhteyttä (5). Yhteensä tunti, kerran projektissa."
+          },
+          {
+            "title": "All-hands-palaveri",
+            "body": "Onnistumiset ja kiitokset (10 minuuttia), tärkeimmät luvut (10), mikä muuttui ja miksi (15), yhden tiimin työn esittely (10) ja vapaat kysymykset (15). Tunti kuukausittain tai neljännesvuosittain; kysymykset kerätään etukäteen, jotta hiljaisemmatkin saavat omansa esiin."
+          },
+          {
+            "title": "Päivittäispalaveri",
+            "body": "Kymmenestä viiteentoista minuuttia: mitä kukin tekee tänään ja onko heillä esteitä. [päivittäispalaverin mallissamme](/tools/daily-standup-template) on kysymykset ja kirjallinen versio eri aikavyöhykkeillä toimiville tiimeille."
+          },
+          {
+            "title": "Retrospektiivi",
+            "body": "Mikä meni hyvin, mikä ei ja mitä pitäisi muuttaa, kahden tai neljän viikon välein. Katso [ideoita retrospektiiviin](/guides/retrospective-ideas) löytääksesi tapoja pitää se vaihtelevana."
+          },
+          {
+            "title": "Kahdenkeskinen keskustelu",
+            "body": "Kolmekymmentä minuuttia esihenkilön ja tiimin jäsenen välillä, ja keskustelua ohjaa tiimin jäsenen eikä esihenkilön asialista. Käytä [kahdenkeskisen keskustelun malliamme ja kysymyksiämme](/guides/one-on-one-meeting-questions)."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloor on virtuaalinen toimisto pienille tiimeille. Viikkopalaveri pidetään palaverihuoneessa, johon kaikki kävelevät, ja käytössä on video, näytön jakaminen ja valkotaulu. Sen jälkeen ihmiset ovat takaisin omien pöytiensä ääressä samassa kerroksessa, vain lyhyen kävelymatkan päässä, jos jokin vaatii jatkotoimia. Se on ilmainen enintään 3 hengelle ja 29 $ kuukaudessa koko tiimille."
+    },
+    "faq": [
+      {
+        "q": "Mitä tiimipalaverin asialistalla pitäisi olla?",
+        "a": "Lyhyet kuulumiset, onnistumiset, ne muutamat luvut, joita tiimi seuraa, tämän viikon prioriteetit, ihmisten etukäteen lisäämät esteet ja päätökset sekä yhteenveto vastuuhenkilöineen ja määräaikoineen. Jätä rutiininomaiset tilannekatsaukset kirjallisiksi."
+      },
+      {
+        "q": "Kuinka pitkä viikkopalaverin pitäisi olla?",
+        "a": "Noin 30 minuuttia 5–10 hengen tiimille. Jos se venyy jatkuvasti, ongelmana on yleensä liian monet päivitykset tai väittely, joka vaatisi oman palaverinsa."
+      },
+      {
+        "q": "Miten tiimipalavereista saa vähemmän tylsiä?",
+        "a": "Karsi päivitykset, kierrätä vetäjää, käytä aloituskysymystä, joka kertoo tiimille jotain uutta, ja näytä oikeaa työtä silloin tällöin. Palaveria, joka päättyy etuajassa, kun päätettävää ei ole, harvoin kutsutaan tylsäksi."
+      },
+      {
+        "q": "Kenen pitäisi vetää tiimipalaveri?",
+        "a": "Ei aina esihenkilön. Vetäjän kierrättäminen pitää ihmiset mukana ja opettaa jokaisen pysymään aikataulussa ja ohjaamaan keskustelua."
+      },
+      {
+        "q": "Pitäisikö asialista jakaa ennen palaveria?",
+        "a": "Kyllä. Yhteinen lista, johon kuka tahansa voi lisätä asioita viikon aikana, tarkoittaa, että palaveri alkaa siitä, mitä ihmiset todella tarvitsevat, järjestyksessä."
+      },
+      {
+        "q": "Mitä aloituspalaverin asialistalla pitäisi olla?",
+        "a": "Miksi projekti on olemassa, miltä valmis näyttää, kuka vastaa mistäkin, ensimmäiset virstanpylväät, riskit ja avoimet kysymykset sekä miten tiimi pitää yhteyttä. Noin tunti, kerran alussa."
+      }
+    ]
+  },
+  "checkInQuestions": {
+    "label": "Kysymyksiä aloitukseen",
+    "meta": {
+      "title": "50 aloituskysymystä palavereihin: nopeita, syvällisiä ja hauskoja",
+      "description": "50 aloituskysymystä tiimipalaverin, standupin tai kahdenkeskisen avaamiseen: nopeita yhden sanan kierroksia, työkysymyksiä, syvällisempiä aiheita, hauskoja kysymyksiä ja kysymyksiä etätiimeille."
+    },
+    "title": "Aloituskysymyksiä <em>minkä tahansa palaverin avaamiseen.</em>",
+    "intro": "Aloituskysymys on yksi kysymys, johon kaikki vastaavat palaverin alussa yhdellä lauseella tai sanalla. Se tuo jokaisen äänen kuuluviin heti alussa, kertoo miten ihmiset oikeasti voivat ja vie vain kaksi tai kolme minuuttia. Tässä on 50 kysymystä, joista valita, ryhmiteltynä käytettävissä olevan ajan ja tavoitteen mukaan.",
+    "sections": [
+      {
+        "title": "Näin pidät aloituskierroksen",
+        "items": [
+          {
+            "title": "Yksi kysymys, kaikki vastaavat",
+            "body": "Kiertäkää kiinteässä järjestyksessä tai antakaa edellisen vastaajan valita seuraava. Sallikaa vuoron ohittaminen."
+          },
+          {
+            "title": "Pidä vastaukset lyhyinä",
+            "body": "Sana tai lause. Jos jokin aihe vaatii enemmän, kirjaa se ylös ja palaa siihen palaverin jälkeen."
+          },
+          {
+            "title": "Valitse kysymys palaverin mukaan",
+            "body": "Nopea kierros ennen [standupia](/virtual-standup), syvällisempi kysymys ennen [retroa](/guides/retrospective-ideas) tai [kahdenkeskistä keskustelua](/guides/one-on-one-meeting-questions)."
+          },
+          {
+            "title": "Vastaa itse ensin",
+            "body": "Palaverin vetäjä vastaa ensin ja määrittää pituuden ja sävyn."
+          }
+        ]
+      },
+      {
+        "title": "Nopeat aloituskysymykset (yksi sana tai numero)",
+        "items": [
+          {
+            "title": "Yhdellä sanalla, millaisella mielellä aloitat tänään?",
+            "detail": "Nopea",
+            "body": "Yksinkertainen ja yllättävän rehellinen."
+          },
+          {
+            "title": "Asteikolla yhdestä kymmeneen, millainen on energiatasosi?",
+            "detail": "Nopea",
+            "body": "Hyödyllinen sen päättämiseen, kuinka paljon palaveriin mahdutetaan."
+          },
+          {
+            "title": "Millainen sää päässäsi on juuri nyt?",
+            "detail": "Nopea",
+            "body": "Pehmeämpi tapa kysyä, mitä kuuluu."
+          },
+          {
+            "title": "Vihreä, keltainen vai punainen tälle viikolle?",
+            "detail": "Nopea",
+            "body": "Nopea tilannekatsaus työkuormaan ennen suunnittelua."
+          },
+          {
+            "title": "Mikä yksi asia pyörii mielessäsi, joka ei liity tähän palaveriin?",
+            "detail": "Nopea",
+            "body": "Ääneen sanominen tekee siitä usein helpompaa siirtää syrjään."
+          },
+          {
+            "title": "Kahvia, teetä vai jotain muuta tänään?",
+            "detail": "Nopea",
+            "body": "Kevyt kysymys, joka sopii uudelle tiimille."
+          },
+          {
+            "title": "Mikä emoji kuvaa viikkoasi tähän asti?",
+            "detail": "Nopea",
+            "body": "Toimii hyvin chatissa samanaikaisesti kirjoitettuna."
+          },
+          {
+            "title": "Montako tuntia nukuit, noin suurin piirtein?",
+            "detail": "Nopea",
+            "body": "Vain tiimille, jolle tämä tuntuu luontevalta."
+          },
+          {
+            "title": "Mitä odotat tältä viikolta?",
+            "detail": "Nopea",
+            "body": "Aloittaa palaverin jollain hyvällä."
+          },
+          {
+            "title": "Keskittynyt, hajanainen vai jotain siltä väliltä?",
+            "detail": "Nopea",
+            "body": "Kätevä ennen työsessiota."
+          }
+        ]
+      },
+      {
+        "title": "Työkysymykset",
+        "items": [
+          {
+            "title": "Mikä on se yksi asia, joka sinun on ehdottomasti saatava valmiiksi tällä viikolla?",
+            "detail": "Työ",
+            "body": "Nostaa prioriteetit esiin ilman täyttä tilannekatsauskierrosta."
+          },
+          {
+            "title": "Mikä estää sinua juuri nyt?",
+            "detail": "Työ",
+            "body": "Tuo ongelmat avoimesti esiin ajoissa."
+          },
+          {
+            "title": "Mitä opit edellisen tapaamisemme jälkeen?",
+            "detail": "Työ",
+            "body": "Jakaa osaamista koko tiimille."
+          },
+          {
+            "title": "Mitä odotat joltain täällä olevalta?",
+            "detail": "Työ",
+            "body": "Muuttaa piilevät riippuvuudet nopeaksi keskusteluksi."
+          },
+          {
+            "title": "Mikä vei viime viikolla odotettua enemmän aikaa?",
+            "detail": "Työ",
+            "body": "Hyvä ennen suunnittelua."
+          },
+          {
+            "title": "Mikä tekisi tästä päivästä hyvän päivän?",
+            "detail": "Työ",
+            "body": "Antaa jokaiselle pienen, saavutettavan tavoitteen."
+          },
+          {
+            "title": "Mistä luopuisit, jos voisit?",
+            "detail": "Työ",
+            "body": "Näyttää, missä kuorma on liian raskas."
+          },
+          {
+            "title": "Kuka auttoi sinua tällä viikolla?",
+            "detail": "Työ",
+            "body": "Luo rutiinin toisten avun huomaamiseen."
+          },
+          {
+            "title": "Mistä valmistuneesta tai julkaistusta asiasta olet ylpeä?",
+            "detail": "Työ",
+            "body": "Onnistumiset nimetään, ei vain viedä maaliin."
+          },
+          {
+            "title": "Mihin yhteen kysymykseen haluat vastauksen tässä palaverissa?",
+            "detail": "Työ",
+            "body": "Varmistaa, että palaveri käsittelee sitä, mitä ihmiset tarvitsevat."
+          }
+        ]
+      },
+      {
+        "title": "Syvällisemmät aloituskysymykset",
+        "items": [
+          {
+            "title": "Mikä vie eniten huomiotasi työn ulkopuolella?",
+            "detail": "Syvällisempi",
+            "body": "Vastataan vain sen verran kuin kukin itse haluaa."
+          },
+          {
+            "title": "Milloin tunsit itsesi viimeksi todella hyödylliseksi työssäsi?",
+            "detail": "Syvällisempi",
+            "body": "Hyvä kahdenkeskisessä tai retrossa."
+          },
+          {
+            "title": "Mikä tuntuu sinusta vaikealta juuri nyt?",
+            "detail": "Syvällisempi",
+            "body": "Vaatii luottamusta; vastaa itse ensin."
+          },
+          {
+            "title": "Mitä muuttaisit yhteistyössämme?",
+            "detail": "Syvällisempi",
+            "body": "Avaus retrolle."
+          },
+          {
+            "title": "Mitä tarvitset enemmän tältä tiimiltä?",
+            "detail": "Syvällisempi",
+            "body": "Muuttaa tunteet asioiksi, joille tiimi voi tehdä jotain."
+          },
+          {
+            "title": "Minkä päätöksen suhteen olet yhä epävarma?",
+            "detail": "Syvällisempi",
+            "body": "Kutsuu auttamaan pyytämättä sitä suoraan."
+          },
+          {
+            "title": "Mistä olet ollut kiinnostunut viime aikoina?",
+            "detail": "Syvällisempi",
+            "body": "Näyttää ihmisistä puolen, joka tulee työssä harvoin esiin."
+          },
+          {
+            "title": "Mikä tekisi ensi kuusta tätä kuuta paremman?",
+            "detail": "Syvällisempi",
+            "body": "Hyvä kuukausipalaveriin."
+          },
+          {
+            "title": "Mistä asiasta olet muuttanut mieltäsi?",
+            "detail": "Syvällisempi",
+            "body": "Toimii mallina sille, että on valmis olemaan väärässä."
+          },
+          {
+            "title": "Mitä sinulle oikeasti kuuluu?",
+            "detail": "Syvällisempi",
+            "body": "Kysy rauhallisesti ja odota vastausta."
+          }
+        ]
+      },
+      {
+        "title": "Hauskat aloituskysymykset",
+        "items": [
+          {
+            "title": "Mitä parasta söit tällä viikolla?",
+            "detail": "Hauska",
+            "body": "Jokaisella on vastaus."
+          },
+          {
+            "title": "Mitä sellaista työpöydälläsi on, mitä emme näe?",
+            "detail": "Hauska",
+            "body": "Saa ihmiset katsomaan ympärilleen ja nauramaan."
+          },
+          {
+            "title": "Jos tämä päivä olisi elokuvagenre, mikä se olisi?",
+            "detail": "Hauska",
+            "body": "Nopea ja leikkisä katsaus viikkoon."
+          },
+          {
+            "title": "Mikä pieni asia teki sinut hiljattain iloiseksi?",
+            "detail": "Hauska",
+            "body": "Muodostuu usein palaverin lämminhenkisimmäksi hetkeksi."
+          },
+          {
+            "title": "Mikä laulu on jäänyt soimaan päähäsi?",
+            "detail": "Hauska",
+            "body": "Vaihtoehtoisesti: soittakaa siitä kymmenen sekuntia."
+          },
+          {
+            "title": "Ilman mitä sovellusta et olisi pärjännyt tällä viikolla?",
+            "detail": "Hauska",
+            "body": "Muuttuu usein hyödyllisiksi vinkeiksi."
+          },
+          {
+            "title": "Minkä taidon opettelisit silmänräpäyksessä, jos voisit?",
+            "detail": "Hauska",
+            "body": "Kertoo siitä, mistä ihmiset välittävät."
+          },
+          {
+            "title": "Parasta, mitä olet katsonut tai lukenut viime aikoina?",
+            "detail": "Hauska",
+            "body": "Kokoaa listan suosituksista."
+          },
+          {
+            "title": "Mitä poissaoloviestissäsi lukisi tänään?",
+            "detail": "Hauska",
+            "body": "Tuottaa luovia vastauksia."
+          },
+          {
+            "title": "Ikkunapaikka vai käytäväpaikka?",
+            "detail": "Hauska",
+            "body": "Ei ratkaise mitään, ja jokaisella on mielipide."
+          }
+        ]
+      },
+      {
+        "title": "Aloituskysymyksiä etätiimeille",
+        "items": [
+          {
+            "title": "Millainen näkymä on sieltä, missä teet töitä tänään?",
+            "detail": "Etätyö",
+            "body": "Näyttää paikat videoruutujen takana."
+          },
+          {
+            "title": "Paljonko kello on sinulla, ja mitä teet tämän jälkeen?",
+            "detail": "Etätyö",
+            "body": "Tuo aikavyöhykkeet näkyviksi."
+          },
+          {
+            "title": "Kenen kanssa olet puhunut tänään meidän lisäksemme?",
+            "detail": "Etätyö",
+            "body": "Hienovaraisella tavalla huomaa, jos joku on ollut yksin koko päivän."
+          },
+          {
+            "title": "Miten kotityöpisteesi toimii?",
+            "detail": "Etätyö",
+            "body": "Nostaa esiin pienet ongelmat tuolien, näyttöjen tai netin kanssa."
+          },
+          {
+            "title": "Mitä kaipaat samassa huoneessa työskentelystä?",
+            "detail": "Etätyö",
+            "body": "Hyvä sen päättämiseen, mitä kokeilla seuraavaksi tiiminä."
+          },
+          {
+            "title": "Mistä etätyön puolesta et luopuisi koskaan?",
+            "detail": "Etätyö",
+            "body": "Päättyy positiiviseen sävyyn."
+          },
+          {
+            "title": "Mihin aikaan päivästä olet kaikkein keskittynein?",
+            "detail": "Etätyö",
+            "body": "Auttaa tiimiä suojelemaan toistensa keskittymisaikaa."
+          },
+          {
+            "title": "Mikä on lempitapasi pitää tauko kotona?",
+            "detail": "Etätyö",
+            "body": "Jakaa ideoita kunnon taukoihin."
+          },
+          {
+            "title": "Naurattiko jokin sinua tällä viikolla?",
+            "detail": "Etätyö",
+            "body": "Tuo takaisin osan toimiston pienistä hetkistä."
+          },
+          {
+            "title": "Mitä tiimi voisi tehdä tunteakseen olevansa läheisempi?",
+            "detail": "Etätyö",
+            "body": "Muuttaa aloituskysymyksen ideaksi."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloor on virtuaalinen toimisto pienille tiimeille. Aloituskierrokset pidetään palaverihuoneessa, johon kaikki astuvat sisään videoyhteydellä, ja loppupäivän ihmiset istuvat työpöytiensä ääressä samassa kerroksessa, jossa nopea kysymys on vain lyhyen kävelymatkan päässä. Se on ilmainen enintään 3 hengelle ja maksaa 29 $ kuukaudessa koko tiimille."
+    },
+    "faq": [
+      {
+        "q": "Mikä on aloituskysymys?",
+        "a": "Yksi kysymys, johon kaikki vastaavat lyhyesti palaverin alussa. Se saa kaikki puhumaan heti alussa ja näyttää, miten ihmiset voivat ennen töiden aloittamista."
+      },
+      {
+        "q": "Mikä on hyvä aloituskysymys tiimipalaveriin?",
+        "a": "”Mikä on se yksi asia, joka sinun on tärkeintä saada valmiiksi tällä viikolla?” työpalaveriin, tai ”Yhdellä sanalla, millaisella mielellä aloitat tänään?” silloin kun aikaa on vähän."
+      },
+      {
+        "q": "Kuinka kauan aloituskierroksen pitäisi kestää?",
+        "a": "Kaksi tai kolme minuuttia enintään kymmenen hengen tiimille: sana tai lause jokaiselle."
+      },
+      {
+        "q": "Ovatko aloituskierrokset sama asia kuin jäänmurtajat?",
+        "a": "Melkein. Jäänmurtajat auttavat toisilleen vieraita ihmisiä aloittamaan keskustelun. Aloituskierrokset auttavat jo yhdessä työskentelevää tiimiä kertomaan, miten heillä menee ja mitä he tarvitsevat."
+      }
+    ]
+  },
+  "discordVsSlack": {
+    "label": "Discord vs Slack",
+    "meta": {
+      "title": "Discord vs Slack työkäytössä: kumpi sopii pienelle tiimille?",
+      "description": "Discord vs Slack työkäytössä: hinnat, puhe ja puhelut, viestihistoria, integraatiot ja tietosuoja, kumpi sopii pienelle tiimille sekä toimistoksi luotu kolmas vaihtoehto."
+    },
+    "title": "Discord vs Slack <em>työtiimille.</em>",
+    "intro": "Monet pienet tiimit pyörittävät arkeaan Discordissa: se on ilmainen, äänikanavat tuntuvat yhteiseltä huoneelta ja monella se on jo valmiiksi auki. Toiset käyttävät Slackia, koska työkaluilla on tapana integroitua siihen. Näin ne vertautuvat työtiimin käytössä, missä kumpikin on vahvoilla ja milloin kumpikaan ei oikein sovi tarkoitukseen.",
+    "sections": [
+      {
+        "title": "Discord ja Slack pähkinänkuoressa",
+        "table": {
+          "head": [
+            "",
+            "Discord",
+            "Slack"
+          ],
+          "rows": [
+            [
+              "Suunniteltu",
+              "Yhteisöille ja pelaamiseen",
+              "Työkäyttöön"
+            ],
+            [
+              "Hinta",
+              "Maksuton; Nitro on maksullinen lisä henkilöä kohden",
+              "Maksuton versio; maksulliset paketit käyttäjää kohden"
+            ],
+            [
+              "Viestihistoria",
+              "Säilyy",
+              "90 päivää maksuttomassa versiossa"
+            ],
+            [
+              "Puhuminen",
+              "Äänikanavat, joihin voi vain liittyä",
+              "Huddlet: 2 henkilöä maksuttomassa versiossa, jopa 50 maksullisissa paketeissa"
+            ],
+            [
+              "Integraatiot",
+              "Botit",
+              "Jopa 10 sovellusta maksutta, paljon enemmän maksullisissa paketeissa"
+            ],
+            [
+              "Tilit",
+              "Henkilökohtaiset tilit, jaettu kaiken muun kanssa",
+              "Yrityksen omistama työtila"
+            ]
+          ],
+          "note": "Luettu lokakuussa 2026 Slackin hinnoittelusivulta ja ohjekeskuksesta sekä Discordin omilta sivuilta."
+        }
+      },
+      {
+        "title": "Missä Discord on parempi",
+        "items": [
+          {
+            "title": "Puhuminen on oletusarvo",
+            "body": "Äänikanava on huone, jossa ihmiset istuvat. Astu sisään, kysy, poistu: ei aloitettavaa puhelua eikä kutsuttavia."
+          },
+          {
+            "title": "Maksuton koko tiimille",
+            "body": "Puhe, video, näytön jakaminen ja täysi historia eivät maksa mitään. Nitro tuo lisäetuja henkilöä kohden, mutta tiimi ei tarvitse sitä."
+          },
+          {
+            "title": "Monelle entuudestaan tuttu",
+            "body": "Monet kehittäjät, suunnittelijat ja opiskelijat käyttävät sitä jo päivittäin, joten mitään ei tarvitse asentaa tai opetella."
+          }
+        ]
+      },
+      {
+        "title": "Missä Slack on parempi",
+        "items": [
+          {
+            "title": "Tehty työkäyttöön",
+            "body": "Ketjut, haku, työnkulut ja työkaluilta odotetut integraatiot kalentereista tehtävienhallintaan."
+          },
+          {
+            "title": "Yritys omistaa työtilan",
+            "body": "Tilit, tietojen säilytys ja käyttöoikeudet ovat yrityksen hallinnassa, ja työ pysyy erillään henkilökohtaisista palvelimista."
+          },
+          {
+            "title": "Helpompi asiakkaille ja uusille työntekijöille",
+            "body": "Jaetut kanavat muiden yritysten kanssa, vierastilit ja kertakirjautuminen kalliimmissa paketeissa."
+          }
+        ]
+      },
+      {
+        "title": "Mitä kumpikaan ei tee hyvin",
+        "body": [
+          "Discord näyttää, kuka on milläkin äänikanavalla, muttei sitä, kuka on työpöytänsä ääressä ja vapaana hetkeksi. Slack näyttää vihreän pisteen, joka kertoo jonkun olevan linjoilla, muttei sitä, voiko hän puhua. Molemmissa keskustelun aloittaminen tarkoittaa joko soittamista yllättäen tai kirjoittamista ja odottamista.",
+          "Tämän aukon täyttää [virtuaalitoimisto](/virtual-office): jokaisella on työpöytä samassa kerroksessa, he asettavat tilan ja kävelevät juttelemaan, jotta tiimi näkee yhdellä silmäyksellä, kuka on vapaana, ja voi siirtyä yhdessä huoneeseen. Monet tiimit säilyttävät Slackin tai Discordin kirjoittamista varten ja käyttävät toimistoa puhumiseen."
+        ]
+      },
+      {
+        "title": "Kumpi valita",
+        "items": [
+          {
+            "title": "Discord tiimille, joka pääasiassa puhuu",
+            "body": "Pieni tiimi, joka elää puheessa, pärjää henkilökohtaisilla tileillä ja tarvitsee vain vähän integraatioita."
+          },
+          {
+            "title": "Slack tiimille, joka pääasiassa kirjoittaa",
+            "body": "Tiimi, joka tarvitsee hakua, integraatioita, asiakaskanavia ja yrityksen omistamia tilejä ja on valmis maksamaan henkilöä kohden ryhmäpuheluista."
+          },
+          {
+            "title": "Virtuaalitoimisto jommankumman rinnalle",
+            "body": "Jos ongelmana on tietää, kuka on vapaana, ja puhua ilman kalenterivarausta, ota toimisto käyttöön päiväksi ja pidä nykyinen chat-työkalusi. Vertaa [Discordia työkäytössä](/discord-for-work) ja [Slack huddleja](/slack-huddles-alternative) TinyFlooriin."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Missä TinyFloor auttaa",
+      "body": "TinyFloor on yksityinen virtuaalitoimisto pienille tiimeille selaimessa: työpöytä jokaiselle, tilatiedot, luoksekävelypuhelut, palaverihuone, tiimichat ja valkotaulu. Se on tehty työkäyttöön, toisin kuin Discord, ja puhuminen on siinä oletusarvo, toisin kuin Slackissa. Se on maksuton jopa 3 hengelle ja maksaa 29 $ kuukaudessa koko tiimille, ja se sopii mainiosti jo käyttämänne chat-työkalun rinnalle."
+    },
+    "faq": [
+      {
+        "q": "Sopiiko Discord työkäyttöön?",
+        "a": "Pienelle tiimille, joka pääasiassa puhuu, kyllä: äänikanavat ovat maksuttomia ja nopeita. Se on heikompi haun, integraatioiden ja yrityksen omistamien tilien osalta, ja työ on rinnakkain ihmisten henkilökohtaisten palvelimien kanssa."
+      },
+      {
+        "q": "Onko Discord maksuton tiimeille?",
+        "a": "Kyllä. Puhe, video, näytön jakaminen ja viestihistoria ovat maksuttomia. Nitro on valinnainen maksullinen lisä henkilöä kohden."
+      },
+      {
+        "q": "Kuinka monta ihmistä voi liittyä Slack-huddleen?",
+        "a": "Kaksi Slackin maksuttomassa versiossa. Maksulliset paketit sallivat jopa 50, joista enintään 25 videolla."
+      },
+      {
+        "q": "Voiko Discordia ja Slackia käyttää yhdessä?",
+        "a": "Jotkut tiimit tekevät niin kirjoittaen Slackissa ja puhuen Discordissa, mutta kaksi työkalua yhdelle tiimille tarkoittaa yleensä sitä, että toinen niistä hiljenee. Virtuaalitoimisto chat-työkalun rinnalla hoitaa puhumisen ilman toista chattia."
+      }
+    ]
+  },
+  "thisOrThat": {
+    "label": "Kumpi vai kampi -kysymykset",
+    "meta": {
+      "title": "100 kumpi vai kampi -kysymystä työhön, tiimeille ja jäänmurtajiksi",
+      "description": "100 kumpi vai kampi -kysymystä työhön ja tiimipalavereihin: nopeita, ruoka, matkustus, arki, teknologia, etätyö ja toimisto sekä vinkkejä niiden käyttämiseen jäänmurtajana."
+    },
+    "title": "Kumpi vai kampi -kysymyksiä <em>työhön ja tiimeille.</em>",
+    "intro": "Kumpi vai kampi -kysymys antaa kaksi vaihtoehtoa ja pyytää valitsemaan niistä toisen. Vastaaminen vie vain sekunteja, väärää vastausta ei ole, ja ihmisten perustelut ovat usein parasta antia. Ne toimivat helppona jäänmurtajana tiimipalaverissa, uudessa ryhmässä tai hiljaisessa videopuhelussa. Tässä on 100 kysymystä ryhmiteltynä aiheittain sekä muutamia tapoja käyttää niitä.",
+    "sections": [
+      {
+        "title": "Näin käytät niitä",
+        "items": [
+          {
+            "title": "Kierros tiimissä",
+            "body": "Kysy yksi kysymys ja kaikki vastaavat vuorotellen. Kaksi tai kolme kysymystä riittää palaverin avaamiseen."
+          },
+          {
+            "title": "Kysy miksi",
+            "body": "Valinta vie sekunnin, mutta perustelu saa ihmiset puhumaan. Salli yksi jatkokysymys henkilöä kohden."
+          },
+          {
+            "title": "Äänestäkää chatissa",
+            "body": "Suuremmassa ryhmässä kaikki kirjoittavat vastauksensa samanaikaisesti, minkä jälkeen molemmat osapuolet perustelevat kantansa."
+          },
+          {
+            "title": "Pikakysymykset",
+            "body": "Viisi kysymystä peräkkäin, joihin vastataan ajattelematta. Hyvä tapa herätellä ryhmää pitkän session alussa."
+          }
+        ]
+      },
+      {
+        "title": "Pikakysymykset",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Kahvi vai tee?",
+            "body": ""
+          },
+          {
+            "title": "Aamu vai ilta?",
+            "body": ""
+          },
+          {
+            "title": "Kissat vai koirat?",
+            "body": ""
+          },
+          {
+            "title": "Auringonnousu vai auringonlasku?",
+            "body": ""
+          },
+          {
+            "title": "Kesä vai talvi?",
+            "body": ""
+          },
+          {
+            "title": "Ranta vai vuoret?",
+            "body": ""
+          },
+          {
+            "title": "Puhelu vai tekstiviesti?",
+            "body": ""
+          },
+          {
+            "title": "Kirjat vai podcastit?",
+            "body": ""
+          },
+          {
+            "title": "Makea vai suolainen?",
+            "body": ""
+          },
+          {
+            "title": "Kaupunki vai maaseutu?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Työ",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Aikainen aloitus vai myöhäinen lopetus?",
+            "body": ""
+          },
+          {
+            "title": "Hiljainen keskittyminen vai vilkas hulina?",
+            "body": ""
+          },
+          {
+            "title": "Suuret projektit vai nopeat voitot?",
+            "body": ""
+          },
+          {
+            "title": "Suunnittele kaikki vai soveltele matkan varrella?",
+            "body": ""
+          },
+          {
+            "title": "Kirjallinen tilannekatsaus vai nopea puhelu?",
+            "body": ""
+          },
+          {
+            "title": "Tyhjä sähköposti vai täysi kaaos?",
+            "body": ""
+          },
+          {
+            "title": "Listat paperilla vai sovelluksessa?",
+            "body": ""
+          },
+          {
+            "title": "Esittele idea vai rakenna idea?",
+            "body": ""
+          },
+          {
+            "title": "Yksi pitkä palaveri vai kolme lyhyttä?",
+            "body": ""
+          },
+          {
+            "title": "Maanantaimotivaatio vai perjantaienergia?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Etätyö ja toimisto",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Etätyö kotona vai työskentely kahvilassa?",
+            "body": ""
+          },
+          {
+            "title": "Kamera päällä vai kamera pois?",
+            "body": ""
+          },
+          {
+            "title": "Sähköpöytä vai mukava tuoli?",
+            "body": ""
+          },
+          {
+            "title": "Kuulokkeet vai kaiuttimet?",
+            "body": ""
+          },
+          {
+            "title": "Työpöytä ikkunan vieressä vai työpöytä oven vieressä?",
+            "body": ""
+          },
+          {
+            "title": "Toimiston välipalat vai kotilounas?",
+            "body": ""
+          },
+          {
+            "title": "Työmatkapodcast vai työmatkaplaylist?",
+            "body": ""
+          },
+          {
+            "title": "Hybridi vai täysin etänä?",
+            "body": ""
+          },
+          {
+            "title": "Tossut vai kengät kotona työskennellessä?",
+            "body": ""
+          },
+          {
+            "title": "Toimistokasvit vai toimistolemmikit?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Ruoka ja juoma",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Pitsa vai hampurilaiset?",
+            "body": ""
+          },
+          {
+            "title": "Aamiainen vai päivällinen?",
+            "body": ""
+          },
+          {
+            "title": "Kokkaa kotona vai syö ulkona?",
+            "body": ""
+          },
+          {
+            "title": "Suklaa vai sipsit?",
+            "body": ""
+          },
+          {
+            "title": "Tulinen vai mieto?",
+            "body": ""
+          },
+          {
+            "title": "Letut vai vohvelit?",
+            "body": ""
+          },
+          {
+            "title": "Smoothie vai mehu?",
+            "body": ""
+          },
+          {
+            "title": "Noutoruoka vai kotiinkuljetus?",
+            "body": ""
+          },
+          {
+            "title": "Hedelmä vai jälkiruoka?",
+            "body": ""
+          },
+          {
+            "title": "Lounas työpöydän ääressä vai lounas muualla?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Matkustus",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Ikkunapaikka vai käytäväpaikka?",
+            "body": ""
+          },
+          {
+            "title": "Suunnittele matka vai mene fiiliksellä?",
+            "body": ""
+          },
+          {
+            "title": "Road trip vai lento?",
+            "body": ""
+          },
+          {
+            "title": "Hotelli vai vuokra-asunto?",
+            "body": ""
+          },
+          {
+            "title": "Museot vai torit?",
+            "body": ""
+          },
+          {
+            "title": "Vain käsimatkatavara vai ruumaan menevä laukku?",
+            "body": ""
+          },
+          {
+            "title": "Lämmin loma vai kylmä loma?",
+            "body": ""
+          },
+          {
+            "title": "Matkusta yksin vai ystävien kanssa?",
+            "body": ""
+          },
+          {
+            "title": "Vanha kaupunki vai uusi kaupunki?",
+            "body": ""
+          },
+          {
+            "title": "Tuliaiset vai valokuvat?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Arki",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Aamuvirkku vai yökukkuja?",
+            "body": ""
+          },
+          {
+            "title": "Suihku aamulla vai illalla?",
+            "body": ""
+          },
+          {
+            "title": "Puhelu vai ääniviesti?",
+            "body": ""
+          },
+          {
+            "title": "Kuntosali vai kävely ulkona?",
+            "body": ""
+          },
+          {
+            "title": "Siisti työpöytä vai luova kaaos?",
+            "body": ""
+          },
+          {
+            "title": "Säästä vai tuhlaa?",
+            "body": ""
+          },
+          {
+            "title": "Lautapelit vai videopelit?",
+            "body": ""
+          },
+          {
+            "title": "Elokuva kotona vai elokuvateatterissa?",
+            "body": ""
+          },
+          {
+            "title": "Sade vai lumi?",
+            "body": ""
+          },
+          {
+            "title": "Viikonloppu kotona vai viikonloppu menossa?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Teknologia",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Mac vai Windows?",
+            "body": ""
+          },
+          {
+            "title": "Android vai iPhone?",
+            "body": ""
+          },
+          {
+            "title": "Tumma tila vai vaalea tila?",
+            "body": ""
+          },
+          {
+            "title": "Pikanäppäimet vai hiiri?",
+            "body": ""
+          },
+          {
+            "title": "Sarkaimet vai välilyönnit?",
+            "body": ""
+          },
+          {
+            "title": "Kannettava vai pöytäkone?",
+            "body": ""
+          },
+          {
+            "title": "Paperinen muistikirja vai muistiinosovellus?",
+            "body": ""
+          },
+          {
+            "title": "Langalliset vai langattomat kuulokkeet?",
+            "body": ""
+          },
+          {
+            "title": "Emoji-reaktiot vai kirjalliset vastaukset?",
+            "body": ""
+          },
+          {
+            "title": "Päivitä nyt vai muistuta myöhemmin?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Viihde",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Elokuvat vai sarjat?",
+            "body": ""
+          },
+          {
+            "title": "Komedia vai trilleri?",
+            "body": ""
+          },
+          {
+            "title": "Konsertti vai festarit?",
+            "body": ""
+          },
+          {
+            "title": "Lue kirja vai katso elokuva?",
+            "body": ""
+          },
+          {
+            "title": "Koko kausi kerralla vai jakso viikossa?",
+            "body": ""
+          },
+          {
+            "title": "Podcast vai äänikirja?",
+            "body": ""
+          },
+          {
+            "title": "Karaoke vai tanssiminen?",
+            "body": ""
+          },
+          {
+            "title": "Klassikko vai uutuus?",
+            "body": ""
+          },
+          {
+            "title": "Juonipaljastukset vai ei juonipaljastuksia?",
+            "body": ""
+          },
+          {
+            "title": "Urheilu itse harrastettuna vai katsottuna?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Hypoteettiset kysymykset",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Lentokyky vai näkymättömyys?",
+            "body": ""
+          },
+          {
+            "title": "Aikamatka menneisyyteen vai tulevaisuuteen?",
+            "body": ""
+          },
+          {
+            "title": "Puhu kaikkia kieliä vai soita kaikkia soittimia?",
+            "body": ""
+          },
+          {
+            "title": "Ilmainen kahvi loppuelämäksi vai ilmainen lounas loppuelämäksi?",
+            "body": ""
+          },
+          {
+            "title": "Nelipäiväinen työviikko vai kaksi viikkoa lisälomaa?",
+            "body": ""
+          },
+          {
+            "title": "Ei koskaan enää sähköposteihin vastaamista vai ei koskaan enää palavereihin osallistumista?",
+            "body": ""
+          },
+          {
+            "title": "Työskentely rannalta vai mökiltä metsän keskeltä?",
+            "body": ""
+          },
+          {
+            "title": "Lue ajatuksia vai näe tulevaisuuteen?",
+            "body": ""
+          },
+          {
+            "title": "Elämä ilman musiikkia vai ilman elokuvia?",
+            "body": ""
+          },
+          {
+            "title": "Ole kuuluisa vai ole rikas?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Tiimi ja palaverit",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Aivoriihi ääneen vai ajattelu ensin ja kirjoittaminen?",
+            "body": ""
+          },
+          {
+            "title": "Vedä palaveri vai tee muistiinpanot?",
+            "body": ""
+          },
+          {
+            "title": "Tiimilounas vai tiimipeli?",
+            "body": ""
+          },
+          {
+            "title": "Juhli onnistumisia isosti vai hiljaisesti?",
+            "body": ""
+          },
+          {
+            "title": "Pyydä apua ajoissa vai yritä ensin itse?",
+            "body": ""
+          },
+          {
+            "title": "Palaute kasvotusten vai kirjallisesti?",
+            "body": ""
+          },
+          {
+            "title": "Retro post-it-lapuilla vai yksinkertaisella listalla?",
+            "body": ""
+          },
+          {
+            "title": "Suunnittele vuosineljännes vai suunnittele viikko?",
+            "body": ""
+          },
+          {
+            "title": "Kiinteät palaveriajat vai joustavat?",
+            "body": ""
+          },
+          {
+            "title": "Näytä demo vai selitä idea?",
+            "body": ""
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloor on virtuaalinen toimisto pienille tiimeille. Avaa palaveri kumpi vai kampi -kysymyksellä palaverihuoneessa kaikkien ollessa videoyhteydessä, ja loppupäivän ihmiset istuvat työpöytiensä ääressä samassa kerroksessa, jossa nopea jutustelu on vain lyhyen kävelymatkan päässä. Se on ilmainen enintään 3 hengelle ja maksaa 29 $ kuukaudessa koko tiimille."
+    },
+    "faq": [
+      {
+        "q": "Mitä kumpi vai kampi -kysymykset ovat?",
+        "a": "Kysymyksiä, jotka tarjoavat kaksi vaihtoehtoa ja pyytävät valitsemaan niistä toisen, kuten ”Kahvi vai tee?”. Niihin on nopea vastata ja ne toimivat hyvin jäänmurtajina."
+      },
+      {
+        "q": "Miten kumpi vai kampi -peliä pelataan työssä?",
+        "a": "Kysy yksi kysymys ja kierrä tiimi läpi, tai anna kaikkien äänestää chatissa samanaikaisesti. Kysy muutamalta ihmiseltä, miksi he valitsivat kyseisen vaihtoehdon – siitä keskustelu käynnistyy."
+      },
+      {
+        "q": "Sopivatko kumpi vai kampi -kysymykset virtuaalisiin palavereihin?",
+        "a": "Kyllä. Ne eivät vaadi järjestelyjä tai valmistautumista, jokainen voi vastata yhdellä sanalla, ja ne toimivat aivan yhtä hyvin chattiin kirjoitettuna kuin ääneen sanottuna."
+      },
+      {
+        "q": "Montako kysymystä kannattaa kysyä?",
+        "a": "Kaksi tai kolme palaverin avaamiseen, tai nopea viiden pikakysymyksen kierros ryhmän herättelemiseksi. Pidä pituus muutamassa minuutissa."
+      }
+    ]
+  },
+  "meetingMinutes": {
+    "label": "Palaverimuistiopohja",
+    "meta": {
+      "title": "Palaverimuistiopohja: näin teet muistiinpanoja, joita oikeasti luetaan",
+      "description": "Kopioitava palaverimuistiopohja, mitä siihen kannattaa sisällyttää ja mitä jättää pois, esimerkki sekä ohjeet muistion tekemiseen ja jakamiseen etäpalaverissa."
+    },
+    "title": "Palaverimuistiopohja, <em>jota ihmiset oikeasti lukevat.</em>",
+    "intro": "Palaverimuistio on lyhyt kirjallinen dokumentti siitä, mitä palaverissa päätettiin ja kuka tekee mitäkin seuraavaksi. Hyvä muistio on luettu minuutissa ja säästää seuraavan palaverin saman asian kertaamiselta. Tässä on kopioitava pohja, ohjeet siitä, mitä siihen kuuluu, esimerkki sekä vinkit muistion tekemiseen etäpalaverissa.",
+    "sections": [
+      {
+        "title": "Mitä varten muistio on",
+        "body": [
+          "Muistio ei ole sanatarkka pöytäkirja. Kukaan ei lue sanatarkkaa selostusta, ja sellaisen kirjoittaminen sulkee muistiinpanojen tekijän keskustelun ulkopuolelle.",
+          "Kirjoita ylös asiat, joilla on merkitystä ensi viikolla: mitä päätettiin, mikä jäi avoimeksi ja kuka lupasi tehdä mitä ja mihin mennessä. Jos joku ei päässyt palaveriin, muistion pitäisi riittää siihen, että hän voi toimia sen pohjalta."
+        ]
+      },
+      {
+        "title": "Palaverimuistiopohja",
+        "body": [
+          "Kopioi tämä muistiinpanoihisi tai tiimichattiin palaverin alussa ja täytä sitä matkan varrella."
+        ],
+        "table": {
+          "head": [
+            "Osio",
+            "Mitä kirjoittaa"
+          ],
+          "rows": [
+            [
+              "Palaveri",
+              "Nimi, päivämäärä ja osallistujat"
+            ],
+            [
+              "Tarkoitus",
+              "Yksi rivi: miksi palaveri pidettiin"
+            ],
+            [
+              "Päätökset",
+              "Jokainen päätös yhdellä lauseella, kuten siitä sovittiin"
+            ],
+            [
+              "Tehtävät",
+              "Mitä, kuka ja mihin mennessä, yksi per rivi"
+            ],
+            [
+              "Avoimet kysymykset",
+              "Mikä jäi päättämättä ja kuka selvittää asiaa eteenpäin"
+            ],
+            [
+              "Seuraava palaveri",
+              "Milloin, ja valmisteltavat asiat"
+            ]
+          ],
+          "note": "Kuusi lyhyttä osiota. Jos jokin osio on tyhjä, jätä se pois sen sijaan, että kirjoittaisit ”ei ole”."
+        }
+      },
+      {
+        "title": "Mitä muistioon kirjataan",
+        "items": [
+          {
+            "title": "Päätökset sanasta sanaan",
+            "body": "Kirjoita päätös siten kuin ryhmä siitä sopi, jotta kukaan ei muista myöhemmin toista versiota."
+          },
+          {
+            "title": "Tehtävät, joilla on vastuuhenkilö ja päivämäärä",
+            "body": "”Selvitä hinnoittelua” unohtuu. ”Sam: kolme hinnoitteluvaihtoehtoa perjantaihin mennessä” tulee tehdyksi."
+          },
+          {
+            "title": "Avoimet kysymykset",
+            "body": "Asiat, jotka otettiin esiin mutta joita ei ratkaistu, jotta ne eivät katoa palaverien välillä."
+          },
+          {
+            "title": "Ketkä olivat paikalla",
+            "body": "Yksi rivi. Se kertoo lukijoille, keneltä kysyä siitä, mitä sanottiin."
+          }
+        ]
+      },
+      {
+        "title": "Mitä jättää pois",
+        "items": [
+          {
+            "title": "Kuka sanoi mitä",
+            "body": "Ellei kyseessä ole virallinen kokous, joka vaatii sitä, jokaisen kommentin nimeäminen hidastaa kirjoittamista ja lukemista."
+          },
+          {
+            "title": "Koko keskustelu",
+            "body": "Yksi rivi taustoitusta päätökselle riittää. Muistio on lopputulos, ei väittely."
+          },
+          {
+            "title": "Mielipiteet palaverista",
+            "body": "Pidä muistio neutraalina. Palaute palaverin sujumisesta kuuluu retroon."
+          }
+        ]
+      },
+      {
+        "title": "Esimerkki",
+        "body": [
+          "Viikoittainen tuotepalaveri, 14. lokakuuta. Ana, Sam, Priya, Tom. Tarkoitus: päättää julkaisupäivä ja hinnoittelusivu.",
+          "Päätökset: julkaisu siirtyy torstaille 23. lokakuuta. Hinnoittelusivulla näytetään vain kuukausihinnat. Tehtävät: Sam, lopullinen hinnoitteluteksti maanantaihin mennessä. Priya, luonnos julkaisusähköpostista tiistaihin mennessä. Tom, tarkista rekisteröitymispolku mobiilissa keskiviikkoon mennessä. Avoin kysymys: tarjotaanko vuositilausta myöhemmin; Ana tuo luvut ensi viikolla. Seuraava palaveri: 21. lokakuuta."
+        ]
+      },
+      {
+        "title": "Muistion kirjoittaminen etäpalaverissa",
+        "items": [
+          {
+            "title": "Jaa muistiinpanot näytölle",
+            "body": "Kun kaikki näkevät muistion kirjoittamisen, virheet korjataan heti eikä kukaan väittele niistä myöhemmin."
+          },
+          {
+            "title": "Lue tehtävät lopuksi läpi",
+            "body": "Käytä viimeiset kaksi minuuttia jokaisen tehtävän, vastuuhenkilön ja päivämäärän lukemiseen. Se on palaverin hyödyllisin kaksiminuuttinen."
+          },
+          {
+            "title": "Kierrätä muistion kirjoittajaa",
+            "body": "Kirjoittaja ei voi johtaa keskustelua. Vuorotelkaa, älkääkä aina pyytäkö uusinta tai hiljaisinta henkilöä."
+          },
+          {
+            "title": "Julkaise ne siellä, missä tiimi työskentelee",
+            "body": "Tiimichatissa tunnin sisällä, jotta nekin, jotka eivät olleet paikalla, näkevät ne samana päivänä."
+          }
+        ]
+      },
+      {
+        "title": "Palaverin jälkeen",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Lähetä muistio",
+            "body": "Samana päivänä tiimichatissa tai kyseisen projektin kanavalla."
+          },
+          {
+            "title": "Tarkista tehtävät",
+            "body": "Aloita seuraava palaveri käymällä läpi edellisen kerran tehtävät: valmis, kesken vai jumissa."
+          },
+          {
+            "title": "Pidä ne yhdessä paikassa",
+            "body": "Yksi asiakirja tai kanava palaveria kohden, uusin ensin, jotta päätökset löytyvät myöhemmin."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloor on virtuaalinen toimisto pienille tiimeille. Palaverit pidetään palaverihuoneessa, johon kaikki astuvat sisään, ja näytönjako on käytössä muistiinpanoja varten. Tiimichat on heti kerroksen vieressä muistioiden julkaisemista varten. Se ei tee muistiinpanoja tai tallenna palavereita puolestasi. Se on ilmainen enintään 3 hengelle ja maksaa 29 $ kuukaudessa koko tiimille."
+    },
+    "faq": [
+      {
+        "q": "Mitä palaverimuistion tulisi sisältää?",
+        "a": "Osallistujat, tarkoituksen, päätökset, tehtävät vastuuhenkilöineen ja päivämäärineen, avoimet kysymykset sekä seuraavan palaverin ajankohdan."
+      },
+      {
+        "q": "Miten palaverimuistion saa kirjoitettua nopeasti?",
+        "a": "Käytä mallipohjaa, kirjoita ylös vain päätökset ja tehtävät keskustelun sijaan, ja lue tehtävät lopuksi läpi, jotta muistio on valmis palaverin päättyessä."
+      },
+      {
+        "q": "Kenen tulisi kirjoittaa muistio?",
+        "a": "Kierrättäkää vuoroa. Palaverin vetäjän ei pitäisi itse kirjoittaa muistiinpanoja, eikä tehtävän tulisi aina langeta samalle henkilölle."
+      },
+      {
+        "q": "Mitä eroa on esityslistalla ja muistiolla?",
+        "a": "Esityslista on palaverin suunnitelma, joka kirjoitetaan etukäteen. Muistio on kirjaus siitä, mitä päätettiin, ja se kirjoitetaan palaverin aikana ja sen jälkeen."
       }
     ]
   }

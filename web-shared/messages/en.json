@@ -110,7 +110,10 @@
       "menu": "Menu",
       "teams": "For teams",
       "getStarted": "Get started",
-      "lobbyLine": "See how an office works. No account needed."
+      "lobbyLine": "See how an office works. No account needed.",
+      "alternatives": "Alternatives",
+      "headToHead": "Head to head",
+      "compareGuide": "Ten virtual offices side by side, with prices for your team."
     },
     "hero": {
       "title": "A virtual office your team can walk around in.",

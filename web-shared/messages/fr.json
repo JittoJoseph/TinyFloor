@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "TinyFloor – Un bureau virtuel où l’on se promène",
-    "description": "TinyFloor est un bureau virtuel gratuit dans votre navigateur. Promenez-vous avec votre équipe sur un étage en pixel art et lancez un appel vidéo simplement en vous approchant de quelqu’un.",
+    "description": "TinyFloor est un bureau virtuel gratuit sur navigateur. Parcourez un étage pixel art en équipe et lancez un appel vidéo en vous approchant de quelqu'un.",
     "ogAlt": "Une salle TinyFloor : un étage de bureau 16 bits avec des bureaux et des coéquipiers",
     "keywords": "bureau virtuel, télétravail, chat spatial, collaboration en ligne, espace de travail virtuel, chat de proximité, chat vidéo de proximité, espace de coworking virtuel, appels vidéo dans le navigateur",
     "joinTitle": "Rejoindre la salle",
@@ -110,7 +110,10 @@
       "menu": "Menu",
       "teams": "Pour les équipes",
       "getStarted": "Commencer",
-      "lobbyLine": "Découvrez comment fonctionne un bureau. Sans compte."
+      "lobbyLine": "Découvrez comment fonctionne un bureau. Sans compte.",
+      "alternatives": "Alternatives",
+      "headToHead": "Face-à-face",
+      "compareGuide": "Dix bureaux virtuels côte à côte, avec les tarifs pour votre équipe."
     },
     "hero": {
       "title": "Un bureau virtuel dans lequel votre équipe peut se promener.",

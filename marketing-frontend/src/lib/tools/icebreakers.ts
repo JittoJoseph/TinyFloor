@@ -27,7 +27,7 @@ import zh from "@/lib/tools/icebreaker-lists/zh";
  * or assumes someone travels or drinks.
  */
 export const ICEBREAKERS_PATH = "/tools/icebreaker-questions";
-export const ICEBREAKERS_UPDATED = "2026-10-16";
+export const ICEBREAKERS_UPDATED = "2026-10-25";
 
 export interface IcebreakerGroup {
   key: string;

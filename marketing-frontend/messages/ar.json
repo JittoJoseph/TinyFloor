@@ -490,7 +490,7 @@
       "slackHuddles": {
         "label": "بديل Slack huddles",
         "meta": {
-          "title": "بديل Slack huddles: اعرف من المتاح، ثم امشِ إليه",
+          "title": "Slack huddles: الحدود، والأسعار، وبديل يُظهر من المتاح",
           "description": "مكالمة huddle في Slack اتصال لا تعرف فيه حال الطرف الآخر، وتحدّها خطة Slack المجانية بشخصين. يُظهر لك TinyFloor أولًا من المتاح، ثم تمشي إليه. مكتب افتراضي بجانب Slack، مجاني حتى 3 أشخاص، و29$ شهريًا للفريق كله."
         },
         "title": "<em>بديل Slack huddles</em> ترى فيه أولًا من المتاح.",

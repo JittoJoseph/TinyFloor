@@ -313,7 +313,7 @@ export function Plans() {
  * where the team ends up; on a phone it comes first. The fine print (per
  * office, tax, the founding price) sits once under the panel.
  */
-export function PlanCards({ className }: { className?: string }) {
+export function PlanCards({ className, level = "h3" }: { className?: string; level?: "h2" | "h3" }) {
   const t = useTranslations("homepage.pricing");
   const th = useTranslations("homepage.hero");
   const [free, pro] = PLANS;
@@ -326,6 +326,7 @@ export function PlanCards({ className }: { className?: string }) {
       <div className="mx-auto grid max-w-[460px] overflow-hidden rounded-[28px] border border-border lg:max-w-[860px] lg:grid-cols-2">
         <section className={cn(side, "bg-foreground/[0.04] lg:order-2")}>
           <PlanTop
+            level={level}
             name={t("pro.name")}
             tagline={t("pro.tagline")}
             amount={pro.price}
@@ -348,6 +349,7 @@ export function PlanCards({ className }: { className?: string }) {
 
         <section className={cn(side, "border-t border-border lg:order-1 lg:border-e lg:border-t-0")}>
           <PlanTop
+            level={level}
             name={t("free.name")}
             tagline={t("free.tagline")}
             amount={free.price}
@@ -372,11 +374,11 @@ export function PlanCards({ className }: { className?: string }) {
   );
 }
 
-/** A plan's name, what it's for, its price, and how many people it holds. */
-function PlanTop({ name, tagline, amount, per, size }: { name: string; tagline: string; amount: number; per: string; size: string }) {
+/** A plan's name, what it's for, its price, and how many people it holds. The name is an h2 where the cards come straight under the page's h1. */
+function PlanTop({ level: Name, name, tagline, amount, per, size }: { level: "h2" | "h3"; name: string; tagline: string; amount: number; per: string; size: string }) {
   return (
     <>
-      <h3 className="text-[16px] font-semibold tracking-[-0.01em]">{name}</h3>
+      <Name className="text-[16px] font-semibold tracking-[-0.01em]">{name}</Name>
       <p className="mt-1 text-[13.5px] text-muted-foreground">{tagline}</p>
       <p className="mt-6 flex items-baseline gap-1.5">
         <span className="text-[44px] font-semibold leading-none tracking-[-0.045em] sm:text-[52px]">${amount}</span>

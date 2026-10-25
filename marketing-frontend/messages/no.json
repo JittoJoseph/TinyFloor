@@ -1,6 +1,6 @@
 {
   "landing": {
-    "description": "Et virtuelt kontor for team som jobber eksternt, i nettleseren. Gå rundt i en pikselkunst-etasje med teamet ditt, og start en videosamtale bare ved å stille deg ved siden av noen.",
+    "description": "Virtuelt kontor i nettleseren for eksterne team. Gå rundt i en pikselkunst-etasje med teamet ditt, og start videosamtaler ved å stå ved siden av noen.",
     "features": [
       "Video- og taleanrop på nært hold",
       "Skjermdeling i samtaler og møter",
@@ -490,7 +490,7 @@
       "slackHuddles": {
         "label": "Alternativ til Slack-huddles",
         "meta": {
-          "title": "Alternativ til Slack-huddles: se hvem som er ledig, og gå bort",
+          "title": "Slack-huddles: begrensninger, priser og et alternativ som viser hvem som er ledig",
           "description": "En Slack-huddle er en samtale i blinde, og Slacks gratisplan begrenser den til to personer. TinyFloor viser først hvem som er ledig, så går du bort. Et virtuelt kontor ved siden av Slack, gratis for 3, 29 $ i måneden for hele teamet."
         },
         "title": "Et <em>alternativ til Slack-huddles</em> der du først ser hvem som er ledig.",
@@ -1281,7 +1281,7 @@
   "pricingPage": {
     "meta": {
       "title": "Priser: Én pris for hele kontoret",
-      "description": "TinyFloor er gratis for opptil 3 personer. Pro koster $29 i måneden for hele teamet, med møter så ofte dere trenger og prioritert hjelp. En pris per kontor, ikke per person."
+      "description": "TinyFloor er gratis for opptil 3 personer. Pro koster $29 i måneden for hele teamet, med møter så ofte dere trenger. Pris per kontor, ikke per person."
     },
     "title": "Én pris for hele kontoret.",
     "muted": "Ikke én per person.",

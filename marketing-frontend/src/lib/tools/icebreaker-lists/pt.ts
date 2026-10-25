@@ -169,7 +169,7 @@ const count = groups.reduce((sum, group) => sum + group.questions.length, 0);
 const pt: IcebreakersContent = {
   groups,
   meta: {
-    title: `${count} perguntas para quebrar o gelo no trabalho (dailies, reuniões e quem acabou de chegar)`,
+    title: `${count} perguntas quebra-gelo para o trabalho (dailies, reuniões e quem acabou de chegar)`,
     description: `${count} perguntas para quebrar o gelo no trabalho, separadas pelo tempo que você tem: rápidas para a daily, para conhecer quem acabou de chegar, sobre trabalho remoto e para retrospectivas. Sorteie uma ou veja todas.`,
   },
   eyebrow: "Ferramentas grátis",

@@ -48,7 +48,16 @@ export interface Landing {
   checked?: string;
   /** The pages in its own group to link first, closest first; otherwise the ones after it in the list. */
   related?: LandingKey[];
+  /** The day its words last changed (YYYY-MM-DD), when that's later than LANDINGS_UPDATED. */
+  updated?: string;
 }
+
+/**
+ * The day the pages written for a search last changed together (YYYY-MM-DD): their
+ * shared parts, like the related pages and guides under each. The sitemap's lastmod
+ * for each page; bump it when they change, and give one page its own `updated`.
+ */
+export const LANDINGS_UPDATED = "2026-10-25";
 
 /** Pages written for what people search (docs/search.md). Copy lives under `landings.pages.<key>`. */
 export const LANDINGS: Landing[] = [

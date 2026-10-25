@@ -2,7 +2,7 @@
   "teamBuilding": {
     "label": "Virtuelle Teambuilding-Aktivitäten",
     "meta": {
-      "title": "20 virtuelle Teambuilding-Aktivitäten, die Remote-Teams mögen",
+      "title": "20 virtuelle Teambuilding-Aktivitäten und Spiele für Remote-Teams",
       "description": "20 virtuelle Teambuilding-Aktivitäten nach Zeit sortiert: 5-Minuten-Starter, 30-Minuten-Spiele, monatliche Events und Ideen ganz ohne Meeting."
     },
     "title": "Virtuelle Teambuilding-Aktivitäten, <em>die wirklich Spaß machen.</em>",
@@ -202,7 +202,7 @@
   "meetingGames": {
     "label": "Spiele für virtuelle Meetings",
     "meta": {
-      "title": "15 schnelle Spiele für virtuelle Meetings (max. 5 Minuten)",
+      "title": "15 schnelle Icebreaker-Spiele für virtuelle Meetings (5 Minuten oder weniger)",
       "description": "15 schnelle Spiele für virtuelle Meetings ohne Vorbereitung: Gesprächsspiele, Ratespiele und Zeichenspiele, die in fünf Minuten passen."
     },
     "title": "Schnelle Spiele für <em>virtuelle Meetings.</em>",
@@ -1281,11 +1281,12 @@
         ]
       },
       {
-        "title": "Was sich 2025 geändert hat",
+        "title": "Was sich 2025 und 2026 geändert hat",
         "body": [
           "Bis September 2025 konnten kleine Teams Gather kostenlos nutzen, und zahlende Teams zahlten 7 $ pro Person im Monat oder 5,95 $ bei jährlicher Abrechnung, für die Zahl der gleichzeitig online anwesenden Personen.",
           "Am 15. September 2025 hat Gather Gather 2.0 gestartet und beide Versionen auf 15 $ pro Mitglied im Monat oder 12 $ bei jährlicher Abrechnung umgestellt. Der kostenlose Tarif endete: Büros, die bis dahin nicht upgegradet hatten, wurden geschlossen.",
-          "Wer schon zahlte, bekam Zeit zum Umstellen. Monatliche Tarife behielten ihren alten Preis bis Ende 2025 und wechselten bei der ersten Verlängerung nach dem 1. Januar 2026 auf 15 $. Teams, die sich vor der Umstellung einen Jahrestarif gesichert hatten, behielten 5,95 $ bis September 2026, viele treffen den neuen Preis also bei der diesjährigen Verlängerung."
+          "Wer schon zahlte, bekam Zeit zum Umstellen. Monatliche Tarife behielten ihren alten Preis bis Ende 2025 und wechselten bei der ersten Verlängerung nach dem 1. Januar 2026 auf 15 $. Teams, die sich vor der Umstellung einen Jahrestarif gesichert hatten, behielten 5,95 $ bis September 2026, viele treffen den neuen Preis also bei der diesjährigen Verlängerung.",
+          "Im Februar 2026 wurde Gather zu einem unabhängigen Unternehmen, und das Team, das seine KI-Produkte entwickelte, wechselte zu Figma. Gather gab an, dass sich für Kunden nichts geändert hat und die Preise wie oben geblieben sind."
         ]
       },
       {
@@ -1415,6 +1416,10 @@
       {
         "q": "Hat Gather einen kostenlosen Tarif?",
         "a": "Nein. Gather hat den kostenlosen Tarif am 15. September 2025 beendet. Stattdessen gibt es eine 30-tägige kostenlose Testphase für bis zu 50 Personen."
+      },
+      {
+        "q": "Wird Gather eingestellt?",
+        "a": "Nein. Im Februar 2026 wurde Gather als eigenständiges Unternehmen ausgegründet, das sich selbst als profitabel beschreibt, während sein KI-Team zu Figma wechselte. Gather gab an, dass sich für Kunden nichts geändert hat; die Tarife und Preise auf dieser Seite sind aktuell."
       },
       {
         "q": "Was kostet Gather für 10 Personen?",
@@ -2125,7 +2130,7 @@
   "oneOnOne": {
     "label": "Fragen fürs Einzelgespräch",
     "meta": {
-      "title": "40 Fragen fürs Einzelgespräch (1:1) für Führungskräfte und Mitarbeitende",
+      "title": "Vorlage fürs Einzelgespräch und 40 Fragen für Führungskräfte",
       "description": "40 Fragen für das Einzelgespräch, nach Thema sortiert: Check-in, Arbeitslast, Hindernisse, Feedback, Entwicklung, Team und Remote-Arbeit, plus Fragen an die eigene Führungskraft und eine einfache 1:1-Agenda."
     },
     "title": "Fragen fürs Einzelgespräch, <em>die echte Antworten bekommen.</em>",
@@ -2157,7 +2162,7 @@
         ]
       },
       {
-        "title": "Eine einfache Agenda",
+        "title": "Eine Vorlage fürs Einzelgespräch",
         "table": {
           "head": [
             "Teil",
@@ -2654,7 +2659,7 @@
   "retro": {
     "label": "Ideen für Retrospektiven",
     "meta": {
-      "title": "15 Ideen für Retrospektiven im Remote-Team (Formate und Tipps)",
+      "title": "Retrospektive-Methoden: 15 Ideen und eine Vorlage für Remote-Teams",
       "description": "15 Ideen für Retrospektiven im Remote-Team: schnelle, visuelle und tiefere Formate sowie welche für die Stimmung, dazu wie du eine Retro online moderierst und die Maßnahmen umsetzt."
     },
     "title": "Ideen für Retrospektiven, <em>für Teams, die die immer gleichen drei Fragen satthaben.</em>",
@@ -3280,6 +3285,1375 @@
       {
         "q": "Kann ich Body Doubling kostenlos nutzen?",
         "a": "Ja. Ein Video-Call mit einem Freund kostet nichts, und TinyFloor ist kostenlos für bis zu 3 Personen, sodass eine kleine Gruppe dort jeden Tag gemeinsam arbeiten kann."
+      }
+    ]
+  },
+  "teamMeetingAgenda": {
+    "label": "Agenda fürs Teammeeting",
+    "meta": {
+      "title": "Agenda-Vorlage für Teammeetings: ein wöchentliches Meeting, das funktioniert",
+      "description": "Eine Vorlage für die wöchentliche Teammeeting-Agenda zum Kopieren. Was hineingehört und was nicht, Ideen für frischen Wind und wie du es im Remote-Team in 30 Minuten durchführst."
+    },
+    "title": "Eine Teammeeting-Agenda, <em>die die halbe Stunde wert ist.</em>",
+    "intro": "Das wöchentliche Teammeeting ist der einzige Moment, in dem alle im selben Raum sind. Es sollte also das tun, was schriftliche Updates nicht können: Entscheidungen treffen, Hindernisse aus dem Weg räumen und das Teamgefühl stärken. Hier ist eine 30-Minuten-Vorlage zum Kopieren, was hineingehört, was wegfallen kann und wie es im Remote-Team gelingt.",
+    "sections": [
+      {
+        "title": "Wofür ein Teammeeting da ist",
+        "body": [
+          "Status-Updates sind der häufigste Punkt auf einer Teammeeting-Agenda und der am wenigsten nützliche. Wenn alle vorlesen, was sie getan haben, dauert das lange, und das meiste hätte eine Nachricht sein können.",
+          "Nutze das Meeting für Dinge, die Menschen zusammenbringen: Entscheidungen, die mehrere betreffen, Probleme, bei denen jemand feststeckt, Prioritäten für die Woche und ein paar Minuten, die nur dem Team gehören. Alles andere kann vorher oder nachher aufgeschrieben werden."
+        ]
+      },
+      {
+        "title": "Eine Vorlage für die wöchentliche Teammeeting-Agenda",
+        "body": [
+          "Kopiere dies in deine Kalendereinladung oder die Notizen deines Teams. Die Zeiten sind für ein Team von 5 bis 10 Personen gedacht; ein größeres Team braucht mehr Zeit für Entscheidungen, nicht für mehr Updates."
+        ],
+        "table": {
+          "head": [
+            "Teil",
+            "Zeit",
+            "Was passiert"
+          ],
+          "rows": [
+            [
+              "Check-in",
+              "3 Min.",
+              "Eine Frage, die alle in einem Satz beantworten"
+            ],
+            [
+              "Erfolge",
+              "3 Min.",
+              "Etwas, das seit letzter Woche veröffentlicht, gelöst oder gelernt wurde"
+            ],
+            [
+              "Zahlen",
+              "4 Min.",
+              "Die zwei oder drei Zahlen, auf die das Team schaut, und ob sie sich verändert haben"
+            ],
+            [
+              "Prioritäten",
+              "6 Min.",
+              "Was diese Woche am wichtigsten ist und wer die Verantwortung trägt"
+            ],
+            [
+              "Hindernisse und Entscheidungen",
+              "10 Min.",
+              "Punkte, die vorab eingetragen wurden, der Reihe nach"
+            ],
+            [
+              "Abschluss",
+              "4 Min.",
+              "Entscheidungen, Verantwortliche und Fristen, noch einmal vorgelesen"
+            ]
+          ],
+          "note": "Dreißig Minuten insgesamt. Wenn es keine Hindernisse oder Entscheidungen gibt, beendet das Meeting früher."
+        }
+      },
+      {
+        "title": "Sinnvolle Agendapunkte",
+        "items": [
+          {
+            "title": "Eine gemeinsame Liste vor dem Meeting",
+            "body": "Jeder kann unter der Woche ein Thema eintragen, mit Namen und dem, was gebraucht wird: eine Entscheidung, Rat oder einfach nur zum Teilen. Das Meeting arbeitet die Liste der Reihe nach ab."
+          },
+          {
+            "title": "Entscheidungen, als Fragen formuliert",
+            "body": "„Verschieben wir den Launch auf Donnerstag?“ wird entschieden. „Launch“ wird zehn Minuten lang diskutiert und endet ohne Ergebnis."
+          },
+          {
+            "title": "Eine Zahl pro Bereich",
+            "body": "Anmeldungen, offene Bugs, Stunden bis zur ersten Antwort: woran sich das Team tatsächlich orientiert. Sag, ob sich die Zahl verändert hat; hebe dir die Geschichte dahinter auf, wenn sie wichtig wird."
+          },
+          {
+            "title": "Wer abwesend ist",
+            "body": "Urlaube, halbe Tage und anstehende Launches, damit niemand auf jemanden wartet, der nicht da ist."
+          },
+          {
+            "title": "Danke",
+            "body": "Eine Minute, um zu nennen, wer wem geholfen hat. Das kostet nichts und ist oft der Teil, der im Gedächtnis bleibt."
+          }
+        ]
+      },
+      {
+        "title": "Was wegfallen kann",
+        "items": [
+          {
+            "title": "Reihum-Updates",
+            "body": "Bitte am Vortag schriftlich darum. Im Meeting könnt ihr dann die Zeit für die zwei Updates nutzen, die Fragen aufgeworfen haben."
+          },
+          {
+            "title": "Lange Diskussionen",
+            "body": "Wenn ein Thema länger als zehn Minuten dauert, braucht es ein eigenes, kleineres Meeting mit den betroffenen Personen."
+          },
+          {
+            "title": "Ankündigungen",
+            "body": "Veröffentliche sie im [Team-Chat](/team-chat), wo die Leute sie später lesen und darauf reagieren können."
+          },
+          {
+            "title": "Dinge, die nur zwei Personen betreffen",
+            "body": "Lass sie nach dem Meeting sprechen, oder sofort, wenn sie nebeneinander sitzen."
+          }
+        ]
+      },
+      {
+        "title": "Ideen für frischen Wind",
+        "items": [
+          {
+            "title": "Abwechselnde Moderation",
+            "body": "Jede Woche achtet eine andere Person auf die Zeit und die Liste. Das verbreitet die Gewohnheit, gute Meetings zu führen."
+          },
+          {
+            "title": "Eine fünfminütige Demo",
+            "body": "Einmal im Monat zeigt jemand live und ohne Folien, was er gebaut oder herausgefunden hat."
+          },
+          {
+            "title": "Eine bessere Einstiegsfrage",
+            "body": "„Wie war dein Wochenende?“ bringt jede Woche die gleichen Antworten. Nutze eine [Frage, die dem Team etwas Neues verrät](/guides/check-in-questions)."
+          },
+          {
+            "title": "Ab und zu ein Spiel",
+            "body": "Ein fünfminütiges [Spiel](/guides/games-for-virtual-meetings) zum Start, einmal im Monat, reicht aus, um die Stimmung zu lockern, ohne das Meeting zu sprengen."
+          },
+          {
+            "title": "Eine Woche ausfallen lassen",
+            "body": "Wenn die Liste leer ist, sag das Meeting ab. Niemand hat etwas dagegen, eine halbe Stunde zurückzubekommen, und das nächste Meeting bekommt wieder mehr Aufmerksamkeit."
+          }
+        ]
+      },
+      {
+        "title": "Durchführung im Remote-Team",
+        "body": [
+          "Bei einem Call beginnt das Meeting mit einem Link, den erst jemand suchen muss, und endet damit, dass alle plötzlich weg sind. In einem virtuellen Büro geht das Team zur gleichen Zeit in denselben [Meetingraum](/virtual-meeting-room), und wer danach noch weiterreden möchte, kann einfach an den Schreibtischen nebeneinander sitzen bleiben.",
+          "Lass Kameras optional, teile die Agenda auf dem Bildschirm, damit alle auf denselben Punkt schauen, und stelle die Notizen in den Team-Chat, bevor sich der Raum leert. Wenn das Team über verschiedene Zeitzonen verteilt ist, rotiere die Uhrzeit, damit nicht immer dieselben Personen abends online sein müssen."
+        ]
+      },
+      {
+        "title": "Nach dem Meeting",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Notizen teilen",
+            "body": "[Entscheidungen, Verantwortliche und Fristen](/guides/meeting-minutes-template), im Team-Chat, innerhalb einer Stunde."
+          },
+          {
+            "title": "Offene Punkte verschieben",
+            "body": "Alles, was nicht geschafft wurde, kommt ganz oben auf die Liste für nächste Woche oder in ein eigenes Meeting."
+          },
+          {
+            "title": "Abwesende informieren",
+            "body": "Jeweils eine Zeile zu dem, was sie betrifft, damit niemand zufällig von einer Entscheidung erfährt."
+          },
+          {
+            "title": "Die Zeit prüfen",
+            "body": "Wenn das Meeting zwei Wochen hintereinander überzogen wurde, streiche lieber einen Punkt aus der Vorlage, anstatt mehr Zeit hinzuzufügen."
+          }
+        ]
+      },
+      {
+        "title": "Agenden für andere Teammeetings",
+        "items": [
+          {
+            "title": "Kickoff-Meeting",
+            "body": "Warum das Projekt existiert (5 Minuten), wie das fertige Ergebnis aussieht (10), wer wofür verantwortlich ist (10), die ersten Meilensteine und Termine (10), Risiken und offene Fragen (10) und wie das Team in Kontakt bleibt (5). Insgesamt eine Stunde, einmal pro Projekt."
+          },
+          {
+            "title": "All-Hands-Meeting",
+            "body": "Erfolge und Dank (10 Minuten), die Zahlen, auf die es ankommt (10), was sich geändert hat und warum (15), ein Team, das seine Arbeit vorstellt (10) und Fragen von allen (15). Eine Stunde, monatlich oder vierteljährlich, wobei die Fragen vorab gesammelt werden, damit auch ruhigere Personen zu Wort kommen."
+          },
+          {
+            "title": "Daily Standup",
+            "body": "Zehn bis fünfzehn Minuten: woran jede Person heute arbeitet und was sie blockiert. Unsere [Vorlage für das Daily Standup](/tools/daily-standup-template) enthält die Fragen und eine schriftliche Version für Teams in verschiedenen Zeitzonen."
+          },
+          {
+            "title": "Retrospektive",
+            "body": "Was gut lief, was nicht und was geändert werden sollte, alle zwei bis vier Wochen. Siehe [Ideen für Retrospektiven](/guides/retrospective-ideas) für Formate, die für Abwechslung sorgen."
+          },
+          {
+            "title": "One-on-One",
+            "body": "Dreißig Minuten zwischen einer Führungskraft und einer Person, geleitet von deren Liste statt der der Führungskraft. Nutze unsere [Vorlage und Fragen für One-on-Ones](/guides/one-on-one-meeting-questions)."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Wo TinyFloor passt",
+      "body": "TinyFloor ist ein virtuelles Büro für kleine Teams. Das wöchentliche Meeting findet im Meetingraum statt, in den alle hineingehen – mit Video, Bildschirmfreigabe und einem Whiteboard. Danach sind alle wieder an ihren Schreibtischen auf derselben Etage, nur einen kurzen Weg entfernt, falls noch etwas zu besprechen ist. Es ist kostenlos für bis zu 3 Personen und kostet $29 im Monat für das gesamte Team."
+    },
+    "faq": [
+      {
+        "q": "Was sollte auf einer Teammeeting-Agenda stehen?",
+        "a": "Ein kurzer Check-in, Erfolge, die wenigen Zahlen, auf die das Team schaut, die Prioritäten dieser Woche, vorab eingetragene Hindernisse und Entscheidungen sowie ein Abschluss mit Verantwortlichen und Fristen. Überlass routinemäßige Status-Updates dem Schriftlichen."
+      },
+      {
+        "q": "Wie lange sollte ein wöchentliches Teammeeting dauern?",
+        "a": "Etwa 30 Minuten für ein Team von 5 bis 10 Personen. Wenn es ständig überzieht, liegt das Problem meist an zu vielen Updates oder einer Diskussion, die ein eigenes Meeting bräuchte."
+      },
+      {
+        "q": "Wie macht man Teammeetings weniger langweilig?",
+        "a": "Streiche die Updates, wechsle die Moderation ab, nutze eine Einstiegsfrage, die dem Team etwas Neues verrät, und zeige ab und zu echte Arbeit. Ein Meeting, das früher endet, weil es nichts zu entscheiden gibt, wird selten als langweilig empfunden."
+      },
+      {
+        "q": "Wer sollte das Teammeeting leiten?",
+        "a": "Nicht immer die Führungskraft. Eine abwechselnde Moderation hält die Leute engagiert und lehrt alle, auf die Zeit zu achten und eine Diskussion zu lenken."
+      },
+      {
+        "q": "Sollte die Agenda vor dem Meeting geteilt werden?",
+        "a": "Ja. Eine gemeinsame Liste, zu der jeder unter der Woche etwas hinzufügen kann, sorgt dafür, dass das Meeting der Reihe nach mit dem beginnt, was die Leute tatsächlich brauchen."
+      },
+      {
+        "q": "Was sollte auf der Agenda eines Kickoff-Meetings stehen?",
+        "a": "Warum das Projekt existiert, wie das fertige Ergebnis aussieht, wer wofür verantwortlich ist, die ersten Meilensteine, Risiken und offene Fragen und wie das Team in Kontakt bleibt. Etwa eine Stunde, einmal zu Beginn."
+      }
+    ]
+  },
+  "checkInQuestions": {
+    "label": "Fragen zum Einstieg",
+    "meta": {
+      "title": "50 Check-in-Fragen für Meetings: schnell, tiefgründig und lustig",
+      "description": "50 Check-in-Fragen für den Start von Teammeetings, Standups oder Einzelgesprächen: schnelle Ein-Wort-Runden, Fragen zur Arbeit, tiefgründige und lustige Fragen sowie Fragen für Remote-Teams."
+    },
+    "title": "Check-in-Fragen, <em>um jedes Meeting zu eröffnen.</em>",
+    "intro": "Ein Check-in ist eine Frage, die alle zu Beginn eines Meetings beantworten, in einem Satz oder einem Wort. So kommt jede Stimme früh zu Wort, du erfährst, wie es den Leuten wirklich geht, und es dauert nur zwei oder drei Minuten. Hier sind 50 Fragen zur Auswahl, sortiert nach Zeit und Thema.",
+    "sections": [
+      {
+        "title": "So gelingt ein Check-in",
+        "items": [
+          {
+            "title": "Eine Frage, alle antworten",
+            "body": "Geht der Reihe nach vor oder lasst die letzte Person die nächste bestimmen. Passen ist erlaubt."
+          },
+          {
+            "title": "Antworten kurz halten",
+            "body": "Ein Wort oder ein Satz. Wenn ein Thema mehr Zeit braucht, notiert es und kommt nach dem Meeting darauf zurück."
+          },
+          {
+            "title": "Die Frage an das Meeting anpassen",
+            "body": "Eine schnelle Runde vor dem [Standup](/virtual-standup), eine tiefgründigere Frage vor der [Retro](/guides/retrospective-ideas) oder dem [Einzelgespräch](/guides/one-on-one-meeting-questions)."
+          },
+          {
+            "title": "Antworte selbst zuerst",
+            "body": "Wer das Meeting leitet, fängt an und gibt Länge und Ton vor."
+          }
+        ]
+      },
+      {
+        "title": "Schnelle Check-ins (ein Wort oder eine Zahl)",
+        "items": [
+          {
+            "title": "Mit welchem Wort kommst du heute an?",
+            "detail": "Schnell",
+            "body": "Einfach und überraschend ehrlich."
+          },
+          {
+            "title": "Auf einer Skala von 1 bis 10, wie ist deine Energie?",
+            "detail": "Schnell",
+            "body": "Hilfreich, um zu entscheiden, wie viel ins Meeting passt."
+          },
+          {
+            "title": "Wie ist das Wetter gerade in deinem Kopf?",
+            "detail": "Schnell",
+            "body": "Eine sanftere Art zu fragen, wie es jemandem geht."
+          },
+          {
+            "title": "Grün, Gelb oder Rot für diese Woche?",
+            "detail": "Schnell",
+            "body": "Ein schnelles Bild der Arbeitslast vor der Planung."
+          },
+          {
+            "title": "Was beschäftigt dich gerade, das nichts mit diesem Meeting zu tun hat?",
+            "detail": "Schnell",
+            "body": "Es laut auszusprechen macht es oft leichter, es beiseite zu schieben."
+          },
+          {
+            "title": "Kaffee, Tee oder heute etwas anderes?",
+            "detail": "Schnell",
+            "body": "Unverfänglich, gut für ein neues Team."
+          },
+          {
+            "title": "Welches Emoji beschreibt deine bisherige Woche?",
+            "detail": "Schnell",
+            "body": "Funktioniert gut, wenn es alle gleichzeitig in den Chat schreiben."
+          },
+          {
+            "title": "Wie viele Stunden hast du ungefähr geschlafen?",
+            "detail": "Schnell",
+            "body": "Nur für Teams, die sich damit wohlfühlen."
+          },
+          {
+            "title": "Worauf freust du dich diese Woche?",
+            "detail": "Schnell",
+            "body": "Startet das Meeting mit etwas Gutem."
+          },
+          {
+            "title": "Konzentriert, abgelenkt oder irgendwo dazwischen?",
+            "detail": "Schnell",
+            "body": "Praktisch vor einer gemeinsamen Arbeitsphase."
+          }
+        ]
+      },
+      {
+        "title": "Check-ins zur Arbeit",
+        "items": [
+          {
+            "title": "Was ist die eine Sache, die du diese Woche unbedingt fertigbekommen musst?",
+            "detail": "Arbeit",
+            "body": "Zeigt Prioritäten auf, ohne eine komplette Statusrunde zu drehen."
+          },
+          {
+            "title": "Was blockiert dich gerade?",
+            "detail": "Arbeit",
+            "body": "Bringt Probleme früh zur Sprache."
+          },
+          {
+            "title": "Was hast du gelernt, seit wir uns das letzte Mal getroffen haben?",
+            "detail": "Arbeit",
+            "body": "Verteilt Wissen im gesamten Team."
+          },
+          {
+            "title": "Worauf wartest du von jemandem aus dieser Runde?",
+            "detail": "Arbeit",
+            "body": "Macht aus verdeckten Abhängigkeiten ein kurzes Gespräch."
+          },
+          {
+            "title": "Was hat letzte Woche länger gedauert als erwartet?",
+            "detail": "Arbeit",
+            "body": "Gut vor der Planung."
+          },
+          {
+            "title": "Was würde den heutigen Tag zu einem guten Tag machen?",
+            "detail": "Arbeit",
+            "body": "Gibt allen ein kleines, erreichbares Ziel."
+          },
+          {
+            "title": "Was würdest du streichen, wenn du könntest?",
+            "detail": "Arbeit",
+            "body": "Zeigt, wo die Last zu groß ist."
+          },
+          {
+            "title": "Wer hat dir diese Woche geholfen?",
+            "detail": "Arbeit",
+            "body": "Fördert die Gewohnheit, gegenseitige Hilfe wahrzunehmen."
+          },
+          {
+            "title": "Was hast du fertiggestellt, worauf du stolz bist?",
+            "detail": "Arbeit",
+            "body": "Erfolge werden benannt, nicht nur abgehakt."
+          },
+          {
+            "title": "Welche Frage möchtest du in diesem Meeting beantwortet haben?",
+            "detail": "Arbeit",
+            "body": "Sorgt dafür, dass das Meeting abdeckt, was die Leute brauchen."
+          }
+        ]
+      },
+      {
+        "title": "Tiefgründigere Check-ins",
+        "items": [
+          {
+            "title": "Was beansprucht außerhalb der Arbeit gerade deine meiste Aufmerksamkeit?",
+            "detail": "Tiefgründig",
+            "body": "Wird nur so weit beantwortet, wie man möchte."
+          },
+          {
+            "title": "Wann hast du dich bei der Arbeit das letzte Mal so richtig nützlich gefühlt?",
+            "detail": "Tiefgründig",
+            "body": "Gut im Einzelgespräch oder in einer Retro."
+          },
+          {
+            "title": "Was fällt dir gerade schwer?",
+            "detail": "Tiefgründig",
+            "body": "Erfordert Vertrauen; antworte selbst zuerst."
+          },
+          {
+            "title": "Was würdest du an unserer Zusammenarbeit ändern?",
+            "detail": "Tiefgründig",
+            "body": "Ein guter Einstieg für eine Retro."
+          },
+          {
+            "title": "Wovon brauchst du mehr von diesem Team?",
+            "detail": "Tiefgründig",
+            "body": "Macht aus Gefühlen etwas, worauf das Team reagieren kann."
+          },
+          {
+            "title": "Bei welcher Entscheidung bist du dir noch unsicher?",
+            "detail": "Tiefgründig",
+            "body": "Lädt zu Hilfe ein, ohne direkt darum zu bitten."
+          },
+          {
+            "title": "Worauf bist du in letzter Zeit neugierig?",
+            "detail": "Tiefgründig",
+            "body": "Zeigt eine Seite der Menschen, die bei der Arbeit selten sichtbar wird."
+          },
+          {
+            "title": "Was würde den nächsten Monat besser machen als diesen?",
+            "detail": "Tiefgründig",
+            "body": "Gut für ein monatliches Meeting."
+          },
+          {
+            "title": "Worüber hast du deine Meinung geändert?",
+            "detail": "Tiefgründig",
+            "body": "Lebt vor, dass man auch mal falschliegen darf."
+          },
+          {
+            "title": "Wie geht es dir, ganz ehrlich?",
+            "detail": "Tiefgründig",
+            "body": "Frag es langsam und warte auf die Antwort."
+          }
+        ]
+      },
+      {
+        "title": "Lustige Check-ins",
+        "items": [
+          {
+            "title": "Was war das Beste, das du diese Woche gegessen hast?",
+            "detail": "Lustig",
+            "body": "Jeder hat eine Antwort."
+          },
+          {
+            "title": "Was liegt auf deinem Schreibtisch, das wir nicht sehen können?",
+            "detail": "Lustig",
+            "body": "Bringt die Leute dazu, sich umzusehen und zu lachen."
+          },
+          {
+            "title": "Wenn der heutige Tag ein Filmgenre wäre, welches wäre es?",
+            "detail": "Lustig",
+            "body": "Ein schnelles, spielerisches Bild der Woche."
+          },
+          {
+            "title": "Was ist eine Kleinigkeit, die dich kürzlich glücklich gemacht hat?",
+            "detail": "Lustig",
+            "body": "Wird oft zu den herzlichsten Minuten des Meetings."
+          },
+          {
+            "title": "Welcher Ohrwurm geht dir gerade durch den Kopf?",
+            "detail": "Lustig",
+            "body": "Optional: Spielt zehn Sekunden davon ab."
+          },
+          {
+            "title": "Ohne welche App hättest du diese Woche nicht leben können?",
+            "detail": "Lustig",
+            "body": "Führt oft zu nützlichen Tipps."
+          },
+          {
+            "title": "Welche Fähigkeit würdest du sofort beherrschen wollen, wenn du könntest?",
+            "detail": "Lustig",
+            "body": "Zeigt, was den Leuten wichtig ist."
+          },
+          {
+            "title": "Was war das Beste, das du in letzter Zeit gesehen oder gelesen hast?",
+            "detail": "Lustig",
+            "body": "Erstellt eine Liste mit Empfehlungen."
+          },
+          {
+            "title": "Was würde deine Abwesenheitsnotiz heute sagen?",
+            "detail": "Lustig",
+            "body": "Sorgt für kreative Antworten."
+          },
+          {
+            "title": "Fensterplatz oder Gang?",
+            "detail": "Lustig",
+            "body": "Löst nichts, aber jeder hat eine Meinung."
+          }
+        ]
+      },
+      {
+        "title": "Check-ins für Remote-Teams",
+        "items": [
+          {
+            "title": "Wie sieht die Aussicht von deinem heutigen Arbeitsplatz aus?",
+            "detail": "Remote",
+            "body": "Zeigt die Orte hinter den Videokacheln."
+          },
+          {
+            "title": "Wie spät ist es bei dir und was machst du als Nächstes?",
+            "detail": "Remote",
+            "body": "Macht Zeitzonen sichtbar."
+          },
+          {
+            "title": "Mit wem hast du heute außer uns schon gesprochen?",
+            "detail": "Remote",
+            "body": "Eine behutsame Art zu bemerken, wenn jemand den ganzen Tag allein war."
+          },
+          {
+            "title": "Wie schlägt sich dein Arbeitsplatz?",
+            "detail": "Remote",
+            "body": "Bringt kleine Probleme mit Stühlen, Bildschirmen oder dem Internet ans Licht."
+          },
+          {
+            "title": "Was vermisst du am meisten daran, im selben Raum zu arbeiten?",
+            "detail": "Remote",
+            "body": "Gut, um zu entscheiden, was das Team als Nächstes ausprobieren soll."
+          },
+          {
+            "title": "Was würdest du an der Remote-Arbeit nie wieder hergeben wollen?",
+            "detail": "Remote",
+            "body": "Endet mit einer positiven Note."
+          },
+          {
+            "title": "Wann am Tag bist du am konzentriertesten?",
+            "detail": "Remote",
+            "body": "Hilft dem Team, die Fokuszeit der anderen zu schützen."
+          },
+          {
+            "title": "Wie machst du zu Hause am liebsten Pause?",
+            "detail": "Remote",
+            "body": "Tauscht Ideen für echte Pausen aus."
+          },
+          {
+            "title": "Hat dich diese Woche etwas zum Lachen gebracht?",
+            "detail": "Remote",
+            "body": "Bringt ein paar der kleinen Büromomente zurück."
+          },
+          {
+            "title": "Was könnte das Team tun, um sich verbundener zu fühlen?",
+            "detail": "Remote",
+            "body": "Macht aus dem Check-in eine Idee."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Wo TinyFloor passt",
+      "body": "TinyFloor ist ein virtuelles Büro für kleine Teams. Check-ins finden im Meetingraum statt, den alle betreten, mit Video. Den Rest des Tages sitzen die Leute an ihren Schreibtischen auf derselben Etage, wo eine kurze Frage nur einen kleinen Spaziergang entfernt ist. Es ist kostenlos für bis zu 3 Personen und kostet 29 $ im Monat für das gesamte Team."
+    },
+    "faq": [
+      {
+        "q": "Was ist eine Check-in-Frage?",
+        "a": "Eine Frage, die alle zu Beginn eines Meetings kurz beantworten. Sie bringt alle früh zum Reden und zeigt, wie es den Leuten geht, bevor die Arbeit beginnt."
+      },
+      {
+        "q": "Was ist eine gute Check-in-Frage für ein Teammeeting?",
+        "a": "„Was ist die eine Sache, die du diese Woche unbedingt erledigen musst?“ für ein Arbeitsmeeting, oder „Ein Wort dazu, wie du heute ankommst?“, wenn die Zeit knapp ist."
+      },
+      {
+        "q": "Wie lange sollte ein Check-in dauern?",
+        "a": "Zwei oder drei Minuten bei einem Team von bis zu zehn Personen: jeweils ein Wort oder ein Satz."
+      },
+      {
+        "q": "Sind Check-ins das Gleiche wie Icebreaker?",
+        "a": "Fast. Icebreaker helfen Menschen, die sich nicht kennen, ins Gespräch zu kommen; Check-ins helfen einem Team, das bereits zusammenarbeitet, zu teilen, wie es allen geht und was sie brauchen."
+      }
+    ]
+  },
+  "discordVsSlack": {
+    "label": "Discord vs. Slack",
+    "meta": {
+      "title": "Discord vs. Slack für die Arbeit: Was sollte ein kleines Team nutzen?",
+      "description": "Discord vs. Slack für Arbeitsteams: Kosten, Sprachkanäle und Calls, Nachrichtenverlauf, Integrationen und Datenschutz, was für kleine Teams passt und eine dritte Option als virtuelles Büro."
+    },
+    "title": "Discord vs. Slack <em>für Arbeitsteams.</em>",
+    "intro": "Viele kleine Teams organisieren ihren Alltag in Discord: Es ist kostenlos, Sprachkanäle fühlen sich wie ein gemeinsamer Raum an und viele haben es ohnehin offen. Andere nutzen Slack, weil sich dort alle Arbeitstools anbinden lassen. So schneiden sie im Vergleich für Arbeitsteams ab, was wer besser kann und wann beide nicht ganz das Richtige sind.",
+    "sections": [
+      {
+        "title": "Discord und Slack im Überblick",
+        "table": {
+          "head": [
+            "",
+            "Discord",
+            "Slack"
+          ],
+          "rows": [
+            [
+              "Entwickelt für",
+              "Communitys und Gaming",
+              "Arbeit"
+            ],
+            [
+              "Preis",
+              "Kostenlos; Nitro kostet extra pro Person",
+              "Kostenloser Tarif; kostenpflichtige Tarife pro Person"
+            ],
+            [
+              "Nachrichtenverlauf",
+              "Bleibt erhalten",
+              "90 Tage im kostenlosen Tarif"
+            ],
+            [
+              "Reden",
+              "Sprachkanäle zum einfach Reingehen",
+              "Huddles: 2 Personen im kostenlosen Tarif, bis zu 50 in kostenpflichtigen Tarifen"
+            ],
+            [
+              "Integrationen",
+              "Bots",
+              "Bis zu 10 Apps kostenlos, viele weitere in kostenpflichtigen Tarifen"
+            ],
+            [
+              "Accounts",
+              "Persönliche Accounts, geteilt mit allem anderen",
+              "Ein Workspace im Besitz des Unternehmens"
+            ]
+          ],
+          "note": "Von den Slack-Preisseiten und dem Hilfe-Center sowie den eigenen Seiten von Discord, Stand Oktober 2026."
+        }
+      },
+      {
+        "title": "Wo Discord besser ist",
+        "items": [
+          {
+            "title": "Reden ist der Standard",
+            "body": "Ein Sprachkanal ist ein Raum, in dem man zusammensitzt. Reingehen, fragen, rausgehen: kein Call, den man starten muss, und niemand, den man einladen muss."
+          },
+          {
+            "title": "Kostenlos fürs ganze Team",
+            "body": "Sprach- und Videocalls, Bildschirmfreigabe und der gesamte Verlauf kosten nichts. Nitro bringt Extras pro Person, die ein Team aber nicht braucht."
+          },
+          {
+            "title": "Vielen bereits vertraut",
+            "body": "Viele Entwickler, Designer und Studierende nutzen es ohnehin jeden Tag, also gibt es nichts zu installieren oder neu zu lernen."
+          }
+        ]
+      },
+      {
+        "title": "Wo Slack besser ist",
+        "items": [
+          {
+            "title": "Für die Arbeit gemacht",
+            "body": "Threads, Suche, Workflows und die Integrationen, die man bei der Arbeit braucht – vom Kalender bis zum Issue-Tracker."
+          },
+          {
+            "title": "Das Unternehmen besitzt den Workspace",
+            "body": "Accounts, Aufbewahrungsfristen und Zugriffe werden vom Unternehmen verwaltet, und die Arbeit bleibt von den persönlichen Servern der Leute getrennt."
+          },
+          {
+            "title": "Einfacher für Kunden und neue Teammitglieder",
+            "body": "Gemeinsame Kanäle mit anderen Unternehmen, Gäste-Accounts und Single Sign-On in höheren Tarifen."
+          }
+        ]
+      },
+      {
+        "title": "Was beide nicht gut können",
+        "body": [
+          "Discord zeigt, wer in welchem Sprachkanal ist, aber nicht, wer am Schreibtisch sitzt und kurz Zeit hat. Slack zeigt einen grünen Punkt, der nur verrät, dass jemand online ist, nicht aber, ob die Person sprechen kann. Bei beiden bedeutet ein Gesprächsbeginn entweder, jemanden aus dem Nichts anzurufen, oder zu schreiben und zu warten.",
+          "Diese Lücke schließt ein [virtuelles Büro](/virtual-office): Alle haben einen Schreibtisch auf einer Etage, legen einen Status fest und gehen zum Reden einfach hin. So sieht das Team auf einen Blick, wer frei ist, und kommt unkompliziert in einem Raum zusammen. Viele Teams behalten Slack oder Discord zum Schreiben und nutzen ein Büro zum Reden."
+        ]
+      },
+      {
+        "title": "Welches du wählen solltest",
+        "items": [
+          {
+            "title": "Discord für Teams, die hauptsächlich reden",
+            "body": "Ein kleines Team, das quasi im Sprachkanal lebt, mit persönlichen Accounts kein Problem hat und kaum Integrationen braucht."
+          },
+          {
+            "title": "Slack für Teams, die hauptsächlich schreiben",
+            "body": "Ein Team, das Suche, Integrationen, Kundenkanäle und unternehmenseigene Accounts braucht und bereit ist, für Gruppenanrufe pro Person zu zahlen."
+          },
+          {
+            "title": "Ein virtuelles Büro als Ergänzung",
+            "body": "Wenn das Problem darin liegt, zu wissen, wer frei ist, und ohne Terminabsprache zu sprechen, nimm ein Büro für den Alltag dazu und behalte dein bisheriges Chat-Tool. Vergleiche [Discord für die Arbeit](/discord-for-work) und [Slack-Huddles](/slack-huddles-alternative) mit TinyFloor."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Wo TinyFloor passt",
+      "body": "TinyFloor ist ein privates virtuelles Büro für kleine Teams: ein Schreibtisch für jede Person, Statusanzeigen, Vorbeigeh-Calls, ein Meetingraum, Team-Chat und ein Whiteboard, direkt im Browser. Anders als Discord ist es für die Arbeit gebaut, und anders als Slack ist Reden der Standard. Es ist kostenlos für bis zu 3 Personen und kostet 29 $ im Monat für das gesamte Team – und es verträgt sich bestens mit dem Chat-Tool, das du bereits nutzt."
+    },
+    "faq": [
+      {
+        "q": "Ist Discord gut für die Arbeit?",
+        "a": "Für ein kleines Team, das hauptsächlich redet, ja: Sprachkanäle sind kostenlos und schnell. Es ist schwächer bei Suche, Integrationen und unternehmenseigenen Accounts, und die Arbeit liegt direkt neben den persönlichen Servern der Leute."
+      },
+      {
+        "q": "Ist Discord für Teams kostenlos?",
+        "a": "Ja. Sprach- und Videocalls, Bildschirmfreigabe und der Nachrichtenverlauf sind kostenlos. Nitro ist ein optionales, kostenpflichtiges Extra pro Person."
+      },
+      {
+        "q": "Wie viele Personen können an einem Slack-Huddle teilnehmen?",
+        "a": "Zwei im kostenlosen Tarif von Slack. Kostenpflichtige Tarife erlauben bis zu 50, davon bis zu 25 mit Video."
+      },
+      {
+        "q": "Kann man Discord und Slack zusammen nutzen?",
+        "a": "Einige Teams tun das, indem sie in Slack schreiben und in Discord reden. Zwei Tools für ein Team bedeuten jedoch meist, dass eines davon einschläft. Ein virtuelles Büro neben deinem Chat-Tool deckt das Reden ab, ohne dass ein zweiter Chat nötig ist."
+      }
+    ]
+  },
+  "thisOrThat": {
+    "label": "Entweder-oder-Fragen",
+    "meta": {
+      "title": "Entweder-oder-Fragen: 100 This-or-That-Fragen für Arbeit und Team",
+      "description": "100 Entweder-oder-Fragen für die Arbeit und Teammeetings: Blitzrunden, Essen, Reisen, Alltag, Tech, Remote-Arbeit und das Büro, mit Tipps für den Einsatz als Icebreaker."
+    },
+    "title": "Entweder-oder-Fragen <em>für die Arbeit und Teams.</em>",
+    "intro": "Eine Entweder-oder-Frage bietet zwei Optionen und bittet dich, eine auszuwählen. Die Antwort dauert nur Sekunden, es gibt keine falsche Antwort und die Begründungen sind oft das Beste daran. Sie sind ein einfacher Icebreaker für ein Teammeeting, eine neue Gruppe oder einen ruhigen Videoanruf. Hier sind 100 Fragen, sortiert nach Thema, sowie einige Ideen für ihren Einsatz.",
+    "sections": [
+      {
+        "title": "So nutzt du sie",
+        "items": [
+          {
+            "title": "Reihum im Team",
+            "body": "Stelle eine Frage und alle antworten nacheinander. Zwei oder drei Fragen reichen völlig aus, um ein Meeting zu eröffnen."
+          },
+          {
+            "title": "Frag nach dem Warum",
+            "body": "Die Auswahl dauert eine Sekunde; die Begründung bringt die Leute ins Gespräch. Erlaube eine Nachfrage pro Person."
+          },
+          {
+            "title": "Abstimmung im Chat",
+            "body": "Bei einer größeren Gruppe schreiben alle ihre Antwort gleichzeitig in den Chat, danach erklären beide Seiten ihre Wahl."
+          },
+          {
+            "title": "Blitzrunde",
+            "body": "Fünf Fragen hintereinander, ohne langes Nachdenken beantwortet. Gut, um die Runde zu Beginn einer langen Sitzung aufzuwecken."
+          }
+        ]
+      },
+      {
+        "title": "Blitzrunde",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Kaffee oder Tee?",
+            "body": ""
+          },
+          {
+            "title": "Morgen oder Abend?",
+            "body": ""
+          },
+          {
+            "title": "Katzen oder Hunde?",
+            "body": ""
+          },
+          {
+            "title": "Sonnenaufgang oder Sonnenuntergang?",
+            "body": ""
+          },
+          {
+            "title": "Sommer oder Winter?",
+            "body": ""
+          },
+          {
+            "title": "Strand oder Berge?",
+            "body": ""
+          },
+          {
+            "title": "Anruf oder Nachricht?",
+            "body": ""
+          },
+          {
+            "title": "Bücher oder Podcasts?",
+            "body": ""
+          },
+          {
+            "title": "Süß oder salzig?",
+            "body": ""
+          },
+          {
+            "title": "Stadt oder Land?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Arbeit",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Früher Start oder spätes Ende?",
+            "body": ""
+          },
+          {
+            "title": "Ruhige Konzentration oder geschäftiges Treiben?",
+            "body": ""
+          },
+          {
+            "title": "Große Projekte oder schnelle Erfolge?",
+            "body": ""
+          },
+          {
+            "title": "Alles durchplanen oder spontan entscheiden?",
+            "body": ""
+          },
+          {
+            "title": "Schriftliches Update oder kurzer Anruf?",
+            "body": ""
+          },
+          {
+            "title": "Inbox Zero oder Posteingangs-Chaos?",
+            "body": ""
+          },
+          {
+            "title": "Listen auf Papier oder in einer App?",
+            "body": ""
+          },
+          {
+            "title": "Die Idee präsentieren oder die Idee umsetzen?",
+            "body": ""
+          },
+          {
+            "title": "Ein langes Meeting oder drei kurze?",
+            "body": ""
+          },
+          {
+            "title": "Montagsmotivation oder Freitagsenergie?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Remote-Arbeit und das Büro",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Homeoffice oder Café?",
+            "body": ""
+          },
+          {
+            "title": "Kamera an oder Kamera aus?",
+            "body": ""
+          },
+          {
+            "title": "Stehschreibtisch oder bequemer Stuhl?",
+            "body": ""
+          },
+          {
+            "title": "Kopfhörer oder Lautsprecher?",
+            "body": ""
+          },
+          {
+            "title": "Schreibtisch am Fenster oder Schreibtisch an der Tür?",
+            "body": ""
+          },
+          {
+            "title": "Bürosnacks oder Mittagessen zu Hause?",
+            "body": ""
+          },
+          {
+            "title": "Podcast oder Playlist auf dem Arbeitsweg?",
+            "body": ""
+          },
+          {
+            "title": "Hybrid oder komplett remote?",
+            "body": ""
+          },
+          {
+            "title": "Hausschuhe oder Straßenschuhe im Homeoffice?",
+            "body": ""
+          },
+          {
+            "title": "Büropflanzen oder Bürotiere?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Essen und Trinken",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Pizza oder Burger?",
+            "body": ""
+          },
+          {
+            "title": "Frühstück oder Abendessen?",
+            "body": ""
+          },
+          {
+            "title": "Selbst kochen oder essen gehen?",
+            "body": ""
+          },
+          {
+            "title": "Schokolade oder Chips?",
+            "body": ""
+          },
+          {
+            "title": "Scharf oder mild?",
+            "body": ""
+          },
+          {
+            "title": "Pfannkuchen oder Waffeln?",
+            "body": ""
+          },
+          {
+            "title": "Smoothie oder Saft?",
+            "body": ""
+          },
+          {
+            "title": "Selbst abholen oder liefern lassen?",
+            "body": ""
+          },
+          {
+            "title": "Obst oder Nachtisch?",
+            "body": ""
+          },
+          {
+            "title": "Mittagessen am Schreibtisch oder woanders?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Reisen",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Fensterplatz oder Gang?",
+            "body": ""
+          },
+          {
+            "title": "Die Reise planen oder einfach drauflosreisen?",
+            "body": ""
+          },
+          {
+            "title": "Roadtrip oder Flug?",
+            "body": ""
+          },
+          {
+            "title": "Hotel oder Ferienwohnung?",
+            "body": ""
+          },
+          {
+            "title": "Museen oder Märkte?",
+            "body": ""
+          },
+          {
+            "title": "Nur Handgepäck oder Koffer aufgeben?",
+            "body": ""
+          },
+          {
+            "title": "Urlaub im Warmen oder im Kalten?",
+            "body": ""
+          },
+          {
+            "title": "Allein reisen oder mit Freunden?",
+            "body": ""
+          },
+          {
+            "title": "Altstadt oder moderne Stadt?",
+            "body": ""
+          },
+          {
+            "title": "Souvenirs oder Fotos?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Alltag",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Frühaufsteher oder Nachteule?",
+            "body": ""
+          },
+          {
+            "title": "Morgens oder abends duschen?",
+            "body": ""
+          },
+          {
+            "title": "Anruf oder Sprachnachricht?",
+            "body": ""
+          },
+          {
+            "title": "Fitnessstudio oder Spaziergang an der frischen Luft?",
+            "body": ""
+          },
+          {
+            "title": "Aufgeräumter Schreibtisch oder kreatives Chaos?",
+            "body": ""
+          },
+          {
+            "title": "Sparen oder ausgeben?",
+            "body": ""
+          },
+          {
+            "title": "Brettspiele oder Videospiele?",
+            "body": ""
+          },
+          {
+            "title": "Film zu Hause oder im Kino?",
+            "body": ""
+          },
+          {
+            "title": "Regen oder Schnee?",
+            "body": ""
+          },
+          {
+            "title": "Wochenende zu Hause oder unterwegs?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Tech",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Mac oder Windows?",
+            "body": ""
+          },
+          {
+            "title": "Android oder iPhone?",
+            "body": ""
+          },
+          {
+            "title": "Dark Mode oder Light Mode?",
+            "body": ""
+          },
+          {
+            "title": "Tastatur-Shortcuts oder Maus?",
+            "body": ""
+          },
+          {
+            "title": "Tabs oder Leerzeichen?",
+            "body": ""
+          },
+          {
+            "title": "Laptop oder Desktop-PC?",
+            "body": ""
+          },
+          {
+            "title": "Notizbuch aus Papier oder Notizen-App?",
+            "body": ""
+          },
+          {
+            "title": "Kopfhörer mit Kabel oder kabellos?",
+            "body": ""
+          },
+          {
+            "title": "Emoji-Reaktionen oder geschriebene Antworten?",
+            "body": ""
+          },
+          {
+            "title": "Jetzt aktualisieren oder später erinnern?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Unterhaltung",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Filme oder Serien?",
+            "body": ""
+          },
+          {
+            "title": "Komödie oder Thriller?",
+            "body": ""
+          },
+          {
+            "title": "Live-Konzert oder Festival?",
+            "body": ""
+          },
+          {
+            "title": "Das Buch lesen oder den Film anschauen?",
+            "body": ""
+          },
+          {
+            "title": "Direkt durchbingen oder eine Folge pro Woche?",
+            "body": ""
+          },
+          {
+            "title": "Podcast oder Hörbuch?",
+            "body": ""
+          },
+          {
+            "title": "Karaoke oder Tanzen?",
+            "body": ""
+          },
+          {
+            "title": "Klassiker oder Neuerscheinung?",
+            "body": ""
+          },
+          {
+            "title": "Spoiler oder keine Spoiler?",
+            "body": ""
+          },
+          {
+            "title": "Selbst Sport treiben oder Sport anschauen?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Hypothetisch",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Fliegen können oder unsichtbar sein?",
+            "body": ""
+          },
+          {
+            "title": "Zeitreise in die Vergangenheit oder in die Zukunft?",
+            "body": ""
+          },
+          {
+            "title": "Jede Sprache sprechen oder jedes Instrument spielen können?",
+            "body": ""
+          },
+          {
+            "title": "Lebenslang kostenloser Kaffee oder lebenslang kostenloses Mittagessen?",
+            "body": ""
+          },
+          {
+            "title": "Vier-Tage-Woche oder zwei Wochen mehr Urlaub?",
+            "body": ""
+          },
+          {
+            "title": "Nie wieder eine E-Mail beantworten oder nie wieder an einem Meeting teilnehmen?",
+            "body": ""
+          },
+          {
+            "title": "Am Strand arbeiten oder in einer Hütte im Wald?",
+            "body": ""
+          },
+          {
+            "title": "Gedanken lesen oder die Zukunft sehen?",
+            "body": ""
+          },
+          {
+            "title": "Ohne Musik leben oder ohne Filme?",
+            "body": ""
+          },
+          {
+            "title": "Berühmt sein oder reich sein?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Team und Meetings",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Laut brainstormen oder erst nachdenken und aufschreiben?",
+            "body": ""
+          },
+          {
+            "title": "Das Meeting leiten oder Protokoll schreiben?",
+            "body": ""
+          },
+          {
+            "title": "Gemeinsames Mittagessen oder Teamspiel?",
+            "body": ""
+          },
+          {
+            "title": "Erfolge groß feiern oder im Stillen?",
+            "body": ""
+          },
+          {
+            "title": "Früh um Hilfe bitten oder es erst selbst versuchen?",
+            "body": ""
+          },
+          {
+            "title": "Feedback persönlich oder schriftlich?",
+            "body": ""
+          },
+          {
+            "title": "Retro mit Haftnotizen oder eine einfache Liste?",
+            "body": ""
+          },
+          {
+            "title": "Das Quartal planen oder die Woche?",
+            "body": ""
+          },
+          {
+            "title": "Feste Meetingzeiten oder flexible?",
+            "body": ""
+          },
+          {
+            "title": "Die Demo zeigen oder die Idee erklären?",
+            "body": ""
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Wo TinyFloor passt",
+      "body": "TinyFloor ist ein virtuelles Büro für kleine Teams. Eröffne das Meeting mit einer Entweder-oder-Frage im Meetingraum, in dem alle per Video dabei sind. Den Rest des Tages sitzen die Leute an ihren Schreibtischen auf derselben Etage, wo ein kurzes Gespräch nur einen kleinen Spaziergang entfernt ist. Es ist kostenlos für bis zu 3 Personen und kostet 29 $ im Monat für das gesamte Team."
+    },
+    "faq": [
+      {
+        "q": "Was sind Entweder-oder-Fragen?",
+        "a": "Fragen, die zwei Optionen bieten und dich bitten, eine auszuwählen, wie „Kaffee oder Tee?“. Sie sind schnell beantwortet und eignen sich gut als Icebreaker."
+      },
+      {
+        "q": "Wie spielt man Entweder-oder bei der Arbeit?",
+        "a": "Stelle eine Frage und gehe reihum im Team, oder lasse alle gleichzeitig im Chat abstimmen. Frage ein paar Leute nach ihrer Begründung; so kommt das Gespräch in Gang."
+      },
+      {
+        "q": "Eignen sich Entweder-oder-Fragen für virtuelle Meetings?",
+        "a": "Ja. Sie erfordern keine Einrichtung und keine Vorbereitung, alle können mit einem Wort antworten und sie funktionieren im Chat genauso gut wie mündlich."
+      },
+      {
+        "q": "Wie viele Fragen sollte man stellen?",
+        "a": "Zwei oder drei, um ein Meeting zu eröffnen, oder eine Blitzrunde mit Physi-Fragen, um eine Gruppe aufzuwecken. Halte es auf wenige Minuten begrenzt."
+      }
+    ]
+  },
+  "meetingMinutes": {
+    "label": "Meeting-Protokoll-Vorlage",
+    "meta": {
+      "title": "Protokoll-Vorlage für Meetings: Besprechungsprotokolle, die gelesen werden",
+      "description": "Eine Meeting-Protokoll-Vorlage zum Kopieren, was hineingehört und was du weglassen kannst, ein Beispiel sowie Tipps zum Schreiben und Teilen von Protokollen in Remote-Meetings."
+    },
+    "title": "Eine Meeting-Protokoll-Vorlage, <em>die wirklich gelesen wird.</em>",
+    "intro": "Ein Meeting-Protokoll ist die kurze schriftliche Aufzeichnung darüber, was in einem Meeting beschlossen wurde und wer als Nächstes was tut. Ein gutes Protokoll ist in einer Minute gelesen und erspart dem nächsten Meeting, dieses hier zu wiederholen. Hier ist eine Vorlage zum Kopieren, was hineingehört, ein Beispiel und wie du bei Remote-Meetings Protokoll führst.",
+    "sections": [
+      {
+        "title": "Wozu ein Protokoll dient",
+        "body": [
+          "Ein Protokoll ist kein Transkript. Niemand liest eine wortwörtliche Aufzeichnung, und das Mitschreiben schließt die protokollierende Person vom Gespräch aus.",
+          "Schreibe auf, was nächste Woche wichtig ist: was beschlossen wurde, was offen blieb und wer sich bereit erklärt hat, was bis wann zu tun. Wenn jemand das Meeting verpasst hat, sollte das Protokoll ausreichen, um danach zu handeln."
+        ]
+      },
+      {
+        "title": "Eine Meeting-Protokoll-Vorlage",
+        "body": [
+          "Kopiere dies zu Beginn des Meetings in deine Notizen oder deinen Team-Chat und fülle es einfach nebenbei aus."
+        ],
+        "table": {
+          "head": [
+            "Abschnitt",
+            "Was aufgeschrieben wird"
+          ],
+          "rows": [
+            [
+              "Meeting",
+              "Name, Datum und wer anwesend war"
+            ],
+            [
+              "Zweck",
+              "Eine Zeile: Warum das Meeting stattgefunden hat"
+            ],
+            [
+              "Entscheidungen",
+              "Jede Entscheidung in einem Satz, so wie sie beschlossen wurde"
+            ],
+            [
+              "Aufgaben",
+              "Was, wer und bis wann, eine Aufgabe pro Zeile"
+            ],
+            [
+              "Offene Fragen",
+              "Was nicht geklärt wurde und wer sich darum kümmert"
+            ],
+            [
+              "Nächstes Meeting",
+              "Wann es stattfindet und was vorzubereiten ist"
+            ]
+          ],
+          "note": "Sechs kurze Abschnitte. Wenn ein Abschnitt leer ist, lass ihn weg, statt „keine“ zu schreiben."
+        }
+      },
+      {
+        "title": "Was reingehört",
+        "items": [
+          {
+            "title": "Entscheidungen im Wortlaut",
+            "body": "Schreibe die Entscheidung so auf, wie die Gruppe sie beschlossen hat, damit sich später niemand an eine andere Version erinnert."
+          },
+          {
+            "title": "Aufgaben mit Name und Datum",
+            "body": "„Preise prüfen“ wird vergessen. „Sam: drei Preisoptionen bis Freitag“ wird erledigt."
+          },
+          {
+            "title": "Offene Fragen",
+            "body": "Was angesprochen, aber nicht geklärt wurde, damit es zwischen den Meetings nicht untergeht."
+          },
+          {
+            "title": "Wer anwesend war",
+            "body": "Eine Zeile. Sie zeigt den Lesenden, wen sie zu den besprochenen Themen fragen können."
+          }
+        ]
+      },
+      {
+        "title": "Was weggelassen wird",
+        "items": [
+          {
+            "title": "Wer was gesagt hat",
+            "body": "Außer bei formellen Meetings, die das erfordern, verlangsamt das Zuordnen jedes Kommentars nur das Schreiben und Lesen."
+          },
+          {
+            "title": "Die gesamte Diskussion",
+            "body": "Eine Zeile Kontext für eine Entscheidung reicht völlig aus. Das Protokoll hält das Ergebnis fest, nicht die Debatte."
+          },
+          {
+            "title": "Meinungen über das Meeting",
+            "body": "Halte das Protokoll neutral. Feedback zum Ablauf des Meetings gehört in eine Retro."
+          }
+        ]
+      },
+      {
+        "title": "Ein Beispiel",
+        "body": [
+          "Wöchentliches Produkt-Meeting, 14. Oktober. Ana, Sam, Priya, Tom. Zweck: Launch-Datum und Preisseite beschließen.",
+          "Entscheidungen: Der Launch wird auf Donnerstag, den 23. Oktober verschoben. Die Preisseite zeigt nur monatliche Preise. Aufgaben: Sam, finaler Text für die Preise bis Montag. Priya, Entwurf der Launch-E-Mail bis Dienstag. Tom, Registrierungsprozess auf Mobilgeräten prüfen bis Mittwoch. Offene Frage: Ob später ein Jahresplan angeboten werden soll; Ana bringt nächste Woche Zahlen mit. Nächstes Meeting: 21. Oktober."
+        ]
+      },
+      {
+        "title": "Protokollieren in Remote-Meetings",
+        "items": [
+          {
+            "title": "Notizen auf dem Bildschirm teilen",
+            "body": "Wenn alle sehen, wie das Protokoll geschrieben wird, werden Fehler sofort korrigiert und später gibt es keine Diskussionen darüber."
+          },
+          {
+            "title": "Aufgaben noch einmal vorlesen",
+            "body": "Nimm dir in den letzten zwei Minuten Zeit, um jede Aufgabe, die verantwortliche Person und das Datum vorzulesen. Das sind die nützlichsten zwei Minuten des Meetings."
+          },
+          {
+            "title": "Die Rolle des Protokollanten wechseln",
+            "body": "Wer schreibt, kann nicht gleichzeitig die Diskussion leiten. Wechselt euch ab und bittet nicht immer die neueste oder leiseste Person darum."
+          },
+          {
+            "title": "Dort posten, wo das Team arbeitet",
+            "body": "Im Team-Chat, innerhalb einer Stunde, damit alle, die nicht dabei waren, sie noch am selben Tag sehen."
+          }
+        ]
+      },
+      {
+        "title": "Nach dem Meeting",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Das Protokoll verschicken",
+            "body": "Noch am selben Tag, im Team-Chat oder im Kanal für das jeweilige Projekt."
+          },
+          {
+            "title": "Aufgaben überprüfen",
+            "body": "Beginnt das nächste Meeting, indem ihr die Aufgaben vom letzten Mal durchgeht: erledigt, in Arbeit oder blockiert."
+          },
+          {
+            "title": "Alles an einem Ort aufbewahren",
+            "body": "Ein einziges Dokument oder ein Kanal pro Meeting, das Neueste zuerst, damit Entscheidungen später leicht auffindbar sind."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Wo TinyFloor passt",
+      "body": "TinyFloor ist ein virtuelles Büro für kleine Teams. Meetings finden im Meetingraum statt, den alle betreten, mit Bildschirmfreigabe für die Notizen. Der Team-Chat befindet sich direkt neben der Etage, um das Protokoll zu posten. TinyFloor schreibt keine Notizen und zeichnet keine Meetings für dich auf. Es ist kostenlos für bis zu 3 Personen und kostet 29 $ im Monat für das gesamte Team."
+    },
+    "faq": [
+      {
+        "q": "Was sollte ein Meeting-Protokoll enthalten?",
+        "a": "Wer anwesend war, der Zweck, die Entscheidungen, die Aufgaben mit verantwortlicher Person und Datum, offene Fragen und wann das nächste Meeting stattfindet."
+      },
+      {
+        "q": "Wie schreibt man ein Meeting-Protokoll schnell?",
+        "a": "Nutze eine Vorlage, schreibe lieber Entscheidungen und Aufgaben auf statt der Diskussion, und lies die Aufgaben am Ende noch einmal vor, damit das Protokoll fertig ist, wenn das Meeting endet."
+      },
+      {
+        "q": "Wer sollte das Protokoll schreiben?",
+        "a": "Wechselt euch ab. Wer das Meeting leitet, sollte nicht auch noch Protokoll führen, und es sollte nicht immer an derselben Person hängenbleiben."
+      },
+      {
+        "q": "Was ist der Unterschied zwischen einer Agenda und einem Protokoll?",
+        "a": "Die Agenda ist der Plan für das Meeting, der davor geschrieben wird. Das Protokoll ist die Aufzeichnung dessen, was beschlossen wurde, geschrieben währenddessen und danach."
       }
     ]
   }

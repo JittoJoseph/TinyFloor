@@ -1,6 +1,6 @@
 {
   "landing": {
-    "description": "Um escritório virtual para equipes remotas, no navegador. Ande por um andar em pixel art com sua equipe e comece uma videochamada só de ficar ao lado de alguém.",
+    "description": "Escritório virtual para equipes remotas no navegador. Ande por um andar em pixel art com sua equipe e comece uma videochamada só de ficar perto de alguém.",
     "features": [
       "Chamadas de vídeo e voz por proximidade",
       "Compartilhamento de tela em chamadas e reuniões",
@@ -490,7 +490,7 @@
       "slackHuddles": {
         "label": "Alternativa aos huddles do Slack",
         "meta": {
-          "title": "Alternativa aos huddles do Slack: veja quem está livre e vá até lá",
+          "title": "Huddles do Slack: limites, preços e uma alternativa que mostra quem está livre",
           "description": "Um huddle do Slack é uma ligação no escuro, e o plano grátis do Slack limita a duas pessoas. O TinyFloor mostra primeiro quem está livre, e aí você vai até lá. Um escritório virtual ao lado do Slack, grátis para 3 e US$ 29 por mês para a equipe toda."
         },
         "title": "Uma <em>alternativa aos huddles do Slack</em> em que você vê primeiro quem está livre.",
@@ -610,7 +610,7 @@
       "standup": {
         "label": "Daily virtual",
         "meta": {
-          "title": "Dailies virtuais para equipes remotas",
+          "title": "Daily scrum virtual: a reunião diária da equipe remota numa sala",
           "description": "Faça a daily num escritório virtual: todo mundo entra na sala de reunião, fala e volta para a mesa. Nenhum link de reunião para compartilhar."
         },
         "title": "Uma <em>daily virtual</em> até onde sua equipe vai andando.",
@@ -1281,7 +1281,7 @@
   "pricingPage": {
     "meta": {
       "title": "Preços: um só preço para o escritório inteiro",
-      "description": "O TinyFloor é grátis para até 3 pessoas. O Pro custa US$ 29 por mês para toda a equipe, com reuniões sempre que precisarem e ajuda prioritária. Um preço por escritório, não por pessoa."
+      "description": "TinyFloor é grátis para até 3 pessoas. O Pro é US$ 29/mês para toda a equipe, com reuniões sempre que precisarem. Preço por escritório, não por pessoa."
     },
     "title": "Um só preço para o escritório inteiro.",
     "muted": "Não um por pessoa.",

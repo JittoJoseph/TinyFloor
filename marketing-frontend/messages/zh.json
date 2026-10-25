@@ -490,7 +490,7 @@
       "slackHuddles": {
         "label": "Slack huddle 替代方案",
         "meta": {
-          "title": "Slack huddle 替代品：先看谁有空，再走过去",
+          "title": "Slack Huddles：限制、价格，以及能看到谁有空的替代方案",
           "description": "Slack 的 huddle 是一通不知道对方状态的电话，Slack 免费方案还限制为两人。TinyFloor 先让你看到谁有空，再走过去聊。放在 Slack 旁边的虚拟办公室，最多 3 人免费，整个团队每月 $29。"
         },
         "title": "先看到谁有空的 <em>Slack huddle 替代方案。</em>",

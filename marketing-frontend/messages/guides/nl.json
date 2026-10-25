@@ -2,7 +2,7 @@
   "teamBuilding": {
     "label": "Virtuele teambuildingactiviteiten",
     "meta": {
-      "title": "20 virtuele teambuildingactiviteiten waar remote teams van genieten",
+      "title": "20 virtuele teambuildingactiviteiten en spelletjes voor teams op afstand",
       "description": "20 virtuele teambuildingactiviteiten op tijd gesorteerd: starters van 5 minuten, spellen van 30 minuten, maandelijkse events en ideeën zonder meeting."
     },
     "title": "Virtuele teambuildingactiviteiten <em>waar mensen echt van genieten.</em>",
@@ -202,7 +202,7 @@
   "meetingGames": {
     "label": "Spelletjes voor online meetings",
     "meta": {
-      "title": "15 snelle spelletjes voor online meetings (5 minuten of minder)",
+      "title": "15 snelle kennismakingsspelletjes voor online meetings (5 minuten of korter)",
       "description": "15 snelle spelletjes voor online meetings zonder voorbereiding: praatspellen, raadspellen en tekenspellen die in vijf minuten passen."
     },
     "title": "Snelle spelletjes voor <em>online meetings.</em>",
@@ -1281,11 +1281,12 @@
         ]
       },
       {
-        "title": "Wat er in 2025 veranderde",
+        "title": "Wat er veranderde in 2025 en 2026",
         "body": [
           "Tot september 2025 konden kleine teams Gather gratis gebruiken, en betalende teams betaalden $ 7 per persoon per maand, of $ 5,95 bij jaarbetaling, voor het aantal mensen dat tegelijk online was.",
           "Op 15 september 2025 lanceerde Gather Gather 2.0 en zette beide versies op $ 15 per lid per maand, of $ 12 bij jaarbetaling. Het gratis abonnement stopte: kantoren die niet vóór die datum overstapten op een betaald abonnement, werden gesloten.",
-          "Wie al betaalde, kreeg tijd om zich aan te passen. Maandabonnementen hielden hun oude prijs tot eind 2025 en gingen bij de eerste verlenging na 1 januari 2026 naar $ 15. Teams die vóór de wijziging een jaarabonnement vastlegden, hielden $ 5,95 tot september 2026; veel van hen krijgen de nieuwe prijs dus bij de verlenging van dit jaar."
+          "Wie al betaalde, kreeg tijd om zich aan te passen. Maandabonnementen hielden hun oude prijs tot eind 2025 en gingen bij de eerste verlenging na 1 januari 2026 naar $ 15. Teams die vóór de wijziging een jaarabonnement vastlegden, hielden $ 5,95 tot september 2026; veel van hen krijgen de nieuwe prijs dus bij de verlenging van dit jaar.",
+          "In februari 2026 werd Gather een zelfstandig bedrijf, en het team dat de AI-producten bouwde, vertrok naar Figma. Gather liet weten dat er niets veranderde voor klanten en dat de prijzen bleven zoals hierboven."
         ]
       },
       {
@@ -1415,6 +1416,10 @@
       {
         "q": "Heeft Gather een gratis abonnement?",
         "a": "Nee. Gather stopte op 15 september 2025 met het gratis abonnement. In plaats daarvan is er een gratis proefperiode van 30 dagen voor maximaal 50 mensen."
+      },
+      {
+        "q": "Stopt Gather ermee?",
+        "a": "Nee. In februari 2026 splitste Gather zich af als een zelfstandig bedrijf dat het omschrijft als winstgevend, terwijl het AI-team overstapte naar Figma. Gather liet weten dat er niets veranderde voor klanten; de abonnementen en prijzen op deze pagina zijn actueel."
       },
       {
         "q": "Wat kost Gather voor 10 mensen?",
@@ -2125,7 +2130,7 @@
   "oneOnOne": {
     "label": "Vragen voor een één-op-één",
     "meta": {
-      "title": "40 vragen voor een één-op-één gesprek (voor managers en om je manager te stellen)",
+      "title": "Sjabloon voor een één-op-één en 40 vragen voor managers",
       "description": "40 vragen voor één-op-één gesprekken per thema: hoe het gaat, werkdruk, obstakels, feedback, groei, het team en remote werken, plus vragen voor je eigen manager en een eenvoudige agenda."
     },
     "title": "Vragen voor een één-op-één <em>die echte antwoorden opleveren.</em>",
@@ -2157,7 +2162,7 @@
         ]
       },
       {
-        "title": "Een eenvoudige agenda",
+        "title": "Een sjabloon voor een één-op-één",
         "table": {
           "head": [
             "Onderdeel",
@@ -2654,7 +2659,7 @@
   "retro": {
     "label": "Ideeën voor retrospectives",
     "meta": {
-      "title": "15 ideeën voor retrospectives in remote teams (werkvormen en tips)",
+      "title": "15 ideeën voor retrospectives en een template voor remote teams",
       "description": "15 ideeën voor retrospectives in remote teams: snelle, visuele en diepere werkvormen en vormen die de sfeer opkrikken, plus hoe je een retro online leidt en de acties laat landen."
     },
     "title": "Ideeën voor retrospectives <em>voor teams die de vaste drie vragen beu zijn.</em>",
@@ -3280,6 +3285,1375 @@
       {
         "q": "Can I body double for free?",
         "a": "Ja. Een videocall met een vriend kost niets, en TinyFloor is gratis tot 3 personen, dus een kleine groep kan er elke dag samen body doublen."
+      }
+    ]
+  },
+  "teamMeetingAgenda": {
+    "label": "Agenda voor de teamvergadering",
+    "meta": {
+      "title": "Agenda-template teamvergadering: een wekelijkse vergadering die werkt",
+      "description": "Een agenda-template voor je wekelijkse teamvergadering die je zo kunt kopiëren, wat er wel en niet in hoort, ideeën om het fris te houden en hoe je dit met een remote team in 30 minuten doet."
+    },
+    "title": "Een agenda voor de teamvergadering <em>die het halve uur waard is.</em>",
+    "intro": "De wekelijkse teamvergadering is het enige moment waarop iedereen in dezelfde ruimte is. Het moet dus doen wat geschreven updates niet kunnen: besluiten nemen, obstakels wegnemen en zorgen dat het team zich een team blijft voelen. Hier is een agenda-template van 30 minuten die je zo kunt kopiëren, wat er wel en niet in moet, en hoe je dit aanpakt met een remote team.",
+    "sections": [
+      {
+        "title": "Waar een teamvergadering voor bedoeld is",
+        "body": [
+          "Statusupdates zijn het meest voorkomende onderdeel op de agenda van een teamvergadering, en het minst nuttige. Iedereen die voorleest wat hij heeft gedaan is traag, en het meeste had gewoon een berichtje kunnen zijn.",
+          "Bewaar de vergadering voor zaken waar je elkaar echt voor nodig hebt: besluiten die meerdere mensen raken, problemen waar iemand op vastloopt, prioriteiten voor de week en een paar minuten die puur om het team draaien. Al het andere kan vooraf of achteraf worden opgeschreven."
+        ]
+      },
+      {
+        "title": "Een agenda-template voor de wekelijkse teamvergadering",
+        "body": [
+          "Kopieer dit in je agenda-uitnodiging of de aantekeningen van je team. De tijden zijn voor een team van 5 tot 10 personen; een groter team heeft meer tijd nodig voor besluiten, niet voor meer updates."
+        ],
+        "table": {
+          "head": [
+            "Onderdeel",
+            "Tijd",
+            "Wat er gebeurt"
+          ],
+          "rows": [
+            [
+              "Check-in",
+              "3 min",
+              "Eén vraag die iedereen in één zin beantwoordt"
+            ],
+            [
+              "Successen",
+              "3 min",
+              "Iets wat is opgeleverd, opgelost of geleerd sinds vorige week"
+            ],
+            [
+              "Cijfers",
+              "4 min",
+              "De twee of drie cijfers die het team in de gaten houdt, en of ze zijn veranderd"
+            ],
+            [
+              "Prioriteiten",
+              "6 min",
+              "Wat deze week het belangrijkst is, en wie de eigenaar is"
+            ],
+            [
+              "Obstakels en besluiten",
+              "10 min",
+              "Onderwerpen die vooraf zijn toegevoegd, op volgorde"
+            ],
+            [
+              "Afsluiting",
+              "4 min",
+              "Besluiten, eigenaren en deadlines, nog eens voorgelezen"
+            ]
+          ],
+          "note": "Dertig minuten in totaal. Als er niets onder obstakels en besluiten staat, sluit dan eerder af."
+        }
+      },
+      {
+        "title": "Agenda-onderwerpen die de moeite waard zijn",
+        "items": [
+          {
+            "title": "Een gedeelde lijst voorafgaand aan de vergadering",
+            "body": "Iedereen kan door de week heen een onderwerp toevoegen, met hun naam en wat ze nodig hebben: een besluit, advies of gewoon om te delen. Tijdens de vergadering lopen jullie de lijst op volgorde af."
+          },
+          {
+            "title": "Besluiten, opgeschreven als vragen",
+            "body": "'Verschuiven we de lancering naar donderdag?' leidt tot een besluit. Over 'Lancering' wordt tien minuten gediscussieerd en eindigt zonder antwoord."
+          },
+          {
+            "title": "Eén cijfer per gebied",
+            "body": "Aanmeldingen, openstaande bugs, uren tot de eerste reactie: waar het team ook echt op stuurt. Zeg of het cijfer is veranderd; bewaar het verhaal erachter voor wanneer het ertoe doet."
+          },
+          {
+            "title": "Wie er niet is",
+            "body": "Vakanties, halve dagen en lanceringen die eraan komen, zodat niemand wacht op iemand die er niet is."
+          },
+          {
+            "title": "Bedankjes",
+            "body": "Een minuut om te benoemen wie wie heeft geholpen. Het kost niets en is vaak het deel dat mensen bijblijft."
+          }
+        ]
+      },
+      {
+        "title": "Wat je kunt weglaten",
+        "items": [
+          {
+            "title": "Een rondje langs de tafel",
+            "body": "Vraag hier de dag van tevoren schriftelijk om. De vergadering kan dan de tijd besteden aan de twee updates die een vraag opriepen."
+          },
+          {
+            "title": "Lange discussies",
+            "body": "Als een onderwerp langer dan tien minuten duurt, heeft het een eigen, kleinere vergadering nodig met de mensen die het aangaat."
+          },
+          {
+            "title": "Mededelingen",
+            "body": "Plaats ze in de [teamchat](/team-chat), waar mensen ze later kunnen lezen en erop kunnen reageren."
+          },
+          {
+            "title": "Zaken die maar twee mensen aangaan",
+            "body": "Laat hen na de vergadering praten, of meteen als ze dicht bij elkaar zitten."
+          }
+        ]
+      },
+      {
+        "title": "Ideeën om het fris te houden",
+        "items": [
+          {
+            "title": "Wissel af wie de leiding heeft",
+            "body": "Elke week houdt iemand anders de tijd en de lijst bij. Zo verspreid je de gewoonte om een goede vergadering te leiden."
+          },
+          {
+            "title": "Een demo van vijf minuten",
+            "body": "Eén keer per maand laat iemand live zien wat hij heeft gebouwd of gevonden, zonder dia's."
+          },
+          {
+            "title": "Een betere check-in-vraag",
+            "body": "'Hoe was je weekend?' levert elke week dezelfde antwoorden op. Gebruik een [vraag die het team iets nieuws vertelt](/guides/check-in-questions)."
+          },
+          {
+            "title": "Af en toe een spelletje",
+            "body": "Een [spelletje](/guides/games-for-virtual-meetings) van vijf minuten aan het begin, één keer per maand, is genoeg om de sfeer te veranderen zonder de hele vergadering over te nemen."
+          },
+          {
+            "title": "Sla een week over",
+            "body": "Als de lijst leeg is, blaas de vergadering dan af. Niemand vindt het erg om een half uur terug te krijgen, en de volgende keer is iedereen er weer scherper bij."
+          }
+        ]
+      },
+      {
+        "title": "Vergaderen met een remote team",
+        "body": [
+          "Bij een video-call begint de vergadering met een link die iemand moet zoeken en eindigt deze doordat iedereen plotseling verdwijnt. In een virtueel kantoor loopt het team op hetzelfde moment dezelfde [vergaderruimte](/virtual-meeting-room) in, en de mensen die daarna nog even willen doorpraten, kunnen gewoon aan hun bureaus naast elkaar blijven zitten.",
+          "Houd camera's optioneel, deel de agenda op het scherm zodat iedereen naar hetzelfde onderwerp kijkt, en zet de aantekeningen in de teamchat voordat de ruimte leegloopt. Als het team over verschillende tijdzones verspreid is, wissel de tijden dan af zodat niet altijd dezelfde mensen 's avonds online moeten zijn."
+        ]
+      },
+      {
+        "title": "Na de vergadering",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Deel de aantekeningen",
+            "body": "[Besluiten, verantwoordelijken en deadlines](/guides/meeting-minutes-template), binnen een uur in de teamchat."
+          },
+          {
+            "title": "Verschuif de openstaande punten",
+            "body": "Alles waar jullie niet aan toe zijn gekomen, gaat naar de bovenkant van de lijst voor volgende week, of naar een eigen vergadering."
+          },
+          {
+            "title": "Praat de afwezigen bij",
+            "body": "Eén regel per persoon over wat hen aangaat, zodat niemand per ongeluk pas achteraf van een besluit hoort."
+          },
+          {
+            "title": "Let op de tijd",
+            "body": "Als de vergadering twee weken achter elkaar uitliep, schrap dan een onderdeel uit de template in plaats van extra tijd toe te voegen."
+          }
+        ]
+      },
+      {
+        "title": "Agenda's voor andere teamvergaderingen",
+        "items": [
+          {
+            "title": "Kick-off-meeting",
+            "body": "Waarom het project bestaat (5 minuten), hoe het eindresultaat eruitziet (10), wie de eigenaar is van wat (10), de eerste mijlpalen en datums (10), risico's en openstaande vragen (10), en hoe het team contact houdt (5). Een uur in totaal, eenmalig per project."
+          },
+          {
+            "title": "All-hands-meeting",
+            "body": "Successen en bedankjes (10 minuten), de cijfers die ertoe doen (10), wat er is veranderd en waarom (15), één team dat zijn werk laat zien (10), en vragen van iedereen (15). Een uur, maandelijks of per kwartaal, met vooraf verzamelde vragen zodat stillere mensen ook aan bod komen."
+          },
+          {
+            "title": "Dagelijkse stand-up",
+            "body": "Tien tot vijftien minuten: waar iedereen vandaag mee bezig is en eventuele obstakels. Ons [template voor de dagelijkse stand-up](/tools/daily-standup-template) bevat de vragen en een schriftelijke versie voor teams in verschillende tijdzones."
+          },
+          {
+            "title": "Retrospective",
+            "body": "Wat er goed ging, wat niet en wat er moet veranderen, elke twee tot vier weken. Bekijk [ideeën voor de retrospective](/guides/retrospective-ideas) voor formats die het fris houden."
+          },
+          {
+            "title": "Een-op-eengesprek",
+            "body": "Dertig minuten tussen een manager en een medewerker, geleid door hun lijst in plaats van die van de manager. Gebruik ons [template en de vragen voor een-op-eengesprekken](/guides/one-on-one-meeting-questions)."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "TinyFloor is een virtueel kantoor voor kleine teams. De wekelijkse vergadering vindt plaats in de vergaderruimte waar iedereen binnenloopt, met video, scherm delen en een whiteboard. Na afloop zit iedereen weer aan zijn bureau op dezelfde verdieping, op korte loopafstand als er nog iets moet worden besproken. Het is gratis voor maximaal 3 mensen en kost $29 per maand voor het hele team."
+    },
+    "faq": [
+      {
+        "q": "Wat hoort er op de agenda van een teamvergadering te staan?",
+        "a": "Een korte check-in, successen, de paar cijfers die het team volgt, de prioriteiten van deze week, obstakels en besluiten die vooraf zijn toegevoegd, en een afsluiting met eigenaren en deadlines. Bewaar routineuze statusupdates voor op schrift."
+      },
+      {
+        "q": "Hoe lang moet een wekelijkse teamvergadering duren?",
+        "a": "Ongeveer 30 minuten voor een team van 5 tot 10 personen. Als het steeds uitloopt, ligt het probleem meestal bij te veel updates of een discussie die een eigen vergadering nodig heeft."
+      },
+      {
+        "q": "Hoe maak je teamvergaderingen minder saai?",
+        "a": "Schrap de updates, wissel af wie de leiding heeft, gebruik een check-in-vraag die het team iets nieuws vertelt en laat af en toe echt werk zien. Een vergadering die eerder eindigt omdat er niets te besluiten valt, wordt zelden saai gevonden."
+      },
+      {
+        "q": "Wie moet de teamvergadering leiden?",
+        "a": "Niet altijd de manager. Door af te wisselen blijven mensen betrokken en leert iedereen om de tijd te bewaken en een discussie te sturen."
+      },
+      {
+        "q": "Moet de agenda voorafgaand aan de vergadering worden gedeeld?",
+        "a": "Ja. Een gedeelde lijst waar iedereen door de week heen onderwerpen aan kan toevoegen, zorgt ervoor dat de vergadering begint met wat mensen echt nodig hebben, op volgorde."
+      },
+      {
+        "q": "Wat hoort er op de agenda van een kick-off-meeting te staan?",
+        "a": "Waarom het project bestaat, hoe het eindresultaat eruitziet, wie de eigenaar is van wat, de eerste mijlpalen, risico's en openstaande vragen, en hoe het team contact houdt. Ongeveer een uur, eenmalig aan het begin."
+      }
+    ]
+  },
+  "checkInQuestions": {
+    "label": "Vragen voor de check-in",
+    "meta": {
+      "title": "50 check-in vragen voor vergaderingen: snel, diepgaand en leuk",
+      "description": "50 check-in vragen om een teamvergadering, standup of één-op-één mee te beginnen: snelle rondes van één woord, werk-check-ins, diepere vragen, leuke vragen en vragen voor remote teams."
+    },
+    "title": "Check-in vragen <em>om elke vergadering mee te beginnen.</em>",
+    "intro": "Een check-in is één vraag die iedereen aan het begin van een vergadering beantwoordt, in een zin of een woord. Het zorgt dat iedereen meteen aan het woord komt, laat zien hoe het echt met mensen gaat, en kost maar twee of drie minuten. Hier zijn er 50 om uit te kiezen, ingedeeld naar hoeveel tijd je hebt en wat je wilt weten.",
+    "sections": [
+      {
+        "title": "Hoe je een check-in houdt",
+        "items": [
+          {
+            "title": "Eén vraag, iedereen antwoordt",
+            "body": "Ga de groep rond in een vaste volgorde, of laat de laatste persoon de volgende kiezen. Geef de optie om over te slaan."
+          },
+          {
+            "title": "Houd de antwoorden kort",
+            "body": "Een woord of een zin. Als iets meer aandacht nodig heeft, noteer het dan en kom er na de vergadering op terug."
+          },
+          {
+            "title": "Stem de vraag af op de vergadering",
+            "body": "Een snelle ronde voor een [standup](/virtual-standup), een diepere vraag voor een [retro](/guides/retrospective-ideas) of een [één-op-één](/guides/one-on-one-meeting-questions)."
+          },
+          {
+            "title": "Geef zelf als eerste antwoord",
+            "body": "Degene die de vergadering leidt begint en bepaalt de lengte en de toon."
+          }
+        ]
+      },
+      {
+        "title": "Snelle check-ins (één woord of een cijfer)",
+        "items": [
+          {
+            "title": "Met welk woord kom je vandaag binnen?",
+            "detail": "Snel",
+            "body": "Eenvoudig, en verrassend eerlijk."
+          },
+          {
+            "title": "Op een schaal van één tot tien, hoe is je energie?",
+            "detail": "Snel",
+            "body": "Handig om te bepalen hoeveel er in de vergadering past."
+          },
+          {
+            "title": "Wat voor weer is het op dit moment in je hoofd?",
+            "detail": "Snel",
+            "body": "Een zachtere manier om te vragen hoe het met iemand gaat."
+          },
+          {
+            "title": "Groen, geel of rood voor deze week?",
+            "detail": "Snel",
+            "body": "Een snelle manier om de werkdruk te peilen voor de planning."
+          },
+          {
+            "title": "Wat houdt je bezig wat niets met deze vergadering te maken heeft?",
+            "detail": "Snel",
+            "body": "Het hardop uitspreken maakt het vaak makkelijker om het even opzij te zetten."
+          },
+          {
+            "title": "Koffie, thee of iets anders vandaag?",
+            "detail": "Snel",
+            "body": "Laagdrempelig, goed voor een nieuw team."
+          },
+          {
+            "title": "Welke emoji past bij je week tot nu toe?",
+            "detail": "Snel",
+            "body": "Werkt goed als iedereen het tegelijk in de chat typt."
+          },
+          {
+            "title": "Hoeveel uur heb je ongeveer geslapen?",
+            "detail": "Snel",
+            "body": "Alleen voor een team dat zich hier prettig bij voelt."
+          },
+          {
+            "title": "Waar kijk je deze week naar uit?",
+            "detail": "Snel",
+            "body": "Begint de vergadering met iets goeds."
+          },
+          {
+            "title": "Gefocust, versnipperd of ergens daartussenin?",
+            "detail": "Snel",
+            "body": "Handig voor een werksessie."
+          }
+        ]
+      },
+      {
+        "title": "Werk-check-ins",
+        "items": [
+          {
+            "title": "Wat moet je deze week echt afkrijgen?",
+            "detail": "Werk",
+            "body": "Brengt prioriteiten in kaart zonder een hele statusronde."
+          },
+          {
+            "title": "Wat blokkeert je op dit moment?",
+            "detail": "Werk",
+            "body": "Brengt problemen vroegtijdig aan het licht."
+          },
+          {
+            "title": "Wat heb je geleerd sinds onze vorige vergadering?",
+            "detail": "Werk",
+            "body": "Verspreidt kennis binnen het team."
+          },
+          {
+            "title": "Waar wacht je op van iemand uit deze vergadering?",
+            "detail": "Werk",
+            "body": "Verandert onzichtbare afhankelijkheden in een kort gesprek."
+          },
+          {
+            "title": "Wat kostte je afgelopen week meer tijd dan verwacht?",
+            "detail": "Werk",
+            "body": "Goed voor de planning."
+          },
+          {
+            "title": "Wat zou vandaag tot een goede dag maken?",
+            "detail": "Werk",
+            "body": "Geeft iedereen een klein, haalbaar doel."
+          },
+          {
+            "title": "Wat is één ding dat je zou laten vallen als het kon?",
+            "detail": "Werk",
+            "body": "Laat zien waar de werkdruk te hoog is."
+          },
+          {
+            "title": "Wie heeft je deze week geholpen?",
+            "detail": "Werk",
+            "body": "Maakt er een gewoonte van om elkaars hulp op te merken."
+          },
+          {
+            "title": "Wat heb je opgeleverd waar je trots op bent?",
+            "detail": "Werk",
+            "body": "Successen worden benoemd, niet alleen afgevinkt."
+          },
+          {
+            "title": "Op welke vraag wil je in deze vergadering antwoord krijgen?",
+            "detail": "Werk",
+            "body": "Zorgt dat de vergadering behandelt wat mensen nodig hebben."
+          }
+        ]
+      },
+      {
+        "title": "Diepere check-ins",
+        "items": [
+          {
+            "title": "Wat vraagt buiten het werk om op dit moment de meeste aandacht?",
+            "detail": "Dieper",
+            "body": "Iedereen antwoordt alleen voor zover diegene dat zelf wil."
+          },
+          {
+            "title": "Wanneer voelde je je voor het laatst echt nuttig op je werk?",
+            "detail": "Dieper",
+            "body": "Goed voor een één-op-één of een retro."
+          },
+          {
+            "title": "Wat vind je op dit moment moeilijk?",
+            "detail": "Dieper",
+            "body": "Vereist vertrouwen; geef zelf als eerste antwoord."
+          },
+          {
+            "title": "Wat zou je veranderen aan hoe we samenwerken?",
+            "detail": "Dieper",
+            "body": "Een mooie opening voor een retro."
+          },
+          {
+            "title": "Waar heb je meer van nodig van dit team?",
+            "detail": "Dieper",
+            "body": "Verandert gevoelens in iets waar het team actie op kan ondernemen."
+          },
+          {
+            "title": "Over welk besluit twijfel je nog?",
+            "detail": "Dieper",
+            "body": "Nodigt uit tot hulp zonder er direct om te vragen."
+          },
+          {
+            "title": "Waar ben je de laatste tijd nieuwsgierig naar?",
+            "detail": "Dieper",
+            "body": "Laat een kant van mensen zien die op het werk zelden naar voren komt."
+          },
+          {
+            "title": "Wat zou volgende maand beter maken dan deze?",
+            "detail": "Dieper",
+            "body": "Goed voor een maandelijkse vergadering."
+          },
+          {
+            "title": "Waarover ben je van gedachten veranderd?",
+            "detail": "Dieper",
+            "body": "Laat zien dat het oké is om ongelijk te hebben."
+          },
+          {
+            "title": "Hoe gaat het, echt?",
+            "detail": "Dieper",
+            "body": "Vraag het rustig en wacht op het antwoord."
+          }
+        ]
+      },
+      {
+        "title": "Leuke check-ins",
+        "items": [
+          {
+            "title": "Wat is het lekkerste dat je deze week hebt gegeten?",
+            "detail": "Leuk",
+            "body": "Iedereen heeft hier wel een antwoord op."
+          },
+          {
+            "title": "Wat ligt er op je bureau wat we niet kunnen zien?",
+            "detail": "Leuk",
+            "body": "Zorgt dat mensen om zich heen kijken en lachen."
+          },
+          {
+            "title": "Als vandaag een filmgenre was, welke zou het dan zijn?",
+            "detail": "Leuk",
+            "body": "Een snelle, speelse manier om de week te peilen."
+          },
+          {
+            "title": "Wat is een klein dingetje waar je onlangs blij van werd?",
+            "detail": "Leuk",
+            "body": "Blijkt vaak het warmste moment van de vergadering te zijn."
+          },
+          {
+            "title": "Welk nummer zit er in je hoofd?",
+            "detail": "Leuk",
+            "body": "Optioneel: speel er tien seconden van af."
+          },
+          {
+            "title": "Zonder welke app had je deze week niet gekund?",
+            "detail": "Leuk",
+            "body": "Levert vaak handige tips op."
+          },
+          {
+            "title": "Welke vaardigheid zou je direct willen beheersen als dat kon?",
+            "detail": "Leuk",
+            "body": "Laat zien wat mensen belangrijk vinden."
+          },
+          {
+            "title": "Wat is het leukste dat je de laatste tijd hebt gezien of gelezen?",
+            "detail": "Leuk",
+            "body": "Levert een mooie lijst met aanbevelingen op."
+          },
+          {
+            "title": "Wat zou er vandaag in je afwezigheidsassistent staan?",
+            "detail": "Leuk",
+            "body": "Levert creatieve antwoorden op."
+          },
+          {
+            "title": "Aan het raam of aan het gangpad?",
+            "detail": "Leuk",
+            "body": "Lost niets op en iedereen heeft er een mening over."
+          }
+        ]
+      },
+      {
+        "title": "Check-ins voor remote teams",
+        "items": [
+          {
+            "title": "Wat is het uitzicht vanaf je werkplek vandaag?",
+            "detail": "Remote",
+            "body": "Laat de plekken achter de videoschermen zien."
+          },
+          {
+            "title": "Hoe laat is het bij jou, en wat ga je hierna doen?",
+            "detail": "Remote",
+            "body": "Maakt tijdzones zichtbaar."
+          },
+          {
+            "title": "Met wie heb je vandaag gesproken, behalve met ons?",
+            "detail": "Remote",
+            "body": "Een vriendelijke manier om te merken of iemand al de hele dag alleen is."
+          },
+          {
+            "title": "Hoe bevalt je werkplek thuis?",
+            "detail": "Remote",
+            "body": "Brengt kleine problemen met stoelen, schermen of internet aan het licht."
+          },
+          {
+            "title": "Wat mis je het meest aan samen in dezelfde ruimte werken?",
+            "detail": "Remote",
+            "body": "Goed om te bepalen wat je als team als volgende wilt proberen."
+          },
+          {
+            "title": "Wat zou je echt nooit meer willen opgeven aan remote werken?",
+            "detail": "Remote",
+            "body": "Eindigt met een positieve noot."
+          },
+          {
+            "title": "Wanneer ben je overdag het meest gefocust?",
+            "detail": "Remote",
+            "body": "Helpt het team om elkaars tijd om te concentreren te beschermen."
+          },
+          {
+            "title": "Wat is je favoriete manier om thuis pauze te nemen?",
+            "detail": "Remote",
+            "body": "Wisselt ideeën uit voor echte pauzes."
+          },
+          {
+            "title": "Heeft iets je deze week aan het lachen gemaakt?",
+            "detail": "Remote",
+            "body": "Brengt wat van die kleine kantoormomenten terug."
+          },
+          {
+            "title": "Wat is één ding dat het team zou kunnen doen om zich meer verbonden te voelen?",
+            "detail": "Remote",
+            "body": "Verandert de check-in in een concreet idee."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "TinyFloor is een virtueel kantoor voor kleine teams. Check-ins vinden plaats in de vergaderruimte waar iedereen binnenloopt, met video. De rest van de dag zitten mensen aan hun bureau op dezelfde verdieping, waar een snelle vraag maar een klein stukje lopen is. Het is gratis voor maximaal 3 mensen en $29 per maand voor het hele team."
+    },
+    "faq": [
+      {
+        "q": "Wat is een check-in vraag?",
+        "a": "Eén vraag die iedereen aan het begin van een vergadering kort beantwoordt. Het zorgt dat iedereen meteen aan het woord komt en laat zien hoe het met mensen gaat voordat het werk begint."
+      },
+      {
+        "q": "Wat is een goede check-in-vraag voor een teamvergadering?",
+        "a": "'Wat is het ene ding dat je deze week echt moet afronden?' voor een werkvergadering, of 'Eén woord voor hoe je er vandaag bij zit?' als er weinig tijd is."
+      },
+      {
+        "q": "Hoe lang moet een check-in duren?",
+        "a": "Twee of drie minuten voor een team van maximaal tien: voor ieder een woord of een zin."
+      },
+      {
+        "q": "Zijn check-ins hetzelfde als ijsbrekers?",
+        "a": "Bijna. IJsbrekers helpen mensen die elkaar nog niet kennen om te gaan praten; check-ins helpen een team dat al samenwerkt om te delen hoe het gaat en wat ze nodig hebben."
+      }
+    ]
+  },
+  "discordVsSlack": {
+    "label": "Discord vs Slack",
+    "meta": {
+      "title": "Discord vs Slack voor werk: wat kiest een klein team?",
+      "description": "Discord vs Slack voor een werkteam: de kosten, spraak en calls, berichtgeschiedenis, integraties en privacy, wat past bij een klein team, en een derde optie gebouwd als kantoor."
+    },
+    "title": "Discord vs Slack <em>voor een werkteam.</em>",
+    "intro": "Veel kleine teams werken de hele dag in Discord: het is gratis, spraakkanalen voelen als een gedeelde ruimte en veel mensen hebben het toch al openstaan. Anderen gebruiken Slack omdat werktools daarop aansluiten. Hier zie je hoe ze verschillen voor een werkteam, wat elk beter doet en wanneer ze allebei net niet passen.",
+    "sections": [
+      {
+        "title": "Discord en Slack in één oogopslag",
+        "table": {
+          "head": [
+            "",
+            "Discord",
+            "Slack"
+          ],
+          "rows": [
+            [
+              "Gebouwd voor",
+              "Communities en gaming",
+              "Werk"
+            ],
+            [
+              "Prijs",
+              "Gratis; Nitro kost extra per persoon",
+              "Gratis plan; betaalde plannen per gebruiker"
+            ],
+            [
+              "Berichtgeschiedenis",
+              "Bewaard",
+              "90 dagen in het gratis plan"
+            ],
+            [
+              "Praten",
+              "Spraakkanalen waar je zo inloopt",
+              "Huddles: 2 personen in het gratis plan, tot 50 in betaalde plannen"
+            ],
+            [
+              "Integraties",
+              "Bots",
+              "Tot 10 apps gratis, veel meer in betaalde plannen"
+            ],
+            [
+              "Accounts",
+              "Persoonlijke accounts, gedeeld met al het andere",
+              "Een workspace in eigendom van het bedrijf"
+            ]
+          ],
+          "note": "Van de prijzenpagina en het helpcentrum van Slack, en de eigen pagina’s van Discord, gelezen in oktober 2026."
+        }
+      },
+      {
+        "title": "Waar Discord beter in is",
+        "items": [
+          {
+            "title": "Praten is de standaard",
+            "body": "Een spraakkanaal is een kamer waar mensen in zitten. Loop binnen, stel je vraag en ga weer weg: je hoeft geen call te starten of mensen uit te nodigen."
+          },
+          {
+            "title": "Gratis voor het hele team",
+            "body": "Spraak, video, scherm delen en de volledige geschiedenis kosten niets. Nitro geeft extra’s per persoon, maar een team heeft dat niet nodig."
+          },
+          {
+            "title": "Bekend bij veel mensen",
+            "body": "Veel developers, designers en studenten gebruiken het al dagelijks, dus ze hoeven niets te installeren of te leren."
+          }
+        ]
+      },
+      {
+        "title": "Waar Slack beter in is",
+        "items": [
+          {
+            "title": "Gemaakt voor werk",
+            "body": "Threads, zoeken, workflows en de integraties die je van werktools verwacht, van agenda’s tot issuetrackers."
+          },
+          {
+            "title": "Het bedrijf is eigenaar van de workspace",
+            "body": "Accounts, bewaartermijnen en toegang worden beheerd door het bedrijf, en werk blijft gescheiden van persoonlijke servers."
+          },
+          {
+            "title": "Makkelijker voor klanten en nieuwe collega’s",
+            "body": "Gedeelde kanalen met andere bedrijven, gastaccounts en single sign-on in duurdere plannen."
+          }
+        ]
+      },
+      {
+        "title": "Wat ze allebei niet goed doen",
+        "body": [
+          "Discord laat zien wie in welk spraakkanaal zit, maar niet wie aan zijn bureau zit en even tijd heeft. Slack toont een groen bolletje dat aangeeft dat iemand online is, niet of diegene kan praten. In beide gevallen betekent een gesprek beginnen dat je iemand onverwacht moet bellen of moet typen en wachten.",
+          "Dat gat vult een [virtueel kantoor](/virtual-office) op: iedereen heeft een bureau op één verdieping, stelt een status in en loopt naar elkaar toe om te praten. Zo ziet een team in één oogopslag wie er vrij is en stap je samen een kamer binnen. Veel teams houden Slack of Discord voor schrijven en gebruiken een kantoor voor praten."
+        ]
+      },
+      {
+        "title": "Welke moet je kiezen?",
+        "items": [
+          {
+            "title": "Discord, voor een team dat vooral praat",
+            "body": "Een klein team dat leeft in spraakkanalen, genoeg heeft aan persoonlijke accounts en weinig integraties nodig heeft."
+          },
+          {
+            "title": "Slack, voor een team dat vooral schrijft",
+            "body": "Een team dat zoeken, integraties, klantkanalen en accounts in bedrijfseigendom nodig heeft, en bereid is per persoon te betalen voor groepsgesprekken."
+          },
+          {
+            "title": "Een virtueel kantoor ernaast",
+            "body": "Als het probleem is dat je niet weet wie er vrij is en wilt praten zonder iets te plannen, voeg dan een kantoor toe voor overdag en houd de chattool die je al hebt. Vergelijk [Discord voor werk](/discord-for-work) en [Slack huddles](/slack-huddles-alternative) met TinyFloor."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "TinyFloor is een besloten virtueel kantoor voor kleine teams: een bureau voor iedereen, statussen, langskomen voor een gesprek, een vergaderruimte, teamchat en een whiteboard, gewoon in de browser. Het is gebouwd voor werk, anders dan Discord, en praten is de standaard, anders dan Slack. Het is gratis tot 3 personen en kost $29 per maand voor het hele team, en het past prima naast de chattool die je al gebruikt."
+    },
+    "faq": [
+      {
+        "q": "Is Discord geschikt voor werk?",
+        "a": "Voor een klein team dat vooral praat wel: spraakkanalen zijn gratis en snel. Het is minder sterk in zoeken, integraties en accounts in bedrijfseigendom, en werk staat naast de persoonlijke servers van mensen."
+      },
+      {
+        "q": "Is Discord gratis voor teams?",
+        "a": "Ja. Spraak, video, scherm delen en berichtgeschiedenis zijn gratis. Nitro is een optionele betaalde extra per persoon."
+      },
+      {
+        "q": "Hoeveel mensen kunnen er in een Slack huddle?",
+        "a": "Twee in het gratis plan van Slack. Betaalde plannen laten tot 50 mensen toe, met maximaal 25 op video."
+      },
+      {
+        "q": "Kunnen we Discord en Slack samen gebruiken?",
+        "a": "Sommige teams doen dat, schrijven in Slack en praten in Discord, maar twee tools voor één team betekent meestal dat een van de twee stilvalt. Een virtueel kantoor naast je chattool regelt het praten, zonder een tweede chat."
+      }
+    ]
+  },
+  "thisOrThat": {
+    "label": "This or that-vragen",
+    "meta": {
+      "title": "100 this or that-vragen voor werk, teams en ijsbrekers",
+      "description": "100 this or that-vragen voor werk en teamvergaderingen: snelle rondes, eten, reizen, het dagelijks leven, tech, remote werken en kantoor, met tips om ze als ijsbreker te gebruiken."
+    },
+    "title": "This or that-vragen <em>voor werk en teams.</em>",
+    "intro": "Een this or that-vraag geeft twee opties en vraagt je om er één te kiezen. Het beantwoorden kost maar een paar seconden, er is geen fout antwoord en de redenen die mensen geven zijn vaak het leukst. Ze zijn een makkelijke ijsbreker voor een teamvergadering, een nieuwe groep of een stil videogesprek. Hier zijn er 100, ingedeeld per onderwerp, met een aantal manieren om ze te gebruiken.",
+    "sections": [
+      {
+        "title": "Hoe je ze gebruikt",
+        "items": [
+          {
+            "title": "Ga het team rond",
+            "body": "Stel één vraag en iedereen antwoordt om de beurt. Twee of drie vragen zijn genoeg om een vergadering te openen."
+          },
+          {
+            "title": "Vraag naar het waarom",
+            "body": "De keuze is zo gemaakt; de reden is wat het gesprek op gang brengt. Sta één vervolgvraag per persoon toe."
+          },
+          {
+            "title": "Stem in de chat",
+            "body": "Laat bij een grotere groep iedereen tegelijkertijd het antwoord in de chat typen, waarna beide kanten hun keuze toelichten."
+          },
+          {
+            "title": "Snelle ronde",
+            "body": "Vijf vragen achter elkaar, beantwoord zonder na te denken. Goed om de boel wakker te schudden aan het begin van een lange sessie."
+          }
+        ]
+      },
+      {
+        "title": "Snelle ronde",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Koffie of thee?",
+            "body": ""
+          },
+          {
+            "title": "Ochtend of avond?",
+            "body": ""
+          },
+          {
+            "title": "Katten of honden?",
+            "body": ""
+          },
+          {
+            "title": "Zonsopgang of zonsondergang?",
+            "body": ""
+          },
+          {
+            "title": "Zomer of winter?",
+            "body": ""
+          },
+          {
+            "title": "Strand of bergen?",
+            "body": ""
+          },
+          {
+            "title": "Bellen of appen?",
+            "body": ""
+          },
+          {
+            "title": "Boeken of podcasts?",
+            "body": ""
+          },
+          {
+            "title": "Zoet of zout?",
+            "body": ""
+          },
+          {
+            "title": "Stad of platteland?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Werk",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Vroeg beginnen of laat stoppen?",
+            "body": ""
+          },
+          {
+            "title": "Stille focus of gezellige drukte?",
+            "body": ""
+          },
+          {
+            "title": "Grote projecten of snelle successen?",
+            "body": ""
+          },
+          {
+            "title": "Alles plannen of gaandeweg uitzoeken?",
+            "body": ""
+          },
+          {
+            "title": "Geschreven update of kort belletje?",
+            "body": ""
+          },
+          {
+            "title": "Inbox zero of inbox-chaos?",
+            "body": ""
+          },
+          {
+            "title": "Lijstjes op papier of in een app?",
+            "body": ""
+          },
+          {
+            "title": "Het idee presenteren of het idee bouwen?",
+            "body": ""
+          },
+          {
+            "title": "Eén lange vergadering of drie korte?",
+            "body": ""
+          },
+          {
+            "title": "Maandagmotivatie of vrijdagenergie?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Remote werken en kantoor",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Thuiswerken of in een café werken?",
+            "body": ""
+          },
+          {
+            "title": "Camera aan of camera uit?",
+            "body": ""
+          },
+          {
+            "title": "Sta-bureau of comfortabele stoel?",
+            "body": ""
+          },
+          {
+            "title": "Koptelefoon of speakers?",
+            "body": ""
+          },
+          {
+            "title": "Bureau bij het raam of bureau bij de deur?",
+            "body": ""
+          },
+          {
+            "title": "Kantoorsnacks of lunch thuis?",
+            "body": ""
+          },
+          {
+            "title": "Podcast of afspeellijst voor onderweg?",
+            "body": ""
+          },
+          {
+            "title": "Hybride of volledig remote?",
+            "body": ""
+          },
+          {
+            "title": "Sloffen of schoenen tijdens het thuiswerken?",
+            "body": ""
+          },
+          {
+            "title": "Kantoorplanten of kantoordieren?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Eten en drinken",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Pizza of burgers?",
+            "body": ""
+          },
+          {
+            "title": "Ontbijt of avondeten?",
+            "body": ""
+          },
+          {
+            "title": "Thuis koken of uit eten gaan?",
+            "body": ""
+          },
+          {
+            "title": "Chocolade of chips?",
+            "body": ""
+          },
+          {
+            "title": "Pittig of mild?",
+            "body": ""
+          },
+          {
+            "title": "Pannenkoeken of wafels?",
+            "body": ""
+          },
+          {
+            "title": "Smoothie of sap?",
+            "body": ""
+          },
+          {
+            "title": "Afhalen of laten bezorgen?",
+            "body": ""
+          },
+          {
+            "title": "Fruit of dessert?",
+            "body": ""
+          },
+          {
+            "title": "Lunch aan je bureau of ergens anders?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Reizen",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Aan het raam of aan het gangpad?",
+            "body": ""
+          },
+          {
+            "title": "De reis plannen of op de bonnefooi gaan?",
+            "body": ""
+          },
+          {
+            "title": "Roadtrip of vliegen?",
+            "body": ""
+          },
+          {
+            "title": "Hotel of vakantiehuisje?",
+            "body": ""
+          },
+          {
+            "title": "Musea of markten?",
+            "body": ""
+          },
+          {
+            "title": "Alleen handbagage of koffer inchecken?",
+            "body": ""
+          },
+          {
+            "title": "Warme vakantie of koude vakantie?",
+            "body": ""
+          },
+          {
+            "title": "Alleen reizen of met vrienden?",
+            "body": ""
+          },
+          {
+            "title": "Historische stad of moderne stad?",
+            "body": ""
+          },
+          {
+            "title": "Souvenirs of foto's?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Dagelijks leven",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Vroege vogel of nachtbraker?",
+            "body": ""
+          },
+          {
+            "title": "Douchen in de ochtend of in de avond?",
+            "body": ""
+          },
+          {
+            "title": "Bellen of een spraakbericht?",
+            "body": ""
+          },
+          {
+            "title": "De sportschool of buiten wandelen?",
+            "body": ""
+          },
+          {
+            "title": "Een opgeruimd bureau of een creatieve chaos?",
+            "body": ""
+          },
+          {
+            "title": "Sparen of uitgeven?",
+            "body": ""
+          },
+          {
+            "title": "Bordspellen of videogames?",
+            "body": ""
+          },
+          {
+            "title": "Thuis een film kijken of in de bioscoop?",
+            "body": ""
+          },
+          {
+            "title": "Regen of sneeuw?",
+            "body": ""
+          },
+          {
+            "title": "Weekend thuis of weekend op pad?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Tech",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Mac of Windows?",
+            "body": ""
+          },
+          {
+            "title": "Android of iPhone?",
+            "body": ""
+          },
+          {
+            "title": "Donkere modus of lichte modus?",
+            "body": ""
+          },
+          {
+            "title": "Sneltoetsen of muis?",
+            "body": ""
+          },
+          {
+            "title": "Tabs of spaties?",
+            "body": ""
+          },
+          {
+            "title": "Laptop of desktop?",
+            "body": ""
+          },
+          {
+            "title": "Papieren notitieblok of notitie-app?",
+            "body": ""
+          },
+          {
+            "title": "Bedrade of draadloze koptelefoon?",
+            "body": ""
+          },
+          {
+            "title": "Emoji-reacties of geschreven antwoorden?",
+            "body": ""
+          },
+          {
+            "title": "Nu bijwerken of herinner me er later aan?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Entertainment",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Films of series?",
+            "body": ""
+          },
+          {
+            "title": "Komedie of thriller?",
+            "body": ""
+          },
+          {
+            "title": "Liveconcert of festival?",
+            "body": ""
+          },
+          {
+            "title": "Het boek lezen of de film kijken?",
+            "body": ""
+          },
+          {
+            "title": "Bingen of één aflevering per week?",
+            "body": ""
+          },
+          {
+            "title": "Podcast of luisterboek?",
+            "body": ""
+          },
+          {
+            "title": "Karaoke of dansen?",
+            "body": ""
+          },
+          {
+            "title": "Klassieker of nieuwe release?",
+            "body": ""
+          },
+          {
+            "title": "Spoilers of geen spoilers?",
+            "body": ""
+          },
+          {
+            "title": "Zelf sporten of sport kijken?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Hypothetisch",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Kunnen vliegen of onzichtbaar zijn?",
+            "body": ""
+          },
+          {
+            "title": "Tijdreizen naar het verleden of de toekomst?",
+            "body": ""
+          },
+          {
+            "title": "Elke taal spreken of elk instrument kunnen bespelen?",
+            "body": ""
+          },
+          {
+            "title": "Je leven lang gratis koffie of je leven lang gratis lunch?",
+            "body": ""
+          },
+          {
+            "title": "Een vierdaagse werkweek of twee weken extra vakantie?",
+            "body": ""
+          },
+          {
+            "title": "Nooit meer een e-mail beantwoorden of nooit meer deelnemen aan een vergadering?",
+            "body": ""
+          },
+          {
+            "title": "Werken vanaf het strand of vanuit een blokhut in het bos?",
+            "body": ""
+          },
+          {
+            "title": "Gedachten lezen of de toekomst voorspellen?",
+            "body": ""
+          },
+          {
+            "title": "Leven zonder muziek of zonder films?",
+            "body": ""
+          },
+          {
+            "title": "Beroemd zijn of rijk zijn?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Team en vergaderingen",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Hardop brainstormen of eerst nadenken en schrijven?",
+            "body": ""
+          },
+          {
+            "title": "De vergadering leiden of notuleren?",
+            "body": ""
+          },
+          {
+            "title": "Teamlunch of teamspel?",
+            "body": ""
+          },
+          {
+            "title": "Successen groots vieren of in stilte?",
+            "body": ""
+          },
+          {
+            "title": "Vroeg om hulp vragen of het eerst zelf proberen?",
+            "body": ""
+          },
+          {
+            "title": "Feedback in persoon of schriftelijk?",
+            "body": ""
+          },
+          {
+            "title": "Retro met post-its of een simpele lijst?",
+            "body": ""
+          },
+          {
+            "title": "Het kwartaal plannen of de week plannen?",
+            "body": ""
+          },
+          {
+            "title": "Vaste vergadertijden of flexibele?",
+            "body": ""
+          },
+          {
+            "title": "De demo laten zien of het idee uitleggen?",
+            "body": ""
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "TinyFloor is een virtueel kantoor voor kleine teams. Open de vergadering met een this or that-vraag in de vergaderruimte met iedereen op video. De rest van de dag zitten mensen aan hun bureau op dezelfde verdieping, waar een snel praatje maar een klein stukje lopen is. Het is gratis voor maximaal 3 mensen en $29 per maand voor het hele team."
+    },
+    "faq": [
+      {
+        "q": "Wat zijn this or that-vragen?",
+        "a": "Vragen die twee opties bieden en je vragen er één te kiezen, zoals 'Koffie of thee?'. Ze zijn snel te beantwoorden en werken goed als ijsbreker."
+      },
+      {
+        "q": "Hoe gebruik je this or that op het werk?",
+        "a": "Stel één vraag en ga het team rond, of laat iedereen tegelijkertijd in de chat stemmen. Vraag een paar mensen waarom ze voor die optie hebben gekozen; dat is waar het gesprek begint."
+      },
+      {
+        "q": "Zijn this or that-vragen geschikt voor virtuele vergaderingen?",
+        "a": "Ja. Ze vereisen geen voorbereiding of installatie, iedereen kan in één woord antwoorden, en ze werken net zo goed in de chat als hardop uitgesproken."
+      },
+      {
+        "q": "Hoeveel vragen moet je stellen?",
+        "a": "Twee of drie om een vergadering te openen, of een snelle ronde van vijf om een groep wakker te schudden. Houd het bij een paar minuten."
+      }
+    ]
+  },
+  "meetingMinutes": {
+    "label": "Sjabloon voor notulen",
+    "meta": {
+      "title": "Sjabloon voor notulen: zo maak je aantekeningen die mensen echt lezen",
+      "description": "Een sjabloon voor notulen die je kunt kopiëren, wat je wel en niet opneemt, een voorbeeld, en hoe je notuleert en deelt in een remote vergadering."
+    },
+    "title": "Een sjabloon voor notulen <em>die mensen echt lezen.</em>",
+    "intro": "Notulen zijn het korte schriftelijke verslag van wat er in een vergadering is besloten en wie wat als volgende gaat doen. Goede notulen zijn in een minuut gelezen en voorkomen dat de volgende vergadering een herhaling van deze wordt. Hier is een sjabloon dat je kunt kopiëren, wat erin hoort, een voorbeeld, en hoe je notuleert als de vergadering remote is.",
+    "sections": [
+      {
+        "title": "Waar notulen voor zijn",
+        "body": [
+          "Notulen zijn geen transcriptie. Niemand leest een letterlijk verslag, en het schrijven ervan zorgt ervoor dat de notulist niet aan het gesprek kan deelnemen.",
+          "Schrijf op wat volgende week belangrijk is: wat er is besloten, wat er nog openstaat, en wie heeft toegezegd wat wanneer te doen. Als iemand de vergadering heeft gemist, moeten de notulen voldoende zijn om in actie te kunnen komen."
+        ]
+      },
+      {
+        "title": "Een sjabloon voor notulen",
+        "body": [
+          "Kopieer dit aan het begin van de vergadering in je notities of teamchat en vul het gaandeweg in."
+        ],
+        "table": {
+          "head": [
+            "Sectie",
+            "Wat schrijf je op"
+          ],
+          "rows": [
+            [
+              "Vergadering",
+              "Naam, datum en wie er waren"
+            ],
+            [
+              "Doel",
+              "Eén regel: waarom de vergadering plaatsvond"
+            ],
+            [
+              "Besluiten",
+              "Elk besluit in één zin, zoals afgesproken"
+            ],
+            [
+              "Actiepunten",
+              "Wat, wie en wanneer, één per regel"
+            ],
+            [
+              "Openstaande vragen",
+              "Wat nog niet is besloten, en wie dit oppakt"
+            ],
+            [
+              "Volgende vergadering",
+              "Wanneer, en eventuele voorbereiding"
+            ]
+          ],
+          "note": "Zes korte secties. Als een sectie leeg is, laat deze dan weg in plaats van 'geen' op te schrijven."
+        }
+      },
+      {
+        "title": "Wat neem je op",
+        "items": [
+          {
+            "title": "Besluiten, woord voor woord",
+            "body": "Schrijf het besluit op zoals de groep het heeft afgesproken, zodat niemand zich later een andere versie herinnert."
+          },
+          {
+            "title": "Actiepunten met een naam en een datum",
+            "body": "'Prijzen uitzoeken' wordt vergeten. 'Sam: drie prijsopties voor vrijdag' wordt gedaan."
+          },
+          {
+            "title": "Openstaande vragen",
+            "body": "Wat wel is besproken maar nog niet besloten, zodat het niet tussen twee vergaderingen in verdwijnt."
+          },
+          {
+            "title": "Wie er waren",
+            "body": "Eén regel. Zo weten lezers aan wie ze kunnen vragen wat er is besproken."
+          }
+        ]
+      },
+      {
+        "title": "Wat laat je weg",
+        "items": [
+          {
+            "title": "Wie wat zei",
+            "body": "Tenzij het een formele vergadering is waarbij dit moet, vertraagt het noteren van wie wat zegt het schrijven en het lezen."
+          },
+          {
+            "title": "De hele discussie",
+            "body": "Eén regel context voor een besluit is genoeg. De notulen zijn het resultaat, niet het debat."
+          },
+          {
+            "title": "Meningen over de vergadering",
+            "body": "Houd de notulen neutraal. Feedback over hoe de vergadering verliep hoort thuis in een retro."
+          }
+        ]
+      },
+      {
+        "title": "Een voorbeeld",
+        "body": [
+          "Wekelijkse productvergadering, 14 oktober. Ana, Sam, Priya, Tom. Doel: de lanceringsdatum en de prijzenpagina bepalen.",
+          "Besluiten: de lancering verschuift naar donderdag 23 oktober. De prijzenpagina toont alleen maandelijkse prijzen. Actiepunten: Sam, definitieve prijstekst voor maandag. Priya, concept-lanceringsmail voor dinsdag. Tom, controleer de aanmeldstroom op mobiel voor woensdag. Openstaande vraag: of we later een jaarlijks abonnement aanbieden; Ana neemt volgende week cijfers mee. Volgende vergadering: 21 oktober."
+        ]
+      },
+      {
+        "title": "Notuleren in een remote vergadering",
+        "items": [
+          {
+            "title": "Deel de notities op het scherm",
+            "body": "Als iedereen de notulen live geschreven ziet worden, worden fouten direct hersteld en is er achteraf geen discussie over."
+          },
+          {
+            "title": "Lees de actiepunten voor",
+            "body": "Besteed de laatste twee minuten aan het voorlezen van elk actiepunt, de eigenaar en de datum. Het zijn de nuttigste twee minuten van de vergadering."
+          },
+          {
+            "title": "Wissel de notulist af",
+            "body": "Degene die schrijft kan niet de discussie leiden. Wissel elkaar af, en vraag niet altijd de nieuwste of de stilste persoon."
+          },
+          {
+            "title": "Deel ze waar het team werkt",
+            "body": "In de teamchat, binnen een uur, zodat de mensen die er niet waren ze dezelfde dag nog zien."
+          }
+        ]
+      },
+      {
+        "title": "Na de vergadering",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Verstuur de notulen",
+            "body": "Dezelfde dag nog, in de teamchat of het kanaal van dat project."
+          },
+          {
+            "title": "Loop de actiepunten na",
+            "body": "Begin de volgende vergadering met het doorlopen van de actiepunten van de vorige keer: afgerond, mee bezig of vastgelopen."
+          },
+          {
+            "title": "Bewaar ze op één plek",
+            "body": "Eén document of kanaal per vergadering, met de nieuwste bovenaan, zodat besluiten later makkelijk terug te vinden zijn."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "TinyFloor is een virtueel kantoor voor kleine teams. Vergaderingen vinden plaats in de vergaderruimte waar iedereen binnenloopt, met schermdelen voor de notities, en de teamchat zit naast de verdieping om de notulen te delen. Het maakt geen notities en neemt geen vergaderingen voor je op. Het is gratis voor maximaal 3 mensen en $29 per maand voor het hele team."
+    },
+    "faq": [
+      {
+        "q": "Wat moet er in de notulen van een vergadering staan?",
+        "a": "Wie er waren, het doel, de besluiten, de actiepunten met een eigenaar en een datum, openstaande vragen en wanneer de volgende vergadering is."
+      },
+      {
+        "q": "Hoe schrijf je snel notulen voor een vergadering?",
+        "a": "Gebruik een sjabloon, schrijf besluiten en actiepunten op in plaats van de discussie, en lees de actiepunten aan het einde voor zodat de notulen klaar zijn zodra de vergadering is afgelopen."
+      },
+      {
+        "q": "Wie moet er notuleren?",
+        "a": "Wissel het af. Degene die de vergadering leidt moet niet ook de notities maken, en het moet niet altijd op dezelfde persoon neerkomen."
+      },
+      {
+        "q": "Wat is het verschil tussen een agenda en notulen?",
+        "a": "De agenda is het plan voor de vergadering, vooraf geschreven. De notulen zijn het verslag van wat er is besloten, geschreven tijdens en na de vergadering."
       }
     ]
   }

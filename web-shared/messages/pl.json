@@ -110,7 +110,10 @@
       "menu": "Menu",
       "teams": "Dla zespołów",
       "getStarted": "Zacznij",
-      "lobbyLine": "Zobacz, jak działa biuro. Bez zakładania konta."
+      "lobbyLine": "Zobacz, jak działa biuro. Bez zakładania konta.",
+      "alternatives": "Alternatywy",
+      "headToHead": "Bezpośrednie porównanie",
+      "compareGuide": "Dziesięć wirtualnych biur obok siebie, z cenami dla Twojego zespołu."
     },
     "hero": {
       "title": "Wirtualne biuro, po którym twój zespół może chodzić.",

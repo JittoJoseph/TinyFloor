@@ -1,6 +1,6 @@
 {
   "landing": {
-    "description": "Ein virtuelles Büro für Remote-Teams, direkt im Browser. Lauf mit deinem Team über eine Pixel-Art-Etage und starte einen Videoanruf, indem du dich einfach neben jemanden stellst.",
+    "description": "Ein virtuelles Büro für Remote-Teams im Browser. Lauf mit deinem Team über Pixel-Art-Etagen und starte Videoanrufe, indem du dich neben jemanden stellst.",
     "features": [
       "Video- und Sprachanrufe in der Nähe",
       "Bildschirmfreigabe in Anrufen und Meetings",
@@ -68,7 +68,7 @@
       "gather": {
         "label": "Gather-Alternativen",
         "meta": {
-          "title": "Die 7 besten Gather-Town-Alternativen 2026, mit Preisen für dein Team",
+          "title": "Gather Town Alternativen: die 7 besten 2026, mit Preisen für dein Team",
           "description": "Gather hat den kostenlosen Tarif beendet und berechnet jedes Mitglied. Sieben Gather-Alternativen im Vergleich: was ein Team von 8 zahlt, kostenlose Tarife, Apps und wofür jede am besten ist, mit TinyFloor darunter."
         },
         "title": "Die besten <em>Gather-Alternativen</em> 2026.",
@@ -490,7 +490,7 @@
       "slackHuddles": {
         "label": "Alternative zu Slack Huddles",
         "meta": {
-          "title": "Alternative zu Slack Huddles: erst sehen, wer frei ist, dann hingehen",
+          "title": "Slack Huddles: Limits, Preise und eine Alternative, die zeigt, wer frei ist",
           "description": "Ein Slack Huddle ist ein Anruf ins Blaue, und im Gratis-Tarif von Slack ist er auf zwei Personen begrenzt. TinyFloor zeigt zuerst, wer frei ist, dann gehst du hin. Ein virtuelles Büro neben Slack, kostenlos für 3, 29 $ im Monat für das ganze Team."
         },
         "title": "Eine <em>Alternative zu Slack Huddles</em>, bei der du zuerst siehst, wer frei ist.",
@@ -1281,7 +1281,7 @@
   "pricingPage": {
     "meta": {
       "title": "Preise: Ein Preis für das ganze Büro",
-      "description": "TinyFloor ist kostenlos für bis zu 3 Personen. Pro kostet $29 im Monat für das ganze Team, mit Meetings, so oft ihr sie braucht, und bevorzugter Hilfe. Ein Preis pro Büro, nicht pro Person."
+      "description": "TinyFloor ist kostenlos für bis zu 3 Personen. Pro kostet $29 im Monat fürs ganze Team – Meetings so oft ihr sie braucht. Preis pro Büro, nicht pro Person."
     },
     "title": "Ein Preis für das ganze Büro.",
     "muted": "Nicht einer pro Person.",

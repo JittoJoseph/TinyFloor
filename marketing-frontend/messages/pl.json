@@ -490,7 +490,7 @@
       "slackHuddles": {
         "label": "Alternatywa dla huddli w Slacku",
         "meta": {
-          "title": "Alternatywa dla huddli w Slacku: zobacz, kto jest wolny, i podejdź",
+          "title": "Huddle w Slacku: limity, cennik i alternatywa pokazująca, kto jest wolny",
           "description": "Huddle w Slacku to telefon w ciemno, a darmowy plan Slacka ogranicza go do dwóch osób. TinyFloor najpierw pokazuje, kto jest wolny, a potem podchodzisz. Wirtualne biuro obok Slacka, za darmo dla 3 osób, 29 $ miesięcznie za cały zespół."
         },
         "title": "<em>Alternatywa dla huddli w Slacku</em>, w której najpierw widzisz, kto jest wolny.",
@@ -1281,7 +1281,7 @@
   "pricingPage": {
     "meta": {
       "title": "Cennik: jedna cena za całe biuro",
-      "description": "TinyFloor jest darmowy do 3 osób. Pro kosztuje $29 miesięcznie za cały zespół, ze spotkaniami tak często, jak potrzebujecie, i pierwszeństwem w pomocy. Cena za biuro, nie za osobę."
+      "description": "TinyFloor jest darmowy do 3 osób. Pro kosztuje $29/mies. za cały zespół, ze spotkaniami tak często, jak potrzebujecie. Cena za biuro, nie za osobę."
     },
     "title": "Jedna cena za całe biuro.",
     "muted": "Nie za każdą osobę.",

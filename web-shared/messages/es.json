@@ -1,7 +1,7 @@
 {
   "metadata": {
     "title": "TinyFloor - Una oficina virtual que puedes recorrer",
-    "description": "TinyFloor es una oficina virtual gratuita en tu navegador. Recorre una planta pixel art con tu equipo e inicia una videollamada con solo acercarte a alguien.",
+    "description": "TinyFloor es una oficina virtual gratuita en tu navegador. Recorre una planta pixel art con tu equipo e inicia una videollamada al acercarte a alguien.",
     "ogAlt": "Una sala de TinyFloor: una planta de oficina de 16 bits con escritorios y compañeros",
     "keywords": "oficina virtual, trabajo remoto, chat espacial, colaboración en línea, espacio de trabajo virtual, chat de proximidad, videochat de proximidad, coworking virtual, videollamadas en el navegador",
     "joinTitle": "Unirse a la sala",
@@ -110,7 +110,10 @@
       "menu": "Menú",
       "teams": "Para equipos",
       "getStarted": "Empezar",
-      "lobbyLine": "Mira cómo funciona una oficina. Sin necesidad de cuenta."
+      "lobbyLine": "Mira cómo funciona una oficina. Sin necesidad de cuenta.",
+      "alternatives": "Alternativas",
+      "headToHead": "Frente a frente",
+      "compareGuide": "Diez oficinas virtuales frente a frente, con precios para tu equipo."
     },
     "hero": {
       "title": "Una oficina virtual por la que tu equipo puede caminar.",

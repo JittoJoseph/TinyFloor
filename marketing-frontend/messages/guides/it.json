@@ -2,7 +2,7 @@
   "teamBuilding": {
     "label": "Attività di team building virtuale",
     "meta": {
-      "title": "20 attività di team building virtuale che piacciono ai team",
+      "title": "20 attività di team building virtuale e giochi per team da remoto",
       "description": "20 attività di team building virtuale ordinate per durata: avvii da 5 minuti, giochi da 30 minuti, eventi mensili e idee senza riunioni."
     },
     "title": "Attività di team building virtuale <em>che piacciono davvero.</em>",
@@ -202,7 +202,7 @@
   "meetingGames": {
     "label": "Giochi per riunioni virtuali",
     "meta": {
-      "title": "15 giochi veloci per riunioni virtuali (5 minuti o meno)",
+      "title": "15 giochi rompighiaccio rapidi per riunioni virtuali (5 minuti o meno)",
       "description": "15 giochi veloci per riunioni virtuali senza preparazione: giochi di parola, di indovinelli e di disegno che stanno in cinque minuti."
     },
     "title": "Giochi veloci per <em>riunioni virtuali.</em>",
@@ -1281,11 +1281,12 @@
         ]
       },
       {
-        "title": "Cosa è cambiato nel 2025",
+        "title": "Cosa è cambiato nel 2025 e nel 2026",
         "body": [
           "Fino a settembre 2025 i team piccoli potevano usare Gather gratis, e i team paganti pagavano 7 $ a persona al mese, o 5,95 $ con fatturazione annuale, per il numero di persone connesse contemporaneamente.",
           "Il 15 settembre 2025 Gather ha lanciato Gather 2.0 e portato entrambe le versioni a 15 $ per membro al mese, o 12 $ con fatturazione annuale. Il piano gratuito è finito: gli uffici che non erano passati a un piano a pagamento entro quella data sono stati chiusi.",
-          "Chi pagava già ha avuto tempo per adattarsi. I piani mensili hanno mantenuto il vecchio prezzo fino alla fine del 2025 e sono passati a 15 $ al primo rinnovo dopo il 1° gennaio 2026. I team che avevano bloccato un piano annuale prima del cambio hanno mantenuto 5,95 $ fino a settembre 2026, quindi molti trovano il nuovo prezzo al rinnovo di quest'anno."
+          "Chi pagava già ha avuto tempo per adattarsi. I piani mensili hanno mantenuto il vecchio prezzo fino alla fine del 2025 e sono passati a 15 $ al primo rinnovo dopo il 1° gennaio 2026. I team che avevano bloccato un piano annuale prima del cambio hanno mantenuto 5,95 $ fino a settembre 2026, quindi molti trovano il nuovo prezzo al rinnovo di quest'anno.",
+          "A febbraio 2026 Gather è diventata un'azienda indipendente e il team che sviluppava i suoi prodotti di IA ha lasciato l'azienda per unirsi a Figma. Gather ha dichiarato che per i clienti non è cambiato nulla e che i prezzi sono rimasti quelli indicati sopra."
         ]
       },
       {
@@ -1415,6 +1416,10 @@
       {
         "q": "Gather ha un piano gratuito?",
         "a": "No. Gather ha chiuso il piano gratuito il 15 settembre 2025. Offre invece una prova gratuita di 30 giorni per un massimo di 50 persone."
+      },
+      {
+        "q": "Gather sta per chiudere?",
+        "a": "No. A febbraio 2026 Gather si è separata diventando un'azienda indipendente che definisce redditizia, mentre il suo team di IA si è unito a Figma. Gather ha dichiarato che per i clienti non è cambiato nulla; i piani e i prezzi su questa pagina sono aggiornati."
       },
       {
         "q": "Quanto costa Gather per 10 persone?",
@@ -2125,7 +2130,7 @@
   "oneOnOne": {
     "label": "Domande per i one-to-one",
     "meta": {
-      "title": "40 domande per i one-to-one (1:1) per manager e da fare al tuo responsabile",
+      "title": "Modello per riunioni one-to-one e 40 domande per i manager",
       "description": "40 domande per le riunioni one-to-one divise per tema: come stai, carico di lavoro, ostacoli, feedback, crescita, il team e il lavoro da remoto, più domande per il tuo responsabile e un ordine del giorno semplice."
     },
     "title": "Domande per i one-to-one <em>che ottengono risposte vere.</em>",
@@ -2157,7 +2162,7 @@
         ]
       },
       {
-        "title": "Un ordine del giorno semplice",
+        "title": "Un modello per riunioni one-to-one",
         "table": {
           "head": [
             "Parte",
@@ -2654,7 +2659,7 @@
   "retro": {
     "label": "Idee per le retrospettive",
     "meta": {
-      "title": "15 idee per le retrospettive dei team da remoto (formati e consigli)",
+      "title": "15 idee per le retrospettive e un modello per i team da remoto",
       "description": "15 idee per le retrospettive dei team da remoto: formati veloci, visivi, più profondi e per tirare su il morale, più come condurre una retro online e far accadere le azioni."
     },
     "title": "Idee per le retrospettive <em>per i team stanchi delle solite tre domande.</em>",
@@ -3280,6 +3285,1375 @@
       {
         "q": "Posso fare body doubling gratuitamente?",
         "a": "Sì. Una videochiamata con un amico non costa nulla e TinyFloor è gratuito fino a 3 persone, quindi un piccolo gruppo può fare body doubling lì ogni giorno."
+      }
+    ]
+  },
+  "teamMeetingAgenda": {
+    "label": "Ordine del giorno della riunione di team",
+    "meta": {
+      "title": "Modello di ordine del giorno per la riunione di team settimanale",
+      "description": "Un modello di ordine del giorno per la riunione di team settimanale da copiare, cosa inserire e cosa no, idee per mantenerla interessante e come gestirla in 30 minuti con un team da remoto."
+    },
+    "title": "Un ordine del giorno per la riunione di team <em>che vale la mezz'ora.</em>",
+    "intro": "La riunione di team settimanale è l'unico momento in cui tutti si trovano nella stessa stanza, quindi dovrebbe servire a ciò che gli aggiornamenti scritti non possono fare: prendere decisioni, sbloccare le persone e far sentire il team unito. Ecco un modello di ordine del giorno da 30 minuti da copiare, cosa inserire, cosa togliere e come gestirlo quando il team lavora da remoto.",
+    "sections": [
+      {
+        "title": "A cosa serve una riunione di team",
+        "body": [
+          "Gli aggiornamenti sullo stato dei lavori sono il punto più comune all'ordine del giorno di una riunione di team, e il meno utile. Sentire ognuno che legge cosa ha fatto è lento, e la maggior parte delle cose si sarebbe potuta risolvere con un messaggio.",
+          "Riserva la riunione a ciò che richiede la presenza di tutti: decisioni che riguardano più persone, problemi su cui qualcuno è bloccato, priorità della settimana e qualche minuto dedicato solo al team. Tutto il resto può essere scritto prima o dopo."
+        ]
+      },
+      {
+        "title": "Un modello di ordine del giorno per la riunione di team settimanale",
+        "body": [
+          "Copialo nell'invito del calendario o nelle note del team. I tempi sono pensati per un team da 5 a 10 persone; un team più grande ha bisogno di più tempo per le decisioni, non di altri aggiornamenti."
+        ],
+        "table": {
+          "head": [
+            "Parte",
+            "Tempo",
+            "Cosa succede"
+          ],
+          "rows": [
+            [
+              "Come stai",
+              "3 min",
+              "Una domanda a cui ognuno risponde con una frase"
+            ],
+            [
+              "Traguardi",
+              "3 min",
+              "Qualcosa di rilasciato, risolto o imparato dalla scorsa settimana"
+            ],
+            [
+              "Numeri",
+              "4 min",
+              "I due o tre dati che il team tiene d'occhio, e se si sono mossi"
+            ],
+            [
+              "Priorità",
+              "6 min",
+              "Cosa conta di più questa settimana e chi se ne occupa"
+            ],
+            [
+              "Ostacoli e decisioni",
+              "10 min",
+              "Argomenti aggiunti in precedenza dalle persone, in ordine"
+            ],
+            [
+              "Conclusioni",
+              "4 min",
+              "Rilettura di decisioni, responsabili e scadenze"
+            ]
+          ],
+          "note": "Trenta minuti in tutto. Se non ci sono ostacoli o decisioni, terminate in anticipo."
+        }
+      },
+      {
+        "title": "Punti all'ordine del giorno che vale la pena avere",
+        "items": [
+          {
+            "title": "Una lista condivisa prima della riunione",
+            "body": "Chiunque può aggiungere un argomento durante la settimana, indicando il proprio nome e ciò di cui ha bisogno: una decisione, un consiglio o semplicemente una condivisione. Durante la riunione si scorre la lista in ordine."
+          },
+          {
+            "title": "Decisioni scritte sotto forma di domande",
+            "body": "«Spostiamo il lancio a giovedì?» porta a una decisione. «Lancio» viene discusso per dieci minuti e si conclude senza una risposta."
+          },
+          {
+            "title": "Un numero per area",
+            "body": "Iscrizioni, bug aperti, ore per la prima risposta: qualsiasi dato su cui il team si orienta davvero. Indica se si è mosso; conserva la storia che c'è dietro per quando sarà importante."
+          },
+          {
+            "title": "Chi è assente",
+            "body": "Ferie, mezze giornate e lanci in arrivo, così nessuno aspetta chi non c'è."
+          },
+          {
+            "title": "Ringraziamenti",
+            "body": "Un minuto per nominare chi ha aiutato chi. Non costa nulla ed è spesso la parte che le persone ricordano di più."
+          }
+        ]
+      },
+      {
+        "title": "Cosa togliere",
+        "items": [
+          {
+            "title": "Giro di tavolo degli aggiornamenti",
+            "body": "Chiedili per iscritto il giorno prima. La riunione potrà così concentrarsi sui due aggiornamenti che hanno sollevato dubbi."
+          },
+          {
+            "title": "Discussioni lunghe",
+            "body": "Se un argomento richiede più di dieci minuti, ha bisogno di una riunione separata più piccola con le persone interessate."
+          },
+          {
+            "title": "Annunci",
+            "body": "Pubblicali nella [chat di team](/team-chat), dove le persone possono leggerli più tardi e reagire."
+          },
+          {
+            "title": "Cose che interessano solo a due persone",
+            "body": "Lascia che ne parlino dopo la riunione, o subito se sono seduti vicini."
+          }
+        ]
+      },
+      {
+        "title": "Idee per mantenerla interessante",
+        "items": [
+          {
+            "title": "Gestione a rotazione",
+            "body": "Una persona diversa ogni settimana tiene il tempo e segue la lista. Diffonde l'abitudine di condurre una buona riunione."
+          },
+          {
+            "title": "Una demo di cinque minuti",
+            "body": "Una volta al mese, qualcuno mostra dal vivo cosa ha creato o scoperto, senza diapositive."
+          },
+          {
+            "title": "Una domanda migliore per iniziare",
+            "body": "«Com'è andato il fine settimana?» ottiene le stesse risposte ogni settimana. Usa una [domanda che dica al team qualcosa di nuovo](/guides/check-in-questions)."
+          },
+          {
+            "title": "Un gioco ogni tanto",
+            "body": "Un [gioco](/guides/games-for-virtual-meetings) di cinque minuti all'inizio, una volta al mese, basta a cambiare l'atmosfera senza monopolizzare la riunione."
+          },
+          {
+            "title": "Salta una settimana",
+            "body": "Se la lista è vuota, annulla la riunione. A nessuno dispiace recuperare mezz'ora di tempo, e la volta successiva ci sarà più attenzione."
+          }
+        ]
+      },
+      {
+        "title": "Gestirla con un team da remoto",
+        "body": [
+          "In una chiamata, la riunione inizia con un link che qualcuno deve trovare e finisce con tutti che svaniscono. In un ufficio virtuale, il team entra nella stessa [sala riunioni](/virtual-meeting-room) alla stessa ora, e chi ha bisogno di continuare a parlare dopo può rimanere alla propria scrivania, uno accanto all'altro.",
+          "Mantieni le videocamere facoltative, condividi l'ordine del giorno sullo schermo in modo che tutti guardino lo stesso punto e scrivi le note nella chat di team prima che la stanza si svuoti. Se il team copre diversi fusi orari, ruota l'orario in modo che non siano sempre le stesse persone a collegarsi di notte."
+        ]
+      },
+      {
+        "title": "Dopo la riunione",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Pubblica le note",
+            "body": "[Decisioni, responsabili e scadenze](/guides/meeting-minutes-template), nella chat del team, entro un'ora."
+          },
+          {
+            "title": "Sposta i punti in sospeso",
+            "body": "Tutto ciò che non è stato affrontato va in cima alla lista della settimana successiva, o in una riunione dedicata."
+          },
+          {
+            "title": "Informa chi era assente",
+            "body": "Una riga a testa su ciò che li riguarda, così nessuno viene a sapere di una decisione per caso."
+          },
+          {
+            "title": "Controlla il tempo",
+            "body": "Se la riunione si è prolungata per due settimane di fila, taglia un punto dal modello invece di aggiungere tempo."
+          }
+        ]
+      },
+      {
+        "title": "Ordini del giorno per altre riunioni di team",
+        "items": [
+          {
+            "title": "Riunione di kickoff",
+            "body": "Perché il progetto esiste (5 minuti), come si presenta il lavoro completato (10), chi si occupa di cosa (10), i primi traguardi intermedi e le date (10), rischi e domande aperte (10) e come il team rimarrà in contatto (5). Un'ora in tutto, una volta per progetto."
+          },
+          {
+            "title": "Riunione all-hands",
+            "body": "Traguardi e ringraziamenti (10 minuti), i dati che contano (10), cosa è cambiato e perché (15), un team che mostra il proprio lavoro (10) e domande da parte di chiunque (15). Un'ora, a cadenza mensile o trimestrale, con domande raccolte in anticipo in modo che anche le persone più riservate possano fare le proprie."
+          },
+          {
+            "title": "Daily standup",
+            "body": "Da dieci a quindici minuti: su cosa sta lavorando ogni persona oggi e gli eventuali ostacoli. Il nostro [modello di daily standup](/tools/daily-standup-template) contiene le domande e una versione scritta per i team in fusi orari diversi."
+          },
+          {
+            "title": "Retrospettiva",
+            "body": "Cosa è andato bene, cosa no e cosa cambiare, ogni due o quattro settimane. Vedi le [idee per la retrospettiva](/guides/retrospective-ideas) per formati sempre nuovi."
+          },
+          {
+            "title": "Incontro individuale",
+            "body": "Trenta minuti tra un manager e una persona, guidati dall'elenco di quest'ultima anziché da quello del manager. Usa il nostro [modello e domande per l'incontro individuale](/guides/one-on-one-meeting-questions)."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Dove si inserisce TinyFloor",
+      "body": "TinyFloor è un ufficio virtuale per piccoli team. La riunione settimanale si tiene nella sala riunioni in cui tutti entrano, con video, condivisione dello schermo e una lavagna, e dopo le persone tornano alle proprie scrivanie sullo stesso piano, a pochi passi di distanza se serve un confronto. È gratuito fino a 3 persone e costa 29 $ al mese per tutto il team."
+    },
+    "faq": [
+      {
+        "q": "Cosa dovrebbe esserci all'ordine del giorno di una riunione di team?",
+        "a": "Un breve momento per iniziare, i traguardi, i pochi dati che il team tiene d'occhio, le priorità della settimana, gli ostacoli e le decisioni aggiunti in precedenza, e una conclusione con responsabili e scadenze. Lascia gli aggiornamenti di routine sullo stato dei lavori alla forma scritta."
+      },
+      {
+        "q": "Quanto dovrebbe durare una riunione di team settimanale?",
+        "a": "Circa 30 minuti per un team da 5 a 10 persone. Se continua a prolungarsi, il problema è di lavoro un numero eccessivo di aggiornamenti o una discussione che richiede una riunione dedicata."
+      },
+      {
+        "q": "Come rendere le riunioni di team meno noiose?",
+        "a": "Taglia gli aggiornamenti, fai gestire la riunione a turno, usa una domanda per iniziare che dica al team qualcosa di nuovo e mostra il lavoro reale di tanto in tanto. Una riunione che finisce in anticipo quando non c'è nulla da decidere viene raramente definita noiosa."
+      },
+      {
+        "q": "Chi dovrebbe gestire la riunione di team?",
+        "a": "Non sempre il manager. La rotazione mantiene le persone coinvolte e insegna a tutti a rispettare i tempi e a guidare una discussione."
+      },
+      {
+        "q": "L'ordine del giorno dovrebbe essere condiviso prima della riunione?",
+        "a": "Sì. Una lista condivisa a cui chiunque può aggiungere argomenti durante la settimana fa sì che la riunione inizi con ciò di cui le persone hanno effettivamente bisogno, in ordine."
+      },
+      {
+        "q": "Cosa dovrebbe includere l'ordine del giorno di una riunione di kickoff?",
+        "a": "Perché il progetto esiste, come si presenta il lavoro completato, chi si occupa di cosa, i primi traguardi intermedi, rischi e domande aperte e come il team rimarrà in contatto. Circa un'ora, una volta all'inizio."
+      }
+    ]
+  },
+  "checkInQuestions": {
+    "label": "Domande per iniziare",
+    "meta": {
+      "title": "50 domande di check-in per le riunioni: veloci, profonde e divertenti",
+      "description": "50 domande di check-in per aprire una riunione di team, uno standup o un one-to-one: giri veloci di una parola, check-in di lavoro, domande più profonde, divertenti e per team da remoto."
+    },
+    "title": "Domande di check-in <em>per aprire qualsiasi riunione.</em>",
+    "intro": "Il check-in è una domanda a cui tutti rispondono all'inizio di una riunione, con una frase o una parola. Fa sentire subito la voce di tutti, ti dice come stanno davvero le persone e richiede due o tre minuti. Eccone 50 tra cui scegliere, raggruppate in base al tempo che hai e a cosa vuoi scoprire.",
+    "sections": [
+      {
+        "title": "Come condurre un check-in",
+        "items": [
+          {
+            "title": "Una domanda, rispondono tutti",
+            "body": "Fai un giro in ordine fisso, oppure lascia che l'ultima persona scelga la successiva. Consenti di passare."
+          },
+          {
+            "title": "Mantieni le risposte brevi",
+            "body": "Una parola o una frase. Se un argomento richiede più tempo, prendine nota e ritornaci sopra dopo la riunione."
+          },
+          {
+            "title": "Adatta la domanda alla riunione",
+            "body": "Un giro veloce prima di uno [standup](/virtual-standup), una domanda più profonda prima di una [retro](/guides/retrospective-ideas) o di un [one-to-one](/guides/one-on-one-meeting-questions)."
+          },
+          {
+            "title": "Rispondi tu per primo",
+            "body": "Chi conduce la riunione inizia per primo e stabilisce la durata e il tono."
+          }
+        ]
+      },
+      {
+        "title": "Check-in veloci (una parola o un numero)",
+        "items": [
+          {
+            "title": "Una parola per descrivere come arrivi oggi?",
+            "detail": "Veloce",
+            "body": "Semplice e sorprendentemente sincero."
+          },
+          {
+            "title": "Da 1 a 10, com'è la tua energia?",
+            "detail": "Veloce",
+            "body": "Utile per decidere quanto inserire nella riunione."
+          },
+          {
+            "title": "Che tempo fa nella tua testa in questo momento?",
+            "detail": "Veloce",
+            "body": "Un modo più delicato per chiedere come sta qualcuno."
+          },
+          {
+            "title": "Verde, giallo o rosso per questa settimana?",
+            "detail": "Veloce",
+            "body": "Una lettura rapida del carico di lavoro prima della pianificazione."
+          },
+          {
+            "title": "Qual è una cosa che hai in mente e che non riguarda questa riunione?",
+            "detail": "Veloce",
+            "body": "Dirlo ad alta voce spesso rende più facile metterlo da parte."
+          },
+          {
+            "title": "Caffè, tè o qualcos'altro oggi?",
+            "detail": "Veloce",
+            "body": "Poco impegnativo, ottimo per un nuovo team."
+          },
+          {
+            "title": "Un'emoji per la tua settimana finora?",
+            "detail": "Veloce",
+            "body": "Funziona bene se scritto in chat tutti contemporaneamente."
+          },
+          {
+            "title": "Quante ore hai dormito, all'incirca?",
+            "detail": "Veloce",
+            "body": "Solo per un team che si sente a proprio agio con questo argomento."
+          },
+          {
+            "title": "Cosa non vedi l'ora che arrivi questa settimana?",
+            "detail": "Veloce",
+            "body": "Inizia la riunione con qualcosa di positivo."
+          },
+          {
+            "title": "Concentrato, distratto o una via di mezzo?",
+            "detail": "Veloce",
+            "body": "Comodo prima di una sessione di lavoro."
+          }
+        ]
+      },
+      {
+        "title": "Check-in di lavoro",
+        "items": [
+          {
+            "title": "Qual è l'unica cosa che devi assolutamente finire questa settimana?",
+            "detail": "Lavoro",
+            "body": "Fa emergere le priorità senza un giro completo di aggiornamento di stato."
+          },
+          {
+            "title": "Cosa ti sta bloccando in questo momento?",
+            "detail": "Lavoro",
+            "body": "Fa emergere presto i problemi."
+          },
+          {
+            "title": "Cosa hai imparato dall'ultima volta che ci siamo visti?",
+            "detail": "Lavoro",
+            "body": "Diffonde la conoscenza all'interno del team."
+          },
+          {
+            "title": "Cosa stai aspettando da qualcuno qui presente?",
+            "detail": "Lavoro",
+            "body": "Trasforma le dipendenze nascoste in un breve confronto."
+          },
+          {
+            "title": "Cosa ha richiesto più tempo del previsto la scorsa settimana?",
+            "detail": "Lavoro",
+            "body": "Ottimo prima della pianificazione."
+          },
+          {
+            "title": "Cosa renderebbe oggi una buona giornata?",
+            "detail": "Lavoro",
+            "body": "Offre a tutti un piccolo obiettivo raggiungibile."
+          },
+          {
+            "title": "Qual è una cosa che lasceresti perdere se potessi?",
+            "detail": "Lavoro",
+            "body": "Mostra dove il carico di lavoro è troppo pesante."
+          },
+          {
+            "title": "Chi ti ha aiutato questa settimana?",
+            "detail": "Lavoro",
+            "body": "Crea l'abitudine di notare l'aiuto reciproco."
+          },
+          {
+            "title": "Qual è una cosa che hai rilasciato di cui sei orgoglioso?",
+            "detail": "Lavoro",
+            "body": "I successi vengono nominati, non solo completati."
+          },
+          {
+            "title": "Qual è la domanda a cui vuoi una risposta in questa riunione?",
+            "detail": "Lavoro",
+            "body": "Assicura che la riunione copra ciò di cui le persone hanno bisogno."
+          }
+        ]
+      },
+      {
+        "title": "Check-in più profondi",
+        "items": [
+          {
+            "title": "Cosa sta assorbendo la maggior parte della tua attenzione fuori dal lavoro?",
+            "detail": "Più profondo",
+            "body": "A cui rispondere solo fin dove si desidera."
+          },
+          {
+            "title": "Quando ti sei sentito davvero utile al lavoro l'ultima volta?",
+            "detail": "Più profondo",
+            "body": "Ottimo in un one-to-one o in una retro."
+          },
+          {
+            "title": "Cos'è che trovi difficile in questo momento?",
+            "detail": "Più profondo",
+            "body": "Richiede fiducia; rispondi tu per primo."
+          },
+          {
+            "title": "Cosa cambieresti nel modo in cui lavoriamo insieme?",
+            "detail": "Più profondo",
+            "body": "Un'apertura per una retro."
+          },
+          {
+            "title": "Di cosa hai più bisogno da questo team?",
+            "detail": "Più profondo",
+            "body": "Trasforma le sensazioni in qualcosa su cui il team può agire."
+          },
+          {
+            "title": "Qual è una decisione di cui non sei ancora sicuro?",
+            "detail": "Più profondo",
+            "body": "Invita a ricevere aiuto senza chiederlo direttamente."
+          },
+          {
+            "title": "Cosa ti incuriosisce ultimamente?",
+            "detail": "Più profondo",
+            "body": "Mostra un lato delle persone che il lavoro raramente fa emergere."
+          },
+          {
+            "title": "Cosa renderebbe il prossimo mese migliore di questo?",
+            "detail": "Più profondo",
+            "body": "Ottimo per una riunione mensile."
+          },
+          {
+            "title": "Su cosa hai cambiato idea di recente?",
+            "detail": "Più profondo",
+            "body": "Mostra l'apertura all'idea di potersi sbagliare."
+          },
+          {
+            "title": "Come stai, davvero?",
+            "detail": "Più profondo",
+            "body": "Chiedilo lentamente e aspetta la risposta."
+          }
+        ]
+      },
+      {
+        "title": "Check-in divertenti",
+        "items": [
+          {
+            "title": "Qual è la cosa migliore che hai mangiato questa settimana?",
+            "detail": "Divertente",
+            "body": "Tutti hanno una risposta."
+          },
+          {
+            "title": "Cosa c'è sulla tua scrivania che non possiamo vedere?",
+            "detail": "Divertente",
+            "body": "Fa guardare le persone intorno e ridere."
+          },
+          {
+            "title": "Se oggi fosse un genere cinematografico, quale sarebbe?",
+            "detail": "Divertente",
+            "body": "Una lettura rapida e giocosa della settimana."
+          },
+          {
+            "title": "Qual è una piccola cosa che ti ha reso felice di recente?",
+            "detail": "Divertente",
+            "body": "Finisce per essere il momento più caloroso della riunione."
+          },
+          {
+            "title": "Quale canzone hai in testa?",
+            "detail": "Divertente",
+            "body": "Facoltativo: riproducine dieci secondi."
+          },
+          {
+            "title": "Di quale app non avresti potuto fare a meno questa settimana?",
+            "detail": "Divertente",
+            "body": "Spesso si trasforma in consigli utili."
+          },
+          {
+            "title": "Quale competenza impareresti all'istante se potessi?",
+            "detail": "Divertente",
+            "body": "Rivela ciò a cui le persone tengono."
+          },
+          {
+            "title": "La cosa migliore che hai guardato o letto di recente?",
+            "detail": "Divertente",
+            "body": "Crea una lista di consigli."
+          },
+          {
+            "title": "Cosa direbbe il tuo messaggio di fuori ufficio oggi?",
+            "detail": "Divertente",
+            "body": "Ottiene risposte creative."
+          },
+          {
+            "title": "Posto finestrino o corridoio?",
+            "detail": "Divertente",
+            "body": "Non risolve nulla e tutti hanno un'opinione."
+          }
+        ]
+      },
+      {
+        "title": "Check-in per i team da remoto",
+        "items": [
+          {
+            "title": "Qual è la vista da dove stai lavorando oggi?",
+            "detail": "Da remoto",
+            "body": "Mostra i luoghi dietro i riquadri video."
+          },
+          {
+            "title": "Che ora è da te e cosa farai dopo?",
+            "detail": "Da remoto",
+            "body": "Rende visibili i fusi orari."
+          },
+          {
+            "title": "Con chi hai parlato oggi, a parte noi?",
+            "detail": "Da remoto",
+            "body": "Un modo delicato per notare se qualcuno è rimasto solo tutto il giorno."
+          },
+          {
+            "title": "Come va con la tua postazione?",
+            "detail": "Da remoto",
+            "body": "Fa emergere piccoli problemi con sedie, schermi o connessione."
+          },
+          {
+            "title": "Qual è una cosa che ti manca del lavorare nella stessa stanza?",
+            "detail": "Da remoto",
+            "body": "Ottimo per decidere cosa provare a fare dopo come team."
+          },
+          {
+            "title": "Qual è una cosa del lavoro da remoto a cui non rinunceresti mai?",
+            "detail": "Da remoto",
+            "body": "Finisce con una nota positiva."
+          },
+          {
+            "title": "In quale momento della giornata sei più concentrato?",
+            "detail": "Da remoto",
+            "body": "Aiuta il team a proteggere il tempo di concentrazione reciproco."
+          },
+          {
+            "title": "Qual è il tuo modo preferito di fare una pausa a casa?",
+            "detail": "Da remoto",
+            "body": "Scambia idee per fare vere pause."
+          },
+          {
+            "title": "C'è qualcosa che ti ha fatto ridere questa settimana?",
+            "detail": "Da remoto",
+            "body": "Riporta in vita alcuni dei piccoli momenti dell'ufficio."
+          },
+          {
+            "title": "Qual è una cosa che il team potrebbe fare per sentirsi più unito?",
+            "detail": "Da remoto",
+            "body": "Trasforma il check-in in un'idea."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Dove si inserisce TinyFloor",
+      "body": "TinyFloor è un ufficio virtuale per piccoli team. I check-in avvengono nella sala riunioni in cui tutti entrano, con il video, e per il resto della giornata le persone siedono alle loro scrivanie sullo stesso piano, dove fare una domanda veloce è a pochi passi di distanza. È gratuito fino a 3 persone e costa $29 al mese per tutto il team."
+    },
+    "faq": [
+      {
+        "q": "Cos'è una domanda di check-in?",
+        "a": "Una domanda a cui tutti rispondono brevemente all'inizio di una riunione. Fa parlare tutti fin da subito e mostra come stanno le persone prima che inizi il lavoro."
+      },
+      {
+        "q": "Qual è una buona domanda di check-in per una riunione di team?",
+        "a": "«Qual è la cosa che hai più bisogno di finire questa settimana?» per una riunione di lavoro, o «Una parola su come ti senti oggi?» quando il tempo è poco."
+      },
+      {
+        "q": "Quanto deve durare un check-in?",
+        "a": "Due o tre minuti per un team fino a dieci persone: una parola o una frase a testa."
+      },
+      {
+        "q": "I check-in sono la stessa cosa degli icebreaker?",
+        "a": "Quasi. Gli icebreaker aiutano le persone che non si conoscono a iniziare a parlare; i check-in aiutano un team che già lavora insieme a condividere come sta e di cosa ha bisogno."
+      }
+    ]
+  },
+  "discordVsSlack": {
+    "label": "Discord vs Slack",
+    "meta": {
+      "title": "Discord vs Slack per il lavoro: quale dovrebbe usare un piccolo team?",
+      "description": "Discord vs Slack per un team di lavoro: costi, voce e chiamate, cronologia dei messaggi, integrazioni e privacy, quale si adatta a un piccolo team e una terza opzione nata come ufficio."
+    },
+    "title": "Discord vs Slack <em>per un team di lavoro.</em>",
+    "intro": "Molti piccoli team organizzano la propria giornata su Discord: è gratuito, i canali vocali sembrano una stanza condivisa e molti lo hanno già aperto. Altri usano Slack perché è lo strumento a cui si collegano i tool di lavoro. Ecco un confronto per un team di lavoro, cosa fa meglio ciascuno e quando nessuno dei due è la soluzione ideale.",
+    "sections": [
+      {
+        "title": "Discord e Slack a colpo d'occhio",
+        "table": {
+          "head": [
+            "",
+            "Discord",
+            "Slack"
+          ],
+          "rows": [
+            [
+              "Progettato per",
+              "Community e gaming",
+              "Lavoro"
+            ],
+            [
+              "Prezzo",
+              "Gratuito; Nitro è un extra per ciascuna persona",
+              "Piano gratuito; piani a pagamento per utente"
+            ],
+            [
+              "Cronologia dei messaggi",
+              "Conservata",
+              "90 giorni nel piano gratuito"
+            ],
+            [
+              "Parlare",
+              "Canali vocali in cui fare un salto",
+              "Huddle: 2 persone nel piano gratuito, fino a 50 nei piani a pagamento"
+            ],
+            [
+              "Integrazioni",
+              "Bot",
+              "Fino a 10 app gratuite, molte di più nei piani a pagamento"
+            ],
+            [
+              "Account",
+              "Account personali, condivisi con tutto il resto",
+              "Uno spazio di lavoro di proprietà dell'azienda"
+            ]
+          ],
+          "note": "Dalle pagine dei prezzi e dal centro assistenza di Slack, e dalle pagine di Discord, aggiornato a ottobre 2026."
+        }
+      },
+      {
+        "title": "Dove Discord è migliore",
+        "items": [
+          {
+            "title": "Parlare è la norma",
+            "body": "Un canale vocale è una stanza in cui le persone si siedono. Fai un salto, chiedi, esci: nessuna chiamata da avviare e nessuno da invitare."
+          },
+          {
+            "title": "Gratuito per tutto il team",
+            "body": "Voce, video, condivisione dello schermo e cronologia completa non costano nulla. Nitro aggiunge vantaggi per persona, ma a un team non serve."
+          },
+          {
+            "title": "Familiare a molte persone",
+            "body": "Molti sviluppatori, designer e studenti lo usano già ogni giorno, quindi non c'è nulla da installare o da imparare."
+          }
+        ]
+      },
+      {
+        "title": "Dove Slack è migliore",
+        "items": [
+          {
+            "title": "Creato per il lavoro",
+            "body": "Thread, ricerca, flussi di lavoro e le integrazioni che gli strumenti di lavoro richiedono, dai calendari ai sistemi di tracciamento dei problemi."
+          },
+          {
+            "title": "L'azienda possiede lo spazio di lavoro",
+            "body": "La gestione di account, conservazione dei dati e accessi spetta all'azienda, e il lavoro resta separato dai server personali delle persone."
+          },
+          {
+            "title": "Più facile per clienti e nuovi assunti",
+            "body": "Canali condivisi con altre aziende, account ospite e single sign-on nei piani superiori."
+          }
+        ]
+      },
+      {
+        "title": "Cosa nessuno dei due fa bene",
+        "body": [
+          "Discord mostra chi si trova in quale canale vocale, ma non chi è alla propria scrivania e ha un minuto libero. Slack mostra un pallino verde, che indica che qualcuno è online, non se può parlare. In entrambi, iniziare una conversazione significa chiamare qualcuno all'improvviso o scrivere e aspettare.",
+          "Questo vuoto è ciò che colma un [ufficio virtuale](/virtual-office): ognuno ha una scrivania su un piano, imposta uno stato e si avvicina per parlare, così il team può vedere a colpo d'occhio chi è libero ed entrare insieme in una stanza. Molti team tengono Slack o Discord per scrivere e usano un ufficio per parlare."
+        ]
+      },
+      {
+        "title": "Quale scegliere",
+        "items": [
+          {
+            "title": "Discord, per un team che parla soprattutto",
+            "body": "Un piccolo team che vive nei canali vocali, si trova bene con gli account personali e ha bisogno di poche integrazioni."
+          },
+          {
+            "title": "Slack, per un team che scrive soprattutto",
+            "body": "Un team che ha bisogno di ricerca, integrazioni, canali per i clienti e account di proprietà dell'azienda, e che è disposto a pagare per utente per le chiamate di gruppo."
+          },
+          {
+            "title": "Un ufficio virtuale accanto a uno dei due",
+            "body": "Se il problema è sapere chi è libero e parlare senza programmare riunioni, aggiungi un ufficio per la giornata e tieni lo strumento di chat che già usi. Confronta [Discord per il lavoro](/discord-for-work) e gli [huddle di Slack](/slack-huddles-alternative) con TinyFloor."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Dove si inserisce TinyFloor",
+      "body": "TinyFloor è un ufficio virtuale privato per piccoli team: una scrivania per ciascuno, stati, chiamate dirette, una sala riunioni, chat di team e una lavagna, tutto nel browser. È pensato per il lavoro, a differenza di Discord, e parlare è la norma, a differenza di Slack. È gratuito fino a 3 persone e costa 29 $ al mese per tutto il team, e si affianca benissimo allo strumento di chat che già usi."
+    },
+    "faq": [
+      {
+        "q": "Discord va bene per il lavoro?",
+        "a": "Per un piccolo team che parla soprattutto, sì: i canali vocali sono gratuiti e immediati. È meno forte su ricerca, integrazioni e account di proprietà dell'azienda, e il lavoro si trova accanto ai server personali delle persone."
+      },
+      {
+        "q": "Discord è gratuito per i team?",
+        "a": "Sì. Voce, video, condivisione dello schermo e cronologia dei messaggi sono gratuiti. Nitro è un extra a pagamento opzionale per ciascuna persona."
+      },
+      {
+        "q": "Quante persone possono partecipare a un huddle di Slack?",
+        "a": "Due nel piano gratuito di Slack. I piani a pagamento ne consentono fino a 50, con un massimo di 25 in video."
+      },
+      {
+        "q": "Possiamo usare Discord e Slack insieme?",
+        "a": "Alcuni team lo fanno, scrivendo su Slack e parlando su Discord, ma due strumenti per un solo team di solito significano che uno dei due viene abbandonato. Un ufficio virtuale accanto al tuo strumento di chat copre la parte vocale senza bisogno di una seconda chat."
+      }
+    ]
+  },
+  "thisOrThat": {
+    "label": "Domande questo o quello",
+    "meta": {
+      "title": "100 domande «questo o quello» per il lavoro, i team e come icebreaker",
+      "description": "100 domande «questo o quello» per il lavoro e le riunioni di team: a bruciapelo, cibo, viaggi, vita quotidiana, tecnologia, lavoro da remoto e ufficio, con consigli per usarle come icebreaker."
+    },
+    "title": "Domande «questo o quello» <em>per il lavoro e i team.</em>",
+    "intro": "Una domanda «questo o quello» offre due opzioni e chiede di sceglierne una. Rispondere richiede pochi secondi, non ci sono risposte sbagliate e le motivazioni delle persone sono spesso la parte migliore. Sono un ottimo icebreaker per una riunione di team, un nuovo gruppo o una videochiamata silenziosa. Eccone 100, suddivise per argomento, con alcuni modi per utilizzarle.",
+    "sections": [
+      {
+        "title": "Come usarle",
+        "items": [
+          {
+            "title": "Giro di team",
+            "body": "Fai una domanda e tutti rispondono a turno. Due o tre domande sono sufficienti per aprire una riunione."
+          },
+          {
+            "title": "Chiedi il perché",
+            "body": "La scelta richiede un secondo; è la motivazione che fa parlare le persone. Consenti una sola domanda di approfondimento a persona."
+          },
+          {
+            "title": "Vota in chat",
+            "body": "Per i gruppi più grandi, tutti scrivono la propria risposta contemporaneamente, poi le due fazioni spiegano la propria scelta."
+          },
+          {
+            "title": "A bruciapelo",
+            "body": "Cinque domande di fila, a cui rispondere senza pensare. Ottimo per risvegliare la sala all'inizio di una sessione lunga."
+          }
+        ]
+      },
+      {
+        "title": "A bruciapelo",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Caffè o tè?",
+            "body": ""
+          },
+          {
+            "title": "Mattina o sera?",
+            "body": ""
+          },
+          {
+            "title": "Gatti o cani?",
+            "body": ""
+          },
+          {
+            "title": "Alba o tramonto?",
+            "body": ""
+          },
+          {
+            "title": "Estate o inverno?",
+            "body": ""
+          },
+          {
+            "title": "Spiaggia o montagna?",
+            "body": ""
+          },
+          {
+            "title": "Chiamata o messaggio?",
+            "body": ""
+          },
+          {
+            "title": "Libri o podcast?",
+            "body": ""
+          },
+          {
+            "title": "Dolce o salato?",
+            "body": ""
+          },
+          {
+            "title": "Città o campagna?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Lavoro",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Iniziare presto o finire tardi?",
+            "body": ""
+          },
+          {
+            "title": "Concentrazione silenziosa o brusio vivace?",
+            "body": ""
+          },
+          {
+            "title": "Grandi progetti o vittorie rapide?",
+            "body": ""
+          },
+          {
+            "title": "Pianificare tutto o improvvisare strada facendo?",
+            "body": ""
+          },
+          {
+            "title": "Aggiornamento scritto o chiamata veloce?",
+            "body": ""
+          },
+          {
+            "title": "Inbox zero o caos in casella?",
+            "body": ""
+          },
+          {
+            "title": "Liste su carta o su un'app?",
+            "body": ""
+          },
+          {
+            "title": "Presentare l'idea o realizzarla?",
+            "body": ""
+          },
+          {
+            "title": "Una riunione lunga o tre brevi?",
+            "body": ""
+          },
+          {
+            "title": "Motivazione del lunedì o energia del venerdì?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Lavoro da remoto e ufficio",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Lavorare da casa o da un bar?",
+            "body": ""
+          },
+          {
+            "title": "Telecamera accesa o spenta?",
+            "body": ""
+          },
+          {
+            "title": "Scrivania in piedi o sedia comoda?",
+            "body": ""
+          },
+          {
+            "title": "Cuffie o altoparlanti?",
+            "body": ""
+          },
+          {
+            "title": "Scrivania vicino alla finestra o vicino alla porta?",
+            "body": ""
+          },
+          {
+            "title": "Snack dell'ufficio o pranzo a casa?",
+            "body": ""
+          },
+          {
+            "title": "Podcast o playlist per il tragitto casa-lavoro?",
+            "body": ""
+          },
+          {
+            "title": "Ibrido o completamente da remoto?",
+            "body": ""
+          },
+          {
+            "title": "Pantofole o scarpe quando lavori da casa?",
+            "body": ""
+          },
+          {
+            "title": "Piante da ufficio o animali da ufficio?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Cibo e bevande",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Pizza o hamburger?",
+            "body": ""
+          },
+          {
+            "title": "Colazione o cena?",
+            "body": ""
+          },
+          {
+            "title": "Cucinare a casa o mangiare fuori?",
+            "body": ""
+          },
+          {
+            "title": "Cioccolato o patatine?",
+            "body": ""
+          },
+          {
+            "title": "Piccante o delicato?",
+            "body": ""
+          },
+          {
+            "title": "Pancake o waffle?",
+            "body": ""
+          },
+          {
+            "title": "Frullato o succo?",
+            "body": ""
+          },
+          {
+            "title": "Asporto o consegna a domicilio?",
+            "body": ""
+          },
+          {
+            "title": "Frutta o dolce?",
+            "body": ""
+          },
+          {
+            "title": "Pranzo alla scrivania o lontano dalla scrivania?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Viaggi",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Posto finestrino o corridoio?",
+            "body": ""
+          },
+          {
+            "title": "Pianificare il viaggio o improvvisare?",
+            "body": ""
+          },
+          {
+            "title": "Viaggio in auto o volo?",
+            "body": ""
+          },
+          {
+            "title": "Hotel o casa in affitto?",
+            "body": ""
+          },
+          {
+            "title": "Musei o mercati?",
+            "body": ""
+          },
+          {
+            "title": "Solo bagaglio a mano o bagaglio da stiva?",
+            "body": ""
+          },
+          {
+            "title": "Vacanza al caldo o al freddo?",
+            "body": ""
+          },
+          {
+            "title": "Viaggiare da soli o con amici?",
+            "body": ""
+          },
+          {
+            "title": "Centro storico o città moderna?",
+            "body": ""
+          },
+          {
+            "title": "Souvenir o foto?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Vita quotidiana",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Mattiniero o nottambulo?",
+            "body": ""
+          },
+          {
+            "title": "Doccia al mattino o alla sera?",
+            "body": ""
+          },
+          {
+            "title": "Telefonata o nota vocale?",
+            "body": ""
+          },
+          {
+            "title": "Palestra o passeggiata all'aperto?",
+            "body": ""
+          },
+          {
+            "title": "Scrivania ordinata o caos creativo?",
+            "body": ""
+          },
+          {
+            "title": "Risparmiare o spendere?",
+            "body": ""
+          },
+          {
+            "title": "Giochi da tavolo o videogiochi?",
+            "body": ""
+          },
+          {
+            "title": "Film a casa o al cinema?",
+            "body": ""
+          },
+          {
+            "title": "Pioggia o neve?",
+            "body": ""
+          },
+          {
+            "title": "Weekend in casa o fuori casa?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Tecnologia",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Mac o Windows?",
+            "body": ""
+          },
+          {
+            "title": "Android o iPhone?",
+            "body": ""
+          },
+          {
+            "title": "Modalità scura o modalità chiara?",
+            "body": ""
+          },
+          {
+            "title": "Scorciatoie da tastiera o mouse?",
+            "body": ""
+          },
+          {
+            "title": "Tabulazioni o spazi?",
+            "body": ""
+          },
+          {
+            "title": "Laptop o computer fisso?",
+            "body": ""
+          },
+          {
+            "title": "Taccuino di carta o app per le note?",
+            "body": ""
+          },
+          {
+            "title": "Cuffie con cavo o wireless?",
+            "body": ""
+          },
+          {
+            "title": "Reazioni con emoji o risposte scritte?",
+            "body": ""
+          },
+          {
+            "title": "Aggiorna ora o ricordamelo più tardi?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Intrattenimento",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Film o serie TV?",
+            "body": ""
+          },
+          {
+            "title": "Commedia o thriller?",
+            "body": ""
+          },
+          {
+            "title": "Concerto dal vivo o festival?",
+            "body": ""
+          },
+          {
+            "title": "Leggere il libro o guardare il film?",
+            "body": ""
+          },
+          {
+            "title": "Binge-watching o un episodio a settimana?",
+            "body": ""
+          },
+          {
+            "title": "Podcast o audiolibro?",
+            "body": ""
+          },
+          {
+            "title": "Karaoke o ballo?",
+            "body": ""
+          },
+          {
+            "title": "Un classico o una novità?",
+            "body": ""
+          },
+          {
+            "title": "Spoiler o niente spoiler?",
+            "body": ""
+          },
+          {
+            "title": "Praticare sport o guardarlo?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Ipotetico",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Volare o essere invisibile?",
+            "body": ""
+          },
+          {
+            "title": "Viaggiare nel tempo nel passato o nel futuro?",
+            "body": ""
+          },
+          {
+            "title": "Parlare ogni lingua o suonare ogni strumento?",
+            "body": ""
+          },
+          {
+            "title": "Caffè gratis a vita o pranzo gratis a vita?",
+            "body": ""
+          },
+          {
+            "title": "Settimana lavorativa di quattro giorni o due settimane di ferie in più?",
+            "body": ""
+          },
+          {
+            "title": "Non rispondere mai più a un'e-mail o non partecipare mai più a una riunione?",
+            "body": ""
+          },
+          {
+            "title": "Lavorare da una spiaggia o da una baita nei boschi?",
+            "body": ""
+          },
+          {
+            "title": "Leggere nel pensiero o vedere il futuro?",
+            "body": ""
+          },
+          {
+            "title": "Vivere senza musica o senza film?",
+            "body": ""
+          },
+          {
+            "title": "Essere famoso o essere ricco?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Team e riunioni",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Brainstorming ad alta voce o prima pensare e poi scrivere?",
+            "body": ""
+          },
+          {
+            "title": "Condurre la riunione o prendere appunti?",
+            "body": ""
+          },
+          {
+            "title": "Pranzo di team o gioco di team?",
+            "body": ""
+          },
+          {
+            "title": "Festeggiare i successi in grande o con discrezione?",
+            "body": ""
+          },
+          {
+            "title": "Chiedere aiuto subito o provare prima da soli?",
+            "body": ""
+          },
+          {
+            "title": "Feedback di persona o per iscritto?",
+            "body": ""
+          },
+          {
+            "title": "Retro con i post-it o con una semplice lista?",
+            "body": ""
+          },
+          {
+            "title": "Pianificare il trimestre o pianificare la settimana?",
+            "body": ""
+          },
+          {
+            "title": "Orari delle riunioni fissi o flessibili?",
+            "body": ""
+          },
+          {
+            "title": "Mostrare la demo o spiegare l'idea?",
+            "body": ""
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Dove si inserisce TinyFloor",
+      "body": "TinyFloor è un ufficio virtuale per piccoli team. Apri la riunione con una domanda «questo o quello» nella sala riunioni, tutti in video, e per il resto della giornata le persone siedono alle loro scrivanie sullo stesso piano, dove fare due chiacchiere veloci è a pochi passi di distanza. È gratuito fino a 3 persone e costa $29 al mese per tutto il team."
+    },
+    "faq": [
+      {
+        "q": "Cosa sono le domande «questo o quello»?",
+        "a": "Domande che offrono due opzioni e chiedono di sceglierne una, come «Caffè o tè?». Rispondere richiede pochi secondi e funzionano bene come icebreaker."
+      },
+      {
+        "q": "Come si gioca a «questo o quello» al lavoro?",
+        "a": "Fai una domanda e fai un giro con il team, oppure lascia che tutti votino in chat contemporaneamente. Chiedi ad alcune persone perché hanno fatto quella scelta; è da lì che inizia la conversazione."
+      },
+      {
+        "q": "Le domande «questo o quello» vanno bene per le riunioni virtuali?",
+        "a": "Sì. Non richiedono configurazione né preparazione, tutti possono rispondere con una sola parola e funzionano altrettanto bene sia scritte in chat che dette ad alta voce."
+      },
+      {
+        "q": "Quante domande dovresti fare?",
+        "a": "Due o tre per aprire una riunione, oppure un giro a bruciapelo di tempo di cinque domande per risvegliare il gruppo. Limita il tutto a pochi minuti."
+      }
+    ]
+  },
+  "meetingMinutes": {
+    "label": "Modello di verbale di riunione",
+    "meta": {
+      "title": "Modello di verbale di riunione: come prendere appunti che le persone leggono davvero",
+      "description": "Un modello di verbale di riunione da copiare, cosa includere e cosa tralasciare, un esempio e come redigere e condividere i verbali in una riunione da remoto."
+    },
+    "title": "Un modello di verbale di riunione <em>che le persone leggono davvero.</em>",
+    "intro": "Il verbale di riunione è il breve resoconto scritto di ciò che è stato deciso in una riunione e di chi farà cosa in seguito. Un buon verbale si legge in un minuto ed evita che la riunione successiva sia una ripetizione di quella precedente. Ecco un modello da copiare, cosa includere, un esempio e come redigere i verbali quando la riunione è da remoto.",
+    "sections": [
+      {
+        "title": "A cosa serve il verbale",
+        "body": [
+          "Il verbale non è una trascrizione. Nessuno legge un resoconto parola per parola, e scriverlo esclude chi prende appunti dalla conversazione.",
+          "Annota ciò che conterà la settimana successiva: cosa è stato deciso, cosa è rimasto in sospeso e chi ha accettato di fare cosa ed entro quando. Se qualcuno non ha partecipato alla riunione, il verbale dovrebbe essere sufficiente per consentirgli di agire."
+        ]
+      },
+      {
+        "title": "Un modello di verbale di riunione",
+        "body": [
+          "Copialo nelle tue note o nella chat di team all'inizio della riunione e compilalo man mano."
+        ],
+        "table": {
+          "head": [
+            "Sezione",
+            "Cosa scrivere"
+          ],
+          "rows": [
+            [
+              "Riunione",
+              "Nome, data e chi era presente"
+            ],
+            [
+              "Scopo",
+              "Una riga: perché si è tenuta la riunione"
+            ],
+            [
+              "Decisioni",
+              "Ogni decisione in una frase, così come è stata concordata"
+            ],
+            [
+              "Azioni",
+              "Cosa, chi e entro quando, una per riga"
+            ],
+            [
+              "Domande aperte",
+              "Cosa non è stato risolto e chi se ne occuperà"
+            ],
+            [
+              "Prossima riunione",
+              "Quando, e cosa preparare"
+            ]
+          ],
+          "note": "Sei brevi sezioni. Se una sezione è vuota, lasciala fuori invece di scrivere «nessuna»."
+        }
+      },
+      {
+        "title": "Cosa includere",
+        "items": [
+          {
+            "title": "Decisioni, parola per parola",
+            "body": "Scrivi la decisione così come è stata concordata dal gruppo, in modo che nessuno ne ricordi una versione diversa in seguito."
+          },
+          {
+            "title": "Azioni con un nome e una data",
+            "body": "«Verificare i prezzi» viene dimenticato. «Sam: tre opzioni di prezzo entro venerdì» viene fatto."
+          },
+          {
+            "title": "Domande aperte",
+            "body": "Cosa è emerso e non è stato risolto, in modo che non svanisca tra una riunione e l'altra."
+          },
+          {
+            "title": "Chi era presente",
+            "body": "Una riga. Dice a chi legge a chi chiedere informazioni su quanto è stato detto."
+          }
+        ]
+      },
+      {
+        "title": "Cosa tralasciare",
+        "items": [
+          {
+            "title": "Chi ha detto cosa",
+            "body": "A meno che non si tratti di una riunione formale che lo richieda, attribuire ogni commento rallenta la scrittura e la lettura."
+          },
+          {
+            "title": "L'intera discussione",
+            "body": "Una riga di contesto per una decisione è sufficiente. Il verbale è il risultato, non il dibattito."
+          },
+          {
+            "title": "Opinioni sulla riunione",
+            "body": "Mantieni il verbale neutrale. I feedback su come è andata la riunione vanno in una retro."
+          }
+        ]
+      },
+      {
+        "title": "Un esempio",
+        "body": [
+          "Riunione settimanale di prodotto, 14 ottobre. Ana, Sam, Priya, Tom. Scopo: decidere la data di lancio e la pagina dei prezzi.",
+          "Decisioni: il lancio viene spostato a giovedì 23 ottobre. La pagina dei prezzi mostra solo i prezzi mensili. Azioni: Sam, testi finali dei prezzi entro lunedì. Priya, bozza dell'email di lancio entro martedì. Tom, verificare il flusso di registrazione su mobile entro mercoledì. Domanda aperta: se offrire un piano annuale in seguito; Ana porterà i dati la prossima settimana. Prossima riunione: 21 ottobre."
+        ]
+      },
+      {
+        "title": "Scrivere il verbale in una riunione da remoto",
+        "items": [
+          {
+            "title": "Condividi gli appunti sullo schermo",
+            "body": "Quando tutti vedono il verbale mentre viene scritto, gli errori vengono corretti sul momento e nessuno ne discuterà in seguito."
+          },
+          {
+            "title": "Rileggi le azioni",
+            "body": "Dedica gli ultimi due minuti a leggere ad alta voce ogni azione, chi la svolgerà e la data. Sono i due minuti più utili della riunione."
+          },
+          {
+            "title": "Alterna chi prende appunti",
+            "body": "Chi scrive non può condurre la discussione. Fate a turno e non chiedetelo sempre alla persona più nuova o più silenziosa."
+          },
+          {
+            "title": "Pubblicali dove lavora il team",
+            "body": "Nella chat del team, entro un'ora, così chi non era presente li vedrà il giorno stesso."
+          }
+        ]
+      },
+      {
+        "title": "Dopo la riunione",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Invia il verbale",
+            "body": "Il giorno stesso, nella chat del team o nel canale dedicato a quel progetto."
+          },
+          {
+            "title": "Verifica le azioni",
+            "body": "Inizia la prossima riunione esaminando le azioni della volta precedente: completate, in corso o bloccate."
+          },
+          {
+            "title": "Conservali in un unico posto",
+            "body": "Un unico documento o canale per ogni riunione, a partire dalla più recente, in modo che le decisioni possano essere trovate in seguito."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Dove si inserisce TinyFloor",
+      "body": "TinyFloor è un ufficio virtuale per piccoli team. Le riunioni avvengono nella sala riunioni in cui tutti entrano, con la condivisione dello schermo per gli appunti, e la chat del team si trova accanto al piano per pubblicare i verbali. Non prende appunti e non registra le riunioni al posto tuo. È gratuito fino a 3 persone e costa $29 al mese per tutto il team."
+    },
+    "faq": [
+      {
+        "q": "Cosa dovrebbe includere il verbale di una riunione?",
+        "a": "Chi era presente, lo scopo, le decisioni, le azioni con un responsabile e una data, le domande aperte e quando si terrà la prossima riunione."
+      },
+      {
+        "q": "Come si scrive rapidamente il verbale di una riunione?",
+        "a": "Usa un modello, scrivi le decisioni e le azioni anziché la discussione, e rileggi le azioni alla fine in modo che il verbale sia pronto al termine della riunione."
+      },
+      {
+        "q": "Chi dovrebbe redigere il verbale?",
+        "a": "Fate a turno. Chi conduce la riunione non dovrebbe occuparsi anche degli appunti, e il compito non dovrebbe ricadere sempre sulla stessa persona."
+      },
+      {
+        "q": "Qual è la differenza tra un ordine del giorno e un verbale?",
+        "a": "L'ordine del giorno è il programma della riunione, scritto prima che inizi. Il verbale è la registrazione di ciò che è stato deciso, scritto durante e dopo la riunione."
       }
     ]
   }

@@ -2,7 +2,7 @@
   "teamBuilding": {
     "label": "Virtual team building activities",
     "meta": {
-      "title": "20 Virtual Team Building Activities Remote Teams Enjoy",
+      "title": "20 Virtual Team Building Activities and Games for Remote Teams",
       "description": "20 virtual team building activities sorted by time: 5-minute starters, 30-minute games, monthly events and ideas that need no meeting at all."
     },
     "title": "Virtual team building activities <em>people actually enjoy.</em>",
@@ -202,7 +202,7 @@
   "meetingGames": {
     "label": "Games for virtual meetings",
     "meta": {
-      "title": "15 Quick Games for Virtual Meetings (5 Minutes or Less)",
+      "title": "15 Quick Icebreaker Games for Virtual Meetings (5 Minutes or Less)",
       "description": "15 quick games for virtual meetings that need no preparation: talking games, guessing games and drawing games that fit in five minutes."
     },
     "title": "Quick games for <em>virtual meetings.</em>",
@@ -1281,11 +1281,12 @@
         ]
       },
       {
-        "title": "What changed in 2025",
+        "title": "What changed in 2025 and 2026",
         "body": [
           "Until September 2025, small teams could use Gather for free, and paying teams were charged $7 a person a month, or $5.95 billed yearly, for the number of people online at the same time.",
           "On September 15, 2025, Gather launched Gather 2.0 and moved both versions to $15 a member a month, or $12 billed yearly. The free plan ended: offices that didn't upgrade by that date were closed.",
-          "Teams already paying got time to adjust. Monthly plans kept their old price until the end of 2025 and moved to $15 at their first renewal after January 1, 2026. Teams that locked in a yearly plan before the change kept $5.95 until September 2026, so many of them see the new price at this year's renewal."
+          "Teams already paying got time to adjust. Monthly plans kept their old price until the end of 2025 and moved to $15 at their first renewal after January 1, 2026. Teams that locked in a yearly plan before the change kept $5.95 until September 2026, so many of them see the new price at this year's renewal.",
+          "In February 2026 Gather became an independent company, and the team building its AI products left to join Figma. Gather said nothing changed for customers, and its prices stayed as above."
         ]
       },
       {
@@ -1415,6 +1416,10 @@
       {
         "q": "Does Gather have a free plan?",
         "a": "No. Gather ended its free plan on September 15, 2025. It offers a 30-day free trial for up to 50 people instead."
+      },
+      {
+        "q": "Is Gather shutting down?",
+        "a": "No. In February 2026 Gather spun out as an independent company that it describes as profitable, while its AI team joined Figma. Gather said nothing changed for customers; the plans and prices on this page are current."
       },
       {
         "q": "How much does Gather cost for 10 people?",
@@ -2125,7 +2130,7 @@
   "oneOnOne": {
     "label": "One-on-one meeting questions",
     "meta": {
-      "title": "40 One-on-One Meeting Questions for Managers (and to Ask Your Manager)",
+      "title": "One-on-One Meeting Template and 40 Questions for Managers",
       "description": "40 one-on-one meeting questions sorted by topic: check-ins, workload, blockers, feedback, growth, the team and remote work, plus questions to ask your manager and a simple 1:1 agenda."
     },
     "title": "One-on-one meeting questions <em>that get real answers.</em>",
@@ -2157,7 +2162,7 @@
         ]
       },
       {
-        "title": "A simple agenda",
+        "title": "A one-on-one meeting template",
         "table": {
           "head": [
             "Part",
@@ -2654,7 +2659,7 @@
   "retro": {
     "label": "Retrospective ideas",
     "meta": {
-      "title": "15 Retrospective Ideas for Remote Teams (Formats and Tips)",
+      "title": "15 Retrospective Ideas and a Template for Remote Teams",
       "description": "15 retrospective ideas for remote teams: quick formats, visual formats, deeper formats and ones that lift the mood, with how to run a retro online and keep the actions moving."
     },
     "title": "Retrospective ideas <em>for teams that are tired of the same three questions.</em>",
@@ -3280,6 +3285,1375 @@
       {
         "q": "Can I body double for free?",
         "a": "Yes. A video call with a friend costs nothing, and TinyFloor is free for up to 3 people, so a small group can body double there every day."
+      }
+    ]
+  },
+  "teamMeetingAgenda": {
+    "label": "Team meeting agenda",
+    "meta": {
+      "title": "Team Meeting Agenda Template: A Weekly Meeting That Works",
+      "description": "A weekly team meeting agenda template you can copy, what belongs in it and what doesn't, ideas to keep it fresh, and how to run it with a remote team in 30 minutes."
+    },
+    "title": "A team meeting agenda <em>that's worth the half hour.</em>",
+    "intro": "A weekly team meeting is the one time everyone is in the same room, so it should do what written updates can't: decide things, unblock people and keep the team feeling like a team. Here's a 30-minute agenda template you can copy, what to put in it, what to take out, and how to run it when the team is remote.",
+    "sections": [
+      {
+        "title": "What a team meeting is for",
+        "body": [
+          "Status updates are the most common item on a team meeting agenda and the least useful one. Everyone reading out what they did is slow, and most of it could have been a message.",
+          "Keep the meeting for what needs people together: decisions that affect several people, problems someone is stuck on, priorities for the week, and a few minutes that are just about the team. Everything else can be written down before or after."
+        ]
+      },
+      {
+        "title": "A weekly team meeting agenda template",
+        "body": [
+          "Copy this into your calendar invite or your team's notes. The times are for a team of 5 to 10; a larger team needs more time for decisions, not more updates."
+        ],
+        "table": {
+          "head": [
+            "Part",
+            "Time",
+            "What happens"
+          ],
+          "rows": [
+            [
+              "Check-in",
+              "3 min",
+              "One question everyone answers in a sentence"
+            ],
+            [
+              "Wins",
+              "3 min",
+              "Something shipped, solved or learned since last week"
+            ],
+            [
+              "Numbers",
+              "4 min",
+              "The two or three figures the team watches, and whether they moved"
+            ],
+            [
+              "Priorities",
+              "6 min",
+              "What matters most this week, and who owns it"
+            ],
+            [
+              "Blockers and decisions",
+              "10 min",
+              "Items people added beforehand, in order"
+            ],
+            [
+              "Wrap-up",
+              "4 min",
+              "Decisions, owners and deadlines, read back"
+            ]
+          ],
+          "note": "30 minutes in all. If there's nothing under blockers and decisions, end early."
+        }
+      },
+      {
+        "title": "Agenda items worth having",
+        "items": [
+          {
+            "title": "A shared list before the meeting",
+            "body": "Anyone can add an item during the week, with their name and what they need: a decision, advice, or just to share. The meeting works through the list in order."
+          },
+          {
+            "title": "Decisions, written as questions",
+            "body": "\"Do we move the launch to Thursday?\" gets decided. \"Launch\" gets discussed for ten minutes and ends with no answer."
+          },
+          {
+            "title": "One number per area",
+            "body": "Sign-ups, open bugs, hours to first reply: whatever the team actually steers by. Say whether it moved; save the story behind it for when it matters."
+          },
+          {
+            "title": "Who's away",
+            "body": "Holidays, half-days and launches coming up, so nobody waits on someone who isn't there."
+          },
+          {
+            "title": "Thanks",
+            "body": "A minute for naming who helped whom. It costs nothing and it's often the part people remember."
+          }
+        ]
+      },
+      {
+        "title": "What to take out",
+        "items": [
+          {
+            "title": "Round-the-table updates",
+            "body": "Ask for them in writing the day before. The meeting can then spend its time on the two updates that raised a question."
+          },
+          {
+            "title": "Long debates",
+            "body": "If an item takes more than ten minutes, it needs its own smaller meeting with the people it affects."
+          },
+          {
+            "title": "Announcements",
+            "body": "Post them in the [team chat](/team-chat), where people can read them later and react."
+          },
+          {
+            "title": "Things only two people care about",
+            "body": "Let them talk after the meeting, or straight away if they're sitting near each other."
+          }
+        ]
+      },
+      {
+        "title": "Ideas to keep it fresh",
+        "items": [
+          {
+            "title": "Rotate who runs it",
+            "body": "A different person each week keeps the time and the list. It spreads the habit of running a good meeting."
+          },
+          {
+            "title": "A five-minute demo",
+            "body": "Once a month, someone shows what they built or found, live, with no slides."
+          },
+          {
+            "title": "A better check-in question",
+            "body": "\"How was your weekend?\" gets the same answers every week. Use a [question that tells the team something new](/guides/check-in-questions)."
+          },
+          {
+            "title": "A game now and then",
+            "body": "A five-minute [game](/guides/games-for-virtual-meetings) at the start, once a month, is enough to change the mood without taking over the meeting."
+          },
+          {
+            "title": "Skip a week",
+            "body": "If the list is empty, cancel it. Nobody minds getting half an hour back, and the next one gets more attention."
+          }
+        ]
+      },
+      {
+        "title": "Running it with a remote team",
+        "body": [
+          "On a call, the meeting starts with a link someone has to find and ends with everyone vanishing. In a virtual office, the team walks into the same [meeting room](/virtual-meeting-room) at the same time, and the people who need to keep talking afterwards can stay at their desks next to each other.",
+          "Keep cameras optional, share the agenda on screen so everyone is looking at the same item, and put the notes in the team chat before the room empties. If the team spans time zones, rotate the time so the same people aren't always on at night."
+        ]
+      },
+      {
+        "title": "After the meeting",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Post the notes",
+            "body": "[Decisions, owners and deadlines](/guides/meeting-minutes-template), in the team chat, within the hour."
+          },
+          {
+            "title": "Move the open items",
+            "body": "Anything not reached goes to the top of next week's list, or to its own meeting."
+          },
+          {
+            "title": "Tell the people who missed it",
+            "body": "One line each on what affects them, so nobody learns about a decision by accident."
+          },
+          {
+            "title": "Check the time",
+            "body": "If the meeting ran over two weeks in a row, cut an item from the template rather than adding time."
+          }
+        ]
+      },
+      {
+        "title": "Agendas for other team meetings",
+        "items": [
+          {
+            "title": "Kickoff meeting",
+            "body": "Why the project exists (5 minutes), what done looks like (10), who owns what (10), the first milestones and dates (10), risks and open questions (10), and how the team will keep in touch (5). An hour in all, once per project."
+          },
+          {
+            "title": "All-hands meeting",
+            "body": "Wins and thanks (10 minutes), the numbers that matter (10), what changed and why (15), one team showing its work (10), and questions from anyone (15). An hour, monthly or quarterly, with questions collected beforehand so quieter people get theirs in."
+          },
+          {
+            "title": "Daily standup",
+            "body": "Ten to fifteen minutes: what each person is on today and anything blocking them. Our [daily standup template](/tools/daily-standup-template) has the questions and a written version for teams across time zones."
+          },
+          {
+            "title": "Retrospective",
+            "body": "What went well, what didn't and what to change, every two to four weeks. See [retrospective ideas](/guides/retrospective-ideas) for formats that keep it fresh."
+          },
+          {
+            "title": "One-on-one",
+            "body": "Thirty minutes between a manager and one person, led by their list rather than the manager's. Use our [one-on-one template and questions](/guides/one-on-one-meeting-questions)."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "TinyFloor is a virtual office for small teams. The weekly meeting happens in the meeting room everyone walks into, with video, screen sharing and a whiteboard, and afterwards people are back at their desks on the same floor, a short walk away if something needs a follow-up. It's free for up to 3 people and $29 a month for the whole team."
+    },
+    "faq": [
+      {
+        "q": "What should be on a team meeting agenda?",
+        "a": "A short check-in, wins, the few numbers the team watches, this week's priorities, blockers and decisions that people added beforehand, and a wrap-up with owners and deadlines. Leave routine status updates for writing."
+      },
+      {
+        "q": "How long should a weekly team meeting be?",
+        "a": "About 30 minutes for a team of 5 to 10. If it keeps running over, the problem is usually too many updates or a debate that needs its own meeting."
+      },
+      {
+        "q": "How do you make team meetings less boring?",
+        "a": "Cut the updates, rotate who runs it, use a check-in question that tells the team something new, and show real work now and then. A meeting that ends early when there's nothing to decide is rarely called boring."
+      },
+      {
+        "q": "Who should run the team meeting?",
+        "a": "Not always the manager. Rotating it keeps people engaged and teaches everyone to keep time and steer a discussion."
+      },
+      {
+        "q": "Should the agenda be shared before the meeting?",
+        "a": "Yes. A shared list that anyone can add to during the week means the meeting starts with what people actually need, in order."
+      },
+      {
+        "q": "What should a kickoff meeting agenda include?",
+        "a": "Why the project exists, what done looks like, who owns what, the first milestones, risks and open questions, and how the team will stay in touch. About an hour, once at the start."
+      }
+    ]
+  },
+  "discordVsSlack": {
+    "label": "Discord vs Slack",
+    "meta": {
+      "title": "Discord vs Slack for Work: Which Should a Small Team Use?",
+      "description": "Discord vs Slack for a work team: what each costs, voice and calls, message history, integrations and privacy, which suits a small team, and a third option built as an office."
+    },
+    "title": "Discord vs Slack <em>for a work team.</em>",
+    "intro": "Plenty of small teams run their day in Discord: it's free, voice channels feel like a shared room, and many people already have it open. Others use Slack because it's what work tools connect to. Here's how they compare for a working team, what each does better, and when neither is quite the right shape.",
+    "sections": [
+      {
+        "title": "Discord and Slack at a glance",
+        "table": {
+          "head": [
+            "",
+            "Discord",
+            "Slack"
+          ],
+          "rows": [
+            [
+              "Built for",
+              "Communities and gaming",
+              "Work"
+            ],
+            [
+              "Price",
+              "Free; Nitro is extra for each person",
+              "Free plan; paid plans per user"
+            ],
+            [
+              "Message history",
+              "Kept",
+              "90 days on the free plan"
+            ],
+            [
+              "Talking",
+              "Voice channels you drop into",
+              "Huddles: 2 people on the free plan, up to 50 on paid plans"
+            ],
+            [
+              "Integrations",
+              "Bots",
+              "Up to 10 apps free, many more on paid plans"
+            ],
+            [
+              "Accounts",
+              "Personal accounts, shared with everything else",
+              "A workspace your company owns"
+            ]
+          ],
+          "note": "From Slack's pricing page and help centre, and Discord's own pages, read in October 2026."
+        }
+      },
+      {
+        "title": "Where Discord is better",
+        "items": [
+          {
+            "title": "Talking is the default",
+            "body": "A voice channel is a room people sit in. Drop in, ask, leave: no call to start and nobody to invite."
+          },
+          {
+            "title": "Free for the whole team",
+            "body": "Voice, video, screen sharing and full history cost nothing. Nitro adds perks per person, but a team doesn't need it."
+          },
+          {
+            "title": "Familiar to a lot of people",
+            "body": "Many developers, designers and students already use it every day, so there's nothing to install or learn."
+          }
+        ]
+      },
+      {
+        "title": "Where Slack is better",
+        "items": [
+          {
+            "title": "Made for work",
+            "body": "Threads, search, workflows and the integrations work tools expect, from calendars to issue trackers."
+          },
+          {
+            "title": "The company owns the workspace",
+            "body": "Accounts, retention and access are the company's to manage, and work stays separate from people's personal servers."
+          },
+          {
+            "title": "Easier for clients and new hires",
+            "body": "Shared channels with other companies, guest accounts and single sign-on on higher plans."
+          }
+        ]
+      },
+      {
+        "title": "What neither does well",
+        "body": [
+          "Discord shows who's in which voice channel, but not who's at their desk and free for a minute. Slack shows a green dot, which says someone is online, not whether they can talk. In both, starting a conversation means either calling someone out of the blue or typing and waiting.",
+          "That gap is what a [virtual office](/virtual-office) fills: everyone has a desk on one floor, sets a status, and walks up to talk, so a team can tell at a glance who's free and step into a room together. Many teams keep Slack or Discord for writing and use an office for talking."
+        ]
+      },
+      {
+        "title": "Which one to choose",
+        "items": [
+          {
+            "title": "Discord, for a team that mostly talks",
+            "body": "A small team that lives in voice, is happy with personal accounts and needs few integrations."
+          },
+          {
+            "title": "Slack, for a team that mostly writes",
+            "body": "A team that needs search, integrations, client channels and company-owned accounts, and will pay per person for group calls."
+          },
+          {
+            "title": "A virtual office beside either",
+            "body": "If the problem is knowing who's free and talking without scheduling, add an office for the day and keep the chat tool you have. Compare [Discord for work](/discord-for-work) and [Slack huddles](/slack-huddles-alternative) with TinyFloor."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "TinyFloor is a private virtual office for small teams: a desk for each person, statuses, walk-up calls, a meeting room, team chat and a whiteboard, in the browser. It's built for work, unlike Discord, and talking is the default, unlike Slack. It's free for up to 3 people and $29 a month for the whole team, and it sits fine next to the chat tool you already use."
+    },
+    "faq": [
+      {
+        "q": "Is Discord good for work?",
+        "a": "For a small team that mostly talks, yes: voice channels are free and quick. It's weaker on search, integrations and company-owned accounts, and work sits next to people's personal servers."
+      },
+      {
+        "q": "Is Discord free for teams?",
+        "a": "Yes. Voice, video, screen sharing and message history are free. Nitro is an optional paid extra for each person."
+      },
+      {
+        "q": "How many people can join a Slack huddle?",
+        "a": "Two on Slack's free plan. Paid plans allow up to 50, with up to 25 on video."
+      },
+      {
+        "q": "Can we use Discord and Slack together?",
+        "a": "Some teams do, writing in Slack and talking in Discord, but two tools for one team usually means one of them goes quiet. A virtual office next to your chat tool covers the talking without a second chat."
+      }
+    ]
+  },
+  "checkInQuestions": {
+    "label": "Check-in questions",
+    "meta": {
+      "title": "50 Check-In Questions for Meetings: Quick, Deep and Fun",
+      "description": "50 check-in questions to open a team meeting, standup or one-on-one: quick one-word rounds, work check-ins, deeper questions, fun ones and questions for remote teams."
+    },
+    "title": "Check-in questions <em>to open any meeting.</em>",
+    "intro": "A check-in is one question everyone answers at the start of a meeting, in a sentence or a word. It gets every voice into the room early, tells you how people are actually doing, and takes two or three minutes. Here are 50 to choose from, grouped by how much time you have and what you want to learn.",
+    "sections": [
+      {
+        "title": "How to run a check-in",
+        "items": [
+          {
+            "title": "One question, everyone answers",
+            "body": "Go round in a fixed order, or let the last person pick the next. Allow a pass."
+          },
+          {
+            "title": "Keep answers short",
+            "body": "A word or a sentence. If something needs more, note it and come back to it after the meeting."
+          },
+          {
+            "title": "Match the question to the meeting",
+            "body": "A quick round before a [standup](/virtual-standup), a deeper question before a [retro](/guides/retrospective-ideas) or a [one-on-one](/guides/one-on-one-meeting-questions)."
+          },
+          {
+            "title": "Answer it yourself first",
+            "body": "The person running the meeting goes first and sets the length and the tone."
+          }
+        ]
+      },
+      {
+        "title": "Quick check-ins (one word or a number)",
+        "items": [
+          {
+            "title": "One word for how you're arriving today?",
+            "detail": "Quick",
+            "body": "Simple, and surprisingly honest."
+          },
+          {
+            "title": "On a scale of 1 to 10, how's your energy?",
+            "detail": "Quick",
+            "body": "Useful for deciding how much to fit into the meeting."
+          },
+          {
+            "title": "What's the weather like in your head right now?",
+            "detail": "Quick",
+            "body": "A gentler way to ask how someone is."
+          },
+          {
+            "title": "Green, yellow or red for this week?",
+            "detail": "Quick",
+            "body": "A fast read on workload before planning."
+          },
+          {
+            "title": "What's one thing on your mind that isn't this meeting?",
+            "detail": "Quick",
+            "body": "Saying it out loud often makes it easier to set aside."
+          },
+          {
+            "title": "Coffee, tea or something else today?",
+            "detail": "Quick",
+            "body": "Low stakes, good for a new team."
+          },
+          {
+            "title": "Emoji for your week so far?",
+            "detail": "Quick",
+            "body": "Works well typed in the chat at the same time."
+          },
+          {
+            "title": "How many hours did you sleep, roughly?",
+            "detail": "Quick",
+            "body": "Only for a team that's comfortable with it."
+          },
+          {
+            "title": "What are you looking forward to this week?",
+            "detail": "Quick",
+            "body": "Starts the meeting on something good."
+          },
+          {
+            "title": "Focused, scattered or somewhere in between?",
+            "detail": "Quick",
+            "body": "Handy before a working session."
+          }
+        ]
+      },
+      {
+        "title": "Work check-ins",
+        "items": [
+          {
+            "title": "What's the one thing you most need to finish this week?",
+            "detail": "Work",
+            "body": "Surfaces priorities without a full status round."
+          },
+          {
+            "title": "What's blocking you right now?",
+            "detail": "Work",
+            "body": "Gets problems into the open early."
+          },
+          {
+            "title": "What did you learn since we last met?",
+            "detail": "Work",
+            "body": "Spreads knowledge across the team."
+          },
+          {
+            "title": "What are you waiting on from someone here?",
+            "detail": "Work",
+            "body": "Turns hidden dependencies into a quick conversation."
+          },
+          {
+            "title": "What took longer than you expected last week?",
+            "detail": "Work",
+            "body": "Good before planning."
+          },
+          {
+            "title": "What would make today a good day?",
+            "detail": "Work",
+            "body": "Gives everyone a small, reachable goal."
+          },
+          {
+            "title": "What's one thing you'd drop if you could?",
+            "detail": "Work",
+            "body": "Shows where the load is too heavy."
+          },
+          {
+            "title": "Who helped you this week?",
+            "detail": "Work",
+            "body": "Builds a habit of noticing each other's help."
+          },
+          {
+            "title": "What's something you shipped that you're proud of?",
+            "detail": "Work",
+            "body": "Wins get named, not just finished."
+          },
+          {
+            "title": "What's one question you want answered in this meeting?",
+            "detail": "Work",
+            "body": "Makes sure the meeting covers what people need."
+          }
+        ]
+      },
+      {
+        "title": "Deeper check-ins",
+        "items": [
+          {
+            "title": "What's taking up most of your attention outside work?",
+            "detail": "Deeper",
+            "body": "Only answered as far as someone wants."
+          },
+          {
+            "title": "When did you last feel really useful at work?",
+            "detail": "Deeper",
+            "body": "Good in a one-on-one or a retro."
+          },
+          {
+            "title": "What's something you're finding hard right now?",
+            "detail": "Deeper",
+            "body": "Needs trust; answer it yourself first."
+          },
+          {
+            "title": "What would you change about how we work together?",
+            "detail": "Deeper",
+            "body": "An opening for a retro."
+          },
+          {
+            "title": "What do you need more of from this team?",
+            "detail": "Deeper",
+            "body": "Turns feelings into something the team can act on."
+          },
+          {
+            "title": "What's a decision you're still unsure about?",
+            "detail": "Deeper",
+            "body": "Invites help without asking for it."
+          },
+          {
+            "title": "What are you curious about lately?",
+            "detail": "Deeper",
+            "body": "Shows a side of people that work rarely does."
+          },
+          {
+            "title": "What would make next month better than this one?",
+            "detail": "Deeper",
+            "body": "Good for a monthly meeting."
+          },
+          {
+            "title": "What's something you've changed your mind about?",
+            "detail": "Deeper",
+            "body": "Models being open to being wrong."
+          },
+          {
+            "title": "How are you, really?",
+            "detail": "Deeper",
+            "body": "Ask it slowly and wait for the answer."
+          }
+        ]
+      },
+      {
+        "title": "Fun check-ins",
+        "items": [
+          {
+            "title": "What's the best thing you ate this week?",
+            "detail": "Fun",
+            "body": "Everyone has an answer."
+          },
+          {
+            "title": "What's on your desk that we can't see?",
+            "detail": "Fun",
+            "body": "Gets people looking around and laughing."
+          },
+          {
+            "title": "If today were a film genre, which one?",
+            "detail": "Fun",
+            "body": "A quick, playful read on the week."
+          },
+          {
+            "title": "What's a small thing that made you happy recently?",
+            "detail": "Fun",
+            "body": "Ends up being the warmest few minutes of the meeting."
+          },
+          {
+            "title": "What song is stuck in your head?",
+            "detail": "Fun",
+            "body": "Optional: play ten seconds of it."
+          },
+          {
+            "title": "Which app could you not live without this week?",
+            "detail": "Fun",
+            "body": "Often turns into useful tips."
+          },
+          {
+            "title": "What's a skill you'd learn instantly if you could?",
+            "detail": "Fun",
+            "body": "Reveals what people care about."
+          },
+          {
+            "title": "Best thing you've watched or read lately?",
+            "detail": "Fun",
+            "body": "Builds a list of recommendations."
+          },
+          {
+            "title": "What would your out-of-office message say today?",
+            "detail": "Fun",
+            "body": "Gets creative answers."
+          },
+          {
+            "title": "Window seat or aisle?",
+            "detail": "Fun",
+            "body": "Settles nothing and everyone has an opinion."
+          }
+        ]
+      },
+      {
+        "title": "Check-ins for remote teams",
+        "items": [
+          {
+            "title": "What's the view from where you're working today?",
+            "detail": "Remote",
+            "body": "Shows the places behind the video tiles."
+          },
+          {
+            "title": "What time is it for you, and what's next after this?",
+            "detail": "Remote",
+            "body": "Makes time zones visible."
+          },
+          {
+            "title": "Who did you talk to today, apart from us?",
+            "detail": "Remote",
+            "body": "A gentle way to notice when someone's been alone all day."
+          },
+          {
+            "title": "How's your setup holding up?",
+            "detail": "Remote",
+            "body": "Surfaces small problems with chairs, screens or internet."
+          },
+          {
+            "title": "What's one thing you miss about working in the same room?",
+            "detail": "Remote",
+            "body": "Good for deciding what to try next as a team."
+          },
+          {
+            "title": "What's one thing you'd never give back about working remotely?",
+            "detail": "Remote",
+            "body": "Ends on a good note."
+          },
+          {
+            "title": "When are you most focused during the day?",
+            "detail": "Remote",
+            "body": "Helps the team protect each other's focus time."
+          },
+          {
+            "title": "What's your favourite way to take a break at home?",
+            "detail": "Remote",
+            "body": "Swaps ideas for real breaks."
+          },
+          {
+            "title": "Did anything make you laugh this week?",
+            "detail": "Remote",
+            "body": "Brings back some of the office's small moments."
+          },
+          {
+            "title": "What's one thing the team could do to feel closer?",
+            "detail": "Remote",
+            "body": "Turns the check-in into an idea."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "TinyFloor is a virtual office for small teams. Check-ins happen in the meeting room everyone walks into, with video, and the rest of the day people sit at their desks on the same floor, where a quick question is a short walk away. It's free for up to 3 people and $29 a month for the whole team."
+    },
+    "faq": [
+      {
+        "q": "What is a check-in question?",
+        "a": "One question everyone answers at the start of a meeting, briefly. It gets everyone talking early and shows how people are doing before the work starts."
+      },
+      {
+        "q": "What's a good check-in question for a team meeting?",
+        "a": "\"What's the one thing you most need to finish this week?\" for a work meeting, or \"One word for how you're arriving today?\" when time is short."
+      },
+      {
+        "q": "How long should a check-in take?",
+        "a": "Two or three minutes for a team of up to ten: a word or a sentence each."
+      },
+      {
+        "q": "Are check-ins the same as icebreakers?",
+        "a": "Close. Icebreakers help people who don't know each other start talking; check-ins help a team that already works together share how they're doing and what they need."
+      }
+    ]
+  },
+  "thisOrThat": {
+    "label": "This or that questions",
+    "meta": {
+      "title": "100 This or That Questions for Work, Teams and Icebreakers",
+      "description": "100 this or that questions for work and team meetings: quick-fire, food, travel, everyday life, tech, remote work and the office, with tips for running them as an icebreaker."
+    },
+    "title": "This or that questions <em>for work and teams.</em>",
+    "intro": "A this or that question gives two options and asks you to pick one. It takes seconds to answer, there's no wrong answer, and the reasons people give are often the best part. They make an easy icebreaker for a team meeting, a new group or a quiet video call. Here are 100, grouped by topic, with a few ways to use them.",
+    "sections": [
+      {
+        "title": "How to use them",
+        "items": [
+          {
+            "title": "Round the team",
+            "body": "Ask one question and everyone answers in turn. Two or three questions are enough to open a meeting."
+          },
+          {
+            "title": "Ask why",
+            "body": "The pick takes a second; the reason is what gets people talking. Allow one follow-up per person."
+          },
+          {
+            "title": "Vote in the chat",
+            "body": "For a bigger group, everyone types their answer at the same time, then the two sides explain."
+          },
+          {
+            "title": "Quick-fire",
+            "body": "Five questions in a row, answered without thinking. Good for waking up a room at the start of a long session."
+          }
+        ]
+      },
+      {
+        "title": "Quick-fire",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Coffee or tea?",
+            "body": ""
+          },
+          {
+            "title": "Morning or night?",
+            "body": ""
+          },
+          {
+            "title": "Cats or dogs?",
+            "body": ""
+          },
+          {
+            "title": "Sunrise or sunset?",
+            "body": ""
+          },
+          {
+            "title": "Summer or winter?",
+            "body": ""
+          },
+          {
+            "title": "Beach or mountains?",
+            "body": ""
+          },
+          {
+            "title": "Call or text?",
+            "body": ""
+          },
+          {
+            "title": "Books or podcasts?",
+            "body": ""
+          },
+          {
+            "title": "Sweet or salty?",
+            "body": ""
+          },
+          {
+            "title": "City or countryside?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Work",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Early start or late finish?",
+            "body": ""
+          },
+          {
+            "title": "Quiet focus or busy buzz?",
+            "body": ""
+          },
+          {
+            "title": "Big projects or quick wins?",
+            "body": ""
+          },
+          {
+            "title": "Plan everything or figure it out as you go?",
+            "body": ""
+          },
+          {
+            "title": "Written update or quick call?",
+            "body": ""
+          },
+          {
+            "title": "Inbox zero or inbox chaos?",
+            "body": ""
+          },
+          {
+            "title": "Lists on paper or in an app?",
+            "body": ""
+          },
+          {
+            "title": "Present the idea or build the idea?",
+            "body": ""
+          },
+          {
+            "title": "One long meeting or three short ones?",
+            "body": ""
+          },
+          {
+            "title": "Monday motivation or Friday energy?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Remote work and the office",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Work from home or work from a café?",
+            "body": ""
+          },
+          {
+            "title": "Camera on or camera off?",
+            "body": ""
+          },
+          {
+            "title": "Standing desk or comfy chair?",
+            "body": ""
+          },
+          {
+            "title": "Headphones or speakers?",
+            "body": ""
+          },
+          {
+            "title": "Desk by the window or desk by the door?",
+            "body": ""
+          },
+          {
+            "title": "Office snacks or home lunch?",
+            "body": ""
+          },
+          {
+            "title": "Commute podcast or commute playlist?",
+            "body": ""
+          },
+          {
+            "title": "Hybrid or fully remote?",
+            "body": ""
+          },
+          {
+            "title": "Slippers or shoes while working from home?",
+            "body": ""
+          },
+          {
+            "title": "Office plants or office pets?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Food and drink",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Pizza or burgers?",
+            "body": ""
+          },
+          {
+            "title": "Breakfast or dinner?",
+            "body": ""
+          },
+          {
+            "title": "Cook at home or eat out?",
+            "body": ""
+          },
+          {
+            "title": "Chocolate or crisps?",
+            "body": ""
+          },
+          {
+            "title": "Spicy or mild?",
+            "body": ""
+          },
+          {
+            "title": "Pancakes or waffles?",
+            "body": ""
+          },
+          {
+            "title": "Smoothie or juice?",
+            "body": ""
+          },
+          {
+            "title": "Takeaway or delivery?",
+            "body": ""
+          },
+          {
+            "title": "Fruit or dessert?",
+            "body": ""
+          },
+          {
+            "title": "Lunch at your desk or lunch away from it?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Travel",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Window seat or aisle?",
+            "body": ""
+          },
+          {
+            "title": "Plan the trip or wing it?",
+            "body": ""
+          },
+          {
+            "title": "Road trip or flight?",
+            "body": ""
+          },
+          {
+            "title": "Hotel or rental?",
+            "body": ""
+          },
+          {
+            "title": "Museums or markets?",
+            "body": ""
+          },
+          {
+            "title": "Carry-on only or check a bag?",
+            "body": ""
+          },
+          {
+            "title": "Hot holiday or cold holiday?",
+            "body": ""
+          },
+          {
+            "title": "Travel alone or with friends?",
+            "body": ""
+          },
+          {
+            "title": "Old town or new city?",
+            "body": ""
+          },
+          {
+            "title": "Souvenirs or photos?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Everyday life",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Early bird or night owl?",
+            "body": ""
+          },
+          {
+            "title": "Shower in the morning or at night?",
+            "body": ""
+          },
+          {
+            "title": "Phone call or voice note?",
+            "body": ""
+          },
+          {
+            "title": "Gym or a walk outside?",
+            "body": ""
+          },
+          {
+            "title": "Tidy desk or creative mess?",
+            "body": ""
+          },
+          {
+            "title": "Save it or spend it?",
+            "body": ""
+          },
+          {
+            "title": "Board games or video games?",
+            "body": ""
+          },
+          {
+            "title": "Movie at home or at the cinema?",
+            "body": ""
+          },
+          {
+            "title": "Rain or snow?",
+            "body": ""
+          },
+          {
+            "title": "Weekend in or weekend out?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Tech",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Mac or Windows?",
+            "body": ""
+          },
+          {
+            "title": "Android or iPhone?",
+            "body": ""
+          },
+          {
+            "title": "Dark mode or light mode?",
+            "body": ""
+          },
+          {
+            "title": "Keyboard shortcuts or mouse?",
+            "body": ""
+          },
+          {
+            "title": "Tabs or spaces?",
+            "body": ""
+          },
+          {
+            "title": "Laptop or desktop?",
+            "body": ""
+          },
+          {
+            "title": "Paper notebook or notes app?",
+            "body": ""
+          },
+          {
+            "title": "Wired or wireless headphones?",
+            "body": ""
+          },
+          {
+            "title": "Emoji reactions or written replies?",
+            "body": ""
+          },
+          {
+            "title": "Update now or remind me later?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Entertainment",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Films or series?",
+            "body": ""
+          },
+          {
+            "title": "Comedy or thriller?",
+            "body": ""
+          },
+          {
+            "title": "Live concert or festival?",
+            "body": ""
+          },
+          {
+            "title": "Read the book or watch the film?",
+            "body": ""
+          },
+          {
+            "title": "Binge it or one episode a week?",
+            "body": ""
+          },
+          {
+            "title": "Podcast or audiobook?",
+            "body": ""
+          },
+          {
+            "title": "Karaoke or dancing?",
+            "body": ""
+          },
+          {
+            "title": "Classic or new release?",
+            "body": ""
+          },
+          {
+            "title": "Spoilers or no spoilers?",
+            "body": ""
+          },
+          {
+            "title": "Sports to play or sports to watch?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Hypothetical",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Fly or be invisible?",
+            "body": ""
+          },
+          {
+            "title": "Time travel to the past or the future?",
+            "body": ""
+          },
+          {
+            "title": "Speak every language or play every instrument?",
+            "body": ""
+          },
+          {
+            "title": "Free coffee for life or free lunch for life?",
+            "body": ""
+          },
+          {
+            "title": "Four-day week or two extra weeks of holiday?",
+            "body": ""
+          },
+          {
+            "title": "Never answer an email again or never join a meeting again?",
+            "body": ""
+          },
+          {
+            "title": "Work from a beach or from a cabin in the woods?",
+            "body": ""
+          },
+          {
+            "title": "Read minds or see the future?",
+            "body": ""
+          },
+          {
+            "title": "Live without music or without films?",
+            "body": ""
+          },
+          {
+            "title": "Be famous or be rich?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Team and meetings",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Brainstorm out loud or think first and write?",
+            "body": ""
+          },
+          {
+            "title": "Lead the meeting or take the notes?",
+            "body": ""
+          },
+          {
+            "title": "Team lunch or team game?",
+            "body": ""
+          },
+          {
+            "title": "Celebrate wins big or quietly?",
+            "body": ""
+          },
+          {
+            "title": "Ask for help early or try it yourself first?",
+            "body": ""
+          },
+          {
+            "title": "Feedback in person or in writing?",
+            "body": ""
+          },
+          {
+            "title": "Retro with sticky notes or a simple list?",
+            "body": ""
+          },
+          {
+            "title": "Plan the quarter or plan the week?",
+            "body": ""
+          },
+          {
+            "title": "Fixed meeting times or flexible ones?",
+            "body": ""
+          },
+          {
+            "title": "Show the demo or explain the idea?",
+            "body": ""
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "TinyFloor is a virtual office for small teams. Open the meeting with a this or that question in the meeting room, everyone on video, and the rest of the day people sit at their desks on the same floor, where a quick chat is a short walk away. It's free for up to 3 people and $29 a month for the whole team."
+    },
+    "faq": [
+      {
+        "q": "What are this or that questions?",
+        "a": "Questions that offer two options and ask you to choose one, like \"Coffee or tea?\". They're quick to answer and work well as icebreakers."
+      },
+      {
+        "q": "How do you play this or that at work?",
+        "a": "Ask one question and go round the team, or let everyone vote in the chat at the same time. Ask a few people why they chose what they did; that's where the conversation starts."
+      },
+      {
+        "q": "Are this or that questions good for virtual meetings?",
+        "a": "Yes. They need no setup and no preparation, everyone can answer in a word, and they work just as well typed in the chat as said out loud."
+      },
+      {
+        "q": "How many questions should you ask?",
+        "a": "Two or three to open a meeting, or a quick-fire round of five to wake a group up. Keep it to a few minutes."
+      }
+    ]
+  },
+  "meetingMinutes": {
+    "label": "Meeting minutes template",
+    "meta": {
+      "title": "Meeting Minutes Template: How to Take Notes People Actually Read",
+      "description": "A meeting minutes template you can copy, what to include and what to leave out, an example, and how to take and share minutes in a remote meeting."
+    },
+    "title": "A meeting minutes template <em>people actually read.</em>",
+    "intro": "Meeting minutes are the short written record of what a meeting decided and who's doing what next. Good minutes are read in a minute and save the next meeting from repeating this one. Here's a template you can copy, what belongs in it, an example, and how to take minutes when the meeting is remote.",
+    "sections": [
+      {
+        "title": "What minutes are for",
+        "body": [
+          "Minutes aren't a transcript. Nobody reads a word-for-word record, and writing one keeps the note-taker out of the conversation.",
+          "Write down what will matter next week: what was decided, what was left open, and who agreed to do what by when. If someone missed the meeting, the minutes should be enough for them to act."
+        ]
+      },
+      {
+        "title": "A meeting minutes template",
+        "body": [
+          "Copy this into your notes or your team chat at the start of the meeting and fill it in as you go."
+        ],
+        "table": {
+          "head": [
+            "Section",
+            "What to write"
+          ],
+          "rows": [
+            [
+              "Meeting",
+              "Name, date, and who was there"
+            ],
+            [
+              "Purpose",
+              "One line: why the meeting happened"
+            ],
+            [
+              "Decisions",
+              "Each decision in one sentence, as it was agreed"
+            ],
+            [
+              "Actions",
+              "What, who, and by when, one per line"
+            ],
+            [
+              "Open questions",
+              "What wasn't settled, and who will follow up"
+            ],
+            [
+              "Next meeting",
+              "When, and anything to prepare"
+            ]
+          ],
+          "note": "Six short sections. If a section is empty, leave it out rather than writing \"none\"."
+        }
+      },
+      {
+        "title": "What to include",
+        "items": [
+          {
+            "title": "Decisions, word for word",
+            "body": "Write the decision the way the group agreed it, so nobody remembers a different version later."
+          },
+          {
+            "title": "Actions with a name and a date",
+            "body": "\"Look into pricing\" gets forgotten. \"Sam: three pricing options by Friday\" gets done."
+          },
+          {
+            "title": "Open questions",
+            "body": "What was raised and not settled, so it doesn't vanish between meetings."
+          },
+          {
+            "title": "Who was there",
+            "body": "One line. It tells readers who to ask about what was said."
+          }
+        ]
+      },
+      {
+        "title": "What to leave out",
+        "items": [
+          {
+            "title": "Who said what",
+            "body": "Unless it's a formal meeting that needs it, attributing every comment slows the writing and the reading."
+          },
+          {
+            "title": "The whole discussion",
+            "body": "One line of context for a decision is enough. The minutes are the outcome, not the debate."
+          },
+          {
+            "title": "Opinions about the meeting",
+            "body": "Keep the minutes neutral. Feedback on how the meeting went belongs in a retro."
+          }
+        ]
+      },
+      {
+        "title": "An example",
+        "body": [
+          "Weekly product meeting, 14 October. Ana, Sam, Priya, Tom. Purpose: decide the launch date and the pricing page.",
+          "Decisions: the launch moves to Thursday 23 October. The pricing page shows monthly prices only. Actions: Sam, final pricing copy by Monday. Priya, launch email draft by Tuesday. Tom, check the sign-up flow on mobile by Wednesday. Open question: whether to offer a yearly plan later; Ana will bring numbers next week. Next meeting: 21 October."
+        ]
+      },
+      {
+        "title": "Taking minutes in a remote meeting",
+        "items": [
+          {
+            "title": "Share the notes on screen",
+            "body": "When everyone sees the minutes being written, mistakes get fixed on the spot and nobody argues about them later."
+          },
+          {
+            "title": "Read the actions back",
+            "body": "Spend the last two minutes reading out each action, owner and date. It's the most useful two minutes of the meeting."
+          },
+          {
+            "title": "Rotate the note-taker",
+            "body": "The person writing can't lead the discussion. Take turns, and don't always ask the newest or quietest person."
+          },
+          {
+            "title": "Post them where the team works",
+            "body": "In the team chat, within the hour, so people who weren't there see them the same day."
+          }
+        ]
+      },
+      {
+        "title": "After the meeting",
+        "numbered": true,
+        "items": [
+          {
+            "title": "Send the minutes",
+            "body": "The same day, in the team chat or the channel for that project."
+          },
+          {
+            "title": "Check the actions",
+            "body": "Start the next meeting by going through last time's actions: done, in progress or stuck."
+          },
+          {
+            "title": "Keep them in one place",
+            "body": "A single document or channel per meeting, newest first, so decisions can be found later."
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "TinyFloor is a virtual office for small teams. Meetings happen in the meeting room everyone walks into, with screen sharing for the notes, and the team chat sits beside the floor for posting the minutes. It doesn't take notes or record meetings for you. It's free for up to 3 people and $29 a month for the whole team."
+    },
+    "faq": [
+      {
+        "q": "What should meeting minutes include?",
+        "a": "Who was there, the purpose, the decisions, the actions with an owner and a date, open questions, and when the next meeting is."
+      },
+      {
+        "q": "How do you write meeting minutes quickly?",
+        "a": "Use a template, write decisions and actions rather than the discussion, and read the actions back at the end so the minutes are finished when the meeting is."
+      },
+      {
+        "q": "Who should take the minutes?",
+        "a": "Rotate it. The person running the meeting shouldn't also take the notes, and it shouldn't always fall to the same person."
+      },
+      {
+        "q": "What's the difference between an agenda and minutes?",
+        "a": "The agenda is the plan for the meeting, written before it. The minutes are the record of what it decided, written during and after it."
       }
     ]
   }

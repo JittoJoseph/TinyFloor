@@ -1,15 +1,15 @@
-import { useLocale, useTranslations } from "next-intl";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowRight, ChevronDown, Globe } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import { locales } from "@/lib/i18n/routing";
-import { GUIDES_PATH } from "@/lib/guides";
-import { ICEBREAKERS_PATH } from "@/lib/tools/icebreakers";
-import { OFFICE_COSTS_PATH } from "@/lib/tools/office-costs";
-import { TIME_ZONES_PATH } from "@/lib/tools/time-zones";
+import { locales, type Locale } from "@/lib/i18n/routing";
+import { GUIDES_PATH, guidePath } from "@/lib/guides";
+import { guideCopies } from "@/lib/guide-copy";
 import { TOOLS_PATH, hasPage } from "@/lib/tools/catalog";
-import { HUBS, LANDINGS, type LandingGroup } from "@/lib/landings";
+import { FEW_TOOL_NAMES } from "@/lib/tools/hub-copy";
+import { HUBS, LANDINGS, landingByKey, type Landing, type LandingGroup } from "@/lib/landings";
 import { SOCIALS, SUPPORT_EMAIL } from "@/lib/site";
 import { Logo } from "@/components/app/Logo";
+import { TOP_ALTERNATIVES, TOP_TOOLS, topGuidesIn } from "./HomeNav";
 import { ThemeSwitch } from "./ThemeSwitch";
 
 const GITHUB_PATH =
@@ -43,97 +43,124 @@ const ELSEWHERE = [
   },
 ];
 
-/** How many comparisons the footer lists before leading to the rest. */
-const COMPARE_IN_FOOTER = 8;
+type FooterLink = { label: string; href: string; all?: boolean };
 
 /**
- * The footer: the mark and one line, then five columns (the product and its
- * features, teams, use cases, comparisons, the company), then one quiet row
- * for the theme, the language and the fine print. Every column but the last
- * ends with its index, so each page a crawler should know is one hop away.
+ * The footer, in three bands. The mark, the one line and the company's
+ * accounts; then six columns (the product, teams, use cases, comparisons,
+ * guides, free tools), each ending with its index so every page a crawler
+ * should know is one hop away; then one quiet row for the company and the
+ * fine print, the language and the theme.
  */
-export function SiteFooter({ path = "/" }: { path?: string }) {
-  const t = useTranslations("home.footer");
-  const tn = useTranslations("home.nav");
-  const tl = useTranslations("landings");
-  const tg = useTranslations("guides");
-  const ts = useTranslations("shell");
-  const locale = useLocale();
+export async function SiteFooter({ path = "/" }: { path?: string }) {
+  const t = await getTranslations("home.footer");
+  const tn = await getTranslations("home.nav");
+  const tl = await getTranslations("landings");
+  const tg = await getTranslations("guides");
+  const ts = await getTranslations("shell");
+  const locale = await getLocale();
   const current = locales.find((one) => one.code === locale) ?? locales[0];
+  const guides = await guideCopies(locale);
 
-  const pagesOf = (group: LandingGroup, limit = Infinity): Array<{ label: string; href: string; all?: boolean }> => [
-    ...LANDINGS.filter((page) => page.group === group)
-      .slice(0, limit)
-      .map((page) => ({
-        label: page.competitor || page.product ? t("vs", { name: (page.competitor ?? page.product)! }) : tl(`pages.${page.key}.label`),
-        href: `/${page.slug}`,
-      })),
+  const label = (page: Landing) => (page.competitor || page.product ? t("vs", { name: (page.competitor ?? page.product)! }) : tl(`pages.${page.key}.label`));
+  const pagesOf = (group: LandingGroup): FooterLink[] => [
+    ...LANDINGS.filter((page) => page.group === group).map((page) => ({ label: label(page), href: `/${page.slug}` })),
     { label: tl("all"), href: `/${HUBS[group]}`, all: true },
   ];
+  const toolName = (tool: (typeof TOP_TOOLS)[number]) => (tool.name ? t(tool.name) : (FEW_TOOL_NAMES[locale as Locale]?.[tool.path] ?? ""));
 
-  const columns: Array<{ title: string; links: Array<{ label: string; href: string; all?: boolean }> }> = [
+  const columns: Array<{ title: string; links: FooterLink[] }> = [
     {
       title: t("product"),
       links: [
         ...pagesOf("features").filter((link) => !link.all),
         { label: tn("pricing"), href: "/pricing" },
         { label: t("lobby"), href: "/lobby" },
-        { label: t("signIn"), href: "/auth" },
+        { label: tl("all"), href: `/${HUBS.features}`, all: true },
       ],
     },
     { title: tl("teams"), links: pagesOf("teams") },
     { title: tl("useCases"), links: pagesOf("useCases") },
-    { title: t("compare"), links: pagesOf("compare", COMPARE_IN_FOOTER) },
     {
-      title: t("resources"),
+      title: t("compare"),
       links: [
-        { label: tl("features"), href: `/${HUBS.features}` },
-        { label: tg("label"), href: GUIDES_PATH },
-        { label: t("tools"), href: TOOLS_PATH },
-        { label: t("icebreakers"), href: ICEBREAKERS_PATH },
-        { label: t("officeCosts"), href: OFFICE_COSTS_PATH },
-        { label: t("timeZones"), href: TIME_ZONES_PATH },
-        { label: t("about"), href: "/about" },
-        { label: t("contact"), href: `mailto:${SUPPORT_EMAIL}` },
-        { label: t("faq"), href: "/#faq" },
-        { label: t("privacy"), href: "/privacy" },
-        { label: t("terms"), href: "/terms" },
-        { label: t("refunds"), href: "/refunds" },
-        { label: t("credits"), href: "/credits.txt" },
+        ...TOP_ALTERNATIVES.map(landingByKey).map((page) => ({ label: label(page), href: `/${page.slug}` })),
+        { label: tl("all"), href: `/${HUBS.compare}`, all: true },
+      ],
+    },
+    {
+      title: tg("label"),
+      links: [
+        ...topGuidesIn(locale).map((guide) => ({ label: guides[guide.key].label, href: guidePath(guide) })),
+        { label: tg("all"), href: GUIDES_PATH, all: true },
+      ],
+    },
+    {
+      title: t("tools"),
+      links: [
+        ...TOP_TOOLS.filter((tool) => toolName(tool)).map((tool) => ({ label: toolName(tool), href: tool.path })),
+        { label: tl("all"), href: TOOLS_PATH, all: true },
       ],
     },
   ];
 
-  const linkClass = "text-[14px] text-muted-foreground transition-colors hover:text-foreground";
+  const company: FooterLink[] = [
+    { label: t("about"), href: "/about" },
+    { label: t("contact"), href: `mailto:${SUPPORT_EMAIL}` },
+    { label: t("faq"), href: "/#faq" },
+    { label: t("privacy"), href: "/privacy" },
+    { label: t("terms"), href: "/terms" },
+    { label: t("refunds"), href: "/refunds" },
+    { label: t("credits"), href: "/credits.txt" },
+  ];
+
   return (
     <footer className="pb-10 pt-16 sm:pt-24">
-      <div className="mx-auto w-full max-w-[1120px] px-5 sm:px-8">
-        <div className="flex flex-col gap-4 border-t border-border pt-12 sm:flex-row sm:items-end sm:justify-between">
-          <Link href="/" className="inline-flex items-center gap-2.5 text-[16px] font-semibold tracking-[-0.02em]">
-            <Logo size={28} />
-            TinyFloor
-          </Link>
-          <p className="max-w-[22rem] text-[14px] leading-[1.6] text-muted-foreground sm:text-end">{t("tagline")}</p>
+      <div className="mx-auto w-full max-w-[1200px] px-5 sm:px-8">
+        <div className="flex flex-col gap-6 border-t border-border pt-12 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <Link href="/" className="inline-flex items-center gap-2.5 text-[16px] font-semibold tracking-[-0.02em]">
+              <Logo size={28} />
+              TinyFloor
+            </Link>
+            <p className="mt-3 max-w-[22rem] text-[14px] leading-[1.6] text-muted-foreground">{t("tagline")}</p>
+          </div>
+          <span className="-ms-2 flex items-center text-muted-foreground sm:ms-0">
+            {ELSEWHERE.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`TinyFloor on ${link.label}`}
+                className="flex size-9 items-center justify-center rounded-full transition-colors hover:bg-foreground/[0.05] hover:text-foreground"
+              >
+                <svg viewBox="0 0 24 24" className="size-4 fill-current" aria-hidden>
+                  <path d={link.path} />
+                </svg>
+              </a>
+            ))}
+          </span>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-12 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-6">
           {columns.map((column) => (
-            <nav key={column.title} aria-label={column.title}>
+            <nav key={column.title} aria-label={column.title} className="min-w-0">
               <p className="text-[13px] font-medium text-foreground">{column.title}</p>
-              <ul className="mt-4 flex flex-col gap-3">
+              <ul className="mt-4 flex flex-col gap-2.5">
                 {column.links.map((link) => (
                   <li key={link.href}>
-                    {/* A mail address isn't a page: no locale in front of it. */}
-                    {link.href.startsWith("mailto:") ? (
-                      <a href={link.href} className={linkClass}>
-                        {link.label}
-                      </a>
-                    ) : (
-                      <Link href={link.href} className={link.all ? "inline-flex items-center gap-1 text-[13.5px] font-medium text-foreground/80 hover:text-foreground" : linkClass}>
-                        {link.label}
-                        {link.all && <ArrowRight className="size-3 rtl:rotate-180" />}
-                      </Link>
-                    )}
+                    <Link
+                      href={link.href}
+                      className={
+                        link.all
+                          ? "inline-flex items-center gap-1 text-[13.5px] font-medium text-foreground/80 transition-colors hover:text-foreground"
+                          : "text-[13.5px] leading-snug text-muted-foreground transition-colors hover:text-foreground"
+                      }
+                    >
+                      {link.label}
+                      {link.all && <ArrowRight className="size-3 rtl:rotate-180" />}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -141,26 +168,24 @@ export function SiteFooter({ path = "/" }: { path?: string }) {
           ))}
         </div>
 
-        <div className="mt-16 flex flex-col-reverse gap-5 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-3">
-            <p className="text-[13px] text-faint">{t("rights", { year: new Date().getFullYear() })}</p>
-            <span className="flex items-center text-muted-foreground">
-              {ELSEWHERE.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`TinyFloor on ${link.label}`}
-                  className="flex size-8 items-center justify-center rounded-full transition-colors hover:bg-foreground/[0.05] hover:text-foreground"
-                >
-                  <svg viewBox="0 0 24 24" className="size-[15px] fill-current" aria-hidden>
-                    <path d={link.path} />
-                  </svg>
-                </a>
-              ))}
-            </span>
-          </div>
+        <div className="mt-14 flex flex-col gap-5 border-t border-border pt-6 lg:flex-row lg:items-center lg:justify-between">
+          <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[13px] text-muted-foreground">
+            <li className="text-faint">{t("rights", { year: new Date().getFullYear() })}</li>
+            {company.map((link) => (
+              <li key={link.href}>
+                {/* A mail address and a text file aren't pages: no locale in front of them. */}
+                {link.href.startsWith("mailto:") || link.href.endsWith(".txt") ? (
+                  <a href={link.href} className="transition-colors hover:text-foreground">
+                    {link.label}
+                  </a>
+                ) : (
+                  <Link href={link.href} className="transition-colors hover:text-foreground">
+                    {link.label}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
           <div className="flex items-center gap-2">
             <details className="group relative">
               <summary className="flex h-8 cursor-pointer list-none items-center gap-1.5 rounded-full bg-foreground/[0.05] px-3 text-[13px] text-muted-foreground hover:text-foreground [&::-webkit-details-marker]:hidden">

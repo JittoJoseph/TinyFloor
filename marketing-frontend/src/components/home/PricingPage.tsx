@@ -34,7 +34,7 @@ export function PricingPage() {
           </h1>
           <p className={cn(LEAD, "mt-7 max-w-[32rem] text-balance")}>{t("body")}</p>
         </div>
-        <PlanCards className="mt-14 sm:mt-20" />
+        <PlanCards className="mt-14 sm:mt-20" level="h2" />
       </section>
 
       <SeatCompare />

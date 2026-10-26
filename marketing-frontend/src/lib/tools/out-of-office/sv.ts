@@ -66,6 +66,26 @@ const sv: OooContent = {
           detail: "För kollegor",
           body: "\"Ledig till 3 november. Brådskande? Kontakta Ana Lima.\" Inom ditt eget företag är kortare oftast bättre.",
         },
+        {
+          title: "Jul och nyår",
+          detail: "Ledighet över helgerna",
+          body: "\"Tack för ditt mejl. Jag är ledig över helgerna och är tillbaka måndag 4 januari. Jag svarar på ditt meddelande när jag är tillbaka. Vid brådskande ärenden, kontakta Ana Lima (ana@example.com). Önskar dig ett gott nytt år.\"",
+        },
+        {
+          title: "En halvdag",
+          detail: "Tillbaka samma dag",
+          body: "\"Tack för ditt mejl. Jag är inte på kontoret i eftermiddag och svarar i morgon bitti.\" Om du bara är borta några timmar räcker det ofta med en status i chatten.",
+        },
+        {
+          title: "För kunder",
+          detail: "Utanför ditt företag",
+          body: "\"Tack för att du kontaktar oss. Jag är inte på kontoret förrän måndag 2 november. För beställningar och support, skriv till support@example.com, där vårt team svarar inom en arbetsdag.\" Outlook kan ställas in så att detta meddelande bara skickas till personer utanför din organisation.",
+        },
+        {
+          title: "Sista dagen på företaget",
+          detail: "Slutar för gott",
+          body: "\"Tack för ditt mejl. Jag har nu slutat på Example Ltd. För allt som rör mina arbetsuppgifter, kontakta Ana Lima (ana@example.com), som tar över.\" Företag brukar behålla ett sådant här autosvar på en slutad medarbetares e-postadress under några månader.",
+        },
       ],
     },
     {
@@ -73,6 +93,7 @@ const sv: OooContent = {
       body: [
         "I nya Outlook och Outlook på webben öppnar du Inställningar (kugghjulet), går till Konto och sedan Automatiska svar. Slå på automatiska svar, kryssa i att de bara ska skickas under en viss tidsperiod, välj start- och slutdatum och klistra in ditt meddelande. Du kan skriva ett annat meddelande till personer utanför organisationen, vilket är en bra idé: kollegor behöver mindre förklaring än kunder.",
         "I klassiska Outlook för Windows går du till Arkiv och sedan Automatiska svar, och fyller i samma uppgifter. Om du anger ett slutdatum stänger Outlook av svaren själv, så du behöver inte komma ihåg det.",
+        "I Outlook för Mac går du till Verktyg och sedan Automatiska svar. I Outlook-appen på en iPhone eller Android-telefon trycker du på din profilbild, sedan på kugghjulet för Inställningar, väljer ditt arbetskonto och trycker på Automatiska svar. Oavsett vilken du använder sparas svaret på ditt konto, så om du slår på det på ett ställe aktiveras det överallt.",
       ],
     },
     {
@@ -130,6 +151,22 @@ const sv: OooContent = {
     {
       q: "Är den här generatorn för frånvaromeddelanden gratis?",
       a: "Ja, och den körs helt i din webbläsare: namnen, datumen och e-postadresserna du skriver skickas aldrig någonstans. Kopiera meddelandet till Outlook, Gmail, Slack eller Teams.",
+    },
+    {
+      q: "Vad betyder OOO?",
+      a: "OOO står för \"out of office\" (inte på kontoret). Man brukar skriva det i kalendrar, statusar i chatten och ämnesrader i mejl, som till exempel \"OOO till måndag\", för att visa att man är borta och inte svarar direkt.",
+    },
+    {
+      q: "Är automatiska svar samma sak som ett frånvaromeddelande?",
+      a: "Ja. Automatiska svar är vad Outlook kallar sitt frånvaromeddelande, och Gmail kallar det autosvar vid frånvaro. De skickar alla ett svar till personer som skriver till dig medan du är borta.",
+    },
+    {
+      q: "Hur ställer jag in frånvaromeddelande i Teams?",
+      a: "Klicka på din profilbild, välj Ange statusmeddelande och sedan Schemalägg frånvaro. Slå på automatiska svar, skriv ditt meddelande och ställ in datumen. Teams visar dig som frånvarande, och Outlook skickar samma meddelande till alla som mejlar dig.",
+    },
+    {
+      q: "Hur ställer jag in frånvaromeddelande i Outlook på mobilen?",
+      a: "I Outlook-appen trycker du på din profilbild, sedan på kugghjulet för Inställningar, väljer ditt arbetskonto och trycker på Automatiska svar. Slå på det, skriv ditt meddelande och ställ in datumen.",
     },
   ],
 };

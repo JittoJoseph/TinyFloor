@@ -66,6 +66,26 @@ const da: OooContent = {
           detail: "Til kolleger",
           body: "\"Fri til 3. november. Haster det? Kontakt Ana Lima.\" Inden for din egen virksomhed er kortere som regel bedre.",
         },
+        {
+          title: "Jul og nytår",
+          detail: "Juleferie",
+          body: "\"Tak for din mail. Jeg holder juleferie og er tilbage mandag den 4. januar. Jeg svarer på din henvendelse, når jeg er tilbage. I hastende sager kan du kontakte Ana Lima (ana@example.com). Godt nytår.\"",
+        },
+        {
+          title: "En halv dag",
+          detail: "Tilbage samme dag",
+          body: "\"Tak for din mail. Jeg er ikke på kontoret i eftermiddag og svarer i morgen tidlig.\" Hvis du kun er væk i et par timer, er en statusbesked i chatten ofte nok i sig selv.",
+        },
+        {
+          title: "Til kunder",
+          detail: "Uden for din virksomhed",
+          body: "\"Tak for din henvendelse. Jeg er ikke på kontoret og er tilbage mandag den 2. november. For bestillinger og support bedes du skrive til support@example.com, hvor teamet svarer inden for en arbejdsdag.\" Outlook kan indstilles til kun at sende denne besked til folk uden for din organisation.",
+        },
+        {
+          title: "Sidste dag i virksomheden",
+          detail: "Forlader virksomheden helt",
+          body: "\"Tak for din mail. Jeg har nu forladt Example Ltd. For alt, hvad jeg arbejdede på, bedes du kontakte Ana Lima (ana@example.com), som tager over.\" Virksomheder beholder normalt et svar som dette på en fratrådt medarbejders mailadresse i et par måneder.",
+        },
       ],
     },
     {
@@ -73,6 +93,7 @@ const da: OooContent = {
       body: [
         "I nye Outlook og Outlook på nettet åbner du Indstillinger (tandhjulet), går til Konto og derefter Automatiske svar. Slå automatiske svar til, sæt flueben ved kun at sende dem i en bestemt periode, vælg start- og slutdato, og indsæt din besked. Du kan skrive en anden besked til folk uden for organisationen, og det er en god idé: kolleger har brug for mindre forklaring end kunder.",
         "I klassisk Outlook til Windows går du til Filer og derefter Automatiske svar og udfylder de samme oplysninger. Hvis du angiver en slutdato, slår Outlook selv svarene fra, så du behøver ikke huske det.",
+        "I Outlook til Mac går du til Værktøjer og derefter Automatiske svar. I Outlook-appen på en iPhone eller Android-telefon trykker du på dit profilbillede, derefter på tandhjulet for Indstillinger, vælger din arbejdskonto og trykker på Automatiske svar. Uanset hvad du bruger, gemmes svaret på din konto, så når du slår det til ét sted, slås det til overalt.",
       ],
     },
     {
@@ -130,6 +151,22 @@ const da: OooContent = {
     {
       q: "Er denne generator til fraværsbeskeder gratis?",
       a: "Ja, og den kører helt i din browser: de navne, datoer og mails, du skriver, sendes aldrig nogen steder hen. Kopiér beskeden til Outlook, Gmail, Slack eller Teams.",
+    },
+    {
+      q: "Hvad betyder OOO?",
+      a: "OOO står for \"out of office\" (ikke på kontoret). Folk skriver det i kalendere, statusbeskeder i chatten og i emnefeltet på mails, som f.eks. \"OOO til mandag\", for at fortælle, at de er væk og ikke svarer med det samme.",
+    },
+    {
+      q: "Er et automatisk svar det samme som en fraværsbesked?",
+      a: "Ja. Automatiske svar er det, Outlook kalder sin fraværsbesked, og Gmail kalder det autosvaret ved fravær. De sender alle et svar til folk, der skriver til dig, mens du er væk.",
+    },
+    {
+      q: "Hvordan opretter jeg en fraværsbesked i Teams?",
+      a: "Klik på dit profilbillede, vælg Indstil statusmeddelelse og derefter Planlæg fravær. Slå automatiske svar til, skriv din besked, og vælg datoerne. Teams viser dig som fraværende, og Outlook sender den samme besked til alle, der sender dig en mail.",
+    },
+    {
+      q: "Hvordan opretter jeg en fraværsbesked i Outlook på min telefon?",
+      a: "I Outlook-appen trykker du på dit profilbillede, derefter på tandhjulet for Indstillinger, vælger din arbejdskonto og trykker på Automatiske svar. Slå det til, skriv din besked, og vælg datoerne.",
     },
   ],
 };

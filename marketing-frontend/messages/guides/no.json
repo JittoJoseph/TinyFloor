@@ -627,8 +627,8 @@
   "proximityChat": {
     "label": "Hva er nærhetschat?",
     "meta": {
-      "title": "Hva er nærhetschat? Slik fungerer det i spill og på jobb",
-      "description": "Hva nærhetschat er, hvordan det fungerer, hvilke spill som bruker det og hvordan virtuelle kontorer bruker det så team kan snakke ved å gå bort til hverandre."
+      "title": "Hva er nærhetschat? Spillene som har det og slik fungerer det på jobb",
+      "description": "Med nærhetschat snakker du bare med dem som er nær deg. Slik fungerer det, spillene som har det (Lethal Company, Among Us, Minecraft, R.E.P.O.) og hvordan virtuelle kontorer bruker det på jobb."
     },
     "title": "Hva er <em>nærhetschat?</em>",
     "intro": "Med nærhetschat snakker du med dem som er nær deg i et virtuelt rom, og ikke med alle andre. Det startet i spill, der det gjør verdener levende, og er nå måten virtuelle kontorer lar team snakke sammen uten møtelenker.",
@@ -641,26 +641,50 @@
         ]
       },
       {
-        "title": "Nærhetschat i spill",
+        "title": "Spill med nærhetschat",
         "body": [
-          "Spill bruker det for å gjøre samtaler til en del av verden. Noen kjente eksempler:"
+          "Spill bruker det til å gjøre samtaler til en del av verdenen: de du kan høre, er de du kan se. Noen av de mest kjente:"
         ],
         "items": [
           {
-            "title": "Sosiale deduksjonsspill",
-            "body": "Modder til Among Us la til nærhetsstemme, så du bare hører spillerne nær deg og kan hviske frem planer."
+            "title": "Among Us",
+            "detail": "Med en mod",
+            "body": "BetterCrewLink-modden legger til nærhetslyd, slik at du bare hører spillerne nær deg og kan hviske planer utenfor gruppen."
           },
           {
-            "title": "Overlevelsesspill",
-            "body": "Rust og DayZ bruker nærhetsstemme, så å møte en fremmed betyr å faktisk snakke med dem."
+            "title": "Minecraft",
+            "detail": "Med en mod",
+            "body": "Simple Voice Chat-modden, eller en utvidelse på en server, gir Java-verdener nærhetslyd, slik at en delt verden føles som et ekte sted."
           },
           {
-            "title": "Samarbeidsspill",
-            "body": "I Lethal Company blir en lagkamerat som vandrer bort vanskelig å høre, og det er halve spenningen."
+            "title": "Lethal Company",
+            "detail": "Innebygd",
+            "body": "En lagkamerat som vandrer av gårde, blir vanskelig å høre, og så umulig, noe som er halve spenningen."
           },
           {
-            "title": "Sandkassespill",
-            "body": "Minecraft-servere legger til nærhetsstemme med modder, så en delt verden føles som et ekte sted."
+            "title": "R.E.P.O. og Peak",
+            "detail": "Innebygd",
+            "body": "Nyere samarbeidsspill for små grupper er bygd rundt nærhetslyd: dere roper, dere blir splittet, dere finner hverandre igjen."
+          },
+          {
+            "title": "Phasmophobia",
+            "detail": "Innebygd",
+            "body": "Stemmen din når bare så langt, og spøkelset kan også høre den. En walkietalkie når resten av teamet."
+          },
+          {
+            "title": "Sea of Thieves",
+            "detail": "Innebygd",
+            "body": "Mannskap snakker på tvers av skipet, og med fremmede når to skip legger seg side om side."
+          },
+          {
+            "title": "Rust og DayZ",
+            "detail": "Innebygd",
+            "body": "Å møte en fremmed betyr at du faktisk må snakke med dem, noe som gjør et overlevelsesspill til et sosialt spill."
+          },
+          {
+            "title": "GTA-rollespillservere",
+            "detail": "På FiveM",
+            "body": "Rollespillservere bruker nærhetslyd, slik at en samtale på gaten forblir på gaten."
           }
         ]
       },
@@ -713,19 +737,23 @@
     "faq": [
       {
         "q": "Hva betyr nærhetschat?",
-        "a": "At du bare kan snakke med dem som er nær deg i et virtuelt rom. Gå nærmere for å snakke; gå bort, så slutter samtalen."
+        "a": "Det betyr at du bare kan snakke med dem som er nær deg i et virtuelt rom. Gå nærmere noen for å snakke; gå bort, så slutter samtalen."
       },
       {
         "q": "Er nærhetschat privat?",
-        "a": "Bare de nær deg hører deg, noe som er mer privat enn en kanal der alle er med. Med gå bort og ring høres ingenting før du starter en samtale."
+        "a": "Bare folk nær deg kan høre deg, noe som er mer privat enn en kanal der alle er med. Med gå bort og ring-varianten høres ingenting før du starter samtalen."
       },
       {
         "q": "Hvilke spill har nærhetschat?",
-        "a": "Rust, DayZ og Lethal Company har det innebygd, og modder legger det til i spill som Among Us og Minecraft."
+        "a": "Lethal Company, R.E.P.O., Peak, Phasmophobia, Sea of Thieves, Rust og DayZ har det innebygd. Modder legger det til i Among Us (BetterCrewLink) og Minecraft (Simple Voice Chat)."
+      },
+      {
+        "q": "Hvordan får du nærhetschat i Minecraft?",
+        "a": "Installer Simple Voice Chat-modden på serveren og i spillet til hver spiller. Spillere som er nær hverandre kan da snakke sammen, og stemmene blir svakere med avstanden."
       },
       {
         "q": "Kan man bruke nærhetschat på jobb?",
-        "a": "Ja. Virtuelle kontorer som TinyFloor, Gather og SpatialChat bruker det så fjernteam kan snakke ved å gå bort til hverandre i stedet for å planlegge samtaler."
+        "a": "Ja. Virtuelle kontorer som TinyFloor, Gather og SpatialChat bruker det slik at fjernteam kan snakke sammen ved å gå bort til hverandre i stedet for å avtale møter."
       }
     ]
   },
@@ -4654,6 +4682,606 @@
       {
         "q": "Hva er forskjellen på en agenda og et referat?",
         "a": "Agendaen er planen for møtet, skrevet på forhånd. Referatet er oversikten over hva som ble bestemt, skrevet underveis og etterpå."
+      }
+    ]
+  },
+  "questionOfTheDay": {
+    "label": "Dagens spørsmål på jobb",
+    "meta": {
+      "title": "120 ideer til dagens spørsmål på jobb: gøyale, morsomme og enkle å svare på",
+      "description": "120 ideer til dagens spørsmål på jobb: gøyale og morsomme spørsmål, vil du heller, enten-eller, jobbspørsmål, bli-kjent-spørsmål og sesongbaserte spørsmål, med tips til å kjøre et daglig spørsmål i teamchatten eller standup-møtet."
+    },
+    "title": "Dagens spørsmål <em>på jobb.</em>",
+    "intro": "Dagens spørsmål er et enkelt spørsmål som teamet ditt svarer på hver morgen: i teamchatten, i starten av standup-møtet, eller som en avstemning. Det tar et minutt, ingen trenger å forberede seg, og i løpet av noen uker lærer folk mer om hverandre enn gjennom et helt år med statusmøter. Her er 120 spørsmål å velge mellom, sortert etter stemning, med noen tips for å holde det i gang.",
+    "sections": [
+      {
+        "title": "Slik kjører du dagens spørsmål",
+        "items": [
+          {
+            "title": "Velg ett sted",
+            "body": "En kanal i [teamchatten](/team-chat) kalt #dagens-spørsmål, eller det første minuttet av [standup-møtet](/virtual-standup). Det samme stedet hver dag gjør det til en vane."
+          },
+          {
+            "title": "Post det til samme tid",
+            "body": "Det første som skjer om morgenen for den tidligste tidssonen, slik at alle ser det i løpet av dagen sin."
+          },
+          {
+            "title": "Hold svarene korte",
+            "body": "Ett ord, en setning eller en emoji. Enkle spørsmål får svar, vanskelige spørsmål fører til stillhet."
+          },
+          {
+            "title": "La spørsmålet gå på omgang",
+            "body": "Gi ansvaret for spørsmålet til en ny person hver uke. Folk begynner å ta med sine egne, og spørsmålene blir bedre."
+          },
+          {
+            "title": "Svar først selv",
+            "body": "Den som poster spørsmålet, svarer på det med en gang. Det viser lengden og tonen, og gjør at ingen andre trenger å være først ut."
+          }
+        ]
+      },
+      {
+        "title": "Gøyale spørsmål",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Hva er det beste du har spist denne uken?",
+            "body": ""
+          },
+          {
+            "title": "Hva er en liten ting som fikk deg til å smile nylig?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken app på telefonen din åpner du mest?",
+            "body": ""
+          },
+          {
+            "title": "Hva er favorittsnacksen din når du jobber?",
+            "body": ""
+          },
+          {
+            "title": "Hva var din aller første jobb?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken ferdighet skulle du gjerne lært deg i år?",
+            "body": ""
+          },
+          {
+            "title": "Hva er det beste rådet du noen gang har fått?",
+            "body": ""
+          },
+          {
+            "title": "Hva er din favorittmåte å tilbringe en søndag på?",
+            "body": ""
+          },
+          {
+            "title": "Hva ligger på skrivebordet ditt akkurat nå som du ikke kan forklare?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken film kan du se om og om igjen?",
+            "body": ""
+          },
+          {
+            "title": "Hvis du kunne hatt en hvilken som helst jobb for én dag, hva ville det vært?",
+            "body": ""
+          },
+          {
+            "title": "Hva er ditt skjulte talent?",
+            "body": ""
+          },
+          {
+            "title": "Hva er den mest nyttige tingen du eier?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken hobby har du begynt med og så lagt bort?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken sang ville vært inngangsmusikken din?",
+            "body": ""
+          },
+          {
+            "title": "Hva er det siste du kjøpte som du elsker?",
+            "body": ""
+          },
+          {
+            "title": "Hva er favorittårstiden din, og hvorfor?",
+            "body": ""
+          },
+          {
+            "title": "Hvilket sted ville du reist tilbake til i morgen hvis du kunne?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken fiktiv karakter ville du hatt som kollega?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken lukt tar deg rett tilbake til barndommen?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Morsomme spørsmål",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Hva er det rareste du trodde på som barn?",
+            "body": ""
+          },
+          {
+            "title": "Hva ville selvbiografien din hett?",
+            "body": ""
+          },
+          {
+            "title": "Hva er den verste hårklippen du noen gang har hatt?",
+            "body": ""
+          },
+          {
+            "title": "Hvis kjæledyret ditt kunne snakke, hva ville det klaget over?",
+            "body": ""
+          },
+          {
+            "title": "Hva er det mest unyttige faktumet du vet om?",
+            "body": ""
+          },
+          {
+            "title": "Hva ville du kalt en båt?",
+            "body": ""
+          },
+          {
+            "title": "Hva er din mest irrasjonelle frykt?",
+            "body": ""
+          },
+          {
+            "title": "Hvis du var en grønnsak, hvilken ville du vært?",
+            "body": ""
+          },
+          {
+            "title": "Hva er den rareste matkombinasjonen du i hemmelighet liker?",
+            "body": ""
+          },
+          {
+            "title": "Hva ville vært wrestling-navnet ditt?",
+            "body": ""
+          },
+          {
+            "title": "Hva er det dummeste du noen gang har kranglet om?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken emoji bruker du altfor mye?",
+            "body": ""
+          },
+          {
+            "title": "Hvis livet ditt hadde et latterspor, når ville det spilt?",
+            "body": ""
+          },
+          {
+            "title": "Hva er den verste gaven du noen gang har fått?",
+            "body": ""
+          },
+          {
+            "title": "Hvilket ord staver du alltid feil?",
+            "body": ""
+          },
+          {
+            "title": "Hvilket dyr ville vært det frekkeste hvis det kunne snakke?",
+            "body": ""
+          },
+          {
+            "title": "Hva er din mest brukte unnskyldning for å komme for sent?",
+            "body": ""
+          },
+          {
+            "title": "Hva ville fraværsmeldingen din sagt hvis du kunne være helt ærlig?",
+            "body": ""
+          },
+          {
+            "title": "Hvis du bare kunne spist én matrett resten av livet, hva ville det vært?",
+            "body": ""
+          },
+          {
+            "title": "Hva er det mest latterlige du har googlet denne måneden?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Vil du heller",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Ville du heller hatt fire dagers arbeidsuke eller en måned med ekstra ferie?",
+            "body": ""
+          },
+          {
+            "title": "Ville du heller aldri deltatt i et møte igjen eller aldri svart på en e-post igjen?",
+            "body": ""
+          },
+          {
+            "title": "Ville du heller jobbet fra en strand eller fra en hytte i skogen?",
+            "body": ""
+          },
+          {
+            "title": "Ville du heller kunnet fly eller vært usynlig?",
+            "body": ""
+          },
+          {
+            "title": "Ville du heller hatt gratis kaffe resten av livet eller gratis lunsj resten av livet?",
+            "body": ""
+          },
+          {
+            "title": "Ville du heller snakket alle språk eller spilt alle instrumenter?",
+            "body": ""
+          },
+          {
+            "title": "Ville du heller startet på jobb kl. 6 om morgenen eller avsluttet kl. 9 om kvelden?",
+            "body": ""
+          },
+          {
+            "title": "Ville du heller hatt en personlig kokk eller en personlig sjåfør?",
+            "body": ""
+          },
+          {
+            "title": "Ville du heller lest tanker eller sett inn i fremtiden?",
+            "body": ""
+          },
+          {
+            "title": "Ville du heller levd uten musikk eller uten filmer?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "To alternativer, ett valg: de fungerer godt som en avstemning. Du finner flere i våre [vil du heller-spørsmål](/tools/would-you-rather-questions)."
+        ]
+      },
+      {
+        "title": "Enten-eller",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Kaffe eller te?",
+            "body": ""
+          },
+          {
+            "title": "A-menneske eller B-menneske?",
+            "body": ""
+          },
+          {
+            "title": "Mac eller Windows?",
+            "body": ""
+          },
+          {
+            "title": "Katt eller hund?",
+            "body": ""
+          },
+          {
+            "title": "Strand eller fjell?",
+            "body": ""
+          },
+          {
+            "title": "Mørk modus eller lys modus?",
+            "body": ""
+          },
+          {
+            "title": "Ring eller melding?",
+            "body": ""
+          },
+          {
+            "title": "Bøker eller podkaster?",
+            "body": ""
+          },
+          {
+            "title": "Søtt eller salt?",
+            "body": ""
+          },
+          {
+            "title": "Sommer eller vinter?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "Den raskeste typen å svare på. For hundre flere, se våre [enten-eller-spørsmål](/guides/this-or-that-questions)."
+        ]
+      },
+      {
+        "title": "Jobbspørsmål",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Hva er én ting du jobber med som du synes er spennende?",
+            "body": ""
+          },
+          {
+            "title": "Hva er det beste verktøyet du begynte å bruke i år?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken jobbvane prøver du å etablere?",
+            "body": ""
+          },
+          {
+            "title": "Hva er det beste møtet du noen gang har vært i, og hvorfor?",
+            "body": ""
+          },
+          {
+            "title": "Hva er én ting som ville gjort uken din enklere?",
+            "body": ""
+          },
+          {
+            "title": "Hvem har lært deg mest på jobb?",
+            "body": ""
+          },
+          {
+            "title": "Hva er en feil du har lært noe av?",
+            "body": ""
+          },
+          {
+            "title": "Hvordan ser en perfekt arbeidsdag ut for deg?",
+            "body": ""
+          },
+          {
+            "title": "Hva er én ting du ville endret ved måten vi jobber på?",
+            "body": ""
+          },
+          {
+            "title": "Hva er det mest nyttige du har lært av en kollega?",
+            "body": ""
+          },
+          {
+            "title": "Når på dagen er du mest fokusert?",
+            "body": ""
+          },
+          {
+            "title": "Hva er din favorittmåte å feire en seier på?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken ferdighet skulle du gjerne lært av noen i dette teamet?",
+            "body": ""
+          },
+          {
+            "title": "Hva ville du bli da du ble stor?",
+            "body": ""
+          },
+          {
+            "title": "Hva er én ting på gjøremålslisten din som du stadig utsetter?",
+            "body": ""
+          },
+          {
+            "title": "Hva er den beste tilbakemeldingen du har fått?",
+            "body": ""
+          },
+          {
+            "title": "Hvilket prosjekt er du stolt av?",
+            "body": ""
+          },
+          {
+            "title": "Hva er trikset ditt for å komme deg gjennom en treg ettermiddag?",
+            "body": ""
+          },
+          {
+            "title": "Hva er en liten seier fra i går?",
+            "body": ""
+          },
+          {
+            "title": "Hvis du kunne automatisert én oppgave, hvilken ville det vært?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Bli kjent",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Hvor vokste du opp?",
+            "body": ""
+          },
+          {
+            "title": "Hva er noe ved deg som ville overrasket oss?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken tradisjon fra familien eller kulturen din er du spesielt glad i?",
+            "body": ""
+          },
+          {
+            "title": "Hvordan endte du opp i ditt yrke?",
+            "body": ""
+          },
+          {
+            "title": "Hva er den beste turen du noen gang har vært på?",
+            "body": ""
+          },
+          {
+            "title": "Hvilke språk snakker du, om så bare litt?",
+            "body": ""
+          },
+          {
+            "title": "Hva leser, ser eller hører du på akkurat nå?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken sak brenner du for?",
+            "body": ""
+          },
+          {
+            "title": "Hva gjør du for å koble av etter jobb?",
+            "body": ""
+          },
+          {
+            "title": "Hva er den beste konserten eller det beste arrangementet du har vært på?",
+            "body": ""
+          },
+          {
+            "title": "Har du kjæledyr? Fortell om dem.",
+            "body": ""
+          },
+          {
+            "title": "Hvilken rett er du god til å lage?",
+            "body": ""
+          },
+          {
+            "title": "Hva er favorittstedet ditt i byen din?",
+            "body": ""
+          },
+          {
+            "title": "Hva er det beste med stedet der du bor?",
+            "body": ""
+          },
+          {
+            "title": "Hva er noe du har lyst til å gjøre før året er omme?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Spørsmål om eksternt arbeid",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Hvordan er utsikten fra der du jobber i dag?",
+            "body": ""
+          },
+          {
+            "title": "Hva er én ting du aldri ville gitt slipp på med å jobbe eksternt?",
+            "body": ""
+          },
+          {
+            "title": "Hva er én ting du savner fra kontoret?",
+            "body": ""
+          },
+          {
+            "title": "Hva er det beste med hjemmeoppsettet ditt?",
+            "body": ""
+          },
+          {
+            "title": "Hva gjør du i lunsjpausen?",
+            "body": ""
+          },
+          {
+            "title": "Har du en egen uniform på hjemmekontoret?",
+            "body": ""
+          },
+          {
+            "title": "Hvem er din favorittkollega som ikke er på dette teamet (kjæledyr teller)?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken tidssone liker du best å jobbe med?",
+            "body": ""
+          },
+          {
+            "title": "Hvordan starter du arbeidsdagen?",
+            "body": ""
+          },
+          {
+            "title": "Hva slags bakgrunnslyd liker du best når du jobber?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Sesongspørsmål (høst og halloween)",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Hva er din favorittmat eller -drikke om høsten?",
+            "body": ""
+          },
+          {
+            "title": "Hva er det beste halloweenkostymet du noen gang har hatt på deg?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken film gir deg alltid høstfølelse?",
+            "body": ""
+          },
+          {
+            "title": "Pumpkin spice: elsk eller dropp?",
+            "body": ""
+          },
+          {
+            "title": "Hva er den skumleste filmen du faktisk har sett helt ferdig?",
+            "body": ""
+          },
+          {
+            "title": "Hvilket godteri håper du å få, og hvilket gir du bort?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken høytidstradisjon ser du mest frem til hvert år?",
+            "body": ""
+          },
+          {
+            "title": "Hvis du skulle kledd deg ut som jobben til en kollega, hva ville kostymet vært?",
+            "body": ""
+          },
+          {
+            "title": "Koselig kveld inne eller ut med venner?",
+            "body": ""
+          },
+          {
+            "title": "Hva står på listen din for resten av året?",
+            "body": ""
+          },
+          {
+            "title": "Hva er det beste med denne årstiden der du bor?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken lukt betyr at årstiden har skiftet?",
+            "body": ""
+          },
+          {
+            "title": "Hva er noe du har lyst til å prøve før vinteren?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken skummel historie fra barndommen husker du fortsatt?",
+            "body": ""
+          },
+          {
+            "title": "Hva er favorittmåten din å tilbringe en regnværsdag på?",
+            "body": ""
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Der TinyFloor passer inn",
+      "body": "TinyFloor er et virtuelt kontor for små team, med en teamchat ved siden av etasjen for dagens spørsmål, og et møterom til standup-møtet der det besvares høyt. Resten av dagen sitter folk ved skrivebordene sine i samme etasje, der samtalen som ble startet bare er en kort spasertur unna. Det er gratis for opptil 3 personer og $29 i måneden for hele teamet."
+    },
+    "faq": [
+      {
+        "q": "Hva er et godt dagens spørsmål på jobb?",
+        "a": "Ett som alle kan svare på med én setning, som sier noe om personen, og som er helt greit å dele på jobb, som «Hva er det beste du har spist denne uken?» eller «Kaffe eller te?»."
+      },
+      {
+        "q": "Hvordan bruker man dagens spørsmål på jobb?",
+        "a": "Legg ut ett spørsmål til samme tid hver morgen i en av teamets chatkanaler eller i starten av standup-møtet, svar på det selv først, og la rollen som spørsmålsstiller gå på omgang hver uke."
+      },
+      {
+        "q": "Hvordan holder man liv i dagens spørsmål?",
+        "a": "Hold spørsmålene enkle, bland morsomme spørsmål med et og annet jobbspørsmål, og la ulike personer stille dem. Når folk begynner å foreslå spørsmål selv, går det av seg selv."
+      },
+      {
+        "q": "Bør dagens spørsmål være en avstemning?",
+        "a": "Spørsmål med to alternativer, som «enten-eller» og «ville du heller», fungerer godt som avstemninger. Åpne spørsmål får bedre svar i chatten."
       }
     ]
   }

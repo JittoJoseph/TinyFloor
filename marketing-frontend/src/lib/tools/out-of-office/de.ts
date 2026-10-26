@@ -66,6 +66,26 @@ const de: OooContent = {
           detail: "Für Kolleginnen und Kollegen",
           body: "„Ich bin bis 3. November im Urlaub. Dringend? Bitte an Ana Lima wenden.“ Innerhalb der eigenen Firma ist kürzer meist besser.",
         },
+        {
+          title: "Weihnachten und Neujahr",
+          detail: "Pause zum Jahresende",
+          body: "„Vielen Dank für Ihre Nachricht. Ich bin über die Feiertage nicht im Büro und ab Montag, 4. Januar, wieder da. Ich beantworte Ihre Nachricht nach meiner Rückkehr. In dringenden Fällen wenden Sie sich bitte an Ana Lima (ana@example.com). Ich wünsche Ihnen ein frohes neues Jahr.“",
+        },
+        {
+          title: "Ein halber Tag",
+          detail: "Am selben Tag zurück",
+          body: "„Danke für die Nachricht! Ich bin heute Nachmittag nicht im Büro und melde mich morgen früh wieder.“ Wenn du nur für ein paar Stunden weg bist, reicht oft auch einfach ein Chat-Status.",
+        },
+        {
+          title: "Für Kundschaft",
+          detail: "Außerhalb deiner Organisation",
+          body: "„Vielen Dank für Ihre Nachricht. Ich bin bis Montag, 2. November, nicht im Büro. Bei Bestellungen und Support-Fragen wenden Sie sich bitte an support@example.com. Unser Team antwortet Ihnen innerhalb eines Werktages.“ Outlook kann diese Nachricht so einstellen, dass sie nur an Personen außerhalb deiner Organisation gesendet wird.",
+        },
+        {
+          title: "Letzter Arbeitstag",
+          detail: "Endgültiger Abschied",
+          body: "„Vielen Dank für Ihre Nachricht. Ich habe Example Ltd verlassen. Bei Fragen zu meinen bisherigen Projekten wenden Sie sich bitte an Ana Lima (ana@example.com), die meine Aufgaben übernimmt.“ Unternehmen lassen eine solche automatische Antwort meist noch einige Monate für die E-Mail-Adresse von ehemaligen Angestellten aktiv.",
+        },
       ],
     },
     {
@@ -73,6 +93,7 @@ const de: OooContent = {
       body: [
         "Im neuen Outlook und in Outlook im Web öffnest du die Einstellungen (das Zahnrad), gehst zu Konten und dann zu Automatische Antworten. Schalte die automatischen Antworten ein, setz das Häkchen, dass sie nur in einem bestimmten Zeitraum gesendet werden, wähle Start- und Enddatum und füge deinen Text ein. Für Personen außerhalb deiner Organisation kannst du einen eigenen Text schreiben, was sinnvoll ist: Kolleginnen und Kollegen brauchen weniger Erklärung als Kundschaft.",
         "Im klassischen Outlook für Windows gehst du auf Datei und dann auf Automatische Antworten und trägst dieselben Angaben ein. Wenn du ein Enddatum setzt, schaltet Outlook die Antworten von selbst ab, du musst also nicht daran denken.",
+        "In Outlook für Mac gehst du auf Extras und dann auf Automatische Antworten. In der Outlook-App auf dem iPhone oder Android-Smartphone tippst du auf dein Profilbild, dann auf das Zahnrad für die Einstellungen, wählst dein Geschäftskonto aus und tippst auf Automatische Antworten. Egal, welchen Weg du nutzt: Die Antwort wird in deinem Konto gespeichert. Wenn du sie also an einer Stelle einschaltest, ist sie überall aktiv.",
       ],
     },
     {
@@ -130,6 +151,22 @@ const de: OooContent = {
     {
       q: "Ist dieser Abwesenheitsnotiz-Generator kostenlos?",
       a: "Ja, und er läuft komplett in deinem Browser: Die Namen, Daten und E-Mail-Adressen, die du eingibst, werden nirgendwohin gesendet. Kopiere den Text in Outlook, Gmail, Slack oder Teams.",
+    },
+    {
+      q: "Was bedeutet OOO?",
+      a: "OOO steht für „out of office“ (nicht im Büro). Man schreibt es in Kalender, Chat-Statusmeldungen und E-Mail-Betreffe – wie zum Beispiel „OOO bis Montag“ –, um zu zeigen, dass man abwesend ist und nicht sofort antworten kann.",
+    },
+    {
+      q: "Ist eine automatische Antwort dasselbe wie eine Abwesenheitsnotiz?",
+      a: "Ja. Outlook nennt seine Abwesenheitsnotiz „Automatische Antworten“, und Gmail nennt sie „Abwesenheitsnotiz“. Beide senden eine automatische Antwort an alle, die dir schreiben, während du weg bist.",
+    },
+    {
+      q: "Wie richte ich eine Abwesenheitsnotiz in Teams ein?",
+      a: "Klicke auf dein Profilbild, wähle Statusmeldung festlegen und dann Abwesenheit planen. Schalte die automatischen Antworten ein, schreibe deine Nachricht und lege den Zeitraum fest. Teams zeigt dich dann als abwesend an und Outlook sendet dieselbe Nachricht an alle, die dir eine E-Mail schreiben.",
+    },
+    {
+      q: "Wie richte ich eine Abwesenheitsnotiz in Outlook auf dem Smartphone ein?",
+      a: "Tippe in der Outlook-App auf dein Profilbild, dann auf das Zahnrad für die Einstellungen, wähle dein Geschäftskonto aus und tippe auf Automatische Antworten. Schalte sie ein, schreibe deine Nachricht und lege den Zeitraum fest.",
     },
   ],
 };

@@ -66,6 +66,26 @@ const nl: OooContent = {
           detail: "Voor collega's",
           body: "\"Ik ben met verlof tot 3 november. Dringend? Neem contact op met Ana Lima.\" Binnen je eigen bedrijf is korter meestal beter.",
         },
+        {
+          title: "Kerst en Nieuwjaar",
+          detail: "Eindejaarsverlof",
+          body: "\"Bedankt voor uw e-mail. Ik ben vanwege de feestdagen afwezig en vanaf maandag 4 januari weer op kantoor. Ik reageer op uw bericht zodra ik terug ben. Voor dringende zaken kunt u contact opnemen met Ana Lima (ana@example.com). Ik wens u een gelukkig nieuwjaar.\"",
+        },
+        {
+          title: "Halve dag",
+          detail: "Dezelfde dag terug",
+          body: "\"Bedankt voor je e-mail. Ik ben vanmiddag afwezig en reageer morgenochtend.\" Als je maar een paar uur weg bent, is een chatstatus vaak al genoeg.",
+        },
+        {
+          title: "Voor klanten",
+          detail: "Buiten je organisatie",
+          body: "\"Bedankt voor uw bericht. Ik ben afwezig tot maandag 2 november. Voor bestellingen en support kunt u mailen naar support@example.com, waar het team binnen één werkdag reageert.\" Outlook kan dit bericht alleen naar mensen buiten je organisatie sturen.",
+        },
+        {
+          title: "Laatste werkdag",
+          detail: "Definitief vertrek",
+          body: "\"Bedankt voor uw e-mail. Ik heb Example Ltd inmiddels verlaten. Voor lopende zaken kunt u contact opnemen met Ana Lima (ana@example.com), die het van mij overneemt.\" Bedrijven laten zo'n automatisch antwoord meestal nog een paar maanden aanstaan op het adres van een vertrokken medewerker.",
+        },
       ],
     },
     {
@@ -73,6 +93,7 @@ const nl: OooContent = {
       body: [
         "Open in de nieuwe Outlook en Outlook op het web de Instellingen (het tandwiel), ga naar Account en dan naar Automatische antwoorden. Zet automatische antwoorden aan, vink aan dat ze alleen in een bepaalde periode worden verstuurd, kies je begin- en einddatum en plak je bericht. Je kunt een ander bericht schrijven voor mensen buiten je organisatie, en dat is een goed idee: collega's hebben minder uitleg nodig dan klanten.",
         "Ga in de klassieke Outlook voor Windows naar Bestand en dan naar Automatische antwoorden, en vul dezelfde gegevens in. Als je een einddatum instelt, zet Outlook de antwoorden zelf uit, dus je hoeft er niet aan te denken.",
+        "Ga in Outlook voor Mac naar Extra en dan naar Automatische antwoorden. Tik in de Outlook-app op een iPhone of Android-telefoon op je profielfoto, daarna op het tandwiel voor Instellingen, kies je werkaccount en tik op Automatische antwoorden. Welke versie je ook gebruikt, het antwoord wordt opgeslagen in je account. Als je het dus op de ene plek aanzet, staat het overal aan.",
       ],
     },
     {
@@ -130,6 +151,22 @@ const nl: OooContent = {
     {
       q: "Is deze afwezigheidsberichtgenerator gratis?",
       a: "Ja, en hij draait volledig in je browser: de namen, data en e-mailadressen die je typt, worden nergens naartoe gestuurd. Kopieer het bericht naar Outlook, Gmail, Slack of Teams.",
+    },
+    {
+      q: "Wat betekent OOO?",
+      a: "OOO staat voor 'out of office'. Mensen schrijven het in agenda's, chatstatussen en onderwerpen van e-mails, zoals \"OOO tot maandag\", om aan te geven dat ze er niet zijn en niet meteen reageren.",
+    },
+    {
+      q: "Is een automatisch antwoord hetzelfde als een afwezigheidsbericht?",
+      a: "Ja. Automatische antwoorden is hoe Outlook een afwezigheidsbericht noemt, en Gmail noemt het de afwezigheidsassistent. Ze sturen allemaal één antwoord naar mensen die je mailen terwijl je weg bent.",
+    },
+    {
+      q: "Hoe stel ik een afwezigheidsbericht in in Teams?",
+      a: "Klik op je profielfoto, kies Statusbericht instellen en daarna Afwezigheid plannen. Zet automatische antwoorden aan, schrijf je bericht en kies de data. Teams geeft aan dat je afwezig bent, en Outlook stuurt hetzelfde bericht naar iedereen die je mailt.",
+    },
+    {
+      q: "Hoe stel ik een afwezigheidsbericht in in Outlook op mijn telefoon?",
+      a: "Tik in de Outlook-app op je profielfoto, daarna op het tandwiel voor Instellingen, kies je werkaccount en tik op Automatische antwoorden. Zet het aan, schrijf je bericht en kies de data.",
     },
   ],
 };

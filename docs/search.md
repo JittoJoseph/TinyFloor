@@ -134,7 +134,10 @@ some still showing the old "$19/month for 10" repo description.
   leaving the page sooner drops the submission. Later that day the Spot,
   SoWork, ZEP, ZEP vs Gather, hybrid teams and body doubling pages went in,
   in English and Portuguese, with the ZEP pages in Japanese and Korean: 16
-  URLs, each accepted.
+  URLs, each accepted. On 25 October the five meeting guides went in, in
+  English, Portuguese and German, with three in Japanese and the German
+  Gather alternatives page: 19 URLs, each accepted. The form can be filled by
+  focusing its input with a script and typing, then clicking Submit.
 - So what grows Brave's index of us is the same as for everything else:
   visitors arriving from Google and Bing, and links from pages Brave already
   has (the GitHub repo links to the site).
@@ -480,6 +483,53 @@ featured card) and Resources (the five guides buyers and team leads read
 first, and the four free tools in every language). The footer has the same
 six groups as columns, with company and legal links in one row at the
 bottom.
+
+## Free keyword tools, and the question of the day (26 October)
+
+Two free research tools are set up as MCP servers in Claude Code (not in this
+repo): KeywordTool.io's guest server (Google and Bing suggestions, 120
+requests a day, volumes only for a few cached terms) and free-seo-mcp
+(autocomplete in many languages, Google Trends, and real Bing search counts
+through our Bing Webmaster API key). Bing counts are real but small; Google is
+usually several times larger. Exact Google volumes still need OpenSEO credits.
+
+- **"Question of the day for work" is a cluster we had no page for:** 1,907
+  Bing searches in 30 days for the phrase, plus office, funny, fun, weekly,
+  generator and Halloween variants (a few thousand more). Teams post one in
+  a chat channel or the standup, so a guide of 120 questions now covers it,
+  in every language. In Germany and Brazil the phrase means news quizzes and
+  horoscopes, not work.
+- **Icebreaker searches on Bing:** "ice breaker questions for work" 1,002,
+  "ice breakers for meetings" 785, "get to know you questions for coworkers"
+  342, "funny would you rather questions for work" 259 (the would you rather
+  tool's title now says funny).
+- **The out of office tool is seen in 15 languages but sits low in English:**
+  the week to 23 October gave it impressions in about 15 languages
+  (Italian at 9.6, Korean at 6.4), while English ranked 60 to 98 for "out of
+  office message" (22,200 US searches a month, KD 0). Bing shows what
+  English searchers want beside examples: setup in Outlook ("how to set out
+  of office in outlook" 26,153 in six months, "automatic replies" 4,502,
+  "out of office message outlook 365" 518), "ooo meaning" 3,388, Teams 631
+  and maternity leave 598. Google Trends puts the year's peak in the week
+  before Christmas. The page now has Christmas, half-day, customer and
+  last-day examples, Outlook for Mac and phones, and questions on OOO,
+  automatic replies, Teams and phones, in every language.
+- **Proximity chat is a gaming search:** the guide ranks 7 to 11 for
+  "proximity chat", "what is proximity chat" and "proximity chat meaning"
+  (about 170 impressions in 28 days, and 90 more in German at 7.6) without
+  a click. Bing's related searches are mods and games: "simple voice chat"
+  18,459 in six months, "bettercrewlink" 1,093, "proximity chat minecraft"
+  337. The guide now names the games and mods, with a Minecraft question.
+- **Seasonal party searches, left alone:** "secret santa generator",
+  "white elephant rules" and "virtual holiday party" are large every
+  December, but the people searching are mostly families and friends, the
+  results belong to long-established sites, and pages about party games
+  would pull the site away from what it sells. Pages for them were made and
+  taken down the same day.
+- **Small or noisy, skipped:** "zoom alternative" (logins and downloads),
+  "slack status ideas" (under 100 on Bing).
+- **Reddit can't be read from here:** its search API refuses this network
+  and the browser extension won't open it.
 
 ## Launch places (24 October)
 

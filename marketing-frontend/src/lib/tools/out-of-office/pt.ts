@@ -66,6 +66,26 @@ const pt: OooContent = {
           detail: "Para colegas",
           body: "\"Estou de férias até 3 de novembro. Urgente? Fale com Ana Lima.\" Dentro da própria empresa, quanto mais curta, melhor.",
         },
+        {
+          title: "Natal e Ano Novo",
+          detail: "Recesso de fim de ano",
+          body: "\"Obrigado pelo seu e-mail. Estou fora do escritório para as festas de fim de ano e volto na segunda-feira, 4 de janeiro. Responderei sua mensagem quando retornar. Em caso de urgência, entre em contato com Ana Lima (ana@exemplo.com). Desejo a você um feliz ano novo.\"",
+        },
+        {
+          title: "Meio período",
+          detail: "De volta no mesmo dia",
+          body: "\"Obrigado pelo seu e-mail. Estou fora do escritório esta tarde e responderei amanhã de manhã.\" Para uma ausência de poucas horas, um status no chat costuma ser suficiente.",
+        },
+        {
+          title: "Para clientes",
+          detail: "Fora da sua empresa",
+          body: "\"Obrigado pelo contato. Estou fora do escritório até segunda-feira, 2 de novembro. Para pedidos e suporte, escreva para suporte@exemplo.com, e nossa equipe responderá em até um dia útil.\" O Outlook pode enviar esta mensagem apenas para quem é de fora da sua organização.",
+        },
+        {
+          title: "Último dia na empresa",
+          detail: "Saída definitiva",
+          body: "\"Obrigado pelo seu e-mail. Saí da Exemplo Ltda. Para qualquer assunto em que eu estivesse trabalhando, entre em contato com Ana Lima (ana@exemplo.com), que está assumindo minhas funções.\" As empresas costumam manter uma resposta como esta no e-mail de quem saiu por alguns meses.",
+        },
       ],
     },
     {
@@ -73,6 +93,7 @@ const pt: OooContent = {
       body: [
         "No novo Outlook e no Outlook na web, abra Configurações (o ícone de engrenagem), vá em Contas e depois em Respostas automáticas. Ative as respostas automáticas, marque a opção de enviar apenas durante um período, defina as datas de início e fim e cole a sua mensagem. Dá para escrever uma mensagem diferente para quem é de fora da sua organização, o que é uma boa ideia: colegas precisam de menos explicação do que clientes.",
         "No Outlook clássico para Windows, vá em Arquivo e depois em Respostas Automáticas, e preencha os mesmos dados. Se você definir uma data de fim, o Outlook desliga as respostas sozinho, então não precisa lembrar de voltar lá.",
+        "No Outlook para Mac, vá em Ferramentas e depois em Respostas Automáticas. No aplicativo do Outlook para iPhone ou Android, toque na sua foto de perfil, depois no ícone de engrenagem de Configurações, escolha sua conta de trabalho e toque em Respostas automáticas. Não importa qual você use, a resposta fica salva na sua conta, então ativá-la em um lugar a ativa em todos.",
       ],
     },
     {
@@ -130,6 +151,22 @@ const pt: OooContent = {
     {
       q: "Este gerador de mensagem de ausência é grátis?",
       a: "Sim, e funciona inteiro no seu navegador: os nomes, datas e e-mails que você digita nunca são enviados para lugar nenhum. Copie a mensagem para o Outlook, Gmail, Slack ou Teams.",
+    },
+    {
+      q: "O que significa OOO?",
+      a: "OOO é a sigla para \"out of office\" (fora do escritório, em inglês). As pessoas usam essa sigla em calendários, status de chat e assuntos de e-mail, como \"OOO até segunda-feira\", para avisar que estão ausentes e não responderão imediatamente.",
+    },
+    {
+      q: "Resposta automática é o mesmo que mensagem de ausência?",
+      a: "Sim. Respostas automáticas é como o Outlook chama a mensagem de ausência, e o Gmail a chama de resposta automática de férias. Ambos enviam uma resposta para quem escreve para você enquanto estiver fora.",
+    },
+    {
+      q: "Como ativar a mensagem de ausência no Teams?",
+      a: "Clique na sua foto de perfil, escolha Definir mensagem de status e depois Agendar fora do escritório. Ative as respostas automáticas, escreva sua mensagem e defina as datas. O Teams mostrará você como ausente, e o Outlook enviará a mesma mensagem para quem lhe mandar e-mail.",
+    },
+    {
+      q: "Como ativar a mensagem de ausência no Outlook pelo celular?",
+      a: "No aplicativo do Outlook, toque na sua foto de perfil, depois no ícone de engrenagem de Configurações, escolha sua conta de trabalho e toque em Respostas automáticas. Ative a opção, escreva sua mensagem e defina as datas.",
     },
   ],
 };

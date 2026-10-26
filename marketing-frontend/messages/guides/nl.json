@@ -627,8 +627,8 @@
   "proximityChat": {
     "label": "Wat is proximity chat?",
     "meta": {
-      "title": "Wat is proximity chat? Zo werkt het in games en op het werk",
-      "description": "Wat proximity chat is, hoe het werkt, welke games het gebruiken en hoe virtuele kantoren het inzetten zodat teams praten door naar elkaar toe te lopen."
+      "title": "Wat is proximity chat? Games en hoe het werkt op het werk",
+      "description": "Met proximity chat praat je alleen met de mensen bij je in de buurt. Hoe het werkt, de games die het hebben (Lethal Company, Among Us, Minecraft, R.E.P.O.) en hoe virtuele kantoren het gebruiken op het werk."
     },
     "title": "Wat is <em>proximity chat?</em>",
     "intro": "Met proximity chat praat je met de mensen bij je in de buurt in een virtuele ruimte, en niet met iedereen. Het begon in games, waar het werelden tot leven brengt, en is nu hoe virtuele kantoren teams laten praten zonder meetinglinks.",
@@ -641,26 +641,50 @@
         ]
       },
       {
-        "title": "Proximity chat in games",
+        "title": "Games met proximity chat",
         "body": [
-          "Games gebruiken het om gesprekken deel van de wereld te maken. Een paar bekende voorbeelden:"
+          "Games gebruiken het om gesprekken deel te laten uitmaken van de wereld: de mensen die je kunt horen, zijn de mensen die je kunt zien. Een paar van de bekendste:"
         ],
         "items": [
           {
-            "title": "Sociale deductiegames",
-            "body": "Mods voor Among Us voegden proximity chat toe, zodat je alleen spelers dichtbij hoort en plannen kunt fluisteren."
+            "title": "Among Us",
+            "detail": "Met een mod",
+            "body": "De BetterCrewLink-mod voegt proximity voice toe, zodat je alleen de spelers bij je in de buurt hoort en plannen kunt fluisteren buiten de groep om."
           },
           {
-            "title": "Survivalgames",
-            "body": "Rust en DayZ gebruiken proximity chat, dus een vreemde tegenkomen betekent echt met hem praten."
+            "title": "Minecraft",
+            "detail": "Met een mod",
+            "body": "De Simple Voice Chat-mod, of plugin op een server, geeft Java-werelden proximity voice, zodat een gedeelde wereld aanvoelt als een echte plek."
           },
           {
-            "title": "Co-opgames",
-            "body": "In Lethal Company wordt een teamgenoot die wegdwaalt slecht hoorbaar, en dat is de helft van de spanning."
+            "title": "Lethal Company",
+            "detail": "Ingebouwd",
+            "body": "Een teamgenoot die afdwaalt wordt moeilijk te horen, en daarna onhoorbaar, wat de helft van de spanning is."
           },
           {
-            "title": "Sandboxgames",
-            "body": "Minecraft-servers voegen proximity chat toe met mods, zodat een gedeelde wereld als een echte plek voelt."
+            "title": "R.E.P.O. en Peak",
+            "detail": "Ingebouwd",
+            "body": "Nieuwere co-op-games voor kleine groepen zijn gebouwd rond proximity voice: je roept, je raakt elkaar kwijt, je vindt elkaar weer."
+          },
+          {
+            "title": "Phasmophobia",
+            "detail": "Ingebouwd",
+            "body": "Je stem reikt maar tot een bepaalde afstand, en de geest kan je ook horen. Een walkietalkie bereikt de rest van het team."
+          },
+          {
+            "title": "Sea of Thieves",
+            "detail": "Ingebouwd",
+            "body": "Bemanningen praten over het hele schip, en met vreemden wanneer twee schepen langszij komen."
+          },
+          {
+            "title": "Rust en DayZ",
+            "detail": "Ingebouwd",
+            "body": "Een vreemde ontmoeten betekent echt met ze praten, wat een survivalgame in een sociaal spel verandert."
+          },
+          {
+            "title": "GTA-roleplayservers",
+            "detail": "Op FiveM",
+            "body": "Roleplayservers draaien op proximity voice, zodat een gesprek op straat ook op straat blijft."
           }
         ]
       },
@@ -713,19 +737,23 @@
     "faq": [
       {
         "q": "Wat betekent proximity chat?",
-        "a": "Dat je in een virtuele ruimte alleen kunt praten met mensen dicht bij je. Kom dichterbij om te praten; loop weg en het gesprek stopt."
+        "a": "Het betekent dat je in een virtuele ruimte alleen kunt praten met de mensen die dicht bij je staan. Loop naar iemand toe om te praten; loop weg en het gesprek stopt."
       },
       {
         "q": "Is proximity chat privé?",
-        "a": "Alleen mensen in je buurt horen je, en dat is privéer dan een kanaal waar iedereen in zit. Bij erheen lopen en bellen is niets hoorbaar tot je een call start."
+        "a": "Alleen mensen bij je in de buurt kunnen je horen, wat beslotener is dan een kanaal waar iedereen in zit. Bij de variant waarbij je naar iemand toe loopt, is er niets hoorbaar tot je de call start."
       },
       {
         "q": "Welke games hebben proximity chat?",
-        "a": "Rust, DayZ en Lethal Company hebben het ingebouwd, en mods voegen het toe aan games als Among Us en Minecraft."
+        "a": "Lethal Company, R.E.P.O., Peak, Phasmophobia, Sea of Thieves, Rust en DayZ hebben het ingebouwd. Mods voegen het toe aan Among Us (BetterCrewLink) en Minecraft (Simple Voice Chat)."
       },
       {
-        "q": "Kun je proximity chat voor werk gebruiken?",
-        "a": "Ja. Virtuele kantoren zoals TinyFloor, Gather en SpatialChat gebruiken het zodat remote teams kunnen praten door naar elkaar toe te lopen in plaats van calls te plannen."
+        "q": "Hoe krijg je proximity chat in Minecraft?",
+        "a": "Installeer de Simple Voice Chat-mod op de server en in de game van elke speler. Spelers die dicht bij elkaar staan kunnen dan praten, en stemmen worden zachter met de afstand."
+      },
+      {
+        "q": "Kun je proximity chat gebruiken voor werk?",
+        "a": "Ja. Virtuele kantoren zoals TinyFloor, Gather en SpatialChat gebruiken het zodat remote teams kunnen praten door naar elkaar toe te lopen in plaats van calls in te plannen."
       }
     ]
   },
@@ -4654,6 +4682,606 @@
       {
         "q": "Wat is het verschil tussen een agenda en notulen?",
         "a": "De agenda is het plan voor de vergadering, vooraf geschreven. De notulen zijn het verslag van wat er is besloten, geschreven tijdens en na de vergadering."
+      }
+    ]
+  },
+  "questionOfTheDay": {
+    "label": "Vraag van de dag voor werk",
+    "meta": {
+      "title": "120 ideeën voor de vraag van de dag voor werk",
+      "description": "120 ideeën voor de vraag van de dag voor werk: leuke en grappige vragen, would you rather, this or that, werkvragen en kennismakers, met tips voor in de teamchat of standup."
+    },
+    "title": "Vraag van de dag <em>voor werk.</em>",
+    "intro": "Een vraag van de dag is een makkelijke vraag die je team elke ochtend beantwoordt: in de teamchat, aan het begin van de standup of als een poll. Het kost een minuutje, niemand hoeft zich voor te bereiden en na een paar weken leer je elkaar beter kennen dan in een heel jaar aan statusvergaderingen. Hier zijn 120 vragen om uit te kiezen, ingedeeld per sfeer, met een paar tips om het vol te houden.",
+    "sections": [
+      {
+        "title": "Hoe je een vraag van de dag organiseert",
+        "items": [
+          {
+            "title": "Kies één plek",
+            "body": "Een kanaal in de [teamchat](/team-chat) genaamd #vraag-van-de-dag, of de eerste minuut van de [standup](/virtual-standup). Dezelfde plek elke dag maakt er een gewoonte van."
+          },
+          {
+            "title": "Plaats hem op een vast tijdstip",
+            "body": "Als eerste in de ochtend voor de vroegste tijdzone, zodat iedereen hem in de loop van de dag ziet."
+          },
+          {
+            "title": "Houd de antwoorden kort",
+            "body": "Een woord, een zin of een emoji. Makkelijke vragen krijgen antwoord; bij moeilijke blijft het stil."
+          },
+          {
+            "title": "Wissel af wie de vraag stelt",
+            "body": "Geef de beurt elke week aan iemand anders. Mensen gaan vanzelf hun eigen vragen bedenken, en de vragen worden steeds beter."
+          },
+          {
+            "title": "Geef zelf als eerste antwoord",
+            "body": "Degene die de vraag plaatst, geeft meteen zelf antwoord. Dat zet de toon voor de lengte en de sfeer, en niemand hoeft de spits af te bijten."
+          }
+        ]
+      },
+      {
+        "title": "Leuke vragen",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Wat is het lekkerste dat je deze week hebt gegeten?",
+            "body": ""
+          },
+          {
+            "title": "Wat is een klein dingetje waar je onlangs om moest glimlachen?",
+            "body": ""
+          },
+          {
+            "title": "Welke app op je telefoon open je het meest?",
+            "body": ""
+          },
+          {
+            "title": "Wat is je favoriete snack tijdens het werken?",
+            "body": ""
+          },
+          {
+            "title": "Wat was je allereerste baan?",
+            "body": ""
+          },
+          {
+            "title": "Welke vaardigheid zou je dit jaar graag willen leren?",
+            "body": ""
+          },
+          {
+            "title": "Wat is het beste advies dat je ooit hebt gekregen?",
+            "body": ""
+          },
+          {
+            "title": "Wat is jouw favoriete manier om de zondag door te brengen?",
+            "body": ""
+          },
+          {
+            "title": "Wat ligt er op dit moment op je bureau dat je niet kunt verklaren?",
+            "body": ""
+          },
+          {
+            "title": "Welke film kun je keer op keer blijven kijken?",
+            "body": ""
+          },
+          {
+            "title": "Als je voor één dag een willekeurige baan mocht hebben, welke zou dat dan zijn?",
+            "body": ""
+          },
+          {
+            "title": "Wat is jouw verborgen talent?",
+            "body": ""
+          },
+          {
+            "title": "Wat is het handigste dat je bezit?",
+            "body": ""
+          },
+          {
+            "title": "Welke hobby heb je ooit opgepakt en weer laten vallen?",
+            "body": ""
+          },
+          {
+            "title": "Welk nummer zou jouw opkomstmuziek zijn?",
+            "body": ""
+          },
+          {
+            "title": "Wat is het laatste dat je hebt gekocht waar je echt blij mee bent?",
+            "body": ""
+          },
+          {
+            "title": "Wat is je favoriete seizoen en waarom?",
+            "body": ""
+          },
+          {
+            "title": "Naar welke plek zou je morgen wel weer terug willen?",
+            "body": ""
+          },
+          {
+            "title": "Welk fictief personage zou je als collega willen hebben?",
+            "body": ""
+          },
+          {
+            "title": "Welke geur brengt je meteen weer terug naar je kindertijd?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Grappige vragen",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Wat is het vreemdste dat je als kind geloofde?",
+            "body": ""
+          },
+          {
+            "title": "Hoe zou je autobiografie heten?",
+            "body": ""
+          },
+          {
+            "title": "Wat is het ergste kapsel dat je ooit hebt gehad?",
+            "body": ""
+          },
+          {
+            "title": "Als je huisdier kon praten, waar zou het dan over klagen?",
+            "body": ""
+          },
+          {
+            "title": "Wat is het meest nutteloze feitje dat je kent?",
+            "body": ""
+          },
+          {
+            "title": "Hoe zou je een boot noemen?",
+            "body": ""
+          },
+          {
+            "title": "Wat is je meest irrationele angst?",
+            "body": ""
+          },
+          {
+            "title": "Als je een groente was, welke zou je dan zijn?",
+            "body": ""
+          },
+          {
+            "title": "Wat is de vreemdste voedselcombinatie die je stiekem lekker vindt?",
+            "body": ""
+          },
+          {
+            "title": "Wat zou je worstelaarsnaam zijn?",
+            "body": ""
+          },
+          {
+            "title": "Wat is het domste waar je ooit ruzie over hebt gemaakt?",
+            "body": ""
+          },
+          {
+            "title": "Welke emoji gebruik je echt veel te vaak?",
+            "body": ""
+          },
+          {
+            "title": "Als je leven een lachband had, wanneer zou die dan afspelen?",
+            "body": ""
+          },
+          {
+            "title": "Wat is het slechtste cadeau dat je ooit hebt gekregen?",
+            "body": ""
+          },
+          {
+            "title": "Welk woord spel je altijd verkeerd?",
+            "body": ""
+          },
+          {
+            "title": "Welk dier zou het onbeschoftst zijn als het kon praten?",
+            "body": ""
+          },
+          {
+            "title": "Wat is je meest gebruikte smoes om te laat te komen?",
+            "body": ""
+          },
+          {
+            "title": "Wat zou er in je out-of-office-bericht staan als je eerlijk kon zijn?",
+            "body": ""
+          },
+          {
+            "title": "Als je de rest van je leven nog maar één ding mocht eten, wat zou dat dan zijn?",
+            "body": ""
+          },
+          {
+            "title": "Wat is het meest belachelijke dat je deze maand hebt gegoogeld?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Would you rather",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Zou je liever een vierdaagse werkweek hebben of een maand extra vakantie?",
+            "body": ""
+          },
+          {
+            "title": "Zou je liever nooit meer aan een vergadering deelnemen of nooit meer een e-mail beantwoorden?",
+            "body": ""
+          },
+          {
+            "title": "Zou je liever werken vanaf het strand of vanuit een blokhut in het bos?",
+            "body": ""
+          },
+          {
+            "title": "Zou je liever kunnen vliegen of onzichtbaar zijn?",
+            "body": ""
+          },
+          {
+            "title": "Zou je liever je leven lang gratis koffie hebben of je leven lang gratis lunch?",
+            "body": ""
+          },
+          {
+            "title": "Zou je liever elke taal spreken of elk instrument kunnen bespelen?",
+            "body": ""
+          },
+          {
+            "title": "Zou je liever om 6:00 uur beginnen of om 21:00 uur stoppen?",
+            "body": ""
+          },
+          {
+            "title": "Zou je liever een privékok of een privéchauffeur hebben?",
+            "body": ""
+          },
+          {
+            "title": "Zou je liever gedachten kunnen lezen of de toekomst kunnen voorspellen?",
+            "body": ""
+          },
+          {
+            "title": "Zou je liever leven zonder muziek of zonder films?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "Twee opties, één keuze: ze werken heel goed als poll. Er staan er nog meer in onze [would you rather-vragen](/tools/would-you-rather-questions)."
+        ]
+      },
+      {
+        "title": "This or that",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Koffie of thee?",
+            "body": ""
+          },
+          {
+            "title": "Vroege vogel of nachtbraker?",
+            "body": ""
+          },
+          {
+            "title": "Mac of Windows?",
+            "body": ""
+          },
+          {
+            "title": "Katten of honden?",
+            "body": ""
+          },
+          {
+            "title": "Strand of bergen?",
+            "body": ""
+          },
+          {
+            "title": "Donkere modus of lichte modus?",
+            "body": ""
+          },
+          {
+            "title": "Bellen of een berichtje?",
+            "body": ""
+          },
+          {
+            "title": "Boeken of podcasts?",
+            "body": ""
+          },
+          {
+            "title": "Zoet of zout?",
+            "body": ""
+          },
+          {
+            "title": "Zomer of winter?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "De snelste soort om te beantwoorden. Zie [this or that-vragen](/guides/this-or-that-questions) voor nog eens honderd voorbeelden."
+        ]
+      },
+      {
+        "title": "Werkvragen",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Wat is één ding waar je nu aan werkt waar je enthousiast over bent?",
+            "body": ""
+          },
+          {
+            "title": "Wat is de beste tool die je dit jaar bent gaan gebruiken?",
+            "body": ""
+          },
+          {
+            "title": "Wat is een werkgewoonte die je probeert op te bouwen?",
+            "body": ""
+          },
+          {
+            "title": "Wat is de beste vergadering waar je ooit bij bent geweest, en waarom?",
+            "body": ""
+          },
+          {
+            "title": "Wat is één ding dat je week een stuk makkelijker zou maken?",
+            "body": ""
+          },
+          {
+            "title": "Van wie heb je op het werk het meeste geleerd?",
+            "body": ""
+          },
+          {
+            "title": "Wat is een fout waar je iets van hebt geleerd?",
+            "body": ""
+          },
+          {
+            "title": "Hoe ziet een perfecte werkdag er voor jou uit?",
+            "body": ""
+          },
+          {
+            "title": "Wat is één ding dat je zou veranderen aan hoe we werken?",
+            "body": ""
+          },
+          {
+            "title": "Wat is het handigste dat je van een teamgenoot hebt geleerd?",
+            "body": ""
+          },
+          {
+            "title": "Wanneer op de dag ben je het meest gefocust?",
+            "body": ""
+          },
+          {
+            "title": "Wat is je favoriete manier om een succes te vieren?",
+            "body": ""
+          },
+          {
+            "title": "Welke vaardigheid zou je willen leren van iemand uit dit team?",
+            "body": ""
+          },
+          {
+            "title": "Wat wilde je vroeger worden als je groot was?",
+            "body": ""
+          },
+          {
+            "title": "Wat is één ding op je to-do-lijst dat je blijft uitstellen?",
+            "body": ""
+          },
+          {
+            "title": "Wat is de beste feedback die je ooit hebt gekregen?",
+            "body": ""
+          },
+          {
+            "title": "Op welk project ben je trots?",
+            "body": ""
+          },
+          {
+            "title": "Wat is jouw truc om een lome middag door te komen?",
+            "body": ""
+          },
+          {
+            "title": "Wat is een klein succesje van gisteren?",
+            "body": ""
+          },
+          {
+            "title": "Als je één taak kon automatiseren, welke zou dat dan zijn?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Elkaar leren kennen",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Waar ben je opgegroeid?",
+            "body": ""
+          },
+          {
+            "title": "Wat is iets over jou dat ons zou verrassen?",
+            "body": ""
+          },
+          {
+            "title": "Welke traditie uit je familie of cultuur vind je geweldig?",
+            "body": ""
+          },
+          {
+            "title": "Hoe ben je in dit vakgebied terechtgekomen?",
+            "body": ""
+          },
+          {
+            "title": "Wat is de mooiste reis die je ooit hebt gemaakt?",
+            "body": ""
+          },
+          {
+            "title": "Welke talen spreek je, al is het maar een klein beetje?",
+            "body": ""
+          },
+          {
+            "title": "Wat ben je op dit moment aan het lezen, kijken of luisteren?",
+            "body": ""
+          },
+          {
+            "title": "Welk doel ligt je na aan het hart?",
+            "body": ""
+          },
+          {
+            "title": "Wat doe je om na het werk te ontspannen?",
+            "body": ""
+          },
+          {
+            "title": "Wat is het beste concert of evenement waar je ooit bent geweest?",
+            "body": ""
+          },
+          {
+            "title": "Heb je huisdieren? Vertel er eens over.",
+            "body": ""
+          },
+          {
+            "title": "Welk gerecht kun jij heel goed koken?",
+            "body": ""
+          },
+          {
+            "title": "Wat is je favoriete plek in je stad?",
+            "body": ""
+          },
+          {
+            "title": "Wat is het leukste aan de plek waar je woont?",
+            "body": ""
+          },
+          {
+            "title": "Wat is iets dat je nog wilt doen voor het jaar voorbij is?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Vragen over remote werken",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Hoe ziet je uitzicht eruit vanaf de plek waar je vandaag werkt?",
+            "body": ""
+          },
+          {
+            "title": "Wat is één ding van remote werken dat je nooit meer zou willen opgeven?",
+            "body": ""
+          },
+          {
+            "title": "Wat is één ding dat je mist aan een kantoor?",
+            "body": ""
+          },
+          {
+            "title": "Wat is het beste aan je thuiswerkplek?",
+            "body": ""
+          },
+          {
+            "title": "Wat doe je tijdens je lunchpauze?",
+            "body": ""
+          },
+          {
+            "title": "Heb je een vaste thuiswerkoutfit?",
+            "body": ""
+          },
+          {
+            "title": "Wie is je favoriete collega die niet in dit team zit (huisdieren tellen ook mee)?",
+            "body": ""
+          },
+          {
+            "title": "Met welke tijdzone werk je het liefst samen?",
+            "body": ""
+          },
+          {
+            "title": "Hoe begin je je werkdag?",
+            "body": ""
+          },
+          {
+            "title": "Wat is je favoriete achtergrondgeluid tijdens het werken?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Seizoensvragen (herfst en Halloween)",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Wat is je favoriete herfstgerecht of -drankje?",
+            "body": ""
+          },
+          {
+            "title": "Wat is het leukste Halloween-kostuum dat je ooit hebt gedragen?",
+            "body": ""
+          },
+          {
+            "title": "Welke film voelt voor jou altijd als herfst?",
+            "body": ""
+          },
+          {
+            "title": "Pumpkin spice: heerlijk of overslaan?",
+            "body": ""
+          },
+          {
+            "title": "Wat is de engste film die je helemaal hebt afgekeken?",
+            "body": ""
+          },
+          {
+            "title": "Welk snoepje hoop je te krijgen en welk snoepje geef je weg?",
+            "body": ""
+          },
+          {
+            "title": "Naar welke feestdagtraditie kijk je elk jaar weer uit?",
+            "body": ""
+          },
+          {
+            "title": "Als je je zou verkleden als het beroep van een collega, hoe zou je kostuum er dan uitzien?",
+            "body": ""
+          },
+          {
+            "title": "Gezellig avondje thuis of op pad met vrienden?",
+            "body": ""
+          },
+          {
+            "title": "Wat staat er nog op je lijstje voor de rest van het jaar?",
+            "body": ""
+          },
+          {
+            "title": "Wat is het leukste aan deze tijd van het jaar in jouw woonplaats?",
+            "body": ""
+          },
+          {
+            "title": "Welke geur betekent voor jou dat de seizoenen zijn veranderd?",
+            "body": ""
+          },
+          {
+            "title": "Wat zou je nog willen proberen voor de winter begint?",
+            "body": ""
+          },
+          {
+            "title": "Welk griezelverhaal uit je jeugd herinner je je nog steeds?",
+            "body": ""
+          },
+          {
+            "title": "Wat is je favoriete manier om een regenachtige dag door te brengen?",
+            "body": ""
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Waar TinyFloor past",
+      "body": "TinyFloor is een virtueel kantoor voor kleine teams, met een teamchat naast de verdieping voor een vraag van de dag en een vergaderruimte voor de stand-up waar deze hardop wordt beantwoord. De rest van de dag zitten mensen aan hun bureau op dezelfde verdieping, waar het gesprek dat erdoor begon maar een klein stukje lopen is. Het is gratis voor maximaal 3 mensen en $29 per maand voor het hele team."
+    },
+    "faq": [
+      {
+        "q": "Wat is een goede vraag van de dag voor op het werk?",
+        "a": "Een vraag die iedereen in één zin kan beantwoorden, iets over de persoon zegt en prima is om op het werk te delen, zoals 'Wat is het lekkerste dat je deze week hebt gegeten?' of 'Koffie of thee?'."
+      },
+      {
+        "q": "Hoe doe je een vraag van de dag op het werk?",
+        "a": "Plaats elke ochtend op hetzelfde tijdstip één vraag in een teamchatkanaal of aan het begin van de stand-up, beantwoord hem zelf eerst en wissel elke week af wie de vraag stelt."
+      },
+      {
+        "q": "Hoe houd je een vraag van de dag gaande?",
+        "a": "Houd de vragen makkelijk, wissel leuke vragen af met af en toe een werkgerelateerde vraag en laat verschillende mensen de vraag stellen. Zodra mensen zelf met suggesties komen, loopt het vanzelf."
+      },
+      {
+        "q": "Moet de vraag van de dag een poll zijn?",
+        "a": "Vragen met twee opties, zoals 'this or that' en 'zou je liever', werken goed als poll. Open vragen leveren betere antwoorden op in de chat."
       }
     ]
   }

@@ -66,6 +66,26 @@ const pl: OooContent = {
           detail: "Dla współpracowników",
           body: "„Jestem na urlopie do 3 listopada. Pilne? Pisz do Any Limy.” W obrębie własnej firmy krócej zwykle znaczy lepiej.",
         },
+        {
+          title: "Święta i Nowy Rok",
+          detail: "Przerwa świąteczno-noworoczna",
+          body: "„Dziękuję za wiadomość. Przebywam na urlopie świątecznym i wracam do pracy w poniedziałek 4 stycznia. Odpowiem po powrocie. W pilnych sprawach proszę o kontakt z Aną Limą (ana@example.com). Życzę szczęśliwego nowego roku.”",
+        },
+        {
+          title: "Pół dnia",
+          detail: "Powrót tego samego dnia",
+          body: "„Dzięki za wiadomość. Dziś po południu jestem poza biurem i odpowiem jutro rano.” W przypadku kilkugodzinnej nieobecności często wystarczy sam status na czacie.",
+        },
+        {
+          title: "Dla klientów",
+          detail: "Spoza organizacji",
+          body: "„Dziękujemy za kontakt. Jestem poza biurem do poniedziałku 2 listopada. W sprawach zamówień i pomocy technicznej prosimy pisać na adres support@example.com – nasz zespół odpowiada w ciągu jednego dnia roboczego.” Outlook może wysyłać tę wiadomość tylko do osób spoza organizacji.",
+        },
+        {
+          title: "Ostatni dzień w firmie",
+          detail: "Odejście na stałe",
+          body: "„Dziękuję za wiadomość. Nie pracuję już w Example Ltd. W sprawach projektów, którymi się zajmowałem, proszę o kontakt z Aną Limą (ana@example.com), która przejęła moje obowiązki.” Firmy zwykle utrzymują taką odpowiedź na skrzynce byłego pracownika przez kilka miesięcy.",
+        },
       ],
     },
     {
@@ -73,6 +93,7 @@ const pl: OooContent = {
       body: [
         "W nowym Outlooku i Outlooku w przeglądarce otwórz Ustawienia (ikona koła zębatego), przejdź do Konta, a potem do Odpowiedzi automatycznych. Włącz odpowiedzi automatyczne, zaznacz opcję wysyłania ich tylko w określonym czasie, ustaw datę początku i końca i wklej wiadomość. Możesz napisać osobną wiadomość dla osób spoza organizacji i to dobry pomysł: współpracownicy potrzebują mniej wyjaśnień niż klienci.",
         "W klasycznym Outlooku dla Windows wybierz Plik, a potem Odpowiedzi automatyczne, i wpisz te same dane. Jeśli ustawisz datę końcową, Outlook sam wyłączy odpowiedzi, więc nie musisz o tym pamiętać.",
+        "W Outlooku dla komputerów Mac wybierz Narzędzia, a potem Odpowiedzi automatyczne. W aplikacji Outlook na iPhonie lub telefonie z systemem Android stuknij swoje zdjęcie profilowe, a następnie koło zębate Ustawień, wybierz konto służbowe i stuknij Odpowiedzi automatyczne. Niezależnie od tego, z czego korzystasz, odpowiedź jest zapisywana na twoim koncie, więc włączenie jej w jednym miejscu włącza ją wszędzie.",
       ],
     },
     {
@@ -130,6 +151,22 @@ const pl: OooContent = {
     {
       q: "Czy ten generator wiadomości o nieobecności jest darmowy?",
       a: "Tak, i działa w całości w twojej przeglądarce: imiona, daty i adresy e-mail, które wpisujesz, nigdzie nie są wysyłane. Skopiuj wiadomość do Outlooka, Gmaila, Slacka lub Teams.",
+    },
+    {
+      q: "Co oznacza skrót OOO?",
+      a: "OOO to skrót od „out of office” (poza biurem). Ludzie wpisują go w kalendarzach, statusach na czacie i tematach wiadomości e-mail, np. „OOO do poniedziałku”, aby poinformować, że są nieobecni i nie odpowiedzą od razu.",
+    },
+    {
+      q: "Czy odpowiedź automatyczna to to samo co wiadomość o nieobecności?",
+      a: "Tak. Odpowiedzi automatyczne to nazwa, której Outlook używa dla wiadomości o nieobecności, a Gmail nazywa ją autoodpowiedzią. Wszystkie one wysyłają jedną odpowiedź do osób, które piszą do ciebie podczas twojej nieobecności.",
+    },
+    {
+      q: "Jak ustawić wiadomość o nieobecności w Teams?",
+      a: "Kliknij swoje zdjęcie profilowe, wybierz Ustaw komunikat o stanie, a potem Zaplanuj nieobecność. Włącz odpowiedzi automatyczne, napisz wiadomość i ustaw daty. Teams pokaże, że jesteś poza biurem, a Outlook wyśle tę samą wiadomość do każdego, kto do ciebie napisze.",
+    },
+    {
+      q: "Jak ustawić wiadomość o nieobecności w Outlooku na telefonie?",
+      a: "W aplikacji Outlook stuknij swoje zdjęcie profilowe, a następnie koło zębate Ustawień, wybierz konto służbowe i stuknij Odpowiedzi automatyczne. Włącz je, napisz wiadomość i ustaw daty.",
     },
   ],
 };

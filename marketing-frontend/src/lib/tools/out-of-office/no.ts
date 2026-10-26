@@ -66,6 +66,26 @@ const no: OooContent = {
           detail: "For kolleger",
           body: "\"Fri til 3. november. Haster det? Kontakt Ana Lima.\" Innad i din egen bedrift er kortere som regel bedre.",
         },
+        {
+          title: "Jul og nyttår",
+          detail: "Juleferie",
+          body: "\"Takk for e-posten. Jeg har ferie i forbindelse med høytiden og er tilbake mandag 4. januar. Jeg svarer på henvendelsen din når jeg er tilbake. Ved hastesaker, kontakt Ana Lima (ana@example.com). Ønsker deg et godt nytt år!\"",
+        },
+        {
+          title: "En halv dag",
+          detail: "Tilbake samme dag",
+          body: "\"Takk for e-posten. Jeg er ikke på kontoret i ettermiddag og svarer i morgen tidlig.\" Hvis du bare er borte noen timer, holder det ofte med en statusmelding i chatten.",
+        },
+        {
+          title: "For kunder",
+          detail: "Utenfor organisasjonen",
+          body: "\"Takk for at du kontakter oss. Jeg er ikke på kontoret og er tilbake mandag 2. november. For bestillinger og kundestøtte, skriv til support@example.com, der teamet svarer innen én virkedag.\" Outlook kan settes til å sende denne kun til personer utenfor organisasjonen.",
+        },
+        {
+          title: "Siste dag i bedriften",
+          detail: "Slutter for godt",
+          body: "\"Takk for e-posten. Jeg har nå sluttet i Example Ltd. For spørsmål om prosjektene mine, vennligst kontakt Ana Lima (ana@example.com), som tar over etter meg.\" Bedrifter beholder vanligvis et slikt autosvar på e-posten til den som har sluttet i noen måneder.",
+        },
       ],
     },
     {
@@ -73,6 +93,7 @@ const no: OooContent = {
       body: [
         "I nye Outlook og Outlook på nettet åpner du Innstillinger (tannhjulet), går til Konto og deretter Automatiske svar. Slå på automatiske svar, kryss av for at de bare skal sendes i en bestemt periode, velg start- og sluttdato, og lim inn meldingen din. Du kan skrive en egen melding til folk utenfor organisasjonen, og det er lurt: kolleger trenger mindre forklaring enn kunder.",
         "I klassisk Outlook for Windows går du til Fil og deretter Automatiske svar, og fyller inn de samme opplysningene. Hvis du setter en sluttdato, slår Outlook av svarene selv, så du trenger ikke huske det.",
+        "I Outlook for Mac går du til Verktøy og deretter Automatiske svar. I Outlook-appen på iPhone eller Android-telefon trykker du på profilbildet ditt, deretter på tannhjulet for Innstillinger, velger jobbkontoen din og trykker på Automatiske svar. Uansett hva du bruker, lagres svaret på kontoen din, så hvis du slår det på ett sted, slås det på overalt.",
       ],
     },
     {
@@ -130,6 +151,22 @@ const no: OooContent = {
     {
       q: "Er denne generatoren for fraværsmeldinger gratis?",
       a: "Ja, og den kjører helt i nettleseren din: navnene, datoene og e-postadressene du skriver, sendes aldri noe sted. Kopier meldingen inn i Outlook, Gmail, Slack eller Teams.",
+    },
+    {
+      q: "Hva betyr OOO?",
+      a: "OOO står for «out of office» (ikke på kontoret). Folk skriver det i kalendere, statusmeldinger i chatten og emnefelt i e-poster, som for eksempel \"OOO til mandag\", for å si at de er borte og ikke svarer med en gang.",
+    },
+    {
+      q: "Er automatisk svar det samme som en fraværsmelding?",
+      a: "Ja. Automatiske svar er det Outlook kaller sin fraværsmelding, og Gmail kaller det autosvar ved fravær. Begge sender et svar til folk som skriver til deg mens du er borte.",
+    },
+    {
+      q: "Hvordan setter jeg opp fraværsmelding i Teams?",
+      a: "Klikk på profilbildet ditt, velg Angi statusmelding og deretter Planlegg fravær. Slå på automatiske svar, skriv meldingen din og velg datoer. Teams viser deg som fraværende, og Outlook sender den samme meldingen til alle som sender deg e-post.",
+    },
+    {
+      q: "Hvordan setter jeg opp fraværsmelding i Outlook på mobilen?",
+      a: "I Outlook-appen trykker du på profilbildet ditt, deretter på tannhjulet for Innstillinger, velger jobbkontoen din og trykker på Automatiske svar. Slå det på, skriv meldingen din og velg datoer.",
     },
   ],
 };

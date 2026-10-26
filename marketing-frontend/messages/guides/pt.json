@@ -627,8 +627,8 @@
   "proximityChat": {
     "label": "O que é chat por proximidade?",
     "meta": {
-      "title": "O que é chat por proximidade? Como funciona em jogos e no trabalho",
-      "description": "O que é chat por proximidade, como funciona, quais jogos usam e como escritórios virtuais o usam para equipes conversarem chegando perto."
+      "title": "O que é chat por proximidade? Jogos que têm e como funciona no trabalho",
+      "description": "O chat por proximidade deixa você falar apenas com as pessoas perto de você. Como funciona, os jogos que têm esse recurso (Lethal Company, Among Us, Minecraft, R.E.P.O.) e como escritórios virtuais o usam no trabalho."
     },
     "title": "O que é <em>chat por proximidade?</em>",
     "intro": "O chat por proximidade deixa você falar com as pessoas perto de você num espaço virtual, e não com todo mundo. Ele nasceu nos jogos, onde dá vida aos mundos, e hoje é o jeito como escritórios virtuais deixam as equipes conversarem sem link de reunião.",
@@ -641,26 +641,50 @@
         ]
       },
       {
-        "title": "Chat por proximidade nos jogos",
+        "title": "Jogos com chat por proximidade",
         "body": [
-          "Os jogos usam o recurso para tornar as conversas parte do mundo. Alguns exemplos conhecidos:"
+          "Os jogos o usam para tornar as conversas parte do mundo: as pessoas que você consegue ouvir são as que você consegue ver. Alguns dos mais conhecidos:"
         ],
         "items": [
           {
-            "title": "Jogos de dedução social",
-            "body": "Mods de Among Us adicionaram voz por proximidade: você só ouve os jogadores perto e pode sussurrar planos."
+            "title": "Among Us",
+            "detail": "Com um mod",
+            "body": "O mod BetterCrewLink adiciona voz por proximidade, para que você ouça apenas os jogadores perto de você e possa sussurrar planos longe do grupo."
           },
           {
-            "title": "Jogos de sobrevivência",
-            "body": "Rust e DayZ usam voz por proximidade, então encontrar um desconhecido significa falar com ele de verdade."
+            "title": "Minecraft",
+            "detail": "Com um mod",
+            "body": "O mod Simple Voice Chat, ou plugin em um servidor, dá voz por proximidade aos mundos Java, fazendo com que um mundo compartilhado pareça um lugar de verdade."
           },
           {
-            "title": "Jogos cooperativos",
-            "body": "Em Lethal Company, um colega que se afasta fica difícil de ouvir, e isso é metade da tensão."
+            "title": "Lethal Company",
+            "detail": "Nativo",
+            "body": "Um colega de equipe que se afasta fica difícil de ouvir, depois impossível, o que é metade da tensão."
           },
           {
-            "title": "Jogos sandbox",
-            "body": "Servidores de Minecraft adicionam voz por proximidade com mods, para que um mundo compartilhado pareça um lugar de verdade."
+            "title": "R.E.P.O. e Peak",
+            "detail": "Nativo",
+            "body": "Jogos cooperativos mais novos para pequenos grupos são criados em torno da voz por proximidade: você grita, vocês se separam, vocês se encontram de novo."
+          },
+          {
+            "title": "Phasmophobia",
+            "detail": "Nativo",
+            "body": "Sua voz só vai até certa distância, e o fantasma também pode ouvi-la. Um walkie-talkie alcança o resto da equipe."
+          },
+          {
+            "title": "Sea of Thieves",
+            "detail": "Nativo",
+            "body": "As tripulações conversam pelo navio, e com estranhos quando dois navios emparelham."
+          },
+          {
+            "title": "Rust e DayZ",
+            "detail": "Nativo",
+            "body": "Encontrar um estranho significa realmente falar com ele, o que transforma um jogo de sobrevivência em um jogo social."
+          },
+          {
+            "title": "Servidores de GTA roleplay",
+            "detail": "No FiveM",
+            "body": "Servidores de roleplay usam voz por proximidade, então uma conversa na rua fica na rua."
           }
         ]
       },
@@ -713,19 +737,23 @@
     "faq": [
       {
         "q": "O que significa chat por proximidade?",
-        "a": "Que você só consegue falar com as pessoas perto de você num espaço virtual. Chegue mais perto para falar; afaste-se e a conversa acaba."
+        "a": "Significa que você só pode falar com as pessoas perto de você em um espaço virtual. Chegue perto de alguém para conversar; afaste-se e a conversa acaba."
       },
       {
         "q": "O chat por proximidade é privado?",
-        "a": "Só quem está perto ouve você, o que é mais privado do que um canal onde estão todos. No estilo de chegar perto e ligar, nada é ouvido até você começar uma chamada."
+        "a": "Apenas as pessoas perto de você podem ouvir, o que é mais privado do que um canal onde todos estão. No estilo de chegar perto, nada é ouvido até você começar uma chamada."
       },
       {
         "q": "Quais jogos têm chat por proximidade?",
-        "a": "Rust, DayZ e Lethal Company têm o recurso integrado, e mods o adicionam a jogos como Among Us e Minecraft."
+        "a": "Lethal Company, R.E.P.O., Peak, Phasmophobia, Sea of Thieves, Rust e DayZ têm o recurso nativo. Mods o adicionam ao Among Us (BetterCrewLink) e ao Minecraft (Simple Voice Chat)."
+      },
+      {
+        "q": "Como ter chat por proximidade no Minecraft?",
+        "a": "Instale o mod Simple Voice Chat no servidor e no jogo de cada jogador. Os jogadores perto uns dos outros podem conversar, e as vozes ficam mais baixas com a distância."
       },
       {
         "q": "Dá para usar chat por proximidade no trabalho?",
-        "a": "Sim. Escritórios virtuais como TinyFloor, Gather e SpatialChat o usam para que equipes remotas conversem chegando perto em vez de agendar chamadas."
+        "a": "Sim. Escritórios virtuais como TinyFloor, Gather e SpatialChat o usam para que equipes remotas possam conversar chegando perto umas das outras em vez de agendar chamadas."
       }
     ]
   },
@@ -4654,6 +4682,606 @@
       {
         "q": "Qual é a diferença entre pauta e ata?",
         "a": "A pauta é o planejamento da reunião, escrita antes dela. A ata é o registro do que foi decidido, escrita durante e depois da reunião."
+      }
+    ]
+  },
+  "questionOfTheDay": {
+    "label": "Pergunta do dia para o trabalho",
+    "meta": {
+      "title": "120 ideias de pergunta do dia para o trabalho: divertidas e fáceis",
+      "description": "120 ideias de pergunta do dia para o trabalho: perguntas divertidas e engraçadas, você prefere, isto ou aquilo, perguntas de trabalho, para se conhecer melhor e sazonais, com dicas para fazer uma pergunta diária no chat da equipe ou na standup."
+    },
+    "title": "Pergunta do dia <em>para o trabalho.</em>",
+    "intro": "A pergunta do dia é uma pergunta simples que sua equipe responde toda manhã: no chat da equipe, no início da standup ou como uma enquete. Leva um minuto, ninguém precisa se preparar e, em poucas semanas, as pessoas aprendem mais umas sobre as outras do que em um ano de reuniões de status. Aqui estão 120 para escolher, agrupadas por clima, com algumas dicas para manter o hábito.",
+    "sections": [
+      {
+        "title": "Como fazer a pergunta do dia",
+        "items": [
+          {
+            "title": "Escolha um lugar",
+            "body": "Um canal no [chat da equipe](/team-chat) chamado #pergunta-do-dia, ou o primeiro minuto da [standup](/virtual-standup). O mesmo lugar todos os dias ajuda a criar o hábito."
+          },
+          {
+            "title": "Poste no mesmo horário",
+            "body": "Logo de manhã para o fuso horário mais adiantado, assim todos veem a pergunta ao longo do dia."
+          },
+          {
+            "title": "Mantenha as respostas curtas",
+            "body": "Uma palavra, uma frase ou um emoji. Perguntas fáceis recebem respostas; as difíceis recebem silêncio."
+          },
+          {
+            "title": "Faça um rodízio de quem pergunta",
+            "body": "Passa a responsabilidade da pergunta para uma pessoa diferente a cada semana. As pessoas começam a trazer suas próprias ideias e as perguntas ficam melhores."
+          },
+          {
+            "title": "Responda primeiro",
+            "body": "Quem postar a pergunta deve respondê-la imediatamente. Isso mostra o tamanho e o tom da resposta, e ninguém precisa ser o primeiro."
+          }
+        ]
+      },
+      {
+        "title": "Perguntas divertidas",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Qual foi a melhor coisa que você comeu esta semana?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi a pequena coisa que fez você sorrir recentemente?",
+            "body": ""
+          },
+          {
+            "title": "Qual aplicativo você mais abre no seu celular?",
+            "body": ""
+          },
+          {
+            "title": "Qual é o seu lanchinho preferido enquanto trabalha?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi o seu primeiro emprego?",
+            "body": ""
+          },
+          {
+            "title": "Qual habilidade você adoraria aprender este ano?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi o melhor conselho que você já recebeu?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a sua maneira favorita de passar o domingo?",
+            "body": ""
+          },
+          {
+            "title": "O que tem na sua mesa agora que você não sabe explicar?",
+            "body": ""
+          },
+          {
+            "title": "Qual filme você poderia assistir de novo e de novo?",
+            "body": ""
+          },
+          {
+            "title": "Se você pudesse ter qualquer emprego por um dia, qual seria?",
+            "body": ""
+          },
+          {
+            "title": "Qual é o seu talento oculto?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a coisa mais útil que você tem?",
+            "body": ""
+          },
+          {
+            "title": "Qual hobby você começou e depois abandonou?",
+            "body": ""
+          },
+          {
+            "title": "Qual música seria o seu tema de entrada?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi a última coisa que você comprou e amou?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a sua estação do ano favorita e por quê?",
+            "body": ""
+          },
+          {
+            "title": "Qual é o lugar para onde você voltaria amanhã mesmo?",
+            "body": ""
+          },
+          {
+            "title": "Qual personagem de ficção você gostaria de ter como colega de trabalho?",
+            "body": ""
+          },
+          {
+            "title": "Qual cheiro leva você direto de volta à infância?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Perguntas engraçadas",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Qual foi a coisa mais estranha em que você acreditava quando era criança?",
+            "body": ""
+          },
+          {
+            "title": "Qual seria o título da sua autobiografia?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi o pior corte de cabelo que você já teve?",
+            "body": ""
+          },
+          {
+            "title": "Se o seu pet pudesse falar, do que ele reclamaria?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a informação mais inútil que você sabe?",
+            "body": ""
+          },
+          {
+            "title": "Que nome você daria a um barco?",
+            "body": ""
+          },
+          {
+            "title": "Qual é o seu medo mais irracional?",
+            "body": ""
+          },
+          {
+            "title": "Se você fosse um vegetal, qual seria?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a combinação de comida mais estranha que você gosta em segredo?",
+            "body": ""
+          },
+          {
+            "title": "Qual seria o seu nome de lutador?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi a coisa mais boba pela qual você já discutiu?",
+            "body": ""
+          },
+          {
+            "title": "Qual emoji você usa demais?",
+            "body": ""
+          },
+          {
+            "title": "Se a sua vida tivesse uma trilha sonora de risadas, quando ela tocaria?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi o pior presente que você já ganhou?",
+            "body": ""
+          },
+          {
+            "title": "Qual palavra você sempre escreve errado?",
+            "body": ""
+          },
+          {
+            "title": "Qual animal seria o mais grosseiro se pudesse falar?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a sua desculpa mais usada para se atrasar?",
+            "body": ""
+          },
+          {
+            "title": "O que a sua mensagem de fora do escritório diria se você pudesse ser sincero?",
+            "body": ""
+          },
+          {
+            "title": "Se você só pudesse comer uma comida para sempre, qual seria?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi a coisa mais ridícula que você pesquisou no Google este mês?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Você prefere",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Você prefere ter uma semana de quatro dias ou um mês extra de férias?",
+            "body": ""
+          },
+          {
+            "title": "Você prefere nunca mais entrar em uma reunião ou nunca mais responder a um e-mail?",
+            "body": ""
+          },
+          {
+            "title": "Você prefere trabalhar na praia ou em uma cabana na floresta?",
+            "body": ""
+          },
+          {
+            "title": "Você prefere poder voar ou ser invisível?",
+            "body": ""
+          },
+          {
+            "title": "Você prefere ter café grátis para a vida toda ou almoço grátis para a vida toda?",
+            "body": ""
+          },
+          {
+            "title": "Você prefere falar todos os idiomas ou tocar todos os instrumentos?",
+            "body": ""
+          },
+          {
+            "title": "Você prefere começar a trabalhar às 6h ou terminar às 21h?",
+            "body": ""
+          },
+          {
+            "title": "Você prefere ter um chef pessoal ou um motorista particular?",
+            "body": ""
+          },
+          {
+            "title": "Você prefere ler mentes ou ver o futuro?",
+            "body": ""
+          },
+          {
+            "title": "Você prefere viver sem música ou sem filmes?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "Duas opções, uma escolha: elas funcionam muito bem como enquete. Veja mais em nossas [perguntas de você prefere](/tools/would-you-rather-questions)."
+        ]
+      },
+      {
+        "title": "Isto ou aquilo",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Café ou chá?",
+            "body": ""
+          },
+          {
+            "title": "Madrugador ou coruja noturna?",
+            "body": ""
+          },
+          {
+            "title": "Mac ou Windows?",
+            "body": ""
+          },
+          {
+            "title": "Gatos ou cachorros?",
+            "body": ""
+          },
+          {
+            "title": "Praia ou montanha?",
+            "body": ""
+          },
+          {
+            "title": "Modo escuro ou modo claro?",
+            "body": ""
+          },
+          {
+            "title": "Ligação ou mensagem?",
+            "body": ""
+          },
+          {
+            "title": "Livros ou podcasts?",
+            "body": ""
+          },
+          {
+            "title": "Doce ou salgado?",
+            "body": ""
+          },
+          {
+            "title": "Verão ou inverno?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "O tipo mais rápido de responder. Para ver mais cem, confira nossas [perguntas de isto ou aquilo](/guides/this-or-that-questions)."
+        ]
+      },
+      {
+        "title": "Perguntas de trabalho",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Qual é a coisa em que você está trabalhando que mais te empolga?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi a melhor ferramenta que você começou a usar este ano?",
+            "body": ""
+          },
+          {
+            "title": "Qual hábito de trabalho você está tentando criar?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi a melhor reunião de que você já participou e por quê?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a única coisa que facilitaria a sua semana?",
+            "body": ""
+          },
+          {
+            "title": "Quem foi a pessoa que mais te ensinou no trabalho?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi o erro que te ensinou alguma coisa?",
+            "body": ""
+          },
+          {
+            "title": "Como seria um dia de trabalho perfeito para você?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a única coisa que você mudaria na forma como trabalhamos?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi a coisa mais útil que você aprendeu com um colega de equipe?",
+            "body": ""
+          },
+          {
+            "title": "Em qual momento do dia você tem mais foco?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a sua maneira favorita de comemorar uma conquista?",
+            "body": ""
+          },
+          {
+            "title": "Qual habilidade você gostaria de aprender com alguém desta equipe?",
+            "body": ""
+          },
+          {
+            "title": "O que você queria ser quando crescesse?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a única coisa na sua lista de tarefas que você vive adiando?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi o melhor feedback que você já recebeu?",
+            "body": ""
+          },
+          {
+            "title": "De qual projeto você tem orgulho?",
+            "body": ""
+          },
+          {
+            "title": "Qual é o seu truque para passar por uma tarde arrastada?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi uma pequena conquista de ontem?",
+            "body": ""
+          },
+          {
+            "title": "Se você pudesse automatizar uma tarefa, qual seria?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Para se conhecer melhor",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Onde você cresceu?",
+            "body": ""
+          },
+          {
+            "title": "O que nos surpreenderia sobre você?",
+            "body": ""
+          },
+          {
+            "title": "Qual tradição da sua família ou cultura você ama?",
+            "body": ""
+          },
+          {
+            "title": "Como você acabou trabalhando nessa área?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi a melhor viagem que você já fez?",
+            "body": ""
+          },
+          {
+            "title": "Quais idiomas você fala, mesmo que só um pouco?",
+            "body": ""
+          },
+          {
+            "title": "O que você está lendo, assistindo ou ouvindo no momento?",
+            "body": ""
+          },
+          {
+            "title": "Qual é uma causa com a qual você se importa?",
+            "body": ""
+          },
+          {
+            "title": "O que você faz para se desligar depois do trabalho?",
+            "body": ""
+          },
+          {
+            "title": "Qual foi o melhor show ou evento em que você já esteve?",
+            "body": ""
+          },
+          {
+            "title": "Você tem pets? Conte-nos sobre eles.",
+            "body": ""
+          },
+          {
+            "title": "Qual prato você cozinha bem?",
+            "body": ""
+          },
+          {
+            "title": "Qual é o seu lugar favorito na sua cidade?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a melhor coisa sobre o lugar onde você mora?",
+            "body": ""
+          },
+          {
+            "title": "O que você gostaria de fazer antes do ano acabar?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Perguntas sobre trabalho remoto",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Como é a vista de onde você está trabalhando hoje?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a única coisa que você não abriria mão de jeito nenhum no trabalho remoto?",
+            "body": ""
+          },
+          {
+            "title": "Do que você sente falta em um escritório?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a melhor coisa do seu setup em casa?",
+            "body": ""
+          },
+          {
+            "title": "O que você faz no seu horário de almoço?",
+            "body": ""
+          },
+          {
+            "title": "Você tem um uniforme para trabalhar em casa?",
+            "body": ""
+          },
+          {
+            "title": "Quem é o seu colega de trabalho favorito que não está nesta equipe (pets contam)?",
+            "body": ""
+          },
+          {
+            "title": "Com qual fuso horário você mais gosta de trabalhar?",
+            "body": ""
+          },
+          {
+            "title": "Como você começa o seu dia de trabalho?",
+            "body": ""
+          },
+          {
+            "title": "Qual é o seu som de fundo favorito enquanto trabalha?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Perguntas sazonais (outono e Halloween)",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Qual é a sua comida ou bebida de outono favorita?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a melhor fantasia de Halloween que você já usou?",
+            "body": ""
+          },
+          {
+            "title": "Qual filme sempre lembra o outono para você?",
+            "body": ""
+          },
+          {
+            "title": "Pumpkin spice: adora ou dispensa?",
+            "body": ""
+          },
+          {
+            "title": "Qual é o filme mais assustador que você realmente assistiu até o fim?",
+            "body": ""
+          },
+          {
+            "title": "Qual doce você espera ganhar e qual você passa adiante?",
+            "body": ""
+          },
+          {
+            "title": "Qual tradição de fim de ano você mais espera todos os anos?",
+            "body": ""
+          },
+          {
+            "title": "Se você se fantasiasse com a profissão de um colega de trabalho, como seria a fantasia?",
+            "body": ""
+          },
+          {
+            "title": "Noite aconchegante em casa ou sair com os amigos?",
+            "body": ""
+          },
+          {
+            "title": "O que está na sua lista para o resto do ano?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a melhor coisa nesta época do ano onde você mora?",
+            "body": ""
+          },
+          {
+            "title": "Qual cheiro indica que as estações mudaram?",
+            "body": ""
+          },
+          {
+            "title": "O que você gostaria de experimentar antes do inverno?",
+            "body": ""
+          },
+          {
+            "title": "De qual história assustadora de infância você ainda se lembra?",
+            "body": ""
+          },
+          {
+            "title": "Qual é a sua maneira favorita de passar um dia chuvoso?",
+            "body": ""
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Onde o TinyFloor se encaixa",
+      "body": "O TinyFloor é um escritório virtual para equipes pequenas, com chat de equipe ao lado do andar para uma pergunta do dia e uma sala de reunião para a standup onde ela é respondida em voz alta. No resto do dia, as pessoas se sentam em suas mesas no mesmo andar, onde a conversa iniciada fica a uma curta caminhada de distância. É grátis para até 3 pessoas e $29 por mês para toda a equipe."
+    },
+    "faq": [
+      {
+        "q": "O que é uma boa pergunta do dia para o trabalho?",
+        "a": "Uma que qualquer pessoa consiga responder em uma frase, que diga algo sobre ela e que não tenha problema compartilhar no trabalho, como “Qual foi a melhor coisa que você comeu esta semana?” ou “Café ou chá?”."
+      },
+      {
+        "q": "Como fazer uma pergunta do dia no trabalho?",
+        "a": "Publique uma pergunta no mesmo horário todas as manhãs em um canal de chat da equipe ou no início da standup, responda você primeiro e faça um rodízio de quem pergunta a cada semana."
+      },
+      {
+        "q": "Como manter a pergunta do dia ativa?",
+        "a": "Mantenha as perguntas fáceis, misture as divertidas com alguma eventual pergunta de trabalho e deixe que pessoas diferentes perguntem. Quando as pessoas começarem a sugerir perguntas, ela se mantém sozinha."
+      },
+      {
+        "q": "A pergunta do dia deve ser uma enquete?",
+        "a": "Perguntas com duas opções, como “isto ou aquilo” e “você prefere”, funcionam bem como enquetes. Perguntas abertas recebem respostas melhores no chat."
       }
     ]
   }

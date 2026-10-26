@@ -122,7 +122,7 @@ const en: IcebreakersContent = {
     },
   ],
   meta: {
-    title: "Would You Rather Questions for Work: 85 Fun Ones for Meetings",
+    title: "Would You Rather Questions for Work: 85 Fun and Funny Ones for Meetings",
     description:
       "85 would you rather questions for work, plus quick this or that questions, safe for any team. Pick one at random for your next meeting or standup.",
   },

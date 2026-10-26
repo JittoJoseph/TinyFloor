@@ -25,7 +25,7 @@ import zh from "./zh";
  * (lib/tools/catalog). Same rules as the icebreakers: nothing private, both
  * options fine, nothing that assumes how someone lives.
  */
-export const WOULD_YOU_RATHER_UPDATED = "2026-10-20";
+export const WOULD_YOU_RATHER_UPDATED = "2026-10-26";
 
 const CONTENT: Record<Locale, IcebreakersContent> = { en, pt, es, de, fr, it, nl, pl, sv, da, no, fi, ru, ja, ko, zh, he, ar };
 

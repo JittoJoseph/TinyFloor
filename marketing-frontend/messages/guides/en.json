@@ -627,8 +627,8 @@
   "proximityChat": {
     "label": "What is proximity chat?",
     "meta": {
-      "title": "What Is Proximity Chat? How It Works in Games and at Work",
-      "description": "What proximity chat is, how it works, which games use it and how virtual offices use it so remote teams can talk by walking up to each other."
+      "title": "What Is Proximity Chat? Games That Have It and How It Works at Work",
+      "description": "Proximity chat lets you talk only to the people near you. How it works, the games that have it (Lethal Company, Among Us, Minecraft, R.E.P.O.) and how virtual offices use it at work."
     },
     "title": "What is <em>proximity chat?</em>",
     "intro": "Proximity chat lets you talk to the people near you in a virtual space, and not to everyone else. It started in games, where it makes worlds feel alive, and is now how virtual offices let teams talk without meeting links.",
@@ -641,26 +641,50 @@
         ]
       },
       {
-        "title": "Proximity chat in games",
+        "title": "Games with proximity chat",
         "body": [
-          "Games use it to make conversations part of the world. Some well-known examples:"
+          "Games use it to make conversations part of the world: the people you can hear are the people you can see. Some of the best-known:"
         ],
         "items": [
           {
-            "title": "Social deduction games",
-            "body": "Mods for Among Us added proximity voice, so you only hear the players near you and can whisper plans."
+            "title": "Among Us",
+            "detail": "With a mod",
+            "body": "The BetterCrewLink mod adds proximity voice, so you only hear the players near you and can whisper plans away from the group."
           },
           {
-            "title": "Survival games",
-            "body": "Rust and DayZ use proximity voice, so meeting a stranger means actually talking to them."
+            "title": "Minecraft",
+            "detail": "With a mod",
+            "body": "The Simple Voice Chat mod, or plugin on a server, gives Java worlds proximity voice, so a shared world feels like a real place."
           },
           {
-            "title": "Co-op games",
-            "body": "In Lethal Company, a teammate who wanders off becomes hard to hear, which is half the tension."
+            "title": "Lethal Company",
+            "detail": "Built in",
+            "body": "A teammate who wanders off becomes hard to hear, then impossible, which is half the tension."
           },
           {
-            "title": "Sandbox games",
-            "body": "Minecraft servers add proximity voice with mods, so a shared world feels like a real place."
+            "title": "R.E.P.O. and Peak",
+            "detail": "Built in",
+            "body": "Newer co-op games for small groups are built around proximity voice: you shout, you get separated, you find each other again."
+          },
+          {
+            "title": "Phasmophobia",
+            "detail": "Built in",
+            "body": "Your voice carries only so far, and the ghost can hear it too. A walkie-talkie reaches the rest of the team."
+          },
+          {
+            "title": "Sea of Thieves",
+            "detail": "Built in",
+            "body": "Crews talk across the ship, and to strangers when two ships pull alongside."
+          },
+          {
+            "title": "Rust and DayZ",
+            "detail": "Built in",
+            "body": "Meeting a stranger means actually talking to them, which turns a survival game into a social one."
+          },
+          {
+            "title": "GTA roleplay servers",
+            "detail": "On FiveM",
+            "body": "Roleplay servers run proximity voice, so a conversation on the street stays on the street."
           }
         ]
       },
@@ -721,7 +745,11 @@
       },
       {
         "q": "Which games have proximity chat?",
-        "a": "Rust, DayZ and Lethal Company have it built in, and mods add it to games like Among Us and Minecraft."
+        "a": "Lethal Company, R.E.P.O., Peak, Phasmophobia, Sea of Thieves, Rust and DayZ have it built in. Mods add it to Among Us (BetterCrewLink) and Minecraft (Simple Voice Chat)."
+      },
+      {
+        "q": "How do you get proximity chat in Minecraft?",
+        "a": "Install the Simple Voice Chat mod on the server and on every player's game. Players near each other can then talk, and voices get quieter with distance."
       },
       {
         "q": "Can you use proximity chat for work?",
@@ -4654,6 +4682,826 @@
       {
         "q": "What's the difference between an agenda and minutes?",
         "a": "The agenda is the plan for the meeting, written before it. The minutes are the record of what it decided, written during and after it."
+      }
+    ]
+  },
+  "questionOfTheDay": {
+    "label": "Question of the day for work",
+    "meta": {
+      "title": "120 Question of the Day Ideas for Work: Fun, Funny and Easy to Answer",
+      "description": "120 question of the day ideas for work: fun and funny questions, would you rather, this or that, work questions, get-to-know-you and seasonal ones, with tips for running a daily question in your team chat or standup."
+    },
+    "title": "Question of the day <em>for work.</em>",
+    "intro": "A question of the day is one easy question your team answers every morning: in the team chat, at the start of the standup, or as a poll. It takes a minute, nobody has to prepare, and over a few weeks people learn more about each other than in a year of status meetings. Here are 120 to pick from, grouped by mood, with a few tips for keeping it going.",
+    "sections": [
+      {
+        "title": "How to run a question of the day",
+        "items": [
+          {
+            "title": "Pick one place",
+            "body": "A channel in the [team chat](/team-chat) called #question-of-the-day, or the first minute of the [standup](/virtual-standup). The same place every day makes it a habit."
+          },
+          {
+            "title": "Post it at the same time",
+            "body": "First thing in the morning for the earliest time zone, so everyone sees it during their day."
+          },
+          {
+            "title": "Keep answers short",
+            "body": "A word, a sentence or an emoji. Easy questions get answers; hard ones get silence."
+          },
+          {
+            "title": "Rotate who asks",
+            "body": "Hand the question to a different person each week. People start bringing their own, and the questions get better."
+          },
+          {
+            "title": "Answer first",
+            "body": "Whoever posts the question answers it straight away. It shows the length and the tone, and nobody has to go first."
+          }
+        ]
+      },
+      {
+        "title": "Fun questions",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "What's the best thing you've eaten this week?",
+            "body": ""
+          },
+          {
+            "title": "What's a small thing that made you smile recently?",
+            "body": ""
+          },
+          {
+            "title": "Which app on your phone do you open the most?",
+            "body": ""
+          },
+          {
+            "title": "What's your go-to snack while working?",
+            "body": ""
+          },
+          {
+            "title": "What was your first job?",
+            "body": ""
+          },
+          {
+            "title": "What's a skill you'd love to learn this year?",
+            "body": ""
+          },
+          {
+            "title": "What's the best piece of advice you've ever been given?",
+            "body": ""
+          },
+          {
+            "title": "What's your favourite way to spend a Sunday?",
+            "body": ""
+          },
+          {
+            "title": "What's on your desk right now that you can't explain?",
+            "body": ""
+          },
+          {
+            "title": "What's a film you could watch again and again?",
+            "body": ""
+          },
+          {
+            "title": "If you could have any job for one day, what would it be?",
+            "body": ""
+          },
+          {
+            "title": "What's your hidden talent?",
+            "body": ""
+          },
+          {
+            "title": "What's the most useful thing you own?",
+            "body": ""
+          },
+          {
+            "title": "What's a hobby you picked up and dropped?",
+            "body": ""
+          },
+          {
+            "title": "Which song would be your entrance music?",
+            "body": ""
+          },
+          {
+            "title": "What's the last thing you bought that you love?",
+            "body": ""
+          },
+          {
+            "title": "What's your favourite season and why?",
+            "body": ""
+          },
+          {
+            "title": "What's a place you'd go back to tomorrow?",
+            "body": ""
+          },
+          {
+            "title": "Which fictional character would you want as a coworker?",
+            "body": ""
+          },
+          {
+            "title": "What's a smell that takes you straight back to childhood?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Funny questions",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "What's the strangest thing you believed as a kid?",
+            "body": ""
+          },
+          {
+            "title": "What would your autobiography be called?",
+            "body": ""
+          },
+          {
+            "title": "What's the worst haircut you've ever had?",
+            "body": ""
+          },
+          {
+            "title": "If your pet could talk, what would it complain about?",
+            "body": ""
+          },
+          {
+            "title": "What's the most useless fact you know?",
+            "body": ""
+          },
+          {
+            "title": "What would you name a boat?",
+            "body": ""
+          },
+          {
+            "title": "What's your most irrational fear?",
+            "body": ""
+          },
+          {
+            "title": "If you were a vegetable, which one would you be?",
+            "body": ""
+          },
+          {
+            "title": "What's the weirdest food combination you secretly like?",
+            "body": ""
+          },
+          {
+            "title": "What would be your wrestling name?",
+            "body": ""
+          },
+          {
+            "title": "What's the silliest thing you've ever argued about?",
+            "body": ""
+          },
+          {
+            "title": "Which emoji do you use far too much?",
+            "body": ""
+          },
+          {
+            "title": "If your life had a laugh track, when would it play?",
+            "body": ""
+          },
+          {
+            "title": "What's the worst gift you've ever received?",
+            "body": ""
+          },
+          {
+            "title": "What's a word you always spell wrong?",
+            "body": ""
+          },
+          {
+            "title": "Which animal would be the rudest if it could talk?",
+            "body": ""
+          },
+          {
+            "title": "What's your most-used excuse for being late?",
+            "body": ""
+          },
+          {
+            "title": "What would your out-of-office message say if you could be honest?",
+            "body": ""
+          },
+          {
+            "title": "If you could only eat one food forever, what would it be?",
+            "body": ""
+          },
+          {
+            "title": "What's the most ridiculous thing you've Googled this month?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Would you rather",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Would you rather have a four-day week or a month of extra holiday?",
+            "body": ""
+          },
+          {
+            "title": "Would you rather never join another meeting or never answer another email?",
+            "body": ""
+          },
+          {
+            "title": "Would you rather work from a beach or from a cabin in the woods?",
+            "body": ""
+          },
+          {
+            "title": "Would you rather be able to fly or be invisible?",
+            "body": ""
+          },
+          {
+            "title": "Would you rather have free coffee for life or free lunch for life?",
+            "body": ""
+          },
+          {
+            "title": "Would you rather speak every language or play every instrument?",
+            "body": ""
+          },
+          {
+            "title": "Would you rather start work at 6am or finish at 9pm?",
+            "body": ""
+          },
+          {
+            "title": "Would you rather have a personal chef or a personal driver?",
+            "body": ""
+          },
+          {
+            "title": "Would you rather read minds or see the future?",
+            "body": ""
+          },
+          {
+            "title": "Would you rather live without music or without films?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "Two options, one pick: they work well as a poll. There are more in our [would you rather questions](/tools/would-you-rather-questions)."
+        ]
+      },
+      {
+        "title": "This or that",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Coffee or tea?",
+            "body": ""
+          },
+          {
+            "title": "Early bird or night owl?",
+            "body": ""
+          },
+          {
+            "title": "Mac or Windows?",
+            "body": ""
+          },
+          {
+            "title": "Cats or dogs?",
+            "body": ""
+          },
+          {
+            "title": "Beach or mountains?",
+            "body": ""
+          },
+          {
+            "title": "Dark mode or light mode?",
+            "body": ""
+          },
+          {
+            "title": "Call or message?",
+            "body": ""
+          },
+          {
+            "title": "Books or podcasts?",
+            "body": ""
+          },
+          {
+            "title": "Sweet or salty?",
+            "body": ""
+          },
+          {
+            "title": "Summer or winter?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "The quickest kind to answer. For a hundred more, see [this or that questions](/guides/this-or-that-questions)."
+        ]
+      },
+      {
+        "title": "Work questions",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "What's one thing you're working on that you're excited about?",
+            "body": ""
+          },
+          {
+            "title": "What's the best tool you started using this year?",
+            "body": ""
+          },
+          {
+            "title": "What's a work habit you're trying to build?",
+            "body": ""
+          },
+          {
+            "title": "What's the best meeting you've ever been in, and why?",
+            "body": ""
+          },
+          {
+            "title": "What's one thing that would make your week easier?",
+            "body": ""
+          },
+          {
+            "title": "Who taught you the most at work?",
+            "body": ""
+          },
+          {
+            "title": "What's a mistake that taught you something?",
+            "body": ""
+          },
+          {
+            "title": "What does a perfect workday look like for you?",
+            "body": ""
+          },
+          {
+            "title": "What's one thing you'd change about how we work?",
+            "body": ""
+          },
+          {
+            "title": "What's the most useful thing you learned from a teammate?",
+            "body": ""
+          },
+          {
+            "title": "When are you most focused during the day?",
+            "body": ""
+          },
+          {
+            "title": "What's your favourite way to celebrate a win?",
+            "body": ""
+          },
+          {
+            "title": "What's a skill you'd like to learn from someone on this team?",
+            "body": ""
+          },
+          {
+            "title": "What did you want to be when you grew up?",
+            "body": ""
+          },
+          {
+            "title": "What's one thing on your to-do list you keep putting off?",
+            "body": ""
+          },
+          {
+            "title": "What's the best piece of feedback you've received?",
+            "body": ""
+          },
+          {
+            "title": "What's a project you're proud of?",
+            "body": ""
+          },
+          {
+            "title": "What's your trick for getting through a slow afternoon?",
+            "body": ""
+          },
+          {
+            "title": "What's a small win from yesterday?",
+            "body": ""
+          },
+          {
+            "title": "If you could automate one task, which would it be?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Get to know you",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Where did you grow up?",
+            "body": ""
+          },
+          {
+            "title": "What's something about you that would surprise us?",
+            "body": ""
+          },
+          {
+            "title": "What's a tradition from your family or culture you love?",
+            "body": ""
+          },
+          {
+            "title": "How did you end up in your line of work?",
+            "body": ""
+          },
+          {
+            "title": "What's the best trip you've ever taken?",
+            "body": ""
+          },
+          {
+            "title": "What languages do you speak, even a little?",
+            "body": ""
+          },
+          {
+            "title": "What are you reading, watching or listening to right now?",
+            "body": ""
+          },
+          {
+            "title": "What's a cause you care about?",
+            "body": ""
+          },
+          {
+            "title": "What do you do to switch off after work?",
+            "body": ""
+          },
+          {
+            "title": "What's the best concert or event you've been to?",
+            "body": ""
+          },
+          {
+            "title": "Do you have any pets? Tell us about them.",
+            "body": ""
+          },
+          {
+            "title": "What's a dish you cook well?",
+            "body": ""
+          },
+          {
+            "title": "What's your favourite place in your city?",
+            "body": ""
+          },
+          {
+            "title": "What's the best thing about where you live?",
+            "body": ""
+          },
+          {
+            "title": "What's something you'd like to do before the year ends?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Remote work questions",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "What's the view from where you're working today?",
+            "body": ""
+          },
+          {
+            "title": "What's one thing you'd never give back about working remotely?",
+            "body": ""
+          },
+          {
+            "title": "What's one thing you miss about an office?",
+            "body": ""
+          },
+          {
+            "title": "What's the best thing about your home setup?",
+            "body": ""
+          },
+          {
+            "title": "What do you do on your lunch break?",
+            "body": ""
+          },
+          {
+            "title": "Do you have a work-from-home uniform?",
+            "body": ""
+          },
+          {
+            "title": "Who's your favourite coworker who isn't on this team (pets count)?",
+            "body": ""
+          },
+          {
+            "title": "What time zone is your favourite to work with?",
+            "body": ""
+          },
+          {
+            "title": "How do you start your workday?",
+            "body": ""
+          },
+          {
+            "title": "What's your favourite background noise while working?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Seasonal questions (autumn and Halloween)",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "What's your favourite autumn food or drink?",
+            "body": ""
+          },
+          {
+            "title": "What's the best Halloween costume you've ever worn?",
+            "body": ""
+          },
+          {
+            "title": "Which film always feels like autumn to you?",
+            "body": ""
+          },
+          {
+            "title": "Pumpkin spice: love it or skip it?",
+            "body": ""
+          },
+          {
+            "title": "What's the scariest film you've actually watched to the end?",
+            "body": ""
+          },
+          {
+            "title": "Which sweet do you hope to get, and which do you give away?",
+            "body": ""
+          },
+          {
+            "title": "What's a holiday tradition you look forward to every year?",
+            "body": ""
+          },
+          {
+            "title": "If you dressed up as a coworker's job, what would the costume be?",
+            "body": ""
+          },
+          {
+            "title": "Cosy night in or out with friends?",
+            "body": ""
+          },
+          {
+            "title": "What's on your list for the rest of the year?",
+            "body": ""
+          },
+          {
+            "title": "What's the best thing about this time of year where you live?",
+            "body": ""
+          },
+          {
+            "title": "What's a smell that means the seasons have changed?",
+            "body": ""
+          },
+          {
+            "title": "What's something you'd like to try before winter?",
+            "body": ""
+          },
+          {
+            "title": "Which spooky story from childhood do you still remember?",
+            "body": ""
+          },
+          {
+            "title": "What's your favourite way to spend a rainy day?",
+            "body": ""
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "TinyFloor is a virtual office for small teams, with team chat beside the floor for a question of the day and a meeting room for the standup where it gets answered out loud. The rest of the day people sit at their desks on the same floor, where the conversation it started is a short walk away. It's free for up to 3 people and $29 a month for the whole team."
+    },
+    "faq": [
+      {
+        "q": "What is a good question of the day for work?",
+        "a": "One that anyone can answer in a sentence, says something about the person, and is fine to share at work, like \"What's the best thing you've eaten this week?\" or \"Coffee or tea?\"."
+      },
+      {
+        "q": "How do you do a question of the day at work?",
+        "a": "Post one question at the same time every morning in a team chat channel or at the start of the standup, answer it yourself first, and rotate who asks each week."
+      },
+      {
+        "q": "How do you keep a question of the day going?",
+        "a": "Keep the questions easy, mix fun ones with the occasional work question, and let different people ask. When people start suggesting questions, it runs itself."
+      },
+      {
+        "q": "Should the question of the day be a poll?",
+        "a": "Two-choice questions like \"this or that\" and \"would you rather\" work well as polls. Open questions get better answers in the chat."
+      }
+    ]
+  },
+  "holidayParty": {
+    "label": "Virtual holiday party ideas",
+    "meta": {
+      "title": "Virtual Holiday Party Ideas: 20 Free Games and Activities for Remote Teams",
+      "description": "20 free virtual holiday party ideas for remote teams: games like bingo, trivia and a scavenger hunt, a 60-minute agenda, a secret Santa that works across countries, and how to plan around time zones."
+    },
+    "title": "Virtual holiday party ideas <em>for remote teams.</em>",
+    "intro": "An end-of-year party is the one event most remote teams actually want, and the easiest to get wrong: too long, too many games, half the team asleep in another time zone. Here are 20 free games and activities, a 60-minute agenda that works, and how to plan it so people come because they want to.",
+    "sections": [
+      {
+        "title": "Plan it first",
+        "items": [
+          {
+            "title": "Pick a time that works for most people",
+            "body": "For a team across time zones, the overlap is often an hour. Use a [time zone planner](/tools/time-zone-meeting-planner), choose the least painful slot, and offer the people stuck in the night slot a second, smaller session."
+          },
+          {
+            "title": "Keep it to an hour",
+            "body": "Sixty minutes with a clear end gets more people than an open-ended evening. Those who want to stay longer will."
+          },
+          {
+            "title": "Make it work time",
+            "body": "Hold it during working hours if you can. A party people have to give up an evening for is a party fewer people come to."
+          },
+          {
+            "title": "Call it an end-of-year party",
+            "body": "Not everyone celebrates the same holidays. An end-of-year party includes everyone and still allows a jumper."
+          },
+          {
+            "title": "Send a budget, not a box",
+            "body": "If there's money for food or drinks, a per-person allowance travels across countries far better than shipping."
+          }
+        ]
+      },
+      {
+        "title": "Games",
+        "items": [
+          {
+            "title": "Holiday bingo",
+            "detail": "15 minutes · any size",
+            "body": "Cards with things like \"someone's pet appears\" or \"a festive jumper\". First to a full line wins. Free generators make the cards."
+          },
+          {
+            "title": "End-of-year trivia",
+            "detail": "20 minutes · teams of 3 to 5",
+            "body": "Questions about the year at work and in the world. Small teams in breakout rooms, one person submits the answers."
+          },
+          {
+            "title": "Scavenger hunt at home",
+            "detail": "10 minutes · any size",
+            "body": "Call out an item (\"something red\", \"the oldest thing in your kitchen\") and the first person back on camera with it scores."
+          },
+          {
+            "title": "Guess the baby photo",
+            "detail": "15 minutes · up to 20",
+            "body": "Everyone sends a childhood photo beforehand; the team guesses who's who. Collect them a week ahead."
+          },
+          {
+            "title": "Holiday this or that",
+            "detail": "5 minutes · any size",
+            "body": "\"Real tree or artificial?\", \"Snow or sun?\": quick picks, then a few people explain. More in our [this or that questions](/guides/this-or-that-questions)."
+          },
+          {
+            "title": "Two truths and a lie, holiday edition",
+            "detail": "15 minutes · up to 12",
+            "body": "Three statements about past holidays, one untrue. See [two truths and a lie ideas](/tools/two-truths-and-a-lie)."
+          },
+          {
+            "title": "Draw it on the whiteboard",
+            "detail": "15 minutes · teams of 4 to 8",
+            "body": "One person draws a holiday word on a [shared whiteboard](/online-whiteboard), the others guess against a timer."
+          },
+          {
+            "title": "Name that tune",
+            "detail": "10 minutes · any size",
+            "body": "Play the first five seconds of a seasonal song; first to type the title wins. Share your screen with sound on."
+          },
+          {
+            "title": "Emoji movie quiz",
+            "detail": "10 minutes · any size",
+            "body": "Post a holiday film in emoji in the chat and let people guess. Easy to run, surprisingly competitive."
+          },
+          {
+            "title": "Year in one photo",
+            "detail": "15 minutes · up to 15",
+            "body": "Everyone shares one photo from their year and says why. Quietly the most memorable part of many parties."
+          }
+        ]
+      },
+      {
+        "title": "Activities without a winner",
+        "items": [
+          {
+            "title": "Team awards",
+            "detail": "15 minutes · any size",
+            "body": "Light-hearted awards voted beforehand: best background, most helpful in a crisis, best typo of the year."
+          },
+          {
+            "title": "Background contest",
+            "detail": "5 minutes · any size",
+            "body": "Everyone decorates the corner behind them, or picks a festive video background; the team votes in the chat."
+          },
+          {
+            "title": "Festive jumper or hat parade",
+            "detail": "10 minutes · any size",
+            "body": "Everyone shows theirs on camera; the team votes in the chat. Optional, and paper hats count."
+          },
+          {
+            "title": "Cook or bake along",
+            "detail": "45 minutes · up to 12",
+            "body": "Send a simple recipe a week ahead and make it together, cameras pointed at the kitchen."
+          },
+          {
+            "title": "Gratitude round",
+            "detail": "10 minutes · up to 15",
+            "body": "Each person thanks one teammate for something specific from the year. Short, and people remember it."
+          },
+          {
+            "title": "Playlist swap",
+            "detail": "Before the party",
+            "body": "Everyone adds one song to a shared playlist that plays in the background of the party."
+          },
+          {
+            "title": "Wishes for next year",
+            "detail": "10 minutes · any size",
+            "body": "One thing each person hopes for next year, at work or not. A good way to end."
+          }
+        ]
+      },
+      {
+        "title": "Gift exchanges across countries",
+        "items": [
+          {
+            "title": "Virtual secret Santa",
+            "detail": "Set up two weeks ahead",
+            "body": "Draw names with our free [Secret Santa generator](/tools/secret-santa-generator), set a small budget, and give everyone an address-free option such as a digital gift card or an e-book."
+          },
+          {
+            "title": "White elephant, online",
+            "detail": "30 minutes · up to 15",
+            "body": "Everyone buys a digital gift, numbers decide the order, and people can steal a gift already opened. Works best with a host keeping track on screen."
+          },
+          {
+            "title": "Give together instead",
+            "detail": "No gifts needed",
+            "body": "The team chooses a charity and gives the gift budget there. It suits teams spread over many countries."
+          }
+        ]
+      },
+      {
+        "title": "A 60-minute agenda",
+        "table": {
+          "head": [
+            "Time",
+            "What happens"
+          ],
+          "rows": [
+            [
+              "0 to 5 min",
+              "Arrivals, music, everyone says hello"
+            ],
+            [
+              "5 to 15 min",
+              "Quick game: holiday this or that, or the scavenger hunt"
+            ],
+            [
+              "15 to 35 min",
+              "Main game: trivia or bingo"
+            ],
+            [
+              "35 to 45 min",
+              "Team awards or the gratitude round"
+            ],
+            [
+              "45 to 55 min",
+              "Open time: people drift into small conversations"
+            ],
+            [
+              "55 to 60 min",
+              "Wishes for next year, then goodbye"
+            ]
+          ],
+          "note": "For a team of up to 15. A larger team needs breakout rooms for the games and the open time."
+        }
+      },
+      {
+        "title": "Hosting it in a virtual office",
+        "body": [
+          "On a video call, everyone sits in one grid and only one person talks at a time, so the open time at the end rarely happens. In a virtual office the team can play the games together in the meeting room and then walk off in small groups to talk, the way people do at a real party.",
+          "Decorate the invite rather than the software, keep cameras optional, and give the quieter people a job: running the playlist, keeping the score, judging the awards."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Where TinyFloor fits",
+      "body": "TinyFloor is a virtual office for small teams. The party starts in the meeting room with video, screen sharing and a whiteboard for the games, and afterwards people can walk off in twos and threes and talk, the way they would at a real party. It's free for up to 3 people and $29 a month for the whole team."
+    },
+    "faq": [
+      {
+        "q": "How do you host a virtual holiday party for work?",
+        "a": "Pick an hour in working time that suits most time zones, plan one quick game, one main game and a short round of thanks, and leave the last ten minutes open for small conversations."
+      },
+      {
+        "q": "What are good free virtual holiday party games?",
+        "a": "Holiday bingo, end-of-year trivia, a scavenger hunt at home, guess the baby photo, and drawing games on a shared whiteboard. All need nothing but a call and a little preparation."
+      },
+      {
+        "q": "How long should a virtual holiday party be?",
+        "a": "About an hour. Long enough for two games and a round of thanks; short enough that people don't drift off."
+      },
+      {
+        "q": "How do you do secret Santa with a remote team?",
+        "a": "Draw names online, set a small budget and use digital gifts such as gift cards or e-books, so nobody has to share an address or pay for international shipping."
+      },
+      {
+        "q": "Should it be called a holiday party or a Christmas party?",
+        "a": "For a team across countries and cultures, an end-of-year or holiday party includes everyone. People who celebrate Christmas can still wear the jumper."
       }
     ]
   }

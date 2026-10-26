@@ -46,6 +46,7 @@ import {
   Eraser01Icon,
   FootprintsIcon,
   Globe02Icon,
+  GiftIcon,
   GridViewIcon,
   HashtagIcon,
   HeadphoneMuteIcon,
@@ -193,6 +194,7 @@ export const EyeOff = icon(ViewOffIcon, "EyeOff");
 export const Floor = icon(MapsIcon, "Floor");
 export const Footprints = icon(FootprintsIcon, "Footprints");
 export const Gear = icon(Settings01Icon, "Gear");
+export const Gift = icon(GiftIcon, "Gift");
 export const Globe = icon(Globe02Icon, "Globe");
 export const Hand = icon(WavingHand01Icon, "Hand");
 export const Hash = icon(HashtagIcon, "Hash");

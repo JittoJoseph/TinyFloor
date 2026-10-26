@@ -1,5 +1,5 @@
 import type { Locale } from "@/lib/i18n/routing";
-import { OUT_OF_OFFICE_PATH, STANDUP_PATH, TEAM_BUILDING_PATH, TWO_TRUTHS_PATH, WOULD_YOU_RATHER_PATH } from "@/lib/tools/catalog";
+import { OUT_OF_OFFICE_PATH, SECRET_SANTA_PATH, STANDUP_PATH, TEAM_BUILDING_PATH, TWO_TRUTHS_PATH, WOULD_YOU_RATHER_PATH } from "@/lib/tools/catalog";
 
 /**
  * The free tools' index (/tools), in every language: its own words, and the
@@ -132,6 +132,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "Two truths and a lie ideas",
     [TEAM_BUILDING_PATH]: "Team building questions",
     [OUT_OF_OFFICE_PATH]: "Out of office message generator",
+    [SECRET_SANTA_PATH]: "Secret Santa generator",
   },
   pt: {
     [STANDUP_PATH]: "Modelo de daily",
@@ -139,6 +140,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "Ideias de duas verdades e uma mentira",
     [TEAM_BUILDING_PATH]: "Perguntas de team building",
     [OUT_OF_OFFICE_PATH]: "Gerador de mensagem de ausência",
+    [SECRET_SANTA_PATH]: "Sorteio de amigo secreto online",
   },
   es: {
     [STANDUP_PATH]: "Plantilla de daily",
@@ -146,6 +148,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "Ideas de dos verdades y una mentira",
     [TEAM_BUILDING_PATH]: "Preguntas de team building",
     [OUT_OF_OFFICE_PATH]: "Generador de mensaje de fuera de la oficina",
+    [SECRET_SANTA_PATH]: "Sorteo de amigo invisible online",
   },
   de: {
     [STANDUP_PATH]: "Daily Standup Vorlage",
@@ -153,6 +156,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "Ideen für Zwei Wahrheiten und eine Lüge",
     [TEAM_BUILDING_PATH]: "Teambuilding-Fragen",
     [OUT_OF_OFFICE_PATH]: "Abwesenheitsnotiz-Generator",
+    [SECRET_SANTA_PATH]: "Wichteln online",
   },
   fr: {
     [STANDUP_PATH]: "Modèle de daily meeting",
@@ -160,6 +164,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "Idées pour deux vérités et un mensonge",
     [TEAM_BUILDING_PATH]: "Questions de team building",
     [OUT_OF_OFFICE_PATH]: "Générateur de message d'absence",
+    [SECRET_SANTA_PATH]: "Tirage au sort Secret Santa",
   },
   it: {
     [STANDUP_PATH]: "Template per il daily standup",
@@ -167,6 +172,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "Idee per due verità e una bugia",
     [TEAM_BUILDING_PATH]: "Domande di team building",
     [OUT_OF_OFFICE_PATH]: "Generatore di messaggi fuori sede",
+    [SECRET_SANTA_PATH]: "Estrazione Secret Santa online",
   },
   nl: {
     [STANDUP_PATH]: "Daily standup template",
@@ -174,6 +180,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "Ideeën voor twee waarheden en een leugen",
     [TEAM_BUILDING_PATH]: "Teambuildingvragen",
     [OUT_OF_OFFICE_PATH]: "Afwezigheidsbericht generator",
+    [SECRET_SANTA_PATH]: "Lootjes trekken online",
   },
   pl: {
     [STANDUP_PATH]: "Szablon daily stand-upu",
@@ -181,6 +188,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "Pomysły na dwie prawdy i jedno kłamstwo",
     [TEAM_BUILDING_PATH]: "Pytania integracyjne",
     [OUT_OF_OFFICE_PATH]: "Generator wiadomości o nieobecności",
+    [SECRET_SANTA_PATH]: "Losowanie Secret Santa",
   },
   sv: {
     [STANDUP_PATH]: "Mall för daily standup",
@@ -188,6 +196,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "Idéer till två sanningar och en lögn",
     [TEAM_BUILDING_PATH]: "Teambuildingfrågor",
     [OUT_OF_OFFICE_PATH]: "Generator för frånvaromeddelanden",
+    [SECRET_SANTA_PATH]: "Secret Santa-lottning",
   },
   da: {
     [STANDUP_PATH]: "Skabelon til daily standup",
@@ -195,6 +204,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "Idéer til to sandheder og en løgn",
     [TEAM_BUILDING_PATH]: "Teambuilding-spørgsmål",
     [OUT_OF_OFFICE_PATH]: "Generator til fraværsbeskeder",
+    [SECRET_SANTA_PATH]: "Secret Santa-generator",
   },
   no: {
     [STANDUP_PATH]: "Mal for daily standup",
@@ -202,6 +212,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "Idéer til to sannheter og en løgn",
     [TEAM_BUILDING_PATH]: "Teambuilding-spørsmål",
     [OUT_OF_OFFICE_PATH]: "Generator for fraværsmeldinger",
+    [SECRET_SANTA_PATH]: "Secret Santa-generator",
   },
   fi: {
     [STANDUP_PATH]: "Daily-palaverin pohja",
@@ -209,6 +220,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "Ideoita kaksi totuutta ja yksi valhe -peliin",
     [TEAM_BUILDING_PATH]: "Tiimiytymiskysymyksiä",
     [OUT_OF_OFFICE_PATH]: "Poissaoloviestin generaattori",
+    [SECRET_SANTA_PATH]: "Secret Santa -arvonta",
   },
   ru: {
     [STANDUP_PATH]: "Шаблон ежедневного стендапа",
@@ -216,6 +228,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "Идеи для «Двух правд и одной лжи»",
     [TEAM_BUILDING_PATH]: "Вопросы для тимбилдинга",
     [OUT_OF_OFFICE_PATH]: "Генератор автоответа об отсутствии",
+    [SECRET_SANTA_PATH]: "Тайный Санта онлайн",
   },
   ja: {
     [STANDUP_PATH]: "朝会テンプレート",
@@ -223,6 +236,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "2つの真実と1つの嘘のネタ",
     [TEAM_BUILDING_PATH]: "チームビルディングの質問",
     [OUT_OF_OFFICE_PATH]: "不在通知の例文ジェネレーター",
+    [SECRET_SANTA_PATH]: "プレゼント交換の抽選（シークレットサンタ）",
   },
   ko: {
     [STANDUP_PATH]: "데일리 스탠드업 템플릿",
@@ -230,6 +244,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "진진가 게임 아이디어",
     [TEAM_BUILDING_PATH]: "팀빌딩 질문",
     [OUT_OF_OFFICE_PATH]: "부재중 자동 회신 생성기",
+    [SECRET_SANTA_PATH]: "마니또 뽑기",
   },
   zh: {
     [STANDUP_PATH]: "每日站会模板",
@@ -237,6 +252,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "两真一假点子",
     [TEAM_BUILDING_PATH]: "团建问题",
     [OUT_OF_OFFICE_PATH]: "休假自动回复生成器",
+    [SECRET_SANTA_PATH]: "交换礼物抽签（神秘圣诞老人）",
   },
   he: {
     [STANDUP_PATH]: "תבנית לסטנדאפ יומי",
@@ -244,6 +260,7 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "רעיונות לשתי אמיתות ושקר",
     [TEAM_BUILDING_PATH]: "שאלות לגיבוש צוות",
     [OUT_OF_OFFICE_PATH]: "מחולל הודעת היעדרות",
+    [SECRET_SANTA_PATH]: "הגרלת גמד וענק",
   },
   ar: {
     [STANDUP_PATH]: "نموذج الاجتماع اليومي",
@@ -251,5 +268,6 @@ export const FEW_TOOL_NAMES: Record<Locale, Record<string, string>> = {
     [TWO_TRUTHS_PATH]: "أفكار لعبة حقيقتان وكذبة",
     [TEAM_BUILDING_PATH]: "أسئلة بناء الفريق",
     [OUT_OF_OFFICE_PATH]: "مولّد رسالة خارج المكتب",
+    [SECRET_SANTA_PATH]: "قرعة سيكرت سانتا",
   },
 };

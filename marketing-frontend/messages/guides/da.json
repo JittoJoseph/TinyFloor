@@ -627,8 +627,8 @@
   "proximityChat": {
     "label": "Hvad er nærhedschat?",
     "meta": {
-      "title": "Hvad er nærhedschat? Sådan virker det i spil og på arbejdet",
-      "description": "Hvad nærhedschat er, hvordan det virker, hvilke spil der bruger det, og hvordan virtuelle kontorer bruger det, så teams kan tale ved at gå hen til hinanden."
+      "title": "Hvad er nærhedschat? Spil med det, og sådan virker det på arbejdet",
+      "description": "Med nærhedschat taler du kun med dem, der er tæt på dig. Se, hvordan det virker, hvilke spil der har det (Lethal Company, Among Us, Minecraft, R.E.P.O.), og hvordan virtuelle kontorer bruger det på arbejdet."
     },
     "title": "Hvad er <em>nærhedschat?</em>",
     "intro": "Med nærhedschat taler du med dem, der er tæt på dig i et virtuelt rum, og ikke med alle andre. Det startede i spil, hvor det gør verdener levende, og er nu måden, virtuelle kontorer lader teams tale sammen på uden mødelinks.",
@@ -641,26 +641,50 @@
         ]
       },
       {
-        "title": "Nærhedschat i spil",
+        "title": "Spil med nærhedschat",
         "body": [
-          "Spil bruger det til at gøre samtaler til en del af verden. Nogle kendte eksempler:"
+          "Spil bruger det til at gøre samtaler til en del af verdenen: De personer, du kan høre, er dem, du kan se. Nogle af de mest kendte:"
         ],
         "items": [
           {
-            "title": "Sociale deduktionsspil",
-            "body": "Mods til Among Us tilføjede nærhedsstemme, så du kun hører spillerne tæt på og kan hviske planer frem."
+            "title": "Among Us",
+            "detail": "Med et mod",
+            "body": "Moddet BetterCrewLink tilføjer nærhedslyd, så du kun hører spillerne tæt på dig og kan hviske planer uden for gruppens hørevidde."
           },
           {
-            "title": "Overlevelsesspil",
-            "body": "Rust og DayZ bruger nærhedsstemme, så det at møde en fremmed betyder, at man faktisk taler med vedkommende."
+            "title": "Minecraft",
+            "detail": "Med et mod",
+            "body": "Moddet Simple Voice Chat, eller et plugin på en server, giver Java-verdener nærhedslyd, så en fælles verden føles som et rigtigt sted."
           },
           {
-            "title": "Samarbejdsspil",
-            "body": "I Lethal Company bliver en holdkammerat, der vandrer væk, svær at høre, og det er halvdelen af spændingen."
+            "title": "Lethal Company",
+            "detail": "Indbygget",
+            "body": "En holdkammerat, der går væk, bliver svær at høre og til sidst umulig, hvilket er halvdelen af spændingen."
           },
           {
-            "title": "Sandkassespil",
-            "body": "Minecraft-servere tilføjer nærhedsstemme med mods, så en delt verden føles som et rigtigt sted."
+            "title": "R.E.P.O. og Peak",
+            "detail": "Indbygget",
+            "body": "Nyere co-op-spil til små grupper er bygget op omkring nærhedslyd: I råber, I bliver væk fra hinanden, I finder hinanden igen."
+          },
+          {
+            "title": "Phasmophobia",
+            "detail": "Indbygget",
+            "body": "Din stemme rækker kun et vist stykke, og spøgelset kan også høre den. En walkie-talkie når ud til resten af teamet."
+          },
+          {
+            "title": "Sea of Thieves",
+            "detail": "Indbygget",
+            "body": "Besætninger taler sammen på tværs af skibet, og med fremmede, når to skibe lægger sig på siden af hinanden."
+          },
+          {
+            "title": "Rust og DayZ",
+            "detail": "Indbygget",
+            "body": "At møde en fremmed betyder, at man faktisk taler med dem, hvilket gør et overlevelsesspil til et socialt spil."
+          },
+          {
+            "title": "GTA-rollespilsservere",
+            "detail": "På FiveM",
+            "body": "Rollespilsservere bruger nærhedslyd, så en samtale på gaden bliver på gaden."
           }
         ]
       },
@@ -713,19 +737,23 @@
     "faq": [
       {
         "q": "Hvad betyder nærhedschat?",
-        "a": "At du kun kan tale med dem, der er tæt på dig i et virtuelt rum. Gå tættere på for at tale; gå væk, så slutter samtalen."
+        "a": "Det betyder, at du kun kan tale med dem, der er tæt på dig i et virtuelt rum. Gå tættere på nogen for at tale; gå væk, og samtalen slutter."
       },
       {
         "q": "Er nærhedschat privat?",
-        "a": "Kun dem tæt på dig kan høre dig, hvilket er mere privat end en kanal, hvor alle er med. Med gå hen og ring høres intet, før du starter et opkald."
+        "a": "Kun personer tæt på dig kan høre dig, hvilket er mere privat end en kanal, som alle er i. Med gå hen og ring-metoden høres intet, før du starter et opkald."
       },
       {
         "q": "Hvilke spil har nærhedschat?",
-        "a": "Rust, DayZ og Lethal Company har det indbygget, og mods tilføjer det til spil som Among Us og Minecraft."
+        "a": "Lethal Company, R.E.P.O., Peak, Phasmophobia, Sea of Thieves, Rust og DayZ har det indbygget. Mods tilføjer det til Among Us (BetterCrewLink) og Minecraft (Simple Voice Chat)."
       },
       {
-        "q": "Kan man bruge nærhedschat på arbejdet?",
-        "a": "Ja. Virtuelle kontorer som TinyFloor, Gather og SpatialChat bruger det, så fjernteams kan tale ved at gå hen til hinanden i stedet for at planlægge opkald."
+        "q": "Hvordan får man nærhedschat i Minecraft?",
+        "a": "Installer moddet Simple Voice Chat på serveren og i hver spillers spil. Spillere tæt på hinanden kan derefter tale sammen, og stemmerne bliver svagere med afstanden."
+      },
+      {
+        "q": "Kan man bruge nærhedschat til arbejde?",
+        "a": "Ja. Virtuelle kontorer som TinyFloor, Gather og SpatialChat bruger det, så fjernteams kan tale sammen ved at gå hen til hinanden i stedet for at planlægge opkald."
       }
     ]
   },
@@ -4654,6 +4682,826 @@
       {
         "q": "Hvad er forskellen på en dagsorden og et referat?",
         "a": "Dagsordenen er planen for mødet, skrevet på forhånd. Referatet er dokumentationen for, hvad der blev besluttet, skrevet under og efter mødet."
+      }
+    ]
+  },
+  "questionOfTheDay": {
+    "label": "Dagens spørgsmål til arbejdet",
+    "meta": {
+      "title": "120 idéer til dagens spørgsmål på arbejdet: sjove og nemme",
+      "description": "120 idéer til dagens spørgsmål på arbejdet: sjove og underholdende spørgsmål, ville du hellere, enten-eller, arbejdsspørgsmål, lær-hinanden-at-kende og sæsonbestemte, med tips til at køre et dagligt spørgsmål i jeres teamchat eller standup."
+    },
+    "title": "Dagens spørgsmål <em>til arbejdet.</em>",
+    "intro": "Dagens spørgsmål er et enkelt spørgsmål, som dit team svarer på hver morgen: i teamchatten, i starten af jeres standup eller som en afstemning. Det tager et minut, ingen behøver at forberede sig, og i løbet af få uger lærer I mere om hinanden end på et helt år med statusmøder. Her er 120 at vælge imellem, opdelt efter humør, samt et par tips til at holde gang i det.",
+    "sections": [
+      {
+        "title": "Sådan kører du dagens spørgsmål",
+        "items": [
+          {
+            "title": "Vælg ét sted",
+            "body": "En kanal i [teamchatten](/team-chat) kaldet #dagens-spørgsmål, eller det første minut af jeres [standup](/virtual-standup). Det samme sted hver dag gør det til en vane."
+          },
+          {
+            "title": "Slå det op på samme tidspunkt",
+            "body": "Først på morgenen for den tidligste tidszone, så alle ser det i løbet af deres dag."
+          },
+          {
+            "title": "Hold svarene korte",
+            "body": "Et ord, en sætning eller en emoji. Nemme spørgsmål får svar; svære spørgsmål bliver mødt med tavshed."
+          },
+          {
+            "title": "Lad rollen gå på skift",
+            "body": "Giv opgaven med at stille spørgsmålet til en ny person hver uge. Folk begynder at finde på deres egne, og spørgsmålene bliver bedre."
+          },
+          {
+            "title": "Svar selv først",
+            "body": "Den, der stiller spørgsmålet, svarer på det med det samme. Det viser længden og tonen, og så slipper andre for at skulle lægge ud."
+          }
+        ]
+      },
+      {
+        "title": "Sjove spørgsmål",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Hvad er det bedste, du har spist i denne uge?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er en lille ting, der har fået dig til at smile for nylig?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken app på din telefon åbner du mest?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er din foretrukne snack, når du arbejder?",
+            "body": ""
+          },
+          {
+            "title": "Hvad var dit allerførste job?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken færdighed ville du elske at lære i år?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er det bedste råd, du nogensinde har fået?",
+            "body": ""
+          },
+          {
+            "title": "Hvordan foretrækker du at tilbringe en søndag?",
+            "body": ""
+          },
+          {
+            "title": "Hvad ligger der på dit skrivebord lige nu, som du ikke kan forklare?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken film kan du se igen og igen?",
+            "body": ""
+          },
+          {
+            "title": "Hvis du kunne have et hvilket som helst job for én dag, hvad skulle det så være?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er dit skjulte talent?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er den mest nyttige ting, du ejer?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken hobby er du startet på og stoppet med igen?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken sang skulle være din intro-musik?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er det sidste, du har købt, som du er rigtig glad for?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er din yndlingsårstid og hvorfor?",
+            "body": ""
+          },
+          {
+            "title": "Hvilket sted ville du rejse tilbage til i morgen?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken fiktiv person ville du gerne have som kollega?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken duft tager dig direkte tilbage til barndommen?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Morsomme spørgsmål",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Hvad er det mærkeligste, du troede på som barn?",
+            "body": ""
+          },
+          {
+            "title": "Hvad skulle din selvbiografi hedde?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er den værste frisure, du nogensinde har haft?",
+            "body": ""
+          },
+          {
+            "title": "Hvis dit kæledyr kunne tale, hvad ville det så brokke sig over?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er den mest ubrugelige viden, du ligger inde med?",
+            "body": ""
+          },
+          {
+            "title": "Hvad ville du døbe en båd?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er din mest irrationelle frygt?",
+            "body": ""
+          },
+          {
+            "title": "Hvis du var en grøntsag, hvilken ville du så være?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken mærkelig madkombination kan du hemmeligt lide?",
+            "body": ""
+          },
+          {
+            "title": "Hvad ville dit wrestling-navn være?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er det mest fjollede, du nogensinde har skændtes om?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken emoji bruger du alt for meget?",
+            "body": ""
+          },
+          {
+            "title": "Hvis der var dåselatter på dit liv, hvornår ville den så lyde?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er den værste gave, du nogensinde har fået?",
+            "body": ""
+          },
+          {
+            "title": "Hvilket ord staver du altid forkert?",
+            "body": ""
+          },
+          {
+            "title": "Hvilket dyr ville være det mest uforskammede, hvis det kunne tale?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er din mest brugte undskyldning for at komme for sent?",
+            "body": ""
+          },
+          {
+            "title": "Hvad ville der stå i dit autosvar, hvis du måtte være helt ærlig?",
+            "body": ""
+          },
+          {
+            "title": "Hvis du kun måtte spise én ting resten af livet, hvad skulle det så være?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er det mest latterlige, du har googlet i denne måned?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Would you rather",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Ville du hellere have en fire dages arbejdsuge eller en måneds ekstra ferie?",
+            "body": ""
+          },
+          {
+            "title": "Ville du hellere aldrig deltage i et møde igen eller aldrig besvare en e-mail igen?",
+            "body": ""
+          },
+          {
+            "title": "Ville du hellere arbejde fra en strand eller fra en hytte i skoven?",
+            "body": ""
+          },
+          {
+            "title": "Ville du hellere kunne flyve eller være usynlig?",
+            "body": ""
+          },
+          {
+            "title": "Ville du hellere have gratis kaffe resten af livet eller gratis frokost resten af livet?",
+            "body": ""
+          },
+          {
+            "title": "Ville du hellere kunne tale alle sprog eller spille alle instrumenter?",
+            "body": ""
+          },
+          {
+            "title": "Ville du hellere starte på arbejde kl. 6 om morgenen eller få fri kl. 21 om aftenen?",
+            "body": ""
+          },
+          {
+            "title": "Ville du hellere have en personlig kok eller en personlig chauffør?",
+            "body": ""
+          },
+          {
+            "title": "Ville du hellere kunne læse tanker eller se fremtiden?",
+            "body": ""
+          },
+          {
+            "title": "Ville du hellere leve uden musik eller uden film?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "To muligheder, ét valg: de fungerer rigtig godt som en afstemning. Find flere i vores [ville du hellere-spørgsmål](/tools/would-you-rather-questions)."
+        ]
+      },
+      {
+        "title": "Enten-eller",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Kaffe eller te?",
+            "body": ""
+          },
+          {
+            "title": "A-menneske eller B-menneske?",
+            "body": ""
+          },
+          {
+            "title": "Mac eller Windows?",
+            "body": ""
+          },
+          {
+            "title": "Katte eller hunde?",
+            "body": ""
+          },
+          {
+            "title": "Strand eller bjerge?",
+            "body": ""
+          },
+          {
+            "title": "Dark mode eller light mode?",
+            "body": ""
+          },
+          {
+            "title": "Opkald eller besked?",
+            "body": ""
+          },
+          {
+            "title": "Bøger eller podcasts?",
+            "body": ""
+          },
+          {
+            "title": "Sødt eller salt?",
+            "body": ""
+          },
+          {
+            "title": "Sommer eller vinter?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "Den hurtigste type spørgsmål at svare på. Se hundrede mere i vores [enten-eller-spørgsmål](/guides/this-or-that-questions)."
+        ]
+      },
+      {
+        "title": "Arbejdsspørgsmål",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Hvad er én ting, du arbejder på, som du glæder dig til?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er det bedste værktøj, du er begyndt at bruge i år?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken arbejdsvane forsøger du at opbygge?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er det bedste møde, du nogensinde har deltaget i, og hvorfor?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er én ting, der ville gøre din uge nemmere?",
+            "body": ""
+          },
+          {
+            "title": "Hvem har lært dig mest på arbejdet?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken fejl har lært dig noget vigtigt?",
+            "body": ""
+          },
+          {
+            "title": "Hvordan ser en perfekt arbejdsdag ud for dig?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er én ting, du ville ændre ved den måde, vi arbejder på?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er det mest nyttige, du har lært af en kollega?",
+            "body": ""
+          },
+          {
+            "title": "Hvornår på dagen er du mest fokuseret?",
+            "body": ""
+          },
+          {
+            "title": "Hvordan foretrækker du at fejre en succes?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken færdighed ville du gerne lære fra en her i teamet?",
+            "body": ""
+          },
+          {
+            "title": "Hvad ville du være, da du var lille?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er én ting på din to-do-liste, som du bliver ved med at udskyde?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er den bedste feedback, du har fået?",
+            "body": ""
+          },
+          {
+            "title": "Hvilket projekt er du stolt af?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er dit trick til at komme igennem en sløv eftermiddag?",
+            "body": ""
+          },
+          {
+            "title": "Hvad var en lille succes fra i går?",
+            "body": ""
+          },
+          {
+            "title": "Hvis du kunne automatisere én opgave, hvilken skulle det så være?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Lær hinanden at kende",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Hvor er du vokset op?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er noget ved dig, som ville overraske os?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken tradition fra din familie eller kultur holder du mest af?",
+            "body": ""
+          },
+          {
+            "title": "Hvordan endte du i din branche?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er den bedste rejse, du nogensinde har været på?",
+            "body": ""
+          },
+          {
+            "title": "Hvilke sprog taler du, bare en lille smule?",
+            "body": ""
+          },
+          {
+            "title": "Hvad læser, ser eller lytter du til lige nu?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken sag ligger dit hjerte nært?",
+            "body": ""
+          },
+          {
+            "title": "Hvad gør du for at koble af efter arbejde?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er den bedste koncert eller begivenhed, du har været til?",
+            "body": ""
+          },
+          {
+            "title": "Har du kæledyr? Fortæl os om dem.",
+            "body": ""
+          },
+          {
+            "title": "Hvilken ret er du god til at lave?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er dit yndlingssted i din by?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er det bedste ved det sted, du bor?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er noget, du gerne vil nå at gøre, inden året er omme?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Spørgsmål om remote arbejde",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Hvordan ser udsigten ud derfra, hvor du arbejder i dag?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er én ting ved at arbejde remote, som du aldrig vil undvære?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er én ting, du savner ved et kontor?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er det bedste ved dit setup derhjemme?",
+            "body": ""
+          },
+          {
+            "title": "Hvad laver du i din frokostpause?",
+            "body": ""
+          },
+          {
+            "title": "Har du en fast uniform, når du arbejder hjemmefra?",
+            "body": ""
+          },
+          {
+            "title": "Hvem er din yndlingskollega, som ikke er i dette team (kæledyr tæller med)?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken tidszone foretrækker du at arbejde med?",
+            "body": ""
+          },
+          {
+            "title": "Hvordan starter du din arbejdsdag?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er din yndlingsbaggrundsstøj, når du arbejder?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Sæsonspørgsmål (efterår og halloween)",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Hvad er din yndlingsmad eller -drik om efteråret?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er det bedste halloweenkostume, du nogensinde har haft på?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken film giver dig altid efterårsstemning?",
+            "body": ""
+          },
+          {
+            "title": "Pumpkin spice: elsk det eller spring det over?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er den mest uhyggelige film, du rent faktisk har set til ende?",
+            "body": ""
+          },
+          {
+            "title": "Hvilket slik håber du på at få, og hvilket giver du væk?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken højtidstradition ser du mest frem til hvert år?",
+            "body": ""
+          },
+          {
+            "title": "Hvis du skulle klæde dig ud som en kollegas job, hvad ville kostumet så være?",
+            "body": ""
+          },
+          {
+            "title": "Hyggelig aften derhjemme eller i byen med vennerne?",
+            "body": ""
+          },
+          {
+            "title": "Hvad står på din liste for resten af året?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er det bedste ved denne tid på året, der hvor du bor?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken duft betyder for dig, at årstiden har skiftet?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er noget, du gerne vil prøve inden vinteren?",
+            "body": ""
+          },
+          {
+            "title": "Hvilken uhyggelig historie fra din barndom husker du stadig?",
+            "body": ""
+          },
+          {
+            "title": "Hvad er din yndlingsmåde at tilbringe en regnvejrsdag på?",
+            "body": ""
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Hvor TinyFloor passer ind",
+      "body": "TinyFloor er et virtuelt kontor til små teams med en teamchat ved siden af etagen til dagens spørgsmål og et mødelokale til standup-mødet, hvor der svares højt. Resten af dagen sidder folk ved deres skriveborde på samme etage, hvor den samtale, det startede, kun er en kort gåtur væk. Det er gratis for op til 3 personer og koster $29 om måneden for hele teamet."
+    },
+    "faq": [
+      {
+        "q": "Hvad er et godt dagens spørgsmål til arbejdet?",
+        "a": "Et, som alle kan svare på med en enkelt sætning, som siger noget om personen, og som er helt fint at dele på arbejdet, som f.eks. »Hvad er det bedste, du har spist i denne uge?« eller »Kaffe eller te?«."
+      },
+      {
+        "q": "Hvordan bruger man dagens spørgsmål på arbejdet?",
+        "a": "Slå et spørgsmål op på samme tid hver morgen i en teamchat-kanal eller i starten af standup-mødet, svar selv på det først, og lad det gå på skift hver uge, hvem der spørger."
+      },
+      {
+        "q": "Hvordan holder man gang i dagens spørgsmål?",
+        "a": "Hold spørgsmålene enkle, bland de sjove med et arbejdsspørgsmål i ny og næ, og lad forskellige personer stille dem. Når folk begynder at foreslå spørgsmål, kører det af sig selv."
+      },
+      {
+        "q": "Bør dagens spørgsmål være en afstemning?",
+        "a": "Spørgsmål med to valgmuligheder som »enten-eller« og »vil du hellere« fungerer godt som afstemninger. Åbne spørgsmål giver bedre svar i chatten."
+      }
+    ]
+  },
+  "holidayParty": {
+    "label": "Idéer til virtuel julefrokost",
+    "meta": {
+      "title": "Idéer til virtuel julefrokost: 20 gratis spil til remote teams",
+      "description": "20 gratis idéer til virtuel julefrokost for remote teams: spil som banko, quiz og skattejagt, en 60-minutters dagsorden, en Secret Santa på tværs af lande, og hvordan du planlægger efter tidszoner."
+    },
+    "title": "Idéer til virtuel julefrokost <em>for remote teams.</em>",
+    "intro": "En årsafslutningsfest er den begivenhed, de fleste remote teams faktisk ønsker sig, og den nemmeste at gøre forkert: for lang, for mange spil, og halvdelen af teamet sover i en anden tidszone. Her er 20 gratis spil og aktiviteter, en 60-minutters dagsorden, der virker, og hvordan du planlægger den, så folk kommer, fordi de har lyst.",
+    "sections": [
+      {
+        "title": "Planlæg først",
+        "items": [
+          {
+            "title": "Vælg et tidspunkt, der passer de fleste",
+            "body": "For et team på tværs af tidszoner er overlappet ofte en time. Brug en [mødeplanlægger på tværs af tidszoner](/tools/time-zone-meeting-planner), vælg det mindst smertefulde tidspunkt, og tilbyd dem, der hænger på et nattidspunkt, en anden og mindre session."
+          },
+          {
+            "title": "Hold det på en time",
+            "body": "Tres minutter med en klar afslutning trækker flere folk til end en aften uden bagkant. Dem, der vil blive længere, gør det."
+          },
+          {
+            "title": "Læg det i arbejdstiden",
+            "body": "Hold det i arbejdstiden, hvis du kan. En fest, som folk skal ofre en aften på, er en fest, færre dukker op til."
+          },
+          {
+            "title": "Kald det en årsafslutningsfest",
+            "body": "Det er ikke alle, der fejrer de samme højtider. En årsafslutningsfest inkluderer alle og giver stadig mulighed for en julesweater."
+          },
+          {
+            "title": "Send et budget, ikke en kasse",
+            "body": "Hvis der er penge til mad eller drikke, fungerer et beløb pr. person langt bedre på tværs af landegrænser end at sende pakker."
+          }
+        ]
+      },
+      {
+        "title": "Spil",
+        "items": [
+          {
+            "title": "Julebanko",
+            "detail": "15 minutter · enhver størrelse",
+            "body": "Plader med ting som »et kæledyr dukker op« eller »en julesweater«. Den første med en fuld række vinder. Gratis generatorer laver pladerne."
+          },
+          {
+            "title": "Årsafslutningsquiz",
+            "detail": "20 minutter · hold på 3-5",
+            "body": "Spørgsmål om året på arbejdet og i verden. Små hold i grupperum, hvor én person sender svarene ind."
+          },
+          {
+            "title": "Skattejagt derhjemme",
+            "detail": "10 minutter · enhver størrelse",
+            "body": "Nævn en genstand (»noget rødt«, »det ældste i dit køkken«), og den første, der er tilbage foran kameraet med den, får point."
+          },
+          {
+            "title": "Gæt babyen",
+            "detail": "15 minutter · op til 20",
+            "body": "Alle sender et barnebillede på forhånd, og teamet gætter, hvem der er hvem. Saml dem ind en uge før."
+          },
+          {
+            "title": "Dette eller hint – juleudgave",
+            "detail": "5 minutter · enhver størrelse",
+            "body": "»Ægte eller kunstigt træ?«, »Sne eller sol?«: hurtige valg, og så forklarer et par stykker. Flere i vores [dette eller hint-spørgsmål](/guides/this-or-that-questions)."
+          },
+          {
+            "title": "To sandheder og en løgn – juleudgave",
+            "detail": "15 minutter · op til 12",
+            "body": "Tre udsagn om tidligere højtider, hvoraf ét er usandt. Se [idéer til to sandheder og en løgn](/tools/two-truths-and-a-lie)."
+          },
+          {
+            "title": "Tegn det på whiteboardet",
+            "detail": "15 minutter · hold på 4-8",
+            "body": "Én tegner et ord med højtidstema på et [fælles whiteboard](/online-whiteboard), og de andre gætter på tid."
+          },
+          {
+            "title": "Gæt sangen",
+            "detail": "10 minutter · enhver størrelse",
+            "body": "Afspil de første fem sekunder af en julesang; den første, der skriver titlen, vinder. Del din skærm med lyd slået til."
+          },
+          {
+            "title": "Emoji-filmquiz",
+            "detail": "10 minutes · enhver størrelse",
+            "body": "Skriv en julefilm med emojis i chatten, og lad folk gætte. Nemt at køre og overraskende kompetitivt."
+          },
+          {
+            "title": "Året i ét billede",
+            "detail": "15 minutter · op til 15",
+            "body": "Alle deler et billede fra deres år og fortæller hvorfor. Ofte den mest mindeværdige del af mange fester."
+          }
+        ]
+      },
+      {
+        "title": "Aktiviteter uden en vinder",
+        "items": [
+          {
+            "title": "Team-priser",
+            "detail": "15 minutter · enhver størrelse",
+            "body": "Uformelle priser, der er stemt om på forhånd: bedste baggrund, mest hjælpsom i en krise, årets bedste slåfejl."
+          },
+          {
+            "title": "Baggrundskonkurrence",
+            "detail": "5 minutter · enhver størrelse",
+            "body": "Alle pynter hjørnet bag sig eller vælger en festlig videobaggrund; teamet stemmer i chatten."
+          },
+          {
+            "title": "Parade med julesweatere eller hatte",
+            "detail": "10 minutter · enhver størrelse",
+            "body": "Alle viser deres på kameraet; teamet stemmer i chatten. Det er frivilligt, og papirhatte tæller også."
+          },
+          {
+            "title": "Lav mad eller bag sammen",
+            "detail": "45 minutter · op til 12",
+            "body": "Send en simpel opskrift en uge i forvejen, og lav den sammen med kameraerne rettet mod køkkenet."
+          },
+          {
+            "title": "Takkerunde",
+            "detail": "10 minutter · op til 15",
+            "body": "Hver person takker en kollega for noget specifikt fra året. Det er kort, og folk husker det."
+          },
+          {
+            "title": "Fælles playliste",
+            "detail": "Før festen",
+            "body": "Alle tilføjer en sang til en fælles playliste, der kører i baggrunden under festen."
+          },
+          {
+            "title": "Ønsker for næste år",
+            "detail": "10 minutter · enhver størrelse",
+            "body": "Én ting, som hver person håber på for det næste år, uanset om det er på arbejdet eller privat. En god måde at slutte af på."
+          }
+        ]
+      },
+      {
+        "title": "Gavebytte på tværs af landegrænser",
+        "items": [
+          {
+            "title": "Virtuel Secret Santa",
+            "detail": "Sæt i gang to uger før",
+            "body": "Træk navne med vores gratis [Secret Santa-generator](/tools/secret-santa-generator), sæt et lille budget, og giv alle en adressefri mulighed som et digitalt gavekort eller en e-bog."
+          },
+          {
+            "title": "Pakkeleg online",
+            "detail": "30 minutter · op til 15",
+            "body": "Alle køber en digital gave, numre bestemmer rækkefølgen, og man må stjæle en gave, der allerede er åbnet. Fungerer bedst med en spilstyrer, der holder styr på det på skærmen."
+          },
+          {
+            "title": "Giv noget sammen i stedet",
+            "detail": "Ingen gaver nødvendige",
+            "body": "Teamet vælger en velgørende organisation og donerer gavebudgettet dertil. Det passer godt til teams, der er spredt over mange lande."
+          }
+        ]
+      },
+      {
+        "title": "En 60-minutters dagsorden",
+        "table": {
+          "head": [
+            "Tid",
+            "Hvad der sker"
+          ],
+          "rows": [
+            [
+              "0-5 min",
+              "Ankomst, musik, alle siger hej"
+            ],
+            [
+              "5-15 min",
+              "Hurtigt spil: dette eller hint med juletema, eller skattejagt"
+            ],
+            [
+              "15-35 min",
+              "Hovedspil: quiz eller banko"
+            ],
+            [
+              "35-45 min",
+              "Team-priser eller takkerunde"
+            ],
+            [
+              "45-55 min",
+              "Fri tid: folk glider over i små samtaler"
+            ],
+            [
+              "55-60 min",
+              "Ønsker for næste år, og så farvel"
+            ]
+          ],
+          "note": "Til et team på op til 15 personer. Et større team kræver grupperum til spillene og den frie tid."
+        }
+      },
+      {
+        "title": "Hold den i et virtuelt kontor",
+        "body": [
+          "I et videoopkald sidder alle i det samme gitter, og kun én person kan tale ad gangen, så den frie tid til sidst bliver sjældent til noget. I et virtuelt kontor kan teamet spille spil sammen i mødelokalet og bagefter gå ud i små grupper for at snakke, ligesom man gør til en rigtig fest.",
+          "Pynt invitationen i stedet for softwaren, lad kameraer være frivillige, og giv de mere stille personer en opgave: at styre playlisten, holde styr på pointene eller være dommer til priserne."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Hvor TinyFloor passer ind",
+      "body": "TinyFloor er et virtuelt kontor til små teams. Festen starter i mødelokalet med video, skærmdeling og et whiteboard til spillene, og bagefter kan folk gå sammen to og to eller tre og tre og snakke, ligesom de ville gøre til en rigtig fest. Det er gratis for op til 3 personer og $29 om måneden for hele teamet."
+    },
+    "faq": [
+      {
+        "q": "Hvordan holder man en virtuel julefrokost med arbejdet?",
+        "a": "Vælg en time i arbejdstiden, der passer til de fleste tidszoner, planlæg ét hurtigt spil, ét hovedspil og en kort takkerunde, og lad de sidste ti minutter være åbne til små samtaler."
+      },
+      {
+        "q": "Hvad er gode, gratis spil til en virtuel juleafslutning?",
+        "a": "Julebanko, quiz om året, der gik, skattejagt i hjemmet, gæt babyen og tegnespil på en fælles whiteboard. Det hele kræver kun et opkald og en smule forberedelse."
+      },
+      {
+        "q": "Hvor lang skal en virtuel juleafslutning være?",
+        "a": "Omkring en time. Længe nok til to spil og en takkerunde; kort nok til, at folk ikke falder fra."
+      },
+      {
+        "q": "Hvordan holder man Secret Santa med et remote team?",
+        "a": "Træk navne online, sæt et lille budget, og brug digitale gaver som gavekort eller e-bøger, så ingen behøver at dele en adresse eller betale for international forsendelse."
+      },
+      {
+        "q": "Skal det hedde en juleafslutning eller en julefest?",
+        "a": "For et team på tværs af lande og kulturer inkluderer en års- eller juleafslutning alle. Dem, der fejrer jul, kan stadig have julesweateren på."
       }
     ]
   }

@@ -29,7 +29,7 @@ import zh from "./zh";
  * what TinyFloor does with status notes ("🌴 On holiday until Monday"). In
  * every language (lib/tools/catalog).
  */
-export const OUT_OF_OFFICE_UPDATED = "2026-10-20";
+export const OUT_OF_OFFICE_UPDATED = "2026-10-26";
 
 export interface OooContent extends ToolCopy {
   writer: {

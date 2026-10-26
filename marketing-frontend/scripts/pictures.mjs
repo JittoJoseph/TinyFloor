@@ -168,6 +168,8 @@ const GUIDES = [
   "discord-vs-slack",
   "meeting-minutes-template",
   "this-or-that-questions",
+  "question-of-the-day-for-work",
+  "virtual-holiday-party-ideas",
 ];
 // SLUGS=a,b redraws just those pages (and guides, as guide-<slug>).
 const slugs = process.env.SLUGS?.split(",") ?? LANDINGS;

@@ -21,7 +21,9 @@ export type GuideKey =
   | "discordVsSlack"
   | "checkInQuestions"
   | "thisOrThat"
-  | "meetingMinutes";
+  | "meetingMinutes"
+  | "questionOfTheDay"
+  | "holidayParty";
 
 export interface Guide {
   slug: string;
@@ -58,9 +60,11 @@ export const GUIDES: Guide[] = [
   { slug: "team-meeting-agenda", key: "teamMeetingAgenda", published: "2026-10-25", updated: "2026-10-25", pages: ["meetingRoom", "standup", "teamChat"], related: ["checkInQuestions", "oneOnOne", "meetingGames"] },
   { slug: "check-in-questions", key: "checkInQuestions", published: "2026-10-25", updated: "2026-10-25", pages: ["meetingRoom", "standup", "watercooler"], related: ["teamMeetingAgenda", "meetingGames", "oneOnOne"] },
   { slug: "meeting-minutes-template", key: "meetingMinutes", published: "2026-10-25", updated: "2026-10-25", pages: ["meetingRoom", "teamChat", "standup"], related: ["teamMeetingAgenda", "oneOnOne", "retro"] },
+  { slug: "virtual-holiday-party-ideas", key: "holidayParty", published: "2026-10-26", updated: "2026-10-26", pages: ["meetingRoom", "watercooler", "whiteboard"], related: ["happyHour", "meetingGames", "teamBuilding"] },
+  { slug: "question-of-the-day-for-work", key: "questionOfTheDay", published: "2026-10-26", updated: "2026-10-26", pages: ["teamChat", "standup", "watercooler"], related: ["thisOrThat", "checkInQuestions", "meetingGames"] },
   { slug: "this-or-that-questions", key: "thisOrThat", published: "2026-10-25", updated: "2026-10-25", pages: ["meetingRoom", "watercooler", "standup"], related: ["checkInQuestions", "meetingGames", "teamBuilding"] },
   { slug: "discord-vs-slack", key: "discordVsSlack", published: "2026-10-25", updated: "2026-10-25", pages: ["discord", "slackHuddles", "virtualOffice"], related: ["remoteCommunication", "remoteTools", "async"] },
-  { slug: "what-is-proximity-chat", key: "proximityChat", published: "2026-10-04", updated: "2026-10-25", pages: ["proximityChat", "virtualOffice", "gather"], related: ["bestVirtualOffice", "gatherPricing", "remoteTools"] },
+  { slug: "what-is-proximity-chat", key: "proximityChat", published: "2026-10-04", updated: "2026-10-26", pages: ["proximityChat", "virtualOffice", "gather"], related: ["bestVirtualOffice", "gatherPricing", "remoteTools"] },
   // Buyers comparing products and prices (docs/search.md). Competitors' prices are checked against their own pages; bump `updated` when they are.
   { slug: "best-virtual-office-software", key: "bestVirtualOffice", published: "2026-10-07", updated: "2026-10-25", pages: ["virtualOffice", "gather", "kumospace"], related: ["gatherPricing", "remoteTools", "proximityChat"] },
   { slug: "gather-pricing", key: "gatherPricing", published: "2026-10-07", updated: "2026-10-25", pages: ["gather", "gatherVsKumospace", "virtualOffice"], related: ["bestVirtualOffice", "proximityChat", "remoteTools"] },

@@ -4,10 +4,11 @@ import { localeCodes } from '@/lib/i18n/routing';
 import { localePath } from '@/lib/seo';
 import { HUBS, LANDINGS, LANDINGS_UPDATED } from '@/lib/landings';
 import { GUIDES, GUIDES_PATH, guideLocales, guidePath } from '@/lib/guides';
-import { OUT_OF_OFFICE_PATH, STANDUP_PATH, TEAM_BUILDING_PATH, TOOLS, TOOLS_PATH, TWO_TRUTHS_PATH, WOULD_YOU_RATHER_PATH } from '@/lib/tools/catalog';
+import { OUT_OF_OFFICE_PATH, SECRET_SANTA_PATH, STANDUP_PATH, TEAM_BUILDING_PATH, TOOLS, TOOLS_PATH, TWO_TRUTHS_PATH, WOULD_YOU_RATHER_PATH } from '@/lib/tools/catalog';
 import { ICEBREAKERS_PATH, ICEBREAKERS_UPDATED } from '@/lib/tools/icebreakers';
 import { OFFICE_COSTS_PATH, OFFICE_COSTS_UPDATED } from '@/lib/tools/office-costs';
 import { OUT_OF_OFFICE_UPDATED } from '@/lib/tools/out-of-office';
+import { SECRET_SANTA_UPDATED } from '@/lib/tools/secret-santa';
 import { STANDUP_UPDATED } from '@/lib/tools/standup';
 import { TEAM_BUILDING_UPDATED } from '@/lib/tools/team-building';
 import { TIME_ZONES_PATH, TIME_ZONES_UPDATED } from '@/lib/tools/time-zones';
@@ -18,13 +19,14 @@ import { WOULD_YOU_RATHER_UPDATED } from '@/lib/tools/would-you-rather';
  * The day the home page, pricing, the indexes and about last changed (YYYY-MM-DD).
  * Bump it when their words or what they list change.
  */
-const PAGES_UPDATED = '2026-10-25';
+const PAGES_UPDATED = '2026-10-26';
 
 /** Each tool's own date, the one its page shows. */
 const TOOL_UPDATED: Record<string, string> = {
   [ICEBREAKERS_PATH]: ICEBREAKERS_UPDATED,
   [OFFICE_COSTS_PATH]: OFFICE_COSTS_UPDATED,
   [OUT_OF_OFFICE_PATH]: OUT_OF_OFFICE_UPDATED,
+  [SECRET_SANTA_PATH]: SECRET_SANTA_UPDATED,
   [STANDUP_PATH]: STANDUP_UPDATED,
   [TEAM_BUILDING_PATH]: TEAM_BUILDING_UPDATED,
   [TIME_ZONES_PATH]: TIME_ZONES_UPDATED,

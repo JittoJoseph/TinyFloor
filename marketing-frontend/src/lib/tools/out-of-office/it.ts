@@ -66,6 +66,26 @@ const it: OooContent = {
           detail: "Per i colleghi",
           body: "\"In ferie fino al 3 novembre. Urgente? Scrivi ad Ana Lima.\" Dentro la tua azienda, più breve di solito è meglio.",
         },
+        {
+          title: "Natale e Capodanno",
+          detail: "Pausa di fine anno",
+          body: "\"Grazie per il messaggio. Sono fuori sede per le festività e tornerò lunedì 4 gennaio. Risponderò al mio rientro. Per questioni urgenti, contatti Ana Lima (ana@example.com). Auguri di buon anno.\"",
+        },
+        {
+          title: "Mezza giornata",
+          detail: "Rientro in giornata",
+          body: "\"Grazie per il messaggio. Oggi pomeriggio sono fuori sede e risponderò domani mattina.\" Per un'assenza di poche ore, spesso basta lo stato della chat.",
+        },
+        {
+          title: "Per i clienti",
+          detail: "Fuori dalla tua azienda",
+          body: "\"Grazie per averci contattato. Sono fuori sede fino a lunedì 2 novembre. Per ordini e assistenza, scrivete a support@example.com; il team risponde entro un giorno lavorativo.\" Outlook può inviare questo messaggio solo a chi è fuori dalla tua organizzazione.",
+        },
+        {
+          title: "Ultimo giorno in azienda",
+          detail: "Uscita definitiva",
+          body: "\"Grazie per il messaggio. Ho lasciato Example Ltd. Per qualsiasi questione di cui mi occupavo, contatti Ana Lima (ana@example.com), che mi sostituisce.\" Di lavoro le aziende mantengono una risposta di questo tipo sull'indirizzo di chi se n'è andato per qualche mese.",
+        },
       ],
     },
     {
@@ -73,6 +93,7 @@ const it: OooContent = {
       body: [
         "Nel nuovo Outlook e in Outlook sul web, apri le Impostazioni (l'icona a ingranaggio), vai su Account e poi su Risposte automatiche. Attiva le risposte automatiche, spunta l'opzione per inviarle solo in un determinato periodo, imposta data di inizio e di fine e incolla il messaggio. Puoi scrivere un messaggio diverso per chi è fuori dalla tua organizzazione, ed è una buona idea: i colleghi hanno bisogno di meno spiegazioni dei clienti.",
         "Nel classico Outlook per Windows, vai su File e poi su Risposte automatiche e inserisci gli stessi dati. Se imposti una data di fine, Outlook disattiva le risposte da solo, quindi non devi ricordarti di farlo.",
+        "In Outlook per Mac, vai su Strumenti e poi su Risposte automatiche. Nell'app Outlook su iPhone o telefono Android, tocca la tua immagine del profilo, poi l'ingranaggio delle Impostazioni, scegli il tuo account di lavoro e tocca Risposte automatiche. Qualsiasi dispositivo tu usi, la risposta viene memorizzata nel tuo account, quindi attivandola in un posto la attiverai ovunque.",
       ],
     },
     {
@@ -130,6 +151,22 @@ const it: OooContent = {
     {
       q: "Questo generatore di messaggi fuori sede è gratuito?",
       a: "Sì, e funziona interamente nel tuo browser: nomi, date ed email che scrivi non vengono mai inviati da nessuna parte. Copia il messaggio in Outlook, Gmail, Slack o Teams.",
+    },
+    {
+      q: "Cosa significa OOO?",
+      a: "OOO sta per \"out of office\" (fuori sede). Si scrive nei calendari, negli stati delle chat e negli oggetti delle email, come \"OOO fino a lunedì\", per indicare che si è assenti e non si risponderà subito.",
+    },
+    {
+      q: "La risposta automatica è la stessa cosa di un messaggio fuori sede?",
+      a: "Sì. Risposte automatiche è il nome che Outlook dà al messaggio fuori sede, mentre Gmail lo chiama Risposta automatica. Entrambi inviano una risposta a chi ti scrive mentre sei assente.",
+    },
+    {
+      q: "Come imposto il fuori sede in Teams?",
+      a: "Fai clic sulla tua immagine del profilo, scegli Imposta messaggio di stato, poi Pianifica fuori sede. Attiva le risposte automatiche, scrivi il messaggio e imposta le date. Teams ti mostrerà come fuori sede e Outlook invierà lo stesso messaggio a chiunque ti scriva un'email.",
+    },
+    {
+      q: "Come imposto il fuori sede in Outlook sul telefono?",
+      a: "Nell'app Outlook, tocca la tua immagine del profilo, poi l'ingranaggio delle Impostazioni, scegli il tuo account di lavoro e tocca Risposte automatiche. Attivale, scrivi il messaggio e imposta le date.",
     },
   ],
 };

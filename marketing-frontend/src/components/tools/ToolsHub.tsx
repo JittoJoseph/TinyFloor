@@ -9,12 +9,13 @@ import { cn } from "@/lib/utils";
 import { JsonLd } from "@/components/JsonLd";
 import { ArrowRight } from "@/components/ui/icons";
 import { CJK_HEADLINE, COLUMN, Closing, EYEBROW, LEAD, MarketingShell } from "@/components/home/Blocks";
-import { OUT_OF_OFFICE_PATH, STANDUP_PATH, TEAM_BUILDING_PATH, TOOLS_PATH, TWO_TRUTHS_PATH, WOULD_YOU_RATHER_PATH, toolsIn } from "@/lib/tools/catalog";
+import { OUT_OF_OFFICE_PATH, SECRET_SANTA_PATH, STANDUP_PATH, TEAM_BUILDING_PATH, TOOLS_PATH, TWO_TRUTHS_PATH, WOULD_YOU_RATHER_PATH, toolsIn } from "@/lib/tools/catalog";
 import { FEW_TOOL_NAMES, TOOLS_HUB } from "@/lib/tools/hub-copy";
 import { ICEBREAKERS_PATH, icebreakersIn } from "@/lib/tools/icebreakers";
 import { OFFICE_COSTS_PATH, officeCostsIn } from "@/lib/tools/office-costs";
 import { TIME_ZONES_PATH, timeZonesIn } from "@/lib/tools/time-zones";
 import { outOfOfficeIn } from "@/lib/tools/out-of-office";
+import { secretSantaIn } from "@/lib/tools/secret-santa";
 import { standupIn } from "@/lib/tools/standup";
 import { teamBuildingIn } from "@/lib/tools/team-building";
 import { twoTruthsIn } from "@/lib/tools/two-truths";
@@ -40,6 +41,7 @@ async function cards(locale: Locale) {
     [TWO_TRUTHS_PATH]: () => twoTruthsIn(locale) && { name: few[TWO_TRUTHS_PATH], description: twoTruthsIn(locale)!.meta.description },
     [TEAM_BUILDING_PATH]: () => teamBuildingIn(locale) && { name: few[TEAM_BUILDING_PATH], description: teamBuildingIn(locale)!.meta.description },
     [OUT_OF_OFFICE_PATH]: () => outOfOfficeIn(locale) && { name: few[OUT_OF_OFFICE_PATH], description: outOfOfficeIn(locale)!.meta.description },
+    [SECRET_SANTA_PATH]: () => secretSantaIn(locale) && { name: few[SECRET_SANTA_PATH], description: secretSantaIn(locale)!.meta.description },
   };
   return toolsIn(locale).flatMap((tool) => {
     const card = described[tool.path]?.();

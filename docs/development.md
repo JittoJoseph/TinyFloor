@@ -41,6 +41,9 @@ When a page or guide is translated:
   still on the short points layout (`points` in `landings.pages.wonder`).
 - **The About page** has a monogram where the founder's photo would go, until
   there's a portrait to use.
+- **The Secret Santa generator is in the menu and footer for the season**
+  (`TOP_TOOLS` in `HomeNav.tsx`). Take it out in January, and put it back
+  in November.
 - **Sitemap dates are kept by hand.** When a page's words change, bump its
   date in the same commit: a guide's `updated`, a tool's `*_UPDATED`,
   `LANDINGS_UPDATED` (or one page's `updated`) for the pages written for a

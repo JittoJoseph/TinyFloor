@@ -627,8 +627,8 @@
   "proximityChat": {
     "label": "Czym jest czat zbliżeniowy?",
     "meta": {
-      "title": "Czym jest czat zbliżeniowy? Jak działa w grach i w pracy",
-      "description": "Czym jest czat zbliżeniowy, jak działa, jakie gry go używają i jak wirtualne biura dzięki niemu pozwalają zespołom rozmawiać po podejściu."
+      "title": "Czym jest czat zbliżeniowy? Gry, które go mają, i jak działa w pracy",
+      "description": "Czat zbliżeniowy pozwala rozmawiać tylko z osobami w pobliżu. Jak działa, które gry go mają (Lethal Company, Among Us, Minecraft, R.E.P.O.) i jak wirtualne biura używają go w pracy."
     },
     "title": "Czym jest <em>czat zbliżeniowy?</em>",
     "intro": "Czat zbliżeniowy pozwala rozmawiać z osobami w pobliżu w wirtualnej przestrzeni, a nie ze wszystkimi naraz. Narodził się w grach, gdzie ożywia światy, a dziś dzięki niemu wirtualne biura pozwalają zespołom rozmawiać bez linków do spotkań.",
@@ -641,26 +641,50 @@
         ]
       },
       {
-        "title": "Czat zbliżeniowy w grach",
+        "title": "Gry z czatem zbliżeniowym",
         "body": [
-          "Gry używają go, by rozmowy stały się częścią świata. Kilka znanych przykładów:"
+          "Gry używają go, by uczynić rozmowy częścią świata: słyszysz te osoby, które widzisz. Oto niektóre z najbardziej znanych:"
         ],
         "items": [
           {
-            "title": "Gry dedukcyjne",
-            "body": "Mody do Among Us dodały głos zbliżeniowy: słyszysz tylko graczy w pobliżu i możesz szeptem ustalać plany."
+            "title": "Among Us",
+            "detail": "Z modem",
+            "body": "Mod BetterCrewLink dodaje dźwięk zbliżeniowy, więc słyszysz tylko graczy w pobliżu i możesz szeptać plany na boku."
           },
           {
-            "title": "Gry survivalowe",
-            "body": "Rust i DayZ używają głosu zbliżeniowego, więc spotkanie nieznajomego oznacza prawdziwą rozmowę."
+            "title": "Minecraft",
+            "detail": "Z modem",
+            "body": "Mod Simple Voice Chat (lub wtyczka na serwerze) dodaje dźwięk zbliżeniowy do światów Java, dzięki czemu wspólny świat wydaje się prawdziwym miejscem."
           },
           {
-            "title": "Gry kooperacyjne",
-            "body": "W Lethal Company towarzysza, który się oddali, słychać coraz gorzej, i to połowa napięcia."
+            "title": "Lethal Company",
+            "detail": "Wbudowany",
+            "body": "Członek zespołu, który się oddali, staje się słabo słyszalny, a potem wcale – co buduje połowę napięcia."
           },
           {
-            "title": "Gry sandboxowe",
-            "body": "Serwery Minecrafta dodają głos zbliżeniowy modami, żeby wspólny świat przypominał prawdziwe miejsce."
+            "title": "R.E.P.O. i Peak",
+            "detail": "Wbudowany",
+            "body": "Nowsze gry kooperacyjne dla małych grup są oparte na dźwięku zbliżeniowym: krzyczycie, rozdzielacie się, a potem znów się odnajdujecie."
+          },
+          {
+            "title": "Phasmophobia",
+            "detail": "Wbudowany",
+            "body": "Twój głos niesie się tylko na pewną odległość, a duch też go słyszy. Krótkofalówka pozwala dotrzeć do reszty zespołu."
+          },
+          {
+            "title": "Sea of Thieves",
+            "detail": "Wbudowany",
+            "body": "Załogi rozmawiają ze sobą na statku, a także z nieznajomymi, gdy dwa statki podpłyną blisko siebie."
+          },
+          {
+            "title": "Rust i DayZ",
+            "detail": "Wbudowany",
+            "body": "Spotkanie nieznajomego oznacza konieczność prawdziwej rozmowy, co zmienia grę survivalową w społecznościową."
+          },
+          {
+            "title": "Serwery roleplay w GTA",
+            "detail": "Na FiveM",
+            "body": "Serwery roleplay używają dźwięku zbliżeniowego, więc rozmowa na ulicy pozostaje na ulicy."
           }
         ]
       },
@@ -713,19 +737,23 @@
     "faq": [
       {
         "q": "Co oznacza czat zbliżeniowy?",
-        "a": "Że w wirtualnej przestrzeni możesz rozmawiać tylko z osobami w pobliżu. Podejdź bliżej, by porozmawiać; odejdź, a rozmowa się skończy."
+        "a": "Oznacza to, że możesz rozmawiać tylko z osobami blisko ciebie w wirtualnej przestrzeni. Podejdź bliżej, by porozmawiać; odejdź, a rozmowa się skończy."
       },
       {
         "q": "Czy czat zbliżeniowy jest prywatny?",
-        "a": "Słyszą cię tylko osoby w pobliżu, co jest bardziej prywatne niż kanał, na którym są wszyscy. W stylu „podejdź i zadzwoń” nic nie słychać, dopóki nie zaczniesz rozmowy."
+        "a": "Słyszą cię tylko osoby w pobliżu, co daje większą prywatność niż kanał, na którym są wszyscy. W stylu „podejdź i zadzwoń” nic nie słychać, dopóki nie zaczniesz rozmowy."
       },
       {
         "q": "Które gry mają czat zbliżeniowy?",
-        "a": "Rust, DayZ i Lethal Company mają go wbudowanego, a mody dodają go do gier takich jak Among Us i Minecraft."
+        "a": "Lethal Company, R.E.P.O., Peak, Phasmophobia, Sea of Thieves, Rust i DayZ mają go wbudowanego. Mody dodają go do Among Us (BetterCrewLink) i Minecraft (Simple Voice Chat)."
       },
       {
-        "q": "Czy czat zbliżeniowy nadaje się do pracy?",
-        "a": "Tak. Wirtualne biura, takie jak TinyFloor, Gather i SpatialChat, używają go, by zespoły zdalne rozmawiały, podchodząc do siebie, zamiast planować rozmowy."
+        "q": "Jak włączyć czat zbliżeniowy w Minecraft?",
+        "a": "Zainstaluj mod Simple Voice Chat na serwerze i w grze każdego gracza. Gracze blisko siebie będą mogli rozmawiać, a głosy będą cichnąć wraz z odległością."
+      },
+      {
+        "q": "Czy można używać czatu zbliżeniowego do pracy?",
+        "a": "Tak. Wirtualne biura, takie jak TinyFloor, Gather i SpatialChat, używają go, aby zespoły zdalne mogły rozmawiać, podchodząc do siebie zamiast planować spotkania."
       }
     ]
   },
@@ -4654,6 +4682,826 @@
       {
         "q": "Czym różni się agenda od notatek ze spotkania?",
         "a": "Agenda to plan spotkania sporządzony przed jego rozpoczęciem. Notatki to zapis podjętych decyzji, tworzony w trakcie i po spotkaniu."
+      }
+    ]
+  },
+  "questionOfTheDay": {
+    "label": "Pytanie dnia do pracy",
+    "meta": {
+      "title": "120 pomysłów na pytanie dnia do pracy: ciekawe, zabawne i proste",
+      "description": "120 pomysłów na pytanie dnia do pracy: ciekawe i zabawne pytania, „co wolisz”, „to czy tamto”, pytania o pracę, integracyjne i sezonowe, wraz ze wskazówkami, jak zadawać codzienne pytania na czacie zespołu lub standupie."
+    },
+    "title": "Pytanie dnia <em>do pracy.</em>",
+    "intro": "Pytanie dnia to jedno proste pytanie, na które Twój zespół odpowiada każdego ranka: na czacie zespołu, na początku standupu lub w ankiecie. Zajmuje to minutę, nikt nie musi się przygotowywać, a w ciągu kilku tygodni ludzie dowiadują się o sobie więcej niż przez rok spotkań statusowych. Oto 120 propozycji do wyboru, podzielonych według nastroju, wraz z kilkoma wskazówkami, jak utrzymać ten zwyczaj.",
+    "sections": [
+      {
+        "title": "Jak przeprowadzić pytanie dnia",
+        "items": [
+          {
+            "title": "Wybierz jedno miejsce",
+            "body": "Kanał na [czacie zespołu](/team-chat) o nazwie #pytanie-dnia lub pierwsza minuta [standupu](/virtual-standup). To samo miejsce każdego dnia pozwala wyrobić nawyk."
+          },
+          {
+            "title": "Publikuj o tej samej porze",
+            "body": "Z samego rana dla najwcześniejszej strefy czasowej, tak aby każdy zobaczył je w ciągu swojego dnia."
+          },
+          {
+            "title": "Zadbaj o krótkie odpowiedzi",
+            "body": "Słowo, zdanie lub emoji. Proste pytania przynoszą odpowiedzi, trudne – ciszę."
+          },
+          {
+            "title": "Zmieniajcie osobę zadającą pytania",
+            "body": "Przekażcie zadanie wymyślania pytań innej osobie co tydzień. Ludzie zaczną proponować własne pomysły, a pytania staną się ciekawsze."
+          },
+          {
+            "title": "Odpowiedz jako pierwszy",
+            "body": "Osoba, która publikuje pytanie, od razu na nie odpowiada. To pokazuje oczekiwaną długość i ton, dzięki czemu nikt inny nie musi przecierać szlaków."
+          }
+        ]
+      },
+      {
+        "title": "Ciekawe pytania",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Co najlepszego udało Ci się zjeść w tym tygodniu?",
+            "body": ""
+          },
+          {
+            "title": "Jaka drobna rzecz wywołała u Ciebie ostatnio uśmiech?",
+            "body": ""
+          },
+          {
+            "title": "Którą aplikację w telefonie otwierasz najczęściej?",
+            "body": ""
+          },
+          {
+            "title": "Po jaką przekąskę najchętniej sięgasz podczas pracy?",
+            "body": ""
+          },
+          {
+            "title": "Jaka była Twoja pierwsza praca?",
+            "body": ""
+          },
+          {
+            "title": "Jakiej umiejętności chcesz się nauczyć w tym roku?",
+            "body": ""
+          },
+          {
+            "title": "Jaka jest najlepsza rada, jaką kiedykolwiek otrzymałeś?",
+            "body": ""
+          },
+          {
+            "title": "Jak najbardziej lubisz spędzać niedzielę?",
+            "body": ""
+          },
+          {
+            "title": "Co takiego znajduje się teraz na Twoim biurku, czego nie potrafisz wyjaśnić?",
+            "body": ""
+          },
+          {
+            "title": "Jaki film możesz oglądać bez końca?",
+            "body": ""
+          },
+          {
+            "title": "Gdybyś mógł wykonywać dowolną pracę przez jeden dzień, co by to było?",
+            "body": ""
+          },
+          {
+            "title": "Jaki jest Twój ukryty talent?",
+            "body": ""
+          },
+          {
+            "title": "Jaka jest najużyteczniejsza rzecz, jaką posiadasz?",
+            "body": ""
+          },
+          {
+            "title": "Jakie hobby zdarzyło Ci się zacząć i szybko porzucić?",
+            "body": ""
+          },
+          {
+            "title": "Jaka piosenka towarzyszyłaby Twojemu wejściu?",
+            "body": ""
+          },
+          {
+            "title": "Jaka jest ostatnia kupiona rzecz, którą uwielbiasz?",
+            "body": ""
+          },
+          {
+            "title": "Jaka jest Twoja ulubiona pora roku i dlaczego?",
+            "body": ""
+          },
+          {
+            "title": "Do jakiego miejsca chętnie wrócisz choćby jutro?",
+            "body": ""
+          },
+          {
+            "title": "Którą fikcyjną postać chciałbyś mieć jako współpracownika?",
+            "body": ""
+          },
+          {
+            "title": "Jaki zapach natychmiast przenosi Cię do czasów dzieciństwa?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Zabawne pytania",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "W jaką najdziwniejszą rzecz wierzyłeś jako dziecko?",
+            "body": ""
+          },
+          {
+            "title": "Jaki tytuł nosiłaby Twoja autobiografia?",
+            "body": ""
+          },
+          {
+            "title": "Jaka była Twoja najgorsza fryzura w życiu?",
+            "body": ""
+          },
+          {
+            "title": "Gdyby Twój zwierzak potrafił mówić, na co by narzekał?",
+            "body": ""
+          },
+          {
+            "title": "Jaki jest najbardziej bezużyteczny fakt, który znasz?",
+            "body": ""
+          },
+          {
+            "title": "Jak nazwałbyś swoją łódź?",
+            "body": ""
+          },
+          {
+            "title": "Jaki jest Twój najbardziej irracjonalny lęk?",
+            "body": ""
+          },
+          {
+            "title": "Gdybyś był warzywem, to jakim?",
+            "body": ""
+          },
+          {
+            "title": "Jakie jest najdziwniejsze połączenie smaków, które potajemnie lubisz?",
+            "body": ""
+          },
+          {
+            "title": "Jak brzmiałby Twój pseudonim wrestlingowy?",
+            "body": ""
+          },
+          {
+            "title": "O jaką najgłupszą rzecz zdarzyło Ci się pokłócić?",
+            "body": ""
+          },
+          {
+            "title": "Którego emoji używasz zdecydowanie za często?",
+            "body": ""
+          },
+          {
+            "title": "Gdyby w Twoim życiu pojawiał się śmiech z puszki, w jakich momentach by brzmiał?",
+            "body": ""
+          },
+          {
+            "title": "Jaki był najgorszy prezent, jaki kiedykolwiek otrzymałeś?",
+            "body": ""
+          },
+          {
+            "title": "Jakie słowo zawsze zapisujesz z błędem?",
+            "body": ""
+          },
+          {
+            "title": "Które zwierzę byłoby najbardziej nieuprzejme, gdyby potrafiło mówić?",
+            "body": ""
+          },
+          {
+            "title": "Jaka jest Twoja najczęstsza wymówka na spóźnienie?",
+            "body": ""
+          },
+          {
+            "title": "Co znalazłoby się w Twojej wiadomości o nieobecności, gdybyś mógł być w pełni szczery?",
+            "body": ""
+          },
+          {
+            "title": "Gdybyś do końca życia mógł jeść tylko jedną rzecz, co by to było?",
+            "body": ""
+          },
+          {
+            "title": "Jaka jest najgłupsza rzecz, którą wyszukiwałeś w Google w tym miesiącu?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Co wolisz",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Wolisz czterodniowy tydzień pracy czy dodatkowy miesiąc urlopu?",
+            "body": ""
+          },
+          {
+            "title": "Wolisz nigdy więcej nie brać udziału w spotkaniach czy nigdy więcej nie odpowiadać na e-maile?",
+            "body": ""
+          },
+          {
+            "title": "Wolisz pracować z plaży czy z domku w lesie?",
+            "body": ""
+          },
+          {
+            "title": "Wolisz umieć latać czy być niewidzialnym?",
+            "body": ""
+          },
+          {
+            "title": "Wolisz darmową kawę do końca życia czy darmowy lunch do końca życia?",
+            "body": ""
+          },
+          {
+            "title": "Wolisz mówić we wszystkich językach czy grać na każdym instrumencie?",
+            "body": ""
+          },
+          {
+            "title": "Wolisz zaczynać pracę o 6:00 rano czy kończyć o 21:00?",
+            "body": ""
+          },
+          {
+            "title": "Wolisz mieć osobistego szefa kuchni czy osobistego kierowcę?",
+            "body": ""
+          },
+          {
+            "title": "Wolisz czytać w myślach czy przewidywać przyszłość?",
+            "body": ""
+          },
+          {
+            "title": "Wolisz żyć bez muzyki czy bez filmów?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "Dwie opcje, jeden wybór – świetnie sprawdzają się w formie ankiety. Więcej znajdziesz w naszym artykule [pytania co wolisz](/tools/would-you-rather-questions)."
+        ]
+      },
+      {
+        "title": "To czy tamto",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Kawa czy herbata?",
+            "body": ""
+          },
+          {
+            "title": "Ranny ptaszek czy nocny marek?",
+            "body": ""
+          },
+          {
+            "title": "Mac czy Windows?",
+            "body": ""
+          },
+          {
+            "title": "Koty czy psy?",
+            "body": ""
+          },
+          {
+            "title": "Plaża czy góry?",
+            "body": ""
+          },
+          {
+            "title": "Tryb ciemny czy jasny?",
+            "body": ""
+          },
+          {
+            "title": "Telefon czy wiadomość?",
+            "body": ""
+          },
+          {
+            "title": "Książki czy podcasty?",
+            "body": ""
+          },
+          {
+            "title": "Słodkie czy słone?",
+            "body": ""
+          },
+          {
+            "title": "Lato czy zima?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "Najszybszy rodzaj pytań. Kolejną setkę znajdziesz w artykule [pytania „to czy tamto”](/guides/this-or-that-questions)."
+        ]
+      },
+      {
+        "title": "Pytania o pracę",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Nad czym obecnie pracujesz, co naprawdę Cię ekscytuje?",
+            "body": ""
+          },
+          {
+            "title": "Jakie jest najlepsze narzędzie, którego zacząłeś używać w tym roku?",
+            "body": ""
+          },
+          {
+            "title": "Jaki nawyk zawodowy próbujesz w sobie wyrobić?",
+            "body": ""
+          },
+          {
+            "title": "Jakie było najlepsze spotkanie, w jakim brałeś udział, i dlaczego?",
+            "body": ""
+          },
+          {
+            "title": "Co ułatwiłoby Ci ten tydzień?",
+            "body": ""
+          },
+          {
+            "title": "Kto nauczył Cię najwięcej w pracy?",
+            "body": ""
+          },
+          {
+            "title": "Jaki błąd czegoś Cię nauczył?",
+            "body": ""
+          },
+          {
+            "title": "Jak wygląda dla Ciebie idealny dzień w pracy?",
+            "body": ""
+          },
+          {
+            "title": "Co zmieniłbyś w sposobie, w jaki pracujemy?",
+            "body": ""
+          },
+          {
+            "title": "Jaka jest najprzydatniejsza rzecz, jakiej udało Ci się nauczyć od kogoś z zespołu?",
+            "body": ""
+          },
+          {
+            "title": "W jakich godzinach jesteś najbardziej skupiony w ciągu dnia?",
+            "body": ""
+          },
+          {
+            "title": "Jak najbardziej lubisz świętować sukcesy?",
+            "body": ""
+          },
+          {
+            "title": "Jakiej umiejętności chciałbyś się nauczyć od kogoś z tego zespołu?",
+            "body": ""
+          },
+          {
+            "title": "Kim chciałeś zostać, kiedy dorośniesz?",
+            "body": ""
+          },
+          {
+            "title": "Jaką rzecz ze swojej listy zadań nieustannie odkładasz?",
+            "body": ""
+          },
+          {
+            "title": "Jaka jest najlepsza informacja zwrotna, jaką otrzymałeś?",
+            "body": ""
+          },
+          {
+            "title": "Z jakiego projektu jesteś dumny?",
+            "body": ""
+          },
+          {
+            "title": "Jaki jest Twój sposób na przetrwanie sennego popołudnia?",
+            "body": ""
+          },
+          {
+            "title": "Jaki mały sukces udało Ci się wczoraj odnieść?",
+            "body": ""
+          },
+          {
+            "title": "Gdybyś mógł zautomatyzować jedno zadanie, co by to było?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Poznajmy się",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Gdzie dorastałeś?",
+            "body": ""
+          },
+          {
+            "title": "Co mogłoby nas w Tobie zaskoczyć?",
+            "body": ""
+          },
+          {
+            "title": "Jaką tradycję ze swojej rodziny lub kultury uwielbiasz?",
+            "body": ""
+          },
+          {
+            "title": "Jak trafiłeś do swojej obecnej branży?",
+            "body": ""
+          },
+          {
+            "title": "Jaka była Twoja najlepsza podróż w życiu?",
+            "body": ""
+          },
+          {
+            "title": "W jakich językach mówisz, choćby trochę?",
+            "body": ""
+          },
+          {
+            "title": "Co obecnie czytasz, oglądasz lub czego słuchasz?",
+            "body": ""
+          },
+          {
+            "title": "Jaka sprawa jest dla Ciebie ważna?",
+            "body": ""
+          },
+          {
+            "title": "Co robisz, aby wyłączyć się po pracy?",
+            "body": ""
+          },
+          {
+            "title": "Jaki był najlepszy koncert lub wydarzenie, na którym byłeś?",
+            "body": ""
+          },
+          {
+            "title": "Masz jakieś zwierzęta? Opowiedz nam o nich.",
+            "body": ""
+          },
+          {
+            "title": "Jakie danie potrafisz dobrze przyrządzić?",
+            "body": ""
+          },
+          {
+            "title": "Jakie jest Twoje ulubione miejsce w Twoim mieście?",
+            "body": ""
+          },
+          {
+            "title": "Co jest najlepsze w miejscu, w którym mieszkasz?",
+            "body": ""
+          },
+          {
+            "title": "Co chciałbyś zrobić przed końcem roku?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Pytania o pracę zdalną",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Jaki widok masz dziś z miejsca, w którym pracujesz?",
+            "body": ""
+          },
+          {
+            "title": "Z jakiej jednej rzeczy w pracy zdalnej nigdy byś nie zrezygnował?",
+            "body": ""
+          },
+          {
+            "title": "Za czym najbardziej tęsknisz z biura?",
+            "body": ""
+          },
+          {
+            "title": "Co jest najlepsze w Twoim domowym stanowisku pracy?",
+            "body": ""
+          },
+          {
+            "title": "Co robisz podczas przerwy na lunch?",
+            "body": ""
+          },
+          {
+            "title": "Czy masz swój „mundur” do pracy z domu?",
+            "body": ""
+          },
+          {
+            "title": "Kto jest Twoim ulubionym współpracownikiem spoza tego zespołu (zwierzaki też się liczą)?",
+            "body": ""
+          },
+          {
+            "title": "Z którą strefą czasową współpracuje Ci się najlepiej?",
+            "body": ""
+          },
+          {
+            "title": "Jak zaczynasz swój dzień pracy?",
+            "body": ""
+          },
+          {
+            "title": "Jaki jest Twój ulubiony dźwięk w tle podczas pracy?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Pytania sezonowe (jesień i Halloween)",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Jakie jest Twoje ulubione jesienne jedzenie lub napój?",
+            "body": ""
+          },
+          {
+            "title": "Jaki był Twój najlepszy kostium na Halloween?",
+            "body": ""
+          },
+          {
+            "title": "Który film najbardziej kojarzy Ci się z jesienią?",
+            "body": ""
+          },
+          {
+            "title": "Pumpkin spice: uwielbiasz czy unikasz?",
+            "body": ""
+          },
+          {
+            "title": "Jaki jest najstraszniejszy film, który udało Ci się obejrzeć do końca?",
+            "body": ""
+          },
+          {
+            "title": "Które słodycze najbardziej chcesz dostać, a które oddajesz?",
+            "body": ""
+          },
+          {
+            "title": "Na jaką świąteczną tradycję czekasz co roku z niecierpliwością?",
+            "body": ""
+          },
+          {
+            "title": "Gdyby trzeba było przebrać się za zawód kogoś z zespołu, jaki to byłby kostium?",
+            "body": ""
+          },
+          {
+            "title": "Przytulny wieczór w domu czy wyjście ze znajomymi?",
+            "body": ""
+          },
+          {
+            "title": "Co masz na swojej liście planów na resztę roku?",
+            "body": ""
+          },
+          {
+            "title": "Co jest najlepsze w tej porze roku w miejscu, w którym mieszkasz?",
+            "body": ""
+          },
+          {
+            "title": "Jaki zapach oznacza dla Ciebie zmianę pory roku?",
+            "body": ""
+          },
+          {
+            "title": "Czego chcesz spróbować przed zimą?",
+            "body": ""
+          },
+          {
+            "title": "Którą straszną historię z dzieciństwa pamiętasz do dziś?",
+            "body": ""
+          },
+          {
+            "title": "Jaki jest Twój ulubiony sposób na spędzenie deszczowego dnia?",
+            "body": ""
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Gdzie pasuje TinyFloor",
+      "body": "TinyFloor to wirtualne biuro dla małych zespołów, z czatem zespołowym tuż obok piętra na pytanie dnia oraz salą spotkań na standup, na którym odpowiada się na nie na głos. Przez resztę dnia ludzie siedzą przy swoich biurkach na tym samym piętrze, gdzie rozpoczęta rozmowa wymaga tylko podejścia na chwilę. Jest darmowe dla maksymalnie 3 osób i kosztuje 29 USD miesięcznie dla całego zespołu."
+    },
+    "faq": [
+      {
+        "q": "Jakie jest dobre pytanie dnia do pracy?",
+        "a": "Takie, na które każdy może odpowiedzieć jednym zdaniem, mówi coś o danej osobie i bez obaw można się nim podzielić w pracy, jak „Co najlepszego udało Ci się zjeść w tym tygodniu?” lub „Kawa czy herbata?”."
+      },
+      {
+        "q": "Jak przeprowadzić pytanie dnia w pracy?",
+        "a": "Publikuj jedno pytanie codziennie rano o tej samej porze na kanale czatu zespołu lub na początku standupu, najpierw odpowiedz na nie samodzielnie i zmieniajcie co tydzień osobę, która je zadaje."
+      },
+      {
+        "q": "Jak podtrzymać pytanie dnia?",
+        "a": "Zadbaj o to, by pytania były proste, mieszaj te zabawne z okazjonalnymi pytaniami o pracę i pozwól różnym osobom je zadawać. Gdy ludzie zaczną sami proponować pytania, wszystko będzie kręcić się samo."
+      },
+      {
+        "q": "Czy pytanie dnia powinno być ankietą?",
+        "a": "Pytania z dwoma opcjami wyboru, takie jak „to czy tamto” lub „co wolisz”, świetnie sprawdzają się jako ankiety. Otwarte pytania przynoszą lepsze odpowiedzi na czacie."
+      }
+    ]
+  },
+  "holidayParty": {
+    "label": "Pomysły na wirtualną imprezę świąteczną",
+    "meta": {
+      "title": "Wirtualna impreza świąteczna: 20 darmowych gier dla zespołów zdalnych",
+      "description": "20 darmowych pomysłów na wirtualną imprezę świąteczną dla zespołów zdalnych: gry takie jak bingo, quiz i poszukiwanie przedmiotów, 60-minutowy plan, wirtualne mikołajki działające między krajami oraz jak zaplanować spotkanie w różnych strefach czasowych."
+    },
+    "title": "Pomysły na wirtualną imprezę świąteczną <em>dla zespołów zdalnych.</em>",
+    "intro": "Impreza na koniec roku to jedyne wydarzenie, którego większość zespołów zdalnych naprawdę chce, i najłatwiejsze do zepsucia: za długa, za dużo gier, połowa zespołu śpiąca w innej strefie czasowej. Oto 20 darmowych gier i zabaw, 60-minutowy plan, który działa, i wskazówki, jak wszystko zaplanować, żeby ludzie przyszli z własnej woli.",
+    "sections": [
+      {
+        "title": "Najpierw zaplanuj",
+        "items": [
+          {
+            "title": "Wybierz porę, która pasuje większości osób",
+            "body": "Dla zespołu w różnych strefach czasowych wspólny czas to często tylko godzina. Użyj [planera stref czasowych](/tools/time-zone-meeting-planner), wybierz najmniej uciążliwą porę, a osobom, którym wypada środek nocy, zaproponuj drugie, mniejsze spotkanie."
+          },
+          {
+            "title": "Ogranicz się do godziny",
+            "body": "Sześćdziesiąt minut z jasnym końcem przyciąga więcej osób niż wieczór bez limitu czasu. Kto będzie chciał zostać dłużej, zostanie."
+          },
+          {
+            "title": "Zrób to w godzinach pracy",
+            "body": "Jeśli możesz, zorganizuj imprezę w godzinach pracy. Na spotkanie, dla którego trzeba poświęcić wolny wieczór, przyjdzie mniej osób."
+          },
+          {
+            "title": "Nazwij to imprezą na koniec roku",
+            "body": "Nie każdy obchodzi te same święta. Impreza na koniec roku nikogo nie wyklucza, a i tak pozwala założyć świąteczny sweter."
+          },
+          {
+            "title": "Wyślij budżet, nie paczkę",
+            "body": "Jeśli masz budżet na jedzenie lub napoje, kieszonkowe na osobę sprawdza się przy międzynarodowych zespołach znacznie lepiej niż wysyłanie paczek."
+          }
+        ]
+      },
+      {
+        "title": "Gry",
+        "items": [
+          {
+            "title": "Świąteczne bingo",
+            "detail": "15 minut · dowolna liczba osób",
+            "body": "Karty z hasłami typu „pojawia się zwierzak” albo „świąteczny sweter”. Wygrywa ten, kto pierwszy skreśli całą linię. Karty wygenerujesz w darmowych narzędziach online."
+          },
+          {
+            "title": "Quiz na koniec roku",
+            "detail": "20 minut · drużyny 3–5 osób",
+            "body": "Pytania o mijający rok w pracy i na świecie. Małe zespoły w osobnych pokojach, jedna osoba przesyła odpowiedzi."
+          },
+          {
+            "title": "Domowe poszukiwanie przedmiotów",
+            "detail": "10 minut · dowolna liczba osób",
+            "body": "Wymień jakiś przedmiot („coś czerwonego”, „najstarsza rzecz w kuchni”), a punkt zdobywa osoba, która jako pierwsza wróci z nim przed kamerę."
+          },
+          {
+            "title": "Zgadnij, kto to",
+            "detail": "15 minut · do 20 osób",
+            "body": "Każdy przesyła wcześniej swoje zdjęcie z dzieciństwa, a zespół zgaduje, kto jest kim. Zbierz je tydzień przed imprezą."
+          },
+          {
+            "title": "Świąteczne „to czy to”",
+            "detail": "5 minut · dowolna liczba osób",
+            "body": "„Żywa choinka czy sztuczna?”, „Śnieg czy słońce?”: szybkie wybory, a potem kilka osób tłumaczy swoją decyzję. Więcej znajdziesz w naszych [pytaniach „to czy to”](/guides/this-or-that-questions)."
+          },
+          {
+            "title": "Dwie prawdy i jedno kłamstwo: wersja świąteczna",
+            "detail": "15 minut · do 12 osób",
+            "body": "Trzy stwierdzenia o minionych świętach, w tym jedno nieprawdziwe. Zobacz [pomysły na dwie prawdy i jedno kłamstwo](/tools/two-truths-and-a-lie)."
+          },
+          {
+            "title": "Rysowanie na tablicy",
+            "detail": "15 minut · drużyny 4–8 osób",
+            "body": "Jedna osoba rysuje świąteczne hasło na [wspólnej tablicy](/online-whiteboard), a reszta zgaduje na czas."
+          },
+          {
+            "title": "Jaka to melodia",
+            "detail": "10 minut · dowolna liczba osób",
+            "body": "Puść pierwsze pięć sekund świątecznej piosenki; wygrywa ten, kto pierwszy wpisze tytuł na czacie. Udostępnij ekran z włączonym dźwiękiem."
+          },
+          {
+            "title": "Quiz filmowy z emoji",
+            "detail": "10 minut · dowolna liczba osób",
+            "body": "Wklej na czacie tytuł świątecznego filmu zapisany za pomocą emoji i pozwól ludziom zgadywać. Proste w organizacji i budzi zaskakująco dużo emocji."
+          },
+          {
+            "title": "Rok na jednym zdjęciu",
+            "detail": "15 minut · do 15 osób",
+            "body": "Każdy pokazuje jedno zdjęcie ze swojego roku i mówi, dlaczego je wybrał. Często to właśnie ta chwila najbardziej zapada w pamięć."
+          }
+        ]
+      },
+      {
+        "title": "Zabawy bez wygranych",
+        "items": [
+          {
+            "title": "Nagrody zespołowe",
+            "detail": "15 minut · dowolna liczba osób",
+            "body": "Zabawne nagrody, na które głosuje się wcześniej: najlepsze tło, najbardziej pomocna dłoń w kryzysie, najlepsza literówka roku."
+          },
+          {
+            "title": "Konkurs na tło",
+            "detail": "5 minut · dowolna liczba osób",
+            "body": "Każdy dekoruje kąt za sobą albo wybiera świąteczne tło wideo; zespół głosuje na czacie."
+          },
+          {
+            "title": "Parada świątecznych swetrów lub czapek",
+            "detail": "10 minut · dowolna liczba osób",
+            "body": "Wszyscy pokazują się w nich przed kamerą, a zespół głosuje na czacie. Udział jest dobrowolny, a papierowe czapki też się liczą."
+          },
+          {
+            "title": "Wspólne gotowanie lub pieczenie",
+            "detail": "45 minut · do 12 osób",
+            "body": "Wyślij prosty przepis tydzień wcześniej i przygotujcie go razem, z kamerami skierowanymi na kuchnię."
+          },
+          {
+            "title": "Runda wdzięczności",
+            "detail": "10 minut · do 15 osób",
+            "body": "Każdy dziękuje jednej osobie z zespołu za coś konkretnego z mijającego roku. Krótka chwila, którą ludzie długo pamiętają."
+          },
+          {
+            "title": "Wspólna playlista",
+            "detail": "Przed imprezą",
+            "body": "Każdy adds jeden utwór do wspólnej playlisty, która gra w tle podczas imprezy."
+          },
+          {
+            "title": "Życzenia na nowy rok",
+            "detail": "10 minut · dowolna liczba osób",
+            "body": "Jedna rzecz, którą każdy ma nadzieję osiągnąć lub przeżyć w nowym roku, w pracy lub poza nią. Dobry sposób na zakończenie."
+          }
+        ]
+      },
+      {
+        "title": "Wymiana prezentów między krajami",
+        "items": [
+          {
+            "title": "Wirtualne mikołajki",
+            "detail": "Zorganizuj dwa tygodnie wcześniej",
+            "body": "Losujcie imiona za pomocą naszego darmowego [generatora mikołajkowego](/tools/secret-santa-generator), ustalcie niewielki budżet i dajcie każdemu opcję niewymagającą podawania adresu, taką jak cyfrowa karta podarunkowa czy e-book."
+          },
+          {
+            "title": "Wirtualny biały słoń",
+            "detail": "30 minut · do 15 osób",
+            "body": "Każdy kupuje cyfrowy prezent, numery decydują o kolejności, a uczestnicy mogą podbierać otwarte już prezenty. Najlepiej działa, gdy prowadzący pilnuje wszystkiego na ekranie."
+          },
+          {
+            "title": "Wspólna darowizna zamiast prezentów",
+            "detail": "Bez prezentów",
+            "body": "Zespół wybiera organizację charytatywną i przekazuje tam budżet na prezenty. To świetne rozwiązanie dla zespołów rozproszonych po wielu krajach."
+          }
+        ]
+      },
+      {
+        "title": "60-minutowy plan",
+        "table": {
+          "head": [
+            "Czas",
+            "Co się dzieje"
+          ],
+          "rows": [
+            [
+              "0–5 min",
+              "Zbieranie się, muzyka, powitanie"
+            ],
+            [
+              "5–15 min",
+              "Szybka gra: świąteczne „to czy to” albo poszukiwanie przedmiotów"
+            ],
+            [
+              "15–35 min",
+              "Główna gra: quiz albo bingo"
+            ],
+            [
+              "35–45 min",
+              "Nagrody zespołowe albo runda wdzięczności"
+            ],
+            [
+              "45–55 min",
+              "Wolny czas: ludzie dzielą się na mniejsze rozmowy"
+            ],
+            [
+              "55–60 min",
+              "Życzenia na nowy rok i pożegnanie"
+            ]
+          ],
+          "note": "Dla zespołów do 15 osób. Większy zespół będzie potrzebował osobnych pokoi na gry i wolny czas."
+        }
+      },
+      {
+        "title": "Organizacja w wirtualnym biurze",
+        "body": [
+          "Podczas zwykłego połączenia wideo wszyscy siedzą w jednej siatce i tylko jedna osoba może mówić naraz, przez co wolny czas na końcu rzadko się udaje. W wirtualnym biurze zespół może grać razem w pokoju spotkań, a potem rozejść się w małych grupach na rozmowy, tak jak na prawdziwej imprezie.",
+          "Udekoruj raczej zaproszenie niż sam program, nie zmuszaj do włączania kamer i daj cichszym osobom jakieś zadanie: puszczanie muzyki, liczenie punktów czy przyznawanie nagród."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Gdzie pasuje TinyFloor",
+      "body": "TinyFloor to wirtualne biuro dla małych zespołów. Impreza zaczyna się w pokoju spotkań z wideo, udostępnianiem ekranu i tablicą do gier, a potem ludzie mogą rozejść się po dwie, trzy osoby i rozmawiać, tak jak na prawdziwej imprezie. Jest darmowe dla maksymalnie 3 osób i kosztuje $29 miesięcznie za cały zespół."
+    },
+    "faq": [
+      {
+        "q": "Jak zorganizować wirtualną imprezę świąteczną w pracy?",
+        "a": "Wybierz godzinę w czasie pracy, która pasuje do większości stref czasowych, zaplanuj jedną szybką grę, jedną główną grę oraz krótką rundę podziękowań, a ostatnie dziesięć minut zostaw na swobodne rozmowy w małych grupach."
+      },
+      {
+        "q": "Jakie są fajne darmowe gry na wirtualną imprezę świąteczną?",
+        "a": "Świąteczne bingo, quiz na koniec roku, poszukiwanie skarbów w domu, „zgadnij, kto to” oraz gry rysunkowe na wspólnej tablicy. Do wszystkich wystarczy rozmowa i odrobina przygotowania."
+      },
+      {
+        "q": "Jak długo powinna trwać wirtualna impreza świąteczna?",
+        "a": "Około godziny. Wystarczająco długo na dwie gry i rundę podziękowań; na tyle krótko, żeby ludzie nie odpłynęli."
+      },
+      {
+        "q": "Jak zorganizować Mikołajki w zespole zdalnym?",
+        "a": "Losujcie imiona online, ustalcie niewielki budżet i wybierzcie cyfrowe prezenty, takie jak karty podarunkowe czy e-booki. Dzięki temu nikt nie musi podawać swojego adresu ani płacić za międzynarodową przesyłkę."
+      },
+      {
+        "q": "Czy powinno się to nazywać imprezą świąteczną, czy bożonarodzeniową?",
+        "a": "W przypadku zespołu z różnych krajów i kultur impreza na koniec roku lub impreza świąteczna nikogo nie wyklucza. Osoby, które obchodzą Boże Narodzenie, wciąż mogą założyć świąteczny sweter."
       }
     ]
   }

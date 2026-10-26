@@ -627,8 +627,8 @@
   "proximityChat": {
     "label": "Mikä on lähichat?",
     "meta": {
-      "title": "Mikä on lähichat? Näin se toimii peleissä ja töissä",
-      "description": "Mikä lähichat on, miten se toimii, mitkä pelit käyttävät sitä ja miten virtuaalitoimistot käyttävät sitä, jotta tiimit voivat puhua kävelemällä toistensa luo."
+      "title": "Mikä on lähichat? Pelit, joissa se on, ja miten se toimii töissä",
+      "description": "Lähichatissa puhut vain lähelläsi olevien kanssa. Näin se toimii, pelit, joissa se on (Lethal Company, Among Us, Minecraft, R.E.P.O.) ja miten virtuaalitoimistot käyttävät sitä töissä."
     },
     "title": "Mikä on <em>lähichat?</em>",
     "intro": "Lähichatissa puhut lähelläsi olevien kanssa virtuaalisessa tilassa etkä kaikkien muiden. Se syntyi peleissä, joissa se herättää maailmat eloon, ja nyt virtuaalitoimistot antavat sen avulla tiimien puhua ilman palaverilinkkejä.",
@@ -641,26 +641,50 @@
         ]
       },
       {
-        "title": "Lähichat peleissä",
+        "title": "Pelit, joissa on lähichat",
         "body": [
-          "Pelit käyttävät sitä tehdäkseen keskusteluista osan maailmaa. Muutama tunnettu esimerkki:"
+          "Pelit käyttävät sitä tekemään keskusteluista osan pelimaailmaa: ne, jotka kuulet, ovat niitä, jotka näet. Tässä on joitain tunnetuimpia:"
         ],
         "items": [
           {
-            "title": "Sosiaaliset päättelypelit",
-            "body": "Among Usin modit lisäsivät lähipuheen, joten kuulet vain lähellä olevat pelaajat ja voit kuiskia suunnitelmia."
+            "title": "Among Us",
+            "detail": "Modilla",
+            "body": "BetterCrewLink-modi lisää lähichat-äänen, joten kuulet vain lähelläsi olevat pelaajat ja voit kuiskailla suunnitelmia erillään ryhmästä."
           },
           {
-            "title": "Selviytymispelit",
-            "body": "Rust ja DayZ käyttävät lähipuhetta, joten vieraan kohtaaminen tarkoittaa oikeaa puhumista hänen kanssaan."
+            "title": "Minecraft",
+            "detail": "Modilla",
+            "body": "Simple Voice Chat -modi tai palvelimen lisäosa tuo Java-maailmoihin lähichatin, jolloin jaettu maailma tuntuu oikealta paikalta."
           },
           {
-            "title": "Yhteistyöpelit",
-            "body": "Lethal Companyssa kauas harhaileva joukkuetoveri kuuluu huonosti, ja siinä on puolet jännityksestä."
+            "title": "Lethal Company",
+            "detail": "Sisäänrakennettu",
+            "body": "Kauas harhailevaa tiimiläistä on vaikea kuulla ja lopulta mahdotonta, mikä luo puolet pelin jännityksestä."
           },
           {
-            "title": "Hiekkalaatikkopelit",
-            "body": "Minecraft-palvelimet lisäävät lähipuheen modeilla, jotta jaettu maailma tuntuu oikealta paikalta."
+            "title": "R.E.P.O. ja Peak",
+            "detail": "Sisäänrakennettu",
+            "body": "Uudemmat pienten ryhmien yhteistyöpelit on rakennettu lähichatin ympärille: huudatte, eksytte toisistanne ja löydätte taas toisenne."
+          },
+          {
+            "title": "Phasmophobia",
+            "detail": "Sisäänrakennettu",
+            "body": "Äänesi kuuluu vain tietyn matkan päähän, ja myös kummitus voi kuulla sen. Radiopuhelimella tavoitat muun tiimin."
+          },
+          {
+            "title": "Sea of Thieves",
+            "detail": "Sisäänrakennettu",
+            "body": "Miehistöt puhuvat laivan kannella ja tuntemattomille, kun kaksi laivaa asettuu rinnakkain."
+          },
+          {
+            "title": "Rust ja DayZ",
+            "detail": "Sisäänrakennettu",
+            "body": "Tuntemattoman kohtaaminen tarkoittaa, että hänelle pitää oikeasti puhua, mikä muuttaa selviytymispelin sosiaaliseksi peliksi."
+          },
+          {
+            "title": "GTA-roolipelipalvelimet",
+            "detail": "FiveM-alustalla",
+            "body": "Roolipelipalvelimet käyttävät lähichatia, joten kadulla käytävä keskustelu pysyy kadulla."
           }
         ]
       },
@@ -713,19 +737,23 @@
     "faq": [
       {
         "q": "Mitä lähichat tarkoittaa?",
-        "a": "Että voit puhua virtuaalisessa tilassa vain lähelläsi olevien kanssa. Mene lähemmäs puhuaksesi; kävele pois, niin keskustelu loppuu."
+        "a": "Se tarkoittaa, että voit puhua vain lähelläsi oleville ihmisille virtuaalisessa tilassa. Mene jonkun lähelle puhuaksesi; kävele pois ja keskustelu loppuu."
       },
       {
         "q": "Onko lähichat yksityinen?",
-        "a": "Vain lähelläsi olevat kuulevat sinut, mikä on yksityisempää kuin kanava, jossa kaikki ovat. Kävele luo ja soita -tavassa mitään ei kuulu ennen kuin aloitat puhelun."
+        "a": "Vain lähelläsi olevat ihmiset kuulevat sinut, mikä on yksityisempää kuin kanava, jolla kaikki ovat. Kävele luo -tyylissä mitään ei kuulu ennen kuin aloitat puhelun."
       },
       {
         "q": "Missä peleissä on lähichat?",
-        "a": "Rustissa, DayZ:ssa ja Lethal Companyssa se on sisäänrakennettuna, ja modit lisäävät sen peleihin kuten Among Us ja Minecraft."
+        "a": "Lethal Company, R.E.P.O., Peak, Phasmophobia, Sea of Thieves, Rust ja DayZ sisältävät sen sisäänrakennettuna. Modit tuovat sen peleihin Among Us (BetterCrewLink) ja Minecraft (Simple Voice Chat)."
+      },
+      {
+        "q": "Miten lähichatin saa Minecraftiin?",
+        "a": "Asenna Simple Voice Chat -modi palvelimelle ja jokaisen pelaajan peliin. Lähellä toisiaan olevat pelaajat voivat sitten puhua, ja äänet hiljenevät etäisyyden mukaan."
       },
       {
         "q": "Voiko lähichatia käyttää töissä?",
-        "a": "Voi. Virtuaalitoimistot kuten TinyFloor, Gather ja SpatialChat käyttävät sitä, jotta etätiimit voivat puhua kävelemällä toistensa luo puheluiden sopimisen sijaan."
+        "a": "Kyllä. Virtuaalitoimistot, kuten TinyFloor, Gather ja SpatialChat, käyttävät sitä, jotta etätiimit voivat puhua kävelemällä toistensa luo palaverien sopimisen sijaan."
       }
     ]
   },
@@ -4654,6 +4682,826 @@
       {
         "q": "Mitä eroa on esityslistalla ja muistiolla?",
         "a": "Esityslista on palaverin suunnitelma, joka kirjoitetaan etukäteen. Muistio on kirjaus siitä, mitä päätettiin, ja se kirjoitetaan palaverin aikana ja sen jälkeen."
+      }
+    ]
+  },
+  "questionOfTheDay": {
+    "label": "Päivän kysymys työhön",
+    "meta": {
+      "title": "120 päivän kysymystä työhön: hauskoja, hassuja ja helppoja",
+      "description": "120 päivän kysymystä työhön: hauskoja ja hassuja kysymyksiä, kumpi mieluummin, kumpi vai kampi, työkysymyksiä, tutustumiskysymyksiä ja sesonkikysymyksiä sekä vinkkejä päivittäisen kysymyksen pitämiseen tiimichatissa tai standupissa."
+    },
+    "title": "Päivän kysymys <em>työhön.</em>",
+    "intro": "Päivän kysymys on helppo kysymys, johon tiimisi vastaa joka aamu: tiimin chatissa, standup-palaverin alussa tai kyselynä. Vastaaminen vie minuutin, kenenkään ei tarvitse valmistautua, ja muutamassa viikossa ihmiset oppivat tuntemaan toisensa paremmin kuin vuodessa statuspalavereita. Tässä on 120 kysymystä ryhmiteltynä tunnelman mukaan sekä muutamia vinkkejä tavan ylläpitämiseen.",
+    "sections": [
+      {
+        "title": "Näin järjestät päivän kysymyksen",
+        "items": [
+          {
+            "title": "Valitse yksi paikka",
+            "body": "Kanava [tiimichatissa](/team-chat) nimeltä #päivän-kysymys tai [standupin](/virtual-standup) ensimmäinen minuutti. Sama paikka joka päivä tekee siitä rutiinin."
+          },
+          {
+            "title": "Julkaise se samaan aikaan",
+            "body": "Heti aamulla aikaisimman aikavyöhykkeen mukaan, jotta kaikki näkevät sen työpäivänsä aikana."
+          },
+          {
+            "title": "Pidä vastaukset lyhyinä",
+            "body": "Sana, lause tai emoji. Helppoihin kysymyksiin saadaan vastauksia, vaikeat tuovat hiljaisuuden."
+          },
+          {
+            "title": "Vuorotelkaa kysyjää",
+            "body": "Anna kysymysvuoro eri henkilölle joka viikko. Ihmiset alkavat keksiä omia kysymyksiään, ja kysymykset paranevat."
+          },
+          {
+            "title": "Vastaa ensin",
+            "body": "Kysymyksen julkaisija vastaa siihen heti itse. Se näyttää sopivan pituuden ja sävyn, eikä kenenkään muun tarvitse olla ensimmäinen."
+          }
+        ]
+      },
+      {
+        "title": "Hauskoja kysymyksiä",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Mikä on parasta, mitä olet syönyt tällä viikolla?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on pieni asia, joka sai sinut hymyilemään hiljattain?",
+            "body": ""
+          },
+          {
+            "title": "Minkä sovelluksen avaat puhelimessasi useimmiten?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on luottovälipalasi töitä tehdessäsi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä oli ensimmäinen työpaikkasi?",
+            "body": ""
+          },
+          {
+            "title": "Minkä taidon haluaisit oppia tänä vuonna?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on paras neuvo, jonka olet koskaan saanut?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on lempitapasi viettää sunnuntaita?",
+            "body": ""
+          },
+          {
+            "title": "Mitä sellaista työpöydälläsi on juuri nyt, mitä et osaa selittää?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on elokuva, jonka voisit katsoa uudestaan ja uudestaan?",
+            "body": ""
+          },
+          {
+            "title": "Jos saisit kokeilla mitä tahansa työtä yhden päivän ajan, mikä se olisi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on piilotettu lahjakkuutesi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on hyödyllisin omistamasi asia?",
+            "body": ""
+          },
+          {
+            "title": "Minkä harrastuksen aloitit ja lopetit pian?",
+            "body": ""
+          },
+          {
+            "title": "Mikä kappale olisi sisääntulomusiikkisi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on viimeisin ostamasi asia, josta pidät todella paljon?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on lempivuodenaikasi ja miksi?",
+            "body": ""
+          },
+          {
+            "title": "Mihin paikkaan palaisit vaikka heti huomenna?",
+            "body": ""
+          },
+          {
+            "title": "Kenet fiktiivisen hahmon haluaisit työkaveriksesi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä tuoksu vie sinut suoraan takaisin lapsuuteen?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Hassuja kysymyksiä",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Mikä on oudoin asia, johon uskoit lapsena?",
+            "body": ""
+          },
+          {
+            "title": "Mikä olisi omaelämäkertasi nimi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on huonoin hiustyyli, joka sinulla on koskaan ollut?",
+            "body": ""
+          },
+          {
+            "title": "Jos lemmikkisi osaisi puhua, mistä se valittaisi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on hyödyttömin tietämäsi fakta?",
+            "body": ""
+          },
+          {
+            "title": "Minkä nimen antaisit veneelle?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on järjettömin pelkosi?",
+            "body": ""
+          },
+          {
+            "title": "Jos olisit vihannes, mikä vihannes olisit?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on oudoin ruokayhdistelmä, josta pidät salaa?",
+            "body": ""
+          },
+          {
+            "title": "Mikä olisi showpaininimesi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on hölmöin asia, josta olet koskaan väitellyt?",
+            "body": ""
+          },
+          {
+            "title": "Mitä emojia käytät aivan liikaa?",
+            "body": ""
+          },
+          {
+            "title": "Jos elämässäsi olisi taustanauru, milloin se kuuluisi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on huonoin lahja, jonka olet koskaan saanut?",
+            "body": ""
+          },
+          {
+            "title": "Minkä sanan kirjoitat aina väärin?",
+            "body": ""
+          },
+          {
+            "title": "Mikä eläin olisi töykein, jos se osaisi puhua?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on käytetyin tekosyysi myöhästymiselle?",
+            "body": ""
+          },
+          {
+            "title": "Mitä poissaoloviestissäsi lukisi, jos voisit olla täysin rehellinen?",
+            "body": ""
+          },
+          {
+            "title": "Jos saisit syödä loppuelämäsi vain yhtä ruokaa, mitä se olisi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on naurettavin asia, jota olet googlannut tässä kuussa?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Kumpi mieluummin",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Olisiko sinulla mieluummin nelipäiväinen työviikko vai kuukausi lisälomaa?",
+            "body": ""
+          },
+          {
+            "title": "Olisitko mieluummin osallistumatta enää yhteenkään palaveriin vai vastaamatta enää yhteenkään sähköpostiin?",
+            "body": ""
+          },
+          {
+            "title": "Työskentelisitkö mieluummin rannalta vai mökiltä metsän keskeltä?",
+            "body": ""
+          },
+          {
+            "title": "Olisiko sinulla mieluummin lentokyky vai olisitko näkymätön?",
+            "body": ""
+          },
+          {
+            "title": "Ottaisitko mieluummin ilmaisen kahvin loppuelämäksesi vai ilmaisen lounaan loppuelämäksesi?",
+            "body": ""
+          },
+          {
+            "title": "Puhuisitko mieluummin kaikkia kieliä vai soittaisitko kaikkia soittimia?",
+            "body": ""
+          },
+          {
+            "title": "Aloittaisitko työt mieluummin kello 6 aamulla vai lopettaisitko kello 21 illalla?",
+            "body": ""
+          },
+          {
+            "title": "Olisiko sinulla mieluummin oma kokki vai oma kuljettaja?",
+            "body": ""
+          },
+          {
+            "title": "Lukisitko mieluummin ajatuksia vai näkisitkö tulevaisuuteen?",
+            "body": ""
+          },
+          {
+            "title": "Eläisitkö mieluummin ilman musiikkia vai ilman elokuvia?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "Kaksi vaihtoehtoa, yksi valinta: nämä toimivat hyvin kyselynä. Lisää vaihtoehtoja löydät sivultamme [kumpi mieluummin -kysymykset](/tools/would-you-rather-questions)."
+        ]
+      },
+      {
+        "title": "Kumpi vai kampi",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Kahvi vai tee?",
+            "body": ""
+          },
+          {
+            "title": "Aamuvirkku vai yökukkuja?",
+            "body": ""
+          },
+          {
+            "title": "Mac vai Windows?",
+            "body": ""
+          },
+          {
+            "title": "Kissat vai koirat?",
+            "body": ""
+          },
+          {
+            "title": "Ranta vai vuoret?",
+            "body": ""
+          },
+          {
+            "title": "Tumma tila vai vaalea tila?",
+            "body": ""
+          },
+          {
+            "title": "Puhelu vai viesti?",
+            "body": ""
+          },
+          {
+            "title": "Kirjat vai podcastit?",
+            "body": ""
+          },
+          {
+            "title": "Makea vai suolainen?",
+            "body": ""
+          },
+          {
+            "title": "Kesä vai talvi?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "Nopein kysymystyyppi vastata. Sata muuta löydät täältä: [kumpi vai kampi -kysymykset](/guides/this-or-that-questions)."
+        ]
+      },
+      {
+        "title": "Työkysymyksiä",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Mikä on yksi asia, jonka parissa työskentelet ja josta olet innoissasi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on paras työkalu, jonka otit käyttöön tänä vuonna?",
+            "body": ""
+          },
+          {
+            "title": "Mitä työtapaa yrität parhaillaan rakentaa?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on paras palaveri, jossa olet koskaan ollut, ja miksi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on yksi asia, joka tekisi viikostasi helpomman?",
+            "body": ""
+          },
+          {
+            "title": "Kuka on opettanut sinulle eniten töissä?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on virhe, joka opetti sinulle jotain?",
+            "body": ""
+          },
+          {
+            "title": "Miltä täydellinen työpäivä näyttää sinulle?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on yksi asia, jonka muuttaisit työtavoissamme?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on hyödyllisin asia, jonka olet oppinut tiimikaveriltasi?",
+            "body": ""
+          },
+          {
+            "title": "Mihin aikaan päivästä olet kaikkein keskittynein?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on lempitapasi juhlistaa onnistumista?",
+            "body": ""
+          },
+          {
+            "title": "Minkä taidon haluaisit oppia joltakulta tässä tiimissä?",
+            "body": ""
+          },
+          {
+            "title": "Mikä halusit olla isona?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on yksi asia tehtävälistallasi, jota lykkäät jatkuvasti?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on paras palaute, jonka olet saanut?",
+            "body": ""
+          },
+          {
+            "title": "Mistä projektista olet ylpeä?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on kikkasi hitaan iltapäivän selättämiseen?",
+            "body": ""
+          },
+          {
+            "title": "Mikä oli eilisen pieni onnistuminen?",
+            "body": ""
+          },
+          {
+            "title": "Jos voisit automatisoida yhden työtehtävän, mikä se olisi?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Tutustumiskysymyksiä",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Missä vartuit?",
+            "body": ""
+          },
+          {
+            "title": "Mikä asia sinussa yllättäisi meidät?",
+            "body": ""
+          },
+          {
+            "title": "Mistä perheesi tai kulttuurisi perinteestä pidät erityisesti?",
+            "body": ""
+          },
+          {
+            "title": "Miten päädyit nykyiselle alallesi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on paras matka, jonka olet koskaan tehnyt?",
+            "body": ""
+          },
+          {
+            "title": "Mitä kieliä puhut, edes vähän?",
+            "body": ""
+          },
+          {
+            "title": "Mitä luet, katsot tai kuuntelet juuri nyt?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on sinulle tärkeä asia?",
+            "body": ""
+          },
+          {
+            "title": "Miten nollaat tilanteen työpäivän jälkeen?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on paras konsertti tai tapahtuma, jossa olet käynyt?",
+            "body": ""
+          },
+          {
+            "title": "Onko sinulla lemmikkejä? Kerro niistä.",
+            "body": ""
+          },
+          {
+            "title": "Mikä on ruokalaji, jota osaat kokata hyvin?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on lempipaikkasi kotikaupungissasi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on parasta asuinpaikassasi?",
+            "body": ""
+          },
+          {
+            "title": "Mitä sellaista haluaisit tehdä ennen vuoden loppua?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Etätyökysymyksiä",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Millainen näkymä on sieltä, missä työskentelet tänään?",
+            "body": ""
+          },
+          {
+            "title": "Mistä asiasta etätyössä et luopuisi mistään hinnasta?",
+            "body": ""
+          },
+          {
+            "title": "Mitä yhtä asiaa kaipaat toimistolta?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on parasta kotityöpisteessäsi?",
+            "body": ""
+          },
+          {
+            "title": "Mitä teet lounastauollasi?",
+            "body": ""
+          },
+          {
+            "title": "Onko sinulla etätyöuniformua?",
+            "body": ""
+          },
+          {
+            "title": "Kuka on suosikkityökaverisi, joka ei kuulu tähän tiimiin (lemmikit lasketaan)?",
+            "body": ""
+          },
+          {
+            "title": "Minkä aikavyöhykkeen kanssa työskentelet mieluiten?",
+            "body": ""
+          },
+          {
+            "title": "Miten aloitat työpäiväsi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on suosikkitaustaäänesi työskennellessäsi?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Kausikysymykset (syksy ja halloween)",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Mikä on suosikkisyysruokasi tai -juomasi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on paras halloween-asu, jota olet koskaan käyttänyt?",
+            "body": ""
+          },
+          {
+            "title": "Mikä elokuva tuntuu sinusta aina syksyltä?",
+            "body": ""
+          },
+          {
+            "title": "Pumpkin spice: tykkäätkö vai jätätkö väliin?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on pelottavin elokuva, jonka olet katsonut loppuun asti?",
+            "body": ""
+          },
+          {
+            "title": "Mitä karkkia toivot saavasi ja mitä annat mieluiten pois?",
+            "body": ""
+          },
+          {
+            "title": "Mitä juhlaperinnettä odotat innolla joka vuosi?",
+            "body": ""
+          },
+          {
+            "title": "Jos pukeutuisit jonkun työkaverisi ammattiin, millainen asusi olisi?",
+            "body": ""
+          },
+          {
+            "title": "Kotoisa ilta sisällä vai ilta ulkona ystävien kanssa?",
+            "body": ""
+          },
+          {
+            "title": "Mitä on listallasi loppuvuodeksi?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on parasta tässä vuodenajassa siellä, missä asut?",
+            "body": ""
+          },
+          {
+            "title": "Mikä tuoksu kertoo sinulle vuodenaikojen vaihtumisesta?",
+            "body": ""
+          },
+          {
+            "title": "Mitä haluaisit kokeilla ennen talvea?",
+            "body": ""
+          },
+          {
+            "title": "Minkä lapsuuden pelottavan tarinan muistat edelleen?",
+            "body": ""
+          },
+          {
+            "title": "Mikä on suosikkitapasi viettää sadepäivää?",
+            "body": ""
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloor on virtuaalinen toimisto pienille tiimeille. Siinä on tiimichat kerroksen vieressä päivän kysymystä varten ja palaverihuone aamupalaveria varten, jossa kysymykseen vastataan ääneen. Loppupäivän ihmiset istuvat työpöytiensä ääressä samassa kerroksessa, jossa sen aloittama keskustelu on vain lyhyen kävelymatkan päässä. Se on ilmainen enintään 3 hengelle ja maksaa 29 $ kuukaudessa koko tiimille."
+    },
+    "faq": [
+      {
+        "q": "Mikä on hyvä päivän kysymys työssä?",
+        "a": "Sellainen, johon kuka tahansa voi vastata yhdellä lauseella, joka kertoo jotain vastaajasta ja jonka voi hyvin jakaa töissä, kuten ”Mikä on parasta, mitä olet syönyt tällä viikolla?” tai ”Kahvi vai tee?”."
+      },
+      {
+        "q": "Miten päivän kysymys toteutetaan työssä?",
+        "a": "Julkaise yksi kysymys samaan aikaan joka aamu tiimin chat-kanavalla tai aamupalaverin alussa, vastaa siihen ensin itse ja vaihda kysyjää viikoittain."
+      },
+      {
+        "q": "Miten päivän kysymystä pidetään yllä?",
+        "a": "Pidä kysymykset helppoina, sekoita hauskoja kysymyksiä satunnaisiin työkysymyksiin ja anna eri ihmisten kysyä. Kun ihmiset alkavat ehdottaa kysymyksiä, rutiini pyörii itsestään."
+      },
+      {
+        "q": "Kannattaako päivän kysymyksen olla kysely?",
+        "a": "Kaksivaihtoehtoiset kysymykset, kuten ”kumpi vai kampi” ja ”kumman valitsisit”, toimivat hyvin kyselyinä. Avoimet kysymykset saavat parempia vastauksia chatissa."
+      }
+    ]
+  },
+  "holidayParty": {
+    "label": "Ideoita etäpikkujouluihin",
+    "meta": {
+      "title": "Etäpikkujoulut: 20 ilmaista peliä ja aktiviteettia etätiimeille",
+      "description": "20 ilmaista ideaa etätiimin pikkujouluihin: pelejä kuten bingo, tietovisa ja tavaranetsintä, 60 minuutin ohjelma, maiden rajat ylittävä salainen joulupukki ja vinkit aikavyöhykkeiden huomioimiseen."
+    },
+    "title": "Ideoita etäpikkujouluihin <em>etätiimeille.</em>",
+    "intro": "Vuoden päätösjuhla on se tapahtuma, jota useimmat etätiimit oikeasti odottavat, ja jonka voi helpoiten pilata: liian pitkä ohjelma, liikaa pelejä, puolet tiimistä unessa toisella aikavyöhykkeellä. Tässä on 20 ilmaista peliä ja aktiviteettia, toimiva 60 minuutin ohjelmarunko ja ohjeet suunnitteluun niin, että ihmiset tulevat mukaan omasta halustaan.",
+    "sections": [
+      {
+        "title": "Suunnittele ensin",
+        "items": [
+          {
+            "title": "Valitse useimmille sopiva aika",
+            "body": "Eri aikavyöhykkeillä toimivalla tiimillä yhteistä aikaa on usein vain tunti. Käytä [aikavyöhykesuunnittelijaa](/tools/time-zone-meeting-planner), valitse vähiten huono aika ja tarjoa yövuoroon joutuville toinen, pienempi tapaaminen."
+          },
+          {
+            "title": "Pidä kesto tunnissa",
+            "body": "Kuusikymmentä minuuttia selkeällä lopetuksella houkuttelee enemmän osallistujia kuin avoin ilta. Halukkaat voivat jäädä pidempään."
+          },
+          {
+            "title": "Järjestä se työajalla",
+            "body": "Pidä juhlat mahdollisuuksien mukaan työajalla. Juhliin, joiden takia täytyy uhrata oma ilta, osallistuu vähemmän väkeä."
+          },
+          {
+            "title": "Kutsu sitä vuoden päätösjuhlaksi",
+            "body": "Kaikki eivät vietä samoja juhlapyhiä. Vuoden päätösjuhla ottaa kaikki huomioon ja sallii silti jouluneuleen."
+          },
+          {
+            "title": "Lähetä budjetti, älä laatikkoa",
+            "body": "Jos ruokaan tai juomaan on budjettia, henkilökohtainen kulukorvaus toimii maiden välillä paljon paremmin kuin pakettien lähettäminen."
+          }
+        ]
+      },
+      {
+        "title": "Pelit",
+        "items": [
+          {
+            "title": "Pikkujoulubingo",
+            "detail": "15 minuuttia · mikä tahansa koko",
+            "body": "Kortit, joissa on asioita kuten ”lemmikki ilmestyy ruutuun” tai ”jouluneule”. Ensimmäinen täysi suora voittaa. Ilmaiset generaattorit luovat kortit."
+          },
+          {
+            "title": "Vuoden tietovisa",
+            "detail": "20 minuuttia · 3–5 hengen joukkueet",
+            "body": "Kysymyksiä kuluneesta vuodesta töissä ja maailmalla. Pienet tiimit pienryhmähuoneissa, yksi lähettää vastaukset."
+          },
+          {
+            "title": "Tavaranetsintä kotona",
+            "detail": "10 minuuttia · mikä tahansa koko",
+            "body": "Huuda esine (”jotain punaista”, ”keittiösi vanhin tavara”), ja ensimmäisenä sen kameran eteen tuonut saa pisteen."
+          },
+          {
+            "title": "Arvaa vauvakuva",
+            "detail": "15 minuuttia · enintään 20",
+            "body": "Jokainen lähettää lapsuuskuvansa etukäteen, ja tiimi arvaa, kuka on kukin. Kerää kuvat viikkoa ennen."
+          },
+          {
+            "title": "Pikkujoulujen tämä vai tuo",
+            "detail": "5 minuuttia · mikä tahansa koko",
+            "body": "”Oikea kuusi vai tekokuusi?”, ”Lunta vai aurinkoa?”: nopeita valintoja, ja muutama perustelee. Lisää [tämä vai tuo -kysymyksiämme](/guides/this-or-that-questions)."
+          },
+          {
+            "title": "Kaksi totuutta ja yksi valhe, pikkujouluversio",
+            "detail": "15 minuuttia · enintään 12",
+            "body": "Kolme väitettä menneistä juhlapyhistä, joista yksi on valhe. Katso [ideamme kahteen totuuteen ja yhteen valheeseen](/tools/two-truths-and-a-lie)."
+          },
+          {
+            "title": "Piirrä yhteiselle taululle",
+            "detail": "15 minuuttia · 4–8 hengen joukkueet",
+            "body": "Yksi piirtää pikkujouluaiheisen sanan [yhteiselle taululle](/online-whiteboard), muut arvaavat aikaa vastaan."
+          },
+          {
+            "title": "Tunnista kappale",
+            "detail": "10 minuuttia · mikä tahansa koko",
+            "body": "Soita pikkujoululaulun ensimmäiset viisi sekuntia; ensimmäisenä nimen kirjoittanut voittaa. Jaa näyttösi äänet päällä."
+          },
+          {
+            "title": "Emoji-elokuvavisa",
+            "detail": "10 minuuttia · mikä tahansa koko",
+            "body": "Kirjoita pikkujouluelokuva emojeilla chattiin ja anna muiden arvata. Helppo järjestää ja yllättävän kilpailuhenkinen."
+          },
+          {
+            "title": "Vuosi yhdessä kuvassa",
+            "detail": "15 minuuttia · enintään 15",
+            "body": "Jokainen jakaa yhden kuvan vuodestaan ja kertoo miksi. Usein vähäeleisesti monen juhlan ikimuistoisin hetki."
+          }
+        ]
+      },
+      {
+        "title": "Aktiviteetit ilma voittajaa",
+        "items": [
+          {
+            "title": "Tiimipalkinnot",
+            "detail": "15 minuuttia · mikä tahansa koko",
+            "body": "Leikkimieliset palkinnot, joista on äänestetty etukäteen: paras taustakuva, auttavaisin kriisissä, vuoden paras kirjoitusvirhe."
+          },
+          {
+            "title": "Taustakuvakilpailu",
+            "detail": "5 minuuttia · mikä tahansa koko",
+            "body": "Jokainen koristelee takanaan olevan nurkan tai valitsee jouluisen videotaustan; tiimi äänestää chatissa."
+          },
+          {
+            "title": "Jouluneule- tai tonttulakkiparaati",
+            "detail": "10 minuuttia · mikä tahansa koko",
+            "body": "Kaikki näyttävät omansa kamerassa; tiimi äänestää chatissa. Vapaaehtoista, ja paperihatutkin lasketaan."
+          },
+          {
+            "title": "Kokataan tai leivotaan yhdessä",
+            "detail": "45 minuuttia · enintään 12",
+            "body": "Lähetä yksinkertainen resepti viikkoa ennen ja tehkää se yhdessä kamerat suunnattuina keittiöön."
+          },
+          {
+            "title": "Kiitoskierros",
+            "detail": "10 minuuttia · enintään 15",
+            "body": "Jokainen kiittää yhtä tiimiläistä jostain tietystä asiasta kuluneelta vuodelta. Lyhyt hetki, joka jää mieleen."
+          },
+          {
+            "title": "Soittolistan jakaminen",
+            "detail": "Ennen juhlia",
+            "body": "Jokainen lisää yhden kappaleen yhteiselle soittolistalle, joka soi taustalla juhlien aikana."
+          },
+          {
+            "title": "Toiveet ensi vuodelle",
+            "detail": "10 minuuttia · mikä tahansa koko",
+            "body": "Yksi asia, jota kukin toivoo ensi vuodelta, liittyipä se työhön tai ei. Hyvä tapa lopettaa."
+          }
+        ]
+      },
+      {
+        "title": "Lahjavaihto maiden rajojen yli",
+        "items": [
+          {
+            "title": "Virtuaalinen salainen joulupukki",
+            "detail": "Järjestä kaksi viikkoa ennen",
+            "body": "Arvo nimet ilmaisen [salaisen joulupukin generaattorimme](/tools/secret-santa-generator) avulla, aseta pieni budjetti ja anna kaikille osoitteeton vaihtoehto, kuten digitaalinen lahjakortti tai e-kirja."
+          },
+          {
+            "title": "White elephant -lahjavaihto verkossa",
+            "detail": "30 minuuttia · enintään 15",
+            "body": "Jokainen ostaa digitaalisen lahjan, numerot päättävät järjestyksen ja jo avatun lahjan voi ryöstää itselleen. Toimii parhaiten, kun vetäjä pitää kirjaa ruudulla."
+          },
+          {
+            "title": "Lahjoittakaa sen sijaan yhdessä",
+            "detail": "Lahjoja ei tarvita",
+            "body": "Tiimi valitsee hyväntekeväisyyskohteen ja lahjoittaa lahjabudjetin sinne. Sopii monessa maassa toimiville tiimeille."
+          }
+        ]
+      },
+      {
+        "title": "60 minuutin ohjelmarunko",
+        "table": {
+          "head": [
+            "Aika",
+            "Mitä tapahtuu"
+          ],
+          "rows": [
+            [
+              "0–5 min",
+              "Saapuminen, musiikkia, kaikki tervehtivät"
+            ],
+            [
+              "5–15 min",
+              "Nopea peli: pikkujoulujen tämä vai tuo tai tavaranetsintä"
+            ],
+            [
+              "15–35 min",
+              "Pääpeli: tietovisa tai bingo"
+            ],
+            [
+              "35–45 min",
+              "Tiimipalkinnot tai kiitoskierros"
+            ],
+            [
+              "45–55 min",
+              "Vapaata aikaa: ihmiset siirtyvät juttelemaan pienissä ryhmissä"
+            ],
+            [
+              "55–60 min",
+              "Toiveet ensi vuodelle ja heipat"
+            ]
+          ],
+          "note": "Enintään 15 hengen tiimille. Suurempi tiimi tarvitsee pienryhmähuoneita pelejä ja vapaata aikaa varten."
+        }
+      },
+      {
+        "title": "Juhlien vetäminen virtuaalitoimistossa",
+        "body": [
+          "Videopuhelussa kaikki istuvat samassa ruudukossa ja vain yksi puhuu kerrallaan, joten lopun vapaata jutteluaikaa harvoin syntyy. Virtuaalitoimistossa tiimi voi pelata pelejä yhdessä kokoushuoneessa ja siirtyä sitten pienissä ryhmissä juttelemaan, aivan kuten oikeissa juhlissa.",
+          "Koristele mieluummin kutsu kuin ohjelmisto, pidä kamerat vapaaehtoisina ja anna hiljaisemmille jokin tehtävä: soittolistan hoitaminen, pisteiden laskeminen tai palkintojen tuomarointi."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Mihin TinyFloor sopii",
+      "body": "TinyFloor on virtuaalitoimisto pienille tiimeille. Juhlat alkavat kokoushuoneessa videon, näytön jakamisen ja pelejä varten tarkoitetun taulun kanssa, ja sen jälkeen ihmiset voivat siirtyä kahdestaan tai kolmistaan juttelemaan, aivan kuten oikeissa juhlissa. Se on ilmainen enintään 3 hengelle ja maksaa 29 $ kuukaudessa koko tiimille."
+    },
+    "faq": [
+      {
+        "q": "Miten järjestää etäpikkujoulut töissä?",
+        "a": "Valitse useimmille aikavyöhykkeille sopiva tunnin pituinen aika työajalta, suunnittele yksi nopea peli, yksi pääpeli ja lyhyt kiitoskierros, ja jätä viimeiset kymmenen minuuttia vapaaksi pienille keskusteluille."
+      },
+      {
+        "q": "Mitkä ovat hyviä ilmaisia pelejä etäpikkujouluihin?",
+        "a": "Pikkujoulubingo, loppuvuoden tietovisa, aarrejahti kotona, arvaa vauva ja piirtämispelit yhteisellä taululla. Kaikkiin tarvitaan vain puhelu ja vähän valmistelua."
+      },
+      {
+        "q": "Kuinka pitkät etäpikkujoulujen pitäisi olla?",
+        "a": "Noin tunti. Tarpeeksi pitkä kahdelle pelille ja kiitoskierrokselle; tarpeeksi lyhyt, jotta ihmiset eivät ala kyllästyä."
+      },
+      {
+        "q": "Miten salainen joulupukki järjestetään etätiimissä?",
+        "a": "Arvo nimet verkossa, aseta pieni budjetti ja käytä digitaalisia lahjoja, kuten lahjakortteja tai e-kirjoja, jotta kenenkään ei tarvitse jakaa osoitettaan tai maksaa kansainvälisiä postikuluja."
+      },
+      {
+        "q": "Pitäisikö juhlaa kutsua loppuvuoden juhlaksi vai pikkujouluiksi?",
+        "a": "Tiimille, jossa on ihmisiä eri maista ja kulttuureista, loppuvuoden juhla ottaa kaikki mukaan. Joulua juhlivat voivat silti käyttää jouluneuletta."
       }
     ]
   }

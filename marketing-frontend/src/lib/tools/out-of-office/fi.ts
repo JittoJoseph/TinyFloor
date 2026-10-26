@@ -66,6 +66,26 @@ const fi: OooContent = {
           detail: "Työkavereille",
           body: "\"Lomalla 3.11. asti. Kiireellistä? Ota yhteyttä Ana Limaan.\" Oman yrityksen sisällä lyhyempi on yleensä parempi.",
         },
+        {
+          title: "Joulu ja uusi vuosi",
+          detail: "Vuodenvaihteen loma",
+          body: "\"Kiitos viestistäsi. Olen lomalla pyhien ajan ja palaan toimistolle maanantaina 4. tammikuuta. Vastaan viestiisi palattuani. Kiireellisissä asioissa ota yhteyttä Ana Limaan (ana@example.com). Toivotan hyvää uutta vuotta.\"",
+        },
+        {
+          title: "Puoli päivää",
+          detail: "Takaisin samana päivänä",
+          body: "\"Kiitos viestistäsi. Olen poissa toimistolta tämän iltapäivän ja vastaan huomisaamuna.\" Muutaman tunnin poissaololle pelkkä chat-tila riittää usein yksistään.",
+        },
+        {
+          title: "Asiakkaille",
+          detail: "Organisaation ulkopuolisille",
+          body: "\"Kiitos yhteydenotostasi. Olen poissa toimistolta maanantaihin 2. marraskuuta asti. Tilauksiin ja tukeen liittyvissä asioissa kirjoita osoitteeseen support@example.com, josta tiimimme vastaa yhden työpäivän kuluessa.\" Outlookissa tämän viestin voi lähettää vain organisaation ulkopuolisille.",
+        },
+        {
+          title: "Viimeinen työpäivä",
+          detail: "Työsuhteen päättyminen",
+          body: "\"Kiitos viestistäsi. Olen lopettanut työt Example Ltd:ssä. Kaikissa hoitamissani asioissa ota yhteyttä Ana Limaan (ana@example.com), joka ottaa vastuun tehtävistäni.\" Yritykset pitävät tällaista vastausta yleensä lähteneen työntekijän osoitteessa muutaman kuukauden ajan.",
+        },
       ],
     },
     {
@@ -73,6 +93,7 @@ const fi: OooContent = {
       body: [
         "Avaa uudessa Outlookissa ja Outlookin verkkoversiossa Asetukset (rataskuvake), siirry kohtaan Tili ja sitten Automaattiset vastaukset. Ota automaattiset vastaukset käyttöön, valitse, että ne lähetetään vain tiettynä ajanjaksona, aseta alku- ja loppupäivä ja liitä viestisi. Voit kirjoittaa organisaatiosi ulkopuolisille eri viestin, ja se kannattaa: työkaverit tarvitsevat vähemmän selityksiä kuin asiakkaat.",
         "Perinteisessä Outlookissa Windowsille valitse Tiedosto ja sitten Automaattiset vastaukset ja täytä samat tiedot. Jos asetat loppupäivän, Outlook poistaa vastaukset käytöstä itse, joten sitä ei tarvitse muistaa.",
+        "Valitse Outlook for Macissa Työkalut ja sitten Automaattiset vastaukset. iPhonen tai Android-puhelimen Outlook-sovelluksessa napauta profiilikuvaasi, sitten Asetukset-rataskuvaketta, valitse työtilisi ja napauta Automaattiset vastaukset. Käytitpä kumpaa tahansa, vastaus tallennetaan tilillesi, joten sen ottaminen käyttöön yhdessä paikassa ottaa sen käyttöön kaikkialla.",
       ],
     },
     {
@@ -130,6 +151,22 @@ const fi: OooContent = {
     {
       q: "Onko tämä poissaoloviestin generaattori ilmainen?",
       a: "On, ja se toimii kokonaan selaimessasi: kirjoittamiasi nimiä, päivämääriä ja sähköposteja ei lähetetä minnekään. Kopioi viesti Outlookiin, Gmailiin, Slackiin tai Teamsiin.",
+    },
+    {
+      q: "Mitä OOO tarkoittaa?",
+      a: "OOO on lyhenne englanninkielisistä sanoista \"out of office\" (poissa toimistolta). Sitä käytetään kalentereissa, chat-tiloissa ja sähköpostien aiheissa (kuten \"OOO maanantaihin asti\") kertomaan, että henkilö on poissa eikä vastaa heti.",
+    },
+    {
+      q: "Onko automaattinen vastaus sama asia kuin poissaoloviesti?",
+      a: "Kyllä. Outlookissa poissaoloviestiä kutsutaan automaattiseksi vastaukseksi ja Gmailissa lomavastaajaksi. Ne kaikki lähettävät yhden vastauksen ihmisille, jotka kirjoittavat sinulle poissaolosi aikana.",
+    },
+    {
+      q: "Miten asetan poissaoloviestin Teamsissa?",
+      a: "Napsauta profiilikuvaasi, valitse Aseta tilaviesti ja sitten Ajoita poissaolo. Ota automaattiset vastaukset käyttöön, kirjoita viestisi ja aseta päivämäärät. Teams näyttää sinut poissaolevana, ja Outlook lähettää saman viestin kaikille, jotka lähettävät sinulle sähköpostia.",
+    },
+    {
+      q: "Miten asetan poissaoloviestin puhelimen Outlookissa?",
+      a: "Napauta Outlook-sovelluksessa profiilikuvaasi, sitten Asetukset-rataskuvaketta, valitse työtilisi ja napauta Automaattiset vastaukset. Ota se käyttöön, kirjoita viestisi ja aseta päivämäärät.",
     },
   ],
 };

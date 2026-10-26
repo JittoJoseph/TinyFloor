@@ -627,8 +627,8 @@
   "proximityChat": {
     "label": "Vad är närhetschatt?",
     "meta": {
-      "title": "Vad är närhetschatt? Så funkar det i spel och på jobbet",
-      "description": "Vad närhetschatt är, hur det funkar, vilka spel som använder det och hur virtuella kontor använder det så att team pratar genom att gå fram till varandra."
+      "title": "Vad är närhetschatt? Spel som har det och hur det funkar på jobbet",
+      "description": "Med närhetschatt pratar du bara med dem som är nära dig. Så funkar det, spelen som har det (Lethal Company, Among Us, Minecraft, R.E.P.O.) och hur virtuella kontor använder det på jobbet."
     },
     "title": "Vad är <em>närhetschatt?</em>",
     "intro": "Med närhetschatt pratar du med dem som är nära dig i ett virtuellt rum, och inte med alla andra. Det började i spel, där det gör världar levande, och är nu hur virtuella kontor låter team prata utan möteslänkar.",
@@ -641,26 +641,50 @@
         ]
       },
       {
-        "title": "Närhetschatt i spel",
+        "title": "Spel med närhetschatt",
         "body": [
-          "Spel använder det för att göra samtal till en del av världen. Några kända exempel:"
+          "Spel använder det för att göra samtal till en del av världen: de du kan höra är de du kan se. Några av de mest kända:"
         ],
         "items": [
           {
-            "title": "Sociala deduktionsspel",
-            "body": "Moddar till Among Us lade till närhetsröst, så att du bara hör spelarna nära dig och kan viska fram planer."
+            "title": "Among Us",
+            "detail": "Med en modd",
+            "body": "Modden BetterCrewLink lägger till närhetsröst, så att du bara hör spelarna nära dig och kan viska planer utan att gruppen hör."
           },
           {
-            "title": "Överlevnadsspel",
-            "body": "Rust och DayZ använder närhetsröst, så att möta en främling betyder att faktiskt prata med hen."
+            "title": "Minecraft",
+            "detail": "Med en modd",
+            "body": "Modden Simple Voice Chat, eller ett insticksprogram på en server, ger Java-världar närhetsröst så att en delad värld känns som en riktig plats."
           },
           {
-            "title": "Samarbetsspel",
-            "body": "I Lethal Company blir en lagkamrat som vandrar iväg svår att höra, och det är halva spänningen."
+            "title": "Lethal Company",
+            "detail": "Inbyggt",
+            "body": "En lagkamrat som går iväg blir svår att höra, och till slut omöjlig, vilket är halva spänningen."
           },
           {
-            "title": "Sandlådespel",
-            "body": "Minecraft-servrar lägger till närhetsröst med moddar, så att en delad värld känns som en riktig plats."
+            "title": "R.E.P.O. och Peak",
+            "detail": "Inbyggt",
+            "body": "Nyare samarbetsspel för små grupper är byggda kring närhetsröst: ni ropar, ni kommer ifrån varandra, ni hittar varandra igen."
+          },
+          {
+            "title": "Phasmophobia",
+            "detail": "Inbyggt",
+            "body": "Din röst hörs bara en viss bit, och spöket kan också höra den. En walkie-talkie når resten av teamet."
+          },
+          {
+            "title": "Sea of Thieves",
+            "detail": "Inbyggt",
+            "body": "Besättningar pratar över skeppet, och med främlingar när två skepp lägger sig sida vid sida."
+          },
+          {
+            "title": "Rust och DayZ",
+            "detail": "Inbyggt",
+            "body": "Att möta en främling innebär att faktiskt prata med dem, vilket gör ett överlevnadsspel till ett socialt spel."
+          },
+          {
+            "title": "GTA-rollspelsservrar",
+            "detail": "På FiveM",
+            "body": "Rollspelsservrar använder närhetsröst, så att ett samtal på gatan stannar på gatan."
           }
         ]
       },
@@ -713,15 +737,19 @@
     "faq": [
       {
         "q": "Vad betyder närhetschatt?",
-        "a": "Att du bara kan prata med dem som är nära dig i ett virtuellt rum. Gå närmare för att prata; gå iväg så tar samtalet slut."
+        "a": "Det betyder att du bara kan prata med dem som är nära dig i ett virtuellt rum. Gå närmare någon för att prata; gå därifrån så tar samtalet slut."
       },
       {
         "q": "Är närhetschatt privat?",
-        "a": "Bara de nära dig hör dig, vilket är mer privat än en kanal där alla är med. Med gå fram och ring hörs inget förrän du startar ett samtal."
+        "a": "Bara personer nära dig kan höra dig, vilket är mer privat än en kanal där alla är med. I varianten där du går fram hörs ingenting förrän du startar ett samtal."
       },
       {
         "q": "Vilka spel har närhetschatt?",
-        "a": "Rust, DayZ och Lethal Company har det inbyggt, och moddar lägger till det i spel som Among Us och Minecraft."
+        "a": "Lethal Company, R.E.P.O., Peak, Phasmophobia, Sea of Thieves, Rust och DayZ har det inbyggt. Moddar lägger till det i Among Us (BetterCrewLink) och Minecraft (Simple Voice Chat)."
+      },
+      {
+        "q": "Hur får man närhetschatt i Minecraft?",
+        "a": "Installera modden Simple Voice Chat på servern och i varje spelares spel. Spelare nära varandra kan sedan prata, och röster blir tystare med avståndet."
       },
       {
         "q": "Kan man använda närhetschatt på jobbet?",
@@ -4654,6 +4682,826 @@
       {
         "q": "Vad är skillnaden mellan en dagordning och ett protokoll?",
         "a": "Dagordningen är planen för mötet, skriven i förväg. Protokollet är dokumentationen av vad som beslutades, skrivet under och efter mötet."
+      }
+    ]
+  },
+  "questionOfTheDay": {
+    "label": "Dagens fråga på jobbet",
+    "meta": {
+      "title": "120 idéer för dagens fråga på jobbet: roliga och enkla att svara på",
+      "description": "120 idéer för dagens fråga på jobbet: roliga och underhållande frågor, pest eller kolera, antingen eller, jobbfrågor, lära känna-frågor och säsongsfrågor, med tips på hur du kör en daglig fråga i teamchatten eller på ert standup-möte."
+    },
+    "title": "Dagens fråga <em>på jobbet.</em>",
+    "intro": "Dagens fråga är en enkel fråga som ditt team svarar på varje morgon: i teamchatten, i början av ert standup-möte eller som en omröstning. Det tar en minut, ingen behöver förbereda sig, och på några veckor lär sig folk mer om varandra än under ett helt år av statusmöten. Här är 120 frågor att välja mellan, uppdelade efter stämning, och några tips på hur du håller igång det.",
+    "sections": [
+      {
+        "title": "Så kör du dagens fråga",
+        "items": [
+          {
+            "title": "Välj en plats",
+            "body": "En kanal i [teamchatten](/team-chat) som heter #dagens-fråga, eller första minuten av ert [standup-möte](/virtual-standup). Samma plats varje dag gör det till en vana."
+          },
+          {
+            "title": "Posta vid samma tidpunkt",
+            "body": "Det första som händer på morgonen för den tidigaste tidszonen, så att alla ser den under sin arbetsdag."
+          },
+          {
+            "title": "Håll svaren korta",
+            "body": "Ett ord, en mening eller en emoji. Enkla frågor får svar, svåra möts av tystnad."
+          },
+          {
+            "title": "Låt turen gå runt",
+            "body": "Låt en ny person ansvara för frågan varje vecka. Folk börjar bidra med egna idéer, och frågorna blir bara bättre."
+          },
+          {
+            "title": "Svara först själv",
+            "body": "Den som lägger ut frågan svarar på den direkt. Det sätter tonen och visar hur långt svaret kan vara, så slipper någon annan vara först."
+          }
+        ]
+      },
+      {
+        "title": "Roliga frågor",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Vad är det godaste du har ätit den här veckan?",
+            "body": ""
+          },
+          {
+            "title": "Vad är en liten sak som fick dig att le nyligen?",
+            "body": ""
+          },
+          {
+            "title": "Vilken app på din telefon öppnar du oftast?",
+            "body": ""
+          },
+          {
+            "title": "Vad är ditt favoritsnacks när du jobbar?",
+            "body": ""
+          },
+          {
+            "title": "Vad var ditt allra första jobb?",
+            "body": ""
+          },
+          {
+            "title": "Vilken färdighet skulle du vilja lära dig i år?",
+            "body": ""
+          },
+          {
+            "title": "Vad är det bästa råd du någonsin har fått?",
+            "body": ""
+          },
+          {
+            "title": "Hur tillbringar du helst en söndag?",
+            "body": ""
+          },
+          {
+            "title": "Vad har du på ditt skrivbord just nu som du inte kan förklara?",
+            "body": ""
+          },
+          {
+            "title": "Vilken film kan du se om och om igen?",
+            "body": ""
+          },
+          {
+            "title": "Om du fick prova på vilket jobb som helst under en dag, vad skulle det vara?",
+            "body": ""
+          },
+          {
+            "title": "Vad är din dolda talang?",
+            "body": ""
+          },
+          {
+            "title": "Vad är det mest användbara du äger?",
+            "body": ""
+          },
+          {
+            "title": "Vilken hobby har du påbörjat men sedan lagt ner?",
+            "body": ""
+          },
+          {
+            "title": "Vilken låt skulle vara din entrélåt?",
+            "body": ""
+          },
+          {
+            "title": "Vad är det senaste du köpte som du verkligen älskar?",
+            "body": ""
+          },
+          {
+            "title": "Vilken är din favoritårstid och varför?",
+            "body": ""
+          },
+          {
+            "title": "Vilken plats skulle du vilja resa tillbaka till redan imorgon?",
+            "body": ""
+          },
+          {
+            "title": "Vilken fiktiv karaktär skulle du vilja ha som kollega?",
+            "body": ""
+          },
+          {
+            "title": "Vilken doft tar dig direkt tillbaka till barndomen?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Underhållande frågor",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Vad är det konstigaste du trodde på som barn?",
+            "body": ""
+          },
+          {
+            "title": "Vad skulle din självbiografi heta?",
+            "body": ""
+          },
+          {
+            "title": "Vilken är den värsta frisyren du någonsin har haft?",
+            "body": ""
+          },
+          {
+            "title": "Om ditt husdjur kunde prata, vad skulle det klaga på?",
+            "body": ""
+          },
+          {
+            "title": "Vilken är den mest onödiga fakta du kan?",
+            "body": ""
+          },
+          {
+            "title": "Vad skulle du döpa en båt till?",
+            "body": ""
+          },
+          {
+            "title": "Vad är din mest irrationella rädsla?",
+            "body": ""
+          },
+          {
+            "title": "Om du var en grönsak, vilken skulle du vara?",
+            "body": ""
+          },
+          {
+            "title": "Vilken är den konstigaste matkombinationen du i hemlighet gillar?",
+            "body": ""
+          },
+          {
+            "title": "Vad skulle ditt wrestlingnamn vara?",
+            "body": ""
+          },
+          {
+            "title": "Vad är det löjligaste du någonsin har bråkat om?",
+            "body": ""
+          },
+          {
+            "title": "Vilken emoji använder du alldeles för mycket?",
+            "body": ""
+          },
+          {
+            "title": "Om ditt liv hade pålagda skratt, när skulle de spelas?",
+            "body": ""
+          },
+          {
+            "title": "Vad är den sämsta presenten du någonsin har fått?",
+            "body": ""
+          },
+          {
+            "title": "Vilket ord stavar du alltid fel?",
+            "body": ""
+          },
+          {
+            "title": "Vilket djur skulle vara otrevligast om det kunde prata?",
+            "body": ""
+          },
+          {
+            "title": "Vilken är din mest använda ursäkt för att komma för sent?",
+            "body": ""
+          },
+          {
+            "title": "Vad skulle ditt autosvar säga om du var helt ärlig?",
+            "body": ""
+          },
+          {
+            "title": "Om du bara fick äta en enda sak resten av livet, vad skulle det vara?",
+            "body": ""
+          },
+          {
+            "title": "Vad är det löjligaste du har googlat den här månaden?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Pest eller kolera",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Skulle du hellre ha fyradagarsvecka eller en extra månads semester?",
+            "body": ""
+          },
+          {
+            "title": "Skulle du hellre aldrig mer sitta i möten eller aldrig mer svara på mejl?",
+            "body": ""
+          },
+          {
+            "title": "Skulle du hellre jobba från en strand eller från en stuga i skogen?",
+            "body": ""
+          },
+          {
+            "title": "Skulle du hellre kunna flyga eller vara osynlig?",
+            "body": ""
+          },
+          {
+            "title": "Skulle du hellre ha gratis kaffe resten av livet eller gratis lunch resten av livet?",
+            "body": ""
+          },
+          {
+            "title": "Skulle du hellre tala alla språk eller spela alla instrument?",
+            "body": ""
+          },
+          {
+            "title": "Skulle du hellre börja jobba klockan 6 på morgonen eller sluta klockan 21 på kvällen?",
+            "body": ""
+          },
+          {
+            "title": "Skulle du hellre ha en personlig kock eller en personlig chaufför?",
+            "body": ""
+          },
+          {
+            "title": "Skulle du hellre läsa tankar eller se in i framtiden?",
+            "body": ""
+          },
+          {
+            "title": "Skulle du hellre leva utan musik eller utan film?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "Två alternativ, ett val – de fungerar utmärkt som en omröstning. Det finns fler i våra [pest eller kolera-frågor](/tools/would-you-rather-questions)."
+        ]
+      },
+      {
+        "title": "Antingen eller",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Kaffe eller te?",
+            "body": ""
+          },
+          {
+            "title": "Morgonmänniska eller nattuggla?",
+            "body": ""
+          },
+          {
+            "title": "Mac eller Windows?",
+            "body": ""
+          },
+          {
+            "title": "Katt eller hund?",
+            "body": ""
+          },
+          {
+            "title": "Strand eller berg?",
+            "body": ""
+          },
+          {
+            "title": "Mörkt läge eller ljust läge?",
+            "body": ""
+          },
+          {
+            "title": "Ringa eller skicka meddelande?",
+            "body": ""
+          },
+          {
+            "title": "Böcker eller poddar?",
+            "body": ""
+          },
+          {
+            "title": "Sött eller salt?",
+            "body": ""
+          },
+          {
+            "title": "Sommar eller vinter?",
+            "body": ""
+          }
+        ],
+        "body": [
+          "Det snabbaste sättet att svara. För hundra till, se våra [antingen eller-frågor](/guides/this-or-that-questions)."
+        ]
+      },
+      {
+        "title": "Jobbfrågor",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Vad är en sak du jobbar på just nu som du ser fram emot?",
+            "body": ""
+          },
+          {
+            "title": "Vilket är det bästa verktyget du började använda i år?",
+            "body": ""
+          },
+          {
+            "title": "Vilken arbetsvana försöker du bygga upp?",
+            "body": ""
+          },
+          {
+            "title": "Vilket är det bästa mötet du någonsin har varit på, och varför?",
+            "body": ""
+          },
+          {
+            "title": "Vad är en sak som skulle göra din vecka enklare?",
+            "body": ""
+          },
+          {
+            "title": "Vem har lärt dig mest på jobbet?",
+            "body": ""
+          },
+          {
+            "title": "Vad är ett misstag som har lärt dig något?",
+            "body": ""
+          },
+          {
+            "title": "Hur ser en perfekt arbetsdag ut för dig?",
+            "body": ""
+          },
+          {
+            "title": "Vad är en sak du skulle vilja ändra med hur vi arbetar?",
+            "body": ""
+          },
+          {
+            "title": "Vad är det mest användbara du har lärt dig av en kollega?",
+            "body": ""
+          },
+          {
+            "title": "När på dagen är du som mest fokuserad?",
+            "body": ""
+          },
+          {
+            "title": "Hur firar du helst en framgång?",
+            "body": ""
+          },
+          {
+            "title": "Vilken färdighet skulle du vilja lära dig av någon i det här teamet?",
+            "body": ""
+          },
+          {
+            "title": "Vad ville du bli när du blev stor?",
+            "body": ""
+          },
+          {
+            "title": "Vad är en sak på din att göra-lista som du ständigt skjuter upp?",
+            "body": ""
+          },
+          {
+            "title": "Vad är den bästa feedbacken du har fått?",
+            "body": ""
+          },
+          {
+            "title": "Vilket projekt är du stolt över?",
+            "body": ""
+          },
+          {
+            "title": "Vad är ditt knep för att ta dig igenom en seg eftermiddag?",
+            "body": ""
+          },
+          {
+            "title": "Vad var en liten framgång från igår?",
+            "body": ""
+          },
+          {
+            "title": "Om du kunde automatisera en arbetsuppgift, vilken skulle det vara?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Lära känna-frågor",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Var växte du upp?",
+            "body": ""
+          },
+          {
+            "title": "Vad är något om dig som skulle överraska oss?",
+            "body": ""
+          },
+          {
+            "title": "Vilken tradition från din familj eller kultur älskar du?",
+            "body": ""
+          },
+          {
+            "title": "Hur hamnade du i den här branschen?",
+            "body": ""
+          },
+          {
+            "title": "Vilken är den bästa resan du någonsin har gjort?",
+            "body": ""
+          },
+          {
+            "title": "Vilka språk talar du, om så bara lite grann?",
+            "body": ""
+          },
+          {
+            "title": "Vad läser, tittar eller lyssnar du på just nu?",
+            "body": ""
+          },
+          {
+            "title": "Vad är en hjärtefråga för dig?",
+            "body": ""
+          },
+          {
+            "title": "Vad gör du för att koppla av efter jobbet?",
+            "body": ""
+          },
+          {
+            "title": "Vilken är den bästa konserten eller det bästa evenemanget du har varit på?",
+            "body": ""
+          },
+          {
+            "title": "Har du några husdjur? Berätta om dem.",
+            "body": ""
+          },
+          {
+            "title": "Vilken maträtt är du bra på att laga?",
+            "body": ""
+          },
+          {
+            "title": "Vilken är din favoritplats i din stad?",
+            "body": ""
+          },
+          {
+            "title": "Vad är det bästa med platsen där du bor?",
+            "body": ""
+          },
+          {
+            "title": "Vad är något du skulle vilja göra innan året är slut?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Frågor om distansarbete",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Hur ser utsikten ut därifrån du jobbar idag?",
+            "body": ""
+          },
+          {
+            "title": "Vad är en sak med att jobba på distans som du aldrig skulle vilja byta bort?",
+            "body": ""
+          },
+          {
+            "title": "Vad är en sak du saknar med kontoret?",
+            "body": ""
+          },
+          {
+            "title": "Vad är det bästa med din hemarbetsplats?",
+            "body": ""
+          },
+          {
+            "title": "Vad gör du på din lunchrast?",
+            "body": ""
+          },
+          {
+            "title": "Har du en uniform när du jobbar hemifrån?",
+            "body": ""
+          },
+          {
+            "title": "Vem är din favoritkollega som inte ingår i det här teamet (husdjur räknas)?",
+            "body": ""
+          },
+          {
+            "title": "Vilken tidszon är din favorit att jobba mot?",
+            "body": ""
+          },
+          {
+            "title": "Hur startar du din arbetsdag?",
+            "body": ""
+          },
+          {
+            "title": "Vad är ditt favoritbakgrundsljud när du jobbar?",
+            "body": ""
+          }
+        ]
+      },
+      {
+        "title": "Säsongsfrågor (höst och halloween)",
+        "numbered": true,
+        "list": true,
+        "items": [
+          {
+            "title": "Vad är din favoritmat eller favoritdryck på hösten?",
+            "body": ""
+          },
+          {
+            "title": "Vilken är den bästa halloweendräkt du någonsin har haft på dig?",
+            "body": ""
+          },
+          {
+            "title": "Vilken film känns alltid som höst för dig?",
+            "body": ""
+          },
+          {
+            "title": "Pumpkin spice: älskar du det eller hoppar du över det?",
+            "body": ""
+          },
+          {
+            "title": "Vilken är den läskigaste film du faktiskt har sett klart?",
+            "body": ""
+          },
+          {
+            "title": "Vilket godis hoppas du få, och vilket ger du bort?",
+            "body": ""
+          },
+          {
+            "title": "Vilken högtidstradition ser du mest fram emot varje år?",
+            "body": ""
+          },
+          {
+            "title": "Om du skulle klä ut dig till en kollegas jobb, hur skulle dräkten se ut?",
+            "body": ""
+          },
+          {
+            "title": "Mysig hemmakväll eller utgång med kompisar?",
+            "body": ""
+          },
+          {
+            "title": "Vad står på din lista för resten av året?",
+            "body": ""
+          },
+          {
+            "title": "Vad är det bästa med den här tiden på året där du bor?",
+            "body": ""
+          },
+          {
+            "title": "Vilken doft betyder att årstiden har växlat?",
+            "body": ""
+          },
+          {
+            "title": "Vad vill du hinna testa innan vintern?",
+            "body": ""
+          },
+          {
+            "title": "Vilken spökhistoria från barndomen minns du fortfarande?",
+            "body": ""
+          },
+          {
+            "title": "Hur tillbringar du helst en regnig dag?",
+            "body": ""
+          }
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Där TinyFloor passar in",
+      "body": "TinyFloor är ett virtuellt kontor för små team, med en teamchatt bredvid våningen för dagens fråga och ett mötesrum för standup-mötet där den besvaras högt. Resten av dagen sitter folk vid sina skrivbord på samma våning, där samtalet den startade bara är en kort promenad bort. Det är gratis för upp till 3 personer och $29 i månaden för hela teamet."
+    },
+    "faq": [
+      {
+        "q": "Vad är en bra dagens fråga för jobbet?",
+        "a": "En som alla kan svara på med en mening, som säger något om personen och som passar bra att dela på jobbet, som ”Vad är det godaste du har ätit den här veckan?” eller ”Kaffe eller te?”."
+      },
+      {
+        "q": "Hur kör man dagens fråga på jobbet?",
+        "a": "Lägg upp en fråga vid samma tid varje morgon i en teamchattkanal eller i början av ert standup-möte, svara själv först och låt turen att fråga rotera varje vecka."
+      },
+      {
+        "q": "Hur håller man igång dagens fråga?",
+        "a": "Håll frågorna enkla, blanda roliga frågor med en och annan jobbfråga, och låt olika personer ställa dem. När folk börjar föreslå egna frågor sköter det sig självt."
+      },
+      {
+        "q": "Ska dagens fråga vara en omröstning?",
+        "a": "Frågor med två alternativ, som ”antingen eller” och ”skulle du hellre”, fungerar utmärkt som omröstningar. Öppna frågor får bättre svar i chatten."
+      }
+    ]
+  },
+  "holidayParty": {
+    "label": "Idéer för digital julfest",
+    "meta": {
+      "title": "Idéer för digital julfest: 20 gratis spel och aktiviteter för distansteam",
+      "description": "20 gratis idéer för en digital julfest med distansteamet: spel som bingo, frågesport och skattjakt, en 60-minuters agenda, en Secret Santa som fungerar över landsgränser, och hur ni planerar utifrån tidszoner."
+    },
+    "title": "Idéer för digital julfest <em>för distansteam.</em>",
+    "intro": "En julfest eller årsavslutning är det evenemang som de flesta distansteam faktiskt vill ha, och det som är lättast att misslyckas med: för långt, för många spel, och halva teamet sover i en annan tidszon. Här är 20 gratis spel och aktiviteter, en 60-minuters agenda som fungerar, och hur du planerar så att folk kommer för att de vill.",
+    "sections": [
+      {
+        "title": "Planera först",
+        "items": [
+          {
+            "title": "Välj en tid som fungerar för de flesta",
+            "body": "För ett team i olika tidszoner är överlappet ofta bara en timme. Använd en [mötesplanerare för tidszoner](/tools/time-zone-meeting-planner), välj den minst smärtsamma tiden och erbjud dem som hamnar mitt i natten ett andra, mindre tillfälle."
+          },
+          {
+            "title": "Håll det till en timme",
+            "body": "Sextio minuter med ett tydligt slut lockar fler än en kväll utan sluttid. De som vill stanna längre gör det."
+          },
+          {
+            "title": "Lägg det på arbetstid",
+            "body": "Håll det under arbetstid om du kan. En fest som folk måste offra en kväll för är en fest färre kommer på."
+          },
+          {
+            "title": "Kalla det en årsavslutning",
+            "body": "Alla firar inte samma högtider. En årsavslutning inkluderar alla och tillåter ändå en jultröja."
+          },
+          {
+            "title": "Skicka en budget, inte en låda",
+            "body": "Om det finns pengar för mat eller dryck fungerar ett bidrag per person mycket bättre över landsgränser än att skicka paket."
+          }
+        ]
+      },
+      {
+        "title": "Spel",
+        "items": [
+          {
+            "title": "Julbingo",
+            "detail": "15 minuter · valfri storlek",
+            "body": "Brickor med saker som ”ett husdjur dyker upp” eller ”en jultröja”. Först till en full rad vinner. Gratis generatorer skapar brickorna."
+          },
+          {
+            "title": "Årsfrågesport",
+            "detail": "20 minuter · lag om 3–5",
+            "body": "Frågor om året på jobbet och i världen. Små lag i grupprum, en person skickar in svaren."
+          },
+          {
+            "title": "Skattjakt hemma",
+            "detail": "10 minuter · valfri storlek",
+            "body": "Ropa ut ett föremål (”något rött”, ”det äldsta i ditt kök”) och den som först är tillbaka framför kameran med det får poäng."
+          },
+          {
+            "title": "Gissa bebisen",
+            "detail": "15 minuter · upp till 20",
+            "body": "Alla skickar en barndomsbild i förväg; teamet gissar vem som är vem. Samla in dem en vecka innan."
+          },
+          {
+            "title": "Detta eller detta: julversionen",
+            "detail": "5 minuter · valfri storlek",
+            "body": "”Äkta gran eller plast?”, ”Snö eller sol?”: snabba val, sedan förklarar några personer sitt val. Fler i våra [detta eller detta-frågor](/guides/this-or-that-questions)."
+          },
+          {
+            "title": "Två sanningar och en lögn: julversionen",
+            "detail": "15 minuter · upp till 12",
+            "body": "Tre påståenden om tidigare jular, varav ett är osant. Se [idéer för två sanningar och en lögn](/tools/two-truths-and-a-lie)."
+          },
+          {
+            "title": "Rita på whiteboarden",
+            "detail": "15 minuter · lag om 4–8",
+            "body": "En person ritar ett julord på en [delad whiteboard](/online-whiteboard), de andra gissar på tid."
+          },
+          {
+            "title": "Gissa låten",
+            "detail": "10 minuter · valfri storlek",
+            "body": "Spela de första fem sekunderna av en jullåt; den som först skriver titeln vinner. Dela skärmen med ljudet på."
+          },
+          {
+            "title": "Emoji-filmquiz",
+            "detail": "10 minuter · valfri storlek",
+            "body": "Skriv en julfilm med emojis i chatten och låt folk gissa. Enkelt att ordna och överraskande tävlingsinriktat."
+          },
+          {
+            "title": "Året i en bild",
+            "detail": "15 minuter · upp till 15",
+            "body": "Alla delar en bild från sitt år och berättar varför. Ofta den mest minnesvärda delen av festen."
+          }
+        ]
+      },
+      {
+        "title": "Aktiviteter utan vinnare",
+        "items": [
+          {
+            "title": "Teamets utmärkelser",
+            "detail": "15 minuter · valfri storlek",
+            "body": "Roliga utmärkelser som ni röstat om i förväg: bästa bakgrund, mest hjälpsam i krisen, årets bästa felskrivning."
+          },
+          {
+            "title": "Bakgrundstävling",
+            "detail": "5 minuter · valfri storlek",
+            "body": "Alla dekorerar hörnet bakom sig eller väljer en julig videobakgrund; teamet röstar i chatten."
+          },
+          {
+            "title": "Parad med jultröja eller julhatt",
+            "detail": "10 minuter · valfri storlek",
+            "body": "Alla visar sin i kameran; teamet röstar i chatten. Det är frivilligt, och pappershattar räknas."
+          },
+          {
+            "title": "Laga mat eller baka tillsammans",
+            "detail": "45 minuter · upp till 12",
+            "body": "Skicka ett enkelt recept en vecka i förväg och laga det tillsammans, med kamerorna riktade mot köket."
+          },
+          {
+            "title": "Tacksamhetsrunda",
+            "detail": "10 minuter · upp till 15",
+            "body": "Var och en tackar en teammedlem för något specifikt under året. Det är kort, och folk kommer ihåg det."
+          },
+          {
+            "title": "Spellistebyte",
+            "detail": "Innan festen",
+            "body": "Alla lägger till en låt i en delad spellista som spelas i bakgrunden under festen."
+          },
+          {
+            "title": "Önskningar för nästa år",
+            "detail": "10 minuter · valfri storlek",
+            "body": "En sak som varje person hoppas på inför nästa år, på jobbet eller privat. Ett bra sätt att avsluta."
+          }
+        ]
+      },
+      {
+        "title": "Julklappsbyte över landsgränser",
+        "items": [
+          {
+            "title": "Digital Secret Santa",
+            "detail": "Ordna två veckor innan",
+            "body": "Lotta namn med vår gratis [Secret Santa-generator](/tools/secret-santa-generator), sätt en liten budget och ge alla ett adressfritt alternativ som ett digitalt presentkort eller en e-bok."
+          },
+          {
+            "title": "Julklappslek online",
+            "detail": "30 minuter · upp till 15",
+            "body": "Alla köper en digital present, nummer avgör ordningen och man kan stjäla en redan öppnad present. Fungerar bäst om en spelledare håller koll på skärmen."
+          },
+          {
+            "title": "Ge tillsammans istället",
+            "detail": "Inga presenter behövs",
+            "body": "Teamet väljer en välgörenhetsorganisation och skänker julklappsbudgeten dit. Det passar team som är utspridda i många länder."
+          }
+        ]
+      },
+      {
+        "title": "En 60-minuters agenda",
+        "table": {
+          "head": [
+            "Tid",
+            "Vad som händer"
+          ],
+          "rows": [
+            [
+              "0–5 min",
+              "Insläpp, musik, alla hälsar"
+            ],
+            [
+              "5–15 min",
+              "Snabbt spel: detta eller detta (julversionen) eller skattjakt"
+            ],
+            [
+              "15–35 min",
+              "Huvudspel: frågesport eller bingo"
+            ],
+            [
+              "35–45 min",
+              "Teamets utmärkelser eller tacksamhetsrunda"
+            ],
+            [
+              "45–55 min",
+              "Fri tid: folk glider in i småsamtal"
+            ],
+            [
+              "55–60 min",
+              "Önskningar för nästa år, sedan hejdå"
+            ]
+          ],
+          "note": "För ett team på upp till 15 personer. Ett större team behöver grupprum för spelen och den fria tiden."
+        }
+      },
+      {
+        "title": "Att hålla festen i ett virtuellt kontor",
+        "body": [
+          "I ett videosamtal sitter alla i samma rutnät och bara en person pratar åt gången, så den fria tiden i slutet blir sällan av. I ett virtuellt kontor kan teamet spela spelen tillsammans i mötesrummet och sedan gå iväg i små grupper för att prata, precis som på en riktig fest.",
+          "Dekorera inbjudan snarare än programvaran, låt kameran vara frivillig och ge de tystare personerna en uppgift: sköta spellistan, hålla koll på poängen eller vara domare för utmärkelserna."
+        ]
+      }
+    ],
+    "fit": {
+      "title": "Där TinyFloor passar in",
+      "body": "TinyFloor är ett virtuellt kontor för små team. Festen börjar i mötesrummet med video, skärmdelning och en whiteboard för spelen, och efteråt kan folk gå iväg två och tre och prata, precis som de skulle göra på en riktig fest. Det är gratis för upp till 3 personer och kostar 29 USD i månaden för hela teamet."
+    },
+    "faq": [
+      {
+        "q": "Hur ordnar man en digital julfest med jobbet?",
+        "a": "Välj en timme på arbetstid som passar de flesta tidszoner, planera ett snabbt spel, ett huvudspel och en kort tacksamhetsrunda, och lämna de sista tio minuterna öppna för småsamtal."
+      },
+      {
+        "q": "Vilka är bra gratis spel för en digital vinterfest?",
+        "a": "Vinterbingo, frågesport om året som gått, skattjakt hemma, gissa bebisen och ritspel på en delad whiteboard. Allt som behövs är ett samtal och lite förberedelse."
+      },
+      {
+        "q": "Hur lång ska en digital vinterfest vara?",
+        "a": "Ungefär en timme. Tillräckligt lång för två spel och en tackrunda, tillräckligt kort för att folk inte ska tröttna."
+      },
+      {
+        "q": "Hur gör man Secret Santa med ett distansteam?",
+        "a": "Lotta namn online, sätt en liten budget och använd digitala presenter som presentkort eller e-böcker, så att ingen behöver dela sin adress eller betala för internationell frakt."
+      },
+      {
+        "q": "Bör det kallas vinterfest eller julfest?",
+        "a": "För ett team i olika länder och kulturer inkluderar en avslutningsfest eller vinterfest alla. De som firar jul kan fortfarande ha på sig jultröjan."
       }
     ]
   }

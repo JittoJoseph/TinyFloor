@@ -21,6 +21,7 @@ export const TWO_TRUTHS_PATH = "/tools/two-truths-and-a-lie";
 export const STANDUP_PATH = "/tools/daily-standup-template";
 export const OUT_OF_OFFICE_PATH = "/tools/out-of-office-message";
 export const TEAM_BUILDING_PATH = "/tools/team-building-questions";
+export const SECRET_SANTA_PATH = "/tools/secret-santa-generator";
 
 export interface ToolEntry {
   path: string;
@@ -36,6 +37,7 @@ export const TOOLS: ToolEntry[] = [
   { path: TEAM_BUILDING_PATH, locales: localeCodes },
   { path: TIME_ZONES_PATH, locales: localeCodes },
   { path: OUT_OF_OFFICE_PATH, locales: localeCodes },
+  { path: SECRET_SANTA_PATH, locales: localeCodes },
   { path: OFFICE_COSTS_PATH, locales: localeCodes },
 ];
 

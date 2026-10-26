@@ -3,9 +3,9 @@ import type { OooContent } from "@/lib/tools/out-of-office";
 /** The out-of-office message generator, in English: the page the other languages are written from. */
 const en: OooContent = {
   meta: {
-    title: "Out of Office Message Generator: Free Examples and Templates",
+    title: "Out of Office Message: Free Generator, Examples and Outlook Setup",
     description:
-      "Write an out of office message in seconds: an email auto-reply and a Slack or Teams status, for holidays, sick days, work trips and more. Examples and setup for Outlook and Gmail.",
+      "Write an out of office message in seconds, with examples for holidays, Christmas, sick days and maternity leave, and how to set automatic replies in Outlook, Gmail and Teams.",
   },
   eyebrow: "Free tool",
   updated: "Updated",
@@ -52,7 +52,7 @@ const en: OooContent = {
           body: "\"Thanks for your message! I'm travelling for work until Thursday 5 November and checking email less than usual. I'll get back to you when I'm back. If it can't wait, Ana Lima can help.\"",
         },
         {
-          title: "Parental leave",
+          title: "Maternity or parental leave",
           detail: "Long absence",
           body: "\"Thank you for your email. I'm on parental leave until 2 February and won't be checking email. For anything about my projects, please contact Ana Lima (ana@example.com), who's covering for me.\" For a long absence, give a person, not just a date.",
         },
@@ -66,13 +66,34 @@ const en: OooContent = {
           detail: "For colleagues",
           body: "\"I'm on leave until 3 November. Urgent? Contact Ana Lima.\" Inside your own company, shorter is usually better.",
         },
+        {
+          title: "Christmas and New Year",
+          detail: "End-of-year break",
+          body: "\"Thank you for your email. I'm out of the office for the holidays and back on Monday 4 January. I'll reply to your message when I return. For anything urgent, please contact Ana Lima (ana@example.com). Wishing you a happy new year.\"",
+        },
+        {
+          title: "Half a day",
+          detail: "Back the same day",
+          body: "\"Thanks for your email. I'm out of the office this afternoon and will reply tomorrow morning.\" For a few hours away, a chat status is often enough on its own.",
+        },
+        {
+          title: "For customers",
+          detail: "Outside your company",
+          body: "\"Thank you for contacting us. I'm out of the office until Monday 2 November. For orders and support, please write to support@example.com, where the team replies within one working day.\" Outlook can send this one only to people outside your organisation.",
+        },
+        {
+          title: "Last day at the company",
+          detail: "Leaving for good",
+          body: "\"Thank you for your email. I've now left Example Ltd. For anything I was working on, please contact Ana Lima (ana@example.com), who's taking over.\" Companies usually keep a reply like this on a leaver's address for a few months.",
+        },
       ],
     },
     {
       title: "How to set an out of office message in Outlook",
       body: [
-        "In the new Outlook and Outlook on the web, open Settings (the gear icon), go to Account, then Automatic replies. Turn automatic replies on, tick the option to send them only during a time period, set your start and end dates, and paste your message. You can write a different message for people outside your organisation, which is a good idea: colleagues need less explanation than customers.",
+        "In the new Outlook and Outlook on the web (Microsoft 365), open Settings (the gear icon), go to Account, then Automatic replies. Turn automatic replies on, tick the option to send them only during a time period, set your start and end dates, and paste your message. You can write a different message for people outside your organisation, which is a good idea: colleagues need less explanation than customers.",
         "In classic Outlook for Windows, go to File, then Automatic Replies, and fill in the same details. Outlook switches the replies off by itself at the end date if you set one, so you don't need to remember to come back to it.",
+        "In Outlook for Mac, go to Tools, then Automatic Replies. In the Outlook app on an iPhone or Android phone, tap your profile picture, then the Settings gear, choose your work account and tap Automatic replies. Whichever you use, the reply is stored with your account, so turning it on in one place turns it on everywhere.",
       ],
     },
     {
@@ -130,6 +151,22 @@ const en: OooContent = {
     {
       q: "Is this out of office generator free?",
       a: "Yes, and it runs entirely in your browser: the names, dates and emails you type are never sent anywhere. Copy the message into Outlook, Gmail, Slack or Teams.",
+    },
+    {
+      q: "What does OOO mean?",
+      a: "OOO stands for out of office. People write it in calendars, chat statuses and email subjects, as in \"OOO until Monday\", to say they're away and won't reply straight away.",
+    },
+    {
+      q: "Is an automatic reply the same as an out of office message?",
+      a: "Yes. Automatic replies is what Outlook calls its out of office message, and Gmail calls it the vacation responder. They all send one reply to people who write while you're away.",
+    },
+    {
+      q: "How do I set out of office in Teams?",
+      a: "Click your profile picture, choose Set status message, then Schedule out of office. Turn on automatic replies, write your message and set the dates. Teams shows you as out of office, and Outlook sends the same message to anyone who emails you.",
+    },
+    {
+      q: "How do I set out of office in Outlook on my phone?",
+      a: "In the Outlook app, tap your profile picture, then the Settings gear, choose your work account and tap Automatic replies. Switch it on, write your message and set the dates.",
     },
   ],
 };

@@ -66,6 +66,26 @@ const es: OooContent = {
           detail: "Para compañeros",
           body: "\"Estoy de vacaciones hasta el 3 de noviembre. ¿Urgente? Contacta con Ana Lima.\" Dentro de tu propia empresa, cuanto más corto, mejor.",
         },
+        {
+          title: "Navidad y Año Nuevo",
+          detail: "Vacaciones de fin de año",
+          body: "\"Gracias por tu correo. Estoy fuera de la oficina por vacaciones y vuelvo el lunes, 4 de enero. Responderé a tu mensaje a mi regreso. Para cualquier asunto urgente, contacta con Ana Lima (ana@ejemplo.com). Te deseo un feliz año nuevo.\"",
+        },
+        {
+          title: "Medio día",
+          detail: "De vuelta el mismo día",
+          body: "\"Gracias por tu correo. Esta tarde estoy fuera de la oficina y responderé mañana por la mañana.\" Para ausencias de unas pocas horas, a menudo basta con poner un estado en el chat.",
+        },
+        {
+          title: "Para clientes",
+          detail: "Fuera de tu empresa",
+          body: "\"Gracias por ponerte en contacto con nosotros. Estoy fuera de la oficina hasta el lunes, 2 de noviembre. Para pedidos y soporte técnico, escribe a soporte@ejemplo.com, donde el equipo te responderá en un plazo de un día laborable.\" Outlook puede enviar este mensaje solo a personas de fuera de tu organización.",
+        },
+        {
+          title: "Último día en la empresa",
+          detail: "Salida definitiva",
+          body: "\"Gracias por tu correo. Ya no trabajo en Ejemplo S.L. Para cualquier asunto en el que estuviera trabajando, contacta con Ana Lima (ana@ejemplo.com), que se hace cargo de mis tareas.\" Las empresas suelen mantener una respuesta como esta en la dirección de la persona que se va durante unos meses.",
+        },
       ],
     },
     {
@@ -73,6 +93,7 @@ const es: OooContent = {
       body: [
         "En el nuevo Outlook y en Outlook en la web, abre Configuración (el icono del engranaje), ve a Cuentas y luego a Respuestas automáticas. Activa las respuestas automáticas, marca la opción de enviarlas solo durante un período, pon las fechas de inicio y fin y pega tu mensaje. Puedes escribir un mensaje distinto para quien está fuera de tu organización, y conviene hacerlo: los compañeros necesitan menos explicación que los clientes.",
         "En Outlook clásico para Windows, ve a Archivo y luego a Respuestas automáticas, y rellena los mismos datos. Si pones una fecha de fin, Outlook desactiva las respuestas solo, así que no tienes que acordarte de volver.",
+        "En Outlook para Mac, ve a Herramientas y luego a Respuestas automáticas. En la aplicación de Outlook para iPhone o Android, toca tu foto de perfil, luego el engranaje de Configuración, elige tu cuenta de trabajo y toca Respuestas automáticas. Uses la que uses, la respuesta se guarda en tu cuenta, por lo que activarla en un sitio la activa en todas partes.",
       ],
     },
     {
@@ -130,6 +151,22 @@ const es: OooContent = {
     {
       q: "¿Este generador es gratis?",
       a: "Sí, y funciona entero en tu navegador: los nombres, fechas y correos que escribes nunca se envían a ningún sitio. Copia el mensaje en Outlook, Gmail, Slack o Teams.",
+    },
+    {
+      q: "¿Qué significa OOO?",
+      a: "OOO son las siglas en inglés de \"out of office\" (fuera de la oficina). Se suele escribir en calendarios, estados de chat y asuntos de correo, como en \"OOO hasta el lunes\", para indicar que estás ausente y no vas a responder de inmediato.",
+    },
+    {
+      q: "¿Es lo mismo una respuesta automática que un mensaje de fuera de la oficina?",
+      a: "Sí. Respuestas automáticas es como llama Outlook a su mensaje de fuera de la oficina, y Gmail lo llama Respuesta automática. Todos ellos envían una respuesta a las personas que te escriben mientras estás fuera.",
+    },
+    {
+      q: "¿Cómo pongo el mensaje de fuera de la oficina en Teams?",
+      a: "Haz clic en tu foto de perfil, elige Definir mensaje de estado y luego Programar fuera de la oficina. Activa las respuestas automáticas, escribe tu mensaje y pon las fechas. Teams mostrará que estás fuera de la oficina y Outlook enviará el mismo mensaje a cualquiera que te escriba un correo.",
+    },
+    {
+      q: "¿Cómo pongo el mensaje de fuera de la oficina en Outlook en el móvil?",
+      a: "En la aplicación de Outlook, toca tu foto de perfil, luego el engranaje de Configuración, elige tu cuenta de trabajo y toca Respuestas automáticas. Actívalo, escribe tu mensaje y pon las fechas.",
     },
   ],
 };

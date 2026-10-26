@@ -11,6 +11,7 @@ import {
   Eye,
   FileText,
   Footprints,
+  Gift,
   Globe,
   Hash,
   MessagesSquare,
@@ -28,7 +29,7 @@ import { GUIDES_PATH, guidePath, guidesIn, type GuideKey } from "@/lib/guides";
 import { guideCopies } from "@/lib/guide-copy";
 import { HUBS, LANDINGS, landingByKey, type Landing, type LandingKey } from "@/lib/landings";
 import type { Locale } from "@/lib/i18n/routing";
-import { STANDUP_PATH, TOOLS_PATH } from "@/lib/tools/catalog";
+import { SECRET_SANTA_PATH, STANDUP_PATH, TOOLS_PATH } from "@/lib/tools/catalog";
 import { FEW_TOOL_NAMES } from "@/lib/tools/hub-copy";
 import { ICEBREAKERS_PATH } from "@/lib/tools/icebreakers";
 import { OFFICE_COSTS_PATH } from "@/lib/tools/office-costs";
@@ -83,6 +84,7 @@ export const TOP_TOOLS: Array<{ path: string; icon: ReactNode; name?: "officeCos
   { path: TIME_ZONES_PATH, icon: <Globe />, name: "timeZones" },
   { path: ICEBREAKERS_PATH, icon: <MessagesSquare />, name: "icebreakers" },
   { path: STANDUP_PATH, icon: <FileText /> },
+  { path: SECRET_SANTA_PATH, icon: <Gift /> },
 ];
 
 /**

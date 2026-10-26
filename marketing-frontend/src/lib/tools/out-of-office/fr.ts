@@ -66,6 +66,26 @@ const fr: OooContent = {
           detail: "Pour les collègues",
           body: "« En congés, de retour le 3 novembre. Urgent ? Contactez Ana Lima. » Au sein de votre entreprise, plus c'est court, mieux c'est.",
         },
+        {
+          title: "Noël et Nouvel An",
+          detail: "Congés de fin d'année",
+          body: "« Bonjour, merci pour votre message. Je suis actuellement absent pour les fêtes de fin d'année et serai de retour le lundi 4 janvier. Je vous répondrai à mon retour. Pour toute urgence, vous pouvez contacter Ana Lima (ana@example.com). Je vous souhaite une très bonne année. »",
+        },
+        {
+          title: "Demi-journée",
+          detail: "Retour le jour même",
+          body: "« Merci pour votre message. Je suis absent cet après-midi et vous répondrai demain matin. » Pour une absence de quelques heures, un simple statut de messagerie suffit souvent.",
+        },
+        {
+          title: "Pour les clients",
+          detail: "En dehors de l'entreprise",
+          body: "« Bonjour, merci de nous avoir contactés. Je suis absent jusqu'au lundi 2 novembre. Pour toute commande ou demande d'assistance, merci d'écrire à support@example.com, où notre équipe vous répondra sous un jour ouvré. » Outlook peut envoyer ce message uniquement aux personnes extérieures à votre organisation.",
+        },
+        {
+          title: "Dernier jour dans l'entreprise",
+          detail: "Départ définitif",
+          body: "« Bonjour, merci pour votre message. J'ai quitté l'entreprise Example Ltd. Pour toute question concernant mes dossiers, vous pouvez contacter Ana Lima (ana@example.com), qui assure le relais. » Les entreprises maintiennent généralement ce type de réponse sur l'adresse d'un collaborateur parti pendant quelques mois.",
+        },
       ],
     },
     {
@@ -73,6 +93,7 @@ const fr: OooContent = {
       body: [
         "Dans le nouvel Outlook et Outlook sur le web, ouvrez les Paramètres (l'engrenage), allez dans Compte, puis Réponses automatiques. Activez les réponses automatiques, cochez l'option pour ne les envoyer que pendant une période donnée, choisissez les dates de début et de fin, et collez votre message. Vous pouvez écrire un message différent pour les personnes extérieures à votre organisation, ce qui est une bonne idée : vos collègues ont besoin de moins d'explications que vos clients.",
         "Dans Outlook classique pour Windows, allez dans Fichier, puis Réponses automatiques, et remplissez les mêmes informations. Si vous avez fixé une date de fin, Outlook désactive les réponses tout seul, vous n'avez donc pas à y penser.",
+        "Dans Outlook pour Mac, allez dans Outils, puis Réponses automatiques. Dans l'application Outlook sur iPhone ou Android, appuyez sur votre photo de profil, puis sur l'engrenage des Paramètres, choisissez votre compte professionnel et appuyez sur Réponses automatiques. Quelle que soit la méthode utilisée, la réponse est enregistrée sur votre compte : l'activer à un endroit l'active donc partout.",
       ],
     },
     {
@@ -130,6 +151,22 @@ const fr: OooContent = {
     {
       q: "Ce générateur de message d'absence est-il gratuit ?",
       a: "Oui, et il fonctionne entièrement dans votre navigateur : les noms, dates et e-mails que vous saisissez ne sont envoyés nulle part. Copiez le message dans Outlook, Gmail, Slack ou Teams.",
+    },
+    {
+      q: "Que signifie OOO ?",
+      a: "OOO est l'abréviation de « out of office » (absent du bureau). On l'utilise dans les calendriers, les statuts de messagerie et les objets d'e-mails, comme « OOO jusqu'à lundi », pour indiquer que l'on est absent et que l'on ne répondra pas immédiatement.",
+    },
+    {
+      q: "Une réponse automatique est-elle la même chose qu'un message d'absence ?",
+      a: "Oui. « Réponses automatiques » est le nom donné par Outlook au message d'absence, tandis que Gmail l'appelle « Réponse automatique ». Tous deux envoient une réponse aux personnes qui vous écrivent pendant votre absence.",
+    },
+    {
+      q: "Comment configurer un message d'absence dans Teams ?",
+      a: "Cliquez sur votre photo de profil, choisissez Définir le message de statut, puis Planifier l'absence du bureau. Activez les réponses automatiques, rédigez votre message et définissez les dates. Teams indique que vous êtes absent, et Outlook envoie le même message à tous ceux qui vous écrivent.",
+    },
+    {
+      q: "Comment configurer un message d'absence dans Outlook sur mon téléphone ?",
+      a: "Dans l'application Outlook, appuyez sur votre photo de profil, puis sur l'engrenage des Paramètres, choisissez votre compte professionnel et appuyez sur Réponses automatiques. Activez-les, rédigez votre message et définissez les dates.",
     },
   ],
 };

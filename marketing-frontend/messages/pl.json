@@ -1,13 +1,13 @@
 {
   "landing": {
-    "description": "Wirtualne biuro dla zespołów zdalnych, w przeglądarce. Chodź z zespołem po piętrze w stylu pixel art i zaczynaj rozmowę wideo, po prostu stając obok kogoś.",
+    "description": "Wirtualne biuro dla małych zespołów zdalnych, w przeglądarce. Każdy ma biurko na jednym piętrze: zobacz, kto jest, podejdź i zadzwoń do kogoś z zespołu, spotkaj się w sali spotkań i rozmawiaj na czacie obok.",
     "features": [
-      "Rozmowy wideo i głosowe na bliską odległość",
-      "Udostępnianie ekranu w rozmowach i spotkaniach",
-      "Mapa biura 2D, po której można chodzić",
-      "Awatary w stylu pixel art",
-      "Obecność i status w czasie rzeczywistym",
-      "Czat pokoju"
+      "Rozmowy głosowe i wideo z osobami z zespołu",
+      "Udostępnianie ekranu podczas rozmów i spotkań",
+      "Piętro biura 2D, po którym się poruszasz",
+      "Postacie w stylu pixel art",
+      "Obecność i statusy na żywo",
+      "Czat zespołowy z kanałami i wiadomościami bezpośrednimi"
     ]
   },
   "faq": {
@@ -1194,37 +1194,6 @@
         "body": "Sala spotkań jest na końcu korytarza. Dołącz do spotkania, a twoja postać wejdzie do środka; wyjdź, a opuścisz je."
       }
     },
-    "more": {
-      "eyebrow": "Cała reszta",
-      "title": "Czego potrzebuje mały zespół.",
-      "muted": "Nic ponad to.",
-      "items": {
-        "chat": {
-          "title": "Kanały i wiadomości",
-          "body": "Czat, który zostaje, obok piętra. Nadrabiaj z telefonu."
-        },
-        "screen": {
-          "title": "Udostępnianie ekranu",
-          "body": "Udostępnij okno rozmówcy jednym kliknięciem."
-        },
-        "whiteboard": {
-          "title": "Tablica",
-          "body": "Wspólna tablica na ścianie, na szkic, który wszystko wyjaśnia."
-        },
-        "music": {
-          "title": "Spotify",
-          "body": "Odtwarzaj muzykę w TinyFloor, a zespół posłucha z Twojej karty."
-        },
-        "noise": {
-          "title": "Usuwanie szumów",
-          "body": "Klawiatury i kawiarnie zostają poza rozmową."
-        },
-        "devices": {
-          "title": "Na każdym urządzeniu",
-          "body": "To strona internetowa. Laptop czy telefon, otwiera się tak samo."
-        }
-      }
-    },
     "pricing": {
       "eyebrow": "Cennik",
       "title": "Płacisz za biuro,",
@@ -1276,6 +1245,89 @@
       "title": "Daj swojemu zespołowi",
       "muted": "wspólne piętro.",
       "note": "Za darmo dla maksymalnie 3 osób · Działa na Cloudflare"
+    },
+    "countries": {
+      "label": "Zespoły pracują na TinyFloor w"
+    },
+    "presence": {
+      "title": "Wiedz, kto jest w pobliżu, zanim zapytasz.",
+      "body": "Cały Twój zespół zdalny na jednym piętrze, każdy przy swoim biurku ze statusem. Rzutem oka sprawdź, kto ma wolną chwilę, kto jest skupiony, a kto na spotkaniu – bez spotkań statusowych i wiadomości typu „jesteś?”.",
+      "more": "Więcej o obecności zespołu",
+      "here": "Na piętrze",
+      "away": "Nieobecny",
+      "notes": {
+        "emma": "Chętnie porozmawiam",
+        "jack": "W sali spotkań",
+        "olivia": "Skupiony do 15:00",
+        "sam": "Praca w parze z Noahem",
+        "noah": "Praca w parze z Samem",
+        "lily": "Wracam w poniedziałek"
+      },
+      "wave": "Pomachaj"
+    },
+    "price": {
+      "title": "Jedna cena za całe biuro.",
+      "body": "Za darmo dla maksymalnie 3 osób. Potem Pro to jedna miesięczna cena za cały zespół, bez względu na to, ilu Was jest. Każde nowe biuro zaczyna od 14 dni Pro za darmo, bez karty.",
+      "team": "Twój zespół",
+      "people": "{count} osób",
+      "ours": "TinyFloor Pro",
+      "theirs": "Narzędzia wyceniane na osobę, od {low} do {high} za każdą",
+      "month": "miesięcznie",
+      "freeNote": "Za darmo dla maksymalnie 3 osób",
+      "more": "Zobacz plany i cennik"
+    },
+    "statement": {
+      "text": "Wirtualne biuro dla małych zespołów zdalnych, <muted>z przywróconym korytarzem.</muted>",
+      "points": {
+        "seen": "Zobacz, kto jest",
+        "talk": "Podejdź porozmawiać",
+        "meet": "Spotkajcie się w głębi korytarza"
+      },
+      "here": "{count} na piętrze",
+      "room": "Sala spotkań"
+    },
+    "meet": {
+      "title": "Wirtualna sala spotkań, w głębi korytarza.",
+      "body": "Gdy musicie porozmawiać w trzy lub więcej osób, spotkajcie się w sali spotkań z wideo HD, udostępnianiem ekranu i tablicą na ścianie. Wejdź, aby dołączyć, i wyjdź, aby opuścić spotkanie. Bez wysyłania linków, bez planowania.",
+      "more": "Więcej o sali spotkań",
+      "meeting": "Standup"
+    },
+    "chat": {
+      "title": "Czat zespołowy, tuż obok piętra.",
+      "body": "Kanały i wiadomości bezpośrednie do wszystkiego, co nie jest rozmową, dzięki czemu ustalenia są zapisane i łatwe do znalezienia. Odpowiadaj na wiadomości, reaguj i udostępniaj zrzuty ekranu.",
+      "more": "Więcej o czacie zespołowym",
+      "reply1": "Dzięki. Przyniosę pytania z wczorajszej rozmowy.",
+      "reply2": "Wygląda świetnie. Podejdę po standupie."
+    },
+    "extras": {
+      "title": "Wszystko inne, czego potrzebuje zespół zdalny.",
+      "text": "Udostępniaj swój <b>ekran</b> podczas każdej rozmowy i szkicuj na <b>tablicy</b>. <b>Redukcja szumów</b> wycisza szczekanie psa podczas połączenia. Dodaj swoją <b>muzykę</b> do swojej karty, zostaw <b>notatkę</b> pod swoim imieniem, miej <b>własne biurko</b>, <b>machaj</b> na powitanie i miej biuro zawsze przy sobie w <b>telefonie</b>.",
+      "moments": {
+        "screen": "Ekran {name}",
+        "waved": "{name} macha do ciebie",
+        "noise": "Redukcja szumów",
+        "whiteboard": "Tablica"
+      },
+      "items": {
+        "invite": {
+          "title": "Jeden link do zapraszania",
+          "body": "Wklej go na czacie zespołu. Osoby z zespołu dołączą przez Google lub kod e-mail."
+        },
+        "languages": {
+          "title": "18 języków",
+          "body": "Każdy korzysta z TinyFloor we własnym języku."
+        }
+      },
+      "copy": "Kopiuj"
+    },
+    "open": {
+      "title": "Open source. Prywatne z założenia.",
+      "body": "TinyFloor to wirtualne biuro open source. Jego kod jest publiczny na GitHubie, więc każdy może sprawdzić, jak działa i co robi z danymi Twojego zespołu. Każde biuro jest przeznaczone wyłącznie dla jego członków, a połączenia są szyfrowane podczas przesyłania.",
+      "figures": {
+        "commits": "commitów w ostatnich 16 tygodniach",
+        "license": "licencja, dzięki której kod pozostaje otwarty",
+        "languages": "języki, wszystkie w tym samym kodzie"
+      }
     }
   },
   "pricingPage": {
@@ -1301,7 +1353,14 @@
       "callsNote": "Nigdy nie są liczone",
       "support": "Pierwszeństwo w pomocy",
       "wholeTeam": "Cały zespół",
-      "meetings": "Spotkania grupowe"
+      "meetings": "Spotkania grupowe",
+      "features": {
+        "chat": "Kanały i wiadomości",
+        "screen": "Udostępnianie ekranu",
+        "whiteboard": "Tablica",
+        "music": "Spotify",
+        "noise": "Usuwanie szumów"
+      }
     },
     "notes": {
       "title": "Warto wiedzieć.",

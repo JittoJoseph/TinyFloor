@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "TinyFloor - Un ufficio virtuale in cui puoi camminare",
-    "description": "TinyFloor è un ufficio virtuale gratuito nel browser. Muoviti con il team su un piano in pixel art e avvia videochiamate mettendoti accanto a qualcuno.",
+    "title": "TinyFloor: un ufficio virtuale per piccoli team da remoto",
+    "description": "TinyFloor è un ufficio virtuale nel browser per piccoli team da remoto. Vedi chi c’è, avvicinati per parlare e incontrati in corridoio. Gratis fino a 3 persone.",
     "ogAlt": "Una stanza TinyFloor: un piano d’ufficio a 16 bit con scrivanie e colleghi",
-    "keywords": "ufficio virtuale, lavoro da remoto, chat spaziale, collaborazione online, spazio di lavoro virtuale, chat di prossimità, videochat di prossimità, coworking virtuale, videochiamate nel browser",
+    "keywords": "ufficio virtuale, software per ufficio virtuale, spazio di lavoro virtuale, team da remoto, lavoro da remoto, presenza del team, sala riunioni virtuale, chat di team, ufficio virtuale open source",
     "joinTitle": "Entra nella stanza",
     "joinRoomTitle": "Entra in {office}",
     "joinRoomDescription": "Sei invitato in {office} su TinyFloor, un ufficio virtuale in cui ti muovi. Apri il link, scegli un personaggio ed entra.",

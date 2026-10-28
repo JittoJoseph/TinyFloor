@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "TinyFloor – Ein virtuelles Büro zum Herumlaufen",
-    "description": "TinyFloor ist ein kostenloses virtuelles Büro im Browser. Lauf mit deinem Team über die Pixel-Art-Etage. Starte Videoanrufe durch bloßes Danebenstellen.",
+    "title": "TinyFloor: Ein virtuelles Büro für kleine Remote-Teams",
+    "description": "TinyFloor ist ein virtuelles Büro für kleine Remote-Teams im Browser. Sieh, wer da ist, geh rüber zum Reden und triff dich im Meetingraum. Kostenlos für bis zu 3 Personen.",
     "ogAlt": "Ein TinyFloor-Raum: eine 16-Bit-Büroetage mit Schreibtischen und Teammitgliedern",
-    "keywords": "virtuelles Büro, Remote-Arbeit, räumlicher Chat, Online-Zusammenarbeit, virtueller Arbeitsplatz, Proximity-Chat, Proximity-Videochat, virtueller Coworking-Space, Videoanrufe im Browser",
+    "keywords": "virtuelles Büro, virtuelle Büro-Software, virtueller Arbeitsplatz, Remote-Teams, Remote-Arbeit, Team-Präsenz, virtueller Meetingraum, Team-Chat, virtuelles Open-Source-Büro",
     "joinTitle": "Raum betreten",
     "joinRoomTitle": "{office} beitreten",
     "joinRoomDescription": "Du bist in {office} auf TinyFloor eingeladen, einem virtuellen Büro zum Herumlaufen. Öffne den Link, wähle eine Figur und komm rein.",

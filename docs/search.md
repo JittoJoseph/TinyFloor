@@ -531,6 +531,37 @@ usually several times larger. Exact Google volumes still need OpenSEO credits.
 - **Reddit can't be read from here:** its search API refuses this network
   and the browser extension won't open it.
 
+## The home page (28 October)
+
+- **The home page ranked for nothing but the brand.** In three months it had
+  two impressions outside "tinyfloor"; every category search ("virtual
+  office free", "virtual office online", "virtual office app") went to
+  /virtual-office instead, at 27 to 90. Between the hero and the questions it
+  had about twenty short lines, too little for Google to rank it on.
+- **Plain "virtual office" mostly means a business address** (Regus,
+  Davinci, Opus on Bing), and "online office" means Microsoft Office. The
+  team meaning needs its qualifier: "virtual office for remote teams" (under
+  100, easy in Ahrefs), "virtual office software" and "virtual workspace"
+  (harder). So the page now says what TinyFloor is in one sentence, labels
+  each part the way it's searched (team presence, proximity video chat,
+  virtual meeting room, team chat), and links each to the page about it.
+- **No customer logos yet,** so the strip under the hero lists the countries
+  offices were open in over the last two months (PostHog: 19, from Ecuador
+  and the Philippines to Korea), each in its own language.
+- **Google's sitelinks aren't markup.** Linear's home page has no structured
+  data at all; the links under its result are Google's own, given to sites it
+  trusts for brand searches when their sections and navigation are clear.
+  Ours already sends Organization, WebSite, WebApplication with prices, and
+  the FAQ.
+- **What the home page is worded for (DataForSEO, US):** "virtual workspace"
+  880 a month at difficulty 9 (Gather's home page ranks second for it),
+  "virtual office software" 140 at 18, "virtual office platform" 140 at 21,
+  "remote work tools" 880 at 10, "virtual meeting room" 170 at 52. Google's
+  answer for "virtual office software" describes the product itself: see
+  who's available, talk without scheduling. The site title and description
+  now say "a virtual office for small remote teams" in every language, and
+  no longer promise calls that start by standing next to someone.
+
 ## Launch places (24 October)
 
 - **Hacker News:** TinyFloor has never been posted. Earlier "virtual office"

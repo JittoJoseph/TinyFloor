@@ -1,13 +1,13 @@
 {
   "landing": {
-    "description": "Et virtuelt kontor til remote teams i browseren. Gå rundt på en pixel-art-etage med dit team og start et videoopkald bare ved at stå ved siden af nogen.",
+    "description": "Et virtuelt kontor til små fjernteams, i browseren. Alle har et skrivebord på én etage: se, hvem der er her, gå hen og ring til en kollega, mødes i mødelokalet, og chat ved siden af.",
     "features": [
-      "Video- og taleopkald på nært hold",
+      "Lyd- og videoopkald med en kollega",
       "Skærmdeling i opkald og møder",
-      "2D-kontorkort, du kan gå rundt på",
-      "Pixelart-avatarer",
-      "Tilstedeværelse og status i realtid",
-      "Rumchat"
+      "En 2D-kontoretage, du går rundt på",
+      "Pixel-art-figurer",
+      "Live tilstedeværelse og status",
+      "Teamchat med kanaler og direkte beskeder"
     ]
   },
   "faq": {
@@ -1194,37 +1194,6 @@
         "body": "Mødelokalet ligger nede ad gangen. Deltag i mødet, og din figur går ind; gå ud, og du har forladt det."
       }
     },
-    "more": {
-      "eyebrow": "Alt det andet",
-      "title": "Det et lille team har brug for.",
-      "muted": "Intet mere.",
-      "items": {
-        "chat": {
-          "title": "Kanaler og beskeder",
-          "body": "Chat der bliver, ved siden af etagen. Følg med fra telefonen."
-        },
-        "screen": {
-          "title": "Skærmdeling",
-          "body": "Del et vindue med den, du taler med, med ét klik."
-        },
-        "whiteboard": {
-          "title": "Whiteboard",
-          "body": "En delt tavle på væggen, til skitsen der forklarer det."
-        },
-        "music": {
-          "title": "Spotify",
-          "body": "Spil musik i TinyFloor, og kollegerne lytter med fra dit kort."
-        },
-        "noise": {
-          "title": "Støjfjernelse",
-          "body": "Tastaturer og caféer holdes ude af opkaldet."
-        },
-        "devices": {
-          "title": "På alle enheder",
-          "body": "Det er en webside. Computer eller telefon, den åbner på samme måde."
-        }
-      }
-    },
     "pricing": {
       "eyebrow": "Priser",
       "title": "Pris pr. kontor,",
@@ -1276,6 +1245,89 @@
       "title": "Giv dit team",
       "muted": "en etage at dele.",
       "note": "Gratis for op til 3 personer · Kører på Cloudflare"
+    },
+    "countries": {
+      "label": "Teams arbejder på TinyFloor i"
+    },
+    "presence": {
+      "title": "Se, hvem der er i nærheden, før du spørger.",
+      "body": "Hele dit fjernteam på én etage, hver ved et skrivebord med en status. Se med et enkelt blik, hvem der er ledig, hvem der arbejder fokuseret, og hvem der er i et møde, helt uden statusmøder eller „er du der?“-beskeder.",
+      "more": "Mere om teamets tilstedeværelse",
+      "here": "På etagen",
+      "away": "Væk",
+      "notes": {
+        "emma": "Ledig til at snakke",
+        "jack": "I mødelokalet",
+        "olivia": "Fordybet til kl. 15",
+        "sam": "Arbejder sammen med Noah",
+        "noah": "Arbejder sammen med Sam",
+        "lily": "Tilbage på mandag"
+      },
+      "wave": "Vink"
+    },
+    "price": {
+      "title": "Én pris for hele kontoret.",
+      "body": "Gratis for op til 3 personer. Derefter er Pro én månedlig pris for hele teamet, uanset hvor mange I er. Hvert nyt kontor starter med 14 dages Pro, intet kort nødvendigt.",
+      "team": "Dit team",
+      "people": "{count} personer",
+      "ours": "TinyFloor Pro",
+      "theirs": "Værktøjer prissat pr. person, til {low} til {high} hver",
+      "month": "om måneden",
+      "freeNote": "Gratis for op til 3 personer",
+      "more": "Se planer og priser"
+    },
+    "statement": {
+      "text": "Et virtuelt kontor til små fjernteams, <muted>med gangen tilbage.</muted>",
+      "points": {
+        "seen": "Se, hvem der er her",
+        "talk": "Gå hen og snak",
+        "meet": "Mødes nede ad gangen"
+      },
+      "here": "{count} på etagen",
+      "room": "Mødelokale"
+    },
+    "meet": {
+      "title": "Et virtuelt mødelokale, nede ad gangen.",
+      "body": "Når tre eller flere af jer har brug for at snakke, kan I mødes i mødelokalet med HD-video, skærmdeling og et whiteboard på væggen. Gå ind for at deltage, og gå ud for at forlade det. Ingen links, der skal sendes, intet at planlægge.",
+      "more": "Mere om mødelokalet",
+      "meeting": "Standup"
+    },
+    "chat": {
+      "title": "Teamchat, lige ved siden af etagen.",
+      "body": "Kanaler og direkte beskeder til alt det, der ikke er et opkald, så det, der blev besluttet, er skrevet ned og nemt at finde. Svar på en besked, giv en reaktion, og del et skærmbillede.",
+      "more": "Mere om teamchat",
+      "reply1": "Tak. Jeg tager spørgsmålene med fra gårsdagens opkald.",
+      "reply2": "Det ser godt ud. Jeg går derhen efter standup."
+    },
+    "extras": {
+      "title": "Alt det andet, et fjernteam har brug for.",
+      "text": "Del din <b>skærm</b> i ethvert opkald og skitsér det på <b>whiteboardet</b>. <b>Støjreduktion</b> holder den gøende hund ude af opkaldet. Læg din <b>musik</b> på dit kort, efterlad en <b>note</b> under dit navn, hav dit <b>eget skrivebord</b>, <b>vink</b> hej, og tag kontoret med på din <b>telefon</b>.",
+      "moments": {
+        "screen": "{name}s skærm",
+        "waved": "{name} vinkede til dig",
+        "noise": "Støjreduktion",
+        "whiteboard": "Whiteboard"
+      },
+      "items": {
+        "invite": {
+          "title": "Ét link til at invitere",
+          "body": "Indsæt det i din teamchat. Kolleger logger på med Google eller en e-mailkode."
+        },
+        "languages": {
+          "title": "18 sprog",
+          "body": "Alle bruger TinyFloor på deres eget sprog."
+        }
+      },
+      "copy": "Kopier"
+    },
+    "open": {
+      "title": "Open source. Privat som standard.",
+      "body": "TinyFloor er et open source virtuelt kontor. Koden er offentlig på GitHub, så alle kan læse, hvordan det fungerer, og hvad det gør med dit teams data. Hvert kontor er kun for dets medlemmer, og opkald er krypteret under overførsel.",
+      "figures": {
+        "commits": "commits de seneste 16 uger",
+        "license": "licensen, så koden forbliver åben",
+        "languages": "sprog, alle i den samme kode"
+      }
     }
   },
   "pricingPage": {
@@ -1301,7 +1353,14 @@
       "callsNote": "Tælles aldrig",
       "support": "Prioriteret hjælp",
       "wholeTeam": "Hele teamet",
-      "meetings": "Gruppemøder"
+      "meetings": "Gruppemøder",
+      "features": {
+        "chat": "Kanaler og beskeder",
+        "screen": "Skærmdeling",
+        "whiteboard": "Whiteboard",
+        "music": "Spotify",
+        "noise": "Støjfjernelse"
+      }
     },
     "notes": {
       "title": "Godt at vide.",

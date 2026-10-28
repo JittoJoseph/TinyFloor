@@ -121,7 +121,7 @@ function SeatCompare() {
 function PlanTable() {
   const t = useTranslations("pricingPage.table");
   const tp = useTranslations("homepage.pricing");
-  const tm = useTranslations("homepage.more.items");
+  const tm = useTranslations("pricingPage.table.features");
   const th = useTranslations("home.preview");
   const tick = <Check className="mx-auto size-[18px] text-foreground" />;
   const none = <Minus className="mx-auto size-[18px] text-muted-foreground" />;
@@ -131,7 +131,7 @@ function PlanTable() {
     { label: t("people"), cells: PLANS.map((plan) => (plan.price ? t("wholeTeam") : plan.people)) },
     { label: t("calls"), note: t("callsNote"), cells: PLANS.map(() => tick) },
     ...(["chat", "screen", "whiteboard", "music", "noise"] as const).map((key) => ({
-      label: tm(`${key}.title`),
+      label: tm(key),
       cells: PLANS.map(() => tick),
     })),
     { label: th("inviteLink"), cells: PLANS.map(() => tick) },

@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "TinyFloor - 可以四处走动的虚拟办公室",
-    "description": "TinyFloor 是浏览器里的免费虚拟办公室。和团队一起在像素风楼层里走动，只要站到同事身边就能开始视频通话。",
+    "title": "TinyFloor: 小型远程团队的虚拟办公室",
+    "description": "TinyFloor 是一款浏览器中的小型远程团队虚拟办公室。看看谁在，走过去交谈，在走廊碰面。最多 3 人免费。",
     "ogAlt": "TinyFloor 房间：摆满办公桌和同事的 16 位像素办公楼层",
-    "keywords": "虚拟办公室，远程办公，空间聊天，在线协作，虚拟工作空间，近距离聊天，近距离视频聊天，虚拟共享办公，浏览器视频通话",
+    "keywords": "虚拟办公室, 虚拟办公室软件, 虚拟工作区, 远程团队, 远程办公, 团队状态, 虚拟会议室, 团队聊天, 开源虚拟办公室",
     "joinTitle": "加入房间",
     "joinRoomTitle": "加入 {office}",
     "joinRoomDescription": "你受邀加入 TinyFloor 上的 {office}，这是一个可以走动的虚拟办公室。打开链接，选择角色，走进来吧。",

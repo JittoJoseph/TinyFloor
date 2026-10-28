@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { AudioLines, Check, Hash, MonitorUp, Music2, PenLine, Plus, License, Smartphone, SourceCode, Zap } from "@/components/ui/icons";
+import { Check, Plus, License, SourceCode, Zap } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { FloorScene } from "@/components/floor/FloorScene";
 import { HALL, MEETING } from "@/components/floor/scenes";
@@ -51,7 +51,7 @@ export const H2 =
 export const LEAD = "text-pretty text-[16.5px] leading-[1.6] text-muted-foreground sm:text-[18px]";
 
 /** Chinese, Japanese and Korean headlines keep their own spacing. */
-export const CJK_HEADLINE = "[:lang(ja)_&]:tracking-normal [:lang(ko)_&]:tracking-normal [:lang(zh)_&]:tracking-normal";
+export const CJK_HEADLINE = "[:lang(ja)_&]:tracking-normal [:lang(ja)_&]:[word-break:auto-phrase] [:lang(ko)_&]:tracking-normal [:lang(zh)_&]:tracking-normal";
 
 /**
  * The black of the app's bezel; what sits on it wears the dark theme. In the
@@ -265,44 +265,6 @@ export function Notes({
   );
 }
 
-/** Everything else on every floor, as notes. The chat carries the nav's #chat anchor. */
-export function Everything() {
-  const t = useTranslations("homepage.more");
-  const items: Array<{ key: "chat" | "screen" | "whiteboard" | "music" | "noise" | "devices"; icon: ReactNode }> = [
-    { key: "chat", icon: <Hash /> },
-    { key: "screen", icon: <MonitorUp /> },
-    { key: "whiteboard", icon: <PenLine /> },
-    { key: "music", icon: <Music2 /> },
-    { key: "noise", icon: <AudioLines /> },
-    { key: "devices", icon: <Smartphone /> },
-  ];
-  return (
-    <section id="features" className={cn(COLUMN, ANCHOR, "py-28 sm:py-40")}>
-      <Heading eyebrow={t("eyebrow")} title={t("title")} muted={t("muted")} />
-      <Notes
-        className="mt-14 sm:mt-20"
-        items={items.map((one) => ({
-          id: one.key === "chat" ? "chat" : undefined,
-          icon: one.icon,
-          title: t(`items.${one.key}.title`),
-          body: t(`items.${one.key}.body`),
-        }))}
-      />
-    </section>
-  );
-}
-
-/** The plans, priced by the office and not the person (docs/pricing.md). */
-export function Plans() {
-  const t = useTranslations("homepage.pricing");
-  return (
-    <section id="plans" className={cn(COLUMN, ANCHOR, "pb-28 sm:pb-40")}>
-      <Heading eyebrow={t("eyebrow")} title={t("title")} muted={t("muted")} body={t("body")} />
-      <PlanCards className="mt-12 sm:mt-20" />
-    </section>
-  );
-}
-
 /**
  * The two plans, for the home page and the pricing page, as one panel split
  * down the middle (the way Vercel and Linear lay theirs out), not two floating
@@ -324,7 +286,7 @@ export function PlanCards({ className, level = "h3" }: { className?: string; lev
   return (
     <div className={className}>
       <div className="mx-auto grid max-w-[460px] overflow-hidden rounded-[28px] border border-border lg:max-w-[860px] lg:grid-cols-2">
-        <section className={cn(side, "bg-foreground/[0.04] lg:order-2")}>
+        <section className={cn(side, "lg:order-2")}>
           <PlanTop
             level={level}
             name={t("pro.name")}
@@ -429,9 +391,9 @@ const SOURCE_MARK = "flex size-[22px] shrink-0 items-center justify-center round
 
 /**
  * The code is open, said as three small chips on a hairline: star it on
- * GitHub, open source, the licence. It carries the #source anchor.
+ * GitHub, open source, the licence.
  */
-export function OpenSource() {
+export function OpenSource({ className }: { className?: string }) {
   const t = useTranslations("homepage.source");
   const chips = [
     {
@@ -455,7 +417,7 @@ export function OpenSource() {
     },
   ];
   return (
-    <section id="source" className={cn(COLUMN, ANCHOR, "pb-28 sm:pb-40")}>
+    <div className={className}>
       <div className="relative flex justify-center">
         <div aria-hidden className="absolute inset-x-0 top-1/2 h-px bg-border" />
         <ul className="relative flex flex-wrap justify-center gap-2 bg-background px-3 sm:gap-2.5 sm:px-5">
@@ -479,7 +441,7 @@ export function OpenSource() {
           ))}
         </ul>
       </div>
-    </section>
+    </div>
   );
 }
 

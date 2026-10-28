@@ -1,13 +1,13 @@
 {
   "landing": {
-    "description": "Escritório virtual para equipes remotas no navegador. Ande por um andar em pixel art com sua equipe e comece uma videochamada só de ficar perto de alguém.",
+    "description": "Um escritório virtual para pequenas equipes remotas, no navegador. Todos têm uma mesa em um só andar: veja quem está por aí, vá até lá e chame um colega, reúna-se na sala de reuniões e converse no chat ao lado.",
     "features": [
-      "Chamadas de vídeo e voz por proximidade",
+      "Chamadas de voz e vídeo com um colega de equipe",
       "Compartilhamento de tela em chamadas e reuniões",
-      "Mapa de escritório 2D para explorar",
-      "Avatares em pixel art",
+      "Um andar de escritório 2D para andar por aí",
+      "Personagens em pixel art",
       "Presença e status em tempo real",
-      "Chat da sala"
+      "Chat de equipe com canais e mensagens diretas"
     ]
   },
   "faq": {
@@ -1194,37 +1194,6 @@
         "body": "A sala de reuniões fica no fim do corredor. Entre na reunião e seu personagem vai até lá; saia e você deixou a reunião."
       }
     },
-    "more": {
-      "eyebrow": "Todo o resto",
-      "title": "O que uma equipe pequena precisa.",
-      "muted": "Nada além disso.",
-      "items": {
-        "chat": {
-          "title": "Canais e mensagens",
-          "body": "Um chat que fica, ao lado do andar. Acompanhe pelo celular."
-        },
-        "screen": {
-          "title": "Compartilhar tela",
-          "body": "Compartilhe uma janela com quem você está falando, com um clique."
-        },
-        "whiteboard": {
-          "title": "Quadro branco",
-          "body": "Um quadro compartilhado na parede, para o rabisco que explica tudo."
-        },
-        "music": {
-          "title": "Spotify",
-          "body": "Toque música no TinyFloor, e a equipe ouve pelo seu cartão."
-        },
-        "noise": {
-          "title": "Remoção de ruído",
-          "body": "Teclados e cafés ficam fora da chamada."
-        },
-        "devices": {
-          "title": "Em qualquer aparelho",
-          "body": "É uma página web. Notebook ou celular, abre do mesmo jeito."
-        }
-      }
-    },
     "pricing": {
       "eyebrow": "Preços",
       "title": "Preço por escritório,",
@@ -1276,6 +1245,89 @@
       "title": "Dê à sua equipe",
       "muted": "um andar para dividir.",
       "note": "Grátis para até 3 pessoas · Roda na Cloudflare"
+    },
+    "countries": {
+      "label": "Equipes estão trabalhando no TinyFloor em"
+    },
+    "presence": {
+      "title": "Saiba quem está por aí antes de perguntar.",
+      "body": "Toda a sua equipe remota em um só andar, cada um em uma mesa com um status. Veja num relance quem está livre, quem está concentrado e quem está em uma reunião, sem reuniões de status ou mensagens de “você está aí?”.",
+      "more": "Mais sobre a presença da equipe",
+      "here": "No andar",
+      "away": "Ausente",
+      "notes": {
+        "emma": "Livre para conversar",
+        "jack": "Na sala de reuniões",
+        "olivia": "Concentrado até as 3",
+        "sam": "Pareando com Noah",
+        "noah": "Pareando com Sam",
+        "lily": "De volta na segunda"
+      },
+      "wave": "Acenar"
+    },
+    "price": {
+      "title": "Um preço só para o escritório inteiro.",
+      "body": "Grátis para até 3 pessoas. Depois, o Pro é um preço mensal único para toda a equipe, não importa quantos vocês sejam. Todo escritório novo começa com 14 dias de Pro, sem cartão.",
+      "team": "Sua equipe",
+      "people": "{count} pessoas",
+      "ours": "TinyFloor Pro",
+      "theirs": "Ferramentas com preço por pessoa, de {low} a {high} cada",
+      "month": "por mês",
+      "freeNote": "Grátis para até 3 pessoas",
+      "more": "Ver planos e preços"
+    },
+    "statement": {
+      "text": "Um escritório virtual para pequenas equipes remotas, <muted>com o corredor de volta.</muted>",
+      "points": {
+        "seen": "Veja quem está por aí",
+        "talk": "Vá até lá para conversar",
+        "meet": "Reúna-se no fim do corredor"
+      },
+      "here": "{count} no andar",
+      "room": "Sala de reuniões"
+    },
+    "meet": {
+      "title": "Uma sala de reuniões virtual, no fim do corredor.",
+      "body": "Quando três ou mais de vocês precisarem conversar, reúnam-se na sala de reuniões, com vídeo em HD, compartilhamento de tela e um quadro branco na parede. Entre para participar e saia para sair. Sem links para enviar, nada para agendar.",
+      "more": "Mais sobre a sala de reuniões",
+      "meeting": "Standup"
+    },
+    "chat": {
+      "title": "Chat de equipe, bem ao lado do andar.",
+      "body": "Canais e mensagens diretas para tudo o que não for uma chamada, para que o que foi decidido fique registrado e seja fácil de encontrar. Responda a uma mensagem, reaja e compartilhe uma captura de tela.",
+      "more": "Mais sobre o chat da equipe",
+      "reply1": "Obrigado. Vou trazer as perguntas da chamada de ontem.",
+      "reply2": "Muito bom. Vou até lá depois da standup."
+    },
+    "extras": {
+      "title": "Tudo o que uma equipe remota precisa.",
+      "text": "Compartilhe sua <b>tela</b> em qualquer chamada e faça esboços na <b>lousa</b>. A <b>remoção de ruído</b> mantém o latido do cachorro fora da chamada. Coloque sua <b>música</b> no seu cartão, deixe uma <b>nota</b> sob o seu nome, tenha uma <b>mesa própria</b>, <b>acene</b> para dar um oi e leve o escritório com você no seu <b>celular</b>.",
+      "moments": {
+        "screen": "Tela de {name}",
+        "waved": "{name} acenou para você",
+        "noise": "Remoção de ruído",
+        "whiteboard": "Lousa"
+      },
+      "items": {
+        "invite": {
+          "title": "Um link para convidar",
+          "body": "Cole no chat da sua equipe. Os colegas entram com o Google ou com um código por e-mail."
+        },
+        "languages": {
+          "title": "18 idiomas",
+          "body": "Todos usam o TinyFloor no seu próprio idioma."
+        }
+      },
+      "copy": "Copiar"
+    },
+    "open": {
+      "title": "Código aberto. Privado por padrão.",
+      "body": "O TinyFloor é um escritório virtual de código aberto. Seu código é público no GitHub, para que qualquer pessoa possa ler como ele funciona e o que faz com os dados da sua equipe. Cada escritório é exclusivo para seus membros, e as chamadas são criptografadas em trânsito.",
+      "figures": {
+        "commits": "commits nas últimas 16 semanas",
+        "license": "a licença, para que o código continue aberto",
+        "languages": "idiomas, todos no mesmo código"
+      }
     }
   },
   "pricingPage": {
@@ -1301,7 +1353,14 @@
       "callsNote": "Nunca são contadas",
       "support": "Ajuda prioritária",
       "wholeTeam": "Toda a equipe",
-      "meetings": "Reuniões em grupo"
+      "meetings": "Reuniões em grupo",
+      "features": {
+        "chat": "Canais e mensagens",
+        "screen": "Compartilhar tela",
+        "whiteboard": "Quadro branco",
+        "music": "Spotify",
+        "noise": "Remoção de ruído"
+      }
     },
     "notes": {
       "title": "Bom saber.",

@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "TinyFloor – Wirtualne biuro, po którym można chodzić",
-    "description": "TinyFloor to darmowe wirtualne biuro w przeglądarce. Chodź z zespołem po piętrze w stylu pixel art i zacznij rozmowę wideo, po prostu stając obok kogoś.",
+    "title": "TinyFloor: Wirtualne biuro dla małych zespołów zdalnych",
+    "description": "TinyFloor to wirtualne biuro w przeglądarce dla małych zespołów zdalnych. Zobacz, kto jest, podejdź porozmawiać i spotkaj się na korytarzu. Za darmo do 3 osób.",
     "ogAlt": "Pokój TinyFloor: 16-bitowe piętro biura z biurkami i członkami zespołu",
-    "keywords": "wirtualne biuro, praca na odległość, czat przestrzenny, współpraca online, wirtualna przestrzeń do pracy, czat zbliżeniowy, wideoczat zbliżeniowy, wirtualny coworking, rozmowy wideo w przeglądarce",
+    "keywords": "wirtualne biuro, oprogramowanie do wirtualnego biura, wirtualna przestrzeń pracy, zespoły zdalne, praca zdalna, obecność zespołu, wirtualny pokój spotkań, czat zespołowy, wirtualne biuro open source",
     "joinTitle": "Dołącz do pokoju",
     "joinRoomTitle": "Dołącz do {office}",
     "joinRoomDescription": "Masz zaproszenie do pokoju {office} w TinyFloor, wirtualnym biurze, po którym się chodzi. Otwórz link, wybierz postać i wejdź.",

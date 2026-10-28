@@ -562,6 +562,19 @@ usually several times larger. Exact Google volumes still need OpenSEO credits.
   now say "a virtual office for small remote teams" in every language, and
   no longer promise calls that start by standing next to someone.
 
+## The GitHub repo (28 October)
+
+- **Open source searches are tiny:** "open source virtual office", "gather
+  town open source", "virtual office github" each about 10 a month (US). What
+  ranks for them is Reddit (r/selfhosted) and listicles, no repo, so the
+  repo's title can take them on GitHub's authority.
+- **Google titles a repo with its description,** so the description leads
+  with "Open source virtual office for small remote teams", and the README's
+  h1 says the same.
+- **A plain "tinyfloor" search is all tiny houses** (floor plans, Pinterest,
+  Etsy): the brand alone doesn't find us yet, so every title pairs it with
+  "virtual office".
+
 ## Launch places (24 October)
 
 - **Hacker News:** TinyFloor has never been posted. Earlier "virtual office"

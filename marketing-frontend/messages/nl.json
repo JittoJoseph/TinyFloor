@@ -1322,11 +1322,20 @@
     },
     "open": {
       "title": "Open source. Standaard privé.",
-      "body": "TinyFloor is een open source virtueel kantoor. De code is openbaar op GitHub, zodat iedereen kan lezen hoe het werkt en wat het doet met de gegevens van je team. Elk kantoor is alleen voor de leden en gesprekken zijn versleuteld tijdens de overdracht.",
-      "figures": {
-        "commits": "commits in de afgelopen 16 weken",
-        "license": "de licentie, zodat de code open blijft",
-        "languages": "talen, allemaal in dezelfde code"
+      "body": "TinyFloor is een open source virtueel kantoor. De code is openbaar op GitHub, dus iedereen kan lezen hoe het werkt en wat het doet met de gegevens van je team.",
+      "facts": {
+        "members": {
+          "title": "Alleen voor leden",
+          "body": "Een kantoor is alleen voor de leden. Niets daarbinnen is openbaar of geïndexeerd."
+        },
+        "calls": {
+          "title": "Versleutelde gesprekken",
+          "body": "Gesprekken en vergaderingen zijn onderweg versleuteld, op elk netwerk."
+        },
+        "code": {
+          "title": "Code die je kunt lezen",
+          "body": "Zie precies wat TinyFloor doet met de gegevens van je team."
+        }
       }
     }
   },

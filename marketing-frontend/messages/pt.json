@@ -1322,11 +1322,20 @@
     },
     "open": {
       "title": "Código aberto. Privado por padrão.",
-      "body": "O TinyFloor é um escritório virtual de código aberto. Seu código é público no GitHub, para que qualquer pessoa possa ler como ele funciona e o que faz com os dados da sua equipe. Cada escritório é exclusivo para seus membros, e as chamadas são criptografadas em trânsito.",
-      "figures": {
-        "commits": "commits nas últimas 16 semanas",
-        "license": "a licença, para que o código continue aberto",
-        "languages": "idiomas, todos no mesmo código"
+      "body": "O TinyFloor é um escritório virtual de código aberto. Seu código é público no GitHub, para que qualquer pessoa possa ler como ele funciona e o que faz com os dados da sua equipe.",
+      "facts": {
+        "members": {
+          "title": "Apenas membros",
+          "body": "Um escritório é apenas para seus membros. Nada dentro dele é público ou indexado."
+        },
+        "calls": {
+          "title": "Chamadas criptografadas",
+          "body": "Chamadas e reuniões são criptografadas em trânsito, em qualquer rede."
+        },
+        "code": {
+          "title": "Código legível",
+          "body": "Veja exatamente o que o TinyFloor faz com os dados da sua equipe."
+        }
       }
     }
   },

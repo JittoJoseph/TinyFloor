@@ -1322,11 +1322,20 @@
     },
     "open": {
       "title": "Åpen kildekode. Privat som standard.",
-      "body": "TinyFloor er et virtuelt kontor med åpen kildekode. Kildekoden er offentlig på GitHub, så alle kan lese hvordan det fungerer og hva det gjør med teamets data. Hvert kontor er kun for medlemmene, og samtaler krypteres under overføring.",
-      "figures": {
-        "commits": "commits de siste 16 ukene",
-        "license": "lisensen, slik at koden forblir åpen",
-        "languages": "språk, alt i samme kode"
+      "body": "TinyFloor er et virtuelt kontor med åpen kildekode. Koden er offentlig på GitHub, så alle kan lese hvordan den fungerer og hva den gjør med teamets data.",
+      "facts": {
+        "members": {
+          "title": "Kun for medlemmer",
+          "body": "Et kontor er kun for medlemmene. Ingenting på innsiden er offentlig eller indeksert."
+        },
+        "calls": {
+          "title": "Krypterte samtaler",
+          "body": "Samtaler og møter er kryptert under overføring, på alle nettverk."
+        },
+        "code": {
+          "title": "Kode du kan lese",
+          "body": "Se nøyaktig hva TinyFloor gjør med teamets data."
+        }
       }
     }
   },

@@ -390,55 +390,55 @@ const SOURCE_CHIP =
 const SOURCE_MARK = "flex size-[22px] shrink-0 items-center justify-center rounded-[6px] shadow-[inset_0_-1px_0_rgb(0_0_0/0.18)]";
 
 /**
- * The code is open, said as three small chips on a hairline: star it on
- * GitHub, open source, the licence.
+ * The code is open, said as three small chips on a hairline: open source, the
+ * licence, and between them the one to press, starring it on GitHub, which
+ * lifts and fills its star gold as you point at it.
  */
 export function OpenSource({ className }: { className?: string }) {
   const t = useTranslations("homepage.source");
-  const chips = [
-    {
-      label: t("star"),
-      href: SOCIALS.github,
-      mark: <GitHubMark className="size-3.5" />,
-      tint: "bg-foreground text-background",
-      lead: true,
-    },
-    {
-      label: t("open"),
-      href: SOCIALS.github,
-      mark: <SourceCode className="size-3.5" strokeWidth={2.2} />,
-      tint: "bg-[#2fbf71] text-white",
-    },
-    {
-      label: "AGPL-3.0",
-      href: `${SOCIALS.github}/blob/master/LICENSE`,
-      mark: <License className="size-3.5" strokeWidth={2.2} />,
-      tint: "bg-[#8b5cf6] text-white",
-    },
-  ];
+  const label = (text: string, mark: ReactNode, tint: string) => (
+    <li>
+      <span className={cn(SOURCE_CHIP, "bg-foreground/[0.05] text-muted-foreground")}>
+        <span className={cn(SOURCE_MARK, tint)}>{mark}</span>
+        <span dir="auto">{text}</span>
+      </span>
+    </li>
+  );
   return (
     <div className={className}>
       <div className="relative flex justify-center">
         <div aria-hidden className="absolute inset-x-0 top-1/2 h-px bg-border" />
-        <ul className="relative flex flex-wrap justify-center gap-2 bg-background px-3 sm:gap-2.5 sm:px-5">
-          {chips.map((chip) => (
-            <li key={chip.label}>
-              <a
-                href={chip.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  SOURCE_CHIP,
-                  chip.lead
-                    ? "bg-card text-foreground shadow-[0_0_0_1px_var(--color-border),0_1px_2px_rgb(0_0_0/0.05)] hover:bg-card/70"
-                    : "bg-foreground/[0.05] text-muted-foreground hover:bg-foreground/[0.08] hover:text-foreground",
-                )}
+        <ul className="relative flex flex-wrap items-center justify-center gap-2 bg-background px-3 sm:gap-2.5 sm:px-5">
+          {label(t("open"), <SourceCode className="size-3.5" strokeWidth={2.2} />, "bg-[#2fbf71] text-white")}
+          {/* The hover belongs to the pill's place, which stays put, so lifting the pill can't take it out from under the pointer. */}
+          <li className="group flex">
+            <a
+              href={SOCIALS.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                SOURCE_CHIP,
+                "bg-card text-foreground shadow-[0_0_0_1px_var(--color-border),0_1px_2px_rgb(0_0_0/0.05)] transition-[translate,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [will-change:translate]",
+                "group-hover:-translate-y-0.5 group-hover:shadow-[0_0_0_1px_var(--color-border-strong),0_12px_30px_-12px_rgb(0_0_0/0.6)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/60 active:translate-y-0 active:duration-150 motion-reduce:transition-none",
+              )}
+            >
+              <span className={cn(SOURCE_MARK, "bg-foreground text-background")}>
+                <GitHubMark className="size-3.5" />
+              </span>
+              <span dir="auto">{t("star")}</span>
+              <svg
+                aria-hidden
+                viewBox="0 0 24 24"
+                className="size-4 text-faint transition-[color,fill] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] [fill:transparent] group-hover:text-[#facc15] group-hover:[fill:#facc15] motion-reduce:transition-none"
+                stroke="currentColor"
+                strokeWidth={1.8}
+                strokeLinejoin="round"
               >
-                <span className={cn(SOURCE_MARK, chip.tint)}>{chip.mark}</span>
-                <span dir="auto">{chip.label}</span>
-              </a>
-            </li>
-          ))}
+                <path d="M12 3.5l2.6 5.3 5.9.9-4.25 4.1 1 5.85L12 16.9l-5.25 2.75 1-5.85L3.5 9.7l5.9-.9z" />
+              </svg>
+            </a>
+          </li>
+          {label("AGPL-3.0", <License className="size-3.5" strokeWidth={2.2} />, "bg-[#8b5cf6] text-white")}
         </ul>
       </div>
     </div>

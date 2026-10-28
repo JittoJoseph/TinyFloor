@@ -5,7 +5,7 @@
   "packageManager": "pnpm@11.22.0",
   "scripts": {
     "dev": "node ../web-shared/scripts/fetch-assets.mjs --only=characters/presets/ && next dev",
-    "build": "node ../web-shared/scripts/fetch-assets.mjs --only=characters/presets/ && node scripts/commits.mjs && next build",
+    "build": "node ../web-shared/scripts/fetch-assets.mjs --only=characters/presets/ && next build",
     "start": "next start",
     "lint": "eslint",
     "build:worker": "opennextjs-cloudflare build && node ../web-shared/scripts/static-pages.mjs",

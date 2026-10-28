@@ -1322,11 +1322,20 @@
     },
     "open": {
       "title": "Avointa lähdekoodia. Oletusarvoisesti yksityinen.",
-      "body": "TinyFloor on avoimen lähdekoodin virtuaalitoimisto. Sen koodi on julkista GitHubissa, joten kuka tahansa voi lukea, miten se toimii ja mitä se tekee tiimisi tiedoilla. Jokainen toimisto on tarkoitettu vain sen jäsenille, ja puhelut salataan siirron aikana.",
-      "figures": {
-        "commits": "committia viimeisen 16 viikon aikana",
-        "license": "lisenssi, jotta koodi pysyy avoimena",
-        "languages": "kieltä, kaikki samassa koodissa"
+      "body": "TinyFloor on avoimen lähdekoodin virtuaalitoimisto. Sen koodi on julkista GitHubissa, joten kuka tahansa voi lukea, miten se toimii ja mitä se tekee tiimisi tiedoilla.",
+      "facts": {
+        "members": {
+          "title": "Vain jäsenille",
+          "body": "Toimisto on tarkoitettu vain sen jäsenille. Mikään sen sisällä oleva ei ole julkista tai indeksoitua."
+        },
+        "calls": {
+          "title": "Salatut puhelut",
+          "body": "Puhelut ja kokoukset salataan siirron aikana missä tahansa verkossa."
+        },
+        "code": {
+          "title": "Luettava koodi",
+          "body": "Näe tarkalleen, mitä TinyFloor tekee tiimisi tiedoilla."
+        }
       }
     }
   },

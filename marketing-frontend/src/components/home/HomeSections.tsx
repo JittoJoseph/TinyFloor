@@ -22,8 +22,6 @@ import { PLANS } from "@/lib/plans";
 import { cn } from "@/lib/utils";
 import { ANCHOR, CJK_HEADLINE, COLUMN, OpenSource } from "./Blocks";
 import { PriceSlider } from "./PriceSlider";
-import COMMITS from "./commits.json";
-import { routing } from "@/lib/i18n/routing";
 
 /*
  * The home page between the hero and the questions. Each section is its own
@@ -661,34 +659,25 @@ export function PriceSection() {
 
 /**
  * The open code: the claim and what it means, centred, the code's chips on
- * their line, and under them three figures: the work going into it (commits
- * over the last sixteen weeks, counted at each build by scripts/commits.mjs),
- * the license, and the languages. It carries the nav's #source.
+ * their line, and under them what it means for a team, three plain facts in
+ * a row. It carries the nav's #source.
  */
 export function OpenSection() {
   const t = useTranslations("homepage.open");
-  const locale = useLocale();
-  const commits = COMMITS.days.reduce((sum, n) => sum + n, 0);
-  const figures = [
-    { value: new Intl.NumberFormat(locale).format(commits), label: t("figures.commits") },
-    { value: "AGPL-3.0", label: t("figures.license") },
-    { value: new Intl.NumberFormat(locale).format(routing.locales.length), label: t("figures.languages") },
-  ];
+  const facts = ["members", "calls", "code"] as const;
   return (
     <section id="source" className={cn(COLUMN, ANCHOR, "py-24 text-center sm:py-32")}>
       <h2 className={cn(TITLE, CJK_HEADLINE, "mx-auto max-w-[18ch]")}>{t("title")}</h2>
-      <p className={cn(BODY, "mx-auto mt-6 max-w-[36rem]")}>{t("body")}</p>
+      <p className={cn(BODY, "mx-auto mt-6 max-w-[34rem]")}>{t("body")}</p>
       <OpenSource className="mx-auto mt-10 max-w-[720px]" />
-      <dl className="mx-auto mt-16 grid max-w-[880px] gap-10 sm:mt-20 sm:grid-cols-3 sm:gap-0">
-        {figures.map((figure, i) => (
-          <div key={figure.label} className={cn("flex flex-col-reverse items-center gap-2 sm:px-6", i > 0 && "sm:border-s sm:border-border")}>
-            <dt className="max-w-[16rem] text-[14px] leading-[1.5] text-muted-foreground">{figure.label}</dt>
-            <dd dir="ltr" className="text-[40px] font-normal leading-none tracking-[-0.04em] tabular-nums sm:text-[48px]">
-              {figure.value}
-            </dd>
-          </div>
+      <ul className="mx-auto mt-16 grid max-w-[880px] gap-10 sm:mt-20 sm:grid-cols-3 sm:gap-0">
+        {facts.map((key, i) => (
+          <li key={key} className={cn("sm:px-8", i > 0 && "sm:border-s sm:border-border")}>
+            <h3 className="text-[16px] font-medium tracking-[-0.01em]">{t(`facts.${key}.title`)}</h3>
+            <p className="mx-auto mt-2 max-w-[16rem] text-[14px] leading-[1.55] text-muted-foreground">{t(`facts.${key}.body`)}</p>
+          </li>
         ))}
-      </dl>
+      </ul>
     </section>
   );
 }

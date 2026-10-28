@@ -1322,11 +1322,20 @@
     },
     "open": {
       "title": "Open source. Privato per impostazione predefinita.",
-      "body": "TinyFloor è un ufficio virtuale open source. Il suo codice è pubblico su GitHub, quindi chiunque può leggere come funziona e cosa fa con i dati del tuo team. Ogni ufficio è riservato solo ai suoi membri e le chiamate sono crittografate in transito.",
-      "figures": {
-        "commits": "commit nelle ultime 16 settimane",
-        "license": "la licenza, così il codice rimane aperto",
-        "languages": "lingue, tutte nello stesso codice"
+      "body": "TinyFloor è un ufficio virtuale open source. Il suo codice è pubblico su GitHub, quindi chiunque può leggere come funziona e cosa fa con i dati del tuo team.",
+      "facts": {
+        "members": {
+          "title": "Solo membri",
+          "body": "Un ufficio è solo per i suoi membri. Nulla al suo interno è pubblico o indicizzato."
+        },
+        "calls": {
+          "title": "Chiamate crittografate",
+          "body": "Le chiamate e le riunioni sono crittografate in transito, su qualsiasi rete."
+        },
+        "code": {
+          "title": "Codice che puoi leggere",
+          "body": "Vedi esattamente cosa fa TinyFloor con i dati del tuo team."
+        }
       }
     }
   },

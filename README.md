@@ -7,11 +7,11 @@
   </a>
 </p>
 
-<h1 align="center">TinyFloor</h1>
+<h1 align="center">TinyFloor: an open source virtual office for remote teams</h1>
 
 <p align="center">
-  <b>The virtual office your team can walk around in.</b><br>
-  Walk up to someone to talk. Pull up a chair to meet. Free for up to 3 people.
+  <b>Your remote team on one floor, in the browser.</b><br>
+  See who's in, walk over to talk, and meet down the hall. Free for up to 3 people.
 </p>
 
 <p align="center">
@@ -26,54 +26,57 @@
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-1a1a18" alt="License: AGPL-3.0"></a>
   <img src="https://img.shields.io/badge/runs%20on-Cloudflare-ff5a1f" alt="Runs on Cloudflare">
   <img src="https://img.shields.io/badge/languages-18-1a1a18" alt="18 languages">
+  <a href="https://github.com/JittoJoseph/TinyFloor/stargazers"><img src="https://img.shields.io/github/stars/JittoJoseph/TinyFloor?style=flat&color=1a1a18" alt="GitHub stars"></a>
 </p>
 
 <p align="center">
   <a href="https://www.tinyfloor.com/lobby">
     <picture>
       <source srcset=".github/readme/tour.avif" type="image/avif">
-      <img src=".github/readme/tour.gif" width="100%" alt="TinyFloor virtual office: a team chat, then walking up to a teammate to start a proximity video call">
+      <img src=".github/readme/tour.gif" width="100%" alt="TinyFloor virtual office: a message comes in, the team chat opens, then a call with the teammate at the next desk">
     </picture>
   </a>
 </p>
 
-## A virtual office for remote teams
+## What is TinyFloor?
 
-Remote work lost the hallway: the quick question at someone's desk, the hello on the way past, seeing who's around. Video calls turned every one of those into a scheduled meeting.
+TinyFloor is a **virtual office** for small remote teams: a shared pixel-art floor in the browser where everyone has a desk and a status. You can see who's in, walk over to a teammate's desk and call them in one click, and meet in the meeting room down the hall. The office stays open all day, so a quick question stays quick and nobody has to schedule a call to say hello.
 
-TinyFloor is a small virtual office in your browser. Your team works on a shared pixel-art floor, each at a desk of their own, and **proximity video chat** does the rest: walk up to someone to talk, walk into the meeting room to meet, walk out when you're done. The office stays open all day, so remote work feels like working side by side again.
+Remote work lost the hallway. TinyFloor is a virtual workspace that puts it back, without anything to install.
 
-It's a hosted service at **[tinyfloor.com](https://www.tinyfloor.com)**: make an office in a minute, send your team the invite, and you're working together. There's nothing to install or run. It's made for small teams that work together every day.
+It's a hosted service at **[tinyfloor.com](https://www.tinyfloor.com)**: make an office in a minute, send your team the invite link, and you're working side by side. The code is open source under the AGPL-3.0, here on GitHub.
 
 ## Features
 
 <table>
   <tr>
-    <td width="33%"><img src=".github/readme/walk-up.webp" alt="Proximity video call between two teammates in the virtual office"></td>
+    <td width="33%"><img src=".github/readme/walk-up.webp" alt="Walking over to a teammate's desk in the virtual office and calling them"></td>
     <td width="33%"><img src=".github/readme/chat.webp" alt="Team chat with channels, messages and reactions"></td>
-    <td width="33%"><img src=".github/readme/people.webp" alt="Presence: who is on the floor, busy or in a call"></td>
+    <td width="33%"><img src=".github/readme/people.webp" alt="Team presence: who is on the floor, busy or in a call"></td>
   </tr>
   <tr>
-    <td><b>Proximity video calls</b><br>Walk up to a teammate and one tap starts a call.</td>
-    <td><b>Team chat</b><br>Channels, direct messages and reactions that stay.</td>
-    <td><b>Presence</b><br>See who's in, busy or in a call, then walk right over.</td>
+    <td><b>Walk over, then talk</b><br>Walk to a teammate's desk and call them in one click.</td>
+    <td><b>Team chat</b><br>Channels, direct messages, replies and reactions that stay.</td>
+    <td><b>Team presence</b><br>See who's free, heads down or in a meeting.</td>
   </tr>
 </table>
 
-- **A meeting room** for group video calls with screen sharing: walk in to join, walk out to leave. Meetings get a full page too, with whoever's talking up front.
-- **Your own desk.** Sit down and make it yours; from then on you arrive at it, and teammates walking past see whose it is.
-- **Invites that get sent:** copy the link, copy a ready message for your team's chat, email it, or share it from your phone. Teammates pick a name and a character and join with a free account.
-- **A whiteboard** for the moments between calls, and noise removal for the calls themselves.
-- **What you're listening to:** share a Spotify song, playlist or Jam on your profile, and teammates listen from your card.
-- **Works in the browser** on desktop and mobile, with nothing to download, in 18 languages.
-- **Private offices** for your team, joined by invite, and a demo office to try it first.
+- **Voice and video calls.** A call starts with voice; the camera and screen sharing are a click away.
+- **A virtual meeting room.** Three or more people meet in the meeting room with HD video, screen sharing and a whiteboard on the wall. Walk in to join, walk out to leave. No links to send.
+- **Status notes and waves.** Leave a line under your name ("Heads down until 3"), and wave hello without starting a call.
+- **A desk of your own.** Sit down once and you arrive at it every morning; teammates walking past see whose it is.
+- **Noise removal** keeps keyboards and barking dogs out of the call.
+- **Music on your card.** Share a Spotify song, playlist or Jam, and teammates can listen along.
+- **One invite link.** Teammates join with Google or an email code, pick a name and a character, and they're in.
+- **In the browser, on desktop and phone,** with nothing to download, in 18 languages.
+- **Private by default.** An office is for its members only; nothing inside it is public or indexed, and calls are encrypted in transit.
 
 ## Made for
 
 - **[Engineering teams](https://www.tinyfloor.com/engineering-teams)**, **[design teams](https://www.tinyfloor.com/design-teams)**, **[startups](https://www.tinyfloor.com/startups)** and **[agencies](https://www.tinyfloor.com/agencies)**.
-- **[Virtual office](https://www.tinyfloor.com/virtual-office)**: one room your remote team keeps open all day.
-- **[Virtual standup](https://www.tinyfloor.com/virtual-standup)**, **[remote pair programming](https://www.tinyfloor.com/remote-pair-programming)** and **[remote onboarding](https://www.tinyfloor.com/remote-onboarding)**.
-- **[Virtual coworking](https://www.tinyfloor.com/virtual-coworking)**: heads-down hours with your team, and a **[virtual watercooler](https://www.tinyfloor.com/virtual-watercooler)** between them.
+- **[A virtual office](https://www.tinyfloor.com/virtual-office)** your remote team keeps open all day, and **[hybrid teams](https://www.tinyfloor.com/hybrid-teams)** who need one place to meet.
+- **[Virtual standups](https://www.tinyfloor.com/virtual-standup)**, **[remote pair programming](https://www.tinyfloor.com/remote-pair-programming)** and **[remote onboarding](https://www.tinyfloor.com/remote-onboarding)**.
+- **[Virtual coworking](https://www.tinyfloor.com/virtual-coworking)**: heads-down hours together, with a **[virtual watercooler](https://www.tinyfloor.com/virtual-watercooler)** in between.
 
 ## Pricing
 
@@ -81,54 +84,69 @@ One price for the whole office, never one per person.
 
 | Plan | Price | For |
 |---|---|---|
-| **Free** | $0, forever, no card | Up to 3 people, with the floor, chat, HD meetings, desks and everything else |
-| **Pro** | $29 a month, for the whole team | Your whole team, meetings as often as you need, and priority help |
+| **Free** | $0, forever, no card | Up to 3 people, with every feature |
+| **Pro** | $29 a month for the whole team | Up to 15 people, with more meeting time and priority help |
 
-- **A trial when the team arrives:** when a 4th person joins a free office, the whole team gets Pro free for 14 days.
-- **Cancel any time**, and ask within 14 days of any payment for a full refund.
-- **Made for small teams** that work together every day, up to 15 people in an office.
+- **Every new office starts with 14 days of Pro,** with no card needed.
+- **$29 is the founding price.** New subscriptions from 1 March 2027 are $39; teams that subscribe before then keep $29.
+- **Monthly, cancel any time,** and ask within 14 days of any payment for a full refund.
 - Prices are in US dollars, before tax. Payments go through Creem, our reseller. [See the pricing page](https://www.tinyfloor.com/pricing).
 
-**What a team of 10 pays each month:** $29 on TinyFloor Pro ($2.90 a person), against $80 to $160 on tools priced per person at $8 to $16 a seat.
+A team of 10 pays $29 a month on TinyFloor Pro, against $80 to $160 on tools priced per person at $8 to $16 each.
 
-## Compared with other virtual offices
+## A Gather alternative, and the others
 
-Moving from [Gather](https://www.tinyfloor.com/gather-alternative), [Kumospace](https://www.tinyfloor.com/kumospace-alternative), [SpatialChat](https://www.tinyfloor.com/spatialchat-alternative), [WorkAdventure](https://www.tinyfloor.com/workadventure-alternative), [Wonder](https://www.tinyfloor.com/wonder-alternative), [Sococo](https://www.tinyfloor.com/sococo-alternative), [oVice](https://www.tinyfloor.com/ovice-alternative), [Roam](https://www.tinyfloor.com/roam-alternative) or [Teamflow](https://www.tinyfloor.com/teamflow-alternative)? TinyFloor keeps the core of a virtual office and does it well: moving around, proximity calls, a meeting room, screen sharing and chat, for one flat price. Each link compares the two side by side, and there's [every comparison in one place](https://www.tinyfloor.com/compare).
+Moving from [Gather](https://www.tinyfloor.com/gather-alternative), [Kumospace](https://www.tinyfloor.com/kumospace-alternative), [SpatialChat](https://www.tinyfloor.com/spatialchat-alternative), [WorkAdventure](https://www.tinyfloor.com/workadventure-alternative), [Wonder](https://www.tinyfloor.com/wonder-alternative), [Sococo](https://www.tinyfloor.com/sococo-alternative), [oVice](https://www.tinyfloor.com/ovice-alternative), [Roam](https://www.tinyfloor.com/roam-alternative) or [Teamflow](https://www.tinyfloor.com/teamflow-alternative)? Each link compares the two side by side, and there's [every comparison in one place](https://www.tinyfloor.com/compare).
 
-TinyFloor deliberately leaves things out: there are no custom map editors, recordings or AI meeting notes. If your team wants a simple office that stays open all day, that's what it does.
+TinyFloor keeps the core of a virtual office and does it well: presence, calls, a meeting room, screen sharing and chat, for one flat price. It deliberately leaves out map editors, recordings and AI meeting notes.
 
 ## Questions
 
-### How does proximity video chat work?
+### What is a virtual office for remote teams?
 
-Walk up to someone and a call button appears next to them. A call starts with voice, and the camera and screen sharing are one tap away. Calls run over WebRTC through Cloudflare's network, so they connect on any office or home network. Three or more people meet in the meeting room.
+An online space where a remote team works together during the day: everyone can see who's around and talk without scheduling a meeting. It's software, not a business address. In TinyFloor it's a floor of desks in the browser, with calls, a meeting room and chat.
+
+### How do calls work?
+
+Walk your character to a teammate's desk and a card appears beside them with a Call button. A call starts with voice, and the camera and screen sharing are one click away. Three or more people meet in the meeting room. Calls run over WebRTC through Cloudflare's network, so they connect on any office or home network.
 
 ### Do I need to install anything?
 
-No. TinyFloor runs in any modern browser on desktop and mobile. Open a link and you're in the office.
+No. TinyFloor runs in any modern browser on desktop and mobile. Open the link and you're in the office.
 
 ### How is it different from Zoom or Google Meet?
 
-Zoom and Meet put everyone in one grid until the meeting ends. A TinyFloor office stays open all day, so you can see who's around and talk to whoever you walk over to, without scheduling a call.
-
-### Is it private?
-
-An office is only for its members. Nothing inside it is public or indexed, and calls are encrypted in transit.
+Zoom and Meet put everyone in one grid until the meeting ends. A TinyFloor office stays open all day, so you can see who's around and talk to whoever you need, without scheduling a call.
 
 ### Is TinyFloor free?
 
-Yes, for up to 3 people, with every feature and no card. When the team grows, Pro is $29 a month for the whole team, and the first 14 days are free.
+Yes, for up to 3 people, with every feature and no card. For a bigger team, Pro is $29 a month for the whole team, and every new office starts with 14 days of it free.
 
 ### Can I try it without signing up?
 
-Yes. The [demo office](https://www.tinyfloor.com/lobby) needs only a name. Making your own office takes a free account with Google or email.
+Yes. The [demo office](https://www.tinyfloor.com/lobby) needs only a name. Making your own office takes a free account with Google or an email code.
 
-### Is it open source?
+### Is it open source? Can I self-host it?
 
-Yes, under the AGPL v3.0. The code is here, and the hosted service at tinyfloor.com is how teams use it: it runs on Cloudflare's network, with calls, chat and storage taken care of.
+The code is open source under the AGPL-3.0, so you can read how it works and what it does with your team's data. The hosted service at [tinyfloor.com](https://www.tinyfloor.com) is how teams use it. The pixel art comes from paid packs whose licences don't allow sharing it, so it isn't in this repository: running your own copy needs your own copies of those packs.
 
-## Open source
+## How it's built
 
-TinyFloor's code is open source under the [GNU AGPL v3.0](LICENSE). It runs on Cloudflare Workers, Durable Objects and D1, with a Next.js front end. The TinyFloor name and logo are ours, and the pixel art belongs to its artists ([credits](web-shared/public/credits.txt), [ASSETS.md](ASSETS.md)).
+TinyFloor runs on Cloudflare: Workers for the sites and the API, Durable Objects for each office's live floor, D1 for data, and Cloudflare's Realtime SFU for calls over WebRTC. The app is Next.js with Phaser drawing the floor, in TypeScript throughout.
 
-Questions or ideas? Write to [support@tinyfloor.com](mailto:support@tinyfloor.com).
+| Folder | What it is |
+|---|---|
+| [`app-frontend`](app-frontend) | The app: the floor, calls, meetings and chat (Next.js, Phaser) |
+| [`marketing-frontend`](marketing-frontend) | The website at tinyfloor.com, in 18 languages (Next.js) |
+| [`worker-api`](worker-api) | Accounts, sign-in, offices, billing and files (Workers, D1) |
+| [`worker-realtime`](worker-realtime) | Each office's live floor: where everyone is, chat, desks, the whiteboard and calls (Durable Objects, Realtime SFU) |
+| [`shared-protocol`](shared-protocol) | Messages and data shared by the app and the workers |
+| [`web-shared`](web-shared) | Components, translations and art handling shared by both sites |
+| [`lab`](lab) | Tools that build the floors, the item atlas and the characters |
+| [`docs`](docs) | What we measured and decided: costs, calls, pricing, search |
+
+## License
+
+TinyFloor's code is open source under the [GNU AGPL v3.0](LICENSE). The TinyFloor name and logo are ours, and the pixel art belongs to its artists, [LimeZu](https://limezu.itch.io) ([credits](web-shared/public/credits.txt)).
+
+Questions or ideas? Write to [support@tinyfloor.com](mailto:support@tinyfloor.com), or open an issue.

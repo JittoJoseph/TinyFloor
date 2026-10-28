@@ -1,6 +1,6 @@
 // Records baked pictures for the build: each one goes in private-assets/ and
 // in web-shared/assets.manifest.json with its size and hash, so every build
-// pulls it from R2 and checks it like the rest of the art (ASSETS.md). Says
+// pulls it from R2 and checks it like the rest of the art (docs/customization.md). Says
 // which changed, to be uploaded.
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";

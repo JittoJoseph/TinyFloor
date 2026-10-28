@@ -18,7 +18,7 @@
 // - the atlas's size and hash go in web-shared/assets.manifest.json, so every
 //   build pulls it from R2 and checks it like the rest of the art.
 //
-// Then upload what changed with the commands it prints (ASSETS.md).
+// Then upload what changed with the commands it prints (docs/customization.md, "Where the art lives").
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";

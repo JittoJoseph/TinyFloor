@@ -61,6 +61,50 @@ the creator (Characters, below).
 The hand-made map it replaced (`office-map.tmj`, from `tools/buildmap.py`)
 is now only what the website's pictures of the floor were drawn from.
 
+## Where the art lives
+
+The pixel art comes from two paid packs by LimeZu: [Modern
+Interiors](https://limezu.itch.io/moderninteriors) for the characters and
+[Modern Office Revamped](https://limezu.itch.io/modernoffice) for the office.
+Both licences allow using and editing the art in this project, commercial or
+not, and both forbid redistributing the art itself. A public repository
+counts as redistributing, so these are not in git:
+
+```
+*-frontend/public/characters/*/*.png
+*-frontend/public/tilesets/textures/*.png
+*-frontend/public/tilesets/items/*.png
+*-frontend/public/catalog/*.png
+```
+
+Our own work stays in git: the floors and templates (`shared-protocol/src/catalog/`),
+the old hand-made map (`app-frontend/public/tilesets/office-map.tmj`) and the
+pictures rendered from it (`web-shared/public/floor.webp`, the social cards in
+`marketing-frontend/public/og/`).
+
+- **How a build gets them.** `web-shared/assets.manifest.json` lists every file
+  with its size and SHA-256. `pnpm assets` in either frontend (it also runs
+  before `dev` and every build) copies them from `private-assets/` when that
+  folder exists, and otherwise downloads them from the R2 bucket's public URL,
+  checking each against the manifest. Neither needs credentials, so CI builds
+  without the packs. `pnpm assets --remote` ignores the local copy, to check a
+  build elsewhere will work.
+- **Running it yourself.** With both packs bought, put your copies in
+  `private-assets/` (ignored by git) in the manifest's layout and everything
+  works offline. Without them, everything runs but the floor and characters.
+- **Uploading a changed file:** `wrangler r2 object put tinyfloor/<key>
+  --file=<path> --remote`, then update the manifest entry's size and SHA-256.
+- **Closing the bucket:** `wrangler r2 bucket dev-url disable tinyfloor`, drop
+  `publicUrl` from the manifest, and give the build `R2_ACCOUNT_ID`,
+  `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` (an R2 token with read access) and
+  optionally `R2_BUCKET` (default `tinyfloor`).
+- **Characters.** `pnpm --dir lab characters` crops the presets and the
+  generator's parts into the strips the floor uses (`characters/presets/`,
+  `characters/parts/`); the browser assembles them (`web-shared/src/lib/characterSheet.ts`).
+- **Credit.** The Modern Interiors licence requires credit to
+  [LimeZu](https://limezu.itch.io), and the Modern Office licence welcomes it.
+  It's served at `/credits.txt` on both sites, from `web-shared/public/credits.txt`.
+
 ## How the floor looks: the rules
 
 Decided by looking, and checked by the lab on every change (`lab/check.mjs`):
@@ -479,7 +523,7 @@ there, and it is the only way art reaches the floor:
    manifest, and works each template out into `floors/<id>.json` for the
    floor.
 6. **Upload** the atlas to R2 with the command the build prints; every build
-   of the app then pulls and checks it like the rest of the art (`ASSETS.md`).
+   of the app then pulls and checks it like the rest of the art (see "Where the art lives").
 
 The catalog, layouts, templates and floors are our own data and live in git;
 the art only ever leaves `assets-pack/` as the baked atlas, through R2.

@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "TinyFloor – Et virtuelt kontor, du kan gå rundt i",
-    "description": "TinyFloor er et gratis virtuelt kontor i din browser. Gå rundt på en pixelart-etage med dit team, og start et videoopkald ved at stå ved siden af nogen.",
+    "title": "TinyFloor: Et virtuelt kontor til små remote-teams",
+    "description": "TinyFloor er et virtuelt kontor i browseren til små remote-teams. Se hvem der er online, gå over og snak, og hold møder. Gratis for op til 3 personer.",
     "ogAlt": "Et TinyFloor-rum: en 16-bit kontoretage med skriveborde og kolleger",
-    "keywords": "virtuelt kontor, fjernarbejde, spatial chat, online samarbejde, virtuel arbejdsplads, nærhedschat, nærhedsvideochat, virtuelt kontorfællesskab, videoopkald i browseren",
+    "keywords": "virtuelt kontor, virtuel kontorsoftware, virtuelt arbejdsområde, remote-teams, fjernarbejde, teamtilstedeværelse, virtuelt møderum, teamchat, open source virtuelt kontor",
     "joinTitle": "Deltag i rummet",
     "joinRoomTitle": "Deltag i {office}",
     "joinRoomDescription": "Du er inviteret til {office} på TinyFloor, et virtuelt kontor, du går rundt i. Åbn linket, vælg en figur og gå ind.",

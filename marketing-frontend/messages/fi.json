@@ -1,13 +1,13 @@
 {
   "landing": {
-    "description": "Virtuaalitoimisto etätiimeille, selaimessa. Kävele tiimisi kanssa pikseligrafiikkakerroksessa ja aloita videopuhelu vain seisomalla jonkun vieressä.",
+    "description": "Virtuaalitoimisto pienille etätiimeille selaimessa. Jokaisella on työpöytä samassa kerroksessa: näe kuka on paikalla, kävele luo ja soita kollegalle, tapaa kokoushuoneessa ja chattaa sen vieressä.",
     "features": [
-      "Video- ja äänipuhelut lähietäisyydeltä",
-      "Näytön jakaminen puheluissa ja kokouksissa",
-      "Kävelyyn sopiva 2D-toimistokartta",
+      "Ääni- ja videopuhelut kollegan kanssa",
+      "Näytön jako puheluissa ja kokouksissa",
+      "2D-toimistokerros, jossa voit kävellä ympäriinsä",
       "Pikselitaidehahmot",
-      "Läsnäolo ja tila reaaliajassa",
-      "Huonechat"
+      "Reaaliaikainen läsnäolo ja tilatieto",
+      "Tiimichat kanavilla ja yksityisviesteillä"
     ]
   },
   "faq": {
@@ -1194,37 +1194,6 @@
         "body": "Kokoushuone on käytävän päässä. Liity kokoukseen, niin hahmosi kävelee sisään; kävele ulos, niin olet poistunut."
       }
     },
-    "more": {
-      "eyebrow": "Kaikki muu",
-      "title": "Mitä pieni tiimi tarvitsee.",
-      "muted": "Ei mitään ylimääräistä.",
-      "items": {
-        "chat": {
-          "title": "Kanavat ja viestit",
-          "body": "Chat, joka säilyy, kerroksen vieressä. Pysy mukana puhelimella."
-        },
-        "screen": {
-          "title": "Näytön jakaminen",
-          "body": "Jaa ikkuna keskustelukumppanillesi yhdellä klikkauksella."
-        },
-        "whiteboard": {
-          "title": "Taulu",
-          "body": "Yhteinen taulu seinällä, sille luonnokselle, joka selittää asian."
-        },
-        "music": {
-          "title": "Spotify",
-          "body": "Soita musiikkia TinyFloorissa, ja tiimi voi kuunnella korttisi kautta."
-        },
-        "noise": {
-          "title": "Kohinanpoisto",
-          "body": "Näppäimistöt ja kahvilat pysyvät puhelun ulkopuolella."
-        },
-        "devices": {
-          "title": "Millä tahansa laitteella",
-          "body": "Se on verkkosivu. Läppäri tai puhelin, se aukeaa samalla tavalla."
-        }
-      }
-    },
     "pricing": {
       "eyebrow": "Hinnoittelu",
       "title": "Hinta toimistolta,",
@@ -1276,6 +1245,89 @@
       "title": "Anna tiimillesi",
       "muted": "yhteinen kerros.",
       "note": "Ilmainen enintään 3 hengelle · Toimii Cloudflaressa"
+    },
+    "countries": {
+      "label": "Tiimit tekevät töitä TinyFloorissa maassa"
+    },
+    "presence": {
+      "title": "Tiedä kuka on paikalla ennen kuin kysyt.",
+      "body": "Koko etätiimisi samassa kerroksessa, jokainen omalla työpöydällään tilatietoineen. Näet yhdellä silmäyksellä, kuka on vapaana, kuka keskittyy ja kuka on kokouksessa – ilman tilannekatsauksia tai ”oletko siellä?” -viestejä.",
+      "more": "Lisätietoa tiimin läsnäolosta",
+      "here": "Kerroksessa",
+      "away": "Poissa",
+      "notes": {
+        "emma": "Vapaa juttelemaan",
+        "jack": "Kokoushuoneessa",
+        "olivia": "Keskittyy kolmeen asti",
+        "sam": "Parina Noahin kanssa",
+        "noah": "Parina Samin kanssa",
+        "lily": "Takaisin maanantaina"
+      },
+      "wave": "Vilkuta"
+    },
+    "price": {
+      "title": "Yksi hinta koko toimistolle.",
+      "body": "Ilmainen enintään 3 hengelle. Sitten Pro on yksi kuukausihinta koko tiimille, riippumatta siitä, kuinka monta teitä on. Jokainen uusi toimisto alkaa 14 päivän ilmaisella Prolla, korttia ei tarvita.",
+      "team": "Tiimisi",
+      "people": "{count} henkeä",
+      "ours": "TinyFloor Pro",
+      "theirs": "Työkalut, joiden hinta on {low}–{high} henkeä kohden",
+      "month": "kuukaudessa",
+      "freeNote": "Ilmainen enintään 3 hengelle",
+      "more": "Katso tilaukset ja hinnoittelu"
+    },
+    "statement": {
+      "text": "Virtuaalitoimisto pienille etätiimeille, <muted>jossa on taas käytävä.</muted>",
+      "points": {
+        "seen": "Näe, kuka on paikalla",
+        "talk": "Kävele juttelemaan",
+        "meet": "Tapaa käytävän päässä"
+      },
+      "here": "{count} kerroksessa",
+      "room": "Kokoushuone"
+    },
+    "meet": {
+      "title": "Virtuaalinen kokoushuone käytävän päässä.",
+      "body": "Kun kolmen tai useamman teistä täytyy jutella, tapaatte kokoushuoneessa, jossa on HD-video, näytön jako ja valkotaulu seinällä. Kävele sisään liittyäksesi ja kävele ulos poistuaksesi. Ei lähetettäviä linkkejä, ei mitään aikataulutettavaa.",
+      "more": "Lisätietoa kokoushuoneesta",
+      "meeting": "Standup"
+    },
+    "chat": {
+      "title": "Tiimichat aivan kerroksen vieressä.",
+      "body": "Kanavat ja yksityisviestit kaikelle muulle paitsi puheluille, jotta päätetyt asiat jäävät talteen ja ovat helposti löydettävissä. Vastaa viestiin, reagoi ja jaa kuvakaappaus.",
+      "more": "Lisätietoa tiimichatistä",
+      "reply1": "Kiitos. Tuon mukanani kysymykset eilisestä puhelusta.",
+      "reply2": "Kuulostaa hyvältä. Kävelen luoksesi standupin jälkeen."
+    },
+    "extras": {
+      "title": "Kaikki muu, mitä etätiimi tarvitsee.",
+      "text": "Jaa <b>näyttösi</b> missä tahansa puhelussa ja hahmottele asiat <b>valkotaululle</b>. <b>Melunvaimennus</b> pitää haukkuvan koiran poissa puhelusta. Laita <b>musiikkisi</b> korttiisi, jätä <b>muistiinpano</b> nimesi alle, pidä <b>oma työpöytäsi</b>, <b>vilkuta</b> tervehdykseksi ja ota toimisto mukaasi <b>puhelimeesi</b>.",
+      "moments": {
+        "screen": "{name}n näyttö",
+        "waved": "{name} vilkutti sinulle",
+        "noise": "Melunvaimennus",
+        "whiteboard": "Valkotaulu"
+      },
+      "items": {
+        "invite": {
+          "title": "Yksi linkki kutsumiseen",
+          "body": "Liitä se tiimichatiisi. Tiimiläiset liittyvät Google-tilillä tai sähköpostikoodilla."
+        },
+        "languages": {
+          "title": "18 kieltä",
+          "body": "Jokainen käyttää TinyFlooria omalla kielellään."
+        }
+      },
+      "copy": "Kopioi"
+    },
+    "open": {
+      "title": "Avointa lähdekoodia. Oletusarvoisesti yksityinen.",
+      "body": "TinyFloor on avoimen lähdekoodin virtuaalitoimisto. Sen koodi on julkista GitHubissa, joten kuka tahansa voi lukea, miten se toimii ja mitä se tekee tiimisi tiedoilla. Jokainen toimisto on tarkoitettu vain sen jäsenille, ja puhelut salataan siirron aikana.",
+      "figures": {
+        "commits": "committia viimeisen 16 viikon aikana",
+        "license": "lisenssi, jotta koodi pysyy avoimena",
+        "languages": "kieltä, kaikki samassa koodissa"
+      }
     }
   },
   "pricingPage": {
@@ -1301,7 +1353,14 @@
       "callsNote": "Ei lasketa koskaan",
       "support": "Ensisijainen apu",
       "wholeTeam": "Koko tiimi",
-      "meetings": "Ryhmäkokoukset"
+      "meetings": "Ryhmäkokoukset",
+      "features": {
+        "chat": "Kanavat ja viestit",
+        "screen": "Näytön jakaminen",
+        "whiteboard": "Taulu",
+        "music": "Spotify",
+        "noise": "Kohinanpoisto"
+      }
     },
     "notes": {
       "title": "Hyvä tietää.",

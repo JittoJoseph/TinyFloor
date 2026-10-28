@@ -1,11 +1,11 @@
 import { useTranslations } from "next-intl";
-import { Closing, Everything, FloorMoments, Hero, MarketingShell, OpenSource, Plans, Questions } from "./Blocks";
+import { Closing, Hero, MarketingShell, Questions } from "./Blocks";
+import { ChatSection, Countries, Extras, MeetSection, OpenSection, PresenceSection, PriceSection, Statement } from "./HomeSections";
 
 /**
- * The home page: one statement over the app running, the floor's three
- * moments, everything else, the plans, the open code, the questions and the
- * last ask. Every section carries an anchor (#floor, #people, #meetings,
- * #chat, #invites, #plans, #source, #faq).
+ * The home page: one statement over the app running, then where teams work,
+ * what TinyFloor is in one sentence, the floor's parts as the app draws them,
+ * the plans, the open code, the questions and the last ask.
  */
 export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
   const t = useTranslations("homepage.hero");
@@ -20,10 +20,14 @@ export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
         }
         body={t("body")}
       />
-      <FloorMoments className="mt-20 sm:mt-40" />
-      <Everything />
-      <Plans />
-      <OpenSource />
+      <Countries />
+      <Statement />
+      <PresenceSection />
+      <MeetSection />
+      <ChatSection />
+      <Extras />
+      <PriceSection />
+      <OpenSection />
       <Questions items={faqs} />
       <Closing />
     </MarketingShell>

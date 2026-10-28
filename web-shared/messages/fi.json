@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "TinyFloor – Virtuaalitoimisto, jossa voit kävellä",
-    "description": "TinyFloor on ilmainen virtuaalitoimisto selaimessasi. Kävele tiimisi kanssa pikselitaidekerroksessa ja aloita videopuhelu vain asettumalla jonkun viereen.",
+    "title": "TinyFloor: Virtuaalitoimisto pienille etätiimeille",
+    "description": "TinyFloor on selaimessa toimiva virtuaalitoimisto pienille etätiimeille. Näe kuka on paikalla, kävele juttelemaan ja tapaa käytävällä. Maksuton jopa 3 hengelle.",
     "ogAlt": "TinyFloor-huone: 16-bittinen toimistokerros työpöytineen ja tiimiläisineen",
-    "keywords": "virtuaalitoimisto, etätyö, tilachat, verkkoyhteistyö, virtuaalinen työtila, läheisyyschat, läheisyysvideochat, virtuaalinen coworking, videopuhelut selaimessa",
+    "keywords": "virtuaalitoimisto, virtuaalitoimisto-ohjelmisto, virtuaalinen työtila, etätiimit, etätyö, tiimin läsnäolo, virtuaalinen kokoushuone, tiimichat, avoimen lähdekoodin virtuaalitoimisto",
     "joinTitle": "Liity huoneeseen",
     "joinRoomTitle": "Liity huoneeseen {office}",
     "joinRoomDescription": "Sinut on kutsuttu huoneeseen {office} TinyFloorissa, virtuaalitoimistossa, jossa liikutaan kävellen. Avaa linkki, valitse hahmo ja astu sisään.",

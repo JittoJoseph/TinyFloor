@@ -1,13 +1,13 @@
 {
   "landing": {
-    "description": "Virtuellt kontor för distansteam i webbläsaren. Gå runt på en pixelkonst-våning med ditt team och starta videosamtal genom att ställa dig bredvid någon.",
+    "description": "Ett virtuellt kontor för små distansteam, i webbläsaren. Alla har ett skrivbord på ett och samma plan: se vem som är på plats, gå fram och ring en kollega, träffas i mötesrummet och chatta bredvid.",
     "features": [
-      "Video- och röstsamtal på nära håll",
+      "Röst- och videosamtal med en kollega",
       "Skärmdelning i samtal och möten",
-      "2D-kontorskarta att gå runt i",
-      "Avatarer i pixelgrafik",
+      "Ett kontorsplan i 2D som du går runt på",
+      "Pixelart-karaktärer",
       "Närvaro och status i realtid",
-      "Rumschatt"
+      "Teamchatt med kanaler och direktmeddelanden"
     ]
   },
   "faq": {
@@ -1194,37 +1194,6 @@
         "body": "Mötesrummet ligger längre ner i korridoren. Gå med i mötet så går din figur in; gå ut så har du lämnat det."
       }
     },
-    "more": {
-      "eyebrow": "Allt annat",
-      "title": "Det ett litet team behöver.",
-      "muted": "Inget mer.",
-      "items": {
-        "chat": {
-          "title": "Kanaler och meddelanden",
-          "body": "Chatt som finns kvar, bredvid planet. Kom ikapp från mobilen."
-        },
-        "screen": {
-          "title": "Skärmdelning",
-          "body": "Dela ett fönster med den du pratar med, med ett klick."
-        },
-        "whiteboard": {
-          "title": "Whiteboard",
-          "body": "En delad tavla på väggen, för skissen som förklarar det."
-        },
-        "music": {
-          "title": "Spotify",
-          "body": "Spela musik i TinyFloor, och kollegorna lyssnar från ditt kort."
-        },
-        "noise": {
-          "title": "Brusreducering",
-          "body": "Tangentbord och kaféer hålls utanför samtalet."
-        },
-        "devices": {
-          "title": "På alla enheter",
-          "body": "Det är en webbsida. Dator eller mobil, den öppnas likadant."
-        }
-      }
-    },
     "pricing": {
       "eyebrow": "Priser",
       "title": "Pris per kontor,",
@@ -1276,6 +1245,89 @@
       "title": "Ge ditt team",
       "muted": "ett plan att dela.",
       "note": "Gratis för upp till 3 personer · Körs på Cloudflare"
+    },
+    "countries": {
+      "label": "Team jobbar på TinyFloor i"
+    },
+    "presence": {
+      "title": "Se vem som är på plats innan du frågar.",
+      "body": "Hela ditt distansteam på ett och samma plan, var och en vid ett skrivbord med en status. Se med en snabb blick vem som är ledig, vem som fokuserar och vem som sitter i möte, helt utan statusmöten eller ”är du där?”-meddelanden.",
+      "more": "Mer om närvaro i teamet",
+      "here": "På planet",
+      "away": "Borta",
+      "notes": {
+        "emma": "Ledig att prata",
+        "jack": "I mötesrummet",
+        "olivia": "Fokuserad till 3",
+        "sam": "Parprogrammerar med Noah",
+        "noah": "Parprogrammerar med Sam",
+        "lily": "Tillbaka på måndag"
+      },
+      "wave": "Vinka"
+    },
+    "price": {
+      "title": "Ett pris för hela kontoret.",
+      "body": "Gratis för upp till 3 personer. Sedan har Pro ett månadspris för hela teamet, oavsett hur många ni är. Varje nytt kontor börjar med 14 dagar Pro, inget kort behövs.",
+      "team": "Ditt team",
+      "people": "{count} personer",
+      "ours": "TinyFloor Pro",
+      "theirs": "Verktyg med pris per person, {low} till {high} var",
+      "month": "i månaden",
+      "freeNote": "Gratis för upp till 3 personer",
+      "more": "Se planer och priser"
+    },
+    "statement": {
+      "text": "Ett virtuellt kontor för små distansteam, <muted>med korridoren tillbaka.</muted>",
+      "points": {
+        "seen": "Se vem som är på plats",
+        "talk": "Gå fram och prata",
+        "meet": "Träffas längre ner i korridoren"
+      },
+      "here": "{count} på planet",
+      "room": "Mötesrum"
+    },
+    "meet": {
+      "title": "Ett virtuellt mötesrum, längre ner i korridoren.",
+      "body": "När tre eller fler av er behöver prata, träffas i mötesrummet med HD-video, skärmdelning och en whiteboard på väggen. Gå in för att ansluta och gå ut för att lämna. Inga länkar att skicka, inget att boka.",
+      "more": "Mer om mötesrummet",
+      "meeting": "Standup"
+    },
+    "chat": {
+      "title": "Teamchatt, precis bredvid planet.",
+      "body": "Kanaler och direktmeddelanden för allt som inte är ett samtal, så att det som bestämts finns nedskrivet och är lätt att hitta. Svara på ett meddelande, reagera och dela en skärmbild.",
+      "more": "Mer om teamchatten",
+      "reply1": "Tack. Jag tar med mig frågorna från gårdagens samtal.",
+      "reply2": "Ser bra ut. Jag går fram efter standupen."
+    },
+    "extras": {
+      "title": "Allt annat som ett distansteam behöver.",
+      "text": "Dela din <b>skärm</b> i vilket samtal som helst och skissa på <b>whiteboarden</b>. <b>Brusreducering</b> håller den skällande hunden utanför samtalet. Lägg till din <b>musik</b> på ditt kort, lämna en <b>anteckning</b> under ditt namn, ha ett <b>eget skrivbord</b>, <b>vinka</b> hej och ta med dig kontoret i <b>mobilen</b>.",
+      "moments": {
+        "screen": "{name}s skärm",
+        "waved": "{name} vinkade till dig",
+        "noise": "Brusreducering",
+        "whiteboard": "Whiteboard"
+      },
+      "items": {
+        "invite": {
+          "title": "En länk för att bjuda in",
+          "body": "Klistra in den i din teamchatt. Kollegor ansluter med Google eller en e-postkod."
+        },
+        "languages": {
+          "title": "18 språk",
+          "body": "Alla använder TinyFloor på sitt eget språk."
+        }
+      },
+      "copy": "Kopiera"
+    },
+    "open": {
+      "title": "Öppen källkod. Privat som standard.",
+      "body": "TinyFloor är ett virtuellt kontor med öppen källkod. Dess kod är offentlig på GitHub, så vem som helst kan läsa hur det fungerar och vad det gör med ditt teams data. Varje kontor är endast till för dess medlemmar, och samtal är krypterade under överföring.",
+      "figures": {
+        "commits": "commits de senaste 16 veckorna",
+        "license": "licensen, så att koden förblir öppen",
+        "languages": "språk, alla i samma kod"
+      }
     }
   },
   "pricingPage": {
@@ -1301,7 +1353,14 @@
       "callsNote": "Räknas aldrig",
       "support": "Prioriterad hjälp",
       "wholeTeam": "Hela teamet",
-      "meetings": "Gruppmöten"
+      "meetings": "Gruppmöten",
+      "features": {
+        "chat": "Kanaler och meddelanden",
+        "screen": "Skärmdelning",
+        "whiteboard": "Whiteboard",
+        "music": "Spotify",
+        "noise": "Brusreducering"
+      }
     },
     "notes": {
       "title": "Bra att veta.",

@@ -1,13 +1,13 @@
 {
   "landing": {
-    "description": "Bureau virtuel sur navigateur pour équipes à distance. Promenez-vous sur un étage en pixel art et lancez un appel vidéo en vous tenant à côté de quelqu'un.",
+    "description": "Un bureau virtuel pour les petites équipes à distance, dans le navigateur. Chacun a un bureau sur un seul étage : voyez qui est là, approchez-vous et appelez un collègue, réunissez-vous dans la salle de réunion et discutez à côté.",
     "features": [
-      "Appels vidéo et audio de proximité",
-      "Partage d’écran dans les appels et les réunions",
-      "Plan de bureau 2D où l’on se déplace",
-      "Avatars en pixel art",
-      "Présence et statut en temps réel",
-      "Chat de salle"
+      "Appels audio et vidéo avec un collègue",
+      "Partage d'écran lors des appels et des réunions",
+      "Un étage de bureau en 2D où vous vous déplacez",
+      "Personnages en pixel-art",
+      "Présence et statut en direct",
+      "Chat d'équipe avec canaux et messages directs"
     ]
   },
   "faq": {
@@ -1194,37 +1194,6 @@
         "body": "La salle de réunion est au bout du couloir. Rejoignez la réunion et votre personnage y entre ; sortez, et vous l’avez quittée."
       }
     },
-    "more": {
-      "eyebrow": "Tout le reste",
-      "title": "Ce dont une petite équipe a besoin.",
-      "muted": "Rien de plus.",
-      "items": {
-        "chat": {
-          "title": "Canaux et messages",
-          "body": "Un chat qui reste, à côté de l'étage. Rattrapez-vous depuis votre téléphone."
-        },
-        "screen": {
-          "title": "Partage d'écran",
-          "body": "Partagez une fenêtre avec votre interlocuteur, en un clic."
-        },
-        "whiteboard": {
-          "title": "Tableau blanc",
-          "body": "Un tableau partagé au mur, pour le croquis qui explique tout."
-        },
-        "music": {
-          "title": "Spotify",
-          "body": "Lancez de la musique dans TinyFloor, et vos collègues l'écoutent depuis votre carte."
-        },
-        "noise": {
-          "title": "Suppression du bruit",
-          "body": "Claviers et cafés restent hors de l'appel."
-        },
-        "devices": {
-          "title": "Sur tous les appareils",
-          "body": "C'est une page web. Ordinateur ou téléphone, elle s'ouvre pareil."
-        }
-      }
-    },
     "pricing": {
       "eyebrow": "Tarifs",
       "title": "Tarifé au bureau,",
@@ -1276,6 +1245,89 @@
       "title": "Offrez à votre équipe",
       "muted": "un étage à partager.",
       "note": "Gratuit jusqu'à 3 personnes · Fonctionne sur Cloudflare"
+    },
+    "countries": {
+      "label": "Des équipes travaillent sur TinyFloor en"
+    },
+    "presence": {
+      "title": "Sachez qui est là avant de demander.",
+      "body": "Toute votre équipe à distance sur un seul étage, chacun à un bureau avec un statut. Voyez en un coup d'œil qui est disponible, qui est concentré et qui est en réunion, sans réunions de statut ni messages « vous êtes là ? ».",
+      "more": "En savoir plus sur la présence de l'équipe",
+      "here": "Sur l'étage",
+      "away": "Absent",
+      "notes": {
+        "emma": "Disponible pour parler",
+        "jack": "Dans la salle de réunion",
+        "olivia": "Concentré jusqu'à 15h",
+        "sam": "En binôme avec Noah",
+        "noah": "En binôme avec Sam",
+        "lily": "De retour lundi"
+      },
+      "wave": "Faire un signe"
+    },
+    "price": {
+      "title": "Un seul prix pour tout le bureau.",
+      "body": "Gratuit jusqu'à 3 personnes. Ensuite, Pro est à un prix mensuel unique pour toute l'équipe, quel que soit votre nombre. Chaque nouveau bureau commence avec 14 jours de Pro gratuits, sans carte bancaire.",
+      "team": "Votre équipe",
+      "people": "{count} personnes",
+      "ours": "TinyFloor Pro",
+      "theirs": "Outils tarifés par personne, de {low} à {high} chacun",
+      "month": "par mois",
+      "freeNote": "Gratuit jusqu'à 3 personnes",
+      "more": "Voir les forfaits et tarifs"
+    },
+    "statement": {
+      "text": "Un bureau virtuel pour les petites équipes à distance, <muted>avec le retour du couloir.</muted>",
+      "points": {
+        "seen": "Voyez qui est là",
+        "talk": "Allez parler",
+        "meet": "Réunissez-vous au bout du couloir"
+      },
+      "here": "{count} sur l'étage",
+      "room": "Salle de réunion"
+    },
+    "meet": {
+      "title": "Une salle de réunion virtuelle, au bout du couloir.",
+      "body": "Quand vous devez parler à trois ou plus, réunissez-vous dans la salle de réunion, avec vidéo HD, partage d'écran et un tableau blanc au mur. Entrez pour rejoindre et sortez pour partir. Aucun lien à envoyer, rien à planifier.",
+      "more": "En savoir plus sur la salle de réunion",
+      "meeting": "Standup"
+    },
+    "chat": {
+      "title": "Un chat d'équipe, juste à côté de l'étage.",
+      "body": "Des canaux et des messages directs pour tout ce qui n'est pas un appel, afin que ce qui a été décidé soit écrit et facile à retrouver. Répondez à un message, réagissez et partagez une capture d'écran.",
+      "more": "En savoir plus sur le chat d'équipe",
+      "reply1": "Merci. J'apporterai les questions de l'appel d'hier.",
+      "reply2": "Ça a l'air super. Je passerai après le standup."
+    },
+    "extras": {
+      "title": "Tout ce dont une équipe à distance a besoin.",
+      "text": "Partagez votre <b>écran</b> lors de n'importe quel appel et dessinez sur le <b>tableau blanc</b>. La <b>suppression du bruit</b> filtre les aboiements de chien de l'appel. Affichez votre <b>musique</b> sur votre carte, laissez une <b>note</b> sous votre nom, gardez un <b>bureau bien à vous</b>, faites un <b>signe</b> pour dire bonjour, et emportez le bureau sur votre <b>téléphone</b>.",
+      "moments": {
+        "screen": "Écran de {name}",
+        "waved": "{name} vous a fait un signe",
+        "noise": "Suppression du bruit",
+        "whiteboard": "Tableau blanc"
+      },
+      "items": {
+        "invite": {
+          "title": "Un seul lien pour inviter",
+          "body": "Collez-le dans votre chat d'équipe. Vos collègues rejoignent avec Google ou un code par e-mail."
+        },
+        "languages": {
+          "title": "18 langues",
+          "body": "Chacun utilise TinyFloor dans sa propre langue."
+        }
+      },
+      "copy": "Copier"
+    },
+    "open": {
+      "title": "Open source. Privé par défaut.",
+      "body": "TinyFloor est un bureau virtuel open source. Son code est public sur GitHub, afin que chacun puisse voir comment il fonctionne et ce qu'il fait des données de votre équipe. Chaque bureau est réservé à ses membres, et les appels sont chiffrés en transit.",
+      "figures": {
+        "commits": "commits au cours des 16 dernières semaines",
+        "license": "la licence, pour que le code reste ouvert",
+        "languages": "langues, toutes dans le même code"
+      }
     }
   },
   "pricingPage": {
@@ -1301,7 +1353,14 @@
       "callsNote": "Jamais décomptés",
       "support": "Aide prioritaire",
       "wholeTeam": "Toute l'équipe",
-      "meetings": "Réunions de groupe"
+      "meetings": "Réunions de groupe",
+      "features": {
+        "chat": "Canaux et messages",
+        "screen": "Partage d'écran",
+        "whiteboard": "Tableau blanc",
+        "music": "Spotify",
+        "noise": "Suppression du bruit"
+      }
     },
     "notes": {
       "title": "Bon à savoir.",

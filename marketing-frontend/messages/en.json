@@ -1,13 +1,13 @@
 {
   "landing": {
-    "description": "A virtual office for remote teams, in the browser. Walk around a pixel-art floor with your team and start a video call just by standing next to someone.",
+    "description": "A virtual office for small remote teams, in the browser. Everyone has a desk on one floor: see who’s in, walk over and call a teammate, meet in the meeting room, and chat beside it.",
     "features": [
-      "Proximity video and voice calls",
+      "Voice and video calls with a teammate",
       "Screen sharing in calls and meetings",
-      "Walkable 2D office map",
-      "Pixel-art avatars",
-      "Real-time presence and status",
-      "Room chat"
+      "A 2D office floor you walk around",
+      "Pixel-art characters",
+      "Live presence and status",
+      "Team chat with channels and direct messages"
     ]
   },
   "faq": {
@@ -1194,37 +1194,6 @@
         "body": "The meeting room is down the hall. Join the meeting and your character walks in; walk out and you've left."
       }
     },
-    "more": {
-      "eyebrow": "Everything else",
-      "title": "What a small team needs.",
-      "muted": "Nothing it doesn't.",
-      "items": {
-        "chat": {
-          "title": "Channels and messages",
-          "body": "Chat that stays, beside the floor. Catch up from your phone."
-        },
-        "screen": {
-          "title": "Screen sharing",
-          "body": "Share a window with whoever you're talking to, in one click."
-        },
-        "whiteboard": {
-          "title": "Whiteboard",
-          "body": "A shared board on the wall, for the sketch that explains it."
-        },
-        "music": {
-          "title": "Spotify",
-          "body": "Play music in TinyFloor, and teammates can listen from your card."
-        },
-        "noise": {
-          "title": "Noise removal",
-          "body": "Keyboards and cafés stay out of the call."
-        },
-        "devices": {
-          "title": "On any device",
-          "body": "It's a web page. Laptop or phone, it opens the same way."
-        }
-      }
-    },
     "pricing": {
       "eyebrow": "Pricing",
       "title": "Priced by the office,",
@@ -1276,6 +1245,89 @@
       "title": "Give your team",
       "muted": "a floor to share.",
       "note": "Free for up to 3 people · Runs on Cloudflare"
+    },
+    "countries": {
+      "label": "Teams are working on TinyFloor in"
+    },
+    "statement": {
+      "text": "A virtual office for small remote teams, <muted>with the hallway put back.</muted>",
+      "points": {
+        "seen": "See who’s in",
+        "talk": "Walk over to talk",
+        "meet": "Meet down the hall"
+      },
+      "here": "{count} on the floor",
+      "room": "Meeting room"
+    },
+    "presence": {
+      "title": "Know who’s around before you ask.",
+      "body": "Your whole remote team on one floor, each at a desk with a status. See who’s free, who’s heads down and who’s in a meeting at a glance, without status meetings or “are you there?” messages.",
+      "more": "More about team presence",
+      "here": "On the floor",
+      "away": "Away",
+      "notes": {
+        "emma": "Free to talk",
+        "jack": "In the meeting room",
+        "olivia": "Heads down until 3",
+        "sam": "Pairing with Noah",
+        "noah": "Pairing with Sam",
+        "lily": "Back on Monday"
+      },
+      "wave": "Wave"
+    },
+    "meet": {
+      "title": "A virtual meeting room, down the hall.",
+      "body": "When three or more of you need to talk, meet in the meeting room, with HD video, screen sharing and a whiteboard on the wall. Walk in to join and walk out to leave. No links to send, nothing to schedule.",
+      "more": "More about the meeting room",
+      "meeting": "Standup"
+    },
+    "chat": {
+      "title": "Team chat, right beside the floor.",
+      "body": "Channels and direct messages for everything that isn’t a call, so what was decided is written down and easy to find. Reply to a message, react, and share a screenshot.",
+      "more": "More about team chat",
+      "reply1": "Thanks. I’ll bring the questions from yesterday’s call.",
+      "reply2": "Looks great. I’ll walk over after the standup."
+    },
+    "extras": {
+      "title": "Everything else a remote team needs.",
+      "text": "Share your <b>screen</b> in any call and sketch it out on the <b>whiteboard</b>. <b>Noise removal</b> keeps the barking dog out of the call. Put your <b>music</b> on your card, leave a <b>note</b> under your name, keep a <b>desk of your own</b>, <b>wave</b> hello, and bring the office along on your <b>phone</b>.",
+      "moments": {
+        "screen": "{name}’s screen",
+        "waved": "{name} waved at you",
+        "noise": "Noise removal",
+        "whiteboard": "Whiteboard"
+      },
+      "items": {
+        "invite": {
+          "title": "One link to invite",
+          "body": "Paste it in your team chat. Teammates join with Google or an email code."
+        },
+        "languages": {
+          "title": "18 languages",
+          "body": "Everyone uses TinyFloor in their own."
+        }
+      },
+      "copy": "Copy"
+    },
+    "price": {
+      "title": "One price for the whole office.",
+      "body": "Free for up to 3 people. Then Pro is one monthly price for the whole team, however many of you there are. Every new office starts with 14 days of Pro, no card needed.",
+      "team": "Your team",
+      "people": "{count} people",
+      "ours": "TinyFloor Pro",
+      "theirs": "Tools priced per person, at {low} to {high} each",
+      "month": "a month",
+      "freeNote": "Free for up to 3 people",
+      "more": "See plans and pricing"
+    },
+    "open": {
+      "title": "Open source. Private by default.",
+      "body": "TinyFloor is an open source virtual office. Its code is public on GitHub, so anyone can read how it works and what it does with your team’s data. Each office is for its members only, and calls are encrypted in transit.",
+      "figures": {
+        "commits": "commits in the last 16 weeks",
+        "license": "the license, so the code stays open",
+        "languages": "languages, all in the same code"
+      }
     }
   },
   "pricingPage": {
@@ -1301,7 +1353,14 @@
       "callsNote": "Never counted",
       "support": "Priority help",
       "wholeTeam": "Whole team",
-      "meetings": "Group meetings"
+      "meetings": "Group meetings",
+      "features": {
+        "chat": "Channels and messages",
+        "screen": "Screen sharing",
+        "whiteboard": "Whiteboard",
+        "music": "Spotify",
+        "noise": "Noise removal"
+      }
     },
     "notes": {
       "title": "Good to know.",

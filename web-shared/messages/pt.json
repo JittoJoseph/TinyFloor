@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "TinyFloor - Um escritório virtual para você andar por aí",
-    "description": "TinyFloor é um escritório virtual gratuito no navegador. Ande por um andar em pixel art com sua equipe e comece uma chamada de vídeo ao lado de alguém.",
+    "title": "TinyFloor: Escritório virtual para pequenas equipes remotas",
+    "description": "TinyFloor é um escritório virtual no navegador para pequenas equipes remotas. Veja quem está online, aproxime-se para falar. Grátis para até 3 pessoas.",
     "ogAlt": "Uma sala do TinyFloor: um andar de escritório em 16 bits com mesas e colegas",
-    "keywords": "escritório virtual, trabalho remoto, chat espacial, colaboração online, espaço de trabalho virtual, chat por proximidade, videochamada por proximidade, coworking virtual, chamadas de vídeo no navegador",
+    "keywords": "escritório virtual, software de escritório virtual, espaço de trabalho virtual, equipes remotas, trabalho remoto, presença da equipe, sala de reunião virtual, chat de equipe, escritório virtual de código aberto",
     "joinTitle": "Entrar na sala",
     "joinRoomTitle": "Entrar em {office}",
     "joinRoomDescription": "Você foi convidado para {office} no TinyFloor, um escritório virtual por onde você anda. Abra o link, escolha um personagem e entre.",

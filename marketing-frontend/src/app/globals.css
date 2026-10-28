@@ -4,3 +4,30 @@
 @import "../../../web-shared/src/app/shared.css";
 /* Tailwind scans this app's files; the components both sites share are there. */
 @source "../../../web-shared/src";
+
+/* A row and its copy side by side, moved by one row's width: the strip of countries on the home page. */
+@keyframes drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* A hand waving, on the home page. */
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0);
+  }
+  10%,
+  30% {
+    transform: rotate(16deg);
+  }
+  20%,
+  40% {
+    transform: rotate(-8deg);
+  }
+}

@@ -1,13 +1,13 @@
 {
   "landing": {
-    "description": "Een virtueel kantoor voor remote teams, in de browser. Loop met je team over een pixelart-verdieping en start een videogesprek door naast iemand te staan.",
+    "description": "Een virtueel kantoor voor kleine remote teams, in de browser. Iedereen heeft een bureau op één verdieping: zie wie er is, loop langs en bel een collega, ontmoet elkaar in de vergaderruimte en chat ernaast.",
     "features": [
-      "Video- en spraakgesprekken op nabijheid",
-      "Scherm delen in gesprekken en vergaderingen",
-      "Begaanbare 2D-kantoorkaart",
-      "Pixel-art avatars",
-      "Aanwezigheid en status in realtime",
-      "Ruimtechat"
+      "Audio- en videogesprekken met een collega",
+      "Schermdelen in gesprekken en vergaderingen",
+      "Een 2D-kantoorverdieping waar je rondloopt",
+      "Pixelart-personages",
+      "Live aanwezigheid en status",
+      "Teamchat met kanalen en directe berichten"
     ]
   },
   "faq": {
@@ -1194,37 +1194,6 @@
         "body": "De vergaderruimte is verderop in de gang. Doe mee aan de meeting en je poppetje loopt naar binnen; loop naar buiten en je bent weg."
       }
     },
-    "more": {
-      "eyebrow": "Al het andere",
-      "title": "Wat een klein team nodig heeft.",
-      "muted": "Niets meer dan dat.",
-      "items": {
-        "chat": {
-          "title": "Kanalen en berichten",
-          "body": "Chat die blijft, naast de verdieping. Lees bij op je telefoon."
-        },
-        "screen": {
-          "title": "Scherm delen",
-          "body": "Deel een venster met je gesprekspartner, met één klik."
-        },
-        "whiteboard": {
-          "title": "Whiteboard",
-          "body": "Een gedeeld bord aan de muur, voor de schets die het uitlegt."
-        },
-        "music": {
-          "title": "Spotify",
-          "body": "Speel muziek in TinyFloor af, en collega's luisteren mee via je kaart."
-        },
-        "noise": {
-          "title": "Ruisonderdrukking",
-          "body": "Toetsenborden en cafés blijven buiten het gesprek."
-        },
-        "devices": {
-          "title": "Op elk apparaat",
-          "body": "Het is een webpagina. Laptop of telefoon, hij opent hetzelfde."
-        }
-      }
-    },
     "pricing": {
       "eyebrow": "Prijzen",
       "title": "Prijs per kantoor,",
@@ -1276,6 +1245,89 @@
       "title": "Geef je team",
       "muted": "een verdieping om te delen.",
       "note": "Gratis voor maximaal 3 mensen · Draait op Cloudflare"
+    },
+    "countries": {
+      "label": "Teams werken op TinyFloor in"
+    },
+    "presence": {
+      "title": "Weet wie er is voor je het vraagt.",
+      "body": "Je hele remote team op één verdieping, ieder aan een bureau met een status. Zie in één oogopslag wie er vrij is, wie geconcentreerd werkt en wie er in vergadering is, zonder statusmeetings of „ben je er?”-berichten.",
+      "more": "Meer over de aanwezigheid van het team",
+      "here": "Op de verdieping",
+      "away": "Afwezig",
+      "notes": {
+        "emma": "Vrij om te praten",
+        "jack": "In de vergaderruimte",
+        "olivia": "Geconcentreerd tot 3 uur",
+        "sam": "Pairen met Noah",
+        "noah": "Pairen met Sam",
+        "lily": "Maandag weer terug"
+      },
+      "wave": "Zwaaien"
+    },
+    "price": {
+      "title": "Eén prijs voor het hele kantoor.",
+      "body": "Gratis voor maximaal 3 mensen. Daarna is Pro één prijs per maand voor het hele team, met hoeveel jullie ook zijn. Elk nieuw kantoor begint met 14 dagen Pro gratis, geen kaart nodig.",
+      "team": "Je team",
+      "people": "{count} mensen",
+      "ours": "TinyFloor Pro",
+      "theirs": "Tools met een prijs per persoon, van {low} tot {high} per stuk",
+      "month": "per maand",
+      "freeNote": "Gratis voor maximaal 3 mensen",
+      "more": "Bekijk abonnementen en prijzen"
+    },
+    "statement": {
+      "text": "Een virtueel kantoor voor kleine remote teams, <muted>met de gang weer terug.</muted>",
+      "points": {
+        "seen": "Zie wie er is",
+        "talk": "Loop langs om te praten",
+        "meet": "Ontmoet elkaar verderop in de gang"
+      },
+      "here": "{count} op de verdieping",
+      "room": "Vergaderruimte"
+    },
+    "meet": {
+      "title": "Een virtuele vergaderruimte, verderop in de gang.",
+      "body": "Als je met drie of meer mensen moet praten, ontmoet elkaar dan in de vergaderruimte, compleet met HD-video, schermdelen en een whiteboard aan de muur. Loop naar binnen om mee te doen en loop naar buiten om weg te gaan. Geen links om te sturen, niets te plannen.",
+      "more": "Meer over de vergaderruimte",
+      "meeting": "Stand-up"
+    },
+    "chat": {
+      "title": "Teamchat, direct naast de verdieping.",
+      "body": "Kanalen en directe berichten voor alles wat geen gesprek is, zodat wat besloten is opgeschreven staat en makkelijk terug te vinden is. Beantwoord een bericht, reageer en deel een screenshot.",
+      "more": "Meer over teamchat",
+      "reply1": "Bedankt. Ik neem de vragen van het gesprek van gisteren mee.",
+      "reply2": "Ziet er goed uit. Ik loop na de stand-up wel even langs."
+    },
+    "extras": {
+      "title": "Alles wat een remote team nog meer nodig heeft.",
+      "text": "Deel je <b>scherm</b> in elk gesprek en schets het uit op het <b>whiteboard</b>. <b>Ruisonderdrukking</b> houdt de blaffende hond buiten het gesprek. Zet je <b>muziek</b> op je kaart, laat een <b>notitie</b> achter onder je naam, houd een <b>eigen bureau</b>, <b>zwaai</b> even gedag en neem het kantoor mee op je <b>telefoon</b>.",
+      "moments": {
+        "screen": "Scherm van {name}",
+        "waved": "{name} zwaaide naar je",
+        "noise": "Ruisonderdrukking",
+        "whiteboard": "Whiteboard"
+      },
+      "items": {
+        "invite": {
+          "title": "Eén link om uit te nodigen",
+          "body": "Plak hem in je teamchat. Teamleden nemen deel via Google of een e-mailcode."
+        },
+        "languages": {
+          "title": "18 talen",
+          "body": "Iedereen gebruikt TinyFloor in zijn eigen taal."
+        }
+      },
+      "copy": "Kopiëren"
+    },
+    "open": {
+      "title": "Open source. Standaard privé.",
+      "body": "TinyFloor is een open source virtueel kantoor. De code is openbaar op GitHub, zodat iedereen kan lezen hoe het werkt en wat het doet met de gegevens van je team. Elk kantoor is alleen voor de leden en gesprekken zijn versleuteld tijdens de overdracht.",
+      "figures": {
+        "commits": "commits in de afgelopen 16 weken",
+        "license": "de licentie, zodat de code open blijft",
+        "languages": "talen, allemaal in dezelfde code"
+      }
     }
   },
   "pricingPage": {
@@ -1301,7 +1353,14 @@
       "callsNote": "Tellen nooit mee",
       "support": "Voorrang bij hulp",
       "wholeTeam": "Hele team",
-      "meetings": "Groepsmeetings"
+      "meetings": "Groepsmeetings",
+      "features": {
+        "chat": "Kanalen en berichten",
+        "screen": "Scherm delen",
+        "whiteboard": "Whiteboard",
+        "music": "Spotify",
+        "noise": "Ruisonderdrukking"
+      }
     },
     "notes": {
       "title": "Goed om te weten.",

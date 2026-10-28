@@ -1,9 +1,9 @@
 {
   "metadata": {
-    "title": "TinyFloor - Een virtueel kantoor waar je rondloopt",
-    "description": "TinyFloor is een gratis virtueel kantoor in je browser. Loop met je team over de pixel-art vloer en start een videogesprek door naast iemand te staan.",
+    "title": "TinyFloor: Virtueel kantoor voor kleine remote teams",
+    "description": "TinyFloor is een virtueel kantoor in de browser voor kleine remote teams. Zie wie er is, loop langs om te praten en ontmoet elkaar op de gang. Gratis tot 3 personen.",
     "ogAlt": "Een TinyFloor-ruimte: een 16-bit kantoorverdieping met bureaus en teamgenoten",
-    "keywords": "virtueel kantoor, thuiswerken, ruimtelijke chat, online samenwerken, virtuele werkplek, nabijheidschat, nabijheidsvideochat, virtuele coworkingruimte, videobellen in de browser",
+    "keywords": "virtueel kantoor, virtuele kantoorsoftware, virtuele werkplek, remote teams, werken op afstand, teamaanwezigheid, virtuele vergaderruimte, teamchat, open source virtueel kantoor",
     "joinTitle": "Ruimte binnengaan",
     "joinRoomTitle": "Doe mee met {office}",
     "joinRoomDescription": "Je bent uitgenodigd voor {office} op TinyFloor, een virtueel kantoor waar je rondloopt. Open de link, kies een personage en loop naar binnen.",

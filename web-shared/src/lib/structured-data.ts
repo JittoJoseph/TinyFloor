@@ -1,4 +1,4 @@
-import { APP_PATH, APP_URL, AUTHOR, SITE_URL, SOCIALS } from "@/lib/site";
+import { APP_PATH, APP_URL, AUTHOR, LISTINGS, SITE_URL, SOCIALS } from "@/lib/site";
 import { localeCodes } from "@/lib/i18n/routing";
 import { localePath, socialImage } from "@/lib/seo";
 
@@ -13,7 +13,7 @@ const AUTHOR_NODE: Schema = {
   "@id": `${SITE_URL}/#author`,
   name: AUTHOR.name,
   url: AUTHOR.url,
-  sameAs: [AUTHOR.linkedin, AUTHOR.github],
+  sameAs: [AUTHOR.linkedin, AUTHOR.github, AUTHOR.crunchbase],
 };
 
 /** The home page's "also on every floor" items, named after the product's own features wherever those are listed. */
@@ -36,7 +36,7 @@ export function siteGraph(): Schema {
         name: NAME,
         url: SITE_URL,
         logo: `${SITE_URL}/icon-512.png`,
-        sameAs: Object.values(SOCIALS),
+        sameAs: [...Object.values(SOCIALS), ...LISTINGS],
         founder: AUTHOR_NODE,
       },
       {

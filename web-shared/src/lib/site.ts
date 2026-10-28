@@ -35,12 +35,22 @@ export const SOCIALS = {
   github: "https://github.com/JittoJoseph/TinyFloor",
 } as const;
 
+/** TinyFloor's listings and blog elsewhere: not in the footer, only told to search engines as the same company. */
+export const LISTINGS = [
+  "https://www.crunchbase.com/organization/tinyfloor",
+  "https://www.g2.com/products/tinyfloor/reviews",
+  "https://alternativeto.net/software/tinyfloor/about/",
+  "https://www.saashub.com/tinyfloor",
+  "https://tinyfloor.hashnode.dev",
+] as const;
+
 /** Who writes the guides; the byline links to LinkedIn. */
 export const AUTHOR = {
   name: "Jitto Joseph",
   url: "https://www.jittojoseph.xyz",
   linkedin: "https://www.linkedin.com/in/jittojoseph17/",
   github: "https://github.com/JittoJoseph",
+  crunchbase: "https://www.crunchbase.com/person/jitto-joseph-3351",
 } as const;
 
 /** Where people write to us: support, privacy, billing and refunds alike. */

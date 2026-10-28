@@ -575,6 +575,31 @@ usually several times larger. Exact Google volumes still need OpenSEO credits.
   Etsy): the brand alone doesn't find us yet, so every title pairs it with
   "virtual office".
 
+## Listings and links (28 October)
+
+- **The domain had almost no real links:** DataForSEO rank 8 of 100, one
+  genuine referring domain; the other ~2,700 are auto-generated "SEO
+  checker" spam (.shop, .site), which Google ignores.
+- **Hashnode:** links inside an article are `nofollow ugc`; a navbar link
+  on the publication is followed and sits on every page of it. So the blog
+  (tinyfloor.hashnode.dev) carries a "Try TinyFloor" navbar link, and posts
+  link for readers, not for rank. Posts keep the hashnode.dev address: on our
+  own domain they'd be links to ourselves.
+- **What developers search** (US): "cloudflare durable objects" 880 at
+  difficulty 13, "durable objects" 480, "turn server" 480, "cloudflare d1"
+  1,000, "cloudflare websockets" 140, "cloudflare realtime" 110,
+  "cloudflare calls" (its old name) 70.
+- **OpenAlternative** lists only repositories with 50+ stars (250+ under six
+  months old) and a commit in the last three months.
+- **SaaSHub** verifies by an email on the product's domain; free listings
+  wait one to twelve weeks, verified ones sooner.
+- **The TURN cluster** (US): "stun server" 480 at difficulty 18, "nat
+  traversal" 390 at 5, "stun vs turn" 70 at 7, "webrtc ice" 70 at 12. The
+  second post targets "stun vs turn" and "turn server".
+- **The listings are in the site's `sameAs`** (`LISTINGS` in
+  `web-shared/src/lib/site.ts`), apart from the footer's socials, so search
+  engines tie them to the same company.
+
 ## Launch places (24 October)
 
 - **Hacker News:** TinyFloor has never been posted. Earlier "virtual office"

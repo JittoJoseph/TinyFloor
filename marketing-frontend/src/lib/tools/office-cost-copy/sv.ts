@@ -120,7 +120,7 @@ const sv: OfficeCostsContent = {
   ],
   fit: {
     title: "Ett pris för hela teamet",
-    body: "TinyFloor är ett kontor i webbläsaren för små team: du går fram till någon för att prata, med mötesrum, chatt och skärmdelning. Det är gratis för upp till 3 personer och sedan 29 $ i månaden för hela teamet, hur många ni än är. Det har inga inspelningar eller AI-anteckningar; behöver ni det passar Gather eller SoWork Premium bättre.",
+    body: "TinyFloor är ett kontor i webbläsaren för distansteam: du går fram till någon för att prata, med mötesrum, chatt och skärmdelning. Det är gratis för upp till 3 personer och sedan 29 $ i månaden för hela teamet, hur många ni än är. Det har inga inspelningar eller AI-anteckningar; behöver ni det passar Gather eller SoWork Premium bättre.",
     cta: "Prova demokontoret",
   },
   faqTitle: "Vanliga <em>frågor.</em>",

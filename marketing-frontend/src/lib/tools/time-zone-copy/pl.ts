@@ -83,7 +83,7 @@ const pl: TimeZonesContent = {
   ],
   fit: {
     title: "Wykorzystaj wspólne godziny",
-    body: "TinyFloor to wirtualne biuro dla małych zespołów. We wspólnych godzinach wszyscy obecni są na tym samym piętrze, a pytanie to podejście do czyjegoś biurka, a nie umawianie rozmowy. Jest za darmo do 3 osób i kosztuje 29 $ miesięcznie za cały zespół.",
+    body: "TinyFloor to wirtualne biuro dla zespołów zdalnych. We wspólnych godzinach wszyscy obecni są na tym samym piętrze, a pytanie to podejście do czyjegoś biurka, a nie umawianie rozmowy. Jest za darmo do 3 osób i kosztuje 29 $ miesięcznie za cały zespół.",
     cta: "Wypróbuj biuro demo",
   },
   faqTitle: "Częste <em>pytania.</em>",

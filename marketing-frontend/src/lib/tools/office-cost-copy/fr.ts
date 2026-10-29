@@ -120,7 +120,7 @@ const fr: OfficeCostsContent = {
   ],
   fit: {
     title: "Un prix pour toute l’équipe",
-    body: "TinyFloor est un bureau dans le navigateur pour les petites équipes : vous allez vers quelqu’un pour lui parler, avec une salle de réunion, un chat et le partage d’écran. Il est gratuit jusqu’à 3 personnes, puis coûte 29 $ par mois pour toute l’équipe, quel que soit votre nombre. Il n’a ni enregistrements ni notes par IA ; si vous en avez besoin, Gather ou SoWork Premium vous conviendront mieux.",
+    body: "TinyFloor est un bureau dans le navigateur pour les équipes à distance : vous allez vers quelqu’un pour lui parler, avec une salle de réunion, un chat et le partage d’écran. Il est gratuit jusqu’à 3 personnes, puis coûte 29 $ par mois pour toute l’équipe, quel que soit votre nombre. Il n’a ni enregistrements ni notes par IA ; si vous en avez besoin, Gather ou SoWork Premium vous conviendront mieux.",
     cta: "Essayer le bureau de démo",
   },
   faqTitle: "Questions <em>fréquentes.</em>",

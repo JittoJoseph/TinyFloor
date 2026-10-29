@@ -123,7 +123,7 @@ const nl: OooContent = {
   ],
   fit: {
     title: "Afwezigheid, ingebouwd in het kantoor",
-    body: "In TinyFloor, een virtueel kantoor voor kleine teams, staat een statusnotitie als \"🌴 Met vakantie tot maandag\" bij je naam, zodat het team het weet voordat ze je proberen te bereiken, en hij verdwijnt vanzelf op de dag zelf. Het draait in een browsertab, gratis tot 3 mensen en $ 29 per maand voor het hele team.",
+    body: "In TinyFloor, een virtueel kantoor voor remote teams, staat een statusnotitie als “🌴 Met vakantie tot maandag” bij je naam, zodat het team het weet voordat ze je proberen te bereiken, en hij verdwijnt vanzelf op de dag zelf. Het draait in een browsertab, gratis tot 3 mensen en $ 29 per maand voor het hele team.",
     cta: "Probeer het demokantoor",
   },
   faqTitle: "Veelgestelde <em>vragen.</em>",

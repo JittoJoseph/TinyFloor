@@ -83,7 +83,7 @@ const fr: TimeZonesContent = {
   ],
   fit: {
     title: "Tirez parti des heures communes",
-    body: "TinyFloor est un bureau virtuel pour les petites équipes. Pendant les heures que vous partagez, toutes les personnes présentes sont au même étage, et une question, c’est aller jusqu’au bureau de quelqu’un plutôt que de caler un appel. Il est gratuit jusqu’à 3 personnes et coûte 29 $ par mois pour toute l’équipe.",
+    body: "TinyFloor est un bureau virtuel pour les équipes à distance. Pendant les heures que vous partagez, toutes les personnes présentes sont au même étage, et une question, c’est aller jusqu’au bureau de quelqu’un plutôt que de caler un appel. Il est gratuit jusqu’à 3 personnes et coûte 29 $ par mois pour toute l’équipe.",
     cta: "Essayer le bureau de démo",
   },
   faqTitle: "Questions <em>fréquentes.</em>",

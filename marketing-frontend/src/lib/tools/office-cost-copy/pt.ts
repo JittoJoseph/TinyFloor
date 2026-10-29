@@ -120,7 +120,7 @@ const pt: OfficeCostsContent = {
   ],
   fit: {
     title: "Um preço para a equipe inteira",
-    body: "O TinyFloor é um escritório no navegador para equipes pequenas: você vai até alguém para conversar, tem sala de reunião, chat e compartilhamento de tela. É grátis para até 3 pessoas e US$ 29 por mês para a equipe inteira depois disso, não importa quantos vocês sejam. Não tem gravações nem notas com IA; se vocês precisam disso, Gather ou SoWork Premium vão servir melhor.",
+    body: "O TinyFloor é um escritório no navegador para equipes remotas: você vai até alguém para conversar, tem sala de reunião, chat e compartilhamento de tela. É grátis para até 3 pessoas e US$ 29 por mês para a equipe inteira depois disso, não importa quantos vocês sejam. Não tem gravações nem notas com IA; se vocês precisam disso, Gather ou SoWork Premium vão servir melhor.",
     cta: "Experimente o escritório de demonstração",
   },
   faqTitle: "Perguntas <em>frequentes.</em>",

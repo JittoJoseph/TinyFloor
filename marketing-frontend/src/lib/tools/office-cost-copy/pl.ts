@@ -120,7 +120,7 @@ const pl: OfficeCostsContent = {
   ],
   fit: {
     title: "Jedna cena dla całego zespołu",
-    body: "TinyFloor to biuro w przeglądarce dla małych zespołów: podchodzisz do kogoś, żeby porozmawiać, jest sala spotkań, czat i udostępnianie ekranu. Jest za darmo do 3 osób, a potem kosztuje 29 $ miesięcznie za cały zespół, bez względu na to, ilu was jest. Nie ma nagrań ani notatek AI; jeśli ich potrzebujecie, lepiej sprawdzą się Gather albo SoWork Premium.",
+    body: "TinyFloor to biuro w przeglądarce dla zespołów zdalnych: podchodzisz do kogoś, żeby porozmawiać, jest sala spotkań, czat i udostępnianie ekranu. Jest za darmo do 3 osób, a potem kosztuje 29 $ miesięcznie za cały zespół, bez względu na to, ilu was jest. Nie ma nagrań ani notatek AI; jeśli ich potrzebujecie, lepiej sprawdzą się Gather albo SoWork Premium.",
     cta: "Wypróbuj biuro demo",
   },
   faqTitle: "Częste <em>pytania.</em>",

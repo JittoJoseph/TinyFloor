@@ -180,7 +180,7 @@ const fr: IcebreakersContent = {
   ],
   fit: {
     title: "Jouez-y sur l'étage",
-    body: "TinyFloor est un bureau virtuel pour les petites équipes : vous voyez qui est à son poste, vous allez le voir pour parler, et vous vous retrouvez en salle de réunion pour le daily, un jeu, ou les deux. Il fonctionne dans un onglet du navigateur, gratuit jusqu'à 3 personnes et 29 $ par mois pour toute l'équipe.",
+    body: "TinyFloor est un bureau virtuel pour les équipes à distance : vous voyez qui est à son poste, vous allez le voir pour parler, et vous vous retrouvez en salle de réunion pour le daily, un jeu, ou les deux. Il fonctionne dans un onglet du navigateur, gratuit jusqu'à 3 personnes et 29 $ par mois pour toute l'équipe.",
     cta: "Essayer le bureau de démo",
   },
   faqTitle: "Questions <em>fréquentes.</em>",

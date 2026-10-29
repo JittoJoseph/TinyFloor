@@ -123,7 +123,7 @@ const de: OooContent = {
   ],
   fit: {
     title: "Abwesenheit, direkt im Büro eingebaut",
-    body: "In TinyFloor, einem virtuellen Büro für kleine Teams, steht eine Statusnotiz wie „🌴 Im Urlaub bis Montag“ an deinem Namen, damit das Team es weiß, bevor es dich zu erreichen versucht, und sie löscht sich am Tag selbst. Es läuft in einem Browser-Tab, kostenlos für bis zu 3 Personen und 29 $ im Monat für das ganze Team.",
+    body: "In TinyFloor, einem virtuellen Büro für Remote-Teams, steht eine Statusnotiz wie „🌴 Im Urlaub bis Montag“ an deinem Namen, damit das Team es weiß, bevor es dich zu erreichen versucht, und sie löscht sich am Tag selbst. Es läuft in einem Browser-Tab, kostenlos für bis zu 3 Personen und 29 $ im Monat für das ganze Team.",
     cta: "Das Demo-Büro ausprobieren",
   },
   faqTitle: "Häufige <em>Fragen.</em>",

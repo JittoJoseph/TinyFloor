@@ -185,7 +185,7 @@ const fi: IcebreakersContent = {
   ],
   fit: {
     title: "Kokoa tiimi kerrokseen",
-    body: "TinyFloor on virtuaalitoimisto pienille tiimeille: näet, kuka istuu työpisteellään, kävelet viereen juttelemaan ja kokoonnutte neuvotteluhuoneeseen tiimipäivään, kysymyksineen kaikkineen. Se toimii selaimen välilehdessä, ilmaiseksi enintään 3 hengelle ja 29 $ kuukaudessa koko tiimiltä.",
+    body: "TinyFloor on virtuaalitoimisto etätiimeille: näet, kuka istuu työpisteellään, kävelet viereen juttelemaan ja kokoonnutte neuvotteluhuoneeseen tiimipäivään, kysymyksineen kaikkineen. Se toimii selaimen välilehdessä, ilmaiseksi enintään 3 hengelle ja 29 $ kuukaudessa koko tiimiltä.",
     cta: "Kokeile demotoimistoa",
   },
   faqTitle: "Usein <em>kysyttyä.</em>",

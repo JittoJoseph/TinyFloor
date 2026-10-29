@@ -123,7 +123,7 @@ const da: OooContent = {
   ],
   fit: {
     title: "Fravær, bygget ind i kontoret",
-    body: "I TinyFloor, et virtuelt kontor til små teams, står en statusnote som \"🌴 På ferie til mandag\" ved dit navn, så teamet ved det, før de prøver at fange dig, og den forsvinder af sig selv på dagen. Det kører i en browserfane, gratis for op til 3 personer og 29 $ om måneden for hele teamet.",
+    body: "I TinyFloor, et virtuelt kontor til remote-teams, står en statusnote som '🌴 På ferie til mandag' ved dit navn, så teamet ved det, før de prøver at fange dig, og den forsvinder af sig selv på dagen. Det kører i en browserfane, gratis for op til 3 personer og 29 $ om måneden for hele teamet.",
     cta: "Prøv demokontoret",
   },
   faqTitle: "Ofte stillede <em>spørgsmål.</em>",

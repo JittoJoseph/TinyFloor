@@ -1,6 +1,6 @@
 {
   "landing": {
-    "description": "Un bureau virtuel pour les petites équipes à distance, dans le navigateur. Chacun a un bureau sur un seul étage : voyez qui est là, approchez-vous et appelez un collègue, réunissez-vous dans la salle de réunion et discutez à côté.",
+    "description": "Un bureau virtuel pour les équipes à distance, dans le navigateur. Chacun a un bureau sur un seul étage : voyez qui est là, approchez-vous et appelez un collègue, réunissez-vous dans la salle de réunion et discutez à côté.",
     "features": [
       "Appels audio et vidéo avec un collègue",
       "Partage d'écran lors des appels et des réunions",
@@ -557,7 +557,7 @@
         "label": "Gather vs Kumospace",
         "meta": {
           "title": "Gather ou Kumospace : tarifs, offres gratuites et une troisième option",
-          "description": "Gather et Kumospace côte à côte : ce que paie une équipe sur chacun, offres gratuites, enregistrement, applications et aménagement du bureau, et la place de TinyFloor pour les petites équipes à distance, à 29 $ pour toute l'équipe."
+          "description": "Gather et Kumospace côte à côte : ce que paie une équipe sur chacun, offres gratuites, enregistrement, applications et aménagement du bureau, et la place de TinyFloor pour les équipes jusqu'à 15 personnes, à 29 $ pour toute l'équipe."
         },
         "title": "<em>Gather vs Kumospace</em>, et une troisième option.",
         "subtitle": "Les deux facturent par membre une fois passée l'offre gratuite : Gather n'en a pas, celle de Kumospace s'arrête à 5. Si votre équipe est petite et veut un bureau simple, TinyFloor est un seul prix pour tout l'étage.",
@@ -1118,7 +1118,7 @@
       "description": "TinyFloor est un bureau virtuel pour les équipes à distance : un étage partagé dans le navigateur, où l'on voit qui est là et où l'on va parler à quelqu'un. Qui nous sommes et comment nous joindre."
     },
     "eyebrow": "À propos",
-    "title": "Le télétravail a perdu le couloir. Nous le reconstruisons.",
+    "title": "Le télétravail a transformé chaque conversation en réunion. Nous y remédions.",
     "intro": "TinyFloor est un bureau virtuel pour les équipes à distance : un étage partagé dans le navigateur, où l'on voit qui est là et où l'on va simplement parler à quelqu'un.",
     "why": {
       "title": "Pourquoi nous le construisons",
@@ -1277,7 +1277,7 @@
       "more": "Voir les forfaits et tarifs"
     },
     "statement": {
-      "text": "Un bureau virtuel pour les petites équipes à distance, <muted>avec le retour du couloir.</muted>",
+      "text": "Un bureau virtuel pour les équipes à distance, <muted>où se parler ne nécessite pas de réunion.</muted>",
       "points": {
         "seen": "Voyez qui est là",
         "talk": "Allez parler",

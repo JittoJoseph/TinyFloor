@@ -83,7 +83,7 @@ const sv: TimeZonesContent = {
   ],
   fit: {
     title: "Få ut mer av de gemensamma timmarna",
-    body: "TinyFloor är ett virtuellt kontor för små team. Under timmarna ni delar är alla som är inne på samma våning, och en fråga är en promenad till någons skrivbord i stället för ett samtal att boka. Det är gratis för upp till 3 personer och 29 $ i månaden för hela teamet.",
+    body: "TinyFloor är ett virtuellt kontor för distansteam. Under timmarna ni delar är alla som är inne på samma våning, och en fråga är en promenad till någons skrivbord i stället för ett samtal att boka. Det är gratis för upp till 3 personer och 29 $ i månaden för hela teamet.",
     cta: "Prova demokontoret",
   },
   faqTitle: "Vanliga <em>frågor.</em>",

@@ -185,7 +185,7 @@ const pl: IcebreakersContent = {
   ],
   fit: {
     title: "Zbierzcie zespół na piętrze",
-    body: "TinyFloor to wirtualne biuro dla małych zespołów: widzisz, kto siedzi przy biurku, podchodzisz, żeby porozmawiać, a na warsztat zespołowy, razem z pytaniami, zbieracie się w sali spotkań. Działa w karcie przeglądarki, za darmo do 3 osób i za 29 $ miesięcznie dla całego zespołu.",
+    body: "TinyFloor to wirtualne biuro dla zespołów zdalnych: widzisz, kto siedzi przy biurku, podchodzisz, żeby porozmawiać, a na warsztat zespołowy, razem z pytaniami, zbieracie się w sali spotkań. Działa w karcie przeglądarki, za darmo do 3 osób i za 29 $ miesięcznie dla całego zespołu.",
     cta: "Wypróbuj biuro demo",
   },
   faqTitle: "Częste <em>pytania.</em>",

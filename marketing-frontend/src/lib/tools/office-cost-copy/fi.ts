@@ -120,7 +120,7 @@ const fi: OfficeCostsContent = {
   ],
   fit: {
     title: "Yksi hinta koko tiimille",
-    body: "TinyFloor on selaimessa toimiva toimisto pienille tiimeille: kävelet jonkun luo juttelemaan, ja mukana on neuvotteluhuone, chat ja näytönjako. Se on ilmainen enintään 3 hengelle ja sen jälkeen 29 $ kuukaudessa koko tiimiltä, oli teitä kuinka monta tahansa. Siinä ei ole tallenteita eikä tekoälymuistiinpanoja; jos tarvitsette niitä, Gather tai SoWork Premium sopii paremmin.",
+    body: "TinyFloor on selaimessa toimiva toimisto etätiimeille: kävelet jonkun luo juttelemaan, ja mukana on neuvotteluhuone, chat ja näytönjako. Se on ilmainen enintään 3 hengelle ja sen jälkeen 29 $ kuukaudessa koko tiimiltä, oli teitä kuinka monta tahansa. Siinä ei ole tallenteita eikä tekoälymuistiinpanoja; jos tarvitsette niitä, Gather tai SoWork Premium sopii paremmin.",
     cta: "Kokeile demotoimistoa",
   },
   faqTitle: "Usein <em>kysyttyä.</em>",

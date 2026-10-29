@@ -180,7 +180,7 @@ const pt: IcebreakersContent = {
   ],
   fit: {
     title: "Jogue no escritório",
-    body: "O TinyFloor é um escritório virtual para equipes pequenas: você vê quem está na mesa, vai até a pessoa para conversar e se reúne na sala de reuniões para a daily, um jogo, ou os dois. Funciona numa aba do navegador, grátis para até 3 pessoas e US$ 29 por mês para a equipe toda.",
+    body: "O TinyFloor é um escritório virtual para equipes remotas: você vê quem está na mesa, vai até a pessoa para conversar e se reúne na sala de reuniões para a daily, um jogo, ou os dois. Funciona numa aba do navegador, grátis para até 3 pessoas e US$ 29 por mês para a equipe toda.",
     cta: "Conhecer o escritório de demonstração",
   },
   faqTitle: "Perguntas <em>frequentes.</em>",

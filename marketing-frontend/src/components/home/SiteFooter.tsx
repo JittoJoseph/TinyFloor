@@ -54,7 +54,7 @@ const FEATURED = [
   },
   {
     name: "Fazier",
-    href: "https://fazier.com",
+    href: "https://fazier.com/launches/tinyfloor",
     light: "https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light",
     dark: "https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=dark",
     width: 70,

@@ -43,6 +43,16 @@ const ELSEWHERE = [
   },
 ];
 
+/** Directories that list TinyFloor, as their own badges, in a light and a dark version. Only the good-looking ones. */
+const FEATURED = [
+  {
+    name: "Twelve Tools",
+    href: "https://twelve.tools",
+    light: "https://twelve.tools/badge1-light.svg",
+    dark: "https://twelve.tools/badge2-dark.svg",
+  },
+];
+
 type FooterLink = { label: string; href: string; all?: boolean };
 
 /**
@@ -124,6 +134,18 @@ export async function SiteFooter({ path = "/" }: { path?: string }) {
               TinyFloor
             </Link>
             <p className="mt-3 max-w-[22rem] text-[14px] leading-[1.6] text-muted-foreground">{t("tagline")}</p>
+            <ul className="mt-5 flex flex-wrap items-center gap-2">
+              {FEATURED.map((badge) => (
+                <li key={badge.href}>
+                  <a href={badge.href} target="_blank" rel="noopener" className="block opacity-80 transition-opacity hover:opacity-100">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={badge.light} alt={`Featured on ${badge.name}`} width={111} height={30} loading="lazy" className="dark:hidden" />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={badge.dark} alt={`Featured on ${badge.name}`} width={111} height={30} loading="lazy" className="hidden dark:block" />
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
           <span className="-ms-2 flex items-center text-muted-foreground sm:ms-0">
             {ELSEWHERE.map((link) => (

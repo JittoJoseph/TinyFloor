@@ -1299,9 +1299,7 @@
     "chat": {
       "title": "Czat zespołowy, tuż obok piętra.",
       "body": "Kanały i wiadomości bezpośrednie do wszystkiego, co nie jest rozmową, dzięki czemu ustalenia są zapisane i łatwe do znalezienia. Odpowiadaj na wiadomości, reaguj i udostępniaj zrzuty ekranu.",
-      "more": "Więcej o czacie zespołowym",
-      "reply1": "Dzięki. Przyniosę pytania z wczorajszej rozmowy.",
-      "reply2": "Wygląda świetnie. Podejdę po standupie."
+      "more": "Więcej o czacie zespołowym"
     },
     "extras": {
       "title": "Wszystko inne, czego potrzebuje zespół zdalny.",

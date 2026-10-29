@@ -1299,9 +1299,7 @@
     "chat": {
       "title": "Un chat d'équipe, juste à côté de l'étage.",
       "body": "Des canaux et des messages directs pour tout ce qui n'est pas un appel, afin que ce qui a été décidé soit écrit et facile à retrouver. Répondez à un message, réagissez et partagez une capture d'écran.",
-      "more": "En savoir plus sur le chat d'équipe",
-      "reply1": "Merci. J'apporterai les questions de l'appel d'hier.",
-      "reply2": "Ça a l'air super. Je passerai après le standup."
+      "more": "En savoir plus sur le chat d'équipe"
     },
     "extras": {
       "title": "Tout ce dont une équipe à distance a besoin.",

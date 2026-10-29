@@ -404,36 +404,23 @@ export function MeetSection() {
   );
 }
 
-/** One message in the chat, as the app lays it out; a reply carries the line it answers above it. */
+/** One message in the chat, as the app lays it out. */
 function Message({
   who,
   time,
   children,
-  reply,
   extra,
   turn = 0,
 }: {
   who: { id: string; name: string };
   time: string;
   children?: ReactNode;
-  reply?: { who: { id: string; name: string }; text: string };
   extra?: ReactNode;
   /** Its place in the morning: the messages arrive in order as the window comes in. */
   turn?: number;
 }) {
   return (
     <li data-reveal style={rise(120 + 80 * turn, { y: 8 })}>
-      {reply && (
-        <div className="relative mb-1 flex h-5 items-center ps-12 text-[13px] leading-5">
-          {/* The app's curl from over the face below into the quoted line (Conversation's Quote). */}
-          <span aria-hidden className="absolute start-[17px] top-[9px] h-[12px] w-[27px] rounded-ss-[6px] border-s-2 border-t-2 border-border" />
-          <span className="flex min-w-0 items-center gap-1.5">
-            <Face seed={reply.who.id} size={14} />
-            <span className="shrink-0 font-medium text-foreground/70">{reply.who.name}</span>
-            <span className="truncate text-muted-foreground">{reply.text}</span>
-          </span>
-        </div>
-      )}
       <div className="flex items-start gap-3">
         <Face seed={who.id} size={36} />
         <div className="min-w-0 flex-1">
@@ -534,14 +521,14 @@ function VoiceNote() {
 
 /**
  * The chat: what it's for across the top, then the app's chat window: the
- * channels down the side, a morning's messages with two replies, a shared
- * screenshot of the office itself, reactions, and someone typing.
+ * channels down the side, and a morning in #general: a line of news, a
+ * screenshot shared with reactions, a voice message, and someone typing.
  */
 export function ChatSection() {
   const t = useTranslations("homepage.chat");
   const p = useTranslations("home.preview");
   const s = useTranslations("shell");
-  const { emma, jack, olivia, sam, noah, lily } = PEOPLE;
+  const { emma, jack, olivia, noah, lily } = PEOPLE;
   const channels = [p("general"), p("design"), p("random")];
   const side = "flex h-8 items-center gap-2 rounded-[9px] px-2.5 text-[13px]";
   return (
@@ -623,18 +610,22 @@ export function ChatSection() {
             <span className="text-faint">#</span>
             {channels[0]}
             <span className="ms-auto flex items-center gap-1.5 rounded-full border border-border py-0.5 pe-2 ps-0.5 text-[11.5px] font-medium text-muted-foreground [--face-ring:var(--ui-background)]">
-              <FaceStack seeds={[olivia.id, jack.id, sam.id]} size={18} max={3} />6
+              <FaceStack seeds={[olivia.id, jack.id, noah.id]} size={18} max={3} />6
             </span>
           </div>
-          <ol className="flex flex-col gap-4 px-5 pb-3 pt-4 sm:px-6">
+          <ol className="flex flex-col gap-5 px-5 pb-4 pt-4 sm:px-6">
             <li className="flex items-center gap-3 text-[11.5px] font-medium text-faint">
               <span className="h-px flex-1 bg-border" />
               {p("today")}
               <span className="h-px flex-1 bg-border" />
             </li>
+            <Message who={olivia} time="09:32">
+              {p("message0")}
+            </Message>
             <Message
               who={jack}
               time="09:40"
+              turn={1}
               extra={
                 <>
                   <Shot />
@@ -646,9 +637,6 @@ export function ChatSection() {
               }
             >
               {p("message3")}
-            </Message>
-            <Message who={sam} time="09:44" turn={1} reply={{ who: jack, text: p("message3") }}>
-              {t("reply2")}
             </Message>
             <Message who={noah} time="09:46" turn={2} extra={<VoiceNote />} />
           </ol>

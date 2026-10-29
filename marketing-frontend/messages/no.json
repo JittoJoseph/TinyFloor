@@ -1299,9 +1299,7 @@
     "chat": {
       "title": "Teamchat, rett ved siden av etasjen.",
       "body": "Kanaler og direktemeldinger for alt som ikke er en samtale, slik at det som ble bestemt er skrevet ned og lett å finne. Svar på en melding, reager og del en skjermdump.",
-      "more": "Mer om teamchat",
-      "reply1": "Takk. Jeg tar med spørsmålene fra gårsdagens samtale.",
-      "reply2": "Ser bra ut. Jeg går bort etter standupen."
+      "more": "Mer om teamchat"
     },
     "extras": {
       "title": "Alt annet et eksternt team trenger.",

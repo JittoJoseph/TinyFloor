@@ -1299,9 +1299,7 @@
     "chat": {
       "title": "Chat de equipe, bem ao lado do andar.",
       "body": "Canais e mensagens diretas para tudo o que não for uma chamada, para que o que foi decidido fique registrado e seja fácil de encontrar. Responda a uma mensagem, reaja e compartilhe uma captura de tela.",
-      "more": "Mais sobre o chat da equipe",
-      "reply1": "Obrigado. Vou trazer as perguntas da chamada de ontem.",
-      "reply2": "Muito bom. Vou até lá depois da standup."
+      "more": "Mais sobre o chat da equipe"
     },
     "extras": {
       "title": "Tudo o que uma equipe remota precisa.",

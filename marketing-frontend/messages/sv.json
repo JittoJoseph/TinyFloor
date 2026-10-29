@@ -1299,9 +1299,7 @@
     "chat": {
       "title": "Teamchatt, precis bredvid planet.",
       "body": "Kanaler och direktmeddelanden för allt som inte är ett samtal, så att det som bestämts finns nedskrivet och är lätt att hitta. Svara på ett meddelande, reagera och dela en skärmbild.",
-      "more": "Mer om teamchatten",
-      "reply1": "Tack. Jag tar med mig frågorna från gårdagens samtal.",
-      "reply2": "Ser bra ut. Jag går fram efter standupen."
+      "more": "Mer om teamchatten"
     },
     "extras": {
       "title": "Allt annat som ett distansteam behöver.",

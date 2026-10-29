@@ -1299,9 +1299,7 @@
     "chat": {
       "title": "Team-Chat, direkt neben der Etage.",
       "body": "Kanäle und Direktnachrichten für alles, was kein Anruf ist, damit getroffene Entscheidungen aufgeschrieben und leicht zu finden sind. Antworte auf eine Nachricht, reagiere darauf und teile einen Screenshot.",
-      "more": "Mehr über den Team-Chat",
-      "reply1": "Danke. Ich bringe die Fragen aus dem gestrigen Anruf mit.",
-      "reply2": "Sieht super aus. Ich geh nach dem Standup rüber."
+      "more": "Mehr über den Team-Chat"
     },
     "extras": {
       "title": "Alles andere, was ein Remote-Team braucht.",

@@ -1299,9 +1299,7 @@
     "chat": {
       "title": "Teamchat, lige ved siden af etagen.",
       "body": "Kanaler og direkte beskeder til alt det, der ikke er et opkald, så det, der blev besluttet, er skrevet ned og nemt at finde. Svar på en besked, giv en reaktion, og del et skærmbillede.",
-      "more": "Mere om teamchat",
-      "reply1": "Tak. Jeg tager spørgsmålene med fra gårsdagens opkald.",
-      "reply2": "Det ser godt ud. Jeg går derhen efter standup."
+      "more": "Mere om teamchat"
     },
     "extras": {
       "title": "Alt det andet, et fjernteam har brug for.",

@@ -1299,9 +1299,7 @@
     "chat": {
       "title": "Teamchat, direct naast de verdieping.",
       "body": "Kanalen en directe berichten voor alles wat geen gesprek is, zodat wat besloten is opgeschreven staat en makkelijk terug te vinden is. Beantwoord een bericht, reageer en deel een screenshot.",
-      "more": "Meer over teamchat",
-      "reply1": "Bedankt. Ik neem de vragen van het gesprek van gisteren mee.",
-      "reply2": "Ziet er goed uit. Ik loop na de stand-up wel even langs."
+      "more": "Meer over teamchat"
     },
     "extras": {
       "title": "Alles wat een remote team nog meer nodig heeft.",

@@ -1299,9 +1299,7 @@
     "chat": {
       "title": "Tiimichat aivan kerroksen vieressä.",
       "body": "Kanavat ja yksityisviestit kaikelle muulle paitsi puheluille, jotta päätetyt asiat jäävät talteen ja ovat helposti löydettävissä. Vastaa viestiin, reagoi ja jaa kuvakaappaus.",
-      "more": "Lisätietoa tiimichatistä",
-      "reply1": "Kiitos. Tuon mukanani kysymykset eilisestä puhelusta.",
-      "reply2": "Kuulostaa hyvältä. Kävelen luoksesi standupin jälkeen."
+      "more": "Lisätietoa tiimichatistä"
     },
     "extras": {
       "title": "Kaikki muu, mitä etätiimi tarvitsee.",

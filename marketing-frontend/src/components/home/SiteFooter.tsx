@@ -43,21 +43,25 @@ const ELSEWHERE = [
   },
 ];
 
-/** Directories that list TinyFloor, as their own badges, in a light and a dark version. Only the good-looking ones. */
+/**
+ * Directories that list TinyFloor, as their own badges in a light and a dark
+ * version. Set the same height and in grey, so two sites' colours sit
+ * quietly together; each takes its colour back on hover.
+ */
 const FEATURED = [
-  {
-    name: "Twelve Tools",
-    href: "https://twelve.tools",
-    light: "https://twelve.tools/badge1-light.svg",
-    dark: "https://twelve.tools/badge2-dark.svg",
-    width: 111,
-  },
   {
     name: "Fazier",
     href: "https://fazier.com/launches/tinyfloor",
     light: "https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light",
     dark: "https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=dark",
-    width: 70,
+    width: 75,
+  },
+  {
+    name: "Twelve Tools",
+    href: "https://twelve.tools",
+    light: "https://twelve.tools/badge1-light.svg",
+    dark: "https://twelve.tools/badge1-dark.svg",
+    width: 119,
   },
 ];
 
@@ -142,14 +146,19 @@ export async function SiteFooter({ path = "/" }: { path?: string }) {
               TinyFloor
             </Link>
             <p className="mt-3 max-w-[22rem] text-[14px] leading-[1.6] text-muted-foreground">{t("tagline")}</p>
-            <ul className="mt-5 flex flex-wrap items-center gap-2">
+            <ul className="mt-5 flex flex-wrap items-center gap-3">
               {FEATURED.map((badge) => (
                 <li key={badge.href}>
-                  <a href={badge.href} target="_blank" rel="noopener" className="block opacity-80 transition-opacity hover:opacity-100">
+                  <a
+                    href={badge.href}
+                    target="_blank"
+                    rel="noopener"
+                    className="block opacity-70 grayscale transition-[opacity,filter] duration-300 hover:opacity-100 hover:grayscale-0"
+                  >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={badge.light} alt={`Featured on ${badge.name}`} width={badge.width} height={30} loading="lazy" className="dark:hidden" />
+                    <img src={badge.light} alt={`TinyFloor on ${badge.name}`} width={badge.width} height={32} loading="lazy" className="h-8 w-auto dark:hidden" />
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={badge.dark} alt={`Featured on ${badge.name}`} width={badge.width} height={30} loading="lazy" className="hidden dark:block" />
+                    <img src={badge.dark} alt={`TinyFloor on ${badge.name}`} width={badge.width} height={32} loading="lazy" className="hidden h-8 w-auto dark:block" />
                   </a>
                 </li>
               ))}

@@ -1299,9 +1299,7 @@
     "chat": {
       "title": "Chat de equipo, justo al lado de la planta.",
       "body": "Canales y mensajes directos para todo lo que no sea una llamada, para que lo acordado quede por escrito y sea fácil de encontrar. Responde a un mensaje, reacciona y comparte una captura de pantalla.",
-      "more": "Más sobre el chat de equipo",
-      "reply1": "Gracias. Traeré las preguntas de la llamada de ayer.",
-      "reply2": "Tiene buena pinta. Me acercaré después de la reunión diaria."
+      "more": "Más sobre el chat de equipo"
     },
     "extras": {
       "title": "Todo lo demás que necesita un equipo remoto.",

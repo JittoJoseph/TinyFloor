@@ -1288,9 +1288,7 @@
     "chat": {
       "title": "Team chat, right beside the floor.",
       "body": "Channels and direct messages for everything that isn’t a call, so what was decided is written down and easy to find. Reply to a message, react, and share a screenshot.",
-      "more": "More about team chat",
-      "reply1": "Thanks. I’ll bring the questions from yesterday’s call.",
-      "reply2": "Looks great. I’ll walk over after the standup."
+      "more": "More about team chat"
     },
     "extras": {
       "title": "Everything else a remote team needs.",

@@ -1249,6 +1249,10 @@
     "countries": {
       "label": "Team jobber på TinyFloor i"
     },
+    "trust": {
+      "title": "Elsket av fjernteam",
+      "line": "Betrodd av oppstartsselskaper, byråer og studioer over hele verden"
+    },
     "presence": {
       "title": "Vite hvem som er her før du spør.",
       "body": "Hele det eksterne teamet ditt på én etasje, hver ved sitt skrivebord med en status. Se hvem som er ledig, hvem som er dypt konsentrert og hvem som er i et møte med et raskt blikk, uten statusmøter eller «er du der?»-meldinger.",

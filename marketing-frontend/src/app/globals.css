@@ -31,3 +31,135 @@
     transform: rotate(-8deg);
   }
 }
+
+/*
+ * Things arriving as the page shows them (components/home/Motion.tsx). Every
+ * word is in the server's HTML from the start, so search engines and readers
+ * without scripts get the page whole: only a browser that ran the head script
+ * (lib/theme-script.ts puts `reveals` on <html>) holds back what's below the
+ * fold, and only until it scrolls in. Should the script that shows them never
+ * start (it puts `revealing` there too), everything appears after three
+ * seconds. Nothing moves for anyone who asked for less motion.
+ *
+ * Headings come up word by word from behind their own line; everything else
+ * settles up into place; a laurel grows its leaves.
+ */
+:root {
+  --ease-settle: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* From almost nothing rather than nothing: the browser still counts the first frame as painted. */
+@keyframes settle {
+  from {
+    opacity: 0.001;
+    transform: translate(var(--rise-x, 0px), var(--rise-y, 16px)) scale(var(--rise-scale, 1));
+  }
+}
+
+/* A word coming up from below its line, which hides it until it's there. */
+@keyframes word-up {
+  from {
+    transform: translateY(108%);
+  }
+}
+
+/* The hero's words, which must be seen from the first frame: they lift into place instead. */
+@keyframes word-lift {
+  from {
+    opacity: 0.001;
+    transform: translateY(0.32em);
+  }
+}
+
+@keyframes shown {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* A laurel's stem growing up from its base, and its leaves opening from where they join it. */
+@keyframes stem-grow {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+@keyframes leaf-open {
+  from {
+    opacity: 0;
+    transform: scale(0.2) rotate(-24deg);
+  }
+}
+
+@keyframes mark-in {
+  from {
+    opacity: 0.001;
+    transform: translateY(6px) scale(0.6);
+  }
+}
+
+/*
+ * A word, with room below it for its descenders: the line that hides a word
+ * as it comes up must not cut off the tail of a g or a y.
+ */
+.word {
+  display: inline-block;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+.word > span {
+  display: inline-block;
+}
+.laurel-leaf {
+  transform-box: view-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* On load, with no script: the hero. */
+  .rise {
+    animation: settle 0.75s var(--ease-settle) var(--d, 0ms) both;
+  }
+  .words-now .word > span {
+    animation: word-lift 0.7s var(--ease-settle) calc(var(--d, 0ms) + var(--i) * 30ms) both;
+  }
+
+  /* Held back until they scroll in. */
+  html.reveals [data-reveal]:not([data-revealed]) {
+    opacity: 0;
+  }
+  html.reveals :is([data-reveal-words], [data-reveal-laurel]) .word {
+    overflow: clip;
+  }
+  html.reveals :is([data-reveal-words], [data-reveal-laurel]):not([data-revealed]) .word > span {
+    transform: translateY(108%);
+  }
+  html.reveals [data-reveal-laurel]:not([data-revealed]) :is(.laurel-stem, .laurel-leaf, .laurel-mark) {
+    opacity: 0;
+  }
+
+  /* The script never started: show everything anyway. */
+  html.reveals:not(.revealing) :is([data-reveal], :is([data-reveal-words], [data-reveal-laurel]) .word > span, [data-reveal-laurel] :is(.laurel-stem, .laurel-leaf, .laurel-mark)) {
+    animation: shown 0.6s ease 3s forwards;
+  }
+
+  /* Arriving. */
+  html.reveals [data-reveal][data-revealed] {
+    animation: settle 0.7s var(--ease-settle) var(--d, 0ms) backwards;
+  }
+  html.reveals :is([data-reveal-words], [data-reveal-laurel])[data-revealed] .word > span {
+    animation: word-up 0.65s var(--ease-settle) calc(var(--d, 0ms) + var(--i) * 22ms) backwards;
+  }
+  html.reveals [data-reveal-laurel][data-revealed] .laurel-stem {
+    animation: stem-grow 0.7s var(--ease-settle) both;
+  }
+  html.reveals [data-reveal-laurel][data-revealed] .laurel-leaf {
+    animation: leaf-open 0.45s cubic-bezier(0.34, 1.4, 0.64, 1) calc(var(--i) * 22ms) backwards;
+  }
+  html.reveals [data-reveal-laurel][data-revealed] .laurel-mark {
+    animation: mark-in 0.5s var(--ease-settle) calc(150ms + var(--i) * 35ms) backwards;
+  }
+}

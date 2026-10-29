@@ -1249,6 +1249,10 @@
     "countries": {
       "label": "Teams arbeiten auf TinyFloor in"
     },
+    "trust": {
+      "title": "Beliebt bei Remote-Teams",
+      "line": "Weltweit geschätzt von Startups, Agenturen und Studios"
+    },
     "presence": {
       "title": "Sieh, wer da ist, bevor du fragst.",
       "body": "Dein ganzes Remote-Team auf einer Etage, jeder an einem Schreibtisch mit einem Status. Sieh auf einen Blick, wer frei ist, wer konzentriert arbeitet und wer in einem Meeting ist – ganz ohne Status-Meetings oder „Bist du da?“-Nachrichten.",

@@ -1,11 +1,13 @@
 import { useTranslations } from "next-intl";
 import { Closing, Hero, MarketingShell, Questions } from "./Blocks";
-import { ChatSection, Countries, Extras, MeetSection, OpenSection, PresenceSection, PriceSection, Statement } from "./HomeSections";
+import { countWords, Split } from "./Split";
+import { ChatSection, Countries, Extras, MeetSection, OpenSection, PresenceSection, PriceSection, Statement, Trust } from "./HomeSections";
 
 /**
- * The home page: one statement over the app running, then where teams work,
- * what TinyFloor is in one sentence, the floor's parts as the app draws them,
- * the plans, the open code, the questions and the last ask.
+ * The home page: one statement over the app running, then the teams' trust
+ * and where they work, what TinyFloor is in one sentence, the floor's parts
+ * as the app draws them, the plans, the open code, the questions and the last
+ * ask.
  */
 export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
   const t = useTranslations("homepage.hero");
@@ -14,12 +16,15 @@ export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
       <Hero
         title={
           <>
-            {t("title")}
-            <span className="block text-foreground/55">{t("muted")}</span>
+            <Split text={t("title")} />{" "}
+            <span className="block text-foreground/55">
+              <Split text={t("muted")} from={countWords(t("title"))} />
+            </span>
           </>
         }
         body={t("body")}
       />
+      <Trust />
       <Countries />
       <Statement />
       <PresenceSection />

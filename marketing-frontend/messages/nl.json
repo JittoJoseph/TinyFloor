@@ -1249,6 +1249,10 @@
     "countries": {
       "label": "Teams werken op TinyFloor in"
     },
+    "trust": {
+      "title": "Geliefd bij remote teams",
+      "line": "Vertrouwd door startups, bureaus en studio's wereldwijd"
+    },
     "presence": {
       "title": "Weet wie er is voor je het vraagt.",
       "body": "Je hele remote team op één verdieping, ieder aan een bureau met een status. Zie in één oogopslag wie er vrij is, wie geconcentreerd werkt en wie er in vergadering is, zonder statusmeetings of „ben je er?”-berichten.",

@@ -1249,6 +1249,10 @@
     "countries": {
       "label": "Tiimit tekevät töitä TinyFloorissa maassa"
     },
+    "trust": {
+      "title": "Etätiimien suosikki",
+      "line": "Startupien, toimistojen ja studioiden luottama ympäri maailman"
+    },
     "presence": {
       "title": "Tiedä kuka on paikalla ennen kuin kysyt.",
       "body": "Koko etätiimisi samassa kerroksessa, jokainen omalla työpöydällään tilatietoineen. Näet yhdellä silmäyksellä, kuka on vapaana, kuka keskittyy ja kuka on kokouksessa – ilman tilannekatsauksia tai ”oletko siellä?” -viestejä.",

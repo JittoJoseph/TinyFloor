@@ -1249,6 +1249,10 @@
     "countries": {
       "label": "Zespoły pracują na TinyFloor w"
     },
+    "trust": {
+      "title": "Wybór zespołów zdalnych",
+      "line": "Zaufały nam startupy, agencje i studia z całego świata"
+    },
     "presence": {
       "title": "Wiedz, kto jest w pobliżu, zanim zapytasz.",
       "body": "Cały Twój zespół zdalny na jednym piętrze, każdy przy swoim biurku ze statusem. Rzutem oka sprawdź, kto ma wolną chwilę, kto jest skupiony, a kto na spotkaniu – bez spotkań statusowych i wiadomości typu „jesteś?”.",

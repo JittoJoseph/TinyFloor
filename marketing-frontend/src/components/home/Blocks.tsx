@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { Check, Plus, License, SourceCode, Zap } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
@@ -16,6 +16,8 @@ import { foundingOpen } from "@/lib/founding";
 import { GoogleOneTap } from "@/components/auth/GoogleOneTap";
 import { GitHubMark, SiteFooter } from "./SiteFooter";
 import { SiteTheme } from "@/components/home/SiteTheme";
+import { Reveals } from "./Motion";
+import { countWords, rise, Split } from "./Split";
 
 /*
  * The pieces every marketing page is built from: the shell, the hero, the two ways in, the floor's moments, the
@@ -75,6 +77,7 @@ export function MarketingShell({ path = "/", oneTap = false, children }: { path?
       <SiteTheme />
       {/* Google's account chooser for people without an account yet, on the pages meant to win them. */}
       {oneTap && <GoogleOneTap />}
+      <Reveals />
       <HomeNav fade={false} />
       <main>{children}</main>
       <SiteFooter path={path} />
@@ -103,24 +106,31 @@ export function Hero({
   return (
     <section className={size === "home" ? "pt-36 sm:pt-48" : "pt-32 sm:pt-44"}>
       <div className={cn(COLUMN, "flex flex-col items-center text-center")}>
-        {eyebrow && <p className={cn(EYEBROW, "mb-6")}>{eyebrow}</p>}
+        {eyebrow && <p className={cn(EYEBROW, "rise mb-6")}>{eyebrow}</p>}
         <h1
           className={cn(
-            "text-balance font-normal tracking-[-0.045em]",
+            "words-now text-balance font-normal tracking-[-0.045em]",
             size === "home"
               ? "text-[44px] leading-[1.02] min-[400px]:text-[48px] sm:text-[76px] lg:text-[92px]"
               : "max-w-[18ch] text-[40px] leading-[1.04] min-[400px]:text-[44px] sm:text-[64px] lg:text-[72px]",
             CJK_HEADLINE,
           )}
         >
-          {title}
+          {typeof title === "string" ? <Split text={title} /> : title}
         </h1>
-        <p className={cn(LEAD, "mt-7 max-w-[36rem] text-balance")}>{body}</p>
-        <Joined placement="hero" className="mt-10" />
-        <p className="mt-5 text-[13px] text-faint">{t("note")}</p>
+        <p className={cn(LEAD, "rise mt-7 max-w-[36rem] text-balance")} style={{ "--d": "120ms" } as CSSProperties}>
+          {body}
+        </p>
+        <Joined placement="hero" className="rise mt-10" style={{ "--d": "180ms" } as CSSProperties} />
+        <p className="rise mt-5 text-[13px] text-faint" style={{ "--d": "220ms" } as CSSProperties}>
+          {t("note")}
+        </p>
       </div>
 
-      <div className="mx-auto mt-14 w-full max-w-[1120px] px-3 sm:mt-24 sm:px-8">
+      <div
+        className="rise mx-auto mt-14 w-full max-w-[1120px] px-3 sm:mt-24 sm:px-8"
+        style={{ "--d": "240ms", "--rise-y": "28px", "--rise-scale": "0.985" } as CSSProperties}
+      >
         {/*
           The app, whole: its dark shell is the window's own frame, so nothing
           goes around it but a shadow (and, on the dark page, the faintest edge
@@ -146,12 +156,12 @@ export function Hero({
  * there rather than run off the edge. A glare runs across the demo office's
  * now and then, as on the doors' buttons (shared.css).
  */
-export function Joined({ placement, className }: { placement: string; className?: string }) {
+export function Joined({ placement, className, style }: { placement: string; className?: string; style?: CSSProperties }) {
   const t = useTranslations("homepage.hero");
   const half =
     "inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-[14px] font-medium leading-tight transition-colors min-[400px]:px-6 min-[400px]:text-[15px] sm:whitespace-nowrap";
   return (
-    <div data-cta={placement} className={cn("flex w-full max-w-[22rem] flex-col-reverse gap-2 sm:w-auto sm:max-w-none sm:flex-row sm:gap-0", className)}>
+    <div data-cta={placement} style={style} className={cn("flex w-full max-w-[22rem] flex-col-reverse gap-2 sm:w-auto sm:max-w-none sm:flex-row sm:gap-0", className)}>
       <Link href="/create" className={cn(half, "bg-foreground/[0.09] text-foreground hover:bg-foreground/[0.14] sm:rounded-e-none")}>
         {t("cta")}
       </Link>
@@ -450,17 +460,20 @@ export function Questions({ items, title }: { items: Array<{ q: string; a: strin
   return (
     <section id="faq" className={cn(COLUMN, ANCHOR, "pb-28 sm:pb-40")}>
       <div className="mx-auto max-w-[44rem]">
-        <h2 className={cn(H2, CJK_HEADLINE, "text-center")}>
+        <h2 data-reveal-words className={cn(H2, CJK_HEADLINE, "text-center")}>
           {title ?? (
             <>
-              {t("title")}
-              <span className="text-muted-foreground/75"> {t("muted")}</span>
+              <Split text={t("title")} />
+              <span className="text-muted-foreground/75">
+                {" "}
+                <Split text={t("muted")} from={countWords(t("title"))} />
+              </span>
             </>
           )}
         </h2>
         <div className="mt-12 sm:mt-16">
-          {items.map((one) => (
-            <details key={one.q} className="group">
+          {items.map((one, i) => (
+            <details key={one.q} data-reveal style={rise(30 * Math.min(i, 6), { y: 10 })} className="group">
               <summary className="-mx-4 flex cursor-pointer list-none items-center justify-between gap-6 rounded-[16px] px-4 py-4 text-[16.5px] font-medium tracking-[-0.01em] transition-colors hover:bg-foreground/[0.035] sm:text-[17px] [&::-webkit-details-marker]:hidden">
                 {one.q}
                 <Plus className="size-4 shrink-0 text-faint transition-transform duration-200 group-open:rotate-45" />
@@ -503,26 +516,34 @@ export function Closing() {
     <section id="invites" className={cn(COLUMN, ANCHOR, "flex flex-col items-center pb-32 pt-8 text-center sm:pb-44 sm:pt-12")}>
       <div aria-hidden className="flex origin-bottom scale-[0.78] items-start justify-center gap-3 sm:scale-100 sm:gap-5">
         {MARKS.map((one, i) => (
-          <span
-            key={i}
-            className="block drop-shadow-[0_12px_18px_rgb(0_0_0/0.16)]"
-            style={{ transform: `translateY(${one.lift}px) rotate(${one.turn}deg)` }}
-          >
-            {one.seed ? <Face seed={one.seed} square size={one.size} /> : <Logo size={one.size} />}
+          // The mark keeps its own tilt; the span around it is what arrives.
+          <span key={i} data-reveal className="block" style={rise(40 * i, { y: 20, scale: 0.9 })}>
+            <span
+              className="block drop-shadow-[0_12px_18px_rgb(0_0_0/0.16)]"
+              style={{ transform: `translateY(${one.lift}px) rotate(${one.turn}deg)` }}
+            >
+              {one.seed ? <Face seed={one.seed} square size={one.size} /> : <Logo size={one.size} />}
+            </span>
           </span>
         ))}
       </div>
       <h2
+        data-reveal-words
+        style={rise(60)}
         className={cn(
           "mt-16 text-balance text-[40px] font-normal leading-[1.04] tracking-[-0.045em] min-[400px]:text-[44px] sm:text-[68px] lg:text-[80px]",
           CJK_HEADLINE,
         )}
       >
-        {t("title")}
-        <span className="block">{t("muted")}</span>
+        <Split text={t("title")} />
+        <span className="block">
+          <Split text={t("muted")} from={countWords(t("title"))} />
+        </span>
       </h2>
-      <Joined placement="closing" className="mt-10" />
-      <p className="mt-6 text-[13px] text-faint">{t("note")}</p>
+      <div data-reveal style={rise(160, { y: 10 })} className="mt-10 flex flex-col items-center">
+        <Joined placement="closing" />
+        <p className="mt-6 text-[13px] text-faint">{t("note")}</p>
+      </div>
     </section>
   );
 }

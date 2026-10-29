@@ -95,7 +95,15 @@
     "wave": "👋 打个招呼",
     "waved": "{name} 向你挥手",
     "waveBack": "👋 挥手回应",
-    "installApp": "安装应用"
+    "installApp": "安装应用",
+    "waveShort": "挥手",
+    "waveBackShort": "挥手回应",
+    "wavedDone": "已挥手",
+    "replyTo": "回复 {name}",
+    "send": "发送",
+    "voiceMessage": "语音消息",
+    "photos": "{count, plural, one {# 张照片} other {# 张照片}}",
+    "files": "{count, plural, one {# 个文件} other {# 个文件}}"
   },
   "home": {
     "nav": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "邀请队友",
       "inviteTeammateNote": "通过链接加入",
       "call": "通话",
-      "joined": "加入了办公室"
+      "joined": "加入了办公室",
+      "search": "搜索或跳转到…",
+      "addChannel": "添加频道",
+      "newLine": "换行"
     },
     "footer": {
       "tagline": "可以四处走动的虚拟办公室。",

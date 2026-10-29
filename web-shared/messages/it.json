@@ -95,7 +95,15 @@
     "wave": "👋 Saluta",
     "waved": "{name} ti ha salutato",
     "waveBack": "👋 Ricambia",
-    "installApp": "Installa l'app"
+    "installApp": "Installa l'app",
+    "waveShort": "Fai un cenno",
+    "waveBackShort": "Ricambia il cenno",
+    "wavedDone": "Cenno inviato",
+    "replyTo": "Rispondi a {name}",
+    "send": "Invia",
+    "voiceMessage": "Messaggio vocale",
+    "photos": "{count, plural, one {Foto} other {# foto}}",
+    "files": "{count, plural, one {File} other {# file}}"
   },
   "home": {
     "nav": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "Invita un collega",
       "inviteTeammateNote": "Entrano con un link",
       "call": "Chiama",
-      "joined": "è entrato nell'ufficio"
+      "joined": "è entrato nell'ufficio",
+      "search": "Cerca o passa a...",
+      "addChannel": "Aggiungi un canale",
+      "newLine": "nuova riga"
     },
     "footer": {
       "tagline": "Un ufficio virtuale in cui ti muovi.",

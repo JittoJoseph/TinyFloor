@@ -4,7 +4,7 @@ import { RailIcons } from "@/components/app/railIcons";
 import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { DoorOpen, Hash, ImagePlus, LogOut, MessagesSquare, Plus, Users } from "@/components/ui/icons";
+import { DoorOpen, Hash, ImagePlus, LogOut, MessagesSquare, Mic, Plus, Users } from "@/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, type RoomTicket, type SessionUser } from "@/lib/api";
@@ -186,6 +186,7 @@ const FEATURE_ICON: Record<OfficeFeature, React.ReactNode> = {
   channels: <Hash className="size-5" />,
   directMessages: <MessagesSquare className="size-5" />,
   attachments: <ImagePlus className="size-5" />,
+  voice: <Mic className="size-5" />,
   invites: <Users className="size-5" />,
 };
 

@@ -232,7 +232,31 @@
     "replyFiles": "{count, plural, one {# file} other {# files}}",
     "typingOne": "{name} is typing",
     "typingTwo": "{a} and {b} are typing",
-    "typingMany": "Several people are typing"
+    "typingMany": "Several people are typing",
+    "recordVoice": "Record a voice message",
+    "cancelRecording": "Delete recording",
+    "sendVoice": "Send voice message",
+    "recording": "Recording",
+    "voiceMessage": "Voice message",
+    "voiceDenied": "Allow the microphone in your browser to record a voice message.",
+    "voiceNoMic": "No microphone found. Plug one in to record a voice message.",
+    "voiceUnsupported": "This browser can't record voice messages.",
+    "voiceFailed": "That voice message didn't send. Try again.",
+    "playVoice": "Play voice message",
+    "pauseVoice": "Pause voice message",
+    "voiceSpeed": "Playback speed",
+    "meetingStarted": "Meeting started",
+    "meetingEnded": "Meeting ended",
+    "meetingJoin": "Join",
+    "meetingYoureIn": "You're in",
+    "meetingIn": "{who} in the meeting",
+    "meetingAnd": "and",
+    "meetingOthers": "{first} and {count, plural, one {# other} other {# others}}",
+    "meetingRan": "{minutes} min",
+    "meetingUnderMinute": "Under a minute",
+    "voiceSendHint": "send",
+    "voiceDeleteHint": "delete",
+    "meetingStartedAt": "Started {time}"
   },
   "proximity": {
     "call": "Call",
@@ -348,7 +372,11 @@
       },
       "free": "Making an office takes a minute and is free for up to 3 people.",
       "go": "Make my office",
-      "notNow": "Not now"
+      "notNow": "Not now",
+      "voice": {
+        "title": "Voice messages come with an office",
+        "body": "Record a quick voice message in any conversation in your own office, when typing would take longer."
+      }
     },
     "yourOffice": {
       "title": "Make this floor yours",

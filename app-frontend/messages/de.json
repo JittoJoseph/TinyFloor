@@ -232,7 +232,31 @@
     "replyFiles": "{count, plural, one {# Datei} other {# Dateien}}",
     "typingOne": "{name} schreibt",
     "typingTwo": "{a} und {b} schreiben",
-    "typingMany": "Mehrere Personen schreiben"
+    "typingMany": "Mehrere Personen schreiben",
+    "recordVoice": "Sprachnachricht aufnehmen",
+    "cancelRecording": "Aufnahme löschen",
+    "sendVoice": "Sprachnachricht senden",
+    "recording": "Aufnahme",
+    "voiceMessage": "Sprachnachricht",
+    "voiceDenied": "Erlaube den Zugriff auf dein Mikrofon im Browser, um eine Sprachnachricht aufzunehmen.",
+    "voiceNoMic": "Kein Mikrofon gefunden. Schließe eines an, um eine Sprachnachricht aufzunehmen.",
+    "voiceUnsupported": "Dieser Browser kann keine Sprachnachrichten aufnehmen.",
+    "voiceFailed": "Die Sprachnachricht konnte nicht gesendet werden. Versuche es noch einmal.",
+    "playVoice": "Sprachnachricht abspielen",
+    "pauseVoice": "Sprachnachricht pausieren",
+    "voiceSpeed": "Wiedergabegeschwindigkeit",
+    "meetingStarted": "Meeting gestartet",
+    "meetingEnded": "Meeting beendet",
+    "meetingJoin": "Beitreten",
+    "meetingYoureIn": "Du bist dabei",
+    "meetingIn": "{who} im Meeting",
+    "meetingAnd": "und",
+    "meetingOthers": "{first} und {count, plural, one {# weitere Person} other {# weitere Personen}}",
+    "meetingRan": "{minutes} Min.",
+    "meetingUnderMinute": "Weniger als eine Minute",
+    "voiceSendHint": "senden",
+    "voiceDeleteHint": "löschen",
+    "meetingStartedAt": "Gestartet um {time}"
   },
   "proximity": {
     "call": "Anrufen",
@@ -348,7 +372,11 @@
       },
       "free": "Ein Büro ist in einer Minute eingerichtet und für bis zu 3 Personen kostenlos.",
       "go": "Mein Büro einrichten",
-      "notNow": "Nicht jetzt"
+      "notNow": "Nicht jetzt",
+      "voice": {
+        "title": "Sprachnachrichten sind Teil deines Büros",
+        "body": "Nimm in jeder Unterhaltung in deinem Büro eine kurze Sprachnachricht auf, wenn Tippen zu lange dauern würde."
+      }
     },
     "yourOffice": {
       "title": "Mach diese Fläche zu deiner",

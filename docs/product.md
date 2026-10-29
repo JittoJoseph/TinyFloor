@@ -373,6 +373,30 @@ missing features on the map.
   in the ⌘K palette: words and file names in the office's channels and your
   own direct messages, case and accents folded, and picking a result opens
   the conversation at that message.
+- **Voice messages** (30 October), for when typing would take longer. With
+  the box empty, send becomes a microphone (or ⌘/Ctrl + Shift + Space, from
+  anywhere in the conversation); recording keeps the box's shape: the line you
+  type on shows the time and a waveform moving as you speak, delete takes the
+  attachment buttons' place, and the same corner button sends. Escape throws
+  it away and Enter sends it, up to 5 minutes. It goes up like any
+  file (Opus in WebM, AAC on Safari, about 4 KB a second) carrying its
+  length and 48 bars of waveform, so it draws before any sound loads, and it
+  plays with seeking and 1×, 1.5×, 2×; one plays at a time. The demo office
+  asks for an office instead, as it does for pictures.
+- **The floor's nudges** (30 October) sit at the top of the floor between
+  its two rows of controls, dark like them. A wave or an arrival is a slim
+  pill with one button ("Wave back" turns to "Waved" and goes); a message is
+  a card with who, where and how it begins, and a box that answers it from
+  the floor. More than one stack, newer over older, and pointing at them
+  spreads and holds them. One person still talking in one place stays one
+  card with a count, rather than a pile.
+- **The main meeting in #general** (30 October), the way a group call shows
+  in a group chat: a card when the first person joins, with who's in, how
+  long, and Join; when the last one leaves it says how long it ran and who
+  came. Only the main meeting, not ones people start. The floor writes it,
+  so it's no one's unread message and never notifies; whether it is still
+  going is the floor's live word, so a card can't offer a meeting that has
+  ended, and one left open by a restart closes when the floor next wakes.
 - **Notifications for what's yours** (20 October): a direct message, a
   mention, a call or an ask into a meeting, a wave, shown by the system while
   the office is open in another window, and only then; in front of it, the

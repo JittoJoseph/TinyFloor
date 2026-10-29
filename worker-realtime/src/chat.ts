@@ -8,6 +8,7 @@ import {
   FILES_PER_MESSAGE,
   GENERAL_CHANNEL,
   JUMP_MAX,
+  MEETING_PEOPLE_MAX,
   MENTIONS_MAX,
   SEARCH_MAX,
   HEARTBEAT_PING,
@@ -17,13 +18,17 @@ import {
   HEARTBEAT_PONG,
   MODERATOR,
   REPLY_SNIPPET,
+  VOICE_MAX_SECONDS,
+  VOICE_PEAKS,
   cleanChannelName,
   dmChannelId,
   dmMembers,
   isDm,
+  isVoice,
   type ChannelSummary,
   type ChatClientMessage,
   type ChatFile,
+  type ChatMeeting,
   type ChatMessage,
   type ChatReply,
   type ChatServerMessage,
@@ -63,9 +68,10 @@ interface MessageRow extends Record<string, SqlStorageValue> {
   at: number;
   edited_at: SqlStorageValue;
   reply_to: SqlStorageValue;
+  meeting: SqlStorageValue;
 }
 
-const COLUMNS = "seq, channel, author, author_name, body, files, mentions, at, edited_at, reply_to";
+const COLUMNS = "seq, channel, author, author_name, body, files, mentions, at, edited_at, reply_to, meeting";
 
 /** A runaway client is stopped at ten messages a second; a person never gets near it. */
 const SENDS_PER_TEN_SECONDS = 100;
@@ -127,6 +133,8 @@ export class Chat extends DurableObject<Env> {
       if (!columns.some((column) => column.name === "mentions")) this.sql.exec("ALTER TABLE messages ADD COLUMN mentions TEXT");
       // And replies: the message answered, by seq, read again whenever the reply is sent out.
       if (!columns.some((column) => column.name === "reply_to")) this.sql.exec("ALTER TABLE messages ADD COLUMN reply_to INTEGER");
+      // And the main meeting's card in #general, as JSON (ChatMeeting).
+      if (!columns.some((column) => column.name === "meeting")) this.sql.exec("ALTER TABLE messages ADD COLUMN meeting TEXT");
       this.sql.exec(`CREATE TABLE IF NOT EXISTS reads (
         member TEXT NOT NULL,
         channel TEXT NOT NULL,
@@ -262,6 +270,60 @@ export class Chat extends DurableObject<Env> {
       }
       this.attachments.delete(socket);
     }
+  }
+
+  /**
+   * The main meeting changed: who is in it now, as the floor counts them. The
+   * first person in starts a card in #general, the others join it, and the
+   * last one out ends it. A card still open from before (the floor restarted
+   * while it was going) ends when the floor next says nobody's in.
+   */
+  async mainMeeting(here: Array<{ id: string; name: string }>, now: number): Promise<void> {
+    if (this.lobby) return;
+    const last = this.sql
+      .exec<{ seq: number; meeting: string }>(
+        "SELECT seq, meeting FROM messages WHERE channel = ? AND meeting IS NOT NULL ORDER BY seq DESC LIMIT 1",
+        GENERAL_CHANNEL,
+      )
+      .toArray()[0];
+    const open = last ? (JSON.parse(last.meeting) as ChatMeeting) : null;
+    const going = open && !open.ended ? open : null;
+
+    if (!here.length) {
+      if (!going || !last) return;
+      return this.meetingChanged(Number(last.seq), { ...going, ended: now, here: [] });
+    }
+
+    if (!going || !last) {
+      const meeting: ChatMeeting = { started: now, people: here.slice(0, MEETING_PEOPLE_MAX), here: here.map((one) => one.id) };
+      const first = here[0];
+      this.ensureChannel(GENERAL_CHANNEL, first.id, now);
+      this.sql.exec(
+        "INSERT INTO messages (channel, author, author_name, body, at, meeting) VALUES (?, ?, ?, '', ?, ?)",
+        GENERAL_CHANNEL,
+        first.id,
+        first.name,
+        now,
+        JSON.stringify(meeting),
+      );
+      const seq = Number(this.sql.exec<{ seq: number }>("SELECT last_insert_rowid() AS seq").one().seq);
+      this.deliver(GENERAL_CHANNEL, {
+        t: "chat_new",
+        message: { seq, channel: GENERAL_CHANNEL, author: first.id, authorName: first.name, body: "", at: now, meeting },
+      });
+      return;
+    }
+
+    const known = new Set(going.people.map((one) => one.id));
+    const people = [...going.people, ...here.filter((one) => !known.has(one.id))].slice(0, MEETING_PEOPLE_MAX);
+    const ids = here.map((one) => one.id);
+    if (people.length === going.people.length && ids.join() === going.here.join()) return;
+    this.meetingChanged(Number(last.seq), { ...going, people, here: ids });
+  }
+
+  private meetingChanged(seq: number, meeting: ChatMeeting): void {
+    this.sql.exec("UPDATE messages SET meeting = ? WHERE seq = ?", JSON.stringify(meeting), seq);
+    this.deliver(GENERAL_CHANNEL, { t: "chat_meeting", seq, channel: GENERAL_CHANNEL, meeting });
   }
 
   /** The office was closed: everything about its chat goes. */
@@ -413,7 +475,8 @@ export class Chat extends DurableObject<Env> {
       .all<PushTarget>();
     if (!results.length) return;
 
-    const text = message.body || (message.files ?? []).map((file) => `📎 ${file.name}`).join(", ");
+    const voice = message.files?.find(isVoice);
+    const text = voice && !message.body ? `🎤 ${clockOf(voice.duration ?? 0)}` : gist(message.body, message.files ?? []);
     const payload: PushPayload = {
       title: isDm(message.channel) ? message.authorName : `${message.authorName} · #${message.channel}`,
       body: text.length > 160 ? `${text.slice(0, 160)}…` : text,
@@ -493,7 +556,9 @@ export class Chat extends DurableObject<Env> {
   }
 
   private ownMessage(me: Attachment, seq: number): { channel: string } | null {
-    const row = this.sql.exec<{ channel: string; author: string }>("SELECT channel, author FROM messages WHERE seq = ?", seq).toArray()[0];
+    const row = this.sql
+      .exec<{ channel: string; author: string }>("SELECT channel, author FROM messages WHERE seq = ? AND meeting IS NULL", seq)
+      .toArray()[0];
     if (!row || row.author !== me.userId || !this.mayPost(me.userId, String(row.channel))) return null;
     return { channel: String(row.channel) };
   }
@@ -765,7 +830,7 @@ export class Chat extends DurableObject<Env> {
     const other = pair ? (pair[0] === userId ? pair[1] : pair[0]) : undefined;
     const last = this.sql
       .exec<MessageRow>(
-        "SELECT seq, author_name, body, files, at FROM messages WHERE channel = ? ORDER BY seq DESC LIMIT 1",
+        "SELECT seq, author_name, body, files, at FROM messages WHERE channel = ? AND meeting IS NULL ORDER BY seq DESC LIMIT 1",
         channel,
       )
       .toArray()[0];
@@ -774,7 +839,7 @@ export class Chat extends DurableObject<Env> {
       .toArray()[0];
     const unread = this.sql
       .exec<{ n: number }>(
-        "SELECT COUNT(*) AS n FROM messages WHERE channel = ? AND seq > ? AND author != ?",
+        "SELECT COUNT(*) AS n FROM messages WHERE channel = ? AND seq > ? AND author != ? AND meeting IS NULL",
         channel,
         read?.seq ?? 0,
         userId,
@@ -805,7 +870,7 @@ export class Chat extends DurableObject<Env> {
       unread: Number(unread),
       ...(mentions ? { mentions } : {}),
       ...(last
-        ? { lastAt: Number(last.at), lastBy: String(last.author_name), lastBody: String(last.body) || (last.files ? "📎" : "") }
+        ? { lastAt: Number(last.at), lastBy: String(last.author_name), lastBody: gist(String(last.body), parseStored(last.files)) }
         : {}),
     };
   }
@@ -886,9 +951,39 @@ function parseFiles(files: unknown, office: string | null): ChatFile[] {
     const width = Number(file.width);
     const height = Number(file.height);
     const sized = Number.isFinite(width) && Number.isFinite(height) && width > 0 && height > 0;
-    found.push({ key: file.key, name, size: Math.round(size), type, ...(sized ? { width: Math.round(width), height: Math.round(height) } : {}) });
+    found.push({
+      key: file.key,
+      name,
+      size: Math.round(size),
+      type,
+      ...(sized ? { width: Math.round(width), height: Math.round(height) } : {}),
+      ...voiceOf(file, type),
+    });
   }
   return found;
+}
+
+/** "0:12": how long a voice message plays. */
+function clockOf(seconds: number): string {
+  return `${Math.floor(seconds / 60)}:${String(Math.round(seconds % 60)).padStart(2, "0")}`;
+}
+
+/** A voice message's length and waveform, when a sound file says it is one and both are sound. */
+function voiceOf(file: Partial<ChatFile>, type: string): Pick<ChatFile, "duration" | "peaks"> {
+  if (!type.startsWith("audio/")) return {};
+  const duration = Number(file.duration);
+  if (!Number.isFinite(duration) || duration <= 0 || duration > VOICE_MAX_SECONDS + 1) return {};
+  const peaks = Array.isArray(file.peaks)
+    ? file.peaks.slice(0, VOICE_PEAKS).map((peak) => Math.max(0, Math.min(100, Math.round(Number(peak) || 0))))
+    : [];
+  return { duration: Math.round(duration * 10) / 10, ...(peaks.length ? { peaks } : {}) };
+}
+
+/** A message in a line of its own, for a notification or the channel list: its words, or what it carries. */
+function gist(body: string, files: ChatFile[]): string {
+  if (body) return body;
+  if (files.some(isVoice)) return "🎤";
+  return files.map((file) => `📎 ${file.name}`).join(", ");
 }
 
 /** Who a message mentions: ids, each once, never its author, a handful at most. */
@@ -943,5 +1038,6 @@ function toMessage(row: MessageRow, reactions?: Record<string, string[]>): ChatM
     ...(mentions.length ? { mentions } : {}),
     ...(reactions ? { reactions } : {}),
     ...(row.edited_at ? { edited: Number(row.edited_at) } : {}),
+    ...(typeof row.meeting === "string" ? { meeting: JSON.parse(row.meeting) as ChatMeeting } : {}),
   };
 }

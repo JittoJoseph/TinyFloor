@@ -95,7 +95,15 @@
     "wave": "👋 手を振る",
     "waved": "{name}さんが手を振っています",
     "waveBack": "👋 手を振り返す",
-    "installApp": "アプリをインストール"
+    "installApp": "アプリをインストール",
+    "waveShort": "手を振る",
+    "waveBackShort": "手を振り返す",
+    "wavedDone": "手を振りました",
+    "replyTo": "{name}さんに返信",
+    "send": "送信",
+    "voiceMessage": "ボイスメッセージ",
+    "photos": "{count, plural, one {写真} other {# 枚の写真}}",
+    "files": "{count, plural, one {ファイル} other {# 件のファイル}}"
   },
   "home": {
     "nav": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "メンバーを招待",
       "inviteTeammateNote": "リンクから参加できます",
       "call": "通話",
-      "joined": "さんがオフィスに参加しました"
+      "joined": "さんがオフィスに参加しました",
+      "search": "検索または移動…",
+      "addChannel": "チャンネルを追加",
+      "newLine": "改行"
     },
     "footer": {
       "tagline": "歩き回れるバーチャルオフィス。",

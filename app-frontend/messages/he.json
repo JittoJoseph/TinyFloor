@@ -232,7 +232,31 @@
     "replyFiles": "{count, plural, one {קובץ אחד} other {# קבצים}}",
     "typingOne": "{name} מקליד/ה",
     "typingTwo": "{a} ו{b} מקלידים",
-    "typingMany": "כמה אנשים מקלידים"
+    "typingMany": "כמה אנשים מקלידים",
+    "recordVoice": "הקלט הודעה קולית",
+    "cancelRecording": "מחק הקלטה",
+    "sendVoice": "שלח הודעה קולית",
+    "recording": "הקלטה",
+    "voiceMessage": "הודעה קולית",
+    "voiceDenied": "אפשר גישה למיקרופון בדפדפן כדי להקליט הודעה קולית.",
+    "voiceNoMic": "לא נמצא מיקרופון. חבר מיקרופון כדי להקליט הודעה קולית.",
+    "voiceUnsupported": "הדפדפן הזה לא יכול להקליט הודעות קוליות.",
+    "voiceFailed": "ההודעה הקולית לא נשלחה. נסה שוב.",
+    "playVoice": "נגן הודעה קולית",
+    "pauseVoice": "השהה הודעה קולית",
+    "voiceSpeed": "מהירות השמעה",
+    "meetingStarted": "הפגישה התחילה",
+    "meetingEnded": "הפגישה הסתיימה",
+    "meetingJoin": "הצטרפות",
+    "meetingYoureIn": "הצטרפת",
+    "meetingIn": "{who} בפגישה",
+    "meetingAnd": "ו-",
+    "meetingOthers": "{first} ו-{count, plural, one {אחר אחד} other {# אחרים}}",
+    "meetingRan": "{minutes} דק'",
+    "meetingUnderMinute": "פחות מדקה",
+    "voiceSendHint": "שליחה",
+    "voiceDeleteHint": "מחיקה",
+    "meetingStartedAt": "התחיל ב-{time}"
   },
   "proximity": {
     "call": "התקשרות",
@@ -348,7 +372,11 @@
       },
       "free": "יצירת משרד לוקחת דקה, והיא בחינם עד 3 אנשים.",
       "go": "ליצור את המשרד שלי",
-      "notNow": "לא עכשיו"
+      "notNow": "לא עכשיו",
+      "voice": {
+        "title": "הודעות קוליות מגיעות עם משרד",
+        "body": "הקלט הודעה קולית מהירה בכל שיחה במשרד שלך, כשלהקליד ייקח יותר זמן."
+      }
     },
     "yourOffice": {
       "title": "הקומה הזו יכולה להיות שלכם",

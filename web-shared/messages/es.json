@@ -95,7 +95,15 @@
     "wave": "👋 Saludar",
     "waved": "{name} te ha saludado",
     "waveBack": "👋 Devolver el saludo",
-    "installApp": "Instalar app"
+    "installApp": "Instalar app",
+    "waveShort": "Saludar",
+    "waveBackShort": "Devolver saludo",
+    "wavedDone": "Saludado",
+    "replyTo": "Responder a {name}",
+    "send": "Enviar",
+    "voiceMessage": "Mensaje de voz",
+    "photos": "{count, plural, one {Foto} other {# fotos}}",
+    "files": "{count, plural, one {Archivo} other {# archivos}}"
   },
   "home": {
     "nav": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "Invitar a un compañero",
       "inviteTeammateNote": "Entran con un enlace",
       "call": "Llamar",
-      "joined": "se ha unido a la oficina"
+      "joined": "se ha unido a la oficina",
+      "search": "Buscar o ir a…",
+      "addChannel": "Añadir un canal",
+      "newLine": "nueva línea"
     },
     "footer": {
       "tagline": "Una oficina virtual por la que caminas.",

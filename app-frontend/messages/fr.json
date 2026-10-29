@@ -232,7 +232,31 @@
     "replyFiles": "{count, plural, one {# fichier} other {# fichiers}}",
     "typingOne": "{name} écrit",
     "typingTwo": "{a} et {b} écrivent",
-    "typingMany": "Plusieurs personnes écrivent"
+    "typingMany": "Plusieurs personnes écrivent",
+    "recordVoice": "Enregistrer un message vocal",
+    "cancelRecording": "Supprimer l'enregistrement",
+    "sendVoice": "Envoyer le message vocal",
+    "recording": "Enregistrement",
+    "voiceMessage": "Message vocal",
+    "voiceDenied": "Autorisez le microphone dans votre navigateur pour enregistrer un message vocal.",
+    "voiceNoMic": "Aucun microphone trouvé. Branchez-en un pour enregistrer un message vocal.",
+    "voiceUnsupported": "Ce navigateur ne peut pas enregistrer de messages vocaux.",
+    "voiceFailed": "Ce message vocal n'a pas pu être envoyé. Réessayez.",
+    "playVoice": "Lire le message vocal",
+    "pauseVoice": "Mettre le message vocal en pause",
+    "voiceSpeed": "Vitesse de lecture",
+    "meetingStarted": "Réunion commencée",
+    "meetingEnded": "Réunion terminée",
+    "meetingJoin": "Rejoindre",
+    "meetingYoureIn": "Vous y êtes",
+    "meetingIn": "{who} dans la réunion",
+    "meetingAnd": "et",
+    "meetingOthers": "{first} et {count, plural, one {# autre} other {# autres}}",
+    "meetingRan": "{minutes} min",
+    "meetingUnderMinute": "Moins d'une minute",
+    "voiceSendHint": "envoyer",
+    "voiceDeleteHint": "supprimer",
+    "meetingStartedAt": "Commencé à {time}"
   },
   "proximity": {
     "call": "Appeler",
@@ -348,7 +372,11 @@
       },
       "free": "Créer un bureau prend une minute et c'est gratuit jusqu'à 3 personnes.",
       "go": "Créer mon bureau",
-      "notNow": "Pas maintenant"
+      "notNow": "Pas maintenant",
+      "voice": {
+        "title": "Les messages vocaux sont inclus avec votre bureau",
+        "body": "Enregistrez un message vocal rapide dans n'importe quelle conversation de votre bureau, quand taper prendrait trop de temps."
+      }
     },
     "yourOffice": {
       "title": "Faites de cet étage le vôtre",

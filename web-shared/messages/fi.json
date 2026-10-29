@@ -95,7 +95,15 @@
     "wave": "👋 Vilkuta",
     "waved": "{name} vilkutti sinulle",
     "waveBack": "👋 Vilkuta takaisin",
-    "installApp": "Asenna sovellus"
+    "installApp": "Asenna sovellus",
+    "waveShort": "Vilkuta",
+    "waveBackShort": "Vilkuta takaisin",
+    "wavedDone": "Vilkutettu",
+    "replyTo": "Vastaa käyttäjälle {name}",
+    "send": "Lähetä",
+    "voiceMessage": "Ääniviesti",
+    "photos": "{count, plural, one {Kuva} other {# kuvaa}}",
+    "files": "{count, plural, one {Tiedosto} other {# tiedostoa}}"
   },
   "home": {
     "nav": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "Kutsu tiimiläinen",
       "inviteTeammateNote": "Hän liittyy linkillä",
       "call": "Soita",
-      "joined": "liittyi toimistoon"
+      "joined": "liittyi toimistoon",
+      "search": "Hae tai siirry kohteeseen…",
+      "addChannel": "Lisää kanava",
+      "newLine": "uusi rivi"
     },
     "footer": {
       "tagline": "Virtuaalitoimisto, jossa kävelet ympäriinsä.",

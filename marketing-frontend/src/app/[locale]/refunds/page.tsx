@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { LegalPage } from "@/components/legal/LegalPage";
 import { englishOnlyMetadata } from "@/lib/englishOnlyMetadata";
-import { REFUNDS_UPDATED, refundsSections, refundsSummary } from "@/components/legal/refunds";
+import { REFUNDS_UPDATED, refundsSections, refundsIntro } from "@/components/legal/refunds";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -24,7 +24,7 @@ export default async function RefundsPage({ params }: Props) {
       path="/refunds"
       title="Refund Policy"
       updated={REFUNDS_UPDATED}
-      summary={refundsSummary}
+      intro={refundsIntro}
       sections={refundsSections}
       note={locale === "en" ? undefined : t("englishOnly")}
     />

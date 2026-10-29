@@ -232,7 +232,31 @@
     "replyFiles": "{count, plural, one {# fil} other {# filer}}",
     "typingOne": "{name} skriver",
     "typingTwo": "{a} och {b} skriver",
-    "typingMany": "Flera personer skriver"
+    "typingMany": "Flera personer skriver",
+    "recordVoice": "Spela in ett röstmeddelande",
+    "cancelRecording": "Ta bort inspelning",
+    "sendVoice": "Skicka röstmeddelande",
+    "recording": "Spelar in",
+    "voiceMessage": "Röstmeddelande",
+    "voiceDenied": "Tillåt mikrofonen i din webbläsare för att spela in ett röstmeddelande.",
+    "voiceNoMic": "Ingen mikrofon hittades. Anslut en för att spela in ett röstmeddelande.",
+    "voiceUnsupported": "Den här webbläsaren kan inte spela in röstmeddelanden.",
+    "voiceFailed": "Röstmeddelandet kunde inte skickas. Försök igen.",
+    "playVoice": "Spela upp röstmeddelande",
+    "pauseVoice": "Pausa röstmeddelande",
+    "voiceSpeed": "Uppspelningshastighet",
+    "meetingStarted": "Mötet startade",
+    "meetingEnded": "Mötet avslutades",
+    "meetingJoin": "Gå med",
+    "meetingYoureIn": "Du är med",
+    "meetingIn": "{who} i mötet",
+    "meetingAnd": "och",
+    "meetingOthers": "{first} och {count, plural, one {# annan} other {# andra}}",
+    "meetingRan": "{minutes} min",
+    "meetingUnderMinute": "Mindre än en minut",
+    "voiceSendHint": "skicka",
+    "voiceDeleteHint": "radera",
+    "meetingStartedAt": "Startade {time}"
   },
   "proximity": {
     "call": "Ring",
@@ -348,7 +372,11 @@
       },
       "free": "Ett kontor skapar du på en minut, och det är gratis för upp till 3 personer.",
       "go": "Skapa mitt kontor",
-      "notNow": "Inte nu"
+      "notNow": "Inte nu",
+      "voice": {
+        "title": "Röstmeddelanden ingår i ett kontor",
+        "body": "Spela in ett snabbt röstmeddelande i valfri konversation på ditt eget kontor när det skulle ta för lång tid att skriva."
+      }
     },
     "yourOffice": {
       "title": "Gör det här planet till ditt",

@@ -95,7 +95,15 @@
     "wave": "👋 لوّح",
     "waved": "لوّح لك {name}",
     "waveBack": "👋 لوّح بالمقابل",
-    "installApp": "تثبيت التطبيق"
+    "installApp": "تثبيت التطبيق",
+    "waveShort": "تلويح",
+    "waveBackShort": "رد التلويح",
+    "wavedDone": "تم التلويح",
+    "replyTo": "الرد على {name}",
+    "send": "إرسال",
+    "voiceMessage": "رسالة صوتية",
+    "photos": "{count, plural, one {صورة} two {صورتان} few {# صور} many {# صورة} other {# صورة}}",
+    "files": "{count, plural, one {ملف} two {ملفان} few {# ملفات} many {# ملفًا} other {# ملف}}"
   },
   "home": {
     "nav": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "ادعُ زميلًا",
       "inviteTeammateNote": "ينضم برابط",
       "call": "اتصال",
-      "joined": "انضم إلى المكتب"
+      "joined": "انضم إلى المكتب",
+      "search": "البحث أو الانتقال إلى...",
+      "addChannel": "إضافة قناة",
+      "newLine": "سطر جديد"
     },
     "footer": {
       "tagline": "مكتب افتراضي تتجول فيه.",

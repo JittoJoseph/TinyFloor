@@ -232,7 +232,31 @@
     "replyFiles": "{count, plural, other {# 个文件}}",
     "typingOne": "{name} 正在输入",
     "typingTwo": "{a} 和 {b} 正在输入",
-    "typingMany": "多人正在输入"
+    "typingMany": "多人正在输入",
+    "recordVoice": "录制语音消息",
+    "cancelRecording": "删除录音",
+    "sendVoice": "发送语音消息",
+    "recording": "正在录音",
+    "voiceMessage": "语音消息",
+    "voiceDenied": "允许浏览器使用麦克风以录制语音消息。",
+    "voiceNoMic": "未检测到麦克风。请插入麦克风以录制语音消息。",
+    "voiceUnsupported": "此浏览器无法录制语音消息。",
+    "voiceFailed": "语音消息发送失败。请重试。",
+    "playVoice": "播放语音消息",
+    "pauseVoice": "暂停播放语音消息",
+    "voiceSpeed": "播放速度",
+    "meetingStarted": "会议已开始",
+    "meetingEnded": "会议已结束",
+    "meetingJoin": "加入",
+    "meetingYoureIn": "你已加入",
+    "meetingIn": "{who} 正在会议中",
+    "meetingAnd": "和",
+    "meetingOthers": "{first} 和另外 {count, plural, one {# 人} other {# 人}}",
+    "meetingRan": "{minutes} 分钟",
+    "meetingUnderMinute": "不到一分钟",
+    "voiceSendHint": "发送",
+    "voiceDeleteHint": "删除",
+    "meetingStartedAt": "开始于 {time}"
   },
   "proximity": {
     "call": "通话",
@@ -348,7 +372,11 @@
       },
       "free": "创建办公室只需一分钟，最多 3 人免费。",
       "go": "创建我的办公室",
-      "notNow": "以后再说"
+      "notNow": "以后再说",
+      "voice": {
+        "title": "语音消息是办公室的专属功能",
+        "body": "在自己的办公室里，如果觉得打字麻烦，随时可以在任何对话中录制一段简短的语音。"
+      }
     },
     "yourOffice": {
       "title": "让这层楼属于你们",

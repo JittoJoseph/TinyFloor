@@ -232,7 +232,31 @@
     "replyFiles": "{count, plural, one {# bestand} other {# bestanden}}",
     "typingOne": "{name} is aan het typen",
     "typingTwo": "{a} en {b} zijn aan het typen",
-    "typingMany": "Meerdere mensen zijn aan het typen"
+    "typingMany": "Meerdere mensen zijn aan het typen",
+    "recordVoice": "Spraakbericht opnemen",
+    "cancelRecording": "Opname verwijderen",
+    "sendVoice": "Spraakbericht verzenden",
+    "recording": "Opnemen",
+    "voiceMessage": "Spraakbericht",
+    "voiceDenied": "Geef je browser toegang tot de microfoon om een spraakbericht op te nemen.",
+    "voiceNoMic": "Geen microfoon gevonden. Sluit er een aan om een spraakbericht op te nemen.",
+    "voiceUnsupported": "Deze browser kan geen spraakberichten opnemen.",
+    "voiceFailed": "Het spraakbericht is niet verzonden. Probeer het opnieuw.",
+    "playVoice": "Spraakbericht afspelen",
+    "pauseVoice": "Spraakbericht pauzeren",
+    "voiceSpeed": "Afspeelsnelheid",
+    "meetingStarted": "Vergadering gestart",
+    "meetingEnded": "Vergadering beëindigd",
+    "meetingJoin": "Deelnemen",
+    "meetingYoureIn": "Je bent erbij",
+    "meetingIn": "{who} in de vergadering",
+    "meetingAnd": "en",
+    "meetingOthers": "{first} en {count, plural, one {# ander} other {# anderen}}",
+    "meetingRan": "{minutes} min",
+    "meetingUnderMinute": "Minder dan een minuut",
+    "voiceSendHint": "verzenden",
+    "voiceDeleteHint": "verwijderen",
+    "meetingStartedAt": "Gestart om {time}"
   },
   "proximity": {
     "call": "Bellen",
@@ -348,7 +372,11 @@
       },
       "free": "Een kantoor maak je in een minuut, en het is gratis tot 3 mensen.",
       "go": "Maak mijn kantoor",
-      "notNow": "Niet nu"
+      "notNow": "Niet nu",
+      "voice": {
+        "title": "Spraakberichten horen bij een kantoor",
+        "body": "Spreek snel een spraakbericht in bij elk gesprek in je eigen kantoor, voor als typen te lang duurt."
+      }
     },
     "yourOffice": {
       "title": "Maak deze vloer van jou",

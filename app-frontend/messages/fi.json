@@ -232,7 +232,31 @@
     "replyFiles": "{count, plural, one {# tiedosto} other {# tiedostoa}}",
     "typingOne": "{name} kirjoittaa",
     "typingTwo": "{a} ja {b} kirjoittavat",
-    "typingMany": "Useampi kirjoittaa"
+    "typingMany": "Useampi kirjoittaa",
+    "recordVoice": "Äänitä ääniviesti",
+    "cancelRecording": "Poista tallenne",
+    "sendVoice": "Lähetä ääniviesti",
+    "recording": "Tallennetaan",
+    "voiceMessage": "Ääniviesti",
+    "voiceDenied": "Salli mikrofonin käyttö selaimessasi ääniviestin äänittämistä varten.",
+    "voiceNoMic": "Mikrofonia ei löytynyt. Liitä mikrofoni äänittääksesi ääniviestin.",
+    "voiceUnsupported": "Tämä selain ei tue ääniviestien äänittämistä.",
+    "voiceFailed": "Ääniviestin lähettäminen epäonnistui. Yritä uudelleen.",
+    "playVoice": "Toista ääniviesti",
+    "pauseVoice": "Keskeytä ääniviesti",
+    "voiceSpeed": "Toistonopeus",
+    "meetingStarted": "Kokous alkoi",
+    "meetingEnded": "Kokous päättyi",
+    "meetingJoin": "Liity",
+    "meetingYoureIn": "Olet mukana",
+    "meetingIn": "{who} kokouksessa",
+    "meetingAnd": "ja",
+    "meetingOthers": "{first} ja {count, plural, one {# muu} other {# muuta}}",
+    "meetingRan": "{minutes} min",
+    "meetingUnderMinute": "Alle minuutti",
+    "voiceSendHint": "lähetä",
+    "voiceDeleteHint": "poista",
+    "meetingStartedAt": "Alkoi {time}"
   },
   "proximity": {
     "call": "Soita",
@@ -348,7 +372,11 @@
       },
       "free": "Toimiston luominen vie minuutin, ja se on ilmainen enintään 3 hengelle.",
       "go": "Luo toimistoni",
-      "notNow": "Ei nyt"
+      "notNow": "Ei nyt",
+      "voice": {
+        "title": "Ääniviestit kuuluvat toimistoon",
+        "body": "Äänitä nopea ääniviesti missä tahansa keskustelussa omassa toimistossasi, kun kirjoittaminen kestäisi liian kauan."
+      }
     },
     "yourOffice": {
       "title": "Tee tästä kerroksesta omanne",

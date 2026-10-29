@@ -536,3 +536,20 @@
 .music-seek:focus-visible {
   outline: none;
 }
+
+/* A hand waving: a wave on the floor's nudges (FloorNudges). */
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0);
+  }
+  10%,
+  30% {
+    transform: rotate(16deg);
+  }
+  20%,
+  40% {
+    transform: rotate(-8deg);
+  }
+}

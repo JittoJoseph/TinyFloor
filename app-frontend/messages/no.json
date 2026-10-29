@@ -232,7 +232,31 @@
     "replyFiles": "{count, plural, one {# fil} other {# filer}}",
     "typingOne": "{name} skriver",
     "typingTwo": "{a} og {b} skriver",
-    "typingMany": "Flere personer skriver"
+    "typingMany": "Flere personer skriver",
+    "recordVoice": "Spill inn en talemelding",
+    "cancelRecording": "Slett opptak",
+    "sendVoice": "Send talemelding",
+    "recording": "Spiller inn",
+    "voiceMessage": "Talemelding",
+    "voiceDenied": "Gi nettleseren tilgang til mikrofonen for å spille inn en talemelding.",
+    "voiceNoMic": "Fant ingen mikrofon. Koble til en for å spille inn en talemelding.",
+    "voiceUnsupported": "Denne nettleseren kan ikke spille inn talemeldinger.",
+    "voiceFailed": "Kunne ikke sende talemeldingen. Prøv igjen.",
+    "playVoice": "Spill av talemelding",
+    "pauseVoice": "Sett talemelding på pause",
+    "voiceSpeed": "Avspillingshastighet",
+    "meetingStarted": "Møtet har startet",
+    "meetingEnded": "Møtet er avsluttet",
+    "meetingJoin": "Bli med",
+    "meetingYoureIn": "Du er med",
+    "meetingIn": "{who} i møtet",
+    "meetingAnd": "og",
+    "meetingOthers": "{first} og {count, plural, one {# annen} other {# andre}}",
+    "meetingRan": "{minutes} min",
+    "meetingUnderMinute": "Under ett minutt",
+    "voiceSendHint": "send",
+    "voiceDeleteHint": "slett",
+    "meetingStartedAt": "Startet {time}"
   },
   "proximity": {
     "call": "Ring",
@@ -348,7 +372,11 @@
       },
       "free": "Et kontor lager du på ett minutt, og det er gratis for opptil 3 personer.",
       "go": "Lag mitt kontor",
-      "notNow": "Ikke nå"
+      "notNow": "Ikke nå",
+      "voice": {
+        "title": "Talemeldinger følger med et kontor",
+        "body": "Spill inn en rask talemelding i hvilken som helst samtale på ditt eget kontor når det tar for lang tid å skrive."
+      }
     },
     "yourOffice": {
       "title": "Gjør denne etasjen til deres",

@@ -1,16 +1,13 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const PRIVACY_UPDATED = "23 October 2026";
+export const PRIVACY_UPDATED = "30 October 2026";
 
-export const privacySummary = (
-  <>
-    <p>
-      TinyFloor keeps what it needs to run your office and nothing more. We don&apos;t sell your data, we don&apos;t show ads, and calls
-      aren&apos;t recorded. There are no passwords: you sign in with Google or a code we email you, and codes and session tokens are stored only as hashes. We use Google Analytics and PostHog to
-      understand how TinyFloor is used. Write to <Mail /> for a copy of your data or to have it deleted.
-    </p>
-  </>
+export const privacyIntro = (
+  <p>
+    This policy explains what information TinyFloor collects, why we collect it, and the choices you have. We collect only what we need to
+    run the service, we don&apos;t sell it, and we don&apos;t show ads.
+  </p>
 );
 
 /** The privacy policy, section by section. Every claim here matches how the service is built. */
@@ -19,322 +16,222 @@ export const privacySections: LegalSection[] = [
     id: "who",
     title: "Who we are",
     body: (
-      <>
-        <p>
-          TinyFloor (&quot;TinyFloor&quot;, &quot;we&quot;, &quot;us&quot;) is a virtual office you use in your browser at tinyfloor.com. It is run
-          by Jitto Joseph, an individual, who is the controller of the personal data described here.
-        </p>
-        <p>
-          For anything about this policy or your data, write to <Mail />.
-        </p>
-      </>
+      <p>
+        TinyFloor is a virtual office for remote teams that you use in your browser, operated by Jitto Joseph (“TinyFloor”,
+        “we”, “us”), who is responsible for the personal information described here. This policy applies to our website
+        at tinyfloor.com and to the TinyFloor app. It does not cover other services we link to, each of which has its own policy.
+      </p>
     ),
   },
   {
     id: "collect",
-    title: "What we collect",
+    title: "Information we collect",
     body: (
       <>
-        <h3>When you make an account</h3>
-        <ul>
-          <li>
-            <strong>With your email:</strong> your email address, and the name you choose. To sign in we email you a 6-digit code; we keep
-            only a hash of it, and only until it&apos;s used or 10 minutes pass.
-          </li>
-          <li>
-            <strong>With Google:</strong> your name, your email address, whether Google has verified that address, and the ID Google gives
-            your account for TinyFloor. We ask Google only for your basic profile and email. We don&apos;t receive your Google password,
-            contacts, files or anything else in your Google account.
-          </li>
-          <li>The character you pick, which is saved on your account.</li>
-        </ul>
-
-        <h3>When you try the demo office as a guest</h3>
-        <p>The name and character you choose. Guests don&apos;t give an email address.</p>
-
-        <h3>While you use TinyFloor</h3>
-        <ul>
-          <li>
-            <strong>Sessions:</strong> a random token in a cookie keeps you signed in. We store only a hash of it, with when it was made, when it
-            expires, when it was last used, and the first 200 characters of your browser&apos;s user agent.
-          </li>
-          <li>
-            <strong>Offices:</strong> each office&apos;s name, its members and their roles, and its invite link.
-          </li>
-          <li>
-            <strong>Chat:</strong> the messages and reactions you post, and how far you have read in each channel. Messages are visible to the
-            people in that office, or to everyone in the demo office for its chat.
-          </li>
-          <li>
-            <strong>The floor:</strong> what is drawn on an office&apos;s whiteboard, so it is still there when people come back.
-          </li>
-          <li>
-            <strong>Your time zone:</strong> the one your browser reports, or one you pick in your settings, so the people you work with see
-            your local time on your profile.
-          </li>
-          <li>
-            <strong>Music:</strong> when you play something from Spotify in TinyFloor, its Spotify link and the name, cover art and artist
-            Spotify gives for it. People in your offices see it on your profile card while it plays, and for a few minutes after; the last
-            one stays with your account until you play another or your account is deleted. We don&apos;t connect to your Spotify account or
-            see what you play in Spotify itself.
-          </li>
-          <li>
-            <strong>Activity:</strong> when your account was made and when you were last active.
-          </li>
-          <li>
-            <strong>Country:</strong> the country your connection comes from, as reported by our hosting provider, Cloudflare. We keep the
-            country only, not your IP address or a more precise location.
-          </li>
-          <li>
-            <strong>Usage totals:</strong> for each office and each day, how many people were on the floor at most and how many minutes were
-            spent there and in calls. These are counts, not a record of who was where.
-          </li>
-        </ul>
-
-        <h3>Calls</h3>
         <p>
-          Voice and video are sent live between the people in a call, through Cloudflare&apos;s real-time network when a direct connection
-          isn&apos;t possible or for group meetings. We don&apos;t record, store or listen to calls, and neither does anything we run.
+          <strong>Account information.</strong> When you make an account, we receive your name and email address. If you sign in with Google,
+          Google shares only your name and email address; we never see your Google password or anything else in your Google account. We also keep the character you choose for the floor.
         </p>
-
-        <h3>Security</h3>
         <p>
-          To stop abuse we process your IP address briefly: to limit how many sign-in codes and attempts can come from one address,
-          and for Cloudflare Turnstile, which checks that sign-in requests and new guests aren&apos;t bots. We also limit how many codes one
-          email address can receive, and how many tries each code allows.
-          These counters clear themselves within minutes.
+          <strong>Guests.</strong> In the demo office you can walk in as a guest with just a name and a character, without an email address.
         </p>
-
-        <h3>When you pay for a plan</h3>
         <p>
-          Creem, our reseller, takes the payment and keeps your card or payment details; we never see them. From Creem we receive what we
-          need to run the plan: the name and email address of whoever paid, the country, which office the plan is for, the plan, its status and
-          renewal date, and the IDs Creem uses for the customer and the subscription. We also note which account paid, so only that person
-          can open the plan&apos;s card and invoices.
+          <strong>What you share in TinyFloor.</strong> The messages, voice messages, reactions and files you post, what you draw on a
+          whiteboard, your status and note, the offices you make or join, and the people you invite. If you show what you&apos;re listening to,
+          we keep the track&apos;s name, artist and cover so your teammates can see it.
+        </p>
+        <p>
+          <strong>Billing information.</strong> Paid plans are sold by our reseller, Creem, which takes the payment. We receive the name, email
+          address and country of whoever pays and the details of the plan. We never see card or bank details.
+        </p>
+        <p>
+          <strong>Information you provide.</strong> If you write to us for help or with feedback, we receive what you choose to share, such as
+          your name, your email address and your message.
+        </p>
+        <p>
+          <strong>Information collected automatically.</strong> When you use our website or app, we collect standard technical information such
+          as your browser and device type, the pages and features you use, your time zone, the country you connect from, and diagnostic logs.
+          This helps us keep TinyFloor secure and working well.
         </p>
       </>
     ),
   },
   {
+    id: "calls",
+    title: "Calls and meetings",
+    body: (
+      <p>
+        Voice, video and screen sharing are sent live between the people in a call. We don&apos;t record, store or listen to calls. Your
+        microphone and camera are used only while you are in a call, and you can turn either off at any time. We count how long an office
+        spends in meetings, to apply its plan, but not what was said.
+      </p>
+    ),
+  },
+  {
     id: "use",
-    title: "How we use it",
+    title: "How we use information",
     body: (
       <>
+        <p>We use the information we collect to:</p>
         <ul>
-          <li>To run TinyFloor: to sign you in, show you on the floor with your name and character, connect calls and keep your office&apos;s chat.</li>
-          <li>To keep it safe: to prevent spam, fake accounts and attacks, and to enforce our <Link href="/terms">Terms</Link>.</li>
-          <li>
-            To understand and improve it: to see how many people sign up and come back, where they come from by country, and how the website
-            is used.
-          </li>
-          <li>To reply when you write to us, and to tell you about important changes to the service or these policies.</li>
+          <li>run TinyFloor: sign you in, show you on the floor, connect your calls, and keep your office&apos;s chat and whiteboard;</li>
+          <li>keep it safe: prevent spam, abuse and attacks, and enforce our <Link href="/terms">Terms</Link>;</li>
+          <li>understand how TinyFloor is used, so we can fix problems and make it better;</li>
+          <li>send the emails the service needs, such as sign-in codes, and tell you about important changes;</li>
+          <li>reply when you write to us, and meet our legal obligations.</li>
         </ul>
-        <p>
-          When someone walks into the demo office, or makes a new office, a short note goes to our team&apos;s private Discord channel: the
-          person&apos;s name and character, or the office&apos;s name and who made it, with the approximate city, region and country of the
-          connection. It lets us see the service being used as it happens. Demo office chat and what happens inside offices are not sent.
-        </p>
-        <p>We don&apos;t sell personal data, we don&apos;t use it for advertising, and we don&apos;t build profiles of you for anyone else.</p>
+        <p>We don&apos;t sell personal information, use it for advertising, or use your messages or calls to train AI models.</p>
       </>
     ),
   },
   {
     id: "bases",
-    title: "Legal bases",
+    title: "Legal bases for processing",
     body: (
-      <>
-        <p>Where the law asks us to name one (for example the GDPR in the EU and UK), we rely on:</p>
-        <ul>
-          <li>
-            <strong>Contract:</strong> to provide the service you signed up for or asked to use.
-          </li>
-          <li>
-            <strong>Legitimate interests:</strong> to keep TinyFloor secure, to understand how it&apos;s used and to improve it, in ways you
-            would reasonably expect.
-          </li>
-          <li>
-            <strong>Consent:</strong> where it is required, for example for analytics cookies in some countries. You can withdraw it at any time.
-          </li>
-          <li>
-            <strong>Legal obligation:</strong> where the law requires us to keep or disclose something.
-          </li>
-        </ul>
-      </>
+      <p>
+        If you are in the European Economic Area or the United Kingdom, we process personal information where we have a legal basis to do so:
+        to provide the service you asked for (contract), to keep TinyFloor secure and to understand and improve it (legitimate interests), to
+        comply with the law (legal obligation), and with your consent where it is required, which you can withdraw at any time.
+      </p>
     ),
   },
   {
     id: "sharing",
-    title: "Who we share it with",
+    title: "How we share information",
     body: (
       <>
-        <p>We share personal data only with the services that help us run TinyFloor, each for its own part and bound by its own terms:</p>
-        <ul>
-          <li>
-            <strong>Cloudflare</strong> hosts the website, the database and the real-time servers, relays calls and runs Turnstile.
-          </li>
-          <li>
-            <strong>Google</strong> signs you in, if you choose Google, and provides Google Analytics.
-          </li>
-          <li>
-            <strong>Resend</strong> delivers the emails TinyFloor sends you, such as sign-in codes.
-          </li>
-          <li>
-            <strong>PostHog</strong> shows us how TinyFloor is used: which pages and features people use, and errors the app runs into.
-          </li>
-          <li>
-            <strong>Discord</strong> carries the team notes described above.
-          </li>
-          <li>
-            <strong>Spotify</strong> tells us the name, cover and artist of what you play. When you play music, Spotify&apos;s own player
-            loads from Spotify and plays it, under its own{" "}
-            <a href="https://www.spotify.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">
-              privacy policy
-            </a>
-            .
-          </li>
-          <li>
-            <strong>Creem</strong> (Armitage Labs OÜ, Estonia) sells paid plans as the merchant of record: it takes payments, charges tax,
-            sends receipts and handles refunds, under its own{" "}
-            <a href="https://www.creem.io/privacy" target="_blank" rel="noopener noreferrer">
-              privacy notice
-            </a>
-            .
-          </li>
-        </ul>
         <p>
-          Other people in TinyFloor see what the service shows them: your name, character and status in the offices you are in and in the
-          demo office, and the messages you post there. An office&apos;s members can see its member list, including email addresses of
-          members and of people invited.
+          <strong>With the people you work with.</strong> The people in your offices see your name, character, status and what you post there.
+          An office&apos;s members can see who else belongs to it. In the demo office, anyone there can see your name and what you post.
         </p>
         <p>
-          We may disclose information if the law requires it, to protect people&apos;s safety, or to defend against legal claims. If TinyFloor
-          is ever transferred to someone else, your data would go with it under this policy, and we would tell you first.
+          <strong>With companies that help us run TinyFloor.</strong> We use a small number of service providers for hosting, email, analytics
+          and payments. They process information only to provide their service to us, under their own terms and privacy commitments.
+        </p>
+        <p>
+          <strong>For legal reasons.</strong> We may disclose information if the law requires it, to protect someone&apos;s safety, or to
+          defend against legal claims.
+        </p>
+        <p>
+          <strong>If TinyFloor changes hands.</strong> If TinyFloor is ever transferred to someone else, your information would go with it,
+          still protected by this policy, and we would tell you first.
         </p>
       </>
     ),
   },
   {
+    id: "providers",
+    title: "Other companies we use",
+    body: (
+      <ul>
+        <li>
+          <strong>Cloudflare</strong> hosts the website, the app and its data, carries calls, and checks that sign-ins come from people, not
+          bots.
+        </li>
+        <li>
+          <strong>Google</strong> signs you in if you choose Google, and provides Google Analytics.
+        </li>
+        <li>
+          <strong>PostHog</strong> helps us understand how TinyFloor is used and spot errors. Inside the app it never records names, messages
+          or anything you type.
+        </li>
+        <li>
+          <strong>Resend</strong> delivers our emails, such as sign-in codes.
+        </li>
+        <li>
+          <strong>Creem</strong> sells our paid plans as the merchant of record, under its own{" "}
+          <a href="https://www.creem.io/privacy" target="_blank" rel="noopener noreferrer">
+            privacy notice
+          </a>
+          .
+        </li>
+        <li>
+          <strong>Spotify</strong> plays music you choose to share, under its own{" "}
+          <a href="https://www.spotify.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">
+            privacy policy
+          </a>
+          .
+        </li>
+        <li>
+          <strong>Discord</strong> carries short internal notes to our team when a new office is made or someone visits the demo office.
+        </li>
+      </ul>
+    ),
+  },
+  {
     id: "cookies",
-    title: "Cookies and browser storage",
+    title: "Cookies and analytics",
     body: (
       <>
-        <ul>
-          <li>
-            <strong>Session cookie:</strong> keeps you signed in, for 90 days after your last visit with an account, or 7 days as a guest. It can&apos;t be read by
-            scripts on the page. TinyFloor doesn&apos;t work without it.
-          </li>
-          <li>
-            <strong>Analytics:</strong> Google Analytics sets its own cookies to count visits, and PostHog keeps an ID in your browser so it
-            can tell visits apart. PostHog may record how a page is used, such as clicks and scrolling, without what is typed into fields.
-            Inside TinyFloor itself (your offices, the demo office, chat and your account) it hides every word on the screen, so names and
-            messages are never recorded.
-          </li>
-          <li>
-            <strong>Turnstile:</strong> Cloudflare may use cookies or browser signals for its bot check.
-          </li>
-          <li>
-            <strong>Spotify&apos;s player:</strong> when you play music, Spotify may use its own cookies, for example to play whole songs
-            when you&apos;re signed in to Spotify.
-          </li>
-          <li>
-            <strong>Your browser:</strong> TinyFloor keeps a few preferences on your own device, such as your theme, your microphone and camera
-            choices, the name and character you last used and whether you&apos;ve seen the tour. They never leave your browser.
-          </li>
-        </ul>
-        <p>You can clear or block cookies in your browser&apos;s settings. Blocking the session cookie signs you out.</p>
+        <p>
+          We use one essential cookie to keep you signed in; TinyFloor doesn&apos;t work without it. Google Analytics and PostHog use cookies
+          or browser storage to count visits and understand how the site is used. TinyFloor also keeps a few preferences on your own device,
+          such as your theme and your microphone and camera choices.
+        </p>
+        <p>You can clear or block cookies in your browser&apos;s settings. Blocking the sign-in cookie signs you out.</p>
       </>
     ),
   },
   {
     id: "retention",
-    title: "How long we keep it",
-    body: (
-      <>
-        <ul>
-          <li>
-            <strong>Accounts:</strong> until you ask us to delete yours.
-          </li>
-          <li>
-            <strong>Guests:</strong> deleted after a week without a visit.
-          </li>
-          <li>
-            <strong>Sessions:</strong> deleted once they expire.
-          </li>
-          <li>
-            <strong>Sign-in codes:</strong> deleted once used, or within a day of being sent.
-          </li>
-          <li>
-            <strong>Office chat:</strong> each channel keeps its most recent 5,000 messages. <strong>Demo office chat</strong> is deleted after a week.
-          </li>
-          <li>
-            <strong>Offices:</strong> when an office is deleted, its members, invitations, chat and whiteboard are deleted with it.
-          </li>
-          <li>
-            <strong>Invite links:</strong> an office&apos;s link is deleted with the office, and replaced whenever an admin resets it.
-          </li>
-          <li>
-            <strong>Usage totals:</strong> kept for 13 months.
-          </li>
-          <li>
-            <strong>Billing records:</strong> kept while the plan runs and afterwards for as long as tax and accounting law requires, usually
-            8 years. Creem keeps its own records under its own policy.
-          </li>
-        </ul>
-        <p>Our database provider keeps point-in-time backups, so deleted data can remain in them for up to 30 days before it is gone for good.</p>
-      </>
-    ),
-  },
-  {
-    id: "rights",
-    title: "Your rights",
+    title: "Data retention",
     body: (
       <>
         <p>
-          Depending on where you live, you may have the right to access your personal data, correct it, delete it, receive a copy of it in a
-          portable form, object to or restrict how we use it, withdraw consent, and nominate someone to exercise your rights if you can&apos;t.
+          We keep your account and what you share in TinyFloor for as long as your account exists. When an office is deleted, its chat,
+          whiteboard and members are deleted with it. Guests, and the demo office&apos;s chat, are deleted after a week. Billing records are
+          kept for as long as tax and accounting law requires.
         </p>
-        <p>
-          You can change your name and character in your account settings at any time. For everything else, including deleting
-          your account, write to <Mail /> from the address on your account. We will reply within 30 days, and may need to confirm it&apos;s
-          you first.
-        </p>
-        <p>
-          If you are unhappy with how we handle your data, please tell us first so we can put it right. You can also complain to your local
-          data protection authority.
-        </p>
+        <p>Deleted information can remain in our backups for up to 30 days before it is gone for good.</p>
       </>
-    ),
-  },
-  {
-    id: "transfers",
-    title: "Where your data is processed",
-    body: (
-      <p>
-        TinyFloor runs on Cloudflare&apos;s global network, so your data may be processed in countries other than your own, including the United
-        States. Where the law requires it, these transfers rely on appropriate safeguards, such as the standard contractual clauses
-        our providers offer.
-      </p>
     ),
   },
   {
     id: "security",
-    title: "Security",
+    title: "Data security",
     body: (
       <p>
-        Everything travels over encrypted connections. There are no passwords to leak: sign-in codes and session tokens are stored
-        only as hashes, and sign-ins are rate limited. An office&apos;s invite link is kept so its members can see and share it again. Access to the service&apos;s data is limited to the people who run it. No system is perfectly
-        secure, and if a breach ever affects your data we will tell you and the authorities as the law requires.
+        Everything travels over encrypted connections. There are no passwords to leak: you sign in with Google or a one-time code we email
+        you. Access to our systems is limited to the people who run TinyFloor. No system is perfectly secure, but if a breach ever affects
+        your information, we will tell you and the authorities as the law requires.
       </p>
     ),
   },
   {
-    id: "children",
-    title: "Children",
+    id: "transfers",
+    title: "International data transfers",
     body: (
       <p>
-        TinyFloor is not meant for children under 13, and we don&apos;t knowingly collect their personal data. If you are under 18, use
-        TinyFloor only with the permission of a parent or guardian. If you believe a child has given us personal data, write to <Mail /> and
-        we will delete it.
+        TinyFloor and the companies we use operate around the world, so your information may be processed in countries other than your own,
+        including the United States. Where the law requires it, these transfers are protected by safeguards such as standard contractual
+        clauses.
+      </p>
+    ),
+  },
+  {
+    id: "rights",
+    title: "Your rights and choices",
+    body: (
+      <>
+        <p>
+          Depending on where you live, you may have the right to access the personal information we hold about you, correct it, delete it,
+          receive a copy of it, or object to or restrict how we use it.
+        </p>
+        <p>
+          You can change your name and character in TinyFloor at any time. For anything else, including deleting your account, write to{" "}
+          <Mail /> from the email address on your account. We reply within 30 days. If you are unhappy with how we handle your information,
+          please tell us first so we can put it right; you can also complain to your local data protection authority.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "children",
+    title: "Children’s privacy",
+    body: (
+      <p>
+        TinyFloor is not meant for children under 13, and we don&apos;t knowingly collect their personal information. If you believe a child
+        has given us personal information, write to <Mail /> and we will delete it.
       </p>
     ),
   },
@@ -345,6 +242,15 @@ export const privacySections: LegalSection[] = [
       <p>
         If we change this policy, we will update the date at the top of this page. If a change is significant, we will tell people with
         accounts by email or in TinyFloor before it takes effect.
+      </p>
+    ),
+  },
+  {
+    id: "contact",
+    title: "Contact us",
+    body: (
+      <p>
+        Questions about this policy or your information? Write to <Mail />.
       </p>
     ),
   },

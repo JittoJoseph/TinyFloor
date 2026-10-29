@@ -232,7 +232,31 @@
     "replyFiles": "{count, plural, zero {لا ملفات} one {ملف واحد} two {ملفان} few {# ملفات} many {# ملفًا} other {# ملف}}",
     "typingOne": "{name} يكتب الآن",
     "typingTwo": "{a} و{b} يكتبان الآن",
-    "typingMany": "عدة أشخاص يكتبون الآن"
+    "typingMany": "عدة أشخاص يكتبون الآن",
+    "recordVoice": "تسجيل رسالة صوتية",
+    "cancelRecording": "حذف التسجيل",
+    "sendVoice": "إرسال الرسالة الصوتية",
+    "recording": "جاري التسجيل",
+    "voiceMessage": "رسالة صوتية",
+    "voiceDenied": "اسمح للمتصفح باستخدام الميكروفون لتسجيل رسالة صوتية.",
+    "voiceNoMic": "لم يتم العثور على ميكروفون. يرجى توصيل ميكروفون لتسجيل رسالة صوتية.",
+    "voiceUnsupported": "لا يدعم هذا المتصفح تسجيل الرسائل الصوتية.",
+    "voiceFailed": "فشل إرسال الرسالة الصوتية. حاول مجددًا.",
+    "playVoice": "تشغيل الرسالة الصوتية",
+    "pauseVoice": "إيقاف مؤقت للرسالة الصوتية",
+    "voiceSpeed": "سرعة التشغيل",
+    "meetingStarted": "بدأ الاجتماع",
+    "meetingEnded": "انتهى الاجتماع",
+    "meetingJoin": "انضمام",
+    "meetingYoureIn": "أنت بالداخل",
+    "meetingIn": "{who} في الاجتماع",
+    "meetingAnd": "و",
+    "meetingOthers": "{first} و{count, plural, one {شخص آخر} two {شخصين آخرين} few {# أشخاص آخرين} many {# شخصًا آخر} other {# شخص آخر}}",
+    "meetingRan": "{minutes} دقيقة",
+    "meetingUnderMinute": "أقل من دقيقة",
+    "voiceSendHint": "إرسال",
+    "voiceDeleteHint": "حذف",
+    "meetingStartedAt": "بدأ {time}"
   },
   "proximity": {
     "call": "اتصال",
@@ -348,7 +372,11 @@
       },
       "free": "إنشاء مكتب يستغرق دقيقة، وهو مجاني حتى 3 أشخاص.",
       "go": "أنشئ مكتبي",
-      "notNow": "ليس الآن"
+      "notNow": "ليس الآن",
+      "voice": {
+        "title": "الرسائل الصوتية تأتي مع المكتب",
+        "body": "سجّل رسالة صوتية سريعة في أي محادثة داخل مكتبك، عندما تستغرق الكتابة وقتًا أطول."
+      }
     },
     "yourOffice": {
       "title": "اجعل هذا الطابق لكم",

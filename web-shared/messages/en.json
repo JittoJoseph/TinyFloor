@@ -95,6 +95,14 @@
     "wave": "👋 Wave",
     "waved": "{name} waved at you",
     "waveBack": "👋 Wave back",
+    "waveShort": "Wave",
+    "waveBackShort": "Wave back",
+    "wavedDone": "Waved",
+    "replyTo": "Reply to {name}",
+    "send": "Send",
+    "voiceMessage": "Voice message",
+    "photos": "{count, plural, one {Photo} other {# photos}}",
+    "files": "{count, plural, one {File} other {# files}}",
     "installApp": "Install app"
   },
   "home": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "Invite a teammate",
       "inviteTeammateNote": "They join with a link",
       "call": "Call",
-      "joined": "joined the office"
+      "joined": "joined the office",
+      "search": "Search or jump to…",
+      "addChannel": "Add a channel",
+      "newLine": "new line"
     },
     "footer": {
       "tagline": "A virtual office you walk around in.",

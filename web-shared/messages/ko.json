@@ -95,7 +95,15 @@
     "wave": "👋 손 흔들기",
     "waved": "{name} 님이 손을 흔들었어요",
     "waveBack": "👋 같이 흔들기",
-    "installApp": "앱 설치"
+    "installApp": "앱 설치",
+    "waveShort": "손 흔들기",
+    "waveBackShort": "맞인사하기",
+    "wavedDone": "손 흔듦",
+    "replyTo": "{name}님께 답장",
+    "send": "보내기",
+    "voiceMessage": "음성 메시지",
+    "photos": "{count, plural, one {사진 1장} other {사진 #장}}",
+    "files": "{count, plural, one {파일 1개} other {파일 #개}}"
   },
   "home": {
     "nav": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "팀원 초대",
       "inviteTeammateNote": "링크로 들어와요",
       "call": "통화",
-      "joined": "님이 오피스에 들어왔어요"
+      "joined": "님이 오피스에 들어왔어요",
+      "search": "검색 또는 이동...",
+      "addChannel": "채널 추가",
+      "newLine": "줄바꿈"
     },
     "footer": {
       "tagline": "걸어 다니는 가상 오피스.",

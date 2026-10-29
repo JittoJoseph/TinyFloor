@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/lib/i18n/routing";
 import { LegalPage } from "@/components/legal/LegalPage";
 import { englishOnlyMetadata } from "@/lib/englishOnlyMetadata";
-import { TERMS_UPDATED, termsSections, termsSummary } from "@/components/legal/terms";
+import { TERMS_UPDATED, termsSections, termsIntro } from "@/components/legal/terms";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -24,7 +24,7 @@ export default async function TermsPage({ params }: Props) {
       path="/terms"
       title="Terms of Service"
       updated={TERMS_UPDATED}
-      summary={termsSummary}
+      intro={termsIntro}
       sections={termsSections}
       note={locale === "en" ? undefined : t("englishOnly")}
     />

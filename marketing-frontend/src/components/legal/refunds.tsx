@@ -3,10 +3,10 @@ import { Mail, type LegalSection } from "./LegalPage";
 
 export const REFUNDS_UPDATED = "10 October 2026";
 
-export const refundsSummary = (
+export const refundsIntro = (
   <p>
-    In short: cancel whenever you like and keep your plan until the end of what you paid for. If TinyFloor isn&apos;t right for you, ask
-    within 14 days of a payment and you get all of it back. Payments are handled by Creem, our reseller, and so are refunds.
+    You can cancel whenever you like and keep your plan until the end of what you paid for. If TinyFloor isn&apos;t right for you, ask within
+    14 days of a payment and you get all of it back.
   </p>
 );
 

@@ -19,7 +19,7 @@ export interface PlacePerson {
 }
 
 /** What an office adds, named so the lobby can say which one you reached for. */
-export type OfficeFeature = "channels" | "directMessages" | "attachments" | "invites";
+export type OfficeFeature = "channels" | "directMessages" | "attachments" | "voice" | "invites";
 
 export interface Place {
   kind: "office" | "lobby";

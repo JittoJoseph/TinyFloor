@@ -95,7 +95,15 @@
     "wave": "👋 Saluer",
     "waved": "{name} vous salue",
     "waveBack": "👋 Saluer en retour",
-    "installApp": "Installer l'app"
+    "installApp": "Installer l'app",
+    "waveShort": "Saluer",
+    "waveBackShort": "Saluer en retour",
+    "wavedDone": "Salué",
+    "replyTo": "Répondre à {name}",
+    "send": "Envoyer",
+    "voiceMessage": "Message vocal",
+    "photos": "{count, plural, one {Photo} other {# photos}}",
+    "files": "{count, plural, one {Fichier} other {# fichiers}}"
   },
   "home": {
     "nav": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "Inviter un coéquipier",
       "inviteTeammateNote": "Il suffit d'un lien pour entrer",
       "call": "Appeler",
-      "joined": "a rejoint le bureau"
+      "joined": "a rejoint le bureau",
+      "search": "Rechercher ou accéder à…",
+      "addChannel": "Ajouter un canal",
+      "newLine": "nouvelle ligne"
     },
     "footer": {
       "tagline": "Un bureau virtuel où l'on se déplace.",

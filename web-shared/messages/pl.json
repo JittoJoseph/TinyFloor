@@ -95,7 +95,15 @@
     "wave": "👋 Pomachaj",
     "waved": "{name} pomachał(a) do ciebie",
     "waveBack": "👋 Odmachaj",
-    "installApp": "Zainstaluj aplikację"
+    "installApp": "Zainstaluj aplikację",
+    "waveShort": "Pomachaj",
+    "waveBackShort": "Odmachaj",
+    "wavedDone": "Pomachano",
+    "replyTo": "Odpowiedz {name}",
+    "send": "Wyślij",
+    "voiceMessage": "Wiadomość głosowa",
+    "photos": "{count, plural, one {Zdjęcie} few {# zdjęcia} many {# zdjęć} other {# zdjęć}}",
+    "files": "{count, plural, one {Plik} few {# pliki} many {# plików} other {# plików}}"
   },
   "home": {
     "nav": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "Zaproś osobę z zespołu",
       "inviteTeammateNote": "Dołącza przez link",
       "call": "Zadzwoń",
-      "joined": "dołączył(a) do biura"
+      "joined": "dołączył(a) do biura",
+      "search": "Szukaj lub przejdź do...",
+      "addChannel": "Dodaj kanał",
+      "newLine": "nowy wiersz"
     },
     "footer": {
       "tagline": "Wirtualne biuro, po którym chodzisz.",

@@ -95,7 +95,15 @@
     "wave": "👋 Помахать",
     "waved": "{name} помахал(а) вам",
     "waveBack": "👋 Помахать в ответ",
-    "installApp": "Установить приложение"
+    "installApp": "Установить приложение",
+    "waveShort": "Помахать",
+    "waveBackShort": "Помахать в ответ",
+    "wavedDone": "Помахали",
+    "replyTo": "Ответить {name}",
+    "send": "Отправить",
+    "voiceMessage": "Голосовое сообщение",
+    "photos": "{count, plural, one {Фотография} few {# фотографии} many {# фотографий} other {# фотографии}}",
+    "files": "{count, plural, one {Файл} few {# файла} many {# файлов} other {# файла}}"
   },
   "home": {
     "nav": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "Пригласить коллегу",
       "inviteTeammateNote": "Вход по ссылке",
       "call": "Позвонить",
-      "joined": "присоединяется к офису"
+      "joined": "присоединяется к офису",
+      "search": "Поиск или переход к...",
+      "addChannel": "Добавить канал",
+      "newLine": "новая строка"
     },
     "footer": {
       "tagline": "Виртуальный офис, по которому можно ходить.",

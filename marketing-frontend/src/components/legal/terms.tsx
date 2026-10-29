@@ -1,14 +1,12 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const TERMS_UPDATED = "23 October 2026";
+export const TERMS_UPDATED = "30 October 2026";
 
-export const termsSummary = (
+export const termsIntro = (
   <p>
-    These terms are the agreement between you and TinyFloor. In short: use TinyFloor lawfully and kindly, you keep what you create, we
-    keep the service running as well as we can but can&apos;t promise it never goes down, and either of us can end things at any time. Paid
-    plans are sold by Creem, our reseller, renew until you cancel, and can be refunded within 14 days. How we handle your data is in our{" "}
-    <Link href="/privacy">Privacy Policy</Link>.
+    These terms are the agreement between you and TinyFloor when you use our website and app. Please read them: by using TinyFloor you
+    agree to them. How we handle your information is in our <Link href="/privacy">Privacy Policy</Link>.
   </p>
 );
 
@@ -16,137 +14,87 @@ export const termsSummary = (
 export const termsSections: LegalSection[] = [
   {
     id: "agreement",
-    title: "The agreement",
+    title: "Using TinyFloor",
     body: (
       <>
         <p>
-          TinyFloor (&quot;TinyFloor&quot;, &quot;we&quot;, &quot;us&quot;) is run by Jitto Joseph, an individual. These Terms of
-          Service (&quot;Terms&quot;) apply when you use tinyfloor.com and the TinyFloor service, whether with an account or as a guest. By
-          using TinyFloor you agree to them. If you don&apos;t agree, please don&apos;t use it.
+          TinyFloor is a virtual office for remote teams, operated by Jitto Joseph (“TinyFloor”, “we”, “us”).
+          These Terms apply whenever you use tinyfloor.com or the TinyFloor app, with an account or as a guest.
         </p>
         <p>
-          If you use TinyFloor for an organization, you agree to these Terms for it, and you confirm that you are allowed to do so.
+          You must be at least 13 years old to use TinyFloor, and if you are under the age of majority where you live, you need the permission
+          of a parent or guardian. If you use TinyFloor for an organization, you agree to these Terms on its behalf and confirm that you are
+          allowed to.
         </p>
       </>
     ),
   },
   {
-    id: "eligibility",
-    title: "Who can use TinyFloor",
-    body: (
-      <p>
-        You must be at least 13 years old. If you are under 18, or under the age of majority where you live, you may use TinyFloor only with the
-        permission of a parent or guardian, who agrees to these Terms for you.
-      </p>
-    ),
-  },
-  {
     id: "accounts",
-    title: "Accounts and guests",
+    title: "Your account",
     body: (
-      <ul>
-        <li>Give a real email address when you make an account, and keep access to it to yourself: anyone who can read it can sign in. You are responsible for what happens on your account.</li>
-        <li>If you think someone else has used your account, secure your email account and write to <Mail />.</li>
-        <li>
-          In the demo office, guests choose a name and a character and don&apos;t need an account. A guest is kept for a week after their
-          last visit; to keep your name and join offices, make an account.
-        </li>
-        <li>Don&apos;t pretend to be someone else, and don&apos;t pick a name meant to mislead people.</li>
-      </ul>
+      <>
+        <p>
+          Use a real email address that only you can read: anyone who can read it can sign in as you. You are responsible for what happens on
+          your account, so if you think someone else has used it, secure your email and write to <Mail />. Don&apos;t pretend to be someone
+          else.
+        </p>
+        <p>
+          In the demo office you can visit as a guest without an account. Guests are removed after a week without a visit; to keep your name
+          and join offices, make an account.
+        </p>
+      </>
     ),
   },
   {
     id: "offices",
     title: "Offices and members",
     body: (
-      <ul>
-        <li>
-          Whoever makes an office owns it. Each office has one invite link, which anyone in it can share. Anyone with the link can join the
-          office with an account while there is a free seat, until an admin resets it, so share it with care. Admins decide who stays a member.
-        </li>
-        <li>
-          The owner can delete the office. Deleting it removes its members, chat, whiteboard and everything else in it, and can&apos;t be undone.
-          An office on a paid plan that still renews has to cancel the plan first; deleting the office then ends the plan straight away.
-        </li>
-        <li>
-          Each office has a plan, which sets how many members it can hold and how many meeting hours it has each month: 3 members and 40
-          hours on the free plan, more on the paid plans below. People invited but not yet joined don&apos;t count.
-        </li>
-      </ul>
+      <p>
+        Whoever makes an office owns it and decides, with its admins, who belongs to it. Anyone with an office&apos;s invite link can join it
+        while there is room, so share the link with care; an admin can reset it at any time. The owner can delete the office, which deletes
+        everything in it and can&apos;t be undone.
+      </p>
     ),
   },
   {
     id: "billing",
-    title: "Paid plans and billing",
+    title: "Plans, billing and cancellation",
     body: (
       <>
         <p>
-          Payments are processed by Creem (Armitage Labs OÜ) as the merchant of record for all our orders: Creem sells the plan to you,
-          takes the payment, charges any tax and handles refunds. When you buy a plan, you also agree to Creem&apos;s{" "}
+          <strong>Our reseller.</strong> Paid plans are sold by Creem (Armitage Labs OÜ), our merchant of record, which takes payments, charges
+          any tax and handles refunds. When you buy a plan you also agree to Creem&apos;s{" "}
           <a href="https://www.creem.io/buyer-terms" target="_blank" rel="noopener noreferrer">
             Buyer Terms
           </a>
           .
         </p>
-        <ul>
-          <li>
-            <strong>What you pay for.</strong> Pro lets an office hold its whole team, up to 15 members, and gives it priority help. The plans, their prices and member limits are on our{" "}
-            <Link href="/pricing">pricing</Link>, and are shown again before you pay.
-          </li>
-          <li>
-            <strong>Trial.</strong> A new office starts on Pro, free for 14 days, without a card. When the trial ends, the office moves
-            to the free plan unless a plan is chosen.
-          </li>
-          <li>
-            <strong>Fair use.</strong> Meetings and calls aren&apos;t metered. To keep the price the same for everyone, an office whose
-            meetings run far beyond a team&apos;s normal day (more than 80 hours of meetings with two or more people in a calendar month
-            on Pro, or 40 on Free, in UTC) carries on with voice only in meetings until the 1st of the next month. Calls between two
-            people on the floor are never limited. Meetings in the demo office have their own daily allowance.
-          </li>
-          <li>
-            <strong>Billing.</strong> Plans are billed monthly, in advance, and renew automatically at the end of each month until you cancel.
-            Prices don&apos;t include tax; Creem adds sales tax or VAT where it applies.
-          </li>
-          <li>
-            <strong>Who manages it.</strong> An office&apos;s admins can choose, change and cancel its plan. The plan belongs to the office,
-            not to the person who paid.
-          </li>
-          <li>
-            <strong>Cancelling.</strong> You can cancel at any time. The office keeps its plan until the end of the period already paid for,
-            then goes back to the free plan. Nothing is deleted.
-          </li>
-          <li>
-            <strong>More members than the plan holds.</strong> If an office ends up with more members than its plan allows, for example after
-            its trial or after cancelling, nobody is removed, but no one new can join. After a trial, everyone can still use the floor for 14
-            days; after that, and after a paid plan ends, only as many people as the plan holds can be on the floor at once, while chat stays
-            open to every member, until members are removed or a bigger plan is chosen.
-          </li>
-          <li>
-            <strong>Failed payments.</strong> If a renewal can&apos;t be charged, Creem tries again over the following days. If it still
-            can&apos;t, the plan ends and the office goes back to the free plan.
-          </li>
-          <li>
-            <strong>Price changes.</strong> We will tell an office&apos;s admins at least 30 days before a new price applies to its next
-            renewal, so there is time to cancel first. An office that subscribed to Pro before 1 March 2027 keeps the price it subscribed at
-            for as long as its subscription continues without a break.
-          </li>
-          <li>
-            <strong>Refunds.</strong> Ask within 14 days of any payment and it is refunded in full. The details are in our{" "}
-            <Link href="/refunds">Refund Policy</Link>.
-          </li>
-        </ul>
+        <p>
+          <strong>Plans and trial.</strong> Each office has a plan that sets how many people it can hold. Plans and prices are on our{" "}
+          <Link href="/pricing">pricing page</Link> and are shown again before you pay. New offices start with a 14-day trial of Pro, with no
+          card needed, and move to the free plan when it ends unless a plan is chosen.
+        </p>
+        <p>
+          <strong>Renewal and cancellation.</strong> Plans are billed monthly in advance and renew automatically until you cancel. An office&apos;s
+          admins can cancel at any time; the plan then runs until the end of the period already paid for, and the office moves to the free plan.
+          Nothing is deleted.
+        </p>
+        <p>
+          <strong>Refunds.</strong> Ask within 14 days of any payment and we refund it in full. The details are in our{" "}
+          <Link href="/refunds">Refund Policy</Link>.
+        </p>
+        <p>
+          <strong>Price changes.</strong> We will tell an office&apos;s admins at least 30 days before a new price applies, so there is time to
+          cancel. Offices that subscribe to Pro before 1 March 2027 keep their price for as long as their subscription continues without a
+          break.
+        </p>
+        <p>
+          <strong>Fair use.</strong> Calls and meetings aren&apos;t metered, but an office whose meetings run far beyond a normal working month
+          (more than 80 hours on Pro, or 40 on Free) continues with voice only in meetings until the next month. Calls between two people are
+          never limited.
+        </p>
       </>
-    ),
-  },
-  {
-    id: "lobby",
-    title: "The demo office",
-    body: (
-      <p>
-        The demo office is a shared place to try TinyFloor before making an office of your own, and anyone can walk in. What you say and do
-        there is seen by whoever else is there, so don&apos;t share anything private. Its chat is deleted after a week. We may remove messages
-        or people from the demo office to keep it pleasant.
-      </p>
     ),
   },
   {
@@ -156,21 +104,17 @@ export const termsSections: LegalSection[] = [
       <>
         <p>When you use TinyFloor, don&apos;t:</p>
         <ul>
-          <li>break the law, or help anyone else break it;</li>
-          <li>harass, threaten, bully or discriminate against anyone, or post hateful, violent or sexually explicit material;</li>
-          <li>post or share anything involving the sexual exploitation of children. We report it to the authorities;</li>
-          <li>share other people&apos;s personal information, or anything you don&apos;t have the right to share;</li>
-          <li>record calls, or share recordings of them, without the consent the law requires from the people in them;</li>
-          <li>send spam, scams, phishing or malware;</li>
-          <li>
-            try to break into, disrupt or overload TinyFloor, probe it for weaknesses without our permission, get around its limits, or reach
-            parts of it you aren&apos;t allowed into;
-          </li>
-          <li>scrape it, or use bots and automated scripts on it, except as we allow;</li>
-          <li>use the TinyFloor name or logo in a way that suggests something is ours, or made with us, when it isn&apos;t.</li>
+          <li>break the law, or help anyone else to;</li>
+          <li>harass, threaten or abuse anyone, or post hateful, violent or sexually explicit material;</li>
+          <li>post anything that exploits children. We report it to the authorities;</li>
+          <li>share other people&apos;s personal information, or content you don&apos;t have the right to share;</li>
+          <li>record calls without the consent the law requires from the people in them;</li>
+          <li>send spam, scams or malware;</li>
+          <li>try to break into, disrupt or overload TinyFloor, get around its limits, or access what you aren&apos;t allowed to;</li>
+          <li>scrape TinyFloor or use bots on it, except as we allow.</li>
         </ul>
         <p>
-          Found a security problem? Please tell us at <Mail /> and give us a chance to fix it before telling anyone else.
+          If you find a security problem, please tell us at <Mail /> and give us a chance to fix it before telling anyone else.
         </p>
       </>
     ),
@@ -181,26 +125,24 @@ export const termsSections: LegalSection[] = [
     body: (
       <>
         <p>
-          You keep ownership of what you post in TinyFloor: messages, whiteboard drawings, office names and the like (&quot;your
-          content&quot;). You give us a worldwide, non-exclusive, royalty-free permission to store, copy, transmit and display your content only
-          as needed to run TinyFloor for you and the people you share it with. That permission ends when your content is deleted, apart from the
-          short time deleted data stays in backups.
+          You own what you post in TinyFloor: your messages, voice messages, files, drawings and the like. You give us permission to store,
+          copy and show your content only as needed to run TinyFloor for you and the people you share it with. That permission ends when your
+          content is deleted.
         </p>
         <p>
-          You are responsible for your content, and you confirm that you have the right to post it. We don&apos;t check what people post, but
-          we may remove content, or limit access to it, if we believe it breaks these Terms or the law.
+          You are responsible for what you post, and you confirm that you have the right to post it. We don&apos;t review what people post, but
+          we may remove content that we believe breaks these Terms or the law.
         </p>
       </>
     ),
   },
   {
-    id: "calls",
-    title: "Calls",
+    id: "lobby",
+    title: "The demo office",
     body: (
       <p>
-        A call starts when you call someone and they answer, or when you sit down at a meeting table. Calls are live only; we don&apos;t
-        record them. Your microphone and camera are used only during calls, and you can turn either off at any time. Be mindful of who can
-        hear you, as you would in a real office.
+        The demo office is a public place to try TinyFloor, and anyone can walk in. What you say and post there can be seen by whoever is
+        there, so don&apos;t share anything private. We may remove messages or people from it to keep it pleasant.
       </p>
     ),
   },
@@ -213,39 +155,42 @@ export const termsSections: LegalSection[] = [
         <a href="https://github.com/JittoJoseph/TinyFloor" target="_blank" rel="noopener noreferrer">
           GNU Affero General Public License v3.0
         </a>
-        , and nothing in these Terms limits what that licence lets you do with the code. The TinyFloor name and logo, and this service at
-        tinyfloor.com, remain ours. Some of the pixel art is made by others and used under their licences, which are listed in the{" "}
-        <a href="/credits.txt">credits</a>; it can&apos;t be reused outside TinyFloor except as those licences allow. If you send us ideas or
-        feedback, we may use them without owing you anything.
+        , and nothing in these Terms limits what that licence lets you do with the code. The TinyFloor name, logo and service remain ours, and
+        some of the artwork is licensed from others, as listed in our <a href="/credits.txt">credits</a>. If you send us feedback or ideas, we
+        may use them freely.
+      </p>
+    ),
+  },
+  {
+    id: "third-parties",
+    title: "Other services",
+    body: (
+      <p>
+        Some parts of TinyFloor rely on other companies&apos; services, such as signing in with Google, playing music from Spotify, and paying
+        through Creem. When you use them, their own terms apply, and we aren&apos;t responsible for them.
       </p>
     ),
   },
   {
     id: "changes-service",
-    title: "Changes and availability",
+    title: "Changes to the service",
     body: (
       <p>
-        We work to keep TinyFloor running and improving, which means features may change, be added or be removed. We can&apos;t promise that it
-        will always be available, fast or free of errors, and it may be down for maintenance or for reasons outside our control. If we ever
-        decide to shut TinyFloor down, we will give people with accounts reasonable notice first.
+        We keep improving TinyFloor, so features may change, be added or be removed. We work to keep it available, but we can&apos;t promise it
+        will never be down or free of errors. If we ever decide to shut TinyFloor down, we will give people with accounts reasonable notice and
+        a chance to get their data.
       </p>
     ),
   },
   {
     id: "ending",
-    title: "Ending",
+    title: "Suspension and termination",
     body: (
-      <>
-        <p>
-          You can stop using TinyFloor whenever you like, and ask us to delete your account by writing to <Mail />.
-        </p>
-        <p>
-          We may suspend or close an account, remove someone from an office or the demo office, or block access, if someone breaks these Terms, puts
-          other people or TinyFloor at risk, or if the law requires it. Where it&apos;s reasonable, we will tell you why and give you a chance to
-          respond.
-        </p>
-        <p>The sections on your content, disclaimers, liability and the law that applies continue after these Terms end.</p>
-      </>
+      <p>
+        You can stop using TinyFloor at any time, and ask us to delete your account by writing to <Mail />. We may suspend or close an account,
+        or remove someone from an office or the demo office, if they break these Terms, put others or TinyFloor at risk, or if the law requires
+        it. Where it&apos;s reasonable, we will tell you why first and give you a chance to respond.
+      </p>
     ),
   },
   {
@@ -253,9 +198,8 @@ export const termsSections: LegalSection[] = [
     title: "Disclaimers",
     body: (
       <p>
-        TinyFloor is provided &quot;as is&quot; and &quot;as available&quot;. To the extent the law allows, we make no warranties, express or
-        implied, including that it will be fit for a particular purpose, uninterrupted, secure or error free. Some laws don&apos;t allow these
-        exclusions, so parts of this section may not apply to you.
+        TinyFloor is provided “as is” and “as available”. To the extent the law allows, we make no promises beyond those in
+        these Terms, including that TinyFloor will suit a particular purpose or be uninterrupted, secure or free of errors.
       </p>
     ),
   },
@@ -265,13 +209,13 @@ export const termsSections: LegalSection[] = [
     body: (
       <>
         <p>
-          To the extent the law allows, we are not liable for any indirect, incidental, special or consequential loss, or for lost profits, data
-          or goodwill, arising from your use of TinyFloor. Our total liability to you for any claim about TinyFloor is limited to the greater of
-          the amount you paid us in the 12 months before the claim and 10 US dollars.
+          To the extent the law allows, we aren&apos;t liable for indirect or consequential losses, or for lost profits, data or goodwill.
+          Our total liability for any claim about TinyFloor is limited to the greater of what you paid us in the 12 months before the claim
+          and 10 US dollars.
         </p>
         <p>
-          Nothing in these Terms limits liability that the law does not allow to be limited, such as for fraud, or for death or personal injury
-          caused by negligence, and nothing takes away rights you have as a consumer under the law where you live.
+          Nothing in these Terms limits liability that the law doesn&apos;t allow to be limited, or takes away your rights as a consumer where
+          you live.
         </p>
       </>
     ),
@@ -282,39 +226,49 @@ export const termsSections: LegalSection[] = [
     body: (
       <p>
         If someone brings a claim against us because of your content or because you broke these Terms or the law, you agree to cover the
-        reasonable costs and losses that result, to the extent the law allows.
+        reasonable costs that result, to the extent the law allows.
       </p>
     ),
   },
   {
     id: "law",
-    title: "The law that applies",
+    title: "Governing law and disputes",
     body: (
       <p>
-        These Terms are governed by the laws of the place where TinyFloor&apos;s operator is based, and any dispute about them or about TinyFloor
-        will be decided by the courts there, except that, if you are a consumer, you may also bring proceedings in the courts where you live
-        and keep the protection of that country&apos;s mandatory laws. Before going to court, please write to us, and we will try to sort it out together.
+        These Terms are governed by the laws of the place where TinyFloor&apos;s operator is based, and disputes will be decided by its courts.
+        If you are a consumer, you may also bring proceedings where you live, and you keep the protection of its mandatory laws. Before going to
+        court, please write to us so we can try to resolve it together.
+      </p>
+    ),
+  },
+  {
+    id: "changes",
+    title: "Changes to these Terms",
+    body: (
+      <p>
+        We may update these Terms. We will change the date at the top of this page and tell people with accounts about significant changes
+        before they take effect. If you keep using TinyFloor after that, the new Terms apply.
       </p>
     ),
   },
   {
     id: "general",
-    title: "The rest",
+    title: "General",
     body: (
-      <>
-        <p>
-          We may update these Terms. We will change the date at the top of this page, and tell people with accounts about significant changes
-          before they take effect. Using TinyFloor after that means you accept the new Terms.
-        </p>
-        <p>
-          If a part of these Terms can&apos;t be enforced, the rest still applies. If we don&apos;t enforce a part straight away, we haven&apos;t
-          given up the right to. You can&apos;t transfer these Terms to anyone else without our agreement; we may transfer them if TinyFloor
-          changes hands, and will tell you if we do. These Terms and the Privacy Policy are the whole agreement between us about TinyFloor.
-        </p>
-        <p>
-          Questions? Write to <Mail />.
-        </p>
-      </>
+      <p>
+        These Terms, with our Privacy Policy and Refund Policy, are the whole agreement between us about TinyFloor. If a part of them can&apos;t
+        be enforced, the rest still applies, and if we don&apos;t enforce a part straight away, we haven&apos;t given up the right to. You
+        can&apos;t transfer these Terms without our agreement; we may transfer them if TinyFloor changes hands, and will tell you if we do.
+      </p>
+    ),
+  },
+  {
+    id: "contact",
+    title: "Contact us",
+    body: (
+      <p>
+        Questions about these Terms? Write to <Mail />.
+      </p>
     ),
   },
 ];

@@ -95,7 +95,15 @@
     "wave": "👋 Winken",
     "waved": "{name} hat dir gewinkt",
     "waveBack": "👋 Zurückwinken",
-    "installApp": "App installieren"
+    "installApp": "App installieren",
+    "waveShort": "Winken",
+    "waveBackShort": "Zurückwinken",
+    "wavedDone": "Gewinkt",
+    "replyTo": "{name} antworten",
+    "send": "Senden",
+    "voiceMessage": "Sprachnachricht",
+    "photos": "{count, plural, one {Foto} other {# Fotos}}",
+    "files": "{count, plural, one {Datei} other {# Dateien}}"
   },
   "home": {
     "nav": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "Teammitglied einladen",
       "inviteTeammateNote": "Sie kommen über einen Link rein",
       "call": "Anrufen",
-      "joined": "ist dem Büro beigetreten"
+      "joined": "ist dem Büro beigetreten",
+      "search": "Suchen oder wechseln zu…",
+      "addChannel": "Kanal hinzufügen",
+      "newLine": "neue Zeile"
     },
     "footer": {
       "tagline": "Ein virtuelles Büro, in dem du herumläufst.",

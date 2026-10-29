@@ -232,7 +232,31 @@
     "replyFiles": "{count, plural, one {# arquivo} other {# arquivos}}",
     "typingOne": "{name} está digitando",
     "typingTwo": "{a} e {b} estão digitando",
-    "typingMany": "Várias pessoas estão digitando"
+    "typingMany": "Várias pessoas estão digitando",
+    "recordVoice": "Gravar mensagem de voz",
+    "cancelRecording": "Excluir gravação",
+    "sendVoice": "Enviar mensagem de voz",
+    "recording": "Gravando",
+    "voiceMessage": "Mensagem de voz",
+    "voiceDenied": "Permita o uso do microfone no seu navegador para gravar uma mensagem de voz.",
+    "voiceNoMic": "Nenhum microfone encontrado. Conecte um para gravar uma mensagem de voz.",
+    "voiceUnsupported": "Este navegador não consegue gravar mensagens de voz.",
+    "voiceFailed": "Não foi possível enviar a mensagem de voz. Tente novamente.",
+    "playVoice": "Reproduzir mensagem de voz",
+    "pauseVoice": "Pausar mensagem de voz",
+    "voiceSpeed": "Velocidade de reprodução",
+    "meetingStarted": "Reunião iniciada",
+    "meetingEnded": "Reunião encerrada",
+    "meetingJoin": "Entrar",
+    "meetingYoureIn": "Você entrou",
+    "meetingIn": "{who} na reunião",
+    "meetingAnd": "e",
+    "meetingOthers": "{first} e {count, plural, one {# outro} other {# outros}}",
+    "meetingRan": "{minutes} min",
+    "meetingUnderMinute": "Menos de um minuto",
+    "voiceSendHint": "enviar",
+    "voiceDeleteHint": "excluir",
+    "meetingStartedAt": "Iniciou às {time}"
   },
   "proximity": {
     "call": "Ligar",
@@ -348,7 +372,11 @@
       },
       "free": "Criar um escritório leva um minuto e é grátis para até 3 pessoas.",
       "go": "Criar meu escritório",
-      "notNow": "Agora não"
+      "notNow": "Agora não",
+      "voice": {
+        "title": "Mensagens de voz vêm com um escritório",
+        "body": "Grave uma mensagem de voz rápida em qualquer conversa no seu próprio escritório quando digitar demoraria mais."
+      }
     },
     "yourOffice": {
       "title": "Faça deste andar o seu",

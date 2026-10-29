@@ -95,7 +95,15 @@
     "wave": "👋 Vinka",
     "waved": "{name} vinkade till dig",
     "waveBack": "👋 Vinka tillbaka",
-    "installApp": "Installera appen"
+    "installApp": "Installera appen",
+    "waveShort": "Vinka",
+    "waveBackShort": "Vinka tillbaka",
+    "wavedDone": "Vinkat",
+    "replyTo": "Svara {name}",
+    "send": "Skicka",
+    "voiceMessage": "Röstmeddelande",
+    "photos": "{count, plural, one {Bild} other {# bilder}}",
+    "files": "{count, plural, one {Fil} other {# filer}}"
   },
   "home": {
     "nav": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "Bjud in en kollega",
       "inviteTeammateNote": "De kommer in med en länk",
       "call": "Ring",
-      "joined": "gick med i kontoret"
+      "joined": "gick med i kontoret",
+      "search": "Sök eller hoppa till…",
+      "addChannel": "Lägg till en kanal",
+      "newLine": "ny rad"
     },
     "footer": {
       "tagline": "Ett virtuellt kontor du går omkring i.",

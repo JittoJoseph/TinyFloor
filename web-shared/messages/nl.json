@@ -95,7 +95,15 @@
     "wave": "👋 Zwaai",
     "waved": "{name} zwaaide naar je",
     "waveBack": "👋 Zwaai terug",
-    "installApp": "App installeren"
+    "installApp": "App installeren",
+    "waveShort": "Zwaai",
+    "waveBackShort": "Zwaai terug",
+    "wavedDone": "Gezwaaid",
+    "replyTo": "Reageer op {name}",
+    "send": "Verstuur",
+    "voiceMessage": "Spraakbericht",
+    "photos": "{count, plural, one {Foto} other {# foto's}}",
+    "files": "{count, plural, one {Bestand} other {# bestanden}}"
   },
   "home": {
     "nav": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "Teamgenoot uitnodigen",
       "inviteTeammateNote": "Ze komen binnen met een link",
       "call": "Bellen",
-      "joined": "is bij het kantoor gekomen"
+      "joined": "is bij het kantoor gekomen",
+      "search": "Zoeken of ga naar…",
+      "addChannel": "Kanaal toevoegen",
+      "newLine": "nieuwe regel"
     },
     "footer": {
       "tagline": "Een virtueel kantoor waar je rondloopt.",

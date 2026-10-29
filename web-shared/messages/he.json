@@ -95,7 +95,15 @@
     "wave": "👋 לנופף",
     "waved": "{name} נופף/ה לך",
     "waveBack": "👋 לנופף בחזרה",
-    "installApp": "התקנת האפליקציה"
+    "installApp": "התקנת האפליקציה",
+    "waveShort": "לנפנף",
+    "waveBackShort": "לנפנף בחזרה",
+    "wavedDone": "נפנפת",
+    "replyTo": "תגובה ל-{name}",
+    "send": "שליחה",
+    "voiceMessage": "הודעה קולית",
+    "photos": "{count, plural, one {תמונה} other {# תמונות}}",
+    "files": "{count, plural, one {קובץ} other {# קבצים}}"
   },
   "home": {
     "nav": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "הזמנת חבר צוות",
       "inviteTeammateNote": "מצטרפים עם קישור",
       "call": "התקשרות",
-      "joined": "הצטרף/ה למשרד"
+      "joined": "הצטרף/ה למשרד",
+      "search": "חיפוש או מעבר אל...",
+      "addChannel": "הוספת ערוץ",
+      "newLine": "שורה חדשה"
     },
     "footer": {
       "tagline": "משרד וירטואלי שמסתובבים בו.",

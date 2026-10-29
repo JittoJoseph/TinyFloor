@@ -232,7 +232,31 @@
     "replyFiles": "{count, plural, one {# plik} few {# pliki} many {# plików} other {# pliku}}",
     "typingOne": "{name} pisze",
     "typingTwo": "{a} i {b} piszą",
-    "typingMany": "Kilka osób pisze"
+    "typingMany": "Kilka osób pisze",
+    "recordVoice": "Nagraj wiadomość głosową",
+    "cancelRecording": "Usuń nagranie",
+    "sendVoice": "Wyślij wiadomość głosową",
+    "recording": "Nagrywanie",
+    "voiceMessage": "Wiadomość głosowa",
+    "voiceDenied": "Zezwól na dostęp do mikrofonu w przeglądarce, aby nagrać wiadomość głosową.",
+    "voiceNoMic": "Nie znaleziono mikrofonu. Podłącz go, aby nagrać wiadomość głosową.",
+    "voiceUnsupported": "Ta przeglądarka nie obsługuje nagrywania wiadomości głosowych.",
+    "voiceFailed": "Nie udało się wysłać wiadomości głosowej. Spróbuj ponownie.",
+    "playVoice": "Odtwórz wiadomość głosową",
+    "pauseVoice": "Wstrzymaj wiadomość głosową",
+    "voiceSpeed": "Prędkość odtwarzania",
+    "meetingStarted": "Spotkanie rozpoczęte",
+    "meetingEnded": "Spotkanie zakończone",
+    "meetingJoin": "Dołącz",
+    "meetingYoureIn": "Jesteś w środku",
+    "meetingIn": "{who} na spotkaniu",
+    "meetingAnd": "i",
+    "meetingOthers": "{first} i {count, plural, one {# inna osoba} few {# inne osoby} many {# innych osób} other {# innych osób}}",
+    "meetingRan": "{minutes} min",
+    "meetingUnderMinute": "Mniej niż minuta",
+    "voiceSendHint": "wyślij",
+    "voiceDeleteHint": "usuń",
+    "meetingStartedAt": "Rozpoczęto o {time}"
   },
   "proximity": {
     "call": "Zadzwoń",
@@ -348,7 +372,11 @@
       },
       "free": "Utworzenie biura zajmuje minutę i jest darmowe dla maksymalnie 3 osób.",
       "go": "Utwórz moje biuro",
-      "notNow": "Nie teraz"
+      "notNow": "Nie teraz",
+      "voice": {
+        "title": "Wiadomości głosowe są częścią biura",
+        "body": "Nagraj szybką wiadomość głosową w dowolnej rozmowie w swoim biurze, gdy pisanie zajęłoby zbyt dużo czasu."
+      }
     },
     "yourOffice": {
       "title": "Niech to piętro będzie twoje",

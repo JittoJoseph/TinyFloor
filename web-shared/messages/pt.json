@@ -95,7 +95,15 @@
     "wave": "👋 Acenar",
     "waved": "{name} acenou para você",
     "waveBack": "👋 Acenar de volta",
-    "installApp": "Instalar app"
+    "installApp": "Instalar app",
+    "waveShort": "Acenar",
+    "waveBackShort": "Acenar de volta",
+    "wavedDone": "Acenou",
+    "replyTo": "Responder a {name}",
+    "send": "Enviar",
+    "voiceMessage": "Mensagem de voz",
+    "photos": "{count, plural, one {Foto} other {# fotos}}",
+    "files": "{count, plural, one {Arquivo} other {# arquivos}}"
   },
   "home": {
     "nav": {
@@ -212,7 +220,10 @@
       "inviteTeammate": "Convidar um colega",
       "inviteTeammateNote": "Entram com um link",
       "call": "Ligar",
-      "joined": "entrou no escritório"
+      "joined": "entrou no escritório",
+      "search": "Buscar ou ir para...",
+      "addChannel": "Adicionar um canal",
+      "newLine": "nova linha"
     },
     "footer": {
       "tagline": "Um escritório virtual por onde você anda.",

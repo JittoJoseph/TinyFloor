@@ -13,6 +13,7 @@ import {
   type ChatMessage,
   type ChatServerMessage,
   isDm,
+  isVoice,
 } from "@shared/chat";
 import type { RoomTicket } from "@/lib/api";
 import { playSound } from "./sounds";
@@ -385,7 +386,8 @@ class ChatSocket {
         // On screen only counts while the tab is: a message that lands while you're
         // in another window waits as unread, and is marked read when you come back.
         const seen = this.watching === channel && document.visibilityState === "visible";
-        const mine = message.message.author === this.state.me;
+        // The main meeting's card is the floor's news, not a message: it counts as nobody's unread.
+        const mine = message.message.author === this.state.me || !!message.message.meeting;
         const forMe = !mine && !seen && !!message.message.mentions?.includes(this.state.me);
         const history = [...(this.state.history[channel] ?? []), message.message];
         const channels = withGeneral(
@@ -396,9 +398,13 @@ class ChatSocket {
                       ...one,
                       unread: seen || mine ? 0 : one.unread + 1,
                       mentions: seen || mine ? 0 : (one.mentions ?? 0) + (forMe ? 1 : 0),
-                      lastAt: message.message.at,
-                      lastBy: message.message.authorName,
-                      lastBody: message.message.body || (message.message.files?.length ? "📎" : ""),
+                      ...(message.message.meeting
+                        ? {}
+                        : {
+                            lastAt: message.message.at,
+                            lastBy: message.message.authorName,
+                            lastBody: message.message.body || (message.message.files?.some(isVoice) ? "🎤" : message.message.files?.length ? "📎" : ""),
+                          }),
                     }
                   : one,
               )
@@ -422,7 +428,7 @@ class ChatSocket {
           unread: total(channels),
           history: { ...this.state.history, [channel]: history },
         });
-        if (seen && message.message.seq > 0) this.send({ t: "chat_read", channel, seq: message.message.seq });
+        if (seen && message.message.seq > 0 && !message.message.meeting) this.send({ t: "chat_read", channel, seq: message.message.seq });
         else if (!mine) {
           // A sound only for what's yours, the same as the rail's count: a busy channel stays quiet.
           if (isDm(channel) || forMe) playSound("message");
@@ -454,6 +460,13 @@ class ChatSocket {
           if (!people.size) delete reactions[message.emoji];
           return { ...one, reactions };
         });
+        this.set({ ...this.state, history: { ...this.state.history, [message.channel]: history } });
+        break;
+      }
+      case "chat_meeting": {
+        const history = (this.state.history[message.channel] ?? []).map((one) =>
+          one.seq === message.seq ? { ...one, meeting: message.meeting } : one,
+        );
         this.set({ ...this.state, history: { ...this.state.history, [message.channel]: history } });
         break;
       }

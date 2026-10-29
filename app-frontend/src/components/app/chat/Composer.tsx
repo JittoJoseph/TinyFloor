@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { ArrowUp, FileText, ImagePlus, Loader2, Paperclip, Reply, Smile, X } from "@/components/ui/icons";
+import { ArrowUp, FileText, ImagePlus, Loader2, Mic, Paperclip, Reply, Smile, Trash2, X } from "@/components/ui/icons";
+import { AnimatePresence, motion } from "motion/react";
 import { FILES_PER_MESSAGE, TYPING_EVERY_MS, isPicture, type ChatFile } from "@shared/chat";
 import { Kbd } from "@/components/ui/IconButton";
 import { Tooltip } from "@/components/motion/tooltip";
@@ -11,6 +12,8 @@ import { cn } from "@/lib/utils";
 import { draftFor, keepDraft } from "@/lib/chatMemory";
 import { FileProblem, prepare, sizeOf, type Prepared } from "@/lib/chatFiles";
 import { typingMention, type Mentionable } from "@/lib/mentions";
+import { RecorderFailure, VoiceRecorder, canRecord } from "@/lib/voiceRecorder";
+import { SPRING_SWAP } from "@/lib/ease";
 
 const FOCUS_EVENT = "tinyfloor:focus-composer";
 const FILES_EVENT = "tinyfloor:composer-files";
@@ -37,6 +40,11 @@ const EMOJI = ["😀", "😂", "🙂", "😍", "🤔", "😅", "👍", "👏", "
 /** A button in the box's toolbar. */
 const tool =
   "flex size-8 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-muted hover:text-foreground";
+
+/** A voice message on its way: being started, recorded (how long, how loud lately), or sent. */
+type Voice = { phase: "starting" | "recording" | "sending"; seconds: number; levels: number[] };
+/** How many bars the moving waveform shows. */
+const BARS = 240;
 
 /** People the picker offers at once. */
 const PICKS = 6;
@@ -69,6 +77,11 @@ interface Pending {
  * Files come in by the paperclip, a paste or a drop, and start going up at
  * once, so sending is instant; sending while one is still going waits for it.
  * "@" offers the people here, and picking one writes their name.
+ *
+ * With nothing in the box, the send button is a microphone: pressing it
+ * records a voice message in place of the box, with its waveform moving as
+ * you speak; send it, or throw it away. It goes up like any file, carrying
+ * its length and the shape of its waveform.
  */
 export function Composer({
   placeholder,
@@ -86,6 +99,7 @@ export function Composer({
   onCancelReply,
   onTyping,
   typing,
+  onVoiceBlocked,
 }: {
   placeholder: string;
   onSend: (text: string, files: ChatFile[]) => void;
@@ -113,6 +127,8 @@ export function Composer({
   onTyping?: (on: boolean) => void;
   /** Who else is typing here, said under the box. */
   typing?: string | null;
+  /** Where voice messages can't go (the lobby): the view says why. */
+  onVoiceBlocked?: () => void;
 }) {
   const t = useTranslations("chat");
   const locale = useLocale();
@@ -247,6 +263,106 @@ export function Composer({
     window.addEventListener(FILES_EVENT, dropped);
     return () => window.removeEventListener(FILES_EVENT, dropped);
   }, []);
+
+  // A voice message: being recorded, with how long and how loud so far, then on its way.
+  const [voice, setVoice] = useState<Voice | null>(null);
+  const [lineHeight, setLineHeight] = useState(0);
+  const recorder = useRef<VoiceRecorder | null>(null);
+  const voiceProblem = (code: string) =>
+    setProblem(code === "denied" ? t("voiceDenied") : code === "no_mic" ? t("voiceNoMic") : code === "unsupported" ? t("voiceUnsupported") : t("voiceFailed"));
+
+  const sendVoice = async () => {
+    const taking = recorder.current;
+    if (!taking || !upload) return;
+    recorder.current = null;
+    setVoice((was) => was && { ...was, phase: "sending" });
+    const take = await taking.stop();
+    if (!take) return setVoice(null);
+    try {
+      const file = new File([take.blob], `${t("voiceMessage")}.${take.extension}`, { type: take.type });
+      const done = await upload({ blob: file, name: file.name, type: take.type }, () => {}, new AbortController().signal);
+      onSend("", [{ ...done, duration: take.duration, peaks: take.peaks }]);
+    } catch {
+      voiceProblem("failed");
+    } finally {
+      setVoice(null);
+    }
+  };
+  const sendVoiceRef = useRef(sendVoice);
+  useEffect(() => {
+    sendVoiceRef.current = sendVoice;
+  });
+
+  const record = async () => {
+    if (!upload) return onVoiceBlocked?.();
+    if (voice) return;
+    setProblem(null);
+    setLineHeight(box.current?.offsetHeight ?? 0);
+    setVoice({ phase: "starting", seconds: 0, levels: [] });
+    const taking = new VoiceRecorder(
+      (level, seconds) => setVoice((was) => (was && was.phase !== "sending" ? { phase: "recording", seconds, levels: [...was.levels.slice(-(BARS - 1)), level] } : was)),
+      () => void sendVoiceRef.current(),
+    );
+    recorder.current = taking;
+    try {
+      await taking.start();
+    } catch (error) {
+      recorder.current = null;
+      setVoice(null);
+      voiceProblem(error instanceof RecorderFailure ? error.code : "failed");
+    }
+  };
+  const discardVoice = () => {
+    recorder.current?.cancel();
+    recorder.current = null;
+    setVoice(null);
+    requestAnimationFrame(() => box.current?.focus({ preventScroll: true }));
+  };
+  const discardRef = useRef(discardVoice);
+  useEffect(() => {
+    discardRef.current = discardVoice;
+  });
+  const recordRef = useRef(record);
+  useEffect(() => {
+    recordRef.current = record;
+  });
+  const emptyRef = useRef(true);
+  useEffect(() => {
+    emptyRef.current = !body.trim() && !pending.length;
+  });
+  useEffect(() => {
+    if (!attach || !canRecord()) return;
+    const keys = (event: KeyboardEvent) => {
+      if (event.code !== "Space" || !event.shiftKey || !(event.metaKey || event.ctrlKey) || event.repeat) return;
+      if (recorder.current) {
+        event.preventDefault();
+        void sendVoiceRef.current();
+      } else if (emptyRef.current && !document.querySelector("[aria-modal=true]")) {
+        event.preventDefault();
+        void recordRef.current();
+      }
+    };
+    window.addEventListener("keydown", keys);
+    return () => window.removeEventListener("keydown", keys);
+  }, [attach]);
+  // Leaving the conversation mid-recording throws it away.
+  useEffect(() => () => recorder.current?.cancel(), []);
+  // While recording, Escape throws it away and Enter sends it.
+  const phase = voice?.phase;
+  useEffect(() => {
+    if (!phase || phase === "sending") return;
+    const keys = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        discardRef.current();
+      } else if (event.key === "Enter" && phase === "recording") {
+        event.preventDefault();
+        void sendVoiceRef.current();
+      }
+    };
+    window.addEventListener("keydown", keys);
+    return () => window.removeEventListener("keydown", keys);
+  }, [phase]);
 
   const uploading = pending.some((one) => !one.done && !one.failed);
   const ready = pending.filter((one) => one.done).map((one) => one.done!);
@@ -428,66 +544,87 @@ export function Composer({
           </ul>
         )}
 
-        <textarea
-          ref={box}
-          rows={1}
-          dir="auto"
-          value={body}
-          maxLength={maxLength}
-          placeholder={placeholder}
-          onChange={(event) => {
-            setBody(event.target.value);
-            onTyping?.(!!event.target.value.trim());
-            grow(event.target);
-            follow(event.target);
-          }}
-          onSelect={(event) => mention && follow(event.currentTarget)}
-          onFocus={() => setInBox(true)}
-          onBlur={() => {
-            setMention(null);
-            setInBox(false);
-          }}
-          onPaste={(event) => {
-            const files = [...event.clipboardData.files];
-            if (!files.length || !attach) return;
-            event.preventDefault();
-            add(files);
-          }}
-          onKeyDown={(event) => {
-            if (picking) {
-              const move = (step: number) => setMention((was) => (was ? { ...was, at: (was.at + step + picks.length) % picks.length } : was));
-              if (event.key === "ArrowDown" || event.key === "ArrowUp") {
-                event.preventDefault();
-                return move(event.key === "ArrowDown" ? 1 : -1);
-              }
-              if (event.key === "Enter" || event.key === "Tab") {
-                event.preventDefault();
-                return pick(picks[mention!.at] ?? picks[0]);
-              }
-              if (event.key === "Escape") {
-                event.preventDefault();
-                event.stopPropagation();
-                return setMention(null);
-              }
-            }
-            if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing && pointing()) {
+        {voice ? (
+          <RecordingLine voice={voice} height={lineHeight} label={t("recording")} />
+        ) : (
+          <textarea
+            ref={box}
+            rows={1}
+            dir="auto"
+            value={body}
+            maxLength={maxLength}
+            placeholder={placeholder}
+            onChange={(event) => {
+              setBody(event.target.value);
+              onTyping?.(!!event.target.value.trim());
+              grow(event.target);
+              follow(event.target);
+            }}
+            onSelect={(event) => mention && follow(event.currentTarget)}
+            onFocus={() => setInBox(true)}
+            onBlur={() => {
+              setMention(null);
+              setInBox(false);
+            }}
+            onPaste={(event) => {
+              const files = [...event.clipboardData.files];
+              if (!files.length || !attach) return;
               event.preventDefault();
-              send();
-            } else if (event.key === "Escape" && replying && onCancelReply) {
-              event.preventDefault();
-              onCancelReply();
-            } else if (event.key === "ArrowUp" && !body && !pending.length && onEditLast) {
-              event.preventDefault();
-              onEditLast();
-            }
-          }}
-          className="block max-h-[200px] w-full resize-none overflow-y-hidden bg-transparent px-4 pb-1 pt-3 text-[16px] leading-[1.45] text-foreground outline-none placeholder:text-faint md:text-[14px]"
-        />
+              add(files);
+            }}
+            onKeyDown={(event) => {
+              if (picking) {
+                const move = (step: number) => setMention((was) => (was ? { ...was, at: (was.at + step + picks.length) % picks.length } : was));
+                if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+                  event.preventDefault();
+                  return move(event.key === "ArrowDown" ? 1 : -1);
+                }
+                if (event.key === "Enter" || event.key === "Tab") {
+                  event.preventDefault();
+                  return pick(picks[mention!.at] ?? picks[0]);
+                }
+                if (event.key === "Escape") {
+                  event.preventDefault();
+                  event.stopPropagation();
+                  return setMention(null);
+                }
+              }
+              if (event.key === "Enter" && !event.shiftKey && !event.nativeEvent.isComposing && pointing()) {
+                event.preventDefault();
+                send();
+              } else if (event.key === "Escape" && replying && onCancelReply) {
+                event.preventDefault();
+                onCancelReply();
+              } else if (event.key === "ArrowUp" && !body && !pending.length && onEditLast) {
+                event.preventDefault();
+                onEditLast();
+              }
+            }}
+            className="block max-h-[200px] w-full resize-none overflow-y-hidden bg-transparent px-4 pb-1 pt-3 text-[16px] leading-[1.45] text-foreground outline-none placeholder:text-faint md:text-[14px]"
+          />
+        )}
 
-        {/* What goes in the message on the left (emoji, a picture, a file), sending on the right. */}
+        {/* What goes in the message on the left (emoji, a picture, a file), sending on the right; while recording, deleting it on the left. */}
         <div className="flex items-center gap-0.5 px-2 pb-2">
-          {attach && (
-            <>
+          <AnimatePresence mode="popLayout" initial={false}>
+            {voice ? (
+              <motion.span key="recording" {...SWAP} className="flex">
+                <Tooltip content={t("cancelRecording")}>
+                  <button
+                    type="button"
+                    onClick={discardVoice}
+                    disabled={voice.phase === "sending"}
+                    aria-label={t("cancelRecording")}
+                    className={cn(tool, "hover:bg-destructive/10 hover:text-destructive disabled:opacity-40")}
+                  >
+                    <Trash2 className="size-[18px]" />
+                  </button>
+                </Tooltip>
+              </motion.span>
+            ) : (
+              attach && (
+                <motion.span key="tools" {...SWAP} className="flex items-center gap-0.5">
+
               <span ref={emojiBox} className="relative">
                 <Tooltip content={t("emoji")}>
                   <button
@@ -547,26 +684,65 @@ export function Composer({
                   event.target.value = "";
                 }}
               />
-            </>
-          )}
+                </motion.span>
+              )
+            )}
+          </AnimatePresence>
 
           <span className="me-1 ms-auto hidden items-center gap-1 text-[11px] text-faint md:flex">
-            <Kbd>⇧</Kbd>
-            <Kbd>↵</Kbd>
-            <span className="ms-0.5">{t("newLine")}</span>
-          </span>
-          <button
-            type="button"
-            onClick={send}
-            disabled={(!canSend && !uploading) || waiting}
-            aria-label={t("send")}
-            className={cn(
-              "ms-1 flex size-8 cursor-pointer items-center justify-center rounded-full transition-colors max-md:ms-auto",
-              canSend || uploading ? "bg-foreground text-background hover:bg-foreground/90" : "bg-muted text-faint",
+            {voice ? (
+              <>
+                <Kbd>↵</Kbd>
+                <span className="ms-0.5 me-1.5">{t("voiceSendHint")}</span>
+                <Kbd>Esc</Kbd>
+                <span className="ms-0.5">{t("voiceDeleteHint")}</span>
+              </>
+            ) : (
+              <>
+                <Kbd>⇧</Kbd>
+                <Kbd>↵</Kbd>
+                <span className="ms-0.5">{t("newLine")}</span>
+              </>
             )}
-          >
-            {waiting ? <Loader2 className="size-4 animate-spin" /> : <ArrowUp className="size-4" />}
-          </button>
+          </span>
+          {/* One button in the corner: send, or with nothing to send, record; while recording, send that. */}
+          {(() => {
+            const recordable = attach && !canSend && !uploading && canRecord();
+            const mode = voice ? "voice" : recordable ? "record" : "send";
+            const button = (
+              <button
+                type="button"
+                onClick={mode === "voice" ? () => void sendVoice() : mode === "record" ? () => void record() : send}
+                disabled={mode === "voice" ? voice?.phase !== "recording" : mode === "send" && ((!canSend && !uploading) || waiting)}
+                aria-label={mode === "voice" ? t("sendVoice") : mode === "record" ? t("recordVoice") : t("send")}
+                className={cn(
+                  "ms-1 flex size-8 cursor-pointer items-center justify-center rounded-full transition-colors max-md:ms-auto disabled:cursor-default",
+                  mode === "record"
+                    ? "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    : mode === "voice" || canSend || uploading
+                      ? "bg-foreground text-background hover:bg-foreground/90"
+                      : "bg-muted text-faint",
+                )}
+              >
+                <AnimatePresence mode="popLayout" initial={false}>
+                  <motion.span key={mode === "record" ? "mic" : waiting || voice?.phase === "sending" ? "wait" : "send"} {...SWAP} className="flex">
+                    {mode === "record" ? (
+                      <Mic className="size-[18px]" />
+                    ) : waiting || voice?.phase === "sending" ? (
+                      <Loader2 className="size-4 animate-spin" />
+                    ) : (
+                      <ArrowUp className="size-4" />
+                    )}
+                  </motion.span>
+                </AnimatePresence>
+              </button>
+            );
+            return mode === "record" ? (
+              <Tooltip content={<RecordTip label={t("recordVoice")} />}>{button}</Tooltip>
+            ) : (
+              button
+            );
+          })()}
         </div>
       </div>
     </div>
@@ -581,5 +757,68 @@ function Progress({ item }: { item: Pending }) {
     <span className="absolute inset-x-0 bottom-0 h-1 bg-foreground/10" aria-hidden>
       <span className="block h-full bg-foreground/70 transition-[width] duration-200" style={{ width: `${Math.max(item.progress * 100, 6)}%` }} />
     </span>
+  );
+}
+
+/** Icons and controls trading places in the box: quick, and never a jump. */
+const SWAP = {
+  initial: { opacity: 0, scale: 0.85, filter: "blur(2px)" },
+  animate: { opacity: 1, scale: 1, filter: "blur(0px)" },
+  exit: { opacity: 0, scale: 0.85, filter: "blur(2px)" },
+  transition: SPRING_SWAP,
+} as const;
+
+/** Whether this is a Mac, for the shortcut's keys: read on hover, so the server never guesses. */
+const isMac = () => /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
+
+/** The microphone's tooltip: what it does, and the keys that do it from anywhere in the box. */
+function RecordTip({ label }: { label: string }) {
+  const key = "inline-flex h-[18px] min-w-[18px] items-center justify-center rounded-[5px] bg-white/[0.14] px-1 font-sans text-[10.5px] font-medium";
+  return (
+    <span className="flex items-center gap-2 whitespace-nowrap">
+      {label}
+      <span className="flex items-center gap-0.5">
+        <kbd className={key}>{isMac() ? "⌘" : "Ctrl"}</kbd>
+        <kbd className={key}>⇧</kbd>
+        <kbd className={key}>Space</kbd>
+      </span>
+    </span>
+  );
+}
+
+/**
+ * A voice message being recorded, in the place of the line you type on and
+ * at its height: the red dot and how long, then the waveform coming in from
+ * the right as you speak, quiet staying a dot. The box keeps its shape.
+ */
+function RecordingLine({ voice, height, label }: { voice: Voice; height: number; label: string }) {
+  const shown = [...Array<number>(Math.max(0, BARS - voice.levels.length)).fill(0), ...voice.levels.slice(-BARS)];
+  const minutes = Math.floor(voice.seconds / 60);
+  const seconds = String(Math.floor(voice.seconds % 60)).padStart(2, "0");
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.18 }}
+      className="flex items-center gap-3 px-4 pb-1 pt-3"
+      style={{ height: height || undefined }}
+    >
+      <span role="status" aria-label={label} className="flex shrink-0 items-center gap-2 text-[13.5px] font-medium tabular-nums text-foreground">
+        <span className="relative flex size-2.5">
+          {voice.phase === "recording" && <span className="absolute inset-0 rounded-full bg-destructive/50 motion-safe:animate-ping" />}
+          <span className="relative size-2.5 rounded-full bg-destructive" />
+        </span>
+        {minutes}:{seconds}
+      </span>
+      <span aria-hidden className="flex h-full min-w-0 flex-1 items-center justify-end gap-[2px] overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_24%)]">
+        {shown.map((level, index) => (
+          <span
+            key={index}
+            className={cn("w-[2.5px] shrink-0 rounded-full transition-[height] duration-100", level ? "bg-foreground/75" : "bg-foreground/20")}
+            style={{ height: `${Math.max(2.5, Math.round(level * 22))}px` }}
+          />
+        ))}
+      </span>
+    </motion.div>
   );
 }

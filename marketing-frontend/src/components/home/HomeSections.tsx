@@ -2,16 +2,27 @@ import type { CSSProperties, ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import {
   ArrowRight,
+  ChevronDown,
   Copy,
   DoorOpen,
+  Gear,
   Hand,
+  Hash,
+  Headphones,
+  ImagePlus,
   Link2,
   Mic,
   MicOff,
   MonitorUp,
+  Paperclip,
   PenLine,
   PhoneOff,
+  Plus,
+  Search,
+  Smile,
+  SquarePen,
   AudioLines,
+  UserPlus,
   Video,
 } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
@@ -404,7 +415,7 @@ function Message({
 }: {
   who: { id: string; name: string };
   time: string;
-  children: ReactNode;
+  children?: ReactNode;
   reply?: { who: { id: string; name: string }; text: string };
   extra?: ReactNode;
   /** Its place in the morning: the messages arrive in order as the window comes in. */
@@ -430,7 +441,7 @@ function Message({
             {who.name}
             <span className="text-[11.5px] font-normal tabular-nums text-faint">{time}</span>
           </p>
-          <p className="mt-0.5 text-[14.5px] leading-[1.5] text-foreground/85">{children}</p>
+          {children && <p className="mt-0.5 text-[14.5px] leading-[1.5] text-foreground/85">{children}</p>}
           {extra}
         </div>
       </div>
@@ -449,36 +460,75 @@ function Reaction({ emoji, count, mine = false }: { emoji: string; count: number
 }
 
 /**
- * The picture Jack shares with his message about the new onboarding: a
- * screenshot of its profile step, where you pick your colour, on a soft
- * gradient. Drawn, not a photo, so it's light and crisp at any size.
+ * The picture Jack shares with his message about the new onboarding: its
+ * welcome step, dark, rising out of the bottom of a near-black frame with a
+ * faint grid lit from above, the way product shots are shown now. Drawn, not
+ * a photo, so it stays crisp at any size; quiet whites, one cool glow.
  */
 function Shot() {
-  const swatches = ["#f472b6", "#fb923c", "#facc15", "#34d399", "#38bdf8", "#a78bfa"];
   return (
-    <div aria-hidden className="mt-2 flex aspect-video w-full max-w-[320px] items-center justify-center overflow-hidden rounded-[12px] bg-[linear-gradient(135deg,#c7d2fe,#fbcfe8_55%,#fed7aa)] ring-1 ring-border">
-      <div className="flex w-[66%] flex-col items-center rounded-[12px] bg-white px-4 pb-4 pt-2.5 shadow-[0_14px_34px_-14px_rgb(76_29_149/0.5)]">
-        <span className="flex gap-1 self-start">
-          {["#fca5a5", "#fcd34d", "#86efac"].map((dot) => (
-            <span key={dot} className="size-[5px] rounded-full" style={{ background: dot }} />
+    <div aria-hidden className="relative mt-2 aspect-[16/9] w-full max-w-[280px] overflow-hidden rounded-[12px] bg-[#08080a] ring-1 ring-border">
+      <div className="absolute inset-0 [background-image:linear-gradient(rgb(255_255_255/0.045)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.045)_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_at_50%_0%,black,transparent_70%)]" />
+      <div className="absolute -top-14 left-1/2 h-28 w-52 -translate-x-1/2 rounded-full bg-[#6d7cff]/20 blur-3xl" />
+      <div className="absolute inset-x-[13%] bottom-0 top-[18%] rounded-t-[10px] bg-[#111113] shadow-[0_0_0_1px_rgb(255_255_255/0.08),0_-18px_40px_-22px_rgb(109_124_255/0.45)]">
+        {/* Light catching the window's top edge. */}
+        <span className="absolute inset-x-[12%] -top-px h-px bg-[linear-gradient(90deg,transparent,rgb(255_255_255/0.45),transparent)]" />
+        <div className="flex h-[18px] items-center gap-[3px] border-b border-white/[0.06] px-2">
+          {[0, 1, 2].map((dot) => (
+            <span key={dot} className="size-[4px] rounded-full bg-white/15" />
           ))}
-        </span>
-        <span className="relative mt-1.5 size-12 rounded-full bg-[radial-gradient(circle_at_32%_28%,#ddd6fe,#a78bfa_45%,#7c3aed)] shadow-[inset_0_-4px_10px_rgb(76_29_149/0.35)]">
-          <span className="absolute -bottom-0.5 -end-0.5 flex size-[18px] items-center justify-center rounded-full bg-white text-zinc-700 shadow-sm">
-            <PenLine className="size-2.5" />
+        </div>
+        <div className="px-3 pt-2.5">
+          <span className="block h-[5px] w-[46%] rounded-full bg-white/75" />
+          <span className="mt-1.5 block h-[3.5px] w-[70%] rounded-full bg-white/20" />
+          {[38, 52].map((width) => (
+            <span key={width} className="mt-2 flex h-[15px] items-center rounded-[5px] bg-white/[0.035] px-1.5 ring-1 ring-white/[0.09]">
+              <span className="h-[3px] rounded-full bg-white/30" style={{ width: `${width}%` }} />
+            </span>
+          ))}
+          <span className="mt-2.5 flex items-center gap-1.5">
+            <span className="h-[13px] w-[32%] rounded-[5px] bg-white/90" />
+            <span className="h-[13px] w-[18%] rounded-[5px] ring-1 ring-white/[0.12]" />
           </span>
-        </span>
-        <span className="mt-2.5 flex h-[18px] w-[78%] items-center rounded-[6px] border border-zinc-200 px-1.5">
-          <span className="h-[4px] w-[38%] rounded-full bg-zinc-300" />
-          <span className="ms-0.5 h-[9px] w-px bg-violet-500 motion-safe:animate-pulse" />
-        </span>
-        <span className="mt-2.5 flex gap-1.5">
-          {swatches.map((color, i) => (
-            <span key={color} className={cn("size-[11px] rounded-full", i === 5 && "ring-[1.5px] ring-violet-500 ring-offset-[1.5px] ring-offset-white")} style={{ background: color }} />
-          ))}
-        </span>
+        </div>
       </div>
     </div>
+  );
+}
+
+/** A voice message's waveform: how loud it was along the way, as the app keeps it. */
+const VOICE_PEAKS = [22, 38, 64, 80, 55, 30, 48, 72, 90, 68, 40, 26, 52, 78, 60, 34, 20, 44, 70, 86, 74, 50, 28, 36, 62, 82, 58, 32, 46, 76, 66, 38, 24, 40, 64, 52, 30, 18, 34, 56, 70, 48, 26, 20, 30, 42, 28, 16];
+
+/** A voice message as the app shows it: play, its waveform part heard, the time, and how fast. */
+function VoiceNote() {
+  const heard = 0.38;
+  return (
+    <span aria-hidden className="mt-1.5 flex w-[19rem] max-w-full items-center gap-3 rounded-[20px] border border-border bg-card py-2 pe-3.5 ps-2">
+      <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-foreground text-background">
+        <svg viewBox="0 0 16 16" className="size-4 fill-current">
+          <rect x="3.5" y="2.5" width="3.2" height="11" rx="1.1" />
+          <rect x="9.3" y="2.5" width="3.2" height="11" rx="1.1" />
+        </svg>
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="flex h-7 items-center justify-between gap-[2px]">
+          {VOICE_PEAKS.map((peak, index) => (
+            <span
+              key={index}
+              className={cn("w-[3px] shrink rounded-full", (index + 0.5) / VOICE_PEAKS.length <= heard ? "bg-foreground" : "bg-foreground/[0.18]")}
+              style={{ height: `${3 + Math.pow(peak / 100, 1.8) * 23}px` }}
+            />
+          ))}
+        </span>
+        <span className="mt-1 flex h-[18px] items-center justify-between text-[11.5px] font-medium tabular-nums">
+          <span>
+            <span className="text-foreground">0:04</span>
+            <span className="text-faint"> / 0:11</span>
+          </span>
+          <span className="rounded-full bg-foreground px-1.5 text-[10.5px] font-semibold leading-[18px] text-background">1.5×</span>
+        </span>
+      </span>
+    </span>
   );
 }
 
@@ -490,6 +540,7 @@ function Shot() {
 export function ChatSection() {
   const t = useTranslations("homepage.chat");
   const p = useTranslations("home.preview");
+  const s = useTranslations("shell");
   const { emma, jack, olivia, sam, noah, lily } = PEOPLE;
   const channels = [p("general"), p("design"), p("random")];
   const side = "flex h-8 items-center gap-2 rounded-[9px] px-2.5 text-[13px]";
@@ -507,45 +558,83 @@ export function ChatSection() {
         </div>
       </div>
 
-      <div data-reveal style={rise(0, { y: 28, scale: 0.985 })} className="mt-14 flex overflow-hidden rounded-[20px] border border-border font-(family-name:--font-app) [--face-ring:var(--ui-background)] sm:mt-20">
-        <div className="hidden w-[220px] shrink-0 flex-col gap-0.5 border-e border-border p-3 md:flex">
-          <p className="px-2.5 pb-1 pt-2 text-[11.5px] font-medium text-faint">{p("channels")}</p>
+      <div
+        data-reveal
+        style={rise(0, { y: 28, scale: 0.985 })}
+        className="mt-14 flex overflow-hidden rounded-[20px] border border-border bg-background font-(family-name:--font-app) [--face-ring:var(--ui-background)] sm:mt-20"
+      >
+        {/* The side, as the app draws it: the office and a way to start a conversation, search, the channels and people, and you at the foot. */}
+        <div className="hidden w-[236px] shrink-0 flex-col border-e border-border bg-rail/60 p-2.5 md:flex">
+          <div className="flex h-10 items-center justify-between px-2">
+            <span className="text-[14.5px] font-semibold tracking-[-0.01em]">{p("office")}</span>
+            <SquarePen className="size-4 text-muted-foreground" />
+          </div>
+          <div className="mt-1 flex h-9 items-center gap-2 rounded-[10px] border border-border bg-background px-2.5 text-[12.5px] text-faint">
+            <Search className="size-3.5" />
+            <span className="flex-1 truncate">{p("search")}</span>
+            <kbd className="rounded-[5px] border border-border px-1 font-sans text-[10px]">⌘K</kbd>
+          </div>
+          <p className="mt-4 flex items-center gap-1 px-2 pb-1 text-[12px] font-medium text-muted-foreground">
+            <ChevronDown className="size-3" />
+            {p("channels")}
+          </p>
           {channels.map((name, i) => (
             <span key={name} className={cn(side, i === 0 ? "bg-foreground/[0.06] font-medium text-foreground" : "text-muted-foreground")}>
-              <span className="text-faint">#</span>
+              <Hash className="size-3.5 text-faint" />
               <span className="flex-1">{name}</span>
               {i === 1 && <span className="rounded-full bg-foreground px-1.5 text-[10.5px] font-semibold leading-[1.5] text-background">3</span>}
             </span>
           ))}
-          <p className="px-2.5 pb-1 pt-4 text-[11.5px] font-medium text-faint">{p("directMessages")}</p>
+          <span className={cn(side, "text-muted-foreground")}>
+            <span className="flex size-5 items-center justify-center rounded-[6px] bg-foreground/[0.06]">
+              <Plus className="size-3" />
+            </span>
+            {p("addChannel")}
+          </span>
+          <p className="mt-3 flex items-center gap-1 px-2 pb-1 text-[12px] font-medium text-muted-foreground">
+            <ChevronDown className="size-3" />
+            {p("directMessages")}
+          </p>
           {[olivia, noah, lily].map((one, i) => (
             <span key={one.id} className={cn(side, "text-muted-foreground")}>
               <Face seed={one.id} size={20} presence={i === 2 ? "away" : "available"} />
               {one.name}
             </span>
           ))}
+          <span className={cn(side, "text-muted-foreground")}>
+            <UserPlus className="size-3.5" />
+            {s("invitePeople")}
+          </span>
+
+          <div className="mt-auto flex items-center gap-2.5 rounded-[12px] bg-foreground/[0.04] p-2">
+            <Face seed={emma.id} size={30} presence="available" />
+            <span className="min-w-0 flex-1 leading-tight">
+              <span className="block truncate text-[13px] font-semibold">{emma.name}</span>
+              <span className="block text-[11.5px] text-muted-foreground">{p("available")}</span>
+            </span>
+            {[Mic, Headphones, Gear].map((Icon, i) => (
+              <Icon key={i} className="size-[15px] text-muted-foreground" />
+            ))}
+          </div>
         </div>
+
         <div className="flex min-w-0 flex-1 flex-col">
           <div className="flex h-12 items-center gap-2 border-b border-border px-5 text-[14px] font-semibold sm:px-6">
             <span className="text-faint">#</span>
             {channels[0]}
+            <span className="ms-auto flex items-center gap-1.5 rounded-full border border-border py-0.5 pe-2 ps-0.5 text-[11.5px] font-medium text-muted-foreground [--face-ring:var(--ui-background)]">
+              <FaceStack seeds={[olivia.id, jack.id, sam.id]} size={18} max={3} />6
+            </span>
           </div>
-          <ol className="flex flex-col gap-5 px-5 pb-4 pt-5 sm:px-6">
+          <ol className="flex flex-col gap-4 px-5 pb-3 pt-4 sm:px-6">
             <li className="flex items-center gap-3 text-[11.5px] font-medium text-faint">
               <span className="h-px flex-1 bg-border" />
               {p("today")}
               <span className="h-px flex-1 bg-border" />
             </li>
-            <Message who={olivia} time="09:12">
-              {p("message0")}
-            </Message>
-            <Message who={emma} time="09:20" turn={1}>
-              {t("reply1")}
-            </Message>
             <Message
               who={jack}
               time="09:40"
-              turn={2}
               extra={
                 <>
                   <Shot />
@@ -558,14 +647,33 @@ export function ChatSection() {
             >
               {p("message3")}
             </Message>
-            <Message who={sam} time="09:44" turn={3} reply={{ who: jack, text: p("message3") }}>
+            <Message who={sam} time="09:44" turn={1} reply={{ who: jack, text: p("message3") }}>
               {t("reply2")}
             </Message>
+            <Message who={noah} time="09:46" turn={2} extra={<VoiceNote />} />
           </ol>
-          <p data-reveal style={rise(120 + 80 * 4, { y: 6 })} className="px-5 pb-2 text-[12px] text-faint sm:px-6">
-            {p("typing", { name: noah.name })}
+          <p data-reveal style={rise(120 + 80 * 3, { y: 6 })} className="px-5 pb-2 text-[12px] text-faint sm:px-6">
+            {p("typing", { name: lily.name })}
           </p>
-          <div className="mx-5 mb-5 flex h-11 items-center rounded-[12px] border border-border px-4 text-[13.5px] text-faint sm:mx-6">{p("composer")}</div>
+          {/* The box, as the app draws it: what you write, then emoji, a picture and a file, and the microphone with nothing written yet. */}
+          <div className="mx-5 mb-5 rounded-2xl border border-border bg-card sm:mx-6">
+            <p className="px-4 pb-1 pt-3 text-[13.5px] text-faint">{p("composer")}</p>
+            <div className="flex items-center gap-0.5 px-2 pb-2 text-muted-foreground">
+              {[Smile, ImagePlus, Paperclip].map((Icon, i) => (
+                <span key={i} className="flex size-8 items-center justify-center">
+                  <Icon className="size-[18px]" />
+                </span>
+              ))}
+              <span className="me-1 ms-auto hidden items-center gap-1 text-[11px] text-faint sm:flex">
+                <kbd className="flex h-5 min-w-5 items-center justify-center rounded-md border border-border bg-muted px-1 font-sans text-[11px]">⇧</kbd>
+                <kbd className="flex h-5 min-w-5 items-center justify-center rounded-md border border-border bg-muted px-1 font-sans text-[11px]">↵</kbd>
+                <span className="ms-0.5">{p("newLine")}</span>
+              </span>
+              <span className="flex size-8 items-center justify-center max-sm:ms-auto">
+                <Mic className="size-[18px]" />
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -232,7 +232,31 @@
     "replyFiles": "{count, plural, other {# 件のファイル}}",
     "typingOne": "{name} さんが入力中",
     "typingTwo": "{a} さんと {b} さんが入力中",
-    "typingMany": "複数の人が入力中"
+    "typingMany": "複数の人が入力中",
+    "recordVoice": "ボイスメッセージを録音",
+    "cancelRecording": "録音を削除",
+    "sendVoice": "ボイスメッセージを送信",
+    "recording": "録音中",
+    "voiceMessage": "ボイスメッセージ",
+    "voiceDenied": "ボイスメッセージを録音するには、ブラウザでのマイクの使用を許可してください。",
+    "voiceNoMic": "マイクが見つかりません。ボイスメッセージを録音するにはマイクを接続してください。",
+    "voiceUnsupported": "このブラウザではボイスメッセージを録音できません。",
+    "voiceFailed": "ボイスメッセージを送信できませんでした。もう一度お試しください。",
+    "playVoice": "ボイスメッセージを再生",
+    "pauseVoice": "ボイスメッセージを一時停止",
+    "voiceSpeed": "再生速度",
+    "meetingStarted": "ミーティングが開始されました",
+    "meetingEnded": "ミーティングが終了しました",
+    "meetingJoin": "参加",
+    "meetingYoureIn": "参加中",
+    "meetingIn": "ミーティング中の{who}",
+    "meetingAnd": "と",
+    "meetingOthers": "{first}と他{count, plural, one {#人} other {#人}}",
+    "meetingRan": "{minutes}分",
+    "meetingUnderMinute": "1分未満",
+    "voiceSendHint": "送信",
+    "voiceDeleteHint": "削除",
+    "meetingStartedAt": "{time}に開始"
   },
   "proximity": {
     "call": "通話",
@@ -348,7 +372,11 @@
       },
       "free": "オフィスは1分で作れて、3人まで無料です。",
       "go": "オフィスを作る",
-      "notNow": "あとで"
+      "notNow": "あとで",
+      "voice": {
+        "title": "ボイスメッセージはオフィス機能で使えます",
+        "body": "文字を入力するより早いときは、オフィス内のどの会話でも手軽にボイスメッセージを録音して送信できます。"
+      }
     },
     "yourOffice": {
       "title": "このフロアを、あなたのものに",

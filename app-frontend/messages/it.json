@@ -232,7 +232,31 @@
     "replyFiles": "{count, plural, one {# file} other {# file}}",
     "typingOne": "{name} sta scrivendo",
     "typingTwo": "{a} e {b} stanno scrivendo",
-    "typingMany": "Diverse persone stanno scrivendo"
+    "typingMany": "Diverse persone stanno scrivendo",
+    "recordVoice": "Registra un messaggio vocale",
+    "cancelRecording": "Elimina registrazione",
+    "sendVoice": "Invia messaggio vocale",
+    "recording": "Registrazione",
+    "voiceMessage": "Messaggio vocale",
+    "voiceDenied": "Consenti l'uso del microfono nel browser per registrare un messaggio vocale.",
+    "voiceNoMic": "Nessun microfono trovato. Collegane uno per registrare un messaggio vocale.",
+    "voiceUnsupported": "Questo browser non può registrare messaggi vocali.",
+    "voiceFailed": "Impossibile inviare il messaggio vocale. Riprova.",
+    "playVoice": "Riproduci messaggio vocale",
+    "pauseVoice": "Pausa messaggio vocale",
+    "voiceSpeed": "Velocità di riproduzione",
+    "meetingStarted": "Riunione iniziata",
+    "meetingEnded": "Riunione terminata",
+    "meetingJoin": "Partecipa",
+    "meetingYoureIn": "Sei dentro",
+    "meetingIn": "{who} in riunione",
+    "meetingAnd": "e",
+    "meetingOthers": "{first} e {count, plural, one {# altro} other {# altri}}",
+    "meetingRan": "{minutes} min",
+    "meetingUnderMinute": "Meno di un minuto",
+    "voiceSendHint": "invia",
+    "voiceDeleteHint": "elimina",
+    "meetingStartedAt": "Iniziata alle {time}"
   },
   "proximity": {
     "call": "Chiama",
@@ -348,7 +372,11 @@
       },
       "free": "Creare un ufficio richiede un minuto ed è gratis fino a 3 persone.",
       "go": "Crea il mio ufficio",
-      "notNow": "Non ora"
+      "notNow": "Non ora",
+      "voice": {
+        "title": "I messaggi vocali sono inclusi nel tuo ufficio",
+        "body": "Registra un breve messaggio vocale in qualsiasi conversazione nel tuo ufficio, quando scrivere richiederebbe troppo tempo."
+      }
     },
     "yourOffice": {
       "title": "Rendi tuo questo piano",

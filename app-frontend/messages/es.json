@@ -232,7 +232,31 @@
     "replyFiles": "{count, plural, one {# archivo} other {# archivos}}",
     "typingOne": "{name} está escribiendo",
     "typingTwo": "{a} y {b} están escribiendo",
-    "typingMany": "Varias personas están escribiendo"
+    "typingMany": "Varias personas están escribiendo",
+    "recordVoice": "Grabar un mensaje de voz",
+    "cancelRecording": "Eliminar grabación",
+    "sendVoice": "Enviar mensaje de voz",
+    "recording": "Grabando",
+    "voiceMessage": "Mensaje de voz",
+    "voiceDenied": "Permite el acceso al micrófono en tu navegador para grabar un mensaje de voz.",
+    "voiceNoMic": "No se encontró ningún micrófono. Conecta uno para grabar un mensaje de voz.",
+    "voiceUnsupported": "Este navegador no puede grabar mensajes de voz.",
+    "voiceFailed": "No se pudo enviar el mensaje de voz. Inténtalo de nuevo.",
+    "playVoice": "Reproducir mensaje de voz",
+    "pauseVoice": "Pausar mensaje de voz",
+    "voiceSpeed": "Velocidad de reproducción",
+    "meetingStarted": "Reunión iniciada",
+    "meetingEnded": "Reunión finalizada",
+    "meetingJoin": "Unirse",
+    "meetingYoureIn": "Ya estás dentro",
+    "meetingIn": "{who} en la reunión",
+    "meetingAnd": "y",
+    "meetingOthers": "{first} y {count, plural, one {# otro} other {# otros}}",
+    "meetingRan": "{minutes} min",
+    "meetingUnderMinute": "Menos de un minuto",
+    "voiceSendHint": "enviar",
+    "voiceDeleteHint": "eliminar",
+    "meetingStartedAt": "Comenzó a las {time}"
   },
   "proximity": {
     "call": "Llamar",
@@ -348,7 +372,11 @@
       },
       "free": "Crear una oficina lleva un minuto y es gratis hasta 3 personas.",
       "go": "Crear mi oficina",
-      "notNow": "Ahora no"
+      "notNow": "Ahora no",
+      "voice": {
+        "title": "Los mensajes de voz vienen con una oficina",
+        "body": "Graba un mensaje de voz rápido en cualquier conversación de tu propia oficina cuando escribir te lleve más tiempo."
+      }
     },
     "yourOffice": {
       "title": "Haz tuya esta planta",

@@ -142,6 +142,8 @@ export class Room extends DurableObject<Env> {
   private pieces!: Pieces;
   /** Meeting hours, made once the room knows whether it is an office or a lobby copy. */
   private clockCache: MeetingClock | null = null;
+  /** Whether chat has heard about the main meeting since this room woke (tellChatAboutMain). */
+  private mainTold = false;
 
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
@@ -298,6 +300,10 @@ export class Room extends DurableObject<Env> {
 
     this.ctx.acceptWebSocket(server, [userTag(ticket.sub)]);
     this.remember(server, attachment);
+    if (!this.mainTold) {
+      this.mainTold = true;
+      this.tellChatAboutMain(room);
+    }
 
     send(server, {
       t: "welcome",
@@ -1103,6 +1109,27 @@ export class Room extends DurableObject<Env> {
     const clock = this.clock();
     const now = Date.now();
     if (clock?.update(meeting, this.meetingMembers(meeting).length, now)) this.clockChanged(room, now);
+    if (meeting === MAIN_MEETING) this.tellChatAboutMain(room);
+  }
+
+  /**
+   * An office's main meeting, for its card in #general (chat.ts): who is in
+   * it now, once each. Said whenever that changes, and once when the room
+   * first hears from anyone, so a card left open by a restart is closed.
+   */
+  private tellChatAboutMain(room: string): void {
+    if (lobbyCopyNumber(room) !== null) return;
+    const here = new Map<string, string>();
+    for (const socket of this.meetingMembers(MAIN_MEETING)) {
+      const { userId, name } = this.attachmentOf(socket);
+      if (!here.has(userId)) here.set(userId, name);
+    }
+    const people = [...here].map(([id, name]) => ({ id, name }));
+    this.ctx.waitUntil(
+      this.env.CHAT.getByName(room)
+        .mainMeeting(people, Date.now())
+        .catch((error: unknown) => console.error("room: couldn't tell chat about the meeting", error)),
+    );
   }
 
   /**

@@ -4,7 +4,9 @@ import { Fragment, useEffect, useLayoutEffect, useRef, useState, type ReactNode 
 import { useFormatter, useLocale, useNow, useTranslations } from "next-intl";
 import { ArrowDown, Check, Copy, Download, FileText, ImagePlus, Pencil, Reply, SmilePlus, Trash2 } from "@/components/ui/icons";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { isPicture, type ChatFile } from "@shared/chat";
+import { isPicture, isVoice, type ChatFile, type ChatMeeting } from "@shared/chat";
+import { MeetingCard } from "./MeetingCard";
+import { VoiceMessage } from "./VoiceMessage";
 import { fileUrl, sizeOf } from "@/lib/chatFiles";
 import { mentionSpans } from "@/lib/mentions";
 import { Viewer } from "./Viewer";
@@ -30,6 +32,8 @@ export interface Line {
   mark?: ReactNode;
   /** The message this answers: who said it and how it began, or that it's gone. */
   reply?: { id: string; author?: string; authorName?: string; body?: string; files?: number; gone?: boolean };
+  /** The main meeting's card, drawn in place of a message. */
+  meeting?: ChatMeeting;
 }
 
 const QUICK = ["👍", "❤️", "😂", "🎉", "👀", "✅"];
@@ -123,6 +127,8 @@ export function Conversation({
 
   // New messages: follow them if you were at the bottom, otherwise say so. Your own always come into view.
   const lastAuthor = lines.at(-1)?.author;
+  // Only the newest meeting card can still be the one going on.
+  const latestMeeting = lines.findLast((line) => line.meeting)?.id;
   useLayoutEffect(() => {
     const element = box.current;
     if (!element) return;
@@ -224,8 +230,17 @@ export function Conversation({
                 <DayLabel at={day.at} />
                 {day.lines.map((line, index) => {
                   const previous = day.lines[index - 1];
+                  if (line.meeting) {
+                    return (
+                      <Fragment key={line.id}>
+                        <Arrive fresh={settledAt !== null && line.at > settledAt}>
+                          <MeetingCard meeting={line.meeting} latest={line.id === latestMeeting} />
+                        </Arrive>
+                      </Fragment>
+                    );
+                  }
                   // A reply always shows whose it is, under the message it answers.
-                  const grouped = !!previous && !line.reply && previous.author === line.author && line.at - previous.at < RUN_MS;
+                  const grouped = !!previous && !previous.meeting && !line.reply && previous.author === line.author && line.at - previous.at < RUN_MS;
                   const fresh = settledAt !== null && line.at > settledAt;
                   return (
                     <Fragment key={line.id}>
@@ -692,21 +707,25 @@ function Linked({ text, mentioned = [], me }: { text: string; mentioned?: Array<
 const PICTURE = { width: 360, height: 280 };
 
 /**
- * What came with a message: pictures, drawn at their own shape (one on its
- * own, several as a grid of squares) and opened full size on a click; any
- * other file as a card that downloads it.
+ * What came with a message: a voice message as its player; pictures, drawn
+ * at their own shape (one on its own, several as a grid of squares) and
+ * opened full size on a click; any other file as a card that downloads it.
  */
 function Files({ files }: { files: ChatFile[] }) {
   const t = useTranslations("chat");
   const locale = useLocale();
   const [viewing, setViewing] = useState<ChatFile | null>(null);
   const pictures = files.filter((file) => isPicture(file));
-  const others = files.filter((file) => !isPicture(file));
+  const voices = files.filter((file) => isVoice(file));
+  const others = files.filter((file) => !isPicture(file) && !isVoice(file));
   const single = pictures.length === 1 ? pictures[0] : null;
   const fit = single?.width && single.height ? Math.min(1, PICTURE.width / single.width, PICTURE.height / single.height) : 1;
 
   return (
     <div className="mt-1.5 flex flex-col items-start gap-1.5">
+      {voices.map((file) => (
+        <VoiceMessage key={file.key} file={file} />
+      ))}
       {single ? (
         <button
           type="button"

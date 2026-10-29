@@ -197,6 +197,7 @@ export function ChatView({ channel }: { channel?: string }) {
     mentions: message.mentions,
     reactions: message.reactions,
     edited: message.edited,
+    meeting: message.meeting,
     reply: message.reply && {
       id: String(message.reply.seq),
       author: message.reply.author,
@@ -614,6 +615,7 @@ export function ChatView({ channel }: { channel?: string }) {
           onTyping={(on) => chat.typing(open, on)}
           typing={typingLine}
           onFiles={onFiles}
+          onVoiceBlocked={lobby ? () => place.officesOnly?.("voice") : undefined}
           upload={lobby ? undefined : (file, progress, signal) => upload(place.id, file, progress, signal)}
           discard={lobby ? undefined : discard}
           people={mentionable}

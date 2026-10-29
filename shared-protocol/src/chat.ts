@@ -69,12 +69,25 @@ export interface ChatFile {
   type: string;
   width?: number;
   height?: number;
+  /** A voice message: how long it plays, in seconds. */
+  duration?: number;
+  /** A voice message: how loud it is along the way, as VOICE_PEAKS numbers from 0 to 100, for its waveform. */
+  peaks?: number[];
 }
 
 /** Whether a file shows as a picture: the kinds every browser draws safely. */
 export function isPicture(file: Pick<ChatFile, "type">): boolean {
   return /^image\/(png|jpeg|webp|gif|avif)$/.test(file.type);
 }
+
+/** Whether a file is a voice message recorded in chat, rather than a sound file someone shared. */
+export function isVoice(file: Pick<ChatFile, "type" | "duration">): boolean {
+  return file.type.startsWith("audio/") && typeof file.duration === "number";
+}
+
+/** The longest voice message, in seconds, and how many bars its waveform has. */
+export const VOICE_MAX_SECONDS = 300;
+export const VOICE_PEAKS = 48;
 
 /**
  * Typing: a browser says "on" when its box gets words and again at most this
@@ -121,7 +134,26 @@ export interface ChatMessage {
   passing?: boolean;
   /** The message this answers, if it's a reply. */
   reply?: ChatReply;
+  /** The office's main meeting, shown in #general as a card rather than words. */
+  meeting?: ChatMeeting;
 }
+
+/**
+ * The main meeting in #general, the way a group call shows in a group chat:
+ * when it started, everyone who came, who is in it now, and when it ended.
+ * It is written by the floor as people come and go, never by a person.
+ */
+export interface ChatMeeting {
+  started: number;
+  ended?: number;
+  /** Everyone who has been in it, in the order they came, with the name they had then. */
+  people: Array<{ id: string; name: string }>;
+  /** Who is in it now, by id. */
+  here: string[];
+}
+
+/** How many faces a meeting card keeps. */
+export const MEETING_PEOPLE_MAX = 24;
 
 /** What a client sends up the chat socket. */
 export type ChatClientMessage =
@@ -150,6 +182,7 @@ export type ChatServerMessage =
   // `by` is who changed it: its author, or MODERATOR. A lobby direct message was never stored, so
   // the server can't check it; clients apply a change to one only when `by` is its author.
   | { t: "chat_edited"; seq: number; channel: string; body: string; edited: number; by: string; mentions?: string[] }
+  | { t: "chat_meeting"; seq: number; channel: string; meeting: ChatMeeting }
   | { t: "chat_found"; q: string; messages: ChatMessage[] }
   | { t: "chat_typing"; channel: string; userId: string; name: string; on: boolean }
   | { t: "chat_deleted"; seq: number; channel: string; by: string }

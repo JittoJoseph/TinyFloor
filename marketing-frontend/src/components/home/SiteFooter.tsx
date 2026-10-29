@@ -50,6 +50,14 @@ const FEATURED = [
     href: "https://twelve.tools",
     light: "https://twelve.tools/badge1-light.svg",
     dark: "https://twelve.tools/badge2-dark.svg",
+    width: 111,
+  },
+  {
+    name: "Fazier",
+    href: "https://fazier.com",
+    light: "https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=light",
+    dark: "https://fazier.com/api/v1//public/badges/launch_badges.svg?badge_type=launched&theme=dark",
+    width: 70,
   },
 ];
 
@@ -139,9 +147,9 @@ export async function SiteFooter({ path = "/" }: { path?: string }) {
                 <li key={badge.href}>
                   <a href={badge.href} target="_blank" rel="noopener" className="block opacity-80 transition-opacity hover:opacity-100">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={badge.light} alt={`Featured on ${badge.name}`} width={111} height={30} loading="lazy" className="dark:hidden" />
+                    <img src={badge.light} alt={`Featured on ${badge.name}`} width={badge.width} height={30} loading="lazy" className="dark:hidden" />
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={badge.dark} alt={`Featured on ${badge.name}`} width={111} height={30} loading="lazy" className="hidden dark:block" />
+                    <img src={badge.dark} alt={`Featured on ${badge.name}`} width={badge.width} height={30} loading="lazy" className="hidden dark:block" />
                   </a>
                 </li>
               ))}

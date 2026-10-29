@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import {
   ArrowRight,
@@ -22,6 +22,8 @@ import { PLANS } from "@/lib/plans";
 import { cn } from "@/lib/utils";
 import { ANCHOR, CJK_HEADLINE, COLUMN, OpenSource } from "./Blocks";
 import { PriceSlider } from "./PriceSlider";
+import { Laurel } from "./Laurel";
+import { Muted, rise, split, Split } from "./Split";
 
 /*
  * The home page between the hero and the questions. Each section is its own
@@ -52,12 +54,16 @@ function More({ href, children, className }: { href: string; children: ReactNode
 function Words({ title, body, more, href, className }: { title: string; body: string; more?: string; href?: string; className?: string }) {
   return (
     <div className={className}>
-      <h2 className={cn(TITLE, CJK_HEADLINE, "max-w-[15ch]")}>{title}</h2>
-      <p className={cn(BODY, "mt-6 max-w-[29rem]")}>{body}</p>
+      <h2 data-reveal-words className={cn(TITLE, CJK_HEADLINE, "max-w-[15ch]")}>
+        <Split text={title} />
+      </h2>
+      <p data-reveal className={cn(BODY, "mt-6 max-w-[29rem]")} style={rise(80)}>
+        {body}
+      </p>
       {more && href && (
-        <More href={href} className="mt-8">
-          {more}
-        </More>
+        <div data-reveal className="mt-8" style={rise(140)}>
+          <More href={href}>{more}</More>
+        </div>
       )}
     </div>
   );
@@ -90,6 +96,50 @@ const COUNTRIES = [
   "Nederland",
 ];
 
+/** A star, as rating marks are drawn: five points, softly rounded. */
+function Star({ className, style }: { className?: string; style?: CSSProperties }) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden className={className} style={style}>
+      <path
+        fill="currentColor"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinejoin="round"
+        d="M12 2.8l2.75 5.6 6.15.9-4.45 4.33 1.05 6.12L12 16.86l-5.5 2.9 1.05-6.13L3.1 9.3l6.15-.9z"
+      />
+    </svg>
+  );
+}
+
+/**
+ * Trust, set the way an award is: five stars and a short line inside a
+ * laurel, and under it, between two hairlines, who it is that trusts it.
+ */
+export function Trust() {
+  const t = useTranslations("homepage.trust");
+  return (
+    <section data-reveal-laurel aria-label={t("line")} className={cn(COLUMN, "mt-20 flex flex-col items-center sm:mt-28")}>
+      <Laurel>
+        <span aria-hidden className="flex items-center gap-0.5 text-[#22c55e]">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <Star key={i} className="laurel-mark size-3.5 sm:size-[15px]" style={{ "--i": i } as CSSProperties} />
+          ))}
+        </span>
+        <span className="laurel-mark text-[12px] font-semibold tracking-[-0.01em] text-foreground sm:text-[13px]" style={{ "--i": 5 } as CSSProperties}>
+          {t("title")}
+        </span>
+      </Laurel>
+      <div className="mt-5 flex items-center justify-center gap-4">
+        <span aria-hidden className="hidden h-px w-10 bg-border sm:block sm:w-16" />
+        <p className="text-center text-[13px] text-muted-foreground sm:text-[14px]" style={{ "--d": "260ms" } as CSSProperties}>
+          <Split text={t("line")} />
+        </p>
+        <span aria-hidden className="hidden h-px w-10 bg-border sm:block sm:w-16" />
+      </div>
+    </section>
+  );
+}
+
 /** The countries, drifting past within the column, fading out at both ends. */
 export function Countries() {
   const t = useTranslations("homepage.countries");
@@ -103,9 +153,15 @@ export function Countries() {
     </ul>
   );
   return (
-    <section aria-label={t("label")} className={cn(COLUMN, "mt-20 sm:mt-28")}>
-      <p className="text-center text-[13.5px] text-faint">{t("label")}</p>
-      <div className="mx-auto mt-7 flex max-w-[860px] overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]">
+    <section aria-label={t("label")} className={cn(COLUMN, "mt-16 sm:mt-20")}>
+      <p data-reveal className="text-center text-[13.5px] text-faint" style={rise(0, { y: 8 })}>
+        {t("label")}
+      </p>
+      <div
+        data-reveal
+        className="mx-auto mt-7 flex max-w-[860px] overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_20%,black_80%,transparent)]"
+        style={rise(80, { y: 0 })}
+      >
         <div className="flex animate-[drift_70s_linear_infinite] will-change-transform motion-reduce:animate-none rtl:[animation-direction:reverse]">
           {row()}
           {row(true)}
@@ -155,16 +211,20 @@ export function Statement() {
   return (
     <section id="about" className={cn(COLUMN, ANCHOR, "py-28 sm:py-40")}>
       <h2
+        data-reveal-words
         className={cn(
           "mx-auto max-w-[23ch] text-balance text-center text-[34px] font-normal leading-[1.12] tracking-[-0.04em] min-[400px]:text-[38px] sm:text-[60px] sm:leading-[1.06]",
           CJK_HEADLINE,
         )}
       >
-        {t.rich("text", { muted: (chunks) => <span className="text-muted-foreground/70">{chunks}</span> })}
+        {split(
+          t.rich("text", { muted: (chunks) => <Muted>{chunks}</Muted> }),
+          (words) => <span className="text-muted-foreground/70">{words}</span>,
+        )}
       </h2>
       <ul className="mx-auto mt-16 grid max-w-[960px] gap-10 sm:mt-20 md:grid-cols-3 md:gap-0">
         {points.map((point, i) => (
-          <li key={point.key} className={cn("md:px-6", i > 0 && "md:border-s md:border-border")}>
+          <li key={point.key} data-reveal className={cn("md:px-6", i > 0 && "md:border-s md:border-border")} style={rise(60 + 60 * i)}>
             <Link href={point.href} className="group flex flex-col items-center gap-5 text-center">
               <span className="flex h-12 items-center font-(family-name:--font-app)">{point.visual}</span>
               <span className="text-[15.5px] font-medium tracking-[-0.01em] decoration-foreground/30 underline-offset-4 group-hover:underline">{t(`points.${point.key}`)}</span>
@@ -206,8 +266,8 @@ export function PresenceSection() {
   const t = useTranslations("homepage.presence");
   const here = ROSTER.filter((one) => one.presence !== "away");
   const away = ROSTER.filter((one) => one.presence === "away");
-  const row = (one: (typeof ROSTER)[number]) => (
-    <li key={one.key} className="flex items-center gap-3.5 py-3">
+  const row = (one: (typeof ROSTER)[number], i: number) => (
+    <li key={one.key} data-reveal className="flex items-center gap-3.5 py-3" style={rise(40 + 40 * i, { y: 10 })}>
       <Face seed={PEOPLE[one.key].id} size={34} presence={one.presence} />
       <span className="min-w-0 flex-1">
         <span className="block text-[14.5px] font-medium leading-tight">{PEOPLE[one.key].name}</span>
@@ -226,16 +286,16 @@ export function PresenceSection() {
     <section id="people" className={cn(COLUMN, ANCHOR, "grid items-center gap-14 py-24 sm:py-32 lg:grid-cols-[1fr_400px] lg:gap-24")}>
       <Words title={t("title")} body={t("body")} more={t("more")} href="/team-presence" />
       <div className="font-(family-name:--font-app) [--face-ring:var(--ui-background)]">
-        <p className="flex items-center justify-between border-b border-border pb-3 text-[12.5px] font-medium text-faint">
+        <p data-reveal className="flex items-center justify-between border-b border-border pb-3 text-[12.5px] font-medium text-faint" style={rise(0, { y: 6 })}>
           {t("here")}
           <span className="tabular-nums">{here.length}</span>
         </p>
-        <ul className="divide-y divide-border/60">{here.map(row)}</ul>
-        <p className="mt-6 flex items-center justify-between border-b border-border pb-3 text-[12.5px] font-medium text-faint">
+        <ul className="divide-y divide-border/60">{here.map((one, i) => row(one, i))}</ul>
+        <p data-reveal className="mt-6 flex items-center justify-between border-b border-border pb-3 text-[12.5px] font-medium text-faint" style={rise(40 + 40 * here.length, { y: 6 })}>
           {t("away")}
           <span className="tabular-nums">{away.length}</span>
         </p>
-        <ul className="opacity-70">{away.map(row)}</ul>
+        <ul className="opacity-70">{away.map((one, i) => row(one, here.length + i))}</ul>
       </div>
     </section>
   );
@@ -246,9 +306,27 @@ export function PresenceSection() {
  * circle on a plain tile, the name in the corner, moving bars while they
  * talk, a quiet badge when their mic is off (MeetingTile).
  */
-function Tile({ seed, name, talking = false, muted = false, className }: { seed: string; name: string; talking?: boolean; muted?: boolean; className?: string }) {
+function Tile({
+  seed,
+  name,
+  talking = false,
+  muted = false,
+  reveal,
+  className,
+}: {
+  seed: string;
+  name: string;
+  talking?: boolean;
+  muted?: boolean;
+  /** Its turn, when the tiles arrive one after another. */
+  reveal?: number;
+  className?: string;
+}) {
   return (
-    <div className={cn("relative overflow-hidden rounded-2xl bg-[color-mix(in_oklab,var(--ui-muted)_85%,var(--ui-background))] [container-type:size]", className)}>
+    <div
+      data-reveal={reveal === undefined ? undefined : true}
+      style={reveal === undefined ? undefined : rise(50 * reveal, { y: 12, scale: 0.97 })}
+      className={cn("relative overflow-hidden rounded-2xl bg-[color-mix(in_oklab,var(--ui-muted)_85%,var(--ui-background))] [container-type:size]", className)}>
       <span aria-hidden className="absolute left-1/2 top-1/2 aspect-square h-[34cqh] max-h-28 -translate-x-1/2 -translate-y-1/2 rounded-full" style={{ backgroundImage: faceBackground(seed) }} />
       <span className="absolute bottom-2.5 start-3 truncate text-[12.5px] font-medium text-foreground/90">{name}</span>
       {(talking || muted) && (
@@ -294,14 +372,14 @@ export function MeetSection() {
     <section id="meetings" className={cn(COLUMN, ANCHOR, "grid items-center gap-14 py-24 sm:py-32 lg:grid-cols-[1.25fr_1fr] lg:gap-20")}>
       <div className="order-2 font-(family-name:--font-app) lg:order-1">
         <div className="grid gap-2 sm:grid-cols-[1fr_150px]">
-          <Tile seed={emma.id} name={emma.name} talking className="aspect-[16/10]" />
+          <Tile seed={emma.id} name={emma.name} talking reveal={0} className="aspect-[16/10]" />
           <div className="grid grid-cols-3 gap-2 sm:grid-cols-1">
-            <Tile seed={jack.id} name={jack.name} className="aspect-[4/3] sm:aspect-auto" />
-            <Tile seed={olivia.id} name={olivia.name} muted className="aspect-[4/3] sm:aspect-auto" />
-            <Tile seed={sam.id} name={sam.name} className="aspect-[4/3] sm:aspect-auto" />
+            <Tile seed={jack.id} name={jack.name} reveal={1} className="aspect-[4/3] sm:aspect-auto" />
+            <Tile seed={olivia.id} name={olivia.name} muted reveal={2} className="aspect-[4/3] sm:aspect-auto" />
+            <Tile seed={sam.id} name={sam.name} reveal={3} className="aspect-[4/3] sm:aspect-auto" />
           </div>
         </div>
-        <div className="mt-4 flex items-center justify-between gap-4">
+        <div data-reveal className="mt-4 flex items-center justify-between gap-4" style={rise(180, { y: 8 })}>
           <p className="flex items-center gap-3 text-[13px]">
             <span className="font-medium tabular-nums">12:04</span>
             <span aria-hidden className="h-3.5 w-px bg-border" />
@@ -322,15 +400,18 @@ function Message({
   children,
   reply,
   extra,
+  turn = 0,
 }: {
   who: { id: string; name: string };
   time: string;
   children: ReactNode;
   reply?: { who: { id: string; name: string }; text: string };
   extra?: ReactNode;
+  /** Its place in the morning: the messages arrive in order as the window comes in. */
+  turn?: number;
 }) {
   return (
-    <li>
+    <li data-reveal style={rise(120 + 80 * turn, { y: 8 })}>
       {reply && (
         <div className="relative mb-1 flex h-5 items-center ps-12 text-[13px] leading-5">
           {/* The app's curl from over the face below into the quoted line (Conversation's Quote). */}
@@ -415,8 +496,10 @@ export function ChatSection() {
   return (
     <section id="chat" className={cn(COLUMN, ANCHOR, "py-24 sm:py-32")}>
       <div className="grid gap-6 lg:grid-cols-2 lg:gap-16">
-        <h2 className={cn(TITLE, CJK_HEADLINE, "max-w-[16ch]")}>{t("title")}</h2>
-        <div>
+        <h2 data-reveal-words className={cn(TITLE, CJK_HEADLINE, "max-w-[16ch]")}>
+          <Split text={t("title")} />
+        </h2>
+        <div data-reveal style={rise(80)}>
           <p className={cn(BODY, "max-w-[30rem]")}>{t("body")}</p>
           <More href="/team-chat" className="mt-6">
             {t("more")}
@@ -424,7 +507,7 @@ export function ChatSection() {
         </div>
       </div>
 
-      <div className="mt-14 flex overflow-hidden rounded-[20px] border border-border font-(family-name:--font-app) [--face-ring:var(--ui-background)] sm:mt-20">
+      <div data-reveal style={rise(0, { y: 28, scale: 0.985 })} className="mt-14 flex overflow-hidden rounded-[20px] border border-border font-(family-name:--font-app) [--face-ring:var(--ui-background)] sm:mt-20">
         <div className="hidden w-[220px] shrink-0 flex-col gap-0.5 border-e border-border p-3 md:flex">
           <p className="px-2.5 pb-1 pt-2 text-[11.5px] font-medium text-faint">{p("channels")}</p>
           {channels.map((name, i) => (
@@ -456,12 +539,13 @@ export function ChatSection() {
             <Message who={olivia} time="09:12">
               {p("message0")}
             </Message>
-            <Message who={emma} time="09:20">
+            <Message who={emma} time="09:20" turn={1}>
               {t("reply1")}
             </Message>
             <Message
               who={jack}
               time="09:40"
+              turn={2}
               extra={
                 <>
                   <Shot />
@@ -474,11 +558,13 @@ export function ChatSection() {
             >
               {p("message3")}
             </Message>
-            <Message who={sam} time="09:44" reply={{ who: jack, text: p("message3") }}>
+            <Message who={sam} time="09:44" turn={3} reply={{ who: jack, text: p("message3") }}>
               {t("reply2")}
             </Message>
           </ol>
-          <p className="px-5 pb-2 text-[12px] text-faint sm:px-6">{p("typing", { name: noah.name })}</p>
+          <p data-reveal style={rise(120 + 80 * 4, { y: 6 })} className="px-5 pb-2 text-[12px] text-faint sm:px-6">
+            {p("typing", { name: noah.name })}
+          </p>
           <div className="mx-5 mb-5 flex h-11 items-center rounded-[12px] border border-border px-4 text-[13.5px] text-faint sm:mx-6">{p("composer")}</div>
         </div>
       </div>
@@ -569,13 +655,15 @@ export function Extras() {
   const cell = "flex min-w-0 flex-col p-6 sm:p-8";
   return (
     <section id="features" className={cn(COLUMN, ANCHOR, "py-24 sm:py-32")}>
-      <h2 className={cn(TITLE, CJK_HEADLINE, "max-w-[18ch]")}>{t("title")}</h2>
-      <p className={cn("mt-8 max-w-[38ch] text-pretty text-[22px] leading-[1.4] tracking-[-0.02em] text-muted-foreground/80 sm:text-[28px] sm:leading-[1.35]", CJK_HEADLINE)}>
+      <h2 data-reveal-words className={cn(TITLE, CJK_HEADLINE, "max-w-[18ch]")}>
+        <Split text={t("title")} />
+      </h2>
+      <p data-reveal style={rise(80)} className={cn("mt-8 max-w-[38ch] text-pretty text-[22px] leading-[1.4] tracking-[-0.02em] text-muted-foreground/80 sm:text-[28px] sm:leading-[1.35]", CJK_HEADLINE)}>
         {t.rich("text", { b: (chunks) => <span className="text-foreground">{chunks}</span> })}
       </p>
 
       {/* The floor's moments, drifting past in rows that take turns going each way. */}
-      <div aria-hidden dir="ltr" className="mt-16 flex flex-col gap-3.5 overflow-hidden py-4 font-(family-name:--font-app) [--face-ring:var(--ui-card)] [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] sm:mt-20">
+      <div aria-hidden data-reveal style={rise(100, { y: 0 })} dir="ltr" className="mt-16 flex flex-col gap-3.5 overflow-hidden py-4 font-(family-name:--font-app) [--face-ring:var(--ui-card)] [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)] sm:mt-20">
         {rows.map((row, i) => (
           <div
             key={i}
@@ -592,7 +680,7 @@ export function Extras() {
       </div>
 
       <ul className="mt-16 grid grid-cols-[minmax(0,1fr)] border-y border-border sm:mt-20 md:grid-cols-2">
-        <li className={cn(cell, "border-border max-md:border-b md:border-e")}>
+        <li data-reveal style={rise(0)} className={cn(cell, "border-border max-md:border-b md:border-e")}>
           <div className="flex h-36 items-center justify-center font-(family-name:--font-app)">
             <span className="flex w-full max-w-[340px] items-center gap-2 rounded-[14px] border border-border p-1.5 ps-4 text-[13px]">
               <Link2 className="size-4 shrink-0 text-muted-foreground" />
@@ -608,7 +696,7 @@ export function Extras() {
           <h3 className="mt-6 text-[15.5px] font-medium tracking-[-0.01em]">{t("items.invite.title")}</h3>
           <p className="mt-1.5 text-[14px] leading-[1.55] text-muted-foreground">{t("items.invite.body")}</p>
         </li>
-        <li className={cn(cell, "overflow-hidden")}>
+        <li data-reveal style={rise(70)} className={cn(cell, "overflow-hidden")}>
           <div className="flex h-36 flex-col justify-center gap-3 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
             {[HELLOS, [...HELLOS].reverse()].map((words, row) => (
               <span key={row} className={cn("flex w-max animate-[drift_40s_linear_infinite] will-change-transform motion-reduce:animate-none", row === 1 && "[animation-direction:reverse]")}>
@@ -644,7 +732,8 @@ export function PriceSection() {
   return (
     <section id="plans" className={cn(COLUMN, ANCHOR, "grid items-center gap-14 py-24 sm:py-32 lg:grid-cols-2 lg:gap-24")}>
       <Words title={t("title")} body={t("body")} more={t("more")} href="/pricing" />
-      <PriceSlider
+      <div data-reveal style={rise(80, { y: 20, scale: 0.985 })}>
+        <PriceSlider
         locale={locale}
         price={pro.price}
         free={free.people}
@@ -652,7 +741,8 @@ export function PriceSection() {
         low={8}
         high={16}
         labels={{ team: t("team"), people: t.raw("people") as string, ours: t("ours"), theirs: t.raw("theirs") as string, month: t("month"), freeNote: t("freeNote") }}
-      />
+        />
+      </div>
     </section>
   );
 }
@@ -667,12 +757,18 @@ export function OpenSection() {
   const facts = ["members", "calls", "code"] as const;
   return (
     <section id="source" className={cn(COLUMN, ANCHOR, "py-24 text-center sm:py-32")}>
-      <h2 className={cn(TITLE, CJK_HEADLINE, "mx-auto max-w-[18ch]")}>{t("title")}</h2>
-      <p className={cn(BODY, "mx-auto mt-6 max-w-[34rem]")}>{t("body")}</p>
-      <OpenSource className="mx-auto mt-10 max-w-[720px]" />
+      <h2 data-reveal-words className={cn(TITLE, CJK_HEADLINE, "mx-auto max-w-[18ch]")}>
+        <Split text={t("title")} />
+      </h2>
+      <p data-reveal style={rise(80)} className={cn(BODY, "mx-auto mt-6 max-w-[34rem]")}>
+        {t("body")}
+      </p>
+      <div data-reveal style={rise(140, { y: 8 })}>
+        <OpenSource className="mx-auto mt-10 max-w-[720px]" />
+      </div>
       <ul className="mx-auto mt-16 grid max-w-[880px] gap-10 sm:mt-20 sm:grid-cols-3 sm:gap-0">
         {facts.map((key, i) => (
-          <li key={key} className={cn("sm:px-8", i > 0 && "sm:border-s sm:border-border")}>
+          <li key={key} data-reveal style={rise(60 * i)} className={cn("sm:px-8", i > 0 && "sm:border-s sm:border-border")}>
             <h3 className="text-[16px] font-medium tracking-[-0.01em]">{t(`facts.${key}.title`)}</h3>
             <p className="mx-auto mt-2 max-w-[16rem] text-[14px] leading-[1.55] text-muted-foreground">{t(`facts.${key}.body`)}</p>
           </li>

@@ -1249,6 +1249,10 @@
     "countries": {
       "label": "Des équipes travaillent sur TinyFloor en"
     },
+    "trust": {
+      "title": "Adoré des équipes à distance",
+      "line": "La confiance des startups, agences et studios du monde entier"
+    },
     "presence": {
       "title": "Sachez qui est là avant de demander.",
       "body": "Toute votre équipe à distance sur un seul étage, chacun à un bureau avec un statut. Voyez en un coup d'œil qui est disponible, qui est concentré et qui est en réunion, sans réunions de statut ni messages « vous êtes là ? ».",

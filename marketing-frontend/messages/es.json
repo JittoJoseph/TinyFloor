@@ -1249,6 +1249,10 @@
     "countries": {
       "label": "Equipos trabajando en TinyFloor en"
     },
+    "trust": {
+      "title": "Amado por equipos remotos",
+      "line": "La confianza de startups, agencias y estudios en todo el mundo"
+    },
     "presence": {
       "title": "Entérate de quién está antes de preguntar.",
       "body": "Todo tu equipo remoto en una sola planta, cada uno en su mesa con un estado. Mira de un vistazo quién está libre, quién está concentrado y quién está en una reunión, sin reuniones de estado ni mensajes de «¿estás ahí?».",

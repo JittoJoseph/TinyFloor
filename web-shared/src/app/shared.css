@@ -375,32 +375,6 @@ body {
   }
 }
 
-@keyframes reveal-in {
-  from {
-    opacity: 0;
-    filter: blur(3px);
-    transform: translate(var(--reveal-x, 0px), var(--reveal-y, 16px));
-  }
-  to {
-    opacity: 1;
-    filter: blur(0);
-    transform: none;
-  }
-}
-
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .reveal {
-      animation-name: reveal-in;
-      animation-duration: auto;
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-timeline: view();
-      animation-range: entry 4% entry 48%;
-    }
-  }
-}
-
 /* A call card growing into the spotlight, or settling back into the grid. */
 ::view-transition-group(*) {
   animation-duration: 320ms;

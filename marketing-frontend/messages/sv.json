@@ -1249,6 +1249,10 @@
     "countries": {
       "label": "Team jobbar på TinyFloor i"
     },
+    "trust": {
+      "title": "Älskat av distansteam",
+      "line": "Betrott av startups, byråer och studios världen över"
+    },
     "presence": {
       "title": "Se vem som är på plats innan du frågar.",
       "body": "Hela ditt distansteam på ett och samma plan, var och en vid ett skrivbord med en status. Se med en snabb blick vem som är ledig, vem som fokuserar och vem som sitter i möte, helt utan statusmöten eller ”är du där?”-meddelanden.",

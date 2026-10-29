@@ -1249,6 +1249,10 @@
     "countries": {
       "label": "Teams are working on TinyFloor in"
     },
+    "trust": {
+      "title": "Loved by remote teams",
+      "line": "Trusted by startups, agencies and studios worldwide"
+    },
     "statement": {
       "text": "A virtual office for remote teams, <muted>where talking doesn’t need a meeting.</muted>",
       "points": {

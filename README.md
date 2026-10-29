@@ -40,9 +40,9 @@
 
 ## What is TinyFloor?
 
-TinyFloor is a **virtual office** for small remote teams: a shared pixel-art floor in the browser where everyone has a desk and a status. You can see who's in, walk over to a teammate's desk and call them in one click, and meet in the meeting room down the hall. The office stays open all day, so a quick question stays quick and nobody has to schedule a call to say hello.
+TinyFloor is a **virtual office** for remote teams: a shared pixel-art floor in the browser where everyone has a desk and a status. You can see who's in, walk over to a teammate's desk and call them in one click, and meet in the meeting room down the hall. The office stays open all day, so a quick question stays quick and nobody has to schedule a call to say hello.
 
-Remote work lost the hallway. TinyFloor is a virtual workspace that puts it back, without anything to install.
+Talking to a teammate shouldn't need a calendar invite. TinyFloor makes it one click, with nothing to install.
 
 It's a hosted service at **[tinyfloor.com](https://www.tinyfloor.com)**: make an office in a minute, send your team the invite link, and you're working side by side. The code is open source under the AGPL-3.0, here on GitHub.
 

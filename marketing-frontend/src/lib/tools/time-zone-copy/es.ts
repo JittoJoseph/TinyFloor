@@ -83,7 +83,7 @@ const es: TimeZonesContent = {
   ],
   fit: {
     title: "Aprovecha las horas en común",
-    body: "TinyFloor es una oficina virtual para equipos pequeños. En las horas que compartís, todos los que están conectados están en la misma planta, y una pregunta es acercarse a la mesa de alguien en lugar de programar una llamada. Es gratis hasta 3 personas y 29 $ al mes para todo el equipo.",
+    body: "TinyFloor es una oficina virtual para equipos remotos. En las horas que compartís, todos los que están conectados están en la misma planta, y una pregunta es acercarse a la mesa de alguien en lugar de programar una llamada. Es gratis hasta 3 personas y 29 $ al mes para todo el equipo.",
     cta: "Prueba la oficina de demostración",
   },
   faqTitle: "Preguntas <em>frecuentes.</em>",

@@ -229,7 +229,7 @@ const it: IcebreakersContent = {
   ],
   fit: {
     title: "Fate lo standup sul piano",
-    body: "TinyFloor è un ufficio virtuale per piccoli team: vedi chi è alla scrivania, ti avvicini per parlare e vi ritrovate in sala riunioni per lo standup, rompighiaccio compreso. Funziona in una scheda del browser, gratis fino a 3 persone e 29 $ al mese per tutto il team.",
+    body: "TinyFloor è un ufficio virtuale per team da remoto: vedi chi è alla scrivania, ti avvicini per parlare e vi ritrovate in sala riunioni per lo standup, rompighiaccio compreso. Funziona in una scheda del browser, gratis fino a 3 persone e 29 $ al mese per tutto il team.",
     cta: "Prova l'ufficio demo",
   },
   faqTitle: "Domande <em>frequenti.</em>",

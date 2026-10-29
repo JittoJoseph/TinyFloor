@@ -190,7 +190,7 @@ const es: IcebreakersContent = {
   ],
   fit: {
     title: "Hazla en la oficina",
-    body: "TinyFloor es una oficina virtual para equipos pequeños: ves quién está en su mesa, te acercas para hablar y os reunís en la sala de reuniones para la daily, rompehielos incluido. Funciona en una pestaña del navegador, gratis para hasta 3 personas y 29 US$ al mes para todo el equipo.",
+    body: "TinyFloor es una oficina virtual para equipos remotos: ves quién está en su mesa, te acercas para hablar y os reunís en la sala de reuniones para la daily, rompehielos incluido. Funciona en una pestaña del navegador, gratis para hasta 3 personas y 29 US$ al mes para todo el equipo.",
     cta: "Probar la oficina de demostración",
   },
   faqTitle: "Preguntas <em>frecuentes.</em>",

@@ -1,6 +1,6 @@
 {
   "landing": {
-    "description": "Ein virtuelles Büro für kleine Remote-Teams, im Browser. Jeder hat einen Schreibtisch auf einer Etage: Sieh, wer da ist, geh rüber und rufe ein Teammitglied an, triff dich im Meetingraum und chatte direkt daneben.",
+    "description": "Ein virtuelles Büro für Remote-Teams, im Browser. Jeder hat einen Schreibtisch auf einer Etage: Sieh, wer da ist, geh rüber und rufe ein Teammitglied an, triff dich im Meetingraum und chatte direkt daneben.",
     "features": [
       "Sprach- und Videoanrufe mit einem Teammitglied",
       "Bildschirmfreigabe in Anrufen und Meetings",
@@ -557,7 +557,7 @@
         "label": "Gather vs. Kumospace",
         "meta": {
           "title": "Gather vs. Kumospace: Preise, Gratis-Tarife und eine dritte Option",
-          "description": "Gather und Kumospace im Vergleich: was ein Team bei beiden zahlt, Gratis-Tarife, Aufnahmen, Apps und Bürogestaltung, und wo TinyFloor für kleine Remote-Teams passt, für 29 $ für das ganze Team."
+          "description": "Gather und Kumospace im Vergleich: was ein Team bei beiden zahlt, Gratis-Tarife, Aufnahmen, Apps und Bürogestaltung, und wo TinyFloor für Teams von bis zu 15 passt, für 29 $ für das ganze Team."
         },
         "title": "<em>Gather vs. Kumospace</em>, und eine dritte Option.",
         "subtitle": "Beide rechnen pro Mitglied ab, sobald der Gratis-Bereich endet: Gather hat keinen Gratis-Tarif, der von Kumospace endet bei 5. Wenn dein Team klein ist und ein einfaches Büro will, ist TinyFloor ein Preis für die ganze Fläche.",
@@ -1118,7 +1118,7 @@
       "description": "TinyFloor ist ein virtuelles Büro für Remote-Teams: eine gemeinsame Etage im Browser, auf der du siehst, wer da ist, und einfach rübergehst, um zu reden. Wer wir sind und wie du uns erreichst."
     },
     "eyebrow": "Über uns",
-    "title": "Remote-Arbeit hat den Flur verloren. Wir bauen ihn wieder auf.",
+    "title": "Remote-Arbeit hat jedes Gespräch in ein Meeting verwandelt. Wir ändern das.",
     "intro": "TinyFloor ist ein virtuelles Büro für Remote-Teams: eine gemeinsame Etage im Browser, auf der du siehst, wer da ist, und einfach rübergehst, um zu reden.",
     "why": {
       "title": "Warum wir es bauen",
@@ -1277,7 +1277,7 @@
       "more": "Pläne und Preise ansehen"
     },
     "statement": {
-      "text": "Ein virtuelles Büro für kleine Remote-Teams, <muted>bei dem der Flur wieder da ist.</muted>",
+      "text": "Ein virtuelles Büro für Remote-Teams, <muted>bei dem Reden kein Meeting braucht.</muted>",
       "points": {
         "seen": "Sieh, wer da ist",
         "talk": "Geh rüber zum Reden",

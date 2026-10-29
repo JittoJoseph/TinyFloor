@@ -1,6 +1,6 @@
 {
   "landing": {
-    "description": "Virtuaalitoimisto pienille etätiimeille selaimessa. Jokaisella on työpöytä samassa kerroksessa: näe kuka on paikalla, kävele luo ja soita kollegalle, tapaa kokoushuoneessa ja chattaa sen vieressä.",
+    "description": "Virtuaalitoimisto etätiimeille selaimessa. Jokaisella on työpöytä samassa kerroksessa: näe kuka on paikalla, kävele luo ja soita kollegalle, tapaa kokoushuoneessa ja chattaa sen vieressä.",
     "features": [
       "Ääni- ja videopuhelut kollegan kanssa",
       "Näytön jako puheluissa ja kokouksissa",
@@ -557,7 +557,7 @@
         "label": "Gather vs Kumospace",
         "meta": {
           "title": "Gather vs Kumospace: hinnat, ilmaiset paketit ja kolmas vaihtoehto",
-          "description": "Gather ja Kumospace rinnakkain: mitä tiimi maksaa kummassakin, ilmaiset paketit, tallennus, sovellukset ja toimiston suunnittelu, sekä mihin TinyFloor sopii pienille etätiimeille, 29 $ koko tiimiltä."
+          "description": "Gather ja Kumospace rinnakkain: mitä tiimi maksaa kummassakin, ilmaiset paketit, tallennus, sovellukset ja toimiston suunnittelu, sekä mihin TinyFloor sopii enintään 15 hengen tiimeille, 29 $ koko tiimiltä."
         },
         "title": "<em>Gather vs Kumospace</em>, ja kolmas vaihtoehto.",
         "subtitle": "Molemmat laskuttavat jäsentä kohden, kun ilmainen taso loppuu: Gatherilla ei ole ilmaista pakettia, ja Kumospacen paketti loppuu viiteen. Jos tiimisi on pieni ja haluaa yksinkertaisen toimiston, TinyFloor on yksi hinta koko kerrokselle.",
@@ -1118,7 +1118,7 @@
       "description": "TinyFloor on virtuaalitoimisto etätiimeille: yhteinen kerros selaimessa, jossa näet, kuka on paikalla, ja voit kävellä juttelemaan. Keitä olemme ja miten tavoitat meidät."
     },
     "eyebrow": "Tietoa meistä",
-    "title": "Etätyö menetti käytävän. Rakennamme sen takaisin.",
+    "title": "Etätyö muutti jokaisen keskustelun palaveriksi. Me korjaamme sen.",
     "intro": "TinyFloor on virtuaalitoimisto etätiimeille: yhteinen kerros selaimessa, jossa näet, kuka on paikalla, ja voit kävellä juttelemaan.",
     "why": {
       "title": "Miksi rakennamme sitä",
@@ -1277,7 +1277,7 @@
       "more": "Katso tilaukset ja hinnoittelu"
     },
     "statement": {
-      "text": "Virtuaalitoimisto pienille etätiimeille, <muted>jossa on taas käytävä.</muted>",
+      "text": "Virtuaalitoimisto etätiimeille, <muted>jossa puhuminen ei vaadi palaveria.</muted>",
       "points": {
         "seen": "Näe, kuka on paikalla",
         "talk": "Kävele juttelemaan",

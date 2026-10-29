@@ -1,6 +1,6 @@
 {
   "landing": {
-    "description": "Ett virtuellt kontor för små distansteam, i webbläsaren. Alla har ett skrivbord på ett och samma plan: se vem som är på plats, gå fram och ring en kollega, träffas i mötesrummet och chatta bredvid.",
+    "description": "Ett virtuellt kontor för distansteam, i webbläsaren. Alla har ett skrivbord på ett och samma plan: se vem som är på plats, gå fram och ring en kollega, träffas i mötesrummet och chatta bredvid.",
     "features": [
       "Röst- och videosamtal med en kollega",
       "Skärmdelning i samtal och möten",
@@ -557,7 +557,7 @@
         "label": "Gather vs Kumospace",
         "meta": {
           "title": "Gather vs Kumospace: priser, gratisplaner och ett tredje alternativ",
-          "description": "Gather och Kumospace sida vid sida: vad ett team betalar på varje, gratisplaner, inspelning, appar och kontorsdesign, och var TinyFloor passar för små distansteam, för 29 $ för hela teamet."
+          "description": "Gather och Kumospace sida vid sida: vad ett team betalar på varje, gratisplaner, inspelning, appar och kontorsdesign, och var TinyFloor passar för team på upp till 15 personer, för 29 $ för hela teamet."
         },
         "title": "<em>Gather vs Kumospace</em>, och ett tredje alternativ.",
         "subtitle": "Båda tar betalt per medlem när du passerat gratisnivån: Gather har ingen gratisplan och Kumospaces stannar vid 5. Om ert team är litet och vill ha ett enkelt kontor är TinyFloor ett pris för hela våningen.",
@@ -1118,7 +1118,7 @@
       "description": "TinyFloor är ett virtuellt kontor för distansteam: en gemensam våning i webbläsaren där du ser vem som är här och går fram för att prata. Vilka vi är och hur du når oss."
     },
     "eyebrow": "Om oss",
-    "title": "Distansarbetet tappade korridoren. Vi bygger tillbaka den.",
+    "title": "Distansarbetet förvandlade varje samtal till ett möte. Det fixar vi.",
     "intro": "TinyFloor är ett virtuellt kontor för distansteam: en gemensam våning i webbläsaren där du ser vem som är här och går fram för att prata.",
     "why": {
       "title": "Varför vi bygger det",
@@ -1277,7 +1277,7 @@
       "more": "Se planer och priser"
     },
     "statement": {
-      "text": "Ett virtuellt kontor för små distansteam, <muted>med korridoren tillbaka.</muted>",
+      "text": "Ett virtuellt kontor för distansteam, <muted>där man inte behöver ett möte för att prata.</muted>",
       "points": {
         "seen": "Se vem som är på plats",
         "talk": "Gå fram och prata",

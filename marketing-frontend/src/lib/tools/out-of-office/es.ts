@@ -123,7 +123,7 @@ const es: OooContent = {
   ],
   fit: {
     title: "Notas de ausencia, ya dentro de la oficina",
-    body: "En TinyFloor, una oficina virtual para equipos pequeños, una nota como \"🌴 De vacaciones hasta el lunes\" va junto a tu nombre, para que el equipo lo sepa antes de intentar hablar contigo, y se borra sola ese día. Funciona en una pestaña del navegador, gratis para hasta 3 personas y 29 US$ al mes para todo el equipo.",
+    body: "En TinyFloor, una oficina virtual para equipos remotos, una nota como «🌴 De vacaciones hasta el lunes» va junto a tu nombre, para que el equipo lo sepa antes de intentar hablar contigo, y se borra sola ese día. Funciona en una pestaña del navegador, gratis para hasta 3 personas y 29 US$ al mes para todo el equipo.",
     cta: "Probar la oficina de demostración",
   },
   faqTitle: "Preguntas <em>frecuentes.</em>",

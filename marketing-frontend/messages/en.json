@@ -1,6 +1,6 @@
 {
   "landing": {
-    "description": "A virtual office for small remote teams, in the browser. Everyone has a desk on one floor: see who’s in, walk over and call a teammate, meet in the meeting room, and chat beside it.",
+    "description": "A virtual office for remote teams, in the browser. Everyone has a desk on one floor: see who’s in, walk over and call a teammate, meet in the meeting room, and chat beside it.",
     "features": [
       "Voice and video calls with a teammate",
       "Screen sharing in calls and meetings",
@@ -558,7 +558,7 @@
         "label": "Gather vs Kumospace",
         "meta": {
           "title": "Gather vs Kumospace: Pricing, Free Plans and a Third Option",
-          "description": "Gather vs Kumospace side by side: what a team pays on each, free plans, recording, apps and office design, and where TinyFloor fits for small remote teams at $29 for the whole team."
+          "description": "Gather vs Kumospace side by side: what a team pays on each, free plans, recording, apps and office design, and where TinyFloor fits for teams of up to 15 at $29 for the whole team."
         },
         "title": "<em>Gather vs Kumospace</em>, and a third option.",
         "subtitle": "Both charge per member once you're past the free tier: Gather has no free plan, Kumospace's stops at 5. If your team is small and wants a simple office, TinyFloor is one price for the whole floor.",
@@ -1118,7 +1118,7 @@
       "description": "TinyFloor is a virtual office for remote teams: a shared floor in the browser where you can see who's around and walk over to talk. Who we are and how to reach us."
     },
     "eyebrow": "About",
-    "title": "Remote work lost the hallway. We're building it back.",
+    "title": "Remote work turned every conversation into a meeting. We're fixing that.",
     "intro": "TinyFloor is a virtual office for remote teams: a shared floor in the browser where you can see who's around and walk over to talk.",
     "why": {
       "title": "Why we're building it",
@@ -1250,7 +1250,7 @@
       "label": "Teams are working on TinyFloor in"
     },
     "statement": {
-      "text": "A virtual office for small remote teams, <muted>with the hallway put back.</muted>",
+      "text": "A virtual office for remote teams, <muted>where talking doesn’t need a meeting.</muted>",
       "points": {
         "seen": "See who’s in",
         "talk": "Walk over to talk",

@@ -1,6 +1,6 @@
 {
   "landing": {
-    "description": "Wirtualne biuro dla małych zespołów zdalnych, w przeglądarce. Każdy ma biurko na jednym piętrze: zobacz, kto jest, podejdź i zadzwoń do kogoś z zespołu, spotkaj się w sali spotkań i rozmawiaj na czacie obok.",
+    "description": "Wirtualne biuro dla zespołów zdalnych, w przeglądarce. Każdy ma biurko na jednym piętrze: zobacz, kto jest, podejdź i zadzwoń do kogoś z zespołu, spotkaj się w sali spotkań i rozmawiaj na czacie obok.",
     "features": [
       "Rozmowy głosowe i wideo z osobami z zespołu",
       "Udostępnianie ekranu podczas rozmów i spotkań",
@@ -557,7 +557,7 @@
         "label": "Gather vs Kumospace",
         "meta": {
           "title": "Gather czy Kumospace: ceny, darmowe plany i trzecia opcja",
-          "description": "Gather i Kumospace obok siebie: ile płaci zespół w każdym z nich, darmowe plany, nagrywanie, aplikacje i urządzanie biura oraz gdzie pasuje TinyFloor dla małych zespołów zdalnych, za 29 $ dla całego zespołu."
+          "description": "Gather i Kumospace obok siebie: ile płaci zespół w każdym z nich, darmowe plany, nagrywanie, aplikacje i urządzanie biura oraz gdzie pasuje TinyFloor dla zespołów do 15 osób, za 29 $ dla całego zespołu."
         },
         "title": "<em>Gather vs Kumospace</em> i trzecia opcja.",
         "subtitle": "Oba liczą opłatę za członka, gdy wyjdziesz poza darmowy poziom: Gather nie ma darmowego planu, a ten w Kumospace kończy się na 5 osobach. Jeśli twój zespół jest mały i chce prostego biura, TinyFloor to jedna cena za całe piętro.",
@@ -1118,7 +1118,7 @@
       "description": "TinyFloor to wirtualne biuro dla zespołów zdalnych: wspólne piętro w przeglądarce, na którym widzisz, kto jest obecny, i podchodzisz, żeby porozmawiać. Kim jesteśmy i jak się z nami skontaktować."
     },
     "eyebrow": "O nas",
-    "title": "Praca zdalna straciła korytarz. Budujemy go na nowo.",
+    "title": "Praca zdalna zamieniła każdą rozmowę w spotkanie. Naprawiamy to.",
     "intro": "TinyFloor to wirtualne biuro dla zespołów zdalnych: wspólne piętro w przeglądarce, na którym widzisz, kto jest obecny, i podchodzisz, żeby porozmawiać.",
     "why": {
       "title": "Dlaczego to budujemy",
@@ -1277,7 +1277,7 @@
       "more": "Zobacz plany i cennik"
     },
     "statement": {
-      "text": "Wirtualne biuro dla małych zespołów zdalnych, <muted>z przywróconym korytarzem.</muted>",
+      "text": "Wirtualne biuro dla zespołów zdalnych, <muted>w którym rozmowa nie wymaga spotkania.</muted>",
       "points": {
         "seen": "Zobacz, kto jest",
         "talk": "Podejdź porozmawiać",

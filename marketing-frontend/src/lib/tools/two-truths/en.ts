@@ -180,7 +180,7 @@ const en: IcebreakersContent = {
   ],
   fit: {
     title: "Play it on the floor",
-    body: "TinyFloor is a virtual office for small teams: you see who's at their desk, walk over to talk, and meet in the meeting room for the standup, a game, or both. It runs in a browser tab, free for up to 3 people and $29 a month for the whole team.",
+    body: "TinyFloor is a virtual office for remote teams: you see who's at their desk, walk over to talk, and meet in the meeting room for the standup, a game, or both. It runs in a browser tab, free for up to 3 people and $29 a month for the whole team.",
     cta: "Try the demo office",
   },
   faqTitle: "Common <em>questions.</em>",

@@ -123,7 +123,7 @@ const it: OooContent = {
   ],
   fit: {
     title: "Le assenze, integrate nell'ufficio",
-    body: "In TinyFloor, un ufficio virtuale per piccoli team, una nota di stato come \"🌴 In ferie fino a lunedì\" resta sul tuo nome, così il team lo sa prima di provare a contattarti, e si cancella da sola il giorno stesso. Funziona in una scheda del browser, gratis fino a 3 persone e 29 $ al mese per tutto il team.",
+    body: "In TinyFloor, un ufficio virtuale per team da remoto, una nota di stato come “🌴 In ferie fino a lunedì” resta sul tuo nome, così the team lo sa prima di provare a contattarti, e si cancella da sola il giorno stesso. Funziona in una scheda del browser, gratis fino a 3 persone e 29 $ al mese per tutto il team.",
     cta: "Prova l'ufficio demo",
   },
   faqTitle: "Domande <em>frequenti.</em>",

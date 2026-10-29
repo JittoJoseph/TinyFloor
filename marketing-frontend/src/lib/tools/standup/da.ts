@@ -130,7 +130,7 @@ const da: StandupContent = {
   ],
   fit: {
     title: "Hold standuppen på etagen",
-    body: "TinyFloor er et virtuelt kontor til små teams: du kan se, hvem der sidder ved sit skrivebord, og standuppen er en tur ned til mødelokalet i stedet for endnu et link. Bagefter går du hen til den, der sidder fast. Det kører i en browserfane, gratis for op til 3 personer og 29 $ om måneden for hele teamet.",
+    body: "TinyFloor er et virtuelt kontor til remote-teams: du kan se, hvem der sidder ved sit skrivebord, og standuppen er en tur ned til mødelokalet i stedet for endnu et link. Bagefter går du hen til den, der sidder fast. Det kører i en browserfane, gratis for op til 3 personer og 29 $ om måneden for hele teamet.",
     cta: "Prøv demokontoret",
   },
   faqTitle: "Ofte stillede <em>spørgsmål.</em>",

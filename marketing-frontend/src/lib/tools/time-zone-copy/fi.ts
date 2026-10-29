@@ -83,7 +83,7 @@ const fi: TimeZonesContent = {
   ],
   fit: {
     title: "Ota yhteisistä tunneista kaikki irti",
-    body: "TinyFloor on virtuaalitoimisto pienille tiimeille. Yhteisinä tunteina kaikki paikalla olevat ovat samassa kerroksessa, ja kysymys on käynti jonkun työpisteellä eikä sovittava puhelu. Se on ilmainen enintään 3 hengelle ja 29 $ kuukaudessa koko tiimiltä.",
+    body: "TinyFloor on virtuaalitoimisto etätiimeille. Yhteisinä tunteina kaikki paikalla olevat ovat samassa kerroksessa, ja kysymys on käynti jonkun työpisteellä eikä sovittava puhelu. Se on ilmainen enintään 3 hengelle ja 29 $ kuukaudessa koko tiimiltä.",
     cta: "Kokeile demotoimistoa",
   },
   faqTitle: "Usein <em>kysyttyä.</em>",

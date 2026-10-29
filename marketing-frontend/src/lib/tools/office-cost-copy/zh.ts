@@ -118,7 +118,7 @@ const zh: OfficeCostsContent = {
   ],
   fit: {
     title: "整个团队一个价",
-    body: "TinyFloor 是给小团队用的浏览器办公室：走到同事身边就能聊，还有会议室、聊天和屏幕共享。3 人以内免费，超过以后不管多少人，整个团队每月 $29。它没有录制和 AI 纪要；如果你们需要这些，Gather 或 SoWork Premium 会更合适。",
+    body: "TinyFloor 是给远程团队用的浏览器办公室：走到同事身边就能聊，还有会议室、聊天和屏幕共享。3 人以内免费，超过以后不管多少人，整个团队每月 $29。它没有录制和 AI 纪要；如果你们需要这些，Gather 或 SoWork Premium 会更合适。",
     cta: "体验演示办公室",
   },
   faqTitle: "常见<em>问题。</em>",

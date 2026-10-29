@@ -123,7 +123,7 @@ const pl: OooContent = {
   ],
   fit: {
     title: "Nieobecności wbudowane w biuro",
-    body: "W TinyFloor, wirtualnym biurze dla małych zespołów, notatka statusu w stylu „🌴 Na urlopie do poniedziałku” widnieje przy twoim imieniu, więc zespół wie o tym, zanim spróbuje się z tobą skontaktować, a w dniu powrotu znika sama. Działa w karcie przeglądarki, za darmo do 3 osób i za 29 $ miesięcznie dla całego zespołu.",
+    body: "W TinyFloor, wirtualnym biurze dla zespołów zdalnych, notatka statusu w stylu „🌴 Na urlopie do poniedziałku” widnieje przy twoim imieniu, więc zespół wie o tym, zanim spróbuje się z tobą skontaktować, a w dniu powrotu znika sama. Działa w karcie przeglądarki, za darmo do 3 osób i za 29 $ miesięcznie dla całego zespołu.",
     cta: "Wypróbuj biuro demo",
   },
   faqTitle: "Częste <em>pytania.</em>",

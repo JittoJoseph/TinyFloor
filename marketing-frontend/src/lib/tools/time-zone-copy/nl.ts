@@ -83,7 +83,7 @@ const nl: TimeZonesContent = {
   ],
   fit: {
     title: "Haal meer uit de gedeelde uren",
-    body: "TinyFloor is een virtueel kantoor voor kleine teams. Tijdens de uren die jullie delen, is iedereen die er is op dezelfde verdieping, en een vraag is even naar iemands bureau lopen in plaats van een call inplannen. Het is gratis tot 3 mensen en $ 29 per maand voor het hele team.",
+    body: "TinyFloor is een virtueel kantoor voor remote teams. Tijdens de uren die jullie delen, is iedereen die er is op dezelfde verdieping, en een vraag is even naar iemands bureau lopen in plaats van een call inplannen. Het is gratis tot 3 mensen en $ 29 per maand voor het hele team.",
     cta: "Probeer het demokantoor",
   },
   faqTitle: "Veelgestelde <em>vragen.</em>",

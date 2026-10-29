@@ -130,7 +130,7 @@ const fi: StandupContent = {
   ],
   fit: {
     title: "Pidä aamupalaveri kerroksessa",
-    body: "TinyFloor on virtuaalitoimisto pienille tiimeille: näet, kuka istuu työpisteellään, ja daily on kävely neuvotteluhuoneeseen eikä taas yksi linkki. Sen jälkeen kävelet sen luo, joka on jumissa. Se toimii selaimen välilehdessä, ilmaiseksi enintään 3 hengelle ja 29 $ kuukaudessa koko tiimiltä.",
+    body: "TinyFloor on virtuaalitoimisto etätiimeille: näet, kuka istuu työpisteellään, ja daily on kävely neuvotteluhuoneeseen eikä taas yksi linkki. Sen jälkeen kävelet sen luo, joka on jumissa. Se toimii selaimen välilehdessä, ilmaiseksi enintään 3 hengelle ja 29 $ kuukaudessa koko tiimiltä.",
     cta: "Kokeile demotoimistoa",
   },
   faqTitle: "Usein <em>kysyttyä.</em>",

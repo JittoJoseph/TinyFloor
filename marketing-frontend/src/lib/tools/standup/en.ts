@@ -130,7 +130,7 @@ const en: StandupContent = {
   ],
   fit: {
     title: "Hold your standup on the floor",
-    body: "TinyFloor is a virtual office for small teams: you see who's at their desk, and the standup is a walk to the meeting room rather than another link. After it, walk over to whoever's blocked. It runs in a browser tab, free for up to 3 people and $29 a month for the whole team.",
+    body: "TinyFloor is a virtual office for remote teams: you see who's at their desk, and the standup is a walk to the meeting room rather than another link. After it, walk over to whoever's blocked. It runs in a browser tab, free for up to 3 people and $29 a month for the whole team.",
     cta: "Try the demo office",
   },
   faqTitle: "Common <em>questions.</em>",

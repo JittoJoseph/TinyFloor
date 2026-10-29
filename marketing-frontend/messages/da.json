@@ -1,6 +1,6 @@
 {
   "landing": {
-    "description": "Et virtuelt kontor til små fjernteams, i browseren. Alle har et skrivebord på én etage: se, hvem der er her, gå hen og ring til en kollega, mødes i mødelokalet, og chat ved siden af.",
+    "description": "Et virtuelt kontor til fjernteams, i browseren. Alle har et skrivebord på én etage: se, hvem der er her, gå hen og ring til en kollega, mødes i mødelokalet, og chat ved siden af.",
     "features": [
       "Lyd- og videoopkald med en kollega",
       "Skærmdeling i opkald og møder",
@@ -557,7 +557,7 @@
         "label": "Gather vs Kumospace",
         "meta": {
           "title": "Gather vs Kumospace: priser, gratisplaner og en tredje mulighed",
-          "description": "Gather og Kumospace side om side: hvad et team betaler hos hver, gratisplaner, optagelse, apps og indretning af kontoret, og hvor TinyFloor passer til små remote-teams, til 29 $ for hele teamet."
+          "description": "Gather og Kumospace side om side: hvad et team betaler hos hver, gratisplaner, optagelse, apps og indretning af kontoret, og hvor TinyFloor passer til teams på op til 15, til 29 $ for hele teamet."
         },
         "title": "<em>Gather vs Kumospace</em>, og et tredje alternativ.",
         "subtitle": "Begge tager betaling per medlem, når du er forbi gratisniveauet: Gather har ingen gratisplan, og Kumospaces stopper ved 5. Hvis jeres team er lille og vil have et enkelt kontor, er TinyFloor én pris for hele etagen.",
@@ -1118,7 +1118,7 @@
       "description": "TinyFloor er et virtuelt kontor til remote teams: en fælles etage i browseren, hvor du kan se, hvem der er her, og gå hen og snakke. Hvem vi er, og hvordan du fanger os."
     },
     "eyebrow": "Om os",
-    "title": "Fjernarbejde mistede gangen. Vi bygger den op igen.",
+    "title": "Fjernarbejde gjorde enhver samtale til et møde. Det løser vi.",
     "intro": "TinyFloor er et virtuelt kontor til remote teams: en fælles etage i browseren, hvor du kan se, hvem der er her, og gå hen og snakke.",
     "why": {
       "title": "Hvorfor vi bygger det",
@@ -1277,7 +1277,7 @@
       "more": "Se planer og priser"
     },
     "statement": {
-      "text": "Et virtuelt kontor til små fjernteams, <muted>med gangen tilbage.</muted>",
+      "text": "Et virtuelt kontor til fjernteams, <muted>hvor samtaler ikke kræver et møde.</muted>",
       "points": {
         "seen": "Se, hvem der er her",
         "talk": "Gå hen og snak",

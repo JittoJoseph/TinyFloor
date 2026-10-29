@@ -123,7 +123,7 @@ const fr: OooContent = {
   ],
   fit: {
     title: "Les absences, intégrées au bureau",
-    body: "Dans TinyFloor, un bureau virtuel pour les petites équipes, une note de statut comme « 🌴 En congés jusqu'à lundi » s'affiche sur votre nom, pour que l'équipe le sache avant d'essayer de vous joindre, et elle s'efface toute seule le jour venu. Il fonctionne dans un onglet du navigateur, gratuit jusqu'à 3 personnes et 29 $ par mois pour toute l'équipe.",
+    body: "Dans TinyFloor, un bureau virtuel pour les équipes à distance, une note de statut comme « 🌴 En congés jusqu'à lundi » s'affiche sur votre nom, pour que l'équipe le sache avant d'essayer de vous joindre, et elle s'efface toute seule le jour venu. Il fonctionne dans un onglet du navigateur, gratuit jusqu'à 3 personnes et 29 $ par mois pour toute l'équipe.",
     cta: "Essayer le bureau de démo",
   },
   faqTitle: "Questions <em>fréquentes.</em>",

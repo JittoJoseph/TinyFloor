@@ -118,7 +118,7 @@ const ko: OfficeCostsContent = {
   ],
   fit: {
     title: "팀 전체에 한 가격",
-    body: "TinyFloor는 작은 팀을 위한 브라우저 속 오피스예요. 걸어가서 말을 걸고, 회의실, 채팅, 화면 공유도 있어요. 3명까지 무료이고, 그 이상은 몇 명이든 팀 전체 월 $29예요. 녹화나 AI 노트는 없으니, 그게 필요하다면 Gather나 SoWork Premium이 더 잘 맞아요.",
+    body: "TinyFloor는 원격 팀을 위한 브라우저 속 오피스예요. 걸어가서 말을 걸고, 회의실, 채팅, 화면 공유도 있어요. 3명까지 무료이고, 그 이상은 몇 명이든 팀 전체 월 $29예요. 녹화나 AI 노트는 없으니, 그게 필요하다면 Gather나 SoWork Premium이 더 잘 맞아요.",
     cta: "데모 오피스 둘러보기",
   },
   faqTitle: "자주 묻는 <em>질문.</em>",

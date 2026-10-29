@@ -95,7 +95,7 @@ const en: TimeZonesContent = {
   ],
   fit: {
     title: "Make the shared hours count",
-    body: "TinyFloor is a virtual office for small teams. During the hours you share, everyone who's in is on the same floor, and a question is a walk over to someone's desk instead of a call to schedule. It's free for up to 3 people and $29 a month for the whole team.",
+    body: "TinyFloor is a virtual office for remote teams. During the hours you share, everyone who's in is on the same floor, and a question is a walk over to someone's desk instead of a call to schedule. It's free for up to 3 people and $29 a month for the whole team.",
     cta: "Try the demo office",
   },
   faqTitle: "Common <em>questions.</em>",

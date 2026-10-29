@@ -1,6 +1,6 @@
 {
   "landing": {
-    "description": "Een virtueel kantoor voor kleine remote teams, in de browser. Iedereen heeft een bureau op één verdieping: zie wie er is, loop langs en bel een collega, ontmoet elkaar in de vergaderruimte en chat ernaast.",
+    "description": "Een virtueel kantoor voor remote teams, in de browser. Iedereen heeft een bureau op één verdieping: zie wie er is, loop langs en bel een collega, ontmoet elkaar in de vergaderruimte en chat ernaast.",
     "features": [
       "Audio- en videogesprekken met een collega",
       "Schermdelen in gesprekken en vergaderingen",
@@ -557,7 +557,7 @@
         "label": "Gather vs Kumospace",
         "meta": {
           "title": "Gather vs Kumospace: prijzen, gratis abonnementen en een derde optie",
-          "description": "Gather en Kumospace naast elkaar: wat een team bij elk betaalt, gratis abonnementen, opnemen, apps en het kantoor inrichten, en waar TinyFloor past voor kleine remote teams, voor $ 29 voor het hele team."
+          "description": "Gather en Kumospace naast elkaar: wat een team bij elk betaalt, gratis abonnementen, opnemen, apps en het kantoor inrichten, en waar TinyFloor past voor teams tot 15 personen, voor $ 29 voor het hele team."
         },
         "title": "<em>Gather vs Kumospace</em>, en een derde optie.",
         "subtitle": "Beide rekenen per lid zodra je voorbij het gratis deel bent: Gather heeft geen gratis abonnement, dat van Kumospace stopt bij 5. Is je team klein en wil het een eenvoudig kantoor, dan is TinyFloor één prijs voor de hele verdieping.",
@@ -1118,7 +1118,7 @@
       "description": "TinyFloor is een virtueel kantoor voor remote teams: een gedeelde verdieping in de browser waar je ziet wie er is en even naar iemand toe loopt om te praten. Wie we zijn en hoe je ons bereikt."
     },
     "eyebrow": "Over ons",
-    "title": "Op afstand werken verloor de gang. Wij bouwen hem terug.",
+    "title": "Op afstand werken veranderde elk gesprek in een vergadering. Wij lossen dat op.",
     "intro": "TinyFloor is een virtueel kantoor voor remote teams: een gedeelde verdieping in de browser waar je ziet wie er is en even naar iemand toe loopt om te praten.",
     "why": {
       "title": "Waarom we het bouwen",
@@ -1277,7 +1277,7 @@
       "more": "Bekijk abonnementen en prijzen"
     },
     "statement": {
-      "text": "Een virtueel kantoor voor kleine remote teams, <muted>met de gang weer terug.</muted>",
+      "text": "Een virtueel kantoor voor remote teams, <muted>waar praten geen vergadering nodig heeft.</muted>",
       "points": {
         "seen": "Zie wie er is",
         "talk": "Loop langs om te praten",

@@ -130,7 +130,7 @@ const pt: StandupContent = {
   ],
   fit: {
     title: "Faça a daily no escritório",
-    body: "O TinyFloor é um escritório virtual para equipes pequenas: você vê quem está na mesa, e a daily é uma caminhada até a sala de reuniões em vez de mais um link. Depois, vá até quem está travado. Funciona numa aba do navegador, grátis para até 3 pessoas e US$ 29 por mês para a equipe toda.",
+    body: "O TinyFloor é um escritório virtual para equipes remotas: você vê quem está na mesa, e a daily é uma caminhada até a sala de reuniões em vez de mais um link. Depois, vá até quem está travado. Funciona numa aba do navegador, grátis para até 3 pessoas e US$ 29 por mês para a equipe toda.",
     cta: "Conhecer o escritório de demonstração",
   },
   faqTitle: "Perguntas <em>frequentes.</em>",

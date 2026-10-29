@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "TinyFloor: Ett virtuellt kontor för små distansteam",
-    "description": "TinyFloor är ett virtuellt kontor i webbläsaren för små distansteam. Se vem som är inne, gå över för att prata och möts i korridoren. Gratis för upp till 3 personer.",
+    "title": "TinyFloor: Ett virtuellt kontor för distansteam",
+    "description": "TinyFloor är ett virtuellt kontor i webbläsaren för distansteam. Se vem som är inne, gå över för att prata och möts i korridoren. Gratis för upp till 3 personer.",
     "ogAlt": "Ett TinyFloor-rum: en 16-bitars kontorsvåning med skrivbord och kollegor",
     "keywords": "virtuellt kontor, programvara för virtuellt kontor, virtuell arbetsplats, distansteam, distansarbete, teamnärvaro, virtuellt mötesrum, teamchatt, virtuellt kontor med öppen källkod",
     "joinTitle": "Gå med i rummet",

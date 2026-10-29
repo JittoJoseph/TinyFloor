@@ -130,7 +130,7 @@ const es: StandupContent = {
   ],
   fit: {
     title: "Haz la daily en la oficina",
-    body: "TinyFloor es una oficina virtual para equipos pequeños: ves quién está en su mesa, y la daily es un paseo hasta la sala de reuniones en vez de otro enlace. Después, acércate a quien esté atascado. Funciona en una pestaña del navegador, gratis para hasta 3 personas y 29 US$ al mes para todo el equipo.",
+    body: "TinyFloor es una oficina virtual para equipos remotos: ves quién está en su mesa, y la daily es un paseo hasta la sala de reuniones en vez de otro enlace. Después, acércate a quien esté atascado. Funciona en una pestaña del navegador, gratis para hasta 3 personas y 29 US$ al mes para todo el equipo.",
     cta: "Probar la oficina de demostración",
   },
   faqTitle: "Preguntas <em>frecuentes.</em>",

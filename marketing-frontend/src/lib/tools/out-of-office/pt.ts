@@ -123,7 +123,7 @@ const pt: OooContent = {
   ],
   fit: {
     title: "Recados de ausência, já dentro do escritório",
-    body: "No TinyFloor, um escritório virtual para equipes pequenas, um recado como \"🌴 De férias até segunda\" fica no seu nome, para a equipe saber antes de tentar falar com você, e some sozinho no dia. Funciona numa aba do navegador, grátis para até 3 pessoas e US$ 29 por mês para a equipe toda.",
+    body: "No TinyFloor, um escritório virtual para equipes remotas, um recado como “🌴 De férias até segunda” fica no seu nome, para a equipe saber antes de tentar falar com você, e some sozinho no dia. Funciona numa aba do navegador, grátis para até 3 pessoas e US$ 29 por mês para a equipe toda.",
     cta: "Conhecer o escritório de demonstração",
   },
   faqTitle: "Perguntas <em>frequentes.</em>",

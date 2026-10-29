@@ -123,7 +123,7 @@ const fi: OooContent = {
   ],
   fit: {
     title: "Poissaolot rakennettuna toimistoon",
-    body: "TinyFloorissa, pienten tiimien virtuaalitoimistossa, tilaviesti kuten \"🌴 Lomalla maanantaihin asti\" näkyy nimesi kohdalla, joten tiimi tietää asian ennen kuin yrittää tavoittaa sinua, ja se poistuu itsestään oikeana päivänä. Se toimii selaimen välilehdessä, ilmaiseksi enintään 3 hengelle ja 29 $ kuukaudessa koko tiimiltä.",
+    body: "TinyFloorissa, etätiimien virtuaalitoimistossa, tilaviesti kuten ”🌴 Lomalla maanantaihin asti” näkyy nimesi kohdalla, joten tiimi tietää asian ennen kuin yrittää tavoittaa sinua, ja se poistuu itsestään oikeana päivänä. Se toimii selaimen välilehdessä, ilmaiseksi enintään 3 hengelle ja 29 $ kuukaudessa koko tiimiltä.",
     cta: "Kokeile demotoimistoa",
   },
   faqTitle: "Usein <em>kysyttyä.</em>",

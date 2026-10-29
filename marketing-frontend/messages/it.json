@@ -1,6 +1,6 @@
 {
   "landing": {
-    "description": "Un ufficio virtuale per piccoli team remoti, nel browser. Ognuno ha una scrivania su un solo piano: vedi chi c'è, avvicinati e chiama un collega, incontrati nella sala riunioni e chatta lì accanto.",
+    "description": "Un ufficio virtuale per team remoti, nel browser. Ognuno ha una scrivania su un solo piano: vedi chi c'è, avvicinati e chiama un collega, incontrati nella sala riunioni e chatta lì accanto.",
     "features": [
       "Chiamate vocali e video con un collega",
       "Condivisione dello schermo in chiamate e riunioni",
@@ -557,7 +557,7 @@
         "label": "Gather vs Kumospace",
         "meta": {
           "title": "Gather vs Kumospace: prezzi, piani gratuiti e una terza opzione",
-          "description": "Gather e Kumospace a confronto: quanto paga un team su ciascuno, piani gratuiti, registrazione, app e allestimento dell'ufficio, e dove si inserisce TinyFloor per i piccoli team remoti, a 29 $ per tutto il team."
+          "description": "Gather e Kumospace a confronto: quanto paga un team su ciascuno, piani gratuiti, registrazione, app e allestimento dell'ufficio, e dove si inserisce TinyFloor per team fino a 15 persone, a 29 $ per tutto il team."
         },
         "title": "<em>Gather vs Kumospace</em>, e una terza opzione.",
         "subtitle": "Entrambi fanno pagare per membro appena superi la parte gratuita: Gather non ha un piano gratuito, quello di Kumospace si ferma a 5. Se il tuo team è piccolo e vuole un ufficio semplice, TinyFloor è un unico prezzo per tutto il piano.",
@@ -1118,7 +1118,7 @@
       "description": "TinyFloor è un ufficio virtuale per team da remoto: un piano condiviso nel browser dove vedi chi c'è e ti avvicini per parlare. Chi siamo e come contattarci."
     },
     "eyebrow": "Chi siamo",
-    "title": "Il lavoro da remoto ha perso il corridoio. Lo stiamo ricostruendo.",
+    "title": "Il lavoro da remoto ha trasformato ogni conversazione in una riunione. Stiamo risolvendo questo problema.",
     "intro": "TinyFloor è un ufficio virtuale per team da remoto: un piano condiviso nel browser dove vedi chi c'è e ti avvicini per parlare.",
     "why": {
       "title": "Perché lo costruiamo",
@@ -1277,7 +1277,7 @@
       "more": "Vedi piani e prezzi"
     },
     "statement": {
-      "text": "Un ufficio virtuale per piccoli team remoti, <muted>con il corridoio di nuovo al suo posto.</muted>",
+      "text": "Un ufficio virtuale per team remoti, <muted>dove parlare non richiede una riunione.</muted>",
       "points": {
         "seen": "Vedi chi c'è",
         "talk": "Vai a parlare",

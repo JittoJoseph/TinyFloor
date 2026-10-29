@@ -185,7 +185,7 @@ const nl: IcebreakersContent = {
   ],
   fit: {
     title: "Breng het team samen op de verdieping",
-    body: "TinyFloor is een virtueel kantoor voor kleine teams: je ziet wie aan zijn bureau zit, loopt erheen om te praten, en verzamelt in de vergaderruimte voor de teamsessie, vragen en al. Het draait in een browsertab, gratis tot 3 mensen en $ 29 per maand voor het hele team.",
+    body: "TinyFloor is een virtueel kantoor voor remote teams: je ziet wie aan zijn bureau zit, loopt erheen om te praten, en verzamelt in de vergaderruimte voor de teamsessie, vragen en al. Het draait in een browsertab, gratis tot 3 mensen en $ 29 per maand voor het hele team.",
     cta: "Probeer het demokantoor",
   },
   faqTitle: "Veelgestelde <em>vragen.</em>",

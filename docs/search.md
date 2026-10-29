@@ -600,6 +600,19 @@ usually several times larger. Exact Google volumes still need OpenSEO credits.
   `web-shared/src/lib/site.ts`), apart from the footer's socials, so search
   engines tie them to the same company.
 
+## Dropping "small" and "the hallway" (29 October)
+
+- **"small" has no search demand.** "virtual office for small teams" has no
+  measurable volume; "virtual office for small business" (~50) means a
+  business address. The terms that do get searched are "virtual office
+  software" and "virtual office platform" (~140 each). The site title, home
+  line and the about-the-product sentences now say "for remote teams"; the
+  size stays where it explains fit or price ("teams of up to 15").
+- **"The hallway" needed decoding.** The home line now says what you get:
+  "where talking doesn't need a meeting".
+- Translations were changed by the smallest edit, so the reviewed wording
+  around them stayed the same.
+
 ## Launch places (24 October)
 
 - **Hacker News:** TinyFloor has never been posted. Earlier "virtual office"

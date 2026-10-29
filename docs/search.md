@@ -623,4 +623,22 @@ usually several times larger. Exact Google volumes still need OpenSEO credits.
 - **Product Hunt:** no page yet. Its alternatives pages are among the pages
   assistants read for category questions, so a listing helps there too.
 - **Email is the bottleneck in a spike:** Resend's free plan sends 100 a day,
-  and every email sign-in is one.
+  and every email sign-in is one. Guests in the demo office need only a name,
+  and Google sign-in sends no email.
+
+## Launch places, continued (29 October)
+
+- **Fazier** gets about 60 launches a day, and the day's leader has tens of
+  upvotes, so the date matters little. The free plan wants a badge linking
+  back and reviews within 30 days; TinyFloor is set for 4 November. The page
+  at fazier.com/launches/tinyfloor is public before that.
+- **What HN asked earlier virtual offices** (Pragli 2020, Spot 2021, Ploito
+  2023): is it a panopticon (Ploito's focus scoring was called invasive;
+  Pragli was asked for a manually set status), why not a Slack or Discord
+  call, why the pricing is hidden, how it's built and where the data goes,
+  and sign-up errors. The best received led with free and in the browser.
+- **Show HN rules:** something people can try, ideally without signing up;
+  no landing pages; the maker answers in the thread; never ask anyone to
+  upvote.
+- **Different days for each launch.** Each needs the maker in the comments
+  all day, and what one teaches can fix the next page.

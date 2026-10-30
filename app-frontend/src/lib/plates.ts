@@ -2,10 +2,8 @@ import * as Phaser from "phaser";
 
 /**
  * The floor's labels (name tags, desk chips, hints) are HTML laid over its
- * canvas rather than drawn into it: the canvas draws one pixel per CSS pixel,
- * so on a high-density screen anything in it is scaled up and soft, while
- * HTML text stays sharp, in the app's own type. Each label keeps a Phaser
- * object as its place in the room; this layer follows those objects.
+ * canvas rather than drawn into it. Each label keeps a Phaser object as its
+ * place in the room; this layer follows those objects.
  */
 interface Item {
   object: Phaser.GameObjects.Container;
@@ -54,10 +52,8 @@ class PlateLayer {
   }
 
   private sync() {
-    const camera = this.scene.cameras.main;
-    const canvas = this.scene.game.canvas;
-    const ratio = canvas.clientWidth / (canvas.width || 1);
-    const view = camera.worldView;
+    const view = this.scene.cameras.main.worldView;
+    const zoom = cssZoom(this.scene);
     for (const item of this.items) {
       const { object, element, anchor } = item;
       let alpha = 1;
@@ -74,9 +70,9 @@ class PlateLayer {
         continue;
       }
       object.getWorldTransformMatrix(matrix);
-      const x = ((matrix.tx - view.x) * camera.zoom + camera.x) * ratio;
-      const y = ((matrix.ty - view.y) * camera.zoom + camera.y) * ratio;
-      const scale = Math.hypot(matrix.a, matrix.b) * camera.zoom * ratio;
+      const x = (matrix.tx - view.x) * zoom;
+      const y = (matrix.ty - view.y) * zoom;
+      const scale = Math.hypot(matrix.a, matrix.b) * zoom;
       const lift = anchor === "bottom" ? "-100%" : anchor === "top" ? "0%" : "-50%";
       const transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) translate(-50%, ${lift}) scale(${scale.toFixed(3)})`;
       const opacity = alpha < 1 ? alpha.toFixed(2) : "";
@@ -90,6 +86,24 @@ class PlateLayer {
       item.last = now;
     }
   }
+}
+
+/** CSS pixels per floor pixel, at the camera's zoom. */
+export function cssZoom(scene: Phaser.Scene): number {
+  return scene.cameras.main.zoom * scene.scale.zoom;
+}
+
+/** A floor point, in CSS pixels from the canvas's top left. */
+export function toCss(scene: Phaser.Scene, x: number, y: number): { x: number; y: number } {
+  const view = scene.cameras.main.worldView;
+  const zoom = cssZoom(scene);
+  return { x: (x - view.x) * zoom, y: (y - view.y) * zoom };
+}
+
+/** The floor point under a CSS point from the canvas's top left. */
+export function fromCss(scene: Phaser.Scene, x: number, y: number): Phaser.Math.Vector2 {
+  const ratio = scene.scale.zoom;
+  return scene.cameras.main.getWorldPoint(x / ratio, y / ratio);
 }
 
 const layers = new Map<Phaser.Scene, PlateLayer>();

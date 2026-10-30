@@ -1,5 +1,6 @@
 import * as Phaser from "phaser";
 import { PlayerManager } from "./PlayerManager";
+import { toCss } from "./plates";
 import { TILE_SIZE } from "@/lib/types";
 import type { StatusNote } from "@shared/messages";
 
@@ -42,7 +43,6 @@ export class ProximityManager {
     if (!this.currentPlayer) return;
 
     const now = performance.now();
-    const camera = this.scene.cameras.main;
     const nearby: NearbyPlayer[] = [];
     let signature = "";
 
@@ -63,9 +63,9 @@ export class ProximityManager {
       this.proximityStartTimes.set(id, since);
       if (now - since < DWELL_TIME) return;
 
-      const view = camera.worldView;
-      const x = Math.round((container.x - view.x) * camera.zoom);
-      const y = Math.round((container.y - BODY_OFFSET - view.y) * camera.zoom);
+      const at = toCss(this.scene, container.x, container.y - BODY_OFFSET);
+      const x = Math.round(at.x);
+      const y = Math.round(at.y);
       const status = this.playerManager.getPlayerStatus(id) || "available";
       const note = this.playerManager.getPlayerNote(id);
 

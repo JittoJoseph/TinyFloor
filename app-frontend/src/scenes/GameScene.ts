@@ -24,6 +24,7 @@ import { TILE_SIZE, pixelToTile, tileToPixel } from "@/lib/types";
 import { MEETING_ROOM_EVENT, meetingOf, WALK_TO_MEETING_EVENT } from "../lib/meetings";
 import { inZone, MEETING_ZONE, standingSpot } from "../lib/meetingRoom";
 import type { MapAnchor } from "../lib/MapManager";
+import { cssZoom } from "../lib/plates";
 
 const CAMERA_LERP = 0.08;
 /** How close the camera sits wherever there is room for it. */
@@ -101,7 +102,7 @@ class GameScene extends Phaser.Scene {
     const mapWidth = this.mapManager.getMapWidth();
     const mapHeight = this.mapManager.getMapHeight();
     this.cameras.main.setBounds(0, 0, mapWidth, mapHeight);
-    this.cameras.main.setZoom(zoomFor(this.scale.width, this.scale.height, mapWidth, mapHeight));
+    this.cameras.main.setZoom(this.cameraZoom(this.scale.width, this.scale.height));
     this.spawnTile = this.mapManager.getRandomSpawnTile();
 
     // The room is joined now, while the files load and the floor is built, not
@@ -234,6 +235,17 @@ class GameScene extends Phaser.Scene {
     this.wsManager.listen((message) => this.messageHandler.handleMessage(message));
   }
 
+  /** Canvas pixels per CSS pixel. */
+  private get density(): number {
+    return 1 / this.scale.zoom;
+  }
+
+  /** zoomFor, which works in CSS pixels, for a canvas this size. */
+  private cameraZoom(width: number, height: number): number {
+    const density = this.density;
+    return zoomFor(width / density, height / density, this.mapManager.getMapWidth(), this.mapManager.getMapHeight()) * density;
+  }
+
   /**
    * Zoom and deadzone for the floor's size, and name tags and desk claims kept
    * readable as the camera pulls back: they shrink with the map only down to
@@ -243,10 +255,10 @@ class GameScene extends Phaser.Scene {
     const camera = this.cameras.main;
     // Decorating holds its own close view; the usual one comes back when it's done.
     if (this.deskDecorator?.active()) return;
-    const zoom = zoomFor(width, height, this.mapManager.getMapWidth(), this.mapManager.getMapHeight());
-    camera.setZoom(zoom);
-    camera.setDeadzone(Math.min(120, width * 0.2), Math.min(90, height * 0.12));
-    const tagScale = Math.max(1, (CAMERA_ZOOM * 0.9) / zoom);
+    const density = this.density;
+    camera.setZoom(this.cameraZoom(width, height));
+    camera.setDeadzone(Math.min(120 * density, width * 0.2), Math.min(90 * density, height * 0.12));
+    const tagScale = Math.max(1, (CAMERA_ZOOM * 0.9) / cssZoom(this));
     this.playerManager.setTagScale(tagScale);
     this.seatManager?.setClaimScale(tagScale);
   }

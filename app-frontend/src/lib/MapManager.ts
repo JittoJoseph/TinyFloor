@@ -4,6 +4,7 @@ import { TILE_SIZE } from "@/lib/types";
 import { FLOOR_FILES } from "@/lib/floorWarmup";
 import { FLOOR } from "@shared/map";
 import { officePieces, type OfficePiece } from "@shared/office";
+import { crisp } from "./crisp";
 import { floorWalls, floorWallsNow } from "./floorWalls";
 import { pieceChanges, subscribePieces } from "./pieces";
 import atlas from "@shared/catalog/atlas.json";
@@ -90,7 +91,7 @@ export class MapManager {
     const draw = (walls: HTMLCanvasElement) => {
       if (this.gone) return;
       if (!this.scene.textures.exists(WALLS)) this.scene.textures.addCanvas(WALLS, walls);
-      this.scene.add.image(0, 0, WALLS).setOrigin(0, 0).setDepth(0);
+      crisp(this.scene.add.image(0, 0, WALLS).setOrigin(0, 0).setDepth(0));
     };
     const ready = floorWallsNow();
     if (ready) draw(ready);
@@ -120,7 +121,7 @@ export class MapManager {
       let image = this.images.get(piece.key);
       const fresh = !image;
       if (!image) {
-        image = this.scene.add.image(piece.x, piece.y, ITEMS, piece.item).setOrigin(0, 0);
+        image = crisp(this.scene.add.image(piece.x, piece.y, ITEMS, piece.item).setOrigin(0, 0));
         this.images.set(piece.key, image);
       }
       image.setDepth(piece.depth);

@@ -10,6 +10,7 @@ import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingVector } from ".
 import { depthForY } from "./MapManager";
 import type { SeatPose } from "./SeatManager";
 import { SceneLabel } from "./SceneLabel";
+import { cssZoom } from "./plates";
 import { TILE_SIZE, MOVEMENT_SPEED, pixelToTile, tileToPixel } from "@/lib/types";
 import { statusColorValue } from "@/lib/status";
 import { liveNote, type StatusNote } from "@shared/messages";
@@ -231,7 +232,7 @@ export class PlayerManager {
     });
     tags.sort((a, b) => a.distance - b.distance);
 
-    const zoom = this.scene.cameras.main.zoom;
+    const zoom = cssZoom(this.scene);
     const height = TAG_HEIGHT * this.tagScale;
     const gap = TAG_GAP / zoom;
     const placed: Box[] = [];

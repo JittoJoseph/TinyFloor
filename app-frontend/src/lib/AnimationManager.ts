@@ -1,6 +1,7 @@
 import * as Phaser from "phaser";
 import { characterOrDefault } from "@shared/character";
 import { FRAME_H, FRAME_W, SEATED_BREATH, SHEET_FRAMES, characterSheet, drawnSheet, frameOf } from "@/lib/characterSheet";
+import { crisp, crispReady } from "./crisp";
 
 export type AnimationState = "idle" | "run";
 export type Direction =
@@ -70,7 +71,7 @@ export class AnimationManager {
 
   /** A new sprite for a character, standing at its feet. */
   sprite(x: number, y: number, character: string): Phaser.GameObjects.Sprite {
-    const sprite = this.scene.add.sprite(x, y, BLANK).setOrigin(0.5, 1);
+    const sprite = crisp(this.scene.add.sprite(x, y, BLANK).setOrigin(0.5, 1));
     this.wear(sprite, character);
     return sprite;
   }
@@ -112,9 +113,7 @@ export class AnimationManager {
     const texture = this.scene.textures.addCanvas(key, sheet);
     if (!texture) return null;
     for (let n = 0; n < SHEET_FRAMES; n++) texture.add(n, 0, n * FRAME_W, 0, FRAME_W, FRAME_H);
-    // Nearest keeps the art's pixels crisp. The map stays smooth: at a zoom that is not a whole
-    // number, nearest makes every thin line on the floor flicker between two and three pixels thick.
-    texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
+    texture.setFilter(crispReady(this.scene) ? Phaser.Textures.FilterMode.LINEAR : Phaser.Textures.FilterMode.NEAREST);
     DIRECTION_ORDER.forEach((direction) => {
       for (const state of ["idle", "run"] as const) {
         const start = frameOf(state === "run" ? "walk" : "idle", direction);

@@ -2,6 +2,8 @@ import * as Phaser from "phaser";
 import { FLOOR } from "@shared/map";
 import { placeOn } from "@shared/office";
 import type { MapManager } from "./MapManager";
+import { crisp } from "./crisp";
+import { cssZoom, fromCss, toCss } from "./plates";
 import { addThing, closeDecorate, decorateState, endCarry, moveThing, redo, removeThing, select, setAnchor, subscribeDecorate, undo } from "./decorate";
 import { typingElsewhere } from "./typing";
 
@@ -97,10 +99,11 @@ export class DeskDecorator {
     const x = (spec.along[0] + spec.along[1]) / 2;
     const y = (Math.min(spec.feet[0] - 40, spec.chair.y) + Math.max(spec.feet[1], spec.chair.y + 64)) / 2;
     const phone = window.innerWidth < PHONE;
+    const zoom = cssZoom(this.scene);
     camera.stopFollow();
     camera.pan(
-      x + (phone ? 0 : CARD_WIDE / 2 / camera.zoom),
-      y - (phone ? (window.innerHeight * CARD_PHONE_SHARE) / 2 / camera.zoom : 0),
+      x + (phone ? 0 : CARD_WIDE / 2 / zoom),
+      y - (phone ? (window.innerHeight * CARD_PHONE_SHARE) / 2 / zoom : 0),
       FOCUS_MS,
       "Cubic.easeInOut",
       true,
@@ -222,7 +225,7 @@ export class DeskDecorator {
   // ---------- carried in from the card ----------
 
   private pickUp(item: string) {
-    this.ghost = this.scene.add.image(-1000, -1000, this.map.itemsTexture(item), item).setOrigin(0, 0).setAlpha(0).setDepth(DEPTH + 3);
+    this.ghost = crisp(this.scene.add.image(-1000, -1000, this.map.itemsTexture(item), item).setOrigin(0, 0).setAlpha(0).setDepth(DEPTH + 3));
     window.addEventListener("pointermove", this.carryMove);
     window.addEventListener("pointerup", this.carryDrop);
   }
@@ -239,9 +242,7 @@ export class DeskDecorator {
   private worldAt(clientX: number, clientY: number): Phaser.Math.Vector2 | null {
     const rect = this.scene.game.canvas.getBoundingClientRect();
     if (clientX < rect.left || clientX > rect.right || clientY < rect.top || clientY > rect.bottom) return null;
-    const x = ((clientX - rect.left) / rect.width) * this.scene.scale.width;
-    const y = ((clientY - rect.top) / rect.height) * this.scene.scale.height;
-    return this.scene.cameras.main.getWorldPoint(x, y);
+    return fromCss(this.scene, clientX - rect.left, clientY - rect.top);
   }
 
   /** Over the desk, where it would stand; elsewhere on the floor, under the pointer, faint. */
@@ -274,10 +275,9 @@ export class DeskDecorator {
 
   /** A floor point on the page. */
   private toPage(x: number, y: number) {
-    const camera = this.scene.cameras.main;
     const canvas = this.scene.game.canvas.getBoundingClientRect();
-    const scale = canvas.width / this.scene.scale.width;
-    return { x: canvas.left + (x - camera.worldView.x) * camera.zoom * scale, y: canvas.top + (y - camera.worldView.y) * camera.zoom * scale };
+    const at = toCss(this.scene, x, y);
+    return { x: canvas.left + at.x, y: canvas.top + at.y };
   }
 
   /** Outlines what's pointed at, frames what's picked, says where its bar goes, and shows the desk's top while something's in hand. */
@@ -286,7 +286,7 @@ export class DeskDecorator {
     this.zone.clear();
     this.outline.clear();
     this.frame.clear();
-    const line = 1 / this.scene.cameras.main.zoom;
+    const line = 1 / cssZoom(this.scene);
     if (this.dragging?.moved || decorateState().carrying) {
       const { x, y, w, h } = this.surface(this.desk);
       this.zone.fillStyle(OUTLINE, 0.06).fillRoundedRect(x - 2, y - 2, w + 4, h + 4, 4);

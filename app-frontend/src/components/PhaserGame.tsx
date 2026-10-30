@@ -8,6 +8,13 @@ import type { RoomTicket } from "@/lib/api";
 import { setSceneText } from "@/lib/sceneText";
 import { prefs } from "@/lib/prefs";
 
+/** Canvas pixels per CSS pixel: the screen's own, up to three; CSS size in battery saver. */
+function renderScale(): number {
+  const ratio = window.devicePixelRatio || 1;
+  if (ratio <= 1 || prefs().batterySaver) return 1;
+  return Math.min(ratio, 3);
+}
+
 interface PhaserGameProps {
   name: string;
   character: string;
@@ -46,14 +53,6 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
     }),
   );
 
-  const sharpen = useEffectEvent(() => {
-    const canvas = game.current?.canvas;
-    if (!canvas) return;
-    const ratio = window.devicePixelRatio;
-    canvas.style.imageRendering =
-      Number.isInteger(ratio) && ratio > 1 ? "pixelated" : "";
-  });
-
   useEffect(() => {
     // A box with no size (hidden for a moment) leaves the renderer nothing to
     // draw into, which breaks WebGL for good: the game starts, and follows the
@@ -61,25 +60,46 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
     const onResize = () => {
       const box = gameRef.current;
       if (!box?.clientWidth || !box.clientHeight) return;
-      if (!game.current) start(box);
-      else game.current.scale.resize(box.clientWidth, box.clientHeight);
-      sharpen();
+      const density = renderScale();
+      const width = Math.round(box.clientWidth * density);
+      const height = Math.round(box.clientHeight * density);
+      if (!game.current) start(box, width, height, density);
+      else {
+        if (game.current.scale.zoom !== 1 / density) game.current.scale.setZoom(1 / density);
+        game.current.scale.resize(width, height);
+      }
+      const ratio = window.devicePixelRatio;
+      const canvas = game.current?.canvas;
+      if (canvas) canvas.style.imageRendering = density === 1 && Number.isInteger(ratio) && ratio > 1 ? "pixelated" : "";
     };
     window.addEventListener("resize", onResize);
     // The floor is a panel inside the office shell, not the whole window, so it
     // follows its own box rather than the viewport.
     const watcher = new ResizeObserver(onResize);
     if (gameRef.current) watcher.observe(gameRef.current);
+    // A move to a screen of another density may not resize the window.
+    let density: MediaQueryList | null = null;
+    const onDensity = () => {
+      watchDensity();
+      onResize();
+    };
+    const watchDensity = () => {
+      density?.removeEventListener("change", onDensity);
+      density = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`);
+      density.addEventListener("change", onDensity);
+    };
+    watchDensity();
 
     // The scene, from the start: a game torn down before it has finished starting still has it leave the room.
     let scene: GameScene | null = null;
-    const start = (box: HTMLDivElement) => {
+    const start = (box: HTMLDivElement, width: number, height: number, density: number) => {
       applySceneText();
 
       const config: Phaser.Types.Core.GameConfig = {
         type: Phaser.AUTO,
-        width: box.clientWidth,
-        height: box.clientHeight,
+        width,
+        height,
+        scale: { mode: Phaser.Scale.NONE, zoom: 1 / density },
         parent: box,
         scene: (scene = new GameScene(name, character, userId, () => nextTicket())),
         // The panel behind the canvas paints the space around the map, so it
@@ -110,6 +130,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
     return () => {
       window.removeEventListener("resize", onResize);
       watcher.disconnect();
+      density?.removeEventListener("change", onDensity);
       scene?.leave();
       if (game.current) {
         const running = game.current.scene.getScene("GameScene") as GameScene;

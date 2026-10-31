@@ -59,6 +59,25 @@ function lastDays(now: number, timeZone: string, count: number): string[] {
   return Array.from({ length: count }, (_, at) => new Date(today - (count - 1 - at) * DAY_MS).toISOString().slice(0, 10));
 }
 
+/** An account as the admin view lists it. */
+const PERSON = `u.id, u.display_name AS displayName, u.email, u.character, u.country,
+  u.created_at AS createdAt, u.last_active_at AS lastActiveAt, u.google_sub IS NOT NULL AS google, u.is_guest AS guest,
+  (SELECT COUNT(*) FROM memberships m WHERE m.user_id = u.id) AS offices`;
+
+/** An office as the admin view lists it; this month's usage joined as `um` (bound as ?period). */
+const OFFICE = `o.id, o.name, o.plan, o.seats, o.created_at AS createdAt,
+  (SELECT COUNT(*) FROM memberships m WHERE m.office_id = o.id) AS members,
+  (SELECT MAX(u.last_active_at) FROM memberships m JOIN users u ON u.id = m.user_id WHERE m.office_id = o.id) AS lastActiveAt,
+  CASE WHEN s.status IN (${LIVE}) AND s.provider_subscription_id IS NOT NULL THEN s.status END AS billing,
+  s.cancel_at AS cancelAt, COALESCE(um.meeting_seconds, 0) AS meetingSeconds`;
+const OFFICE_FROM = `offices o
+  LEFT JOIN subscriptions s ON s.office_id = o.id
+  LEFT JOIN usage_monthly um ON um.office_id = o.id AND um.period = ?period`;
+
+/** How many are on each office's floor now, from the rooms; nobody, if they can't be asked. */
+const hereIn = (env: Env, ids: string[]): Promise<Record<string, number>> =>
+  ids.length ? realtime(env).presenceCounts(ids).catch(() => ({})) : Promise.resolve({});
+
 /** Which page of a list, from 0; anything odd is the first. */
 const pageOf = (url: URL) => {
   const page = Number(url.searchParams.get("page"));
@@ -76,12 +95,13 @@ export function adminRoutes(router: Router): void {
     .add("GET", "/v1/admin/summary", async ({ request, env, ctx }) => {
       await requireAdmin(env, request, ctx);
       const now = Date.now();
-      const [counts, countries, days] = await env.DB.batch([
+      const [counts, countries, days, busiest, newest] = await env.DB.batch([
         env.DB.prepare(
           `SELECT
              (SELECT COUNT(*) FROM users WHERE is_guest = 0) AS accounts,
              (SELECT COUNT(*) FROM users WHERE is_guest = 1) AS guests,
              (SELECT COUNT(*) FROM offices) AS offices,
+             (SELECT COUNT(*) FROM offices WHERE plan != 'free') AS proOffices,
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND last_active_at > ?1) AS activeDay,
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND last_active_at > ?2) AS activeWeek,
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND created_at > ?2) AS newWeek,
@@ -96,6 +116,17 @@ export function adminRoutes(router: Router): void {
         ),
         // A day's margin either side, so every calendar day in any time zone is whole.
         env.DB.prepare(`SELECT created_at AS at FROM users WHERE is_guest = 0 AND created_at > ?1`).bind(now - 32 * DAY_MS),
+        // The offices meeting the most this month, and the newest accounts: the dashboard's ways in.
+        env.DB.prepare(
+          `SELECT o.id, o.name, o.plan, um.meeting_seconds AS meetingSeconds,
+                  (SELECT COUNT(*) FROM memberships m WHERE m.office_id = o.id) AS members
+             FROM usage_monthly um JOIN offices o ON o.id = um.office_id
+            WHERE um.period = ?1 AND um.meeting_seconds > 0 ORDER BY um.meeting_seconds DESC LIMIT 5`,
+        ).bind(thisMonth(now).key),
+        env.DB.prepare(
+          `SELECT id, display_name AS displayName, email, country, created_at AS createdAt
+             FROM users WHERE is_guest = 0 ORDER BY created_at DESC LIMIT 5`,
+        ),
       ]);
       // Sign-ups on each of the last 30 calendar days where the viewer is, oldest
       // first, zeros included; the days come back too, so labels match the bars.
@@ -113,6 +144,8 @@ export function adminRoutes(router: Router): void {
         countries: countries.results,
         signups,
         signupDays,
+        busiest: busiest.results,
+        newest: newest.results,
         ...(await business(env, now)),
       });
     })
@@ -126,48 +159,50 @@ export function adminRoutes(router: Router): void {
       const page = pageOf(url);
       const where = `u.is_guest = ?1 AND (?2 = '' OR LOWER(u.display_name) LIKE ?3 ESCAPE '\\' OR LOWER(COALESCE(u.email, '')) LIKE ?3 ESCAPE '\\')`;
       const [rows, total] = await env.DB.batch([
-        env.DB.prepare(
-          `SELECT u.id, u.display_name AS displayName, u.email, u.character, u.country,
-                  u.created_at AS createdAt, u.last_active_at AS lastActiveAt,
-                  u.google_sub IS NOT NULL AS google,
-                  (SELECT COUNT(*) FROM memberships m WHERE m.user_id = u.id) AS offices
-             FROM users u WHERE ${where}
-            ORDER BY u.last_active_at DESC, u.id LIMIT ?4 OFFSET ?5`,
-        ).bind(guests, search, like, PAGE, page * PAGE),
+        env.DB.prepare(`SELECT ${PERSON} FROM users u WHERE ${where} ORDER BY u.last_active_at DESC, u.id LIMIT ?4 OFFSET ?5`).bind(
+          guests,
+          search,
+          like,
+          PAGE,
+          page * PAGE,
+        ),
         env.DB.prepare(`SELECT COUNT(*) AS total FROM users u WHERE ${where}`).bind(guests, search, like),
       ]);
       return json({ users: rows.results, page, pageSize: PAGE, total: (total.results[0] as { total: number }).total });
     })
 
-    // Offices, a page at a time, the one with someone around most recently first.
-    // Its members are asked for when an office is opened (below).
+    // One account: everything the list says, and the offices it's in.
+    .add("GET", "/v1/admin/users/:id", async ({ request, env, ctx, params }) => {
+      await requireAdmin(env, request, ctx);
+      const [person, offices] = await env.DB.batch([
+        env.DB.prepare(`SELECT ${PERSON} FROM users u WHERE u.id = ?`).bind(params.id),
+        env.DB.prepare(
+          `SELECT o.id, o.name, o.plan, m.role, o.owner_id = m.user_id AS owner, m.joined_at AS joinedAt
+             FROM memberships m JOIN offices o ON o.id = m.office_id
+            WHERE m.user_id = ? ORDER BY m.joined_at`,
+        ).bind(params.id),
+      ]);
+      if (!person.results[0]) throw new HttpError(404, "no_user", "No such account");
+      return json({ person: person.results[0], offices: offices.results });
+    })
+
+    // Offices, a page at a time, the one with someone around most recently first; all of them, or those on a plan or free.
     .add("GET", "/v1/admin/offices", async ({ request, env, ctx }) => {
       await requireAdmin(env, request, ctx);
       const url = new URL(request.url);
       const { search, like } = searchOf(url);
       const page = pageOf(url);
-      const where = `(?1 = '' OR LOWER(o.name) LIKE ?2 ESCAPE '\\')`;
+      const plan = url.searchParams.get("plan");
+      const where = `(?1 = '' OR LOWER(o.name) LIKE ?2 ESCAPE '\\')${plan === "free" ? " AND o.plan = 'free'" : plan === "pro" ? " AND o.plan != 'free'" : ""}`;
       const [rows, total] = await env.DB.batch([
         env.DB.prepare(
-          `SELECT o.id, o.name, o.plan, o.seats, o.created_at AS createdAt,
-                  (SELECT COUNT(*) FROM memberships m WHERE m.office_id = o.id) AS members,
-                  (SELECT MAX(u.last_active_at) FROM memberships m JOIN users u ON u.id = m.user_id WHERE m.office_id = o.id) AS lastActiveAt,
-                  CASE WHEN s.status IN (${LIVE}) AND s.provider_subscription_id IS NOT NULL THEN s.status END AS billing,
-                  s.cancel_at AS cancelAt, COALESCE(um.meeting_seconds, 0) AS meetingSeconds
-             FROM offices o
-             LEFT JOIN subscriptions s ON s.office_id = o.id
-             LEFT JOIN usage_monthly um ON um.office_id = o.id AND um.period = ?3
-            WHERE ${where}
+          `SELECT ${OFFICE} FROM ${OFFICE_FROM.replace("?period", "?3")} WHERE ${where}
             ORDER BY lastActiveAt DESC, o.created_at DESC LIMIT ?4 OFFSET ?5`,
         ).bind(search, like, thisMonth().key, PAGE, page * PAGE),
         env.DB.prepare(`SELECT COUNT(*) AS total FROM offices o WHERE ${where}`).bind(search, like),
       ]);
       const offices = rows.results as Array<{ id: string } & Record<string, unknown>>;
-      const here = offices.length
-        ? await realtime(env)
-            .presenceCounts(offices.map((office) => office.id))
-            .catch(() => ({}) as Record<string, number>)
-        : {};
+      const here = await hereIn(env, offices.map((office) => office.id));
       return json({
         offices: offices.map((office) => ({ ...office, here: here[office.id] ?? 0 })),
         page,
@@ -176,27 +211,32 @@ export function adminRoutes(router: Router): void {
       });
     })
 
-    // One office's people, when it's opened in the list, and which of them are on its floor now.
-    .add("GET", "/v1/admin/offices/:id/members", async ({ request, env, ctx, params }) => {
+    // One office: everything the list says, and its people, with which of them are on its floor now.
+    .add("GET", "/v1/admin/offices/:id", async ({ request, env, ctx, params }) => {
       await requireAdmin(env, request, ctx);
-      const office = await env.DB.prepare("SELECT owner_id FROM offices WHERE id = ?").bind(params.id).first<{ owner_id: string }>();
-      if (!office) throw new HttpError(404, "no_office", "No such office");
-      const [{ results }, present] = await Promise.all([
+      const [office, members] = await env.DB.batch([
+        env.DB.prepare(`SELECT ${OFFICE} FROM ${OFFICE_FROM.replace("?period", "?2")} WHERE o.id = ?1`).bind(params.id, thisMonth().key),
         env.DB.prepare(
           `SELECT u.id, u.display_name AS displayName, u.email, m.role, m.joined_at AS joinedAt,
-                  u.last_active_at AS lastActiveAt, u.country, u.id = ?2 AS owner
-             FROM memberships m JOIN users u ON u.id = m.user_id
-            WHERE m.office_id = ?1 ORDER BY u.id = ?2 DESC, u.last_active_at DESC`,
-        )
-          .bind(params.id, office.owner_id)
-          .all<{ id: string } & Record<string, unknown>>(),
-        // Who is on its floor right now, from the room itself.
+                  u.last_active_at AS lastActiveAt, u.country, u.id = o.owner_id AS owner
+             FROM memberships m JOIN users u ON u.id = m.user_id JOIN offices o ON o.id = m.office_id
+            WHERE m.office_id = ?1 ORDER BY owner DESC, u.last_active_at DESC`,
+        ).bind(params.id),
+      ]);
+      const found = office.results[0];
+      if (!found) throw new HttpError(404, "no_office", "No such office");
+      // Who is on its floor, by name from the room itself, and how many.
+      const [here, people] = await Promise.all([
+        hereIn(env, [params.id]),
         realtime(env)
           .officePresence([params.id])
-          .then((people) => new Set((people[params.id] ?? []).map((one) => one.id)))
-          .catch(() => new Set<string>()),
+          .catch(() => ({}) as Record<string, Array<{ id: string }>>),
       ]);
-      return json({ members: results.map((member) => ({ ...member, here: present.has(member.id) })) });
+      const present = new Set((people[params.id] ?? []).map((one) => one.id));
+      return json({
+        office: { ...found, here: here[params.id] ?? present.size },
+        members: (members.results as Array<{ id: string } & Record<string, unknown>>).map((member) => ({ ...member, here: present.has(member.id) })),
+      });
     })
 
     // An account's name, put right by hand.
@@ -282,10 +322,10 @@ export function adminRoutes(router: Router): void {
 }
 
 /**
- * The little the admin view says about plans; the rest (revenue, failed
- * payments, cancellations) is in Creem's own dashboard. Offices paying,
- * by plan; offices on a paid plan given by hand; and this month's meeting
- * hours across every office.
+ * The little the admin view says about plans; the rest (revenue, refunds,
+ * history) is in Creem's own dashboard. Offices paying, by plan; how many of
+ * those had a card payment fail, and how many are ending; offices on a paid
+ * plan given by hand; and this month's meeting hours across every office.
  */
 async function business(env: Env, now: number) {
   const [paid, extra] = await env.DB.batch([
@@ -297,14 +337,18 @@ async function business(env: Env, now: number) {
       `SELECT
          (SELECT COUNT(*) FROM offices o WHERE o.plan != 'free' AND NOT EXISTS (
             SELECT 1 FROM subscriptions s WHERE s.office_id = o.id AND s.provider_subscription_id IS NOT NULL AND s.status IN (${LIVE}))) AS given,
-         (SELECT COALESCE(SUM(meeting_seconds), 0) FROM usage_monthly WHERE period = ?1) AS meetingSeconds`,
+         (SELECT COALESCE(SUM(meeting_seconds), 0) FROM usage_monthly WHERE period = ?1) AS meetingSeconds,
+         (SELECT COUNT(*) FROM subscriptions WHERE provider_subscription_id IS NOT NULL AND status = 'past_due') AS pastDue,
+         (SELECT COUNT(*) FROM subscriptions WHERE provider_subscription_id IS NOT NULL AND status IN (${LIVE}) AND cancel_at IS NOT NULL) AS ending`,
     ).bind(thisMonth(now).key),
   ]);
-  const more = extra.results[0] as { given: number; meetingSeconds: number };
+  const more = extra.results[0] as { given: number; meetingSeconds: number; pastDue: number; ending: number };
   return {
     plans: {
       paid: Object.fromEntries((paid.results as Array<{ plan: string; offices: number }>).map((row) => [row.plan, row.offices])),
       given: more.given,
+      pastDue: more.pastDue,
+      ending: more.ending,
     },
     meetingSeconds: more.meetingSeconds,
   };

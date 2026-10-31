@@ -1,4 +1,5 @@
 import { FLOOR, type Floor } from "./map";
+import { wallSolids, type ShellMap } from "./shell";
 
 /**
  * An office is its floor (the Startup template, map.ts) and the changes made
@@ -97,6 +98,19 @@ export function officePieces(changes: PieceChanges, floor: Floor = FLOOR): Offic
     pieces.push({ key, item: change.item, x, y, depth: thingDepth(floor, desk, y, change.item), desk });
   }
   return pieces.sort((a, b) => a.depth - b.depth);
+}
+
+/**
+ * What can't be walked through as the office is now: its walls, and what each
+ * piece standing on it says of itself. Worked out here, from the pieces, so a
+ * piece moved, swapped or added is solid where it is, with nothing to bake.
+ */
+export function officeSolids(pieces: readonly OfficePiece[], floor: Floor = FLOOR): Array<[number, number, number, number]> {
+  const solids = wallSolids(floor.shell as ShellMap);
+  for (const piece of pieces) {
+    for (const [x, y, w, h] of floor.colliders[piece.item] ?? []) solids.push([piece.x + x, piece.y + y, w, h]);
+  }
+  return solids;
 }
 
 /** The things standing on a desk now, its own and added, as they're drawn. */

@@ -1,7 +1,5 @@
 export const TILE_SIZE = 32;
 export const MOVEMENT_SPEED = 120;
-export const MAP_WIDTH_TILES = 48;
-export const MAP_HEIGHT_TILES = 32;
 
 export function pixelToTile(
   pixelX: number,
@@ -21,15 +19,6 @@ export function tileToPixel(
     x: tileX * TILE_SIZE + TILE_SIZE / 2,
     y: tileY * TILE_SIZE + TILE_SIZE / 2,
   };
-}
-
-export function isValidTile(tileX: number, tileY: number): boolean {
-  return (
-    tileX >= 1 &&
-    tileX < MAP_WIDTH_TILES - 1 &&
-    tileY >= 1 &&
-    tileY < MAP_HEIGHT_TILES - 1
-  );
 }
 
 export type Status = "available" | "busy" | "away" | "in_call" | "offline";

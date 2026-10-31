@@ -1,8 +1,8 @@
 import { paintShell } from "@shared/shell";
 import { FLOOR } from "@shared/map";
 
-/** The room builder sheet the walls and floors are painted from. */
-const SHEET = "/tilesets/textures/Room_Builder_Office_32x32.png";
+/** The floor sheet the walls and floors are painted from: the room builder's, and more floors (lab/build.mjs). */
+const SHEET = "/catalog/floor-sheet.png";
 
 type Walls = HTMLCanvasElement;
 type Painted = { width: number; height: number; data: Uint8ClampedArray<ArrayBuffer> };

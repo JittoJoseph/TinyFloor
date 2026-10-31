@@ -1,10 +1,5 @@
-import {
-  MAP_WIDTH_TILES,
-  MAP_HEIGHT_TILES,
-  isValidTile,
-  pixelToTile,
-  tileToPixel,
-} from "@/lib/types";
+import { MAP_WIDTH_TILES, MAP_HEIGHT_TILES, isValidTile } from "@shared/map";
+import { pixelToTile, tileToPixel, TILE_SIZE } from "@/lib/types";
 
 export interface Vec {
   x: number;
@@ -18,7 +13,6 @@ export interface Rect {
   height: number;
 }
 
-const CORE = 8;
 const STRAIGHT = 10;
 const DIAGONAL = 14;
 const TURN = 1;
@@ -75,19 +69,24 @@ export class NavGrid {
 
   constructor(solids: Rect[]) {
     this.walkable = new Uint8Array(MAP_WIDTH_TILES * MAP_HEIGHT_TILES);
+    this.rebuild(solids);
+  }
+
+  /** Works out again where you can walk, for what's solid now. */
+  rebuild(solids: Rect[]) {
+    this.walkable.fill(0);
     for (let ty = 0; ty < MAP_HEIGHT_TILES; ty++) {
-      for (let tx = 0; tx < MAP_WIDTH_TILES; tx++) {
-        if (!isValidTile(tx, ty)) continue;
-        const c = tileToPixel(tx, ty);
-        const blocked = solids.some(
-          (r) =>
-            c.x + CORE > r.x &&
-            c.x - CORE < r.x + r.width &&
-            c.y + CORE > r.y &&
-            c.y - CORE < r.y + r.height,
-        );
-        if (!blocked) this.walkable[ty * MAP_WIDTH_TILES + tx] = 1;
-      }
+      for (let tx = 0; tx < MAP_WIDTH_TILES; tx++) if (isValidTile(tx, ty)) this.walkable[ty * MAP_WIDTH_TILES + tx] = 1;
+    }
+    // Walkable where you could stand: nothing solid over the tile's middle (as MapManager.checkCollisionAt has it).
+    // Each solid strikes out the tiles whose middles it covers, so this is quick however many pieces there are.
+    const half = TILE_SIZE / 2;
+    for (const r of solids) {
+      const x0 = Math.max(0, Math.floor((r.x - half) / TILE_SIZE) + 1);
+      const x1 = Math.min(MAP_WIDTH_TILES - 1, Math.ceil((r.x + r.width - half) / TILE_SIZE) - 1);
+      const y0 = Math.max(0, Math.floor((r.y - half) / TILE_SIZE) + 1);
+      const y1 = Math.min(MAP_HEIGHT_TILES - 1, Math.ceil((r.y + r.height - half) / TILE_SIZE) - 1);
+      for (let ty = y0; ty <= y1; ty++) for (let tx = x0; tx <= x1; tx++) this.walkable[ty * MAP_WIDTH_TILES + tx] = 0;
     }
   }
 

@@ -1,14 +1,47 @@
 import startup from "./catalog/floors/startup.json";
-
-export const MAP_WIDTH_TILES = 48;
-export const MAP_HEIGHT_TILES = 32;
+import campus from "./catalog/floors/campus.json";
 
 /**
- * The office everyone's floor is: the Startup template, worked out by the lab
- * (lab/build.mjs) into everything the floor draws and the room checks. Its
- * seats are numbered by the tile they're on (row × width + column).
+ * Every floor there is, by id, worked out by the lab (lab/build.mjs) into
+ * everything the floor draws and the room checks. Startup is everyone's.
+ * Campus, a bigger office in grounds, is being tried: a browser draws it
+ * when asked (?floor=campus, remembered; ?floor=startup goes back), and the
+ * room doesn't know which one it is yet, so it's for looking round, not for
+ * a team to work in.
  */
-export const FLOOR = startup as unknown as Floor;
+export const FLOORS: Record<string, Floor> = { startup: startup as unknown as Floor, campus: campus as unknown as Floor };
+
+const TRYING = "tinyfloor:floor";
+
+/** What a page has of a browser's, typed here because the room (a worker) has no window. */
+type PageGlobals = { location?: { href: string }; localStorage?: { getItem(key: string): string | null; setItem(key: string, value: string): void; removeItem(key: string): void } };
+
+/** The floor this page draws: startup, unless this browser asked to try another. */
+function chosenFloor(): Floor {
+  const page = globalThis as PageGlobals;
+  if (!page.location || !page.localStorage) return FLOORS.startup;
+  try {
+    const asked = new URL(page.location.href).searchParams.get("floor");
+    if (asked && asked in FLOORS) {
+      if (asked === "startup") page.localStorage.removeItem(TRYING);
+      else page.localStorage.setItem(TRYING, asked);
+    }
+    return FLOORS[page.localStorage.getItem(TRYING) ?? ""] ?? FLOORS.startup;
+  } catch {
+    return FLOORS.startup;
+  }
+}
+
+/** The office everyone's floor is. Its seats are numbered by the tile they're on (row × width + column). */
+export const FLOOR = chosenFloor();
+
+export const MAP_WIDTH_TILES = FLOOR.shell.size[0];
+export const MAP_HEIGHT_TILES = FLOOR.shell.size[1];
+
+/** On this page's floor, short of its edge tiles. */
+export function isValidTile(tileX: number, tileY: number): boolean {
+  return tileX >= 1 && tileX < MAP_WIDTH_TILES - 1 && tileY >= 1 && tileY < MAP_HEIGHT_TILES - 1;
+}
 
 export interface Floor {
   id: string;
@@ -21,8 +54,8 @@ export interface Floor {
   };
   /** Everything drawn, by its item on the atlas (catalog/atlas.json), at its top left, at its depth; a desk's own pieces say whose desk. */
   pieces: Array<{ key: string; item: string; x: number; y: number; depth: number; desk?: string }>;
-  /** What you can't walk through: [x, y, width, height]. */
-  solids: Array<[number, number, number, number]>;
+  /** What you can't walk through of each thing that can stand on the floor: [x, y, width, height] from its top left (office.ts officeSolids). */
+  colliders: Record<string, Array<[number, number, number, number]>>;
   seats: FloorSeat[];
   /** Every desk, by its key (office.ts). */
   desks: Record<string, FloorDesk>;
@@ -83,7 +116,10 @@ export function seatTile(seat: number): { x: number; y: number } {
   return { x: seat % MAP_WIDTH_TILES, y: Math.floor(seat / MAP_WIDTH_TILES) };
 }
 
+/** The largest floor's size: the room keeps people within it, whichever floor their page draws. */
+const BOUNDS = Object.values(FLOORS).reduce(([w, h], floor) => [Math.max(w, floor.shell.size[0]), Math.max(h, floor.shell.size[1])], [0, 0]);
+
 /** Inside the office walls. Walkability is the client's job; the server only keeps people on the map. */
 export function isInsideMap(x: number, y: number): boolean {
-  return Number.isInteger(x) && Number.isInteger(y) && x >= 1 && x < MAP_WIDTH_TILES - 1 && y >= 1 && y < MAP_HEIGHT_TILES - 1;
+  return Number.isInteger(x) && Number.isInteger(y) && x >= 1 && x < BOUNDS[0] - 1 && y >= 1 && y < BOUNDS[1] - 1;
 }

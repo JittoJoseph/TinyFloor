@@ -6,13 +6,13 @@ import { drawn } from "./art.js";
 
 export const TILE = 32;
 export const SPEED = 120; // the floor's MOVEMENT_SPEED
-export const AVATAR = "/private/characters/Adam.png";
+// A preset as the floor has it: one strip of 32×64 frames, idle then walking (lab/characters.mjs).
+export const AVATAR = "/private/characters/presets/Adam.png";
 
-// The character atlas (AnimationManager): 24 idle, 24 run, then a seated pose per direction.
+// The character strip: 24 idle, 24 run (the floor adds the seated poses; the lab sits in its idle frame).
 export const DIRECTIONS = ["right", "up", "left", "down"];
-// The seated poses as drawn: the atlas's second frame faces right and its third left,
-// the other way round from SIT_ORDER's names (side chairs aren't on today's floor, so nothing showed it).
-export const SIT_FRAME = { down: 48, right: 49, left: 50, up: 51 };
+// Sitting, the lab shows the idle frame facing that way: the strip has no seated poses.
+export const SIT_FRAME = { right: 0, up: 6, left: 12, down: 18 };
 // Where a seated character sits against its chair, from SeatManager's SEAT.
 export const SEAT = {
   down: { dx: 0, dy: -12, depth: -0.5, exit: -54 },
@@ -42,7 +42,7 @@ export function image(src) {
 }
 
 export function loadAvatar(scene) {
-  scene.load.spritesheet("avatar", AVATAR, { frameWidth: 32, frameHeight: 32 });
+  scene.load.spritesheet("avatar", AVATAR, { frameWidth: 32, frameHeight: 64 });
 }
 
 export function avatarAnims(scene) {

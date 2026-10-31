@@ -10,23 +10,27 @@
 //   shared-protocol/src/catalog/floors/<id>.json: its walls and floors (as the
 //   plain map they're drawn from: the app draws them from the room builder
 //   sheet it has anyway, which is far smaller than a picture of them), every
-//   piece with its key, item and depth, what you can't walk through, the seats
-//   (with ids, and where you arrive at each desk), the spots the floor keeps,
-//   and what decorating a desk needs: each desk's surface, the things that can
-//   stand on one and the chairs it can have. The app draws that and nothing
+//   piece with its key, item and depth, what each thing can't be walked
+//   through, the seats (with ids, and where you arrive at each desk), the
+//   spots the floor keeps, and what decorating a desk needs: each desk's
+//   surface, the things that can stand on one and the chairs it can have.
+//   The app draws that and nothing
 //   else; the room reads its desks and checks changes to them against it;
 // - the atlas's size and hash go in web-shared/assets.manifest.json, so every
-//   build pulls it from R2 and checks it like the rest of the art.
+//   build pulls it from R2 and checks it like the rest of the art;
+// - the floor sheet the app paints walls and floors from: the room builder's,
+//   with the interiors pack's floors that shell.ts names (MORE_FLOORS) under it,
+//   private-assets/catalog/floor-sheet.png, in the manifest the same way.
 //
 // Then upload what changed with the commands it prints (docs/customization.md, "Where the art lives").
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import pngjs from "pngjs";
-import { drawn as drawnArt } from "./pages/art.js";
-import { DESK_STEP, check, clusterSize, isComposite, isGroup, spriteSize } from "./pages/catalog.js";
-import { checkTemplate, officeFloor, seatsOf, solidsOf } from "./pages/floor.js";
-import { TILE, wallSolids } from "./pages/shell.js";
+import { drawn as drawnArt, groundTiles } from "./pages/art.js";
+import { check, clusterSize, deskStep, isComposite, isGroup, spriteSize } from "./pages/catalog.js";
+import { checkTemplate, officeFloor, seatsOf } from "./pages/floor.js";
+import { GROUND_TILES, MORE_FLOORS, TILE, moreFloorAt } from "./pages/shell.js";
 import { record } from "./manifest.mjs";
 import { png8 } from "./png8.mjs";
 
@@ -36,6 +40,7 @@ const PACKS = join(ROOT, "assets-pack");
 const CATALOG = join(ROOT, "shared-protocol", "src", "catalog");
 // Named for this palette version: production builds keep pulling the full-colour one under its old name until they have this.
 const ATLAS_KEY = "catalog/floor-items.png";
+const SHEET_KEY = "catalog/floor-sheet.png";
 const WIDTH = 1024;
 const GAP = 2;
 
@@ -140,6 +145,21 @@ await writeFile(join(CATALOG, "atlas.json"), JSON.stringify({ image: ATLAS_KEY, 
 const pictures = [{ key: ATLAS_KEY, png: png8(atlas) ?? PNG.sync.write(atlas, { colorType: 6 }) }];
 console.log(`${drawn.length} items on a ${atlas.width}×${atlas.height} atlas, ${(pictures[0].png.length / 1024).toFixed(1)} KB`);
 
+// ---------- the floor sheet ----------
+
+const builder = PNG.sync.read(await readFile(join(ROOT, "private-assets", "tilesets", "textures", "Room_Builder_Office_32x32.png")));
+const interiors = await source("moderninteriors/1_Interiors/32x32/Room_Bulder_subfiles_32x32/Room_Builder_Floors_32x32.png");
+const more = Object.values(MORE_FLOORS);
+const sheet = new PNG({ width: builder.width, height: (GROUND_TILES.row + GROUND_TILES.paving) * TILE });
+blit(builder, [0, 0, builder.width, builder.height], sheet, 0, 0);
+more.forEach(([column, row], n) => {
+  const [to, at] = moreFloorAt(n);
+  blit(interiors, [column * TILE, row * TILE, 3 * TILE, 2 * TILE], sheet, to * TILE, at * TILE);
+});
+// And under them, the grounds' tiles: grass to pick from, a block of paving.
+blit(groundTiles(GROUND_TILES), [0, 0, (GROUND_TILES.grass + GROUND_TILES.paving) * TILE, GROUND_TILES.paving * TILE], sheet, 0, GROUND_TILES.row * TILE);
+pictures.push({ key: SHEET_KEY, png: png8(sheet) ?? PNG.sync.write(sheet, { colorType: 6 }) });
+
 // ---------- each office: what the floor needs ----------
 
 await mkdir(join(CATALOG, "floors"), { recursive: true });
@@ -172,7 +192,10 @@ for (const { template, floor } of offices) {
       // A desk's own pieces (its things, its chair), so who may change them is known.
       ...(deskOfPiece(piece) ? { desk: deskOfPiece(piece) } : {}),
     })),
-    solids: [...wallSolids(template.shell), ...solidsOf(floor)],
+    // What each thing that can stand here can't be walked through; the floor works out what's solid from these and its walls, as it is now.
+    colliders: Object.fromEntries(
+      [...catalog.items, ...rows.values()].filter((item) => item.colliders?.length).map((item) => [item.id, item.colliders]),
+    ),
     seats,
     desks: desksOf(template, floor, seats),
     things: Object.fromEntries(
@@ -208,16 +231,20 @@ function desksOf(template, floor, seats) {
         const chair = floor.find((piece) => piece.key === `${key}/chair`);
         const row = floor.find((piece) => piece.key === `${bank.key}/${side}`);
         if (!seat || !chair || !row) continue;
-        const x = bank.x + c * DESK_STEP + 32;
+        const step = deskStep(byId.get(bank.item));
+        const single = byId.get(bank.item)?.cluster?.style === "cubicle";
+        const x = bank.x + c * step + 32;
         desks[key] = {
           seat: seat.id,
           side,
-          // Things stand along the desk's six tiles, the foot of their pixels on its top: a near
+          // Things stand along the desk's tiles, the foot of their pixels on its top: a near
           // desk's, from under the divider to its front edge; a far desk's strip behind the divider.
-          along: [x, x + 192],
-          feet: side === "front" ? [bank.y + 56, bank.y + 86] : [bank.y + 24, bank.y + 34],
+          // A single desk's (drawn, art.js) is its own four tiles, between its posts.
+          along: single ? [bank.x + c * step + 6, bank.x + (c + 1) * step] : [x, x + step],
+          // A single desk (drawn, art.js) has its top a little higher than the sheet's desks, from its panel to its front edge.
+          feet: side === "front" ? (single ? [bank.y + 48, bank.y + 78] : [bank.y + 56, bank.y + 86]) : [bank.y + 24, bank.y + 34],
           // On a near desk nothing rises over the divider's top onto the far side.
-          ...(side === "front" ? { ceiling: bank.y + 30 } : {}),
+          ...(side === "front" ? { ceiling: single ? bank.y + 12 : bank.y + 30 } : {}),
           chair: { key: chair.key, item: chair.item.id, x: chair.x, y: chair.y },
           depth: Math.round((row.y + row.item.sortY + 0.5) * 100) / 100,
         };

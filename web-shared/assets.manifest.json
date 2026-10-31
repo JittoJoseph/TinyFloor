@@ -2270,8 +2270,13 @@
     },
     {
       "key": "catalog/floor-items.png",
-      "sha256": "3855a3d35dd256017013fc256b08d473304d359528ddb03825731bcd1e465b38",
-      "bytes": 23365
+      "sha256": "eaa3ef06fd510b077ae09e9d3fdecc5d9534681276abe193db2cb221d294bb1d",
+      "bytes": 129484
+    },
+    {
+      "key": "catalog/floor-sheet.png",
+      "sha256": "2e4cb0611c59ee088e987422af021a7d1bb9d41a9d225b6cf13c4c8b8ccf1d7e",
+      "bytes": 8516
     }
   ]
 }

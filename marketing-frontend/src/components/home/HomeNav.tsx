@@ -11,10 +11,13 @@ import {
   Eye,
   FileText,
   Footprints,
+  HelpCircle,
   Globe,
   Hash,
+  KeyRound,
   MessagesSquare,
   MonitorUp,
+  Office,
   Palette,
   PenLine,
   Presentation,
@@ -59,6 +62,7 @@ const ICONS: Partial<Record<LandingKey, ReactNode>> = {
   onboarding: <UserPlus />,
   watercooler: <Coffee />,
   virtualCoworking: <UsersRound />,
+  hybrid: <Office />,
 };
 
 const FEATURES = LANDINGS.filter((page) => page.group === "features");
@@ -107,6 +111,7 @@ export async function HomeNav({ fade = true }: { fade?: boolean }) {
   const tools = TOP_TOOLS.filter((tool) => toolName(tool));
   const plain =
     "flex h-9 items-center rounded-full px-3.5 text-[14.5px] text-foreground/70 transition-colors hover:bg-foreground/[0.05] hover:text-foreground";
+  const demoStrip = <MenuStrip href="/lobby" title={t("nav.lobbyTitle")} line={t("nav.lobbyLine")} floor="-279px -98px" />;
   const compareLabel = (page: Landing) => {
     const name = page.competitor ?? page.product;
     return name ? t("footer.vs", { name }) : tl(`pages.${page.key}.label`);
@@ -130,86 +135,63 @@ export async function HomeNav({ fade = true }: { fade?: boolean }) {
         </Link>
 
         <div className="hidden items-center md:flex">
-          <Menu label={t("footer.product")} width="w-[720px]">
-            <div className="grid grid-cols-[minmax(0,1fr)_210px] gap-1.5">
-              <div>
-                <ul className="grid grid-cols-2 gap-0.5">
-                  {FEATURES.map((page) => (
-                    <MenuItem
-                      key={page.slug}
-                      href={`/${page.slug}`}
-                      icon={ICONS[page.key]}
-                      title={tl(`pages.${page.key}.label`)}
-                      line={tl(`pages.${page.key}.line`)}
-                    />
-                  ))}
-                </ul>
-                <MenuAll href={`/${HUBS.features}`} label={tl("all")} />
-              </div>
-              <FeatureCard href="/lobby" icon={<DoorOpen className="rtl:-scale-x-100" />} title={t("nav.lobbyTitle")} line={t("nav.lobbyLine")} />
-            </div>
-          </Menu>
-
-          <Menu label={t("nav.teams")} width="w-[560px]">
-            <div className="grid grid-cols-2 gap-1.5">
-              {[TEAMS, USE_CASES].map((group) => (
-                <div key={group[0].group} className="min-w-0">
-                  <MenuHeading>{tl(group[0].group)}</MenuHeading>
-                  <ul className="grid">
-                    {group.map((page) => (
-                      <MenuItem key={page.slug} href={`/${page.slug}`} icon={ICONS[page.key]} title={tl(`pages.${page.key}.label`)} compact />
-                    ))}
-                  </ul>
-                  <MenuAll href={`/${HUBS[group[0].group]}`} label={tl("all")} />
-                </div>
+          <Menu label={t("footer.product")} strip={demoStrip}>
+            <MenuColumn title={tl("features")} all={{ href: `/${HUBS.features}`, label: tl("all") }}>
+              {FEATURES.map((page) => (
+                <MenuLink key={page.slug} href={`/${page.slug}`} icon={ICONS[page.key]} label={tl(`pages.${page.key}.label`)} />
               ))}
-            </div>
+            </MenuColumn>
+            <MenuColumn title={t("nav.getStarted")}>
+              <MenuLink href="/lobby" icon={<DoorOpen className="rtl:-scale-x-100" />} label={t("nav.lobbyTitle")} />
+              <MenuLink href="/home?mode=signup" icon={<UserPlus />} label={t("nav.start")} />
+              <MenuLink href="/pricing" icon={<CreditCard />} label={t("nav.pricing")} />
+              <MenuLink href="/#faq" icon={<HelpCircle />} label={t("nav.faq")} />
+              <MenuLink href="/auth" icon={<KeyRound />} label={t("nav.signIn")} />
+            </MenuColumn>
           </Menu>
 
-          <Menu label={t("footer.compare")} width="w-[640px]">
-            <div className="grid grid-cols-[minmax(0,1fr)_200px] gap-1.5">
-              <div className="min-w-0">
-                <MenuHeading>{t("nav.alternatives")}</MenuHeading>
-                <ul className="grid grid-cols-2 gap-0.5">
-                  {TOP_ALTERNATIVES.map(landingByKey).map((page) => (
-                    <MenuLink key={page.slug} href={`/${page.slug}`} label={compareLabel(page)} />
-                  ))}
-                </ul>
-                <MenuHeading>{t("nav.headToHead")}</MenuHeading>
-                <ul className="grid grid-cols-2 gap-0.5">
-                  {HEAD_TO_HEAD.map((page) => (
-                    <MenuLink key={page.slug} href={`/${page.slug}`} label={tl(`pages.${page.key}.label`)} />
-                  ))}
-                </ul>
-                <MenuAll href={`/${HUBS.compare}`} label={tl("all")} />
-              </div>
-              {compareGuide && (
-                <FeatureCard href={guidePath(compareGuide)} icon={<BookOpen />} title={guides.bestVirtualOffice.label} line={t("nav.compareGuide")} />
-              )}
-            </div>
+          <Menu label={t("nav.teams")} strip={demoStrip}>
+            {[TEAMS, USE_CASES.slice(0, TEAMS.length)].map((group) => (
+              <MenuColumn key={group[0].group} title={tl(group[0].group)} all={{ href: `/${HUBS[group[0].group]}`, label: tl("all") }}>
+                {group.map((page) => (
+                  <MenuLink key={page.slug} href={`/${page.slug}`} icon={ICONS[page.key]} label={tl(`pages.${page.key}.label`)} />
+                ))}
+              </MenuColumn>
+            ))}
           </Menu>
 
-          <Menu label={t("footer.resources")} width="w-[600px]">
-            <div className="grid grid-cols-2 gap-1.5">
-              <div className="min-w-0">
-                <MenuHeading>{tg("label")}</MenuHeading>
-                <ul className="grid gap-0.5">
-                  {topGuides.map((guide) => (
-                    <MenuLink key={guide.slug} href={guidePath(guide)} label={guides[guide.key].label} />
-                  ))}
-                </ul>
-                <MenuAll href={GUIDES_PATH} label={tg("all")} />
-              </div>
-              <div className="min-w-0">
-                <MenuHeading>{t("footer.tools")}</MenuHeading>
-                <ul className="grid gap-0.5">
-                  {tools.map((tool) => (
-                    <MenuLink key={tool.path} href={tool.path} label={toolName(tool)} />
-                  ))}
-                </ul>
-                <MenuAll href={TOOLS_PATH} label={tl("all")} />
-              </div>
-            </div>
+          <Menu
+            label={t("footer.compare")}
+            strip={
+              compareGuide && <MenuStrip href={guidePath(compareGuide)} title={guides.bestVirtualOffice.label} line={t("nav.compareGuide")} floor="-36px -104px" />
+            }
+          >
+            <MenuColumn title={tl("compare")} all={{ href: `/${HUBS.compare}`, label: tl("all") }} wide>
+              {TOP_ALTERNATIVES.map(landingByKey).map((page) => (
+                <MenuLink key={page.slug} href={`/${page.slug}`} icon={<Monogram name={page.competitor ?? page.product ?? ""} />} label={compareLabel(page)} />
+              ))}
+              {HEAD_TO_HEAD.map((page) => (
+                <MenuLink
+                  key={page.slug}
+                  href={`/${page.slug}`}
+                  icon={<Monogram name={(page.versus ?? []).map((key) => landingByKey(key).competitor?.[0] ?? "").join("")} />}
+                  label={tl(`pages.${page.key}.label`)}
+                />
+              ))}
+            </MenuColumn>
+          </Menu>
+
+          <Menu label={t("footer.resources")} strip={demoStrip}>
+            <MenuColumn title={tg("label")} all={{ href: GUIDES_PATH, label: tg("all") }}>
+              {topGuides.slice(0, Math.max(tools.length, 4)).map((guide) => (
+                <MenuLink key={guide.slug} href={guidePath(guide)} icon={<BookOpen />} label={guides[guide.key].label} />
+              ))}
+            </MenuColumn>
+            <MenuColumn title={t("footer.tools")} all={{ href: TOOLS_PATH, label: tl("all") }}>
+              {tools.map((tool) => (
+                <MenuLink key={tool.path} href={tool.path} icon={tool.icon} label={toolName(tool)} />
+              ))}
+            </MenuColumn>
           </Menu>
 
           <Link href="/pricing" className={plain}>
@@ -281,59 +263,80 @@ export async function HomeNav({ fade = true }: { fade?: boolean }) {
   );
 }
 
-/** A small heading over a column of a menu. */
-function MenuHeading({ children }: { children: ReactNode }) {
-  return <p className="px-2.5 pb-1 pt-2 text-[11.5px] font-medium uppercase tracking-[0.14em] text-faint">{children}</p>;
+/**
+ * A section of a menu: its heading, with the link to everything of its kind at
+ * the heading's end, and its links. A wide one runs across both columns.
+ */
+function MenuColumn({ title, all, wide, children }: { title: string; all?: { href: string; label: string }; wide?: boolean; children: ReactNode }) {
+  return (
+    <div className={cn("min-w-0", wide && "col-span-2")}>
+      <div className="flex h-8 items-center justify-between gap-2 px-2">
+        <p className="text-[12px] font-medium text-muted-foreground">{title}</p>
+        {all && (
+          <Link href={all.href} className="flex items-center gap-1 text-[12px] font-medium text-muted-foreground transition-colors hover:text-foreground">
+            {all.label}
+            <ArrowRight className="size-3 rtl:rotate-180" />
+          </Link>
+        )}
+      </div>
+      <ul className={cn("grid gap-0.5", wide && "grid-cols-2 gap-x-2")}>{children}</ul>
+    </div>
+  );
 }
 
-/** A plain row in a menu: the name, and an arrow on hover. For lists of names, like comparisons and guides. */
-function MenuLink({ href, label }: { href: string; label: string }) {
+/** A link in a menu: its icon in a small tile, the name, and an arrow on hover. */
+function MenuLink({ href, icon, label }: { href: string; icon: ReactNode; label: string }) {
   return (
     <li>
       <Link
         href={href}
-        className="group/item flex h-9 items-center justify-between gap-2 rounded-[11px] px-2.5 text-[13.5px] text-foreground/85 transition-colors hover:bg-foreground/[0.045] hover:text-foreground"
+        className="group/item flex h-10 items-center gap-2.5 rounded-[10px] px-2 text-[13.5px] text-foreground/85 transition-colors hover:bg-foreground/[0.05] hover:text-foreground focus-visible:bg-foreground/[0.05]"
       >
-        <span className="truncate">{label}</span>
+        <span className="flex size-7 shrink-0 items-center justify-center rounded-[8px] bg-foreground/[0.06] text-foreground/70 transition-colors group-hover/item:bg-foreground/[0.1] group-hover/item:text-foreground [&_svg]:size-[15px]">
+          {icon}
+        </span>
+        <span className="min-w-0 flex-1 truncate">{label}</span>
         <ArrowRight className="size-3 shrink-0 text-muted-foreground opacity-0 transition-opacity group-hover/item:opacity-100 rtl:rotate-180" />
       </Link>
     </li>
   );
 }
 
-/** The tinted card at the side of a menu: the one place to go first (the demo office, the comparison guide). */
-function FeatureCard({ href, icon, title, line }: { href: string; icon: ReactNode; title: string; line: string }) {
-  return (
-    <Link href={href} className="group/demo flex flex-col justify-between gap-6 rounded-[16px] bg-brand/[0.08] p-4 transition-colors hover:bg-brand/[0.12]">
-      <span className="flex size-9 items-center justify-center rounded-[11px] bg-brand/15 text-brand [&_svg]:size-[18px]">{icon}</span>
-      <span>
-        <span className="block text-[14px] font-semibold leading-tight">{title}</span>
-        <span className="mt-1 block text-[12.5px] leading-snug text-muted-foreground">{line}</span>
-        <ArrowRight className="mt-3 size-4 text-brand transition-transform group-hover/demo:translate-x-0.5 rtl:rotate-180" />
-      </span>
-    </Link>
-  );
+/** A competitor's initials, in place of an icon (their marks are theirs). */
+function Monogram({ name }: { name: string }) {
+  const letters = name.length <= 2 ? name : name.replace(/[^A-Za-z]/g, "").slice(0, 1);
+  return <span className="text-[11px] font-semibold tracking-tight">{letters.toUpperCase()}</span>;
 }
 
-/** The last line of a menu column: everything else of its kind, on its index page. */
-function MenuAll({ href, label }: { href: string; label: string }) {
+/**
+ * The line along the bottom of every menu: the one place to go first, with a
+ * corner of the real floor, at the art's own pixels, beside it.
+ */
+function MenuStrip({ href, title, line, floor }: { href: string; title: string; line: string; floor: string }) {
   return (
-    <Link
-      href={href}
-      className="mt-1 flex h-8 w-fit items-center gap-1 rounded-full px-2.5 text-[12.5px] font-medium text-muted-foreground transition-colors hover:text-foreground"
-    >
-      {label}
-      <ArrowRight className="size-3 rtl:rotate-180" />
+    <Link href={href} className="group/strip flex items-center gap-3.5 rounded-[12px] bg-foreground/[0.04] p-2 pe-4 transition-colors hover:bg-foreground/[0.07]">
+      <span
+        aria-hidden
+        className="block h-[72px] w-[120px] shrink-0 rounded-[8px] bg-[url(/floor.webp)] bg-no-repeat [image-rendering:pixelated]"
+        style={{ backgroundSize: "768px 512px", backgroundPosition: floor }}
+      />
+      <span className="min-w-0 flex-1">
+        <span className="block text-[13.5px] font-medium leading-tight">{title}</span>
+        <span className="mt-1 line-clamp-2 block text-[12.5px] leading-snug text-muted-foreground">{line}</span>
+      </span>
+      <ArrowRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover/strip:translate-x-0.5 rtl:rotate-180" />
     </Link>
   );
 }
 
 /**
- * A nav item that opens a small panel under itself while it's hovered or
- * focused. Opening is immediate; closing waits a moment, so moving the pointer
- * down to the panel never loses it.
+ * A nav item that opens a panel under itself while it's hovered or focused.
+ * Every menu is the same panel: one width, two columns of links, and the place
+ * to go first along the bottom. Opening is
+ * immediate; closing waits a moment, so moving the pointer down to the panel
+ * never loses it.
  */
-function Menu({ label, width, children }: { label: string; width: string; children: ReactNode }) {
+function Menu({ label, strip, children }: { label: string; strip?: ReactNode; children: ReactNode }) {
   return (
     <div className="group/menu relative">
       <button
@@ -346,65 +349,20 @@ function Menu({ label, width, children }: { label: string; width: string; childr
       </button>
       <div
         className={cn(
-          "invisible absolute start-1/2 top-full -translate-x-1/2 pt-2.5 opacity-0 rtl:translate-x-1/2",
-          width,
+          "invisible absolute start-1/2 top-full w-[520px] -translate-x-1/2 pt-2.5 opacity-0 rtl:translate-x-1/2",
           "translate-y-1 scale-[0.98] transition-[opacity,visibility,translate,scale] delay-100 duration-200 ease-out [transform-origin:top_center]",
           "group-focus-within/menu:visible group-focus-within/menu:translate-y-0 group-focus-within/menu:scale-100 group-focus-within/menu:opacity-100 group-focus-within/menu:delay-0",
           "group-hover/menu:visible group-hover/menu:translate-y-0 group-hover/menu:scale-100 group-hover/menu:opacity-100 group-hover/menu:delay-0",
         )}
       >
-        <div className="rounded-[22px] border border-border bg-card p-2 shadow-[0_24px_60px_-24px_rgb(0_0_0/0.3),0_2px_6px_-2px_rgb(0_0_0/0.08)]">
-          <Later>{children}</Later>
+        <div className="rounded-[18px] border border-border bg-card p-2 shadow-[0_24px_60px_-24px_rgb(0_0_0/0.3),0_2px_6px_-2px_rgb(0_0_0/0.08)]">
+          <Later>
+            <div className="grid grid-cols-2 gap-2">{children}</div>
+            {strip && <div className="mt-2.5">{strip}</div>}
+          </Later>
         </div>
       </div>
     </div>
-  );
-}
-
-/** One entry in a menu: an icon tile, the name, and a line under it. The lobby wears the brand colour. */
-function MenuItem({
-  href,
-  icon,
-  title,
-  line,
-  accent,
-  compact,
-}: {
-  href: string;
-  icon: ReactNode;
-  title: string;
-  line?: string;
-  accent?: boolean;
-  /** A row with just the icon and the name, for menus with many entries. */
-  compact?: boolean;
-}) {
-  return (
-    <li>
-      <Link
-        href={href}
-        className={cn(
-          "group/item flex gap-3 rounded-[14px] transition-colors hover:bg-foreground/[0.045] focus-visible:bg-foreground/[0.045]",
-          compact ? "items-center px-2.5 py-1.5" : "items-start p-2.5",
-        )}
-      >
-        <span
-          className={cn(
-            "flex shrink-0 items-center justify-center transition-colors duration-200",
-            compact ? "size-7 rounded-[9px] [&_svg]:size-[15px]" : "size-8 rounded-[10px] [&_svg]:size-4",
-            accent ? "bg-brand/12 text-brand" : "bg-foreground/[0.06] text-foreground/75 group-hover/item:bg-brand/10 group-hover/item:text-brand",
-          )}
-        >
-          {icon}
-        </span>
-        <span className={cn("min-w-0 flex-1", !compact && "pt-px")}>
-          <span className="flex items-center gap-1 text-[13.5px] font-semibold leading-tight">
-            {title}
-            <ArrowRight className="size-3 -translate-x-1 text-muted-foreground opacity-0 transition-[opacity,translate] duration-200 group-hover/item:translate-x-0 group-hover/item:opacity-100 rtl:rotate-180 rtl:translate-x-1" />
-          </span>
-          {line && <span className="mt-0.5 block text-[12.5px] leading-snug text-muted-foreground">{line}</span>}
-        </span>
-      </Link>
-    </li>
   );
 }
 

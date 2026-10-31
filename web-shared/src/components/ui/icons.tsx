@@ -125,6 +125,10 @@ import {
   RotateLeft01Icon,
   RotateRight01Icon,
   Redo02Icon,
+  Analytics01Icon,
+  InboxIcon,
+  Clock01Icon,
+  Calendar03Icon,
 } from "@hugeicons/core-free-icons";
 
 /*
@@ -168,10 +172,12 @@ export const ArrowUp = icon(ArrowUp02Icon, "ArrowUp");
 export const ArrowUpRight = icon(ArrowUpRight01Icon, "ArrowUpRight");
 export const AudioLines = icon(AudioWave01Icon, "AudioLines");
 export const Bell = icon(Notification01Icon, "Bell");
+export const Calendar = icon(Calendar03Icon, "Calendar");
 export const BookOpen = icon(BookOpen01Icon, "BookOpen");
 export const Building2 = icon(Building03Icon, "Building2");
 export const CalendarOff = icon(CalendarRemove01Icon, "CalendarOff");
 export const Chats = icon(BubbleChatIcon, "Chats");
+export const Clock = icon(Clock01Icon, "Clock");
 export const Check = icon(Tick02Icon, "Check");
 export const Desk = icon(DeskIcon, "Desk");
 export const ChevronDown = icon(ArrowDown01Icon, "ChevronDown");
@@ -200,6 +206,7 @@ export const HeadphoneOff = icon(HeadphoneMuteIcon, "HeadphoneOff");
 export const Headphones = icon(HeadphonesIcon, "Headphones");
 export const HelpCircle = icon(HelpCircleIcon, "HelpCircle");
 export const ImagePlus = icon(ImageAdd01Icon, "ImagePlus");
+export const Inbox = icon(InboxIcon, "Inbox");
 export const Info = icon(InformationCircleIcon, "Info");
 export const KeyRound = icon(Key01Icon, "KeyRound");
 export const Language = icon(LanguageSkillIcon, "Language");
@@ -231,6 +238,7 @@ export const Moon = icon(Moon02Icon, "Moon");
 export const MoreHorizontal = icon(MoreHorizontalIcon, "MoreHorizontal");
 export const Music2 = icon(MusicNote01Icon, "Music2");
 export const Office = icon(Building03Icon, "Office");
+export const Overview = icon(Analytics01Icon, "Overview");
 export const Palette = icon(PaintBoardIcon, "Palette");
 export const Pause = icon(PauseIcon, "Pause");
 export const PenLine = icon(Edit02Icon, "PenLine");

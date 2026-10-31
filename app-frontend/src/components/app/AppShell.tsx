@@ -74,6 +74,7 @@ export function AppShell({
   you,
   floor,
   notice,
+  help = true,
   children,
 }: {
   /** The top of the rail: the office (a switcher) or the lobby. */
@@ -88,6 +89,8 @@ export function AppShell({
   floor: ReactNode;
   /** A line across the top of the panel, part of it: the plan, when it changes something. */
   notice?: ReactNode;
+  /** Help and feedback at the rail's foot; the team's own admin view has none. */
+  help?: boolean;
   children?: ReactNode;
 }) {
   useDesktopSiteZoom();
@@ -115,7 +118,7 @@ export function AppShell({
               ))}
             </div>
             <div className="mt-auto flex w-full flex-col items-center gap-2">
-              <HelpRailButton />
+              {help && <HelpRailButton />}
               {leave && (
                 <RailItem
                   destination={{ key: "leave", href: leave.href, label: leave.label, icon: RailIcons.leave, active: false }}
@@ -161,7 +164,7 @@ export function AppShell({
           </nav>
         </div>
       </FrameContext.Provider>
-      <HelpCompose />
+      {help && <HelpCompose />}
     </DockContext.Provider>
   );
 }

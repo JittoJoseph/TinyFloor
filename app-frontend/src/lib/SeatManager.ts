@@ -13,6 +13,7 @@ import { cancelClaim, confirmClaim, deskAt, deskOf, deskState, requestClaim, set
 import { floorStatusOf, subscribeFloor } from "./floor";
 import { DeskPlate } from "./DeskPlate";
 import { decorateState, subscribeDecorate } from "./decorate";
+import { wasDrag } from "./CameraRig";
 
 /**
  * Where a seated character sits relative to the chair's base, and whether they
@@ -131,8 +132,8 @@ export class SeatManager {
 
     this.seats.forEach((seat) => {
       const zone = scene.add.zone(seat.x, seat.y, 40, 44).setOrigin(0.5).setInteractive({ useHandCursor: true });
-      zone.on("pointerdown", (pointer: Phaser.Input.Pointer) => {
-        if (decorateState().desk) return;
+      zone.on("pointerup", (pointer: Phaser.Input.Pointer) => {
+        if (decorateState().desk || pointer.button !== 0 || wasDrag(scene, pointer)) return;
         pointer.event.stopPropagation();
         if (this.seated === seat) return this.stand();
         if (seat.occupant || this.reserved(seat)) return;

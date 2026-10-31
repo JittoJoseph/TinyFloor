@@ -25,6 +25,8 @@ import { MEETING_ROOM_EVENT, meetingOf, WALK_TO_MEETING_EVENT } from "../lib/mee
 import { inZone, MEETING_ZONE, standingSpot } from "../lib/meetingRoom";
 import type { MapAnchor } from "../lib/MapManager";
 import { cssZoom } from "../lib/plates";
+import { CameraRig } from "../lib/CameraRig";
+import { WalkOverlay } from "../lib/WalkOverlay";
 
 const CAMERA_LERP = 0.08;
 /** How close the camera sits wherever there is room for it. */
@@ -36,6 +38,21 @@ const MIN_TILES_LONG = 24;
 const MIN_ZOOM = 0.62;
 /** Walking over to someone who has since moved further than this, we follow. */
 const FOLLOW_AFTER = 2 * TILE_SIZE;
+/** How far you can zoom from the usual view, out and in, a step at a time; remembered on this device. */
+const ZOOM_RANGE: [number, number] = [0.4, 1.6];
+const ZOOM_STEP = 1.15;
+/** Zoomed all the way out, the view is at most this much of the floor each way, so there's always more to drag to. */
+const MOST_IN_VIEW = 0.8;
+const ZOOM_KEY = "tinyfloor:zoom";
+
+function savedZoom(): number {
+  try {
+    const value = Number(localStorage.getItem(ZOOM_KEY));
+    return value ? Phaser.Math.Clamp(value, ...ZOOM_RANGE) : 1;
+  } catch {
+    return 1;
+  }
+}
 
 const tileKey = ({ tileX, tileY }: { tileX: number; tileY: number }) => `${tileX},${tileY}`;
 
@@ -73,6 +90,12 @@ class GameScene extends Phaser.Scene {
   private unsubscribeShown?: () => void;
   private unsubscribeRename?: () => void;
   private unsubscribeLook?: () => void;
+  /** How much closer or further than the usual view you've zoomed (1 is the usual). */
+  private userZoom = savedZoom();
+  /** The floor's camera: following you, dragged, zoomed (lib/CameraRig). */
+  private cameraRig?: CameraRig;
+  /** Where you can walk, shown for working on the floor (lib/WalkOverlay). */
+  private walkOverlay?: WalkOverlay;
   /** The meeting room, and whether we stand in it. */
   private meetingZone?: MapAnchor;
   private insideRoom = false;
@@ -159,9 +182,9 @@ class GameScene extends Phaser.Scene {
     attachDecorate((message) => this.wsManager.send(message), this.playerId);
     this.deskDecorator = new DeskDecorator(this, this.mapManager, (decorating) => {
       this.movementManager.setInputEnabled(!decorating);
-      if (decorating) return;
+      if (decorating) return this.cameraRig?.release();
       // Back to following you: the camera glides there.
-      this.cameras.main.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);
+      this.cameraRig?.follow();
     });
 
     callManager.attach(this.wsManager);
@@ -194,13 +217,29 @@ class GameScene extends Phaser.Scene {
 
     // The floor fades in once the room has said where you are (MessageHandler), not at a spot you'd jump from.
     this.cameras.main.setAlpha(0);
-    this.cameras.main.startFollow(this.player, false, CAMERA_LERP, CAMERA_LERP);
+    this.cameraRig = new CameraRig(this, this.player, CAMERA_LERP, () => !this.deskDecorator?.active());
+    // Setting off yourself (a key, a click, an errand) brings the view back from looking round.
+    this.movementManager.onSetOff(() => this.cameraRig?.comeBack());
+    this.walkOverlay = new WalkOverlay(this, () => this.mapManager.getNavGrid(), () => this.mapManager.getSolids(), this.player);
     this.fitCamera(this.scale.width, this.scale.height);
     // The floor panel changes size with the window, a rotated phone or a
     // panel opening beside it; the view keeps up.
     const onResize = (size: Phaser.Structs.Size) => this.fitCamera(size.width, size.height);
     this.scale.on(Phaser.Scale.Events.RESIZE, onResize);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.scale.off(Phaser.Scale.Events.RESIZE, onResize));
+
+    // Right-clicking the floor drags it (CameraRig), so no menu.
+    this.input.mouse?.disableContextMenu();
+
+    // Zooming: the wheel over the floor, or + and - (not while typing).
+    this.input.on(Phaser.Input.Events.POINTER_WHEEL, (pointer: Phaser.Input.Pointer, _over: unknown, _dx: number, dy: number) => {
+      if (dy) this.zoomBy(dy > 0 ? 1 / ZOOM_STEP : ZOOM_STEP, { x: pointer.x, y: pointer.y });
+    });
+    this.input.keyboard?.on("keydown", (event: KeyboardEvent) => {
+      if (typingElsewhere() || event.ctrlKey || event.metaKey) return;
+      if (event.key === "=" || event.key === "+") this.zoomBy(ZOOM_STEP);
+      else if (event.key === "-" || event.key === "_") this.zoomBy(1 / ZOOM_STEP);
+    });
 
     this.listen(WALK_TO_PERSON_EVENT, (event: CustomEvent<{ id: string }>) => this.walkOver(event.detail.id));
     this.listen("statusChange", (event: CustomEvent) => {
@@ -240,10 +279,33 @@ class GameScene extends Phaser.Scene {
     return 1 / this.scale.zoom;
   }
 
-  /** zoomFor, which works in CSS pixels, for a canvas this size. */
-  private cameraZoom(width: number, height: number): number {
+  /** zoomFor, which works in CSS pixels, for a canvas this size, times how far you've zoomed; never so far out the whole floor fits, either way. */
+  private cameraZoom(width: number, height: number, userZoom = this.userZoom): number {
     const density = this.density;
-    return zoomFor(width / density, height / density, this.mapManager.getMapWidth(), this.mapManager.getMapHeight()) * density;
+    const [mapWidth, mapHeight] = [this.mapManager.getMapWidth(), this.mapManager.getMapHeight()];
+    const farthest = Math.max(width / density / mapWidth, height / density / mapHeight) / MOST_IN_VIEW;
+    return Math.max(zoomFor(width / density, height / density, mapWidth, mapHeight) * userZoom, farthest) * density;
+  }
+
+  /** Zooms in or out a step, smoothly, on the pointer (canvas pixels) when there is one, and keeps it for next time. */
+  private zoomBy(factor: number, anchor?: { x: number; y: number }) {
+    // Stepped from what's shown: saved further out than this floor goes, the
+    // first step back in should show, not undo steps that never did.
+    const { width, height } = this.scale;
+    const density = this.density;
+    const usual = zoomFor(width / density, height / density, this.mapManager.getMapWidth(), this.mapManager.getMapHeight()) * density;
+    const shown = this.cameraZoom(width, height) / usual;
+    const next = Phaser.Math.Clamp(shown * factor, ...ZOOM_RANGE);
+    if (next === this.userZoom || this.deskDecorator?.active()) return;
+    // Out as far as this floor goes already.
+    if (factor < 1 && this.cameraZoom(width, height, next) === this.cameraZoom(width, height)) return;
+    this.userZoom = next;
+    try {
+      localStorage.setItem(ZOOM_KEY, String(next));
+    } catch {
+      // Private browsing: it's kept for this visit only.
+    }
+    this.cameraRig?.zoomTo(this.cameraZoom(width, height), anchor, () => this.fitTags());
   }
 
   /**
@@ -258,6 +320,11 @@ class GameScene extends Phaser.Scene {
     const density = this.density;
     camera.setZoom(this.cameraZoom(width, height));
     camera.setDeadzone(Math.min(120 * density, width * 0.2), Math.min(90 * density, height * 0.12));
+    this.fitTags();
+  }
+
+  /** Name tags and desk claims kept readable as the camera pulls back: they shrink with the map only down to about their usual size on screen. */
+  private fitTags() {
     const tagScale = Math.max(1, (CAMERA_ZOOM * 0.9) / cssZoom(this));
     this.playerManager.setTagScale(tagScale);
     this.seatManager?.setClaimScale(tagScale);
@@ -342,6 +409,8 @@ class GameScene extends Phaser.Scene {
     if (!this.player) return;
 
     this.movementManager.update(delta);
+    this.cameraRig?.update(delta);
+    this.walkOverlay?.update();
     this.seatManager?.update();
     this.playerManager.update(delta);
     this.playerManager.updateLocalPlayerNameTag(this.player.x, this.player.y, this.seatManager?.seatedDirection());
@@ -368,6 +437,10 @@ class GameScene extends Phaser.Scene {
     this.windowListeners.forEach(([type, listener]) => window.removeEventListener(type, listener));
     this.windowListeners.length = 0;
     this.input.keyboard?.off("keydown-E");
+    this.input.keyboard?.off("keydown");
+    this.input.off(Phaser.Input.Events.POINTER_WHEEL);
+    this.cameraRig?.destroy();
+    this.walkOverlay?.destroy();
     offerAction(null);
     this.unsubscribeShown?.();
     this.unsubscribeRename?.();

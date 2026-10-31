@@ -5,7 +5,9 @@ import type { RoomSocket } from "./RoomSocket";
 import { joystick } from "./joystick";
 import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingOf } from "./Navigation";
 import { depthForY } from "./MapManager";
-import { pixelToTile, isValidTile, MOVEMENT_SPEED, TILE_SIZE, tileToPixel } from "@/lib/types";
+import { pixelToTile, MOVEMENT_SPEED, TILE_SIZE, tileToPixel } from "@/lib/types";
+import { isValidTile } from "@shared/map";
+import { wasDrag } from "./CameraRig";
 
 const ARRIVE_RANGE = 3;
 /**
@@ -70,7 +72,13 @@ export class MovementManager {
       false,
     ) as Record<string, Phaser.Input.Keyboard.Key>;
 
-    scene.input.on("pointerdown", this.onPointerDown, this);
+    scene.input.on("pointerup", this.onPointerUp, this);
+  }
+
+  private setOff?: () => void;
+  /** Calls `then` whenever we set off ourselves: a key, a click on the floor, an errand. */
+  onSetOff(then: () => void) {
+    this.setOff = then;
   }
 
   update(delta: number) {
@@ -89,7 +97,10 @@ export class MovementManager {
       const len = Math.hypot(dx, dy);
       manualMoved = this.moveBy((dx / len) * step, (dy / len) * step);
       moving = manualMoved;
-      if (manualMoved && !this.movingBefore) this.signalMove("manual");
+      if (manualMoved && !this.movingBefore) {
+        this.signalMove("manual");
+        this.setOff?.();
+      }
     } else if (this.path.length) {
       const pos = { x: this.player.x, y: this.player.y };
       advanceAlongPath(pos, this.path, step);
@@ -146,11 +157,14 @@ export class MovementManager {
     return isValidTile(tile.tileX, tile.tileY) && !this.collides(x, y);
   }
 
-  private onPointerDown(pointer: Phaser.Input.Pointer, over: Phaser.GameObjects.GameObject[]) {
-    if (!this.inputEnabled || over.length || pointer.button !== 0) return;
+  private onPointerUp(pointer: Phaser.Input.Pointer, over: Phaser.GameObjects.GameObject[]) {
+    if (!this.inputEnabled || over.length || pointer.button !== 0 || wasDrag(this.scene, pointer)) return;
     if (!this.unfreeze()) return;
 
-    const goal = pixelToTile(pointer.worldX, pointer.worldY);
+    // On a wall, a desk, a tree or beside a wall: as near it as you can stand.
+    const clicked = pixelToTile(pointer.worldX, pointer.worldY);
+    const goal = this.nav.isWalkable(clicked.tileX, clicked.tileY) ? clicked : this.nav.nearestWalkable(clicked.tileX, clicked.tileY);
+    if (!goal) return;
     const path = this.nav.buildPath(this.player.x, this.player.y, goal.tileX, goal.tileY);
     if (!path.length) return;
 
@@ -168,6 +182,7 @@ export class MovementManager {
   /** Every walk goes through here so everyone else sees it too. */
   private follow(path: Vec[], tileX: number, tileY: number) {
     this.path = path;
+    this.setOff?.();
     // The others walk the path themselves, so our heading is theirs to forget.
     this.shown.sent = false;
     this.arrive = undefined;
@@ -287,6 +302,6 @@ export class MovementManager {
   }
 
   destroy() {
-    this.scene.input.off("pointerdown", this.onPointerDown, this);
+    this.scene.input.off("pointerup", this.onPointerUp, this);
   }
 }

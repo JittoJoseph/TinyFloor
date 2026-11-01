@@ -4,6 +4,7 @@ import { useEffect, useEffectEvent, useRef } from "react";
 import { useTranslations } from "next-intl";
 import * as Phaser from "phaser";
 import GameScene from "../scenes/GameScene";
+import { drawFloor } from "@shared/map";
 import type { RoomTicket } from "@/lib/api";
 import { setSceneText } from "@/lib/sceneText";
 import { prefs } from "@/lib/prefs";
@@ -30,7 +31,15 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
   ticketFor,
 }) => {
   // The scene keeps the first function it was given; this always calls the current one.
-  const nextTicket = useEffectEvent(() => ticketFor());
+  // A ticket to a room on another floor than this page drew (its office moved) loads the page again, to draw it.
+  const nextTicket = useEffectEvent(async () => {
+    const ticket = await ticketFor();
+    if (drawFloor(ticket.floor)) {
+      window.location.reload();
+      await new Promise(() => {});
+    }
+    return ticket;
+  });
   const t = useTranslations("scene");
   const tDesk = useTranslations("desk");
   const tCommon = useTranslations("common");

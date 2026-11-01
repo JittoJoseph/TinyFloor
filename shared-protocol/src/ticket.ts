@@ -19,6 +19,10 @@ export interface RoomTicket {
   hours?: number;
   /** Their status note as they walk in, while it lasts. */
   note?: StatusNote;
+  /** The floor the room is on (map.ts FLOORS): the room keeps desks to it, and the page draws it. */
+  floor?: string;
+  /** The session it's for: a chat knows which of someone's devices have it open, and pushes only to the others. */
+  sid?: string;
   exp: number;
 }
 

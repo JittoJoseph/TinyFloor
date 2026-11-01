@@ -155,6 +155,8 @@ export interface OfficeOverview {
 export interface RoomTicket {
   ticket: string;
   url: string;
+  /** A room's: the floor it's on, which the page draws (map.ts drawFloor). */
+  floor?: string;
 }
 
 export interface IceServers {
@@ -207,6 +209,8 @@ export interface AdminOffice {
   name: string;
   plan: string;
   seats: number;
+  /** The floor it's on (map.ts FLOORS). */
+  floor: string;
   createdAt: number;
   /** How many people are in it. */
   members: number;
@@ -477,7 +481,7 @@ export const api = {
   adminDeleteLobbyMessage: (seq: number) => del<{ ok: true }>(`/admin/lobby-chat/${seq}`),
   adminRenamePerson: (userId: string, displayName: string) => patch<{ ok: true }>(`/admin/users/${id(userId)}`, { displayName }),
   adminDeletePerson: (userId: string) => del<{ ok: true; handedOver: string[]; closed: string[] }>(`/admin/users/${id(userId)}`),
-  adminUpdateOffice: (officeId: string, changes: { name?: string; plan?: PlanId }) => patch<{ ok: true }>(`/admin/offices/${id(officeId)}`, changes),
+  adminUpdateOffice: (officeId: string, changes: { name?: string; plan?: PlanId; floor?: string }) => patch<{ ok: true }>(`/admin/offices/${id(officeId)}`, changes),
   adminDeleteOffice: (officeId: string) => del<{ ok: true }>(`/admin/offices/${id(officeId)}`),
   adminHelp: (params: { status: "open" | "closed"; page?: number }) =>
     get<AdminPage & { tickets: AdminHelpTicket[] }>(

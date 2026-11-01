@@ -431,24 +431,31 @@ the only way art reaches the floor:
 
 ## The offices
 
-**Startup**, what every office has: the hand-made map's rooms and walls
+Each office is on one floor, `offices.floor`, and the demo office on
+`LOBBY_FLOOR`. The room ticket says which: the room keeps its desks to it
+(a move settles each claim on the nearest desk of the new floor's size), and
+the page draws it, remembering it in the browser so the next load draws it
+straight away. A page that drew the wrong one loads once more. The team moves
+an office from its admin page, and everyone on it reconnects to the new floor.
+
+**Startup**, where every office began: the hand-made map's rooms and walls
 (48×32), four two-sided banks of maple desks (16), a meeting room with its
 whiteboard, a break room with its kitchen. Drawn tile by tile, with no plan.
 
-**Campus**, being tried (`?floor=campus` on any office page, remembered in
-that browser; `?floor=startup` goes back; the room doesn't know which floor
-a page draws yet, so its desks can't be claimed): 82×52 tiles, a building of
-rooms round an open hall on grass with trees, a plaza at the front door and
-two patios. Twelve single desks, two teams of six on sage carpets, on the
-hall's grey squares; a meeting room, a café, a booth, a lounge, a library, a
-quiet room and a studio. Built from a plan, so it's what the builder will
-start every office from.
+**Campus**, the new one, rolled out an office at a time: 82×52 tiles, a
+building of rooms round an open hall on grass with trees, a plaza at the
+front door and two patios. Twelve single desks, two teams of six on sage
+carpets, on the hall's grey squares; a meeting room, a café, a booth, a
+lounge, a library, a quiet room and a studio. Built from a plan, so it's what
+the builder will start every office from.
+
+Once every office is on Campus, Startup, the floor column and the switch go,
+and FLOOR is the one floor again.
 
 ## Next
 
 - **Furnishing for admins**: move, add and take away furniture, and the
   rooms, in the office itself.
-- **The room knowing its floor**, so the campus's desks can be claimed.
 - **Seats and desks worked out from the pieces** where they're drawn, as
   solids are, rather than baked.
 - **More themes** on the same rules.

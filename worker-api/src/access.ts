@@ -17,6 +17,8 @@ export interface Office {
   seats: number;
   /** The caller's role here. */
   role: OfficeRole;
+  /** The floor it's on (shared-protocol's map.ts FLOORS). */
+  floor: string;
   ownerId: string;
   /** When the trial on its plan ends, while one runs (docs/pricing.md). */
   trialEndsAt: number | null;
@@ -43,7 +45,7 @@ export async function requireOffice(
   roles?: OfficeRole[],
 ): Promise<Office> {
   const row = await env.DB.prepare(
-    `SELECT o.id, o.name, o.plan, o.seats, o.owner_id, o.trial_ends_at, m.role, o.invite_policy, o.domain_join,
+    `SELECT o.id, o.name, o.plan, o.seats, o.floor, o.owner_id, o.trial_ends_at, m.role, o.invite_policy, o.domain_join,
             CASE WHEN ow.email_verified = 1 THEN ow.email END AS owner_email
      FROM memberships m JOIN offices o ON o.id = m.office_id
      LEFT JOIN users ow ON ow.id = o.owner_id
@@ -55,6 +57,7 @@ export async function requireOffice(
       name: string;
       plan: string;
       seats: number;
+      floor: string;
       owner_id: string;
       trial_ends_at: number | null;
       role: OfficeRole;
@@ -74,6 +77,7 @@ export async function requireOffice(
     name: row.name,
     plan: row.plan,
     seats: row.seats,
+    floor: row.floor,
     role: row.role,
     ownerId: row.owner_id,
     trialEndsAt: row.trial_ends_at && row.trial_ends_at > now ? row.trial_ends_at : null,
@@ -86,7 +90,7 @@ export async function requireOffice(
 }
 
 /** The office behind a floor, without requiring membership. */
-export async function findOffice(env: Env, officeId: string): Promise<Omit<Office, "role" | "trialEndsAt" | "trialEndedAt" | "graceEndsAt" | "invitePolicy" | "joinDomain" | "domainJoin"> | null> {
+export async function findOffice(env: Env, officeId: string): Promise<Omit<Office, "role" | "floor" | "trialEndsAt" | "trialEndedAt" | "graceEndsAt" | "invitePolicy" | "joinDomain" | "domainJoin"> | null> {
   const row = await env.DB.prepare("SELECT id, name, plan, seats, owner_id FROM offices WHERE id = ?")
     .bind(officeId)
     .first<{ id: string; name: string; plan: string; seats: number; owner_id: string }>();

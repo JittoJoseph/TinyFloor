@@ -3,37 +3,51 @@ import campus from "./catalog/floors/campus.json";
 
 /**
  * Every floor there is, by id, worked out by the lab (lab/build.mjs) into
- * everything the floor draws and the room checks. Startup is everyone's.
- * Campus, a bigger office in grounds, is being tried: a browser draws it
- * when asked (?floor=campus, remembered; ?floor=startup goes back), and the
- * room doesn't know which one it is yet, so it's for looking round, not for
- * a team to work in.
+ * everything the floor draws and the room checks. Each office is on one
+ * (offices.floor, set from the admin view), the demo office on LOBBY_FLOOR;
+ * the room is told which by its ticket, and keeps desks to it. Startup is
+ * where every office began; Campus, an office in grounds, is the new one,
+ * rolled out an office at a time.
  */
 export const FLOORS: Record<string, Floor> = { startup: startup as unknown as Floor, campus: campus as unknown as Floor };
 
-const TRYING = "tinyfloor:floor";
+/** The floor an id names; Startup for one that isn't. */
+export const floorOf = (id: string | null | undefined): Floor => FLOORS[id ?? ""] ?? FLOORS.startup;
+
+const DRAWN = "tinyfloor:floor";
 
 /** What a page has of a browser's, typed here because the room (a worker) has no window. */
-type PageGlobals = { location?: { href: string }; localStorage?: { getItem(key: string): string | null; setItem(key: string, value: string): void; removeItem(key: string): void } };
+type PageGlobals = { localStorage?: { getItem(key: string): string | null; setItem(key: string, value: string): void } };
 
-/** The floor this page draws: startup, unless this browser asked to try another. */
-function chosenFloor(): Floor {
-  const page = globalThis as PageGlobals;
-  if (!page.location || !page.localStorage) return FLOORS.startup;
+/**
+ * The floor this page draws: the one its last room ticket said (drawFloor),
+ * kept in this browser, so the page loads already drawing it. A page's whole
+ * floor, its walls, solids and desks, is this one; the room's is its own.
+ */
+export const FLOOR: Floor = (() => {
   try {
-    const asked = new URL(page.location.href).searchParams.get("floor");
-    if (asked && asked in FLOORS) {
-      if (asked === "startup") page.localStorage.removeItem(TRYING);
-      else page.localStorage.setItem(TRYING, asked);
-    }
-    return FLOORS[page.localStorage.getItem(TRYING) ?? ""] ?? FLOORS.startup;
+    return floorOf((globalThis as PageGlobals).localStorage?.getItem(DRAWN));
   } catch {
     return FLOORS.startup;
   }
-}
+})();
 
-/** The office everyone's floor is. Its seats are numbered by the tile they're on (row × width + column). */
-export const FLOOR = chosenFloor();
+/**
+ * A room ticket says which floor its room is on. True when it isn't the one
+ * this page drew: it's remembered, and the page has to load again to draw it
+ * (PhaserGame does). Only while offices move to a new floor; once they all
+ * have, nothing changes here.
+ */
+export function drawFloor(id: string | undefined): boolean {
+  if (!id || floorOf(id).id === FLOOR.id) return false;
+  try {
+    (globalThis as PageGlobals).localStorage?.setItem(DRAWN, floorOf(id).id);
+  } catch {
+    // Without storage the page draws the first floor again; nothing to loop on.
+    return false;
+  }
+  return true;
+}
 
 export const MAP_WIDTH_TILES = FLOOR.shell.size[0];
 export const MAP_HEIGHT_TILES = FLOOR.shell.size[1];
@@ -97,23 +111,29 @@ export interface FloorSeat {
   zone?: string;
 }
 
-const DESKS = FLOOR.seats.filter((seat) => seat.desk && seat.arrival);
-const ARRIVALS = new Map(DESKS.map((seat) => [seat.id, seat.arrival!] as const));
+/** A floor's desks, by seat, with where you arrive for each: worked out once a floor. */
+const arrivals = new Map<Floor, Map<number, [number, number]>>();
+const arrivalsOf = (floor: Floor) => {
+  let found = arrivals.get(floor);
+  if (!found) arrivals.set(floor, (found = new Map(floor.seats.filter((seat) => seat.desk && seat.arrival).map((seat) => [seat.id, seat.arrival!] as const))));
+  return found;
+};
 
 /** The chairs at desks: the ones that can be someone's. The meeting room's and the break room's are everyone's. */
-export const DESK_SEATS: readonly number[] = DESKS.map((seat) => seat.id);
+export const deskSeats = (floor: Floor = FLOOR): number[] => [...arrivalsOf(floor).keys()];
 
-export const isDesk = (seat: number): boolean => ARRIVALS.has(seat);
+export const isDesk = (seat: number, floor: Floor = FLOOR): boolean => arrivalsOf(floor).has(seat);
 
 /** Where you appear arriving for this desk: near it, standing, to walk in and sit down. */
-export function deskArrival(seat: number): { x: number; y: number } | null {
-  const tile = ARRIVALS.get(seat);
+export function deskArrival(seat: number, floor: Floor = FLOOR): { x: number; y: number } | null {
+  const tile = arrivalsOf(floor).get(seat);
   return tile ? { x: tile[0], y: tile[1] } : null;
 }
 
 /** The tile a seat is on, from its id. */
-export function seatTile(seat: number): { x: number; y: number } {
-  return { x: seat % MAP_WIDTH_TILES, y: Math.floor(seat / MAP_WIDTH_TILES) };
+export function seatTile(seat: number, floor: Floor = FLOOR): { x: number; y: number } {
+  const width = floor.shell.size[0];
+  return { x: seat % width, y: Math.floor(seat / width) };
 }
 
 /** The largest floor's size: the room keeps people within it, whichever floor their page draws. */

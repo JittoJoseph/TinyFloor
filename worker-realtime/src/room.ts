@@ -13,12 +13,14 @@ import {
   liveNote,
   type StatusNote,
   isInsideMap,
-  DESK_SEATS,
+  deskSeats,
+  floorOf,
   canChange,
   deskArrival,
   deskOfKey,
   deskOfSeat,
   type PieceChange,
+  type Floor,
   MAIN_MEETING,
   MEETING_ID,
   MEETING_NAME_MAX,
@@ -51,6 +53,8 @@ import { Usage } from "./usage";
 
 const DEFAULT_SPAWN = { x: 5, y: 5 };
 const HEARTBEAT_TIMEOUT_MS = 90_000;
+/** WebSocket's own "service restart": the page reconnects straight away. */
+const SERVICE_RESTART = 1012;
 /** How often, at most, the room looks for sockets that stopped answering. */
 const SWEEP_EVERY_MS = 10_000;
 /** Video a person may be sent at once in a meeting: the four speakers they see, a screen, and one to swap in. */
@@ -139,6 +143,8 @@ export class Room extends DurableObject<Env> {
   private readonly sfuApi: SfuApi;
   private usage!: Usage;
   private desks!: Desks;
+  /** The floor the office is on, as its tickets say (offices.floor, or the demo office's): whose desks there are. */
+  private floor!: Floor;
   private pieces!: Pieces;
   /** Meeting hours, made once the room knows whether it is an office or a lobby copy. */
   private clockCache: MeetingClock | null = null;
@@ -161,7 +167,8 @@ export class Room extends DurableObject<Env> {
     );
     this.board = new Board(this.ctx.storage.sql);
     this.usage = new Usage(this.ctx.storage.sql, this.env.DB);
-    this.desks = new Desks(this.ctx.storage.sql);
+    this.floor = floorOf(this.ctx.storage.sql.exec<{ value: string }>("SELECT value FROM room_state WHERE key = 'floor'").toArray()[0]?.value);
+    this.desks = new Desks(this.ctx.storage.sql, this.floor);
     this.pieces = new Pieces(this.ctx.storage.sql);
   }
 
@@ -196,12 +203,18 @@ export class Room extends DurableObject<Env> {
   }
 
   /** The room was deleted or archived: everyone leaves. */
-  async disconnectAll(): Promise<void> {
+  /**
+   * Everyone leaves: for good (the office closed), or, `again`, to come
+   * straight back (it moved to another floor): a restart, to the page, which
+   * reconnects with a new ticket.
+   */
+  async disconnectAll(again = false): Promise<void> {
     const sockets = this.present();
     for (const socket of sockets) {
       const attachment = this.attachmentOf(socket);
       this.leaveMeeting(attachment);
-      this.closeQuietly(socket, CloseCode.RoomClosed, "room_closed", attachment);
+      if (again) this.closeQuietly(socket, SERVICE_RESTART, "floor_moved", attachment);
+      else this.closeQuietly(socket, CloseCode.RoomClosed, "room_closed", attachment);
     }
     if (sockets.length) await this.headcountChanged(this.attachmentOf(sockets[0]).room);
   }
@@ -238,6 +251,7 @@ export class Room extends DurableObject<Env> {
 
     const now = Date.now();
     this.dropStaleSockets(now);
+    if (ticket.floor) this.moveTo(floorOf(ticket.floor));
 
     const { 0: client, 1: server } = new WebSocketPair();
 
@@ -323,13 +337,24 @@ export class Room extends DurableObject<Env> {
     return new Response(null, { status: 101, webSocket: client });
   }
 
+  /**
+   * The office is on another floor now (its ticket says so: the team moved
+   * it): kept, and its desk claims settle onto the new floor's desks.
+   */
+  private moveTo(floor: Floor): void {
+    if (floor.id === this.floor.id) return;
+    this.floor = floor;
+    this.ctx.storage.sql.exec("INSERT INTO room_state (key, value) VALUES ('floor', ?) ON CONFLICT (key) DO UPDATE SET value = excluded.value", floor.id);
+    this.desks.moveTo(floor);
+  }
+
   /** Where someone arriving appears: by their desk, or by a free one, chosen at random. */
   private arrivalNear(desk: number | null): { x: number; y: number } | null {
-    if (desk !== null) return deskArrival(desk);
+    if (desk !== null) return deskArrival(desk, this.floor);
     const claimed = new Set(this.desks.list().map((one) => one.seat));
     const taken = new Set(this.present().map((socket) => this.attachmentOf(socket).seat));
-    const free = DESK_SEATS.filter((seat) => !claimed.has(seat) && !taken.has(seat));
-    return free.length ? deskArrival(free[Math.floor(Math.random() * free.length)]) : null;
+    const free = deskSeats(this.floor).filter((seat) => !claimed.has(seat) && !taken.has(seat));
+    return free.length ? deskArrival(free[Math.floor(Math.random() * free.length)], this.floor) : null;
   }
 
   async webSocketMessage(socket: WebSocket, raw: string | ArrayBuffer): Promise<void> {
@@ -524,20 +549,20 @@ export class Room extends DurableObject<Env> {
   private changePiece(socket: WebSocket, me: Attachment, key: unknown, change: unknown, now: number): void {
     if (!this.takeAction(me) || me.guest || lobbyCopyNumber(me.room) !== null || typeof key !== "string" || key.length > 80) return;
     const mine = this.desks.of(me.userId);
-    const desk = mine === null ? null : deskOfSeat(mine);
+    const desk = mine === null ? null : deskOfSeat(mine, this.floor);
     const next = (change ?? null) as PieceChange | null;
     const changes = this.pieces.all();
-    if (!isPieceChange(next) || !canChange(key, next, desk, changes)) {
+    if (!isPieceChange(next) || !canChange(key, next, desk, changes, this.floor)) {
       send(socket, { t: "pieces", pieces: changes });
       return;
     }
-    this.pieces.set(key, deskOfKey(key)!, next, me.userId, now);
+    this.pieces.set(key, deskOfKey(key, this.floor)!, next, me.userId, now);
     this.broadcast({ t: "piece", key, change: next, by: me.userId });
   }
 
   /** A desk's pieces back to the floor's own, and everyone told. */
   private resetDesk(seat: number): void {
-    const desk = deskOfSeat(seat);
+    const desk = deskOfSeat(seat, this.floor);
     if (desk && this.pieces.clearDesk(desk)) this.broadcast({ t: "pieces", pieces: this.pieces.all() });
   }
 

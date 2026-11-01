@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useCallback, useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Chats, Inbox as InboxIcon, Office, Overview as OverviewIcon, People as PeopleIcon } from "@/components/ui/icons";
 import { Link, useRouter } from "@/lib/i18n/navigation";
@@ -44,11 +44,20 @@ function Admin() {
   const view: View = VIEWS.find((one) => one === params.get("view")) ?? "overview";
   const picked = params.get("id");
 
+  // The counts, read again whenever asked. Not being the team is final; anything else (offline, a deploy) is tried
+  // again, a little later each time, so the page never sits on a spinner for good.
+  const retry = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const recount = useCallback(() => {
-    api.adminSummary().then(setSummary, (error) => {
-      if (error instanceof ApiError && (error.status === 404 || error.status === 403)) setDenied(true);
-    });
+    const attempt = (tries: number) => {
+      clearTimeout(retry.current);
+      api.adminSummary().then(setSummary, (error) => {
+        if (error instanceof ApiError && (error.status === 404 || error.status === 403)) return setDenied(true);
+        retry.current = setTimeout(() => attempt(tries + 1), Math.min(1000 * 2 ** tries, 15_000));
+      });
+    };
+    attempt(0);
   }, []);
+  useEffect(() => () => clearTimeout(retry.current), []);
 
   useEffect(() => {
     if (isLoading) return;

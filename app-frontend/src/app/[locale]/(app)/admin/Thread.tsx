@@ -42,7 +42,9 @@ export function useTicket(id: string | null, again?: unknown) {
 export function Messages({ messages, fresh = 0, empty }: { messages: AdminHelpDetail["messages"]; fresh?: number; empty?: React.ReactNode }) {
   const end = useRef<HTMLLIElement>(null);
   const last = messages.at(-1)?.id;
-  useEffect(() => end.current?.scrollIntoView({ block: "end" }), [last]);
+  useEffect(() => {
+    end.current?.scrollIntoView({ block: "end" });
+  }, [last]);
   const theirs = new Set(fresh > 0 ? messages.filter((one) => !one.team).slice(-fresh).map((one) => one.id) : []);
   if (!messages.length) return <div className="flex min-h-0 flex-1 items-center justify-center px-6 text-center">{empty}</div>;
   return (

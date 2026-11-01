@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { Calendar, Chats, CreditCard, Floor as FloorIcon, MoreHorizontal, Office as OfficeIcon, Pencil, Trash2, X } from "@/components/ui/icons";
-import { FLOORS } from "@shared/map";
 import { IconButton } from "@/components/ui/IconButton";
 import { Face } from "@/components/ui/Face";
 import { Dialog } from "@/components/ui/Dialog";
@@ -94,7 +93,7 @@ export function Offices({ summary, picked, pick, open, recount }: ViewProps) {
               aside={office.here > 0 ? <Live>{office.here} here</Live> : office.lastActiveAt ? <Short at={office.lastActiveAt} /> : "Never"}
               below={
                 <span className="flex items-center gap-1">
-                  {office.floor !== "startup" && <Badge>{floorName(office.floor)}</Badge>}
+                  {office.floor === NEW_FLOOR && <Badge>New floor</Badge>}
                   <PlanBadge office={office} />
                 </span>
               }
@@ -126,7 +125,9 @@ export function Offices({ summary, picked, pick, open, recount }: ViewProps) {
   );
 }
 
-const floorName = (id: string) => id.charAt(0).toUpperCase() + id.slice(1);
+/** The floors while offices move to the new one (shared-protocol map.ts FLOORS); once they all have, this goes. */
+const OLD_FLOOR = "startup";
+const NEW_FLOOR = "campus";
 
 /** The office's plan, and how it has it: paying (or behind on it, or stopping), or given by hand. */
 function PlanBadge({ office }: { office: AdminOffice }) {
@@ -231,7 +232,7 @@ function Office({
             </Figures>
 
             <Section title="Floor">
-              <FloorSwitch
+              <FloorStatus
                 office={office}
                 onMoved={() => {
                   setRound((n) => n + 1);
@@ -297,59 +298,62 @@ function Office({
 }
 
 /**
- * Which floor the office is on, and moving it to another: the way the new
- * floor reaches offices, one at a time, before it's everyone's. Asks first:
- * everyone on it reconnects to the new floor, and claimed desks move to the
- * nearest free desk there.
+ * Which floor the office is on, while the new one reaches offices one at a
+ * time: on the old floor, with converting it to the new as the action, or on
+ * the new, with going back. Either way it asks first: everyone on it
+ * reconnects to the other floor, and each claimed desk moves to the nearest
+ * free desk there.
  */
-function FloorSwitch({ office, onMoved }: { office: AdminOffice; onMoved: () => void }) {
-  const [moving, setMoving] = useState<string | null>(null);
+function FloorStatus({ office, onMoved }: { office: AdminOffice; onMoved: () => void }) {
+  const [asking, setAsking] = useState(false);
   const { busy, error, run, clear } = useRun();
+  const converted = office.floor === NEW_FLOOR;
+  const to = converted ? OLD_FLOOR : NEW_FLOOR;
   return (
     <>
-      <div className="flex items-center gap-3 rounded-xl border border-border px-3.5 py-2.5">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-2.5 rounded-xl border border-border px-3.5 py-3">
         <FloorIcon className="size-4 shrink-0 text-faint" />
-        <span className="flex-1 text-[13px] text-muted-foreground">Drawn and kept by the room as</span>
-        <div role="radiogroup" aria-label="Floor" className="flex h-8 items-center rounded-full bg-muted p-0.5">
-          {Object.keys(FLOORS).map((one) => (
-            <button
-              key={one}
-              type="button"
-              role="radio"
-              aria-checked={office.floor === one}
-              onClick={() => {
-                clear();
-                if (office.floor !== one) setMoving(one);
-              }}
-              className={cn(
-                "h-7 cursor-pointer rounded-full px-3 text-[12.5px] font-medium transition-colors",
-                office.floor === one ? "bg-card text-foreground shadow-[0_0_0_1px_var(--ui-border)]" : "text-muted-foreground hover:text-foreground",
-              )}
-            >
-              {floorName(one)}
-            </button>
-          ))}
-        </div>
+        <span className="min-w-0 flex-1">
+          <span className="block text-[13.5px] font-medium">{converted ? "New floor" : "Old floor"}</span>
+          <span className="block text-[12.5px] text-muted-foreground">{converted ? "Campus, with the new layout and camera" : "Startup, the original office"}</span>
+        </span>
+        <button
+          type="button"
+          onClick={() => {
+            clear();
+            setAsking(true);
+          }}
+          className={cn(
+            "h-8 shrink-0 cursor-pointer rounded-full px-3.5 text-[12.5px] font-medium transition-colors",
+            converted ? "border border-border-strong text-foreground hover:bg-muted" : "bg-foreground text-background hover:opacity-90",
+          )}
+        >
+          {converted ? "Revert to old floor" : "Convert to new floor"}
+        </button>
       </div>
       <Dialog
-        open={moving !== null}
-        onClose={() => setMoving(null)}
-        title={`Move ${office.name} to ${floorName(moving ?? "")}?`}
-        description="Everyone on its floor now reconnects to the new one, and each claimed desk moves to the nearest free desk there. Things people put on their desks stay with the old floor's desks."
+        open={asking}
+        onClose={() => setAsking(false)}
+        title={converted ? `Revert ${office.name} to the old floor?` : `Convert ${office.name} to the new floor?`}
+        description={
+          converted
+            ? "Everyone there reconnects to the old floor, and each claimed desk moves to the nearest free desk on it. You can convert it again later."
+            : "Everyone there reconnects to the new floor, and each claimed desk moves to the nearest free desk on it. You can revert it later."
+        }
         closeLabel="Close"
         footer={
           <>
-            <DialogButton onClick={() => setMoving(null)}>Cancel</DialogButton>
+            <DialogButton onClick={() => setAsking(false)}>Cancel</DialogButton>
             <DialogButton
               solid
               disabled={busy}
               onClick={async () => {
-                if (!moving || !(await run(() => api.adminUpdateOffice(office.id, { floor: moving })))) return;
-                setMoving(null);
+                if (!(await run(() => api.adminUpdateOffice(office.id, { floor: to })))) return;
+                setAsking(false);
                 onMoved();
               }}
             >
-              Move it
+              {converted ? "Revert" : "Convert"}
             </DialogButton>
           </>
         }

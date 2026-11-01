@@ -23,17 +23,30 @@ const PAGE = 50;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const LIVE = [...HOLDS_PLAN].map((status) => `'${status}'`).join(", ");
 
-export async function requireAdmin(env: Env, request: Request, ctx: ExecutionContext) {
-  const user = await requireAccount(env, request, ctx);
-  const allowed = (env.ADMIN_EMAILS ?? "")
+/** The team's addresses (ADMIN_EMAILS), lower case. */
+const adminEmails = (env: Env) =>
+  (env.ADMIN_EMAILS ?? "")
     .split(",")
     .map((email) => email.trim().toLowerCase())
     .filter(Boolean);
+
+export async function requireAdmin(env: Env, request: Request, ctx: ExecutionContext) {
+  const user = await requireAccount(env, request, ctx);
   const row = await env.DB.prepare("SELECT email_verified FROM users WHERE id = ?").bind(user.id).first<{ email_verified: number }>();
-  if (!user.email || !allowed.includes(user.email) || row?.email_verified !== 1) {
+  if (!user.email || !adminEmails(env).includes(user.email) || row?.email_verified !== 1) {
     throw new HttpError(404, "not_found", "No such endpoint");
   }
   return user;
+}
+
+/** The team's accounts (their addresses shown to be theirs): who hears when someone writes to the team. */
+export async function adminIds(env: Env): Promise<string[]> {
+  const emails = adminEmails(env);
+  if (!emails.length) return [];
+  const { results } = await env.DB.prepare(`SELECT id FROM users WHERE email_verified = 1 AND LOWER(email) IN (${emails.map(() => "?").join(", ")})`)
+    .bind(...emails)
+    .all<{ id: string }>();
+  return results.map((row) => row.id);
 }
 
 /** The viewer's time zone, if it's one the runtime knows; otherwise UTC. */

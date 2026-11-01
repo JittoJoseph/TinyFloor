@@ -2,14 +2,17 @@ import { WorkerEntrypoint } from "cloudflare:workers";
 import {
   LOBBY_CHAT,
   LOBBY_COPY_CAPACITY,
+  type HelpNews,
   type LobbyChatPage,
   type LobbyPeople,
   type PresentPerson,
+  type PushPayload,
   type RealtimeAdminApi,
   type Whereabouts,
 } from "../../shared-protocol/src";
 import { Reporter, type HelpEvent } from "./discord";
 import { lobbyCopy } from "./lobby";
+import { pushTo } from "./push";
 
 /** Faces the lobby door shows. */
 const FACES = 5;
@@ -73,13 +76,18 @@ export class RealtimeAdmin extends WorkerEntrypoint<Env> implements RealtimeAdmi
     await new Reporter(this.env.DISCORD_WEBHOOK_URL).report({ kind: "office_created", ...event });
   }
 
-  /** A Help and feedback ticket changed: the chat where it's followed says so, for its count. */
-  async helpChanged(place: { officeId: string } | { visitor: string }): Promise<void> {
-    if ("officeId" in place) await this.env.CHAT.getByName(place.officeId).helpChanged();
-    else await this.env.CHAT.getByName(LOBBY_CHAT).helpChanged(place.visitor);
+  /** The conversation with the team changed: the chat where it's followed says so, and with news, notifies (chat.ts). */
+  async helpChanged(place: { officeId: string } | { visitor: string }, news?: HelpNews): Promise<void> {
+    if ("officeId" in place) await this.env.CHAT.getByName(place.officeId).helpChanged(undefined, news);
+    else await this.env.CHAT.getByName(LOBBY_CHAT).helpChanged(place.visitor, news);
   }
 
-  /** Someone wrote through Help and feedback: the team hears about it on Discord, with the lobby and new offices. */
+  /** A push to every device of these people (push.ts): the team hearing someone wrote to them. */
+  async notify(userIds: string[], payload: PushPayload): Promise<void> {
+    await pushTo(this.env, userIds, payload);
+  }
+
+  /** Someone wrote to the team: it's on Discord too, with the lobby and new offices. */
   async helpMessage(event: Omit<HelpEvent, "kind">): Promise<void> {
     await new Reporter(this.env.DISCORD_WEBHOOK_URL).report({ kind: "help", ...event });
   }

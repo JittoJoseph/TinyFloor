@@ -105,7 +105,7 @@ export async function vapid(endpoint: string, secret: string, now = Date.now()):
  * `topic` lets the push service keep only the newest of a conversation's
  * pushes while the device is offline.
  */
-export async function sendPush(target: PushTarget, payload: PushPayload, secret: string, topic: string): Promise<"sent" | "gone" | "failed"> {
+async function sendPush(target: PushTarget, payload: PushPayload, secret: string, topic: string): Promise<"sent" | "gone" | "failed"> {
   const response = await fetch(target.endpoint, {
     method: "POST",
     headers: {
@@ -122,8 +122,41 @@ export async function sendPush(target: PushTarget, payload: PushPayload, secret:
   return response.ok ? "sent" : "failed";
 }
 
-/** A Topic header (up to 32 URL-safe characters) for a conversation. */
-export async function topicFor(office: string, channel: string): Promise<string> {
-  const digest = new Uint8Array(await crypto.subtle.digest("SHA-256", encoder.encode(`${office}:${channel}`)));
+/** A Topic header (up to 32 URL-safe characters) for a conversation: the newest of its pushes is kept. */
+async function topicFor(conversation: string): Promise<string> {
+  const digest = new Uint8Array(await crypto.subtle.digest("SHA-256", encoder.encode(conversation)));
   return toBase64Url(digest).slice(0, 32);
+}
+
+/**
+ * A notification to people, the one way every push is sent: to every browser
+ * they turned notifications on in while signed in, so all their devices, but
+ * those whose session has TinyFloor open (`except`: those say it in the app
+ * themselves). `to` is people by id, or everyone in an office; with `office`,
+ * only while they're still in it. A subscription its push service says is
+ * gone is forgotten.
+ */
+export async function pushTo(
+  env: Env,
+  to: string[] | { office: string },
+  payload: PushPayload,
+  { office, except = [] }: { office?: string; except?: string[] } = {},
+): Promise<void> {
+  if (!env.VAPID_KEY || (Array.isArray(to) && !to.length)) return;
+  const marks = (count: number) => Array.from({ length: count }, () => "?").join(", ");
+  const who = Array.isArray(to) ? `p.user_id IN (${marks(to.length)})` : "p.user_id IN (SELECT user_id FROM memberships WHERE office_id = ?)";
+  const { results } = await env.DB.prepare(
+    `SELECT p.endpoint, p.p256dh, p.auth FROM push_subscriptions p
+       JOIN sessions s ON s.id = p.session_id AND s.expires_at > ?
+      WHERE ${who}
+        ${office ? "AND EXISTS (SELECT 1 FROM memberships m WHERE m.user_id = p.user_id AND m.office_id = ?)" : ""}
+        ${except.length ? `AND p.session_id NOT IN (${marks(except.length)})` : ""}`,
+  )
+    .bind(Date.now(), ...(Array.isArray(to) ? to : [to.office]), ...(office ? [office] : []), ...except)
+    .all<PushTarget>();
+  if (!results.length) return;
+  const topic = await topicFor(`${office ?? ""}:${payload.tag}`);
+  const outcomes = await Promise.all(results.map((target) => sendPush(target, payload, env.VAPID_KEY, topic).catch(() => "failed" as const)));
+  const gone = results.filter((_, index) => outcomes[index] === "gone").map((target) => target.endpoint);
+  if (gone.length) await env.DB.prepare(`DELETE FROM push_subscriptions WHERE endpoint IN (${marks(gone.length)})`).bind(...gone).run();
 }

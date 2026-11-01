@@ -116,6 +116,15 @@ export interface ChatReply {
   gone?: true;
 }
 
+/** The conversation with the TinyFloor team, where Chat shows it: `/chat/~support`. A channel's name can't hold "~", so it's never one. */
+export const SUPPORT_CHANNEL = "~support";
+
+/** The team's newest words in the conversation with you, for a notification. */
+export interface HelpNews {
+  title: string;
+  body: string;
+}
+
 export interface ChatMessage {
   seq: number;
   channel: string;
@@ -189,7 +198,8 @@ export type ChatServerMessage =
   /** Someone left the lobby: their direct messages go with them. */
   | { t: "chat_gone"; userId: string }
   /** Help and feedback's ticket changed (the team answered, or closed it): read it again from the API. */
-  | { t: "help_changed" }
+  /** The conversation with the TinyFloor team changed; `news` when the team just wrote in it. */
+  | { t: "help_changed"; news?: HelpNews }
   | { t: "chat_error"; code: string };
 
 /** The id of the direct-message channel between two people, whoever asks. */

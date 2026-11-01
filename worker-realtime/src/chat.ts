@@ -18,6 +18,7 @@ import {
   HEARTBEAT_PONG,
   MODERATOR,
   REPLY_SNIPPET,
+  SUPPORT_CHANNEL,
   VOICE_MAX_SECONDS,
   VOICE_PEAKS,
   cleanChannelName,
@@ -33,16 +34,18 @@ import {
   type ChatReply,
   type ChatServerMessage,
   type LobbyChatPage,
-  type PushPayload,
+  type HelpNews,
   type RoomTicket,
 } from "../../shared-protocol/src";
 import { readTicket, TICKET_HEADER } from "./headers";
-import { sendPush, topicFor, type PushTarget } from "./push";
+import { pushTo } from "./push";
 
 /** What the socket remembers about whoever is on it. */
 interface Attachment {
   userId: string;
   name: string;
+  /** The session the socket's tab is signed in with: a push skips the devices that have the app open. */
+  session?: string;
   /** Sends in this window, to keep a runaway client from filling the office. */
   sends: number;
   window: number;
@@ -176,7 +179,7 @@ export class Chat extends DurableObject<Env> {
       this.office = ticket.room.slice("chat:".length);
       await this.ctx.storage.put(OFFICE_KEY, this.office);
     }
-    const attachment: Attachment = { userId: ticket.sub, name: ticket.name, sends: 0, window: 0 };
+    const attachment: Attachment = { userId: ticket.sub, name: ticket.name, ...(ticket.sid ? { session: ticket.sid } : {}), sends: 0, window: 0 };
     this.remember(server, attachment);
 
     this.sql.exec(
@@ -249,14 +252,24 @@ export class Chat extends DurableObject<Env> {
   }
 
   /**
-   * Help and feedback's ticket changed: everyone here (or only `userId`, in
-   * the lobby) reads it again from the API. Nothing about it is said here.
+   * The conversation with the TinyFloor team changed: everyone here (or only
+   * `userId`, in the lobby) reads it again from the API. With `news`, the
+   * team wrote: the tabs that are open say so themselves, and everyone it's
+   * for hears on their other devices as a push.
    */
-  async helpChanged(userId?: string): Promise<void> {
+  async helpChanged(userId?: string, news?: HelpNews): Promise<void> {
     for (const socket of this.ctx.getWebSockets()) {
       const who = this.attachmentOf(socket);
-      if (who && (!userId || who.userId === userId)) this.send(socket, { t: "help_changed" });
+      if (who && (!userId || who.userId === userId)) this.send(socket, { t: "help_changed", ...(news ? { news } : {}) });
     }
+    if (!news || (!userId && !this.office)) return;
+    const url = userId ? `/lobby/chat/${SUPPORT_CHANNEL}` : `/office/${this.office}/chat/${SUPPORT_CHANNEL}`;
+    await pushTo(this.env, userId ? [userId] : { office: this.office! }, { ...news, tag: "help", url }, { except: this.openSessions() });
+  }
+
+  /** The sessions with a tab open here: they're told in the app, not by a push. */
+  private openSessions(): string[] {
+    return [...new Set(this.ctx.getWebSockets().flatMap((socket) => this.attachmentOf(socket)?.session ?? []))];
   }
 
   /** Someone's membership ended: their sockets close and their DMs stay put. */
@@ -449,51 +462,26 @@ export class Chat extends DurableObject<Env> {
   }
 
   /**
-   * A direct message, or a mention, for someone with no tab open here reaches
-   * their browser as a push (push.ts); a tab that's open says it itself (the
-   * app's DesktopAlerts). Never in the lobby.
+   * A direct message, or a mention, reaches the devices of whoever it's for
+   * that don't have the office open, as a push (push.ts); a tab that's open
+   * says it itself (the app's DesktopAlerts). Never in the lobby.
    */
   private reachAway(message: ChatMessage): void {
-    if (this.lobby || !this.office || !this.env.VAPID_KEY) return;
+    if (this.lobby || !this.office) return;
     const pair = dmMembers(message.channel);
     const wanted = pair ? pair.filter((id) => id !== message.author) : (message.mentions ?? []);
     if (!wanted.length) return;
-    const here = new Set(this.ctx.getWebSockets().map((socket) => this.attachmentOf(socket)?.userId));
-    const away = wanted.filter((id) => !here.has(id));
-    if (away.length) this.ctx.waitUntil(this.push(this.office, away, message).catch((error: unknown) => console.error("chat: push failed", error)));
-  }
-
-  /** To every browser those people subscribed while signed in, if they're still in the office. */
-  private async push(office: string, userIds: string[], message: ChatMessage): Promise<void> {
-    const { results } = await this.env.DB.prepare(
-      `SELECT p.endpoint, p.p256dh, p.auth FROM push_subscriptions p
-       JOIN sessions s ON s.id = p.session_id AND s.expires_at > ?
-       JOIN memberships m ON m.user_id = p.user_id AND m.office_id = ?
-       WHERE p.user_id IN (${userIds.map(() => "?").join(", ")})`,
-    )
-      .bind(Date.now(), office, ...userIds)
-      .all<PushTarget>();
-    if (!results.length) return;
-
     const voice = message.files?.find(isVoice);
     const text = voice && !message.body ? `🎤 ${clockOf(voice.duration ?? 0)}` : gist(message.body, message.files ?? []);
-    const payload: PushPayload = {
+    const payload = {
       title: isDm(message.channel) ? message.authorName : `${message.authorName} · #${message.channel}`,
       body: text.length > 160 ? `${text.slice(0, 160)}…` : text,
       tag: `chat:${message.channel}`,
-      url: `/office/${office}/chat/${encodeURIComponent(message.channel)}`,
+      url: `/office/${this.office}/chat/${encodeURIComponent(message.channel)}`,
     };
-    const topic = await topicFor(office, message.channel);
-    const outcomes = await Promise.all(
-      results.map((target) => sendPush(target, payload, this.env.VAPID_KEY, topic).catch(() => "failed" as const)),
+    this.ctx.waitUntil(
+      pushTo(this.env, wanted, payload, { office: this.office, except: this.openSessions() }).catch((error: unknown) => console.error("chat: push failed", error)),
     );
-    // The browser unsubscribed, or its push service forgot it: don't try it again.
-    const gone = results.filter((_, index) => outcomes[index] === "gone").map((target) => target.endpoint);
-    if (gone.length) {
-      await this.env.DB.prepare(`DELETE FROM push_subscriptions WHERE endpoint IN (${gone.map(() => "?").join(", ")})`)
-        .bind(...gone)
-        .run();
-    }
   }
 
   /**

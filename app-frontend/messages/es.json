@@ -214,6 +214,7 @@
     "download": "Descargar",
     "messages": "Mensajes",
     "searching": "Buscando…",
+    "heldSearch": "Se buscó en los últimos {days} días. Pro busca en todo.",
     "filesMax": "Hasta {count} archivos a la vez.",
     "fileTooBig": "Los archivos pueden pesar hasta 10 MB.",
     "fileSlowDown": "Demasiados archivos a la vez. Inténtalo en un minuto.",
@@ -229,6 +230,10 @@
     "replyingTo": "Respondiendo a <strong>{name}</strong>",
     "cancelReply": "Dejar de responder",
     "replyGone": "Se eliminó el mensaje original",
+    "replyHeld": "Un mensaje anterior",
+    "heldTitle": "Los mensajes de hace más de {days} días están en Pro",
+    "heldBody": "Se guardan y nunca se borran.",
+    "heldAction": "Ver Pro",
     "replyFiles": "{count, plural, one {# archivo} other {# archivos}}",
     "typingOne": "{name} está escribiendo",
     "typingTwo": "{a} y {b} están escribiendo",
@@ -711,7 +716,8 @@
       "wholeTeam": "Todo tu equipo, en una misma planta",
       "support": "Ayuda prioritaria de nuestro equipo",
       "assurance": "Cancela cuando quieras. Reembolso completo en 14 días.",
-      "meetings": "Reuniones tan a menudo como tu equipo necesite"
+      "meetings": "Reuniones tan a menudo como tu equipo necesite",
+      "history": "Todo el historial del chat"
     },
     "page": {
       "notice": {
@@ -730,6 +736,7 @@
       "freePer": "para siempre",
       "freeSeats": "Hasta {seats} personas",
       "freeEverything": "Planta, chat, reuniones y vídeo HD",
+      "freeHistory": "{days} días de historial del chat",
       "invoices": "Facturas",
       "keep": "Quedarme con Pro",
       "updateCard": "Actualizar tarjeta",

@@ -214,6 +214,7 @@
     "download": "Télécharger",
     "messages": "Messages",
     "searching": "Recherche…",
+    "heldSearch": "Recherche sur les {days} derniers jours. Pro cherche partout.",
     "filesMax": "Jusqu'à {count} fichiers à la fois.",
     "fileTooBig": "Les fichiers peuvent faire jusqu'à 10 Mo.",
     "fileSlowDown": "Trop de fichiers d'un coup. Réessayez dans une minute.",
@@ -229,6 +230,10 @@
     "replyingTo": "Réponse à <strong>{name}</strong>",
     "cancelReply": "Annuler la réponse",
     "replyGone": "Le message d’origine a été supprimé",
+    "replyHeld": "Un message plus ancien",
+    "heldTitle": "Les messages de plus de {days} jours sont sur Pro",
+    "heldBody": "Ils sont conservés, jamais supprimés.",
+    "heldAction": "Voir Pro",
     "replyFiles": "{count, plural, one {# fichier} other {# fichiers}}",
     "typingOne": "{name} écrit",
     "typingTwo": "{a} et {b} écrivent",
@@ -711,7 +716,8 @@
       "wholeTeam": "Toute votre équipe, sur un même étage",
       "support": "Aide prioritaire de notre équipe",
       "assurance": "Résiliable à tout moment. Remboursement intégral sous 14 jours.",
-      "meetings": "Des réunions aussi souvent que votre équipe en a besoin"
+      "meetings": "Des réunions aussi souvent que votre équipe en a besoin",
+      "history": "Tout l’historique de votre chat"
     },
     "page": {
       "notice": {
@@ -730,6 +736,7 @@
       "freePer": "pour toujours",
       "freeSeats": "Jusqu'à {seats} personnes",
       "freeEverything": "Étage, chat, réunions et vidéo HD",
+      "freeHistory": "{days} jours d’historique de chat",
       "invoices": "Factures",
       "keep": "Garder Pro",
       "updateCard": "Mettre à jour la carte",

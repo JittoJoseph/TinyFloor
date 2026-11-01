@@ -10,7 +10,7 @@ import {
   type RoomTicket,
 } from "../../shared-protocol/src";
 import { realtime, requireOffice } from "./access";
-import { floorCap, meetingHoursOf, MOST_SEATS } from "./billing";
+import { floorCap, historyDaysOf, meetingHoursOf, MOST_SEATS } from "./billing";
 import { json } from "./http";
 import type { Router } from "./router";
 import { noteCountry, requireUser, type User } from "./session";
@@ -33,6 +33,7 @@ export function floorRoutes(router: Router): void {
     .add("POST", "/v1/offices/:id/chat-ticket", async ({ request, env, ctx, params }) => {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id);
+      const history = historyDaysOf(env, office.plan);
       const claims: RoomTicket = {
         v: 1,
         room: `chat:${office.id}`,
@@ -43,6 +44,7 @@ export function floorRoutes(router: Router): void {
         // Chat is open to everyone in the office, whatever the floor holds at once.
         cap: MOST_SEATS,
         sid: user.sessionId,
+        ...(history ? { history } : {}),
         exp: Date.now() + TICKET_LIFETIME_MS,
       };
       return json({

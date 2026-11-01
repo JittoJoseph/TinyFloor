@@ -1227,6 +1227,7 @@
         "everything": "Alles van Free, plus",
         "team": "Ruimte voor je hele team",
         "often": "Meetings zo vaak als je team wil",
+        "history": "Je hele chatgeschiedenis",
         "help": "Voorrang bij hulp van de makers",
         "included": "Wat je krijgt"
       },
@@ -1364,6 +1365,9 @@
       "callsNote": "Tellen nooit mee",
       "support": "Voorrang bij hulp",
       "wholeTeam": "Hele team",
+      "history": "Chatgeschiedenis",
+      "historyDays": "{days} dagen",
+      "historyAll": "Alles",
       "meetings": "Groepsmeetings",
       "features": {
         "chat": "Kanalen en berichten",
@@ -1414,6 +1418,10 @@
       {
         "q": "Wat gebeurt er als de proefperiode eindigt?",
         "a": "Het kantoor gaat naar Free, tenzij je Pro kiest. Niemand wordt verwijderd: nog twee weken kan iedereen binnenkomen, al kan niemand nieuw erbij boven de 3. Daarna kunnen 3 mensen tegelijk op de vloer zijn, en de chat blijft voor iedereen open."
+      },
+      {
+        "q": "Blijft de chatgeschiedenis bewaard op Free?",
+        "a": "Ja, helemaal. Free toont de berichten van de laatste 90 dagen en Pro alles, dus er gaat niets verloren als je overstapt naar Pro."
       },
       {
         "q": "Gaat de prijs omhoog?",

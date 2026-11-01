@@ -1227,6 +1227,7 @@
         "everything": "Everything in Free, plus",
         "team": "Room for your whole team",
         "often": "Meetings as often as your team needs",
+        "history": "Your whole chat history",
         "help": "Priority help from the people who build it",
         "included": "What you get"
       },
@@ -1364,6 +1365,9 @@
       "callsNote": "Never counted",
       "support": "Priority help",
       "wholeTeam": "Whole team",
+      "history": "Chat history",
+      "historyDays": "{days} days",
+      "historyAll": "All of it",
       "meetings": "Group meetings",
       "features": {
         "chat": "Channels and messages",
@@ -1414,6 +1418,10 @@
       {
         "q": "What happens when the trial ends?",
         "a": "The office moves to Free unless you choose Pro. Nobody is removed: for two more weeks everyone can still come in, though nobody new can join past 3. After that, 3 people can be on the floor at once, and chat stays open to everyone."
+      },
+      {
+        "q": "Is chat history kept on Free?",
+        "a": "Yes, all of it. Free shows the last 90 days of messages and Pro shows everything, so nothing is lost when you move to Pro."
       },
       {
         "q": "Will the price go up?",

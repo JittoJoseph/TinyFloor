@@ -31,7 +31,7 @@ export interface Line {
   /** Drawn instead of the author's face: the TinyFloor mark on the team's answers in a ticket. */
   mark?: ReactNode;
   /** The message this answers: who said it and how it began, or that it's gone. */
-  reply?: { id: string; author?: string; authorName?: string; body?: string; files?: number; gone?: boolean };
+  reply?: { id: string; author?: string; authorName?: string; body?: string; files?: number; gone?: boolean; held?: boolean };
   /** The main meeting's card, drawn in place of a message. */
   meeting?: ChatMeeting;
 }
@@ -54,6 +54,7 @@ export function Conversation({
   lines,
   me,
   intro,
+  held,
   more,
   onOlder,
   firstUnread,
@@ -72,6 +73,8 @@ export function Conversation({
   me: string;
   /** What sits above the first message, once there is nothing older. */
   intro: ReactNode;
+  /** Instead, when there are older messages the office's plan doesn't show (Held). */
+  held?: ReactNode;
   more: boolean;
   onOlder?: () => void;
   /** The first message you had not read when you opened this. */
@@ -178,7 +181,7 @@ export function Conversation({
     requestAnimationFrame(() => setLit(id));
   };
 
-  // Reaching the top asks for the page before it.
+  // Nearing the top asks for the page before it, a screen or two ahead, so scrolling up doesn't stop for it.
   const top = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const sentinel = top.current;
@@ -189,7 +192,7 @@ export function Conversation({
         heightBefore.current = box.current?.scrollHeight ?? 0;
         onOlder();
       },
-      { root: box.current, rootMargin: "200px 0px 0px 0px" },
+      { root: box.current, rootMargin: "1200px 0px 0px 0px" },
     );
     observer.observe(sentinel);
     return () => observer.disconnect();
@@ -222,7 +225,7 @@ export function Conversation({
                 <Loader variant="dots" size={16} />
               </div>
             ) : (
-              <div className="px-5 pb-2 pt-10 sm:px-6">{intro}</div>
+              (held ?? <div className="px-5 pb-2 pt-10 sm:px-6">{intro}</div>)
             )}
 
             {days.map((day) => (
@@ -309,12 +312,12 @@ function Quote({ reply, onOpen }: { reply: NonNullable<Line["reply"]>; onOpen?: 
       <span aria-hidden className="absolute start-[17px] top-[9px] h-[12px] w-[27px] rounded-ss-[6px] border-s-2 border-t-2 border-border" />
       <button
         type="button"
-        disabled={reply.gone || !onOpen}
+        disabled={reply.gone || reply.held || !onOpen}
         onClick={() => onOpen?.(reply.id)}
         className="group/quote flex min-w-0 max-w-full cursor-pointer items-center gap-1.5 text-[13px] leading-5 disabled:cursor-default"
       >
-        {reply.gone ? (
-          <span className="italic text-faint">{t("replyGone")}</span>
+        {reply.gone || reply.held ? (
+          <span className="italic text-faint">{t(reply.held ? "replyHeld" : "replyGone")}</span>
         ) : (
           <>
             <Face seed={reply.author ?? ""} size={14} />

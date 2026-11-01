@@ -214,6 +214,7 @@
     "download": "تنزيل",
     "messages": "الرسائل",
     "searching": "جارٍ البحث…",
+    "heldSearch": "تم البحث في آخر {days} يومًا. يبحث Pro في كل شيء.",
     "filesMax": "حتى {count} ملفات في المرة الواحدة.",
     "fileTooBig": "يمكن أن يصل حجم الملف إلى 10 ميغابايت.",
     "fileSlowDown": "ملفات كثيرة دفعة واحدة. حاول بعد دقيقة.",
@@ -229,6 +230,10 @@
     "replyingTo": "الرد على <strong>{name}</strong>",
     "cancelReply": "إلغاء الرد",
     "replyGone": "حُذفت الرسالة الأصلية",
+    "replyHeld": "رسالة أقدم",
+    "heldTitle": "الرسائل الأقدم من {days} يومًا متاحة في Pro",
+    "heldBody": "تُحفظ ولا تُحذف أبدًا.",
+    "heldAction": "اطّلع على Pro",
     "replyFiles": "{count, plural, zero {لا ملفات} one {ملف واحد} two {ملفان} few {# ملفات} many {# ملفًا} other {# ملف}}",
     "typingOne": "{name} يكتب الآن",
     "typingTwo": "{a} و{b} يكتبان الآن",
@@ -711,7 +716,8 @@
       "wholeTeam": "فريقك كله، في طابق واحد",
       "support": "مساعدة ذات أولوية من فريقنا",
       "assurance": "ألغِ في أي وقت. استرداد كامل خلال 14 يومًا.",
-      "meetings": "اجتماعات بقدر ما يحتاج فريقك"
+      "meetings": "اجتماعات بقدر ما يحتاج فريقك",
+      "history": "سجل الدردشة كاملًا"
     },
     "page": {
       "notice": {
@@ -730,6 +736,7 @@
       "freePer": "دائمًا",
       "freeSeats": "حتى {seats} أشخاص",
       "freeEverything": "الطابق والدردشة والاجتماعات وفيديو HD",
+      "freeHistory": "سجل دردشة لمدة {days} يومًا",
       "invoices": "الفواتير",
       "keep": "احتفظ بـ Pro",
       "updateCard": "تحديث البطاقة",

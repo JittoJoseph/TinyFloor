@@ -214,6 +214,7 @@
     "download": "Pobierz",
     "messages": "Wiadomości",
     "searching": "Szukanie…",
+    "heldSearch": "Przeszukano ostatnie {days} dni. Pro przeszukuje wszystko.",
     "filesMax": "Do {count} plików naraz.",
     "fileTooBig": "Pliki mogą mieć do 10 MB.",
     "fileSlowDown": "Za dużo plików naraz. Spróbuj za minutę.",
@@ -229,6 +230,10 @@
     "replyingTo": "Odpowiedź dla: <strong>{name}</strong>",
     "cancelReply": "Anuluj odpowiedź",
     "replyGone": "Oryginalna wiadomość została usunięta",
+    "replyHeld": "Starsza wiadomość",
+    "heldTitle": "Wiadomości starsze niż {days} dni są w Pro",
+    "heldBody": "Są przechowywane i nigdy nie są usuwane.",
+    "heldAction": "Zobacz Pro",
     "replyFiles": "{count, plural, one {# plik} few {# pliki} many {# plików} other {# pliku}}",
     "typingOne": "{name} pisze",
     "typingTwo": "{a} i {b} piszą",
@@ -711,7 +716,8 @@
       "wholeTeam": "Cały Twój zespół, na jednym piętrze",
       "support": "Pierwszeństwo w pomocy od naszego zespołu",
       "assurance": "Anuluj w dowolnej chwili. Pełny zwrot w ciągu 14 dni.",
-      "meetings": "Spotkania tak często, jak potrzebuje Twój zespół"
+      "meetings": "Spotkania tak często, jak potrzebuje Twój zespół",
+      "history": "Cała historia czatu"
     },
     "page": {
       "notice": {
@@ -730,6 +736,7 @@
       "freePer": "na zawsze",
       "freeSeats": "Do {seats} osób",
       "freeEverything": "Piętro, czat, spotkania i wideo HD",
+      "freeHistory": "{days} dni historii czatu",
       "invoices": "Faktury",
       "keep": "Zostań przy Pro",
       "updateCard": "Zaktualizuj kartę",

@@ -214,6 +214,7 @@
     "download": "הורדה",
     "messages": "הודעות",
     "searching": "מחפשים…",
+    "heldSearch": "החיפוש כלל את {days} הימים האחרונים. ב-Pro מחפשים בהכול.",
     "filesMax": "עד {count} קבצים בכל פעם.",
     "fileTooBig": "קבצים יכולים להגיע עד 10 MB.",
     "fileSlowDown": "יותר מדי קבצים בבת אחת. נסו שוב בעוד דקה.",
@@ -229,6 +230,10 @@
     "replyingTo": "תשובה ל<strong>{name}</strong>",
     "cancelReply": "ביטול התשובה",
     "replyGone": "ההודעה המקורית נמחקה",
+    "replyHeld": "הודעה ישנה יותר",
+    "heldTitle": "הודעות מלפני יותר מ-{days} ימים זמינות ב-Pro",
+    "heldBody": "הן נשמרות ואף פעם לא נמחקות.",
+    "heldAction": "ל-Pro",
     "replyFiles": "{count, plural, one {קובץ אחד} other {# קבצים}}",
     "typingOne": "{name} מקליד/ה",
     "typingTwo": "{a} ו{b} מקלידים",
@@ -711,7 +716,8 @@
       "wholeTeam": "כל הצוות שלך, בקומה אחת",
       "support": "עזרה בעדיפות מהצוות שלנו",
       "assurance": "אפשר לבטל בכל עת. החזר מלא תוך 14 ימים.",
-      "meetings": "פגישות בכל פעם שהצוות צריך"
+      "meetings": "פגישות בכל פעם שהצוות צריך",
+      "history": "כל היסטוריית הצ׳אט"
     },
     "page": {
       "notice": {
@@ -730,6 +736,7 @@
       "freePer": "לתמיד",
       "freeSeats": "עד {seats} אנשים",
       "freeEverything": "קומה, צ'אט, פגישות ווידאו HD",
+      "freeHistory": "{days} ימים של היסטוריית צ׳אט",
       "invoices": "חשבוניות",
       "keep": "להישאר ב-Pro",
       "updateCard": "עדכון כרטיס",

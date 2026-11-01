@@ -333,6 +333,8 @@ export interface Plan {
   meetingHours: number;
   /** US cents a month before tax; null for the free plan. */
   price: number | null;
+  /** How many days back the office's chat reads; null for all of it. */
+  historyDays: number | null;
 }
 
 /** The plans, and whether paid plans are on sale here (Creem's test mode or its live store). */

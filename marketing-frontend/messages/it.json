@@ -1227,6 +1227,7 @@
         "everything": "Tutto di Free, più",
         "team": "Spazio per tutto il team",
         "often": "Riunioni ogni volta che serve al team",
+        "history": "Tutta la cronologia della chat",
         "help": "Aiuto prioritario da chi lo costruisce",
         "included": "Cosa include"
       },
@@ -1364,6 +1365,9 @@
       "callsNote": "Mai conteggiate",
       "support": "Assistenza prioritaria",
       "wholeTeam": "Tutto il team",
+      "history": "Cronologia della chat",
+      "historyDays": "{days} giorni",
+      "historyAll": "Tutta",
       "meetings": "Riunioni di gruppo",
       "features": {
         "chat": "Canali e messaggi",
@@ -1414,6 +1418,10 @@
       {
         "q": "Cosa succede quando finisce la prova?",
         "a": "L'ufficio passa a Free se non scegli Pro. Nessuno viene rimosso: per altre due settimane tutti possono ancora entrare, ma nessuno di nuovo può unirsi oltre 3. Dopo, 3 persone possono stare sul piano insieme e la chat resta aperta a tutti."
+      },
+      {
+        "q": "La cronologia della chat viene conservata su Free?",
+        "a": "Sì, tutta. Free mostra i messaggi degli ultimi 90 giorni e Pro mostra tutto, quindi passando a Pro non si perde nulla."
       },
       {
         "q": "Il prezzo aumenterà?",

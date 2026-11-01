@@ -214,6 +214,7 @@
     "download": "Downloaden",
     "messages": "Berichten",
     "searching": "Zoeken…",
+    "heldSearch": "Gezocht in de laatste {days} dagen. Pro zoekt in alles.",
     "filesMax": "Tot {count} bestanden tegelijk.",
     "fileTooBig": "Bestanden mogen tot 10 MB zijn.",
     "fileSlowDown": "Te veel bestanden tegelijk. Probeer het over een minuut opnieuw.",
@@ -229,6 +230,10 @@
     "replyingTo": "Antwoord aan <strong>{name}</strong>",
     "cancelReply": "Niet meer beantwoorden",
     "replyGone": "Het oorspronkelijke bericht is verwijderd",
+    "replyHeld": "Een ouder bericht",
+    "heldTitle": "Berichten ouder dan {days} dagen staan in Pro",
+    "heldBody": "Ze worden bewaard, nooit verwijderd.",
+    "heldAction": "Bekijk Pro",
     "replyFiles": "{count, plural, one {# bestand} other {# bestanden}}",
     "typingOne": "{name} is aan het typen",
     "typingTwo": "{a} en {b} zijn aan het typen",
@@ -711,7 +716,8 @@
       "wholeTeam": "Iedereen in je team, op één verdieping",
       "support": "Voorrang bij hulp van ons team",
       "assurance": "Altijd opzegbaar. Volledige terugbetaling binnen 14 dagen.",
-      "meetings": "Meetings zo vaak als je team nodig heeft"
+      "meetings": "Meetings zo vaak als je team nodig heeft",
+      "history": "Je hele chatgeschiedenis"
     },
     "page": {
       "notice": {
@@ -730,6 +736,7 @@
       "freePer": "voor altijd",
       "freeSeats": "Tot {seats} mensen",
       "freeEverything": "Vloer, chat, vergaderingen en HD-video",
+      "freeHistory": "{days} dagen chatgeschiedenis",
       "invoices": "Facturen",
       "keep": "Pro houden",
       "updateCard": "Kaart bijwerken",

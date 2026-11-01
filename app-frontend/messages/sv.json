@@ -214,6 +214,7 @@
     "download": "Ladda ner",
     "messages": "Meddelanden",
     "searching": "Söker…",
+    "heldSearch": "Sökte i de senaste {days} dagarna. Pro söker i allt.",
     "filesMax": "Upp till {count} filer åt gången.",
     "fileTooBig": "Filer får vara upp till 10 MB.",
     "fileSlowDown": "För många filer på en gång. Försök igen om en minut.",
@@ -229,6 +230,10 @@
     "replyingTo": "Svarar <strong>{name}</strong>",
     "cancelReply": "Sluta svara",
     "replyGone": "Det ursprungliga meddelandet har tagits bort",
+    "replyHeld": "Ett äldre meddelande",
+    "heldTitle": "Meddelanden äldre än {days} dagar finns i Pro",
+    "heldBody": "De sparas och raderas aldrig.",
+    "heldAction": "Se Pro",
     "replyFiles": "{count, plural, one {# fil} other {# filer}}",
     "typingOne": "{name} skriver",
     "typingTwo": "{a} och {b} skriver",
@@ -711,7 +716,8 @@
       "wholeTeam": "Hela ditt team, på en våning",
       "support": "Prioriterad hjälp från vårt team",
       "assurance": "Avsluta när du vill. Full återbetalning inom 14 dagar.",
-      "meetings": "Möten så ofta ditt team behöver"
+      "meetings": "Möten så ofta ditt team behöver",
+      "history": "Hela chatthistoriken"
     },
     "page": {
       "notice": {
@@ -730,6 +736,7 @@
       "freePer": "för alltid",
       "freeSeats": "Upp till {seats} personer",
       "freeEverything": "Våning, chatt, möten och HD-video",
+      "freeHistory": "{days} dagars chatthistorik",
       "invoices": "Fakturor",
       "keep": "Behåll Pro",
       "updateCard": "Uppdatera kort",

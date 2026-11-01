@@ -214,6 +214,7 @@
     "download": "Baixar",
     "messages": "Mensagens",
     "searching": "Buscando…",
+    "heldSearch": "Busca nos últimos {days} dias. O Pro busca em tudo.",
     "filesMax": "Até {count} arquivos por vez.",
     "fileTooBig": "Arquivos podem ter até 10 MB.",
     "fileSlowDown": "Arquivos demais de uma vez. Tente de novo em um minuto.",
@@ -229,6 +230,10 @@
     "replyingTo": "Respondendo a <strong>{name}</strong>",
     "cancelReply": "Parar de responder",
     "replyGone": "A mensagem original foi apagada",
+    "replyHeld": "Uma mensagem mais antiga",
+    "heldTitle": "Mensagens com mais de {days} dias estão no Pro",
+    "heldBody": "Elas ficam guardadas e nunca são apagadas.",
+    "heldAction": "Ver o Pro",
     "replyFiles": "{count, plural, one {# arquivo} other {# arquivos}}",
     "typingOne": "{name} está digitando",
     "typingTwo": "{a} e {b} estão digitando",
@@ -711,7 +716,8 @@
       "wholeTeam": "Toda a sua equipe, em um só andar",
       "support": "Ajuda prioritária da nossa equipe",
       "assurance": "Cancele quando quiser. Reembolso total em até 14 dias.",
-      "meetings": "Reuniões sempre que sua equipe precisar"
+      "meetings": "Reuniões sempre que sua equipe precisar",
+      "history": "Todo o histórico do chat"
     },
     "page": {
       "notice": {
@@ -730,6 +736,7 @@
       "freePer": "para sempre",
       "freeSeats": "Até {seats} pessoas",
       "freeEverything": "Andar, chat, reuniões e vídeo HD",
+      "freeHistory": "{days} dias de histórico do chat",
       "invoices": "Faturas",
       "keep": "Ficar com o Pro",
       "updateCard": "Atualizar cartão",

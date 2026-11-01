@@ -52,6 +52,8 @@ interface Attachment {
   window: number;
   /** When they last said they were typing, so a chatty browser is heard every few seconds at most. */
   typedAt?: number;
+  /** How many days back they can read and search (their office's plan); none is all of it. */
+  history?: number;
 }
 
 interface ChannelRow extends Record<string, SqlStorageValue> {
@@ -183,7 +185,7 @@ export class Chat extends DurableObject<Env> {
       this.office = ticket.room.slice("chat:".length);
       await this.ctx.storage.put(OFFICE_KEY, this.office);
     }
-    const attachment: Attachment = { userId: ticket.sub, name: ticket.name, ...(ticket.sid ? { session: ticket.sid } : {}), sends: 0, window: 0 };
+    const attachment: Attachment = { userId: ticket.sub, name: ticket.name, ...(ticket.sid ? { session: ticket.sid } : {}), ...(ticket.history ? { history: ticket.history } : {}), sends: 0, window: 0 };
     this.remember(server, attachment);
 
     this.sql.exec(
@@ -630,15 +632,21 @@ export class Chat extends DurableObject<Env> {
     if ((await this.ctx.storage.getAlarm()) === null) await this.ctx.storage.setAlarm(now + DAY_MS);
   }
 
+  /** The oldest a message can be for them to read it: their plan's days back, or the beginning. */
+  private since(me: Attachment): number {
+    return me.history ? Date.now() - me.history * DAY_MS : 0;
+  }
+
   private page(socket: WebSocket, me: Attachment, channel: string, before?: number, to?: number): void {
     if (!this.mayPost(me.userId, channel)) return;
     const below = typeof before === "number" && Number.isFinite(before) ? before : Number.MAX_SAFE_INTEGER;
+    const since = this.since(me);
     // Back to a message (a search result): everything down to it, and a few before it for context.
     const reach =
       typeof to === "number" && Number.isFinite(to)
         ? Number(
             this.sql
-              .exec<{ n: number }>("SELECT COUNT(*) AS n FROM messages WHERE channel = ? AND seq < ? AND seq >= ?", channel, below, to)
+              .exec<{ n: number }>("SELECT COUNT(*) AS n FROM messages WHERE channel = ? AND seq < ? AND seq >= ? AND at >= ?", channel, below, to, since)
               .one().n,
           ) + 10
         : CHAT_PAGE;
@@ -646,20 +654,26 @@ export class Chat extends DurableObject<Env> {
     const rows = this.sql
       .exec<MessageRow>(
         `SELECT ${COLUMNS} FROM messages
-         WHERE channel = ? AND seq < ? ORDER BY seq DESC LIMIT ?`,
+         WHERE channel = ? AND seq < ? AND at >= ? ORDER BY seq DESC LIMIT ?`,
         channel,
         below,
+        since,
         size + 1,
       )
       .toArray();
     const more = rows.length > size;
     const page = rows.slice(0, size).reverse();
     const reactions = this.reactionsFor(page.map((row) => row.seq));
+    // At the end of what they can read: whether there's more before it, held back. Only that it's there, never what.
+    // (The channel's first message says, one step down its index.)
+    const first = !more && me.history ? this.sql.exec<{ at: number }>("SELECT at FROM messages WHERE channel = ? ORDER BY seq LIMIT 1", channel).toArray()[0] : undefined;
+    const held = first && Number(first.at) < since ? me.history : undefined;
     this.send(socket, {
       t: "chat_page",
       channel,
       more,
-      messages: this.withReplies(page, page.map((row) => toMessage(row, reactions.get(row.seq)))),
+      ...(held ? { held } : {}),
+      messages: this.withReplies(page, page.map((row) => toMessage(row, reactions.get(row.seq))), since),
     });
   }
 
@@ -683,8 +697,11 @@ export class Chat extends DurableObject<Env> {
     }
   }
 
-  /** The messages these replies answer, looked up together, onto the messages made from the same rows. */
-  private withReplies(rows: MessageRow[], messages: ChatMessage[]): ChatMessage[] {
+  /**
+   * The messages these replies answer, looked up together, onto the messages
+   * made from the same rows; one from before `since` is only said to be there.
+   */
+  private withReplies(rows: MessageRow[], messages: ChatMessage[], since = 0): ChatMessage[] {
     const wanted = [...new Set(rows.filter((row) => row.reply_to !== null).map((row) => Number(row.reply_to)))];
     if (!wanted.length) return messages;
     // In pieces: a query binds 100 values at most, and a page opened at a search result can hold hundreds of replies.
@@ -697,7 +714,9 @@ export class Chat extends DurableObject<Env> {
     }
     return messages.map((message, index) => {
       const to = rows[index].reply_to;
-      return to === null ? message : { ...message, reply: replyOf(Number(to), found.get(Number(to))) };
+      if (to === null) return message;
+      const row = found.get(Number(to));
+      return { ...message, reply: row && Number(row.at) < since ? { seq: Number(to), held: true } : replyOf(Number(to), row) };
     });
   }
 
@@ -710,13 +729,15 @@ export class Chat extends DurableObject<Env> {
     const words = typeof q === "string" ? q.trim().slice(0, 100) : "";
     if (fold(words).length < 2) return this.send(socket, { t: "chat_found", q: words, messages: [] });
     const needle = fold(words);
+    const since = this.since(me);
     // SQLite folds only ASCII case, so the narrowing is on what's cheap and the matching is done here.
     const rows = this.sql
       .exec<MessageRow>(
         `SELECT ${COLUMNS} FROM messages
-         WHERE (channel NOT LIKE 'dm:%' OR instr(channel, ?) > 0)
+         WHERE (channel NOT LIKE 'dm:%' OR instr(channel, ?) > 0) AND at >= ?
          ORDER BY seq DESC LIMIT 20000`,
         me.userId,
+        since,
       )
       .toArray();
     const found: MessageRow[] = [];
@@ -727,7 +748,12 @@ export class Chat extends DurableObject<Env> {
       if (!this.mayPost(me.userId, String(row.channel))) continue;
       found.push(row);
     }
-    this.send(socket, { t: "chat_found", q: words, messages: this.withReplies(found, found.map((row) => toMessage(row))) });
+    this.send(socket, {
+      t: "chat_found",
+      q: words,
+      ...(me.history ? { held: me.history } : {}),
+      messages: this.withReplies(found, found.map((row) => toMessage(row)), since),
+    });
   }
 
   private markRead(userId: string, channel: string, seq: number): void {

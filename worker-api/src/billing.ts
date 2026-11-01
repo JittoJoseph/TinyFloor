@@ -22,11 +22,13 @@ export interface Plan {
   meetingHours: number;
   /** US cents a month, before tax; null for the free plan. Monthly only. */
   price: number | null;
+  /** How many days back the office's chat can be read and searched; null for all of it. Nothing is ever deleted. */
+  historyDays: number | null;
 }
 
 export const PLANS: Plan[] = [
-  { id: "free", seats: 3, meetingHours: 40, price: null },
-  { id: "pro", seats: 15, meetingHours: 80, price: 2900 },
+  { id: "free", seats: 3, meetingHours: 40, price: null, historyDays: 90 },
+  { id: "pro", seats: 15, meetingHours: 80, price: 2900, historyDays: null },
 ];
 
 const FREE = PLANS[0];
@@ -34,6 +36,9 @@ export const planById = (id: string) => PLANS.find((plan) => plan.id === id);
 
 /** An office's meeting hours a month, from its plan. */
 export const meetingHoursOf = (plan: string) => (planById(plan) ?? FREE).meetingHours;
+
+/** How far back an office's chat reads, from its plan: all of it where plans aren't on sale, since there's no Pro to have. */
+export const historyDaysOf = (env: Env, plan: string) => (config(env) ? (planById(plan) ?? FREE).historyDays : null);
 
 /**
  * Subscriptions in these states hold their plan: a card being retried still

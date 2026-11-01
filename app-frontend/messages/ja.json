@@ -214,6 +214,7 @@
     "download": "ダウンロード",
     "messages": "メッセージ",
     "searching": "検索中…",
+    "heldSearch": "直近{days}日分を検索しました。Proではすべてを検索できます。",
     "filesMax": "一度に {count} 件まで。",
     "fileTooBig": "ファイルは 10 MB まで。",
     "fileSlowDown": "一度に送るファイルが多すぎます。1 分後にもう一度お試しください。",
@@ -229,6 +230,10 @@
     "replyingTo": "<strong>{name}</strong> さんに返信",
     "cancelReply": "返信をやめる",
     "replyGone": "元のメッセージは削除されました",
+    "replyHeld": "以前のメッセージ",
+    "heldTitle": "{days}日より前のメッセージはProで表示できます",
+    "heldBody": "削除はされず、保存されています。",
+    "heldAction": "Proを見る",
     "replyFiles": "{count, plural, other {# 件のファイル}}",
     "typingOne": "{name} さんが入力中",
     "typingTwo": "{a} さんと {b} さんが入力中",
@@ -711,7 +716,8 @@
       "wholeTeam": "チーム全員が、ひとつのフロアに",
       "support": "チームからの優先サポート",
       "assurance": "いつでも解約できます。14日以内なら全額返金。",
-      "meetings": "チームに必要なだけ会議を"
+      "meetings": "チームに必要なだけ会議を",
+      "history": "チャット履歴のすべて"
     },
     "page": {
       "notice": {
@@ -730,6 +736,7 @@
       "freePer": "ずっと無料",
       "freeSeats": "最大{seats}人",
       "freeEverything": "フロア、チャット、ミーティング、HDビデオ",
+      "freeHistory": "{days}日分のチャット履歴",
       "invoices": "請求書",
       "keep": "Pro を続ける",
       "updateCard": "カードを更新",

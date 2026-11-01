@@ -214,6 +214,7 @@
     "download": "Herunterladen",
     "messages": "Nachrichten",
     "searching": "Suche…",
+    "heldSearch": "Durchsucht: die letzten {days} Tage. Pro durchsucht alles.",
     "filesMax": "Bis zu {count} Dateien auf einmal.",
     "fileTooBig": "Dateien dürfen bis zu 10 MB groß sein.",
     "fileSlowDown": "Zu viele Dateien auf einmal. Versuch es in einer Minute noch einmal.",
@@ -229,6 +230,10 @@
     "replyingTo": "Antwort an <strong>{name}</strong>",
     "cancelReply": "Antwort verwerfen",
     "replyGone": "Die ursprüngliche Nachricht wurde gelöscht",
+    "replyHeld": "Eine ältere Nachricht",
+    "heldTitle": "Nachrichten, die älter als {days} Tage sind, gibt es mit Pro",
+    "heldBody": "Sie bleiben gespeichert und werden nie gelöscht.",
+    "heldAction": "Pro ansehen",
     "replyFiles": "{count, plural, one {# Datei} other {# Dateien}}",
     "typingOne": "{name} schreibt",
     "typingTwo": "{a} und {b} schreiben",
@@ -711,7 +716,8 @@
       "wholeTeam": "Alle in deinem Team, auf einer Etage",
       "support": "Bevorzugte Hilfe von unserem Team",
       "assurance": "Jederzeit kündbar. Volle Erstattung innerhalb von 14 Tagen.",
-      "meetings": "Meetings, so oft dein Team sie braucht"
+      "meetings": "Meetings, so oft dein Team sie braucht",
+      "history": "Euer ganzer Chatverlauf"
     },
     "page": {
       "notice": {
@@ -730,6 +736,7 @@
       "freePer": "dauerhaft",
       "freeSeats": "Bis zu {seats} Personen",
       "freeEverything": "Fläche, Chat, Meetings und HD-Video",
+      "freeHistory": "{days} Tage Chatverlauf",
       "invoices": "Rechnungen",
       "keep": "Pro behalten",
       "updateCard": "Karte aktualisieren",

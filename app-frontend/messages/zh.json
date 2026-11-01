@@ -214,6 +214,7 @@
     "download": "下载",
     "messages": "消息",
     "searching": "搜索中…",
+    "heldSearch": "已搜索最近 {days} 天。Pro 可搜索全部内容。",
     "filesMax": "一次最多 {count} 个文件。",
     "fileTooBig": "文件最大 10 MB。",
     "fileSlowDown": "一次发送的文件太多，请一分钟后再试。",
@@ -229,6 +230,10 @@
     "replyingTo": "回复 <strong>{name}</strong>",
     "cancelReply": "取消回复",
     "replyGone": "原消息已删除",
+    "replyHeld": "一条较早的消息",
+    "heldTitle": "超过 {days} 天的消息在 Pro 中可见",
+    "heldBody": "这些消息会被保留，永不删除。",
+    "heldAction": "查看 Pro",
     "replyFiles": "{count, plural, other {# 个文件}}",
     "typingOne": "{name} 正在输入",
     "typingTwo": "{a} 和 {b} 正在输入",
@@ -711,7 +716,8 @@
       "wholeTeam": "整个团队，在同一层楼",
       "support": "我们团队的优先支持",
       "assurance": "随时可以取消。14 天内全额退款。",
-      "meetings": "团队需要多少会议就开多少"
+      "meetings": "团队需要多少会议就开多少",
+      "history": "完整的聊天记录"
     },
     "page": {
       "notice": {
@@ -730,6 +736,7 @@
       "freePer": "永久",
       "freeSeats": "最多 {seats} 人",
       "freeEverything": "楼层、聊天、会议和高清视频",
+      "freeHistory": "{days} 天的聊天记录",
       "invoices": "发票",
       "keep": "保留 Pro",
       "updateCard": "更新银行卡",

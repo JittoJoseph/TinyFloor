@@ -214,6 +214,7 @@
     "download": "Download",
     "messages": "Messages",
     "searching": "Searching…",
+    "heldSearch": "Searched the last {days} days. Pro searches everything.",
     "filesMax": "Up to {count} files at a time.",
     "fileTooBig": "Files can be up to 10 MB.",
     "fileSlowDown": "Too many files at once. Try again in a minute.",
@@ -229,6 +230,10 @@
     "replyingTo": "Replying to <strong>{name}</strong>",
     "cancelReply": "Stop replying",
     "replyGone": "Original message was deleted",
+    "replyHeld": "An older message",
+    "heldTitle": "Messages older than {days} days are on Pro",
+    "heldBody": "They're kept, never deleted.",
+    "heldAction": "See Pro",
     "replyFiles": "{count, plural, one {# file} other {# files}}",
     "typingOne": "{name} is typing",
     "typingTwo": "{a} and {b} are typing",
@@ -711,7 +716,8 @@
       "wholeTeam": "Everyone on your team, on one floor",
       "support": "Priority help from our team",
       "assurance": "Cancel any time. Full refund within 14 days.",
-      "meetings": "Meetings as often as your team needs"
+      "meetings": "Meetings as often as your team needs",
+      "history": "Your whole chat history"
     },
     "page": {
       "notice": {
@@ -730,6 +736,7 @@
       "freePer": "forever",
       "freeSeats": "Up to {seats} people",
       "freeEverything": "Floor, chat, meetings and HD video",
+      "freeHistory": "{days} days of chat history",
       "invoices": "Invoices",
       "keep": "Keep Pro",
       "updateCard": "Update card",

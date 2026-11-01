@@ -214,6 +214,7 @@
     "download": "Last ned",
     "messages": "Meldinger",
     "searching": "Søker…",
+    "heldSearch": "Søkte i de siste {days} dagene. Pro søker i alt.",
     "filesMax": "Opptil {count} filer om gangen.",
     "fileTooBig": "Filer kan være opptil 10 MB.",
     "fileSlowDown": "For mange filer på en gang. Prøv igjen om et minutt.",
@@ -229,6 +230,10 @@
     "replyingTo": "Svarer <strong>{name}</strong>",
     "cancelReply": "Avbryt svar",
     "replyGone": "Den opprinnelige meldingen er slettet",
+    "replyHeld": "En eldre melding",
+    "heldTitle": "Meldinger eldre enn {days} dager er på Pro",
+    "heldBody": "De lagres og slettes aldri.",
+    "heldAction": "Se Pro",
     "replyFiles": "{count, plural, one {# fil} other {# filer}}",
     "typingOne": "{name} skriver",
     "typingTwo": "{a} og {b} skriver",
@@ -711,7 +716,8 @@
       "wholeTeam": "Hele teamet ditt, på én etasje",
       "support": "Prioritert hjelp fra teamet vårt",
       "assurance": "Si opp når som helst. Full refusjon innen 14 dager.",
-      "meetings": "Møter så ofte teamet ditt trenger"
+      "meetings": "Møter så ofte teamet ditt trenger",
+      "history": "Hele chathistorikken"
     },
     "page": {
       "notice": {
@@ -730,6 +736,7 @@
       "freePer": "for alltid",
       "freeSeats": "Opptil {seats} personer",
       "freeEverything": "Etasje, chat, møter og HD-video",
+      "freeHistory": "{days} dagers chathistorikk",
       "invoices": "Fakturaer",
       "keep": "Behold Pro",
       "updateCard": "Oppdater kort",

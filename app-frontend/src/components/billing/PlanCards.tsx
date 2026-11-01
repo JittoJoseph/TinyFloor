@@ -19,7 +19,7 @@ export function PlanIncludes({ plans, className }: { plans: Plan[]; className?: 
   const t = useTranslations("billing.offer");
   if (!paidPlan(plans)) return null;
   // No hours, no counts: what the team gets, not what it's allowed (docs/costs.md).
-  const items = [t("wholeTeam"), t("meetings"), t("support")];
+  const items = [t("wholeTeam"), t("meetings"), t("history"), t("support")];
   return (
     <div className={className}>
       <ul className="space-y-2.5 text-[13.5px] text-foreground">

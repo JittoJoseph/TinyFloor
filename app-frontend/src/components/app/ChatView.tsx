@@ -23,7 +23,7 @@ import {
 import { motion, useReducedMotion } from "motion/react";
 import { GENERAL_CHANNEL, cleanChannelName, dmChannelId, dmMembers, isDm, type ChannelSummary } from "@shared/chat";
 import { Link, useRouter } from "@/lib/i18n/navigation";
-import { chat } from "@/lib/ChatSocket";
+import { chat, type Found } from "@/lib/ChatSocket";
 import { useChat, useTyping } from "@/lib/useChat";
 import { useAuth } from "@/contexts/AuthContext";
 import { useFloorStatus } from "@/lib/floor";
@@ -39,6 +39,7 @@ import { PresenceDock } from "./PresenceDock";
 import { NotifyCard } from "./chat/NotifyCard";
 import { usePlace, useWalkTo, type PlacePerson } from "./place";
 import { Conversation, ConversationIntro, type Line } from "./chat/Conversation";
+import { Held } from "./chat/Held";
 import { addToComposer, Composer, focusComposer } from "./chat/Composer";
 import { HelpTicket } from "./HelpTicket";
 import { Logo } from "@/components/app/Logo";
@@ -51,7 +52,6 @@ import { hoursAhead, timeIn } from "@/lib/timeZone";
 import { usePerson } from "@/lib/people";
 import { SpotifyActivity } from "./SpotifyActivity";
 import { Bone } from "./HomeSkeletons";
-import type { ChatMessage } from "@shared/chat";
 
 /**
  * Chat: channels and direct messages, beside the floor. The same screen in an
@@ -130,12 +130,12 @@ export function ChatView({ channel }: { channel?: string }) {
 
   // Searching messages from the palette: asked as you type, a moment after you stop.
   const [query, setQuery] = useState("");
-  const [found, setFound] = useState<{ q: string; messages: ChatMessage[] } | null>(null);
+  const [found, setFound] = useState<(Found & { q: string }) | null>(null);
   useEffect(() => {
     const q = query.trim();
     if (q.length < 2) return;
     let current = true;
-    const timer = setTimeout(() => void chat.search(q).then((messages) => current && setFound({ q, messages })), 220);
+    const timer = setTimeout(() => void chat.search(q).then((answer) => current && setFound({ q, ...answer })), 220);
     return () => {
       current = false;
       clearTimeout(timer);
@@ -203,6 +203,7 @@ export function ChatView({ channel }: { channel?: string }) {
       body: message.reply.body,
       files: message.reply.files,
       gone: message.reply.gone,
+      held: message.reply.held,
     },
   }));
 
@@ -448,6 +449,7 @@ export function ChatView({ channel }: { channel?: string }) {
             onQueryChange={setQuery}
             found={foundItems}
             searching={query.trim().length >= 2 && found?.q !== query.trim() ? t("searching") : undefined}
+            note={found?.q === query.trim() && found.held ? t("heldSearch", { days: found.held }) : undefined}
           />
         </>
       }
@@ -528,6 +530,7 @@ export function ChatView({ channel }: { channel?: string }) {
           lines={lines}
           me={me}
           more={state.more[open] ?? false}
+          held={state.held[open] ? <Held days={state.held[open]} href={`${place.paths.settings}#plan`} /> : undefined}
           onOlder={() => chat.older(open)}
           firstUnread={firstUnread.channel === open ? firstUnread.id : null}
           editLast={editLast}

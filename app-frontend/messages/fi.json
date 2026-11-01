@@ -214,6 +214,7 @@
     "download": "Lataa",
     "messages": "Viestit",
     "searching": "Haetaan…",
+    "heldSearch": "Haettiin viimeisten {days} päivän ajalta. Pro hakee kaikesta.",
     "filesMax": "Enintään {count} tiedostoa kerralla.",
     "fileTooBig": "Tiedosto voi olla enintään 10 Mt.",
     "fileSlowDown": "Liian monta tiedostoa kerralla. Yritä minuutin päästä uudelleen.",
@@ -229,6 +230,10 @@
     "replyingTo": "Vastaus: <strong>{name}</strong>",
     "cancelReply": "Peru vastaus",
     "replyGone": "Alkuperäinen viesti on poistettu",
+    "replyHeld": "Vanhempi viesti",
+    "heldTitle": "Yli {days} päivää vanhat viestit ovat Prossa",
+    "heldBody": "Ne säilytetään, eikä niitä koskaan poisteta.",
+    "heldAction": "Katso Pro",
     "replyFiles": "{count, plural, one {# tiedosto} other {# tiedostoa}}",
     "typingOne": "{name} kirjoittaa",
     "typingTwo": "{a} ja {b} kirjoittavat",
@@ -711,7 +716,8 @@
       "wholeTeam": "Koko tiimisi, samassa kerroksessa",
       "support": "Ensisijainen apu tiimiltämme",
       "assurance": "Peru milloin vain. Täysi hyvitys 14 päivän sisällä.",
-      "meetings": "Kokouksia niin usein kuin tiimisi tarvitsee"
+      "meetings": "Kokouksia niin usein kuin tiimisi tarvitsee",
+      "history": "Koko keskusteluhistoria"
     },
     "page": {
       "notice": {
@@ -730,6 +736,7 @@
       "freePer": "aina",
       "freeSeats": "Enintään {seats} henkeä",
       "freeEverything": "Kerros, chat, kokoukset ja HD-video",
+      "freeHistory": "{days} päivän keskusteluhistoria",
       "invoices": "Laskut",
       "keep": "Pidä Pro",
       "updateCard": "Päivitä kortti",

@@ -214,6 +214,7 @@
     "download": "다운로드",
     "messages": "메시지",
     "searching": "검색 중…",
+    "heldSearch": "최근 {days}일 동안의 메시지를 검색했어요. Pro는 전체를 검색해요.",
     "filesMax": "한 번에 {count}개까지 보낼 수 있어요.",
     "fileTooBig": "파일은 10MB까지 올릴 수 있어요.",
     "fileSlowDown": "한꺼번에 파일이 너무 많아요. 1분 뒤에 다시 시도해 주세요.",
@@ -229,6 +230,10 @@
     "replyingTo": "<strong>{name}</strong>님에게 답장",
     "cancelReply": "답장 취소",
     "replyGone": "원본 메시지가 삭제되었어요",
+    "replyHeld": "이전 메시지",
+    "heldTitle": "{days}일보다 오래된 메시지는 Pro에서 볼 수 있어요",
+    "heldBody": "삭제되지 않고 그대로 보관돼요.",
+    "heldAction": "Pro 보기",
     "replyFiles": "{count, plural, other {파일 #개}}",
     "typingOne": "{name}님이 입력 중",
     "typingTwo": "{a}님과 {b}님이 입력 중",
@@ -711,7 +716,8 @@
       "wholeTeam": "팀 전체가 한 층에",
       "support": "우리 팀의 우선 지원",
       "assurance": "언제든 해지할 수 있어요. 14일 안에는 전액 환불돼요.",
-      "meetings": "팀에 필요한 만큼 회의"
+      "meetings": "팀에 필요한 만큼 회의",
+      "history": "전체 채팅 기록"
     },
     "page": {
       "notice": {
@@ -730,6 +736,7 @@
       "freePer": "평생",
       "freeSeats": "최대 {seats}명",
       "freeEverything": "플로어, 채팅, 미팅, HD 비디오",
+      "freeHistory": "{days}일간의 채팅 기록",
       "invoices": "인보이스",
       "keep": "Pro 계속 쓰기",
       "updateCard": "카드 업데이트",

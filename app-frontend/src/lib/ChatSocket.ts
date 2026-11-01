@@ -25,6 +25,12 @@ const HEARTBEAT_MS = 30_000;
 const RECONNECT_BASE_MS = 1_000;
 const RECONNECT_MAX_MS = 30_000;
 
+/** What a search found, and the days it looked back through when the office's plan keeps it to them. */
+export interface Found {
+  messages: ChatMessage[];
+  held?: number;
+}
+
 export interface ChatState {
   ready: boolean;
   me: string;
@@ -33,6 +39,8 @@ export interface ChatState {
   history: Record<string, ChatMessage[]>;
   /** Channels with older messages still on the server. */
   more: Record<string, boolean>;
+  /** Channels with messages older than the office's plan shows: the days it shows (chat.ts history). */
+  held: Record<string, number>;
   /** For the badge on the rail: unread direct messages, and channel messages that mention you. */
   unread: number;
   /** The chat asked us to slow down; said under the composer for a moment. */
@@ -50,6 +58,7 @@ const EMPTY: ChatState = {
   channels: [],
   history: {},
   more: {},
+  held: {},
   unread: 0,
   slowDown: false,
   notHere: false,
@@ -101,7 +110,7 @@ class ChatSocket {
   /** Conversations to start over from what the server says (after a dropped connection), not merge into. */
   private fresh = new Set<string>();
   /** Searches waiting for their answer, by what was asked. */
-  private searches = new Map<string, Array<(found: ChatMessage[]) => void>>();
+  private searches = new Map<string, Array<(found: Found) => void>>();
 
   /** For the nudges over the floor: someone said something you have not seen. */
   onIncoming(listener: (message: ChatMessage) => void) {
@@ -220,17 +229,17 @@ class ChatSocket {
     }
   }
 
-  /** Words in the office's channels and your direct messages, newest first. */
-  search(q: string): Promise<ChatMessage[]> {
+  /** Words in the office's channels and your direct messages, newest first; `held` when the plan keeps it to recent days. */
+  search(q: string): Promise<Found> {
     const words = q.trim();
-    if (words.length < 2) return Promise.resolve([]);
+    if (words.length < 2) return Promise.resolve({ messages: [] });
     return new Promise((resolve) => {
       const waiting = this.searches.get(words) ?? [];
       waiting.push(resolve);
       this.searches.set(words, waiting);
       if (waiting.length === 1) this.send({ t: "chat_search", q: words });
       // Nothing back (gone offline): an empty answer rather than a spinner forever.
-      setTimeout(() => this.answer(words, []), 8000);
+      setTimeout(() => this.answer(words, { messages: [] }), 8000);
     });
   }
 
@@ -241,7 +250,7 @@ class ChatSocket {
     this.send({ t: "chat_history", channel, to: seq, ...(first ? { before: first } : {}) });
   }
 
-  private answer(q: string, found: ChatMessage[]) {
+  private answer(q: string, found: Found) {
     const waiting = this.searches.get(q);
     if (!waiting) return;
     this.searches.delete(q);
@@ -447,6 +456,7 @@ class ChatSocket {
           ...this.state,
           history: { ...this.state.history, [message.channel]: merged },
           more: { ...this.state.more, [message.channel]: message.more },
+          held: { ...this.state.held, [message.channel]: message.held ?? 0 },
         });
         break;
       }
@@ -518,7 +528,7 @@ class ChatSocket {
         break;
       }
       case "chat_found":
-        this.answer(message.q, message.messages);
+        this.answer(message.q, { messages: message.messages, ...(message.held ? { held: message.held } : {}) });
         break;
       case "help_changed":
         help.changed(message.news);

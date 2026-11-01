@@ -1,5 +1,6 @@
 {
- "image": "catalog/floor-items.png",
+ "image": "catalog/floor-items.png?v=eaa3ef06fd51",
+ "sheet": "catalog/floor-sheet.png?v=2e4cb0611c59",
  "width": 1024,
  "height": 656,
  "frames": {

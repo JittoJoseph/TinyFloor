@@ -1,8 +1,9 @@
+import atlas from "@shared/catalog/atlas.json";
 import { paintShell } from "@shared/shell";
 import { FLOOR } from "@shared/map";
 
-/** The floor sheet the walls and floors are painted from: the room builder's, and more floors (lab/build.mjs). */
-const SHEET = "/catalog/floor-sheet.png";
+/** The floor sheet the walls and floors are painted from: the room builder's, and more floors, at an address naming its hash (lab/build.mjs). */
+const SHEET = `/${atlas.sheet}`;
 
 type Walls = HTMLCanvasElement;
 type Painted = { width: number; height: number; data: Uint8ClampedArray<ArrayBuffer> };

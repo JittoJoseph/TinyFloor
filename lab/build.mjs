@@ -23,6 +23,7 @@
 //   private-assets/catalog/floor-sheet.png, in the manifest the same way.
 //
 // Then upload what changed with the commands it prints (docs/customization.md, "Where the art lives").
+import { createHash } from "node:crypto";
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -140,7 +141,6 @@ const artOf = new Map(
     return [item.id, [left, top, right, bottom]];
   }),
 );
-await writeFile(join(CATALOG, "atlas.json"), JSON.stringify({ image: ATLAS_KEY, width: atlas.width, height: atlas.height, frames: sorted }, null, 1) + "\n");
 // Under 256 colours (the packs' art is), it's an 8-bit palette PNG: a third of the size, for every first visit.
 const pictures = [{ key: ATLAS_KEY, png: png8(atlas) ?? PNG.sync.write(atlas, { colorType: 6 }) }];
 console.log(`${drawn.length} items on a ${atlas.width}×${atlas.height} atlas, ${(pictures[0].png.length / 1024).toFixed(1)} KB`);
@@ -159,6 +159,15 @@ more.forEach(([column, row], n) => {
 // And under them, the grounds' tiles: grass to pick from, a block of paving.
 blit(groundTiles(GROUND_TILES), [0, 0, (GROUND_TILES.grass + GROUND_TILES.paving) * TILE, GROUND_TILES.paving * TILE], sheet, 0, GROUND_TILES.row * TILE);
 pictures.push({ key: SHEET_KEY, png: png8(sheet) ?? PNG.sync.write(sheet, { colorType: 6 }) });
+
+// The atlas's frames, and where the page gets both pictures: each address
+// names its picture's hash, so a browser holding an older one (public/_headers
+// lets it keep one a day) fetches the new one with the frames that go with it.
+const versioned = (key) => `${key}?v=${createHash("sha256").update(pictures.find((one) => one.key === key).png).digest("hex").slice(0, 12)}`;
+await writeFile(
+  join(CATALOG, "atlas.json"),
+  JSON.stringify({ image: versioned(ATLAS_KEY), sheet: versioned(SHEET_KEY), width: atlas.width, height: atlas.height, frames: sorted }, null, 1) + "\n",
+);
 
 // ---------- each office: what the floor needs ----------
 

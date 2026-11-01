@@ -7,7 +7,7 @@ describe("status notes", () => {
     const ava = await Client.open(room, { sub: "ava" });
     await ava.next("welcome");
 
-    const note = { icon: "lunch", text: "Lunch", until: null };
+    const note = { icon: "lunch" as const, text: "Lunch", until: null };
     const ben = await Client.open(room, { sub: "ben", note });
     const welcome = await ben.next("welcome");
     expect(welcome.self.note).toEqual(note);

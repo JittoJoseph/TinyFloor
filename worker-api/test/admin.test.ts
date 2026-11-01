@@ -78,13 +78,13 @@ describe("admin", () => {
     ]);
     expect((await call<Page>(boss, "GET", "/v1/admin/offices?q=paging&page=1")).body.offices).toEqual([]);
 
-    const people = await call<{ members: Array<{ id: string; owner: number; country: string | null }> }>(boss, "GET", `/v1/admin/offices/${busy}/members`);
+    const people = await call<{ members: Array<{ id: string; owner: number; country: string | null }> }>(boss, "GET", `/v1/admin/offices/${busy}`);
     // The owner first, then whoever was around most recently.
     expect(people.body.members.map((one) => [one.id, one.owner])).toEqual([
       [owner.id, 1],
       [later.id, 0],
     ]);
-    expect((await call(owner, "GET", `/v1/admin/offices/${busy}/members`)).status).toBe(404);
+    expect((await call(owner, "GET", `/v1/admin/offices/${busy}`)).status).toBe(404);
     await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
   });
 

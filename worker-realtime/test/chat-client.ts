@@ -34,6 +34,8 @@ export class ChatClient {
         character: "Adam",
         role: role as "member",
         cap: 10,
+        // The session the push tests sign them in with: a tab open on it is told in the app, not pushed to.
+        sid: `session-${who.id}`,
         exp: Date.now() + 60_000,
       },
       env.TICKET_SECRET,

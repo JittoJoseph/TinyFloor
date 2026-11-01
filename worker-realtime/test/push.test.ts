@@ -26,7 +26,7 @@ async function browser() {
       const keyLength = body[20];
       const senderKey = body.slice(21, 21 + keyLength);
       const sender = await crypto.subtle.importKey("raw", senderKey, { name: "ECDH", namedCurve: "P-256" }, false, []);
-      const shared = new Uint8Array(await crypto.subtle.deriveBits({ name: "ECDH", public: sender }, pair.privateKey, 256));
+      const shared = new Uint8Array(await crypto.subtle.deriveBits({ name: "ECDH", public: sender } as unknown as SubtleCryptoDeriveKeyAlgorithm, pair.privateKey, 256));
       const info = new Uint8Array([...encoder.encode("WebPush: info\0"), ...publicKey, ...senderKey]);
       const ikm = await hkdf(auth, shared, info, 32);
       const key = await crypto.subtle.importKey("raw", await hkdf(salt, ikm, "Content-Encoding: aes128gcm\0", 16), "AES-GCM", false, ["decrypt"]);

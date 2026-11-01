@@ -97,7 +97,7 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
 
         <div className="flex items-center gap-1 p-1.5 pe-2">
           <YouMenu
-            onFloor
+            presence
             settingsHref={settingsHref}
             panel={
               <button

@@ -106,7 +106,7 @@ function Admin() {
           badge: key === "inbox" ? summary.counts.helpUnread || undefined : undefined,
         }))}
         leave={{ href: homePath, label: "Back to TinyFloor" }}
-        you={<YouMenu onFloor={false} />}
+        you={<YouMenu />}
         floor={null}
       >
         {view === "overview" && <Overview summary={summary} recount={recount} open={open} />}

@@ -94,7 +94,8 @@
     "aloneTitle": "Ci sei solo tu sul piano",
     "aloneBody": "Manda il link: chi lo apre entra accanto a te.",
     "aloneQuiet": "Quando entra qualcun altro, comparirà qui.",
-    "inviteSomeone": "Invita qualcuno"
+    "inviteSomeone": "Invita qualcuno",
+    "walkTo": "Raggiungi {name}"
   },
   "call": {
     "incoming": "Ti sta chiamando",
@@ -395,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Salvalo nel tuo account",
       "accountBody": "Così resta tuo e il tuo team può trovarlo. Bastano pochi secondi."
+    },
+    "dock": {
+      "title": "Crea il tuo ufficio",
+      "start": "Inizia"
     }
   },
   "office": {
@@ -804,7 +809,11 @@
     "shareNote": "Invialo da un'app su questo dispositivo",
     "full": "Nessuno di nuovo può unirsi: il piano di {office} accoglie {seats} persone.",
     "fullMember": "Un admin può tenere Pro per fare spazio.",
-    "keepPro": "Tieni Pro"
+    "keepPro": "Tieni Pro",
+    "ways": {
+      "message": "Messaggio",
+      "email": "Email"
+    }
   },
   "desk": {
     "claimConfirm": "Prendi",
@@ -814,31 +823,35 @@
     "claimed": "Presa"
   },
   "decorate": {
-    "open": "Arreda",
-    "title": "Arreda la tua scrivania",
-    "close": "Chiudi",
-    "things": "Oggetti",
-    "chair": "Sedia",
+    "title": "La tua scrivania",
     "shelf": {
-      "all": "Tutto",
       "tech": "Tecnologia",
       "lamps": "Lampade",
       "personal": "Personale",
-      "setups": "Postazioni",
-      "chairs": "Sedie"
+      "setups": "Postazioni"
     },
-    "hint": "Scegli qualcosa per la tua scrivania. Trascina gli oggetti per spostarli.",
-    "swapHint": "Scegli qualcosa con cui sostituirlo.",
-    "full": "La scrivania è piena: togli qualcosa per aggiungerne altri.",
-    "count": "Oggetti: {count} su {max}",
     "undo": "Annulla",
     "redo": "Ripeti",
     "reset": "Ripristina",
     "resetConfirm": "Rimettere la scrivania com'era?",
     "cancel": "Annulla",
     "done": "Fatto",
-    "remove": "Togli dalla scrivania",
-    "deselect": "Fatto con questo"
+    "wood": {
+      "maple": "Acero",
+      "oak": "Rovere",
+      "beech": "Faggio",
+      "walnut": "Noce",
+      "white": "Bianco",
+      "graphite": "Grafite"
+    },
+    "part": {
+      "left": "Sinistra",
+      "middle": "Centro",
+      "right": "Destra",
+      "chair": "Sedia",
+      "wood": "Legno"
+    },
+    "remove": "Rimuovi"
   },
   "look": {
     "open": "Cambia aspetto",

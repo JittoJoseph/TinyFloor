@@ -94,7 +94,8 @@
     "aloneTitle": "Vain sinä kerroksella",
     "aloneBody": "Lähetä linkki, niin sen avaaja ilmestyy viereesi.",
     "aloneQuiet": "Kun joku muu tulee sisään, hän näkyy tässä.",
-    "inviteSomeone": "Kutsu joku"
+    "inviteSomeone": "Kutsu joku",
+    "walkTo": "Kävele luokse: {name}"
   },
   "call": {
     "incoming": "Soittaa sinulle",
@@ -395,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Tallenna se tilillesi",
       "accountBody": "Niin se pysyy sinun ja tiimisi löytää sen. Se vie vain hetken."
+    },
+    "dock": {
+      "title": "Luo oma toimisto",
+      "start": "Aloita"
     }
   },
   "office": {
@@ -804,7 +809,11 @@
     "shareNote": "Lähetä millä tahansa tämän laitteen sovelluksella",
     "full": "Uusia ei voi liittyä: toimiston {office} tilaukseen mahtuu {seats} henkeä.",
     "fullMember": "Ylläpitäjä voi pitää Pron, jotta tilaa tulee lisää.",
-    "keepPro": "Pidä Pro"
+    "keepPro": "Pidä Pro",
+    "ways": {
+      "message": "Viesti",
+      "email": "Sähköposti"
+    }
   },
   "desk": {
     "claimConfirm": "Varaa",
@@ -814,31 +823,35 @@
     "claimed": "Varattu"
   },
   "decorate": {
-    "open": "Sisusta",
-    "title": "Sisusta työpöytäsi",
-    "close": "Sulje",
-    "things": "Esineet",
-    "chair": "Tuoli",
+    "title": "Työpöytäsi",
     "shelf": {
-      "all": "Kaikki",
       "tech": "Tekniikka",
       "lamps": "Valaisimet",
       "personal": "Omat",
-      "setups": "Työpisteet",
-      "chairs": "Tuolit"
+      "setups": "Työpisteet"
     },
-    "hint": "Valitse jotain työpöydällesi. Siirrä esineitä vetämällä.",
-    "swapHint": "Valitse jotain, millä vaihtaa se.",
-    "full": "Työpöytäsi on täynnä: poista jotain lisätäksesi.",
-    "count": "Esineet: {count}/{max}",
     "undo": "Kumoa",
     "redo": "Tee uudelleen",
     "reset": "Palauta",
     "resetConfirm": "Palautetaanko työpöytä alkuperäiseksi?",
     "cancel": "Peruuta",
     "done": "Valmis",
-    "remove": "Poista pöydältä",
-    "deselect": "Valmis tämän kanssa"
+    "wood": {
+      "maple": "Vaahtera",
+      "oak": "Tammi",
+      "beech": "Pyökki",
+      "walnut": "Pähkinä",
+      "white": "Valkoinen",
+      "graphite": "Grafiitti"
+    },
+    "part": {
+      "left": "Vasen",
+      "middle": "Keskellä",
+      "right": "Oikea",
+      "chair": "Tuoli",
+      "wood": "Puu"
+    },
+    "remove": "Poista"
   },
   "look": {
     "open": "Muuta ulkonäköäsi",

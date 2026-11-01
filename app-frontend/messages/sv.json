@@ -94,7 +94,8 @@
     "aloneTitle": "Bara du på golvet",
     "aloneBody": "Skicka länken, så dyker den som öppnar den upp bredvid dig.",
     "aloneQuiet": "När någon annan kommer in dyker de upp här.",
-    "inviteSomeone": "Bjud in någon"
+    "inviteSomeone": "Bjud in någon",
+    "walkTo": "Gå fram till {name}"
   },
   "call": {
     "incoming": "Ringer dig",
@@ -395,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Spara det på ditt konto",
       "accountBody": "Så förblir det ditt och teamet hittar det. Det tar bara några sekunder."
+    },
+    "dock": {
+      "title": "Skapa ditt eget kontor",
+      "start": "Kom igång"
     }
   },
   "office": {
@@ -804,7 +809,11 @@
     "shareNote": "Skicka den från en app på den här enheten",
     "full": "Ingen ny kan gå med: planen för {office} rymmer {seats} personer.",
     "fullMember": "En admin kan behålla Pro för att göra plats.",
-    "keepPro": "Behåll Pro"
+    "keepPro": "Behåll Pro",
+    "ways": {
+      "message": "Meddelande",
+      "email": "E-post"
+    }
   },
   "desk": {
     "claimConfirm": "Ta det",
@@ -814,31 +823,35 @@
     "claimed": "Tagen"
   },
   "decorate": {
-    "open": "Inred",
-    "title": "Inred ditt skrivbord",
-    "close": "Stäng",
-    "things": "Saker",
-    "chair": "Stol",
+    "title": "Ditt skrivbord",
     "shelf": {
-      "all": "Alla",
       "tech": "Teknik",
       "lamps": "Lampor",
       "personal": "Personligt",
-      "setups": "Arbetsplatser",
-      "chairs": "Stolar"
+      "setups": "Arbetsplatser"
     },
-    "hint": "Välj något att ställa på skrivbordet. Dra saker för att flytta dem.",
-    "swapHint": "Välj något att byta ut det mot.",
-    "full": "Skrivbordet är fullt: ta bort något för att lägga till mer.",
-    "count": "Saker: {count} av {max}",
     "undo": "Ångra",
     "redo": "Gör om",
     "reset": "Återställ",
     "resetConfirm": "Återställa skrivbordet som det var?",
     "cancel": "Avbryt",
     "done": "Klar",
-    "remove": "Ta bort från skrivbordet",
-    "deselect": "Klar med den"
+    "wood": {
+      "maple": "Lönn",
+      "oak": "Ek",
+      "beech": "Bok",
+      "walnut": "Valnöt",
+      "white": "Vit",
+      "graphite": "Grafit"
+    },
+    "part": {
+      "left": "Vänster",
+      "middle": "Mitten",
+      "right": "Höger",
+      "chair": "Stol",
+      "wood": "Trä"
+    },
+    "remove": "Ta bort"
   },
   "look": {
     "open": "Ändra utseende",

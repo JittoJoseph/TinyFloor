@@ -94,7 +94,8 @@
     "aloneTitle": "Bare deg på gulvet",
     "aloneBody": "Send lenken, så dukker den som åpner den opp ved siden av deg.",
     "aloneQuiet": "Når noen andre kommer inn, dukker de opp her.",
-    "inviteSomeone": "Inviter noen"
+    "inviteSomeone": "Inviter noen",
+    "walkTo": "Gå bort til {name}"
   },
   "call": {
     "incoming": "Ringer deg",
@@ -395,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Lagre det på kontoen din",
       "accountBody": "Da forblir det ditt, og teamet ditt finner det. Det tar noen sekunder."
+    },
+    "dock": {
+      "title": "Lag ditt eget kontor",
+      "start": "Kom i gang"
     }
   },
   "office": {
@@ -804,7 +809,11 @@
     "shareNote": "Send den fra en app på denne enheten",
     "full": "Ingen nye kan bli med: planen til {office} har plass til {seats} personer.",
     "fullMember": "En administrator kan beholde Pro for å gjøre plass.",
-    "keepPro": "Behold Pro"
+    "keepPro": "Behold Pro",
+    "ways": {
+      "message": "Melding",
+      "email": "E-post"
+    }
   },
   "desk": {
     "claimConfirm": "Ta den",
@@ -814,31 +823,35 @@
     "claimed": "Tatt"
   },
   "decorate": {
-    "open": "Innred",
-    "title": "Innred skrivebordet ditt",
-    "close": "Lukk",
-    "things": "Ting",
-    "chair": "Stol",
+    "title": "Skrivebordet ditt",
     "shelf": {
-      "all": "Alle",
       "tech": "Teknologi",
       "lamps": "Lamper",
       "personal": "Personlig",
-      "setups": "Oppsett",
-      "chairs": "Stoler"
+      "setups": "Oppsett"
     },
-    "hint": "Velg noe å sette på skrivebordet. Dra ting for å flytte dem.",
-    "swapHint": "Velg noe å bytte det med.",
-    "full": "Skrivebordet er fullt: fjern noe for å legge til mer.",
-    "count": "Ting: {count} av {max}",
     "undo": "Angre",
     "redo": "Gjør om",
     "reset": "Tilbakestill",
     "resetConfirm": "Sette skrivebordet tilbake slik det var?",
     "cancel": "Avbryt",
     "done": "Ferdig",
-    "remove": "Fjern fra skrivebordet",
-    "deselect": "Ferdig med den"
+    "wood": {
+      "maple": "Lønn",
+      "oak": "Eik",
+      "beech": "Bøk",
+      "walnut": "Valnøtt",
+      "white": "Hvit",
+      "graphite": "Grafitt"
+    },
+    "part": {
+      "left": "Venstre",
+      "middle": "Midten",
+      "right": "Høyre",
+      "chair": "Stol",
+      "wood": "Tre"
+    },
+    "remove": "Fjern"
   },
   "look": {
     "open": "Endre utseende",

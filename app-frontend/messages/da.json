@@ -94,7 +94,8 @@
     "aloneTitle": "Kun dig på gulvet",
     "aloneBody": "Send linket, så står den, der åbner det, lige ved siden af dig.",
     "aloneQuiet": "Når en anden kommer ind, dukker de op her.",
-    "inviteSomeone": "Invitér nogen"
+    "inviteSomeone": "Invitér nogen",
+    "walkTo": "Gå hen til {name}"
   },
   "call": {
     "incoming": "Ringer til dig",
@@ -395,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Gem det på din konto",
       "accountBody": "Så forbliver det dit, og dit team kan finde det. Det tager få sekunder."
+    },
+    "dock": {
+      "title": "Opret dit eget kontor",
+      "start": "Kom i gang"
     }
   },
   "office": {
@@ -804,7 +809,11 @@
     "shareNote": "Send det fra en app på denne enhed",
     "full": "Ingen nye kan komme med: planen for {office} har plads til {seats} personer.",
     "fullMember": "En administrator kan beholde Pro for at gøre plads.",
-    "keepPro": "Behold Pro"
+    "keepPro": "Behold Pro",
+    "ways": {
+      "message": "Besked",
+      "email": "E-mail"
+    }
   },
   "desk": {
     "claimConfirm": "Tag det",
@@ -814,31 +823,35 @@
     "claimed": "Taget"
   },
   "decorate": {
-    "open": "Indret",
-    "title": "Indret dit skrivebord",
-    "close": "Luk",
-    "things": "Ting",
-    "chair": "Stol",
+    "title": "Dit skrivebord",
     "shelf": {
-      "all": "Alle",
       "tech": "Teknik",
       "lamps": "Lamper",
       "personal": "Personligt",
-      "setups": "Opsætninger",
-      "chairs": "Stole"
+      "setups": "Opsætninger"
     },
-    "hint": "Vælg noget at stille på dit skrivebord. Træk i tingene for at flytte dem.",
-    "swapHint": "Vælg noget at bytte det ud med.",
-    "full": "Dit skrivebord er fyldt: fjern noget for at tilføje mere.",
-    "count": "Ting: {count} af {max}",
     "undo": "Fortryd",
     "redo": "Gentag",
     "reset": "Nulstil",
     "resetConfirm": "Sæt dit skrivebord tilbage, som det var?",
     "cancel": "Annuller",
     "done": "Færdig",
-    "remove": "Fjern fra skrivebordet",
-    "deselect": "Færdig med den"
+    "wood": {
+      "maple": "Ahorn",
+      "oak": "Eg",
+      "beech": "Bøg",
+      "walnut": "Valnød",
+      "white": "Hvid",
+      "graphite": "Grafit"
+    },
+    "part": {
+      "left": "Venstre",
+      "middle": "Midten",
+      "right": "Højre",
+      "chair": "Stol",
+      "wood": "Træ"
+    },
+    "remove": "Fjern"
   },
   "look": {
     "open": "Skift udseende",

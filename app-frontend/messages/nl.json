@@ -94,7 +94,8 @@
     "aloneTitle": "Alleen jij op de vloer",
     "aloneBody": "Stuur de link, en wie hem opent staat meteen naast je.",
     "aloneQuiet": "Zodra iemand anders binnenkomt, verschijnt die hier.",
-    "inviteSomeone": "Iemand uitnodigen"
+    "inviteSomeone": "Iemand uitnodigen",
+    "walkTo": "Naar {name} lopen"
   },
   "call": {
     "incoming": "Belt je",
@@ -395,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Bewaar het in je account",
       "accountBody": "Zo blijft het van jou en vindt je team het. Het duurt maar een paar seconden."
+    },
+    "dock": {
+      "title": "Maak je eigen kantoor",
+      "start": "Aan de slag"
     }
   },
   "office": {
@@ -804,7 +809,11 @@
     "shareNote": "Verstuur het met een app op dit apparaat",
     "full": "Niemand nieuw kan erbij: het abonnement van {office} biedt plek aan {seats} mensen.",
     "fullMember": "Een beheerder kan Pro houden om ruimte te maken.",
-    "keepPro": "Pro houden"
+    "keepPro": "Pro houden",
+    "ways": {
+      "message": "Bericht",
+      "email": "E-mail"
+    }
   },
   "desk": {
     "claimConfirm": "Claimen",
@@ -814,31 +823,35 @@
     "claimed": "Geclaimd"
   },
   "decorate": {
-    "open": "Inrichten",
-    "title": "Je bureau inrichten",
-    "close": "Sluiten",
-    "things": "Spullen",
-    "chair": "Stoel",
+    "title": "Jouw bureau",
     "shelf": {
-      "all": "Alles",
       "tech": "Techniek",
       "lamps": "Lampen",
       "personal": "Persoonlijk",
-      "setups": "Werkplekken",
-      "chairs": "Stoelen"
+      "setups": "Werkplekken"
     },
-    "hint": "Kies iets voor je bureau. Sleep spullen om ze te verplaatsen.",
-    "swapHint": "Kies iets om het mee te ruilen.",
-    "full": "Je bureau is vol: haal iets weg om meer toe te voegen.",
-    "count": "Spullen: {count} van {max}",
     "undo": "Ongedaan maken",
     "redo": "Opnieuw",
     "reset": "Herstellen",
     "resetConfirm": "Je bureau terugzetten zoals het was?",
     "cancel": "Annuleren",
     "done": "Klaar",
-    "remove": "Van het bureau halen",
-    "deselect": "Klaar hiermee"
+    "wood": {
+      "maple": "Esdoorn",
+      "oak": "Eiken",
+      "beech": "Beuken",
+      "walnut": "Notenhout",
+      "white": "Wit",
+      "graphite": "Grafiet"
+    },
+    "part": {
+      "left": "Links",
+      "middle": "Midden",
+      "right": "Rechts",
+      "chair": "Stoel",
+      "wood": "Hout"
+    },
+    "remove": "Weghalen"
   },
   "look": {
     "open": "Uiterlijk aanpassen",

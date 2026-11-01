@@ -94,7 +94,8 @@
     "aloneTitle": "楼层上只有你",
     "aloneBody": "发送链接，打开它的人会出现在你身旁。",
     "aloneQuiet": "有其他人进来时，会显示在这里。",
-    "inviteSomeone": "邀请某人"
+    "inviteSomeone": "邀请某人",
+    "walkTo": "走到 {name} 身边"
   },
   "call": {
     "incoming": "正在呼叫你",
@@ -395,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "保存到你的账户",
       "accountBody": "这样它就一直属于你，团队也能找到它。只需几秒钟。"
+    },
+    "dock": {
+      "title": "创建你自己的办公室",
+      "start": "开始"
     }
   },
   "office": {
@@ -804,7 +809,11 @@
     "shareNote": "用这台设备上的任意应用发送",
     "full": "新成员无法加入：{office} 的方案最多 {seats} 人。",
     "fullMember": "管理员可以继续使用 Pro 来腾出位置。",
-    "keepPro": "继续使用 Pro"
+    "keepPro": "继续使用 Pro",
+    "ways": {
+      "message": "消息",
+      "email": "邮件"
+    }
   },
   "desk": {
     "claimConfirm": "认领",
@@ -814,31 +823,35 @@
     "claimed": "已认领"
   },
   "decorate": {
-    "open": "装饰",
-    "title": "装饰你的工位",
-    "close": "关闭",
-    "things": "物品",
-    "chair": "椅子",
+    "title": "你的桌子",
     "shelf": {
-      "all": "全部",
       "tech": "科技",
       "lamps": "台灯",
       "personal": "个人",
-      "setups": "整套",
-      "chairs": "椅子"
+      "setups": "整套"
     },
-    "hint": "选择要放在桌上的东西，拖动即可移动。",
-    "swapHint": "选择要替换成的东西。",
-    "full": "桌面已满：拿走一些才能再放。",
-    "count": "物品：{count}/{max}",
     "undo": "撤销",
     "redo": "重做",
     "reset": "重置",
     "resetConfirm": "要把工位恢复原样吗？",
     "cancel": "取消",
     "done": "完成",
-    "remove": "从桌上拿走",
-    "deselect": "完成选择"
+    "wood": {
+      "maple": "枫木",
+      "oak": "橡木",
+      "beech": "山毛榉",
+      "walnut": "胡桃木",
+      "white": "白色",
+      "graphite": "石墨"
+    },
+    "part": {
+      "left": "左边",
+      "middle": "中间",
+      "right": "右边",
+      "chair": "椅子",
+      "wood": "木色"
+    },
+    "remove": "移除"
   },
   "look": {
     "open": "更换形象",

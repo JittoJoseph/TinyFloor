@@ -94,7 +94,8 @@
     "aloneTitle": "Nur du auf der Fläche",
     "aloneBody": "Schick den Link – wer ihn öffnet, steht gleich neben dir.",
     "aloneQuiet": "Sobald jemand anderes reinkommt, erscheint er hier.",
-    "inviteSomeone": "Jemanden einladen"
+    "inviteSomeone": "Jemanden einladen",
+    "walkTo": "Zu {name} gehen"
   },
   "call": {
     "incoming": "Ruft dich an",
@@ -395,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "In deinem Konto speichern",
       "accountBody": "Damit es deins bleibt und dein Team es findet. Dauert nur ein paar Sekunden."
+    },
+    "dock": {
+      "title": "Erstelle dein eigenes Büro",
+      "start": "Los geht's"
     }
   },
   "office": {
@@ -804,7 +809,11 @@
     "shareNote": "Mit einer App auf diesem Gerät senden",
     "full": "Niemand Neues kann beitreten: Der Plan von {office} hat Platz für {seats} Personen.",
     "fullMember": "Ein Admin kann Pro behalten, um Platz zu schaffen.",
-    "keepPro": "Pro behalten"
+    "keepPro": "Pro behalten",
+    "ways": {
+      "message": "Nachricht",
+      "email": "E-Mail"
+    }
   },
   "desk": {
     "claimConfirm": "Beanspruchen",
@@ -814,31 +823,35 @@
     "claimed": "Beansprucht"
   },
   "decorate": {
-    "open": "Einrichten",
-    "title": "Schreibtisch einrichten",
-    "close": "Schließen",
-    "things": "Dinge",
-    "chair": "Stuhl",
+    "title": "Dein Schreibtisch",
     "shelf": {
-      "all": "Alle",
       "tech": "Technik",
       "lamps": "Lampen",
       "personal": "Persönlich",
-      "setups": "Arbeitsplätze",
-      "chairs": "Stühle"
+      "setups": "Arbeitsplätze"
     },
-    "hint": "Wähle etwas für deinen Schreibtisch. Ziehe Dinge, um sie zu verschieben.",
-    "swapHint": "Wähle etwas zum Austauschen.",
-    "full": "Dein Schreibtisch ist voll: Nimm etwas weg, um mehr hinzuzufügen.",
-    "count": "Dinge: {count} von {max}",
     "undo": "Rückgängig",
     "redo": "Wiederholen",
     "reset": "Zurücksetzen",
     "resetConfirm": "Schreibtisch auf den Ursprungszustand zurücksetzen?",
     "cancel": "Abbrechen",
     "done": "Fertig",
-    "remove": "Vom Schreibtisch nehmen",
-    "deselect": "Fertig damit"
+    "wood": {
+      "maple": "Ahorn",
+      "oak": "Eiche",
+      "beech": "Buche",
+      "walnut": "Nussbaum",
+      "white": "Weiß",
+      "graphite": "Graphit"
+    },
+    "part": {
+      "left": "Links",
+      "middle": "Mitte",
+      "right": "Rechts",
+      "chair": "Stuhl",
+      "wood": "Holz"
+    },
+    "remove": "Entfernen"
   },
   "look": {
     "open": "Aussehen ändern",

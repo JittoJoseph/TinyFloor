@@ -94,7 +94,8 @@
     "aloneTitle": "Tylko ty na piętrze",
     "aloneBody": "Wyślij link, a ten, kto go otworzy, pojawi się obok ciebie.",
     "aloneQuiet": "Gdy ktoś jeszcze wejdzie, pojawi się tutaj.",
-    "inviteSomeone": "Zaproś kogoś"
+    "inviteSomeone": "Zaproś kogoś",
+    "walkTo": "Podejdź do: {name}"
   },
   "call": {
     "incoming": "Dzwoni do ciebie",
@@ -395,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Zapisz je na swoim koncie",
       "accountBody": "Wtedy zostanie twoje, a zespół łatwo je znajdzie. To kilka sekund."
+    },
+    "dock": {
+      "title": "Utwórz własne biuro",
+      "start": "Zacznij"
     }
   },
   "office": {
@@ -804,7 +809,11 @@
     "shareNote": "Wyślij z dowolnej aplikacji na tym urządzeniu",
     "full": "Nikt nowy nie może dołączyć: plan biura {office} mieści {seats} osoby.",
     "fullMember": "Administrator może zachować Pro, żeby zrobić miejsce.",
-    "keepPro": "Zachowaj Pro"
+    "keepPro": "Zachowaj Pro",
+    "ways": {
+      "message": "Wiadomość",
+      "email": "E-mail"
+    }
   },
   "desk": {
     "claimConfirm": "Zajmij",
@@ -814,31 +823,35 @@
     "claimed": "Zajęte"
   },
   "decorate": {
-    "open": "Urządź",
-    "title": "Urządź swoje biurko",
-    "close": "Zamknij",
-    "things": "Rzeczy",
-    "chair": "Krzesło",
+    "title": "Twoje biurko",
     "shelf": {
-      "all": "Wszystko",
       "tech": "Sprzęt",
       "lamps": "Lampy",
       "personal": "Osobiste",
-      "setups": "Stanowiska",
-      "chairs": "Krzesła"
+      "setups": "Stanowiska"
     },
-    "hint": "Wybierz coś na biurko. Przeciągaj rzeczy, aby je przesunąć.",
-    "swapHint": "Wybierz coś, na co to zamienić.",
-    "full": "Biurko jest pełne: zdejmij coś, aby dodać więcej.",
-    "count": "Rzeczy: {count} z {max}",
     "undo": "Cofnij",
     "redo": "Ponów",
     "reset": "Przywróć",
     "resetConfirm": "Przywrócić biurko do stanu początkowego?",
     "cancel": "Anuluj",
     "done": "Gotowe",
-    "remove": "Zdejmij z biurka",
-    "deselect": "Gotowe z tym"
+    "wood": {
+      "maple": "Klon",
+      "oak": "Dąb",
+      "beech": "Buk",
+      "walnut": "Orzech",
+      "white": "Biały",
+      "graphite": "Grafit"
+    },
+    "part": {
+      "left": "Lewo",
+      "middle": "Środek",
+      "right": "Prawo",
+      "chair": "Krzesło",
+      "wood": "Drewno"
+    },
+    "remove": "Usuń"
   },
   "look": {
     "open": "Zmień wygląd",

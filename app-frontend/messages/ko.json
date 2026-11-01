@@ -94,7 +94,8 @@
     "aloneTitle": "층에 나만 있어요",
     "aloneBody": "링크를 보내면 연 사람이 바로 옆에 나타나요.",
     "aloneQuiet": "다른 사람이 들어오면 여기에 표시돼요.",
-    "inviteSomeone": "누군가 초대하기"
+    "inviteSomeone": "누군가 초대하기",
+    "walkTo": "{name}에게 가기"
   },
   "call": {
     "incoming": "전화가 왔어요",
@@ -395,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "계정에 저장하세요",
       "accountBody": "내 오피스로 남고 팀원도 찾을 수 있어요. 몇 초면 돼요."
+    },
+    "dock": {
+      "title": "나만의 오피스 만들기",
+      "start": "시작하기"
     }
   },
   "office": {
@@ -804,7 +809,11 @@
     "shareNote": "이 기기의 앱으로 보내기",
     "full": "새로운 사람은 참여할 수 없어요: {office}의 플랜은 {seats}명까지예요.",
     "fullMember": "관리자가 Pro를 유지하면 자리가 생겨요.",
-    "keepPro": "Pro 유지하기"
+    "keepPro": "Pro 유지하기",
+    "ways": {
+      "message": "메시지",
+      "email": "이메일"
+    }
   },
   "desk": {
     "claimConfirm": "맡기",
@@ -814,31 +823,35 @@
     "claimed": "맡았어요"
   },
   "decorate": {
-    "open": "꾸미기",
-    "title": "책상 꾸미기",
-    "close": "닫기",
-    "things": "물건",
-    "chair": "의자",
+    "title": "내 책상",
     "shelf": {
-      "all": "전체",
       "tech": "기기",
       "lamps": "조명",
       "personal": "개인",
-      "setups": "세트",
-      "chairs": "의자"
+      "setups": "세트"
     },
-    "hint": "책상에 올릴 것을 고르세요. 끌어서 옮길 수 있어요.",
-    "swapHint": "바꿀 것을 고르세요.",
-    "full": "책상이 가득 찼어요. 무언가를 치워야 더 올릴 수 있어요.",
-    "count": "물건: {count}/{max}",
     "undo": "실행 취소",
     "redo": "다시 실행",
     "reset": "초기화",
     "resetConfirm": "책상을 처음 상태로 되돌릴까요?",
     "cancel": "취소",
     "done": "완료",
-    "remove": "책상에서 치우기",
-    "deselect": "선택 끝내기"
+    "wood": {
+      "maple": "메이플",
+      "oak": "오크",
+      "beech": "너도밤나무",
+      "walnut": "월넛",
+      "white": "화이트",
+      "graphite": "그래파이트"
+    },
+    "part": {
+      "left": "왼쪽",
+      "middle": "가운데",
+      "right": "오른쪽",
+      "chair": "의자",
+      "wood": "나무"
+    },
+    "remove": "치우기"
   },
   "look": {
     "open": "모습 바꾸기",

@@ -94,7 +94,8 @@
     "aloneTitle": "Just you on the floor",
     "aloneBody": "Send the link, and whoever opens it walks in beside you.",
     "aloneQuiet": "When someone else comes in, they'll show up here.",
-    "inviteSomeone": "Invite someone"
+    "inviteSomeone": "Invite someone",
+    "walkTo": "Walk over to {name}"
   },
   "call": {
     "incoming": "Calling you",
@@ -395,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Save it to your account",
       "accountBody": "So it stays yours and your team can find it. It takes a few seconds."
+    },
+    "dock": {
+      "title": "Create your own office",
+      "start": "Get started"
     }
   },
   "office": {
@@ -804,7 +809,11 @@
     "shareNote": "Send it from any app on this device",
     "full": "Nobody new can join: {office}'s plan has room for {seats} people.",
     "fullMember": "An admin can keep Pro to make room.",
-    "keepPro": "Keep Pro"
+    "keepPro": "Keep Pro",
+    "ways": {
+      "message": "Message",
+      "email": "Email"
+    }
   },
   "desk": {
     "claimConfirm": "Claim",
@@ -814,31 +823,35 @@
     "claimed": "Claimed"
   },
   "decorate": {
-    "open": "Decorate",
-    "title": "Decorate your desk",
-    "close": "Close",
-    "things": "Things",
-    "chair": "Chair",
+    "title": "Your desk",
     "shelf": {
-      "all": "All",
       "tech": "Tech",
       "lamps": "Lamps",
       "personal": "Personal",
-      "setups": "Setups",
-      "chairs": "Chairs"
+      "setups": "Setups"
     },
-    "hint": "Pick something to put on your desk. Drag things to move them.",
-    "swapHint": "Pick something to swap it for.",
-    "full": "Your desk is full: take something off to add more.",
-    "count": "Things: {count} of {max}",
     "undo": "Undo",
     "redo": "Redo",
     "reset": "Reset",
     "resetConfirm": "Put your desk back as it came?",
     "cancel": "Cancel",
     "done": "Done",
-    "remove": "Take off the desk",
-    "deselect": "Done with this"
+    "wood": {
+      "maple": "Maple",
+      "oak": "Oak",
+      "beech": "Beech",
+      "walnut": "Walnut",
+      "white": "White",
+      "graphite": "Graphite"
+    },
+    "part": {
+      "left": "Left",
+      "middle": "Middle",
+      "right": "Right",
+      "chair": "Chair",
+      "wood": "Wood"
+    },
+    "remove": "Remove"
   },
   "look": {
     "open": "Change how you look",

@@ -1,24 +1,24 @@
 import * as Phaser from "phaser";
 import { FLOOR } from "@shared/map";
-import { placeOn } from "@shared/office";
+import { spotKey } from "@shared/office";
 import type { MapManager } from "./MapManager";
-import { crisp } from "./crisp";
-import { cssZoom, fromCss, toCss } from "./plates";
-import { addThing, closeDecorate, decorateState, endCarry, moveThing, redo, removeThing, select, setAnchor, subscribeDecorate, undo } from "./decorate";
+import { cssZoom } from "./plates";
+import { closeDecorate, decorateState, pickPart, redo, setPart, subscribeDecorate, undo } from "./decorate";
 import { typingElsewhere } from "./typing";
 
 /** How long the camera takes to bring the desk into view. */
 const FOCUS_MS = 460;
 /**
- * Your card while it holds the desk's things (YouCard): beside the floor at
- * the top right on a wide screen, over its top half on a phone. The desk is
- * brought into the middle of the floor the card leaves showing.
+ * The desk's panel (DeskPanel): at the floor's right on a wide screen (and
+ * its margin), over its foot on a phone. The desk is brought into the middle of the floor
+ * the panel leaves showing.
  */
-const CARD_WIDE = 352 + 16;
+const PANEL_WIDE = 320 + 16;
 const PHONE = 640;
-const CARD_PHONE_SHARE = 0.5;
-/** How far a thing lifts while it's held. */
-const LIFT = 3;
+const PANEL_PHONE_SHARE = 0.48;
+/** How high an empty spot's outline stands over its line, and how far below. */
+const SPOT_RISE = 36;
+const SPOT_DROP = 4;
 const OUTLINE = 0xffffff;
 const SHADE = 0x1c1c2a;
 const DEPTH = 99980;
@@ -27,30 +27,20 @@ type Box = { x: number; y: number; w: number; h: number };
 
 /**
  * The floor's half of decorating your desk (lib/decorate.ts). The camera
- * glides to the desk, without zooming, so it sits in the floor your card
- * leaves showing; the rest of the floor stays as it is. Things on the desk are
- * found by their own pixels: pointed at, outlined; pressed, picked and framed
- * (its bar follows it, PickedBar); dragged, they lift and slide along the
- * desk, kept to where they can stand and snapped to the art's pixels, and
- * settle where they're let go. A thing carried in from the card follows the
- * pointer and, over the desk, shows where it would stand. While something is
- * held or carried, a faint outline says where things can go. Keys: Delete
- * takes the picked thing away, Escape lets go (then closes), Ctrl+Z and
- * Ctrl+Y undo and redo.
+ * glides to the desk, without zooming, so it sits in the floor the panel
+ * leaves showing; the rest of the floor stays as it is. The desk's spots are
+ * outlined, faintly, so you see where things go; pointed at, a part (a spot,
+ * the chair, the desk itself) is outlined; pressed, it's picked, and the
+ * panel shows what it can be. Keys: Delete empties the picked spot, Escape
+ * closes, Ctrl+Z and Ctrl+Y undo and redo.
  */
 export class DeskDecorator {
-  private zone: Phaser.GameObjects.Graphics;
-  private outline: Phaser.GameObjects.Graphics;
+  private spots: Phaser.GameObjects.Graphics;
   private frame: Phaser.GameObjects.Graphics;
-  private ghost: Phaser.GameObjects.Image | null = null;
   private desk: string | null = null;
   private hovered: string | null = null;
-  private dragging: { key: string; item: string; grab: [number, number]; from: [number, number]; at: [number, number]; moved: boolean } | null = null;
-  private carried: [number, number] | null = null;
   private unsubscribe: () => void;
   private readonly keys = (event: KeyboardEvent) => this.key(event);
-  private readonly carryMove = (event: PointerEvent) => this.carryTo(event);
-  private readonly carryDrop = () => this.drop();
 
   constructor(
     private scene: Phaser.Scene,
@@ -58,13 +48,11 @@ export class DeskDecorator {
     /** Hands the camera and your feet over to decorating (true) and back (false). */
     private hold: (decorating: boolean) => void,
   ) {
-    this.zone = scene.add.graphics().setDepth(DEPTH);
-    this.outline = scene.add.graphics().setDepth(DEPTH + 1);
-    this.frame = scene.add.graphics().setDepth(DEPTH + 2);
+    this.spots = scene.add.graphics().setDepth(DEPTH);
+    this.frame = scene.add.graphics().setDepth(DEPTH + 1);
     this.unsubscribe = subscribeDecorate(() => this.follow());
     scene.input.on("pointerdown", this.down, this);
     scene.input.on("pointermove", this.move, this);
-    scene.input.on("pointerup", this.up, this);
     window.addEventListener("keydown", this.keys);
   }
 
@@ -74,20 +62,10 @@ export class DeskDecorator {
   }
 
   private follow() {
-    const { desk, carrying } = decorateState();
-    if (desk !== this.desk) {
-      if (desk) this.enter(desk);
-      else this.leave();
-    }
-    if (carrying && !this.ghost) this.pickUp(carrying);
-    if (!carrying && this.ghost) this.putDown();
-  }
-
-  /** Where things can stand on the desk: along it, from the highest a thing may reach to its front edge. */
-  private surface(desk: string): Box {
-    const spec = FLOOR.desks[desk];
-    const top = spec.ceiling ?? spec.feet[0] - 24;
-    return { x: spec.along[0], y: top, w: spec.along[1] - spec.along[0], h: spec.feet[1] - top };
+    const { desk } = decorateState();
+    if (desk === this.desk) return;
+    if (desk) this.enter(desk);
+    else this.leave();
   }
 
   private enter(desk: string) {
@@ -95,54 +73,32 @@ export class DeskDecorator {
     this.hold(true);
     const camera = this.scene.cameras.main;
     const spec = FLOOR.desks[desk];
-    // The desk and its chair, in the middle of the floor the card leaves showing, at the zoom it's at.
-    const x = (spec.along[0] + spec.along[1]) / 2;
-    const y = (Math.min(spec.feet[0] - 40, spec.chair.y) + Math.max(spec.feet[1], spec.chair.y + 64)) / 2;
+    // The desk and its chair, in the middle of the floor the panel leaves showing, at the zoom it's at.
+    const x = (spec.spots[0].x[0] + spec.spots[spec.spots.length - 1].x[1]) / 2;
+    const top = Math.min(...spec.spots.map((spot) => spot.foot - SPOT_RISE - 12), spec.chair.y);
+    const y = (top + Math.max(...spec.spots.map((spot) => spot.foot), spec.chair.y + 64)) / 2;
     const phone = window.innerWidth < PHONE;
     const zoom = cssZoom(this.scene);
     camera.stopFollow();
-    camera.pan(
-      x + (phone ? 0 : CARD_WIDE / 2 / zoom),
-      y - (phone ? (window.innerHeight * CARD_PHONE_SHARE) / 2 / zoom : 0),
-      FOCUS_MS,
-      "Cubic.easeInOut",
-      true,
-    );
+    // Past the floor's edge if it has to be, to clear the panel: a desk near an edge, a phone's view far out.
+    camera.useBounds = false;
+    camera.pan(x + (phone ? 0 : PANEL_WIDE / 2 / zoom), y + (phone ? (window.innerHeight * PANEL_PHONE_SHARE) / 2 / zoom : 0), FOCUS_MS, "Cubic.easeInOut", true);
   }
 
   private leave() {
     this.desk = null;
-    this.dragging = null;
     this.hovered = null;
-    this.map.hold(null);
-    this.zone.clear();
-    this.outline.clear();
+    this.spots.clear();
     this.frame.clear();
-    this.putDown();
     this.scene.game.canvas.style.cursor = "";
+    this.scene.cameras.main.useBounds = true;
     this.hold(false);
   }
 
-  // ---------- things on the desk ----------
+  // ---------- the desk's parts ----------
 
-  /** The desk's piece under a point, by its own pixels, the one in front first. */
-  private pieceAt(x: number, y: number): string | null {
-    const pieces = this.map.getPieces();
-    for (let i = pieces.length - 1; i >= 0; i--) {
-      const piece = pieces[i];
-      if (piece.desk !== this.desk) continue;
-      const image = this.map.getImage(piece.key);
-      if (!image || !image.getBounds().contains(x, y)) continue;
-      const alpha = this.scene.textures.getPixelAlpha(Math.floor(x - image.x), Math.floor(y - image.y), image.texture.key, image.frame.name);
-      if (alpha > 0) return piece.key;
-    }
-    return null;
-  }
-
-  private isChair = (key: string) => !!this.desk && FLOOR.desks[this.desk].chair.key === key;
-
-  /** A thing's pixels where it's drawn now: what an outline goes round. */
-  private boxOf(key: string): Box | null {
+  /** A piece's pixels where it's drawn now. */
+  private artBox(key: string): Box | null {
     const image = this.map.getImage(key);
     if (!image) return null;
     const item = this.map.getPieces().find((piece) => piece.key === key)?.item;
@@ -151,59 +107,57 @@ export class DeskDecorator {
     return { x: image.x + art[0], y: image.y + art[1], w: art[2] - art[0], h: art[3] - art[1] };
   }
 
+  /** A spot's outline: across it, from a little over its line (or the top of what stands there) to just under it. */
+  private spotBox(desk: string, id: string): Box {
+    const spot = FLOOR.desks[desk].spots.find((one) => one.id === id)!;
+    const thing = this.artBox(spotKey(desk, id));
+    const top = Math.min(spot.foot - SPOT_RISE, thing ? thing.y - 2 : Infinity);
+    return { x: spot.x[0] + 1, y: top, w: spot.x[1] - spot.x[0] - 2, h: spot.foot + SPOT_DROP - top };
+  }
+
+  /** A part's outline: a spot's, or the chair's or the desk's own pixels. */
+  private boxOf(key: string): Box | null {
+    const desk = this.desk;
+    if (!desk) return null;
+    const spot = FLOOR.desks[desk].spots.find((one) => spotKey(desk, one.id) === key);
+    return spot ? this.spotBox(desk, spot.id) : this.artBox(key);
+  }
+
+  /** Whether a piece's own pixels are under a point. */
+  private hits(key: string, x: number, y: number): boolean {
+    const image = this.map.getImage(key);
+    if (!image || !image.getBounds().contains(x, y)) return false;
+    return this.scene.textures.getPixelAlpha(Math.floor(x - image.x), Math.floor(y - image.y), image.texture.key, image.frame.name) > 0;
+  }
+
+  /** The part under a point: a spot first, then the chair, then the desk itself. */
+  private partAt(x: number, y: number): string | null {
+    const desk = this.desk;
+    if (!desk) return null;
+    const spec = FLOOR.desks[desk];
+    for (const spot of spec.spots) {
+      const box = this.spotBox(desk, spot.id);
+      if (x >= box.x && x < box.x + box.w && y >= box.y && y < box.y + box.h) return spotKey(desk, spot.id);
+    }
+    if (this.hits(spec.chair.key, x, y)) return spec.chair.key;
+    if (spec.body && this.hits(spec.body.key, x, y)) return spec.body.key;
+    return null;
+  }
+
   private down(pointer: Phaser.Input.Pointer) {
-    if (!this.desk) return;
-    const key = this.pieceAt(pointer.worldX, pointer.worldY);
-    select(key);
-    if (!key || this.isChair(key)) return;
-    const image = this.map.getImage(key)!;
-    const item = this.map.getPieces().find((piece) => piece.key === key)!.item;
-    this.dragging = { key, item, grab: [pointer.worldX - image.x, pointer.worldY - image.y], from: [image.x, image.y], at: [image.x, image.y], moved: false };
+    const part = this.partAt(pointer.worldX, pointer.worldY);
+    if (part) pickPart(part);
   }
 
   private move(pointer: Phaser.Input.Pointer) {
     if (!this.desk) return;
-    const drag = this.dragging;
-    if (!drag) {
-      const key = this.pieceAt(pointer.worldX, pointer.worldY);
-      this.hovered = key;
-      this.scene.game.canvas.style.cursor = key ? (this.isChair(key) ? "pointer" : "grab") : "";
-      return;
-    }
-    const image = this.map.getImage(drag.key);
-    const art = FLOOR.things[drag.item]?.art;
-    if (!image || !art) return;
-    // Where the thing's pixels would stand with the hand where it is, kept to the desk.
-    const x = pointer.worldX - drag.grab[0];
-    const y = pointer.worldY - drag.grab[1];
-    const at = placeOn(this.desk, drag.item, x + (art[0] + art[2]) / 2, y + art[3]);
-    if (!at) return;
-    if (!drag.moved) {
-      if (Math.hypot(x - drag.from[0], y - drag.from[1]) < 3) return;
-      drag.moved = true;
-      this.map.hold(drag.key);
-      this.scene.tweens.killTweensOf(image);
-    }
-    this.scene.game.canvas.style.cursor = "grabbing";
-    drag.at = at;
-    image.setPosition(at[0], at[1] - LIFT).setDepth(FLOOR.desks[this.desk].depth + (at[1] + art[3]) / 10000);
-  }
-
-  private up() {
-    const drag = this.dragging;
-    this.dragging = null;
-    if (!drag || !this.desk || !drag.moved) return;
-    this.map.hold(null);
-    const image = this.map.getImage(drag.key);
-    this.scene.game.canvas.style.cursor = "grab";
-    // Set down: it settles onto the desk where it was let go.
-    if (image) this.scene.tweens.add({ targets: image, y: drag.at[1], duration: 140, ease: "Back.easeOut" });
-    if (!moveThing(drag.key, drag.at)) this.map.refresh();
+    this.hovered = this.partAt(pointer.worldX, pointer.worldY);
+    this.scene.game.canvas.style.cursor = this.hovered ? "pointer" : "";
   }
 
   private key(event: KeyboardEvent) {
     if (!this.desk || typingElsewhere()) return;
-    const { selected } = decorateState();
+    const { part } = decorateState();
     const mod = event.ctrlKey || event.metaKey;
     if (mod && event.key.toLowerCase() === "z") {
       event.preventDefault();
@@ -212,110 +166,47 @@ export class DeskDecorator {
     } else if (mod && event.key.toLowerCase() === "y") {
       event.preventDefault();
       redo();
-    } else if ((event.key === "Delete" || event.key === "Backspace") && selected && !this.isChair(selected)) {
+    } else if ((event.key === "Delete" || event.key === "Backspace") && part && FLOOR.desks[this.desk].spots.some((spot) => spotKey(this.desk!, spot.id) === part)) {
       event.preventDefault();
-      removeThing(selected);
+      setPart(part, null);
     } else if (event.key === "Escape") {
-      if (decorateState().carrying) endCarry();
-      else if (selected) select(null);
-      else closeDecorate();
+      closeDecorate();
     }
   }
 
-  // ---------- carried in from the card ----------
-
-  private pickUp(item: string) {
-    this.ghost = crisp(this.scene.add.image(-1000, -1000, this.map.itemsTexture(item), item).setOrigin(0, 0).setAlpha(0).setDepth(DEPTH + 3));
-    window.addEventListener("pointermove", this.carryMove);
-    window.addEventListener("pointerup", this.carryDrop);
-  }
-
-  private putDown() {
-    window.removeEventListener("pointermove", this.carryMove);
-    window.removeEventListener("pointerup", this.carryDrop);
-    this.ghost?.destroy();
-    this.ghost = null;
-    this.carried = null;
-  }
-
-  /** A page point on the floor, if it's over the floor. */
-  private worldAt(clientX: number, clientY: number): Phaser.Math.Vector2 | null {
-    const rect = this.scene.game.canvas.getBoundingClientRect();
-    if (clientX < rect.left || clientX > rect.right || clientY < rect.top || clientY > rect.bottom) return null;
-    return fromCss(this.scene, clientX - rect.left, clientY - rect.top);
-  }
-
-  /** Over the desk, where it would stand; elsewhere on the floor, under the pointer, faint. */
-  private carryTo(event: PointerEvent) {
-    const ghost = this.ghost;
-    const item = decorateState().carrying;
-    const art = item ? FLOOR.things[item]?.art : undefined;
-    if (!ghost || !item || !art || !this.desk) return;
-    // Over the card, it isn't on the floor yet.
-    const overFloor = (event.target as Element | null)?.closest?.("canvas") === this.scene.game.canvas;
-    const point = overFloor ? this.worldAt(event.clientX, event.clientY) : null;
-    const { x, y, w, h } = this.surface(this.desk);
-    const near = !!point && point.x >= x - 24 && point.x <= x + w + 24 && point.y >= y - 40 && point.y <= y + h + 40;
-    this.carried = near && point ? placeOn(this.desk, item, point.x, point.y + (art[3] - art[1]) / 2) : null;
-    if (this.carried) {
-      ghost.setPosition(this.carried[0], this.carried[1] - LIFT).setAlpha(0.95);
-    } else if (point) {
-      ghost.setPosition(point.x - (art[0] + art[2]) / 2, point.y - (art[1] + art[3]) / 2).setAlpha(0.5);
-    } else {
-      ghost.setAlpha(0);
-    }
-  }
-
-  private drop() {
-    const item = decorateState().carrying;
-    const at = this.carried;
-    endCarry();
-    if (item && at) addThing(item, at);
-  }
-
-  /** A floor point on the page. */
-  private toPage(x: number, y: number) {
-    const canvas = this.scene.game.canvas.getBoundingClientRect();
-    const at = toCss(this.scene, x, y);
-    return { x: canvas.left + at.x, y: canvas.top + at.y };
-  }
-
-  /** Outlines what's pointed at, frames what's picked, says where its bar goes, and shows the desk's top while something's in hand. */
+  /** The spots, faint; the part pointed at, outlined; the part picked, framed. */
   update() {
-    if (!this.desk) return;
-    this.zone.clear();
-    this.outline.clear();
+    const desk = this.desk;
+    if (!desk) return;
+    this.spots.clear();
     this.frame.clear();
     const line = 1 / cssZoom(this.scene);
-    if (this.dragging?.moved || decorateState().carrying) {
-      const { x, y, w, h } = this.surface(this.desk);
-      this.zone.fillStyle(OUTLINE, 0.06).fillRoundedRect(x - 2, y - 2, w + 4, h + 4, 4);
-      this.zone.lineStyle(1.5 * line, OUTLINE, 0.55).strokeRoundedRect(x - 2, y - 2, w + 4, h + 4, 4);
+    const { part } = decorateState();
+    for (const spot of FLOOR.desks[desk].spots) {
+      const key = spotKey(desk, spot.id);
+      if (key === part) continue;
+      const { x, y, w, h } = this.spotBox(desk, spot.id);
+      const pointed = key === this.hovered;
+      this.spots.fillStyle(OUTLINE, pointed ? 0.16 : 0.08).fillRoundedRect(x, y, w, h, 3);
+      this.spots.lineStyle(1.5 * line, OUTLINE, pointed ? 0.9 : 0.5).strokeRoundedRect(x, y, w, h, 3);
     }
-    const { selected } = decorateState();
-    if (this.hovered && this.hovered !== selected && !this.dragging) {
+    if (this.hovered && this.hovered !== part && !this.hovered.includes("/spot-")) {
       const box = this.boxOf(this.hovered);
-      if (box) this.outline.lineStyle(1.5 * line, OUTLINE, 0.7).strokeRoundedRect(box.x - 2, box.y - 2, box.w + 4, box.h + 4, 3);
+      if (box) this.spots.lineStyle(1.5 * line, OUTLINE, 0.75).strokeRoundedRect(box.x - 2, box.y - 2, box.w + 4, box.h + 4, 3);
     }
-    const box = selected ? this.boxOf(selected) : null;
-    if (!box) {
-      setAnchor(null);
-      return;
-    }
-    this.frame.lineStyle(4 * line, SHADE, 0.55).strokeRoundedRect(box.x - 3, box.y - 3, box.w + 6, box.h + 6, 4);
-    this.frame.lineStyle(2 * line, OUTLINE, 1).strokeRoundedRect(box.x - 3, box.y - 3, box.w + 6, box.h + 6, 4);
-    setAnchor(this.dragging?.moved ? null : this.toPage(box.x + box.w / 2, box.y - 3));
+    const box = part ? this.boxOf(part) : null;
+    if (!box) return;
+    this.frame.fillStyle(OUTLINE, 0.1).fillRoundedRect(box.x - 2, box.y - 2, box.w + 4, box.h + 4, 4);
+    this.frame.lineStyle(4 * line, SHADE, 0.5).strokeRoundedRect(box.x - 2, box.y - 2, box.w + 4, box.h + 4, 4);
+    this.frame.lineStyle(2 * line, OUTLINE, 1).strokeRoundedRect(box.x - 2, box.y - 2, box.w + 4, box.h + 4, 4);
   }
 
   destroy() {
     this.unsubscribe();
-    this.putDown();
     window.removeEventListener("keydown", this.keys);
     this.scene.input.off("pointerdown", this.down, this);
     this.scene.input.off("pointermove", this.move, this);
-    this.scene.input.off("pointerup", this.up, this);
-    this.zone.destroy();
-    this.outline.destroy();
+    this.spots.destroy();
     this.frame.destroy();
     if (this.desk) this.leave();
   }

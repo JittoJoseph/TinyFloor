@@ -94,7 +94,8 @@
     "aloneTitle": "Só você no andar",
     "aloneBody": "Envie o link, e quem abrir aparece ao seu lado.",
     "aloneQuiet": "Quando mais alguém entrar, aparece aqui.",
-    "inviteSomeone": "Convidar alguém"
+    "inviteSomeone": "Convidar alguém",
+    "walkTo": "Ir até {name}"
   },
   "call": {
     "incoming": "Está ligando para você",
@@ -395,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Guarde na sua conta",
       "accountBody": "Assim ele fica seu e sua equipe consegue encontrá-lo. Leva poucos segundos."
+    },
+    "dock": {
+      "title": "Crie o seu próprio escritório",
+      "start": "Começar"
     }
   },
   "office": {
@@ -804,7 +809,11 @@
     "shareNote": "Envie de qualquer app deste aparelho",
     "full": "Ninguém novo pode entrar: o plano de {office} comporta {seats} pessoas.",
     "fullMember": "Um admin pode manter o Pro para abrir espaço.",
-    "keepPro": "Manter o Pro"
+    "keepPro": "Manter o Pro",
+    "ways": {
+      "message": "Mensagem",
+      "email": "E-mail"
+    }
   },
   "desk": {
     "claimConfirm": "Reservar",
@@ -814,31 +823,35 @@
     "claimed": "Reservada"
   },
   "decorate": {
-    "open": "Decorar",
-    "title": "Decore sua mesa",
-    "close": "Fechar",
-    "things": "Itens",
-    "chair": "Cadeira",
+    "title": "A sua mesa",
     "shelf": {
-      "all": "Tudo",
       "tech": "Tecnologia",
       "lamps": "Luminárias",
       "personal": "Pessoal",
-      "setups": "Estações",
-      "chairs": "Cadeiras"
+      "setups": "Estações"
     },
-    "hint": "Escolha algo para sua mesa. Arraste os itens para movê-los.",
-    "swapHint": "Escolha algo para trocar.",
-    "full": "Sua mesa está cheia: tire algo para adicionar mais.",
-    "count": "Itens: {count} de {max}",
     "undo": "Desfazer",
     "redo": "Refazer",
     "reset": "Redefinir",
     "resetConfirm": "Deixar sua mesa como era?",
     "cancel": "Cancelar",
     "done": "Pronto",
-    "remove": "Tirar da mesa",
-    "deselect": "Pronto com isto"
+    "wood": {
+      "maple": "Bordo",
+      "oak": "Carvalho",
+      "beech": "Faia",
+      "walnut": "Nogueira",
+      "white": "Branco",
+      "graphite": "Grafite"
+    },
+    "part": {
+      "left": "Esquerda",
+      "middle": "Meio",
+      "right": "Direita",
+      "chair": "Cadeira",
+      "wood": "Madeira"
+    },
+    "remove": "Remover"
   },
   "look": {
     "open": "Mudar sua aparência",

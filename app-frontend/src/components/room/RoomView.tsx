@@ -1,11 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { loadPhaserGame } from "@/lib/floorWarmup";
 import { useTranslations } from "next-intl";
-import { AlertCircle, Check, UserPlus } from "@/components/ui/icons";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AlertCircle } from "@/components/ui/icons";
+import { AnimatePresence, motion } from "motion/react";
 import ControlBar from "@/components/ControlBar";
 import { Joystick } from "./Joystick";
 import ProximityOverlay from "@/components/ProximityOverlay";
@@ -16,22 +16,16 @@ import { MeetingMini } from "@/components/meetings/MeetingMini";
 import { MeetingRoomPrompt } from "@/components/meetings/MeetingRoomPrompt";
 import { EntryHeader, EntryShell } from "@/components/entry/EntryShell";
 import { ActionButton, ActionLink } from "@/components/ui/Action";
-import { Button } from "@/components/motion/button/base";
 import { Loader } from "@/components/motion/loader";
-import { Face, FaceStack } from "@/components/ui/Face";
-import { PersonPill } from "@/components/ui/Person";
-import { DoneChip } from "@/components/ui/DoneChip";
 import type { RoomTicket } from "@/lib/api";
 import type { ShareResult } from "@/lib/share";
 import { useInvite } from "@/components/app/Invite";
 import { useOfficeMaybe } from "@/components/app/OfficeShell";
 import { FloorPrompt } from "./FloorPrompt";
-import { PickedBar } from "./DecoratePanel";
-import { YouCard } from "./YouCard";
-import { FLOOR_ARRIVED_EVENT, floorRequested, sinceFloorRequested, useFloor } from "@/lib/floor";
+import { DeskPanel } from "./DecoratePanel";
+import { FLOOR_ARRIVED_EVENT, floorRequested, sinceFloorRequested } from "@/lib/floor";
 import { track } from "@/lib/analytics";
 import { EASE_OUT } from "@/lib/ease";
-import { cn } from "@/lib/utils";
 import { ROOM_CONNECTION_EVENT, ROOM_ENDED_EVENT, type RoomEnd } from "@/lib/RoomSocket";
 
 function Connecting() {
@@ -50,54 +44,34 @@ function Connecting() {
 const PhaserGame = dynamic(loadPhaserGame, { ssr: false });
 
 export interface RoomViewProps {
-  title: string;
   user: { id: string; displayName: string; character: string };
   ticketFor: () => Promise<RoomTicket>;
   /** How someone is asked here where there's no office to invite into (the lobby shares its link). An office opens its invite dialog. */
   onInvite?: () => Promise<ShareResult>;
-  /** Invite over the floor's top right too: the lobby always, an office until someone else joins. */
+  /** Invite as a key of the dock too: the lobby always, an office until someone else joins. */
   inviteChip?: boolean;
   /** Where "back" goes when the room lets go of you. */
   leaveHref: string;
-  /** Where this place's settings are, for the dock's gear. */
-  settingsHref?: string;
+  /** The demo office: the dock offers an office of your own where an office has its count. */
+  demo?: boolean;
 }
 
 /**
- * The floor: the map, and only what has to float over it — where you are and
- * who is here (top left), Invite (top right, while it's worth asking), and your microphone and camera
- * (bottom). Everything else lives in the rail.
+ * The floor: the map, and the dock at its foot (you, your microphone, your
+ * desk, who's here, Invite while it's worth asking, the call when there is
+ * one). Everything else lives in the rail.
  */
-export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false, leaveHref, settingsHref }: RoomViewProps) {
+export function RoomView({ user, ticketFor, onInvite, inviteChip = false, leaveHref, demo = false }: RoomViewProps) {
   const t = useTranslations("room");
   const [copied, setCopied] = useState(false);
   const [reconnecting, setReconnecting] = useState(false);
   const [ended, setEnded] = useState<RoomEnd | null>(null);
   const [attempt, setAttempt] = useState(0);
-  const [peopleOpen, setPeopleOpen] = useState(false);
-  const [youActive, setYouActive] = useState(false);
   // From here until the room's welcome, the code, map, ticket and connection
   // are still on their way: one loader covers all of it, then the floor fades in.
   // Which attempt arrived: a retry (Try again) starts covered again.
   const [arrivedOn, setArrivedOn] = useState(-1);
   const arrived = arrivedOn === attempt;
-  const everyone = useFloor();
-  const reduce = useReducedMotion();
-  const peopleBox = useRef<HTMLDivElement>(null);
-
-  // The list closes when you press anywhere else, the map included.
-  useEffect(() => {
-    if (!peopleOpen) return;
-    const close = (event: PointerEvent) => {
-      if (!peopleBox.current?.contains(event.target as Node)) setPeopleOpen(false);
-    };
-    window.addEventListener("pointerdown", close);
-    return () => window.removeEventListener("pointerdown", close);
-  }, [peopleOpen]);
-
-  // You first, then everyone else as they arrived.
-  const here = [...everyone.filter((one) => one.id === user.id), ...everyone.filter((one) => one.id !== user.id)];
-  const count = Math.max(here.length, 1);
 
   // An office's invite dialog, or the lobby's link shared: the button only says
   // something when the link landed on the clipboard, where nothing else would.
@@ -177,113 +151,22 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
         )}
       </AnimatePresence>
 
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 flex items-start justify-between gap-3 p-3 sm:p-4">
-        {/* Where you are and who is with you. Pressing it lists them. */}
-        <div ref={peopleBox} className="pointer-events-auto relative">
-          <button
-            type="button"
-            onClick={() => setPeopleOpen((open) => !open)}
-            aria-expanded={peopleOpen}
-            className="flex h-10 max-w-[min(22rem,60vw)] cursor-pointer items-center gap-2.5 rounded-full border border-border bg-card/90 ps-3.5 pe-2 shadow-float backdrop-blur-md transition-colors hover:bg-card [--face-ring:var(--ui-card)]"
+      {/* Only while the connection is coming back: everything else that sits over the floor is in the dock. */}
+      <AnimatePresence>
+        {reconnecting && (
+          <motion.div
+            key="reconnecting"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            role="status"
+            className="pointer-events-none absolute left-1/2 top-3 z-20 flex h-8 -translate-x-1/2 items-center gap-2 rounded-full border border-border bg-card/90 px-3 text-[12.5px] font-medium text-foreground shadow-float backdrop-blur-md"
           >
-            <span className={cn("size-2 shrink-0 rounded-full", reconnecting ? "animate-pulse bg-warn" : "bg-ok")} aria-hidden />
-            <span className="truncate text-[13px] font-medium text-foreground">{reconnecting ? t("reconnecting") : title}</span>
-            <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-muted py-0.5 ps-0.5 pe-2 [--face-ring:var(--ui-muted)]">
-              <FaceStack seeds={here.map((one) => one.id)} size={20} max={3} />
-              <span className="text-[12px] font-medium tabular-nums text-muted-foreground">{count}</span>
-            </span>
-          </button>
-
-          <AnimatePresence>
-            {peopleOpen && (
-              <motion.div
-                initial={reduce ? { opacity: 0 } : { opacity: 0, y: -6, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={reduce ? { opacity: 0 } : { opacity: 0, y: -4, scale: 0.98 }}
-                transition={{ duration: 0.18, ease: EASE_OUT }}
-                style={{ transformOrigin: "top left" }}
-                className="absolute start-0 top-12 w-72 rounded-2xl border border-border bg-popover p-2 shadow-float"
-              >
-                {here.length > 1 ? (
-                  <>
-                    <p className="px-2 pb-2 pt-1 text-[12px] font-medium text-muted-foreground">{t("peopleHere", { count })}</p>
-                    <div className="flex max-h-72 flex-col gap-1 overflow-y-auto">
-                      {here.map((one) => (
-                        <PersonPill
-                          key={one.id}
-                          id={one.id}
-                          name={one.id === user.id ? t("you", { name: one.name }) : one.name}
-                          presence={one.status}
-                          size="sm"
-                          className="border-transparent bg-transparent hover:bg-muted [--face-ring:var(--ui-popover)]"
-                        />
-                      ))}
-                    </div>
-                    {canInvite && (
-                      <Button variant="secondary" size="sm" onClick={invite} className="mt-2 h-9 w-full gap-2 text-[13px]">
-                        {copied ? <Check className="size-3.5" /> : <UserPlus className="size-3.5" />}
-                        {copied ? t("linkCopied") : t("invite")}
-                      </Button>
-                    )}
-                  </>
-                ) : (
-                  // Alone: your face beside the empty places, and the way to fill them.
-                  <div className="flex flex-col items-center px-3 pb-2 pt-4 text-center [--face-ring:var(--ui-popover)]">
-                    <span className="flex items-center">
-                      <Face seed={user.id} size={40} presence="available" />
-                      {[0, 1].map((one) => (
-                        <span
-                          key={one}
-                          className="-ms-2 flex size-10 items-center justify-center rounded-full border-2 border-dashed border-border-strong bg-popover text-faint"
-                        >
-                          <UserPlus className="size-4" />
-                        </span>
-                      ))}
-                    </span>
-                    <p className="mt-3 text-[14px] font-semibold text-foreground">{t("aloneTitle")}</p>
-                    <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{t(canInvite ? "aloneBody" : "aloneQuiet")}</p>
-                    {canInvite && (
-                      <Button size="sm" onClick={invite} className="mt-3 h-9 w-full gap-2 text-[13px]">
-                        {copied ? <Check className="size-3.5" /> : <UserPlus className="size-3.5" />}
-                        {copied ? t("linkCopied") : t("inviteSomeone")}
-                      </Button>
-                    )}
-                  </div>
-                )}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-
-        {/* Invite while it's worth asking, then you. Pointed at or opened, your card grows over where Invite
-            was, Invite stepping aside into it as one of its rows. */}
-        <div className="relative flex items-start gap-2">
-          <AnimatePresence initial={false}>
-            {inviteChip && canInvite && !youActive && (
-              <motion.div
-                key="invite"
-                initial={reduce ? { opacity: 0 } : { opacity: 0, x: 12, scale: 0.96 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={reduce ? { opacity: 0 } : { opacity: 0, x: 12, scale: 0.96 }}
-                transition={{ duration: 0.18, ease: EASE_OUT }}
-                style={{ transformOrigin: "right center" }}
-              >
-                <InviteChip copied={copied} onClick={invite} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-          <div className="h-10 w-10 shrink-0" aria-hidden />
-          <div className="absolute end-0 top-0 z-10">
-            <YouCard
-              userId={user.id}
-              name={user.displayName}
-              onActive={setYouActive}
-              onInvite={inviteChip && canInvite ? invite : undefined}
-              inviteLabel={t("invite")}
-            />
-          </div>
-        </div>
-      </div>
+            <span aria-hidden className="size-2 animate-pulse rounded-full bg-warn" />
+            {t("reconnecting")}
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Above the dock, one at a time: the desk you sat at, or what you can do where you stand. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-20 z-40 flex justify-center px-3 sm:bottom-24">
@@ -296,9 +179,9 @@ export function RoomView({ title, user, ticketFor, onInvite, inviteChip = false,
       <MeetingMini />
       <MeetingAudio />
       <WhiteboardOverlay />
-      <PickedBar />
+      <DeskPanel />
 
-      <ControlBar settingsHref={settingsHref} />
+      <ControlBar userId={user.id} onInvite={canInvite ? invite : undefined} inviteLabel={t("invite")} inviteShown={inviteChip && canInvite} copied={copied} demo={demo} />
     </div>
   );
 }
@@ -342,24 +225,5 @@ function RoomEnded({ reason, leaveHref, onRetry }: { reason: RoomEnd; leaveHref:
         <ActionLink href={leaveHref}>{t("back")}</ActionLink>
       )}
     </EntryShell>
-  );
-}
-
-/**
- * Invite over the floor, matching the chip opposite it: frosted, one line, and
- * the label trading places with "Link copied" when it has done its job.
- */
-function InviteChip({ copied, onClick }: { copied: boolean; onClick: () => void }) {
-  const t = useTranslations("room");
-  return (
-    <DoneChip
-      done={copied}
-      icon={<UserPlus strokeWidth={2.25} />}
-      label={t("invite")}
-      doneLabel={t("linkCopied")}
-      onClick={onClick}
-      className="pointer-events-auto bg-card/90 shadow-float backdrop-blur-md hover:bg-card"
-      labelClassName="hidden sm:inline"
-    />
   );
 }

@@ -77,6 +77,8 @@ export class PlayerManager {
   private playerStates: Map<string, RemotePlayerState> = new Map();
   /** Status notes by person, you included, while they last; each with its timer to clear itself. */
   private notes: Map<string, StatusNote> = new Map();
+  /** How each person looks, for showing them off the floor as they look on it. */
+  private looks: Map<string, string> = new Map();
   private noteTimers: Map<string, Phaser.Time.TimerEvent> = new Map();
   private localPlayer?: Phaser.GameObjects.Sprite;
   private scratch: Vec = { x: 0, y: 0 };
@@ -116,6 +118,7 @@ export class PlayerManager {
 
     this.localPlayer = player;
     this.nameTags.set(id, tag);
+    this.looks.set(id, character);
     this.updatePlayerStatus(id, "available");
 
     return player;
@@ -144,6 +147,7 @@ export class PlayerManager {
     container.add(tag.container);
     this.nameTags.set(id, tag);
     this.players.set(id, container);
+    this.looks.set(id, spriteKey);
 
     this.playerStates.set(id, {
       path: [],
@@ -275,6 +279,7 @@ export class PlayerManager {
 
   /** How someone looks now, you included: they change over where they stand or sit. */
   changeLook(id: string, character: string) {
+    this.looks.set(id, character);
     const container = this.players.get(id);
     const sprite = id === this.playerId ? this.localPlayer : container && this.spriteOf(container);
     if (sprite) this.animationManager.wear(sprite, character);
@@ -548,6 +553,7 @@ export class PlayerManager {
     this.noteTimers.get(id)?.remove();
     this.noteTimers.delete(id);
     this.notes.delete(id);
+    this.looks.delete(id);
   }
 
   getPlayers(): Map<string, Phaser.GameObjects.Container> {
@@ -572,10 +578,11 @@ export class PlayerManager {
     return this.playerStates.get(id)?.guest !== false;
   }
 
-  getPlayerList(): Array<{ id: string; name: string; status: PlayerStatus; note: StatusNote | null }> {
+  getPlayerList(): Array<{ id: string; name: string; character: string; status: PlayerStatus; note: StatusNote | null }> {
     return [...this.nameTags].map(([id, tag]) => ({
       id,
       name: tag.text,
+      character: this.looks.get(id) ?? "",
       status: this.playerStates.get(id)?.status ?? "available",
       note: this.notes.get(id) ?? null,
     }));

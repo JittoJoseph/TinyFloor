@@ -23,3 +23,17 @@ export function forgetPendingOffice() {
     localStorage.removeItem(PENDING_KEY);
   } catch {}
 }
+
+/**
+ * Where making an office goes: /create, its door (signing up first when
+ * there's no account yet to own it). A name already typed waits for it
+ * there; one from the demo office says so, so the door's Back returns to the
+ * demo rather than out to the site.
+ */
+export function makeOfficeHref({ account, name, fromDemo = false }: { account: boolean; name?: string; fromDemo?: boolean }): string {
+  // Started afresh, a name left from an earlier try that never finished doesn't come back to fill the door.
+  if (name) rememberPendingOffice(name);
+  else forgetPendingOffice();
+  const create = fromDemo ? `/create?${new URLSearchParams({ from: "demo" })}` : "/create";
+  return account ? create : `/auth?${new URLSearchParams({ redirect: create, mode: "signup" })}`;
+}

@@ -6,7 +6,7 @@ import { ArrowRight, Check } from "@/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { rememberPendingOffice } from "@/lib/pendingOffice";
+import { makeOfficeHref } from "@/lib/pendingOffice";
 import { Face } from "@/components/ui/Face";
 
 /**
@@ -26,9 +26,7 @@ export function YourOfficeView() {
   const start = (event: React.FormEvent) => {
     event.preventDefault();
     if (!typed) return;
-    // /create makes it as soon as there is an account to own it.
-    rememberPendingOffice(typed);
-    router.push(account ? "/create" : `/auth?${new URLSearchParams({ redirect: "/create", mode: "signup" })}`);
+    router.push(makeOfficeHref({ account, name: typed, fromDemo: true }));
   };
 
   return (
@@ -36,14 +34,14 @@ export function YourOfficeView() {
       <div className="mx-auto flex min-h-full w-full max-w-[560px] flex-col justify-center px-5 py-12 text-center sm:px-8">
         {/* The office's mark, in the colour its name gives it: the same one it will wear on the rail. */}
         <motion.span
-          key={typed.toLowerCase() || "your-office"}
+          key={typed.toLowerCase() || user?.id || "your-office"}
           initial={reduce ? false : { scale: 0.85, opacity: 0.4 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 520, damping: 28 }}
           aria-hidden
           className="mx-auto flex"
         >
-          <Face seed={typed.toLowerCase() || "your-office"} size={56} square />
+          <Face seed={typed.toLowerCase() || user?.id || "your-office"} size={56} square />
         </motion.span>
 
         <h1 className="mt-6 text-[30px] font-semibold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-[36px]">{t("title")}</h1>

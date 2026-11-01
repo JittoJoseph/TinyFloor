@@ -20,7 +20,8 @@ export default function CreateOfficePage() {
   const back = useCreateBack();
 
   useEffect(() => {
-    if (!isLoading && !signedIn) router.replace(`/auth?${new URLSearchParams({ redirect: "/create", mode: "signup" })}`);
+    // Back here afterwards as it was asked for (?plan, ?from), so nothing chosen on the way in is lost.
+    if (!isLoading && !signedIn) router.replace(`/auth?${new URLSearchParams({ redirect: `/create${window.location.search}`, mode: "signup" })}`);
   }, [isLoading, signedIn, router]);
 
   if (!signedIn) {

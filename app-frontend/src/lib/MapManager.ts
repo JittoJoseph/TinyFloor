@@ -24,6 +24,8 @@ export interface ChairSpec {
   y: number;
   /** Which way you face sitting there: never sideways (docs/customization.md). */
   direction: "up" | "down";
+  /** The outline of what you sit on, [x, y, width, height]. */
+  box: [number, number, number, number];
   zone?: string;
 }
 
@@ -199,7 +201,7 @@ export class MapManager {
    * whoever sits there is (the seat's point is its base).
    */
   private readChairs() {
-    this.chairSpecs = FLOOR.seats.map((seat) => ({ id: seat.id, x: seat.x, y: seat.y - TILE_SIZE / 2, direction: seat.dir, zone: seat.zone }));
+    this.chairSpecs = FLOOR.seats.map((seat) => ({ id: seat.id, x: seat.x, y: seat.y - TILE_SIZE / 2, direction: seat.dir, box: seat.box, zone: seat.zone }));
   }
 
   getChairs(): ChairSpec[] {

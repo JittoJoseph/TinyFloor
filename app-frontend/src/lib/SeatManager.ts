@@ -56,7 +56,10 @@ export class SeatManager {
   private ws?: RoomSocket;
   private seats: Seat[] = [];
   private byId = new Map<number, Seat>();
+  /** The free chair within reach, and the one under the pointer: each outlined. */
   private ring: Phaser.GameObjects.Graphics;
+  private hoverRing: Phaser.GameObjects.Graphics;
+  private hovered?: Seat;
   private tag?: SceneLabel;
   private hitAreas: Phaser.GameObjects.Zone[] = [];
   private nearest?: { seat: Seat; distance: number };
@@ -88,6 +91,7 @@ export class SeatManager {
     this.seats.forEach((seat) => this.byId.set(seat.id, seat));
 
     this.ring = scene.add.graphics();
+    this.hoverRing = scene.add.graphics();
 
     // a tag in the middle of the meeting table, so anyone walking past can see
     // whether a meeting is on, and how many are in it
@@ -131,7 +135,18 @@ export class SeatManager {
     this.unsubscribeDecorate = subscribeDecorate(() => this.showPlates());
 
     this.seats.forEach((seat) => {
-      const zone = scene.add.zone(seat.x, seat.y, 40, 44).setOrigin(0.5).setInteractive({ useHandCursor: true });
+      const [bx, by, bw, bh] = seat.box;
+      const zone = scene.add.zone(bx, by, bw, bh).setOrigin(0).setInteractive({ useHandCursor: true });
+      // Pointing at a free seat outlines it, as coming near does: somewhere to sit.
+      zone.on("pointerover", () => {
+        this.hovered = seat;
+        this.showHover();
+      });
+      zone.on("pointerout", () => {
+        if (this.hovered !== seat) return;
+        this.hovered = undefined;
+        this.showHover();
+      });
       zone.on("pointerup", (pointer: Phaser.Input.Pointer) => {
         if (decorateState().desk || pointer.button !== 0 || wasDrag(scene, pointer)) return;
         pointer.event.stopPropagation();
@@ -267,6 +282,23 @@ export class SeatManager {
   private changed() {
     this.dirty = true;
     this.showPlates();
+    this.showHover();
+  }
+
+  /** The seat under the pointer, outlined while it's free to sit on and isn't already the one within reach. */
+  private showHover() {
+    const seat = this.hovered;
+    this.hoverRing.clear();
+    if (!seat || seat.occupant || this.reserved(seat) || seat === this.nearest?.seat || decorateState().desk) return;
+    this.outline(this.hoverRing, seat);
+  }
+
+  /** Draws a seat's outline at the chair's own depth, so a desk hides the half of it that hides the chair. */
+  private outline(ring: Phaser.GameObjects.Graphics, seat: Seat) {
+    const [x, y, w, h] = seat.box;
+    ring.setDepth(depthForY(seat.baseY) + (seat.direction === "down" ? -0.5 : 0.5));
+    ring.lineStyle(2, HIGHLIGHT, 0.9);
+    ring.strokeRoundedRect(x - 1, y - 1, w + 2, h + 2, 6);
   }
 
   /** The table's tag: "Meeting", and how many are in meetings when any are on. */
@@ -349,14 +381,8 @@ export class SeatManager {
     this.dirty = false;
 
     this.ring.clear();
-    if (!best) return;
-
-    // sit the outline at the chair's own depth so a desk hides the half of it
-    // that hides the chair
-    const { seat } = best;
-    this.ring.setDepth(depthForY(seat.baseY) + (seat.direction === "down" ? -0.5 : 0.5));
-    this.ring.lineStyle(2, HIGHLIGHT, 0.9);
-    this.ring.strokeRoundedRect(seat.x - 17, seat.baseY - 44, 34, 46, 6);
+    if (best) this.outline(this.ring, best.seat);
+    this.showHover();
   }
 
   destroy() {
@@ -369,6 +395,7 @@ export class SeatManager {
     setMySeat(null);
     this.hitAreas.forEach((zone) => zone.destroy());
     this.ring.destroy();
+    this.hoverRing.destroy();
     this.tag?.container.destroy();
   }
 }

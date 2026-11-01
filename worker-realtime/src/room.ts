@@ -1401,20 +1401,14 @@ function spawnFrom(header: string | null): { x: number; y: number; arrive: boole
   return { ...(isInsideMap(x, y) ? { x, y } : DEFAULT_SPAWN), arrive: arrive === 1 };
 }
 
-/** A change shaped as one: taken away, or an item and a place on the 2px grid; nothing else rides along. */
+/** A change shaped as one: taken away, or an item in its place; nothing else rides along. */
 function isPieceChange(change: unknown): change is PieceChange | null {
   if (change === null) return true;
   if (!change || typeof change !== "object" || Array.isArray(change)) return false;
   const entries = Object.entries(change);
-  if (entries.length === 1 && entries[0][0] === "hidden") return entries[0][1] === true;
-  return (
-    entries.length > 0 &&
-    entries.every(([name, value]) =>
-      name === "item"
-        ? typeof value === "string" && value.length <= 60
-        : name === "at" && Array.isArray(value) && value.length === 2 && value.every((n) => Number.isInteger(n) && n >= 0 && n < 4096),
-    )
-  );
+  if (entries.length !== 1) return false;
+  const [name, value] = entries[0];
+  return name === "hidden" ? value === true : name === "item" && typeof value === "string" && value.length <= 60;
 }
 
 function parse(raw: string | ArrayBuffer): ClientMessage | null {

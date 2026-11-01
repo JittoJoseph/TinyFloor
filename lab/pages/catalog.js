@@ -106,6 +106,8 @@ export function giveWay(byId, items, [x, y, w, h], keep = null) {
 const OFFICE = "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png";
 export const DESK_FINISHES = { maple: [30, 7], oak: [28, 7], graphite: [28, 10], white: [30, 1], beech: [30, 4] };
 export const DESK_STEP = 192;
+/** The woods a single desk (drawn, art.js) comes in; whoever's desk it is picks theirs. */
+export const SINGLE_FINISHES = ["maple", "oak", "beech", "walnut", "white", "graphite"];
 /**
  * How far along one desk runs in a bank, posts included: six tiles for the
  * office's wide desks; a single desk (cluster.step) is shorter, room for one
@@ -177,7 +179,7 @@ function frontRow(finish, cols, sides, step = DESK_STEP) {
  * posts that run to the floor, no far side. What you can't walk through is the
  * same as a one-sided bank's: from the panel to just in front of the desks.
  */
-function cubicleRow(finish, cols, step) {
+export function cubicleRow(finish, cols, step) {
   return generated(`cubicle:${finish}:${cols}:${step}`, () => {
     const width = cols * step + 32;
     return {
@@ -268,7 +270,16 @@ function cluster(byId, item, x, y, choose, place) {
       const { item: chair, dy } = slotted(byId, slot, choose[desk] ?? choose[side]);
       if (chair) pieces.push({ key: `${key}/${desk}/chair`, item: chair, x: dx + sitAt * 32, y: y + slot.at[1] + dy, seat: desk });
       if (baked) continue;
-      const list = overrides[`${key}/${desk}/things`]?.things ?? deskThings(things, side, sitAt, rand, tiles);
+      if (item.cluster.style === "cubicle") {
+        // A single desk, spot by spot; a row of them (one line in one room, about 18 tiles across) shares its accent and its runs.
+        for (const { spot, thing } of singleDesk(things, deskSpots(item, x, y, c, side, sitAt), rand, random(`${seed}|row|${y}|${Math.floor(dx / 576)}`), Math.round(dx / step) + Math.round(y / 160))) {
+          const [w] = spriteSize(thing.sprite);
+          // Roughly where it stands; the build places it exactly, by its pixels (build.mjs spotted).
+          pieces.push({ key: `${key}/${desk}/${spot.id}`, item: thing, x: Math.round(((spot.x[0] + spot.x[1]) / 2 - w / 2) / 2) * 2, y: spot.foot - thing.sortY, host: `${key}/front`, desk });
+        }
+        continue;
+      }
+      const list = overrides[`${key}/${desk}/things`]?.things ?? deskThings(things, side, sitAt, rand);
       list.forEach((thing, n) => {
         const inner = byId.get(thing.item);
         if (!inner) return;
@@ -281,7 +292,7 @@ function cluster(byId, item, x, y, choose, place) {
   if (baked || item.cluster.style === "cubicle") return pieces;
   // A plant standing by every bank, at one end, and sometimes at the other too.
   const ends = random(`${seed}|${key}|${place.salt ?? 0}|ends`);
-  const plants = ["plant-tall", "plant-snake", "plant-small"].filter((id) => byId.has(id));
+  const plants = ["ours-bush-clay", "ours-bush-white", "ours-bush-slate"].filter((id) => byId.has(id));
   const first = ends() < 0.5 ? "left" : "right";
   for (const [end, ex] of [["left", x - 32], ["right", x + cols * step + 32]]) {
     if ((end !== first && ends() < 0.65) || !plants.length) continue;
@@ -294,25 +305,17 @@ function cluster(byId, item, x, y, choose, place) {
 
 /**
  * One desk side's things, in tiles of the desk: [{ item, col, row, dy? }].
- * Kept calm: a working desk, not a cluttered one. Near side: usually one
+ * Kept calm: a working desk, not a cluttered one (single desks: singleDesk). Near side: usually one
  * setup (three tiles) beside the person, now and then a plant or a phone on
  * their other side, the tile behind their head left clear. Far side: the
  * screens in front of the person, nothing else. Things marked random: false
  * are only ever put there by hand.
  */
-export function deskThings(things, side, sitAt, rand, tiles = 6) {
+export function deskThings(things, side, sitAt, rand) {
   const pick = (list) => list[Math.floor(rand() * list.length)];
   const of = (cols, rows) => things.filter((t) => (t.facing === side || t.facing === "any") && t.random !== false && t.desk.cols === cols && t.desk.rows === rows);
   const out = [];
-  if (side === "front" && tiles < 6) {
-    // A single desk: the setup straight in front of you, and now and then a plant or a phone on the tile left over.
-    const setup = of(3, 2);
-    const small = [...of(1, 2), ...of(1, 1)];
-    if (setup.length && rand() < 0.85) out.push({ item: pick(setup).id, col: sitAt - 1, row: 1 });
-    else if (small.length) out.push({ item: pick(small).id, col: sitAt, row: 1 });
-    const spare = sitAt - 2 >= 0 ? sitAt - 2 : sitAt + 2 < tiles ? sitAt + 2 : null;
-    if (spare !== null && small.length && rand() < 0.45) out.push({ item: pick(small).id, col: spare, row: 1 });
-  } else if (side === "front") {
+  if (side === "front") {
     const setup = of(3, 2);
     const small = [...of(1, 2), ...of(1, 1)];
     const other = sitAt === 3 ? [1, 2] : [5, 6];
@@ -328,6 +331,84 @@ export function deskThings(things, side, sitAt, rand, tiles = 6) {
     else if (single.length && rand() < 0.7) out.push({ item: pick(single).id, col: sitAt + (rand() < 0.5 ? -1 : 1), row: 0, dy: -6 });
   }
   return out.filter((t) => t.item);
+}
+
+/**
+ * A desk's spots, left to right: where one thing each stands, [from, to)
+ * along the desk and the line its foot is on (shared-protocol map.ts
+ * DeskSpot). Three round whoever sits there, never overlapping:
+ * - a single desk: something tall or small on the left, the screen in front
+ *   of them, something small on the right (they sit right of its middle, so
+ *   the screen leans a little left of them and the right is the narrower);
+ * - a bank's near desk: a setup on one side, two small things on theirs;
+ * - a bank's far desk: screens on its strip in front of them, a small thing either side.
+ */
+export function deskSpots(item, bankX, bankY, c, side, sitAt) {
+  const dx = bankX + c * deskStep(item);
+  const spots = [];
+  const spot = (from, to, foot) => spots.push({ id: `spot-${spots.length}`, x: [dx + from, dx + to], foot: bankY + foot });
+  const at = sitAt * 32;
+  if (item.cluster.style === "cubicle") {
+    spot(6, 42, 62);
+    spot(42, 102, 62);
+    spot(102, 128, 62);
+  } else if (side === "front" && sitAt <= 3) {
+    spot(32, 64, 64);
+    spot(64, at, 64);
+    spot(at + 32, 224, 86);
+  } else if (side === "front") {
+    spot(32, at, 86);
+    spot(at + 32, at + 64, 64);
+    spot(at + 64, 224, 64);
+  } else {
+    spot(at - 64, at - 32, 16);
+    spot(at - 32, at + 64, 32);
+    spot(at + 64, at + 96, 16);
+  }
+  return spots;
+}
+
+/** A row's accents: each row of single desks has one, shown at most once a desk. */
+const ACCENTS = ["coral", "teal", "mustard"];
+/** Small things with colours of their own: like an accent, at most one a desk. */
+const LOUD = new Set(["ours-frame-sunset", "ours-frame-shapes", "ours-globe"]);
+
+/**
+ * A single desk's things, spot by spot: [{ spot, thing }]. No two neighbours
+ * alike, a row of them easy on the eye together. A row (of desks in one room,
+ * on one line) has one accent colour, and a desk shows it, or a picture, or a
+ * globe, once at most; the rest are neutrals. Along the row the left of the
+ * desks goes lamp, plant, lamp (and the row behind the other way round); the screens and the small things on the right
+ * are dealt from the row's own shuffled runs, so the next desk has the next.
+ */
+function singleDesk(things, [left, middle, right], rand, row, column) {
+  const usable = things.filter((t) => (t.facing === "front" || t.facing === "any") && t.random !== false);
+  const tint = (t) => t.id.match(/-(coral|teal|mustard)$/)?.[1] ?? null;
+  const loud = (t) => !!t && (!!tint(t) || LOUD.has(t.id));
+  const accent = ACCENTS[Math.floor(row() * ACCENTS.length)];
+  const shuffled = (list) => {
+    for (let i = list.length - 1; i > 0; i--) {
+      const j = Math.floor(row() * (i + 1));
+      [list[i], list[j]] = [list[j], list[i]];
+    }
+    return list;
+  };
+  // In the accent, or in no colour at all.
+  const calm = (t) => !tint(t) || tint(t) === accent;
+  const screens = shuffled(usable.filter((t) => t.desk.cols === 2));
+  const plants = shuffled(usable.filter((t) => t.id.startsWith("ours-bush-desk-")));
+  // The headphones lie too wide for the right; they only ever go on the left.
+  const small = shuffled(usable.filter((t) => t.desk.cols === 1 && t.desk.rows === 1 && calm(t) && t.id !== "ours-headphones"));
+  const lamp = (accented) => usable.find((t) => t.shelf === "lamps" && (accented ? tint(t) === accent : !tint(t)));
+  const out = [{ spot: middle, thing: screens[column % screens.length] }];
+  const first = column % 2 ? (rand() < 0.85 ? plants[column % plants.length] : null) : lamp(rand() < 0.5);
+  if (first) out.push({ spot: left, thing: first });
+  if (rand() < 0.75) {
+    // The row's next small thing; none, when it would make the desk loud twice.
+    const second = small[column % small.length];
+    if (second && second !== first && !(loud(first) && loud(second))) out.push({ spot: right, thing: second });
+  }
+  return out.filter((one) => one.thing);
 }
 
 /** A small, fast, seeded random: the same seed gives the same desks, for everyone in the office. */

@@ -68,6 +68,24 @@ function drawnCanvas(name, width, height) {
   return canvas;
 }
 
+/** A layer's cut with some of its colours swapped ({ "#rrggbb": "#rrggbb" }), on a canvas of its own. */
+function recolor(from, [sx, sy, sw, sh], swaps) {
+  const canvas = document.createElement("canvas");
+  canvas.width = sw;
+  canvas.height = sh;
+  const context = canvas.getContext("2d");
+  context.drawImage(from, sx, sy, sw, sh, 0, 0, sw, sh);
+  const pixels = context.getImageData(0, 0, sw, sh);
+  const to = new Map(Object.entries(swaps).map(([a, b]) => [a.toLowerCase(), b]));
+  for (let i = 0; i < pixels.data.length; i += 4) {
+    const hex = "#" + [0, 1, 2].map((n) => pixels.data[i + n].toString(16).padStart(2, "0")).join("");
+    const swap = to.get(hex);
+    if (swap) for (let n = 0; n < 3; n++) pixels.data[i + n] = parseInt(swap.slice(1 + n * 2, 3 + n * 2), 16);
+  }
+  context.putImageData(pixels, 0, 0);
+  return canvas;
+}
+
 /** Draws a sprite (one cut, or layers of cuts) with its top left at x, y. */
 export async function drawSprite(context, sprite, x, y, scale = 1) {
   const [w, h] = spriteSize(sprite);
@@ -82,7 +100,8 @@ export async function drawSprite(context, sprite, x, y, scale = 1) {
   const layers = isComposite(sprite) ? sprite.layers : [{ src: sprite.src, rect: sprite.rect, at: [0, 0] }];
   for (const layer of layers) {
     const [sx, sy, sw, sh] = layer.rect;
-    context.drawImage(layer.draw ? drawnCanvas(layer.draw, sx + sw, sy + sh) : await image(layer.src), sx, sy, sw, sh, layer.at[0], layer.at[1], sw, sh);
+    const from = layer.draw ? drawnCanvas(layer.draw, sx + sw, sy + sh) : await image(layer.src);
+    context.drawImage(layer.recolor ? recolor(from, layer.rect, layer.recolor) : from, layer.recolor ? 0 : sx, layer.recolor ? 0 : sy, sw, sh, layer.at[0], layer.at[1], sw, sh);
   }
   context.restore();
 }

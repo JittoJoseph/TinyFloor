@@ -78,7 +78,7 @@ export interface Floor {
    * where its pixels are in the frame ([left, top, right, bottom], right and
    * bottom past the last), and the shelf it's shown on.
    */
-  things: Record<string, { facing: "front" | "back" | "any"; size: [number, number]; art: [number, number, number, number]; shelf?: string }>;
+  things: Record<string, { facing: "front" | "back" | "any"; size: [number, number]; art: [number, number, number, number]; shelf?: string; set?: string }>;
   /** The chairs each side of a desk can have, lined up by their seat (dx, dy from where the floor's chair stands). */
   chairs: Record<"front" | "back", Array<{ item: string; dx: number; dy: number; sortY: number }>>;
 }
@@ -87,14 +87,25 @@ export interface FloorDesk {
   seat: number;
   /** A near desk (you sit facing up, at its front) or a far one (facing down, behind its strip). */
   side: "front" | "back";
-  /** Where things stand on it: how far along, and the band the foot of their pixels is in (pixels). */
-  along: [number, number];
-  feet: [number, number];
-  /** On a near desk, how high a thing's pixels may rise: the divider's top, so nothing stands over onto the far side. */
-  ceiling?: number;
+  /**
+   * Its spots, left to right: one thing each, its pixels centred across the
+   * spot ([from, to) along the desk) and their foot on its line, so nothing on
+   * a desk ever stands over another (office.ts).
+   */
+  spots: DeskSpot[];
+  /** Only things of this set stand on it (a single desk: our drawn ones); any, without one. */
+  set?: string;
   chair: { key: string; item: string; x: number; y: number };
+  /** A single desk on its own: its piece, and the woods it can be had in (office.ts). */
+  body?: { key: string; item: string; options: string[] };
   /** The depth things on it are drawn at, just over the desk. */
   depth: number;
+}
+
+export interface DeskSpot {
+  id: string;
+  x: [number, number];
+  foot: number;
 }
 
 export interface FloorSeat {

@@ -29,7 +29,7 @@ import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import pngjs from "pngjs";
 import { drawn as drawnArt, groundTiles } from "./pages/art.js";
-import { check, clusterSize, deskStep, isComposite, isGroup, spriteSize } from "./pages/catalog.js";
+import { SINGLE_FINISHES, check, clusterSize, cubicleRow, deskSpots, deskStep, isComposite, isGroup, spriteSize } from "./pages/catalog.js";
 import { checkTemplate, officeFloor, seatsOf } from "./pages/floor.js";
 import { GROUND_TILES, MORE_FLOORS, TILE, moreFloorAt } from "./pages/shell.js";
 import { record } from "./manifest.mjs";
@@ -82,13 +82,27 @@ function blit(from, [sx, sy, sw, sh], to, dx, dy, flip = false, width = sw) {
   }
 }
 
+/** A copy of a picture with some of its colours swapped: { "#rrggbb": "#rrggbb" }. */
+function recolored(picture, swaps) {
+  const to = new Map(Object.entries(swaps).map(([a, b]) => [a.toLowerCase(), b]));
+  const out = new PNG({ width: picture.width, height: picture.height });
+  picture.data.copy(out.data);
+  for (let i = 0; i < out.data.length; i += 4) {
+    const hex = "#" + [0, 1, 2].map((n) => out.data[i + n].toString(16).padStart(2, "0")).join("");
+    const swap = to.get(hex);
+    if (swap) for (let n = 0; n < 3; n++) out.data[i + n] = parseInt(swap.slice(1 + n * 2, 3 + n * 2), 16);
+  }
+  return out;
+}
+
 /** One item's picture, as the floor will draw it. */
 async function render(item) {
   const [w, h] = spriteSize(item.sprite);
   const image = new PNG({ width: w, height: h });
   const layers = isComposite(item.sprite) ? item.sprite.layers : [{ src: item.sprite.src, rect: item.sprite.rect, at: [0, 0] }];
   for (const layer of layers) {
-    const from = layer.draw ? drawnArt(layer.draw, layer.rect[0] + layer.rect[2], layer.rect[1] + layer.rect[3]) : await source(layer.src);
+    const cut = layer.draw ? drawnArt(layer.draw, layer.rect[0] + layer.rect[2], layer.rect[1] + layer.rect[3]) : await source(layer.src);
+    const from = layer.recolor ? recolored(cut, layer.recolor) : cut;
     blit(from, layer.rect, image, layer.at[0], layer.at[1]);
   }
   if (!item.sprite.flip) return image;
@@ -103,6 +117,11 @@ const offices = templates.map((template) => ({ template, floor: officeFloor(byId
 // A desk bank's rows are made for its size: each one the templates use goes on the atlas too.
 const rows = new Map();
 for (const { floor } of offices) for (const piece of floor) if (piece.item.generated) rows.set(piece.item.id, piece.item);
+// A single desk can be had in any of its woods (whoever's desk it is picks), so each one used goes on the atlas in all of them.
+for (const id of [...rows.keys()]) {
+  const single = id.match(/^desks-single-[a-z]+-(\d+)-n(\d+)$/);
+  if (single) for (const finish of SINGLE_FINISHES) rows.set(singleIn(id, finish), cubicleRow(finish, Number(single[1]), Number(single[2]) * 32));
+}
 
 // ---------- the atlas ----------
 
@@ -172,7 +191,7 @@ await writeFile(
 // ---------- each office: what the floor needs ----------
 
 await mkdir(join(CATALOG, "floors"), { recursive: true });
-for (const { template, floor } of offices) {
+for (let { template, floor } of offices) {
   // A seat's id is the tile it's on, row by row: what the room and the app call it.
   const seatIds = new Set();
   const desks = new Map(template.seats.filter((seat) => seat.desk).map((seat) => [seat.key, seat]));
@@ -199,6 +218,8 @@ for (const { template, floor } of offices) {
     const zone = template.anchors.zones?.find((one) => inZone(one, seat.x, seat.y))?.name;
     return { id, key: seat.key, x: seat.x, y: seat.y, dir: seat.dir, box: boxes.get(seat.key), ...(desk ? { desk: desk.desk, arrival: desk.arrival } : {}), ...(zone ? { zone } : {}) };
   });
+  const deskSpecs = desksOf(template, floor, seats);
+  floor = spotted(template.id, floor, deskSpecs);
   const missing = floor.filter((piece) => !frames[piece.item.id]);
   if (missing.length) throw new Error(`${template.id}: not on the atlas: ${missing.map((piece) => piece.item.id).join(", ")}`);
   const compiled = {
@@ -220,16 +241,43 @@ for (const { template, floor } of offices) {
       [...catalog.items, ...rows.values()].filter((item) => item.colliders?.length).map((item) => [item.id, item.colliders]),
     ),
     seats,
-    desks: desksOf(template, floor, seats),
+    desks: deskSpecs,
     things: Object.fromEntries(
       catalog.items
         .filter((item) => item.desk && item.facing)
-        .map((item) => [item.id, { facing: item.facing, size: spriteSize(item.sprite), art: artOf.get(item.id), ...(item.shelf ? { shelf: item.shelf } : {}) }]),
+        .map((item) => [
+          item.id,
+          { facing: item.facing, size: spriteSize(item.sprite), art: artOf.get(item.id), ...(item.shelf ? { shelf: item.shelf } : {}), ...(item.id.startsWith("ours-") ? { set: "ours" } : {}) },
+        ]),
     ),
     chairs: chairOptions(),
   };
   await writeFile(join(CATALOG, "floors", `${template.id}.json`), JSON.stringify(compiled, null, 1) + "\n");
   console.log(`${template.id}@${template.version}: ${compiled.pieces.length} pieces, ${seats.length} seats (${seats.filter((seat) => seat.desk).length} desks)`);
+}
+
+/**
+ * Each thing on a desk in the spot it stands in: the one its key names (spot-n)
+ * or, baked before desks had spots, the one its middle is over (the nearest,
+ * if none); placed as the floor places one (office.ts placeIn). Two in one
+ * spot, or one too wide for it, is the template's mistake.
+ */
+function spotted(id, floor, desks) {
+  const taken = new Set();
+  return floor.map((piece) => {
+    const desk = desks[deskOfPiece(piece)];
+    if (!desk || piece.key.endsWith("/chair")) return piece;
+    const [left, , right, bottom] = artOf.get(piece.item.id);
+    const middle = piece.x + (left + right) / 2;
+    const named = piece.key.match(/\/(spot-\d+)$/)?.[1];
+    const away = (spot) => Math.max(spot.x[0] - middle, middle - spot.x[1], 0);
+    const spot = desk.spots.find((one) => one.id === named) ?? [...desk.spots].sort((a, b) => away(a) - away(b))[0];
+    const key = `${deskOfPiece(piece)}/${spot.id}`;
+    if (taken.has(key)) throw new Error(`${id}: ${piece.key} and another in ${key}`);
+    if (right - left > spot.x[1] - spot.x[0]) throw new Error(`${id}: ${piece.item.id} too wide for ${key}`);
+    taken.add(key);
+    return { ...piece, key, x: Math.round(((spot.x[0] + spot.x[1]) / 2 - (left + right) / 2) / 2) * 2, y: spot.foot - bottom, depth: desk.depth + spot.foot / 10000 };
+  });
 }
 
 /** Which desk a piece belongs to: a thing on it, or its chair. */
@@ -239,9 +287,9 @@ function deskOfPiece(piece) {
 }
 
 /**
- * Every desk, by its key: its seat, its side, where things on it stand (the
- * band the foot of their pixels may be in, and how far along), its chair, and
- * the depth its things are drawn at (just over the desk's row).
+ * Every desk, by its key: its seat, its side, its spots (catalog.js
+ * deskSpots), its chair, its wood when it's a single desk on its own, and the
+ * depth its things are drawn at (just over the desk's row).
  */
 function desksOf(template, floor, seats) {
   const desks = {};
@@ -254,27 +302,29 @@ function desksOf(template, floor, seats) {
         const chair = floor.find((piece) => piece.key === `${key}/chair`);
         const row = floor.find((piece) => piece.key === `${bank.key}/${side}`);
         if (!seat || !chair || !row) continue;
-        const step = deskStep(byId.get(bank.item));
-        const single = byId.get(bank.item)?.cluster?.style === "cubicle";
-        const x = bank.x + c * step + 32;
+        const item = byId.get(bank.item);
+        const step = deskStep(item);
+        const single = item?.cluster?.style === "cubicle";
         desks[key] = {
           seat: seat.id,
           side,
-          // Things stand along the desk's tiles, the foot of their pixels on its top: a near
-          // desk's, from under the divider to its front edge; a far desk's strip behind the divider.
-          // A single desk's (drawn, art.js) is its own four tiles, between its posts.
-          along: single ? [bank.x + c * step + 6, bank.x + (c + 1) * step] : [x, x + step],
-          // A single desk (drawn, art.js) has its top a little higher than the sheet's desks, from its panel to its front edge.
-          feet: side === "front" ? (single ? [bank.y + 48, bank.y + 78] : [bank.y + 56, bank.y + 86]) : [bank.y + 24, bank.y + 34],
-          // On a near desk nothing rises over the divider's top onto the far side.
-          ...(side === "front" ? { ceiling: single ? bank.y + 12 : bank.y + 30 } : {}),
+          spots: deskSpots(item, bank.x, bank.y, c, side, (chair.x - bank.x - c * step) / 32),
+          // A single desk is drawn (art.js), so only things drawn to go with it stand on it.
+          ...(single ? { set: "ours" } : {}),
           chair: { key: chair.key, item: chair.item.id, x: chair.x, y: chair.y },
+          // A single desk on its own is a piece of its own, so its owner can have it in another wood.
+          ...(single && cols === 1 ? { body: { key: row.key, item: row.item.id, options: SINGLE_FINISHES.map((finish) => singleIn(row.item.id, finish)) } } : {}),
           depth: Math.round((row.y + row.item.sortY + 0.5) * 100) / 100,
         };
       }
     }
   }
   return desks;
+}
+
+/** A single desk's row in another wood. */
+function singleIn(id, finish) {
+  return id.replace(/^desks-single-[a-z]+-/, `desks-single-${finish}-`);
 }
 
 /** The chairs a desk can have, each side's, lined up by their seat so you sit in the same spot whichever it is. */

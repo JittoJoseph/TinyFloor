@@ -26,7 +26,7 @@ asked about teams, not only people. In the demo office, `place: lobby`.
 | `guest_session_started` | `door`, `name` (suggested, remembered, typed), `character` (offered, chosen) | Walked in at the demo office's door, and whether they kept the name and character it offered. |
 | `door_failed` | `door`, `reason` | The demo door couldn't let them in (the bot check, the network, too many tries). |
 | `profile_introduced` | `character` (offered, chosen) | A new account got past saying who it is, to its first door. |
-| `office_created` | `office_id`, `from` (demo_prompt when made from the demo office's prompt) | |
+| `office_created` | `office_id`, `from` (demo_prompt when made from the demo office's prompt; demo when started from the demo office's dock or its Your office page, through /create) | |
 | `office_prompt_shown` | | The demo office asked someone who had looked around for a while to name their own office. |
 | `invite_opened` | | The invite dialog opened; against `invite_sent`, whether it loses people. |
 | `invite_sent` | `channel` (link, message, email, share) | Does the maker bring the team? |

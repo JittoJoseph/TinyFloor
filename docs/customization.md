@@ -78,7 +78,10 @@ Decided by looking, and checked by the lab on every change (`lab/check.mjs`):
 - **At a desk you face the desk**, and **a desk always has a chair**: it can
   be swapped for another office chair, never taken away, and the seat stays
   in the same spot whichever chair it is. Desks are wood or white, never the
-  dark grey.
+  pack's dark grey.
+- **A single desk's owner picks its wood**: maple, oak, beech, walnut, white
+  or graphite, from the desk's panel. It stays where it stands and resets
+  with the rest of the desk.
 - **Seats facing down are drawn behind whoever sits in them, seats facing up
   in front** (their back covers you); a chair you sit in facing up has its
   sort line at its very bottom.
@@ -224,13 +227,22 @@ things go up.
   over anything else; a picture or a board a tile in from a wall's end, not
   against a corner or a doorway; nothing where someone has put furniture or
   where the floor keeps a spot (the whiteboard's).
-- **Side walls**: a floor lamp, a plant or a cooler here and there, one plant
-  a wall, clear of corners and doorways. The side desk (`wall-cabinet`) only
-  stands against a wall on its right.
+- **Side walls**: a plant or a cooler here and there, one plant a wall,
+  clear of corners and doorways, and always a tile to walk past it to the
+  furniture. The side desk (`wall-cabinet`) only stands against a wall on its
+  right.
+- **Lamps**: a room's floor lamp stands in a top corner; the hall gets one each
+  side, slid down its wall to where there's a way past. Red, the warm one,
+  everywhere, except the rooms furthest from the middle of the building
+  (about one in five, at least one), which get the blue.
 
-**Sitting areas.** The hall, a lounge and a library get one: a rug, a low
-table on its middle, and a chair either side (egg chairs in two colours, or
-armchairs in a library), their feet on the table's line, all on the rug. It
+**Sitting areas.** The hall and a library get one: a rug, a low table on its
+middle, and a seat either side (egg chairs in two colours, or armchairs in a
+library), their feet on the table's line, all on the rug. A lounge gets a
+corner of egg chairs instead: one of each colour (coral, mustard, teal,
+lilac) round a low table, two facing you and two with their backs to you.
+The egg chairs are the pack's, traced in art.js so they come in any colour
+and from behind. It
 goes as near the middle of the room as it fits: on the room's own floor, off
 the carpets and a tile clear of every doorway, with a tile round it clear of
 anything placed and of carpets. A room an even number of tiles across inside
@@ -245,8 +257,9 @@ tiles out from the wall, near either end, with a small tree between them; a
 left patio is a right one mirrored. A plaza gets a bench either side of the
 door.
 
-**Colour** comes from things, not floors: the rugs, red and blue floor
-lamps, egg chairs, the office's pictures and the charts on its boards.
+**Colour** comes from things, not floors: the rugs, the red floor lamps (and
+the odd blue one), the egg chairs, the office's pictures and the charts on its
+boards.
 
 ## Walking, clicking and solids
 
@@ -300,19 +313,21 @@ didn't change.
 
 An office is its template and its **changes**, each kept against one
 piece's key: `{ hidden }`, `{ at: [x, y] }`, `{ item }` (swapped for another
-that fits), or a new piece `{ item, at }` under a key of its own. One
+that fits), or a new piece `{ item, at }` under a key of its own. A desk's
+pieces take only `{ hidden }` and `{ item }`: where they stand is their
+spot's. One
 function turns a template and its changes into the floor, in
 `shared-protocol`, so the lab, the app and the room work an office out the
 same way, in a few milliseconds.
 
-- **Your desk**, once it's yours: the things on it (up to eight), its chair
-  and its finish. The room checks the piece is on the desk you hold and
+- **Your desk**, once it's yours: what stands in each of its spots, its
+  chair and its wood. The room checks the piece is on the desk you hold and
   fits. Letting it go puts its things back.
 - **Admins**: the furniture (move, add, take away, put back), and the rooms
   (below). A desk bank with a claimed desk can't be taken away until it's let
   go.
-- **Limits**, so an office stays light on a phone: eight things a desk, 300
-  pieces added, a few edits a second a person.
+- **Limits**, so an office stays light on a phone: three things a desk (its
+  spots), 300 pieces added, a few edits a second a person.
 
 **Serving it.**
 
@@ -360,30 +375,42 @@ something that's gone is left out.
 
 ## Your desk
 
-Claimed by sitting at a free one. Your desk is reached through **you on the
-floor**, at its top right: at rest, your character, head and shoulders,
-with your status; pointed at, your name; pressed, a card with you on the
-office's floor, your name, status and note, your desk (go to it, or, sitting
-at it, customize it) and how you look; customizing, the same card grows into
-the desk's things, and the floor brings the desk into view without zooming.
-Nothing is dimmed: the floor stays the floor. The rail's menu keeps what's
-yours everywhere; the card what's yours on this floor.
+Claimed by sitting at a free one. The dock has the way back to it (a key of
+its own) and **you**, its first key: pressed, the dock opens up into your
+status and note, and, sitting at your desk, Customize your desk. Customizing
+opens the desk's panel, a card at the floor's right (over its foot on a
+phone), and the floor brings the desk into the floor it leaves showing,
+without zooming. Nothing is dimmed: the floor stays the floor.
 
-- **Things**: what suits the desk's side, on shelves (tech, lamps, personal,
-  setups) and the chairs, each at twice its size when small, never in
-  between. Clicked, a thing goes where there's room or takes the picked
-  one's place; dragged, it shows where it would stand.
-- **On the desk**: pointed at, a thing is outlined; pressed, picked, with a
-  bar over it (take it away, done); dragged, it slides along the desk kept to
-  where it can stand. Delete, Escape, Ctrl+Z and Ctrl+Y work too.
-- **Undo, redo, Reset** after a confirm, and **Done**.
+**A desk is three spots, its chair and its wood**, changed one part at a
+time, so nothing ever stands over anything else.
+
+- **Spots**, left to right, one thing each, centred across the spot with its
+  foot on the desk's line, so a row of desks lines up. A single desk: a lamp,
+  a plant or something small on the left, the screen in front of you,
+  something small on the right. A bank's near desk: a setup on one side, two
+  small things on yours; its far desk: screens on the strip in front of you,
+  a small thing either side. A spot takes what's no wider than it and suits
+  the desk's side; a single desk takes only our drawn things.
+- **The panel**: its top is the desk in small (the three spots as wide as
+  they are on the desk, the chair, the wood), the part picked marked; under
+  it, what that part can be, grouped (tech, lamps, personal, setups), or the
+  chairs, or the woods; Remove empties a spot. Undo, redo, Reset after a
+  confirm, and Done.
+- **On the floor**: the spots are outlined faintly while decorating; pointed
+  at, a part is outlined; pressed (a spot, the chair, the desk itself),
+  picked, the same part the panel shows. Delete empties the picked spot;
+  Escape, Ctrl+Z and Ctrl+Y work too.
 - **Seen happening, by everyone**: a new thing drops on, one taken away lifts
-  off, one moved slides, one swapped hops.
+  off, one swapped hops.
 
-Where a thing may stand is measured from its pixels, not its frame: along the
-desk up to the posts; its foot on the desk's top (a near desk's wood, a far
-desk's strip behind the divider); on a near desk, nothing rising over the
-divider.
+**How the floor's own desks are made up** (single desks, `singleDesk` in the
+lab): every desk different, a row easy on the eye together. A row's screens
+and small things are dealt from its own shuffled runs, so neighbours never
+match; along a row the left spot goes lamp, plant, lamp, the row behind the
+other way round; a row has one accent colour and a desk shows it (or a
+picture, or a globe) once at most, everything else in neutrals. Screens have
+light bezels only.
 
 ## Characters
 

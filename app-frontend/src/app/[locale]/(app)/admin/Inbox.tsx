@@ -1,16 +1,15 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { AtSign, Calendar, ExternalLink, Globe, Inbox as InboxIcon, Language, Link2, Monitor, MoreHorizontal, Office, UserRound, X } from "@/components/ui/icons";
-import { IconButton } from "@/components/ui/IconButton";
+import { AtSign, Bell, Calendar, ExternalLink, Globe, Inbox as InboxIcon, Language, Link2, Monitor, Office, UserRound } from "@/components/ui/icons";
 import { Face } from "@/components/ui/Face";
-import { Logo } from "@/components/app/Logo";
-import { Dialog } from "@/components/ui/Dialog";
-import { Menu, MenuItem } from "@/components/ui/Menu";
 import { ShellView } from "@/components/app/AppShell";
-import { api, type AdminHelpDetail, type AdminHelpTicket } from "@/lib/api";
-import { cn } from "@/lib/utils";
-import { Column, Country, DetailHeader, DetailState, DialogButton, Pick, Properties, Property, Row, Section, Short, Tab, usePaged, useRun, When } from "./pieces";
+import { api, type AdminHelpTicket } from "@/lib/api";
+import { askToNotify, useNotifyPermission } from "@/lib/notify";
+import { startPush } from "@/lib/push";
+import { usePrefs } from "@/lib/prefs";
+import { Column, Country, DetailHeader, DetailState, Pick, Properties, Property, Row, Section, Short, Tab, usePaged, When } from "./pieces";
+import { CloseTicket, Messages, Reply, useTicket } from "./Thread";
 import type { ViewProps } from "./views";
 
 type Status = "open" | "closed";
@@ -18,12 +17,13 @@ type Status = "open" | "closed";
 const EVERY_MS = 20_000;
 
 /**
- * Help and feedback, as the team sees it: open tickets (an office has at most
- * one) and closed ones, the latest first, with what the team hasn't read.
- * Picked, a ticket is its conversation and a reply; beside it, on a wide
- * screen, who opened it and from where (browser, language, the PostHog
- * recording). A reply shows in their Chat as unread. Closing it takes it out
- * of their Chat, so it's kept in a menu and asks first.
+ * The conversations with the team: open ones (an office has at most one) and
+ * closed ones, the latest first, with what the team hasn't read, whoever
+ * started them. Picked, a conversation and the team's reply (Thread.tsx);
+ * beside it, on a wide screen, who started it and from where (browser,
+ * language, the PostHog recording). A reply shows in their Chat and notifies
+ * them. Closing it takes it out of their Chat, so it's kept in a menu and
+ * asks first.
  */
 export function Inbox({ picked, pick, open, onUnread }: ViewProps & { onUnread: (count: number) => void }) {
   const [status, setStatus] = useState<Status>("open");
@@ -56,6 +56,7 @@ export function Inbox({ picked, pick, open, onUnread }: ViewProps & { onUnread: 
           empty={list.error ? "Couldn't load the tickets." : list.items?.length === 0 && (status === "open" ? "Nothing open. All caught up." : "No closed tickets yet.")}
           more={list.more}
         >
+          <Notifications />
           {list.items?.map((one) => (
             <Row
               key={one.id}
@@ -112,42 +113,22 @@ function Ticket({
   openOffice: (id: string) => void;
   onChanged: () => Promise<void>;
 }) {
-  const [detail, setDetail] = useState<AdminHelpDetail | null>(null);
-  const [failed, setFailed] = useState(false);
   // What was new when it was opened stays marked while it's open.
   const [fresh] = useState(listed?.unread ?? 0);
-  const [reply, setReply] = useState("");
-  const [closing, setClosing] = useState(false);
-  const { busy, error, run } = useRun();
   const unread = listed?.unread ?? 0;
-  const updatedAt = listed?.updatedAt;
-
+  const { detail, failed, reload } = useTicket(id, listed?.updatedAt);
+  // Reading it cleared its count: the list says so too.
   useEffect(() => {
-    let live = true;
-    api.adminHelpTicket(id).then(
-      (next) => {
-        if (!live) return;
-        setDetail(next);
-        // Reading it cleared its count: the list says so too.
-        if (unread > 0) void onChanged();
-      },
-      () => live && setFailed(true),
-    );
-    return () => {
-      live = false;
-    };
-  }, [id, unread, updatedAt, onChanged]);
+    if (detail && unread > 0) void onChanged();
+  }, [detail, unread, onChanged]);
 
   if (!detail) return <DetailState error={failed ? "Couldn't load this ticket." : undefined} />;
   const { ticket, messages } = detail;
   const isOpen = ticket.status === "open";
-  const text = reply.trim();
-  const send = async () => {
-    if (!text || !(await run(() => api.adminHelpReply(id, text)))) return;
-    setReply("");
+  const changed = async () => {
+    reload();
     await onChanged();
   };
-  const theirs = new Set(fresh > 0 ? messages.filter((one) => !one.team).slice(-fresh).map((one) => one.id) : []);
 
   return (
     <div className="flex min-h-0 flex-1">
@@ -163,7 +144,7 @@ function Ticket({
           }
           sub={
             <>
-              {ticket.name} · <When at={ticket.createdAt} />
+              {ticket.userId || ticket.lobby ? ticket.name : "Started by the team"} · <When at={ticket.createdAt} />
               {!isOpen && ticket.closedAt && (
                 <>
                   {" · closed "}
@@ -185,20 +166,14 @@ function Ticket({
                   <ExternalLink className="size-3.5" />
                 </a>
               )}
-              {isOpen && (
-                <Menu align="end" width={180} trigger={<IconButton label="More" size="sm" tone="soft" icon={<MoreHorizontal />} />}>
-                  <MenuItem danger icon={<X />} onSelect={() => setClosing(true)}>
-                    Close ticket
-                  </MenuItem>
-                </Menu>
-              )}
+              {isOpen && <CloseTicket id={id} whose={ticket.lobby ? `${ticket.name}'s` : `${ticket.place}'s`} onClosed={() => void changed()} />}
             </>
           }
         />
 
         {/* Without room beside it, who wrote from where is one line under the header. */}
-        <p className="flex shrink-0 flex-wrap items-center gap-x-3 gap-y-1 border-b border-border px-4 py-2 text-[12px] text-muted-foreground md:px-6 xl:hidden">
-          <Country code={ticket.country} />
+        <p className="flex shrink-0 flex-wrap items-center gap-x-3 gap-y-1 border-b border-border px-4 py-2 text-[12px] text-muted-foreground empty:hidden md:px-6 xl:hidden">
+          {ticket.country && <Country code={ticket.country} />}
           {ticket.email && (
             <a href={`mailto:${ticket.email}`} className="truncate hover:text-foreground">
               {ticket.email}
@@ -208,62 +183,18 @@ function Ticket({
           {ticket.screen && <span>{ticket.screen}</span>}
         </p>
 
-        <ol className="min-h-0 flex-1 space-y-4 overflow-y-auto px-4 py-6 md:px-6">
-          {messages.map((message) => (
-            <li key={message.id} className={cn("flex items-end gap-2.5", message.team && "flex-row-reverse")}>
-              {message.team ? <Logo size={28} className="shrink-0" /> : <Face seed={message.author ?? message.name} size={28} />}
-              <div className={cn("flex max-w-[min(34rem,85%)] flex-col", message.team && "items-end")}>
-                <p className="mb-1 flex items-baseline gap-2 px-1 text-[11.5px] text-faint">
-                  <span className="font-medium text-muted-foreground">{message.name}</span>
-                  <When at={message.at} />
-                  {theirs.has(message.id) && <span className="font-semibold text-foreground">New</span>}
-                </p>
-                <p
-                  dir="auto"
-                  className={cn(
-                    "whitespace-pre-wrap break-words rounded-2xl px-3.5 py-2.5 text-[13.5px] leading-[1.5]",
-                    message.team ? "rounded-ee-md bg-foreground text-background" : "rounded-es-md bg-muted text-foreground",
-                  )}
-                >
-                  {message.body}
-                </p>
-              </div>
-            </li>
-          ))}
-        </ol>
-
+        <Messages messages={messages} fresh={fresh} />
         {isOpen ? (
-          <form
-            className="shrink-0 border-t border-border p-3 md:p-4"
-            onSubmit={(event) => {
-              event.preventDefault();
-              void send();
+          <Reply
+            placeholder={`Reply to ${ticket.lobby ? ticket.name : `everyone in ${ticket.place}`}`}
+            note="Ctrl+Enter sends. It shows in their Chat, and notifies them."
+            send={async (text) => {
+              await api.adminHelpReply(id, text);
+              await changed();
             }}
-          >
-            <div className="rounded-2xl border border-border bg-background focus-within:border-border-strong">
-              <textarea
-                value={reply}
-                rows={Math.min(8, Math.max(2, reply.split("\n").length))}
-                onChange={(event) => setReply(event.target.value)}
-                onKeyDown={(event) => {
-                  if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
-                    event.preventDefault();
-                    void send();
-                  }
-                }}
-                placeholder={`Reply to ${ticket.lobby ? ticket.name : `everyone in ${ticket.place}`}`}
-                className="block w-full resize-none bg-transparent px-3.5 pt-3 text-[16px] outline-none placeholder:text-faint sm:text-[13.5px]"
-              />
-              <div className="flex items-center justify-between gap-3 px-3 pb-2.5 pt-1">
-                <span className="text-[11.5px] text-faint">{error ?? "Ctrl+Enter sends. It shows in their Chat."}</span>
-                <button type="submit" disabled={busy || !text} className="h-8 cursor-pointer rounded-full bg-foreground px-4 text-[12.5px] font-medium text-background disabled:opacity-40">
-                  Reply
-                </button>
-              </div>
-            </div>
-          </form>
+          />
         ) : (
-          <p className="shrink-0 border-t border-border px-4 py-3 text-center text-[12.5px] text-muted-foreground">Closed. A new message from them opens a new ticket.</p>
+          <p className="shrink-0 border-t border-border px-4 py-3 text-center text-[12.5px] text-muted-foreground">Closed. A new message from either side starts a new conversation.</p>
         )}
       </div>
 
@@ -301,62 +232,70 @@ function Ticket({
             </Property>
           </Properties>
         </Section>
-        <Section title="Their screen">
-          <Properties>
-            <Property icon={<Monitor />} label="Browser">
-              <span className="truncate" title={ticket.userAgent ?? undefined}>
-                {ticket.userAgent ? browserOf(ticket.userAgent) : "Unknown"}
-              </span>
-            </Property>
-            {ticket.screen && (
-              <Property icon={<Monitor />} label="Screen">
-                {ticket.screen}
-              </Property>
-            )}
-            {ticket.locale && (
-              <Property icon={<Language />} label="Language">
-                {ticket.locale}
-              </Property>
-            )}
-            {ticket.page && (
-              <Property icon={<Link2 />} label="Page">
-                <span className="truncate" title={ticket.page}>
-                  {ticket.page}
+        {ticket.userAgent && (
+          <Section title="Their screen">
+            <Properties>
+              <Property icon={<Monitor />} label="Browser">
+                <span className="truncate" title={ticket.userAgent ?? undefined}>
+                  {ticket.userAgent ? browserOf(ticket.userAgent) : "Unknown"}
                 </span>
               </Property>
-            )}
-            <Property icon={<Calendar />} label="Opened">
-              <When at={ticket.createdAt} />
-            </Property>
-          </Properties>
-        </Section>
+              {ticket.screen && (
+                <Property icon={<Monitor />} label="Screen">
+                  {ticket.screen}
+                </Property>
+              )}
+              {ticket.locale && (
+                <Property icon={<Language />} label="Language">
+                  {ticket.locale}
+                </Property>
+              )}
+              {ticket.page && (
+                <Property icon={<Link2 />} label="Page">
+                  <span className="truncate" title={ticket.page}>
+                    {ticket.page}
+                  </span>
+                </Property>
+              )}
+              <Property icon={<Calendar />} label="Opened">
+                <When at={ticket.createdAt} />
+              </Property>
+            </Properties>
+          </Section>
+        )}
       </aside>
-
-      <Dialog
-        open={closing}
-        onClose={() => setClosing(false)}
-        title="Close this ticket?"
-        description={`It leaves ${ticket.lobby ? `${ticket.name}'s` : `${ticket.place}'s`} Chat, and the next message from there opens a new one. You can still read it under Closed.`}
-        closeLabel="Close"
-        footer={
-          <>
-            <DialogButton onClick={() => setClosing(false)}>Cancel</DialogButton>
-            <DialogButton
-              danger
-              disabled={busy}
-              onClick={async () => {
-                if (!(await run(() => api.adminHelpClose(id)))) return;
-                setClosing(false);
-                await onChanged();
-                setDetail((now) => now && { ...now, ticket: { ...now.ticket, status: "closed", closedAt: Date.now() } });
-              }}
-            >
-              Close ticket
-            </DialogButton>
-          </>
-        }
-      />
     </div>
+  );
+}
+
+/**
+ * Hearing when someone writes, on every device signed in here: this browser
+ * subscribed for pushes (the same switch as anywhere in the app), and if it
+ * hasn't been asked yet, a way to say yes.
+ */
+function Notifications() {
+  const permission = useNotifyPermission();
+  const { desktopNotifications } = usePrefs();
+  useEffect(() => {
+    if (permission === "granted" && desktopNotifications) void startPush();
+  }, [permission, desktopNotifications]);
+  if (permission !== "default" && permission !== "denied") return null;
+  return (
+    <li className="mb-2 flex items-center gap-3 rounded-[12px] border border-border px-3 py-2.5">
+      <Bell className="size-4 shrink-0 text-muted-foreground" />
+      <span className="min-w-0 flex-1 text-[12.5px] text-muted-foreground">
+        {permission === "denied" ? "Notifications are blocked in this browser's site settings." : "Hear when someone writes, on this device."}
+      </span>
+      {permission === "default" && (
+        <button
+          type="button"
+          onClick={async () => (await askToNotify()) === "granted" && void startPush()}
+          className="h-7 shrink-0 cursor-pointer rounded-full bg-foreground px-3 text-[12px] font-medium text-background"
+        >
+          Turn on
+        </button>
+      )}
+    </li>
   );
 }
 

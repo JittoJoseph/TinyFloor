@@ -224,16 +224,20 @@ export function adminRoutes(router: Router): void {
       });
     })
 
-    // One office: everything the list says, and its people, with which of them are on its floor now.
+    // One office: everything the list says, its people (with which of them are on its floor now), and its conversation with the team.
     .add("GET", "/v1/admin/offices/:id", async ({ request, env, ctx, params }) => {
       await requireAdmin(env, request, ctx);
-      const [office, members] = await env.DB.batch([
+      const [office, members, ticket] = await env.DB.batch([
         env.DB.prepare(`SELECT ${OFFICE} FROM ${OFFICE_FROM.replace("?period", "?2")} WHERE o.id = ?1`).bind(params.id, thisMonth().key),
         env.DB.prepare(
           `SELECT u.id, u.display_name AS displayName, u.email, m.role, m.joined_at AS joinedAt,
                   u.last_active_at AS lastActiveAt, u.country, u.id = o.owner_id AS owner
              FROM memberships m JOIN users u ON u.id = m.user_id JOIN offices o ON o.id = m.office_id
             WHERE m.office_id = ?1 ORDER BY owner DESC, u.last_active_at DESC`,
+        ).bind(params.id),
+        // The open one, or the latest.
+        env.DB.prepare(
+          "SELECT id, status FROM help_tickets WHERE office_id = ? AND lobby = 0 ORDER BY status = 'open' DESC, updated_at DESC LIMIT 1",
         ).bind(params.id),
       ]);
       const found = office.results[0];
@@ -249,6 +253,7 @@ export function adminRoutes(router: Router): void {
       return json({
         office: { ...found, here: here[params.id] ?? present.size },
         members: (members.results as Array<{ id: string } & Record<string, unknown>>).map((member) => ({ ...member, here: present.has(member.id) })),
+        ticket: ticket.results[0] ?? null,
       });
     })
 

@@ -234,6 +234,8 @@ export interface AdminPersonDetail {
 export interface AdminOfficeDetail {
   office: AdminOffice;
   members: AdminMember[];
+  /** Its conversation with the team: the open one, or the latest. */
+  ticket: { id: string; status: "open" | "closed" } | null;
 }
 
 /** Someone in an office, as the admin view shows them when it's opened. */

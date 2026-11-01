@@ -145,6 +145,8 @@ export class Room extends DurableObject<Env> {
   private desks!: Desks;
   /** The floor the office is on, as its tickets say (offices.floor, or the demo office's): whose desks there are. */
   private floor!: Floor;
+  /** When the ticket that moved it here runs out: a ticket for another floor older than it was issued before the move. */
+  private floorSince = 0;
   private pieces!: Pieces;
   /** Meeting hours, made once the room knows whether it is an office or a lobby copy. */
   private clockCache: MeetingClock | null = null;
@@ -167,7 +169,9 @@ export class Room extends DurableObject<Env> {
     );
     this.board = new Board(this.ctx.storage.sql);
     this.usage = new Usage(this.ctx.storage.sql, this.env.DB);
-    this.floor = floorOf(this.ctx.storage.sql.exec<{ value: string }>("SELECT value FROM room_state WHERE key = 'floor'").toArray()[0]?.value);
+    const state = (key: string) => this.ctx.storage.sql.exec<{ value: string }>("SELECT value FROM room_state WHERE key = ?", key).toArray()[0]?.value;
+    this.floor = floorOf(state("floor"));
+    this.floorSince = Number(state("floor_since") ?? 0);
     this.desks = new Desks(this.ctx.storage.sql, this.floor);
     this.pieces = new Pieces(this.ctx.storage.sql);
   }
@@ -251,9 +255,20 @@ export class Room extends DurableObject<Env> {
 
     const now = Date.now();
     this.dropStaleSockets(now);
-    if (ticket.floor) this.moveTo(floorOf(ticket.floor));
 
     const { 0: client, 1: server } = new WebSocketPair();
+
+    // A ticket for another floor: the office moved there, unless the ticket is
+    // from before this floor's (tickets all last as long), when it's sent back
+    // for a new one, which says where the office is now.
+    if (ticket.floor && floorOf(ticket.floor).id !== this.floor.id) {
+      if (ticket.exp <= this.floorSince) {
+        server.accept();
+        server.close(SERVICE_RESTART, "floor_moved");
+        return new Response(null, { status: 101, webSocket: client });
+      }
+      await this.moveTo(floorOf(ticket.floor), ticket.exp);
+    }
 
     // One connection per person: the older one goes, without a player_left,
     // because the new one arrives as player_joined for the same id.
@@ -338,14 +353,17 @@ export class Room extends DurableObject<Env> {
   }
 
   /**
-   * The office is on another floor now (its ticket says so: the team moved
-   * it): kept, and its desk claims settle onto the new floor's desks.
+   * The office is on another floor now (a newer ticket says so: the team
+   * moved it): kept, its desk claims settle onto the new floor's desks, and
+   * anyone still on the old one reconnects to this one.
    */
-  private moveTo(floor: Floor): void {
-    if (floor.id === this.floor.id) return;
+  private async moveTo(floor: Floor, since: number): Promise<void> {
     this.floor = floor;
-    this.ctx.storage.sql.exec("INSERT INTO room_state (key, value) VALUES ('floor', ?) ON CONFLICT (key) DO UPDATE SET value = excluded.value", floor.id);
+    this.floorSince = since;
+    for (const [key, value] of [["floor", floor.id], ["floor_since", String(since)]])
+      this.ctx.storage.sql.exec("INSERT INTO room_state (key, value) VALUES (?, ?) ON CONFLICT (key) DO UPDATE SET value = excluded.value", key, value);
     this.desks.moveTo(floor);
+    await this.disconnectAll(true);
   }
 
   /** Where someone arriving appears: by their desk, or by a free one, chosen at random. */

@@ -52,6 +52,10 @@ type Box = { left: number; right: number; top: number; bottom: number };
 const DECLUTTER_EVERY = 150;
 /** Room kept between two tags before the farther one steps away, in screen pixels. */
 const TAG_GAP = 4;
+/** Past this many on the floor, only the names around you show (and anyone you point at): a busy floor reads as people, not a wall of labels. */
+const BUSY_FLOOR = 6;
+/** How far around you names show on a busy floor: a conversation's distance and a little more. */
+const NEAR_TAGS = TILE_SIZE * 6;
 const HOP_DURATION = 220;
 const HOP_REACH = TILE_SIZE * 2;
 
@@ -217,18 +221,27 @@ export class PlayerManager {
    * steps away until there's room again, the way a map drops labels as it
    * fills up; a lone dot over someone's head would say little the avatar
    * doesn't. Yours always shows; the closer someone is to you, the more theirs does.
+   * On a busy floor only the names around you show, and whoever you point at.
    */
   declutterTags(time: number) {
     if (time < this.declutterAt || !this.localPlayer) return;
     this.declutterAt = time + DECLUTTER_EVERY;
     const me = this.localPlayer;
+    const busy = this.nameTags.size > BUSY_FLOOR;
+    const pointer = this.scene.input.activePointer;
+    const at = this.scene.cameras.main.getWorldPoint(pointer.x, pointer.y);
     const tags: Array<{ tag: SceneLabel; x: number; y: number; distance: number }> = [];
     this.nameTags.forEach((tag, id) => {
       if (!tag.container.visible) return;
       const container = this.players.get(id);
       const x = container ? container.x + tag.container.x : tag.container.x;
       const y = container ? container.y + tag.container.y : tag.container.y;
-      tags.push({ tag, x, y, distance: id === this.playerId ? -1 : Math.hypot(x - me.x, y - me.y) });
+      const distance = id === this.playerId ? -1 : Math.hypot(x - me.x, y - me.y);
+      // Pointed at: the character under the pointer, from its feet to its hair.
+      const body = container ?? me;
+      const pointed = Math.abs(at.x - body.x) < 18 && at.y > body.y - 52 && at.y < body.y + 8;
+      if (busy && distance > NEAR_TAGS && !pointed) return void tag.setCrowded(true);
+      tags.push({ tag, x, y, distance: pointed ? -0.5 : distance });
     });
     tags.sort((a, b) => a.distance - b.distance);
 

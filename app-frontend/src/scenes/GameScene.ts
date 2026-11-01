@@ -310,8 +310,7 @@ class GameScene extends Phaser.Scene {
 
   /**
    * Zoom and deadzone for the floor's size, and name tags and desk claims kept
-   * readable as the camera pulls back: they shrink with the map only down to
-   * about their usual size on screen.
+   * at one size on screen.
    */
   private fitCamera(width: number, height: number) {
     const camera = this.cameras.main;
@@ -323,9 +322,9 @@ class GameScene extends Phaser.Scene {
     this.fitTags();
   }
 
-  /** Name tags and desk claims kept readable as the camera pulls back: they shrink with the map only down to about their usual size on screen. */
+  /** Name tags and desk claims at one small size on screen, however near or far the camera is. */
   private fitTags() {
-    const tagScale = Math.max(1, (CAMERA_ZOOM * 0.9) / cssZoom(this));
+    const tagScale = (CAMERA_ZOOM * 0.9) / cssZoom(this);
     this.playerManager.setTagScale(tagScale);
     this.seatManager?.setClaimScale(tagScale);
   }

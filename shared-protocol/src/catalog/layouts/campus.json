@@ -148,14 +148,14 @@
    }
   },
   {
-   "id": "planttall-35-32",
-   "item": "plant-tall",
+   "id": "oursbushsl-35-32",
+   "item": "ours-bush-slate",
    "x": 1120,
    "y": 1024
   },
   {
-   "id": "planttall-56-32",
-   "item": "plant-tall",
+   "id": "oursbushsa-56-32",
+   "item": "ours-bush-sage",
    "x": 1792,
    "y": 1024
   },
@@ -262,8 +262,8 @@
    "y": 480
   },
   {
-   "id": "rugsmallbl-53-15",
-   "item": "rug-small-blue",
+   "id": "oursrugsma-53-15",
+   "item": "ours-rug-small-sunset",
    "x": 1696,
    "y": 480
   },
@@ -280,8 +280,8 @@
    "y": 1120
   },
   {
-   "id": "eggchairli-21-37",
-   "item": "egg-chair-lilac",
+   "id": "eggchairte-21-37",
+   "item": "egg-chair-teal",
    "x": 672,
    "y": 1184
   },

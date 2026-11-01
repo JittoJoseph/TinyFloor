@@ -96,8 +96,8 @@ desks("maple", 19, 20, 3);
 desks("maple", 19, 25, 3);
 desks("white", 37, 20, 3);
 desks("white", 37, 25, 3);
-put("plant-tall", 28, 32);
-put("plant-tall", 49, 32);
+put("ours-bush-slate", 28, 32);
+put("ours-bush-sage", 49, 32);
 
 // The meeting room, with the whiteboard over the middle of its table.
 table("meeting-table", 21, 12, 3);
@@ -105,11 +105,11 @@ table("meeting-table", 21, 12, 3);
 table("meeting-table-small", 32, 13, 2, "tan");
 table("meeting-table-small", 37, 13, 2, "tan");
 // The booth: a sofa, its feet on a rug as wide as it.
-put("rug-small-blue", 46, 15);
+put("ours-rug-small-sunset", 46, 15);
 put("sofa-two", 46, 14);
 // The quiet room.
 put("sofa-three", 10, 35);
-put("egg-chair-lilac", 14, 37);
+put("egg-chair-teal", 14, 37);
 // The studio, below the hall: a second, bigger table for the whole team.
 table("meeting-table", 34, 39, 3, "tan");
 

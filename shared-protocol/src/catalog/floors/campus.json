@@ -1,6 +1,6 @@
 {
  "id": "campus",
- "version": 29,
+ "version": 46,
  "shell": {
   "size": [
    82,
@@ -160,28 +160,28 @@
   },
   {
    "key": "room:23,17,58,36/rug",
-   "item": "rug-blue",
+   "item": "ours-rug-plum",
    "x": 1376,
    "y": 1024,
    "depth": 1.5
   },
   {
    "key": "room:58,13,65,29/rug",
-   "item": "rug-blue",
+   "item": "ours-rug-sunset",
    "x": 1920,
-   "y": 640,
+   "y": 624,
    "depth": 1.5
   },
   {
    "key": "room:16,22,23,32/rug",
-   "item": "rug-red",
+   "item": "ours-rug-sunset",
    "x": 576,
    "y": 832,
    "depth": 1.5
   },
   {
-   "key": "rugsmallbl-53-15",
-   "item": "rug-small-blue",
+   "key": "oursrugsma-53-15",
+   "item": "ours-rug-small-sunset",
    "x": 1696,
    "y": 480,
    "depth": 1.5
@@ -790,10 +790,10 @@
   },
   {
    "key": "side:right:36,9,8/1",
-   "item": "plant-snake",
+   "item": "ours-bush-small-white",
    "x": 1152,
-   "y": 352,
-   "depth": 412
+   "y": 368,
+   "depth": 414
   },
   {
    "key": "tree-79-10",
@@ -1007,10 +1007,10 @@
   },
   {
    "key": "side:left:59,15,7/1",
-   "item": "plant-small",
+   "item": "ours-bush-small-clay",
    "x": 1888,
    "y": 560,
-   "depth": 604
+   "depth": 606
   },
   {
    "key": "wall:24,19,5/0",
@@ -1069,11 +1069,32 @@
    "depth": 648
   },
   {
+   "key": "room:58,13,65,29/chair-0",
+   "item": "egg-chair-lilac",
+   "x": 1936,
+   "y": 608,
+   "depth": 652
+  },
+  {
+   "key": "room:58,13,65,29/chair-1",
+   "item": "egg-chair-mustard",
+   "x": 2000,
+   "y": 608,
+   "depth": 652
+  },
+  {
    "key": "flowers-21-20",
    "item": "flowers",
    "x": 672,
    "y": 640,
    "depth": 666
+  },
+  {
+   "key": "room:58,13,65,29/table",
+   "item": "coffee-table",
+   "x": 1952,
+   "y": 648,
+   "depth": 690
   },
   {
    "key": "patio:66,16,72,25/4",
@@ -1097,25 +1118,11 @@
    "depth": 712
   },
   {
-   "key": "room:58,13,65,29/table",
-   "item": "coffee-table",
-   "x": 1952,
-   "y": 672,
-   "depth": 714
-  },
-  {
-   "key": "room:58,13,65,29/chair-0",
-   "item": "egg-chair-blue",
-   "x": 1920,
-   "y": 672,
-   "depth": 716
-  },
-  {
-   "key": "room:58,13,65,29/chair-1",
-   "item": "egg-chair-lilac",
-   "x": 2016,
-   "y": 672,
-   "depth": 716
+   "key": "side:left:24,19,8/0",
+   "item": "lamp-red",
+   "x": 768,
+   "y": 656,
+   "depth": 722
   },
   {
    "key": "treesmall-78-20",
@@ -1167,83 +1174,138 @@
    "depth": 732
   },
   {
-   "key": "side:left:24,19,8/0",
-   "item": "plant-snake",
-   "x": 768,
-   "y": 672,
-   "depth": 732
-  },
-  {
-   "key": "desksingle-26-20/front-0/things/0",
-   "item": "setup-laptop",
-   "x": 864,
-   "y": 672,
-   "depth": 732.5,
+   "key": "desksingle-26-20/front-0/spot-1",
+   "item": "ours-screen-ash",
+   "x": 872,
+   "y": 656,
+   "depth": 732.57,
    "desk": "desksingle-26-20/front-0"
   },
   {
-   "key": "desksingle-30-20/front-0/things/0",
-   "item": "setup-monitors-b",
-   "x": 992,
-   "y": 672,
-   "depth": 732.5,
+   "key": "desksingle-26-20/front-0/spot-0",
+   "item": "ours-bush-desk-lilac",
+   "x": 840,
+   "y": 654,
+   "depth": 732.57,
+   "desk": "desksingle-26-20/front-0"
+  },
+  {
+   "key": "desksingle-26-20/front-0/spot-2",
+   "item": "ours-frame-sunset",
+   "x": 932,
+   "y": 670,
+   "depth": 732.57,
+   "desk": "desksingle-26-20/front-0"
+  },
+  {
+   "key": "desksingle-30-20/front-0/spot-1",
+   "item": "ours-screen-teal",
+   "x": 1000,
+   "y": 656,
+   "depth": 732.57,
    "desk": "desksingle-30-20/front-0"
   },
   {
-   "key": "desksingle-30-20/front-0/things/1",
-   "item": "desk-plant",
-   "x": 960,
-   "y": 672,
-   "depth": 732.5,
+   "key": "desksingle-30-20/front-0/spot-0",
+   "item": "ours-lamp-teal",
+   "x": 968,
+   "y": 660,
+   "depth": 732.57,
    "desk": "desksingle-30-20/front-0"
   },
   {
-   "key": "desksingle-34-20/front-0/things/0",
-   "item": "desk-plant",
-   "x": 1152,
-   "y": 672,
-   "depth": 732.5,
+   "key": "desksingle-34-20/front-0/spot-1",
+   "item": "ours-screen-pale",
+   "x": 1128,
+   "y": 656,
+   "depth": 732.57,
    "desk": "desksingle-34-20/front-0"
   },
   {
-   "key": "desksingle-34-20/front-0/things/1",
-   "item": "desk-phone-a",
-   "x": 1088,
-   "y": 672,
-   "depth": 732.5,
+   "key": "desksingle-34-20/front-0/spot-2",
+   "item": "ours-radio",
+   "x": 1186,
+   "y": 670,
+   "depth": 732.57,
    "desk": "desksingle-34-20/front-0"
   },
   {
-   "key": "desksingle-44-20/front-0/things/0",
-   "item": "setup-laptop",
-   "x": 1440,
-   "y": 672,
-   "depth": 732.5,
+   "key": "desksingle-44-20/front-0/spot-1",
+   "item": "ours-laptop-ash",
+   "x": 1448,
+   "y": 656,
+   "depth": 732.57,
    "desk": "desksingle-44-20/front-0"
   },
   {
-   "key": "desksingle-48-20/front-0/things/0",
-   "item": "setup-laptop-b",
-   "x": 1568,
-   "y": 672,
-   "depth": 732.5,
+   "key": "desksingle-44-20/front-0/spot-0",
+   "item": "ours-bush-desk-white",
+   "x": 1416,
+   "y": 654,
+   "depth": 732.57,
+   "desk": "desksingle-44-20/front-0"
+  },
+  {
+   "key": "desksingle-44-20/front-0/spot-2",
+   "item": "ours-frame-shapes",
+   "x": 1508,
+   "y": 670,
+   "depth": 732.57,
+   "desk": "desksingle-44-20/front-0"
+  },
+  {
+   "key": "desksingle-48-20/front-0/spot-1",
+   "item": "ours-screen-pale",
+   "x": 1576,
+   "y": 656,
+   "depth": 732.57,
    "desk": "desksingle-48-20/front-0"
   },
   {
-   "key": "desksingle-48-20/front-0/things/1",
-   "item": "desk-phone-b",
-   "x": 1536,
-   "y": 672,
-   "depth": 732.5,
+   "key": "desksingle-48-20/front-0/spot-0",
+   "item": "ours-lamp-mustard",
+   "x": 1544,
+   "y": 660,
+   "depth": 732.57,
    "desk": "desksingle-48-20/front-0"
   },
   {
-   "key": "desksingle-52-20/front-0/things/0",
-   "item": "setup-laptop-b",
-   "x": 1696,
-   "y": 672,
-   "depth": 732.5,
+   "key": "desksingle-52-20/front-0/spot-1",
+   "item": "ours-laptop-silver",
+   "x": 1704,
+   "y": 656,
+   "depth": 732.57,
    "desk": "desksingle-52-20/front-0"
+  },
+  {
+   "key": "desksingle-52-20/front-0/spot-0",
+   "item": "ours-bush-desk-lilac",
+   "x": 1672,
+   "y": 654,
+   "depth": 732.57,
+   "desk": "desksingle-52-20/front-0"
+  },
+  {
+   "key": "desksingle-52-20/front-0/spot-2",
+   "item": "ours-books",
+   "x": 1762,
+   "y": 670,
+   "depth": 732.57,
+   "desk": "desksingle-52-20/front-0"
+  },
+  {
+   "key": "room:58,13,65,29/chair-2",
+   "item": "egg-chair-teal-back",
+   "x": 1936,
+   "y": 688,
+   "depth": 736
+  },
+  {
+   "key": "room:58,13,65,29/chair-3",
+   "item": "egg-chair-coral-back",
+   "x": 2000,
+   "y": 688,
+   "depth": 736
   },
   {
    "key": "patio:66,16,72,25/1",
@@ -1336,6 +1398,13 @@
    "depth": 826
   },
   {
+   "key": "side:left:24,19,8/1",
+   "item": "ours-bush-clay",
+   "x": 768,
+   "y": 768,
+   "depth": 828
+  },
+  {
    "key": "bush-2-25",
    "item": "bush",
    "x": 64,
@@ -1413,51 +1482,115 @@
    "depth": 892
   },
   {
-   "key": "desksingle-26-25/front-0/things/0",
-   "item": "setup-monitors",
-   "x": 864,
-   "y": 832,
-   "depth": 892.5,
+   "key": "desksingle-26-25/front-0/spot-1",
+   "item": "ours-screen-ash",
+   "x": 872,
+   "y": 816,
+   "depth": 892.59,
    "desk": "desksingle-26-25/front-0"
   },
   {
-   "key": "desksingle-30-25/front-0/things/0",
-   "item": "setup-monitors-b",
-   "x": 992,
-   "y": 832,
-   "depth": 892.5,
+   "key": "desksingle-26-25/front-0/spot-0",
+   "item": "ours-lamp-coral",
+   "x": 840,
+   "y": 820,
+   "depth": 892.59,
+   "desk": "desksingle-26-25/front-0"
+  },
+  {
+   "key": "desksingle-26-25/front-0/spot-2",
+   "item": "ours-notebook",
+   "x": 930,
+   "y": 830,
+   "depth": 892.59,
+   "desk": "desksingle-26-25/front-0"
+  },
+  {
+   "key": "desksingle-30-25/front-0/spot-1",
+   "item": "ours-screen-teal",
+   "x": 1000,
+   "y": 816,
+   "depth": 892.59,
    "desk": "desksingle-30-25/front-0"
   },
   {
-   "key": "desksingle-34-25/front-0/things/0",
-   "item": "desk-phone-b",
-   "x": 1152,
-   "y": 832,
-   "depth": 892.5,
+   "key": "desksingle-30-25/front-0/spot-0",
+   "item": "ours-bush-desk-lilac",
+   "x": 968,
+   "y": 814,
+   "depth": 892.59,
+   "desk": "desksingle-30-25/front-0"
+  },
+  {
+   "key": "desksingle-34-25/front-0/spot-1",
+   "item": "ours-screen-silver",
+   "x": 1128,
+   "y": 816,
+   "depth": 892.59,
    "desk": "desksingle-34-25/front-0"
   },
   {
-   "key": "desksingle-44-25/front-0/things/0",
-   "item": "setup-monitors",
-   "x": 1440,
-   "y": 832,
-   "depth": 892.5,
+   "key": "desksingle-34-25/front-0/spot-0",
+   "item": "ours-lamp-white",
+   "x": 1096,
+   "y": 820,
+   "depth": 892.59,
+   "desk": "desksingle-34-25/front-0"
+  },
+  {
+   "key": "desksingle-44-25/front-0/spot-1",
+   "item": "ours-screen-ash",
+   "x": 1448,
+   "y": 816,
+   "depth": 892.59,
    "desk": "desksingle-44-25/front-0"
   },
   {
-   "key": "desksingle-48-25/front-0/things/0",
-   "item": "desk-phone-a",
-   "x": 1600,
-   "y": 832,
-   "depth": 892.5,
+   "key": "desksingle-44-25/front-0/spot-0",
+   "item": "ours-lamp-coral",
+   "x": 1416,
+   "y": 820,
+   "depth": 892.59,
+   "desk": "desksingle-44-25/front-0"
+  },
+  {
+   "key": "desksingle-44-25/front-0/spot-2",
+   "item": "ours-radio",
+   "x": 1506,
+   "y": 830,
+   "depth": 892.59,
+   "desk": "desksingle-44-25/front-0"
+  },
+  {
+   "key": "desksingle-48-25/front-0/spot-1",
+   "item": "ours-laptop-silver",
+   "x": 1576,
+   "y": 816,
+   "depth": 892.59,
    "desk": "desksingle-48-25/front-0"
   },
   {
-   "key": "desksingle-52-25/front-0/things/0",
-   "item": "setup-monitors",
-   "x": 1696,
-   "y": 832,
-   "depth": 892.5,
+   "key": "desksingle-48-25/front-0/spot-2",
+   "item": "ours-notebook",
+   "x": 1634,
+   "y": 830,
+   "depth": 892.59,
+   "desk": "desksingle-48-25/front-0"
+  },
+  {
+   "key": "desksingle-52-25/front-0/spot-1",
+   "item": "ours-screen-pale",
+   "x": 1704,
+   "y": 816,
+   "depth": 892.59,
+   "desk": "desksingle-52-25/front-0"
+  },
+  {
+   "key": "desksingle-52-25/front-0/spot-0",
+   "item": "ours-lamp-coral",
+   "x": 1672,
+   "y": 820,
+   "depth": 892.59,
    "desk": "desksingle-52-25/front-0"
   },
   {
@@ -1565,9 +1698,9 @@
    "depth": 968
   },
   {
-   "key": "side:left:24,29,6/0",
-   "item": "lamp-blue",
-   "x": 768,
+   "key": "side:right:57,24,11/0",
+   "item": "lamp-red",
+   "x": 1824,
    "y": 912,
    "depth": 978
   },
@@ -1607,8 +1740,8 @@
    "depth": 1044
   },
   {
-   "key": "side:left:24,29,6/1",
-   "item": "plant-snake",
+   "key": "side:left:24,29,6/0",
+   "item": "ours-bush-white",
    "x": 768,
    "y": 992,
    "depth": 1052
@@ -1628,15 +1761,15 @@
    "depth": 1082
   },
   {
-   "key": "planttall-35-32",
-   "item": "plant-tall",
+   "key": "oursbushsl-35-32",
+   "item": "ours-bush-slate",
    "x": 1120,
    "y": 1024,
    "depth": 1084
   },
   {
-   "key": "planttall-56-32",
-   "item": "plant-tall",
+   "key": "oursbushsa-56-32",
+   "item": "ours-bush-sage",
    "x": 1792,
    "y": 1024,
    "depth": 1084
@@ -1657,7 +1790,7 @@
   },
   {
    "key": "room:23,17,58,36/chair-0",
-   "item": "egg-chair-lilac",
+   "item": "egg-chair-teal",
    "x": 1376,
    "y": 1056,
    "depth": 1100
@@ -1761,8 +1894,8 @@
    "depth": 1210
   },
   {
-   "key": "eggchairli-21-37",
-   "item": "egg-chair-lilac",
+   "key": "eggchairte-21-37",
+   "item": "egg-chair-teal",
    "x": 672,
    "y": 1184,
    "depth": 1228
@@ -1846,7 +1979,7 @@
   },
   {
    "key": "side:left:39,37,6/0",
-   "item": "plant-tall",
+   "item": "ours-bush-slate",
    "x": 1248,
    "y": 1248,
    "depth": 1308
@@ -2530,6 +2663,62 @@
     36
    ]
   ],
+  "ours-bush-lilac": [
+   [
+    6,
+    46,
+    20,
+    14
+   ]
+  ],
+  "ours-bush-white": [
+   [
+    6,
+    46,
+    20,
+    14
+   ]
+  ],
+  "ours-bush-clay": [
+   [
+    6,
+    46,
+    20,
+    14
+   ]
+  ],
+  "ours-bush-sage": [
+   [
+    6,
+    46,
+    20,
+    14
+   ]
+  ],
+  "ours-bush-slate": [
+   [
+    6,
+    46,
+    20,
+    14
+   ]
+  ],
+  "ours-bush-small-white": [
+   [
+    6,
+    32,
+    20,
+    12
+   ]
+  ],
+  "ours-bush-small-clay": [
+   [
+    6,
+    32,
+    20,
+    12
+   ]
+  ],
   "tree": [
    [
     34,
@@ -2608,6 +2797,38 @@
     4,
     420,
     102
+   ]
+  ],
+  "desks-single-oak-1-n4": [
+   [
+    0,
+    44,
+    134,
+    62
+   ]
+  ],
+  "desks-single-beech-1-n4": [
+   [
+    0,
+    44,
+    134,
+    62
+   ]
+  ],
+  "desks-single-walnut-1-n4": [
+   [
+    0,
+    44,
+    134,
+    62
+   ]
+  ],
+  "desks-single-graphite-1-n4": [
+   [
+    0,
+    44,
+    134,
+    62
    ]
   ]
  },
@@ -2879,29 +3100,55 @@
    ]
   },
   {
-   "id": 1864,
+   "id": 1701,
    "key": "room:58,13,65,29/chair-0",
-   "x": 1936,
-   "y": 718,
+   "x": 1952,
+   "y": 654,
    "dir": "down",
    "box": [
-    1920,
-    684,
+    1936,
+    620,
     32,
     36
    ]
   },
   {
-   "id": 1867,
+   "id": 1703,
    "key": "room:58,13,65,29/chair-1",
-   "x": 2032,
-   "y": 718,
+   "x": 2016,
+   "y": 654,
    "dir": "down",
    "box": [
-    2016,
-    684,
+    2000,
+    620,
     32,
     36
+   ]
+  },
+  {
+   "id": 1865,
+   "key": "room:58,13,65,29/chair-2",
+   "x": 1952,
+   "y": 732,
+   "dir": "up",
+   "box": [
+    1936,
+    694,
+    32,
+    42
+   ]
+  },
+  {
+   "id": 1867,
+   "key": "room:58,13,65,29/chair-3",
+   "x": 2016,
+   "y": 732,
+   "dir": "up",
+   "box": [
+    2000,
+    694,
+    32,
+    42
    ]
   },
   {
@@ -3356,7 +3603,7 @@
   },
   {
    "id": 3137,
-   "key": "eggchairli-21-37",
+   "key": "eggchairte-21-37",
    "x": 688,
    "y": 1230,
    "dir": "down",
@@ -3502,245 +3749,1040 @@
   "desksingle-26-20/front-0": {
    "seat": 1914,
    "side": "front",
-   "along": [
-    838,
-    960
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      838,
+      874
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      874,
+      934
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      934,
+      960
+     ],
+     "foot": 702
+    }
    ],
-   "feet": [
-    688,
-    718
-   ],
-   "ceiling": 652,
+   "set": "ours",
    "chair": {
     "key": "desksingle-26-20/front-0/chair",
     "item": "chair-black-back",
     "x": 896,
     "y": 704
    },
+   "body": {
+    "key": "desksingle-26-20/front",
+    "item": "desks-single-maple-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
    "depth": 732.5
   },
   "desksingle-30-20/front-0": {
    "seat": 1918,
    "side": "front",
-   "along": [
-    966,
-    1088
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      966,
+      1002
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1002,
+      1062
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1062,
+      1088
+     ],
+     "foot": 702
+    }
    ],
-   "feet": [
-    688,
-    718
-   ],
-   "ceiling": 652,
+   "set": "ours",
    "chair": {
     "key": "desksingle-30-20/front-0/chair",
     "item": "chair-black-back",
     "x": 1024,
     "y": 704
    },
+   "body": {
+    "key": "desksingle-30-20/front",
+    "item": "desks-single-maple-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
    "depth": 732.5
   },
   "desksingle-34-20/front-0": {
    "seat": 1922,
    "side": "front",
-   "along": [
-    1094,
-    1216
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1094,
+      1130
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1130,
+      1190
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1190,
+      1216
+     ],
+     "foot": 702
+    }
    ],
-   "feet": [
-    688,
-    718
-   ],
-   "ceiling": 652,
+   "set": "ours",
    "chair": {
     "key": "desksingle-34-20/front-0/chair",
     "item": "chair-black-back",
     "x": 1152,
     "y": 704
    },
+   "body": {
+    "key": "desksingle-34-20/front",
+    "item": "desks-single-maple-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
    "depth": 732.5
   },
   "desksingle-26-25/front-0": {
    "seat": 2324,
    "side": "front",
-   "along": [
-    838,
-    960
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      838,
+      874
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      874,
+      934
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      934,
+      960
+     ],
+     "foot": 862
+    }
    ],
-   "feet": [
-    848,
-    878
-   ],
-   "ceiling": 812,
+   "set": "ours",
    "chair": {
     "key": "desksingle-26-25/front-0/chair",
     "item": "chair-black-back",
     "x": 896,
     "y": 864
    },
+   "body": {
+    "key": "desksingle-26-25/front",
+    "item": "desks-single-maple-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
    "depth": 892.5
   },
   "desksingle-30-25/front-0": {
    "seat": 2328,
    "side": "front",
-   "along": [
-    966,
-    1088
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      966,
+      1002
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1002,
+      1062
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1062,
+      1088
+     ],
+     "foot": 862
+    }
    ],
-   "feet": [
-    848,
-    878
-   ],
-   "ceiling": 812,
+   "set": "ours",
    "chair": {
     "key": "desksingle-30-25/front-0/chair",
     "item": "chair-black-back",
     "x": 1024,
     "y": 864
    },
+   "body": {
+    "key": "desksingle-30-25/front",
+    "item": "desks-single-maple-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
    "depth": 892.5
   },
   "desksingle-34-25/front-0": {
    "seat": 2332,
    "side": "front",
-   "along": [
-    1094,
-    1216
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1094,
+      1130
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1130,
+      1190
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1190,
+      1216
+     ],
+     "foot": 862
+    }
    ],
-   "feet": [
-    848,
-    878
-   ],
-   "ceiling": 812,
+   "set": "ours",
    "chair": {
     "key": "desksingle-34-25/front-0/chair",
     "item": "chair-black-back",
     "x": 1152,
     "y": 864
    },
+   "body": {
+    "key": "desksingle-34-25/front",
+    "item": "desks-single-maple-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
    "depth": 892.5
   },
   "desksingle-44-20/front-0": {
    "seat": 1932,
    "side": "front",
-   "along": [
-    1414,
-    1536
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1414,
+      1450
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1450,
+      1510
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1510,
+      1536
+     ],
+     "foot": 702
+    }
    ],
-   "feet": [
-    688,
-    718
-   ],
-   "ceiling": 652,
+   "set": "ours",
    "chair": {
     "key": "desksingle-44-20/front-0/chair",
     "item": "chair-black-back",
     "x": 1472,
     "y": 704
    },
+   "body": {
+    "key": "desksingle-44-20/front",
+    "item": "desks-single-white-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
    "depth": 732.5
   },
   "desksingle-48-20/front-0": {
    "seat": 1936,
    "side": "front",
-   "along": [
-    1542,
-    1664
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1542,
+      1578
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1578,
+      1638
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1638,
+      1664
+     ],
+     "foot": 702
+    }
    ],
-   "feet": [
-    688,
-    718
-   ],
-   "ceiling": 652,
+   "set": "ours",
    "chair": {
     "key": "desksingle-48-20/front-0/chair",
     "item": "chair-black-back",
     "x": 1600,
     "y": 704
    },
+   "body": {
+    "key": "desksingle-48-20/front",
+    "item": "desks-single-white-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
    "depth": 732.5
   },
   "desksingle-52-20/front-0": {
    "seat": 1940,
    "side": "front",
-   "along": [
-    1670,
-    1792
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1670,
+      1706
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1706,
+      1766
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1766,
+      1792
+     ],
+     "foot": 702
+    }
    ],
-   "feet": [
-    688,
-    718
-   ],
-   "ceiling": 652,
+   "set": "ours",
    "chair": {
     "key": "desksingle-52-20/front-0/chair",
     "item": "chair-black-back",
     "x": 1728,
     "y": 704
    },
+   "body": {
+    "key": "desksingle-52-20/front",
+    "item": "desks-single-white-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
    "depth": 732.5
   },
   "desksingle-44-25/front-0": {
    "seat": 2342,
    "side": "front",
-   "along": [
-    1414,
-    1536
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1414,
+      1450
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1450,
+      1510
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1510,
+      1536
+     ],
+     "foot": 862
+    }
    ],
-   "feet": [
-    848,
-    878
-   ],
-   "ceiling": 812,
+   "set": "ours",
    "chair": {
     "key": "desksingle-44-25/front-0/chair",
     "item": "chair-black-back",
     "x": 1472,
     "y": 864
    },
+   "body": {
+    "key": "desksingle-44-25/front",
+    "item": "desks-single-white-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
    "depth": 892.5
   },
   "desksingle-48-25/front-0": {
    "seat": 2346,
    "side": "front",
-   "along": [
-    1542,
-    1664
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1542,
+      1578
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1578,
+      1638
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1638,
+      1664
+     ],
+     "foot": 862
+    }
    ],
-   "feet": [
-    848,
-    878
-   ],
-   "ceiling": 812,
+   "set": "ours",
    "chair": {
     "key": "desksingle-48-25/front-0/chair",
     "item": "chair-black-back",
     "x": 1600,
     "y": 864
    },
+   "body": {
+    "key": "desksingle-48-25/front",
+    "item": "desks-single-white-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
    "depth": 892.5
   },
   "desksingle-52-25/front-0": {
    "seat": 2350,
    "side": "front",
-   "along": [
-    1670,
-    1792
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1670,
+      1706
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1706,
+      1766
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1766,
+      1792
+     ],
+     "foot": 862
+    }
    ],
-   "feet": [
-    848,
-    878
-   ],
-   "ceiling": 812,
+   "set": "ours",
    "chair": {
     "key": "desksingle-52-25/front-0/chair",
     "item": "chair-black-back",
     "x": 1728,
     "y": 864
    },
+   "body": {
+    "key": "desksingle-52-25/front",
+    "item": "desks-single-white-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
    "depth": 892.5
   }
  },
  "things": {
+  "ours-laptop-silver": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    10,
+    12,
+    54,
+    46
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-laptop-ash": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    10,
+    12,
+    54,
+    46
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-screens-pair": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    2,
+    8,
+    62,
+    44
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-screen-silver": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    8,
+    4,
+    56,
+    46
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-screen-ash": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    8,
+    4,
+    56,
+    46
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-screen-pale": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    8,
+    4,
+    56,
+    46
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-screen-teal": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    8,
+    4,
+    56,
+    46
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-monitor-back": {
+   "facing": "back",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    8,
+    6,
+    56,
+    46
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-lamp-coral": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    4,
+    32,
+    42
+   ],
+   "shelf": "lamps",
+   "set": "ours"
+  },
+  "ours-lamp-teal": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    4,
+    32,
+    42
+   ],
+   "shelf": "lamps",
+   "set": "ours"
+  },
+  "ours-lamp-mustard": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    4,
+    32,
+    42
+   ],
+   "shelf": "lamps",
+   "set": "ours"
+  },
+  "ours-lamp-white": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    4,
+    32,
+    42
+   ],
+   "shelf": "lamps",
+   "set": "ours"
+  },
+  "ours-mug-coral": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    10,
+    4,
+    28,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-mug-teal": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    10,
+    4,
+    28,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-mug-mustard": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    10,
+    4,
+    28,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-bush-desk-lilac": {
+   "facing": "any",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    12,
+    32,
+    48
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-bush-desk-white": {
+   "facing": "any",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    12,
+    32,
+    48
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-bush-desk-clay": {
+   "facing": "any",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    12,
+    32,
+    48
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-headphones": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    0,
+    6,
+    32,
+    30
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-frame-sunset": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    4,
+    6,
+    28,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-frame-shapes": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    4,
+    6,
+    28,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-books": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    4,
+    12,
+    30,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-pen-cup": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    10,
+    8,
+    24,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-notebook": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    4,
+    16,
+    30,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-bottle": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    10,
+    4,
+    22,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-speaker": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    8,
+    10,
+    24,
+    32
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-clock": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    8,
+    10,
+    26,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-globe": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    6,
+    4,
+    28,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-radio": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    4,
+    4,
+    30,
+    32
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
   "setup-laptop": {
    "facing": "front",
    "size": [

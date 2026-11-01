@@ -162,13 +162,22 @@ const HUNG = new Set([...KINDS.art, ...KINDS.work]);
 const PLANTS = ["wall-plant", "wall-plant2"];
 /** How much of each kind a room's top walls get, and what stands along its side walls. */
 const ROOMS = {
-  open: { storage: 2, art: 3, work: 2, side: ["plant-tall", "water-cooler", "lamp-blue", "plant-snake", "lamp-red"] },
-  meeting: { storage: 1, art: 3, work: 4, side: ["plant-tall", "lamp-red", "plant-snake", "lamp-blue"] },
-  kitchen: { storage: 1, art: 4, work: 0, side: ["plant-tall", "water-cooler", "lamp-red"] },
-  lounge: { storage: 2, art: 4, work: 0, side: ["lamp-red", "plant-tall", "lamp-blue", "plant-small"] },
-  library: { storage: 5, art: 2, work: 0, side: ["lamp-blue", "plant-tall", "lamp-red"] },
-  quiet: { storage: 1, art: 4, work: 0, side: ["lamp-blue", "plant-snake", "lamp-red", "plant-small"] },
+  open: { storage: 2, art: 3, work: 2, side: ["ours-bush-clay", "water-cooler", "ours-bush-white"] },
+  meeting: { storage: 1, art: 3, work: 4, side: ["ours-bush-slate", "ours-bush-small-white"] },
+  kitchen: { storage: 1, art: 4, work: 0, side: ["ours-bush-sage", "water-cooler"] },
+  lounge: { storage: 2, art: 4, work: 0, side: ["ours-bush-lilac", "ours-bush-small-clay"] },
+  library: { storage: 5, art: 2, work: 0, side: ["ours-bush-clay"] },
+  quiet: { storage: 1, art: 4, work: 0, side: ["ours-bush-white", "ours-bush-small-white"] },
 };
+/**
+ * A room's lamp, in a top corner: red, the warm one. The hall's are always
+ * red, one in each top corner; only the rooms furthest out from the middle
+ * of the building, about one in five and at least one, get the blue, so it
+ * turns up at the edges of the office and never takes over.
+ */
+const LAMP = "lamp-red";
+const LAMP_OUTER = "lamp-blue";
+const OUTER_LAMPS = 1 / 5;
 const WINDOW = { 2: ["window-office-2", "window-blinds-2"], 3: ["window-office-3", "window-blinds-3"] };
 // The side desk is drawn from its left: it only stands flush against a wall on its right.
 const SIDE_RIGHT = ["wall-cabinet"];
@@ -313,18 +322,30 @@ function dressWalls(byId, shell, placed, anchors = {}) {
     return Math.ceil(h / TILE);
   };
 
-  // A room's lamp, in a corner under its top wall: the side its seed says, or the other when there's no room there.
-  // (A shell without rooms gives each wall its own.)
-  const lit = new Set();
+  // A room's lamp, in a corner under its top wall: the side its seed says, or the other when there's no room there;
+  // the hall gets one each side. (A shell without rooms gives each wall its own.)
+  const lit = new Map();
+  const outer = new Set();
+  if (plan) {
+    const rooms = plan.rooms.filter((room) => room.kind !== "open");
+    const [ax, ay, bx, by] = plan.rooms.reduce(([a, b, c, d], { rect }) => [Math.min(a, rect[0]), Math.min(b, rect[1]), Math.max(c, rect[2]), Math.max(d, rect[3])], [Infinity, Infinity, -Infinity, -Infinity]);
+    const away = ({ rect }) => Math.hypot((rect[0] + rect[2]) / 2 - (ax + bx) / 2, (rect[1] + rect[3]) / 2 - (ay + by) / 2);
+    rooms.sort((a, b) => away(b) - away(a)).slice(0, Math.max(1, Math.round(rooms.length * OUTER_LAMPS))).forEach((room) => outer.add(`room:${room.rect}`));
+  }
   for (const first of [true, false]) {
     for (const run of sides) {
       const room = plan ? roomAt(plan, run.x, run.y + 1) : null;
       const which = room ? `room:${room.rect}` : `side:${run.side}:${run.x},${run.y}`;
-      const lamps = (ROOMS[room?.kind ?? "open"] ?? ROOMS.open).side.filter((id) => id.startsWith("lamp-"));
-      if (lit.has(which) || !lamps.length) continue;
+      const hall = (room?.kind ?? "open") === "open";
+      const sidesLit = lit.get(which) ?? new Set();
+      if (sidesLit.has(run.side) || sidesLit.size >= (hall ? 2 : 1)) continue;
       const rand = random(`${DRESS_SEED}|lamp|${which}`);
-      if ((run.side === (rand() < 0.5 ? "left" : "right")) !== first) continue;
-      if (stand(run, byId.get(lamps[Math.floor(rand() * lamps.length)]), run.y + 1)) lit.add(which);
+      const preferred = rand() < 0.5 ? "left" : "right";
+      if (!hall && (run.side === preferred) !== first) continue;
+      const lamp = byId.get(outer.has(which) ? LAMP_OUTER : LAMP);
+      // A room's stands in its corner; the hall's, as near its corner as there's a way past it.
+      const rows = hall ? Array.from({ length: Math.max(0, run.length - 2) }, (_, n) => run.y + 1 + n) : [run.y + 1];
+      if (rows.some((ty) => stand(run, lamp, ty))) lit.set(which, sidesLit.add(run.side));
     }
   }
 
@@ -358,18 +379,23 @@ function dressWalls(byId, shell, placed, anchors = {}) {
  * Rooms for sitting in (the hall, a lounge, a library) get a sitting area,
  * worked out like the walls' things, from the room's place and size and the
  * seed every office shares ("room:58,13,65,29"): a rug, a low table on the
- * middle of it and a chair either side, lined up with each other on the rug.
+ * middle of it and a chair either side, lined up with each other on the rug;
+ * a lounge's is a corner of egg chairs, one of each colour round a low table,
+ * two facing you and two with their backs to you.
  * It goes as near the middle of the room as it fits: on the room's own floor,
  * off a carpet and a tile clear of every doorway, with a tile round it clear
  * of anything placed and of carpets (walls are fine). A room with no such
  * place goes without.
  */
 const SITTING = {
-  open: ["egg-chair-mustard", "egg-chair-blue", "egg-chair-lilac"],
-  lounge: ["egg-chair-blue", "egg-chair-mustard", "egg-chair-lilac"],
+  open: ["egg-chair-coral", "egg-chair-mustard", "egg-chair-teal", "egg-chair-lilac"],
   library: ["armchair"],
 };
-const RUGS = ["rug-red", "rug-blue"];
+/** A lounge's is a corner of egg chairs instead: one of each colour round a low table, two facing you and two facing it. */
+const EGG_CHAIRS = ["egg-chair-coral", "egg-chair-mustard", "egg-chair-teal", "egg-chair-lilac"];
+/** The corner, in tiles: a tile taller than a sitting area, for the chairs either side of the table. */
+const CORNER = [4, 4];
+const RUGS = ["ours-rug-sunset", "ours-rug-lagoon", "ours-rug-plum"];
 /** The area, in tiles: a four by three rug. */
 const AREA = [4, 3];
 
@@ -384,10 +410,11 @@ function sittingAreas(byId, shell, placed) {
   const nearDoor = (x, y) => doors.some(([x0, y0, x1, y1]) => x >= x0 - 1 && x <= x1 + 1 && y >= y0 - 1 && y <= y1 + 1);
   const out = [];
   for (const room of plan.rooms) {
+    const corner = room.kind === "lounge";
     const chairs = SITTING[room.kind];
-    if (!chairs) continue;
+    if (!chairs && !corner) continue;
     const [x0, y0, x1, y1] = room.rect;
-    const [w, h] = AREA;
+    const [w, h] = corner ? CORNER : AREA;
     const own = (x, y) => cell(x, y).kind === "floor" && cell(x, y).material === room.floor;
     const fits = (gx, gy) => {
       for (let y = gy - 1; y <= gy + h; y++) {
@@ -416,6 +443,26 @@ function sittingAreas(byId, shell, placed) {
       return options[Math.floor(rand() * options.length)] ?? list[0];
     };
     const [rx, ry] = [best.gx * TILE, best.gy * TILE];
+    if (corner) {
+      const order = [...EGG_CHAIRS];
+      for (let i = order.length - 1; i > 0; i--) {
+        const j = Math.floor(rand() * (i + 1));
+        [order[i], order[j]] = [order[j], order[i]];
+      }
+      // The rug in the middle of the corner, the table on it; two chairs behind it facing you, two in front with their backs to you.
+      const table = byId.get("coffee-table");
+      out.push(
+        { key: `${key}/rug`, item: byId.get(pick(RUGS)), x: rx, y: ry + TILE / 2, generated: "room" },
+        { key: `${key}/table`, item: table, x: rx + TILE, y: ry + TILE + TILE / 4, generated: "room" },
+      );
+      order.forEach((id, i) => {
+        const facing = i < 2 ? id : `${id}-back`;
+        const x = rx + TILE / 2 + (i % 2) * 2 * TILE;
+        const y = i < 2 ? ry : ry + 2.5 * TILE;
+        out.push({ key: `${key}/chair-${i}`, item: byId.get(facing), x, y, generated: "room" });
+      });
+      continue;
+    }
     // The table on the rug's middle, its foot a tile and a half down; the chairs either side, their feet on the same line.
     const table = byId.get("coffee-table");
     const foot = ry + TILE + spriteSize(table.sprite)[1];

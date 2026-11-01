@@ -242,20 +242,32 @@
       "notes": ""
     },
     {
-      "id": "egg-chair-blue",
-      "name": "Egg chair, blue",
+      "id": "egg-chair-coral",
+      "name": "Egg chair, coral",
       "category": "seating",
       "themes": [
         "office"
       ],
       "mount": "floor",
       "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          96,
-          480,
+        "size": [
           32,
           48
+        ],
+        "layers": [
+          {
+            "draw": "egg:coral:front",
+            "rect": [
+              0,
+              0,
+              32,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
         ]
       },
       "sortY": 44,
@@ -268,65 +280,48 @@
         }
       ],
       "surface": null,
-      "notes": ""
+      "notes": "Drawn (art.js) from the pack's egg chair, in the office's colours."
     },
     {
-      "id": "egg-chair-grey",
-      "name": "Egg chair, grey",
+      "id": "egg-chair-coral-back",
+      "name": "Egg chair, coral, from behind",
       "category": "seating",
       "themes": [
         "office"
       ],
       "mount": "floor",
       "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          128,
-          480,
+        "size": [
           32,
           48
+        ],
+        "layers": [
+          {
+            "draw": "egg:coral:back",
+            "rect": [
+              0,
+              0,
+              32,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
         ]
       },
-      "sortY": 44,
+      "sortY": 48,
       "colliders": [],
       "seats": [
         {
           "x": 16,
-          "y": 46,
-          "dir": "down"
+          "y": 44,
+          "dir": "up"
         }
       ],
       "surface": null,
-      "notes": ""
-    },
-    {
-      "id": "egg-chair-lilac",
-      "name": "Egg chair, lilac",
-      "category": "seating",
-      "themes": [
-        "office"
-      ],
-      "mount": "floor",
-      "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          160,
-          480,
-          32,
-          48
-        ]
-      },
-      "sortY": 44,
-      "colliders": [],
-      "seats": [
-        {
-          "x": 16,
-          "y": 46,
-          "dir": "down"
-        }
-      ],
-      "surface": null,
-      "notes": ""
+      "notes": "Drawn (art.js) from the pack's egg chair, in the office's colours."
     },
     {
       "id": "egg-chair-mustard",
@@ -337,12 +332,24 @@
       ],
       "mount": "floor",
       "sprite": {
-        "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
-        "rect": [
-          192,
-          480,
+        "size": [
           32,
           48
+        ],
+        "layers": [
+          {
+            "draw": "egg:mustard:front",
+            "rect": [
+              0,
+              0,
+              32,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
         ]
       },
       "sortY": 44,
@@ -355,7 +362,212 @@
         }
       ],
       "surface": null,
-      "notes": ""
+      "notes": "Drawn (art.js) from the pack's egg chair, in the office's colours."
+    },
+    {
+      "id": "egg-chair-mustard-back",
+      "name": "Egg chair, mustard, from behind",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "egg:mustard:back",
+            "rect": [
+              0,
+              0,
+              32,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 48,
+      "colliders": [],
+      "seats": [
+        {
+          "x": 16,
+          "y": 44,
+          "dir": "up"
+        }
+      ],
+      "surface": null,
+      "notes": "Drawn (art.js) from the pack's egg chair, in the office's colours."
+    },
+    {
+      "id": "egg-chair-teal",
+      "name": "Egg chair, teal",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "egg:teal:front",
+            "rect": [
+              0,
+              0,
+              32,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 44,
+      "colliders": [],
+      "seats": [
+        {
+          "x": 16,
+          "y": 46,
+          "dir": "down"
+        }
+      ],
+      "surface": null,
+      "notes": "Drawn (art.js) from the pack's egg chair, in the office's colours."
+    },
+    {
+      "id": "egg-chair-teal-back",
+      "name": "Egg chair, teal, from behind",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "egg:teal:back",
+            "rect": [
+              0,
+              0,
+              32,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 48,
+      "colliders": [],
+      "seats": [
+        {
+          "x": 16,
+          "y": 44,
+          "dir": "up"
+        }
+      ],
+      "surface": null,
+      "notes": "Drawn (art.js) from the pack's egg chair, in the office's colours."
+    },
+    {
+      "id": "egg-chair-lilac",
+      "name": "Egg chair, lilac",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "egg:lilac:front",
+            "rect": [
+              0,
+              0,
+              32,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 44,
+      "colliders": [],
+      "seats": [
+        {
+          "x": 16,
+          "y": 46,
+          "dir": "down"
+        }
+      ],
+      "surface": null,
+      "notes": "Drawn (art.js) from the pack's egg chair, in the office's colours."
+    },
+    {
+      "id": "egg-chair-lilac-back",
+      "name": "Egg chair, lilac, from behind",
+      "category": "seating",
+      "themes": [
+        "office"
+      ],
+      "mount": "floor",
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "egg:lilac:back",
+            "rect": [
+              0,
+              0,
+              32,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 48,
+      "colliders": [],
+      "seats": [
+        {
+          "x": 16,
+          "y": 44,
+          "dir": "up"
+        }
+      ],
+      "surface": null,
+      "notes": "Drawn (art.js) from the pack's egg chair, in the office's colours."
     },
     {
       "id": "sofa-corner",
@@ -3246,6 +3458,1864 @@
       "colliders": []
     },
     {
+      "id": "ours-laptop-silver",
+      "name": "Laptop, silver",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:laptop-silver",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 44,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 2,
+        "rows": 2
+      },
+      "random": true,
+      "shelf": "tech",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-laptop-ash",
+      "name": "Laptop, ash",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:laptop-ash",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 44,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 2,
+        "rows": 2
+      },
+      "random": true,
+      "shelf": "tech",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-screens-pair",
+      "name": "Two monitors",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:screens-pair",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 40,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 2,
+        "rows": 2
+      },
+      "random": true,
+      "shelf": "tech",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-screen-silver",
+      "name": "Monitor, silver",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:monitor-silver",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 46,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 2,
+        "rows": 2
+      },
+      "random": true,
+      "shelf": "tech",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-screen-ash",
+      "name": "Monitor, ash",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:monitor-ash",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 46,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 2,
+        "rows": 2
+      },
+      "random": true,
+      "shelf": "tech",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-screen-pale",
+      "name": "Monitor, pale",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:monitor-pale",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 46,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 2,
+        "rows": 2
+      },
+      "random": true,
+      "shelf": "tech",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-screen-teal",
+      "name": "Monitor, silver, teal desktop",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:monitor-teal",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 46,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 2,
+        "rows": 2
+      },
+      "random": true,
+      "shelf": "tech",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-monitor-back",
+      "name": "Monitor, from behind",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:screen-back",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 46,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "back",
+      "desk": {
+        "cols": 2,
+        "rows": 2
+      },
+      "random": false,
+      "shelf": "tech",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-lamp-coral",
+      "name": "Desk lamp, coral",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:lamp-coral:flip",
+            "rect": [
+              0,
+              0,
+              32,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "desk",
+      "mount": "surface",
+      "sortY": 42,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": true,
+      "shelf": "lamps"
+    },
+    {
+      "id": "ours-lamp-teal",
+      "name": "Desk lamp, teal",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:lamp-teal:flip",
+            "rect": [
+              0,
+              0,
+              32,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "desk",
+      "mount": "surface",
+      "sortY": 42,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": true,
+      "shelf": "lamps"
+    },
+    {
+      "id": "ours-lamp-mustard",
+      "name": "Desk lamp, mustard",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:lamp-mustard:flip",
+            "rect": [
+              0,
+              0,
+              32,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "desk",
+      "mount": "surface",
+      "sortY": 42,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": true,
+      "shelf": "lamps"
+    },
+    {
+      "id": "ours-lamp-white",
+      "name": "Desk lamp, white",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "desk:lamp-white:flip",
+            "rect": [
+              0,
+              0,
+              32,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "desk",
+      "mount": "surface",
+      "sortY": 42,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": true,
+      "shelf": "lamps"
+    },
+    {
+      "id": "ours-mug-coral",
+      "name": "Mug, coral",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "draw": "desk:mug-coral",
+            "rect": [
+              0,
+              0,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "desk",
+      "mount": "surface",
+      "sortY": 32,
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": true,
+      "shelf": "personal"
+    },
+    {
+      "id": "ours-mug-teal",
+      "name": "Mug, teal",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "draw": "desk:mug-teal",
+            "rect": [
+              0,
+              0,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "desk",
+      "mount": "surface",
+      "sortY": 32,
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": true,
+      "shelf": "personal"
+    },
+    {
+      "id": "ours-mug-mustard",
+      "name": "Mug, mustard",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "draw": "desk:mug-mustard",
+            "rect": [
+              0,
+              0,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "desk",
+      "mount": "surface",
+      "sortY": 32,
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": true,
+      "shelf": "personal"
+    },
+    {
+      "id": "ours-bush-lilac",
+      "name": "Bush, the pack's pot",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              244,
+              32,
+              56
+            ],
+            "at": [
+              0,
+              8
+            ],
+            "recolor": {
+              "#455c5b": "#2f6e3e",
+              "#465e62": "#2f6e3e",
+              "#4e6e61": "#3c8a46",
+              "#568d61": "#4ea44e",
+              "#61af5f": "#6cc05a",
+              "#74b453": "#9ad66a"
+            }
+          }
+        ]
+      },
+      "seats": [],
+      "surface": null,
+      "notes": "The pack's plant, its leaves greener, its pot in another colour.",
+      "category": "plants",
+      "mount": "floor",
+      "sortY": 60,
+      "colliders": [
+        [
+          6,
+          46,
+          20,
+          14
+        ]
+      ]
+    },
+    {
+      "id": "ours-bush-white",
+      "name": "Tall leaves, white pot",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              404,
+              32,
+              56
+            ],
+            "at": [
+              0,
+              8
+            ],
+            "recolor": {
+              "#565972": "#8a8a98",
+              "#6c6e85": "#9e9eaa",
+              "#8b8bab": "#bcbcc6",
+              "#989ebe": "#cacad2",
+              "#b2aecb": "#dcdce2",
+              "#c6bdd5": "#e8e8ee",
+              "#d8d0e0": "#f4f4f7",
+              "#455c5b": "#2f6e3e",
+              "#465e62": "#2f6e3e",
+              "#4e6e61": "#3c8a46",
+              "#568d61": "#4ea44e",
+              "#61af5f": "#6cc05a",
+              "#74b453": "#9ad66a"
+            }
+          }
+        ]
+      },
+      "seats": [],
+      "surface": null,
+      "notes": "The pack's plant, its leaves greener, its pot in another colour.",
+      "category": "plants",
+      "mount": "floor",
+      "sortY": 60,
+      "colliders": [
+        [
+          6,
+          46,
+          20,
+          14
+        ]
+      ]
+    },
+    {
+      "id": "ours-bush-clay",
+      "name": "Bush, clay pot",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              244,
+              32,
+              56
+            ],
+            "at": [
+              0,
+              8
+            ],
+            "recolor": {
+              "#565972": "#7a4a3a",
+              "#6c6e85": "#8c5844",
+              "#8b8bab": "#ad6c52",
+              "#989ebe": "#bb7a5e",
+              "#b2aecb": "#cb8f72",
+              "#c6bdd5": "#d8a286",
+              "#d8d0e0": "#e4b69c",
+              "#455c5b": "#4a7c34",
+              "#465e62": "#4a7c34",
+              "#4e6e61": "#5e983c",
+              "#568d61": "#76b246",
+              "#61af5f": "#94cc54",
+              "#74b453": "#bee272"
+            }
+          }
+        ]
+      },
+      "seats": [],
+      "surface": null,
+      "notes": "The pack's plant, its leaves greener, its pot in another colour.",
+      "category": "plants",
+      "mount": "floor",
+      "sortY": 60,
+      "colliders": [
+        [
+          6,
+          46,
+          20,
+          14
+        ]
+      ]
+    },
+    {
+      "id": "ours-bush-sage",
+      "name": "Tall leaves, sage pot",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              404,
+              32,
+              56
+            ],
+            "at": [
+              0,
+              8
+            ],
+            "recolor": {
+              "#565972": "#4e6458",
+              "#6c6e85": "#5c7466",
+              "#8b8bab": "#789482",
+              "#989ebe": "#86a290",
+              "#b2aecb": "#9eb8a6",
+              "#c6bdd5": "#b2c8b6",
+              "#d8d0e0": "#c6d8c8",
+              "#455c5b": "#2a6c52",
+              "#465e62": "#2a6c52",
+              "#4e6e61": "#348a60",
+              "#568d61": "#44a46c",
+              "#61af5f": "#62c07e",
+              "#74b453": "#98daa0"
+            }
+          }
+        ]
+      },
+      "seats": [],
+      "surface": null,
+      "notes": "The pack's plant, its leaves greener, its pot in another colour.",
+      "category": "plants",
+      "mount": "floor",
+      "sortY": 60,
+      "colliders": [
+        [
+          6,
+          46,
+          20,
+          14
+        ]
+      ]
+    },
+    {
+      "id": "ours-bush-slate",
+      "name": "Bush, slate pot",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          64
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              244,
+              32,
+              56
+            ],
+            "at": [
+              0,
+              8
+            ],
+            "recolor": {
+              "#565972": "#464a56",
+              "#6c6e85": "#525662",
+              "#8b8bab": "#6a6e7c",
+              "#989ebe": "#767a88",
+              "#b2aecb": "#8c909c",
+              "#c6bdd5": "#a0a4ae",
+              "#d8d0e0": "#b4b8c0",
+              "#455c5b": "#2f6e3e",
+              "#465e62": "#2f6e3e",
+              "#4e6e61": "#3c8a46",
+              "#568d61": "#4ea44e",
+              "#61af5f": "#6cc05a",
+              "#74b453": "#9ad66a"
+            }
+          }
+        ]
+      },
+      "seats": [],
+      "surface": null,
+      "notes": "The pack's plant, its leaves greener, its pot in another colour.",
+      "category": "plants",
+      "mount": "floor",
+      "sortY": 60,
+      "colliders": [
+        [
+          6,
+          46,
+          20,
+          14
+        ]
+      ]
+    },
+    {
+      "id": "ours-bush-small-white",
+      "name": "Small bush, white pot",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              328,
+              32,
+              36
+            ],
+            "at": [
+              0,
+              12
+            ],
+            "recolor": {
+              "#565972": "#8a8a98",
+              "#6c6e85": "#9e9eaa",
+              "#8b8bab": "#bcbcc6",
+              "#989ebe": "#cacad2",
+              "#b2aecb": "#dcdce2",
+              "#c6bdd5": "#e8e8ee",
+              "#d8d0e0": "#f4f4f7",
+              "#455c5b": "#2f6e3e",
+              "#465e62": "#2f6e3e",
+              "#4e6e61": "#3c8a46",
+              "#568d61": "#4ea44e",
+              "#61af5f": "#6cc05a",
+              "#74b453": "#9ad66a"
+            }
+          }
+        ]
+      },
+      "seats": [],
+      "surface": null,
+      "notes": "The pack's plant, its leaves greener, its pot in another colour.",
+      "category": "plants",
+      "mount": "floor",
+      "sortY": 46,
+      "colliders": [
+        [
+          6,
+          32,
+          20,
+          12
+        ]
+      ]
+    },
+    {
+      "id": "ours-bush-small-clay",
+      "name": "Small bush, clay pot",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              328,
+              32,
+              36
+            ],
+            "at": [
+              0,
+              12
+            ],
+            "recolor": {
+              "#565972": "#7a4a3a",
+              "#6c6e85": "#8c5844",
+              "#8b8bab": "#ad6c52",
+              "#989ebe": "#bb7a5e",
+              "#b2aecb": "#cb8f72",
+              "#c6bdd5": "#d8a286",
+              "#d8d0e0": "#e4b69c",
+              "#455c5b": "#4a7c34",
+              "#465e62": "#4a7c34",
+              "#4e6e61": "#5e983c",
+              "#568d61": "#76b246",
+              "#61af5f": "#94cc54",
+              "#74b453": "#bee272"
+            }
+          }
+        ]
+      },
+      "seats": [],
+      "surface": null,
+      "notes": "The pack's plant, its leaves greener, its pot in another colour.",
+      "category": "plants",
+      "mount": "floor",
+      "sortY": 46,
+      "colliders": [
+        [
+          6,
+          32,
+          20,
+          12
+        ]
+      ]
+    },
+    {
+      "id": "ours-bush-desk-lilac",
+      "name": "Desk bush, the pack's pot",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              328,
+              32,
+              36
+            ],
+            "at": [
+              0,
+              12
+            ],
+            "recolor": {
+              "#455c5b": "#2f6e3e",
+              "#465e62": "#2f6e3e",
+              "#4e6e61": "#3c8a46",
+              "#568d61": "#4ea44e",
+              "#61af5f": "#6cc05a",
+              "#74b453": "#9ad66a"
+            }
+          }
+        ]
+      },
+      "seats": [],
+      "surface": null,
+      "notes": "The pack's plant, its leaves greener, its pot in another colour.",
+      "category": "desk",
+      "mount": "surface",
+      "sortY": 46,
+      "colliders": [],
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": true,
+      "shelf": "personal"
+    },
+    {
+      "id": "ours-bush-desk-white",
+      "name": "Desk bush, white pot",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              328,
+              32,
+              36
+            ],
+            "at": [
+              0,
+              12
+            ],
+            "recolor": {
+              "#565972": "#8a8a98",
+              "#6c6e85": "#9e9eaa",
+              "#8b8bab": "#bcbcc6",
+              "#989ebe": "#cacad2",
+              "#b2aecb": "#dcdce2",
+              "#c6bdd5": "#e8e8ee",
+              "#d8d0e0": "#f4f4f7",
+              "#455c5b": "#4a7c34",
+              "#465e62": "#4a7c34",
+              "#4e6e61": "#5e983c",
+              "#568d61": "#76b246",
+              "#61af5f": "#94cc54",
+              "#74b453": "#bee272"
+            }
+          }
+        ]
+      },
+      "seats": [],
+      "surface": null,
+      "notes": "The pack's plant, its leaves greener, its pot in another colour.",
+      "category": "desk",
+      "mount": "surface",
+      "sortY": 46,
+      "colliders": [],
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": true,
+      "shelf": "personal"
+    },
+    {
+      "id": "ours-bush-desk-clay",
+      "name": "Desk bush, clay pot",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          48
+        ],
+        "layers": [
+          {
+            "src": "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png",
+            "rect": [
+              192,
+              328,
+              32,
+              36
+            ],
+            "at": [
+              0,
+              12
+            ],
+            "recolor": {
+              "#565972": "#7a4a3a",
+              "#6c6e85": "#8c5844",
+              "#8b8bab": "#ad6c52",
+              "#989ebe": "#bb7a5e",
+              "#b2aecb": "#cb8f72",
+              "#c6bdd5": "#d8a286",
+              "#d8d0e0": "#e4b69c",
+              "#455c5b": "#2a6c52",
+              "#465e62": "#2a6c52",
+              "#4e6e61": "#348a60",
+              "#568d61": "#44a46c",
+              "#61af5f": "#62c07e",
+              "#74b453": "#98daa0"
+            }
+          }
+        ]
+      },
+      "seats": [],
+      "surface": null,
+      "notes": "The pack's plant, its leaves greener, its pot in another colour.",
+      "category": "desk",
+      "mount": "surface",
+      "sortY": 46,
+      "colliders": [],
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 2
+      },
+      "random": true,
+      "shelf": "personal"
+    },
+    {
+      "id": "ours-headphones",
+      "name": "Headphones on a stand",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "draw": "desk:headphones",
+            "rect": [
+              0,
+              0,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "desk",
+      "mount": "surface",
+      "sortY": 32,
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": true,
+      "shelf": "tech"
+    },
+    {
+      "id": "ours-frame-sunset",
+      "name": "Picture, sunset",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "draw": "desk:frame-sunset",
+            "rect": [
+              0,
+              0,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "desk",
+      "mount": "surface",
+      "sortY": 32,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": true,
+      "shelf": "personal"
+    },
+    {
+      "id": "ours-frame-shapes",
+      "name": "Picture, shapes",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "draw": "desk:frame-shapes",
+            "rect": [
+              0,
+              0,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "desk",
+      "mount": "surface",
+      "sortY": 32,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": true,
+      "shelf": "personal"
+    },
+    {
+      "id": "ours-books",
+      "name": "Books",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "draw": "desk:books",
+            "rect": [
+              0,
+              0,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "desk",
+      "mount": "surface",
+      "sortY": 32,
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": true,
+      "shelf": "personal"
+    },
+    {
+      "id": "ours-pen-cup",
+      "name": "Pen cup",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "draw": "desk:pen-cup",
+            "rect": [
+              0,
+              0,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": true,
+      "shelf": "personal",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-notebook",
+      "name": "Notebook and pen",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "draw": "desk:notebook",
+            "rect": [
+              0,
+              0,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": true,
+      "shelf": "personal",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-bottle",
+      "name": "Water bottle",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "draw": "desk:bottle",
+            "rect": [
+              0,
+              0,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": true,
+      "shelf": "personal",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-speaker",
+      "name": "Speaker",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "draw": "desk:speaker",
+            "rect": [
+              0,
+              0,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": true,
+      "shelf": "tech",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-clock",
+      "name": "Desk clock",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "draw": "desk:clock",
+            "rect": [
+              0,
+              0,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 32,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "front",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": true,
+      "shelf": "personal",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-globe",
+      "name": "Globe",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "draw": "desk:globe",
+            "rect": [
+              0,
+              0,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 30,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": true,
+      "shelf": "personal",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-radio",
+      "name": "Radio",
+      "category": "desk",
+      "themes": [
+        "office"
+      ],
+      "mount": "surface",
+      "sprite": {
+        "size": [
+          32,
+          32
+        ],
+        "layers": [
+          {
+            "draw": "desk:radio",
+            "rect": [
+              0,
+              0,
+              32,
+              32
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "sortY": 30,
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "facing": "any",
+      "desk": {
+        "cols": 1,
+        "rows": 1
+      },
+      "random": true,
+      "shelf": "tech",
+      "notes": "Drawn (art.js): ours."
+    },
+    {
+      "id": "ours-rug-sunset",
+      "name": "Rug, sunset",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          128,
+          96
+        ],
+        "layers": [
+          {
+            "draw": "rug:sunset",
+            "rect": [
+              0,
+              0,
+              128,
+              96
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "decor",
+      "mount": "rug",
+      "sortY": 0
+    },
+    {
+      "id": "ours-rug-small-sunset",
+      "name": "Rug, small, sunset",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "rug:sunset",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "decor",
+      "mount": "rug",
+      "sortY": 0
+    },
+    {
+      "id": "ours-rug-lagoon",
+      "name": "Rug, lagoon",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          128,
+          96
+        ],
+        "layers": [
+          {
+            "draw": "rug:lagoon",
+            "rect": [
+              0,
+              0,
+              128,
+              96
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "decor",
+      "mount": "rug",
+      "sortY": 0
+    },
+    {
+      "id": "ours-rug-small-lagoon",
+      "name": "Rug, small, lagoon",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "rug:lagoon",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "decor",
+      "mount": "rug",
+      "sortY": 0
+    },
+    {
+      "id": "ours-rug-plum",
+      "name": "Rug, plum",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          128,
+          96
+        ],
+        "layers": [
+          {
+            "draw": "rug:plum",
+            "rect": [
+              0,
+              0,
+              128,
+              96
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "decor",
+      "mount": "rug",
+      "sortY": 0
+    },
+    {
+      "id": "ours-rug-small-plum",
+      "name": "Rug, small, plum",
+      "themes": [
+        "office"
+      ],
+      "sprite": {
+        "size": [
+          64,
+          48
+        ],
+        "layers": [
+          {
+            "draw": "rug:plum",
+            "rect": [
+              0,
+              0,
+              64,
+              48
+            ],
+            "at": [
+              0,
+              0
+            ]
+          }
+        ]
+      },
+      "colliders": [],
+      "seats": [],
+      "surface": null,
+      "notes": "Drawn (art.js): ours.",
+      "category": "decor",
+      "mount": "rug",
+      "sortY": 0
+    },
+    {
       "id": "setup-laptop",
       "name": "Laptop, lamp and phone",
       "category": "tech",
@@ -3348,7 +5418,8 @@
       "colliders": [],
       "seats": [],
       "surface": null,
-      "notes": ""
+      "notes": "",
+      "random": false
     },
     {
       "id": "setup-monitors",
@@ -3453,7 +5524,8 @@
       "colliders": [],
       "seats": [],
       "surface": null,
-      "notes": ""
+      "notes": "",
+      "random": false
     },
     {
       "id": "setup-laptop-b",
@@ -3558,7 +5630,8 @@
       "colliders": [],
       "seats": [],
       "surface": null,
-      "notes": ""
+      "notes": "",
+      "random": false
     },
     {
       "id": "setup-monitors-b",
@@ -3663,7 +5736,8 @@
       "colliders": [],
       "seats": [],
       "surface": null,
-      "notes": ""
+      "notes": "",
+      "random": false
     },
     {
       "id": "setup-printer",
@@ -3928,7 +6002,8 @@
       "colliders": [],
       "seats": [],
       "surface": null,
-      "notes": ""
+      "notes": "",
+      "random": false
     },
     {
       "id": "desk-phone-a",
@@ -3968,7 +6043,8 @@
       "colliders": [],
       "seats": [],
       "surface": null,
-      "notes": ""
+      "notes": "",
+      "random": false
     },
     {
       "id": "desk-phone-b",
@@ -4008,7 +6084,8 @@
       "colliders": [],
       "seats": [],
       "surface": null,
-      "notes": ""
+      "notes": "",
+      "random": false
     },
     {
       "id": "back-monitors",
@@ -4074,7 +6151,8 @@
       "colliders": [],
       "seats": [],
       "surface": null,
-      "notes": ""
+      "notes": "",
+      "random": false
     },
     {
       "id": "back-monitor",
@@ -4114,7 +6192,8 @@
       "colliders": [],
       "seats": [],
       "surface": null,
-      "notes": ""
+      "notes": "",
+      "random": false
     },
     {
       "id": "back-monitor-light",
@@ -4154,7 +6233,8 @@
       "colliders": [],
       "seats": [],
       "surface": null,
-      "notes": ""
+      "notes": "",
+      "random": false
     },
     {
       "id": "chair-black",

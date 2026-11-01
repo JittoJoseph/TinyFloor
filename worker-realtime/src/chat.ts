@@ -39,6 +39,7 @@ import {
 } from "../../shared-protocol/src";
 import { readTicket, TICKET_HEADER } from "./headers";
 import { pushTo } from "./push";
+import { markActive } from "./usage";
 
 /** What the socket remembers about whoever is on it. */
 interface Attachment {
@@ -81,7 +82,8 @@ const SENDS_PER_TEN_SECONDS = 100;
 /** Messages between trims. Cheap, and it keeps the object's storage bounded. */
 const TRIM_EVERY = 500;
 const TEN_SECONDS = 10_000;
-const DAY_MS = 24 * 60 * 60 * 1000;
+const HOUR_MS = 60 * 60 * 1000;
+const DAY_MS = 24 * HOUR_MS;
 /** Where "is this the lobby's chat" is kept, so an alarm knows without a request. */
 const LOBBY_FLAG = "lobby";
 /** The office this chat belongs to, which its files are kept under. */
@@ -105,6 +107,8 @@ const OFFICE_KEY = "office";
 export class Chat extends DurableObject<Env> {
   private lobby = false;
   private office: string | null = null;
+  /** When the office was last marked as used for something said here: once an hour is plenty (admin's "last active"). */
+  private activeAt = 0;
 
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
@@ -421,6 +425,10 @@ export class Chat extends DurableObject<Env> {
     if (this.lobby && isDm(channel)) return this.pass(socket, me, channel, text, now);
 
     this.ensureChannel(channel, me.userId, now);
+    if (this.office && now - this.activeAt > HOUR_MS) {
+      this.activeAt = now;
+      this.ctx.waitUntil(markActive(this.env.DB, this.office, now).run().catch(() => (this.activeAt = 0)));
+    }
     // A reply answers a message in the same conversation, or nothing.
     const answered =
       typeof replyTo === "number" && Number.isInteger(replyTo)

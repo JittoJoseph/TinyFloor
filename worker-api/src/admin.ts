@@ -80,7 +80,7 @@ const PERSON = `u.id, u.display_name AS displayName, u.email, u.character, u.cou
 /** An office as the admin view lists it; this month's usage joined as `um` (bound as ?period). */
 const OFFICE = `o.id, o.name, o.plan, o.seats, o.floor, o.created_at AS createdAt,
   (SELECT COUNT(*) FROM memberships m WHERE m.office_id = o.id) AS members,
-  (SELECT MAX(u.last_active_at) FROM memberships m JOIN users u ON u.id = m.user_id WHERE m.office_id = o.id) AS lastActiveAt,
+  o.active_at AS lastActiveAt,
   CASE WHEN s.status IN (${LIVE}) AND s.provider_subscription_id IS NOT NULL THEN s.status END AS billing,
   s.cancel_at AS cancelAt, COALESCE(um.meeting_seconds, 0) AS meetingSeconds`;
 const OFFICE_FROM = `offices o

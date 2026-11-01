@@ -672,24 +672,15 @@
     "asked": "Invité"
   },
   "help": {
-    "title": "Aide et avis",
-    "officeSees": "Votre message part à l'équipe TinyFloor et ouvre un ticket dans le Chat, que tout {office} peut suivre.",
-    "lobbySees": "Votre message part à l'équipe TinyFloor et ouvre un ticket dans votre Chat. Vous seul le voyez.",
-    "placeholder": "Que s'est-il passé, et à quoi vous attendiez-vous ?",
-    "context": "Nous ajoutons la page où vous êtes et votre navigateur, pour pouvoir regarder de près.",
-    "send": "Envoyer",
-    "sending": "Envoi",
+    "title": "Écrire à l'équipe TinyFloor",
     "error": "L'envoi n'a pas abouti. Réessayez.",
     "slowDown": "Vous avez envoyé beaucoup de messages dans l'heure. Réessayez un peu plus tard.",
-    "support": "Support TinyFloor",
-    "open": "Ouvert",
+    "support": "Équipe TinyFloor",
     "closed": "Fermé",
     "message": "Écrire à l'équipe TinyFloor",
-    "closedNote": "L'équipe TinyFloor a fermé ce ticket. Toujours bloqué ? Écrivez-nous à nouveau depuis Aide et avis.",
-    "ticketOffice": "Tout {office} peut suivre ce ticket et y ajouter quelque chose. L'équipe TinyFloor répond ici.",
-    "ticketLobby": "Seuls vous et l'équipe TinyFloor voyez ceci. Nous répondons ici.",
-    "nothingOpen": "Rien n'est en cours avec l'équipe TinyFloor pour le moment.",
-    "emailUs": "Vous préférez l'e-mail ? <link>{email}</link>"
+    "closedNote": "Cette conversation est fermée. Écrivez-nous à nouveau quand vous voulez, nous la reprendrons.",
+    "ticketOffice": "Une question, une idée, quelque chose qui ne marche pas ? Écrivez à celles et ceux qui font TinyFloor. Nous lisons chaque message et répondons ici. Tout {office} peut voir cette conversation.",
+    "ticketLobby": "Une question, une idée, quelque chose qui ne marche pas ? Écrivez à celles et ceux qui font TinyFloor. Nous lisons chaque message et répondons ici. Vous seul pouvez voir cette conversation."
   },
   "billing": {
     "settingUp": "Paiement reçu. Mise en place de l'offre…",

@@ -489,6 +489,8 @@ export const api = {
     ),
   adminHelpTicket: (ticketId: string) => get<AdminHelpDetail>(`/admin/help/${id(ticketId)}`),
   adminHelpReply: (ticketId: string, body: string) => post<{ ok: true }>(`/admin/help/${id(ticketId)}/messages`, { body }),
+  /** The team writing to an office: in its open conversation, or the first message of a new one. */
+  adminWriteToOffice: (officeId: string, body: string) => post<{ id: string }>(`/admin/offices/${id(officeId)}/help`, { body }),
   adminHelpClose: (ticketId: string) => post<{ ok: true }>(`/admin/help/${id(ticketId)}/close`),
 
   // Help and feedback: the ticket with the team where you are (an office, or the demo office)

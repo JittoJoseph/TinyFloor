@@ -672,24 +672,15 @@
     "asked": "Kysytty"
   },
   "help": {
-    "title": "Apua ja palautetta",
-    "officeSees": "Se menee TinyFloor-tiimille ja avaa Chattiin tiketin, jota kaikki {office}-toimistossa voivat seurata.",
-    "lobbySees": "Se menee TinyFloor-tiimille ja avaa tiketin Chattiisi. Vain sinä näet sen.",
-    "placeholder": "Mitä tapahtui, ja mitä odotit tapahtuvan?",
-    "context": "Liitämme mukaan sivun, jolla olet, ja selaimesi, jotta voimme selvittää asian.",
-    "send": "Lähetä",
-    "sending": "Lähetetään",
+    "title": "Kirjoita TinyFloor-tiimille",
     "error": "Lähetys ei onnistunut. Yritä uudelleen.",
     "slowDown": "Olet lähettänyt paljon viimeisen tunnin aikana. Yritä hetken päästä uudelleen.",
-    "support": "TinyFloor-tuki",
-    "open": "Avoin",
+    "support": "TinyFloor-tiimi",
     "closed": "Suljettu",
     "message": "Viesti TinyFloor-tiimille",
-    "closedNote": "TinyFloor-tiimi sulki tämän. Vieläkö jumissa? Kerro meille uudelleen kohdasta Apua ja palautetta.",
-    "ticketOffice": "Kaikki {office}-toimistossa voivat seurata tätä ja lisätä siihen. TinyFloor-tiimi vastaa tänne.",
-    "ticketLobby": "Tämän näet vain sinä ja TinyFloor-tiimi. Vastaamme tänne.",
-    "nothingOpen": "TinyFloor-tiimillä ei ole nyt mitään avoinna.",
-    "emailUs": "Mieluummin sähköpostilla? <link>{email}</link>"
+    "closedNote": "Tämä keskustelu on suljettu. Kirjoita milloin tahansa uudelleen, niin jatketaan.",
+    "ticketOffice": "Kysymyksiä, ideoita tai jokin ei toimi: kirjoita TinyFloorin tekijöille. Luemme jokaisen viestin ja vastaamme täällä. Kaikki {office}-toimistossa näkevät tämän keskustelun.",
+    "ticketLobby": "Kysymyksiä, ideoita tai jokin ei toimi: kirjoita TinyFloorin tekijöille. Luemme jokaisen viestin ja vastaamme täällä. Vain sinä näet tämän keskustelun."
   },
   "billing": {
     "settingUp": "Maksu vastaanotettu. Pakettia otetaan käyttöön…",

@@ -521,7 +521,7 @@ class ChatSocket {
         this.answer(message.q, message.messages);
         break;
       case "help_changed":
-        help.changed();
+        help.changed(message.news);
         break;
       case "chat_error":
         if (message.code === "slow_down") {

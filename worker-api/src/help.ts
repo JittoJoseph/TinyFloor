@@ -1,16 +1,19 @@
+import type { HelpNews } from "../../shared-protocol/src";
 import { realtime, requireOffice } from "./access";
-import { requireAdmin } from "./admin";
+import { adminIds, requireAdmin } from "./admin";
 import { HttpError, json, readJson } from "./http";
 import type { Router } from "./router";
 import { countryOf, requireUser, type User } from "./session";
 
 /**
- * Help and feedback: a ticket with the TinyFloor team. An office has
+ * The conversation with the TinyFloor team (a ticket, here). An office has
  * at most one open, which everyone in it can follow and add to in Chat; a
- * demo office visitor has their own. Writing while none is open opens one.
- * Once the team closes it, it's gone from Chat and the next message starts
- * a new one. It all lives in D1 and is read by asking. What people write goes
- * to the team's Discord; the admin view answers and closes tickets.
+ * demo office visitor has their own. Either side can start it: someone
+ * writing while none is open, or the team writing to an office from the
+ * admin view. Once the team closes it, the next message starts a new one. It
+ * all lives in D1 and is read by asking. Each side hears when the other
+ * writes: the team on every admin's devices (and Discord), the office in its
+ * Chat and on its people's other devices (worker-realtime's chat.ts).
  */
 
 const LOBBY_PLACE = "Demo office";
@@ -84,10 +87,29 @@ const markRead = (env: Env, ticketId: string, userId: string) =>
      ON CONFLICT (ticket_id, user_id) DO UPDATE SET seen_id = excluded.seen_id`,
   ).bind(ticketId, userId);
 
-/** Where a ticket is followed is told it changed, so counts there turn up at once (after the response). */
-function changed(env: Env, ctx: ExecutionContext, ticket: { office_id: string | null; lobby: number; user_id: string | null }) {
+type Place = Pick<TicketRow, "office_id" | "lobby" | "user_id">;
+
+/** A message shortened for a notification. */
+const gist = (body: string) => (body.length > 160 ? `${body.slice(0, 160)}…` : body);
+
+/**
+ * Where a ticket is followed is told it changed, so counts there turn up at
+ * once; with `news` (the team wrote), everyone it's for is notified too. After
+ * the response.
+ */
+function changed(env: Env, ctx: ExecutionContext, ticket: Place, news?: HelpNews) {
   const place = ticket.lobby ? (ticket.user_id ? { visitor: ticket.user_id } : null) : ticket.office_id ? { officeId: ticket.office_id } : null;
-  if (place) ctx.waitUntil(realtime(env).helpChanged(place).catch(() => undefined));
+  if (place) ctx.waitUntil(realtime(env).helpChanged(place, news).catch(() => undefined));
+}
+
+/** The team's words in a ticket: the next message, and the office (or visitor) told and notified. */
+async function teamSays(env: Env, ctx: ExecutionContext, id: string, ticket: Place, body: string) {
+  const now = Date.now();
+  await env.DB.batch([
+    env.DB.prepare("INSERT INTO help_messages (ticket_id, from_team, name, body, created_at) VALUES (?, 1, ?, ?, ?)").bind(id, TEAM_NAME, body, now),
+    env.DB.prepare("UPDATE help_tickets SET updated_at = ?1, team_seen_id = (SELECT MAX(id) FROM help_messages WHERE ticket_id = ?2) WHERE id = ?2").bind(now, id),
+  ]);
+  changed(env, ctx, ticket, { title: TEAM_NAME, body: gist(body) });
 }
 
 /** A ticket's messages, oldest first, the way both sides show them. */
@@ -170,21 +192,23 @@ export function helpRoutes(router: Router): void {
         markRead(env, id, user.id),
       ]);
 
-      if (office) changed(env, ctx, { office_id: office.id, lobby: 0, user_id: user.id });
-
+      // Their other tabs and colleagues see it; the team hears on every admin's devices, and on Discord.
+      changed(env, ctx, { office_id: office?.id ?? null, lobby: office ? 0 : 1, user_id: user.id });
+      const inbox = `/admin?view=inbox&id=${encodeURIComponent(id)}`;
       const cf = request.cf as { city?: string; region?: string; country?: string } | undefined;
       const site = (env.SITE_ORIGINS ?? "").split(",")[0]?.trim();
       ctx.waitUntil(
-        realtime(env)
-          .helpMessage({
+        Promise.all([
+          adminIds(env).then((ids) => realtime(env).notify(ids, { title: `${user.displayName} · ${place}`, body: gist(body), tag: `help:${id}`, url: inbox })),
+          realtime(env).helpMessage({
             place,
             name: user.displayName,
             body,
             first: (opened.meta.changes ?? 0) > 0,
-            ...(site ? { link: `${site}/admin` } : {}),
+            ...(site ? { link: `${site}${inbox}` } : {}),
             where: { city: cf?.city, region: cf?.region, country: cf?.country },
-          })
-          .catch(() => undefined),
+          }),
+        ]).catch(() => undefined),
       );
       return json({ id }, { status: 201 });
     })
@@ -252,16 +276,27 @@ export function helpRoutes(router: Router): void {
       await requireAdmin(env, request, ctx);
       const body = cleanBody((await readJson(request)).body);
       if (!body) throw new HttpError(400, "empty_message", "Write a reply");
-      const ticket = await openTicket(env, params.id);
-      const now = Date.now();
-      await env.DB.batch([
-        env.DB.prepare("INSERT INTO help_messages (ticket_id, from_team, name, body, created_at) VALUES (?, 1, ?, ?, ?)").bind(params.id, TEAM_NAME, body, now),
-        env.DB.prepare(
-          "UPDATE help_tickets SET updated_at = ?1, team_seen_id = (SELECT MAX(id) FROM help_messages WHERE ticket_id = ?2) WHERE id = ?2",
-        ).bind(now, params.id),
-      ]);
-      changed(env, ctx, ticket);
+      await teamSays(env, ctx, params.id, await openTicket(env, params.id), body);
       return json({ ok: true });
+    })
+
+    // The team writing to an office first: its open ticket, or a new one the team opens, in everyone's Chat there.
+    .add("POST", "/v1/admin/offices/:id/help", async ({ request, env, ctx, params }) => {
+      await requireAdmin(env, request, ctx);
+      const body = cleanBody((await readJson(request)).body);
+      if (!body) throw new HttpError(400, "empty_message", "Write a message");
+      const office = await env.DB.prepare("SELECT id, name FROM offices WHERE id = ?").bind(params.id).first<{ id: string; name: string }>();
+      if (!office) throw new HttpError(404, "no_office", "No such office");
+      const now = Date.now();
+      await env.DB.prepare(
+        `INSERT INTO help_tickets (id, office_id, lobby, user_id, name, place, created_at, updated_at)
+         VALUES (?1, ?2, 0, NULL, ?3, ?4, ?5, ?5) ON CONFLICT DO NOTHING`,
+      )
+        .bind(crypto.randomUUID(), office.id, TEAM_NAME, office.name, now)
+        .run();
+      const { id } = (await env.DB.prepare("SELECT id FROM help_tickets WHERE office_id = ? AND lobby = 0 AND status = 'open'").bind(office.id).first<{ id: string }>())!;
+      await teamSays(env, ctx, id, { office_id: office.id, lobby: 0, user_id: null }, body);
+      return json({ id }, { status: 201 });
     })
 
     // Dealt with: it leaves their Chat, and their next message opens a new one.

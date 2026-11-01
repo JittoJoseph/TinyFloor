@@ -672,24 +672,15 @@
     "asked": "Zaproszono"
   },
   "help": {
-    "title": "Pomoc i opinie",
-    "officeSees": "Trafia do zespołu TinyFloor i otwiera w Czacie zgłoszenie, które mogą śledzić wszyscy z {office}.",
-    "lobbySees": "Trafia do zespołu TinyFloor i otwiera zgłoszenie w Twoim Czacie. Widzisz je tylko Ty.",
-    "placeholder": "Co się stało i czego się spodziewałeś?",
-    "context": "Dołączamy stronę, na której jesteś, i Twoją przeglądarkę, żeby móc to sprawdzić.",
-    "send": "Wyślij",
-    "sending": "Wysyłanie",
+    "title": "Napisz do zespołu TinyFloor",
     "error": "Nie udało się wysłać. Spróbuj ponownie.",
     "slowDown": "W ciągu ostatniej godziny wysłano dużo wiadomości. Spróbuj trochę później.",
-    "support": "Wsparcie TinyFloor",
-    "open": "Otwarte",
+    "support": "Zespół TinyFloor",
     "closed": "Zamknięte",
     "message": "Wiadomość do zespołu TinyFloor",
-    "closedNote": "Zespół TinyFloor zamknął to zgłoszenie. Nadal masz problem? Napisz do nas znowu w Pomoc i opinie.",
-    "ticketOffice": "Wszyscy z {office} mogą to śledzić i coś dodać. Zespół TinyFloor odpowiada tutaj.",
-    "ticketLobby": "Widzisz to tylko Ty i zespół TinyFloor. Odpowiadamy tutaj.",
-    "nothingOpen": "W tej chwili nic nie jest otwarte u zespołu TinyFloor.",
-    "emailUs": "Wolisz e-mail? <link>{email}</link>"
+    "closedNote": "Ta rozmowa jest zamknięta. Napisz ponownie, kiedy chcesz, a my ją podejmiemy.",
+    "ticketOffice": "Pytania, pomysły, coś nie działa: napisz do ludzi, którzy tworzą TinyFloor. Czytamy każdą wiadomość i odpowiadamy tutaj. Wszyscy z {office} widzą tę rozmowę.",
+    "ticketLobby": "Pytania, pomysły, coś nie działa: napisz do ludzi, którzy tworzą TinyFloor. Czytamy każdą wiadomość i odpowiadamy tutaj. Tylko ty widzisz tę rozmowę."
   },
   "billing": {
     "settingUp": "Płatność otrzymana. Konfigurujemy plan…",

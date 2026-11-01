@@ -672,24 +672,15 @@
     "asked": "Gevraagd"
   },
   "help": {
-    "title": "Hulp en feedback",
-    "officeSees": "Het gaat naar het TinyFloor-team en opent een ticket in Chat dat iedereen in {office} kan volgen.",
-    "lobbySees": "Het gaat naar het TinyFloor-team en opent een ticket in je Chat. Alleen jij ziet het.",
-    "placeholder": "Wat gebeurde er, en wat verwachtte je?",
-    "context": "We sturen de pagina waar je bent en je browser mee, zodat we het kunnen uitzoeken.",
-    "send": "Versturen",
-    "sending": "Wordt verstuurd",
+    "title": "Praat met het TinyFloor-team",
     "error": "Dat is niet verstuurd. Probeer het opnieuw.",
     "slowDown": "Je hebt het afgelopen uur veel gestuurd. Probeer het straks opnieuw.",
-    "support": "TinyFloor-support",
-    "open": "Open",
+    "support": "TinyFloor-team",
     "closed": "Gesloten",
     "message": "Bericht aan het TinyFloor-team",
-    "closedNote": "Het TinyFloor-team heeft dit gesloten. Loop je nog vast? Laat het ons opnieuw weten via Hulp en feedback.",
-    "ticketOffice": "Iedereen in {office} kan dit volgen en iets toevoegen. Het TinyFloor-team antwoordt hier.",
-    "ticketLobby": "Alleen jij en het TinyFloor-team zien dit. We antwoorden hier.",
-    "nothingOpen": "Er staat nu niets open bij het TinyFloor-team.",
-    "emailUs": "Liever per e-mail? <link>{email}</link>"
+    "closedNote": "Dit gesprek is gesloten. Schrijf ons wanneer je wilt, dan gaan we verder.",
+    "ticketOffice": "Vragen, ideeën, iets dat niet werkt: schrijf de mensen die TinyFloor maken. We lezen elk bericht en antwoorden hier. Iedereen in {office} kan dit gesprek zien.",
+    "ticketLobby": "Vragen, ideeën, iets dat niet werkt: schrijf de mensen die TinyFloor maken. We lezen elk bericht en antwoorden hier. Alleen jij ziet dit gesprek."
   },
   "billing": {
     "settingUp": "Betaling ontvangen. Het abonnement wordt ingesteld…",

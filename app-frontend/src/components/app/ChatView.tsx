@@ -97,7 +97,7 @@ export function ChatView({ channel }: { channel?: string }) {
   const support = open === SUPPORT_CHANNEL;
   // Up in an empty box: edit your last message here.
   const [editLast, setEditLast] = useState(0);
-  const { ticket, view: ticketView } = useHelp();
+  const { ticket } = useHelp();
   const people = place.people;
   const personById = useMemo(() => new Map(people.map((one) => [one.id, one])), [people]);
   const names = useMemo(() => new Map(people.map((one) => [one.id, one.displayName])), [people]);
@@ -151,11 +151,9 @@ export function ChatView({ channel }: { channel?: string }) {
   useEffect(() => {
     if (!support && state.ready) chat.warm(open);
   }, [support, state.ready, open]);
-  // The ticket is read often while Chat is open, so the team's answers turn up here.
+  // The conversation with the team, as Chat opens; after that, the chat socket says when it changes (help_changed).
   useEffect(() => {
     void help.refresh(true);
-    const timer = setInterval(() => document.visibilityState === "visible" && void help.refresh(true), 15_000);
-    return () => clearInterval(timer);
   }, []);
   // A direct message's address with someone missing from it goes nowhere: back to the start.
   const broken = isDm(open) && !pair;
@@ -427,21 +425,19 @@ export function ChatView({ channel }: { channel?: string }) {
             </Section>
           </nav>
 
-          {/* The ticket with the team stays out of the way, at the very bottom, while one is open. */}
-          {(ticket || (support && ticketView)) && (
-            <div className="shrink-0 border-t border-border px-2 py-2">
-              <Row
-                href={place.paths.chat(SUPPORT_CHANNEL)}
-                active={support}
-                unread={ticket?.unread ?? 0}
-                count={ticket?.unread ?? 0}
-                icon={<Logo size={18} />}
-                label={th("support")}
-              />
-            </div>
-          )}
+          {/* The conversation with the TinyFloor team, always there, out of the way at the very bottom. */}
+          <div className="shrink-0 border-t border-border px-2 py-2">
+            <Row
+              href={place.paths.chat(SUPPORT_CHANNEL)}
+              active={support}
+              unread={ticket?.unread ?? 0}
+              count={ticket?.unread ?? 0}
+              icon={<Logo size={18} />}
+              label={th("support")}
+            />
+          </div>
 
-          {!lobby && dms.length > 0 && <NotifyCard />}
+          {!lobby && (dms.length > 0 || ticket) && <NotifyCard />}
           <PresenceDock place={place.name} settingsHref={place.paths.settings} />
           <CommandPalette
             items={items}

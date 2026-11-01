@@ -24,7 +24,7 @@ import { RailIcons } from "./railIcons";
 import { useDesktopSiteZoom } from "@/lib/hooks/use-desktop-site-zoom";
 import { help, useHelp } from "@/lib/help";
 import { setFloorShown } from "@/lib/floor";
-import { HELP_TRIGGER, HelpCompose } from "./HelpCompose";
+import { HelpSync } from "./HelpSync";
 
 /**
  * Whether the view on screen has a presence dock with you in it. When it does,
@@ -64,7 +64,8 @@ export interface ShellDestination {
  * A rail that never moves, and one panel filling the
  * rest: the floor, with whichever view you opened laid over it. The floor is
  * never unmounted, so your socket, call and position survive reading a message.
- * Help and feedback sits quietly at the rail's foot (your menu, on a phone).
+ * The way to the TinyFloor team sits quietly at the rail's foot (your menu,
+ * on a phone).
  */
 export function AppShell({
   mark,
@@ -89,7 +90,7 @@ export function AppShell({
   floor: ReactNode;
   /** A line across the top of the panel, part of it: the plan, when it changes something. */
   notice?: ReactNode;
-  /** Help and feedback at the rail's foot; the team's own admin view has none. */
+  /** The way to the TinyFloor team at the rail's foot; the team's own admin view has none. */
   help?: boolean;
   children?: ReactNode;
 }) {
@@ -164,7 +165,7 @@ export function AppShell({
           </nav>
         </div>
       </FrameContext.Provider>
-      {help && <HelpCompose />}
+      {help && <HelpSync />}
     </DockContext.Provider>
   );
 }
@@ -235,29 +236,21 @@ function RailItem({
   );
 }
 
-/** Help and feedback, among the quiet things at the rail's foot: the box beside it, or the open ticket in Chat. */
+/** The way to the TinyFloor team, among the quiet things at the rail's foot: the conversation, in Chat. */
 function HelpRailButton() {
   const t = useTranslations("help");
-  const { composing } = useHelp();
+  // Lit while the conversation is on screen.
+  const here = useHelp().shown;
   return (
     <Tooltip content={t("title")} side="right" wrapperClassName="w-full">
-      <button
-        type="button"
-        aria-label={t("title")}
-        aria-expanded={composing}
-        {...{ [HELP_TRIGGER]: "" }}
-        onClick={() => help.open()}
-        className="group relative flex w-full cursor-pointer flex-col items-center outline-none"
-      >
+      <button type="button" aria-label={t("title")} onClick={() => help.open()} className="group relative flex w-full cursor-pointer flex-col items-center outline-none">
         <span
           className={cn(
             "relative flex size-10 items-center justify-center rounded-[12px] transition-[background-color,color,transform] duration-150 group-focus-visible:ring-2 group-focus-visible:ring-ring group-active:scale-95",
-            composing
-              ? "bg-foreground/[0.08] text-foreground"
-              : "text-muted-foreground group-hover:bg-foreground/[0.06] group-hover:text-foreground",
+            here ? "bg-foreground/[0.08] text-foreground" : "text-muted-foreground group-hover:bg-foreground/[0.06] group-hover:text-foreground",
           )}
         >
-          <Icon icon={<HelpCircle />} active={composing} />
+          <Icon icon={<HelpCircle />} active={here} />
         </span>
       </button>
     </Tooltip>

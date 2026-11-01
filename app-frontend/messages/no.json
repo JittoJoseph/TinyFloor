@@ -672,24 +672,15 @@
     "asked": "Spurt"
   },
   "help": {
-    "title": "Hjelp og tilbakemelding",
-    "officeSees": "Det går til TinyFloor-teamet og åpner en sak i Chat som alle i {office} kan følge.",
-    "lobbySees": "Det går til TinyFloor-teamet og åpner en sak i Chatten din. Bare du ser den.",
-    "placeholder": "Hva skjedde, og hva forventet du?",
-    "context": "Vi sender med siden du er på og nettleseren din, så vi kan se på det.",
-    "send": "Send",
-    "sending": "Sender",
+    "title": "Skriv til TinyFloor-teamet",
     "error": "Det ble ikke sendt. Prøv igjen.",
     "slowDown": "Du har sendt mye den siste timen. Prøv igjen litt senere.",
-    "support": "TinyFloor-støtte",
-    "open": "Åpen",
+    "support": "TinyFloor-teamet",
     "closed": "Lukket",
     "message": "Skriv til TinyFloor-teamet",
-    "closedNote": "TinyFloor-teamet har lukket denne. Står du fortsatt fast? Skriv til oss igjen fra Hjelp og tilbakemelding.",
-    "ticketOffice": "Alle i {office} kan følge denne og legge til noe. TinyFloor-teamet svarer her.",
-    "ticketLobby": "Bare du og TinyFloor-teamet ser dette. Vi svarer her.",
-    "nothingOpen": "Ingenting er åpent hos TinyFloor-teamet akkurat nå.",
-    "emailUs": "Heller e-post? <link>{email}</link>"
+    "closedNote": "Samtalen er lukket. Skriv igjen når som helst, så tar vi den opp.",
+    "ticketOffice": "Spørsmål, ideer eller noe som ikke virker: skriv til dem som lager TinyFloor. Vi leser hver melding og svarer her. Alle i {office} kan se samtalen.",
+    "ticketLobby": "Spørsmål, ideer eller noe som ikke virker: skriv til dem som lager TinyFloor. Vi leser hver melding og svarer her. Bare du kan se samtalen."
   },
   "billing": {
     "settingUp": "Betaling mottatt. Planen settes opp…",

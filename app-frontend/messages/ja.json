@@ -672,24 +672,15 @@
     "asked": "依頼済み"
   },
   "help": {
-    "title": "ヘルプとフィードバック",
-    "officeSees": "TinyFloor チームに届き、{office} の全員が見られるチケットがチャットに作られます。",
-    "lobbySees": "TinyFloor チームに届き、あなたのチャットにチケットが作られます。見られるのはあなただけです。",
-    "placeholder": "何が起きて、本来はどうなるはずでしたか？",
-    "context": "調査のため、開いているページとブラウザの情報を添えて送ります。",
-    "send": "送信",
-    "sending": "送信中",
+    "title": "TinyFloor チームに話す",
     "error": "送信できませんでした。もう一度お試しください。",
     "slowDown": "この1時間に送った数が多すぎます。少し時間をおいてお試しください。",
-    "support": "TinyFloor サポート",
-    "open": "対応中",
+    "support": "TinyFloor チーム",
     "closed": "完了",
     "message": "TinyFloor チームにメッセージ",
-    "closedNote": "TinyFloor チームがこのチケットを閉じました。まだ解決しない場合は、ヘルプとフィードバックからもう一度お知らせください。",
-    "ticketOffice": "{office} の全員が見て書き込めます。TinyFloor チームはここで返信します。",
-    "ticketLobby": "見られるのはあなたと TinyFloor チームだけです。ここで返信します。",
-    "nothingOpen": "いま TinyFloor チームとのやり取りはありません。",
-    "emailUs": "メールの方がよければ: <link>{email}</link>"
+    "closedNote": "この会話は閉じられました。いつでもまた書いてください。続きからお返事します。",
+    "ticketOffice": "質問、アイデア、うまく動かないこと：TinyFloor をつくっている私たちに書いてください。すべてのメッセージを読み、ここで返信します。{office} の全員がこの会話を見られます。",
+    "ticketLobby": "質問、アイデア、うまく動かないこと：TinyFloor をつくっている私たちに書いてください。すべてのメッセージを読み、ここで返信します。この会話はあなただけが見られます。"
   },
   "billing": {
     "settingUp": "お支払いを受け付けました。プランを準備しています…",

@@ -672,24 +672,15 @@
     "asked": "Convidado"
   },
   "help": {
-    "title": "Ajuda e feedback",
-    "officeSees": "Vai para a equipe do TinyFloor e abre um ticket no Chat que todos em {office} podem acompanhar.",
-    "lobbySees": "Vai para a equipe do TinyFloor e abre um ticket no seu Chat. Só você vê.",
-    "placeholder": "O que aconteceu, e o que você esperava?",
-    "context": "Incluímos a página em que você está e o seu navegador, para podermos investigar.",
-    "send": "Enviar",
-    "sending": "Enviando",
+    "title": "Fale com a equipe do TinyFloor",
     "error": "Não foi enviado. Tente de novo.",
     "slowDown": "Você enviou muito na última hora. Tente de novo daqui a pouco.",
-    "support": "Suporte TinyFloor",
-    "open": "Aberto",
+    "support": "Equipe do TinyFloor",
     "closed": "Fechado",
     "message": "Mensagem para a equipe do TinyFloor",
-    "closedNote": "A equipe do TinyFloor fechou isto. Ainda com problema? Fale com a gente de novo em Ajuda e feedback.",
-    "ticketOffice": "Todos em {office} podem acompanhar e adicionar algo. A equipe do TinyFloor responde aqui.",
-    "ticketLobby": "Só você e a equipe do TinyFloor veem isto. Respondemos aqui.",
-    "nothingOpen": "Não há nada aberto com a equipe do TinyFloor agora.",
-    "emailUs": "Prefere e-mail? <link>{email}</link>"
+    "closedNote": "Esta conversa foi encerrada. Escreva de novo quando quiser e a gente continua.",
+    "ticketOffice": "Perguntas, ideias, algo que não funciona: escreva para quem faz o TinyFloor. Lemos cada mensagem e respondemos aqui. Todos em {office} podem ver esta conversa.",
+    "ticketLobby": "Perguntas, ideias, algo que não funciona: escreva para quem faz o TinyFloor. Lemos cada mensagem e respondemos aqui. Só você pode ver esta conversa."
   },
   "billing": {
     "settingUp": "Pagamento recebido. Ativando o plano…",

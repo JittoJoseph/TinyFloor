@@ -1,32 +1,33 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import type { HelpNews } from "@shared/chat";
 import { api, ApiError, type HelpContext, type HelpTicket, type HelpTicketView } from "@/lib/api";
 import { analyticsConfigured, withPostHog } from "@/lib/analytics";
 
 /** Read again when you come back to the tab, but not more often than this. */
 const FRESH_MS = 60_000;
 
-/** The ticket's place in Chat, `/chat/~support`. A channel's name can't hold "~", so it's never one. */
-export const SUPPORT_CHANNEL = "~support";
+export { SUPPORT_CHANNEL } from "@shared/chat";
 
 interface HelpState {
-  /** The rail's box for telling the team something is open. */
-  composing: boolean;
+  /** The conversation is on screen, in Chat. */
+  shown: boolean;
   /** The open ticket where you are, if there is one. */
   ticket: HelpTicket | null;
   /** The ticket on screen in Chat; it stays, closed, if the team closes it while you're on it. */
   view: HelpTicketView | null;
 }
 
-const EMPTY: HelpState = { composing: false, ticket: null, view: null };
+const EMPTY: HelpState = { shown: false, ticket: null, view: null };
 
 /**
- * Help and feedback: the ticket with the TinyFloor team where you
- * are. With none open, the rail opens a box to start one; with one open, it
- * opens the ticket in Chat. The office's chat socket says when the team has
- * answered, so its count turns up at once; it's also read now and then, in
- * case a word was missed while the socket was down.
+ * The conversation with the TinyFloor team where you are (a ticket, to the
+ * API). It's in Chat, like any conversation: the rail's "?" opens it, and the
+ * first message starts it. The office's chat socket says when the team has
+ * written, so its count turns up at once and, with news, the app can say so;
+ * it's also read now and then, in case a word was missed while the socket was
+ * down.
  */
 class Help {
   private state: HelpState = EMPTY;
@@ -34,8 +35,9 @@ class Help {
   /** The office whose ticket this is; undefined in the demo office. */
   private office: string | undefined;
   private readAt = 0;
-  /** Opens the ticket in Chat; given by the place's shell, which knows the way. */
+  /** Opens the conversation in Chat; given by the place's shell, which knows the way. */
   private toTicket: (() => void) | null = null;
+  private hearers = new Set<(news: HelpNews) => void>();
 
   subscribe = (listener: () => void) => {
     this.listeners.add(listener);
@@ -68,25 +70,26 @@ class Help {
     }
   }
 
-  /** The office's chat says the ticket changed (the team answered, or closed it): read it now. */
-  changed() {
+  /** The office's chat says the ticket changed (the team wrote, or closed it): read it now, and pass on what the team said. */
+  changed(news?: HelpNews) {
     void this.refresh(true);
     if (this.state.view) void this.load(this.state.view.id);
+    if (news) for (const hear of this.hearers) hear(news);
   }
 
-  compose(open: boolean) {
-    this.set({ composing: open });
+  /** Told when the team writes, for a notification (DesktopAlerts). */
+  onNews(hear: (news: HelpNews) => void) {
+    this.hearers.add(hear);
+    return () => void this.hearers.delete(hear);
   }
 
   goToTicket(go: () => void) {
     this.toTicket = go;
   }
 
-  /** The rail's "?" or the phone menu: the open ticket in Chat, or the box to start one. */
+  /** The rail's "?" or the phone menu: the conversation, in Chat. */
   open() {
-    if (!this.state.ticket || !this.toTicket) return this.compose(!this.state.composing);
-    this.compose(false);
-    this.toTicket();
+    this.toTicket?.();
   }
 
   /** Something for the team: added to the open ticket, or the start of one (which notes where it came from). */
@@ -108,9 +111,14 @@ class Help {
     }
   }
 
+  /** On screen, in Chat. */
+  show() {
+    this.set({ shown: true });
+  }
+
   /** Off screen: a ticket that was closed meanwhile goes with it. */
   leave() {
-    this.set({ view: null });
+    this.set({ shown: false, view: null });
   }
 
   private set(next: Partial<HelpState>) {

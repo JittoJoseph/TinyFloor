@@ -672,24 +672,15 @@
     "asked": "요청함"
   },
   "help": {
-    "title": "도움말 및 의견",
-    "officeSees": "TinyFloor 팀에 전달되고, {office}의 모든 사람이 볼 수 있는 티켓이 채팅에 열려요.",
-    "lobbySees": "TinyFloor 팀에 전달되고, 내 채팅에 티켓이 열려요. 나만 볼 수 있어요.",
-    "placeholder": "무슨 일이 있었고, 원래는 어떻게 될 거라고 생각했나요?",
-    "context": "확인할 수 있도록 지금 보고 있는 페이지와 브라우저 정보를 함께 보내요.",
-    "send": "보내기",
-    "sending": "보내는 중",
+    "title": "TinyFloor 팀과 이야기하기",
     "error": "보내지 못했어요. 다시 시도해 주세요.",
     "slowDown": "지난 한 시간 동안 많이 보냈어요. 잠시 후에 다시 시도해 주세요.",
-    "support": "TinyFloor 지원",
-    "open": "진행 중",
+    "support": "TinyFloor 팀",
     "closed": "종료",
     "message": "TinyFloor 팀에 메시지 보내기",
-    "closedNote": "TinyFloor 팀이 이 티켓을 닫았어요. 아직 문제가 있다면 도움말 및 의견에서 다시 알려 주세요.",
-    "ticketOffice": "{office}의 모든 사람이 보고 덧붙일 수 있어요. TinyFloor 팀이 여기에서 답해요.",
-    "ticketLobby": "나와 TinyFloor 팀만 볼 수 있어요. 여기에서 답해 드려요.",
-    "nothingOpen": "지금은 TinyFloor 팀과 진행 중인 문의가 없어요.",
-    "emailUs": "이메일이 편하신가요? <link>{email}</link>"
+    "closedNote": "이 대화는 닫혔어요. 언제든 다시 쓰시면 이어서 답할게요.",
+    "ticketOffice": "질문, 아이디어, 잘 안 되는 것: TinyFloor를 만드는 저희에게 써 주세요. 모든 메시지를 읽고 여기에서 답해요. {office}의 모든 사람이 이 대화를 볼 수 있어요.",
+    "ticketLobby": "질문, 아이디어, 잘 안 되는 것: TinyFloor를 만드는 저희에게 써 주세요. 모든 메시지를 읽고 여기에서 답해요. 이 대화는 나만 볼 수 있어요."
   },
   "billing": {
     "settingUp": "결제가 완료됐어요. 요금제를 준비하고 있어요…",

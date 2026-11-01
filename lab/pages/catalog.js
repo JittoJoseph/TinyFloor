@@ -402,8 +402,9 @@ export function check(catalog, layouts = []) {
     if (isComposite(sprite)) {
       if (!onGrid(w, h)) say(`size ${w}×${h} is off the ${GRID}px grid`);
     } else if (!onGrid(...sprite.rect)) say(`sprite rect ${sprite.rect} is off the ${GRID}px grid`);
+    // A collider may run up to half a tile past the front, so you stand before a table, not on its edge.
     for (const [x, y, cw, ch] of item.colliders) {
-      if (x < 0 || y < 0 || x + cw > w || y + ch > h) say(`collider ${[x, y, cw, ch]} reaches outside the sprite`);
+      if (x < 0 || y < 0 || x + cw > w || y + ch > h + 16) say(`collider ${[x, y, cw, ch]} reaches outside the sprite`);
     }
     if (item.sortY < 0 || item.sortY > h) say(`sort line ${item.sortY} is outside the sprite`);
     for (const seat of item.seats) {

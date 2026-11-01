@@ -177,13 +177,27 @@ for (const { template, floor } of offices) {
   const seatIds = new Set();
   const desks = new Map(template.seats.filter((seat) => seat.desk).map((seat) => [seat.key, seat]));
   const inZone = (zone, px, py) => px >= zone.x && px < zone.x + zone.width && py >= zone.y && py < zone.y + zone.height;
+  // The outline of what you'd sit on, [x, y, w, h]: the art of its piece, shared out at the middles between its seats
+  // (a bench's, a sofa's), so the floor can show it as you come near or point at it.
+  const boxes = new Map();
+  for (const piece of floor) {
+    const spots = piece.item.seats ?? [];
+    if (!spots.length) continue;
+    const [left, top, right, bottom] = artOf.get(piece.item.id);
+    const order = spots.map((spot, n) => ({ spot, n })).sort((a, b) => a.spot.x - b.spot.x);
+    order.forEach(({ spot, n }, i) => {
+      const from = i ? Math.round((order[i - 1].spot.x + spot.x) / 2) : left;
+      const to = i < order.length - 1 ? Math.round((spot.x + order[i + 1].spot.x) / 2) : right;
+      boxes.set(n ? `${piece.key}/${n}` : piece.key, [piece.x + from, piece.y + top, to - from, bottom - top]);
+    });
+  }
   const seats = seatsOf(floor).map((seat) => {
     const id = Math.floor(seat.y / TILE) * template.shell.size[0] + Math.floor(seat.x / TILE);
     if (seatIds.has(id)) throw new Error(`${template.id}: two seats on tile ${id}`);
     seatIds.add(id);
     const desk = desks.get(seat.key);
     const zone = template.anchors.zones?.find((one) => inZone(one, seat.x, seat.y))?.name;
-    return { id, key: seat.key, x: seat.x, y: seat.y, dir: seat.dir, ...(desk ? { desk: desk.desk, arrival: desk.arrival } : {}), ...(zone ? { zone } : {}) };
+    return { id, key: seat.key, x: seat.x, y: seat.y, dir: seat.dir, box: boxes.get(seat.key), ...(desk ? { desk: desk.desk, arrival: desk.arrival } : {}), ...(zone ? { zone } : {}) };
   });
   const missing = floor.filter((piece) => !frames[piece.item.id]);
   if (missing.length) throw new Error(`${template.id}: not on the atlas: ${missing.map((piece) => piece.item.id).join(", ")}`);

@@ -104,6 +104,8 @@ export interface FloorSeat {
   x: number;
   y: number;
   dir: "up" | "down";
+  /** The outline of what you sit on, [x, y, width, height]: its art, shared out between the seats of a bench or a sofa. */
+  box: [number, number, number, number];
   /** A desk's own key; only desks can be someone's (docs/product.md). */
   desk?: string;
   /** Where you arrive for a desk: a walkable tile two steps back from it, worked out by the lab. */

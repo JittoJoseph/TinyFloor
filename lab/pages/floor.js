@@ -138,10 +138,11 @@ export function sideWalls(shell) {
  * an item has to be one of the office theme's to go up. A wall has two plants at most,
  * never side by side (one on a short wall), one water cooler, and nothing
  * twice in a row. Nothing covers a window, and nothing stands over anything
- * else. Along the side walls, a lamp, a plant or a cooler here and there (one
- * plant a wall), kept clear of the corners and doorways. Nothing goes where
- * someone has put furniture, or where the floor keeps a spot of its own (the
- * whiteboard's).
+ * else. Along the side walls, a plant or a cooler here and there (one plant a
+ * wall), kept clear of the corners and doorways; a room's lamp stands in a top
+ * corner. Whatever stands by a side wall leaves a tile to walk between it and
+ * the furniture. Nothing goes where someone has put furniture, or where the
+ * floor keeps a spot of its own (the whiteboard's).
  *
  * A shell without a plan (drawn tile by tile, like Startup's) has no rooms:
  * its walls are dressed as the hall's, with the kitchen along the longest.
@@ -177,8 +178,10 @@ function dressWalls(byId, shell, placed, anchors = {}) {
     const [w, h] = spriteSize(item.sprite);
     return [x, y, w, h];
   });
+  const furniture = [...blocked];
   for (const spot of [anchors.whiteboard].filter(Boolean)) blocked.push([spot.x, spot.y, spot.width, spot.height]);
-  const free = (x, y, w, h) => blocked.every(([bx, by, bw, bh]) => x + w <= bx || x >= bx + bw || y + h <= by || y >= by + bh);
+  const clear = (list, x, y, w, h) => list.every(([bx, by, bw, bh]) => x + w <= bx || x >= bx + bw || y + h <= by || y >= by + bh);
+  const free = (x, y, w, h) => clear(blocked, x, y, w, h);
   const tiles = (id) => Math.ceil(spriteSize(byId.get(id).sprite)[0] / TILE);
   const out = [];
   const [sw, sh] = shell.size;
@@ -293,23 +296,51 @@ function dressWalls(byId, shell, placed, anchors = {}) {
     if (rand() < 0.25) put(pick(PLANTS), end - 1);
   }
 
-  for (const run of sideWalls(shell).filter((run) => !isGround(cell(run.x, run.y)))) {
+  const sides = sideWalls(shell).filter((run) => !isGround(cell(run.x, run.y)));
+  const counts = new Map();
+  /** Stands it by a side wall with its foot on row ty, when there's room and still a tile to walk past it; how many rows it takes. */
+  const stand = (run, item, ty) => {
     const key = `side:${run.side}:${run.x},${run.y},${run.length}`;
-    const rand = random(`${DRESS_SEED}|${key}`);
+    const [w, h] = spriteSize(item.sprite);
+    const x = run.side === "left" ? run.x * TILE : (run.x + 1) * TILE - w;
+    const y = (ty + 1) * TILE - h;
+    const lane = run.side === "left" ? x : x - TILE;
+    if (!free(x, y, w, h) || !clear(furniture, lane, y, w + TILE, h)) return 0;
+    const n = counts.get(key) ?? 0;
+    counts.set(key, n + 1);
+    out.push({ key: `${key}/${n}`, item, x, y, generated: "wall" });
+    blocked.push([x, y, w, h]);
+    return Math.ceil(h / TILE);
+  };
+
+  // A room's lamp, in a corner under its top wall: the side its seed says, or the other when there's no room there.
+  // (A shell without rooms gives each wall its own.)
+  const lit = new Set();
+  for (const first of [true, false]) {
+    for (const run of sides) {
+      const room = plan ? roomAt(plan, run.x, run.y + 1) : null;
+      const which = room ? `room:${room.rect}` : `side:${run.side}:${run.x},${run.y}`;
+      const lamps = (ROOMS[room?.kind ?? "open"] ?? ROOMS.open).side.filter((id) => id.startsWith("lamp-"));
+      if (lit.has(which) || !lamps.length) continue;
+      const rand = random(`${DRESS_SEED}|lamp|${which}`);
+      if ((run.side === (rand() < 0.5 ? "left" : "right")) !== first) continue;
+      if (stand(run, byId.get(lamps[Math.floor(rand() * lamps.length)]), run.y + 1)) lit.add(which);
+    }
+  }
+
+  // Along the rest of each, clear of the corner at the top (the top wall's things are there) and of the run's ends,
+  // where doorways are.
+  for (const run of sides) {
+    const rand = random(`${DRESS_SEED}|side:${run.side}:${run.x},${run.y},${run.length}`);
     const kinds = (ROOMS[kindAt(run.x, run.y + 1)] ?? ROOMS.open).side;
-    let n = 0, last = null, coolers = 0, plants = 0;
-    // Clear of the corner at the top (the top wall's things are there) and of the run's ends, where doorways are.
+    let last = null, coolers = 0, plants = 0;
     for (let ty = run.y + 3; ty < run.y + run.length - 1; ) {
       if (rand() < 0.5) {
-        const options = [...kinds, ...(run.side === "right" ? SIDE_RIGHT : [])].filter((id) => byId.get(id)?.themes.includes(THEME) && id !== last && !(coolers && id.includes("cooler")) && !(plants && id.includes("plant")));
+        const options = [...kinds, ...(run.side === "right" ? SIDE_RIGHT : [])].filter((id) => byId.get(id)?.themes.includes(THEME) && !id.startsWith("lamp-") && id !== last && !(coolers && id.includes("cooler")) && !(plants && id.includes("plant")));
         const item = byId.get(options[Math.floor(rand() * options.length)]);
-        const [w, h] = spriteSize(item.sprite);
-        const x = run.side === "left" ? run.x * TILE : (run.x + 1) * TILE - w;
-        const y = (ty + 1) * TILE - h;
-        if (free(x, y, w, h)) {
-          out.push({ key: `${key}/${n++}`, item, x, y, generated: "wall" });
-          blocked.push([x, y, w, h]);
-          ty += Math.ceil(h / TILE);
+        const tall = item ? stand(run, item, ty) : 0;
+        if (tall) {
+          ty += tall;
           last = item.id;
           if (item.id.includes("cooler")) coolers++;
           if (item.id.includes("plant")) plants++;

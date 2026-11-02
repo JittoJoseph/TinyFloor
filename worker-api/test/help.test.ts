@@ -96,6 +96,20 @@ describe("help and feedback", () => {
     await dropAdmin();
   });
 
+  it("counts the team's words as new for everyone when the team writes first", async () => {
+    const boss = await admin();
+    const { owner, mate, office } = await officeWithTwo("Help Greeted");
+    const { id } = (await call<{ id: string }>(boss, "POST", `/v1/admin/offices/${office}/help`, { body: "Welcome!" })).body;
+    await call(boss, "POST", `/v1/admin/help/${id}/messages`, { body: "Anything we can help with?" });
+    // Nobody in the office has opened it yet, and both messages are waiting for each of them.
+    expect((await openHere(owner, office)).body.ticket).toEqual({ id, unread: 2 });
+    expect((await openHere(mate, office)).body.ticket?.unread).toBe(2);
+    await call<View>(owner, "GET", `/v1/help/${id}`);
+    expect((await openHere(owner, office)).body.ticket?.unread).toBe(0);
+    expect((await openHere(mate, office)).body.ticket?.unread).toBe(2);
+    await dropAdmin();
+  });
+
   it("keeps tickets for the team when their office closes", async () => {
     const boss = await admin();
     const owner = await makeUser("Closing Owner");

@@ -133,13 +133,14 @@ async function messagesOf(env: Env, ticketId: string, userId?: string) {
 
 export function helpRoutes(router: Router): void {
   router
-    // The open ticket where you are (?office= for an office), with what's new in it since you last looked.
+    // The open ticket where you are (?office= for an office), with what's new in it since you last looked
+    // (all of it, if you never have: the team may have written first).
     .add("GET", "/v1/help", async ({ request, env, ctx }) => {
       const user = await requireUser(env, request, ctx);
       const office = new URL(request.url).searchParams.get("office");
       const officeId = office ? (await requireOffice(env, office, user.id)).id : null;
       const ticket = await env.DB.prepare(
-        `SELECT t.id, (SELECT COUNT(*) FROM help_messages m WHERE m.ticket_id = t.id AND m.id > r.seen_id AND m.user_id IS NOT ?1) AS unread
+        `SELECT t.id, (SELECT COUNT(*) FROM help_messages m WHERE m.ticket_id = t.id AND m.id > COALESCE(r.seen_id, 0) AND m.user_id IS NOT ?1) AS unread
            FROM help_tickets t LEFT JOIN help_reads r ON r.ticket_id = t.id AND r.user_id = ?1
           WHERE ${openHere("t.")}`,
       )

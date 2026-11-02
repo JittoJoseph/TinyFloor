@@ -317,6 +317,10 @@ export interface AdminHelpDetail {
     status: "open" | "closed";
   };
   messages: HelpMessage[];
+  /** The last message the team has read (adminHelpRead marks the rest): what's after it, from them, is new. */
+  seenBefore: number;
+  /** How far each of the people it's for has read (the id of the last message they've seen); only those who have. */
+  reads: Array<{ id: string; name: string; seen: number }>;
 }
 
 /** Where a ticket was opened from, for the team. */
@@ -501,7 +505,10 @@ export const api = {
       `/admin/help?${new URLSearchParams({ status: params.status, ...(params.page ? { page: String(params.page) } : {}) })}`,
     ),
   adminHelpTicket: (ticketId: string) => get<AdminHelpDetail>(`/admin/help/${id(ticketId)}`),
+  adminHelpRead: (ticketId: string) => post<{ ok: true }>(`/admin/help/${id(ticketId)}/read`),
   adminHelpReply: (ticketId: string, body: string) => post<{ ok: true }>(`/admin/help/${id(ticketId)}/messages`, { body }),
+  adminHelpEdit: (ticketId: string, messageId: number, body: string) => patch<{ ok: true }>(`/admin/help/${id(ticketId)}/messages/${messageId}`, { body }),
+  adminHelpDelete: (ticketId: string, messageId: number) => del<{ ok: true }>(`/admin/help/${id(ticketId)}/messages/${messageId}`),
   /** The team writing to an office: in its open conversation, or the first message of a new one. */
   adminWriteToOffice: (officeId: string, body: string) => post<{ id: string }>(`/admin/offices/${id(officeId)}/help`, { body }),
   adminHelpClose: (ticketId: string) => post<{ ok: true }>(`/admin/help/${id(ticketId)}/close`),

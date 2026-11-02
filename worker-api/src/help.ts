@@ -13,7 +13,9 @@ import { countryOf, requireUser, type User } from "./session";
  * admin view. Once the team closes it, the next message starts a new one. It
  * all lives in D1 and is read by asking. Each side hears when the other
  * writes: the team on every admin's devices (and Discord), the office in its
- * Chat and on its people's other devices (worker-realtime's chat.ts).
+ * Chat and on its people's other devices (worker-realtime's chat.ts). The
+ * team can change or take back what it said, and sees how far each person
+ * there has read.
  */
 
 const LOBBY_PLACE = "Demo office";
@@ -68,6 +70,18 @@ async function ticketFor(env: Env, user: User, id: string): Promise<TicketRow> {
   if (!ticket || (ticket.lobby ? ticket.user_id !== user.id : !ticket.office_id)) throw new HttpError(404, "no_ticket", "No such ticket");
   if (!ticket.lobby) await requireOffice(env, ticket.office_id!, user.id);
   return ticket;
+}
+
+/** One of the team's own messages, and where its ticket is followed: for the team to change or take back. */
+async function teamMessage(env: Env, ticketId: string, messageId: string): Promise<Place> {
+  const found = await env.DB.prepare(
+    `SELECT t.office_id, t.lobby, t.user_id FROM help_messages m JOIN help_tickets t ON t.id = m.ticket_id
+      WHERE m.id = ? AND m.ticket_id = ? AND m.from_team = 1`,
+  )
+    .bind(Number(messageId), ticketId)
+    .first<Place>();
+  if (!found) throw new HttpError(404, "no_message", "No such message from the team");
+  return found;
 }
 
 /** An open ticket, for the team to answer or close. */
@@ -254,22 +268,39 @@ export function helpRoutes(router: Router): void {
       );
     })
 
-    // One ticket in full: who opened it, from where, and everything said. Opening it is reading it.
+    // One ticket in full: who opened it, from where, everything said, how far the team has read (where
+    // what's new starts), and how far each of the people it's for has. Reading it is its own step (below),
+    // so looking twice still shows where what's new started.
     .add("GET", "/v1/admin/help/:id", async ({ request, env, ctx, params }) => {
       await requireAdmin(env, request, ctx);
       const ticket = await env.DB.prepare(
         `SELECT id, place, office_id AS officeId, lobby, user_id AS userId, name, email, page, user_agent AS userAgent, screen,
-                locale, country, replay, status, created_at AS createdAt, closed_at AS closedAt
+                locale, country, replay, status, created_at AS createdAt, closed_at AS closedAt, team_seen_id AS teamSeen
            FROM help_tickets WHERE id = ?`,
       )
         .bind(params.id)
-        .first();
+        .first<{ lobby: number; teamSeen: number } & Record<string, unknown>>();
       if (!ticket) throw new HttpError(404, "no_ticket", "No such ticket");
-      const messages = await messagesOf(env, params.id);
-      if (messages.length) {
-        await env.DB.prepare("UPDATE help_tickets SET team_seen_id = ? WHERE id = ?").bind(messages.at(-1)!.id, params.id).run();
-      }
-      return json({ ticket: { ...ticket, lobby: ticket.lobby === 1 }, messages }, NO_STORE);
+      const [messages, reads] = await Promise.all([
+        messagesOf(env, params.id),
+        env.DB.prepare(
+          `SELECT r.user_id AS id, u.display_name AS name, r.seen_id AS seen
+             FROM help_reads r JOIN users u ON u.id = r.user_id WHERE r.ticket_id = ? AND r.seen_id > 0`,
+        )
+          .bind(params.id)
+          .all(),
+      ]);
+      const { teamSeen, ...rest } = ticket;
+      return json({ ticket: { ...rest, lobby: ticket.lobby === 1 }, messages, seenBefore: teamSeen, reads: reads.results }, NO_STORE);
+    })
+
+    // The team has read it, to the latest message.
+    .add("POST", "/v1/admin/help/:id/read", async ({ request, env, ctx, params }) => {
+      await requireAdmin(env, request, ctx);
+      await env.DB.prepare("UPDATE help_tickets SET team_seen_id = (SELECT COALESCE(MAX(id), 0) FROM help_messages WHERE ticket_id = ?1) WHERE id = ?1")
+        .bind(params.id)
+        .run();
+      return json({ ok: true });
     })
 
     // The team's answer, which everyone following the ticket is told about.
@@ -278,6 +309,26 @@ export function helpRoutes(router: Router): void {
       const body = cleanBody((await readJson(request)).body);
       if (!body) throw new HttpError(400, "empty_message", "Write a reply");
       await teamSays(env, ctx, params.id, await openTicket(env, params.id), body);
+      return json({ ok: true });
+    })
+
+    // One of the team's messages, said differently: the office's Chat shows it at once, as if it had always said so.
+    .add("PATCH", "/v1/admin/help/:id/messages/:message", async ({ request, env, ctx, params }) => {
+      await requireAdmin(env, request, ctx);
+      const body = cleanBody((await readJson(request)).body);
+      if (!body) throw new HttpError(400, "empty_message", "Write something, or delete it");
+      const place = await teamMessage(env, params.id, params.message);
+      await env.DB.prepare("UPDATE help_messages SET body = ? WHERE id = ?").bind(body, Number(params.message)).run();
+      changed(env, ctx, place);
+      return json({ ok: true });
+    })
+
+    // One of the team's messages, taken back: gone from the office's Chat, and from what's new there.
+    .add("DELETE", "/v1/admin/help/:id/messages/:message", async ({ request, env, ctx, params }) => {
+      await requireAdmin(env, request, ctx);
+      const place = await teamMessage(env, params.id, params.message);
+      await env.DB.prepare("DELETE FROM help_messages WHERE id = ?").bind(Number(params.message)).run();
+      changed(env, ctx, place);
       return json({ ok: true });
     })
 

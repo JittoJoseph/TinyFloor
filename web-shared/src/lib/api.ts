@@ -164,26 +164,30 @@ export interface IceServers {
   expiresAt: number;
 }
 
+/**
+ * How an office has its plan, in the admin view: paying through Creem, on the
+ * trial every new office starts with, given a plan by hand, or free.
+ */
+export type AdminStanding = "paying" | "trial" | "given" | "free";
+
 /** The admin view (open only to the admin accounts). */
 export interface AdminSummary {
-  counts: Record<"accounts" | "guests" | "offices" | "proOffices" | "activeDay" | "activeWeek" | "newWeek" | "newMonth" | "withGoogle" | "helpUnread", number>;
+  counts: Record<"accounts" | "guests" | "offices" | "activeDay" | "activeWeek" | "newWeek" | "newMonth" | "withGoogle" | "helpUnread", number>;
+  /** How many offices there are of each standing. */
+  standings: Record<AdminStanding, number>;
   countries: Array<{ country: string; people: number }>;
   /** Sign-ups on each of the last 30 calendar days where the viewer is, oldest first. */
   signups: number[];
   /** Those days, as YYYY-MM-DD. */
   signupDays: string[];
   plans: {
-    /** Offices paying through Creem, by plan. */
-    paid: Record<string, number>;
-    /** Offices on a paid plan given by hand, without payment. */
-    given: number;
     /** Paying offices whose last card payment failed. */
     pastDue: number;
     /** Paying offices whose plan has been cancelled and is running out. */
     ending: number;
   };
   /** The offices meeting the most this month. */
-  busiest: Array<{ id: string; name: string; plan: string; meetingSeconds: number; members: number }>;
+  busiest: Array<{ id: string; name: string; plan: string; standing: AdminStanding; trialEndsAt: number | null; meetingSeconds: number; members: number }>;
   /** The newest accounts. */
   newest: Array<{ id: string; displayName: string; email: string | null; country: string | null; createdAt: number }>;
   /** Meeting seconds used this month across every office. */
@@ -201,7 +205,6 @@ export interface AdminPerson {
   google: number;
   /** A guest: no account, kept for a week. */
   guest: number;
-  offices: number;
 }
 
 export interface AdminOffice {
@@ -212,6 +215,12 @@ export interface AdminOffice {
   /** The floor it's on (map.ts FLOORS). */
   floor: string;
   createdAt: number;
+  standing: AdminStanding;
+  /** When its trial ends (or ended, until it's swept to Free); 0 or null without one. */
+  trialEndsAt: number | null;
+  /** Its owner's address and country, which the list goes by. */
+  ownerEmail: string | null;
+  ownerCountry: string | null;
   /** How many people are in it. */
   members: number;
   /** When anyone in it was last around; null for an office nobody is in. */
@@ -227,7 +236,7 @@ export interface AdminOffice {
 /** An account opened in the admin view, with the offices it's in. */
 export interface AdminPersonDetail {
   person: AdminPerson;
-  offices: Array<{ id: string; name: string; plan: string; role: OfficeRole; owner: number; joinedAt: number }>;
+  offices: Array<{ id: string; name: string; plan: string; standing: AdminStanding; trialEndsAt: number | null; role: OfficeRole; owner: number; joinedAt: number }>;
 }
 
 /** An office opened in the admin view, with its people. */
@@ -470,12 +479,12 @@ export const api = {
       })}`,
     ),
   adminPerson: (userId: string) => get<AdminPersonDetail>(`/admin/users/${id(userId)}`),
-  adminOffices: (params: { q?: string; page?: number; plan?: "pro" | "free" }) =>
+  adminOffices: (params: { q?: string; page?: number; standing?: AdminStanding }) =>
     get<AdminPage & { offices: AdminOffice[] }>(
       `/admin/offices?${new URLSearchParams({
         ...(params.q ? { q: params.q } : {}),
         ...(params.page ? { page: String(params.page) } : {}),
-        ...(params.plan ? { plan: params.plan } : {}),
+        ...(params.standing ? { standing: params.standing } : {}),
       })}`,
     ),
   adminOffice: (officeId: string) => get<AdminOfficeDetail>(`/admin/offices/${id(officeId)}`),

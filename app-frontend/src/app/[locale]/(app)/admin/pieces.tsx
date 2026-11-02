@@ -2,10 +2,10 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocale } from "next-intl";
-import { ArrowLeft, Search } from "@/components/ui/icons";
+import { ArrowLeft, Globe, Search } from "@/components/ui/icons";
 import { IconButton } from "@/components/ui/IconButton";
 import { Loader } from "@/components/motion/loader";
-import { ApiError, type AdminPage } from "@/lib/api";
+import { ApiError, type AdminPage, type AdminStanding } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 /*
@@ -133,11 +133,67 @@ const TONES = {
   ok: "bg-ok/12 text-ok",
   warn: "bg-warn/15 text-[color-mix(in_oklab,var(--ui-warn)_75%,var(--ui-foreground))]",
   danger: "bg-destructive/10 text-destructive",
-  strong: "bg-foreground text-background",
+  outline: "text-foreground shadow-[inset_0_0_0_1px_var(--ui-border-strong)]",
 };
 
-export function Badge({ tone = "neutral", children }: { tone?: keyof typeof TONES; children: React.ReactNode }) {
-  return <span className={cn("inline-flex h-5 shrink-0 items-center rounded-md px-1.5 text-[11px] font-medium", TONES[tone])}>{children}</span>;
+/** A short mark: a plan, a role; `small` for a tag beside a name. */
+export function Badge({ tone = "neutral", small, children }: { tone?: keyof typeof TONES; small?: boolean; children: React.ReactNode }) {
+  return (
+    <span
+      className={cn(
+        "inline-flex shrink-0 items-center font-medium tabular-nums",
+        small ? "h-[18px] rounded-[5px] px-1.5 text-[10.5px]" : "h-[22px] rounded-md px-2 text-[11.5px]",
+        TONES[tone],
+      )}
+    >
+      {children}
+    </span>
+  );
+}
+
+/** An office's plan as it has it (AdminStanding): with days left on a trial, and how a paid one stands. */
+export function PlanBadge({
+  office,
+}: {
+  office: { plan: string; standing: AdminStanding; trialEndsAt?: number | null; billing?: string | null; cancelAt?: number | null };
+}) {
+  const now = useOpenedAt();
+  switch (office.standing) {
+    case "free":
+      return <Badge>Free</Badge>;
+    case "trial": {
+      // Rounded as When says it on the office's page; the last hours still a day.
+      const left = (office.trialEndsAt ?? 0) - now;
+      return <Badge tone="warn">{left > 0 ? `Trial · ${Math.max(1, Math.round(left / 86_400_000))}d` : "Trial ended"}</Badge>;
+    }
+    case "given":
+      return <Badge tone="outline">Given {planName(office.plan)}</Badge>;
+    default:
+      if (office.billing === "past_due") return <Badge tone="danger">{planName(office.plan)} · card failed</Badge>;
+      if (office.cancelAt) return <Badge tone="warn">{planName(office.plan)} · ending</Badge>;
+      return <Badge tone="ok">{planName(office.plan)}</Badge>;
+  }
+}
+
+/**
+ * A row's second line led by a flag: the flag in a place of its own (a faint
+ * globe when the country isn't known), so what follows starts at the same
+ * point on every row.
+ */
+export function Flagged({ country, children }: { country: string | null; children: React.ReactNode }) {
+  return (
+    <span className="flex min-w-0 items-center gap-2">
+      <span className="flex w-5 shrink-0 justify-center">
+        {country ? <Flag code={country} /> : <Globe aria-label="Country not known" className="size-3.5 text-faint" />}
+      </span>
+      <span className="truncate">{children}</span>
+    </span>
+  );
+}
+
+/** A place in a row that keeps its width whatever goes in it, its content to the right: a badge, a time. */
+export function Slot({ width, children }: { width: string; children?: React.ReactNode }) {
+  return <span className={cn("flex shrink-0 items-center justify-end", width)}>{children}</span>;
 }
 
 /** Someone, or some people, on a floor right now: in green. */
@@ -199,7 +255,7 @@ export function Column({
         <span className="ms-auto flex items-center">{actions}</span>
       </header>
       {search && (
-        <label className="relative mx-3 mb-2 block shrink-0">
+        <label className="relative mx-4 mb-2.5 block shrink-0">
           <Search className="pointer-events-none absolute start-3 top-1/2 size-4 -translate-y-1/2 text-faint" />
           <input
             value={search.value}
@@ -209,8 +265,8 @@ export function Column({
           />
         </label>
       )}
-      {tabs && <div className="flex shrink-0 items-center gap-1 overflow-x-auto px-3 pb-2 [scrollbar-width:none]">{tabs}</div>}
-      <div className="min-h-0 flex-1 overflow-y-auto border-t border-border px-2 py-2">
+      {tabs && <div className="flex shrink-0 items-center gap-0.5 overflow-x-auto px-4 pb-3 [scrollbar-width:none]">{tabs}</div>}
+      <div className="min-h-0 flex-1 overflow-y-auto border-t border-border">
         {loading ? (
           <div className="flex justify-center py-16 text-muted-foreground">
             <Loader variant="dots" size={18} />
@@ -219,7 +275,7 @@ export function Column({
           <p className="px-4 py-16 text-center text-[13px] text-muted-foreground">{empty}</p>
         ) : (
           <>
-            <ul className="flex flex-col gap-px">{children}</ul>
+            <ul className="flex flex-col">{children}</ul>
             {more && (
               <div ref={end} className="flex justify-center py-3 text-muted-foreground">
                 {busy && <Loader variant="dots" size={14} />}
@@ -241,7 +297,7 @@ export function Tab({ active, onClick, count, children }: { active: boolean; onC
       aria-selected={active}
       onClick={onClick}
       className={cn(
-        "flex h-7 shrink-0 cursor-pointer items-center gap-1.5 rounded-full px-3 text-[12.5px] font-medium transition-colors",
+        "flex h-8 shrink-0 cursor-pointer items-center gap-1.5 rounded-full px-3 text-[13px] font-medium transition-colors",
         active ? "bg-foreground text-background" : "text-muted-foreground hover:bg-muted hover:text-foreground",
       )}
     >
@@ -251,7 +307,11 @@ export function Tab({ active, onClick, count, children }: { active: boolean; onC
   );
 }
 
-/** A row of a list: a face, two lines, and what goes in the margin on the right, two lines too. */
+/**
+ * A row of a list, edge to edge between hairlines: a face, then two lines,
+ * each with its margin on the right: the name beside a time, the line under
+ * it beside a badge. A time stays beside the name when there's nothing under it.
+ */
 export function Row({
   selected,
   onClick,
@@ -273,27 +333,27 @@ export function Row({
   strong?: boolean;
 }) {
   return (
-    <li>
+    <li className="border-b border-border">
       <button
         type="button"
         onClick={onClick}
         aria-current={selected || undefined}
         className={cn(
-          "flex w-full cursor-pointer items-center gap-3 rounded-[10px] px-2.5 py-2.5 text-start transition-colors",
-          selected ? "bg-muted [--face-ring:var(--ui-muted)]" : "hover:bg-foreground/[0.035]",
+          "flex w-full cursor-pointer items-center gap-3 px-4 py-3 text-start transition-colors",
+          selected ? "bg-muted [--face-ring:var(--ui-muted)]" : "hover:bg-foreground/[0.025]",
         )}
       >
         <span className="shrink-0">{lead}</span>
-        <span className="min-w-0 flex-1">
-          <span className={cn("flex min-w-0 items-center gap-1.5 text-[13.5px]", strong ? "font-semibold" : "font-medium")}>{title}</span>
-          {sub && <span className="mt-0.5 block truncate text-[12.5px] text-muted-foreground">{sub}</span>}
+        <span className="grid min-w-0 flex-1 grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-1">
+          <span className={cn("flex h-5 min-w-0 items-center gap-1.5 text-[14px]", strong ? "font-semibold" : "font-medium")}>{title}</span>
+          <span className="flex items-center justify-end text-[12px] text-faint">{aside}</span>
+          {(sub || below) && (
+            <>
+              <span className="truncate text-[12.5px] text-muted-foreground">{sub}</span>
+              <span className="flex min-h-[22px] items-center justify-end text-[12px] text-faint">{below}</span>
+            </>
+          )}
         </span>
-        {(aside || below) && (
-          <span className="flex shrink-0 flex-col items-end gap-1 text-[11.5px] text-faint">
-            {aside && <span className="flex items-center gap-1.5">{aside}</span>}
-            {below}
-          </span>
-        )}
       </button>
     </li>
   );

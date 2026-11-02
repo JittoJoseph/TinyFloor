@@ -7,7 +7,7 @@ import { Face } from "@/components/ui/Face";
 import { Dialog } from "@/components/ui/Dialog";
 import { Menu, MenuItem, MenuSeparator } from "@/components/ui/Menu";
 import { Logo, ShellView } from "@/components/app/AppShell";
-import { api, type AdminOffice, type AdminOfficeDetail, type PlanId } from "@/lib/api";
+import { api, type AdminOffice, type AdminOfficeDetail, type AdminStanding, type PlanId } from "@/lib/api";
 import { usePlans } from "@/lib/billing";
 import { cn } from "@/lib/utils";
 import {
@@ -21,14 +21,17 @@ import {
   Figures,
   Flag,
   hours,
+  Flagged,
   Live,
   Pick,
+  PlanBadge,
   planName,
   Properties,
   Property,
   Row,
   Section,
   Short,
+  Slot,
   Tab,
   usePaged,
   useRun,
@@ -38,11 +41,21 @@ import {
 import { CloseTicket, Messages, Reply, useTicket } from "./Thread";
 import type { ViewProps } from "./views";
 
-type Filter = "all" | "pro" | "free";
+type Filter = "all" | AdminStanding;
+
+/** The tabs over the list, by standing; Given only while some office is. */
+const FILTERS: Array<{ id: AdminStanding; label: string }> = [
+  { id: "paying", label: "Paying" },
+  { id: "trial", label: "Trial" },
+  { id: "given", label: "Given" },
+  { id: "free", label: "Free" },
+];
 
 /**
  * Every office, the one with someone around most recently first: all of
- * them, those on Pro, or the free ones. Picked, an office's page has its
+ * them, or those paying, on the trial, given a plan by hand, or free. A row
+ * has the office's name and owner, where the owner is and when anyone was
+ * last around, and its plan as it has it. Picked, an office's page has its
  * figures (seats, meeting hours, who's on the floor), how it has its plan,
  * and its people; it can be renamed, given a plan without payment, or closed.
  */
@@ -50,32 +63,34 @@ export function Offices({ summary, picked, pick, open, recount }: ViewProps) {
   const [filter, setFilter] = useState<Filter>("all");
   const [typed, search, setTyped] = useSearch();
   const read = useCallback(
-    (page: number) => api.adminOffices({ q: search, page, ...(filter === "all" ? {} : { plan: filter }) }).then(({ offices, ...paging }) => ({ ...paging, items: offices })),
+    (page: number) => api.adminOffices({ q: search, page, ...(filter === "all" ? {} : { standing: filter }) }).then(({ offices, ...paging }) => ({ ...paging, items: offices })),
     [search, filter],
   );
   const list = usePaged(read);
-  const { offices, proOffices } = summary.counts;
+  const { offices } = summary.counts;
 
   return (
     <ShellView
       showDetail={!!picked}
-      columnClassName="md:w-[340px]"
+      columnClassName="md:w-[360px]"
       column={
         <Column
           title="Offices"
           count={offices}
-          search={{ value: typed, onChange: setTyped, placeholder: "Search by name" }}
+          search={{ value: typed, onChange: setTyped, placeholder: "Search by name or owner's email" }}
           tabs={
             <>
               <Tab active={filter === "all"} onClick={() => setFilter("all")} count={offices}>
                 All
               </Tab>
-              <Tab active={filter === "pro"} onClick={() => setFilter("pro")} count={proOffices}>
-                Pro
-              </Tab>
-              <Tab active={filter === "free"} onClick={() => setFilter("free")} count={offices - proOffices}>
-                Free
-              </Tab>
+              {FILTERS.map(
+                (one) =>
+                  (one.id !== "given" || summary.standings.given > 0 || filter === "given") && (
+                    <Tab key={one.id} active={filter === one.id} onClick={() => setFilter(one.id)} count={summary.standings[one.id]}>
+                      {one.label}
+                    </Tab>
+                  ),
+              )}
             </>
           }
           loading={list.items === null}
@@ -87,16 +102,16 @@ export function Offices({ summary, picked, pick, open, recount }: ViewProps) {
               key={office.id}
               selected={office.id === picked}
               onClick={() => pick(office.id)}
-              lead={<Face seed={office.id} size={36} square />}
-              title={<span className="truncate">{office.name}</span>}
-              sub={office.members === 1 ? "1 person" : `${office.members} people`}
-              aside={office.here > 0 ? <Live>{office.here} here</Live> : office.lastActiveAt ? <Short at={office.lastActiveAt} /> : "Never"}
-              below={
-                <span className="flex items-center gap-1">
-                  {office.floor === NEW_FLOOR && <Badge>New floor</Badge>}
-                  <PlanBadge office={office} />
-                </span>
+              lead={<OfficeMark id={office.id} members={office.members} />}
+              title={
+                <>
+                  <span className="truncate">{office.name}</span>
+                  {office.floor === NEW_FLOOR && <Badge small>New floor</Badge>}
+                </>
               }
+              sub={<Flagged country={office.ownerCountry}>{office.ownerEmail ?? "No owner"}</Flagged>}
+              aside={office.here > 0 ? <Live>{office.here} here</Live> : office.lastActiveAt ? <Short at={office.lastActiveAt} /> : "Never"}
+              below={<PlanBadge office={office} />}
             />
           ))}
         </Column>
@@ -125,18 +140,29 @@ export function Offices({ summary, picked, pick, open, recount }: ViewProps) {
   );
 }
 
+/**
+ * An office's mark in the list, with how many are in it on its corner: only
+ * for a team, so the many offices of one person stay quiet and teams stand out.
+ */
+function OfficeMark({ id, members }: { id: string; members: number }) {
+  return (
+    <span className="relative block">
+      <Face seed={id} size={38} square />
+      {members > 1 && (
+        <span
+          title={`${members} people`}
+          className="absolute -bottom-1 -end-1.5 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-[var(--face-ring,var(--ui-card))] px-1 text-[10.5px] font-semibold tabular-nums text-foreground shadow-[0_0_0_2px_var(--face-ring,var(--ui-card)),inset_0_0_0_1px_var(--ui-border-strong)]"
+        >
+          {members}
+        </span>
+      )}
+    </span>
+  );
+}
+
 /** The floors while offices move to the new one (shared-protocol map.ts FLOORS); once they all have, this goes. */
 const OLD_FLOOR = "startup";
 const NEW_FLOOR = "campus";
-
-/** The office's plan, and how it has it: paying (or behind on it, or stopping), or given by hand. */
-function PlanBadge({ office }: { office: AdminOffice }) {
-  if (office.plan === "free") return <Badge>Free</Badge>;
-  if (office.billing === "past_due") return <Badge tone="danger">{planName(office.plan)} · card failed</Badge>;
-  if (office.billing && office.cancelAt) return <Badge tone="warn">{planName(office.plan)} · ending</Badge>;
-  if (office.billing) return <Badge tone="strong">{planName(office.plan)}</Badge>;
-  return <Badge tone="ok">{planName(office.plan)} · given</Badge>;
-}
 
 function Office({
   id,
@@ -247,16 +273,23 @@ function Office({
                   <PlanBadge office={office} />
                 </Property>
                 <Property icon={<CreditCard />} label="Paid">
-                  {office.billing === "past_due"
-                    ? "Through Creem; the last card payment failed"
-                    : office.billing && office.cancelAt
-                      ? "Through Creem, until it ends"
-                      : office.billing
-                        ? "Through Creem"
-                        : office.plan !== "free"
-                          ? "Given without payment"
-                          : "Nothing"}
+                  {office.standing === "trial"
+                    ? "Nothing yet: on the free trial"
+                    : office.standing === "given"
+                      ? "Given without payment"
+                      : office.standing === "free"
+                        ? "Nothing"
+                        : office.billing === "past_due"
+                          ? "Through Creem; the last card payment failed"
+                          : office.cancelAt
+                            ? "Through Creem, until it ends"
+                            : "Through Creem"}
                 </Property>
+                {office.standing === "trial" && !!office.trialEndsAt && (
+                  <Property icon={<Calendar />} label="Trial ends">
+                    <When at={office.trialEndsAt} />
+                  </Property>
+                )}
                 {office.cancelAt && (
                   <Property icon={<Calendar />} label="Ends">
                     <When at={office.cancelAt} />
@@ -279,9 +312,11 @@ function Office({
                         <span className="block truncate text-[13.5px] font-medium">{member.displayName}</span>
                         {member.email && <span className="block truncate text-[12px] text-muted-foreground">{member.email}</span>}
                       </span>
-                      {member.country && <Flag code={member.country} />}
-                      <Badge>{member.owner ? "Owner" : member.role === "admin" ? "Admin" : "Member"}</Badge>
-                      <span className="hidden w-20 shrink-0 text-end text-[12px] text-muted-foreground sm:block">
+                      <Slot width="w-5">{member.country && <Flag code={member.country} />}</Slot>
+                      <Slot width="w-16">
+                        <Badge>{member.owner ? "Owner" : member.role === "admin" ? "Admin" : "Member"}</Badge>
+                      </Slot>
+                      <span className="hidden w-16 shrink-0 justify-end text-[12px] tabular-nums text-muted-foreground sm:flex">
                         {member.here ? <Live>Here</Live> : <Short at={member.lastActiveAt} />}
                       </span>
                     </button>

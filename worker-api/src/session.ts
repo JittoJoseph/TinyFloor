@@ -88,14 +88,16 @@ export async function createGuest(
 ): Promise<{ user: User; cookie: string }> {
   const now = Date.now();
   const userId = crypto.randomUUID();
+  // Made at the demo office's door with its ticket in hand (auth.ts), so this is walking onto a floor too: noted here, as noteCountry would.
+  const country = countryOf(request);
   await env.DB.prepare(
     // A guest chose their name and character at the door, so they are introduced already.
-    "INSERT INTO users (id, display_name, character, is_guest, created_at, last_active_at, introduced_at) VALUES (?, ?, ?, 1, ?, ?, ?)",
+    "INSERT INTO users (id, display_name, character, is_guest, created_at, last_active_at, introduced_at, country) VALUES (?, ?, ?, 1, ?, ?, ?, ?)",
   )
-    .bind(userId, displayName, character, now, now, now)
+    .bind(userId, displayName, character, now, now, now, country)
     .run();
   const { sessionId, cookie } = await createSession(env, request, userId, GUEST_SESSION_MS);
-  return { user: { id: userId, email: null, displayName, character, isGuest: true, sessionId }, cookie };
+  return { user: { id: userId, email: null, displayName, character, isGuest: true, sessionId, country }, cookie };
 }
 
 /**

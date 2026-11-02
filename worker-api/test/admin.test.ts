@@ -88,7 +88,7 @@ describe("admin", () => {
     await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
   });
 
-  it("notes the country someone walks onto a floor from, not the one they signed up from", async () => {
+  it("notes the country someone walks onto a floor from, a guest's from the door that walks them in", async () => {
     const realFetch = globalThis.fetch;
     vi.spyOn(globalThis, "fetch").mockImplementation(async (input, init) =>
       String(input instanceof Request ? input.url : input).startsWith("https://challenges.cloudflare.com/")
@@ -106,7 +106,8 @@ describe("admin", () => {
     const cookie = response.headers.get("Set-Cookie")!.split(";")[0];
     const countryNow = async () =>
       (await env.DB.prepare("SELECT country FROM users WHERE id = ?").bind(user.id).first<{ country: string | null }>())?.country;
-    expect(await countryNow()).toBeNull();
+    // The demo door hands the guest their ticket, so they're on the floor from there.
+    expect(await countryNow()).toBe("DE");
 
     const walkIn = (country: string) =>
       exports.default.fetch("https://api.tinyfloor.com/v1/lobby/ticket", {
@@ -142,27 +143,38 @@ describe("admin", () => {
     await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
   });
 
-  it("counts paying offices and plans given by hand", async () => {
+  it("tells paying offices from trials, plans given by hand and free ones", async () => {
     const boss = await admin();
     const owner = await makeUser("Money Owner");
     const paid = (await call<{ office: { id: string } }>(owner, "POST", "/v1/offices", { name: "Paying Co" })).body.office.id;
     const given = (await call<{ office: { id: string } }>(owner, "POST", "/v1/offices", { name: "Given Co" })).body.office.id;
+    const trial = (await call<{ office: { id: string } }>(owner, "POST", "/v1/offices", { name: "Trying Co" })).body.office.id;
     await env.DB.batch([
       env.DB.prepare("UPDATE offices SET plan = 'pro', seats = 25 WHERE id = ?").bind(paid),
       env.DB.prepare(
         `INSERT INTO subscriptions (office_id, provider, provider_customer_id, provider_subscription_id, plan, status, changed_at, updated_at)
          VALUES (?, 'creem', 'ctm_money', ?, 'pro', 'past_due', 0, 0)`,
       ).bind(paid, `sub_money_${paid}`),
-      env.DB.prepare("UPDATE offices SET plan = 'pro', seats = 25 WHERE id = ?").bind(given),
+      // Given by hand, which clears the trial (billing.ts, givePlan).
+      env.DB.prepare("UPDATE offices SET plan = 'pro', seats = 25, trial_ends_at = 0 WHERE id = ?").bind(given),
+      env.DB.prepare("UPDATE offices SET plan = 'pro', seats = 15, trial_ends_at = ? WHERE id = ?").bind(Date.now() + 5 * 86_400_000, trial),
     ]);
-    const summary = await call<{ plans: { paid: Record<string, number>; given: number }; meetingSeconds: number }>(boss, "GET", "/v1/admin/summary");
-    expect(summary.body.plans.paid.pro).toBeGreaterThanOrEqual(1);
-    expect(summary.body.plans.given).toBeGreaterThanOrEqual(1);
+    const summary = await call<{ plans: { pastDue: number }; standings: Record<string, number>; meetingSeconds: number }>(boss, "GET", "/v1/admin/summary");
+    expect(summary.body.plans.pastDue).toBeGreaterThanOrEqual(1);
+    for (const standing of ["paying", "trial", "given"]) expect(summary.body.standings[standing]).toBeGreaterThanOrEqual(1);
     expect(summary.body.meetingSeconds).toBeGreaterThanOrEqual(0);
 
-    const offices = await call<{ offices: Array<{ id: string; billing: string | null }> }>(boss, "GET", "/v1/admin/offices?q=co");
-    expect(offices.body.offices.find((one) => one.id === paid)?.billing).toBe("past_due");
-    expect(offices.body.offices.find((one) => one.id === given)?.billing).toBeNull();
+    type Listed = { id: string; billing: string | null; standing: string; ownerEmail: string | null };
+    const offices = await call<{ offices: Listed[] }>(boss, "GET", "/v1/admin/offices?q=co");
+    const listed = (id: string) => offices.body.offices.find((one) => one.id === id);
+    expect(listed(paid)).toMatchObject({ billing: "past_due", standing: "paying" });
+    expect(listed(given)).toMatchObject({ billing: null, standing: "given" });
+    expect(listed(trial)?.standing).toBe("trial");
+    expect(listed(trial)?.ownerEmail).toBeTruthy();
+
+    const trials = await call<{ offices: Listed[] }>(boss, "GET", "/v1/admin/offices?standing=trial&q=co");
+    expect(trials.body.offices.map((one) => one.id)).toContain(trial);
+    expect(trials.body.offices.every((one) => one.standing === "trial")).toBe(true);
     await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
   });
 

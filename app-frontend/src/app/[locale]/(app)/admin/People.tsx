@@ -16,7 +16,7 @@ import {
   DetailState,
   DialogButton,
   Field,
-  Flag,
+  Flagged,
   Pick,
   Properties,
   Property,
@@ -28,7 +28,8 @@ import {
   useRun,
   useSearch,
   When,
-  planName,
+  PlanBadge,
+  Slot,
 } from "./pieces";
 import type { ViewProps } from "./views";
 
@@ -50,7 +51,7 @@ export function People({ summary, picked, pick, open, recount }: ViewProps) {
   return (
     <ShellView
       showDetail={!!picked}
-      columnClassName="md:w-[340px]"
+      columnClassName="md:w-[360px]"
       column={
         <Column
           title="People"
@@ -75,16 +76,10 @@ export function People({ summary, picked, pick, open, recount }: ViewProps) {
               key={person.id}
               selected={person.id === picked}
               onClick={() => pick(person.id)}
-              lead={<Face seed={person.id} size={36} />}
+              lead={<Face seed={person.id} size={38} />}
               title={<span className="truncate">{person.displayName}</span>}
-              sub={person.email ?? (guests ? "Guest" : "No email")}
-              aside={
-                <>
-                  {person.country && <Flag code={person.country} />}
-                  <Short at={person.lastActiveAt} />
-                </>
-              }
-              below={person.offices > 0 ? <span>{person.offices === 1 ? "1 office" : `${person.offices} offices`}</span> : undefined}
+              sub={<Flagged country={person.country}>{person.email ?? (guests ? "Guest" : "No email")}</Flagged>}
+              aside={<Short at={person.lastActiveAt} />}
             />
           ))}
         </Column>
@@ -211,8 +206,12 @@ function Person({
                           Joined <When at={office.joinedAt} />
                         </span>
                       </span>
-                      <Badge>{office.owner ? "Owner" : office.role === "admin" ? "Admin" : "Member"}</Badge>
-                      <Badge tone={office.plan === "free" ? "neutral" : "strong"}>{planName(office.plan)}</Badge>
+                      <Slot width="w-16">
+                        <Badge>{office.owner ? "Owner" : office.role === "admin" ? "Admin" : "Member"}</Badge>
+                      </Slot>
+                      <Slot width="w-28">
+                        <PlanBadge office={office} />
+                      </Slot>
                       <Office className="hidden size-4 text-faint sm:block" />
                     </button>
                   </li>

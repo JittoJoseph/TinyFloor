@@ -78,7 +78,7 @@ export class RealtimeAdmin extends WorkerEntrypoint<Env> implements RealtimeAdmi
 
   /** The conversation with the team changed: the chat where it's followed says so, and with news, notifies (chat.ts). */
   async helpChanged(place: { officeId: string } | { visitor: string }, news?: HelpNews): Promise<void> {
-    if ("officeId" in place) await this.env.CHAT.getByName(place.officeId).helpChanged(undefined, news);
+    if ("officeId" in place) await this.env.CHAT.getByName(place.officeId).helpChanged(undefined, news, place.officeId);
     else await this.env.CHAT.getByName(LOBBY_CHAT).helpChanged(place.visitor, news);
   }
 

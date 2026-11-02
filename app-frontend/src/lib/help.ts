@@ -4,6 +4,7 @@ import { useSyncExternalStore } from "react";
 import type { HelpNews } from "@shared/chat";
 import { api, ApiError, type HelpContext, type HelpTicket, type HelpTicketView } from "@/lib/api";
 import { analyticsConfigured, withPostHog } from "@/lib/analytics";
+import { playSound } from "@/lib/sounds";
 
 /** Read again when you come back to the tab, but not more often than this. */
 const FRESH_MS = 60_000;
@@ -70,11 +71,17 @@ class Help {
     }
   }
 
-  /** The office's chat says the ticket changed (the team wrote, or closed it): read it now, and pass on what the team said. */
+  /**
+   * The office's chat says the ticket changed (the team wrote, or closed it):
+   * read it now, and pass on what the team said, with the sound a direct
+   * message makes unless the conversation is already on screen.
+   */
   changed(news?: HelpNews) {
     void this.refresh(true);
     if (this.state.view) void this.load(this.state.view.id);
-    if (news) for (const hear of this.hearers) hear(news);
+    if (!news) return;
+    if (!this.state.shown) playSound("message");
+    for (const hear of this.hearers) hear(news);
   }
 
   /** Told when the team writes, for a notification (DesktopAlerts). */

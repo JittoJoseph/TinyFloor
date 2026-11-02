@@ -24,6 +24,15 @@ export function wasDrag(scene: Phaser.Scene, pointer: Phaser.Input.Pointer): boo
 }
 
 /**
+ * Whether a press began or ended on the page over the floor (the dock, a
+ * panel) rather than on the floor: Phaser still hands its release to whatever
+ * on the floor is under it, so a chair beneath the dock would take the dock's click.
+ */
+export function offFloor(scene: Phaser.Scene, pointer: Phaser.Input.Pointer): boolean {
+  return pointer.downElement !== scene.game.canvas || pointer.upElement !== scene.game.canvas;
+}
+
+/**
  * The floor's camera, all in one place. It follows you, the way it always
  * has (gently, with some room before it moves). Dragging the floor (left,
  * right or middle button) takes the view away from you, with the grabbing

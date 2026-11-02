@@ -5,7 +5,7 @@ import type { GoTo } from "./MovementManager";
 import type { ActionAt } from "./actions";
 import { SceneLabel, tagName } from "./SceneLabel";
 import { decorateState } from "./decorate";
-import { wasDrag } from "./CameraRig";
+import { offFloor, wasDrag } from "./CameraRig";
 
 /** Close enough to open it with E, and for it to light up. */
 const REACH = 210;
@@ -75,7 +75,7 @@ export class WhiteboardObject {
       .setDepth(bottom + 0.1)
       .setInteractive({ useHandCursor: true })
       .on("pointerup", (pointer: Phaser.Input.Pointer) => {
-        if (decorateState().desk || pointer.button !== 0 || wasDrag(scene, pointer)) return;
+        if (decorateState().desk || pointer.button !== 0 || wasDrag(scene, pointer) || offFloor(scene, pointer)) return;
         pointer.event.stopPropagation();
         goTo(this.spot.x, this.spot.y + STAND_GAP, () => whiteboard.setOpen(true));
       });

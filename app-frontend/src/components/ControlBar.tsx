@@ -12,7 +12,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { deskOf, goToMyDesk, useDesks } from "@/lib/desks";
 import { CameraRested } from "@/components/meetings/CameraRested";
 import { cn } from "@/lib/utils";
-import { Fillet } from "@/components/ui/Fillet";
+import { FADE_STOPS, Fillet } from "@/components/ui/Fillet";
 import { YouKey, YouPanel } from "@/components/room/DockYou";
 import { DemoPanel, HereKey, HerePanel } from "@/components/room/DockHere";
 import { useDecorate } from "@/lib/decorate";
@@ -34,6 +34,14 @@ const KEY_IN: Transition = { type: "spring", stiffness: 600, damping: 36 };
 
 type Panel = "you" | "here";
 const PANELS: Panel[] = ["you", "here"];
+
+/**
+ * The dock's foot: over its last few pixels it eases from its own (light)
+ * colour into the frame's, so it grows out of the frame rather than standing
+ * on it. Its curves (Fillet) fade the same way, over the same height.
+ */
+const FADE = 5;
+const FOOT = `linear-gradient(to top, ${FADE_STOPS.map(([at, frame]) => `color-mix(in oklab, var(--ui-frame) ${frame}%, var(--ui-rail)) ${(at * FADE) / 100}px`).join(", ")})`;
 
 /**
  * An element's size as laid out, kept up to date: what the dock's shape is
@@ -244,7 +252,7 @@ export default function ControlBar({
   }
 
   return (
-    <div ref={box} className="absolute bottom-0 left-1/2 z-50 max-w-[calc(100%-2.5rem)] -translate-x-1/2">
+    <div ref={box} className="absolute bottom-0 left-1/2 z-50 max-w-[calc(100%-2.5rem)] -translate-x-1/2 on-floor">
       <AnimatePresence>
         {!shown && (
           <motion.div key="rested" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.08 } }}>
@@ -257,11 +265,11 @@ export default function ControlBar({
         // Before the keys are measured, as wide as they are; after, sprung between their width and the panel's.
         animate={keys.width ? { width: (shown ? openWidth : keys.width) + BORDER, borderTopLeftRadius: shown ? 18 : 14, borderTopRightRadius: shown ? 18 : 14 } : undefined}
         transition={widthMove}
-        style={{ borderTopLeftRadius: 14, borderTopRightRadius: 14 }}
-        className="relative max-w-full border border-b-0 border-border bg-rail text-foreground [--face-ring:var(--ui-rail)]"
+        style={{ borderTopLeftRadius: 14, borderTopRightRadius: 14, backgroundImage: FOOT }}
+        className="relative max-w-full border border-b-0 border-edge bg-rail text-foreground [--face-ring:var(--ui-rail)]"
       >
-        <Fillet edge="bottom" tab="right" className="-left-[13px] bottom-0" />
-        <Fillet edge="bottom" tab="left" className="-right-[13px] bottom-0" />
+        <Fillet edge="bottom" tab="right" className="-left-[13px] bottom-0" fade={FADE} />
+        <Fillet edge="bottom" tab="left" className="-right-[13px] bottom-0" fade={FADE} />
         <div className="overflow-hidden rounded-[inherit]">
           {/* The panel's room, sprung to its height; the panel inside at its own width, centred, uncovered as the dock grows. */}
           <motion.div
@@ -304,7 +312,7 @@ export default function ControlBar({
               })}
             </div>
           </motion.div>
-          <div ref={keysRef} className="mx-auto flex w-max items-center gap-1 p-1.5">
+          <div ref={keysRef} className="mx-auto flex w-max items-center gap-1 p-1.5 pb-2">
             <AnimatePresence initial={false} mode="popLayout">
               {items.map(([id, node]) => (
                 <motion.div

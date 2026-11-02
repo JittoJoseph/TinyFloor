@@ -14,11 +14,15 @@
 :root {
   --ui-background: #fafaf8;
   --ui-rail: #f0f0ec;
+  /* The frame's own colour, which .on-floor below leaves alone: what the dock fades into. */
+  --ui-frame: #f0f0ec;
   --ui-card: #ffffff;
   --ui-popover: #ffffff;
   --ui-muted: #f2f2ef;
   --ui-border: rgb(24 24 20 / 0.09);
   --ui-border-strong: rgb(24 24 20 / 0.18);
+  /* A solid edge, for what has to stand out on any ground (the dock, over the floor's grass and tiles). */
+  --ui-edge: #b4b4ad;
   --ui-foreground: #1a1a18;
   --ui-muted-foreground: #6b6b65;
   --ui-faint: #a3a39c;
@@ -36,11 +40,13 @@
 .dark {
   --ui-background: #0f0f10;
   --ui-rail: #09090a;
+  --ui-frame: #09090a;
   --ui-card: #161617;
   --ui-popover: #1b1b1d;
   --ui-muted: #202022;
   --ui-border: rgb(255 255 255 / 0.08);
   --ui-border-strong: rgb(255 255 255 / 0.16);
+  --ui-edge: #3a3a3d;
   --ui-foreground: #ededeb;
   --ui-muted-foreground: #a0a09a;
   --ui-faint: #6a6a65;
@@ -53,6 +59,36 @@
   --ui-destructive: #ff6369;
   --ui-shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 12px 32px -12px rgb(0 0 0 / 0.6);
   --ui-ring: rgb(255 255 255 / 0.4);
+}
+
+/* What sits on the floor (the dock) takes the light theme in both: the floor
+   is light either way, and a dark block on it pulls the eye. */
+.on-floor {
+  --ui-background: #fafaf8;
+  --ui-rail: #f0f0ec;
+  --ui-card: #ffffff;
+  --ui-popover: #ffffff;
+  --ui-muted: #e9e9e4;
+  --ui-border: rgb(24 24 20 / 0.12);
+  --ui-border-strong: rgb(24 24 20 / 0.2);
+  --ui-edge: #b4b4ad;
+  --ui-foreground: #1a1a18;
+  --ui-muted-foreground: #6b6b65;
+  --ui-faint: #a3a39c;
+  --ui-brand: #1a1a18;
+  --ui-brand-foreground: #fafaf8;
+  --ui-signal: #ff5a1f;
+  --ui-signal-foreground: #ffffff;
+  --ui-ok: #22a35a;
+  --ui-warn: #e59a13;
+  --ui-destructive: #e5484d;
+  --ui-shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.18);
+  --ui-ring: rgb(24 24 20 / 0.35);
+}
+
+/* In the dark theme its edge is the frame it grows out of, so it reads as one piece with it. */
+.dark .on-floor {
+  --ui-edge: var(--ui-frame);
 }
 
 @theme inline {
@@ -75,6 +111,7 @@
   --color-border: var(--ui-border);
   --color-input: var(--ui-border);
   --color-border-strong: var(--ui-border-strong);
+  --color-edge: var(--ui-edge);
   --color-success: var(--ui-ok);
   --color-ring: var(--ui-ring);
   --color-brand: var(--ui-brand);

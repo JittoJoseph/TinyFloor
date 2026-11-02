@@ -271,6 +271,20 @@ missing features on the map.
   who's on the floor as their characters, and pressing someone walks you
   over. In the demo office the key is Your office instead, and opens on an
   office of your own, one line and one button to /create.
+- **The dock is light in both themes** (2 November). In the dark theme it
+  was the frame's black, the darkest thing on a light floor, and it took
+  all the attention. See-through glass looked fine over plain tiles but
+  went muddy over Campus's grass and furniture, and lighter dark greys still
+  read as a block. In the light theme's colours it reads as part of the
+  floor. Its outline is the frame's black, and its last few pixels fade
+  into the frame, so it still grows out of it. Nobody has a desk in the demo
+  office, so there it has no desk key.
+- **Pressed things answer before anything else happens** (2 November): a
+  chair you can sit on hops, one that's taken (someone's in it, or it's
+  someone's desk) shakes, and it hops again as you sit. A press on the dock
+  no longer reaches the floor under it: Phaser hands a release over the
+  page to whatever on the floor lies beneath, so opening your panel over a
+  meeting chair walked you to it.
 
 ## What's at hand on the floor, and the whiteboard (21 October)
 

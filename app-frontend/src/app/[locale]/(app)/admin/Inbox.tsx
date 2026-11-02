@@ -113,8 +113,6 @@ function Ticket({
   openOffice: (id: string) => void;
   onChanged: () => Promise<void>;
 }) {
-  // What was new when it was opened stays marked while it's open.
-  const [fresh] = useState(listed?.unread ?? 0);
   const unread = listed?.unread ?? 0;
   const { detail, failed, reload } = useTicket(id, listed?.updatedAt);
   // Reading it cleared its count: the list says so too.
@@ -183,7 +181,7 @@ function Ticket({
           {ticket.screen && <span>{ticket.screen}</span>}
         </p>
 
-        <Messages messages={messages} fresh={fresh} />
+        <Messages ticketId={id} messages={messages} seenBefore={detail.seenBefore} reads={detail.reads} onChanged={reload} />
         {isOpen ? (
           <Reply
             placeholder={`Reply to ${ticket.lobby ? ticket.name : `everyone in ${ticket.place}`}`}

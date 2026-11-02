@@ -77,6 +77,7 @@ describe("help and feedback", () => {
 
     const full = await call<AdminView>(boss, "GET", `/v1/admin/help/${id}`);
     expect(full.body.ticket).toMatchObject({ page: "/office/x", status: "open" });
+    expect((await call(boss, "POST", `/v1/admin/help/${id}/read`)).status).toBe(200);
     expect((await call<AdminList>(boss, "GET", "/v1/admin/help")).body.tickets.find((one) => one.id === id)?.unread).toBe(0);
 
     await call(boss, "POST", `/v1/admin/help/${id}/messages`, { body: "Which browser?" });
@@ -107,6 +108,37 @@ describe("help and feedback", () => {
     await call<View>(owner, "GET", `/v1/help/${id}`);
     expect((await openHere(owner, office)).body.ticket?.unread).toBe(0);
     expect((await openHere(mate, office)).body.ticket?.unread).toBe(2);
+    await dropAdmin();
+  });
+
+  it("lets the team change or take back its own words, and see how far each person has read", async () => {
+    const boss = await admin();
+    const { owner, mate, office } = await officeWithTwo("Help Edited");
+    const { id } = (await say(owner, office, "Hello team")).body;
+    type Full = AdminView & { seenBefore: number; reads: Array<{ id: string; seen: number }>; messages: Array<{ id: number; team: boolean; body: string }> };
+    // Looking doesn't read it, so where what's new starts holds until the team has read it.
+    const first = (await call<Full>(boss, "GET", `/v1/admin/help/${id}`)).body;
+    expect(first.seenBefore).toBe(0);
+    expect((await call<Full>(boss, "GET", `/v1/admin/help/${id}`)).body.seenBefore).toBe(0);
+    await call(boss, "POST", `/v1/admin/help/${id}/read`);
+    expect((await call<Full>(boss, "GET", `/v1/admin/help/${id}`)).body.seenBefore).toBe(first.messages.at(-1)!.id);
+
+    await call(boss, "POST", `/v1/admin/help/${id}/messages`, { body: "Hi there" });
+    await call(boss, "POST", `/v1/admin/help/${id}/messages`, { body: "Oops" });
+    const [, hi, oops] = (await call<Full>(boss, "GET", `/v1/admin/help/${id}`)).body.messages;
+
+    expect((await call(boss, "PATCH", `/v1/admin/help/${id}/messages/${hi.id}`, { body: "Hi there, welcome" })).status).toBe(200);
+    expect((await call(boss, "DELETE", `/v1/admin/help/${id}/messages/${oops.id}`)).status).toBe(200);
+    // Only the team's own, only by the team.
+    expect((await call(boss, "PATCH", `/v1/admin/help/${id}/messages/${first.messages[0].id}`, { body: "Changed" })).status).toBe(404);
+    expect((await call(owner, "DELETE", `/v1/admin/help/${id}/messages/${hi.id}`)).status).toBe(404);
+    expect((await call(boss, "PATCH", `/v1/admin/help/${id}/messages/${hi.id}`, { body: "  " })).status).toBe(400);
+
+    // The office sees it as said now, with only what's still there counted as new.
+    expect((await openHere(mate, office)).body.ticket?.unread).toBe(2);
+    expect((await call<View>(owner, "GET", `/v1/help/${id}`)).body.messages.map((one) => one.body)).toEqual(["Hello team", "Hi there, welcome"]);
+    const reads = (await call<Full>(boss, "GET", `/v1/admin/help/${id}`)).body.reads;
+    expect(reads).toEqual([{ id: owner.id, name: "Help Edited Owner", seen: hi.id }]);
     await dropAdmin();
   });
 

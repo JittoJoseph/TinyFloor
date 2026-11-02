@@ -61,7 +61,8 @@ function useSize(ref: RefObject<HTMLElement | null>, content?: unknown): { width
  * the moment needs:
  * - on the floor: you, your microphone, the way back to your desk, how many
  *   are here (and Invite while it's worth asking: an office nobody else has
- *   joined); in the demo office, Your office, which leads to making one;
+ *   joined); in the demo office, no desk key, and Your office, which leads
+ *   to making one;
  * - in a call: the call's own keys (microphone, camera and screen to switch
  *   on when there's something to see, speaker) and hanging up; you, your
  *   desk and the count step out until it ends;
@@ -224,7 +225,8 @@ export default function ControlBar({
     items.push(["divider-you", <Divider key="divider-you" />]);
     items.push(["mic", mic]);
     items.push(["divider-floor", <Divider key="divider-floor" />]);
-    items.push(["desk", <BackToDesk key="desk" />]);
+    // Nobody has a desk in the demo office, so there's no way back to one.
+    if (!demo) items.push(["desk", <BackToDesk key="desk" />]);
     items.push(["here", <HereKey key="here" userId={userId} open={shown === "here"} onToggle={() => toggle("here")} label={demo ? tShell("yourOffice") : undefined} icon={demo ? <Office className="size-[18px]" /> : undefined} />]);
     if (inviteShown && onInvite)
       items.push([

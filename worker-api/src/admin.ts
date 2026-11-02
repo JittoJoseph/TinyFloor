@@ -23,6 +23,19 @@ const PAGE = 50;
 const DAY_MS = 24 * 60 * 60 * 1000;
 const LIVE = [...HOLDS_PLAN].map((status) => `'${status}'`).join(", ");
 
+/**
+ * How an office (`o`) has its plan, which the admin view sorts offices by:
+ * paying through Creem; on the trial every new office starts with (its end
+ * still set, docs/pricing.md; one just past it until it's swept to Free);
+ * given a plan by hand, which clears the trial (billing.ts, givePlan); or free.
+ */
+const STANDINGS = ["paying", "trial", "given", "free"] as const;
+const STANDING = `CASE
+    WHEN EXISTS (SELECT 1 FROM subscriptions p WHERE p.office_id = o.id AND p.provider_subscription_id IS NOT NULL AND p.status IN (${LIVE})) THEN 'paying'
+    WHEN o.plan = 'free' THEN 'free'
+    WHEN o.trial_ends_at > 0 THEN 'trial'
+    ELSE 'given' END`;
+
 /** The team's addresses (ADMIN_EMAILS), lower case. */
 const adminEmails = (env: Env) =>
   (env.ADMIN_EMAILS ?? "")
@@ -74,16 +87,17 @@ function lastDays(now: number, timeZone: string, count: number): string[] {
 
 /** An account as the admin view lists it. */
 const PERSON = `u.id, u.display_name AS displayName, u.email, u.character, u.country,
-  u.created_at AS createdAt, u.last_active_at AS lastActiveAt, u.google_sub IS NOT NULL AS google, u.is_guest AS guest,
-  (SELECT COUNT(*) FROM memberships m WHERE m.user_id = u.id) AS offices`;
+  u.created_at AS createdAt, u.last_active_at AS lastActiveAt, u.google_sub IS NOT NULL AS google, u.is_guest AS guest`;
 
-/** An office as the admin view lists it; this month's usage joined as `um` (bound as ?period). */
+/** An office as the admin view lists it, with its owner's address and country; this month's usage joined as `um` (bound as ?period). */
 const OFFICE = `o.id, o.name, o.plan, o.seats, o.floor, o.created_at AS createdAt,
+  ${STANDING} AS standing, o.trial_ends_at AS trialEndsAt, ow.email AS ownerEmail, ow.country AS ownerCountry,
   (SELECT COUNT(*) FROM memberships m WHERE m.office_id = o.id) AS members,
   o.active_at AS lastActiveAt,
   CASE WHEN s.status IN (${LIVE}) AND s.provider_subscription_id IS NOT NULL THEN s.status END AS billing,
   s.cancel_at AS cancelAt, COALESCE(um.meeting_seconds, 0) AS meetingSeconds`;
 const OFFICE_FROM = `offices o
+  LEFT JOIN users ow ON ow.id = o.owner_id
   LEFT JOIN subscriptions s ON s.office_id = o.id
   LEFT JOIN usage_monthly um ON um.office_id = o.id AND um.period = ?period`;
 
@@ -108,13 +122,12 @@ export function adminRoutes(router: Router): void {
     .add("GET", "/v1/admin/summary", async ({ request, env, ctx }) => {
       await requireAdmin(env, request, ctx);
       const now = Date.now();
-      const [counts, countries, days, busiest, newest] = await env.DB.batch([
+      const [counts, standings, plans, countries, days, busiest, newest] = await env.DB.batch([
         env.DB.prepare(
           `SELECT
              (SELECT COUNT(*) FROM users WHERE is_guest = 0) AS accounts,
              (SELECT COUNT(*) FROM users WHERE is_guest = 1) AS guests,
              (SELECT COUNT(*) FROM offices) AS offices,
-             (SELECT COUNT(*) FROM offices WHERE plan != 'free') AS proOffices,
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND last_active_at > ?1) AS activeDay,
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND last_active_at > ?2) AS activeWeek,
              (SELECT COUNT(*) FROM users WHERE is_guest = 0 AND created_at > ?2) AS newWeek,
@@ -123,6 +136,15 @@ export function adminRoutes(router: Router): void {
              (SELECT COUNT(*) FROM help_messages m JOIN help_tickets t ON t.id = m.ticket_id
                WHERE m.from_team = 0 AND m.id > t.team_seen_id) AS helpUnread`,
         ).bind(now - DAY_MS, now - 7 * DAY_MS, now - 30 * DAY_MS),
+        env.DB.prepare(`SELECT ${STANDING} AS standing, COUNT(*) AS offices FROM offices o GROUP BY standing`),
+        // The little said here about plans (the rest is in Creem's own dashboard): paying offices whose card
+        // payment failed, and those ending; and this month's meeting hours across every office.
+        env.DB.prepare(
+          `SELECT
+             (SELECT COUNT(*) FROM subscriptions WHERE provider_subscription_id IS NOT NULL AND status = 'past_due') AS pastDue,
+             (SELECT COUNT(*) FROM subscriptions WHERE provider_subscription_id IS NOT NULL AND status IN (${LIVE}) AND cancel_at IS NOT NULL) AS ending,
+             (SELECT COALESCE(SUM(meeting_seconds), 0) FROM usage_monthly WHERE period = ?1) AS meetingSeconds`,
+        ).bind(thisMonth(now).key),
         env.DB.prepare(
           `SELECT country, COUNT(*) AS people FROM users
             WHERE country IS NOT NULL GROUP BY country ORDER BY people DESC LIMIT 20`,
@@ -131,7 +153,7 @@ export function adminRoutes(router: Router): void {
         env.DB.prepare(`SELECT created_at AS at FROM users WHERE is_guest = 0 AND created_at > ?1`).bind(now - 32 * DAY_MS),
         // The offices meeting the most this month, and the newest accounts: the dashboard's ways in.
         env.DB.prepare(
-          `SELECT o.id, o.name, o.plan, um.meeting_seconds AS meetingSeconds,
+          `SELECT o.id, o.name, o.plan, ${STANDING} AS standing, o.trial_ends_at AS trialEndsAt, um.meeting_seconds AS meetingSeconds,
                   (SELECT COUNT(*) FROM memberships m WHERE m.office_id = o.id) AS members
              FROM usage_monthly um JOIN offices o ON o.id = um.office_id
             WHERE um.period = ?1 AND um.meeting_seconds > 0 ORDER BY um.meeting_seconds DESC LIMIT 5`,
@@ -152,14 +174,18 @@ export function adminRoutes(router: Router): void {
         const at = index.get(dayIn(row.at));
         if (at !== undefined) signups[at]++;
       }
+      const byStanding = new Map((standings.results as Array<{ standing: string; offices: number }>).map((row) => [row.standing, row.offices]));
+      const { meetingSeconds, ...plansNow } = plans.results[0] as { pastDue: number; ending: number; meetingSeconds: number };
       return json({
         counts: counts.results[0],
+        standings: Object.fromEntries(STANDINGS.map((standing) => [standing, byStanding.get(standing) ?? 0])),
         countries: countries.results,
         signups,
         signupDays,
         busiest: busiest.results,
         newest: newest.results,
-        ...(await business(env, now)),
+        plans: plansNow,
+        meetingSeconds,
       });
     })
 
@@ -190,7 +216,7 @@ export function adminRoutes(router: Router): void {
       const [person, offices] = await env.DB.batch([
         env.DB.prepare(`SELECT ${PERSON} FROM users u WHERE u.id = ?`).bind(params.id),
         env.DB.prepare(
-          `SELECT o.id, o.name, o.plan, m.role, o.owner_id = m.user_id AS owner, m.joined_at AS joinedAt
+          `SELECT o.id, o.name, o.plan, ${STANDING} AS standing, o.trial_ends_at AS trialEndsAt, m.role, o.owner_id = m.user_id AS owner, m.joined_at AS joinedAt
              FROM memberships m JOIN offices o ON o.id = m.office_id
             WHERE m.user_id = ? ORDER BY m.joined_at`,
         ).bind(params.id),
@@ -199,20 +225,20 @@ export function adminRoutes(router: Router): void {
       return json({ person: person.results[0], offices: offices.results });
     })
 
-    // Offices, a page at a time, the one with someone around most recently first; all of them, or those on a plan or free.
+    // Offices, a page at a time, the one with someone around most recently first: all of them, or those of one standing; found by name or owner's address.
     .add("GET", "/v1/admin/offices", async ({ request, env, ctx }) => {
       await requireAdmin(env, request, ctx);
       const url = new URL(request.url);
       const { search, like } = searchOf(url);
       const page = pageOf(url);
-      const plan = url.searchParams.get("plan");
-      const where = `(?1 = '' OR LOWER(o.name) LIKE ?2 ESCAPE '\\')${plan === "free" ? " AND o.plan = 'free'" : plan === "pro" ? " AND o.plan != 'free'" : ""}`;
+      const standing = STANDINGS.find((one) => one === url.searchParams.get("standing"));
+      const where = `(?1 = '' OR LOWER(o.name) LIKE ?2 ESCAPE '\\' OR LOWER(COALESCE(ow.email, '')) LIKE ?2 ESCAPE '\\')${standing ? ` AND ${STANDING} = '${standing}'` : ""}`;
       const [rows, total] = await env.DB.batch([
         env.DB.prepare(
           `SELECT ${OFFICE} FROM ${OFFICE_FROM.replace("?period", "?3")} WHERE ${where}
             ORDER BY lastActiveAt DESC, o.created_at DESC LIMIT ?4 OFFSET ?5`,
         ).bind(search, like, thisMonth().key, PAGE, page * PAGE),
-        env.DB.prepare(`SELECT COUNT(*) AS total FROM offices o WHERE ${where}`).bind(search, like),
+        env.DB.prepare(`SELECT COUNT(*) AS total FROM offices o LEFT JOIN users ow ON ow.id = o.owner_id WHERE ${where}`).bind(search, like),
       ]);
       const offices = rows.results as Array<{ id: string } & Record<string, unknown>>;
       const here = await hereIn(env, offices.map((office) => office.id));
@@ -345,39 +371,6 @@ export function adminRoutes(router: Router): void {
       }
       return json({ ok: true });
     });
-}
-
-/**
- * The little the admin view says about plans; the rest (revenue, refunds,
- * history) is in Creem's own dashboard. Offices paying, by plan; how many of
- * those had a card payment fail, and how many are ending; offices on a paid
- * plan given by hand; and this month's meeting hours across every office.
- */
-async function business(env: Env, now: number) {
-  const [paid, extra] = await env.DB.batch([
-    env.DB.prepare(
-      `SELECT plan, COUNT(*) AS offices FROM subscriptions
-        WHERE provider_subscription_id IS NOT NULL AND status IN (${LIVE}) GROUP BY plan`,
-    ),
-    env.DB.prepare(
-      `SELECT
-         (SELECT COUNT(*) FROM offices o WHERE o.plan != 'free' AND NOT EXISTS (
-            SELECT 1 FROM subscriptions s WHERE s.office_id = o.id AND s.provider_subscription_id IS NOT NULL AND s.status IN (${LIVE}))) AS given,
-         (SELECT COALESCE(SUM(meeting_seconds), 0) FROM usage_monthly WHERE period = ?1) AS meetingSeconds,
-         (SELECT COUNT(*) FROM subscriptions WHERE provider_subscription_id IS NOT NULL AND status = 'past_due') AS pastDue,
-         (SELECT COUNT(*) FROM subscriptions WHERE provider_subscription_id IS NOT NULL AND status IN (${LIVE}) AND cancel_at IS NOT NULL) AS ending`,
-    ).bind(thisMonth(now).key),
-  ]);
-  const more = extra.results[0] as { given: number; meetingSeconds: number; pastDue: number; ending: number };
-  return {
-    plans: {
-      paid: Object.fromEntries((paid.results as Array<{ plan: string; offices: number }>).map((row) => [row.plan, row.offices])),
-      given: more.given,
-      pastDue: more.pastDue,
-      ending: more.ending,
-    },
-    meetingSeconds: more.meetingSeconds,
-  };
 }
 
 /**

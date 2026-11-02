@@ -172,6 +172,16 @@ missing features on the map.
 
 ## Your menu (21 October)
 
+- **Two of you, by what each is for** (1 November). The dock's first key is
+  you on this floor: your status (one press, a call sets its own) and your
+  note, and, sitting at your desk, customizing it, and how you look. The
+  rail's circle is your account, the same on every page: your profile, your
+  music, the app's theme, notifications, microphone and camera, installing
+  it. The circle carries no status, only the name tag's three bars while
+  music plays, so you know where to stop it. Under Chat and Settings, where
+  there's no floor and so no dock, the presence strip takes the circle's
+  place and its menu is both: your account with your status and note under
+  who you are. One face per corner, never two side by side.
 - **Status, note and music are one row each**, saying what they are now.
   Pressing one opens its choices beneath it, inset, while the other two fold
   away; who you are and your profile stay where they are. A pick closes it.
@@ -242,6 +252,25 @@ missing features on the map.
   card as well. Never synced: Spotify's policy bars playing one source to many
   listeners. Listening in step is Spotify's Jam: a pasted Jam link goes on
   your card as Join Jam (starting one needs Premium).
+
+## The dock (1 November)
+
+- **Everything over the floor is in the dock**, a tab of the frame at the
+  floor's foot; the floor's top stays clear (but for "Reconnecting" while
+  it is). It holds what the moment needs: on the floor you, your
+  microphone, the way back to your desk and how many are here (Invite too
+  while you're the only one in an office); in a call only the call's keys;
+  decorating your desk, only your microphone. Keys come and go with a
+  scale and a fade while the rest slide over.
+- **Pressed, the dock itself opens**, rather than a popup over it: out to
+  the panel's width, then up; closing, straight down, then in. One move at
+  a time read calmer than both at once. The panels stay mounted under it,
+  so opening only uncovers one.
+- **The count is a number with a people icon, not faces**: people's faces
+  looked like the office's own mark beside it on the rail. Opened, it lists
+  who's on the floor as their characters, and pressing someone walks you
+  over. In the demo office the key is Your office instead, and opens on an
+  office of your own, one line and one button to /create.
 
 ## What's at hand on the floor, and the whiteboard (21 October)
 

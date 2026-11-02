@@ -10,12 +10,13 @@ import { notify, setBadge, useNotifyPermission } from "@/lib/notify";
 import { onOpenFromPush, startPush, stopPush } from "@/lib/push";
 import { usePrefs } from "@/lib/prefs";
 import { WAVED_AT_YOU_EVENT } from "@/lib/floor";
+import { help, SUPPORT_CHANNEL } from "@/lib/help";
 
 /**
  * What reaches you in another window (lib/notify.ts): a direct message, a
- * mention, a call or an ask into a meeting, a wave. Clicking one brings the
- * office back, at the conversation it came from. Once TinyFloor is closed,
- * direct messages and mentions still come, as pushes. Nothing else: someone walking
+ * mention, the TinyFloor team writing, a call or an ask into a meeting, a
+ * wave. Clicking one brings the office back, at the conversation it came
+ * from. On a device without TinyFloor open, messages still come, as pushes. Nothing else: someone walking
  * in, or a busy channel, is for when you're looking. The installed app's icon
  * counts what's waiting, as the tab's title does.
  */
@@ -43,6 +44,8 @@ export function DesktopAlerts({ chatPath, waiting }: { chatPath: (channel: strin
       }),
     [],
   );
+
+  useEffect(() => help.onNews((news) => notify({ title: news.title, body: news.body, tag: "help", onClick: () => open(SUPPORT_CHANNEL) })), []);
 
   // A call rings until it's answered or over, and so does its notification.
   useEffect(() => {

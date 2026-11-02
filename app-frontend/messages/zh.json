@@ -94,7 +94,8 @@
     "aloneTitle": "楼层上只有你",
     "aloneBody": "发送链接，打开它的人会出现在你身旁。",
     "aloneQuiet": "有其他人进来时，会显示在这里。",
-    "inviteSomeone": "邀请某人"
+    "inviteSomeone": "邀请某人",
+    "walkTo": "走到 {name} 身边"
   },
   "call": {
     "incoming": "正在呼叫你",
@@ -214,6 +215,7 @@
     "download": "下载",
     "messages": "消息",
     "searching": "搜索中…",
+    "heldSearch": "已搜索最近 {days} 天。Pro 可搜索全部内容。",
     "filesMax": "一次最多 {count} 个文件。",
     "fileTooBig": "文件最大 10 MB。",
     "fileSlowDown": "一次发送的文件太多，请一分钟后再试。",
@@ -229,6 +231,10 @@
     "replyingTo": "回复 <strong>{name}</strong>",
     "cancelReply": "取消回复",
     "replyGone": "原消息已删除",
+    "replyHeld": "一条较早的消息",
+    "heldTitle": "超过 {days} 天的消息在 Pro 中可见",
+    "heldBody": "这些消息会被保留，永不删除。",
+    "heldAction": "查看 Pro",
     "replyFiles": "{count, plural, other {# 个文件}}",
     "typingOne": "{name} 正在输入",
     "typingTwo": "{a} 和 {b} 正在输入",
@@ -390,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "保存到你的账户",
       "accountBody": "这样它就一直属于你，团队也能找到它。只需几秒钟。"
+    },
+    "dock": {
+      "title": "创建你自己的办公室",
+      "start": "开始"
     }
   },
   "office": {
@@ -672,24 +682,15 @@
     "asked": "已邀请"
   },
   "help": {
-    "title": "帮助与反馈",
-    "officeSees": "它会发给 TinyFloor 团队，并在聊天中开一个工单，{office} 的所有人都能看到。",
-    "lobbySees": "它会发给 TinyFloor 团队，并在你的聊天中开一个工单。只有你能看到。",
-    "placeholder": "发生了什么？你原本期望怎样？",
-    "context": "我们会附上你所在的页面和浏览器信息，方便排查。",
-    "send": "发送",
-    "sending": "正在发送",
+    "title": "和 TinyFloor 团队聊聊",
     "error": "没有发送成功，请再试一次。",
     "slowDown": "过去一小时内发送得太多了，请稍后再试。",
-    "support": "TinyFloor 支持",
-    "open": "处理中",
+    "support": "TinyFloor 团队",
     "closed": "已关闭",
     "message": "给 TinyFloor 团队发消息",
-    "closedNote": "TinyFloor 团队已关闭此工单。还有问题？请通过「帮助与反馈」再告诉我们。",
-    "ticketOffice": "{office} 的所有人都能查看并补充。TinyFloor 团队会在这里回复。",
-    "ticketLobby": "只有你和 TinyFloor 团队能看到这里。我们会在这里回复。",
-    "nothingOpen": "目前没有与 TinyFloor 团队进行中的工单。",
-    "emailUs": "更想用邮件？<link>{email}</link>"
+    "closedNote": "这段对话已关闭。随时再写给我们，我们会接着回复。",
+    "ticketOffice": "问题、想法，或者哪里不好用：写给打造 TinyFloor 的我们。每条消息我们都会读，并在这里回复。{office} 的所有人都能看到这段对话。",
+    "ticketLobby": "问题、想法，或者哪里不好用：写给打造 TinyFloor 的我们。每条消息我们都会读，并在这里回复。只有你能看到这段对话。"
   },
   "billing": {
     "settingUp": "已收到付款，正在启用方案…",
@@ -720,7 +721,8 @@
       "wholeTeam": "整个团队，在同一层楼",
       "support": "我们团队的优先支持",
       "assurance": "随时可以取消。14 天内全额退款。",
-      "meetings": "团队需要多少会议就开多少"
+      "meetings": "团队需要多少会议就开多少",
+      "history": "完整的聊天记录"
     },
     "page": {
       "notice": {
@@ -739,6 +741,7 @@
       "freePer": "永久",
       "freeSeats": "最多 {seats} 人",
       "freeEverything": "楼层、聊天、会议和高清视频",
+      "freeHistory": "{days} 天的聊天记录",
       "invoices": "发票",
       "keep": "保留 Pro",
       "updateCard": "更新银行卡",
@@ -806,7 +809,11 @@
     "shareNote": "用这台设备上的任意应用发送",
     "full": "新成员无法加入：{office} 的方案最多 {seats} 人。",
     "fullMember": "管理员可以继续使用 Pro 来腾出位置。",
-    "keepPro": "继续使用 Pro"
+    "keepPro": "继续使用 Pro",
+    "ways": {
+      "message": "消息",
+      "email": "邮件"
+    }
   },
   "desk": {
     "claimConfirm": "认领",
@@ -816,31 +823,35 @@
     "claimed": "已认领"
   },
   "decorate": {
-    "open": "装饰",
-    "title": "装饰你的工位",
-    "close": "关闭",
-    "things": "物品",
-    "chair": "椅子",
+    "title": "你的桌子",
     "shelf": {
-      "all": "全部",
       "tech": "科技",
       "lamps": "台灯",
       "personal": "个人",
-      "setups": "整套",
-      "chairs": "椅子"
+      "setups": "整套"
     },
-    "hint": "选择要放在桌上的东西，拖动即可移动。",
-    "swapHint": "选择要替换成的东西。",
-    "full": "桌面已满：拿走一些才能再放。",
-    "count": "物品：{count}/{max}",
     "undo": "撤销",
     "redo": "重做",
     "reset": "重置",
     "resetConfirm": "要把工位恢复原样吗？",
     "cancel": "取消",
     "done": "完成",
-    "remove": "从桌上拿走",
-    "deselect": "完成选择"
+    "wood": {
+      "maple": "枫木",
+      "oak": "橡木",
+      "beech": "山毛榉",
+      "walnut": "胡桃木",
+      "white": "白色",
+      "graphite": "石墨"
+    },
+    "part": {
+      "left": "左边",
+      "middle": "中间",
+      "right": "右边",
+      "chair": "椅子",
+      "wood": "木色"
+    },
+    "remove": "移除"
   },
   "look": {
     "open": "更换形象",

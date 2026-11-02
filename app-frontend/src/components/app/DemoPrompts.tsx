@@ -12,7 +12,7 @@ import { saveIdentity } from "@/lib/identity";
 import { lobbyPath, officePath } from "@/lib/links";
 import { openOfficeAhead } from "@/lib/officeAhead";
 import { renameOnFloor } from "@/lib/floor";
-import { rememberPendingOffice } from "@/lib/pendingOffice";
+import { makeOfficeHref } from "@/lib/pendingOffice";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { CLIENT_ID, GoogleButton, googleAvailable, loadGoogle } from "@/components/auth/GoogleButton";
 import { Modal } from "@/components/ui/Modal";
@@ -179,8 +179,7 @@ function OfficePrompt({ open, onClose }: { open: boolean; onClose: () => void })
 
   const byEmail = () => {
     // /create makes it as soon as there is an account to own it.
-    rememberPendingOffice(typed);
-    router.push(`/auth?${new URLSearchParams({ redirect: "/create", mode: "signup" })}`);
+    router.push(makeOfficeHref({ account: false, name: typed, fromDemo: true }));
   };
 
   return (

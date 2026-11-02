@@ -52,6 +52,8 @@ export interface CommandPaletteProps {
   found?: CommandItem[];
   /** Looking for `found`: instead of "no results" while the answer is on its way. */
   searching?: ReactNode;
+  /** A quiet line under the results, about them (how far back they go). */
+  note?: ReactNode;
 }
 
 // Opened via a keyboard shortcut many times a day — entrance must read as
@@ -73,6 +75,7 @@ export function CommandPalette({
   onQueryChange,
   found,
   searching,
+  note,
 }: CommandPaletteProps) {
   const [internalOpen, setInternalOpen] = useState(false);
   const controlled = controlledOpen !== undefined;
@@ -379,6 +382,9 @@ export function CommandPalette({
                     ))
                   )}
                 </div>
+                {note && query.trim() ? (
+                  <div className="border-t border-border px-4 py-2.5 text-[12px] text-muted-foreground">{note}</div>
+                ) : null}
               </motion.div>
             </div>
           )}

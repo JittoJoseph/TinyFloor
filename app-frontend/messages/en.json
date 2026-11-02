@@ -94,7 +94,8 @@
     "aloneTitle": "Just you on the floor",
     "aloneBody": "Send the link, and whoever opens it walks in beside you.",
     "aloneQuiet": "When someone else comes in, they'll show up here.",
-    "inviteSomeone": "Invite someone"
+    "inviteSomeone": "Invite someone",
+    "walkTo": "Walk over to {name}"
   },
   "call": {
     "incoming": "Calling you",
@@ -214,6 +215,7 @@
     "download": "Download",
     "messages": "Messages",
     "searching": "Searching…",
+    "heldSearch": "Searched the last {days} days. Pro searches everything.",
     "filesMax": "Up to {count} files at a time.",
     "fileTooBig": "Files can be up to 10 MB.",
     "fileSlowDown": "Too many files at once. Try again in a minute.",
@@ -229,6 +231,10 @@
     "replyingTo": "Replying to <strong>{name}</strong>",
     "cancelReply": "Stop replying",
     "replyGone": "Original message was deleted",
+    "replyHeld": "An older message",
+    "heldTitle": "Messages older than {days} days are on Pro",
+    "heldBody": "They're kept, never deleted.",
+    "heldAction": "See Pro",
     "replyFiles": "{count, plural, one {# file} other {# files}}",
     "typingOne": "{name} is typing",
     "typingTwo": "{a} and {b} are typing",
@@ -390,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Save it to your account",
       "accountBody": "So it stays yours and your team can find it. It takes a few seconds."
+    },
+    "dock": {
+      "title": "Create your own office",
+      "start": "Get started"
     }
   },
   "office": {
@@ -672,24 +682,15 @@
     "asked": "Asked"
   },
   "help": {
-    "title": "Help and feedback",
-    "officeSees": "It goes to the TinyFloor team and opens a ticket in Chat that everyone in {office} can follow.",
-    "lobbySees": "It goes to the TinyFloor team and opens a ticket in your Chat. Only you can see it.",
-    "placeholder": "What happened, and what did you expect?",
-    "context": "We add the page you're on and your browser, so we can look into it.",
-    "send": "Send",
-    "sending": "Sending",
+    "title": "Talk to the TinyFloor team",
     "error": "That didn't send. Try again.",
     "slowDown": "You've sent a lot in the last hour. Try again a little later.",
-    "support": "TinyFloor support",
-    "open": "Open",
+    "support": "TinyFloor team",
     "closed": "Closed",
     "message": "Message the TinyFloor team",
-    "closedNote": "The TinyFloor team closed this. Still stuck? Tell us again from Help and feedback.",
-    "ticketOffice": "Everyone in {office} can follow this and add to it. The TinyFloor team answers here.",
-    "ticketLobby": "Only you and the TinyFloor team see this. We answer here.",
-    "nothingOpen": "Nothing is open with the TinyFloor team right now.",
-    "emailUs": "Rather email? <link>{email}</link>"
+    "closedNote": "This conversation is closed. Write again any time and we'll pick it up.",
+    "ticketOffice": "Questions, ideas, something that isn't working: write to the people who make TinyFloor. We read every message and answer here. Everyone in {office} can see this conversation.",
+    "ticketLobby": "Questions, ideas, something that isn't working: write to the people who make TinyFloor. We read every message and answer here. Only you can see this conversation."
   },
   "billing": {
     "settingUp": "Payment received. Setting up the plan…",
@@ -720,7 +721,8 @@
       "wholeTeam": "Everyone on your team, on one floor",
       "support": "Priority help from our team",
       "assurance": "Cancel any time. Full refund within 14 days.",
-      "meetings": "Meetings as often as your team needs"
+      "meetings": "Meetings as often as your team needs",
+      "history": "Your whole chat history"
     },
     "page": {
       "notice": {
@@ -739,6 +741,7 @@
       "freePer": "forever",
       "freeSeats": "Up to {seats} people",
       "freeEverything": "Floor, chat, meetings and HD video",
+      "freeHistory": "{days} days of chat history",
       "invoices": "Invoices",
       "keep": "Keep Pro",
       "updateCard": "Update card",
@@ -806,7 +809,11 @@
     "shareNote": "Send it from any app on this device",
     "full": "Nobody new can join: {office}'s plan has room for {seats} people.",
     "fullMember": "An admin can keep Pro to make room.",
-    "keepPro": "Keep Pro"
+    "keepPro": "Keep Pro",
+    "ways": {
+      "message": "Message",
+      "email": "Email"
+    }
   },
   "desk": {
     "claimConfirm": "Claim",
@@ -816,31 +823,35 @@
     "claimed": "Claimed"
   },
   "decorate": {
-    "open": "Decorate",
-    "title": "Decorate your desk",
-    "close": "Close",
-    "things": "Things",
-    "chair": "Chair",
+    "title": "Your desk",
     "shelf": {
-      "all": "All",
       "tech": "Tech",
       "lamps": "Lamps",
       "personal": "Personal",
-      "setups": "Setups",
-      "chairs": "Chairs"
+      "setups": "Setups"
     },
-    "hint": "Pick something to put on your desk. Drag things to move them.",
-    "swapHint": "Pick something to swap it for.",
-    "full": "Your desk is full: take something off to add more.",
-    "count": "Things: {count} of {max}",
     "undo": "Undo",
     "redo": "Redo",
     "reset": "Reset",
     "resetConfirm": "Put your desk back as it came?",
     "cancel": "Cancel",
     "done": "Done",
-    "remove": "Take off the desk",
-    "deselect": "Done with this"
+    "wood": {
+      "maple": "Maple",
+      "oak": "Oak",
+      "beech": "Beech",
+      "walnut": "Walnut",
+      "white": "White",
+      "graphite": "Graphite"
+    },
+    "part": {
+      "left": "Left",
+      "middle": "Middle",
+      "right": "Right",
+      "chair": "Chair",
+      "wood": "Wood"
+    },
+    "remove": "Remove"
   },
   "look": {
     "open": "Change how you look",

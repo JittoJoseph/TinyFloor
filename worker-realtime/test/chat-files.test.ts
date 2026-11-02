@@ -53,12 +53,13 @@ describe("files in chat", () => {
 describe("mentions", () => {
   it("counts a channel's unread mentions for the person mentioned, and keeps them through an edit", async () => {
     const office = officeId();
-    const ada = await ChatClient.open(office, person("Ada"));
+    const author = person("Ada");
+    const ada = await ChatClient.open(office, author);
     const bo = person("Bo");
     await ada.next("chat_ready");
 
     ada.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "morning all" });
-    ada.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "@Bo can you look?", mentions: [bo.id, ada.id, bo.id] });
+    ada.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "@Bo can you look?", mentions: [bo.id, author.id, bo.id] });
     await ada.next("chat_new");
     const { message } = await ada.next("chat_new");
     // Each person once, never the author.

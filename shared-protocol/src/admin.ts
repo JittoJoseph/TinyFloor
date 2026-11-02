@@ -1,4 +1,5 @@
-import type { ChatMessage } from "./chat";
+import type { ChatMessage, HelpNews } from "./chat";
+import type { PushPayload } from "./push";
 import type { PresenceStatus } from "./messages";
 
 /** What tinyfloor-api can ask tinyfloor-realtime to do, over a service binding. */
@@ -6,7 +7,8 @@ export interface RealtimeAdminApi {
   presenceCounts(roomIds: string[]): Promise<Record<string, number>>;
   /** Who is in each office right now, once each, with how they look and their status: for the dashboard. */
   officePresence(officeIds: string[]): Promise<Record<string, PresentPerson[]>>;
-  closeRoom(roomId: string): Promise<void>;
+  /** The office moved to another floor: everyone on it reconnects, and their next ticket says the new one. */
+  floorMoved(officeId: string): Promise<void>;
   /** The office was deleted: everyone leaves, and its floor (the whiteboard) and its chat are deleted. */
   forgetOffice(officeId: string): Promise<void>;
   /** Someone's membership ended: they leave the floor and the office's chat. */
@@ -22,11 +24,15 @@ export interface RealtimeAdminApi {
   /** A new office: the team hears about it on Discord. */
   officeCreated(event: { office: string; owner: string; where: Whereabouts }): Promise<void>;
   /**
-   * A Help and feedback ticket changed: the office's chat (or, for a demo
-   * office visitor's, their own sockets in the lobby's) is told to read it
-   * again, so its count turns up at once rather than on the next look.
+   * The conversation with the TinyFloor team changed: the office's chat (or,
+   * for a demo office visitor's, their own sockets in the lobby's) is told to
+   * read it again, so its count turns up at once. With `news` (the team
+   * wrote), it's also a notification: in the app where it's open, and a push
+   * to everyone's other devices.
    */
-  helpChanged(place: { officeId: string } | { visitor: string }): Promise<void>;
+  helpChanged(place: { officeId: string } | { visitor: string }, news?: HelpNews): Promise<void>;
+  /** A push to these people's every device: the team hearing that someone wrote to them. */
+  notify(userIds: string[], payload: PushPayload): Promise<void>;
   /** Someone wrote through Help and feedback: the team hears about it on Discord. */
   helpMessage(event: { place: string; name: string; body: string; first: boolean; link?: string; where: Whereabouts }): Promise<void>;
 }

@@ -1227,6 +1227,7 @@
         "everything": "Wszystko z Free, a do tego",
         "team": "Miejsce dla całego zespołu",
         "often": "Spotkania tak często, jak potrzeba",
+        "history": "Cała historia czatu",
         "help": "Priorytetowa pomoc od twórców",
         "included": "Co dostajesz"
       },
@@ -1364,6 +1365,9 @@
       "callsNote": "Nigdy nie są liczone",
       "support": "Pierwszeństwo w pomocy",
       "wholeTeam": "Cały zespół",
+      "history": "Historia czatu",
+      "historyDays": "{days} dni",
+      "historyAll": "Cała",
       "meetings": "Spotkania grupowe",
       "features": {
         "chat": "Kanały i wiadomości",
@@ -1414,6 +1418,10 @@
       {
         "q": "Co się dzieje, gdy kończy się okres próbny?",
         "a": "Biuro przechodzi na Free, chyba że wybierzecie Pro. Nikt nie jest usuwany: przez kolejne dwa tygodnie wszyscy mogą wchodzić, ale nikt nowy nie dołączy ponad 3 osoby. Potem na piętrze mogą być naraz 3 osoby, a czat pozostaje otwarty dla wszystkich."
+      },
+      {
+        "q": "Czy historia czatu jest zachowywana w Free?",
+        "a": "Tak, w całości. Free pokazuje wiadomości z ostatnich 90 dni, a Pro wszystko, więc po przejściu na Pro nic nie ginie."
       },
       {
         "q": "Czy cena wzrośnie?",

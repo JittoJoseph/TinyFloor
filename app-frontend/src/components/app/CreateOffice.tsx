@@ -9,7 +9,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { api, type Office, type PlanId } from "@/lib/api";
 import { dollars, usePlans } from "@/lib/billing";
 import { openCheckout, waitForPlan } from "@/lib/checkout";
-import { officePath, useSitePage } from "@/lib/links";
+import { lobbyPath, officePath, useSitePage } from "@/lib/links";
 import { lastOffice } from "@/lib/lastOffice";
 import { openOfficeAhead } from "@/lib/officeAhead";
 import { warmFloor } from "@/lib/floorWarmup";
@@ -40,16 +40,19 @@ type Step = "name" | "invite" | "plan";
  * as soon as it has a name, so leaving at any point still leaves an office.
  */
 /**
- * Back out of making an office: to the office you were last in, or, with
+ * Back out of making an office: to the demo office when that's where it was
+ * started (/create?from=demo), else to the office you were last in, or, with
  * none, out to the site (the front door would only bring you back here).
  */
 export function useCreateBack(): string {
   const site = useSitePage();
   const [back, setBack] = useState(site);
   useEffect(() => {
+    const fromDemo = new URLSearchParams(window.location.search).get("from") === "demo";
     const last = lastOffice();
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (last) setBack(officePath(last));
+    if (fromDemo) setBack(lobbyPath);
+    else if (last) setBack(officePath(last));
   }, []);
   return back;
 }
@@ -123,7 +126,9 @@ export function CreateOfficeFlow() {
       let made = office;
       if (!made) {
         made = (await api.createOffice(typed)).office;
-        withPostHog((posthog) => posthog.capture("office_created", { office_id: made!.id }));
+        // Started from the demo office (its dock, its Your office page): where it came from, on the outcome.
+        const fromDemo = new URLSearchParams(window.location.search).get("from") === "demo";
+        withPostHog((posthog) => posthog.capture("office_created", { office_id: made!.id, ...(fromDemo ? { from: "demo" } : {}) }));
         posthogLog.info("Office creation completed");
         setOffice(made);
       } else if (made.name !== typed) {
@@ -257,9 +262,9 @@ export function CreateOfficeFlow() {
             <>
               <StepTitle title={t("inviteTitle")} body={t("inviteBody", { office: typed })} />
               {/* The same ways to send it as the invite dialog: one place decides how inviting works. */}
-              {office && <InviteActions officeId={office.id} officeName={typed} />}
+              {office && <InviteActions officeId={office.id} officeName={typed} compact />}
               {selling && !!catalog?.trialDays ? (
-                <p className="mt-4 flex items-start gap-2.5 rounded-2xl bg-muted p-3.5 text-[13px] leading-relaxed text-foreground">
+                <p className="mt-3 flex items-start gap-2.5 rounded-2xl bg-muted p-3 text-[12.5px] leading-relaxed text-foreground">
                   <Zap className="mt-0.5 size-4 shrink-0 text-brand" />
                   {t("trialNote", { plan: NAMES[catalog.trialPlan ?? "pro"], days: catalog.trialDays })}
                 </p>

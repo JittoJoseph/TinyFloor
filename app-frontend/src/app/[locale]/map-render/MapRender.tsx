@@ -1,6 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { FLOOR } from "@shared/map";
+
+/** The whole floor this browser draws (map.ts FLOOR), at one pixel to a pixel. */
+const [WIDTH, HEIGHT] = FLOOR.shell.size.map((tiles) => tiles * 32);
 
 export function MapRender() {
   const box = useRef<HTMLDivElement>(null);
@@ -37,8 +41,8 @@ export function MapRender() {
       }
       game = new Phaser.Game({
         type: Phaser.WEBGL,
-        width: 1536,
-        height: 1024,
+        width: WIDTH,
+        height: HEIGHT,
         parent: box.current!,
         scene: Render,
         backgroundColor: "#000000",
@@ -51,5 +55,5 @@ export function MapRender() {
       game?.destroy(true);
     };
   }, []);
-  return <div ref={box} style={{ position: "fixed", left: 0, top: 0, width: 1536, height: 1024 }} />;
+  return <div ref={box} style={{ position: "fixed", left: 0, top: 0, width: WIDTH, height: HEIGHT }} />;
 }

@@ -1227,6 +1227,7 @@
         "everything": "Alt fra Free, plus",
         "team": "Plads til hele teamet",
         "often": "Møder så tit, som teamet har brug for",
+        "history": "Hele jeres chathistorik",
         "help": "Prioriteret hjælp fra dem, der bygger det",
         "included": "Det får du"
       },
@@ -1364,6 +1365,9 @@
       "callsNote": "Tælles aldrig",
       "support": "Prioriteret hjælp",
       "wholeTeam": "Hele teamet",
+      "history": "Chathistorik",
+      "historyDays": "{days} dage",
+      "historyAll": "Det hele",
       "meetings": "Gruppemøder",
       "features": {
         "chat": "Kanaler og beskeder",
@@ -1414,6 +1418,10 @@
       {
         "q": "Hvad sker der, når prøveperioden slutter?",
         "a": "Kontoret skifter til Free, medmindre I vælger Pro. Ingen fjernes: i to uger mere kan alle stadig komme ind, men ingen nye kan komme med ud over 3. Derefter kan 3 personer være på etagen ad gangen, og chatten er åben for alle."
+      },
+      {
+        "q": "Gemmes chathistorikken på Free?",
+        "a": "Ja, det hele. Free viser beskeder fra de seneste 90 dage, og Pro viser alt, så intet går tabt, når I skifter til Pro."
       },
       {
         "q": "Stiger prisen?",

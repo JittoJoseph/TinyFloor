@@ -4,10 +4,10 @@
 // what stands along the walls) is changed through overrides, kept by each
 // piece's key, which is how anyone's changes to their office stay changed.
 /* global Phaser */
-import { TILE, SPEED, SEAT, SIT_FRAME, down16, loadAvatar, avatarAnims, itemFrame, drawItem, heldDirection } from "./common.js";
-import { DESK_STEP, bounds, check, clusterSize, expand, isCluster, spriteSize } from "./catalog.js";
+import { TILE, SPEED, SEAT, SIT_FRAME, loadAvatar, avatarAnims, itemFrame, drawItem, heldDirection } from "./common.js";
+import { bounds, check, clusterSize, deskStep, expand, giveWay, isCluster, spriteSize } from "./catalog.js";
 import { bake, buildFloor, checkTemplate, seatsOf, solidsOf } from "./floor.js";
-import { FLOORS, WALLS, paint, renderShell, wallSolids } from "./shell.js";
+import { FLOORS, GROUNDS, WALLS, attach, attachPatio, exitPatio, paint, planShell, renderShell, roomAt, wallSolids } from "./shell.js";
 
 const $ = (selector) => document.querySelector(selector);
 const loadImage = (url) => new Promise((resolve, reject) => Object.assign(new Image(), { onload() { resolve(this); }, onerror: reject, src: url }));
@@ -16,7 +16,8 @@ const ROWS = 32;
 const typing = () => ["INPUT", "SELECT", "TEXTAREA"].includes(document.activeElement?.tagName);
 const newId = () => Math.random().toString(36).slice(2, 8);
 /** How a bank is shown while you place it, and the size it starts at. */
-const GHOST = { size: { cols: 2, sides: 2 }, key: "ghost" };
+const GHOST = { size: { cols: 1, sides: 1 }, key: "ghost" };
+const snap = (v, step) => Math.round(v / step) * step;
 
 let catalog = { items: [] };
 let byId = new Map();
@@ -26,7 +27,7 @@ let placing = null;
 let selected = null;
 let dirty = false;
 let scene = null;
-/** "furnish" places and changes things; "walls" paints the shell's walls and floors. */
+/** "furnish" places and changes things; "walls" paints the shell's walls and floors; "rooms" moves a planned shell's rooms. */
 let mode = "furnish";
 let brush = "#";
 let shellDirty = false;
@@ -182,6 +183,7 @@ function renderBrushes(shell) {
   const options = [
     ...Object.keys(WALLS).map((material) => ({ label: `Wall, ${material}`, entry: { kind: "wall", material } })),
     ...Object.keys(FLOORS).map((material) => ({ label: `Floor, ${material}`, entry: { kind: "floor", material } })),
+    ...GROUNDS.map((material) => ({ label: `Outside, ${material}`, entry: { kind: "floor", material } })),
     { label: "Nothing", entry: { kind: "void" } },
   ];
   const charFor = (entry) => Object.entries(shell.legend).find(([, e]) => e.kind === entry.kind && (e.material ?? null) === (entry.material ?? null))?.[0] ?? null;
@@ -199,9 +201,46 @@ function renderBrushes(shell) {
   };
 }
 
+// ---------- rooms ----------
+
+/**
+ * Rooms to add, each with what's in it, from its top-left corner (its wall's)
+ * in tiles. Its walls, doorway, what's on its walls and its sitting area are
+ * worked out where it's put down (shared-protocol/src/plan.ts, floor.js).
+ */
+const ROOM_PRESETS = [
+  {
+    name: "Meeting room",
+    kind: "meeting",
+    size: [12, 11],
+    floor: "cream",
+    items: [["meeting-table", 3, 5], ...[0, 1, 2].flatMap((i) => [["chair-black-mesh", 4 + i * 2, 4], ["chair-black-back", 4 + i * 2, 7]])],
+  },
+  // A lounge and a library get their sitting area by themselves (floor.js): an even width inside centres it.
+  { name: "Lounge", kind: "lounge", size: [7, 12], floor: "rose", items: [] },
+  { name: "Quiet room", kind: "quiet", size: [8, 8], floor: "sage", items: [["rug-small-blue", 3, 4], ["sofa-two", 3, 3]] },
+  { name: "Library", kind: "library", size: [7, 10], floor: "cream", items: [] },
+  { name: "Café", kind: "kitchen", size: [13, 9], floor: "oak", items: [["meeting-table-small", 2, 4], ["meeting-table-small", 7, 4]] },
+];
+
+function renderRoomPresets() {
+  const select = $("#add-room");
+  select.replaceChildren(new Option("Add a room", ""), ...ROOM_PRESETS.map((preset, i) => new Option(preset.name, String(i))), new Option("Patio, with a door", "patio"));
+  select.onchange = () => {
+    const value = select.value;
+    select.value = "";
+    if (!scene?.shell?.plan) return;
+    if (value === "patio") return scene.pickUpPatio();
+    const preset = ROOM_PRESETS[Number(value)];
+    if (preset) scene.pickUp(null, preset);
+  };
+}
+
 function setMode(next) {
+  if (mode === "rooms" && next !== "rooms") scene?.putBack();
   mode = next;
   $("#brush").hidden = mode !== "walls";
+  $("#add-room").hidden = mode !== "rooms" || !scene?.shell?.plan;
   if (placing) startPlacing(placing);
   select(null);
   document.querySelectorAll("[data-mode]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.mode === mode)));
@@ -230,19 +269,39 @@ class Floor extends Phaser.Scene {
     this.overlay = this.add.graphics().setDepth(100000);
     this.ghost = this.add.container(0, 0).setAlpha(0.6).setDepth(99999).setVisible(false);
     avatarAnims(this);
-    this.avatar = this.add.sprite(23 * TILE, 13 * TILE, "avatar", 0).setScale(2).setOrigin(0.5, 1);
+    this.avatar = this.add.sprite(23 * TILE, 13 * TILE, "avatar", 0).setOrigin(0.5, 1);
     this.avatar.play("idle-down");
     this.keys = this.input.keyboard.addKeys("W,A,S,D,UP,LEFT,DOWN,RIGHT,E", false);
     this.keys.E.on("down", () => !typing() && this.toggleSit());
     this.input.keyboard.on("keydown-DELETE", () => this.removeSelected());
     this.input.keyboard.on("keydown-BACKSPACE", () => this.removeSelected());
     this.input.keyboard.on("keydown-ESC", () => {
+      this.putBack();
       if (placing) startPlacing(placing);
       select(null);
     });
+    // The camera: the wheel zooms where the pointer is, a right or middle drag moves the view.
+    this.input.mouse.disableContextMenu();
+    this.input.on("wheel", (pointer, _over, _dx, dy) => {
+      const camera = this.cameras.main;
+      const before = camera.getWorldPoint(pointer.x, pointer.y);
+      camera.setZoom(Phaser.Math.Clamp(camera.zoom * (dy > 0 ? 1 / 1.15 : 1.15), 0.25, 3));
+      const after = camera.getWorldPoint(pointer.x, pointer.y);
+      camera.scrollX += before.x - after.x;
+      camera.scrollY += before.y - after.y;
+    });
     this.input.on("pointermove", (pointer) => this.pointerMove(pointer));
     this.input.on("pointerdown", (pointer) => this.pointerDown(pointer));
-    this.input.on("pointerup", () => {
+    this.input.on("pointerup", (pointer) => {
+      if (this.panning) {
+        // A right click that didn't move the view puts down what's being placed, as in Gather.
+        const moved = Math.hypot(pointer.x - this.panning.x, pointer.y - this.panning.y) > 4;
+        this.panning = null;
+        this.input.setDefaultCursor("");
+        if (!moved && placing) startPlacing(placing);
+        return;
+      }
+      if (this.drag?.entry && this.drag.moved) this.makeRoom(this.drag.entry);
       this.drag = null;
       if (this.painting) this.paintDone();
     });
@@ -301,7 +360,8 @@ class Floor extends Phaser.Scene {
   }
 
   blocked(px, py) {
-    if (px < 0 || py < 0 || px > COLS * TILE || py > ROWS * TILE) return true;
+    const [w, h] = this.shell?.size ?? [COLS, ROWS];
+    if (px < 0 || py < 0 || px > w * TILE || py > h * TILE) return true;
     return this.solids().some(([x, y, w, h]) => px >= x && px <= x + w && py >= y && py <= y + h);
   }
 
@@ -346,10 +406,22 @@ class Floor extends Phaser.Scene {
       this.ghost.setData("id", placing.id);
     }
     const [bx, by, w, h] = bounds(byId, placing.id, {}, GHOST);
-    this.ghost.setVisible(true).setPosition(down16(pointer.worldX - w / 2 - bx + 8), down16(pointer.worldY - h / 2 - by + 8));
+    // Everything goes on whole tiles.
+    const x = snap(pointer.worldX - w / 2 - bx, TILE), y = snap(pointer.worldY - h / 2 - by, TILE);
+    // Green where it can go, red where it would stand on a wall or on something that doesn't give way.
+    const blocked = this.wouldBlock(placing.id, x, y);
+    this.ghost.setVisible(true).setPosition(x, y).setData("blocked", blocked);
+    this.ghost.each((image) => image.setTint(blocked ? 0xff8a8a : 0xb6f2c4));
   }
 
   pointerMove(pointer) {
+    if (this.panning) {
+      const camera = this.cameras.main;
+      camera.scrollX = this.panning.sx - (pointer.x - this.panning.x) / camera.zoom;
+      camera.scrollY = this.panning.sy - (pointer.y - this.panning.y) / camera.zoom;
+      return;
+    }
+    if (mode === "rooms") return this.carry(pointer);
     if (mode === "walls") {
       if (this.painting) {
         this.painting.to = [Math.floor(pointer.worldX / TILE), Math.floor(pointer.worldY / TILE)];
@@ -360,13 +432,15 @@ class Floor extends Phaser.Scene {
     if (placing) return this.updateGhost(pointer);
     if (!this.drag || !pointer.isDown) return;
     if (this.drag.resize) return this.resize(pointer);
-    const x = down16(pointer.worldX - this.drag.dx + 8);
-    const y = down16(pointer.worldY - this.drag.dy + 8);
+    // A placed thing lands on whole tiles; what the office put up itself (on a wall, by a desk) moves by whole tiles from where it was.
+    const x = this.drag.entry ? snap(this.drag.x0 + pointer.worldX - this.drag.px, TILE) : this.drag.x0 + snap(pointer.worldX - this.drag.px, TILE);
+    const y = this.drag.entry ? snap(this.drag.y0 + pointer.worldY - this.drag.py, TILE) : this.drag.y0 + snap(pointer.worldY - this.drag.py, TILE);
     if (this.drag.entry) {
       const entry = this.drag.entry;
       if (x === entry.x && y === entry.y) return;
       entry.x = x;
       entry.y = y;
+      this.drag.moved = true;
     } else {
       // A generated piece moved by hand: kept as an override on its key.
       const current = layout.overrides[this.drag.key]?.at ?? [this.drag.x0, this.drag.y0];
@@ -377,6 +451,26 @@ class Floor extends Phaser.Scene {
   }
 
   async pointerDown(pointer) {
+    if (pointer.rightButtonDown() || pointer.middleButtonDown()) {
+      const camera = this.cameras.main;
+      this.panning = { x: pointer.x, y: pointer.y, sx: camera.scrollX, sy: camera.scrollY };
+      this.input.setDefaultCursor("grabbing");
+      return;
+    }
+    if (mode === "rooms") {
+      if (this.carrying) return this.putDown();
+      const [tx, ty] = [Math.floor(pointer.worldX / TILE), Math.floor(pointer.worldY / TILE)];
+      // A patio picked up takes its door with it.
+      const plan = this.shell?.plan;
+      const patio = plan && planShell(plan).patios.find(({ rect: [x0, y0, x1, y1] }) => tx >= x0 && tx <= x1 && ty >= y0 && ty <= y1);
+      if (patio) {
+        const owner = plan.rooms.find((r) => r.id === patio.room);
+        return this.pickUpPatio(owner.exits.find((exit) => String(exitPatio(owner.rect, exit)) === String(patio.rect)));
+      }
+      const room = plan && roomAt(plan, tx, ty);
+      if (room && room.id !== this.shell.plan.main) this.pickUp(room);
+      return;
+    }
     if (mode === "walls") {
       const cell = [Math.floor(pointer.worldX / TILE), Math.floor(pointer.worldY / TILE)];
       this.painting = { from: cell, to: cell };
@@ -384,8 +478,10 @@ class Floor extends Phaser.Scene {
       return;
     }
     if (placing) {
+      if (this.ghost.getData("blocked")) return;
       const entry = { id: newId(), item: placing.id, x: this.ghost.x, y: this.ghost.y, ...(isCluster(placing) ? { size: { ...GHOST.size } } : {}) };
       layout.items.push(entry);
+      this.makeRoom(entry);
       changed();
       if (!pointer.event.shiftKey) startPlacing(placing);
       return;
@@ -398,10 +494,11 @@ class Floor extends Phaser.Scene {
     const own = piece.entry && (piece.key === piece.entry.id || !/\/(things|end-)/.test(piece.key));
     if (own) {
       select({ entry: piece.entry });
-      this.drag = { entry: piece.entry, dx: pointer.worldX - piece.entry.x, dy: pointer.worldY - piece.entry.y };
+      this.drag = { entry: piece.entry, x0: piece.entry.x, y0: piece.entry.y, px: pointer.worldX, py: pointer.worldY };
     } else {
       select({ key: piece.key });
-      this.drag = { key: piece.key, x0: piece.x, y0: piece.y, dx: pointer.worldX - piece.x, dy: pointer.worldY - piece.y };
+      const at = layout.overrides[piece.key]?.at ?? [piece.x, piece.y];
+      this.drag = { key: piece.key, x0: at[0], y0: at[1], px: pointer.worldX, py: pointer.worldY };
     }
   }
 
@@ -413,7 +510,7 @@ class Floor extends Phaser.Scene {
     const entry = selected?.entry;
     if (!entry || !isCluster(byId.get(entry.item))) return [];
     const { cols, sides } = clusterSize(entry.size);
-    const width = cols * DESK_STEP + 32;
+    const width = cols * deskStep(byId.get(entry.item)) + 32;
     return [
       { axis: "cols", x: entry.x + width, y: entry.y + 48 },
       { axis: "sides", x: entry.x + width / 2, y: entry.y + (sides === 2 ? -48 : 0) },
@@ -428,7 +525,7 @@ class Floor extends Phaser.Scene {
     const entry = this.drag.entry;
     const was = clusterSize(entry.size);
     const size = { ...was };
-    if (this.drag.resize === "cols") size.cols = clusterSize({ cols: (pointer.worldX - entry.x - 32) / DESK_STEP }).cols;
+    if (this.drag.resize === "cols") size.cols = clusterSize({ cols: (pointer.worldX - entry.x - 32) / deskStep(byId.get(entry.item)) }).cols;
     else size.sides = pointer.worldY < entry.y - 24 ? 2 : 1;
     if (size.cols === was.cols && size.sides === was.sides) return;
     entry.size = size;
@@ -436,11 +533,33 @@ class Floor extends Phaser.Scene {
     select({ entry });
   }
 
-  /** The painted rectangle goes into the shell, and the walls and floors are worked out again. */
+  /** Whether something put here would stand on a wall or on something that doesn't give way. */
+  wouldBlock(id, x, y) {
+    const item = byId.get(id);
+    if (!item || ["wall", "wallside", "rug"].includes(item.mount)) return false;
+    const solids = [...this.wallSolids, ...solidsOf(this.pieces.filter((piece) => !piece.item.givesWay))];
+    const own = solidsOf(expand(byId, id, x, y, {}, GHOST));
+    return own.some(([ax, ay, aw, ah]) => solids.some(([bx, by, bw, bh]) => ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by));
+  }
+
+  /** Trees, rocks and flowers under something just put down or moved give way to it. */
+  makeRoom(entry) {
+    if (byId.get(entry.item)?.givesWay) return;
+    const [bx, by, w, h] = bounds(byId, entry.item, entry.choose, { size: entry.size, key: entry.id });
+    layout.items = giveWay(byId, layout.items, [entry.x + bx, entry.y + by, w, h], entry);
+    changed();
+  }
+
+  /** The painted rectangle goes into the shell, and the walls and floors are worked out again; trees and rocks there give way. */
   async paintDone() {
     const { from, to } = this.painting;
     this.painting = null;
     paint(this.shell, from[0], from[1], to[0], to[1], brush);
+    const [x0, y0] = [Math.min(from[0], to[0]), Math.min(from[1], to[1])];
+    const [x1, y1] = [Math.max(from[0], to[0]), Math.max(from[1], to[1])];
+    if (!GROUNDS.includes(this.shell.legend[brush]?.material)) {
+      layout.items = giveWay(byId, layout.items, [x0 * TILE, y0 * TILE, (x1 - x0 + 1) * TILE, (y1 - y0 + 1) * TILE]);
+    }
     shellDirty = true;
     setDirty(true);
     await this.loadShell(false);
@@ -448,11 +567,149 @@ class Floor extends Phaser.Scene {
 
   /** Delete: something placed goes; something generated is hidden, as an override, so it stays gone. */
   removeSelected() {
+    if (this.carrying && !typing()) return this.removeRoom();
     if (!selected || typing()) return;
     if (selected.entry) layout.items = layout.items.filter((entry) => entry !== selected.entry);
     else layout.overrides[selected.key] = { hidden: true };
     select(null);
     changed();
+  }
+
+  /**
+   * Picks up a room, or a new one from a preset: it follows the pointer, held
+   * against the hall's walls (plan.ts, attach), and everything in it comes
+   * along; walls, doorways and what's on the walls are worked out again each
+   * time it moves a tile, as a builder would.
+   */
+  pickUp(room, preset = null) {
+    if (preset) {
+      room = { id: `${preset.kind}-${newId()}`, kind: preset.kind, rect: null, floor: preset.floor };
+      const items = preset.items.map(([item, x, y]) => ({ id: newId(), item, x: x * TILE, y: y * TILE }));
+      this.carrying = { room, size: preset.size, was: null, items, anchors: [] };
+    } else {
+      const [x0, y0, x1, y1] = room.rect;
+      const inside = (x, y) => x >= x0 * TILE && x < (x1 + 1) * TILE && y >= y0 * TILE && y < (y1 + 1) * TILE;
+      const anchors = [...(layout.anchors?.zones ?? []), layout.anchors?.table, layout.anchors?.whiteboard].filter((a) => a && inside(a.x, a.y));
+      this.carrying = { room, size: [x1 - x0, y1 - y0], was: [...room.rect], items: layout.items.filter((e) => inside(e.x, e.y)), anchors };
+    }
+    select(null);
+    this.input.setDefaultCursor("grabbing");
+    this.drawOverlay();
+  }
+
+  /**
+   * Picks up a patio, or a new one: it keeps to the outside wall nearest the
+   * pointer (plan.ts, attachPatio), and its door goes through that wall
+   * wherever it's put down; the door and its paving are one thing.
+   */
+  pickUpPatio(exit = null) {
+    const room = exit ? this.shell.plan.rooms.find((r) => r.exits?.includes(exit)) : null;
+    this.carrying = { patio: exit ?? { side: "right", at: 4 }, room, was: room ? { room: room.id, side: exit.side, at: exit.at } : null };
+    select(null);
+    this.input.setDefaultCursor("grabbing");
+    this.drawOverlay();
+  }
+
+  /** Moves the carried patio, and its door, to a room's wall. */
+  placePatio(spot) {
+    const carrying = this.carrying;
+    if (carrying.room) carrying.room.exits = carrying.room.exits.filter((exit) => exit !== carrying.patio);
+    const room = this.shell.plan.rooms.find((r) => r.id === spot.room);
+    Object.assign(carrying.patio, { side: spot.side, at: spot.at });
+    (room.exits ??= []).push(carrying.patio);
+    carrying.room = room;
+  }
+
+  /** The carried room against the hall nearest the pointer, if there's room for it there; a patio against the nearest outside wall. */
+  async carry(pointer) {
+    const carrying = this.carrying;
+    if (!carrying) return;
+    const tile = [Math.floor(pointer.worldX / TILE), Math.floor(pointer.worldY / TILE)];
+    if (carrying.patio) {
+      const spot = attachPatio(this.shell.plan, tile, { width: carrying.patio.width }, carrying.patio);
+      carrying.lost = !spot;
+      const same = spot && carrying.room?.id === spot.room && carrying.patio.side === spot.side && carrying.patio.at === spot.at;
+      if (!spot || same) return this.drawOverlay();
+      this.placePatio(spot);
+      return this.replan();
+    }
+    const rect = attach(this.shell.plan, carrying.size, tile, carrying.room.id);
+    carrying.lost = !rect;
+    if (!rect || String(rect) === String(carrying.room.rect)) return this.drawOverlay();
+    this.moveRoom(rect);
+    await this.replan();
+  }
+
+  /** Moves the carried room, and what's in it, to a rect. */
+  moveRoom(rect) {
+    const { room, items, anchors } = this.carrying;
+    // A new room's things start from its corner: where it first lands is the move.
+    const [fx, fy] = room.rect ? [room.rect[0], room.rect[1]] : [0, 0];
+    const [dx, dy] = [(rect[0] - fx) * TILE, (rect[1] - fy) * TILE];
+    if (!room.rect) {
+      this.shell.plan.rooms.push(room);
+      layout.items.push(...items);
+    }
+    room.rect = rect;
+    for (const thing of [...items, ...anchors]) (thing.x += dx), (thing.y += dy);
+  }
+
+  /** The shell worked out from the plan again, then everything on it; the latest move wins when moves come faster than that. */
+  async replan() {
+    if (this.replanning) return (this.replanAgain = true);
+    this.replanning = true;
+    do {
+      this.replanAgain = false;
+      const { problems, doors, patios, ...shell } = planShell(this.shell.plan);
+      Object.assign(this.shell, shell);
+      this.planProblems = problems;
+      shellDirty = true;
+      setDirty(true);
+      await this.loadShell(false);
+    } while (this.replanAgain);
+    this.replanning = false;
+    if (this.planProblems.length) $("#status").textContent += ` · ${this.planProblems.join("; ")}`;
+  }
+
+  /** Puts the carried room (or patio) down where it is; trees and rocks under it give way. */
+  putDown() {
+    const carrying = this.carrying;
+    const area = carrying?.patio ? carrying.room && exitPatio(carrying.room.rect, carrying.patio) : carrying?.room.rect;
+    if (!area) return;
+    this.carrying = null;
+    this.input.setDefaultCursor("");
+    const [x0, y0, x1, y1] = area;
+    layout.items = giveWay(byId, layout.items, [x0 * TILE, y0 * TILE, (x1 - x0 + 1) * TILE, (y1 - y0 + 1) * TILE]);
+    changed();
+  }
+
+  /** Puts the carried room back where it was picked up from (a new one goes). */
+  async putBack() {
+    const carrying = this.carrying;
+    if (!carrying) return;
+    if (!carrying.was) return this.removeRoom(carrying);
+    if (carrying.patio) this.placePatio(carrying.was);
+    else this.moveRoom(carrying.was);
+    this.carrying = null;
+    this.input.setDefaultCursor("");
+    await this.replan();
+  }
+
+  /** Takes the carried room away, and what's in it: the hall's wall closes where its doorway was. */
+  async removeRoom(carrying = this.carrying) {
+    if (!carrying) return;
+    this.carrying = null;
+    this.input.setDefaultCursor("");
+    const plan = this.shell.plan;
+    if (carrying.patio) {
+      // A patio taken away takes its door: the wall closes.
+      if (carrying.room) carrying.room.exits = carrying.room.exits.filter((exit) => exit !== carrying.patio);
+      return this.replan();
+    }
+    plan.rooms = plan.rooms.filter((room) => room !== carrying.room);
+    const gone = new Set(carrying.items);
+    layout.items = layout.items.filter((entry) => !gone.has(entry));
+    await this.replan();
   }
 
   drawOverlay() {
@@ -468,6 +725,11 @@ class Floor extends Phaser.Scene {
       const [x0, y0] = [Math.min(from[0], to[0]), Math.min(from[1], to[1])];
       const [x1, y1] = [Math.max(from[0], to[0]), Math.max(from[1], to[1])];
       g.lineStyle(2, 0xe5484d, 1).strokeRect(x0 * TILE, y0 * TILE, (x1 - x0 + 1) * TILE, (y1 - y0 + 1) * TILE);
+    }
+    const carried = this.carrying && (this.carrying.patio ? this.carrying.room && exitPatio(this.carrying.room.rect, this.carrying.patio) : this.carrying.room.rect);
+    if (carried) {
+      const [x0, y0, x1, y1] = carried;
+      g.lineStyle(3, this.carrying.lost ? 0xe5484d : 0x3e63dd, 1).strokeRect(x0 * TILE, y0 * TILE, (x1 - x0 + 1) * TILE, (y1 - y0 + 1) * TILE);
     }
     const box = selected && this.outlineOf(selected);
     if (box) {
@@ -526,6 +788,7 @@ class Floor extends Phaser.Scene {
 catalog = await (await fetch("/api/catalog")).json();
 byId = new Map(catalog.items.map((item) => [item.id, item]));
 renderPalette();
+renderRoomPresets();
 $("#search").addEventListener("input", renderPalette);
 $("#save").addEventListener("click", save);
 $("#layout-id").addEventListener("change", (event) => openLayout(event.target.value));

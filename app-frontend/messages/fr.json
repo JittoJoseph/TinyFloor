@@ -94,7 +94,8 @@
     "aloneTitle": "Vous êtes seul sur l'étage",
     "aloneBody": "Envoyez le lien : qui l'ouvre arrive juste à côté de vous.",
     "aloneQuiet": "Quand quelqu'un d'autre arrive, il apparaît ici.",
-    "inviteSomeone": "Inviter quelqu'un"
+    "inviteSomeone": "Inviter quelqu'un",
+    "walkTo": "Rejoindre {name}"
   },
   "call": {
     "incoming": "Vous appelle",
@@ -214,6 +215,7 @@
     "download": "Télécharger",
     "messages": "Messages",
     "searching": "Recherche…",
+    "heldSearch": "Recherche sur les {days} derniers jours. Pro cherche partout.",
     "filesMax": "Jusqu'à {count} fichiers à la fois.",
     "fileTooBig": "Les fichiers peuvent faire jusqu'à 10 Mo.",
     "fileSlowDown": "Trop de fichiers d'un coup. Réessayez dans une minute.",
@@ -229,6 +231,10 @@
     "replyingTo": "Réponse à <strong>{name}</strong>",
     "cancelReply": "Annuler la réponse",
     "replyGone": "Le message d’origine a été supprimé",
+    "replyHeld": "Un message plus ancien",
+    "heldTitle": "Les messages de plus de {days} jours sont sur Pro",
+    "heldBody": "Ils sont conservés, jamais supprimés.",
+    "heldAction": "Voir Pro",
     "replyFiles": "{count, plural, one {# fichier} other {# fichiers}}",
     "typingOne": "{name} écrit",
     "typingTwo": "{a} et {b} écrivent",
@@ -390,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Enregistrez-le dans votre compte",
       "accountBody": "Pour qu’il reste à vous et que votre équipe le trouve. Quelques secondes suffisent."
+    },
+    "dock": {
+      "title": "Créez votre propre bureau",
+      "start": "Commencer"
     }
   },
   "office": {
@@ -672,24 +682,15 @@
     "asked": "Invité"
   },
   "help": {
-    "title": "Aide et avis",
-    "officeSees": "Votre message part à l'équipe TinyFloor et ouvre un ticket dans le Chat, que tout {office} peut suivre.",
-    "lobbySees": "Votre message part à l'équipe TinyFloor et ouvre un ticket dans votre Chat. Vous seul le voyez.",
-    "placeholder": "Que s'est-il passé, et à quoi vous attendiez-vous ?",
-    "context": "Nous ajoutons la page où vous êtes et votre navigateur, pour pouvoir regarder de près.",
-    "send": "Envoyer",
-    "sending": "Envoi",
+    "title": "Écrire à l'équipe TinyFloor",
     "error": "L'envoi n'a pas abouti. Réessayez.",
     "slowDown": "Vous avez envoyé beaucoup de messages dans l'heure. Réessayez un peu plus tard.",
-    "support": "Support TinyFloor",
-    "open": "Ouvert",
+    "support": "Équipe TinyFloor",
     "closed": "Fermé",
     "message": "Écrire à l'équipe TinyFloor",
-    "closedNote": "L'équipe TinyFloor a fermé ce ticket. Toujours bloqué ? Écrivez-nous à nouveau depuis Aide et avis.",
-    "ticketOffice": "Tout {office} peut suivre ce ticket et y ajouter quelque chose. L'équipe TinyFloor répond ici.",
-    "ticketLobby": "Seuls vous et l'équipe TinyFloor voyez ceci. Nous répondons ici.",
-    "nothingOpen": "Rien n'est en cours avec l'équipe TinyFloor pour le moment.",
-    "emailUs": "Vous préférez l'e-mail ? <link>{email}</link>"
+    "closedNote": "Cette conversation est fermée. Écrivez-nous à nouveau quand vous voulez, nous la reprendrons.",
+    "ticketOffice": "Une question, une idée, quelque chose qui ne marche pas ? Écrivez à celles et ceux qui font TinyFloor. Nous lisons chaque message et répondons ici. Tout {office} peut voir cette conversation.",
+    "ticketLobby": "Une question, une idée, quelque chose qui ne marche pas ? Écrivez à celles et ceux qui font TinyFloor. Nous lisons chaque message et répondons ici. Vous seul pouvez voir cette conversation."
   },
   "billing": {
     "settingUp": "Paiement reçu. Mise en place de l'offre…",
@@ -720,7 +721,8 @@
       "wholeTeam": "Toute votre équipe, sur un même étage",
       "support": "Aide prioritaire de notre équipe",
       "assurance": "Résiliable à tout moment. Remboursement intégral sous 14 jours.",
-      "meetings": "Des réunions aussi souvent que votre équipe en a besoin"
+      "meetings": "Des réunions aussi souvent que votre équipe en a besoin",
+      "history": "Tout l’historique de votre chat"
     },
     "page": {
       "notice": {
@@ -739,6 +741,7 @@
       "freePer": "pour toujours",
       "freeSeats": "Jusqu'à {seats} personnes",
       "freeEverything": "Étage, chat, réunions et vidéo HD",
+      "freeHistory": "{days} jours d’historique de chat",
       "invoices": "Factures",
       "keep": "Garder Pro",
       "updateCard": "Mettre à jour la carte",
@@ -806,7 +809,11 @@
     "shareNote": "L'envoyer depuis une app de cet appareil",
     "full": "Personne de nouveau ne peut rejoindre : le forfait de {office} accueille {seats} personnes.",
     "fullMember": "Un admin peut garder Pro pour faire de la place.",
-    "keepPro": "Garder Pro"
+    "keepPro": "Garder Pro",
+    "ways": {
+      "message": "Message",
+      "email": "E-mail"
+    }
   },
   "desk": {
     "claimConfirm": "Prendre",
@@ -816,31 +823,35 @@
     "claimed": "Pris"
   },
   "decorate": {
-    "open": "Décorer",
-    "title": "Décorer votre bureau",
-    "close": "Fermer",
-    "things": "Objets",
-    "chair": "Chaise",
+    "title": "Votre bureau",
     "shelf": {
-      "all": "Tout",
       "tech": "Tech",
       "lamps": "Lampes",
       "personal": "Perso",
-      "setups": "Postes",
-      "chairs": "Chaises"
+      "setups": "Postes"
     },
-    "hint": "Choisissez un objet pour votre bureau. Faites glisser les objets pour les déplacer.",
-    "swapHint": "Choisissez un objet pour le remplacer.",
-    "full": "Votre bureau est plein : retirez un objet pour en ajouter.",
-    "count": "Objets : {count} sur {max}",
     "undo": "Annuler",
     "redo": "Rétablir",
     "reset": "Réinitialiser",
     "resetConfirm": "Remettre votre bureau comme à l'origine ?",
     "cancel": "Annuler",
     "done": "Terminé",
-    "remove": "Retirer du bureau",
-    "deselect": "Terminé"
+    "wood": {
+      "maple": "Érable",
+      "oak": "Chêne",
+      "beech": "Hêtre",
+      "walnut": "Noyer",
+      "white": "Blanc",
+      "graphite": "Graphite"
+    },
+    "part": {
+      "left": "Gauche",
+      "middle": "Milieu",
+      "right": "Droite",
+      "chair": "Chaise",
+      "wood": "Bois"
+    },
+    "remove": "Retirer"
   },
   "look": {
     "open": "Changer d'apparence",

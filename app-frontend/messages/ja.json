@@ -94,7 +94,8 @@
     "aloneTitle": "フロアにいるのはあなただけ",
     "aloneBody": "リンクを送れば、開いた人があなたの隣に現れます。",
     "aloneQuiet": "ほかの人が来ると、ここに表示されます。",
-    "inviteSomeone": "誰かを招待"
+    "inviteSomeone": "誰かを招待",
+    "walkTo": "{name} のところへ行く"
   },
   "call": {
     "incoming": "着信中",
@@ -214,6 +215,7 @@
     "download": "ダウンロード",
     "messages": "メッセージ",
     "searching": "検索中…",
+    "heldSearch": "直近{days}日分を検索しました。Proではすべてを検索できます。",
     "filesMax": "一度に {count} 件まで。",
     "fileTooBig": "ファイルは 10 MB まで。",
     "fileSlowDown": "一度に送るファイルが多すぎます。1 分後にもう一度お試しください。",
@@ -229,6 +231,10 @@
     "replyingTo": "<strong>{name}</strong> さんに返信",
     "cancelReply": "返信をやめる",
     "replyGone": "元のメッセージは削除されました",
+    "replyHeld": "以前のメッセージ",
+    "heldTitle": "{days}日より前のメッセージはProで表示できます",
+    "heldBody": "削除はされず、保存されています。",
+    "heldAction": "Proを見る",
     "replyFiles": "{count, plural, other {# 件のファイル}}",
     "typingOne": "{name} さんが入力中",
     "typingTwo": "{a} さんと {b} さんが入力中",
@@ -390,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "アカウントに保存しましょう",
       "accountBody": "あなたのオフィスとして残り、チームも見つけられます。数秒で終わります。"
+    },
+    "dock": {
+      "title": "自分のオフィスを作る",
+      "start": "はじめる"
     }
   },
   "office": {
@@ -672,24 +682,15 @@
     "asked": "依頼済み"
   },
   "help": {
-    "title": "ヘルプとフィードバック",
-    "officeSees": "TinyFloor チームに届き、{office} の全員が見られるチケットがチャットに作られます。",
-    "lobbySees": "TinyFloor チームに届き、あなたのチャットにチケットが作られます。見られるのはあなただけです。",
-    "placeholder": "何が起きて、本来はどうなるはずでしたか？",
-    "context": "調査のため、開いているページとブラウザの情報を添えて送ります。",
-    "send": "送信",
-    "sending": "送信中",
+    "title": "TinyFloor チームに話す",
     "error": "送信できませんでした。もう一度お試しください。",
     "slowDown": "この1時間に送った数が多すぎます。少し時間をおいてお試しください。",
-    "support": "TinyFloor サポート",
-    "open": "対応中",
+    "support": "TinyFloor チーム",
     "closed": "完了",
     "message": "TinyFloor チームにメッセージ",
-    "closedNote": "TinyFloor チームがこのチケットを閉じました。まだ解決しない場合は、ヘルプとフィードバックからもう一度お知らせください。",
-    "ticketOffice": "{office} の全員が見て書き込めます。TinyFloor チームはここで返信します。",
-    "ticketLobby": "見られるのはあなたと TinyFloor チームだけです。ここで返信します。",
-    "nothingOpen": "いま TinyFloor チームとのやり取りはありません。",
-    "emailUs": "メールの方がよければ: <link>{email}</link>"
+    "closedNote": "この会話は閉じられました。いつでもまた書いてください。続きからお返事します。",
+    "ticketOffice": "質問、アイデア、うまく動かないこと：TinyFloor をつくっている私たちに書いてください。すべてのメッセージを読み、ここで返信します。{office} の全員がこの会話を見られます。",
+    "ticketLobby": "質問、アイデア、うまく動かないこと：TinyFloor をつくっている私たちに書いてください。すべてのメッセージを読み、ここで返信します。この会話はあなただけが見られます。"
   },
   "billing": {
     "settingUp": "お支払いを受け付けました。プランを準備しています…",
@@ -720,7 +721,8 @@
       "wholeTeam": "チーム全員が、ひとつのフロアに",
       "support": "チームからの優先サポート",
       "assurance": "いつでも解約できます。14日以内なら全額返金。",
-      "meetings": "チームに必要なだけ会議を"
+      "meetings": "チームに必要なだけ会議を",
+      "history": "チャット履歴のすべて"
     },
     "page": {
       "notice": {
@@ -739,6 +741,7 @@
       "freePer": "ずっと無料",
       "freeSeats": "最大{seats}人",
       "freeEverything": "フロア、チャット、ミーティング、HDビデオ",
+      "freeHistory": "{days}日分のチャット履歴",
       "invoices": "請求書",
       "keep": "Pro を続ける",
       "updateCard": "カードを更新",
@@ -806,7 +809,11 @@
     "shareNote": "この端末のアプリから送る",
     "full": "新しい人は参加できません:{office}のプランは{seats}人までです。",
     "fullMember": "管理者がProを続けると参加できる人が増えます。",
-    "keepPro": "Proを続ける"
+    "keepPro": "Proを続ける",
+    "ways": {
+      "message": "メッセージ",
+      "email": "メール"
+    }
   },
   "desk": {
     "claimConfirm": "確保",
@@ -816,31 +823,35 @@
     "claimed": "確保しました"
   },
   "decorate": {
-    "open": "飾る",
-    "title": "デスクを飾る",
-    "close": "閉じる",
-    "things": "アイテム",
-    "chair": "椅子",
+    "title": "あなたのデスク",
     "shelf": {
-      "all": "すべて",
       "tech": "テック",
       "lamps": "ライト",
       "personal": "パーソナル",
-      "setups": "セット",
-      "chairs": "椅子"
+      "setups": "セット"
     },
-    "hint": "デスクに置くものを選んでください。ドラッグで移動できます。",
-    "swapHint": "入れ替えるものを選んでください。",
-    "full": "デスクがいっぱいです。何か外すと追加できます。",
-    "count": "アイテム: {count}/{max}",
     "undo": "元に戻す",
     "redo": "やり直す",
     "reset": "リセット",
     "resetConfirm": "デスクを最初の状態に戻しますか？",
     "cancel": "キャンセル",
     "done": "完了",
-    "remove": "デスクから外す",
-    "deselect": "選択を終える"
+    "wood": {
+      "maple": "メープル",
+      "oak": "オーク",
+      "beech": "ビーチ",
+      "walnut": "ウォルナット",
+      "white": "ホワイト",
+      "graphite": "グラファイト"
+    },
+    "part": {
+      "left": "左",
+      "middle": "中央",
+      "right": "右",
+      "chair": "椅子",
+      "wood": "木目"
+    },
+    "remove": "外す"
   },
   "look": {
     "open": "見た目を変える",

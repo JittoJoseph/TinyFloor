@@ -94,7 +94,8 @@
     "aloneTitle": "Nur du auf der Fläche",
     "aloneBody": "Schick den Link – wer ihn öffnet, steht gleich neben dir.",
     "aloneQuiet": "Sobald jemand anderes reinkommt, erscheint er hier.",
-    "inviteSomeone": "Jemanden einladen"
+    "inviteSomeone": "Jemanden einladen",
+    "walkTo": "Zu {name} gehen"
   },
   "call": {
     "incoming": "Ruft dich an",
@@ -214,6 +215,7 @@
     "download": "Herunterladen",
     "messages": "Nachrichten",
     "searching": "Suche…",
+    "heldSearch": "Durchsucht: die letzten {days} Tage. Pro durchsucht alles.",
     "filesMax": "Bis zu {count} Dateien auf einmal.",
     "fileTooBig": "Dateien dürfen bis zu 10 MB groß sein.",
     "fileSlowDown": "Zu viele Dateien auf einmal. Versuch es in einer Minute noch einmal.",
@@ -229,6 +231,10 @@
     "replyingTo": "Antwort an <strong>{name}</strong>",
     "cancelReply": "Antwort verwerfen",
     "replyGone": "Die ursprüngliche Nachricht wurde gelöscht",
+    "replyHeld": "Eine ältere Nachricht",
+    "heldTitle": "Nachrichten, die älter als {days} Tage sind, gibt es mit Pro",
+    "heldBody": "Sie bleiben gespeichert und werden nie gelöscht.",
+    "heldAction": "Pro ansehen",
     "replyFiles": "{count, plural, one {# Datei} other {# Dateien}}",
     "typingOne": "{name} schreibt",
     "typingTwo": "{a} und {b} schreiben",
@@ -390,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "In deinem Konto speichern",
       "accountBody": "Damit es deins bleibt und dein Team es findet. Dauert nur ein paar Sekunden."
+    },
+    "dock": {
+      "title": "Erstelle dein eigenes Büro",
+      "start": "Los geht's"
     }
   },
   "office": {
@@ -672,24 +682,15 @@
     "asked": "Gefragt"
   },
   "help": {
-    "title": "Hilfe und Feedback",
-    "officeSees": "Es geht an das TinyFloor-Team und öffnet ein Ticket im Chat, dem alle in {office} folgen können.",
-    "lobbySees": "Es geht an das TinyFloor-Team und öffnet ein Ticket in deinem Chat. Nur du siehst es.",
-    "placeholder": "Was ist passiert, und was hast du erwartet?",
-    "context": "Wir fügen die Seite, auf der du bist, und deinen Browser hinzu, damit wir der Sache nachgehen können.",
-    "send": "Senden",
-    "sending": "Wird gesendet",
+    "title": "Schreib dem TinyFloor-Team",
     "error": "Das wurde nicht gesendet. Versuch es noch einmal.",
     "slowDown": "Du hast in der letzten Stunde viel gesendet. Versuch es etwas später wieder.",
-    "support": "TinyFloor-Support",
-    "open": "Offen",
+    "support": "TinyFloor-Team",
     "closed": "Geschlossen",
     "message": "Nachricht an das TinyFloor-Team",
-    "closedNote": "Das TinyFloor-Team hat das geschlossen. Hängst du noch fest? Schreib uns wieder über Hilfe und Feedback.",
-    "ticketOffice": "Alle in {office} können dem folgen und etwas ergänzen. Das TinyFloor-Team antwortet hier.",
-    "ticketLobby": "Nur du und das TinyFloor-Team sehen das. Wir antworten hier.",
-    "nothingOpen": "Gerade ist nichts beim TinyFloor-Team offen.",
-    "emailUs": "Lieber per E-Mail? <link>{email}</link>"
+    "closedNote": "Dieses Gespräch ist geschlossen. Schreib jederzeit wieder, dann machen wir weiter.",
+    "ticketOffice": "Fragen, Ideen, etwas funktioniert nicht: Schreib den Leuten, die TinyFloor machen. Wir lesen jede Nachricht und antworten hier. Alle in {office} können dieses Gespräch sehen.",
+    "ticketLobby": "Fragen, Ideen, etwas funktioniert nicht: Schreib den Leuten, die TinyFloor machen. Wir lesen jede Nachricht und antworten hier. Nur du siehst dieses Gespräch."
   },
   "billing": {
     "settingUp": "Zahlung erhalten. Der Tarif wird eingerichtet…",
@@ -720,7 +721,8 @@
       "wholeTeam": "Alle in deinem Team, auf einer Etage",
       "support": "Bevorzugte Hilfe von unserem Team",
       "assurance": "Jederzeit kündbar. Volle Erstattung innerhalb von 14 Tagen.",
-      "meetings": "Meetings, so oft dein Team sie braucht"
+      "meetings": "Meetings, so oft dein Team sie braucht",
+      "history": "Euer ganzer Chatverlauf"
     },
     "page": {
       "notice": {
@@ -739,6 +741,7 @@
       "freePer": "dauerhaft",
       "freeSeats": "Bis zu {seats} Personen",
       "freeEverything": "Fläche, Chat, Meetings und HD-Video",
+      "freeHistory": "{days} Tage Chatverlauf",
       "invoices": "Rechnungen",
       "keep": "Pro behalten",
       "updateCard": "Karte aktualisieren",
@@ -806,7 +809,11 @@
     "shareNote": "Mit einer App auf diesem Gerät senden",
     "full": "Niemand Neues kann beitreten: Der Plan von {office} hat Platz für {seats} Personen.",
     "fullMember": "Ein Admin kann Pro behalten, um Platz zu schaffen.",
-    "keepPro": "Pro behalten"
+    "keepPro": "Pro behalten",
+    "ways": {
+      "message": "Nachricht",
+      "email": "E-Mail"
+    }
   },
   "desk": {
     "claimConfirm": "Beanspruchen",
@@ -816,31 +823,35 @@
     "claimed": "Beansprucht"
   },
   "decorate": {
-    "open": "Einrichten",
-    "title": "Schreibtisch einrichten",
-    "close": "Schließen",
-    "things": "Dinge",
-    "chair": "Stuhl",
+    "title": "Dein Schreibtisch",
     "shelf": {
-      "all": "Alle",
       "tech": "Technik",
       "lamps": "Lampen",
       "personal": "Persönlich",
-      "setups": "Arbeitsplätze",
-      "chairs": "Stühle"
+      "setups": "Arbeitsplätze"
     },
-    "hint": "Wähle etwas für deinen Schreibtisch. Ziehe Dinge, um sie zu verschieben.",
-    "swapHint": "Wähle etwas zum Austauschen.",
-    "full": "Dein Schreibtisch ist voll: Nimm etwas weg, um mehr hinzuzufügen.",
-    "count": "Dinge: {count} von {max}",
     "undo": "Rückgängig",
     "redo": "Wiederholen",
     "reset": "Zurücksetzen",
     "resetConfirm": "Schreibtisch auf den Ursprungszustand zurücksetzen?",
     "cancel": "Abbrechen",
     "done": "Fertig",
-    "remove": "Vom Schreibtisch nehmen",
-    "deselect": "Fertig damit"
+    "wood": {
+      "maple": "Ahorn",
+      "oak": "Eiche",
+      "beech": "Buche",
+      "walnut": "Nussbaum",
+      "white": "Weiß",
+      "graphite": "Graphit"
+    },
+    "part": {
+      "left": "Links",
+      "middle": "Mitte",
+      "right": "Rechts",
+      "chair": "Stuhl",
+      "wood": "Holz"
+    },
+    "remove": "Entfernen"
   },
   "look": {
     "open": "Aussehen ändern",

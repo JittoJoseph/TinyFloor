@@ -24,7 +24,7 @@ describe("realtime admin", () => {
     const ben = await Client.open(room);
     await ben.next("welcome");
 
-    await admin.closeRoom(room);
+    await admin.forgetOffice(room);
 
     expect(await ava.closed()).toBe(CloseCode.RoomClosed);
     expect(await ben.closed()).toBe(CloseCode.RoomClosed);

@@ -1,5 +1,5 @@
 import { CHARACTER_CATALOG } from "@shared/character";
-import { FLOOR } from "@shared/map";
+import { FLOORS } from "@shared/map";
 import { PROTOCOL_VERSION } from "@shared/messages";
 import atlas from "@shared/catalog/atlas.json";
 
@@ -13,7 +13,8 @@ import atlas from "@shared/catalog/atlas.json";
  * open pages stay as they are (lib/updates.ts). The app serves its own at
  * /compat.json.
  */
-export const COMPAT = hash(JSON.stringify([PROTOCOL_VERSION, FLOOR, atlas, CHARACTER_CATALOG]));
+// Every floor, not the one this page draws: a page trying another floor still agrees with the server's key.
+export const COMPAT = hash(JSON.stringify([PROTOCOL_VERSION, FLOORS, atlas, CHARACTER_CATALOG]));
 
 /** FNV-1a: short and stable, which is all a version key needs. */
 function hash(text: string): string {

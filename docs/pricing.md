@@ -60,6 +60,11 @@ ask Creem first.
 - **Free for 3, forever.** The whole product, HD included, for a small group.
   The one limit is people, and it lands exactly when the product becomes
   valuable: the team arriving.
+- **Free reads 90 days of chat (1 November).** A small team that never grows
+  past 3 had no reason to pay. Like Slack's free plan, Free shows and searches
+  the last 90 days; nothing is deleted, and Pro shows all of it. Older
+  messages are never sent to a Free office: the chat says they're there,
+  blurred, with a link to Pro. Where plans aren't on sale, there's no limit.
 - **Every office starts on a 14-day Pro trial, no card (21 October).** The
   first trial started only when a 4th person joined a full free office. On
   21 October, of 43 offices, 34 had one person, 7 two and 2 three: none had

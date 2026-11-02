@@ -129,6 +129,7 @@ function PlanTable() {
     { label: t("meetings"), cells: PLANS.map(() => tick) },
     { label: t("support"), cells: PLANS.map((plan) => (plan.price ? tick : none)) },
     { label: t("people"), cells: PLANS.map((plan) => (plan.price ? t("wholeTeam") : plan.people)) },
+    { label: t("history"), cells: PLANS.map((plan) => (plan.history ? t("historyDays", { days: plan.history }) : t("historyAll"))) },
     { label: t("calls"), note: t("callsNote"), cells: PLANS.map(() => tick) },
     ...(["chat", "screen", "whiteboard", "music", "noise"] as const).map((key) => ({
       label: tm(key),

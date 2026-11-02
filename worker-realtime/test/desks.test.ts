@@ -1,10 +1,12 @@
 import { runInDurableObject } from "cloudflare:test";
 import { env, exports } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
-import { DESK_SEATS, FLOOR, deskArrival, seatTile } from "../../shared-protocol/src";
+import { FLOOR, deskArrival, deskSeats, seatTile } from "../../shared-protocol/src";
 import { Desks } from "../src/desks";
 import { Client, settle, uniqueRoom } from "./client";
 
+/** The desks of the floor a room is on unless told otherwise (Startup). */
+const DESK_SEATS = deskSeats(FLOOR);
 const DESK = DESK_SEATS[0];
 const OTHER_DESK = DESK_SEATS[1];
 const MEETING_CHAIR = FLOOR.seats.find((seat) => seat.zone === "meeting")!.id;
@@ -107,7 +109,7 @@ describe("desks", () => {
       const sql = state.storage.sql;
       // An office as it was on the hand-made map: every old desk claimed, the first ones first.
       OLD_DESKS.forEach((seat, n) => sql.exec("INSERT INTO desks (seat, user_id, name, claimed_at) VALUES (?, ?, ?, ?)", seat, `user-${n}`, `Person ${n}`, 1000 + n));
-      const moved = new Desks(sql).list();
+      const moved = new Desks(sql, FLOOR).list();
 
       // Everyone who can have a desk keeps one, each on a desk of the new floor, no two on one.
       expect(moved).toHaveLength(Math.min(OLD_DESKS.length, DESK_SEATS.length));
@@ -119,11 +121,11 @@ describe("desks", () => {
       expect(moved.some((desk) => desk.userId === `user-${OLD_DESKS.length - 1}`)).toBe(OLD_DESKS.length <= DESK_SEATS.length);
 
       // With every claim on a desk, the room starting again leaves them where they are.
-      expect(new Desks(sql).list()).toEqual(moved);
+      expect(new Desks(sql, FLOOR).list()).toEqual(moved);
       // A claim on a desk it has stays put while one beside it moves round it.
       sql.exec("DELETE FROM desks");
       sql.exec("INSERT INTO desks (seat, user_id, name, claimed_at) VALUES (?, 'stays', 'Stays', 2), (?, 'moves', 'Moves', 1)", nearest, OLD_DESKS[0]);
-      const after = new Desks(sql).list();
+      const after = new Desks(sql, FLOOR).list();
       expect(after.find((desk) => desk.userId === "stays")?.seat).toBe(nearest);
       expect(after.find((desk) => desk.userId === "moves")?.seat).not.toBe(nearest);
       expect(DESK_SEATS).toContain(after.find((desk) => desk.userId === "moves")?.seat);

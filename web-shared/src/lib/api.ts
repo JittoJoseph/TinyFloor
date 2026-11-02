@@ -155,6 +155,8 @@ export interface OfficeOverview {
 export interface RoomTicket {
   ticket: string;
   url: string;
+  /** A room's: the floor it's on, which the page draws (map.ts drawFloor). */
+  floor?: string;
 }
 
 export interface IceServers {
@@ -164,7 +166,7 @@ export interface IceServers {
 
 /** The admin view (open only to the admin accounts). */
 export interface AdminSummary {
-  counts: Record<"accounts" | "guests" | "offices" | "activeDay" | "activeWeek" | "newWeek" | "newMonth" | "withGoogle" | "helpUnread", number>;
+  counts: Record<"accounts" | "guests" | "offices" | "proOffices" | "activeDay" | "activeWeek" | "newWeek" | "newMonth" | "withGoogle" | "helpUnread", number>;
   countries: Array<{ country: string; people: number }>;
   /** Sign-ups on each of the last 30 calendar days where the viewer is, oldest first. */
   signups: number[];
@@ -175,7 +177,15 @@ export interface AdminSummary {
     paid: Record<string, number>;
     /** Offices on a paid plan given by hand, without payment. */
     given: number;
+    /** Paying offices whose last card payment failed. */
+    pastDue: number;
+    /** Paying offices whose plan has been cancelled and is running out. */
+    ending: number;
   };
+  /** The offices meeting the most this month. */
+  busiest: Array<{ id: string; name: string; plan: string; meetingSeconds: number; members: number }>;
+  /** The newest accounts. */
+  newest: Array<{ id: string; displayName: string; email: string | null; country: string | null; createdAt: number }>;
   /** Meeting seconds used this month across every office. */
   meetingSeconds: number;
 }
@@ -189,6 +199,8 @@ export interface AdminPerson {
   createdAt: number;
   lastActiveAt: number;
   google: number;
+  /** A guest: no account, kept for a week. */
+  guest: number;
   offices: number;
 }
 
@@ -197,6 +209,8 @@ export interface AdminOffice {
   name: string;
   plan: string;
   seats: number;
+  /** The floor it's on (map.ts FLOORS). */
+  floor: string;
   createdAt: number;
   /** How many people are in it. */
   members: number;
@@ -208,6 +222,20 @@ export interface AdminOffice {
   /** Meeting seconds used this month. */
   meetingSeconds: number;
   here: number;
+}
+
+/** An account opened in the admin view, with the offices it's in. */
+export interface AdminPersonDetail {
+  person: AdminPerson;
+  offices: Array<{ id: string; name: string; plan: string; role: OfficeRole; owner: number; joinedAt: number }>;
+}
+
+/** An office opened in the admin view, with its people. */
+export interface AdminOfficeDetail {
+  office: AdminOffice;
+  members: AdminMember[];
+  /** Its conversation with the team: the open one, or the latest. */
+  ticket: { id: string; status: "open" | "closed" } | null;
 }
 
 /** Someone in an office, as the admin view shows them when it's opened. */
@@ -305,6 +333,8 @@ export interface Plan {
   meetingHours: number;
   /** US cents a month before tax; null for the free plan. */
   price: number | null;
+  /** How many days back the office's chat reads; null for all of it. */
+  historyDays: number | null;
 }
 
 /** The plans, and whether paid plans are on sale here (Creem's test mode or its live store). */
@@ -439,18 +469,23 @@ export const api = {
         ...(params.page ? { page: String(params.page) } : {}),
       })}`,
     ),
-  adminOffices: (params: { q?: string; page?: number }) =>
+  adminPerson: (userId: string) => get<AdminPersonDetail>(`/admin/users/${id(userId)}`),
+  adminOffices: (params: { q?: string; page?: number; plan?: "pro" | "free" }) =>
     get<AdminPage & { offices: AdminOffice[] }>(
-      `/admin/offices?${new URLSearchParams({ ...(params.q ? { q: params.q } : {}), ...(params.page ? { page: String(params.page) } : {}) })}`,
+      `/admin/offices?${new URLSearchParams({
+        ...(params.q ? { q: params.q } : {}),
+        ...(params.page ? { page: String(params.page) } : {}),
+        ...(params.plan ? { plan: params.plan } : {}),
+      })}`,
     ),
-  adminOfficeMembers: (officeId: string) => get<{ members: AdminMember[] }>(`/admin/offices/${id(officeId)}/members`),
+  adminOffice: (officeId: string) => get<AdminOfficeDetail>(`/admin/offices/${id(officeId)}`),
   adminLobbyChat: (channel: string, before?: number) =>
     get<LobbyChatPage>(`/admin/lobby-chat?${new URLSearchParams({ channel, ...(before ? { before: String(before) } : {}) })}`),
   adminEditLobbyMessage: (seq: number, body: string) => patch<{ ok: true }>(`/admin/lobby-chat/${seq}`, { body }),
   adminDeleteLobbyMessage: (seq: number) => del<{ ok: true }>(`/admin/lobby-chat/${seq}`),
   adminRenamePerson: (userId: string, displayName: string) => patch<{ ok: true }>(`/admin/users/${id(userId)}`, { displayName }),
   adminDeletePerson: (userId: string) => del<{ ok: true; handedOver: string[]; closed: string[] }>(`/admin/users/${id(userId)}`),
-  adminUpdateOffice: (officeId: string, changes: { name?: string; plan?: PlanId }) => patch<{ ok: true }>(`/admin/offices/${id(officeId)}`, changes),
+  adminUpdateOffice: (officeId: string, changes: { name?: string; plan?: PlanId; floor?: string }) => patch<{ ok: true }>(`/admin/offices/${id(officeId)}`, changes),
   adminDeleteOffice: (officeId: string) => del<{ ok: true }>(`/admin/offices/${id(officeId)}`),
   adminHelp: (params: { status: "open" | "closed"; page?: number }) =>
     get<AdminPage & { tickets: AdminHelpTicket[] }>(
@@ -458,6 +493,8 @@ export const api = {
     ),
   adminHelpTicket: (ticketId: string) => get<AdminHelpDetail>(`/admin/help/${id(ticketId)}`),
   adminHelpReply: (ticketId: string, body: string) => post<{ ok: true }>(`/admin/help/${id(ticketId)}/messages`, { body }),
+  /** The team writing to an office: in its open conversation, or the first message of a new one. */
+  adminWriteToOffice: (officeId: string, body: string) => post<{ id: string }>(`/admin/offices/${id(officeId)}/help`, { body }),
   adminHelpClose: (ticketId: string) => post<{ ok: true }>(`/admin/help/${id(ticketId)}/close`),
 
   // Help and feedback: the ticket with the team where you are (an office, or the demo office)

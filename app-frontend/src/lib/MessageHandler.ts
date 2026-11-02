@@ -115,6 +115,7 @@ export class MessageHandler {
         break;
       case "look":
         this.playerManager.changeLook(message.id, message.character);
+        this.dispatchPlayerList();
         break;
       case "renamed":
         this.playerManager.renamePlayer(message.id, message.name);

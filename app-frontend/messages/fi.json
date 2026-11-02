@@ -94,7 +94,8 @@
     "aloneTitle": "Vain sinä kerroksella",
     "aloneBody": "Lähetä linkki, niin sen avaaja ilmestyy viereesi.",
     "aloneQuiet": "Kun joku muu tulee sisään, hän näkyy tässä.",
-    "inviteSomeone": "Kutsu joku"
+    "inviteSomeone": "Kutsu joku",
+    "walkTo": "Kävele luokse: {name}"
   },
   "call": {
     "incoming": "Soittaa sinulle",
@@ -214,6 +215,7 @@
     "download": "Lataa",
     "messages": "Viestit",
     "searching": "Haetaan…",
+    "heldSearch": "Haettiin viimeisten {days} päivän ajalta. Pro hakee kaikesta.",
     "filesMax": "Enintään {count} tiedostoa kerralla.",
     "fileTooBig": "Tiedosto voi olla enintään 10 Mt.",
     "fileSlowDown": "Liian monta tiedostoa kerralla. Yritä minuutin päästä uudelleen.",
@@ -229,6 +231,10 @@
     "replyingTo": "Vastaus: <strong>{name}</strong>",
     "cancelReply": "Peru vastaus",
     "replyGone": "Alkuperäinen viesti on poistettu",
+    "replyHeld": "Vanhempi viesti",
+    "heldTitle": "Yli {days} päivää vanhat viestit ovat Prossa",
+    "heldBody": "Ne säilytetään, eikä niitä koskaan poisteta.",
+    "heldAction": "Katso Pro",
     "replyFiles": "{count, plural, one {# tiedosto} other {# tiedostoa}}",
     "typingOne": "{name} kirjoittaa",
     "typingTwo": "{a} ja {b} kirjoittavat",
@@ -390,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Tallenna se tilillesi",
       "accountBody": "Niin se pysyy sinun ja tiimisi löytää sen. Se vie vain hetken."
+    },
+    "dock": {
+      "title": "Luo oma toimisto",
+      "start": "Aloita"
     }
   },
   "office": {
@@ -672,24 +682,15 @@
     "asked": "Kysytty"
   },
   "help": {
-    "title": "Apua ja palautetta",
-    "officeSees": "Se menee TinyFloor-tiimille ja avaa Chattiin tiketin, jota kaikki {office}-toimistossa voivat seurata.",
-    "lobbySees": "Se menee TinyFloor-tiimille ja avaa tiketin Chattiisi. Vain sinä näet sen.",
-    "placeholder": "Mitä tapahtui, ja mitä odotit tapahtuvan?",
-    "context": "Liitämme mukaan sivun, jolla olet, ja selaimesi, jotta voimme selvittää asian.",
-    "send": "Lähetä",
-    "sending": "Lähetetään",
+    "title": "Kirjoita TinyFloor-tiimille",
     "error": "Lähetys ei onnistunut. Yritä uudelleen.",
     "slowDown": "Olet lähettänyt paljon viimeisen tunnin aikana. Yritä hetken päästä uudelleen.",
-    "support": "TinyFloor-tuki",
-    "open": "Avoin",
+    "support": "TinyFloor-tiimi",
     "closed": "Suljettu",
     "message": "Viesti TinyFloor-tiimille",
-    "closedNote": "TinyFloor-tiimi sulki tämän. Vieläkö jumissa? Kerro meille uudelleen kohdasta Apua ja palautetta.",
-    "ticketOffice": "Kaikki {office}-toimistossa voivat seurata tätä ja lisätä siihen. TinyFloor-tiimi vastaa tänne.",
-    "ticketLobby": "Tämän näet vain sinä ja TinyFloor-tiimi. Vastaamme tänne.",
-    "nothingOpen": "TinyFloor-tiimillä ei ole nyt mitään avoinna.",
-    "emailUs": "Mieluummin sähköpostilla? <link>{email}</link>"
+    "closedNote": "Tämä keskustelu on suljettu. Kirjoita milloin tahansa uudelleen, niin jatketaan.",
+    "ticketOffice": "Kysymyksiä, ideoita tai jokin ei toimi: kirjoita TinyFloorin tekijöille. Luemme jokaisen viestin ja vastaamme täällä. Kaikki {office}-toimistossa näkevät tämän keskustelun.",
+    "ticketLobby": "Kysymyksiä, ideoita tai jokin ei toimi: kirjoita TinyFloorin tekijöille. Luemme jokaisen viestin ja vastaamme täällä. Vain sinä näet tämän keskustelun."
   },
   "billing": {
     "settingUp": "Maksu vastaanotettu. Pakettia otetaan käyttöön…",
@@ -720,7 +721,8 @@
       "wholeTeam": "Koko tiimisi, samassa kerroksessa",
       "support": "Ensisijainen apu tiimiltämme",
       "assurance": "Peru milloin vain. Täysi hyvitys 14 päivän sisällä.",
-      "meetings": "Kokouksia niin usein kuin tiimisi tarvitsee"
+      "meetings": "Kokouksia niin usein kuin tiimisi tarvitsee",
+      "history": "Koko keskusteluhistoria"
     },
     "page": {
       "notice": {
@@ -739,6 +741,7 @@
       "freePer": "aina",
       "freeSeats": "Enintään {seats} henkeä",
       "freeEverything": "Kerros, chat, kokoukset ja HD-video",
+      "freeHistory": "{days} päivän keskusteluhistoria",
       "invoices": "Laskut",
       "keep": "Pidä Pro",
       "updateCard": "Päivitä kortti",
@@ -806,7 +809,11 @@
     "shareNote": "Lähetä millä tahansa tämän laitteen sovelluksella",
     "full": "Uusia ei voi liittyä: toimiston {office} tilaukseen mahtuu {seats} henkeä.",
     "fullMember": "Ylläpitäjä voi pitää Pron, jotta tilaa tulee lisää.",
-    "keepPro": "Pidä Pro"
+    "keepPro": "Pidä Pro",
+    "ways": {
+      "message": "Viesti",
+      "email": "Sähköposti"
+    }
   },
   "desk": {
     "claimConfirm": "Varaa",
@@ -816,31 +823,35 @@
     "claimed": "Varattu"
   },
   "decorate": {
-    "open": "Sisusta",
-    "title": "Sisusta työpöytäsi",
-    "close": "Sulje",
-    "things": "Esineet",
-    "chair": "Tuoli",
+    "title": "Työpöytäsi",
     "shelf": {
-      "all": "Kaikki",
       "tech": "Tekniikka",
       "lamps": "Valaisimet",
       "personal": "Omat",
-      "setups": "Työpisteet",
-      "chairs": "Tuolit"
+      "setups": "Työpisteet"
     },
-    "hint": "Valitse jotain työpöydällesi. Siirrä esineitä vetämällä.",
-    "swapHint": "Valitse jotain, millä vaihtaa se.",
-    "full": "Työpöytäsi on täynnä: poista jotain lisätäksesi.",
-    "count": "Esineet: {count}/{max}",
     "undo": "Kumoa",
     "redo": "Tee uudelleen",
     "reset": "Palauta",
     "resetConfirm": "Palautetaanko työpöytä alkuperäiseksi?",
     "cancel": "Peruuta",
     "done": "Valmis",
-    "remove": "Poista pöydältä",
-    "deselect": "Valmis tämän kanssa"
+    "wood": {
+      "maple": "Vaahtera",
+      "oak": "Tammi",
+      "beech": "Pyökki",
+      "walnut": "Pähkinä",
+      "white": "Valkoinen",
+      "graphite": "Grafiitti"
+    },
+    "part": {
+      "left": "Vasen",
+      "middle": "Keskellä",
+      "right": "Oikea",
+      "chair": "Tuoli",
+      "wood": "Puu"
+    },
+    "remove": "Poista"
   },
   "look": {
     "open": "Muuta ulkonäköäsi",

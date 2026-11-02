@@ -93,6 +93,7 @@ export function PlanSection() {
   const plans = catalog.plans;
   const pro = paidPlan(plans);
   const freeSeats = plans.find((plan) => plan.price === null)?.seats ?? 3;
+  const freeHistory = plans.find((plan) => plan.price === null)?.historyDays;
   const members = billing?.members ?? office.members;
   const sub = billing?.subscription ?? null;
   // Members don't read billing: the office says whether a trial runs or has ended.
@@ -277,7 +278,7 @@ export function PlanSection() {
               }
             >
               <ul className="space-y-2.5 text-[13.5px] text-foreground">
-                {[tp("freeSeats", { seats: freeSeats }), tp("freeEverything")].map((item) => (
+                {[tp("freeSeats", { seats: freeSeats }), tp("freeEverything"), ...(freeHistory ? [tp("freeHistory", { days: freeHistory })] : [])].map((item) => (
                   <li key={item} className="flex items-start gap-2.5">
                     <span className="mt-0.5 flex size-[18px] shrink-0 items-center justify-center rounded-full bg-muted text-foreground">
                       <Check className="size-3" strokeWidth={3} />

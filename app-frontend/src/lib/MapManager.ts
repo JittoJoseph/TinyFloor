@@ -3,7 +3,8 @@ import { NavGrid, Rect } from "./Navigation";
 import { TILE_SIZE } from "@/lib/types";
 import { FLOOR_FILES } from "@/lib/floorWarmup";
 import { FLOOR } from "@shared/map";
-import { officePieces, type OfficePiece } from "@shared/office";
+import { GROUNDS } from "@shared/shell";
+import { officePieces, officeSolids, type OfficePiece } from "@shared/office";
 import { crisp } from "./crisp";
 import { floorWalls, floorWallsNow } from "./floorWalls";
 import { pieceChanges, subscribePieces } from "./pieces";
@@ -23,6 +24,8 @@ export interface ChairSpec {
   y: number;
   /** Which way you face sitting there: never sideways (docs/customization.md). */
   direction: "up" | "down";
+  /** The outline of what you sit on, [x, y, width, height]. */
+  box: [number, number, number, number];
   zone?: string;
 }
 
@@ -75,7 +78,7 @@ export class MapManager {
   preload() {
     this.scene.load.image(ITEMS, FLOOR_FILES.items);
     void floorWalls().catch(() => {});
-    this.solidRects = FLOOR.solids.map(([x, y, width, height]) => ({ x, y, width, height }));
+    this.solidRects = this.solidsOf(officePieces(pieceChanges()));
     this.nav = new NavGrid(this.solidRects);
   }
 
@@ -112,6 +115,9 @@ export class MapManager {
     const tweens = this.scene.tweens;
     const animate = this.drawn && !reducedMotion();
     this.pieces = officePieces(pieceChanges());
+    // What's solid is the pieces' own, wherever they stand now: a piece moved or swapped is walked round where it is.
+    this.solidRects = this.solidsOf(this.pieces);
+    this.nav.rebuild(this.solidRects);
     const seen = new Set<string>();
     for (const piece of this.pieces) {
       const frame = frames[piece.item];
@@ -195,7 +201,7 @@ export class MapManager {
    * whoever sits there is (the seat's point is its base).
    */
   private readChairs() {
-    this.chairSpecs = FLOOR.seats.map((seat) => ({ id: seat.id, x: seat.x, y: seat.y - TILE_SIZE / 2, direction: seat.dir, zone: seat.zone }));
+    this.chairSpecs = FLOOR.seats.map((seat) => ({ id: seat.id, x: seat.x, y: seat.y - TILE_SIZE / 2, direction: seat.dir, box: seat.box, zone: seat.zone }));
   }
 
   getChairs(): ChairSpec[] {
@@ -232,11 +238,17 @@ export class MapManager {
     const preferred: Array<{ tileX: number; tileY: number }> = [];
     const fallback: Array<{ tileX: number; tileY: number }> = [];
 
+    // Indoors: a floor with grounds round it has you arrive in the building, not out in the trees.
+    const legend = FLOOR.shell.legend;
+    const indoors = (tileX: number, tileY: number) => {
+      const cell = legend[FLOOR.shell.rows[tileY]?.[tileX] ?? " "];
+      return cell?.kind === "floor" && !(GROUNDS as readonly string[]).includes(cell.material ?? "");
+    };
     for (let tileY = 2; tileY < height - 2; tileY++) {
       const worldY = tileY * TILE_SIZE + TILE_SIZE / 2;
       const centered = worldY >= halfView && worldY <= lowest;
       for (let tileX = 2; tileX < width - 2; tileX++) {
-        if (!this.nav.isWalkable(tileX, tileY)) continue;
+        if (!this.nav.isWalkable(tileX, tileY) || !indoors(tileX, tileY)) continue;
         if (!keepCentered || centered) preferred.push({ tileX, tileY });
         else fallback.push({ tileX, tileY });
       }
@@ -247,14 +259,18 @@ export class MapManager {
     return candidates[Phaser.Math.Between(0, candidates.length - 1)];
   }
 
+  /** Whether something solid is under this point. Its edge isn't: you can stand against a wall, and walk along it. */
+  /** What's solid now: the walls and the pieces as they stand. */
+  getSolids(): readonly Rect[] {
+    return this.solidRects;
+  }
+
+  private solidsOf(pieces: readonly OfficePiece[]): Rect[] {
+    return officeSolids(pieces).map(([x, y, width, height]) => ({ x, y, width, height }));
+  }
+
   checkCollisionAt(pixelX: number, pixelY: number): boolean {
-    return this.solidRects.some(
-      (r) =>
-        pixelX >= r.x &&
-        pixelX <= r.x + r.width &&
-        pixelY >= r.y &&
-        pixelY <= r.y + r.height,
-    );
+    return this.solidRects.some((r) => pixelX > r.x && pixelX < r.x + r.width && pixelY > r.y && pixelY < r.y + r.height);
   }
 
   getMapWidth(): number {

@@ -17,10 +17,8 @@ import {
   lobbyPeoplePath,
   lobbySettingsPath,
   homePath,
-  shareUrl,
   useSitePage,
 } from "@/lib/links";
-import { shareLink } from "@/lib/share";
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
 import { useHelp } from "@/lib/help";
@@ -57,7 +55,6 @@ export default function LobbyInside({
 }) {
   const t = useTranslations("lobby");
   const ts = useTranslations("shell");
-  const tr = useTranslations("room");
   const pathname = usePathname();
   const router = useRouter();
   const home = useSitePage();
@@ -147,20 +144,18 @@ export default function LobbyInside({
         ]}
         settings={{ key: "settings", href: lobbySettingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
         leave={leave}
-        you={<YouMenu onFloor settingsHref={lobbySettingsPath} leave={leave} />}
+        you={<YouMenu settingsHref={lobbySettingsPath} leave={leave} />}
         floor={
           <>
             {/* Signing in from the floor to an account of a different person (not a guest
                 made into an account, which keeps its id) walks in again as them. */}
             <RoomView
               key={user.id}
-              title={t("title")}
               user={user}
               ticketFor={ticketFor}
-              onInvite={() => shareLink(shareUrl(lobbyPath), t("title"), tr("inviteText", { room: t("title") }))}
-              inviteChip
+              // A demo has no one to invite; it has an office of your own to make.
+              demo
               leaveHref={leave.href}
-              settingsHref={lobbySettingsPath}
             />
             {!onChat && <FloorNudges chatPath={lobbyChatPath} />}
             <DemoPrompts />

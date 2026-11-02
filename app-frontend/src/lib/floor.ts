@@ -9,6 +9,8 @@ import { track } from "@/lib/analytics";
 export interface FloorPerson {
   id: string;
   name: string;
+  /** How they look on the floor, for showing them as they are there. */
+  character: string;
   status: PlayerStatus;
   /** Their status note, while it lasts. */
   note?: StatusNote | null;

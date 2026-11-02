@@ -285,18 +285,16 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
               },
             ]}
             settings={{ key: "settings", href: settingsPath, label: ts("settings"), icon: RailIcons.settings, active: onSettings }}
-            you={<YouMenu onFloor settingsHref={settingsPath} />}
+            you={<YouMenu settingsHref={settingsPath} />}
             notice={<PlanBar />}
             floor={
               <>
                 <RoomView
-                  title={office.name}
                   user={user}
                   ticketFor={ticket.ticketFor}
                   // Once someone else has joined, inviting lives in People and the office menu, not over the floor.
                   inviteChip={members.length <= 1}
                   leaveHref={door}
-                  settingsHref={settingsPath}
                 />
                 {!onChat && <FloorNudges chatPath={(channel) => officeChatPath(office.id, channel)} />}
                 <DesktopAlerts chatPath={(channel) => officeChatPath(office.id, channel)} waiting={waiting} />

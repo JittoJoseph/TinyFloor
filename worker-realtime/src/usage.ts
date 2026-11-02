@@ -17,8 +17,9 @@ const FLUSH_EVERY_MS = 60 * 60_000;
 
 /**
  * Usage totals for one room, kept in its own SQLite and added to D1 when the
- * room empties or an hour has passed. Writes stay proportional to active rooms,
- * not to people or messages.
+ * room empties or an hour has passed, with when the office was last used
+ * (offices.active_at). Writes stay proportional to active rooms, not to
+ * people or messages.
  */
 export class Usage {
   constructor(
@@ -72,19 +73,22 @@ export class Usage {
     const callMinutes = Math.round((pending.callMs ?? 0) / 60_000);
     const callVideoMinutes = Math.round((pending.callVideoMs ?? 0) / 60_000);
     try {
-      await this.db
-        .prepare(
-          `INSERT INTO usage_daily (day, office_id, peak_people, person_minutes, sfu_minutes, call_minutes, call_video_minutes)
-           VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)
-           ON CONFLICT (day, office_id) DO UPDATE SET
-             peak_people = MAX(peak_people, excluded.peak_people),
-             person_minutes = person_minutes + excluded.person_minutes,
-             sfu_minutes = sfu_minutes + excluded.sfu_minutes,
-             call_minutes = call_minutes + excluded.call_minutes,
-             call_video_minutes = call_video_minutes + excluded.call_video_minutes`,
-        )
-        .bind(dayOf(now), room, pending.peak, personMinutes, sfuMinutes, callMinutes, callVideoMinutes)
-        .run();
+      await this.db.batch([
+        this.db
+          .prepare(
+            `INSERT INTO usage_daily (day, office_id, peak_people, person_minutes, sfu_minutes, call_minutes, call_video_minutes)
+             VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)
+             ON CONFLICT (day, office_id) DO UPDATE SET
+               peak_people = MAX(peak_people, excluded.peak_people),
+               person_minutes = person_minutes + excluded.person_minutes,
+               sfu_minutes = sfu_minutes + excluded.sfu_minutes,
+               call_minutes = call_minutes + excluded.call_minutes,
+               call_video_minutes = call_video_minutes + excluded.call_video_minutes`,
+          )
+          .bind(dayOf(now), room, pending.peak, personMinutes, sfuMinutes, callMinutes, callVideoMinutes),
+        // Someone was just there (or still is). The lobby isn't an office, so it changes nothing.
+        markActive(this.db, room, now),
+      ]);
     } catch (error) {
       const current = this.read(now);
       this.write({
@@ -114,6 +118,11 @@ export class Usage {
       JSON.stringify(pending),
     );
   }
+}
+
+/** The office was used just now: on its floor, or in its chat. */
+export function markActive(db: D1Database, officeId: string, now: number): D1PreparedStatement {
+  return db.prepare("UPDATE offices SET active_at = MAX(COALESCE(active_at, 0), ?) WHERE id = ?").bind(now, officeId);
 }
 
 /** `YYYY-MM-DD` in UTC. */

@@ -1227,6 +1227,7 @@
         "everything": "Tudo do Free, e mais",
         "team": "Espaço para o time inteiro",
         "often": "Reuniões sempre que o time precisar",
+        "history": "Todo o histórico do chat",
         "help": "Ajuda prioritária de quem constrói o produto",
         "included": "O que vem incluído"
       },
@@ -1364,6 +1365,9 @@
       "callsNote": "Nunca são contadas",
       "support": "Ajuda prioritária",
       "wholeTeam": "Toda a equipe",
+      "history": "Histórico do chat",
+      "historyDays": "{days} dias",
+      "historyAll": "Todo",
       "meetings": "Reuniões em grupo",
       "features": {
         "chat": "Canais e mensagens",
@@ -1414,6 +1418,10 @@
       {
         "q": "O que acontece quando o teste termina?",
         "a": "O escritório passa para o Free, a menos que vocês escolham o Pro. Ninguém é removido: por mais duas semanas todos ainda podem entrar, mas ninguém novo entra além de 3. Depois disso, 3 pessoas podem estar no andar ao mesmo tempo, e o chat continua aberto para todos."
+      },
+      {
+        "q": "O histórico do chat fica guardado no Free?",
+        "a": "Sim, todo ele. O Free mostra as mensagens dos últimos 90 dias e o Pro mostra tudo, então nada se perde ao passar para o Pro."
       },
       {
         "q": "O preço vai subir?",

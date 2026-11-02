@@ -2,9 +2,10 @@
 // the app uses too), and the lab's own way of drawing them into a canvas.
 import { paintShell } from "../../shared-protocol/src/shell.ts";
 
-export { TILE, WALLS, FLOORS, cells, paintShell, wallSolids, paint } from "../../shared-protocol/src/shell.ts";
+export { TILE, WALLS, FLOORS, MORE_FLOORS, moreFloorAt, GROUNDS, GROUND_TILES, cells, paintShell, wallProblems, wallSolids, paint } from "../../shared-protocol/src/shell.ts";
+export { planShell, roomAt, attach, attachPatio, exitPatio, sharedWall, fits } from "../../shared-protocol/src/plan.ts";
 
-export const ROOM_BUILDER = "/app/tilesets/textures/Room_Builder_Office_32x32.png";
+export const ROOM_BUILDER = "/private/catalog/floor-sheet.png";
 
 /** Draws the shell into a new canvas, the size of the floor. */
 export async function renderShell(shell, loadImage) {

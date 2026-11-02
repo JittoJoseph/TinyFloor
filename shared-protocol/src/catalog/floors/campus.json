@@ -1,0 +1,5557 @@
+{
+ "id": "campus",
+ "version": 46,
+ "shell": {
+  "size": [
+   82,
+   52
+  ],
+  "legend": {
+   ".": {
+    "kind": "floor",
+    "material": "grass"
+   },
+   "=": {
+    "kind": "floor",
+    "material": "paving"
+   },
+   "#": {
+    "kind": "wall",
+    "material": "lavender"
+   },
+   "%": {
+    "kind": "wall",
+    "material": "brick"
+   },
+   "a": {
+    "kind": "floor",
+    "material": "plank"
+   },
+   "b": {
+    "kind": "floor",
+    "material": "cream"
+   },
+   "c": {
+    "kind": "floor",
+    "material": "oak"
+   },
+   "d": {
+    "kind": "floor",
+    "material": "rose"
+   },
+   "e": {
+    "kind": "floor",
+    "material": "sage"
+   }
+  },
+  "rows": [
+   "..................................................................................",
+   "..................................................................................",
+   "..................................................................................",
+   "..................................................................................",
+   "..................................................................................",
+   "..................................................................................",
+   "..................................................................................",
+   ".........................#############............................................",
+   ".........................#############............................................",
+   ".........................#bbbbbbbbbbb##############...............................",
+   ".........................#bbbbbbbbbbb##############...............................",
+   ".........................#bbbbbbbbbbb#cccccccccccc#...............................",
+   ".........................#bbbbbbbbbbb#cccccccccccc#########.......................",
+   ".........................#bbbbbbbbbbb#cccccccccccc################................",
+   ".........................#bbbbbbbbbbb#cccccccccccc#ddddddd########................",
+   ".........................#bbbbbbbbbbb#cccccccccccc#ddddddd#dddddd#................",
+   ".........................#bbbbbbbbbbb#cccccccccccc#ddddddd#dddddd#.=====..........",
+   ".......................######bb########cccc##########dd####dddddd#=======.........",
+   ".......................######bb########cccc##########dd####dddddd#=======.........",
+   ".......................#aeeeeeeeeeeeeeeaaaaeeeeeeeeeeeeeea#dddddd#=======.........",
+   ".......................#aeeeeeeeeeeeeeeaaaaeeeeeeeeeeeeeea#ddddddd=======.........",
+   ".......................#aeeeeeeeeeeeeeeaaaaeeeeeeeeeeeeeea#ddddddd=======.........",
+   "..........=====.########aeeeeeeeeeeeeeeaaaaeeeeeeeeeeeeeeaddddddd#=======.........",
+   ".........=======########aeeeeeeeeeeeeeeaaaaeeeeeeeeeeeeeeaddddddd#=======.........",
+   ".........=======#bbbbbb#aeeeeeeeeeeeeeeaaaaeeeeeeeeeeeeeea#dddddd#=======.........",
+   ".........=======#bbbbbb#aeeeeeeeeeeeeeeaaaaeeeeeeeeeeeeeea#dddddd#.=====..........",
+   ".........=======bbbbbbb#aeeeeeeeeeeeeeeaaaaeeeeeeeeeeeeeea#dddddd#................",
+   ".........=======bbbbbbbbaeeeeeeeeeeeeeeaaaaeeeeeeeeeeeeeea#dddddd#................",
+   ".........=======#bbbbbbbaeeeeeeeeeeeeeeaaaaeeeeeeeeeeeeeea#%%%%%%%................",
+   ".........=======#bbbbbb#aeeeeeeeeeeeeeeaaaaeeeeeeeeeeeeeea#%%%%%%%................",
+   ".........=======#bbbbbb#aeeeeeeeeeeeeeeaaaaeeeeeeeeeeeeeea#.......................",
+   "..........=====.###bb###aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#.......................",
+   "................###bb###aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#.......................",
+   "................#eeeeee#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#.......................",
+   "................#eeeeee#aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#.......................",
+   "................#eeeeee#%%%%%aaaa%%%%%##aa#########%%%%%%%%.......................",
+   "................#eeeeee#%%%%%aaaa%%%%%##aa#########%%%%%%%%.......................",
+   "................#eeeeee#...========...#bbbbbbbbbbb#...............................",
+   "................#eeeeee#..==========..#bbbbbbbbbbb#...............................",
+   "................#eeeeee#..==========..#bbbbbbbbbbb#...............................",
+   "................%%%%%%%%...========...#bbbbbbbbbbb#...............................",
+   "................%%%%%%%%......==......#bbbbbbbbbbb#...............................",
+   "..............................==......#bbbbbbbbbbb#...............................",
+   "..............................==......%%%%%%%%%%%%%...............................",
+   "..............................==......%%%%%%%%%%%%%...............................",
+   "..............................==..................................................",
+   "..............................==..................................................",
+   "..............................==..................................................",
+   "..............................==..................................................",
+   "..............................==..................................................",
+   "..............................==..................................................",
+   "..............................==.................................................."
+  ]
+ },
+ "anchors": {
+  "zones": [
+   {
+    "name": "meeting",
+    "x": 832,
+    "y": 288,
+    "width": 352,
+    "height": 256
+   }
+  ],
+  "table": {
+   "x": 896,
+   "y": 384,
+   "width": 224,
+   "height": 96
+  },
+  "whiteboard": {
+   "x": 960,
+   "y": 224,
+   "width": 96,
+   "height": 64
+  }
+ },
+ "pieces": [
+  {
+   "key": "flowerspin-3--3",
+   "item": "flowers-pink",
+   "x": 96,
+   "y": -96,
+   "depth": -70
+  },
+  {
+   "key": "grass-46--3",
+   "item": "grass",
+   "x": 1472,
+   "y": -96,
+   "depth": -70
+  },
+  {
+   "key": "bush-18--3",
+   "item": "bush",
+   "x": 576,
+   "y": -96,
+   "depth": -56
+  },
+  {
+   "key": "grass-51--2",
+   "item": "grass",
+   "x": 1632,
+   "y": -64,
+   "depth": -38
+  },
+  {
+   "key": "bush-78--2",
+   "item": "bush",
+   "x": 2496,
+   "y": -64,
+   "depth": -24
+  },
+  {
+   "key": "room:23,17,58,36/rug",
+   "item": "ours-rug-plum",
+   "x": 1376,
+   "y": 1024,
+   "depth": 1.5
+  },
+  {
+   "key": "room:58,13,65,29/rug",
+   "item": "ours-rug-sunset",
+   "x": 1920,
+   "y": 624,
+   "depth": 1.5
+  },
+  {
+   "key": "room:16,22,23,32/rug",
+   "item": "ours-rug-sunset",
+   "x": 576,
+   "y": 832,
+   "depth": 1.5
+  },
+  {
+   "key": "oursrugsma-53-15",
+   "item": "ours-rug-small-sunset",
+   "x": 1696,
+   "y": 480,
+   "depth": 1.5
+  },
+  {
+   "key": "wall:26,9,11/window-0",
+   "item": "window-office-3",
+   "x": 864,
+   "y": 224,
+   "depth": 2
+  },
+  {
+   "key": "wall:26,9,11/window-1",
+   "item": "window-office-3",
+   "x": 1056,
+   "y": 224,
+   "depth": 2
+  },
+  {
+   "key": "wall:51,14,7/window-0",
+   "item": "window-blinds-2",
+   "x": 1696,
+   "y": 384,
+   "depth": 2
+  },
+  {
+   "key": "wall:59,15,6/0",
+   "item": "wall-trophy",
+   "x": 1952,
+   "y": 416,
+   "depth": 2
+  },
+  {
+   "key": "wall:24,19,5/window-0",
+   "item": "window-office-3",
+   "x": 800,
+   "y": 544,
+   "depth": 2
+  },
+  {
+   "key": "wall:31,19,8/1",
+   "item": "board-chart",
+   "x": 1056,
+   "y": 544,
+   "depth": 2
+  },
+  {
+   "key": "wall:31,19,8/2",
+   "item": "wall-poster",
+   "x": 1152,
+   "y": 544,
+   "depth": 2
+  },
+  {
+   "key": "wall:43,19,10/1",
+   "item": "board-chart",
+   "x": 1472,
+   "y": 544,
+   "depth": 2
+  },
+  {
+   "key": "wall:43,19,10/2",
+   "item": "art-abstract",
+   "x": 1536,
+   "y": 552,
+   "depth": 2
+  },
+  {
+   "key": "wall:55,19,3/0",
+   "item": "wall-trophy",
+   "x": 1792,
+   "y": 544,
+   "depth": 2
+  },
+  {
+   "key": "wall:17,24,6/window-0",
+   "item": "window-blinds-2",
+   "x": 608,
+   "y": 704,
+   "depth": 2
+  },
+  {
+   "key": "wall:59,30,7/window-0",
+   "item": "window-blinds-2",
+   "x": 1952,
+   "y": 896,
+   "depth": 2
+  },
+  {
+   "key": "wall:24,37,5/window-0",
+   "item": "window-office-2",
+   "x": 800,
+   "y": 1120,
+   "depth": 2
+  },
+  {
+   "key": "wall:33,37,5/window-0",
+   "item": "window-blinds-2",
+   "x": 1088,
+   "y": 1120,
+   "depth": 2
+  },
+  {
+   "key": "wall:42,37,8/1",
+   "item": "wall-cert",
+   "x": 1376,
+   "y": 1120,
+   "depth": 2
+  },
+  {
+   "key": "wall:42,37,8/2",
+   "item": "wall-charts",
+   "x": 1440,
+   "y": 1120,
+   "depth": 2
+  },
+  {
+   "key": "wall:51,37,8/window-0",
+   "item": "window-office-3",
+   "x": 1696,
+   "y": 1120,
+   "depth": 2
+  },
+  {
+   "key": "wall:16,42,8/window-0",
+   "item": "window-office-3",
+   "x": 576,
+   "y": 1280,
+   "depth": 2
+  },
+  {
+   "key": "wall:38,45,13/window-0",
+   "item": "window-blinds-3",
+   "x": 1280,
+   "y": 1376,
+   "depth": 2
+  },
+  {
+   "key": "wall:38,45,13/window-1",
+   "item": "window-office-3",
+   "x": 1440,
+   "y": 1376,
+   "depth": 2
+  },
+  {
+   "key": "bush-76--1",
+   "item": "bush",
+   "x": 2432,
+   "y": -32,
+   "depth": 8
+  },
+  {
+   "key": "bush-46--1",
+   "item": "bush",
+   "x": 1472,
+   "y": -32,
+   "depth": 8
+  },
+  {
+   "key": "bush-65--1",
+   "item": "bush",
+   "x": 2080,
+   "y": -32,
+   "depth": 8
+  },
+  {
+   "key": "bush-70--1",
+   "item": "bush",
+   "x": 2240,
+   "y": -32,
+   "depth": 8
+  },
+  {
+   "key": "tree-72--3",
+   "item": "tree",
+   "x": 2304,
+   "y": -96,
+   "depth": 20
+  },
+  {
+   "key": "tree-25--3",
+   "item": "tree",
+   "x": 800,
+   "y": -96,
+   "depth": 20
+  },
+  {
+   "key": "treesmall-53--2",
+   "item": "tree-small",
+   "x": 1696,
+   "y": -64,
+   "depth": 20
+  },
+  {
+   "key": "tree-36--3",
+   "item": "tree",
+   "x": 1152,
+   "y": -96,
+   "depth": 20
+  },
+  {
+   "key": "tree-11--3",
+   "item": "tree",
+   "x": 352,
+   "y": -96,
+   "depth": 20
+  },
+  {
+   "key": "treesmall-61--2",
+   "item": "tree-small",
+   "x": 1952,
+   "y": -64,
+   "depth": 20
+  },
+  {
+   "key": "treesmall--2--2",
+   "item": "tree-small",
+   "x": -64,
+   "y": -64,
+   "depth": 20
+  },
+  {
+   "key": "treesmall-8--2",
+   "item": "tree-small",
+   "x": 256,
+   "y": -64,
+   "depth": 20
+  },
+  {
+   "key": "treesmall-42--2",
+   "item": "tree-small",
+   "x": 1344,
+   "y": -64,
+   "depth": 20
+  },
+  {
+   "key": "tree-57--2",
+   "item": "tree",
+   "x": 1824,
+   "y": -64,
+   "depth": 52
+  },
+  {
+   "key": "treesmall-22--1",
+   "item": "tree-small",
+   "x": 704,
+   "y": -32,
+   "depth": 52
+  },
+  {
+   "key": "treesmall-34--1",
+   "item": "tree-small",
+   "x": 1088,
+   "y": -32,
+   "depth": 52
+  },
+  {
+   "key": "tree-31--2",
+   "item": "tree",
+   "x": 992,
+   "y": -64,
+   "depth": 52
+  },
+  {
+   "key": "tree-28--2",
+   "item": "tree",
+   "x": 896,
+   "y": -64,
+   "depth": 52
+  },
+  {
+   "key": "bush-62-1",
+   "item": "bush",
+   "x": 1984,
+   "y": 32,
+   "depth": 72
+  },
+  {
+   "key": "tree-4--1",
+   "item": "tree",
+   "x": 128,
+   "y": -32,
+   "depth": 84
+  },
+  {
+   "key": "tree-80--1",
+   "item": "tree",
+   "x": 2560,
+   "y": -32,
+   "depth": 84
+  },
+  {
+   "key": "tree-14--1",
+   "item": "tree",
+   "x": 448,
+   "y": -32,
+   "depth": 84
+  },
+  {
+   "key": "treesmall-19-0",
+   "item": "tree-small",
+   "x": 608,
+   "y": 0,
+   "depth": 84
+  },
+  {
+   "key": "flowers-37-2",
+   "item": "flowers",
+   "x": 1184,
+   "y": 64,
+   "depth": 90
+  },
+  {
+   "key": "flowerspin-72-2",
+   "item": "flowers-pink",
+   "x": 2304,
+   "y": 64,
+   "depth": 90
+  },
+  {
+   "key": "grass-47-2",
+   "item": "grass",
+   "x": 1504,
+   "y": 64,
+   "depth": 90
+  },
+  {
+   "key": "tree-49-0",
+   "item": "tree",
+   "x": 1568,
+   "y": 0,
+   "depth": 116
+  },
+  {
+   "key": "tree-24-1",
+   "item": "tree",
+   "x": 768,
+   "y": 32,
+   "depth": 148
+  },
+  {
+   "key": "treesmall-68-2",
+   "item": "tree-small",
+   "x": 2176,
+   "y": 64,
+   "depth": 148
+  },
+  {
+   "key": "tree-77-1",
+   "item": "tree",
+   "x": 2464,
+   "y": 32,
+   "depth": 148
+  },
+  {
+   "key": "tree-41-1",
+   "item": "tree",
+   "x": 1312,
+   "y": 32,
+   "depth": 148
+  },
+  {
+   "key": "flowerspin-10-4",
+   "item": "flowers-pink",
+   "x": 320,
+   "y": 128,
+   "depth": 154
+  },
+  {
+   "key": "flowers-65-4",
+   "item": "flowers",
+   "x": 2080,
+   "y": 128,
+   "depth": 154
+  },
+  {
+   "key": "bush-3-4",
+   "item": "bush",
+   "x": 96,
+   "y": 128,
+   "depth": 168
+  },
+  {
+   "key": "treesmall-81-3",
+   "item": "tree-small",
+   "x": 2592,
+   "y": 96,
+   "depth": 180
+  },
+  {
+   "key": "tree-0-2",
+   "item": "tree",
+   "x": 0,
+   "y": 64,
+   "depth": 180
+  },
+  {
+   "key": "flowerspin-19-5",
+   "item": "flowers-pink",
+   "x": 608,
+   "y": 160,
+   "depth": 186
+  },
+  {
+   "key": "flowers-52-5",
+   "item": "flowers",
+   "x": 1664,
+   "y": 160,
+   "depth": 186
+  },
+  {
+   "key": "flowers-47-5",
+   "item": "flowers",
+   "x": 1504,
+   "y": 160,
+   "depth": 186
+  },
+  {
+   "key": "treesmall-55-4",
+   "item": "tree-small",
+   "x": 1760,
+   "y": 128,
+   "depth": 212
+  },
+  {
+   "key": "grass-42-6",
+   "item": "grass",
+   "x": 1344,
+   "y": 192,
+   "depth": 218
+  },
+  {
+   "key": "flowerspin-70-6",
+   "item": "flowers-pink",
+   "x": 2240,
+   "y": 192,
+   "depth": 218
+  },
+  {
+   "key": "bush-72-6",
+   "item": "bush",
+   "x": 2304,
+   "y": 192,
+   "depth": 232
+  },
+  {
+   "key": "grass-24-7",
+   "item": "grass",
+   "x": 768,
+   "y": 224,
+   "depth": 250
+  },
+  {
+   "key": "tree-5-5",
+   "item": "tree",
+   "x": 160,
+   "y": 160,
+   "depth": 276
+  },
+  {
+   "key": "treesmall-11-6",
+   "item": "tree-small",
+   "x": 352,
+   "y": 192,
+   "depth": 276
+  },
+  {
+   "key": "flowers-43-8",
+   "item": "flowers",
+   "x": 1376,
+   "y": 256,
+   "depth": 282
+  },
+  {
+   "key": "tree-78-6",
+   "item": "tree",
+   "x": 2496,
+   "y": 192,
+   "depth": 308
+  },
+  {
+   "key": "grass-61-9",
+   "item": "grass",
+   "x": 1952,
+   "y": 288,
+   "depth": 314
+  },
+  {
+   "key": "flowerspin-14-9",
+   "item": "flowers-pink",
+   "x": 448,
+   "y": 288,
+   "depth": 314
+  },
+  {
+   "key": "flowers-72-9",
+   "item": "flowers",
+   "x": 2304,
+   "y": 288,
+   "depth": 314
+  },
+  {
+   "key": "side:right:36,9,8/0",
+   "item": "lamp-red",
+   "x": 1152,
+   "y": 272,
+   "depth": 338
+  },
+  {
+   "key": "treesmall-75-8",
+   "item": "tree-small",
+   "x": 2400,
+   "y": 256,
+   "depth": 340
+  },
+  {
+   "key": "treesmall--2-8",
+   "item": "tree-small",
+   "x": -64,
+   "y": 256,
+   "depth": 340
+  },
+  {
+   "key": "flowers-63-10",
+   "item": "flowers",
+   "x": 2016,
+   "y": 320,
+   "depth": 346
+  },
+  {
+   "key": "bush-7-10",
+   "item": "bush",
+   "x": 224,
+   "y": 320,
+   "depth": 360
+  },
+  {
+   "key": "wall:38,11,12/0",
+   "item": "wall-vending",
+   "x": 1280,
+   "y": 288,
+   "depth": 364
+  },
+  {
+   "key": "wall:38,11,12/1",
+   "item": "wall-coffee-table",
+   "x": 1408,
+   "y": 288,
+   "depth": 364
+  },
+  {
+   "key": "wall:38,11,12/2",
+   "item": "wall-shelf-cooler",
+   "x": 1472,
+   "y": 288,
+   "depth": 364
+  },
+  {
+   "key": "tree-0-8",
+   "item": "tree",
+   "x": 0,
+   "y": 256,
+   "depth": 372
+  },
+  {
+   "key": "treesmall-4-9",
+   "item": "tree-small",
+   "x": 128,
+   "y": 288,
+   "depth": 372
+  },
+  {
+   "key": "side:right:49,11,6/0",
+   "item": "lamp-red",
+   "x": 1568,
+   "y": 336,
+   "depth": 402
+  },
+  {
+   "key": "treesmall-69-10",
+   "item": "tree-small",
+   "x": 2208,
+   "y": 320,
+   "depth": 404
+  },
+  {
+   "key": "chairblack-29-11",
+   "item": "chair-black-mesh",
+   "x": 928,
+   "y": 352,
+   "depth": 408
+  },
+  {
+   "key": "chairblack-31-11",
+   "item": "chair-black-mesh",
+   "x": 992,
+   "y": 352,
+   "depth": 408
+  },
+  {
+   "key": "chairblack-33-11",
+   "item": "chair-black-mesh",
+   "x": 1056,
+   "y": 352,
+   "depth": 408
+  },
+  {
+   "key": "side:right:36,9,8/1",
+   "item": "ours-bush-small-white",
+   "x": 1152,
+   "y": 368,
+   "depth": 414
+  },
+  {
+   "key": "tree-79-10",
+   "item": "tree",
+   "x": 2528,
+   "y": 320,
+   "depth": 436
+  },
+  {
+   "key": "treesmall-12-11",
+   "item": "tree-small",
+   "x": 384,
+   "y": 352,
+   "depth": 436
+  },
+  {
+   "key": "treesmall-75-11",
+   "item": "tree-small",
+   "x": 2400,
+   "y": 352,
+   "depth": 436
+  },
+  {
+   "key": "chairtanme-40-12",
+   "item": "chair-tan-mesh",
+   "x": 1280,
+   "y": 384,
+   "depth": 440
+  },
+  {
+   "key": "chairtanme-42-12",
+   "item": "chair-tan-mesh",
+   "x": 1344,
+   "y": 384,
+   "depth": 440
+  },
+  {
+   "key": "chairtanme-45-12",
+   "item": "chair-tan-mesh",
+   "x": 1440,
+   "y": 384,
+   "depth": 440
+  },
+  {
+   "key": "chairtanme-47-12",
+   "item": "chair-tan-mesh",
+   "x": 1504,
+   "y": 384,
+   "depth": 440
+  },
+  {
+   "key": "bush-0-13",
+   "item": "bush",
+   "x": 0,
+   "y": 416,
+   "depth": 456
+  },
+  {
+   "key": "wall:51,14,7/0",
+   "item": "wall-plant",
+   "x": 1632,
+   "y": 384,
+   "depth": 460
+  },
+  {
+   "key": "treesmall-4-12",
+   "item": "tree-small",
+   "x": 128,
+   "y": 384,
+   "depth": 468
+  },
+  {
+   "key": "meetingtab-28-12",
+   "item": "meeting-table",
+   "x": 896,
+   "y": 384,
+   "depth": 476
+  },
+  {
+   "key": "wall:59,15,6/1",
+   "item": "wall-plant",
+   "x": 2048,
+   "y": 416,
+   "depth": 492
+  },
+  {
+   "key": "chairblack-29-14",
+   "item": "chair-black-back",
+   "x": 928,
+   "y": 448,
+   "depth": 496
+  },
+  {
+   "key": "chairblack-31-14",
+   "item": "chair-black-back",
+   "x": 992,
+   "y": 448,
+   "depth": 496
+  },
+  {
+   "key": "chairblack-33-14",
+   "item": "chair-black-back",
+   "x": 1056,
+   "y": 448,
+   "depth": 496
+  },
+  {
+   "key": "sofatwo-53-14",
+   "item": "sofa-two",
+   "x": 1696,
+   "y": 448,
+   "depth": 504
+  },
+  {
+   "key": "flowerspin-14-15",
+   "item": "flowers-pink",
+   "x": 448,
+   "y": 480,
+   "depth": 506
+  },
+  {
+   "key": "flowers-73-15",
+   "item": "flowers",
+   "x": 2336,
+   "y": 480,
+   "depth": 506
+  },
+  {
+   "key": "meetingtab-39-13",
+   "item": "meeting-table-small",
+   "x": 1248,
+   "y": 416,
+   "depth": 508
+  },
+  {
+   "key": "meetingtab-44-13",
+   "item": "meeting-table-small",
+   "x": 1408,
+   "y": 416,
+   "depth": 508
+  },
+  {
+   "key": "chairtanba-40-15",
+   "item": "chair-tan-back",
+   "x": 1280,
+   "y": 480,
+   "depth": 528
+  },
+  {
+   "key": "chairtanba-42-15",
+   "item": "chair-tan-back",
+   "x": 1344,
+   "y": 480,
+   "depth": 528
+  },
+  {
+   "key": "chairtanba-45-15",
+   "item": "chair-tan-back",
+   "x": 1440,
+   "y": 480,
+   "depth": 528
+  },
+  {
+   "key": "chairtanba-47-15",
+   "item": "chair-tan-back",
+   "x": 1504,
+   "y": 480,
+   "depth": 528
+  },
+  {
+   "key": "side:left:59,15,7/0",
+   "item": "lamp-red",
+   "x": 1888,
+   "y": 464,
+   "depth": 530
+  },
+  {
+   "key": "tree-80-14",
+   "item": "tree",
+   "x": 2560,
+   "y": 448,
+   "depth": 564
+  },
+  {
+   "key": "patio:66,16,72,25/0",
+   "item": "bench-pale",
+   "x": 2144,
+   "y": 544,
+   "depth": 582
+  },
+  {
+   "key": "patio:66,16,72,25/2",
+   "item": "bench-pale",
+   "x": 2240,
+   "y": 544,
+   "depth": 582
+  },
+  {
+   "key": "tree-77-15",
+   "item": "tree",
+   "x": 2464,
+   "y": 480,
+   "depth": 596
+  },
+  {
+   "key": "tree-2-15",
+   "item": "tree",
+   "x": 64,
+   "y": 480,
+   "depth": 596
+  },
+  {
+   "key": "side:left:59,15,7/1",
+   "item": "ours-bush-small-clay",
+   "x": 1888,
+   "y": 560,
+   "depth": 606
+  },
+  {
+   "key": "wall:24,19,5/0",
+   "item": "wall-plant",
+   "x": 768,
+   "y": 544,
+   "depth": 620
+  },
+  {
+   "key": "wall:31,19,8/0",
+   "item": "wall-cooler",
+   "x": 1024,
+   "y": 544,
+   "depth": 620
+  },
+  {
+   "key": "wall:43,19,10/0",
+   "item": "wall-plant",
+   "x": 1376,
+   "y": 544,
+   "depth": 620
+  },
+  {
+   "key": "wall:43,19,10/3",
+   "item": "wall-shelf-cooler",
+   "x": 1568,
+   "y": 544,
+   "depth": 620
+  },
+  {
+   "key": "wall:55,19,3/1",
+   "item": "wall-plant2",
+   "x": 1824,
+   "y": 544,
+   "depth": 620
+  },
+  {
+   "key": "tree--2-16",
+   "item": "tree",
+   "x": -64,
+   "y": 512,
+   "depth": 628
+  },
+  {
+   "key": "treesmall-9-17",
+   "item": "tree-small",
+   "x": 288,
+   "y": 544,
+   "depth": 628
+  },
+  {
+   "key": "bush-4-19",
+   "item": "bush",
+   "x": 128,
+   "y": 608,
+   "depth": 648
+  },
+  {
+   "key": "room:58,13,65,29/chair-0",
+   "item": "egg-chair-lilac",
+   "x": 1936,
+   "y": 608,
+   "depth": 652
+  },
+  {
+   "key": "room:58,13,65,29/chair-1",
+   "item": "egg-chair-mustard",
+   "x": 2000,
+   "y": 608,
+   "depth": 652
+  },
+  {
+   "key": "flowers-21-20",
+   "item": "flowers",
+   "x": 672,
+   "y": 640,
+   "depth": 666
+  },
+  {
+   "key": "room:58,13,65,29/table",
+   "item": "coffee-table",
+   "x": 1952,
+   "y": 648,
+   "depth": 690
+  },
+  {
+   "key": "patio:66,16,72,25/4",
+   "item": "tree-small",
+   "x": 2208,
+   "y": 608,
+   "depth": 692
+  },
+  {
+   "key": "treesmall-76-19",
+   "item": "tree-small",
+   "x": 2432,
+   "y": 608,
+   "depth": 692
+  },
+  {
+   "key": "bush-81-21",
+   "item": "bush",
+   "x": 2592,
+   "y": 672,
+   "depth": 712
+  },
+  {
+   "key": "side:left:24,19,8/0",
+   "item": "lamp-red",
+   "x": 768,
+   "y": 656,
+   "depth": 722
+  },
+  {
+   "key": "treesmall-78-20",
+   "item": "tree-small",
+   "x": 2496,
+   "y": 640,
+   "depth": 724
+  },
+  {
+   "key": "desksingle-26-20/front",
+   "item": "desks-single-maple-1-n4",
+   "x": 832,
+   "y": 640,
+   "depth": 732
+  },
+  {
+   "key": "desksingle-30-20/front",
+   "item": "desks-single-maple-1-n4",
+   "x": 960,
+   "y": 640,
+   "depth": 732
+  },
+  {
+   "key": "desksingle-34-20/front",
+   "item": "desks-single-maple-1-n4",
+   "x": 1088,
+   "y": 640,
+   "depth": 732
+  },
+  {
+   "key": "desksingle-44-20/front",
+   "item": "desks-single-white-1-n4",
+   "x": 1408,
+   "y": 640,
+   "depth": 732
+  },
+  {
+   "key": "desksingle-48-20/front",
+   "item": "desks-single-white-1-n4",
+   "x": 1536,
+   "y": 640,
+   "depth": 732
+  },
+  {
+   "key": "desksingle-52-20/front",
+   "item": "desks-single-white-1-n4",
+   "x": 1664,
+   "y": 640,
+   "depth": 732
+  },
+  {
+   "key": "desksingle-26-20/front-0/spot-1",
+   "item": "ours-screen-ash",
+   "x": 872,
+   "y": 656,
+   "depth": 732.57,
+   "desk": "desksingle-26-20/front-0"
+  },
+  {
+   "key": "desksingle-26-20/front-0/spot-0",
+   "item": "ours-bush-desk-lilac",
+   "x": 840,
+   "y": 654,
+   "depth": 732.57,
+   "desk": "desksingle-26-20/front-0"
+  },
+  {
+   "key": "desksingle-26-20/front-0/spot-2",
+   "item": "ours-frame-sunset",
+   "x": 932,
+   "y": 670,
+   "depth": 732.57,
+   "desk": "desksingle-26-20/front-0"
+  },
+  {
+   "key": "desksingle-30-20/front-0/spot-1",
+   "item": "ours-screen-teal",
+   "x": 1000,
+   "y": 656,
+   "depth": 732.57,
+   "desk": "desksingle-30-20/front-0"
+  },
+  {
+   "key": "desksingle-30-20/front-0/spot-0",
+   "item": "ours-lamp-teal",
+   "x": 968,
+   "y": 660,
+   "depth": 732.57,
+   "desk": "desksingle-30-20/front-0"
+  },
+  {
+   "key": "desksingle-34-20/front-0/spot-1",
+   "item": "ours-screen-pale",
+   "x": 1128,
+   "y": 656,
+   "depth": 732.57,
+   "desk": "desksingle-34-20/front-0"
+  },
+  {
+   "key": "desksingle-34-20/front-0/spot-2",
+   "item": "ours-radio",
+   "x": 1186,
+   "y": 670,
+   "depth": 732.57,
+   "desk": "desksingle-34-20/front-0"
+  },
+  {
+   "key": "desksingle-44-20/front-0/spot-1",
+   "item": "ours-laptop-ash",
+   "x": 1448,
+   "y": 656,
+   "depth": 732.57,
+   "desk": "desksingle-44-20/front-0"
+  },
+  {
+   "key": "desksingle-44-20/front-0/spot-0",
+   "item": "ours-bush-desk-white",
+   "x": 1416,
+   "y": 654,
+   "depth": 732.57,
+   "desk": "desksingle-44-20/front-0"
+  },
+  {
+   "key": "desksingle-44-20/front-0/spot-2",
+   "item": "ours-frame-shapes",
+   "x": 1508,
+   "y": 670,
+   "depth": 732.57,
+   "desk": "desksingle-44-20/front-0"
+  },
+  {
+   "key": "desksingle-48-20/front-0/spot-1",
+   "item": "ours-screen-pale",
+   "x": 1576,
+   "y": 656,
+   "depth": 732.57,
+   "desk": "desksingle-48-20/front-0"
+  },
+  {
+   "key": "desksingle-48-20/front-0/spot-0",
+   "item": "ours-lamp-mustard",
+   "x": 1544,
+   "y": 660,
+   "depth": 732.57,
+   "desk": "desksingle-48-20/front-0"
+  },
+  {
+   "key": "desksingle-52-20/front-0/spot-1",
+   "item": "ours-laptop-silver",
+   "x": 1704,
+   "y": 656,
+   "depth": 732.57,
+   "desk": "desksingle-52-20/front-0"
+  },
+  {
+   "key": "desksingle-52-20/front-0/spot-0",
+   "item": "ours-bush-desk-lilac",
+   "x": 1672,
+   "y": 654,
+   "depth": 732.57,
+   "desk": "desksingle-52-20/front-0"
+  },
+  {
+   "key": "desksingle-52-20/front-0/spot-2",
+   "item": "ours-books",
+   "x": 1762,
+   "y": 670,
+   "depth": 732.57,
+   "desk": "desksingle-52-20/front-0"
+  },
+  {
+   "key": "room:58,13,65,29/chair-2",
+   "item": "egg-chair-teal-back",
+   "x": 1936,
+   "y": 688,
+   "depth": 736
+  },
+  {
+   "key": "room:58,13,65,29/chair-3",
+   "item": "egg-chair-coral-back",
+   "x": 2000,
+   "y": 688,
+   "depth": 736
+  },
+  {
+   "key": "patio:66,16,72,25/1",
+   "item": "bench-pale",
+   "x": 2144,
+   "y": 704,
+   "depth": 742
+  },
+  {
+   "key": "patio:66,16,72,25/3",
+   "item": "bench-pale",
+   "x": 2240,
+   "y": 704,
+   "depth": 742
+  },
+  {
+   "key": "desksingle-26-20/front-0/chair",
+   "item": "chair-black-back",
+   "x": 896,
+   "y": 704,
+   "depth": 752,
+   "desk": "desksingle-26-20/front-0"
+  },
+  {
+   "key": "desksingle-30-20/front-0/chair",
+   "item": "chair-black-back",
+   "x": 1024,
+   "y": 704,
+   "depth": 752,
+   "desk": "desksingle-30-20/front-0"
+  },
+  {
+   "key": "desksingle-34-20/front-0/chair",
+   "item": "chair-black-back",
+   "x": 1152,
+   "y": 704,
+   "depth": 752,
+   "desk": "desksingle-34-20/front-0"
+  },
+  {
+   "key": "desksingle-44-20/front-0/chair",
+   "item": "chair-black-back",
+   "x": 1472,
+   "y": 704,
+   "depth": 752,
+   "desk": "desksingle-44-20/front-0"
+  },
+  {
+   "key": "desksingle-48-20/front-0/chair",
+   "item": "chair-black-back",
+   "x": 1600,
+   "y": 704,
+   "depth": 752,
+   "desk": "desksingle-48-20/front-0"
+  },
+  {
+   "key": "desksingle-52-20/front-0/chair",
+   "item": "chair-black-back",
+   "x": 1728,
+   "y": 704,
+   "depth": 752,
+   "desk": "desksingle-52-20/front-0"
+  },
+  {
+   "key": "treesmall-1-21",
+   "item": "tree-small",
+   "x": 32,
+   "y": 672,
+   "depth": 756
+  },
+  {
+   "key": "patio:9,22,15,31/0",
+   "item": "bench-pale",
+   "x": 416,
+   "y": 736,
+   "depth": 774
+  },
+  {
+   "key": "patio:9,22,15,31/2",
+   "item": "bench-pale",
+   "x": 320,
+   "y": 736,
+   "depth": 774
+  },
+  {
+   "key": "flowerspin-66-25",
+   "item": "flowers-pink",
+   "x": 2112,
+   "y": 800,
+   "depth": 826
+  },
+  {
+   "key": "side:left:24,19,8/1",
+   "item": "ours-bush-clay",
+   "x": 768,
+   "y": 768,
+   "depth": 828
+  },
+  {
+   "key": "bush-2-25",
+   "item": "bush",
+   "x": 64,
+   "y": 800,
+   "depth": 840
+  },
+  {
+   "key": "tree-81-23",
+   "item": "tree",
+   "x": 2592,
+   "y": 736,
+   "depth": 852
+  },
+  {
+   "key": "treesmall-5-24",
+   "item": "tree-small",
+   "x": 160,
+   "y": 768,
+   "depth": 852
+  },
+  {
+   "key": "patio:9,22,15,31/4",
+   "item": "tree-small",
+   "x": 352,
+   "y": 800,
+   "depth": 884
+  },
+  {
+   "key": "tree--2-24",
+   "item": "tree",
+   "x": -64,
+   "y": 768,
+   "depth": 884
+  },
+  {
+   "key": "desksingle-26-25/front",
+   "item": "desks-single-maple-1-n4",
+   "x": 832,
+   "y": 800,
+   "depth": 892
+  },
+  {
+   "key": "desksingle-30-25/front",
+   "item": "desks-single-maple-1-n4",
+   "x": 960,
+   "y": 800,
+   "depth": 892
+  },
+  {
+   "key": "desksingle-34-25/front",
+   "item": "desks-single-maple-1-n4",
+   "x": 1088,
+   "y": 800,
+   "depth": 892
+  },
+  {
+   "key": "desksingle-44-25/front",
+   "item": "desks-single-white-1-n4",
+   "x": 1408,
+   "y": 800,
+   "depth": 892
+  },
+  {
+   "key": "desksingle-48-25/front",
+   "item": "desks-single-white-1-n4",
+   "x": 1536,
+   "y": 800,
+   "depth": 892
+  },
+  {
+   "key": "desksingle-52-25/front",
+   "item": "desks-single-white-1-n4",
+   "x": 1664,
+   "y": 800,
+   "depth": 892
+  },
+  {
+   "key": "desksingle-26-25/front-0/spot-1",
+   "item": "ours-screen-ash",
+   "x": 872,
+   "y": 816,
+   "depth": 892.59,
+   "desk": "desksingle-26-25/front-0"
+  },
+  {
+   "key": "desksingle-26-25/front-0/spot-0",
+   "item": "ours-lamp-coral",
+   "x": 840,
+   "y": 820,
+   "depth": 892.59,
+   "desk": "desksingle-26-25/front-0"
+  },
+  {
+   "key": "desksingle-26-25/front-0/spot-2",
+   "item": "ours-notebook",
+   "x": 930,
+   "y": 830,
+   "depth": 892.59,
+   "desk": "desksingle-26-25/front-0"
+  },
+  {
+   "key": "desksingle-30-25/front-0/spot-1",
+   "item": "ours-screen-teal",
+   "x": 1000,
+   "y": 816,
+   "depth": 892.59,
+   "desk": "desksingle-30-25/front-0"
+  },
+  {
+   "key": "desksingle-30-25/front-0/spot-0",
+   "item": "ours-bush-desk-lilac",
+   "x": 968,
+   "y": 814,
+   "depth": 892.59,
+   "desk": "desksingle-30-25/front-0"
+  },
+  {
+   "key": "desksingle-34-25/front-0/spot-1",
+   "item": "ours-screen-silver",
+   "x": 1128,
+   "y": 816,
+   "depth": 892.59,
+   "desk": "desksingle-34-25/front-0"
+  },
+  {
+   "key": "desksingle-34-25/front-0/spot-0",
+   "item": "ours-lamp-white",
+   "x": 1096,
+   "y": 820,
+   "depth": 892.59,
+   "desk": "desksingle-34-25/front-0"
+  },
+  {
+   "key": "desksingle-44-25/front-0/spot-1",
+   "item": "ours-screen-ash",
+   "x": 1448,
+   "y": 816,
+   "depth": 892.59,
+   "desk": "desksingle-44-25/front-0"
+  },
+  {
+   "key": "desksingle-44-25/front-0/spot-0",
+   "item": "ours-lamp-coral",
+   "x": 1416,
+   "y": 820,
+   "depth": 892.59,
+   "desk": "desksingle-44-25/front-0"
+  },
+  {
+   "key": "desksingle-44-25/front-0/spot-2",
+   "item": "ours-radio",
+   "x": 1506,
+   "y": 830,
+   "depth": 892.59,
+   "desk": "desksingle-44-25/front-0"
+  },
+  {
+   "key": "desksingle-48-25/front-0/spot-1",
+   "item": "ours-laptop-silver",
+   "x": 1576,
+   "y": 816,
+   "depth": 892.59,
+   "desk": "desksingle-48-25/front-0"
+  },
+  {
+   "key": "desksingle-48-25/front-0/spot-2",
+   "item": "ours-notebook",
+   "x": 1634,
+   "y": 830,
+   "depth": 892.59,
+   "desk": "desksingle-48-25/front-0"
+  },
+  {
+   "key": "desksingle-52-25/front-0/spot-1",
+   "item": "ours-screen-pale",
+   "x": 1704,
+   "y": 816,
+   "depth": 892.59,
+   "desk": "desksingle-52-25/front-0"
+  },
+  {
+   "key": "desksingle-52-25/front-0/spot-0",
+   "item": "ours-lamp-coral",
+   "x": 1672,
+   "y": 820,
+   "depth": 892.59,
+   "desk": "desksingle-52-25/front-0"
+  },
+  {
+   "key": "room:16,22,23,32/chair-0",
+   "item": "armchair",
+   "x": 576,
+   "y": 848,
+   "depth": 904
+  },
+  {
+   "key": "room:16,22,23,32/chair-1",
+   "item": "armchair",
+   "x": 672,
+   "y": 848,
+   "depth": 904
+  },
+  {
+   "key": "room:16,22,23,32/table",
+   "item": "coffee-table",
+   "x": 608,
+   "y": 864,
+   "depth": 906
+  },
+  {
+   "key": "desksingle-26-25/front-0/chair",
+   "item": "chair-black-back",
+   "x": 896,
+   "y": 864,
+   "depth": 912,
+   "desk": "desksingle-26-25/front-0"
+  },
+  {
+   "key": "desksingle-30-25/front-0/chair",
+   "item": "chair-black-back",
+   "x": 1024,
+   "y": 864,
+   "depth": 912,
+   "desk": "desksingle-30-25/front-0"
+  },
+  {
+   "key": "desksingle-34-25/front-0/chair",
+   "item": "chair-black-back",
+   "x": 1152,
+   "y": 864,
+   "depth": 912,
+   "desk": "desksingle-34-25/front-0"
+  },
+  {
+   "key": "desksingle-44-25/front-0/chair",
+   "item": "chair-black-back",
+   "x": 1472,
+   "y": 864,
+   "depth": 912,
+   "desk": "desksingle-44-25/front-0"
+  },
+  {
+   "key": "desksingle-48-25/front-0/chair",
+   "item": "chair-black-back",
+   "x": 1600,
+   "y": 864,
+   "depth": 912,
+   "desk": "desksingle-48-25/front-0"
+  },
+  {
+   "key": "desksingle-52-25/front-0/chair",
+   "item": "chair-black-back",
+   "x": 1728,
+   "y": 864,
+   "depth": 912,
+   "desk": "desksingle-52-25/front-0"
+  },
+  {
+   "key": "patio:9,22,15,31/1",
+   "item": "bench-pale",
+   "x": 416,
+   "y": 896,
+   "depth": 934
+  },
+  {
+   "key": "patio:9,22,15,31/3",
+   "item": "bench-pale",
+   "x": 320,
+   "y": 896,
+   "depth": 934
+  },
+  {
+   "key": "tree-78-26",
+   "item": "tree",
+   "x": 2496,
+   "y": 832,
+   "depth": 948
+  },
+  {
+   "key": "tree-73-26",
+   "item": "tree",
+   "x": 2336,
+   "y": 832,
+   "depth": 948
+  },
+  {
+   "key": "bush-5-29",
+   "item": "bush",
+   "x": 160,
+   "y": 928,
+   "depth": 968
+  },
+  {
+   "key": "side:right:57,24,11/0",
+   "item": "lamp-red",
+   "x": 1824,
+   "y": 912,
+   "depth": 978
+  },
+  {
+   "key": "treesmall-2-28",
+   "item": "tree-small",
+   "x": 64,
+   "y": 896,
+   "depth": 980
+  },
+  {
+   "key": "treesmall--1-28",
+   "item": "tree-small",
+   "x": -32,
+   "y": 896,
+   "depth": 980
+  },
+  {
+   "key": "flowers-67-30",
+   "item": "flowers",
+   "x": 2144,
+   "y": 960,
+   "depth": 986
+  },
+  {
+   "key": "flowerspin-59-31",
+   "item": "flowers-pink",
+   "x": 1888,
+   "y": 992,
+   "depth": 1018
+  },
+  {
+   "key": "treesmall-79-30",
+   "item": "tree-small",
+   "x": 2528,
+   "y": 960,
+   "depth": 1044
+  },
+  {
+   "key": "side:left:24,29,6/0",
+   "item": "ours-bush-white",
+   "x": 768,
+   "y": 992,
+   "depth": 1052
+  },
+  {
+   "key": "flowerspin-62-33",
+   "item": "flowers-pink",
+   "x": 1984,
+   "y": 1056,
+   "depth": 1082
+  },
+  {
+   "key": "flowers-14-33",
+   "item": "flowers",
+   "x": 448,
+   "y": 1056,
+   "depth": 1082
+  },
+  {
+   "key": "oursbushsl-35-32",
+   "item": "ours-bush-slate",
+   "x": 1120,
+   "y": 1024,
+   "depth": 1084
+  },
+  {
+   "key": "oursbushsa-56-32",
+   "item": "ours-bush-sage",
+   "x": 1792,
+   "y": 1024,
+   "depth": 1084
+  },
+  {
+   "key": "bush-7-33",
+   "item": "bush",
+   "x": 224,
+   "y": 1056,
+   "depth": 1096
+  },
+  {
+   "key": "room:23,17,58,36/table",
+   "item": "coffee-table",
+   "x": 1408,
+   "y": 1056,
+   "depth": 1098
+  },
+  {
+   "key": "room:23,17,58,36/chair-0",
+   "item": "egg-chair-teal",
+   "x": 1376,
+   "y": 1056,
+   "depth": 1100
+  },
+  {
+   "key": "room:23,17,58,36/chair-1",
+   "item": "egg-chair-mustard",
+   "x": 1472,
+   "y": 1056,
+   "depth": 1100
+  },
+  {
+   "key": "side:left:17,33,7/0",
+   "item": "lamp-blue",
+   "x": 544,
+   "y": 1040,
+   "depth": 1106
+  },
+  {
+   "key": "treesmall--1-32",
+   "item": "tree-small",
+   "x": -32,
+   "y": 1024,
+   "depth": 1108
+  },
+  {
+   "key": "grass-69-34",
+   "item": "grass",
+   "x": 2208,
+   "y": 1088,
+   "depth": 1114
+  },
+  {
+   "key": "treesmall-72-33",
+   "item": "tree-small",
+   "x": 2304,
+   "y": 1056,
+   "depth": 1140
+  },
+  {
+   "key": "tree-3-32",
+   "item": "tree",
+   "x": 96,
+   "y": 1024,
+   "depth": 1140
+  },
+  {
+   "key": "bush--2-35",
+   "item": "bush",
+   "x": -64,
+   "y": 1120,
+   "depth": 1160
+  },
+  {
+   "key": "sofathree-17-35",
+   "item": "sofa-three",
+   "x": 544,
+   "y": 1120,
+   "depth": 1176
+  },
+  {
+   "key": "bush-78-36",
+   "item": "bush",
+   "x": 2496,
+   "y": 1152,
+   "depth": 1192
+  },
+  {
+   "key": "wall:42,37,8/0",
+   "item": "wall-plant2",
+   "x": 1344,
+   "y": 1120,
+   "depth": 1196
+  },
+  {
+   "key": "wall:42,37,8/3",
+   "item": "wall-cooler",
+   "x": 1504,
+   "y": 1120,
+   "depth": 1196
+  },
+  {
+   "key": "flowerspin-66-37",
+   "item": "flowers-pink",
+   "x": 2112,
+   "y": 1184,
+   "depth": 1210
+  },
+  {
+   "key": "flowers-61-37",
+   "item": "flowers",
+   "x": 1952,
+   "y": 1184,
+   "depth": 1210
+  },
+  {
+   "key": "flowerspin-51-37",
+   "item": "flowers-pink",
+   "x": 1632,
+   "y": 1184,
+   "depth": 1210
+  },
+  {
+   "key": "eggchairte-21-37",
+   "item": "egg-chair-teal",
+   "x": 672,
+   "y": 1184,
+   "depth": 1228
+  },
+  {
+   "key": "side:right:49,37,6/0",
+   "item": "lamp-red",
+   "x": 1568,
+   "y": 1168,
+   "depth": 1234
+  },
+  {
+   "key": "tree-75-35",
+   "item": "tree",
+   "x": 2400,
+   "y": 1120,
+   "depth": 1236
+  },
+  {
+   "key": "patio:26,37,35,40/0",
+   "item": "bench-pale",
+   "x": 864,
+   "y": 1216,
+   "depth": 1254
+  },
+  {
+   "key": "patio:26,37,35,40/1",
+   "item": "bench-pale",
+   "x": 1056,
+   "y": 1216,
+   "depth": 1254
+  },
+  {
+   "key": "tree-0-36",
+   "item": "tree",
+   "x": 0,
+   "y": 1152,
+   "depth": 1268
+  },
+  {
+   "key": "treesmall-4-37",
+   "item": "tree-small",
+   "x": 128,
+   "y": 1184,
+   "depth": 1268
+  },
+  {
+   "key": "chairtanme-42-38",
+   "item": "chair-tan-mesh",
+   "x": 1344,
+   "y": 1216,
+   "depth": 1272
+  },
+  {
+   "key": "chairtanme-44-38",
+   "item": "chair-tan-mesh",
+   "x": 1408,
+   "y": 1216,
+   "depth": 1272
+  },
+  {
+   "key": "chairtanme-46-38",
+   "item": "chair-tan-mesh",
+   "x": 1472,
+   "y": 1216,
+   "depth": 1272
+  },
+  {
+   "key": "treesmall-7-38",
+   "item": "tree-small",
+   "x": 224,
+   "y": 1216,
+   "depth": 1300
+  },
+  {
+   "key": "treesmall-70-38",
+   "item": "tree-small",
+   "x": 2240,
+   "y": 1216,
+   "depth": 1300
+  },
+  {
+   "key": "side:left:39,37,6/0",
+   "item": "ours-bush-slate",
+   "x": 1248,
+   "y": 1248,
+   "depth": 1308
+  },
+  {
+   "key": "bush-80-40",
+   "item": "bush",
+   "x": 2560,
+   "y": 1280,
+   "depth": 1320
+  },
+  {
+   "key": "treesmall-11-39",
+   "item": "tree-small",
+   "x": 352,
+   "y": 1248,
+   "depth": 1332
+  },
+  {
+   "key": "meetingtab-41-39",
+   "item": "meeting-table",
+   "x": 1312,
+   "y": 1248,
+   "depth": 1340
+  },
+  {
+   "key": "chairtanba-42-41",
+   "item": "chair-tan-back",
+   "x": 1344,
+   "y": 1312,
+   "depth": 1360
+  },
+  {
+   "key": "chairtanba-44-41",
+   "item": "chair-tan-back",
+   "x": 1408,
+   "y": 1312,
+   "depth": 1360
+  },
+  {
+   "key": "chairtanba-46-41",
+   "item": "chair-tan-back",
+   "x": 1472,
+   "y": 1312,
+   "depth": 1360
+  },
+  {
+   "key": "tree-63-39",
+   "item": "tree",
+   "x": 2016,
+   "y": 1248,
+   "depth": 1364
+  },
+  {
+   "key": "grass-67-42",
+   "item": "grass",
+   "x": 2144,
+   "y": 1344,
+   "depth": 1370
+  },
+  {
+   "key": "tree-4-40",
+   "item": "tree",
+   "x": 128,
+   "y": 1280,
+   "depth": 1396
+  },
+  {
+   "key": "tree-76-41",
+   "item": "tree",
+   "x": 2432,
+   "y": 1312,
+   "depth": 1428
+  },
+  {
+   "key": "treesmall--1-42",
+   "item": "tree-small",
+   "x": -32,
+   "y": 1344,
+   "depth": 1428
+  },
+  {
+   "key": "treesmall-2-42",
+   "item": "tree-small",
+   "x": 64,
+   "y": 1344,
+   "depth": 1428
+  },
+  {
+   "key": "flowers-57-44",
+   "item": "flowers",
+   "x": 1824,
+   "y": 1408,
+   "depth": 1434
+  },
+  {
+   "key": "flowerspin-20-44",
+   "item": "flowers-pink",
+   "x": 640,
+   "y": 1408,
+   "depth": 1434
+  },
+  {
+   "key": "flowers-73-44",
+   "item": "flowers",
+   "x": 2336,
+   "y": 1408,
+   "depth": 1434
+  },
+  {
+   "key": "bush-12-44",
+   "item": "bush",
+   "x": 384,
+   "y": 1408,
+   "depth": 1448
+  },
+  {
+   "key": "flowers-8-45",
+   "item": "flowers",
+   "x": 256,
+   "y": 1440,
+   "depth": 1466
+  },
+  {
+   "key": "grass-46-45",
+   "item": "grass",
+   "x": 1472,
+   "y": 1440,
+   "depth": 1466
+  },
+  {
+   "key": "flowers-39-45",
+   "item": "flowers",
+   "x": 1248,
+   "y": 1440,
+   "depth": 1466
+  },
+  {
+   "key": "grass-25-45",
+   "item": "grass",
+   "x": 800,
+   "y": 1440,
+   "depth": 1466
+  },
+  {
+   "key": "flowers-67-45",
+   "item": "flowers",
+   "x": 2144,
+   "y": 1440,
+   "depth": 1466
+  },
+  {
+   "key": "treesmall-5-44",
+   "item": "tree-small",
+   "x": 160,
+   "y": 1408,
+   "depth": 1492
+  },
+  {
+   "key": "flowerspin-72-46",
+   "item": "flowers-pink",
+   "x": 2304,
+   "y": 1472,
+   "depth": 1498
+  },
+  {
+   "key": "flowers-60-46",
+   "item": "flowers",
+   "x": 1920,
+   "y": 1472,
+   "depth": 1498
+  },
+  {
+   "key": "bush-19-46",
+   "item": "bush",
+   "x": 608,
+   "y": 1472,
+   "depth": 1512
+  },
+  {
+   "key": "treesmall--1-45",
+   "item": "tree-small",
+   "x": -32,
+   "y": 1440,
+   "depth": 1524
+  },
+  {
+   "key": "treesmall-3-45",
+   "item": "tree-small",
+   "x": 96,
+   "y": 1440,
+   "depth": 1524
+  },
+  {
+   "key": "flowers-56-47",
+   "item": "flowers",
+   "x": 1792,
+   "y": 1504,
+   "depth": 1530
+  },
+  {
+   "key": "bush-53-47",
+   "item": "bush",
+   "x": 1696,
+   "y": 1504,
+   "depth": 1544
+  },
+  {
+   "key": "bush-49-47",
+   "item": "bush",
+   "x": 1568,
+   "y": 1504,
+   "depth": 1544
+  },
+  {
+   "key": "bush-34-47",
+   "item": "bush",
+   "x": 1088,
+   "y": 1504,
+   "depth": 1544
+  },
+  {
+   "key": "tree-79-45",
+   "item": "tree",
+   "x": 2528,
+   "y": 1440,
+   "depth": 1556
+  },
+  {
+   "key": "grass-6-48",
+   "item": "grass",
+   "x": 192,
+   "y": 1536,
+   "depth": 1562
+  },
+  {
+   "key": "grass-32-48",
+   "item": "grass",
+   "x": 1024,
+   "y": 1536,
+   "depth": 1562
+  },
+  {
+   "key": "treesmall-39-47",
+   "item": "tree-small",
+   "x": 1248,
+   "y": 1504,
+   "depth": 1588
+  },
+  {
+   "key": "treesmall-65-47",
+   "item": "tree-small",
+   "x": 2080,
+   "y": 1504,
+   "depth": 1588
+  },
+  {
+   "key": "grass--1-49",
+   "item": "grass",
+   "x": -32,
+   "y": 1568,
+   "depth": 1594
+  },
+  {
+   "key": "bush-52-49",
+   "item": "bush",
+   "x": 1664,
+   "y": 1568,
+   "depth": 1608
+  },
+  {
+   "key": "treesmall-42-48",
+   "item": "tree-small",
+   "x": 1344,
+   "y": 1536,
+   "depth": 1620
+  },
+  {
+   "key": "treesmall-10-48",
+   "item": "tree-small",
+   "x": 320,
+   "y": 1536,
+   "depth": 1620
+  },
+  {
+   "key": "tree-12-47",
+   "item": "tree",
+   "x": 384,
+   "y": 1504,
+   "depth": 1620
+  },
+  {
+   "key": "tree-76-47",
+   "item": "tree",
+   "x": 2432,
+   "y": 1504,
+   "depth": 1620
+  },
+  {
+   "key": "flowerspin-32-50",
+   "item": "flowers-pink",
+   "x": 1024,
+   "y": 1600,
+   "depth": 1626
+  },
+  {
+   "key": "bush-37-50",
+   "item": "bush",
+   "x": 1184,
+   "y": 1600,
+   "depth": 1640
+  },
+  {
+   "key": "bush-72-50",
+   "item": "bush",
+   "x": 2304,
+   "y": 1600,
+   "depth": 1640
+  },
+  {
+   "key": "bush-64-50",
+   "item": "bush",
+   "x": 2048,
+   "y": 1600,
+   "depth": 1640
+  },
+  {
+   "key": "bush-46-50",
+   "item": "bush",
+   "x": 1472,
+   "y": 1600,
+   "depth": 1640
+  },
+  {
+   "key": "bush-5-50",
+   "item": "bush",
+   "x": 160,
+   "y": 1600,
+   "depth": 1640
+  },
+  {
+   "key": "tree-21-48",
+   "item": "tree",
+   "x": 672,
+   "y": 1536,
+   "depth": 1652
+  },
+  {
+   "key": "treesmall-54-49",
+   "item": "tree-small",
+   "x": 1728,
+   "y": 1568,
+   "depth": 1652
+  },
+  {
+   "key": "tree-69-48",
+   "item": "tree",
+   "x": 2208,
+   "y": 1536,
+   "depth": 1652
+  },
+  {
+   "key": "tree-25-48",
+   "item": "tree",
+   "x": 800,
+   "y": 1536,
+   "depth": 1652
+  },
+  {
+   "key": "tree-58-49",
+   "item": "tree",
+   "x": 1856,
+   "y": 1568,
+   "depth": 1684
+  },
+  {
+   "key": "treesmall-1-50",
+   "item": "tree-small",
+   "x": 32,
+   "y": 1600,
+   "depth": 1684
+  },
+  {
+   "key": "treesmall-49-50",
+   "item": "tree-small",
+   "x": 1568,
+   "y": 1600,
+   "depth": 1684
+  },
+  {
+   "key": "tree-79-49",
+   "item": "tree",
+   "x": 2528,
+   "y": 1568,
+   "depth": 1684
+  },
+  {
+   "key": "treesmall-16-50",
+   "item": "tree-small",
+   "x": 512,
+   "y": 1600,
+   "depth": 1684
+  },
+  {
+   "key": "tree-34-50",
+   "item": "tree",
+   "x": 1088,
+   "y": 1600,
+   "depth": 1716
+  },
+  {
+   "key": "tree-7-50",
+   "item": "tree",
+   "x": 224,
+   "y": 1600,
+   "depth": 1716
+  }
+ ],
+ "colliders": {
+  "mini-fridge": [
+   [
+    2,
+    30,
+    32,
+    16
+   ]
+  ],
+  "vending-drinks": [
+   [
+    12,
+    54,
+    42,
+    24
+   ]
+  ],
+  "vending-snacks": [
+   [
+    12,
+    54,
+    42,
+    24
+   ]
+  ],
+  "water-cooler": [
+   [
+    4,
+    40,
+    24,
+    20
+   ]
+  ],
+  "plant-small": [
+   [
+    2,
+    32,
+    28,
+    12
+   ]
+  ],
+  "plant-snake": [
+   [
+    6,
+    40,
+    20,
+    20
+   ]
+  ],
+  "plant-tall": [
+   [
+    2,
+    40,
+    28,
+    20
+   ]
+  ],
+  "sofa-corner": [
+   [
+    10,
+    56,
+    78,
+    28
+   ]
+  ],
+  "sofa-corner-b": [
+   [
+    10,
+    56,
+    78,
+    28
+   ]
+  ],
+  "sofa-three": [
+   [
+    2,
+    40,
+    58,
+    16
+   ]
+  ],
+  "sofa-two": [
+   [
+    4,
+    40,
+    58,
+    16
+   ]
+  ],
+  "bookshelf": [
+   [
+    4,
+    40,
+    56,
+    20
+   ]
+  ],
+  "shelving": [
+   [
+    4,
+    40,
+    56,
+    20
+   ]
+  ],
+  "partition": [
+   [
+    0,
+    82,
+    208,
+    10
+   ]
+  ],
+  "coffee-table": [
+   [
+    10,
+    26,
+    46,
+    26
+   ]
+  ],
+  "side-table": [
+   [
+    6,
+    38,
+    40,
+    26
+   ]
+  ],
+  "copier": [
+   [
+    8,
+    28,
+    46,
+    16
+   ]
+  ],
+  "printer": [
+   [
+    2,
+    26,
+    26,
+    12
+   ]
+  ],
+  "server": [
+   [
+    6,
+    64,
+    52,
+    32
+   ]
+  ],
+  "meeting-table": [
+   [
+    0,
+    30,
+    224,
+    76
+   ]
+  ],
+  "meeting-table-small": [
+   [
+    0,
+    30,
+    160,
+    76
+   ]
+  ],
+  "bench-pale": [
+   [
+    2,
+    24,
+    60,
+    20
+   ]
+  ],
+  "wall-vending": [
+   [
+    2,
+    40,
+    124,
+    36
+   ]
+  ],
+  "wall-cooler": [
+   [
+    2,
+    40,
+    28,
+    36
+   ]
+  ],
+  "wall-coffee-table": [
+   [
+    2,
+    40,
+    60,
+    46
+   ]
+  ],
+  "wall-shelf-cooler": [
+   [
+    2,
+    40,
+    92,
+    36
+   ]
+  ],
+  "wall-bookcase": [
+   [
+    2,
+    40,
+    60,
+    36
+   ]
+  ],
+  "wall-bookcase-red": [
+   [
+    2,
+    40,
+    60,
+    36
+   ]
+  ],
+  "wall-bookcase-pale": [
+   [
+    2,
+    40,
+    60,
+    36
+   ]
+  ],
+  "wall-shelf": [
+   [
+    2,
+    40,
+    60,
+    36
+   ]
+  ],
+  "wall-cabinet": [
+   [
+    2,
+    8,
+    62,
+    84
+   ]
+  ],
+  "wall-plant": [
+   [
+    2,
+    40,
+    28,
+    36
+   ]
+  ],
+  "wall-plant2": [
+   [
+    2,
+    40,
+    28,
+    36
+   ]
+  ],
+  "ours-bush-lilac": [
+   [
+    6,
+    46,
+    20,
+    14
+   ]
+  ],
+  "ours-bush-white": [
+   [
+    6,
+    46,
+    20,
+    14
+   ]
+  ],
+  "ours-bush-clay": [
+   [
+    6,
+    46,
+    20,
+    14
+   ]
+  ],
+  "ours-bush-sage": [
+   [
+    6,
+    46,
+    20,
+    14
+   ]
+  ],
+  "ours-bush-slate": [
+   [
+    6,
+    46,
+    20,
+    14
+   ]
+  ],
+  "ours-bush-small-white": [
+   [
+    6,
+    32,
+    20,
+    12
+   ]
+  ],
+  "ours-bush-small-clay": [
+   [
+    6,
+    32,
+    20,
+    12
+   ]
+  ],
+  "tree": [
+   [
+    34,
+    102,
+    28,
+    16
+   ]
+  ],
+  "tree-small": [
+   [
+    22,
+    72,
+    20,
+    14
+   ]
+  ],
+  "bush": [
+   [
+    6,
+    22,
+    52,
+    18
+   ]
+  ],
+  "rocks": [
+   [
+    4,
+    14,
+    52,
+    14
+   ]
+  ],
+  "rocks-small": [
+   [
+    2,
+    16,
+    26,
+    10
+   ]
+  ],
+  "lamp-blue": [
+   [
+    8,
+    54,
+    16,
+    12
+   ]
+  ],
+  "lamp-red": [
+   [
+    8,
+    54,
+    16,
+    12
+   ]
+  ],
+  "desks-single-maple-1-n4": [
+   [
+    0,
+    44,
+    134,
+    62
+   ]
+  ],
+  "desks-single-white-1-n4": [
+   [
+    0,
+    44,
+    134,
+    62
+   ]
+  ],
+  "desks-front-maple-2": [
+   [
+    10,
+    4,
+    420,
+    102
+   ]
+  ],
+  "desks-single-oak-1-n4": [
+   [
+    0,
+    44,
+    134,
+    62
+   ]
+  ],
+  "desks-single-beech-1-n4": [
+   [
+    0,
+    44,
+    134,
+    62
+   ]
+  ],
+  "desks-single-walnut-1-n4": [
+   [
+    0,
+    44,
+    134,
+    62
+   ]
+  ],
+  "desks-single-graphite-1-n4": [
+   [
+    0,
+    44,
+    134,
+    62
+   ]
+  ]
+ },
+ "seats": [
+  {
+   "id": 1013,
+   "key": "chairblack-29-11",
+   "x": 944,
+   "y": 412,
+   "dir": "down",
+   "box": [
+    928,
+    366,
+    32,
+    46
+   ],
+   "zone": "meeting"
+  },
+  {
+   "id": 1015,
+   "key": "chairblack-31-11",
+   "x": 1008,
+   "y": 412,
+   "dir": "down",
+   "box": [
+    992,
+    366,
+    32,
+    46
+   ],
+   "zone": "meeting"
+  },
+  {
+   "id": 1017,
+   "key": "chairblack-33-11",
+   "x": 1072,
+   "y": 412,
+   "dir": "down",
+   "box": [
+    1056,
+    366,
+    32,
+    46
+   ],
+   "zone": "meeting"
+  },
+  {
+   "id": 1106,
+   "key": "chairtanme-40-12",
+   "x": 1296,
+   "y": 444,
+   "dir": "down",
+   "box": [
+    1280,
+    398,
+    32,
+    46
+   ]
+  },
+  {
+   "id": 1108,
+   "key": "chairtanme-42-12",
+   "x": 1360,
+   "y": 444,
+   "dir": "down",
+   "box": [
+    1344,
+    398,
+    32,
+    46
+   ]
+  },
+  {
+   "id": 1111,
+   "key": "chairtanme-45-12",
+   "x": 1456,
+   "y": 444,
+   "dir": "down",
+   "box": [
+    1440,
+    398,
+    32,
+    46
+   ]
+  },
+  {
+   "id": 1113,
+   "key": "chairtanme-47-12",
+   "x": 1520,
+   "y": 444,
+   "dir": "down",
+   "box": [
+    1504,
+    398,
+    32,
+    46
+   ]
+  },
+  {
+   "id": 1259,
+   "key": "chairblack-29-14",
+   "x": 944,
+   "y": 492,
+   "dir": "up",
+   "box": [
+    928,
+    450,
+    32,
+    42
+   ],
+   "zone": "meeting"
+  },
+  {
+   "id": 1261,
+   "key": "chairblack-31-14",
+   "x": 1008,
+   "y": 492,
+   "dir": "up",
+   "box": [
+    992,
+    450,
+    32,
+    42
+   ],
+   "zone": "meeting"
+  },
+  {
+   "id": 1263,
+   "key": "chairblack-33-14",
+   "x": 1072,
+   "y": 492,
+   "dir": "up",
+   "box": [
+    1056,
+    450,
+    32,
+    42
+   ],
+   "zone": "meeting"
+  },
+  {
+   "id": 1283,
+   "key": "sofatwo-53-14",
+   "x": 1716,
+   "y": 506,
+   "dir": "down",
+   "box": [
+    1698,
+    456,
+    30,
+    48
+   ]
+  },
+  {
+   "id": 1284,
+   "key": "sofatwo-53-14/1",
+   "x": 1740,
+   "y": 506,
+   "dir": "down",
+   "box": [
+    1728,
+    456,
+    32,
+    48
+   ]
+  },
+  {
+   "id": 1352,
+   "key": "chairtanba-40-15",
+   "x": 1296,
+   "y": 524,
+   "dir": "up",
+   "box": [
+    1280,
+    482,
+    32,
+    42
+   ]
+  },
+  {
+   "id": 1354,
+   "key": "chairtanba-42-15",
+   "x": 1360,
+   "y": 524,
+   "dir": "up",
+   "box": [
+    1344,
+    482,
+    32,
+    42
+   ]
+  },
+  {
+   "id": 1357,
+   "key": "chairtanba-45-15",
+   "x": 1456,
+   "y": 524,
+   "dir": "up",
+   "box": [
+    1440,
+    482,
+    32,
+    42
+   ]
+  },
+  {
+   "id": 1359,
+   "key": "chairtanba-47-15",
+   "x": 1520,
+   "y": 524,
+   "dir": "up",
+   "box": [
+    1504,
+    482,
+    32,
+    42
+   ]
+  },
+  {
+   "id": 1543,
+   "key": "patio:66,16,72,25/0",
+   "x": 2162,
+   "y": 584,
+   "dir": "down",
+   "box": [
+    2146,
+    556,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 1544,
+   "key": "patio:66,16,72,25/0/1",
+   "x": 2190,
+   "y": 584,
+   "dir": "down",
+   "box": [
+    2176,
+    556,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 1546,
+   "key": "patio:66,16,72,25/2",
+   "x": 2258,
+   "y": 584,
+   "dir": "down",
+   "box": [
+    2242,
+    556,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 1547,
+   "key": "patio:66,16,72,25/2/1",
+   "x": 2286,
+   "y": 584,
+   "dir": "down",
+   "box": [
+    2272,
+    556,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 1701,
+   "key": "room:58,13,65,29/chair-0",
+   "x": 1952,
+   "y": 654,
+   "dir": "down",
+   "box": [
+    1936,
+    620,
+    32,
+    36
+   ]
+  },
+  {
+   "id": 1703,
+   "key": "room:58,13,65,29/chair-1",
+   "x": 2016,
+   "y": 654,
+   "dir": "down",
+   "box": [
+    2000,
+    620,
+    32,
+    36
+   ]
+  },
+  {
+   "id": 1865,
+   "key": "room:58,13,65,29/chair-2",
+   "x": 1952,
+   "y": 732,
+   "dir": "up",
+   "box": [
+    1936,
+    694,
+    32,
+    42
+   ]
+  },
+  {
+   "id": 1867,
+   "key": "room:58,13,65,29/chair-3",
+   "x": 2016,
+   "y": 732,
+   "dir": "up",
+   "box": [
+    2000,
+    694,
+    32,
+    42
+   ]
+  },
+  {
+   "id": 1953,
+   "key": "patio:66,16,72,25/1",
+   "x": 2162,
+   "y": 744,
+   "dir": "down",
+   "box": [
+    2146,
+    716,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 1954,
+   "key": "patio:66,16,72,25/1/1",
+   "x": 2190,
+   "y": 744,
+   "dir": "down",
+   "box": [
+    2176,
+    716,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 1956,
+   "key": "patio:66,16,72,25/3",
+   "x": 2258,
+   "y": 744,
+   "dir": "down",
+   "box": [
+    2242,
+    716,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 1957,
+   "key": "patio:66,16,72,25/3/1",
+   "x": 2286,
+   "y": 744,
+   "dir": "down",
+   "box": [
+    2272,
+    716,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 1914,
+   "key": "desksingle-26-20/front-0/chair",
+   "x": 912,
+   "y": 748,
+   "dir": "up",
+   "box": [
+    896,
+    706,
+    32,
+    42
+   ],
+   "desk": "desksingle-26-20/front-0",
+   "arrival": [
+    28,
+    25
+   ]
+  },
+  {
+   "id": 1918,
+   "key": "desksingle-30-20/front-0/chair",
+   "x": 1040,
+   "y": 748,
+   "dir": "up",
+   "box": [
+    1024,
+    706,
+    32,
+    42
+   ],
+   "desk": "desksingle-30-20/front-0",
+   "arrival": [
+    32,
+    25
+   ]
+  },
+  {
+   "id": 1922,
+   "key": "desksingle-34-20/front-0/chair",
+   "x": 1168,
+   "y": 748,
+   "dir": "up",
+   "box": [
+    1152,
+    706,
+    32,
+    42
+   ],
+   "desk": "desksingle-34-20/front-0",
+   "arrival": [
+    36,
+    25
+   ]
+  },
+  {
+   "id": 1932,
+   "key": "desksingle-44-20/front-0/chair",
+   "x": 1488,
+   "y": 748,
+   "dir": "up",
+   "box": [
+    1472,
+    706,
+    32,
+    42
+   ],
+   "desk": "desksingle-44-20/front-0",
+   "arrival": [
+    46,
+    25
+   ]
+  },
+  {
+   "id": 1936,
+   "key": "desksingle-48-20/front-0/chair",
+   "x": 1616,
+   "y": 748,
+   "dir": "up",
+   "box": [
+    1600,
+    706,
+    32,
+    42
+   ],
+   "desk": "desksingle-48-20/front-0",
+   "arrival": [
+    50,
+    25
+   ]
+  },
+  {
+   "id": 1940,
+   "key": "desksingle-52-20/front-0/chair",
+   "x": 1744,
+   "y": 748,
+   "dir": "up",
+   "box": [
+    1728,
+    706,
+    32,
+    42
+   ],
+   "desk": "desksingle-52-20/front-0",
+   "arrival": [
+    54,
+    25
+   ]
+  },
+  {
+   "id": 1981,
+   "key": "patio:9,22,15,31/0",
+   "x": 434,
+   "y": 776,
+   "dir": "down",
+   "box": [
+    418,
+    748,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 1982,
+   "key": "patio:9,22,15,31/0/1",
+   "x": 462,
+   "y": 776,
+   "dir": "down",
+   "box": [
+    448,
+    748,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 1978,
+   "key": "patio:9,22,15,31/2",
+   "x": 338,
+   "y": 776,
+   "dir": "down",
+   "box": [
+    322,
+    748,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 1979,
+   "key": "patio:9,22,15,31/2/1",
+   "x": 366,
+   "y": 776,
+   "dir": "down",
+   "box": [
+    352,
+    748,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 2314,
+   "key": "room:16,22,23,32/chair-0",
+   "x": 592,
+   "y": 910,
+   "dir": "down",
+   "box": [
+    576,
+    856,
+    32,
+    48
+   ]
+  },
+  {
+   "id": 2317,
+   "key": "room:16,22,23,32/chair-1",
+   "x": 688,
+   "y": 910,
+   "dir": "down",
+   "box": [
+    672,
+    856,
+    32,
+    48
+   ]
+  },
+  {
+   "id": 2324,
+   "key": "desksingle-26-25/front-0/chair",
+   "x": 912,
+   "y": 908,
+   "dir": "up",
+   "box": [
+    896,
+    866,
+    32,
+    42
+   ],
+   "desk": "desksingle-26-25/front-0",
+   "arrival": [
+    28,
+    30
+   ]
+  },
+  {
+   "id": 2328,
+   "key": "desksingle-30-25/front-0/chair",
+   "x": 1040,
+   "y": 908,
+   "dir": "up",
+   "box": [
+    1024,
+    866,
+    32,
+    42
+   ],
+   "desk": "desksingle-30-25/front-0",
+   "arrival": [
+    32,
+    30
+   ]
+  },
+  {
+   "id": 2332,
+   "key": "desksingle-34-25/front-0/chair",
+   "x": 1168,
+   "y": 908,
+   "dir": "up",
+   "box": [
+    1152,
+    866,
+    32,
+    42
+   ],
+   "desk": "desksingle-34-25/front-0",
+   "arrival": [
+    36,
+    30
+   ]
+  },
+  {
+   "id": 2342,
+   "key": "desksingle-44-25/front-0/chair",
+   "x": 1488,
+   "y": 908,
+   "dir": "up",
+   "box": [
+    1472,
+    866,
+    32,
+    42
+   ],
+   "desk": "desksingle-44-25/front-0",
+   "arrival": [
+    46,
+    30
+   ]
+  },
+  {
+   "id": 2346,
+   "key": "desksingle-48-25/front-0/chair",
+   "x": 1616,
+   "y": 908,
+   "dir": "up",
+   "box": [
+    1600,
+    866,
+    32,
+    42
+   ],
+   "desk": "desksingle-48-25/front-0",
+   "arrival": [
+    50,
+    30
+   ]
+  },
+  {
+   "id": 2350,
+   "key": "desksingle-52-25/front-0/chair",
+   "x": 1744,
+   "y": 908,
+   "dir": "up",
+   "box": [
+    1728,
+    866,
+    32,
+    42
+   ],
+   "desk": "desksingle-52-25/front-0",
+   "arrival": [
+    54,
+    30
+   ]
+  },
+  {
+   "id": 2391,
+   "key": "patio:9,22,15,31/1",
+   "x": 434,
+   "y": 936,
+   "dir": "down",
+   "box": [
+    418,
+    908,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 2392,
+   "key": "patio:9,22,15,31/1/1",
+   "x": 462,
+   "y": 936,
+   "dir": "down",
+   "box": [
+    448,
+    908,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 2388,
+   "key": "patio:9,22,15,31/3",
+   "x": 338,
+   "y": 936,
+   "dir": "down",
+   "box": [
+    322,
+    908,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 2389,
+   "key": "patio:9,22,15,31/3/1",
+   "x": 366,
+   "y": 936,
+   "dir": "down",
+   "box": [
+    352,
+    908,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 2831,
+   "key": "room:23,17,58,36/chair-0",
+   "x": 1392,
+   "y": 1102,
+   "dir": "down",
+   "box": [
+    1376,
+    1068,
+    32,
+    36
+   ]
+  },
+  {
+   "id": 2834,
+   "key": "room:23,17,58,36/chair-1",
+   "x": 1488,
+   "y": 1102,
+   "dir": "down",
+   "box": [
+    1472,
+    1068,
+    32,
+    36
+   ]
+  },
+  {
+   "id": 2969,
+   "key": "sofathree-17-35",
+   "x": 564,
+   "y": 1178,
+   "dir": "down",
+   "box": [
+    544,
+    1128,
+    32,
+    48
+   ]
+  },
+  {
+   "id": 2970,
+   "key": "sofathree-17-35/1",
+   "x": 588,
+   "y": 1178,
+   "dir": "down",
+   "box": [
+    576,
+    1128,
+    30,
+    48
+   ]
+  },
+  {
+   "id": 3137,
+   "key": "eggchairte-21-37",
+   "x": 688,
+   "y": 1230,
+   "dir": "down",
+   "box": [
+    672,
+    1196,
+    32,
+    36
+   ]
+  },
+  {
+   "id": 3225,
+   "key": "patio:26,37,35,40/0",
+   "x": 882,
+   "y": 1256,
+   "dir": "down",
+   "box": [
+    866,
+    1228,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 3226,
+   "key": "patio:26,37,35,40/0/1",
+   "x": 910,
+   "y": 1256,
+   "dir": "down",
+   "box": [
+    896,
+    1228,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 3231,
+   "key": "patio:26,37,35,40/1",
+   "x": 1074,
+   "y": 1256,
+   "dir": "down",
+   "box": [
+    1058,
+    1228,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 3232,
+   "key": "patio:26,37,35,40/1/1",
+   "x": 1102,
+   "y": 1256,
+   "dir": "down",
+   "box": [
+    1088,
+    1228,
+    30,
+    36
+   ]
+  },
+  {
+   "id": 3240,
+   "key": "chairtanme-42-38",
+   "x": 1360,
+   "y": 1276,
+   "dir": "down",
+   "box": [
+    1344,
+    1230,
+    32,
+    46
+   ]
+  },
+  {
+   "id": 3242,
+   "key": "chairtanme-44-38",
+   "x": 1424,
+   "y": 1276,
+   "dir": "down",
+   "box": [
+    1408,
+    1230,
+    32,
+    46
+   ]
+  },
+  {
+   "id": 3244,
+   "key": "chairtanme-46-38",
+   "x": 1488,
+   "y": 1276,
+   "dir": "down",
+   "box": [
+    1472,
+    1230,
+    32,
+    46
+   ]
+  },
+  {
+   "id": 3486,
+   "key": "chairtanba-42-41",
+   "x": 1360,
+   "y": 1356,
+   "dir": "up",
+   "box": [
+    1344,
+    1314,
+    32,
+    42
+   ]
+  },
+  {
+   "id": 3488,
+   "key": "chairtanba-44-41",
+   "x": 1424,
+   "y": 1356,
+   "dir": "up",
+   "box": [
+    1408,
+    1314,
+    32,
+    42
+   ]
+  },
+  {
+   "id": 3490,
+   "key": "chairtanba-46-41",
+   "x": 1488,
+   "y": 1356,
+   "dir": "up",
+   "box": [
+    1472,
+    1314,
+    32,
+    42
+   ]
+  }
+ ],
+ "desks": {
+  "desksingle-26-20/front-0": {
+   "seat": 1914,
+   "side": "front",
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      838,
+      874
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      874,
+      934
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      934,
+      960
+     ],
+     "foot": 702
+    }
+   ],
+   "set": "ours",
+   "chair": {
+    "key": "desksingle-26-20/front-0/chair",
+    "item": "chair-black-back",
+    "x": 896,
+    "y": 704
+   },
+   "body": {
+    "key": "desksingle-26-20/front",
+    "item": "desks-single-maple-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
+   "depth": 732.5
+  },
+  "desksingle-30-20/front-0": {
+   "seat": 1918,
+   "side": "front",
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      966,
+      1002
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1002,
+      1062
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1062,
+      1088
+     ],
+     "foot": 702
+    }
+   ],
+   "set": "ours",
+   "chair": {
+    "key": "desksingle-30-20/front-0/chair",
+    "item": "chair-black-back",
+    "x": 1024,
+    "y": 704
+   },
+   "body": {
+    "key": "desksingle-30-20/front",
+    "item": "desks-single-maple-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
+   "depth": 732.5
+  },
+  "desksingle-34-20/front-0": {
+   "seat": 1922,
+   "side": "front",
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1094,
+      1130
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1130,
+      1190
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1190,
+      1216
+     ],
+     "foot": 702
+    }
+   ],
+   "set": "ours",
+   "chair": {
+    "key": "desksingle-34-20/front-0/chair",
+    "item": "chair-black-back",
+    "x": 1152,
+    "y": 704
+   },
+   "body": {
+    "key": "desksingle-34-20/front",
+    "item": "desks-single-maple-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
+   "depth": 732.5
+  },
+  "desksingle-26-25/front-0": {
+   "seat": 2324,
+   "side": "front",
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      838,
+      874
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      874,
+      934
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      934,
+      960
+     ],
+     "foot": 862
+    }
+   ],
+   "set": "ours",
+   "chair": {
+    "key": "desksingle-26-25/front-0/chair",
+    "item": "chair-black-back",
+    "x": 896,
+    "y": 864
+   },
+   "body": {
+    "key": "desksingle-26-25/front",
+    "item": "desks-single-maple-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
+   "depth": 892.5
+  },
+  "desksingle-30-25/front-0": {
+   "seat": 2328,
+   "side": "front",
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      966,
+      1002
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1002,
+      1062
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1062,
+      1088
+     ],
+     "foot": 862
+    }
+   ],
+   "set": "ours",
+   "chair": {
+    "key": "desksingle-30-25/front-0/chair",
+    "item": "chair-black-back",
+    "x": 1024,
+    "y": 864
+   },
+   "body": {
+    "key": "desksingle-30-25/front",
+    "item": "desks-single-maple-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
+   "depth": 892.5
+  },
+  "desksingle-34-25/front-0": {
+   "seat": 2332,
+   "side": "front",
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1094,
+      1130
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1130,
+      1190
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1190,
+      1216
+     ],
+     "foot": 862
+    }
+   ],
+   "set": "ours",
+   "chair": {
+    "key": "desksingle-34-25/front-0/chair",
+    "item": "chair-black-back",
+    "x": 1152,
+    "y": 864
+   },
+   "body": {
+    "key": "desksingle-34-25/front",
+    "item": "desks-single-maple-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
+   "depth": 892.5
+  },
+  "desksingle-44-20/front-0": {
+   "seat": 1932,
+   "side": "front",
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1414,
+      1450
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1450,
+      1510
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1510,
+      1536
+     ],
+     "foot": 702
+    }
+   ],
+   "set": "ours",
+   "chair": {
+    "key": "desksingle-44-20/front-0/chair",
+    "item": "chair-black-back",
+    "x": 1472,
+    "y": 704
+   },
+   "body": {
+    "key": "desksingle-44-20/front",
+    "item": "desks-single-white-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
+   "depth": 732.5
+  },
+  "desksingle-48-20/front-0": {
+   "seat": 1936,
+   "side": "front",
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1542,
+      1578
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1578,
+      1638
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1638,
+      1664
+     ],
+     "foot": 702
+    }
+   ],
+   "set": "ours",
+   "chair": {
+    "key": "desksingle-48-20/front-0/chair",
+    "item": "chair-black-back",
+    "x": 1600,
+    "y": 704
+   },
+   "body": {
+    "key": "desksingle-48-20/front",
+    "item": "desks-single-white-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
+   "depth": 732.5
+  },
+  "desksingle-52-20/front-0": {
+   "seat": 1940,
+   "side": "front",
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1670,
+      1706
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1706,
+      1766
+     ],
+     "foot": 702
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1766,
+      1792
+     ],
+     "foot": 702
+    }
+   ],
+   "set": "ours",
+   "chair": {
+    "key": "desksingle-52-20/front-0/chair",
+    "item": "chair-black-back",
+    "x": 1728,
+    "y": 704
+   },
+   "body": {
+    "key": "desksingle-52-20/front",
+    "item": "desks-single-white-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
+   "depth": 732.5
+  },
+  "desksingle-44-25/front-0": {
+   "seat": 2342,
+   "side": "front",
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1414,
+      1450
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1450,
+      1510
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1510,
+      1536
+     ],
+     "foot": 862
+    }
+   ],
+   "set": "ours",
+   "chair": {
+    "key": "desksingle-44-25/front-0/chair",
+    "item": "chair-black-back",
+    "x": 1472,
+    "y": 864
+   },
+   "body": {
+    "key": "desksingle-44-25/front",
+    "item": "desks-single-white-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
+   "depth": 892.5
+  },
+  "desksingle-48-25/front-0": {
+   "seat": 2346,
+   "side": "front",
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1542,
+      1578
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1578,
+      1638
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1638,
+      1664
+     ],
+     "foot": 862
+    }
+   ],
+   "set": "ours",
+   "chair": {
+    "key": "desksingle-48-25/front-0/chair",
+    "item": "chair-black-back",
+    "x": 1600,
+    "y": 864
+   },
+   "body": {
+    "key": "desksingle-48-25/front",
+    "item": "desks-single-white-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
+   "depth": 892.5
+  },
+  "desksingle-52-25/front-0": {
+   "seat": 2350,
+   "side": "front",
+   "spots": [
+    {
+     "id": "spot-0",
+     "x": [
+      1670,
+      1706
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-1",
+     "x": [
+      1706,
+      1766
+     ],
+     "foot": 862
+    },
+    {
+     "id": "spot-2",
+     "x": [
+      1766,
+      1792
+     ],
+     "foot": 862
+    }
+   ],
+   "set": "ours",
+   "chair": {
+    "key": "desksingle-52-25/front-0/chair",
+    "item": "chair-black-back",
+    "x": 1728,
+    "y": 864
+   },
+   "body": {
+    "key": "desksingle-52-25/front",
+    "item": "desks-single-white-1-n4",
+    "options": [
+     "desks-single-maple-1-n4",
+     "desks-single-oak-1-n4",
+     "desks-single-beech-1-n4",
+     "desks-single-walnut-1-n4",
+     "desks-single-white-1-n4",
+     "desks-single-graphite-1-n4"
+    ]
+   },
+   "depth": 892.5
+  }
+ },
+ "things": {
+  "ours-laptop-silver": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    10,
+    12,
+    54,
+    46
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-laptop-ash": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    10,
+    12,
+    54,
+    46
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-screens-pair": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    2,
+    8,
+    62,
+    44
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-screen-silver": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    8,
+    4,
+    56,
+    46
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-screen-ash": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    8,
+    4,
+    56,
+    46
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-screen-pale": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    8,
+    4,
+    56,
+    46
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-screen-teal": {
+   "facing": "front",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    8,
+    4,
+    56,
+    46
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-monitor-back": {
+   "facing": "back",
+   "size": [
+    64,
+    48
+   ],
+   "art": [
+    8,
+    6,
+    56,
+    46
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-lamp-coral": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    4,
+    32,
+    42
+   ],
+   "shelf": "lamps",
+   "set": "ours"
+  },
+  "ours-lamp-teal": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    4,
+    32,
+    42
+   ],
+   "shelf": "lamps",
+   "set": "ours"
+  },
+  "ours-lamp-mustard": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    4,
+    32,
+    42
+   ],
+   "shelf": "lamps",
+   "set": "ours"
+  },
+  "ours-lamp-white": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    4,
+    32,
+    42
+   ],
+   "shelf": "lamps",
+   "set": "ours"
+  },
+  "ours-mug-coral": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    10,
+    4,
+    28,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-mug-teal": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    10,
+    4,
+    28,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-mug-mustard": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    10,
+    4,
+    28,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-bush-desk-lilac": {
+   "facing": "any",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    12,
+    32,
+    48
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-bush-desk-white": {
+   "facing": "any",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    12,
+    32,
+    48
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-bush-desk-clay": {
+   "facing": "any",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    12,
+    32,
+    48
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-headphones": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    0,
+    6,
+    32,
+    30
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-frame-sunset": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    4,
+    6,
+    28,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-frame-shapes": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    4,
+    6,
+    28,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-books": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    4,
+    12,
+    30,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-pen-cup": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    10,
+    8,
+    24,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-notebook": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    4,
+    16,
+    30,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-bottle": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    10,
+    4,
+    22,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-speaker": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    8,
+    10,
+    24,
+    32
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "ours-clock": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    8,
+    10,
+    26,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-globe": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    6,
+    4,
+    28,
+    32
+   ],
+   "shelf": "personal",
+   "set": "ours"
+  },
+  "ours-radio": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    4,
+    4,
+    30,
+    32
+   ],
+   "shelf": "tech",
+   "set": "ours"
+  },
+  "setup-laptop": {
+   "facing": "front",
+   "size": [
+    96,
+    64
+   ],
+   "art": [
+    12,
+    2,
+    84,
+    54
+   ]
+  },
+  "setup-monitors": {
+   "facing": "front",
+   "size": [
+    96,
+    64
+   ],
+   "art": [
+    0,
+    4,
+    84,
+    50
+   ]
+  },
+  "setup-laptop-b": {
+   "facing": "front",
+   "size": [
+    96,
+    64
+   ],
+   "art": [
+    12,
+    0,
+    84,
+    52
+   ]
+  },
+  "setup-monitors-b": {
+   "facing": "front",
+   "size": [
+    96,
+    64
+   ],
+   "art": [
+    0,
+    2,
+    92,
+    50
+   ]
+  },
+  "setup-printer": {
+   "facing": "front",
+   "size": [
+    96,
+    64
+   ],
+   "art": [
+    8,
+    2,
+    82,
+    48
+   ]
+  },
+  "setup-printer-b": {
+   "facing": "front",
+   "size": [
+    96,
+    64
+   ],
+   "art": [
+    8,
+    2,
+    82,
+    48
+   ]
+  },
+  "desk-plant": {
+   "facing": "any",
+   "size": [
+    32,
+    64
+   ],
+   "art": [
+    0,
+    8,
+    32,
+    44
+   ]
+  },
+  "desk-phone-a": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    8,
+    12,
+    28,
+    32
+   ]
+  },
+  "desk-phone-b": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    8,
+    12,
+    28,
+    32
+   ]
+  },
+  "back-monitors": {
+   "facing": "back",
+   "size": [
+    96,
+    32
+   ],
+   "art": [
+    0,
+    2,
+    96,
+    32
+   ]
+  },
+  "back-monitor": {
+   "facing": "back",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    4,
+    0,
+    30,
+    22
+   ]
+  },
+  "back-monitor-light": {
+   "facing": "back",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    4,
+    0,
+    30,
+    22
+   ]
+  },
+  "monitor-blue": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    0,
+    4,
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitor-blue-left": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    0,
+    2,
+    30,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitor-blue-right": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    2,
+    2,
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitor-wide": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    0,
+    4,
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitors-dual": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    0,
+    2,
+    30,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitors-dual-angled": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    2,
+    2,
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitors-dual-dark": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    2,
+    2,
+    32,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "laptop-open": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    4,
+    0,
+    30,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "laptop-dark": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    4,
+    0,
+    30,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "laptop-left": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "art": [
+    4,
+    6,
+    30,
+    48
+   ],
+   "shelf": "tech"
+  },
+  "laptop-right": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "art": [
+    2,
+    6,
+    28,
+    48
+   ],
+   "shelf": "tech"
+  },
+  "keyboard": {
+   "facing": "front",
+   "size": [
+    32,
+    16
+   ],
+   "art": [
+    0,
+    2,
+    32,
+    12
+   ],
+   "shelf": "tech"
+  },
+  "keyboard-dark": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    0,
+    6,
+    32,
+    16
+   ],
+   "shelf": "tech"
+  },
+  "tower-light": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    2,
+    2,
+    32,
+    34
+   ],
+   "shelf": "tech"
+  },
+  "tower-dark": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    2,
+    2,
+    32,
+    34
+   ],
+   "shelf": "tech"
+  },
+  "microphone": {
+   "facing": "front",
+   "size": [
+    16,
+    32
+   ],
+   "art": [
+    2,
+    0,
+    12,
+    28
+   ],
+   "shelf": "tech"
+  },
+  "phone-desk": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    8,
+    12,
+    28,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "phone-grey": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    8,
+    12,
+    28,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "phone-dark": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    4,
+    0,
+    26,
+    20
+   ],
+   "shelf": "tech"
+  },
+  "printer-small": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "art": [
+    0,
+    2,
+    30,
+    38
+   ],
+   "shelf": "tech"
+  },
+  "printer-white": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "art": [
+    0,
+    2,
+    30,
+    38
+   ],
+   "shelf": "tech"
+  },
+  "lamp-black-left": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "art": [
+    0,
+    2,
+    30,
+    36
+   ],
+   "shelf": "lamps"
+  },
+  "lamp-black-right": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "art": [
+    0,
+    2,
+    30,
+    36
+   ],
+   "shelf": "lamps"
+  },
+  "lamp-grey-left": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "art": [
+    0,
+    2,
+    30,
+    36
+   ],
+   "shelf": "lamps"
+  },
+  "lamp-white-left": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "art": [
+    2,
+    2,
+    32,
+    36
+   ],
+   "shelf": "lamps"
+  },
+  "lamp-white-right": {
+   "facing": "front",
+   "size": [
+    32,
+    64
+   ],
+   "art": [
+    2,
+    2,
+    32,
+    36
+   ],
+   "shelf": "lamps"
+  },
+  "photo-frame-a": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    6,
+    2,
+    26,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "photo-frame-b": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    6,
+    2,
+    26,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "photo-frame-c": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    6,
+    2,
+    26,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "photo-frame-d": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    6,
+    2,
+    26,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "picture-small-a": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    4,
+    12,
+    30,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "picture-small-b": {
+   "facing": "front",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    4,
+    12,
+    30,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "picture-small-c": {
+   "facing": "front",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    4,
+    4,
+    28,
+    24
+   ],
+   "shelf": "personal"
+  },
+  "paper": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    8,
+    8,
+    32,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "papers": {
+   "facing": "any",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    0,
+    2,
+    32,
+    32
+   ],
+   "shelf": "personal"
+  },
+  "paper-stack": {
+   "facing": "any",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    6,
+    32,
+    48
+   ],
+   "shelf": "personal"
+  },
+  "monitor-back-dark": {
+   "facing": "back",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    0,
+    2,
+    30,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitor-back-white": {
+   "facing": "back",
+   "size": [
+    32,
+    32
+   ],
+   "art": [
+    0,
+    2,
+    30,
+    32
+   ],
+   "shelf": "tech"
+  },
+  "monitor-back-small": {
+   "facing": "back",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    8,
+    32,
+    42
+   ],
+   "shelf": "tech"
+  },
+  "monitor-back-small-white": {
+   "facing": "back",
+   "size": [
+    32,
+    48
+   ],
+   "art": [
+    0,
+    8,
+    32,
+    42
+   ],
+   "shelf": "tech"
+  }
+ },
+ "chairs": {
+  "front": [
+   {
+    "item": "chair-black-back",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 48
+   },
+   {
+    "item": "chair-black-mesh-back",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 48
+   },
+   {
+    "item": "chair-tan-back",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 48
+   },
+   {
+    "item": "chair-tan-mesh-back",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 48
+   }
+  ],
+  "back": [
+   {
+    "item": "chair-black-mesh",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 56
+   },
+   {
+    "item": "chair-black",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 56
+   },
+   {
+    "item": "chair-tan-mesh",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 56
+   },
+   {
+    "item": "chair-tan",
+    "dx": 0,
+    "dy": 0,
+    "sortY": 56
+   }
+  ]
+ }
+}

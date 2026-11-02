@@ -1227,6 +1227,7 @@
         "everything": "Tout ce qu’offre Free, plus",
         "team": "De la place pour toute votre équipe",
         "often": "Des réunions aussi souvent que nécessaire",
+        "history": "Tout l’historique de votre chat",
         "help": "Aide prioritaire de ceux qui le construisent",
         "included": "Ce qui est inclus"
       },
@@ -1364,6 +1365,9 @@
       "callsNote": "Jamais décomptés",
       "support": "Aide prioritaire",
       "wholeTeam": "Toute l'équipe",
+      "history": "Historique du chat",
+      "historyDays": "{days} jours",
+      "historyAll": "Tout",
       "meetings": "Réunions de groupe",
       "features": {
         "chat": "Canaux et messages",
@@ -1414,6 +1418,10 @@
       {
         "q": "Que se passe-t-il à la fin de l'essai ?",
         "a": "Le bureau passe à Free si vous ne choisissez pas Pro. Personne n'est retiré : pendant deux semaines encore, tout le monde peut entrer, mais personne de nouveau ne rejoint au-delà de 3. Ensuite, 3 personnes peuvent être sur l'étage en même temps, et le chat reste ouvert à tous."
+      },
+      {
+        "q": "L’historique du chat est-il conservé sur Free ?",
+        "a": "Oui, en entier. Free affiche les messages des 90 derniers jours et Pro affiche tout : rien n’est perdu en passant à Pro."
       },
       {
         "q": "Le prix va-t-il augmenter ?",

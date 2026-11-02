@@ -18,6 +18,7 @@ import {
   HEARTBEAT_PONG,
   MODERATOR,
   REPLY_SNIPPET,
+  SUPPORT_CHANNEL,
   VOICE_MAX_SECONDS,
   VOICE_PEAKS,
   cleanChannelName,
@@ -33,21 +34,26 @@ import {
   type ChatReply,
   type ChatServerMessage,
   type LobbyChatPage,
-  type PushPayload,
+  type HelpNews,
   type RoomTicket,
 } from "../../shared-protocol/src";
 import { readTicket, TICKET_HEADER } from "./headers";
-import { sendPush, topicFor, type PushTarget } from "./push";
+import { pushTo } from "./push";
+import { markActive } from "./usage";
 
 /** What the socket remembers about whoever is on it. */
 interface Attachment {
   userId: string;
   name: string;
+  /** The session the socket's tab is signed in with: a push skips the devices that have the app open. */
+  session?: string;
   /** Sends in this window, to keep a runaway client from filling the office. */
   sends: number;
   window: number;
   /** When they last said they were typing, so a chatty browser is heard every few seconds at most. */
   typedAt?: number;
+  /** How many days back they can read and search (their office's plan); none is all of it. */
+  history?: number;
 }
 
 interface ChannelRow extends Record<string, SqlStorageValue> {
@@ -78,7 +84,8 @@ const SENDS_PER_TEN_SECONDS = 100;
 /** Messages between trims. Cheap, and it keeps the object's storage bounded. */
 const TRIM_EVERY = 500;
 const TEN_SECONDS = 10_000;
-const DAY_MS = 24 * 60 * 60 * 1000;
+const HOUR_MS = 60 * 60 * 1000;
+const DAY_MS = 24 * HOUR_MS;
 /** Where "is this the lobby's chat" is kept, so an alarm knows without a request. */
 const LOBBY_FLAG = "lobby";
 /** The office this chat belongs to, which its files are kept under. */
@@ -102,6 +109,8 @@ const OFFICE_KEY = "office";
 export class Chat extends DurableObject<Env> {
   private lobby = false;
   private office: string | null = null;
+  /** When the office was last marked as used for something said here: once an hour is plenty (admin's "last active"). */
+  private activeAt = 0;
 
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
@@ -176,7 +185,7 @@ export class Chat extends DurableObject<Env> {
       this.office = ticket.room.slice("chat:".length);
       await this.ctx.storage.put(OFFICE_KEY, this.office);
     }
-    const attachment: Attachment = { userId: ticket.sub, name: ticket.name, sends: 0, window: 0 };
+    const attachment: Attachment = { userId: ticket.sub, name: ticket.name, ...(ticket.sid ? { session: ticket.sid } : {}), ...(ticket.history ? { history: ticket.history } : {}), sends: 0, window: 0 };
     this.remember(server, attachment);
 
     this.sql.exec(
@@ -249,14 +258,24 @@ export class Chat extends DurableObject<Env> {
   }
 
   /**
-   * Help and feedback's ticket changed: everyone here (or only `userId`, in
-   * the lobby) reads it again from the API. Nothing about it is said here.
+   * The conversation with the TinyFloor team changed: everyone here (or only
+   * `userId`, in the lobby) reads it again from the API. With `news`, the
+   * team wrote: the tabs that are open say so themselves, and everyone it's
+   * for hears on their other devices as a push.
    */
-  async helpChanged(userId?: string): Promise<void> {
+  async helpChanged(userId?: string, news?: HelpNews): Promise<void> {
     for (const socket of this.ctx.getWebSockets()) {
       const who = this.attachmentOf(socket);
-      if (who && (!userId || who.userId === userId)) this.send(socket, { t: "help_changed" });
+      if (who && (!userId || who.userId === userId)) this.send(socket, { t: "help_changed", ...(news ? { news } : {}) });
     }
+    if (!news || (!userId && !this.office)) return;
+    const url = userId ? `/lobby/chat/${SUPPORT_CHANNEL}` : `/office/${this.office}/chat/${SUPPORT_CHANNEL}`;
+    await pushTo(this.env, userId ? [userId] : { office: this.office! }, { ...news, tag: "help", url }, { except: this.openSessions() });
+  }
+
+  /** The sessions with a tab open here: they're told in the app, not by a push. */
+  private openSessions(): string[] {
+    return [...new Set(this.ctx.getWebSockets().flatMap((socket) => this.attachmentOf(socket)?.session ?? []))];
   }
 
   /** Someone's membership ended: their sockets close and their DMs stay put. */
@@ -408,6 +427,10 @@ export class Chat extends DurableObject<Env> {
     if (this.lobby && isDm(channel)) return this.pass(socket, me, channel, text, now);
 
     this.ensureChannel(channel, me.userId, now);
+    if (this.office && now - this.activeAt > HOUR_MS) {
+      this.activeAt = now;
+      this.ctx.waitUntil(markActive(this.env.DB, this.office, now).run().catch(() => (this.activeAt = 0)));
+    }
     // A reply answers a message in the same conversation, or nothing.
     const answered =
       typeof replyTo === "number" && Number.isInteger(replyTo)
@@ -449,51 +472,26 @@ export class Chat extends DurableObject<Env> {
   }
 
   /**
-   * A direct message, or a mention, for someone with no tab open here reaches
-   * their browser as a push (push.ts); a tab that's open says it itself (the
-   * app's DesktopAlerts). Never in the lobby.
+   * A direct message, or a mention, reaches the devices of whoever it's for
+   * that don't have the office open, as a push (push.ts); a tab that's open
+   * says it itself (the app's DesktopAlerts). Never in the lobby.
    */
   private reachAway(message: ChatMessage): void {
-    if (this.lobby || !this.office || !this.env.VAPID_KEY) return;
+    if (this.lobby || !this.office) return;
     const pair = dmMembers(message.channel);
     const wanted = pair ? pair.filter((id) => id !== message.author) : (message.mentions ?? []);
     if (!wanted.length) return;
-    const here = new Set(this.ctx.getWebSockets().map((socket) => this.attachmentOf(socket)?.userId));
-    const away = wanted.filter((id) => !here.has(id));
-    if (away.length) this.ctx.waitUntil(this.push(this.office, away, message).catch((error: unknown) => console.error("chat: push failed", error)));
-  }
-
-  /** To every browser those people subscribed while signed in, if they're still in the office. */
-  private async push(office: string, userIds: string[], message: ChatMessage): Promise<void> {
-    const { results } = await this.env.DB.prepare(
-      `SELECT p.endpoint, p.p256dh, p.auth FROM push_subscriptions p
-       JOIN sessions s ON s.id = p.session_id AND s.expires_at > ?
-       JOIN memberships m ON m.user_id = p.user_id AND m.office_id = ?
-       WHERE p.user_id IN (${userIds.map(() => "?").join(", ")})`,
-    )
-      .bind(Date.now(), office, ...userIds)
-      .all<PushTarget>();
-    if (!results.length) return;
-
     const voice = message.files?.find(isVoice);
     const text = voice && !message.body ? `🎤 ${clockOf(voice.duration ?? 0)}` : gist(message.body, message.files ?? []);
-    const payload: PushPayload = {
+    const payload = {
       title: isDm(message.channel) ? message.authorName : `${message.authorName} · #${message.channel}`,
       body: text.length > 160 ? `${text.slice(0, 160)}…` : text,
       tag: `chat:${message.channel}`,
-      url: `/office/${office}/chat/${encodeURIComponent(message.channel)}`,
+      url: `/office/${this.office}/chat/${encodeURIComponent(message.channel)}`,
     };
-    const topic = await topicFor(office, message.channel);
-    const outcomes = await Promise.all(
-      results.map((target) => sendPush(target, payload, this.env.VAPID_KEY, topic).catch(() => "failed" as const)),
+    this.ctx.waitUntil(
+      pushTo(this.env, wanted, payload, { office: this.office, except: this.openSessions() }).catch((error: unknown) => console.error("chat: push failed", error)),
     );
-    // The browser unsubscribed, or its push service forgot it: don't try it again.
-    const gone = results.filter((_, index) => outcomes[index] === "gone").map((target) => target.endpoint);
-    if (gone.length) {
-      await this.env.DB.prepare(`DELETE FROM push_subscriptions WHERE endpoint IN (${gone.map(() => "?").join(", ")})`)
-        .bind(...gone)
-        .run();
-    }
   }
 
   /**
@@ -634,15 +632,21 @@ export class Chat extends DurableObject<Env> {
     if ((await this.ctx.storage.getAlarm()) === null) await this.ctx.storage.setAlarm(now + DAY_MS);
   }
 
+  /** The oldest a message can be for them to read it: their plan's days back, or the beginning. */
+  private since(me: Attachment): number {
+    return me.history ? Date.now() - me.history * DAY_MS : 0;
+  }
+
   private page(socket: WebSocket, me: Attachment, channel: string, before?: number, to?: number): void {
     if (!this.mayPost(me.userId, channel)) return;
     const below = typeof before === "number" && Number.isFinite(before) ? before : Number.MAX_SAFE_INTEGER;
+    const since = this.since(me);
     // Back to a message (a search result): everything down to it, and a few before it for context.
     const reach =
       typeof to === "number" && Number.isFinite(to)
         ? Number(
             this.sql
-              .exec<{ n: number }>("SELECT COUNT(*) AS n FROM messages WHERE channel = ? AND seq < ? AND seq >= ?", channel, below, to)
+              .exec<{ n: number }>("SELECT COUNT(*) AS n FROM messages WHERE channel = ? AND seq < ? AND seq >= ? AND at >= ?", channel, below, to, since)
               .one().n,
           ) + 10
         : CHAT_PAGE;
@@ -650,20 +654,26 @@ export class Chat extends DurableObject<Env> {
     const rows = this.sql
       .exec<MessageRow>(
         `SELECT ${COLUMNS} FROM messages
-         WHERE channel = ? AND seq < ? ORDER BY seq DESC LIMIT ?`,
+         WHERE channel = ? AND seq < ? AND at >= ? ORDER BY seq DESC LIMIT ?`,
         channel,
         below,
+        since,
         size + 1,
       )
       .toArray();
     const more = rows.length > size;
     const page = rows.slice(0, size).reverse();
     const reactions = this.reactionsFor(page.map((row) => row.seq));
+    // At the end of what they can read: whether there's more before it, held back. Only that it's there, never what.
+    // (The channel's first message says, one step down its index.)
+    const first = !more && me.history ? this.sql.exec<{ at: number }>("SELECT at FROM messages WHERE channel = ? ORDER BY seq LIMIT 1", channel).toArray()[0] : undefined;
+    const held = first && Number(first.at) < since ? me.history : undefined;
     this.send(socket, {
       t: "chat_page",
       channel,
       more,
-      messages: this.withReplies(page, page.map((row) => toMessage(row, reactions.get(row.seq)))),
+      ...(held ? { held } : {}),
+      messages: this.withReplies(page, page.map((row) => toMessage(row, reactions.get(row.seq))), since),
     });
   }
 
@@ -687,8 +697,11 @@ export class Chat extends DurableObject<Env> {
     }
   }
 
-  /** The messages these replies answer, looked up together, onto the messages made from the same rows. */
-  private withReplies(rows: MessageRow[], messages: ChatMessage[]): ChatMessage[] {
+  /**
+   * The messages these replies answer, looked up together, onto the messages
+   * made from the same rows; one from before `since` is only said to be there.
+   */
+  private withReplies(rows: MessageRow[], messages: ChatMessage[], since = 0): ChatMessage[] {
     const wanted = [...new Set(rows.filter((row) => row.reply_to !== null).map((row) => Number(row.reply_to)))];
     if (!wanted.length) return messages;
     // In pieces: a query binds 100 values at most, and a page opened at a search result can hold hundreds of replies.
@@ -701,7 +714,9 @@ export class Chat extends DurableObject<Env> {
     }
     return messages.map((message, index) => {
       const to = rows[index].reply_to;
-      return to === null ? message : { ...message, reply: replyOf(Number(to), found.get(Number(to))) };
+      if (to === null) return message;
+      const row = found.get(Number(to));
+      return { ...message, reply: row && Number(row.at) < since ? { seq: Number(to), held: true } : replyOf(Number(to), row) };
     });
   }
 
@@ -714,13 +729,15 @@ export class Chat extends DurableObject<Env> {
     const words = typeof q === "string" ? q.trim().slice(0, 100) : "";
     if (fold(words).length < 2) return this.send(socket, { t: "chat_found", q: words, messages: [] });
     const needle = fold(words);
+    const since = this.since(me);
     // SQLite folds only ASCII case, so the narrowing is on what's cheap and the matching is done here.
     const rows = this.sql
       .exec<MessageRow>(
         `SELECT ${COLUMNS} FROM messages
-         WHERE (channel NOT LIKE 'dm:%' OR instr(channel, ?) > 0)
+         WHERE (channel NOT LIKE 'dm:%' OR instr(channel, ?) > 0) AND at >= ?
          ORDER BY seq DESC LIMIT 20000`,
         me.userId,
+        since,
       )
       .toArray();
     const found: MessageRow[] = [];
@@ -731,7 +748,12 @@ export class Chat extends DurableObject<Env> {
       if (!this.mayPost(me.userId, String(row.channel))) continue;
       found.push(row);
     }
-    this.send(socket, { t: "chat_found", q: words, messages: this.withReplies(found, found.map((row) => toMessage(row))) });
+    this.send(socket, {
+      t: "chat_found",
+      q: words,
+      ...(me.history ? { held: me.history } : {}),
+      messages: this.withReplies(found, found.map((row) => toMessage(row)), since),
+    });
   }
 
   private markRead(userId: string, channel: string, seq: number): void {

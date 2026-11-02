@@ -76,6 +76,25 @@ export function bounds(byId, id, choose, place) {
   return parts.length ? [x0, y0, x1 - x0, y1 - y0] : [0, 0, GRID, GRID];
 }
 
+/**
+ * Where a thing stands: the bottom of its picture, its whole width. A tree's
+ * canopy may hang over a desk behind it; what's put on its trunk is what
+ * takes its place.
+ */
+export function footprint(byId, entry) {
+  const [bx, by, w, h] = bounds(byId, entry.item, entry.choose, { size: entry.size, key: entry.id });
+  return [entry.x + bx, entry.y + by + Math.max(0, h - GRID * 2), w, Math.min(h, GRID * 2)];
+}
+
+/** What gives way (trees, rocks, flowers: givesWay in the catalog) to something put over it: the layout's items without those standing in the rectangle. */
+export function giveWay(byId, items, [x, y, w, h], keep = null) {
+  return items.filter((entry) => {
+    if (entry === keep || !byId.get(entry.item)?.givesWay) return true;
+    const [fx, fy, fw, fh] = footprint(byId, entry);
+    return fx + fw <= x || fx >= x + w || fy + fh <= y || fy >= y + h;
+  });
+}
+
 // ---------- desk clusters ----------
 
 /**
@@ -87,6 +106,14 @@ export function bounds(byId, id, choose, place) {
 const OFFICE = "modernoffice/2_Modern_Office_Black_Shadow/Modern_Office_Black_Shadow_32x32.png";
 export const DESK_FINISHES = { maple: [30, 7], oak: [28, 7], graphite: [28, 10], white: [30, 1], beech: [30, 4] };
 export const DESK_STEP = 192;
+/** The woods a single desk (drawn, art.js) comes in; whoever's desk it is picks theirs. */
+export const SINGLE_FINISHES = ["maple", "oak", "beech", "walnut", "white", "graphite"];
+/**
+ * How far along one desk runs in a bank, posts included: six tiles for the
+ * office's wide desks; a single desk (cluster.step) is shorter, room for one
+ * person and their setup.
+ */
+export const deskStep = (item) => item?.cluster?.step ?? DESK_STEP;
 export const CLUSTER_LIMITS = { cols: [1, 6], sides: [1, 2] };
 const tile = (row, col, x, y) => ({ src: OFFICE, rect: [col * 32, row * 32, 32, 32], at: [x, y] });
 
@@ -108,13 +135,15 @@ function generated(key, build) {
  * a far side, the far desks' edge) to just in front of the near desks, one
  * piece, so there's no way in between the rows or under a desk.
  */
-function frontRow(finish, cols, sides) {
-  return generated(`front:${finish}:${cols}:${sides}`, () => {
+function frontRow(finish, cols, sides, step = DESK_STEP) {
+  const n = step / 32;
+  const suffix = step === DESK_STEP ? "" : `-n${n}`;
+  return generated(`front:${finish}:${cols}:${sides}:${step}`, () => {
     const [fr, fc] = DESK_FINISHES[finish] ?? DESK_FINISHES.maple;
-    const width = cols * DESK_STEP + 32;
+    const width = cols * step + 32;
     const divider = [], desks = [], caps = [];
     for (let c = 0; c <= cols; c++) {
-      const x = c * DESK_STEP;
+      const x = c * step;
       // An end post at each end, a joining post between neighbours.
       const post = c === 0 ? 0 : c === cols ? 6 : 3;
       divider.push(tile(27, post, x, 32), tile(28, post, x, 64));
@@ -122,15 +151,15 @@ function frontRow(finish, cols, sides) {
       if (c === cols) continue;
       const odd = c % 2 === 1;
       divider.push(tile(26, odd ? 4 : 1, x + 32, 0), tile(27, odd ? 4 : 1, x + 32, 32), tile(28, odd ? 4 : 1, x + 32, 64));
-      for (let i = 2; i <= 5; i++) divider.push(tile(27, odd ? 5 : 2, x + i * 32, 32), tile(28, odd ? 5 : 2, x + i * 32, 64));
+      for (let i = 2; i <= n - 1; i++) divider.push(tile(27, odd ? 5 : 2, x + i * 32, 32), tile(28, odd ? 5 : 2, x + i * 32, 64));
       for (const dy of [0, 1]) {
         desks.push(tile(fr + dy, fc, x + 32, 32 + dy * 32));
-        for (let i = 2; i <= 5; i++) desks.push(tile(fr + dy, fc + 1, x + i * 32, 32 + dy * 32));
-        desks.push(tile(fr + dy, fc + 2, x + 192, 32 + dy * 32));
+        for (let i = 2; i <= n - 1; i++) desks.push(tile(fr + dy, fc + 1, x + i * 32, 32 + dy * 32));
+        desks.push(tile(fr + dy, fc + 2, x + step, 32 + dy * 32));
       }
     }
     return {
-      id: `desks-front-${finish}-${cols}`,
+      id: `desks-front-${finish}-${cols}${suffix}`,
       name: "Desks",
       category: "desks",
       generated: true,
@@ -145,24 +174,49 @@ function frontRow(finish, cols, sides) {
   });
 }
 
+/**
+ * Single desks in a row (art.js draws them): a glass panel behind each between
+ * posts that run to the floor, no far side. What you can't walk through is the
+ * same as a one-sided bank's: from the panel to just in front of the desks.
+ */
+export function cubicleRow(finish, cols, step) {
+  return generated(`cubicle:${finish}:${cols}:${step}`, () => {
+    const width = cols * step + 32;
+    return {
+      id: `desks-single-${finish}-${cols}-n${step / 32}`,
+      name: "Single desks",
+      category: "desks",
+      generated: true,
+      mount: "floor",
+      sprite: { size: [width, 96], layers: [{ draw: `cubicle:${finish}:${step}:${cols}`, rect: [0, 0, width, 96], at: [0, 0] }] },
+      sortY: 92,
+      // Post to post: the picture has a tile to spare at its right, which isn't desk.
+      colliders: [[0, 44, cols * step + 6, 62]],
+      seats: [],
+      surface: null,
+    };
+  });
+}
+
 /** The desks on the far side of the divider: only their tops show, a strip along it. */
-function backRow(finish, cols) {
-  return generated(`back:${finish}:${cols}`, () => {
+function backRow(finish, cols, step = DESK_STEP) {
+  const n = step / 32;
+  return generated(`back:${finish}:${cols}:${step}`, () => {
     const [fr, fc] = DESK_FINISHES[finish] ?? DESK_FINISHES.maple;
     const layers = [];
     for (let c = 0; c < cols; c++) {
-      const x = c * DESK_STEP;
+      const x = c * step;
       layers.push(tile(fr, fc, x + 32, 0));
-      for (let i = 2; i <= 5; i++) layers.push(tile(fr, fc + 1, x + i * 32, 0));
-      layers.push(tile(fr, fc + 2, x + 192, 0));
+      for (let i = 2; i <= n - 1; i++) layers.push(tile(fr, fc + 1, x + i * 32, 0));
+      layers.push(tile(fr, fc + 2, x + step, 0));
     }
     return {
-      id: `desks-back-${finish}-${cols}`,
+      id: `desks-back-${finish}-${cols}${step === DESK_STEP ? "" : `-n${n}`}`,
       name: "Desks, far side",
       category: "desks",
       generated: true,
       mount: "floor",
-      sprite: { size: [cols * DESK_STEP + 32, 32], layers },
+      sprite: { size: [cols * step + 32, 32], layers },
       sortY: 30,
       // The near row's collider covers the whole bank.
       colliders: [],
@@ -194,8 +248,10 @@ function cluster(byId, item, x, y, choose, place) {
   const seed = place.seed ?? 0;
   const overrides = place.overrides ?? {};
   const finish = item.cluster.finish;
-  const front = frontRow(finish, cols, sides);
-  const back = sides === 2 ? backRow(finish, cols) : null;
+  const step = deskStep(item);
+  const tiles = step / 32;
+  const front = item.cluster.style === "cubicle" ? cubicleRow(finish, cols, step) : frontRow(finish, cols, sides, step);
+  const back = sides === 2 ? backRow(finish, cols, step) : null;
   const pieces = [];
   if (back) pieces.push({ key: `${key}/back`, item: back, x, y });
   pieces.push({ key: `${key}/front`, item: front, x, y });
@@ -203,16 +259,26 @@ function cluster(byId, item, x, y, choose, place) {
   // A baked bank (a template's) says where each chair is, and its desk things and plants are pieces of their own.
   const baked = place.desks;
   for (let c = 0; c < cols; c++) {
-    const dx = x + c * DESK_STEP;
+    const dx = x + c * step;
     for (const side of back ? ["front", "back"] : ["front"]) {
       const desk = `${side}-${c}`;
       const rand = random(`${seed}|${key}|${place.salt ?? 0}|${desk}`);
-      // A tile left or right of the desk's middle: tile 3 or 4 of the six.
-      const sitAt = baked ? (baked[desk] ?? 3) : rand() < 0.5 ? 3 : 4;
+      // A tile left or right of the desk's middle, tile 3 or 4 of the six; at a single desk, always its third tile of four.
+      const middle = item.cluster.style === "cubicle" ? Math.floor(tiles / 2) : Math.floor((tiles + 1) / 2);
+      const sitAt = baked ? (baked[desk] ?? middle) : item.cluster.style === "cubicle" || rand() < 0.5 ? middle : middle + 1;
       const slot = item.cluster.chairs[side];
       const { item: chair, dy } = slotted(byId, slot, choose[desk] ?? choose[side]);
       if (chair) pieces.push({ key: `${key}/${desk}/chair`, item: chair, x: dx + sitAt * 32, y: y + slot.at[1] + dy, seat: desk });
       if (baked) continue;
+      if (item.cluster.style === "cubicle") {
+        // A single desk, spot by spot; a row of them (one line in one room, about 18 tiles across) shares its accent and its runs.
+        for (const { spot, thing } of singleDesk(things, deskSpots(item, x, y, c, side, sitAt), rand, random(`${seed}|row|${y}|${Math.floor(dx / 576)}`), Math.round(dx / step) + Math.round(y / 160))) {
+          const [w] = spriteSize(thing.sprite);
+          // Roughly where it stands; the build places it exactly, by its pixels (build.mjs spotted).
+          pieces.push({ key: `${key}/${desk}/${spot.id}`, item: thing, x: Math.round(((spot.x[0] + spot.x[1]) / 2 - w / 2) / 2) * 2, y: spot.foot - thing.sortY, host: `${key}/front`, desk });
+        }
+        continue;
+      }
       const list = overrides[`${key}/${desk}/things`]?.things ?? deskThings(things, side, sitAt, rand);
       list.forEach((thing, n) => {
         const inner = byId.get(thing.item);
@@ -222,12 +288,13 @@ function cluster(byId, item, x, y, choose, place) {
       });
     }
   }
-  if (baked) return pieces;
+  // Single desks stand in rows, so their ends are their neighbours': plants by them are put there by hand.
+  if (baked || item.cluster.style === "cubicle") return pieces;
   // A plant standing by every bank, at one end, and sometimes at the other too.
   const ends = random(`${seed}|${key}|${place.salt ?? 0}|ends`);
-  const plants = ["plant-tall", "plant-snake", "plant-small"].filter((id) => byId.has(id));
+  const plants = ["ours-bush-clay", "ours-bush-white", "ours-bush-slate"].filter((id) => byId.has(id));
   const first = ends() < 0.5 ? "left" : "right";
-  for (const [end, ex] of [["left", x - 32], ["right", x + cols * DESK_STEP + 32]]) {
+  for (const [end, ex] of [["left", x - 32], ["right", x + cols * step + 32]]) {
     if ((end !== first && ends() < 0.65) || !plants.length) continue;
     const plant = byId.get(plants[Math.floor(ends() * plants.length)]);
     const [, h] = spriteSize(plant.sprite);
@@ -238,7 +305,7 @@ function cluster(byId, item, x, y, choose, place) {
 
 /**
  * One desk side's things, in tiles of the desk: [{ item, col, row, dy? }].
- * Kept calm: a working desk, not a cluttered one. Near side: usually one
+ * Kept calm: a working desk, not a cluttered one (single desks: singleDesk). Near side: usually one
  * setup (three tiles) beside the person, now and then a plant or a phone on
  * their other side, the tile behind their head left clear. Far side: the
  * screens in front of the person, nothing else. Things marked random: false
@@ -264,6 +331,84 @@ export function deskThings(things, side, sitAt, rand) {
     else if (single.length && rand() < 0.7) out.push({ item: pick(single).id, col: sitAt + (rand() < 0.5 ? -1 : 1), row: 0, dy: -6 });
   }
   return out.filter((t) => t.item);
+}
+
+/**
+ * A desk's spots, left to right: where one thing each stands, [from, to)
+ * along the desk and the line its foot is on (shared-protocol map.ts
+ * DeskSpot). Three round whoever sits there, never overlapping:
+ * - a single desk: something tall or small on the left, the screen in front
+ *   of them, something small on the right (they sit right of its middle, so
+ *   the screen leans a little left of them and the right is the narrower);
+ * - a bank's near desk: a setup on one side, two small things on theirs;
+ * - a bank's far desk: screens on its strip in front of them, a small thing either side.
+ */
+export function deskSpots(item, bankX, bankY, c, side, sitAt) {
+  const dx = bankX + c * deskStep(item);
+  const spots = [];
+  const spot = (from, to, foot) => spots.push({ id: `spot-${spots.length}`, x: [dx + from, dx + to], foot: bankY + foot });
+  const at = sitAt * 32;
+  if (item.cluster.style === "cubicle") {
+    spot(6, 42, 62);
+    spot(42, 102, 62);
+    spot(102, 128, 62);
+  } else if (side === "front" && sitAt <= 3) {
+    spot(32, 64, 64);
+    spot(64, at, 64);
+    spot(at + 32, 224, 86);
+  } else if (side === "front") {
+    spot(32, at, 86);
+    spot(at + 32, at + 64, 64);
+    spot(at + 64, 224, 64);
+  } else {
+    spot(at - 64, at - 32, 16);
+    spot(at - 32, at + 64, 32);
+    spot(at + 64, at + 96, 16);
+  }
+  return spots;
+}
+
+/** A row's accents: each row of single desks has one, shown at most once a desk. */
+const ACCENTS = ["coral", "teal", "mustard"];
+/** Small things with colours of their own: like an accent, at most one a desk. */
+const LOUD = new Set(["ours-frame-sunset", "ours-frame-shapes", "ours-globe"]);
+
+/**
+ * A single desk's things, spot by spot: [{ spot, thing }]. No two neighbours
+ * alike, a row of them easy on the eye together. A row (of desks in one room,
+ * on one line) has one accent colour, and a desk shows it, or a picture, or a
+ * globe, once at most; the rest are neutrals. Along the row the left of the
+ * desks goes lamp, plant, lamp (and the row behind the other way round); the screens and the small things on the right
+ * are dealt from the row's own shuffled runs, so the next desk has the next.
+ */
+function singleDesk(things, [left, middle, right], rand, row, column) {
+  const usable = things.filter((t) => (t.facing === "front" || t.facing === "any") && t.random !== false);
+  const tint = (t) => t.id.match(/-(coral|teal|mustard)$/)?.[1] ?? null;
+  const loud = (t) => !!t && (!!tint(t) || LOUD.has(t.id));
+  const accent = ACCENTS[Math.floor(row() * ACCENTS.length)];
+  const shuffled = (list) => {
+    for (let i = list.length - 1; i > 0; i--) {
+      const j = Math.floor(row() * (i + 1));
+      [list[i], list[j]] = [list[j], list[i]];
+    }
+    return list;
+  };
+  // In the accent, or in no colour at all.
+  const calm = (t) => !tint(t) || tint(t) === accent;
+  const screens = shuffled(usable.filter((t) => t.desk.cols === 2));
+  const plants = shuffled(usable.filter((t) => t.id.startsWith("ours-bush-desk-")));
+  // The headphones lie too wide for the right; they only ever go on the left.
+  const small = shuffled(usable.filter((t) => t.desk.cols === 1 && t.desk.rows === 1 && calm(t) && t.id !== "ours-headphones"));
+  const lamp = (accented) => usable.find((t) => t.shelf === "lamps" && (accented ? tint(t) === accent : !tint(t)));
+  const out = [{ spot: middle, thing: screens[column % screens.length] }];
+  const first = column % 2 ? (rand() < 0.85 ? plants[column % plants.length] : null) : lamp(rand() < 0.5);
+  if (first) out.push({ spot: left, thing: first });
+  if (rand() < 0.75) {
+    // The row's next small thing; none, when it would make the desk loud twice.
+    const second = small[column % small.length];
+    if (second && second !== first && !(loud(first) && loud(second))) out.push({ spot: right, thing: second });
+  }
+  return out.filter((one) => one.thing);
 }
 
 /** A small, fast, seeded random: the same seed gives the same desks, for everyone in the office. */
@@ -338,8 +483,9 @@ export function check(catalog, layouts = []) {
     if (isComposite(sprite)) {
       if (!onGrid(w, h)) say(`size ${w}×${h} is off the ${GRID}px grid`);
     } else if (!onGrid(...sprite.rect)) say(`sprite rect ${sprite.rect} is off the ${GRID}px grid`);
+    // A collider may run up to half a tile past the front, so you stand before a table, not on its edge.
     for (const [x, y, cw, ch] of item.colliders) {
-      if (x < 0 || y < 0 || x + cw > w || y + ch > h) say(`collider ${[x, y, cw, ch]} reaches outside the sprite`);
+      if (x < 0 || y < 0 || x + cw > w || y + ch > h + 16) say(`collider ${[x, y, cw, ch]} reaches outside the sprite`);
     }
     if (item.sortY < 0 || item.sortY > h) say(`sort line ${item.sortY} is outside the sprite`);
     for (const seat of item.seats) {

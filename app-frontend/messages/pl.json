@@ -94,7 +94,8 @@
     "aloneTitle": "Tylko ty na piętrze",
     "aloneBody": "Wyślij link, a ten, kto go otworzy, pojawi się obok ciebie.",
     "aloneQuiet": "Gdy ktoś jeszcze wejdzie, pojawi się tutaj.",
-    "inviteSomeone": "Zaproś kogoś"
+    "inviteSomeone": "Zaproś kogoś",
+    "walkTo": "Podejdź do: {name}"
   },
   "call": {
     "incoming": "Dzwoni do ciebie",
@@ -214,6 +215,7 @@
     "download": "Pobierz",
     "messages": "Wiadomości",
     "searching": "Szukanie…",
+    "heldSearch": "Przeszukano ostatnie {days} dni. Pro przeszukuje wszystko.",
     "filesMax": "Do {count} plików naraz.",
     "fileTooBig": "Pliki mogą mieć do 10 MB.",
     "fileSlowDown": "Za dużo plików naraz. Spróbuj za minutę.",
@@ -229,6 +231,10 @@
     "replyingTo": "Odpowiedź dla: <strong>{name}</strong>",
     "cancelReply": "Anuluj odpowiedź",
     "replyGone": "Oryginalna wiadomość została usunięta",
+    "replyHeld": "Starsza wiadomość",
+    "heldTitle": "Wiadomości starsze niż {days} dni są w Pro",
+    "heldBody": "Są przechowywane i nigdy nie są usuwane.",
+    "heldAction": "Zobacz Pro",
     "replyFiles": "{count, plural, one {# plik} few {# pliki} many {# plików} other {# pliku}}",
     "typingOne": "{name} pisze",
     "typingTwo": "{a} i {b} piszą",
@@ -390,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Zapisz je na swoim koncie",
       "accountBody": "Wtedy zostanie twoje, a zespół łatwo je znajdzie. To kilka sekund."
+    },
+    "dock": {
+      "title": "Utwórz własne biuro",
+      "start": "Zacznij"
     }
   },
   "office": {
@@ -672,24 +682,15 @@
     "asked": "Zaproszono"
   },
   "help": {
-    "title": "Pomoc i opinie",
-    "officeSees": "Trafia do zespołu TinyFloor i otwiera w Czacie zgłoszenie, które mogą śledzić wszyscy z {office}.",
-    "lobbySees": "Trafia do zespołu TinyFloor i otwiera zgłoszenie w Twoim Czacie. Widzisz je tylko Ty.",
-    "placeholder": "Co się stało i czego się spodziewałeś?",
-    "context": "Dołączamy stronę, na której jesteś, i Twoją przeglądarkę, żeby móc to sprawdzić.",
-    "send": "Wyślij",
-    "sending": "Wysyłanie",
+    "title": "Napisz do zespołu TinyFloor",
     "error": "Nie udało się wysłać. Spróbuj ponownie.",
     "slowDown": "W ciągu ostatniej godziny wysłano dużo wiadomości. Spróbuj trochę później.",
-    "support": "Wsparcie TinyFloor",
-    "open": "Otwarte",
+    "support": "Zespół TinyFloor",
     "closed": "Zamknięte",
     "message": "Wiadomość do zespołu TinyFloor",
-    "closedNote": "Zespół TinyFloor zamknął to zgłoszenie. Nadal masz problem? Napisz do nas znowu w Pomoc i opinie.",
-    "ticketOffice": "Wszyscy z {office} mogą to śledzić i coś dodać. Zespół TinyFloor odpowiada tutaj.",
-    "ticketLobby": "Widzisz to tylko Ty i zespół TinyFloor. Odpowiadamy tutaj.",
-    "nothingOpen": "W tej chwili nic nie jest otwarte u zespołu TinyFloor.",
-    "emailUs": "Wolisz e-mail? <link>{email}</link>"
+    "closedNote": "Ta rozmowa jest zamknięta. Napisz ponownie, kiedy chcesz, a my ją podejmiemy.",
+    "ticketOffice": "Pytania, pomysły, coś nie działa: napisz do ludzi, którzy tworzą TinyFloor. Czytamy każdą wiadomość i odpowiadamy tutaj. Wszyscy z {office} widzą tę rozmowę.",
+    "ticketLobby": "Pytania, pomysły, coś nie działa: napisz do ludzi, którzy tworzą TinyFloor. Czytamy każdą wiadomość i odpowiadamy tutaj. Tylko ty widzisz tę rozmowę."
   },
   "billing": {
     "settingUp": "Płatność otrzymana. Konfigurujemy plan…",
@@ -720,7 +721,8 @@
       "wholeTeam": "Cały Twój zespół, na jednym piętrze",
       "support": "Pierwszeństwo w pomocy od naszego zespołu",
       "assurance": "Anuluj w dowolnej chwili. Pełny zwrot w ciągu 14 dni.",
-      "meetings": "Spotkania tak często, jak potrzebuje Twój zespół"
+      "meetings": "Spotkania tak często, jak potrzebuje Twój zespół",
+      "history": "Cała historia czatu"
     },
     "page": {
       "notice": {
@@ -739,6 +741,7 @@
       "freePer": "na zawsze",
       "freeSeats": "Do {seats} osób",
       "freeEverything": "Piętro, czat, spotkania i wideo HD",
+      "freeHistory": "{days} dni historii czatu",
       "invoices": "Faktury",
       "keep": "Zostań przy Pro",
       "updateCard": "Zaktualizuj kartę",
@@ -806,7 +809,11 @@
     "shareNote": "Wyślij z dowolnej aplikacji na tym urządzeniu",
     "full": "Nikt nowy nie może dołączyć: plan biura {office} mieści {seats} osoby.",
     "fullMember": "Administrator może zachować Pro, żeby zrobić miejsce.",
-    "keepPro": "Zachowaj Pro"
+    "keepPro": "Zachowaj Pro",
+    "ways": {
+      "message": "Wiadomość",
+      "email": "E-mail"
+    }
   },
   "desk": {
     "claimConfirm": "Zajmij",
@@ -816,31 +823,35 @@
     "claimed": "Zajęte"
   },
   "decorate": {
-    "open": "Urządź",
-    "title": "Urządź swoje biurko",
-    "close": "Zamknij",
-    "things": "Rzeczy",
-    "chair": "Krzesło",
+    "title": "Twoje biurko",
     "shelf": {
-      "all": "Wszystko",
       "tech": "Sprzęt",
       "lamps": "Lampy",
       "personal": "Osobiste",
-      "setups": "Stanowiska",
-      "chairs": "Krzesła"
+      "setups": "Stanowiska"
     },
-    "hint": "Wybierz coś na biurko. Przeciągaj rzeczy, aby je przesunąć.",
-    "swapHint": "Wybierz coś, na co to zamienić.",
-    "full": "Biurko jest pełne: zdejmij coś, aby dodać więcej.",
-    "count": "Rzeczy: {count} z {max}",
     "undo": "Cofnij",
     "redo": "Ponów",
     "reset": "Przywróć",
     "resetConfirm": "Przywrócić biurko do stanu początkowego?",
     "cancel": "Anuluj",
     "done": "Gotowe",
-    "remove": "Zdejmij z biurka",
-    "deselect": "Gotowe z tym"
+    "wood": {
+      "maple": "Klon",
+      "oak": "Dąb",
+      "beech": "Buk",
+      "walnut": "Orzech",
+      "white": "Biały",
+      "graphite": "Grafit"
+    },
+    "part": {
+      "left": "Lewo",
+      "middle": "Środek",
+      "right": "Prawo",
+      "chair": "Krzesło",
+      "wood": "Drewno"
+    },
+    "remove": "Usuń"
   },
   "look": {
     "open": "Zmień wygląd",

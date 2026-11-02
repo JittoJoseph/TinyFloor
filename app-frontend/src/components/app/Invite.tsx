@@ -97,7 +97,18 @@ type Sent = "link" | "message" | null;
  * The link and the ways to send it. Also the invite step when an office is
  * made, so the two never drift apart.
  */
-export function InviteActions({ officeId, officeName, className }: { officeId: string; officeName: string; className?: string }) {
+export function InviteActions({
+  officeId,
+  officeName,
+  compact = false,
+  className,
+}: {
+  officeId: string;
+  officeName: string;
+  /** The other ways to send it in one row of short buttons, where there's no room for a line on each (making an office). */
+  compact?: boolean;
+  className?: string;
+}) {
   const t = useTranslations("invite");
   const path = useInviteLink(officeId);
   const url = path ? shareUrl(path) : null;
@@ -127,8 +138,9 @@ export function InviteActions({ officeId, officeName, className }: { officeId: s
 
   return (
     <div className={className}>
-      <p className="text-[12px] font-medium text-muted-foreground">{t("linkLabel")}</p>
-      <div className="mt-1.5 flex gap-2">
+      {/* Short, the field says what it is: it's the link. */}
+      {compact ? <span className="sr-only">{t("linkLabel")}</span> : <p className="text-[12px] font-medium text-muted-foreground">{t("linkLabel")}</p>}
+      <div className={cn("flex gap-2", !compact && "mt-1.5")}>
         <span
           data-ph-mask
           dir="ltr"
@@ -151,19 +163,58 @@ export function InviteActions({ officeId, officeName, className }: { officeId: s
         </button>
       </div>
 
-      <div className="mt-4 divide-y divide-border overflow-hidden rounded-xl border border-border">
-        <Way
-          icon={<MessageSquare />}
-          title={t("copyMessage")}
-          note={t("messageNote")}
-          onClick={() => copy("message")}
-          disabled={!url}
-          end={sent === "message" ? <Check className="size-4 shrink-0 text-ok" /> : <Copy className="size-4 shrink-0 text-faint transition-colors group-hover:text-foreground" />}
-        />
-        <Way icon={<Mail />} title={t("email")} note={t("emailNote")} href={email} onClick={() => tell("email")} disabled={!url} />
-        {canShare && <Way icon={<Share />} title={t("share")} note={t("shareNote")} onClick={share} disabled={!url} />}
-      </div>
+      {compact ? (
+        <div className={cn("mt-2 grid gap-2", canShare ? "grid-cols-3" : "grid-cols-2")}>
+          <ShortWay icon={sent === "message" ? <Check className="text-ok" /> : <MessageSquare />} title={t("copyMessage")} onClick={() => copy("message")} disabled={!url}>
+            {sent === "message" ? t("copied") : t("ways.message")}
+          </ShortWay>
+          <ShortWay icon={<Mail />} title={t("email")} href={email} onClick={() => tell("email")} disabled={!url}>
+            {t("ways.email")}
+          </ShortWay>
+          {canShare && (
+            <ShortWay icon={<Share />} title={t("share")} onClick={share} disabled={!url}>
+              {t("share")}
+            </ShortWay>
+          )}
+        </div>
+      ) : (
+        <div className="mt-4 divide-y divide-border overflow-hidden rounded-xl border border-border">
+          <Way
+            icon={<MessageSquare />}
+            title={t("copyMessage")}
+            note={t("messageNote")}
+            onClick={() => copy("message")}
+            disabled={!url}
+            end={sent === "message" ? <Check className="size-4 shrink-0 text-ok" /> : <Copy className="size-4 shrink-0 text-faint transition-colors group-hover:text-foreground" />}
+          />
+          <Way icon={<Mail />} title={t("email")} note={t("emailNote")} href={email} onClick={() => tell("email")} disabled={!url} />
+          {canShare && <Way icon={<Share />} title={t("share")} note={t("shareNote")} onClick={share} disabled={!url} />}
+        </div>
+      )}
     </div>
+  );
+}
+
+/** A way to send it, short: its icon and a word, the full name for whoever reads it out or points at it. */
+function ShortWay({ icon, title, href, onClick, disabled, children }: { icon: ReactNode; title: string; href?: string; onClick?: () => void; disabled?: boolean; children: ReactNode }) {
+  const style = cn(
+    "flex h-10 min-w-0 cursor-pointer items-center justify-center gap-1.5 rounded-xl border border-border px-2 text-[12.5px] font-medium text-foreground transition-colors hover:bg-muted/60 [&_svg]:size-4 [&_svg]:shrink-0",
+    disabled && "pointer-events-none opacity-50",
+  );
+  const body = (
+    <>
+      {icon}
+      <span className="truncate">{children}</span>
+    </>
+  );
+  return href ? (
+    <a href={href} onClick={onClick} title={title} aria-label={title} className={style}>
+      {body}
+    </a>
+  ) : (
+    <button type="button" onClick={onClick} disabled={disabled} title={title} aria-label={title} className={style}>
+      {body}
+    </button>
   );
 }
 

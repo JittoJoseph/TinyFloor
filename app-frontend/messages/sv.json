@@ -94,7 +94,8 @@
     "aloneTitle": "Bara du på golvet",
     "aloneBody": "Skicka länken, så dyker den som öppnar den upp bredvid dig.",
     "aloneQuiet": "När någon annan kommer in dyker de upp här.",
-    "inviteSomeone": "Bjud in någon"
+    "inviteSomeone": "Bjud in någon",
+    "walkTo": "Gå fram till {name}"
   },
   "call": {
     "incoming": "Ringer dig",
@@ -214,6 +215,7 @@
     "download": "Ladda ner",
     "messages": "Meddelanden",
     "searching": "Söker…",
+    "heldSearch": "Sökte i de senaste {days} dagarna. Pro söker i allt.",
     "filesMax": "Upp till {count} filer åt gången.",
     "fileTooBig": "Filer får vara upp till 10 MB.",
     "fileSlowDown": "För många filer på en gång. Försök igen om en minut.",
@@ -229,6 +231,10 @@
     "replyingTo": "Svarar <strong>{name}</strong>",
     "cancelReply": "Sluta svara",
     "replyGone": "Det ursprungliga meddelandet har tagits bort",
+    "replyHeld": "Ett äldre meddelande",
+    "heldTitle": "Meddelanden äldre än {days} dagar finns i Pro",
+    "heldBody": "De sparas och raderas aldrig.",
+    "heldAction": "Se Pro",
     "replyFiles": "{count, plural, one {# fil} other {# filer}}",
     "typingOne": "{name} skriver",
     "typingTwo": "{a} och {b} skriver",
@@ -390,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Spara det på ditt konto",
       "accountBody": "Så förblir det ditt och teamet hittar det. Det tar bara några sekunder."
+    },
+    "dock": {
+      "title": "Skapa ditt eget kontor",
+      "start": "Kom igång"
     }
   },
   "office": {
@@ -672,24 +682,15 @@
     "asked": "Tillfrågad"
   },
   "help": {
-    "title": "Hjälp och feedback",
-    "officeSees": "Det går till TinyFloor-teamet och öppnar ett ärende i Chatt som alla i {office} kan följa.",
-    "lobbySees": "Det går till TinyFloor-teamet och öppnar ett ärende i din Chatt. Bara du ser det.",
-    "placeholder": "Vad hände, och vad förväntade du dig?",
-    "context": "Vi skickar med sidan du är på och din webbläsare, så att vi kan titta på det.",
-    "send": "Skicka",
-    "sending": "Skickar",
+    "title": "Skriv till TinyFloor-teamet",
     "error": "Det skickades inte. Försök igen.",
     "slowDown": "Du har skickat mycket den senaste timmen. Försök igen lite senare.",
-    "support": "TinyFloor-support",
-    "open": "Öppen",
+    "support": "TinyFloor-teamet",
     "closed": "Stängd",
     "message": "Skriv till TinyFloor-teamet",
-    "closedNote": "TinyFloor-teamet har stängt det här. Fortfarande fast? Skriv till oss igen via Hjälp och feedback.",
-    "ticketOffice": "Alla i {office} kan följa det här och lägga till något. TinyFloor-teamet svarar här.",
-    "ticketLobby": "Bara du och TinyFloor-teamet ser det här. Vi svarar här.",
-    "nothingOpen": "Inget är öppet hos TinyFloor-teamet just nu.",
-    "emailUs": "Hellre e-post? <link>{email}</link>"
+    "closedNote": "Samtalet är stängt. Skriv igen när du vill, så tar vi upp det.",
+    "ticketOffice": "Frågor, idéer eller något som inte fungerar: skriv till oss som gör TinyFloor. Vi läser varje meddelande och svarar här. Alla i {office} kan se samtalet.",
+    "ticketLobby": "Frågor, idéer eller något som inte fungerar: skriv till oss som gör TinyFloor. Vi läser varje meddelande och svarar här. Bara du kan se samtalet."
   },
   "billing": {
     "settingUp": "Betalningen har tagits emot. Planen aktiveras…",
@@ -720,7 +721,8 @@
       "wholeTeam": "Hela ditt team, på en våning",
       "support": "Prioriterad hjälp från vårt team",
       "assurance": "Avsluta när du vill. Full återbetalning inom 14 dagar.",
-      "meetings": "Möten så ofta ditt team behöver"
+      "meetings": "Möten så ofta ditt team behöver",
+      "history": "Hela chatthistoriken"
     },
     "page": {
       "notice": {
@@ -739,6 +741,7 @@
       "freePer": "för alltid",
       "freeSeats": "Upp till {seats} personer",
       "freeEverything": "Våning, chatt, möten och HD-video",
+      "freeHistory": "{days} dagars chatthistorik",
       "invoices": "Fakturor",
       "keep": "Behåll Pro",
       "updateCard": "Uppdatera kort",
@@ -806,7 +809,11 @@
     "shareNote": "Skicka den från en app på den här enheten",
     "full": "Ingen ny kan gå med: planen för {office} rymmer {seats} personer.",
     "fullMember": "En admin kan behålla Pro för att göra plats.",
-    "keepPro": "Behåll Pro"
+    "keepPro": "Behåll Pro",
+    "ways": {
+      "message": "Meddelande",
+      "email": "E-post"
+    }
   },
   "desk": {
     "claimConfirm": "Ta det",
@@ -816,31 +823,35 @@
     "claimed": "Tagen"
   },
   "decorate": {
-    "open": "Inred",
-    "title": "Inred ditt skrivbord",
-    "close": "Stäng",
-    "things": "Saker",
-    "chair": "Stol",
+    "title": "Ditt skrivbord",
     "shelf": {
-      "all": "Alla",
       "tech": "Teknik",
       "lamps": "Lampor",
       "personal": "Personligt",
-      "setups": "Arbetsplatser",
-      "chairs": "Stolar"
+      "setups": "Arbetsplatser"
     },
-    "hint": "Välj något att ställa på skrivbordet. Dra saker för att flytta dem.",
-    "swapHint": "Välj något att byta ut det mot.",
-    "full": "Skrivbordet är fullt: ta bort något för att lägga till mer.",
-    "count": "Saker: {count} av {max}",
     "undo": "Ångra",
     "redo": "Gör om",
     "reset": "Återställ",
     "resetConfirm": "Återställa skrivbordet som det var?",
     "cancel": "Avbryt",
     "done": "Klar",
-    "remove": "Ta bort från skrivbordet",
-    "deselect": "Klar med den"
+    "wood": {
+      "maple": "Lönn",
+      "oak": "Ek",
+      "beech": "Bok",
+      "walnut": "Valnöt",
+      "white": "Vit",
+      "graphite": "Grafit"
+    },
+    "part": {
+      "left": "Vänster",
+      "middle": "Mitten",
+      "right": "Höger",
+      "chair": "Stol",
+      "wood": "Trä"
+    },
+    "remove": "Ta bort"
   },
   "look": {
     "open": "Ändra utseende",

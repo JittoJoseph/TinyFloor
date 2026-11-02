@@ -94,7 +94,8 @@
     "aloneTitle": "Ci sei solo tu sul piano",
     "aloneBody": "Manda il link: chi lo apre entra accanto a te.",
     "aloneQuiet": "Quando entra qualcun altro, comparirà qui.",
-    "inviteSomeone": "Invita qualcuno"
+    "inviteSomeone": "Invita qualcuno",
+    "walkTo": "Raggiungi {name}"
   },
   "call": {
     "incoming": "Ti sta chiamando",
@@ -214,6 +215,7 @@
     "download": "Scarica",
     "messages": "Messaggi",
     "searching": "Ricerca…",
+    "heldSearch": "Cercato negli ultimi {days} giorni. Pro cerca ovunque.",
     "filesMax": "Fino a {count} file alla volta.",
     "fileTooBig": "I file possono arrivare a 10 MB.",
     "fileSlowDown": "Troppi file insieme. Riprova tra un minuto.",
@@ -229,6 +231,10 @@
     "replyingTo": "Rispondi a <strong>{name}</strong>",
     "cancelReply": "Annulla risposta",
     "replyGone": "Il messaggio originale è stato eliminato",
+    "replyHeld": "Un messaggio meno recente",
+    "heldTitle": "I messaggi più vecchi di {days} giorni sono su Pro",
+    "heldBody": "Vengono conservati, mai eliminati.",
+    "heldAction": "Scopri Pro",
     "replyFiles": "{count, plural, one {# file} other {# file}}",
     "typingOne": "{name} sta scrivendo",
     "typingTwo": "{a} e {b} stanno scrivendo",
@@ -390,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Salvalo nel tuo account",
       "accountBody": "Così resta tuo e il tuo team può trovarlo. Bastano pochi secondi."
+    },
+    "dock": {
+      "title": "Crea il tuo ufficio",
+      "start": "Inizia"
     }
   },
   "office": {
@@ -672,24 +682,15 @@
     "asked": "Invitato"
   },
   "help": {
-    "title": "Aiuto e feedback",
-    "officeSees": "Arriva al team di TinyFloor e apre un ticket nella Chat che tutti in {office} possono seguire.",
-    "lobbySees": "Arriva al team di TinyFloor e apre un ticket nella tua Chat. Lo vedi solo tu.",
-    "placeholder": "Cosa è successo, e cosa ti aspettavi?",
-    "context": "Aggiungiamo la pagina in cui sei e il tuo browser, così possiamo controllare.",
-    "send": "Invia",
-    "sending": "Invio in corso",
+    "title": "Scrivi al team di TinyFloor",
     "error": "Non è stato inviato. Riprova.",
     "slowDown": "Hai inviato molto nell'ultima ora. Riprova tra poco.",
-    "support": "Supporto TinyFloor",
-    "open": "Aperto",
+    "support": "Team di TinyFloor",
     "closed": "Chiuso",
     "message": "Scrivi al team di TinyFloor",
-    "closedNote": "Il team di TinyFloor l'ha chiuso. Ancora bloccato? Scrivici di nuovo da Aiuto e feedback.",
-    "ticketOffice": "Tutti in {office} possono seguirlo e aggiungere qualcosa. Il team di TinyFloor risponde qui.",
-    "ticketLobby": "Lo vedete solo tu e il team di TinyFloor. Rispondiamo qui.",
-    "nothingOpen": "Al momento non c'è niente di aperto con il team di TinyFloor.",
-    "emailUs": "Preferisci l'email? <link>{email}</link>"
+    "closedNote": "Questa conversazione è chiusa. Scrivici di nuovo quando vuoi e la riprendiamo.",
+    "ticketOffice": "Domande, idee, qualcosa che non funziona: scrivi a chi fa TinyFloor. Leggiamo ogni messaggio e rispondiamo qui. Tutti in {office} possono vedere questa conversazione.",
+    "ticketLobby": "Domande, idee, qualcosa che non funziona: scrivi a chi fa TinyFloor. Leggiamo ogni messaggio e rispondiamo qui. Solo tu puoi vedere questa conversazione."
   },
   "billing": {
     "settingUp": "Pagamento ricevuto. Attivazione del piano…",
@@ -720,7 +721,8 @@
       "wholeTeam": "Tutto il tuo team, su un solo piano",
       "support": "Assistenza prioritaria dal nostro team",
       "assurance": "Disdici quando vuoi. Rimborso completo entro 14 giorni.",
-      "meetings": "Riunioni tutte le volte che serve al tuo team"
+      "meetings": "Riunioni tutte le volte che serve al tuo team",
+      "history": "Tutta la cronologia della chat"
     },
     "page": {
       "notice": {
@@ -739,6 +741,7 @@
       "freePer": "per sempre",
       "freeSeats": "Fino a {seats} persone",
       "freeEverything": "Piano, chat, riunioni e video HD",
+      "freeHistory": "{days} giorni di cronologia della chat",
       "invoices": "Fatture",
       "keep": "Tieni Pro",
       "updateCard": "Aggiorna carta",
@@ -806,7 +809,11 @@
     "shareNote": "Invialo da un'app su questo dispositivo",
     "full": "Nessuno di nuovo può unirsi: il piano di {office} accoglie {seats} persone.",
     "fullMember": "Un admin può tenere Pro per fare spazio.",
-    "keepPro": "Tieni Pro"
+    "keepPro": "Tieni Pro",
+    "ways": {
+      "message": "Messaggio",
+      "email": "Email"
+    }
   },
   "desk": {
     "claimConfirm": "Prendi",
@@ -816,31 +823,35 @@
     "claimed": "Presa"
   },
   "decorate": {
-    "open": "Arreda",
-    "title": "Arreda la tua scrivania",
-    "close": "Chiudi",
-    "things": "Oggetti",
-    "chair": "Sedia",
+    "title": "La tua scrivania",
     "shelf": {
-      "all": "Tutto",
       "tech": "Tecnologia",
       "lamps": "Lampade",
       "personal": "Personale",
-      "setups": "Postazioni",
-      "chairs": "Sedie"
+      "setups": "Postazioni"
     },
-    "hint": "Scegli qualcosa per la tua scrivania. Trascina gli oggetti per spostarli.",
-    "swapHint": "Scegli qualcosa con cui sostituirlo.",
-    "full": "La scrivania è piena: togli qualcosa per aggiungerne altri.",
-    "count": "Oggetti: {count} su {max}",
     "undo": "Annulla",
     "redo": "Ripeti",
     "reset": "Ripristina",
     "resetConfirm": "Rimettere la scrivania com'era?",
     "cancel": "Annulla",
     "done": "Fatto",
-    "remove": "Togli dalla scrivania",
-    "deselect": "Fatto con questo"
+    "wood": {
+      "maple": "Acero",
+      "oak": "Rovere",
+      "beech": "Faggio",
+      "walnut": "Noce",
+      "white": "Bianco",
+      "graphite": "Grafite"
+    },
+    "part": {
+      "left": "Sinistra",
+      "middle": "Centro",
+      "right": "Destra",
+      "chair": "Sedia",
+      "wood": "Legno"
+    },
+    "remove": "Rimuovi"
   },
   "look": {
     "open": "Cambia aspetto",

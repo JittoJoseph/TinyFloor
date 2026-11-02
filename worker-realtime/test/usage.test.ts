@@ -96,7 +96,7 @@ describe("usage totals", () => {
     await ava.next("welcome");
     await backdate(room, 6, 0);
 
-    await exports.RealtimeAdmin.closeRoom(room);
+    await exports.RealtimeAdmin.forgetOffice(room);
     await ava.closed();
     await vi.waitFor(async () => expect(await usageOf(room)).toEqual({ peak_people: 1, person_minutes: 6, sfu_minutes: 0 }), {
       timeout: 5000,

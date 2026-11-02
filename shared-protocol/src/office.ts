@@ -1,15 +1,16 @@
-import { FLOOR, type Floor } from "./map";
+import { FLOOR, type DeskSpot, type Floor } from "./map";
+import { wallSolids, type ShellMap } from "./shell";
 
 /**
  * An office is its floor (the Startup template, map.ts) and the changes made
  * to it, each kept against one piece's key (docs/customization.md). For now
- * the changes are to desks, by whoever has the desk: the things on it and its
- * chair. One set of rules, here, for the floor that draws a change and the
+ * the changes are to desks, by whoever has the desk: what stands in each of
+ * its spots, its chair and its wood. One set of rules, here, for the floor that draws a change and the
  * room that lets it be made.
  */
 
-/** A change to one piece: taken away, or swapped and moved; a key the floor doesn't have is a thing added to a desk. */
-export type PieceChange = { hidden: true } | { item?: string; at?: [number, number] };
+/** A change to one piece: taken away, or another in its place. A desk's spot the floor left empty is given a thing the same way. */
+export type PieceChange = { hidden: true } | { item: string };
 
 export type PieceChanges = Record<string, PieceChange>;
 
@@ -23,23 +24,25 @@ export interface OfficePiece {
   desk?: string;
 }
 
-/** The most things a desk takes, the floor's own included: a working desk, not a cluttered one. */
-export const DESK_THINGS_MAX = 8;
-/** Things are placed to the art's pixels: two of ours. */
-const GRID = 2;
-/** Added things' keys: their desk's key, then this, then a short id of their own. */
-const ADDED = "/+";
+/** A spot's key: its desk's, then the spot's own. */
+export const spotKey = (desk: string, spot: string) => `${desk}/${spot}`;
 
-/** Which desk a piece is, or belongs to: its own key's desk, an added thing's, or none. */
-export function deskOfKey(key: string, floor: Floor = FLOOR): string | null {
-  const added = key.indexOf(ADDED);
-  if (added > 0) return floor.desks[key.slice(0, added)] ? key.slice(0, added) : null;
-  return floor.pieces.find((piece) => piece.key === key)?.desk ?? null;
+/** The desk and spot a key names, if it names one. */
+export function spotOfKey(key: string, floor: Floor = FLOOR): { desk: string; spot: DeskSpot } | null {
+  const cut = key.lastIndexOf("/");
+  if (cut <= 0) return null;
+  const desk = key.slice(0, cut);
+  const spot = floor.desks[desk]?.spots.find((one) => one.id === key.slice(cut + 1));
+  return spot ? { desk, spot } : null;
 }
 
-/** A new key for a thing added to a desk. */
-export function addedKey(desk: string): string {
-  return `${desk}${ADDED}${Math.random().toString(36).slice(2, 8)}`;
+/** Which desk a piece is, or belongs to: its body, a spot on it, its chair; or none. */
+export function deskOfKey(key: string, floor: Floor = FLOOR): string | null {
+  const body = Object.entries(floor.desks).find(([, desk]) => desk.body?.key === key);
+  if (body) return body[0];
+  const spot = spotOfKey(key, floor);
+  if (spot) return spot.desk;
+  return floor.pieces.find((piece) => piece.key === key)?.desk ?? null;
 }
 
 /** The desk whose seat this is, if it's a desk's. */
@@ -60,100 +63,95 @@ function chairAt(floor: Floor, desk: string, item: string): { x: number; y: numb
   return { x, y, depth: y + option.sortY };
 }
 
-/** Where a thing at `y` stands: the foot of its pixels. */
-export const footOf = (item: string, y: number, floor: Floor = FLOOR) => y + (floor.things[item]?.art[3] ?? floor.things[item]?.size[1] ?? 0);
+/** Whether a thing can stand in a spot: one of the desk's set that suits its side, its pixels no wider than the spot. */
+export function fitsIn(desk: string, spot: DeskSpot, item: string, floor: Floor = FLOOR): boolean {
+  const spec = floor.desks[desk];
+  const thing = floor.things[item];
+  if (!spec || !thing || (thing.facing !== "any" && thing.facing !== spec.side)) return false;
+  if (spec.set && thing.set !== spec.set) return false;
+  return thing.art[2] - thing.art[0] <= spot.x[1] - spot.x[0];
+}
 
-/** A thing on a desk is drawn just over the desk, the nearer one (lower on screen) over the farther. */
-const thingDepth = (floor: Floor, desk: string, y: number, item: string) => floor.desks[desk].depth + footOf(item, y, floor) / 10000;
+/** Where a thing stands in a spot: its pixels centred across it, on the art's pixels, their foot on its line, drawn just over the desk. */
+export function placeIn(desk: string, spot: DeskSpot, item: string, floor: Floor = FLOOR): { x: number; y: number; depth: number } {
+  const [left, , right, bottom] = floor.things[item].art;
+  const x = Math.round(((spot.x[0] + spot.x[1]) / 2 - (left + right) / 2) / 2) * 2;
+  return { x, y: spot.foot - bottom, depth: floor.desks[desk].depth + spot.foot / 10000 };
+}
+
+const itemOf = (change: PieceChange): string | null => ("item" in change && typeof change.item === "string" ? change.item : null);
 
 /**
  * The office as it's drawn: the floor's pieces with the changes applied, and
- * the things people added, in draw order. A change that doesn't fit the floor
- * any more (its desk gone, its thing not a thing) is left out.
+ * things put in the spots the floor left empty, in draw order. A change that
+ * doesn't fit the floor any more (its desk or spot gone, its thing not one
+ * that fits there) is left out.
  */
 export function officePieces(changes: PieceChanges, floor: Floor = FLOOR): OfficePiece[] {
   const pieces: OfficePiece[] = [];
   for (const piece of floor.pieces) {
     const change = changes[piece.key];
-    if (!change) {
+    const item = change ? itemOf(change) : null;
+    if (change && "hidden" in change) continue;
+    if (!item) {
       pieces.push(piece);
       continue;
     }
-    if ("hidden" in change) continue;
-    const item = change.item ?? piece.item;
     if (piece.key.endsWith("/chair") && piece.desk) {
       const at = chairAt(floor, piece.desk, item);
-      if (at) pieces.push({ ...piece, item, ...at });
-      else pieces.push(piece);
+      pieces.push(at ? { ...piece, item, ...at } : piece);
       continue;
     }
-    const [x, y] = change.at ?? [piece.x, piece.y];
-    pieces.push({ ...piece, item, x, y, depth: piece.desk && floor.things[item] ? thingDepth(floor, piece.desk, y, item) : piece.depth });
+    const spot = spotOfKey(piece.key, floor);
+    if (spot) pieces.push(fitsIn(spot.desk, spot.spot, item, floor) ? { ...piece, item, ...placeIn(spot.desk, spot.spot, item, floor) } : piece);
+    else pieces.push({ ...piece, item });
   }
+  const own = new Set(floor.pieces.map((piece) => piece.key));
   for (const [key, change] of Object.entries(changes)) {
-    const desk = key.includes(ADDED) ? deskOfKey(key, floor) : null;
-    if (!desk || "hidden" in change || !change.item || !change.at || !floor.things[change.item]) continue;
-    const [x, y] = change.at;
-    pieces.push({ key, item: change.item, x, y, depth: thingDepth(floor, desk, y, change.item), desk });
+    const item = itemOf(change);
+    const spot = own.has(key) || !item ? null : spotOfKey(key, floor);
+    if (!spot || !item || !fitsIn(spot.desk, spot.spot, item, floor)) continue;
+    pieces.push({ key, item, ...placeIn(spot.desk, spot.spot, item, floor), desk: spot.desk });
   }
   return pieces.sort((a, b) => a.depth - b.depth);
 }
 
-/** The things standing on a desk now, its own and added, as they're drawn. */
-export function thingsOn(desk: string, changes: PieceChanges, floor: Floor = FLOOR): OfficePiece[] {
-  const chair = floor.desks[desk]?.chair.key;
-  return officePieces(changes, floor).filter((piece) => piece.desk === desk && piece.key !== chair);
-}
-
-/** Where a thing could stand on a desk: its pixels within the desk's length and under its ceiling, their foot on its top. */
-export function fitsOn(desk: string, item: string, [x, y]: [number, number], floor: Floor = FLOOR): boolean {
-  const spec = floor.desks[desk];
-  const thing = floor.things[item];
-  if (!spec || !thing) return false;
-  if (thing.facing !== "any" && thing.facing !== spec.side) return false;
-  if (!Number.isInteger(x) || !Number.isInteger(y) || x % GRID || y % GRID) return false;
-  const [left, top, right] = thing.art;
-  if (x + left < spec.along[0] || x + right > spec.along[1]) return false;
-  if (spec.ceiling !== undefined && y + top < spec.ceiling) return false;
-  const foot = footOf(item, y, floor);
-  return foot >= spec.feet[0] && foot <= spec.feet[1];
-}
-
 /**
- * Where a thing goes to stand at a point, kept on the desk: its pixels'
- * middle at `x` and their foot at `y`, snapped to the art's pixels, within
- * the desk's length and its band. Null if it can't stand on this desk at all.
+ * What can't be walked through as the office is now: its walls, and what each
+ * piece standing on it says of itself. Worked out here, from the pieces, so a
+ * piece swapped is solid where it is, with nothing to bake.
  */
-export function placeOn(desk: string, item: string, x: number, y: number, floor: Floor = FLOOR): [number, number] | null {
-  const spec = floor.desks[desk];
-  const thing = floor.things[item];
-  if (!spec || !thing || (thing.facing !== "any" && thing.facing !== spec.side)) return null;
-  const [left, top, right, bottom] = thing.art;
-  // Within the desk's length and band (and under its ceiling), rounded in to the art's pixels.
-  const fit = (value: number, low: number, high: number) =>
-    Math.min(Math.max(Math.round(value / GRID) * GRID, Math.ceil(low / GRID) * GRID), Math.floor(high / GRID) * GRID);
-  const at: [number, number] = [fit(x - (left + right) / 2, spec.along[0] - left, spec.along[1] - right), fit(y - bottom, Math.max(spec.feet[0] - bottom, (spec.ceiling ?? -Infinity) - top), spec.feet[1] - bottom)];
-  return fitsOn(desk, item, at, floor) ? at : null;
+export function officeSolids(pieces: readonly OfficePiece[], floor: Floor = FLOOR): Array<[number, number, number, number]> {
+  const solids = wallSolids(floor.shell as ShellMap);
+  for (const piece of pieces) {
+    for (const [x, y, w, h] of floor.colliders[piece.item] ?? []) solids.push([piece.x + x, piece.y + y, w, h]);
+  }
+  return solids;
+}
+
+/** What stands in each of a desk's spots now, by the spot's key: null when it's empty. */
+export function spotsOn(desk: string, changes: PieceChanges, floor: Floor = FLOOR): Record<string, string | null> {
+  const drawn = new Map(officePieces(changes, floor).map((piece) => [piece.key, piece.item]));
+  return Object.fromEntries(floor.desks[desk].spots.map((spot) => [spotKey(desk, spot.id), drawn.get(spotKey(desk, spot.id)) ?? null]));
 }
 
 /**
  * Whether whoever has `desk` may make this change (null: putting the piece
- * back as the floor has it): only to their own desk's pieces, a thing to
- * another thing that fits there, a chair to another chair for that side, no
- * more than DESK_THINGS_MAX things on it.
+ * back as the floor has it): only to their own desk's pieces, a spot's thing
+ * to one that fits there (or none), a chair to another chair for that side,
+ * the desk to another of its woods.
  */
 export function canChange(key: string, change: PieceChange | null, desk: string | null, changes: PieceChanges, floor: Floor = FLOOR): boolean {
   if (!desk || !floor.desks[desk] || deskOfKey(key, floor) !== desk) return false;
   if (change === null) return true;
-  const piece = floor.pieces.find((one) => one.key === key);
-  const chair = floor.desks[desk].chair.key;
-  if (key === chair) return !("hidden" in change) && !("at" in change) && !!change.item && !!chairAt(floor, desk, change.item);
-  if ("hidden" in change) return !!piece;
-  const now = officePieces(changes, floor).find((one) => one.key === key);
-  const item = change.item ?? now?.item ?? piece?.item;
-  const at = change.at ?? (now ? ([now.x, now.y] as [number, number]) : undefined);
-  if (!item || !at || !fitsOn(desk, item, at, floor)) return false;
-  // A new thing, or one put back on the desk, counts against how many it takes.
-  const showing = thingsOn(desk, changes, floor).some((one) => one.key === key);
-  return showing || thingsOn(desk, changes, floor).length < DESK_THINGS_MAX;
+  const spec = floor.desks[desk];
+  const item = itemOf(change);
+  if (key === spec.chair.key) return !!item && !!chairAt(floor, desk, item);
+  // The desk itself: only into another of its woods, where it stands.
+  if (key === spec.body?.key) return !!item && spec.body.options.includes(item);
+  const spot = spotOfKey(key, floor);
+  if (!spot) return false;
+  // Emptying a spot hides what the floor put there; one it left empty is emptied by putting it back (null).
+  if ("hidden" in change) return floor.pieces.some((piece) => piece.key === key);
+  return !!item && fitsIn(desk, spot.spot, item, floor);
 }

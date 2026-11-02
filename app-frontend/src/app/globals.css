@@ -220,7 +220,7 @@
   background: rgb(17 17 19 / 0.98);
 }
 
-/* The plus in its dot, which turns into a check in a green one once the desk is yours (like DoneChip). */
+/* The plus in its dot, which turns into a check in a green one once the desk is yours. */
 .desk-claim-dot {
   position: relative;
   display: flex;

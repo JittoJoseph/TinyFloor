@@ -23,7 +23,7 @@ import {
 import { motion, useReducedMotion } from "motion/react";
 import { GENERAL_CHANNEL, cleanChannelName, dmChannelId, dmMembers, isDm, type ChannelSummary } from "@shared/chat";
 import { Link, useRouter } from "@/lib/i18n/navigation";
-import { chat } from "@/lib/ChatSocket";
+import { chat, type Found } from "@/lib/ChatSocket";
 import { useChat, useTyping } from "@/lib/useChat";
 import { useAuth } from "@/contexts/AuthContext";
 import { useFloorStatus } from "@/lib/floor";
@@ -39,6 +39,7 @@ import { PresenceDock } from "./PresenceDock";
 import { NotifyCard } from "./chat/NotifyCard";
 import { usePlace, useWalkTo, type PlacePerson } from "./place";
 import { Conversation, ConversationIntro, type Line } from "./chat/Conversation";
+import { Held } from "./chat/Held";
 import { addToComposer, Composer, focusComposer } from "./chat/Composer";
 import { HelpTicket } from "./HelpTicket";
 import { Logo } from "@/components/app/Logo";
@@ -51,7 +52,6 @@ import { hoursAhead, timeIn } from "@/lib/timeZone";
 import { usePerson } from "@/lib/people";
 import { SpotifyActivity } from "./SpotifyActivity";
 import { Bone } from "./HomeSkeletons";
-import type { ChatMessage } from "@shared/chat";
 
 /**
  * Chat: channels and direct messages, beside the floor. The same screen in an
@@ -97,7 +97,7 @@ export function ChatView({ channel }: { channel?: string }) {
   const support = open === SUPPORT_CHANNEL;
   // Up in an empty box: edit your last message here.
   const [editLast, setEditLast] = useState(0);
-  const { ticket, view: ticketView } = useHelp();
+  const { ticket } = useHelp();
   const people = place.people;
   const personById = useMemo(() => new Map(people.map((one) => [one.id, one])), [people]);
   const names = useMemo(() => new Map(people.map((one) => [one.id, one.displayName])), [people]);
@@ -130,12 +130,12 @@ export function ChatView({ channel }: { channel?: string }) {
 
   // Searching messages from the palette: asked as you type, a moment after you stop.
   const [query, setQuery] = useState("");
-  const [found, setFound] = useState<{ q: string; messages: ChatMessage[] } | null>(null);
+  const [found, setFound] = useState<(Found & { q: string }) | null>(null);
   useEffect(() => {
     const q = query.trim();
     if (q.length < 2) return;
     let current = true;
-    const timer = setTimeout(() => void chat.search(q).then((messages) => current && setFound({ q, messages })), 220);
+    const timer = setTimeout(() => void chat.search(q).then((answer) => current && setFound({ q, ...answer })), 220);
     return () => {
       current = false;
       clearTimeout(timer);
@@ -151,11 +151,9 @@ export function ChatView({ channel }: { channel?: string }) {
   useEffect(() => {
     if (!support && state.ready) chat.warm(open);
   }, [support, state.ready, open]);
-  // The ticket is read often while Chat is open, so the team's answers turn up here.
+  // The conversation with the team, as Chat opens; after that, the chat socket says when it changes (help_changed).
   useEffect(() => {
     void help.refresh(true);
-    const timer = setInterval(() => document.visibilityState === "visible" && void help.refresh(true), 15_000);
-    return () => clearInterval(timer);
   }, []);
   // A direct message's address with someone missing from it goes nowhere: back to the start.
   const broken = isDm(open) && !pair;
@@ -205,6 +203,7 @@ export function ChatView({ channel }: { channel?: string }) {
       body: message.reply.body,
       files: message.reply.files,
       gone: message.reply.gone,
+      held: message.reply.held,
     },
   }));
 
@@ -427,21 +426,19 @@ export function ChatView({ channel }: { channel?: string }) {
             </Section>
           </nav>
 
-          {/* The ticket with the team stays out of the way, at the very bottom, while one is open. */}
-          {(ticket || (support && ticketView)) && (
-            <div className="shrink-0 border-t border-border px-2 py-2">
-              <Row
-                href={place.paths.chat(SUPPORT_CHANNEL)}
-                active={support}
-                unread={ticket?.unread ?? 0}
-                count={ticket?.unread ?? 0}
-                icon={<Logo size={18} />}
-                label={th("support")}
-              />
-            </div>
-          )}
+          {/* The conversation with the TinyFloor team, always there, out of the way at the very bottom. */}
+          <div className="shrink-0 border-t border-border px-2 py-2">
+            <Row
+              href={place.paths.chat(SUPPORT_CHANNEL)}
+              active={support}
+              unread={ticket?.unread ?? 0}
+              count={ticket?.unread ?? 0}
+              icon={<Logo size={18} />}
+              label={th("support")}
+            />
+          </div>
 
-          {!lobby && dms.length > 0 && <NotifyCard />}
+          {!lobby && (dms.length > 0 || ticket) && <NotifyCard />}
           <PresenceDock place={place.name} settingsHref={place.paths.settings} />
           <CommandPalette
             items={items}
@@ -452,6 +449,7 @@ export function ChatView({ channel }: { channel?: string }) {
             onQueryChange={setQuery}
             found={foundItems}
             searching={query.trim().length >= 2 && found?.q !== query.trim() ? t("searching") : undefined}
+            note={found?.q === query.trim() && found.held ? t("heldSearch", { days: found.held }) : undefined}
           />
         </>
       }
@@ -532,6 +530,7 @@ export function ChatView({ channel }: { channel?: string }) {
           lines={lines}
           me={me}
           more={state.more[open] ?? false}
+          held={state.held[open] ? <Held days={state.held[open]} href={`${place.paths.settings}#plan`} /> : undefined}
           onOlder={() => chat.older(open)}
           firstUnread={firstUnread.channel === open ? firstUnread.id : null}
           editLast={editLast}

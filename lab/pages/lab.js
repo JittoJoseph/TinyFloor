@@ -659,7 +659,7 @@ class Stage extends Phaser.Scene {
       for (let x = 0; x < COLS; x++) this.floor.fillStyle((x + y) % 2 ? 0xd9d5cc : 0xe2ded5, 1).fillRect(x * TILE, y * TILE, TILE, TILE);
     }
     avatarAnims(this);
-    this.avatar = this.add.sprite(COLS * TILE * 0.5, ROWS * TILE - 24, "avatar", 0).setScale(2).setOrigin(0.5, 1);
+    this.avatar = this.add.sprite(COLS * TILE * 0.5, ROWS * TILE - 24, "avatar", 0).setOrigin(0.5, 1);
     this.avatar.play("idle-down");
     this.keys = this.input.keyboard.addKeys("W,A,S,D,UP,LEFT,DOWN,RIGHT,E", false);
     this.keys.E.on("down", () => !typing() && this.toggleSit());

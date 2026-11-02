@@ -1,4 +1,5 @@
 import type { RoomTicket } from "@/lib/api";
+import atlas from "@shared/catalog/atlas.json";
 import { PRESETS, characterLayers } from "@shared/character";
 import { floorWalls } from "./floorWalls";
 
@@ -10,7 +11,8 @@ import { floorWalls } from "./floorWalls";
  * The office itself (shared-protocol map.ts) comes with the code.
  */
 export const FLOOR_FILES = {
-  items: "/catalog/floor-items.png",
+  /** At an address naming its hash (lab/build.mjs), so it's always the one its frames are for. */
+  items: `/${atlas.image}`,
 };
 
 let warming = false;

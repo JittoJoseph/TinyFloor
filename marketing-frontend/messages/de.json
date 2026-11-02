@@ -1227,6 +1227,7 @@
         "everything": "Alles aus Free, dazu",
         "team": "Platz für dein ganzes Team",
         "often": "Meetings, so oft dein Team will",
+        "history": "Euer ganzer Chatverlauf",
         "help": "Bevorzugte Hilfe von denen, die es bauen",
         "included": "Was du bekommst"
       },
@@ -1364,6 +1365,9 @@
       "callsNote": "Werden nie gezählt",
       "support": "Bevorzugte Hilfe",
       "wholeTeam": "Ganzes Team",
+      "history": "Chatverlauf",
+      "historyDays": "{days} Tage",
+      "historyAll": "Alles",
       "meetings": "Gruppen-Meetings",
       "features": {
         "chat": "Kanäle und Nachrichten",
@@ -1414,6 +1418,10 @@
       {
         "q": "Was passiert, wenn die Testphase endet?",
         "a": "Das Büro wechselt zu Free, wenn ihr nicht Pro wählt. Niemand wird entfernt: Zwei Wochen lang können alle weiter hereinkommen, nur über 3 Personen hinaus tritt niemand Neues bei. Danach können 3 Personen gleichzeitig auf der Fläche sein, und der Chat bleibt für alle offen."
+      },
+      {
+        "q": "Bleibt der Chatverlauf bei Free erhalten?",
+        "a": "Ja, vollständig. Free zeigt die Nachrichten der letzten 90 Tage, Pro zeigt alles. Beim Wechsel zu Pro geht also nichts verloren."
       },
       {
         "q": "Steigt der Preis?",

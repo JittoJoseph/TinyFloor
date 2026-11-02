@@ -1227,6 +1227,7 @@
         "everything": "Kaikki Freen ominaisuudet ja lisäksi",
         "team": "Tilaa koko tiimille",
         "often": "Palavereja niin usein kuin tiimi tarvitsee",
+        "history": "Koko keskusteluhistoria",
         "help": "Etusija tukeen suoraan tekijöiltä",
         "included": "Mitä saat"
       },
@@ -1364,6 +1365,9 @@
       "callsNote": "Ei lasketa koskaan",
       "support": "Ensisijainen apu",
       "wholeTeam": "Koko tiimi",
+      "history": "Keskusteluhistoria",
+      "historyDays": "{days} päivää",
+      "historyAll": "Kaikki",
       "meetings": "Ryhmäkokoukset",
       "features": {
         "chat": "Kanavat ja viestit",
@@ -1414,6 +1418,10 @@
       {
         "q": "Mitä tapahtuu, kun kokeilu päättyy?",
         "a": "Toimisto siirtyy Freehen, ellette valitse Prota. Ketään ei poisteta: vielä kahden viikon ajan kaikki pääsevät sisään, mutta yli 3 hengen jälkeen uusia ei liity. Sen jälkeen kerroksessa voi olla 3 henkeä kerrallaan, ja chat pysyy kaikille auki."
+      },
+      {
+        "q": "Säilyykö keskusteluhistoria Free-paketissa?",
+        "a": "Kyllä, kokonaan. Free näyttää viimeisten 90 päivän viestit ja Pro kaiken, joten mitään ei katoa, kun siirrytte Prohon."
       },
       {
         "q": "Nouseeko hinta?",

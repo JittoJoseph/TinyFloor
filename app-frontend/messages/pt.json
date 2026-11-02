@@ -94,7 +94,8 @@
     "aloneTitle": "Só você no andar",
     "aloneBody": "Envie o link, e quem abrir aparece ao seu lado.",
     "aloneQuiet": "Quando mais alguém entrar, aparece aqui.",
-    "inviteSomeone": "Convidar alguém"
+    "inviteSomeone": "Convidar alguém",
+    "walkTo": "Ir até {name}"
   },
   "call": {
     "incoming": "Está ligando para você",
@@ -214,6 +215,7 @@
     "download": "Baixar",
     "messages": "Mensagens",
     "searching": "Buscando…",
+    "heldSearch": "Busca nos últimos {days} dias. O Pro busca em tudo.",
     "filesMax": "Até {count} arquivos por vez.",
     "fileTooBig": "Arquivos podem ter até 10 MB.",
     "fileSlowDown": "Arquivos demais de uma vez. Tente de novo em um minuto.",
@@ -229,6 +231,10 @@
     "replyingTo": "Respondendo a <strong>{name}</strong>",
     "cancelReply": "Parar de responder",
     "replyGone": "A mensagem original foi apagada",
+    "replyHeld": "Uma mensagem mais antiga",
+    "heldTitle": "Mensagens com mais de {days} dias estão no Pro",
+    "heldBody": "Elas ficam guardadas e nunca são apagadas.",
+    "heldAction": "Ver o Pro",
     "replyFiles": "{count, plural, one {# arquivo} other {# arquivos}}",
     "typingOne": "{name} está digitando",
     "typingTwo": "{a} e {b} estão digitando",
@@ -390,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Guarde na sua conta",
       "accountBody": "Assim ele fica seu e sua equipe consegue encontrá-lo. Leva poucos segundos."
+    },
+    "dock": {
+      "title": "Crie o seu próprio escritório",
+      "start": "Começar"
     }
   },
   "office": {
@@ -672,24 +682,15 @@
     "asked": "Convidado"
   },
   "help": {
-    "title": "Ajuda e feedback",
-    "officeSees": "Vai para a equipe do TinyFloor e abre um ticket no Chat que todos em {office} podem acompanhar.",
-    "lobbySees": "Vai para a equipe do TinyFloor e abre um ticket no seu Chat. Só você vê.",
-    "placeholder": "O que aconteceu, e o que você esperava?",
-    "context": "Incluímos a página em que você está e o seu navegador, para podermos investigar.",
-    "send": "Enviar",
-    "sending": "Enviando",
+    "title": "Fale com a equipe do TinyFloor",
     "error": "Não foi enviado. Tente de novo.",
     "slowDown": "Você enviou muito na última hora. Tente de novo daqui a pouco.",
-    "support": "Suporte TinyFloor",
-    "open": "Aberto",
+    "support": "Equipe do TinyFloor",
     "closed": "Fechado",
     "message": "Mensagem para a equipe do TinyFloor",
-    "closedNote": "A equipe do TinyFloor fechou isto. Ainda com problema? Fale com a gente de novo em Ajuda e feedback.",
-    "ticketOffice": "Todos em {office} podem acompanhar e adicionar algo. A equipe do TinyFloor responde aqui.",
-    "ticketLobby": "Só você e a equipe do TinyFloor veem isto. Respondemos aqui.",
-    "nothingOpen": "Não há nada aberto com a equipe do TinyFloor agora.",
-    "emailUs": "Prefere e-mail? <link>{email}</link>"
+    "closedNote": "Esta conversa foi encerrada. Escreva de novo quando quiser e a gente continua.",
+    "ticketOffice": "Perguntas, ideias, algo que não funciona: escreva para quem faz o TinyFloor. Lemos cada mensagem e respondemos aqui. Todos em {office} podem ver esta conversa.",
+    "ticketLobby": "Perguntas, ideias, algo que não funciona: escreva para quem faz o TinyFloor. Lemos cada mensagem e respondemos aqui. Só você pode ver esta conversa."
   },
   "billing": {
     "settingUp": "Pagamento recebido. Ativando o plano…",
@@ -720,7 +721,8 @@
       "wholeTeam": "Toda a sua equipe, em um só andar",
       "support": "Ajuda prioritária da nossa equipe",
       "assurance": "Cancele quando quiser. Reembolso total em até 14 dias.",
-      "meetings": "Reuniões sempre que sua equipe precisar"
+      "meetings": "Reuniões sempre que sua equipe precisar",
+      "history": "Todo o histórico do chat"
     },
     "page": {
       "notice": {
@@ -739,6 +741,7 @@
       "freePer": "para sempre",
       "freeSeats": "Até {seats} pessoas",
       "freeEverything": "Andar, chat, reuniões e vídeo HD",
+      "freeHistory": "{days} dias de histórico do chat",
       "invoices": "Faturas",
       "keep": "Ficar com o Pro",
       "updateCard": "Atualizar cartão",
@@ -806,7 +809,11 @@
     "shareNote": "Envie de qualquer app deste aparelho",
     "full": "Ninguém novo pode entrar: o plano de {office} comporta {seats} pessoas.",
     "fullMember": "Um admin pode manter o Pro para abrir espaço.",
-    "keepPro": "Manter o Pro"
+    "keepPro": "Manter o Pro",
+    "ways": {
+      "message": "Mensagem",
+      "email": "E-mail"
+    }
   },
   "desk": {
     "claimConfirm": "Reservar",
@@ -816,31 +823,35 @@
     "claimed": "Reservada"
   },
   "decorate": {
-    "open": "Decorar",
-    "title": "Decore sua mesa",
-    "close": "Fechar",
-    "things": "Itens",
-    "chair": "Cadeira",
+    "title": "A sua mesa",
     "shelf": {
-      "all": "Tudo",
       "tech": "Tecnologia",
       "lamps": "Luminárias",
       "personal": "Pessoal",
-      "setups": "Estações",
-      "chairs": "Cadeiras"
+      "setups": "Estações"
     },
-    "hint": "Escolha algo para sua mesa. Arraste os itens para movê-los.",
-    "swapHint": "Escolha algo para trocar.",
-    "full": "Sua mesa está cheia: tire algo para adicionar mais.",
-    "count": "Itens: {count} de {max}",
     "undo": "Desfazer",
     "redo": "Refazer",
     "reset": "Redefinir",
     "resetConfirm": "Deixar sua mesa como era?",
     "cancel": "Cancelar",
     "done": "Pronto",
-    "remove": "Tirar da mesa",
-    "deselect": "Pronto com isto"
+    "wood": {
+      "maple": "Bordo",
+      "oak": "Carvalho",
+      "beech": "Faia",
+      "walnut": "Nogueira",
+      "white": "Branco",
+      "graphite": "Grafite"
+    },
+    "part": {
+      "left": "Esquerda",
+      "middle": "Meio",
+      "right": "Direita",
+      "chair": "Cadeira",
+      "wood": "Madeira"
+    },
+    "remove": "Remover"
   },
   "look": {
     "open": "Mudar sua aparência",

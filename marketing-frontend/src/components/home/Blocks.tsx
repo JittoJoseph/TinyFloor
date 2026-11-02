@@ -312,7 +312,7 @@ export function PlanCards({ className, level = "h3" }: { className?: string; lev
             soonClassName={cn(action, "mt-6 bg-foreground/[0.07] text-muted-foreground")}
           />
           <p className="mt-3 text-center text-[12.5px] text-muted-foreground">{t("assurance")}</p>
-          <PlanList warm lead={t("list.everything")} items={[t("list.team"), t("list.often"), t("list.help")]} />
+          <PlanList warm lead={t("list.everything")} items={[t("list.team"), t("list.often"), t("list.history"), t("list.help")]} />
           <PlanFoot>
             <Zap className="mt-px size-3.5 shrink-0 text-brand" />
             {t("trial", { days: 14 })}

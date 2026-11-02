@@ -94,7 +94,8 @@
     "aloneTitle": "Alleen jij op de vloer",
     "aloneBody": "Stuur de link, en wie hem opent staat meteen naast je.",
     "aloneQuiet": "Zodra iemand anders binnenkomt, verschijnt die hier.",
-    "inviteSomeone": "Iemand uitnodigen"
+    "inviteSomeone": "Iemand uitnodigen",
+    "walkTo": "Naar {name} lopen"
   },
   "call": {
     "incoming": "Belt je",
@@ -214,6 +215,7 @@
     "download": "Downloaden",
     "messages": "Berichten",
     "searching": "Zoeken…",
+    "heldSearch": "Gezocht in de laatste {days} dagen. Pro zoekt in alles.",
     "filesMax": "Tot {count} bestanden tegelijk.",
     "fileTooBig": "Bestanden mogen tot 10 MB zijn.",
     "fileSlowDown": "Te veel bestanden tegelijk. Probeer het over een minuut opnieuw.",
@@ -229,6 +231,10 @@
     "replyingTo": "Antwoord aan <strong>{name}</strong>",
     "cancelReply": "Niet meer beantwoorden",
     "replyGone": "Het oorspronkelijke bericht is verwijderd",
+    "replyHeld": "Een ouder bericht",
+    "heldTitle": "Berichten ouder dan {days} dagen staan in Pro",
+    "heldBody": "Ze worden bewaard, nooit verwijderd.",
+    "heldAction": "Bekijk Pro",
     "replyFiles": "{count, plural, one {# bestand} other {# bestanden}}",
     "typingOne": "{name} is aan het typen",
     "typingTwo": "{a} en {b} zijn aan het typen",
@@ -390,6 +396,10 @@
     "officePrompt": {
       "accountTitle": "Bewaar het in je account",
       "accountBody": "Zo blijft het van jou en vindt je team het. Het duurt maar een paar seconden."
+    },
+    "dock": {
+      "title": "Maak je eigen kantoor",
+      "start": "Aan de slag"
     }
   },
   "office": {
@@ -672,24 +682,15 @@
     "asked": "Gevraagd"
   },
   "help": {
-    "title": "Hulp en feedback",
-    "officeSees": "Het gaat naar het TinyFloor-team en opent een ticket in Chat dat iedereen in {office} kan volgen.",
-    "lobbySees": "Het gaat naar het TinyFloor-team en opent een ticket in je Chat. Alleen jij ziet het.",
-    "placeholder": "Wat gebeurde er, en wat verwachtte je?",
-    "context": "We sturen de pagina waar je bent en je browser mee, zodat we het kunnen uitzoeken.",
-    "send": "Versturen",
-    "sending": "Wordt verstuurd",
+    "title": "Praat met het TinyFloor-team",
     "error": "Dat is niet verstuurd. Probeer het opnieuw.",
     "slowDown": "Je hebt het afgelopen uur veel gestuurd. Probeer het straks opnieuw.",
-    "support": "TinyFloor-support",
-    "open": "Open",
+    "support": "TinyFloor-team",
     "closed": "Gesloten",
     "message": "Bericht aan het TinyFloor-team",
-    "closedNote": "Het TinyFloor-team heeft dit gesloten. Loop je nog vast? Laat het ons opnieuw weten via Hulp en feedback.",
-    "ticketOffice": "Iedereen in {office} kan dit volgen en iets toevoegen. Het TinyFloor-team antwoordt hier.",
-    "ticketLobby": "Alleen jij en het TinyFloor-team zien dit. We antwoorden hier.",
-    "nothingOpen": "Er staat nu niets open bij het TinyFloor-team.",
-    "emailUs": "Liever per e-mail? <link>{email}</link>"
+    "closedNote": "Dit gesprek is gesloten. Schrijf ons wanneer je wilt, dan gaan we verder.",
+    "ticketOffice": "Vragen, ideeën, iets dat niet werkt: schrijf de mensen die TinyFloor maken. We lezen elk bericht en antwoorden hier. Iedereen in {office} kan dit gesprek zien.",
+    "ticketLobby": "Vragen, ideeën, iets dat niet werkt: schrijf de mensen die TinyFloor maken. We lezen elk bericht en antwoorden hier. Alleen jij ziet dit gesprek."
   },
   "billing": {
     "settingUp": "Betaling ontvangen. Het abonnement wordt ingesteld…",
@@ -720,7 +721,8 @@
       "wholeTeam": "Iedereen in je team, op één verdieping",
       "support": "Voorrang bij hulp van ons team",
       "assurance": "Altijd opzegbaar. Volledige terugbetaling binnen 14 dagen.",
-      "meetings": "Meetings zo vaak als je team nodig heeft"
+      "meetings": "Meetings zo vaak als je team nodig heeft",
+      "history": "Je hele chatgeschiedenis"
     },
     "page": {
       "notice": {
@@ -739,6 +741,7 @@
       "freePer": "voor altijd",
       "freeSeats": "Tot {seats} mensen",
       "freeEverything": "Vloer, chat, vergaderingen en HD-video",
+      "freeHistory": "{days} dagen chatgeschiedenis",
       "invoices": "Facturen",
       "keep": "Pro houden",
       "updateCard": "Kaart bijwerken",
@@ -806,7 +809,11 @@
     "shareNote": "Verstuur het met een app op dit apparaat",
     "full": "Niemand nieuw kan erbij: het abonnement van {office} biedt plek aan {seats} mensen.",
     "fullMember": "Een beheerder kan Pro houden om ruimte te maken.",
-    "keepPro": "Pro houden"
+    "keepPro": "Pro houden",
+    "ways": {
+      "message": "Bericht",
+      "email": "E-mail"
+    }
   },
   "desk": {
     "claimConfirm": "Claimen",
@@ -816,31 +823,35 @@
     "claimed": "Geclaimd"
   },
   "decorate": {
-    "open": "Inrichten",
-    "title": "Je bureau inrichten",
-    "close": "Sluiten",
-    "things": "Spullen",
-    "chair": "Stoel",
+    "title": "Jouw bureau",
     "shelf": {
-      "all": "Alles",
       "tech": "Techniek",
       "lamps": "Lampen",
       "personal": "Persoonlijk",
-      "setups": "Werkplekken",
-      "chairs": "Stoelen"
+      "setups": "Werkplekken"
     },
-    "hint": "Kies iets voor je bureau. Sleep spullen om ze te verplaatsen.",
-    "swapHint": "Kies iets om het mee te ruilen.",
-    "full": "Je bureau is vol: haal iets weg om meer toe te voegen.",
-    "count": "Spullen: {count} van {max}",
     "undo": "Ongedaan maken",
     "redo": "Opnieuw",
     "reset": "Herstellen",
     "resetConfirm": "Je bureau terugzetten zoals het was?",
     "cancel": "Annuleren",
     "done": "Klaar",
-    "remove": "Van het bureau halen",
-    "deselect": "Klaar hiermee"
+    "wood": {
+      "maple": "Esdoorn",
+      "oak": "Eiken",
+      "beech": "Beuken",
+      "walnut": "Notenhout",
+      "white": "Wit",
+      "graphite": "Grafiet"
+    },
+    "part": {
+      "left": "Links",
+      "middle": "Midden",
+      "right": "Rechts",
+      "chair": "Stoel",
+      "wood": "Hout"
+    },
+    "remove": "Weghalen"
   },
   "look": {
     "open": "Uiterlijk aanpassen",

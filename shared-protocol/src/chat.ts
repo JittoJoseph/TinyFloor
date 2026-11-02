@@ -114,6 +114,17 @@ export interface ChatReply {
   /** Files on it, for one that was only a picture. */
   files?: number;
   gone?: true;
+  /** Older than the office's plan shows (ticket.ts history): only that it's there. */
+  held?: true;
+}
+
+/** The conversation with the TinyFloor team, where Chat shows it: `/chat/~support`. A channel's name can't hold "~", so it's never one. */
+export const SUPPORT_CHANNEL = "~support";
+
+/** The team's newest words in the conversation with you, for a notification. */
+export interface HelpNews {
+  title: string;
+  body: string;
 }
 
 export interface ChatMessage {
@@ -176,20 +187,23 @@ export type ChatClientMessage =
 export type ChatServerMessage =
   | { t: "chat_ready"; me: string; channels: ChannelSummary[] }
   | { t: "chat_new"; message: ChatMessage }
-  | { t: "chat_page"; channel: string; messages: ChatMessage[]; more: boolean }
+  /** `held`: the days the office's plan shows, when there are older messages past them that aren't sent. */
+  | { t: "chat_page"; channel: string; messages: ChatMessage[]; more: boolean; held?: number }
   | { t: "chat_reacted"; seq: number; channel: string; emoji: string; by: string; on: boolean }
   | { t: "chat_channel"; channel: ChannelSummary }
   // `by` is who changed it: its author, or MODERATOR. A lobby direct message was never stored, so
   // the server can't check it; clients apply a change to one only when `by` is its author.
   | { t: "chat_edited"; seq: number; channel: string; body: string; edited: number; by: string; mentions?: string[] }
   | { t: "chat_meeting"; seq: number; channel: string; meeting: ChatMeeting }
-  | { t: "chat_found"; q: string; messages: ChatMessage[] }
+  /** `held`: the days the search looked through, when the office's plan keeps it to them. */
+  | { t: "chat_found"; q: string; messages: ChatMessage[]; held?: number }
   | { t: "chat_typing"; channel: string; userId: string; name: string; on: boolean }
   | { t: "chat_deleted"; seq: number; channel: string; by: string }
   /** Someone left the lobby: their direct messages go with them. */
   | { t: "chat_gone"; userId: string }
   /** Help and feedback's ticket changed (the team answered, or closed it): read it again from the API. */
-  | { t: "help_changed" }
+  /** The conversation with the TinyFloor team changed; `news` when the team just wrote in it. */
+  | { t: "help_changed"; news?: HelpNews }
   | { t: "chat_error"; code: string };
 
 /** The id of the direct-message channel between two people, whoever asks. */

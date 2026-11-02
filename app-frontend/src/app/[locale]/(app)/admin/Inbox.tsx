@@ -39,7 +39,7 @@ export function Inbox({ picked, pick, open, onUnread }: ViewProps & { onUnread: 
   return (
     <ShellView
       showDetail={!!picked}
-      columnClassName="md:w-[340px]"
+      columnClassName="md:w-[360px]"
       column={
         <Column
           title="Inbox"
@@ -63,7 +63,7 @@ export function Inbox({ picked, pick, open, onUnread }: ViewProps & { onUnread: 
               selected={one.id === picked}
               onClick={() => pick(one.id)}
               strong={one.unread > 0}
-              lead={<Face seed={one.officeId ?? one.id} size={36} square={!one.lobby} />}
+              lead={<Face seed={one.officeId ?? one.id} size={38} square={!one.lobby} />}
               title={<span className="truncate">{one.place}</span>}
               sub={one.last || `Opened by ${one.name}`}
               aside={<Short at={one.updatedAt} />}
@@ -281,7 +281,7 @@ function Notifications() {
   }, [permission, desktopNotifications]);
   if (permission !== "default" && permission !== "denied") return null;
   return (
-    <li className="mb-2 flex items-center gap-3 rounded-[12px] border border-border px-3 py-2.5">
+    <li className="mx-4 my-3 flex items-center gap-3 rounded-[12px] border border-border px-3 py-2.5">
       <Bell className="size-4 shrink-0 text-muted-foreground" />
       <span className="min-w-0 flex-1 text-[12.5px] text-muted-foreground">
         {permission === "denied" ? "Notifications are blocked in this browser's site settings." : "Hear when someone writes, on this device."}

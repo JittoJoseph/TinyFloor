@@ -43,10 +43,11 @@ export function Lobby({ picked, pick, open }: ViewProps) {
   return (
     <ShellView
       showDetail={!!picked}
+      columnClassName="md:w-[360px]"
       column={
         <Column title="Lobby" loading={channels === null && !failed} empty={failed ? "Couldn't load the lobby's chat." : channels?.length === 0 && "No channels."}>
           {people && (
-            <li className="mb-2 flex items-center gap-3 rounded-[12px] border border-border px-3 py-2.5">
+            <li className="mx-4 my-3 flex items-center gap-3 rounded-[12px] border border-border px-3 py-2.5">
               {people.faces.length > 0 ? <FaceStack seeds={people.faces.map((one) => one.id)} size={24} max={4} /> : <span className="size-6 rounded-full bg-muted" />}
               <span className="text-[12.5px]">
                 {people.here > 0 ? <Live>{people.here === 1 ? "1 in the lobby now" : `${people.here} in the lobby now`}</Live> : <span className="text-muted-foreground">Nobody in the lobby now</span>}
@@ -59,7 +60,7 @@ export function Lobby({ picked, pick, open }: ViewProps) {
               selected={one.id === picked}
               onClick={() => pick(one.id)}
               lead={
-                <span className={cn("flex size-9 items-center justify-center rounded-[10px]", one.id === picked ? "bg-foreground text-background" : "bg-muted text-muted-foreground")}>
+                <span className={cn("flex size-[38px] items-center justify-center rounded-[10px]", one.id === picked ? "bg-foreground text-background" : "bg-muted text-muted-foreground")}>
                   <Hash className="size-4" />
                 </span>
               }

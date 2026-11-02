@@ -7,7 +7,7 @@ import { IconButton } from "@/components/ui/IconButton";
 import { Face } from "@/components/ui/Face";
 import type { AdminSummary } from "@/lib/api";
 import { cn } from "@/lib/utils";
-import { Badge, Flag, hours, planName, Short, useCountryName } from "./pieces";
+import { Flag, hours, PlanBadge, Short, useCountryName } from "./pieces";
 import type { View } from "./views";
 
 /**
@@ -24,7 +24,7 @@ export function Overview({ summary, recount, open }: { summary: AdminSummary; re
   const [spinning, setSpinning] = useState(false);
   const thisWeek = sum(signups.slice(-7));
   const lastWeek = sum(signups.slice(-14, -7));
-  const paying = sum(Object.values(plans.paid));
+  const paying = summary.standings.paying;
 
   return (
     <div className="absolute inset-0 overflow-y-auto">
@@ -74,7 +74,7 @@ export function Overview({ summary, recount, open }: { summary: AdminSummary; re
             </Card>
 
             <Card title="Plans" note={`${counts.offices.toLocaleString()} offices`}>
-              <Plans offices={counts.offices} paying={paying} given={plans.given} />
+              <Plans offices={counts.offices} standings={summary.standings} />
             </Card>
 
           </div>
@@ -284,7 +284,7 @@ function Busiest({ offices, open }: { offices: AdminSummary["busiest"]; open: (i
             <span className="min-w-0">
               <span className="flex items-center gap-1.5">
                 <span className="truncate text-[13px] font-medium">{office.name}</span>
-                {office.plan !== "free" && <Badge tone="strong">{planName(office.plan)}</Badge>}
+                <PlanBadge office={office} />
               </span>
               <span className="block text-[12px] text-muted-foreground">{office.members === 1 ? "1 person" : `${office.members} people`}</span>
             </span>
@@ -299,13 +299,14 @@ function Busiest({ offices, open }: { offices: AdminSummary["busiest"]; open: (i
   );
 }
 
-/** Offices by how they're on a plan: paying, given one, or free, as one bar and a legend. */
-function Plans({ offices, paying, given }: { offices: number; paying: number; given: number }) {
-  const free = Math.max(0, offices - paying - given);
+/** Offices by how they have their plan: paying, on the trial, given one by hand, or free, as one bar and a legend. */
+function Plans({ offices, standings }: { offices: number; standings: AdminSummary["standings"] }) {
+  // Given Pro only while some office has it.
   const parts = [
-    { label: "Paying", count: paying, color: "bg-foreground" },
-    { label: "Given Pro", count: given, color: "bg-ok" },
-    { label: "Free", count: free, color: "bg-foreground/15" },
+    { label: "Paying", count: standings.paying, color: "bg-foreground" },
+    { label: "On the trial", count: standings.trial, color: "bg-warn" },
+    ...(standings.given ? [{ label: "Given Pro", count: standings.given, color: "bg-ok" }] : []),
+    { label: "Free", count: standings.free, color: "bg-foreground/15" },
   ];
   return (
     <div>

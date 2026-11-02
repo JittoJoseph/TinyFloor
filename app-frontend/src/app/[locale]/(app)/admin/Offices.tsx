@@ -431,7 +431,11 @@ function OfficeChat({ office, ticket, onHide }: { office: AdminOffice; ticket: A
         <DetailState />
       ) : (
         <Messages
+          ticketId={id}
           messages={detail?.messages ?? []}
+          seenBefore={detail?.seenBefore}
+          reads={detail?.reads}
+          onChanged={reload}
           empty={
             <div className="max-w-64">
               <Logo size={40} className="mx-auto" />

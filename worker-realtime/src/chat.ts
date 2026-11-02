@@ -261,16 +261,18 @@ export class Chat extends DurableObject<Env> {
    * The conversation with the TinyFloor team changed: everyone here (or only
    * `userId`, in the lobby) reads it again from the API. With `news`, the
    * team wrote: the tabs that are open say so themselves, and everyone it's
-   * for hears on their other devices as a push.
+   * for hears on their other devices as a push. `officeId` names the office,
+   * which this chat only learns once someone there has opened it.
    */
-  async helpChanged(userId?: string, news?: HelpNews): Promise<void> {
+  async helpChanged(userId?: string, news?: HelpNews, officeId?: string): Promise<void> {
     for (const socket of this.ctx.getWebSockets()) {
       const who = this.attachmentOf(socket);
       if (who && (!userId || who.userId === userId)) this.send(socket, { t: "help_changed", ...(news ? { news } : {}) });
     }
-    if (!news || (!userId && !this.office)) return;
-    const url = userId ? `/lobby/chat/${SUPPORT_CHANNEL}` : `/office/${this.office}/chat/${SUPPORT_CHANNEL}`;
-    await pushTo(this.env, userId ? [userId] : { office: this.office! }, { ...news, tag: "help", url }, { except: this.openSessions() });
+    const office = this.office ?? officeId;
+    if (!news || (!userId && !office)) return;
+    const url = userId ? `/lobby/chat/${SUPPORT_CHANNEL}` : `/office/${office}/chat/${SUPPORT_CHANNEL}`;
+    await pushTo(this.env, userId ? [userId] : { office: office! }, { ...news, tag: "help", url }, { except: this.openSessions() });
   }
 
   /** The sessions with a tab open here: they're told in the app, not by a push. */

@@ -13,7 +13,7 @@ import { cancelClaim, confirmClaim, deskAt, deskOf, deskState, requestClaim, set
 import { floorStatusOf, subscribeFloor } from "./floor";
 import { DeskPlate } from "./DeskPlate";
 import { decorateState, subscribeDecorate } from "./decorate";
-import { wasDrag } from "./CameraRig";
+import { offFloor, wasDrag } from "./CameraRig";
 
 /**
  * Where a seated character sits relative to the chair's base, and whether they
@@ -83,6 +83,8 @@ export class SeatManager {
     chairs: ChairSpec[],
     private readonly selfId: string,
     table?: MapAnchor,
+    /** A chair pressed, answered on the floor (MapManager.press). */
+    private readonly press: (key: string, taken?: boolean) => void = () => {},
   ) {
     this.scene = scene;
     this.player = player;
@@ -148,10 +150,12 @@ export class SeatManager {
         this.showHover();
       });
       zone.on("pointerup", (pointer: Phaser.Input.Pointer) => {
-        if (decorateState().desk || pointer.button !== 0 || wasDrag(scene, pointer)) return;
+        if (decorateState().desk || pointer.button !== 0 || wasDrag(scene, pointer) || offFloor(scene, pointer)) return;
         pointer.event.stopPropagation();
+        const taken = this.seated !== seat && (!!seat.occupant || this.reserved(seat));
+        this.press(seat.key, taken);
         if (this.seated === seat) return this.stand();
-        if (seat.occupant || this.reserved(seat)) return;
+        if (taken) return;
         this.walkTo(seat);
       });
       this.hitAreas.push(zone);
@@ -319,6 +323,8 @@ export class SeatManager {
 
     this.player.setPosition(pose.x, pose.y);
     this.animations.sit(this.player, seat.direction);
+    // The chair takes your weight: the same hop a press gives it, as you land.
+    if (byYou) this.press(seat.key);
     this.player.setDepth(pose.depth);
 
     this.onSitChange?.(true);

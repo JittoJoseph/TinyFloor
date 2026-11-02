@@ -173,6 +173,7 @@ class GameScene extends Phaser.Scene {
       this.mapManager.getChairs(),
       this.playerId,
       this.mapManager.getTable(),
+      (key, taken) => this.mapManager.press(key, taken),
     );
     const approach = (x: number, y: number, arrive: () => void) => this.movementManager.goTo(x, y, arrive);
     this.seatManager.attach(this.wsManager, (seated) => this.movementManager.setFrozen(seated, () => this.seatManager?.leave()), approach);

@@ -26,6 +26,8 @@ export interface ChairSpec {
   direction: "up" | "down";
   /** The outline of what you sit on, [x, y, width, height]. */
   box: [number, number, number, number];
+  /** The piece that's the chair (a bench or a sofa is one piece for its seats). */
+  key: string;
   zone?: string;
 }
 
@@ -44,6 +46,9 @@ const WALLS = "floor-walls";
 const DROP = 10;
 const LIFT = 8;
 const HOP = 4;
+/** How high a pressed piece hops, and how far one that can't be had shakes, in the floor's pixels. */
+const PRESS_HOP = 3;
+const PRESS_SHAKE = 1;
 const reducedMotion = () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /**
@@ -172,6 +177,31 @@ export class MapManager {
     return ITEMS;
   }
 
+  /**
+   * A piece pressed answers at once, before whatever the press sets off: a
+   * quick hop when it's yours to have (a chair you'll walk to and sit on), a
+   * small shake when it isn't (someone's sitting there, or it's their desk).
+   */
+  press(key: string, taken = false) {
+    const image = this.images.get(key);
+    const piece = this.pieces.find((one) => one.key === key);
+    if (!image || !piece || key === this.held || reducedMotion()) return;
+    const tweens = this.scene.tweens;
+    tweens.killTweensOf(image);
+    image.setPosition(piece.x, piece.y);
+    if (taken) {
+      tweens.add({ targets: image, x: piece.x + PRESS_SHAKE, duration: 45, ease: "Sine.easeInOut", yoyo: true, repeat: 2, onComplete: () => image.setX(piece.x) });
+      return;
+    }
+    tweens.chain({
+      targets: image,
+      tweens: [
+        { y: piece.y - PRESS_HOP, duration: 90, ease: "Quad.easeOut" },
+        { y: piece.y, duration: 160, ease: "Bounce.easeOut" },
+      ],
+    });
+  }
+
   /** The piece being dragged, which drawing leaves where the hand put it; null when it's let go. */
   hold(key: string | null) {
     this.held = key;
@@ -201,7 +231,7 @@ export class MapManager {
    * whoever sits there is (the seat's point is its base).
    */
   private readChairs() {
-    this.chairSpecs = FLOOR.seats.map((seat) => ({ id: seat.id, x: seat.x, y: seat.y - TILE_SIZE / 2, direction: seat.dir, box: seat.box, zone: seat.zone }));
+    this.chairSpecs = FLOOR.seats.map((seat) => ({ id: seat.id, x: seat.x, y: seat.y - TILE_SIZE / 2, direction: seat.dir, box: seat.box, key: seat.key, zone: seat.zone }));
   }
 
   getChairs(): ChairSpec[] {

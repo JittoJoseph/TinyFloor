@@ -42,7 +42,7 @@ export function Cover({ post, alt, priority = false, className }: { post: BlogPo
  * One post, laid out the way the big product blogs set theirs: a centred
  * headline with who wrote it, when and under what; the cover beneath, as wide
  * as the text; then one reading column with the points to take away first,
- * the sections, where TinyFloor fits and the numbered sources its text cites.
+ * the sections, where TinyFloor fits and the sources its text links to.
  * After it, related articles with their covers, the guides that go further,
  * and the questions.
  */

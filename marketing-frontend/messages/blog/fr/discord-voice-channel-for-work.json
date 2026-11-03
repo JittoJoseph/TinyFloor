@@ -10,8 +10,8 @@
   "takeaways": [
     "Un salon vocal Discord donne à une équipe ce que Slack et Zoom n'offrent pas : voir qui est là et rejoindre en un clic.",
     "Un salon vocal accueille une seule conversation. Pour parler à deux, il faut changer de salon tous les deux.",
-    "Sur un serveur sans boost, le partage d'écran est en 720p à 30 images par seconde, les fichiers sont limités à 10 Mo et la vidéo à 25 personnes par salon vocal [1].",
-    "Depuis septembre 2024, Discord chiffre la voix et la vidéo de bout en bout ; pas les messages écrits [2].",
+    "Sur un serveur sans boost, le partage d'écran est en 720p à 30 images par seconde, les fichiers sont limités à 10 Mo et la vidéo à 25 personnes par salon vocal.",
+    "Depuis septembre 2024, Discord chiffre la voix et la vidéo de bout en bout ; pas les messages écrits.",
     "Chacun rejoint avec son propre compte Discord, le même que pour ses amis et ses jeux."
   ],
   "sections": [
@@ -35,7 +35,7 @@
         },
         {
           "title": "Travail et vie privée dans la même appli",
-          "body": "Chacun arrive avec son propre compte, ses amis, ses autres serveurs et leurs notifications. Discord se présente lui-même comme un lieu pour approfondir des amitiés autour des jeux et des centres d'intérêt [2]. Voir aussi [Discord ou Slack pour le travail](/guides/discord-vs-slack)."
+          "body": "Chacun arrive avec son propre compte, ses amis, ses autres serveurs et leurs notifications. [Discord se présente lui-même](https://discord.com/blog/meet-dave-e2ee-for-audio-video) comme un lieu pour approfondir des amitiés autour des jeux et des centres d'intérêt. Voir aussi [Discord ou Slack pour le travail](/guides/discord-vs-slack)."
         },
         {
           "title": "Les comptes appartiennent aux personnes, pas à l'entreprise",
@@ -43,7 +43,7 @@
         },
         {
           "title": "Les limites d'un serveur gratuit",
-          "body": "Sans boost, les fichiers sont limités à 10 Mo, les diffusions à 720p à 30 images par seconde et la vidéo à 25 personnes par salon vocal. Les boosts montent les fichiers à 50 Mo au niveau 2 et 100 Mo au niveau 3 [1]."
+          "body": "Sans boost, [les fichiers sont limités à 10 Mo](https://support.discord.com/hc/fr/articles/33694251638295), les diffusions à 720p à 30 images par seconde et la vidéo à 25 personnes par salon vocal. Les boosts montent les fichiers à 50 Mo au niveau 2 et 100 Mo au niveau 3."
         }
       ]
     },
@@ -56,11 +56,11 @@
         },
         {
           "title": "Un partage d'écran plus fluide",
-          "body": "Discord diffuse à 30 images par seconde même sur un serveur gratuit [1], ce qui convient à la vidéo et aux jeux. TinyFloor partage l'écran jusqu'en 720p à 10 à 15 images par seconde, réglé pour un texte net plutôt que pour le mouvement [3]."
+          "body": "Discord diffuse à [30 images par seconde même sur un serveur gratuit](https://support.discord.com/hc/fr/articles/33694251638295), ce qui convient à la vidéo et aux jeux. TinyFloor partage l'écran [jusqu'en 720p à 10 à 15 images par seconde](/how-it-works), réglé pour un texte net plutôt que pour le mouvement."
         },
         {
           "title": "Le chiffrement",
-          "body": "La voix et la vidéo de Discord sont chiffrées de bout en bout dans les messages privés, les groupes, les salons vocaux et les diffusions Go Live, avec le protocole DAVE [2]."
+          "body": "La voix et la vidéo de Discord sont chiffrées de bout en bout dans les messages privés, les groupes, les salons vocaux et les diffusions Go Live, avec le [protocole DAVE](https://discord.com/blog/meet-dave-e2ee-for-audio-video)."
         },
         {
           "title": "Des applis partout",
@@ -80,11 +80,11 @@
         },
         {
           "title": "Personne n'est entendu par accident",
-          "body": "Dans TinyFloor, on va vers un collègue et on lance un appel ; avant cela, personne n'entend rien, l'appel commence par la voix et la caméra est un bouton [3]. À partir de trois, on se retrouve dans la salle de réunion."
+          "body": "Dans TinyFloor, [on va vers un collègue et on lance un appel](/how-it-works) ; avant cela, personne n'entend rien, l'appel commence par la voix et la caméra est un bouton. À partir de trois, on se retrouve dans la salle de réunion."
         },
         {
           "title": "Un lieu réservé au travail",
-          "body": "On se connecte avec Google ou un code envoyé par e-mail [3], et les collègues qui ont le même domaine d'e-mail professionnel trouvent le bureau de l'équipe et entrent, ou demandent à entrer [4]. Rien de la vie privée de chacun n'est dans la pièce."
+          "body": "On se connecte [avec Google ou un code envoyé par e-mail](/how-it-works), et les collègues qui ont le même domaine d'e-mail professionnel [trouvent le bureau de l'équipe](/changelog) et entrent, ou demandent à entrer. Rien de la vie privée de chacun n'est dans la pièce."
         },
         {
           "title": "Des bureaux et des statuts",

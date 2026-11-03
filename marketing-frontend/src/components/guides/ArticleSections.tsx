@@ -18,35 +18,29 @@ export function numberItems(sections: GuideSection[]): Numbered[] {
   }));
 }
 
+/** How a link in running text looks: the words, quietly underlined. */
+const INLINE = "text-foreground underline decoration-foreground/25 underline-offset-[3px] transition-colors hover:decoration-foreground";
+
 /**
  * Text with its `[words](/path)` parts as links to the site's own pages, in
- * the reader's language, and a blog post's `[2]` as a link to its second source.
+ * the reader's language, and its `[words](https://…)` parts as links to the
+ * sources they name, opened beside the page.
  */
 export function linked(text: string): ReactNode {
-  return text.split(/\[([^\]]+)\]\((\/[^)]*)\)/).map((part, i, parts) =>
-    i % 3 === 1 ? (
-      <Link key={i} href={parts[i + 1]} className="text-foreground underline decoration-foreground/25 underline-offset-[3px] transition-colors hover:decoration-foreground">
+  return text.split(/\[([^\]]+)\]\(((?:\/|https?:\/\/)[^)]*)\)/).map((part, i, parts) => {
+    if (i % 3 === 2) return null;
+    if (i % 3 === 0) return part;
+    const href = parts[i + 1];
+    return href.startsWith("/") ? (
+      <Link key={i} href={href} className={INLINE}>
         {part}
       </Link>
-    ) : i % 3 === 2 ? null : (
-      cited(part, i)
-    ),
-  );
-}
-
-function cited(text: string, at: number): ReactNode {
-  if (!/\[\d+\]/.test(text)) return text;
-  return text.split(/\[(\d+)\]/).map((part, i) =>
-    i % 2 ? (
-      <sup key={`${at}-${i}`} className="text-[0.7em]">
-        <a href={`#source-${part}`} className="text-muted-foreground transition-colors hover:text-foreground">
-          [{part}]
-        </a>
-      </sup>
     ) : (
-      part
-    ),
-  );
+      <a key={i} href={href} target="_blank" rel="noopener noreferrer" className={INLINE}>
+        {part}
+      </a>
+    );
+  });
 }
 
 /** A list of the sections, each linking to its place below. */

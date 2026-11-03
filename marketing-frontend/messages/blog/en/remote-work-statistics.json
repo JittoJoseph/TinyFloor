@@ -8,11 +8,11 @@
   "title": "Remote work statistics for 2026: <em>who works remotely, and how it feels.</em>",
   "intro": "In 2025, 35% of employed Americans did some or all of their work at home on the days they worked, and among US employees whose jobs can be done remotely, about eight in ten work remotely at least part of the week. Below are the numbers that matter for a team deciding how to work together: who works where, how lonely it is, how collaboration changes, and where the time goes. Every figure is from its original source, linked at the bottom, and checked on 3 November 2026. We make TinyFloor, a [virtual office](/virtual-office); the numbers aren't ours, and we've kept to what each source says.",
   "takeaways": [
-    "35% of employed people in the US did some or all of their work at home on days they worked in 2025 [1].",
-    "Of US employees with remote-capable jobs, 54% work hybrid, 25% fully remote and 21% on-site, as of August 2026 [2].",
-    "25% of fully remote employees felt lonely a lot of the previous day, against 21% of hybrid and 16% of fully on-site employees [3].",
-    "When Microsoft moved to remote work, its 61,182 US employees' collaboration became more siloed, and communication moved from live to written [4].",
-    "68% of people say they don't have enough uninterrupted focus time in the workday [5]."
+    "35% of employed people in the US did some or all of their work at home on days they worked in 2025.",
+    "Of US employees with remote-capable jobs, 54% work hybrid, 25% fully remote and 21% on-site, as of August 2026.",
+    "25% of fully remote employees felt lonely a lot of the previous day, against 21% of hybrid and 16% of fully on-site employees.",
+    "When Microsoft moved to remote work, its 61,182 US employees' collaboration became more siloed, and communication moved from live to written.",
+    "68% of people say they don't have enough uninterrupted focus time in the workday."
   ],
   "sections": [
     {
@@ -30,47 +30,47 @@
           [
             "US workers who worked at home on days they worked",
             "35%",
-            "BLS, 2025 [1]"
+            "[BLS, 2025](https://www.bls.gov/news.release/atus.nr0.htm)"
           ],
           [
             "Remote-capable US employees working hybrid",
             "54%",
-            "Gallup, Aug 2026 [2]"
+            "[Gallup, Aug 2026](https://www.gallup.com/401384/indicator-hybrid-work.aspx)"
           ],
           [
             "Remote-capable US employees working fully remote",
             "25%",
-            "Gallup, Aug 2026 [2]"
+            "[Gallup, Aug 2026](https://www.gallup.com/401384/indicator-hybrid-work.aspx)"
           ],
           [
             "Remote-capable employees who would prefer hybrid",
             "61%",
-            "Gallup, Nov 2025 [2]"
+            "[Gallup, Nov 2025](https://www.gallup.com/401384/indicator-hybrid-work.aspx)"
           ],
           [
             "Fully remote employees lonely a lot the previous day",
             "25%",
-            "Gallup, 2024 [3]"
+            "[Gallup, 2024](https://www.gallup.com/workplace/645566/employees-worldwide-feel-lonely.aspx)"
           ],
           [
             "Fully on-site employees lonely a lot the previous day",
             "16%",
-            "Gallup, 2024 [3]"
+            "[Gallup, 2024](https://www.gallup.com/workplace/645566/employees-worldwide-feel-lonely.aspx)"
           ],
           [
             "People without enough uninterrupted focus time",
             "68%",
-            "Microsoft, 2023 [5]"
+            "[Microsoft, 2023](https://www.microsoft.com/en-us/worklab/work-trend-index/will-ai-fix-work)"
           ],
           [
             "Remote workers whose biggest struggle is loneliness",
             "23%",
-            "Buffer, 2023 [6]"
+            "[Buffer, 2023](https://buffer.com/state-of-remote-work/2023)"
           ],
           [
             "Remote workers whose team spans several time zones",
             "62%",
-            "Buffer, 2023 [6]"
+            "[Buffer, 2023](https://buffer.com/state-of-remote-work/2023)"
           ]
         ],
         "note": "Checked against each source on 3 November 2026. Figures from different surveys measure different people: read each one with the section below it."
@@ -79,46 +79,46 @@
     {
       "title": "How many people work from home?",
       "body": [
-        "In 2025, 35% of employed people in the US did some or all of their work at home on the days they worked, and 70% did some or all of it at their workplace, according to the Bureau of Labor Statistics' American Time Use Survey, released on 25 June 2026 [1].",
-        "Who works from home varies a lot. Employed women were more likely to work at home than employed men, 38% against 31%. Among workers aged 25 and over, 51% of those with a bachelor's degree or higher did some work at home on days they worked, against 19% of those with a high school diploma and no college [1]."
+        "In 2025, 35% of employed people in the US did some or all of their work at home on the days they worked, and 70% did some or all of it at their workplace, according to the [Bureau of Labor Statistics' American Time Use Survey](https://www.bls.gov/news.release/atus.nr0.htm), released on 25 June 2026.",
+        "Who works from home varies a lot. Employed women were more likely to work at home than employed men, 38% against 31%. Among workers aged 25 and over, 51% of those with a bachelor's degree or higher did some work at home on days they worked, against 19% of those with a high school diploma and no college."
       ]
     },
     {
       "title": "How many employees are hybrid, remote or on-site?",
       "body": [
-        "Gallup tracks US employees whose jobs can be done remotely. As of August 2026, 54% of them work hybrid, 25% work exclusively remote and 21% work on-site [2]. Hybrid has held roughly steady since 2022.",
-        "What people would choose is different. Asked in November 2025, 61% of remote-capable employees preferred hybrid, 33% exclusively remote and 6% on-site. So fully remote work is less common than people would like (25% against 33%), and on-site work is far more common (21% against 6%) [2]."
+        "[Gallup tracks US employees whose jobs can be done remotely](https://www.gallup.com/401384/indicator-hybrid-work.aspx). As of August 2026, 54% of them work hybrid, 25% work exclusively remote and 21% work on-site. Hybrid has held roughly steady since 2022.",
+        "What people would choose is different. Asked in November 2025, 61% of remote-capable employees preferred hybrid, 33% exclusively remote and 6% on-site. So fully remote work is less common than people would like (25% against 33%), and on-site work is far more common (21% against 6%)."
       ],
       "items": [
         {
           "title": "Engagement by arrangement",
-          "body": "Exclusively remote employees are the most likely to be engaged at work, 32%, then hybrid at 31% and on-site remote-capable employees at 28% [2]."
+          "body": "Exclusively remote employees are the most likely to be engaged at work, 32%, then hybrid at 31% and on-site remote-capable employees at 28%."
         },
         {
           "title": "Who sets the policy",
-          "body": "Teams that set their hybrid policy together are the most likely to call it fair and say it helps collaboration, but as of May 2025 only 11% of employees work this way [2]."
+          "body": "Teams that set their hybrid policy together are the most likely to call it fair and say it helps collaboration, but as of May 2025 only 11% of employees work this way."
         }
       ]
     },
     {
       "title": "Are remote workers lonelier?",
       "body": [
-        "On average, yes. In Gallup's State of the Global Workplace 2024, 25% of fully remote employees said they had felt lonely a lot of the previous day, against 21% of hybrid employees and 16% of those who work only on-site. Across all employees worldwide the figure was one in five [3]. Of everything Gallup analysed, work location showed the biggest difference in loneliness.",
-        "Remote workers say the same thing about themselves. In Buffer's 2023 survey of 3,000 remote workers, the most common struggle, chosen by one in three, was staying home too often because there's no reason to leave, and the next was loneliness, at 23% [6]. Yet 75% said they feel connected to their colleagues, mostly because they interact regularly or work well together [6]."
+        "On average, yes. In [Gallup's State of the Global Workplace 2024](https://www.gallup.com/workplace/645566/employees-worldwide-feel-lonely.aspx), 25% of fully remote employees said they had felt lonely a lot of the previous day, against 21% of hybrid employees and 16% of those who work only on-site. Across all employees worldwide the figure was one in five. Of everything Gallup analysed, work location showed the biggest difference in loneliness.",
+        "Remote workers say the same thing about themselves. In [Buffer's 2023 survey of 3,000 remote workers](https://buffer.com/state-of-remote-work/2023), the most common struggle, chosen by one in three, was staying home too often because there's no reason to leave, and the next was loneliness, at 23%. Yet 75% said they feel connected to their colleagues, mostly because they interact regularly or work well together."
       ]
     },
     {
       "title": "Does remote work change how teams collaborate?",
       "body": [
-        "The largest study is Microsoft's own. Researchers used the emails, calendars, messages and calls of 61,182 US Microsoft employees in the first six months of 2020, when the whole company moved to remote work. Their collaboration network became more static and siloed, with fewer bridges between different parts of the company, and communication shifted from live to written [4]. The authors suggest this may make it harder to pass new information across a company.",
-        "Remote workers notice it too. In Buffer's survey, the things most often named as harder remotely were getting recognised by leadership (37%), collaborating (30%) and getting promoted (28%) [6]. And 62% said their immediate team spans several time zones [6], which leaves fewer hours to talk live at all."
+        "The largest study is Microsoft's own. [Researchers used the emails, calendars, messages and calls of 61,182 US Microsoft employees](https://www.nature.com/articles/s41562-021-01196-4) in the first six months of 2020, when the whole company moved to remote work. Their collaboration network became more static and siloed, with fewer bridges between different parts of the company, and communication shifted from live to written. The authors suggest this may make it harder to pass new information across a company.",
+        "Remote workers notice it too. In [Buffer's survey](https://buffer.com/state-of-remote-work/2023), the things most often named as harder remotely were getting recognised by leadership (37%), collaborating (30%) and getting promoted (28%). And 62% said their immediate team spans several time zones, which leaves fewer hours to talk live at all."
       ]
     },
     {
       "title": "Where does the time go: meetings and focus?",
       "body": [
-        "In Microsoft's Work Trend Index 2023, 68% of people said they don't have enough uninterrupted focus time during the workday, and \"inefficient meetings\" was the top productivity disruptor they named [5].",
-        "Among Buffer's remote workers, 75% spend between 1 and 10 hours a week in meetings: 52% spend one to five hours and 23% six to ten [6]. Most like to be seen: 62% prefer to be on camera in video calls, mainly because it's easier to communicate when they can see someone's expression [6]."
+        "In [Microsoft's Work Trend Index 2023](https://www.microsoft.com/en-us/worklab/work-trend-index/will-ai-fix-work), 68% of people said they don't have enough uninterrupted focus time during the workday, and \"inefficient meetings\" was the top productivity disruptor they named.",
+        "Among [Buffer's remote workers](https://buffer.com/state-of-remote-work/2023), 75% spend between 1 and 10 hours a week in meetings: 52% spend one to five hours and 23% six to ten. Most like to be seen: 62% prefer to be on camera in video calls, mainly because it's easier to communicate when they can see someone's expression."
       ]
     },
     {

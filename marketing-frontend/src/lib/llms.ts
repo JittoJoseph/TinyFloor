@@ -345,7 +345,7 @@ export async function llmsFullTxt(): Promise<string> {
     "",
     blog.meta.description,
     "",
-    // A post as it reads: what to take away, its sections, and the sources its [1] markers cite.
+    // A post as it reads: what to take away, its sections, and the sources its words link to.
     ...posts.flatMap(({ post, copy }) => [
       `### ${copy.meta.title}`,
       "",

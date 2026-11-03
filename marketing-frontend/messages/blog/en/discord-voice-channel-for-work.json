@@ -10,8 +10,8 @@
   "takeaways": [
     "A Discord voice channel gives a team something Slack and Zoom don't: you can see who's in and join with one click.",
     "A voice channel holds one conversation. Talking to one person means both of you moving to another channel.",
-    "On a server without boosts, screen sharing is 720p at 30 frames a second, uploads are 10MB, and up to 25 people can be on video in a voice channel [1].",
-    "Discord has encrypted voice and video end to end since September 2024; text messages are not end-to-end encrypted [2].",
+    "On a server without boosts, screen sharing is 720p at 30 frames a second, uploads are 10MB, and up to 25 people can be on video in a voice channel.",
+    "Discord has encrypted voice and video end to end since September 2024; text messages are not end-to-end encrypted.",
     "Each person joins with their own Discord account, the same one they use for friends and games."
   ],
   "sections": [
@@ -35,7 +35,7 @@
         },
         {
           "title": "Work and personal life in one app",
-          "body": "People bring their own Discord account, with their friends, their other servers and their notifications ([Discord or Slack for work](/guides/discord-vs-slack) covers more of this). Discord describes itself as a place to \"deepen friendships around games and shared interests\" [2]."
+          "body": "People bring their own Discord account, with their friends, their other servers and their notifications ([Discord or Slack for work](/guides/discord-vs-slack) covers more of this). [Discord describes itself](https://discord.com/blog/meet-dave-e2ee-for-audio-video) as a place to \"deepen friendships around games and shared interests\"."
         },
         {
           "title": "Accounts belong to people, not the company",
@@ -43,7 +43,7 @@
         },
         {
           "title": "Limits on a free server",
-          "body": "Without boosts, uploads are capped at 10MB, streams at 720p and 30 frames a second, and video at 25 people per voice channel. Boosting the server raises uploads to 50MB at level 2 and 100MB at level 3 [1]."
+          "body": "Without boosts, [uploads are capped at 10MB](https://support.discord.com/hc/en-us/articles/33694251638295-Discord-Account-Caps-Server-Caps-and-More), streams at 720p and 30 frames a second, and video at 25 people per voice channel. Boosting the server raises uploads to 50MB at level 2 and 100MB at level 3."
         }
       ]
     },
@@ -56,11 +56,11 @@
         },
         {
           "title": "Smooth screen sharing",
-          "body": "Discord streams at 30 frames a second on a free server [1], which suits video and games. TinyFloor shares a screen at up to 720p and 10 to 15 frames a second, tuned for sharp text rather than motion [3]."
+          "body": "Discord streams at [30 frames a second on a free server](https://support.discord.com/hc/en-us/articles/33694251638295-Discord-Account-Caps-Server-Caps-and-More), which suits video and games. TinyFloor shares a screen at [up to 720p and 10 to 15 frames a second](/how-it-works), tuned for sharp text rather than motion."
         },
         {
           "title": "Encryption",
-          "body": "Discord's voice and video are end-to-end encrypted, in direct messages, group messages, voice channels and Go Live streams, under its DAVE protocol [2]."
+          "body": "Discord's voice and video are end-to-end encrypted, in direct messages, group messages, voice channels and Go Live streams, under its [DAVE protocol](https://discord.com/blog/meet-dave-e2ee-for-audio-video)."
         },
         {
           "title": "Apps everywhere",
@@ -80,11 +80,11 @@
         },
         {
           "title": "Nobody heard by accident",
-          "body": "In TinyFloor you walk up to a teammate and start a call; nothing is heard until then, and a call starts with voice, with the camera a button [3]. Three or more meet in the meeting room."
+          "body": "In TinyFloor you [walk up to a teammate and start a call](/how-it-works); nothing is heard until then, and a call starts with voice, with the camera a button. Three or more meet in the meeting room."
         },
         {
           "title": "A place that's only for work",
-          "body": "People sign in with Google or a code sent to their email [3], and colleagues with the same work email domain can find the team's office and walk in, or ask to [4]. Nothing from anyone's personal life is in the room."
+          "body": "People [sign in with Google or a code sent to their email](/how-it-works), and colleagues with the same work email domain can [find the team's office and walk in](/changelog), or ask to. Nothing from anyone's personal life is in the room."
         },
         {
           "title": "Desks and statuses",

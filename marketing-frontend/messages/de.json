@@ -1173,7 +1173,7 @@
       "body": "Ein virtuelles Büro im Browser. Sieh, wer da ist, geh rüber zum Reden und arbeite weiter. Nichts zu planen, nichts zu installieren.",
       "cta": "Büro erstellen",
       "lobby": "Demo-Büro ausprobieren",
-      "note": "Kostenlos für bis zu 3 Personen · Keine Karte nötig",
+      "note": "Ein Preis für das ganze Team · Keine Karte nötig",
       "film": "TinyFloor: Eine Nachricht kommt an, der Chat öffnet sich, dann ein Anruf mit der Kollegin nebenan"
     },
     "floor": {
@@ -1198,7 +1198,7 @@
       "eyebrow": "Preise",
       "title": "Bezahlt wird pro Büro,",
       "muted": "nicht pro Person.",
-      "body": "Kostenlos für bis zu 3 Personen. Danach ein Preis für dein ganzes Team.",
+      "body": "Ein Preis für dein ganzes Team. Kostenlos für bis zu 3 Personen.",
       "soon": "Demnächst",
       "forever": "für immer",
       "month": "pro Monat",
@@ -1245,7 +1245,7 @@
     "closing": {
       "title": "Gib deinem Team",
       "muted": "eine gemeinsame Etage.",
-      "note": "Kostenlos für bis zu 3 Personen · Läuft auf Cloudflare"
+      "note": "14 Tage Pro für jedes neue Büro · Läuft auf Cloudflare"
     },
     "countries": {
       "label": "Teams arbeiten auf TinyFloor in"
@@ -1272,7 +1272,7 @@
     },
     "price": {
       "title": "Ein Preis für das ganze Büro.",
-      "body": "Kostenlos für bis zu 3 Personen. Danach ist Pro ein monatlicher Preis für das ganze Team, egal wie viele ihr seid. Jedes neue Büro startet mit 14 Tagen Pro, keine Karte nötig.",
+      "body": "Ein monatlicher Preis für das ganze Team, egal wie viele ihr seid. Jedes neue Büro startet mit 14 Tagen Pro, keine Karte nötig, und bis zu 3 Personen können bei Free bleiben.",
       "team": "Dein Team",
       "people": "{count} Personen",
       "ours": "TinyFloor Pro",

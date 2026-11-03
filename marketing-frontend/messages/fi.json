@@ -1173,7 +1173,7 @@
       "body": "Virtuaalitoimisto selaimessa. Näe, kuka on paikalla, kävele juttelemaan ja palaa töihin. Ei mitään aikataulutettavaa tai asennettavaa.",
       "cta": "Luo toimistosi",
       "lobby": "Kokeile demotoimistoa",
-      "note": "Ilmainen enintään 3 hengelle · Ei korttia",
+      "note": "Yksi hinta koko tiimille · Ei korttia",
       "film": "TinyFloor: viesti saapuu, chat aukeaa ja sitten puhelu vieressä olevan kollegan kanssa"
     },
     "floor": {
@@ -1198,7 +1198,7 @@
       "eyebrow": "Hinnoittelu",
       "title": "Hinta toimistolta,",
       "muted": "ei henkilöltä.",
-      "body": "Ilmainen enintään 3 hengelle. Sitten yksi hinta koko tiimillesi.",
+      "body": "Yksi hinta koko tiimillesi. Ilmainen enintään 3 hengelle.",
       "soon": "Tulossa",
       "forever": "ikuisesti",
       "month": "kuukaudessa",
@@ -1245,7 +1245,7 @@
     "closing": {
       "title": "Anna tiimillesi",
       "muted": "yhteinen kerros.",
-      "note": "Ilmainen enintään 3 hengelle · Toimii Cloudflaressa"
+      "note": "14 päivää Prota jokaiselle uudelle toimistolle · Toimii Cloudflaressa"
     },
     "countries": {
       "label": "Tiimit tekevät töitä TinyFloorissa maassa"
@@ -1272,7 +1272,7 @@
     },
     "price": {
       "title": "Yksi hinta koko toimistolle.",
-      "body": "Ilmainen enintään 3 hengelle. Sitten Pro on yksi kuukausihinta koko tiimille, riippumatta siitä, kuinka monta teitä on. Jokainen uusi toimisto alkaa 14 päivän ilmaisella Prolla, korttia ei tarvita.",
+      "body": "Yksi kuukausihinta koko tiimille, riippumatta siitä, kuinka monta teitä on. Jokainen uusi toimisto alkaa 14 päivän Prolla, korttia ei tarvita, ja enintään 3 hengen tiimi voi jatkaa Free-tasolla.",
       "team": "Tiimisi",
       "people": "{count} henkeä",
       "ours": "TinyFloor Pro",

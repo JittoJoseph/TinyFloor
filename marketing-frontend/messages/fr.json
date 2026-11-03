@@ -1173,7 +1173,7 @@
       "body": "Un bureau virtuel dans le navigateur. Voyez qui est là, allez parler, puis retournez au travail. Rien à planifier, rien à installer.",
       "cta": "Créer votre bureau",
       "lobby": "Essayer le bureau de démo",
-      "note": "Gratuit jusqu'à 3 personnes · Sans carte bancaire",
+      "note": "Un seul prix pour toute l'équipe · Sans carte bancaire",
       "film": "TinyFloor : un message arrive, le chat s'ouvre, puis un appel avec le collègue à côté de vous"
     },
     "floor": {
@@ -1198,7 +1198,7 @@
       "eyebrow": "Tarifs",
       "title": "Tarifé au bureau,",
       "muted": "pas à la personne.",
-      "body": "Gratuit jusqu'à 3 personnes. Ensuite, un seul prix pour toute votre équipe.",
+      "body": "Un seul prix pour toute votre équipe. Gratuit jusqu'à 3 personnes.",
       "soon": "Bientôt",
       "forever": "pour toujours",
       "month": "par mois",
@@ -1245,7 +1245,7 @@
     "closing": {
       "title": "Offrez à votre équipe",
       "muted": "un étage à partager.",
-      "note": "Gratuit jusqu'à 3 personnes · Fonctionne sur Cloudflare"
+      "note": "14 jours de Pro pour chaque nouveau bureau · Fonctionne sur Cloudflare"
     },
     "countries": {
       "label": "Des équipes travaillent sur TinyFloor en"
@@ -1272,7 +1272,7 @@
     },
     "price": {
       "title": "Un seul prix pour tout le bureau.",
-      "body": "Gratuit jusqu'à 3 personnes. Ensuite, Pro est à un prix mensuel unique pour toute l'équipe, quel que soit votre nombre. Chaque nouveau bureau commence avec 14 jours de Pro gratuits, sans carte bancaire.",
+      "body": "Un prix mensuel unique pour toute l'équipe, quel que soit votre nombre. Chaque nouveau bureau commence avec 14 jours de Pro, sans carte bancaire, et jusqu'à 3 personnes peuvent rester sur Free.",
       "team": "Votre équipe",
       "people": "{count} personnes",
       "ours": "TinyFloor Pro",

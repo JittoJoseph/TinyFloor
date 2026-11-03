@@ -1173,7 +1173,7 @@
       "body": "A virtual office in the browser. See who's in, walk over to talk, and get back to work. Nothing to schedule, nothing to install.",
       "cta": "Make your office",
       "lobby": "Try the demo office",
-      "note": "Free for up to 3 people · No card needed",
+      "note": "One price for the whole team · No card needed",
       "film": "TinyFloor: a message comes in, the chat opens, then a call with the teammate beside you"
     },
     "floor": {
@@ -1198,7 +1198,7 @@
       "eyebrow": "Pricing",
       "title": "Priced by the office,",
       "muted": "not by the person.",
-      "body": "Free for up to 3 people. Then one price for your whole team.",
+      "body": "One price for your whole team. Free for up to 3 people.",
       "soon": "Coming soon",
       "forever": "forever",
       "month": "a month",
@@ -1245,7 +1245,7 @@
     "closing": {
       "title": "Give your team",
       "muted": "a floor to share.",
-      "note": "Free for up to 3 people · Runs on Cloudflare"
+      "note": "14 days of Pro for every new office · Runs on Cloudflare"
     },
     "countries": {
       "label": "Teams are working on TinyFloor in"
@@ -1314,7 +1314,7 @@
     },
     "price": {
       "title": "One price for the whole office.",
-      "body": "Free for up to 3 people. Then Pro is one monthly price for the whole team, however many of you there are. Every new office starts with 14 days of Pro, no card needed.",
+      "body": "One monthly price for the whole team, however many of you there are. Every new office starts with 14 days of Pro, no card needed, and up to 3 people can stay on Free.",
       "team": "Your team",
       "people": "{count} people",
       "ours": "TinyFloor Pro",

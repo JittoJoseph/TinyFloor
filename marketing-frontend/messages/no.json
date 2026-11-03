@@ -1174,7 +1174,7 @@
       "cta": "Lag kontoret ditt",
       "lobby": "Prøv demokontoret",
       "note": "Én pris for hele teamet · Ingen kort nødvendig",
-      "film": "TinyFloor: en melding kommer inn, chatten åpnes, og så en samtale med kollegaen ved siden av deg"
+      "film": "TinyFloor: hele kontoret i arbeid, en melding kommer inn og chatten åpnes, så går du bort til en kollega og ringer"
     },
     "floor": {
       "eyebrow": "På etasjen",
@@ -1300,7 +1300,11 @@
     "chat": {
       "title": "Teamchat, rett ved siden av etasjen.",
       "body": "Kanaler og direktemeldinger for alt som ikke er en samtale, slik at det som ble bestemt er skrevet ned og lett å finne. Svar på en melding, reager og del en skjermdump.",
-      "more": "Mer om teamchat"
+      "more": "Mer om teamchat",
+      "lines": {
+        "morning": "God morgen! Lanseringen er fortsatt kl. 14, notatene ligger i #design",
+        "poster": "Plakaten til lanseringen er klar 🚀 hva synes dere?"
+      }
     },
     "extras": {
       "title": "Alt annet et eksternt team trenger.",

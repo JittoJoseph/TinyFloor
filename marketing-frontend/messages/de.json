@@ -1174,7 +1174,7 @@
       "cta": "Büro erstellen",
       "lobby": "Demo-Büro ausprobieren",
       "note": "Ein Preis für das ganze Team · Keine Karte nötig",
-      "film": "TinyFloor: Eine Nachricht kommt an, der Chat öffnet sich, dann ein Anruf mit der Kollegin nebenan"
+      "film": "TinyFloor: Das ganze Büro bei der Arbeit, eine Nachricht kommt an und der Chat öffnet sich, dann gehst du zu einer Kollegin hinüber und rufst sie an"
     },
     "floor": {
       "eyebrow": "Auf der Etage",
@@ -1300,7 +1300,11 @@
     "chat": {
       "title": "Team-Chat, direkt neben der Etage.",
       "body": "Kanäle und Direktnachrichten für alles, was kein Anruf ist, damit getroffene Entscheidungen aufgeschrieben und leicht zu finden sind. Antworte auf eine Nachricht, reagiere darauf und teile einen Screenshot.",
-      "more": "Mehr über den Team-Chat"
+      "more": "Mehr über den Team-Chat",
+      "lines": {
+        "morning": "Morgen! Der Launch bleibt um 14 Uhr, Notizen sind in #design",
+        "poster": "Das Poster für den Launch ist fertig 🚀 was meint ihr?"
+      }
     },
     "extras": {
       "title": "Alles andere, was ein Remote-Team braucht.",

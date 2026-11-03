@@ -39,7 +39,7 @@ export function MobileMenu({ label, actions, children }: { label: string; action
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         aria-label={label}

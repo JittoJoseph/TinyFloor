@@ -17,6 +17,7 @@ import { GoogleOneTap } from "@/components/auth/GoogleOneTap";
 import { GitHubMark, SiteFooter } from "./SiteFooter";
 import { SiteTheme } from "@/components/home/SiteTheme";
 import { Reveals } from "./Motion";
+import { lit } from "./ColorStage";
 import { countWords, rise, Split } from "./Split";
 
 /*
@@ -152,18 +153,21 @@ export function Hero({
  * there rather than run off the edge. A glare runs across the demo office's
  * now and then, as on the doors' buttons (shared.css).
  */
-export function Joined({ placement, className, style }: { placement: string; className?: string; style?: CSSProperties }) {
+export function Joined({ placement, onColor = false, className, style }: { placement: string; onColor?: boolean; className?: string; style?: CSSProperties }) {
   const t = useTranslations("homepage.hero");
   const half =
     "inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-[14px] font-medium leading-tight transition-colors min-[400px]:px-6 min-[400px]:text-[15px] sm:whitespace-nowrap";
   return (
     <div data-cta={placement} style={style} className={cn("flex w-full max-w-[22rem] flex-col-reverse gap-2 sm:w-auto sm:max-w-none sm:flex-row sm:gap-0", className)}>
-      <Link href="/create" className={cn(half, "bg-foreground/[0.09] text-foreground hover:bg-foreground/[0.14] sm:rounded-e-none")}>
+      <Link
+        href="/create"
+        className={cn(half, onColor ? "bg-[#2a2f9e] text-white hover:bg-[#252a8c]" : "bg-foreground/[0.09] text-foreground hover:bg-foreground/[0.14]", "sm:rounded-e-none")}
+      >
         {t("cta")}
       </Link>
       <Link
         href="/lobby"
-        className={cn(half, "shine bg-foreground text-background hover:bg-foreground/85 sm:rounded-s-none")}
+        className={cn(half, "shine", onColor ? "bg-white text-[#16172e] hover:bg-white/90" : "bg-foreground text-background hover:bg-foreground/85", "sm:rounded-s-none")}
       >
         {t("lobby")}
       </Link>
@@ -491,51 +495,50 @@ export function Questions({ items, title }: { items: Array<{ q: string; a: strin
 
 /** The marks over the last ask: offices, drawn the way the app draws them, beside our own. */
 const MARKS: Array<{ seed?: string; turn: number; lift: number; size: number }> = [
-  { turn: -10, lift: 22, size: 60 },
-  { seed: "office-kiln", turn: 7, lift: 0, size: 64 },
-  { seed: "office-northwind", turn: -3, lift: 14, size: 60 },
-  { seed: "office-ember", turn: -6, lift: -2, size: 64 },
-  { seed: "office-harbour", turn: 9, lift: 24, size: 58 },
+  { seed: "office-kiln", turn: -8, lift: 10, size: 60 },
+  { seed: "office-northwind", turn: 6, lift: 0, size: 68 },
+  { turn: -4, lift: -6, size: 76 },
+  { seed: "office-ember", turn: 8, lift: 2, size: 66 },
+  { seed: "office-harbour", turn: -6, lift: 12, size: 58 },
 ];
 
 /**
- * The last ask, on the plain canvas: a loose arc of offices, one statement in
- * the regular weight, and the same joined control as the hero. It carries the
- * nav's #invites anchor.
+ * The last ask, set like the panels above it: a block of the site's blurple
+ * in the page's grey panel, and in it offices' marks and our own, one
+ * statement in the regular weight, and the same joined control as the hero.
+ * It carries the nav's #invites anchor.
  */
 export function Closing() {
   const t = useTranslations("homepage.closing");
   return (
-    <section id="invites" className={cn(COLUMN, ANCHOR, "flex flex-col items-center pb-32 pt-8 text-center sm:pb-44 sm:pt-12")}>
-      <div aria-hidden className="flex origin-bottom scale-[0.78] items-start justify-center gap-3 sm:scale-100 sm:gap-5">
-        {MARKS.map((one, i) => (
-          // The mark keeps its own tilt; the span around it is what arrives.
-          <span key={i} data-reveal className="block" style={rise(40 * i, { y: 20, scale: 0.9 })}>
-            <span
-              className="block drop-shadow-[0_12px_18px_rgb(0_0_0/0.16)]"
-              style={{ transform: `translateY(${one.lift}px) rotate(${one.turn}deg)` }}
-            >
-              {one.seed ? <Face seed={one.seed} square size={one.size} /> : <Logo size={one.size} />}
+    <section id="invites" className={cn(COLUMN, ANCHOR, "pb-12 pt-20 sm:pb-16 sm:pt-28")}>
+      <div className="rounded-[44px] bg-muted p-3">
+        <div style={lit("blurple")} className="flex flex-col items-center rounded-[34px] px-6 pb-14 pt-14 text-center text-white sm:pb-20 sm:pt-20">
+          <div aria-hidden className="flex origin-top scale-[0.74] items-start justify-center gap-3 min-[400px]:scale-[0.85] sm:scale-100 sm:gap-5">
+            {MARKS.map((one, i) => (
+              // The mark keeps its own tilt; the span around it is what arrives.
+              <span key={i} data-reveal className="block" style={rise(40 * i, { y: 20, scale: 0.9 })}>
+                <span className="block drop-shadow-[0_14px_20px_rgb(20_24_90/0.35)]" style={{ transform: `translateY(${one.lift}px) rotate(${one.turn}deg)` }}>
+                  {one.seed ? <Face seed={one.seed} square size={one.size} /> : <Logo size={one.size} />}
+                </span>
+              </span>
+            ))}
+          </div>
+          <h2
+            data-reveal-words
+            style={rise(60)}
+            className={cn("mt-10 text-balance text-[38px] font-normal leading-[1.04] tracking-[-0.045em] min-[400px]:text-[44px] sm:mt-14 sm:text-[64px] lg:text-[76px]", CJK_HEADLINE)}
+          >
+            <Split text={t("title")} />
+            <span className="block text-[#dfe2ff]">
+              <Split text={t("muted")} from={countWords(t("title"))} />
             </span>
-          </span>
-        ))}
-      </div>
-      <h2
-        data-reveal-words
-        style={rise(60)}
-        className={cn(
-          "mt-16 text-balance text-[40px] font-normal leading-[1.04] tracking-[-0.045em] min-[400px]:text-[44px] sm:text-[68px] lg:text-[80px]",
-          CJK_HEADLINE,
-        )}
-      >
-        <Split text={t("title")} />
-        <span className="block">
-          <Split text={t("muted")} from={countWords(t("title"))} />
-        </span>
-      </h2>
-      <div data-reveal style={rise(160, { y: 10 })} className="mt-10 flex flex-col items-center">
-        <Joined placement="closing" />
-        <p className="mt-6 text-[13px] text-faint">{t("note")}</p>
+          </h2>
+          <div data-reveal style={rise(160, { y: 10 })} className="mt-10 flex w-full flex-col items-center sm:mt-12">
+            <Joined placement="closing" onColor />
+            <p className="mt-6 text-[13px] text-white/90">{t("note")}</p>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { useId, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 /**
@@ -60,7 +60,9 @@ export function PriceSlider({
             <span className={cn("mt-1 block text-[12.5px] text-muted-foreground", size > free && "invisible")}>{labels.freeNote}</span>
           </dt>
           <dd className="flex shrink-0 items-baseline gap-1.5">
-            <span className="text-[48px] font-normal leading-none tracking-[-0.045em] tabular-nums sm:text-[64px]">{money.format(ours)}</span>
+            <span className="text-[48px] font-normal leading-none tracking-[-0.045em] tabular-nums sm:text-[64px]">
+              <Steady widest={money.format(price)}>{money.format(ours)}</Steady>
+            </span>
             <span className="text-[13px] text-muted-foreground">{labels.month}</span>
           </dd>
         </div>
@@ -68,12 +70,29 @@ export function PriceSlider({
           <dt className="max-w-[16rem] text-[13.5px] leading-snug">{labels.theirs.replace("{low}", money.format(low)).replace("{high}", money.format(high))}</dt>
           <dd className="flex shrink-0 items-baseline gap-1.5">
             <span className="whitespace-nowrap text-[26px] font-normal leading-none tracking-[-0.03em] tabular-nums sm:text-[32px]">
-              {money.format(size * low)}–{money.format(size * high)}
+              <Steady widest={`${money.format(most * low)}–${money.format(most * high)}`}>
+                {money.format(size * low)}–{money.format(size * high)}
+              </Steady>
             </span>
             <span className="text-[13px]">{labels.month}</span>
           </dd>
         </div>
       </dl>
     </div>
+  );
+}
+
+/**
+ * A figure that changes as the slider moves, held at the width of the widest
+ * it gets, so the words beside it never rewrap and nothing below it moves.
+ */
+function Steady({ widest, children }: { widest: string; children: ReactNode }) {
+  return (
+    <span className="inline-grid text-end">
+      <span aria-hidden className="invisible col-start-1 row-start-1">
+        {widest}
+      </span>
+      <span className="col-start-1 row-start-1">{children}</span>
+    </span>
   );
 }

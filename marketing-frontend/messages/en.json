@@ -1174,7 +1174,7 @@
       "cta": "Make your office",
       "lobby": "Try the demo office",
       "note": "One price for the whole team · No card needed",
-      "film": "TinyFloor: a message comes in, the chat opens, then a call with the teammate beside you"
+      "film": "TinyFloor: the whole office at work, a message comes in and the chat opens, then you walk over to a teammate and call them"
     },
     "floor": {
       "eyebrow": "On the floor",
@@ -1289,7 +1289,11 @@
     "chat": {
       "title": "Team chat, right beside the floor.",
       "body": "Channels and direct messages for everything that isn’t a call, so what was decided is written down and easy to find. Reply to a message, react, and share a screenshot.",
-      "more": "More about team chat"
+      "more": "More about team chat",
+      "lines": {
+        "morning": "Morning! Launch is still on for 2pm, notes are in #design",
+        "poster": "Poster for the launch is done 🚀 what do you think?"
+      }
     },
     "extras": {
       "title": "Everything else a remote team needs.",

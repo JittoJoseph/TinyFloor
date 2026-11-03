@@ -165,7 +165,7 @@ export function GuideCard({ guide, title, description }: { guide: Guide; title: 
     <Link href={guidePath(guide)} className="group flex h-full flex-col">
       <GuideImage guide={guide} alt="" />
       <span className="mt-5 text-[18px] font-semibold leading-[1.3] tracking-[-0.015em] transition-colors group-hover:text-foreground/80">{title}</span>
-      <span className="mt-2 text-[14.5px] leading-[1.55] text-muted-foreground">{description}</span>
+      <span className="mt-2 line-clamp-2 text-[14.5px] leading-[1.55] text-muted-foreground">{description}</span>
     </Link>
   );
 }

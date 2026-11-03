@@ -1174,7 +1174,7 @@
       "cta": "Maak je kantoor",
       "lobby": "Probeer het demokantoor",
       "note": "Eén prijs voor het hele team · Geen creditcard nodig",
-      "film": "TinyFloor: er komt een bericht binnen, de chat opent, daarna een gesprek met de collega naast je"
+      "film": "TinyFloor: het hele kantoor aan het werk, er komt een bericht binnen en de chat opent, daarna loop je naar een collega en bel je die"
     },
     "floor": {
       "eyebrow": "Op de verdieping",
@@ -1300,7 +1300,11 @@
     "chat": {
       "title": "Teamchat, direct naast de verdieping.",
       "body": "Kanalen en directe berichten voor alles wat geen gesprek is, zodat wat besloten is opgeschreven staat en makkelijk terug te vinden is. Beantwoord een bericht, reageer en deel een screenshot.",
-      "more": "Meer over teamchat"
+      "more": "Meer over teamchat",
+      "lines": {
+        "morning": "Goedemorgen! De lancering is nog steeds om 14.00 uur, notities staan in #design",
+        "poster": "De poster voor de lancering is klaar 🚀 wat vinden jullie?"
+      }
     },
     "extras": {
       "title": "Alles wat een remote team nog meer nodig heeft.",

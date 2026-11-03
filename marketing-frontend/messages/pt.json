@@ -1174,7 +1174,7 @@
       "cta": "Crie seu escritório",
       "lobby": "Experimente o escritório de demonstração",
       "note": "Um preço para toda a equipe · Sem cartão",
-      "film": "TinyFloor: chega uma mensagem, o chat abre e depois uma chamada com o colega ao seu lado"
+      "film": "TinyFloor: o escritório inteiro trabalhando, chega uma mensagem e o chat abre, depois você vai até um colega e liga para ele"
     },
     "floor": {
       "eyebrow": "No andar",
@@ -1300,7 +1300,11 @@
     "chat": {
       "title": "Chat de equipe, bem ao lado do andar.",
       "body": "Canais e mensagens diretas para tudo o que não for uma chamada, para que o que foi decidido fique registrado e seja fácil de encontrar. Responda a uma mensagem, reaja e compartilhe uma captura de tela.",
-      "more": "Mais sobre o chat da equipe"
+      "more": "Mais sobre o chat da equipe",
+      "lines": {
+        "morning": "Bom dia! O lançamento continua às 14h, as notas estão em #design",
+        "poster": "O pôster do lançamento está pronto 🚀 o que acham?"
+      }
     },
     "extras": {
       "title": "Tudo o que uma equipe remota precisa.",

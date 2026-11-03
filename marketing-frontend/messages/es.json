@@ -1174,7 +1174,7 @@
       "cta": "Crea tu oficina",
       "lobby": "Prueba la oficina de demostración",
       "note": "Un solo precio para todo el equipo · Sin tarjeta",
-      "film": "TinyFloor: llega un mensaje, se abre el chat y luego una llamada con el compañero de al lado"
+      "film": "TinyFloor: toda la oficina trabajando, llega un mensaje y se abre el chat, luego caminas hasta un compañero y lo llamas"
     },
     "floor": {
       "eyebrow": "En la planta",
@@ -1300,7 +1300,11 @@
     "chat": {
       "title": "Chat de equipo, justo al lado de la planta.",
       "body": "Canales y mensajes directos para todo lo que no sea una llamada, para que lo acordado quede por escrito y sea fácil de encontrar. Responde a un mensaje, reacciona y comparte una captura de pantalla.",
-      "more": "Más sobre el chat de equipo"
+      "more": "Más sobre el chat de equipo",
+      "lines": {
+        "morning": "¡Buenos días! El lanzamiento sigue a las 14:00, las notas están en #design",
+        "poster": "El póster del lanzamiento está listo 🚀 ¿qué os parece?"
+      }
     },
     "extras": {
       "title": "Todo lo demás que necesita un equipo remoto.",

@@ -33,6 +33,7 @@ import { PLANS } from "@/lib/plans";
 import { cn } from "@/lib/utils";
 import { ANCHOR, CJK_HEADLINE, COLUMN, OpenSource } from "./Blocks";
 import { PriceSlider } from "./PriceSlider";
+import { ColorStage } from "./ColorStage";
 import { Laurel } from "./Laurel";
 import { Muted, rise, split, Split } from "./Split";
 
@@ -294,9 +295,9 @@ export function PresenceSection() {
     </li>
   );
   return (
-    <section id="people" className={cn(COLUMN, ANCHOR, "grid items-center gap-14 py-24 sm:py-32 lg:grid-cols-[1fr_400px] lg:gap-24")}>
+    <section id="people" className={cn(COLUMN, ANCHOR, "grid items-center gap-14 py-24 sm:py-32 lg:grid-cols-[1fr_440px] lg:gap-20")}>
       <Words title={t("title")} body={t("body")} more={t("more")} href="/team-presence" />
-      <div className="font-(family-name:--font-app) [--face-ring:var(--ui-background)]">
+      <ColorStage tone="blurple" object="object-headphones" className="font-(family-name:--font-app)">
         <p data-reveal className="flex items-center justify-between border-b border-border pb-3 text-[12.5px] font-medium text-faint" style={rise(0, { y: 6 })}>
           {t("here")}
           <span className="tabular-nums">{here.length}</span>
@@ -307,7 +308,7 @@ export function PresenceSection() {
           <span className="tabular-nums">{away.length}</span>
         </p>
         <ul className="opacity-70">{away.map((one, i) => row(one, here.length + i))}</ul>
-      </div>
+      </ColorStage>
     </section>
   );
 }
@@ -381,7 +382,7 @@ export function MeetSection() {
   const { emma, jack, olivia, sam } = PEOPLE;
   return (
     <section id="meetings" className={cn(COLUMN, ANCHOR, "grid items-center gap-14 py-24 sm:py-32 lg:grid-cols-[1.25fr_1fr] lg:gap-20")}>
-      <div className="order-2 font-(family-name:--font-app) lg:order-1">
+      <ColorStage tone="coral" object="object-mug" side="start" className="order-2 font-(family-name:--font-app) lg:order-1" card="p-3 sm:p-4">
         <div className="grid gap-2 sm:grid-cols-[1fr_150px]">
           <Tile seed={emma.id} name={emma.name} talking reveal={0} className="aspect-[16/10]" />
           <div className="grid grid-cols-3 gap-2 sm:grid-cols-1">
@@ -398,7 +399,7 @@ export function MeetSection() {
           </p>
           <Controls />
         </div>
-      </div>
+      </ColorStage>
       <Words title={t("title")} body={t("body")} more={t("more")} href="/virtual-meeting-room" className="order-1 lg:order-2" />
     </section>
   );
@@ -545,125 +546,127 @@ export function ChatSection() {
         </div>
       </div>
 
-      <div
-        data-reveal
-        style={rise(0, { y: 28, scale: 0.985 })}
-        className="mt-14 flex overflow-hidden rounded-[20px] border border-border bg-background font-(family-name:--font-app) [--face-ring:var(--ui-background)] sm:mt-20"
-      >
-        {/* The side, as the app draws it: the office and a way to start a conversation, search, the channels and people, and you at the foot. */}
-        <div className="hidden w-[236px] shrink-0 flex-col border-e border-border bg-rail/60 p-2.5 md:flex">
-          <div className="flex h-10 items-center justify-between px-2">
-            <span className="text-[14.5px] font-semibold tracking-[-0.01em]">{p("office")}</span>
-            <SquarePen className="size-4 text-muted-foreground" />
-          </div>
-          <div className="mt-1 flex h-9 items-center gap-2 rounded-[10px] border border-border bg-background px-2.5 text-[12.5px] text-faint">
-            <Search className="size-3.5" />
-            <span className="flex-1 truncate">{p("search")}</span>
-            <kbd className="rounded-[5px] border border-border px-1 font-sans text-[10px]">⌘K</kbd>
-          </div>
-          <p className="mt-4 flex items-center gap-1 px-2 pb-1 text-[12px] font-medium text-muted-foreground">
-            <ChevronDown className="size-3" />
-            {p("channels")}
-          </p>
-          {channels.map((name, i) => (
-            <span key={name} className={cn(side, i === 0 ? "bg-foreground/[0.06] font-medium text-foreground" : "text-muted-foreground")}>
-              <Hash className="size-3.5 text-faint" />
-              <span className="flex-1">{name}</span>
-              {i === 1 && <span className="rounded-full bg-foreground px-1.5 text-[10.5px] font-semibold leading-[1.5] text-background">3</span>}
-            </span>
-          ))}
-          <span className={cn(side, "text-muted-foreground")}>
-            <span className="flex size-5 items-center justify-center rounded-[6px] bg-foreground/[0.06]">
-              <Plus className="size-3" />
-            </span>
-            {p("addChannel")}
-          </span>
-          <p className="mt-3 flex items-center gap-1 px-2 pb-1 text-[12px] font-medium text-muted-foreground">
-            <ChevronDown className="size-3" />
-            {p("directMessages")}
-          </p>
-          {[olivia, noah, lily].map((one, i) => (
-            <span key={one.id} className={cn(side, "text-muted-foreground")}>
-              <Face seed={one.id} size={20} presence={i === 2 ? "away" : "available"} />
-              {one.name}
-            </span>
-          ))}
-          <span className={cn(side, "text-muted-foreground")}>
-            <UserPlus className="size-3.5" />
-            {s("invitePeople")}
-          </span>
-
-          <div className="mt-auto flex items-center gap-2.5 rounded-[12px] bg-foreground/[0.04] p-2">
-            <Face seed={emma.id} size={30} presence="available" />
-            <span className="min-w-0 flex-1 leading-tight">
-              <span className="block truncate text-[13px] font-semibold">{emma.name}</span>
-              <span className="block text-[11.5px] text-muted-foreground">{p("available")}</span>
-            </span>
-            {[Mic, Headphones, Gear].map((Icon, i) => (
-              <Icon key={i} className="size-[15px] text-muted-foreground" />
+      <ColorStage tone="mint" object="object-heart" className="mt-14 sm:mt-20" card="overflow-hidden">
+        <div
+          data-reveal
+          style={rise(0, { y: 28, scale: 0.985 })}
+          className="flex overflow-hidden rounded-[22px] bg-background font-(family-name:--font-app) [--face-ring:var(--ui-background)]"
+        >
+          {/* The side, as the app draws it: the office and a way to start a conversation, search, the channels and people, and you at the foot. */}
+          <div className="hidden w-[236px] shrink-0 flex-col border-e border-border bg-rail/60 p-2.5 md:flex">
+            <div className="flex h-10 items-center justify-between px-2">
+              <span className="text-[14.5px] font-semibold tracking-[-0.01em]">{p("office")}</span>
+              <SquarePen className="size-4 text-muted-foreground" />
+            </div>
+            <div className="mt-1 flex h-9 items-center gap-2 rounded-[10px] border border-border bg-background px-2.5 text-[12.5px] text-faint">
+              <Search className="size-3.5" />
+              <span className="flex-1 truncate">{p("search")}</span>
+              <kbd className="rounded-[5px] border border-border px-1 font-sans text-[10px]">⌘K</kbd>
+            </div>
+            <p className="mt-4 flex items-center gap-1 px-2 pb-1 text-[12px] font-medium text-muted-foreground">
+              <ChevronDown className="size-3" />
+              {p("channels")}
+            </p>
+            {channels.map((name, i) => (
+              <span key={name} className={cn(side, i === 0 ? "bg-foreground/[0.06] font-medium text-foreground" : "text-muted-foreground")}>
+                <Hash className="size-3.5 text-faint" />
+                <span className="flex-1">{name}</span>
+                {i === 1 && <span className="rounded-full bg-foreground px-1.5 text-[10.5px] font-semibold leading-[1.5] text-background">3</span>}
+              </span>
             ))}
-          </div>
-        </div>
-
-        <div className="flex min-w-0 flex-1 flex-col">
-          <div className="flex h-12 items-center gap-2 border-b border-border px-5 text-[14px] font-semibold sm:px-6">
-            <span className="text-faint">#</span>
-            {channels[0]}
-            <span className="ms-auto flex items-center gap-1.5 rounded-full border border-border py-0.5 pe-2 ps-0.5 text-[11.5px] font-medium text-muted-foreground [--face-ring:var(--ui-background)]">
-              <FaceStack seeds={[olivia.id, jack.id, noah.id]} size={18} max={3} />6
+            <span className={cn(side, "text-muted-foreground")}>
+              <span className="flex size-5 items-center justify-center rounded-[6px] bg-foreground/[0.06]">
+                <Plus className="size-3" />
+              </span>
+              {p("addChannel")}
             </span>
-          </div>
-          <ol className="flex flex-col gap-5 px-5 pb-4 pt-4 sm:px-6">
-            <li className="flex items-center gap-3 text-[11.5px] font-medium text-faint">
-              <span className="h-px flex-1 bg-border" />
-              {p("today")}
-              <span className="h-px flex-1 bg-border" />
-            </li>
-            <Message who={olivia} time="09:32">
-              {p("message0")}
-            </Message>
-            <Message
-              who={jack}
-              time="09:40"
-              turn={1}
-              extra={
-                <>
-                  <Shot />
-                  <span className="mt-2 flex gap-1.5">
-                    <Reaction emoji="👀" count={2} mine />
-                    <Reaction emoji="🔥" count={1} />
-                  </span>
-                </>
-              }
-            >
-              {p("message3")}
-            </Message>
-            <Message who={noah} time="09:46" turn={2} extra={<VoiceNote />} />
-          </ol>
-          <p data-reveal style={rise(120 + 80 * 3, { y: 6 })} className="px-5 pb-2 text-[12px] text-faint sm:px-6">
-            {p("typing", { name: lily.name })}
-          </p>
-          {/* The box, as the app draws it: what you write, then emoji, a picture and a file, and the microphone with nothing written yet. */}
-          <div className="mx-5 mb-5 rounded-2xl border border-border bg-card sm:mx-6">
-            <p className="px-4 pb-1 pt-3 text-[13.5px] text-faint">{p("composer")}</p>
-            <div className="flex items-center gap-0.5 px-2 pb-2 text-muted-foreground">
-              {[Smile, ImagePlus, Paperclip].map((Icon, i) => (
-                <span key={i} className="flex size-8 items-center justify-center">
-                  <Icon className="size-[18px]" />
-                </span>
+            <p className="mt-3 flex items-center gap-1 px-2 pb-1 text-[12px] font-medium text-muted-foreground">
+              <ChevronDown className="size-3" />
+              {p("directMessages")}
+            </p>
+            {[olivia, noah, lily].map((one, i) => (
+              <span key={one.id} className={cn(side, "text-muted-foreground")}>
+                <Face seed={one.id} size={20} presence={i === 2 ? "away" : "available"} />
+                {one.name}
+              </span>
+            ))}
+            <span className={cn(side, "text-muted-foreground")}>
+              <UserPlus className="size-3.5" />
+              {s("invitePeople")}
+            </span>
+
+            <div className="mt-auto flex items-center gap-2.5 rounded-[12px] bg-foreground/[0.04] p-2">
+              <Face seed={emma.id} size={30} presence="available" />
+              <span className="min-w-0 flex-1 leading-tight">
+                <span className="block truncate text-[13px] font-semibold">{emma.name}</span>
+                <span className="block text-[11.5px] text-muted-foreground">{p("available")}</span>
+              </span>
+              {[Mic, Headphones, Gear].map((Icon, i) => (
+                <Icon key={i} className="size-[15px] text-muted-foreground" />
               ))}
-              <span className="me-1 ms-auto hidden items-center gap-1 text-[11px] text-faint sm:flex">
-                <kbd className="flex h-5 min-w-5 items-center justify-center rounded-md border border-border bg-muted px-1 font-sans text-[11px]">⇧</kbd>
-                <kbd className="flex h-5 min-w-5 items-center justify-center rounded-md border border-border bg-muted px-1 font-sans text-[11px]">↵</kbd>
-                <span className="ms-0.5">{p("newLine")}</span>
+            </div>
+          </div>
+
+          <div className="flex min-w-0 flex-1 flex-col">
+            <div className="flex h-12 items-center gap-2 border-b border-border px-5 text-[14px] font-semibold sm:px-6">
+              <span className="text-faint">#</span>
+              {channels[0]}
+              <span className="ms-auto flex items-center gap-1.5 rounded-full border border-border py-0.5 pe-2 ps-0.5 text-[11.5px] font-medium text-muted-foreground [--face-ring:var(--ui-background)]">
+                <FaceStack seeds={[olivia.id, jack.id, noah.id]} size={18} max={3} />6
               </span>
-              <span className="flex size-8 items-center justify-center max-sm:ms-auto">
-                <Mic className="size-[18px]" />
-              </span>
+            </div>
+            <ol className="flex flex-col gap-5 px-5 pb-4 pt-4 sm:px-6">
+              <li className="flex items-center gap-3 text-[11.5px] font-medium text-faint">
+                <span className="h-px flex-1 bg-border" />
+                {p("today")}
+                <span className="h-px flex-1 bg-border" />
+              </li>
+              <Message who={olivia} time="09:32">
+                {p("message0")}
+              </Message>
+              <Message
+                who={jack}
+                time="09:40"
+                turn={1}
+                extra={
+                  <>
+                    <Shot />
+                    <span className="mt-2 flex gap-1.5">
+                      <Reaction emoji="👀" count={2} mine />
+                      <Reaction emoji="🔥" count={1} />
+                    </span>
+                  </>
+                }
+              >
+                {p("message3")}
+              </Message>
+              <Message who={noah} time="09:46" turn={2} extra={<VoiceNote />} />
+            </ol>
+            <p data-reveal style={rise(120 + 80 * 3, { y: 6 })} className="px-5 pb-2 text-[12px] text-faint sm:px-6">
+              {p("typing", { name: lily.name })}
+            </p>
+            {/* The box, as the app draws it: what you write, then emoji, a picture and a file, and the microphone with nothing written yet. */}
+            <div className="mx-5 mb-5 rounded-2xl border border-border bg-card sm:mx-6">
+              <p className="px-4 pb-1 pt-3 text-[13.5px] text-faint">{p("composer")}</p>
+              <div className="flex items-center gap-0.5 px-2 pb-2 text-muted-foreground">
+                {[Smile, ImagePlus, Paperclip].map((Icon, i) => (
+                  <span key={i} className="flex size-8 items-center justify-center">
+                    <Icon className="size-[18px]" />
+                  </span>
+                ))}
+                <span className="me-1 ms-auto hidden items-center gap-1 text-[11px] text-faint sm:flex">
+                  <kbd className="flex h-5 min-w-5 items-center justify-center rounded-md border border-border bg-muted px-1 font-sans text-[11px]">⇧</kbd>
+                  <kbd className="flex h-5 min-w-5 items-center justify-center rounded-md border border-border bg-muted px-1 font-sans text-[11px]">↵</kbd>
+                  <span className="ms-0.5">{p("newLine")}</span>
+                </span>
+                <span className="flex size-8 items-center justify-center max-sm:ms-auto">
+                  <Mic className="size-[18px]" />
+                </span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </ColorStage>
     </section>
   );
 }
@@ -828,17 +831,19 @@ export function PriceSection() {
   return (
     <section id="plans" className={cn(COLUMN, ANCHOR, "grid items-center gap-14 py-24 sm:py-32 lg:grid-cols-2 lg:gap-24")}>
       <Words title={t("title")} body={t("body")} more={t("more")} href="/pricing" />
-      <div data-reveal style={rise(80, { y: 20, scale: 0.985 })}>
-        <PriceSlider
-        locale={locale}
-        price={pro.price}
-        free={free.people}
-        most={pro.people}
-        low={8}
-        high={16}
-        labels={{ team: t("team"), people: t.raw("people") as string, ours: t("ours"), theirs: t.raw("theirs") as string, month: t("month"), freeNote: t("freeNote") }}
-        />
-      </div>
+      <ColorStage tone="sun" object="object-coins" card="p-5 sm:p-7">
+        <div data-reveal style={rise(80, { y: 20, scale: 0.985 })}>
+          <PriceSlider
+          locale={locale}
+          price={pro.price}
+          free={free.people}
+          most={pro.people}
+          low={8}
+          high={16}
+          labels={{ team: t("team"), people: t.raw("people") as string, ours: t("ours"), theirs: t.raw("theirs") as string, month: t("month"), freeNote: t("freeNote") }}
+          />
+        </div>
+      </ColorStage>
     </section>
   );
 }

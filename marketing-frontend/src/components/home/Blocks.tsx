@@ -503,39 +503,52 @@ const MARKS: Array<{ seed?: string; turn: number; lift: number; size: number }> 
  * the regular weight, and the same joined control as the hero. It carries the
  * nav's #invites anchor.
  */
+/** The clay objects at the closing stage's corners (public/objects). */
+const CORNERS = [
+  { src: "/objects/object-star.webp", at: "-top-10 -start-3 rotate-[-12deg] sm:-top-14 sm:-start-10" },
+  { src: "/objects/object-plant.webp", at: "-bottom-10 -end-3 sm:-bottom-14 sm:-end-10" },
+];
+
 export function Closing() {
   const t = useTranslations("homepage.closing");
   return (
-    <section id="invites" className={cn(COLUMN, ANCHOR, "flex flex-col items-center pb-32 pt-8 text-center sm:pb-44 sm:pt-12")}>
-      <div aria-hidden className="flex origin-bottom scale-[0.78] items-start justify-center gap-3 sm:scale-100 sm:gap-5">
-        {MARKS.map((one, i) => (
-          // The mark keeps its own tilt; the span around it is what arrives.
-          <span key={i} data-reveal className="block" style={rise(40 * i, { y: 20, scale: 0.9 })}>
-            <span
-              className="block drop-shadow-[0_12px_18px_rgb(0_0_0/0.16)]"
-              style={{ transform: `translateY(${one.lift}px) rotate(${one.turn}deg)` }}
-            >
-              {one.seed ? <Face seed={one.seed} square size={one.size} /> : <Logo size={one.size} />}
-            </span>
-          </span>
+    <section id="invites" className={cn(COLUMN, ANCHOR, "pb-24 pt-8 sm:pb-32 sm:pt-12")}>
+      {/* A stage of the site's blurple, in the dark theme's colours whatever the page's, with two clay objects at its corners. */}
+      <div className="dark relative flex flex-col items-center rounded-[40px] bg-[#5865f2] px-6 py-20 text-center text-foreground sm:py-28">
+        {CORNERS.map((one) => (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img key={one.src} src={one.src} alt="" aria-hidden width={320} height={320} loading="lazy" decoding="async" className={cn("pointer-events-none absolute w-24 select-none sm:w-36", one.at)} />
         ))}
-      </div>
-      <h2
-        data-reveal-words
-        style={rise(60)}
-        className={cn(
-          "mt-16 text-balance text-[40px] font-normal leading-[1.04] tracking-[-0.045em] min-[400px]:text-[44px] sm:text-[68px] lg:text-[80px]",
-          CJK_HEADLINE,
-        )}
-      >
-        <Split text={t("title")} />
-        <span className="block">
-          <Split text={t("muted")} from={countWords(t("title"))} />
-        </span>
-      </h2>
-      <div data-reveal style={rise(160, { y: 10 })} className="mt-10 flex flex-col items-center">
-        <Joined placement="closing" />
-        <p className="mt-6 text-[13px] text-faint">{t("note")}</p>
+        <div aria-hidden className="flex origin-bottom scale-[0.78] items-start justify-center gap-3 sm:scale-100 sm:gap-5">
+          {MARKS.map((one, i) => (
+            // The mark keeps its own tilt; the span around it is what arrives.
+            <span key={i} data-reveal className="block" style={rise(40 * i, { y: 20, scale: 0.9 })}>
+              <span
+                className="block drop-shadow-[0_12px_18px_rgb(0_0_0/0.16)]"
+                style={{ transform: `translateY(${one.lift}px) rotate(${one.turn}deg)` }}
+              >
+                {one.seed ? <Face seed={one.seed} square size={one.size} /> : <Logo size={one.size} />}
+              </span>
+            </span>
+          ))}
+        </div>
+        <h2
+          data-reveal-words
+          style={rise(60)}
+          className={cn(
+            "mt-16 text-balance text-[40px] font-normal leading-[1.04] tracking-[-0.045em] min-[400px]:text-[44px] sm:text-[68px] lg:text-[80px]",
+            CJK_HEADLINE,
+          )}
+        >
+          <Split text={t("title")} />
+          <span className="block">
+            <Split text={t("muted")} from={countWords(t("title"))} />
+          </span>
+        </h2>
+        <div data-reveal style={rise(160, { y: 10 })} className="mt-10 flex flex-col items-center">
+          <Joined placement="closing" />
+          <p className="mt-6 text-[13px] text-foreground/70">{t("note")}</p>
+        </div>
       </div>
     </section>
   );

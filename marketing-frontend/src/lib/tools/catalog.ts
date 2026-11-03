@@ -1,5 +1,6 @@
 import { localeCodes, type Locale } from "@/lib/i18n/routing";
 import { GUIDES, guideLocales, guidePath } from "@/lib/guides";
+import { BLOG_PATH } from "@/lib/blog";
 
 /**
  * Every free tool (docs/search.md), and the languages it's written in: all
@@ -43,12 +44,14 @@ export const TOOLS: ToolEntry[] = [
 export const toolsIn = (locale: string) => TOOLS.filter((tool) => tool.locales.includes(locale as Locale));
 
 /**
- * The languages a page exists in: a tool's or a guide's own, or every
- * language for any other page.
+ * The languages a page exists in: a tool's or a guide's own, English for the
+ * blog, or every language for any other page.
  */
 export function pageLocales(path: string): readonly Locale[] {
   const tool = TOOLS.find((one) => one.path === path);
   if (tool) return tool.locales;
+  // The blog is written in English only (lib/blog).
+  if (path === BLOG_PATH || path.startsWith(`${BLOG_PATH}/`)) return ["en"];
   const guide = GUIDES.find((one) => guidePath(one) === path);
   return guide ? guideLocales(guide) : localeCodes;
 }

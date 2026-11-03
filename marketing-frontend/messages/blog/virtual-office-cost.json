@@ -1,0 +1,377 @@
+{
+  "label": "What a virtual office costs",
+  "meta": {
+    "title": "Virtual Office Software Cost in 2026: What a Team of 5, 10 or 15 Pays",
+    "description": "What ten virtual offices cost a remote team of 5, 10 and 15 people a month, from each pricing page on 3 November 2026, and what else changes the bill."
+  },
+  "title": "What does a virtual office cost? <em>What a team of 5, 10 or 15 pays.</em>",
+  "intro": "Most virtual office software costs $5 to $20 a person a month, so a team of 10 pays between $50 and $200 a month. A few charge for the office instead of the person, and some free plans fit a team of up to 10 with limits on time or meetings. Every price below is from the product's own pricing page, checked on 3 November 2026. We make TinyFloor, one of the ten, so we're not neutral; we've kept to what each page says.",
+  "takeaways": [
+    "Priced per person, a virtual office costs $4.80 to $20 a month for each member: $48 to $200 a month for a team of 10.",
+    "Two of the ten price by the office or space instead: TinyFloor at $29 a month for the whole office, and oVice from $65 a month for a small space.",
+    "Paying yearly saves about 10% to 20% where it's offered. Roam and TinyFloor bill monthly only.",
+    "Every free plan has a limit that matters: people, hours a day, meeting length, or a public space.",
+    "Minimums change what a small team pays: Sococo bills at least 10 seats and Kumospace at least 5 members."
+  ],
+  "sections": [
+    {
+      "title": "How is virtual office software priced?",
+      "body": [
+        "Almost every virtual office charges in one of four ways, and the way it charges matters more than the headline number once you multiply it by your team."
+      ],
+      "items": [
+        {
+          "title": "Per person",
+          "body": "A price for each member, user or seat, every month. Gather, Kumospace, SoWork, Spot, WorkAdventure and SpatialChat work this way [2][3][4][5][6][7]. The bill grows with every hire."
+        },
+        {
+          "title": "Per active member",
+          "body": "Roam charges $19.50 a month only for members who used it that month, billed monthly with no yearly plan [8]."
+        },
+        {
+          "title": "Per office or space",
+          "body": "One price for the space, whoever is in it. TinyFloor Pro is $29 a month for the whole office [1]; oVice's Entry-S is $65 a month billed yearly for a space of about 10 regular members [9]."
+        },
+        {
+          "title": "Per seat, with a minimum and minutes",
+          "body": "Sococo is $13.49 a seat a month, prepaid yearly, for at least 10 seats, with 500 minutes a seat each month and $5 for each extra 1,000 minutes [10]."
+        }
+      ]
+    },
+    {
+      "title": "What does a team of 5, 10 or 15 pay each month?",
+      "body": [
+        "Billed monthly, before tax. A team of 10 pays from $29 to $200 a month depending on the product, a difference of nearly seven times for a similar set of rooms, calls and chat. For another team size, the [virtual office cost calculator](/tools/virtual-office-cost-calculator) works it out from the same prices."
+      ],
+      "table": {
+        "head": [
+          "Product",
+          "Priced",
+          "5 people",
+          "10 people",
+          "15 people"
+        ],
+        "rows": [
+          [
+            "TinyFloor Pro",
+            "Per office",
+            "$29",
+            "$29",
+            "$29"
+          ],
+          [
+            "Spot Basic",
+            "Per user",
+            "$30",
+            "$60",
+            "$90"
+          ],
+          [
+            "SoWork Basic",
+            "Per member",
+            "$30",
+            "$60",
+            "$90"
+          ],
+          [
+            "SpatialChat Business",
+            "Per user",
+            "$40",
+            "$80",
+            "$120"
+          ],
+          [
+            "oVice Entry",
+            "Per space",
+            "$78",
+            "$78",
+            "$294"
+          ],
+          [
+            "WorkAdventure Business",
+            "Per user",
+            "$55",
+            "$110",
+            "$165"
+          ],
+          [
+            "Gather Essential",
+            "Per member",
+            "$75",
+            "$150",
+            "$225"
+          ],
+          [
+            "Roam",
+            "Per active member",
+            "$97.50",
+            "$195",
+            "$292.50"
+          ],
+          [
+            "Kumospace Business",
+            "Per user, 5 minimum",
+            "$100",
+            "$200",
+            "$300"
+          ],
+          [
+            "Sococo",
+            "Per seat, 10 minimum",
+            "$134.90",
+            "$134.90",
+            "$202.35"
+          ]
+        ],
+        "note": "In US dollars before tax, billed monthly, from each product's pricing page on 3 November 2026; Sococo is prepaid yearly only. oVice sizes its spaces by people online at once and suggests Entry-S for about 10 regular members and Entry-M, used here for 15, for about 40."
+      }
+    },
+    {
+      "title": "How much does paying yearly save?",
+      "body": [
+        "Where there's a yearly plan, it saves about 10% to 20%, paid up front. For a team of 10, over a year:"
+      ],
+      "table": {
+        "head": [
+          "Product",
+          "Billed monthly",
+          "Billed yearly",
+          "Saved"
+        ],
+        "rows": [
+          [
+            "TinyFloor Pro",
+            "$348",
+            "Monthly only",
+            "—"
+          ],
+          [
+            "Spot Basic",
+            "$720",
+            "$576",
+            "20%"
+          ],
+          [
+            "SoWork Basic",
+            "$720",
+            "$648",
+            "10%"
+          ],
+          [
+            "oVice Entry-S",
+            "$936",
+            "$780",
+            "17%"
+          ],
+          [
+            "SpatialChat Business",
+            "$960",
+            "$760",
+            "21%"
+          ],
+          [
+            "WorkAdventure Business",
+            "$1,320",
+            "$1,080",
+            "18%"
+          ],
+          [
+            "Sococo",
+            "Yearly only",
+            "$1,618.80",
+            "—"
+          ],
+          [
+            "Gather Essential",
+            "$1,800",
+            "$1,440",
+            "20%"
+          ],
+          [
+            "Roam",
+            "$2,340",
+            "Monthly only",
+            "—"
+          ],
+          [
+            "Kumospace Business",
+            "$2,400",
+            "$1,920",
+            "20%"
+          ]
+        ],
+        "note": "From each product's pricing page on 3 November 2026. A yearly plan is worth it once the team is sure the tool will stay; while you're still deciding, pay monthly."
+      }
+    },
+    {
+      "title": "What do the free plans include?",
+      "body": [
+        "Six of the ten have a free plan, and each is limited in a different way. A free plan that fits your whole team beats any paid one; a free plan that cuts every meeting short, or that anyone can walk into, may not."
+      ],
+      "table": {
+        "head": [
+          "Product",
+          "Free plan",
+          "The limit that matters"
+        ],
+        "rows": [
+          [
+            "SoWork",
+            "Up to 10 members",
+            "Meetings end at 30 minutes; no recordings or analytics"
+          ],
+          [
+            "WorkAdventure",
+            "Up to 10 people at once",
+            "More than 10 online at once needs Business"
+          ],
+          [
+            "SpatialChat",
+            "Up to 12 people",
+            "2 hours of meetings a day, 4 rooms"
+          ],
+          [
+            "Kumospace",
+            "Up to 5 members and 50 guests",
+            "A public space; locking it needs Business"
+          ],
+          [
+            "TinyFloor",
+            "Up to 3 people",
+            "Every feature; chat search covers the last 90 days"
+          ],
+          [
+            "Gather, Spot, Roam, Sococo",
+            "None",
+            "A trial: 30 days for Gather and Spot, 14 for Roam"
+          ]
+        ],
+        "note": "From each product's pricing page on 3 November 2026. oVice offers a free trial on its paid spaces."
+      }
+    },
+    {
+      "title": "What else changes the bill?",
+      "items": [
+        {
+          "title": "Minimums",
+          "body": "Sococo bills at least 10 seats, so a team of 5 pays for 10 [10]. Kumospace Business needs at least 5 members [3], and oVice's per-user Business Starter starts at 20 users, $320 a month [9]."
+        },
+        {
+          "title": "Hours included",
+          "body": "Gather's Essential plan includes recordings starting at 20 hours, and transcription and guest hosting starting at 30 hours [2]. Sococo includes 500 minutes a seat each month [10]. If your team meets a lot, check what happens past the limit."
+        },
+        {
+          "title": "Guests",
+          "body": "Gather charges for members, not guests [2], and Roam's guests are free [8]. Kumospace includes 50 guests, who can each be in for up to 4 hours a week [3]."
+        },
+        {
+          "title": "Price changes",
+          "body": "Roam has published its 2027 price, $20.88 an active member a month [8]. TinyFloor's $29 is a founding price for offices that subscribe before 1 March 2027, kept while they stay subscribed; new subscriptions after that are $39 [1]."
+        },
+        {
+          "title": "Recordings and AI",
+          "body": "Recordings, transcripts and AI notes are often what separates a cheaper plan from a dearer one: SoWork keeps unlimited recordings and AI summaries for Premium, $12 a member a month yearly [4], and Kumospace keeps recording for Business [3]."
+        }
+      ]
+    },
+    {
+      "title": "Which pricing suits which team?",
+      "items": [
+        {
+          "title": "A team that works together every day",
+          "body": "Per-person pricing makes every new teammate a new cost. A price for the office stays the same as the team grows, so it suits a team that wants everyone in, all day."
+        },
+        {
+          "title": "A team whose size changes month to month",
+          "body": "Roam's active-member billing means you don't pay for someone who didn't use it that month [8]."
+        },
+        {
+          "title": "A team that needs recordings, AI notes or single sign-on",
+          "body": "Expect to pay per person on a higher plan: Gather includes recordings and AI notes within its hours [2], SoWork puts them on Premium [4], and single sign-on is usually on custom or enterprise plans, though oVice includes it in its Entry spaces [9]."
+        },
+        {
+          "title": "A team trying it for a week",
+          "body": "Use a trial before a free plan with limits: Gather and Spot give 30 days [2][5], Roam and Kumospace 14 [8][3], TinyFloor 14 days of Pro for the whole team [1], and SoWork 7 [4]. Most don't need a card."
+        }
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Where TinyFloor fits",
+    "body": "TinyFloor is a virtual office in the browser for a team that works together every day: walk up to a teammate to talk, meet in the meeting room, with chat and screen sharing. Pro is one price for the whole office, $29 a month, not a price per person, and every new office starts with 14 days of Pro, no card needed. It has no recordings, AI notes or single sign-on, so if you need those, a per-person plan above will suit you better."
+  },
+  "faq": [
+    {
+      "q": "How much does virtual office software cost?",
+      "a": "Most virtual office software costs $5 to $20 a person a month, or $50 to $200 a month for a team of 10. A few charge per office instead: TinyFloor Pro is $29 a month for the whole office, and oVice's smallest space is $65 a month billed yearly. Prices checked on 3 November 2026."
+    },
+    {
+      "q": "Which virtual offices charge per team instead of per person?",
+      "a": "TinyFloor charges one price for the whole office, $29 a month. oVice's Entry plans are a flat price per space, from $65 a month billed yearly. Roam charges per active member, so only the people who used it that month."
+    },
+    {
+      "q": "Is there a free virtual office?",
+      "a": "Yes, with limits. SoWork is free for 10 members with 30-minute meetings, WorkAdventure for 10 people at once, SpatialChat for 12 people for 2 hours a day, Kumospace for 5 members in a public space, and TinyFloor for 3 people. Gather, Spot, Roam and Sococo have trials instead."
+    },
+    {
+      "q": "Is a yearly plan worth it?",
+      "a": "It saves about 10% to 20% where it's offered, but it's paid up front. Once the team is sure it will keep using the tool, it's worth it; while you're still deciding, pay monthly."
+    },
+    {
+      "q": "Do virtual offices charge for guests?",
+      "a": "Usually not. Gather charges for members, not guests, Roam's guests are free, and Kumospace includes 50 guests who can each be in for up to 4 hours a week."
+    }
+  ],
+  "sources": [
+    {
+      "title": "TinyFloor pricing",
+      "url": "https://www.tinyfloor.com/pricing",
+      "note": "Free for 3 people; Pro $29 a month for the whole office, founding price before 1 March 2027, $39 after; 14-day trial of Pro."
+    },
+    {
+      "title": "Gather pricing",
+      "url": "https://www.gather.town/pricing",
+      "note": "Essential $12 a member a month billed yearly, $15 monthly; 30-day trial; recordings from 20 hours, transcription and guests from 30 hours."
+    },
+    {
+      "title": "Kumospace pricing",
+      "url": "https://www.kumospace.com/pricing",
+      "note": "Free for 5 members, public space; Business $16 a user a month billed yearly, $20 monthly, at least 5 members; 50 guests up to 4 hours a week."
+    },
+    {
+      "title": "SoWork pricing",
+      "url": "https://www.sowork.com/pricing",
+      "note": "Free for 10 members, 30-minute meetings; Basic $5.40 a member a month billed yearly, $6 monthly; Premium $12 yearly, $15 monthly; 7-day trial."
+    },
+    {
+      "title": "Spot pricing",
+      "url": "https://www.spotvirtual.com/pricing",
+      "note": "Basic $6 a user a month, 20% off yearly; Growth $10; 30-day trial, no free plan."
+    },
+    {
+      "title": "WorkAdventure pricing",
+      "url": "https://workadventu.re/pricing/",
+      "note": "Free for 10 people at once; Business from $9 a user a month yearly, $11 monthly."
+    },
+    {
+      "title": "SpatialChat pricing, Virtual Office",
+      "url": "https://spatial.chat/pricing",
+      "note": "Free for 12 people, 2 hours a day; Business $8 a user a month, $76 a user a year."
+    },
+    {
+      "title": "Roam pricing",
+      "url": "https://ro.am/pricing",
+      "note": "$19.50 an active member a month, monthly billing; $20.88 in 2027; guests free; 14-day trial."
+    },
+    {
+      "title": "oVice pricing",
+      "url": "https://www.ovice.com/pricing",
+      "note": "Entry-S $65 a space a month billed yearly, $78 monthly; Entry-M $245 or $294; Business Starter $16 a user a month from 20 users."
+    },
+    {
+      "title": "Sococo pricing",
+      "url": "https://www.sococo.com/pricing/",
+      "note": "$13.49 a seat a month prepaid yearly, 10 seats minimum, 500 minutes a seat a month, $5 per 1,000 extra minutes."
+    }
+  ]
+}

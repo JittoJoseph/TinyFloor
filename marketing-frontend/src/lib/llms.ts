@@ -13,6 +13,8 @@ import {
 import { GUIDES, GUIDES_PATH, guidePath, type GuideKey, type GuideSection } from "@/lib/guides";
 import { landingArticle } from "@/lib/landing-articles";
 import { guideCopies } from "@/lib/guide-copy";
+import { BLOG_DESCRIPTION, BLOG_PATH, BLOG_TITLE, postPath } from "@/lib/blog";
+import { postsWithCopy } from "@/lib/blog-copy";
 import { PLANS } from "@/lib/plans";
 import { FOUNDING, foundingOpen } from "@/lib/founding";
 import { CHANGELOG, CHANGELOG_PATH, RELEASES } from "@/lib/changelog";
@@ -106,11 +108,12 @@ async function common() {
     [text("guides.hub.meta.title"), GUIDES_PATH, text("guides.hub.meta.description")],
     ...GUIDES.map((one): Link => [guide(one.key).meta.title, guidePath(one), guide(one.key).meta.description]),
   ];
-  return { text, raw, page, hub, pagesOf, product, features, faq, guide, guides };
+  const posts = await postsWithCopy();
+  return { text, raw, page, hub, pagesOf, product, features, faq, guide, guides, posts };
 }
 
 export async function llmsTxt(): Promise<string> {
-  const { text, page, hub, pagesOf, product, features, faq, guides } = await common();
+  const { text, page, hub, pagesOf, product, features, faq, guides, posts } = await common();
   return [
     "# TinyFloor",
     "",
@@ -137,6 +140,10 @@ export async function llmsTxt(): Promise<string> {
     "",
     ...list(guides),
     "",
+    `## ${BLOG_TITLE}`,
+    "",
+    ...list([[BLOG_TITLE, BLOG_PATH, BLOG_DESCRIPTION], ...posts.map(({ post, copy }): Link => [copy.meta.title, postPath(post), copy.meta.description])]),
+    "",
     "## What's in every office",
     "",
     ...features.map((feature) => `- ${feature}`),
@@ -155,7 +162,7 @@ export async function llmsTxt(): Promise<string> {
 }
 
 export async function llmsFullTxt(): Promise<string> {
-  const { text, raw, page, pagesOf, features, faq, guide } = await common();
+  const { text, raw, page, pagesOf, features, faq, guide, posts } = await common();
   const articles = Object.fromEntries(
     await Promise.all(LANDINGS.map(async (landing) => [landing.key, await landingArticle("en", landing.key)] as const)),
   );
@@ -333,6 +340,31 @@ export async function llmsFullTxt(): Promise<string> {
     text("guides.hub.meta.description"),
     "",
     ...GUIDES.flatMap((one) => guidePage(one.key, guidePath(one))),
+    `## ${BLOG_TITLE}`,
+    "",
+    BLOG_DESCRIPTION,
+    "",
+    // A post as it reads: what to take away, its sections, and the sources its [1] markers cite.
+    ...posts.flatMap(({ post, copy }) => [
+      `### ${copy.meta.title}`,
+      "",
+      `${url(postPath(post))} (updated ${post.updated})`,
+      "",
+      copy.intro,
+      "",
+      ...copy.takeaways.map((point) => `- ${point}`),
+      "",
+      ...sections(copy.sections),
+      `#### ${copy.fit.title}`,
+      "",
+      copy.fit.body,
+      "",
+      ...copy.faq.flatMap(({ q, a }) => [`**${q}** ${a}`, ""]),
+      "#### Sources",
+      "",
+      ...copy.sources.map((source, index) => `${index + 1}. [${source.title}](${source.url})${source.note ? `: ${source.note}` : ""}`),
+      "",
+    ]),
   ].join("\n");
 }
 

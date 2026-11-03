@@ -18,7 +18,10 @@ export function numberItems(sections: GuideSection[]): Numbered[] {
   }));
 }
 
-/** Text with its `[words](/path)` parts as links to the site's own pages, in the reader's language. */
+/**
+ * Text with its `[words](/path)` parts as links to the site's own pages, in
+ * the reader's language, and a blog post's `[2]` as a link to its second source.
+ */
 export function linked(text: string): ReactNode {
   return text.split(/\[([^\]]+)\]\((\/[^)]*)\)/).map((part, i, parts) =>
     i % 3 === 1 ? (
@@ -26,6 +29,21 @@ export function linked(text: string): ReactNode {
         {part}
       </Link>
     ) : i % 3 === 2 ? null : (
+      cited(part, i)
+    ),
+  );
+}
+
+function cited(text: string, at: number): ReactNode {
+  if (!/\[\d+\]/.test(text)) return text;
+  return text.split(/\[(\d+)\]/).map((part, i) =>
+    i % 2 ? (
+      <sup key={`${at}-${i}`} className="text-[0.7em]">
+        <a href={`#source-${part}`} className="text-muted-foreground transition-colors hover:text-foreground">
+          [{part}]
+        </a>
+      </sup>
+    ) : (
       part
     ),
   );
@@ -124,7 +142,7 @@ export function ArticleSections({ sections, first = 1 }: { sections: Numbered[];
                         </th>
                       ) : (
                         <td key={column} className="px-4 py-3 text-foreground/80 last:pe-5">
-                          {cell}
+                          {linked(cell)}
                         </td>
                       ),
                     )}
@@ -133,7 +151,7 @@ export function ArticleSections({ sections, first = 1 }: { sections: Numbered[];
               </tbody>
             </table>
           </div>
-          {section.table.note && <figcaption className="mt-3 text-[13px] leading-[1.55] text-faint">{section.table.note}</figcaption>}
+          {section.table.note && <figcaption className="mt-3 text-[13px] leading-[1.55] text-faint">{linked(section.table.note)}</figcaption>}
         </figure>
       )}
     </section>

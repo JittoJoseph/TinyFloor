@@ -1,0 +1,154 @@
+{
+  "label": "Slack and Zoom, or a virtual office",
+  "meta": {
+    "title": "Slack and Zoom vs a Virtual Office: What a Remote Team Needs",
+    "description": "What Slack and Zoom cover for a remote team, what they leave out, what a virtual office adds, and when Slack and Zoom are enough, with the research behind it."
+  },
+  "title": "Slack and Zoom, or a virtual office? <em>What each does for a remote team.</em>",
+  "intro": "Slack and Zoom cover two of the three things an office gives a team: writing to each other, and meeting at a set time. They leave out the third: seeing who's around and talking without booking anything. A virtual office adds that, and it usually sits next to Slack rather than replacing it. Whether your team needs one depends on how much of its work happens in quick conversations. We make TinyFloor, a virtual office, so we're not neutral; the research and plan limits below are cited so you can check them.",
+  "takeaways": [
+    "Slack is for writing and Zoom is for meetings you plan. Neither gives a team a place to see who's free and just start talking.",
+    "In a study of 61,182 Microsoft employees, working remotely made collaboration more siloed, with fewer bridges between groups, and moved communication from live to written [1].",
+    "Gallup's 2024 report found 25% of fully remote employees felt lonely a lot of the previous day, against 16% of those fully on-site [2].",
+    "Slack's free plan allows huddles one to one only, and Zoom's free plan ends meetings at 40 minutes [3][4].",
+    "A virtual office usually replaces the quick calls and the \"got a minute?\" messages, not Slack itself."
+  ],
+  "sections": [
+    {
+      "title": "What do Slack and Zoom each do for a remote team?",
+      "body": [
+        "Slack is where a remote team writes: channels for each topic, direct messages, threads, and the apps that post into them. Its huddles add a quick call from a channel or a message; on the free plan a huddle is one to one only, and messages and files older than 90 days can't be read [3].",
+        "Zoom is where a team meets at a set time: someone sends a link, everyone joins, the meeting ends. On the free plan a meeting lasts up to 40 minutes, with up to 100 people [4].",
+        "Together they cover writing that waits for an answer, and meetings that someone has planned. That's most of what a team does, but not all of it."
+      ]
+    },
+    {
+      "title": "What's missing with only Slack and Zoom?",
+      "body": [
+        "In an office, a lot of work happens in conversations nobody planned: a question across the desk, a word after a meeting, overhearing that someone is stuck on what you solved last week. Remotely, each of those has to become a message or a meeting invite, so many of them don't happen at all.",
+        "The research points the same way. When Microsoft moved its US staff to remote work in 2020, a study of 61,182 employees' emails, calendars, messages and calls found their collaboration network became more static and siloed, with fewer bridges between different parts of the company, and a shift from live to written communication [1]. Gallup's 2024 State of the Global Workplace found that fully remote employees report loneliness more than anyone else: 25%, against 21% of hybrid and 16% of fully on-site employees [2]."
+      ],
+      "items": [
+        {
+          "title": "Who's free right now",
+          "body": "A green dot says someone is online, not whether it's a good moment to talk. People ask \"got a minute?\" and wait for an answer before they can talk."
+        },
+        {
+          "title": "The quick question",
+          "body": "A question that takes thirty seconds to say takes a message, a wait, and often a call link. Many people write it instead, or don't ask."
+        },
+        {
+          "title": "Being around each other",
+          "body": "Nothing in Slack or Zoom shows the team together during the day. Working alone all day is part of why remote work feels lonelier [2]."
+        }
+      ]
+    },
+    {
+      "title": "What does a virtual office add?",
+      "body": [
+        "A virtual office is a shared space, usually a 2D floor in the browser, where each person has a character or a tile for as long as they're working. It adds the third part of an office, being around each other, and leaves writing and planned meetings as they are."
+      ],
+      "items": [
+        {
+          "title": "Seeing who's around",
+          "body": "Everyone is on one floor, at a desk, in a meeting or away, so you can tell at a glance whether someone is free to talk."
+        },
+        {
+          "title": "Talking without booking",
+          "body": "You walk up to a teammate and start a call, without a link or a calendar invite. In TinyFloor it starts with voice, and the camera is a button [5]."
+        },
+        {
+          "title": "A meeting room that's always there",
+          "body": "Three people or more walk into the meeting room instead of scheduling a call, and walk back to their desks after."
+        },
+        {
+          "title": "Being in without being on camera",
+          "body": "In a walk-up office like TinyFloor, nobody hears or sees you until someone starts a call, and the camera stays off until you turn it on [5]. In offices with spatial audio, people close to you hear you while your microphone is on."
+        }
+      ]
+    },
+    {
+      "title": "Does a virtual office replace Slack or Zoom?",
+      "body": [
+        "Usually not Slack. A team keeps its writing, its history and its integrations where they are, and the virtual office takes the quick calls and the \"got a minute?\" messages. Most virtual offices, TinyFloor included, have a chat of their own, which a small team may find is enough.",
+        "Inside the team, a virtual office's meeting room can replace scheduled video calls. Calls with clients often stay on Zoom or Google Meet, because that's what the other side uses."
+      ]
+    },
+    {
+      "title": "When are Slack and Zoom enough?",
+      "items": [
+        {
+          "title": "When the team barely overlaps",
+          "body": "Spread across time zones with an hour or two in common, most work is written anyway. Slack, and a call when you need one, is enough."
+        },
+        {
+          "title": "When the work is mostly alone",
+          "body": "If people work on their own and meet a few times a week, a scheduled call is the right tool."
+        },
+        {
+          "title": "When the team works together every day",
+          "body": "If the team overlaps most of the day and talks a lot, through questions, pairing and quick decisions, a virtual office is where those conversations happen without a link."
+        }
+      ]
+    },
+    {
+      "title": "What does adding a virtual office cost?",
+      "body": [
+        "Most virtual offices cost $5 to $20 a person a month, and a few charge one price for the whole office. Prices for teams of 5, 10 and 15, from each product's own pricing page, are in [what a virtual office costs](/blog/virtual-office-cost)."
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Where TinyFloor fits",
+    "body": "TinyFloor is a virtual office in the browser for a team that works together every day: walk up to a teammate to talk, a meeting room for three or more, team chat and screen sharing. It sits next to Slack, or covers chat itself for a team that wants one place. Pro is one price for the whole office, $29 a month, and every new office starts with 14 days of Pro, no card needed. It has no recordings, AI notes or single sign-on."
+  },
+  "faq": [
+    {
+      "q": "Can Slack huddles replace a virtual office?",
+      "a": "Partly. A huddle starts a quick call from a channel or a message, and on Slack's free plan it's one to one only. What a huddle doesn't give is a view of who's around and free to talk, which is what a virtual office adds."
+    },
+    {
+      "q": "Do I have to be on camera all day in a virtual office?",
+      "a": "No. In TinyFloor you're on the floor as a character and nobody hears or sees you until you start a call; a call starts with voice, and the camera is a button. In offices with spatial audio, people close to you hear you while your microphone is on."
+    },
+    {
+      "q": "Does remote work make collaboration worse?",
+      "a": "A study of 61,182 Microsoft employees, published in Nature Human Behaviour in 2021, found that remote work made collaboration more siloed and moved communication from live to written. It measured 2020, when everyone moved to remote work at once."
+    },
+    {
+      "q": "Are remote workers lonelier?",
+      "a": "On average, yes. Gallup's State of the Global Workplace 2024 found 25% of fully remote employees felt lonely a lot of the previous day, against 21% of hybrid and 16% of fully on-site employees."
+    },
+    {
+      "q": "Do teams keep Slack after adding a virtual office?",
+      "a": "Usually. Slack stays for writing, history and integrations, and the virtual office takes the quick calls and the questions that would have been \"got a minute?\" messages."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Yang et al., The effects of remote work on collaboration among information workers, Nature Human Behaviour (2021)",
+      "url": "https://www.nature.com/articles/s41562-021-01196-4",
+      "note": "61,182 US Microsoft employees, first six months of 2020: collaboration became more static and siloed, with fewer bridges, less live and more written communication. Published 9 September 2021."
+    },
+    {
+      "title": "Gallup, 1 in 5 Employees Worldwide Feel Lonely",
+      "url": "https://www.gallup.com/workplace/645566/employees-worldwide-feel-lonely.aspx",
+      "note": "State of the Global Workplace 2024: loneliness a lot the previous day for 25% of fully remote, 21% of hybrid and 16% of fully on-site employees."
+    },
+    {
+      "title": "Slack, Slack subscriptions and features",
+      "url": "https://slack.com/help/articles/115003205446-Slack-subscriptions-and-features",
+      "note": "Free: 90-day access to message and file history, huddles one to one only. Checked 3 November 2026."
+    },
+    {
+      "title": "Zoom pricing",
+      "url": "https://zoom.us/pricing",
+      "note": "Basic, free: 40 minutes per meeting, 100 participants. Checked 3 November 2026."
+    },
+    {
+      "title": "How TinyFloor works",
+      "url": "https://www.tinyfloor.com/how-it-works",
+      "note": "Calls are one to one and start with voice, with the camera a button; three or more meet in the meeting room."
+    }
+  ]
+}

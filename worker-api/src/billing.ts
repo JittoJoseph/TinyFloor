@@ -408,6 +408,35 @@ export async function givePlan(env: Env, officeId: string, planId: string): Prom
     .catch((error) => console.error("admin: couldn't tell the room", officeId, error));
 }
 
+/** The most days a trial can be lengthened by at once, from the admin view. */
+export const MOST_TRIAL_DAYS = 365;
+
+/**
+ * More of the trial, given by hand from the admin view: a running trial ends
+ * that many days later; an office whose trial has ended (or that's on Free)
+ * starts one that long now, on the trial's plan. Not for an office paying
+ * through Creem, or on a plan given by hand, which have no trial. Returns
+ * when it ends now.
+ */
+export async function extendTrial(env: Env, officeId: string, days: number, now = Date.now()): Promise<number> {
+  const office = await env.DB.prepare("SELECT plan, trial_ends_at FROM offices WHERE id = ?")
+    .bind(officeId)
+    .first<{ plan: string; trial_ends_at: number | null }>();
+  if (!office) throw new HttpError(404, "no_office", "No such office");
+  if (await liveSubscription(env, officeId)) throw new HttpError(409, "has_subscription", "This office pays through Creem");
+  const endsAt = office.trial_ends_at ?? 0;
+  if (office.plan !== FREE.id && endsAt <= 0) throw new HttpError(409, "given_plan", "This office has a plan given by hand, not a trial");
+  const until = (office.plan !== FREE.id && endsAt > now ? endsAt : now) + days * DAY;
+  const plan = planById(TRIAL_PLAN)!;
+  await env.DB.prepare("UPDATE offices SET plan = ?, seats = ?, trial_ends_at = ? WHERE id = ?").bind(plan.id, plan.seats, until, officeId).run();
+  if (office.plan === FREE.id) {
+    await realtime(env)
+      .setMeetingAllowance(officeId, plan.meetingHours)
+      .catch((error) => console.error("admin: couldn't tell the room", officeId, error));
+  }
+  return until;
+}
+
 /** A new office's plan: the trial where plans are on sale, Free elsewhere. */
 export function startingPlan(env: Env, now = Date.now()): { plan: PlanId; seats: number; trialEndsAt: number | null } {
   if (!config(env)) return { plan: FREE.id, seats: FREE.seats, trialEndsAt: null };

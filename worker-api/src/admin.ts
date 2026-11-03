@@ -1,6 +1,6 @@
 import { cleanDisplayName, FLOORS } from "../../shared-protocol/src";
 import { cleanName, realtime } from "./access";
-import { givePlan, HOLDS_PLAN, liveSubscription, thisMonth } from "./billing";
+import { extendTrial, givePlan, HOLDS_PLAN, liveSubscription, MOST_TRIAL_DAYS, thisMonth } from "./billing";
 import { HttpError, json, readJson } from "./http";
 import { letter, sendEmail } from "./email";
 import { closeOffice } from "./offices";
@@ -297,6 +297,16 @@ export function adminRoutes(router: Router): void {
       const admin = await requireAdmin(env, request, ctx);
       if (params.id === admin.id) throw new HttpError(400, "not_yourself", "An admin can't delete their own account here");
       return json(await deleteAccount(env, params.id));
+    })
+
+    // More days of an office's trial: a running one ends later, or an ended one starts again.
+    .add("POST", "/v1/admin/offices/:id/trial", async ({ request, env, ctx, params }) => {
+      await requireAdmin(env, request, ctx);
+      const days = Number((await readJson(request)).days);
+      if (!Number.isInteger(days) || days < 1 || days > MOST_TRIAL_DAYS) {
+        throw new HttpError(400, "bad_days", `Between 1 and ${MOST_TRIAL_DAYS} days`);
+      }
+      return json({ trialEndsAt: await extendTrial(env, params.id, days) });
     })
 
     // An office renamed, given a plan without payment, or moved to another floor.

@@ -4,8 +4,9 @@
     "title": "Discord for Work: Is a Voice Channel Enough for a Remote Team?",
     "description": "Why remote teams sit in a Discord voice channel all day, what Discord's own limits mean for a working team, and when a virtual office fits better."
   },
+  "coverAlt": "White and lime-green headphones beside a speech bubble on a bright blurple background.",
   "title": "Running your team's day in a Discord voice channel? <em>What works, and what doesn't.</em>",
-  "intro": "Plenty of small remote teams spend the working day in a Discord voice channel: it's free, everyone can see who's in, and joining takes one click. It works well until the team needs two conversations at once, a place that's only for work, or more than a free server allows. Here is what Discord does well for a team, what its own documentation says about its limits, and when a virtual office fits better. We make TinyFloor, a virtual office, so we're not neutral; Discord's numbers are from Discord's own pages.",
+  "intro": "Plenty of small remote teams spend the working day in a [Discord](/discord-for-work) voice channel: it's free, everyone can see who's in, and joining takes one click. It works well until the team needs two conversations at once, a place that's only for work, or more than a free server allows. Here is what Discord does well for a team, what its own documentation says about its limits, and when a virtual office fits better. We make TinyFloor, a virtual office, so we're not neutral; Discord's numbers are from Discord's own pages.",
   "takeaways": [
     "A Discord voice channel gives a team something Slack and Zoom don't: you can see who's in and join with one click.",
     "A voice channel holds one conversation. Talking to one person means both of you moving to another channel.",
@@ -17,7 +18,7 @@
     {
       "title": "Why do remote teams work in a Discord voice channel?",
       "body": [
-        "Because it gives them the thing Slack and Zoom leave out: being around each other. The server's sidebar shows who's in each voice channel, so you can see at a glance who's working, and joining them is one click with no link or invite.",
+        "Because it gives them the thing [Slack and Zoom leave out](/blog/slack-and-zoom-or-a-virtual-office): being around each other. The server's sidebar shows who's in each voice channel, so you can see at a glance who's working, and joining them is one click with no link or invite.",
         "It costs nothing, most people already have an account, the voice is fast, and screen sharing is built in. For a team of friends who started a company, or a team that came from gaming, it's the obvious place to start."
       ]
     },
@@ -26,7 +27,7 @@
       "items": [
         {
           "title": "One conversation per channel",
-          "body": "Everyone in a voice channel hears everyone. Two people who want to talk on their own both move to another channel, and the rest see them go. Teams end up with a channel for each kind of talk and people hopping between them."
+          "body": "Everyone in a voice channel hears everyone, the way [proximity chat](/guides/what-is-proximity-chat) works when the whole room is close. Two people who want to talk on their own both move to another channel, and the rest see them go. Teams end up with a channel for each kind of talk and people hopping between them."
         },
         {
           "title": "Being in means being heard",
@@ -34,7 +35,7 @@
         },
         {
           "title": "Work and personal life in one app",
-          "body": "People bring their own Discord account, with their friends, their other servers and their notifications. Discord describes itself as a place to \"deepen friendships around games and shared interests\" [2]."
+          "body": "People bring their own Discord account, with their friends, their other servers and their notifications ([Discord or Slack for work](/guides/discord-vs-slack) covers more of this). Discord describes itself as a place to \"deepen friendships around games and shared interests\" [2]."
         },
         {
           "title": "Accounts belong to people, not the company",
@@ -75,7 +76,7 @@
       "items": [
         {
           "title": "Many conversations on one floor",
-          "body": "The whole team is on one floor, and two people can talk while everyone else keeps working, without moving anywhere."
+          "body": "The whole team is on one floor, and two people can talk while everyone else keeps working, without moving anywhere, which matters when [remote work already pulls teams apart](/blog/remote-work-statistics)."
         },
         {
           "title": "Nobody heard by accident",

@@ -4,8 +4,9 @@
     "title": "Virtual Office Software Cost in 2026: What a Team of 5, 10 or 15 Pays",
     "description": "What ten virtual offices cost a remote team of 5, 10 and 15 people a month, from each pricing page on 3 November 2026, and what else changes the bill."
   },
+  "coverAlt": "A stack of yellow coins beside a small desk with a laptop, a plant and a yellow chair, on a sky-blue background.",
   "title": "What does a virtual office cost? <em>What a team of 5, 10 or 15 pays.</em>",
-  "intro": "Most virtual office software costs $5 to $20 a person a month, so a team of 10 pays between $50 and $200 a month. A few charge for the office instead of the person, and some free plans fit a team of up to 10 with limits on time or meetings. Every price below is from the product's own pricing page, checked on 3 November 2026. We make TinyFloor, one of the ten, so we're not neutral; we've kept to what each page says.",
+  "intro": "Most [virtual office](/virtual-office) software costs $5 to $20 a person a month, so a team of 10 pays between $50 and $200 a month. A few charge for the office instead of the person, and some free plans fit a team of up to 10 with limits on time or meetings. Every price below is from the product's own pricing page, checked on 3 November 2026. We make TinyFloor, one of the ten, so we're not neutral; we've kept to what each page says.",
   "takeaways": [
     "Priced per person, a virtual office costs $4.80 to $20 a month for each member: $48 to $200 a month for a team of 10.",
     "Two of the ten price by the office or space instead: TinyFloor at $29 a month for the whole office, and oVice from $65 a month for a small space.",
@@ -22,7 +23,7 @@
       "items": [
         {
           "title": "Per person",
-          "body": "A price for each member, user or seat, every month. Gather, Kumospace, SoWork, Spot, WorkAdventure and SpatialChat work this way [2][3][4][5][6][7]. The bill grows with every hire."
+          "body": "A price for each member, user or seat, every month. Gather, Kumospace, SoWork, Spot, WorkAdventure and SpatialChat work this way [2][3][4][5][6][7]; [what Gather costs](/guides/gather-pricing) goes into its plans in detail. The bill grows with every hire."
         },
         {
           "title": "Per active member",
@@ -206,7 +207,7 @@
     {
       "title": "What do the free plans include?",
       "body": [
-        "Six of the ten have a free plan, and each is limited in a different way. A free plan that fits your whole team beats any paid one; a free plan that cuts every meeting short, or that anyone can walk into, may not."
+        "Six of the ten have a free plan, and each is limited in a different way; the [virtual office software comparison](/guides/best-virtual-office-software) covers what else sets them apart. A free plan that fits your whole team beats any paid one; a free plan that cuts every meeting short, or that anyone can walk into, may not."
       ],
       "table": {
         "head": [
@@ -279,7 +280,7 @@
       "items": [
         {
           "title": "A team that works together every day",
-          "body": "Per-person pricing makes every new teammate a new cost. A price for the office stays the same as the team grows, so it suits a team that wants everyone in, all day."
+          "body": "Per-person pricing makes every new teammate a new cost, and the [research on remote work](/blog/remote-work-statistics) suggests the teams who get most from a virtual office are the ones in it all day. A price for the office stays the same as the team grows, so it suits a team that wants everyone in, all day."
         },
         {
           "title": "A team whose size changes month to month",

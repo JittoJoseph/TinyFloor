@@ -4,6 +4,7 @@
     "title": "Slack and Zoom vs a Virtual Office: What a Remote Team Needs",
     "description": "What Slack and Zoom cover for a remote team, what they leave out, what a virtual office adds, and when Slack and Zoom are enough, with the research behind it."
   },
+  "coverAlt": "A chat bubble and a navy video camera with a small open doorway between them, on a coral background.",
   "title": "Slack and Zoom, or a virtual office? <em>What each does for a remote team.</em>",
   "intro": "Slack and Zoom cover two of the three things an office gives a team: writing to each other, and meeting at a set time. They leave out the third: seeing who's around and talking without booking anything. A virtual office adds that, and it usually sits next to Slack rather than replacing it. Whether your team needs one depends on how much of its work happens in quick conversations. We make TinyFloor, a virtual office, so we're not neutral; the research and plan limits below are cited so you can check them.",
   "takeaways": [
@@ -17,16 +18,16 @@
     {
       "title": "What do Slack and Zoom each do for a remote team?",
       "body": [
-        "Slack is where a remote team writes: channels for each topic, direct messages, threads, and the apps that post into them. Its huddles add a quick call from a channel or a message; on the free plan a huddle is one to one only, and messages and files older than 90 days can't be read [3].",
+        "Slack is where a remote team writes: channels for each topic, direct messages, threads, and the apps that post into them. Its huddles add a quick call from a channel or a message ([how huddles compare](/slack-huddles-alternative)); on the free plan a huddle is one to one only, and messages and files older than 90 days can't be read [3].",
         "Zoom is where a team meets at a set time: someone sends a link, everyone joins, the meeting ends. On the free plan a meeting lasts up to 40 minutes, with up to 100 people [4].",
-        "Together they cover writing that waits for an answer, and meetings that someone has planned. That's most of what a team does, but not all of it."
+        "Together they cover writing that waits for an answer, the [asynchronous half](/guides/async-communication), and meetings that someone has planned. That's most of what a team does, but not all of it."
       ]
     },
     {
       "title": "What's missing with only Slack and Zoom?",
       "body": [
         "In an office, a lot of work happens in conversations nobody planned: a question across the desk, a word after a meeting, overhearing that someone is stuck on what you solved last week. Remotely, each of those has to become a message or a meeting invite, so many of them don't happen at all.",
-        "The research points the same way. When Microsoft moved its US staff to remote work in 2020, a study of 61,182 employees' emails, calendars, messages and calls found their collaboration network became more static and siloed, with fewer bridges between different parts of the company, and a shift from live to written communication [1]. Gallup's 2024 State of the Global Workplace found that fully remote employees report loneliness more than anyone else: 25%, against 21% of hybrid and 16% of fully on-site employees [2]."
+        "The research points the same way ([more remote work statistics](/blog/remote-work-statistics)). When Microsoft moved its US staff to remote work in 2020, a study of 61,182 employees' emails, calendars, messages and calls found their collaboration network became more static and siloed, with fewer bridges between different parts of the company, and a shift from live to written communication [1]. Gallup's 2024 State of the Global Workplace found that fully remote employees report loneliness more than anyone else: 25%, against 21% of hybrid and 16% of fully on-site employees [2]."
       ],
       "items": [
         {
@@ -51,7 +52,7 @@
       "items": [
         {
           "title": "Seeing who's around",
-          "body": "Everyone is on one floor, at a desk, in a meeting or away, so you can tell at a glance whether someone is free to talk."
+          "body": "Everyone is on one floor, at a desk, in a meeting or away, so you can tell at a glance whether someone is free to talk: [team presence](/team-presence), without anyone being watched."
         },
         {
           "title": "Talking without booking",
@@ -79,7 +80,7 @@
       "items": [
         {
           "title": "When the team barely overlaps",
-          "body": "Spread across time zones with an hour or two in common, most work is written anyway. Slack, and a call when you need one, is enough."
+          "body": "Spread across time zones with an hour or two in common, most work is written anyway (the [time zone meeting planner](/tools/time-zone-meeting-planner) finds the hours you share). Slack, and a call when you need one, is enough."
         },
         {
           "title": "When the work is mostly alone",

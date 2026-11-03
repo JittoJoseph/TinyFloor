@@ -1,0 +1,167 @@
+{
+  "label": "Discord en entreprise",
+  "meta": {
+    "title": "Discord en entreprise : un salon vocal suffit-il pour travailler ?",
+    "description": "Pourquoi des équipes à distance passent la journée dans un salon vocal Discord, ce que les limites officielles de Discord changent pour le travail, et quand un bureau virtuel convient mieux."
+  },
+  "coverAlt": "Un casque blanc et vert citron à côté d'une bulle de dialogue, sur un fond bleu-violet vif.",
+  "title": "Discord en entreprise : un salon vocal pour travailler ? <em>Ce qui marche, et ce qui coince.</em>",
+  "intro": "Beaucoup de petites équipes à distance passent leur journée de travail dans un salon vocal Discord : c'est gratuit, on voit qui est là, et on rejoint en un clic. Ça marche bien, jusqu'au jour où l'équipe a besoin de deux conversations en même temps, d'un lieu réservé au travail, ou de plus que ce qu'un serveur gratuit permet. Voici ce que Discord fait bien pour une équipe, ce que sa propre documentation dit de ses limites, et quand un [bureau virtuel](/virtual-office) convient mieux. Nous faisons TinyFloor, un bureau virtuel, donc nous ne sommes pas neutres ; les chiffres de Discord viennent des pages de Discord.",
+  "takeaways": [
+    "Un salon vocal Discord donne à une équipe ce que Slack et Zoom n'offrent pas : voir qui est là et rejoindre en un clic.",
+    "Un salon vocal accueille une seule conversation. Pour parler à deux, il faut changer de salon tous les deux.",
+    "Sur un serveur sans boost, le partage d'écran est en 720p à 30 images par seconde, les fichiers sont limités à 10 Mo et la vidéo à 25 personnes par salon vocal [1].",
+    "Depuis septembre 2024, Discord chiffre la voix et la vidéo de bout en bout ; pas les messages écrits [2].",
+    "Chacun rejoint avec son propre compte Discord, le même que pour ses amis et ses jeux."
+  ],
+  "sections": [
+    {
+      "title": "Pourquoi des équipes à distance travaillent-elles sur Discord ?",
+      "body": [
+        "Parce que Discord apporte ce que Slack et Zoom laissent de côté : être ensemble. La barre latérale du serveur montre qui est dans chaque salon vocal, on voit donc d'un coup d'œil qui travaille, et on rejoint en un clic, sans lien ni invitation.",
+        "C'est gratuit, presque tout le monde a déjà un compte, la voix est rapide et le partage d'écran est inclus. Pour des amis qui ont monté une boîte ensemble, ou une équipe venue du jeu vidéo, c'est le point de départ naturel."
+      ]
+    },
+    {
+      "title": "Qu'est-ce qui coince au travail ?",
+      "items": [
+        {
+          "title": "Une conversation par salon",
+          "body": "Dans un salon vocal, tout le monde entend tout le monde. Deux personnes qui veulent parler seules changent de salon, et les autres le voient. L'équipe finit avec un salon par type de discussion et des gens qui passent de l'un à l'autre, l'inverse du [chat de proximité](/guides/what-is-proximity-chat)."
+        },
+        {
+          "title": "Être là, c'est être entendu",
+          "body": "Par défaut, le micro est ouvert dans un salon vocal, sauf si l'on se met en sourdine ou en appuyer-pour-parler. Beaucoup d'équipes restent donc muettes toute la journée et réactivent le micro pour parler, et lancer une conversation donne l'impression d'interrompre toute la pièce."
+        },
+        {
+          "title": "Travail et vie privée dans la même appli",
+          "body": "Chacun arrive avec son propre compte, ses amis, ses autres serveurs et leurs notifications. Discord se présente lui-même comme un lieu pour approfondir des amitiés autour des jeux et des centres d'intérêt [2]. Voir aussi [Discord ou Slack pour le travail](/guides/discord-vs-slack)."
+        },
+        {
+          "title": "Les comptes appartiennent aux personnes, pas à l'entreprise",
+          "body": "Quand quelqu'un part, on peut le retirer du serveur, mais son compte et ses messages privés avec l'équipe restent à lui."
+        },
+        {
+          "title": "Les limites d'un serveur gratuit",
+          "body": "Sans boost, les fichiers sont limités à 10 Mo, les diffusions à 720p à 30 images par seconde et la vidéo à 25 personnes par salon vocal. Les boosts montent les fichiers à 50 Mo au niveau 2 et 100 Mo au niveau 3 [1]."
+        }
+      ]
+    },
+    {
+      "title": "Qu'est-ce que Discord fait mieux qu'un bureau virtuel ?",
+      "items": [
+        {
+          "title": "Le prix",
+          "body": "Un serveur Discord est gratuit. Un bureau virtuel coûte en général 5 à 20 dollars par personne et par mois, quelques-uns un prix pour tout le bureau ; voir le [comparatif des bureaux virtuels](/guides/best-virtual-office-software)."
+        },
+        {
+          "title": "Un partage d'écran plus fluide",
+          "body": "Discord diffuse à 30 images par seconde même sur un serveur gratuit [1], ce qui convient à la vidéo et aux jeux. TinyFloor partage l'écran jusqu'en 720p à 10 à 15 images par seconde, réglé pour un texte net plutôt que pour le mouvement [3]."
+        },
+        {
+          "title": "Le chiffrement",
+          "body": "La voix et la vidéo de Discord sont chiffrées de bout en bout dans les messages privés, les groupes, les salons vocaux et les diffusions Go Live, avec le protocole DAVE [2]."
+        },
+        {
+          "title": "Des applis partout",
+          "body": "Discord a des applis pour ordinateur et téléphone, que la plupart des gens ont déjà installées."
+        }
+      ]
+    },
+    {
+      "title": "Qu'est-ce qui change avec un bureau virtuel ?",
+      "body": [
+        "Un bureau virtuel garde ce qui marche, voir qui est là et rejoindre sans lien, et change la façon dont les conversations commencent."
+      ],
+      "items": [
+        {
+          "title": "Plusieurs conversations sur un même étage",
+          "body": "Toute l'équipe est sur un étage, et deux personnes peuvent parler pendant que les autres continuent à travailler, sans que personne change de salon."
+        },
+        {
+          "title": "Personne n'est entendu par accident",
+          "body": "Dans TinyFloor, on va vers un collègue et on lance un appel ; avant cela, personne n'entend rien, l'appel commence par la voix et la caméra est un bouton [3]. À partir de trois, on se retrouve dans la salle de réunion."
+        },
+        {
+          "title": "Un lieu réservé au travail",
+          "body": "On se connecte avec Google ou un code envoyé par e-mail [3], et les collègues qui ont le même domaine d'e-mail professionnel trouvent le bureau de l'équipe et entrent, ou demandent à entrer [4]. Rien de la vie privée de chacun n'est dans la pièce."
+        },
+        {
+          "title": "Des bureaux et des statuts",
+          "body": "Chacun a un bureau et un statut : l'étage montre qui est concentré et qui est disponible, pas seulement qui est dans un salon. C'est la [présence d'équipe](/team-presence), sans surveillance."
+        }
+      ]
+    },
+    {
+      "title": "Quand Discord suffit-il ?",
+      "items": [
+        {
+          "title": "L'équipe parle surtout en groupe",
+          "body": "Si un salon ouvert correspond à la façon de travailler de l'équipe et que les échanges à deux sont rares, Discord le fait gratuitement."
+        },
+        {
+          "title": "Tout le monde vit déjà sur Discord",
+          "body": "Si l'équipe utilise Discord toute la journée sans souci et que mélanger les serveurs personnels ne gêne pas, il y a peu de raisons de changer."
+        },
+        {
+          "title": "Les signes qu'il est temps",
+          "body": "On change de salon pour parler à deux, on reste en sourdine toute la journée, on doit couper d'autres serveurs pour se concentrer, ou un nouvel arrivant doit créer un compte Discord juste pour le travail."
+        }
+      ]
+    },
+    {
+      "title": "Peut-on utiliser les deux ?",
+      "body": [
+        "Oui. Certaines équipes gardent un serveur Discord pour leur communauté ou l'après-travail, et passent la journée de travail dans un bureau virtuel. Les deux n'ont pas besoin d'être reliés. Voir aussi [Discord pour le travail et ses alternatives](/discord-for-work)."
+      ]
+    }
+  ],
+  "fit": {
+    "title": "À qui TinyFloor convient",
+    "body": "TinyFloor est un bureau virtuel dans le navigateur pour une équipe qui travaille ensemble tous les jours : un bureau pour chacun, des appels que personne n'entend par accident, une salle de réunion, un chat d'équipe et un partage d'écran réglé pour le texte. Il est fait pour le travail, et une équipe qui vient de Discord garde le sentiment d'être ensemble. Pro coûte un seul prix pour tout le bureau, 29 dollars par mois, et chaque nouveau bureau commence avec 14 jours de Pro, sans carte bancaire."
+  },
+  "faq": [
+    {
+      "q": "Discord convient-il à une entreprise ?",
+      "a": "Pour une petite équipe qui aime parler en groupe, ça marche et c'est gratuit. Ça devient difficile quand il faut des échanges à deux, quand serveurs personnels et professionnels se mélangent, ou quand l'équipe dépasse les limites d'un serveur gratuit : fichiers de 10 Mo, écran en 720p à 30 images par seconde et 25 personnes en vidéo par salon vocal."
+    },
+    {
+      "q": "Discord est-il gratuit pour une équipe ?",
+      "a": "Oui. Le serveur et les salons vocaux sont gratuits. Les boosts relèvent les limites pour tout le serveur, et Nitro pour une personne."
+    },
+    {
+      "q": "Discord est-il chiffré ?",
+      "a": "La voix et la vidéo sont chiffrées de bout en bout dans les messages privés, les groupes, les salons vocaux et les diffusions Go Live, avec le protocole DAVE annoncé par Discord le 17 septembre 2024. Les messages écrits ne sont pas chiffrés de bout en bout."
+    },
+    {
+      "q": "Combien de personnes peuvent être en vidéo dans un salon vocal Discord ?",
+      "a": "Jusqu'à 25 personnes en vidéo et jusqu'à 50 spectateurs d'une diffusion Go Live, selon la liste officielle des limites de Discord."
+    },
+    {
+      "q": "Quelle alternative à Discord pour une équipe à distance ?",
+      "a": "Pour écrire, Slack. Pour le sentiment d'être ensemble qu'offre un salon vocal, un bureau virtuel : toute l'équipe sur un étage, où deux personnes parlent sans changer de salon."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Discord, Discord Account Caps, Server Caps, and More",
+      "url": "https://support.discord.com/hc/fr/articles/33694251638295",
+      "note": "Serveur sans boost : fichiers de 10 Mo, diffusions en 720p à 30 i/s, 25 personnes en vidéo par salon vocal, 50 en Go Live ; 50 Mo au niveau de boost 2, 100 Mo au niveau 3. Vérifié le 3 novembre 2026."
+    },
+    {
+      "title": "Discord, Meet DAVE: Discord's New End-to-End Encryption for Audio & Video",
+      "url": "https://discord.com/blog/meet-dave-e2ee-for-audio-video",
+      "note": "17 septembre 2024 : la voix et la vidéo des messages privés, groupes, salons vocaux et Go Live passent au chiffrement de bout en bout ; les messages non."
+    },
+    {
+      "title": "How TinyFloor works",
+      "url": "https://www.tinyfloor.com/how-it-works",
+      "note": "Les appels sont en tête-à-tête et commencent par la voix, la caméra est un bouton ; écran jusqu'en 720p à 10–15 i/s ; connexion avec Google ou un code par e-mail."
+    },
+    {
+      "title": "TinyFloor changelog",
+      "url": "https://www.tinyfloor.com/changelog",
+      "note": "17 octobre 2026 : les collègues ayant le même domaine d'e-mail professionnel trouvent le bureau de leur équipe."
+    }
+  ]
+}

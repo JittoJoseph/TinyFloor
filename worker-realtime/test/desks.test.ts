@@ -1,9 +1,12 @@
 import { runInDurableObject } from "cloudflare:test";
 import { env, exports } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
-import { FLOOR, deskArrival, deskSeats, seatTile } from "../../shared-protocol/src";
+import { FLOORS, deskArrival, deskSeats, seatTile } from "../../shared-protocol/src";
 import { Desks } from "../src/desks";
 import { Client, settle, uniqueRoom } from "./client";
+
+/** The floor a room is on until a ticket says otherwise (a page that has never drawn one starts on another). */
+const FLOOR = FLOORS.startup;
 
 /** The desks of the floor a room is on unless told otherwise (Startup). */
 const DESK_SEATS = deskSeats(FLOOR);
@@ -12,7 +15,7 @@ const OTHER_DESK = DESK_SEATS[1];
 const MEETING_CHAIR = FLOOR.seats.find((seat) => seat.zone === "meeting")!.id;
 /** The desks of the hand-made map the Startup template replaced (October 2026), as claims on them were stored. */
 const OLD_DESKS = [404, 410, 548, 554, 658, 664, 802, 808, 981, 987, 1125, 1131, 1159, 1235, 1241, 1253, 1257, 1379, 1385];
-const tilesApart = (a: number, b: number) => Math.hypot(seatTile(a).x - seatTile(b).x, seatTile(a).y - seatTile(b).y);
+const tilesApart = (a: number, b: number) => Math.hypot(seatTile(a, FLOOR).x - seatTile(b, FLOOR).x, seatTile(a, FLOOR).y - seatTile(b, FLOOR).y);
 
 describe("desks", () => {
   it("lets a member make a desk theirs, and tells everyone", async () => {
@@ -49,7 +52,7 @@ describe("desks", () => {
     expect(ben.messages.some((message) => message.t === "desks")).toBe(false);
 
     // Nobody else sits at it either.
-    const { x, y } = seatTile(DESK);
+    const { x, y } = seatTile(DESK, FLOOR);
     ben.send({ t: "sit", seat: DESK, x, y });
     expect((await ben.next("sit_rejected")).seat).toBe(DESK);
   });
@@ -65,7 +68,7 @@ describe("desks", () => {
 
     const arriving = await Client.open(room, { sub: "ava" }, "&x=10&y=10&arrive=1");
     const welcome = await arriving.next("welcome");
-    expect(welcome.self).toMatchObject({ seat: null, ...deskArrival(DESK) });
+    expect(welcome.self).toMatchObject({ seat: null, ...deskArrival(DESK, FLOOR) });
     expect(welcome.desks).toEqual([{ seat: DESK, userId: "ava", name: "Ava" }]);
 
     const back = await Client.open(room, { sub: "ava" }, "&x=10&y=10");
@@ -81,7 +84,7 @@ describe("desks", () => {
 
     const ben = await Client.open(room, { sub: "ben" }, "&x=10&y=10&arrive=1");
     const at = (await ben.next("welcome")).self;
-    const free = DESK_SEATS.filter((seat) => seat !== DESK).map((seat) => deskArrival(seat));
+    const free = DESK_SEATS.filter((seat) => seat !== DESK).map((seat) => deskArrival(seat, FLOOR));
     expect(free).toContainEqual({ x: at.x, y: at.y });
 
     const gus = await Client.open(room, { sub: "gus", role: "guest" }, "&x=10&y=10&arrive=1");

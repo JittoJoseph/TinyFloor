@@ -499,6 +499,7 @@ export const api = {
   adminRenamePerson: (userId: string, displayName: string) => patch<{ ok: true }>(`/admin/users/${id(userId)}`, { displayName }),
   adminDeletePerson: (userId: string) => del<{ ok: true; handedOver: string[]; closed: string[] }>(`/admin/users/${id(userId)}`),
   adminUpdateOffice: (officeId: string, changes: { name?: string; plan?: PlanId; floor?: string }) => patch<{ ok: true }>(`/admin/offices/${id(officeId)}`, changes),
+  adminExtendTrial: (officeId: string, days: number) => post<{ trialEndsAt: number }>(`/admin/offices/${id(officeId)}/trial`, { days }),
   adminDeleteOffice: (officeId: string) => del<{ ok: true }>(`/admin/offices/${id(officeId)}`),
   adminHelp: (params: { status: "open" | "closed"; page?: number }) =>
     get<AdminPage & { tickets: AdminHelpTicket[] }>(

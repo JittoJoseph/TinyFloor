@@ -178,6 +178,45 @@ describe("admin", () => {
     await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
   });
 
+  it("lengthens a running trial, starts an ended one again, and leaves paid and given plans alone", async () => {
+    const boss = await admin();
+    const owner = await makeUser("Trial Owner");
+    const make = async (name: string) => (await call<{ office: { id: string } }>(owner, "POST", "/v1/offices", { name })).body.office.id;
+    const [running, ended, given, paying] = await Promise.all(["Running Co", "Ended Co", "Given Co 2", "Paying Co 2"].map(make));
+    const day = 86_400_000;
+    const now = Date.now();
+    await env.DB.batch([
+      env.DB.prepare("UPDATE offices SET plan = 'pro', seats = 15, trial_ends_at = ? WHERE id = ?").bind(now + 2 * day, running),
+      env.DB.prepare("UPDATE offices SET plan = 'free', seats = 3, trial_ends_at = ? WHERE id = ?").bind(now - 3 * day, ended),
+      env.DB.prepare("UPDATE offices SET plan = 'pro', seats = 15, trial_ends_at = 0 WHERE id = ?").bind(given),
+      env.DB.prepare(
+        `INSERT INTO subscriptions (office_id, provider, provider_customer_id, provider_subscription_id, plan, status, changed_at, updated_at)
+         VALUES (?, 'creem', 'ctm_trial', ?, 'pro', 'active', 0, 0)`,
+      ).bind(paying, `sub_trial_${paying}`),
+    ]);
+    const extend = (id: string, days: unknown, who = boss) => call<{ trialEndsAt: number }>(who, "POST", `/v1/admin/offices/${id}/trial`, { days });
+    const row = (id: string) => env.DB.prepare("SELECT plan, seats, trial_ends_at FROM offices WHERE id = ?").bind(id).first<{ plan: string; seats: number; trial_ends_at: number }>();
+
+    expect((await extend(running, 5, owner)).status).toBe(404);
+    expect((await extend(running, 0)).status).toBe(400);
+    expect((await extend(running, 2.5)).status).toBe(400);
+
+    const later = await extend(running, 5);
+    expect(later.status).toBe(200);
+    expect(later.body.trialEndsAt).toBe(now + 7 * day);
+    expect((await row(running))?.trial_ends_at).toBe(now + 7 * day);
+
+    // An ended one starts again, from now, on the trial's plan.
+    const again = (await extend(ended, 10)).body.trialEndsAt;
+    expect(again).toBeGreaterThanOrEqual(now + 10 * day);
+    expect(again).toBeLessThan(now + 10 * day + 60_000);
+    expect(await row(ended)).toMatchObject({ plan: "pro", seats: 15, trial_ends_at: again });
+
+    expect((await extend(given, 7)).status).toBe(409);
+    expect((await extend(paying, 7)).status).toBe(409);
+    await env.DB.prepare("DELETE FROM users WHERE email = 'boss@example.com'").run();
+  });
+
   it("gives an office a plan without payment, but never one that pays through Creem", async () => {
     const boss = await admin();
     const owner = await makeUser("Gift Owner");

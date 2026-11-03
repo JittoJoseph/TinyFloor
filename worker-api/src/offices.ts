@@ -1,4 +1,4 @@
-import { liveNote } from "../../shared-protocol/src";
+import { liveNote, NEW_FLOOR } from "../../shared-protocol/src";
 import {
   cleanName,
   INVITE_POLICIES,
@@ -31,10 +31,10 @@ export function officeRoutes(router: Router): void {
 
       const id = crypto.randomUUID();
       const now = Date.now();
-      // Every office starts on the trial (docs/pricing.md), so the whole team can move in.
+      // Every office starts on the trial (docs/pricing.md), so the whole team can move in, and on the new floor.
       const start = startingPlan(env, now);
       await env.DB.batch([
-        env.DB.prepare("INSERT INTO offices (id, name, owner_id, created_at, plan, seats, trial_ends_at) VALUES (?, ?, ?, ?, ?, ?, ?)").bind(
+        env.DB.prepare("INSERT INTO offices (id, name, owner_id, created_at, plan, seats, trial_ends_at, floor) VALUES (?, ?, ?, ?, ?, ?, ?, ?)").bind(
           id,
           name,
           user.id,
@@ -42,6 +42,7 @@ export function officeRoutes(router: Router): void {
           start.plan,
           start.seats,
           start.trialEndsAt,
+          NEW_FLOOR,
         ),
         env.DB.prepare("INSERT INTO memberships (office_id, user_id, role, joined_at) VALUES (?, ?, 'admin', ?)").bind(
           id,

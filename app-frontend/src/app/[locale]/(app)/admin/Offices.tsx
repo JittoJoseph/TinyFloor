@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { Calendar, Chats, CreditCard, Floor as FloorIcon, MoreHorizontal, Office as OfficeIcon, Pencil, Trash2, X } from "@/components/ui/icons";
+import { NEW_FLOOR } from "@shared/map";
 import { IconButton } from "@/components/ui/IconButton";
 import { Face } from "@/components/ui/Face";
 import { Dialog } from "@/components/ui/Dialog";
@@ -160,9 +161,11 @@ function OfficeMark({ id, members }: { id: string; members: number }) {
   );
 }
 
-/** The floors while offices move to the new one (shared-protocol map.ts FLOORS); once they all have, this goes. */
+/** The floor offices began on, which older ones are still on until they're moved (shared-protocol map.ts FLOORS). */
 const OLD_FLOOR = "startup";
-const NEW_FLOOR = "campus";
+
+/** Quick picks for lengthening a trial; any number of days can be typed. */
+const TRIAL_PICKS = [7, 14, 30];
 
 function Office({
   id,
@@ -466,18 +469,28 @@ function OfficeChat({ office, ticket, onHide }: { office: AdminOffice; ticket: A
  * before the office can close.
  */
 function OfficeActions({ office, onChanged, onClosed }: { office: AdminOffice; onChanged: () => void; onClosed: () => void }) {
-  const [asking, setAsking] = useState<"rename" | "plan" | "close" | null>(null);
+  const [asking, setAsking] = useState<"rename" | "plan" | "trial" | "close" | null>(null);
   const [name, setName] = useState(office.name);
   const [plan, setPlan] = useState<PlanId>(office.plan as PlanId);
   const [typed, setTyped] = useState("");
+  const [days, setDays] = useState("14");
+  // When the dialog opened: what a new trial counts from.
+  const [openedAt, setOpenedAt] = useState(0);
   const { busy, error, run, clear } = useRun();
   const paid = !!office.billing;
   const confirmed = typed.trim() === office.name;
+  // A trial can be lengthened while one runs, or started again on Free; a paid or given plan has none.
+  const trialable = office.standing === "trial" || office.standing === "free";
+  const count = Number(days);
+  const fine = Number.isInteger(count) && count >= 1 && count <= 365;
+  const from = office.standing === "trial" && office.trialEndsAt && office.trialEndsAt > openedAt ? office.trialEndsAt : openedAt;
 
-  const ask = (what: "rename" | "plan" | "close") => {
+  const ask = (what: "rename" | "plan" | "trial" | "close") => {
     setName(office.name);
     setPlan(office.plan as PlanId);
     setTyped("");
+    setDays("14");
+    setOpenedAt(Date.now());
     clear();
     setAsking(what);
   };
@@ -505,6 +518,14 @@ function OfficeActions({ office, onChanged, onClosed }: { office: AdminOffice; o
       <Menu align="end" width={240} trigger={<IconButton label="Manage" size="sm" tone="soft" icon={<MoreHorizontal />} />}>
         <MenuItem icon={<Pencil />} onSelect={() => ask("rename")}>
           Rename
+        </MenuItem>
+        <MenuItem
+          icon={<Calendar />}
+          disabled={!trialable}
+          onSelect={() => ask("trial")}
+          hint={office.standing === "paying" ? "Pays through Creem" : office.standing === "given" ? "Pro given by hand" : undefined}
+        >
+          {office.standing === "free" ? "Start a trial" : "Extend trial"}
         </MenuItem>
         <MenuItem icon={<CreditCard />} disabled={paid} onSelect={() => ask("plan")} hint={paid ? "Pays through Creem" : undefined}>
           Change plan without payment
@@ -567,6 +588,58 @@ function OfficeActions({ office, onChanged, onClosed }: { office: AdminOffice; o
           ))}
         </div>
         {typeToConfirm}
+        {problem}
+      </Dialog>
+
+      <Dialog
+        open={asking === "trial"}
+        onClose={close}
+        title={office.standing === "free" ? "Start a trial" : "Extend the trial"}
+        description={
+          office.standing === "free"
+            ? "The office goes back to Pro for this long, with everything the trial has, and nobody is charged."
+            : "The trial runs this much longer. Nobody is charged, and nothing else changes."
+        }
+        closeLabel="Close"
+        footer={
+          <>
+            <DialogButton onClick={close}>Cancel</DialogButton>
+            <DialogButton solid disabled={busy || !fine} onClick={() => act(() => api.adminExtendTrial(office.id, count), onChanged)}>
+              {office.standing === "free" ? "Start trial" : "Extend trial"}
+            </DialogButton>
+          </>
+        }
+      >
+        <div className="flex items-center gap-2">
+          {TRIAL_PICKS.map((pick) => (
+            <button
+              key={pick}
+              type="button"
+              onClick={() => setDays(String(pick))}
+              className={cn(
+                "h-9 cursor-pointer rounded-full px-3.5 text-[13px] font-medium tabular-nums transition-colors",
+                days === String(pick) ? "bg-foreground text-background" : "bg-muted text-muted-foreground hover:text-foreground",
+              )}
+            >
+              {pick} days
+            </button>
+          ))}
+          <label className="ms-auto flex items-center gap-2 text-[13px] text-muted-foreground">
+            <span className="w-20">
+              <Field value={days} onChange={(event) => setDays(event.target.value.replace(/\D/g, "").slice(0, 3))} inputMode="numeric" aria-label="Days" />
+            </span>
+            days
+          </label>
+        </div>
+        <p className="mt-3 text-[12.5px] text-muted-foreground">
+          {fine ? (
+            <>
+              Ends <span className="font-medium text-foreground">{new Date(from + count * 86_400_000).toLocaleDateString(undefined, { day: "numeric", month: "long", year: "numeric" })}</span>
+            </>
+          ) : (
+            "Between 1 and 365 days."
+          )}
+        </p>
         {problem}
       </Dialog>
 

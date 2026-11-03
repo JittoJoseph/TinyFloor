@@ -462,14 +462,17 @@ Each office is on one floor, `offices.floor`, and the demo office on
 `LOBBY_FLOOR`. The room ticket says which: the room keeps its desks to it
 (a move settles each claim on the nearest desk of the new floor's size), and
 the page draws it, remembering it in the browser so the next load draws it
-straight away. A page that drew the wrong one loads once more. The team moves
-an office from its admin page, and everyone on it reconnects to the new floor.
+straight away; a browser that has never been on a floor draws Campus, where
+most first visits now land. A page that drew the wrong one loads once more.
+The team moves an office from its admin page, and everyone on it reconnects
+to the new floor.
 
 **Startup**, where every office began: the hand-made map's rooms and walls
 (48×32), four two-sided banks of maple desks (16), a meeting room with its
 whiteboard, a break room with its kitchen. Drawn tile by tile, with no plan.
 
-**Campus**, the new one, rolled out an office at a time: 82×52 tiles, a
+**Campus**, the new one: since 3 November every new office and the demo
+office start on it, and older offices move to it one at a time. 82×52 tiles, a
 building of rooms round an open hall on grass with trees, a plaza at the
 front door and two patios. Twelve single desks, two teams of six on sage
 carpets, on the hall's grey squares; a meeting room, a café, a booth, a

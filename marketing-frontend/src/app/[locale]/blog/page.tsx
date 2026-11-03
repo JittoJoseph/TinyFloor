@@ -16,6 +16,7 @@ import { ArrowRight } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { CJK_HEADLINE, COLUMN, Closing, H2, LEAD, MarketingShell, quiet } from "@/components/home/Blocks";
 import { PostCard } from "@/components/blog/BlogPost";
+import { CategoryFilter } from "@/components/blog/CategoryFilter";
 import { GuideCard } from "@/components/guides/GuidePage";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -28,9 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 /**
- * Every post in the reader's language: the newest large, its cover beside it,
- * then the rest two to a row with their covers, then the guides for the same
- * readers. The blog is only in the languages it has posts in (lib/blog).
+ * Every post in the reader's language, newest first, all the same size with
+ * their covers, three to a row, under a choice of categories; then the guides
+ * for the same readers. The blog is only in the languages it has posts in (lib/blog).
  */
 export default async function Page({ params }: Props) {
   const { locale } = await params;
@@ -38,7 +39,9 @@ export default async function Page({ params }: Props) {
   setRequestLocale(locale as Locale);
   const tg = await getTranslations("guides");
   const ui = await blogUi(locale);
-  const [newest, ...rest] = await postsWithCopy(locale);
+  const posts = await postsWithCopy(locale);
+  // The categories this language has posts in, in the order they first appear.
+  const categories = [...new Set(posts.map(({ post }) => post.category))];
   const guides = topGuidesIn(locale).slice(0, 4);
   const guideWords = await guideCopies(locale);
 
@@ -59,26 +62,21 @@ export default async function Page({ params }: Props) {
         </div>
       </section>
 
-      <section className={cn(COLUMN, "pt-16 sm:pt-24")}>
-        <div className="mx-auto max-w-[1120px]">
-          <PostCard post={newest.post} copy={newest.copy} ui={ui} locale={locale} size="lg" />
-        </div>
+      <section className={cn(COLUMN, "pb-24 pt-12 sm:pb-32 sm:pt-16")}>
+        <h2 className="sr-only">{ui.latest}</h2>
+        {categories.length > 1 && (
+          <CategoryFilter list="posts" all={ui.all} categories={categories.map((key) => ({ key, label: ui.categories[key] }))} />
+        )}
+        <ul id="posts" className="mx-auto mt-12 grid max-w-[1120px] gap-x-6 gap-y-14 sm:mt-16 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map(({ post, copy }, index) => (
+            <li key={post.slug} data-category={post.category}>
+              <PostCard post={post} copy={copy} ui={ui} locale={locale} priority={index < 3} />
+            </li>
+          ))}
+        </ul>
       </section>
 
-      {rest.length > 0 && (
-        <section className={cn(COLUMN, "pb-24 pt-20 sm:pb-32 sm:pt-28")}>
-          <h2 className="sr-only">{ui.latest}</h2>
-          <ul className="mx-auto grid max-w-[1120px] gap-x-8 gap-y-14 md:grid-cols-2">
-            {rest.map(({ post, copy }) => (
-              <li key={post.slug}>
-                <PostCard post={post} copy={copy} ui={ui} locale={locale} />
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      <section className={cn(COLUMN, "pb-24 sm:pb-32", rest.length ? "" : "pt-24 sm:pt-32")}>
+      <section className={cn(COLUMN, "pb-24 sm:pb-32")}>
         <h2 className={cn(H2, CJK_HEADLINE, "text-center")}>{tg.rich("moreTitle", { em: quiet })}</h2>
         <ul className="mx-auto mt-12 grid max-w-[1120px] gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {guides.map((guide) => (

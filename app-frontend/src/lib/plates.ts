@@ -52,7 +52,6 @@ class PlateLayer {
   }
 
   private sync() {
-    const view = this.scene.cameras.main.worldView;
     const zoom = cssZoom(this.scene);
     for (const item of this.items) {
       const { object, element, anchor } = item;
@@ -70,8 +69,7 @@ class PlateLayer {
         continue;
       }
       object.getWorldTransformMatrix(matrix);
-      const x = (matrix.tx - view.x) * zoom;
-      const y = (matrix.ty - view.y) * zoom;
+      const { x, y } = toCss(this.scene, matrix.tx, matrix.ty);
       const scale = Math.hypot(matrix.a, matrix.b) * zoom;
       const lift = anchor === "bottom" ? "-100%" : anchor === "top" ? "0%" : "-50%";
       const transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0) translate(-50%, ${lift}) scale(${scale.toFixed(3)})`;
@@ -93,11 +91,22 @@ export function cssZoom(scene: Phaser.Scene): number {
   return scene.cameras.main.zoom * scene.scale.zoom;
 }
 
-/** A floor point, in CSS pixels from the canvas's top left. */
+/**
+ * A floor point, in CSS pixels from the canvas's top left: exactly where the
+ * camera draws it, the same arithmetic as its own (Camera.preRender; the floor
+ * never rotates). Not from its worldView, which Phaser rounds to whole floor
+ * pixels: a label placed from that steps against the floor as the camera
+ * glides, and looks to shake.
+ */
 export function toCss(scene: Phaser.Scene, x: number, y: number): { x: number; y: number } {
-  const view = scene.cameras.main.worldView;
-  const zoom = cssZoom(scene);
-  return { x: (x - view.x) * zoom, y: (y - view.y) * zoom };
+  const camera = scene.cameras.main;
+  const originX = camera.width * camera.originX;
+  const originY = camera.height * camera.originY;
+  const ratio = scene.scale.zoom;
+  return {
+    x: (Math.floor(camera.x + originX + 0.5) + (x - camera.scrollX - originX) * camera.zoomX) * ratio,
+    y: (Math.floor(camera.y + originY + 0.5) + (y - camera.scrollY - originY) * camera.zoomY) * ratio,
+  };
 }
 
 /** The floor point under a CSS point from the canvas's top left. */

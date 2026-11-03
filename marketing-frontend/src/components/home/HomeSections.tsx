@@ -12,19 +12,15 @@ import {
   ImagePlus,
   Link2,
   Mic,
-  MicOff,
   MonitorUp,
   Paperclip,
   PenLine,
-  PhoneOff,
   Plus,
   Search,
   Smile,
   SquarePen,
   AudioLines,
   UserPlus,
-  Users,
-  VideoOff,
   Floor,
   Chats,
   Meetings,
@@ -35,7 +31,7 @@ import {
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { PEOPLE } from "@/components/floor/scenes";
 import { NearbyBar } from "@/components/floor/NearbyBar";
-import { Face, FaceStack, faceBackground, type Presence } from "@/components/ui/Face";
+import { Face, FaceStack, type Presence } from "@/components/ui/Face";
 import { PLANS } from "@/lib/plans";
 import { cn } from "@/lib/utils";
 import { ANCHOR, CJK_HEADLINE, COLUMN, OpenSource } from "./Blocks";
@@ -375,109 +371,16 @@ export function PresenceSection() {
   );
 }
 
-/** A call card's ground with the camera off, and its hairline, as MeetingTile draws them. */
-const CARD = "bg-[color-mix(in_oklab,var(--ui-muted)_85%,var(--ui-background))]";
 
 /**
- * Someone in a call, as MeetingTile draws them with their camera off: their
- * circle in the middle of a plain card, the name in the corner, and in the
- * other corner the mic: moving bars and a ring while they talk, a quiet badge
- * when it's off. A compact card is one in the column beside the big one.
- */
-function Tile({
-  seed,
-  name,
-  talking = false,
-  muted = false,
-  compact = false,
-  reveal,
-  className,
-}: {
-  seed: string;
-  name: string;
-  talking?: boolean;
-  muted?: boolean;
-  compact?: boolean;
-  /** Its turn, when the cards arrive one after another. */
-  reveal?: number;
-  className?: string;
-}) {
-  return (
-    <div
-      data-reveal={reveal === undefined ? undefined : true}
-      style={reveal === undefined ? undefined : rise(50 * reveal, { y: 12, scale: 0.97 })}
-      className={cn("relative overflow-hidden [container-type:size]", CARD, compact ? "rounded-xl" : "rounded-2xl", className)}
-    >
-      <span
-        aria-hidden
-        className={cn("absolute left-1/2 aspect-square -translate-x-1/2 -translate-y-1/2 rounded-full", compact ? "top-[38%] h-[30cqh]" : "top-1/2 h-[26cqh] max-h-36 min-h-12")}
-        style={{ backgroundImage: faceBackground(seed) }}
-      />
-      <span
-        className={cn(
-          "absolute max-w-[calc(100%-1.5rem)] truncate font-medium text-foreground/90",
-          compact ? "bottom-1.5 start-2 text-[10.5px] sm:bottom-2 sm:start-2.5 sm:text-[11.5px]" : "bottom-2.5 start-3 text-[13px]",
-        )}
-      >
-        {name}
-      </span>
-      {(talking || muted) && (
-        <span
-          className={cn(
-            "absolute end-2 top-2 flex items-center justify-center rounded-full",
-            compact ? "size-5 sm:size-6 [&_svg]:size-3" : "size-7 [&_svg]:size-3.5",
-            talking ? "bg-brand text-brand-foreground" : "bg-black/45 text-white",
-          )}
-        >
-          {talking ? <Bars /> : <MicOff />}
-        </span>
-      )}
-      <span aria-hidden className={cn("pointer-events-none absolute inset-0 rounded-[inherit] ring-inset", talking ? "ring-2 ring-brand" : "ring-1 ring-foreground/[0.06]")} />
-    </div>
-  );
-}
-
-/**
- * A meeting's controls on the app's black bezel, as MeetingStage sets them
- * in a window this size: the mic, the camera (off, the ordinary state), the
- * screen (not on a phone), the sound, who's in it, and leaving.
- */
-function Controls({ className }: { className?: string }) {
-  const soft = "flex size-9 items-center justify-center rounded-full bg-muted text-foreground sm:size-10 [&_svg]:size-[17px] sm:[&_svg]:size-[18px]";
-  return (
-    <div className={cn("dark flex w-fit items-center gap-1 rounded-full bg-[#09090a] p-1 text-foreground shadow-[0_0_0_1px_rgb(255_255_255/0.07),0_24px_60px_-30px_rgb(0_0_0/0.8)] sm:gap-1.5 sm:p-1.5", className)}>
-      <span className={soft}>
-        <Mic />
-      </span>
-      <span className={soft}>
-        <VideoOff />
-      </span>
-      <span className={cn(soft, "max-sm:hidden")}>
-        <MonitorUp />
-      </span>
-      <span className={soft}>
-        <Headphones />
-      </span>
-      <span className={soft}>
-        <Users />
-      </span>
-      <span className="ms-1 flex h-9 items-center rounded-full bg-destructive px-3.5 text-white sm:h-10 sm:px-4 [&_svg]:size-[18px]">
-        <PhoneOff />
-      </span>
-    </div>
-  );
-}
-
-/**
- * A meeting as the app shows it in a window this size: the one talking on
- * the big card, and a strip under it, you first and the others after, then
- * the controls. It fills its block to the foot, as tall as the people list's,
- * with a camera hanging off the panel's edge and the words on the right.
+ * The meeting room as it is on the floor: Campus's room at the front, three
+ * at its table in a meeting and you in its doorway, a still of the floor
+ * (public/home/meeting-room, AVIF with WebP for older browsers). It fills its
+ * block to the foot, as tall as the people list's, a clay object hanging off
+ * the panel's edge, and the words on the right.
  */
 export function MeetSection() {
   const t = useTranslations("homepage.meet");
-  const s = useTranslations("shell");
-  const { emma, jack, olivia, sam } = PEOPLE;
   return (
     <section id="meetings" className={cn(COLUMN, ANCHOR, PANEL_SECTION)}>
       <Stage
@@ -485,20 +388,21 @@ export function MeetSection() {
         flip
         words={<Words title={t("title")} body={t("body")} more={t("more")} href="/virtual-meeting-room" />}
         block="flex h-[460px] flex-col pt-10 sm:h-[500px] sm:px-10 sm:pt-12"
-        card="flex min-h-0 flex-1 flex-col p-2.5 sm:p-3"
-        clay={<Clay name="object-camera" className="-start-3 top-6 w-24 -rotate-[8deg] sm:-start-6 sm:top-10 sm:w-36 xl:-start-12" />}
+        card="relative flex min-h-0 flex-1 overflow-hidden"
+        clay={<Clay name="object-sticky" className="-start-4 -top-7 w-28 -rotate-[6deg] sm:-start-10 sm:-top-12 sm:w-40 xl:-start-16" />}
       >
-        <div className="flex min-h-0 flex-1 flex-col gap-2">
-          <Tile seed={emma.id} name={emma.name} talking reveal={0} className="min-h-0 flex-1" />
-          <div className="grid grid-cols-3 gap-2">
-            <Tile seed={sam.id} name={s("you")} compact reveal={1} className="aspect-square sm:aspect-video" />
-            <Tile seed={jack.id} name={jack.name} compact reveal={2} className="aspect-square sm:aspect-video" />
-            <Tile seed={olivia.id} name={olivia.name} muted compact reveal={3} className="aspect-square sm:aspect-video" />
-          </div>
-        </div>
-        <div data-reveal className="mt-2.5 flex justify-center sm:mt-3" style={rise(180, { y: 8 })}>
-          <Controls />
-        </div>
+        <picture>
+          <source srcSet="/home/meeting-room.avif" type="image/avif" />
+          <img
+            src="/home/meeting-room.webp"
+            alt=""
+            width={1040}
+            height={898}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 size-full object-cover"
+          />
+        </picture>
       </Stage>
     </section>
   );

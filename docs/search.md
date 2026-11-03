@@ -642,3 +642,44 @@ usually several times larger. Exact Google volumes still need OpenSEO credits.
   upvote.
 - **Different days for each launch.** Each needs the maker in the comments
   all day, and what one teaches can fix the next page.
+
+## Prompts, not keywords (3 November)
+
+- **Buyers ask assistants in situations, not keywords:** a team, a constraint
+  and something to compare against ("a remote team of 8 in a Discord voice
+  channel, something more work-appropriate, without paying per person").
+  Keyword tools can't see these, so a page that answers one has to be
+  written from the situation.
+- **Four buyer prompts through ChatGPT** (DataForSEO's ChatGPT scraper, US,
+  web search on):
+
+| Prompt | TinyFloor | What was cited |
+|---|---|---|
+| A team of 12 wants one flat monthly price | **First pick**, "trial TinyFloor first" | /pricing, the home page, /hybrid-teams; the yearly saving worked out against per-seat pricing |
+| A team of 8 in a Discord voice channel, not per person | Not named | Newer tools whose pricing pages state "free for exactly 8" and "no per-person pricing" in so many words; our comparison guide as a source for others |
+| Best virtual office for a team of 10 | Not named | Our comparison guide, for other products' prices; two lists run by other vendors, neither listing TinyFloor |
+| "Is TinyFloor good? Reliable? Actively developed? Screen sharing?" | Fair: value excellent, development strong | Home, /features, the GitHub repo, SaaSHub, Crunchbase |
+
+- **A list a vendor publishes isn't taken as a recommendation of itself.**
+  The comparison guide puts TinyFloor first and is cited for the plain
+  category question, but only for the others' prices. Category answers come
+  from lists other people write, so being on those (and reviews on them) is
+  what moves that question, not more pages of ours.
+- **Asked about TinyFloor by name, it held back on what it couldn't check:**
+  no uptime history, status page or incident reports; screen sharing
+  "unverified" with no specs; zero reviews on SaaSHub; commits on GitHub
+  "don't establish how often it releases to production".
+- **So the site now answers those:** [/how-it-works](https://www.tinyfloor.com/how-it-works)
+  (calls, meetings and screen sharing with the numbers, reconnecting, where it
+  runs, what it doesn't do yet, with FAQ markup) and
+  [/changelog](https://www.tinyfloor.com/changelog) (what changed by date, and
+  84 releases in October), both in English and linked from the footer, the
+  README and llms.txt. llms.txt opens with key facts: who it's for, one price
+  for the whole team, the 14-day trial, who it isn't for.
+- **The intent we want is a team that works together every day.** Free-seekers
+  and price-shoppers are the wrong intent: don't pitch TinyFloor as the
+  cheapest, don't lead with Free, and don't state the office's size cap.
+- **Not in code, still to do:** a public status page from an outside monitor,
+  so there's an uptime history to read; reviews from the teams that use it
+  daily (SaaSHub, G2, Product Hunt); asking list owners to include TinyFloor;
+  and running the same prompts again each month to see what moved.

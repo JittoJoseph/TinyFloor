@@ -14,7 +14,9 @@ import { GUIDES, GUIDES_PATH, guidePath, type GuideKey, type GuideSection } from
 import { landingArticle } from "@/lib/landing-articles";
 import { guideCopies } from "@/lib/guide-copy";
 import { PLANS } from "@/lib/plans";
-import { foundingOpen } from "@/lib/founding";
+import { FOUNDING, foundingOpen } from "@/lib/founding";
+import { CHANGELOG, CHANGELOG_PATH, RELEASES } from "@/lib/changelog";
+import { HOW_IT_WORKS, HOW_IT_WORKS_DESCRIPTION, HOW_IT_WORKS_INTRO, HOW_IT_WORKS_PATH, HOW_IT_WORKS_TITLE } from "@/lib/how-it-works";
 import { SUPPORT_EMAIL } from "@/lib/site";
 import { MORE_FEATURES, absoluteUrl } from "@/lib/structured-data";
 
@@ -52,6 +54,35 @@ const list = (links: Link[]) => links.map(([title, path, note]) => `- [${title}]
 
 const GROUP_TITLES: Record<LandingGroup, string> = { features: "Features", teams: "Teams", useCases: "Use cases", compare: "Compare" };
 
+/** Links to the site's own pages in text kept in lib/, written `[words](/path)`, made whole. */
+const linked = (value: string) => value.replace(/\]\((\/[^)]*)\)/g, (_, to: string) => `](${url(to)})`);
+
+/**
+ * What an assistant needs to answer a buyer's situation, stated plainly: the
+ * price as a team pays it, the trial, who it fits and who it doesn't, how it
+ * runs, and how often it changes. Buyers ask in situations ("a team of 8, not
+ * per person"), and a page that states the constraint is the page that's
+ * cited (docs/search.md).
+ */
+function keyFacts(): string[] {
+  const [, pro] = PLANS;
+  const [, ...earlier] = RELEASES;
+  return [
+    "## Key facts",
+    "",
+    `- **For a remote team that works together every day** and wants to see who's around and talk without scheduling a meeting: software teams, agencies, studios and startups, often ones that keep a Discord voice channel open all day or juggle Slack huddles and meeting links.`,
+    `- **One price for the whole team, not per person:** Pro is $${pro.price} a month for the office${
+      foundingOpen() ? ` (a founding price kept for as long as you stay subscribed, for subscriptions started before ${new Date(FOUNDING.until).toLocaleDateString("en", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}; $${FOUNDING.laterPrice} after that)` : ""
+    }. Monthly, cancel any time. Every new office starts with 14 days of Pro for the whole team, no card needed.`,
+    "- **Not for** a company that needs call recordings, AI meeting notes or single sign-on, or for events with hundreds of people. A bigger company gives each team an office of its own.",
+    "- **Runs in the browser** on desktop and phones, nothing to install. Calls go through Cloudflare's relay and meetings through Cloudflare's media servers; screen sharing is up to 720p at 10 to 15 frames a second, tuned for sharp text.",
+    `- **Ships to production almost every day:** ${earlier.map((one) => `${one.count} releases in ${one.month}`).join(", ")}; the [changelog](${url(CHANGELOG_PATH)}) lists what changed by date.`,
+    "- **Open source** under AGPL-3.0: https://github.com/JittoJoseph/TinyFloor",
+    `- **How it works,** with the numbers and what it doesn't do yet: [${HOW_IT_WORKS_TITLE}](${url(HOW_IT_WORKS_PATH)}).`,
+    "",
+  ];
+}
+
 async function common() {
   const { text, raw } = await translator();
   const page = (key: LandingKey) => raw<PageCopy>(`landings.pages.${key}`);
@@ -85,12 +116,16 @@ export async function llmsTxt(): Promise<string> {
     "",
     `> ${text("metadata.description")}`,
     "",
-    text("pricingPage.meta.description"),
     `The words of every page below, with plans, comparison tables and answers, are in [llms-full.txt](${url("/llms-full.txt")}).`,
     "",
+    ...keyFacts(),
     "## Product",
     "",
-    ...list(product),
+    ...list([
+      ...product,
+      [HOW_IT_WORKS_TITLE, HOW_IT_WORKS_PATH, HOW_IT_WORKS_DESCRIPTION],
+      ["Changelog", CHANGELOG_PATH, "What changed in TinyFloor, by the day it went live."],
+    ]),
     "",
     ...LANDING_GROUPS.flatMap((group) => [
       `## ${GROUP_TITLES[group]}`,
@@ -182,9 +217,6 @@ export async function llmsFullTxt(): Promise<string> {
     ];
   };
 
-  // Links to the site's own pages, written `[words](/path)`, made whole.
-  const linked = (value: string) => value.replace(/\]\((\/[^)]*)\)/g, (_, to: string) => `](${url(to)})`);
-
   /** Long text in sections, as a guide or a page's article reads; numbered items count on through the text, as on the page. */
   const sections = (list: GuideSection[]) => {
     let number = 0;
@@ -265,7 +297,27 @@ export async function llmsFullTxt(): Promise<string> {
     "",
     ...features.map((feature) => `- ${feature}`),
     "",
+    ...keyFacts(),
     ...plans(),
+    `## ${HOW_IT_WORKS_TITLE}`,
+    "",
+    url(HOW_IT_WORKS_PATH),
+    "",
+    HOW_IT_WORKS_INTRO,
+    "",
+    ...HOW_IT_WORKS.flatMap((section) => [
+      `### ${section.title}`,
+      "",
+      ...(section.paragraphs ?? []).flatMap((paragraph) => [linked(paragraph), ""]),
+      ...(section.items ?? []).map((item) => `- ${linked(item)}`),
+      ...(section.items ? [""] : []),
+      ...(section.faq ?? []).flatMap(({ q, a }) => [`**${q}** ${linked(a)}`, ""]),
+    ]),
+    "## Changelog",
+    "",
+    url(CHANGELOG_PATH),
+    "",
+    ...CHANGELOG.flatMap((entry) => [`### ${entry.date}: ${entry.title}`, "", ...entry.items.map((item) => `- ${linked(item)}`), ""]),
     "## FAQ",
     "",
     ...faq.flatMap(({ q, a }) => [`### ${q}`, "", a, ""]),

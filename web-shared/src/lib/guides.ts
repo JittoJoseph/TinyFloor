@@ -79,6 +79,9 @@ export const GUIDES_PATH = "/guides";
 
 export const guidePath = (guide: Guide) => `${GUIDES_PATH}/${guide.slug}`;
 
+/** A guide's cover: an illustration made for it, 16:9, in marketing-frontend/public/guides. Every guide has one. */
+export const guideCover = (guide: Guide) => `/guides/${guide.slug}.webp`;
+
 export const guideBySlug = (slug: string) => GUIDES.find((guide) => guide.slug === slug);
 
 /** The guides to read after this one: its `related` first, then the ones after it, round the list. */

@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { ArrowRight } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import { GUIDES_PATH, guidePath, guidesAfter, readingMinutes, type Guide } from "@/lib/guides";
+import { GUIDES_PATH, guideCover, guidePath, guidesAfter, readingMinutes, type Guide } from "@/lib/guides";
 import { guideCopies } from "@/lib/guide-copy";
 import { landingByKey } from "@/lib/landings";
 import { absoluteUrl, articleNode, faqNode, pageGraph } from "@/lib/structured-data";
@@ -56,16 +56,9 @@ export async function GuidePage({ guide, locale }: { guide: Guide; locale: strin
       <article>
         <header className={cn(COLUMN, "pt-32 sm:pt-44")}>
           <div className={READ}>
-            <Link
-              href={GUIDES_PATH}
-              className="inline-flex items-center gap-1.5 text-[13px] font-medium uppercase tracking-[0.14em] text-faint transition-colors hover:text-foreground"
-            >
-              {t("label")}
-              <ArrowRight className="size-3.5 rtl:rotate-180" />
-            </Link>
             <h1
               className={cn(
-                "mt-6 text-balance text-[36px] font-normal leading-[1.06] tracking-[-0.04em] min-[400px]:text-[40px] sm:text-[56px]",
+                "text-balance text-[36px] font-normal leading-[1.06] tracking-[-0.04em] min-[400px]:text-[40px] sm:text-[56px]",
                 CJK_HEADLINE,
               )}
             >
@@ -78,7 +71,12 @@ export async function GuidePage({ guide, locale }: { guide: Guide; locale: strin
               <span>{t("minutes", { count: minutes })}</span>
               <span aria-hidden>·</span>
               <time dateTime={guide.updated}>{t("updated", { date: dateIn(locale, guide.updated) })}</time>
+              <span aria-hidden>·</span>
+              <Link href={GUIDES_PATH} className="transition-colors hover:text-foreground">
+                {t("label")}
+              </Link>
             </p>
+            <GuideImage guide={guide} alt="" priority className="mt-10 sm:mt-12" />
           </div>
         </header>
 
@@ -121,7 +119,7 @@ export async function GuidePage({ guide, locale }: { guide: Guide; locale: strin
 
       <section className={cn(COLUMN, "pb-24 sm:pb-32")}>
         <h2 className={cn(H2, CJK_HEADLINE, "text-center")}>{t.rich("moreTitle", { em: quiet })}</h2>
-        <ul className="mx-auto mt-12 grid max-w-[1040px] gap-3 md:grid-cols-2">
+        <ul className="mx-auto mt-12 grid max-w-[1120px] gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* The closest guides first, then the ones after it, round the list: every guide is linked from others, the newest too. */}
           {guidesAfter(guide, locale, 4).map((other) => (
               <li key={other.slug}>
@@ -142,14 +140,31 @@ export async function GuidePage({ guide, locale }: { guide: Guide; locale: strin
   );
 }
 
-/** A guide on an index or under another guide: its name and what it covers. */
+/** A guide's cover, the illustration made for it: under its headline and on its card. Decorative, so it has no alt text of its own. */
+export function GuideImage({ guide, alt, priority = false, className }: { guide: Guide; alt: string; priority?: boolean; className?: string }) {
+  return (
+    <div className={cn("overflow-hidden rounded-[22px] bg-muted", className)}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={guideCover(guide)}
+        alt={alt}
+        width={1600}
+        height={900}
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
+        decoding="async"
+        className="aspect-video h-auto w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.015]"
+      />
+    </div>
+  );
+}
+
+/** A guide on an index or under another guide: its cover, its name and what it covers. */
 export function GuideCard({ guide, title, description }: { guide: Guide; title: string; description: string }) {
   return (
-    <Link href={guidePath(guide)} className="group flex h-full flex-col rounded-[24px] bg-muted/80 p-6 transition-colors hover:bg-muted sm:p-7">
-      <span className="flex items-center justify-between gap-3 text-[17px] font-semibold tracking-[-0.01em]">
-        {title}
-        <ArrowRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5" />
-      </span>
+    <Link href={guidePath(guide)} className="group flex h-full flex-col">
+      <GuideImage guide={guide} alt="" />
+      <span className="mt-5 text-[18px] font-semibold leading-[1.3] tracking-[-0.015em] transition-colors group-hover:text-foreground/80">{title}</span>
       <span className="mt-2 text-[14.5px] leading-[1.55] text-muted-foreground">{description}</span>
     </Link>
   );

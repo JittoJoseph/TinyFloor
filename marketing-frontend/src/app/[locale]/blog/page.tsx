@@ -80,7 +80,7 @@ export default async function Page({ params }: Props) {
 
       <section className={cn(COLUMN, "pb-24 sm:pb-32", rest.length ? "" : "pt-24 sm:pt-32")}>
         <h2 className={cn(H2, CJK_HEADLINE, "text-center")}>{tg.rich("moreTitle", { em: quiet })}</h2>
-        <ul className="mx-auto mt-12 grid max-w-[1040px] gap-3 md:grid-cols-2">
+        <ul className="mx-auto mt-12 grid max-w-[1120px] gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {guides.map((guide) => (
             <li key={guide.slug}>
               <GuideCard guide={guide} title={guideWords[guide.key].label} description={guideWords[guide.key].meta.description} />

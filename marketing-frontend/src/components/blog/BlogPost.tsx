@@ -188,7 +188,7 @@ export async function BlogPostPage({ post, copy, ui, locale }: { post: BlogPost;
       {guideWords && (
         <section className={cn(COLUMN, "pb-20 sm:pb-28")}>
           <h2 className={cn(H2, CJK_HEADLINE, "text-center")}>{ui.guides}</h2>
-          <ul className="mx-auto mt-12 grid max-w-[1040px] gap-3 md:grid-cols-3">
+          <ul className="mx-auto mt-12 grid max-w-[1120px] gap-x-6 gap-y-12 md:grid-cols-3">
             {guides.map((guide) => (
               <li key={guide.slug}>
                 <GuideCard guide={guide} title={guideWords[guide.key].label} description={guideWords[guide.key].meta.description} />

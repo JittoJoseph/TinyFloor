@@ -34,7 +34,7 @@
   <a href="https://www.tinyfloor.com/lobby">
     <picture>
       <source srcset=".github/readme/tour.avif" type="image/avif">
-      <img src=".github/readme/tour.gif" width="100%" alt="TinyFloor virtual office: a message comes in, the team chat opens, then a call with the teammate at the next desk">
+      <img src=".github/readme/tour.gif" width="100%" alt="TinyFloor virtual office: the whole office at work, a message comes in and the team chat opens, then a walk down the hall to call a teammate">
     </picture>
   </a>
 </p>

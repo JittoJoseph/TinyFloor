@@ -1174,7 +1174,7 @@
       "cta": "Créer votre bureau",
       "lobby": "Essayer le bureau de démo",
       "note": "Un seul prix pour toute l'équipe · Sans carte bancaire",
-      "film": "TinyFloor : un message arrive, le chat s'ouvre, puis un appel avec le collègue à côté de vous"
+      "film": "TinyFloor : tout le bureau au travail, un message arrive et le chat s'ouvre, puis vous allez voir un collègue et l'appelez"
     },
     "floor": {
       "eyebrow": "Sur l'étage",
@@ -1300,7 +1300,11 @@
     "chat": {
       "title": "Un chat d'équipe, juste à côté de l'étage.",
       "body": "Des canaux et des messages directs pour tout ce qui n'est pas un appel, afin que ce qui a été décidé soit écrit et facile à retrouver. Répondez à un message, réagissez et partagez une capture d'écran.",
-      "more": "En savoir plus sur le chat d'équipe"
+      "more": "En savoir plus sur le chat d'équipe",
+      "lines": {
+        "morning": "Bonjour ! Le lancement est toujours à 14 h, les notes sont dans #design",
+        "poster": "L'affiche du lancement est prête 🚀 vous en pensez quoi ?"
+      }
     },
     "extras": {
       "title": "Tout ce dont une équipe à distance a besoin.",

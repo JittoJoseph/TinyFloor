@@ -1174,7 +1174,7 @@
       "cta": "Stwórz swoje biuro",
       "lobby": "Wypróbuj biuro demo",
       "note": "Jedna cena za cały zespół · Bez karty",
-      "film": "TinyFloor: przychodzi wiadomość, otwiera się czat, a potem rozmowa z osobą obok ciebie"
+      "film": "TinyFloor: całe biuro przy pracy, przychodzi wiadomość i otwiera się czat, a potem podchodzisz do kogoś z zespołu i dzwonisz"
     },
     "floor": {
       "eyebrow": "Na piętrze",
@@ -1300,7 +1300,11 @@
     "chat": {
       "title": "Czat zespołowy, tuż obok piętra.",
       "body": "Kanały i wiadomości bezpośrednie do wszystkiego, co nie jest rozmową, dzięki czemu ustalenia są zapisane i łatwe do znalezienia. Odpowiadaj na wiadomości, reaguj i udostępniaj zrzuty ekranu.",
-      "more": "Więcej o czacie zespołowym"
+      "more": "Więcej o czacie zespołowym",
+      "lines": {
+        "morning": "Dzień dobry! Premiera wciąż o 14:00, notatki są w #design",
+        "poster": "Plakat na premierę gotowy 🚀 co myślicie?"
+      }
     },
     "extras": {
       "title": "Wszystko inne, czego potrzebuje zespół zdalny.",

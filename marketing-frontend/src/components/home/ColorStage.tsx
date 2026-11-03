@@ -1,56 +1,39 @@
-import type { ReactNode } from "react";
+import type { CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 
-/** The stages' colours: saturated, one per section, from the illustrations' palette. */
+/** The sections' colours, saturated, from the illustrations' palette: each with a lighter tone of itself where the light falls. */
 const TONES = {
-  blurple: "#5865f2",
-  coral: "#ff6a55",
-  mint: "#1fc79c",
-  sun: "#ffc23d",
+  blurple: ["#5865f2", "#8c95ff"],
+  coral: ["#ff6a55", "#ffa184"],
+  mint: ["#1fc79c", "#7ce8c6"],
+  sun: ["#ffc23d", "#ffe28f"],
 } as const;
 
+export type Tone = keyof typeof TONES;
+
+/** A block of a section's colour, lit from its top corner, for the app to stand in, rise out of or break out of. */
+export const lit = (tone: Tone): CSSProperties => ({
+  background: `radial-gradient(120% 90% at 88% 0%, ${TONES[tone][1]} 0%, ${TONES[tone][0]} 60%)`,
+});
+
 /**
- * A product view set on a stage of colour, the way the big product sites
- * frame theirs: a saturated panel with large rounded corners, the app itself
- * on a card inside it, and one clay object (public/objects) hanging off a
- * corner. The colour is the section's; the app stays as the app draws it.
+ * One clay object (public/objects), set where it means something in the
+ * picture: a hand by the wave, a camera on top of the call. It sits over
+ * whatever it's beside, so it's laid absolutely by the caller.
  */
-export function ColorStage({
-  tone,
-  object,
-  side = "end",
-  className,
-  card = "p-4 sm:p-6",
-  children,
-}: {
-  tone: keyof typeof TONES;
-  /** A clay object's name in public/objects, laid half over the stage's top corner. */
-  object?: string;
-  side?: "start" | "end";
-  className?: string;
-  /** The inner card's padding: none for a view that brings its own frame. */
-  card?: string;
-  children: ReactNode;
-}) {
+export function Clay({ name, className, style }: { name: string; className?: string; style?: CSSProperties }) {
   return (
-    <div className={cn("relative rounded-[36px] p-5 sm:p-10", className)} style={{ background: TONES[tone] }}>
-      {object && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={`/objects/${object}.webp`}
-          alt=""
-          aria-hidden
-          width={320}
-          height={320}
-          loading="lazy"
-          decoding="async"
-          className={cn(
-            "pointer-events-none absolute -top-12 z-10 w-24 select-none sm:-top-16 sm:w-32",
-            side === "end" ? "-end-4 sm:-end-10" : "-start-4 sm:-start-10",
-          )}
-        />
-      )}
-      <div className={cn("relative rounded-[22px] bg-background shadow-[0_30px_60px_-24px_rgb(0_0_0/0.5)] [--face-ring:var(--ui-background)]", card)}>{children}</div>
-    </div>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={`/objects/${name}.webp`}
+      alt=""
+      aria-hidden
+      width={320}
+      height={320}
+      loading="lazy"
+      decoding="async"
+      style={style}
+      className={cn("pointer-events-none absolute z-10 select-none drop-shadow-[0_18px_22px_rgb(0_0_0/0.16)]", className)}
+    />
   );
 }

@@ -1174,7 +1174,7 @@
       "cta": "Luo toimistosi",
       "lobby": "Kokeile demotoimistoa",
       "note": "Yksi hinta koko tiimille · Ei korttia",
-      "film": "TinyFloor: viesti saapuu, chat aukeaa ja sitten puhelu vieressä olevan kollegan kanssa"
+      "film": "TinyFloor: koko toimisto töissä, viesti saapuu ja chat aukeaa, sitten kävelet kollegan luo ja soitat hänelle"
     },
     "floor": {
       "eyebrow": "Kerroksessa",
@@ -1300,7 +1300,11 @@
     "chat": {
       "title": "Tiimichat aivan kerroksen vieressä.",
       "body": "Kanavat ja yksityisviestit kaikelle muulle paitsi puheluille, jotta päätetyt asiat jäävät talteen ja ovat helposti löydettävissä. Vastaa viestiin, reagoi ja jaa kuvakaappaus.",
-      "more": "Lisätietoa tiimichatistä"
+      "more": "Lisätietoa tiimichatistä",
+      "lines": {
+        "morning": "Huomenta! Julkaisu on edelleen klo 14, muistiinpanot ovat kanavalla #design",
+        "poster": "Julkaisun juliste on valmis 🚀 mitä mieltä olette?"
+      }
     },
     "extras": {
       "title": "Kaikki muu, mitä etätiimi tarvitsee.",

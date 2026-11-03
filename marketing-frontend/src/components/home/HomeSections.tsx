@@ -23,7 +23,14 @@ import {
   SquarePen,
   AudioLines,
   UserPlus,
-  Video,
+  Users,
+  VideoOff,
+  Floor,
+  Chats,
+  Meetings,
+  People,
+  HelpCircle,
+  SignOut,
 } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { PEOPLE } from "@/components/floor/scenes";
@@ -33,7 +40,7 @@ import { PLANS } from "@/lib/plans";
 import { cn } from "@/lib/utils";
 import { ANCHOR, CJK_HEADLINE, COLUMN, OpenSource } from "./Blocks";
 import { PriceSlider } from "./PriceSlider";
-import { ColorStage } from "./ColorStage";
+import { Clay, lit, type Tone } from "./ColorStage";
 import { Laurel } from "./Laurel";
 import { Muted, rise, split, Split } from "./Split";
 
@@ -77,6 +84,56 @@ function Words({ title, body, more, href, className }: { title: string; body: st
           <More href={href}>{more}</More>
         </div>
       )}
+    </div>
+  );
+}
+
+/** A panel's words, padded off its edges. */
+const PANEL_WORDS = "px-5 py-10 sm:px-12 sm:py-14";
+
+/** The space around a panel: its own rounding carries the break between sections, so they sit closer than plain ones. */
+const PANEL_SECTION = "py-5 sm:py-8";
+
+/**
+ * A section as one panel, the way the big product sites set theirs: its
+ * words on one side and, on the other, a block of its colour that the app
+ * rises out of, standing on the block's foot. A clay object stands by the
+ * thing it's about, laid by the caller over the block's wrapper.
+ */
+function Stage({
+  tone,
+  words,
+  flip = false,
+  block,
+  card,
+  clay,
+  children,
+}: {
+  tone: Tone;
+  words: ReactNode;
+  /** The block on the start side and the words after it, on wide screens. */
+  flip?: boolean;
+  /** The block's own size and padding, past what every block has. */
+  block?: string;
+  card?: string;
+  clay?: ReactNode;
+  children: ReactNode;
+}) {
+  return (
+    <div className={cn("grid grid-cols-1 items-center gap-3 rounded-[44px] bg-muted p-3", flip ? "lg:grid-cols-[1.35fr_1fr]" : "lg:grid-cols-[1fr_1.15fr]")}>
+      <div className={cn(PANEL_WORDS, flip && "lg:order-2")}>{words}</div>
+      <div className={cn("relative", flip && "lg:order-1")}>
+        <div className={cn("overflow-hidden rounded-[34px] px-5 pt-12 sm:px-12 sm:pt-16", block)} style={lit(tone)}>
+          <div
+            data-reveal
+            style={rise(0, { y: 40 })}
+            className={cn("rounded-t-[22px] bg-background font-(family-name:--font-app) shadow-[0_30px_60px_-20px_rgb(0_0_0/0.45)] [--face-ring:var(--ui-background)]", card)}
+          >
+            {children}
+          </div>
+        </div>
+        {clay}
+      </div>
     </div>
   );
 }
@@ -295,9 +352,14 @@ export function PresenceSection() {
     </li>
   );
   return (
-    <section id="people" className={cn(COLUMN, ANCHOR, "grid items-center gap-14 py-24 sm:py-32 lg:grid-cols-[1fr_440px] lg:gap-20")}>
-      <Words title={t("title")} body={t("body")} more={t("more")} href="/team-presence" />
-      <ColorStage tone="blurple" object="object-headphones" className="font-(family-name:--font-app)">
+    <section id="people" className={cn(COLUMN, ANCHOR, PANEL_SECTION, "pt-0 sm:pt-0")}>
+      <Stage
+        tone="blurple"
+        words={<Words title={t("title")} body={t("body")} more={t("more")} href="/team-presence" />}
+        block="h-[440px] sm:h-[500px] sm:px-14 sm:pt-14"
+        card="px-5 pb-6 pt-4 sm:px-6"
+        clay={<Clay name="object-wave" className="-end-3 top-6 w-24 rotate-[8deg] sm:-end-6 sm:top-10 sm:w-36 xl:-end-12" />}
+      >
         <p data-reveal className="flex items-center justify-between border-b border-border pb-3 text-[12.5px] font-medium text-faint" style={rise(0, { y: 6 })}>
           {t("here")}
           <span className="tabular-nums">{here.length}</span>
@@ -308,21 +370,26 @@ export function PresenceSection() {
           <span className="tabular-nums">{away.length}</span>
         </p>
         <ul className="opacity-70">{away.map((one, i) => row(one, here.length + i))}</ul>
-      </ColorStage>
+      </Stage>
     </section>
   );
 }
 
+/** A call card's ground with the camera off, and its hairline, as MeetingTile draws them. */
+const CARD = "bg-[color-mix(in_oklab,var(--ui-muted)_85%,var(--ui-background))]";
+
 /**
- * Someone in a call, as the app draws them with their camera off: their
- * circle on a plain tile, the name in the corner, moving bars while they
- * talk, a quiet badge when their mic is off (MeetingTile).
+ * Someone in a call, as MeetingTile draws them with their camera off: their
+ * circle in the middle of a plain card, the name in the corner, and in the
+ * other corner the mic: moving bars and a ring while they talk, a quiet badge
+ * when it's off. A compact card is one in the column beside the big one.
  */
 function Tile({
   seed,
   name,
   talking = false,
   muted = false,
+  compact = false,
   reveal,
   className,
 }: {
@@ -330,7 +397,8 @@ function Tile({
   name: string;
   talking?: boolean;
   muted?: boolean;
-  /** Its turn, when the tiles arrive one after another. */
+  compact?: boolean;
+  /** Its turn, when the cards arrive one after another. */
   reveal?: number;
   className?: string;
 }) {
@@ -338,34 +406,62 @@ function Tile({
     <div
       data-reveal={reveal === undefined ? undefined : true}
       style={reveal === undefined ? undefined : rise(50 * reveal, { y: 12, scale: 0.97 })}
-      className={cn("relative overflow-hidden rounded-2xl bg-[color-mix(in_oklab,var(--ui-muted)_85%,var(--ui-background))] [container-type:size]", className)}>
-      <span aria-hidden className="absolute left-1/2 top-1/2 aspect-square h-[34cqh] max-h-28 -translate-x-1/2 -translate-y-1/2 rounded-full" style={{ backgroundImage: faceBackground(seed) }} />
-      <span className="absolute bottom-2.5 start-3 truncate text-[12.5px] font-medium text-foreground/90">{name}</span>
+      className={cn("relative overflow-hidden [container-type:size]", CARD, compact ? "rounded-xl" : "rounded-2xl", className)}
+    >
+      <span
+        aria-hidden
+        className={cn("absolute left-1/2 aspect-square -translate-x-1/2 -translate-y-1/2 rounded-full", compact ? "top-[38%] h-[30cqh]" : "top-1/2 h-[26cqh] max-h-36 min-h-12")}
+        style={{ backgroundImage: faceBackground(seed) }}
+      />
+      <span
+        className={cn(
+          "absolute max-w-[calc(100%-1.5rem)] truncate font-medium text-foreground/90",
+          compact ? "bottom-1.5 start-2 text-[10.5px] sm:bottom-2 sm:start-2.5 sm:text-[11.5px]" : "bottom-2.5 start-3 text-[13px]",
+        )}
+      >
+        {name}
+      </span>
       {(talking || muted) && (
-        <span className={cn("absolute end-2 top-2 flex size-6 items-center justify-center rounded-full", talking ? "bg-brand text-brand-foreground" : "bg-black/45 text-white")}>
-          {talking ? <Bars /> : <MicOff className="size-3" />}
+        <span
+          className={cn(
+            "absolute end-2 top-2 flex items-center justify-center rounded-full",
+            compact ? "size-5 sm:size-6 [&_svg]:size-3" : "size-7 [&_svg]:size-3.5",
+            talking ? "bg-brand text-brand-foreground" : "bg-black/45 text-white",
+          )}
+        >
+          {talking ? <Bars /> : <MicOff />}
         </span>
       )}
-      <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-foreground/[0.06]" />
+      <span aria-hidden className={cn("pointer-events-none absolute inset-0 rounded-[inherit] ring-inset", talking ? "ring-2 ring-brand" : "ring-1 ring-foreground/[0.06]")} />
     </div>
   );
 }
 
-/** A call's controls on the app's black bezel: the mic, the camera, the screen, and leaving. */
+/**
+ * A meeting's controls on the app's black bezel, as MeetingStage sets them
+ * in a window this size: the mic, the camera (off, the ordinary state), the
+ * screen (not on a phone), the sound, who's in it, and leaving.
+ */
 function Controls({ className }: { className?: string }) {
-  const soft = "flex size-10 items-center justify-center rounded-full bg-muted text-foreground [&_svg]:size-[18px]";
+  const soft = "flex size-9 items-center justify-center rounded-full bg-muted text-foreground sm:size-10 [&_svg]:size-[17px] sm:[&_svg]:size-[18px]";
   return (
-    <div className={cn("dark flex w-fit items-center gap-1.5 rounded-full bg-[#09090a] p-1.5 text-foreground shadow-[0_0_0_1px_rgb(255_255_255/0.07),0_24px_60px_-30px_rgb(0_0_0/0.8)]", className)}>
+    <div className={cn("dark flex w-fit items-center gap-1 rounded-full bg-[#09090a] p-1 text-foreground shadow-[0_0_0_1px_rgb(255_255_255/0.07),0_24px_60px_-30px_rgb(0_0_0/0.8)] sm:gap-1.5 sm:p-1.5", className)}>
       <span className={soft}>
         <Mic />
       </span>
       <span className={soft}>
-        <Video />
+        <VideoOff />
       </span>
-      <span className={soft}>
+      <span className={cn(soft, "max-sm:hidden")}>
         <MonitorUp />
       </span>
-      <span className="ms-1 flex h-10 items-center rounded-full bg-destructive px-4 text-white [&_svg]:size-[18px]">
+      <span className={soft}>
+        <Headphones />
+      </span>
+      <span className={soft}>
+        <Users />
+      </span>
+      <span className="ms-1 flex h-9 items-center rounded-full bg-destructive px-3.5 text-white sm:h-10 sm:px-4 [&_svg]:size-[18px]">
         <PhoneOff />
       </span>
     </div>
@@ -373,34 +469,37 @@ function Controls({ className }: { className?: string }) {
 }
 
 /**
- * A meeting as the app shows it, in small: the one talking large, the rest
- * in a column beside them, and under them the time, the meeting's name and
- * the controls. It sits on the left, with what it means on the right.
+ * A meeting as the app shows it in a window this size: the one talking on
+ * the big card, and a strip under it, you first and the others after, then
+ * the controls. It fills its block to the foot, as tall as the people list's,
+ * with a camera hanging off the panel's edge and the words on the right.
  */
 export function MeetSection() {
   const t = useTranslations("homepage.meet");
+  const s = useTranslations("shell");
   const { emma, jack, olivia, sam } = PEOPLE;
   return (
-    <section id="meetings" className={cn(COLUMN, ANCHOR, "grid items-center gap-14 py-24 sm:py-32 lg:grid-cols-[1.25fr_1fr] lg:gap-20")}>
-      <ColorStage tone="coral" object="object-mug" side="start" className="order-2 font-(family-name:--font-app) lg:order-1" card="p-3 sm:p-4">
-        <div className="grid gap-2 sm:grid-cols-[1fr_150px]">
-          <Tile seed={emma.id} name={emma.name} talking reveal={0} className="aspect-[16/10]" />
-          <div className="grid grid-cols-3 gap-2 sm:grid-cols-1">
-            <Tile seed={jack.id} name={jack.name} reveal={1} className="aspect-[4/3] sm:aspect-auto" />
-            <Tile seed={olivia.id} name={olivia.name} muted reveal={2} className="aspect-[4/3] sm:aspect-auto" />
-            <Tile seed={sam.id} name={sam.name} reveal={3} className="aspect-[4/3] sm:aspect-auto" />
+    <section id="meetings" className={cn(COLUMN, ANCHOR, PANEL_SECTION)}>
+      <Stage
+        tone="sun"
+        flip
+        words={<Words title={t("title")} body={t("body")} more={t("more")} href="/virtual-meeting-room" />}
+        block="flex h-[460px] flex-col pt-10 sm:h-[500px] sm:px-10 sm:pt-12"
+        card="flex min-h-0 flex-1 flex-col p-2.5 sm:p-3"
+        clay={<Clay name="object-camera" className="-start-3 top-6 w-24 -rotate-[8deg] sm:-start-6 sm:top-10 sm:w-36 xl:-start-12" />}
+      >
+        <div className="flex min-h-0 flex-1 flex-col gap-2">
+          <Tile seed={emma.id} name={emma.name} talking reveal={0} className="min-h-0 flex-1" />
+          <div className="grid grid-cols-3 gap-2">
+            <Tile seed={sam.id} name={s("you")} compact reveal={1} className="aspect-square sm:aspect-video" />
+            <Tile seed={jack.id} name={jack.name} compact reveal={2} className="aspect-square sm:aspect-video" />
+            <Tile seed={olivia.id} name={olivia.name} muted compact reveal={3} className="aspect-square sm:aspect-video" />
           </div>
         </div>
-        <div data-reveal className="mt-4 flex items-center justify-between gap-4" style={rise(180, { y: 8 })}>
-          <p className="flex items-center gap-3 text-[13px]">
-            <span className="font-medium tabular-nums">12:04</span>
-            <span aria-hidden className="h-3.5 w-px bg-border" />
-            <span className="text-muted-foreground">{t("meeting")}</span>
-          </p>
+        <div data-reveal className="mt-2.5 flex justify-center sm:mt-3" style={rise(180, { y: 8 })}>
           <Controls />
         </div>
-      </ColorStage>
-      <Words title={t("title")} body={t("body")} more={t("more")} href="/virtual-meeting-room" className="order-1 lg:order-2" />
+      </Stage>
     </section>
   );
 }
@@ -421,8 +520,8 @@ function Message({
   turn?: number;
 }) {
   return (
-    <li data-reveal style={rise(120 + 80 * turn, { y: 8 })}>
-      <div className="flex items-start gap-3">
+    <li data-reveal className="shrink-0" style={rise(120 + 80 * turn, { y: 8 })}>
+      <div className="loop-line flex items-start gap-3" style={{ "--i": turn } as CSSProperties}>
         <Face seed={who.id} size={36} />
         <div className="min-w-0 flex-1">
           <p className="flex items-baseline gap-2 text-[14px] font-semibold">
@@ -447,40 +546,19 @@ function Reaction({ emoji, count, mine = false }: { emoji: string; count: number
   );
 }
 
-/**
- * The picture Jack shares with his message about the new onboarding: its
- * welcome step, dark, rising out of the bottom of a near-black frame with a
- * faint grid lit from above, the way product shots are shown now. Drawn, not
- * a photo, so it stays crisp at any size; quiet whites, one cool glow.
- */
-function Shot() {
+/** What Jack shares: the launch's poster, a clay rocket off a laptop, the way the site's own pictures are made. */
+function Poster() {
   return (
-    <div aria-hidden className="relative mt-2 aspect-[16/9] w-full max-w-[280px] overflow-hidden rounded-[12px] bg-[#08080a] ring-1 ring-border">
-      <div className="absolute inset-0 [background-image:linear-gradient(rgb(255_255_255/0.045)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/0.045)_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_at_50%_0%,black,transparent_70%)]" />
-      <div className="absolute -top-14 left-1/2 h-28 w-52 -translate-x-1/2 rounded-full bg-[#6d7cff]/20 blur-3xl" />
-      <div className="absolute inset-x-[13%] bottom-0 top-[18%] rounded-t-[10px] bg-[#111113] shadow-[0_0_0_1px_rgb(255_255_255/0.08),0_-18px_40px_-22px_rgb(109_124_255/0.45)]">
-        {/* Light catching the window's top edge. */}
-        <span className="absolute inset-x-[12%] -top-px h-px bg-[linear-gradient(90deg,transparent,rgb(255_255_255/0.45),transparent)]" />
-        <div className="flex h-[18px] items-center gap-[3px] border-b border-white/[0.06] px-2">
-          {[0, 1, 2].map((dot) => (
-            <span key={dot} className="size-[4px] rounded-full bg-white/15" />
-          ))}
-        </div>
-        <div className="px-3 pt-2.5">
-          <span className="block h-[5px] w-[46%] rounded-full bg-white/75" />
-          <span className="mt-1.5 block h-[3.5px] w-[70%] rounded-full bg-white/20" />
-          {[38, 52].map((width) => (
-            <span key={width} className="mt-2 flex h-[15px] items-center rounded-[5px] bg-white/[0.035] px-1.5 ring-1 ring-white/[0.09]">
-              <span className="h-[3px] rounded-full bg-white/30" style={{ width: `${width}%` }} />
-            </span>
-          ))}
-          <span className="mt-2.5 flex items-center gap-1.5">
-            <span className="h-[13px] w-[32%] rounded-[5px] bg-white/90" />
-            <span className="h-[13px] w-[18%] rounded-[5px] ring-1 ring-white/[0.12]" />
-          </span>
-        </div>
-      </div>
-    </div>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/home/chat-launch.webp"
+      alt=""
+      width={960}
+      height={540}
+      loading="lazy"
+      decoding="async"
+      className="mt-2 aspect-video w-full max-w-[220px] rounded-[12px] object-cover ring-1 ring-border"
+    />
   );
 }
 
@@ -521,6 +599,69 @@ function VoiceNote() {
 }
 
 /**
+ * The app's rail, as AppShell draws it: the office's square, the places with
+ * Chat open, and the quiet things at its foot. You aren't in it: the chat's
+ * column holds you at its foot, as it does in the app. In the section's loop
+ * (globals.css) the floor is open first and a click hands the open look,
+ * its bar and its raised square, to Chat, which loses the message count.
+ */
+function Rail() {
+  const s = useTranslations("shell");
+  const places = [
+    { key: "floor", icon: Floor },
+    { key: "chat", icon: Chats },
+    { key: "meetings", icon: Meetings },
+    { key: "people", icon: People },
+  ] as const;
+  return (
+    <div aria-hidden className="relative hidden w-[72px] shrink-0 flex-col items-center py-3 sm:flex">
+      <Face seed="office-northwind" size={40} square />
+      <span className="my-2 h-px w-8 bg-border" />
+      <div className="flex w-full flex-col items-center gap-1.5">
+        {places.map(({ key, icon: Icon }) => {
+          const active = key === "chat";
+          // The two the loop moves between; shown still, Chat is open.
+          const loop = key === "floor" ? "loop-on-floor" : key === "chat" ? "loop-on-chat" : null;
+          const ink = loop ? `${loop}-ink` : undefined;
+          return (
+            <span key={key} className="relative flex w-full flex-col items-center gap-1">
+              {loop && <span className={cn("absolute start-0 top-1.5 h-7 w-[3px] rounded-e-full bg-foreground", loop, !active && "opacity-0")} />}
+              <span className="relative flex size-10 items-center justify-center rounded-[12px]">
+                {loop && (
+                  <span
+                    className={cn(
+                      "absolute inset-0 rounded-[12px] bg-card shadow-[0_1px_2px_rgb(0_0_0/0.08),0_0_0_1px_var(--ui-border)] dark:bg-muted",
+                      loop,
+                      !active && "opacity-0",
+                    )}
+                  />
+                )}
+                <Icon size={22} strokeWidth={active ? 2.2 : 1.8} className={cn("relative", ink, active ? "text-foreground" : "text-muted-foreground")} />
+                {key === "chat" && (
+                  <span className="loop-badge absolute -end-1.5 -top-1.5 hidden min-w-[18px] rounded-full bg-brand px-1 text-center text-[10px] font-semibold leading-[18px] text-brand-foreground ring-2 ring-rail">
+                    2
+                  </span>
+                )}
+              </span>
+              <span className={cn("max-w-full truncate px-1 text-[10.5px] leading-none tracking-tight", ink, active ? "font-semibold text-foreground" : "text-muted-foreground")}>
+                {s(key)}
+              </span>
+            </span>
+          );
+        })}
+      </div>
+      <div className="mt-auto flex w-full flex-col items-center gap-2 pt-6 text-muted-foreground">
+        {[HelpCircle, SignOut, Gear].map((Icon, i) => (
+          <span key={i} className="flex size-10 items-center justify-center">
+            <Icon size={22} strokeWidth={1.8} className={Icon === SignOut ? "rtl:-scale-x-100" : undefined} />
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/**
  * The chat: what it's for across the top, then the app's chat window: the
  * channels down the side, and a morning in #general: a line of news, a
  * screenshot shared with reactions, a voice message, and someone typing.
@@ -533,140 +674,166 @@ export function ChatSection() {
   const channels = [p("general"), p("design"), p("random")];
   const side = "flex h-8 items-center gap-2 rounded-[9px] px-2.5 text-[13px]";
   return (
-    <section id="chat" className={cn(COLUMN, ANCHOR, "py-24 sm:py-32")}>
-      <div className="grid gap-6 lg:grid-cols-2 lg:gap-16">
-        <h2 data-reveal-words className={cn(TITLE, CJK_HEADLINE, "max-w-[16ch]")}>
-          <Split text={t("title")} />
-        </h2>
-        <div data-reveal style={rise(80)}>
-          <p className={cn(BODY, "max-w-[30rem]")}>{t("body")}</p>
-          <More href="/team-chat" className="mt-6">
-            {t("more")}
-          </More>
+    <section id="chat" className={cn(COLUMN, ANCHOR, PANEL_SECTION)}>
+      <div className="rounded-[44px] bg-muted p-3">
+        <div className={cn(PANEL_WORDS, "grid gap-6 pb-8 sm:pb-10 lg:grid-cols-2 lg:gap-16")}>
+          <h2 data-reveal-words className={cn(TITLE, CJK_HEADLINE, "max-w-[16ch]")}>
+            <Split text={t("title")} />
+          </h2>
+          <div data-reveal style={rise(80)}>
+            <p className={cn(BODY, "max-w-[30rem]")}>{t("body")}</p>
+            <More href="/team-chat" className="mt-6">
+              {t("more")}
+            </More>
+          </div>
+        </div>
+
+        <div className="relative">
+          <div className="overflow-hidden rounded-[34px] px-3 pt-10 sm:px-14 sm:pt-14" style={lit("mint")}>
+            <div
+              data-reveal
+              style={rise(0, { y: 40 })}
+              className="relative flex h-[550px] overflow-hidden rounded-t-[22px] bg-rail font-(family-name:--font-app) sm:h-[530px] shadow-[0_30px_60px_-20px_rgb(0_0_0/0.45)] [--face-ring:var(--ui-rail)]"
+            >
+              <Rail />
+              <div className="relative flex min-w-0 flex-1 overflow-hidden bg-card [--face-ring:var(--ui-card)] sm:mt-2 sm:me-2 sm:rounded-t-[16px] sm:border sm:border-b-0 sm:border-border">
+                {/* The floor, where the loop starts: a still of Campus, its people at their desks. */}
+                <div aria-hidden className="loop-floor absolute inset-0 z-10 hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/home/floor-still.webp" alt="" width={1600} height={1000} loading="lazy" decoding="async" className="size-full object-cover object-[50%_40%]" />
+                </div>
+                {/* The side, as the app draws it: the office and a way to start a conversation, search, the channels and people, and you at the foot. */}
+                <div className="loop-chat hidden w-[236px] shrink-0 flex-col border-e border-border bg-background p-2.5 [--face-ring:var(--ui-background)] lg:flex">
+                  <div className="flex h-10 items-center justify-between px-2">
+                    <span className="text-[14.5px] font-semibold tracking-[-0.01em]">{p("office")}</span>
+                    <SquarePen className="size-4 text-muted-foreground" />
+                  </div>
+                  <div className="mt-1 flex h-9 items-center gap-2 rounded-[10px] border border-border bg-background px-2.5 text-[12.5px] text-faint">
+                    <Search className="size-3.5" />
+                    <span className="flex-1 truncate">{p("search")}</span>
+                    <kbd className="rounded-[5px] border border-border px-1 font-sans text-[10px]">⌘K</kbd>
+                  </div>
+                  <p className="mt-4 flex items-center gap-1 px-2 pb-1 text-[12px] font-medium text-muted-foreground">
+                    <ChevronDown className="size-3" />
+                    {p("channels")}
+                  </p>
+                  {channels.map((name, i) => (
+                    <span key={name} className={cn(side, i === 0 ? "bg-foreground/[0.06] font-medium text-foreground" : "text-muted-foreground")}>
+                      <Hash className="size-3.5 text-faint" />
+                      <span className="flex-1">{name}</span>
+                      {i === 1 && <span className="rounded-full bg-foreground px-1.5 text-[10.5px] font-semibold leading-[1.5] text-background">3</span>}
+                    </span>
+                  ))}
+                  <span className={cn(side, "text-muted-foreground")}>
+                    <span className="flex size-5 items-center justify-center rounded-[6px] bg-foreground/[0.06]">
+                      <Plus className="size-3" />
+                    </span>
+                    {p("addChannel")}
+                  </span>
+                  <p className="mt-3 flex items-center gap-1 px-2 pb-1 text-[12px] font-medium text-muted-foreground">
+                    <ChevronDown className="size-3" />
+                    {p("directMessages")}
+                  </p>
+                  {[olivia, noah, lily].map((one, i) => (
+                    <span key={one.id} className={cn(side, "text-muted-foreground")}>
+                      <Face seed={one.id} size={20} presence={i === 2 ? "away" : "available"} />
+                      {one.name}
+                    </span>
+                  ))}
+                  <span className={cn(side, "text-muted-foreground")}>
+                    <UserPlus className="size-3.5" />
+                    {s("invitePeople")}
+                  </span>
+
+                  <div className="mt-auto flex items-center gap-2.5 rounded-[12px] bg-foreground/[0.04] p-2">
+                    <Face seed={emma.id} size={30} presence="available" />
+                    <span className="min-w-0 flex-1 leading-tight">
+                      <span className="block truncate text-[13px] font-semibold">{emma.name}</span>
+                      <span className="block text-[11.5px] text-muted-foreground">{p("available")}</span>
+                    </span>
+                    {[Mic, Headphones, Gear].map((Icon, i) => (
+                      <Icon key={i} className="size-[15px] text-muted-foreground" />
+                    ))}
+                  </div>
+                </div>
+
+                <div className="loop-chat flex min-w-0 flex-1 flex-col">
+                  <div className="flex h-12 items-center gap-2 border-b border-border px-5 text-[14px] font-semibold sm:px-6">
+                    <span className="text-faint">#</span>
+                    {channels[0]}
+                    <span className="ms-auto flex items-center gap-1.5 rounded-full border border-border py-0.5 pe-2 ps-0.5 text-[11.5px] font-medium text-muted-foreground [--face-ring:var(--ui-background)]">
+                      <FaceStack seeds={[olivia.id, jack.id, noah.id]} size={18} max={3} />6
+                    </span>
+                  </div>
+                  <ol className="flex min-h-0 flex-1 flex-col justify-end gap-4 overflow-hidden px-5 pb-3 pt-4 [mask-image:linear-gradient(to_bottom,transparent,black_18px)] sm:px-6">
+                    <li className="flex shrink-0 items-center gap-3 text-[11.5px] font-medium text-faint">
+                      <span className="h-px flex-1 bg-border" />
+                      {p("today")}
+                      <span className="h-px flex-1 bg-border" />
+                    </li>
+                    <Message who={olivia} time="09:32">
+                      {t("lines.morning")}
+                    </Message>
+                    <Message who={noah} time="09:38" turn={1} extra={<VoiceNote />} />
+                    <Message
+                      who={jack}
+                      time="09:46"
+                      turn={2}
+                      extra={
+                        <>
+                          <Poster />
+                          <span className="mt-2 flex gap-1.5">
+                            <Reaction emoji="🚀" count={3} mine />
+                            <Reaction emoji="🔥" count={2} />
+                          </span>
+                        </>
+                      }
+                    >
+                      {t("lines.poster")}
+                    </Message>
+                  </ol>
+                  <p data-reveal style={rise(120 + 80 * 3, { y: 6 })} className="px-5 pb-2 text-[12px] text-faint sm:px-6">
+                    <span className="loop-line inline-block" style={{ "--i": 4 } as CSSProperties}>
+                      {p("typing", { name: lily.name })}
+                    </span>
+                  </p>
+                  {/* The box, as the app draws it: what you write, then emoji, a picture and a file, and the microphone with nothing written yet. */}
+                  <div className="mx-5 mb-5 rounded-2xl border border-border bg-card sm:mx-6">
+                    <p className="px-4 pb-1 pt-3 text-[13.5px] text-faint">{p("composer")}</p>
+                    <div className="flex items-center gap-0.5 px-2 pb-2 text-muted-foreground">
+                      {[Smile, ImagePlus, Paperclip].map((Icon, i) => (
+                        <span key={i} className="flex size-8 items-center justify-center">
+                          <Icon className="size-[18px]" />
+                        </span>
+                      ))}
+                      <span className="me-1 ms-auto hidden items-center gap-1 text-[11px] text-faint sm:flex">
+                        <kbd className="flex h-5 min-w-5 items-center justify-center rounded-md border border-border bg-muted px-1 font-sans text-[11px]">⇧</kbd>
+                        <kbd className="flex h-5 min-w-5 items-center justify-center rounded-md border border-border bg-muted px-1 font-sans text-[11px]">↵</kbd>
+                        <span className="ms-0.5">{p("newLine")}</span>
+                      </span>
+                      <span className="flex size-8 items-center justify-center max-sm:ms-auto">
+                        <Mic className="size-[18px]" />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <span aria-hidden className="loop-click pointer-events-none absolute start-0 top-0 z-30 hidden size-0">
+                <span className="absolute -start-5 -top-5 size-10 rounded-full border-2 border-foreground" />
+              </span>
+              <span aria-hidden className="loop-click pointer-events-none absolute start-0 top-0 z-30 hidden size-0">
+                <span className="absolute -start-5 -top-5 size-10 rounded-full border-2 border-foreground" />
+              </span>
+              <span aria-hidden className="loop-cursor pointer-events-none absolute start-0 top-0 z-30 hidden size-0">
+                <svg viewBox="0 0 24 24" className="absolute start-0 top-0 size-6 drop-shadow-[0_2px_3px_rgb(0_0_0/0.3)] rtl:-scale-x-100">
+                  <path d="M3 2.5 19.5 10l-7 1.8L9 19z" fill="#111113" stroke="#fff" strokeWidth="1.6" strokeLinejoin="round" />
+                </svg>
+              </span>
+            </div>
+          </div>
+          <Clay name="object-bubbles" className="-end-3 -top-10 w-24 rotate-[-6deg] sm:-end-10 sm:-top-14 sm:w-36" />
         </div>
       </div>
-
-      <ColorStage tone="mint" object="object-heart" className="mt-14 sm:mt-20" card="overflow-hidden">
-        <div
-          data-reveal
-          style={rise(0, { y: 28, scale: 0.985 })}
-          className="flex overflow-hidden rounded-[22px] bg-background font-(family-name:--font-app) [--face-ring:var(--ui-background)]"
-        >
-          {/* The side, as the app draws it: the office and a way to start a conversation, search, the channels and people, and you at the foot. */}
-          <div className="hidden w-[236px] shrink-0 flex-col border-e border-border bg-rail/60 p-2.5 md:flex">
-            <div className="flex h-10 items-center justify-between px-2">
-              <span className="text-[14.5px] font-semibold tracking-[-0.01em]">{p("office")}</span>
-              <SquarePen className="size-4 text-muted-foreground" />
-            </div>
-            <div className="mt-1 flex h-9 items-center gap-2 rounded-[10px] border border-border bg-background px-2.5 text-[12.5px] text-faint">
-              <Search className="size-3.5" />
-              <span className="flex-1 truncate">{p("search")}</span>
-              <kbd className="rounded-[5px] border border-border px-1 font-sans text-[10px]">⌘K</kbd>
-            </div>
-            <p className="mt-4 flex items-center gap-1 px-2 pb-1 text-[12px] font-medium text-muted-foreground">
-              <ChevronDown className="size-3" />
-              {p("channels")}
-            </p>
-            {channels.map((name, i) => (
-              <span key={name} className={cn(side, i === 0 ? "bg-foreground/[0.06] font-medium text-foreground" : "text-muted-foreground")}>
-                <Hash className="size-3.5 text-faint" />
-                <span className="flex-1">{name}</span>
-                {i === 1 && <span className="rounded-full bg-foreground px-1.5 text-[10.5px] font-semibold leading-[1.5] text-background">3</span>}
-              </span>
-            ))}
-            <span className={cn(side, "text-muted-foreground")}>
-              <span className="flex size-5 items-center justify-center rounded-[6px] bg-foreground/[0.06]">
-                <Plus className="size-3" />
-              </span>
-              {p("addChannel")}
-            </span>
-            <p className="mt-3 flex items-center gap-1 px-2 pb-1 text-[12px] font-medium text-muted-foreground">
-              <ChevronDown className="size-3" />
-              {p("directMessages")}
-            </p>
-            {[olivia, noah, lily].map((one, i) => (
-              <span key={one.id} className={cn(side, "text-muted-foreground")}>
-                <Face seed={one.id} size={20} presence={i === 2 ? "away" : "available"} />
-                {one.name}
-              </span>
-            ))}
-            <span className={cn(side, "text-muted-foreground")}>
-              <UserPlus className="size-3.5" />
-              {s("invitePeople")}
-            </span>
-
-            <div className="mt-auto flex items-center gap-2.5 rounded-[12px] bg-foreground/[0.04] p-2">
-              <Face seed={emma.id} size={30} presence="available" />
-              <span className="min-w-0 flex-1 leading-tight">
-                <span className="block truncate text-[13px] font-semibold">{emma.name}</span>
-                <span className="block text-[11.5px] text-muted-foreground">{p("available")}</span>
-              </span>
-              {[Mic, Headphones, Gear].map((Icon, i) => (
-                <Icon key={i} className="size-[15px] text-muted-foreground" />
-              ))}
-            </div>
-          </div>
-
-          <div className="flex min-w-0 flex-1 flex-col">
-            <div className="flex h-12 items-center gap-2 border-b border-border px-5 text-[14px] font-semibold sm:px-6">
-              <span className="text-faint">#</span>
-              {channels[0]}
-              <span className="ms-auto flex items-center gap-1.5 rounded-full border border-border py-0.5 pe-2 ps-0.5 text-[11.5px] font-medium text-muted-foreground [--face-ring:var(--ui-background)]">
-                <FaceStack seeds={[olivia.id, jack.id, noah.id]} size={18} max={3} />6
-              </span>
-            </div>
-            <ol className="flex flex-col gap-5 px-5 pb-4 pt-4 sm:px-6">
-              <li className="flex items-center gap-3 text-[11.5px] font-medium text-faint">
-                <span className="h-px flex-1 bg-border" />
-                {p("today")}
-                <span className="h-px flex-1 bg-border" />
-              </li>
-              <Message who={olivia} time="09:32">
-                {p("message0")}
-              </Message>
-              <Message
-                who={jack}
-                time="09:40"
-                turn={1}
-                extra={
-                  <>
-                    <Shot />
-                    <span className="mt-2 flex gap-1.5">
-                      <Reaction emoji="👀" count={2} mine />
-                      <Reaction emoji="🔥" count={1} />
-                    </span>
-                  </>
-                }
-              >
-                {p("message3")}
-              </Message>
-              <Message who={noah} time="09:46" turn={2} extra={<VoiceNote />} />
-            </ol>
-            <p data-reveal style={rise(120 + 80 * 3, { y: 6 })} className="px-5 pb-2 text-[12px] text-faint sm:px-6">
-              {p("typing", { name: lily.name })}
-            </p>
-            {/* The box, as the app draws it: what you write, then emoji, a picture and a file, and the microphone with nothing written yet. */}
-            <div className="mx-5 mb-5 rounded-2xl border border-border bg-card sm:mx-6">
-              <p className="px-4 pb-1 pt-3 text-[13.5px] text-faint">{p("composer")}</p>
-              <div className="flex items-center gap-0.5 px-2 pb-2 text-muted-foreground">
-                {[Smile, ImagePlus, Paperclip].map((Icon, i) => (
-                  <span key={i} className="flex size-8 items-center justify-center">
-                    <Icon className="size-[18px]" />
-                  </span>
-                ))}
-                <span className="me-1 ms-auto hidden items-center gap-1 text-[11px] text-faint sm:flex">
-                  <kbd className="flex h-5 min-w-5 items-center justify-center rounded-md border border-border bg-muted px-1 font-sans text-[11px]">⇧</kbd>
-                  <kbd className="flex h-5 min-w-5 items-center justify-center rounded-md border border-border bg-muted px-1 font-sans text-[11px]">↵</kbd>
-                  <span className="ms-0.5">{p("newLine")}</span>
-                </span>
-                <span className="flex size-8 items-center justify-center max-sm:ms-auto">
-                  <Mic className="size-[18px]" />
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </ColorStage>
     </section>
   );
 }
@@ -688,6 +855,13 @@ function Moment({ lead, children }: { lead: ReactNode; children: ReactNode }) {
 function Mark({ children, className }: { children: ReactNode; className?: string }) {
   return <span className={cn("flex size-9 shrink-0 items-center justify-center rounded-full [&_svg]:size-4", className)}>{children}</span>;
 }
+
+/** The clay desk beside the features' words: each object's place in its corner of the section, its size and tilt. */
+const DESK = [
+  { name: "object-plant", at: "end-[150px] top-0 w-[190px]", turn: -4 },
+  { name: "object-headset", at: "end-0 top-[70px] w-[170px]", turn: 10 },
+  { name: "object-mug", at: "end-[230px] top-[150px] w-[140px]", turn: -8 },
+];
 
 /**
  * Everything else: the heading and the features in one sentence, and the
@@ -753,7 +927,15 @@ export function Extras() {
   ];
   const cell = "flex min-w-0 flex-col p-6 sm:p-8";
   return (
-    <section id="features" className={cn(COLUMN, ANCHOR, "py-24 sm:py-32")}>
+    <section id="features" className={cn(COLUMN, ANCHOR, "relative py-24 sm:py-32")}>
+      {/* A desk of your own, beside the words on a wide screen: the plant, the headset and the mug, in clay. */}
+      <div aria-hidden className="pointer-events-none absolute end-0 top-24 hidden h-[320px] w-[380px] sm:top-32 xl:block 2xl:-end-6">
+        {DESK.map((one, i) => (
+          <span key={one.name} data-reveal className={cn("absolute block", one.at)} style={rise(60 * i, { y: 24 })}>
+            <Clay name={one.name} className="relative w-full" style={{ transform: `rotate(${one.turn}deg)` }} />
+          </span>
+        ))}
+      </div>
       <h2 data-reveal-words className={cn(TITLE, CJK_HEADLINE, "max-w-[18ch]")}>
         <Split text={t("title")} />
       </h2>
@@ -829,11 +1011,15 @@ export function PriceSection() {
   const locale = useLocale();
   const [free, pro] = PLANS;
   return (
-    <section id="plans" className={cn(COLUMN, ANCHOR, "grid items-center gap-14 py-24 sm:py-32 lg:grid-cols-2 lg:gap-24")}>
-      <Words title={t("title")} body={t("body")} more={t("more")} href="/pricing" />
-      <ColorStage tone="sun" object="object-coins" card="p-5 sm:p-7">
-        <div data-reveal style={rise(80, { y: 20, scale: 0.985 })}>
-          <PriceSlider
+    <section id="plans" className={cn(COLUMN, ANCHOR, PANEL_SECTION)}>
+      <Stage
+        tone="coral"
+        words={<Words title={t("title")} body={t("body")} more={t("more")} href="/pricing" />}
+        block="pt-20 sm:px-14 sm:pt-24"
+        card="p-6 pb-8 sm:p-8 sm:pb-10"
+        clay={<Clay name="object-coins" className="end-[16%] top-1 w-24 sm:top-0 sm:w-28" />}
+      >
+        <PriceSlider
           locale={locale}
           price={pro.price}
           free={free.people}
@@ -841,9 +1027,8 @@ export function PriceSection() {
           low={8}
           high={16}
           labels={{ team: t("team"), people: t.raw("people") as string, ours: t("ours"), theirs: t.raw("theirs") as string, month: t("month"), freeNote: t("freeNote") }}
-          />
-        </div>
-      </ColorStage>
+        />
+      </Stage>
     </section>
   );
 }

@@ -141,7 +141,7 @@ export async function HomeNav({ fade = true }: { fade?: boolean }) {
           TinyFloor
         </Link>
 
-        <div className="hidden items-center md:flex">
+        <div className="hidden items-center lg:flex">
           <Menu label={t("footer.product")} strip={demoStrip}>
             <MenuColumn title={tl("features")} all={{ href: `/${HUBS.features}`, label: tl("all") }}>
               {FEATURES.map((page) => (

@@ -1,0 +1,21 @@
+{
+  "label": "Blog",
+  "meta": {
+    "title": "Blog: Fragen von Remote-Teams, beantwortet mit Zahlen",
+    "description": "Was Remote-Teams fragen, bevor sie entscheiden, wie sie zusammenarbeiten: beantwortet mit Zahlen und ihren Quellen, vom Team hinter TinyFloor."
+  },
+  "title": "Fragen von Remote-Teams, <em>beantwortet mit Zahlen.</em>",
+  "body": "Kosten, Vergleiche und Studien: was Remote-Teams wissen wollen, bevor sie entscheiden, wie sie zusammenarbeiten – immer mit Quellen.",
+  "categories": {
+    "costs": "Kosten",
+    "comparisons": "Vergleiche",
+    "remoteWork": "Remote-Arbeit"
+  },
+  "latest": "Neueste",
+  "takeaways": "Das Wichtigste",
+  "sources": "Quellen",
+  "related": "Ähnliche Artikel",
+  "guides": "Ratgeber zum selben Thema",
+  "fromBlog": "Aus dem Blog",
+  "all": "Alle Artikel"
+}

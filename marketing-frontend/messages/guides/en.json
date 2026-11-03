@@ -178,7 +178,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor is a virtual office your team walks around in. Pass someone and stop for a chat, draw on the whiteboard for Pictionary, or meet in the meeting room for Friday drinks. It's free for up to 3 people, in the browser."
+      "body": "TinyFloor is a virtual office your team walks around in. Pass someone and stop for a chat, draw on the whiteboard for Pictionary, or meet in the meeting room for Friday drinks. It runs in the browser, and every new office starts with 14 days of Pro, no card needed."
     },
     "faq": [
       {
@@ -195,7 +195,7 @@
       },
       {
         "q": "What free tools can we use?",
-        "a": "Gartic Phone, skribbl.io and Codenames online are free in the browser. A shared whiteboard covers drawing games, and a chat channel covers anything asynchronous. TinyFloor is free for up to 3 people."
+        "a": "Gartic Phone, skribbl.io and Codenames online are free in the browser. A shared whiteboard covers drawing games, and a chat channel covers anything asynchronous."
       }
     ]
   },
@@ -732,7 +732,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor uses the walk-up style: walk your character up to a teammate and a call button appears beside them, so nobody is heard by accident. Groups meet in the meeting room. It runs in the browser and is free for up to 3 people."
+      "body": "TinyFloor uses the walk-up style: walk your character up to a teammate and a call button appears beside them, so nobody is heard by accident. Groups meet in the meeting room. It runs in the browser, and every new office starts with 14 days of Pro, no card needed."
     },
     "faq": [
       {
@@ -803,8 +803,8 @@
         "items": [
           {
             "title": "TinyFloor",
-            "detail": "Free for 3 people · $29 a month for the whole team",
-            "body": "A pixel-art office in the browser, on desktop and mobile. Walk up to a teammate to start a video call, sit at a table to meet, with chat channels, screen sharing and a whiteboard. One price for the whole office, not per person. It has no recordings, AI notes or map editor, and offices are made for small teams of up to 15."
+            "detail": "One price for the whole team · $29 a month",
+            "body": "A pixel-art office in the browser, on desktop and mobile. Walk up to a teammate to start a video call, sit at a table to meet, with chat channels, screen sharing and a whiteboard. One price for the whole office, not per person. It has no recordings, AI notes or map editor."
           },
           {
             "title": "Gather",
@@ -1100,8 +1100,8 @@
         "title": "Which one for which team",
         "items": [
           {
-            "title": "A small team on a budget",
-            "body": "TinyFloor, at $29 a month for the whole team, or SoWork's free plan if 30-minute meetings are enough."
+            "title": "A team that works together all day",
+            "body": "TinyFloor, one price of $29 a month for the whole team, or SoWork's free plan if 30-minute meetings are enough."
           },
           {
             "title": "You want recordings and AI notes",
@@ -1152,7 +1152,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor is the simple, inexpensive one: a browser office where you walk up to talk, a meeting room, chat and screen sharing, for one price per office. It's for small teams who want an office that stays open all day. If you need recordings, AI notes or a map you design, Gather or SoWork Premium will suit you better. TinyFloor is free for up to 3 people, so you can try it with your team first."
+      "body": "TinyFloor is a browser office for a team that works together every day: walk up to talk, with a meeting room, chat and screen sharing, at one price for the whole office. If you need recordings, AI notes or a map you design, Gather or SoWork Premium will suit you better. Every new office starts with 14 days of Pro, no card needed, so you can try it with your team first."
     },
     "faq": [
       {
@@ -1161,7 +1161,7 @@
       },
       {
         "q": "What is the best virtual office software for a small business?",
-        "a": "For a team of 4 to 15 that wants one simple price, TinyFloor, at $29 a month for the whole team. If your meetings fit in 30 minutes, SoWork's free plan covers 10 members. If you need recordings, AI notes or a desktop app, look at Gather, SoWork Premium or Spot; for single sign-on and yearly contracts, Gather, Roam, oVice or Sococo."
+        "a": "For a team that works together every day and wants one simple price, TinyFloor, at $29 a month for the whole team. If your meetings fit in 30 minutes, SoWork's free plan covers 10 members. If you need recordings, AI notes or a desktop app, look at Gather, SoWork Premium or Spot; for single sign-on and yearly contracts, Gather, Roam, oVice or Sococo."
       },
       {
         "q": "What's the cheapest virtual office for a small team?",
@@ -1434,7 +1434,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor keeps the core of what Gather does: an office you walk around in, where you talk by walking up to someone, with a meeting room, chat and screen sharing. It costs $29 a month for the whole team, one price however many people you invite, and it's free for up to 3. It has no recordings, transcription, office editor or single sign-on, so if you rely on those, Gather is the better fit."
+      "body": "TinyFloor keeps the core of what Gather does: an office you walk around in, where you talk by walking up to someone, with a meeting room, chat and screen sharing. It costs $29 a month for the whole team, one price however many people you invite, and every new office starts with 14 days of Pro free. It has no recordings, transcription, office editor or single sign-on, so if you rely on those, Gather is the better fit."
     },
     "faq": [
       {
@@ -1720,7 +1720,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor covers the presence job: a virtual office in the browser where your team sees who's around and walks over to talk, with a meeting room, chat and screen sharing built in. It works alongside your chat, docs and task tools rather than replacing them. It's free for up to 3 people, so you can try it with your team today."
+      "body": "TinyFloor covers the presence job: a virtual office in the browser where your team sees who's around and walks over to talk, with a meeting room, chat and screen sharing built in. It works alongside your chat, docs and task tools rather than replacing them. Every new office starts with 14 days of Pro, no card needed, so you can try it with your team today."
     },
     "faq": [
       {
@@ -1729,7 +1729,7 @@
       },
       {
         "q": "What are the best free tools for a remote team?",
-        "a": "There's no single answer, but Slack's free plan or Discord, Google Meet, Google Docs and Trello cover most jobs for a small team, and TinyFloor is free for up to 3 people."
+        "a": "There's no single answer, but Slack's free plan or Discord, Google Meet, Google Docs and Trello cover most jobs for a small team."
       },
       {
         "q": "Does a remote team need a virtual office?",
@@ -1911,7 +1911,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor makes presence visible: a virtual office in the browser where your team sees who's around, who's in a meeting and who wants quiet, and walks over to talk. Quick questions get asked again, without cameras left on or tracking. It's free for up to 3 people."
+      "body": "TinyFloor makes presence visible: a virtual office in the browser where your team sees who's around, who's in a meeting and who wants quiet, and walks over to talk. Quick questions get asked again, without cameras left on or tracking. Every new office starts with 14 days of Pro, no card needed."
     },
     "faq": [
       {
@@ -2130,7 +2130,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "On TinyFloor a happy hour feels more like a room than a call. Everyone walks onto the same floor, small groups form where people stand, and you join a conversation by walking over, so nobody is stuck in one twenty-person grid. A whiteboard for drawing games is on the wall. It's free for up to 3 people."
+      "body": "On TinyFloor a happy hour feels more like a room than a call. Everyone walks onto the same floor, small groups form where people stand, and you join a conversation by walking over, so nobody is stuck in one twenty-person grid. A whiteboard for drawing games is on the wall. Every new office starts with 14 days of Pro, no card needed."
     },
     "faq": [
       {
@@ -2436,7 +2436,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "On TinyFloor a one-on-one doesn't need a calendar link: walk into a meeting room together, or step aside on the floor and talk. Between one-on-ones, you can see who's around, so a quick check-in doesn't have to wait a week. It's free for up to 3 people."
+      "body": "On TinyFloor a one-on-one doesn't need a calendar link: walk into a meeting room together, or step aside on the floor and talk. Between one-on-ones, you can see who's around, so a quick check-in doesn't have to wait a week. Every new office starts with 14 days of Pro, no card needed."
     },
     "faq": [
       {
@@ -2659,7 +2659,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor is the sync half that async teams miss. Your chat, docs and recordings stay where they are; when a thread stalls, you can see who's around on the floor and walk over to talk for two minutes. Statuses show who's focused, so live conversations don't cost anyone their deep work. It's free for up to 3 people."
+      "body": "TinyFloor is the sync half that async teams miss. Your chat, docs and recordings stay where they are; when a thread stalls, you can see who's around on the floor and walk over to talk for two minutes. Statuses show who's focused, so live conversations don't cost anyone their deep work. Every new office starts with 14 days of Pro, no card needed."
     },
     "faq": [
       {
@@ -2890,7 +2890,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "On TinyFloor the retro happens where the team already is. Walk into the meeting room together, draw the sailboat on the whiteboard on the wall, and leave it up for next time. It's free for up to 3 people."
+      "body": "On TinyFloor the retro happens where the team already is. Walk into the meeting room together, draw the sailboat on the whiteboard on the wall, and leave it up for next time. Every new office starts with 14 days of Pro, no card needed."
     },
     "faq": [
       {
@@ -3090,7 +3090,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "On TinyFloor a new hire can see the whole team on one floor from day one: who's around, who's in a meeting and who's free. Asking a question is a short walk, not a booked call, and the buddy is a few desks away. It's free for up to 3 people."
+      "body": "On TinyFloor a new hire can see the whole team on one floor from day one: who's around, who's in a meeting and who's free. Asking a question is a short walk, not a booked call, and the buddy is a few desks away. Every new office starts with 14 days of Pro, no card needed."
     },
     "faq": [
       {
@@ -3287,7 +3287,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor is a private virtual office for people who know each other: a small team, a few friends, a study group. Sit at your desks, set yourself busy, start a focus session in the meeting room, and talk when you need to. It's free for up to 3 people, so two friends can body double there at no cost. It doesn't match you with strangers."
+      "body": "TinyFloor is a private virtual office for people who know each other: a small team, a few friends, a study group. Sit at your desks, set yourself busy, start a focus session in the meeting room, and talk when you need to. Every new office starts with 14 days of Pro, no card needed. It doesn't match you with strangers."
     },
     "faq": [
       {
@@ -3312,7 +3312,7 @@
       },
       {
         "q": "Can I body double for free?",
-        "a": "Yes. A video call with a friend costs nothing, and TinyFloor is free for up to 3 people, so a small group can body double there every day."
+        "a": "Yes. A video call with a friend costs nothing."
       }
     ]
   },
@@ -3506,7 +3506,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor is a virtual office for remote teams. The weekly meeting happens in the meeting room everyone walks into, with video, screen sharing and a whiteboard, and afterwards people are back at their desks on the same floor, a short walk away if something needs a follow-up. It's free for up to 3 people and $29 a month for the whole team."
+      "body": "TinyFloor is a virtual office for remote teams. The weekly meeting happens in the meeting room everyone walks into, with video, screen sharing and a whiteboard, and afterwards people are back at their desks on the same floor, a short walk away if something needs a follow-up. Pro is $29 a month for the whole team, and every new office starts with 14 days of it free."
     },
     "faq": [
       {
@@ -3648,7 +3648,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor is a private virtual office for remote teams: a desk for each person, statuses, walk-up calls, a meeting room, team chat and a whiteboard, in the browser. It's built for work, unlike Discord, and talking is the default, unlike Slack. It's free for up to 3 people and $29 a month for the whole team, and it sits fine next to the chat tool you already use."
+      "body": "TinyFloor is a private virtual office for remote teams: a desk for each person, statuses, walk-up calls, a meeting room, team chat and a whiteboard, in the browser. It's built for work, unlike Discord, and talking is the default, unlike Slack. Pro is $29 a month for the whole team, every new office starts with 14 days of it free, and it sits fine next to the chat tool you already use."
     },
     "faq": [
       {
@@ -3977,7 +3977,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor is a virtual office for remote teams. Check-ins happen in the meeting room everyone walks into, with video, and the rest of the day people sit at their desks on the same floor, where a quick question is a short walk away. It's free for up to 3 people and $29 a month for the whole team."
+      "body": "TinyFloor is a virtual office for remote teams. Check-ins happen in the meeting room everyone walks into, with video, and the rest of the day people sit at their desks on the same floor, where a quick question is a short walk away. Pro is $29 a month for the whole team, and every new office starts with 14 days of it free."
     },
     "faq": [
       {
@@ -4501,7 +4501,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor is a virtual office for remote teams. Open the meeting with a this or that question in the meeting room, everyone on video, and the rest of the day people sit at their desks on the same floor, where a quick chat is a short walk away. It's free for up to 3 people and $29 a month for the whole team."
+      "body": "TinyFloor is a virtual office for remote teams. Open the meeting with a this or that question in the meeting room, everyone on video, and the rest of the day people sit at their desks on the same floor, where a quick chat is a short walk away. Pro is $29 a month for the whole team, and every new office starts with 14 days of it free."
     },
     "faq": [
       {
@@ -4664,7 +4664,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor is a virtual office for remote teams. Meetings happen in the meeting room everyone walks into, with screen sharing for the notes, and the team chat sits beside the floor for posting the minutes. It doesn't take notes or record meetings for you. It's free for up to 3 people and $29 a month for the whole team."
+      "body": "TinyFloor is a virtual office for remote teams. Meetings happen in the meeting room everyone walks into, with screen sharing for the notes, and the team chat sits beside the floor for posting the minutes. It doesn't take notes or record meetings for you. Pro is $29 a month for the whole team, and every new office starts with 14 days of it free."
     },
     "faq": [
       {
@@ -5264,7 +5264,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor is a virtual office for remote teams, with team chat beside the floor for a question of the day and a meeting room for the standup where it gets answered out loud. The rest of the day people sit at their desks on the same floor, where the conversation it started is a short walk away. It's free for up to 3 people and $29 a month for the whole team."
+      "body": "TinyFloor is a virtual office for remote teams, with team chat beside the floor for a question of the day and a meeting room for the standup where it gets answered out loud. The rest of the day people sit at their desks on the same floor, where the conversation it started is a short walk away. Pro is $29 a month for the whole team, and every new office starts with 14 days of it free."
     },
     "faq": [
       {

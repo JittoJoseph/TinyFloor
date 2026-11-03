@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils";
 import { emphasised } from "@/lib/words";
 import { CJK_HEADLINE, COLUMN, Closing, H2, INK, LEAD, MarketingShell, Questions, quiet } from "@/components/home/Blocks";
 import { RelatedTools } from "@/components/tools/RelatedTools";
+import { postsForGuide } from "@/lib/blog";
+import { FromTheBlog } from "@/components/blog/FromTheBlog";
 import { ArticleContents, ArticleSections, READ, numberItems } from "./ArticleSections";
 import { byline } from "./Byline";
 
@@ -114,6 +116,8 @@ export async function GuidePage({ guide, locale }: { guide: Guide; locale: strin
       </article>
 
       <Questions items={copy.faq} title={t.rich("faqTitle", { em: quiet })} />
+
+      <FromTheBlog posts={postsForGuide(guide.key, locale).slice(0, 3)} locale={locale} />
 
       <section className={cn(COLUMN, "pb-24 sm:pb-32")}>
         <h2 className={cn(H2, CJK_HEADLINE, "text-center")}>{t.rich("moreTitle", { em: quiet })}</h2>

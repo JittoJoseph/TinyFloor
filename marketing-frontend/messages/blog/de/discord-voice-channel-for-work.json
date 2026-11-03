@@ -1,0 +1,167 @@
+{
+  "label": "Discord für Unternehmen",
+  "meta": {
+    "title": "Discord für Unternehmen: Taugt ein Sprachkanal für die Arbeit?",
+    "description": "Warum Remote-Teams den Tag in einem Discord-Sprachkanal verbringen, was Discords eigene Limits für die Arbeit bedeuten und wann ein virtuelles Büro besser passt."
+  },
+  "coverAlt": "Weiß-limettengrüner Kopfhörer neben einer Sprechblase auf leuchtend blauviolettem Hintergrund.",
+  "title": "Discord beruflich nutzen? <em>Was funktioniert und was nicht.</em>",
+  "intro": "Viele kleine Remote-Teams verbringen den Arbeitstag in einem Discord-Sprachkanal: Es kostet nichts, jeder sieht, wer da ist, und dazukommen ist ein Klick. Das klappt gut, bis das Team zwei Gespräche gleichzeitig braucht, einen Ort nur für die Arbeit oder mehr, als ein kostenloser Server erlaubt. Hier steht, was Discord für ein Team gut macht, was Discords eigene Dokumentation über die Limits sagt und wann ein [virtuelles Büro](/virtual-office) besser passt. Wir machen TinyFloor, ein virtuelles Büro, und sind deshalb nicht neutral; Discords Zahlen stammen von Discords eigenen Seiten.",
+  "takeaways": [
+    "Ein Discord-Sprachkanal gibt einem Team etwas, das Slack und Zoom nicht bieten: Man sieht, wer da ist, und ist mit einem Klick dabei.",
+    "Ein Sprachkanal fasst ein Gespräch. Wer zu zweit reden will, muss gemeinsam in einen anderen Kanal wechseln.",
+    "Auf einem Server ohne Boosts teilt man den Bildschirm mit 720p und 30 Bildern pro Sekunde, Uploads gehen bis 10 MB und Video bis 25 Personen pro Sprachkanal [1].",
+    "Seit September 2024 verschlüsselt Discord Sprache und Video Ende-zu-Ende; Textnachrichten nicht [2].",
+    "Jede Person kommt mit ihrem eigenen Discord-Konto, demselben wie für Freunde und Spiele."
+  ],
+  "sections": [
+    {
+      "title": "Warum arbeiten Remote-Teams in einem Discord-Sprachkanal?",
+      "body": [
+        "Weil er das liefert, was Slack und Zoom auslassen: beieinander sein. Die Seitenleiste des Servers zeigt, wer in welchem Sprachkanal ist, man sieht also auf einen Blick, wer gerade arbeitet, und kommt mit einem Klick dazu, ohne Link oder Einladung.",
+        "Es kostet nichts, fast alle haben schon ein Konto, die Sprache ist schnell und Bildschirmfreigabe ist dabei. Für Freunde, die zusammen gegründet haben, oder ein Team, das vom Gaming kommt, ist es der naheliegende Anfang."
+      ]
+    },
+    {
+      "title": "Was stört im Arbeitsalltag?",
+      "items": [
+        {
+          "title": "Ein Gespräch pro Kanal",
+          "body": "Im Sprachkanal hört jeder jeden. Zwei, die allein reden wollen, wechseln beide in einen anderen Kanal, und alle anderen sehen das. Am Ende gibt es für jede Art von Gespräch einen Kanal und Leute, die dazwischen hin und her springen, das Gegenteil von [Proximity Chat](/guides/what-is-proximity-chat)."
+        },
+        {
+          "title": "Wer drin ist, ist zu hören",
+          "body": "Standardmäßig ist das Mikrofon im Sprachkanal offen, solange man nicht stummschaltet oder Push-to-Talk nutzt. Deshalb sitzen viele Teams den ganzen Tag stumm und schalten nur zum Reden frei, und jemanden anzusprechen fühlt sich an, als unterbreche man den ganzen Raum."
+        },
+        {
+          "title": "Arbeit und Privates in einer App",
+          "body": "Jede Person bringt ihr eigenes Konto mit, samt Freunden, anderen Servern und deren Benachrichtigungen. Discord beschreibt sich selbst als Ort, an dem Freundschaften rund um Spiele und gemeinsame Interessen wachsen [2]. Mehr dazu im Vergleich [Discord oder Slack für die Arbeit](/guides/discord-vs-slack)."
+        },
+        {
+          "title": "Konten gehören Menschen, nicht dem Unternehmen",
+          "body": "Wenn jemand geht, kann man ihn vom Server entfernen, aber das Konto und die Direktnachrichten mit dem Team bleiben bei ihm."
+        },
+        {
+          "title": "Limits eines kostenlosen Servers",
+          "body": "Ohne Boosts gehen Uploads bis 10 MB, Streams bis 720p mit 30 Bildern pro Sekunde und Video bis 25 Personen pro Sprachkanal. Mit Boosts steigen Uploads auf 50 MB ab Stufe 2 und 100 MB ab Stufe 3 [1]."
+        }
+      ]
+    },
+    {
+      "title": "Was kann Discord besser als ein virtuelles Büro?",
+      "items": [
+        {
+          "title": "Preis",
+          "body": "Ein Discord-Server ist kostenlos. Ein virtuelles Büro kostet meist 5 bis 20 Dollar pro Person und Monat, einige wenige einen Preis für das ganze Büro; mehr im [Vergleich virtueller Büros](/guides/best-virtual-office-software)."
+        },
+        {
+          "title": "Flüssigere Bildschirmfreigabe",
+          "body": "Discord streamt auch auf einem kostenlosen Server mit 30 Bildern pro Sekunde [1], gut für Videos und Spiele. TinyFloor teilt den Bildschirm mit bis zu 720p und 10 bis 15 Bildern pro Sekunde, abgestimmt auf scharfen Text statt Bewegung [3]."
+        },
+        {
+          "title": "Verschlüsselung",
+          "body": "Discords Sprache und Video sind in Direktnachrichten, Gruppen, Sprachkanälen und Go-Live-Streams mit dem DAVE-Protokoll Ende-zu-Ende verschlüsselt [2]."
+        },
+        {
+          "title": "Apps überall",
+          "body": "Discord hat Apps für Computer und Handy, die die meisten schon installiert haben."
+        }
+      ]
+    },
+    {
+      "title": "Was ändert ein virtuelles Büro?",
+      "body": [
+        "Ein virtuelles Büro behält, was funktioniert, also sehen, wer da ist, und ohne Link dazukommen, und ändert, wie Gespräche anfangen."
+      ],
+      "items": [
+        {
+          "title": "Mehrere Gespräche auf einer Etage",
+          "body": "Das ganze Team ist auf einer Etage, und zwei können reden, während alle anderen weiterarbeiten, ohne dass jemand den Kanal wechselt."
+        },
+        {
+          "title": "Niemand ist aus Versehen zu hören",
+          "body": "In TinyFloor geht man zu einer Kollegin und startet einen Anruf; bis dahin hört niemand etwas, der Anruf beginnt mit Sprache, die Kamera ist ein Knopf [3]. Ab drei Personen trifft man sich im Meetingraum."
+        },
+        {
+          "title": "Ein Ort nur für die Arbeit",
+          "body": "Man meldet sich mit Google oder einem Code per E-Mail an [3], und Kolleginnen und Kollegen mit derselben Firmen-Domain finden das Büro des Teams und kommen rein oder fragen an [4]. Nichts Privates ist im Raum."
+        },
+        {
+          "title": "Schreibtische und Status",
+          "body": "Jede Person hat einen Schreibtisch und einen Status, die Etage zeigt also, wer konzentriert arbeitet und wer frei ist, nicht nur, wer in einem Kanal sitzt. Das ist [Präsenz im Team](/team-presence), ohne dass jemand überwacht wird."
+        }
+      ]
+    },
+    {
+      "title": "Wann reicht Discord?",
+      "items": [
+        {
+          "title": "Das Team redet meist als Gruppe",
+          "body": "Wenn ein offener Kanal zur Arbeitsweise passt und Gespräche zu zweit selten sind, macht Discord das kostenlos."
+        },
+        {
+          "title": "Alle wohnen schon in Discord",
+          "body": "Wenn das Team Discord den ganzen Tag gern nutzt und private Server nicht stören, gibt es wenig Grund zu wechseln."
+        },
+        {
+          "title": "Zeichen, dass es Zeit ist",
+          "body": "Leute springen zwischen Kanälen, um zu zweit zu reden, sitzen den ganzen Tag stumm, müssen andere Server stummschalten, um sich zu konzentrieren, oder Neue müssen nur für die Arbeit ein Discord-Konto anlegen."
+        }
+      ]
+    },
+    {
+      "title": "Kann ein Team beides nutzen?",
+      "body": [
+        "Ja. Manche Teams behalten einen Discord-Server für ihre Community oder den Feierabend und verlegen den Arbeitstag in ein virtuelles Büro. Die beiden müssen nicht verbunden sein. Siehe auch [Discord für die Arbeit und Alternativen](/discord-for-work)."
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Für wen TinyFloor passt",
+    "body": "TinyFloor ist ein virtuelles Büro im Browser für ein Team, das jeden Tag zusammenarbeitet: ein Schreibtisch für jede Person, Anrufe, die niemand zufällig mithört, ein Meetingraum, Team-Chat und Bildschirmfreigabe für scharfen Text. Es ist für die Arbeit gebaut, und ein Team, das von Discord kommt, behält das Gefühl, zusammen zu sein. Pro kostet einen Preis für das ganze Büro, 29 Dollar im Monat, und jedes neue Büro startet mit 14 Tagen Pro, ohne Karte."
+  },
+  "faq": [
+    {
+      "q": "Ist Discord für Unternehmen geeignet?",
+      "a": "Für ein kleines Team, das gern als Gruppe redet, funktioniert es und kostet nichts. Schwierig wird es, wenn Gespräche zu zweit nötig sind, private und berufliche Server sich mischen oder das Team die Limits eines kostenlosen Servers überschreitet: 10 MB Uploads, Bildschirm mit 720p bei 30 Bildern pro Sekunde und 25 Personen mit Video im Sprachkanal."
+    },
+    {
+      "q": "Ist Discord für Teams kostenlos?",
+      "a": "Ja. Server und Sprachkanäle sind kostenlos. Server-Boosts heben die Limits für alle auf dem Server, Nitro für eine Person."
+    },
+    {
+      "q": "Ist Discord verschlüsselt?",
+      "a": "Sprache und Video sind in Direktnachrichten, Gruppen, Sprachkanälen und Go-Live-Streams Ende-zu-Ende verschlüsselt, mit dem DAVE-Protokoll, das Discord am 17. September 2024 angekündigt hat. Textnachrichten sind nicht Ende-zu-Ende verschlüsselt."
+    },
+    {
+      "q": "Wie viele Personen können in einem Discord-Sprachkanal Video nutzen?",
+      "a": "Bis zu 25 Personen mit Video und bis zu 50 Zuschauer bei einem Go-Live-Stream, laut Discords eigener Liste der Limits."
+    },
+    {
+      "q": "Was ist eine gute Discord-Alternative für Remote-Teams?",
+      "a": "Zum Schreiben Slack. Für das Beieinandersein, das ein Discord-Sprachkanal gibt, ein virtuelles Büro: das ganze Team auf einer Etage, wo zwei reden können, ohne den Kanal zu wechseln."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Discord, Discord Account Caps, Server Caps, and More",
+      "url": "https://support.discord.com/hc/de/articles/33694251638295",
+      "note": "Server ohne Boosts: 10 MB Uploads, Streams mit 720p und 30 fps, 25 Personen mit Video im Sprachkanal, 50 bei Go Live; 50 MB ab Boost-Stufe 2, 100 MB ab Stufe 3. Geprüft am 3. November 2026."
+    },
+    {
+      "title": "Discord, Meet DAVE: Discord's New End-to-End Encryption for Audio & Video",
+      "url": "https://discord.com/blog/meet-dave-e2ee-for-audio-video",
+      "note": "17. September 2024: Sprache und Video in Direktnachrichten, Gruppen, Sprachkanälen und Go Live werden Ende-zu-Ende verschlüsselt; Nachrichten nicht."
+    },
+    {
+      "title": "How TinyFloor works",
+      "url": "https://www.tinyfloor.com/how-it-works",
+      "note": "Anrufe sind eins zu eins und beginnen mit Sprache, die Kamera ist ein Knopf; Bildschirm bis 720p mit 10–15 fps; Anmeldung mit Google oder Code per E-Mail."
+    },
+    {
+      "title": "TinyFloor changelog",
+      "url": "https://www.tinyfloor.com/changelog",
+      "note": "17. Oktober 2026: Kolleginnen und Kollegen mit derselben Firmen-Domain finden das Büro ihres Teams."
+    }
+  ]
+}

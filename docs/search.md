@@ -642,3 +642,91 @@ usually several times larger. Exact Google volumes still need OpenSEO credits.
   upvote.
 - **Different days for each launch.** Each needs the maker in the comments
   all day, and what one teaches can fix the next page.
+
+## Prompts, not keywords (3 November)
+
+- **Buyers ask assistants in situations, not keywords:** a team, a constraint
+  and something to compare against ("a remote team of 8 in a Discord voice
+  channel, something more work-appropriate, without paying per person").
+  Keyword tools can't see these, so a page that answers one has to be
+  written from the situation.
+- **Four buyer prompts through ChatGPT** (DataForSEO's ChatGPT scraper, US,
+  web search on):
+
+| Prompt | TinyFloor | What was cited |
+|---|---|---|
+| A team of 12 wants one flat monthly price | **First pick**, "trial TinyFloor first" | /pricing, the home page, /hybrid-teams; the yearly saving worked out against per-seat pricing |
+| A team of 8 in a Discord voice channel, not per person | Not named | Newer tools whose pricing pages state "free for exactly 8" and "no per-person pricing" in so many words; our comparison guide as a source for others |
+| Best virtual office for a team of 10 | Not named | Our comparison guide, for other products' prices; two lists run by other vendors, neither listing TinyFloor |
+| "Is TinyFloor good? Reliable? Actively developed? Screen sharing?" | Fair: value excellent, development strong | Home, /features, the GitHub repo, SaaSHub, Crunchbase |
+
+- **A list a vendor publishes isn't taken as a recommendation of itself.**
+  The comparison guide puts TinyFloor first and is cited for the plain
+  category question, but only for the others' prices. Category answers come
+  from lists other people write, so being on those (and reviews on them) is
+  what moves that question, not more pages of ours.
+- **Asked about TinyFloor by name, it held back on what it couldn't check:**
+  no uptime history, status page or incident reports; screen sharing
+  "unverified" with no specs; zero reviews on SaaSHub; commits on GitHub
+  "don't establish how often it releases to production".
+- **So the site now answers those:** [/how-it-works](https://www.tinyfloor.com/how-it-works)
+  (calls, meetings and screen sharing with the numbers, reconnecting, where it
+  runs, what it doesn't do yet, with FAQ markup) and
+  [/changelog](https://www.tinyfloor.com/changelog) (what changed by date, and
+  84 releases in October), both in English and linked from the footer, the
+  README and llms.txt. llms.txt opens with key facts: who it's for, one price
+  for the whole team, the 14-day trial, who it isn't for.
+- **The intent we want is a team that works together every day.** Free-seekers
+  and price-shoppers are the wrong intent: don't pitch TinyFloor as the
+  cheapest, don't lead with Free, and don't state the office's size cap.
+- **Not in code, still to do:** a public status page from an outside monitor,
+  so there's an uptime history to read; reviews from the teams that use it
+  daily (SaaSHub, G2, Product Hunt); asking list owners to include TinyFloor;
+  and running the same prompts again each month to see what moved.
+
+## What gets cited (3 November)
+
+- **A first link from another company's blog cited one checkable fact.** A
+  long comparison post (2,700 words, dated, every heading a question, a
+  numbered source list and an FAQ) cited our comparison page three times for
+  one line: which free plan is a public space and which plan locks the door.
+  The link is nofollow, so it helps people find us more than it helps rank.
+- **Writers working with AI answers cite facts, not opinions.** Every source in
+  that post was a number or a rule: a price, a plan limit, a review count, a
+  survey figure. A page is citable when one sentence states one fact plainly
+  and is dated, so it can be quoted as it is.
+- **So a page meant to be cited:** answers a question people search, in its
+  heading; gives the answer in the first sentence under it; carries numbers
+  with where they come from; shows the date it was checked; and keeps to what
+  we can know. The guides already have the form (dated, in 18 languages, in
+  the sitemap and llms-full.txt), so they're where these go, not a separate
+  blog.
+- **The home page no longer leads with Free.** The hero's line, the closing
+  line, the price section and the site description say one price for the
+  whole team and 14 days of Pro for every new office; Free for 3 stays, said
+  last, where pricing is explained.
+
+## The blog, by language (3 November)
+
+- **AI assistants get asked more than search engines here.** "discord for work"
+  is about 2,400 questions a month in AI assistants against 110 Google searches
+  in the US; "how much does a virtual office cost" about 300 against 40. The
+  blog's first posts answer exactly those, with sources an answer can cite.
+- **In most languages "virtual office" means a business address.** Polish
+  "wirtualne biuro" (2,900 a month), Dutch "virtueel kantoor" (480), Arabic,
+  Hebrew and German searches for a virtual office are people renting an address,
+  not teams. Don't target the bare term outside English; say "virtual office
+  for teams" or the local word for an online office tool.
+- **Where our topics have real demand:** Japanese ("discord 仕事で使う" 70,
+  "discord ビジネス" 50, "バーチャルオフィス ツール" 110), Korean ("디스코드
+  업무용" 30), Brazilian Portuguese ("discord para empresas" 70), and a little
+  in German and French. Italian, Spanish, Dutch, Polish, the Nordic languages,
+  Hebrew and Arabic showed almost none for these topics.
+- **So the blog is written per language, not translated across all 18:** the
+  Discord post in English, Japanese, Korean, Portuguese, German and French; the
+  cost post in English and Japanese (with prices in yen where Japanese readers
+  look for them); the rest in English. A language gets a blog index once it has
+  a post.
+- **"remote work statistics" (170 a month) is the page other writers link to.**
+  A sourced, dated table of figures is what a blog post quotes with a link, so
+  it's the post most likely to earn links without asking.

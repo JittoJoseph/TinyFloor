@@ -1173,7 +1173,7 @@
       "body": "Een virtueel kantoor in de browser. Zie wie er is, loop langs om te praten en ga weer aan het werk. Niets te plannen, niets te installeren.",
       "cta": "Maak je kantoor",
       "lobby": "Probeer het demokantoor",
-      "note": "Gratis voor maximaal 3 mensen · Geen creditcard nodig",
+      "note": "Eén prijs voor het hele team · Geen creditcard nodig",
       "film": "TinyFloor: er komt een bericht binnen, de chat opent, daarna een gesprek met de collega naast je"
     },
     "floor": {
@@ -1198,7 +1198,7 @@
       "eyebrow": "Prijzen",
       "title": "Prijs per kantoor,",
       "muted": "niet per persoon.",
-      "body": "Gratis voor maximaal 3 mensen. Daarna één prijs voor je hele team.",
+      "body": "Eén prijs voor je hele team. Gratis voor maximaal 3 mensen.",
       "soon": "Binnenkort",
       "forever": "voor altijd",
       "month": "per maand",
@@ -1245,7 +1245,7 @@
     "closing": {
       "title": "Geef je team",
       "muted": "een verdieping om te delen.",
-      "note": "Gratis voor maximaal 3 mensen · Draait op Cloudflare"
+      "note": "14 dagen Pro voor elk nieuw kantoor · Draait op Cloudflare"
     },
     "countries": {
       "label": "Teams werken op TinyFloor in"
@@ -1272,7 +1272,7 @@
     },
     "price": {
       "title": "Eén prijs voor het hele kantoor.",
-      "body": "Gratis voor maximaal 3 mensen. Daarna is Pro één prijs per maand voor het hele team, met hoeveel jullie ook zijn. Elk nieuw kantoor begint met 14 dagen Pro gratis, geen kaart nodig.",
+      "body": "Eén prijs per maand voor het hele team, met hoeveel jullie ook zijn. Elk nieuw kantoor begint met 14 dagen Pro, geen kaart nodig, en tot 3 mensen kunnen op Free blijven.",
       "team": "Je team",
       "people": "{count} mensen",
       "ours": "TinyFloor Pro",

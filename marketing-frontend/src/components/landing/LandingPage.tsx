@@ -10,6 +10,8 @@ import {
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { COMPARE_ROWS, HUBS, LANDINGS, LANDING_GROUPS, landingByKey, relatedLandings, type Landing, type LandingKey } from "@/lib/landings";
 import { guidesFor } from "@/lib/guides";
+import { postsForPage } from "@/lib/blog";
+import { FromTheBlog } from "@/components/blog/FromTheBlog";
 import { guideCopies } from "@/lib/guide-copy";
 import { GuideCard } from "@/components/guides/GuidePage";
 import { articleNode, faqNode, pageGraph } from "@/lib/structured-data";
@@ -146,6 +148,8 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
       <div className={SECTION}>
         <Questions items={copy.faq} title={t.rich("faqTitle", { em: quiet })} />
       </div>
+
+      <FromTheBlog posts={postsForPage(page.key, locale).slice(0, 3)} locale={locale} />
 
       {guideCopy && (
         <section className={cn(COLUMN, "pb-24 sm:pb-32")}>

@@ -61,6 +61,9 @@ function socialImagePath(locale: string, path: string): string {
   if (/^\/(invite|office)\//.test(path)) return `/og/invite-${code}.jpg`;
   const slug = path.slice(1);
   if (slug && LANDINGS.some((page) => page.slug === slug)) return code === "en" ? `/og/${slug}.jpg` : "/og/neutral.jpg";
+  // A blog post's card is its cover, the same in every language it's written in (marketing-frontend lib/blog).
+  const post = path.match(/^\/blog\/([^/]+)$/)?.[1];
+  if (post) return `/og/blog-${post}.jpg`;
   const guide = path.match(/^\/guides\/([^/]+)$/)?.[1];
   if (guide && GUIDES.some((one) => one.slug === guide)) return code === "en" ? `/og/guide-${guide}.jpg` : "/og/neutral.jpg";
   return `/og/home-${code}.jpg`;

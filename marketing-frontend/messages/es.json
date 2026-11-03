@@ -1173,7 +1173,7 @@
       "body": "Una oficina virtual en el navegador. Mira quién está, acércate a hablar y vuelve al trabajo. Nada que agendar, nada que instalar.",
       "cta": "Crea tu oficina",
       "lobby": "Prueba la oficina de demostración",
-      "note": "Gratis para hasta 3 personas · Sin tarjeta",
+      "note": "Un solo precio para todo el equipo · Sin tarjeta",
       "film": "TinyFloor: llega un mensaje, se abre el chat y luego una llamada con el compañero de al lado"
     },
     "floor": {
@@ -1198,7 +1198,7 @@
       "eyebrow": "Precios",
       "title": "Precio por oficina,",
       "muted": "no por persona.",
-      "body": "Gratis para hasta 3 personas. Después, un precio para todo tu equipo.",
+      "body": "Un precio para todo tu equipo. Gratis para hasta 3 personas.",
       "soon": "Próximamente",
       "forever": "para siempre",
       "month": "al mes",
@@ -1245,7 +1245,7 @@
     "closing": {
       "title": "Dale a tu equipo",
       "muted": "una planta que compartir.",
-      "note": "Gratis para hasta 3 personas · Funciona en Cloudflare"
+      "note": "14 días de Pro para cada oficina nueva · Funciona en Cloudflare"
     },
     "countries": {
       "label": "Equipos trabajando en TinyFloor en"
@@ -1272,7 +1272,7 @@
     },
     "price": {
       "title": "Un solo precio para toda la oficina.",
-      "body": "Gratis para hasta 3 personas. Después, Pro es un solo precio mensual para todo el equipo, seáis los que seáis. Cada oficina nueva empieza con 14 días de Pro, sin tarjeta.",
+      "body": "Un solo precio mensual para todo el equipo, seáis los que seáis. Cada oficina nueva empieza con 14 días de Pro, sin tarjeta, y hasta 3 personas pueden quedarse en Free.",
       "team": "Tu equipo",
       "people": "{count} personas",
       "ours": "TinyFloor Pro",

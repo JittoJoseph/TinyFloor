@@ -1173,7 +1173,7 @@
       "body": "Ett virtuellt kontor i webbläsaren. Se vem som är där, gå fram och prata, och fortsätt jobba. Inget att boka, inget att installera.",
       "cta": "Skapa ditt kontor",
       "lobby": "Prova demokontoret",
-      "note": "Gratis för upp till 3 personer · Inget kort behövs",
+      "note": "Ett pris för hela teamet · Inget kort behövs",
       "film": "TinyFloor: ett meddelande kommer in, chatten öppnas och sedan ett samtal med kollegan bredvid dig"
     },
     "floor": {
@@ -1198,7 +1198,7 @@
       "eyebrow": "Priser",
       "title": "Pris per kontor,",
       "muted": "inte per person.",
-      "body": "Gratis för upp till 3 personer. Sedan ett pris för hela ditt team.",
+      "body": "Ett pris för hela ditt team. Gratis för upp till 3 personer.",
       "soon": "Kommer snart",
       "forever": "för alltid",
       "month": "i månaden",
@@ -1245,7 +1245,7 @@
     "closing": {
       "title": "Ge ditt team",
       "muted": "ett plan att dela.",
-      "note": "Gratis för upp till 3 personer · Körs på Cloudflare"
+      "note": "14 dagar Pro för varje nytt kontor · Körs på Cloudflare"
     },
     "countries": {
       "label": "Team jobbar på TinyFloor i"
@@ -1272,7 +1272,7 @@
     },
     "price": {
       "title": "Ett pris för hela kontoret.",
-      "body": "Gratis för upp till 3 personer. Sedan har Pro ett månadspris för hela teamet, oavsett hur många ni är. Varje nytt kontor börjar med 14 dagar Pro, inget kort behövs.",
+      "body": "Ett månadspris för hela teamet, oavsett hur många ni är. Varje nytt kontor börjar med 14 dagar Pro, inget kort behövs, och upp till 3 personer kan stanna på Free.",
       "team": "Ditt team",
       "people": "{count} personer",
       "ours": "TinyFloor Pro",

@@ -1,0 +1,167 @@
+{
+  "label": "Discord para empresas",
+  "meta": {
+    "title": "Discord para empresas: dá para usar no trabalho?",
+    "description": "Por que equipes remotas passam o dia num canal de voz do Discord, o que os limites oficiais do Discord significam para o trabalho e quando um escritório virtual funciona melhor."
+  },
+  "coverAlt": "Fones de ouvido brancos e verde-limão ao lado de um balão de conversa, sobre fundo azul-violeta vivo.",
+  "title": "Discord para empresas: dá para usar no trabalho? <em>O que funciona e o que não funciona.</em>",
+  "intro": "Muitas equipes remotas pequenas passam o dia de trabalho num canal de voz do Discord: é grátis, todo mundo vê quem está lá e entrar é um clique. Funciona bem até a equipe precisar de duas conversas ao mesmo tempo, de um lugar só para o trabalho ou de mais do que um servidor grátis permite. Aqui está o que o Discord faz bem para uma equipe, o que a própria documentação dele diz sobre os limites e quando um [escritório virtual](/virtual-office) se encaixa melhor. Nós fazemos o TinyFloor, um escritório virtual, então não somos neutros; os números do Discord vêm das páginas do próprio Discord.",
+  "takeaways": [
+    "Um canal de voz do Discord dá à equipe algo que o Slack e o Zoom não dão: ver quem está lá e entrar com um clique.",
+    "Um canal de voz comporta uma conversa. Para falar com uma pessoa só, os dois precisam ir para outro canal.",
+    "Num servidor sem impulsos, o compartilhamento de tela é 720p a 30 quadros por segundo, os envios vão até 10 MB e até 25 pessoas podem estar com vídeo num canal de voz [1].",
+    "Desde setembro de 2024, o Discord criptografa voz e vídeo de ponta a ponta; as mensagens de texto não são criptografadas de ponta a ponta [2].",
+    "Cada pessoa entra com a própria conta do Discord, a mesma que usa com os amigos e nos jogos."
+  ],
+  "sections": [
+    {
+      "title": "Por que equipes remotas usam o Discord para trabalhar?",
+      "body": [
+        "Porque ele dá o que o Slack e o Zoom deixam de fora: estar perto uns dos outros. A barra lateral do servidor mostra quem está em cada canal de voz, então dá para ver de relance quem está trabalhando, e entrar é um clique, sem link nem convite.",
+        "Não custa nada, quase todo mundo já tem conta, a voz é rápida e o compartilhamento de tela vem incluído. Para amigos que abriram uma empresa juntos, ou para uma equipe que veio dos jogos, é o ponto de partida natural."
+      ]
+    },
+    {
+      "title": "O que atrapalha no dia a dia de trabalho?",
+      "items": [
+        {
+          "title": "Uma conversa por canal",
+          "body": "Num canal de voz, todo mundo ouve todo mundo. Duas pessoas que querem conversar a sós vão para outro canal, e o resto vê que elas saíram. A equipe acaba com um canal para cada tipo de conversa e gente pulando entre eles, o oposto do [chat por proximidade](/guides/what-is-proximity-chat)."
+        },
+        {
+          "title": "Estar no canal é ser ouvido",
+          "body": "Por padrão, o microfone fica aberto no canal de voz, a menos que você silencie ou use o modo pressionar para falar. Por isso muitas equipes passam o dia no mudo e só ativam o som para falar, e puxar conversa parece interromper a sala inteira."
+        },
+        {
+          "title": "Trabalho e vida pessoal no mesmo app",
+          "body": "Cada pessoa traz a própria conta, com amigos, outros servidores e as notificações deles. O próprio Discord se descreve como um lugar para aprofundar amizades em torno de jogos e interesses em comum [2]. Veja também [Discord ou Slack para o trabalho](/guides/discord-vs-slack)."
+        },
+        {
+          "title": "A conta é da pessoa, não da empresa",
+          "body": "Quando alguém sai, dá para tirar a pessoa do servidor, mas a conta e as mensagens diretas que ela trocou com a equipe continuam com ela."
+        },
+        {
+          "title": "Limites de um servidor grátis",
+          "body": "Sem impulsos, os envios vão até 10 MB, as transmissões até 720p a 30 quadros por segundo e o vídeo até 25 pessoas por canal de voz. Com impulsos, os envios sobem para 50 MB no nível 2 e 100 MB no nível 3 [1]."
+        }
+      ]
+    },
+    {
+      "title": "O que o Discord faz melhor que um escritório virtual?",
+      "items": [
+        {
+          "title": "Preço",
+          "body": "Um servidor do Discord é grátis. Um escritório virtual custa de 5 a 20 dólares por pessoa por mês, ou um preço único pelo escritório inteiro em alguns casos; veja a [comparação de softwares de escritório virtual](/guides/best-virtual-office-software)."
+        },
+        {
+          "title": "Compartilhamento de tela mais fluido",
+          "body": "O Discord transmite a 30 quadros por segundo num servidor grátis [1], o que funciona bem para vídeo e jogos. O TinyFloor compartilha a tela em até 720p e 10 a 15 quadros por segundo, ajustado para texto nítido e não para movimento [3]."
+        },
+        {
+          "title": "Criptografia",
+          "body": "Voz e vídeo do Discord são criptografados de ponta a ponta em mensagens diretas, grupos, canais de voz e transmissões Go Live, com o protocolo DAVE [2]."
+        },
+        {
+          "title": "Apps em todo lugar",
+          "body": "O Discord tem apps para computador e celular que a maioria das pessoas já instalou."
+        }
+      ]
+    },
+    {
+      "title": "O que muda num escritório virtual?",
+      "body": [
+        "Um escritório virtual mantém o que funciona, ver quem está lá e entrar sem link, e muda a forma como as conversas começam."
+      ],
+      "items": [
+        {
+          "title": "Várias conversas no mesmo andar",
+          "body": "A equipe inteira fica num andar só, e duas pessoas podem conversar enquanto o resto continua trabalhando, sem ninguém mudar de canal."
+        },
+        {
+          "title": "Ninguém é ouvido sem querer",
+          "body": "No TinyFloor você vai até um colega e começa uma chamada; até lá ninguém ouve nada, e a chamada começa só com voz, com a câmera num botão [3]. Três pessoas ou mais se reúnem na sala de reunião."
+        },
+        {
+          "title": "Um lugar só para o trabalho",
+          "body": "As pessoas entram com o Google ou com um código enviado por e-mail [3], e colegas com o mesmo domínio de e-mail da empresa encontram o escritório da equipe e entram, ou pedem para entrar [4]. Nada da vida pessoal de ninguém fica na sala."
+        },
+        {
+          "title": "Mesas e status",
+          "body": "Cada pessoa tem uma mesa e um status, então o andar mostra quem está concentrado e quem está livre, e não só quem está num canal. É a [presença da equipe](/team-presence), sem ninguém ser vigiado."
+        }
+      ]
+    },
+    {
+      "title": "Quando o Discord basta?",
+      "items": [
+        {
+          "title": "A equipe conversa quase sempre em grupo",
+          "body": "Se um canal aberto é o jeito que a equipe gosta de trabalhar e conversas a dois são raras, o Discord faz isso de graça."
+        },
+        {
+          "title": "Todo mundo já vive no Discord",
+          "body": "Se a equipe usa o Discord o dia todo sem problemas e misturar servidores pessoais não incomoda, há pouco motivo para mudar."
+        },
+        {
+          "title": "Sinais de que é hora de mudar",
+          "body": "As pessoas pulam de canal para conversar a dois, ficam no mudo o dia inteiro, silenciam outros servidores para conseguir focar, ou alguém novo precisa criar uma conta no Discord só para trabalhar."
+        }
+      ]
+    },
+    {
+      "title": "Dá para usar os dois?",
+      "body": [
+        "Sim. Algumas equipes mantêm um servidor do Discord para a comunidade ou para depois do expediente e levam o dia de trabalho para um escritório virtual. Os dois não precisam estar ligados. Veja também [o Discord para o trabalho e suas alternativas](/discord-for-work)."
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Para quem o TinyFloor serve",
+    "body": "O TinyFloor é um escritório virtual no navegador para equipes que trabalham juntas todos os dias: uma mesa para cada pessoa, chamadas que ninguém escuta sem querer, sala de reunião, chat da equipe e compartilhamento de tela ajustado para texto. Foi feito para o trabalho, e uma equipe que vem do Discord mantém a sensação de estar junto. O Pro tem um preço único para o escritório inteiro, 29 dólares por mês, e todo escritório novo começa com 14 dias de Pro, sem cartão."
+  },
+  "faq": [
+    {
+      "q": "O Discord é bom para empresas?",
+      "a": "Para uma equipe pequena que gosta de conversar em grupo, funciona e é grátis. Fica difícil quando as pessoas precisam de conversas a sós, quando servidores pessoais e de trabalho se misturam ou quando a equipe passa dos limites de um servidor grátis: envios de 10 MB, tela em 720p a 30 quadros por segundo e 25 pessoas com vídeo num canal de voz."
+    },
+    {
+      "q": "O Discord é grátis para equipes?",
+      "a": "Sim. O servidor e os canais de voz são grátis. Os impulsos de servidor aumentam os limites para todos no servidor, e o Nitro aumenta para uma pessoa."
+    },
+    {
+      "q": "O Discord é criptografado?",
+      "a": "Voz e vídeo são criptografados de ponta a ponta em mensagens diretas, grupos, canais de voz e transmissões Go Live, com o protocolo DAVE que o Discord anunciou em 17 de setembro de 2024. As mensagens de texto não são criptografadas de ponta a ponta."
+    },
+    {
+      "q": "Quantas pessoas podem usar vídeo num canal de voz do Discord?",
+      "a": "Até 25 pessoas com vídeo e até 50 assistindo a uma transmissão Go Live, segundo a lista oficial de limites do Discord."
+    },
+    {
+      "q": "Qual é uma boa alternativa ao Discord para uma equipe remota?",
+      "a": "Para escrever, o Slack. Para a sensação de estar junto que o canal de voz dá, um escritório virtual: a equipe num andar só, onde duas pessoas conversam sem trocar de canal."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Discord, Discord Account Caps, Server Caps, and More",
+      "url": "https://support.discord.com/hc/pt-br/articles/33694251638295",
+      "note": "Servidor sem impulsos: envios de 10 MB, transmissões em 720p a 30 fps, 25 pessoas com vídeo num canal de voz, 50 no Go Live; 50 MB no nível 2 de impulso e 100 MB no nível 3. Verificado em 3 de novembro de 2026."
+    },
+    {
+      "title": "Discord, Meet DAVE: Discord's New End-to-End Encryption for Audio & Video",
+      "url": "https://discord.com/blog/meet-dave-e2ee-for-audio-video",
+      "note": "17 de setembro de 2024: voz e vídeo em mensagens diretas, grupos, canais de voz e Go Live passam a ter criptografia de ponta a ponta; mensagens não."
+    },
+    {
+      "title": "How TinyFloor works",
+      "url": "https://www.tinyfloor.com/how-it-works",
+      "note": "Chamadas são individuais e começam com voz, com a câmera num botão; tela em até 720p a 10–15 fps; login com Google ou código por e-mail."
+    },
+    {
+      "title": "TinyFloor changelog",
+      "url": "https://www.tinyfloor.com/changelog",
+      "note": "17 de outubro de 2026: colegas com o mesmo domínio de e-mail da empresa encontram o escritório da equipe."
+    }
+  ]
+}

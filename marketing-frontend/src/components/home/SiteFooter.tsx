@@ -3,6 +3,8 @@ import { ArrowRight, ChevronDown, Globe } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { locales, type Locale } from "@/lib/i18n/routing";
 import { GUIDES_PATH, guidePath } from "@/lib/guides";
+import { BLOG_LOCALES, BLOG_PATH } from "@/lib/blog";
+import { blogUi } from "@/lib/blog-copy";
 import { guideCopies } from "@/lib/guide-copy";
 import { TOOLS_PATH, hasPage } from "@/lib/tools/catalog";
 import { FEW_TOOL_NAMES } from "@/lib/tools/hub-copy";
@@ -83,6 +85,7 @@ export async function SiteFooter({ path = "/" }: { path?: string }) {
   const locale = await getLocale();
   const current = locales.find((one) => one.code === locale) ?? locales[0];
   const guides = await guideCopies(locale);
+  const blog = BLOG_LOCALES.includes(locale as Locale) ? await blogUi(locale) : null;
 
   const label = (page: Landing) => (page.competitor || page.product ? t("vs", { name: (page.competitor ?? page.product)! }) : tl(`pages.${page.key}.label`));
   const pagesOf = (group: LandingGroup): FooterLink[] => [
@@ -128,6 +131,10 @@ export async function SiteFooter({ path = "/" }: { path?: string }) {
 
   const company: FooterLink[] = [
     { label: t("about"), href: "/about" },
+    { label: t("howItWorks"), href: "/how-it-works" },
+    { label: t("changelog"), href: "/changelog" },
+    // The blog, in the languages it has posts in (lib/blog).
+    ...(blog ? [{ label: blog.label, href: BLOG_PATH }] : []),
     { label: t("contact"), href: `mailto:${SUPPORT_EMAIL}` },
     { label: t("faq"), href: "/#faq" },
     { label: t("privacy"), href: "/privacy" },

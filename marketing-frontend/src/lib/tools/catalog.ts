@@ -1,5 +1,6 @@
 import { localeCodes, type Locale } from "@/lib/i18n/routing";
 import { GUIDES, guideLocales, guidePath } from "@/lib/guides";
+import { BLOG_LOCALES, BLOG_PATH, POSTS, postPath } from "@/lib/blog";
 
 /**
  * Every free tool (docs/search.md), and the languages it's written in: all
@@ -43,12 +44,16 @@ export const TOOLS: ToolEntry[] = [
 export const toolsIn = (locale: string) => TOOLS.filter((tool) => tool.locales.includes(locale as Locale));
 
 /**
- * The languages a page exists in: a tool's or a guide's own, or every
- * language for any other page.
+ * The languages a page exists in: a tool's, a guide's or a blog post's own,
+ * or every language for any other page.
  */
 export function pageLocales(path: string): readonly Locale[] {
   const tool = TOOLS.find((one) => one.path === path);
   if (tool) return tool.locales;
+  // The blog is in the languages it has posts in, and a post in the ones it's written in (lib/blog).
+  if (path === BLOG_PATH) return BLOG_LOCALES;
+  const post = POSTS.find((one) => postPath(one) === path);
+  if (post) return post.locales;
   const guide = GUIDES.find((one) => guidePath(one) === path);
   return guide ? guideLocales(guide) : localeCodes;
 }

@@ -2,6 +2,7 @@ import createMiddleware from "next-intl/middleware";
 import { NextResponse, type NextRequest } from "next/server";
 import { routing } from "@/lib/i18n/routing";
 import { GUIDES } from "@/lib/guides";
+import { POSTS } from "@/lib/blog";
 import { LANDINGS } from "@/lib/landings";
 import { TOOLS, hasPage } from "@/lib/tools/catalog";
 import { APP_PATH, APP_URL, SITE_URL } from "@/lib/site";
@@ -18,7 +19,8 @@ const SITE = new URL(SITE_URL);
 const PAGES = [
   ...LANDINGS.map((page) => page.slug),
   `guides(/(${GUIDES.map((guide) => guide.slug).join("|")}))?`,
-  "about|pricing|features|compare|use-cases|teams|people|privacy|terms|refunds|rooms|og-render",
+  `blog(/(${POSTS.map((post) => post.slug).join("|")}))?`,
+  "about|pricing|features|compare|use-cases|teams|people|privacy|terms|refunds|rooms|og-render|changelog|how-it-works",
   // The free tools and their index (lib/tools/catalog).
   `tools(/(${TOOLS.map((tool) => tool.path.slice("/tools/".length)).join("|")}))?`,
 ];

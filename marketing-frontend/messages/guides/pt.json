@@ -178,7 +178,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor entra",
-      "body": "O TinyFloor é um escritório virtual por onde sua equipe anda. Passe por alguém e pare para conversar, desenhe no quadro branco para um Imagem e Ação ou encontrem-se na sala de reunião para o happy hour de sexta. Grátis para até 3 pessoas, no navegador."
+      "body": "O TinyFloor é um escritório virtual por onde sua equipe anda. Passe por alguém e pare para conversar, desenhe no quadro branco para um Imagem e Ação ou encontrem-se na sala de reunião para o happy hour de sexta. Funciona no navegador, e todo escritório novo começa com 14 dias de Pro, sem cartão."
     },
     "faq": [
       {
@@ -195,7 +195,7 @@
       },
       {
         "q": "Quais ferramentas grátis podemos usar?",
-        "a": "Gartic Phone, skribbl.io e Codenames online são grátis no navegador. Um quadro branco compartilhado resolve os jogos de desenho, e um canal de chat resolve tudo o que é assíncrono. O TinyFloor é grátis para até 3 pessoas."
+        "a": "Gartic Phone, skribbl.io e Codenames online são grátis no navegador. Um quadro branco compartilhado resolve os jogos de desenho, e um canal de chat resolve tudo o que é assíncrono."
       }
     ]
   },
@@ -732,7 +732,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor entra",
-      "body": "O TinyFloor usa o estilo de chegar perto e ligar: leve seu personagem até um colega e um botão de chamada aparece ao lado dele, então ninguém é ouvido sem querer. Grupos se encontram na sala de reunião. Funciona no navegador e é grátis para até 3 pessoas."
+      "body": "O TinyFloor usa o estilo de chegar perto e ligar: leve seu personagem até um colega e um botão de chamada aparece ao lado dele, então ninguém é ouvido sem querer. Grupos se encontram na sala de reunião. Funciona no navegador, e todo escritório novo começa com 14 dias de Pro, sem cartão."
     },
     "faq": [
       {
@@ -803,8 +803,8 @@
         "items": [
           {
             "title": "TinyFloor",
-            "detail": "Grátis para 3 pessoas · US$ 29 por mês para toda a equipe",
-            "body": "Um escritório em pixel art no navegador, no computador e no celular. Vá até um colega para iniciar uma chamada de vídeo, sente-se a uma mesa para se reunir, com canais de chat, compartilhamento de tela e quadro branco. Um preço para o escritório todo, não por pessoa. Não tem gravações, notas com IA nem editor de mapa, e os escritórios são feitos para equipes pequenas de até 15 pessoas."
+            "detail": "Um preço para toda a equipe · US$ 29 por mês",
+            "body": "Um escritório em pixel art no navegador, no computador e no celular. Vá até um colega para iniciar uma chamada de vídeo, sente-se a uma mesa para se reunir, com canais de chat, compartilhamento de tela e quadro branco. Um preço para o escritório todo, não por pessoa. Não tem gravações, notas com IA nem editor de mapa."
           },
           {
             "title": "Gather",
@@ -1100,8 +1100,8 @@
         "title": "Qual para cada equipe",
         "items": [
           {
-            "title": "Uma equipe pequena com pouco orçamento",
-            "body": "O TinyFloor, por US$ 29 por mês para toda a equipe, ou o plano gratuito do SoWork se reuniões de 30 minutos bastarem."
+            "title": "Uma equipe que trabalha junta o dia todo",
+            "body": "O TinyFloor, um só preço de US$ 29 por mês para toda a equipe, ou o plano gratuito do SoWork se reuniões de 30 minutos bastarem."
           },
           {
             "title": "Você quer gravações e notas com IA",
@@ -1152,7 +1152,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor se encaixa",
-      "body": "O TinyFloor é o simples e barato: um escritório no navegador onde você vai até a pessoa para conversar, com sala de reunião, chat e compartilhamento de tela, por um preço por escritório. É para equipes pequenas que querem um escritório aberto o dia todo. Se você precisa de gravações, notas com IA ou um mapa desenhado por você, o Gather ou o SoWork Premium vão atender melhor. O TinyFloor é grátis para até 3 pessoas, então dá para testar com sua equipe primeiro."
+      "body": "O TinyFloor é um escritório no navegador para uma equipe que trabalha junta todos os dias: você vai até alguém para conversar, com sala de reunião, chat e compartilhamento de tela, por um só preço para o escritório inteiro. Se você precisa de gravações, notas com IA ou um mapa que você mesmo projeta, o Gather ou o SoWork Premium vão atender melhor. Todo escritório novo começa com 14 dias de Pro, sem cartão, então dá para testar primeiro com a sua equipe."
     },
     "faq": [
       {
@@ -1161,7 +1161,7 @@
       },
       {
         "q": "Qual é o melhor software de escritório virtual para uma pequena empresa?",
-        "a": "Para uma equipe de 4 a 15 pessoas que busca um preço simples, o TinyFloor, por US$ 29 por mês para toda a equipe. Se as suas reuniões duram até 30 minutos, o plano gratuito do SoWork cobre 10 membros. Se você precisa de gravações, notas com IA ou um aplicativo para desktop, veja o Gather, SoWork Premium ou Spot; para logon único e contratos anuais, Gather, Roam, oVice ou Sococo."
+        "a": "Para uma equipe que trabalha junta todos os dias e quer um preço simples, o TinyFloor, por US$ 29 por mês para toda a equipe. Se as suas reuniões duram até 30 minutos, o plano gratuito do SoWork cobre 10 membros. Se você precisa de gravações, notas com IA ou um aplicativo para desktop, veja o Gather, SoWork Premium ou Spot; para logon único e contratos anuais, Gather, Roam, oVice ou Sococo."
       },
       {
         "q": "Qual é o escritório virtual mais barato para uma equipe pequena?",
@@ -1434,7 +1434,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor se encaixa",
-      "body": "O TinyFloor mantém o essencial do Gather: um escritório por onde você anda e conversa chegando perto de alguém, com sala de reunião, chat e compartilhamento de tela. Custa US$ 29 por mês para toda a equipe, um preço só, quantas pessoas você convidar, e é grátis para até 3. Não tem gravações, transcrição, editor de escritório nem login único; se você depende disso, o Gather combina mais."
+      "body": "O TinyFloor mantém o essencial do Gather: um escritório por onde você anda e conversa chegando perto de alguém, com sala de reunião, chat e compartilhamento de tela. Custa US$ 29 por mês para toda a equipe, um só preço não importa quantas pessoas você convide, e todo escritório novo começa com 14 dias de Pro grátis. Não tem gravações, transcrição, editor de escritório nem login único; se você depende disso, o Gather combina mais."
     },
     "faq": [
       {
@@ -1720,7 +1720,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor entra",
-      "body": "O TinyFloor cuida da presença: um escritório virtual no navegador onde sua equipe vê quem está por perto e vai até a pessoa para conversar, com sala de reunião, chat e compartilhamento de tela. Ele funciona junto com suas ferramentas de chat, documentos e tarefas, sem substituí-las. É gratuito para até 3 pessoas, então dá para testar com sua equipe hoje."
+      "body": "O TinyFloor cuida da presença: um escritório virtual no navegador onde sua equipe vê quem está por perto e vai até a pessoa para conversar, com sala de reunião, chat e compartilhamento de tela. Ele funciona junto com suas ferramentas de chat, documentos e tarefas, sem substituí-las. Todo escritório novo começa com 14 dias de Pro, sem cartão, então você pode testar hoje com a sua equipe."
     },
     "faq": [
       {
@@ -1729,7 +1729,7 @@
       },
       {
         "q": "Quais são as melhores ferramentas gratuitas para uma equipe remota?",
-        "a": "Não existe uma resposta única, mas o plano gratuito do Slack ou o Discord, Google Meet, Google Docs e Trello cobrem a maioria das tarefas de uma equipe pequena, e o TinyFloor é gratuito para até 3 pessoas."
+        "a": "Não existe uma resposta única, mas o plano gratuito do Slack ou o Discord, Google Meet, Google Docs e Trello resolvem a maior parte das tarefas de uma equipe pequena."
       },
       {
         "q": "Uma equipe remota precisa de escritório virtual?",
@@ -1911,7 +1911,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor entra",
-      "body": "O TinyFloor deixa a presença visível: um escritório virtual no navegador onde sua equipe vê quem está por perto, quem está em reunião e quem quer silêncio, e vai até a pessoa para conversar. Perguntas rápidas voltam a ser feitas, sem câmera ligada o tempo todo e sem monitoramento. É gratuito para até 3 pessoas."
+      "body": "O TinyFloor deixa a presença visível: um escritório virtual no navegador onde sua equipe vê quem está por perto, quem está em reunião e quem quer silêncio, e vai até a pessoa para conversar. Perguntas rápidas voltam a ser feitas, sem câmera ligada o tempo todo e sem monitoramento. Todo escritório novo começa com 14 dias de Pro, sem cartão."
     },
     "faq": [
       {
@@ -2130,7 +2130,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor se encaixa",
-      "body": "No TinyFloor um happy hour parece mais uma sala que uma chamada. Todos entram no mesmo andar, grupos pequenos se formam onde as pessoas param, e você entra numa conversa andando até ela, sem ficar preso numa grade de vinte rostos. Na parede há um quadro branco para jogos de desenho. É grátis para até 3 pessoas."
+      "body": "No TinyFloor um happy hour parece mais uma sala que uma chamada. Todos entram no mesmo andar, grupos pequenos se formam onde as pessoas param, e você entra numa conversa andando até ela, sem ficar preso numa grade de vinte rostos. Na parede há um quadro branco para jogos de desenho. Todo escritório novo começa com 14 dias de Pro, sem cartão."
     },
     "faq": [
       {
@@ -2436,7 +2436,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor se encaixa",
-      "body": "No TinyFloor uma one-on-one não precisa de link de agenda: entrem juntos numa sala de reunião ou se afastem um pouco no andar e conversem. Entre uma e outra você vê quem está por perto, e uma conversa rápida não precisa esperar uma semana. É grátis para até 3 pessoas."
+      "body": "No TinyFloor uma one-on-one não precisa de link de agenda: entrem juntos numa sala de reunião ou se afastem um pouco no andar e conversem. Entre uma e outra você vê quem está por perto, e uma conversa rápida não precisa esperar uma semana. Todo escritório novo começa com 14 dias de Pro, sem cartão."
     },
     "faq": [
       {
@@ -2659,7 +2659,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor se encaixa",
-      "body": "O TinyFloor é a metade síncrona que falta às equipes assíncronas. Chat, documentos e gravações continuam onde estão; quando uma thread empaca, você vê no andar quem está por perto e vai até a pessoa conversar dois minutos. Os status mostram quem está focado, então as conversas ao vivo não custam o trabalho concentrado de ninguém. É grátis para até 3 pessoas."
+      "body": "O TinyFloor é a metade síncrona que falta às equipes assíncronas. Chat, documentos e gravações continuam onde estão; quando uma thread empaca, você vê no andar quem está por perto e vai até a pessoa conversar dois minutos. Os status mostram quem está focado, então as conversas ao vivo não custam o trabalho concentrado de ninguém. Todo escritório novo começa com 14 dias de Pro, sem cartão."
     },
     "faq": [
       {
@@ -2890,7 +2890,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor se encaixa",
-      "body": "No TinyFloor a retro acontece onde a equipe já está. Entrem juntos na sala de reunião, desenhem o veleiro no quadro branco da parede e deixem lá para a próxima. É grátis para até 3 pessoas."
+      "body": "No TinyFloor a retro acontece onde a equipe já está. Entrem juntos na sala de reunião, desenhem o veleiro no quadro branco da parede e deixem lá para a próxima. Todo escritório novo começa com 14 dias de Pro, sem cartão."
     },
     "faq": [
       {
@@ -3090,7 +3090,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor se encaixa",
-      "body": "No TinyFloor quem chega vê a equipe inteira num andar desde o primeiro dia: quem está por perto, quem está em reunião e quem está livre. Perguntar é uma caminhada curta, não uma chamada marcada, e o padrinho está a poucas mesas. É grátis para até 3 pessoas."
+      "body": "No TinyFloor quem chega vê a equipe inteira num andar desde o primeiro dia: quem está por perto, quem está em reunião e quem está livre. Perguntar é uma caminhada curta, não uma chamada marcada, e o padrinho está a poucas mesas. Todo escritório novo começa com 14 dias de Pro, sem cartão."
     },
     "faq": [
       {
@@ -3287,7 +3287,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor entra",
-      "body": "O TinyFloor é um escritório virtual privado para pessoas que se conhecem: uma equipe pequena, alguns amigos, um grupo de estudos. Sentem-se em suas mesas, definam seu status como ocupado, iniciem uma sessão de foco na sala de reuniões e conversem quando precisarem. É gratuito para até 3 pessoas, então dois amigos podem fazer body doubling lá sem custo. Ele não conecta você com desconhecidos."
+      "body": "O TinyFloor é um escritório virtual privado para pessoas que se conhecem: uma equipe pequena, alguns amigos, um grupo de estudos. Sentem-se em suas mesas, definam seu status como ocupado, iniciem uma sessão de foco na sala de reuniões e conversem quando precisarem. Todo escritório novo começa com 14 dias de Pro, sem cartão. Ele não conecta você com desconhecidos."
     },
     "faq": [
       {
@@ -3312,7 +3312,7 @@
       },
       {
         "q": "Posso fazer body doubling de graça?",
-        "a": "Sim. Uma chamada de vídeo com um amigo não custa nada, e o TinyFloor é gratuito para até 3 pessoas, então um grupo pequeno pode fazer body doubling lá todo dia."
+        "a": "Sim. Uma videochamada com um amigo não custa nada."
       }
     ]
   },
@@ -3506,7 +3506,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor se encaixa",
-      "body": "O TinyFloor é um escritório virtual para equipes remotas. A reunião semanal acontece na sala de reunião onde todos entram, com vídeo, compartilhamento de tela e lousa virtual. Depois, as pessoas voltam para suas mesas no mesmo andar, a poucos passos de distância se precisarem alinhar algo mais. É grátis para até 3 pessoas e US$ 29 por mês para toda a equipe."
+      "body": "O TinyFloor é um escritório virtual para equipes remotas. A reunião semanal acontece na sala de reunião onde todos entram, com vídeo, compartilhamento de tela e lousa virtual. Depois, as pessoas voltam para suas mesas no mesmo andar, a poucos passos de distância se precisarem alinhar algo mais. O Pro custa US$ 29 por mês para toda a equipe, e todo escritório novo começa com 14 dias grátis."
     },
     "faq": [
       {
@@ -3843,7 +3843,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor se encaixa",
-      "body": "O TinyFloor é um escritório virtual para equipes remotas. Os check-ins acontecem na sala de reunião onde todos entram, com vídeo, e no resto do dia as pessoas se sentam em suas mesas no mesmo andar, onde uma pergunta rápida fica a uma curta caminhada de distância. É grátis para até 3 pessoas e $29 por mês para toda a equipe."
+      "body": "O TinyFloor é um escritório virtual para equipes remotas. Os check-ins acontecem na sala de reunião onde todos entram, com vídeo, e no resto do dia as pessoas se sentam em suas mesas no mesmo andar, onde uma pergunta rápida fica a uma curta caminhada de distância. O Pro custa US$ 29 por mês para toda a equipe, e todo escritório novo começa com 14 dias grátis."
     },
     "faq": [
       {
@@ -3977,7 +3977,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor entra",
-      "body": "O TinyFloor é um escritório virtual privado para equipes remotas: uma mesa para cada pessoa, status, chamadas por aproximação, uma sala de reuniões, chat de equipe e um quadro branco, tudo no navegador. Ele foi criado para o trabalho, ao contrário do Discord, e conversar é o padrão, ao contrário do Slack. É gratuito para até 3 pessoas e custa $29 por mês para toda a equipe, funcionando muito bem ao lado da ferramenta de chat que você já usa."
+      "body": "O TinyFloor é um escritório virtual privado para equipes remotas: uma mesa para cada pessoa, status, chamadas por aproximação, uma sala de reuniões, chat de equipe e um quadro branco, tudo no navegador. Ele foi criado para o trabalho, ao contrário do Discord, e conversar é o padrão, ao contrário do Slack. O Pro custa US$ 29 por mês para toda a equipe, todo escritório novo começa com 14 dias grátis, e ele convive bem com a ferramenta de chat que você já usa."
     },
     "faq": [
       {
@@ -4501,7 +4501,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor se encaixa",
-      "body": "O TinyFloor é um escritório virtual para equipes remotas. Abra a reunião com uma pergunta de isto ou aquilo na sala de reunião, todos com vídeo, e no resto do dia as pessoas se sentam em suas mesas no mesmo andar, onde uma conversa rápida fica a uma curta caminhada de distância. É grátis para até 3 pessoas e $29 por mês para toda a equipe."
+      "body": "O TinyFloor é um escritório virtual para equipes remotas. Abra a reunião com uma pergunta de isto ou aquilo na sala de reunião, todos com vídeo, e no resto do dia as pessoas se sentam em suas mesas no mesmo andar, onde uma conversa rápida fica a uma curta caminhada de distância. O Pro custa US$ 29 por mês para toda a equipe, e todo escritório novo começa com 14 dias grátis."
     },
     "faq": [
       {
@@ -4664,7 +4664,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor se encaixa",
-      "body": "O TinyFloor é um escritório virtual para equipes remotas. As reuniões acontecem na sala de reunião onde todos entram, com compartilhamento de tela para as notas, e o chat da equipe fica ao lado do andar para publicar as atas. Ele não faz anotações nem grava as reuniões para você. É grátis para até 3 pessoas e $29 por mês para toda a equipe."
+      "body": "O TinyFloor é um escritório virtual para equipes remotas. As reuniões acontecem na sala de reunião onde todos entram, com compartilhamento de tela para as notas, e o chat da equipe fica ao lado do andar para publicar as atas. Ele não faz anotações nem grava as reuniões para você. O Pro custa US$ 29 por mês para toda a equipe, e todo escritório novo começa com 14 dias grátis."
     },
     "faq": [
       {
@@ -5264,7 +5264,7 @@
     ],
     "fit": {
       "title": "Onde o TinyFloor se encaixa",
-      "body": "O TinyFloor é um escritório virtual para equipes remotas, com chat de equipe ao lado do andar para uma pergunta do dia e uma sala de reunião para a standup onde ela é respondida em voz alta. No resto do dia, as pessoas se sentam em suas mesas no mesmo andar, onde a conversa iniciada fica a uma curta caminhada de distância. É grátis para até 3 pessoas e $29 por mês para toda a equipe."
+      "body": "O TinyFloor é um escritório virtual para equipes remotas, com chat de equipe ao lado do andar para uma pergunta do dia e uma sala de reunião para a standup onde ela é respondida em voz alta. No resto do dia, as pessoas se sentam em suas mesas no mesmo andar, onde a conversa iniciada fica a uma curta caminhada de distância. O Pro custa US$ 29 por mês para toda a equipe, e todo escritório novo começa com 14 dias grátis."
     },
     "faq": [
       {

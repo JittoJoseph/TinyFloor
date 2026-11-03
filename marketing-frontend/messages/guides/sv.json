@@ -178,7 +178,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor är ett virtuellt kontor som ditt team går runt i. Gå förbi någon och stanna för en pratstund, rita på whiteboarden för Pictionary eller ses i mötesrummet för fredagsmys. Gratis för upp till 3 personer, i webbläsaren."
+      "body": "TinyFloor är ett virtuellt kontor som ditt team går runt i. Gå förbi någon och stanna för en pratstund, rita på whiteboarden för Pictionary eller ses i mötesrummet för fredagsmys. Det körs i webbläsaren, och varje nytt kontor börjar med 14 dagar Pro, inget kort behövs."
     },
     "faq": [
       {
@@ -195,7 +195,7 @@
       },
       {
         "q": "Vilka gratisverktyg kan vi använda?",
-        "a": "Gartic Phone, skribbl.io och Codenames online är gratis i webbläsaren. En delad whiteboard räcker för ritspel och en chattkanal för allt asynkront. TinyFloor är gratis för upp till 3 personer."
+        "a": "Gartic Phone, skribbl.io och Codenames online är gratis i webbläsaren. En delad whiteboard räcker för ritspel och en chattkanal för allt asynkront."
       }
     ]
   },
@@ -732,7 +732,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor använder varianten gå fram och ring: gå med din figur fram till en kollega så dyker en ringknapp upp bredvid hen, så att ingen hörs av misstag. Grupper ses i mötesrummet. Det körs i webbläsaren och är gratis för upp till 3 personer."
+      "body": "TinyFloor använder varianten gå fram och ring: gå med din figur fram till en kollega så dyker en ringknapp upp bredvid hen, så att ingen hörs av misstag. Grupper ses i mötesrummet. Det körs i webbläsaren, och varje nytt kontor börjar med 14 dagar Pro, inget kort behövs."
     },
     "faq": [
       {
@@ -803,8 +803,8 @@
         "items": [
           {
             "title": "TinyFloor",
-            "detail": "Gratis för 3 personer · $29 i månaden för hela teamet",
-            "body": "Ett kontor i pixelkonst i webbläsaren, på dator och telefon. Gå fram till en kollega för att starta ett videosamtal, sätt dig vid ett bord för att ha möte, med chattkanaler, skärmdelning och whiteboard. Ett pris för hela kontoret, inte per person. Det har inga inspelningar, AI-anteckningar eller kartredigerare, och kontoren är gjorda för små team på upp till 15."
+            "detail": "Ett pris för hela teamet · $29 i månaden",
+            "body": "Ett kontor i pixelkonst i webbläsaren, på dator och telefon. Gå fram till en kollega för att starta ett videosamtal, sätt dig vid ett bord för att ha möte, med chattkanaler, skärmdelning och whiteboard. Ett pris för hela kontoret, inte per person. Det har inga inspelningar, AI-anteckningar eller kartredigerare."
           },
           {
             "title": "Gather",
@@ -1100,8 +1100,8 @@
         "title": "Vilken för vilket team",
         "items": [
           {
-            "title": "Ett litet team med liten budget",
-            "body": "TinyFloor, för $29 i månaden för hela teamet, eller SoWorks gratisplan om möten på 30 minuter räcker."
+            "title": "Ett team som jobbar tillsammans hela dagen",
+            "body": "TinyFloor, ett pris på $29 i månaden för hela teamet, eller SoWorks gratisplan om möten på 30 minuter räcker."
           },
           {
             "title": "Du vill ha inspelningar och AI-anteckningar",
@@ -1152,7 +1152,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor är det enkla och billiga: ett kontor i webbläsaren där du går fram till någon för att prata, med mötesrum, chatt och skärmdelning, för ett pris per kontor. Det är för små team som vill ha ett kontor som är öppet hela dagen. Behöver du inspelningar, AI-anteckningar eller en karta du designat själv passar Gather eller SoWork Premium bättre. TinyFloor är gratis för upp till 3 personer, så du kan prova med ditt team först."
+      "body": "TinyFloor är ett kontor i webbläsaren för ett team som jobbar tillsammans varje dag: gå fram och prata, med mötesrum, chatt och skärmdelning, till ett pris för hela kontoret. Behöver du inspelningar, AI-anteckningar eller en karta du designar själv passar Gather eller SoWork Premium bättre. Varje nytt kontor börjar med 14 dagar Pro, inget kort behövs, så du kan prova med ditt team först."
     },
     "faq": [
       {
@@ -1161,7 +1161,7 @@
       },
       {
         "q": "Vilken är den bästa programvaran för virtuellt kontor för ett litet företag?",
-        "a": "För ett team på 4 till 15 personer som vill ha ett enkelt pris: TinyFloor för 29 $ i månaden för hela teamet. Om era möten ryms inom 30 minuter täcker SoWorks gratisplan 10 medlemmar. Om du behöver inspelningar, AI-anteckningar eller en skrivbordsapp, titta på Gather, SoWork Premium eller Spot; för single sign-on och årsavtal, Gather, Roam, oVice eller Sococo."
+        "a": "För ett team som jobbar tillsammans varje dag och vill ha ett enkelt pris: TinyFloor, för $29 i månaden för hela teamet. Om era möten ryms inom 30 minuter täcker SoWorks gratisplan 10 medlemmar. Om du behöver inspelningar, AI-anteckningar eller en skrivbordsapp, titta på Gather, SoWork Premium eller Spot; för single sign-on och årsavtal, Gather, Roam, oVice eller Sococo."
       },
       {
         "q": "Vilket är det billigaste virtuella kontoret för ett litet team?",
@@ -1434,7 +1434,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar",
-      "body": "TinyFloor behåller kärnan i det Gather gör: ett kontor där du går runt och pratar genom att gå fram till någon, med mötesrum, chatt och skärmdelning. Det kostar 29 $ i månaden för hela teamet, ett pris hur många du än bjuder in, och är gratis för upp till 3. Det har inga inspelningar, ingen transkribering, ingen kontorseditor och ingen enkel inloggning; är du beroende av sådant passar Gather bättre."
+      "body": "TinyFloor behåller kärnan i det Gather gör: ett kontor där du går runt och pratar genom att gå fram till någon, med mötesrum, chatt och skärmdelning. Det kostar $29 i månaden för hela teamet, ett pris oavsett hur många du bjuder in, och varje nytt kontor börjar med 14 dagar Pro gratis. Det har inga inspelningar, ingen transkribering, ingen kontorseditor och ingen enkel inloggning; är du beroende av sådant passar Gather bättre."
     },
     "faq": [
       {
@@ -1720,7 +1720,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor tar hand om närvaron: ett virtuellt kontor i webbläsaren där ditt team ser vem som är där och går fram för att prata, med mötesrum, chatt och skärmdelning inbyggt. Det fungerar bredvid era verktyg för chatt, dokument och uppgifter i stället för att ersätta dem. Det är gratis för upp till 3 personer, så du kan prova det med ditt team redan idag."
+      "body": "TinyFloor tar hand om närvaron: ett virtuellt kontor i webbläsaren där ditt team ser vem som är där och går fram för att prata, med mötesrum, chatt och skärmdelning inbyggt. Det fungerar bredvid era verktyg för chatt, dokument och uppgifter i stället för att ersätta dem. Varje nytt kontor börjar med 14 dagar Pro, inget kort behövs, så du kan prova med ditt team redan i dag."
     },
     "faq": [
       {
@@ -1729,7 +1729,7 @@
       },
       {
         "q": "Vilka är de bästa gratisverktygen för ett distansteam?",
-        "a": "Det finns inget enda svar, men Slacks gratisplan eller Discord, Google Meet, Google Docs och Trello täcker det mesta för ett litet team, och TinyFloor är gratis för upp till 3 personer."
+        "a": "Det finns inget enda svar, men Slacks gratisplan eller Discord, Google Meet, Google Docs och Trello täcker de flesta uppgifterna för ett litet team."
       },
       {
         "q": "Behöver ett distansteam ett virtuellt kontor?",
@@ -1911,7 +1911,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor gör närvaron synlig: ett virtuellt kontor i webbläsaren där ditt team ser vem som är där, vem som sitter i möte och vem som vill ha lugn, och går fram för att prata. Snabba frågor ställs igen, utan kameror som är på hela dagen och utan spårning. Det är gratis för upp till 3 personer."
+      "body": "TinyFloor gör närvaron synlig: ett virtuellt kontor i webbläsaren där ditt team ser vem som är där, vem som sitter i möte och vem som vill ha lugn, och går fram för att prata. Snabba frågor ställs igen, utan kameror som är på hela dagen och utan spårning. Varje nytt kontor börjar med 14 dagar Pro, inget kort behövs."
     },
     "faq": [
       {
@@ -2130,7 +2130,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "På TinyFloor känns en afterwork mer som ett rum än ett samtal. Alla kommer till samma våning, små grupper bildas där folk stannar, och du går med i ett samtal genom att gå dit, utan att fastna i ett rutnät med tjugo ansikten. En whiteboard för ritspel hänger på väggen. Det är gratis för upp till 3 personer."
+      "body": "På TinyFloor känns en afterwork mer som ett rum än ett samtal. Alla kommer till samma våning, små grupper bildas där folk stannar, och du går med i ett samtal genom att gå dit, utan att fastna i ett rutnät med tjugo ansikten. En whiteboard för ritspel hänger på väggen. Varje nytt kontor börjar med 14 dagar Pro, inget kort behövs."
     },
     "faq": [
       {
@@ -2436,7 +2436,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "På TinyFloor behöver ett enskilt samtal ingen kalenderlänk: gå in i ett mötesrum tillsammans, eller ställ er lite avsides på våningen och prata. Mellan samtalen ser du vem som är där, så en kort avstämning behöver inte vänta en vecka. Det är gratis för upp till 3 personer."
+      "body": "På TinyFloor behöver ett enskilt samtal ingen kalenderlänk: gå in i ett mötesrum tillsammans, eller ställ er lite avsides på våningen och prata. Mellan samtalen ser du vem som är där, så en kort avstämning behöver inte vänta en vecka. Varje nytt kontor börjar med 14 dagar Pro, inget kort behövs."
     },
     "faq": [
       {
@@ -2659,7 +2659,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor är den synkrona halvan som asynkrona team saknar. Er chatt, era dokument och inspelningar ligger kvar där de är; när en tråd kör fast ser du på våningen vem som är där och går fram och pratar i två minuter. Statusar visar vem som har fokus, så att livesamtal inte kostar någon deras djupa arbete. Det är gratis för upp till 3 personer."
+      "body": "TinyFloor är den synkrona halvan som asynkrona team saknar. Er chatt, era dokument och inspelningar ligger kvar där de är; när en tråd kör fast ser du på våningen vem som är där och går fram och pratar i två minuter. Statusar visar vem som har fokus, så att livesamtal inte kostar någon deras djupa arbete. Varje nytt kontor börjar med 14 dagar Pro, inget kort behövs."
     },
     "faq": [
       {
@@ -2890,7 +2890,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "På TinyFloor hålls retron där teamet redan är. Gå in i mötesrummet tillsammans, rita segelbåten på whiteboarden på väggen och låt den hänga kvar till nästa gång. Det är gratis för upp till 3 personer."
+      "body": "På TinyFloor hålls retron där teamet redan är. Gå in i mötesrummet tillsammans, rita segelbåten på whiteboarden på väggen och låt den hänga kvar till nästa gång. Varje nytt kontor börjar med 14 dagar Pro, inget kort behövs."
     },
     "faq": [
       {
@@ -3090,7 +3090,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "På TinyFloor ser en nyanställd hela teamet på en våning från första dagen: vem som är där, vem som sitter i möte och vem som är ledig. En fråga är en kort promenad, inte ett bokat samtal, och buddyn sitter några skrivbord bort. Det är gratis för upp till 3 personer."
+      "body": "På TinyFloor ser en nyanställd hela teamet på en våning från första dagen: vem som är där, vem som sitter i möte och vem som är ledig. En fråga är en kort promenad, inte ett bokat samtal, och buddyn sitter några skrivbord bort. Varje nytt kontor börjar med 14 dagar Pro, inget kort behövs."
     },
     "faq": [
       {
@@ -3287,7 +3287,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor är ett privat virtuellt kontor för personer som känner varandra: ett litet team, några vänner eller en studiegrupp. Sitt vid era skrivbord, sätt er som upptagna, starta en fokussession i mötesrummet och prata när ni behöver. Det är gratis för upp till 3 personer, så två vänner kan köra body doubling där helt utan kostnad. Det matchar dig inte med främlingar."
+      "body": "TinyFloor är ett privat virtuellt kontor för personer som känner varandra: ett litet team, några vänner eller en studiegrupp. Sitt vid era skrivbord, sätt er som upptagna, starta en fokussession i mötesrummet och prata när ni behöver. Varje nytt kontor börjar med 14 dagar Pro, inget kort behövs. Det matchar dig inte med främlingar."
     },
     "faq": [
       {
@@ -3312,7 +3312,7 @@
       },
       {
         "q": "Kan jag köra body doubling gratis?",
-        "a": "Ja. Ett videosamtal med en vän kostar ingenting, och TinyFloor är gratis för upp till 3 personer, så en liten grupp kan köra body doubling där varje dag."
+        "a": "Ja. Ett videosamtal med en vän kostar ingenting."
       }
     ]
   },
@@ -3506,7 +3506,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor är ett virtuellt kontor för distansteam. Veckomötet sker i mötesrummet som alla går in i, med video, skärmdelning och en whiteboard, och efteråt är alla tillbaka vid sina skrivbord på samma våning, bara en kort promenad bort om något behöver följas upp. Det är gratis för upp till 3 personer och kostar $29 i månaden för hela teamet."
+      "body": "TinyFloor är ett virtuellt kontor för distansteam. Veckomötet sker i mötesrummet som alla går in i, med video, skärmdelning och en whiteboard, och efteråt är alla tillbaka vid sina skrivbord på samma våning, bara en kort promenad bort om något behöver följas upp. Pro kostar $29 i månaden för hela teamet, och varje nytt kontor börjar med 14 dagar gratis."
     },
     "faq": [
       {
@@ -3843,7 +3843,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor är ett virtuellt kontor för distansteam. Incheckningar sker i mötesrummet som alla går in i, med video, och resten av dagen sitter folk vid sina skrivbord på samma våning, där en snabb fråga bara är en kort promenad bort. Det är gratis för upp till 3 personer och $29 i månaden för hela teamet."
+      "body": "TinyFloor är ett virtuellt kontor för distansteam. Incheckningar sker i mötesrummet som alla går in i, med video, och resten av dagen sitter folk vid sina skrivbord på samma våning, där en snabb fråga bara är en kort promenad bort. Pro kostar $29 i månaden för hela teamet, och varje nytt kontor börjar med 14 dagar gratis."
     },
     "faq": [
       {
@@ -3977,7 +3977,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor är ett privat virtuellt kontor för distansteam: ett skrivbord för varje person, statusar, samtal när du går fram, ett mötesrum, teamchatt och en whiteboard, direkt i webbläsaren. Det är byggt för arbete, till skillnad från Discord, och prat är standard, till skillnad från Slack. Det är gratis för upp till 3 personer och kostar 29 $ i månaden för hela teamet, och det fungerar utmärkt vid sidan av det chattverktyg du redan använder."
+      "body": "TinyFloor är ett privat virtuellt kontor för distansteam: ett skrivbord för varje person, statusar, samtal när du går fram, ett mötesrum, teamchatt och en whiteboard, direkt i webbläsaren. Det är byggt för arbete, till skillnad från Discord, och prat är standard, till skillnad från Slack. Pro kostar $29 i månaden för hela teamet, varje nytt kontor börjar med 14 dagar gratis, och det fungerar fint bredvid chattverktyget ni redan använder."
     },
     "faq": [
       {
@@ -4501,7 +4501,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor är ett virtuellt kontor för distansteam. Öppna mötet med en antingen eller-fråga i mötesrummet med video, och resten av dagen sitter folk vid sina skrivbord på samma våning, där ett snabbt samtal bara är en kort promenad bort. Det är gratis för upp till 3 personer och $29 i månaden för hela teamet."
+      "body": "TinyFloor är ett virtuellt kontor för distansteam. Öppna mötet med en antingen eller-fråga i mötesrummet med video, och resten av dagen sitter folk vid sina skrivbord på samma våning, där ett snabbt samtal bara är en kort promenad bort. Pro kostar $29 i månaden för hela teamet, och varje nytt kontor börjar med 14 dagar gratis."
     },
     "faq": [
       {
@@ -4664,7 +4664,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor är ett virtuellt kontor för distansteam. Möten sker i mötesrummet som alla går in i, med skärmdelning för anteckningarna, och teamchatten ligger precis bredvid våningen så att ni enkelt kan posta protokollet. Det för inte anteckningar eller spelar in möten åt er. Det är gratis för upp till 3 personer och $29 i månaden för hela teamet."
+      "body": "TinyFloor är ett virtuellt kontor för distansteam. Möten sker i mötesrummet som alla går in i, med skärmdelning för anteckningarna, och teamchatten ligger precis bredvid våningen så att ni enkelt kan posta protokollet. Det för inte anteckningar eller spelar in möten åt er. Pro kostar $29 i månaden för hela teamet, och varje nytt kontor börjar med 14 dagar gratis."
     },
     "faq": [
       {
@@ -5264,7 +5264,7 @@
     ],
     "fit": {
       "title": "Där TinyFloor passar in",
-      "body": "TinyFloor är ett virtuellt kontor för distansteam, med en teamchatt bredvid våningen för dagens fråga och ett mötesrum för standup-mötet där den besvaras högt. Resten av dagen sitter folk vid sina skrivbord på samma våning, där samtalet den startade bara är en kort promenad bort. Det är gratis för upp till 3 personer och $29 i månaden för hela teamet."
+      "body": "TinyFloor är ett virtuellt kontor för distansteam, med en teamchatt bredvid våningen för dagens fråga och ett mötesrum för standup-mötet där den besvaras högt. Resten av dagen sitter folk vid sina skrivbord på samma våning, där samtalet den startade bara är en kort promenad bort. Pro kostar $29 i månaden för hela teamet, och varje nytt kontor börjar med 14 dagar gratis."
     },
     "faq": [
       {

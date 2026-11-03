@@ -1173,7 +1173,7 @@
       "body": "Wirtualne biuro w przeglądarce. Zobacz, kto jest, podejdź porozmawiać i wróć do pracy. Nic do planowania, nic do instalowania.",
       "cta": "Stwórz swoje biuro",
       "lobby": "Wypróbuj biuro demo",
-      "note": "Za darmo dla maksymalnie 3 osób · Bez karty",
+      "note": "Jedna cena za cały zespół · Bez karty",
       "film": "TinyFloor: przychodzi wiadomość, otwiera się czat, a potem rozmowa z osobą obok ciebie"
     },
     "floor": {
@@ -1198,7 +1198,7 @@
       "eyebrow": "Cennik",
       "title": "Płacisz za biuro,",
       "muted": "nie za osobę.",
-      "body": "Za darmo do 3 osób. Potem jedna cena za cały Twój zespół.",
+      "body": "Jedna cena za cały Twój zespół. Za darmo do 3 osób.",
       "soon": "Wkrótce",
       "forever": "na zawsze",
       "month": "miesięcznie",
@@ -1245,7 +1245,7 @@
     "closing": {
       "title": "Daj swojemu zespołowi",
       "muted": "wspólne piętro.",
-      "note": "Za darmo dla maksymalnie 3 osób · Działa na Cloudflare"
+      "note": "14 dni Pro dla każdego nowego biura · Działa na Cloudflare"
     },
     "countries": {
       "label": "Zespoły pracują na TinyFloor w"
@@ -1272,7 +1272,7 @@
     },
     "price": {
       "title": "Jedna cena za całe biuro.",
-      "body": "Za darmo dla maksymalnie 3 osób. Potem Pro to jedna miesięczna cena za cały zespół, bez względu na to, ilu Was jest. Każde nowe biuro zaczyna od 14 dni Pro za darmo, bez karty.",
+      "body": "Jedna miesięczna cena za cały zespół, bez względu na to, ilu Was jest. Każde nowe biuro zaczyna od 14 dni Pro, bez karty, a do 3 osób może zostać na planie Free.",
       "team": "Twój zespół",
       "people": "{count} osób",
       "ours": "TinyFloor Pro",

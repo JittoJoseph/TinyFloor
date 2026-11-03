@@ -5,7 +5,7 @@ import { foundingOpen } from "@/lib/founding";
 import { SUPPORT_EMAIL } from "@/components/legal/LegalPage";
 import { PLANS } from "@/lib/plans";
 import { cn } from "@/lib/utils";
-import { CJK_HEADLINE, COLUMN, Closing, EYEBROW, Heading, LEAD, MarketingShell, Notes, PlanCards, Questions, STAGE, quiet } from "./Blocks";
+import { CJK_HEADLINE, COLUMN, Closing, Heading, LEAD, MarketingShell, Notes, PlanCards, Questions, STAGE, quiet } from "./Blocks";
 
 /**
  * The pricing page (docs/pricing.md): Free and Pro up top, then three things
@@ -15,14 +15,12 @@ import { CJK_HEADLINE, COLUMN, Closing, EYEBROW, Heading, LEAD, MarketingShell, 
  */
 export function PricingPage() {
   const t = useTranslations("pricingPage");
-  const tp = useTranslations("homepage.pricing");
   const tl = useTranslations("landings");
   const tq = useTranslations("pricingFaq");
   return (
     <MarketingShell path="/pricing" oneTap>
       <section className={cn(COLUMN, "pb-24 pt-32 sm:pb-36 sm:pt-44")}>
         <div className="flex flex-col items-center text-center">
-          <p className={cn(EYEBROW, "mb-6")}>{tp("eyebrow")}</p>
           <h1
             className={cn(
               "max-w-[16ch] text-balance text-[40px] font-normal leading-[1.04] tracking-[-0.045em] min-[400px]:text-[44px] sm:text-[64px] lg:text-[72px]",

@@ -110,7 +110,6 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
 
       <Hero
         size="page"
-        eyebrow={t(`pages.${page.key}.label`)}
         title={emphasised(t.raw(`pages.${page.key}.title`) as string, locale, "")}
         body={copy.subtitle}
       />
@@ -170,7 +169,7 @@ export async function LandingPage({ page, locale }: { page: Landing; locale: str
           {/* The page's own group first, then the others; each shows a few and leads to its index for the rest. */}
           {[page.group, ...LANDING_GROUPS.filter((group) => group !== page.group)].map((group) => (
             <nav key={group} aria-label={t(group)}>
-              <p className="px-1 text-[12px] font-medium uppercase tracking-[0.16em] text-faint">{t(group)}</p>
+              <p className="px-1 text-[14px] font-semibold text-foreground/80">{t(group)}</p>
               <ul className="mt-4 grid gap-2">
                 {(group === page.group ? relatedLandings(page, 3) : LANDINGS.filter((other) => other.group === group).slice(0, 3)).map(
                   (other) => (

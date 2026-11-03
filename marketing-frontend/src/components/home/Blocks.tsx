@@ -43,7 +43,6 @@ export const INK = cn(PILL, "bg-foreground text-background hover:bg-foreground/8
 export const STONE = cn(PILL, "bg-foreground/[0.06] text-foreground hover:bg-foreground/[0.1]");
 
 /** The small label over a heading. */
-export const EYEBROW = "text-[12px] font-medium uppercase tracking-[0.16em] text-faint";
 
 /** A section heading: the claim, then its quieter second half. */
 export const H2 =
@@ -91,12 +90,10 @@ export function MarketingShell({ path = "/", oneTap = false, children }: { path?
  * it, its own dark shell for a frame.
  */
 export function Hero({
-  eyebrow,
   title,
   body,
   size = "home",
 }: {
-  eyebrow?: string;
   title: ReactNode;
   body: string;
   /** The home page's headline is the largest; a page written for a search has a longer one. */
@@ -106,7 +103,6 @@ export function Hero({
   return (
     <section className={size === "home" ? "pt-36 sm:pt-48" : "pt-32 sm:pt-44"}>
       <div className={cn(COLUMN, "flex flex-col items-center text-center")}>
-        {eyebrow && <p className={cn(EYEBROW, "rise mb-6")}>{eyebrow}</p>}
         <h1
           className={cn(
             "words-now text-balance font-normal tracking-[-0.045em]",
@@ -175,15 +171,13 @@ export function Joined({ placement, className, style }: { placement: string; cla
   );
 }
 
-/** A section's centred heading: the small label, the two-tone claim, and an optional sentence. */
+/** A section's centred heading: the two-tone claim, and an optional sentence. */
 export function Heading({
-  eyebrow,
   title,
   muted,
   body,
   className,
 }: {
-  eyebrow?: string;
   title: ReactNode;
   muted?: ReactNode;
   body?: string;
@@ -191,7 +185,6 @@ export function Heading({
 }) {
   return (
     <div className={cn("mx-auto max-w-[40rem] text-center", className)}>
-      {eyebrow && <p className={cn(EYEBROW, "mb-5")}>{eyebrow}</p>}
       <h2 className={cn(H2, CJK_HEADLINE)}>
         {title}
         {muted && <span className="block text-muted-foreground/75">{muted}</span>}
@@ -219,7 +212,7 @@ export function FloorMoments({ className }: { className?: string }) {
       {/* A band from edge to edge on a phone, so the cards get the whole width; a rounded panel wider. */}
       <div className={cn(STAGE, "py-16 sm:rounded-[44px] sm:py-28")}>
         <div className={COLUMN}>
-          <Heading eyebrow={t("eyebrow")} title={t("title")} muted={t("muted")} body={t("body")} />
+          <Heading title={t("title")} muted={t("muted")} body={t("body")} />
           {/*
             On a phone the three moments are a row to swipe through, each card
             most of the screen wide with the next one peeking in; wider, a stack

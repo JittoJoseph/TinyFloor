@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ORG_ID, pageGraph } from "@/lib/structured-data";
 import { AUTHOR, SOCIALS } from "@/lib/site";
 import { JsonLd } from "@/components/JsonLd";
-import { COLUMN, CJK_HEADLINE, Closing, EYEBROW, LEAD, MarketingShell } from "@/components/home/Blocks";
+import { COLUMN, CJK_HEADLINE, Closing, LEAD, MarketingShell } from "@/components/home/Blocks";
 import { GitHubMark } from "@/components/home/SiteFooter";
 import { FloorScene } from "@/components/floor/FloorScene";
 import { EVERYONE } from "@/components/floor/scenes";
@@ -79,10 +79,9 @@ export default async function AboutPage({ params }: Props) {
       />
 
       <header className={cn(COLUMN, "pt-32 sm:pt-40")}>
-        <p className={EYEBROW}>{t("eyebrow")}</p>
         <h1
           className={cn(
-            "mt-5 max-w-[17ch] text-balance text-[38px] font-normal leading-[1.05] tracking-[-0.045em] min-[400px]:text-[42px] sm:text-[60px]",
+            "max-w-[17ch] text-balance text-[38px] font-normal leading-[1.05] tracking-[-0.045em] min-[400px]:text-[42px] sm:text-[60px]",
             CJK_HEADLINE,
           )}
         >

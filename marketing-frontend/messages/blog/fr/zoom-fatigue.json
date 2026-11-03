@@ -1,0 +1,139 @@
+{
+  "label": "Réunionite et fatigue Zoom",
+  "meta": {
+    "title": "Réunionite et fatigue Zoom : ce que dit la recherche, et ce qui aide",
+    "description": "Trop de réunions, fatigue des visioconférences : ce qui les cause, si couper la caméra aide, pourquoi les réunions enchaînées aggravent tout, et ce qu'une équipe à distance peut changer, d'après Stanford, le Journal of Applied Psychology et Microsoft."
+  },
+  "coverAlt": "Une petite caméra posée sur un oreiller sous un croissant de lune, sur un fond lavande vif.",
+  "title": "Réunionite et fatigue Zoom : <em>ce que dit la recherche, et ce qui aide vraiment.</em>",
+  "intro": "La réunionite, c'est passer plus de temps en réunion que le travail ne l'exige ; la fatigue Zoom, c'est l'épuisement qui suit une journée de visioconférences. Les deux vont ensemble, et la recherche pointe trois causes : la caméra, les réunions enchaînées, et des réunions plus nombreuses que nécessaire. Dans une étude de quatre semaines auprès de 103 salariés, les journées caméra allumée étaient plus fatigantes que les journées caméra coupée, surtout pour les femmes et les nouveaux arrivants ; dans l'étude de Microsoft sur l'activité cérébrale, le stress montait au fil des réunions enchaînées et retombait avec de courtes pauses. Voici ce que chaque étude a trouvé, et ce qu'une équipe à distance peut changer. Chaque résultat renvoie à sa source.",
+  "takeaways": [
+    "La fatigue Zoom, c'est le sentiment d'être vidé après une journée de visioconférences. Elle ne vient pas de Zoom en particulier : n'importe quel appel vidéo peut la provoquer.",
+    "Jeremy Bailenson, de Stanford, propose quatre causes : le regard de près, se voir soi-même toute la journée, rester immobile, et l'effort supplémentaire pour lire les autres sur un écran [1].",
+    "Couper la caméra a réduit la fatigue quotidienne dans une étude de quatre semaines auprès de 103 salariés, surtout pour les femmes et les nouveaux arrivants [2].",
+    "Dans l'étude EEG de Microsoft, le stress s'accumulait au fil de quatre réunions enchaînées ; 10 minutes de pause entre elles ont arrêté cette accumulation [3].",
+    "68 % des personnes disent manquer de temps de concentration sans interruption, et les réunions inefficaces sont le premier frein à leur productivité [4]."
+  ],
+  "sections": [
+    {
+      "title": "Qu'est-ce que la réunionite ?",
+      "body": [
+        "La réunionite, c'est l'excès de réunions : des agendas pleins de créneaux de 30 minutes, des réunions pour faire le point sur d'autres réunions, et trop peu de temps pour travailler. À distance, elle s'aggrave, car chaque échange, même une question de deux minutes, devient souvent une visio programmée.",
+        "Les chiffres le confirment. Dans le Work Trend Index 2023 de Microsoft, 68 % des personnes disent manquer de temps de concentration sans interruption, et les réunions inefficaces arrivent en tête des freins à la productivité [4]. Parmi les télétravailleurs interrogés par Buffer en 2023, 75 % passent entre 1 et 10 heures par semaine en réunion [5]."
+      ]
+    },
+    {
+      "title": "Qu'est-ce que la fatigue Zoom ?",
+      "body": [
+        "La fatigue Zoom, c'est la lassitude après une journée de visioconférences : se sentir vidé, manquer d'énergie, avoir plus de mal à prendre la parole. Le terme s'est imposé en 2020, quand les réunions sont passées en vidéo presque du jour au lendemain, mais la cause est le format, pas une application. Teams, Google Meet ou n'importe quel appel vidéo peuvent produire le même effet.",
+        "Ce n'est pas qu'une question de confort. Dans l'étude sur la caméra plus bas, la fatigue d'une journée allait de pair avec moins de prises de parole et moins d'implication en réunion, le jour même et le lendemain [2]."
+      ]
+    },
+    {
+      "title": "Qu'est-ce qui cause la fatigue Zoom ?",
+      "body": [
+        "En 2021, Jeremy Bailenson, qui dirige le Virtual Human Interaction Lab de Stanford, a proposé quatre causes dans Technology, Mind, and Behavior [1]. Il les présente comme des hypothèses tirées de recherches antérieures, qui restent à vérifier directement sur la visioconférence, mais elles ont inspiré l'essentiel des travaux suivants."
+      ],
+      "items": [
+        {
+          "title": "Un regard de très près",
+          "body": "En visio, les visages remplissent l'écran et tout le monde semble vous regarder droit dans les yeux en permanence, une intensité qu'on réserve d'habitude aux échanges très rapprochés."
+        },
+        {
+          "title": "Un miroir toute la journée",
+          "body": "Voir sa propre image pendant des heures revient à travailler devant un miroir : on s'observe et on se juge sans arrêt."
+        },
+        {
+          "title": "Rester immobile",
+          "body": "Pour rester dans le cadre, on reste au même endroit. Dans une salle ou au téléphone, on bouge."
+        },
+        {
+          "title": "Plus d'effort pour lire les autres",
+          "body": "Les gestes et les signaux passent moins bien à l'écran, donc chaque échange demande plus de concentration qu'en personne."
+        }
+      ]
+    },
+    {
+      "title": "Couper la caméra, ça aide ?",
+      "body": [
+        "Oui, d'après l'étude de terrain la plus solide à ce jour. Kristen Shockley et ses collègues ont mené une expérience de quatre semaines auprès de 103 salariés, recueilli 1 408 relevés quotidiens, et fait alterner caméra allumée et caméra coupée en réunion. Les jours caméra allumée, les participants étaient plus fatigués, et cette fatigue allait de pair avec moins de prises de parole et d'implication, le jour même et le lendemain [2].",
+        "L'effet était plus fort pour les femmes et pour les personnes arrivées récemment [2], souvent celles dont on attend le plus qu'elles montrent leur présence. Rendre la caméra facultative plutôt que systématique supprime cette pression sans que personne ait à le demander."
+      ]
+    },
+    {
+      "title": "Les réunions enchaînées aggravent-elles les choses ?",
+      "body": [
+        "Oui. En 2021, le Human Factors Lab de Microsoft a équipé 14 personnes de casques EEG pendant quatre visioconférences d'une demi-heure, deux jours différents : une fois enchaînées, une fois avec 10 minutes de pause entre chacune [3].",
+        "Sans pause, l'activité des ondes cérébrales liées au stress augmentait de réunion en réunion et bondissait à chaque passage à l'appel suivant. Avec des pauses, elle retombait entre les réunions, restait stable sur les quatre, et les participants étaient plus impliqués [3]. Le passage d'un appel au suivant était le moment de stress le plus fort."
+      ]
+    },
+    {
+      "title": "Qu'est-ce qui aide vraiment ?",
+      "items": [
+        {
+          "title": "La caméra facultative par défaut",
+          "body": "Commencer les appels par la voix, et allumer la caméra quand elle sert : montrer quelque chose, une première rencontre, une conversation difficile. L'étude sur la caméra suggère que cela seul réduit la fatigue [2]."
+        },
+        {
+          "title": "Masquer sa propre image",
+          "body": "La plupart des outils de visio permettent de masquer son propre aperçu. Cela supprime le miroir de Bailenson sans rien changer pour les autres [1]."
+        },
+        {
+          "title": "Laisser des pauses entre les réunions",
+          "body": "Terminer les réunions d'une demi-heure à 25 minutes et celles d'une heure à 50, pour que personne n'enchaîne directement deux appels [3]."
+        },
+        {
+          "title": "Sortir les points d'avancement des réunions",
+          "body": "Les mises à jour qui ne demandent pas de discussion peuvent s'écrire. Notre guide de la [communication asynchrone](/guides/async-communication) montre ce qu'on écrit et ce dont on parle, et un [ordre du jour de réunion](/guides/team-meeting-agenda) garde courtes les réunions qui restent."
+        },
+        {
+          "title": "Remplacer les petites réunions par de courtes conversations",
+          "body": "Beaucoup de réunions de 30 minutes n'existent que parce qu'il n'y a pas d'autre moyen de se parler. Quand une équipe voit qui est disponible et peut parler deux minutes, une bonne partie devient inutile."
+        },
+        {
+          "title": "Prendre certains appels en marchant",
+          "body": "Un appel audio en marchant supprime d'un coup l'immobilité et le regard de près."
+        }
+      ]
+    },
+    {
+      "title": "Où un bureau virtuel trouve sa place",
+      "body": [
+        "Notre lecture, pas celle des études : une grande part de la réunionite et de la fatigue Zoom vient du fait que chaque conversation devient une visio programmée. Un [bureau virtuel](/virtual-office) permet à une équipe de se parler comme au bureau : on voit qui est là, on s'approche et on parle une minute, caméra coupée sauf si on la veut. Les échanges plus longs ont toujours lieu dans une [salle de réunion](/virtual-meeting-room), mais il en faut moins."
+      ]
+    }
+  ],
+  "fit": {
+    "title": "À qui TinyFloor convient",
+    "body": "Dans TinyFloor, un appel commence par la voix, et la caméra est un bouton qui se recoupe à l'appel suivant. On va vers un collègue au lieu d'envoyer un lien, et à partir de trois on se retrouve dans la salle de réunion. C'est fait pour une équipe qui travaille ensemble tous les jours et veut moins de réunions programmées. Pro coûte un seul prix pour tout le bureau, 29 dollars par mois, et chaque nouveau bureau commence avec 14 jours de Pro, sans carte bancaire."
+  },
+  "faq": [
+    {
+      "q": "Qu'est-ce que la réunionite ?",
+      "a": "La réunionite, c'est l'excès de réunions : plus de temps passé en réunion que le travail ne l'exige, au détriment du temps de concentration. À distance, chaque échange devenant souvent une visio, elle s'aggrave."
+    },
+    {
+      "q": "Qu'est-ce que la fatigue Zoom ?",
+      "a": "C'est le sentiment d'être vidé et sans énergie après une journée de visioconférences. Le nom vient de Zoom, mais n'importe quel appel vidéo peut la provoquer."
+    },
+    {
+      "q": "Couper la caméra réduit-il la fatigue Zoom ?",
+      "a": "Oui. Dans une expérience de terrain de quatre semaines auprès de 103 salariés, publiée en 2021 dans le Journal of Applied Psychology, les journées caméra coupée étaient moins fatigantes, surtout pour les femmes et les nouveaux arrivants."
+    },
+    {
+      "q": "Combien de temps de pause entre deux réunions ?",
+      "a": "Dans l'étude EEG de Microsoft de 2021, 10 minutes de pause entre des réunions d'une demi-heure ont empêché le stress de s'accumuler sur quatre réunions. Terminer les réunions cinq ou dix minutes plus tôt a le même effet en pratique."
+    },
+    {
+      "q": "Comment lutter contre la réunionite ?",
+      "a": "Partager les points d'avancement par écrit, raccourcir les réunions et laisser des pauses entre elles, et régler les petites questions sans réunion, là où l'équipe voit qui est disponible et peut se parler deux minutes."
+    }
+  ],
+  "sources": [
+    { "title": "Bailenson, Nonverbal overload: A theoretical argument for the causes of Zoom fatigue, Technology, Mind, and Behavior (2021)", "url": "https://psycnet.apa.org/record/2021-22045-001", "note": "Quatre causes proposées : regard rapproché, charge cognitive, miroir permanent, mobilité réduite ; hypothèses à vérifier directement sur la visioconférence." },
+    { "title": "Shockley et al., The fatiguing effects of camera use in virtual meetings, Journal of Applied Psychology (2021)", "url": "https://pubmed.ncbi.nlm.nih.gov/34423999/", "note": "Expérience de terrain de quatre semaines, 103 salariés, 1 408 relevés quotidiens : caméra allumée, plus de fatigue, surtout pour les femmes et les nouveaux arrivants ; la fatigue réduisait prises de parole et implication le jour même et le lendemain." },
+    { "title": "Microsoft WorkLab, Research Proves Your Brain Needs Breaks", "url": "https://www.microsoft.com/en-us/worklab/work-trend-index/brain-research", "note": "20 avril 2021 : 14 personnes sous EEG, quatre réunions d'une demi-heure enchaînées ou séparées de 10 minutes ; sans pause le stress s'accumulait, avec des pauses non." },
+    { "title": "Microsoft, Work Trend Index 2023: Will AI Fix Work?", "url": "https://www.microsoft.com/en-us/worklab/work-trend-index/will-ai-fix-work", "note": "68 % manquent de temps de concentration sans interruption ; les réunions inefficaces sont le premier frein à la productivité." },
+    { "title": "Buffer, 2023 State of Remote Work", "url": "https://buffer.com/state-of-remote-work/2023", "note": "3 000 télétravailleurs : 75 % passent de 1 à 10 heures par semaine en réunion." }
+  ]
+}

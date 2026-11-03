@@ -205,40 +205,17 @@ export async function BlogPostPage({ post, copy, ui, locale }: { post: BlogPost;
 }
 
 /** A post on the index, under another post, or on a page it leads to: its cover, its category and date, its title. */
-export function PostCard({
-  post,
-  copy,
-  ui,
-  locale,
-  size = "md",
-}: {
-  post: BlogPost;
-  copy: PostCopy;
-  ui: BlogUi;
-  locale: string;
-  /** The newest post on the index: the cover beside the words, larger. */
-  size?: "md" | "lg";
-}) {
-  const large = size === "lg";
+export function PostCard({ post, copy, ui, locale, priority = false }: { post: BlogPost; copy: PostCopy; ui: BlogUi; locale: string; priority?: boolean }) {
   return (
-    <Link href={postPath(post)} className={cn("group block", large && "grid items-center gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-14")}>
-      <Cover post={post} alt={copy.coverAlt} priority={large} className={large ? "" : "rounded-[22px]"} />
-      <span className={cn("block", large ? "" : "mt-5")}>
-        <span className="flex flex-wrap items-center gap-x-2 text-[13px] text-muted-foreground">
-          <span className="font-medium text-foreground/80">{ui.categories[post.category]}</span>
-          <span aria-hidden>·</span>
-          <time dateTime={post.published}>{postDate(locale, post.published)}</time>
-        </span>
-        <span
-          className={cn(
-            "mt-2.5 block text-balance font-semibold tracking-[-0.02em] transition-colors group-hover:text-foreground/80",
-            large ? "text-[28px] leading-[1.12] sm:text-[36px]" : "text-[19px] leading-[1.25]",
-            CJK_HEADLINE,
-          )}
-        >
-          {copy.meta.title}
-        </span>
-        {large && <span className="mt-4 block text-[16px] leading-[1.6] text-muted-foreground">{copy.meta.description}</span>}
+    <Link href={postPath(post)} className="group block">
+      <Cover post={post} alt={copy.coverAlt} priority={priority} className="rounded-[22px]" />
+      <span className="mt-5 flex flex-wrap items-center gap-x-2 text-[13px] text-muted-foreground">
+        <span className="font-medium text-foreground/80">{ui.categories[post.category]}</span>
+        <span aria-hidden>·</span>
+        <time dateTime={post.published}>{postDate(locale, post.published)}</time>
+      </span>
+      <span className={cn("mt-2.5 block text-balance text-[19px] font-semibold leading-[1.25] tracking-[-0.02em] transition-colors group-hover:text-foreground/80", CJK_HEADLINE)}>
+        {copy.meta.title}
       </span>
     </Link>
   );

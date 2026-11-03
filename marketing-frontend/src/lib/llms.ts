@@ -13,8 +13,8 @@ import {
 import { GUIDES, GUIDES_PATH, guidePath, type GuideKey, type GuideSection } from "@/lib/guides";
 import { landingArticle } from "@/lib/landing-articles";
 import { guideCopies } from "@/lib/guide-copy";
-import { BLOG_DESCRIPTION, BLOG_PATH, BLOG_TITLE, postPath } from "@/lib/blog";
-import { postsWithCopy } from "@/lib/blog-copy";
+import { BLOG_PATH, postPath } from "@/lib/blog";
+import { blogUi, postsWithCopy } from "@/lib/blog-copy";
 import { PLANS } from "@/lib/plans";
 import { FOUNDING, foundingOpen } from "@/lib/founding";
 import { CHANGELOG, CHANGELOG_PATH, RELEASES } from "@/lib/changelog";
@@ -108,12 +108,13 @@ async function common() {
     [text("guides.hub.meta.title"), GUIDES_PATH, text("guides.hub.meta.description")],
     ...GUIDES.map((one): Link => [guide(one.key).meta.title, guidePath(one), guide(one.key).meta.description]),
   ];
-  const posts = await postsWithCopy();
-  return { text, raw, page, hub, pagesOf, product, features, faq, guide, guides, posts };
+  const posts = await postsWithCopy("en");
+  const blog = await blogUi("en");
+  return { text, raw, page, hub, pagesOf, product, features, faq, guide, guides, posts, blog };
 }
 
 export async function llmsTxt(): Promise<string> {
-  const { text, page, hub, pagesOf, product, features, faq, guides, posts } = await common();
+  const { text, page, hub, pagesOf, product, features, faq, guides, posts, blog } = await common();
   return [
     "# TinyFloor",
     "",
@@ -140,9 +141,9 @@ export async function llmsTxt(): Promise<string> {
     "",
     ...list(guides),
     "",
-    `## ${BLOG_TITLE}`,
+    `## ${blog.label}`,
     "",
-    ...list([[BLOG_TITLE, BLOG_PATH, BLOG_DESCRIPTION], ...posts.map(({ post, copy }): Link => [copy.meta.title, postPath(post), copy.meta.description])]),
+    ...list([[blog.meta.title, BLOG_PATH, blog.meta.description], ...posts.map(({ post, copy }): Link => [copy.meta.title, postPath(post), copy.meta.description])]),
     "",
     "## What's in every office",
     "",
@@ -162,7 +163,7 @@ export async function llmsTxt(): Promise<string> {
 }
 
 export async function llmsFullTxt(): Promise<string> {
-  const { text, raw, page, pagesOf, features, faq, guide, posts } = await common();
+  const { text, raw, page, pagesOf, features, faq, guide, posts, blog } = await common();
   const articles = Object.fromEntries(
     await Promise.all(LANDINGS.map(async (landing) => [landing.key, await landingArticle("en", landing.key)] as const)),
   );
@@ -340,9 +341,9 @@ export async function llmsFullTxt(): Promise<string> {
     text("guides.hub.meta.description"),
     "",
     ...GUIDES.flatMap((one) => guidePage(one.key, guidePath(one))),
-    `## ${BLOG_TITLE}`,
+    `## ${blog.label}`,
     "",
-    BLOG_DESCRIPTION,
+    blog.meta.description,
     "",
     // A post as it reads: what to take away, its sections, and the sources its [1] markers cite.
     ...posts.flatMap(({ post, copy }) => [

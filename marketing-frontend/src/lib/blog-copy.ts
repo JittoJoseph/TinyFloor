@@ -1,8 +1,13 @@
 import { cache } from "react";
-import { POSTS, type PostCopy } from "@/lib/blog";
+import { postsIn, type BlogPost, type BlogUi, type PostCopy } from "@/lib/blog";
 
-/** A post's words, from messages/blog/<slug>.json (lib/blog). */
-export const postCopy = cache(async (slug: string): Promise<PostCopy> => (await import(`../../messages/blog/${slug}.json`)).default);
+/** A post's words in one language, from messages/blog/<locale>/<slug>.json (lib/blog). */
+export const postCopy = cache(async (locale: string, slug: string): Promise<PostCopy> => (await import(`../../messages/blog/${locale}/${slug}.json`)).default);
 
-/** Every post with its words, newest first, for the index and llms.txt. */
-export const postsWithCopy = cache(async () => Promise.all(POSTS.map(async (post) => ({ post, copy: await postCopy(post.slug) }))));
+/** The blog's own words in one language, from messages/blog/<locale>/index.json. */
+export const blogUi = cache(async (locale: string): Promise<BlogUi> => (await import(`../../messages/blog/${locale}/index.json`)).default);
+
+/** Every post in one language with its words, newest first, for the index, the cards and llms.txt. */
+export const postsWithCopy = cache(async (locale: string): Promise<Array<{ post: BlogPost; copy: PostCopy }>> =>
+  Promise.all(postsIn(locale).map(async (post) => ({ post, copy: await postCopy(locale, post.slug) }))),
+);

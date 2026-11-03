@@ -1,0 +1,21 @@
+{
+  "label": "블로그",
+  "meta": {
+    "title": "블로그: 원격 팀의 질문에 숫자로 답합니다",
+    "description": "원격 팀이 함께 일하는 방식을 고르기 전에 묻는 질문에, 출처가 있는 숫자로 답합니다. TinyFloor를 만드는 팀이 씁니다."
+  },
+  "title": "원격 팀의 질문에 <em>숫자로 답합니다.</em>",
+  "body": "비용, 비교, 연구. 원격 팀이 일하는 방식을 고르기 전에 궁금한 것들을 출처와 함께 정리했어요.",
+  "categories": {
+    "costs": "비용",
+    "comparisons": "비교",
+    "remoteWork": "원격 근무"
+  },
+  "latest": "최신 글",
+  "takeaways": "핵심 요약",
+  "sources": "출처",
+  "related": "관련 글",
+  "guides": "같은 주제의 가이드",
+  "fromBlog": "블로그",
+  "all": "모든 글"
+}

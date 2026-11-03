@@ -1,0 +1,21 @@
+{
+  "label": "Blog",
+  "meta": {
+    "title": "Blog : les questions des équipes à distance, chiffres à l'appui",
+    "description": "Ce que les équipes à distance se demandent avant de choisir comment travailler ensemble, avec des chiffres et leurs sources, par l'équipe qui fait TinyFloor."
+  },
+  "title": "Les questions des équipes à distance, <em>chiffres à l'appui.</em>",
+  "body": "Coûts, comparatifs et études : ce que les équipes à distance veulent savoir avant de choisir comment travailler ensemble, toujours avec les sources.",
+  "categories": {
+    "costs": "Coûts",
+    "comparisons": "Comparatifs",
+    "remoteWork": "Travail à distance"
+  },
+  "latest": "Récents",
+  "takeaways": "L'essentiel",
+  "sources": "Sources",
+  "related": "Articles liés",
+  "guides": "Guides sur le même sujet",
+  "fromBlog": "Sur le blog",
+  "all": "Tous les articles"
+}

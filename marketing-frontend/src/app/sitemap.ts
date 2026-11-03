@@ -15,7 +15,7 @@ import { TWO_TRUTHS_UPDATED } from '@/lib/tools/two-truths';
 import { WOULD_YOU_RATHER_UPDATED } from '@/lib/tools/would-you-rather';
 import { CHANGELOG_PATH, CHANGELOG_UPDATED } from '@/lib/changelog';
 import { HOW_IT_WORKS_PATH, HOW_IT_WORKS_UPDATED } from '@/lib/how-it-works';
-import { BLOG_PATH, POSTS, postPath } from '@/lib/blog';
+import { BLOG_LOCALES, BLOG_PATH, POSTS, postPath } from '@/lib/blog';
 
 /**
  * The day the home page, pricing, the indexes and about last changed (YYYY-MM-DD).
@@ -75,9 +75,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // How it works and the changelog are in English only too, and change as the product does.
     { url: absolute(HOW_IT_WORKS_PATH), lastModified: HOW_IT_WORKS_UPDATED, changeFrequency: 'monthly' as const, priority: 0.6 },
     { url: absolute(CHANGELOG_PATH), lastModified: CHANGELOG_UPDATED, changeFrequency: 'weekly' as const, priority: 0.5 },
-    // The blog is in English only (lib/blog); its index changes with its newest post.
-    { url: absolute(BLOG_PATH), lastModified: POSTS[0].updated, changeFrequency: 'weekly' as const, priority: 0.6 },
-    ...POSTS.map((post) => ({ url: absolute(postPath(post)), lastModified: post.updated, changeFrequency: 'monthly' as const, priority: 0.6 })),
+    // The blog, in the languages it has posts in, and each post in the ones it's written in (lib/blog),
+    // with its other languages beside it. The index changes with its newest post.
+    ...BLOG_LOCALES.map((locale) => ({
+      url: absolute(localePath(locale, BLOG_PATH)),
+      lastModified: POSTS[0].updated,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+      alternates: { languages: Object.fromEntries(BLOG_LOCALES.map((one) => [one, absolute(localePath(one, BLOG_PATH))])) },
+    })),
+    ...POSTS.flatMap((post) =>
+      post.locales.map((locale) => ({
+        url: absolute(localePath(locale, postPath(post))),
+        lastModified: post.updated,
+        changeFrequency: 'monthly' as const,
+        priority: 0.7,
+        images: [absolute(`/blog/${post.slug}.webp`)],
+        alternates: { languages: Object.fromEntries(post.locales.map((one) => [one, absolute(localePath(one, postPath(post)))])) },
+      })),
+    ),
     // The guides and the free tools, each in the languages it's written in. A guide's
     // date is the day its words last changed, so it's a lastmod crawlers can trust.
     ...GUIDES.flatMap((guide) =>

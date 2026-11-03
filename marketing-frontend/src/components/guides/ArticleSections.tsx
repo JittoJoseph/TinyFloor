@@ -53,7 +53,7 @@ function cited(text: string, at: number): ReactNode {
 export function ArticleContents({ sections, label }: { sections: GuideSection[]; label: string }) {
   return (
     <div className={cn(READ, "rounded-[22px] bg-muted/80 p-6 sm:p-7")}>
-      <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-faint">{label}</p>
+      <p className="text-[15px] font-semibold tracking-[-0.01em]">{label}</p>
       <ol className="mt-4 grid gap-2.5 text-[15px]">
         {sections.map((section, index) => (
           <li key={section.title} className="flex gap-3">

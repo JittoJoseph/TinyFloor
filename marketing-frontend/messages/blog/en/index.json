@@ -1,0 +1,21 @@
+{
+  "label": "Blog",
+  "meta": {
+    "title": "Blog: Remote Team Questions, Answered With Numbers",
+    "description": "What remote teams ask before choosing how to work together, answered with numbers and where they come from, by the people who make TinyFloor."
+  },
+  "title": "Questions remote teams ask, <em>answered with numbers.</em>",
+  "body": "What remote teams ask before choosing how to work together: costs, comparisons and research, each with its sources.",
+  "categories": {
+    "costs": "Costs",
+    "comparisons": "Comparisons",
+    "remoteWork": "Remote work"
+  },
+  "latest": "Latest",
+  "takeaways": "Key takeaways",
+  "sources": "Sources",
+  "related": "Related articles",
+  "guides": "Guides on the same subject",
+  "fromBlog": "From the blog",
+  "all": "All articles"
+}

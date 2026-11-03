@@ -42,6 +42,8 @@ import { HomeNavActions } from "./HomeNavActions";
 import { MobileMenu, MobileSection } from "./MobileMenu";
 import { Later } from "./Later";
 import { ScrollHeader } from "./ScrollHeader";
+import { BLOG_LOCALES, BLOG_PATH, postsIn } from "@/lib/blog";
+import { blogUi, postCopy } from "@/lib/blog-copy";
 
 export const COLUMN = "mx-auto w-full max-w-[1200px] px-5 sm:px-8";
 
@@ -112,6 +114,10 @@ export async function HomeNav({ fade = true }: { fade?: boolean }) {
   const plain =
     "flex h-9 items-center rounded-full px-3.5 text-[14.5px] text-foreground/70 transition-colors hover:bg-foreground/[0.05] hover:text-foreground";
   const demoStrip = <MenuStrip href="/lobby" title={t("nav.lobbyTitle")} line={t("nav.lobbyLine")} floor="-279px -98px" />;
+  // Where the language has a blog, resources lead with it: its name and its newest post.
+  const blog = BLOG_LOCALES.includes(locale as Locale) ? await blogUi(locale) : null;
+  const newest = blog ? await postCopy(locale, postsIn(locale)[0].slug) : null;
+  const blogStrip = blog && newest ? <MenuStrip href={BLOG_PATH} title={blog.label} line={newest.meta.title} floor="-552px -10px" /> : null;
   const compareLabel = (page: Landing) => {
     const name = page.competitor ?? page.product;
     return name ? t("footer.vs", { name }) : tl(`pages.${page.key}.label`);
@@ -181,7 +187,7 @@ export async function HomeNav({ fade = true }: { fade?: boolean }) {
             </MenuColumn>
           </Menu>
 
-          <Menu label={t("footer.resources")} strip={demoStrip}>
+          <Menu label={t("footer.resources")} strip={blogStrip ?? demoStrip}>
             <MenuColumn title={tg("label")} all={{ href: GUIDES_PATH, label: tg("all") }}>
               {topGuides.slice(0, Math.max(tools.length, 4)).map((guide) => (
                 <MenuLink key={guide.slug} href={guidePath(guide)} icon={<BookOpen />} label={guides[guide.key].label} />
@@ -251,6 +257,7 @@ export async function HomeNav({ fade = true }: { fade?: boolean }) {
               ))}
               <MobileItem href={GUIDES_PATH} title={tg("all")} />
               <MobileItem href={TOOLS_PATH} title={t("footer.tools")} />
+              {blog && <MobileItem href={BLOG_PATH} title={blog.label} />}
             </MobileSection>
             <div className="divide-y divide-border border-b border-border">
               <MobileLink href="/pricing">{t("nav.pricing")}</MobileLink>

@@ -27,7 +27,7 @@ import {
   Zap,
 } from "@/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import { GUIDES_PATH, guidePath, guidesIn, type GuideKey } from "@/lib/guides";
+import { GUIDES_PATH, guideCover, guidePath, guidesIn, type GuideKey } from "@/lib/guides";
 import { guideCopies } from "@/lib/guide-copy";
 import { HUBS, LANDINGS, landingByKey, type Landing, type LandingKey } from "@/lib/landings";
 import type { Locale } from "@/lib/i18n/routing";
@@ -42,7 +42,7 @@ import { HomeNavActions } from "./HomeNavActions";
 import { MobileMenu, MobileSection } from "./MobileMenu";
 import { Later } from "./Later";
 import { ScrollHeader } from "./ScrollHeader";
-import { BLOG_LOCALES, BLOG_PATH, postsIn } from "@/lib/blog";
+import { BLOG_LOCALES, BLOG_PATH, coverSrc, postsIn } from "@/lib/blog";
 import { blogUi, postCopy } from "@/lib/blog-copy";
 
 export const COLUMN = "mx-auto w-full max-w-[1200px] px-5 sm:px-8";
@@ -113,11 +113,12 @@ export async function HomeNav({ fade = true }: { fade?: boolean }) {
   const tools = TOP_TOOLS.filter((tool) => toolName(tool));
   const plain =
     "flex h-9 items-center rounded-full px-3.5 text-[14.5px] text-foreground/70 transition-colors hover:bg-foreground/[0.05] hover:text-foreground";
-  const demoStrip = <MenuStrip href="/lobby" title={t("nav.lobbyTitle")} line={t("nav.lobbyLine")} floor="-279px -98px" />;
+  const demoStrip = <MenuStrip href="/lobby" title={t("nav.lobbyTitle")} line={t("nav.lobbyLine")} image="/illustrations/demo-office.webp" />;
   // Where the language has a blog, resources lead with it: its name and its newest post.
   const blog = BLOG_LOCALES.includes(locale as Locale) ? await blogUi(locale) : null;
-  const newest = blog ? await postCopy(locale, postsIn(locale)[0].slug) : null;
-  const blogStrip = blog && newest ? <MenuStrip href={BLOG_PATH} title={blog.label} line={newest.meta.title} floor="-552px -10px" /> : null;
+  const latest = blog ? postsIn(locale)[0] : null;
+  const newest = latest ? await postCopy(locale, latest.slug) : null;
+  const blogStrip = blog && latest && newest ? <MenuStrip href={BLOG_PATH} title={blog.label} line={newest.meta.title} image={coverSrc(latest)} /> : null;
   const compareLabel = (page: Landing) => {
     const name = page.competitor ?? page.product;
     return name ? t("footer.vs", { name }) : tl(`pages.${page.key}.label`);
@@ -169,7 +170,7 @@ export async function HomeNav({ fade = true }: { fade?: boolean }) {
           <Menu
             label={t("footer.compare")}
             strip={
-              compareGuide && <MenuStrip href={guidePath(compareGuide)} title={guides.bestVirtualOffice.label} line={t("nav.compareGuide")} floor="-36px -104px" />
+              compareGuide && <MenuStrip href={guidePath(compareGuide)} title={guides.bestVirtualOffice.label} line={t("nav.compareGuide")} image={guideCover(compareGuide)} />
             }
           >
             <MenuColumn title={tl("compare")} all={{ href: `/${HUBS.compare}`, label: tl("all") }} wide>
@@ -316,17 +317,14 @@ function Monogram({ name }: { name: string }) {
 }
 
 /**
- * The line along the bottom of every menu: the one place to go first, with a
- * corner of the real floor, at the art's own pixels, beside it.
+ * The line along the bottom of every menu: the one place to go first, with
+ * its illustration beside it.
  */
-function MenuStrip({ href, title, line, floor }: { href: string; title: string; line: string; floor: string }) {
+function MenuStrip({ href, title, line, image }: { href: string; title: string; line: string; image: string }) {
   return (
     <Link href={href} className="group/strip flex items-center gap-3.5 rounded-[12px] bg-foreground/[0.04] p-2 pe-4 transition-colors hover:bg-foreground/[0.07]">
-      <span
-        aria-hidden
-        className="block h-[72px] w-[120px] shrink-0 rounded-[8px] bg-[url(/floor.webp)] bg-no-repeat [image-rendering:pixelated]"
-        style={{ backgroundSize: "768px 512px", backgroundPosition: floor }}
-      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={image} alt="" width={128} height={72} loading="lazy" decoding="async" className="h-[72px] w-[128px] shrink-0 rounded-[8px] object-cover" />
       <span className="min-w-0 flex-1">
         <span className="block text-[13.5px] font-medium leading-tight">{title}</span>
         <span className="mt-1 line-clamp-2 block text-[12.5px] leading-snug text-muted-foreground">{line}</span>

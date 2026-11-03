@@ -31,6 +31,15 @@ export interface BlogPost {
 /** Newest first. */
 export const POSTS: BlogPost[] = [
   {
+    slug: "zoom-fatigue",
+    category: "remoteWork",
+    published: "2026-11-03",
+    updated: "2026-11-03",
+    locales: ["en"],
+    pages: ["meetingRoom", "virtualOffice", "proximityChat"],
+    guides: ["async", "teamMeetingAgenda", "remoteCommunication"],
+  },
+  {
     slug: "remote-work-statistics",
     category: "remoteWork",
     published: "2026-11-03",

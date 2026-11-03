@@ -1,0 +1,138 @@
+{
+  "label": "Zoom fatigue",
+  "meta": {
+    "title": "Zoom Fatigue: What the Research Says, and What Actually Helps",
+    "description": "What causes Zoom fatigue, whether turning cameras off helps, why back-to-back meetings make it worse, and what remote teams can change, from Stanford, the Journal of Applied Psychology and Microsoft's brain research."
+  },
+  "coverAlt": "A small video camera resting on a pillow under a crescent moon, on a bright lavender background.",
+  "title": "Zoom fatigue: <em>what the research says, and what actually helps.</em>",
+  "intro": "Zoom fatigue is the drained, low-energy feeling after a day of video calls. The research points to three things that cause most of it: being on camera, meeting back to back, and meeting more than the work needs. In a four-week study of 103 employees, days with cameras on were more tiring than days with cameras off, more so for women and newer employees; in Microsoft's brainwave study, stress kept building through back-to-back meetings and reset with short breaks. Below is what each study found, and what a remote team can change. Every finding is linked to its source.",
+  "takeaways": [
+    "Zoom fatigue is the feeling of being drained after a day of video meetings. It isn't specific to Zoom: any video call can cause it.",
+    "Stanford's Jeremy Bailenson proposed four causes: close-up eye contact, seeing yourself all day, sitting still, and the extra effort of reading people on a screen [1].",
+    "Turning cameras off reduced daily fatigue in a four-week study of 103 employees, and the effect was stronger for women and newer employees [2].",
+    "In Microsoft's EEG study, stress built up through four back-to-back meetings; 10-minute breaks between them stopped the build-up [3].",
+    "68% of people say they don't have enough uninterrupted focus time, and inefficient meetings are their top productivity disruptor [4]."
+  ],
+  "sections": [
+    {
+      "title": "What is Zoom fatigue?",
+      "body": [
+        "Zoom fatigue is the tiredness that comes from a day of video meetings: feeling drained, lacking energy, finding it harder to speak up. The name caught on in 2020, when meetings moved to video almost overnight, but the cause is the format, not one app. Teams, Google Meet and any other video call can do the same.",
+        "It matters for more than comfort. In the camera study below, fatigue on a given day went with people speaking up less and being less engaged in meetings that day and the next [2]."
+      ]
+    },
+    {
+      "title": "What causes Zoom fatigue?",
+      "body": [
+        "In 2021 Jeremy Bailenson, who runs Stanford's Virtual Human Interaction Lab, proposed four causes in Technology, Mind, and Behavior [1]. He's careful to call them arguments from earlier research that still need testing on video calls directly, but they've shaped most of what came after."
+      ],
+      "items": [
+        {
+          "title": "Eye contact at close range",
+          "body": "On a call, faces fill the screen and everyone appears to look straight at you the whole time, an intensity of gaze people usually only hold at close range."
+        },
+        {
+          "title": "An all-day mirror",
+          "body": "Seeing your own video for hours is like working in front of a mirror, which keeps you watching and judging yourself."
+        },
+        {
+          "title": "Sitting still",
+          "body": "To stay in frame, people stay in one place. In a room or on a phone call, people move around."
+        },
+        {
+          "title": "More effort to read people",
+          "body": "Gestures and cues are harder to send and read on a screen, so each conversation takes more concentration than in person."
+        }
+      ]
+    },
+    {
+      "title": "Does turning the camera off help?",
+      "body": [
+        "Yes, according to the strongest field study so far. Kristen Shockley and colleagues ran a four-week experiment with 103 employees, collecting 1,408 daily reports, and switched whether people kept their cameras on or off in meetings. On camera-on days, people were more fatigued; and the fatigue went with less voice and engagement in meetings, the same day and the next [2].",
+        "The effect was stronger for women and for people newer to the organisation [2], who are often the ones expected most to show they're present. Making the camera optional, rather than the default, removes that pressure without anyone having to ask."
+      ]
+    },
+    {
+      "title": "Do back-to-back meetings make it worse?",
+      "body": [
+        "Yes. In 2021 Microsoft's Human Factors Lab put 14 people in EEG caps through four half-hour video meetings on two different days: once back to back, once with 10-minute breaks in between [3].",
+        "Back to back, activity in the brain waves linked to stress kept rising from meeting to meeting, and jumped at each switch to the next call. With breaks, it reset between meetings and held steady through all four, and people stayed more engaged [3]. The switch from one call to the next was where stress spiked most."
+      ]
+    },
+    {
+      "title": "How common is meeting overload?",
+      "body": [
+        "In Microsoft's Work Trend Index 2023, 68% of people said they don't have enough uninterrupted focus time during the workday, and inefficient meetings were the top productivity disruptor they named [4]. Among remote workers in Buffer's 2023 survey, 75% spend 1 to 10 hours a week in meetings [5]. For more numbers on how remote teams work, see our [remote work statistics](/blog/remote-work-statistics)."
+      ]
+    },
+    {
+      "title": "What actually helps?",
+      "items": [
+        {
+          "title": "Make cameras optional by default",
+          "body": "Start calls with voice, and turn the camera on when it helps: showing something, a first meeting, a hard conversation. The camera study suggests this alone cuts fatigue [2]."
+        },
+        {
+          "title": "Hide your own video",
+          "body": "Most video tools let you hide self-view. It removes Bailenson's all-day mirror without changing anything for anyone else [1]."
+        },
+        {
+          "title": "Leave gaps between meetings",
+          "body": "End half-hour meetings at 25 minutes and hour-long ones at 50, so nobody goes straight from one call to the next [3]."
+        },
+        {
+          "title": "Move status updates out of meetings",
+          "body": "Updates that don't need a conversation can be written. Our guide to [async communication](/guides/async-communication) covers what to write and what to talk about, and a [team meeting agenda](/guides/team-meeting-agenda) keeps the meetings you keep short."
+        },
+        {
+          "title": "Replace small meetings with quick conversations",
+          "body": "A lot of 30-minute meetings exist because there's no other way to talk. When a team can see who's free and talk for two minutes, many of them aren't needed. See [Slack and Zoom, or a virtual office](/blog/slack-and-zoom-or-a-virtual-office)."
+        },
+        {
+          "title": "Take some calls on the move",
+          "body": "An audio-only call while walking undoes the sitting still and the eye contact at once."
+        }
+      ]
+    },
+    {
+      "title": "Where a virtual office fits",
+      "body": [
+        "Our reading, not the studies': much of Zoom fatigue comes from treating every conversation as a scheduled video meeting. A [virtual office](/virtual-office) lets a team talk the way it would in an office: you see who's around, walk up, and talk for a minute, with the camera off unless you want it. Bigger conversations still happen in a [meeting room](/virtual-meeting-room), but fewer of them need to."
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Where TinyFloor fits",
+    "body": "In TinyFloor a call starts with voice, and the camera is a button that's off again at your next call. You walk up to a teammate instead of sending a link, and three or more meet in the meeting room. It's for a team that works together every day and wants fewer scheduled calls. Pro is one price for the whole office, $29 a month, and every new office starts with 14 days of Pro, no card needed."
+  },
+  "faq": [
+    {
+      "q": "What is Zoom fatigue?",
+      "a": "Zoom fatigue is the feeling of being drained and low on energy after a day of video meetings. The name comes from Zoom, but any video call can cause it."
+    },
+    {
+      "q": "What causes Zoom fatigue?",
+      "a": "Stanford's Jeremy Bailenson proposed four causes in 2021: eye contact at close range, seeing yourself all day, sitting still to stay in frame, and the extra effort of reading people on a screen. Research since then points especially to cameras being on and meetings running back to back."
+    },
+    {
+      "q": "Does turning off your camera reduce Zoom fatigue?",
+      "a": "Yes. In a four-week field experiment with 103 employees, published in the Journal of Applied Psychology in 2021, days with cameras off were less tiring than days with cameras on, and the effect was strongest for women and newer employees."
+    },
+    {
+      "q": "How long should breaks between meetings be?",
+      "a": "In Microsoft's 2021 EEG study, 10-minute breaks between half-hour meetings stopped stress from building up across four meetings. Ending meetings five or ten minutes early does the same in practice."
+    },
+    {
+      "q": "Is Zoom fatigue real?",
+      "a": "The tiredness is well documented. Bailenson's causes are still theories to test directly, but field and lab studies, such as the camera experiment and Microsoft's brainwave study, have measured fatigue and stress from video meetings."
+    }
+  ],
+  "sources": [
+    { "title": "Bailenson, Nonverbal overload: A theoretical argument for the causes of Zoom fatigue, Technology, Mind, and Behavior (2021)", "url": "https://psycnet.apa.org/record/2021-22045-001", "note": "Four proposed causes: close-range eye gaze, cognitive load, an all-day mirror, reduced mobility; arguments still to be tested directly on videoconferencing." },
+    { "title": "Shockley et al., The fatiguing effects of camera use in virtual meetings, Journal of Applied Psychology (2021)", "url": "https://pubmed.ncbi.nlm.nih.gov/34423999/", "note": "Four-week field experiment, 103 employees, 1,408 daily observations: cameras on led to more fatigue, more so for women and newer employees; fatigue lowered voice and engagement in meetings that day and the next." },
+    { "title": "Microsoft WorkLab, Research Proves Your Brain Needs Breaks", "url": "https://www.microsoft.com/en-us/worklab/work-trend-index/brain-research", "note": "20 April 2021: 14 people in EEG caps, four half-hour meetings back to back or with 10-minute breaks; stress built up without breaks and reset with them; engagement higher with breaks." },
+    { "title": "Microsoft, Work Trend Index 2023: Will AI Fix Work?", "url": "https://www.microsoft.com/en-us/worklab/work-trend-index/will-ai-fix-work", "note": "68% don't have enough uninterrupted focus time; inefficient meetings the top productivity disruptor." },
+    { "title": "Buffer, 2023 State of Remote Work", "url": "https://buffer.com/state-of-remote-work/2023", "note": "3,000 remote workers: 75% spend 1 to 10 hours a week in meetings." }
+  ]
+}

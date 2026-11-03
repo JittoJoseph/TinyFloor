@@ -1,4 +1,6 @@
-import type { BlogPost } from "@/lib/blog";
+import { getLocale } from "next-intl/server";
+import { BLOG_LOCALES, postsIn, type BlogPost } from "@/lib/blog";
+import type { Locale } from "@/lib/i18n/routing";
 import { blogUi, postCopy } from "@/lib/blog-copy";
 import { cn } from "@/lib/utils";
 import { CJK_HEADLINE, COLUMN, H2 } from "@/components/home/Blocks";
@@ -20,4 +22,11 @@ export async function FromTheBlog({ posts, locale }: { posts: BlogPost[]; locale
       </ul>
     </section>
   );
+}
+
+/** The newest posts, on the home page of a language that has a blog. */
+export async function LatestPosts() {
+  const locale = await getLocale();
+  if (!BLOG_LOCALES.includes(locale as Locale)) return null;
+  return <FromTheBlog posts={postsIn(locale).slice(0, 3)} locale={locale} />;
 }

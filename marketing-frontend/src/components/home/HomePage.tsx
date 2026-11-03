@@ -1,13 +1,14 @@
 import { useTranslations } from "next-intl";
 import { Closing, Hero, MarketingShell, Questions } from "./Blocks";
 import { countWords, Split } from "./Split";
+import { LatestPosts } from "@/components/blog/FromTheBlog";
 import { ChatSection, Countries, Extras, MeetSection, OpenSection, PresenceSection, PriceSection, Statement, Trust } from "./HomeSections";
 
 /**
  * The home page: one statement over the app running, then the teams' trust
  * and where they work, what TinyFloor is in one sentence, the floor's parts
- * as the app draws them, the plans, the open code, the questions and the last
- * ask.
+ * as the app draws them, the plans, the open code, the questions, the
+ * newest posts where the language has a blog, and the last ask.
  */
 export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
   const t = useTranslations("homepage.hero");
@@ -34,6 +35,7 @@ export function HomePage({ faqs }: { faqs: Array<{ q: string; a: string }> }) {
       <PriceSection />
       <OpenSection />
       <Questions items={faqs} />
+      <LatestPosts />
       <Closing />
     </MarketingShell>
   );

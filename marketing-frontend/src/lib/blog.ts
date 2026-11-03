@@ -20,6 +20,7 @@ export interface BlogPost {
 
 /** Newest first. */
 export const POSTS: BlogPost[] = [
+  { slug: "discord-voice-channel-for-work", published: "2026-11-03", updated: "2026-11-03", pages: ["discord", "proximityChat", "virtualOffice"] },
   { slug: "slack-and-zoom-or-a-virtual-office", published: "2026-11-03", updated: "2026-11-03", pages: ["slackHuddles", "presence", "virtualOffice"] },
   { slug: "virtual-office-cost", published: "2026-11-03", updated: "2026-11-03", pages: ["virtualOffice", "gather", "kumospace"] },
 ];

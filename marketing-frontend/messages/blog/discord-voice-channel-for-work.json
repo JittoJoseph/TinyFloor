@@ -1,0 +1,166 @@
+{
+  "label": "A Discord voice channel for work",
+  "meta": {
+    "title": "Discord for Work: Is a Voice Channel Enough for a Remote Team?",
+    "description": "Why remote teams sit in a Discord voice channel all day, what Discord's own limits mean for a working team, and when a virtual office fits better."
+  },
+  "title": "Running your team's day in a Discord voice channel? <em>What works, and what doesn't.</em>",
+  "intro": "Plenty of small remote teams spend the working day in a Discord voice channel: it's free, everyone can see who's in, and joining takes one click. It works well until the team needs two conversations at once, a place that's only for work, or more than a free server allows. Here is what Discord does well for a team, what its own documentation says about its limits, and when a virtual office fits better. We make TinyFloor, a virtual office, so we're not neutral; Discord's numbers are from Discord's own pages.",
+  "takeaways": [
+    "A Discord voice channel gives a team something Slack and Zoom don't: you can see who's in and join with one click.",
+    "A voice channel holds one conversation. Talking to one person means both of you moving to another channel.",
+    "On a server without boosts, screen sharing is 720p at 30 frames a second, uploads are 10MB, and up to 25 people can be on video in a voice channel [1].",
+    "Discord has encrypted voice and video end to end since September 2024; text messages are not end-to-end encrypted [2].",
+    "Each person joins with their own Discord account, the same one they use for friends and games."
+  ],
+  "sections": [
+    {
+      "title": "Why do remote teams work in a Discord voice channel?",
+      "body": [
+        "Because it gives them the thing Slack and Zoom leave out: being around each other. The server's sidebar shows who's in each voice channel, so you can see at a glance who's working, and joining them is one click with no link or invite.",
+        "It costs nothing, most people already have an account, the voice is fast, and screen sharing is built in. For a team of friends who started a company, or a team that came from gaming, it's the obvious place to start."
+      ]
+    },
+    {
+      "title": "What gets in the way?",
+      "items": [
+        {
+          "title": "One conversation per channel",
+          "body": "Everyone in a voice channel hears everyone. Two people who want to talk on their own both move to another channel, and the rest see them go. Teams end up with a channel for each kind of talk and people hopping between them."
+        },
+        {
+          "title": "Being in means being heard",
+          "body": "By default your microphone is live in a voice channel unless you mute it or use push to talk, so most teams sit muted all day and unmute to speak, which makes starting a conversation feel like interrupting a room."
+        },
+        {
+          "title": "Work and personal life in one app",
+          "body": "People bring their own Discord account, with their friends, their other servers and their notifications. Discord describes itself as a place to \"deepen friendships around games and shared interests\" [2]."
+        },
+        {
+          "title": "Accounts belong to people, not the company",
+          "body": "When someone leaves, you can remove them from the server, but the account, and any direct messages they had with the team, stay theirs."
+        },
+        {
+          "title": "Limits on a free server",
+          "body": "Without boosts, uploads are capped at 10MB, streams at 720p and 30 frames a second, and video at 25 people per voice channel. Boosting the server raises uploads to 50MB at level 2 and 100MB at level 3 [1]."
+        }
+      ]
+    },
+    {
+      "title": "What does Discord do better than a virtual office?",
+      "items": [
+        {
+          "title": "Price",
+          "body": "A Discord server is free. A virtual office costs $5 to $20 a person a month, or one price for the whole office for a few; see [what a virtual office costs](/blog/virtual-office-cost)."
+        },
+        {
+          "title": "Smooth screen sharing",
+          "body": "Discord streams at 30 frames a second on a free server [1], which suits video and games. TinyFloor shares a screen at up to 720p and 10 to 15 frames a second, tuned for sharp text rather than motion [3]."
+        },
+        {
+          "title": "Encryption",
+          "body": "Discord's voice and video are end-to-end encrypted, in direct messages, group messages, voice channels and Go Live streams, under its DAVE protocol [2]."
+        },
+        {
+          "title": "Apps everywhere",
+          "body": "Discord has desktop and mobile apps that most people already have installed."
+        }
+      ]
+    },
+    {
+      "title": "What does a virtual office change?",
+      "body": [
+        "A virtual office keeps the part that works, seeing who's in and joining without a link, and changes how conversations start."
+      ],
+      "items": [
+        {
+          "title": "Many conversations on one floor",
+          "body": "The whole team is on one floor, and two people can talk while everyone else keeps working, without moving anywhere."
+        },
+        {
+          "title": "Nobody heard by accident",
+          "body": "In TinyFloor you walk up to a teammate and start a call; nothing is heard until then, and a call starts with voice, with the camera a button [3]. Three or more meet in the meeting room."
+        },
+        {
+          "title": "A place that's only for work",
+          "body": "People sign in with Google or a code sent to their email [3], and colleagues with the same work email domain can find the team's office and walk in, or ask to [4]. Nothing from anyone's personal life is in the room."
+        },
+        {
+          "title": "Desks and statuses",
+          "body": "Each person has a desk and a status, so the floor shows who's focused and who's free, not only who's in a channel."
+        }
+      ]
+    },
+    {
+      "title": "When is Discord enough?",
+      "items": [
+        {
+          "title": "The team mostly talks as a group",
+          "body": "If one open channel is how your team likes to work, and side conversations are rare, Discord does that for free."
+        },
+        {
+          "title": "Everyone already lives there",
+          "body": "If the team uses Discord happily all day and mixing in personal servers isn't a problem, there's little reason to move."
+        },
+        {
+          "title": "It's time to move when",
+          "body": "people hop between channels to talk in pairs, sit muted all day, mute the server to get away from other servers' noise, or a new hire has to make a Discord account just for work."
+        }
+      ]
+    },
+    {
+      "title": "Can a team use both?",
+      "body": [
+        "Yes. Some teams keep a Discord server for their community or for after work, and move the working day to a virtual office. The two don't need to be connected."
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Where TinyFloor fits",
+    "body": "TinyFloor is a virtual office in the browser for a team that works together every day: a desk for each person, walk-up calls nobody overhears, a meeting room, team chat and screen sharing tuned for text. It's built for work, and a team that comes from Discord keeps the feeling of being in together. Pro is one price for the whole office, $29 a month, and every new office starts with 14 days of Pro, no card needed."
+  },
+  "faq": [
+    {
+      "q": "Is Discord good for work?",
+      "a": "For a small team that likes talking as a group, it works and it's free. It gets harder when people need private conversations, when work and personal servers mix, or when the team outgrows a free server's limits: 10MB uploads, 720p screen sharing at 30 frames a second, and 25 people on video in a voice channel."
+    },
+    {
+      "q": "Is Discord free for a team?",
+      "a": "Yes. A server and its voice channels are free. Server boosts raise the limits for everyone in the server, and Nitro raises them for one person."
+    },
+    {
+      "q": "Is Discord encrypted?",
+      "a": "Voice and video are end-to-end encrypted in direct messages, group messages, voice channels and Go Live streams, under the DAVE protocol Discord announced on 17 September 2024. Text messages are not end-to-end encrypted."
+    },
+    {
+      "q": "How many people can be on video in a Discord voice channel?",
+      "a": "Up to 25 people with video, and up to 50 watching a Go Live stream, according to Discord's own list of limits."
+    },
+    {
+      "q": "What's a good Discord alternative for a remote team?",
+      "a": "For writing, Slack. For the being-around-each-other part a Discord voice channel gives, a virtual office: the team on one floor, where two people can talk without moving channels."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Discord, Discord Account Caps, Server Caps, and More",
+      "url": "https://support.discord.com/hc/en-us/articles/33694251638295-Discord-Account-Caps-Server-Caps-and-More",
+      "note": "Server without boosts: 10MB uploads, streams at 720p and 30 fps, 25 members on video in a voice channel, 50 on Go Live; uploads 50MB at boost level 2, 100MB at level 3. Checked 3 November 2026."
+    },
+    {
+      "title": "Discord, Meet DAVE: Discord's New End-to-End Encryption for Audio & Video",
+      "url": "https://discord.com/blog/meet-dave-e2ee-for-audio-video",
+      "note": "17 September 2024: voice and video in DMs, group DMs, voice channels and Go Live streams move to end-to-end encryption; messages are not end-to-end encrypted."
+    },
+    {
+      "title": "How TinyFloor works",
+      "url": "https://www.tinyfloor.com/how-it-works",
+      "note": "Calls are one to one and start with voice; screen sharing up to 720p at 10 to 15 fps; sign in with Google or an emailed code."
+    },
+    {
+      "title": "TinyFloor changelog",
+      "url": "https://www.tinyfloor.com/changelog",
+      "note": "17 October 2026: colleagues with the same work email domain can find their team's office."
+    }
+  ]
+}

@@ -8,7 +8,7 @@ import { pageGraph } from "@/lib/structured-data";
 import { emphasised } from "@/lib/words";
 import { cn } from "@/lib/utils";
 import { JsonLd } from "@/components/JsonLd";
-import { CJK_HEADLINE, COLUMN, Closing, EYEBROW, LEAD, MarketingShell } from "@/components/home/Blocks";
+import { CJK_HEADLINE, COLUMN, Closing, LEAD, MarketingShell } from "@/components/home/Blocks";
 import { GuideCard } from "./GuidePage";
 
 type Props = { params: Promise<{ locale: string }> };
@@ -33,7 +33,6 @@ export async function GuidesHub({ params }: Props) {
       />
       <section className={cn(COLUMN, "pb-24 pt-32 sm:pb-32 sm:pt-44")}>
         <div className="flex flex-col items-center text-center">
-          <p className={cn(EYEBROW, "mb-6")}>{t("label")}</p>
           <h1
             className={cn(
               "max-w-[18ch] text-balance text-[40px] font-normal leading-[1.04] tracking-[-0.045em] min-[400px]:text-[44px] sm:text-[64px]",
@@ -44,7 +43,7 @@ export async function GuidesHub({ params }: Props) {
           </h1>
           <p className={cn(LEAD, "mt-7 max-w-[34rem] text-balance")}>{t("hub.body")}</p>
         </div>
-        <ul className="mx-auto mt-14 grid max-w-[1040px] gap-3 sm:mt-20 md:grid-cols-2">
+        <ul className="mx-auto mt-14 grid max-w-[1120px] gap-x-6 gap-y-12 sm:mt-20 md:grid-cols-2 lg:grid-cols-3">
           {guidesIn(locale).map((guide) => (
             <li key={guide.slug}>
               <GuideCard guide={guide} title={copies[guide.key].label} description={copies[guide.key].meta.description} />

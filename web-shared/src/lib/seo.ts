@@ -65,7 +65,8 @@ function socialImagePath(locale: string, path: string): string {
   const post = path.match(/^\/blog\/([^/]+)$/)?.[1];
   if (post) return `/og/blog-${post}.jpg`;
   const guide = path.match(/^\/guides\/([^/]+)$/)?.[1];
-  if (guide && GUIDES.some((one) => one.slug === guide)) return code === "en" ? `/og/guide-${guide}.jpg` : "/og/neutral.jpg";
+  // A guide's card is its cover, without words, so every language shares it.
+  if (guide && GUIDES.some((one) => one.slug === guide)) return `/og/guide-${guide}.jpg`;
   return `/og/home-${code}.jpg`;
 }
 

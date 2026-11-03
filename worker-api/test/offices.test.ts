@@ -20,7 +20,7 @@ async function join(user: TestUser, token: string) {
 }
 
 describe("offices", () => {
-  it("makes an office on the Pro trial, with the creator as its admin and owner", async () => {
+  it("makes an office on the Pro trial and the new floor, with the creator as its admin and owner", async () => {
     const olive = await makeUser("Olive");
     const { status, body } = await call<{ office: Record<string, unknown> }>(olive, "POST", "/v1/offices", {
       name: "  Design   Team ",
@@ -37,6 +37,8 @@ describe("offices", () => {
       graceEndsAt: null,
     });
     expect((body.office.trialEndsAt as number) - Date.now()).toBeGreaterThan(13.9 * 86_400_000);
+    // A new office starts on the new floor; older ones stay where they are until they're moved.
+    expect((await env.DB.prepare("SELECT floor FROM offices WHERE id = ?").bind(body.office.id).first<{ floor: string }>())?.floor).toBe("campus");
 
     const me = await call<{ offices: unknown[] }>(olive, "GET", "/v1/me");
     expect(me.body.offices).toEqual([expect.objectContaining({ name: "Design Team", role: "admin", seats: 15 })]);

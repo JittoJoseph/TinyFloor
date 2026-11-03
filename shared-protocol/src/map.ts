@@ -4,12 +4,16 @@ import campus from "./catalog/floors/campus.json";
 /**
  * Every floor there is, by id, worked out by the lab (lab/build.mjs) into
  * everything the floor draws and the room checks. Each office is on one
- * (offices.floor, set from the admin view), the demo office on LOBBY_FLOOR;
- * the room is told which by its ticket, and keeps desks to it. Startup is
- * where every office began; Campus, an office in grounds, is the new one,
- * rolled out an office at a time.
+ * (offices.floor, changed from the admin view), the demo office on
+ * LOBBY_FLOOR; the room is told which by its ticket, and keeps desks to it.
+ * Startup is where every office began; Campus, an office in grounds, is the
+ * new one: new offices and the demo office start there, and older offices
+ * move to it one at a time.
  */
 export const FLOORS: Record<string, Floor> = { startup: startup as unknown as Floor, campus: campus as unknown as Floor };
+
+/** The floor a new office starts on, and the demo office's. */
+export const NEW_FLOOR = "campus";
 
 /** The floor an id names; Startup for one that isn't. */
 export const floorOf = (id: string | null | undefined): Floor => FLOORS[id ?? ""] ?? FLOORS.startup;
@@ -21,14 +25,17 @@ type PageGlobals = { localStorage?: { getItem(key: string): string | null; setIt
 
 /**
  * The floor this page draws: the one its last room ticket said (drawFloor),
- * kept in this browser, so the page loads already drawing it. A page's whole
- * floor, its walls, solids and desks, is this one; the room's is its own.
+ * kept in this browser, so the page loads already drawing it; in a browser
+ * that hasn't been on a floor yet, the one new offices and the demo office
+ * are on. A page's whole floor, its walls, solids and desks, is this one; the
+ * room's is its own.
  */
 export const FLOOR: Floor = (() => {
   try {
-    return floorOf((globalThis as PageGlobals).localStorage?.getItem(DRAWN));
+    const drawn = (globalThis as PageGlobals).localStorage?.getItem(DRAWN);
+    return drawn ? floorOf(drawn) : FLOORS[NEW_FLOOR];
   } catch {
-    return FLOORS.startup;
+    return FLOORS[NEW_FLOOR];
   }
 })();
 

@@ -683,3 +683,25 @@ usually several times larger. Exact Google volumes still need OpenSEO credits.
   so there's an uptime history to read; reviews from the teams that use it
   daily (SaaSHub, G2, Product Hunt); asking list owners to include TinyFloor;
   and running the same prompts again each month to see what moved.
+
+## What gets cited (3 November)
+
+- **A first link from another company's blog cited one checkable fact.** A
+  long comparison post (2,700 words, dated, every heading a question, a
+  numbered source list and an FAQ) cited our comparison page three times for
+  one line: which free plan is a public space and which plan locks the door.
+  The link is nofollow, so it helps people find us more than it helps rank.
+- **Writers working with AI answers cite facts, not opinions.** Every source in
+  that post was a number or a rule: a price, a plan limit, a review count, a
+  survey figure. A page is citable when one sentence states one fact plainly
+  and is dated, so it can be quoted as it is.
+- **So a page meant to be cited:** answers a question people search, in its
+  heading; gives the answer in the first sentence under it; carries numbers
+  with where they come from; shows the date it was checked; and keeps to what
+  we can know. The guides already have the form (dated, in 18 languages, in
+  the sitemap and llms-full.txt), so they're where these go, not a separate
+  blog.
+- **The home page no longer leads with Free.** The hero's line, the closing
+  line, the price section and the site description say one price for the
+  whole team and 14 days of Pro for every new office; Free for 3 stays, said
+  last, where pricing is explained.

@@ -9,23 +9,23 @@
   "intro": "Zoom Fatigue ist die Erschöpfung nach einem Tag voller Videocalls. Die Forschung nennt drei Dinge, die den Großteil davon auslösen: die Kamera, Meetings direkt hintereinander und mehr Meetings, als die Arbeit braucht. In einer vierwöchigen Studie mit 103 Beschäftigten waren Tage mit eingeschalteter Kamera anstrengender als Tage ohne, besonders für Frauen und neue Mitarbeitende; in Microsofts Hirnstrom-Studie stieg der Stress über Meetings direkt hintereinander immer weiter und sank mit kurzen Pausen wieder. Hier steht, was jede Studie gefunden hat und was ein Remote-Team ändern kann. Jede Aussage ist mit ihrer Quelle verlinkt.",
   "takeaways": [
     "Zoom Fatigue ist das Gefühl, nach einem Tag mit Videomeetings ausgelaugt zu sein. Sie betrifft nicht nur Zoom: jeder Videocall kann sie auslösen.",
-    "Jeremy Bailenson aus Stanford nennt vier Ursachen: Blickkontakt aus der Nähe, sich selbst den ganzen Tag sehen, stillsitzen und der Mehraufwand, Menschen auf einem Bildschirm zu lesen [1].",
-    "Kamera aus senkte die tägliche Erschöpfung in einer vierwöchigen Studie mit 103 Beschäftigten, am stärksten bei Frauen und neuen Mitarbeitenden [2].",
-    "In Microsofts EEG-Studie baute sich Stress über vier Meetings direkt hintereinander auf; 10 Minuten Pause dazwischen stoppten das [3].",
-    "68 % der Menschen sagen, dass ihnen ungestörte Konzentrationszeit fehlt, und ineffiziente Meetings sind der größte Produktivitätskiller, den sie nennen [4]."
+    "Jeremy Bailenson aus Stanford nennt vier Ursachen: Blickkontakt aus der Nähe, sich selbst den ganzen Tag sehen, stillsitzen und der Mehraufwand, Menschen auf einem Bildschirm zu lesen.",
+    "Kamera aus senkte die tägliche Erschöpfung in einer vierwöchigen Studie mit 103 Beschäftigten, am stärksten bei Frauen und neuen Mitarbeitenden.",
+    "In Microsofts EEG-Studie baute sich Stress über vier Meetings direkt hintereinander auf; 10 Minuten Pause dazwischen stoppten das.",
+    "68 % der Menschen sagen, dass ihnen ungestörte Konzentrationszeit fehlt, und ineffiziente Meetings sind der größte Produktivitätskiller, den sie nennen."
   ],
   "sections": [
     {
       "title": "Was ist Zoom Fatigue?",
       "body": [
         "Zoom Fatigue ist die Müdigkeit nach einem Tag mit Videomeetings: ausgelaugt sein, keine Energie haben, sich schwerer zu Wort melden. Der Begriff wurde 2020 bekannt, als Meetings fast über Nacht auf Video umzogen, aber die Ursache ist das Format, nicht eine bestimmte App. Teams, Google Meet und jeder andere Videocall können dasselbe auslösen.",
-        "Es geht um mehr als Bequemlichkeit. In der Kamera-Studie unten ging Erschöpfung an einem Tag damit einher, dass Menschen sich in Meetings weniger äußerten und weniger beteiligt waren, am selben und am nächsten Tag [2]."
+        "Es geht um mehr als Bequemlichkeit. In der [Kamera-Studie](https://pubmed.ncbi.nlm.nih.gov/34423999/) unten ging Erschöpfung an einem Tag damit einher, dass Menschen sich in Meetings weniger äußerten und weniger beteiligt waren, am selben und am nächsten Tag."
       ]
     },
     {
       "title": "Was löst Zoom Fatigue aus?",
       "body": [
-        "2021 hat Jeremy Bailenson, Leiter des Virtual Human Interaction Lab in Stanford, in Technology, Mind, and Behavior vier Ursachen vorgeschlagen [1]. Er nennt sie ausdrücklich Argumente aus früherer Forschung, die sich bei Videocalls erst noch direkt bestätigen müssen, aber sie prägen das meiste, was danach kam."
+        "2021 hat Jeremy Bailenson, Leiter des Virtual Human Interaction Lab in Stanford, in [Technology, Mind, and Behavior](https://psycnet.apa.org/record/2021-22045-001) vier Ursachen vorgeschlagen. Er nennt sie ausdrücklich Argumente aus früherer Forschung, die sich bei Videocalls erst noch direkt bestätigen müssen, aber sie prägen das meiste, was danach kam."
       ],
       "items": [
         {
@@ -49,21 +49,21 @@
     {
       "title": "Hilft es, die Kamera auszuschalten?",
       "body": [
-        "Ja, laut der bisher stärksten Feldstudie. Kristen Shockley und Kolleginnen haben ein vierwöchiges Experiment mit 103 Beschäftigten durchgeführt, 1.408 Tagesberichte gesammelt und gewechselt, ob die Kamera in Meetings an oder aus blieb. An Tagen mit Kamera waren die Menschen erschöpfter, und die Erschöpfung ging mit weniger Wortmeldungen und Beteiligung in Meetings einher, am selben und am nächsten Tag [2].",
-        "Der Effekt war bei Frauen und bei Menschen, die neu im Unternehmen waren, stärker [2], also oft bei denen, von denen am meisten erwartet wird, Präsenz zu zeigen. Wenn die Kamera optional statt Standard ist, fällt dieser Druck weg, ohne dass jemand fragen muss."
+        "Ja, laut der bisher stärksten Feldstudie. Kristen Shockley und Kolleginnen haben [ein vierwöchiges Experiment mit 103 Beschäftigten](https://pubmed.ncbi.nlm.nih.gov/34423999/) durchgeführt, 1.408 Tagesberichte gesammelt und gewechselt, ob die Kamera in Meetings an oder aus blieb. An Tagen mit Kamera waren die Menschen erschöpfter, und die Erschöpfung ging mit weniger Wortmeldungen und Beteiligung in Meetings einher, am selben und am nächsten Tag.",
+        "Der Effekt war bei Frauen und bei Menschen, die neu im Unternehmen waren, stärker, also oft bei denen, von denen am meisten erwartet wird, Präsenz zu zeigen. Wenn die Kamera optional statt Standard ist, fällt dieser Druck weg, ohne dass jemand fragen muss."
       ]
     },
     {
       "title": "Machen Meetings direkt hintereinander es schlimmer?",
       "body": [
-        "Ja. 2021 hat Microsofts Human Factors Lab 14 Menschen mit EEG-Hauben durch vier halbstündige Videomeetings an zwei Tagen geschickt: einmal direkt hintereinander, einmal mit 10 Minuten Pause dazwischen [3].",
-        "Ohne Pausen stieg die Aktivität der Hirnwellen, die mit Stress verbunden sind, von Meeting zu Meeting und sprang bei jedem Wechsel zum nächsten Call an. Mit Pausen sank sie zwischen den Meetings, blieb über alle vier stabil, und die Menschen waren beteiligter [3]. Der Wechsel von einem Call zum nächsten war der Moment mit dem größten Stress."
+        "Ja. 2021 hat [Microsofts Human Factors Lab](https://www.microsoft.com/en-us/worklab/work-trend-index/brain-research) 14 Menschen mit EEG-Hauben durch vier halbstündige Videomeetings an zwei Tagen geschickt: einmal direkt hintereinander, einmal mit 10 Minuten Pause dazwischen.",
+        "Ohne Pausen stieg die Aktivität der Hirnwellen, die mit Stress verbunden sind, von Meeting zu Meeting und sprang bei jedem Wechsel zum nächsten Call an. Mit Pausen sank sie zwischen den Meetings, blieb über alle vier stabil, und die Menschen waren beteiligter. Der Wechsel von einem Call zum nächsten war der Moment mit dem größten Stress."
       ]
     },
     {
       "title": "Wie verbreitet sind zu viele Meetings?",
       "body": [
-        "Im Work Trend Index 2023 von Microsoft sagten 68 % der Menschen, dass ihnen im Arbeitstag ungestörte Konzentrationszeit fehlt, und ineffiziente Meetings waren der größte Produktivitätskiller, den sie nannten [4]. Unter Remote-Arbeitenden in Buffers Umfrage 2023 verbringen 75 % zwischen 1 und 10 Stunden pro Woche in Meetings [5]."
+        "Im [Work Trend Index 2023 von Microsoft](https://www.microsoft.com/en-us/worklab/work-trend-index/will-ai-fix-work) sagten 68 % der Menschen, dass ihnen im Arbeitstag ungestörte Konzentrationszeit fehlt, und ineffiziente Meetings waren der größte Produktivitätskiller, den sie nannten. Unter Remote-Arbeitenden in [Buffers Umfrage 2023](https://buffer.com/state-of-remote-work/2023) verbringen 75 % zwischen 1 und 10 Stunden pro Woche in Meetings."
       ]
     },
     {
@@ -71,15 +71,15 @@
       "items": [
         {
           "title": "Kamera standardmäßig optional",
-          "body": "Calls mit Sprache beginnen und die Kamera anmachen, wenn sie hilft: um etwas zu zeigen, beim ersten Treffen, bei einem schwierigen Gespräch. Die Kamera-Studie legt nahe, dass das allein die Erschöpfung senkt [2]."
+          "body": "Calls mit Sprache beginnen und die Kamera anmachen, wenn sie hilft: um etwas zu zeigen, beim ersten Treffen, bei einem schwierigen Gespräch. Die [Kamera-Studie](https://pubmed.ncbi.nlm.nih.gov/34423999/) legt nahe, dass das allein die Erschöpfung senkt."
         },
         {
           "title": "Das eigene Bild ausblenden",
-          "body": "Die meisten Videotools können die Selbstansicht ausblenden. Das nimmt Bailensons Spiegel weg, ohne für andere etwas zu ändern [1]."
+          "body": "Die meisten Videotools können die Selbstansicht ausblenden. Das nimmt [Bailensons Spiegel](https://psycnet.apa.org/record/2021-22045-001) weg, ohne für andere etwas zu ändern."
         },
         {
           "title": "Lücken zwischen Meetings lassen",
-          "body": "Halbstündige Meetings nach 25 Minuten beenden und einstündige nach 50, damit niemand direkt vom einen Call in den nächsten geht [3]."
+          "body": "Halbstündige Meetings nach 25 Minuten beenden und einstündige nach 50, damit niemand [direkt vom einen Call in den nächsten](https://www.microsoft.com/en-us/worklab/work-trend-index/brain-research) geht."
         },
         {
           "title": "Statusupdates aus Meetings herausnehmen",

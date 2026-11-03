@@ -10,8 +10,8 @@
   "takeaways": [
     "Um canal de voz do Discord dá à equipe algo que o Slack e o Zoom não dão: ver quem está lá e entrar com um clique.",
     "Um canal de voz comporta uma conversa. Para falar com uma pessoa só, os dois precisam ir para outro canal.",
-    "Num servidor sem impulsos, o compartilhamento de tela é 720p a 30 quadros por segundo, os envios vão até 10 MB e até 25 pessoas podem estar com vídeo num canal de voz [1].",
-    "Desde setembro de 2024, o Discord criptografa voz e vídeo de ponta a ponta; as mensagens de texto não são criptografadas de ponta a ponta [2].",
+    "Num servidor sem impulsos, o compartilhamento de tela é 720p a 30 quadros por segundo, os envios vão até 10 MB e até 25 pessoas podem estar com vídeo num canal de voz.",
+    "Desde setembro de 2024, o Discord criptografa voz e vídeo de ponta a ponta; as mensagens de texto não são criptografadas de ponta a ponta.",
     "Cada pessoa entra com a própria conta do Discord, a mesma que usa com os amigos e nos jogos."
   ],
   "sections": [
@@ -35,7 +35,7 @@
         },
         {
           "title": "Trabalho e vida pessoal no mesmo app",
-          "body": "Cada pessoa traz a própria conta, com amigos, outros servidores e as notificações deles. O próprio Discord se descreve como um lugar para aprofundar amizades em torno de jogos e interesses em comum [2]. Veja também [Discord ou Slack para o trabalho](/guides/discord-vs-slack)."
+          "body": "Cada pessoa traz a própria conta, com amigos, outros servidores e as notificações deles. [O próprio Discord se descreve](https://discord.com/blog/meet-dave-e2ee-for-audio-video) como um lugar para aprofundar amizades em torno de jogos e interesses em comum. Veja também [Discord ou Slack para o trabalho](/guides/discord-vs-slack)."
         },
         {
           "title": "A conta é da pessoa, não da empresa",
@@ -43,7 +43,7 @@
         },
         {
           "title": "Limites de um servidor grátis",
-          "body": "Sem impulsos, os envios vão até 10 MB, as transmissões até 720p a 30 quadros por segundo e o vídeo até 25 pessoas por canal de voz. Com impulsos, os envios sobem para 50 MB no nível 2 e 100 MB no nível 3 [1]."
+          "body": "Sem impulsos, [os envios vão até 10 MB](https://support.discord.com/hc/pt-br/articles/33694251638295), as transmissões até 720p a 30 quadros por segundo e o vídeo até 25 pessoas por canal de voz. Com impulsos, os envios sobem para 50 MB no nível 2 e 100 MB no nível 3."
         }
       ]
     },
@@ -56,11 +56,11 @@
         },
         {
           "title": "Compartilhamento de tela mais fluido",
-          "body": "O Discord transmite a 30 quadros por segundo num servidor grátis [1], o que funciona bem para vídeo e jogos. O TinyFloor compartilha a tela em até 720p e 10 a 15 quadros por segundo, ajustado para texto nítido e não para movimento [3]."
+          "body": "O Discord transmite a [30 quadros por segundo num servidor grátis](https://support.discord.com/hc/pt-br/articles/33694251638295), o que funciona bem para vídeo e jogos. O TinyFloor compartilha a tela em [até 720p e 10 a 15 quadros por segundo](/how-it-works), ajustado para texto nítido e não para movimento."
         },
         {
           "title": "Criptografia",
-          "body": "Voz e vídeo do Discord são criptografados de ponta a ponta em mensagens diretas, grupos, canais de voz e transmissões Go Live, com o protocolo DAVE [2]."
+          "body": "Voz e vídeo do Discord são criptografados de ponta a ponta em mensagens diretas, grupos, canais de voz e transmissões Go Live, com o [protocolo DAVE](https://discord.com/blog/meet-dave-e2ee-for-audio-video)."
         },
         {
           "title": "Apps em todo lugar",
@@ -80,11 +80,11 @@
         },
         {
           "title": "Ninguém é ouvido sem querer",
-          "body": "No TinyFloor você vai até um colega e começa uma chamada; até lá ninguém ouve nada, e a chamada começa só com voz, com a câmera num botão [3]. Três pessoas ou mais se reúnem na sala de reunião."
+          "body": "No TinyFloor [você vai até um colega e começa uma chamada](/how-it-works); até lá ninguém ouve nada, e a chamada começa só com voz, com a câmera num botão. Três pessoas ou mais se reúnem na sala de reunião."
         },
         {
           "title": "Um lugar só para o trabalho",
-          "body": "As pessoas entram com o Google ou com um código enviado por e-mail [3], e colegas com o mesmo domínio de e-mail da empresa encontram o escritório da equipe e entram, ou pedem para entrar [4]. Nada da vida pessoal de ninguém fica na sala."
+          "body": "As pessoas [entram com o Google ou com um código enviado por e-mail](/how-it-works), e colegas com o mesmo domínio de e-mail da empresa [encontram o escritório da equipe](/changelog) e entram, ou pedem para entrar. Nada da vida pessoal de ninguém fica na sala."
         },
         {
           "title": "Mesas e status",

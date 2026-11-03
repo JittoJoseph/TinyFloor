@@ -10,8 +10,8 @@
   "takeaways": [
     "Ein Discord-Sprachkanal gibt einem Team etwas, das Slack und Zoom nicht bieten: Man sieht, wer da ist, und ist mit einem Klick dabei.",
     "Ein Sprachkanal fasst ein Gespräch. Wer zu zweit reden will, muss gemeinsam in einen anderen Kanal wechseln.",
-    "Auf einem Server ohne Boosts teilt man den Bildschirm mit 720p und 30 Bildern pro Sekunde, Uploads gehen bis 10 MB und Video bis 25 Personen pro Sprachkanal [1].",
-    "Seit September 2024 verschlüsselt Discord Sprache und Video Ende-zu-Ende; Textnachrichten nicht [2].",
+    "Auf einem Server ohne Boosts teilt man den Bildschirm mit 720p und 30 Bildern pro Sekunde, Uploads gehen bis 10 MB und Video bis 25 Personen pro Sprachkanal.",
+    "Seit September 2024 verschlüsselt Discord Sprache und Video Ende-zu-Ende; Textnachrichten nicht.",
     "Jede Person kommt mit ihrem eigenen Discord-Konto, demselben wie für Freunde und Spiele."
   ],
   "sections": [
@@ -35,7 +35,7 @@
         },
         {
           "title": "Arbeit und Privates in einer App",
-          "body": "Jede Person bringt ihr eigenes Konto mit, samt Freunden, anderen Servern und deren Benachrichtigungen. Discord beschreibt sich selbst als Ort, an dem Freundschaften rund um Spiele und gemeinsame Interessen wachsen [2]. Mehr dazu im Vergleich [Discord oder Slack für die Arbeit](/guides/discord-vs-slack)."
+          "body": "Jede Person bringt ihr eigenes Konto mit, samt Freunden, anderen Servern und deren Benachrichtigungen. [Discord beschreibt sich selbst](https://discord.com/blog/meet-dave-e2ee-for-audio-video) als Ort, an dem Freundschaften rund um Spiele und gemeinsame Interessen wachsen. Mehr dazu im Vergleich [Discord oder Slack für die Arbeit](/guides/discord-vs-slack)."
         },
         {
           "title": "Konten gehören Menschen, nicht dem Unternehmen",
@@ -43,7 +43,7 @@
         },
         {
           "title": "Limits eines kostenlosen Servers",
-          "body": "Ohne Boosts gehen Uploads bis 10 MB, Streams bis 720p mit 30 Bildern pro Sekunde und Video bis 25 Personen pro Sprachkanal. Mit Boosts steigen Uploads auf 50 MB ab Stufe 2 und 100 MB ab Stufe 3 [1]."
+          "body": "Ohne Boosts gehen [Uploads bis 10 MB](https://support.discord.com/hc/de/articles/33694251638295), Streams bis 720p mit 30 Bildern pro Sekunde und Video bis 25 Personen pro Sprachkanal. Mit Boosts steigen Uploads auf 50 MB ab Stufe 2 und 100 MB ab Stufe 3."
         }
       ]
     },
@@ -56,11 +56,11 @@
         },
         {
           "title": "Flüssigere Bildschirmfreigabe",
-          "body": "Discord streamt auch auf einem kostenlosen Server mit 30 Bildern pro Sekunde [1], gut für Videos und Spiele. TinyFloor teilt den Bildschirm mit bis zu 720p und 10 bis 15 Bildern pro Sekunde, abgestimmt auf scharfen Text statt Bewegung [3]."
+          "body": "Discord streamt auch [auf einem kostenlosen Server mit 30 Bildern pro Sekunde](https://support.discord.com/hc/de/articles/33694251638295), gut für Videos und Spiele. TinyFloor teilt den Bildschirm mit [bis zu 720p und 10 bis 15 Bildern pro Sekunde](/how-it-works), abgestimmt auf scharfen Text statt Bewegung."
         },
         {
           "title": "Verschlüsselung",
-          "body": "Discords Sprache und Video sind in Direktnachrichten, Gruppen, Sprachkanälen und Go-Live-Streams mit dem DAVE-Protokoll Ende-zu-Ende verschlüsselt [2]."
+          "body": "Discords Sprache und Video sind in Direktnachrichten, Gruppen, Sprachkanälen und Go-Live-Streams mit dem [DAVE-Protokoll](https://discord.com/blog/meet-dave-e2ee-for-audio-video) Ende-zu-Ende verschlüsselt."
         },
         {
           "title": "Apps überall",
@@ -80,11 +80,11 @@
         },
         {
           "title": "Niemand ist aus Versehen zu hören",
-          "body": "In TinyFloor geht man zu einer Kollegin und startet einen Anruf; bis dahin hört niemand etwas, der Anruf beginnt mit Sprache, die Kamera ist ein Knopf [3]. Ab drei Personen trifft man sich im Meetingraum."
+          "body": "In TinyFloor [geht man zu einer Kollegin und startet einen Anruf](/how-it-works); bis dahin hört niemand etwas, der Anruf beginnt mit Sprache, die Kamera ist ein Knopf. Ab drei Personen trifft man sich im Meetingraum."
         },
         {
           "title": "Ein Ort nur für die Arbeit",
-          "body": "Man meldet sich mit Google oder einem Code per E-Mail an [3], und Kolleginnen und Kollegen mit derselben Firmen-Domain finden das Büro des Teams und kommen rein oder fragen an [4]. Nichts Privates ist im Raum."
+          "body": "Man meldet sich [mit Google oder einem Code per E-Mail an](/how-it-works), und Kolleginnen und Kollegen mit derselben Firmen-Domain [finden das Büro des Teams](/changelog) und kommen rein oder fragen an. Nichts Privates ist im Raum."
         },
         {
           "title": "Schreibtische und Status",

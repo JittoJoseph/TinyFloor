@@ -23,19 +23,19 @@
       "items": [
         {
           "title": "1人あたり",
-          "body": "メンバー、ユーザー、席ごとに毎月かかる料金です。Gather、Kumospace、SoWork、Spot、WorkAdventure、SpatialChatがこの方式です [2][3][4][5][6][7]。人が増えるたびに料金も増えます。Gatherの詳細は[Gatherの料金ガイド](/guides/gather-pricing)をどうぞ。"
+          "body": "メンバー、ユーザー、席ごとに毎月かかる料金です。[Gather](https://www.gather.town/pricing)、[Kumospace](https://www.kumospace.com/pricing)、[SoWork](https://www.sowork.com/pricing)、[Spot](https://www.spotvirtual.com/pricing)、[WorkAdventure](https://workadventu.re/pricing/)、[SpatialChat](https://spatial.chat/pricing)がこの方式です。人が増えるたびに料金も増えます。Gatherの詳細は[Gatherの料金ガイド](/guides/gather-pricing)をどうぞ。"
         },
         {
           "title": "アクティブなメンバーごと",
-          "body": "Roamは、その月に実際に使ったメンバーだけに月19.50ドルを請求します。月払いのみで、年払いはありません [8]。"
+          "body": "Roamは、その月に実際に使ったメンバーだけに月19.50ドルを請求します。[月払いのみ](https://ro.am/pricing)で、年払いはありません。"
         },
         {
           "title": "オフィスやスペース単位",
-          "body": "誰が入っていてもスペースの料金は同じです。TinyFloor Proはオフィス全体で月29ドル [1]。oViceのEntry-Sは、10人前後で使うスペースが年払いで月¥7,315（税込）です [9]。"
+          "body": "誰が入っていてもスペースの料金は同じです。[TinyFloor Proはオフィス全体で月29ドル](/pricing)。[oViceのEntry-S](https://www.ovice.com/pricing)は、10人前後で使うスペースが年払いで月¥7,315（税込）です。"
         },
         {
           "title": "席ごと、最低席数と通話時間つき",
-          "body": "Sococoは1席あたり月13.49ドルを年払いで前払いし、最低10席から。1席あたり月500分が含まれ、超過は1,000分ごとに5ドルです [10]。"
+          "body": "Sococoは1席あたり月13.49ドルを年払いで前払いし、最低10席から。1席あたり月500分が含まれ、[超過は1,000分ごとに5ドル](https://www.sococo.com/pricing/)です。"
         }
       ]
     },
@@ -130,7 +130,7 @@
     {
       "title": "oViceの料金（日本円）は？",
       "body": [
-        "oViceは日本の会社なので、日本語の料金ページでは税込の日本円で料金が出ています。14日間の無料トライアルがあり、終わると自動でFreeプランに移ります。Freeは管理者1名・スペース1つで、正式リリース前の機能が先に出る環境とされています [11]。"
+        "oViceは日本の会社なので、日本語の料金ページでは税込の日本円で料金が出ています。14日間の無料トライアルがあり、終わると自動でFreeプランに移ります。Freeは管理者1名・スペース1つで、[正式リリース前の機能が先に出る環境](https://www.ovice.com/ja/pricing/entry)とされています。"
       ],
       "table": {
         "head": [
@@ -159,7 +159,7 @@
             "20名＋1名ごとに¥1,815（年払い）"
           ]
         ],
-        "note": "oViceの日本語料金ページ（Entry、企業向け）で2026年11月3日に確認 [11][12]。"
+        "note": "oViceの日本語料金ページ（[Entry](https://www.ovice.com/ja/pricing/entry)、[企業向け](https://www.ovice.com/ja/pricing/business)）で2026年11月3日に確認。"
       }
     },
     {
@@ -290,23 +290,23 @@
       "items": [
         {
           "title": "最低人数",
-          "body": "Sococoは最低10席なので、5人のチームでも10席分を払います [10]。Kumospace Businessは最低5人 [3]、oViceのBusiness Starterは20名分が基本料金に含まれます [12]。"
+          "body": "Sococoは最低10席なので、5人のチームでも[10席分を払います](https://www.sococo.com/pricing/)。[Kumospace Business](https://www.kumospace.com/pricing)は最低5人、[oViceのBusiness Starter](https://www.ovice.com/ja/pricing/business)は20名分が基本料金に含まれます。"
         },
         {
           "title": "含まれる時間",
-          "body": "GatherのEssentialは、録画が20時間から、文字起こしとゲストの招待が30時間からです [2]。Sococoは1席あたり月500分が含まれます [10]。会議が多いチームは上限を超えたときの扱いを確認しましょう。"
+          "body": "[GatherのEssential](https://www.gather.town/pricing)は、録画が20時間から、文字起こしとゲストの招待が30時間からです。Sococoは[1席あたり月500分](https://www.sococo.com/pricing/)が含まれます。会議が多いチームは上限を超えたときの扱いを確認しましょう。"
         },
         {
           "title": "ゲスト",
-          "body": "Gatherはメンバーに課金し、ゲストには課金しません [2]。Roamのゲストは無料です [8]。Kumospaceにはゲスト50人が含まれ、1人あたり週4時間まで入れます [3]。"
+          "body": "Gatherはメンバーに課金し、[ゲストには課金しません](https://www.gather.town/pricing)。[Roamのゲストは無料](https://ro.am/pricing)です。Kumospaceには[ゲスト50人](https://www.kumospace.com/pricing)が含まれ、1人あたり週4時間まで入れます。"
         },
         {
           "title": "価格の改定",
-          "body": "Roamは2027年の価格を公開しており、アクティブなメンバー1人あたり月20.88ドルです [8]。TinyFloorの29ドルは2027年3月1日までに契約したオフィス向けの創業価格で、契約を続ける限り変わりません。それ以降の新規契約は39ドルです [1]。"
+          "body": "Roamは[2027年の価格を公開](https://ro.am/pricing)しており、アクティブなメンバー1人あたり月20.88ドルです。TinyFloorの29ドルは2027年3月1日までに契約したオフィス向けの創業価格で、契約を続ける限り変わりません。[それ以降の新規契約は39ドル](/pricing)です。"
         },
         {
           "title": "録画とAI",
-          "body": "録画、文字起こし、AIの議事録は、安いプランと高いプランを分けるポイントになりがちです。SoWorkは無制限の録画とAI要約をPremium（年払いで1人月12ドル）に [4]、Kumospaceは録画をBusinessに含めています [3]。"
+          "body": "録画、文字起こし、AIの議事録は、安いプランと高いプランを分けるポイントになりがちです。[SoWorkは無制限の録画とAI要約をPremium](https://www.sowork.com/pricing)（年払いで1人月12ドル）に、[Kumospaceは録画をBusinessに含めています](https://www.kumospace.com/pricing)。"
         }
       ]
     },
@@ -319,15 +319,15 @@
         },
         {
           "title": "月ごとに人数が変わるチーム",
-          "body": "Roamのアクティブメンバー課金なら、その月に使わなかった人の分は払いません [8]。"
+          "body": "[Roamのアクティブメンバー課金](https://ro.am/pricing)なら、その月に使わなかった人の分は払いません。"
         },
         {
           "title": "録画、AI議事録、シングルサインオンが必要なチーム",
-          "body": "上位プランの1人あたり料金を見込みましょう。Gatherは時間内で録画とAIメモを含み [2]、SoWorkはPremiumに含めています [4]。シングルサインオンは多くがエンタープライズ向けですが、oViceはEntryから使えます [11]。"
+          "body": "上位プランの1人あたり料金を見込みましょう。[Gatherは時間内で録画とAIメモを含み](https://www.gather.town/pricing)、[SoWorkはPremiumに含めています](https://www.sowork.com/pricing)。シングルサインオンは多くがエンタープライズ向けですが、[oViceはEntryから使えます](https://www.ovice.com/ja/pricing/entry)。"
         },
         {
           "title": "まず1週間試したいチーム",
-          "body": "制限つきの無料プランより、トライアルから始めましょう。GatherとSpotは30日 [2][5]、RoamとKumospaceとoViceは14日 [8][3][11]、TinyFloorはチーム全員でProを14日 [1]、SoWorkは7日です [4]。多くはカード不要です。Discordで済ませる手もありますが、その長所と限界は[Discordを仕事で使う](/blog/discord-voice-channel-for-work)にまとめました。"
+          "body": "制限つきの無料プランより、トライアルから始めましょう。[Gather](https://www.gather.town/pricing)と[Spot](https://www.spotvirtual.com/pricing)は30日、[Roam](https://ro.am/pricing)と[Kumospace](https://www.kumospace.com/pricing)と[oVice](https://www.ovice.com/ja/pricing/entry)は14日、[TinyFloorはチーム全員でProを14日](/pricing)、[SoWork](https://www.sowork.com/pricing)は7日です。多くはカード不要です。Discordで済ませる手もありますが、その長所と限界は[Discordを仕事で使う](/blog/discord-voice-channel-for-work)にまとめました。"
         }
       ]
     }

@@ -9,17 +9,17 @@
   "intro": "Slack and Zoom cover two of the three things an office gives a team: writing to each other, and meeting at a set time. They leave out the third: seeing who's around and talking without booking anything. A virtual office adds that, and it usually sits next to Slack rather than replacing it. Whether your team needs one depends on how much of its work happens in quick conversations. We make TinyFloor, a virtual office, so we're not neutral; the research and plan limits below are cited so you can check them.",
   "takeaways": [
     "Slack is for writing and Zoom is for meetings you plan. Neither gives a team a place to see who's free and just start talking.",
-    "In a study of 61,182 Microsoft employees, working remotely made collaboration more siloed, with fewer bridges between groups, and moved communication from live to written [1].",
-    "Gallup's 2024 report found 25% of fully remote employees felt lonely a lot of the previous day, against 16% of those fully on-site [2].",
-    "Slack's free plan allows huddles one to one only, and Zoom's free plan ends meetings at 40 minutes [3][4].",
+    "In a study of 61,182 Microsoft employees, working remotely made collaboration more siloed, with fewer bridges between groups, and moved communication from live to written.",
+    "Gallup's 2024 report found 25% of fully remote employees felt lonely a lot of the previous day, against 16% of those fully on-site.",
+    "Slack's free plan allows huddles one to one only, and Zoom's free plan ends meetings at 40 minutes.",
     "A virtual office usually replaces the quick calls and the \"got a minute?\" messages, not Slack itself."
   ],
   "sections": [
     {
       "title": "What do Slack and Zoom each do for a remote team?",
       "body": [
-        "Slack is where a remote team writes: channels for each topic, direct messages, threads, and the apps that post into them. Its huddles add a quick call from a channel or a message ([how huddles compare](/slack-huddles-alternative)); on the free plan a huddle is one to one only, and messages and files older than 90 days can't be read [3].",
-        "Zoom is where a team meets at a set time: someone sends a link, everyone joins, the meeting ends. On the free plan a meeting lasts up to 40 minutes, with up to 100 people [4].",
+        "Slack is where a remote team writes: channels for each topic, direct messages, threads, and the apps that post into them. Its huddles add a quick call from a channel or a message ([how huddles compare](/slack-huddles-alternative)); [on the free plan a huddle is one to one only](https://slack.com/help/articles/115003205446-Slack-subscriptions-and-features), and messages and files older than 90 days can't be read.",
+        "Zoom is where a team meets at a set time: someone sends a link, everyone joins, the meeting ends. On the free plan [a meeting lasts up to 40 minutes](https://zoom.us/pricing), with up to 100 people.",
         "Together they cover writing that waits for an answer, the [asynchronous half](/guides/async-communication), and meetings that someone has planned. That's most of what a team does, but not all of it."
       ]
     },
@@ -27,7 +27,7 @@
       "title": "What's missing with only Slack and Zoom?",
       "body": [
         "In an office, a lot of work happens in conversations nobody planned: a question across the desk, a word after a meeting, overhearing that someone is stuck on what you solved last week. Remotely, each of those has to become a message or a meeting invite, so many of them don't happen at all.",
-        "The research points the same way ([more remote work statistics](/blog/remote-work-statistics)). When Microsoft moved its US staff to remote work in 2020, a study of 61,182 employees' emails, calendars, messages and calls found their collaboration network became more static and siloed, with fewer bridges between different parts of the company, and a shift from live to written communication [1]. Gallup's 2024 State of the Global Workplace found that fully remote employees report loneliness more than anyone else: 25%, against 21% of hybrid and 16% of fully on-site employees [2]."
+        "The research points the same way ([more remote work statistics](/blog/remote-work-statistics)). When Microsoft moved its US staff to remote work in 2020, [a study of 61,182 employees' emails, calendars, messages and calls](https://www.nature.com/articles/s41562-021-01196-4) found their collaboration network became more static and siloed, with fewer bridges between different parts of the company, and a shift from live to written communication. [Gallup's 2024 State of the Global Workplace](https://www.gallup.com/workplace/645566/employees-worldwide-feel-lonely.aspx) found that fully remote employees report loneliness more than anyone else: 25%, against 21% of hybrid and 16% of fully on-site employees."
       ],
       "items": [
         {
@@ -40,7 +40,7 @@
         },
         {
           "title": "Being around each other",
-          "body": "Nothing in Slack or Zoom shows the team together during the day. Working alone all day is part of why remote work feels lonelier [2]."
+          "body": "Nothing in Slack or Zoom shows the team together during the day. Working alone all day is part of why [remote work feels lonelier](https://www.gallup.com/workplace/645566/employees-worldwide-feel-lonely.aspx)."
         }
       ]
     },
@@ -56,7 +56,7 @@
         },
         {
           "title": "Talking without booking",
-          "body": "You walk up to a teammate and start a call, without a link or a calendar invite. In TinyFloor it starts with voice, and the camera is a button [5]."
+          "body": "You walk up to a teammate and start a call, without a link or a calendar invite. [In TinyFloor it starts with voice](/how-it-works), and the camera is a button."
         },
         {
           "title": "A meeting room that's always there",
@@ -64,7 +64,7 @@
         },
         {
           "title": "Being in without being on camera",
-          "body": "In a walk-up office like TinyFloor, nobody hears or sees you until someone starts a call, and the camera stays off until you turn it on [5]. In offices with spatial audio, people close to you hear you while your microphone is on."
+          "body": "In a walk-up office like TinyFloor, [nobody hears or sees you until someone starts a call](/how-it-works), and the camera stays off until you turn it on. In offices with spatial audio, people close to you hear you while your microphone is on."
         }
       ]
     },

@@ -102,7 +102,7 @@ export function postsAfter(post: BlogPost, locale: string, count: number): BlogP
   return [...others.filter((one) => one.category === post.category), ...others.filter((one) => one.category !== post.category)].slice(0, count);
 }
 
-/** A post's words: a guide's, plus the cover's description, the points to take away, and its numbered sources, which its text cites as [1]. */
+/** A post's words: a guide's, plus the cover's description, the points to take away, and its sources, which its text links from the words that name them. */
 export interface PostCopy extends GuideCopy {
   coverAlt: string;
   takeaways: string[];

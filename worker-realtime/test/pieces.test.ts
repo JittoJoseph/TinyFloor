@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { FLOOR, deskOfSeat, fitsIn, spotKey, type PieceChange, type ServerMessage } from "../../shared-protocol/src";
+import { FLOORS, deskOfSeat, fitsIn, spotKey, type PieceChange, type ServerMessage } from "../../shared-protocol/src";
 import { Client, settle, uniqueRoom } from "./client";
+
+/** The floor a room is on until a ticket says otherwise (a page that has never drawn one starts on another). */
+const FLOOR = FLOORS.startup;
 
 /** The next message of a kind, taken off the list, so the one after it is next. */
 async function take<T extends ServerMessage["t"]>(client: Client, type: T) {
@@ -20,8 +23,8 @@ const FILLED = SPEC.spots.find((spot) => FLOOR.pieces.some((piece) => piece.key 
 const EMPTY = SPEC.spots.find((spot) => spot !== FILLED && !FLOOR.pieces.some((piece) => piece.key === spotKey(DESK, spot.id)));
 const NARROW = SPEC.spots.reduce((a, b) => (b.x[1] - b.x[0] < a.x[1] - a.x[0] ? b : a));
 /** A thing that fits a spot, and one too wide for the narrowest. */
-const fitting = (spot: (typeof SPEC.spots)[number]) => Object.keys(FLOOR.things).find((item) => fitsIn(DESK, spot, item) && item !== FLOOR.pieces.find((piece) => piece.key === spotKey(DESK, spot.id))?.item)!;
-const TOO_WIDE = Object.keys(FLOOR.things).find((item) => FLOOR.things[item].facing !== "back" && !fitsIn(DESK, NARROW, item))!;
+const fitting = (spot: (typeof SPEC.spots)[number]) => Object.keys(FLOOR.things).find((item) => fitsIn(DESK, spot, item, FLOOR) && item !== FLOOR.pieces.find((piece) => piece.key === spotKey(DESK, spot.id))?.item)!;
+const TOO_WIDE = Object.keys(FLOOR.things).find((item) => FLOOR.things[item].facing !== "back" && !fitsIn(DESK, NARROW, item, FLOOR))!;
 const FAR_THING = Object.keys(FLOOR.things).find((item) => FLOOR.things[item].facing === "back")!;
 
 /** Ava in an office with her desk claimed, and Ben there to see. */
@@ -118,6 +121,6 @@ describe("desk pieces", () => {
     await take(ben, "piece");
     ava.send({ t: "desk_claim", seat: FLOOR.desks[OTHER].seat });
     expect((await take(ben, "pieces")).pieces).toEqual({});
-    expect(deskOfSeat(SEAT)).toBe(DESK);
+    expect(deskOfSeat(SEAT, FLOOR)).toBe(DESK);
   });
 });

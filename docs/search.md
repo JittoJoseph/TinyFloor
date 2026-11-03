@@ -705,3 +705,28 @@ usually several times larger. Exact Google volumes still need OpenSEO credits.
   line, the price section and the site description say one price for the
   whole team and 14 days of Pro for every new office; Free for 3 stays, said
   last, where pricing is explained.
+
+## The blog, by language (3 November)
+
+- **AI assistants get asked more than search engines here.** "discord for work"
+  is about 2,400 questions a month in AI assistants against 110 Google searches
+  in the US; "how much does a virtual office cost" about 300 against 40. The
+  blog's first posts answer exactly those, with sources an answer can cite.
+- **In most languages "virtual office" means a business address.** Polish
+  "wirtualne biuro" (2,900 a month), Dutch "virtueel kantoor" (480), Arabic,
+  Hebrew and German searches for a virtual office are people renting an address,
+  not teams. Don't target the bare term outside English; say "virtual office
+  for teams" or the local word for an online office tool.
+- **Where our topics have real demand:** Japanese ("discord 仕事で使う" 70,
+  "discord ビジネス" 50, "バーチャルオフィス ツール" 110), Korean ("디스코드
+  업무용" 30), Brazilian Portuguese ("discord para empresas" 70), and a little
+  in German and French. Italian, Spanish, Dutch, Polish, the Nordic languages,
+  Hebrew and Arabic showed almost none for these topics.
+- **So the blog is written per language, not translated across all 18:** the
+  Discord post in English, Japanese, Korean, Portuguese, German and French; the
+  cost post in English and Japanese (with prices in yen where Japanese readers
+  look for them); the rest in English. A language gets a blog index once it has
+  a post.
+- **"remote work statistics" (170 a month) is the page other writers link to.**
+  A sourced, dated table of figures is what a blog post quotes with a link, so
+  it's the post most likely to earn links without asking.

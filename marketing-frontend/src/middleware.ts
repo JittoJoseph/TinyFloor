@@ -18,7 +18,7 @@ const SITE = new URL(SITE_URL);
 const PAGES = [
   ...LANDINGS.map((page) => page.slug),
   `guides(/(${GUIDES.map((guide) => guide.slug).join("|")}))?`,
-  "about|pricing|features|compare|use-cases|teams|people|privacy|terms|refunds|rooms|og-render",
+  "about|pricing|features|compare|use-cases|teams|people|privacy|terms|refunds|rooms|og-render|changelog|how-it-works",
   // The free tools and their index (lib/tools/catalog).
   `tools(/(${TOOLS.map((tool) => tool.path.slice("/tools/".length)).join("|")}))?`,
 ];

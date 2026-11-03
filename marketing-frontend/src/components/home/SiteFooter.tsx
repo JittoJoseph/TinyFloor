@@ -128,6 +128,8 @@ export async function SiteFooter({ path = "/" }: { path?: string }) {
 
   const company: FooterLink[] = [
     { label: t("about"), href: "/about" },
+    { label: t("howItWorks"), href: "/how-it-works" },
+    { label: t("changelog"), href: "/changelog" },
     { label: t("contact"), href: `mailto:${SUPPORT_EMAIL}` },
     { label: t("faq"), href: "/#faq" },
     { label: t("privacy"), href: "/privacy" },

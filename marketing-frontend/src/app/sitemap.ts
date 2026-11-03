@@ -13,6 +13,8 @@ import { TEAM_BUILDING_UPDATED } from '@/lib/tools/team-building';
 import { TIME_ZONES_PATH, TIME_ZONES_UPDATED } from '@/lib/tools/time-zones';
 import { TWO_TRUTHS_UPDATED } from '@/lib/tools/two-truths';
 import { WOULD_YOU_RATHER_UPDATED } from '@/lib/tools/would-you-rather';
+import { CHANGELOG_PATH, CHANGELOG_UPDATED } from '@/lib/changelog';
+import { HOW_IT_WORKS_PATH, HOW_IT_WORKS_UPDATED } from '@/lib/how-it-works';
 
 /**
  * The day the home page, pricing, the indexes and about last changed (YYYY-MM-DD).
@@ -69,6 +71,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ),
     // The legal pages are in English only; the other languages' copies point here.
     ...['/privacy', '/terms', '/refunds'].map((path) => ({ url: absolute(path), changeFrequency: 'yearly' as const, priority: 0.3 })),
+    // How it works and the changelog are in English only too, and change as the product does.
+    { url: absolute(HOW_IT_WORKS_PATH), lastModified: HOW_IT_WORKS_UPDATED, changeFrequency: 'monthly' as const, priority: 0.6 },
+    { url: absolute(CHANGELOG_PATH), lastModified: CHANGELOG_UPDATED, changeFrequency: 'weekly' as const, priority: 0.5 },
     // The guides and the free tools, each in the languages it's written in. A guide's
     // date is the day its words last changed, so it's a lastmod crawlers can trust.
     ...GUIDES.flatMap((guide) =>

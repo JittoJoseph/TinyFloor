@@ -803,8 +803,8 @@
         "items": [
           {
             "title": "TinyFloor",
-            "detail": "Gratis for 3 personer · $29 om måneden for hele teamet",
-            "body": "Et kontor i pixelkunst i browseren, på computer og telefon. Gå hen til en kollega for at starte et videoopkald, sæt dig ved et bord for at holde møde, med chatkanaler, skærmdeling og whiteboard. Én pris for hele kontoret, ikke pr. person. Det har ingen optagelser, AI-noter eller korteditor, og kontorerne er lavet til små teams på op til 15."
+            "detail": "Én pris for hele teamet · $29 om måneden",
+            "body": "Et kontor i pixelkunst i browseren, på computer og telefon. Gå hen til en kollega for at starte et videoopkald, sæt dig ved et bord for at holde møde, med chatkanaler, skærmdeling og whiteboard. Én pris for hele kontoret, ikke pr. person. Det har ingen optagelser, AI-noter eller korteditor."
           },
           {
             "title": "Gather",
@@ -1100,8 +1100,8 @@
         "title": "Hvilken til hvilket team",
         "items": [
           {
-            "title": "Et lille team med et lille budget",
-            "body": "TinyFloor, til $29 om måneden for hele teamet, eller SoWorks gratisplan, hvis møder på 30 minutter er nok."
+            "title": "Et team, der arbejder sammen hele dagen",
+            "body": "TinyFloor, én pris på $29 om måneden for hele teamet, eller SoWorks gratisplan, hvis møder på 30 minutter er nok."
           },
           {
             "title": "Du vil have optagelser og AI-noter",
@@ -1152,7 +1152,7 @@
     ],
     "fit": {
       "title": "Hvor TinyFloor passer ind",
-      "body": "TinyFloor er det enkle og billige: et kontor i browseren, hvor du går hen til nogen for at tale, med mødelokale, chat og skærmdeling, til én pris pr. kontor. Det er til små teams, der vil have et kontor, der er åbent hele dagen. Har du brug for optagelser, AI-noter eller et kort, du selv har designet, passer Gather eller SoWork Premium bedre. TinyFloor er gratis for op til 3 personer, så du kan prøve det med dit team først."
+      "body": "TinyFloor er et kontor i browseren til et team, der arbejder sammen hver dag: gå hen og snak, med mødelokale, chat og skærmdeling, til én pris for hele kontoret. Har du brug for optagelser, AI-noter eller et kort, du selv designer, passer Gather eller SoWork Premium bedre. Hvert nyt kontor starter med 14 dages Pro, intet kort nødvendigt, så du kan prøve det med dit team først."
     },
     "faq": [
       {
@@ -1161,7 +1161,7 @@
       },
       {
         "q": "Hvad er den bedste software til virtuelt kontor til en lille virksomhed?",
-        "a": "For et team på 4 til 15, der ønsker én enkel pris, er det TinyFloor til 29 $ om måneden for hele teamet. Hvis jeres møder kan klares på 30 minutter, dækker SoWorks gratisplan 10 medlemmer. Hvis du har brug for optagelser, AI-notater eller en desktop-app, så kig på Gather, SoWork Premium eller Spot; til single sign-on og årlige kontrakter, Gather, Roam, oVice eller Sococo."
+        "a": "Til et team, der arbejder sammen hver dag og vil have én enkel pris: TinyFloor, til $29 om måneden for hele teamet. Hvis jeres møder kan klares på 30 minutter, dækker SoWorks gratisplan 10 medlemmer. Hvis du har brug for optagelser, AI-notater eller en desktop-app, så kig på Gather, SoWork Premium eller Spot; til single sign-on og årlige kontrakter, Gather, Roam, oVice eller Sococo."
       },
       {
         "q": "Hvad er det billigste virtuelle kontor til et lille team?",

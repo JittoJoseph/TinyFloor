@@ -803,8 +803,8 @@
         "items": [
           {
             "title": "TinyFloor",
-            "detail": "Free for 3 people · $29 a month for the whole team",
-            "body": "A pixel-art office in the browser, on desktop and mobile. Walk up to a teammate to start a video call, sit at a table to meet, with chat channels, screen sharing and a whiteboard. One price for the whole office, not per person. It has no recordings, AI notes or map editor, and offices are made for small teams of up to 15."
+            "detail": "One price for the whole team · $29 a month",
+            "body": "A pixel-art office in the browser, on desktop and mobile. Walk up to a teammate to start a video call, sit at a table to meet, with chat channels, screen sharing and a whiteboard. One price for the whole office, not per person. It has no recordings, AI notes or map editor."
           },
           {
             "title": "Gather",
@@ -1100,8 +1100,8 @@
         "title": "Which one for which team",
         "items": [
           {
-            "title": "A small team on a budget",
-            "body": "TinyFloor, at $29 a month for the whole team, or SoWork's free plan if 30-minute meetings are enough."
+            "title": "A team that works together all day",
+            "body": "TinyFloor, one price of $29 a month for the whole team, or SoWork's free plan if 30-minute meetings are enough."
           },
           {
             "title": "You want recordings and AI notes",
@@ -1152,7 +1152,7 @@
     ],
     "fit": {
       "title": "Where TinyFloor fits",
-      "body": "TinyFloor is the simple, inexpensive one: a browser office where you walk up to talk, a meeting room, chat and screen sharing, for one price per office. It's for small teams who want an office that stays open all day. If you need recordings, AI notes or a map you design, Gather or SoWork Premium will suit you better. TinyFloor is free for up to 3 people, so you can try it with your team first."
+      "body": "TinyFloor is a browser office for a team that works together every day: walk up to talk, with a meeting room, chat and screen sharing, at one price for the whole office. If you need recordings, AI notes or a map you design, Gather or SoWork Premium will suit you better. Every new office starts with 14 days of Pro, no card needed, so you can try it with your team first."
     },
     "faq": [
       {
@@ -1161,7 +1161,7 @@
       },
       {
         "q": "What is the best virtual office software for a small business?",
-        "a": "For a team of 4 to 15 that wants one simple price, TinyFloor, at $29 a month for the whole team. If your meetings fit in 30 minutes, SoWork's free plan covers 10 members. If you need recordings, AI notes or a desktop app, look at Gather, SoWork Premium or Spot; for single sign-on and yearly contracts, Gather, Roam, oVice or Sococo."
+        "a": "For a team that works together every day and wants one simple price, TinyFloor, at $29 a month for the whole team. If your meetings fit in 30 minutes, SoWork's free plan covers 10 members. If you need recordings, AI notes or a desktop app, look at Gather, SoWork Premium or Spot; for single sign-on and yearly contracts, Gather, Roam, oVice or Sococo."
       },
       {
         "q": "What's the cheapest virtual office for a small team?",

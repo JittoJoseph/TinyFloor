@@ -803,8 +803,8 @@
         "items": [
           {
             "title": "TinyFloor",
-            "detail": "Ilmainen 3 hengelle · $29 kuukaudessa koko tiimille",
-            "body": "Pikselitaidetoimisto selaimessa, tietokoneella ja puhelimella. Kävele kollegan luo aloittaaksesi videopuhelun, istu pöydän ääreen palaveria varten, ja käytössä on chat-kanavat, näytön jako ja valkotaulu. Yksi hinta koko toimistolle, ei henkeä kohden. Siinä ei ole tallenteita, tekoälymuistiinpanoja eikä karttaeditoria, ja toimistot on tehty pienille, enintään 15 hengen tiimeille."
+            "detail": "Yksi hinta koko tiimille · $29 kuukaudessa",
+            "body": "Pikselitaidetoimisto selaimessa, tietokoneella ja puhelimella. Kävele kollegan luo aloittaaksesi videopuhelun, istu pöydän ääreen palaveria varten, ja käytössä on chat-kanavat, näytön jako ja valkotaulu. Yksi hinta koko toimistolle, ei henkeä kohden. Siinä ei ole tallenteita, tekoälymuistiinpanoja eikä karttaeditoria."
           },
           {
             "title": "Gather",
@@ -1100,8 +1100,8 @@
         "title": "Mikä millekin tiimille",
         "items": [
           {
-            "title": "Pieni tiimi ja pieni budjetti",
-            "body": "TinyFloor, $29 kuukaudessa koko tiimille, tai SoWorkin ilmainen tilaus, jos 30 minuutin kokoukset riittävät."
+            "title": "Tiimi, joka tekee töitä yhdessä koko päivän",
+            "body": "TinyFloor, yksi $29 kuukausihinta koko tiimille, tai SoWorkin ilmainen tilaus, jos 30 minuutin kokoukset riittävät."
           },
           {
             "title": "Haluat tallenteet ja tekoälymuistiinpanot",
@@ -1152,7 +1152,7 @@
     ],
     "fit": {
       "title": "Mihin TinyFloor sopii",
-      "body": "TinyFloor on se yksinkertainen ja edullinen: selaimessa toimiva toimisto, jossa kävelet jonkun luo juttelemaan, ja jossa on neuvotteluhuone, chat ja näytön jako, yhdellä toimistokohtaisella hinnalla. Se on pienille tiimeille, jotka haluavat koko päivän auki olevan toimiston. Jos tarvitset tallenteita, tekoälymuistiinpanoja tai itse suunnitellun kartan, Gather tai SoWork Premium palvelee paremmin. TinyFloor on ilmainen enintään 3 hengelle, joten voit kokeilla sitä ensin tiimisi kanssa."
+      "body": "TinyFloor on selaimessa toimiva toimisto tiimille, joka tekee töitä yhdessä joka päivä: kävele juttelemaan, ja mukana on kokoushuone, chat ja näytön jakaminen, yhdellä hinnalla koko toimistolle. Jos tarvitset tallenteita, tekoälymuistiinpanoja tai itse suunnitellun kartan, Gather tai SoWork Premium sopii paremmin. Jokainen uusi toimisto alkaa 14 päivän Prolla ilman korttia, joten voit kokeilla sitä ensin tiimisi kanssa."
     },
     "faq": [
       {
@@ -1161,7 +1161,7 @@
       },
       {
         "q": "Mikä on paras virtuaalitoimisto-ohjelmisto pienelle yritykselle?",
-        "a": "4–15 hengen tiimille, joka haluaa yhden selkeän hinnan, TinyFloor maksaa 29 $ kuukaudessa koko tiimiltä. Jos palaverisi mahtuvat 30 minuuttiin, SoWorkin ilmainen paketti kattaa 10 jäsentä. Jos tarvitset tallenteita, tekoälymuistiinpanoja tai työpöytäsovelluksen, tutustu palveluihin Gather, SoWork Premium tai Spot; kertakirjautumista ja vuosisopimuksia varten sopivat Gather, Roam, oVice tai Sococo."
+        "a": "Tiimille, joka tekee töitä yhdessä joka päivä ja haluaa yhden yksinkertaisen hinnan: TinyFloor, $29 kuukaudessa koko tiimille. Jos palaverisi mahtuvat 30 minuuttiin, SoWorkin ilmainen paketti kattaa 10 jäsentä. Jos tarvitset tallenteita, tekoälymuistiinpanoja tai työpöytäsovelluksen, tutustu palveluihin Gather, SoWork Premium tai Spot; kertakirjautumista ja vuosisopimuksia varten sopivat Gather, Roam, oVice tai Sococo."
       },
       {
         "q": "Mikä on halvin virtuaalitoimisto pienelle tiimille?",

@@ -64,7 +64,7 @@ export const GUIDES: Guide[] = [
   { slug: "discord-vs-slack", key: "discordVsSlack", published: "2026-10-25", updated: "2026-10-25", pages: ["discord", "slackHuddles", "virtualOffice"], related: ["remoteCommunication", "remoteTools", "async"] },
   { slug: "what-is-proximity-chat", key: "proximityChat", published: "2026-10-04", updated: "2026-10-26", pages: ["proximityChat", "virtualOffice", "gather"], related: ["bestVirtualOffice", "gatherPricing", "remoteTools"] },
   // Buyers comparing products and prices (docs/search.md). Competitors' prices are checked against their own pages; bump `updated` when they are.
-  { slug: "best-virtual-office-software", key: "bestVirtualOffice", published: "2026-10-07", updated: "2026-10-25", pages: ["virtualOffice", "gather", "kumospace"], related: ["gatherPricing", "remoteTools", "proximityChat"] },
+  { slug: "best-virtual-office-software", key: "bestVirtualOffice", published: "2026-10-07", updated: "2026-11-03", pages: ["virtualOffice", "gather", "kumospace"], related: ["gatherPricing", "remoteTools", "proximityChat"] },
   { slug: "gather-pricing", key: "gatherPricing", published: "2026-10-07", updated: "2026-10-25", pages: ["gather", "gatherVsKumospace", "virtualOffice"], related: ["bestVirtualOffice", "proximityChat", "remoteTools"] },
 ];
 

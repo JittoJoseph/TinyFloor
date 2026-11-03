@@ -803,8 +803,8 @@
         "items": [
           {
             "title": "TinyFloor",
-            "detail": "Kostenlos für 3 Personen · $29 im Monat für das ganze Team",
-            "body": "Ein Pixel-Art-Büro im Browser, auf Desktop und Handy. Geh zu jemandem hin, um einen Videoanruf zu starten, setz dich an einen Tisch, um dich zu treffen, mit Chat-Kanälen, Bildschirmfreigabe und Whiteboard. Ein Preis für das ganze Büro, nicht pro Person. Es hat keine Aufzeichnungen, KI-Notizen oder Karteneditor, und die Büros sind für kleine Teams von bis zu 15 gemacht."
+            "detail": "Ein Preis für das ganze Team · $29 im Monat",
+            "body": "Ein Pixel-Art-Büro im Browser, auf Desktop und Handy. Geh zu jemandem hin, um einen Videoanruf zu starten, setz dich an einen Tisch, um dich zu treffen, mit Chat-Kanälen, Bildschirmfreigabe und Whiteboard. Ein Preis für das ganze Büro, nicht pro Person. Es hat keine Aufzeichnungen, KI-Notizen oder Karteneditor."
           },
           {
             "title": "Gather",
@@ -1100,8 +1100,8 @@
         "title": "Welches für welches Team",
         "items": [
           {
-            "title": "Ein kleines Team mit kleinem Budget",
-            "body": "TinyFloor, für $29 im Monat für das ganze Team, oder der kostenlose Tarif von SoWork, wenn 30-minütige Meetings reichen."
+            "title": "Ein Team, das den ganzen Tag zusammenarbeitet",
+            "body": "TinyFloor, ein Preis von $29 im Monat für das ganze Team, oder der kostenlose Tarif von SoWork, wenn 30-minütige Meetings reichen."
           },
           {
             "title": "Du willst Aufzeichnungen und KI-Notizen",
@@ -1152,7 +1152,7 @@
     ],
     "fit": {
       "title": "Wo TinyFloor passt",
-      "body": "TinyFloor ist das einfache, günstige: ein Büro im Browser, in dem du zum Reden hingehst, mit Meetingraum, Chat und Bildschirmfreigabe, für einen Preis pro Büro. Es ist für kleine Teams, die ein Büro wollen, das den ganzen Tag offen ist. Wenn du Aufzeichnungen, KI-Notizen oder eine selbst gestaltete Karte brauchst, passen Gather oder SoWork Premium besser. TinyFloor ist für bis zu 3 Personen gratis, du kannst es also erst mit deinem Team ausprobieren."
+      "body": "TinyFloor ist ein Büro im Browser für ein Team, das jeden Tag zusammenarbeitet: hingehen und reden, mit Meetingraum, Chat und Bildschirmfreigabe, zu einem Preis für das ganze Büro. Wenn du Aufzeichnungen, KI-Notizen oder eine selbst gestaltete Karte brauchst, passen Gather oder SoWork Premium besser. Jedes neue Büro startet mit 14 Tagen Pro, keine Karte nötig, so kannst du es zuerst mit deinem Team ausprobieren."
     },
     "faq": [
       {
@@ -1161,7 +1161,7 @@
       },
       {
         "q": "Welche ist die beste Virtual-Office-Software für ein kleines Unternehmen?",
-        "a": "Für ein Team von 4 bis 15 Personen, das einen einzigen, einfachen Preis möchte: TinyFloor für 29 $ im Monat für das gesamte Team. Wenn deine Meetings in 30 Minuten passen, deckt der Gratis-Tarif von SoWork 10 Mitglieder ab. Wenn du Aufzeichnungen, KI-Notizen oder eine Desktop-App brauchst, sieh dir Gather, SoWork Premium oder Spot an; für Single Sign-On und Jahresverträge Gather, Roam, oVice oder Sococo."
+        "a": "Für ein Team, das jeden Tag zusammenarbeitet und einen einfachen Preis will: TinyFloor, für $29 im Monat für das ganze Team. Wenn deine Meetings in 30 Minuten passen, deckt der Gratis-Tarif von SoWork 10 Mitglieder ab. Wenn du Aufzeichnungen, KI-Notizen oder eine Desktop-App brauchst, sieh dir Gather, SoWork Premium oder Spot an; für Single Sign-On und Jahresverträge Gather, Roam, oVice oder Sococo."
       },
       {
         "q": "Welches ist das günstigste virtuelle Büro für ein kleines Team?",

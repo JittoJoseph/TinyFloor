@@ -803,8 +803,8 @@
         "items": [
           {
             "title": "TinyFloor",
-            "detail": "Gratis voor 3 mensen · $29 per maand voor het hele team",
-            "body": "Een kantoor in pixelart in de browser, op computer en telefoon. Loop naar een collega om een videogesprek te starten, ga aan een tafel zitten om te vergaderen, met chatkanalen, schermdelen en een whiteboard. Eén prijs voor het hele kantoor, niet per persoon. Het heeft geen opnames, AI-notities of kaarteditor, en de kantoren zijn gemaakt voor kleine teams tot 15 mensen."
+            "detail": "Eén prijs voor het hele team · $29 per maand",
+            "body": "Een kantoor in pixelart in de browser, op computer en telefoon. Loop naar een collega om een videogesprek te starten, ga aan een tafel zitten om te vergaderen, met chatkanalen, schermdelen en een whiteboard. Eén prijs voor het hele kantoor, niet per persoon. Het heeft geen opnames, AI-notities of kaarteditor."
           },
           {
             "title": "Gather",
@@ -1100,8 +1100,8 @@
         "title": "Welke voor welk team",
         "items": [
           {
-            "title": "Een klein team met een klein budget",
-            "body": "TinyFloor, voor $29 per maand voor het hele team, of het gratis abonnement van SoWork als meetings van 30 minuten genoeg zijn."
+            "title": "Een team dat de hele dag samenwerkt",
+            "body": "TinyFloor, één prijs van $29 per maand voor het hele team, of het gratis abonnement van SoWork als meetings van 30 minuten genoeg zijn."
           },
           {
             "title": "Je wilt opnames en AI-notities",
@@ -1152,7 +1152,7 @@
     ],
     "fit": {
       "title": "Waar TinyFloor past",
-      "body": "TinyFloor is de eenvoudige en goedkope: een kantoor in de browser waar je naar iemand toe loopt om te praten, met een vergaderruimte, chat en schermdelen, voor één prijs per kantoor. Het is voor kleine teams die een kantoor willen dat de hele dag open is. Heb je opnames, AI-notities of een zelf ontworpen kaart nodig, dan passen Gather of SoWork Premium beter. TinyFloor is gratis voor maximaal 3 mensen, dus je kunt het eerst met je team uitproberen."
+      "body": "TinyFloor is een kantoor in de browser voor een team dat elke dag samenwerkt: loop langs om te praten, met een vergaderruimte, chat en scherm delen, voor één prijs voor het hele kantoor. Heb je opnames, AI-notities of een zelf ontworpen kaart nodig, dan passen Gather of SoWork Premium beter. Elk nieuw kantoor begint met 14 dagen Pro, geen kaart nodig, dus je kunt het eerst met je team proberen."
     },
     "faq": [
       {
@@ -1161,7 +1161,7 @@
       },
       {
         "q": "Wat is de beste virtuele-kantoorsoftware voor een klein bedrijf?",
-        "a": "Voor een team van 4 tot 15 dat één simpele prijs wil, is dat TinyFloor, voor $ 29 per maand voor het hele team. Als je vergaderingen binnen 30 minuten passen, dekt het gratis abonnement van SoWork 10 leden. Als je opnames, AI-notities of een desktop-app nodig hebt, kijk dan naar Gather, SoWork Premium of Spot; voor single sign-on en jaarcontracten naar Gather, Roam, oVice of Sococo."
+        "a": "Voor een team dat elke dag samenwerkt en één eenvoudige prijs wil: TinyFloor, voor $29 per maand voor het hele team. Als je vergaderingen binnen 30 minuten passen, dekt het gratis abonnement van SoWork 10 leden. Als je opnames, AI-notities of een desktop-app nodig hebt, kijk dan naar Gather, SoWork Premium of Spot; voor single sign-on en jaarcontracten naar Gather, Roam, oVice of Sococo."
       },
       {
         "q": "Wat is het goedkoopste virtuele kantoor voor een klein team?",

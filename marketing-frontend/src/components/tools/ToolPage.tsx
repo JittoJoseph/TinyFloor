@@ -4,7 +4,7 @@ import { absoluteUrl, articleNode, faqNode, pageGraph } from "@/lib/structured-d
 import { JsonLd } from "@/components/JsonLd";
 import { cn } from "@/lib/utils";
 import { emphasised } from "@/lib/words";
-import { CJK_HEADLINE, COLUMN, Closing, EYEBROW, INK, LEAD, MarketingShell, Questions } from "@/components/home/Blocks";
+import { CJK_HEADLINE, COLUMN, Closing, INK, LEAD, MarketingShell, Questions } from "@/components/home/Blocks";
 import { READ } from "@/components/guides/ArticleSections";
 import { RelatedTools } from "./RelatedTools";
 
@@ -64,10 +64,9 @@ export function ToolPage({
       <article lang={locale}>
         <header className={cn(COLUMN, "pt-32 sm:pt-44")}>
           <div className={READ}>
-            <p className={EYEBROW}>{copy.eyebrow}</p>
             <h1
               className={cn(
-                "mt-6 text-balance text-[36px] font-normal leading-[1.06] tracking-[-0.04em] min-[400px]:text-[40px] sm:text-[56px]",
+                "text-balance text-[36px] font-normal leading-[1.06] tracking-[-0.04em] min-[400px]:text-[40px] sm:text-[56px]",
                 CJK_HEADLINE,
               )}
             >

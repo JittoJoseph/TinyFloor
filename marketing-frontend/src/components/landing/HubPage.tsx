@@ -11,7 +11,9 @@ import { cn } from "@/lib/utils";
 import { hubArticle } from "@/lib/landing-articles";
 import { JsonLd } from "@/components/JsonLd";
 import { ArticleSections, READ, numberItems } from "@/components/guides/ArticleSections";
-import { CJK_HEADLINE, COLUMN, Closing, EYEBROW, LEAD, MarketingShell } from "@/components/home/Blocks";
+import { CJK_HEADLINE, COLUMN, Closing, LEAD, MarketingShell } from "@/components/home/Blocks";
+import { PageCard } from "@/components/home/PageCard";
+import { illustrationFor } from "@/lib/illustrations";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -51,7 +53,6 @@ export async function HubPage({ group, params }: { group: LandingGroup; params: 
       />
       <section className={cn(COLUMN, "pb-24 pt-32 sm:pb-32 sm:pt-44")}>
         <div className="flex flex-col items-center text-center">
-          <p className={cn(EYEBROW, "mb-6")}>{t(group)}</p>
           <h1
             className={cn(
               "max-w-[18ch] text-balance text-[40px] font-normal leading-[1.04] tracking-[-0.045em] min-[400px]:text-[44px] sm:text-[64px]",
@@ -63,19 +64,10 @@ export async function HubPage({ group, params }: { group: LandingGroup; params: 
           <p className={cn(LEAD, "mt-7 max-w-[34rem] text-balance")}>{t(`hubs.${group}.body`)}</p>
         </div>
 
-        <ul className="mx-auto mt-14 grid max-w-[1040px] gap-3 sm:mt-20 md:grid-cols-2 lg:grid-cols-3">
+        <ul className={cn("mx-auto mt-14 grid sm:mt-20 md:grid-cols-2 lg:grid-cols-3", illustrationFor(pages[0]?.slug ?? "") ? "max-w-[1120px] gap-x-6 gap-y-12" : "max-w-[1040px] gap-3")}>
           {pages.map((page) => (
             <li key={page.slug}>
-              <Link
-                href={`/${page.slug}`}
-                className="group flex h-full flex-col rounded-[24px] bg-muted/80 p-6 transition-colors hover:bg-muted sm:p-7"
-              >
-                <span className="flex items-center justify-between gap-3 text-[17px] font-semibold tracking-[-0.01em]">
-                  {t(`pages.${page.key}.label`)}
-                  <ArrowRight className="size-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 rtl:rotate-180 rtl:group-hover:-translate-x-0.5" />
-                </span>
-                <span className="mt-2 text-[14.5px] leading-[1.55] text-muted-foreground">{t(`pages.${page.key}.meta.description`)}</span>
-              </Link>
+              <PageCard href={`/${page.slug}`} title={t(`pages.${page.key}.label`)} description={t(`pages.${page.key}.meta.description`)} image={illustrationFor(page.slug)} />
             </li>
           ))}
         </ul>

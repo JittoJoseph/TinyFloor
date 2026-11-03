@@ -85,15 +85,13 @@ One price for the whole office, never one per person.
 
 | Plan | Price | For |
 |---|---|---|
-| **Free** | $0, forever, no card | Up to 3 people, with every feature |
-| **Pro** | $29 a month for the whole team | Up to 15 people, with more meeting time and priority help |
+| **Pro** | $29 a month for the whole team | Your whole team, meetings as often as you need, all your chat history and priority help |
+| **Free** | $0, no card | Up to 3 people, with every feature |
 
 - **Every new office starts with 14 days of Pro,** with no card needed.
 - **$29 is the founding price.** New subscriptions from 1 March 2027 are $39; teams that subscribe before then keep $29.
 - **Monthly, cancel any time,** and ask within 14 days of any payment for a full refund.
 - Prices are in US dollars, before tax. Payments go through Creem, our reseller. [See the pricing page](https://www.tinyfloor.com/pricing).
-
-A team of 10 pays $29 a month on TinyFloor Pro, against $80 to $160 on tools priced per person at $8 to $16 each.
 
 ## A Gather alternative, and the others
 
@@ -119,9 +117,9 @@ No. TinyFloor runs in any modern browser on desktop and mobile. Open the link an
 
 Zoom and Meet put everyone in one grid until the meeting ends. A TinyFloor office stays open all day, so you can see who's around and talk to whoever you need, without scheduling a call.
 
-### Is TinyFloor free?
+### What does TinyFloor cost?
 
-Yes, for up to 3 people, with every feature and no card. For a bigger team, Pro is $29 a month for the whole team, and every new office starts with 14 days of it free.
+Pro is one price for the whole team, $29 a month, not a price per person, and every new office starts with 14 days of Pro, no card needed. A team of up to 3 can stay on Free, with every feature.
 
 ### Can I try it without signing up?
 
@@ -134,6 +132,12 @@ The code is open source under the AGPL-3.0, so you can read how it works and wha
 ## How often it ships
 
 TinyFloor is live at [tinyfloor.com](https://www.tinyfloor.com) and ships to production almost every day: 84 releases in October 2026 and 41 in September, each a merge to `master` that deploys the sites, the API and the realtime worker. What changed for people using it is in the [changelog](https://www.tinyfloor.com/changelog). How calls, meetings and screen sharing work, with the numbers, and what TinyFloor doesn't do yet, is on [how TinyFloor works](https://www.tinyfloor.com/how-it-works).
+
+## Read more
+
+- **[The blog](https://www.tinyfloor.com/blog):** questions remote teams ask, answered with numbers and their sources, from [remote work statistics](https://www.tinyfloor.com/blog/remote-work-statistics) to [what a virtual office costs](https://www.tinyfloor.com/blog/virtual-office-cost) and [Zoom fatigue](https://www.tinyfloor.com/blog/zoom-fatigue).
+- **[Guides for remote team leads](https://www.tinyfloor.com/guides):** from [remote team culture](https://www.tinyfloor.com/guides/how-to-build-remote-team-culture) to [async communication](https://www.tinyfloor.com/guides/async-communication) and [the best virtual office software](https://www.tinyfloor.com/guides/best-virtual-office-software).
+- **[Free tools](https://www.tinyfloor.com/tools)** for remote teams: a [time zone meeting planner](https://www.tinyfloor.com/tools/time-zone-meeting-planner), [icebreaker questions](https://www.tinyfloor.com/tools/icebreaker-questions) and more.
 
 ## How it's built
 

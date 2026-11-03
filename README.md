@@ -19,6 +19,7 @@
   <a href="https://www.tinyfloor.com/lobby"><b>Try the demo office</b></a> ·
   <a href="https://www.tinyfloor.com/create"><b>Make an office</b></a> ·
   <a href="#pricing"><b>Pricing</b></a> ·
+  <a href="https://www.tinyfloor.com/changelog"><b>Changelog</b></a> ·
   <a href="#questions"><b>Questions</b></a>
 </p>
 
@@ -129,6 +130,10 @@ Yes. The [demo office](https://www.tinyfloor.com/lobby) needs only a name. Makin
 ### Is it open source? Can I self-host it?
 
 The code is open source under the AGPL-3.0, so you can read how it works and what it does with your team's data. The hosted service at [tinyfloor.com](https://www.tinyfloor.com) is how teams use it. The pixel art comes from paid packs whose licences don't allow sharing it, so it isn't in this repository: running your own copy needs your own copies of those packs.
+
+## How often it ships
+
+TinyFloor is live at [tinyfloor.com](https://www.tinyfloor.com) and ships to production almost every day: 84 releases in October 2026 and 41 in September, each a merge to `master` that deploys the sites, the API and the realtime worker. What changed for people using it is in the [changelog](https://www.tinyfloor.com/changelog). How calls, meetings and screen sharing work, with the numbers, and what TinyFloor doesn't do yet, is on [how TinyFloor works](https://www.tinyfloor.com/how-it-works).
 
 ## How it's built
 

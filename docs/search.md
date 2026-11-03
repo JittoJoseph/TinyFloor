@@ -730,3 +730,7 @@ usually several times larger. Exact Google volumes still need OpenSEO credits.
 - **"remote work statistics" (170 a month) is the page other writers link to.**
   A sourced, dated table of figures is what a blog post quotes with a link, so
   it's the post most likely to earn links without asking.
+- **Meeting overload travels further than "Zoom fatigue" does.** "zoom fatigue"
+  is 390 a month in the US and 260 in Germany (with almost no competition),
+  but in French people search "réunionite" (720) for the same problem. The
+  post is in English, German and French, the French one led by réunionite.

@@ -35,7 +35,7 @@ export const POSTS: BlogPost[] = [
     category: "remoteWork",
     published: "2026-11-03",
     updated: "2026-11-03",
-    locales: ["en"],
+    locales: ["en", "de", "fr"],
     pages: ["meetingRoom", "virtualOffice", "proximityChat"],
     guides: ["async", "teamMeetingAgenda", "remoteCommunication"],
   },

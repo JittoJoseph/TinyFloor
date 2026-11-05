@@ -2,7 +2,7 @@
 
 import { Fragment, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { useFormatter, useLocale, useNow, useTranslations } from "next-intl";
-import { ArrowDown, Check, Copy, Download, FileText, ImagePlus, Pencil, Reply, SmilePlus, Trash2 } from "web-shared/components/ui/icons";
+import { AlertCircle, ArrowDown, Check, Copy, Download, FileText, ImagePlus, Pencil, Reply, SmilePlus, Trash2 } from "web-shared/components/ui/icons";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { isPicture, isVoice, type ChatFile, type ChatMeeting } from "shared-protocol/chat";
 import { MeetingCard } from "./MeetingCard";
@@ -18,6 +18,10 @@ import { focusComposer } from "./Composer";
 
 export interface Line {
   id: string;
+  /** What React knows it by, when that's not its id: a message keeps it from being shown to being sent. */
+  key?: string;
+  /** Still on its way ("sending"), or not sent ("failed"): yours, shown before the room confirmed it. */
+  sending?: "sending" | "failed";
   author: string;
   authorName: string;
   body: string;
@@ -68,6 +72,8 @@ export function Conversation({
   names,
   target,
   loading = false,
+  onResend,
+  onDiscard,
 }: {
   lines: Line[];
   me: string;
@@ -97,6 +103,9 @@ export function Conversation({
   target?: string | null;
   /** Its messages are on their way: nothing is said until they're here, then they fade in. */
   loading?: boolean;
+  /** A message that wasn't sent: tried again, or let go of. */
+  onResend?: (line: Line) => void;
+  onDiscard?: (line: Line) => void;
 }) {
   const t = useTranslations("chat");
   // One message is edited at a time, so Up in the box can open the right one.
@@ -245,18 +254,22 @@ export function Conversation({
                   // A reply always shows whose it is, under the message it answers.
                   const grouped = !!previous && !previous.meeting && !line.reply && previous.author === line.author && line.at - previous.at < RUN_MS;
                   const fresh = settledAt !== null && line.at > settledAt;
+                  // On its way, there is nothing to do to it yet: no reactions, edits or replies.
+                  const settled = !line.sending;
                   return (
-                    <Fragment key={line.id}>
+                    <Fragment key={line.key ?? line.id}>
                       {line.id === firstUnread && <NewLine label={t("new")} />}
                       <Arrive fresh={fresh}>
                         <Message
                           line={line}
                           grouped={grouped && line.id !== firstUnread}
                           me={me}
-                          onReact={onReact}
-                          onEdit={line.author === me ? onEdit : undefined}
-                          onDelete={line.author === me ? onDelete : undefined}
-                          onReply={onReply}
+                          onReact={settled ? onReact : undefined}
+                          onEdit={settled && line.author === me ? onEdit : undefined}
+                          onDelete={settled && line.author === me ? onDelete : undefined}
+                          onReply={settled ? onReply : undefined}
+                          onResend={onResend}
+                          onDiscard={onDiscard}
                           onOpenReply={openReply}
                           personCard={personCard}
                           editing={editing === line.id}
@@ -427,6 +440,8 @@ function Message({
   onEditing,
   names,
   lit,
+  onResend,
+  onDiscard,
 }: {
   line: Line;
   grouped: boolean;
@@ -441,6 +456,8 @@ function Message({
   onEditing: (on: boolean) => void;
   names?: Map<string, string>;
   lit?: boolean;
+  onResend?: (line: Line) => void;
+  onDiscard?: (line: Line) => void;
 }) {
   const t = useTranslations("chat");
   const format = useFormatter();
@@ -495,7 +512,7 @@ function Message({
         )}
       </div>
 
-      <div className="min-w-0 flex-1">
+      <div className={cn("min-w-0 flex-1", line.sending === "sending" && "opacity-55 transition-opacity duration-300")}>
         {!grouped && (
           <div className="flex items-baseline gap-2 leading-5">
             {card(
@@ -551,6 +568,21 @@ function Message({
         )}
         {!!line.files?.length && <Files files={line.files} />}
 
+        {line.sending === "failed" && (
+          <p role="alert" className="mt-0.5 flex items-center gap-1.5 text-[12px] leading-5">
+            <AlertCircle className="size-3.5 shrink-0 text-destructive" aria-hidden />
+            <span className="text-destructive">{t("notSent")}</span>
+            <span aria-hidden className="text-faint">·</span>
+            <button type="button" onClick={() => onResend?.(line)} className="cursor-pointer font-medium text-foreground hover:underline">
+              {t("sendAgain")}
+            </button>
+            <span aria-hidden className="text-faint">·</span>
+            <button type="button" onClick={() => onDiscard?.(line)} className="cursor-pointer text-muted-foreground hover:text-foreground hover:underline">
+              {t("discard")}
+            </button>
+          </p>
+        )}
+
         {reactions.length > 0 && (
           <div className="mt-1 flex flex-wrap gap-1">
             {reactions.map(([emoji, people]) => {
@@ -579,8 +611,8 @@ function Message({
 
       </div>
 
-      {/* What you can do to a message, on hover or focus. */}
-      <div className="absolute -top-3.5 end-5 z-[6] hidden items-center gap-0.5 rounded-xl border border-border bg-popover p-0.5 shadow-float group-focus-within:flex group-hover:flex">
+      {/* What you can do to a message, on hover or focus; nothing yet while it's on its way. */}
+      <div className={cn("absolute -top-3.5 end-5 z-[6] hidden items-center gap-0.5 rounded-xl border border-border bg-popover p-0.5 shadow-float", !line.sending && "group-focus-within:flex group-hover:flex")}>
         {onReact &&
           QUICK.slice(0, 4).map((emoji) => (
             <button

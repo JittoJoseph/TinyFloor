@@ -14,7 +14,7 @@ import {
   sendAtQuality,
   udpRelay,
 } from "./media";
-import { SfuMeeting, type MeetingPeer } from "./SfuMeeting";
+import { SfuMeeting, type MeetingLink, type MeetingPeer } from "./SfuMeeting";
 import { dtxDescription } from "./sdp";
 import { prepareNoiseRemoval, removeNoise, type CleanVoice } from "./noiseFilter";
 import { chooseStage, EMPTY_STAGE, sameStage, type Pin, type Stage, type StageMode } from "./meetingStage";
@@ -47,6 +47,8 @@ export interface CallPeer {
   camera: boolean;
   screen: boolean;
   screenStream: MediaStream | null;
+  /** When the call was answered, for how long it has gone on. */
+  since?: number;
 }
 
 /** Someone asking you into their meeting. */
@@ -75,8 +77,10 @@ export interface CallSnapshot {
   /** A meeting you were just asked into. */
   invite: MeetingInvite | null;
   notice: MeetingNotice | null;
-  /** Whether you are the only one in your meeting, so nothing you do is being sent. */
+  /** Whether you are the only one in your meeting, so nobody hears or sees you yet. */
   alone: boolean;
+  /** How your meeting's connection is: being made, up, or dropped and coming back; null outside one. */
+  meetingLink: MeetingLink | null;
   localStream: MediaStream | null;
   screenStream: MediaStream | null;
   micEnabled: boolean;
@@ -185,6 +189,8 @@ const UDP_GRACE_MS = 2000;
 const UDP_SLOW_MS = 4500;
 /** Credentials are refreshed this long before they expire. */
 const ICE_REFRESH_MARGIN_MS = 15 * 60 * 1000;
+/** How long the connection made ahead outlasts that screen, for a quick look elsewhere and back. */
+const READY_LINGER_MS = 5000;
 const RING_TIMEOUT = 30000;
 /** How long a meeting invitation waits for an answer. */
 const INVITE_TIMEOUT = 30000;
@@ -238,6 +244,7 @@ const EMPTY: CallSnapshot = {
   invite: null,
   notice: null,
   alone: true,
+  meetingLink: null,
   localStream: null,
   screenStream: null,
   micEnabled: true,
@@ -277,6 +284,19 @@ class CallManager {
   private ws: RoomSocket | null = null;
   private peers = new Map<string, PeerEntry>();
   private sfu: SfuMeeting | null = null;
+  /**
+   * The meeting's connection, made while you look at a meeting you can join
+   * (getReady), with your microphone open: joining then only has to take the
+   * others' voices, and they hear you as soon as you're in.
+   */
+  private ready: SfuMeeting | null = null;
+  /** How many screens are getting you ready to join; the connection goes a moment after the last one closes. */
+  private readyHolds = 0;
+  /** How many of them want your microphone open too (the meeting's own page does; a ringing invitation doesn't). */
+  private readyMics = 0;
+  private readyTimer?: ReturnType<typeof setTimeout>;
+  private readyFrame = 0;
+  private releaseInviteReady: (() => void) | null = null;
   /** The place is past its meeting hours: meetings are voice only (docs/pricing.md). */
   private videoPaused = false;
   private local: MediaStream | null = null;
@@ -392,6 +412,12 @@ class CallManager {
   detach() {
     this.leaveMeeting(false);
     this.hangUp();
+    // Off the floor, nothing is getting ready to join: the room has gone with the socket.
+    cancelAnimationFrame(this.readyFrame);
+    clearTimeout(this.readyTimer);
+    this.ready?.close();
+    this.ready = null;
+    if (!this.peers.size) this.releaseMedia();
     stopSound("ring");
     clearTimeout(this.iceTimer);
     this.ws = null;
@@ -456,7 +482,12 @@ class CallManager {
   private answered(id: string, name: string, offerer: boolean, early = true): PeerEntry {
     const ringing = this.ringPeer?.id === id ? this.ringPeer : null;
     this.ringPeer = null;
-    if (!ringing) return this.createPeer(id, name, offerer);
+    if (!ringing) {
+      const peer = this.createPeer(id, name, offerer);
+      peer.since = Date.now();
+      return peer;
+    }
+    ringing.since = Date.now();
     this.peers.set(id, ringing);
     // The other end is an older app, which didn't take our offer while it
     // rang: offered again, from scratch, now that it will. (Its answer can't
@@ -487,7 +518,7 @@ class CallManager {
     clearTimeout(peer.fallback);
     clearTimeout(peer.heardTimer);
     peer.pc?.close();
-    if (!this.peers.size && !this.meeting && !this.incoming && !this.outgoing) this.releaseMedia();
+    if (!this.peers.size && !this.meeting && !this.incoming && !this.outgoing && !this.ready) this.releaseMedia();
   }
 
   /** Turns the ring down; left to ring out, it counts as missed on both ends. */
@@ -611,7 +642,7 @@ class CallManager {
         if (message.code === "not_found") this.tellMeeting({ kind: "ended", meeting: "" });
         break;
       case "sfu":
-        this.sfu?.handle(message);
+        (this.sfu ?? this.ready)?.handle(message);
         break;
     }
   }
@@ -653,6 +684,8 @@ class CallManager {
 
   dismissInvite() {
     clearTimeout(this.inviteTimer);
+    this.releaseInviteReady?.();
+    this.releaseInviteReady = null;
     if (!this.invitation) return;
     this.invitation = null;
     stopSound("ring");
@@ -700,6 +733,12 @@ class CallManager {
     if (this.peers.size || this.incoming || this.outgoing) this.hangUp();
     this.callReport = "";
     this.reportCall();
+    // A connection made ready on the old socket: the room has forgotten it.
+    if (this.ready) {
+      this.ready.close();
+      this.ready = null;
+      if (this.readyHolds) this.buildReady();
+    }
     const meeting = this.meeting;
     if (!meeting) return;
     this.leaveMeeting(false);
@@ -762,6 +801,9 @@ class CallManager {
   private onMeetingInvite(invite: MeetingInvite) {
     if (this.meeting === invite.meeting || this.incoming || this.outgoing) return;
     this.invitation = invite;
+    // Connected while it rings, so taking it up is quick; your microphone stays closed until you do.
+    this.releaseInviteReady?.();
+    this.releaseInviteReady = this.getReady(false);
     clearTimeout(this.inviteTimer);
     this.inviteTimer = setTimeout(() => this.dismissInvite(), INVITE_TIMEOUT);
     loopSound("ring");
@@ -808,6 +850,7 @@ class CallManager {
     this.micEnabled = enabled;
     this.local?.getAudioTracks().forEach((track) => (track.enabled = enabled));
     saveMicPreference(enabled);
+    if (enabled) this.openReadyMic();
     this.shareMedia();
     this.listenForVoice();
     this.emit();
@@ -941,18 +984,15 @@ class CallManager {
     this.error = null;
     this.dismissInvite();
     this.dismissNotice();
-    // Ready straight away, so it hears who is already sharing while media opens.
-    const sfu = new SfuMeeting(
-      (message) => this.ws?.send({ t: "sfu", ...message }),
-      () => {
-        if (this.sfu !== sfu) return;
-        this.listenForVoice();
-        this.refreshStage();
-        this.emit();
-      },
-      this.iceServers,
-      () => this.recoverMeeting(sfu),
-    );
+    // Connected ahead while you got ready, or connecting now. Ready straight
+    // away, so it hears who is already sharing while media opens.
+    // One that has since failed is dropped first, so the room forgets it before the new one publishes.
+    const ready = this.ready;
+    this.ready = null;
+    clearTimeout(this.readyTimer);
+    const usable = !!ready && !moving && ready.usable;
+    if (ready && !usable) this.dropReadyConnection(ready);
+    const sfu = usable ? ready! : this.newSfu();
     this.sfu = sfu;
     sfu.pauseVideo(this.videoPaused);
     members.forEach((member) => sfu.addMember(member.id, member.name));
@@ -976,6 +1016,85 @@ class CallManager {
     this.listenForVoice();
     this.refreshStage();
     this.emit();
+  }
+
+  /** A meeting's connection to the SFU, joined or getting ready to (getReady). */
+  private newSfu(): SfuMeeting {
+    const sfu: SfuMeeting = new SfuMeeting(
+      (message) => this.ws?.send({ t: "sfu", ...message }),
+      () => {
+        if (this.sfu !== sfu) return;
+        this.listenForVoice();
+        this.refreshStage();
+        this.emit();
+      },
+      this.iceServers,
+      () => {
+        if (this.sfu === sfu) this.recoverMeeting(sfu);
+        // Lost before joining: joining makes a new one.
+        else if (this.ready === sfu) this.dropReady();
+      },
+    );
+    return sfu;
+  }
+
+  /**
+   * You are looking at a meeting you can join: its connection is set up now,
+   * and your microphone opened, the way Meet and Zoom get you ready, so that
+   * pressing Join only has to take the others' voices. It took 5 s from Join
+   * to the first voice, a second of it the browser freezing while it made the
+   * connection. `mic`: open the microphone as well, as the meeting's own page
+   * does; an invitation ringing, or standing in the meeting room, doesn't.
+   * Call the function it returns when the screen goes; the connection goes a
+   * moment after, and the microphone if nothing else has it.
+   */
+  getReady(mic = true): () => void {
+    this.readyHolds++;
+    if (mic) this.readyMics++;
+    clearTimeout(this.readyTimer);
+    // Once the screen has drawn: the page's first connection holds it up for a moment (about a second).
+    if (!this.ready) {
+      cancelAnimationFrame(this.readyFrame);
+      this.readyFrame = requestAnimationFrame(() => (this.readyTimer = setTimeout(() => this.buildReady())));
+    } else this.openReadyMic();
+    let released = false;
+    return () => {
+      if (released) return;
+      released = true;
+      this.readyHolds--;
+      if (mic) this.readyMics--;
+      if (this.readyHolds > 0) return;
+      cancelAnimationFrame(this.readyFrame);
+      clearTimeout(this.readyTimer);
+      this.readyTimer = setTimeout(() => this.dropReady(), READY_LINGER_MS);
+    };
+  }
+
+  private buildReady() {
+    if (this.ready || this.meeting || !this.readyHolds || !this.ws || !canCall()) return;
+    const sfu = this.newSfu();
+    this.ready = sfu;
+    sfu.publishLocal(null, { mic: false, camera: false, screen: false }, false);
+    this.openReadyMic();
+  }
+
+  private openReadyMic() {
+    if (this.ready && this.readyMics > 0 && this.micEnabled) void this.openMedia().then(() => this.emit());
+  }
+
+  /** Not joining after all: the connection made ahead goes, and the microphone if nothing else has it. */
+  private dropReady() {
+    clearTimeout(this.readyTimer);
+    const ready = this.ready;
+    this.ready = null;
+    if (ready) this.dropReadyConnection(ready);
+    if (!this.peers.size && !this.meeting && !this.ringPeer && !this.incoming && !this.outgoing) this.releaseMedia();
+    this.emit();
+  }
+
+  private dropReadyConnection(ready: SfuMeeting) {
+    ready.close();
+    this.ws?.send({ t: "sfu", op: "drop" });
   }
 
   /**
@@ -1287,7 +1406,7 @@ class CallManager {
     this.peers.delete(id);
     playSound("end");
 
-    if (!this.peers.size && !this.meeting) this.releaseMedia();
+    if (!this.peers.size && !this.meeting && !this.ready) this.releaseMedia();
   }
 
   /** The microphone, for a call starting. The camera joins only when it is switched on (addCamera). */
@@ -1311,7 +1430,7 @@ class CallManager {
       return false;
     }
     // The call or meeting ended while the browser asked: nothing needs the microphone now.
-    const ended = () => !this.peers.size && !this.meeting && !this.ringPeer;
+    const ended = () => !this.peers.size && !this.meeting && !this.ringPeer && !this.ready;
     if (ended()) {
       stream.getTracks().forEach((track) => track.stop());
       return false;
@@ -1643,6 +1762,7 @@ class CallManager {
       invite: this.invitation,
       notice: this.notice,
       alone: this.sfu?.alone ?? true,
+      meetingLink: this.sfu?.link ?? null,
       localStream: this.local,
       screenStream: this.screen,
       micEnabled: this.micEnabled,

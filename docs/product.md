@@ -309,6 +309,45 @@ missing features on the map.
 - **Your own desk's plate folds back while you're at its chair**, rather than
   open over your name.
 
+## Staying connected, chat that can't get lost, ink and straight walks (5 November)
+
+- **A connection that died is noticed.** A laptop that slept or a Wi-Fi
+  change could leave a socket the browser still called open: the room let us
+  go after 90 s and the others saw us leave, while we thought we were there
+  and anything we sent went nowhere. Both sockets now ping every 10 s (the
+  room and the chat answer without waking, so it costs nothing) and drop one
+  that stops answering, reconnect at once when the tab, the network or the
+  laptop comes back, give up on one still opening after 8 s, and spread
+  their retries out at random so a deploy doesn't bring everyone back in the
+  same instant. Measured with the socket silenced mid-session: back in 26 s,
+  or 6 s when the network says it's back; before, never.
+- **What you say shows at once, and is never lost or posted twice.** A
+  message appears faded the moment you send it and is replaced by the room's
+  copy; one that can't go says "Not sent", with "Send again" and "Discard",
+  and goes again by itself when the connection is back. Each carries an id
+  from your app, so one sent twice is posted once. Measured: shown in a
+  third of a second; sent while the socket was dead, posted once after the
+  reconnect; sent but its answer lost, posted once.
+- **Search finds anything ever said.** It read the newest 20,000 messages
+  and looked through them; older ones were never found. Messages are now in
+  SQLite's full-text index (as Signal Desktop does it), words found by how
+  they start ("meet tomorrow" finds "Meeting's tomorrow?"), case and accents
+  folded. Chinese, Japanese and Korean, written without spaces, are still
+  looked for anywhere in the newest messages.
+- **The whiteboard draws ink.** Strokes were straight segments of one width,
+  so a quick circle came out a polygon. They're now drawn through every point
+  the pen reported, on a curve, and swell and thin with its speed
+  (perfect-freehand, which tldraw and Excalidraw draw with), the same on every
+  screen and on the wall. The board takes every point the browser had
+  between frames, not just the last.
+- **Walks go straight.** A click on the floor walked the grid: diagonally,
+  then straight, a bend nobody would make. The way is now pulled straight
+  wherever there's room for a body to pass, so it's one line across an open
+  room and still goes round desks and through doors.
+- **Away isn't guessed.** People keep the office open in a tab while they
+  work in other apps, so being idle in it says nothing; nobody is marked away
+  for it.
+
 ## Small decisions worth remembering
 
 - **The accent is ink, not a hue** (21 October). Emphasis comes from

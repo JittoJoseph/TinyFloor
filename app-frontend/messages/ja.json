@@ -139,6 +139,7 @@
     "settings": "設定",
     "leaveCall": "通話から退出",
     "leaveMeeting": "ミーティングを退出",
+    "popOut": "小さなウィンドウで表示",
     "cameraRested": "静かな間はカメラをオフ"
   },
   "status": {
@@ -163,6 +164,9 @@
     "title": "ルームチャット",
     "close": "チャットを閉じる",
     "send": "メッセージを送信",
+    "notSent": "送信されていません",
+    "sendAgain": "もう一度送信",
+    "discard": "破棄",
     "channels": "チャンネル",
     "directMessages": "ダイレクトメッセージ",
     "newChannel": "新しいチャンネル",

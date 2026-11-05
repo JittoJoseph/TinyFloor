@@ -139,6 +139,7 @@
     "settings": "Einstellungen",
     "leaveCall": "Anruf verlassen",
     "leaveMeeting": "Meeting verlassen",
+    "popOut": "In kleinem Fenster",
     "cameraRested": "Kamera aus, solange es ruhig ist"
   },
   "status": {
@@ -163,6 +164,9 @@
     "title": "Raum-Chat",
     "close": "Chat schließen",
     "send": "Nachricht senden",
+    "notSent": "Nicht gesendet",
+    "sendAgain": "Erneut senden",
+    "discard": "Verwerfen",
     "channels": "Kanäle",
     "directMessages": "Direktnachrichten",
     "newChannel": "Neuer Kanal",

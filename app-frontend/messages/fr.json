@@ -139,6 +139,7 @@
     "settings": "Paramètres",
     "leaveCall": "Quitter l’appel",
     "leaveMeeting": "Quitter la réunion",
+    "popOut": "Fenêtre flottante",
     "cameraRested": "Caméra coupée pendant le calme"
   },
   "status": {
@@ -163,6 +164,9 @@
     "title": "Chat de la salle",
     "close": "Fermer le chat",
     "send": "Envoyer le message",
+    "notSent": "Non envoyé",
+    "sendAgain": "Renvoyer",
+    "discard": "Abandonner",
     "channels": "Canaux",
     "directMessages": "Messages directs",
     "newChannel": "Nouveau canal",

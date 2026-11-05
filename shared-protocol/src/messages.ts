@@ -222,8 +222,14 @@ export interface MediaFlags {
 }
 
 export type SfuClientMessage =
-  /** `ranked`: the video's simulcast layers are named a, b, c from sharpest down. */
+  /**
+   * `ranked`: the video's simulcast layers are named a, b, c from sharpest down.
+   * Allowed before joining a meeting too (mic and camera only), so the
+   * connection is up by the time you join; the meeting hears of the tracks then.
+   */
   | { op: "publish"; sdp: string; tracks: { mid: string; kind: MediaKind; ranked?: true }[] }
+  /** The connection made ahead of a meeting goes: not joining after all, or it failed. */
+  | { op: "drop" }
   | { op: "unpublish"; kinds: MediaKind[] }
   | { op: "subscribe"; tracks: { userId: string; kind: MediaKind; quality?: VideoQuality }[] }
   | { op: "unsubscribe"; mids: string[] }

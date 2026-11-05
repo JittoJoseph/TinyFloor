@@ -139,6 +139,7 @@
     "settings": "הגדרות",
     "leaveCall": "יציאה מהשיחה",
     "leaveMeeting": "יציאה מהפגישה",
+    "popOut": "חלון צף",
     "cameraRested": "המצלמה כבויה כל עוד שקט"
   },
   "status": {
@@ -163,6 +164,9 @@
     "title": "צ׳אט החדר",
     "close": "סגירת הצ׳אט",
     "send": "שליחת הודעה",
+    "notSent": "לא נשלחה",
+    "sendAgain": "לשלוח שוב",
+    "discard": "לבטל",
     "channels": "ערוצים",
     "directMessages": "הודעות ישירות",
     "newChannel": "ערוץ חדש",

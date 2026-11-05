@@ -187,6 +187,7 @@ export function ChatView({ channel }: { channel?: string }) {
 
   const lines: Line[] = (history ?? []).map((message) => ({
     id: String(message.seq),
+    key: message.nonce,
     author: message.author,
     authorName: personById.get(message.author)?.displayName ?? message.authorName,
     body: message.body,
@@ -206,6 +207,30 @@ export function ChatView({ channel }: { channel?: string }) {
       held: message.reply.held,
     },
   }));
+
+  // What you said that's still on its way, after the rest, in the place it will take.
+  const myName = personById.get(me)?.displayName ?? user?.displayName ?? "";
+  for (const pending of state.pending[open] ?? []) {
+    const answered = pending.replyTo !== undefined ? history?.find((one) => one.seq === pending.replyTo) : undefined;
+    lines.push({
+      id: `pending:${pending.nonce}`,
+      key: pending.nonce,
+      sending: pending.failed ? "failed" : "sending",
+      author: me,
+      authorName: myName,
+      body: pending.body,
+      at: pending.at,
+      files: pending.files,
+      mentions: pending.mentions,
+      reply: answered && {
+        id: String(answered.seq),
+        author: answered.author,
+        authorName: personById.get(answered.author)?.displayName ?? answered.authorName,
+        body: answered.body,
+        files: answered.files?.length,
+      },
+    });
+  }
 
   // Who else is writing here: one or two by name, more as "several".
   const typists = [...useTyping(open).entries()].filter(([id]) => id !== me).map(([id, one]) => personById.get(id)?.displayName ?? one.name);
@@ -547,6 +572,8 @@ export function ChatView({ channel }: { channel?: string }) {
             focusComposer();
           }}
           onOpenReply={(id) => setTarget({ channel: open, seq: Number(id) })}
+          onResend={(line) => line.key && chat.resend(open, line.key)}
+          onDiscard={(line) => line.key && chat.discard(open, line.key)}
           personCard={personCard}
           intro={
             pair && other ? (

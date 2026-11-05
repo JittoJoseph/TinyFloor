@@ -13,6 +13,7 @@ import CallOverlay from "@/components/CallOverlay";
 import WhiteboardOverlay from "@/components/WhiteboardOverlay";
 import { MeetingAudio } from "@/components/meetings/MeetingAudio";
 import { MeetingMini } from "@/components/meetings/MeetingMini";
+import { PipHost } from "@/components/calls/PipHost";
 import { MeetingRoomPrompt } from "@/components/meetings/MeetingRoomPrompt";
 import { EntryHeader, EntryShell } from "@/components/entry/EntryShell";
 import { ActionButton, ActionLink } from "@/components/ui/Action";
@@ -177,6 +178,7 @@ export function RoomView({ user, ticketFor, onInvite, inviteChip = false, leaveH
       <CallOverlay />
       <MeetingRoomPrompt />
       <MeetingMini />
+      <PipHost />
       <MeetingAudio />
       <WhiteboardOverlay />
       <DeskPanel />

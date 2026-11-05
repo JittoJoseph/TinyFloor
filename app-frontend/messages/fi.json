@@ -139,6 +139,7 @@
     "settings": "Asetukset",
     "leaveCall": "Poistu puhelusta",
     "leaveMeeting": "Poistu kokouksesta",
+    "popOut": "Pieneen ikkunaan",
     "cameraRested": "Kamera pois, kun on hiljaista"
   },
   "status": {
@@ -163,6 +164,9 @@
     "title": "Huonechat",
     "close": "Sulje chat",
     "send": "Lähetä viesti",
+    "notSent": "Ei lähetetty",
+    "sendAgain": "Lähetä uudelleen",
+    "discard": "Hylkää",
     "channels": "Kanavat",
     "directMessages": "Yksityisviestit",
     "newChannel": "Uusi kanava",

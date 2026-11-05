@@ -79,8 +79,8 @@ describe("meetings through the SFU", () => {
 
   afterEach(() => vi.restoreAllMocks());
 
-  async function seated() {
-    const { ava, avaId, ben, benId } = await pair();
+  async function seated(room = uniqueRoom()) {
+    const { ava, avaId, ben, benId } = await pair(room);
     ava.send({ t: "meeting_join", meeting: "main" });
     await ava.next("meeting_joined");
     ben.send({ t: "meeting_join", meeting: "main" });
@@ -178,6 +178,66 @@ describe("meetings through the SFU", () => {
     await ben.next("welcome");
     ben.send({ t: "meeting_join", meeting: "main" });
     expect(await ben.next("sfu")).toEqual({ t: "sfu", op: "tracks", userId: avaId, kinds: ["mic"] });
+  });
+
+  it("sets up the connection before joining, and tells the meeting of it on joining", async () => {
+    const room = uniqueRoom();
+    const { ava, avaId, ben } = await seated(room);
+    const cara = await Client.open(room, { name: "Cara" });
+    const caraId = (await cara.next("welcome")).self.id;
+    cara.send({ t: "sfu", op: "publish", sdp: "client-offer", tracks: [{ mid: "0", kind: "mic" }, { mid: "1", kind: "camera" }] });
+    expect(await cara.next("sfu")).toEqual({ t: "sfu", op: "published", sdp: "sfu-answer" });
+    // Nobody hears of it until Cara is in, and she can't watch anyone before then either.
+    cara.messages.length = 0;
+    cara.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "mic" }] });
+    expect(await cara.next("sfu")).toEqual({ t: "sfu", op: "error", code: "not_in_meeting" });
+    expect(ben.messages.some((message) => message.t === "sfu" && message.op === "tracks")).toBe(false);
+
+    ava.messages.length = 0;
+    cara.send({ t: "meeting_join", meeting: "main" });
+    await cara.next("meeting_joined");
+    expect(await ava.next("sfu")).toEqual({ t: "sfu", op: "tracks", userId: caraId, kinds: ["mic", "camera"] });
+    // The same session, not a new one.
+    expect(sfuRequests.filter((request) => request.path === "/sessions/new")).toHaveLength(1);
+  });
+
+  it("forgets a connection made ahead when it's dropped, and won't take a screen before joining", async () => {
+    const room = uniqueRoom();
+    const { ava } = await seated(room);
+    const cara = await Client.open(room, { name: "Cara" });
+    await cara.next("welcome");
+    cara.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "2", kind: "screen" }] });
+    expect(await cara.next("sfu")).toEqual({ t: "sfu", op: "error", code: "bad_request" });
+
+    cara.messages.length = 0;
+    cara.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "mic" }] });
+    await cara.next("sfu");
+    cara.send({ t: "sfu", op: "drop" });
+    await vi.waitFor(() => expect(sfuRequests.some((request) => request.path.endsWith("/tracks/close"))).toBe(true));
+
+    // Joining afterwards starts over: a new session, and nothing announced until it publishes.
+    ava.messages.length = 0;
+    cara.send({ t: "meeting_join", meeting: "main" });
+    await cara.next("meeting_joined");
+    expect(ava.messages.some((message) => message.t === "sfu" && message.op === "tracks")).toBe(false);
+    cara.messages.length = 0;
+    cara.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "mic" }] });
+    await cara.next("sfu");
+    expect(sfuRequests.filter((request) => request.path === "/sessions/new")).toHaveLength(2);
+  });
+
+  it("passes on what someone has on without waiting for the SFU to answer them", async () => {
+    const { ava, benId, ben } = await seated();
+    renegotiateMs = 3000;
+    ben.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "mic" }] });
+    await ben.next("sfu");
+    ben.send({ t: "sfu", op: "answer", sdp: "slow" });
+    const sent = Date.now();
+    ben.send({ t: "sfu", op: "media", mic: true, camera: true, screen: false });
+    await vi.waitFor(() => expect(ava.messages).toContainEqual({ t: "sfu", op: "media", userId: benId, mic: true, camera: true, screen: false }), {
+      timeout: 2000,
+    });
+    expect(Date.now() - sent).toBeLessThan(renegotiateMs);
   });
 
   it("shares who has their mic, camera and screen on, including with newcomers", async () => {

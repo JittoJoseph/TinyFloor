@@ -161,6 +161,58 @@ the code before too, each fixed:
 - **The connection opened late**, only after the microphone had. It now opens
   on joining, its slots filled when the microphone is ready.
 
+## Joining a meeting
+
+Measured locally through the real SFU, Join to the first voice took 5–6 s,
+and in half the runs one side never heard the other at all. Now about 1.7 s
+both ways, 8 joins out of 8 (most of what's left is the room reaching the
+SFU's API from a laptop; from Cloudflare it is shorter). What changed:
+
+- **Connected before Join.** The meeting's own page, an invitation ringing,
+  and standing in the meeting room set up the connection to the SFU ahead
+  (the room takes a publish before joining, mic and camera only, and tells
+  the meeting of it on joining); the meeting's page opens the microphone too,
+  its level showing on the mic button. Join then only has to ask for the
+  others' voices. Not joining, the connection goes 5 s after the page does.
+- **The page's first connection freezes it for about a second** (Chrome
+  setting up WebRTC, headed and headless alike; the next one takes 1 ms).
+  It happened just after Join was pressed; now on the pre-join page, while
+  nothing moves.
+- **Your voice is sent while you are alone** (with the mic on). Started only
+  when someone joined, at the moment the connection was renegotiated for
+  theirs, the SFU never found it: `not_found_track_error` for as long as they
+  tried. Sending to the SFU costs nothing (only what it forwards does), and
+  video still waits for someone to see it.
+- **Unmuting asks for the voice again**, for someone muted since they came,
+  whose voice was asked for until the tries ran out.
+- **Who has what on isn't queued** behind that person's SFU requests: a
+  camera switched on reached the others a second or more late.
+- **A camera starts on its smallest layer** and steps up once pictures come
+  in. Asked for the sharpest straight away, it showed nothing while the
+  sender's browser held that layer back for bandwidth, once for 20 s; the
+  SFU didn't fall back to the layers it had. Stepped up with no new picture
+  for 3 s, it goes back down for 15 s. First picture: about 2.7 s, every run.
+
+While a voice is on its way the person's card says Connecting, and a
+connection that drops says Reconnecting at the top of the stage and on the
+floor's card.
+
+## The call in a small window
+
+A call or a meeting can sit in a small window that stays on top of other
+apps (Chrome's Document Picture-in-Picture): the person talking, or a
+shared screen, your camera in the corner while it's on, the time, and mic,
+camera and hang up. It opens from the call's bar or the meeting's, and by
+itself when you leave the tab during a call where Chrome allows it (its
+automatic picture-in-picture for pages using the camera or microphone),
+closing again when you come back; hanging up closes it. Firefox and Safari
+have no such window, and nothing offers it there.
+
+The meeting's card on the floor is the same small dark card: who's talking,
+the meeting and its time, pressed to go back to it, with a button to pop it
+out. The mic, camera and leave are in the bar right below it, so the card
+doesn't repeat them.
+
 ## Simulcast layers named in order
 
 When a viewer's bandwidth runs short, the SFU steps down through the layers

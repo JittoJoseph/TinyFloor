@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Video, X } from "web-shared/components/ui/icons";
@@ -75,6 +75,8 @@ function RoomPrompt({ onClose }: { onClose: () => void }) {
   const nameOf = useMeetingName();
   const meeting = offered(meetings);
   const live = meeting.members.length > 0;
+  // Standing at the door: connected ahead, so going in is quick. The microphone opens on joining.
+  useEffect(() => callManager.getReady(false), []);
 
   const join = () => {
     if (place.paths.meetings) router.push(place.paths.meetings);

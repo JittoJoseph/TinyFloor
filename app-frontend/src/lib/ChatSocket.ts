@@ -1,6 +1,6 @@
 "use client";
 
-import { HEARTBEAT_PING, HEARTBEAT_PONG } from "shared-protocol/messages";
+import { HEARTBEAT_PONG } from "shared-protocol/messages";
 import {
   GENERAL_CHANNEL,
   REPLY_SNIPPET,
@@ -20,10 +20,27 @@ import { playSound } from "./sounds";
 import { help } from "./help";
 import { track } from "web-shared/lib/analytics";
 import { lastConversation } from "./chatMemory";
+import { Lifeline, OPEN_WITHIN_MS, STEADY_AFTER_MS, onReconnectHint, retryDelay } from "./socketLife";
 
-const HEARTBEAT_MS = 30_000;
-const RECONNECT_BASE_MS = 1_000;
-const RECONNECT_MAX_MS = 30_000;
+/** No word back this long after a message went out on an open socket, and it's said to have not been sent. */
+const SEND_WITHIN_MS = 10_000;
+
+/**
+ * Something you said, shown straight away while it's on its way (the way Zulip
+ * echoes a message locally), until the room's copy takes its place. `failed`:
+ * the room refused it ("error"), or never answered ("timeout"); one that timed
+ * out goes again by itself when the connection comes back.
+ */
+export interface PendingMessage {
+  nonce: string;
+  channel: string;
+  body: string;
+  files?: ChatFile[];
+  mentions?: string[];
+  replyTo?: number;
+  at: number;
+  failed?: "error" | "timeout";
+}
 
 /** What a search found, and the days it looked back through when the office's plan keeps it to them. */
 export interface Found {
@@ -49,6 +66,8 @@ export interface ChatState {
   notHere: boolean;
   /** People who left the lobby while in a conversation with you, by id, with their names. */
   left: Record<string, string>;
+  /** What you said that the room hasn't confirmed yet, per channel, oldest first. */
+  pending: Record<string, PendingMessage[]>;
   version: number;
 }
 
@@ -63,6 +82,7 @@ const EMPTY: ChatState = {
   slowDown: false,
   notHere: false,
   left: {},
+  pending: {},
   version: 0,
 };
 
@@ -96,7 +116,13 @@ class ChatSocket {
   private generation = 0;
   private attempts = 0;
   private reconnectTimer?: ReturnType<typeof setTimeout>;
-  private heartbeat?: ReturnType<typeof setInterval>;
+  /** Fetching a ticket for the next socket. */
+  private opening = false;
+  /** Keeps the open socket honest, and the hints to reconnect early (lib/socketLife). */
+  private lifeline?: Lifeline;
+  private openTimer?: ReturnType<typeof setTimeout>;
+  private steadyTimer?: ReturnType<typeof setTimeout>;
+  private stopHints?: () => void;
   private queue: ChatClientMessage[] = [];
 
   private state: ChatState = EMPTY;
@@ -111,6 +137,9 @@ class ChatSocket {
   private fresh = new Set<string>();
   /** Searches waiting for their answer, by what was asked. */
   private searches = new Map<string, Array<(found: Found) => void>>();
+  /** When each pending message last went out on an open socket, by its id. */
+  private sentAt = new Map<string, number>();
+  private sendCheck?: ReturnType<typeof setTimeout>;
 
   /** For the nudges over the floor: someone said something you have not seen. */
   onIncoming(listener: (message: ChatMessage) => void) {
@@ -128,6 +157,7 @@ class ChatSocket {
     this.ticketFor = ticketFor;
     this.stopped = false;
     this.attempts = 0;
+    this.stopHints ??= onReconnectHint(() => this.hint());
     void this.open(this.generation);
   }
 
@@ -135,14 +165,19 @@ class ChatSocket {
     this.stopped = true;
     this.generation++;
     clearTimeout(this.reconnectTimer);
-    this.stopHeartbeat();
-    this.ws?.close(1000, "left");
-    this.ws = null;
+    this.reconnectTimer = undefined;
+    this.stopHints?.();
+    this.stopHints = undefined;
+    const ws = this.ws;
+    this.release();
+    ws?.close(1000, "left");
     this.place = null;
     this.ticketFor = null;
     this.queue = [];
     this.asked.clear();
     this.fresh.clear();
+    this.sentAt.clear();
+    clearTimeout(this.sendCheck);
     this.set(EMPTY);
   }
 
@@ -170,13 +205,28 @@ class ChatSocket {
     this.set({ ...this.state, channels, unread: total(channels) });
   }
 
-  /** Says something; `replyTo` answers a message in the same conversation. */
+  /**
+   * Says something; `replyTo` answers a message in the same conversation. It
+   * shows at once, faded, and goes out now or as soon as the connection is
+   * back; its id (`nonce`) lets the room's copy replace it, and stops it being
+   * posted twice when it has to go again.
+   */
   say(channel: string, body: string, files: ChatFile[] = [], mentions: string[] = [], replyTo?: number) {
     // A lobby direct message (below zero) was never stored, so it can't be answered by number.
     const answering = replyTo !== undefined && replyTo > 0 ? { replyTo } : {};
     // The message itself tells the others you've stopped typing.
     if (this.typingIn === channel) this.typingIn = null;
-    this.send({ t: "chat_send", channel, body, ...(files.length ? { files } : {}), ...(mentions.length ? { mentions } : {}), ...answering });
+    const pending: PendingMessage = {
+      nonce: newNonce(),
+      channel,
+      body,
+      at: Date.now(),
+      ...(files.length ? { files } : {}),
+      ...(mentions.length ? { mentions } : {}),
+      ...answering,
+    };
+    this.setPending(channel, [...(this.state.pending[channel] ?? []), pending]);
+    this.dispatch(pending);
     // Where and what kind, never the words.
     track("message_sent", { kind: isDm(channel) ? "dm" : "channel", picture: files.length > 0, mentions: mentions.length, reply: "replyTo" in answering });
   }
@@ -227,6 +277,82 @@ class ChatSocket {
       const left = new Map([...typists].filter(([, typist]) => typist.until > now));
       if (left.size !== typists.size) this.setTypists(channel, left);
     }
+  }
+
+  /** A message that wasn't sent, tried again. */
+  resend(channel: string, nonce: string) {
+    const list = this.state.pending[channel] ?? [];
+    const pending = list.find((one) => one.nonce === nonce);
+    if (!pending) return;
+    const again = { ...pending, failed: undefined };
+    this.setPending(channel, list.map((one) => (one === pending ? again : one)));
+    this.dispatch(again);
+  }
+
+  /** A message that wasn't sent, let go of. */
+  discard(channel: string, nonce: string) {
+    this.sentAt.delete(nonce);
+    this.setPending(channel, (this.state.pending[channel] ?? []).filter((one) => one.nonce !== nonce));
+  }
+
+  /** Sends a pending message if the socket is open; otherwise it goes when the room is back (chat_ready). */
+  private dispatch(pending: PendingMessage) {
+    if (this.ws?.readyState !== WebSocket.OPEN) return;
+    const { channel, body, files, mentions, replyTo, nonce } = pending;
+    this.ws.send(
+      JSON.stringify({
+        t: "chat_send",
+        channel,
+        body,
+        nonce,
+        ...(files ? { files } : {}),
+        ...(mentions ? { mentions } : {}),
+        ...(replyTo !== undefined ? { replyTo } : {}),
+      } satisfies ChatClientMessage),
+    );
+    this.sentAt.set(nonce, Date.now());
+    this.checkSends();
+  }
+
+  /** Marks what went out a while ago with no word back as not sent, and has the socket checked: it may be dead. */
+  private checkSends() {
+    clearTimeout(this.sendCheck);
+    if (!this.sentAt.size) return;
+    const now = Date.now();
+    const late = [...this.sentAt].filter(([, at]) => now - at >= SEND_WITHIN_MS).map(([nonce]) => nonce);
+    if (late.length) {
+      late.forEach((nonce) => this.sentAt.delete(nonce));
+      this.markFailed(new Set(late), "timeout");
+      this.lifeline?.probe();
+    }
+    if (!this.sentAt.size) return;
+    const soonest = Math.min(...this.sentAt.values());
+    this.sendCheck = setTimeout(() => this.checkSends(), Math.max(0, soonest + SEND_WITHIN_MS - Date.now()) + 50);
+  }
+
+  private markFailed(nonces: Set<string>, why: "error" | "timeout") {
+    const pending: Record<string, PendingMessage[]> = {};
+    for (const [channel, list] of Object.entries(this.state.pending)) {
+      pending[channel] = list.map((one) => (nonces.has(one.nonce) ? { ...one, failed: why } : one));
+    }
+    this.set({ ...this.state, pending });
+  }
+
+  /** The room's own copies of these came: the ones shown while they were on their way go. */
+  private confirmed(channel: string, messages: ChatMessage[]): PendingMessage[] | undefined {
+    const list = this.state.pending[channel];
+    if (!list?.length) return list;
+    const nonces = new Set(messages.flatMap((one) => (one.nonce ? [one.nonce] : [])));
+    if (!nonces.size) return list;
+    nonces.forEach((nonce) => this.sentAt.delete(nonce));
+    return list.filter((one) => !nonces.has(one.nonce));
+  }
+
+  private setPending(channel: string, list: PendingMessage[]) {
+    const pending = { ...this.state.pending };
+    if (list.length) pending[channel] = list;
+    else delete pending[channel];
+    this.set({ ...this.state, pending });
   }
 
   /** Words in the office's channels and your direct messages, newest first; `held` when the plan keeps it to recent days. */
@@ -306,34 +432,45 @@ class ChatSocket {
 
   private async open(generation: number) {
     const current = () => !this.stopped && generation === this.generation;
-    if (!current() || !this.ticketFor) return;
+    if (!current() || !this.ticketFor || this.opening) return;
+    clearTimeout(this.reconnectTimer);
+    this.reconnectTimer = undefined;
     let url: string;
     let ticket: string;
+    this.opening = true;
     try {
       const minted = await this.ticketFor();
       url = minted.url;
       ticket = minted.ticket;
     } catch {
       return this.retry(generation);
+    } finally {
+      this.opening = false;
     }
     if (!current()) return;
 
     const socket = new WebSocket(`${url}?ticket=${encodeURIComponent(ticket)}`);
     this.ws = socket;
+    // Still opening after a while (a connection that will never answer): tried again.
+    this.openTimer = setTimeout(() => socket.readyState === WebSocket.CONNECTING && this.drop(socket, generation), OPEN_WITHIN_MS);
 
     socket.onopen = () => {
-      this.attempts = 0;
-      this.startHeartbeat();
+      if (this.ws !== socket) return;
+      clearTimeout(this.openTimer);
+      // The backoff starts over only once it has held.
+      this.steadyTimer = setTimeout(() => (this.attempts = 0), STEADY_AFTER_MS);
+      this.lifeline = new Lifeline(socket, () => this.drop(socket, generation));
       for (const message of this.queue.splice(0)) socket.send(JSON.stringify(message));
     };
     socket.onmessage = (event) => {
-      if (event.data === HEARTBEAT_PONG || this.ws !== socket) return;
+      if (this.ws !== socket) return;
+      this.lifeline?.heard();
+      if (event.data === HEARTBEAT_PONG) return;
       this.handle(JSON.parse(event.data as string) as ChatServerMessage);
     };
     socket.onclose = () => {
       if (this.ws !== socket) return;
-      this.stopHeartbeat();
-      this.ws = null;
+      this.release();
       this.retry(generation);
     };
     socket.onerror = () => socket.close();
@@ -341,19 +478,39 @@ class ChatSocket {
 
   private retry(generation: number) {
     if (this.stopped || generation !== this.generation) return;
-    const wait = Math.min(RECONNECT_BASE_MS * 2 ** this.attempts++, RECONNECT_MAX_MS);
+    const wait = retryDelay(this.attempts++);
     clearTimeout(this.reconnectTimer);
     this.reconnectTimer = setTimeout(() => void this.open(generation), wait);
   }
 
-  private startHeartbeat() {
-    this.stopHeartbeat();
-    this.heartbeat = setInterval(() => this.ws?.send(HEARTBEAT_PING), HEARTBEAT_MS);
+  /** A socket that stopped answering, or never opened: let go of at once, and another opened. */
+  private drop(socket: WebSocket, generation: number) {
+    if (this.ws !== socket) return;
+    this.release();
+    socket.onopen = socket.onmessage = socket.onclose = socket.onerror = null;
+    try {
+      socket.close(1000, "unresponsive");
+    } catch {
+      // Already gone.
+    }
+    this.retry(generation);
   }
 
-  private stopHeartbeat() {
-    clearInterval(this.heartbeat);
-    this.heartbeat = undefined;
+  /** The network or the tab came back: check the socket now, or open one now instead of waiting out the backoff. */
+  private hint() {
+    if (this.stopped || this.opening) return;
+    const socket = this.ws;
+    if (socket?.readyState === WebSocket.OPEN) return this.lifeline?.probe();
+    if (socket?.readyState === WebSocket.CONNECTING) return;
+    if (this.reconnectTimer) void this.open(this.generation);
+  }
+
+  private release() {
+    this.ws = null;
+    this.lifeline?.stop();
+    this.lifeline = undefined;
+    clearTimeout(this.openTimer);
+    clearTimeout(this.steadyTimer);
   }
 
   private handle(message: ChatServerMessage) {
@@ -381,6 +538,18 @@ class ChatSocket {
           this.send({ t: "chat_history", channel: this.watching });
         }
         if (this.place) this.warm(lastConversation(this.place) ?? GENERAL_CHANNEL);
+        // What was on its way when the connection dropped goes again; the room posts each once.
+        const again = Object.values(this.state.pending)
+          .flat()
+          .filter((one) => one.failed !== "error");
+        if (again.some((one) => one.failed)) {
+          const pending: Record<string, PendingMessage[]> = {};
+          for (const [channel, list] of Object.entries(this.state.pending)) {
+            pending[channel] = list.map((one) => (one.failed === "timeout" ? { ...one, failed: undefined } : one));
+          }
+          this.set({ ...this.state, pending });
+        }
+        again.forEach((one) => this.dispatch({ ...one, failed: undefined }));
         break;
       }
       case "chat_new": {
@@ -391,7 +560,12 @@ class ChatSocket {
           left.delete(message.message.author);
           this.setTypists(channel, left);
         }
-        if (this.state.history[channel]?.some((one) => one.seq === message.message.seq)) break;
+        if (this.state.history[channel]?.some((one) => one.seq === message.message.seq)) {
+          // Ours, sent again after a dropped connection, and already here: only what was shown for it goes.
+          const left = this.confirmed(channel, [message.message]);
+          if (left && left !== this.state.pending[channel]) this.setPending(channel, left);
+          break;
+        }
         // On screen only counts while the tab is: a message that lands while you're
         // in another window waits as unread, and is marked read when you come back.
         const seen = this.watching === channel && document.visibilityState === "visible";
@@ -431,11 +605,16 @@ class ChatSocket {
                 } satisfies ChannelSummary,
               ],
         );
+        const pending = { ...this.state.pending };
+        const left = mine ? this.confirmed(channel, [message.message]) : undefined;
+        if (left?.length) pending[channel] = left;
+        else if (left) delete pending[channel];
         this.set({
           ...this.state,
           channels,
           unread: total(channels),
           history: { ...this.state.history, [channel]: history },
+          pending,
         });
         if (seen && message.message.seq > 0 && !message.message.meeting) this.send({ t: "chat_read", channel, seq: message.message.seq });
         else if (!mine) {
@@ -452,11 +631,16 @@ class ChatSocket {
         const merged = [...message.messages.filter((one) => !seqs.has(one.seq)), ...known].sort(
           (a, b) => a.seq - b.seq,
         );
+        const pending = { ...this.state.pending };
+        const left = this.confirmed(message.channel, message.messages);
+        if (left?.length) pending[message.channel] = left;
+        else if (left) delete pending[message.channel];
         this.set({
           ...this.state,
           history: { ...this.state.history, [message.channel]: merged },
           more: { ...this.state.more, [message.channel]: message.more },
           held: { ...this.state.held, [message.channel]: message.held ?? 0 },
+          pending,
         });
         break;
       }
@@ -534,6 +718,10 @@ class ChatSocket {
         help.changed(message.news);
         break;
       case "chat_error":
+        if (message.nonce) {
+          this.sentAt.delete(message.nonce);
+          this.markFailed(new Set([message.nonce]), "error");
+        }
         if (message.code === "slow_down") {
           this.set({ ...this.state, slowDown: true });
           setTimeout(() => this.set({ ...this.state, slowDown: false }), 4000);
@@ -550,6 +738,11 @@ class ChatSocket {
     this.state = { ...state, version: this.state.version + 1 };
     for (const listener of this.listeners) listener();
   }
+}
+
+/** An id for a message from this app: random, and unique enough to tell two of yours apart forever. */
+function newNonce(): string {
+  return typeof crypto.randomUUID === "function" ? crypto.randomUUID() : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
 }
 
 /** #general is there from the first day, whether or not anyone has used it. */

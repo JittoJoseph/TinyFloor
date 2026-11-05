@@ -139,6 +139,7 @@
     "settings": "Indstillinger",
     "leaveCall": "Forlad opkald",
     "leaveMeeting": "Forlad mødet",
+    "popOut": "Åbn i lille vindue",
     "cameraRested": "Kamera slukket, mens der er stille"
   },
   "status": {
@@ -163,6 +164,9 @@
     "title": "Rumchat",
     "close": "Luk chat",
     "send": "Send besked",
+    "notSent": "Ikke sendt",
+    "sendAgain": "Send igen",
+    "discard": "Kassér",
     "channels": "Kanaler",
     "directMessages": "Direkte beskeder",
     "newChannel": "Ny kanal",

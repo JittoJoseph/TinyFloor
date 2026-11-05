@@ -11,6 +11,7 @@ import {
   MonitorUp,
   MonitorX,
   PhoneOff,
+  PictureInPicture,
   UserPlus,
   Users,
   Video,
@@ -18,6 +19,7 @@ import {
 } from "web-shared/components/ui/icons";
 import type { MeetingInfo, MeetingPerson } from "shared-protocol/messages";
 import { callManager } from "@/lib/CallManager";
+import { pip } from "@/lib/pip";
 import { useCall } from "@/lib/useCall";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePrefs } from "@/lib/prefs";
@@ -32,6 +34,7 @@ import { clock, useElapsed, useMeetingName } from "./hooks";
 import { VideoPausedNote } from "./MeetingHours";
 import { CameraRested } from "./CameraRested";
 import { MicMutedHint } from "./MicMutedHint";
+import { MeetingLinkNote } from "./MeetingLinkNote";
 
 const GAP = 12;
 /** Cards are video-shaped, whether there's video in them or a face. */
@@ -110,6 +113,7 @@ function arrange(area: Size, { narrow, content, alone }: { narrow: boolean; cont
  */
 export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office: string }) {
   const t = useTranslations("meetings");
+  const tRoom = useTranslations("room");
   const tControls = useTranslations("controls");
   const { user } = useAuth();
   const { mirrorVideo } = usePrefs();
@@ -149,6 +153,7 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
         video={received && peer?.cameraOn ? peer.camera : null}
         speaking={one.speaking}
         micOff={!!peer && !peer.mic}
+        connecting={peer?.mic && !peer.audio ? tRoom("connecting") : undefined}
         compact={compact}
         contain={contain}
         className="size-full"
@@ -297,7 +302,10 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
       <div className="relative flex min-h-0 flex-1 px-3 pt-3 sm:px-5 sm:pt-5">
         <div ref={areaRef} className="relative min-h-0 min-w-0 flex-1">
           {area.width > 0 && stageView}
-          <VideoPausedNote compact className="absolute inset-x-0 top-0 z-10 mx-auto w-fit max-w-[calc(100%-1.5rem)]" />
+          <div className="absolute inset-x-0 top-0 z-10 mx-auto flex w-fit max-w-[calc(100%-1.5rem)] flex-col items-center gap-2">
+            <MeetingLinkNote />
+            <VideoPausedNote compact />
+          </div>
           <div className="absolute inset-x-0 bottom-2 z-10 mx-auto flex w-fit flex-col items-center gap-2">
             <MicMutedHint />
             <CameraRested />
@@ -364,6 +372,17 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
             onClick={() => callManager.setSpeaker(!speakerEnabled)}
             icon={speakerEnabled ? <Headphones /> : <HeadphoneOff />}
           />
+          {/* The meeting in a small window on top of other apps (lib/pip), where the browser has one. */}
+          {pip.supported && (
+            <IconButton
+              label={tControls("popOut")}
+              tone="soft"
+              size="lg"
+              onClick={() => void pip.open()}
+              icon={<PictureInPicture />}
+              className="max-sm:hidden"
+            />
+          )}
           {/* On a phone, the people sit in the bar; on a computer, at its end. */}
           <IconButton
             label={alone ? t("invite") : t("inMeeting")}

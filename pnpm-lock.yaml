@@ -51,6 +51,9 @@ catalogs:
     next-intl:
       specifier: ^4.14.2
       version: 4.14.2
+    perfect-freehand:
+      specifier: 1.2.2
+      version: 1.2.2
     phaser:
       specifier: ^3.90.0
       version: 3.90.0
@@ -103,6 +106,9 @@ importers:
       next-intl:
         specifier: 'catalog:'
         version: 4.14.2(@swc/helpers@0.5.23)(next@16.3.4(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@20.19.43)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
+      perfect-freehand:
+        specifier: 'catalog:'
+        version: 1.2.2
       phaser:
         specifier: 'catalog:'
         version: 3.90.0
@@ -3416,6 +3422,9 @@ packages:
 
   pathe@2.0.3:
     resolution: {integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==}
+
+  perfect-freehand@1.2.2:
+    resolution: {integrity: sha512-eh31l019WICQ03pkF3FSzHxB8n07ItqIQ++G5UV8JX0zVOXzgTGCqnRR0jJ2h9U8/2uW4W4mtGJELt9kEV0CFQ==}
 
   phaser@3.90.0:
     resolution: {integrity: sha512-/cziz/5ZIn02uDkC9RzN8VF9x3Gs3XdFFf9nkiMEQT3p7hQlWuyjy4QWosU802qqno2YSLn2BfqwOKLv/sSVfQ==}
@@ -7429,6 +7438,8 @@ snapshots:
   path-to-regexp@8.4.2: {}
 
   pathe@2.0.3: {}
+
+  perfect-freehand@1.2.2: {}
 
   phaser@3.90.0:
     dependencies:

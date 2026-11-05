@@ -139,6 +139,7 @@
     "settings": "Innstillinger",
     "leaveCall": "Forlat samtalen",
     "leaveMeeting": "Forlat møtet",
+    "popOut": "Åpne i lite vindu",
     "cameraRested": "Kamera av mens det er stille"
   },
   "status": {
@@ -163,6 +164,9 @@
     "title": "Romchat",
     "close": "Lukk chat",
     "send": "Send melding",
+    "notSent": "Ikke sendt",
+    "sendAgain": "Send på nytt",
+    "discard": "Forkast",
     "channels": "Kanaler",
     "directMessages": "Direktemeldinger",
     "newChannel": "Ny kanal",

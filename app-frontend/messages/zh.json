@@ -139,6 +139,7 @@
     "settings": "设置",
     "leaveCall": "退出通话",
     "leaveMeeting": "离开会议",
+    "popOut": "小窗口显示",
     "cameraRested": "安静时摄像头已关闭"
   },
   "status": {
@@ -163,6 +164,9 @@
     "title": "房间聊天",
     "close": "关闭聊天",
     "send": "发送消息",
+    "notSent": "未发送",
+    "sendAgain": "重新发送",
+    "discard": "放弃",
     "channels": "频道",
     "directMessages": "私信",
     "newChannel": "新建频道",

@@ -139,6 +139,7 @@
     "settings": "Inställningar",
     "leaveCall": "Lämna samtalet",
     "leaveMeeting": "Lämna mötet",
+    "popOut": "Öppna i litet fönster",
     "cameraRested": "Kameran av medan det är tyst"
   },
   "status": {
@@ -163,6 +164,9 @@
     "title": "Rumschatt",
     "close": "Stäng chatten",
     "send": "Skicka meddelande",
+    "notSent": "Inte skickat",
+    "sendAgain": "Skicka igen",
+    "discard": "Släng",
     "channels": "Kanaler",
     "directMessages": "Direktmeddelanden",
     "newChannel": "Ny kanal",

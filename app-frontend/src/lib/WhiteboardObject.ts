@@ -1,5 +1,6 @@
 import * as Phaser from "phaser";
-import { BOARD_ASPECT, whiteboard, Stroke } from "./WhiteboardManager";
+import { BOARD_ASPECT, STROKE_SETTLED_MS, whiteboard } from "./WhiteboardManager";
+import { BoardPainter } from "./boardInk";
 import { sceneText } from "./sceneText";
 import type { GoTo } from "./MovementManager";
 import type { ActionAt } from "./actions";
@@ -46,6 +47,8 @@ export class WhiteboardObject {
   private distance = Infinity;
   private lit = false;
   private repaintQueued = false;
+  private painter = new BoardPainter("#f7f7f4");
+  private settleTimer?: Phaser.Time.TimerEvent;
   private tagAt = 0;
 
   constructor(
@@ -129,25 +132,16 @@ export class WhiteboardObject {
     });
   }
 
+  /** The same ink as the open board (lib/boardInk), small; once more when the strokes settle, for their finished ends. */
   private repaint() {
     const ctx = this.texture.getContext();
-    ctx.fillStyle = "#f7f7f4";
-    ctx.fillRect(0, 0, SURFACE.width, SURFACE.height);
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    whiteboard.getStrokes().forEach((stroke) => this.paintStroke(ctx, stroke));
+    this.painter.paint(ctx, SURFACE.width, SURFACE.height, SURFACE.width / 900, whiteboard.getStrokes(), whiteboard.isDrawing);
     this.texture.refresh();
-  }
-
-  private paintStroke(ctx: CanvasRenderingContext2D, stroke: Stroke) {
-    const { points } = stroke;
-    if (points.length < 4) return;
-    ctx.strokeStyle = stroke.erase ? "#f7f7f4" : stroke.color;
-    ctx.lineWidth = Math.max(1.5, stroke.size * (SURFACE.width / 900));
-    ctx.beginPath();
-    ctx.moveTo(points[0] * SURFACE.width, points[1] * SURFACE.height);
-    for (let i = 2; i < points.length; i += 2) ctx.lineTo(points[i] * SURFACE.width, points[i + 1] * SURFACE.height);
-    ctx.stroke();
+    this.settleTimer?.remove();
+    this.settleTimer = this.scene.time.delayedCall(STROKE_SETTLED_MS + 50, () => {
+      this.painter.paint(ctx, SURFACE.width, SURFACE.height, SURFACE.width / 900, whiteboard.getStrokes(), whiteboard.isDrawing);
+      this.texture.refresh();
+    });
   }
 
   /** "Drawing · Riley", or "Drawing · Riley +1", while anyone else is drawing. */
@@ -182,6 +176,7 @@ export class WhiteboardObject {
 
   destroy() {
     this.unsubscribe();
+    this.settleTimer?.remove();
     this.tag.container.destroy();
     this.surface.destroy();
     this.frame.destroy();

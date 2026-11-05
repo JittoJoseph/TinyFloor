@@ -139,6 +139,7 @@
     "settings": "Instellingen",
     "leaveCall": "Gesprek verlaten",
     "leaveMeeting": "Vergadering verlaten",
+    "popOut": "Zwevend venster",
     "cameraRested": "Camera uit zolang het stil is"
   },
   "status": {
@@ -163,6 +164,9 @@
     "title": "Ruimtechat",
     "close": "Chat sluiten",
     "send": "Bericht versturen",
+    "notSent": "Niet verzonden",
+    "sendAgain": "Opnieuw versturen",
+    "discard": "Weggooien",
     "channels": "Kanalen",
     "directMessages": "Directe berichten",
     "newChannel": "Nieuw kanaal",

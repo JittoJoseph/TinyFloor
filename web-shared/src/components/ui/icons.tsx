@@ -116,6 +116,7 @@ import {
   ZapIcon,
   PinIcon,
   PinOffIcon,
+  PictureInPictureOnIcon,
   MinusSignIcon,
   Undo02Icon,
   TShirtIcon,
@@ -229,6 +230,7 @@ export const MicOff = icon(MicOff01Icon, "MicOff");
 export const Minimize2 = icon(ArrowShrink01Icon, "Minimize2");
 export const Pin = icon(PinIcon, "Pin");
 export const PinOff = icon(PinOffIcon, "PinOff");
+export const PictureInPicture = icon(PictureInPictureOnIcon, "PictureInPicture");
 export const Minus = icon(MinusSignIcon, "Minus");
 export const Monitor = icon(ComputerIcon, "Monitor");
 export const MonitorDown = icon(ComputerArrowDownIcon, "MonitorDown");

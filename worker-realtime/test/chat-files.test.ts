@@ -1,3 +1,4 @@
+import { runInDurableObject } from "cloudflare:test";
 import { env } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
 import { GENERAL_CHANNEL, dmChannelId, type ChatFile } from "shared-protocol";
@@ -102,6 +103,64 @@ describe("search", () => {
 
     boChat.send({ t: "chat_search", q: "c" });
     expect((await boChat.next("chat_found")).messages).toEqual([]);
+  });
+
+  it("finds words by how they start, and follows edits and deletes", async () => {
+    const office = officeId();
+    const ada = await ChatClient.open(office, person("Ada"));
+    await ada.next("chat_ready");
+    ada.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "Meeting's moved to tomorrow?" });
+    ada.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "no meetings today" });
+    const first = (await ada.next("chat_new")).message;
+    ada.messages.length = 0;
+    await ada.next("chat_new");
+
+    const search = async (q: string) => {
+      ada.messages.length = 0;
+      ada.send({ t: "chat_search", q });
+      return (await ada.next("chat_found")).messages.map((one) => one.body);
+    };
+    expect(await search("meet tomorrow")).toEqual(["Meeting's moved to tomorrow?"]);
+    expect(await search("MEETING")).toEqual(["no meetings today", "Meeting's moved to tomorrow?"]);
+    // Inside a word isn't a match: words are found by how they start.
+    expect(await search("eting")).toEqual([]);
+
+    ada.send({ t: "chat_edit", seq: first.seq, body: "Lunch moved to tomorrow" });
+    await ada.next("chat_edited");
+    expect(await search("tomorrow")).toEqual(["Lunch moved to tomorrow"]);
+    expect(await search("meeting")).toEqual(["no meetings today"]);
+
+    ada.send({ t: "chat_delete", seq: first.seq });
+    await ada.next("chat_deleted");
+    expect(await search("tomorrow")).toEqual([]);
+  });
+
+  it("finds Chinese and Japanese inside what was said, which has no spaces to split on", async () => {
+    const office = officeId();
+    const ada = await ChatClient.open(office, person("Ada"));
+    await ada.next("chat_ready");
+    ada.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "明天的会议改到下午" });
+    await ada.next("chat_new");
+    ada.messages.length = 0;
+    ada.send({ t: "chat_search", q: "会议" });
+    expect((await ada.next("chat_found")).messages.map((one) => one.body)).toEqual(["明天的会议改到下午"]);
+  });
+
+  it("indexes what an office already said the first time it wakes with search", async () => {
+    const office = officeId();
+    const ada = await ChatClient.open(office, person("Ada"));
+    await ada.next("chat_ready");
+    ada.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "quarterly planning notes" });
+    await ada.next("chat_new");
+    // As an office from before the index: none, then the object wakes and makes it.
+    await runInDurableObject(env.CHAT.getByName(office), async (chat, state) => {
+      for (const name of ["messages_fts_insert", "messages_fts_update", "messages_fts_delete"]) state.storage.sql.exec(`DROP TRIGGER ${name}`);
+      state.storage.sql.exec("DROP TABLE messages_fts");
+      (chat as unknown as { searchable(): void }).searchable();
+    });
+    ada.messages.length = 0;
+    ada.send({ t: "chat_search", q: "planning" });
+    expect((await ada.next("chat_found")).messages.map((one) => one.body)).toEqual(["quarterly planning notes"]);
   });
 
   it("loads a conversation back to a found message", async () => {

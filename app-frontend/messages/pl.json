@@ -139,6 +139,7 @@
     "settings": "Ustawienia",
     "leaveCall": "Opuść rozmowę",
     "leaveMeeting": "Opuść spotkanie",
+    "popOut": "Pływające okno",
     "cameraRested": "Kamera wyłączona, gdy jest cicho"
   },
   "status": {
@@ -163,6 +164,9 @@
     "title": "Czat pokoju",
     "close": "Zamknij czat",
     "send": "Wyślij wiadomość",
+    "notSent": "Nie wysłano",
+    "sendAgain": "Wyślij ponownie",
+    "discard": "Odrzuć",
     "channels": "Kanały",
     "directMessages": "Wiadomości bezpośrednie",
     "newChannel": "Nowy kanał",

@@ -100,6 +100,7 @@
   "call": {
     "incoming": "يتصل بك",
     "onCall": "في المكالمة",
+    "connecting": "جارٍ الاتصال...",
     "decline": "رفض",
     "accept": "قبول",
     "calling": "جارٍ الاتصال...",
@@ -127,6 +128,8 @@
     "status": "الحالة: {status}",
     "muteMic": "كتم الميكروفون",
     "unmuteMic": "إلغاء كتم الميكروفون",
+    "talkingMuted": "الميكروفون مكتوم",
+    "unmuteShort": "إلغاء الكتم",
     "cameraOff": "إيقاف الكاميرا",
     "cameraOn": "تشغيل الكاميرا",
     "shareScreen": "مشاركة الشاشة",

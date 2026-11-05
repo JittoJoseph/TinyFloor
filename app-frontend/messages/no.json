@@ -100,6 +100,7 @@
   "call": {
     "incoming": "Ringer deg",
     "onCall": "I samtalen",
+    "connecting": "Kobler til...",
     "decline": "Avslå",
     "accept": "Godta",
     "calling": "Ringer...",
@@ -127,6 +128,8 @@
     "status": "Status: {status}",
     "muteMic": "Slå av mikrofonen",
     "unmuteMic": "Slå på mikrofonen",
+    "talkingMuted": "Mikrofonen din er av",
+    "unmuteShort": "Slå på",
     "cameraOff": "Slå av kameraet",
     "cameraOn": "Slå på kameraet",
     "shareScreen": "Del skjerm",

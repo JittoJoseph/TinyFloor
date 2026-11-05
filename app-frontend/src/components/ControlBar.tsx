@@ -11,6 +11,7 @@ import { setInCall } from "@/lib/floor";
 import { useAuth } from "@/contexts/AuthContext";
 import { deskOf, goToMyDesk, useDesks } from "@/lib/desks";
 import { CameraRested } from "@/components/meetings/CameraRested";
+import { MicMutedHint } from "@/components/meetings/MicMutedHint";
 import { cn } from "@/lib/utils";
 import { FADE_STOPS, Fillet } from "@/components/ui/Fillet";
 import { YouKey, YouPanel } from "@/components/room/DockYou";
@@ -256,7 +257,10 @@ export default function ControlBar({
       <AnimatePresence>
         {!shown && (
           <motion.div key="rested" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.08 } }}>
-            <CameraRested className="absolute bottom-full left-1/2 mb-2.5 -translate-x-1/2" />
+            <div className="absolute bottom-full left-1/2 mb-2.5 flex -translate-x-1/2 flex-col items-center gap-2">
+              <MicMutedHint />
+              <CameraRested />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

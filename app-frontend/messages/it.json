@@ -100,6 +100,7 @@
   "call": {
     "incoming": "Ti sta chiamando",
     "onCall": "In chiamata",
+    "connecting": "Connessione...",
     "decline": "Rifiuta",
     "accept": "Accetta",
     "calling": "Chiamata in corso...",
@@ -127,6 +128,8 @@
     "status": "Stato: {status}",
     "muteMic": "Disattiva microfono",
     "unmuteMic": "Attiva microfono",
+    "talkingMuted": "Il tuo microfono è disattivato",
+    "unmuteShort": "Attiva",
     "cameraOff": "Spegni fotocamera",
     "cameraOn": "Accendi fotocamera",
     "shareScreen": "Condividi schermo",

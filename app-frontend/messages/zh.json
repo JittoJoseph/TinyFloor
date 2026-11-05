@@ -100,6 +100,7 @@
   "call": {
     "incoming": "正在呼叫你",
     "onCall": "通话中",
+    "connecting": "连接中...",
     "decline": "拒绝",
     "accept": "接听",
     "calling": "呼叫中...",
@@ -127,6 +128,8 @@
     "status": "状态：{status}",
     "muteMic": "关闭麦克风",
     "unmuteMic": "打开麦克风",
+    "talkingMuted": "你的麦克风已静音",
+    "unmuteShort": "取消静音",
     "cameraOff": "关闭摄像头",
     "cameraOn": "打开摄像头",
     "shareScreen": "共享屏幕",

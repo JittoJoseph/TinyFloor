@@ -100,6 +100,7 @@
   "call": {
     "incoming": "מתקשר/ת אליך",
     "onCall": "בשיחה",
+    "connecting": "מתחבר...",
     "decline": "דחייה",
     "accept": "מענה",
     "calling": "מתקשר...",
@@ -127,6 +128,8 @@
     "status": "סטטוס: {status}",
     "muteMic": "השתקת המיקרופון",
     "unmuteMic": "ביטול השתקת המיקרופון",
+    "talkingMuted": "המיקרופון שלך מושתק",
+    "unmuteShort": "ביטול השתקה",
     "cameraOff": "כיבוי המצלמה",
     "cameraOn": "הפעלת המצלמה",
     "shareScreen": "שיתוף מסך",

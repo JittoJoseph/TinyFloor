@@ -1,5 +1,6 @@
 import type { MediaFlags, MediaKind, SfuClientMessage, SfuServerMessage, VideoKind, VideoQuality } from "@shared/messages";
 import { simulcastEncodings } from "./media";
+import { withOpusDtx } from "./sdp";
 
 export interface MeetingPeer {
   id: string;
@@ -38,6 +39,21 @@ interface PeerMedia extends MeetingPeer {
 type Waiter = { op: "published" | "offer"; resolve: (message: SfuServerMessage) => void; reject: (error: Error) => void };
 
 const RESPONSE_TIMEOUT_MS = 15_000;
+/**
+ * A track asked for too soon (its publisher still connecting to the SFU, two
+ * people joining at once, a microphone still opening) isn't found until its
+ * first packets arrive: it is asked for again, half as long again each time
+ * from 0.3 s, up to 4 s apart, for about a minute. Five tries, doubling from
+ * 0.5 s, once left someone slow to connect unheard for the rest of the meeting.
+ */
+const SUBSCRIBE_RETRIES = 20;
+const SUBSCRIBE_RETRY_MS = 300;
+const SUBSCRIBE_RETRY_GROWTH = 1.5;
+const SUBSCRIBE_RETRY_MAX_MS = 4000;
+/** Refusals that asking again won't change. */
+const FINAL_ERRORS = new Set(["video_paused", "too_much_video", "no_tracks", "bad_request"]);
+/** Disconnected this long without coming back, and the connection counts as lost (Chrome takes far longer to call it failed). */
+const LOST_AFTER_MS = 8_000;
 
 /**
  * A meeting's media through Cloudflare's SFU, brokered by the room. One peer
@@ -46,9 +62,12 @@ const RESPONSE_TIMEOUT_MS = 15_000;
  *
  * - everyone's mic is received, and only the video the stage shows (`want`);
  * - nothing is sent while we are alone, or while our mic is muted;
- * - the SFU forwards each viewer only the quality its tile needs.
+ * - the SFU forwards each viewer only the quality its tile needs;
+ * - our voice is sent only while there is something to hear (withOpusDtx on
+ *   the SFU's descriptions, which set how our encoder sends).
  *
- * Negotiation steps run one at a time.
+ * Negotiation steps run one at a time. A connection lost for good is said so
+ * (`lost`), and the meeting is joined again with a new one (recoverMeeting).
  */
 export class SfuMeeting {
   private readonly pc: RTCPeerConnection;
@@ -65,17 +84,24 @@ export class SfuMeeting {
   private chain: Promise<unknown> = Promise.resolve();
   private waiter: Waiter | null = null;
   private closed = false;
+  private lostTimer?: ReturnType<typeof setTimeout>;
 
   constructor(
     private readonly send: (message: SfuClientMessage) => void,
     private readonly changed: () => void,
     iceServers: RTCIceServer[],
+    private readonly lost: () => void = () => {},
   ) {
     this.pc = new RTCPeerConnection({ iceServers, bundlePolicy: "max-bundle" });
     this.pc.ontrack = ({ track, transceiver }) => this.receive(track, transceiver.mid);
     this.pc.onconnectionstatechange = () => {
-      const connected = this.pc.connectionState === "connected";
+      const state = this.pc.connectionState;
+      const connected = state === "connected";
       this.peers.forEach((peer) => (peer.connected = connected && peer.published.size > 0));
+      // A moment's drop comes back by itself; failed, or gone for longer, it won't.
+      clearTimeout(this.lostTimer);
+      if (state === "failed") this.lost();
+      else if (state === "disconnected") this.lostTimer = setTimeout(() => !this.closed && this.lost(), LOST_AFTER_MS);
       this.changed();
     };
   }
@@ -101,9 +127,12 @@ export class SfuMeeting {
 
   /**
    * Opens our mic and camera slots, empty until there is someone to hear and
-   * see them. Called once media has opened; receiving can start before that.
+   * see them, and with them the connection to the SFU. Called on joining,
+   * before the microphone has opened (updateLocal fills it in), so the
+   * connection is set up meanwhile instead of after: the first voice came
+   * through seconds sooner.
    */
-  publishLocal(local: MediaStream | null, flags: MediaFlags) {
+  publishLocal(local: MediaStream | null, flags: MediaFlags, announce = true) {
     if (this.mic) return;
     this.local = local;
     this.flags = flags;
@@ -114,7 +143,7 @@ export class SfuMeeting {
       { transceiver: this.camera, kind: "camera" },
     ]);
     this.fillSlots();
-    this.send({ op: "media", ...flags });
+    if (announce) this.send({ op: "media", ...flags });
   }
 
   addMember(id: string, name = "Someone") {
@@ -306,6 +335,7 @@ export class SfuMeeting {
 
   close() {
     this.closed = true;
+    clearTimeout(this.lostTimer);
     this.waiter?.reject(new Error("closed"));
     this.waiter = null;
     this.pc.close();
@@ -319,14 +349,15 @@ export class SfuMeeting {
       this.send({
         op: "publish",
         sdp: this.pc.localDescription!.sdp,
-        tracks: slots.map(({ transceiver, kind }) => ({ mid: transceiver.mid!, kind })),
+        // Video layers named a, b, c (simulcastEncodings), so the room asks for them by those names.
+        tracks: slots.map(({ transceiver, kind }) => ({ mid: transceiver.mid!, kind, ...(kind === "mic" ? {} : { ranked: true }) })),
       });
       const answer = await published;
-      if (answer.op === "published") await this.pc.setRemoteDescription({ type: "answer", sdp: answer.sdp });
+      if (answer.op === "published") await this.pc.setRemoteDescription({ type: "answer", sdp: withOpusDtx(answer.sdp) });
     });
   }
 
-  private subscribe(items: { peer: PeerMedia; kind: MediaKind; quality?: VideoQuality }[]) {
+  private subscribe(items: { peer: PeerMedia; kind: MediaKind; quality?: VideoQuality }[], attempt = 0) {
     items.forEach(({ peer, kind }) => peer.pending.add(kind));
     this.enqueue(async () => {
       const still = items.filter(({ peer }) => this.peers.has(peer.id));
@@ -344,10 +375,16 @@ export class SfuMeeting {
       let offer: SfuServerMessage;
       try {
         offer = await offered;
+      } catch (error) {
+        if (!FINAL_ERRORS.has((error as Error).message)) this.retry(still, attempt);
+        throw error;
       } finally {
         clear();
       }
       if (offer.op !== "offer") return;
+      // Tracks of this request the SFU couldn't give yet: asked for again, on their own.
+      const failed = (offer.failed ?? []).filter(({ code }) => !FINAL_ERRORS.has(code));
+      if (failed.length) this.retry(still.filter(({ peer, kind }) => failed.some((one) => one.userId === peer.id && one.kind === kind)), attempt);
       offer.tracks.forEach(({ userId, kind, mid }) => {
         if (!mid) return;
         this.byMid.set(mid, { userId, kind });
@@ -360,8 +397,28 @@ export class SfuMeeting {
     });
   }
 
+  /**
+   * Asks again for tracks the SFU couldn't give yet, those still published by
+   * someone still here and still not received, until it can or the tries run out.
+   */
+  private retry(items: { peer: PeerMedia; kind: MediaKind; quality?: VideoQuality }[], attempt: number) {
+    if (attempt >= SUBSCRIBE_RETRIES) return;
+    setTimeout(() => {
+      if (this.closed) return;
+      const again = items.filter(
+        ({ peer, kind }) =>
+          this.peers.get(peer.id) === peer &&
+          peer.published.has(kind) &&
+          !peer.mids[kind] &&
+          !peer.pending.has(kind) &&
+          (kind === "mic" || this.wanted.some((video) => video.userId === peer.id && video.kind === kind)),
+      );
+      if (again.length) this.subscribe(again, attempt + 1);
+    }, Math.min(SUBSCRIBE_RETRY_MAX_MS, SUBSCRIBE_RETRY_MS * SUBSCRIBE_RETRY_GROWTH ** attempt));
+  }
+
   private async answer(sdp: string) {
-    await this.pc.setRemoteDescription({ type: "offer", sdp });
+    await this.pc.setRemoteDescription({ type: "offer", sdp: withOpusDtx(sdp) });
     await this.pc.setLocalDescription(await this.pc.createAnswer());
     this.send({ op: "answer", sdp: this.pc.localDescription!.sdp });
   }

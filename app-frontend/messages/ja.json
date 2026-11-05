@@ -100,6 +100,7 @@
   "call": {
     "incoming": "着信中",
     "onCall": "通話中",
+    "connecting": "接続中...",
     "decline": "拒否",
     "accept": "応答",
     "calling": "発信中...",
@@ -127,6 +128,8 @@
     "status": "ステータス: {status}",
     "muteMic": "マイクをミュート",
     "unmuteMic": "マイクのミュートを解除",
+    "talkingMuted": "マイクがミュートになっています",
+    "unmuteShort": "ミュート解除",
     "cameraOff": "カメラをオフ",
     "cameraOn": "カメラをオン",
     "shareScreen": "画面を共有",

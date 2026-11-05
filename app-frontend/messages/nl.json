@@ -100,6 +100,7 @@
   "call": {
     "incoming": "Belt je",
     "onCall": "In gesprek",
+    "connecting": "Verbinden...",
     "decline": "Weigeren",
     "accept": "Accepteren",
     "calling": "Bellen...",
@@ -127,6 +128,8 @@
     "status": "Status: {status}",
     "muteMic": "Microfoon dempen",
     "unmuteMic": "Microfoon aanzetten",
+    "talkingMuted": "Je microfoon staat uit",
+    "unmuteShort": "Aanzetten",
     "cameraOff": "Camera uitzetten",
     "cameraOn": "Camera aanzetten",
     "shareScreen": "Scherm delen",

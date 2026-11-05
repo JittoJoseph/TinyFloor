@@ -100,6 +100,7 @@
   "call": {
     "incoming": "Calling you",
     "onCall": "On the call",
+    "connecting": "Connecting...",
     "decline": "Decline",
     "accept": "Answer",
     "calling": "Calling...",
@@ -127,6 +128,8 @@
     "status": "Status: {status}",
     "muteMic": "Mute microphone",
     "unmuteMic": "Unmute microphone",
+    "talkingMuted": "You're muted",
+    "unmuteShort": "Unmute",
     "cameraOff": "Turn off camera",
     "cameraOn": "Turn on camera",
     "shareScreen": "Share screen",

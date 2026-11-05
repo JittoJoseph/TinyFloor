@@ -100,6 +100,7 @@
   "call": {
     "incoming": "전화가 왔어요",
     "onCall": "통화 중",
+    "connecting": "연결 중...",
     "decline": "거절",
     "accept": "수락",
     "calling": "전화 거는 중...",
@@ -127,6 +128,8 @@
     "status": "상태: {status}",
     "muteMic": "마이크 끄기",
     "unmuteMic": "마이크 켜기",
+    "talkingMuted": "마이크가 꺼져 있어요",
+    "unmuteShort": "켜기",
     "cameraOff": "카메라 끄기",
     "cameraOn": "카메라 켜기",
     "shareScreen": "화면 공유",

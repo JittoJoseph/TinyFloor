@@ -13,11 +13,13 @@ const PROFILES: Record<VideoKind, Record<VideoQuality, RTCRtpEncodingParameters>
     medium: { maxBitrate: 300_000, scaleResolutionDownBy: 2, maxFramerate: 20 },
     low: { maxBitrate: 120_000, scaleResolutionDownBy: 4, maxFramerate: 15 },
   },
-  // A screen is text: few frames, full resolution when it is on the stage.
+  // A screen is text: full resolution when it is big, 15 frames a second so
+  // scrolling reads smoothly. A still screen sends next to nothing whatever
+  // the cap; the cap is what a scroll or a video may take.
   screen: {
-    high: { maxBitrate: 1_200_000, maxFramerate: 10 },
-    medium: { maxBitrate: 1_200_000, maxFramerate: 10 },
-    low: { maxBitrate: 150_000, scaleResolutionDownBy: 4, maxFramerate: 5 },
+    high: { maxBitrate: 2_000_000, maxFramerate: 15 },
+    medium: { maxBitrate: 2_000_000, maxFramerate: 15 },
+    low: { maxBitrate: 200_000, scaleResolutionDownBy: 4, maxFramerate: 5 },
   },
 };
 
@@ -29,26 +31,39 @@ export const CAMERA_CAPTURE: MediaTrackConstraints = {
   facingMode: "user",
 };
 
-export const SCREEN_CAPTURE: MediaTrackConstraints = {
-  width: { max: 1280 },
-  height: { max: 720 },
-  frameRate: { ideal: 10, max: 15 },
-};
+/**
+ * Up to 1080p: at 720p a laptop's 13px text is a blur (docs/calls.md). The
+ * options after `video` are Chrome's: our own tab isn't offered (sharing it
+ * shows a hall of mirrors), and the bar Chrome shows while sharing can switch
+ * to another tab without stopping.
+ */
+export const SCREEN_SHARE = {
+  video: {
+    width: { max: 1920 },
+    height: { max: 1080 },
+    frameRate: { ideal: 15, max: 15 },
+  },
+  audio: false,
+  selfBrowserSurface: "exclude",
+  surfaceSwitching: "include",
+} as DisplayMediaStreamOptions;
 
 /**
  * Every quality at once for the SFU, which forwards only the one each viewer
  * asked for. Sending to the SFU costs nothing; what it sends on is the bill.
+ * The layers are named a, b, c, sharpest first: the SFU steps down through
+ * them in that order when a viewer's bandwidth runs short (the room's RANKED).
  */
 export function simulcastEncodings(kind: VideoKind): RTCRtpEncodingParameters[] {
   return kind === "camera"
     ? [
-        { rid: "h", ...PROFILES.camera.high },
-        { rid: "m", ...PROFILES.camera.medium },
-        { rid: "l", ...PROFILES.camera.low },
+        { rid: "a", ...PROFILES.camera.high },
+        { rid: "b", ...PROFILES.camera.medium },
+        { rid: "c", ...PROFILES.camera.low },
       ]
     : [
-        { rid: "h", ...PROFILES.screen.high },
-        { rid: "l", ...PROFILES.screen.low },
+        { rid: "a", ...PROFILES.screen.high },
+        { rid: "c", ...PROFILES.screen.low },
       ];
 }
 
@@ -97,14 +112,38 @@ export function savedDevices(): DevicePreferences {
   }
 }
 
+const DEVICES_EVENT = "tinyfloor-devices";
+
 export function saveDevices(devices: DevicePreferences) {
   try {
     localStorage.setItem(DEVICES_KEY, JSON.stringify(devices));
   } catch {}
+  window.dispatchEvent(new Event(DEVICES_EVENT));
+}
+
+/** A microphone or camera picked in settings, so a call already open can switch to it. */
+export function onDevicesChange(listener: () => void) {
+  window.addEventListener(DEVICES_EVENT, listener);
 }
 
 export function deviceConstraint(id?: string) {
   return id ? { exact: id } : undefined;
+}
+
+/**
+ * The microphone or camera picked in settings, or the default one when that
+ * one is gone: a headset picked last week and unplugged since would otherwise
+ * fail the whole call. (Asked for as `ideal`, Chrome opens the default instead.)
+ */
+export async function openPicked(kind: "audio" | "video", constraints: MediaTrackConstraints, id?: string): Promise<MediaStream> {
+  const open = (deviceId?: string) => navigator.mediaDevices.getUserMedia({ [kind]: deviceId ? { ...constraints, deviceId: { exact: deviceId } } : constraints });
+  if (!id) return open();
+  try {
+    return await open(id);
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "NotAllowedError") throw error;
+    return open();
+  }
 }
 
 /**
@@ -138,5 +177,24 @@ export function preferRedundantAudio(transceiver: RTCRtpTransceiver) {
     transceiver.setCodecPreferences([...codecs.filter(isRed), ...codecs.filter((codec) => !isRed(codec))]);
   } catch {
     // An older browser that lists RED but won't take it first: Opus alone.
+  }
+}
+
+/**
+ * Puts the given video codecs first, best first, for what this transceiver
+ * sends. A browser that can't decode one leaves it out of its answer, and the
+ * next is used.
+ */
+export function preferVideoCodecs(transceiver: RTCRtpTransceiver, order: string[]) {
+  const codecs = typeof RTCRtpReceiver !== "undefined" ? RTCRtpReceiver.getCapabilities?.("video")?.codecs : undefined;
+  if (!codecs || !transceiver.setCodecPreferences) return;
+  const rank = (codec: RTCRtpCodec) => {
+    const at = order.indexOf(codec.mimeType.toLowerCase());
+    return at < 0 ? order.length : at;
+  };
+  try {
+    transceiver.setCodecPreferences([...codecs].sort((a, b) => rank(a) - rank(b)));
+  } catch {
+    // Not taken: the browser's own order.
   }
 }

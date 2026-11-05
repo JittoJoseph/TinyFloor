@@ -4,15 +4,19 @@ import type { RoomSocket } from "./RoomSocket";
 import { api } from "@/lib/api";
 import {
   CAMERA_CAPTURE,
-  SCREEN_CAPTURE,
-  deviceConstraint,
+  SCREEN_SHARE,
+  onDevicesChange,
+  openPicked,
   savedDevices,
   screenTooSmallForDetail,
   preferRedundantAudio,
+  preferVideoCodecs,
   sendAtQuality,
   udpRelay,
 } from "./media";
 import { SfuMeeting, type MeetingPeer } from "./SfuMeeting";
+import { dtxDescription } from "./sdp";
+import { prepareNoiseRemoval, removeNoise, type CleanVoice } from "./noiseFilter";
 import { chooseStage, EMPTY_STAGE, sameStage, type Pin, type Stage, type StageMode } from "./meetingStage";
 import { meetingsState, setMeetings, setSpeaking, subscribeMeetings, WALK_TO_MEETING_EVENT } from "./meetings";
 import { VoiceActivity } from "./voiceActivity";
@@ -37,6 +41,7 @@ export interface CallPeer {
   id: string;
   name: string;
   stream: MediaStream;
+  /** Ready to talk: the connection is up and their voice is reaching us (not merely answered). */
   connected: boolean;
   mic: boolean;
   camera: boolean;
@@ -82,6 +87,8 @@ export interface CallSnapshot {
   outcome: CallOutcome | null;
   /** Your camera just went off by itself after a quiet stretch: said once, for a moment. */
   cameraRested: boolean;
+  /** Talking with the microphone off, said for a moment (MicMutedHint). */
+  talkingMuted: boolean;
 }
 
 /** What one side of a call asks the other to send: how sharp, and whether to send video at all. */
@@ -100,10 +107,18 @@ interface Signal {
   want?: Partial<Wants>;
   /** The answerer's relay needs TCP or TLS: the offerer gathers again. */
   restart?: boolean;
+  /** The offerer is adding the relay's TCP and TLS: the answerer does too, before the new offer. */
+  widen?: boolean;
 }
 
 interface PeerEntry extends CallPeer {
   pc?: RTCPeerConnection;
+  /** The connection itself is up (ICE and DTLS), whether or not anything is sent on it yet. */
+  linked?: boolean;
+  /** Their voice has started arriving (the remote audio track unmuted). */
+  heard?: boolean;
+  /** Linked, but nothing heard from them for a while: shown as connected anyway. */
+  heardTimer?: ReturnType<typeof setTimeout>;
   /** What they asked us for, and what we last asked them for. */
   wants: Wants;
   asked?: string;
@@ -156,19 +171,40 @@ type MeetingMessage = Extract<
 >;
 
 const RELAY_ONLY: RTCIceTransportPolicy = "relay";
-/** No UDP address from the relay by now: this network blocks UDP, so TCP and TLS join. */
-const UDP_GRACE_MS = 3500;
-/** A UDP address but still no connection by now: the other end may be the one blocked. */
-const UDP_SLOW_MS = 10_000;
+/**
+ * No UDP address from the relay by now: this network blocks UDP, or the relay
+ * didn't answer (one ring in three, in testing), so TCP and TLS join. Short
+ * enough that this happens while it still rings.
+ */
+const UDP_GRACE_MS = 2000;
+/**
+ * A UDP address but still no connection by now: the other end may be the one
+ * blocked, or the relays' UDP paths aren't getting through (a connection over
+ * UDP takes under a second when it works). Was 10 s, which some calls waited out.
+ */
+const UDP_SLOW_MS = 4500;
 /** Credentials are refreshed this long before they expire. */
 const ICE_REFRESH_MARGIN_MS = 15 * 60 * 1000;
 const RING_TIMEOUT = 30000;
 /** How long a meeting invitation waits for an answer. */
 const INVITE_TIMEOUT = 30000;
-/** What the browser does to your voice, as your settings ask (lib/prefs.ts). */
-function audioConstraints() {
+/**
+ * What the browser does to your voice, as your settings ask (lib/prefs.ts).
+ * With noise removal on, the system's voice isolation is asked for too where
+ * the browser offers it, as LiveKit does; the rest is done here (removeNoise).
+ */
+function audioConstraints(): MediaTrackConstraints {
   const { echoCancellation, noiseSuppression } = prefs();
-  return { echoCancellation, noiseSuppression, autoGainControl: true };
+  const isolation =
+    typeof navigator !== "undefined" && (navigator.mediaDevices?.getSupportedConstraints?.() as Record<string, boolean> | undefined)?.voiceIsolation
+      ? { voiceIsolation: noiseSuppression }
+      : {};
+  return { echoCancellation, noiseSuppression, autoGainControl: true, ...isolation };
+}
+
+/** What the open microphone was opened with: the voice settings and the microphone picked. */
+function voiceKey(): string {
+  return JSON.stringify({ ...audioConstraints(), device: savedDevices().audio ?? "" });
 }
 // Every connection carries the same slots in the same order on both ends, so a
 // track's slot says what it is: the mic, the camera or a shared screen.
@@ -211,6 +247,7 @@ const EMPTY: CallSnapshot = {
   error: null,
   outcome: null,
   cameraRested: false,
+  talkingMuted: false,
 };
 
 const MIC_ON = typeof window === "undefined" ? true : micPreference();
@@ -224,7 +261,9 @@ const canCall = () => typeof RTCPeerConnection !== "undefined";
 /**
  * A call is two people, on one WebRTC connection through the TURN relay (see
  * RELAY_ONLY), over UDP unless the network blocks it (widenRelay), with the
- * voice sent redundantly so a lost packet isn't heard (preferRedundantAudio). It starts with voice, and the camera and a shared screen are
+ * voice sent redundantly so a lost packet isn't heard (preferRedundantAudio)
+ * and only while there is something to hear (dtxDescription), with the noise
+ * taken out first (removeNoise). It starts with voice, and the camera and a shared screen are
  * there to switch on, never on by themselves. One side offers and the other
  * answers, so two offers never cross. The connection carries a fixed mic,
  * camera and screen slot, and switching any of them swaps what is in the slot
@@ -241,6 +280,12 @@ class CallManager {
   /** The place is past its meeting hours: meetings are voice only (docs/pricing.md). */
   private videoPaused = false;
   private local: MediaStream | null = null;
+  /** The microphone with its noise removed (removeNoise), which `local` carries in its place; stopping it stops the microphone. */
+  private cleanVoice: CleanVoice | null = null;
+  /** The microphone itself, as the browser gave it: watched for being unplugged (followMicrophone). */
+  private microphone: MediaStreamTrack | null = null;
+  /** When the meeting's media was last found lost and joined again (recoverMeeting). */
+  private meetingLostAt = 0;
   /** The microphone being opened, so a call and a meeting starting together share one. */
   private opening: Promise<boolean> | null = null;
   /** Whether you last asked for your camera on: one that opens after you said off, or after the call ended, stops again. */
@@ -251,6 +296,13 @@ class CallManager {
   private screen: MediaStream | null = null;
   private incoming: { id: string; name: string } | null = null;
   private outgoing: { id: string; name: string } | null = null;
+  /**
+   * The call's connection, set up while it rings, on both ends: by the time
+   * someone answers it is usually up, and only the voices are left to start.
+   * Nothing is sent on it until then. Measured before this: 1–13 s from
+   * answering to hearing each other, while the call already showed.
+   */
+  private ringPeer: PeerEntry | null = null;
   private micEnabled = MIC_ON;
   private cameraEnabled = false;
   /** The camera, chosen before joining (the Meetings page, as Meet asks): on for the next meeting you go into. */
@@ -269,6 +321,14 @@ class CallManager {
   /** Each call's sound energy so far, per stats report, to tell talk from silence. */
   private energy = new Map<string, number>();
   private cameraRested = false;
+  private talkingMuted = false;
+  private mutedHintAt = 0;
+  private mutedHintTimer?: ReturnType<typeof setTimeout>;
+  /** A copy of the microphone listened to while it is off (watchMuted), and the microphone it copies. */
+  private mutedCopy: MediaStreamTrack | null = null;
+  private mutedSource: MediaStreamTrack | null = null;
+  // A second of loud within two before it says anything: real talk, not a bark or a burst of typing.
+  private readonly mutedVoice = new VoiceActivity((talking) => talking && this.hintMuted(), { stopAfterMs: 1500, onsetMs: 1000 });
   private restedTimer?: ReturnType<typeof setTimeout>;
   private stageMode: StageMode = "mini";
   /** What you pinned on the stage, if anything. */
@@ -313,9 +373,14 @@ class CallManager {
         this.emit();
       });
       // Voice settings reach the call that is already open, not only the next.
-      onPrefsChange(() => {
-        this.voiceChange = this.voiceChange.then(() => this.applyVoicePrefs());
+      onPrefsChange(() => this.queueVoice(() => this.applyVoicePrefs()));
+      // So does a microphone or camera picked in settings.
+      onDevicesChange(() => {
+        this.queueVoice(() => this.applyVoicePrefs());
+        void this.switchCamera();
       });
+      // Headphones plugged in or taken out: the microphone follows the system's default.
+      navigator.mediaDevices?.addEventListener?.("devicechange", () => this.queueVoice(() => this.followMicrophone()));
     }
   }
 
@@ -355,9 +420,14 @@ class CallManager {
     this.error = null;
     this.outcome = null;
     this.outgoing = { id, name };
+    this.prepareVoice();
     loopSound("ring");
 
     this.send("invite", id);
+    // The connection while it rings; your microphone opens now too (you're the one calling), but
+    // goes on the connection only when they answer.
+    this.ringPeer = this.buildPeer(id, name, true);
+    void this.openMedia();
     this.ring(() => {
       this.tell({ id, name, kind: "unanswered" });
       this.cancel();
@@ -374,11 +444,50 @@ class CallManager {
     stopSound("ring");
     this.incoming = null;
 
-    this.createPeer(call.id, call.name, false);
-    this.send("accept", call.id);
+    this.answered(call.id, call.name, false);
+    // `early`: this end takes the offer made while it rang (an older app doesn't, and is offered again).
+    this.send("accept", call.id, { early: true });
     this.emit();
 
     await this.startCall(call.id);
+  }
+
+  /** Answered: the connection made while it rang becomes the call's (or a fresh one, if there wasn't one). */
+  private answered(id: string, name: string, offerer: boolean, early = true): PeerEntry {
+    const ringing = this.ringPeer?.id === id ? this.ringPeer : null;
+    this.ringPeer = null;
+    if (!ringing) return this.createPeer(id, name, offerer);
+    this.peers.set(id, ringing);
+    // The other end is an older app, which didn't take our offer while it
+    // rang: offered again, from scratch, now that it will. (Its answer can't
+    // be told from one still on its way: answered at once, the new app's was.)
+    if (offerer && !early) void this.offerAgain(ringing);
+    this.updateLive(ringing);
+    return ringing;
+  }
+
+  /** Drops an offer that went unanswered and makes a new one, with new candidates. */
+  private async offerAgain(peer: PeerEntry) {
+    const pc = peer.pc;
+    if (!pc) return;
+    try {
+      if (pc.signalingState === "have-local-offer") await pc.setLocalDescription({ type: "rollback" });
+      pc.restartIce();
+    } catch {
+      this.error = "connection";
+      this.emit();
+    }
+  }
+
+  /** The ring ended without a call: its connection goes, and a microphone opened for it. */
+  private dropRing(id?: string) {
+    const peer = this.ringPeer;
+    if (!peer || (id && peer.id !== id)) return;
+    this.ringPeer = null;
+    clearTimeout(peer.fallback);
+    clearTimeout(peer.heardTimer);
+    peer.pc?.close();
+    if (!this.peers.size && !this.meeting && !this.incoming && !this.outgoing) this.releaseMedia();
   }
 
   /** Turns the ring down; left to ring out, it counts as missed on both ends. */
@@ -386,6 +495,7 @@ class CallManager {
     if (!this.incoming) return;
     this.clearRing();
     stopSound("ring");
+    this.dropRing(this.incoming.id);
     this.send("decline", this.incoming.id, { reason });
     if (reason === "missed") this.tell({ ...this.incoming, kind: "missed" });
     this.incoming = null;
@@ -410,7 +520,9 @@ class CallManager {
     this.clearRing();
     stopSound("ring");
     this.send("end", this.outgoing.id);
+    const id = this.outgoing.id;
     this.outgoing = null;
+    this.dropRing(id);
     this.emit();
   }
 
@@ -439,6 +551,7 @@ class CallManager {
       this.clearRing();
       this.outgoing = null;
     }
+    this.dropRing(id);
     this.closePeer(id);
     this.sfu?.removeMember(id);
     this.emit();
@@ -453,7 +566,7 @@ class CallManager {
         this.onInvite(from, fromName);
         break;
       case "accept":
-        void this.onAccept(from);
+        void this.onAccept(from, payload.early === true);
         break;
       case "decline":
         if (this.outgoing?.id === from) {
@@ -516,6 +629,7 @@ class CallManager {
     if (!this.ws || this.meeting === id || !this.callsWork()) return;
     this.dismissInvite();
     if (this.peers.size) this.hangUp();
+    this.prepareVoice();
     this.ws.send({ t: "meeting_join", meeting: id });
   }
 
@@ -700,9 +814,48 @@ class CallManager {
   }
 
   /** Your talking is reported only in a meeting, with someone to hear it and your mic on. */
+  /**
+   * While your microphone is off on a call or in a meeting, a copy of it is
+   * listened to on this device, and talking into it is pointed out
+   * (MicMutedHint). Nothing of it is sent.
+   */
+  private watchMuted() {
+    const microphone = this.microphone;
+    const watch = !!this.local && !this.micEnabled && !!microphone && microphone.readyState === "live";
+    if (watch && this.mutedSource === microphone) return;
+    this.mutedVoice.stop();
+    this.mutedCopy?.stop();
+    this.mutedCopy = null;
+    this.mutedSource = null;
+    if (!watch || !microphone) return this.clearMutedHint();
+    const copy = microphone.clone();
+    copy.enabled = true;
+    this.mutedCopy = copy;
+    this.mutedSource = microphone;
+    this.mutedVoice.listen(copy);
+  }
+
+  /** Said for 5 s, at most once in 20 s: a reminder, not a nag. */
+  private hintMuted() {
+    if (this.micEnabled || Date.now() - this.mutedHintAt < 20_000) return;
+    this.mutedHintAt = Date.now();
+    this.talkingMuted = true;
+    clearTimeout(this.mutedHintTimer);
+    this.mutedHintTimer = setTimeout(() => this.clearMutedHint(), 5000);
+    this.emit();
+  }
+
+  private clearMutedHint() {
+    clearTimeout(this.mutedHintTimer);
+    if (!this.talkingMuted) return;
+    this.talkingMuted = false;
+    this.emit();
+  }
+
   private listenForVoice() {
     const track = this.meeting && this.micEnabled && this.sfu && !this.sfu.alone ? (this.local?.getAudioTracks()[0] ?? null) : null;
     this.voice.listen(track);
+    this.watchMuted();
   }
 
   /** Whether the next meeting you go into opens with your camera on. */
@@ -738,10 +891,7 @@ class CallManager {
 
     let stream: MediaStream;
     try {
-      stream = await navigator.mediaDevices.getDisplayMedia({
-        video: SCREEN_CAPTURE,
-        audio: false,
-      });
+      stream = await navigator.mediaDevices.getDisplayMedia(SCREEN_SHARE);
     } catch {
       return; // the picker was dismissed
     }
@@ -801,6 +951,7 @@ class CallManager {
         this.emit();
       },
       this.iceServers,
+      () => this.recoverMeeting(sfu),
     );
     this.sfu = sfu;
     sfu.pauseVideo(this.videoPaused);
@@ -812,6 +963,8 @@ class CallManager {
     window.dispatchEvent(new Event(WALK_TO_MEETING_EVENT));
     this.emit();
 
+    // The connection to the SFU opens now, its slots filled once the microphone is open.
+    sfu.publishLocal(this.local, this.flags(), !!this.local);
     const opened = await this.openMedia();
     if (this.sfu !== sfu) return;
     this.cameraWanted = withCamera;
@@ -819,10 +972,27 @@ class CallManager {
       if (this.sfu !== sfu) return;
       this.cameraEnabled = true;
     }
-    sfu.publishLocal(opened ? this.local : null, this.flags());
+    sfu.updateLocal(opened ? this.local : null, this.flags());
     this.listenForVoice();
     this.refreshStage();
     this.emit();
+  }
+
+  /**
+   * The meeting's media connection was lost while the room's held (UDP
+   * blocked partway through, a network change the room got through): out
+   * and straight back in, which gives it a new connection through the SFU.
+   * The room answers with `meeting_joined`, taken as a move, so no sounds, and
+   * the microphone and camera stay as they are. At most once in 20 seconds,
+   * so a network that can't hold a connection doesn't spin.
+   */
+  private recoverMeeting(sfu: SfuMeeting) {
+    const meeting = this.meeting;
+    if (this.sfu !== sfu || !meeting || !this.ws || Date.now() - this.meetingLostAt < 20_000) return;
+    this.meetingLostAt = Date.now();
+    this.cameraOnJoin = this.cameraEnabled;
+    this.ws.send({ t: "meeting_leave" });
+    this.ws.send({ t: "meeting_join", meeting });
   }
 
   private async startCall(id: string) {
@@ -832,6 +1002,7 @@ class CallManager {
 
   /** Puts our mic, camera and screen on every connection and tells each peer what is on. */
   private shareTracks() {
+    this.watchMuted();
     this.peers.forEach((peer) => this.syncTracks(peer));
     this.shareMedia();
     this.emit();
@@ -886,12 +1057,15 @@ class CallManager {
     this.error = null;
     this.outcome = null;
     this.incoming = { id, name: name || "Someone" };
+    // Their offer comes while it rings: answered on a connection of our own, with nothing on it.
+    this.ringPeer = this.buildPeer(id, name || "Someone", false);
+    this.prepareVoice();
     this.ring(() => this.decline("missed"));
     loopSound("ring");
     this.emit();
   }
 
-  private async onAccept(id: string) {
+  private async onAccept(id: string, early: boolean) {
     const call = this.outgoing;
     if (!call || call.id !== id) return;
 
@@ -899,7 +1073,7 @@ class CallManager {
     stopSound("ring");
     this.outgoing = null;
 
-    this.createPeer(id, call.name, true);
+    this.answered(id, call.name, true, early);
     this.emit();
 
     await this.startCall(id);
@@ -908,14 +1082,22 @@ class CallManager {
   private cancelOutgoing() {
     this.clearRing();
     stopSound("ring");
+    const id = this.outgoing?.id;
     this.outgoing = null;
+    this.dropRing(id);
     this.emit();
   }
 
   private createPeer(id: string, name: string, offerer: boolean): PeerEntry {
     const existing = this.peers.get(id);
     if (existing) return existing;
+    const peer = this.buildPeer(id, name, offerer);
+    this.peers.set(id, peer);
+    return peer;
+  }
 
+  /** A connection to someone, not yet part of the call (createPeer, or ringing in ringPeer). */
+  private buildPeer(id: string, name: string, offerer: boolean): PeerEntry {
     const pc = new RTCPeerConnection({
       iceServers: udpRelay(this.iceServers),
       iceTransportPolicy: RELAY_ONLY,
@@ -933,7 +1115,6 @@ class CallManager {
       wants: { ...LOW },
       offerer,
     };
-    this.peers.set(id, peer);
     // Once both ends have agreed, UDP gets its chance, counted from there so
     // a microphone prompt on the other end isn't taken for a blocked network.
     // Without a UDP address of our own it is blocked here; with one, a slow
@@ -941,10 +1122,10 @@ class CallManager {
     pc.onsignalingstatechange = () => {
       if (pc.signalingState !== "stable" || !pc.remoteDescription || peer.fallback) return;
       peer.fallback = setTimeout(() => {
-        if (peer.connected) return;
+        if (peer.linked) return;
         if (!peer.gathered) return this.widenRelay(peer);
         peer.fallback = setTimeout(() => {
-          if (!peer.connected) this.widenRelay(peer);
+          if (!peer.linked) this.widenRelay(peer);
         }, UDP_SLOW_MS - UDP_GRACE_MS);
       }, UDP_GRACE_MS);
     };
@@ -960,32 +1141,35 @@ class CallManager {
       } else {
         peer.stream = new MediaStream([...peer.stream.getTracks(), track]);
       }
-      this.emit();
+      // Their voice: an audio track unmutes when its first packets arrive.
+      if (track.kind === "audio") {
+        track.addEventListener("unmute", () => {
+          peer.heard = true;
+          this.updateLive(peer);
+        });
+        if (!track.muted) peer.heard = true;
+      }
+      this.updateLive(peer);
     };
 
     pc.onconnectionstatechange = () => {
-      const connected = pc.connectionState === "connected";
-      if (connected && !peer.connected) {
-        playSound("connect");
-        track("call_connected");
-      }
-      peer.connected = connected;
+      peer.linked = pc.connectionState === "connected";
       if (pc.connectionState === "failed") this.widenRelay(peer);
-      this.emit();
+      this.updateLive(peer);
     };
 
     if (offerer) {
       pc.onnegotiationneeded = async () => {
         try {
           await pc.setLocalDescription();
-          this.send("signal", id, { signal: { sdp: pc.localDescription! } });
+          this.send("signal", id, { signal: { sdp: dtxDescription(pc.localDescription!.toJSON()) } });
         } catch {
           this.error = "connection";
           this.emit();
         }
       };
       SLOTS.forEach((kind) => pc.addTransceiver(kind, { direction: "sendrecv" }));
-      preferRedundantAudio(pc.getTransceivers()[0]);
+      this.preferCodecs(pc);
     }
 
     return peer;
@@ -1000,22 +1184,55 @@ class CallManager {
   private widenRelay(peer: PeerEntry) {
     const pc = peer.pc;
     if (!pc || pc.signalingState === "closed") return;
-    if (!peer.widened && this.iceServers.length) {
-      peer.widened = true;
-      pc.setConfiguration({ iceServers: this.iceServers, iceTransportPolicy: RELAY_ONLY });
+    this.widen(peer);
+    if (peer.offerer) {
+      // Both ends widen: a relay slow to give one end a UDP address was often slow for the other
+      // too, and that end waited out its own 10 s first (calls took 11 to 13 s to connect).
+      this.send("signal", peer.id, { signal: { widen: true } });
+      pc.restartIce();
+    } else this.send("signal", peer.id, { signal: { restart: true } });
+  }
+
+  /** The relay's TCP and TLS addresses join its UDP ones on this connection. */
+  private widen(peer: PeerEntry) {
+    if (peer.widened || !this.iceServers.length || !peer.pc) return;
+    peer.widened = true;
+    peer.pc.setConfiguration({ iceServers: this.iceServers, iceTransportPolicy: RELAY_ONLY });
+  }
+
+  /**
+   * Whether the call is ready to talk, for the call's cards and sound: the
+   * connection up and their voice arriving. A call that's linked but silent
+   * for 6 s (no microphone on their end) counts as ready all the same.
+   */
+  private updateLive(peer: PeerEntry) {
+    const answered = this.peers.get(peer.id) === peer;
+    if (peer.linked && !peer.heard && answered && !peer.heardTimer) {
+      peer.heardTimer = setTimeout(() => {
+        peer.heard = true;
+        this.updateLive(peer);
+      }, 6000);
     }
-    if (peer.offerer) pc.restartIce();
-    else this.send("signal", peer.id, { signal: { restart: true } });
+    const live = !!peer.linked && !!peer.heard && answered;
+    if (live && !peer.connected) {
+      clearTimeout(peer.heardTimer);
+      playSound("connect");
+      track("call_connected");
+    }
+    peer.connected = live;
+    if (answered) this.emit();
   }
 
   private async onSignal(from: string, signal: Signal) {
-    const peer = this.peers.get(from);
+    const peer = this.peers.get(from) ?? (this.ringPeer?.id === from ? this.ringPeer : undefined);
     const pc = peer?.pc;
     if (!peer || !pc || !signal) return;
 
     try {
       if (signal.restart) {
-        if (peer.offerer) pc.restartIce();
+        if (peer.offerer) this.widenRelay(peer);
+      } else if (signal.widen) {
+        this.widen(peer);
       } else if (signal.want) {
         peer.wants = {
           camera: signal.want.camera ?? "low",
@@ -1033,10 +1250,10 @@ class CallManager {
       } else if (signal.sdp) {
         await pc.setRemoteDescription(signal.sdp);
         if (signal.sdp.type === "offer") {
-          preferRedundantAudio(pc.getTransceivers()[0]);
+          this.preferCodecs(pc);
           this.syncTracks(peer);
           await pc.setLocalDescription();
-          this.send("signal", from, { signal: { sdp: pc.localDescription! } });
+          this.send("signal", from, { signal: { sdp: dtxDescription(pc.localDescription!.toJSON()) } });
         }
         this.shareMedia(peer);
         this.shareQuality();
@@ -1046,11 +1263,25 @@ class CallManager {
     }
   }
 
+  /**
+   * Voice with redundancy, and a shared screen in AV1 where both browsers have
+   * it: on the same screen it was as sharp as anything tried and took a fifth
+   * of VP8's bitrate while scrolling (docs/calls.md). Otherwise VP8, which
+   * every browser has. A call has two ends to agree, so this is safe here; a
+   * meeting's viewers would all have to decode AV1, so meetings stay on VP8.
+   */
+  private preferCodecs(pc: RTCPeerConnection) {
+    const slots = pc.getTransceivers();
+    preferRedundantAudio(slots[0]);
+    if (slots[SCREEN_SLOT]) preferVideoCodecs(slots[SCREEN_SLOT], ["video/av1", "video/vp8"]);
+  }
+
   private closePeer(id: string) {
     const peer = this.peers.get(id);
     if (!peer) return;
 
     clearTimeout(peer.fallback);
+    clearTimeout(peer.heardTimer);
     peer.pc?.close();
     peer.stream.getTracks().forEach((track) => track.stop());
     this.peers.delete(id);
@@ -1074,22 +1305,24 @@ class CallManager {
 
     let stream: MediaStream;
     try {
-      stream = await navigator.mediaDevices.getUserMedia({
-        audio: { ...audioConstraints(), deviceId: deviceConstraint(savedDevices().audio) },
-      });
+      stream = await openPicked("audio", audioConstraints(), savedDevices().audio);
     } catch {
       this.error = "media";
       return false;
     }
     // The call or meeting ended while the browser asked: nothing needs the microphone now.
-    if (!this.peers.size && !this.meeting) {
+    const ended = () => !this.peers.size && !this.meeting && !this.ringPeer;
+    if (ended()) {
       stream.getTracks().forEach((track) => track.stop());
       return false;
     }
+    const microphone = stream.getAudioTracks()[0] ?? null;
+    this.useMicrophone(microphone);
     this.local = stream;
-    this.voiceApplied = JSON.stringify(audioConstraints());
+    this.voiceApplied = voiceKey();
     stream.getAudioTracks().forEach((track) => (track.enabled = this.micEnabled));
     this.error = null;
+    if (microphone) void this.filterVoice(microphone);
     return true;
   }
 
@@ -1100,12 +1333,7 @@ class CallManager {
 
     let track: MediaStreamTrack;
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: {
-          ...CAMERA_CAPTURE,
-          deviceId: deviceConstraint(savedDevices().video),
-        },
-      });
+      const stream = await openPicked("video", CAMERA_CAPTURE, savedDevices().video);
       track = stream.getVideoTracks()[0];
     } catch {
       this.error = "camera";
@@ -1118,19 +1346,27 @@ class CallManager {
       track.stop();
       return !!local && this.cameraWanted && local.getVideoTracks().length > 0;
     }
+    this.watchCamera(track);
     local.addTrack(track);
     this.error = null;
     return true;
   }
 
+  /** Changes to the open microphone, one after another, so two never open it at once. */
+  private queueVoice(change: () => Promise<void>) {
+    this.voiceChange = this.voiceChange.then(change).catch((error) => console.warn("Microphone change failed", error));
+  }
+
   /**
-   * The voice settings, on a call already open. Chrome won't change its own
-   * processing on a microphone that is open, so the microphone opens again
-   * with the new settings, the call swaps to it, and the old one stops. Other settings don't touch the voice.
+   * The voice settings or the microphone picked, on a call already open. Chrome
+   * won't change its own processing on a microphone that is open, so the
+   * microphone opens again with the new settings, the call swaps to it, and the
+   * old one stops. Other settings don't touch the voice. `reopen` opens it again
+   * with nothing changed: the microphone in use went away.
    */
-  private async applyVoicePrefs() {
-    const key = JSON.stringify(audioConstraints());
-    if (key === this.voiceApplied) return;
+  private async applyVoicePrefs(reopen = false) {
+    const key = voiceKey();
+    if (key === this.voiceApplied && !reopen) return;
     this.voiceApplied = key;
     const local = this.local;
     if (!local?.getAudioTracks().length) return;
@@ -1138,11 +1374,10 @@ class CallManager {
     // The old microphone stops first: while it is open, Chrome gives a new
     // one the same processing, whatever it asks for. A moment of silence.
     local.getAudioTracks().forEach((track) => track.stop());
+    this.stopVoice();
     let fresh: MediaStream;
     try {
-      fresh = await navigator.mediaDevices.getUserMedia({
-        audio: { ...audioConstraints(), deviceId: deviceConstraint(savedDevices().audio) },
-      });
+      fresh = await openPicked("audio", audioConstraints(), savedDevices().audio);
     } catch {
       fresh = new MediaStream();
     }
@@ -1151,20 +1386,130 @@ class CallManager {
       fresh.getTracks().forEach((track) => track.stop());
       return;
     }
+    const microphone = fresh.getAudioTracks()[0] ?? null;
+    this.useMicrophone(microphone);
     this.local = new MediaStream([...fresh.getAudioTracks(), ...local.getVideoTracks()]);
-    if (!fresh.getAudioTracks().length) this.error = "media";
+    if (!microphone) this.error = "media";
     this.local.getAudioTracks().forEach((track) => (track.enabled = this.micEnabled));
     this.listenForVoice();
     this.shareTracks();
+    if (microphone) void this.filterVoice(microphone);
+  }
+
+  /** The filter starts loading while a call rings or a meeting is joined, when noise removal is on. */
+  private prepareVoice() {
+    if (prefs().noiseSuppression) prepareNoiseRemoval();
+  }
+
+  /** The microphone the call now has, watched for being unplugged. */
+  private useMicrophone(microphone: MediaStreamTrack | null) {
+    this.stopVoice();
+    this.microphone = microphone;
+    // Unplugged, or taken by the system: the call goes on with the default microphone.
+    microphone?.addEventListener("ended", () => {
+      if (this.microphone === microphone) this.queueVoice(() => this.applyVoicePrefs(true));
+    });
+  }
+
+  /**
+   * Noise removal, swapped in for the microphone once it runs. The call starts
+   * with the microphone as it is instead of waiting for the filter to load,
+   * which took 5 s or more on a first call. Muting then moves to the filtered
+   * track: the microphone under it must keep running for the filter to hear it.
+   */
+  private async filterVoice(microphone: MediaStreamTrack) {
+    if (!prefs().noiseSuppression) return;
+    const clean = await removeNoise(microphone);
+    if (!clean) return;
+    const local = this.local;
+    // Meanwhile the microphone was replaced, or the call ended: the filter isn't needed.
+    if (this.microphone !== microphone || microphone.readyState !== "live" || !local?.getAudioTracks().includes(microphone)) {
+      if (this.microphone === microphone && microphone.readyState === "live") clean.release();
+      else clean.stop();
+      return;
+    }
+    this.cleanVoice = clean;
+    clean.track.enabled = microphone.enabled;
+    microphone.enabled = true;
+    local.removeTrack(microphone);
+    local.addTrack(clean.track);
+    this.listenForVoice();
+    this.shareTracks();
+  }
+
+  private stopVoice() {
+    this.cleanVoice?.stop();
+    this.cleanVoice = null;
+  }
+
+  /**
+   * After a device came or went: the open microphone should be the one picked
+   * in settings when it's there, otherwise the system's default (Chrome lists
+   * it as "default", in the same group as the real device). Headphones plugged
+   * in become the default, and the call moves to their microphone.
+   */
+  private async followMicrophone() {
+    const microphone = this.microphone;
+    if (!microphone || microphone.readyState === "ended" || !this.local) return;
+    const inputs = (await navigator.mediaDevices.enumerateDevices().catch(() => [])).filter((device) => device.kind === "audioinput");
+    if (!inputs.length) return;
+    const { deviceId, groupId } = microphone.getSettings();
+    const picked = savedDevices().audio;
+    const target = inputs.find((device) => device.deviceId === picked) ?? inputs.find((device) => device.deviceId === "default");
+    if (!target) {
+      // No default listed (Safari, Firefox): only a microphone that's gone needs replacing.
+      if (deviceId && !inputs.some((device) => device.deviceId === deviceId)) await this.applyVoicePrefs(true);
+      return;
+    }
+    const same = target.deviceId === "default" ? !!groupId && target.groupId === groupId : target.deviceId === deviceId;
+    if (!same) await this.applyVoicePrefs(true);
+  }
+
+  /** The camera picked in settings, swapped in while the camera is on. */
+  private async switchCamera() {
+    const local = this.local;
+    const current = local?.getVideoTracks()[0];
+    const picked = savedDevices().video;
+    if (!local || !current || current.getSettings().deviceId === picked) return;
+    let track: MediaStreamTrack;
+    try {
+      // The old camera stops first: some cameras can't be open twice.
+      current.stop();
+      const stream = await openPicked("video", CAMERA_CAPTURE, picked);
+      track = stream.getVideoTracks()[0];
+    } catch {
+      local.removeTrack(current);
+      this.cameraEnabled = false;
+      this.error = "camera";
+      return this.shareTracks();
+    }
+    if (this.local !== local || !this.cameraWanted) {
+      track.stop();
+      return;
+    }
+    local.removeTrack(current);
+    this.watchCamera(track);
+    local.addTrack(track);
+    this.shareTracks();
+  }
+
+  /** A camera unplugged mid-call switches the camera off, as if you had. */
+  private watchCamera(track: MediaStreamTrack) {
+    track.addEventListener("ended", () => {
+      if (this.local?.getVideoTracks()[0] === track) void this.setCamera(false);
+    });
   }
 
   /** The call is over: everything stops, and the camera is off again for the next one. */
   private releaseMedia() {
     this.cameraEnabled = false;
     this.cameraWanted = false;
+    this.stopVoice();
     this.local?.getTracks().forEach((track) => track.stop());
     this.screen?.getTracks().forEach((track) => track.stop());
+    this.microphone = null;
     this.local = null;
+    this.watchMuted();
     this.screen = null;
   }
 
@@ -1175,15 +1520,17 @@ class CallManager {
       const { iceServers, expiresAt } = await api.iceServers();
       const first = !this.iceServers.length;
       this.iceServers = iceServers;
-      // A call that started before the first credentials came has nothing to
-      // relay through yet: hand them over and gather again.
+      // A call (or a ring) that started before the first credentials came has
+      // nothing to relay through yet: hand them over and gather again. Only the
+      // offerer can start that; the answerer asks it to.
       if (first) {
-        for (const peer of this.peers.values()) {
+        for (const peer of [...this.peers.values(), ...(this.ringPeer ? [this.ringPeer] : [])]) {
           peer.pc?.setConfiguration({
             iceServers: peer.widened ? iceServers : udpRelay(iceServers),
             iceTransportPolicy: RELAY_ONLY,
           });
-          peer.pc?.restartIce();
+          if (peer.offerer) peer.pc?.restartIce();
+          else this.send("signal", peer.id, { signal: { restart: true } });
         }
       }
       const refreshIn = Math.max(60_000, expiresAt - Date.now() - ICE_REFRESH_MARGIN_MS);
@@ -1305,6 +1652,7 @@ class CallManager {
       error: this.error,
       outcome: this.outcome,
       cameraRested: this.cameraRested,
+      talkingMuted: this.talkingMuted,
     };
     this.listeners.forEach((listener) => listener());
   }

@@ -5,7 +5,7 @@ export interface SfuTrack {
   mid?: string;
   sessionId?: string;
   trackName: string;
-  simulcast?: { preferredRid: string; priorityOrdering: "asciibetical"; ridNotAvailable: "asciibetical" };
+  simulcast?: { preferredRid: string; priorityOrdering: "none" | "asciibetical"; ridNotAvailable: "none" | "asciibetical" };
 }
 
 export interface TracksResponse {
@@ -35,11 +35,21 @@ export class SfuApi {
     return result.sessionId;
   }
 
+  /**
+   * Adds tracks to a session. Some can fail while others go through: each one
+   * comes back with its own `errorCode`, and the SFU's offer or answer covers
+   * the rest, so the caller decides; only a failed request as a whole throws.
+   */
   newTracks(sessionId: string, tracks: SfuTrack[], offerSdp?: string): Promise<TracksResponse> {
-    return this.request("POST", `/sessions/${sessionId}/tracks/new`, {
-      ...(offerSdp ? { sessionDescription: { type: "offer", sdp: offerSdp } } : {}),
-      tracks,
-    });
+    return this.request(
+      "POST",
+      `/sessions/${sessionId}/tracks/new`,
+      {
+        ...(offerSdp ? { sessionDescription: { type: "offer", sdp: offerSdp } } : {}),
+        tracks,
+      },
+      true,
+    );
   }
 
   async renegotiate(sessionId: string, answerSdp: string): Promise<void> {
@@ -61,7 +71,7 @@ export class SfuApi {
     });
   }
 
-  private async request<T>(method: string, path: string, body?: unknown): Promise<T> {
+  private async request<T>(method: string, path: string, body?: unknown, partial = false): Promise<T> {
     if (!this.appId || !this.secret) throw new SfuError("sfu_unavailable");
     const response = await fetch(`${API_BASE}/apps/${this.appId}${path}`, {
       method,
@@ -82,7 +92,7 @@ export class SfuApi {
       });
     }
     if (!response.ok || result.errorCode) throw new SfuError(result.errorCode ?? `sfu_http_${response.status}`);
-    if (trackError?.errorCode) throw new SfuError(trackError.errorCode);
+    if (trackError?.errorCode && !partial) throw new SfuError(trackError.errorCode);
     return result;
   }
 }

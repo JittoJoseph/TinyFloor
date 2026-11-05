@@ -100,6 +100,7 @@
   "call": {
     "incoming": "Dzwoni do ciebie",
     "onCall": "W rozmowie",
+    "connecting": "Łączenie...",
     "decline": "Odrzuć",
     "accept": "Odbierz",
     "calling": "Dzwonienie...",
@@ -127,6 +128,8 @@
     "status": "Status: {status}",
     "muteMic": "Wycisz mikrofon",
     "unmuteMic": "Włącz mikrofon",
+    "talkingMuted": "Masz wyciszony mikrofon",
+    "unmuteShort": "Włącz",
     "cameraOff": "Wyłącz kamerę",
     "cameraOn": "Włącz kamerę",
     "shareScreen": "Udostępnij ekran",

@@ -222,7 +222,8 @@ export interface MediaFlags {
 }
 
 export type SfuClientMessage =
-  | { op: "publish"; sdp: string; tracks: { mid: string; kind: MediaKind }[] }
+  /** `ranked`: the video's simulcast layers are named a, b, c from sharpest down. */
+  | { op: "publish"; sdp: string; tracks: { mid: string; kind: MediaKind; ranked?: true }[] }
   | { op: "unpublish"; kinds: MediaKind[] }
   | { op: "subscribe"; tracks: { userId: string; kind: MediaKind; quality?: VideoQuality }[] }
   | { op: "unsubscribe"; mids: string[] }
@@ -234,8 +235,11 @@ export type SfuClientMessage =
 
 export type SfuServerMessage =
   | { op: "published"; sdp: string }
-  /** The SFU wants to send new tracks: set this offer, then reply with `answer`. */
-  | { op: "offer"; sdp: string; tracks: { userId: string; kind: MediaKind; mid: string }[] }
+  /**
+   * The SFU wants to send new tracks: set this offer, then reply with `answer`.
+   * `failed`: tracks of the same request the SFU couldn't give (yet), to ask for again.
+   */
+  | { op: "offer"; sdp: string; tracks: { userId: string; kind: MediaKind; mid: string }[]; failed?: { userId: string; kind: MediaKind; code: string }[] }
   | { op: "tracks"; userId: string; kinds: MediaKind[] }
   | { op: "untracks"; userId: string; kinds: MediaKind[] }
   | { op: "gone"; userId: string }

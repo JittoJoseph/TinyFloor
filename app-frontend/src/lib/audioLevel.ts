@@ -1,5 +1,7 @@
+import { levelOf, type Level } from "./speech";
+
 /**
- * How loud a stream is right now, for showing who talks. Every listener shares
+ * How loud a stream is right now, for showing who talks (SpeechDetector). Every listener shares
  * one AudioContext, and it sleeps while nobody listens: a running context
  * keeps an audio thread busy for as long as the tab is open.
  */
@@ -7,8 +9,8 @@ let context: AudioContext | null = null;
 let listening = 0;
 
 export interface AudioLevel {
-  /** The waveform's peak, 0 to 128. */
-  peak(): number;
+  /** The last ~40 ms: RMS and crest (speech.ts). */
+  level(): Level;
   stop(): void;
 }
 
@@ -19,17 +21,15 @@ export function listenTo(stream: MediaStream): AudioLevel | null {
   context.resume().catch(() => {});
   const source = context.createMediaStreamSource(stream);
   const analyser = context.createAnalyser();
-  analyser.fftSize = 512;
+  analyser.fftSize = 2048;
   source.connect(analyser);
-  const samples = new Uint8Array(analyser.fftSize);
+  const samples = new Float32Array(analyser.fftSize);
   let stopped = false;
 
   return {
-    peak() {
-      analyser.getByteTimeDomainData(samples);
-      let peak = 0;
-      for (const value of samples) peak = Math.max(peak, Math.abs(value - 128));
-      return peak;
+    level() {
+      analyser.getFloatTimeDomainData(samples);
+      return levelOf(samples);
     },
     stop() {
       if (stopped) return;

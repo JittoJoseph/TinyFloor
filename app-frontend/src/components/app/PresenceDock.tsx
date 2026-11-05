@@ -29,6 +29,7 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
   const t = useTranslations("shell");
   const tStatus = useTranslations("status");
   const tControls = useTranslations("controls");
+  const tCall = useTranslations("call");
   const { user } = useAuth();
   const status = useMyStatus();
   const note = useMyNote();
@@ -39,6 +40,8 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
   const nameOf = useMeetingName();
   if (!user) return null;
   const inCall = peers.length > 0 || !!meeting;
+  // A call shows as on only once you can hear each other; until then, connecting.
+  const ready = !!meeting || peers.some((peer) => peer.connected);
   const canShareScreen = inCall && typeof navigator !== "undefined" && !!navigator.mediaDevices?.getDisplayMedia;
 
   return (
@@ -47,9 +50,11 @@ export function PresenceDock({ place, settingsHref }: { place: string; settingsH
         {inCall && (
           <div className="border-b border-border px-2.5 pb-2 pt-2">
             <div className="flex items-center gap-2">
-              <Signal />
+              <Signal ready={ready} />
               <div className="min-w-0 flex-1">
-                <p className="truncate text-[12.5px] font-semibold text-ok">{meeting ? t("inMeeting") : t("inCall")}</p>
+                <p className={cn("truncate text-[12.5px] font-semibold", ready ? "text-ok" : "text-muted-foreground")}>
+                  {meeting ? t("inMeeting") : ready ? t("inCall") : tCall("connecting")}
+                </p>
                 <p className="truncate text-[11.5px] text-muted-foreground">
                   {peers.length ? peers.map((peer) => peer.name).join(", ") : myMeeting ? nameOf(myMeeting, place) : place}
                 </p>
@@ -194,12 +199,12 @@ function PanelToggle({
   );
 }
 
-/** Three bars, for "your call is connected". */
-function Signal() {
+/** Three bars, for "your call is connected"; faint while it connects. */
+function Signal({ ready }: { ready: boolean }) {
   return (
-    <span className="flex h-3.5 items-end gap-[2px]" aria-hidden>
+    <span className={cn("flex h-3.5 items-end gap-[2px] transition-opacity", !ready && "opacity-35")} aria-hidden>
       {[5, 9, 14].map((height) => (
-        <span key={height} className="w-[3px] rounded-full bg-ok" style={{ height }} />
+        <span key={height} className={cn("w-[3px] rounded-full", ready ? "bg-ok" : "bg-muted-foreground")} style={{ height }} />
       ))}
     </span>
   );

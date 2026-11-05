@@ -31,6 +31,7 @@ import { MeetingPeople } from "./MeetingPeople";
 import { clock, useElapsed, useMeetingName } from "./hooks";
 import { VideoPausedNote } from "./MeetingHours";
 import { CameraRested } from "./CameraRested";
+import { MicMutedHint } from "./MicMutedHint";
 
 const GAP = 12;
 /** Cards are video-shaped, whether there's video in them or a face. */
@@ -297,7 +298,10 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
         <div ref={areaRef} className="relative min-h-0 min-w-0 flex-1">
           {area.width > 0 && stageView}
           <VideoPausedNote compact className="absolute inset-x-0 top-0 z-10 mx-auto w-fit max-w-[calc(100%-1.5rem)]" />
-          <CameraRested className="absolute inset-x-0 bottom-2 z-10 mx-auto w-fit" />
+          <div className="absolute inset-x-0 bottom-2 z-10 mx-auto flex w-fit flex-col items-center gap-2">
+            <MicMutedHint />
+            <CameraRested />
+          </div>
         </div>
         {/* The people, beside the stage: it slides open and the stage makes room. */}
         <AnimatePresence initial={false}>

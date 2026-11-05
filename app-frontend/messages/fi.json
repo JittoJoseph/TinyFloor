@@ -100,6 +100,7 @@
   "call": {
     "incoming": "Soittaa sinulle",
     "onCall": "Puhelussa",
+    "connecting": "Yhdistetään...",
     "decline": "Hylkää",
     "accept": "Vastaa",
     "calling": "Soitetaan...",
@@ -127,6 +128,8 @@
     "status": "Tila: {status}",
     "muteMic": "Mykistä mikrofoni",
     "unmuteMic": "Poista mikrofonin mykistys",
+    "talkingMuted": "Mikrofonisi on mykistetty",
+    "unmuteShort": "Poista mykistys",
     "cameraOff": "Sammuta kamera",
     "cameraOn": "Käynnistä kamera",
     "shareScreen": "Jaa näyttö",

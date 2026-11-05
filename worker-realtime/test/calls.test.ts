@@ -35,9 +35,17 @@ describe("peer-to-peer call signalling", () => {
 
 describe("meetings through the SFU", () => {
   let sfuRequests: { method: string; path: string; body: Record<string, unknown> | null }[];
+  /** How long the SFU takes over an answer, and when each one was done. */
+  let renegotiateMs = 0;
+  let answered: number[];
+  /** A track the SFU says isn't live yet, when asked for. */
+  let missing: string | null = null;
 
   beforeEach(() => {
     sfuRequests = [];
+    renegotiateMs = 0;
+    answered = [];
+    missing = null;
     let sessions = 0;
     const realFetch = globalThis.fetch;
     vi.spyOn(globalThis, "fetch").mockImplementation(async (input, init) => {
@@ -46,10 +54,18 @@ describe("meetings through the SFU", () => {
       const path = new URL(request.url).pathname.replace("/v1/apps/test-app", "");
       const body = request.method === "GET" ? null : ((await request.json().catch(() => null)) as Record<string, unknown> | null);
       sfuRequests.push({ method: request.method, path, body });
+      if (path.endsWith("/renegotiate")) {
+        await new Promise((resolve) => setTimeout(resolve, renegotiateMs));
+        answered.push(sfuRequests.length);
+      }
 
       if (path === "/sessions/new") return Response.json({ sessionId: `session-${++sessions}` }, { status: 201 });
       if (path.endsWith("/tracks/new")) {
-        const tracks = (body?.tracks as { location: string }[]).map((track, index) => ({ ...track, mid: String(index) }));
+        const tracks = (body?.tracks as { location: string; trackName: string }[]).map((track, index) =>
+          track.location === "remote" && track.trackName === missing
+            ? { ...track, errorCode: "not_found_track_error", errorDescription: "Track not found on remote peer" }
+            : { ...track, mid: String(index) },
+        );
         const remote = tracks.some((track) => track.location === "remote");
         return Response.json({
           requiresImmediateRenegotiation: remote,
@@ -213,6 +229,76 @@ describe("meetings through the SFU", () => {
     await ben.next("sfu");
     const subscribe = sfuRequests.find((request) => request.path === "/sessions/session-2/tracks/new");
     expect((subscribe?.body?.tracks as { simulcast: { preferredRid: string } }[])[0].simulcast.preferredRid).toBe("m");
+  });
+
+  it("asks for ranked layers by their names, so the SFU steps down through them in order", async () => {
+    const { ava, avaId, ben } = await seated();
+    ava.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "camera", ranked: true }] });
+    await ben.next("sfu");
+    ben.messages.length = 0;
+    ben.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "camera", quality: "medium" }] });
+    await ben.next("sfu");
+    const subscribe = sfuRequests.find((request) => request.path === "/sessions/session-2/tracks/new");
+    expect((subscribe?.body?.tracks as { simulcast: unknown }[])[0].simulcast).toEqual({ preferredRid: "b", priorityOrdering: "asciibetical", ridNotAvailable: "asciibetical" });
+
+    ben.send({ t: "sfu", op: "answer", sdp: "client-answer" });
+    ben.send({ t: "sfu", op: "quality", userId: avaId, kind: "camera", mid: "0", quality: "high" });
+    await vi.waitFor(() => {
+      expect(sfuRequests.find((request) => request.path.endsWith("/tracks/update"))?.body?.tracks).toEqual([
+        expect.objectContaining({ simulcast: expect.objectContaining({ preferredRid: "a" }) }),
+      ]);
+    }, { timeout: 5000 });
+  });
+
+  it("keeps a shared screen on the layer asked for, whatever the SFU thinks of the bandwidth", async () => {
+    const { ava, avaId, ben } = await seated();
+    ava.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "screen", ranked: true }] });
+    await ben.next("sfu");
+    ben.messages.length = 0;
+    ben.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "screen", quality: "high" }] });
+    await ben.next("sfu");
+    const subscribe = sfuRequests.find((request) => request.path === "/sessions/session-2/tracks/new");
+    expect((subscribe?.body?.tracks as { simulcast: unknown }[])[0].simulcast).toEqual({ preferredRid: "a", priorityOrdering: "none", ridNotAvailable: "none" });
+  });
+
+  it("gives the SFU an answer before the next request from the same person", async () => {
+    const { ava, avaId, ben } = await seated();
+    const offerFor = (kind: string) =>
+      vi.waitFor(() => {
+        const offer = ben.messages.find((message) => message.t === "sfu" && message.op === "offer" && message.tracks[0]?.kind === kind);
+        if (!offer) throw new Error(`no offer for the ${kind} yet`);
+        return offer;
+      }, { timeout: 3000 });
+    ava.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "mic" }, { mid: "1", kind: "camera", ranked: true }] });
+    await ben.next("sfu");
+    ben.messages.length = 0;
+    ben.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "mic" }] });
+    await offerFor("mic");
+    renegotiateMs = 300;
+    // Back to back, as the browser sends them.
+    ben.send({ t: "sfu", op: "answer", sdp: "client-answer" });
+    ben.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "camera", quality: "high" }] });
+    await offerFor("camera");
+    const asked = sfuRequests.findLastIndex((request) => request.path === "/sessions/session-2/tracks/new");
+    expect(answered).toHaveLength(1);
+    // The answer was done (with nothing asked of the SFU since) before the camera was asked for.
+    expect(answered[0]).toBeLessThanOrEqual(asked);
+  });
+
+  it("offers what the SFU could give and names the rest, when only some tracks are live", async () => {
+    const { ava, avaId, ben } = await seated();
+    ava.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "mic" }, { mid: "1", kind: "camera", ranked: true }] });
+    await ben.next("sfu");
+    ben.messages.length = 0;
+    missing = "camera";
+    ben.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "mic" }, { userId: avaId, kind: "camera", quality: "low" }] });
+    expect(await ben.next("sfu")).toEqual({
+      t: "sfu",
+      op: "offer",
+      sdp: "sfu-offer",
+      tracks: [{ userId: avaId, kind: "mic", mid: "0" }],
+      failed: [{ userId: avaId, kind: "camera", code: "not_found_track_error" }],
+    });
   });
 
   it("caps how much video one person is sent at once", async () => {

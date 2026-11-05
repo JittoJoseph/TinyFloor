@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { listenTo } from "./audioLevel";
+import { SpeechDetector } from "./speech";
 
-const SAMPLE_EVERY = 100;
-const LOUD = 14;
-const HOLD = 4;
+const SAMPLE_EVERY = 50;
+/** Held this long after the voice stops, so the outline doesn't flicker between words. */
+const HOLD_MS = 400;
 
-/** True while a stream carries voice, held briefly so the outline does not flicker between words. */
+/** True while a stream carries voice (SpeechDetector), held briefly so the outline does not flicker between words. */
 export function useSpeaking(stream: MediaStream | null, enabled: boolean) {
   const [speaking, setSpeaking] = useState(false);
   const tracks = stream?.getAudioTracks().length ?? 0;
@@ -16,15 +17,13 @@ export function useSpeaking(stream: MediaStream | null, enabled: boolean) {
     const level = stream && enabled && tracks ? listenTo(stream) : null;
     if (!level) return;
 
-    let hold = 0;
-    const timer = setInterval(() => {
-      hold = level.peak() > LOUD ? HOLD : Math.max(hold - 1, 0);
-      setSpeaking(hold > 0);
-    }, SAMPLE_EVERY);
+    const detector = new SpeechDetector({ stopAfterMs: HOLD_MS });
+    const timer = setInterval(() => setSpeaking(detector.push(level.level(), performance.now())), SAMPLE_EVERY);
 
     return () => {
       clearInterval(timer);
       level.stop();
+      setSpeaking(false);
     };
   }, [stream, enabled, tracks]);
 

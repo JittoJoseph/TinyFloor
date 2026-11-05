@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Loader2 } from "@/components/ui/icons";
+import { Loader2 } from "web-shared/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
-import { api, type TeamOffice } from "@/lib/api";
+import { api, type TeamOffice } from "web-shared/lib/api";
 import { officePath } from "@/lib/links";
 import { openOfficeAhead } from "@/lib/officeAhead";
-import { track } from "@/lib/analytics";
-import { Face, FaceStack } from "@/components/ui/Face";
-import { cn } from "@/lib/utils";
+import { track } from "web-shared/lib/analytics";
+import { Face, FaceStack } from "web-shared/components/ui/Face";
+import { cn } from "web-shared/lib/utils";
 
 export interface Team {
   domain: string;

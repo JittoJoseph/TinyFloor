@@ -15,17 +15,17 @@ import {
   Users,
   Video,
   VideoOff,
-} from "@/components/ui/icons";
-import type { MeetingInfo, MeetingPerson } from "@shared/messages";
+} from "web-shared/components/ui/icons";
+import type { MeetingInfo, MeetingPerson } from "shared-protocol/messages";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePrefs } from "@/lib/prefs";
 import { SPRING_LAYOUT } from "@/lib/ease";
 import { IconButton } from "@/components/ui/IconButton";
-import { FaceStack } from "@/components/ui/Face";
+import { FaceStack } from "web-shared/components/ui/Face";
 import { bezel, onBezel } from "@/components/ui/bezel";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { MeetingTile } from "./MeetingTile";
 import { MeetingPeople } from "./MeetingPeople";
 import { clock, useElapsed, useMeetingName } from "./hooks";

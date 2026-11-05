@@ -1,1 +1,1 @@
-export { default } from "@/shell/not-found";
+export { default } from "web-shared/shell/not-found";

@@ -1,5 +1,5 @@
-import type { GuideSection } from "@/lib/guides";
-import type { Locale } from "@/lib/i18n/routing";
+import type { GuideSection } from "web-shared/lib/guides";
+import type { Locale } from "web-shared/lib/i18n/routing";
 import ar from "@/lib/tools/office-cost-copy/ar";
 import da from "@/lib/tools/office-cost-copy/da";
 import de from "@/lib/tools/office-cost-copy/de";

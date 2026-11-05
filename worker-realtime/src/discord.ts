@@ -1,4 +1,4 @@
-import type { Whereabouts } from "../../shared-protocol/src";
+import type { Whereabouts } from "shared-protocol";
 
 /** Discord allows about 30 requests a minute per webhook; each sender keeps well under that. */
 const EVENTS_PER_MINUTE = 20;

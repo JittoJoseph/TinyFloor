@@ -1,11 +1,11 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ArrowUpRight, Play } from "@/components/ui/icons";
-import { spotifyUri, type SpotifyShare } from "@shared/spotify";
+import { ArrowUpRight, Play } from "web-shared/components/ui/icons";
+import { spotifyUri, type SpotifyShare } from "shared-protocol/spotify";
 import { useCloseMenu } from "@/components/ui/Menu";
 import { playMusic, useMusic } from "@/lib/music";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /** Spotify's own mark, as its brand guidelines ask: whole, unaltered, in its green or in one plain colour. */
 export function SpotifyMark({ className }: { className?: string }) {

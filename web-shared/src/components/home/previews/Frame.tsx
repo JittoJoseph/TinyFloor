@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Chats, Floor, Gear, People, type AppIcon } from "@/components/ui/icons";
-import { Face } from "@/components/ui/Face";
-import { cn } from "@/lib/utils";
+import { Chats, Floor, Gear, People, type AppIcon } from "../../ui/icons";
+import { Face } from "../../ui/Face";
+import { cn } from "../../../lib/utils";
 
 export type PreviewView = "floor" | "chat" | "people" | "meeting";
 

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import type { Locale } from "@/lib/i18n/routing";
+import type { Locale } from "web-shared/lib/i18n/routing";
 import { LegalPage } from "@/components/legal/LegalPage";
 import { Linked } from "@/components/legal/Linked";
-import { JsonLd } from "@/components/JsonLd";
+import { JsonLd } from "web-shared/components/JsonLd";
 import { englishOnlyMetadata } from "@/lib/englishOnlyMetadata";
-import { faqNode, pageGraph } from "@/lib/structured-data";
+import { faqNode, pageGraph } from "web-shared/lib/structured-data";
 import {
   HOW_IT_WORKS,
   HOW_IT_WORKS_DESCRIPTION,

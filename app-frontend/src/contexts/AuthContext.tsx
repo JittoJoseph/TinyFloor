@@ -1,16 +1,16 @@
 "use client";
 
 import React, { createContext, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { analyticsConfigured, withPostHog } from "@/lib/analytics";
-import { api, type ProfileChanges, type SessionUser } from "@/lib/api";
+import { analyticsConfigured, withPostHog } from "web-shared/lib/analytics";
+import { api, type ProfileChanges, type SessionUser } from "web-shared/lib/api";
 import { readIdentity } from "@/lib/identity";
 import { browserZone } from "@/lib/timeZone";
 import { setMusicOwner } from "@/lib/music";
 import { adoptMyNote } from "@/lib/floor";
 import { handTicket } from "@/lib/handedTicket";
 import { posthogLog } from "@/lib/posthog-log";
-import { recallSession, rememberSession } from "@/lib/session-hint";
-import { rememberAccount } from "@/lib/accountHint";
+import { recallSession, rememberSession } from "web-shared/lib/session-hint";
+import { rememberAccount } from "web-shared/lib/accountHint";
 
 interface AuthContextType {
   user: SessionUser | null;

@@ -1,8 +1,8 @@
 "use client";
 
 import { motion, useReducedMotion } from "motion/react";
-import { cn } from "@/lib/utils";
-import { Face } from "@/components/ui/Face";
+import { cn } from "web-shared/lib/utils";
+import { Face } from "web-shared/components/ui/Face";
 
 /**
  * A face (or an office's mark) large, lit softly in its own colour on the

@@ -1,17 +1,17 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Headphones, HeadphoneOff, Mic, MicOff, MonitorUp, MonitorX, PhoneOff, Settings, Video } from "@/components/ui/icons";
+import { Headphones, HeadphoneOff, Mic, MicOff, MonitorUp, MonitorX, PhoneOff, Settings, Video } from "web-shared/components/ui/icons";
 import { Link } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { useMyNote, useMyStatus } from "@/lib/floor";
 import { NoteText } from "./StatusNote";
-import { Face, FaceStack } from "@/components/ui/Face";
+import { Face, FaceStack } from "web-shared/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
 import { Tooltip } from "@/components/motion/tooltip";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { useMeetingName, useMyMeeting } from "@/components/meetings/hooks";
 import { useDockHoldsYou } from "./AppShell";
 import { YouMenu } from "./YouMenu";

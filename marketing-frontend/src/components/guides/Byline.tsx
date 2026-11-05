@@ -1,4 +1,4 @@
-import { AUTHOR } from "@/lib/site";
+import { AUTHOR } from "web-shared/lib/site";
 
 /**
  * "By Jitto Joseph" in the page's language, the name linking to LinkedIn

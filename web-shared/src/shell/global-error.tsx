@@ -1,7 +1,7 @@
 "use client";
 
 import NextError from "next/error";
-import { withPostHog } from "@/lib/analytics";
+import { withPostHog } from "../lib/analytics";
 import { useEffect } from "react";
 
 export default function GlobalError({

@@ -4,7 +4,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { createContext, useContext, useId, useMemo, type ReactNode } from "react";
 import { SPRING_LAYOUT } from "@/lib/ease";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 type DockContextValue = {
   size: number;

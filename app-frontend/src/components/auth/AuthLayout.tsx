@@ -2,9 +2,9 @@
 
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowLeft } from "@/components/ui/icons";
+import { ArrowLeft } from "web-shared/components/ui/icons";
 import { Link } from "@/lib/i18n/navigation";
-import { Logo } from "@/components/app/Logo";
+import { Logo } from "web-shared/components/app/Logo";
 import { useSitePage } from "@/lib/links";
 
 /**

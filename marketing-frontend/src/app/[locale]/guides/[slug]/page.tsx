@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import type { Locale } from "@/lib/i18n/routing";
-import { pageMetadata } from "@/lib/seo";
-import { GUIDES, guideBySlug, guideLocales, guidePath } from "@/lib/guides";
+import type { Locale } from "web-shared/lib/i18n/routing";
+import { pageMetadata } from "web-shared/lib/seo";
+import { GUIDES, guideBySlug, guideLocales, guidePath } from "web-shared/lib/guides";
 import { guideCopy } from "@/lib/guide-copy";
 import { GuidePage } from "@/components/guides/GuidePage";
 

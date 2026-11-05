@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { costsFor, usd, type Billing, type OfficeCostsContent } from "@/lib/tools/office-costs";
 
 const fill = (template: string, values: Record<string, string | number>) =>

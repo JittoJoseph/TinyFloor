@@ -21,17 +21,17 @@ import {
   Scissors,
   Shirt,
   Smile,
-} from "@/components/ui/icons";
+} from "web-shared/components/ui/icons";
 import { Button } from "@/components/motion/button/base";
-import { PixelAvatar, type AvatarDirection } from "@/components/PixelAvatar";
+import { PixelAvatar, type AvatarDirection } from "web-shared/components/PixelAvatar";
 import { CharacterStage } from "./CharacterStage";
 import { useAuth } from "@/contexts/AuthContext";
 import { changeLookOnFloor } from "@/lib/floor";
 import { saveIdentity } from "@/lib/identity";
-import { track } from "@/lib/analytics";
+import { track } from "web-shared/lib/analytics";
 import { EASE_OUT, SPRING_LAYOUT } from "@/lib/ease";
 import { useErrorMessage } from "@/lib/useErrorMessage";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import {
   CHARACTER_CATALOG,
   PRESETS,
@@ -41,7 +41,7 @@ import {
   lookString,
   randomLook,
   type CharacterPart,
-} from "@shared/character";
+} from "shared-protocol/character";
 
 /** What the creator shows, a category each, as the app's rail shows its places: whole characters, then the parts. */
 const CATEGORIES = [

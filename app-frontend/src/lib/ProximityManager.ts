@@ -1,8 +1,8 @@
 import * as Phaser from "phaser";
 import { PlayerManager } from "./PlayerManager";
 import { toCss } from "./plates";
-import { TILE_SIZE } from "@/lib/types";
-import type { StatusNote } from "@shared/messages";
+import { TILE_SIZE } from "web-shared/lib/types";
+import type { StatusNote } from "shared-protocol/messages";
 
 const PROXIMITY_RADIUS = 2.5 * TILE_SIZE;
 const DWELL_TIME = 1000;

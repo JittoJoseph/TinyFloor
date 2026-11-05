@@ -1,6 +1,6 @@
 import { exports } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
-import { CloseCode } from "../../shared-protocol/src";
+import { CloseCode } from "shared-protocol";
 import { Client, uniqueRoom } from "./client";
 
 const admin = exports.RealtimeAdmin;

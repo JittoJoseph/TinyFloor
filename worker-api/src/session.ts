@@ -1,4 +1,4 @@
-import type { NoteIcon, SpotifyShare, StatusNote } from "../../shared-protocol/src";
+import type { NoteIcon, SpotifyShare, StatusNote } from "shared-protocol";
 import { shareFrom } from "./spotify";
 import { hashToken, randomToken } from "./crypto";
 import { HttpError } from "./http";

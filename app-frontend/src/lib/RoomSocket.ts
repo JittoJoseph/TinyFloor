@@ -1,5 +1,5 @@
-import { CloseCode, HEARTBEAT_PING, HEARTBEAT_PONG, type ClientMessage, type ServerMessage } from "@shared/messages";
-import { ApiError, type RoomTicket } from "@/lib/api";
+import { CloseCode, HEARTBEAT_PING, HEARTBEAT_PONG, type ClientMessage, type ServerMessage } from "shared-protocol/messages";
+import { ApiError, type RoomTicket } from "web-shared/lib/api";
 import { floorStep } from "@/lib/floor";
 
 const HEARTBEAT_MS = 30_000;

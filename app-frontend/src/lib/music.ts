@@ -1,8 +1,8 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { SPOTIFY_REFRESH_MS, spotifyUri, type SpotifyShare } from "@shared/spotify";
-import { api } from "@/lib/api";
+import { SPOTIFY_REFRESH_MS, spotifyUri, type SpotifyShare } from "shared-protocol/spotify";
+import { api } from "web-shared/lib/api";
 import { forgetPerson } from "@/lib/people";
 
 /** Something to play: a song, album, playlist, podcast or artist, or a Jam (which plays in Spotify). */

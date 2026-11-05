@@ -1,7 +1,7 @@
 "use client";
 
 import { useLayoutEffect } from "react";
-import { applyTheme, clearTheme } from "@/lib/theme";
+import { applyTheme, clearTheme } from "../../lib/theme";
 
 /**
  * The home page wears the app's theme (light, dark or the system's). The

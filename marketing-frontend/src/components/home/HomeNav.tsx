@@ -25,19 +25,19 @@ import {
   UserPlus,
   UsersRound,
   Zap,
-} from "@/components/ui/icons";
+} from "web-shared/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import { GUIDES_PATH, guideCover, guidePath, guidesIn, type GuideKey } from "@/lib/guides";
+import { GUIDES_PATH, guideCover, guidePath, guidesIn, type GuideKey } from "web-shared/lib/guides";
 import { guideCopies } from "@/lib/guide-copy";
-import { HUBS, LANDINGS, landingByKey, type Landing, type LandingKey } from "@/lib/landings";
-import type { Locale } from "@/lib/i18n/routing";
+import { HUBS, LANDINGS, landingByKey, type Landing, type LandingKey } from "web-shared/lib/landings";
+import type { Locale } from "web-shared/lib/i18n/routing";
 import { STANDUP_PATH, TOOLS_PATH } from "@/lib/tools/catalog";
 import { FEW_TOOL_NAMES } from "@/lib/tools/hub-copy";
 import { ICEBREAKERS_PATH } from "@/lib/tools/icebreakers";
 import { OFFICE_COSTS_PATH } from "@/lib/tools/office-costs";
 import { TIME_ZONES_PATH } from "@/lib/tools/time-zones";
-import { Logo } from "@/components/app/Logo";
-import { cn } from "@/lib/utils";
+import { Logo } from "web-shared/components/app/Logo";
+import { cn } from "web-shared/lib/utils";
 import { HomeNavActions } from "./HomeNavActions";
 import { MobileMenu, MobileSection } from "./MobileMenu";
 import { Later } from "./Later";

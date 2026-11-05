@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
-import type { Locale } from "@/lib/i18n/routing";
+import type { Locale } from "web-shared/lib/i18n/routing";
 import { OfficeShell } from "@/components/app/OfficeShell";
 
 // Private to the office's members: nothing here belongs in a search index or

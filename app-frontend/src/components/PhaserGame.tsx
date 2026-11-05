@@ -4,8 +4,8 @@ import { useEffect, useEffectEvent, useRef } from "react";
 import { useTranslations } from "next-intl";
 import * as Phaser from "phaser";
 import GameScene from "../scenes/GameScene";
-import { drawFloor } from "@shared/map";
-import type { RoomTicket } from "@/lib/api";
+import { drawFloor } from "shared-protocol/map";
+import type { RoomTicket } from "web-shared/lib/api";
 import { setSceneText } from "@/lib/sceneText";
 import { prefs } from "@/lib/prefs";
 

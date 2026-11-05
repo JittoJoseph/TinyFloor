@@ -1,6 +1,6 @@
-import type { RoomTicket } from "@/lib/api";
-import atlas from "@shared/catalog/atlas.json";
-import { PRESETS, characterLayers } from "@shared/character";
+import type { RoomTicket } from "web-shared/lib/api";
+import atlas from "shared-protocol/catalog/atlas.json";
+import { PRESETS, characterLayers } from "shared-protocol/character";
 import { floorWalls } from "./floorWalls";
 
 /**

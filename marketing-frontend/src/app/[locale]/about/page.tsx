@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowUpRight, Mail } from "@/components/ui/icons";
-import type { Locale } from "@/lib/i18n/routing";
-import { pageMetadata } from "@/lib/seo";
-import { ORG_ID, pageGraph } from "@/lib/structured-data";
-import { AUTHOR, SOCIALS } from "@/lib/site";
-import { JsonLd } from "@/components/JsonLd";
+import { ArrowUpRight, Mail } from "web-shared/components/ui/icons";
+import type { Locale } from "web-shared/lib/i18n/routing";
+import { pageMetadata } from "web-shared/lib/seo";
+import { ORG_ID, pageGraph } from "web-shared/lib/structured-data";
+import { AUTHOR, SOCIALS } from "web-shared/lib/site";
+import { JsonLd } from "web-shared/components/JsonLd";
 import { COLUMN, CJK_HEADLINE, Closing, LEAD, MarketingShell } from "@/components/home/Blocks";
 import { GitHubMark } from "@/components/home/SiteFooter";
-import { FloorScene } from "@/components/floor/FloorScene";
+import { FloorScene } from "web-shared/components/floor/FloorScene";
 import { EVERYONE } from "@/components/floor/scenes";
 import { SUPPORT_EMAIL } from "@/components/legal/LegalPage";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 type Props = { params: Promise<{ locale: string }> };
 

@@ -4,16 +4,16 @@ import { useEffect, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { LogOut, MessageSquare, Phone, PhoneMissed, PhoneOff, Video, X } from "@/components/ui/icons";
+import { LogOut, MessageSquare, Phone, PhoneMissed, PhoneOff, Video, X } from "web-shared/components/ui/icons";
 import { callManager, type CallOutcome, type MeetingInvite, type MeetingNotice } from "@/lib/CallManager";
 import { useRouter } from "@/lib/i18n/navigation";
 import { usePlace } from "@/components/app/place";
 import { useCall } from "@/lib/useCall";
 import { SPRING_PANEL } from "@/lib/ease";
-import { Face } from "@/components/ui/Face";
+import { Face } from "web-shared/components/ui/Face";
 import { bezel, bezelPanel, onBezel } from "@/components/ui/bezel";
 import { OPEN_CONVERSATION_EVENT } from "./ProximityActions";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /**
  * The ring, on both ends, in the doors' bezel: whoever is calling you, with

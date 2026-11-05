@@ -3,15 +3,15 @@
 import { useCallback, useEffect, useRef, useState, type KeyboardEvent, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
-import { isDm, isPicture, isVoice, type ChatMessage } from "@shared/chat";
+import { isDm, isPicture, isVoice, type ChatMessage } from "shared-protocol/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { chat } from "@/lib/ChatSocket";
-import { Face } from "@/components/ui/Face";
-import { ArrowUp, Check, Mic, Paperclip, X } from "@/components/ui/icons";
+import { Face } from "web-shared/components/ui/Face";
+import { ArrowUp, Check, Mic, Paperclip, X } from "web-shared/components/ui/icons";
 import { usePrefs } from "@/lib/prefs";
 import { SPRING_LAYOUT, SPRING_SWAP } from "@/lib/ease";
 import { TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT, waveAt } from "@/lib/floor";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /*
  * What's worth a glance while you're on the floor (docs/product.md): a message

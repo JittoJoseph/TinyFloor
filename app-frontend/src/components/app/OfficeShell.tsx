@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError, type Office, type OfficeOverview } from "@/lib/api";
+import { api, ApiError, type Office, type OfficeOverview } from "web-shared/lib/api";
 import { homePath, leftPath, officeChatPath, officeMeetingsPath, officePath, officePeoplePath, officeSettingsPath } from "@/lib/links";
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
@@ -26,15 +26,15 @@ import { FloorNudges } from "./FloorNudges";
 import { DesktopAlerts } from "./DesktopAlerts";
 import { WelcomeNote } from "./WelcomeNote";
 import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
-import { dmChannelId, dmMembers } from "@shared/chat";
+import { dmChannelId, dmMembers } from "shared-protocol/chat";
 import { conversationToOpen } from "@/lib/chatMemory";
 import { useWide } from "@/lib/hooks/use-wide";
 import { forgetOffice, rememberOffice } from "@/lib/lastOffice";
 import { clearOfficeAhead, officeAhead } from "@/lib/officeAhead";
 import { useAppUpdates } from "@/lib/updates";
-import { withPostHog } from "@/lib/analytics";
+import { withPostHog } from "web-shared/lib/analytics";
 import { earlyTicket, warmFloor } from "@/lib/floorWarmup";
-import { warmPlans } from "@/lib/billing";
+import { warmPlans } from "web-shared/lib/billing";
 
 interface OfficeContext {
   office: Office;

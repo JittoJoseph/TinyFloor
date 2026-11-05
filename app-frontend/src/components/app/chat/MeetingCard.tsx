@@ -1,10 +1,10 @@
 "use client";
 
 import { useFormatter, useTranslations } from "next-intl";
-import { MAIN_MEETING } from "@shared/messages";
-import type { ChatMeeting } from "@shared/chat";
-import { Check, Video } from "@/components/ui/icons";
-import { FaceStack } from "@/components/ui/Face";
+import { MAIN_MEETING } from "shared-protocol/messages";
+import type { ChatMeeting } from "shared-protocol/chat";
+import { Check, Video } from "web-shared/components/ui/icons";
+import { FaceStack } from "web-shared/components/ui/Face";
 import { callManager } from "@/lib/CallManager";
 import { useMeetings } from "@/lib/meetings";
 import { clock, useElapsed, useMeetingName, useMyMeeting } from "@/components/meetings/hooks";

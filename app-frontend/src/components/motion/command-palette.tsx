@@ -2,7 +2,7 @@
 // beui.dev/components/blocks/command-palette
 
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Search, type AppIcon } from "@/components/ui/icons";
+import { Search, type AppIcon } from "web-shared/components/ui/icons";
 import {
   type ReactNode,
   useCallback,
@@ -18,7 +18,7 @@ import { useOnOpen } from "@/lib/hooks/use-on-open";
 import { useRowCursor } from "@/lib/hooks/use-row-cursor";
 import { useTouchCapable } from "@/lib/hooks/use-touch-capable";
 import { PresenceGate } from "@/lib/presence-gate";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { searchCommands } from "@/lib/command-search";
 
 export type CommandItem = {

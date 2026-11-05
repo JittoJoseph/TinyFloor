@@ -1,5 +1,5 @@
 import { redirect } from "@/lib/i18n/navigation";
-import type { Locale } from "@/lib/i18n/routing";
+import type { Locale } from "web-shared/lib/i18n/routing";
 import { homePath } from "@/lib/links";
 
 // There is no dashboard: the app opens on your office's floor, and an old

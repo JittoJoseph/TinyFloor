@@ -1,6 +1,6 @@
 "use client";
 
-import { HEARTBEAT_PING, HEARTBEAT_PONG } from "@shared/messages";
+import { HEARTBEAT_PING, HEARTBEAT_PONG } from "shared-protocol/messages";
 import {
   GENERAL_CHANNEL,
   REPLY_SNIPPET,
@@ -14,11 +14,11 @@ import {
   type ChatServerMessage,
   isDm,
   isVoice,
-} from "@shared/chat";
-import type { RoomTicket } from "@/lib/api";
+} from "shared-protocol/chat";
+import type { RoomTicket } from "web-shared/lib/api";
 import { playSound } from "./sounds";
 import { help } from "./help";
-import { track } from "@/lib/analytics";
+import { track } from "web-shared/lib/analytics";
 import { lastConversation } from "./chatMemory";
 
 const HEARTBEAT_MS = 30_000;

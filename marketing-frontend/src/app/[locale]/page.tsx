@@ -1,9 +1,9 @@
 import React from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { localizedMetadata } from "@/lib/seo";
-import { MORE_FEATURES, appNode, faqNode, pageGraph } from "@/lib/structured-data";
-import { JsonLd } from "@/components/JsonLd";
-import type { Locale } from "@/lib/i18n/routing";
+import { localizedMetadata } from "web-shared/lib/seo";
+import { MORE_FEATURES, appNode, faqNode, pageGraph } from "web-shared/lib/structured-data";
+import { JsonLd } from "web-shared/components/JsonLd";
+import type { Locale } from "web-shared/lib/i18n/routing";
 import { HomePage } from "@/components/home/HomePage";
 
 type Props = { params: Promise<{ locale: string }> };

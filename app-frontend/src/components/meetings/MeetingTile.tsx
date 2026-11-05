@@ -1,9 +1,9 @@
 "use client";
 
 import { memo, useEffect, useRef, type CSSProperties } from "react";
-import { MicOff, MonitorUp, Pin, PinOff } from "@/components/ui/icons";
-import { faceBackground } from "@/components/ui/Face";
-import { cn } from "@/lib/utils";
+import { MicOff, MonitorUp, Pin, PinOff } from "web-shared/components/ui/icons";
+import { faceBackground } from "web-shared/components/ui/Face";
+import { cn } from "web-shared/lib/utils";
 
 /**
  * One person in a meeting, the way Meet draws them: their camera when it's

@@ -1,4 +1,4 @@
-import type { Locale } from "@/lib/i18n/routing";
+import type { Locale } from "web-shared/lib/i18n/routing";
 import type { IcebreakersContent } from "@/lib/tools/icebreakers";
 import ar from "./ar";
 import da from "./da";

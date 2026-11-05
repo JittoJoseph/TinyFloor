@@ -1,5 +1,5 @@
 import { useSyncExternalStore } from "react";
-import type { PieceChange, PieceChanges } from "@shared/office";
+import type { PieceChange, PieceChanges } from "shared-protocol/office";
 
 /**
  * What people have made of their desks in this office (docs/customization.md),

@@ -1,4 +1,4 @@
-import { LOBBY_COPY_CAPACITY } from "../../shared-protocol/src";
+import { LOBBY_COPY_CAPACITY } from "shared-protocol";
 
 /** The most copies the lobby opens; past this, the last one turns people away as full. */
 const MAX_COPIES = 50;

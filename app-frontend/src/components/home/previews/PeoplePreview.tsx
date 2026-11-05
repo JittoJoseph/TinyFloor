@@ -1,8 +1,8 @@
 import { useTranslations } from "next-intl";
-import { Footprints, MessageSquare, UserPlus } from "@/components/ui/icons";
-import { Face, FaceStack, type Presence } from "@/components/ui/Face";
-import { cn } from "@/lib/utils";
-import { CAST } from "@/components/home/previews/Frame";
+import { Footprints, MessageSquare, UserPlus } from "web-shared/components/ui/icons";
+import { Face, FaceStack, type Presence } from "web-shared/components/ui/Face";
+import { cn } from "web-shared/lib/utils";
+import { CAST } from "web-shared/components/home/previews/Frame";
 
 const [emma, jack, olivia, sam, lily, noah] = CAST;
 

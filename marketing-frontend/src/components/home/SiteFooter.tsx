@@ -1,16 +1,16 @@
 import { getLocale, getTranslations } from "next-intl/server";
-import { ArrowRight, ChevronDown, Globe } from "@/components/ui/icons";
+import { ArrowRight, ChevronDown, Globe } from "web-shared/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import { locales, type Locale } from "@/lib/i18n/routing";
-import { GUIDES_PATH, guidePath } from "@/lib/guides";
+import { locales, type Locale } from "web-shared/lib/i18n/routing";
+import { GUIDES_PATH, guidePath } from "web-shared/lib/guides";
 import { BLOG_LOCALES, BLOG_PATH } from "@/lib/blog";
 import { blogUi } from "@/lib/blog-copy";
 import { guideCopies } from "@/lib/guide-copy";
 import { TOOLS_PATH, hasPage } from "@/lib/tools/catalog";
 import { FEW_TOOL_NAMES } from "@/lib/tools/hub-copy";
-import { HUBS, LANDINGS, landingByKey, type Landing, type LandingGroup } from "@/lib/landings";
-import { SOCIALS, SUPPORT_EMAIL } from "@/lib/site";
-import { Logo } from "@/components/app/Logo";
+import { HUBS, LANDINGS, landingByKey, type Landing, type LandingGroup } from "web-shared/lib/landings";
+import { SOCIALS, SUPPORT_EMAIL } from "web-shared/lib/site";
+import { Logo } from "web-shared/components/app/Logo";
 import { TOP_ALTERNATIVES, TOP_TOOLS, topGuidesIn } from "./HomeNav";
 import { ThemeSwitch } from "./ThemeSwitch";
 

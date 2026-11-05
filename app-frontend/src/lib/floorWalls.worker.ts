@@ -1,5 +1,5 @@
 /// <reference lib="webworker" />
-import { paintShell, type ShellMap } from "@shared/shell";
+import { paintShell, type ShellMap } from "shared-protocol/shell";
 
 // Paints the floor's walls and floors (lib/floorWalls) away from the page,
 // which is busy starting the floor meanwhile. The pixels go back as they are,

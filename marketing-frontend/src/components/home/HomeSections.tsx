@@ -27,13 +27,13 @@ import {
   People,
   HelpCircle,
   SignOut,
-} from "@/components/ui/icons";
+} from "web-shared/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { PEOPLE } from "@/components/floor/scenes";
 import { NearbyBar } from "@/components/floor/NearbyBar";
-import { Face, FaceStack, type Presence } from "@/components/ui/Face";
+import { Face, FaceStack, type Presence } from "web-shared/components/ui/Face";
 import { PLANS } from "@/lib/plans";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { ANCHOR, CJK_HEADLINE, COLUMN, OpenSource } from "./Blocks";
 import { PriceSlider } from "./PriceSlider";
 import { Clay, lit, type Tone } from "./ColorStage";

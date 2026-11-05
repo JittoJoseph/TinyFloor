@@ -1,5 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /*
  * A laurel: two branches around a short line, the way an award is set. The

@@ -1,4 +1,4 @@
-import { SPOTIFY_SHARE_MS, spotifyLink, type SpotifyKind, type SpotifyShare } from "../../shared-protocol/src";
+import { SPOTIFY_SHARE_MS, spotifyLink, type SpotifyKind, type SpotifyShare } from "shared-protocol";
 import { HttpError, json, readJson } from "./http";
 import type { Router } from "./router";
 import { requireAccount } from "./session";

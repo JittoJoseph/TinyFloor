@@ -1,5 +1,5 @@
-import { MAP_WIDTH_TILES, MAP_HEIGHT_TILES, isValidTile } from "@shared/map";
-import { pixelToTile, tileToPixel, TILE_SIZE } from "@/lib/types";
+import { MAP_WIDTH_TILES, MAP_HEIGHT_TILES, isValidTile } from "shared-protocol/map";
+import { pixelToTile, tileToPixel, TILE_SIZE } from "web-shared/lib/types";
 
 export interface Vec {
   x: number;

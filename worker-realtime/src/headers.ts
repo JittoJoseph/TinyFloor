@@ -1,4 +1,4 @@
-import type { RoomTicket } from "../../shared-protocol/src";
+import type { RoomTicket } from "shared-protocol";
 /** Headers the Worker sets after checking a ticket. The room trusts them, so clients' copies are overwritten. */
 export const TICKET_HEADER = "X-TinyFloor-Ticket";
 

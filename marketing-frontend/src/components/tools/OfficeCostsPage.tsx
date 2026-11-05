@@ -1,5 +1,5 @@
 import { ArticleSections, numberItems } from "@/components/guides/ArticleSections";
-import type { GuideSection } from "@/lib/guides";
+import type { GuideSection } from "web-shared/lib/guides";
 import {
   OFFICE_COSTS_PATH,
   OFFICE_COSTS_UPDATED,

@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { useFormatter, useTranslations } from "next-intl";
-import { ChevronRight, X } from "@/components/ui/icons";
-import { usePlans } from "@/lib/billing";
+import { ChevronRight, X } from "web-shared/components/ui/icons";
+import { usePlans } from "web-shared/lib/billing";
 import { Link } from "@/lib/i18n/navigation";
 import { officeSettingsPath } from "@/lib/links";
 import { useOfficeMaybe } from "./OfficeShell";

@@ -2,10 +2,10 @@
  * The TinyFloor API (tinyfloor-api). Sessions are an HttpOnly cookie the browser
  * sends by itself, so nothing about signing in is kept in JavaScript.
  */
-import type { LobbyChatPage, PresentPerson } from "@shared/admin";
-import type { StatusNote } from "@shared/messages";
-import type { PushSubscriptionJson } from "@shared/push";
-import type { SpotifyShare } from "@shared/spotify";
+import type { LobbyChatPage, PresentPerson } from "shared-protocol/admin";
+import type { StatusNote } from "shared-protocol/messages";
+import type { PushSubscriptionJson } from "shared-protocol/push";
+import type { SpotifyShare } from "shared-protocol/spotify";
 
 export type { LobbyChatPage, PresentPerson, SpotifyShare, StatusNote };
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8787/v1";

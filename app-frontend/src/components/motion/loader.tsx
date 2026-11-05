@@ -4,7 +4,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { useEffect, useId, useState } from "react";
 import { EASE_IN_OUT } from "@/lib/ease";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 export type LoaderVariant =
   | "spinner"

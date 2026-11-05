@@ -1,4 +1,4 @@
-import type { routing } from "@/lib/i18n/routing";
+import type { routing } from "web-shared/lib/i18n/routing";
 import type shared from "../../web-shared/messages/en.json";
 import type own from "../messages/en.json";
 

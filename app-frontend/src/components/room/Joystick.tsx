@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { setJoystick } from "@/lib/joystick";
 import { INPUT_MODE_EVENT, isTouchInput } from "@/lib/input";
 import { capturePointer, releasePointer, TOUCH_GESTURE_CLASS } from "@/lib/touch";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /** The ring's radius, and how far the thumb may travel from its centre. */
 const BASE = 60;

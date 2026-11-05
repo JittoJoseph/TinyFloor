@@ -1,6 +1,6 @@
 "use client";
 
-import type { ServerMessage } from "@shared/messages";
+import type { ServerMessage } from "shared-protocol/messages";
 import type { RoomSocket } from "./RoomSocket";
 import { learned } from "./actions";
 

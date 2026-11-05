@@ -2,12 +2,12 @@
 
 import { Fragment, useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useLocale } from "next-intl";
-import { Hash, Paperclip, Pencil, Reply, Shield, Trash2 } from "@/components/ui/icons";
+import { Hash, Paperclip, Pencil, Reply, Shield, Trash2 } from "web-shared/components/ui/icons";
 import { IconButton } from "@/components/ui/IconButton";
-import { Face, FaceStack } from "@/components/ui/Face";
+import { Face, FaceStack } from "web-shared/components/ui/Face";
 import { ShellView } from "@/components/app/AppShell";
-import { api, ApiError, type LobbyChatPage } from "@/lib/api";
-import { cn } from "@/lib/utils";
+import { api, ApiError, type LobbyChatPage } from "web-shared/lib/api";
+import { cn } from "web-shared/lib/utils";
 import { Column, DetailHeader, DetailState, Live, Pick, Row, Short, useRun } from "./pieces";
 import type { ViewProps } from "./views";
 

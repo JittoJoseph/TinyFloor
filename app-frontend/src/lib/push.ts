@@ -1,7 +1,7 @@
 "use client";
 
-import { VAPID_PUBLIC_KEY, type PushSubscriptionJson } from "@shared/push";
-import { api } from "@/lib/api";
+import { VAPID_PUBLIC_KEY, type PushSubscriptionJson } from "shared-protocol/push";
+import { api } from "web-shared/lib/api";
 
 /**
  * Reaching this browser when TinyFloor is closed (docs/product.md): a

@@ -1,5 +1,5 @@
 import type { CaptureResult, PostHog } from "posthog-js";
-import { RELAY_PATH } from "@/lib/relay";
+import { RELAY_PATH } from "./relay";
 
 const token = process.env.NEXT_PUBLIC_POSTHOG_PROJECT_TOKEN;
 const host = process.env.NEXT_PUBLIC_POSTHOG_HOST;

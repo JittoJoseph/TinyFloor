@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import type { Locale } from "@/lib/i18n/routing";
-import { FloorScene } from "@/components/floor/FloorScene";
+import type { Locale } from "web-shared/lib/i18n/routing";
+import { FloorScene } from "web-shared/components/floor/FloorScene";
 import { EVERYONE, PEOPLE } from "@/components/floor/scenes";
 import { NearbyBar } from "@/components/floor/NearbyBar";
-import { Face, FaceStack } from "@/components/ui/Face";
-import { LANDINGS } from "@/lib/landings";
-import { cn } from "@/lib/utils";
+import { Face, FaceStack } from "web-shared/components/ui/Face";
+import { LANDINGS } from "web-shared/lib/landings";
+import { cn } from "web-shared/lib/utils";
 import { emphasised } from "@/lib/words";
 
 import { notFound } from "next/navigation";

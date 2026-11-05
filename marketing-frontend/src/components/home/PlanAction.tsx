@@ -1,8 +1,8 @@
 "use client";
 
-import { usePlans } from "@/lib/billing";
+import { usePlans } from "web-shared/lib/billing";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /**
  * Pro's button on the pricing page. The page is the same everywhere, but Pro

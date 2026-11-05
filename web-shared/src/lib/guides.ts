@@ -1,5 +1,5 @@
-import type { LandingKey } from "@/lib/landings";
-import { localeCodes, type Locale } from "@/lib/i18n/routing";
+import type { LandingKey } from "./landings";
+import { localeCodes, type Locale } from "./i18n/routing";
 
 export type GuideKey =
   | "teamBuilding"

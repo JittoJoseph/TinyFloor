@@ -1,6 +1,6 @@
 import { env, exports } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
-import { CloseCode, signTicket } from "../../shared-protocol/src";
+import { CloseCode, signTicket } from "shared-protocol";
 import { Client, ORIGIN, settle, uniqueRoom } from "./client";
 
 describe("room entry", () => {

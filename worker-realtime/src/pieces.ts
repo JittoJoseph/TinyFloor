@@ -1,4 +1,4 @@
-import type { PieceChange, PieceChanges } from "../../shared-protocol/src";
+import type { PieceChange, PieceChanges } from "shared-protocol";
 
 /**
  * What people have made of their desks in one office (docs/customization.md),

@@ -1,7 +1,7 @@
 "use client";
 
-import { FILE_MAX, isPicture, type ChatFile } from "@shared/chat";
-import { API_URL } from "@/lib/api";
+import { FILE_MAX, isPicture, type ChatFile } from "shared-protocol/chat";
+import { API_URL } from "web-shared/lib/api";
 
 /**
  * Files in chat, on the browser's side (docs/product.md). A picture is made

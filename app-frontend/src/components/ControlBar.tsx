@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode, type RefObject } from "react";
 import { AnimatePresence, motion, useReducedMotion, type Transition } from "motion/react";
 import { useTranslations } from "next-intl";
-import { Check, Desk, Mic, MicOff, MonitorUp, MonitorX, Office, PhoneOff, UserPlus, Video, Volume2, VolumeX } from "@/components/ui/icons";
+import { Check, Desk, Mic, MicOff, MonitorUp, MonitorX, Office, PhoneOff, UserPlus, Video, Volume2, VolumeX } from "web-shared/components/ui/icons";
 import { IconButton } from "@/components/ui/IconButton";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
@@ -12,7 +12,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { deskOf, goToMyDesk, useDesks } from "@/lib/desks";
 import { CameraRested } from "@/components/meetings/CameraRested";
 import { MicMutedHint } from "@/components/meetings/MicMutedHint";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { FADE_STOPS, Fillet } from "@/components/ui/Fillet";
 import { YouKey, YouPanel } from "@/components/room/DockYou";
 import { DemoPanel, HereKey, HerePanel } from "@/components/room/DockHere";

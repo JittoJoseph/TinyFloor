@@ -1,7 +1,7 @@
 import { onPrefsChange, prefs } from "./prefs";
-import type { CallKind, MediaFlags, ServerMessage, VideoKind, VideoQuality } from "@shared/messages";
+import type { CallKind, MediaFlags, ServerMessage, VideoKind, VideoQuality } from "shared-protocol/messages";
 import type { RoomSocket } from "./RoomSocket";
-import { api } from "@/lib/api";
+import { api } from "web-shared/lib/api";
 import {
   CAMERA_CAPTURE,
   SCREEN_SHARE,
@@ -22,7 +22,7 @@ import { meetingsState, setMeetings, setSpeaking, subscribeMeetings, WALK_TO_MEE
 import { VoiceActivity } from "./voiceActivity";
 import { playSound, loopSound, stopSound } from "./sounds";
 import { isSpeakerMuted, onSpeakerChange, setSpeakerMuted } from "./speaker";
-import { track } from "@/lib/analytics";
+import { track } from "web-shared/lib/analytics";
 
 // Error codes, not copy: the call overlay turns them into translated text.
 export type CallError = "connection" | "unsupported" | "media" | "camera";

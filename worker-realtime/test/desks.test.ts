@@ -1,7 +1,7 @@
 import { runInDurableObject } from "cloudflare:test";
 import { env, exports } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
-import { FLOORS, deskArrival, deskSeats, seatTile } from "../../shared-protocol/src";
+import { FLOORS, deskArrival, deskSeats, seatTile } from "shared-protocol";
 import { Desks } from "../src/desks";
 import { Client, settle, uniqueRoom } from "./client";
 

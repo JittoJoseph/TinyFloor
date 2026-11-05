@@ -3,17 +3,17 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Video, X } from "@/components/ui/icons";
-import { MAIN_MEETING, type MeetingInfo } from "@shared/messages";
+import { Video, X } from "web-shared/components/ui/icons";
+import { MAIN_MEETING, type MeetingInfo } from "shared-protocol/messages";
 import { useRouter } from "@/lib/i18n/navigation";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { useInMeetingRoom, useMeetings } from "@/lib/meetings";
 import { usePlace } from "@/components/app/place";
-import { FaceStack } from "@/components/ui/Face";
+import { FaceStack } from "web-shared/components/ui/Face";
 import { bezel, onBezel } from "@/components/ui/bezel";
 import { SPRING_PANEL } from "@/lib/ease";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { useMeetingName } from "./hooks";
 
 /**

@@ -3,28 +3,28 @@
 import { PlansSoon } from "@/components/ui/PlansSoon";
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Check, MoreHorizontal, Search, Shield, ShieldOff, UserMinus, UserPlus } from "@/components/ui/icons";
-import { dmChannelId } from "@shared/chat";
+import { ArrowRight, Check, MoreHorizontal, Search, Shield, ShieldOff, UserMinus, UserPlus } from "web-shared/components/ui/icons";
+import { dmChannelId } from "shared-protocol/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError } from "@/lib/api";
+import { api, ApiError } from "web-shared/lib/api";
 import { leftPath, lobbyPath, officeChatPath, officeSettingsPath, shareUrl } from "@/lib/links";
 import { useInvite } from "./Invite";
 import { shareLink } from "@/lib/share";
 import { useFloor, useFloorStatus, useMyNote } from "@/lib/floor";
 import { Button } from "@/components/motion/button/base";
-import { Face } from "@/components/ui/Face";
+import { Face } from "web-shared/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
 import { Menu, MenuItem, MenuSeparator } from "@/components/ui/Menu";
 import { Dialog } from "@/components/ui/Dialog";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { Chip, Empty } from "@/components/ui/Empty";
 import { useOffice } from "./OfficeShell";
 import { usePlace, useWalkTo } from "./place";
 import { MemberRow, PRESENCE_ORDER } from "./MemberRow";
 import { Link } from "@/lib/i18n/navigation";
 import { useOpenPlans } from "@/components/billing/openPlans";
-import { dollars, usePlans } from "@/lib/billing";
+import { dollars, usePlans } from "web-shared/lib/billing";
 import { PLAN_NAMES, paidPlan } from "@/components/billing/PlanCards";
 
 /** Past this many people, the list gets a search box. */

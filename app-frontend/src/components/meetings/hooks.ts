@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { MAIN_MEETING, type MeetingInfo } from "@shared/messages";
+import { MAIN_MEETING, type MeetingInfo } from "shared-protocol/messages";
 import { useCall } from "@/lib/useCall";
 import { useMeetings } from "@/lib/meetings";
 import { usePlace } from "@/components/app/place";

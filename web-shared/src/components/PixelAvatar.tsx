@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useRef } from "react";
-import { statusColor } from "@/lib/status";
-import { FRAME_H, FRAME_W, characterSheet, drawFrame, drawnSheet, frameOf, seatedStep, type Facing } from "@/lib/characterSheet";
+import { statusColor } from "../lib/status";
+import { FRAME_H, FRAME_W, characterSheet, drawFrame, drawnSheet, frameOf, seatedStep, type Facing } from "../lib/characterSheet";
 
 export type AvatarDirection = Facing;
 

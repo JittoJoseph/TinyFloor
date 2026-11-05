@@ -1,6 +1,6 @@
 import { env, exports } from "cloudflare:workers";
 import { expect } from "vitest";
-import { signTicket, type ClientMessage, type RoomTicket, type ServerMessage } from "../../shared-protocol/src";
+import { signTicket, type ClientMessage, type RoomTicket, type ServerMessage } from "shared-protocol";
 
 export const ORIGIN = "http://localhost:3000";
 let sequence = 0;

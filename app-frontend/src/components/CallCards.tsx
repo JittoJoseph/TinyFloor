@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { flushSync } from "react-dom";
 import { useTranslations } from "next-intl";
-import { Maximize2, MicOff, Minimize2, MonitorUp } from "@/components/ui/icons";
+import { Maximize2, MicOff, Minimize2, MonitorUp } from "web-shared/components/ui/icons";
 import { useCall } from "@/lib/useCall";
 import { callManager } from "@/lib/CallManager";
 import { useSpeaking } from "@/lib/useSpeaking";
 import { CallStream } from "./CallStream";
-import { Face } from "@/components/ui/Face";
+import { Face } from "web-shared/components/ui/Face";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePrefs } from "@/lib/prefs";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { api, type PersonProfile } from "@/lib/api";
+import { api, type PersonProfile } from "web-shared/lib/api";
 
 /** How long a profile is trusted before a card asks again: what someone is listening to changes. */
 const FRESH_MS = 60_000;

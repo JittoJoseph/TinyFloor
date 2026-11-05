@@ -1,8 +1,8 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { PixelAvatar, type AvatarDirection } from "@/components/PixelAvatar";
-import { cn } from "@/lib/utils";
+import { PixelAvatar, type AvatarDirection } from "web-shared/components/PixelAvatar";
+import { cn } from "web-shared/lib/utils";
 
 /**
  * Where a character is shown off the floor: a soft surface, lighter at the

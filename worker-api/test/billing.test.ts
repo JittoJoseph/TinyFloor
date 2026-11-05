@@ -1,6 +1,6 @@
 import { env, exports } from "cloudflare:workers";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { verifyTicket } from "../../shared-protocol/src";
+import { verifyTicket } from "shared-protocol";
 import { call, fakeRealtime, makeUser, onFree, type TestUser } from "./helpers";
 
 const SECRET = "whsec_test";

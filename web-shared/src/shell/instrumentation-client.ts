@@ -1,4 +1,4 @@
-import { startAnalytics } from "@/lib/analytics";
+import { startAnalytics } from "../lib/analytics";
 
 /*
  * Chrome's "Translate this page" swaps the page's text nodes for its own, and

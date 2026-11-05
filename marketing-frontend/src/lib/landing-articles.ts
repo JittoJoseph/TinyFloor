@@ -1,6 +1,6 @@
 import { cache } from "react";
-import type { GuideSection } from "@/lib/guides";
-import type { LandingGroup, LandingKey } from "@/lib/landings";
+import type { GuideSection } from "web-shared/lib/guides";
+import type { LandingGroup, LandingKey } from "web-shared/lib/landings";
 
 /** Each page's own text, and under `hubs` the short text each index page carries below its list. */
 type Articles = Partial<Record<LandingKey, GuideSection[]>> & { hubs?: Partial<Record<LandingGroup, GuideSection[]>> };

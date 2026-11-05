@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { VideoOff, Zap } from "@/components/ui/icons";
-import type { MeetingUsage } from "@shared/messages";
+import { VideoOff, Zap } from "web-shared/components/ui/icons";
+import type { MeetingUsage } from "shared-protocol/messages";
 import { useMeetings } from "@/lib/meetings";
-import { usePlans } from "@/lib/billing";
-import { cn } from "@/lib/utils";
+import { usePlans } from "web-shared/lib/billing";
+import { cn } from "web-shared/lib/utils";
 import { usePlace } from "@/components/app/place";
 import { useOpenPlans } from "@/components/billing/openPlans";
 import { PLAN_NAMES } from "@/components/billing/PlanCards";
-import type { PlanId } from "@/lib/api";
+import type { PlanId } from "web-shared/lib/api";
 
 /** Past this share of the hours, the meter warms and admins see the way to more. */
 const NEARLY = 0.8;

@@ -4,10 +4,10 @@ import { RailIcons } from "@/components/app/railIcons";
 import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { DoorOpen, Hash, ImagePlus, LogOut, MessagesSquare, Mic, Plus, Users } from "@/components/ui/icons";
+import { DoorOpen, Hash, ImagePlus, LogOut, MessagesSquare, Mic, Plus, Users } from "web-shared/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, type RoomTicket, type SessionUser } from "@/lib/api";
+import { api, type RoomTicket, type SessionUser } from "web-shared/lib/api";
 import {
   goTo,
   lobbyChatPath,
@@ -29,7 +29,7 @@ import { Menu, MenuHeader, MenuItem, MenuSeparator } from "@/components/ui/Menu"
 import { Dialog } from "@/components/ui/Dialog";
 import { ActionLink } from "@/components/ui/Action";
 import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
-import { dmChannelId } from "@shared/chat";
+import { dmChannelId } from "shared-protocol/chat";
 import { useWide } from "@/lib/hooks/use-wide";
 import { AppShell, Logo, useShellFrame } from "./AppShell";
 import { YouMenu } from "./YouMenu";

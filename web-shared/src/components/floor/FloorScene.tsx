@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
-import { PixelAvatar, Nameplate, type AvatarDirection } from "@/components/PixelAvatar";
-import { cn } from "@/lib/utils";
+import { PixelAvatar, Nameplate, type AvatarDirection } from "../PixelAvatar";
+import { cn } from "../../lib/utils";
 import { CHAIRS, PIECES } from "./grid";
 
 /**

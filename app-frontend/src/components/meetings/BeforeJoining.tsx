@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
-import { Mic, MicOff, Settings, Video, VideoOff } from "@/components/ui/icons";
+import { Mic, MicOff, Settings, Video, VideoOff } from "web-shared/components/ui/icons";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { useAuth } from "@/contexts/AuthContext";
@@ -11,9 +11,9 @@ import { useMeetings } from "@/lib/meetings";
 import { deviceConstraint, savedDevices } from "@/lib/media";
 import { usePrefs } from "@/lib/prefs";
 import { Link } from "@/lib/i18n/navigation";
-import { Face, faceBackground } from "@/components/ui/Face";
+import { Face, faceBackground } from "web-shared/components/ui/Face";
 import { usePlace } from "@/components/app/place";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /** People offered in "Free to talk" at most. */
 const FREE_SHOWN = 4;

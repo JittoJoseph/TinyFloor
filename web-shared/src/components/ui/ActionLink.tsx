@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
-import { ArrowRight } from "@/components/ui/icons";
+import { ArrowRight } from "./icons";
 import { Link } from "@/lib/i18n/navigation";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 
 // The look of the one big button a screen has (Action.tsx), kept apart from
 // the pressable button so a page with only the link brings no animation library.

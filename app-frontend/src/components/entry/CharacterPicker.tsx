@@ -2,10 +2,10 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
-import { Check } from "@/components/ui/icons";
-import { PixelAvatar } from "@/components/PixelAvatar";
-import { cn } from "@/lib/utils";
-import { DOOR_PRESETS } from "@shared/character";
+import { Check } from "web-shared/components/ui/icons";
+import { PixelAvatar } from "web-shared/components/PixelAvatar";
+import { cn } from "web-shared/lib/utils";
+import { DOOR_PRESETS } from "shared-protocol/character";
 
 export const CharacterPicker: React.FC<{
   value: string;

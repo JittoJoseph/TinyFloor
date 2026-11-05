@@ -1,16 +1,16 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { Calendar, Chats, CreditCard, Floor as FloorIcon, MoreHorizontal, Office as OfficeIcon, Pencil, Trash2, X } from "@/components/ui/icons";
-import { NEW_FLOOR } from "@shared/map";
+import { Calendar, Chats, CreditCard, Floor as FloorIcon, MoreHorizontal, Office as OfficeIcon, Pencil, Trash2, X } from "web-shared/components/ui/icons";
+import { NEW_FLOOR } from "shared-protocol/map";
 import { IconButton } from "@/components/ui/IconButton";
-import { Face } from "@/components/ui/Face";
+import { Face } from "web-shared/components/ui/Face";
 import { Dialog } from "@/components/ui/Dialog";
 import { Menu, MenuItem, MenuSeparator } from "@/components/ui/Menu";
 import { Logo, ShellView } from "@/components/app/AppShell";
-import { api, type AdminOffice, type AdminOfficeDetail, type AdminStanding, type PlanId } from "@/lib/api";
-import { usePlans } from "@/lib/billing";
-import { cn } from "@/lib/utils";
+import { api, type AdminOffice, type AdminOfficeDetail, type AdminStanding, type PlanId } from "web-shared/lib/api";
+import { usePlans } from "web-shared/lib/billing";
+import { cn } from "web-shared/lib/utils";
 import {
   Badge,
   Column,

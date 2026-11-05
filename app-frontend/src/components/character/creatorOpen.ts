@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from "react";
-import { preloadCharacters } from "@/lib/characterSheet";
-import { CHARACTER_CATALOG, PRESETS } from "@shared/character";
+import { preloadCharacters } from "web-shared/lib/characterSheet";
+import { CHARACTER_CATALOG, PRESETS } from "shared-protocol/character";
 
 /**
  * Whether the creator is open, and the ways to open it, kept apart from the

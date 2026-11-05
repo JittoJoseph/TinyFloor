@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { faceBackground } from "@/components/ui/Face";
+import { faceBackground } from "web-shared/components/ui/Face";
 
 /** A face sized by its card rather than in pixels. */
 function FaceFill({ seed }: { seed: string }) {

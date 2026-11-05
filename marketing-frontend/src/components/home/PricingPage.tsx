@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { CalendarOff, Check, CreditCard, Lock, Minus, Refund, UserPlus, Users } from "@/components/ui/icons";
-import { foundingOpen } from "@/lib/founding";
+import { CalendarOff, Check, CreditCard, Lock, Minus, Refund, UserPlus, Users } from "web-shared/components/ui/icons";
+import { foundingOpen } from "web-shared/lib/founding";
 import { SUPPORT_EMAIL } from "@/components/legal/LegalPage";
 import { PLANS } from "@/lib/plans";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { CJK_HEADLINE, COLUMN, Closing, Heading, LEAD, MarketingShell, Notes, PlanCards, Questions, STAGE, quiet } from "./Blocks";
 
 /**

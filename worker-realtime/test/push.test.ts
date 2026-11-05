@@ -1,6 +1,6 @@
 import { env } from "cloudflare:workers";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { GENERAL_CHANNEL, dmChannelId, type PushPayload } from "../../shared-protocol/src";
+import { GENERAL_CHANNEL, dmChannelId, type PushPayload } from "shared-protocol";
 import { encrypt, fromBase64Url, toBase64Url, vapid } from "../src/push";
 import { ChatClient, officeId } from "./chat-client";
 

@@ -5,8 +5,8 @@ import type { RoomSocket } from "./RoomSocket";
 import { joystick } from "./joystick";
 import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingOf } from "./Navigation";
 import { depthForY } from "./MapManager";
-import { pixelToTile, MOVEMENT_SPEED, TILE_SIZE, tileToPixel } from "@/lib/types";
-import { isValidTile } from "@shared/map";
+import { pixelToTile, MOVEMENT_SPEED, TILE_SIZE, tileToPixel } from "web-shared/lib/types";
+import { isValidTile } from "shared-protocol/map";
 import { wasDrag } from "./CameraRig";
 
 const ARRIVE_RANGE = 3;

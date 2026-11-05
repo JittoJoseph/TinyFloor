@@ -3,11 +3,11 @@
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { useTranslations } from "next-intl";
-import { VOICE_PEAKS, type ChatFile } from "@shared/chat";
-import { Download } from "@/components/ui/icons";
+import { VOICE_PEAKS, type ChatFile } from "shared-protocol/chat";
+import { Download } from "web-shared/components/ui/icons";
 import { fileUrl } from "@/lib/chatFiles";
 import { SPRING_SWAP } from "@/lib/ease";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /*
  * A voice message in the conversation: play, its waveform with the time under

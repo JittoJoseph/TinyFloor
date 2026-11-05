@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
-import { ArrowLeft } from "@/components/ui/icons";
+import { ArrowLeft } from "web-shared/components/ui/icons";
 import { pillInputClass } from "./EntryShell";
 import { CharacterPicker } from "./CharacterPicker";
 import { StepTitle } from "./DoorSteps";

@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Check, MicOff, X } from "@/components/ui/icons";
-import type { MeetingInfo } from "@shared/messages";
+import { Check, MicOff, X } from "web-shared/components/ui/icons";
+import type { MeetingInfo } from "shared-protocol/messages";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { useAuth } from "@/contexts/AuthContext";
 import { useFloor } from "@/lib/floor";
 import { meetingOf, useMeetings } from "@/lib/meetings";
-import { Face } from "@/components/ui/Face";
+import { Face } from "web-shared/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
 import { usePlace } from "@/components/app/place";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /**
  * Everyone in the meeting, and the one place to bring more in: a panel beside

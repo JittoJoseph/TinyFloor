@@ -1,0 +1,10 @@
+{
+  "name": "shared-protocol",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./catalog/*": "./src/catalog/*",
+    "./*": "./src/*.ts"
+  }
+}

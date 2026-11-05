@@ -1,4 +1,4 @@
-import { cleanDisplayName, DEFAULT_CHARACTER } from "../../shared-protocol/src";
+import { cleanDisplayName, DEFAULT_CHARACTER } from "shared-protocol";
 import { nameFromEmail, publicUser } from "./auth";
 import { HttpError, json, readJson } from "./http";
 import { limitAuth } from "./limits";

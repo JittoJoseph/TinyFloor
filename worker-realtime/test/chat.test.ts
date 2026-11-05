@@ -10,7 +10,7 @@ import {
   signTicket,
   type ChatClientMessage,
   type ChatServerMessage,
-} from "../../shared-protocol/src";
+} from "shared-protocol";
 
 let sequence = 0;
 

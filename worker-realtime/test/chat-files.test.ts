@@ -1,6 +1,6 @@
 import { env } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
-import { GENERAL_CHANNEL, dmChannelId, type ChatFile } from "../../shared-protocol/src";
+import { GENERAL_CHANNEL, dmChannelId, type ChatFile } from "shared-protocol";
 import { ChatClient, officeId } from "./chat-client";
 
 let sequence = 0;

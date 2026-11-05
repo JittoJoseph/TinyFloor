@@ -2,12 +2,12 @@
 
 import { memo, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Check, UserPlus, UsersRound } from "@/components/ui/icons";
-import { Face } from "@/components/ui/Face";
+import { ArrowRight, Check, UserPlus, UsersRound } from "web-shared/components/ui/icons";
+import { Face } from "web-shared/components/ui/Face";
 import { CharacterBust } from "@/components/character/CharacterBust";
 import { NoteGlyph } from "@/lib/noteIcons";
 import { useFloor, walkToPerson, type FloorPerson } from "@/lib/floor";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { makeOfficeHref } from "@/lib/pendingOffice";

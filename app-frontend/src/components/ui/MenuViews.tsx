@@ -2,9 +2,9 @@
 
 import type { ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ChevronDown } from "@/components/ui/icons";
+import { ChevronDown } from "web-shared/components/ui/icons";
 import { EASE_OUT } from "@/lib/ease";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /**
  * The choices under a menu row, opened in place: the menu grows to make room

@@ -1,6 +1,6 @@
 import * as Phaser from "phaser";
-import { faceBackground } from "@/components/ui/Face";
-import { statusColor } from "@/lib/status";
+import { faceBackground } from "web-shared/components/ui/Face";
+import { statusColor } from "web-shared/lib/status";
 import { plateLayer } from "./plates";
 import { tagName } from "./SceneLabel";
 import type { SceneText } from "./sceneText";

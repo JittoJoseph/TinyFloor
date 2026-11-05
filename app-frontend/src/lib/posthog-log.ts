@@ -1,4 +1,4 @@
-import { withPostHog } from "@/lib/analytics";
+import { withPostHog } from "web-shared/lib/analytics";
 
 export const posthogLog = {
   info(message: string) {

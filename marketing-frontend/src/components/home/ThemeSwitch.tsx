@@ -1,8 +1,8 @@
 "use client";
 
-import { Monitor, Moon, Sun } from "@/components/ui/icons";
-import { setTheme, useTheme, type ThemeChoice } from "@/lib/theme";
-import { cn } from "@/lib/utils";
+import { Monitor, Moon, Sun } from "web-shared/components/ui/icons";
+import { setTheme, useTheme, type ThemeChoice } from "web-shared/lib/theme";
+import { cn } from "web-shared/lib/utils";
 
 const CHOICES: Array<{ value: ThemeChoice; icon: typeof Sun }> = [
   { value: "system", icon: Monitor },

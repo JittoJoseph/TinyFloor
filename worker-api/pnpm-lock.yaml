@@ -11,6 +11,9 @@ importers:
       '@cloudflare/vitest-plugin':
         specifier: 1.1.10
         version: 1.1.10(@vitest/runner@4.1.11)(@vitest/snapshot@4.1.11)(vitest@4.1.11(vite@8.3.0(esbuild@0.28.1)))
+      shared-protocol:
+        specifier: link:../shared-protocol
+        version: link:../shared-protocol
       typescript:
         specifier: 5.9.3
         version: 5.9.3

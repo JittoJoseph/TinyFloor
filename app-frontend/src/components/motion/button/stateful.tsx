@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Loader2, X } from "@/components/ui/icons";
+import { Check, Loader2, X } from "web-shared/components/ui/icons";
 import {
   AnimatePresence,
   motion,

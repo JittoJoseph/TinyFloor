@@ -1,10 +1,10 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { AtSign, Bell, Calendar, ExternalLink, Globe, Inbox as InboxIcon, Language, Link2, Monitor, Office, UserRound } from "@/components/ui/icons";
-import { Face } from "@/components/ui/Face";
+import { AtSign, Bell, Calendar, ExternalLink, Globe, Inbox as InboxIcon, Language, Link2, Monitor, Office, UserRound } from "web-shared/components/ui/icons";
+import { Face } from "web-shared/components/ui/Face";
 import { ShellView } from "@/components/app/AppShell";
-import { api, type AdminHelpTicket } from "@/lib/api";
+import { api, type AdminHelpTicket } from "web-shared/lib/api";
 import { askToNotify, useNotifyPermission } from "@/lib/notify";
 import { startPush } from "@/lib/push";
 import { usePrefs } from "@/lib/prefs";

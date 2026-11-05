@@ -21,7 +21,7 @@ import { TooltipSurface } from "@/components/motion/tooltip-surface";
 import { useDismiss } from "@/lib/hooks/use-dismiss";
 import { useHoverGesture } from "@/lib/hooks/use-hover-gesture";
 import { useTapGesture } from "@/lib/hooks/use-tap-gesture";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 type Side = "top" | "right" | "bottom" | "left";
 

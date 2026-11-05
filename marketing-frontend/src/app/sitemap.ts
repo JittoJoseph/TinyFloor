@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next';
-import { SITE_URL } from '@/lib/site';
-import { localeCodes } from '@/lib/i18n/routing';
-import { localePath } from '@/lib/seo';
-import { HUBS, LANDINGS, LANDINGS_UPDATED } from '@/lib/landings';
-import { GUIDES, GUIDES_PATH, guideLocales, guidePath } from '@/lib/guides';
+import { SITE_URL } from 'web-shared/lib/site';
+import { localeCodes } from 'web-shared/lib/i18n/routing';
+import { localePath } from 'web-shared/lib/seo';
+import { HUBS, LANDINGS, LANDINGS_UPDATED } from 'web-shared/lib/landings';
+import { GUIDES, GUIDES_PATH, guideLocales, guidePath } from 'web-shared/lib/guides';
 import { OUT_OF_OFFICE_PATH, STANDUP_PATH, TEAM_BUILDING_PATH, TOOLS, TOOLS_PATH, TWO_TRUTHS_PATH, WOULD_YOU_RATHER_PATH } from '@/lib/tools/catalog';
 import { ICEBREAKERS_PATH, ICEBREAKERS_UPDATED } from '@/lib/tools/icebreakers';
 import { OFFICE_COSTS_PATH, OFFICE_COSTS_UPDATED } from '@/lib/tools/office-costs';

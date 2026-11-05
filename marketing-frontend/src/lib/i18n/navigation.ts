@@ -1,7 +1,7 @@
 import { createElement, type ComponentProps } from "react";
 import { createNavigation } from "next-intl/navigation";
-import { routing } from "@/lib/i18n/routing";
-import { APP_PATH } from "@/lib/site";
+import { routing } from "web-shared/lib/i18n/routing";
+import { APP_PATH } from "web-shared/lib/site";
 import { AppAnchor } from "./AppAnchor";
 
 /**

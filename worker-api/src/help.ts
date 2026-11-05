@@ -1,4 +1,4 @@
-import type { HelpNews } from "../../shared-protocol/src";
+import type { HelpNews } from "shared-protocol";
 import { realtime, requireOffice } from "./access";
 import { adminIds, requireAdmin } from "./admin";
 import { HttpError, json, readJson } from "./http";

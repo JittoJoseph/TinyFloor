@@ -2,7 +2,7 @@
 
 import { useLayoutEffect, type ReactNode } from "react";
 import { MotionConfig } from "motion/react";
-import { applyTheme, clearTheme } from "@/lib/theme";
+import { applyTheme, clearTheme } from "web-shared/lib/theme";
 import { usePrefs } from "@/lib/prefs";
 // Listening, from the first app page on, for the browser's offer to install
 // and for a push notification clicked while the app is open.

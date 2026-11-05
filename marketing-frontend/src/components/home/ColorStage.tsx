@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /** The sections' colours, saturated, from the illustrations' palette: each with a lighter tone of itself where the light falls. */
 const TONES = {

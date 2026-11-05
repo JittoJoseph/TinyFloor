@@ -1,4 +1,4 @@
-import { trackLeaving } from "@/lib/analytics";
+import { trackLeaving } from "web-shared/lib/analytics";
 
 /**
  * The first step of the demo office's funnel (docs/analytics.md): a click on

@@ -40,7 +40,7 @@ import {
   type ServerMessage,
   type SfuServerMessage,
   type Whereabouts,
-} from "../../shared-protocol/src";
+} from "shared-protocol";
 import { Board, parseStroke } from "./board";
 import { Reporter } from "./discord";
 import { readTicket, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER, WHERE_HEADER } from "./headers";

@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Check, Link2 } from "@/components/ui/icons";
+import { Check, Link2 } from "web-shared/components/ui/icons";
 import { IconButton } from "@/components/ui/IconButton";
 import { LitFace } from "@/components/ui/LitFace";
-import { Logo } from "@/components/app/Logo";
-import { PixelAvatar } from "@/components/PixelAvatar";
+import { Logo } from "web-shared/components/app/Logo";
+import { PixelAvatar } from "web-shared/components/PixelAvatar";
 import { shareUrl } from "@/lib/links";
 
 /** The lobby is TinyFloor's own place, so it wears the logo, lit in the logo's orange. */

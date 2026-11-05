@@ -1,6 +1,6 @@
 import { env, exports } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
-import { signTicket, type ServerMessage } from "../../shared-protocol/src";
+import { signTicket, type ServerMessage } from "shared-protocol";
 
 const ORIGIN = "http://localhost:3000";
 let sequence = 0;

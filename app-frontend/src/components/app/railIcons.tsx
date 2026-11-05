@@ -1,6 +1,6 @@
 "use client";
 
-import { Chats, Floor, Gear, Meetings, Office, People, SignOut } from "@/components/ui/icons";
+import { Chats, Floor, Gear, Meetings, Office, People, SignOut } from "web-shared/components/ui/icons";
 
 /**
  * The rail's icons, from the app's one pack (components/ui/icons). The rail

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { signTicket, verifyTicket, type RoomTicket } from "../../shared-protocol/src";
+import { signTicket, verifyTicket, type RoomTicket } from "shared-protocol";
 
 const SECRET = "secret-one";
 

@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
-import { localeDirection, routing, type Locale } from "@/lib/i18n/routing";
-import { X_HANDLE } from "@/lib/site";
-import { THEME_SCRIPT } from "@/lib/theme-script";
-import { ogLocale, socialImage } from "@/lib/seo";
-import { siteGraph } from "@/lib/structured-data";
-import { GoogleAnalytics } from "@/components/GoogleAnalytics";
-import { JsonLd } from "@/components/JsonLd";
+import { localeDirection, routing, type Locale } from "../lib/i18n/routing";
+import { X_HANDLE } from "../lib/site";
+import { THEME_SCRIPT } from "../lib/theme-script";
+import { ogLocale, socialImage } from "../lib/seo";
+import { siteGraph } from "../lib/structured-data";
+import { GoogleAnalytics } from "../components/GoogleAnalytics";
+import { JsonLd } from "../components/JsonLd";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

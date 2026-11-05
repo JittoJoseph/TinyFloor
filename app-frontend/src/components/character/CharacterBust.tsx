@@ -1,7 +1,7 @@
 "use client";
 
-import { PixelAvatar } from "@/components/PixelAvatar";
-import { cn } from "@/lib/utils";
+import { PixelAvatar } from "web-shared/components/PixelAvatar";
+import { cn } from "web-shared/lib/utils";
 
 const PRESENCE: Record<string, string> = {
   available: "bg-ok",

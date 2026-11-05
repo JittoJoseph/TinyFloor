@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { useSitePage } from "@/lib/links";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /** The line under a way in: continuing means agreeing to the Terms and the Privacy Policy. */
 export function Agree({ className }: { className?: string }) {

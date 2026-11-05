@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import { absoluteUrl, articleNode, faqNode, pageGraph } from "@/lib/structured-data";
-import { JsonLd } from "@/components/JsonLd";
-import { cn } from "@/lib/utils";
+import { absoluteUrl, articleNode, faqNode, pageGraph } from "web-shared/lib/structured-data";
+import { JsonLd } from "web-shared/components/JsonLd";
+import { cn } from "web-shared/lib/utils";
 import { emphasised } from "@/lib/words";
 import { CJK_HEADLINE, COLUMN, Closing, INK, LEAD, MarketingShell, Questions } from "@/components/home/Blocks";
 import { READ } from "@/components/guides/ArticleSections";

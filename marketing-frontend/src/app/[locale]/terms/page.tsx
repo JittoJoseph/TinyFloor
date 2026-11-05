@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import type { Locale } from "@/lib/i18n/routing";
+import type { Locale } from "web-shared/lib/i18n/routing";
 import { LegalPage } from "@/components/legal/LegalPage";
 import { englishOnlyMetadata } from "@/lib/englishOnlyMetadata";
 import { TERMS_UPDATED, termsSections, termsIntro } from "@/components/legal/terms";

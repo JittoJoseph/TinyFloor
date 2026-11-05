@@ -1,5 +1,5 @@
 import { Loader } from "@/components/motion/loader";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /** On the way into a place, before the shell has what it needs. */
 export function Entering({ className }: { className?: string }) {

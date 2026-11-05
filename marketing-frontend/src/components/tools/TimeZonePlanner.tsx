@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { STONE } from "@/components/home/Blocks";
 import {
   SLOT,

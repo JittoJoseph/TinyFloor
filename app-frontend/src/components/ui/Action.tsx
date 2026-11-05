@@ -2,8 +2,8 @@
 
 import { forwardRef, type ReactNode } from "react";
 import { StatefulButton, type ButtonState } from "@/components/motion/button/stateful";
-import { cn } from "@/lib/utils";
-import { Arrow, BASE, TONE, type Tone } from "@/components/ui/ActionLink";
+import { cn } from "web-shared/lib/utils";
+import { Arrow, BASE, TONE, type Tone } from "web-shared/components/ui/ActionLink";
 
 /**
  * The one big button a screen has: walk in, sign in, create. Built on beUI's
@@ -55,4 +55,4 @@ export const ActionButton = forwardRef<
   );
 });
 
-export { ActionLink } from "@/components/ui/ActionLink";
+export { ActionLink } from "web-shared/components/ui/ActionLink";

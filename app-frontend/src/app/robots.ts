@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { APP_URL } from "@/lib/site";
+import { APP_URL } from "web-shared/lib/site";
 
 /**
  * The app's one page worth finding is the lobby; the rest is behind a sign-in

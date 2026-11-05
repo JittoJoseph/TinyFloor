@@ -3,7 +3,7 @@
  * there (components/app/Home), without first reading which offices are yours. Only a hint:
  * the office, read on the way, says if it isn't one of yours any more, and is forgotten.
  */
-import { SESSION_HINT_KEY } from "@/lib/session-hint";
+import { SESSION_HINT_KEY } from "web-shared/lib/session-hint";
 
 const KEY = "tf-last-office";
 

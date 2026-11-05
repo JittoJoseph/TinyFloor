@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { track } from "@/lib/analytics";
+import { track } from "web-shared/lib/analytics";
 
 /**
  * TinyFloor as an app of its own, the way Chrome and Edge install a site: its

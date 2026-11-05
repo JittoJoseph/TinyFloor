@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { verifyTicket } from "../../shared-protocol/src";
+import { verifyTicket } from "shared-protocol";
 import { env } from "cloudflare:workers";
 import { call, makeUser, type TestUser } from "./helpers";
 

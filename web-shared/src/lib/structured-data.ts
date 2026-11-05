@@ -1,6 +1,6 @@
-import { APP_PATH, APP_URL, AUTHOR, LISTINGS, SITE_URL, SOCIALS } from "@/lib/site";
-import { localeCodes } from "@/lib/i18n/routing";
-import { localePath, socialImage } from "@/lib/seo";
+import { APP_PATH, APP_URL, AUTHOR, LISTINGS, SITE_URL, SOCIALS } from "./site";
+import { localeCodes } from "./i18n/routing";
+import { localePath, socialImage } from "./seo";
 
 export type Schema = Record<string, unknown>;
 

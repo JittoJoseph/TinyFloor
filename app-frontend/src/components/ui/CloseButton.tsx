@@ -1,7 +1,7 @@
 "use client";
 
-import { X } from "@/components/ui/icons";
-import { cn } from "@/lib/utils";
+import { X } from "web-shared/components/ui/icons";
+import { cn } from "web-shared/lib/utils";
 
 /**
  * Closing a dialog, sheet or panel: the same control everywhere. A filled

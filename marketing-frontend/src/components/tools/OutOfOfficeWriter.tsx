@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy } from "@/components/ui/icons";
-import { cn } from "@/lib/utils";
+import { Check, Copy } from "web-shared/components/ui/icons";
+import { cn } from "web-shared/lib/utils";
 import { STONE } from "@/components/home/Blocks";
 import { composeOoo, type OooReason, type OooTone } from "@/lib/tools/out-of-office/compose";
 import type { OooContent } from "@/lib/tools/out-of-office";

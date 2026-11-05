@@ -1,4 +1,4 @@
-import { GENERAL_CHANNEL } from "@shared/chat";
+import { GENERAL_CHANNEL } from "shared-protocol/chat";
 
 /**
  * What chat remembers for you between visits to it (docs/product.md): the

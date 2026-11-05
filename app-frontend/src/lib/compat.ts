@@ -1,7 +1,7 @@
-import { CHARACTER_CATALOG } from "@shared/character";
-import { FLOORS } from "@shared/map";
-import { PROTOCOL_VERSION } from "@shared/messages";
-import atlas from "@shared/catalog/atlas.json";
+import { CHARACTER_CATALOG } from "shared-protocol/character";
+import { FLOORS } from "shared-protocol/map";
+import { PROTOCOL_VERSION } from "shared-protocol/messages";
+import atlas from "shared-protocol/catalog/atlas.json";
 
 /**
  * What an open page has to agree on with everyone else's, as one short key:

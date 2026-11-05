@@ -1,6 +1,6 @@
-import { ArrowRight } from "@/components/ui/icons";
+import { ArrowRight } from "web-shared/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /**
  * A page on an index: with its illustration (lib/illustrations), the picture

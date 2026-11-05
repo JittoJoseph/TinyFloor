@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from "react";
-import type { ClientMessage, Desk } from "@shared/messages";
-import { track } from "@/lib/analytics";
+import type { ClientMessage, Desk } from "shared-protocol/messages";
+import { track } from "web-shared/lib/analytics";
 
 /**
  * The office's desks (docs/product.md), in one place for the floor and the page

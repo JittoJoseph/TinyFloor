@@ -2,18 +2,18 @@
 
 import { Fragment, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { useFormatter, useLocale, useNow, useTranslations } from "next-intl";
-import { ArrowDown, Check, Copy, Download, FileText, ImagePlus, Pencil, Reply, SmilePlus, Trash2 } from "@/components/ui/icons";
+import { ArrowDown, Check, Copy, Download, FileText, ImagePlus, Pencil, Reply, SmilePlus, Trash2 } from "web-shared/components/ui/icons";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { isPicture, isVoice, type ChatFile, type ChatMeeting } from "@shared/chat";
+import { isPicture, isVoice, type ChatFile, type ChatMeeting } from "shared-protocol/chat";
 import { MeetingCard } from "./MeetingCard";
 import { VoiceMessage } from "./VoiceMessage";
 import { fileUrl, sizeOf } from "@/lib/chatFiles";
 import { mentionSpans } from "@/lib/mentions";
 import { Viewer } from "./Viewer";
-import { Face } from "@/components/ui/Face";
+import { Face } from "web-shared/components/ui/Face";
 import { Loader } from "@/components/motion/loader";
 import { EASE_OUT } from "@/lib/ease";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { focusComposer } from "./Composer";
 
 export interface Line {

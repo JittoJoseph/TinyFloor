@@ -36,7 +36,7 @@ import {
   type LobbyChatPage,
   type HelpNews,
   type RoomTicket,
-} from "../../shared-protocol/src";
+} from "shared-protocol";
 import { readTicket, TICKET_HEADER } from "./headers";
 import { pushTo } from "./push";
 import { markActive } from "./usage";

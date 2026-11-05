@@ -1,6 +1,6 @@
-import type { LandingKey } from "@/lib/landings";
-import type { GuideCopy, GuideKey } from "@/lib/guides";
-import type { Locale } from "@/lib/i18n/routing";
+import type { LandingKey } from "web-shared/lib/landings";
+import type { GuideCopy, GuideKey } from "web-shared/lib/guides";
+import type { Locale } from "web-shared/lib/i18n/routing";
 
 /**
  * The blog: posts written to answer one question with facts someone can

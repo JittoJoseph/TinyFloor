@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /** A loading shape: a line or a face, in the place what's loading will take. */
 export function Bone({ className }: { className?: string }) {

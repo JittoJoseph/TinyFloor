@@ -19,21 +19,21 @@ import {
   Search,
   SquarePen,
   UserPlus,
-} from "@/components/ui/icons";
+} from "web-shared/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
-import { GENERAL_CHANNEL, cleanChannelName, dmChannelId, dmMembers, isDm, type ChannelSummary } from "@shared/chat";
+import { GENERAL_CHANNEL, cleanChannelName, dmChannelId, dmMembers, isDm, type ChannelSummary } from "shared-protocol/chat";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { chat, type Found } from "@/lib/ChatSocket";
 import { useChat, useTyping } from "@/lib/useChat";
 import { useAuth } from "@/contexts/AuthContext";
 import { useFloorStatus } from "@/lib/floor";
 import { CommandPalette, type CommandItem } from "@/components/motion/command-palette";
-import { Face, FaceStack, type Presence } from "@/components/ui/Face";
+import { Face, FaceStack, type Presence } from "web-shared/components/ui/Face";
 import { IconButton, Kbd } from "@/components/ui/IconButton";
 import { Menu, MenuHeader, MenuItem } from "@/components/ui/Menu";
 import { Chip } from "@/components/ui/Empty";
 import { SPRING_LAYOUT } from "@/lib/ease";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { ShellView } from "./AppShell";
 import { PresenceDock } from "./PresenceDock";
 import { NotifyCard } from "./chat/NotifyCard";
@@ -42,7 +42,7 @@ import { Conversation, ConversationIntro, type Line } from "./chat/Conversation"
 import { Held } from "./chat/Held";
 import { addToComposer, Composer, focusComposer } from "./chat/Composer";
 import { HelpTicket } from "./HelpTicket";
-import { Logo } from "@/components/app/Logo";
+import { Logo } from "web-shared/components/app/Logo";
 import { help, SUPPORT_CHANNEL, useHelp } from "@/lib/help";
 import { conversationToOpen, jumpTo, rememberConversation, takeJump } from "@/lib/chatMemory";
 import { useWide } from "@/lib/hooks/use-wide";

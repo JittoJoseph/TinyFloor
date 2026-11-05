@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { spotifyLink } from "../../shared-protocol/src";
+import { spotifyLink } from "shared-protocol";
 import { call, makeUser } from "./helpers";
 
 type Share = { url: string; kind: string; title: string | null; image: string | null; until: number };

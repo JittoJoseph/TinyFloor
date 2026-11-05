@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
-import type { GuideSection } from "@/lib/guides";
+import type { GuideSection } from "web-shared/lib/guides";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { CJK_HEADLINE } from "@/components/home/Blocks";
 
 /** The column long text is read in: narrow enough for its lines to stay easy. */

@@ -1,4 +1,4 @@
-import type { VideoKind, VideoQuality } from "@shared/messages";
+import type { VideoKind, VideoQuality } from "shared-protocol/messages";
 
 /**
  * Everything about video quality lives here: what we capture, the qualities we

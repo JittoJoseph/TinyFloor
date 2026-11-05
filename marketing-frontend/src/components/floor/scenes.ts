@@ -1,5 +1,5 @@
-import { CAST } from "@/components/home/previews/Frame";
-import type { Sitter, Stander } from "@/components/floor/FloorScene";
+import { CAST } from "web-shared/components/home/previews/Frame";
+import type { Sitter, Stander } from "web-shared/components/floor/FloorScene";
 
 /*
  * The floor's everyday moments, placed on the real map in tiles. Everyone

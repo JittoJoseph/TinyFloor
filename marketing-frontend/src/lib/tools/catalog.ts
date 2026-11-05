@@ -1,5 +1,5 @@
-import { localeCodes, type Locale } from "@/lib/i18n/routing";
-import { GUIDES, guideLocales, guidePath } from "@/lib/guides";
+import { localeCodes, type Locale } from "web-shared/lib/i18n/routing";
+import { GUIDES, guideLocales, guidePath } from "web-shared/lib/guides";
 import { BLOG_LOCALES, BLOG_PATH, POSTS, postPath } from "@/lib/blog";
 
 /**

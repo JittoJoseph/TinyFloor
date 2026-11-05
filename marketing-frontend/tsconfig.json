@@ -19,8 +19,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*", "../web-shared/src/*"],
-      "@shared/*": ["../shared-protocol/src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [

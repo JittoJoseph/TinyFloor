@@ -1,8 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { usePlans } from "@/lib/billing";
-import { cn } from "@/lib/utils";
+import { usePlans } from "web-shared/lib/billing";
+import { cn } from "web-shared/lib/utils";
 
 /**
  * One quiet line wherever the free plan's three seats come up: more is on the

@@ -3,7 +3,7 @@
 import { motion, useReducedMotion, type Variants } from "motion/react";
 import { useMemo, type ComponentProps, type ReactNode, type Ref } from "react";
 import { EASE_OUT } from "@/lib/ease";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 type Side = "top" | "right" | "bottom" | "left";
 

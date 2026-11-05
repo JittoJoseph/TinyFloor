@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link2 } from "@/components/ui/icons";
+import { Link2 } from "web-shared/components/ui/icons";
 import { MenuRow } from "@/components/ui/MenuViews";
-import { spotifyLink } from "@shared/spotify";
-import { api } from "@/lib/api";
+import { spotifyLink } from "shared-protocol/spotify";
+import { api } from "web-shared/lib/api";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import {
   nextMusic,
@@ -19,7 +19,7 @@ import {
   warmMusic,
   type MusicItem,
 } from "@/lib/music";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { SpotifyMark } from "./SpotifyActivity";
 
 /**

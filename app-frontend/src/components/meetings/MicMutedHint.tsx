@@ -2,10 +2,10 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useTranslations } from "next-intl";
-import { MicOff } from "@/components/ui/icons";
+import { MicOff } from "web-shared/components/ui/icons";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /**
  * Talking with the microphone off, on a call or in a meeting: says so, above

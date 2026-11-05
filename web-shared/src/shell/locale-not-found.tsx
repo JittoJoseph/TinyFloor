@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
-import { FloorScene } from "@/components/floor/FloorScene";
-import { SiteTheme } from "@/components/home/SiteTheme";
-import { ActionLink } from "@/components/ui/ActionLink";
+import { FloorScene } from "../components/floor/FloorScene";
+import { SiteTheme } from "../components/home/SiteTheme";
+import { ActionLink } from "../components/ui/ActionLink";
 
 /**
  * A page that isn't there, in the app's look and theme, with the one way on:

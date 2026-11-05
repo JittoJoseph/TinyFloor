@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { api, type Plans } from "@/lib/api";
+import { api, type Plans } from "./api";
 
 /**
  * Paid plans: the plan list from the API, read once and shared. Both sites

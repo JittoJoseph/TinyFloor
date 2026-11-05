@@ -11,10 +11,10 @@ import { depthForY } from "./MapManager";
 import type { SeatPose } from "./SeatManager";
 import { SceneLabel } from "./SceneLabel";
 import { cssZoom } from "./plates";
-import { TILE_SIZE, MOVEMENT_SPEED, pixelToTile, tileToPixel } from "@/lib/types";
-import { statusColorValue } from "@/lib/status";
-import { liveNote, type StatusNote } from "@shared/messages";
-import type { PlayerStatus } from "@/lib/types";
+import { TILE_SIZE, MOVEMENT_SPEED, pixelToTile, tileToPixel } from "web-shared/lib/types";
+import { statusColorValue } from "web-shared/lib/status";
+import { liveNote, type StatusNote } from "shared-protocol/messages";
+import type { PlayerStatus } from "web-shared/lib/types";
 
 interface RemotePlayerState {
   path: Vec[];

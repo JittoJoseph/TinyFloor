@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { SITE_URL } from '@/lib/site';
+import { SITE_URL } from 'web-shared/lib/site';
 
 export default function robots(): MetadataRoute.Robots {
   // The preview site is for trying changes; only the real site gets indexed.

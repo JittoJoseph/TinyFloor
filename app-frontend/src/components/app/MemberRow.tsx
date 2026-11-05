@@ -2,11 +2,11 @@
 
 import type { ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { Footprints, MessageSquare, UserRound } from "@/components/ui/icons";
-import { Face, type Presence } from "@/components/ui/Face";
+import { Footprints, MessageSquare, UserRound } from "web-shared/components/ui/icons";
+import { Face, type Presence } from "web-shared/components/ui/Face";
 import { IconButton } from "@/components/ui/IconButton";
-import { cn } from "@/lib/utils";
-import type { StatusNote } from "@shared/messages";
+import { cn } from "web-shared/lib/utils";
+import type { StatusNote } from "shared-protocol/messages";
 import { NoteText, noteLine } from "./StatusNote";
 
 const STATUS_DOT: Record<string, string> = {

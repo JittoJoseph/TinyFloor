@@ -3,15 +3,15 @@
 import { useState, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
-import { Redo, Undo } from "@/components/ui/icons";
-import { FLOOR, type DeskSpot } from "@shared/map";
-import { fitsIn, officePieces, spotKey, spotsOn } from "@shared/office";
-import atlas from "@shared/catalog/atlas.json";
+import { Redo, Undo } from "web-shared/components/ui/icons";
+import { FLOOR, type DeskSpot } from "shared-protocol/map";
+import { fitsIn, officePieces, spotKey, spotsOn } from "shared-protocol/office";
+import atlas from "shared-protocol/catalog/atlas.json";
 import { FLOOR_FILES } from "@/lib/floorWarmup";
 import { usePieceChanges } from "@/lib/pieces";
 import { closeDecorate, pickPart, redo, resetDesk, setPart, undo, useDecorate } from "@/lib/decorate";
 import { EASE_OUT } from "@/lib/ease";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /** What a spot can hold, in groups, in this order. */
 const SHELVES = ["tech", "lamps", "personal", "setups"] as const;

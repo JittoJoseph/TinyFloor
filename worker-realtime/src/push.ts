@@ -1,4 +1,4 @@
-import type { PushPayload } from "../../shared-protocol/src";
+import type { PushPayload } from "shared-protocol";
 
 /**
  * Web Push, sent from here with nothing but WebCrypto: the message encrypted

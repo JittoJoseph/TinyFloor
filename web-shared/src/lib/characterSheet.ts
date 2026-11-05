@@ -1,4 +1,4 @@
-import { CHARACTER_CATALOG, characterLayers, characterOrDefault } from "@shared/character";
+import { CHARACTER_CATALOG, characterLayers, characterOrDefault } from "shared-protocol/character";
 
 /**
  * Every character drawn anywhere (the floor, the doors, the creator, the

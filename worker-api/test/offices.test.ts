@@ -1,6 +1,6 @@
 import { env } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
-import { verifyTicket } from "../../shared-protocol/src";
+import { verifyTicket } from "shared-protocol";
 import { call, fakeRealtime, makeUser, onFree, type TestUser } from "./helpers";
 
 async function officeOf(admin: TestUser, name = "Studio") {

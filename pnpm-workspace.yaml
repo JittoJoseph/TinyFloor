@@ -5,6 +5,7 @@ packages:
   - app-frontend
   - marketing-frontend
   - web-shared
+  - shared-protocol
   - lab
 
 catalog:
@@ -39,4 +40,5 @@ allowBuilds:
   sharp: true
   "@parcel/watcher": false
   "@swc/core": false
-  core-js: true
+  # posthog-js's core-js: its install script only prints a notice.
+  core-js: false

@@ -1,4 +1,4 @@
-import { DEFAULT_CHARACTER, DOOR_PRESETS, isCharacter } from "@shared/character";
+import { DEFAULT_CHARACTER, DOOR_PRESETS, isCharacter } from "shared-protocol/character";
 
 const KEY = "tinyfloorIdentity";
 

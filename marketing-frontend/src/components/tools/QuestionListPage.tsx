@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { CJK_HEADLINE } from "@/components/home/Blocks";
 import { ArticleSections, numberItems } from "@/components/guides/ArticleSections";
 import type { IcebreakersContent } from "@/lib/tools/icebreakers";

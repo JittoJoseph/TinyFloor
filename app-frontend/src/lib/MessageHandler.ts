@@ -1,18 +1,18 @@
 import * as Phaser from "phaser";
-import type { ClientMessage, MeetingUsage, PlayerState, ServerMessage } from "@shared/messages";
+import type { ClientMessage, MeetingUsage, PlayerState, ServerMessage } from "shared-protocol/messages";
 import { PlayerManager } from "./PlayerManager";
 import { SeatManager } from "./SeatManager";
 import { callManager } from "./CallManager";
 import { whiteboard } from "./WhiteboardManager";
 import { AnimationManager } from "./AnimationManager";
 import { playSound } from "./sounds";
-import { tileToPixel } from "@/lib/types";
+import { tileToPixel } from "web-shared/lib/types";
 import { setMeetings, setMeetingUsage } from "./meetings";
 import { deskOf, deskState, setDesks } from "./desks";
 import { applyPieceChange, setPieceChanges } from "./pieces";
 import { FLOOR_ARRIVED_EVENT, floorSteps, myStatus, myStatusNote, sinceFloorRequested, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
 import { isListening } from "./music";
-import { track } from "@/lib/analytics";
+import { track } from "web-shared/lib/analytics";
 
 /** Applies what the room says to the scene and the React overlays. */
 export class MessageHandler {

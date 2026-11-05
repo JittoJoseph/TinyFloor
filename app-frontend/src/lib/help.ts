@@ -1,15 +1,15 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import type { HelpNews } from "@shared/chat";
-import { api, ApiError, type HelpContext, type HelpTicket, type HelpTicketView } from "@/lib/api";
-import { analyticsConfigured, withPostHog } from "@/lib/analytics";
+import type { HelpNews } from "shared-protocol/chat";
+import { api, ApiError, type HelpContext, type HelpTicket, type HelpTicketView } from "web-shared/lib/api";
+import { analyticsConfigured, withPostHog } from "web-shared/lib/analytics";
 import { playSound } from "@/lib/sounds";
 
 /** Read again when you come back to the tab, but not more often than this. */
 const FRESH_MS = 60_000;
 
-export { SUPPORT_CHANNEL } from "@shared/chat";
+export { SUPPORT_CHANNEL } from "shared-protocol/chat";
 
 interface HelpState {
   /** The conversation is on screen, in Chat. */

@@ -1,14 +1,14 @@
 import * as Phaser from "phaser";
 import { NavGrid, Rect } from "./Navigation";
-import { TILE_SIZE } from "@/lib/types";
+import { TILE_SIZE } from "web-shared/lib/types";
 import { FLOOR_FILES } from "@/lib/floorWarmup";
-import { FLOOR } from "@shared/map";
-import { GROUNDS } from "@shared/shell";
-import { officePieces, officeSolids, type OfficePiece } from "@shared/office";
+import { FLOOR } from "shared-protocol/map";
+import { GROUNDS } from "shared-protocol/shell";
+import { officePieces, officeSolids, type OfficePiece } from "shared-protocol/office";
 import { crisp } from "./crisp";
 import { floorWalls, floorWallsNow } from "./floorWalls";
 import { pieceChanges, subscribePieces } from "./pieces";
-import atlas from "@shared/catalog/atlas.json";
+import atlas from "shared-protocol/catalog/atlas.json";
 
 export interface MapAnchor {
   name: string;

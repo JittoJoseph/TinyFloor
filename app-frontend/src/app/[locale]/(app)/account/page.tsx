@@ -1,5 +1,5 @@
 import { redirect } from "@/lib/i18n/navigation";
-import type { Locale } from "@/lib/i18n/routing";
+import type { Locale } from "web-shared/lib/i18n/routing";
 import { homePath } from "@/lib/links";
 
 // Your profile and how you sign in are in an office's settings now; an old

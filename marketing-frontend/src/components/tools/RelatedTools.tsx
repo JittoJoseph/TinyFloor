@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import type { Locale } from "@/lib/i18n/routing";
-import { ArrowRight } from "@/components/ui/icons";
+import type { Locale } from "web-shared/lib/i18n/routing";
+import { ArrowRight } from "web-shared/components/ui/icons";
 import { TOOLS_PATH, toolsIn } from "@/lib/tools/catalog";
 import { FEW_TOOL_NAMES, TOOLS_HUB } from "@/lib/tools/hub-copy";
 

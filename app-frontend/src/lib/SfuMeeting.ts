@@ -1,4 +1,4 @@
-import type { MediaFlags, MediaKind, SfuClientMessage, SfuServerMessage, VideoKind, VideoQuality } from "@shared/messages";
+import type { MediaFlags, MediaKind, SfuClientMessage, SfuServerMessage, VideoKind, VideoQuality } from "shared-protocol/messages";
 import { simulcastEncodings } from "./media";
 import { withOpusDtx } from "./sdp";
 

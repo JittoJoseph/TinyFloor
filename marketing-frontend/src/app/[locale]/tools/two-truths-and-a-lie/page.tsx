@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import type { Locale } from "@/lib/i18n/routing";
-import { pageMetadata } from "@/lib/seo";
+import type { Locale } from "web-shared/lib/i18n/routing";
+import { pageMetadata } from "web-shared/lib/seo";
 import { QuestionListPage } from "@/components/tools/QuestionListPage";
 import { TWO_TRUTHS_PATH } from "@/lib/tools/catalog";
 import { TWO_TRUTHS_UPDATED, twoTruthsIn } from "@/lib/tools/two-truths";

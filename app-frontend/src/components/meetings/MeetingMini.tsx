@@ -1,11 +1,11 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ArrowUpRight } from "@/components/ui/icons";
+import { ArrowUpRight } from "web-shared/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useCall } from "@/lib/useCall";
 import { usePlace } from "@/components/app/place";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { MeetingTile } from "./MeetingTile";
 import { clock, useElapsed, useMeetingName, useMyMeeting } from "./hooks";
 import { useAuth } from "@/contexts/AuthContext";

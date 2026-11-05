@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy } from "@/components/ui/icons";
-import { cn } from "@/lib/utils";
+import { Check, Copy } from "web-shared/components/ui/icons";
+import { cn } from "web-shared/lib/utils";
 import { STONE } from "@/components/home/Blocks";
 import { standupMinutes, type StandupContent, type StandupFormat } from "@/lib/tools/standup";
 

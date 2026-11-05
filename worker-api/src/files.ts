@@ -1,4 +1,4 @@
-import { FILE_MAX, isPicture } from "../../shared-protocol/src";
+import { FILE_MAX, isPicture } from "shared-protocol";
 import { requireOffice } from "./access";
 import { HttpError, json } from "./http";
 import type { Router } from "./router";

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, Refresh } from "@/components/ui/icons";
-import { cn } from "@/lib/utils";
+import { Check, Copy, Refresh } from "web-shared/components/ui/icons";
+import { cn } from "web-shared/lib/utils";
 import { INK, STONE } from "@/components/home/Blocks";
 import type { IcebreakerGroup } from "@/lib/tools/icebreakers";
 

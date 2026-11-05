@@ -9,7 +9,7 @@ import {
   LoaderCircle,
   X,
   type AppIcon,
-} from "@/components/ui/icons";
+} from "web-shared/components/ui/icons";
 import {
   AnimatePresence,
   motion,
@@ -27,7 +27,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { EASE_OUT } from "@/lib/ease";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 export type ToastStatus = "neutral" | "info" | "loading" | "success" | "error";
 export type ToastPosition =

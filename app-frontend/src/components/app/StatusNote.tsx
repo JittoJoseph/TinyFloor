@@ -2,12 +2,12 @@
 
 import { useRef, useState } from "react";
 import { useFormatter, useLocale, useTranslations } from "next-intl";
-import { ArrowUp, Check, PenLine } from "@/components/ui/icons";
-import { STATUS_NOTE_MAX, type NoteIcon, type StatusNote } from "@shared/messages";
+import { ArrowUp, Check, PenLine } from "web-shared/components/ui/icons";
+import { STATUS_NOTE_MAX, type NoteIcon, type StatusNote } from "shared-protocol/messages";
 import { NOTE_ICON_LIST, NoteGlyph } from "@/lib/noteIcons";
 import { saveMyNote } from "@/lib/floor";
 import { MenuRow } from "@/components/ui/MenuViews";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /** How long a note stays: a stretch that suits what it says, or until it's changed. */
 type Lasting = "m30" | "h1" | "h4" | "today" | "week" | "never";

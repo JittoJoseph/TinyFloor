@@ -1,9 +1,9 @@
 "use client";
 
 import { createContext, useContext, useState, type ReactElement, type ReactNode } from "react";
-import { Check } from "@/components/ui/icons";
+import { Check } from "web-shared/components/ui/icons";
 import { MorphPopover, MorphPopoverContent, MorphPopoverTrigger } from "@/components/motion/popover-morph";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 const CloseMenu = createContext<() => void>(() => {});
 

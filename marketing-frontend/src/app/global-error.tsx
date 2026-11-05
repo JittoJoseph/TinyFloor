@@ -1,3 +1,3 @@
 "use client";
 
-export { default } from "@/shell/global-error";
+export { default } from "web-shared/shell/global-error";

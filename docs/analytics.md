@@ -39,6 +39,7 @@ asked about teams, not only people. In the demo office, `place: lobby`.
 | `call_connected`, `meeting_joined` | `people_here` on meetings | Do people actually talk? |
 | `desk_claimed`, `wave_sent` | | Are desks and waves used? |
 | `message_sent` | `kind` (dm, channel), `picture` | Is chat used? Never the words. |
+| `music_played` | `kind` (track, album, playlist, artist, show, episode, jam), `source` (pick, recent, link, card) | Is the music player used, and how music gets started: a pick, a recent play, a pasted link, or Listen on someone's card. Never the song. |
 | `upgrade_opened` | `reason` (full, hours, trial, plans) | The Pro offer was shown, and what brought it up. |
 | `checkout_opened`, `plan_bought` | `from` (create, billing, upgrade:<why it opened>) | Where buying starts, and whether it finishes. |
 
@@ -155,8 +156,8 @@ Tap offers a guest an account; after two and a half minutes, a door over the
 floor asks them to name their team's office (not again from that browser for
 a week). One Tap makes the guest an account in place, the same id, so they
 stay on the floor as the same character and only the name on their tag
-changes, to their Google name (the room passes the new name on; it takes one
-only in the demo office). The office prompt takes the name, then an account
+changes, to their Google name (the room passes the new name on, as it does
+for a member renamed in any office). The office prompt takes the name, then an account
 for a guest (Google, or email by the sign-up page, which comes back to
 finish), makes the office and walks them into it. Watch `office_prompt_shown`
 against `office_created` with `from: demo_prompt`, and `account_signed_up`

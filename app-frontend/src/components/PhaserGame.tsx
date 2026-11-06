@@ -40,6 +40,10 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
     }
     return ticket;
   });
+  // Who you are when the floor starts. A new name or look later is told to the
+  // scene that's running (floor.ts: rename, look), never a reason to build it
+  // again: that would leave the room and walk back in.
+  const startingAs = useEffectEvent(() => ({ name, character }));
   const t = useTranslations("scene");
   const tDesk = useTranslations("desk");
   const tCommon = useTranslations("common");
@@ -103,6 +107,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
     let scene: GameScene | null = null;
     const start = (box: HTMLDivElement, width: number, height: number, density: number) => {
       applySceneText();
+      const { name, character } = startingAs();
 
       const config: Phaser.Types.Core.GameConfig = {
         type: Phaser.AUTO,
@@ -156,7 +161,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         game.current = null;
       }
     };
-  }, [name, character, userId]);
+  }, [userId]);
 
   return <div ref={gameRef} className="w-full h-full" />;
 };

@@ -158,7 +158,7 @@ function Picker({ playing, onPlay }: { playing: Array<string | null>; onPlay: ()
             <button
               type="button"
               onClick={() => {
-                void playMusic(one);
+                void playMusic(one, recentMusic().some((recent) => recent.url === one.url) ? "recent" : "pick");
                 // It plays in the row above, which is all there is to see now.
                 onPlay();
               }}
@@ -185,7 +185,7 @@ function Picker({ playing, onPlay }: { playing: Array<string | null>; onPlay: ()
       </ul>
       <LinkField
         onPlay={(found) => {
-          void playMusic(found);
+          void playMusic(found, "link");
           onPlay();
         }}
       />

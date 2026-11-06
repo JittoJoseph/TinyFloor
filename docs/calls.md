@@ -135,8 +135,17 @@ the stage: with only room noise, the talk light came on 4–5 times in 46 s
 
 A meeting connection that fails, or stays disconnected for 8 s, rejoins the
 same meeting on a fresh connection, without sounds and keeping the
-microphone and camera. A second loss within 20 s is left alone, so a dead
-network doesn't loop.
+microphone, camera and shared screen. A second loss within 20 s is left
+alone, so a dead network doesn't loop.
+
+The room's own connection coming back (a network blip, or the room
+restarting, which drops everyone at once) rejoins the same way: before, it
+left the meeting and joined afresh, with the leave and join sounds, and the
+shared screen and camera went off. Measured with a screen and a camera on,
+both sockets dropped at once: before, three sounds and both off for good;
+after, no sounds, both still on, and the screen reaching the other person
+again within a few seconds. A call with one person goes on through it: the
+other end waits 12 s for them back on the floor before ending the call.
 
 ## Everyone heard, and sooner
 

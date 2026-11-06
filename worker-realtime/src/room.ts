@@ -419,7 +419,7 @@ export class Room extends DurableObject<Env> {
         this.setListening(me, message.on);
         break;
       case "rename":
-        this.rename(me, message.name);
+        this.rename(socket, me, message.name);
         break;
       case "look":
         this.changeLook(socket, me, message.character);
@@ -622,15 +622,18 @@ export class Room extends DurableObject<Env> {
   }
 
   /**
-   * A new name for someone on the demo office's floor, who signed up with
-   * Google from it and took their Google name. Only there: in an office a name
-   * comes with the ticket, from the account, each time someone walks in.
+   * A new name, saved to the account a moment ago (or, on the demo office's
+   * floor, the Google name of someone who signed up from it): kept through
+   * hibernation and shown to everyone here, without walking out and back in.
+   * A guest in an office has no account to rename; the next ticket carries the
+   * account's name either way.
    */
-  private rename(me: Attachment, name: unknown): void {
-    if (!this.takeAction(me) || lobbyCopyNumber(me.room) === null) return;
+  private rename(socket: WebSocket, me: Attachment, name: unknown): void {
+    if (!this.takeAction(me) || (me.guest && lobbyCopyNumber(me.room) === null)) return;
     const clean = cleanDisplayName(name);
     if (!clean || clean === me.name) return;
     me.name = clean;
+    this.remember(socket, me);
     this.broadcast({ t: "renamed", id: me.userId, name: clean });
   }
 

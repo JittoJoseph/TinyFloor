@@ -7,6 +7,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError } from "web-shared/lib/api";
 import { allZones, browserZone, offsetLabel, timeIn, zoneCity, zoneLabel } from "@/lib/timeZone";
 import { useSitePage } from "@/lib/links";
+import { renameOnFloor } from "@/lib/floor";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { cn } from "web-shared/lib/utils";
 import { Button } from "@/components/motion/button/base";
@@ -61,7 +62,10 @@ export function Profile() {
     setBusy(true);
     setError("");
     try {
+      const renamed = currentName.trim() !== user.displayName;
       await updateProfile({ displayName: currentName.trim(), link: currentLink.trim() });
+      // The floor under Settings keeps running: your tag changes there, and for everyone.
+      if (renamed) renameOnFloor(currentName.trim());
       setName(null);
       setLink(null);
       setSaved(true);

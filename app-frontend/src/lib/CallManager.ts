@@ -148,6 +148,13 @@ const LOW: Wants = { camera: "low", screen: "low" };
  * one press brings it back.
  */
 const QUIET_REST_MS = 10 * 60_000;
+/**
+ * Someone on a call with you who left the floor without hanging up (their
+ * connection to the room dropped) has this long to come back before the call
+ * ends. The call itself runs between the two of you, not through the room,
+ * and goes on meanwhile.
+ */
+const RETURN_GRACE_MS = 12_000;
 /** How often a call with a camera on listens for talk. */
 const LISTEN_EVERY_MS = 20_000;
 /** Sound energy over one listen that counts as talk: about a second of speech, well above a quiet room. */
@@ -284,6 +291,8 @@ class CallManager {
   private ws: RoomSocket | null = null;
   private peers = new Map<string, PeerEntry>();
   private sfu: SfuMeeting | null = null;
+  /** Calls waiting for the other person back on the floor (leftFloor), by their id. */
+  private returning = new Map<string, ReturnType<typeof setTimeout>>();
   /**
    * The meeting's connection, made while you look at a meeting you can join
    * (getReady), with your microphone open: joining then only has to take the
@@ -570,7 +579,32 @@ class CallManager {
     this.emit();
   }
 
+  /**
+   * Someone left the floor. A ring with them ends; a call with them waits a
+   * moment for them to come back (backOnFloor), as when their connection to
+   * the room dropped, and ends if they don't.
+   */
+  leftFloor(id: string) {
+    if (!this.peers.has(id)) return this.dropPeer(id);
+    clearTimeout(this.returning.get(id));
+    this.returning.set(
+      id,
+      setTimeout(() => {
+        this.returning.delete(id);
+        this.dropPeer(id);
+      }, RETURN_GRACE_MS),
+    );
+  }
+
+  /** Back on the floor: a call waiting for them goes on. */
+  backOnFloor(id: string) {
+    clearTimeout(this.returning.get(id));
+    this.returning.delete(id);
+  }
+
   dropPeer(id: string) {
+    clearTimeout(this.returning.get(id));
+    this.returning.delete(id);
     if (this.incoming?.id === id) {
       // They gave up before we answered.
       this.clearRing();
@@ -639,7 +673,11 @@ class CallManager {
         this.onMeetingInvite(message);
         break;
       case "meeting_error":
-        if (message.code === "not_found") this.tellMeeting({ kind: "ended", meeting: "" });
+        if (message.code === "not_found") {
+          // Coming back to one that ended meanwhile (welcomed): out of it here too.
+          if (this.meeting) this.leaveMeeting(false);
+          this.tellMeeting({ kind: "ended", meeting: "" });
+        }
         break;
       case "sfu":
         (this.sfu ?? this.ready)?.handle(message);
@@ -724,13 +762,17 @@ class CallManager {
 
   /**
    * The room welcomed us, arriving or back after a reconnect. Back, the room
-   * has told everyone we left, and they ended their calls and rings with us,
-   * so ours end too. It knows nothing of our meeting, so we rejoin it if it is
-   * still going (the main one always is), and what we're on is told again.
+   * has told everyone we left: rings with us ended, and a call with us waits
+   * for us a moment (leftFloor), so ours goes on. It knows nothing of our
+   * meeting, so we rejoin it as a move if it is still going (the main one
+   * always is), and what we're on is told again.
    */
   welcomed(selfId: string) {
     this.selfId = selfId;
-    if (this.peers.size || this.incoming || this.outgoing) this.hangUp();
+    // A ring is the room's to carry, and it lost it with the connection: it ends. A call
+    // that was answered runs between the two of you and goes on (RETURN_GRACE_MS).
+    this.cancel();
+    this.decline();
     this.callReport = "";
     this.reportCall();
     // A connection made ready on the old socket: the room has forgotten it.
@@ -741,9 +783,21 @@ class CallManager {
     }
     const meeting = this.meeting;
     if (!meeting) return;
-    this.leaveMeeting(false);
-    if (meetingsState().meetings.some((one) => one.id === meeting)) this.ws?.send({ t: "meeting_join", meeting });
-    else this.tellMeeting({ kind: "ended", meeting });
+    if (!meetingsState().meetings.some((one) => one.id === meeting)) {
+      this.leaveMeeting(false);
+      this.tellMeeting({ kind: "ended", meeting });
+      return;
+    }
+    // Back in as a move, the way a lost media connection comes back
+    // (recoverMeeting): the same microphone, camera and shared screen, no
+    // sounds, only the meeting's connection new. Left and joined afresh, a
+    // room that restarted mid-meeting (it drops every socket at once) turned
+    // off everyone's screen and camera and played its leave and join sounds.
+    this.sfu?.close();
+    this.sfu = null;
+    this.voice.stop();
+    this.cameraOnJoin = this.cameraEnabled;
+    this.ws?.send({ t: "meeting_join", meeting });
   }
 
   /** Where the meeting is being looked at: the Meetings page, the floor, or a phone. */
@@ -1005,6 +1059,8 @@ class CallManager {
 
     // The connection to the SFU opens now, its slots filled once the microphone is open.
     sfu.publishLocal(this.local, this.flags(), !!this.local);
+    // Back in after a dropped connection with a screen shared: shared again on the new one.
+    if (this.screen) sfu.setScreen(this.screen);
     const opened = await this.openMedia();
     if (this.sfu !== sfu) return;
     this.cameraWanted = withCamera;

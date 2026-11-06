@@ -1,8 +1,10 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { SPOTIFY_REFRESH_MS, spotifyUri, type SpotifyShare } from "shared-protocol/spotify";
+import { SPOTIFY_REFRESH_MS, spotifyLink, spotifyUri, type SpotifyShare } from "shared-protocol/spotify";
 import { api } from "web-shared/lib/api";
+import { track } from "web-shared/lib/analytics";
+import { follow, startFollowing } from "./musicFollow";
 import { forgetPerson } from "@/lib/people";
 
 /** Something to play: a song, album, playlist, podcast or artist, or a Jam (which plays in Spotify). */
@@ -42,6 +44,8 @@ interface PlaybackUpdate {
   isBuffering: boolean;
   duration: number;
   position: number;
+  /** The song playing, as Spotify's player names it ("spotify:track:…"): from a list, it changes by itself. */
+  playingURI?: string;
 }
 
 interface IFrameApi {
@@ -65,6 +69,10 @@ const RECENT_MAX = 4;
 const PAUSE_STOPS_SHARING_MS = 30_000;
 /** Spotify's previews run 30 seconds; whole songs that short are rare enough. */
 const PREVIEW_MS = { min: 25_000, max: 30_500 };
+/** This close to its end, a song has finished (Spotify's last word on one is its full length, still "playing"). */
+const END_MS = 400;
+/** After a song ends, how long a list has to go on to its next one before what plays on comes instead. */
+const ADVANCE_WAIT_MS = 2500;
 
 let now: MusicNow = { item: null, from: null, playing: false, loading: false, preview: false };
 let time: MusicTime = { position: 0, duration: 0 };
@@ -140,14 +148,58 @@ function player(uri: string): Promise<Controller> {
 
 /** Whether the last word from the player had a song playing in its last seconds: then a pause is its end. */
 let nearEnd = false;
+/** The song Spotify's player last said it was on. */
+let playingUri = "";
+/** Which of a list's songs the player is on (musicFollow), and how many times it has moved on. */
+let following = startFollowing();
+let moves = 0;
+let endTimer: ReturnType<typeof setTimeout> | undefined;
+/** Skip was pressed before the list's song had started. */
+let skipWhenStarted = false;
 
-/** What Spotify's player says it is doing, several times a second while it plays. */
+/**
+ * What Spotify's player says it is doing, about once a second while it plays,
+ * and in a background tab too. A list goes on to its next song by itself,
+ * named here when it does; a song that ends with nothing after it in the
+ * player (one picked on its own, or a list's last) is followed by what plays
+ * on (nextMusic).
+ */
 function heard(update: PlaybackUpdate) {
   time = { position: update.position, duration: update.duration };
   const playing = !update.isPaused;
-  const ended = nearEnd && !playing && now.playing;
+  if (skipWhenStarted && list && update.duration > 0) {
+    skipWhenStarted = false;
+    controller?.seek(Math.max(0, update.duration - 300) / 1000);
+  }
+  let moved = false;
+  if (list) {
+    const next = follow(following, update, list.order.map((song) => spotifyUri(song) ?? ""));
+    following = next.state;
+    moved = next.moved;
+    if (moved) showListSong(next.state.index, update.playingURI);
+  } else if (update.playingURI && update.playingURI !== playingUri) {
+    moved = !!playingUri;
+  }
+  if (update.playingURI) playingUri = update.playingURI;
+  if (moved) {
+    moves++;
+    clearTimeout(endTimer);
+    endTimer = undefined;
+  }
+  const atEnd = update.duration > 0 && update.position >= update.duration - END_MS;
+  const ended = (nearEnd && !playing && now.playing) || (playing && atEnd);
   nearEnd = playing && update.duration > 0 && update.duration - update.position < 2500;
-  if (ended && now.item?.kind === "track") void nextMusic();
+  if (ended && !endTimer && now.item && now.item.kind !== "jam") {
+    const ending = moves;
+    endTimer = setTimeout(() => {
+      endTimer = undefined;
+      // Still on the song that ended: nothing came after it in the player.
+      if (moves === ending && now.item) {
+        list = null;
+        void nextMusic();
+      }
+    }, ADVANCE_WAIT_MS);
+  }
   const preview = update.duration > PREVIEW_MS.min && update.duration <= PREVIEW_MS.max;
   if (playing !== now.playing || preview !== now.preview || (now.loading && (playing || update.duration > 0))) {
     setNow({ playing, preview, loading: now.loading && !playing });
@@ -164,7 +216,16 @@ const HEARD_MAX = 200;
 /** Songs asked about for what plays on, newest first. */
 const SEEDS = 5;
 
-/** The songs still to play, after the one playing. */
+/**
+ * An album, playlist or artist playing whole in Spotify's player, which goes
+ * from song to song itself: with its songs by their player names, for showing
+ * each as it comes. Loading songs one at a time instead stopped at the first
+ * song's end in a background tab: Spotify's player won't start anything newly
+ * loaded while its tab is hidden, but goes on through a list it has.
+ */
+let list: { url: string; order: MusicItem[]; songs: Map<string, MusicItem>; cover: string | null } | null = null;
+
+/** The songs still to play, after the one playing (what plays on after a list). */
 let queue: MusicItem[] = [];
 /** Their album's or playlist's cover, until a song's own arrives. */
 let queueCover: string | null = null;
@@ -176,14 +237,18 @@ let picks = 0;
 
 /**
  * Plays something, from a press: a pick, a pasted link, or Listen on someone's
- * card. An album, playlist or artist plays one song at a time, so what's
- * playing, here and on your card, is always the song. What was chosen goes
- * first in the picks next time.
+ * card. An album, playlist or artist plays whole in Spotify's player, in its
+ * own order, and what's playing, here and on your card, is always the song.
+ * What was chosen goes first in the picks next time.
  */
-export async function playMusic(item: MusicItem) {
+export async function playMusic(item: MusicItem, source: "pick" | "recent" | "link" | "card") {
   remember(item);
+  // What and from where, never the song: is the music player used?
+  track("music_played", { kind: item.kind, source });
   const pick = ++picks;
   queue = [];
+  list = null;
+  skipWhenStarted = false;
   heardSongs = [];
   heardArtists = item.kind === "artist" ? [item.url] : [];
   if (item.kind === "jam") {
@@ -201,11 +266,41 @@ export async function playMusic(item: MusicItem) {
     () => [],
   );
   if (pick !== picks) return;
-  // Spotify wouldn't list them: it plays as a whole, under what was picked.
-  if (!songs.length) return load(item, item.url);
-  queue = item.kind === "playlist" ? shuffled(songs) : songs;
+  // The whole list into Spotify's player, which plays it on from song to song; named song by song as it does.
+  list = {
+    url: item.url,
+    order: songs,
+    songs: new Map(songs.flatMap((song) => {
+      const uri = spotifyUri(song);
+      return uri ? [[uri, song]] : [];
+    })),
+    cover: item.image,
+  };
   queueCover = item.image;
-  playSong(queue.shift()!, item.url);
+  const first = songs[0];
+  void load(item, item.url, first ? { ...first, image: first.image ?? item.image } : item);
+}
+
+/**
+ * The list's next song, as Spotify's player moved on to it: by the song it
+ * names (signed out), or the next in the list (signed in, when it names only
+ * the list); its name now, its cover once known.
+ */
+function showListSong(index: number, named?: string) {
+  if (!list) return;
+  const url = named?.startsWith("spotify:track:") ? spotifyLink(named)?.url : undefined;
+  const known = (named && list.songs.get(named)) || (url ? undefined : list.order[index]);
+  if (!known && !url) return;
+  const song: MusicItem = known ?? { url: url!, kind: "track", title: null, subtitle: null, image: null };
+  heardSongs = [song.url, ...heardSongs.filter((one) => one !== song.url)].slice(0, HEARD_MAX);
+  setNow({ item: { ...song, image: song.image ?? list.cover }, from: list.url });
+  if (song.image && song.title) return;
+  void api.lookUpSpotify(song.url).then(
+    ({ found }) => {
+      if (now.item?.url === song.url) setNow({ item: { ...now.item, ...found, image: found.image ?? now.item.image } });
+    },
+    () => {},
+  );
 }
 
 /**
@@ -215,6 +310,13 @@ export async function playMusic(item: MusicItem) {
  * when there's no one new.
  */
 export async function nextMusic() {
+  // A list in Spotify's player: to the end of this song, and it goes on to the next itself;
+  // pressed before the song has started, as soon as its length is known.
+  if (list) {
+    if (time.duration > 0) controller?.seek(Math.max(0, time.duration - 300) / 1000);
+    else skipWhenStarted = true;
+    return;
+  }
   const song = queue.shift();
   if (song) return playSong(song, now.from);
   const pick = picks;
@@ -245,27 +347,43 @@ function playSong(song: MusicItem, from: string | null) {
   );
 }
 
-/** Puts it in Spotify's player and plays it. */
-async function load(item: MusicItem, from: string | null) {
+/**
+ * Puts it in Spotify's player and plays it; `showing` is what's said to be
+ * playing meanwhile (a list's first song). Spotify's player won't start
+ * anything loaded while its tab is hidden, so then it's loaded the moment the
+ * tab is back, named and waiting till then.
+ */
+async function load(item: MusicItem, from: string | null, showing: MusicItem = item) {
   const uri = spotifyUri(item);
   if (!uri) return;
-  if (item.kind === "track") heardSongs = [item.url, ...heardSongs.filter((one) => one !== item.url)].slice(0, HEARD_MAX);
+  if (showing.kind === "track") heardSongs = [showing.url, ...heardSongs.filter((one) => one !== showing.url)].slice(0, HEARD_MAX);
   time = { position: 0, duration: 0 };
   nearEnd = false;
-  setNow({ item, from, loading: true, playing: false });
+  clearTimeout(endTimer);
+  endTimer = undefined;
+  playingUri = "";
+  following = startFollowing();
+  setNow({ item: showing, from, loading: true, playing: false });
+  const pick = picks;
+  await whenShown();
+  if (pick !== picks) return;
   playWhenReady = true;
   const made = controller;
   if (made) made.loadUri(uri);
   else await player(uri);
 }
 
-function shuffled<T>(list: T[]): T[] {
-  const out = [...list];
-  for (let i = out.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [out[i], out[j]] = [out[j], out[i]];
-  }
-  return out;
+/** Now if the tab is showing, or as soon as it is again. */
+function whenShown(): Promise<void> {
+  if (document.visibilityState !== "hidden") return Promise.resolve();
+  return new Promise((resolve) => {
+    const shown = () => {
+      if (document.visibilityState === "hidden") return;
+      document.removeEventListener("visibilitychange", shown);
+      resolve();
+    };
+    document.addEventListener("visibilitychange", shown);
+  });
 }
 
 export function toggleMusic() {
@@ -282,6 +400,10 @@ export function stopMusic() {
   playWhenReady = false;
   picks++;
   queue = [];
+  list = null;
+  skipWhenStarted = false;
+  clearTimeout(endTimer);
+  endTimer = undefined;
   controller?.pause();
   setNow({ item: null, from: null, playing: false, loading: false });
   time = { position: 0, duration: 0 };
@@ -370,4 +492,8 @@ export function useMusicTime(): MusicTime {
     () => time,
     () => serverTime,
   );
+}
+
+if (typeof window !== "undefined" && process.env.NODE_ENV === "development") {
+  (window as unknown as Record<string, unknown>).__music = { play: (item: MusicItem) => playMusic(item, "pick"), next: nextMusic, now: () => now, time: () => time };
 }

@@ -52,10 +52,13 @@ export class MessageHandler {
       case "player_joined":
         if (message.player.id === this.playerId) return;
         this.addUser(message.player);
+        callManager.backOnFloor(message.player.id);
         this.dispatchPlayerList();
-        playSound("join");
-        // Walked in, not back after a dropped connection: the floor can say hello (docs/product.md).
-        if (message.arrived) this.tell(TEAMMATE_ARRIVED_EVENT, message.player.id);
+        // Walked in, not back after a dropped connection: a sound, and the floor can say hello (docs/product.md).
+        if (message.arrived) {
+          playSound("join");
+          this.tell(TEAMMATE_ARRIVED_EVENT, message.player.id);
+        }
         break;
       case "waved":
         this.playerManager.wave(message.from);
@@ -198,7 +201,7 @@ export class MessageHandler {
   private handleUserLeft(id: string) {
     this.seats.release(id);
     this.playerManager.removePlayer(id);
-    callManager.dropPeer(id);
+    callManager.leftFloor(id);
     this.dispatchPlayerList();
   }
 

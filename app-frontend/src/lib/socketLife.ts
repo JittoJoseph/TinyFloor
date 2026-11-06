@@ -10,9 +10,14 @@ import { HEARTBEAT_PING } from "shared-protocol/messages";
  */
 
 /** A ping this often; the service answers without waking (setWebSocketAutoResponse). */
-const PING_EVERY_MS = 10_000;
-/** A ping left unanswered this long, with nothing else heard meanwhile, and the socket is dead. */
-const ANSWER_WITHIN_MS = 10_000;
+const PING_EVERY_MS = 15_000;
+/**
+ * A ping left unanswered this long, with nothing else heard meanwhile, and the
+ * socket is dead. Generous: a network that stalls for a few seconds comes
+ * back by itself, and a socket dropped in the middle of a call costs its
+ * media a moment; a laptop waking is checked sooner (PROBE_WITHIN_MS).
+ */
+const ANSWER_WITHIN_MS = 15_000;
 /** After a hint the network changed (back online, the tab shown, the laptop awake), an answer is due sooner. */
 const PROBE_WITHIN_MS = 5_000;
 /** A socket still opening after this long is given up on and tried again. */

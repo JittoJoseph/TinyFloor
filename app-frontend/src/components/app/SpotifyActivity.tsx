@@ -59,7 +59,7 @@ export function SpotifyActivity({ share, name, className }: { share: SpotifyShar
             disabled={already}
             onClick={() => {
               closeCard();
-              void playMusic(share);
+              void playMusic(share, "card");
             }}
             className="inline-flex h-8 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-foreground text-[12.5px] font-medium text-background transition-colors hover:bg-foreground/85 disabled:cursor-default disabled:bg-foreground/[0.06] disabled:text-foreground"
           >

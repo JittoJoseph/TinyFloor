@@ -57,10 +57,10 @@ describe("status notes", () => {
   });
 });
 
-describe("a new name on the demo office's floor", () => {
+describe("a new name, without walking in again", () => {
   let copy = 9000;
 
-  it("passes on the name someone took signing up from the floor, cleaned", async () => {
+  it("passes on the name someone took signing up from the demo office's floor, cleaned", async () => {
     const room = `lobby-${copy++}`;
     const ava = await Client.open(room, { sub: "ava", role: "guest" });
     await ava.next("welcome");
@@ -76,14 +76,29 @@ describe("a new name on the demo office's floor", () => {
     expect(welcome.players.find((player) => player.id === "gil")?.name).toBe("Gil Smith");
   });
 
-  it("takes no new name in an office, where the name comes from the account", async () => {
+  it("passes on a member's new name in an office, and keeps it for whoever walks in next", async () => {
     const room = uniqueRoom();
     const ava = await Client.open(room, { sub: "ava" });
     await ava.next("welcome");
-    const ben = await Client.open(room, { sub: "ben" });
+    const ben = await Client.open(room, { sub: "ben", name: "Ben" });
     await ben.next("welcome");
 
-    ben.send({ t: "rename", name: "Someone Else" });
+    ben.send({ t: "rename", name: "Benjamin" });
+    expect(await ava.next("renamed")).toEqual({ t: "renamed", id: "ben", name: "Benjamin" });
+
+    const cy = await Client.open(room, { sub: "cy" });
+    const welcome = await cy.next("welcome");
+    expect(welcome.players.find((player) => player.id === "ben")?.name).toBe("Benjamin");
+  });
+
+  it("takes no new name from a guest in an office, who has no account to rename", async () => {
+    const room = uniqueRoom();
+    const ava = await Client.open(room, { sub: "ava" });
+    await ava.next("welcome");
+    const gil = await Client.open(room, { sub: "gil", role: "guest" });
+    await gil.next("welcome");
+
+    gil.send({ t: "rename", name: "Someone Else" });
     await settle();
     expect(ava.messages.some((message) => message.t === "renamed")).toBe(false);
   });

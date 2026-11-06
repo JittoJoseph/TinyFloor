@@ -1,6 +1,6 @@
 import { env, exports } from "cloudflare:workers";
 import { expect } from "vitest";
-import { LOBBY_CHAT, signTicket, type ChatClientMessage, type ChatServerMessage } from "../../shared-protocol/src";
+import { LOBBY_CHAT, signTicket, type ChatClientMessage, type ChatServerMessage } from "shared-protocol";
 
 const ORIGIN = "http://localhost:3000";
 let made = 0;

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Bell } from "@/components/ui/icons";
+import { Bell } from "web-shared/components/ui/icons";
 import { askToNotify, useNotifyPermission } from "@/lib/notify";
 
 const KEY = "tf-notify-card";

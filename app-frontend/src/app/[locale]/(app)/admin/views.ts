@@ -1,4 +1,4 @@
-import type { AdminSummary } from "@/lib/api";
+import type { AdminSummary } from "web-shared/lib/api";
 
 export type View = "overview" | "inbox" | "people" | "offices" | "lobby";
 export const VIEWS: View[] = ["overview", "inbox", "people", "offices", "lobby"];

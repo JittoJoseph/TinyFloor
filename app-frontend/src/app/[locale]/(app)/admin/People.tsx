@@ -1,13 +1,13 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { AtSign, Calendar, Clock, Globe, KeyRound, MoreHorizontal, Office, Pencil, People as PeopleIcon, Trash2 } from "@/components/ui/icons";
+import { AtSign, Calendar, Clock, Globe, KeyRound, MoreHorizontal, Office, Pencil, People as PeopleIcon, Trash2 } from "web-shared/components/ui/icons";
 import { IconButton } from "@/components/ui/IconButton";
-import { Face } from "@/components/ui/Face";
+import { Face } from "web-shared/components/ui/Face";
 import { Dialog } from "@/components/ui/Dialog";
 import { Menu, MenuItem, MenuSeparator } from "@/components/ui/Menu";
 import { ShellView } from "@/components/app/AppShell";
-import { api, type AdminPersonDetail } from "@/lib/api";
+import { api, type AdminPersonDetail } from "web-shared/lib/api";
 import {
   Badge,
   Column,

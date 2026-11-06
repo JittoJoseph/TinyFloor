@@ -2,11 +2,11 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLocale } from "next-intl";
-import { ArrowLeft, Globe, Search } from "@/components/ui/icons";
+import { ArrowLeft, Globe, Search } from "web-shared/components/ui/icons";
 import { IconButton } from "@/components/ui/IconButton";
 import { Loader } from "@/components/motion/loader";
-import { ApiError, type AdminPage, type AdminStanding } from "@/lib/api";
-import { cn } from "@/lib/utils";
+import { ApiError, type AdminPage, type AdminStanding } from "web-shared/lib/api";
+import { cn } from "web-shared/lib/utils";
 
 /*
  * What every part of the admin view is made of: times and countries said the

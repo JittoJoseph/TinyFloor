@@ -1,4 +1,4 @@
-import { liveNote, NEW_FLOOR } from "../../shared-protocol/src";
+import { liveNote, NEW_FLOOR } from "shared-protocol";
 import {
   cleanName,
   INVITE_POLICIES,

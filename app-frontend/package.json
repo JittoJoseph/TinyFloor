@@ -4,10 +4,11 @@
   "private": true,
   "packageManager": "pnpm@11.22.0",
   "scripts": {
-    "dev": "node ../web-shared/scripts/fetch-assets.mjs && next dev -p 3001",
-    "build": "node ../web-shared/scripts/fetch-assets.mjs && next build",
+    "dev": "node ../web-shared/scripts/fetch-assets.mjs && node scripts/noise-files.mjs && next dev -p 3001",
+    "build": "node ../web-shared/scripts/fetch-assets.mjs && node scripts/noise-files.mjs && next build",
     "start": "next start",
     "lint": "eslint",
+    "test": "node --test --disable-warning=ExperimentalWarning --disable-warning=MODULE_TYPELESS_PACKAGE_JSON \"src/**/*.test.mts\"",
     "build:worker": "opennextjs-cloudflare build && node ../web-shared/scripts/static-pages.mjs --app",
     "preview": "pnpm run build:worker && opennextjs-cloudflare preview",
     "deploy:worker": "node ../tools/deploy.mjs worker:production worker:preview",
@@ -15,21 +16,22 @@
     "worker:production": "opennextjs-cloudflare deploy",
     "worker:preview": "opennextjs-cloudflare deploy --env preview",
     "upload:worker": "opennextjs-cloudflare upload",
-    "assets": "node ../web-shared/scripts/fetch-assets.mjs"
+    "assets": "node ../web-shared/scripts/fetch-assets.mjs && node scripts/noise-files.mjs"
   },
   "dependencies": {
     "@creem_io/embed": "catalog:",
     "@hugeicons/core-free-icons": "catalog:",
     "@hugeicons/react": "catalog:",
-    "clsx": "catalog:",
+    "@sapphi-red/web-noise-suppressor": "catalog:",
     "motion": "catalog:",
     "next": "catalog:",
     "next-intl": "catalog:",
+    "perfect-freehand": "catalog:",
     "phaser": "catalog:",
-    "posthog-js": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "tailwind-merge": "catalog:"
+    "shared-protocol": "workspace:*",
+    "web-shared": "workspace:*"
   },
   "devDependencies": {
     "@opennextjs/cloudflare": "catalog:",

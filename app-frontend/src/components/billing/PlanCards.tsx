@@ -1,8 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Check } from "@/components/ui/icons";
-import type { Plan, PlanId } from "@/lib/api";
+import { Check } from "web-shared/components/ui/icons";
+import type { Plan, PlanId } from "web-shared/lib/api";
 
 /** Plan names stay in English everywhere, like on the pricing page. */
 export const PLAN_NAMES: Record<PlanId, string> = { free: "Free", pro: "Pro" };

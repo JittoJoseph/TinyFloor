@@ -1,4 +1,4 @@
-import type { MeetingUsage } from "../../shared-protocol/src";
+import type { MeetingUsage } from "shared-protocol";
 
 /** A lobby copy's video allowance: nobody pays for the lobby (docs/pricing.md). */
 export const LOBBY_MEETING_HOURS_A_DAY = 2;

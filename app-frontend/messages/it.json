@@ -100,6 +100,7 @@
   "call": {
     "incoming": "Ti sta chiamando",
     "onCall": "In chiamata",
+    "connecting": "Connessione...",
     "decline": "Rifiuta",
     "accept": "Accetta",
     "calling": "Chiamata in corso...",
@@ -127,6 +128,8 @@
     "status": "Stato: {status}",
     "muteMic": "Disattiva microfono",
     "unmuteMic": "Attiva microfono",
+    "talkingMuted": "Il tuo microfono è disattivato",
+    "unmuteShort": "Attiva",
     "cameraOff": "Spegni fotocamera",
     "cameraOn": "Accendi fotocamera",
     "shareScreen": "Condividi schermo",
@@ -136,6 +139,7 @@
     "settings": "Impostazioni",
     "leaveCall": "Abbandona chiamata",
     "leaveMeeting": "Esci dalla riunione",
+    "popOut": "Finestra mobile",
     "cameraRested": "Videocamera spenta mentre c'è silenzio"
   },
   "status": {
@@ -160,6 +164,9 @@
     "title": "Chat della stanza",
     "close": "Chiudi chat",
     "send": "Invia messaggio",
+    "notSent": "Non inviato",
+    "sendAgain": "Invia di nuovo",
+    "discard": "Elimina",
     "channels": "Canali",
     "directMessages": "Messaggi diretti",
     "newChannel": "Nuovo canale",

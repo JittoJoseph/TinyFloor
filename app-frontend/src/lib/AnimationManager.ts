@@ -1,6 +1,6 @@
 import * as Phaser from "phaser";
-import { characterOrDefault } from "@shared/character";
-import { FRAME_H, FRAME_W, SEATED_BREATH, SHEET_FRAMES, characterSheet, drawnSheet, frameOf } from "@/lib/characterSheet";
+import { characterOrDefault } from "shared-protocol/character";
+import { FRAME_H, FRAME_W, SEATED_BREATH, SHEET_FRAMES, characterSheet, drawnSheet, frameOf } from "web-shared/lib/characterSheet";
 import { crisp, crispReady } from "./crisp";
 
 export type AnimationState = "idle" | "run";

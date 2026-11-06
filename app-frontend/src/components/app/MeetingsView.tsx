@@ -2,14 +2,14 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Plus } from "@/components/ui/icons";
-import { MAIN_MEETING, type MeetingInfo, type MeetingPerson } from "@shared/messages";
+import { Plus } from "web-shared/components/ui/icons";
+import { MAIN_MEETING, type MeetingInfo, type MeetingPerson } from "shared-protocol/messages";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { useMeetings } from "@/lib/meetings";
 import { Button } from "@/components/motion/button/base";
-import { Face, FaceStack } from "@/components/ui/Face";
-import { cn } from "@/lib/utils";
+import { Face, FaceStack } from "web-shared/components/ui/Face";
+import { cn } from "web-shared/lib/utils";
 import { MeetingStage } from "@/components/meetings/MeetingStage";
 import { NewMeetingDialog } from "@/components/meetings/MeetingDialogs";
 import { clock, useElapsed, useMeetingName, useMyMeeting } from "@/components/meetings/hooks";

@@ -1,4 +1,4 @@
-import { LOBBY_CHAT, LOBBY_ROOM, verifyTicket } from "../../shared-protocol/src";
+import { LOBBY_CHAT, LOBBY_ROOM, verifyTicket } from "shared-protocol";
 import { ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER, WHERE_HEADER, writeTicket } from "./headers";
 import { Room } from "./room";
 import { Chat } from "./chat";

@@ -1,11 +1,11 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { ArrowUpRight, Play } from "@/components/ui/icons";
-import { spotifyUri, type SpotifyShare } from "@shared/spotify";
+import { ArrowUpRight, Play } from "web-shared/components/ui/icons";
+import { spotifyUri, type SpotifyShare } from "shared-protocol/spotify";
 import { useCloseMenu } from "@/components/ui/Menu";
 import { playMusic, useMusic } from "@/lib/music";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /** Spotify's own mark, as its brand guidelines ask: whole, unaltered, in its green or in one plain colour. */
 export function SpotifyMark({ className }: { className?: string }) {
@@ -59,7 +59,7 @@ export function SpotifyActivity({ share, name, className }: { share: SpotifyShar
             disabled={already}
             onClick={() => {
               closeCard();
-              void playMusic(share);
+              void playMusic(share, "card");
             }}
             className="inline-flex h-8 flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-lg bg-foreground text-[12.5px] font-medium text-background transition-colors hover:bg-foreground/85 disabled:cursor-default disabled:bg-foreground/[0.06] disabled:text-foreground"
           >

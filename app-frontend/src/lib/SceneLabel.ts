@@ -1,5 +1,5 @@
 import * as Phaser from "phaser";
-import type { NoteIcon } from "@shared/messages";
+import type { NoteIcon } from "shared-protocol/messages";
 import { noteIconSvg } from "./noteIcons";
 import { measure, plateLayer } from "./plates";
 

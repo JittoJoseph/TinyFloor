@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import type { Locale } from "@/lib/i18n/routing";
-import { pageMetadata } from "@/lib/seo";
-import { LANDINGS, landingBySlug } from "@/lib/landings";
+import type { Locale } from "web-shared/lib/i18n/routing";
+import { pageMetadata } from "web-shared/lib/seo";
+import { LANDINGS, landingBySlug } from "web-shared/lib/landings";
 import { LandingPage } from "@/components/landing/LandingPage";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };

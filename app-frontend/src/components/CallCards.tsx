@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { flushSync } from "react-dom";
 import { useTranslations } from "next-intl";
-import { Maximize2, MicOff, Minimize2, MonitorUp } from "@/components/ui/icons";
+import { Maximize2, MicOff, Minimize2, MonitorUp } from "web-shared/components/ui/icons";
 import { useCall } from "@/lib/useCall";
 import { callManager } from "@/lib/CallManager";
 import { useSpeaking } from "@/lib/useSpeaking";
 import { CallStream } from "./CallStream";
-import { Face } from "@/components/ui/Face";
+import { Face } from "web-shared/components/ui/Face";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePrefs } from "@/lib/prefs";
 
@@ -130,6 +130,21 @@ export default function CallCards() {
     ]),
   ];
 
+  // A screen someone starts sharing is what the call turns to: it opens big
+  // (unless another screen already is), once; shrink it and it stays small.
+  const opened = useRef(new Set<string>());
+  const sharedScreens = tiles
+    .filter((tile) => tile.screen && !tile.self)
+    .map((tile) => tile.key)
+    .join(" ");
+  useEffect(() => {
+    const keys = sharedScreens ? sharedScreens.split(" ") : [];
+    const fresh = keys.find((key) => !opened.current.has(key));
+    // A screen that stopped is forgotten, so sharing again opens it big again.
+    opened.current = new Set(keys);
+    if (fresh) setFocused((current) => (current?.endsWith("-screen") && keys.includes(current) ? current : fresh));
+  }, [sharedScreens]);
+
   const focusedTile = tiles.find((tile) => tile.key === focused);
 
   // Only the enlarged card is worth receiving in high quality.
@@ -164,6 +179,7 @@ export default function CallCards() {
               tile={tile}
               muted={!!tile.self || !speakerEnabled}
               micOff={t("micOff")}
+              connecting={t("connecting")}
             />
           ))}
         </ul>
@@ -212,7 +228,7 @@ export default function CallCards() {
  * Someone on a voice call: their face, their name, and a ring while they
  * speak. Their voice plays from an audio element of its own.
  */
-function CallChip({ tile, muted, micOff }: { tile: Tile; muted: boolean; micOff: string }) {
+function CallChip({ tile, muted, micOff, connecting }: { tile: Tile; muted: boolean; micOff: string; connecting: string }) {
   const speaking = useSpeaking(tile.stream, tile.mic && tile.connected);
   const audio = useRef<HTMLAudioElement>(null);
   useEffect(() => {
@@ -229,7 +245,12 @@ function CallChip({ tile, muted, micOff }: { tile: Tile; muted: boolean; micOff:
         <Face seed={tile.id ?? tile.key} size={34} />
       </span>
       <span className="max-w-[9rem] truncate text-[13px] font-semibold text-foreground">{tile.name}</span>
-      {!tile.mic && <MicOff className="size-3.5 shrink-0 text-brand" aria-label={micOff} />}
+      {/* Until their voice reaches you: what you say may not reach them yet either. */}
+      {!tile.connected ? (
+        <span role="status" className="shrink-0 text-[12px] text-muted-foreground">{connecting}</span>
+      ) : (
+        !tile.mic && <MicOff className="size-3.5 shrink-0 text-brand" aria-label={micOff} />
+      )}
     </li>
   );
 }

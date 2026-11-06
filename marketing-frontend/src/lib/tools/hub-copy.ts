@@ -1,4 +1,4 @@
-import type { Locale } from "@/lib/i18n/routing";
+import type { Locale } from "web-shared/lib/i18n/routing";
 import { OUT_OF_OFFICE_PATH, STANDUP_PATH, TEAM_BUILDING_PATH, TWO_TRUTHS_PATH, WOULD_YOU_RATHER_PATH } from "@/lib/tools/catalog";
 
 /**

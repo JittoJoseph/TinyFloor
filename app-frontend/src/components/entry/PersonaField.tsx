@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { PixelAvatar } from "@/components/PixelAvatar";
-import { cn } from "@/lib/utils";
+import { PixelAvatar } from "web-shared/components/PixelAvatar";
+import { cn } from "web-shared/lib/utils";
 
 /**
  * Two arrows crossing: someone else. Each roll draws the arrows again, lines

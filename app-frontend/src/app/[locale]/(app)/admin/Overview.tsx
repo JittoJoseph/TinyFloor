@@ -2,11 +2,11 @@
 
 import { useId, useState } from "react";
 import { useLocale } from "next-intl";
-import { AlertCircle, ChevronRight, Inbox as InboxIcon, Refresh, TimerOff } from "@/components/ui/icons";
+import { AlertCircle, ChevronRight, Inbox as InboxIcon, Refresh, TimerOff } from "web-shared/components/ui/icons";
 import { IconButton } from "@/components/ui/IconButton";
-import { Face } from "@/components/ui/Face";
-import type { AdminSummary } from "@/lib/api";
-import { cn } from "@/lib/utils";
+import { Face } from "web-shared/components/ui/Face";
+import type { AdminSummary } from "web-shared/lib/api";
+import { cn } from "web-shared/lib/utils";
 import { Flag, hours, PlanBadge, Short, useCountryName } from "./pieces";
 import type { View } from "./views";
 

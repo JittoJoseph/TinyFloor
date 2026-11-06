@@ -100,6 +100,7 @@
   "call": {
     "incoming": "מתקשר/ת אליך",
     "onCall": "בשיחה",
+    "connecting": "מתחבר...",
     "decline": "דחייה",
     "accept": "מענה",
     "calling": "מתקשר...",
@@ -127,6 +128,8 @@
     "status": "סטטוס: {status}",
     "muteMic": "השתקת המיקרופון",
     "unmuteMic": "ביטול השתקת המיקרופון",
+    "talkingMuted": "המיקרופון שלך מושתק",
+    "unmuteShort": "ביטול השתקה",
     "cameraOff": "כיבוי המצלמה",
     "cameraOn": "הפעלת המצלמה",
     "shareScreen": "שיתוף מסך",
@@ -136,6 +139,7 @@
     "settings": "הגדרות",
     "leaveCall": "יציאה מהשיחה",
     "leaveMeeting": "יציאה מהפגישה",
+    "popOut": "חלון צף",
     "cameraRested": "המצלמה כבויה כל עוד שקט"
   },
   "status": {
@@ -160,6 +164,9 @@
     "title": "צ׳אט החדר",
     "close": "סגירת הצ׳אט",
     "send": "שליחת הודעה",
+    "notSent": "לא נשלחה",
+    "sendAgain": "לשלוח שוב",
+    "discard": "לבטל",
     "channels": "ערוצים",
     "directMessages": "הודעות ישירות",
     "newChannel": "ערוץ חדש",

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /**
  * Where there is nothing yet, say what would fill it and offer the way to do

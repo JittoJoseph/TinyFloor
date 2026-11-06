@@ -6,20 +6,20 @@ import {
   Globe,
   Sun,
   type AppIcon,
-} from "@/components/ui/icons";
+} from "web-shared/components/ui/icons";
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
-import { COMPARE_ROWS, HUBS, LANDINGS, LANDING_GROUPS, landingByKey, relatedLandings, type Landing, type LandingKey } from "@/lib/landings";
-import { guidesFor } from "@/lib/guides";
+import { COMPARE_ROWS, HUBS, LANDINGS, LANDING_GROUPS, landingByKey, relatedLandings, type Landing, type LandingKey } from "web-shared/lib/landings";
+import { guidesFor } from "web-shared/lib/guides";
 import { postsForPage } from "@/lib/blog";
 import { FromTheBlog } from "@/components/blog/FromTheBlog";
 import { guideCopies } from "@/lib/guide-copy";
 import { GuideCard } from "@/components/guides/GuidePage";
-import { articleNode, faqNode, pageGraph } from "@/lib/structured-data";
-import { AUTHOR } from "@/lib/site";
+import { articleNode, faqNode, pageGraph } from "web-shared/lib/structured-data";
+import { AUTHOR } from "web-shared/lib/site";
 import { byline } from "@/components/guides/Byline";
-import { JsonLd } from "@/components/JsonLd";
-import { Logo } from "@/components/app/Logo";
-import { cn } from "@/lib/utils";
+import { JsonLd } from "web-shared/components/JsonLd";
+import { Logo } from "web-shared/components/app/Logo";
+import { cn } from "web-shared/lib/utils";
 import { emphasised } from "@/lib/words";
 import { COLUMN, Closing, FloorMoments, H2, Hero, MarketingShell, Questions, CJK_HEADLINE, quiet } from "@/components/home/Blocks";
 import { ArticleSections, READ, numberItems } from "@/components/guides/ArticleSections";

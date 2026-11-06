@@ -1,4 +1,4 @@
-import type { Schema } from "@/lib/structured-data";
+import type { Schema } from "../lib/structured-data";
 
 /** Structured data, rendered on the server so crawlers find it in the first HTML. */
 export function JsonLd({ schema }: { schema: Schema }) {

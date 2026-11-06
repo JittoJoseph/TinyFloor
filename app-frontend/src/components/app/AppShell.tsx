@@ -1,6 +1,6 @@
 "use client";
 
-import { HelpCircle, ICON_STROKE } from "@/components/ui/icons";
+import { HelpCircle, ICON_STROKE } from "web-shared/components/ui/icons";
 import {
   cloneElement,
   createContext,
@@ -17,8 +17,8 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
 import { SPRING_LAYOUT } from "@/lib/ease";
-import { cn } from "@/lib/utils";
-import { Logo } from "@/components/app/Logo";
+import { cn } from "web-shared/lib/utils";
+import { Logo } from "web-shared/components/app/Logo";
 import { Tooltip } from "@/components/motion/tooltip";
 import { RailIcons } from "./railIcons";
 import { useDesktopSiteZoom } from "@/lib/hooks/use-desktop-site-zoom";

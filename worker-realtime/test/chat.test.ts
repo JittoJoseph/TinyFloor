@@ -10,7 +10,7 @@ import {
   signTicket,
   type ChatClientMessage,
   type ChatServerMessage,
-} from "../../shared-protocol/src";
+} from "shared-protocol";
 
 let sequence = 0;
 
@@ -35,6 +35,42 @@ describe("office chat", () => {
     const theirs = await bo.next("chat_new");
     expect(mine.message).toMatchObject({ body: "morning", author: "ada", authorName: "Ada", channel: GENERAL_CHANNEL });
     expect(theirs.message.seq).toBe(mine.message.seq);
+  });
+
+  it("posts a message sent twice with the same id once, and hands the sender back the one posted", async () => {
+    const office = officeId();
+    const ada = await ChatClient.open(office, { id: "ada", name: "Ada" });
+    const bo = await ChatClient.open(office, { id: "bo", name: "Bo" });
+    await ada.next("chat_ready");
+    await bo.next("chat_ready");
+
+    ada.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "once", nonce: "nonce-once-1234" });
+    const first = await ada.next("chat_new");
+    await bo.next("chat_new");
+    expect(first.message.nonce).toBe("nonce-once-1234");
+
+    // The connection dropped before Ada heard back, so her app sends it again.
+    ada.messages.length = 0;
+    bo.messages.length = 0;
+    ada.send({ t: "chat_send", channel: GENERAL_CHANNEL, body: "once", nonce: "nonce-once-1234" });
+    const again = await ada.next("chat_new");
+    expect(again.message.seq).toBe(first.message.seq);
+    await new Promise((resolve) => setTimeout(resolve, 200));
+    expect(bo.messages.filter((message) => message.t === "chat_new")).toHaveLength(0);
+
+    ada.messages.length = 0;
+    ada.send({ t: "chat_history", channel: GENERAL_CHANNEL });
+    const page = await ada.next("chat_page");
+    expect(page.messages.filter((message) => message.body === "once")).toHaveLength(1);
+  });
+
+  it("names the message that couldn't be sent", async () => {
+    const office = officeId();
+    const ada = await ChatClient.open(office, { id: "ada", name: "Ada" });
+    await ada.next("chat_ready");
+    // Someone else's direct messages are nowhere she can post.
+    ada.send({ t: "chat_send", channel: dmChannelId("bo", "cy"), body: "hello?", nonce: "nonce-nowhere-1" });
+    expect(await ada.next("chat_error")).toEqual({ t: "chat_error", code: "no_such_channel", nonce: "nonce-nowhere-1" });
   });
 
   it("counts what you have not read, and stops counting once you have", async () => {
@@ -282,6 +318,19 @@ describe("lobby chat", () => {
     await bo.next("chat_deleted");
     bo.send({ t: "chat_history", channel: GENERAL_CHANNEL });
     expect((await bo.next("chat_page")).messages.find((one) => one.seq === answer.seq)?.reply).toEqual({ seq: asked, gone: true });
+  });
+
+  it("answers the plain-text heartbeat", async () => {
+    const office = `office-ping-${sequence++}`;
+    const ada = await ChatClient.open(office, { id: `ping-ada-${sequence++}`, name: "Ada" });
+    await ada.next("chat_ready");
+    const pong = new Promise<string>((resolve) => {
+      ada.socket.addEventListener("message", (event) => {
+        if (event.data === "pong") resolve(event.data);
+      });
+    });
+    ada.socket.send("ping");
+    await expect(pong).resolves.toBe("pong");
   });
 
   it("tells the others in a conversation that someone is typing, and that they stopped", async () => {

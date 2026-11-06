@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { cache } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import type { Locale } from "@/lib/i18n/routing";
-import { pageMetadata } from "@/lib/seo";
+import type { Locale } from "web-shared/lib/i18n/routing";
+import { pageMetadata } from "web-shared/lib/seo";
 import { invitePath } from "@/lib/links";
 import { fetchPublic } from "@/lib/serverApi";
 import { InviteEntry, type InvitePreview } from "@/components/entry/InviteEntry";

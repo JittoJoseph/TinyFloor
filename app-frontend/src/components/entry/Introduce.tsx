@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { track } from "@/lib/analytics";
+import { track } from "web-shared/lib/analytics";
 import { useTranslations } from "next-intl";
 import { useAuth } from "@/contexts/AuthContext";
 import { anyCharacter, character as cleanCharacter, saveIdentity } from "@/lib/identity";

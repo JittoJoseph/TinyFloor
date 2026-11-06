@@ -24,6 +24,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Copied from the noise filter's package at build time (scripts/noise-files.mjs).
+    "public/noise/**",
   ]),
 ]);
 

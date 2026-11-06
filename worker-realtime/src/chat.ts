@@ -36,7 +36,7 @@ import {
   type LobbyChatPage,
   type HelpNews,
   type RoomTicket,
-} from "../../shared-protocol/src";
+} from "shared-protocol";
 import { readTicket, TICKET_HEADER } from "./headers";
 import { pushTo } from "./push";
 import { markActive } from "./usage";
@@ -75,9 +75,16 @@ interface MessageRow extends Record<string, SqlStorageValue> {
   edited_at: SqlStorageValue;
   reply_to: SqlStorageValue;
   meeting: SqlStorageValue;
+  nonce: SqlStorageValue;
 }
 
-const COLUMNS = "seq, channel, author, author_name, body, files, mentions, at, edited_at, reply_to, meeting";
+const COLUMNS = "seq, channel, author, author_name, body, files, mentions, at, edited_at, reply_to, meeting, nonce";
+/** Writing that runs words together without spaces, which the search index can't split into words. */
+const UNSPACED = /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}\p{Script=Thai}]/u;
+/** A message's id from its sender's app (ChatMessage.nonce): a short random string. */
+const NONCE = /^[A-Za-z0-9_-]{8,64}$/;
+/** Lobby direct messages passed along lately, by sender and id, so one sent again isn't passed twice. */
+const PASSED_KEPT = 200;
 
 /** A runaway client is stopped at ten messages a second; a person never gets near it. */
 const SENDS_PER_TEN_SECONDS = 100;
@@ -114,6 +121,9 @@ export class Chat extends DurableObject<Env> {
 
   constructor(ctx: DurableObjectState, env: Env) {
     super(ctx, env);
+    // Answered without waking the object: a ping from everyone every few seconds
+    // kept it awake, and billed, the whole time anyone had the office open.
+    ctx.setWebSocketAutoResponse(new WebSocketRequestResponsePair(HEARTBEAT_PING, HEARTBEAT_PONG));
     ctx.blockConcurrencyWhile(async () => {
       this.lobby = (await ctx.storage.get<boolean>(LOBBY_FLAG)) === true;
       this.office = (await ctx.storage.get<string>(OFFICE_KEY)) ?? null;
@@ -144,6 +154,10 @@ export class Chat extends DurableObject<Env> {
       if (!columns.some((column) => column.name === "reply_to")) this.sql.exec("ALTER TABLE messages ADD COLUMN reply_to INTEGER");
       // And the main meeting's card in #general, as JSON (ChatMeeting).
       if (!columns.some((column) => column.name === "meeting")) this.sql.exec("ALTER TABLE messages ADD COLUMN meeting TEXT");
+      // And the sender's own id for it, so one sent twice (a dropped connection) is posted once.
+      if (!columns.some((column) => column.name === "nonce")) this.sql.exec("ALTER TABLE messages ADD COLUMN nonce TEXT");
+      this.sql.exec("CREATE INDEX IF NOT EXISTS messages_nonce ON messages (author, nonce) WHERE nonce IS NOT NULL");
+      this.searchable();
       this.sql.exec(`CREATE TABLE IF NOT EXISTS reads (
         member TEXT NOT NULL,
         channel TEXT NOT NULL,
@@ -166,6 +180,33 @@ export class Chat extends DurableObject<Env> {
 
   private get sql(): SqlStorage {
     return this.ctx.storage.sql;
+  }
+
+  /**
+   * Every message's words and file names in a full-text index (SQLite's FTS5,
+   * the way Signal Desktop searches its messages), kept by triggers through
+   * every insert, edit, delete and trim. Searching used to read the newest
+   * 20,000 messages and look through them here, so anything older was never
+   * found. Case and accents are folded, as before. Made, and filled from what
+   * is already here, the first time an object wakes without it.
+   */
+  private searchable(): void {
+    const made = this.sql.exec<{ n: number }>("SELECT count(*) AS n FROM sqlite_master WHERE name = 'messages_fts'").one().n > 0;
+    if (made) return;
+    const words = (row: "new" | "messages") =>
+      `${row}.body || ' ' || COALESCE((SELECT group_concat(json_extract(value, '$.name'), ' ') FROM json_each(${row}.files)), '')`;
+    this.sql.exec("CREATE VIRTUAL TABLE messages_fts USING fts5(words, tokenize = 'unicode61 remove_diacritics 2')");
+    this.sql.exec(`CREATE TRIGGER messages_fts_insert AFTER INSERT ON messages BEGIN
+      INSERT INTO messages_fts (rowid, words) VALUES (new.seq, ${words("new")});
+    END`);
+    this.sql.exec(`CREATE TRIGGER messages_fts_update AFTER UPDATE OF body, files ON messages BEGIN
+      DELETE FROM messages_fts WHERE rowid = old.seq;
+      INSERT INTO messages_fts (rowid, words) VALUES (new.seq, ${words("new")});
+    END`);
+    this.sql.exec(`CREATE TRIGGER messages_fts_delete AFTER DELETE ON messages BEGIN
+      DELETE FROM messages_fts WHERE rowid = old.seq;
+    END`);
+    this.sql.exec(`INSERT INTO messages_fts (rowid, words) SELECT seq, ${words("messages")} FROM messages`);
   }
 
   private readonly attachments = new WeakMap<WebSocket, Attachment>();
@@ -203,6 +244,7 @@ export class Chat extends DurableObject<Env> {
 
   async webSocketMessage(socket: WebSocket, raw: string | ArrayBuffer): Promise<void> {
     if (typeof raw !== "string") return;
+    // The runtime answers pings (setWebSocketAutoResponse); this is only a fallback.
     if (raw === HEARTBEAT_PING) return socket.send(HEARTBEAT_PONG);
 
     const me = this.attachmentOf(socket);
@@ -225,8 +267,8 @@ export class Chat extends DurableObject<Env> {
       case "chat_send":
         me.sends++;
         this.remember(socket, me);
-        if (me.sends > SENDS_PER_TEN_SECONDS) return this.send(socket, { t: "chat_error", code: "slow_down" });
-        return this.post(socket, me, message.channel, message.body, message.files, message.mentions, message.replyTo, now);
+        if (me.sends > SENDS_PER_TEN_SECONDS) return this.send(socket, { t: "chat_error", code: "slow_down", ...nonceOf(message.nonce) });
+        return this.post(socket, me, message.channel, message.body, message.files, message.mentions, message.replyTo, now, message.nonce);
       case "chat_history":
         return this.page(socket, me, message.channel, message.before, message.to);
       case "chat_search":
@@ -419,14 +461,25 @@ export class Chat extends DurableObject<Env> {
     mentions: unknown,
     replyTo: unknown,
     now: number,
+    rawNonce?: unknown,
   ): void {
+    const tagged = nonceOf(rawNonce);
+    const nonce = tagged.nonce;
     const text = typeof body === "string" ? body.trim().slice(0, CHAT_BODY_MAX) : "";
-    if (this.lobby && Array.isArray(files) && files.length) return this.send(socket, { t: "chat_error", code: "offices_only" });
+    if (this.lobby && Array.isArray(files) && files.length) return this.send(socket, { t: "chat_error", code: "offices_only", ...tagged });
     const shared = this.lobby ? [] : parseFiles(files, this.office);
     if (!text && !shared.length) return;
     const named = parseMentions(mentions, me.userId);
-    if (!this.mayPost(me.userId, channel)) return this.send(socket, { t: "chat_error", code: "no_such_channel" });
-    if (this.lobby && isDm(channel)) return this.pass(socket, me, channel, text, now);
+    if (!this.mayPost(me.userId, channel)) return this.send(socket, { t: "chat_error", code: "no_such_channel", ...tagged });
+    if (this.lobby && isDm(channel)) return this.pass(socket, me, channel, text, now, nonce);
+
+    // Sent again after a dropped connection, and it had got through: the one posted, to this tab only.
+    if (nonce) {
+      const posted = this.sql
+        .exec<MessageRow>(`SELECT ${COLUMNS} FROM messages WHERE author = ? AND nonce = ?`, me.userId, nonce)
+        .toArray()[0];
+      if (posted) return this.send(socket, { t: "chat_new", message: this.withReplies([posted], [toMessage(posted)])[0] });
+    }
 
     this.ensureChannel(channel, me.userId, now);
     if (this.office && now - this.activeAt > HOUR_MS) {
@@ -439,7 +492,7 @@ export class Chat extends DurableObject<Env> {
         ? this.sql.exec<MessageRow>(`SELECT ${COLUMNS} FROM messages WHERE seq = ? AND channel = ?`, replyTo, channel).toArray()[0]
         : undefined;
     this.sql.exec(
-      "INSERT INTO messages (channel, author, author_name, body, files, mentions, at, reply_to) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO messages (channel, author, author_name, body, files, mentions, at, reply_to, nonce) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
       channel,
       me.userId,
       me.name,
@@ -448,6 +501,7 @@ export class Chat extends DurableObject<Env> {
       named.length ? JSON.stringify(named) : null,
       now,
       answered ? Number(answered.seq) : null,
+      nonce ?? null,
     );
     const seq = Number(this.sql.exec<{ seq: number }>("SELECT last_insert_rowid() AS seq").one().seq);
     const message: ChatMessage = {
@@ -460,6 +514,7 @@ export class Chat extends DurableObject<Env> {
       ...(shared.length ? { files: shared } : {}),
       ...(named.length ? { mentions: named } : {}),
       ...(answered ? { reply: replyOf(Number(answered.seq), answered) } : {}),
+      ...tagged,
     };
 
     // Your own message counts as read, so your unread badge stays quiet.
@@ -502,11 +557,14 @@ export class Chat extends DurableObject<Env> {
    * meets a stored message's.
    */
   private passing = 0;
-  private pass(socket: WebSocket, me: Attachment, channel: string, text: string, now: number): void {
+  private passed = new Map<string, ChatMessage>();
+  private pass(socket: WebSocket, me: Attachment, channel: string, text: string, now: number, nonce?: string): void {
+    const again = nonce ? this.passed.get(`${me.userId}:${nonce}`) : undefined;
+    if (again) return this.send(socket, { t: "chat_new", message: again });
     const pair = dmMembers(channel)!;
     const other = pair[0] === me.userId ? pair[1] : pair[0];
     const here = this.ctx.getWebSockets().some((one) => this.attachmentOf(one)?.userId === other);
-    if (!here) return this.send(socket, { t: "chat_error", code: "not_here" });
+    if (!here) return this.send(socket, { t: "chat_error", code: "not_here", ...nonceOf(nonce) });
     const message: ChatMessage = {
       seq: -(now * 1000 + (this.passing++ % 1000)),
       channel,
@@ -515,7 +573,12 @@ export class Chat extends DurableObject<Env> {
       body: text,
       at: now,
       passing: true,
+      ...nonceOf(nonce),
     };
+    if (nonce) {
+      this.passed.set(`${me.userId}:${nonce}`, message);
+      if (this.passed.size > PASSED_KEPT) this.passed.delete(this.passed.keys().next().value!);
+    }
     this.deliver(channel, { t: "chat_new", message });
   }
 
@@ -732,21 +795,40 @@ export class Chat extends DurableObject<Env> {
     if (fold(words).length < 2) return this.send(socket, { t: "chat_found", q: words, messages: [] });
     const needle = fold(words);
     const since = this.since(me);
-    // SQLite folds only ASCII case, so the narrowing is on what's cheap and the matching is done here.
-    const rows = this.sql
-      .exec<MessageRow>(
-        `SELECT ${COLUMNS} FROM messages
-         WHERE (channel NOT LIKE 'dm:%' OR instr(channel, ?) > 0) AND at >= ?
-         ORDER BY seq DESC LIMIT 20000`,
-        me.userId,
-        since,
-      )
-      .toArray();
+    const terms = needle.match(/[\p{L}\p{N}]+/gu) ?? [];
+    let rows: MessageRow[];
+    if (terms.length && !UNSPACED.test(needle)) {
+      // Every word, each as the start of a word said: "meet tomorrow" finds "Meeting's tomorrow?".
+      const match = terms.map((term) => `"${term}"*`).join(" ");
+      rows = this.sql
+        .exec<MessageRow>(
+          `SELECT ${COLUMNS} FROM messages_fts JOIN messages ON messages.seq = messages_fts.rowid
+           WHERE messages_fts MATCH ? AND (channel NOT LIKE 'dm:%' OR instr(channel, ?) > 0) AND at >= ?
+           ORDER BY seq DESC LIMIT ?`,
+          match,
+          me.userId,
+          since,
+          SEARCH_MAX * 4,
+        )
+        .toArray();
+    } else {
+      // Chinese, Japanese and Korean aren't written with spaces between words, so the index
+      // can't split them: those are looked for in the newest messages, as anywhere in a word.
+      // SQLite folds only ASCII case, so the narrowing is on what's cheap and the matching is done here.
+      rows = this.sql
+        .exec<MessageRow>(
+          `SELECT ${COLUMNS} FROM messages
+           WHERE (channel NOT LIKE 'dm:%' OR instr(channel, ?) > 0) AND at >= ?
+           ORDER BY seq DESC LIMIT 20000`,
+          me.userId,
+          since,
+        )
+        .toArray()
+        .filter((row) => parseStored(row.files).some((file) => fold(file.name).includes(needle)) || fold(String(row.body)).includes(needle));
+    }
     const found: MessageRow[] = [];
     for (const row of rows) {
       if (found.length >= SEARCH_MAX) break;
-      const named = parseStored(row.files).some((file) => fold(file.name).includes(needle));
-      if (!named && !fold(String(row.body)).includes(needle)) continue;
       if (!this.mayPost(me.userId, String(row.channel))) continue;
       found.push(row);
     }
@@ -1063,5 +1145,11 @@ function toMessage(row: MessageRow, reactions?: Record<string, string[]>): ChatM
     ...(reactions ? { reactions } : {}),
     ...(row.edited_at ? { edited: Number(row.edited_at) } : {}),
     ...(typeof row.meeting === "string" ? { meeting: JSON.parse(row.meeting) as ChatMeeting } : {}),
+    ...(typeof row.nonce === "string" ? { nonce: row.nonce } : {}),
   };
+}
+
+/** A sender's id for a message, when it's a proper one, ready to spread into what's sent back. */
+function nonceOf(value: unknown): { nonce?: string } {
+  return typeof value === "string" && NONCE.test(value) ? { nonce: value } : {};
 }

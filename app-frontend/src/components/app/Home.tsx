@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, type OfficeSummary } from "@/lib/api";
+import { api, type OfficeSummary } from "web-shared/lib/api";
 import { homePath, officePath } from "@/lib/links";
 import { forgetOffice, lastOffice } from "@/lib/lastOffice";
 import { openOfficeAhead } from "@/lib/officeAhead";
-import { hadSession } from "@/lib/session-hint";
+import { hadSession } from "web-shared/lib/session-hint";
 
 /**
  * Your offices, asked for once per visit: the front door can be drawn twice

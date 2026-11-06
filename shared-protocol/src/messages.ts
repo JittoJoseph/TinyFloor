@@ -222,7 +222,14 @@ export interface MediaFlags {
 }
 
 export type SfuClientMessage =
-  | { op: "publish"; sdp: string; tracks: { mid: string; kind: MediaKind }[] }
+  /**
+   * `ranked`: the video's simulcast layers are named a, b, c from sharpest down.
+   * Allowed before joining a meeting too (mic and camera only), so the
+   * connection is up by the time you join; the meeting hears of the tracks then.
+   */
+  | { op: "publish"; sdp: string; tracks: { mid: string; kind: MediaKind; ranked?: true }[] }
+  /** The connection made ahead of a meeting goes: not joining after all, or it failed. */
+  | { op: "drop" }
   | { op: "unpublish"; kinds: MediaKind[] }
   | { op: "subscribe"; tracks: { userId: string; kind: MediaKind; quality?: VideoQuality }[] }
   | { op: "unsubscribe"; mids: string[] }
@@ -234,8 +241,11 @@ export type SfuClientMessage =
 
 export type SfuServerMessage =
   | { op: "published"; sdp: string }
-  /** The SFU wants to send new tracks: set this offer, then reply with `answer`. */
-  | { op: "offer"; sdp: string; tracks: { userId: string; kind: MediaKind; mid: string }[] }
+  /**
+   * The SFU wants to send new tracks: set this offer, then reply with `answer`.
+   * `failed`: tracks of the same request the SFU couldn't give (yet), to ask for again.
+   */
+  | { op: "offer"; sdp: string; tracks: { userId: string; kind: MediaKind; mid: string }[]; failed?: { userId: string; kind: MediaKind; code: string }[] }
   | { op: "tracks"; userId: string; kinds: MediaKind[] }
   | { op: "untracks"; userId: string; kinds: MediaKind[] }
   | { op: "gone"; userId: string }

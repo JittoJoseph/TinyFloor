@@ -2,7 +2,7 @@
 
 import { memo, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { ChevronRight, Desk, Shirt } from "@/components/ui/icons";
+import { ChevronRight, Desk, Shirt } from "web-shared/components/ui/icons";
 import { CharacterBust } from "@/components/character/CharacterBust";
 import { openCharacterCreator, warmCharacterCreator } from "@/components/character/creatorOpen";
 import { useAuth } from "@/contexts/AuthContext";
@@ -11,7 +11,7 @@ import { PresenceControls } from "@/components/app/Presence";
 import { deskOf, useDesks } from "@/lib/desks";
 import { openDecorate } from "@/lib/decorate";
 import { NoteGlyph } from "@/lib/noteIcons";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 
 /**

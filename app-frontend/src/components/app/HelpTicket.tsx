@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowLeft } from "@/components/ui/icons";
+import { ArrowLeft } from "web-shared/components/ui/icons";
 import { IconButton } from "@/components/ui/IconButton";
 import { Loader } from "@/components/motion/loader";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { ApiError } from "@/lib/api";
+import { ApiError } from "web-shared/lib/api";
 import { help, useHelp } from "@/lib/help";
-import { Logo } from "@/components/app/Logo";
+import { Logo } from "web-shared/components/app/Logo";
 import { usePlace } from "./place";
 import { Conversation, ConversationIntro, type Line } from "./chat/Conversation";
 import { Composer } from "./chat/Composer";

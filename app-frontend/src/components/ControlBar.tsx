@@ -3,7 +3,8 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode, type RefObject } from "react";
 import { AnimatePresence, motion, useReducedMotion, type Transition } from "motion/react";
 import { useTranslations } from "next-intl";
-import { Check, Desk, Mic, MicOff, MonitorUp, MonitorX, Office, PhoneOff, UserPlus, Video, Volume2, VolumeX } from "@/components/ui/icons";
+import { Check, Desk, Mic, MicOff, MonitorUp, MonitorX, Office, PhoneOff, PictureInPicture, UserPlus, Video, Volume2, VolumeX } from "web-shared/components/ui/icons";
+import { pip } from "@/lib/pip";
 import { IconButton } from "@/components/ui/IconButton";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
@@ -11,7 +12,8 @@ import { setInCall } from "@/lib/floor";
 import { useAuth } from "@/contexts/AuthContext";
 import { deskOf, goToMyDesk, useDesks } from "@/lib/desks";
 import { CameraRested } from "@/components/meetings/CameraRested";
-import { cn } from "@/lib/utils";
+import { MicMutedHint } from "@/components/meetings/MicMutedHint";
+import { cn } from "web-shared/lib/utils";
 import { FADE_STOPS, Fillet } from "@/components/ui/Fillet";
 import { YouKey, YouPanel } from "@/components/room/DockYou";
 import { DemoPanel, HereKey, HerePanel } from "@/components/room/DockHere";
@@ -214,6 +216,12 @@ export default function ControlBar({
         icon={speakerEnabled ? <Volume2 /> : <VolumeX />}
       />,
     ]);
+    // The call in a small window that stays on top of other apps (lib/pip), where the browser has one.
+    if (pip.supported)
+      items.push([
+        "popout",
+        <IconButton key="popout" label={t("popOut")} tone="ghost" className={KEY} onClick={() => void pip.open()} icon={<PictureInPicture />} />,
+      ]);
     items.push(["divider-call", <Divider key="divider-call" />]);
     items.push([
       "hangup",
@@ -256,7 +264,10 @@ export default function ControlBar({
       <AnimatePresence>
         {!shown && (
           <motion.div key="rested" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.08 } }}>
-            <CameraRested className="absolute bottom-full left-1/2 mb-2.5 -translate-x-1/2" />
+            <div className="absolute bottom-full left-1/2 mb-2.5 flex -translate-x-1/2 flex-col items-center gap-2">
+              <MicMutedHint />
+              <CameraRested />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

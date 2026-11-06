@@ -100,6 +100,7 @@
   "call": {
     "incoming": "着信中",
     "onCall": "通話中",
+    "connecting": "接続中...",
     "decline": "拒否",
     "accept": "応答",
     "calling": "発信中...",
@@ -127,6 +128,8 @@
     "status": "ステータス: {status}",
     "muteMic": "マイクをミュート",
     "unmuteMic": "マイクのミュートを解除",
+    "talkingMuted": "マイクがミュートになっています",
+    "unmuteShort": "ミュート解除",
     "cameraOff": "カメラをオフ",
     "cameraOn": "カメラをオン",
     "shareScreen": "画面を共有",
@@ -136,6 +139,7 @@
     "settings": "設定",
     "leaveCall": "通話から退出",
     "leaveMeeting": "ミーティングを退出",
+    "popOut": "小さなウィンドウで表示",
     "cameraRested": "静かな間はカメラをオフ"
   },
   "status": {
@@ -160,6 +164,9 @@
     "title": "ルームチャット",
     "close": "チャットを閉じる",
     "send": "メッセージを送信",
+    "notSent": "送信されていません",
+    "sendAgain": "もう一度送信",
+    "discard": "破棄",
     "channels": "チャンネル",
     "directMessages": "ダイレクトメッセージ",
     "newChannel": "新しいチャンネル",

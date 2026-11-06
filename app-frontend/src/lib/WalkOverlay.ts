@@ -1,6 +1,6 @@
 import * as Phaser from "phaser";
-import { MAP_HEIGHT_TILES, MAP_WIDTH_TILES } from "@shared/map";
-import { TILE_SIZE } from "@/lib/types";
+import { MAP_HEIGHT_TILES, MAP_WIDTH_TILES } from "shared-protocol/map";
+import { TILE_SIZE } from "web-shared/lib/types";
 import type { NavGrid, Rect } from "./Navigation";
 
 const DEPTH = 1e6;

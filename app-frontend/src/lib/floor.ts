@@ -1,10 +1,10 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import type { PlayerStatus } from "@/lib/types";
-import type { StatusNote } from "@shared/messages";
-import { api } from "@/lib/api";
-import { track } from "@/lib/analytics";
+import type { PlayerStatus } from "web-shared/lib/types";
+import type { StatusNote } from "shared-protocol/messages";
+import { api } from "web-shared/lib/api";
+import { track } from "web-shared/lib/analytics";
 
 export interface FloorPerson {
   id: string;

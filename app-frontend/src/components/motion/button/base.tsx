@@ -16,7 +16,7 @@ import {
 } from "react";
 import { EASE_OUT, SPRING_PRESS } from "@/lib/ease";
 import { useHoverCapable } from "@/lib/hooks/use-hover-capable";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 export type ButtonVariant = "primary" | "secondary" | "ghost" | "outline";
 export type ButtonSize = "sm" | "md" | "lg" | "icon";

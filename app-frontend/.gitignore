@@ -45,3 +45,5 @@ next-env.d.ts
 .wrangler
 .dev.vars
 
+# The noise filter's files, copied from its package before each build (scripts/noise-files.mjs)
+/public/noise/

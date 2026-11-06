@@ -1,10 +1,10 @@
 import { useSyncExternalStore } from "react";
-import type { ClientMessage } from "@shared/messages";
-import { FLOOR } from "@shared/map";
-import { canChange, deskOfSeat, spotKey, type PieceChange } from "@shared/office";
+import type { ClientMessage } from "shared-protocol/messages";
+import { FLOOR } from "shared-protocol/map";
+import { canChange, deskOfSeat, spotKey, type PieceChange } from "shared-protocol/office";
 import { deskOf, deskState } from "./desks";
 import { applyPieceChange, pieceChanges } from "./pieces";
-import { track } from "@/lib/analytics";
+import { track } from "web-shared/lib/analytics";
 
 /**
  * Decorating your desk (docs/customization.md): a desk is its spots, its

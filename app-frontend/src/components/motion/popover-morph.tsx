@@ -19,7 +19,7 @@ import {
 import { createPortal } from "react-dom";
 import { usePopoverPortalPosition } from "@/components/motion/popover-position";
 import { EASE_OUT } from "@/lib/ease";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 type Side = "top" | "bottom";
 type Align = "start" | "end";

@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Zap } from "@/components/ui/icons";
+import { Zap } from "web-shared/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, type Office, type PlanId } from "@/lib/api";
-import { dollars, usePlans } from "@/lib/billing";
+import { api, type Office, type PlanId } from "web-shared/lib/api";
+import { dollars, usePlans } from "web-shared/lib/billing";
 import { openCheckout, waitForPlan } from "@/lib/checkout";
 import { lobbyPath, officePath, useSitePage } from "@/lib/links";
 import { lastOffice } from "@/lib/lastOffice";
@@ -19,12 +19,12 @@ import { forgetPendingOffice, pendingOffice } from "@/lib/pendingOffice";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { LitFace } from "@/components/ui/LitFace";
 import { PlanIncludes, paidPlan } from "@/components/billing/PlanCards";
-import { FloorScene } from "@/components/floor/FloorScene";
+import { FloorScene } from "web-shared/components/floor/FloorScene";
 import { ActionButton } from "@/components/ui/Action";
 import { EntryHeader, EntryShell, pillInputClass } from "@/components/entry/EntryShell";
 import { DoorSteps, QuietChoice, StepDots, StepError, StepTitle } from "@/components/entry/DoorSteps";
 import { posthogLog } from "@/lib/posthog-log";
-import { withPostHog } from "@/lib/analytics";
+import { withPostHog } from "web-shared/lib/analytics";
 
 /** Plan names stay in English everywhere, like on the pricing page. */
 const NAMES: Record<PlanId, string> = { free: "Free", pro: "Pro" };

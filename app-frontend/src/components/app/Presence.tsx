@@ -4,9 +4,9 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useAuth } from "@/contexts/AuthContext";
 import { setMyStatus, useMyNote, useMyStatus } from "@/lib/floor";
-import type { PlayerStatus } from "@/lib/types";
+import type { PlayerStatus } from "web-shared/lib/types";
 import { MenuExpand, MenuFold } from "@/components/ui/MenuViews";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { NoteOptions, NoteRow } from "./StatusNote";
 
 const STATUSES: Array<Exclude<PlayerStatus, "in_call" | "offline">> = ["available", "busy", "away"];

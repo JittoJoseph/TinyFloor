@@ -1,4 +1,4 @@
-import { defaultLocale } from "@/lib/i18n/routing";
+import { defaultLocale } from "./i18n/routing";
 
 /** The marketing site: the home page, pricing, guides, the legal pages. */
 export const SITE_URL =

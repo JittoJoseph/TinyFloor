@@ -100,6 +100,7 @@
   "call": {
     "incoming": "يتصل بك",
     "onCall": "في المكالمة",
+    "connecting": "جارٍ الاتصال...",
     "decline": "رفض",
     "accept": "قبول",
     "calling": "جارٍ الاتصال...",
@@ -127,6 +128,8 @@
     "status": "الحالة: {status}",
     "muteMic": "كتم الميكروفون",
     "unmuteMic": "إلغاء كتم الميكروفون",
+    "talkingMuted": "الميكروفون مكتوم",
+    "unmuteShort": "إلغاء الكتم",
     "cameraOff": "إيقاف الكاميرا",
     "cameraOn": "تشغيل الكاميرا",
     "shareScreen": "مشاركة الشاشة",
@@ -136,6 +139,7 @@
     "settings": "الإعدادات",
     "leaveCall": "مغادرة المكالمة",
     "leaveMeeting": "مغادرة الاجتماع",
+    "popOut": "نافذة عائمة",
     "cameraRested": "الكاميرا مطفأة ما دام الهدوء"
   },
   "status": {
@@ -160,6 +164,9 @@
     "title": "دردشة الغرفة",
     "close": "إغلاق الدردشة",
     "send": "إرسال الرسالة",
+    "notSent": "لم تُرسل",
+    "sendAgain": "أرسلها مجددًا",
+    "discard": "تجاهل",
     "channels": "القنوات",
     "directMessages": "رسائل مباشرة",
     "newChannel": "قناة جديدة",

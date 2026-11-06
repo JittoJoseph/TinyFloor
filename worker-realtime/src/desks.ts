@@ -1,4 +1,4 @@
-import { deskSeats, isDesk, seatTile, type Desk, type Floor } from "../../shared-protocol/src";
+import { deskSeats, isDesk, seatTile, type Desk, type Floor } from "shared-protocol";
 
 /**
  * Whose desk is whose in one office (docs/product.md), kept in the office room's own

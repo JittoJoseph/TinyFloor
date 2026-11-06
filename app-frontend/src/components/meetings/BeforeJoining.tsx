@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
-import { Mic, MicOff, Settings, Video, VideoOff } from "@/components/ui/icons";
+import { Mic, MicOff, Settings, Video, VideoOff } from "web-shared/components/ui/icons";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { useAuth } from "@/contexts/AuthContext";
@@ -11,9 +11,9 @@ import { useMeetings } from "@/lib/meetings";
 import { deviceConstraint, savedDevices } from "@/lib/media";
 import { usePrefs } from "@/lib/prefs";
 import { Link } from "@/lib/i18n/navigation";
-import { Face, faceBackground } from "@/components/ui/Face";
+import { Face, faceBackground } from "web-shared/components/ui/Face";
 import { usePlace } from "@/components/app/place";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /** People offered in "Free to talk" at most. */
 const FREE_SHOWN = 4;
@@ -46,10 +46,11 @@ const cameraChoice = {
 
 /**
  * You, before a meeting, the way Meet shows you: a big picture with the mic
- * and camera under your thumb. The mic is the same switch as in a meeting;
- * the camera is whether you go in with it on, remembered for next time, and
- * shown live while it's on, with the mic's level. Leaving the page or joining
- * closes the preview.
+ * and camera under your thumb. The mic is the same switch as in a meeting,
+ * already open with its level showing, and the meeting's connection is made
+ * meanwhile (CallManager.getReady), so joining is quick; the camera is whether
+ * you go in with it on, remembered for next time, and shown live while it's
+ * on. Leaving the page or joining closes the preview.
  */
 export function JoinPreview() {
   const t = useTranslations("meetings.ready");
@@ -57,13 +58,16 @@ export function JoinPreview() {
   const ts = useTranslations("settings.sections");
   const { user } = useAuth();
   const place = usePlace();
-  const { micEnabled } = useCall();
+  const { micEnabled, localStream } = useCall();
   const { mirrorVideo } = usePrefs();
   const camera = useSyncExternalStore(cameraChoice.subscribe, cameraChoice.get, () => false);
   const [stream, setStream] = useState<MediaStream | null>(null);
   const [blocked, setBlocked] = useState(false);
-  const level = useLevel(micEnabled ? stream : null);
+  // The microphone the meeting will use, opened while you get ready (CallManager.getReady).
+  const level = useLevel(micEnabled ? localStream : null);
   const video = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => callManager.getReady(), []);
 
   useEffect(() => {
     callManager.setCameraOnJoin(camera);
@@ -76,7 +80,7 @@ export function JoinPreview() {
     let cancelled = false;
     const devices = savedDevices();
     navigator.mediaDevices
-      ?.getUserMedia({ video: { deviceId: deviceConstraint(devices.video) }, audio: { deviceId: deviceConstraint(devices.audio) } })
+      ?.getUserMedia({ video: { deviceId: deviceConstraint(devices.video) } })
       .then((opened) => {
         if (cancelled) return opened.getTracks().forEach((track) => track.stop());
         live = opened;
@@ -149,7 +153,7 @@ export function JoinPreview() {
             className={cn(round, "relative overflow-hidden", micEnabled ? plain : "bg-destructive text-white hover:bg-destructive/90")}
           >
             {/* The mic's level, filling the button from the bottom while you talk. */}
-            {micEnabled && stream && (
+            {micEnabled && localStream && (
               <span
                 aria-hidden
                 className="absolute inset-x-0 bottom-0 bg-ok/40 transition-[height] duration-75"

@@ -1,6 +1,6 @@
 # Calls and meetings: what we learned
 
-What testing and research showed about calls, September to October 2026.
+What testing and research showed about calls, September to November 2026.
 How they're built is in `lib/CallManager.ts`, `lib/SfuMeeting.ts` and
 `worker-realtime`; what they cost is in `costs.md`.
 
@@ -26,16 +26,284 @@ the same behaviour on any network.
 Offered every relay address, Chrome often settles on TCP, where one late
 packet holds up all the rest. Measured on 28 September: voice arriving up to
 a second late, a fifth of it patched over. Calls now offer only the relay's
-UDP addresses; TCP and TLS join after 3.5 s without a UDP address of our own,
-or 10 s without a connection (`widenRelay`). Counted from when both sides
-agreed, so a microphone prompt on the other end isn't taken for a blocked
-network.
+UDP addresses; TCP and TLS join after 2 s without a UDP address of our own,
+or 4.5 s without a connection (`widenRelay`), on both ends at once. Counted
+from when both sides agreed.
+
+Those were 3.5 s and 10 s, and only the end that noticed widened. In testing
+(November) the relay's UDP side didn't answer one end in about a third of
+calls, and over UDP two relays sometimes never connected: calls waited out
+the 10 s, and the other end its own timer after that, for 11–13 s. A
+connection over UDP takes under a second when it works.
+
+## Answering a call
+
+A call used to show as on the moment it was answered, but the connection was
+only started then: the offer, the relay, the encryption handshake, the
+microphones. Measured from pressing Answer to hearing each other: 2.5–13.7 s
+(median 5.7), while the call already looked live. What people said first was
+lost.
+
+- **The connection is made while it rings**, on both ends, with nothing sent
+  on it. The caller's microphone opens when they call; the other person's
+  only when they answer, never while it rings. On answering, only the voices
+  have to start: 0.35–1.1 s to hearing each other (median 0.4 and 0.7 s, the
+  two directions).
+- **A call shows as connected only once the other's voice is arriving** (their
+  audio track's first packets), with "Connecting..." and a faded face until
+  then, and the connect sound when it's ready. Linked but silent for 6 s (no
+  microphone on their end), it counts as ready anyway.
+- Declined, cancelled, busy or unanswered, the ring's connection closes on
+  both ends and the caller's microphone is let go.
+- An older app on the other end, during a deploy: the answer carries `early`
+  when the answering end took the ring's offer; without it the caller offers
+  again after the answer, so calls still connect (in 4–6 s, as before).
+  Guessing from a missing reply instead broke calls answered within moments,
+  whose reply was still on its way.
 
 ## Voice sent twice (RED)
 
 Each voice packet carries the one before, so a lost packet is still heard. In
 the same tests the audible gaps fell from 8–9 per half minute to 0–1. It
 costs ~30 kbps more, about 0.03 GB per call-hour.
+
+Chrome's stats name the codec as plain `audio/opus` even when RED is on,
+which makes RED look inactive. The bitrate shows it working: measured on
+4 November in Chrome 156, a voice sent 66 kbps with RED and 32 kbps without.
+
+## Silence costs almost nothing (DTX)
+
+Opus can stop sending while nobody talks (DTX), but only if the receiver asks
+for it with `usedtx=1` in its SDP. Browsers don't ask by default, and neither
+does the SFU, so we add it to what each side applies (`lib/sdp.ts`). Measured
+on 3 November:
+
+- Silence goes from ~30 kbps to ~1 kbps; speech is unchanged at 60–70 kbps
+  with RED. Through the app, with pauses and noise: 59 kbps while quiet
+  before, 12 after.
+- A call with ordinary pauses sends ~30% less (34 and 29 kbps per side, from
+  48 and 42).
+- No gaps from it: over alternating runs through the relay, audible gaps were
+  0.8% with DTX and 1.2–2.1% without.
+
+## Noise removal
+
+The microphone goes through GTCRN, a small speech-enhancement model
+(MIT licence, `@sapphi-red/web-noise-suppressor`), in an AudioWorklet before it's
+sent (`lib/noiseFilter.ts`). The setting "Noise suppression" switches it; if
+it can't start, the raw microphone is sent. Compared on the same noisy
+recording, 3 November:
+
+| | Browser's own | RNNoise | GTCRN |
+|---|---|---|---|
+| Key clicks, below speech | 8 dB | 29 dB | 29–46 dB |
+| Fan hum, below speech | 41 dB | 58 dB | 70 dB |
+| Speech kept (match with clean) | 0.92 | 0.95 | 0.97 |
+
+None of them removes a dog's bark. GTCRN costs ~5% of one core. Details
+that matter:
+
+- **The call never waits for it.** Loading the filter (code, model, worklet)
+  took 5–7 s on a first call, and the microphone waited: the start of every
+  call was silent. Now the microphone goes out as it is at once, and the
+  filtered track replaces it when it runs (0.4–1.8 s from the microphone
+  opening to the call having it, as without the filter). The filter starts
+  loading while the call rings or a meeting is joined.
+- **Muting applies to what's sent**, never to the microphone under the
+  filter: a call started muted, then unmuted, was otherwise silent.
+- The filter's output must be forced to mono, or the voice arrives 6 dB
+  quieter (the worklet leaves the second channel silent).
+- The package must be imported only in the browser: it breaks server
+  prerendering.
+- The browser's own `voiceIsolation` is asked for as well where it's
+  supported.
+
+## Who's talking
+
+The talk light and the meeting stage read the microphone's level against a
+noise floor that follows the room: it falls quickly and rises slowly, so a fan
+becomes "the room" within ~10 s and a voice over it still stands out by
+12 dB. Sharp sounds (crest above 19 dB, like key clicks or a dropped pen) are
+never talking. Talking starts once 300 ms of the last 600 were loud, and
+ends after a pause (`lib/speech.ts`): a dog's bark (about 250 ms, as loud and
+smooth as a voice, and not removed by noise removal) used to light people up
+and put them on the stage. Before all this, a fan or typing kept people on
+the stage: with only room noise, the talk light came on 4–5 times in 46 s
+(10 s lit); now 0–2 times (1.7 s).
+
+## Meetings recover on their own
+
+A meeting connection that fails, or stays disconnected for 8 s, rejoins the
+same meeting on a fresh connection, without sounds and keeping the
+microphone, camera and shared screen. A second loss within 20 s is left
+alone, so a dead network doesn't loop.
+
+The room's own connection coming back (a network blip, or the room
+restarting, which drops everyone at once) rejoins the same way: before, it
+left the meeting and joined afresh, with the leave and join sounds, and the
+shared screen and camera went off. Measured with a screen and a camera on,
+both sockets dropped at once: before, three sounds and both off for good;
+after, no sounds, both still on, and the screen reaching the other person
+again within a few seconds. A call with one person goes on through it: the
+other end waits 12 s for them back on the floor before ending the call.
+
+## Everyone heard, and sooner
+
+Repeated two-person meetings through the real SFU (November, on a lossy
+connection) found people who stayed unheard for the whole meeting, about one
+meeting in four, and voices that took 5–15 s to arrive. Four causes, all in
+the code before too, each fixed:
+
+- **A track asked for before it's live** (its owner's connection still
+  opening, or the microphone not yet open) fails with
+  `not_found_track_error`, and was never asked for again. Now it is, from
+  0.3 s and half as long again each time, up to 4 s apart, for a minute.
+- **Requests out of order.** The browser sends its answer to the SFU's offer
+  and its next request back to back; the room handled them at once, the SFU
+  got a new track before the answer, refused it, and could leave the session
+  stuck. The room now passes each person's requests to the SFU one at a
+  time, in order.
+- **One failed track failed the whole request.** Asked for two tracks with
+  one not live, the SFU still offered the other; the room dropped that offer,
+  and the session waited for an answer that never came. Now the offer goes
+  through, and the failed track is named to be asked for again.
+- **The connection opened late**, only after the microphone had. It now opens
+  on joining, its slots filled when the microphone is ready.
+
+## Joining a meeting
+
+Measured locally through the real SFU, Join to the first voice took 5–6 s,
+and in half the runs one side never heard the other at all. Now about 1.7 s
+both ways, 8 joins out of 8 (most of what's left is the room reaching the
+SFU's API from a laptop; from Cloudflare it is shorter). What changed:
+
+- **Connected before Join.** The meeting's own page, an invitation ringing,
+  and standing in the meeting room set up the connection to the SFU ahead
+  (the room takes a publish before joining, mic and camera only, and tells
+  the meeting of it on joining); the meeting's page opens the microphone too,
+  its level showing on the mic button. Join then only has to ask for the
+  others' voices. Not joining, the connection goes 5 s after the page does.
+- **The page's first connection freezes it for about a second** (Chrome
+  setting up WebRTC, headed and headless alike; the next one takes 1 ms).
+  It happened just after Join was pressed; now on the pre-join page, while
+  nothing moves.
+- **Your voice is sent while you are alone** (with the mic on). Started only
+  when someone joined, at the moment the connection was renegotiated for
+  theirs, the SFU never found it: `not_found_track_error` for as long as they
+  tried. Sending to the SFU costs nothing (only what it forwards does), and
+  video still waits for someone to see it.
+- **Unmuting asks for the voice again**, for someone muted since they came,
+  whose voice was asked for until the tries ran out.
+- **Who has what on isn't queued** behind that person's SFU requests: a
+  camera switched on reached the others a second or more late.
+- **A camera starts on its smallest layer** and steps up once pictures come
+  in. Asked for the sharpest straight away, it showed nothing while the
+  sender's browser held that layer back for bandwidth, once for 20 s; the
+  SFU didn't fall back to the layers it had. Stepped up with no new picture
+  for 3 s, it goes back down for 15 s. First picture: about 2.7 s, every run.
+
+While a voice is on its way the person's card says Connecting, and a
+connection that drops says Reconnecting at the top of the stage and on the
+floor's card.
+
+## The call in a small window
+
+A call or a meeting can sit in a small window that stays on top of other
+apps (Chrome's Document Picture-in-Picture): the person talking, or a
+shared screen, your camera in the corner while it's on, the time, and mic,
+camera and hang up. It opens from the call's bar or the meeting's, and by
+itself when you leave the tab during a call where Chrome allows it (its
+automatic picture-in-picture for pages using the camera or microphone),
+closing again when you come back; hanging up closes it. Firefox and Safari
+have no such window, and nothing offers it there.
+
+The meeting's card on the floor is the same small dark card: who's talking,
+the meeting and its time, pressed to go back to it, with a button to pop it
+out. The mic, camera and leave are in the bar right below it, so the card
+doesn't repeat them.
+
+## Simulcast layers named in order
+
+When a viewer's bandwidth runs short, the SFU steps down through the layers
+by name, a before z. Named h, m, l, a camera went from 720p straight to
+180p, skipping 360p. The layers are now a, b, c, sharpest first; clients
+still on h, m, l keep working (the room asks each in its own names).
+
+## Screen sharing
+
+Measured by sharing a real browser tab (an editor with code and a document
+of 13px text, on a 2880×1800 laptop screen) and comparing what the other
+side received, frame by frame, with the tab itself. What was wrong:
+
+- **A call showed the screen as a small card**, received at 320×180 and
+  5 fps until clicked: unreadable, and most people never click.
+- **Capped at 720p and 10 fps**: 13px text is soft at 720p, and scrolling
+  was a slideshow.
+- **Meetings forwarded the thumbnail to the stage.** A still screen sends
+  next to nothing, so the SFU's estimate of the viewer's bandwidth stays
+  low, and with the camera's rule (step down when bandwidth looks short) it
+  forwarded the 320-wide layer to someone watching full size. Screens now
+  keep the layer asked for (`priorityOrdering: "none"`).
+
+Before and after, through the real app, two runs each (4 November):
+
+| | Before | After |
+|---|---|---|
+| Call: text match 8 s into sharing | 0.55 (small card) | 0.90 |
+| Call: full size after | 19 s (when clicked) | 5 s |
+| Call: frames a second while scrolling | 1.3 | 6.9 |
+| Meeting: picture on the stage | 1280×672, thumbnail often | 1768×928 throughout |
+| Meeting: frames a second while scrolling | 5 (one run froze) | 13 |
+
+What changed: a shared screen opens big on a call; up to 1080p at 15 fps;
+calls send it in AV1 where both browsers have it (VP8 otherwise; meetings
+stay on VP8, which every viewer can decode); the picker doesn't offer
+TinyFloor's own tab, and Chrome's bar can switch tabs without stopping.
+
+Codecs on the same screen, same machine (loopback, 4 November):
+
+| | Text match | Bitrate while scrolling |
+|---|---|---|
+| VP8, 720p 10 fps (before) | 0.93 | 1.4 Mbps |
+| VP8, higher resolution | 0.99 | 1.7 Mbps |
+| H.264 (hardware encoder) | 0.996 | 0.5 Mbps |
+| AV1 | 0.996 | 0.25 Mbps |
+| VP9 (hardware encoder) | 0.96 | 1.2 Mbps |
+
+Two things that aren't obvious:
+
+- **Bitrate matters more than resolution once the network is involved.**
+  After a still screen, the first scroll's burst made the connection's
+  bandwidth estimate collapse (3.9 Mbps to under 0.1) and take ~20 s to
+  recover: the picture lagged seconds behind. AV1 needs a fifth of VP8's
+  bitrate for the same text, which is why calls use it.
+- **H.264's quality depends on the machine's encoder**, and VP9's hardware
+  encoder did worse than VP8 on text, so neither is used.
+- **A still screen on a call settles at 0.90**, against 0.996 in the lab:
+  through the relay the encoder stops refining once the connection's
+  bandwidth estimate is low. Readable, not pin-sharp.
+- **Meetings now cost more while a screen scrolls**: about 2.5 Mbps to each
+  viewer, against 1.5 before (when it showed at all). A still screen is a few
+  tens of kbps either way.
+
+## Talking while muted
+
+With the microphone off on a call or in a meeting, a copy of it is listened
+to on the device, and talking into it brings up "You're muted · Unmute" for
+5 s, at most once in 20 s. Nothing is sent. It waits for a second of talk
+within two: with the talk light's 300 ms, room noise alone (fan, keys, a
+dog) brought it up once in 45 s; with a second, never in three runs.
+
+## Microphones and cameras that change mid-call
+
+Unplugging the microphone in use used to leave the call silent; plugging in
+headphones (which become the system's default) didn't move the call to them;
+a microphone or camera picked in Settings took effect only at the next call,
+and one picked last week and unplugged since failed the call outright. Now
+the call reopens the default microphone when its own goes, follows the
+system's default, switches to what's picked in Settings at once, turns the
+camera off when it's unplugged, and falls back to the default device when the
+picked one is gone.
 
 ## Audio first
 
@@ -47,7 +315,7 @@ costs ~30 kbps more, about 0.03 GB per call-hour.
   video, which nobody chose and which costs 5× voice. Now **a call starts with
   voice, the camera is a button, and it's off again at the next call**. The
   mic preference is remembered; the camera isn't.
-- Echo cancellation and noise suppression run in the browser; no audio is
+- Echo cancellation and noise removal run in the browser; no audio is
   ever processed on a server.
 
 ## Google Meet, tried and dropped

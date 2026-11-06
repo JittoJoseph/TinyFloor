@@ -2,16 +2,16 @@
 
 import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { ChevronRight, Plus, Settings2, UserPlus } from "@/components/ui/icons";
+import { ChevronRight, Plus, Settings2, UserPlus } from "web-shared/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
-import { api, type Office, type OfficeSummary } from "@/lib/api";
+import { api, type Office, type OfficeSummary } from "web-shared/lib/api";
 import { officePath, officeSettingsPath, openSettings } from "@/lib/links";
 import { openOfficeAhead } from "@/lib/officeAhead";
-import { Face } from "@/components/ui/Face";
+import { Face } from "web-shared/components/ui/Face";
 import { Menu, MenuItem, MenuLabel, MenuSeparator, useCloseMenu } from "@/components/ui/Menu";
 import { useWide } from "@/lib/hooks/use-wide";
 import { useOpenPlans } from "@/components/billing/openPlans";
-import { usePlans } from "@/lib/billing";
+import { usePlans } from "web-shared/lib/billing";
 import { useInvite } from "./Invite";
 import { useShellFrame } from "./AppShell";
 import { PLAN_NAMES } from "@/components/billing/PlanCards";

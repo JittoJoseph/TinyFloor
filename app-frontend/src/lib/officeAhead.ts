@@ -1,4 +1,4 @@
-import { api, type OfficeOverview } from "@/lib/api";
+import { api, type OfficeOverview } from "web-shared/lib/api";
 import { earlyTicket, warmFloor } from "@/lib/floorWarmup";
 
 type Ahead = { officeId: string; at: number; overview: Promise<OfficeOverview>; ticket: ReturnType<typeof earlyTicket> };

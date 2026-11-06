@@ -100,6 +100,7 @@
   "call": {
     "incoming": "Ringer dig",
     "onCall": "I samtalet",
+    "connecting": "Ansluter...",
     "decline": "Avvisa",
     "accept": "Svara",
     "calling": "Ringer...",
@@ -127,6 +128,8 @@
     "status": "Status: {status}",
     "muteMic": "Stäng av mikrofonen",
     "unmuteMic": "Slå på mikrofonen",
+    "talkingMuted": "Din mikrofon är avstängd",
+    "unmuteShort": "Slå på",
     "cameraOff": "Stäng av kameran",
     "cameraOn": "Slå på kameran",
     "shareScreen": "Dela skärm",
@@ -136,6 +139,7 @@
     "settings": "Inställningar",
     "leaveCall": "Lämna samtalet",
     "leaveMeeting": "Lämna mötet",
+    "popOut": "Öppna i litet fönster",
     "cameraRested": "Kameran av medan det är tyst"
   },
   "status": {
@@ -160,6 +164,9 @@
     "title": "Rumschatt",
     "close": "Stäng chatten",
     "send": "Skicka meddelande",
+    "notSent": "Inte skickat",
+    "sendAgain": "Skicka igen",
+    "discard": "Släng",
     "channels": "Kanaler",
     "directMessages": "Direktmeddelanden",
     "newChannel": "Ny kanal",

@@ -2,10 +2,10 @@
 
 import { useMemo, useState, useSyncExternalStore, useTransition } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { ChevronDown, Search } from "@/components/ui/icons";
-import { Language } from "@/components/ui/icons";
+import { ChevronDown, Search } from "web-shared/components/ui/icons";
+import { Language } from "web-shared/components/ui/icons";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
-import { locales, type Locale } from "@/lib/i18n/routing";
+import { locales, type Locale } from "web-shared/lib/i18n/routing";
 import { getBrowserPrefs, getServerPrefs, orderLocales, subscribePrefs } from "@/lib/i18n/locale-ordering";
 import { Menu, MenuItem } from "@/components/ui/Menu";
 

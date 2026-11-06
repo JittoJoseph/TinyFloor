@@ -1,5 +1,5 @@
 import { getCountryCode } from "@/lib/country";
-import { locales } from "@/lib/i18n/routing";
+import { locales } from "web-shared/lib/i18n/routing";
 
 // Likely language(s) per country, limited to locales we ship. Only a hint for
 // ordering the switcher, ranked below browser preferences, so a wrong guess

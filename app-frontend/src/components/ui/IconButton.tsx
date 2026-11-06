@@ -4,7 +4,7 @@ import { forwardRef, type ReactNode } from "react";
 import { motion, useReducedMotion, type HTMLMotionProps } from "motion/react";
 import { Tooltip } from "@/components/motion/tooltip";
 import { SPRING_PRESS } from "@/lib/ease";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 export type IconTone = "ghost" | "soft" | "solid" | "danger" | "off";
 

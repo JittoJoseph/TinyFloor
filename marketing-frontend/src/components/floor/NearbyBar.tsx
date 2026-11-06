@@ -1,5 +1,5 @@
-import { MessageSquare, Phone } from "@/components/ui/icons";
-import { Face } from "@/components/ui/Face";
+import { MessageSquare, Phone } from "web-shared/components/ui/icons";
+import { Face } from "web-shared/components/ui/Face";
 
 /** The app's card beside someone you've walked up to, as the site draws it: who, a message, and the call. */
 export function NearbyBar({ name, seed, labels }: { name: string; seed: string; labels: { call: string; message: string } }) {

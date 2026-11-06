@@ -2,10 +2,10 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
-import { ArrowLeft } from "@/components/ui/icons";
+import { ArrowLeft } from "web-shared/components/ui/icons";
 import { Link } from "@/lib/i18n/navigation";
-import { Logo } from "@/components/app/Logo";
-import { cn } from "@/lib/utils";
+import { Logo } from "web-shared/components/app/Logo";
+import { cn } from "web-shared/lib/utils";
 import { useSitePage } from "@/lib/links";
 import { AutoHeight } from "./AutoHeight";
 import { bezel, bezelPanel, onBezel } from "@/components/ui/bezel";

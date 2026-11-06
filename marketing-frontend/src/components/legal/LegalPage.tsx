@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { COLUMN, MarketingShell } from "@/components/home/Blocks";
-import { cn } from "@/lib/utils";
-import { SUPPORT_EMAIL } from "@/lib/site";
+import { cn } from "web-shared/lib/utils";
+import { SUPPORT_EMAIL } from "web-shared/lib/site";
 
 export { SUPPORT_EMAIL };
 

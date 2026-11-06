@@ -1,5 +1,5 @@
 // PostHog, for both sites (web-shared/src/shell).
-import "@/shell/instrumentation-client";
+import "web-shared/shell/instrumentation-client";
 import { countDemoClicks } from "@/lib/demo-clicks";
 
 countDemoClicks();

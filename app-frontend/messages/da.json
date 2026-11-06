@@ -100,6 +100,7 @@
   "call": {
     "incoming": "Ringer til dig",
     "onCall": "I opkaldet",
+    "connecting": "Forbinder...",
     "decline": "Afvis",
     "accept": "Accepter",
     "calling": "Ringer op...",
@@ -127,6 +128,8 @@
     "status": "Status: {status}",
     "muteMic": "Slå mikrofon fra",
     "unmuteMic": "Slå mikrofon til",
+    "talkingMuted": "Din mikrofon er slået fra",
+    "unmuteShort": "Slå til",
     "cameraOff": "Sluk kamera",
     "cameraOn": "Tænd kamera",
     "shareScreen": "Del skærm",
@@ -136,6 +139,7 @@
     "settings": "Indstillinger",
     "leaveCall": "Forlad opkald",
     "leaveMeeting": "Forlad mødet",
+    "popOut": "Åbn i lille vindue",
     "cameraRested": "Kamera slukket, mens der er stille"
   },
   "status": {
@@ -160,6 +164,9 @@
     "title": "Rumchat",
     "close": "Luk chat",
     "send": "Send besked",
+    "notSent": "Ikke sendt",
+    "sendAgain": "Send igen",
+    "discard": "Kassér",
     "channels": "Kanaler",
     "directMessages": "Direkte beskeder",
     "newChannel": "Ny kanal",

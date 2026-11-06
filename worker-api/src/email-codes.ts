@@ -1,4 +1,4 @@
-import { DEFAULT_CHARACTER } from "../../shared-protocol/src";
+import { DEFAULT_CHARACTER } from "shared-protocol";
 import { hashToken } from "./crypto";
 import { letter, sendEmail } from "./email";
 import { HttpError, json, readJson } from "./http";

@@ -2,19 +2,20 @@
 
 import { useMemo, useState, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Check, Search } from "@/components/ui/icons";
+import { Check, Search } from "web-shared/components/ui/icons";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError } from "@/lib/api";
+import { api, ApiError } from "web-shared/lib/api";
 import { allZones, browserZone, offsetLabel, timeIn, zoneCity, zoneLabel } from "@/lib/timeZone";
 import { useSitePage } from "@/lib/links";
+import { renameOnFloor } from "@/lib/floor";
 import { useErrorMessage } from "@/lib/useErrorMessage";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { Button } from "@/components/motion/button/base";
 import { Dialog, fieldClass } from "@/components/ui/forms";
 import { CharacterStage } from "@/components/character/CharacterStage";
-import { isPreset } from "@shared/character";
+import { isPreset } from "shared-protocol/character";
 import { openCharacterCreator, warmCharacterCreator } from "@/components/character/creatorOpen";
-import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
+import { GoogleButton, googleAvailable } from "web-shared/components/auth/GoogleButton";
 import { CodeField, CODE_LENGTH } from "@/components/auth/CodeField";
 import { Group, Row } from "@/components/app/SettingsView";
 
@@ -61,7 +62,10 @@ export function Profile() {
     setBusy(true);
     setError("");
     try {
+      const renamed = currentName.trim() !== user.displayName;
       await updateProfile({ displayName: currentName.trim(), link: currentLink.trim() });
+      // The floor under Settings keeps running: your tag changes there, and for everyone.
+      if (renamed) renameOnFloor(currentName.trim());
       setName(null);
       setLink(null);
       setSaved(true);

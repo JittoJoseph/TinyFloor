@@ -2,19 +2,19 @@
 
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { AlertCircle, Check, CreditCard, Download, Info, Loader2 } from "@/components/ui/icons";
-import { api, type BillingDetails, type OfficeBilling, type Payment } from "@/lib/api";
-import { dollars, usePlans } from "@/lib/billing";
-import { FOUNDING, foundingOpen } from "@/lib/founding";
+import { AlertCircle, Check, CreditCard, Download, Info, Loader2 } from "web-shared/components/ui/icons";
+import { api, type BillingDetails, type OfficeBilling, type Payment } from "web-shared/lib/api";
+import { dollars, usePlans } from "web-shared/lib/billing";
+import { FOUNDING, foundingOpen } from "web-shared/lib/founding";
 import { Dialog } from "@/components/ui/Dialog";
 import { PlansSoon } from "@/components/ui/PlansSoon";
 import { PLAN_NAMES, PlanIncludes, paidPlan } from "@/components/billing/PlanCards";
 import { usePlanChange } from "@/components/billing/usePlanChange";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { Bone } from "./HomeSkeletons";
 import { useOfficeMaybe } from "./OfficeShell";
 import { Group } from "./SettingsView";
-import { SUPPORT_EMAIL } from "@/lib/site";
+import { SUPPORT_EMAIL } from "web-shared/lib/site";
 
 const DAY = 24 * 60 * 60 * 1000;
 type Asking = "cancel" | "downgrade" | null;

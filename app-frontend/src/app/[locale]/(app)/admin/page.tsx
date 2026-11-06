@@ -2,10 +2,10 @@
 
 import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Chats, Inbox as InboxIcon, Office, Overview as OverviewIcon, People as PeopleIcon } from "@/components/ui/icons";
+import { Chats, Inbox as InboxIcon, Office, Overview as OverviewIcon, People as PeopleIcon } from "web-shared/components/ui/icons";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError, type AdminSummary } from "@/lib/api";
+import { api, ApiError, type AdminSummary } from "web-shared/lib/api";
 import { homePath } from "@/lib/links";
 import { AppShell, Logo } from "@/components/app/AppShell";
 import { YouMenu } from "@/components/app/YouMenu";

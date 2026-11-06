@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Check } from "@/components/ui/icons";
-import { MEETING_NAME_MAX } from "@shared/messages";
+import { Check } from "web-shared/components/ui/icons";
+import { MEETING_NAME_MAX } from "shared-protocol/messages";
 import { Dialog } from "@/components/ui/Dialog";
 import { Button } from "@/components/motion/button/base";
-import { Face } from "@/components/ui/Face";
+import { Face } from "web-shared/components/ui/Face";
 import { useFloor } from "@/lib/floor";
 import { meetingOf, useMeetings } from "@/lib/meetings";
 import { useAuth } from "@/contexts/AuthContext";
 import { callManager } from "@/lib/CallManager";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { usePlace } from "@/components/app/place";
 
 /**

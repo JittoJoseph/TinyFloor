@@ -100,6 +100,7 @@
   "call": {
     "incoming": "正在呼叫你",
     "onCall": "通话中",
+    "connecting": "连接中...",
     "decline": "拒绝",
     "accept": "接听",
     "calling": "呼叫中...",
@@ -127,6 +128,8 @@
     "status": "状态：{status}",
     "muteMic": "关闭麦克风",
     "unmuteMic": "打开麦克风",
+    "talkingMuted": "你的麦克风已静音",
+    "unmuteShort": "取消静音",
     "cameraOff": "关闭摄像头",
     "cameraOn": "打开摄像头",
     "shareScreen": "共享屏幕",
@@ -136,6 +139,7 @@
     "settings": "设置",
     "leaveCall": "退出通话",
     "leaveMeeting": "离开会议",
+    "popOut": "小窗口显示",
     "cameraRested": "安静时摄像头已关闭"
   },
   "status": {
@@ -160,6 +164,9 @@
     "title": "房间聊天",
     "close": "关闭聊天",
     "send": "发送消息",
+    "notSent": "未发送",
+    "sendAgain": "重新发送",
+    "discard": "放弃",
     "channels": "频道",
     "directMessages": "私信",
     "newChannel": "新建频道",

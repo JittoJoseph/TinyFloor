@@ -2,14 +2,14 @@
 
 import { createContext, useCallback, useContext, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowUpRight, Check, Copy, Mail, MessageSquare, Share } from "@/components/ui/icons";
+import { ArrowUpRight, Check, Copy, Mail, MessageSquare, Share } from "web-shared/components/ui/icons";
 import { Modal } from "@/components/ui/Modal";
 import { useOpenPlans } from "@/components/billing/openPlans";
-import { track, withPostHog } from "@/lib/analytics";
+import { track, withPostHog } from "web-shared/lib/analytics";
 import { resetInviteLink, useInviteLink } from "@/lib/inviteLink";
 import { shareUrl } from "@/lib/links";
 import { copyText } from "@/lib/share";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { useOfficeMaybe } from "./OfficeShell";
 
 /**

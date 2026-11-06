@@ -1,14 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { MoreHorizontal, Pencil, Trash2, X } from "@/components/ui/icons";
+import { MoreHorizontal, Pencil, Trash2, X } from "web-shared/components/ui/icons";
 import { IconButton } from "@/components/ui/IconButton";
-import { Face } from "@/components/ui/Face";
-import { Logo } from "@/components/app/Logo";
+import { Face } from "web-shared/components/ui/Face";
+import { Logo } from "web-shared/components/app/Logo";
 import { Dialog } from "@/components/ui/Dialog";
 import { Menu, MenuItem } from "@/components/ui/Menu";
-import { api, type AdminHelpDetail } from "@/lib/api";
-import { cn } from "@/lib/utils";
+import { api, type AdminHelpDetail } from "web-shared/lib/api";
+import { cn } from "web-shared/lib/utils";
 import { DialogButton, useRun, When } from "./pieces";
 
 /*

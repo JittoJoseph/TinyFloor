@@ -2,7 +2,7 @@
 
 import { useCallback } from "react";
 import { useTranslations } from "next-intl";
-import { ApiError } from "@/lib/api";
+import { ApiError } from "web-shared/lib/api";
 
 /** Turns an API error into a sentence for the person, in their language. */
 export function useErrorMessage() {

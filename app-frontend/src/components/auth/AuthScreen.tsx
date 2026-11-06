@@ -4,14 +4,14 @@ import React, { useEffect, useId, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api, ApiError } from "@/lib/api";
+import { api, ApiError } from "web-shared/lib/api";
 import { homePath } from "@/lib/links";
 import { Field, inputClass } from "@/components/entry/EntryShell";
 import { ActionButton } from "@/components/ui/Action";
 import { CenteredAuthLayout } from "./AuthLayout";
 import { ErrorNote } from "@/components/entry/ErrorNote";
 import { Turnstile, useTurnstileToken } from "./Turnstile";
-import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
+import { GoogleButton, googleAvailable } from "web-shared/components/auth/GoogleButton";
 import { CodeField, CODE_LENGTH } from "./CodeField";
 import { Agree } from "@/components/legal/Agree";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import type { ServerMessage } from "@shared/messages";
+import type { ServerMessage } from "shared-protocol/messages";
 import type { RoomSocket } from "./RoomSocket";
 import { learned } from "./actions";
 
@@ -12,6 +12,8 @@ import { learned } from "./actions";
 export const BOARD_ASPECT = 2;
 /** Someone who drew this recently is still drawing, as far as the room can tell. */
 const DRAWING_MS = 6000;
+/** A stroke that hasn't grown for this long is taken as finished: the room never says when a pen lifts. */
+export const STROKE_SETTLED_MS = 600;
 
 export interface Stroke {
   id: string;
@@ -64,6 +66,8 @@ class WhiteboardManager {
   private pending: number[] = [];
   /** When each person last drew, by id; the room sends who drew each stroke. */
   private drawers = new Map<string, number>();
+  /** When each stroke last grew, by its id, while it may still be growing. */
+  private grew = new Map<string, number>();
   private flushTimer?: ReturnType<typeof setTimeout>;
 
   attach(ws: RoomSocket) {
@@ -107,6 +111,16 @@ class WhiteboardManager {
     return [...this.strokes.values()];
   }
 
+  /** Whether a stroke is still being drawn: yours while your pen is down, anyone's while it keeps growing. */
+  isDrawing = (id: string): boolean => {
+    if (this.live?.id === id) return true;
+    const at = this.grew.get(id);
+    if (at === undefined) return false;
+    if (Date.now() - at < STROKE_SETTLED_MS) return true;
+    this.grew.delete(id);
+    return false;
+  };
+
   /** Who else is drawing on it now. */
   drawing(now = Date.now()): string[] {
     return [...this.drawers].filter(([, at]) => now - at < DRAWING_MS).map(([id]) => id);
@@ -138,6 +152,7 @@ class WhiteboardManager {
 
         const existing = this.strokes.get(incoming.id);
         const from = existing ? existing.points.length : 0;
+        this.grew.set(incoming.id, Date.now());
         if (existing) existing.points.push(...incoming.points);
         else this.strokes.set(incoming.id, incoming);
 
@@ -146,6 +161,7 @@ class WhiteboardManager {
       }
       case "board_clear": {
         this.strokes.clear();
+        this.grew.clear();
         this.bump();
         break;
       }

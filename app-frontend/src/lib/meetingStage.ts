@@ -1,4 +1,4 @@
-import type { VideoQuality } from "@shared/messages";
+import type { VideoQuality } from "shared-protocol/messages";
 import type { VideoWant } from "./SfuMeeting";
 
 /** Someone else in the meeting, as far as the stage cares: whether there's a camera or a screen to show. */

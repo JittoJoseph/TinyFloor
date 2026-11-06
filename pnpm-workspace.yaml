@@ -5,6 +5,7 @@ packages:
   - app-frontend
   - marketing-frontend
   - web-shared
+  - shared-protocol
   - lab
 
 catalog:
@@ -12,6 +13,7 @@ catalog:
   "@hugeicons/core-free-icons": "^4.3.5"
   "@hugeicons/react": "^1.1.10"
   "@opennextjs/cloudflare": 1.20.6
+  "@sapphi-red/web-noise-suppressor": 0.4.1
   "@tailwindcss/postcss": "^4"
   "@types/node": "^20"
   "@types/react": "^19"
@@ -22,6 +24,7 @@ catalog:
   motion: "^13.4.0"
   next: "^16.0.7"
   next-intl: "^4.14.2"
+  perfect-freehand: 1.2.2
   phaser: "^3.90.0"
   posthog-js: "^1.407.2"
   react: 19.2.0
@@ -38,4 +41,5 @@ allowBuilds:
   sharp: true
   "@parcel/watcher": false
   "@swc/core": false
-  core-js: true
+  # posthog-js's core-js: its install script only prints a notice.
+  core-js: false

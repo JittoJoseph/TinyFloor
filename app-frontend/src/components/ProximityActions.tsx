@@ -2,15 +2,15 @@
 
 import { memo } from "react";
 import { useTranslations } from "next-intl";
-import { MessageSquare, Phone, Users } from "@/components/ui/icons";
+import { MessageSquare, Phone, Users } from "web-shared/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { usePlace } from "@/components/app/place";
 import { RoomIconButton, surface } from "./room/ui";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
-import { Face, type Presence } from "@/components/ui/Face";
-import { cn } from "@/lib/utils";
-import type { StatusNote } from "@shared/messages";
+import { Face, type Presence } from "web-shared/components/ui/Face";
+import { cn } from "web-shared/lib/utils";
+import type { StatusNote } from "shared-protocol/messages";
 import { usePerson } from "@/lib/people";
 import { NoteText, noteLine } from "@/components/app/StatusNote";
 import { Menu } from "@/components/ui/Menu";

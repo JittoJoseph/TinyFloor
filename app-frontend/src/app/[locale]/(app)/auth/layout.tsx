@@ -1,4 +1,4 @@
-import { localizedMetadata } from '@/lib/seo';
+import { localizedMetadata } from 'web-shared/lib/seo';
 
 export const generateMetadata = localizedMetadata({
   path: '/auth',

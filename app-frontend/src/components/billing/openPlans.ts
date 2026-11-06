@@ -1,8 +1,8 @@
 "use client";
 
 import { useOfficeMaybe } from "@/components/app/OfficeShell";
-import { track } from "@/lib/analytics";
-import { usePlans } from "@/lib/billing";
+import { track } from "web-shared/lib/analytics";
+import { usePlans } from "web-shared/lib/billing";
 import { useRouter } from "@/lib/i18n/navigation";
 import { officeSettingsPath, openSettings } from "@/lib/links";
 

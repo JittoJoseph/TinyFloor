@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
-import { cn } from "@/lib/utils";
-import { Face, type Presence } from "@/components/ui/Face";
+import { cn } from "web-shared/lib/utils";
+import { Face, type Presence } from "web-shared/components/ui/Face";
 
 /**
  * A person as a pill: face, name, maybe a second line and something to press.

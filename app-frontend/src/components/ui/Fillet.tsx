@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /** An eased fade, as [where from the edge (%), how much of the frame (%)]: smoothstep, so it starts and ends without a line. */
 export const FADE_STOPS: readonly (readonly [number, number])[] = [

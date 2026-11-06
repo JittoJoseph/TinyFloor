@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 
 /**
  * The mark for the lobby and anywhere the product speaks for itself: a floor

@@ -1,5 +1,5 @@
 import { memo, type CSSProperties } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 
 /**
  * A person's face, drawn from their id and nothing else.

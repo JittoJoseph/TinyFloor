@@ -1,27 +1,30 @@
 import { listenTo, type AudioLevel } from "./audioLevel";
+import { SpeechDetector, type SpeechTimings } from "./speech";
 
 /** How often the microphone's level is read. */
-const SAMPLE_EVERY_MS = 100;
-/** Loud enough to be a voice, on a 0 to 128 scale of the waveform's peak. */
-const LOUD = 14;
-/** Talking counts from this long above it... */
-const START_AFTER_MS = 200;
-/** ...and stops after this long below it, so pauses between words don't flicker. */
+const SAMPLE_EVERY_MS = 50;
+/** Talking stops after this long quiet, so pauses between words don't flicker. */
 const STOP_AFTER_MS = 1500;
 
 /**
- * Whether you are talking, from your own microphone, so a meeting can show who
- * speaks and put their video forward. Only the change is reported, and only
- * after it has held a moment: a few messages a minute, not a stream of levels.
+ * Whether you are talking, from your own microphone (as sent, so after noise
+ * removal), so a meeting can show who speaks and put their video forward
+ * (SpeechDetector). Only the change is reported: a few messages a minute,
+ * not a stream of levels.
  */
 export class VoiceActivity {
   private level: AudioLevel | null = null;
   private track: MediaStreamTrack | null = null;
   private timer?: ReturnType<typeof setInterval>;
   private talking = false;
-  private since = 0;
+  private readonly detector: SpeechDetector;
 
-  constructor(private readonly report: (talking: boolean) => void) {}
+  constructor(
+    private readonly report: (talking: boolean) => void,
+    timings: SpeechTimings = { stopAfterMs: STOP_AFTER_MS },
+  ) {
+    this.detector = new SpeechDetector(timings);
+  }
 
   /** Listens to this track, or stops listening (and reports silence) when there is none. */
   listen(track: MediaStreamTrack | null) {
@@ -31,19 +34,13 @@ export class VoiceActivity {
     if (!track || !level) return;
     this.track = track;
     this.level = level;
+    this.detector.reset();
 
     this.timer = setInterval(() => {
-      const loud = level.peak() > LOUD && track.enabled;
-      const now = performance.now();
-      if (loud === this.talking) {
-        this.since = now;
-        return;
-      }
-      if (now - this.since >= (loud ? START_AFTER_MS : STOP_AFTER_MS)) {
-        this.talking = loud;
-        this.since = now;
-        this.report(loud);
-      }
+      const talking = this.detector.push(level.level(), performance.now()) && track.enabled;
+      if (talking === this.talking) return;
+      this.talking = talking;
+      this.report(talking);
     }, SAMPLE_EVERY_MS);
   }
 

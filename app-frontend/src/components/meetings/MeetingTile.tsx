@@ -1,9 +1,9 @@
 "use client";
 
 import { memo, useEffect, useRef, type CSSProperties } from "react";
-import { MicOff, MonitorUp, Pin, PinOff } from "@/components/ui/icons";
-import { faceBackground } from "@/components/ui/Face";
-import { cn } from "@/lib/utils";
+import { MicOff, MonitorUp, Pin, PinOff } from "web-shared/components/ui/icons";
+import { faceBackground } from "web-shared/components/ui/Face";
+import { cn } from "web-shared/lib/utils";
 
 /**
  * One person in a meeting, the way Meet draws them: their camera when it's
@@ -19,12 +19,14 @@ export const MeetingTile = memo(function MeetingTile({
   video,
   speaking,
   micOff,
+  connecting,
   mirror,
   screen,
   compact,
   contain,
   caption,
   pin,
+  quiet,
   className,
   style,
 }: {
@@ -34,6 +36,11 @@ export const MeetingTile = memo(function MeetingTile({
   video: MediaStream | null;
   speaking: boolean;
   micOff: boolean;
+  /**
+   * Their voice is on its way but hasn't reached you yet: this, said under a
+   * faded circle, so you don't start talking before you can hear each other.
+   */
+  connecting?: string;
   /** Your own camera, the way a mirror shows it. */
   mirror?: boolean;
   /** A shared screen: letterboxed, never cropped. */
@@ -44,6 +51,8 @@ export const MeetingTile = memo(function MeetingTile({
   contain?: boolean;
   /** A line under the circle while there's no video ("Waiting for others to join"). */
   caption?: string;
+  /** Talking shown by a lighter ring: the small dark window, where a full one framed the whole card. */
+  quiet?: boolean;
   /** Pinning it big, or letting it go: shown on hover, and always while pinned. */
   pin?: { pinned: boolean; label: string; onToggle: () => void };
   className?: string;
@@ -51,7 +60,7 @@ export const MeetingTile = memo(function MeetingTile({
 }) {
   const ref = useRef<HTMLVideoElement>(null);
   const showing = !!video?.getVideoTracks().length;
-  const talking = speaking && !micOff && !screen;
+  const talking = speaking && !micOff && !screen && !connecting;
 
   useEffect(() => {
     const element = ref.current;
@@ -84,10 +93,16 @@ export const MeetingTile = memo(function MeetingTile({
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
           <span
             aria-hidden
-            className={cn("aspect-square rounded-full", compact ? "h-[38cqh]" : "h-[26cqh] max-h-36 min-h-14")}
+            className={cn(
+              "aspect-square rounded-full transition-opacity duration-300",
+              compact ? "h-[38cqh]" : "h-[26cqh] max-h-36 min-h-14",
+              !!connecting && "opacity-40",
+            )}
             style={{ backgroundImage: faceBackground(id) }}
           />
-          {caption && <p className="text-[13px] text-muted-foreground">{caption}</p>}
+          {(connecting || caption) && (
+            <p className={cn("text-muted-foreground", compact ? "-mt-2 text-[11.5px]" : "text-[13px]")}>{connecting ?? caption}</p>
+          )}
         </div>
       )}
 
@@ -125,7 +140,7 @@ export const MeetingTile = memo(function MeetingTile({
         aria-hidden
         className={cn(
           "pointer-events-none absolute inset-0 rounded-[inherit] ring-inset transition-shadow duration-150",
-          talking ? "ring-2 ring-brand" : "ring-1 ring-foreground/[0.06]",
+          talking ? (quiet ? "ring-[1.5px] ring-brand/55" : "ring-2 ring-brand") : "ring-1 ring-foreground/[0.06]",
         )}
       />
 

@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useAuth } from "@/contexts/AuthContext";
 import { FLOOR_ARRIVED_EVENT } from "@/lib/floor";
-import { track } from "@/lib/analytics";
+import { track } from "web-shared/lib/analytics";
 import { Modal } from "@/components/ui/Modal";
-import { Face } from "@/components/ui/Face";
+import { Face } from "web-shared/components/ui/Face";
 import { Button } from "@/components/motion/button/base";
 import { useOffice } from "./OfficeShell";
 

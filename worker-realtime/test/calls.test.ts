@@ -35,9 +35,17 @@ describe("peer-to-peer call signalling", () => {
 
 describe("meetings through the SFU", () => {
   let sfuRequests: { method: string; path: string; body: Record<string, unknown> | null }[];
+  /** How long the SFU takes over an answer, and when each one was done. */
+  let renegotiateMs = 0;
+  let answered: number[];
+  /** A track the SFU says isn't live yet, when asked for. */
+  let missing: string | null = null;
 
   beforeEach(() => {
     sfuRequests = [];
+    renegotiateMs = 0;
+    answered = [];
+    missing = null;
     let sessions = 0;
     const realFetch = globalThis.fetch;
     vi.spyOn(globalThis, "fetch").mockImplementation(async (input, init) => {
@@ -46,10 +54,18 @@ describe("meetings through the SFU", () => {
       const path = new URL(request.url).pathname.replace("/v1/apps/test-app", "");
       const body = request.method === "GET" ? null : ((await request.json().catch(() => null)) as Record<string, unknown> | null);
       sfuRequests.push({ method: request.method, path, body });
+      if (path.endsWith("/renegotiate")) {
+        await new Promise((resolve) => setTimeout(resolve, renegotiateMs));
+        answered.push(sfuRequests.length);
+      }
 
       if (path === "/sessions/new") return Response.json({ sessionId: `session-${++sessions}` }, { status: 201 });
       if (path.endsWith("/tracks/new")) {
-        const tracks = (body?.tracks as { location: string }[]).map((track, index) => ({ ...track, mid: String(index) }));
+        const tracks = (body?.tracks as { location: string; trackName: string }[]).map((track, index) =>
+          track.location === "remote" && track.trackName === missing
+            ? { ...track, errorCode: "not_found_track_error", errorDescription: "Track not found on remote peer" }
+            : { ...track, mid: String(index) },
+        );
         const remote = tracks.some((track) => track.location === "remote");
         return Response.json({
           requiresImmediateRenegotiation: remote,
@@ -63,8 +79,8 @@ describe("meetings through the SFU", () => {
 
   afterEach(() => vi.restoreAllMocks());
 
-  async function seated() {
-    const { ava, avaId, ben, benId } = await pair();
+  async function seated(room = uniqueRoom()) {
+    const { ava, avaId, ben, benId } = await pair(room);
     ava.send({ t: "meeting_join", meeting: "main" });
     await ava.next("meeting_joined");
     ben.send({ t: "meeting_join", meeting: "main" });
@@ -164,6 +180,66 @@ describe("meetings through the SFU", () => {
     expect(await ben.next("sfu")).toEqual({ t: "sfu", op: "tracks", userId: avaId, kinds: ["mic"] });
   });
 
+  it("sets up the connection before joining, and tells the meeting of it on joining", async () => {
+    const room = uniqueRoom();
+    const { ava, avaId, ben } = await seated(room);
+    const cara = await Client.open(room, { name: "Cara" });
+    const caraId = (await cara.next("welcome")).self.id;
+    cara.send({ t: "sfu", op: "publish", sdp: "client-offer", tracks: [{ mid: "0", kind: "mic" }, { mid: "1", kind: "camera" }] });
+    expect(await cara.next("sfu")).toEqual({ t: "sfu", op: "published", sdp: "sfu-answer" });
+    // Nobody hears of it until Cara is in, and she can't watch anyone before then either.
+    cara.messages.length = 0;
+    cara.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "mic" }] });
+    expect(await cara.next("sfu")).toEqual({ t: "sfu", op: "error", code: "not_in_meeting" });
+    expect(ben.messages.some((message) => message.t === "sfu" && message.op === "tracks")).toBe(false);
+
+    ava.messages.length = 0;
+    cara.send({ t: "meeting_join", meeting: "main" });
+    await cara.next("meeting_joined");
+    expect(await ava.next("sfu")).toEqual({ t: "sfu", op: "tracks", userId: caraId, kinds: ["mic", "camera"] });
+    // The same session, not a new one.
+    expect(sfuRequests.filter((request) => request.path === "/sessions/new")).toHaveLength(1);
+  });
+
+  it("forgets a connection made ahead when it's dropped, and won't take a screen before joining", async () => {
+    const room = uniqueRoom();
+    const { ava } = await seated(room);
+    const cara = await Client.open(room, { name: "Cara" });
+    await cara.next("welcome");
+    cara.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "2", kind: "screen" }] });
+    expect(await cara.next("sfu")).toEqual({ t: "sfu", op: "error", code: "bad_request" });
+
+    cara.messages.length = 0;
+    cara.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "mic" }] });
+    await cara.next("sfu");
+    cara.send({ t: "sfu", op: "drop" });
+    await vi.waitFor(() => expect(sfuRequests.some((request) => request.path.endsWith("/tracks/close"))).toBe(true));
+
+    // Joining afterwards starts over: a new session, and nothing announced until it publishes.
+    ava.messages.length = 0;
+    cara.send({ t: "meeting_join", meeting: "main" });
+    await cara.next("meeting_joined");
+    expect(ava.messages.some((message) => message.t === "sfu" && message.op === "tracks")).toBe(false);
+    cara.messages.length = 0;
+    cara.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "mic" }] });
+    await cara.next("sfu");
+    expect(sfuRequests.filter((request) => request.path === "/sessions/new")).toHaveLength(2);
+  });
+
+  it("passes on what someone has on without waiting for the SFU to answer them", async () => {
+    const { ava, benId, ben } = await seated();
+    renegotiateMs = 3000;
+    ben.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "mic" }] });
+    await ben.next("sfu");
+    ben.send({ t: "sfu", op: "answer", sdp: "slow" });
+    const sent = Date.now();
+    ben.send({ t: "sfu", op: "media", mic: true, camera: true, screen: false });
+    await vi.waitFor(() => expect(ava.messages).toContainEqual({ t: "sfu", op: "media", userId: benId, mic: true, camera: true, screen: false }), {
+      timeout: 2000,
+    });
+    expect(Date.now() - sent).toBeLessThan(renegotiateMs);
+  });
+
   it("shares who has their mic, camera and screen on, including with newcomers", async () => {
     const room = uniqueRoom();
     const ava = await Client.open(room, { name: "Ava" });
@@ -213,6 +289,76 @@ describe("meetings through the SFU", () => {
     await ben.next("sfu");
     const subscribe = sfuRequests.find((request) => request.path === "/sessions/session-2/tracks/new");
     expect((subscribe?.body?.tracks as { simulcast: { preferredRid: string } }[])[0].simulcast.preferredRid).toBe("m");
+  });
+
+  it("asks for ranked layers by their names, so the SFU steps down through them in order", async () => {
+    const { ava, avaId, ben } = await seated();
+    ava.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "camera", ranked: true }] });
+    await ben.next("sfu");
+    ben.messages.length = 0;
+    ben.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "camera", quality: "medium" }] });
+    await ben.next("sfu");
+    const subscribe = sfuRequests.find((request) => request.path === "/sessions/session-2/tracks/new");
+    expect((subscribe?.body?.tracks as { simulcast: unknown }[])[0].simulcast).toEqual({ preferredRid: "b", priorityOrdering: "asciibetical", ridNotAvailable: "asciibetical" });
+
+    ben.send({ t: "sfu", op: "answer", sdp: "client-answer" });
+    ben.send({ t: "sfu", op: "quality", userId: avaId, kind: "camera", mid: "0", quality: "high" });
+    await vi.waitFor(() => {
+      expect(sfuRequests.find((request) => request.path.endsWith("/tracks/update"))?.body?.tracks).toEqual([
+        expect.objectContaining({ simulcast: expect.objectContaining({ preferredRid: "a" }) }),
+      ]);
+    }, { timeout: 5000 });
+  });
+
+  it("keeps a shared screen on the layer asked for, whatever the SFU thinks of the bandwidth", async () => {
+    const { ava, avaId, ben } = await seated();
+    ava.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "screen", ranked: true }] });
+    await ben.next("sfu");
+    ben.messages.length = 0;
+    ben.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "screen", quality: "high" }] });
+    await ben.next("sfu");
+    const subscribe = sfuRequests.find((request) => request.path === "/sessions/session-2/tracks/new");
+    expect((subscribe?.body?.tracks as { simulcast: unknown }[])[0].simulcast).toEqual({ preferredRid: "a", priorityOrdering: "none", ridNotAvailable: "none" });
+  });
+
+  it("gives the SFU an answer before the next request from the same person", async () => {
+    const { ava, avaId, ben } = await seated();
+    const offerFor = (kind: string) =>
+      vi.waitFor(() => {
+        const offer = ben.messages.find((message) => message.t === "sfu" && message.op === "offer" && message.tracks[0]?.kind === kind);
+        if (!offer) throw new Error(`no offer for the ${kind} yet`);
+        return offer;
+      }, { timeout: 3000 });
+    ava.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "mic" }, { mid: "1", kind: "camera", ranked: true }] });
+    await ben.next("sfu");
+    ben.messages.length = 0;
+    ben.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "mic" }] });
+    await offerFor("mic");
+    renegotiateMs = 300;
+    // Back to back, as the browser sends them.
+    ben.send({ t: "sfu", op: "answer", sdp: "client-answer" });
+    ben.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "camera", quality: "high" }] });
+    await offerFor("camera");
+    const asked = sfuRequests.findLastIndex((request) => request.path === "/sessions/session-2/tracks/new");
+    expect(answered).toHaveLength(1);
+    // The answer was done (with nothing asked of the SFU since) before the camera was asked for.
+    expect(answered[0]).toBeLessThanOrEqual(asked);
+  });
+
+  it("offers what the SFU could give and names the rest, when only some tracks are live", async () => {
+    const { ava, avaId, ben } = await seated();
+    ava.send({ t: "sfu", op: "publish", sdp: "o", tracks: [{ mid: "0", kind: "mic" }, { mid: "1", kind: "camera", ranked: true }] });
+    await ben.next("sfu");
+    ben.messages.length = 0;
+    missing = "camera";
+    ben.send({ t: "sfu", op: "subscribe", tracks: [{ userId: avaId, kind: "mic" }, { userId: avaId, kind: "camera", quality: "low" }] });
+    expect(await ben.next("sfu")).toEqual({
+      t: "sfu",
+      op: "offer",
+      sdp: "sfu-offer",
+      tracks: [{ userId: avaId, kind: "mic", mid: "0" }],
+      failed: [{ userId: avaId, kind: "camera", code: "not_found_track_error" }],
+    });
   });
 
   it("caps how much video one person is sent at once", async () => {

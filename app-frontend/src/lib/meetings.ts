@@ -1,7 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { type MeetingInfo, type MeetingUsage } from "@shared/messages";
+import { type MeetingInfo, type MeetingUsage } from "shared-protocol/messages";
 
 /**
  * The office's meetings as the room tells them: the main one always, others

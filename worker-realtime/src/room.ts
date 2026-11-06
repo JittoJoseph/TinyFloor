@@ -40,7 +40,7 @@ import {
   type ServerMessage,
   type SfuServerMessage,
   type Whereabouts,
-} from "../../shared-protocol/src";
+} from "shared-protocol";
 import { Board, parseStroke } from "./board";
 import { Reporter } from "./discord";
 import { readTicket, ROOM_HEADER, SPAWN_HEADER, TICKET_HEADER, WHERE_HEADER } from "./headers";
@@ -103,7 +103,8 @@ interface Attachment {
    */
   media: {
     sessionId: string;
-    tracks: { mid: string; kind: MediaKind }[];
+    /** `ranked`: the video's layers are named a, b, c from sharpest down (simulcast). */
+    tracks: { mid: string; kind: MediaKind; ranked?: true }[];
     subs?: { mid: string; userId: string; kind: MediaKind }[];
   } | null;
   /** What this person says is on in their meeting: mic, camera, screen. */
@@ -136,6 +137,8 @@ export class Room extends DurableObject<Env> {
    * and only written back when something worth surviving hibernation changes.
    */
   private readonly attachments = new WeakMap<WebSocket, Attachment>();
+  /** Each person's SFU requests so far, so the next waits for them (sfu). */
+  private readonly sfuQueues = new WeakMap<WebSocket, Promise<void>>();
   /** When the room last looked for sockets that went quiet, in memory only. */
   private sweptAt = 0;
   private board!: Board;
@@ -416,7 +419,7 @@ export class Room extends DurableObject<Env> {
         this.setListening(me, message.on);
         break;
       case "rename":
-        this.rename(me, message.name);
+        this.rename(socket, me, message.name);
         break;
       case "look":
         this.changeLook(socket, me, message.character);
@@ -619,15 +622,18 @@ export class Room extends DurableObject<Env> {
   }
 
   /**
-   * A new name for someone on the demo office's floor, who signed up with
-   * Google from it and took their Google name. Only there: in an office a name
-   * comes with the ticket, from the account, each time someone walks in.
+   * A new name, saved to the account a moment ago (or, on the demo office's
+   * floor, the Google name of someone who signed up from it): kept through
+   * hibernation and shown to everyone here, without walking out and back in.
+   * A guest in an office has no account to rename; the next ticket carries the
+   * account's name either way.
    */
-  private rename(me: Attachment, name: unknown): void {
-    if (!this.takeAction(me) || lobbyCopyNumber(me.room) === null) return;
+  private rename(socket: WebSocket, me: Attachment, name: unknown): void {
+    if (!this.takeAction(me) || (me.guest && lobbyCopyNumber(me.room) === null)) return;
     const clean = cleanDisplayName(name);
     if (!clean || clean === me.name) return;
     me.name = clean;
+    this.remember(socket, me);
     this.broadcast({ t: "renamed", id: me.userId, name: clean });
   }
 
@@ -705,6 +711,10 @@ export class Room extends DurableObject<Env> {
     this.remember(socket, me);
     send(socket, { t: "meeting_joined", meeting, members });
     this.broadcastToMeeting(meeting, { t: "meeting_member_joined", ...memberOf(me) }, me.userId);
+    // Connected ahead of joining: the others can take your voice straight away.
+    if (me.media?.tracks.length) {
+      this.broadcastToMeeting(meeting, { t: "sfu", op: "tracks", userId: me.userId, kinds: me.media.tracks.map((track) => track.kind) }, me.userId);
+    }
     for (const other of this.meetingMembers(meeting)) {
       const them = this.attachmentOf(other);
       if (them.userId === me.userId) continue;
@@ -852,16 +862,51 @@ export class Room extends DurableObject<Env> {
     for (const target of targets) sendText(target, relayed);
   }
 
+  /**
+   * One person's SFU requests, one after another, in the order they came. The
+   * browser sends its answer to an offer and its next request back to back;
+   * handled at once, the SFU got a new track while still waiting for that
+   * answer, refused it, and could leave the session stuck: someone in the
+   * meeting stayed unheard. A request that hangs holds the next for 10 s at most.
+   */
+  private sfu(socket: WebSocket, message: Record<string, unknown>): Promise<void> {
+    // What someone has on is news for the table, not a request to the SFU: it
+    // doesn't wait behind theirs. Queued, a camera switched on was shown to the
+    // others only after whatever the SFU was still answering, a second or more.
+    if (message.op === "media") return this.sfuStep(socket, message);
+    const before = this.sfuQueues.get(socket) ?? Promise.resolve();
+    const waited = Promise.race([before, new Promise<void>((resolve) => setTimeout(resolve, SFU_QUEUE_WAIT_MS))]);
+    const step = waited.then(() => this.sfuStep(socket, message));
+    this.sfuQueues.set(socket, step.catch(() => {}));
+    return step;
+  }
+
   /** Meeting media through the SFU. The room decides who may publish and watch what, and how much. */
-  private async sfu(socket: WebSocket, message: Record<string, unknown>): Promise<void> {
+  private async sfuStep(socket: WebSocket, message: Record<string, unknown>): Promise<void> {
     const me = this.attachmentOf(socket);
-    const meeting = me.meeting;
-    if (!meeting) return sendSfu(socket, { op: "error", code: "not_in_meeting" });
+    const joined = me.meeting;
+    // Getting ready to join, the connection can be set up ahead: nothing more until you're in.
+    if (!joined && !READY_OPS.has(message.op as string)) return sendSfu(socket, { op: "error", code: "not_in_meeting" });
+    const meeting = joined as string;
 
     try {
       switch (message.op) {
         case "publish":
-          return await this.sfuPublish(socket, meeting, message);
+          return await this.sfuPublish(socket, joined, message);
+        case "drop": {
+          // The connection made ahead failed, perhaps after joining with it: a new one follows.
+          if (!me.media) return;
+          const { sessionId, tracks } = me.media;
+          me.media = null;
+          this.remember(socket, me);
+          if (joined && tracks.length) {
+            this.broadcastToMeeting(joined, { t: "sfu", op: "untracks", userId: me.userId, kinds: tracks.map((track) => track.kind) }, me.userId);
+          }
+          return await this.sfuApi.closeTracks(
+            sessionId,
+            tracks.map((track) => track.mid),
+          );
+        }
         case "unpublish":
           return await this.sfuUnpublish(socket, meeting, message);
         case "subscribe":
@@ -898,39 +943,50 @@ export class Room extends DurableObject<Env> {
     }
   }
 
-  private async sfuPublish(socket: WebSocket, meeting: string, message: Record<string, unknown>): Promise<void> {
-    const tracks = Array.isArray(message.tracks) ? (message.tracks as { mid?: unknown; kind?: unknown }[]) : [];
+  /**
+   * Publishing your mic and camera slots before you join (`meeting` null) sets
+   * up the connection ahead; the meeting you then join is told of them
+   * (enterMeeting). Nobody can receive them until then.
+   */
+  private async sfuPublish(socket: WebSocket, meeting: string | null, message: Record<string, unknown>): Promise<void> {
+    const tracks = Array.isArray(message.tracks) ? (message.tracks as { mid?: unknown; kind?: unknown; ranked?: unknown }[]) : [];
     const valid =
       typeof message.sdp === "string" &&
       tracks.length > 0 &&
       tracks.length <= MEDIA_KINDS.length &&
       tracks.every((track) => typeof track.mid === "string" && MEDIA_KINDS.includes(track.kind as MediaKind)) &&
       new Set(tracks.map((track) => track.kind)).size === tracks.length;
-    if (!valid) return sendSfu(socket, { op: "error", code: "bad_request" });
-    const published = tracks as { mid: string; kind: MediaKind }[];
+    if (!valid || (!meeting && tracks.some((track) => track.kind === "screen"))) return sendSfu(socket, { op: "error", code: "bad_request" });
+    const published = tracks.map((track) => ({ mid: track.mid as string, kind: track.kind as MediaKind, ...(track.ranked === true ? { ranked: true as const } : {}) }));
 
     const sessionId = await this.sessionFor(socket);
     const result = await this.sfuApi.newTracks(
       sessionId,
-      published.map((track) => ({ location: "local", mid: track.mid, trackName: track.kind })),
+      published.map((track) => ({ location: "local" as const, mid: track.mid, trackName: track.kind })),
       message.sdp as string,
     );
 
     const me = this.attachmentOf(socket);
-    if (me.meeting !== meeting || !me.media) {
-      // They left the table while the SFU was answering.
+    // They left the table while the SFU was answering, or dropped the connection
+    // made ahead. Joining meanwhile is fine: the meeting is told below.
+    if ((meeting && me.meeting !== meeting) || me.media?.sessionId !== sessionId) {
       await this.sfuApi.closeTracks(
         sessionId,
         published.map((track) => track.mid),
       );
       return;
     }
-    const kinds = published.map((track) => track.kind);
-    me.media.tracks = me.media.tracks.filter((track) => !kinds.includes(track.kind)).concat(published);
+    // Only what the SFU took is announced; its answer covers those, and goes back either way.
+    const taken = published.filter((_, index) => !result.tracks?.[index]?.errorCode);
+    if (!taken.length || !result.sessionDescription) {
+      return sendSfu(socket, { op: "error", code: result.tracks?.find((track) => track.errorCode)?.errorCode ?? "sfu_error" });
+    }
+    const kinds = taken.map((track) => track.kind);
+    me.media!.tracks = me.media!.tracks.filter((track) => !kinds.includes(track.kind)).concat(taken);
     this.remember(socket, me);
 
     sendSfu(socket, { op: "published", sdp: result.sessionDescription?.sdp ?? "" });
-    this.broadcastToMeeting(meeting, { t: "sfu", op: "tracks", userId: me.userId, kinds }, me.userId);
+    if (me.meeting) this.broadcastToMeeting(me.meeting, { t: "sfu", op: "tracks", userId: me.userId, kinds }, me.userId);
   }
 
   private async sfuUnpublish(socket: WebSocket, meeting: string, message: Record<string, unknown>): Promise<void> {
@@ -958,7 +1014,8 @@ export class Room extends DurableObject<Env> {
       if (typeof want.userId !== "string" || want.userId === me.userId) continue;
       const publisher = this.publisher(meeting, want.userId);
       const kind = want.kind as MediaKind;
-      if (!publisher?.media?.tracks.some((track) => track.kind === kind)) continue;
+      const published = publisher?.media?.tracks.find((track) => track.kind === kind);
+      if (!publisher?.media || !published) continue;
       found.push({
         userId: want.userId,
         kind,
@@ -966,7 +1023,7 @@ export class Room extends DurableObject<Env> {
           location: "remote",
           sessionId: publisher.media.sessionId,
           trackName: kind,
-          ...(kind === "mic" ? {} : { simulcast: simulcast(want.quality) }),
+          ...(kind === "mic" ? {} : { simulcast: simulcast(kind, want.quality, !!published.ranked) }),
         },
       });
     }
@@ -989,19 +1046,24 @@ export class Room extends DurableObject<Env> {
       sessionId,
       found.map((item) => item.track),
     );
+    // Some tracks can fail (not live yet) while the rest go through: those are
+    // offered, the others named to ask for again. Failing the lot left the
+    // SFU's offer unanswered, and the session refused everything after it.
+    const placed = found.map((item, index) => ({ ...item, mid: result.tracks?.[index]?.mid ?? "", code: result.tracks?.[index]?.errorCode }));
+    const given = placed.filter((item) => !item.code && item.mid);
+    const failed = placed.filter((item) => item.code).map((item) => ({ userId: item.userId, kind: item.kind, code: item.code! }));
+    const sdp = result.requiresImmediateRenegotiation ? (result.sessionDescription?.sdp ?? "") : "";
+    if (!given.length && !sdp) return sendSfu(socket, { op: "error", code: failed[0]?.code ?? "sfu_error" });
     const subscriber = this.attachmentOf(socket);
     if (subscriber.media) {
-      const added = found.flatMap((item, index) => {
-        const mid = result.tracks?.[index]?.mid;
-        return mid ? [{ mid, userId: item.userId, kind: item.kind }] : [];
-      });
-      subscriber.media.subs = [...(subscriber.media.subs ?? []), ...added];
+      subscriber.media.subs = [...(subscriber.media.subs ?? []), ...given.map(({ mid, userId, kind }) => ({ mid, userId, kind }))];
       this.remember(socket, subscriber);
     }
     sendSfu(socket, {
       op: "offer",
-      sdp: result.requiresImmediateRenegotiation ? (result.sessionDescription?.sdp ?? "") : "",
-      tracks: found.map((item, index) => ({ userId: item.userId, kind: item.kind, mid: result.tracks?.[index]?.mid ?? "" })),
+      sdp,
+      tracks: given.map(({ userId, kind, mid }) => ({ userId, kind, mid })),
+      ...(failed.length ? { failed } : {}),
     });
   }
 
@@ -1024,7 +1086,7 @@ export class Room extends DurableObject<Env> {
         sessionId: publisher!.media!.sessionId,
         trackName: kind,
         mid: message.mid as string,
-        simulcast: simulcast(message.quality),
+        simulcast: simulcast(kind, message.quality, !!publisher!.media!.tracks.find((track) => track.kind === kind)?.ranked),
       },
     ]);
     if (result.requiresImmediateRenegotiation && result.sessionDescription) {
@@ -1345,14 +1407,29 @@ function sendSfu(socket: WebSocket, message: SfuServerMessage): void {
   send(socket, { t: "sfu", ...message });
 }
 
+/**
+ * The SFU ranks layers by name, a before z, when it has to step down. Named
+ * h, m, l (as clients before November 2026 publish them), a viewer short of
+ * bandwidth went from 720p straight to 180p; a, b, c step down in order.
+ */
 const LAYER: Record<VideoQuality, string> = { high: "h", medium: "m", low: "l" };
+const SFU_QUEUE_WAIT_MS = 10_000;
+/** What can be asked of the SFU before joining a meeting: setting up the connection ahead (sfuPublish). */
+const READY_OPS = new Set(["publish", "answer", "drop"]);
+const RANKED: Record<VideoQuality, string> = { high: "a", medium: "b", low: "c" };
 
-/** Which simulcast layer to forward: the quality asked for, or low when it isn't one. */
-function simulcast(quality: unknown): NonNullable<SfuTrack["simulcast"]> {
+/**
+ * Which simulcast layer to forward: the quality asked for, or low when it isn't one.
+ * A camera steps down when the viewer's bandwidth looks short. A screen doesn't:
+ * a still screen sends next to nothing, so the SFU's estimate stays low and it
+ * would keep forwarding the thumbnail to a viewer who has the screen full size.
+ */
+function simulcast(kind: MediaKind, quality: unknown, ranked: boolean): NonNullable<SfuTrack["simulcast"]> {
+  const names = ranked ? RANKED : LAYER;
   return {
-    preferredRid: VIDEO_QUALITIES.includes(quality as VideoQuality) ? LAYER[quality as VideoQuality] : "l",
-    priorityOrdering: "asciibetical",
-    ridNotAvailable: "asciibetical",
+    preferredRid: names[VIDEO_QUALITIES.includes(quality as VideoQuality) ? (quality as VideoQuality) : "low"],
+    priorityOrdering: kind === "screen" ? "none" : "asciibetical",
+    ridNotAvailable: kind === "screen" ? "none" : "asciibetical",
   };
 }
 

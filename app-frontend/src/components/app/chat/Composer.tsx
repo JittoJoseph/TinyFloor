@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { ArrowUp, FileText, ImagePlus, Loader2, Mic, Paperclip, Reply, Smile, Trash2, X } from "@/components/ui/icons";
+import { ArrowUp, FileText, ImagePlus, Loader2, Mic, Paperclip, Reply, Smile, Trash2, X } from "web-shared/components/ui/icons";
 import { AnimatePresence, motion } from "motion/react";
-import { FILES_PER_MESSAGE, TYPING_EVERY_MS, isPicture, type ChatFile } from "@shared/chat";
+import { FILES_PER_MESSAGE, TYPING_EVERY_MS, isPicture, type ChatFile } from "shared-protocol/chat";
 import { Kbd } from "@/components/ui/IconButton";
 import { Tooltip } from "@/components/motion/tooltip";
-import { Face } from "@/components/ui/Face";
-import { cn } from "@/lib/utils";
+import { Face } from "web-shared/components/ui/Face";
+import { cn } from "web-shared/lib/utils";
 import { draftFor, keepDraft } from "@/lib/chatMemory";
 import { FileProblem, prepare, sizeOf, type Prepared } from "@/lib/chatFiles";
 import { typingMention, type Mentionable } from "@/lib/mentions";

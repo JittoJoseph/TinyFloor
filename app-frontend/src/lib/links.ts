@@ -1,5 +1,5 @@
 import { useLocale } from "next-intl";
-import { APP_URL, siteHref } from "@/lib/site";
+import { APP_URL, siteHref } from "web-shared/lib/site";
 
 // Paths people share or open in a new tab. They are deliberately left without a
 // locale prefix: the proxy sends each visitor to their own language, so a link

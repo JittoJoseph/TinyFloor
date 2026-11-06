@@ -1,5 +1,5 @@
 import { createNavigation } from "next-intl/navigation";
-import { routing } from "@/lib/i18n/routing";
+import { routing } from "web-shared/lib/i18n/routing";
 
 /**
  * Locale-aware navigation. Use these instead of `next/link` and the router

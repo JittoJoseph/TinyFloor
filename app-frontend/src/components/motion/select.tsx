@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, ChevronDown } from "@/components/ui/icons";
+import { Check, ChevronDown } from "web-shared/components/ui/icons";
 import {
   createContext,
   type ReactNode,
@@ -15,7 +15,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { usePopoverPortalPosition } from "@/components/motion/popover-position";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 type Placement = "bottom" | "top";
 

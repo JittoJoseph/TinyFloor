@@ -2,10 +2,10 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useTranslations } from "next-intl";
-import { VideoOff } from "@/components/ui/icons";
+import { VideoOff } from "web-shared/components/ui/icons";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /**
  * Said for a moment when your camera turned itself off after a quiet stretch

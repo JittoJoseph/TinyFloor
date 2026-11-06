@@ -19,21 +19,21 @@ import {
   Search,
   SquarePen,
   UserPlus,
-} from "@/components/ui/icons";
+} from "web-shared/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
-import { GENERAL_CHANNEL, cleanChannelName, dmChannelId, dmMembers, isDm, type ChannelSummary } from "@shared/chat";
+import { GENERAL_CHANNEL, cleanChannelName, dmChannelId, dmMembers, isDm, type ChannelSummary } from "shared-protocol/chat";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { chat, type Found } from "@/lib/ChatSocket";
 import { useChat, useTyping } from "@/lib/useChat";
 import { useAuth } from "@/contexts/AuthContext";
 import { useFloorStatus } from "@/lib/floor";
 import { CommandPalette, type CommandItem } from "@/components/motion/command-palette";
-import { Face, FaceStack, type Presence } from "@/components/ui/Face";
+import { Face, FaceStack, type Presence } from "web-shared/components/ui/Face";
 import { IconButton, Kbd } from "@/components/ui/IconButton";
 import { Menu, MenuHeader, MenuItem } from "@/components/ui/Menu";
 import { Chip } from "@/components/ui/Empty";
 import { SPRING_LAYOUT } from "@/lib/ease";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { ShellView } from "./AppShell";
 import { PresenceDock } from "./PresenceDock";
 import { NotifyCard } from "./chat/NotifyCard";
@@ -42,7 +42,7 @@ import { Conversation, ConversationIntro, type Line } from "./chat/Conversation"
 import { Held } from "./chat/Held";
 import { addToComposer, Composer, focusComposer } from "./chat/Composer";
 import { HelpTicket } from "./HelpTicket";
-import { Logo } from "@/components/app/Logo";
+import { Logo } from "web-shared/components/app/Logo";
 import { help, SUPPORT_CHANNEL, useHelp } from "@/lib/help";
 import { conversationToOpen, jumpTo, rememberConversation, takeJump } from "@/lib/chatMemory";
 import { useWide } from "@/lib/hooks/use-wide";
@@ -187,6 +187,7 @@ export function ChatView({ channel }: { channel?: string }) {
 
   const lines: Line[] = (history ?? []).map((message) => ({
     id: String(message.seq),
+    key: message.nonce,
     author: message.author,
     authorName: personById.get(message.author)?.displayName ?? message.authorName,
     body: message.body,
@@ -206,6 +207,30 @@ export function ChatView({ channel }: { channel?: string }) {
       held: message.reply.held,
     },
   }));
+
+  // What you said that's still on its way, after the rest, in the place it will take.
+  const myName = personById.get(me)?.displayName ?? user?.displayName ?? "";
+  for (const pending of state.pending[open] ?? []) {
+    const answered = pending.replyTo !== undefined ? history?.find((one) => one.seq === pending.replyTo) : undefined;
+    lines.push({
+      id: `pending:${pending.nonce}`,
+      key: pending.nonce,
+      sending: pending.failed ? "failed" : "sending",
+      author: me,
+      authorName: myName,
+      body: pending.body,
+      at: pending.at,
+      files: pending.files,
+      mentions: pending.mentions,
+      reply: answered && {
+        id: String(answered.seq),
+        author: answered.author,
+        authorName: personById.get(answered.author)?.displayName ?? answered.authorName,
+        body: answered.body,
+        files: answered.files?.length,
+      },
+    });
+  }
 
   // Who else is writing here: one or two by name, more as "several".
   const typists = [...useTyping(open).entries()].filter(([id]) => id !== me).map(([id, one]) => personById.get(id)?.displayName ?? one.name);
@@ -547,6 +572,8 @@ export function ChatView({ channel }: { channel?: string }) {
             focusComposer();
           }}
           onOpenReply={(id) => setTarget({ channel: open, seq: Number(id) })}
+          onResend={(line) => line.key && chat.resend(open, line.key)}
+          onDiscard={(line) => line.key && chat.discard(open, line.key)}
           personCard={personCard}
           intro={
             pair && other ? (

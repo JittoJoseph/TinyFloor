@@ -100,6 +100,7 @@
   "call": {
     "incoming": "전화가 왔어요",
     "onCall": "통화 중",
+    "connecting": "연결 중...",
     "decline": "거절",
     "accept": "수락",
     "calling": "전화 거는 중...",
@@ -127,6 +128,8 @@
     "status": "상태: {status}",
     "muteMic": "마이크 끄기",
     "unmuteMic": "마이크 켜기",
+    "talkingMuted": "마이크가 꺼져 있어요",
+    "unmuteShort": "켜기",
     "cameraOff": "카메라 끄기",
     "cameraOn": "카메라 켜기",
     "shareScreen": "화면 공유",
@@ -136,6 +139,7 @@
     "settings": "설정",
     "leaveCall": "통화 나가기",
     "leaveMeeting": "회의 나가기",
+    "popOut": "작은 창으로 보기",
     "cameraRested": "조용한 동안 카메라 꺼짐"
   },
   "status": {
@@ -160,6 +164,9 @@
     "title": "방 채팅",
     "close": "채팅 닫기",
     "send": "메시지 보내기",
+    "notSent": "전송되지 않음",
+    "sendAgain": "다시 보내기",
+    "discard": "삭제",
     "channels": "채널",
     "directMessages": "다이렉트 메시지",
     "newChannel": "새 채널",

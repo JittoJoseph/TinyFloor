@@ -1,5 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { locales } from "@/lib/i18n/routing";
+import { locales } from "web-shared/lib/i18n/routing";
 import {
   COMPARE_ROWS,
   HUBS,
@@ -9,18 +9,18 @@ import {
   type Landing,
   type LandingGroup,
   type LandingKey,
-} from "@/lib/landings";
-import { GUIDES, GUIDES_PATH, guidePath, type GuideKey, type GuideSection } from "@/lib/guides";
+} from "web-shared/lib/landings";
+import { GUIDES, GUIDES_PATH, guidePath, type GuideKey, type GuideSection } from "web-shared/lib/guides";
 import { landingArticle } from "@/lib/landing-articles";
 import { guideCopies } from "@/lib/guide-copy";
 import { BLOG_PATH, postPath } from "@/lib/blog";
 import { blogUi, postsWithCopy } from "@/lib/blog-copy";
 import { PLANS } from "@/lib/plans";
-import { FOUNDING, foundingOpen } from "@/lib/founding";
+import { FOUNDING, foundingOpen } from "web-shared/lib/founding";
 import { CHANGELOG, CHANGELOG_PATH, RELEASES } from "@/lib/changelog";
 import { HOW_IT_WORKS, HOW_IT_WORKS_DESCRIPTION, HOW_IT_WORKS_INTRO, HOW_IT_WORKS_PATH, HOW_IT_WORKS_TITLE } from "@/lib/how-it-works";
-import { SUPPORT_EMAIL } from "@/lib/site";
-import { MORE_FEATURES, absoluteUrl } from "@/lib/structured-data";
+import { SUPPORT_EMAIL } from "web-shared/lib/site";
+import { MORE_FEATURES, absoluteUrl } from "web-shared/lib/structured-data";
 
 /**
  * The site in plain text for AI assistants and answer engines, in English

@@ -8,7 +8,7 @@ import {
   TICKET_LIFETIME_MS,
   type RoomRole,
   type RoomTicket,
-} from "../../shared-protocol/src";
+} from "shared-protocol";
 import { realtime, requireOffice } from "./access";
 import { floorCap, historyDaysOf, meetingHoursOf, MOST_SEATS } from "./billing";
 import { json } from "./http";

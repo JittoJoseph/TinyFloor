@@ -1,1 +1,1 @@
-export { default } from "@/shell/locale-not-found";
+export { default } from "web-shared/shell/locale-not-found";

@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { SITE_URL, X_HANDLE } from "@/lib/site";
+import { SITE_URL, X_HANDLE } from "./site";
 import type { Messages } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import { defaultLocale, localeCodes, type Locale } from "@/lib/i18n/routing";
-import { GUIDES } from "@/lib/guides";
-import { LANDINGS } from "@/lib/landings";
+import { defaultLocale, localeCodes, type Locale } from "./i18n/routing";
+import { GUIDES } from "./guides";
+import { LANDINGS } from "./landings";
 
 const SITE_NAME = "TinyFloor";
 

@@ -100,6 +100,7 @@
   "call": {
     "incoming": "Belt je",
     "onCall": "In gesprek",
+    "connecting": "Verbinden...",
     "decline": "Weigeren",
     "accept": "Accepteren",
     "calling": "Bellen...",
@@ -127,6 +128,8 @@
     "status": "Status: {status}",
     "muteMic": "Microfoon dempen",
     "unmuteMic": "Microfoon aanzetten",
+    "talkingMuted": "Je microfoon staat uit",
+    "unmuteShort": "Aanzetten",
     "cameraOff": "Camera uitzetten",
     "cameraOn": "Camera aanzetten",
     "shareScreen": "Scherm delen",
@@ -136,6 +139,7 @@
     "settings": "Instellingen",
     "leaveCall": "Gesprek verlaten",
     "leaveMeeting": "Vergadering verlaten",
+    "popOut": "Zwevend venster",
     "cameraRested": "Camera uit zolang het stil is"
   },
   "status": {
@@ -160,6 +164,9 @@
     "title": "Ruimtechat",
     "close": "Chat sluiten",
     "send": "Bericht versturen",
+    "notSent": "Niet verzonden",
+    "sendAgain": "Opnieuw versturen",
+    "discard": "Weggooien",
     "channels": "Kanalen",
     "directMessages": "Directe berichten",
     "newChannel": "Nieuw kanaal",

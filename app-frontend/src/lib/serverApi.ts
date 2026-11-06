@@ -1,4 +1,4 @@
-import { API_URL } from "@/lib/api";
+import { API_URL } from "web-shared/lib/api";
 
 /**
  * A public API read for a server rendered page, fresh on every request and

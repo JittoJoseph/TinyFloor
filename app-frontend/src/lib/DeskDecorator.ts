@@ -1,6 +1,6 @@
 import * as Phaser from "phaser";
-import { FLOOR } from "@shared/map";
-import { spotKey } from "@shared/office";
+import { FLOOR } from "shared-protocol/map";
+import { spotKey } from "shared-protocol/office";
 import type { MapManager } from "./MapManager";
 import { cssZoom } from "./plates";
 import { closeDecorate, decorateState, pickPart, redo, setPart, subscribeDecorate, undo } from "./decorate";

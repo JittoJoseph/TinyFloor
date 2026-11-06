@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 const POSTER = "/hero/poster.webp";
 

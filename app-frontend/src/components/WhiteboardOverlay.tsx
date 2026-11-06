@@ -2,8 +2,9 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
-import { Eraser, Pencil, Trash2, X } from "@/components/ui/icons";
-import { BOARD_ASPECT, whiteboard, Stroke } from "@/lib/WhiteboardManager";
+import { Eraser, Pencil, Trash2, X } from "web-shared/components/ui/icons";
+import { BOARD_ASPECT, STROKE_SETTLED_MS, whiteboard } from "@/lib/WhiteboardManager";
+import { BoardPainter } from "@/lib/boardInk";
 import { RoomIconButton, Divider, label } from "@/components/room/ui";
 
 const COLORS = ["#2c2c2c", "#ff4e00", "#0f5741", "#2f4ad0"];
@@ -28,34 +29,40 @@ export default function WhiteboardOverlay() {
   const [tool, setTool] = useState<Tool>({ color: COLORS[0], size: SIZES[0], erase: false });
   const drawingRef = useRef(false);
 
-  const paint = useCallback((stroke: Stroke, from: number) => {
+  const painter = useRef<BoardPainter | null>(null);
+  const frame = useRef(0);
+  const settle = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  /** The whole board, as ink (lib/boardInk): finished strokes come from what's kept, the ones being drawn are worked out again. */
+  const draw = useCallback(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
-    if (!canvas || !ctx) return;
-
-    const points = stroke.points;
-    if (points.length < 4) return;
-
-    const start = Math.max(0, from - (from % 2));
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-    ctx.strokeStyle = stroke.erase ? "#ffffff" : stroke.color;
-    ctx.lineWidth = stroke.size * (canvas.width / 900);
-    ctx.beginPath();
-    ctx.moveTo(points[start] * canvas.width, points[start + 1] * canvas.height);
-    for (let i = start + 2; i < points.length; i += 2) {
-      ctx.lineTo(points[i] * canvas.width, points[i + 1] * canvas.height);
-    }
-    ctx.stroke();
+    if (!canvas || !ctx || !canvas.width) return;
+    painter.current ??= new BoardPainter("#ffffff");
+    painter.current.paint(ctx, canvas.width, canvas.height, canvas.width / 900, whiteboard.getStrokes(), whiteboard.isDrawing);
   }, []);
+
+  /**
+   * Drawn on the next frame, however many points came in before it; and once
+   * more a moment after the last, when a stroke that stopped growing is taken
+   * as finished and its end drawn round.
+   */
+  const schedule = useCallback(() => {
+    if (!frame.current) {
+      frame.current = requestAnimationFrame(() => {
+        frame.current = 0;
+        draw();
+      });
+    }
+    clearTimeout(settle.current);
+    settle.current = setTimeout(draw, STROKE_SETTLED_MS + 50);
+  }, [draw]);
 
   // The board keeps its shape (BOARD_ASPECT), as large as the room allows, so a
   // stroke lands in the same place on every screen and on the board on the wall.
-  const repaint = useCallback(() => {
+  const fit = useCallback(() => {
     const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
-    if (!canvas || !ctx || !space.current.width) return;
-
+    if (!canvas || !space.current.width) return;
     const width = Math.min(space.current.width, space.current.height * BOARD_ASPECT);
     const height = width / BOARD_ASPECT;
     const ratio = Math.min(window.devicePixelRatio || 1, 2);
@@ -63,25 +70,30 @@ export default function WhiteboardOverlay() {
     canvas.style.height = `${height}px`;
     canvas.width = Math.round(width * ratio);
     canvas.height = Math.round(height * ratio);
-
-    ctx.fillStyle = "#ffffff";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    whiteboard.getStrokes().forEach((stroke) => paint(stroke, 0));
-  }, [paint]);
+    draw();
+  }, [draw]);
 
   useEffect(() => {
     if (!board.open || !spaceRef.current) return;
     const observer = new ResizeObserver(([entry]) => {
       space.current = entry.contentRect;
-      repaint();
+      fit();
     });
     observer.observe(spaceRef.current);
-    const unsubscribe = whiteboard.onStroke(paint);
+    const unsubscribe = whiteboard.onStroke(schedule);
     return () => {
       observer.disconnect();
       unsubscribe();
+      cancelAnimationFrame(frame.current);
+      frame.current = 0;
+      clearTimeout(settle.current);
     };
-  }, [board.open, board.ready, repaint, paint]);
+  }, [board.open, fit, schedule]);
+
+  // The whole board arrived, or was wiped.
+  useEffect(() => {
+    if (board.open) schedule();
+  }, [board.open, board.version, schedule]);
 
   useEffect(() => {
     if (!board.open) return;
@@ -164,10 +176,7 @@ export default function WhiteboardOverlay() {
             <RoomIconButton
               size="sm"
               title={t("clear")}
-              onClick={() => {
-                whiteboard.clear();
-                repaint();
-              }}
+              onClick={() => whiteboard.clear()}
               icon={<Trash2 className="w-4 h-4" />}
             />
           </div>
@@ -188,8 +197,12 @@ export default function WhiteboardOverlay() {
             }}
             onPointerMove={(event) => {
               if (!drawingRef.current) return;
-              const { x, y } = at(event);
-              whiteboard.extendStroke(x, y);
+              // Every point the pen reported since the last frame, not just the last: fast curves stay round.
+              const rect = event.currentTarget.getBoundingClientRect();
+              const samples = event.nativeEvent.getCoalescedEvents?.() ?? [];
+              for (const sample of samples.length ? samples : [event.nativeEvent]) {
+                whiteboard.extendStroke((sample.clientX - rect.left) / rect.width, (sample.clientY - rect.top) / rect.height);
+              }
             }}
             onPointerUp={() => {
               drawingRef.current = false;

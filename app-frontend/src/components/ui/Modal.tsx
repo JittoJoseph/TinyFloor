@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 import { CloseButton } from "@/components/ui/CloseButton";
 import { EASE_OUT } from "@/lib/ease";
 import { PresenceGate } from "@/lib/presence-gate";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';

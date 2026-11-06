@@ -1,6 +1,6 @@
 import { env, exports } from "cloudflare:workers";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { verifyTicket } from "../../shared-protocol/src";
+import { verifyTicket } from "shared-protocol";
 
 const SITE = "http://localhost:3000";
 const API = "https://api.tinyfloor.com";

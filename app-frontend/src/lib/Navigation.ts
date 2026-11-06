@@ -1,5 +1,5 @@
-import { MAP_WIDTH_TILES, MAP_HEIGHT_TILES, isValidTile } from "@shared/map";
-import { pixelToTile, tileToPixel, TILE_SIZE } from "@/lib/types";
+import { MAP_WIDTH_TILES, MAP_HEIGHT_TILES, isValidTile } from "shared-protocol/map";
+import { pixelToTile, tileToPixel, TILE_SIZE } from "web-shared/lib/types";
 
 export interface Vec {
   x: number;
@@ -57,6 +57,18 @@ function heapPop(heap: number[], f: Int32Array): number {
   }
   return top;
 }
+
+/** How far apart a straight line is checked for walls, in pixels. */
+const LINE_STEP = TILE_SIZE / 8;
+/** How far out from the line the ground must be clear: a character's half-width and a little. */
+const MARGIN = TILE_SIZE * 0.3;
+const BODY = [
+  [0, 0],
+  [-MARGIN, -MARGIN],
+  [MARGIN, -MARGIN],
+  [-MARGIN, MARGIN],
+  [MARGIN, MARGIN],
+] as const;
 
 function heuristic(ax: number, ay: number, bx: number, by: number): number {
   const dx = Math.abs(ax - bx);
@@ -118,18 +130,62 @@ export class NavGrid {
     return best;
   }
 
+  /**
+   * The way from a point to a tile: the grid's shortest path, then pulled
+   * straight wherever there's room to walk a straight line (string pulling,
+   * as PathFinding.js's smoothenPath does it). On the grid alone, a walk five
+   * across and two down went diagonally and then straight, a bend nobody
+   * would make; now it's one line. Everyone works a walk out this same way
+   * (PlayerManager.walkPlayerTo), so they all see the same one.
+   */
   buildPath(fromX: number, fromY: number, goalX: number, goalY: number): Vec[] {
     const from = pixelToTile(fromX, fromY);
-    const turns = this.findTurns(from.tileX, from.tileY, goalX, goalY);
-    if (!turns.length) return [];
+    const tiles = this.findTiles(from.tileX, from.tileY, goalX, goalY);
+    if (!tiles.length) return [];
+    return this.straighten({ x: fromX, y: fromY }, tiles.map((t) => tileToPixel(t.x, t.y)));
+  }
 
-    const path = turns.map((t) => tileToPixel(t.x, t.y));
-    const origin = tileToPixel(from.tileX, from.tileY);
-    if (fromX !== origin.x || fromY !== origin.y) path.unshift(origin);
+  /** From `start`, straight to the farthest point along the way that can be reached in a line, and on from there. */
+  private straighten(start: Vec, points: Vec[]): Vec[] {
+    const path: Vec[] = [];
+    let anchor = start;
+    let next = 0;
+    while (next < points.length) {
+      let far = points.length - 1;
+      while (far > next && !this.clearLine(anchor, points[far])) far--;
+      // Even the next tile's middle may not be in a clean line from where we stand off-centre: then we go by it.
+      if (far === next && path.length === 0 && !this.clearLine(anchor, points[far])) {
+        const tile = pixelToTile(anchor.x, anchor.y);
+        const middle = tileToPixel(tile.tileX, tile.tileY);
+        if (middle.x !== anchor.x || middle.y !== anchor.y) path.push(middle);
+      }
+      path.push(points[far]);
+      anchor = points[far];
+      next = far + 1;
+    }
     return path;
   }
 
-  private findTurns(sx: number, sy: number, gx: number, gy: number): Vec[] {
+  /**
+   * Whether someone can walk straight from a to b: every step along it, the
+   * ground under them and a little to every side of them is walkable, so a
+   * line never shaves a wall's corner or the edge of a desk.
+   */
+  private clearLine(a: Vec, b: Vec): boolean {
+    const length = Math.hypot(b.x - a.x, b.y - a.y);
+    const steps = Math.max(1, Math.ceil(length / LINE_STEP));
+    for (let i = 0; i <= steps; i++) {
+      const x = a.x + ((b.x - a.x) * i) / steps;
+      const y = a.y + ((b.y - a.y) * i) / steps;
+      for (const [ox, oy] of BODY) {
+        const tile = pixelToTile(x + ox, y + oy);
+        if (!this.isWalkable(tile.tileX, tile.tileY)) return false;
+      }
+    }
+    return true;
+  }
+
+  private findTiles(sx: number, sy: number, gx: number, gy: number): Vec[] {
     const start = sy * MAP_WIDTH_TILES + sx;
     const goal = gy * MAP_WIDTH_TILES + gx;
     if (start === goal || !this.isWalkable(gx, gy)) return [];
@@ -187,14 +243,10 @@ export class NavGrid {
     const nodes: number[] = [];
     for (let n = goal; n !== start; n = from[n]) nodes.push(n);
     nodes.reverse();
-
-    const turns: Vec[] = [];
-    for (let i = 0; i < nodes.length; i++) {
-      if (i + 1 < nodes.length && step[nodes[i + 1]] === step[nodes[i]]) continue;
-      const x = nodes[i] % MAP_WIDTH_TILES;
-      turns.push({ x, y: (nodes[i] - x) / MAP_WIDTH_TILES });
-    }
-    return turns;
+    return nodes.map((node) => {
+      const x = node % MAP_WIDTH_TILES;
+      return { x, y: (node - x) / MAP_WIDTH_TILES };
+    });
   }
 }
 

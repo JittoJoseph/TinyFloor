@@ -1,5 +1,5 @@
-import type { GuideSection } from "@/lib/guides";
-import type { Locale } from "@/lib/i18n/routing";
+import type { GuideSection } from "web-shared/lib/guides";
+import type { Locale } from "web-shared/lib/i18n/routing";
 import ar from "@/lib/tools/time-zone-copy/ar";
 import da from "@/lib/tools/time-zone-copy/da";
 import de from "@/lib/tools/time-zone-copy/de";

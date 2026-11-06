@@ -1,6 +1,6 @@
 import type { ChairSpec, MapAnchor } from "./MapManager";
 import type { NavGrid } from "./Navigation";
-import { pixelToTile, tileToPixel, TILE_SIZE } from "@/lib/types";
+import { pixelToTile, tileToPixel, TILE_SIZE } from "web-shared/lib/types";
 
 export const MEETING_ZONE = "meeting";
 

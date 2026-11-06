@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Check } from "@/components/ui/icons";
+import { ArrowRight, Check } from "web-shared/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { makeOfficeHref } from "@/lib/pendingOffice";
-import { Face } from "@/components/ui/Face";
+import { Face } from "web-shared/components/ui/Face";
 
 /**
  * The lobby's reason to exist, on one screen: name an office and go make it.

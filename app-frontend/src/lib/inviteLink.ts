@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useSyncExternalStore } from "react";
-import { api } from "@/lib/api";
+import { api } from "web-shared/lib/api";
 import { invitePath } from "./links";
 
 /**

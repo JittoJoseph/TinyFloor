@@ -11,13 +11,16 @@ catalogs:
       version: 0.3.4
     '@hugeicons/core-free-icons':
       specifier: ^4.3.5
-      version: 4.3.5
+      version: 4.4.0
     '@hugeicons/react':
       specifier: ^1.1.10
       version: 1.1.10
     '@opennextjs/cloudflare':
       specifier: 1.20.6
       version: 1.20.6
+    '@sapphi-red/web-noise-suppressor':
+      specifier: 0.4.1
+      version: 0.4.1
     '@tailwindcss/postcss':
       specifier: ^4
       version: 4.3.3
@@ -48,6 +51,9 @@ catalogs:
     next-intl:
       specifier: ^4.14.2
       version: 4.14.2
+    perfect-freehand:
+      specifier: 1.2.2
+      version: 1.2.2
     phaser:
       specifier: ^3.90.0
       version: 3.90.0
@@ -84,13 +90,13 @@ importers:
         version: 0.3.4
       '@hugeicons/core-free-icons':
         specifier: 'catalog:'
-        version: 4.3.5
+        version: 4.4.0
       '@hugeicons/react':
         specifier: 'catalog:'
         version: 1.1.10(react@19.2.0)
-      clsx:
+      '@sapphi-red/web-noise-suppressor':
         specifier: 'catalog:'
-        version: 2.1.1
+        version: 0.4.1
       motion:
         specifier: 'catalog:'
         version: 13.4.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -100,21 +106,24 @@ importers:
       next-intl:
         specifier: 'catalog:'
         version: 4.14.2(@swc/helpers@0.5.23)(next@16.3.4(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@20.19.43)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
+      perfect-freehand:
+        specifier: 'catalog:'
+        version: 1.2.2
       phaser:
         specifier: 'catalog:'
         version: 3.90.0
-      posthog-js:
-        specifier: 'catalog:'
-        version: 1.434.11(@types/react@19.2.18)(react@19.2.0)
       react:
         specifier: 'catalog:'
         version: 19.2.0
       react-dom:
         specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
-      tailwind-merge:
-        specifier: 'catalog:'
-        version: 3.7.0
+      shared-protocol:
+        specifier: workspace:*
+        version: link:../shared-protocol
+      web-shared:
+        specifier: workspace:*
+        version: link:../web-shared
     devDependencies:
       '@opennextjs/cloudflare':
         specifier: 'catalog:'
@@ -158,15 +167,6 @@ importers:
 
   marketing-frontend:
     dependencies:
-      '@hugeicons/core-free-icons':
-        specifier: 'catalog:'
-        version: 4.3.5
-      '@hugeicons/react':
-        specifier: 'catalog:'
-        version: 1.1.10(react@19.2.0)
-      clsx:
-        specifier: 'catalog:'
-        version: 2.1.1
       motion:
         specifier: 'catalog:'
         version: 13.4.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -176,18 +176,15 @@ importers:
       next-intl:
         specifier: 'catalog:'
         version: 4.14.2(@swc/helpers@0.5.23)(next@16.3.4(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@20.19.43)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react@19.2.0)
-      posthog-js:
-        specifier: 'catalog:'
-        version: 1.434.11(@types/react@19.2.18)(react@19.2.0)
       react:
         specifier: 'catalog:'
         version: 19.2.0
       react-dom:
         specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
-      tailwind-merge:
-        specifier: 'catalog:'
-        version: 3.7.0
+      web-shared:
+        specifier: workspace:*
+        version: link:../web-shared
     devDependencies:
       '@opennextjs/cloudflare':
         specifier: 'catalog:'
@@ -220,20 +217,19 @@ importers:
         specifier: 'catalog:'
         version: 4.131.1(@types/node@20.19.43)
 
+  shared-protocol: {}
+
   web-shared:
     dependencies:
       '@hugeicons/core-free-icons':
         specifier: 'catalog:'
-        version: 4.3.5
+        version: 4.4.0
       '@hugeicons/react':
         specifier: 'catalog:'
         version: 1.1.10(react@19.2.0)
       clsx:
         specifier: 'catalog:'
         version: 2.1.1
-      motion:
-        specifier: 'catalog:'
-        version: 13.4.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       next:
         specifier: 'catalog:'
         version: 16.3.4(@babel/core@7.29.7(supports-color@10.2.2))(@types/node@20.19.43)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -249,6 +245,9 @@ importers:
       react-dom:
         specifier: 'catalog:'
         version: 19.2.0(react@19.2.0)
+      shared-protocol:
+        specifier: workspace:*
+        version: link:../shared-protocol
       tailwind-merge:
         specifier: 'catalog:'
         version: 3.7.0
@@ -1014,8 +1013,8 @@ packages:
   '@formatjs/intl-localematcher@0.8.13':
     resolution: {integrity: sha512-kHEAFOkeJSPNi7c5PaKaRjxcBrJwzzt81ifUu+8uve1EDW/VJl83KsxmqgqNZLzcFEhSliZGvx3+pk/RH0IOmg==}
 
-  '@hugeicons/core-free-icons@4.3.5':
-    resolution: {integrity: sha512-Sv+NjHRPnQk+yZsGCMcGznCHdTfJR9PMMOEKcJYAQU4gy90dmlc9PwdtvYOImBZIjiheMsTLL5eMn2DmHxUiUg==}
+  '@hugeicons/core-free-icons@4.4.0':
+    resolution: {integrity: sha512-7Mz8bmGoY6tZ6l3C2TXwNMLVSr0I8HPwjjFIERAuJFj3rWwLxdF2ZLkDqdrVuEE1dx5b/VXyIsP4WoSU6Q40KQ==}
 
   '@hugeicons/react@1.1.10':
     resolution: {integrity: sha512-9tAsd92yMVVGP+E+d8cM+wc0VnXuYZHNbWQi7TOe8k2neawmhiaFmVFbzyruejhOMa197/LbgvSED32ayUo3ZA==}
@@ -1455,6 +1454,9 @@ packages:
   '@rtsao/scc@1.1.0':
     resolution: {integrity: sha512-zt6OdqaDoOnJ1ZYsCYGt9YmWzDXl4vQdKTyJev62gFhRGKdx7mcT54V9KIjg+d2wi9EXsPvAPKe7i7WjfVWB8g==}
 
+  '@sapphi-red/web-noise-suppressor@0.4.1':
+    resolution: {integrity: sha512-hy2GnF079+zi4n9BZUf+GGIQ1IofApAk6rgGMyMQ3soHfz/GKu1pcCsmePyIHVvUuv1LrFudw9BmmBqoOKay5w==}
+
   '@schummar/icu-type-parser@1.21.5':
     resolution: {integrity: sha512-bXHSaW5jRTmke9Vd0h5P7BtWZG9Znqb8gSDxZnxaGSJnGwPLDPfS+3g0BKzeWqzgZPsIVZkM7m2tbo18cm5HBw==}
 
@@ -1469,6 +1471,7 @@ packages:
   '@smithy/core@3.34.1':
     resolution: {integrity: sha512-dLcOUxz8YCv1RZUMKq6GbyUf95pLbrqh34bPvpCZ1+CByFF31BEAFewZjsGCnVsZTKdThNENfGyAgk2TJqVwSw==}
     engines: {node: '>=18.0.0'}
+    deprecated: Deprecated due to a bug in custom logger data redaction. See https://github.com/aws/aws-sdk-js-v3/issues/8393.
 
   '@smithy/credential-provider-imds@4.5.2':
     resolution: {integrity: sha512-A9uSdn72ozbRUSit0eib0TW7nXuNPlaeM0zcGkJ+nE6tFcSDbnmtwoxbTCFBukVQcszDAyvsd7+rTduPTXpygg==}
@@ -3420,6 +3423,9 @@ packages:
   pathe@2.0.3:
     resolution: {integrity: sha512-WUjGcAqP1gQacoQe+OBJsFA7Ld4DyXuUIjZ5cc75cLHvJ7dtNsTugphxIADwspS+AraAUePCKrSVtPLFj/F88w==}
 
+  perfect-freehand@1.2.2:
+    resolution: {integrity: sha512-eh31l019WICQ03pkF3FSzHxB8n07ItqIQ++G5UV8JX0zVOXzgTGCqnRR0jJ2h9U8/2uW4W4mtGJELt9kEV0CFQ==}
+
   phaser@3.90.0:
     resolution: {integrity: sha512-/cziz/5ZIn02uDkC9RzN8VF9x3Gs3XdFFf9nkiMEQT3p7hQlWuyjy4QWosU802qqno2YSLn2BfqwOKLv/sSVfQ==}
 
@@ -4944,7 +4950,7 @@ snapshots:
     dependencies:
       '@formatjs/fast-memoize': 3.1.7
 
-  '@hugeicons/core-free-icons@4.3.5': {}
+  '@hugeicons/core-free-icons@4.4.0': {}
 
   '@hugeicons/react@1.1.10(react@19.2.0)':
     dependencies:
@@ -5298,6 +5304,8 @@ snapshots:
   '@posthog/types@1.412.4': {}
 
   '@rtsao/scc@1.1.0': {}
+
+  '@sapphi-red/web-noise-suppressor@0.4.1': {}
 
   '@schummar/icu-type-parser@1.21.5': {}
 
@@ -7430,6 +7438,8 @@ snapshots:
   path-to-regexp@8.4.2: {}
 
   pathe@2.0.3: {}
+
+  perfect-freehand@1.2.2: {}
 
   phaser@3.90.0:
     dependencies:

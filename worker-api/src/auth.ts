@@ -1,4 +1,4 @@
-import { cleanDisplayName, cleanNote, DEFAULT_CHARACTER, isCharacter, liveNote, liveShare, type PresentPerson } from "../../shared-protocol/src";
+import { cleanDisplayName, cleanNote, DEFAULT_CHARACTER, isCharacter, liveNote, liveShare, type PresentPerson } from "shared-protocol";
 import { realtime } from "./access";
 import { HttpError, json, readJson } from "./http";
 import { limitAuth } from "./limits";

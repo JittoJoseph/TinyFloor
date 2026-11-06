@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Users } from "@/components/ui/icons";
+import { Users } from "web-shared/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api } from "@/lib/api";
+import { api } from "web-shared/lib/api";
 import { anyCharacter, character as cleanCharacter, saveIdentity } from "@/lib/identity";
 import { homePath, invitePath, officePath } from "@/lib/links";
 import { openOfficeAhead } from "@/lib/officeAhead";
@@ -16,11 +16,11 @@ import { EntryProblem } from "@/components/entry/EntryProblem";
 import { ActionButton, ActionLink } from "@/components/ui/Action";
 import { CharacterQuestion, NameQuestion } from "@/components/entry/IdentitySteps";
 import { DoorSteps, QuietChoice, StepDots, StepError, StepTitle } from "@/components/entry/DoorSteps";
-import { GoogleButton, googleAvailable } from "@/components/auth/GoogleButton";
+import { GoogleButton, googleAvailable } from "web-shared/components/auth/GoogleButton";
 import { Agree } from "@/components/legal/Agree";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { posthogLog } from "@/lib/posthog-log";
-import { track, withPostHog } from "@/lib/analytics";
+import { track, withPostHog } from "web-shared/lib/analytics";
 
 export interface InvitePreview {
   officeId: string;

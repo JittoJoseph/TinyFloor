@@ -1,1 +1,1 @@
-export { default } from "@/shell/manifest";
+export { default } from "web-shared/shell/manifest";

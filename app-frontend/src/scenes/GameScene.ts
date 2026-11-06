@@ -1,7 +1,7 @@
 import { floorStep, onFloorLook, onFloorRename, onFloorShown, WALK_TO_PERSON_EVENT, WAVE_EVENT } from "../lib/floor";
-import type { StatusNote } from "@shared/messages";
+import type { StatusNote } from "shared-protocol/messages";
 import * as Phaser from "phaser";
-import type { RoomTicket } from "@/lib/api";
+import type { RoomTicket } from "web-shared/lib/api";
 import { RoomSocket } from "../lib/RoomSocket";
 import { PlayerManager } from "../lib/PlayerManager";
 import { ProximityManager } from "../lib/ProximityManager";
@@ -20,7 +20,7 @@ import { doAction, offerAction, type ActionAt } from "../lib/actions";
 import { typingElsewhere } from "../lib/typing";
 import { setTouchInput } from "../lib/input";
 import { touchFirst } from "../lib/touch";
-import { TILE_SIZE, pixelToTile, tileToPixel } from "@/lib/types";
+import { TILE_SIZE, pixelToTile, tileToPixel } from "web-shared/lib/types";
 import { MEETING_ROOM_EVENT, meetingOf, WALK_TO_MEETING_EVENT } from "../lib/meetings";
 import { inZone, MEETING_ZONE, standingSpot } from "../lib/meetingRoom";
 import type { MapAnchor } from "../lib/MapManager";

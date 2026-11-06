@@ -2,7 +2,7 @@
 
 import { useEffect, useEffectEvent } from "react";
 import { useTranslations } from "next-intl";
-import { isDm } from "@shared/chat";
+import { isDm } from "shared-protocol/chat";
 import { useRouter } from "@/lib/i18n/navigation";
 import { chat } from "@/lib/ChatSocket";
 import { useCall } from "@/lib/useCall";

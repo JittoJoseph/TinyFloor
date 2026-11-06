@@ -1,4 +1,4 @@
-import { BOARD_MAX_POINTS_PER_STROKE, BOARD_MAX_STROKES, type BoardStroke } from "../../shared-protocol/src";
+import { BOARD_MAX_POINTS_PER_STROKE, BOARD_MAX_STROKES, type BoardStroke } from "shared-protocol";
 
 const DEFAULT_COLOR = "#2c2c2c";
 const MAX_SIZE = 64;

@@ -2,21 +2,21 @@
 
 import { useState, type ReactElement, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { Bell, ChevronRight, DoorOpen, Headphones, HelpCircle, LogOut, Monitor, MonitorDown, Moon, Settings2, Sun, UserPlus } from "@/components/ui/icons";
+import { Bell, ChevronRight, DoorOpen, Headphones, HelpCircle, LogOut, Monitor, MonitorDown, Moon, Settings2, Sun, UserPlus } from "web-shared/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { useShellFrame } from "./AppShell";
 import { useOfficeMaybe } from "./OfficeShell";
 import { OfficeMenu, useOtherOffices } from "./OfficeSwitcher";
-import { Face } from "@/components/ui/Face";
+import { Face } from "web-shared/components/ui/Face";
 import { Menu, MenuItem, MenuSeparator, useCloseMenu } from "@/components/ui/Menu";
 import { MenuExpand, MenuFold, MenuRow } from "@/components/ui/MenuViews";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { useWide } from "@/lib/hooks/use-wide";
 import { help } from "@/lib/help";
 import { goTo, openSettings, useSitePage } from "@/lib/links";
 import { install, useCanInstall } from "@/lib/install";
-import { setTheme, useTheme, type ThemeChoice } from "@/lib/theme";
+import { setTheme, useTheme, type ThemeChoice } from "web-shared/lib/theme";
 import { useMusic } from "@/lib/music";
 import { MusicOptions, MusicRow } from "./Music";
 import { PresenceControls } from "./Presence";

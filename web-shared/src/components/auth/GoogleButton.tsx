@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Loader2 } from "@/components/ui/icons";
+import { Loader2 } from "../ui/icons";
 
 /*
  * "Continue with Google", with Google Identity Services' popup code flow:

@@ -1,7 +1,7 @@
 "use client";
 
-import { api } from "@/lib/api";
-import { track } from "@/lib/analytics";
+import { api } from "web-shared/lib/api";
+import { track } from "web-shared/lib/analytics";
 
 /**
  * Paying for a plan: Creem's checkout over the page, loaded only when someone

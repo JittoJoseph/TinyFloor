@@ -9,7 +9,7 @@ import {
   type PushPayload,
   type RealtimeAdminApi,
   type Whereabouts,
-} from "../../shared-protocol/src";
+} from "shared-protocol";
 import { Reporter, type HelpEvent } from "./discord";
 import { lobbyCopy } from "./lobby";
 import { pushTo } from "./push";

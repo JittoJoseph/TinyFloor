@@ -216,13 +216,23 @@ missing features on the map.
   own work playlists (Deep Focus, lofi beats, Peaceful Piano, Jazz Vibes,
   Chill Hits), with what you chose lately above them (up to 4, kept in the
   browser), so the list turns into your own as you listen.
-- **Everything plays one song at a time, so what's playing is always a song.**
-  Signed in, Spotify's player reports only what it was given (a playlist, an
-  artist), never the song inside it. So an album, playlist or artist is
-  played from the song list its embed page shows (`__NEXT_DATA__`, up to
-  100), each song loaded on its own, playlists shuffled; the menu, the dock
-  and your card name the song, and Listen on someone's card plays that song.
-  A next button skips one.
+- **An album, playlist or artist plays whole in Spotify's player, and what's
+  playing is always named as a song.** Loaded one song at a time (as it was
+  until 6 November), the music stopped at the first song's end in a
+  background tab: Spotify's player won't start anything newly loaded while
+  its tab is hidden, though it goes on through a list it already has, song
+  after song. So the list goes in whole and plays in its own order (Spotify's
+  player has no shuffle for it). Signed out, the player names each song as it
+  comes; signed in, it reports only what it was given, never the song inside,
+  so the song is followed by the list its embed page shows (`__NEXT_DATA__`,
+  up to 100) in order, a new song told by its length changing or its place
+  going back to the start (`lib/musicFollow`). The menu, the dock and your
+  card name the song, and Listen on someone's card plays that song. Next
+  skips to the end of the song, and the player goes on to the following one.
+- **A song's end is its full length, not a pause.** Spotify's last word on a
+  song is its full length while still "playing"; waiting for a pause, the
+  30-second previews that people not signed in to Spotify hear never went on
+  to the next song.
 - **When the songs run out it plays on**, the nearest thing to radio Spotify's
   player offers (it has no "up next" outside Spotify's apps): three of the
   best-known songs of the last song's artist, then three from an artist in
@@ -230,7 +240,9 @@ missing features on the map.
   of who's close, and so on, drifting from artist to close artist. A
   Malayalam song plays on into Malayalam music. Featured artists aren't
   followed: a guest verse can be a world away. It stops when there's no one
-  new. What plays on by itself stays out of the recent list.
+  new. What plays on by itself stays out of the recent list. Starting it needs
+  a new load, so when the tab is in the background it waits, named, and
+  starts the moment the tab is back.
 - **Name tags that would cover a nearer one step away** (fade out) until
   there's room, rather than folding to a dot: a lone dot over someone's head
   says little the avatar doesn't. Yours always shows.
@@ -308,6 +320,65 @@ missing features on the map.
   lightens when you're close, instead of an orange outline.
 - **Your own desk's plate folds back while you're at its chair**, rather than
   open over your name.
+
+## Staying connected, chat that can't get lost, ink and straight walks (5 November)
+
+- **A connection that died is noticed.** A laptop that slept or a Wi-Fi
+  change could leave a socket the browser still called open: the room let us
+  go after 90 s and the others saw us leave, while we thought we were there
+  and anything we sent went nowhere. Both sockets now ping every 15 s (the
+  room and the chat answer without waking, so it costs nothing) and drop one
+  that hasn't answered in 15 s, reconnect at once when the tab, the network or
+  the laptop comes back, give up on one still opening after 8 s, and spread
+  their retries out at random so a deploy doesn't bring everyone back in the
+  same instant. Measured with the socket silenced mid-session: back in 40 s,
+  or 6 s when the network says it's back; before, never. (It first waited
+  10 s for an answer; a network that stalls for a few seconds mends itself,
+  so it waits longer now.)
+- **A dropped connection doesn't drop the call.** The room restarts now and
+  then (Cloudflare moves or updates it; every deploy does it) and drops every
+  socket at once; on 5 November one did, mid-meeting, three sockets in the
+  same millisecond. Coming back used to leave the meeting and join it afresh:
+  the leave and join sounds played, and the shared screen and the camera
+  went off. Now a meeting is rejoined as a move: no sounds, the same
+  microphone, camera and shared screen, only the meeting's connection new
+  (about a second without each other's voices). A call with one person runs
+  between the two of you, not through the room, so it goes on: the one who
+  dropped keeps it, and the other waits 12 s for them back on the floor
+  before ending it. Someone coming back to the floor no longer plays the
+  arrival sound for everyone.
+- **What you say shows at once, and is never lost or posted twice.** A
+  message appears faded the moment you send it and is replaced by the room's
+  copy; one that can't go says "Not sent", with "Send again" and "Discard",
+  and goes again by itself when the connection is back. Each carries an id
+  from your app, so one sent twice is posted once. Measured: shown in a
+  third of a second; sent while the socket was dead, posted once after the
+  reconnect; sent but its answer lost, posted once.
+- **Search finds anything ever said.** It read the newest 20,000 messages
+  and looked through them; older ones were never found. Messages are now in
+  SQLite's full-text index (as Signal Desktop does it), words found by how
+  they start ("meet tomorrow" finds "Meeting's tomorrow?"), case and accents
+  folded. Chinese, Japanese and Korean, written without spaces, are still
+  looked for anywhere in the newest messages.
+- **The whiteboard draws ink.** Strokes were straight segments of one width,
+  so a quick circle came out a polygon. They're now drawn through every point
+  the pen reported, on a curve, and swell and thin with its speed
+  (perfect-freehand, which tldraw and Excalidraw draw with), the same on every
+  screen and on the wall. The board takes every point the browser had
+  between frames, not just the last.
+- **Walks go straight.** A click on the floor walked the grid: diagonally,
+  then straight, a bend nobody would make. The way is now pulled straight
+  wherever there's room for a body to pass, so it's one line across an open
+  room and still goes round desks and through doors.
+- **Away isn't guessed.** People keep the office open in a tab while they
+  work in other apps, so being idle in it says nothing; nobody is marked away
+  for it.
+- **A new look or name doesn't walk you out** (6 November). Saving either
+  rebuilt the floor, which left the room and came back in: your call ended,
+  the people with you heard you arrive again. Now the floor you're on is
+  told, your character changes where it stands, and everyone sees it at
+  once; the room keeps it for whoever arrives after. A name changes on the
+  floor the same way in any office, not only the demo's.
 
 ## Small decisions worth remembering
 

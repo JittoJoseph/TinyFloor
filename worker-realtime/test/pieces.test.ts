@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { FLOORS, deskOfSeat, fitsIn, spotKey, type PieceChange, type ServerMessage } from "../../shared-protocol/src";
+import { FLOORS, deskOfSeat, fitsIn, spotKey, type PieceChange, type ServerMessage } from "shared-protocol";
 import { Client, settle, uniqueRoom } from "./client";
 
 /** The floor a room is on until a ticket says otherwise (a page that has never drawn one starts on another). */

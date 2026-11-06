@@ -17,8 +17,8 @@ import {
   ThermometerIcon,
   WalkingIcon,
 } from "@hugeicons/core-free-icons";
-import { NOTE_ICONS, type NoteIcon } from "@shared/messages";
-import { cn } from "@/lib/utils";
+import { NOTE_ICONS, type NoteIcon } from "shared-protocol/messages";
+import { cn } from "web-shared/lib/utils";
 
 type IconData = typeof HeadphonesIcon;
 

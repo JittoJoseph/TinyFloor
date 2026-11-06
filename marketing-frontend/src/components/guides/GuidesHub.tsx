@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import type { Locale } from "@/lib/i18n/routing";
-import { GUIDES_PATH, guidesIn } from "@/lib/guides";
+import type { Locale } from "web-shared/lib/i18n/routing";
+import { GUIDES_PATH, guidesIn } from "web-shared/lib/guides";
 import { guideCopies } from "@/lib/guide-copy";
-import { pageMetadata } from "@/lib/seo";
-import { pageGraph } from "@/lib/structured-data";
+import { pageMetadata } from "web-shared/lib/seo";
+import { pageGraph } from "web-shared/lib/structured-data";
 import { emphasised } from "@/lib/words";
-import { cn } from "@/lib/utils";
-import { JsonLd } from "@/components/JsonLd";
+import { cn } from "web-shared/lib/utils";
+import { JsonLd } from "web-shared/components/JsonLd";
 import { CJK_HEADLINE, COLUMN, Closing, LEAD, MarketingShell } from "@/components/home/Blocks";
 import { GuideCard } from "./GuidePage";
 

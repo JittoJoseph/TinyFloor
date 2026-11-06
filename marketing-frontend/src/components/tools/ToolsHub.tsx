@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import type { Locale } from "@/lib/i18n/routing";
-import { pageMetadata } from "@/lib/seo";
-import { pageGraph } from "@/lib/structured-data";
+import type { Locale } from "web-shared/lib/i18n/routing";
+import { pageMetadata } from "web-shared/lib/seo";
+import { pageGraph } from "web-shared/lib/structured-data";
 import { emphasised } from "@/lib/words";
-import { cn } from "@/lib/utils";
-import { JsonLd } from "@/components/JsonLd";
+import { cn } from "web-shared/lib/utils";
+import { JsonLd } from "web-shared/components/JsonLd";
 import { CJK_HEADLINE, COLUMN, Closing, LEAD, MarketingShell } from "@/components/home/Blocks";
 import { PageCard } from "@/components/home/PageCard";
 import { illustrationFor } from "@/lib/illustrations";

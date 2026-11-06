@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import { pageMetadata } from "web-shared/lib/seo";
 
 /**
  * Metadata for a page written in English only (the legal pages, the free

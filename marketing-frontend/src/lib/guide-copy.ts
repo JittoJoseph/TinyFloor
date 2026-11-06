@@ -1,5 +1,5 @@
 import { cache } from "react";
-import type { GuideCopy, GuideKey } from "@/lib/guides";
+import type { GuideCopy, GuideKey } from "web-shared/lib/guides";
 import en from "../../messages/guides/en.json";
 
 /** Every guide in English, checked against GuideCopy here; the translations follow the same shape. */

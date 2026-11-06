@@ -1,4 +1,4 @@
-import { cleanDisplayName, FLOORS } from "../../shared-protocol/src";
+import { cleanDisplayName, FLOORS } from "shared-protocol";
 import { cleanName, realtime } from "./access";
 import { extendTrial, givePlan, HOLDS_PLAN, liveSubscription, MOST_TRIAL_DAYS, thisMonth } from "./billing";
 import { HttpError, json, readJson } from "./http";

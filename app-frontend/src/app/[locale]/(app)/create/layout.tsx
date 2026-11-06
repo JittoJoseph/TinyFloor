@@ -1,4 +1,4 @@
-import { localizedMetadata } from '@/lib/seo';
+import { localizedMetadata } from 'web-shared/lib/seo';
 
 // A form, not a page to land on from a search: named, but kept out of the index.
 export const generateMetadata = localizedMetadata({

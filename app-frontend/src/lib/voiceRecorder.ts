@@ -1,6 +1,6 @@
 "use client";
 
-import { VOICE_MAX_SECONDS, VOICE_PEAKS } from "@shared/chat";
+import { VOICE_MAX_SECONDS, VOICE_PEAKS } from "shared-protocol/chat";
 import { deviceConstraint, savedDevices } from "@/lib/media";
 
 /*

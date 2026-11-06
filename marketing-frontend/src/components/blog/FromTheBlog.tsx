@@ -1,8 +1,8 @@
 import { getLocale } from "next-intl/server";
 import { BLOG_LOCALES, postsIn, type BlogPost } from "@/lib/blog";
-import type { Locale } from "@/lib/i18n/routing";
+import type { Locale } from "web-shared/lib/i18n/routing";
 import { blogUi, postCopy } from "@/lib/blog-copy";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 import { CJK_HEADLINE, COLUMN, H2 } from "@/components/home/Blocks";
 import { PostCard } from "./BlogPost";
 

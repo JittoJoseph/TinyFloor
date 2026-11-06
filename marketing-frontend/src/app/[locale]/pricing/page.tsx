@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import type { Locale } from "@/lib/i18n/routing";
-import { pageMetadata } from "@/lib/seo";
-import { absoluteUrl, faqNode, pageGraph } from "@/lib/structured-data";
+import type { Locale } from "web-shared/lib/i18n/routing";
+import { pageMetadata } from "web-shared/lib/seo";
+import { absoluteUrl, faqNode, pageGraph } from "web-shared/lib/structured-data";
 import { PLANS } from "@/lib/plans";
-import { JsonLd } from "@/components/JsonLd";
+import { JsonLd } from "web-shared/components/JsonLd";
 import { PricingPage } from "@/components/home/PricingPage";
 
 type Props = { params: Promise<{ locale: string }> };

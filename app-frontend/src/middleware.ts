@@ -1,8 +1,8 @@
 import createMiddleware from "next-intl/middleware";
 import { NextResponse, type NextRequest } from "next/server";
-import { routing } from "@/lib/i18n/routing";
-import { APP_PATH, APP_URL, SITE_URL } from "@/lib/site";
-import { relay, screen, unprefixed, withCountry } from "@/lib/edge";
+import { routing } from "web-shared/lib/i18n/routing";
+import { APP_PATH, APP_URL, SITE_URL } from "web-shared/lib/site";
+import { relay, screen, unprefixed, withCountry } from "web-shared/lib/edge";
 
 const handleI18nRouting = createMiddleware(routing);
 const APP = new URL(APP_URL);

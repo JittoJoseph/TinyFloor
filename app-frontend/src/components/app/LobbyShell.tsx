@@ -4,15 +4,15 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { useAuth } from "@/contexts/AuthContext";
-import { api } from "@/lib/api";
+import { api } from "web-shared/lib/api";
 import { lobbyPath, useSitePage } from "@/lib/links";
 import { WalkIn } from "@/components/entry/WalkIn";
 import { EntryDetail } from "@/components/entry/EntryShell";
 import { LobbyMark as LobbyDoorMark } from "@/components/entry/DoorParts";
 import { Introduce } from "@/components/entry/Introduce";
-import { FaceStack } from "@/components/ui/Face";
+import { FaceStack } from "web-shared/components/ui/Face";
 import { Entering } from "./Entering";
-import { withPostHog } from "@/lib/analytics";
+import { withPostHog } from "web-shared/lib/analytics";
 import { earlyTicket, warmFloor } from "@/lib/floorWarmup";
 import { takeHandedTicket } from "@/lib/handedTicket";
 

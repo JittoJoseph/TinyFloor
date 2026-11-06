@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/lib/i18n/navigation";
-import { Face } from "@/components/ui/Face";
+import { Face } from "web-shared/components/ui/Face";
 
 /** What stands in for the messages held back: a few lines in their shape, too blurred to read. Never the real ones. */
 const SHAPES = [

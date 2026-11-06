@@ -2,11 +2,11 @@
 
 import { useEffect } from "react";
 import { useLocale } from "next-intl";
-import { appHref } from "@/lib/site";
-import { api } from "@/lib/api";
-import { analyticsConfigured, withPostHog } from "@/lib/analytics";
-import { hasAccountHint, rememberAccount } from "@/lib/accountHint";
-import { CLIENT_ID, loadGoogle } from "@/components/auth/GoogleButton";
+import { appHref } from "web-shared/lib/site";
+import { api } from "web-shared/lib/api";
+import { analyticsConfigured, withPostHog } from "web-shared/lib/analytics";
+import { hasAccountHint, rememberAccount } from "web-shared/lib/accountHint";
+import { CLIENT_ID, loadGoogle } from "web-shared/components/auth/GoogleButton";
 
 /** How long the page is left to settle before Google's script is fetched: it never competes with the first paint. */
 const SETTLE_MS = 2500;

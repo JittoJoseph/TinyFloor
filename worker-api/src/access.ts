@@ -1,4 +1,4 @@
-import type { RealtimeAdminApi } from "../../shared-protocol/src";
+import type { RealtimeAdminApi } from "shared-protocol";
 import { endTrials, graceEnd, trialEnd } from "./billing";
 import { domainAccess, workDomain, type DomainAccess } from "./domains";
 import { HttpError } from "./http";

@@ -1,18 +1,18 @@
 import * as Phaser from "phaser";
-import type { ClientMessage, MeetingUsage, PlayerState, ServerMessage } from "@shared/messages";
+import type { ClientMessage, MeetingUsage, PlayerState, ServerMessage } from "shared-protocol/messages";
 import { PlayerManager } from "./PlayerManager";
 import { SeatManager } from "./SeatManager";
 import { callManager } from "./CallManager";
 import { whiteboard } from "./WhiteboardManager";
 import { AnimationManager } from "./AnimationManager";
 import { playSound } from "./sounds";
-import { tileToPixel } from "@/lib/types";
+import { tileToPixel } from "web-shared/lib/types";
 import { setMeetings, setMeetingUsage } from "./meetings";
 import { deskOf, deskState, setDesks } from "./desks";
 import { applyPieceChange, setPieceChanges } from "./pieces";
 import { FLOOR_ARRIVED_EVENT, floorSteps, myStatus, myStatusNote, sinceFloorRequested, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
 import { isListening } from "./music";
-import { track } from "@/lib/analytics";
+import { track } from "web-shared/lib/analytics";
 
 /** Applies what the room says to the scene and the React overlays. */
 export class MessageHandler {
@@ -52,10 +52,13 @@ export class MessageHandler {
       case "player_joined":
         if (message.player.id === this.playerId) return;
         this.addUser(message.player);
+        callManager.backOnFloor(message.player.id);
         this.dispatchPlayerList();
-        playSound("join");
-        // Walked in, not back after a dropped connection: the floor can say hello (docs/product.md).
-        if (message.arrived) this.tell(TEAMMATE_ARRIVED_EVENT, message.player.id);
+        // Walked in, not back after a dropped connection: a sound, and the floor can say hello (docs/product.md).
+        if (message.arrived) {
+          playSound("join");
+          this.tell(TEAMMATE_ARRIVED_EVENT, message.player.id);
+        }
         break;
       case "waved":
         this.playerManager.wave(message.from);
@@ -198,7 +201,7 @@ export class MessageHandler {
   private handleUserLeft(id: string) {
     this.seats.release(id);
     this.playerManager.removePlayer(id);
-    callManager.dropPeer(id);
+    callManager.leftFloor(id);
     this.dispatchPlayerList();
   }
 

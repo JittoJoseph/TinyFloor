@@ -143,6 +143,12 @@ export interface ChatMessage {
   edited?: number;
   /** A lobby direct message: passed along, never stored. */
   passing?: boolean;
+  /**
+   * The id its sender's app gave it, so the app can put the real message in
+   * place of the one it showed straight away, and so sending it again (after
+   * a dropped connection) doesn't post it twice.
+   */
+  nonce?: string;
   /** The message this answers, if it's a reply. */
   reply?: ChatReply;
   /** The office's main meeting, shown in #general as a card rather than words. */
@@ -168,7 +174,7 @@ export const MEETING_PEOPLE_MAX = 24;
 
 /** What a client sends up the chat socket. */
 export type ChatClientMessage =
-  | { t: "chat_send"; channel: string; body: string; files?: ChatFile[]; mentions?: string[]; replyTo?: number }
+  | { t: "chat_send"; channel: string; body: string; files?: ChatFile[]; mentions?: string[]; replyTo?: number; nonce?: string }
   /** A page of history; with `to`, everything back to that message, so a search result can be opened in place. */
   | { t: "chat_history"; channel: string; before?: number; to?: number }
   | { t: "chat_search"; q: string }
@@ -204,7 +210,8 @@ export type ChatServerMessage =
   /** Help and feedback's ticket changed (the team answered, or closed it): read it again from the API. */
   /** The conversation with the TinyFloor team changed; `news` when the team just wrote in it. */
   | { t: "help_changed"; news?: HelpNews }
-  | { t: "chat_error"; code: string };
+  /** `nonce`: the message that couldn't be sent, when it was a send. */
+  | { t: "chat_error"; code: string; nonce?: string };
 
 /** The id of the direct-message channel between two people, whoever asks. */
 export function dmChannelId(a: string, b: string): string {

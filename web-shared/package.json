@@ -1,16 +1,26 @@
 {
   "name": "web-shared",
   "private": true,
+  "exports": {
+    "./lib/*": "./src/lib/*.ts",
+    "./components/floor/grid": "./src/components/floor/grid.ts",
+    "./components/*": "./src/components/*.tsx",
+    "./shell/instrumentation-client": "./src/shell/instrumentation-client.ts",
+    "./shell/manifest": "./src/shell/manifest.ts",
+    "./shell/*": "./src/shell/*.tsx",
+    "./app/*": "./src/app/*",
+    "./next-config.mjs": "./next-config.mjs"
+  },
   "dependencies": {
     "@hugeicons/core-free-icons": "catalog:",
     "@hugeicons/react": "catalog:",
     "clsx": "catalog:",
-    "motion": "catalog:",
     "next": "catalog:",
     "next-intl": "catalog:",
     "posthog-js": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
+    "shared-protocol": "workspace:*",
     "tailwind-merge": "catalog:"
   },
   "devDependencies": {

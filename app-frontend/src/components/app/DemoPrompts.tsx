@@ -3,24 +3,24 @@
 import { useEffect, useEffectEvent, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { Check } from "@/components/ui/icons";
+import { Check } from "web-shared/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
-import { api } from "@/lib/api";
-import { track } from "@/lib/analytics";
+import { api } from "web-shared/lib/api";
+import { track } from "web-shared/lib/analytics";
 import { saveIdentity } from "@/lib/identity";
 import { lobbyPath, officePath } from "@/lib/links";
 import { openOfficeAhead } from "@/lib/officeAhead";
 import { renameOnFloor } from "@/lib/floor";
 import { makeOfficeHref } from "@/lib/pendingOffice";
 import { useErrorMessage } from "@/lib/useErrorMessage";
-import { CLIENT_ID, GoogleButton, googleAvailable, loadGoogle } from "@/components/auth/GoogleButton";
+import { CLIENT_ID, GoogleButton, googleAvailable, loadGoogle } from "web-shared/components/auth/GoogleButton";
 import { Modal } from "@/components/ui/Modal";
-import { Face } from "@/components/ui/Face";
+import { Face } from "web-shared/components/ui/Face";
 import { ActionButton } from "@/components/ui/Action";
 import { bezel, bezelPanel, onBezel } from "@/components/ui/bezel";
 import { QuietChoice, StepError, StepTitle } from "@/components/entry/DoorSteps";
-import { cn } from "@/lib/utils";
+import { cn } from "web-shared/lib/utils";
 
 /** How long someone has looked around the demo office before Google offers to make them an account. */
 const ONE_TAP_AFTER_MS = 45_000;

@@ -100,6 +100,7 @@
   "call": {
     "incoming": "Soittaa sinulle",
     "onCall": "Puhelussa",
+    "connecting": "Yhdistetään...",
     "decline": "Hylkää",
     "accept": "Vastaa",
     "calling": "Soitetaan...",
@@ -127,6 +128,8 @@
     "status": "Tila: {status}",
     "muteMic": "Mykistä mikrofoni",
     "unmuteMic": "Poista mikrofonin mykistys",
+    "talkingMuted": "Mikrofonisi on mykistetty",
+    "unmuteShort": "Poista mykistys",
     "cameraOff": "Sammuta kamera",
     "cameraOn": "Käynnistä kamera",
     "shareScreen": "Jaa näyttö",
@@ -136,6 +139,7 @@
     "settings": "Asetukset",
     "leaveCall": "Poistu puhelusta",
     "leaveMeeting": "Poistu kokouksesta",
+    "popOut": "Pieneen ikkunaan",
     "cameraRested": "Kamera pois, kun on hiljaista"
   },
   "status": {
@@ -160,6 +164,9 @@
     "title": "Huonechat",
     "close": "Sulje chat",
     "send": "Lähetä viesti",
+    "notSent": "Ei lähetetty",
+    "sendAgain": "Lähetä uudelleen",
+    "discard": "Hylkää",
     "channels": "Kanavat",
     "directMessages": "Yksityisviestit",
     "newChannel": "Uusi kanava",

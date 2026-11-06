@@ -1,8 +1,8 @@
 import { getTranslations } from "next-intl/server";
-import { localizedMetadata } from "@/lib/seo";
-import { pageGraph } from "@/lib/structured-data";
-import { JsonLd } from "@/components/JsonLd";
-import type { Locale } from "@/lib/i18n/routing";
+import { localizedMetadata } from "web-shared/lib/seo";
+import { pageGraph } from "web-shared/lib/structured-data";
+import { JsonLd } from "web-shared/components/JsonLd";
+import type { Locale } from "web-shared/lib/i18n/routing";
 import { LobbyShell } from "@/components/app/LobbyShell";
 
 export const generateMetadata = localizedMetadata({

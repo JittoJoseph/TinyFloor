@@ -100,6 +100,7 @@
   "call": {
     "incoming": "Ruft dich an",
     "onCall": "Im Gespräch",
+    "connecting": "Verbinde...",
     "decline": "Ablehnen",
     "accept": "Annehmen",
     "calling": "Anruf läuft...",
@@ -127,6 +128,8 @@
     "status": "Status: {status}",
     "muteMic": "Mikrofon stummschalten",
     "unmuteMic": "Mikrofon einschalten",
+    "talkingMuted": "Dein Mikrofon ist aus",
+    "unmuteShort": "Einschalten",
     "cameraOff": "Kamera ausschalten",
     "cameraOn": "Kamera einschalten",
     "shareScreen": "Bildschirm teilen",
@@ -136,6 +139,7 @@
     "settings": "Einstellungen",
     "leaveCall": "Anruf verlassen",
     "leaveMeeting": "Meeting verlassen",
+    "popOut": "In kleinem Fenster",
     "cameraRested": "Kamera aus, solange es ruhig ist"
   },
   "status": {
@@ -160,6 +164,9 @@
     "title": "Raum-Chat",
     "close": "Chat schließen",
     "send": "Nachricht senden",
+    "notSent": "Nicht gesendet",
+    "sendAgain": "Erneut senden",
+    "discard": "Verwerfen",
     "channels": "Kanäle",
     "directMessages": "Direktnachrichten",
     "newChannel": "Neuer Kanal",

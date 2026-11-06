@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { localizedMetadata } from "@/lib/seo";
+import { localizedMetadata } from "web-shared/lib/seo";
 import { Home } from "@/components/app/Home";
 import { LAST_OFFICE_SCRIPT } from "@/lib/lastOffice";
 

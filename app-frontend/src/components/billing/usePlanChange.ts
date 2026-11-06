@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { api, ApiError, type OfficeBilling, type PlanId } from "@/lib/api";
+import { api, ApiError, type OfficeBilling, type PlanId } from "web-shared/lib/api";
 import { openCheckout, openPortal, waitForPlan } from "@/lib/checkout";
 
 type Paid = Exclude<PlanId, "free">;

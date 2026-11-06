@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { ArrowLeft } from "@/components/ui/icons";
-import { cn } from "@/lib/utils";
+import { ArrowLeft } from "web-shared/components/ui/icons";
+import { cn } from "web-shared/lib/utils";
 import { ErrorNote } from "./ErrorNote";
 
 /**

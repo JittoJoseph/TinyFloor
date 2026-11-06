@@ -3,8 +3,8 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
-import { Download, X } from "@/components/ui/icons";
-import type { ChatFile } from "@shared/chat";
+import { Download, X } from "web-shared/components/ui/icons";
+import type { ChatFile } from "shared-protocol/chat";
 import { fileUrl } from "@/lib/chatFiles";
 
 /**

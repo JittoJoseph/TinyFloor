@@ -1,6 +1,6 @@
-import atlas from "@shared/catalog/atlas.json";
-import { paintShell } from "@shared/shell";
-import { FLOOR } from "@shared/map";
+import atlas from "shared-protocol/catalog/atlas.json";
+import { paintShell } from "shared-protocol/shell";
+import { FLOOR } from "shared-protocol/map";
 
 /** The floor sheet the walls and floors are painted from: the room builder's, and more floors, at an address naming its hash (lab/build.mjs). */
 const SHEET = `/${atlas.sheet}`;

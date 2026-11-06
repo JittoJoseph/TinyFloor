@@ -2,9 +2,9 @@
 
 import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { createPortal } from "react-dom";
-import { ChevronDown, Menu, X } from "@/components/ui/icons";
+import { ChevronDown, Menu, X } from "web-shared/components/ui/icons";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { Logo } from "@/components/app/Logo";
+import { Logo } from "web-shared/components/app/Logo";
 
 /**
  * The nav on a phone: one button that opens a full-screen menu over the page.

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { FLOOR } from "@shared/map";
+import { FLOOR } from "shared-protocol/map";
 
 /** The whole floor this browser draws (map.ts FLOOR), at one pixel to a pixel. */
 const [WIDTH, HEIGHT] = FLOOR.shell.size.map((tiles) => tiles * 32);

@@ -1,4 +1,4 @@
-import type { RoomTicket } from "@/lib/api";
+import type { RoomTicket } from "web-shared/lib/api";
 
 /** As long as a ticket asked for ahead is used (floorWarmup's earlyTicket): it's good for a minute. */
 const FRESH_MS = 40_000;

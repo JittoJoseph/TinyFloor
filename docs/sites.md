@@ -46,10 +46,17 @@ and a landing-page change doesn't rebuild the app.
 - **Don't map bare imports through tsconfig `paths`.** OpenNext's bundler
   reads them too, picks up the full `next` package and its native image
   library, and the worker fails to build.
-- `@/` looks in the app's own `src` first, then `web-shared/src`. Only files
-  both apps use belong in `web-shared`. The deliberate override is
-  `lib/i18n/navigation.ts`: the site's turns links to app paths into plain
-  links to the app, so a click never takes the redirect.
+- `web-shared` and `shared-protocol` are packages, imported by name
+  (`web-shared/lib/utils`, `shared-protocol/messages`); their `exports` say
+  which files are entry points. `@/` is only ever the app's own `src`. A new
+  `.ts` file in `web-shared/src/components` or `shell` (whose others are
+  `.tsx`) needs its own line in `exports`.
+- Only files both apps use belong in `web-shared`. One thing goes the other
+  way: shared components import `@/lib/i18n/navigation`, and each app has
+  its own. The site's turns links to app paths into plain links to the app,
+  so a click never takes the redirect.
+- The Workers take `shared-protocol` as a `link:` dependency (they keep
+  their own lockfiles).
 - Translations are split: `web-shared/messages` for what both say,
   each app's `messages` for its own. Each worker carries only its own words.
 - The licensed art comes from R2 at build time, never from the repo: the app

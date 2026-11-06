@@ -1,12 +1,12 @@
 import { preconnect } from "react-dom";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
-import type { Locale } from "@/lib/i18n/routing";
+import type { Locale } from "web-shared/lib/i18n/routing";
 import { AppTheme } from "@/components/app/AppTheme";
 import { LocalTimeZone } from "@/components/LocalTimeZone";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { CharacterCreatorHost } from "@/components/character/CharacterCreatorHost";
-import { API_URL } from "@/lib/api";
+import { API_URL } from "web-shared/lib/api";
 
 /** What only pages put together on the server say (the shared messages the app's screens never read). */
 const SITE_ONLY = new Set(["home", "metadata", "notFound"]);

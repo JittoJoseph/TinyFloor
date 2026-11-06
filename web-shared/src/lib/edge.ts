@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { routing } from "@/lib/i18n/routing";
-import { RELAY_PATH } from "@/lib/relay";
+import { routing } from "./i18n/routing";
+import { RELAY_PATH } from "./relay";
 
 /** What both sites' middleware does before routing a request to a page. */
 

@@ -125,6 +125,11 @@ export function markActive(db: D1Database, officeId: string, now: number): D1Pre
   return db.prepare("UPDATE offices SET active_at = MAX(COALESCE(active_at, 0), ?) WHERE id = ?").bind(now, officeId);
 }
 
+/** Someone was on a floor just now: when they were last around, as the admin lists show it. */
+export function markPersonActive(db: D1Database, userId: string, now: number): D1PreparedStatement {
+  return db.prepare("UPDATE users SET last_active_at = MAX(COALESCE(last_active_at, 0), ?) WHERE id = ?").bind(now, userId);
+}
+
 /** `YYYY-MM-DD` in UTC. */
 export function dayOf(time: number): string {
   return new Date(time).toISOString().slice(0, 10);

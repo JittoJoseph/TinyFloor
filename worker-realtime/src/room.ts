@@ -49,7 +49,7 @@ import { Desks } from "./desks";
 import { Pieces } from "./pieces";
 import { MeetingClock } from "./meeting-clock";
 import { SfuApi, SfuError, type SfuTrack } from "./sfu";
-import { Usage } from "./usage";
+import { markActive, markPersonActive, Usage } from "./usage";
 
 const DEFAULT_SPAWN = { x: 5, y: 5 };
 const HEARTBEAT_TIMEOUT_MS = 90_000;
@@ -350,6 +350,7 @@ export class Room extends DurableObject<Env> {
     this.broadcast({ t: "player_joined", player: playerState(attachment), ...(arriving ? { arrived: true } : {}) }, server);
     if (renamed) this.broadcastDesks(server);
     this.reportToDiscord(room, attachment.name, attachment.character, request.headers.get(WHERE_HEADER));
+    this.ctx.waitUntil(this.noteActive(room, ticket.sub, now));
     await this.headcountChanged(room);
 
     return new Response(null, { status: 101, webSocket: client });
@@ -1343,6 +1344,18 @@ export class Room extends DurableObject<Env> {
     // Everyone else still here, plus the one leaving: how full the room was.
     const others = this.present().filter((socket) => this.attachmentOf(socket).userId !== attachment.userId);
     this.usage.stayed(now - attachment.joinedAt, 0, others.length + 1, now);
+    this.ctx.waitUntil(this.noteActive(attachment.room, attachment.userId, now));
+  }
+
+  /**
+   * Someone came onto the floor or left it: they, and the office (the lobby
+   * isn't one), were around just now. Without this, someone on the floor all
+   * day, or an office busy since its last hourly write, looks hours idle.
+   */
+  private async noteActive(room: string, userId: string, now: number): Promise<void> {
+    const writes = [markPersonActive(this.env.DB, userId, now)];
+    if (lobbyCopyNumber(room) === null) writes.push(markActive(this.env.DB, room, now));
+    await this.env.DB.batch(writes).catch((error: unknown) => console.error("activity write failed", room, error));
   }
 
   /** Someone walked into the public lobby. Offices never report who comes in. */

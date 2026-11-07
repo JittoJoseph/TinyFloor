@@ -77,7 +77,7 @@ function keyFacts(): string[] {
       foundingOpen() ? ` (a founding price kept for as long as you stay subscribed, for subscriptions started before ${new Date(FOUNDING.until).toLocaleDateString("en", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" })}; $${FOUNDING.laterPrice} after that)` : ""
     }. Monthly, cancel any time. Every new office starts with 14 days of Pro for the whole team, no card needed.`,
     "- **Not for** a company that needs call recordings, AI meeting notes or single sign-on, or for events with hundreds of people. A bigger company gives each team an office of its own.",
-    "- **Runs in the browser** on desktop and phones, nothing to install. Calls go through Cloudflare's relay and meetings through Cloudflare's media servers; screen sharing is up to 720p at 10 to 15 frames a second, tuned for sharp text.",
+    "- **Runs in the browser** on desktop and phones, nothing to install. Calls go through Cloudflare's relay and meetings through Cloudflare's media servers; screen sharing is up to 1080p at 15 frames a second, tuned for sharp text.",
     `- **Ships to production almost every day:** ${earlier.map((one) => `${one.count} releases in ${one.month}`).join(", ")}; the [changelog](${url(CHANGELOG_PATH)}) lists what changed by date.`,
     "- **Open source** under AGPL-3.0: https://github.com/JittoJoseph/TinyFloor",
     `- **How it works,** with the numbers and what it doesn't do yet: [${HOW_IT_WORKS_TITLE}](${url(HOW_IT_WORKS_PATH)}).`,

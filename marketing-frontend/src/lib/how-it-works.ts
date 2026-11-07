@@ -9,7 +9,7 @@
 
 export const HOW_IT_WORKS_PATH = "/how-it-works";
 /** The day these words last changed (YYYY-MM-DD). */
-export const HOW_IT_WORKS_UPDATED = "2026-11-03";
+export const HOW_IT_WORKS_UPDATED = "2026-11-07";
 
 export const HOW_IT_WORKS_TITLE = "How TinyFloor works";
 export const HOW_IT_WORKS_DESCRIPTION =
@@ -53,7 +53,7 @@ export const HOW_IT_WORKS: HowItWorksSection[] = [
     title: "Screen sharing",
     items: [
       "Share your whole screen, a window or a browser tab in any call or meeting, from a desktop browser. Phones can watch a shared screen but not share one.",
-      "A shared screen is sent at up to 720p and 10 to 15 frames a second, tuned to keep text sharp: code, documents, designs, dashboards. On the meeting stage it's shown at full size.",
+      "A shared screen is sent at up to 1080p and 15 frames a second, tuned to keep text sharp: code, documents, designs, dashboards. On the meeting stage it's shown at full size.",
       "It isn't made for playing video smoothly, and it doesn't share your computer's sound yet.",
     ],
   },
@@ -111,7 +111,7 @@ export const HOW_IT_WORKS: HowItWorksSection[] = [
       },
       {
         q: "How good is TinyFloor's screen sharing?",
-        a: "It's made for showing work: up to 720p at 10 to 15 frames a second, tuned for sharp text such as code and documents. It isn't made for smooth video, and it doesn't share sound yet.",
+        a: "It's made for showing work: up to 1080p at 15 frames a second, tuned for sharp text such as code and documents. It isn't made for smooth video, and it doesn't share sound yet.",
       },
       {
         q: "Does TinyFloor record calls?",

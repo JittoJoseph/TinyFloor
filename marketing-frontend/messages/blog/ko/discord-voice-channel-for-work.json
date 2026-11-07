@@ -56,7 +56,7 @@
         },
         {
           "title": "부드러운 화면 공유",
-          "body": "디스코드는 [무료 서버에서도 30fps](https://support.discord.com/hc/ko/articles/33694251638295)로 방송해서 영상이나 게임에 잘 맞아요. TinyFloor의 화면 공유는 [최대 720p·10~15fps](/how-it-works)로, 움직임보다 글자가 선명하게 보이도록 맞춰져 있어요."
+          "body": "디스코드는 [무료 서버에서도 30fps](https://support.discord.com/hc/ko/articles/33694251638295)로 방송해서 영상이나 게임에 잘 맞아요. TinyFloor의 화면 공유는 [최대 1080p·15fps](/how-it-works)로, 움직임보다 글자가 선명하게 보이도록 맞춰져 있어요."
         },
         {
           "title": "암호화",
@@ -156,7 +156,7 @@
     {
       "title": "How TinyFloor works",
       "url": "https://www.tinyfloor.com/how-it-works",
-      "note": "통화는 1대1이고 음성으로 시작하며 카메라는 버튼. 화면 공유 최대 720p·10~15fps. 구글 또는 이메일 코드로 로그인."
+      "note": "통화는 1대1이고 음성으로 시작하며 카메라는 버튼. 화면 공유 최대 1080p·15fps. 구글 또는 이메일 코드로 로그인."
     },
     {
       "title": "TinyFloor changelog",

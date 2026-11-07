@@ -1,0 +1,201 @@
+{
+  "label": "Zoom alternatives",
+  "meta": {
+    "title": "Zoom Alternatives for Remote Teams 2026: Free Limits, Prices",
+    "description": "Google Meet, Teams, Webex, Whereby and Jitsi for meetings, Slack huddles, Discord and virtual offices for team calls: free time limits and prices, checked November 2026."
+  },
+  "coverAlt": "A navy video camera beside three speech bubbles, two cream and one coral, on a green background.",
+  "title": "Zoom alternatives for remote teams. <em>Which one depends on who's on the call.</em>",
+  "intro": "The best Zoom alternative depends on who's on the call. For meetings with clients and candidates, Google Meet and Microsoft Teams are the usual switch, and both give free meetings of up to 60 minutes against Zoom's 40. For the quick calls a team makes to each other all day, you may not need a meeting app at all: Slack huddles, a Discord voice channel or a virtual office start a call without a link. Every limit and price below is from each product's own page, checked on 7 November 2026. We make TinyFloor, a virtual office, so we're not neutral on the second kind of call.",
+  "takeaways": [
+    "Zoom's free plan ends meetings at 40 minutes; Zoom Pro is $14.16 a user a month billed yearly, or $16.99 monthly.",
+    "Free group meetings last up to 60 minutes on Google Meet (three or more people) and Microsoft Teams, 40 on Webex and 30 on Whereby, which also caps free meetings at 4 attendees.",
+    "Microsoft Teams Essentials is $4 a user a month billed yearly, with meetings of up to 300 people.",
+    "Jitsi Meet is open source and free to use without an account.",
+    "For calls inside a team, a link-free tool fits better: Slack's free huddles hold two people, and a virtual office lets you see who's free before you call."
+  ],
+  "sections": [
+    {
+      "title": "What are the best Zoom alternatives in 2026?",
+      "body": [
+        "Here are the free plan limits and the cheapest paid plan for each, from each product's own pricing page. Google Workspace and Slack show prices in your local currency, so their paid prices aren't listed here."
+      ],
+      "table": {
+        "head": ["Tool", "Free plan", "Cheapest paid plan", "Best for"],
+        "rows": [
+          ["Zoom", "40 minutes, 100 people", "Pro: $14.16 a user a month yearly, $16.99 monthly", "Meetings with anyone"],
+          ["Google Meet", "60 minutes for 3 or more people, 24 hours one to one", "Included in Google Workspace", "Teams on Google Workspace"],
+          ["Microsoft Teams", "Meetings up to 60 minutes", "Essentials: $4 a user a month yearly, 300 people", "Teams on Microsoft 365"],
+          ["Webex", "40 minutes, 100 attendees", "Meet: $144 a user a year, 24-hour meetings", "Large and regulated companies"],
+          ["Whereby", "1 host, 4 attendees, 30 minutes", "Pro: $10.99 a month, 100 attendees, no time limit", "Client calls in the browser"],
+          ["Jitsi Meet", "Free, no account needed", "Free; open source to host yourself", "Teams that want control"],
+          ["Slack huddles", "Two people", "Paid Slack plans: up to 50, 25 on video", "Quick calls in a Slack team"],
+          ["A virtual office", "TinyFloor: teams of up to 3", "TinyFloor: $29 a month for the whole team", "A team that works together every day"]
+        ]
+      }
+    },
+    {
+      "title": "Which Zoom alternatives suit meetings with clients and candidates?",
+      "body": [
+        "For a meeting with people outside your team, the tool that matters is the one they can join without fuss. These five each open from a link in the browser."
+      ],
+      "items": [
+        {
+          "title": "Google Meet",
+          "body": "If your team is on Google Workspace, Meet is already paid for, with meetings of up to 24 hours and 100 people on Starter or 150 on Standard ([Workspace pricing](https://workspace.google.com/pricing)). On a free personal account, [one-to-one calls run up to 24 hours and calls with three or more people stop at 60 minutes](https://support.google.com/meet/thread/185794599/is-there-a-time-limit-for-meetings-on-the-free-version?hl=en)."
+        },
+        {
+          "title": "Microsoft Teams",
+          "body": "The free version of Teams lets you [create a meeting link others can join without a Teams account, free up to 60 minutes](https://www.microsoft.com/en-us/microsoft-teams/free). [Teams Essentials](https://www.microsoft.com/en-us/microsoft-teams/essentials) is $4 a user a month paid yearly, with up to 300 participants and 10 GB of storage each. Teams in Microsoft 365 comes with the rest of Office."
+        },
+        {
+          "title": "Webex",
+          "body": "[Webex Free](https://pricing.webex.com/us/en/) matches Zoom's free plan: unlimited meetings of up to 40 minutes, with up to 100 attendees. Webex Meet is $144 a user a year ($12 a month), with meetings of up to 24 hours, 200 attendees and cloud recording."
+        },
+        {
+          "title": "Whereby",
+          "body": "Whereby runs in the browser with a fixed room link per host, which suits client calls. The free plan has [1 host, 1 room, 4 attendees and meetings of up to 30 minutes](https://whereby.com/information/meetings/pricing); Pro is $10.99 a month for one host with 100 attendees and no time limit."
+        },
+        {
+          "title": "Jitsi Meet",
+          "body": "[Jitsi Meet](https://jitsi.org/jitsi-meet/) is fully encrypted, 100% open source and free to use without an account. You can also run it on your own servers, which some companies need for data rules."
+        }
+      ]
+    },
+    {
+      "title": "Which free video meeting app has the longest meetings?",
+      "body": [
+        "Free plans differ most in how long a group meeting can run before it ends:"
+      ],
+      "table": {
+        "head": ["Tool", "Free group meeting length", "Free meeting size"],
+        "rows": [
+          ["Google Meet", "60 minutes (24 hours one to one)", "100 participants"],
+          ["Microsoft Teams", "60 minutes", "Not stated on the free page"],
+          ["Zoom", "40 minutes", "100 participants"],
+          ["Webex", "40 minutes", "100 attendees"],
+          ["Whereby", "30 minutes", "4 attendees"],
+          ["Jitsi Meet", "No limit stated", "Not stated"]
+        ]
+      }
+    },
+    {
+      "title": "Do you need a meeting app for calls inside your team?",
+      "body": [
+        "Most of the calls a remote team makes aren't meetings. They're \"got two minutes?\": a question, a quick look at a screen, a decision. A meeting app turns each of those into a link, a message and a wait, so many small questions end up written instead, or never asked. For these calls, tools that start without a link fit better."
+      ],
+      "items": [
+        {
+          "title": "Slack huddles",
+          "body": "A huddle starts a call from a channel or a message. On Slack's free plan [a huddle holds two people](https://slack.com/help/articles/4402059015315-Use-huddles-in-Slack); on paid plans up to 50, with 25 on video at a time ([how huddles compare](/slack-huddles-alternative))."
+        },
+        {
+          "title": "A Discord voice channel",
+          "body": "Some teams sit in an always-on voice channel. It's free, and on a server without boosts [up to 25 people can be on video in a voice channel, with streams at 720p and 30 frames a second](https://support.discord.com/hc/en-us/articles/33694251638295-Discord-Account-Caps-Server-Caps-and-More). It was built for communities, so work shares the app with everyone's gaming and personal servers ([Discord for work, in detail](/blog/discord-voice-channel-for-work))."
+        },
+        {
+          "title": "A virtual office",
+          "body": "A virtual office gives the team one place to be all day, so you can see who's at their desk, who's in a call and who's busy before you start talking, then walk over and call them. A [meeting room](/virtual-meeting-room) that's always there replaces most scheduled calls inside the team. Zoom or Meet stays for calls with other companies. Prices for ten of them are in [our comparison](/guides/best-virtual-office-software)."
+        }
+      ]
+    },
+    {
+      "title": "How to choose a Zoom alternative",
+      "items": [
+        {
+          "title": "Start from what you already pay for",
+          "body": "Google Workspace includes Meet and Microsoft 365 includes Teams. A team on either rarely needs another meeting app for outside calls."
+        },
+        {
+          "title": "Check the free limits against how you meet",
+          "body": "A weekly hour-long meeting outgrows every free plan above except Jitsi's. A 20-minute check-in fits them all."
+        },
+        {
+          "title": "Ask who has to join",
+          "body": "Clients and candidates join whatever they're sent, but it helps if it opens in a browser without an account: Teams, Meet, Whereby and Jitsi all do."
+        },
+        {
+          "title": "Separate meetings from team calls",
+          "body": "If most of your calendar is short calls inside the team, the fix isn't a cheaper meeting app; it's a way to talk without booking. Fewer, shorter scheduled calls also help with [video call fatigue](/blog/zoom-fatigue)."
+        }
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Where TinyFloor fits",
+    "body": "TinyFloor is a virtual office in the browser for a team that works together every day: walk your character to a teammate's desk and call them in one click, sit at a table in the meeting room to meet, and share a screen at [up to 1080p and 15 frames a second](/how-it-works). Pro is one price for the whole office, $29 a month rather than per person, and every new office starts with 14 days of Pro. It doesn't replace Zoom or Meet for calls with other companies, and it has no recordings or AI notes."
+  },
+  "faq": [
+    {
+      "q": "What is the best free alternative to Zoom?",
+      "a": "For group meetings, Google Meet and Microsoft Teams give free meetings of up to 60 minutes, against Zoom's 40. Jitsi Meet is free and open source with no account needed. For calls inside a team, Slack's free huddles (two people) or a virtual office avoid sending links at all."
+    },
+    {
+      "q": "Is Google Meet free?",
+      "a": "Yes, with a personal Google account: one-to-one calls run up to 24 hours and calls with three or more people up to 60 minutes. Google Workspace plans raise meetings to 24 hours and 100 to 1,000 participants."
+    },
+    {
+      "q": "Does Microsoft Teams have a free version?",
+      "a": "Yes. Free Teams lets you create a meeting link that others can join without a Teams account, for meetings of up to 60 minutes. Teams Essentials is $4 a user a month paid yearly, with meetings of up to 300 people."
+    },
+    {
+      "q": "How long is a free Zoom meeting?",
+      "a": "40 minutes, with up to 100 participants, on Zoom's free Basic plan. Zoom Pro raises that to 30 hours for $14.16 a user a month billed yearly or $16.99 monthly."
+    },
+    {
+      "q": "Which video call app has no time limit for free?",
+      "a": "Jitsi Meet states no meeting length limit and needs no account. Google Meet allows one-to-one calls of up to 24 hours on a free account. Paid plans on Zoom, Webex, Whereby and Google Workspace remove the short limits."
+    },
+    {
+      "q": "Can a virtual office replace Zoom?",
+      "a": "Inside the team, mostly: walk-up calls and a meeting room replace the short scheduled calls. For meetings with clients, candidates and other companies, teams usually keep Zoom, Meet or Teams, because that's what the other side uses."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Zoom, Plans and pricing",
+      "url": "https://zoom.us/pricing",
+      "note": "Basic: 40 minutes per meeting, 100 participants. Pro: $14.16 a user a month billed yearly, $16.99 monthly, 30-hour meetings. Checked 7 November 2026."
+    },
+    {
+      "title": "Google Meet Help Community, Is there a time limit for meetings on the free version?",
+      "url": "https://support.google.com/meet/thread/185794599/is-there-a-time-limit-for-meetings-on-the-free-version?hl=en",
+      "note": "Personal accounts: one-to-one calls up to 24 hours, calls with 3 or more participants up to 60 minutes."
+    },
+    {
+      "title": "Google Workspace, Pricing",
+      "url": "https://workspace.google.com/pricing",
+      "note": "Meet on paid plans: 100 participants on Starter, 150 on Standard, meetings up to 24 hours. Prices shown in local currency. Checked 7 November 2026."
+    },
+    {
+      "title": "Microsoft, Free Microsoft Teams and Teams Essentials",
+      "url": "https://www.microsoft.com/en-us/microsoft-teams/essentials",
+      "note": "Free Teams: meeting links others can join without an account, free up to 60 minutes. Essentials: $4.00 a user a month paid yearly, up to 300 participants. Checked 7 November 2026."
+    },
+    {
+      "title": "Webex, Pricing",
+      "url": "https://pricing.webex.com/us/en/",
+      "note": "Webex Free: meetings up to 40 minutes, 100 attendees. Webex Meet: $144 a user a year, 24-hour meetings, 200 attendees. Checked 7 November 2026."
+    },
+    {
+      "title": "Whereby, Meetings pricing",
+      "url": "https://whereby.com/information/meetings/pricing",
+      "note": "Free: 1 host, 1 room, 4 attendees, 30 minutes. Pro: $10.99 a month, 100 attendees, no time limit. Business: $13.99 a host a month, 3 hosts minimum. Checked 7 November 2026."
+    },
+    {
+      "title": "Jitsi Meet",
+      "url": "https://jitsi.org/jitsi-meet/",
+      "note": "Fully encrypted, 100% open source, free to use without an account."
+    },
+    {
+      "title": "Slack Help Center, Use huddles in Slack",
+      "url": "https://slack.com/help/articles/4402059015315-Use-huddles-in-Slack",
+      "note": "Free plan: up to two participants. Paid plans: up to 50, with 25 on video at a time."
+    },
+    {
+      "title": "Discord, Account Caps, Server Caps and More",
+      "url": "https://support.discord.com/hc/en-us/articles/33694251638295-Discord-Account-Caps-Server-Caps-and-More",
+      "note": "Servers without boosts: 25 people on video in a voice channel, streams at 720p and 30 frames a second. Checked 3 November 2026."
+    }
+  ]
+}

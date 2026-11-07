@@ -1,0 +1,201 @@
+{
+  "label": "Zoom-Alternativen",
+  "meta": {
+    "title": "Zoom-Alternativen 2026: kostenlose Limits und Preise im Vergleich",
+    "description": "Google Meet, Teams, Webex, Whereby und Jitsi für Meetings, Slack Huddles, Discord und virtuelle Büros für Teamgespräche: Zeitlimits und Preise, geprüft im November 2026."
+  },
+  "coverAlt": "Eine dunkelblaue Videokamera neben drei Sprechblasen, zwei cremefarben und eine korallenrot, auf grünem Hintergrund.",
+  "title": "Zoom-Alternativen für Remote-Teams. <em>Welche passt, hängt davon ab, wer im Call ist.</em>",
+  "intro": "Welche Alternative zu Zoom passt, hängt davon ab, wer im Call ist. Für Meetings mit Kunden und Bewerbern sind Google Meet und Microsoft Teams der übliche Wechsel, und beide erlauben kostenlose Meetings bis 60 Minuten statt Zooms 40. Für die kurzen Gespräche, die ein Team den ganzen Tag untereinander führt, braucht es oft gar keine Meeting-App: Slack Huddles, ein Discord-Sprachkanal oder ein virtuelles Büro starten ein Gespräch ohne Link. Alle Limits und Preise stammen von den Seiten der Anbieter, geprüft am 7. November 2026; Preise in Dollar sind die der US-Preisseiten. Wir machen TinyFloor, ein virtuelles Büro, und sind bei der zweiten Art von Gespräch deshalb nicht neutral.",
+  "takeaways": [
+    "Zoom beendet Meetings im kostenlosen Tarif nach 40 Minuten; Zoom Pro kostet 14,16 Dollar pro Nutzer und Monat bei jährlicher Zahlung oder 16,99 Dollar monatlich.",
+    "Kostenlose Gruppenmeetings dauern bei Google Meet (ab drei Personen) und Microsoft Teams bis 60 Minuten, bei Webex 40 und bei Whereby 30 Minuten, dort mit höchstens 4 Teilnehmenden.",
+    "Microsoft Teams Essentials kostet 4 Dollar pro Nutzer und Monat bei jährlicher Zahlung, für Meetings mit bis zu 300 Personen.",
+    "Jitsi Meet ist Open Source, ohne Konto nutzbar und lässt sich auf eigenen Servern betreiben.",
+    "Für Gespräche im Team passt ein Werkzeug ohne Link besser: Slacks kostenlose Huddles fassen zwei Personen, und in einem virtuellen Büro sieht man vor dem Anruf, wer gerade frei ist."
+  ],
+  "sections": [
+    {
+      "title": "Welche Zoom-Alternativen gibt es 2026?",
+      "body": [
+        "Hier sind die Grenzen der kostenlosen Tarife und der günstigste bezahlte Tarif, jeweils von der Preisseite des Anbieters. Google Workspace und Slack zeigen Preise in der Landeswährung, deshalb stehen ihre Preise hier nicht."
+      ],
+      "table": {
+        "head": ["Werkzeug", "Kostenlos", "Günstigster bezahlter Tarif", "Passt für"],
+        "rows": [
+          ["Zoom", "40 Minuten, 100 Personen", "Pro: 14,16 $ pro Nutzer und Monat jährlich, 16,99 $ monatlich", "Meetings mit allen"],
+          ["Google Meet", "60 Minuten ab 3 Personen, 24 Stunden zu zweit", "In Google Workspace enthalten", "Teams mit Google Workspace"],
+          ["Microsoft Teams", "Meetings bis 60 Minuten", "Essentials: 4 $ pro Nutzer und Monat jährlich, 300 Personen", "Teams mit Microsoft 365"],
+          ["Webex", "40 Minuten, 100 Teilnehmende", "Meet: 144 $ pro Nutzer und Jahr, Meetings bis 24 Stunden", "Große und regulierte Unternehmen"],
+          ["Whereby", "1 Host, 4 Teilnehmende, 30 Minuten", "Pro: 10,99 $ im Monat, 100 Teilnehmende, ohne Zeitlimit", "Kundengespräche im Browser"],
+          ["Jitsi Meet", "Kostenlos, ohne Konto", "Kostenlos; Open Source zum Selbsthosten", "Teams, die Kontrolle über ihre Daten wollen"],
+          ["Slack Huddles", "Zwei Personen", "Bezahlte Slack-Tarife: bis 50, davon 25 mit Video", "Kurze Gespräche in einem Slack-Team"],
+          ["Ein virtuelles Büro", "TinyFloor: Teams bis 3 Personen", "TinyFloor: 29 $ im Monat für das ganze Team", "Ein Team, das jeden Tag zusammenarbeitet"]
+        ]
+      }
+    },
+    {
+      "title": "Welche Zoom-Alternativen eignen sich für Meetings mit Kunden und Bewerbern?",
+      "body": [
+        "Bei einem Meeting mit Leuten außerhalb des Teams zählt vor allem, dass die andere Seite ohne Umstände beitreten kann. Diese fünf öffnen sich alle über einen Link im Browser."
+      ],
+      "items": [
+        {
+          "title": "Google Meet",
+          "body": "Wer Google Workspace nutzt, hat Meet schon bezahlt: Meetings bis 24 Stunden, mit 100 Personen bei Starter und 150 bei Standard ([Workspace-Preise](https://workspace.google.com/pricing)). Mit einem kostenlosen privaten Konto laufen [Gespräche zu zweit bis 24 Stunden, Gespräche ab drei Personen enden nach 60 Minuten](https://support.google.com/meet/thread/185794599/is-there-a-time-limit-for-meetings-on-the-free-version?hl=en)."
+        },
+        {
+          "title": "Microsoft Teams",
+          "body": "Mit der kostenlosen Version von Teams lässt sich ein [Meeting-Link erstellen, dem andere auch ohne Teams-Konto beitreten können, kostenlos bis 60 Minuten](https://www.microsoft.com/en-us/microsoft-teams/free). [Teams Essentials](https://www.microsoft.com/en-us/microsoft-teams/essentials) kostet 4 Dollar pro Nutzer und Monat bei jährlicher Zahlung, mit bis zu 300 Teilnehmenden und 10 GB Speicher pro Person."
+        },
+        {
+          "title": "Webex",
+          "body": "[Webex Free](https://pricing.webex.com/us/en/) entspricht Zooms kostenlosem Tarif: unbegrenzt viele Meetings bis 40 Minuten mit bis zu 100 Teilnehmenden. Webex Meet kostet 144 Dollar pro Nutzer und Jahr (12 Dollar im Monat), mit Meetings bis 24 Stunden, 200 Teilnehmenden und Cloud-Aufzeichnung."
+        },
+        {
+          "title": "Whereby",
+          "body": "Whereby läuft im Browser mit einem festen Raum-Link pro Host, was gut zu Kundengesprächen passt. Kostenlos gibt es [1 Host, 1 Raum, 4 Teilnehmende und Meetings bis 30 Minuten](https://whereby.com/information/meetings/pricing); Pro kostet 10,99 Dollar im Monat für einen Host, mit 100 Teilnehmenden und ohne Zeitlimit."
+        },
+        {
+          "title": "Jitsi Meet",
+          "body": "[Jitsi Meet](https://jitsi.org/jitsi-meet/) ist vollständig verschlüsselt, zu 100 % Open Source und ohne Konto kostenlos nutzbar. Man kann es auch auf eigenen Servern betreiben, was für Unternehmen mit strengen Datenschutzvorgaben oft der Grund für die Wahl ist."
+        }
+      ]
+    },
+    {
+      "title": "Welche kostenlose Videokonferenz-App erlaubt die längsten Meetings?",
+      "body": [
+        "Am stärksten unterscheiden sich die kostenlosen Tarife darin, wie lange ein Gruppenmeeting laufen darf:"
+      ],
+      "table": {
+        "head": ["Werkzeug", "Kostenloses Gruppenmeeting", "Größe kostenlos"],
+        "rows": [
+          ["Google Meet", "60 Minuten (24 Stunden zu zweit)", "100 Teilnehmende"],
+          ["Microsoft Teams", "60 Minuten", "Auf der Seite nicht angegeben"],
+          ["Zoom", "40 Minuten", "100 Teilnehmende"],
+          ["Webex", "40 Minuten", "100 Teilnehmende"],
+          ["Whereby", "30 Minuten", "4 Teilnehmende"],
+          ["Jitsi Meet", "Kein Limit angegeben", "Nicht angegeben"]
+        ]
+      }
+    },
+    {
+      "title": "Braucht ein Team für Gespräche untereinander überhaupt eine Meeting-App?",
+      "body": [
+        "Die meisten Gespräche in einem Remote-Team sind keine Meetings, sondern ein \"Hast du kurz zwei Minuten?\": eine Frage, ein kurzer Blick auf einen Bildschirm, eine Entscheidung. Eine Meeting-App macht daraus jedes Mal einen Link, eine Nachricht und eine Wartezeit, und viele kleine Fragen werden dann geschrieben statt gestellt oder gar nicht erst gestellt. Für diese Gespräche passen Werkzeuge ohne Link besser."
+      ],
+      "items": [
+        {
+          "title": "Slack Huddles",
+          "body": "Ein Huddle startet ein Gespräch aus einem Channel oder einer Nachricht. Im kostenlosen Slack-Tarif [fasst ein Huddle zwei Personen](https://slack.com/help/articles/4402059015315-Use-huddles-in-Slack); in bezahlten Tarifen bis zu 50, davon 25 gleichzeitig mit Video."
+        },
+        {
+          "title": "Ein Discord-Sprachkanal",
+          "body": "Manche Teams sitzen den ganzen Tag in einem Sprachkanal. Das ist kostenlos, und auf einem Server ohne Boosts können [bis zu 25 Personen im Sprachkanal Video nutzen, Streams laufen mit 720p bei 30 Bildern pro Sekunde](https://support.discord.com/hc/en-us/articles/33694251638295-Discord-Account-Caps-Server-Caps-and-More). Discord ist für Communitys gebaut, die Arbeit liegt also in derselben App wie private und Gaming-Server ([Discord beruflich nutzen, ausführlich](/blog/discord-voice-channel-for-work))."
+        },
+        {
+          "title": "Ein virtuelles Büro",
+          "body": "Ein virtuelles Büro gibt dem Team einen gemeinsamen Ort für den ganzen Tag: Man sieht, wer am Schreibtisch sitzt, wer im Gespräch ist und wer beschäftigt ist, bevor man jemanden anspricht, geht dann hin und ruft an. Ein [Meetingraum](/virtual-meeting-room), der immer da ist, ersetzt die meisten geplanten Calls im Team. Zoom oder Meet bleibt für Gespräche mit anderen Firmen."
+        }
+      ]
+    },
+    {
+      "title": "Wie wählt man eine Zoom-Alternative aus?",
+      "items": [
+        {
+          "title": "Mit dem anfangen, was schon bezahlt ist",
+          "body": "Google Workspace enthält Meet und Microsoft 365 enthält Teams. Ein Team mit einem davon braucht für externe Meetings selten noch eine App."
+        },
+        {
+          "title": "Die kostenlosen Limits mit den eigenen Meetings vergleichen",
+          "body": "Ein wöchentliches einstündiges Meeting sprengt jeden kostenlosen Tarif oben außer dem von Jitsi. Ein 20-minütiger Check-in passt in alle."
+        },
+        {
+          "title": "Fragen, wer beitreten muss",
+          "body": "Kunden und Bewerber nehmen, was man ihnen schickt, aber es hilft, wenn es sich ohne Konto im Browser öffnet: Teams, Meet, Whereby und Jitsi können das."
+        },
+        {
+          "title": "Meetings und Teamgespräche trennen",
+          "body": "Wenn der Kalender vor allem aus kurzen Calls im Team besteht, ist die Lösung keine günstigere Meeting-App, sondern ein Weg, ohne Termin miteinander zu reden. Weniger und kürzere geplante Calls helfen auch gegen [Videokonferenz-Müdigkeit](/blog/zoom-fatigue)."
+        }
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Für wen TinyFloor passt",
+    "body": "TinyFloor ist ein virtuelles Büro im Browser für ein Team, das jeden Tag zusammenarbeitet: Mit der eigenen Figur zum Schreibtisch einer Kollegin gehen und sie mit einem Klick anrufen, sich im Meetingraum an den Tisch setzen und den Bildschirm mit [bis zu 1080p bei 15 Bildern pro Sekunde](/how-it-works) teilen. Pro kostet einen Preis für das ganze Büro, 29 Dollar im Monat statt pro Person, und jedes neue Büro startet mit 14 Tagen Pro. Für Gespräche mit anderen Firmen ersetzt es Zoom oder Meet nicht, und es hat keine Aufzeichnungen oder KI-Notizen."
+  },
+  "faq": [
+    {
+      "q": "Was ist die beste kostenlose Alternative zu Zoom?",
+      "a": "Für Gruppenmeetings erlauben Google Meet und Microsoft Teams kostenlose Meetings bis 60 Minuten statt Zooms 40. Jitsi Meet ist kostenlos, Open Source und braucht kein Konto. Für Gespräche im Team kommen Slacks kostenlose Huddles (zwei Personen) oder ein virtuelles Büro ganz ohne Links aus."
+    },
+    {
+      "q": "Ist Google Meet kostenlos?",
+      "a": "Ja, mit einem privaten Google-Konto: Gespräche zu zweit laufen bis 24 Stunden, Gespräche ab drei Personen bis 60 Minuten. Mit Google Workspace dauern Meetings bis 24 Stunden, mit 100 bis 1.000 Teilnehmenden."
+    },
+    {
+      "q": "Gibt es Microsoft Teams kostenlos?",
+      "a": "Ja. Mit dem kostenlosen Teams lässt sich ein Meeting-Link erstellen, dem andere ohne Teams-Konto beitreten können, für Meetings bis 60 Minuten. Teams Essentials kostet 4 Dollar pro Nutzer und Monat bei jährlicher Zahlung, für Meetings bis 300 Personen."
+    },
+    {
+      "q": "Wie lange dauert ein kostenloses Zoom-Meeting?",
+      "a": "40 Minuten, mit bis zu 100 Teilnehmenden, im kostenlosen Basic-Tarif. Zoom Pro erlaubt 30 Stunden, für 14,16 Dollar pro Nutzer und Monat bei jährlicher Zahlung oder 16,99 Dollar monatlich."
+    },
+    {
+      "q": "Welche Videokonferenz-App ist datenschutzfreundlich?",
+      "a": "Jitsi Meet ist Open Source und lässt sich auf eigenen Servern betreiben, sodass die Daten im eigenen Haus bleiben. Bei den anderen Anbietern hängt es vom Tarif und vom Vertrag ab; das sollte man vor dem Kauf mit den Unterlagen des Anbieters prüfen."
+    },
+    {
+      "q": "Kann ein virtuelles Büro Zoom ersetzen?",
+      "a": "Im Team größtenteils: Gespräche am Schreibtisch und ein Meetingraum ersetzen die kurzen geplanten Calls. Für Meetings mit Kunden, Bewerbern und anderen Firmen behalten Teams meist Zoom, Meet oder Teams, weil die andere Seite das nutzt."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Zoom, Plans and pricing",
+      "url": "https://zoom.us/pricing",
+      "note": "Basic: 40 Minuten pro Meeting, 100 Teilnehmende. Pro: 14,16 Dollar pro Nutzer und Monat jährlich, 16,99 Dollar monatlich, Meetings bis 30 Stunden. Geprüft am 7. November 2026."
+    },
+    {
+      "title": "Google Meet Help Community, Is there a time limit for meetings on the free version?",
+      "url": "https://support.google.com/meet/thread/185794599/is-there-a-time-limit-for-meetings-on-the-free-version?hl=en",
+      "note": "Private Konten: Gespräche zu zweit bis 24 Stunden, ab 3 Personen bis 60 Minuten."
+    },
+    {
+      "title": "Google Workspace, Pricing",
+      "url": "https://workspace.google.com/pricing",
+      "note": "Meet in bezahlten Tarifen: 100 Teilnehmende bei Starter, 150 bei Standard, Meetings bis 24 Stunden. Preise in Landeswährung. Geprüft am 7. November 2026."
+    },
+    {
+      "title": "Microsoft, Free Microsoft Teams and Teams Essentials",
+      "url": "https://www.microsoft.com/en-us/microsoft-teams/essentials",
+      "note": "Kostenloses Teams: Meeting-Links ohne Konto, kostenlos bis 60 Minuten. Essentials: 4,00 Dollar pro Nutzer und Monat jährlich, bis 300 Teilnehmende. Geprüft am 7. November 2026."
+    },
+    {
+      "title": "Webex, Pricing",
+      "url": "https://pricing.webex.com/us/en/",
+      "note": "Webex Free: Meetings bis 40 Minuten, 100 Teilnehmende. Webex Meet: 144 Dollar pro Nutzer und Jahr, Meetings bis 24 Stunden, 200 Teilnehmende. Geprüft am 7. November 2026."
+    },
+    {
+      "title": "Whereby, Meetings pricing",
+      "url": "https://whereby.com/information/meetings/pricing",
+      "note": "Kostenlos: 1 Host, 1 Raum, 4 Teilnehmende, 30 Minuten. Pro: 10,99 Dollar im Monat, 100 Teilnehmende, ohne Zeitlimit. Geprüft am 7. November 2026."
+    },
+    {
+      "title": "Jitsi Meet",
+      "url": "https://jitsi.org/jitsi-meet/",
+      "note": "Vollständig verschlüsselt, zu 100 % Open Source, kostenlos ohne Konto."
+    },
+    {
+      "title": "Slack Help Center, Use huddles in Slack",
+      "url": "https://slack.com/help/articles/4402059015315-Use-huddles-in-Slack",
+      "note": "Kostenloser Tarif: bis zu zwei Personen. Bezahlte Tarife: bis 50, davon 25 mit Video."
+    },
+    {
+      "title": "Discord, Account Caps, Server Caps and More",
+      "url": "https://support.discord.com/hc/en-us/articles/33694251638295-Discord-Account-Caps-Server-Caps-and-More",
+      "note": "Server ohne Boosts: 25 Personen mit Video im Sprachkanal, Streams mit 720p bei 30 Bildern pro Sekunde. Geprüft am 3. November 2026."
+    }
+  ]
+}

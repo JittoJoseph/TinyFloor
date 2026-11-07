@@ -56,7 +56,7 @@
         },
         {
           "title": "なめらかな画面共有",
-          "body": "Discordは[無料サーバーでも30fps](https://support.discord.com/hc/ja/articles/33694251638295)で配信でき、動画やゲームに向いています。TinyFloorの画面共有は[最大720p・10〜15fps](/how-it-works)で、動きよりも文字の読みやすさを優先しています。"
+          "body": "Discordは[無料サーバーでも30fps](https://support.discord.com/hc/ja/articles/33694251638295)で配信でき、動画やゲームに向いています。TinyFloorの画面共有は[最大1080p・15fps](/how-it-works)で、動きよりも文字の読みやすさを優先しています。"
         },
         {
           "title": "暗号化",
@@ -156,7 +156,7 @@
     {
       "title": "How TinyFloor works",
       "url": "https://www.tinyfloor.com/how-it-works",
-      "note": "通話は1対1で音声から始まり、カメラはボタン。画面共有は最大720p・10〜15fps。サインインはGoogleまたはメールのコード。"
+      "note": "通話は1対1で音声から始まり、カメラはボタン。画面共有は最大1080p・15fps。サインインはGoogleまたはメールのコード。"
     },
     {
       "title": "TinyFloor changelog",

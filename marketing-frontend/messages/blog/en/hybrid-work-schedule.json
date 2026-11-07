@@ -1,0 +1,146 @@
+{
+  "label": "Hybrid work schedules",
+  "meta": {
+    "title": "Hybrid Work Schedule Examples: 3-2, Anchor Days, What Works",
+    "description": "The common hybrid work schedules, what US companies actually require (2.82 office days a week on average), which days work best, and how to set one your team keeps."
+  },
+  "coverAlt": "A cream calendar with the middle three of five day tiles in navy, beside a small house with a coral roof, on a yellow background.",
+  "title": "Hybrid work schedules. <em>The common ones, and how to pick yours.</em>",
+  "intro": "A hybrid work schedule says which days people work in the office and which from home. The most common in US companies that set one is three office days a week, usually Tuesday to Thursday: the Flex Index found an average requirement of 2.82 office days a week in mid-2025, with only 7% of companies that name specific days requiring Fridays. Small companies mostly don't set days at all. What makes a schedule work is less the number of days than whether the people who work together are in on the same days, and whether the team agreed it. Every figure below links to its source. We make TinyFloor, a virtual office used by hybrid teams on their remote days, so we're not neutral on the last section.",
+  "takeaways": [
+    "Among US companies with set office days, 66% require three days a week, up from 53% a year earlier, for an average of 2.82 days (Flex Index, Q2 2025).",
+    "Tuesday to Thursday are the most common office days; only 7% of companies that name specific days require Friday.",
+    "Small companies stay flexible: 70% of firms under 500 people are fully flexible (remote or employee's choice), against 12% of firms with 25,000 or more.",
+    "About 26% of paid workdays in the US were worked from home in June 2026, according to Stanford's WFH Research survey.",
+    "Gallup found teams that set their hybrid policy together are the most likely to call it fair, but only 11% of employees work under one."
+  ],
+  "sections": [
+    {
+      "title": "What are the common hybrid work schedules?",
+      "body": [
+        "Most hybrid schedules are one of these six. The first four set office days for everyone; the last two leave the choice to people or teams."
+      ],
+      "table": {
+        "head": ["Schedule", "How it works", "Good for", "Watch out for"],
+        "rows": [
+          ["3-2", "Three office days, two at home, often Tuesday to Thursday", "Teams that collaborate most of the week", "The commute on three days; people quietly skipping one"],
+          ["2-3", "Two office days, three at home", "Focus-heavy work with some collaboration", "Two days fill up with meetings"],
+          ["Anchor days", "Everyone on the team in on the same set days", "Making office days worth the trip", "Rooms and desks are full on anchor days"],
+          ["Minimum days", "A number of days a week, people pick which", "Personal flexibility", "Colleagues come in on different days and sit on calls"],
+          ["Team's choice", "Each team sets its own days", "Teams with different rhythms", "Cross-team work gets harder"],
+          ["Employee's choice", "People come in when it suits them", "Small and remote-first teams", "The office can be empty when you need it"]
+        ]
+      }
+    },
+    {
+      "title": "How many days a week do hybrid employees go to the office?",
+      "body": [
+        "Policies have crept up, behaviour much less. The [Flex Index Q2 2025 report](https://www.lse.ac.uk/management/assets/documents/research/flex-index-reports/Flex-Report-Q2-2025.pdf), covering 8,709 US companies, found that 67% of firms have a flexible policy and 33% require full-time office attendance. Among companies with structured hybrid policies, 66% now require three days in the office, up from 53% a year earlier, for a national average of 2.82 office days a week, up from 2.49. Companies that set a minimum number of days average 2.77.",
+        "Required days rose 10% from early 2024, while actual attendance moved only 1 to 2%, based on attendance data from Stanford's Nick Bloom. Size matters most: 70% of companies with 25,000 or more employees use structured hybrid, while 70% of companies under 500 are fully flexible.",
+        "Across all workers, [Stanford's WFH Research survey](https://wfhresearch.com/wp-content/uploads/2026/07/WFHResearch_updates_July2026.pdf) found that about 26% of paid days in June 2026 were worked from home, and that over the past year 26% of full-time employees were hybrid, 12% fully remote and 62% fully on site. Among US employees whose jobs can be done remotely, [Gallup counted 54% hybrid](https://www.gallup.com/401384/indicator-hybrid-work.aspx) in August 2026, 25% fully remote and 21% on site."
+      ],
+      "table": {
+        "head": ["Figure", "Value", "Source"],
+        "rows": [
+          ["Average required office days (structured hybrid)", "2.82 a week, up from 2.49", "Flex Index, Q2 2025"],
+          ["Structured hybrid firms requiring three days", "66%, up from 53%", "Flex Index, Q2 2025"],
+          ["US firms requiring full-time office", "33%", "Flex Index, Q2 2025"],
+          ["Specific-days firms requiring Friday", "7%", "Flex Index, Q2 2025"],
+          ["Paid days worked from home", "About 26% (June 2026)", "WFH Research"],
+          ["Remote-capable employees who are hybrid", "54% (August 2026)", "Gallup"]
+        ]
+      }
+    },
+    {
+      "title": "Which days should be office days?",
+      "body": [
+        "Tuesday to Thursday, in almost every company that names days. The Flex Index found these are the most common required days, with Friday the least: only 7% of companies with specific days ask for it. Office buildings show the same shape: in the week of 27 October 2026, [Kastle's occupancy barometer](https://www.kastle.com/safety-wellness/getting-america-back-to-work/) reported Tuesday as the peak day in nearly every city it tracks.",
+        "Picking the same days as everyone else has a cost (fuller trains, booked rooms) and a benefit: the people you need are in. For a single team, the better question is which days the team most needs to be together, and that's usually the days with planning, reviews and the work that needs a whiteboard. Keep Monday and Friday for focused work, and you're back at Tuesday to Thursday."
+      ]
+    },
+    {
+      "title": "How to set a hybrid schedule your team will keep",
+      "items": [
+        {
+          "title": "Decide it with the team",
+          "body": "Gallup found that teams that set their hybrid policy together are the most likely to say it's fair, and that as of May 2025 only 11% of employees worked under a team-set policy. A schedule handed down from above is the one people quietly bend."
+        },
+        {
+          "title": "Put the people who work together in on the same days",
+          "body": "A company-wide three days doesn't help if your closest colleagues pick different ones: you commute to sit on video calls. Anchor days by team fix that."
+        },
+        {
+          "title": "Save office days for work that needs a room",
+          "body": "Planning, workshops, onboarding and hard conversations go on office days; heads-down work goes on home days. A [team meeting agenda](/guides/team-meeting-agenda) that's ready beforehand makes the office day count."
+        },
+        {
+          "title": "Keep the meeting rules the same for everyone",
+          "body": "If one person joins from home, everyone joins the call from their own laptop, so nobody is a voice from a speaker at the end of a table."
+        },
+        {
+          "title": "Review it after a month",
+          "body": "Count who actually came in on which days. The Flex Index's gap between required and actual days suggests most schedules drift; it's better to change the rule than to have nobody follow it."
+        }
+      ]
+    },
+    {
+      "title": "What happens on the remote days?",
+      "body": [
+        "Hybrid schedules spend a lot of thought on office days and very little on the others. On a home day, the people in the building can see who's free and turn round to ask a question; the people at home see a green dot at best, so they write a message and wait. Over time, the remote half of the week becomes the quiet half, and people at home on office days miss what's said in the room.",
+        "Two things help. First, the meeting rule above: once anyone is remote, everyone is on their own laptop. Second, somewhere the whole team can see who's around and talk without booking a call on remote days. That can be a busy chat channel, an open voice channel or a [virtual office for hybrid teams](/hybrid-teams), where everyone, at home or at a desk in the building, is on the same floor."
+      ]
+    }
+  ],
+  "fit": {
+    "title": "Where TinyFloor fits",
+    "body": "TinyFloor is a virtual office in the browser. On remote days the whole team is on one floor: you can see who's at their desk and who's in a call, walk over to a teammate to call them in one click, and meet at a table in the meeting room without sending a link. On office days, the people at home can still reach the people in the building the same way, if everyone keeps it open. Pro is one price for the whole office, $29 a month rather than per person, and every new office starts with 14 days of Pro."
+  },
+  "faq": [
+    {
+      "q": "What is the most common hybrid work schedule?",
+      "a": "Three office days a week, usually Tuesday to Thursday. The Flex Index found that 66% of US companies with structured hybrid policies require three days, for an average of 2.82 office days a week in Q2 2025."
+    },
+    {
+      "q": "What is a 3-2 hybrid schedule?",
+      "a": "Three days a week in the office and two at home. Most companies that use it put the office days in the middle of the week and leave Monday and Friday for home."
+    },
+    {
+      "q": "What are anchor days?",
+      "a": "Set days when everyone on a team, or the whole company, is in the office together, such as Tuesday and Thursday. They make sure the people you need are there when you commute."
+    },
+    {
+      "q": "How many days a week do hybrid employees go to the office?",
+      "a": "Companies with structured hybrid policies required 2.82 days a week on average in Q2 2025, according to the Flex Index. Attendance runs below that: required days rose 10% from early 2024 while attendance rose 1 to 2%."
+    },
+    {
+      "q": "What are the best days to be in the office?",
+      "a": "Tuesday to Thursday for most teams: they're the most common required days, and office occupancy peaks on Tuesday. Friday is the least common office day; only 7% of companies with specific days require it."
+    },
+    {
+      "q": "Who should set a hybrid schedule?",
+      "a": "The team that works together, within any company rule. Gallup found team-set policies are the most likely to be seen as fair, though only 11% of employees had one in May 2025."
+    }
+  ],
+  "sources": [
+    {
+      "title": "Flex Index, The Flex Report Q2 2025",
+      "url": "https://www.lse.ac.uk/management/assets/documents/research/flex-index-reports/Flex-Report-Q2-2025.pdf",
+      "note": "8,709 US companies: 67% flexible, 33% full-time office; structured hybrid firms requiring 3 days 66% (53% a year earlier); average 2.82 required days (2.49), 2.77 for minimum-days policies; Tuesday to Thursday most common, 7% require Friday; 70% of firms under 500 fully flexible, 70% of 25,000+ structured hybrid."
+    },
+    {
+      "title": "WFH Research, SWAA July 2026 updates (Barrero, Bloom, Buckman and Davis)",
+      "url": "https://wfhresearch.com/wp-content/uploads/2026/07/WFHResearch_updates_July2026.pdf",
+      "note": "Updated 5 July 2026, survey wave June 2026: about 26% of paid days worked from home; past year, full-time employees 26% hybrid, 12% fully remote, 62% fully on site."
+    },
+    {
+      "title": "Gallup, Global Indicator: Hybrid Work",
+      "url": "https://www.gallup.com/401384/indicator-hybrid-work.aspx",
+      "note": "Remote-capable US employees, August 2026: 54% hybrid, 25% exclusively remote, 21% on site. Teams that set their hybrid policy together most likely to find it fair; 11% of employees had one (May 2025)."
+    },
+    {
+      "title": "Kastle Systems, Back to Work Barometer",
+      "url": "https://www.kastle.com/safety-wellness/getting-america-back-to-work/",
+      "note": "Week of 27 October 2026: Tuesday the peak day in nearly every tracked city; national peak-day average 66.7%. Read 7 November 2026."
+    }
+  ]
+}

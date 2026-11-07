@@ -31,6 +31,24 @@ export interface BlogPost {
 /** Newest first. */
 export const POSTS: BlogPost[] = [
   {
+    slug: "hybrid-work-schedule",
+    category: "remoteWork",
+    published: "2026-11-07",
+    updated: "2026-11-07",
+    locales: ["en"],
+    pages: ["hybrid", "virtualOffice", "presence"],
+    guides: ["manageRemote", "teamMeetingAgenda", "remoteCommunication"],
+  },
+  {
+    slug: "zoom-alternatives",
+    category: "comparisons",
+    published: "2026-11-07",
+    updated: "2026-11-07",
+    locales: ["en", "de"],
+    pages: ["meetingRoom", "slackHuddles", "virtualOffice"],
+    guides: ["bestVirtualOffice", "teamMeetingAgenda", "async"],
+  },
+  {
     slug: "zoom-fatigue",
     category: "remoteWork",
     published: "2026-11-03",
@@ -52,7 +70,7 @@ export const POSTS: BlogPost[] = [
     slug: "discord-voice-channel-for-work",
     category: "comparisons",
     published: "2026-11-03",
-    updated: "2026-11-03",
+    updated: "2026-11-07",
     locales: ["en", "ja", "ko", "pt", "de", "fr"],
     pages: ["discord", "proximityChat", "virtualOffice"],
     guides: ["discordVsSlack", "remoteCommunication", "proximityChat"],

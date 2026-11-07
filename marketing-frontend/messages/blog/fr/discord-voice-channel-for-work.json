@@ -56,7 +56,7 @@
         },
         {
           "title": "Un partage d'écran plus fluide",
-          "body": "Discord diffuse à [30 images par seconde même sur un serveur gratuit](https://support.discord.com/hc/fr/articles/33694251638295), ce qui convient à la vidéo et aux jeux. TinyFloor partage l'écran [jusqu'en 720p à 10 à 15 images par seconde](/how-it-works), réglé pour un texte net plutôt que pour le mouvement."
+          "body": "Discord diffuse à [30 images par seconde même sur un serveur gratuit](https://support.discord.com/hc/fr/articles/33694251638295), ce qui convient à la vidéo et aux jeux. TinyFloor partage l'écran [jusqu'en 1080p à 15 images par seconde](/how-it-works), réglé pour un texte net plutôt que pour le mouvement."
         },
         {
           "title": "Le chiffrement",
@@ -156,7 +156,7 @@
     {
       "title": "How TinyFloor works",
       "url": "https://www.tinyfloor.com/how-it-works",
-      "note": "Les appels sont en tête-à-tête et commencent par la voix, la caméra est un bouton ; écran jusqu'en 720p à 10–15 i/s ; connexion avec Google ou un code par e-mail."
+      "note": "Les appels sont en tête-à-tête et commencent par la voix, la caméra est un bouton ; écran jusqu'en 1080p à 15 i/s ; connexion avec Google ou un code par e-mail."
     },
     {
       "title": "TinyFloor changelog",

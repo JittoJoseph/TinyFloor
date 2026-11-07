@@ -56,7 +56,7 @@
         },
         {
           "title": "Flüssigere Bildschirmfreigabe",
-          "body": "Discord streamt auch [auf einem kostenlosen Server mit 30 Bildern pro Sekunde](https://support.discord.com/hc/de/articles/33694251638295), gut für Videos und Spiele. TinyFloor teilt den Bildschirm mit [bis zu 720p und 10 bis 15 Bildern pro Sekunde](/how-it-works), abgestimmt auf scharfen Text statt Bewegung."
+          "body": "Discord streamt auch [auf einem kostenlosen Server mit 30 Bildern pro Sekunde](https://support.discord.com/hc/de/articles/33694251638295), gut für Videos und Spiele. TinyFloor teilt den Bildschirm mit [bis zu 1080p und 15 Bildern pro Sekunde](/how-it-works), abgestimmt auf scharfen Text statt Bewegung."
         },
         {
           "title": "Verschlüsselung",
@@ -156,7 +156,7 @@
     {
       "title": "How TinyFloor works",
       "url": "https://www.tinyfloor.com/how-it-works",
-      "note": "Anrufe sind eins zu eins und beginnen mit Sprache, die Kamera ist ein Knopf; Bildschirm bis 720p mit 10–15 fps; Anmeldung mit Google oder Code per E-Mail."
+      "note": "Anrufe sind eins zu eins und beginnen mit Sprache, die Kamera ist ein Knopf; Bildschirm bis 1080p mit 15 fps; Anmeldung mit Google oder Code per E-Mail."
     },
     {
       "title": "TinyFloor changelog",

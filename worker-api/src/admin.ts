@@ -218,7 +218,7 @@ export function adminRoutes(router: Router): void {
         env.DB.prepare(
           `SELECT o.id, o.name, o.plan, ${STANDING} AS standing, o.trial_ends_at AS trialEndsAt, m.role, o.owner_id = m.user_id AS owner, m.joined_at AS joinedAt
              FROM memberships m JOIN offices o ON o.id = m.office_id
-            WHERE m.user_id = ? ORDER BY m.joined_at`,
+            WHERE m.user_id = ? ORDER BY o.active_at DESC, m.joined_at`,
         ).bind(params.id),
       ]);
       if (!person.results[0]) throw new HttpError(404, "no_user", "No such account");
@@ -242,8 +242,10 @@ export function adminRoutes(router: Router): void {
       ]);
       const offices = rows.results as Array<{ id: string } & Record<string, unknown>>;
       const here = await hereIn(env, offices.map((office) => office.id));
+      // Someone on the floor right now is as recent as it gets: those offices come first.
+      const listed = offices.map((office) => ({ ...office, here: here[office.id] ?? 0 }));
       return json({
-        offices: offices.map((office) => ({ ...office, here: here[office.id] ?? 0 })),
+        offices: [...listed.filter((office) => office.here > 0), ...listed.filter((office) => office.here === 0)],
         page,
         pageSize: PAGE,
         total: (total.results[0] as { total: number }).total,
@@ -259,7 +261,7 @@ export function adminRoutes(router: Router): void {
           `SELECT u.id, u.display_name AS displayName, u.email, m.role, m.joined_at AS joinedAt,
                   u.last_active_at AS lastActiveAt, u.country, u.id = o.owner_id AS owner
              FROM memberships m JOIN users u ON u.id = m.user_id JOIN offices o ON o.id = m.office_id
-            WHERE m.office_id = ?1 ORDER BY owner DESC, u.last_active_at DESC`,
+            WHERE m.office_id = ?1 ORDER BY u.last_active_at DESC, owner DESC`,
         ).bind(params.id),
         // The open one, or the latest.
         env.DB.prepare(
@@ -278,7 +280,10 @@ export function adminRoutes(router: Router): void {
       const present = new Set((people[params.id] ?? []).map((one) => one.id));
       return json({
         office: { ...found, here: here[params.id] ?? present.size },
-        members: (members.results as Array<{ id: string } & Record<string, unknown>>).map((member) => ({ ...member, here: present.has(member.id) })),
+        // Whoever is on the floor now first, then whoever was around most recently.
+        members: (members.results as Array<{ id: string } & Record<string, unknown>>)
+          .map((member) => ({ ...member, here: present.has(member.id) }))
+          .sort((a, b) => Number(b.here) - Number(a.here)),
         ticket: ticket.results[0] ?? null,
       });
     })

@@ -1,11 +1,6 @@
 import * as Phaser from "phaser";
-import {
-  AnimationManager,
-  AnimationState,
-  CardinalDirection,
-  Direction,
-  directionFromVector,
-} from "./AnimationManager";
+import { AnimationManager } from "./AnimationManager";
+import { type CardinalDirection, facing } from "./facing";
 import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingVector } from "./Navigation";
 import { depthForY } from "./MapManager";
 import type { SeatPose } from "./SeatManager";
@@ -18,14 +13,12 @@ import type { PlayerStatus } from "web-shared/lib/types";
 
 interface RemotePlayerState {
   path: Vec[];
-  direction: Direction;
-  isMoving: boolean;
   /** Set while they walk: they keep going this way until their next move. */
   heading: number | null;
+  /** Whether the path is only to where they said they are, not a walk of theirs: they slide along it without turning. */
+  correcting: boolean;
   status: PlayerStatus;
   guest: boolean;
-  lastDirection?: Direction;
-  lastMoving?: boolean;
   seat?: SeatPose;
   onArrive?: () => void;
 }
@@ -151,9 +144,8 @@ export class PlayerManager {
 
     this.playerStates.set(id, {
       path: [],
-      direction: "down",
-      isMoving: false,
       heading: null,
+      correcting: false,
       status,
       guest,
     });
@@ -331,6 +323,7 @@ export class PlayerManager {
     const sameWay = heading !== undefined && heading === state.heading;
     state.heading = heading ?? null;
     state.path.length = 0;
+    state.correcting = true;
 
     if (away > SNAP_THRESHOLD) {
       container.setPosition(point.x, point.y);
@@ -351,6 +344,7 @@ export class PlayerManager {
     if (!state || !container || state.seat) return;
 
     state.heading = null;
+    state.correcting = false;
     state.path = this.nav.buildPath(container.x, container.y, tileX, tileY);
     if (!state.path.length) {
       const point = tileToPixel(tileX, tileY);
@@ -370,6 +364,7 @@ export class PlayerManager {
     this.scene.tweens.killTweensOf(container);
     state.seat = pose;
     state.heading = null;
+    state.correcting = false;
     state.onArrive = undefined;
     state.path = [];
 
@@ -399,8 +394,6 @@ export class PlayerManager {
     state.heading = null;
     state.onArrive = undefined;
     state.path = [];
-    state.direction = pose.direction;
-    state.lastMoving = undefined;
     this.nameTags.get(id)?.container.setY(TAG_OFFSET_Y);
 
     const gap = Phaser.Math.Distance.Between(container.x, container.y, pose.standX, pose.standY);
@@ -419,9 +412,7 @@ export class PlayerManager {
     const pose = state?.seat;
     if (!state || !container || !pose) return;
 
-    state.isMoving = false;
-    state.lastMoving = undefined;
-    this.animate(container, "run", pose.direction);
+    this.animationManager.play(this.spriteOf(container), "run", pose.direction);
     this.glide(container, pose.x, pose.y, pose.depth, () => {
       if (state.seat === pose) this.settle(id, pose);
     });
@@ -453,14 +444,6 @@ export class PlayerManager {
     return container.list[0] as Phaser.GameObjects.Sprite;
   }
 
-  private animate(
-    container: Phaser.GameObjects.Container,
-    state: AnimationState,
-    direction: Direction,
-  ) {
-    this.animationManager.play(this.spriteOf(container), state, direction);
-  }
-
   private settle(id: string, pose: SeatPose) {
     const container = this.players.get(id);
     if (!container) return;
@@ -472,60 +455,45 @@ export class PlayerManager {
     this.playerStates.forEach((state, id) => {
       const container = this.players.get(id);
       if (!container) return;
+      const pos = this.scratch;
+      pos.x = container.x;
+      pos.y = container.y;
 
       if (state.path.length) {
         // Behind where they said they are, they walk a little faster to catch up.
         const target = state.path[0];
         const remaining = Phaser.Math.Distance.Between(container.x, container.y, target.x, target.y);
         const catchup = state.heading === null ? 1 : Phaser.Math.Clamp(remaining / TILE_SIZE, 1, MAX_CATCHUP);
-        const pos = this.scratch;
-        pos.x = container.x;
-        pos.y = container.y;
         advanceAlongPath(pos, state.path, (MOVEMENT_SPEED * catchup * delta) / 1000);
-        this.place(container, state, pos);
-
-        if (!state.path.length && state.onArrive) {
-          const arrive = state.onArrive;
-          state.onArrive = undefined;
-          arrive();
-          return;
-        }
       } else if (state.heading !== null) {
-        // Walking on the way they were last heading, until they say otherwise.
-        const pos = this.scratch;
-        pos.x = container.x;
-        pos.y = container.y;
-        if (advanceHeading(pos, state.heading, (MOVEMENT_SPEED * delta) / 1000, this.nav)) {
-          this.place(container, state, pos);
-        } else {
-          state.isMoving = false;
-        }
+        // Walking on the way they were last heading, until they say otherwise (or a wall stops them).
+        advanceHeading(pos, state.heading, (MOVEMENT_SPEED * delta) / 1000, this.nav);
       } else if (state.seat) {
         return;
-      } else {
-        state.isMoving = false;
       }
 
-      if (
-        state.isMoving === state.lastMoving &&
-        state.direction === state.lastDirection
-      ) {
-        return;
+      const [dx, dy] = [pos.x - container.x, pos.y - container.y];
+      if (dx || dy) {
+        container.setPosition(pos.x, pos.y);
+        this.sortBy(container);
       }
-      state.lastMoving = state.isMoving;
-      state.lastDirection = state.direction;
-      this.animate(container, state.isMoving ? "run" : "idle", state.direction);
+      // Steering, they face the heading they sent, as they do on their own
+      // screen; sliding to where they said they are, the way they already
+      // face; on a walk of theirs, along it.
+      const sprite = this.spriteOf(container);
+      let faces = this.animationManager.facingOf(sprite);
+      if (state.heading !== null) {
+        const way = headingVector(state.heading);
+        faces = facing(way.x, way.y, faces);
+      } else if (!state.correcting) faces = facing(dx, dy, faces);
+      this.animationManager.play(sprite, dx || dy || state.path.length ? "run" : "idle", faces);
+
+      if (!state.path.length && state.onArrive) {
+        const arrive = state.onArrive;
+        state.onArrive = undefined;
+        arrive();
+      }
     });
-  }
-
-  /** Moves someone to a new spot, facing the way they went. */
-  private place(container: Phaser.GameObjects.Container, state: RemotePlayerState, pos: Vec) {
-    const dx = pos.x - container.x;
-    const dy = pos.y - container.y;
-    container.setPosition(pos.x, pos.y);
-    this.sortBy(container);
-    state.direction = directionFromVector(dx, dy, state.direction);
-    state.isMoving = dx !== 0 || dy !== 0 || state.path.length > 0;
   }
 
   /** Depth by where their feet are, set only on a change: setting it re-sorts the whole floor. */

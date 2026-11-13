@@ -1,9 +1,10 @@
 import { typingElsewhere } from "./typing";
 import * as Phaser from "phaser";
-import { AnimationManager, Direction, directionFromVector } from "./AnimationManager";
+import { AnimationManager } from "./AnimationManager";
+import { facing } from "./facing";
 import type { RoomSocket } from "./RoomSocket";
 import { joystick } from "./joystick";
-import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingOf } from "./Navigation";
+import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingOf, headingVector } from "./Navigation";
 import { depthForY } from "./MapManager";
 import { pixelToTile, MOVEMENT_SPEED, TILE_SIZE, tileToPixel } from "web-shared/lib/types";
 import { isValidTile } from "shared-protocol/map";
@@ -31,7 +32,6 @@ export class MovementManager {
   private path: Vec[] = [];
   private arrive?: () => void;
   private release?: () => void;
-  private currentDirection: Direction = "down";
   /** Where the others have us, walked forward the same way they do. */
   private shown = { x: 0, y: 0, heading: null as number | null, sent: false };
   private inputEnabled = true;
@@ -110,12 +110,15 @@ export class MovementManager {
       if (moving) this.player.setPosition(pos.x, pos.y);
     }
 
-    if (moving) {
-      this.currentDirection = directionFromVector(dx, dy, this.currentDirection);
-    }
+    // Steering, facing the heading the others are sent (syncManualMovement), so they turn the same way; on a path, along it.
+    let faces = this.animationManager.facingOf(this.player);
+    if (manualMoved) {
+      const way = headingVector(headingOf(dx, dy)!);
+      faces = facing(way.x, way.y, faces);
+    } else if (moving) faces = facing(dx, dy, faces);
+    this.animationManager.play(this.player, moving ? "run" : "idle", faces);
 
     this.movingBefore = manualMoved;
-    this.playAnimation(moving);
     this.syncManualMovement(manualMoved ? { x: dx, y: dy } : null, delta);
     // standing players sort by where their feet are; sitting sets its own depth.
     // Only on a change: setting it at all re-sorts everything on the floor.
@@ -250,10 +253,6 @@ export class MovementManager {
       ease: "Cubic.easeOut",
       onComplete: () => ring.destroy(),
     });
-  }
-
-  private playAnimation(moving: boolean) {
-    this.animationManager.play(this.player, moving ? "run" : "idle", this.currentDirection);
   }
 
   /**

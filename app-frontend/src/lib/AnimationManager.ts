@@ -2,49 +2,14 @@ import * as Phaser from "phaser";
 import { characterOrDefault } from "shared-protocol/character";
 import { FRAME_H, FRAME_W, SEATED_BREATH, SHEET_FRAMES, characterSheet, drawnSheet, frameOf } from "web-shared/lib/characterSheet";
 import { crisp, crispReady } from "./crisp";
+import type { CardinalDirection } from "./facing";
 
 export type AnimationState = "idle" | "run";
-export type Direction =
-  | "right"
-  | "up"
-  | "left"
-  | "down"
-  | "up-right"
-  | "up-left"
-  | "down-right"
-  | "down-left";
-
-export type CardinalDirection = "right" | "up" | "left" | "down";
 
 const DIRECTION_ORDER: CardinalDirection[] = ["right", "up", "left", "down"];
 const FRAME_RATE = 10;
 /** What a sprite shows while its character's sheet is still being drawn: nothing. */
 const BLANK = "character:blank";
-
-export function directionFromVector(
-  x: number,
-  y: number,
-  fallback: Direction = "down",
-): Direction {
-  const vertical = Math.abs(y) > 0.001 ? (y < 0 ? "up" : "down") : "";
-  const horizontal = Math.abs(x) > 0.001 ? (x < 0 ? "left" : "right") : "";
-  if (vertical && horizontal) return `${vertical}-${horizontal}` as Direction;
-  return (vertical || horizontal || fallback) as Direction;
-}
-
-function toCardinal(direction: Direction): CardinalDirection {
-  const mapping: Record<Direction, CardinalDirection> = {
-    right: "right",
-    "up-right": "right",
-    up: "up",
-    "up-left": "up",
-    left: "left",
-    "down-left": "left",
-    down: "down",
-    "down-right": "down",
-  };
-  return mapping[direction] ?? "down";
-}
 
 /** What a sprite is doing, kept on it so it carries on when its character changes or finishes drawing. */
 type Pose = { state: AnimationState; direction: CardinalDirection } | { sit: CardinalDirection };
@@ -90,11 +55,19 @@ export class AnimationManager {
       .catch(() => {});
   }
 
-  /** Standing or walking, facing a way. */
-  play(sprite: Phaser.GameObjects.Sprite, state: AnimationState, direction: Direction) {
-    const pose: Pose = { state, direction: toCardinal(direction) };
+  /** Standing or walking, facing a way; nothing changes if it already is. */
+  play(sprite: Phaser.GameObjects.Sprite, state: AnimationState, direction: CardinalDirection) {
+    const was = sprite.getData("pose") as Pose | undefined;
+    if (was && !("sit" in was) && was.state === state && was.direction === direction) return;
+    const pose: Pose = { state, direction };
     sprite.setData("pose", pose);
     this.show(sprite, pose);
+  }
+
+  /** Which way a character faces now, walking, standing or seated. */
+  facingOf(sprite: Phaser.GameObjects.Sprite): CardinalDirection {
+    const pose = sprite.getData("pose") as Pose | undefined;
+    return !pose ? "down" : "sit" in pose ? pose.sit : pose.direction;
   }
 
   /** Seated, facing a way. */

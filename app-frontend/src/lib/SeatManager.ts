@@ -1,5 +1,6 @@
 import * as Phaser from "phaser";
-import { AnimationManager, CardinalDirection } from "./AnimationManager";
+import { AnimationManager } from "./AnimationManager";
+import type { CardinalDirection } from "./facing";
 import { ChairSpec, MapAnchor, depthForY } from "./MapManager";
 import type { RoomSocket } from "./RoomSocket";
 import type { GoTo } from "./MovementManager";

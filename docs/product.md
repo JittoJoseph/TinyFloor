@@ -379,6 +379,17 @@ missing features on the map.
   told, your character changes where it stands, and everyone sees it at
   once; the room keeps it for whoever arrives after. A name changes on the
   floor the same way in any office, not only the demo's.
+- **Characters face the way they walk** (13 November). Any walk slightly off
+  straight counted as a diagonal, and diagonals faced up or down, so a walk
+  across the room often faced the floor. A character now faces the way it
+  goes furthest, and near a diagonal keeps facing as it was. Everyone else's
+  copy of you faces the heading you send, worked out the same way, and slides
+  to where you stopped without turning round. Standing up, you keep facing
+  the way the seat did.
+- **The floor stays even when the camera stops** (13 November). On a
+  high-density screen Phaser sampled the floor's art nearest-pixel, so a line
+  came out a pixel wider or narrower depending on where the camera stopped.
+  It's now drawn with the crisp shader on every screen.
 
 ## Small decisions worth remembering
 

@@ -113,7 +113,8 @@ export class AnimationManager {
     const texture = this.scene.textures.addCanvas(key, sheet);
     if (!texture) return null;
     for (let n = 0; n < SHEET_FRAMES; n++) texture.add(n, 0, n * FRAME_W, 0, FRAME_W, FRAME_H);
-    texture.setFilter(crispReady(this.scene) ? Phaser.Textures.FilterMode.LINEAR : Phaser.Textures.FilterMode.NEAREST);
+    // Smooth sampling is what the crisp shader sharpens; without it, a character keeps its pixels hard.
+    if (!crispReady(this.scene)) texture.setFilter(Phaser.Textures.FilterMode.NEAREST);
     DIRECTION_ORDER.forEach((direction) => {
       for (const state of ["idle", "run"] as const) {
         const start = frameOf(state === "run" ? "walk" : "idle", direction);

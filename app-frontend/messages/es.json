@@ -323,6 +323,8 @@
     "onTheFloor": "En la planta",
     "nudges": "Mensajes y llegadas",
     "nudgesNote": "Muestra un momento los mensajes nuevos y a quien llega del equipo sobre la planta.",
+    "snow": "Nieve",
+    "snowNote": "Nieve cayendo sobre la planta durante las fiestas.",
     "motion": "Movimiento",
     "reduceMotion": "Reducir movimiento",
     "reduceMotionNote": "Menos animaciones en toda la aplicación.",
@@ -867,6 +869,7 @@
     "turnLeft": "Girar a la izquierda",
     "turnRight": "Girar a la derecha",
     "randomize": "Al azar",
+    "undo": "Deshacer",
     "tabs": {
       "characters": "Personajes",
       "skin": "Piel",
@@ -1005,5 +1008,12 @@
     "seek": "Posición en la canción",
     "yourJam": "Tu Jam",
     "next": "Poner otra cosa"
+  },
+  "christmas": {
+    "title": "Un gorro de Navidad",
+    "body": "Para ti, de los regalos. Todos en la planta lo verán.",
+    "wear": "Ponérmelo",
+    "notNow": "Ahora no",
+    "thanks": "¡Feliz Navidad!"
   }
 }

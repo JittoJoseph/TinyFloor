@@ -30,6 +30,8 @@ const ROOT = resolve(fileURLToPath(import.meta.url), "../..");
 const CHARACTERS = join(ROOT, "assets-pack", "moderninteriors", "2_Characters");
 const G = join(CHARACTERS, "Character_Generator");
 const LEGACY = join(CHARACTERS, "Old", "Single_Characters_Legacy", "32x32");
+/** Parts we drew ourselves, by part: characters/<part>/<id>.png, offered alongside the pack's. */
+const DRAWN = join(ROOT, "assets-pack", "drawn", "characters");
 const W = 32;
 const H = 64;
 const FRAMES = 48;
@@ -186,6 +188,14 @@ export async function buildCharacters() {
       if (!match || (part.styles && !part.styles.includes(+match[1]))) continue;
       const png = generatorStrip(await read(join(G, part.dir, "32x32", name)));
       const id = idOf(match);
+      options.set(id, png);
+      pictures.push({ key: `characters/parts/${part.key}/${id}.png`, png: png8(png) ?? PNG.sync.write(png, { colorType: 6 }) });
+      offered.push([id, swatch(png, part.key === "body" ? null : skin)]);
+    }
+    // Our own drawn parts (the Christmas hat, built on the pack's beanie), each already a strip of the 48 frames.
+    for (const name of (await readdir(join(DRAWN, part.key)).catch(() => [])).sort()) {
+      const png = await read(join(DRAWN, part.key, name));
+      const id = name.replace(/\.png$/, "");
       options.set(id, png);
       pictures.push({ key: `characters/parts/${part.key}/${id}.png`, png: png8(png) ?? PNG.sync.write(png, { colorType: 6 }) });
       offered.push([id, swatch(png, part.key === "body" ? null : skin)]);

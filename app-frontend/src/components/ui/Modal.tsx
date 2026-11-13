@@ -40,6 +40,7 @@ export function Modal({
   label,
   closeLabel,
   dismissible = true,
+  closeButton = true,
   className,
   children,
 }: {
@@ -49,6 +50,8 @@ export function Modal({
   label: string;
   closeLabel: string;
   dismissible?: boolean;
+  /** Its own close button in the corner; off when the content draws one where it suits it (the character creator's stage). */
+  closeButton?: boolean;
   className?: string;
   children: ReactNode;
 }) {
@@ -185,7 +188,7 @@ export function Modal({
                     </div>
                   )}
                   {children}
-                  {dismissible && <CloseButton label={closeLabel} onClick={onClose} className="absolute end-4 top-4" />}
+                  {dismissible && closeButton && <CloseButton label={closeLabel} onClick={onClose} className="absolute end-4 top-4" />}
                 </motion.div>
               </div>
             </>

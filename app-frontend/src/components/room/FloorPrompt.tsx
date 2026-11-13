@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useTranslations } from "next-intl";
 import { Kbd } from "@/components/ui/IconButton";
@@ -11,6 +11,7 @@ import { clearClaimed, setCanClaim, useDesks } from "@/lib/desks";
 import { useDecorate } from "@/lib/decorate";
 import { EASE_OUT } from "@/lib/ease";
 import { touchFirst } from "@/lib/touch";
+import { ChristmasOffer } from "./ChristmasOffer";
 
 /** How long a claim is remembered as just made, for the desk's "Claimed" (DeskPlate). */
 const CLAIMED_MS = 2200;
@@ -30,6 +31,8 @@ export function FloorPrompt() {
   const { claimed } = useDesks();
   // Decorating a desk, the floor is the desk's: nothing to do here meanwhile.
   const { desk: decorating } = useDecorate();
+  // At Christmas, the presents' offer takes this place while it's showing.
+  const [offering, setOffering] = useState(false);
 
   // A desk is a member's, in an office: not a guest's, and not in the lobby.
   const canClaim = place.kind === "office" && place.role !== "guest" && !!user;
@@ -47,8 +50,10 @@ export function FloorPrompt() {
   }, [claimed]);
 
   return (
+    <>
+    <ChristmasOffer onShown={setOffering} />
     <AnimatePresence mode="wait">
-      {action && !decorating && (
+      {action && !decorating && !offering && (
         <motion.button
           key={action}
           type="button"
@@ -64,5 +69,6 @@ export function FloorPrompt() {
         </motion.button>
       )}
     </AnimatePresence>
+    </>
   );
 }

@@ -323,6 +323,8 @@
     "onTheFloor": "Sur l'étage",
     "nudges": "Messages et arrivées",
     "nudgesNote": "Affiche brièvement les nouveaux messages et les arrivées de l’équipe au-dessus du plateau.",
+    "snow": "Neige",
+    "snowNote": "De la neige qui tombe sur l'étage pendant les fêtes.",
     "motion": "Animations",
     "reduceMotion": "Réduire les animations",
     "reduceMotionNote": "Moins d'animations dans toute l'application.",
@@ -867,6 +869,7 @@
     "turnLeft": "Tourner à gauche",
     "turnRight": "Tourner à droite",
     "randomize": "Au hasard",
+    "undo": "Annuler",
     "tabs": {
       "characters": "Personnages",
       "skin": "Peau",
@@ -1005,5 +1008,12 @@
     "seek": "Position dans le titre",
     "yourJam": "Votre Jam",
     "next": "Écouter autre chose"
+  },
+  "christmas": {
+    "title": "Un bonnet de Noël",
+    "body": "Pour toi, dans les cadeaux. Tout le monde sur l'étage le verra.",
+    "wear": "Le porter",
+    "notNow": "Pas maintenant",
+    "thanks": "Joyeux Noël !"
   }
 }

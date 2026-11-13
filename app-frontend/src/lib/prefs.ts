@@ -24,6 +24,8 @@ export interface Prefs {
   reduceMotion: boolean;
   /** The floor draws at half the frame rate: easier on a laptop battery. */
   batterySaver: boolean;
+  /** Snow falling over the floor at Christmas (lib/christmas). */
+  snow: boolean;
 }
 
 const DEFAULT_PREFS: Prefs = {
@@ -36,6 +38,7 @@ const DEFAULT_PREFS: Prefs = {
   nudges: true,
   reduceMotion: false,
   batterySaver: false,
+  snow: true,
 };
 
 const KEY = "tf-prefs";

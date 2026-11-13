@@ -323,6 +323,8 @@
     "onTheFloor": "층",
     "nudges": "메시지와 도착 알림",
     "nudgesNote": "새 메시지와 팀원이 들어오는 것을 플로어 위에 잠깐 보여줘요.",
+    "snow": "눈",
+    "snowNote": "연휴 동안 플로어에 눈이 내려요.",
     "motion": "움직임",
     "reduceMotion": "움직임 줄이기",
     "reduceMotionNote": "앱 전체의 애니메이션을 줄여요.",
@@ -867,6 +869,7 @@
     "turnLeft": "왼쪽으로 돌기",
     "turnRight": "오른쪽으로 돌기",
     "randomize": "무작위",
+    "undo": "실행 취소",
     "tabs": {
       "characters": "캐릭터",
       "skin": "피부",
@@ -1005,5 +1008,12 @@
     "seek": "곡 재생 위치",
     "yourJam": "내 Jam",
     "next": "다른 음악 재생"
+  },
+  "christmas": {
+    "title": "크리스마스 모자",
+    "body": "선물 더미에서 당신에게. 플로어의 모두가 볼 수 있어요.",
+    "wear": "쓰기",
+    "notNow": "나중에",
+    "thanks": "메리 크리스마스!"
   }
 }

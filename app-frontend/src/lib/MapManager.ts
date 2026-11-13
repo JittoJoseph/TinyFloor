@@ -64,6 +64,8 @@ const reducedMotion = () => typeof window !== "undefined" && window.matchMedia("
 export class MapManager {
   private scene: Phaser.Scene;
   private solidRects: Rect[] = [];
+  /** Solid things that aren't the floor's pieces (the Christmas presents), kept through every redraw. */
+  private extraSolids: Rect[] = [];
   private nav!: NavGrid;
   private chairSpecs: ChairSpec[] = [];
   /** Each piece's picture, by its key, and the pieces as they're drawn now. */
@@ -121,7 +123,7 @@ export class MapManager {
     const animate = this.drawn && !reducedMotion();
     this.pieces = officePieces(pieceChanges());
     // What's solid is the pieces' own, wherever they stand now: a piece moved or swapped is walked round where it is.
-    this.solidRects = this.solidsOf(this.pieces);
+    this.solidRects = [...this.solidsOf(this.pieces), ...this.extraSolids];
     this.nav.rebuild(this.solidRects);
     const seen = new Set<string>();
     for (const piece of this.pieces) {
@@ -293,6 +295,13 @@ export class MapManager {
   /** What's solid now: the walls and the pieces as they stand. */
   getSolids(): readonly Rect[] {
     return this.solidRects;
+  }
+
+  /** Something solid that isn't one of the floor's pieces: walked round like them. */
+  addSolid(rect: Rect) {
+    this.extraSolids.push(rect);
+    this.solidRects = [...this.solidRects, rect];
+    this.nav.rebuild(this.solidRects);
   }
 
   private solidsOf(pieces: readonly OfficePiece[]): Rect[] {

@@ -323,6 +323,8 @@
     "onTheFloor": "Sul piano",
     "nudges": "Messaggi e arrivi",
     "nudgesNote": "Mostra per un attimo i nuovi messaggi e chi del team arriva, sopra il piano.",
+    "snow": "Neve",
+    "snowNote": "Neve che cade sul piano durante le feste.",
     "motion": "Movimento",
     "reduceMotion": "Riduci il movimento",
     "reduceMotionNote": "Meno animazioni in tutta l'app.",
@@ -867,6 +869,7 @@
     "turnLeft": "Gira a sinistra",
     "turnRight": "Gira a destra",
     "randomize": "A caso",
+    "undo": "Annulla",
     "tabs": {
       "characters": "Personaggi",
       "skin": "Pelle",
@@ -1005,5 +1008,12 @@
     "seek": "Posizione nel brano",
     "yourJam": "La tua Jam",
     "next": "Metti altro"
+  },
+  "christmas": {
+    "title": "Un cappello di Natale",
+    "body": "Per te, dai regali. Tutti sul piano lo vedranno.",
+    "wear": "Indossalo",
+    "notNow": "Non ora",
+    "thanks": "Buon Natale!"
   }
 }

@@ -323,6 +323,8 @@
     "onTheFloor": "Auf der Fläche",
     "nudges": "Nachrichten und Ankünfte",
     "nudgesNote": "Zeigt neue Nachrichten und ankommende Teammitglieder kurz über der Fläche.",
+    "snow": "Schnee",
+    "snowNote": "Schneefall über der Fläche während der Feiertage.",
     "motion": "Bewegung",
     "reduceMotion": "Bewegung reduzieren",
     "reduceMotionNote": "Weniger Animationen in der ganzen App.",
@@ -867,6 +869,7 @@
     "turnLeft": "Nach links drehen",
     "turnRight": "Nach rechts drehen",
     "randomize": "Zufällig",
+    "undo": "Rückgängig",
     "tabs": {
       "characters": "Figuren",
       "skin": "Haut",
@@ -1005,5 +1008,12 @@
     "seek": "Position im Song",
     "yourJam": "Dein Jam",
     "next": "Etwas anderes spielen"
+  },
+  "christmas": {
+    "title": "Eine Weihnachtsmütze",
+    "body": "Für dich, aus den Geschenken. Alle auf der Fläche sehen sie.",
+    "wear": "Aufsetzen",
+    "notNow": "Nicht jetzt",
+    "thanks": "Frohe Weihnachten!"
   }
 }

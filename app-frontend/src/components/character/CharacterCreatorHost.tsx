@@ -27,7 +27,7 @@ export function CharacterCreatorHost() {
   }, []);
 
   return (
-    <Modal open={open} onClose={closeCharacterCreator} label={t("title")} closeLabel={tc("close")} className="sm:max-w-[56rem]">
+    <Modal open={open} onClose={closeCharacterCreator} label={t("title")} closeLabel={tc("close")} closeButton={false} className="overflow-hidden sm:max-w-[60rem]">
       {open && <Creator onClose={closeCharacterCreator} />}
     </Modal>
   );

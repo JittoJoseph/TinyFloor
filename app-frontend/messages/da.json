@@ -323,6 +323,8 @@
     "onTheFloor": "På etagen",
     "nudges": "Beskeder og ankomster",
     "nudgesNote": "Vis nye beskeder og kolleger, der kommer ind, kort over gulvet.",
+    "snow": "Sne",
+    "snowNote": "Sne, der falder over etagen i julen.",
     "motion": "Bevægelse",
     "reduceMotion": "Reducer bevægelse",
     "reduceMotionNote": "Færre animationer i hele appen.",
@@ -867,6 +869,7 @@
     "turnLeft": "Drej til venstre",
     "turnRight": "Drej til højre",
     "randomize": "Tilfældig",
+    "undo": "Fortryd",
     "tabs": {
       "characters": "Figurer",
       "skin": "Hud",
@@ -1005,5 +1008,12 @@
     "seek": "Position i sangen",
     "yourJam": "Din Jam",
     "next": "Afspil noget andet"
+  },
+  "christmas": {
+    "title": "En nissehue",
+    "body": "Til dig, fra gaverne. Alle på etagen kan se den.",
+    "wear": "Tag den på",
+    "notNow": "Ikke nu",
+    "thanks": "Glædelig jul!"
   }
 }

@@ -323,6 +323,8 @@
     "onTheFloor": "I etasjen",
     "nudges": "Meldinger og ankomster",
     "nudgesNote": "Vis nye meldinger og kolleger som kommer inn, kort over gulvet.",
+    "snow": "Snø",
+    "snowNote": "Snø som faller over etasjen i julen.",
     "motion": "Bevegelse",
     "reduceMotion": "Reduser bevegelse",
     "reduceMotionNote": "Færre animasjoner i hele appen.",
@@ -867,6 +869,7 @@
     "turnLeft": "Snu mot venstre",
     "turnRight": "Snu mot høyre",
     "randomize": "Tilfeldig",
+    "undo": "Angre",
     "tabs": {
       "characters": "Figurer",
       "skin": "Hud",
@@ -1005,5 +1008,12 @@
     "seek": "Posisjon i sangen",
     "yourJam": "Din Jam",
     "next": "Spill noe annet"
+  },
+  "christmas": {
+    "title": "En nisselue",
+    "body": "Til deg, fra gavene. Alle på etasjen ser den.",
+    "wear": "Ta den på",
+    "notNow": "Ikke nå",
+    "thanks": "God jul!"
   }
 }

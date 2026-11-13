@@ -114,6 +114,11 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
         width,
         height,
         scale: { mode: Phaser.Scale.NONE, zoom: 1 / density },
+        // Phaser turns pixelArt on whenever the zoom above isn't 1 (any high-density
+        // screen): nearest-pixel sampling, which undoes the crisp shader (lib/crisp),
+        // and a camera floored to whole floor pixels, so at most zooms each line in
+        // the art came out a pixel wider or narrower depending on where the camera stopped.
+        pixelArt: false,
         parent: box,
         scene: (scene = new GameScene(name, character, userId, () => nextTicket())),
         // The panel behind the canvas paints the space around the map, so it

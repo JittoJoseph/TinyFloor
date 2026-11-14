@@ -255,7 +255,7 @@ export default function ControlBar({
   }
 
   return (
-    <div ref={box} className="absolute bottom-[max(0.75rem,env(safe-area-inset-bottom))] left-1/2 z-50 max-w-[calc(100%-1.5rem)] -translate-x-1/2 on-floor sm:bottom-4">
+    <div ref={box} className="absolute bottom-2 left-1/2 z-50 max-w-[calc(100%-1rem)] -translate-x-1/2 on-floor md:bottom-[7px]">
       <AnimatePresence>
         {!shown && (
           <motion.div key="rested" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, transition: { duration: 0.08 } }}>

@@ -17,6 +17,8 @@ const EIGHTH = Math.PI / 4;
 /** A heading holds until the thumb is this far past its edge, so it never flickers. */
 const HYSTERESIS = 0.14;
 const SETTLE = "cubic-bezier(0.16, 1, 0.3, 1)";
+/** How big the stick is while it waits, of its size in use. */
+const RESTING_SCALE = 0.7;
 
 /**
  * The on-screen joystick for phones and tablets. It waits at the bottom left,
@@ -125,14 +127,17 @@ export function Joystick() {
         className={cn(
           "absolute bottom-0 left-0 flex items-center justify-center rounded-full border backdrop-blur-md",
           "shadow-[0_8px_24px_-8px_rgb(0_0_0/0.35)]",
-          active ? "border-white/35 bg-black/30 opacity-100" : "border-white/25 bg-black/20 opacity-70",
+          active ? "border-white/35 bg-black/30 opacity-100" : "border-white/20 bg-black/15 opacity-55",
         )}
         style={{
           width: BASE * 2,
           height: BASE * 2,
           transform: `translate(${REST.x - BASE}px, ${BASE - REST.y}px)`,
+          // Waiting, it's a smaller, quieter hint of itself, so the corner of the floor stays the floor's.
+          // (Its own property: moving it sets the transform.)
+          scale: active ? 1 : RESTING_SCALE,
           // Gliding home on release; following the finger exactly while held.
-          transition: active ? "opacity 200ms, background-color 200ms" : `transform 220ms ${SETTLE}, opacity 200ms, background-color 200ms`,
+          transition: active ? `scale 160ms ${SETTLE}, opacity 200ms, background-color 200ms` : `transform 220ms ${SETTLE}, scale 220ms ${SETTLE}, opacity 200ms, background-color 200ms`,
         }}
       >
         {/* Eight headings around the ring; the one you are walking lights up. */}

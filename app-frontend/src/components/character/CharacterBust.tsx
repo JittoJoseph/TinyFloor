@@ -3,6 +3,10 @@
 import { PixelAvatar } from "web-shared/components/PixelAvatar";
 import { cn } from "web-shared/lib/utils";
 
+/** How big the character is drawn, of the art's own size, and the row of its frame the circle centres on. */
+const ZOOM = 0.72;
+const CENTER = 30;
+
 const PRESENCE: Record<string, string> = {
   available: "bg-ok",
   busy: "bg-destructive",
@@ -11,24 +15,27 @@ const PRESENCE: Record<string, string> = {
 };
 
 /**
- * Your character, head and shoulders, in a circle: you on the floor, where a
- * Face is you everywhere else. Drawn at the art's own size, a pixel to a pixel
- * (never scaled, which pixel art doesn't survive), with your status as a dot
- * over the circle's edge, as a Face has it. A bigger circle shows more of
- * the character rather than a bigger one: framed around `center` (a row of
- * the frame's 64: 34 is the face, 37 the neck), so it can sit further back.
+ * Your character's head in a circle, with room round it: you on the floor,
+ * where a Face is you everywhere else, with your status as a dot over the
+ * circle's edge, as a Face has it. Drawn smaller than the art (`zoom` of it),
+ * so a hat fits and the face isn't pressed against the edge; smoothly, since
+ * pixel art shrunk by a fraction loses rows unevenly the hard way. Framed
+ * around `center`, a row of the frame's 64 (about 30 is the eyes, so what's
+ * on the head shows too).
  */
 export function CharacterBust({
   character,
   presence,
   size = 32,
-  center = 34,
+  center = CENTER,
+  zoom = ZOOM,
   className,
 }: {
   character: string;
   presence?: string | null;
   size?: number;
   center?: number;
+  zoom?: number;
   className?: string;
 }) {
   return (
@@ -38,7 +45,12 @@ export function CharacterBust({
         style={{ width: size, height: size }}
       >
         {/* The frame's feet this far down, so the row it's framed around sits in the circle's middle. */}
-        <PixelAvatar character={character} still width={32} style={{ left: "50%", top: 64 - center + size / 2 }} />
+        <PixelAvatar
+          character={character}
+          still
+          width={32 * zoom}
+          style={{ left: "50%", top: (64 - center) * zoom + size / 2, ...(zoom < 1 ? { imageRendering: "auto" } : {}) }}
+        />
       </span>
       {presence && PRESENCE[presence] && (
         <span

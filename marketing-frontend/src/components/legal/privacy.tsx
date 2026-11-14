@@ -73,15 +73,18 @@ export const privacySections: LegalSection[] = [
     body: (
       <>
         <p>
-          You can choose to connect your Google Calendar in Settings. If you do, TinyFloor reads the events on your primary calendar for the
-          current day, read-only: their times, titles, whether you accepted them, whether they are private, and their meeting links. We use
-          them only to show the people in your offices that you are in a meeting and until when, to list your meetings for the day with a way to
-          join, and to remind you just before an online meeting starts.
+          If you choose to connect your Google Calendar to TinyFloor, TinyFloor reads the events on your primary calendar for today and the
+          week ahead, read-only: their times, titles, whether you accepted them, whether they are private or
+          mark you out of office or in focus time, and their meeting links. We use them to show you your meetings with a way to join, to remind
+          you just before an online meeting starts, and to show the people in your offices when you are busy.
         </p>
         <p>
-          Your teammates see that you are busy and until when. They see an event&apos;s title only if you turn on &ldquo;Show event titles&rdquo;,
-          and never the title of a private event. We never create, change or delete events, and we don&apos;t store your events: they are read
-          when your own app asks for them. We keep the access Google gives us encrypted, and disconnecting your calendar deletes it and revokes
+          Your teammates see when you are busy, out of office or in focus time, today and over the coming week, and whether you are in a
+          meeting right now and until when. They see an event&apos;s title only if you turn on &ldquo;Show event titles&rdquo;, and never the
+          title of a private event. Your event details and links are shown only to you. We never create, change or delete events. We keep
+          only your busy times, for a few minutes, so your office&apos;s calendar loads quickly; your events themselves are read when they are
+          needed and not stored. We keep the access Google gives us encrypted, and disconnecting your calendar deletes it, and your busy
+          times, and revokes
           it at Google. You can also remove TinyFloor&apos;s access from your{" "}
           <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">
             Google Account

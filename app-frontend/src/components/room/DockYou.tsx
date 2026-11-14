@@ -38,7 +38,7 @@ export function YouKey({ open, onToggle }: { open: boolean; onToggle: () => void
         open ? "bg-foreground/[0.08]" : "hover:bg-foreground/[0.06]",
       )}
     >
-      <CharacterBust character={user.character ?? ""} presence={status === "offline" ? "away" : status} size={34} center={37} />
+      <CharacterBust character={user.character ?? ""} presence={status === "offline" ? "away" : status} size={34} />
     </button>
   );
 }
@@ -68,7 +68,7 @@ function YouPanelBody({ onDone }: { onDone: () => void }) {
   return (
     <>
       <div className="flex items-center gap-3 px-3 pb-3 pt-3.5">
-        <CharacterBust character={user.character ?? ""} presence={presence} size={40} center={38} />
+        <CharacterBust character={user.character ?? ""} presence={presence} size={40} />
         <span className="min-w-0 flex-1">
           <span className="block truncate text-[14px] font-semibold leading-snug">{user.displayName}</span>
           <span className="mt-0.5 flex items-center gap-1.5 text-[12px] text-muted-foreground">

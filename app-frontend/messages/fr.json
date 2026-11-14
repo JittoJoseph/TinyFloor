@@ -355,7 +355,7 @@
       "disconnect": "Déconnecter",
       "titles": "Afficher le titre des événements",
       "titlesNote": "Votre bureau voit le nom d'une réunion, pas seulement que vous y êtes. Les événements privés ne montrent jamais le leur.",
-      "privacy": "Votre bureau voit quand vous êtes en réunion et jusqu'à quand. Rien d'autre ne sort de votre agenda.",
+      "privacy": "Votre bureau voit quand vous êtes occupé cette semaine, et quand vous êtes en réunion en ce moment. Rien d'autre ne sort de votre agenda.",
       "unavailable": "Google n'est pas configuré ici.",
       "notAllowed": "Autorisez TinyFloor à voir les événements de votre agenda, puis reconnectez-le.",
       "again": "Connectez-le une fois de plus pour terminer."
@@ -1053,5 +1053,57 @@
     "wear": "Le porter",
     "notNow": "Pas maintenant",
     "thanks": "Joyeux Noël !"
+  },
+  "calendar": {
+    "title": "Agenda",
+    "schedule": "Planifier",
+    "inviteTitle": "Réunion {office}",
+    "inviteBody": "Rejoindre sur TinyFloor :",
+    "connectBody": "Connectez Google Agenda pour voir les réunions du jour, les rejoindre d'ici et faire savoir à votre bureau quand vous êtes en réunion.",
+    "connect": "Connecter Google Agenda",
+    "unavailable": "Google n'est pas configuré ici.",
+    "notAllowed": "Autorisez TinyFloor à voir les événements de votre agenda, puis reconnectez-le.",
+    "again": "Connectez-le une fois de plus pour terminer.",
+    "today": "Aujourd'hui",
+    "tomorrow": "Demain",
+    "untitled": "Occupé",
+    "markedFree": "Libre",
+    "previousDay": "Jour précédent",
+    "nextDay": "Jour suivant",
+    "you": "vous",
+    "busy": "Occupé",
+    "kind": {
+      "out": "Absent du bureau",
+      "focus": "Temps de concentration"
+    },
+    "scheduleAt": "Planifier à {time}",
+    "notConnected": "{count, plural, one {Pas encore connecté :} other {# pas encore connectés :}}",
+    "until": "Jusqu'à {time}",
+    "joinHere": "Rejoindre",
+    "joinOn": {
+      "meet": "Rejoindre sur Google Meet",
+      "zoom": "Rejoindre sur Zoom",
+      "teams": "Rejoindre sur Teams",
+      "other": "Ouvrir le lien",
+      "tinyfloor": "Rejoindre"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "En ligne"
+    },
+    "privateNote": "Privé : votre bureau ne voit jamais son titre",
+    "inGoogle": "Ouvrir dans Google Agenda",
+    "close": "Fermer",
+    "upNext": "À venir",
+    "nowUntil": "En cours · jusqu'à {time}",
+    "nothingComing": "Rien à venir",
+    "calendars": "Agendas",
+    "yours": "Votre agenda",
+    "settings": "Réglages de l'agenda",
+    "previousWeek": "Semaine précédente",
+    "nextWeek": "Semaine suivante"
   }
 }

@@ -355,7 +355,7 @@
       "disconnect": "接続を解除",
       "titles": "予定のタイトルを表示",
       "titlesNote": "会議中であることに加えて、会議の名前もオフィスに表示されます。非公開の予定のタイトルは表示されません。",
-      "privacy": "オフィスに伝わるのは、会議中であることと終わる時間だけです。それ以外の情報はカレンダーから出ません。",
+      "privacy": "オフィスに表示されるのは、今週の予定が埋まっている時間と、今会議中かどうかだけです。それ以外の情報はカレンダーから出ません。",
       "unavailable": "ここではGoogleが設定されていません。",
       "notAllowed": "TinyFloorにカレンダーの予定の閲覧を許可してから、もう一度接続してください。",
       "again": "もう一度接続すると完了します。"
@@ -1053,5 +1053,57 @@
     "wear": "かぶる",
     "notNow": "あとで",
     "thanks": "メリークリスマス！"
+  },
+  "calendar": {
+    "title": "カレンダー",
+    "schedule": "予定を作成",
+    "inviteTitle": "{office}のミーティング",
+    "inviteBody": "TinyFloorで参加：",
+    "connectBody": "Googleカレンダーを接続すると、今日の会議を確認してここから参加でき、会議中であることがオフィスに伝わります。",
+    "connect": "Googleカレンダーを接続",
+    "unavailable": "ここではGoogleが設定されていません。",
+    "notAllowed": "TinyFloorにカレンダーの予定の閲覧を許可してから、もう一度接続してください。",
+    "again": "もう一度接続すると完了します。",
+    "today": "今日",
+    "tomorrow": "明日",
+    "untitled": "予定あり",
+    "markedFree": "空き時間",
+    "previousDay": "前の日",
+    "nextDay": "次の日",
+    "you": "あなた",
+    "busy": "予定あり",
+    "kind": {
+      "out": "不在",
+      "focus": "集中タイム"
+    },
+    "scheduleAt": "{time}に予定を作成",
+    "notConnected": "{count, plural, other {未接続（#人）：}}",
+    "until": "{time}まで",
+    "joinHere": "参加",
+    "joinOn": {
+      "meet": "Google Meetで参加",
+      "zoom": "Zoomで参加",
+      "teams": "Teamsで参加",
+      "other": "リンクを開く",
+      "tinyfloor": "参加"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "オンライン"
+    },
+    "privateNote": "非公開：オフィスにタイトルは表示されません",
+    "inGoogle": "Googleカレンダーで開く",
+    "close": "閉じる",
+    "upNext": "次の予定",
+    "nowUntil": "進行中 · {time}まで",
+    "nothingComing": "予定はありません",
+    "calendars": "カレンダー",
+    "yours": "あなたのカレンダー",
+    "settings": "カレンダーの設定",
+    "previousWeek": "前の週",
+    "nextWeek": "次の週"
   }
 }

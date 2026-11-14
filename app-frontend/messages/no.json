@@ -355,7 +355,7 @@
       "disconnect": "Koble fra",
       "titles": "Vis titler på hendelser",
       "titlesNote": "Kontoret ser hva et møte heter, ikke bare at du er i et. Private hendelser viser aldri sin.",
-      "privacy": "Kontoret ser når du er i møte og til når. Ingenting annet forlater kalenderen din.",
+      "privacy": "Kontoret ser når du er opptatt denne uken, og når du er i møte akkurat nå. Ingenting annet forlater kalenderen din.",
       "unavailable": "Google er ikke satt opp her.",
       "notAllowed": "La TinyFloor se hendelsene i kalenderen din, og koble til igjen.",
       "again": "Koble til én gang til for å bli ferdig."
@@ -1053,5 +1053,57 @@
     "wear": "Ta den på",
     "notNow": "Ikke nå",
     "thanks": "God jul!"
+  },
+  "calendar": {
+    "title": "Kalender",
+    "schedule": "Planlegg",
+    "inviteTitle": "Møte i {office}",
+    "inviteBody": "Bli med på TinyFloor:",
+    "connectBody": "Koble til Google Kalender for å se dagens møter, bli med herfra og la kontoret vite når du er i møte.",
+    "connect": "Koble til Google Kalender",
+    "unavailable": "Google er ikke satt opp her.",
+    "notAllowed": "La TinyFloor se hendelsene i kalenderen din, og koble til igjen.",
+    "again": "Koble til én gang til for å bli ferdig.",
+    "today": "I dag",
+    "tomorrow": "I morgen",
+    "untitled": "Opptatt",
+    "markedFree": "Ledig",
+    "previousDay": "Forrige dag",
+    "nextDay": "Neste dag",
+    "you": "deg",
+    "busy": "Opptatt",
+    "kind": {
+      "out": "Ikke på kontoret",
+      "focus": "Fokustid"
+    },
+    "scheduleAt": "Planlegg kl. {time}",
+    "notConnected": "{count, plural, one {Ikke tilkoblet ennå:} other {# ikke tilkoblet ennå:}}",
+    "until": "Til {time}",
+    "joinHere": "Bli med",
+    "joinOn": {
+      "meet": "Bli med i Google Meet",
+      "zoom": "Bli med i Zoom",
+      "teams": "Bli med i Teams",
+      "other": "Åpne lenke",
+      "tinyfloor": "Bli med"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "På nett"
+    },
+    "privateNote": "Privat: kontoret ser aldri tittelen",
+    "inGoogle": "Åpne i Google Kalender",
+    "close": "Lukk",
+    "upNext": "Neste",
+    "nowUntil": "Nå · til {time}",
+    "nothingComing": "Ingenting på vei",
+    "calendars": "Kalendere",
+    "yours": "Din kalender",
+    "settings": "Kalenderinnstillinger",
+    "previousWeek": "Forrige uke",
+    "nextWeek": "Neste uke"
   }
 }

@@ -355,7 +355,7 @@
       "disconnect": "Scollega",
       "titles": "Mostra i titoli degli eventi",
       "titlesNote": "Il tuo ufficio vede come si chiama una riunione, non solo che ci sei. Gli eventi privati non mostrano mai il loro.",
-      "privacy": "Il tuo ufficio vede quando sei in riunione e fino a quando. Nient'altro esce dal tuo calendario.",
+      "privacy": "Il tuo ufficio vede quando sei occupato questa settimana e quando sei in riunione adesso. Nient'altro esce dal tuo calendario.",
       "unavailable": "Google non è configurato qui.",
       "notAllowed": "Consenti a TinyFloor di vedere gli eventi del tuo calendario, poi ricollegalo.",
       "again": "Collegalo ancora una volta per finire."
@@ -1053,5 +1053,57 @@
     "wear": "Indossalo",
     "notNow": "Non ora",
     "thanks": "Buon Natale!"
+  },
+  "calendar": {
+    "title": "Calendario",
+    "schedule": "Pianifica",
+    "inviteTitle": "Riunione {office}",
+    "inviteBody": "Partecipa su TinyFloor:",
+    "connectBody": "Collega Google Calendar per vedere le riunioni di oggi, parteciparvi da qui e far sapere al tuo ufficio quando sei in riunione.",
+    "connect": "Collega Google Calendar",
+    "unavailable": "Google non è configurato qui.",
+    "notAllowed": "Consenti a TinyFloor di vedere gli eventi del tuo calendario, poi ricollegalo.",
+    "again": "Collegalo ancora una volta per finire.",
+    "today": "Oggi",
+    "tomorrow": "Domani",
+    "untitled": "Occupato",
+    "markedFree": "Libero",
+    "previousDay": "Giorno precedente",
+    "nextDay": "Giorno successivo",
+    "you": "tu",
+    "busy": "Occupato",
+    "kind": {
+      "out": "Fuori ufficio",
+      "focus": "Tempo di concentrazione"
+    },
+    "scheduleAt": "Pianifica alle {time}",
+    "notConnected": "{count, plural, one {Non ancora collegato:} other {# non ancora collegati:}}",
+    "until": "Fino alle {time}",
+    "joinHere": "Partecipa",
+    "joinOn": {
+      "meet": "Partecipa su Google Meet",
+      "zoom": "Partecipa su Zoom",
+      "teams": "Partecipa su Teams",
+      "other": "Apri link",
+      "tinyfloor": "Partecipa"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "Online"
+    },
+    "privateNote": "Privato: il tuo ufficio non ne vede mai il titolo",
+    "inGoogle": "Apri in Google Calendar",
+    "close": "Chiudi",
+    "upNext": "Prossimi",
+    "nowUntil": "Ora · fino alle {time}",
+    "nothingComing": "Niente in arrivo",
+    "calendars": "Calendari",
+    "yours": "Il tuo calendario",
+    "settings": "Impostazioni del calendario",
+    "previousWeek": "Settimana precedente",
+    "nextWeek": "Settimana successiva"
   }
 }

@@ -20,6 +20,9 @@
     "REALTIME_URL": "wss://realtime.tinyfloor.com",
     // Google sign-in's OAuth client (public); its secret is GOOGLE_CLIENT_SECRET.
     "GOOGLE_CLIENT_ID": "523187100801-n4t184tjomdgrcf41u6k57egldkbf72k.apps.googleusercontent.com",
+    // Google Calendar's own OAuth client, in the tinyfloor-calendar Google Cloud project, never
+    // sign-in's (src/calendar.ts); its secret is GOOGLE_CALENDAR_CLIENT_SECRET. Calendar is off without it.
+    "GOOGLE_CALENDAR_CLIENT_ID": "637415591433-q1nuv4a6kmboe5homahsisc6vgfacfqt.apps.googleusercontent.com",
     // Paid plans against Creem's live store (src/billing.ts): the live product,
     // with the secrets CREEM_API_KEY and CREEM_WEBHOOK_SECRET (webhook
     // wh_5cS7ul9sdaLN9PFPU6E0Fz posts to /v1/billing/webhook).
@@ -33,7 +36,7 @@
   ],
   // Per-IP limit on email codes, sign-in and guest creation (src/limits.ts).
   // Secrets, set with `wrangler secret put` (and in .dev.vars locally): TICKET_SECRET,
-  // TURNSTILE_SECRET, TURN_KEY_ID, TURN_KEY_API_TOKEN, GOOGLE_CLIENT_SECRET, and
+  // TURNSTILE_SECRET, TURN_KEY_ID, TURN_KEY_API_TOKEN, GOOGLE_CLIENT_SECRET, GOOGLE_CALENDAR_CLIENT_SECRET, and
   // ADMIN_EMAILS, the comma-separated accounts that can open /admin, and
   // RESEND_API_KEY, for app mail from mail.tinyfloor.com (src/email.ts).
   // UPLOAD_LIMIT: per-person uploads to chat (src/files.ts).
@@ -72,6 +75,7 @@
         "SESSION_COOKIE": "tf_preview_session",
         "REALTIME_URL": "wss://realtime-preview.tinyfloor.com",
         "GOOGLE_CLIENT_ID": "523187100801-n4t184tjomdgrcf41u6k57egldkbf72k.apps.googleusercontent.com",
+        "GOOGLE_CALENDAR_CLIENT_ID": "637415591433-q1nuv4a6kmboe5homahsisc6vgfacfqt.apps.googleusercontent.com",
         // Paid plans in Creem's test mode (src/billing.ts): the products are the
         // test store's; CREEM_API_KEY and CREEM_WEBHOOK_SECRET are secrets.
         "CREEM_ENV": "test",

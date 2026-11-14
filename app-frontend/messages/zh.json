@@ -355,7 +355,7 @@
       "disconnect": "断开连接",
       "titles": "显示日程标题",
       "titlesNote": "办公室能看到会议的名称，而不只是你在开会。私密日程永远不会显示标题。",
-      "privacy": "办公室只能看到你何时在开会、开到几点。其他内容不会离开你的日历。",
+      "privacy": "办公室只能看到你这周的忙碌时间，以及你现在是否在开会。其他内容不会离开你的日历。",
       "unavailable": "这里尚未设置 Google。",
       "notAllowed": "请允许 TinyFloor 查看你的日历日程，然后重新连接。",
       "again": "再连接一次即可完成。"
@@ -1053,5 +1053,57 @@
     "wear": "戴上",
     "notNow": "以后再说",
     "thanks": "圣诞快乐！"
+  },
+  "calendar": {
+    "title": "日历",
+    "schedule": "安排会议",
+    "inviteTitle": "{office} 会议",
+    "inviteBody": "在 TinyFloor 加入：",
+    "connectBody": "连接 Google 日历后，可以查看今天的会议、直接从这里加入，并让办公室知道你何时在开会。",
+    "connect": "连接 Google 日历",
+    "unavailable": "这里尚未设置 Google。",
+    "notAllowed": "请允许 TinyFloor 查看你的日历日程，然后重新连接。",
+    "again": "再连接一次即可完成。",
+    "today": "今天",
+    "tomorrow": "明天",
+    "untitled": "忙碌",
+    "markedFree": "空闲",
+    "previousDay": "前一天",
+    "nextDay": "后一天",
+    "you": "你",
+    "busy": "忙碌",
+    "kind": {
+      "out": "不在办公室",
+      "focus": "专注时间"
+    },
+    "scheduleAt": "在 {time} 安排",
+    "notConnected": "{count, plural, other {尚未连接（#人）：}}",
+    "until": "到 {time}",
+    "joinHere": "加入",
+    "joinOn": {
+      "meet": "在 Google Meet 加入",
+      "zoom": "在 Zoom 加入",
+      "teams": "在 Teams 加入",
+      "other": "打开链接",
+      "tinyfloor": "加入"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "线上"
+    },
+    "privateNote": "私密：办公室永远看不到标题",
+    "inGoogle": "在 Google 日历中打开",
+    "close": "关闭",
+    "upNext": "接下来",
+    "nowUntil": "进行中 · 到 {time}",
+    "nothingComing": "暂无安排",
+    "calendars": "日历",
+    "yours": "你的日历",
+    "settings": "日历设置",
+    "previousWeek": "上一周",
+    "nextWeek": "下一周"
   }
 }

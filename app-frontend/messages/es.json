@@ -355,7 +355,7 @@
       "disconnect": "Desconectar",
       "titles": "Mostrar títulos de eventos",
       "titlesNote": "Tu oficina ve cómo se llama una reunión, no solo que estás en una. Los eventos privados nunca muestran el suyo.",
-      "privacy": "Tu oficina ve cuándo estás en una reunión y hasta cuándo. Nada más sale de tu calendario.",
+      "privacy": "Tu oficina ve cuándo estás ocupado esta semana y cuándo estás en una reunión ahora mismo. Nada más sale de tu calendario.",
       "unavailable": "Google no está configurado aquí.",
       "notAllowed": "Permite que TinyFloor vea los eventos de tu calendario y vuelve a conectar.",
       "again": "Conecta una vez más para terminar."
@@ -1053,5 +1053,57 @@
     "wear": "Ponérmelo",
     "notNow": "Ahora no",
     "thanks": "¡Feliz Navidad!"
+  },
+  "calendar": {
+    "title": "Calendario",
+    "schedule": "Programar",
+    "inviteTitle": "Reunión de {office}",
+    "inviteBody": "Únete en TinyFloor:",
+    "connectBody": "Conecta Google Calendar para ver las reuniones de hoy, unirte desde aquí y que tu oficina sepa cuándo estás en una.",
+    "connect": "Conectar Google Calendar",
+    "unavailable": "Google no está configurado aquí.",
+    "notAllowed": "Permite que TinyFloor vea los eventos de tu calendario y vuelve a conectar.",
+    "again": "Conecta una vez más para terminar.",
+    "today": "Hoy",
+    "tomorrow": "Mañana",
+    "untitled": "Ocupado",
+    "markedFree": "Libre",
+    "previousDay": "Día anterior",
+    "nextDay": "Día siguiente",
+    "you": "tú",
+    "busy": "Ocupado",
+    "kind": {
+      "out": "Fuera de la oficina",
+      "focus": "Tiempo de concentración"
+    },
+    "scheduleAt": "Programar a las {time}",
+    "notConnected": "{count, plural, one {Aún sin conectar:} other {# aún sin conectar:}}",
+    "until": "Hasta las {time}",
+    "joinHere": "Unirse",
+    "joinOn": {
+      "meet": "Unirse en Google Meet",
+      "zoom": "Unirse en Zoom",
+      "teams": "Unirse en Teams",
+      "other": "Abrir enlace",
+      "tinyfloor": "Unirse"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "En línea"
+    },
+    "privateNote": "Privado: tu oficina nunca ve su título",
+    "inGoogle": "Abrir en Google Calendar",
+    "close": "Cerrar",
+    "upNext": "A continuación",
+    "nowUntil": "Ahora · hasta las {time}",
+    "nothingComing": "Nada próximamente",
+    "calendars": "Calendarios",
+    "yours": "Tu calendario",
+    "settings": "Ajustes del calendario",
+    "previousWeek": "Semana anterior",
+    "nextWeek": "Semana siguiente"
   }
 }

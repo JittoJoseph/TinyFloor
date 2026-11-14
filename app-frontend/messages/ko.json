@@ -355,7 +355,7 @@
       "disconnect": "연결 해제",
       "titles": "일정 제목 보이기",
       "titlesNote": "회의 중이라는 것뿐 아니라 회의 이름도 오피스에 보여요. 비공개 일정의 제목은 절대 보이지 않아요.",
-      "privacy": "오피스에는 회의 중인지와 언제까지인지만 보여요. 그 밖의 정보는 캘린더 밖으로 나가지 않아요.",
+      "privacy": "오피스에는 이번 주에 바쁜 시간과 지금 회의 중인지만 보여요. 그 밖의 정보는 캘린더 밖으로 나가지 않아요.",
       "unavailable": "여기에는 Google이 설정되어 있지 않아요.",
       "notAllowed": "TinyFloor가 캘린더 일정을 볼 수 있게 허용한 뒤 다시 연결하세요.",
       "again": "마무리하려면 한 번 더 연결하세요."
@@ -1053,5 +1053,57 @@
     "wear": "쓰기",
     "notNow": "나중에",
     "thanks": "메리 크리스마스!"
+  },
+  "calendar": {
+    "title": "캘린더",
+    "schedule": "일정 잡기",
+    "inviteTitle": "{office} 미팅",
+    "inviteBody": "TinyFloor에서 참여:",
+    "connectBody": "Google 캘린더를 연결하면 오늘의 회의를 보고 여기서 참여할 수 있고, 회의 중일 때 오피스에 알릴 수 있어요.",
+    "connect": "Google 캘린더 연결",
+    "unavailable": "여기에는 Google이 설정되어 있지 않아요.",
+    "notAllowed": "TinyFloor가 캘린더 일정을 볼 수 있게 허용한 뒤 다시 연결하세요.",
+    "again": "마무리하려면 한 번 더 연결하세요.",
+    "today": "오늘",
+    "tomorrow": "내일",
+    "untitled": "바쁨",
+    "markedFree": "한가함",
+    "previousDay": "이전 날",
+    "nextDay": "다음 날",
+    "you": "나",
+    "busy": "바쁨",
+    "kind": {
+      "out": "부재 중",
+      "focus": "집중 시간"
+    },
+    "scheduleAt": "{time}에 일정 잡기",
+    "notConnected": "{count, plural, other {아직 연결 안 함(#명):}}",
+    "until": "{time}까지",
+    "joinHere": "참여",
+    "joinOn": {
+      "meet": "Google Meet으로 참여",
+      "zoom": "Zoom으로 참여",
+      "teams": "Teams로 참여",
+      "other": "링크 열기",
+      "tinyfloor": "참여"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "온라인"
+    },
+    "privateNote": "비공개: 오피스에는 제목이 보이지 않아요",
+    "inGoogle": "Google 캘린더에서 열기",
+    "close": "닫기",
+    "upNext": "다음 일정",
+    "nowUntil": "진행 중 · {time}까지",
+    "nothingComing": "예정된 일정이 없어요",
+    "calendars": "캘린더",
+    "yours": "내 캘린더",
+    "settings": "캘린더 설정",
+    "previousWeek": "이전 주",
+    "nextWeek": "다음 주"
   }
 }

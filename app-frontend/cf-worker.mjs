@@ -13,7 +13,7 @@ export default withStaticPages(next, manifest, {
   // one page throughout and never rebuilds the shell as you move around an office.
   sharedPages: [
     [/^(\/[a-z]{2}\/office\/)[^/]+\/chat\/[^/]+$/, "$1_/chat/_"],
-    [/^(\/[a-z]{2}\/office\/)[^/]+(\/(?:chat|people|meetings|settings))?$/, "$1_$2"],
+    [/^(\/[a-z]{2}\/office\/)[^/]+(\/(?:chat|people|meetings|calendar|settings))?$/, "$1_$2"],
     [/^(\/[a-z]{2}\/lobby\/chat\/)[^/]+$/, "$1_"],
   ],
   // As the middleware says it: only the lobby is for search engines.

@@ -355,7 +355,7 @@
       "disconnect": "Disconnect",
       "titles": "Show event titles",
       "titlesNote": "Your office sees what a meeting is called, not only that you're in one. Private events never show theirs.",
-      "privacy": "Your office sees when you're in a meeting and until when. Nothing else leaves your calendar.",
+      "privacy": "Your office sees when you're busy this week, and when you're in a meeting right now. Nothing else leaves your calendar.",
       "unavailable": "Google isn't set up here.",
       "notAllowed": "Allow TinyFloor to see your calendar's events, then connect again.",
       "again": "Connect once more to finish."
@@ -1053,5 +1053,57 @@
     "wear": "Wear it",
     "notNow": "Not now",
     "thanks": "Merry Christmas!"
+  },
+  "calendar": {
+    "title": "Calendar",
+    "schedule": "Schedule",
+    "inviteTitle": "{office} meeting",
+    "inviteBody": "Join on TinyFloor:",
+    "connectBody": "Connect Google Calendar to see today's meetings, join them from here, and let your office know when you're in one.",
+    "connect": "Connect Google Calendar",
+    "unavailable": "Google isn't set up here.",
+    "notAllowed": "Allow TinyFloor to see your calendar's events, then connect again.",
+    "again": "Connect once more to finish.",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "untitled": "Busy",
+    "markedFree": "Free",
+    "previousDay": "Previous day",
+    "nextDay": "Next day",
+    "you": "you",
+    "busy": "Busy",
+    "kind": {
+      "out": "Out of office",
+      "focus": "Focus time"
+    },
+    "scheduleAt": "Schedule at {time}",
+    "notConnected": "{count, plural, one {Not connected yet:} other {# not connected yet:}}",
+    "until": "Until {time}",
+    "joinHere": "Join",
+    "joinOn": {
+      "meet": "Join on Google Meet",
+      "zoom": "Join on Zoom",
+      "teams": "Join on Teams",
+      "other": "Open link",
+      "tinyfloor": "Join"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "Online"
+    },
+    "privateNote": "Private: your office never sees its title",
+    "inGoogle": "Open in Google Calendar",
+    "close": "Close",
+    "upNext": "Up next",
+    "nowUntil": "Now · until {time}",
+    "nothingComing": "Nothing coming up",
+    "calendars": "Calendars",
+    "yours": "Your calendar",
+    "settings": "Calendar settings",
+    "previousWeek": "Previous week",
+    "nextWeek": "Next week"
   }
 }

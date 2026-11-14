@@ -553,3 +553,62 @@
     transform: rotate(-8deg);
   }
 }
+
+/*
+ * A meeting on the Calendar page (WeekGrid): tinted in its calendar's colour
+ * (--c), a rounded bar of it down the start edge, and its words in a deep
+ * shade of the same colour rather than plain text. A thin ring of the card
+ * keeps meetings that touch apart. Past ones fade, the one on now is solid,
+ * marked-free ones are only a dashed outline, and out of office and focus
+ * time are striped.
+ */
+.cal-event {
+  --fill: color-mix(in oklab, var(--c) 15%, var(--ui-card));
+  --ink: color-mix(in oklab, var(--c) 52%, #000);
+  --bar: var(--c);
+  background: var(--fill);
+  color: var(--ink);
+  box-shadow: 0 0 0 1px var(--ui-card);
+}
+.dark .cal-event {
+  --fill: color-mix(in oklab, var(--c) 26%, var(--ui-card));
+  --ink: color-mix(in oklab, var(--c) 30%, #fff);
+}
+.cal-event[data-team] {
+  --fill: color-mix(in oklab, var(--c) 10%, var(--ui-card));
+}
+.dark .cal-event[data-team] {
+  --fill: color-mix(in oklab, var(--c) 18%, var(--ui-card));
+}
+button.cal-event:hover {
+  --fill: color-mix(in oklab, var(--c) 24%, var(--ui-card));
+}
+.dark button.cal-event:hover {
+  --fill: color-mix(in oklab, var(--c) 36%, var(--ui-card));
+}
+.cal-event[data-past] {
+  --fill: color-mix(in oklab, var(--c) 6%, var(--ui-card));
+  --ink: color-mix(in oklab, var(--c) 25%, var(--ui-muted-foreground));
+  --bar: color-mix(in oklab, var(--c) 40%, var(--ui-card));
+}
+.dark .cal-event[data-past] {
+  --fill: color-mix(in oklab, var(--c) 10%, var(--ui-card));
+}
+.cal-event[data-now],
+.dark .cal-event[data-now] {
+  --fill: color-mix(in oklab, var(--c) 82%, #000);
+  --ink: #fff;
+  --bar: rgb(255 255 255 / 0.7);
+}
+.cal-event[data-free] {
+  background: var(--ui-card);
+  outline: 1px dashed color-mix(in oklab, var(--c) 55%, transparent);
+  outline-offset: -1px;
+}
+.cal-event[data-hatch] {
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--fill) 0 5px,
+    color-mix(in oklab, var(--c) 5%, var(--ui-card)) 5px 10px
+  );
+}

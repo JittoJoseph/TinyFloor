@@ -3,16 +3,13 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { ApiError } from "web-shared/lib/api";
-import { GoogleButton, googleAvailable } from "web-shared/components/auth/GoogleButton";
+import { GoogleButton } from "web-shared/components/auth/GoogleButton";
 import { Button } from "@/components/motion/button/base";
 import { Switch } from "@/components/motion/switch";
 import { Loader } from "@/components/motion/loader";
-import { connectCalendar, disconnectCalendar, readCalendar, showCalendarTitles, useCalendar } from "@/lib/calendar";
+import { CALENDAR_CLIENT_ID, CALENDAR_SCOPE, calendarAvailable, connectCalendar, disconnectCalendar, readCalendar, showCalendarTitles, useCalendar } from "@/lib/calendar";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { Group, Row } from "./SettingsView";
-
-/** What connecting asks Google for: who you are (to show which account), and your calendar's events, read-only. */
-const SCOPE = "openid email https://www.googleapis.com/auth/calendar.events.readonly";
 
 /**
  * Your Google Calendar: connected, your office sees when you're in a meeting
@@ -40,7 +37,7 @@ export function CalendarSettings() {
     }
   };
 
-  if (!googleAvailable && status !== "on") {
+  if (!calendarAvailable && status !== "on") {
     return (
       <Group>
         <Row title={t("google")} description={t("unavailable")} control={null} />
@@ -65,7 +62,8 @@ export function CalendarSettings() {
               <div className="w-44">
                 <GoogleButton
                   label={t("connect")}
-                  scope={SCOPE}
+                  clientId={CALENDAR_CLIENT_ID}
+                  scope={CALENDAR_SCOPE}
                   busy={busy}
                   onCode={(code) => run(() => connectCalendar(code))}
                   onError={() => setError(explain(new ApiError(0, "google_failed", "")))}

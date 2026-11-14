@@ -35,6 +35,19 @@ export interface CalendarEvent {
   private: boolean;
   /** Where it happens online: a Meet or Zoom link, or one of ours. */
   link: string | null;
+  /** A meeting or appointment, time out of office, or focus time. */
+  kind: "event" | "out" | "focus";
+  /** The event in Google Calendar itself. */
+  url: string | null;
+}
+
+/** When a teammate is busy, as the office sees it: a title only where they share titles. */
+export interface BusyBlock {
+  start: number;
+  end: number;
+  kind: "event" | "out" | "focus";
+  title?: string;
+  call?: boolean;
 }
 
 /** Your connected Google Calendar: which account, whether your office sees titles, and the events asked for. */
@@ -608,6 +621,9 @@ export const api = {
   connectCalendar: (code: string) => post<{ calendar: CalendarInfo }>("/me/calendar", { code }),
   showCalendarTitles: (showTitles: boolean) => patch<{ ok: true }>("/me/calendar", { showTitles }),
   disconnectCalendar: () => del<{ ok: true }>("/me/calendar"),
+  /** The team's day: when each of the office's people with a calendar connected is busy, out or focusing. */
+  teamCalendar: (officeId: string, from: number, to: number) =>
+    get<{ people: Array<{ id: string; timeZone: string | null; blocks: BusyBlock[] }> }>(`/offices/${id(officeId)}/calendars?from=${from}&to=${to}`),
 
   // Reaching this browser when TinyFloor is closed (app-frontend's lib/push.ts)
   savePush: (subscription: PushSubscriptionJson) => put<{ ok: true }>("/push", subscription),

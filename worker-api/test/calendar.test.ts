@@ -50,6 +50,10 @@ describe("a Google Calendar, connected", () => {
     const connected = await call(ada, "POST", "/v1/me/calendar", { code: "one-time" });
     expect(connected.status).toBe(201);
     expect(connected.body).toEqual({ calendar: { email: "ada@example.com", showTitles: false } });
+    // Through calendar's own OAuth client, never sign-in's.
+    const exchange = new URLSearchParams(asked.find((one) => one.url === "https://oauth2.googleapis.com/token")!.body);
+    expect(exchange.get("client_id")).toBe("test-calendar.apps.googleusercontent.com");
+    expect(exchange.get("client_secret")).toBe("test-calendar-secret");
     const row = await env.DB.prepare("SELECT refresh_token, access_token FROM calendar_links WHERE user_id = ?").bind(ada.id).first<{ refresh_token: string; access_token: string }>();
     expect(row!.refresh_token).not.toContain("refresh-1");
     expect(row!.access_token).not.toContain("access-1");
@@ -108,11 +112,58 @@ describe("a Google Calendar, connected", () => {
     expect((await call(ada, "GET", `/v1/me/calendar?${window()}`)).body).toEqual({ calendar: null });
   });
 
-  it("is for accounts, and reads a day at most", async () => {
+  it("is for accounts, and reads a week at most", async () => {
     const gus = await makeUser("Gus", { guest: true });
     expect((await call(gus, "POST", "/v1/me/calendar", { code: "x" })).status).toBe(403);
     const ada = await makeUser("Ada");
     await call(ada, "POST", "/v1/me/calendar", { code: "x" });
-    expect((await call(ada, "GET", `/v1/me/calendar?from=0&to=${5 * 86_400_000}`)).status).toBe(400);
+    expect((await call(ada, "GET", `/v1/me/calendar?from=0&to=${9 * 86_400_000}`)).status).toBe(400);
+  });
+});
+
+describe("the team's day", () => {
+  async function officeWith(...people: Array<{ name: string; titles?: boolean }>) {
+    const [first, ...rest] = await Promise.all(people.map((one) => makeUser(one.name)));
+    const { body } = await call<{ office: { id: string } }>(first, "POST", "/v1/offices", { name: "Studio" });
+    for (const member of rest)
+      await env.DB.prepare("INSERT INTO memberships (office_id, user_id, role, joined_at) VALUES (?, ?, 'member', ?)").bind(body.office.id, member.id, Date.now()).run();
+    const all = [first, ...rest];
+    for (const [i, member] of all.entries()) {
+      await call(member, "POST", "/v1/me/calendar", { code: "x" });
+      if (people[i].titles) await call(member, "PATCH", "/v1/me/calendar", { showTitles: true });
+    }
+    return { office: body.office.id, people: all };
+  }
+
+  it("shows each connected teammate's busy times, titles only where they share them and never a private one's", async () => {
+    events = [
+      { id: "a", summary: "Design review", start: { dateTime: at(30) }, end: { dateTime: at(60) }, hangoutLink: "https://meet.google.com/abc" },
+      { id: "b", summary: "Lunch", start: { dateTime: at(90) }, end: { dateTime: at(120) }, transparency: "transparent" },
+      { id: "c", summary: "Doctor", start: { dateTime: at(150) }, end: { dateTime: at(180) }, visibility: "private" },
+      { id: "d", summary: "Away", start: { date: "2026-11-13" }, end: { date: "2026-11-14" }, eventType: "outOfOffice" },
+      { id: "e", summary: "Office", start: { date: "2026-11-13" }, end: { date: "2026-11-14" } },
+    ];
+    const { office, people } = await officeWith({ name: "Ada", titles: true }, { name: "Bea" });
+    const { status, body } = await call<{ people: Array<{ id: string; blocks: Array<Record<string, unknown>> }> }>(people[1], "GET", `/v1/offices/${office}/calendars?${window()}`);
+    expect(status).toBe(200);
+    const ada = body.people.find((one) => one.id === people[0].id)!;
+    const bea = body.people.find((one) => one.id === people[1].id)!;
+    expect(ada.blocks.map((block) => block.title ?? null)).toEqual(["Design review", null]);
+    expect(ada.blocks[0]).toMatchObject({ kind: "event", call: true });
+    expect(ada.blocks[1]).toMatchObject({ kind: "event" });
+    expect(bea.blocks.every((block) => !("title" in block))).toBe(true);
+    // Out of office counts, all day; a plain all-day event and free time don't.
+    expect((await call<{ people: Array<{ blocks: Array<{ kind: string }> }> }>(people[1], "GET", `/v1/offices/${office}/calendars?from=${Date.parse("2026-11-13T00:00:00Z")}&to=${Date.parse("2026-11-14T00:00:00Z")}`)).body.people[0].blocks.map((block) => block.kind)).toContain("out");
+  });
+
+  it("reads Google at most every few minutes, and only for the office's own people", async () => {
+    const { office, people } = await officeWith({ name: "Ada" }, { name: "Bea" });
+    await call(people[0], "GET", `/v1/offices/${office}/calendars?${window()}`);
+    const reads = asked.filter((one) => one.url.includes("/events")).length;
+    await call(people[1], "GET", `/v1/offices/${office}/calendars?${window()}`);
+    expect(asked.filter((one) => one.url.includes("/events")).length).toBe(reads);
+    const outsider = await makeUser("Cy");
+    expect((await call(outsider, "GET", `/v1/offices/${office}/calendars?${window()}`)).status).toBe(404);
+    expect((await call(people[0], "GET", `/v1/offices/${office}/calendars?from=0&to=${9 * 86_400_000}`)).status).toBe(400);
   });
 });

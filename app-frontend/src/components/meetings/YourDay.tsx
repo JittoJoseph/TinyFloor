@@ -1,14 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useTranslations, useLocale } from "next-intl";
 import { Calendar, ExternalLink } from "web-shared/components/ui/icons";
 import { MAIN_MEETING } from "shared-protocol/messages";
 import type { CalendarEvent } from "web-shared/lib/api";
-import { googleAvailable } from "web-shared/components/auth/GoogleButton";
 import { Link } from "@/lib/i18n/navigation";
 import { callManager } from "@/lib/CallManager";
-import { isOurs, useCalendar } from "@/lib/calendar";
+import { calendarAvailable, isOurs, scheduleLink, useCalendar, useNow } from "@/lib/calendar";
 import { usePlace } from "@/components/app/place";
 import { cn } from "web-shared/lib/utils";
 
@@ -25,8 +23,8 @@ export function YourDay() {
   const t = useTranslations("meetings.day");
   const place = usePlace();
   const { status, events } = useCalendar();
-  const now = useMinute();
-  if (place.kind !== "office" || place.role === "guest") return null;
+  const now = useNow();
+  if (!calendarAvailable || place.kind !== "office" || place.role === "guest") return null;
   const midnight = new Date(now).setHours(24, 0, 0, 0);
   const left = events.filter((event) => !event.allDay && event.end > now && event.start < midnight).slice(0, SHOWN);
 
@@ -35,7 +33,7 @@ export function YourDay() {
       <div className="mb-2 flex items-center justify-between gap-3">
         <h2 className="text-[12.5px] font-medium text-muted-foreground">{t("title")}</h2>
         <a
-          href={invite(meetingsLink(place.paths.meetings), t("inviteTitle", { office: place.name }), t("inviteBody"))}
+          href={scheduleLink(place.paths.meetings, t("inviteTitle", { office: place.name }), t("inviteBody"))}
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex h-7 items-center gap-1.5 rounded-full px-2.5 text-[12.5px] font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
@@ -54,7 +52,7 @@ export function YourDay() {
         ) : (
           <p className="py-2 text-[13px] text-muted-foreground">{t("clear")}</p>
         )
-      ) : status === "off" && googleAvailable ? (
+      ) : status === "off" ? (
         <p className="py-2 text-[13px] text-muted-foreground">
           {t.rich("connect", {
             link: (words) => (
@@ -106,29 +104,4 @@ function DayEvent({ event, now }: { event: CalendarEvent; now: number }) {
         ))}
     </li>
   );
-}
-
-/** The time, a minute at a time: what's on now moves along without anything else changing. */
-function useMinute(): number {
-  const [now, setNow] = useState(() => Date.now());
-  useEffect(() => {
-    const timer = setInterval(() => setNow(Date.now()), 30_000);
-    return () => clearInterval(timer);
-  }, []);
-  return now;
-}
-
-/** The office's Meetings page, in full: what an invite links to, so whoever opens it lands at the way in. */
-function meetingsLink(path: string | undefined): string {
-  return new URL(path ?? "/", location.origin).toString();
-}
-
-/**
- * Google Calendar's own new-event page, filled in: a meeting in this office,
- * its link as the place, so it's on everyone's calendar with the way in. No
- * access to anyone's calendar is needed for it (Google's event template link).
- */
-function invite(link: string, title: string, body: string): string {
-  const query = new URLSearchParams({ action: "TEMPLATE", text: title, location: link, details: `${body}\n${link}` });
-  return `https://calendar.google.com/calendar/render?${query}`;
 }

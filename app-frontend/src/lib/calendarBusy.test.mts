@@ -13,6 +13,8 @@ const event = (id: string, from: number, to: number, more: Record<string, unknow
   busy: true,
   private: false,
   link: null,
+  kind: "event" as const,
+  url: null,
   ...more,
 });
 

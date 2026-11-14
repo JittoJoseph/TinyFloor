@@ -355,7 +355,7 @@
       "disconnect": "ניתוק",
       "titles": "הצגת כותרות של אירועים",
       "titlesNote": "המשרד רואה איך הפגישה נקראת, ולא רק שאתם בפגישה. אירועים פרטיים אף פעם לא מציגים את הכותרת שלהם.",
-      "privacy": "המשרד רואה מתי אתם בפגישה ועד מתי. שום דבר אחר לא יוצא מהיומן שלכם.",
+      "privacy": "המשרד רואה מתי אתם עסוקים השבוע ומתי אתם בפגישה עכשיו. שום דבר אחר לא יוצא מהיומן שלכם.",
       "unavailable": "Google לא מוגדר כאן.",
       "notAllowed": "אפשרו ל-TinyFloor לראות את האירועים ביומן, ואז חברו שוב.",
       "again": "חברו פעם נוספת כדי לסיים."
@@ -1053,5 +1053,57 @@
     "wear": "לחבוש",
     "notNow": "לא עכשיו",
     "thanks": "חג מולד שמח!"
+  },
+  "calendar": {
+    "title": "יומן",
+    "schedule": "תזמון",
+    "inviteTitle": "פגישת {office}",
+    "inviteBody": "הצטרפות ב-TinyFloor:",
+    "connectBody": "חברו את יומן Google כדי לראות את הפגישות של היום, להצטרף אליהן מכאן ולהודיע למשרד מתי אתם בפגישה.",
+    "connect": "חיבור יומן Google",
+    "unavailable": "Google לא מוגדר כאן.",
+    "notAllowed": "אפשרו ל-TinyFloor לראות את האירועים ביומן, ואז חברו שוב.",
+    "again": "חברו פעם נוספת כדי לסיים.",
+    "today": "היום",
+    "tomorrow": "מחר",
+    "untitled": "תפוס",
+    "markedFree": "פנוי",
+    "previousDay": "היום הקודם",
+    "nextDay": "היום הבא",
+    "you": "את/ה",
+    "busy": "עסוק",
+    "kind": {
+      "out": "מחוץ למשרד",
+      "focus": "זמן ריכוז"
+    },
+    "scheduleAt": "תזמון ב-{time}",
+    "notConnected": "{count, plural, one {עדיין לא מחובר:} other {# עדיין לא מחוברים:}}",
+    "until": "עד {time}",
+    "joinHere": "הצטרפות",
+    "joinOn": {
+      "meet": "הצטרפות ב-Google Meet",
+      "zoom": "הצטרפות ב-Zoom",
+      "teams": "הצטרפות ב-Teams",
+      "other": "פתיחת הקישור",
+      "tinyfloor": "הצטרפות"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "אונליין"
+    },
+    "privateNote": "פרטי: המשרד אף פעם לא רואה את הכותרת",
+    "inGoogle": "פתיחה ביומן Google",
+    "close": "סגירה",
+    "upNext": "הבא",
+    "nowUntil": "עכשיו · עד {time}",
+    "nothingComing": "אין שום דבר בקרוב",
+    "calendars": "יומנים",
+    "yours": "היומן שלך",
+    "settings": "הגדרות היומן",
+    "previousWeek": "השבוע הקודם",
+    "nextWeek": "השבוע הבא"
   }
 }

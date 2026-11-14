@@ -1,14 +1,14 @@
 "use client";
 
 import { RailIcons } from "@/components/app/railIcons";
-import { syncCalendar } from "@/lib/calendar";
+import { calendarAvailable, syncCalendar } from "@/lib/calendar";
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/lib/i18n/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError, type Office, type OfficeOverview } from "web-shared/lib/api";
-import { homePath, leftPath, officeChatPath, officeMeetingsPath, officePath, officePeoplePath, officeSettingsPath } from "@/lib/links";
+import { homePath, leftPath, officeChatPath, officeMeetingsPath, officeCalendarPath, officePath, officePeoplePath, officeSettingsPath } from "@/lib/links";
 import { chat } from "@/lib/ChatSocket";
 import { useChat } from "@/lib/useChat";
 import { useHelp } from "@/lib/help";
@@ -227,11 +227,13 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
     : null;
   const people = officePeoplePath(office.id);
   const meetings = officeMeetingsPath(office.id);
+  const calendar = officeCalendarPath(office.id);
   const settingsPath = officeSettingsPath(office.id);
   const on = (path: string) => pathname.endsWith(path) || pathname.includes(`${path}/`);
   const onChat = on(chatPath);
   const onPeople = on(people);
   const onMeetings = on(meetings);
+  const onCalendar = on(calendar);
   const onSettings = on(settingsPath);
 
   const place: Place = {
@@ -267,7 +269,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
                 href: floor,
                 label: ts("floor"),
                 icon: RailIcons.floor,
-                active: !onChat && !onPeople && !onMeetings && !onSettings,
+                active: !onChat && !onPeople && !onMeetings && !onCalendar && !onSettings,
               },
               { key: "chat", href: lastChat ? officeChatPath(office.id, lastChat) : chatPath, label: ts("chat"), icon: RailIcons.chat, active: onChat, badge: unread + helpUnread },
               {
@@ -279,6 +281,7 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
                 // Green while a meeting is on: how many are in them.
                 live: inMeetings || undefined,
               },
+              ...(calendarAvailable ? [{ key: "calendar", href: calendar, label: ts("calendar"), icon: RailIcons.calendar, active: onCalendar }] : []),
               {
                 key: "people",
                 href: people,

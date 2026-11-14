@@ -355,7 +355,7 @@
       "disconnect": "Trennen",
       "titles": "Titel von Terminen zeigen",
       "titlesNote": "Dein Büro sieht, wie ein Meeting heißt, nicht nur, dass du in einem bist. Private Termine zeigen ihren nie.",
-      "privacy": "Dein Büro sieht, wann du in einem Meeting bist und bis wann. Sonst verlässt nichts deinen Kalender.",
+      "privacy": "Dein Büro sieht, wann du diese Woche beschäftigt bist und wann du gerade in einem Meeting bist. Sonst verlässt nichts deinen Kalender.",
       "unavailable": "Google ist hier nicht eingerichtet.",
       "notAllowed": "Erlaube TinyFloor, die Termine deines Kalenders zu sehen, und verbinde dann noch mal.",
       "again": "Verbinde noch einmal, um es abzuschließen."
@@ -1053,5 +1053,57 @@
     "wear": "Aufsetzen",
     "notNow": "Nicht jetzt",
     "thanks": "Frohe Weihnachten!"
+  },
+  "calendar": {
+    "title": "Kalender",
+    "schedule": "Planen",
+    "inviteTitle": "{office}-Meeting",
+    "inviteBody": "Auf TinyFloor beitreten:",
+    "connectBody": "Verbinde Google Kalender, um die heutigen Meetings zu sehen, ihnen von hier beizutreten und deinem Büro zu zeigen, wann du in einem bist.",
+    "connect": "Google Kalender verbinden",
+    "unavailable": "Google ist hier nicht eingerichtet.",
+    "notAllowed": "Erlaube TinyFloor, die Termine deines Kalenders zu sehen, und verbinde dann noch mal.",
+    "again": "Verbinde noch einmal, um es abzuschließen.",
+    "today": "Heute",
+    "tomorrow": "Morgen",
+    "untitled": "Beschäftigt",
+    "markedFree": "Frei",
+    "previousDay": "Vorheriger Tag",
+    "nextDay": "Nächster Tag",
+    "you": "du",
+    "busy": "Beschäftigt",
+    "kind": {
+      "out": "Abwesend",
+      "focus": "Fokuszeit"
+    },
+    "scheduleAt": "Um {time} planen",
+    "notConnected": "{count, plural, one {Noch nicht verbunden:} other {# noch nicht verbunden:}}",
+    "until": "Bis {time}",
+    "joinHere": "Beitreten",
+    "joinOn": {
+      "meet": "Über Google Meet beitreten",
+      "zoom": "Über Zoom beitreten",
+      "teams": "Über Teams beitreten",
+      "other": "Link öffnen",
+      "tinyfloor": "Beitreten"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "Online"
+    },
+    "privateNote": "Privat: Dein Büro sieht den Titel nie",
+    "inGoogle": "In Google Kalender öffnen",
+    "close": "Schließen",
+    "upNext": "Als Nächstes",
+    "nowUntil": "Jetzt · bis {time}",
+    "nothingComing": "Nichts in Sicht",
+    "calendars": "Kalender",
+    "yours": "Dein Kalender",
+    "settings": "Kalendereinstellungen",
+    "previousWeek": "Vorherige Woche",
+    "nextWeek": "Nächste Woche"
   }
 }

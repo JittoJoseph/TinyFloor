@@ -391,36 +391,56 @@ missing features on the map.
   came out a pixel wider or narrower depending on where the camera stopped.
   It's now drawn with the crisp shader on every screen.
 
-## Google Calendar (13 November)
+## Google Calendar (13 and 14 November)
 
-- **Your office sees when you're in a meeting, and until when.** Connected
-  from Settings → Calendar (read-only), your own page reads today's events
-  every 5 minutes and tells the room when you're busy. Teammates see it as
-  your note, "In a meeting until 3:30", wherever notes show (your name tag,
-  People, the dock), while you haven't written one: a note you wrote wins. A
-  call somewhere else (a Meet or Zoom link) gets the phone icon.
-- **Titles stay yours unless you turn them on.** With "Show event titles",
-  teammates see "Design review until 3:30"; a private event never shows its
-  title. Free time, all-day events, declined invites and where-you-work
-  entries never count, and back-to-back meetings read as one stretch.
-- **Nobody else's page reads your calendar.** Only your page asks the API for
-  your events; the room passes on just "until when" (and the title if you
-  allow it), and only in an office, never the demo office.
-- **Your day in Meetings.** What's left today, with Join for a meeting here
-  and Open for a Meet or Zoom link. "Add to Google Calendar" opens Google's
-  own new-event page with the office's Meetings link as the place, so a
-  meeting here lands on everyone's calendar with no access needed. A minute
-  before a meeting that's online, a prompt over the dock offers the way in.
-- **How the access is kept.** Google's popup code flow, as signing in uses,
-  asking for `calendar.events.readonly`. The refresh token is kept encrypted
-  (AES-GCM, a key derived from the ticket secret) in `calendar_links`, and
-  Disconnect revokes it at Google. Google gives a refresh token only the first
-  time someone agrees, so a connection without one is revoked and asked again.
-- **Before it's open to everyone**, the Google Cloud project needs the
-  Calendar API turned on and the scope on its consent screen. The scope is
-  sensitive, so until Google verifies the app only its test users can
-  connect (up to 100), and they see an "unverified app" warning.
-- **Not yet:** Outlook, and seating you at your desk during a call elsewhere.
+- **A Calendar page on the rail, laid out as a calendar**: down the side,
+  what's coming up (with the way in as it gets close) and the calendars on
+  the week (yours, and each teammate's with one connected, ticked to show over
+  yours in their colour, the choice kept in the browser); beside it, the week
+  as a grid (a day on a phone) with today marked, all-day things along the
+  top, a later meeting set in over the one it overlaps (side by side when
+  they start together) and a red line at now. Each meeting is tinted in its
+  calendar's colour with its words in a deep shade of it; past ones fade, the
+  one on now is solid. Your meetings
+  open their details (when, where online, Join, Open in Google Calendar); an
+  empty half hour opens Google's new-event page for that slot, with the
+  teammates on the week as guests. Not connected, Connect is right there.
+  (A team timeline and an agenda view were tried first and dropped: people
+  read a calendar as a calendar.)
+- **Your office sees when you're in a meeting, and until when.** Your own
+  page reads your week every 5 minutes and tells the room when you're busy;
+  teammates see it as your note, "In a meeting until 3:30", wherever notes
+  show, while you haven't written one (a note you wrote wins). A call
+  somewhere else gets the phone icon.
+- **Teammates' busy times come from the server**, read with each person's own
+  connected calendar and kept 5 minutes (`calendar_busy`), so the team's day
+  is current even for people who aren't on the floor. Only when, and whether
+  it's out of office or focus time; a title only if its owner shows titles,
+  never a private one. Free time, declined invites, plain all-day events and
+  where-you-work entries never count.
+- **Add to Google Calendar** opens Google's own new-event page with the
+  office's Meetings link as the place: no write access needed. A minute
+  before an online meeting, a prompt over the dock offers the way in.
+- **How the access is kept**: Google's popup code flow with
+  `calendar.events.readonly`; the refresh token encrypted (AES-GCM, a key
+  from the ticket secret) in `calendar_links`; Disconnect revokes it at
+  Google and drops the kept busy times.
+- **Its own Google Cloud project, never sign-in's.** Adding the scope to
+  the sign-in project (`tinyfloor`) on 14 November turned every Google
+  sign-in into an "unverified app" screen until it was taken out. Calendar
+  connects through the `tinyfloor-calendar` project's client
+  (`NEXT_PUBLIC_GOOGLE_CALENDAR_CLIENT_ID` in the app's build,
+  `GOOGLE_CALENDAR_CLIENT_ID` and the secret `GOOGLE_CALENDAR_CLIENT_SECRET`
+  in the API), so its review can't touch sign-in. Where the app has no
+  calendar client (production, until Google verifies the scope) there's no
+  calendar at all: no rail item, no Settings section, nothing read. Calendars
+  connected through the old client are dropped on their next read and
+  connect again.
+- **Open to everyone once Google verifies the scope.** Until then the
+  calendar project's own consent screen says "unverified" (and is capped at
+  100 people); sign-in stays verified either way. Asked of other calendar apps and not
+  here yet: Outlook, more than the primary calendar, RSVP from here, a daily
+  agenda message, status from event titles ("lunch" sets away).
 
 ## Small decisions worth remembering
 

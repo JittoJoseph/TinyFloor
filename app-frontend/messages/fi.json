@@ -355,7 +355,7 @@
       "disconnect": "Katkaise",
       "titles": "Näytä tapahtumien otsikot",
       "titlesNote": "Toimisto näkee kokouksen nimen, ei vain sitä, että olet kokouksessa. Yksityiset tapahtumat eivät koskaan näytä omaansa.",
-      "privacy": "Toimisto näkee, milloin olet kokouksessa ja mihin asti. Mitään muuta ei lähde kalenteristasi.",
+      "privacy": "Toimisto näkee, milloin olet varattu tällä viikolla ja milloin olet juuri nyt kokouksessa. Mitään muuta ei lähde kalenteristasi.",
       "unavailable": "Googlea ei ole määritetty täällä.",
       "notAllowed": "Salli TinyFloorin nähdä kalenterisi tapahtumat ja yhdistä uudelleen.",
       "again": "Yhdistä vielä kerran viimeistelläksesi."
@@ -1053,5 +1053,57 @@
     "wear": "Laita päähän",
     "notNow": "Ei nyt",
     "thanks": "Hyvää joulua!"
+  },
+  "calendar": {
+    "title": "Kalenteri",
+    "schedule": "Ajoita",
+    "inviteTitle": "{office}: kokous",
+    "inviteBody": "Liity TinyFloorissa:",
+    "connectBody": "Yhdistä Google-kalenteri nähdäksesi tämän päivän kokoukset, liittyäksesi niihin täältä ja kertoaksesi toimistolle, milloin olet kokouksessa.",
+    "connect": "Yhdistä Google-kalenteri",
+    "unavailable": "Googlea ei ole määritetty täällä.",
+    "notAllowed": "Salli TinyFloorin nähdä kalenterisi tapahtumat ja yhdistä uudelleen.",
+    "again": "Yhdistä vielä kerran viimeistelläksesi.",
+    "today": "Tänään",
+    "tomorrow": "Huomenna",
+    "untitled": "Varattu",
+    "markedFree": "Vapaa",
+    "previousDay": "Edellinen päivä",
+    "nextDay": "Seuraava päivä",
+    "you": "sinä",
+    "busy": "Varattu",
+    "kind": {
+      "out": "Poissa toimistolta",
+      "focus": "Keskittymisaika"
+    },
+    "scheduleAt": "Ajoita klo {time}",
+    "notConnected": "{count, plural, one {Ei vielä yhdistetty:} other {# ei vielä yhdistetty:}}",
+    "until": "{time} asti",
+    "joinHere": "Liity",
+    "joinOn": {
+      "meet": "Liity Google Meetissä",
+      "zoom": "Liity Zoomissa",
+      "teams": "Liity Teamsissa",
+      "other": "Avaa linkki",
+      "tinyfloor": "Liity"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "Verkossa"
+    },
+    "privateNote": "Yksityinen: toimisto ei koskaan näe sen otsikkoa",
+    "inGoogle": "Avaa Google-kalenterissa",
+    "close": "Sulje",
+    "upNext": "Seuraavaksi",
+    "nowUntil": "Nyt · {time} asti",
+    "nothingComing": "Ei tulevia",
+    "calendars": "Kalenterit",
+    "yours": "Oma kalenterisi",
+    "settings": "Kalenterin asetukset",
+    "previousWeek": "Edellinen viikko",
+    "nextWeek": "Seuraava viikko"
   }
 }

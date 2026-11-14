@@ -29,6 +29,7 @@ import { PlanSection } from "./PlanSection";
 import { CalendarSettings } from "./CalendarSettings";
 import { Profile, SignIn } from "@/components/account/AccountView";
 import { leftPath } from "@/lib/links";
+import { calendarAvailable } from "@/lib/calendar";
 
 type Section = "profile" | "signin" | "calendar" | "general" | "media" | "notifications" | "accessibility" | "office" | "plan";
 const SECTIONS: Section[] = ["profile", "signin", "calendar", "general", "media", "notifications", "accessibility", "office", "plan"];
@@ -57,7 +58,7 @@ export function SettingsView() {
   const tp = useTranslations("office.profile");
   const place = usePlace();
   const { user } = useAuth();
-  const account: Section[] = user && !user.guest ? ["profile", "signin", "calendar"] : [];
+  const account: Section[] = user && !user.guest ? ["profile", "signin", ...(calendarAvailable ? (["calendar"] as const) : [])] : [];
   const yours: Section[] = ["general", "media", "notifications", "accessibility"];
   const office: Section[] = place.kind === "office" ? ["office", "plan"] : [];
   const shown = [...account, ...yours, ...office];

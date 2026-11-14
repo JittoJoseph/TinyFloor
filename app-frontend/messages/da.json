@@ -355,7 +355,7 @@
       "disconnect": "Afbryd",
       "titles": "Vis begivenhedernes titler",
       "titlesNote": "Kontoret ser, hvad et møde hedder, ikke kun at du er til et. Private begivenheder viser aldrig deres.",
-      "privacy": "Kontoret ser, hvornår du er til møde, og indtil hvornår. Intet andet forlader din kalender.",
+      "privacy": "Kontoret ser, hvornår du er optaget i denne uge, og hvornår du er til møde lige nu. Intet andet forlader din kalender.",
       "unavailable": "Google er ikke sat op her.",
       "notAllowed": "Giv TinyFloor lov til at se din kalenders begivenheder, og forbind så igen.",
       "again": "Forbind én gang til for at gøre det færdigt."
@@ -1053,5 +1053,57 @@
     "wear": "Tag den på",
     "notNow": "Ikke nu",
     "thanks": "Glædelig jul!"
+  },
+  "calendar": {
+    "title": "Kalender",
+    "schedule": "Planlæg",
+    "inviteTitle": "Møde i {office}",
+    "inviteBody": "Deltag på TinyFloor:",
+    "connectBody": "Forbind Google Kalender for at se dagens møder, deltage herfra og lade kontoret vide, når du er til møde.",
+    "connect": "Forbind Google Kalender",
+    "unavailable": "Google er ikke sat op her.",
+    "notAllowed": "Giv TinyFloor lov til at se din kalenders begivenheder, og forbind så igen.",
+    "again": "Forbind én gang til for at gøre det færdigt.",
+    "today": "I dag",
+    "tomorrow": "I morgen",
+    "untitled": "Optaget",
+    "markedFree": "Ledig",
+    "previousDay": "Forrige dag",
+    "nextDay": "Næste dag",
+    "you": "dig",
+    "busy": "Optaget",
+    "kind": {
+      "out": "Ikke på kontoret",
+      "focus": "Fokustid"
+    },
+    "scheduleAt": "Planlæg kl. {time}",
+    "notConnected": "{count, plural, one {Ikke forbundet endnu:} other {# ikke forbundet endnu:}}",
+    "until": "Indtil {time}",
+    "joinHere": "Deltag",
+    "joinOn": {
+      "meet": "Deltag i Google Meet",
+      "zoom": "Deltag i Zoom",
+      "teams": "Deltag i Teams",
+      "other": "Åbn link",
+      "tinyfloor": "Deltag"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "Online"
+    },
+    "privateNote": "Privat: kontoret ser aldrig titlen",
+    "inGoogle": "Åbn i Google Kalender",
+    "close": "Luk",
+    "upNext": "Næste",
+    "nowUntil": "Nu · indtil {time}",
+    "nothingComing": "Intet på vej",
+    "calendars": "Kalendere",
+    "yours": "Din kalender",
+    "settings": "Kalenderindstillinger",
+    "previousWeek": "Forrige uge",
+    "nextWeek": "Næste uge"
   }
 }

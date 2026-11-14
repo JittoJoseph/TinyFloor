@@ -75,8 +75,11 @@ export function GoogleButton({
   onError,
   busy,
   scope = SIGN_IN,
+  clientId = CLIENT_ID,
 }: {
   label: string;
+  /** Whose OAuth client asks: sign-in's by default. Google Calendar has a client of its own, in its own Google Cloud project. */
+  clientId?: string;
   /** What to ask Google for: signing in by default; connecting a calendar asks for it too. */
   scope?: string;
   /** The one-time code, once the person has picked their account and agreed. */
@@ -94,13 +97,13 @@ export function GoogleButton({
   });
 
   useEffect(() => {
-    if (!CLIENT_ID) return;
+    if (!clientId) return;
     let cancelled = false;
     loadGoogle().then(
       ({ oauth2 }) => {
         if (cancelled) return;
         client.current = oauth2.initCodeClient({
-          client_id: CLIENT_ID,
+          client_id: clientId,
           scope,
           ux_mode: "popup",
           callback: (response) => (response.code ? handlers.current.onCode(response.code) : handlers.current.onError()),
@@ -115,9 +118,9 @@ export function GoogleButton({
     return () => {
       cancelled = true;
     };
-  }, [scope]);
+  }, [scope, clientId]);
 
-  if (!CLIENT_ID) return null;
+  if (!clientId) return null;
   return (
     <button
       type="button"

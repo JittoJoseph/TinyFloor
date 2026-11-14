@@ -1,7 +1,7 @@
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { Mail, type LegalSection } from "./LegalPage";
 
-export const PRIVACY_UPDATED = "30 October 2026";
+export const PRIVACY_UPDATED = "14 November 2026";
 
 export const privacyIntro = (
   <p>
@@ -68,6 +68,38 @@ export const privacySections: LegalSection[] = [
     ),
   },
   {
+    id: "calendar",
+    title: "Google Calendar",
+    body: (
+      <>
+        <p>
+          You can choose to connect your Google Calendar in Settings. If you do, TinyFloor reads the events on your primary calendar for the
+          current day, read-only: their times, titles, whether you accepted them, whether they are private, and their meeting links. We use
+          them only to show the people in your offices that you are in a meeting and until when, to list your meetings for the day with a way to
+          join, and to remind you just before an online meeting starts.
+        </p>
+        <p>
+          Your teammates see that you are busy and until when. They see an event&apos;s title only if you turn on &ldquo;Show event titles&rdquo;,
+          and never the title of a private event. We never create, change or delete events, and we don&apos;t store your events: they are read
+          when your own app asks for them. We keep the access Google gives us encrypted, and disconnecting your calendar deletes it and revokes
+          it at Google. You can also remove TinyFloor&apos;s access from your{" "}
+          <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">
+            Google Account
+          </a>{" "}
+          at any time.
+        </p>
+        <p>
+          TinyFloor&apos;s use and transfer to any other app of information received from Google APIs will adhere to the{" "}
+          <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">
+            Google API Services User Data Policy
+          </a>
+          , including the Limited Use requirements. We don&apos;t use Google user data for advertising, sell it, or use it to train AI models,
+          and no person at TinyFloor reads it unless you ask us to for support, it is needed for security, or the law requires it.
+        </p>
+      </>
+    ),
+  },
+  {
     id: "use",
     title: "How we use information",
     body: (
@@ -129,7 +161,7 @@ export const privacySections: LegalSection[] = [
           bots.
         </li>
         <li>
-          <strong>Google</strong> signs you in if you choose Google, and provides Google Analytics.
+          <strong>Google</strong> signs you in if you choose Google, shows your calendar if you connect it, and provides Google Analytics.
         </li>
         <li>
           <strong>PostHog</strong> helps us understand how TinyFloor is used and spot errors. Inside the app it never records names, messages

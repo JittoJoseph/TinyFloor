@@ -1,6 +1,6 @@
 "use client";
 
-import { Chats, Floor, Gear, Meetings, Office, People, SignOut } from "web-shared/components/ui/icons";
+import { Calendar, Chats, Floor, Gear, Meetings, Office, People, SignOut } from "web-shared/components/ui/icons";
 
 /**
  * The rail's icons, from the app's one pack (components/ui/icons). The rail
@@ -11,6 +11,7 @@ export const RailIcons = {
   chat: <Chats />,
   people: <People />,
   meetings: <Meetings />,
+  calendar: <Calendar />,
   office: <Office />,
   settings: <Gear />,
   leave: <SignOut className="rtl:-scale-x-100" />,

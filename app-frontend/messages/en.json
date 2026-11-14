@@ -298,7 +298,8 @@
       "notifications": "Notifications",
       "accessibility": "Accessibility",
       "office": "Office",
-      "plan": "Plan and billing"
+      "plan": "Plan and billing",
+      "calendar": "Calendar"
     },
     "themeNote": "System follows your device.",
     "languageTitle": "Display language",
@@ -343,14 +344,30 @@
       "media": "Your microphone and camera, and how you sound.",
       "notifications": "What lets you know something's happening.",
       "accessibility": "Motion and performance, to suit you and your device.",
-      "plan": "What your office is on, and how it's paid for."
+      "plan": "What your office is on, and how it's paid for.",
+      "calendar": "Show your office when you're in a meeting, and see your day in Meetings."
+    },
+    "calendar": {
+      "google": "Google Calendar",
+      "connect": "Connect",
+      "connectNote": "Read-only access",
+      "connected": "Connected",
+      "disconnect": "Disconnect",
+      "titles": "Show event titles",
+      "titlesNote": "Teammates see meeting names. Private events stay hidden.",
+      "privacy": "Your office sees when you're busy. Nothing else leaves your calendar.",
+      "unavailable": "Google isn't set up here.",
+      "notAllowed": "Allow TinyFloor to see your calendar's events, then connect again.",
+      "again": "Connect once more to finish."
     }
   },
   "scene": {
     "meeting": "Meeting",
     "drawing": "Drawing",
     "yourDesk": "Your desk",
-    "claimDesk": "Claim desk"
+    "claimDesk": "Claim desk",
+    "inMeetingUntil": "In a meeting until {time}",
+    "meetingTitledUntil": "{title} until {time}"
   },
   "actions": {
     "sit": "Sit down",
@@ -688,7 +705,28 @@
     "readyTitle": "Ready to join?",
     "joinNow": "Join now",
     "inMeeting": "In this meeting",
-    "asked": "Asked"
+    "asked": "Asked",
+    "day": {
+      "title": "Today",
+      "schedule": "Add to Google Calendar",
+      "inviteTitle": "{office} meeting",
+      "inviteBody": "Join on TinyFloor:",
+      "clear": "Nothing else on your calendar today",
+      "connect": "See your day here: <link>connect Google Calendar</link>",
+      "now": "Now",
+      "until": "Until {time}",
+      "untitled": "Busy",
+      "join": "Join",
+      "open": "Open"
+    },
+    "reminder": {
+      "untitled": "Meeting",
+      "soon": "Starts in a minute",
+      "started": "Started",
+      "notNow": "Not now",
+      "join": "Join",
+      "open": "Open"
+    }
   },
   "help": {
     "title": "Talk to the TinyFloor team",
@@ -1015,5 +1053,61 @@
     "wear": "Wear it",
     "notNow": "Not now",
     "thanks": "Merry Christmas!"
+  },
+  "calendar": {
+    "title": "Calendar",
+    "schedule": "Schedule",
+    "inviteTitle": "{office} meeting",
+    "inviteBody": "Join on TinyFloor:",
+    "connect": "Connect Google Calendar",
+    "unavailable": "Google isn't set up here.",
+    "notAllowed": "Allow TinyFloor to see your calendar's events, then connect again.",
+    "again": "Connect once more to finish.",
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "untitled": "Busy",
+    "markedFree": "Free",
+    "previousDay": "Previous day",
+    "nextDay": "Next day",
+    "you": "you",
+    "busy": "Busy",
+    "kind": {
+      "out": "Out of office",
+      "focus": "Focus time"
+    },
+    "scheduleAt": "Schedule at {time}",
+    "notConnected": "{count, plural, one {Not connected yet} other {# not connected yet}}",
+    "until": "Until {time}",
+    "joinHere": "Join",
+    "joinOn": {
+      "meet": "Join on Google Meet",
+      "zoom": "Join on Zoom",
+      "teams": "Join on Teams",
+      "other": "Open link",
+      "tinyfloor": "Join"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "Online"
+    },
+    "privateNote": "Private: your office never sees its title",
+    "inGoogle": "Open in Google Calendar",
+    "close": "Close",
+    "upNext": "Up next",
+    "nowUntil": "Now · until {time}",
+    "nothingComing": "Nothing coming up",
+    "calendars": "Calendars",
+    "yours": "Your calendar",
+    "settings": "Calendar settings",
+    "previousWeek": "Previous week",
+    "nextWeek": "Next week",
+    "connectShort": "Connect",
+    "google": "Google Calendar",
+    "notLinked": "Not connected",
+    "emptyTitle": "Your meetings show up here",
+    "readOnly": "Read-only access"
   }
 }

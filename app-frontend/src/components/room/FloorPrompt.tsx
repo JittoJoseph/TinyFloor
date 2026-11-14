@@ -12,6 +12,7 @@ import { useDecorate } from "@/lib/decorate";
 import { EASE_OUT } from "@/lib/ease";
 import { touchFirst } from "@/lib/touch";
 import { ChristmasOffer } from "./ChristmasOffer";
+import { MeetingReminder } from "./MeetingReminder";
 
 /** How long a claim is remembered as just made, for the desk's "Claimed" (DeskPlate). */
 const CLAIMED_MS = 2200;
@@ -31,8 +32,9 @@ export function FloorPrompt() {
   const { claimed } = useDesks();
   // Decorating a desk, the floor is the desk's: nothing to do here meanwhile.
   const { desk: decorating } = useDecorate();
-  // At Christmas, the presents' offer takes this place while it's showing.
+  // At Christmas, the presents' offer takes this place while it's showing; a meeting about to start takes it from both.
   const [offering, setOffering] = useState(false);
+  const [reminding, setReminding] = useState(false);
 
   // A desk is a member's, in an office: not a guest's, and not in the lobby.
   const canClaim = place.kind === "office" && place.role !== "guest" && !!user;
@@ -51,9 +53,10 @@ export function FloorPrompt() {
 
   return (
     <>
-    <ChristmasOffer onShown={setOffering} />
+    <MeetingReminder onShown={setReminding} />
+    {!reminding && <ChristmasOffer onShown={setOffering} />}
     <AnimatePresence mode="wait">
-      {action && !decorating && !offering && (
+      {action && !decorating && !offering && !reminding && (
         <motion.button
           key={action}
           type="button"

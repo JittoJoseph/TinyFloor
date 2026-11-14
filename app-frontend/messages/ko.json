@@ -298,7 +298,8 @@
       "notifications": "알림",
       "accessibility": "접근성",
       "office": "오피스",
-      "plan": "요금제 및 결제"
+      "plan": "요금제 및 결제",
+      "calendar": "캘린더"
     },
     "themeNote": "'시스템'은 기기 설정을 따라요.",
     "languageTitle": "표시 언어",
@@ -343,14 +344,30 @@
       "media": "마이크와 카메라, 그리고 목소리가 들리는 방식.",
       "notifications": "무슨 일이 생겼을 때 알려 주는 방식.",
       "accessibility": "나와 기기에 맞춘 움직임과 성능.",
-      "plan": "오피스의 요금제와 결제 방법."
+      "plan": "오피스의 요금제와 결제 방법.",
+      "calendar": "회의 중일 때 오피스에 알리고, 미팅에서 하루 일정을 확인하세요."
+    },
+    "calendar": {
+      "google": "Google 캘린더",
+      "connect": "연결",
+      "connectNote": "읽기 전용",
+      "connected": "연결됨",
+      "disconnect": "연결 해제",
+      "titles": "일정 제목 보이기",
+      "titlesNote": "팀원에게 회의 이름이 보여요. 비공개 일정은 보이지 않아요.",
+      "privacy": "오피스에는 바쁜 시간만 보여요. 그 외에는 캘린더 밖으로 나가지 않아요.",
+      "unavailable": "여기에는 Google이 설정되어 있지 않아요.",
+      "notAllowed": "TinyFloor가 캘린더 일정을 볼 수 있게 허용한 뒤 다시 연결하세요.",
+      "again": "마무리하려면 한 번 더 연결하세요."
     }
   },
   "scene": {
     "meeting": "회의",
     "drawing": "그리는 중",
     "yourDesk": "내 책상",
-    "claimDesk": "자리 맡기"
+    "claimDesk": "자리 맡기",
+    "inMeetingUntil": "{time}까지 회의 중",
+    "meetingTitledUntil": "{title} ({time}까지)"
   },
   "actions": {
     "sit": "앉기",
@@ -688,7 +705,28 @@
     "readyTitle": "참여할 준비가 되셨나요?",
     "joinNow": "지금 참여",
     "inMeeting": "이 회의 참여자",
-    "asked": "요청함"
+    "asked": "요청함",
+    "day": {
+      "title": "오늘",
+      "schedule": "Google 캘린더에 추가",
+      "inviteTitle": "{office} 미팅",
+      "inviteBody": "TinyFloor에서 참여:",
+      "clear": "오늘은 더 이상 일정이 없어요",
+      "connect": "여기서 하루 일정 보기: <link>Google 캘린더 연결</link>",
+      "now": "진행 중",
+      "until": "{time}까지",
+      "untitled": "바쁨",
+      "join": "참여",
+      "open": "열기"
+    },
+    "reminder": {
+      "untitled": "미팅",
+      "soon": "1분 후 시작",
+      "started": "시작됨",
+      "notNow": "나중에",
+      "join": "참여",
+      "open": "열기"
+    }
   },
   "help": {
     "title": "TinyFloor 팀과 이야기하기",
@@ -1015,5 +1053,61 @@
     "wear": "쓰기",
     "notNow": "나중에",
     "thanks": "메리 크리스마스!"
+  },
+  "calendar": {
+    "title": "캘린더",
+    "schedule": "일정 잡기",
+    "inviteTitle": "{office} 미팅",
+    "inviteBody": "TinyFloor에서 참여:",
+    "connect": "Google 캘린더 연결",
+    "unavailable": "여기에는 Google이 설정되어 있지 않아요.",
+    "notAllowed": "TinyFloor가 캘린더 일정을 볼 수 있게 허용한 뒤 다시 연결하세요.",
+    "again": "마무리하려면 한 번 더 연결하세요.",
+    "today": "오늘",
+    "tomorrow": "내일",
+    "untitled": "바쁨",
+    "markedFree": "한가함",
+    "previousDay": "이전 날",
+    "nextDay": "다음 날",
+    "you": "나",
+    "busy": "바쁨",
+    "kind": {
+      "out": "부재 중",
+      "focus": "집중 시간"
+    },
+    "scheduleAt": "{time}에 일정 잡기",
+    "notConnected": "{count, plural, other {아직 연결 안 함(#명)}}",
+    "until": "{time}까지",
+    "joinHere": "참여",
+    "joinOn": {
+      "meet": "Google Meet으로 참여",
+      "zoom": "Zoom으로 참여",
+      "teams": "Teams로 참여",
+      "other": "링크 열기",
+      "tinyfloor": "참여"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "온라인"
+    },
+    "privateNote": "비공개: 오피스에는 제목이 보이지 않아요",
+    "inGoogle": "Google 캘린더에서 열기",
+    "close": "닫기",
+    "upNext": "다음 일정",
+    "nowUntil": "진행 중 · {time}까지",
+    "nothingComing": "예정된 일정이 없어요",
+    "calendars": "캘린더",
+    "yours": "내 캘린더",
+    "settings": "캘린더 설정",
+    "previousWeek": "이전 주",
+    "nextWeek": "다음 주",
+    "connectShort": "연결",
+    "google": "Google 캘린더",
+    "notLinked": "연결 안 됨",
+    "emptyTitle": "여기에 회의가 표시돼요",
+    "readOnly": "읽기 전용"
   }
 }

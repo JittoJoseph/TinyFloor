@@ -15,6 +15,9 @@ export interface SceneText {
   cancel: string;
   /** The chip, once the desk is yours. */
   claimed: string;
+  /** Someone's note while their calendar has them in a meeting: "In a meeting until {time}", or with its title. */
+  inMeetingUntil: string;
+  meetingTitledUntil: string;
 }
 
 let text: SceneText = {
@@ -27,6 +30,8 @@ let text: SceneText = {
   claimConfirm: "Claim",
   cancel: "Cancel",
   claimed: "Claimed",
+  inMeetingUntil: "In a meeting until {time}",
+  meetingTitledUntil: "{title} until {time}",
 };
 
 export function setSceneText(next: SceneText) {

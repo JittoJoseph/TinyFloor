@@ -298,7 +298,8 @@
       "notifications": "התראות",
       "accessibility": "נגישות",
       "office": "משרד",
-      "plan": "תוכנית וחיוב"
+      "plan": "תוכנית וחיוב",
+      "calendar": "יומן"
     },
     "themeNote": "\"מערכת\" עוקב אחרי המכשיר שלך.",
     "languageTitle": "שפת תצוגה",
@@ -343,14 +344,30 @@
       "media": "המיקרופון והמצלמה שלך, ואיך הקול שלך נשמע.",
       "notifications": "מה מודיע לך שמשהו קורה.",
       "accessibility": "תנועה וביצועים, שיתאימו לך ולמכשיר שלך.",
-      "plan": "התוכנית של המשרד שלך ואיך משלמים עליה."
+      "plan": "התוכנית של המשרד שלך ואיך משלמים עליה.",
+      "calendar": "הראו למשרד מתי אתם בפגישה, וראו את היום שלכם בפגישות."
+    },
+    "calendar": {
+      "google": "יומן Google",
+      "connect": "חיבור",
+      "connectNote": "קריאה בלבד",
+      "connected": "מחובר",
+      "disconnect": "ניתוק",
+      "titles": "הצגת כותרות של אירועים",
+      "titlesNote": "הצוות רואה את שמות הפגישות. אירועים פרטיים נשארים מוסתרים.",
+      "privacy": "המשרד רואה מתי אתה עסוק. שום דבר אחר לא יוצא מהיומן שלך.",
+      "unavailable": "Google לא מוגדר כאן.",
+      "notAllowed": "אפשרו ל-TinyFloor לראות את האירועים ביומן, ואז חברו שוב.",
+      "again": "חברו פעם נוספת כדי לסיים."
     }
   },
   "scene": {
     "meeting": "פגישה",
     "drawing": "מצייר/ת",
     "yourDesk": "השולחן שלך",
-    "claimDesk": "תפיסת שולחן"
+    "claimDesk": "תפיסת שולחן",
+    "inMeetingUntil": "בפגישה עד {time}",
+    "meetingTitledUntil": "{title} עד {time}"
   },
   "actions": {
     "sit": "לשבת",
@@ -688,7 +705,28 @@
     "readyTitle": "מוכנים להצטרף?",
     "joinNow": "הצטרפות עכשיו",
     "inMeeting": "בפגישה הזו",
-    "asked": "נשלח"
+    "asked": "נשלח",
+    "day": {
+      "title": "היום",
+      "schedule": "הוספה ליומן Google",
+      "inviteTitle": "פגישת {office}",
+      "inviteBody": "הצטרפות ב-TinyFloor:",
+      "clear": "אין יותר שום דבר ביומן היום",
+      "connect": "ראו כאן את היום שלכם: <link>חברו את יומן Google</link>",
+      "now": "עכשיו",
+      "until": "עד {time}",
+      "untitled": "תפוס",
+      "join": "הצטרפות",
+      "open": "פתיחה"
+    },
+    "reminder": {
+      "untitled": "פגישה",
+      "soon": "מתחילה בעוד דקה",
+      "started": "התחילה",
+      "notNow": "לא עכשיו",
+      "join": "הצטרפות",
+      "open": "פתיחה"
+    }
   },
   "help": {
     "title": "לדבר עם הצוות של TinyFloor",
@@ -1015,5 +1053,61 @@
     "wear": "לחבוש",
     "notNow": "לא עכשיו",
     "thanks": "חג מולד שמח!"
+  },
+  "calendar": {
+    "title": "יומן",
+    "schedule": "תזמון",
+    "inviteTitle": "פגישת {office}",
+    "inviteBody": "הצטרפות ב-TinyFloor:",
+    "connect": "חיבור יומן Google",
+    "unavailable": "Google לא מוגדר כאן.",
+    "notAllowed": "אפשרו ל-TinyFloor לראות את האירועים ביומן, ואז חברו שוב.",
+    "again": "חברו פעם נוספת כדי לסיים.",
+    "today": "היום",
+    "tomorrow": "מחר",
+    "untitled": "תפוס",
+    "markedFree": "פנוי",
+    "previousDay": "היום הקודם",
+    "nextDay": "היום הבא",
+    "you": "את/ה",
+    "busy": "עסוק",
+    "kind": {
+      "out": "מחוץ למשרד",
+      "focus": "זמן ריכוז"
+    },
+    "scheduleAt": "תזמון ב-{time}",
+    "notConnected": "{count, plural, one {עדיין לא מחובר} other {# עדיין לא מחוברים}}",
+    "until": "עד {time}",
+    "joinHere": "הצטרפות",
+    "joinOn": {
+      "meet": "הצטרפות ב-Google Meet",
+      "zoom": "הצטרפות ב-Zoom",
+      "teams": "הצטרפות ב-Teams",
+      "other": "פתיחת הקישור",
+      "tinyfloor": "הצטרפות"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "אונליין"
+    },
+    "privateNote": "פרטי: המשרד אף פעם לא רואה את הכותרת",
+    "inGoogle": "פתיחה ביומן Google",
+    "close": "סגירה",
+    "upNext": "הבא",
+    "nowUntil": "עכשיו · עד {time}",
+    "nothingComing": "אין שום דבר בקרוב",
+    "calendars": "יומנים",
+    "yours": "היומן שלך",
+    "settings": "הגדרות היומן",
+    "previousWeek": "השבוע הקודם",
+    "nextWeek": "השבוע הבא",
+    "connectShort": "חיבור",
+    "google": "יומן Google",
+    "notLinked": "לא מחובר",
+    "emptyTitle": "כאן יופיעו הפגישות שלך",
+    "readOnly": "קריאה בלבד"
   }
 }

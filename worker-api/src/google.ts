@@ -226,7 +226,7 @@ function fromClaims(env: Env, claims: Record<string, unknown>): GoogleIdentity {
   return { sub: claims.sub as string, email: (claims.email as string).toLowerCase(), name: typeof claims.name === "string" ? claims.name : "" };
 }
 
-function readClaims(token: string): Record<string, unknown> {
+export function readClaims(token: string): Record<string, unknown> {
   const claims = decodePart(token.split(".")[1] ?? "");
   if (!claims) throw new HttpError(401, "google_failed", "Google sign-in didn't go through. Try again");
   return claims as Record<string, unknown>;

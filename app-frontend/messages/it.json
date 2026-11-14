@@ -298,7 +298,8 @@
       "notifications": "Notifiche",
       "accessibility": "Accessibilità",
       "office": "Ufficio",
-      "plan": "Piano e fatturazione"
+      "plan": "Piano e fatturazione",
+      "calendar": "Calendario"
     },
     "themeNote": "«Sistema» segue il tuo dispositivo.",
     "languageTitle": "Lingua dell'interfaccia",
@@ -343,14 +344,30 @@
       "media": "Il microfono e la fotocamera, e come si sente la tua voce.",
       "notifications": "Cosa ti avvisa quando succede qualcosa.",
       "accessibility": "Movimento e prestazioni, adatti a te e al tuo dispositivo.",
-      "plan": "Il piano del tuo ufficio e come viene pagato."
+      "plan": "Il piano del tuo ufficio e come viene pagato.",
+      "calendar": "Mostra al tuo ufficio quando sei in riunione e vedi la tua giornata in Riunioni."
+    },
+    "calendar": {
+      "google": "Google Calendar",
+      "connect": "Collega",
+      "connectNote": "Sola lettura",
+      "connected": "Collegato",
+      "disconnect": "Scollega",
+      "titles": "Mostra i titoli degli eventi",
+      "titlesNote": "Il team vede il nome delle riunioni. Gli eventi privati restano nascosti.",
+      "privacy": "Il tuo ufficio vede quando sei occupato. Nient'altro esce dal tuo calendario.",
+      "unavailable": "Google non è configurato qui.",
+      "notAllowed": "Consenti a TinyFloor di vedere gli eventi del tuo calendario, poi ricollegalo.",
+      "again": "Collegalo ancora una volta per finire."
     }
   },
   "scene": {
     "meeting": "Riunione",
     "drawing": "Sta disegnando",
     "yourDesk": "La tua scrivania",
-    "claimDesk": "Prendi scrivania"
+    "claimDesk": "Prendi scrivania",
+    "inMeetingUntil": "In riunione fino alle {time}",
+    "meetingTitledUntil": "{title} fino alle {time}"
   },
   "actions": {
     "sit": "Siediti",
@@ -688,7 +705,28 @@
     "readyTitle": "Pronto a partecipare?",
     "joinNow": "Partecipa ora",
     "inMeeting": "In questa riunione",
-    "asked": "Invitato"
+    "asked": "Invitato",
+    "day": {
+      "title": "Oggi",
+      "schedule": "Aggiungi a Google Calendar",
+      "inviteTitle": "Riunione {office}",
+      "inviteBody": "Partecipa su TinyFloor:",
+      "clear": "Nient'altro nel tuo calendario oggi",
+      "connect": "Vedi qui la tua giornata: <link>collega Google Calendar</link>",
+      "now": "Ora",
+      "until": "Fino alle {time}",
+      "untitled": "Occupato",
+      "join": "Partecipa",
+      "open": "Apri"
+    },
+    "reminder": {
+      "untitled": "Riunione",
+      "soon": "Inizia tra un minuto",
+      "started": "Iniziata",
+      "notNow": "Non ora",
+      "join": "Partecipa",
+      "open": "Apri"
+    }
   },
   "help": {
     "title": "Scrivi al team di TinyFloor",
@@ -1015,5 +1053,61 @@
     "wear": "Indossalo",
     "notNow": "Non ora",
     "thanks": "Buon Natale!"
+  },
+  "calendar": {
+    "title": "Calendario",
+    "schedule": "Pianifica",
+    "inviteTitle": "Riunione {office}",
+    "inviteBody": "Partecipa su TinyFloor:",
+    "connect": "Collega Google Calendar",
+    "unavailable": "Google non è configurato qui.",
+    "notAllowed": "Consenti a TinyFloor di vedere gli eventi del tuo calendario, poi ricollegalo.",
+    "again": "Collegalo ancora una volta per finire.",
+    "today": "Oggi",
+    "tomorrow": "Domani",
+    "untitled": "Occupato",
+    "markedFree": "Libero",
+    "previousDay": "Giorno precedente",
+    "nextDay": "Giorno successivo",
+    "you": "tu",
+    "busy": "Occupato",
+    "kind": {
+      "out": "Fuori ufficio",
+      "focus": "Tempo di concentrazione"
+    },
+    "scheduleAt": "Pianifica alle {time}",
+    "notConnected": "{count, plural, one {Non ancora collegato} other {# non ancora collegati}}",
+    "until": "Fino alle {time}",
+    "joinHere": "Partecipa",
+    "joinOn": {
+      "meet": "Partecipa su Google Meet",
+      "zoom": "Partecipa su Zoom",
+      "teams": "Partecipa su Teams",
+      "other": "Apri link",
+      "tinyfloor": "Partecipa"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "Online"
+    },
+    "privateNote": "Privato: il tuo ufficio non ne vede mai il titolo",
+    "inGoogle": "Apri in Google Calendar",
+    "close": "Chiudi",
+    "upNext": "Prossimi",
+    "nowUntil": "Ora · fino alle {time}",
+    "nothingComing": "Niente in arrivo",
+    "calendars": "Calendari",
+    "yours": "Il tuo calendario",
+    "settings": "Impostazioni del calendario",
+    "previousWeek": "Settimana precedente",
+    "nextWeek": "Settimana successiva",
+    "connectShort": "Collega",
+    "google": "Google Calendar",
+    "notLinked": "Non collegato",
+    "emptyTitle": "Qui compaiono le tue riunioni",
+    "readOnly": "Sola lettura"
   }
 }

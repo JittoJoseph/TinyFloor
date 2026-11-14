@@ -298,7 +298,8 @@
       "notifications": "Aviseringar",
       "accessibility": "Tillgänglighet",
       "office": "Kontor",
-      "plan": "Plan och betalning"
+      "plan": "Plan och betalning",
+      "calendar": "Kalender"
     },
     "themeNote": "”System” följer din enhet.",
     "languageTitle": "Visningsspråk",
@@ -343,14 +344,30 @@
       "media": "Din mikrofon och kamera, och hur du låter.",
       "notifications": "Det som säger till när något händer.",
       "accessibility": "Rörelse och prestanda, efter dig och din enhet.",
-      "plan": "Vilken plan ditt kontor har och hur den betalas."
+      "plan": "Vilken plan ditt kontor har och hur den betalas.",
+      "calendar": "Visa kontoret när du sitter i möte, och se din dag under Möten."
+    },
+    "calendar": {
+      "google": "Google Kalender",
+      "connect": "Anslut",
+      "connectNote": "Endast läsbehörighet",
+      "connected": "Ansluten",
+      "disconnect": "Koppla från",
+      "titles": "Visa händelsernas titlar",
+      "titlesNote": "Teamet ser mötenas namn. Privata händelser förblir dolda.",
+      "privacy": "Ditt kontor ser när du är upptagen. Inget annat lämnar din kalender.",
+      "unavailable": "Google är inte inställt här.",
+      "notAllowed": "Låt TinyFloor se din kalenders händelser och anslut sedan igen.",
+      "again": "Anslut en gång till för att bli klar."
     }
   },
   "scene": {
     "meeting": "Möte",
     "drawing": "Ritar",
     "yourDesk": "Ditt skrivbord",
-    "claimDesk": "Ta skrivbord"
+    "claimDesk": "Ta skrivbord",
+    "inMeetingUntil": "I ett möte till {time}",
+    "meetingTitledUntil": "{title} till {time}"
   },
   "actions": {
     "sit": "Sätt dig",
@@ -688,7 +705,28 @@
     "readyTitle": "Redo att ansluta?",
     "joinNow": "Anslut nu",
     "inMeeting": "I mötet",
-    "asked": "Tillfrågad"
+    "asked": "Tillfrågad",
+    "day": {
+      "title": "Idag",
+      "schedule": "Lägg till i Google Kalender",
+      "inviteTitle": "Möte i {office}",
+      "inviteBody": "Gå med på TinyFloor:",
+      "clear": "Inget mer i din kalender idag",
+      "connect": "Se din dag här: <link>anslut Google Kalender</link>",
+      "now": "Nu",
+      "until": "Till {time}",
+      "untitled": "Upptagen",
+      "join": "Gå med",
+      "open": "Öppna"
+    },
+    "reminder": {
+      "untitled": "Möte",
+      "soon": "Börjar om en minut",
+      "started": "Har börjat",
+      "notNow": "Inte nu",
+      "join": "Gå med",
+      "open": "Öppna"
+    }
   },
   "help": {
     "title": "Skriv till TinyFloor-teamet",
@@ -1015,5 +1053,61 @@
     "wear": "Ta på den",
     "notNow": "Inte nu",
     "thanks": "God jul!"
+  },
+  "calendar": {
+    "title": "Kalender",
+    "schedule": "Boka",
+    "inviteTitle": "Möte i {office}",
+    "inviteBody": "Gå med på TinyFloor:",
+    "connect": "Anslut Google Kalender",
+    "unavailable": "Google är inte inställt här.",
+    "notAllowed": "Låt TinyFloor se din kalenders händelser och anslut sedan igen.",
+    "again": "Anslut en gång till för att bli klar.",
+    "today": "Idag",
+    "tomorrow": "Imorgon",
+    "untitled": "Upptagen",
+    "markedFree": "Ledig",
+    "previousDay": "Föregående dag",
+    "nextDay": "Nästa dag",
+    "you": "du",
+    "busy": "Upptagen",
+    "kind": {
+      "out": "Inte på kontoret",
+      "focus": "Fokustid"
+    },
+    "scheduleAt": "Boka kl. {time}",
+    "notConnected": "{count, plural, one {Inte anslutna än} other {# inte anslutna än}}",
+    "until": "Till {time}",
+    "joinHere": "Gå med",
+    "joinOn": {
+      "meet": "Gå med i Google Meet",
+      "zoom": "Gå med i Zoom",
+      "teams": "Gå med i Teams",
+      "other": "Öppna länk",
+      "tinyfloor": "Gå med"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "Online"
+    },
+    "privateNote": "Privat: kontoret ser aldrig titeln",
+    "inGoogle": "Öppna i Google Kalender",
+    "close": "Stäng",
+    "upNext": "Härnäst",
+    "nowUntil": "Nu · till {time}",
+    "nothingComing": "Inget på gång",
+    "calendars": "Kalendrar",
+    "yours": "Din kalender",
+    "settings": "Kalenderinställningar",
+    "previousWeek": "Föregående vecka",
+    "nextWeek": "Nästa vecka",
+    "connectShort": "Anslut",
+    "google": "Google Kalender",
+    "notLinked": "Inte ansluten",
+    "emptyTitle": "Här visas dina möten",
+    "readOnly": "Endast läsbehörighet"
   }
 }

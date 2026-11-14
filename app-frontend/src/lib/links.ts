@@ -27,6 +27,7 @@ export const officeChatPath = (officeId: string, channel?: string) =>
   channel ? `${officePath(officeId)}/chat/${encodeURIComponent(channel)}` : `${officePath(officeId)}/chat`;
 export const officePeoplePath = (officeId: string) => `${officePath(officeId)}/people`;
 export const officeMeetingsPath = (officeId: string) => `${officePath(officeId)}/meetings`;
+export const officeCalendarPath = (officeId: string) => `${officePath(officeId)}/calendar`;
 export const officeSettingsPath = (officeId: string) => `${officePath(officeId)}/settings`;
 
 

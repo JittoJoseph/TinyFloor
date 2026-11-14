@@ -298,7 +298,8 @@
       "notifications": "通知",
       "accessibility": "无障碍",
       "office": "办公室",
-      "plan": "方案与账单"
+      "plan": "方案与账单",
+      "calendar": "日历"
     },
     "themeNote": "“系统”会跟随你的设备。",
     "languageTitle": "显示语言",
@@ -343,14 +344,30 @@
       "media": "你的麦克风和摄像头，以及你的声音效果。",
       "notifications": "有事发生时如何提醒你。",
       "accessibility": "动画与性能，适合你和你的设备。",
-      "plan": "你的办公室的方案和付款方式。"
+      "plan": "你的办公室的方案和付款方式。",
+      "calendar": "让办公室知道你何时在开会，并在“会议”中查看你的一天。"
+    },
+    "calendar": {
+      "google": "Google 日历",
+      "connect": "连接",
+      "connectNote": "只读",
+      "connected": "已连接",
+      "disconnect": "断开连接",
+      "titles": "显示日程标题",
+      "titlesNote": "团队可以看到会议名称。私人日程不会显示。",
+      "privacy": "办公室只会看到你何时忙碌，其他内容不会离开你的日历。",
+      "unavailable": "这里尚未设置 Google。",
+      "notAllowed": "请允许 TinyFloor 查看你的日历日程，然后重新连接。",
+      "again": "再连接一次即可完成。"
     }
   },
   "scene": {
     "meeting": "会议",
     "drawing": "正在绘制",
     "yourDesk": "你的工位",
-    "claimDesk": "认领工位"
+    "claimDesk": "认领工位",
+    "inMeetingUntil": "会议中，到 {time}",
+    "meetingTitledUntil": "{title}，到 {time}"
   },
   "actions": {
     "sit": "坐下",
@@ -688,7 +705,28 @@
     "readyTitle": "准备好加入了吗？",
     "joinNow": "立即加入",
     "inMeeting": "会议中的人",
-    "asked": "已邀请"
+    "asked": "已邀请",
+    "day": {
+      "title": "今天",
+      "schedule": "添加到 Google 日历",
+      "inviteTitle": "{office} 会议",
+      "inviteBody": "在 TinyFloor 加入：",
+      "clear": "今天日历上没有别的安排了",
+      "connect": "在这里查看你的一天：<link>连接 Google 日历</link>",
+      "now": "进行中",
+      "until": "到 {time}",
+      "untitled": "忙碌",
+      "join": "加入",
+      "open": "打开"
+    },
+    "reminder": {
+      "untitled": "会议",
+      "soon": "一分钟后开始",
+      "started": "已开始",
+      "notNow": "稍后",
+      "join": "加入",
+      "open": "打开"
+    }
   },
   "help": {
     "title": "和 TinyFloor 团队聊聊",
@@ -1015,5 +1053,61 @@
     "wear": "戴上",
     "notNow": "以后再说",
     "thanks": "圣诞快乐！"
+  },
+  "calendar": {
+    "title": "日历",
+    "schedule": "安排会议",
+    "inviteTitle": "{office} 会议",
+    "inviteBody": "在 TinyFloor 加入：",
+    "connect": "连接 Google 日历",
+    "unavailable": "这里尚未设置 Google。",
+    "notAllowed": "请允许 TinyFloor 查看你的日历日程，然后重新连接。",
+    "again": "再连接一次即可完成。",
+    "today": "今天",
+    "tomorrow": "明天",
+    "untitled": "忙碌",
+    "markedFree": "空闲",
+    "previousDay": "前一天",
+    "nextDay": "后一天",
+    "you": "你",
+    "busy": "忙碌",
+    "kind": {
+      "out": "不在办公室",
+      "focus": "专注时间"
+    },
+    "scheduleAt": "在 {time} 安排",
+    "notConnected": "{count, plural, other {尚未连接（#人）}}",
+    "until": "到 {time}",
+    "joinHere": "加入",
+    "joinOn": {
+      "meet": "在 Google Meet 加入",
+      "zoom": "在 Zoom 加入",
+      "teams": "在 Teams 加入",
+      "other": "打开链接",
+      "tinyfloor": "加入"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "线上"
+    },
+    "privateNote": "私密：办公室永远看不到标题",
+    "inGoogle": "在 Google 日历中打开",
+    "close": "关闭",
+    "upNext": "接下来",
+    "nowUntil": "进行中 · 到 {time}",
+    "nothingComing": "暂无安排",
+    "calendars": "日历",
+    "yours": "你的日历",
+    "settings": "日历设置",
+    "previousWeek": "上一周",
+    "nextWeek": "下一周",
+    "connectShort": "连接",
+    "google": "Google 日历",
+    "notLinked": "未连接",
+    "emptyTitle": "你的会议会显示在这里",
+    "readOnly": "只读"
   }
 }

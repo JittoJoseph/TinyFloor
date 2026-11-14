@@ -298,7 +298,8 @@
       "notifications": "Powiadomienia",
       "accessibility": "Dostępność",
       "office": "Biuro",
-      "plan": "Plan i płatności"
+      "plan": "Plan i płatności",
+      "calendar": "Kalendarz"
     },
     "themeNote": "„Systemowy” podąża za urządzeniem.",
     "languageTitle": "Język interfejsu",
@@ -343,14 +344,30 @@
       "media": "Twój mikrofon i kamera, i jak brzmisz.",
       "notifications": "Co daje ci znać, że coś się dzieje.",
       "accessibility": "Ruch i wydajność, dopasowane do ciebie i urządzenia.",
-      "plan": "Plan twojego biura i sposób płatności."
+      "plan": "Plan twojego biura i sposób płatności.",
+      "calendar": "Pokaż biuru, kiedy jesteś na spotkaniu, i zobacz swój dzień w Spotkaniach."
+    },
+    "calendar": {
+      "google": "Kalendarz Google",
+      "connect": "Połącz",
+      "connectNote": "Tylko odczyt",
+      "connected": "Połączony",
+      "disconnect": "Rozłącz",
+      "titles": "Pokazuj tytuły wydarzeń",
+      "titlesNote": "Zespół widzi nazwy spotkań. Prywatne wydarzenia pozostają ukryte.",
+      "privacy": "Twoje biuro widzi, kiedy jesteś zajęty. Nic więcej nie opuszcza Twojego kalendarza.",
+      "unavailable": "Google nie jest tu skonfigurowane.",
+      "notAllowed": "Pozwól TinyFloor widzieć wydarzenia z kalendarza, a potem połącz ponownie.",
+      "again": "Połącz jeszcze raz, aby dokończyć."
     }
   },
   "scene": {
     "meeting": "Spotkanie",
     "drawing": "Rysuje",
     "yourDesk": "Twoje biurko",
-    "claimDesk": "Zajmij biurko"
+    "claimDesk": "Zajmij biurko",
+    "inMeetingUntil": "Na spotkaniu do {time}",
+    "meetingTitledUntil": "{title} do {time}"
   },
   "actions": {
     "sit": "Usiądź",
@@ -688,7 +705,28 @@
     "readyTitle": "Gotowy, by dołączyć?",
     "joinNow": "Dołącz teraz",
     "inMeeting": "W tym spotkaniu",
-    "asked": "Zaproszono"
+    "asked": "Zaproszono",
+    "day": {
+      "title": "Dziś",
+      "schedule": "Dodaj do Kalendarza Google",
+      "inviteTitle": "Spotkanie {office}",
+      "inviteBody": "Dołącz w TinyFloor:",
+      "clear": "Dziś nic więcej w kalendarzu",
+      "connect": "Zobacz tu swój dzień: <link>połącz Kalendarz Google</link>",
+      "now": "Teraz",
+      "until": "Do {time}",
+      "untitled": "Zajęty",
+      "join": "Dołącz",
+      "open": "Otwórz"
+    },
+    "reminder": {
+      "untitled": "Spotkanie",
+      "soon": "Zaczyna się za minutę",
+      "started": "Już się zaczęło",
+      "notNow": "Nie teraz",
+      "join": "Dołącz",
+      "open": "Otwórz"
+    }
   },
   "help": {
     "title": "Napisz do zespołu TinyFloor",
@@ -1015,5 +1053,61 @@
     "wear": "Załóż",
     "notNow": "Nie teraz",
     "thanks": "Wesołych Świąt!"
+  },
+  "calendar": {
+    "title": "Kalendarz",
+    "schedule": "Zaplanuj",
+    "inviteTitle": "Spotkanie {office}",
+    "inviteBody": "Dołącz w TinyFloor:",
+    "connect": "Połącz Kalendarz Google",
+    "unavailable": "Google nie jest tu skonfigurowane.",
+    "notAllowed": "Pozwól TinyFloor widzieć wydarzenia z kalendarza, a potem połącz ponownie.",
+    "again": "Połącz jeszcze raz, aby dokończyć.",
+    "today": "Dziś",
+    "tomorrow": "Jutro",
+    "untitled": "Zajęty",
+    "markedFree": "Wolne",
+    "previousDay": "Poprzedni dzień",
+    "nextDay": "Następny dzień",
+    "you": "ty",
+    "busy": "Zajęty",
+    "kind": {
+      "out": "Poza biurem",
+      "focus": "Czas skupienia"
+    },
+    "scheduleAt": "Zaplanuj na {time}",
+    "notConnected": "{count, plural, one {Jeszcze niepołączony} few {# jeszcze niepołączone} many {# jeszcze niepołączonych} other {# jeszcze niepołączonych}}",
+    "until": "Do {time}",
+    "joinHere": "Dołącz",
+    "joinOn": {
+      "meet": "Dołącz przez Google Meet",
+      "zoom": "Dołącz przez Zoom",
+      "teams": "Dołącz przez Teams",
+      "other": "Otwórz link",
+      "tinyfloor": "Dołącz"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "Online"
+    },
+    "privateNote": "Prywatne: biuro nigdy nie widzi tytułu",
+    "inGoogle": "Otwórz w Kalendarzu Google",
+    "close": "Zamknij",
+    "upNext": "Następne",
+    "nowUntil": "Teraz · do {time}",
+    "nothingComing": "Nic w najbliższym czasie",
+    "calendars": "Kalendarze",
+    "yours": "Twój kalendarz",
+    "settings": "Ustawienia kalendarza",
+    "previousWeek": "Poprzedni tydzień",
+    "nextWeek": "Następny tydzień",
+    "connectShort": "Połącz",
+    "google": "Kalendarz Google",
+    "notLinked": "Nie połączono",
+    "emptyTitle": "Tu pojawią się Twoje spotkania",
+    "readOnly": "Tylko odczyt"
   }
 }

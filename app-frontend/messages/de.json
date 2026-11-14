@@ -298,7 +298,8 @@
       "notifications": "Benachrichtigungen",
       "accessibility": "Barrierefreiheit",
       "office": "Büro",
-      "plan": "Tarif und Abrechnung"
+      "plan": "Tarif und Abrechnung",
+      "calendar": "Kalender"
     },
     "themeNote": "„System“ folgt deinem Gerät.",
     "languageTitle": "Anzeigesprache",
@@ -343,14 +344,30 @@
       "media": "Dein Mikrofon und deine Kamera, und wie du klingst.",
       "notifications": "Was dir zeigt, dass etwas passiert.",
       "accessibility": "Bewegung und Leistung, passend zu dir und deinem Gerät.",
-      "plan": "Welchen Plan dein Büro hat und wie er bezahlt wird."
+      "plan": "Welchen Plan dein Büro hat und wie er bezahlt wird.",
+      "calendar": "Zeig deinem Büro, wann du in einem Meeting bist, und sieh deinen Tag unter Meetings."
+    },
+    "calendar": {
+      "google": "Google Kalender",
+      "connect": "Verbinden",
+      "connectNote": "Nur Lesezugriff",
+      "connected": "Verbunden",
+      "disconnect": "Trennen",
+      "titles": "Titel von Terminen zeigen",
+      "titlesNote": "Dein Team sieht die Namen der Meetings. Private Termine bleiben verborgen.",
+      "privacy": "Dein Büro sieht, wann du beschäftigt bist. Sonst nichts aus deinem Kalender.",
+      "unavailable": "Google ist hier nicht eingerichtet.",
+      "notAllowed": "Erlaube TinyFloor, die Termine deines Kalenders zu sehen, und verbinde dann noch mal.",
+      "again": "Verbinde noch einmal, um es abzuschließen."
     }
   },
   "scene": {
     "meeting": "Meeting",
     "drawing": "Zeichnet",
     "yourDesk": "Dein Schreibtisch",
-    "claimDesk": "Platz beanspruchen"
+    "claimDesk": "Platz beanspruchen",
+    "inMeetingUntil": "In einem Meeting bis {time}",
+    "meetingTitledUntil": "{title} bis {time}"
   },
   "actions": {
     "sit": "Hinsetzen",
@@ -688,7 +705,28 @@
     "readyTitle": "Bereit zum Beitreten?",
     "joinNow": "Jetzt beitreten",
     "inMeeting": "In diesem Meeting",
-    "asked": "Gefragt"
+    "asked": "Gefragt",
+    "day": {
+      "title": "Heute",
+      "schedule": "Zu Google Kalender hinzufügen",
+      "inviteTitle": "{office}-Meeting",
+      "inviteBody": "Auf TinyFloor beitreten:",
+      "clear": "Heute steht nichts mehr in deinem Kalender",
+      "connect": "Sieh deinen Tag hier: <link>Google Kalender verbinden</link>",
+      "now": "Jetzt",
+      "until": "Bis {time}",
+      "untitled": "Beschäftigt",
+      "join": "Beitreten",
+      "open": "Öffnen"
+    },
+    "reminder": {
+      "untitled": "Meeting",
+      "soon": "Beginnt in einer Minute",
+      "started": "Hat begonnen",
+      "notNow": "Nicht jetzt",
+      "join": "Beitreten",
+      "open": "Öffnen"
+    }
   },
   "help": {
     "title": "Schreib dem TinyFloor-Team",
@@ -1015,5 +1053,61 @@
     "wear": "Aufsetzen",
     "notNow": "Nicht jetzt",
     "thanks": "Frohe Weihnachten!"
+  },
+  "calendar": {
+    "title": "Kalender",
+    "schedule": "Planen",
+    "inviteTitle": "{office}-Meeting",
+    "inviteBody": "Auf TinyFloor beitreten:",
+    "connect": "Google Kalender verbinden",
+    "unavailable": "Google ist hier nicht eingerichtet.",
+    "notAllowed": "Erlaube TinyFloor, die Termine deines Kalenders zu sehen, und verbinde dann noch mal.",
+    "again": "Verbinde noch einmal, um es abzuschließen.",
+    "today": "Heute",
+    "tomorrow": "Morgen",
+    "untitled": "Beschäftigt",
+    "markedFree": "Frei",
+    "previousDay": "Vorheriger Tag",
+    "nextDay": "Nächster Tag",
+    "you": "du",
+    "busy": "Beschäftigt",
+    "kind": {
+      "out": "Abwesend",
+      "focus": "Fokuszeit"
+    },
+    "scheduleAt": "Um {time} planen",
+    "notConnected": "{count, plural, one {Noch nicht verbunden} other {# noch nicht verbunden}}",
+    "until": "Bis {time}",
+    "joinHere": "Beitreten",
+    "joinOn": {
+      "meet": "Über Google Meet beitreten",
+      "zoom": "Über Zoom beitreten",
+      "teams": "Über Teams beitreten",
+      "other": "Link öffnen",
+      "tinyfloor": "Beitreten"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "Online"
+    },
+    "privateNote": "Privat: Dein Büro sieht den Titel nie",
+    "inGoogle": "In Google Kalender öffnen",
+    "close": "Schließen",
+    "upNext": "Als Nächstes",
+    "nowUntil": "Jetzt · bis {time}",
+    "nothingComing": "Nichts in Sicht",
+    "calendars": "Kalender",
+    "yours": "Dein Kalender",
+    "settings": "Kalendereinstellungen",
+    "previousWeek": "Vorherige Woche",
+    "nextWeek": "Nächste Woche",
+    "connectShort": "Verbinden",
+    "google": "Google Kalender",
+    "notLinked": "Nicht verbunden",
+    "emptyTitle": "Hier erscheinen deine Meetings",
+    "readOnly": "Nur Lesezugriff"
   }
 }

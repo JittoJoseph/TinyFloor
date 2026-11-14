@@ -83,18 +83,22 @@ export function liveNote(note: StatusNote | null | undefined, now = Date.now()):
   return note && (note.until === null || note.until > now) ? note : null;
 }
 
+/** A few words someone sent, on one line and short enough to show: a note's, an event's title. */
+function cleanWords(text: unknown): string {
+  return typeof text === "string"
+    ? text
+        .replace(/[\u0000-\u001f\u007f]/g, " ")
+        .replace(/\s+/g, " ")
+        .trim()
+        .slice(0, STATUS_NOTE_MAX)
+    : "";
+}
+
 /** A note as someone sent it, made safe to keep and to show, or null for none. */
 export function cleanNote(value: unknown, now = Date.now()): StatusNote | null {
   if (!value || typeof value !== "object") return null;
   const { icon, emoji, text, until } = value as Record<string, unknown>;
-  const words =
-    typeof text === "string"
-      ? text
-          .replace(/[\u0000-\u001f\u007f]/g, " ")
-          .replace(/\s+/g, " ")
-          .trim()
-          .slice(0, STATUS_NOTE_MAX)
-      : "";
+  const words = cleanWords(text);
   const mark = NOTE_ICONS.includes(icon as NoteIcon)
     ? (icon as NoteIcon)
     : typeof emoji === "string"
@@ -104,6 +108,34 @@ export function cleanNote(value: unknown, now = Date.now()): StatusNote | null {
   const ends = typeof until === "number" && Number.isFinite(until) && until > now ? Math.min(until, now + NOTE_LONGEST_MS) : null;
   return { icon: mark, text: words, until: ends };
 }
+
+/**
+ * Someone's calendar says they're in a meeting (Google Calendar, connected in
+ * Settings): until when, the event's title only if they chose to show titles,
+ * and whether it's a call somewhere else (a Meet or Zoom link). Their own page
+ * works it out from their calendar and tells the room; nobody else's page
+ * reads anyone's calendar. Shown as a note when they haven't written one.
+ */
+export interface CalendarBusy {
+  until: number;
+  title?: string;
+  call?: boolean;
+}
+
+/** A meeting longer than this is a day out of the office, not a meeting: it isn't shown as one. */
+const BUSY_LONGEST_MS = 12 * 60 * 60 * 1000;
+
+/** What a page said its calendar holds, made safe to pass on, or null for nothing on now. */
+export function cleanBusy(value: unknown, now = Date.now()): CalendarBusy | null {
+  if (!value || typeof value !== "object") return null;
+  const { until, title, call } = value as Record<string, unknown>;
+  if (typeof until !== "number" || !Number.isFinite(until) || until <= now || until > now + BUSY_LONGEST_MS) return null;
+  const words = cleanWords(title);
+  return { until: Math.round(until), ...(words ? { title: words } : {}), ...(call === true ? { call: true } : {}) };
+}
+
+/** The busy while it lasts. */
+export const liveBusy = (busy: CalendarBusy | null | undefined, now = Date.now()): CalendarBusy | null => (busy && busy.until > now ? busy : null);
 
 export interface PlayerState {
   id: string;
@@ -118,6 +150,8 @@ export interface PlayerState {
   note?: StatusNote | null;
   /** Playing music from Spotify in TinyFloor: a mark on their name tag says so. */
   listening?: boolean;
+  /** In a meeting, by their calendar. */
+  calendar?: CalendarBusy | null;
 }
 
 /** A desk that is someone's own in an office (docs/product.md): they arrive sitting at it, and nobody else sits there. */
@@ -268,6 +302,8 @@ export type ClientMessage =
   | { t: "note"; note: StatusNote | null }
   /** You started or stopped playing music (the API keeps what it is; this marks your name tag). */
   | { t: "listening"; on: boolean }
+  /** Your calendar has you in a meeting now, or no longer (CalendarBusy). */
+  | { t: "calendar"; busy: CalendarBusy | null }
   /**
    * Your name changed while you're on the demo office's floor, signing up with
    * Google from it (the API keeps it; this tells the floor, without walking out and back in).
@@ -350,6 +386,7 @@ export type ServerMessage =
   | { t: "status"; id: string; status: PresenceStatus }
   | { t: "note"; id: string; note: StatusNote | null }
   | { t: "listening"; id: string; on: boolean }
+  | { t: "calendar"; id: string; busy: CalendarBusy | null }
   | { t: "renamed"; id: string; name: string }
   | { t: "look"; id: string; character: string }
   | { t: "board_state"; strokes: BoardStroke[] }

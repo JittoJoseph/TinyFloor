@@ -298,7 +298,8 @@
       "notifications": "Notifikationer",
       "accessibility": "Tilgængelighed",
       "office": "Kontor",
-      "plan": "Plan og betaling"
+      "plan": "Plan og betaling",
+      "calendar": "Kalender"
     },
     "themeNote": "\"System\" følger din enhed.",
     "languageTitle": "Visningssprog",
@@ -343,14 +344,30 @@
       "media": "Din mikrofon og dit kamera, og hvordan du lyder.",
       "notifications": "Hvad der gør dig opmærksom på, at noget sker.",
       "accessibility": "Bevægelse og ydeevne, så det passer til dig og din enhed.",
-      "plan": "Hvilken plan dit kontor har, og hvordan den betales."
+      "plan": "Hvilken plan dit kontor har, og hvordan den betales.",
+      "calendar": "Vis kontoret, når du er til møde, og se din dag under Møder."
+    },
+    "calendar": {
+      "google": "Google Kalender",
+      "connect": "Forbind",
+      "connectNote": "Kun læseadgang",
+      "connected": "Forbundet",
+      "disconnect": "Afbryd",
+      "titles": "Vis begivenhedernes titler",
+      "titlesNote": "Dit team ser mødernes navne. Private begivenheder forbliver skjulte.",
+      "privacy": "Dit kontor ser, hvornår du er optaget. Intet andet forlader din kalender.",
+      "unavailable": "Google er ikke sat op her.",
+      "notAllowed": "Giv TinyFloor lov til at se din kalenders begivenheder, og forbind så igen.",
+      "again": "Forbind én gang til for at gøre det færdigt."
     }
   },
   "scene": {
     "meeting": "Møde",
     "drawing": "Tegner",
     "yourDesk": "Dit skrivebord",
-    "claimDesk": "Tag skrivebord"
+    "claimDesk": "Tag skrivebord",
+    "inMeetingUntil": "Til møde indtil {time}",
+    "meetingTitledUntil": "{title} indtil {time}"
   },
   "actions": {
     "sit": "Sæt dig",
@@ -688,7 +705,28 @@
     "readyTitle": "Klar til at deltage?",
     "joinNow": "Deltag nu",
     "inMeeting": "I mødet",
-    "asked": "Spurgt"
+    "asked": "Spurgt",
+    "day": {
+      "title": "I dag",
+      "schedule": "Føj til Google Kalender",
+      "inviteTitle": "Møde i {office}",
+      "inviteBody": "Deltag på TinyFloor:",
+      "clear": "Intet mere i din kalender i dag",
+      "connect": "Se din dag her: <link>forbind Google Kalender</link>",
+      "now": "Nu",
+      "until": "Indtil {time}",
+      "untitled": "Optaget",
+      "join": "Deltag",
+      "open": "Åbn"
+    },
+    "reminder": {
+      "untitled": "Møde",
+      "soon": "Starter om et minut",
+      "started": "Er startet",
+      "notNow": "Ikke nu",
+      "join": "Deltag",
+      "open": "Åbn"
+    }
   },
   "help": {
     "title": "Skriv til TinyFloor-teamet",
@@ -1015,5 +1053,61 @@
     "wear": "Tag den på",
     "notNow": "Ikke nu",
     "thanks": "Glædelig jul!"
+  },
+  "calendar": {
+    "title": "Kalender",
+    "schedule": "Planlæg",
+    "inviteTitle": "Møde i {office}",
+    "inviteBody": "Deltag på TinyFloor:",
+    "connect": "Forbind Google Kalender",
+    "unavailable": "Google er ikke sat op her.",
+    "notAllowed": "Giv TinyFloor lov til at se din kalenders begivenheder, og forbind så igen.",
+    "again": "Forbind én gang til for at gøre det færdigt.",
+    "today": "I dag",
+    "tomorrow": "I morgen",
+    "untitled": "Optaget",
+    "markedFree": "Ledig",
+    "previousDay": "Forrige dag",
+    "nextDay": "Næste dag",
+    "you": "dig",
+    "busy": "Optaget",
+    "kind": {
+      "out": "Ikke på kontoret",
+      "focus": "Fokustid"
+    },
+    "scheduleAt": "Planlæg kl. {time}",
+    "notConnected": "{count, plural, one {Ikke forbundet endnu} other {# ikke forbundet endnu}}",
+    "until": "Indtil {time}",
+    "joinHere": "Deltag",
+    "joinOn": {
+      "meet": "Deltag i Google Meet",
+      "zoom": "Deltag i Zoom",
+      "teams": "Deltag i Teams",
+      "other": "Åbn link",
+      "tinyfloor": "Deltag"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "Online"
+    },
+    "privateNote": "Privat: kontoret ser aldrig titlen",
+    "inGoogle": "Åbn i Google Kalender",
+    "close": "Luk",
+    "upNext": "Næste",
+    "nowUntil": "Nu · indtil {time}",
+    "nothingComing": "Intet på vej",
+    "calendars": "Kalendere",
+    "yours": "Din kalender",
+    "settings": "Kalenderindstillinger",
+    "previousWeek": "Forrige uge",
+    "nextWeek": "Næste uge",
+    "connectShort": "Forbind",
+    "google": "Google Kalender",
+    "notLinked": "Ikke forbundet",
+    "emptyTitle": "Her vises dine møder",
+    "readOnly": "Kun læseadgang"
   }
 }

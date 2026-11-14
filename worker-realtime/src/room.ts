@@ -8,9 +8,12 @@ import {
   HEARTBEAT_PONG,
   PRESENCE_STATUSES,
   cleanDisplayName,
+  cleanBusy,
   cleanNote,
   isCharacter,
+  liveBusy,
   liveNote,
+  type CalendarBusy,
   type StatusNote,
   isInsideMap,
   deskSeats,
@@ -88,6 +91,8 @@ interface Attachment {
   note?: StatusNote | null;
   /** Playing music in TinyFloor, for the mark on their name tag. */
   listening?: boolean;
+  /** In a meeting by their calendar, as their page says; the room only passes it on. */
+  calendar?: CalendarBusy | null;
   seat: number | null;
   meeting: string | null;
   /** When this person joined their meeting, for usage totals and the meeting's clock. */
@@ -419,6 +424,9 @@ export class Room extends DurableObject<Env> {
       case "listening":
         this.setListening(me, message.on);
         break;
+      case "calendar":
+        this.setCalendar(me, message.busy);
+        break;
       case "rename":
         this.rename(socket, me, message.name);
         break;
@@ -614,6 +622,12 @@ export class Room extends DurableObject<Env> {
     if (listening === !!me.listening) return;
     me.listening = listening;
     this.broadcast({ t: "listening", id: me.userId, on: listening });
+  }
+
+  private setCalendar(me: Attachment, busy: unknown): void {
+    if (!this.takeAction(me) || me.guest) return;
+    me.calendar = cleanBusy(busy);
+    this.broadcast({ t: "calendar", id: me.userId, busy: me.calendar });
   }
 
   private setNote(me: Attachment, note: unknown): void {
@@ -1413,6 +1427,7 @@ function playerState(attachment: Attachment): PlayerState {
     seat: attachment.seat,
     note: liveNote(attachment.note),
     ...(attachment.listening ? { listening: true } : {}),
+    ...(liveBusy(attachment.calendar) ? { calendar: attachment.calendar } : {}),
   };
 }
 

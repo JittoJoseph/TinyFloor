@@ -298,7 +298,8 @@
       "notifications": "Notificações",
       "accessibility": "Acessibilidade",
       "office": "Escritório",
-      "plan": "Plano e cobrança"
+      "plan": "Plano e cobrança",
+      "calendar": "Agenda"
     },
     "themeNote": "\"Sistema\" segue seu dispositivo.",
     "languageTitle": "Idioma de exibição",
@@ -343,14 +344,30 @@
       "media": "Seu microfone e sua câmera, e como você soa.",
       "notifications": "O que avisa você de que algo está acontecendo.",
       "accessibility": "Movimento e desempenho, do seu jeito e do seu dispositivo.",
-      "plan": "O plano do seu escritório e como ele é pago."
+      "plan": "O plano do seu escritório e como ele é pago.",
+      "calendar": "Mostre ao seu escritório quando você está em reunião e veja seu dia em Reuniões."
+    },
+    "calendar": {
+      "google": "Google Agenda",
+      "connect": "Conectar",
+      "connectNote": "Somente leitura",
+      "connected": "Conectada",
+      "disconnect": "Desconectar",
+      "titles": "Mostrar títulos dos eventos",
+      "titlesNote": "Sua equipe vê o nome das reuniões. Eventos privados ficam ocultos.",
+      "privacy": "Seu escritório vê quando você está ocupado. Nada mais sai da sua agenda.",
+      "unavailable": "O Google não está configurado aqui.",
+      "notAllowed": "Permita que o TinyFloor veja os eventos da sua agenda e conecte de novo.",
+      "again": "Conecte mais uma vez para terminar."
     }
   },
   "scene": {
     "meeting": "Reunião",
     "drawing": "Desenhando",
     "yourDesk": "Sua mesa",
-    "claimDesk": "Reservar mesa"
+    "claimDesk": "Reservar mesa",
+    "inMeetingUntil": "Em reunião até {time}",
+    "meetingTitledUntil": "{title} até {time}"
   },
   "actions": {
     "sit": "Sentar",
@@ -688,7 +705,28 @@
     "readyTitle": "Pronto para entrar?",
     "joinNow": "Entrar agora",
     "inMeeting": "Nesta reunião",
-    "asked": "Convidado"
+    "asked": "Convidado",
+    "day": {
+      "title": "Hoje",
+      "schedule": "Adicionar ao Google Agenda",
+      "inviteTitle": "Reunião {office}",
+      "inviteBody": "Entre no TinyFloor:",
+      "clear": "Nada mais na sua agenda hoje",
+      "connect": "Veja seu dia aqui: <link>conecte o Google Agenda</link>",
+      "now": "Agora",
+      "until": "Até {time}",
+      "untitled": "Ocupado",
+      "join": "Entrar",
+      "open": "Abrir"
+    },
+    "reminder": {
+      "untitled": "Reunião",
+      "soon": "Começa em um minuto",
+      "started": "Já começou",
+      "notNow": "Agora não",
+      "join": "Entrar",
+      "open": "Abrir"
+    }
   },
   "help": {
     "title": "Fale com a equipe do TinyFloor",
@@ -1015,5 +1053,61 @@
     "wear": "Usar",
     "notNow": "Agora não",
     "thanks": "Feliz Natal!"
+  },
+  "calendar": {
+    "title": "Agenda",
+    "schedule": "Agendar",
+    "inviteTitle": "Reunião {office}",
+    "inviteBody": "Entre no TinyFloor:",
+    "connect": "Conectar Google Agenda",
+    "unavailable": "O Google não está configurado aqui.",
+    "notAllowed": "Permita que o TinyFloor veja os eventos da sua agenda e conecte de novo.",
+    "again": "Conecte mais uma vez para terminar.",
+    "today": "Hoje",
+    "tomorrow": "Amanhã",
+    "untitled": "Ocupado",
+    "markedFree": "Livre",
+    "previousDay": "Dia anterior",
+    "nextDay": "Próximo dia",
+    "you": "você",
+    "busy": "Ocupado",
+    "kind": {
+      "out": "Fora do escritório",
+      "focus": "Tempo de foco"
+    },
+    "scheduleAt": "Agendar às {time}",
+    "notConnected": "{count, plural, one {Ainda não conectado} other {# ainda não conectados}}",
+    "until": "Até {time}",
+    "joinHere": "Entrar",
+    "joinOn": {
+      "meet": "Entrar no Google Meet",
+      "zoom": "Entrar no Zoom",
+      "teams": "Entrar no Teams",
+      "other": "Abrir link",
+      "tinyfloor": "Entrar"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "Online"
+    },
+    "privateNote": "Privado: seu escritório nunca vê o título",
+    "inGoogle": "Abrir no Google Agenda",
+    "close": "Fechar",
+    "upNext": "A seguir",
+    "nowUntil": "Agora · até {time}",
+    "nothingComing": "Nada por vir",
+    "calendars": "Agendas",
+    "yours": "Sua agenda",
+    "settings": "Configurações da agenda",
+    "previousWeek": "Semana anterior",
+    "nextWeek": "Próxima semana",
+    "connectShort": "Conectar",
+    "google": "Google Agenda",
+    "notLinked": "Não conectado",
+    "emptyTitle": "Suas reuniões aparecem aqui",
+    "readOnly": "Somente leitura"
   }
 }

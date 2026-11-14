@@ -298,7 +298,8 @@
       "notifications": "Meldingen",
       "accessibility": "Toegankelijkheid",
       "office": "Kantoor",
-      "plan": "Abonnement en facturering"
+      "plan": "Abonnement en facturering",
+      "calendar": "Agenda"
     },
     "themeNote": "'Systeem' volgt je apparaat.",
     "languageTitle": "Weergavetaal",
@@ -343,14 +344,30 @@
       "media": "Je microfoon en camera, en hoe je klinkt.",
       "notifications": "Wat je laat weten dat er iets gebeurt.",
       "accessibility": "Beweging en prestaties, passend bij jou en je apparaat.",
-      "plan": "Welk abonnement je kantoor heeft en hoe het wordt betaald."
+      "plan": "Welk abonnement je kantoor heeft en hoe het wordt betaald.",
+      "calendar": "Laat je kantoor zien wanneer je in een meeting zit, en zie je dag bij Meetings."
+    },
+    "calendar": {
+      "google": "Google Agenda",
+      "connect": "Koppelen",
+      "connectNote": "Alleen lezen",
+      "connected": "Gekoppeld",
+      "disconnect": "Ontkoppelen",
+      "titles": "Titels van afspraken tonen",
+      "titlesNote": "Je team ziet de namen van meetings. Privé-afspraken blijven verborgen.",
+      "privacy": "Je kantoor ziet wanneer je bezet bent. Verder niets uit je agenda.",
+      "unavailable": "Google is hier niet ingesteld.",
+      "notAllowed": "Geef TinyFloor toegang tot de afspraken in je agenda en koppel opnieuw.",
+      "again": "Koppel nog één keer om af te ronden."
     }
   },
   "scene": {
     "meeting": "Vergadering",
     "drawing": "Tekent",
     "yourDesk": "Jouw bureau",
-    "claimDesk": "Bureau claimen"
+    "claimDesk": "Bureau claimen",
+    "inMeetingUntil": "In een meeting tot {time}",
+    "meetingTitledUntil": "{title} tot {time}"
   },
   "actions": {
     "sit": "Gaan zitten",
@@ -688,7 +705,28 @@
     "readyTitle": "Klaar om deel te nemen?",
     "joinNow": "Nu deelnemen",
     "inMeeting": "In deze meeting",
-    "asked": "Gevraagd"
+    "asked": "Gevraagd",
+    "day": {
+      "title": "Vandaag",
+      "schedule": "Toevoegen aan Google Agenda",
+      "inviteTitle": "Meeting {office}",
+      "inviteBody": "Doe mee op TinyFloor:",
+      "clear": "Vandaag staat er niets meer in je agenda",
+      "connect": "Zie je dag hier: <link>koppel Google Agenda</link>",
+      "now": "Nu",
+      "until": "Tot {time}",
+      "untitled": "Bezet",
+      "join": "Deelnemen",
+      "open": "Openen"
+    },
+    "reminder": {
+      "untitled": "Meeting",
+      "soon": "Begint over een minuut",
+      "started": "Begonnen",
+      "notNow": "Niet nu",
+      "join": "Deelnemen",
+      "open": "Openen"
+    }
   },
   "help": {
     "title": "Praat met het TinyFloor-team",
@@ -1015,5 +1053,61 @@
     "wear": "Opzetten",
     "notNow": "Niet nu",
     "thanks": "Vrolijk kerstfeest!"
+  },
+  "calendar": {
+    "title": "Agenda",
+    "schedule": "Plannen",
+    "inviteTitle": "Meeting {office}",
+    "inviteBody": "Doe mee op TinyFloor:",
+    "connect": "Google Agenda koppelen",
+    "unavailable": "Google is hier niet ingesteld.",
+    "notAllowed": "Geef TinyFloor toegang tot de afspraken in je agenda en koppel opnieuw.",
+    "again": "Koppel nog één keer om af te ronden.",
+    "today": "Vandaag",
+    "tomorrow": "Morgen",
+    "untitled": "Bezet",
+    "markedFree": "Vrij",
+    "previousDay": "Vorige dag",
+    "nextDay": "Volgende dag",
+    "you": "jij",
+    "busy": "Bezet",
+    "kind": {
+      "out": "Afwezig",
+      "focus": "Focustijd"
+    },
+    "scheduleAt": "Plannen om {time}",
+    "notConnected": "{count, plural, one {Nog niet gekoppeld} other {# nog niet gekoppeld}}",
+    "until": "Tot {time}",
+    "joinHere": "Deelnemen",
+    "joinOn": {
+      "meet": "Deelnemen via Google Meet",
+      "zoom": "Deelnemen via Zoom",
+      "teams": "Deelnemen via Teams",
+      "other": "Link openen",
+      "tinyfloor": "Deelnemen"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "Online"
+    },
+    "privateNote": "Privé: je kantoor ziet nooit de titel",
+    "inGoogle": "Openen in Google Agenda",
+    "close": "Sluiten",
+    "upNext": "Hierna",
+    "nowUntil": "Nu · tot {time}",
+    "nothingComing": "Niets gepland",
+    "calendars": "Agenda's",
+    "yours": "Jouw agenda",
+    "settings": "Agenda-instellingen",
+    "previousWeek": "Vorige week",
+    "nextWeek": "Volgende week",
+    "connectShort": "Koppelen",
+    "google": "Google Agenda",
+    "notLinked": "Niet gekoppeld",
+    "emptyTitle": "Hier komen je meetings",
+    "readOnly": "Alleen lezen"
   }
 }

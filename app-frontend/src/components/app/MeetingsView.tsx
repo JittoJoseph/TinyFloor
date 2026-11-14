@@ -15,6 +15,7 @@ import { NewMeetingDialog } from "@/components/meetings/MeetingDialogs";
 import { clock, useElapsed, useMeetingName, useMyMeeting } from "@/components/meetings/hooks";
 import { MeetingUsageLine, VideoPausedNote } from "@/components/meetings/MeetingHours";
 import { FreeToTalk, JoinPreview } from "@/components/meetings/BeforeJoining";
+import { YourDay } from "@/components/meetings/YourDay";
 import { usePlace } from "./place";
 
 /** Space between two pills, in pixels (gap-2). */
@@ -81,7 +82,10 @@ function MeetingsLobby({ office }: { office: string }) {
             ) : (
               <span className="max-lg:hidden" />
             )}
-            <FreeToTalk />
+            <div className="flex min-w-0 flex-col gap-8">
+              <FreeToTalk />
+              <YourDay />
+            </div>
           </div>
         </main>
 

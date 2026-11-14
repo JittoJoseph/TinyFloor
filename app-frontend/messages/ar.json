@@ -298,7 +298,8 @@
       "notifications": "الإشعارات",
       "accessibility": "إمكانية الوصول",
       "office": "المكتب",
-      "plan": "الخطة والفوترة"
+      "plan": "الخطة والفوترة",
+      "calendar": "التقويم"
     },
     "themeNote": "«النظام» يتبع جهازك.",
     "languageTitle": "لغة العرض",
@@ -343,14 +344,30 @@
       "media": "الميكروفون والكاميرا، وكيف يصل صوتك.",
       "notifications": "ما ينبّهك عندما يحدث شيء.",
       "accessibility": "الحركة والأداء، بما يناسبك ويناسب جهازك.",
-      "plan": "خطة مكتبك وطريقة الدفع."
+      "plan": "خطة مكتبك وطريقة الدفع.",
+      "calendar": "أظهر لمكتبك متى تكون في اجتماع، وشاهد يومك في الاجتماعات."
+    },
+    "calendar": {
+      "google": "تقويم Google",
+      "connect": "ربط",
+      "connectNote": "قراءة فقط",
+      "connected": "مرتبط",
+      "disconnect": "إلغاء الربط",
+      "titles": "إظهار عناوين الأحداث",
+      "titlesNote": "يرى فريقك أسماء الاجتماعات. تبقى الأحداث الخاصة مخفية.",
+      "privacy": "يرى مكتبك متى تكون مشغولًا. لا يخرج شيء آخر من تقويمك.",
+      "unavailable": "Google غير مُعدّ هنا.",
+      "notAllowed": "اسمح لـ TinyFloor برؤية أحداث تقويمك، ثم اربطه مرة أخرى.",
+      "again": "اربطه مرة أخرى لإكمال الأمر."
     }
   },
   "scene": {
     "meeting": "اجتماع",
     "drawing": "يرسم",
     "yourDesk": "مكتبك",
-    "claimDesk": "حجز المكتب"
+    "claimDesk": "حجز المكتب",
+    "inMeetingUntil": "في اجتماع حتى {time}",
+    "meetingTitledUntil": "{title} حتى {time}"
   },
   "actions": {
     "sit": "اجلس",
@@ -688,7 +705,28 @@
     "readyTitle": "مستعد للانضمام؟",
     "joinNow": "انضم الآن",
     "inMeeting": "في هذا الاجتماع",
-    "asked": "تم الطلب"
+    "asked": "تم الطلب",
+    "day": {
+      "title": "اليوم",
+      "schedule": "إضافة إلى تقويم Google",
+      "inviteTitle": "اجتماع {office}",
+      "inviteBody": "انضم على TinyFloor:",
+      "clear": "لا شيء آخر في تقويمك اليوم",
+      "connect": "شاهد يومك هنا: <link>اربط تقويم Google</link>",
+      "now": "الآن",
+      "until": "حتى {time}",
+      "untitled": "مشغول",
+      "join": "انضمام",
+      "open": "فتح"
+    },
+    "reminder": {
+      "untitled": "اجتماع",
+      "soon": "يبدأ خلال دقيقة",
+      "started": "بدأ",
+      "notNow": "ليس الآن",
+      "join": "انضمام",
+      "open": "فتح"
+    }
   },
   "help": {
     "title": "تحدّث إلى فريق TinyFloor",
@@ -1015,5 +1053,61 @@
     "wear": "ارتدِها",
     "notNow": "ليس الآن",
     "thanks": "عيد ميلاد مجيد!"
+  },
+  "calendar": {
+    "title": "التقويم",
+    "schedule": "جدولة",
+    "inviteTitle": "اجتماع {office}",
+    "inviteBody": "انضم على TinyFloor:",
+    "connect": "ربط تقويم Google",
+    "unavailable": "Google غير مُعدّ هنا.",
+    "notAllowed": "اسمح لـ TinyFloor برؤية أحداث تقويمك، ثم اربطه مرة أخرى.",
+    "again": "اربطه مرة أخرى لإكمال الأمر.",
+    "today": "اليوم",
+    "tomorrow": "غدًا",
+    "untitled": "مشغول",
+    "markedFree": "متاح",
+    "previousDay": "اليوم السابق",
+    "nextDay": "اليوم التالي",
+    "you": "أنت",
+    "busy": "مشغول",
+    "kind": {
+      "out": "خارج المكتب",
+      "focus": "وقت التركيز"
+    },
+    "scheduleAt": "جدولة الساعة {time}",
+    "notConnected": "{count, plural, zero {لم يرتبط أحد بعد} one {لم يرتبط بعد} two {اثنان لم يرتبطا بعد} few {# لم يرتبطوا بعد} many {# لم يرتبطوا بعد} other {# لم يرتبطوا بعد}}",
+    "until": "حتى {time}",
+    "joinHere": "انضمام",
+    "joinOn": {
+      "meet": "الانضمام عبر Google Meet",
+      "zoom": "الانضمام عبر Zoom",
+      "teams": "الانضمام عبر Teams",
+      "other": "فتح الرابط",
+      "tinyfloor": "انضمام"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "عبر الإنترنت"
+    },
+    "privateNote": "خاص: لا يرى مكتبك عنوانه أبدًا",
+    "inGoogle": "فتح في تقويم Google",
+    "close": "إغلاق",
+    "upNext": "التالي",
+    "nowUntil": "الآن · حتى {time}",
+    "nothingComing": "لا شيء قادم",
+    "calendars": "التقويمات",
+    "yours": "تقويمك",
+    "settings": "إعدادات التقويم",
+    "previousWeek": "الأسبوع السابق",
+    "nextWeek": "الأسبوع التالي",
+    "connectShort": "ربط",
+    "google": "تقويم Google",
+    "notLinked": "غير مرتبط",
+    "emptyTitle": "تظهر اجتماعاتك هنا",
+    "readOnly": "قراءة فقط"
   }
 }

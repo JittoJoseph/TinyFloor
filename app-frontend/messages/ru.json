@@ -298,7 +298,8 @@
       "notifications": "Уведомления",
       "accessibility": "Специальные возможности",
       "office": "Офис",
-      "plan": "Тариф и оплата"
+      "plan": "Тариф и оплата",
+      "calendar": "Календарь"
     },
     "themeNote": "«Системная» следует за устройством.",
     "languageTitle": "Язык интерфейса",
@@ -343,14 +344,30 @@
       "media": "Микрофон и камера, и как вас слышно.",
       "notifications": "Что сообщает вам, что что-то происходит.",
       "accessibility": "Анимация и производительность — под вас и ваше устройство.",
-      "plan": "Тариф вашего офиса и его оплата."
+      "plan": "Тариф вашего офиса и его оплата.",
+      "calendar": "Показывайте офису, когда вы на встрече, и смотрите свой день во «Встречах»."
+    },
+    "calendar": {
+      "google": "Google Календарь",
+      "connect": "Подключить",
+      "connectNote": "Только чтение",
+      "connected": "Подключён",
+      "disconnect": "Отключить",
+      "titles": "Показывать названия событий",
+      "titlesNote": "Команда видит названия встреч. Личные события скрыты.",
+      "privacy": "Офис видит, когда вы заняты. Больше ничего из календаря не уходит.",
+      "unavailable": "Google здесь не настроен.",
+      "notAllowed": "Разрешите TinyFloor видеть события календаря и подключите снова.",
+      "again": "Подключите ещё раз, чтобы закончить."
     }
   },
   "scene": {
     "meeting": "Встреча",
     "drawing": "Рисует",
     "yourDesk": "Ваш стол",
-    "claimDesk": "Занять стол"
+    "claimDesk": "Занять стол",
+    "inMeetingUntil": "На встрече до {time}",
+    "meetingTitledUntil": "{title} до {time}"
   },
   "actions": {
     "sit": "Сесть",
@@ -688,7 +705,28 @@
     "readyTitle": "Готовы присоединиться?",
     "joinNow": "Присоединиться",
     "inMeeting": "На этой встрече",
-    "asked": "Приглашён"
+    "asked": "Приглашён",
+    "day": {
+      "title": "Сегодня",
+      "schedule": "Добавить в Google Календарь",
+      "inviteTitle": "Встреча {office}",
+      "inviteBody": "Присоединиться в TinyFloor:",
+      "clear": "Сегодня в календаре больше ничего нет",
+      "connect": "Смотрите свой день здесь: <link>подключите Google Календарь</link>",
+      "now": "Сейчас",
+      "until": "До {time}",
+      "untitled": "Занят",
+      "join": "Присоединиться",
+      "open": "Открыть"
+    },
+    "reminder": {
+      "untitled": "Встреча",
+      "soon": "Начнётся через минуту",
+      "started": "Уже началась",
+      "notNow": "Не сейчас",
+      "join": "Присоединиться",
+      "open": "Открыть"
+    }
   },
   "help": {
     "title": "Написать команде TinyFloor",
@@ -1015,5 +1053,61 @@
     "wear": "Надеть",
     "notNow": "Не сейчас",
     "thanks": "С Рождеством!"
+  },
+  "calendar": {
+    "title": "Календарь",
+    "schedule": "Запланировать",
+    "inviteTitle": "Встреча {office}",
+    "inviteBody": "Присоединиться в TinyFloor:",
+    "connect": "Подключить Google Календарь",
+    "unavailable": "Google здесь не настроен.",
+    "notAllowed": "Разрешите TinyFloor видеть события календаря и подключите снова.",
+    "again": "Подключите ещё раз, чтобы закончить.",
+    "today": "Сегодня",
+    "tomorrow": "Завтра",
+    "untitled": "Занят",
+    "markedFree": "Свободно",
+    "previousDay": "Предыдущий день",
+    "nextDay": "Следующий день",
+    "you": "вы",
+    "busy": "Занят",
+    "kind": {
+      "out": "Не в офисе",
+      "focus": "Время для фокуса"
+    },
+    "scheduleAt": "Запланировать на {time}",
+    "notConnected": "{count, plural, one {Ещё не подключён} few {# ещё не подключены} many {# ещё не подключены} other {# ещё не подключены}}",
+    "until": "До {time}",
+    "joinHere": "Присоединиться",
+    "joinOn": {
+      "meet": "Войти в Google Meet",
+      "zoom": "Войти в Zoom",
+      "teams": "Войти в Teams",
+      "other": "Открыть ссылку",
+      "tinyfloor": "Присоединиться"
+    },
+    "place": {
+      "tinyfloor": "TinyFloor",
+      "meet": "Google Meet",
+      "zoom": "Zoom",
+      "teams": "Microsoft Teams",
+      "other": "Онлайн"
+    },
+    "privateNote": "Личное: офис никогда не видит название",
+    "inGoogle": "Открыть в Google Календаре",
+    "close": "Закрыть",
+    "upNext": "Дальше",
+    "nowUntil": "Сейчас · до {time}",
+    "nothingComing": "Ничего не запланировано",
+    "calendars": "Календари",
+    "yours": "Ваш календарь",
+    "settings": "Настройки календаря",
+    "previousWeek": "Предыдущая неделя",
+    "nextWeek": "Следующая неделя",
+    "connectShort": "Подключить",
+    "google": "Google Календарь",
+    "notLinked": "Не подключён",
+    "emptyTitle": "Здесь появятся ваши встречи",
+    "readOnly": "Только чтение"
   }
 }

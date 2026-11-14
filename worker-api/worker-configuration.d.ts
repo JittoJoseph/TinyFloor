@@ -22,6 +22,9 @@ interface __BaseEnv_Env {
 	CREEM_PRODUCTS?: string;
 	CREEM_API_KEY?: string;
 	CREEM_WEBHOOK_SECRET?: string;
+	/** Google Calendar's own OAuth client (src/calendar.ts), apart from sign-in's. Calendar is off without both. */
+	GOOGLE_CALENDAR_CLIENT_ID?: string;
+	GOOGLE_CALENDAR_CLIENT_SECRET?: string;
 	/** Resend (src/email.ts). Without it, app mail is logged, not sent. */
 	RESEND_API_KEY?: string;
 	/** Where this deployment's app is, for links in email (email.ts); the first of SITE_ORIGINS otherwise. */

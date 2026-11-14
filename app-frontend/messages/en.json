@@ -402,7 +402,7 @@
         "title": "Invites come with an office",
         "body": "Invite your team with one link, in an office of your own."
       },
-      "free": "Making an office takes a minute and is free for up to 3 people.",
+      "free": "Making your own office takes a minute.",
       "go": "Make my office",
       "notNow": "Not now",
       "voice": {
@@ -417,7 +417,7 @@
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Your office",
       "create": "Make my office",
-      "free": "Free for up to 3 people. No card needed."
+      "free": "Invite your team as soon as it's made."
     },
     "officePrompt": {
       "accountTitle": "Save it to your account",
@@ -425,7 +425,8 @@
     },
     "dock": {
       "title": "Create your own office",
-      "start": "Get started"
+      "start": "Get started",
+      "body": "Name it, invite your team, and walk in."
     }
   },
   "office": {
@@ -600,7 +601,7 @@
       "subtitle": "Everyone in {office}, and who can come in.",
       "yourProfile": "Your profile",
       "ownOfficeTitle": "Want a floor like this for your team?",
-      "ownOfficeBody": "Make your own office in a minute. Free for up to 3 people.",
+      "ownOfficeBody": "Make your own office in a minute.",
       "everyone": "Everyone",
       "onFloor": "On the floor",
       "search": "Search people",
@@ -632,7 +633,7 @@
     "inviteBody": "Anyone with this link joins {office}. Send it wherever your team already talks.",
     "copy": "Copy link",
     "copied": "Copied",
-    "trialNote": "Your office has {plan} free for {days} days, with room for your whole team. No card needed.",
+    "trialNote": "Your office starts with {plan} for {days} days, with room for your whole team.",
     "inviteLater": "You'll find this link on People too.",
     "walkIn": "Walk in",
     "choose": "Get {plan}"

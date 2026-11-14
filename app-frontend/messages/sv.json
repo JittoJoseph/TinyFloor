@@ -402,7 +402,7 @@
         "title": "Inbjudningar ingår i ett kontor",
         "body": "Bjud in ditt team med en länk, i ett eget kontor."
       },
-      "free": "Ett kontor skapar du på en minut, och det är gratis för upp till 3 personer.",
+      "free": "Att skapa ett eget kontor tar en minut.",
       "go": "Skapa mitt kontor",
       "notNow": "Inte nu",
       "voice": {
@@ -417,7 +417,7 @@
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Ditt kontor",
       "create": "Skapa mitt kontor",
-      "free": "Gratis för upp till 3 personer. Inget kort behövs."
+      "free": "Bjud in teamet så fort det är klart."
     },
     "officePrompt": {
       "accountTitle": "Spara det på ditt konto",
@@ -425,7 +425,8 @@
     },
     "dock": {
       "title": "Skapa ditt eget kontor",
-      "start": "Kom igång"
+      "start": "Kom igång",
+      "body": "Ge det ett namn, bjud in teamet och gå in."
     }
   },
   "office": {
@@ -600,7 +601,7 @@
       "subtitle": "Alla i {office}, och vem som får komma in.",
       "yourProfile": "Din profil",
       "ownOfficeTitle": "Ett plan som det här för ditt team?",
-      "ownOfficeBody": "Skapa ditt eget kontor på en minut. Gratis för upp till 3 personer.",
+      "ownOfficeBody": "Skapa ditt eget kontor på en minut.",
       "everyone": "Alla",
       "onFloor": "På golvet",
       "search": "Sök personer",
@@ -632,7 +633,7 @@
     "inviteBody": "Alla med den här länken kommer in i {office}. Skicka den dit ditt team redan pratar.",
     "copy": "Kopiera länk",
     "copied": "Kopierad",
-    "trialNote": "Ditt kontor har {plan} gratis i {days} dagar, med plats för hela teamet. Inget kort behövs.",
+    "trialNote": "Ditt kontor börjar med {plan} i {days} dagar, med plats för hela teamet.",
     "inviteLater": "Du hittar länken under Personer också.",
     "walkIn": "Gå in",
     "choose": "Skaffa {plan}"

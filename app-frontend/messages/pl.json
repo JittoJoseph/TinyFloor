@@ -402,7 +402,7 @@
         "title": "Zaproszenia są częścią biura",
         "body": "Zaproś zespół jednym linkiem, we własnym biurze."
       },
-      "free": "Utworzenie biura zajmuje minutę i jest darmowe dla maksymalnie 3 osób.",
+      "free": "Założenie własnego biura zajmuje minutę.",
       "go": "Utwórz moje biuro",
       "notNow": "Nie teraz",
       "voice": {
@@ -417,7 +417,7 @@
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Twoje biuro",
       "create": "Utwórz moje biuro",
-      "free": "Za darmo dla maksymalnie 3 osób. Bez karty."
+      "free": "Zaproś zespół, gdy tylko będzie gotowe."
     },
     "officePrompt": {
       "accountTitle": "Zapisz je na swoim koncie",
@@ -425,7 +425,8 @@
     },
     "dock": {
       "title": "Utwórz własne biuro",
-      "start": "Zacznij"
+      "start": "Zacznij",
+      "body": "Nazwij je, zaproś zespół i wejdź."
     }
   },
   "office": {
@@ -600,7 +601,7 @@
       "subtitle": "Wszyscy w {office} i kto może wejść.",
       "yourProfile": "Twój profil",
       "ownOfficeTitle": "Chcesz takie piętro dla swojego zespołu?",
-      "ownOfficeBody": "Utwórz własne biuro w minutę. Za darmo dla maksymalnie 3 osób.",
+      "ownOfficeBody": "Załóż własne biuro w minutę.",
       "everyone": "Wszyscy",
       "onFloor": "Na piętrze",
       "search": "Szukaj osób",
@@ -632,7 +633,7 @@
     "inviteBody": "Każdy, kto ma ten link, wejdzie do {office}. Wyślij go tam, gdzie twój zespół już rozmawia.",
     "copy": "Kopiuj link",
     "copied": "Skopiowano",
-    "trialNote": "Twoje biuro ma {plan} za darmo przez {days} dni, z miejscem dla całego zespołu. Bez karty.",
+    "trialNote": "Twoje biuro zaczyna z planem {plan} na {days} dni, z miejscem dla całego zespołu.",
     "inviteLater": "Ten link znajdziesz też w zakładce Osoby.",
     "walkIn": "Wejdź",
     "choose": "Wybierz {plan}"

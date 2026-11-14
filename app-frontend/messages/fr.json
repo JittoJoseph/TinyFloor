@@ -402,7 +402,7 @@
         "title": "Les invitations viennent avec un bureau",
         "body": "Invite ton équipe avec un seul lien, dans un bureau à toi."
       },
-      "free": "Créer un bureau prend une minute et c'est gratuit jusqu'à 3 personnes.",
+      "free": "Créer votre propre bureau prend une minute.",
       "go": "Créer mon bureau",
       "notNow": "Pas maintenant",
       "voice": {
@@ -417,7 +417,7 @@
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Votre bureau",
       "create": "Créer mon bureau",
-      "free": "Gratuit jusqu'à 3 personnes. Sans carte bancaire."
+      "free": "Invitez votre équipe dès qu'il est prêt."
     },
     "officePrompt": {
       "accountTitle": "Enregistrez-le dans votre compte",
@@ -425,7 +425,8 @@
     },
     "dock": {
       "title": "Créez votre propre bureau",
-      "start": "Commencer"
+      "start": "Commencer",
+      "body": "Donnez-lui un nom, invitez votre équipe et entrez."
     }
   },
   "office": {
@@ -600,7 +601,7 @@
       "subtitle": "Tout le monde dans {office}, et qui peut entrer.",
       "yourProfile": "Votre profil",
       "ownOfficeTitle": "Un étage comme celui-ci pour votre équipe ?",
-      "ownOfficeBody": "Créez votre bureau en une minute. Gratuit jusqu'à 3 personnes.",
+      "ownOfficeBody": "Créez votre propre bureau en une minute.",
       "everyone": "Tout le monde",
       "onFloor": "Sur l'étage",
       "search": "Rechercher des personnes",
@@ -632,7 +633,7 @@
     "inviteBody": "Toute personne qui a ce lien entre dans {office}. Envoie-le là où ton équipe discute déjà.",
     "copy": "Copier le lien",
     "copied": "Copié",
-    "trialNote": "Votre bureau a {plan} gratuitement pendant {days} jours, avec de la place pour toute l'équipe. Aucune carte requise.",
+    "trialNote": "Votre bureau démarre avec {plan} pendant {days} jours, avec de la place pour toute votre équipe.",
     "inviteLater": "Tu retrouveras ce lien dans Personnes.",
     "walkIn": "Entrer",
     "choose": "Passer à {plan}"

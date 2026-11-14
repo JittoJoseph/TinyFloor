@@ -402,7 +402,7 @@
         "title": "초대는 오피스에서 쓸 수 있어요",
         "body": "내 오피스에서는 링크 하나로 팀을 초대할 수 있어요."
       },
-      "free": "오피스는 1분이면 만들 수 있고, 3명까지 무료예요.",
+      "free": "나만의 오피스는 1분이면 만들어요.",
       "go": "내 오피스 만들기",
       "notNow": "나중에",
       "voice": {
@@ -417,7 +417,7 @@
       "namePlaceholder": "Acme Studio",
       "placeholderName": "내 오피스",
       "create": "내 오피스 만들기",
-      "free": "3명까지 무료. 카드 필요 없음."
+      "free": "만들자마자 팀을 초대하세요."
     },
     "officePrompt": {
       "accountTitle": "계정에 저장하세요",
@@ -425,7 +425,8 @@
     },
     "dock": {
       "title": "나만의 오피스 만들기",
-      "start": "시작하기"
+      "start": "시작하기",
+      "body": "이름을 정하고, 팀을 초대하고, 들어오세요."
     }
   },
   "office": {
@@ -600,7 +601,7 @@
       "subtitle": "{office}의 모든 사람과 들어올 수 있는 사람.",
       "yourProfile": "내 프로필",
       "ownOfficeTitle": "이런 층을 우리 팀에도?",
-      "ownOfficeBody": "1분 만에 내 오피스를 만드세요. 3명까지 무료.",
+      "ownOfficeBody": "1분 만에 나만의 오피스를 만드세요.",
       "everyone": "전체",
       "onFloor": "층에 있음",
       "search": "사람 검색",
@@ -632,7 +633,7 @@
     "inviteBody": "이 링크가 있으면 누구나 {office}에 들어올 수 있어요. 팀이 이미 이야기하는 곳에 보내세요.",
     "copy": "링크 복사",
     "copied": "복사됨",
-    "trialNote": "이 오피스는 {days}일 동안 {plan}를 무료로 쓸 수 있어요. 팀 전체가 들어올 수 있어요. 카드는 필요 없어요.",
+    "trialNote": "오피스는 {days}일 동안 {plan}로 시작하고, 팀 전체가 들어올 수 있어요.",
     "inviteLater": "이 링크는 사람 페이지에서도 찾을 수 있어요.",
     "walkIn": "들어가기",
     "choose": "{plan} 시작하기"

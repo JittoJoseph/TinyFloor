@@ -402,7 +402,7 @@
         "title": "邀请属于办公室",
         "body": "在你自己的办公室里，用一个链接邀请团队。"
       },
-      "free": "创建办公室只需一分钟，最多 3 人免费。",
+      "free": "创建自己的办公室只需一分钟。",
       "go": "创建我的办公室",
       "notNow": "以后再说",
       "voice": {
@@ -417,7 +417,7 @@
       "namePlaceholder": "Acme Studio",
       "placeholderName": "你的办公室",
       "create": "创建我的办公室",
-      "free": "最多 3 人免费，无需绑卡。"
+      "free": "创建好后就能邀请团队。"
     },
     "officePrompt": {
       "accountTitle": "保存到你的账户",
@@ -425,7 +425,8 @@
     },
     "dock": {
       "title": "创建你自己的办公室",
-      "start": "开始"
+      "start": "开始",
+      "body": "起个名字，邀请团队，然后走进去。"
     }
   },
   "office": {
@@ -600,7 +601,7 @@
       "subtitle": "{office} 的所有人，以及谁可以进来。",
       "yourProfile": "你的资料",
       "ownOfficeTitle": "想给你的团队也来一层这样的楼吗？",
-      "ownOfficeBody": "一分钟创建你自己的办公室。最多 3 人免费。",
+      "ownOfficeBody": "一分钟创建你自己的办公室。",
       "everyone": "全部",
       "onFloor": "在楼层上",
       "search": "搜索成员",
@@ -632,7 +633,7 @@
     "inviteBody": "有这个链接的人都能进入 {office}。把它发到团队平时聊天的地方。",
     "copy": "复制链接",
     "copied": "已复制",
-    "trialNote": "你的办公室可免费使用 {plan} {days} 天，整个团队都能进来。无需绑卡。",
+    "trialNote": "你的办公室以 {plan} 开始，为期 {days} 天，整个团队都能加入。",
     "inviteLater": "在「成员」页也能找到这个链接。",
     "walkIn": "进入",
     "choose": "开通 {plan}"

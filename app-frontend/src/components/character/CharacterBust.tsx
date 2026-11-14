@@ -14,10 +14,13 @@ const PRESENCE: Record<string, string> = {
   in_call: "bg-violet-500",
 };
 
+/** How round its corners are, of its size: 10px on the dock's 36px keys, so it sits among them as one of them. */
+const CORNER = 0.28;
+
 /**
- * Your character's head in a circle, with room round it: you on the floor,
- * where a Face is you everywhere else, with your status as a dot over the
- * circle's edge, as a Face has it. Drawn smaller than the art (`zoom` of it),
+ * Your character's head in a rounded square, with room round it: you on the
+ * floor, where a Face is you everywhere else, shaped like the dock's own keys,
+ * with your status as a dot over its corner. Drawn smaller than the art (`zoom` of it),
  * so a hat fits and the face isn't pressed against the edge; smoothly, since
  * pixel art shrunk by a fraction loses rows unevenly the hard way. Framed
  * around `center`, a row of the frame's 64 (about 30 is the eyes, so what's
@@ -39,9 +42,9 @@ export function CharacterBust({
   className?: string;
 }) {
   return (
-    <span className={cn("relative inline-flex shrink-0", className)} style={{ width: size, height: size }} aria-hidden>
+    <span className={cn("relative inline-flex shrink-0", className)} style={{ width: size, height: size, borderRadius: Math.round(size * CORNER) }} aria-hidden>
       <span
-        className="relative overflow-hidden rounded-full bg-[color-mix(in_oklab,var(--ui-muted)_70%,var(--ui-foreground)_8%)] shadow-[inset_0_0_0_1px_rgb(0_0_0/0.08)]"
+        className="relative overflow-hidden rounded-[inherit] bg-[color-mix(in_oklab,var(--ui-muted)_70%,var(--ui-foreground)_8%)] shadow-[inset_0_0_0_1px_rgb(0_0_0/0.08)]"
         style={{ width: size, height: size }}
       >
         {/* The frame's feet this far down, so the row it's framed around sits in the circle's middle. */}
@@ -55,7 +58,7 @@ export function CharacterBust({
       {presence && PRESENCE[presence] && (
         <span
           className={cn("absolute rounded-full ring-2 ring-[var(--face-ring,var(--ui-card))]", PRESENCE[presence])}
-          style={{ width: 10, height: 10, right: -1, bottom: -1 }}
+          style={{ width: 10, height: 10, right: -2, bottom: -2 }}
         />
       )}
     </span>

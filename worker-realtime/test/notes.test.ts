@@ -156,3 +156,46 @@ describe("a new look", () => {
     expect(ava.messages.some((message) => message.t === "look")).toBe(false);
   });
 });
+
+describe("a meeting on someone's calendar", () => {
+  it("is passed on as they say, cleaned, and shown to whoever walks in after", async () => {
+    const room = uniqueRoom();
+    const ava = await Client.open(room, { sub: "ava" });
+    await ava.next("welcome");
+    const ben = await Client.open(room, { sub: "ben" });
+    await ben.next("welcome");
+
+    const until = Date.now() + 30 * 60 * 1000;
+    ava.send({ t: "calendar", busy: { until, title: "  Design\nreview ", call: true } });
+    expect(await ben.next("calendar")).toEqual({ t: "calendar", id: "ava", busy: { until, title: "Design review", call: true } });
+
+    const cy = await Client.open(room, { sub: "cy" });
+    const welcome = await cy.next("welcome");
+    expect(welcome.players.find((one: { id: string }) => one.id === "ava")?.calendar).toEqual({ until, title: "Design review", call: true });
+
+    ben.messages.length = 0;
+    ava.send({ t: "calendar", busy: null });
+    expect(await ben.next("calendar")).toEqual({ t: "calendar", id: "ava", busy: null });
+  });
+
+  it("takes nothing already over, a day long, or from a guest", async () => {
+    const room = uniqueRoom();
+    const ava = await Client.open(room, { sub: "ava" });
+    await ava.next("welcome");
+    const ben = await Client.open(room, { sub: "ben" });
+    await ben.next("welcome");
+
+    ava.send({ t: "calendar", busy: { until: Date.now() - 1000 } });
+    expect(await ben.next("calendar")).toEqual({ t: "calendar", id: "ava", busy: null });
+    ben.messages.length = 0;
+    ava.send({ t: "calendar", busy: { until: Date.now() + 2 * 24 * 60 * 60 * 1000 } });
+    expect(await ben.next("calendar")).toEqual({ t: "calendar", id: "ava", busy: null });
+
+    const gil = await Client.open(room, { sub: "gil", role: "guest" });
+    await gil.next("welcome");
+    ben.messages.length = 0;
+    gil.send({ t: "calendar", busy: { until: Date.now() + 60_000 } });
+    await settle();
+    expect(ben.messages.some((message) => message.t === "calendar")).toBe(false);
+  });
+});

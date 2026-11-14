@@ -298,7 +298,8 @@
       "notifications": "Notificações",
       "accessibility": "Acessibilidade",
       "office": "Escritório",
-      "plan": "Plano e cobrança"
+      "plan": "Plano e cobrança",
+      "calendar": "Agenda"
     },
     "themeNote": "\"Sistema\" segue seu dispositivo.",
     "languageTitle": "Idioma de exibição",
@@ -343,14 +344,30 @@
       "media": "Seu microfone e sua câmera, e como você soa.",
       "notifications": "O que avisa você de que algo está acontecendo.",
       "accessibility": "Movimento e desempenho, do seu jeito e do seu dispositivo.",
-      "plan": "O plano do seu escritório e como ele é pago."
+      "plan": "O plano do seu escritório e como ele é pago.",
+      "calendar": "Mostre ao seu escritório quando você está em reunião e veja seu dia em Reuniões."
+    },
+    "calendar": {
+      "google": "Google Agenda",
+      "connect": "Conectar",
+      "connectNote": "Só leitura. O TinyFloor nunca muda sua agenda.",
+      "connected": "Conectada",
+      "disconnect": "Desconectar",
+      "titles": "Mostrar títulos dos eventos",
+      "titlesNote": "Seu escritório vê o nome da reunião, não só que você está em uma. Eventos privados nunca mostram o deles.",
+      "privacy": "Seu escritório vê quando você está em reunião e até quando. Nada mais sai da sua agenda.",
+      "unavailable": "O Google não está configurado aqui.",
+      "notAllowed": "Permita que o TinyFloor veja os eventos da sua agenda e conecte de novo.",
+      "again": "Conecte mais uma vez para terminar."
     }
   },
   "scene": {
     "meeting": "Reunião",
     "drawing": "Desenhando",
     "yourDesk": "Sua mesa",
-    "claimDesk": "Reservar mesa"
+    "claimDesk": "Reservar mesa",
+    "inMeetingUntil": "Em reunião até {time}",
+    "meetingTitledUntil": "{title} até {time}"
   },
   "actions": {
     "sit": "Sentar",
@@ -688,7 +705,28 @@
     "readyTitle": "Pronto para entrar?",
     "joinNow": "Entrar agora",
     "inMeeting": "Nesta reunião",
-    "asked": "Convidado"
+    "asked": "Convidado",
+    "day": {
+      "title": "Hoje",
+      "schedule": "Adicionar ao Google Agenda",
+      "inviteTitle": "Reunião {office}",
+      "inviteBody": "Entre no TinyFloor:",
+      "clear": "Nada mais na sua agenda hoje",
+      "connect": "Veja seu dia aqui: <link>conecte o Google Agenda</link>",
+      "now": "Agora",
+      "until": "Até {time}",
+      "untitled": "Ocupado",
+      "join": "Entrar",
+      "open": "Abrir"
+    },
+    "reminder": {
+      "untitled": "Reunião",
+      "soon": "Começa em um minuto",
+      "started": "Já começou",
+      "notNow": "Agora não",
+      "join": "Entrar",
+      "open": "Abrir"
+    }
   },
   "help": {
     "title": "Fale com a equipe do TinyFloor",

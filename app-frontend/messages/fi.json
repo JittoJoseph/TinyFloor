@@ -298,7 +298,8 @@
       "notifications": "Ilmoitukset",
       "accessibility": "Saavutettavuus",
       "office": "Toimisto",
-      "plan": "Paketti ja laskutus"
+      "plan": "Paketti ja laskutus",
+      "calendar": "Kalenteri"
     },
     "themeNote": "”Järjestelmä” seuraa laitettasi.",
     "languageTitle": "Näyttökieli",
@@ -343,14 +344,30 @@
       "media": "Mikrofonisi ja kamerasi, ja miltä kuulostat.",
       "notifications": "Mikä kertoo, että jotain tapahtuu.",
       "accessibility": "Liike ja suorituskyky, sinulle ja laitteellesi sopiviksi.",
-      "plan": "Toimistosi tilaus ja sen maksaminen."
+      "plan": "Toimistosi tilaus ja sen maksaminen.",
+      "calendar": "Näytä toimistolle, milloin olet kokouksessa, ja näe päiväsi Kokouksissa."
+    },
+    "calendar": {
+      "google": "Google-kalenteri",
+      "connect": "Yhdistä",
+      "connectNote": "Vain luku. TinyFloor ei koskaan muuta kalenteriasi.",
+      "connected": "Yhdistetty",
+      "disconnect": "Katkaise",
+      "titles": "Näytä tapahtumien otsikot",
+      "titlesNote": "Toimisto näkee kokouksen nimen, ei vain sitä, että olet kokouksessa. Yksityiset tapahtumat eivät koskaan näytä omaansa.",
+      "privacy": "Toimisto näkee, milloin olet kokouksessa ja mihin asti. Mitään muuta ei lähde kalenteristasi.",
+      "unavailable": "Googlea ei ole määritetty täällä.",
+      "notAllowed": "Salli TinyFloorin nähdä kalenterisi tapahtumat ja yhdistä uudelleen.",
+      "again": "Yhdistä vielä kerran viimeistelläksesi."
     }
   },
   "scene": {
     "meeting": "Palaveri",
     "drawing": "Piirtää",
     "yourDesk": "Työpöytäsi",
-    "claimDesk": "Varaa työpiste"
+    "claimDesk": "Varaa työpiste",
+    "inMeetingUntil": "Kokouksessa {time} asti",
+    "meetingTitledUntil": "{title} {time} asti"
   },
   "actions": {
     "sit": "Istu alas",
@@ -688,7 +705,28 @@
     "readyTitle": "Valmiina liittymään?",
     "joinNow": "Liity nyt",
     "inMeeting": "Tässä kokouksessa",
-    "asked": "Kysytty"
+    "asked": "Kysytty",
+    "day": {
+      "title": "Tänään",
+      "schedule": "Lisää Google-kalenteriin",
+      "inviteTitle": "{office}: kokous",
+      "inviteBody": "Liity TinyFloorissa:",
+      "clear": "Kalenterissasi ei ole tänään enää mitään",
+      "connect": "Näe päiväsi täällä: <link>yhdistä Google-kalenteri</link>",
+      "now": "Nyt",
+      "until": "{time} asti",
+      "untitled": "Varattu",
+      "join": "Liity",
+      "open": "Avaa"
+    },
+    "reminder": {
+      "untitled": "Kokous",
+      "soon": "Alkaa minuutin päästä",
+      "started": "Alkanut",
+      "notNow": "Ei nyt",
+      "join": "Liity",
+      "open": "Avaa"
+    }
   },
   "help": {
     "title": "Kirjoita TinyFloor-tiimille",

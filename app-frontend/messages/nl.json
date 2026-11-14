@@ -298,7 +298,8 @@
       "notifications": "Meldingen",
       "accessibility": "Toegankelijkheid",
       "office": "Kantoor",
-      "plan": "Abonnement en facturering"
+      "plan": "Abonnement en facturering",
+      "calendar": "Agenda"
     },
     "themeNote": "'Systeem' volgt je apparaat.",
     "languageTitle": "Weergavetaal",
@@ -343,14 +344,30 @@
       "media": "Je microfoon en camera, en hoe je klinkt.",
       "notifications": "Wat je laat weten dat er iets gebeurt.",
       "accessibility": "Beweging en prestaties, passend bij jou en je apparaat.",
-      "plan": "Welk abonnement je kantoor heeft en hoe het wordt betaald."
+      "plan": "Welk abonnement je kantoor heeft en hoe het wordt betaald.",
+      "calendar": "Laat je kantoor zien wanneer je in een meeting zit, en zie je dag bij Meetings."
+    },
+    "calendar": {
+      "google": "Google Agenda",
+      "connect": "Koppelen",
+      "connectNote": "Alleen lezen. TinyFloor verandert nooit iets in je agenda.",
+      "connected": "Gekoppeld",
+      "disconnect": "Ontkoppelen",
+      "titles": "Titels van afspraken tonen",
+      "titlesNote": "Je kantoor ziet hoe een meeting heet, niet alleen dat je erin zit. Privéafspraken tonen die nooit.",
+      "privacy": "Je kantoor ziet wanneer je in een meeting zit en tot wanneer. Verder verlaat niets je agenda.",
+      "unavailable": "Google is hier niet ingesteld.",
+      "notAllowed": "Geef TinyFloor toegang tot de afspraken in je agenda en koppel opnieuw.",
+      "again": "Koppel nog één keer om af te ronden."
     }
   },
   "scene": {
     "meeting": "Vergadering",
     "drawing": "Tekent",
     "yourDesk": "Jouw bureau",
-    "claimDesk": "Bureau claimen"
+    "claimDesk": "Bureau claimen",
+    "inMeetingUntil": "In een meeting tot {time}",
+    "meetingTitledUntil": "{title} tot {time}"
   },
   "actions": {
     "sit": "Gaan zitten",
@@ -688,7 +705,28 @@
     "readyTitle": "Klaar om deel te nemen?",
     "joinNow": "Nu deelnemen",
     "inMeeting": "In deze meeting",
-    "asked": "Gevraagd"
+    "asked": "Gevraagd",
+    "day": {
+      "title": "Vandaag",
+      "schedule": "Toevoegen aan Google Agenda",
+      "inviteTitle": "Meeting {office}",
+      "inviteBody": "Doe mee op TinyFloor:",
+      "clear": "Vandaag staat er niets meer in je agenda",
+      "connect": "Zie je dag hier: <link>koppel Google Agenda</link>",
+      "now": "Nu",
+      "until": "Tot {time}",
+      "untitled": "Bezet",
+      "join": "Deelnemen",
+      "open": "Openen"
+    },
+    "reminder": {
+      "untitled": "Meeting",
+      "soon": "Begint over een minuut",
+      "started": "Begonnen",
+      "notNow": "Niet nu",
+      "join": "Deelnemen",
+      "open": "Openen"
+    }
   },
   "help": {
     "title": "Praat met het TinyFloor-team",

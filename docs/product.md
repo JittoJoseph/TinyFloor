@@ -391,6 +391,37 @@ missing features on the map.
   came out a pixel wider or narrower depending on where the camera stopped.
   It's now drawn with the crisp shader on every screen.
 
+## Google Calendar (13 November)
+
+- **Your office sees when you're in a meeting, and until when.** Connected
+  from Settings → Calendar (read-only), your own page reads today's events
+  every 5 minutes and tells the room when you're busy. Teammates see it as
+  your note, "In a meeting until 3:30", wherever notes show (your name tag,
+  People, the dock), while you haven't written one: a note you wrote wins. A
+  call somewhere else (a Meet or Zoom link) gets the phone icon.
+- **Titles stay yours unless you turn them on.** With "Show event titles",
+  teammates see "Design review until 3:30"; a private event never shows its
+  title. Free time, all-day events, declined invites and where-you-work
+  entries never count, and back-to-back meetings read as one stretch.
+- **Nobody else's page reads your calendar.** Only your page asks the API for
+  your events; the room passes on just "until when" (and the title if you
+  allow it), and only in an office, never the demo office.
+- **Your day in Meetings.** What's left today, with Join for a meeting here
+  and Open for a Meet or Zoom link. "Add to Google Calendar" opens Google's
+  own new-event page with the office's Meetings link as the place, so a
+  meeting here lands on everyone's calendar with no access needed. A minute
+  before a meeting that's online, a prompt over the dock offers the way in.
+- **How the access is kept.** Google's popup code flow, as signing in uses,
+  asking for `calendar.events.readonly`. The refresh token is kept encrypted
+  (AES-GCM, a key derived from the ticket secret) in `calendar_links`, and
+  Disconnect revokes it at Google. Google gives a refresh token only the first
+  time someone agrees, so a connection without one is revoked and asked again.
+- **Before it's open to everyone**, the Google Cloud project needs the
+  Calendar API turned on and the scope on its consent screen. The scope is
+  sensitive, so until Google verifies the app only its test users can
+  connect (up to 100), and they see an "unverified app" warning.
+- **Not yet:** Outlook, and seating you at your desk during a call elsewhere.
+
 ## Small decisions worth remembering
 
 - **The accent is ink, not a hue** (21 October). Emphasis comes from

@@ -66,13 +66,19 @@ export function loadGoogle(): Promise<GoogleAccounts> {
 
 export const googleAvailable = Boolean(CLIENT_ID);
 
+/** What signing in asks Google for: who they are, nothing more. */
+const SIGN_IN = "openid email profile";
+
 export function GoogleButton({
   label,
   onCode,
   onError,
   busy,
+  scope = SIGN_IN,
 }: {
   label: string;
+  /** What to ask Google for: signing in by default; connecting a calendar asks for it too. */
+  scope?: string;
   /** The one-time code, once the person has picked their account and agreed. */
   onCode: (code: string) => void;
   /** Google couldn't be reached, or the popup failed. Closing it isn't an error. */
@@ -95,7 +101,7 @@ export function GoogleButton({
         if (cancelled) return;
         client.current = oauth2.initCodeClient({
           client_id: CLIENT_ID,
-          scope: "openid email profile",
+          scope,
           ux_mode: "popup",
           callback: (response) => (response.code ? handlers.current.onCode(response.code) : handlers.current.onError()),
           error_callback: (error) => {
@@ -109,7 +115,7 @@ export function GoogleButton({
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [scope]);
 
   if (!CLIENT_ID) return null;
   return (

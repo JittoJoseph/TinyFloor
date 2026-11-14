@@ -298,7 +298,8 @@
       "notifications": "Powiadomienia",
       "accessibility": "Dostępność",
       "office": "Biuro",
-      "plan": "Plan i płatności"
+      "plan": "Plan i płatności",
+      "calendar": "Kalendarz"
     },
     "themeNote": "„Systemowy” podąża za urządzeniem.",
     "languageTitle": "Język interfejsu",
@@ -343,14 +344,30 @@
       "media": "Twój mikrofon i kamera, i jak brzmisz.",
       "notifications": "Co daje ci znać, że coś się dzieje.",
       "accessibility": "Ruch i wydajność, dopasowane do ciebie i urządzenia.",
-      "plan": "Plan twojego biura i sposób płatności."
+      "plan": "Plan twojego biura i sposób płatności.",
+      "calendar": "Pokaż biuru, kiedy jesteś na spotkaniu, i zobacz swój dzień w Spotkaniach."
+    },
+    "calendar": {
+      "google": "Kalendarz Google",
+      "connect": "Połącz",
+      "connectNote": "Tylko do odczytu. TinyFloor nigdy nie zmienia Twojego kalendarza.",
+      "connected": "Połączony",
+      "disconnect": "Rozłącz",
+      "titles": "Pokazuj tytuły wydarzeń",
+      "titlesNote": "Biuro widzi, jak nazywa się spotkanie, a nie tylko to, że na nim jesteś. Wydarzenia prywatne nigdy nie pokazują swojego.",
+      "privacy": "Biuro widzi, kiedy jesteś na spotkaniu i do kiedy. Nic więcej nie opuszcza Twojego kalendarza.",
+      "unavailable": "Google nie jest tu skonfigurowane.",
+      "notAllowed": "Pozwól TinyFloor widzieć wydarzenia z kalendarza, a potem połącz ponownie.",
+      "again": "Połącz jeszcze raz, aby dokończyć."
     }
   },
   "scene": {
     "meeting": "Spotkanie",
     "drawing": "Rysuje",
     "yourDesk": "Twoje biurko",
-    "claimDesk": "Zajmij biurko"
+    "claimDesk": "Zajmij biurko",
+    "inMeetingUntil": "Na spotkaniu do {time}",
+    "meetingTitledUntil": "{title} do {time}"
   },
   "actions": {
     "sit": "Usiądź",
@@ -688,7 +705,28 @@
     "readyTitle": "Gotowy, by dołączyć?",
     "joinNow": "Dołącz teraz",
     "inMeeting": "W tym spotkaniu",
-    "asked": "Zaproszono"
+    "asked": "Zaproszono",
+    "day": {
+      "title": "Dziś",
+      "schedule": "Dodaj do Kalendarza Google",
+      "inviteTitle": "Spotkanie {office}",
+      "inviteBody": "Dołącz w TinyFloor:",
+      "clear": "Dziś nic więcej w kalendarzu",
+      "connect": "Zobacz tu swój dzień: <link>połącz Kalendarz Google</link>",
+      "now": "Teraz",
+      "until": "Do {time}",
+      "untitled": "Zajęty",
+      "join": "Dołącz",
+      "open": "Otwórz"
+    },
+    "reminder": {
+      "untitled": "Spotkanie",
+      "soon": "Zaczyna się za minutę",
+      "started": "Już się zaczęło",
+      "notNow": "Nie teraz",
+      "join": "Dołącz",
+      "open": "Otwórz"
+    }
   },
   "help": {
     "title": "Napisz do zespołu TinyFloor",

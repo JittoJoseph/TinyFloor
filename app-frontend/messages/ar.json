@@ -298,7 +298,8 @@
       "notifications": "الإشعارات",
       "accessibility": "إمكانية الوصول",
       "office": "المكتب",
-      "plan": "الخطة والفوترة"
+      "plan": "الخطة والفوترة",
+      "calendar": "التقويم"
     },
     "themeNote": "«النظام» يتبع جهازك.",
     "languageTitle": "لغة العرض",
@@ -343,14 +344,30 @@
       "media": "الميكروفون والكاميرا، وكيف يصل صوتك.",
       "notifications": "ما ينبّهك عندما يحدث شيء.",
       "accessibility": "الحركة والأداء، بما يناسبك ويناسب جهازك.",
-      "plan": "خطة مكتبك وطريقة الدفع."
+      "plan": "خطة مكتبك وطريقة الدفع.",
+      "calendar": "أظهر لمكتبك متى تكون في اجتماع، وشاهد يومك في الاجتماعات."
+    },
+    "calendar": {
+      "google": "تقويم Google",
+      "connect": "ربط",
+      "connectNote": "للقراءة فقط. لا يغيّر TinyFloor تقويمك أبدًا.",
+      "connected": "مرتبط",
+      "disconnect": "إلغاء الربط",
+      "titles": "إظهار عناوين الأحداث",
+      "titlesNote": "يرى مكتبك اسم الاجتماع، لا مجرد أنك في اجتماع. لا تُظهر الأحداث الخاصة عنوانها أبدًا.",
+      "privacy": "يرى مكتبك متى تكون في اجتماع وحتى متى. لا يخرج شيء آخر من تقويمك.",
+      "unavailable": "Google غير مُعدّ هنا.",
+      "notAllowed": "اسمح لـ TinyFloor برؤية أحداث تقويمك، ثم اربطه مرة أخرى.",
+      "again": "اربطه مرة أخرى لإكمال الأمر."
     }
   },
   "scene": {
     "meeting": "اجتماع",
     "drawing": "يرسم",
     "yourDesk": "مكتبك",
-    "claimDesk": "حجز المكتب"
+    "claimDesk": "حجز المكتب",
+    "inMeetingUntil": "في اجتماع حتى {time}",
+    "meetingTitledUntil": "{title} حتى {time}"
   },
   "actions": {
     "sit": "اجلس",
@@ -688,7 +705,28 @@
     "readyTitle": "مستعد للانضمام؟",
     "joinNow": "انضم الآن",
     "inMeeting": "في هذا الاجتماع",
-    "asked": "تم الطلب"
+    "asked": "تم الطلب",
+    "day": {
+      "title": "اليوم",
+      "schedule": "إضافة إلى تقويم Google",
+      "inviteTitle": "اجتماع {office}",
+      "inviteBody": "انضم على TinyFloor:",
+      "clear": "لا شيء آخر في تقويمك اليوم",
+      "connect": "شاهد يومك هنا: <link>اربط تقويم Google</link>",
+      "now": "الآن",
+      "until": "حتى {time}",
+      "untitled": "مشغول",
+      "join": "انضمام",
+      "open": "فتح"
+    },
+    "reminder": {
+      "untitled": "اجتماع",
+      "soon": "يبدأ خلال دقيقة",
+      "started": "بدأ",
+      "notNow": "ليس الآن",
+      "join": "انضمام",
+      "open": "فتح"
+    }
   },
   "help": {
     "title": "تحدّث إلى فريق TinyFloor",

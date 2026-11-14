@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useSyncExternalStore, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { Accessibility, ArrowLeft, Bell, Building2, ChevronRight, CreditCard, Headphones, KeyRound, Mic, Monitor, Moon, SlidersHorizontal, Sun, UserRound, Video } from "web-shared/components/ui/icons";
+import { Accessibility, ArrowLeft, Bell, Building2, Calendar, ChevronRight, CreditCard, Headphones, KeyRound, Mic, Monitor, Moon, SlidersHorizontal, Sun, UserRound, Video } from "web-shared/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
 import { isChristmas } from "@/lib/christmas";
@@ -26,15 +26,17 @@ import { PresenceDock } from "./PresenceDock";
 import { usePlace } from "./place";
 import { useOfficeMaybe } from "./OfficeShell";
 import { PlanSection } from "./PlanSection";
+import { CalendarSettings } from "./CalendarSettings";
 import { Profile, SignIn } from "@/components/account/AccountView";
 import { leftPath } from "@/lib/links";
 
-type Section = "profile" | "signin" | "general" | "media" | "notifications" | "accessibility" | "office" | "plan";
-const SECTIONS: Section[] = ["profile", "signin", "general", "media", "notifications", "accessibility", "office", "plan"];
+type Section = "profile" | "signin" | "calendar" | "general" | "media" | "notifications" | "accessibility" | "office" | "plan";
+const SECTIONS: Section[] = ["profile", "signin", "calendar", "general", "media", "notifications", "accessibility", "office", "plan"];
 
 const ICONS: Record<Section, ReactNode> = {
   profile: <UserRound />,
   signin: <KeyRound />,
+  calendar: <Calendar />,
   general: <SlidersHorizontal />,
   media: <Headphones />,
   notifications: <Bell />,
@@ -55,7 +57,7 @@ export function SettingsView() {
   const tp = useTranslations("office.profile");
   const place = usePlace();
   const { user } = useAuth();
-  const account: Section[] = user && !user.guest ? ["profile", "signin"] : [];
+  const account: Section[] = user && !user.guest ? ["profile", "signin", "calendar"] : [];
   const yours: Section[] = ["general", "media", "notifications", "accessibility"];
   const office: Section[] = place.kind === "office" ? ["office", "plan"] : [];
   const shown = [...account, ...yours, ...office];
@@ -143,6 +145,7 @@ export function SettingsView() {
           </div>
           {section === "profile" && <Profile />}
           {section === "signin" && <SignIn />}
+          {section === "calendar" && <CalendarSettings />}
           {section === "general" && <General />}
           {section === "media" && <Media />}
           {section === "notifications" && <Notifications />}

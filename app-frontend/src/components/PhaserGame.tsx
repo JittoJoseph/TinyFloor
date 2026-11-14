@@ -63,6 +63,9 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
       claimConfirm: tDesk("claimConfirm"),
       cancel: tCommon("cancel"),
       claimed: tDesk("claimed"),
+      // Kept as patterns: the time and title go in as each meeting is shown (PlayerManager).
+      inMeetingUntil: t("inMeetingUntil", { time: "{time}" }),
+      meetingTitledUntil: t("meetingTitledUntil", { title: "{title}", time: "{time}" }),
     }),
   );
 

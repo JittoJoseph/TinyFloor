@@ -2,6 +2,7 @@ import { adminRoutes } from "./admin";
 import { authRoutes } from "./auth";
 import { emailCodeRoutes } from "./email-codes";
 import { billingRoutes, endTrials } from "./billing";
+import { calendarRoutes } from "./calendar";
 import { callRoutes } from "./calls";
 import { allowedOrigin, assertSafeWrite, errorResponse, HttpError, json, preflight, withCors } from "./http";
 import { floorRoutes } from "./floor";
@@ -25,6 +26,7 @@ const router = new Router().add("GET", "/v1/health", async ({ env }) => {
 authRoutes(router);
 emailCodeRoutes(router);
 googleRoutes(router);
+calendarRoutes(router);
 officeRoutes(router);
 teamRoutes(router);
 fileRoutes(router);

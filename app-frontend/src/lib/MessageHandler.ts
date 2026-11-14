@@ -12,6 +12,7 @@ import { deskOf, deskState, setDesks } from "./desks";
 import { applyPieceChange, setPieceChanges } from "./pieces";
 import { FLOOR_ARRIVED_EVENT, floorSteps, myStatus, myStatusNote, sinceFloorRequested, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
 import { isListening } from "./music";
+import { myCalendarBusy } from "./calendar";
 import { track } from "web-shared/lib/analytics";
 
 /** Applies what the room says to the scene and the React overlays. */
@@ -116,6 +117,10 @@ export class MessageHandler {
       case "listening":
         this.playerManager.updatePlayerListening(message.id, message.on);
         break;
+      case "calendar":
+        this.playerManager.updatePlayerCalendar(message.id, message.busy, () => this.dispatchPlayerList());
+        this.dispatchPlayerList();
+        break;
       case "look":
         this.playerManager.changeLook(message.id, message.character);
         this.dispatchPlayerList();
@@ -148,6 +153,9 @@ export class MessageHandler {
     if (!self.guest && JSON.stringify(note) !== JSON.stringify(self.note ?? null)) this.send({ t: "note", note });
     // And music that kept playing through it.
     if (isListening() !== !!self.listening) this.send({ t: "listening", on: isListening() });
+    // And a meeting your calendar has you in.
+    const busy = self.guest ? null : myCalendarBusy();
+    if (JSON.stringify(busy) !== JSON.stringify(self.calendar ?? null)) this.send({ t: "calendar", busy });
     // Everyone else; our own sprite and nameplate stay.
     for (const { id } of this.playerManager.getPlayerList()) {
       if (id === this.playerId) continue;
@@ -159,6 +167,7 @@ export class MessageHandler {
     this.player.setPosition(spawn.x, spawn.y);
     this.playerManager.showLocalPlayer();
     this.playerManager.updatePlayerNote(this.playerId, self.guest ? null : myStatusNote(), () => this.dispatchPlayerList());
+    this.playerManager.updatePlayerCalendar(this.playerId, busy, () => this.dispatchPlayerList());
     this.playerManager.updatePlayerListening(this.playerId, isListening());
     // The view starts where you are, rather than sweeping over from where it was.
     this.scene.cameras.main.centerOn(spawn.x, spawn.y);
@@ -183,6 +192,7 @@ export class MessageHandler {
   private addUser(player: PlayerState) {
     this.playerManager.addPlayer(player.id, player.name, player.x, player.y, player.character, player.status, player.guest);
     this.playerManager.updatePlayerNote(player.id, player.note, () => this.dispatchPlayerList());
+    this.playerManager.updatePlayerCalendar(player.id, player.calendar, () => this.dispatchPlayerList());
     this.playerManager.updatePlayerListening(player.id, !!player.listening);
     if (player.seat !== null) this.seatPlayer(player.id, player.seat, false);
   }
@@ -211,7 +221,8 @@ export class MessageHandler {
     if (name) window.dispatchEvent(new CustomEvent(type, { detail: { id, name } }));
   }
 
-  private dispatchPlayerList() {
+  /** Everyone on the floor, as views show them (People, the dock), told again. */
+  dispatchPlayerList() {
     window.dispatchEvent(new CustomEvent("playerListUpdated", { detail: this.playerManager.getPlayerList() }));
   }
 }

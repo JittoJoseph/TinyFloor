@@ -1,5 +1,6 @@
 import { floorStep, onFloorLook, onFloorRename, onFloorShown, WALK_TO_PERSON_EVENT, WAVE_EVENT } from "../lib/floor";
-import type { StatusNote } from "shared-protocol/messages";
+import type { CalendarBusy, StatusNote } from "shared-protocol/messages";
+import { CALENDAR_BUSY_EVENT } from "../lib/calendar";
 import * as Phaser from "phaser";
 import type { RoomTicket } from "web-shared/lib/api";
 import { RoomSocket } from "../lib/RoomSocket";
@@ -265,6 +266,13 @@ class GameScene extends Phaser.Scene {
     this.listen("noteChange", (event: CustomEvent<{ note: StatusNote | null }>) => {
       this.wsManager.send({ t: "note", note: event.detail.note });
       this.playerManager.updatePlayerNote(this.playerId, event.detail.note);
+    });
+    // Your calendar has you in a meeting now, or not (lib/calendar): the floor shows it as your note while you haven't written one.
+    this.listen(CALENDAR_BUSY_EVENT, (event: CustomEvent<CalendarBusy | null>) => {
+      this.wsManager.send({ t: "calendar", busy: event.detail });
+      const told = () => this.messageHandler.dispatchPlayerList();
+      this.playerManager.updatePlayerCalendar(this.playerId, event.detail, told);
+      told();
     });
     this.listen("listeningChange", (event: CustomEvent<{ on: boolean }>) => {
       this.wsManager.send({ t: "listening", on: event.detail.on });

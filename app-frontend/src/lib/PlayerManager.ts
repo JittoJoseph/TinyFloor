@@ -8,7 +8,8 @@ import { SceneLabel } from "./SceneLabel";
 import { cssZoom } from "./plates";
 import { TILE_SIZE, MOVEMENT_SPEED, pixelToTile, tileToPixel } from "web-shared/lib/types";
 import { statusColorValue } from "web-shared/lib/status";
-import { liveNote, type StatusNote } from "shared-protocol/messages";
+import { liveBusy, liveNote, type CalendarBusy, type StatusNote } from "shared-protocol/messages";
+import { sceneText } from "./sceneText";
 import type { PlayerStatus } from "web-shared/lib/types";
 
 interface RemotePlayerState {
@@ -68,8 +69,11 @@ export class PlayerManager {
   private players: Map<string, Phaser.GameObjects.Container> = new Map();
   private nameTags: Map<string, SceneLabel> = new Map();
   private playerStates: Map<string, RemotePlayerState> = new Map();
-  /** Status notes by person, you included, while they last; each with its timer to clear itself. */
+  /** The note each person shows, you included, while it lasts; each with its timer to clear itself. */
   private notes: Map<string, StatusNote> = new Map();
+  /** What each person wrote, and what their calendar says: a note they wrote is shown over a meeting. */
+  private written: Map<string, StatusNote> = new Map();
+  private meetings: Map<string, CalendarBusy> = new Map();
   /** How each person looks, for showing them off the floor as they look on it. */
   private looks: Map<string, string> = new Map();
   private noteTimers: Map<string, Phaser.Time.TimerEvent> = new Map();
@@ -292,16 +296,34 @@ export class PlayerManager {
    * time is up (and `expired` is told, so the lists can follow).
    */
   updatePlayerNote(id: string, note: StatusNote | null | undefined, expired?: () => void) {
+    const live = liveNote(note);
+    if (live) this.written.set(id, live);
+    else this.written.delete(id);
+    this.showNote(id, expired);
+  }
+
+  /** In a meeting by their calendar, or no longer: shown as a note while they haven't written one (lib/calendar). */
+  updatePlayerCalendar(id: string, busy: CalendarBusy | null | undefined, expired?: () => void) {
+    const live = liveBusy(busy);
+    if (live) this.meetings.set(id, live);
+    else this.meetings.delete(id);
+    this.showNote(id, expired);
+  }
+
+  /** The note someone shows: the one they wrote, or else the meeting they're in, until either ends. */
+  private showNote(id: string, expired?: () => void) {
     this.noteTimers.get(id)?.remove();
     this.noteTimers.delete(id);
-    const live = liveNote(note);
+    const written = liveNote(this.written.get(id));
+    const meeting = liveBusy(this.meetings.get(id));
+    const live = written ?? (meeting ? meetingNote(meeting) : null);
     if (live) this.notes.set(id, live);
     else this.notes.delete(id);
     // Words alone show as a speech bubble, so the tag still says there is a note.
     this.nameTags.get(id)?.setIcon(live ? (live.icon ?? "chat") : null);
     if (live?.until) {
       const timer = this.scene.time.delayedCall(Math.max(0, live.until - Date.now()), () => {
-        this.updatePlayerNote(id, null);
+        this.showNote(id);
         expired?.();
       });
       this.noteTimers.set(id, timer);
@@ -521,6 +543,8 @@ export class PlayerManager {
     this.noteTimers.get(id)?.remove();
     this.noteTimers.delete(id);
     this.notes.delete(id);
+    this.written.delete(id);
+    this.meetings.delete(id);
     this.looks.delete(id);
   }
 
@@ -574,5 +598,15 @@ export class PlayerManager {
     this.noteTimers.forEach((timer) => timer.remove());
     this.noteTimers.clear();
     this.notes.clear();
+    this.written.clear();
+    this.meetings.clear();
   }
+}
+
+/** A meeting on someone's calendar, as a note: its title if they share titles, or just that they're in one, and until when. */
+function meetingNote(busy: CalendarBusy): StatusNote {
+  const text = sceneText();
+  const time = new Intl.DateTimeFormat(document.documentElement.lang || undefined, { hour: "numeric", minute: "2-digit" }).format(busy.until);
+  const words = busy.title ? text.meetingTitledUntil.replace("{title}", busy.title) : text.inMeetingUntil;
+  return { icon: busy.call ? "call" : "meeting", text: words.replace("{time}", time), until: busy.until };
 }

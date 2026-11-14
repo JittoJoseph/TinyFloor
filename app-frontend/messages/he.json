@@ -298,7 +298,8 @@
       "notifications": "התראות",
       "accessibility": "נגישות",
       "office": "משרד",
-      "plan": "תוכנית וחיוב"
+      "plan": "תוכנית וחיוב",
+      "calendar": "יומן"
     },
     "themeNote": "\"מערכת\" עוקב אחרי המכשיר שלך.",
     "languageTitle": "שפת תצוגה",
@@ -343,14 +344,30 @@
       "media": "המיקרופון והמצלמה שלך, ואיך הקול שלך נשמע.",
       "notifications": "מה מודיע לך שמשהו קורה.",
       "accessibility": "תנועה וביצועים, שיתאימו לך ולמכשיר שלך.",
-      "plan": "התוכנית של המשרד שלך ואיך משלמים עליה."
+      "plan": "התוכנית של המשרד שלך ואיך משלמים עליה.",
+      "calendar": "הראו למשרד מתי אתם בפגישה, וראו את היום שלכם בפגישות."
+    },
+    "calendar": {
+      "google": "יומן Google",
+      "connect": "חיבור",
+      "connectNote": "קריאה בלבד. TinyFloor אף פעם לא משנה את היומן שלכם.",
+      "connected": "מחובר",
+      "disconnect": "ניתוק",
+      "titles": "הצגת כותרות של אירועים",
+      "titlesNote": "המשרד רואה איך הפגישה נקראת, ולא רק שאתם בפגישה. אירועים פרטיים אף פעם לא מציגים את הכותרת שלהם.",
+      "privacy": "המשרד רואה מתי אתם בפגישה ועד מתי. שום דבר אחר לא יוצא מהיומן שלכם.",
+      "unavailable": "Google לא מוגדר כאן.",
+      "notAllowed": "אפשרו ל-TinyFloor לראות את האירועים ביומן, ואז חברו שוב.",
+      "again": "חברו פעם נוספת כדי לסיים."
     }
   },
   "scene": {
     "meeting": "פגישה",
     "drawing": "מצייר/ת",
     "yourDesk": "השולחן שלך",
-    "claimDesk": "תפיסת שולחן"
+    "claimDesk": "תפיסת שולחן",
+    "inMeetingUntil": "בפגישה עד {time}",
+    "meetingTitledUntil": "{title} עד {time}"
   },
   "actions": {
     "sit": "לשבת",
@@ -688,7 +705,28 @@
     "readyTitle": "מוכנים להצטרף?",
     "joinNow": "הצטרפות עכשיו",
     "inMeeting": "בפגישה הזו",
-    "asked": "נשלח"
+    "asked": "נשלח",
+    "day": {
+      "title": "היום",
+      "schedule": "הוספה ליומן Google",
+      "inviteTitle": "פגישת {office}",
+      "inviteBody": "הצטרפות ב-TinyFloor:",
+      "clear": "אין יותר שום דבר ביומן היום",
+      "connect": "ראו כאן את היום שלכם: <link>חברו את יומן Google</link>",
+      "now": "עכשיו",
+      "until": "עד {time}",
+      "untitled": "תפוס",
+      "join": "הצטרפות",
+      "open": "פתיחה"
+    },
+    "reminder": {
+      "untitled": "פגישה",
+      "soon": "מתחילה בעוד דקה",
+      "started": "התחילה",
+      "notNow": "לא עכשיו",
+      "join": "הצטרפות",
+      "open": "פתיחה"
+    }
   },
   "help": {
     "title": "לדבר עם הצוות של TinyFloor",

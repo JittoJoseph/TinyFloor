@@ -298,7 +298,8 @@
       "notifications": "Notifiche",
       "accessibility": "Accessibilità",
       "office": "Ufficio",
-      "plan": "Piano e fatturazione"
+      "plan": "Piano e fatturazione",
+      "calendar": "Calendario"
     },
     "themeNote": "«Sistema» segue il tuo dispositivo.",
     "languageTitle": "Lingua dell'interfaccia",
@@ -343,14 +344,30 @@
       "media": "Il microfono e la fotocamera, e come si sente la tua voce.",
       "notifications": "Cosa ti avvisa quando succede qualcosa.",
       "accessibility": "Movimento e prestazioni, adatti a te e al tuo dispositivo.",
-      "plan": "Il piano del tuo ufficio e come viene pagato."
+      "plan": "Il piano del tuo ufficio e come viene pagato.",
+      "calendar": "Mostra al tuo ufficio quando sei in riunione e vedi la tua giornata in Riunioni."
+    },
+    "calendar": {
+      "google": "Google Calendar",
+      "connect": "Collega",
+      "connectNote": "Solo lettura. TinyFloor non modifica mai il tuo calendario.",
+      "connected": "Collegato",
+      "disconnect": "Scollega",
+      "titles": "Mostra i titoli degli eventi",
+      "titlesNote": "Il tuo ufficio vede come si chiama una riunione, non solo che ci sei. Gli eventi privati non mostrano mai il loro.",
+      "privacy": "Il tuo ufficio vede quando sei in riunione e fino a quando. Nient'altro esce dal tuo calendario.",
+      "unavailable": "Google non è configurato qui.",
+      "notAllowed": "Consenti a TinyFloor di vedere gli eventi del tuo calendario, poi ricollegalo.",
+      "again": "Collegalo ancora una volta per finire."
     }
   },
   "scene": {
     "meeting": "Riunione",
     "drawing": "Sta disegnando",
     "yourDesk": "La tua scrivania",
-    "claimDesk": "Prendi scrivania"
+    "claimDesk": "Prendi scrivania",
+    "inMeetingUntil": "In riunione fino alle {time}",
+    "meetingTitledUntil": "{title} fino alle {time}"
   },
   "actions": {
     "sit": "Siediti",
@@ -688,7 +705,28 @@
     "readyTitle": "Pronto a partecipare?",
     "joinNow": "Partecipa ora",
     "inMeeting": "In questa riunione",
-    "asked": "Invitato"
+    "asked": "Invitato",
+    "day": {
+      "title": "Oggi",
+      "schedule": "Aggiungi a Google Calendar",
+      "inviteTitle": "Riunione {office}",
+      "inviteBody": "Partecipa su TinyFloor:",
+      "clear": "Nient'altro nel tuo calendario oggi",
+      "connect": "Vedi qui la tua giornata: <link>collega Google Calendar</link>",
+      "now": "Ora",
+      "until": "Fino alle {time}",
+      "untitled": "Occupato",
+      "join": "Partecipa",
+      "open": "Apri"
+    },
+    "reminder": {
+      "untitled": "Riunione",
+      "soon": "Inizia tra un minuto",
+      "started": "Iniziata",
+      "notNow": "Non ora",
+      "join": "Partecipa",
+      "open": "Apri"
+    }
   },
   "help": {
     "title": "Scrivi al team di TinyFloor",

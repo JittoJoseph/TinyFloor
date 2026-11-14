@@ -1,6 +1,7 @@
 "use client";
 
 import { RailIcons } from "@/components/app/railIcons";
+import { syncCalendar } from "@/lib/calendar";
 import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -141,6 +142,10 @@ function Office({ officeId, children }: { officeId: string; children: React.Reac
     }
     void arrive();
   }, [isLoading, user, arrive, officeId, router]);
+
+  // Your calendar, read while you're in an office, so the floor knows when you're in a meeting (lib/calendar).
+  const account = !!user && !user.guest;
+  useEffect(() => (account ? syncCalendar() : undefined), [account]);
 
   // The tab says which office it is, and what's new in its chat, the way a
   // pinned work tab does: worth a glance from another window, no more (docs/product.md).

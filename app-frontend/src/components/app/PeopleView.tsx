@@ -214,7 +214,7 @@ function OfficePeople() {
                 name={member.displayName}
                 detail={member.email ?? t("noEmail")}
                 presence={floor.get(member.id) ?? null}
-                note={isMe ? myNote : liveNotes.has(member.id) ? liveNotes.get(member.id) : (member.status ?? null)}
+                note={isMe ? (myNote ?? liveNotes.get(member.id) ?? null) : liveNotes.has(member.id) ? liveNotes.get(member.id) : (member.status ?? null)}
                 role={owner ? t("owner") : t(member.role)}
                 joinedAt={member.joinedAt}
                 isMe={isMe}

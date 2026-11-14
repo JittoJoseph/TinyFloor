@@ -22,6 +22,28 @@ export class ApiError extends Error {
   }
 }
 
+/** An event on your own calendar, as the API reads it for your page (worker-api calendar.ts). */
+export interface CalendarEvent {
+  id: string;
+  title: string;
+  start: number;
+  end: number;
+  allDay: boolean;
+  /** It holds your time (not marked free). */
+  busy: boolean;
+  /** Marked private: its title is never shown to anyone else. */
+  private: boolean;
+  /** Where it happens online: a Meet or Zoom link, or one of ours. */
+  link: string | null;
+}
+
+/** Your connected Google Calendar: which account, whether your office sees titles, and the events asked for. */
+export interface CalendarInfo {
+  email: string | null;
+  showTitles: boolean;
+  events?: CalendarEvent[];
+}
+
 export interface SessionUser {
   id: string;
   email: string | null;
@@ -578,6 +600,14 @@ export const api = {
   /** Who is in the public lobby right now, for its door. */
   lobbyPeople: () => get<{ here: number; faces: Array<{ id: string; name: string }> }>("/lobby"),
   iceServers: () => post<IceServers>("/calls/ice-servers"),
+
+  // Your Google Calendar (Settings), read for your own page only
+  /** Your events between two times, or null when it isn't connected (lost: Google took the access back). */
+  calendar: (from: number, to: number) => get<{ calendar: CalendarInfo | null; lost?: boolean }>(`/me/calendar?from=${from}&to=${to}`),
+  /** Connects it with the code from Google's popup, asked for with the calendar's scope. */
+  connectCalendar: (code: string) => post<{ calendar: CalendarInfo }>("/me/calendar", { code }),
+  showCalendarTitles: (showTitles: boolean) => patch<{ ok: true }>("/me/calendar", { showTitles }),
+  disconnectCalendar: () => del<{ ok: true }>("/me/calendar"),
 
   // Reaching this browser when TinyFloor is closed (app-frontend's lib/push.ts)
   savePush: (subscription: PushSubscriptionJson) => put<{ ok: true }>("/push", subscription),

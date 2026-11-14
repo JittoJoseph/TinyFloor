@@ -298,7 +298,8 @@
       "notifications": "Notifikationer",
       "accessibility": "Tilgængelighed",
       "office": "Kontor",
-      "plan": "Plan og betaling"
+      "plan": "Plan og betaling",
+      "calendar": "Kalender"
     },
     "themeNote": "\"System\" følger din enhed.",
     "languageTitle": "Visningssprog",
@@ -343,14 +344,30 @@
       "media": "Din mikrofon og dit kamera, og hvordan du lyder.",
       "notifications": "Hvad der gør dig opmærksom på, at noget sker.",
       "accessibility": "Bevægelse og ydeevne, så det passer til dig og din enhed.",
-      "plan": "Hvilken plan dit kontor har, og hvordan den betales."
+      "plan": "Hvilken plan dit kontor har, og hvordan den betales.",
+      "calendar": "Vis kontoret, når du er til møde, og se din dag under Møder."
+    },
+    "calendar": {
+      "google": "Google Kalender",
+      "connect": "Forbind",
+      "connectNote": "Kun læsning. TinyFloor ændrer aldrig din kalender.",
+      "connected": "Forbundet",
+      "disconnect": "Afbryd",
+      "titles": "Vis begivenhedernes titler",
+      "titlesNote": "Kontoret ser, hvad et møde hedder, ikke kun at du er til et. Private begivenheder viser aldrig deres.",
+      "privacy": "Kontoret ser, hvornår du er til møde, og indtil hvornår. Intet andet forlader din kalender.",
+      "unavailable": "Google er ikke sat op her.",
+      "notAllowed": "Giv TinyFloor lov til at se din kalenders begivenheder, og forbind så igen.",
+      "again": "Forbind én gang til for at gøre det færdigt."
     }
   },
   "scene": {
     "meeting": "Møde",
     "drawing": "Tegner",
     "yourDesk": "Dit skrivebord",
-    "claimDesk": "Tag skrivebord"
+    "claimDesk": "Tag skrivebord",
+    "inMeetingUntil": "Til møde indtil {time}",
+    "meetingTitledUntil": "{title} indtil {time}"
   },
   "actions": {
     "sit": "Sæt dig",
@@ -688,7 +705,28 @@
     "readyTitle": "Klar til at deltage?",
     "joinNow": "Deltag nu",
     "inMeeting": "I mødet",
-    "asked": "Spurgt"
+    "asked": "Spurgt",
+    "day": {
+      "title": "I dag",
+      "schedule": "Føj til Google Kalender",
+      "inviteTitle": "Møde i {office}",
+      "inviteBody": "Deltag på TinyFloor:",
+      "clear": "Intet mere i din kalender i dag",
+      "connect": "Se din dag her: <link>forbind Google Kalender</link>",
+      "now": "Nu",
+      "until": "Indtil {time}",
+      "untitled": "Optaget",
+      "join": "Deltag",
+      "open": "Åbn"
+    },
+    "reminder": {
+      "untitled": "Møde",
+      "soon": "Starter om et minut",
+      "started": "Er startet",
+      "notNow": "Ikke nu",
+      "join": "Deltag",
+      "open": "Åbn"
+    }
   },
   "help": {
     "title": "Skriv til TinyFloor-teamet",

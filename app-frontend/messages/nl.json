@@ -323,6 +323,8 @@
     "onTheFloor": "Op de vloer",
     "nudges": "Berichten en binnenkomers",
     "nudgesNote": "Toont nieuwe berichten en teamgenoten die binnenkomen kort boven de vloer.",
+    "snow": "Sneeuw",
+    "snowNote": "Sneeuw die op de vloer valt tijdens de feestdagen.",
     "motion": "Beweging",
     "reduceMotion": "Minder beweging",
     "reduceMotionNote": "Minder animaties in de hele app.",
@@ -867,6 +869,7 @@
     "turnLeft": "Naar links draaien",
     "turnRight": "Naar rechts draaien",
     "randomize": "Willekeurig",
+    "undo": "Ongedaan maken",
     "tabs": {
       "characters": "Figuren",
       "skin": "Huid",
@@ -1005,5 +1008,12 @@
     "seek": "Positie in het nummer",
     "yourJam": "Jouw Jam",
     "next": "Iets anders afspelen"
+  },
+  "christmas": {
+    "title": "Een kerstmuts",
+    "body": "Voor jou, uit de cadeaus. Iedereen op de vloer ziet hem.",
+    "wear": "Opzetten",
+    "notNow": "Niet nu",
+    "thanks": "Vrolijk kerstfeest!"
   }
 }

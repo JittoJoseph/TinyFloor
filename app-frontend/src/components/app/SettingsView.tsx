@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Accessibility, ArrowLeft, Bell, Building2, ChevronRight, CreditCard, Headphones, KeyRound, Mic, Monitor, Moon, SlidersHorizontal, Sun, UserRound, Video } from "web-shared/components/ui/icons";
 import { motion, useReducedMotion } from "motion/react";
 import { usePathname, useRouter } from "@/lib/i18n/navigation";
+import { isChristmas } from "@/lib/christmas";
 import { locales, type Locale } from "web-shared/lib/i18n/routing";
 import { useAuth } from "@/contexts/AuthContext";
 import { api, ApiError, type DomainAccess, type InvitePolicy } from "web-shared/lib/api";
@@ -410,6 +411,7 @@ function Notifications() {
       </Group>
       <Group title={t("onTheFloor")}>
         <Toggle pref="nudges" title={t("nudges")} description={t("nudgesNote")} />
+        {isChristmas() && <Toggle pref="snow" title={t("snow")} description={t("snowNote")} />}
       </Group>
     </>
   );

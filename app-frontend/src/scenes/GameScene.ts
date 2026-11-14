@@ -27,6 +27,10 @@ import type { MapAnchor } from "../lib/MapManager";
 import { cssZoom } from "../lib/plates";
 import { CameraRig } from "../lib/CameraRig";
 import { WalkOverlay } from "../lib/WalkOverlay";
+import { ChristmasPresents } from "../lib/ChristmasPresents";
+import { Snowfall } from "../lib/Snowfall";
+import { isChristmas } from "../lib/christmas";
+import { onPrefsChange, prefs } from "../lib/prefs";
 
 const CAMERA_LERP = 0.08;
 /** How close the camera sits wherever there is room for it. */
@@ -94,6 +98,10 @@ class GameScene extends Phaser.Scene {
   private userZoom = savedZoom();
   /** The floor's camera: following you, dragged, zoomed (lib/CameraRig). */
   private cameraRig?: CameraRig;
+  /** At Christmas: the presents outside with the hat in them, and snow unless you've turned it off (lib/christmas). */
+  private presents?: ChristmasPresents;
+  private snow?: Snowfall;
+  private unsubscribeSnow?: () => void;
   /** Where you can walk, shown for working on the floor (lib/WalkOverlay). */
   private walkOverlay?: WalkOverlay;
   /** The meeting room, and whether we stand in it. */
@@ -121,6 +129,7 @@ class GameScene extends Phaser.Scene {
 
     this.animationManager = new AnimationManager(this);
     this.animationManager.preload(this.character);
+    if (isChristmas()) ChristmasPresents.preload(this);
 
     const mapWidth = this.mapManager.getMapWidth();
     const mapHeight = this.mapManager.getMapHeight();
@@ -222,6 +231,12 @@ class GameScene extends Phaser.Scene {
     // Setting off yourself (a key, a click, an errand) brings the view back from looking round.
     this.movementManager.onSetOff(() => this.cameraRig?.comeBack());
     this.walkOverlay = new WalkOverlay(this, () => this.mapManager.getNavGrid(), () => this.mapManager.getSolids(), this.player);
+    if (isChristmas()) {
+      this.presents = new ChristmasPresents(this, this.mapManager, this.player, approach);
+      this.presents.create();
+      this.letItSnow();
+      this.unsubscribeSnow = onPrefsChange(() => this.letItSnow());
+    }
     this.fitCamera(this.scale.width, this.scale.height);
     // The floor panel changes size with the window, a rotated phone or a
     // panel opening beside it; the view keeps up.
@@ -323,6 +338,17 @@ class GameScene extends Phaser.Scene {
     this.fitTags();
   }
 
+  /** Snow, as your settings have it: on unless you've turned it off, or asked for less motion or less battery. */
+  private letItSnow() {
+    const { snow, reduceMotion, batterySaver } = prefs();
+    const want = snow && !reduceMotion && !batterySaver;
+    if (want && !this.snow) this.snow = new Snowfall(this);
+    else if (!want && this.snow) {
+      this.snow.destroy();
+      this.snow = undefined;
+    }
+  }
+
   /** Name tags and desk claims at one small size on screen, however near or far the camera is. */
   private fitTags() {
     const tagScale = (CAMERA_ZOOM * 0.9) / cssZoom(this);
@@ -418,6 +444,8 @@ class GameScene extends Phaser.Scene {
     this.proximityManager.update();
     if (this.meetingZone) this.watchMeetingRoom();
     this.whiteboardObject?.update(time);
+    this.presents?.update();
+    this.snow?.update(time, delta);
     this.deskDecorator?.update();
     this.offerNearestAction();
   }
@@ -441,6 +469,9 @@ class GameScene extends Phaser.Scene {
     this.input.off(Phaser.Input.Events.POINTER_WHEEL);
     this.cameraRig?.destroy();
     this.walkOverlay?.destroy();
+    this.presents?.destroy();
+    this.snow?.destroy();
+    this.unsubscribeSnow?.();
     offerAction(null);
     this.unsubscribeShown?.();
     this.unsubscribeRename?.();

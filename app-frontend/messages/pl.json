@@ -323,6 +323,8 @@
     "onTheFloor": "Na piętrze",
     "nudges": "Wiadomości i przyjścia",
     "nudgesNote": "Pokazuj na chwilę nowe wiadomości i przychodzących współpracowników nad piętrem.",
+    "snow": "Śnieg",
+    "snowNote": "Śnieg padający nad piętrem w czasie świąt.",
     "motion": "Ruch",
     "reduceMotion": "Ogranicz ruch",
     "reduceMotionNote": "Mniej animacji w całej aplikacji.",
@@ -867,6 +869,7 @@
     "turnLeft": "Obróć w lewo",
     "turnRight": "Obróć w prawo",
     "randomize": "Losowo",
+    "undo": "Cofnij",
     "tabs": {
       "characters": "Postacie",
       "skin": "Skóra",
@@ -1005,5 +1008,12 @@
     "seek": "Pozycja w utworze",
     "yourJam": "Twój Jam",
     "next": "Włącz coś innego"
+  },
+  "christmas": {
+    "title": "Czapka Mikołaja",
+    "body": "Dla ciebie, z prezentów. Wszyscy na piętrze ją zobaczą.",
+    "wear": "Załóż",
+    "notNow": "Nie teraz",
+    "thanks": "Wesołych Świąt!"
   }
 }

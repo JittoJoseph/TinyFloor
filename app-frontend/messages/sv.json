@@ -323,6 +323,8 @@
     "onTheFloor": "På planet",
     "nudges": "Meddelanden och ankomster",
     "nudgesNote": "Visa nya meddelanden och kollegor som kommer in, kort över golvet.",
+    "snow": "Snö",
+    "snowNote": "Snö som faller över våningen under helgerna.",
     "motion": "Rörelse",
     "reduceMotion": "Minska rörelse",
     "reduceMotionNote": "Färre animationer i hela appen.",
@@ -867,6 +869,7 @@
     "turnLeft": "Vänd åt vänster",
     "turnRight": "Vänd åt höger",
     "randomize": "Slumpa",
+    "undo": "Ångra",
     "tabs": {
       "characters": "Figurer",
       "skin": "Hud",
@@ -1005,5 +1008,12 @@
     "seek": "Position i låten",
     "yourJam": "Din Jam",
     "next": "Spela något annat"
+  },
+  "christmas": {
+    "title": "En tomteluva",
+    "body": "Till dig, från paketen. Alla på våningen ser den.",
+    "wear": "Ta på den",
+    "notNow": "Inte nu",
+    "thanks": "God jul!"
   }
 }

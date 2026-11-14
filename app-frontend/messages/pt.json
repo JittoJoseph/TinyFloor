@@ -323,6 +323,8 @@
     "onTheFloor": "No andar",
     "nudges": "Mensagens e chegadas",
     "nudgesNote": "Mostra por um instante as mensagens novas e quem do time chega, sobre o andar.",
+    "snow": "Neve",
+    "snowNote": "Neve caindo sobre o andar durante as festas.",
     "motion": "Movimento",
     "reduceMotion": "Reduzir movimento",
     "reduceMotionNote": "Menos animações em todo o app.",
@@ -867,6 +869,7 @@
     "turnLeft": "Virar à esquerda",
     "turnRight": "Virar à direita",
     "randomize": "Aleatório",
+    "undo": "Desfazer",
     "tabs": {
       "characters": "Personagens",
       "skin": "Pele",
@@ -1005,5 +1008,12 @@
     "seek": "Posição na música",
     "yourJam": "Sua Jam",
     "next": "Tocar outra coisa"
+  },
+  "christmas": {
+    "title": "Um gorro de Natal",
+    "body": "Para você, dos presentes. Todos no andar vão ver.",
+    "wear": "Usar",
+    "notNow": "Agora não",
+    "thanks": "Feliz Natal!"
   }
 }

@@ -72,7 +72,7 @@ function HerePanelBody({ userId, onInvite, copied, onDone }: { userId: string; o
     return (
       <div className="flex flex-col items-center px-3 pb-3 pt-5 text-center">
         <span className="flex items-center">
-          <CharacterBust character={here[0]?.character ?? ""} presence={here[0]?.status ?? "available"} size={40} center={38} className="relative z-[1] rounded-full ring-2 ring-rail" />
+          <CharacterBust character={here[0]?.character ?? ""} presence={here[0]?.status ?? "available"} size={40} className="relative z-[1] rounded-full ring-2 ring-rail" />
           {[0, 1].map((one) => (
             <span key={one} className="-ms-1 flex size-10 items-center justify-center rounded-full border-2 border-dashed border-border-strong bg-rail text-faint">
               <UserPlus className="size-4" />
@@ -98,7 +98,7 @@ function HerePanelBody({ userId, onInvite, copied, onDone }: { userId: string; o
           const you = one.id === userId;
           const body = (
             <>
-              <CharacterBust character={one.character} presence={one.status} center={36} />
+              <CharacterBust character={one.character} presence={one.status} />
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-[13px] text-foreground">{you ? t("you", { name: one.name }) : one.name}</span>
                 <span className="block truncate text-[11.5px] text-muted-foreground">{detail(one)}</span>

@@ -169,8 +169,8 @@ export function RoomView({ user, ticketFor, onInvite, inviteChip = false, leaveH
         )}
       </AnimatePresence>
 
-      {/* Above the dock, one at a time: the desk you sat at, or what you can do where you stand. */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-20 z-40 flex justify-center px-3 sm:bottom-24">
+      {/* Above the dock, one at a time: the desk you sat at, or what you can do where you stand. A little over the dock's own height above it. */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-[4.25rem] z-40 flex justify-center px-3">
         <FloorPrompt />
       </div>
       <Joystick />

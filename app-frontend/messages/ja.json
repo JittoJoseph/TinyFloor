@@ -323,6 +323,8 @@
     "onTheFloor": "フロア",
     "nudges": "メッセージと出社",
     "nudgesNote": "新しいメッセージと、チームの誰かが来たことを、フロアの上に少しだけ表示します。",
+    "snow": "雪",
+    "snowNote": "休暇の間、フロアに雪が降ります。",
     "motion": "動き",
     "reduceMotion": "動きを減らす",
     "reduceMotionNote": "アプリ全体のアニメーションを減らします。",
@@ -867,6 +869,7 @@
     "turnLeft": "左を向く",
     "turnRight": "右を向く",
     "randomize": "ランダム",
+    "undo": "元に戻す",
     "tabs": {
       "characters": "キャラクター",
       "skin": "肌",
@@ -1005,5 +1008,12 @@
     "seek": "曲の再生位置",
     "yourJam": "あなたのJam",
     "next": "ほかの曲を再生"
+  },
+  "christmas": {
+    "title": "クリスマスの帽子",
+    "body": "プレゼントの中からあなたに。フロアのみんなに見えます。",
+    "wear": "かぶる",
+    "notNow": "あとで",
+    "thanks": "メリークリスマス！"
   }
 }

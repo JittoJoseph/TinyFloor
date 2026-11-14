@@ -61,8 +61,8 @@
   --ui-ring: rgb(255 255 255 / 0.4);
 }
 
-/* What sits on the floor (the dock) takes the light theme in both: the floor
-   is light either way, and a dark block on it pulls the eye. */
+/* What sits on the floor (the dock): a touch more contrast than the page's own
+   card, since it sits on the floor's art rather than the app's background. */
 .on-floor {
   --ui-background: #fafaf8;
   --ui-rail: #f0f0ec;
@@ -86,9 +86,28 @@
   --ui-ring: rgb(24 24 20 / 0.35);
 }
 
-/* In the dark theme its edge is the frame it grows out of, so it reads as one piece with it. */
+/* In the dark theme it's graphite, a few steps above the app's cards: dark like
+   everything round it, not the frame's black, which would read as a hole in the floor. */
 .dark .on-floor {
-  --ui-edge: var(--ui-frame);
+  --ui-background: #1c1c1e;
+  --ui-rail: #1c1c1e;
+  --ui-card: #232326;
+  --ui-popover: #262629;
+  --ui-muted: #313134;
+  --ui-border: rgb(255 255 255 / 0.1);
+  --ui-border-strong: rgb(255 255 255 / 0.18);
+  --ui-edge: #3a3a3d;
+  --ui-foreground: #ededeb;
+  --ui-muted-foreground: #a8a8a2;
+  --ui-faint: #6e6e69;
+  --ui-brand: #ededeb;
+  --ui-brand-foreground: #161617;
+  --ui-signal: #ff6b35;
+  --ui-ok: #3dd68c;
+  --ui-warn: #f5b83d;
+  --ui-destructive: #ff6369;
+  --ui-shadow: 0 1px 2px rgb(0 0 0 / 0.35), 0 10px 28px -10px rgb(0 0 0 / 0.55);
+  --ui-ring: rgb(255 255 255 / 0.4);
 }
 
 @theme inline {

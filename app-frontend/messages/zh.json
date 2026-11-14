@@ -323,6 +323,8 @@
     "onTheFloor": "楼层上",
     "nudges": "消息和到达",
     "nudgesNote": "在楼层上方短暂显示新消息和刚到的同事。",
+    "snow": "下雪",
+    "snowNote": "节日期间，楼层上空飘雪。",
     "motion": "动效",
     "reduceMotion": "减少动效",
     "reduceMotionNote": "减少整个应用中的动画。",
@@ -867,6 +869,7 @@
     "turnLeft": "向左转",
     "turnRight": "向右转",
     "randomize": "随机",
+    "undo": "撤销",
     "tabs": {
       "characters": "角色",
       "skin": "肤色",
@@ -1005,5 +1008,12 @@
     "seek": "歌曲播放位置",
     "yourJam": "你的 Jam",
     "next": "换一首"
+  },
+  "christmas": {
+    "title": "圣诞帽",
+    "body": "礼物堆里给你的。楼层里的每个人都能看到。",
+    "wear": "戴上",
+    "notNow": "以后再说",
+    "thanks": "圣诞快乐！"
   }
 }

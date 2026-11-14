@@ -323,6 +323,8 @@
     "onTheFloor": "Kerroksessa",
     "nudges": "Viestit ja saapujat",
     "nudgesNote": "Näytä uudet viestit ja saapuvat tiimiläiset hetken kerroksen päällä.",
+    "snow": "Lumi",
+    "snowNote": "Lunta sataa kerroksen ylle joulun aikaan.",
     "motion": "Liike",
     "reduceMotion": "Vähennä liikettä",
     "reduceMotionNote": "Vähemmän animaatioita koko sovelluksessa.",
@@ -867,6 +869,7 @@
     "turnLeft": "Käänny vasemmalle",
     "turnRight": "Käänny oikealle",
     "randomize": "Satunnainen",
+    "undo": "Kumoa",
     "tabs": {
       "characters": "Hahmot",
       "skin": "Iho",
@@ -1005,5 +1008,12 @@
     "seek": "Kohta kappaleessa",
     "yourJam": "Jamisi",
     "next": "Soita jotain muuta"
+  },
+  "christmas": {
+    "title": "Joulupukin lakki",
+    "body": "Sinulle, lahjoista. Kaikki kerroksessa näkevät sen.",
+    "wear": "Laita päähän",
+    "notNow": "Ei nyt",
+    "thanks": "Hyvää joulua!"
   }
 }

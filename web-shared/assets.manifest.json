@@ -2277,6 +2277,11 @@
       "key": "catalog/floor-sheet.png",
       "sha256": "2e4cb0611c59ee088e987422af021a7d1bb9d41a9d225b6cf13c4c8b8ccf1d7e",
       "bytes": 8516
+    },
+    {
+      "key": "characters/parts/hat/20-1.png",
+      "sha256": "441be79dbcefbf807096851c876973acf5d8022e660f9a9cc873b1252f746b55",
+      "bytes": 3180
     }
   ]
 }

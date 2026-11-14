@@ -323,6 +323,8 @@
     "onTheFloor": "On the floor",
     "nudges": "Messages and arrivals",
     "nudgesNote": "Show new messages, and teammates coming in, briefly over the floor.",
+    "snow": "Snow",
+    "snowNote": "Snow falling over the floor through the holidays.",
     "motion": "Motion",
     "reduceMotion": "Reduce motion",
     "reduceMotionNote": "Fewer animations across the app.",
@@ -867,6 +869,7 @@
     "turnLeft": "Turn left",
     "turnRight": "Turn right",
     "randomize": "Randomize",
+    "undo": "Undo",
     "tabs": {
       "characters": "Characters",
       "skin": "Skin",
@@ -1005,5 +1008,12 @@
     "seek": "Position in the song",
     "yourJam": "Your Jam",
     "next": "Play something else"
+  },
+  "christmas": {
+    "title": "A Christmas hat",
+    "body": "Yours, from the presents. Everyone on the floor sees it.",
+    "wear": "Wear it",
+    "notNow": "Not now",
+    "thanks": "Merry Christmas!"
   }
 }

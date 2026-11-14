@@ -350,12 +350,12 @@
     "calendar": {
       "google": "Google Kalender",
       "connect": "Anslut",
-      "connectNote": "Bara läsning. TinyFloor ändrar aldrig din kalender.",
+      "connectNote": "Endast läsbehörighet",
       "connected": "Ansluten",
       "disconnect": "Koppla från",
       "titles": "Visa händelsernas titlar",
-      "titlesNote": "Kontoret ser vad ett möte heter, inte bara att du är i ett. Privata händelser visar aldrig sin.",
-      "privacy": "Kontoret ser när du är upptagen den här veckan och när du sitter i möte just nu. Inget annat lämnar din kalender.",
+      "titlesNote": "Teamet ser mötenas namn. Privata händelser förblir dolda.",
+      "privacy": "Ditt kontor ser när du är upptagen. Inget annat lämnar din kalender.",
       "unavailable": "Google är inte inställt här.",
       "notAllowed": "Låt TinyFloor se din kalenders händelser och anslut sedan igen.",
       "again": "Anslut en gång till för att bli klar."
@@ -1059,7 +1059,6 @@
     "schedule": "Boka",
     "inviteTitle": "Möte i {office}",
     "inviteBody": "Gå med på TinyFloor:",
-    "connectBody": "Anslut Google Kalender för att se dagens möten, gå med i dem härifrån och låta kontoret veta när du sitter i möte.",
     "connect": "Anslut Google Kalender",
     "unavailable": "Google är inte inställt här.",
     "notAllowed": "Låt TinyFloor se din kalenders händelser och anslut sedan igen.",
@@ -1077,7 +1076,7 @@
       "focus": "Fokustid"
     },
     "scheduleAt": "Boka kl. {time}",
-    "notConnected": "{count, plural, one {Inte anslutna än:} other {# inte anslutna än:}}",
+    "notConnected": "{count, plural, one {Inte anslutna än} other {# inte anslutna än}}",
     "until": "Till {time}",
     "joinHere": "Gå med",
     "joinOn": {
@@ -1104,6 +1103,11 @@
     "yours": "Din kalender",
     "settings": "Kalenderinställningar",
     "previousWeek": "Föregående vecka",
-    "nextWeek": "Nästa vecka"
+    "nextWeek": "Nästa vecka",
+    "connectShort": "Anslut",
+    "google": "Google Kalender",
+    "notLinked": "Inte ansluten",
+    "emptyTitle": "Här visas dina möten",
+    "readOnly": "Endast läsbehörighet"
   }
 }

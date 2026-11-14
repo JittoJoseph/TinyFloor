@@ -350,12 +350,12 @@
     "calendar": {
       "google": "Google Kalender",
       "connect": "Verbinden",
-      "connectNote": "Nur lesen. TinyFloor ändert nie etwas an deinem Kalender.",
+      "connectNote": "Nur Lesezugriff",
       "connected": "Verbunden",
       "disconnect": "Trennen",
       "titles": "Titel von Terminen zeigen",
-      "titlesNote": "Dein Büro sieht, wie ein Meeting heißt, nicht nur, dass du in einem bist. Private Termine zeigen ihren nie.",
-      "privacy": "Dein Büro sieht, wann du diese Woche beschäftigt bist und wann du gerade in einem Meeting bist. Sonst verlässt nichts deinen Kalender.",
+      "titlesNote": "Dein Team sieht die Namen der Meetings. Private Termine bleiben verborgen.",
+      "privacy": "Dein Büro sieht, wann du beschäftigt bist. Sonst nichts aus deinem Kalender.",
       "unavailable": "Google ist hier nicht eingerichtet.",
       "notAllowed": "Erlaube TinyFloor, die Termine deines Kalenders zu sehen, und verbinde dann noch mal.",
       "again": "Verbinde noch einmal, um es abzuschließen."
@@ -1059,7 +1059,6 @@
     "schedule": "Planen",
     "inviteTitle": "{office}-Meeting",
     "inviteBody": "Auf TinyFloor beitreten:",
-    "connectBody": "Verbinde Google Kalender, um die heutigen Meetings zu sehen, ihnen von hier beizutreten und deinem Büro zu zeigen, wann du in einem bist.",
     "connect": "Google Kalender verbinden",
     "unavailable": "Google ist hier nicht eingerichtet.",
     "notAllowed": "Erlaube TinyFloor, die Termine deines Kalenders zu sehen, und verbinde dann noch mal.",
@@ -1077,7 +1076,7 @@
       "focus": "Fokuszeit"
     },
     "scheduleAt": "Um {time} planen",
-    "notConnected": "{count, plural, one {Noch nicht verbunden:} other {# noch nicht verbunden:}}",
+    "notConnected": "{count, plural, one {Noch nicht verbunden} other {# noch nicht verbunden}}",
     "until": "Bis {time}",
     "joinHere": "Beitreten",
     "joinOn": {
@@ -1104,6 +1103,11 @@
     "yours": "Dein Kalender",
     "settings": "Kalendereinstellungen",
     "previousWeek": "Vorherige Woche",
-    "nextWeek": "Nächste Woche"
+    "nextWeek": "Nächste Woche",
+    "connectShort": "Verbinden",
+    "google": "Google Kalender",
+    "notLinked": "Nicht verbunden",
+    "emptyTitle": "Hier erscheinen deine Meetings",
+    "readOnly": "Nur Lesezugriff"
   }
 }

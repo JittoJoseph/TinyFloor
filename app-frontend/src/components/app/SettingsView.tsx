@@ -190,13 +190,17 @@ export function Row({
   title,
   description,
   control,
+  icon,
 }: {
   title: string;
   description?: string;
   control: ReactNode;
+  /** A mark for what the row is (another app's icon, say), before its title. */
+  icon?: ReactNode;
 }) {
   return (
     <div className="flex items-center gap-4 px-4 py-3.5">
+      {icon && <span className="-me-1 flex size-8 shrink-0 items-center justify-center">{icon}</span>}
       <div className="min-w-0 flex-1">
         <p className="text-[13.5px] font-medium text-foreground">{title}</p>
         {description && <p className="mt-0.5 text-[12.5px] leading-relaxed text-muted-foreground">{description}</p>}

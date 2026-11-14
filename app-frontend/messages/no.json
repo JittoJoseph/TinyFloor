@@ -350,12 +350,12 @@
     "calendar": {
       "google": "Google Kalender",
       "connect": "Koble til",
-      "connectNote": "Bare lesing. TinyFloor endrer aldri kalenderen din.",
+      "connectNote": "Kun lesetilgang",
       "connected": "Tilkoblet",
       "disconnect": "Koble fra",
       "titles": "Vis titler på hendelser",
-      "titlesNote": "Kontoret ser hva et møte heter, ikke bare at du er i et. Private hendelser viser aldri sin.",
-      "privacy": "Kontoret ser når du er opptatt denne uken, og når du er i møte akkurat nå. Ingenting annet forlater kalenderen din.",
+      "titlesNote": "Teamet ser navnene på møtene. Private hendelser forblir skjult.",
+      "privacy": "Kontoret ditt ser når du er opptatt. Ingenting annet forlater kalenderen din.",
       "unavailable": "Google er ikke satt opp her.",
       "notAllowed": "La TinyFloor se hendelsene i kalenderen din, og koble til igjen.",
       "again": "Koble til én gang til for å bli ferdig."
@@ -1059,7 +1059,6 @@
     "schedule": "Planlegg",
     "inviteTitle": "Møte i {office}",
     "inviteBody": "Bli med på TinyFloor:",
-    "connectBody": "Koble til Google Kalender for å se dagens møter, bli med herfra og la kontoret vite når du er i møte.",
     "connect": "Koble til Google Kalender",
     "unavailable": "Google er ikke satt opp her.",
     "notAllowed": "La TinyFloor se hendelsene i kalenderen din, og koble til igjen.",
@@ -1077,7 +1076,7 @@
       "focus": "Fokustid"
     },
     "scheduleAt": "Planlegg kl. {time}",
-    "notConnected": "{count, plural, one {Ikke tilkoblet ennå:} other {# ikke tilkoblet ennå:}}",
+    "notConnected": "{count, plural, one {Ikke tilkoblet ennå} other {# ikke tilkoblet ennå}}",
     "until": "Til {time}",
     "joinHere": "Bli med",
     "joinOn": {
@@ -1104,6 +1103,11 @@
     "yours": "Din kalender",
     "settings": "Kalenderinnstillinger",
     "previousWeek": "Forrige uke",
-    "nextWeek": "Neste uke"
+    "nextWeek": "Neste uke",
+    "connectShort": "Koble til",
+    "google": "Google Kalender",
+    "notLinked": "Ikke koblet til",
+    "emptyTitle": "Her vises møtene dine",
+    "readOnly": "Kun lesetilgang"
   }
 }

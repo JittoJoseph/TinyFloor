@@ -3,11 +3,12 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { ApiError } from "web-shared/lib/api";
-import { GoogleButton } from "web-shared/components/auth/GoogleButton";
 import { Button } from "@/components/motion/button/base";
 import { Switch } from "@/components/motion/switch";
 import { Loader } from "@/components/motion/loader";
-import { CALENDAR_CLIENT_ID, CALENDAR_SCOPE, calendarAvailable, connectCalendar, disconnectCalendar, readCalendar, showCalendarTitles, useCalendar } from "@/lib/calendar";
+import { calendarAvailable, disconnectCalendar, readCalendar, showCalendarTitles, useCalendar } from "@/lib/calendar";
+import { ConnectButton, useConnect } from "@/components/calendar/Connect";
+import { GoogleCalendarIcon } from "@/components/calendar/GoogleCalendarIcon";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { Group, Row } from "./SettingsView";
 
@@ -22,6 +23,7 @@ export function CalendarSettings() {
   const { status, info } = useCalendar();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const connect = useConnect();
   useEffect(() => void readCalendar(), []);
 
   const run = async (action: () => Promise<void>) => {
@@ -40,7 +42,7 @@ export function CalendarSettings() {
   if (!calendarAvailable && status !== "on") {
     return (
       <Group>
-        <Row title={t("google")} description={t("unavailable")} control={null} />
+        <Row icon={<GoogleCalendarIcon size={28} />} title={t("google")} description={t("unavailable")} control={null} />
       </Group>
     );
   }
@@ -49,6 +51,7 @@ export function CalendarSettings() {
     <>
       <Group note={t("privacy")}>
         <Row
+          icon={<GoogleCalendarIcon size={28} />}
           title={t("google")}
           description={status === "on" ? (info?.email ?? t("connected")) : t("connectNote")}
           control={
@@ -59,16 +62,7 @@ export function CalendarSettings() {
                 {t("disconnect")}
               </Button>
             ) : (
-              <div className="w-44">
-                <GoogleButton
-                  label={t("connect")}
-                  clientId={CALENDAR_CLIENT_ID}
-                  scope={CALENDAR_SCOPE}
-                  busy={busy}
-                  onCode={(code) => run(() => connectCalendar(code))}
-                  onError={() => setError(explain(new ApiError(0, "google_failed", "")))}
-                />
-              </div>
+              <ConnectButton connect={connect} label={t("connect")} />
             )
           }
         />
@@ -82,7 +76,7 @@ export function CalendarSettings() {
           />
         )}
       </Group>
-      {error && <p className="-mt-5 mb-8 px-1 text-[12.5px] text-destructive">{error}</p>}
+      {(error || connect.error) && <p className="-mt-5 mb-8 px-1 text-[12.5px] text-destructive">{error || connect.error}</p>}
     </>
   );
 }

@@ -69,25 +69,22 @@ export const googleAvailable = Boolean(CLIENT_ID);
 /** What signing in asks Google for: who they are, nothing more. */
 const SIGN_IN = "openid email profile";
 
-export function GoogleButton({
-  label,
+/**
+ * Google's popup code flow, for a button of any look: `request` opens the
+ * popup (on a click, so it isn't blocked), and the one-time code comes back
+ * to `onCode`. `ready` once Google's script is in.
+ */
+export function useGoogleCode({
+  clientId = CLIENT_ID,
+  scope = SIGN_IN,
   onCode,
   onError,
-  busy,
-  scope = SIGN_IN,
-  clientId = CLIENT_ID,
 }: {
-  label: string;
-  /** Whose OAuth client asks: sign-in's by default. Google Calendar has a client of its own, in its own Google Cloud project. */
   clientId?: string;
-  /** What to ask Google for: signing in by default; connecting a calendar asks for it too. */
   scope?: string;
-  /** The one-time code, once the person has picked their account and agreed. */
   onCode: (code: string) => void;
-  /** Google couldn't be reached, or the popup failed. Closing it isn't an error. */
   onError: () => void;
-  busy: boolean;
-}) {
+}): { ready: boolean; request: () => void } {
   const client = useRef<CodeClient | null>(null);
   const [ready, setReady] = useState(false);
   // The latest handlers, without making a new client each render.
@@ -120,11 +117,31 @@ export function GoogleButton({
     };
   }, [scope, clientId]);
 
-  if (!clientId) return null;
+  return { ready, request: () => client.current?.requestCode() };
+}
+
+export function GoogleButton({
+  label,
+  onCode,
+  onError,
+  busy,
+  scope = SIGN_IN,
+}: {
+  label: string;
+  /** What to ask Google for: signing in by default. */
+  scope?: string;
+  /** The one-time code, once the person has picked their account and agreed. */
+  onCode: (code: string) => void;
+  /** Google couldn't be reached, or the popup failed. Closing it isn't an error. */
+  onError: () => void;
+  busy: boolean;
+}) {
+  const { ready, request } = useGoogleCode({ scope, onCode, onError });
+  if (!CLIENT_ID) return null;
   return (
     <button
       type="button"
-      onClick={() => client.current?.requestCode()}
+      onClick={request}
       disabled={!ready || busy}
       className="flex h-11 w-full cursor-pointer items-center justify-center gap-2.5 rounded-full border border-border bg-card text-[14px] font-medium text-foreground transition-[background-color,transform] hover:bg-muted active:scale-[0.99] disabled:cursor-default disabled:opacity-60"
     >

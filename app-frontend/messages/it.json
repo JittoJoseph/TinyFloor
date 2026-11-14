@@ -350,12 +350,12 @@
     "calendar": {
       "google": "Google Calendar",
       "connect": "Collega",
-      "connectNote": "Solo lettura. TinyFloor non modifica mai il tuo calendario.",
+      "connectNote": "Sola lettura",
       "connected": "Collegato",
       "disconnect": "Scollega",
       "titles": "Mostra i titoli degli eventi",
-      "titlesNote": "Il tuo ufficio vede come si chiama una riunione, non solo che ci sei. Gli eventi privati non mostrano mai il loro.",
-      "privacy": "Il tuo ufficio vede quando sei occupato questa settimana e quando sei in riunione adesso. Nient'altro esce dal tuo calendario.",
+      "titlesNote": "Il team vede il nome delle riunioni. Gli eventi privati restano nascosti.",
+      "privacy": "Il tuo ufficio vede quando sei occupato. Nient'altro esce dal tuo calendario.",
       "unavailable": "Google non è configurato qui.",
       "notAllowed": "Consenti a TinyFloor di vedere gli eventi del tuo calendario, poi ricollegalo.",
       "again": "Collegalo ancora una volta per finire."
@@ -1059,7 +1059,6 @@
     "schedule": "Pianifica",
     "inviteTitle": "Riunione {office}",
     "inviteBody": "Partecipa su TinyFloor:",
-    "connectBody": "Collega Google Calendar per vedere le riunioni di oggi, parteciparvi da qui e far sapere al tuo ufficio quando sei in riunione.",
     "connect": "Collega Google Calendar",
     "unavailable": "Google non è configurato qui.",
     "notAllowed": "Consenti a TinyFloor di vedere gli eventi del tuo calendario, poi ricollegalo.",
@@ -1077,7 +1076,7 @@
       "focus": "Tempo di concentrazione"
     },
     "scheduleAt": "Pianifica alle {time}",
-    "notConnected": "{count, plural, one {Non ancora collegato:} other {# non ancora collegati:}}",
+    "notConnected": "{count, plural, one {Non ancora collegato} other {# non ancora collegati}}",
     "until": "Fino alle {time}",
     "joinHere": "Partecipa",
     "joinOn": {
@@ -1104,6 +1103,11 @@
     "yours": "Il tuo calendario",
     "settings": "Impostazioni del calendario",
     "previousWeek": "Settimana precedente",
-    "nextWeek": "Settimana successiva"
+    "nextWeek": "Settimana successiva",
+    "connectShort": "Collega",
+    "google": "Google Calendar",
+    "notLinked": "Non collegato",
+    "emptyTitle": "Qui compaiono le tue riunioni",
+    "readOnly": "Sola lettura"
   }
 }

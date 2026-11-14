@@ -350,12 +350,12 @@
     "calendar": {
       "google": "Google Kalender",
       "connect": "Forbind",
-      "connectNote": "Kun læsning. TinyFloor ændrer aldrig din kalender.",
+      "connectNote": "Kun læseadgang",
       "connected": "Forbundet",
       "disconnect": "Afbryd",
       "titles": "Vis begivenhedernes titler",
-      "titlesNote": "Kontoret ser, hvad et møde hedder, ikke kun at du er til et. Private begivenheder viser aldrig deres.",
-      "privacy": "Kontoret ser, hvornår du er optaget i denne uge, og hvornår du er til møde lige nu. Intet andet forlader din kalender.",
+      "titlesNote": "Dit team ser mødernes navne. Private begivenheder forbliver skjulte.",
+      "privacy": "Dit kontor ser, hvornår du er optaget. Intet andet forlader din kalender.",
       "unavailable": "Google er ikke sat op her.",
       "notAllowed": "Giv TinyFloor lov til at se din kalenders begivenheder, og forbind så igen.",
       "again": "Forbind én gang til for at gøre det færdigt."
@@ -1059,7 +1059,6 @@
     "schedule": "Planlæg",
     "inviteTitle": "Møde i {office}",
     "inviteBody": "Deltag på TinyFloor:",
-    "connectBody": "Forbind Google Kalender for at se dagens møder, deltage herfra og lade kontoret vide, når du er til møde.",
     "connect": "Forbind Google Kalender",
     "unavailable": "Google er ikke sat op her.",
     "notAllowed": "Giv TinyFloor lov til at se din kalenders begivenheder, og forbind så igen.",
@@ -1077,7 +1076,7 @@
       "focus": "Fokustid"
     },
     "scheduleAt": "Planlæg kl. {time}",
-    "notConnected": "{count, plural, one {Ikke forbundet endnu:} other {# ikke forbundet endnu:}}",
+    "notConnected": "{count, plural, one {Ikke forbundet endnu} other {# ikke forbundet endnu}}",
     "until": "Indtil {time}",
     "joinHere": "Deltag",
     "joinOn": {
@@ -1104,6 +1103,11 @@
     "yours": "Din kalender",
     "settings": "Kalenderindstillinger",
     "previousWeek": "Forrige uge",
-    "nextWeek": "Næste uge"
+    "nextWeek": "Næste uge",
+    "connectShort": "Forbind",
+    "google": "Google Kalender",
+    "notLinked": "Ikke forbundet",
+    "emptyTitle": "Her vises dine møder",
+    "readOnly": "Kun læseadgang"
   }
 }

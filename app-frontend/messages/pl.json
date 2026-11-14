@@ -350,12 +350,12 @@
     "calendar": {
       "google": "Kalendarz Google",
       "connect": "Połącz",
-      "connectNote": "Tylko do odczytu. TinyFloor nigdy nie zmienia Twojego kalendarza.",
+      "connectNote": "Tylko odczyt",
       "connected": "Połączony",
       "disconnect": "Rozłącz",
       "titles": "Pokazuj tytuły wydarzeń",
-      "titlesNote": "Biuro widzi, jak nazywa się spotkanie, a nie tylko to, że na nim jesteś. Wydarzenia prywatne nigdy nie pokazują swojego.",
-      "privacy": "Biuro widzi, kiedy jesteś zajęty w tym tygodniu i kiedy jesteś teraz na spotkaniu. Nic więcej nie opuszcza Twojego kalendarza.",
+      "titlesNote": "Zespół widzi nazwy spotkań. Prywatne wydarzenia pozostają ukryte.",
+      "privacy": "Twoje biuro widzi, kiedy jesteś zajęty. Nic więcej nie opuszcza Twojego kalendarza.",
       "unavailable": "Google nie jest tu skonfigurowane.",
       "notAllowed": "Pozwól TinyFloor widzieć wydarzenia z kalendarza, a potem połącz ponownie.",
       "again": "Połącz jeszcze raz, aby dokończyć."
@@ -1059,7 +1059,6 @@
     "schedule": "Zaplanuj",
     "inviteTitle": "Spotkanie {office}",
     "inviteBody": "Dołącz w TinyFloor:",
-    "connectBody": "Połącz Kalendarz Google, aby widzieć dzisiejsze spotkania, dołączać do nich stąd i dawać biuru znać, kiedy jesteś na spotkaniu.",
     "connect": "Połącz Kalendarz Google",
     "unavailable": "Google nie jest tu skonfigurowane.",
     "notAllowed": "Pozwól TinyFloor widzieć wydarzenia z kalendarza, a potem połącz ponownie.",
@@ -1077,7 +1076,7 @@
       "focus": "Czas skupienia"
     },
     "scheduleAt": "Zaplanuj na {time}",
-    "notConnected": "{count, plural, one {Jeszcze niepołączony:} few {# jeszcze niepołączone:} many {# jeszcze niepołączonych:} other {# jeszcze niepołączonych:}}",
+    "notConnected": "{count, plural, one {Jeszcze niepołączony} few {# jeszcze niepołączone} many {# jeszcze niepołączonych} other {# jeszcze niepołączonych}}",
     "until": "Do {time}",
     "joinHere": "Dołącz",
     "joinOn": {
@@ -1104,6 +1103,11 @@
     "yours": "Twój kalendarz",
     "settings": "Ustawienia kalendarza",
     "previousWeek": "Poprzedni tydzień",
-    "nextWeek": "Następny tydzień"
+    "nextWeek": "Następny tydzień",
+    "connectShort": "Połącz",
+    "google": "Kalendarz Google",
+    "notLinked": "Nie połączono",
+    "emptyTitle": "Tu pojawią się Twoje spotkania",
+    "readOnly": "Tylko odczyt"
   }
 }

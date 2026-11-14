@@ -350,12 +350,12 @@
     "calendar": {
       "google": "Google 캘린더",
       "connect": "연결",
-      "connectNote": "읽기 전용이에요. TinyFloor는 캘린더를 절대 바꾸지 않아요.",
+      "connectNote": "읽기 전용",
       "connected": "연결됨",
       "disconnect": "연결 해제",
       "titles": "일정 제목 보이기",
-      "titlesNote": "회의 중이라는 것뿐 아니라 회의 이름도 오피스에 보여요. 비공개 일정의 제목은 절대 보이지 않아요.",
-      "privacy": "오피스에는 이번 주에 바쁜 시간과 지금 회의 중인지만 보여요. 그 밖의 정보는 캘린더 밖으로 나가지 않아요.",
+      "titlesNote": "팀원에게 회의 이름이 보여요. 비공개 일정은 보이지 않아요.",
+      "privacy": "오피스에는 바쁜 시간만 보여요. 그 외에는 캘린더 밖으로 나가지 않아요.",
       "unavailable": "여기에는 Google이 설정되어 있지 않아요.",
       "notAllowed": "TinyFloor가 캘린더 일정을 볼 수 있게 허용한 뒤 다시 연결하세요.",
       "again": "마무리하려면 한 번 더 연결하세요."
@@ -1059,7 +1059,6 @@
     "schedule": "일정 잡기",
     "inviteTitle": "{office} 미팅",
     "inviteBody": "TinyFloor에서 참여:",
-    "connectBody": "Google 캘린더를 연결하면 오늘의 회의를 보고 여기서 참여할 수 있고, 회의 중일 때 오피스에 알릴 수 있어요.",
     "connect": "Google 캘린더 연결",
     "unavailable": "여기에는 Google이 설정되어 있지 않아요.",
     "notAllowed": "TinyFloor가 캘린더 일정을 볼 수 있게 허용한 뒤 다시 연결하세요.",
@@ -1077,7 +1076,7 @@
       "focus": "집중 시간"
     },
     "scheduleAt": "{time}에 일정 잡기",
-    "notConnected": "{count, plural, other {아직 연결 안 함(#명):}}",
+    "notConnected": "{count, plural, other {아직 연결 안 함(#명)}}",
     "until": "{time}까지",
     "joinHere": "참여",
     "joinOn": {
@@ -1104,6 +1103,11 @@
     "yours": "내 캘린더",
     "settings": "캘린더 설정",
     "previousWeek": "이전 주",
-    "nextWeek": "다음 주"
+    "nextWeek": "다음 주",
+    "connectShort": "연결",
+    "google": "Google 캘린더",
+    "notLinked": "연결 안 됨",
+    "emptyTitle": "여기에 회의가 표시돼요",
+    "readOnly": "읽기 전용"
   }
 }

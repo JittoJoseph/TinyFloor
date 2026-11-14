@@ -350,12 +350,12 @@
     "calendar": {
       "google": "Google Agenda",
       "connect": "Koppelen",
-      "connectNote": "Alleen lezen. TinyFloor verandert nooit iets in je agenda.",
+      "connectNote": "Alleen lezen",
       "connected": "Gekoppeld",
       "disconnect": "Ontkoppelen",
       "titles": "Titels van afspraken tonen",
-      "titlesNote": "Je kantoor ziet hoe een meeting heet, niet alleen dat je erin zit. Privéafspraken tonen die nooit.",
-      "privacy": "Je kantoor ziet wanneer je deze week bezet bent en wanneer je nu in een meeting zit. Verder verlaat niets je agenda.",
+      "titlesNote": "Je team ziet de namen van meetings. Privé-afspraken blijven verborgen.",
+      "privacy": "Je kantoor ziet wanneer je bezet bent. Verder niets uit je agenda.",
       "unavailable": "Google is hier niet ingesteld.",
       "notAllowed": "Geef TinyFloor toegang tot de afspraken in je agenda en koppel opnieuw.",
       "again": "Koppel nog één keer om af te ronden."
@@ -1059,7 +1059,6 @@
     "schedule": "Plannen",
     "inviteTitle": "Meeting {office}",
     "inviteBody": "Doe mee op TinyFloor:",
-    "connectBody": "Koppel Google Agenda om de meetings van vandaag te zien, er hier aan deel te nemen en je kantoor te laten weten wanneer je in een meeting zit.",
     "connect": "Google Agenda koppelen",
     "unavailable": "Google is hier niet ingesteld.",
     "notAllowed": "Geef TinyFloor toegang tot de afspraken in je agenda en koppel opnieuw.",
@@ -1077,7 +1076,7 @@
       "focus": "Focustijd"
     },
     "scheduleAt": "Plannen om {time}",
-    "notConnected": "{count, plural, one {Nog niet gekoppeld:} other {# nog niet gekoppeld:}}",
+    "notConnected": "{count, plural, one {Nog niet gekoppeld} other {# nog niet gekoppeld}}",
     "until": "Tot {time}",
     "joinHere": "Deelnemen",
     "joinOn": {
@@ -1104,6 +1103,11 @@
     "yours": "Jouw agenda",
     "settings": "Agenda-instellingen",
     "previousWeek": "Vorige week",
-    "nextWeek": "Volgende week"
+    "nextWeek": "Volgende week",
+    "connectShort": "Koppelen",
+    "google": "Google Agenda",
+    "notLinked": "Niet gekoppeld",
+    "emptyTitle": "Hier komen je meetings",
+    "readOnly": "Alleen lezen"
   }
 }

@@ -350,12 +350,12 @@
     "calendar": {
       "google": "Googleカレンダー",
       "connect": "接続",
-      "connectNote": "読み取り専用です。TinyFloorがカレンダーを変更することはありません。",
+      "connectNote": "読み取り専用",
       "connected": "接続済み",
       "disconnect": "接続を解除",
       "titles": "予定のタイトルを表示",
-      "titlesNote": "会議中であることに加えて、会議の名前もオフィスに表示されます。非公開の予定のタイトルは表示されません。",
-      "privacy": "オフィスに表示されるのは、今週の予定が埋まっている時間と、今会議中かどうかだけです。それ以外の情報はカレンダーから出ません。",
+      "titlesNote": "チームに会議名が表示されます。非公開の予定は表示されません。",
+      "privacy": "オフィスに見えるのは予定が入っている時間だけです。",
       "unavailable": "ここではGoogleが設定されていません。",
       "notAllowed": "TinyFloorにカレンダーの予定の閲覧を許可してから、もう一度接続してください。",
       "again": "もう一度接続すると完了します。"
@@ -1059,7 +1059,6 @@
     "schedule": "予定を作成",
     "inviteTitle": "{office}のミーティング",
     "inviteBody": "TinyFloorで参加：",
-    "connectBody": "Googleカレンダーを接続すると、今日の会議を確認してここから参加でき、会議中であることがオフィスに伝わります。",
     "connect": "Googleカレンダーを接続",
     "unavailable": "ここではGoogleが設定されていません。",
     "notAllowed": "TinyFloorにカレンダーの予定の閲覧を許可してから、もう一度接続してください。",
@@ -1077,7 +1076,7 @@
       "focus": "集中タイム"
     },
     "scheduleAt": "{time}に予定を作成",
-    "notConnected": "{count, plural, other {未接続（#人）：}}",
+    "notConnected": "{count, plural, other {未接続（#人）}}",
     "until": "{time}まで",
     "joinHere": "参加",
     "joinOn": {
@@ -1104,6 +1103,11 @@
     "yours": "あなたのカレンダー",
     "settings": "カレンダーの設定",
     "previousWeek": "前の週",
-    "nextWeek": "次の週"
+    "nextWeek": "次の週",
+    "connectShort": "接続",
+    "google": "Google カレンダー",
+    "notLinked": "未接続",
+    "emptyTitle": "ここに会議が表示されます",
+    "readOnly": "読み取り専用"
   }
 }

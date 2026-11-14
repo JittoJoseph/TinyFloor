@@ -350,12 +350,12 @@
     "calendar": {
       "google": "יומן Google",
       "connect": "חיבור",
-      "connectNote": "קריאה בלבד. TinyFloor אף פעם לא משנה את היומן שלכם.",
+      "connectNote": "קריאה בלבד",
       "connected": "מחובר",
       "disconnect": "ניתוק",
       "titles": "הצגת כותרות של אירועים",
-      "titlesNote": "המשרד רואה איך הפגישה נקראת, ולא רק שאתם בפגישה. אירועים פרטיים אף פעם לא מציגים את הכותרת שלהם.",
-      "privacy": "המשרד רואה מתי אתם עסוקים השבוע ומתי אתם בפגישה עכשיו. שום דבר אחר לא יוצא מהיומן שלכם.",
+      "titlesNote": "הצוות רואה את שמות הפגישות. אירועים פרטיים נשארים מוסתרים.",
+      "privacy": "המשרד רואה מתי אתה עסוק. שום דבר אחר לא יוצא מהיומן שלך.",
       "unavailable": "Google לא מוגדר כאן.",
       "notAllowed": "אפשרו ל-TinyFloor לראות את האירועים ביומן, ואז חברו שוב.",
       "again": "חברו פעם נוספת כדי לסיים."
@@ -1059,7 +1059,6 @@
     "schedule": "תזמון",
     "inviteTitle": "פגישת {office}",
     "inviteBody": "הצטרפות ב-TinyFloor:",
-    "connectBody": "חברו את יומן Google כדי לראות את הפגישות של היום, להצטרף אליהן מכאן ולהודיע למשרד מתי אתם בפגישה.",
     "connect": "חיבור יומן Google",
     "unavailable": "Google לא מוגדר כאן.",
     "notAllowed": "אפשרו ל-TinyFloor לראות את האירועים ביומן, ואז חברו שוב.",
@@ -1077,7 +1076,7 @@
       "focus": "זמן ריכוז"
     },
     "scheduleAt": "תזמון ב-{time}",
-    "notConnected": "{count, plural, one {עדיין לא מחובר:} other {# עדיין לא מחוברים:}}",
+    "notConnected": "{count, plural, one {עדיין לא מחובר} other {# עדיין לא מחוברים}}",
     "until": "עד {time}",
     "joinHere": "הצטרפות",
     "joinOn": {
@@ -1104,6 +1103,11 @@
     "yours": "היומן שלך",
     "settings": "הגדרות היומן",
     "previousWeek": "השבוע הקודם",
-    "nextWeek": "השבוע הבא"
+    "nextWeek": "השבוע הבא",
+    "connectShort": "חיבור",
+    "google": "יומן Google",
+    "notLinked": "לא מחובר",
+    "emptyTitle": "כאן יופיעו הפגישות שלך",
+    "readOnly": "קריאה בלבד"
   }
 }

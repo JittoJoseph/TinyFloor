@@ -350,12 +350,12 @@
     "calendar": {
       "google": "Google Agenda",
       "connect": "Connecter",
-      "connectNote": "Lecture seule. TinyFloor ne modifie jamais votre agenda.",
+      "connectNote": "Lecture seule",
       "connected": "Connecté",
       "disconnect": "Déconnecter",
       "titles": "Afficher le titre des événements",
-      "titlesNote": "Votre bureau voit le nom d'une réunion, pas seulement que vous y êtes. Les événements privés ne montrent jamais le leur.",
-      "privacy": "Votre bureau voit quand vous êtes occupé cette semaine, et quand vous êtes en réunion en ce moment. Rien d'autre ne sort de votre agenda.",
+      "titlesNote": "Votre équipe voit le nom des réunions. Les événements privés restent masqués.",
+      "privacy": "Votre bureau voit quand vous êtes occupé. Rien d'autre ne sort de votre agenda.",
       "unavailable": "Google n'est pas configuré ici.",
       "notAllowed": "Autorisez TinyFloor à voir les événements de votre agenda, puis reconnectez-le.",
       "again": "Connectez-le une fois de plus pour terminer."
@@ -1059,7 +1059,6 @@
     "schedule": "Planifier",
     "inviteTitle": "Réunion {office}",
     "inviteBody": "Rejoindre sur TinyFloor :",
-    "connectBody": "Connectez Google Agenda pour voir les réunions du jour, les rejoindre d'ici et faire savoir à votre bureau quand vous êtes en réunion.",
     "connect": "Connecter Google Agenda",
     "unavailable": "Google n'est pas configuré ici.",
     "notAllowed": "Autorisez TinyFloor à voir les événements de votre agenda, puis reconnectez-le.",
@@ -1077,7 +1076,7 @@
       "focus": "Temps de concentration"
     },
     "scheduleAt": "Planifier à {time}",
-    "notConnected": "{count, plural, one {Pas encore connecté :} other {# pas encore connectés :}}",
+    "notConnected": "{count, plural, one {Pas encore connecté} other {# pas encore connectés}}",
     "until": "Jusqu'à {time}",
     "joinHere": "Rejoindre",
     "joinOn": {
@@ -1104,6 +1103,11 @@
     "yours": "Votre agenda",
     "settings": "Réglages de l'agenda",
     "previousWeek": "Semaine précédente",
-    "nextWeek": "Semaine suivante"
+    "nextWeek": "Semaine suivante",
+    "connectShort": "Connecter",
+    "google": "Google Agenda",
+    "notLinked": "Non connecté",
+    "emptyTitle": "Vos réunions s'affichent ici",
+    "readOnly": "Lecture seule"
   }
 }

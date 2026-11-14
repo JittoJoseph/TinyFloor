@@ -350,12 +350,12 @@
     "calendar": {
       "google": "Google-kalenteri",
       "connect": "Yhdistä",
-      "connectNote": "Vain luku. TinyFloor ei koskaan muuta kalenteriasi.",
+      "connectNote": "Vain lukuoikeus",
       "connected": "Yhdistetty",
       "disconnect": "Katkaise",
       "titles": "Näytä tapahtumien otsikot",
-      "titlesNote": "Toimisto näkee kokouksen nimen, ei vain sitä, että olet kokouksessa. Yksityiset tapahtumat eivät koskaan näytä omaansa.",
-      "privacy": "Toimisto näkee, milloin olet varattu tällä viikolla ja milloin olet juuri nyt kokouksessa. Mitään muuta ei lähde kalenteristasi.",
+      "titlesNote": "Tiimi näkee kokousten nimet. Yksityiset tapahtumat pysyvät piilossa.",
+      "privacy": "Toimistosi näkee, milloin olet varattu. Muuta kalenteristasi ei näy.",
       "unavailable": "Googlea ei ole määritetty täällä.",
       "notAllowed": "Salli TinyFloorin nähdä kalenterisi tapahtumat ja yhdistä uudelleen.",
       "again": "Yhdistä vielä kerran viimeistelläksesi."
@@ -1059,7 +1059,6 @@
     "schedule": "Ajoita",
     "inviteTitle": "{office}: kokous",
     "inviteBody": "Liity TinyFloorissa:",
-    "connectBody": "Yhdistä Google-kalenteri nähdäksesi tämän päivän kokoukset, liittyäksesi niihin täältä ja kertoaksesi toimistolle, milloin olet kokouksessa.",
     "connect": "Yhdistä Google-kalenteri",
     "unavailable": "Googlea ei ole määritetty täällä.",
     "notAllowed": "Salli TinyFloorin nähdä kalenterisi tapahtumat ja yhdistä uudelleen.",
@@ -1077,7 +1076,7 @@
       "focus": "Keskittymisaika"
     },
     "scheduleAt": "Ajoita klo {time}",
-    "notConnected": "{count, plural, one {Ei vielä yhdistetty:} other {# ei vielä yhdistetty:}}",
+    "notConnected": "{count, plural, one {Ei vielä yhdistetty} other {# ei vielä yhdistetty}}",
     "until": "{time} asti",
     "joinHere": "Liity",
     "joinOn": {
@@ -1104,6 +1103,11 @@
     "yours": "Oma kalenterisi",
     "settings": "Kalenterin asetukset",
     "previousWeek": "Edellinen viikko",
-    "nextWeek": "Seuraava viikko"
+    "nextWeek": "Seuraava viikko",
+    "connectShort": "Yhdistä",
+    "google": "Google-kalenteri",
+    "notLinked": "Ei yhdistetty",
+    "emptyTitle": "Kokouksesi näkyvät tässä",
+    "readOnly": "Vain lukuoikeus"
   }
 }

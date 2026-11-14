@@ -8,7 +8,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useOffice } from "@/components/app/OfficeShell";
 import { usePlace } from "@/components/app/place";
 import { dayStart, readCalendar, scheduleLink, useCalendar, useMyWeek, useNow, useTeamWeek } from "@/lib/calendar";
-import { ConnectInline } from "./Connect";
+import { ConnectCard, ConnectRow } from "./Connect";
 import { EventDetails } from "./EventDetails";
 import { Sidebar } from "./Sidebar";
 import { WeekGrid, type Overlay } from "./WeekGrid";
@@ -121,6 +121,7 @@ export function CalendarPage() {
         <aside className="flex w-72 shrink-0 flex-col border-e border-border">
           <Sidebar
             connected={connected}
+            off={status === "off"}
             email={info?.email ?? null}
             events={soon}
             now={now}
@@ -163,13 +164,17 @@ export function CalendarPage() {
             {t("schedule")}
           </button>
         </header>
-        {!wide && status === "off" && (
-          <div className="mx-4 mb-3 rounded-xl bg-muted/60 p-3">
-            <p className="mb-2.5 text-[12.5px] leading-relaxed text-muted-foreground">{t("connectBody")}</p>
-            <ConnectInline />
-          </div>
-        )}
-        <WeekGrid days={days} now={now} events={mine} color={MINE} overlays={overlays} onOpen={(event, at) => setOpen({ event, at })} onSchedule={schedule} />
+        {/* Not connected, with teammates on the week: on a phone, Google Calendar as a row above it (the sidebar has it otherwise). */}
+        {!wide && status === "off" && overlays.length > 0 && <ConnectRow className="mx-3 mb-2 rounded-xl border border-border px-1" />}
+        <div className="relative flex min-h-0 flex-1 flex-col">
+          <WeekGrid days={days} now={now} events={mine} color={MINE} overlays={overlays} onOpen={(event, at) => setOpen({ event, at })} onSchedule={schedule} />
+          {/* Not connected and nothing on the week: the way to connect, in its middle. */}
+          {status === "off" && overlays.length === 0 && (
+            <div className="pointer-events-none absolute inset-0 z-[5] flex items-center justify-center p-4">
+              <ConnectCard />
+            </div>
+          )}
+        </div>
       </main>
       {open && <EventDetails event={open.event} at={open.at} now={now} onClose={() => setOpen(null)} />}
     </div>

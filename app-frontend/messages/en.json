@@ -350,12 +350,12 @@
     "calendar": {
       "google": "Google Calendar",
       "connect": "Connect",
-      "connectNote": "Read-only. TinyFloor never changes your calendar.",
+      "connectNote": "Read-only access",
       "connected": "Connected",
       "disconnect": "Disconnect",
       "titles": "Show event titles",
-      "titlesNote": "Your office sees what a meeting is called, not only that you're in one. Private events never show theirs.",
-      "privacy": "Your office sees when you're busy this week, and when you're in a meeting right now. Nothing else leaves your calendar.",
+      "titlesNote": "Teammates see meeting names. Private events stay hidden.",
+      "privacy": "Your office sees when you're busy. Nothing else leaves your calendar.",
       "unavailable": "Google isn't set up here.",
       "notAllowed": "Allow TinyFloor to see your calendar's events, then connect again.",
       "again": "Connect once more to finish."
@@ -1059,7 +1059,6 @@
     "schedule": "Schedule",
     "inviteTitle": "{office} meeting",
     "inviteBody": "Join on TinyFloor:",
-    "connectBody": "Connect Google Calendar to see today's meetings, join them from here, and let your office know when you're in one.",
     "connect": "Connect Google Calendar",
     "unavailable": "Google isn't set up here.",
     "notAllowed": "Allow TinyFloor to see your calendar's events, then connect again.",
@@ -1077,7 +1076,7 @@
       "focus": "Focus time"
     },
     "scheduleAt": "Schedule at {time}",
-    "notConnected": "{count, plural, one {Not connected yet:} other {# not connected yet:}}",
+    "notConnected": "{count, plural, one {Not connected yet} other {# not connected yet}}",
     "until": "Until {time}",
     "joinHere": "Join",
     "joinOn": {
@@ -1104,6 +1103,11 @@
     "yours": "Your calendar",
     "settings": "Calendar settings",
     "previousWeek": "Previous week",
-    "nextWeek": "Next week"
+    "nextWeek": "Next week",
+    "connectShort": "Connect",
+    "google": "Google Calendar",
+    "notLinked": "Not connected",
+    "emptyTitle": "Your meetings show up here",
+    "readOnly": "Read-only access"
   }
 }

@@ -272,9 +272,10 @@ async function accessToken(env: Env, userId: string, link: LinkRow): Promise<str
     const kept = await open(key, link.access_token);
     if (kept) return kept;
   }
-  const refresh = await open(key, link.refresh_token);
   const client = calendarClient(env);
-  const response = refresh && client
+  if (!client) throw new HttpError(503, "google_unavailable", "Google Calendar isn't set up here");
+  const refresh = await open(key, link.refresh_token);
+  const response = refresh
     ? await fetch(TOKEN_URL, {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },

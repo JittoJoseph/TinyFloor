@@ -4,12 +4,12 @@ import { useLocale, useTranslations } from "next-intl";
 import { Check, ExternalLink } from "web-shared/components/ui/icons";
 import { MAIN_MEETING } from "shared-protocol/messages";
 import type { CalendarEvent, Member } from "web-shared/lib/api";
-import { Face } from "web-shared/components/ui/Face";
+import { Face, FaceStack } from "web-shared/components/ui/Face";
 import { cn } from "web-shared/lib/utils";
 import { Link } from "@/lib/i18n/navigation";
 import { callManager } from "@/lib/CallManager";
 import { dayStart, placeOf } from "@/lib/calendar";
-import { ConnectInline } from "./Connect";
+import { ConnectRow } from "./Connect";
 
 const MINUTE = 60_000;
 /** How soon a meeting's way in is offered in the list. */
@@ -24,6 +24,7 @@ const SHOWN = 8;
  */
 export function Sidebar({
   connected,
+  off,
   email,
   events,
   now,
@@ -38,6 +39,8 @@ export function Sidebar({
   settingsHref,
 }: {
   connected: boolean;
+  /** Known not to be connected (not still loading): Google Calendar shows as a row to connect. */
+  off: boolean;
   email: string | null;
   events: CalendarEvent[];
   now: number;
@@ -64,13 +67,6 @@ export function Sidebar({
   return (
     <div className="flex min-h-0 flex-1 flex-col overflow-y-auto px-4 pb-6 pt-6">
       <h1 className="px-1 text-[20px] font-semibold tracking-tight text-foreground">{t("title")}</h1>
-
-      {!connected && (
-        <div className="mt-5 rounded-xl bg-muted/60 p-3">
-          <p className="mb-2.5 text-[12.5px] leading-relaxed text-muted-foreground">{t("connectBody")}</p>
-          <ConnectInline />
-        </div>
-      )}
 
       {connected && (
         <section className="mt-6">
@@ -116,17 +112,22 @@ export function Sidebar({
         </section>
       )}
 
-      <section className="mt-7">
+      <section className={connected ? "mt-7" : "mt-5"}>
         <h2 className="px-1 text-[12px] font-medium text-muted-foreground">{t("calendars")}</h2>
         <ul className="mt-1.5 flex flex-col gap-px">
-          {you && (
+          {off && (
+            <li>
+              <ConnectRow />
+            </li>
+          )}
+          {connected && you && (
             <li className="flex items-center gap-2.5 rounded-lg px-1 py-1.5">
-              <Tick on={connected} color={myColor} />
               <Face seed={you.id} size={24} />
               <span className="min-w-0 flex-1">
                 <span className="block truncate text-[13px] font-medium text-foreground">{t("yours")}</span>
                 {email && <span className="block truncate text-[11.5px] text-muted-foreground">{email}</span>}
               </span>
+              <Tick on color={myColor} />
             </li>
           )}
           {teammates.map((member) => {
@@ -134,18 +135,22 @@ export function Sidebar({
             return (
               <li key={member.id}>
                 <button type="button" aria-pressed={on} onClick={() => onToggle(member.id)} className="flex w-full cursor-pointer items-center gap-2.5 rounded-lg px-1 py-1.5 text-start hover:bg-muted/60">
-                  <Tick on={on} color={colorOf(member.id)} />
                   <Face seed={member.id} size={24} />
                   <span className="min-w-0 flex-1 truncate text-[13px] text-foreground">{member.displayName}</span>
+                  <Tick on={on} color={colorOf(member.id)} />
                 </button>
               </li>
             );
           })}
         </ul>
+        {/* Who hasn't connected one: their faces and how many, their names on hover. */}
         {quiet.length > 0 && (
-          <p className="mt-3 px-1 text-[11.5px] leading-relaxed text-muted-foreground">
-            {t("notConnected", { count: quiet.length })} <span className="text-foreground/80">{quiet.map((one) => one.displayName).join(", ")}</span>
-          </p>
+          <div className="mt-2.5 flex items-center gap-2.5 px-1" title={quiet.map((one) => one.displayName).join(", ")}>
+            <span className="flex min-w-6 shrink-0 justify-center">
+              <FaceStack seeds={quiet.map((one) => one.id)} size={20} max={4} />
+            </span>
+            <span className="truncate text-[11.5px] text-muted-foreground">{t("notConnected", { count: quiet.length })}</span>
+          </div>
         )}
       </section>
 

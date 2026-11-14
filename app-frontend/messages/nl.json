@@ -402,7 +402,7 @@
         "title": "Uitnodigingen horen bij een kantoor",
         "body": "Nodig je team uit met één link, in een eigen kantoor."
       },
-      "free": "Een kantoor maak je in een minuut, en het is gratis tot 3 mensen.",
+      "free": "Je eigen kantoor maak je in een minuut.",
       "go": "Maak mijn kantoor",
       "notNow": "Niet nu",
       "voice": {
@@ -417,7 +417,7 @@
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Jouw kantoor",
       "create": "Maak mijn kantoor",
-      "free": "Gratis tot 3 mensen. Geen kaart nodig."
+      "free": "Nodig je team uit zodra het klaar is."
     },
     "officePrompt": {
       "accountTitle": "Bewaar het in je account",
@@ -425,7 +425,8 @@
     },
     "dock": {
       "title": "Maak je eigen kantoor",
-      "start": "Aan de slag"
+      "start": "Aan de slag",
+      "body": "Geef het een naam, nodig je team uit en stap binnen."
     }
   },
   "office": {
@@ -600,7 +601,7 @@
       "subtitle": "Iedereen in {office}, en wie binnen mag komen.",
       "yourProfile": "Je profiel",
       "ownOfficeTitle": "Een vloer als deze voor je team?",
-      "ownOfficeBody": "Maak in een minuut je eigen kantoor. Gratis tot 3 mensen.",
+      "ownOfficeBody": "Maak in een minuut je eigen kantoor.",
       "everyone": "Iedereen",
       "onFloor": "Op de vloer",
       "search": "Personen zoeken",
@@ -632,7 +633,7 @@
     "inviteBody": "Iedereen met deze link komt binnen in {office}. Stuur hem waar je team al praat.",
     "copy": "Link kopiëren",
     "copied": "Gekopieerd",
-    "trialNote": "Je kantoor heeft {plan} {days} dagen gratis, met ruimte voor je hele team. Geen kaart nodig.",
+    "trialNote": "Je kantoor begint met {plan} voor {days} dagen, met ruimte voor je hele team.",
     "inviteLater": "Je vindt deze link ook bij Mensen.",
     "walkIn": "Naar binnen",
     "choose": "{plan} nemen"

@@ -402,7 +402,7 @@
         "title": "Kutsut kuuluvat toimistoon",
         "body": "Kutsu tiimisi yhdellä linkillä omaan toimistoon."
       },
-      "free": "Toimiston luominen vie minuutin, ja se on ilmainen enintään 3 hengelle.",
+      "free": "Oman toimiston luominen vie minuutin.",
       "go": "Luo toimistoni",
       "notNow": "Ei nyt",
       "voice": {
@@ -417,7 +417,7 @@
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Oma toimisto",
       "create": "Luo toimistoni",
-      "free": "Ilmainen enintään 3 hengelle. Korttia ei tarvita."
+      "free": "Kutsu tiimisi heti, kun se on valmis."
     },
     "officePrompt": {
       "accountTitle": "Tallenna se tilillesi",
@@ -425,7 +425,8 @@
     },
     "dock": {
       "title": "Luo oma toimisto",
-      "start": "Aloita"
+      "start": "Aloita",
+      "body": "Nimeä se, kutsu tiimisi ja astu sisään."
     }
   },
   "office": {
@@ -600,7 +601,7 @@
       "subtitle": "Kaikki toimistossa {office} ja kuka pääsee sisään.",
       "yourProfile": "Profiilisi",
       "ownOfficeTitle": "Tällainen kerros tiimillesi?",
-      "ownOfficeBody": "Luo oma toimisto minuutissa. Ilmainen enintään 3 hengelle.",
+      "ownOfficeBody": "Luo oma toimisto minuutissa.",
       "everyone": "Kaikki",
       "onFloor": "Kerroksella",
       "search": "Hae ihmisiä",
@@ -632,7 +633,7 @@
     "inviteBody": "Kuka tahansa tällä linkillä pääsee {office}-toimistoon. Lähetä se sinne, missä tiimisi jo juttelee.",
     "copy": "Kopioi linkki",
     "copied": "Kopioitu",
-    "trialNote": "Toimistollasi on {plan} ilmaiseksi {days} päivää, ja tilaa koko tiimille. Korttia ei tarvita.",
+    "trialNote": "Toimistosi alkaa {plan}-tasolla {days} päivän ajan, ja tilaa on koko tiimille.",
     "inviteLater": "Löydät linkin myös Ihmiset-sivulta.",
     "walkIn": "Astu sisään",
     "choose": "Ota {plan}"

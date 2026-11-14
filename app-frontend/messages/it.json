@@ -402,7 +402,7 @@
         "title": "Gli inviti arrivano con un ufficio",
         "body": "Invita il tuo team con un solo link, in un ufficio tutto tuo."
       },
-      "free": "Creare un ufficio richiede un minuto ed è gratis fino a 3 persone.",
+      "free": "Creare il tuo ufficio richiede un minuto.",
       "go": "Crea il mio ufficio",
       "notNow": "Non ora",
       "voice": {
@@ -417,7 +417,7 @@
       "namePlaceholder": "Acme Studio",
       "placeholderName": "Il tuo ufficio",
       "create": "Crea il mio ufficio",
-      "free": "Gratis fino a 3 persone. Nessuna carta richiesta."
+      "free": "Invita il tuo team appena è pronto."
     },
     "officePrompt": {
       "accountTitle": "Salvalo nel tuo account",
@@ -425,7 +425,8 @@
     },
     "dock": {
       "title": "Crea il tuo ufficio",
-      "start": "Inizia"
+      "start": "Inizia",
+      "body": "Dagli un nome, invita il tuo team ed entra."
     }
   },
   "office": {
@@ -600,7 +601,7 @@
       "subtitle": "Tutti in {office}, e chi può entrare.",
       "yourProfile": "Il tuo profilo",
       "ownOfficeTitle": "Un piano così per il tuo team?",
-      "ownOfficeBody": "Crea il tuo ufficio in un minuto. Gratis fino a 3 persone.",
+      "ownOfficeBody": "Crea il tuo ufficio in un minuto.",
       "everyone": "Tutti",
       "onFloor": "Sul piano",
       "search": "Cerca persone",
@@ -632,7 +633,7 @@
     "inviteBody": "Chiunque abbia questo link entra in {office}. Mandalo dove il tuo team già si scrive.",
     "copy": "Copia link",
     "copied": "Copiato",
-    "trialNote": "Il tuo ufficio ha {plan} gratis per {days} giorni, con posto per tutto il team. Nessuna carta richiesta.",
+    "trialNote": "Il tuo ufficio parte con {plan} per {days} giorni, con posto per tutto il team.",
     "inviteLater": "Trovi questo link anche in Persone.",
     "walkIn": "Entra",
     "choose": "Passa a {plan}"

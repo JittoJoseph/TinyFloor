@@ -72,9 +72,9 @@ function HerePanelBody({ userId, onInvite, copied, onDone }: { userId: string; o
     return (
       <div className="flex flex-col items-center px-3 pb-3 pt-5 text-center">
         <span className="flex items-center">
-          <CharacterBust character={here[0]?.character ?? ""} presence={here[0]?.status ?? "available"} size={40} className="relative z-[1] rounded-full ring-2 ring-rail" />
+          <CharacterBust character={here[0]?.character ?? ""} presence={here[0]?.status ?? "available"} size={40} className="relative z-[1] ring-2 ring-rail" />
           {[0, 1].map((one) => (
-            <span key={one} className="-ms-1 flex size-10 items-center justify-center rounded-full border-2 border-dashed border-border-strong bg-rail text-faint">
+            <span key={one} className="-ms-1 flex size-10 items-center justify-center rounded-[11px] border-2 border-dashed border-border-strong bg-rail text-faint">
               <UserPlus className="size-4" />
             </span>
           ))}
@@ -162,7 +162,6 @@ export const HerePanel = memo(HerePanelBody);
  */
 function DemoPanelBody({ onDone }: { onDone: () => void }) {
   const t = useTranslations("lobby.dock");
-  const tOffice = useTranslations("lobby.yourOffice");
   const router = useRouter();
   const { user } = useAuth();
   return (
@@ -170,10 +169,7 @@ function DemoPanelBody({ onDone }: { onDone: () => void }) {
       {/* The mark the door will show for it, so the office looks the same from here to there. */}
       <Face seed={user?.id || "your-office"} size={40} square />
       <p className="mt-3 text-[14px] font-semibold">{t("title")}</p>
-      <p className="mt-1 flex items-center gap-1.5 text-[12px] text-muted-foreground">
-        <Check className="size-3.5 text-ok" />
-        {tOffice("free")}
-      </p>
+      <p className="mt-1 text-[12.5px] text-muted-foreground">{t("body")}</p>
       <button
         type="button"
         onClick={() => {

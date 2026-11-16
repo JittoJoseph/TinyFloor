@@ -64,8 +64,9 @@ export function ArticleContents({ sections, label }: { sections: GuideSection[];
 
 /**
  * Long text in sections, as the guides and the pages written for a search
- * read: paragraphs, numbered cards or a bulleted list, and tables that scroll
- * inside their card on a phone.
+ * read: paragraphs, a picture from the product where one shows the point,
+ * numbered cards or a bulleted list, and tables that scroll inside their card
+ * on a phone.
  */
 export function ArticleSections({ sections, first = 1 }: { sections: Numbered[]; /** The number the first section's anchor takes, when other sections come before it. */ first?: number }) {
   return sections.map((section, index) => (
@@ -76,6 +77,15 @@ export function ArticleSections({ sections, first = 1 }: { sections: Numbered[];
           {linked(paragraph)}
         </p>
       ))}
+      {section.image && (
+        <figure className="mt-8">
+          <div className="overflow-hidden rounded-[20px] bg-muted">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={section.image.src} alt={section.image.alt} width={1600} height={1000} loading="lazy" decoding="async" className="aspect-[16/10] h-auto w-full" />
+          </div>
+          {section.image.caption && <figcaption className="mt-3 text-[13px] leading-[1.55] text-faint">{linked(section.image.caption)}</figcaption>}
+        </figure>
+      )}
       {section.list && section.items ? (
         <ol className="mt-6 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
           {section.items.map((item) => (

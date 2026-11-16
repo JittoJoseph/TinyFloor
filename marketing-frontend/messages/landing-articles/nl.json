@@ -172,7 +172,11 @@
           "title": "Ernaast chatten",
           "body": "[Berichten en kanalen](/team-chat) staan naast de werkvloer, voor wat niet besproken hoeft te worden."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/campus.webp",
+        "alt": "Een kantoorverdieping in TinyFloor: mensen aan hun bureau in de open hal, met vergaderruimtes erboven"
+      }
     },
     {
       "title": "Een virtueel kantoor naast de tools die je al hebt",
@@ -2708,7 +2712,11 @@
           "detail": "4",
           "body": "Verlaat de meeting en je bent terug op de verdieping. Per ongeluk weggelopen? Opnieuw meedoen is één klik."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/meetings.webp",
+        "alt": "Een meeting in de vergaderruimte van TinyFloor: drie mensen aan tafel en een vierde die binnenkomt"
+      }
     },
     {
       "title": "De hoofdmeeting en de meetings die je zelf start",
@@ -2792,7 +2800,11 @@
       "title": "Een chat vlak naast de verdieping",
       "body": [
         "Bij de meeste tools is de chat de hele werkplek. In TinyFloor is het de helft: [de verdieping laat zien wie er is](/team-presence) en laat je praten, en de chat bewaart alles wat op papier moet. Omdat ze naast elkaar staan, wordt een lang heen-en-weer met één klik een gesprek van twee minuten."
-      ]
+      ],
+      "image": {
+        "src": "/screens/chat.webp",
+        "alt": "De teamchat van TinyFloor in #general: vier collega's plannen de standup en een onboardingreview"
+      }
     },
     {
       "title": "Wat erin zit",
@@ -2831,6 +2843,10 @@
             "De titel van het tabblad laat zien hoeveel er wachten, dus een vastgezet tabblad vertelt je wanneer je moet kijken."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/chat-search.webp",
+        "alt": "Zoeken in de chat van TinyFloor vindt drie berichten waarin onboarding staat"
       }
     },
     {
@@ -2945,6 +2961,10 @@
             "Een meeting binnengaan"
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/floating-dock.webp",
+        "alt": "Het dock van TinyFloor open op de status: Beschikbaar, Bezet of Afwezig, met een statusnotitie"
       }
     },
     {
@@ -3053,6 +3073,10 @@
             "Eén bord per kantoor, gedeeld door iedereen."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/whiteboard.webp",
+        "alt": "Het whiteboard van TinyFloor in de vergaderruimte: drie geschetste stappen met pijlen, twee afgevinkt, notities en een stijgende grafiek"
       }
     },
     {
@@ -3564,7 +3588,11 @@
           "detail": "5",
           "body": "Een gesprek is twee mensen. Loop naar een derde en TinyFloor biedt aan er een [meeting](/virtual-meeting-room) voor jullie drieën van te maken."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/calls.webp",
+        "alt": "Een gesprek op de verdieping van TinyFloor: twee mensen samen tussen de bureaus, met de bediening van het gesprek onderaan"
+      }
     },
     {
       "title": "Waarom gesprekken in plaats van open geluid",

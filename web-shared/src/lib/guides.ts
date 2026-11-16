@@ -114,6 +114,13 @@ export interface GuideCopy {
     list?: boolean;
     /** A comparison, like prices by team size: a header row, the rows, and where the numbers come from. */
     table?: { head: string[]; rows: string[][]; note?: string };
+    /**
+     * A picture of what the section is about, from the product itself
+     * (marketing-frontend public/screens, 1600 by 1000), under its words: the
+     * file, what it shows for anyone who can't see it, and a line under it if
+     * it needs one.
+     */
+    image?: { src: string; alt: string; caption?: string };
   }>;
   fit: { title: string; body: string };
   faq: Array<{ q: string; a: string }>;

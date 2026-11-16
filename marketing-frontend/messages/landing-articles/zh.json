@@ -172,7 +172,11 @@
           "title": "旁边就能聊天",
           "body": "[消息和频道](/team-chat)就在楼层旁边，用于不需要开口交流的事情。"
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/campus.webp",
+        "alt": "TinyFloor 的办公楼层：开放大厅里大家坐在工位上，上方是会议室"
+      }
     },
     {
       "title": "和你已有的工具放在一起的虚拟办公室",
@@ -2708,7 +2712,11 @@
           "detail": "4",
           "body": "离开就回到楼层上。不小心走出来了？点一下就能重新加入。"
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/meetings.webp",
+        "alt": "TinyFloor 会议室里的会议：三人围坐桌边，还有一人正走进来"
+      }
     },
     {
       "title": "主会议和你自己开的会议",
@@ -2792,7 +2800,11 @@
       "title": "就在楼层旁边的聊天",
       "body": [
         "在大多数工具里，聊天就是整个工作场所。在 TinyFloor 上它只占一半：[楼层显示谁在](/team-presence)、让你们说话，聊天保存所有该写下来的东西。两者挨在一起，一段很长的来回点一下就能变成两分钟的对话。"
-      ]
+      ],
+      "image": {
+        "src": "/screens/chat.webp",
+        "alt": "TinyFloor 的团队聊天 #general 频道：四位同事在安排站会和入职评审"
+      }
     },
     {
       "title": "里面有什么",
@@ -2831,6 +2843,10 @@
             "标签页标题会显示等你看的消息数，固定的标签页会告诉你什么时候该看。"
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/chat-search.webp",
+        "alt": "在 TinyFloor 聊天中搜索，找到三条提到入职的消息"
       }
     },
     {
@@ -2945,6 +2961,10 @@
             "加入会议"
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/floating-dock.webp",
+        "alt": "打开状态的 TinyFloor 底栏：有空、忙碌或离开，以及一条状态备注"
       }
     },
     {
@@ -3053,6 +3073,10 @@
             "每个办公室一块，大家共用。"
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/whiteboard.webp",
+        "alt": "在会议室打开的 TinyFloor 白板：用箭头连起的三个步骤，两个已打勾，还有笔记和一条上升的折线"
       }
     },
     {
@@ -3564,7 +3588,11 @@
           "detail": "5",
           "body": "一次通话是两个人。走到第三个人身边，TinyFloor 会提议把它变成三个人的[会议](/virtual-meeting-room)。"
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/calls.webp",
+        "alt": "TinyFloor 楼层上的通话：两人并肩站在工位之间，下方是通话控制按钮"
+      }
     },
     {
       "title": "为什么用通话而不是常开音频",

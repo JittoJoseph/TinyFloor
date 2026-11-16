@@ -4,6 +4,8 @@ import { forwardRef, type ComponentProps, type ForwardRefExoticComponent, type R
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
   AccessibilityIcon,
+  NewReleasesIcon,
+  RssIcon,
   AtIcon,
   Attachment01Icon,
   File02Icon,
@@ -173,6 +175,8 @@ export const ArrowUp = icon(ArrowUp02Icon, "ArrowUp");
 export const ArrowUpRight = icon(ArrowUpRight01Icon, "ArrowUpRight");
 export const AudioLines = icon(AudioWave01Icon, "AudioLines");
 export const Bell = icon(Notification01Icon, "Bell");
+export const NewReleases = icon(NewReleasesIcon, "NewReleases");
+export const Rss = icon(RssIcon, "Rss");
 export const Calendar = icon(Calendar03Icon, "Calendar");
 export const BookOpen = icon(BookOpen01Icon, "BookOpen");
 export const Building2 = icon(Building03Icon, "Building2");

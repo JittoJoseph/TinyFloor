@@ -1,9 +1,7 @@
 import type { ReactNode } from "react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "web-shared/lib/i18n/routing";
-import { FloorScene } from "web-shared/components/floor/FloorScene";
-import { EVERYONE, PEOPLE } from "@/components/floor/scenes";
-import { NearbyBar } from "@/components/floor/NearbyBar";
+import { PEOPLE } from "@/components/floor/scenes";
 import { Face, FaceStack } from "web-shared/components/ui/Face";
 import { LANDINGS } from "web-shared/lib/landings";
 import { cn } from "web-shared/lib/utils";
@@ -32,7 +30,7 @@ export default async function Page({ params, searchParams }: { params: Promise<{
             ? ""
             : (t.raw(`landings.pages.${landing!.key}.title` as "home.hero.title") as string);
   const title = raw ? emphasised(String(raw), locale, "text-brand") : null;
-  // An invite shows someone arriving; every other card, the bar beside someone you've walked up to.
+  // An invite shows someone arriving; every other card, the floor as it is.
   const over =
     page === "invite" ? (
       <span className="flex h-12 items-center gap-2.5 rounded-full border border-border bg-card pe-5 ps-1.5 text-[16px] font-medium shadow-float [--face-ring:var(--ui-card)]">
@@ -40,13 +38,7 @@ export default async function Page({ params, searchParams }: { params: Promise<{
         <Face seed="nora-3" size={36} />
         {t("home.steps.walkedIn", { name: "Nora" })}
       </span>
-    ) : (
-      <NearbyBar
-        name={PEOPLE.olivia.name}
-        seed={PEOPLE.olivia.id}
-        labels={{ call: t("home.preview.call"), message: t("home.preview.message") }}
-      />
-    );
+    ) : null;
   return (
     <div id="card" className="relative h-[630px] w-[1200px] overflow-hidden bg-background font-(family-name:--font-body) text-foreground">
       <Split title={title} over={over} />
@@ -64,7 +56,7 @@ function Mark({ className }: { className?: string }) {
   );
 }
 
-function Split({ title, over }: { title: ReactNode; over: ReactNode }) {
+function Split({ title, over }: { title: ReactNode; over: ReactNode | null }) {
   return (
     <div className="grid h-full grid-cols-[560px_1fr]">
       <div className="flex flex-col justify-between p-16">
@@ -82,14 +74,12 @@ function Split({ title, over }: { title: ReactNode; over: ReactNode }) {
         </div>
       </div>
       <div className="relative p-5 ps-0">
-        <FloorScene
-          {...EVERYONE}
-          view={[27, 1, 18, 18]}
-          className="h-full w-full rounded-[28px]"
-          over={
-            <div className="absolute inset-x-0 bottom-8 flex justify-center">{over}</div>
-          }
-        />
+        {/* The floor itself, photographed from the app (the home page's picture of Campus). */}
+        <div className="relative h-full w-full overflow-hidden rounded-[28px] bg-muted">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/home/floor-still.webp" alt="" className="h-full w-full origin-[68%_60%] scale-[1.45] object-cover object-[62%_55%]" />
+          {over && <div className="absolute inset-x-0 bottom-8 flex justify-center">{over}</div>}
+        </div>
       </div>
     </div>
   );

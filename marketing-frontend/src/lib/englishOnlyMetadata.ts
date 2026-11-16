@@ -6,7 +6,7 @@ import { pageMetadata } from "web-shared/lib/seo";
  * tools): every language's copy points search engines at the English one, with
  * no language versions, rather than being indexed as eighteen duplicates.
  */
-export function englishOnlyMetadata({ path, title, description }: { path: string; title: string; description: string }): Metadata {
-  const english = pageMetadata({ locale: "en", path, title, description });
+export function englishOnlyMetadata({ path, title, description, image, imageAlt }: { path: string; title: string; description: string; image?: string; imageAlt?: string }): Metadata {
+  const english = pageMetadata({ locale: "en", path, title, description, image, imageAlt });
   return { ...english, alternates: { canonical: english.alternates?.canonical } };
 }

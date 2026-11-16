@@ -734,3 +734,45 @@ usually several times larger. Exact Google volumes still need OpenSEO credits.
   is 390 a month in the US and 260 in Germany (with almost no competition),
   but in French people search "réunionite" (720) for the same problem. The
   post is in English, German and French, the French one led by réunionite.
+
+## Pictures of the product, and the changelog (16 November)
+
+- **Assistants show other products' pictures when they mention us.** An answer
+  that cites TinyFloor shows images from wherever it found pictures of a
+  virtual office, and ours were almost all illustrations: the clay covers, the
+  feature pages' illustrations and social cards drawn from an old floor. A
+  picture of the app itself, named for what it shows, with alt text that says
+  "TinyFloor's …" and the people and things in it, is what an image result or
+  an answer can show as us.
+- **So the site has pictures of the app itself** (public/screens, made by
+  scripts/screens.mjs): the real app photographed at twice its size, set on
+  one of the home page's colour stages, 1600 by 1000 WebP at 30 to 90 KB, with
+  a 1200 by 630 card beside each. They sit inside the text where they show
+  the point (the section image slot the guides, posts and feature articles
+  share), head each changelog entry, are each entry page's social card and
+  schema image, and are listed in the sitemap's image tags. The clay covers
+  stay for the blog and the guides; a cover is the subject, the screens are
+  the proof.
+- **Changelogs that work are one picture per change.** The product changelogs
+  people read give each change its own date, a short title, two or three
+  sentences and one strong picture,
+  and link it to where the feature lives; several give each change its own
+  address. Text-only lists suit API changes, not a product people look at.
+- **An entry gets a page only when there's more to say.** A page per
+  one-line fix is a thin page; an entry with how to use it, numbers and what's
+  behind it is the kind of dated fact an answer quotes ("TinyFloor calls
+  connect in under a second since 5 November"). Those pages aren't blog
+  posts: the blog answers a question people search, with sources; a changelog
+  page says what changed and when, and links to the feature page that carries
+  the search. The changelog is also a feed (changelog.xml) and is in
+  llms-full.txt entry by entry.
+- **Short addresses.** An entry's page is /changelog/<a few words>
+  (/changelog/faster-calls), without the date: the date is on the page, in
+  its schema and in the feed, and a short address reads better where it's
+  shared or cited.
+- **The social cards show the real floor.** Every page's card used to draw
+  an old floor with old characters; they now show the home page's picture of
+  Campus (scripts/pictures.mjs photographs /og-render).
+- **The feature pages' pictures are in every language**, the same picture
+  with alt text written in each language, and the sitemap lists them on each
+  page's entry.

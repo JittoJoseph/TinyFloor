@@ -172,7 +172,11 @@
           "title": "Chatta bredvid",
           "body": "[Meddelanden och kanaler](/team-chat) finns bredvid planen, för det som inte kräver samtal."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/campus.webp",
+        "alt": "Ett kontorsplan i TinyFloor: folk vid skrivborden i den öppna hallen, med mötesrum ovanför"
+      }
     },
     {
       "title": "Ett virtuellt kontor bredvid verktygen du redan har",
@@ -2708,7 +2712,11 @@
           "detail": "4",
           "body": "Lämna och du är tillbaka på våningen. Gick du ut av misstag? Att gå med igen är ett klick."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/meetings.webp",
+        "alt": "Ett möte i TinyFloors mötesrum: tre personer vid bordet och en fjärde på väg in"
+      }
     },
     {
       "title": "Huvudmötet och de möten du startar",
@@ -2792,7 +2800,11 @@
       "title": "En chatt precis bredvid våningen",
       "body": [
         "I de flesta verktyg är chatten hela arbetsplatsen. I TinyFloor är den halva: [våningen visar vem som är där](/team-presence) och låter er prata, och chatten håller allt som ska skrivas ner. Eftersom de ligger sida vid sida kan en lång fram-och-tillbaka bli ett tvåminuterssamtal med ett klick."
-      ]
+      ],
+      "image": {
+        "src": "/screens/chat.webp",
+        "alt": "TinyFloors teamchatt i #general: fyra kollegor planerar standupen och en genomgång av onboardingen"
+      }
     },
     {
       "title": "Vad som finns",
@@ -2831,6 +2843,10 @@
             "Flikens titel visar hur många som väntar, så en fäst flik säger när du ska titta."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/chat-search.webp",
+        "alt": "Sökningen i TinyFloors chatt hittar tre meddelanden som nämner onboarding"
       }
     },
     {
@@ -2945,6 +2961,10 @@
             "Att gå med i ett möte"
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/floating-dock.webp",
+        "alt": "TinyFloors docka öppen på status: Tillgänglig, Upptagen eller Borta, med en statusanteckning"
       }
     },
     {
@@ -3053,6 +3073,10 @@
             "En tavla per kontor, delad av alla."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/whiteboard.webp",
+        "alt": "TinyFloors whiteboard i mötesrummet: tre skissade steg med pilar, två avbockade, anteckningar och ett stigande diagram"
       }
     },
     {
@@ -3564,7 +3588,11 @@
           "detail": "5",
           "body": "Ett samtal är två personer. Gå fram till en tredje så erbjuder TinyFloor att göra det till ett [möte](/virtual-meeting-room) för er tre."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/calls.webp",
+        "alt": "Ett samtal på TinyFloors kontorsplan: två personer står tillsammans mellan skrivborden, med samtalets kontroller nedtill"
+      }
     },
     {
       "title": "Varför samtal i stället för öppet ljud",

@@ -172,7 +172,11 @@
           "title": "Chat beside it",
           "body": "[Messages and channels](/team-chat) sit next to the floor, for what doesn't need talking."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/campus.webp",
+        "alt": "A TinyFloor office floor on an ordinary day: people at desks in the open hall, two meeting rooms above, each with a name tag and status"
+      }
     },
     {
       "title": "A virtual office next to the tools you already have",
@@ -2708,7 +2712,11 @@
           "detail": "4",
           "body": "Leave and you're back on the floor. Walked out by mistake? Rejoin is one press."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/meetings.webp",
+        "alt": "A meeting in TinyFloor's meeting room: Mia, Leo and Zoe at the table and Emma walking in"
+      }
     },
     {
       "title": "The main meeting, and the ones you start",
@@ -2792,7 +2800,11 @@
       "title": "A chat that lives next to the floor",
       "body": [
         "Most team chat is the whole workplace. On TinyFloor it's half of it: [the floor shows who's around](/team-presence) and lets you talk, and the chat holds everything that should be written down. Because they sit side by side, a long back-and-forth can turn into a two-minute conversation with one press."
-      ]
+      ],
+      "image": {
+        "src": "/screens/chat.webp",
+        "alt": "TinyFloor's team chat in #general: Jordan Lee, Ryan, John Connor and Nathan planning standup and an onboarding review"
+      }
     },
     {
       "title": "What's in it",
@@ -2831,6 +2843,10 @@
             "The tab's title shows how many are waiting, so a pinned tab tells you when to look."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/chat-search.webp",
+        "alt": "Search in TinyFloor's chat finding three messages that mention onboarding, each with who wrote it, the channel and the time"
       }
     },
     {
@@ -2945,6 +2961,10 @@
             "Joining a meeting"
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/floating-dock.webp",
+        "alt": "TinyFloor's dock open on Nathan's status: Available, Busy or Away, a status note, and his character at the desks above"
       }
     },
     {
@@ -3053,6 +3073,10 @@
             "One board per office, shared by everyone in it."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/whiteboard.webp",
+        "alt": "TinyFloor's whiteboard open in the meeting room: three steps sketched with arrows, two ticked off and the last circled, notes, and a chart that climbs"
       }
     },
     {
@@ -3564,7 +3588,11 @@
           "detail": "5",
           "body": "A call is two people. Walk up to a third and TinyFloor offers to make it a [meeting](/virtual-meeting-room) for the three of you."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/calls.webp",
+        "alt": "A call on TinyFloor's floor: Nathan and Ryan standing together between the desks, with the call's controls below"
+      }
     },
     {
       "title": "Why calls instead of open audio",

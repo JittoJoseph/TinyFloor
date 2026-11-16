@@ -172,7 +172,11 @@
           "title": "Chatear al lado",
           "body": "[Los mensajes y canales](/team-chat) están al lado de la planta, para lo que no hace falta hablar."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/campus.webp",
+        "alt": "Una planta de oficina en TinyFloor: personas en sus escritorios en la sala abierta, con salas de reuniones arriba"
+      }
     },
     {
       "title": "Una oficina virtual junto a las herramientas que ya tienes",
@@ -2708,7 +2712,11 @@
           "detail": "4",
           "body": "Sal y vuelves a la planta. ¿Saliste sin querer? Volver a entrar es un clic."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/meetings.webp",
+        "alt": "Una reunión en la sala de reuniones de TinyFloor: tres personas en la mesa y una más que llega"
+      }
     },
     {
       "title": "La reunión principal y las que empiezas tú",
@@ -2792,7 +2800,11 @@
       "title": "Un chat justo al lado de la planta",
       "body": [
         "En la mayoría de herramientas, el chat es todo el lugar de trabajo. En TinyFloor es la mitad: [la planta muestra quién está](/team-presence) y os deja hablar, y el chat guarda todo lo que debe quedar por escrito. Como están uno al lado del otro, un ir y venir largo puede convertirse en una charla de dos minutos con un clic."
-      ]
+      ],
+      "image": {
+        "src": "/screens/chat.webp",
+        "alt": "El chat de equipo de TinyFloor en #general: cuatro compañeros planifican el standup y una revisión de onboarding"
+      }
     },
     {
       "title": "Qué incluye",
@@ -2831,6 +2843,10 @@
             "El título de la pestaña muestra cuántos hay, así una pestaña fijada te dice cuándo mirar."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/chat-search.webp",
+        "alt": "La búsqueda del chat de TinyFloor encuentra tres mensajes que mencionan el onboarding"
       }
     },
     {
@@ -2945,6 +2961,10 @@
             "Unirse a una reunión"
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/floating-dock.webp",
+        "alt": "El dock de TinyFloor abierto en el estado: Disponible, Ocupado o Ausente, con una nota de estado"
       }
     },
     {
@@ -3053,6 +3073,10 @@
             "Una pizarra por oficina, compartida por todos."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/whiteboard.webp",
+        "alt": "La pizarra de TinyFloor en la sala de reuniones: tres pasos dibujados con flechas, dos marcados, notas y una gráfica que sube"
       }
     },
     {
@@ -3564,7 +3588,11 @@
           "detail": "5",
           "body": "Una llamada es de dos. Acércate a una tercera y TinyFloor te ofrece convertirla en una [reunión](/virtual-meeting-room) para los tres."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/calls.webp",
+        "alt": "Una llamada en la planta de TinyFloor: dos personas juntas entre los escritorios, con los controles de la llamada abajo"
+      }
     },
     {
       "title": "Por qué llamadas y no audio abierto",

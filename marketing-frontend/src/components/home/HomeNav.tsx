@@ -17,6 +17,7 @@ import {
   KeyRound,
   MessagesSquare,
   MonitorUp,
+  NewReleases,
   Office,
   Palette,
   PenLine,
@@ -153,6 +154,7 @@ export async function HomeNav({ fade = true }: { fade?: boolean }) {
               <MenuLink href="/home?mode=signup" icon={<UserPlus />} label={t("nav.start")} />
               <MenuLink href="/pricing" icon={<CreditCard />} label={t("nav.pricing")} />
               <MenuLink href="/#faq" icon={<HelpCircle />} label={t("nav.faq")} />
+              <MenuLink href="/changelog" icon={<NewReleases />} label={t("footer.changelog")} />
               <MenuLink href="/auth" icon={<KeyRound />} label={t("nav.signIn")} />
             </MenuColumn>
           </Menu>
@@ -231,6 +233,7 @@ export async function HomeNav({ fade = true }: { fade?: boolean }) {
               {FEATURES.map((page) => (
                 <MobileItem key={page.slug} href={`/${page.slug}`} icon={ICONS[page.key]} title={tl(`pages.${page.key}.label`)} />
               ))}
+              <MobileItem href="/changelog" icon={<NewReleases />} title={t("footer.changelog")} />
               <MobileItem href="/lobby" icon={<DoorOpen className="rtl:-scale-x-100" />} title={t("nav.lobbyTitle")} accent />
             </MobileSection>
             <MobileSection title={tl("teams")}>

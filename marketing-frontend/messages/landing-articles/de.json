@@ -172,7 +172,11 @@
           "title": "Daneben chatten",
           "body": "[Nachrichten und Kanäle](/team-chat) liegen direkt neben der Etage, für alles, worüber man nicht sprechen muss."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/campus.webp",
+        "alt": "Eine Büroetage in TinyFloor: Leute an Schreibtischen in der offenen Halle, darüber Besprechungsräume"
+      }
     },
     {
       "title": "Ein virtuelles Büro neben den Tools, die du schon hast",
@@ -2708,7 +2712,11 @@
           "detail": "4",
           "body": "Verlass das Meeting, und du bist zurück auf der Fläche. Aus Versehen rausgegangen? Wieder beitreten ist ein Klick."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/meetings.webp",
+        "alt": "Ein Meeting im Besprechungsraum von TinyFloor: drei Leute am Tisch, eine vierte Person kommt gerade herein"
+      }
     },
     {
       "title": "Das Hauptmeeting und die, die du startest",
@@ -2792,7 +2800,11 @@
       "title": "Ein Chat direkt neben der Fläche",
       "body": [
         "Bei den meisten Team-Chats ist der Chat der ganze Arbeitsplatz. In TinyFloor ist er die Hälfte: [Die Fläche zeigt, wer da ist](/team-presence), und lässt euch reden, und der Chat hält fest, was aufgeschrieben gehört. Weil beides nebeneinander liegt, wird aus einem langen Hin und Her mit einem Klick ein Zwei-Minuten-Gespräch."
-      ]
+      ],
+      "image": {
+        "src": "/screens/chat.webp",
+        "alt": "Der Team-Chat von TinyFloor in #general: vier Kollegen planen das Standup und ein Onboarding-Review"
+      }
     },
     {
       "title": "Was drin ist",
@@ -2831,6 +2843,10 @@
             "Der Tab-Titel zeigt, wie viele warten, so sagt dir ein angehefteter Tab, wann du nachsehen solltest."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/chat-search.webp",
+        "alt": "Die Suche im Chat von TinyFloor findet drei Nachrichten, in denen Onboarding vorkommt"
       }
     },
     {
@@ -2945,6 +2961,10 @@
             "Einem Meeting beitreten"
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/floating-dock.webp",
+        "alt": "Das Dock von TinyFloor, geöffnet beim Status: Verfügbar, Beschäftigt oder Abwesend, mit einer Statusnotiz"
       }
     },
     {
@@ -3053,6 +3073,10 @@
             "Ein Board pro Büro, für alle darin."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/whiteboard.webp",
+        "alt": "Das Whiteboard von TinyFloor im Besprechungsraum: drei skizzierte Schritte mit Pfeilen, zwei abgehakt, dazu Notizen und ein steigendes Diagramm"
       }
     },
     {
@@ -3564,7 +3588,11 @@
           "detail": "5",
           "body": "Ein Anruf ist zwei Personen. Geh zu einer dritten, und TinyFloor bietet an, daraus ein [Meeting](/virtual-meeting-room) für euch drei zu machen."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/calls.webp",
+        "alt": "Ein Anruf auf der Etage von TinyFloor: zwei Leute stehen zusammen zwischen den Schreibtischen, unten die Steuerung des Anrufs"
+      }
     },
     {
       "title": "Warum Anrufe statt offenem Audio",

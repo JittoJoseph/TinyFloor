@@ -172,7 +172,11 @@
           "title": "Chattaa vieressä",
           "body": "[Viestit ja kanavat](/team-chat) ovat kerroksen vieressä asioille, joista ei tarvitse puhua."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/campus.webp",
+        "alt": "TinyFloorin toimistokerros: ihmisiä työpisteillään avoimessa hallissa, neuvotteluhuoneet yläpuolella"
+      }
     },
     {
       "title": "Virtuaalitoimisto jo käyttämiesi työkalujen rinnalla",
@@ -2708,7 +2712,11 @@
           "detail": "4",
           "body": "Poistu, niin olet taas kerroksessa. Lähditkö vahingossa? Takaisin pääsee yhdellä klikkauksella."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/meetings.webp",
+        "alt": "Kokous TinyFloorin neuvotteluhuoneessa: kolme ihmistä pöydän ääressä ja neljäs tulossa sisään"
+      }
     },
     {
       "title": "Pääkokous ja itse aloitetut kokoukset",
@@ -2792,7 +2800,11 @@
       "title": "Chat aivan kerroksen vieressä",
       "body": [
         "Useimmissa työkaluissa chat on koko työpaikka. TinyFloorissa se on puolet: [kerros näyttää, kuka on paikalla](/team-presence), ja antaa teidän puhua, ja chat pitää tallessa kaiken, mikä kuuluu kirjoittaa ylös. Koska ne ovat vierekkäin, pitkästä viestittelystä tulee yhdellä painalluksella kahden minuutin keskustelu."
-      ]
+      ],
+      "image": {
+        "src": "/screens/chat.webp",
+        "alt": "TinyFloorin tiimichat kanavalla #general: neljä työkaveria suunnittelee standupia ja perehdytyksen katselmointia"
+      }
     },
     {
       "title": "Mitä siinä on",
@@ -2831,6 +2843,10 @@
             "Välilehden otsikko näyttää, montako odottaa, joten kiinnitetty välilehti kertoo, milloin kannattaa katsoa."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/chat-search.webp",
+        "alt": "TinyFloorin chatin haku löytää kolme viestiä, joissa mainitaan perehdytys"
       }
     },
     {
@@ -2945,6 +2961,10 @@
             "Kokoukseen liittyminen"
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/floating-dock.webp",
+        "alt": "TinyFloorin telakka auki tilan kohdalta: Tavoitettavissa, Varattu tai Poissa, ja tilaviesti"
       }
     },
     {
@@ -3053,6 +3073,10 @@
             "Yksi taulu toimistoa kohden, kaikille yhteinen."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/whiteboard.webp",
+        "alt": "TinyFloorin valkotaulu neuvotteluhuoneessa: kolme nuolin yhdistettyä vaihetta, kaksi kuitattu, muistiinpanoja ja nouseva kaavio"
       }
     },
     {
@@ -3564,7 +3588,11 @@
           "detail": "5",
           "body": "Puhelu on kahden ihmisen. Kävele kolmannen luo, niin TinyFloor tarjoaa tehdä siitä [kokouksen](/virtual-meeting-room) teille kolmelle."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/calls.webp",
+        "alt": "Puhelu TinyFloorin kerroksessa: kaksi ihmistä seisoo yhdessä työpisteiden välissä, puhelun painikkeet alhaalla"
+      }
     },
     {
       "title": "Miksi puhelut eikä avoin ääni",

@@ -17,7 +17,7 @@ import { BLOG_PATH, postPath } from "@/lib/blog";
 import { blogUi, postsWithCopy } from "@/lib/blog-copy";
 import { PLANS } from "@/lib/plans";
 import { FOUNDING, foundingOpen } from "web-shared/lib/founding";
-import { CHANGELOG, CHANGELOG_PATH, RELEASES } from "@/lib/changelog";
+import { CHANGELOG, CHANGELOG_PATH, RELEASES, changelogPath } from "@/lib/changelog";
 import { HOW_IT_WORKS, HOW_IT_WORKS_DESCRIPTION, HOW_IT_WORKS_INTRO, HOW_IT_WORKS_PATH, HOW_IT_WORKS_TITLE } from "@/lib/how-it-works";
 import { SUPPORT_EMAIL } from "web-shared/lib/site";
 import { MORE_FEATURES, absoluteUrl } from "web-shared/lib/structured-data";
@@ -325,7 +325,15 @@ export async function llmsFullTxt(): Promise<string> {
     "",
     url(CHANGELOG_PATH),
     "",
-    ...CHANGELOG.flatMap((entry) => [`### ${entry.date}: ${entry.title}`, "", ...entry.items.map((item) => `- ${linked(item)}`), ""]),
+    ...CHANGELOG.flatMap((entry) => [
+      `### ${entry.date}: ${entry.title}`,
+      "",
+      ...(entry.body ? [url(changelogPath(entry)), ""] : []),
+      linked(entry.summary),
+      "",
+      ...(entry.also ?? []).map((item) => `- ${linked(item)}`),
+      ...(entry.also ? [""] : []),
+    ]),
     "## FAQ",
     "",
     ...faq.flatMap(({ q, a }) => [`### ${q}`, "", a, ""]),

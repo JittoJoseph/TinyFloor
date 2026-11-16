@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { routing } from "web-shared/lib/i18n/routing";
 import { GUIDES } from "web-shared/lib/guides";
 import { POSTS } from "@/lib/blog";
+import { CHANGELOG_PAGES } from "@/lib/changelog";
 import { LANDINGS } from "web-shared/lib/landings";
 import { TOOLS, hasPage } from "@/lib/tools/catalog";
 import { APP_PATH, APP_URL, SITE_URL } from "web-shared/lib/site";
@@ -20,7 +21,9 @@ const PAGES = [
   ...LANDINGS.map((page) => page.slug),
   `guides(/(${GUIDES.map((guide) => guide.slug).join("|")}))?`,
   `blog(/(${POSTS.map((post) => post.slug).join("|")}))?`,
-  "about|pricing|features|compare|use-cases|teams|people|privacy|terms|refunds|rooms|og-render|changelog|how-it-works",
+  // The changelog, its older pages (/changelog/page/2 on) and each change with a page of its own.
+  `changelog(/(${CHANGELOG_PAGES().map((entry) => entry.slug).join("|")}|page/[0-9]+))?`,
+  "about|pricing|features|compare|use-cases|teams|people|privacy|terms|refunds|rooms|og-render|how-it-works",
   // The free tools and their index (lib/tools/catalog).
   `tools(/(${TOOLS.map((tool) => tool.path.slice("/tools/".length)).join("|")}))?`,
 ];

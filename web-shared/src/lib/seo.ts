@@ -93,6 +93,8 @@ interface PageMetadataInput {
   imageAlt?: string;
   /** The languages the page is written in, when it isn't in all of them (some free tools). */
   locales?: readonly string[];
+  /** A social card of the page's own (a site path to a 1200 by 630 JPEG), in place of the one its path gets. */
+  image?: string;
 }
 
 /**
@@ -109,12 +111,13 @@ export function pageMetadata({
   socialTitle,
   imageAlt,
   locales = localeCodes,
+  image: own,
 }: PageMetadataInput): Metadata {
   const canonical = localePath(locale, path);
   // A title that already names us (an invite's "Join Northwind on TinyFloor") isn't suffixed again.
   const branded = title?.includes(SITE_NAME);
   const fullTitle = title ? (branded ? title : `${title} | ${SITE_NAME}`) : socialTitle;
-  const image = { url: socialImage(locale, path), width: 1200, height: 630, type: "image/jpeg", ...(imageAlt ? { alt: imageAlt } : {}) };
+  const image = { url: own ? `${SITE_URL}${own}` : socialImage(locale, path), width: 1200, height: 630, type: "image/jpeg", ...(imageAlt ? { alt: imageAlt } : {}) };
 
   return {
     ...(title ? { title: branded ? { absolute: title } : title } : {}),

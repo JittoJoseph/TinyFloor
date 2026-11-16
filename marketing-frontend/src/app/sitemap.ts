@@ -13,9 +13,16 @@ import { TEAM_BUILDING_UPDATED } from '@/lib/tools/team-building';
 import { TIME_ZONES_PATH, TIME_ZONES_UPDATED } from '@/lib/tools/time-zones';
 import { TWO_TRUTHS_UPDATED } from '@/lib/tools/two-truths';
 import { WOULD_YOU_RATHER_UPDATED } from '@/lib/tools/would-you-rather';
-import { CHANGELOG_PATH, CHANGELOG_UPDATED } from '@/lib/changelog';
+import { CHANGELOG_PAGES, CHANGELOG_UPDATED, changelogImage, changelogListPath, changelogOnPage, changelogPageCount, changelogPath } from '@/lib/changelog';
 import { HOW_IT_WORKS_PATH, HOW_IT_WORKS_UPDATED } from '@/lib/how-it-works';
 import { BLOG_LOCALES, BLOG_PATH, POSTS, postPath } from '@/lib/blog';
+import LANDING_ARTICLES from '../../messages/landing-articles/en.json';
+
+/** The pictures of the product in each page's own text (messages/landing-articles), the same in every language. */
+const landingImages = (key: string) => {
+  const sections = (LANDING_ARTICLES as Record<string, unknown>)[key];
+  return Array.isArray(sections) ? sections.flatMap((section: { image?: { src: string } }) => (section.image ? [section.image.src] : [])) : [];
+};
 
 /**
  * The day the home page, pricing, the indexes and about last changed (YYYY-MM-DD).
@@ -40,16 +47,18 @@ const routes: Array<{
   changeFrequency: 'daily' | 'weekly' | 'monthly';
   priority: number;
   updated: string;
+  images?: string[];
 }> = [
   { path: '/', changeFrequency: 'weekly', priority: 1, updated: PAGES_UPDATED },
   { path: '/pricing', changeFrequency: 'monthly', priority: 0.9, updated: PAGES_UPDATED },
   ...Object.values(HUBS).map((slug) => ({ path: `/${slug}`, changeFrequency: 'weekly' as const, priority: 0.7, updated: PAGES_UPDATED })),
   { path: '/about', changeFrequency: 'monthly', priority: 0.5, updated: PAGES_UPDATED },
-  ...LANDINGS.map(({ slug, updated }) => ({
+  ...LANDINGS.map(({ key, slug, updated }) => ({
     path: `/${slug}`,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
     updated: updated ?? LANDINGS_UPDATED,
+    images: landingImages(key),
   })),
   { path: GUIDES_PATH, changeFrequency: 'weekly', priority: 0.6, updated: PAGES_UPDATED },
   { path: TOOLS_PATH, changeFrequency: 'monthly', priority: 0.6, updated: PAGES_UPDATED },
@@ -68,13 +77,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: route.updated,
         changeFrequency: route.changeFrequency,
         priority: route.priority,
+        ...(route.images?.length ? { images: route.images.map((src) => absolute(src)) } : {}),
       })),
     ),
     // The legal pages are in English only; the other languages' copies point here.
     ...['/privacy', '/terms', '/refunds'].map((path) => ({ url: absolute(path), changeFrequency: 'yearly' as const, priority: 0.3 })),
     // How it works and the changelog are in English only too, and change as the product does.
     { url: absolute(HOW_IT_WORKS_PATH), lastModified: HOW_IT_WORKS_UPDATED, changeFrequency: 'monthly' as const, priority: 0.6 },
-    { url: absolute(CHANGELOG_PATH), lastModified: CHANGELOG_UPDATED, changeFrequency: 'weekly' as const, priority: 0.5 },
+    // Each page of it, with the pictures of the changes on it, for image search. A page's date is its newest change's.
+    ...Array.from({ length: changelogPageCount() }, (_, index) => changelogOnPage(index + 1)).map((entries, index) => ({
+      url: absolute(changelogListPath(index + 1)),
+      lastModified: index ? entries[0].date : CHANGELOG_UPDATED,
+      changeFrequency: index ? ('monthly' as const) : ('weekly' as const),
+      priority: index ? 0.3 : 0.5,
+      images: entries.flatMap((entry) => changelogImage(entry) ?? []).map((src) => absolute(src)),
+    })),
+    // Each change with a page of its own, and its picture.
+    ...CHANGELOG_PAGES().map((entry) => ({
+      url: absolute(changelogPath(entry)),
+      lastModified: entry.date,
+      changeFrequency: 'yearly' as const,
+      priority: 0.4,
+      images: [changelogImage(entry), ...(entry.body ?? []).map((section) => (section.image ? `/screens/${section.image.name}.webp` : null))]
+        .filter((src): src is string => !!src)
+        .map((src) => absolute(src)),
+    })),
     // The blog, in the languages it has posts in, and each post in the ones it's written in (lib/blog),
     // with its other languages beside it. The index changes with its newest post.
     ...BLOG_LOCALES.map((locale) => ({

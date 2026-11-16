@@ -172,7 +172,11 @@
           "title": "Chat ved siden av",
           "body": "[Meldinger og kanaler](/team-chat) ligger ved siden av kontorplanen, for det som ikke krever prating."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/campus.webp",
+        "alt": "En kontoretasje i TinyFloor: folk ved pultene i den åpne hallen, med møterom ovenfor"
+      }
     },
     {
       "title": "Et virtuelt kontor ved siden av verktøyene du allerede har",
@@ -2708,7 +2712,11 @@
           "detail": "4",
           "body": "Forlat møtet, så er du tilbake i etasjen. Gikk du ut ved en feil? Å bli med igjen er ett klikk."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/meetings.webp",
+        "alt": "Et møte i TinyFloors møterom: tre personer ved bordet og en fjerde på vei inn"
+      }
     },
     {
       "title": "Hovedmøtet og møtene du starter selv",
@@ -2792,7 +2800,11 @@
       "title": "En chat rett ved siden av etasjen",
       "body": [
         "I de fleste verktøy er chatten hele arbeidsplassen. I TinyFloor er den halvparten: [Etasjen viser hvem som er der](/team-presence) og lar dere snakke, og chatten tar vare på alt som skal skrives ned. Fordi de ligger side om side, kan en lang frem-og-tilbake bli en prat på to minutter med ett klikk."
-      ]
+      ],
+      "image": {
+        "src": "/screens/chat.webp",
+        "alt": "TinyFloors teamchat i #general: fire kolleger planlegger standup og en gjennomgang av onboarding"
+      }
     },
     {
       "title": "Hva som er der",
@@ -2831,6 +2843,10 @@
             "Fanetittelen viser hvor mange som venter, så en festet fane sier fra når du bør se."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/chat-search.webp",
+        "alt": "Søk i TinyFloors chat finner tre meldinger som nevner onboarding"
       }
     },
     {
@@ -2945,6 +2961,10 @@
             "Å bli med i et møte"
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/floating-dock.webp",
+        "alt": "TinyFloors dokk åpen på status: Tilgjengelig, Opptatt eller Borte, med et statusnotat"
       }
     },
     {
@@ -3053,6 +3073,10 @@
             "Én tavle per kontor, delt av alle."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/whiteboard.webp",
+        "alt": "TinyFloors whiteboard i møterommet: tre skisserte steg med piler, to krysset av, notater og en stigende graf"
       }
     },
     {
@@ -3564,7 +3588,11 @@
           "detail": "5",
           "body": "En samtale er to personer. Gå bort til en tredje, så tilbyr TinyFloor å gjøre det til et [møte](/virtual-meeting-room) for dere tre."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/calls.webp",
+        "alt": "En samtale på TinyFloors etasje: to personer står sammen mellom pultene, med samtalens knapper nederst"
+      }
     },
     {
       "title": "Hvorfor samtaler i stedet for åpen lyd",

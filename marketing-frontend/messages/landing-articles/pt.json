@@ -172,7 +172,11 @@
           "title": "Conversar por chat ao lado",
           "body": "[Mensagens e canais](/team-chat) ficam ao lado da planta, para o que não precisa de conversa."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/campus.webp",
+        "alt": "Um andar de escritório no TinyFloor: pessoas nas mesas do salão aberto, com salas de reunião acima"
+      }
     },
     {
       "title": "Um escritório virtual ao lado das ferramentas que você já tem",
@@ -2708,7 +2712,11 @@
           "detail": "4",
           "body": "Saia e você está de volta no andar. Saiu sem querer? Voltar é um clique."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/meetings.webp",
+        "alt": "Uma reunião na sala de reuniões do TinyFloor: três pessoas à mesa e uma quarta chegando"
+      }
     },
     {
       "title": "A reunião principal e as que você começa",
@@ -2792,7 +2800,11 @@
       "title": "Um chat bem ao lado do andar",
       "body": [
         "Na maioria das ferramentas, o chat é o local de trabalho inteiro. No TinyFloor ele é metade: [o andar mostra quem está por perto](/team-presence) e deixa vocês conversarem, e o chat guarda tudo o que precisa ficar por escrito. Como os dois ficam lado a lado, um vai e vem longo pode virar uma conversa de dois minutos com um clique."
-      ]
+      ],
+      "image": {
+        "src": "/screens/chat.webp",
+        "alt": "O chat de equipe do TinyFloor em #general: quatro colegas planejam o standup e uma revisão do onboarding"
+      }
     },
     {
       "title": "O que tem",
@@ -2831,6 +2843,10 @@
             "O título da aba mostra quantas estão esperando, então uma aba fixada avisa quando olhar."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/chat-search.webp",
+        "alt": "A busca no chat do TinyFloor encontra três mensagens que mencionam o onboarding"
       }
     },
     {
@@ -2945,6 +2961,10 @@
             "Entrar numa reunião"
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/floating-dock.webp",
+        "alt": "O dock do TinyFloor aberto no status: Disponível, Ocupado ou Ausente, com uma nota de status"
       }
     },
     {
@@ -3053,6 +3073,10 @@
             "Um quadro por escritório, compartilhado por todos."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/whiteboard.webp",
+        "alt": "O quadro branco do TinyFloor na sala de reuniões: três etapas desenhadas com setas, duas marcadas, anotações e um gráfico em alta"
       }
     },
     {
@@ -3564,7 +3588,11 @@
           "detail": "5",
           "body": "Uma chamada é de duas pessoas. Vá até uma terceira e o TinyFloor oferece transformar tudo numa [reunião](/virtual-meeting-room) para os três."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/calls.webp",
+        "alt": "Uma chamada no andar do TinyFloor: duas pessoas juntas entre as mesas, com os controles da chamada embaixo"
+      }
     },
     {
       "title": "Por que chamadas em vez de áudio aberto",

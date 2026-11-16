@@ -65,6 +65,7 @@ export function pageGraph({
   parents = [],
   mainEntity,
   nodes = [],
+  image,
 }: {
   locale: string;
   path: string;
@@ -76,6 +77,8 @@ export function pageGraph({
   parents?: Array<{ name: string; path: string }>;
   mainEntity?: string;
   nodes?: Schema[];
+  /** A picture of what the page is about (a site path), in place of its social card. */
+  image?: string;
 }): Schema {
   const url = absoluteUrl(locale, path);
   const breadcrumb = crumb && {
@@ -98,7 +101,7 @@ export function pageGraph({
         name,
         ...(description ? { description } : {}),
         inLanguage: locale,
-        image: socialImage(locale, path),
+        image: image ? `${SITE_URL}${image}` : socialImage(locale, path),
         isPartOf: { "@id": WEBSITE_ID },
         ...(breadcrumb ? { breadcrumb: { "@id": breadcrumb["@id"] } } : {}),
         ...(mainEntity ? { mainEntity: { "@id": mainEntity } } : {}),
@@ -145,6 +148,7 @@ export function articleNode({
   description,
   published,
   updated,
+  image,
 }: {
   locale: string;
   path: string;
@@ -153,6 +157,8 @@ export function articleNode({
   /** When it was first written and last changed, where the page says (a guide does; a landing page may only have a month). */
   published?: string;
   updated?: string;
+  /** A picture of what it's about (a site path), in place of the page's social card. */
+  image?: string;
 }): Schema {
   const url = absoluteUrl(locale, path);
   return {
@@ -163,7 +169,7 @@ export function articleNode({
     url,
     mainEntityOfPage: { "@id": `${url}#webpage` },
     inLanguage: locale,
-    image: socialImage(locale, path),
+    image: image ? `${SITE_URL}${image}` : socialImage(locale, path),
     ...(published ? { datePublished: published } : {}),
     ...(updated ? { dateModified: updated } : {}),
     author: AUTHOR_NODE,

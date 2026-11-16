@@ -172,7 +172,11 @@
           "title": "Piszesz na czacie obok",
           "body": "[Wiadomości i kanały](/team-chat) znajdują się tuż obok planu, do spraw, które nie wymagają rozmowy."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/campus.webp",
+        "alt": "Piętro biura w TinyFloor: ludzie przy biurkach w otwartej hali, nad nimi sale spotkań"
+      }
     },
     {
       "title": "Wirtualne biuro obok narzędzi, które już masz",
@@ -2708,7 +2712,11 @@
           "detail": "4",
           "body": "Wyjdź i wracasz na piętro. Wyszedłeś przez pomyłkę? Powrót to jedno kliknięcie."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/meetings.webp",
+        "alt": "Spotkanie w sali spotkań TinyFloor: trzy osoby przy stole i czwarta, która właśnie wchodzi"
+      }
     },
     {
       "title": "Główne spotkanie i te, które zakładasz",
@@ -2792,7 +2800,11 @@
       "title": "Czat tuż obok piętra",
       "body": [
         "W większości narzędzi czat to całe miejsce pracy. W TinyFloor to połowa: [piętro pokazuje, kto jest obok](/team-presence), i pozwala rozmawiać, a czat przechowuje wszystko, co powinno być zapisane. Ponieważ są obok siebie, długa wymiana wiadomości może jednym kliknięciem zamienić się w dwuminutową rozmowę."
-      ]
+      ],
+      "image": {
+        "src": "/screens/chat.webp",
+        "alt": "Czat zespołowy TinyFloor na kanale #general: czworo współpracowników planuje standup i przegląd onboardingu"
+      }
     },
     {
       "title": "Co w nim jest",
@@ -2831,6 +2843,10 @@
             "Tytuł karty pokazuje, ile wiadomości czeka, więc przypięta karta podpowiada, kiedy zajrzeć."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/chat-search.webp",
+        "alt": "Wyszukiwanie w czacie TinyFloor znajduje trzy wiadomości o onboardingu"
       }
     },
     {
@@ -2945,6 +2961,10 @@
             "Dołączenie do spotkania"
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/floating-dock.webp",
+        "alt": "Dok TinyFloor otwarty na statusie: Dostępny, Zajęty lub Nieobecny, z notatką o statusie"
       }
     },
     {
@@ -3053,6 +3073,10 @@
             "Jedna tablica na biuro, wspólna dla wszystkich."
           ]
         ]
+      },
+      "image": {
+        "src": "/screens/whiteboard.webp",
+        "alt": "Tablica TinyFloor w sali spotkań: trzy naszkicowane kroki ze strzałkami, dwa odhaczone, notatki i rosnący wykres"
       }
     },
     {
@@ -3564,7 +3588,11 @@
           "detail": "5",
           "body": "Rozmowa to dwie osoby. Podejdź do trzeciej, a TinyFloor zaproponuje [spotkanie](/virtual-meeting-room) dla was trojga."
         }
-      ]
+      ],
+      "image": {
+        "src": "/screens/calls.webp",
+        "alt": "Rozmowa na piętrze TinyFloor: dwie osoby stoją razem między biurkami, a na dole przyciski rozmowy"
+      }
     },
     {
       "title": "Dlaczego rozmowy, a nie otwarty dźwięk",

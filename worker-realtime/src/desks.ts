@@ -1,4 +1,10 @@
-import { deskSeats, isDesk, seatTile, type Desk, type Floor } from "shared-protocol";
+import { deskSeats, FLOOR, isDesk, seatTile, type Desk } from "shared-protocol";
+
+/**
+ * The floor every office was on before Campus, by its size: all a claim made
+ * there needs to say where it was (a seat number is a tile, row by row).
+ */
+const OLD_FLOOR_SIZE: [number, number] = [48, 32];
 
 /**
  * Whose desk is whose in one office (docs/product.md), kept in the office room's own
@@ -9,51 +15,44 @@ import { deskSeats, isDesk, seatTile, type Desk, type Floor } from "shared-proto
 export class Desks {
   constructor(
     private readonly sql: SqlStorage,
-    /** The floor the office is on: whose desks there are to claim. */
-    private floor: Floor,
+    /** The office was on the old floor: every claim settles onto Campus's desks, near where it was. */
+    fromOldFloor = false,
   ) {
     sql.exec(
       "CREATE TABLE IF NOT EXISTS desks (seat INTEGER PRIMARY KEY, user_id TEXT NOT NULL UNIQUE, name TEXT NOT NULL, claimed_at INTEGER NOT NULL)",
     );
-    this.settle(floor, false);
-  }
-
-  /** The office moved to another floor: every claim settles onto its desks (a seat number means another tile there). */
-  moveTo(floor: Floor): void {
-    const from = this.floor;
-    this.floor = floor;
-    this.settle(from, true);
+    this.settle(fromOldFloor ? OLD_FLOOR_SIZE : FLOOR.shell.size, fromOldFloor);
   }
 
   /**
-   * Claims on desks that aren't this floor's (`all` of them when the office
-   * moved floors; otherwise those the floor no longer has, if it changed under
-   * them) move to the free desk nearest the tile they were on (`from`, the
-   * floor they were claimed on), the earliest claim choosing first, so nobody
+   * Claims on desks that aren't the floor's (`all` of them when the office
+   * comes from the old floor; otherwise those the floor no longer has, if it
+   * changed under them) move to the free desk nearest the tile they were on
+   * (on a floor of `from`'s size), the earliest claim choosing first, so nobody
    * loses their desk while there are desks to go round; with none left, it's
    * let go. Every room does it as it starts, before its claims are read; with
    * nothing to move, it only reads them.
    */
-  private settle(from: Floor, all: boolean): void {
+  private settle(from: [number, number], all: boolean): void {
     const claims = this.sql
       .exec<{ seat: number; user_id: string }>("SELECT seat, user_id FROM desks ORDER BY claimed_at, seat")
       .toArray();
-    const moving = all ? claims : claims.filter((claim) => !isDesk(claim.seat, this.floor));
+    const moving = all ? claims : claims.filter((claim) => !isDesk(claim.seat));
     if (!moving.length) return;
     const staying = new Set(claims.filter((claim) => !moving.includes(claim)).map((claim) => claim.seat));
-    const free = new Set(deskSeats(this.floor).filter((seat) => !staying.has(seat)));
+    const free = new Set(deskSeats().filter((seat) => !staying.has(seat)));
     // Off their old seats first, so a new one can't collide with a claim not yet moved.
     for (const claim of moving) this.sql.exec("UPDATE desks SET seat = ? WHERE user_id = ?", -1 - claim.seat, claim.user_id);
+    const [fromWidth, fromHeight] = from;
+    const [width, height] = FLOOR.shell.size;
     for (const claim of moving) {
       // Where it was, scaled onto this floor: the same part of the office, roughly.
-      const was = seatTile(claim.seat, from);
-      const [fromWidth, fromHeight] = from.shell.size;
-      const [width, height] = this.floor.shell.size;
+      const was = { x: claim.seat % fromWidth, y: Math.floor(claim.seat / fromWidth) };
       const at = { x: (was.x / fromWidth) * width, y: (was.y / fromHeight) * height };
       let best: number | null = null;
       let distance = Infinity;
       for (const seat of free) {
-        const to = seatTile(seat, this.floor);
+        const to = seatTile(seat);
         const away = Math.hypot(to.x - at.x, to.y - at.y);
         if (away < distance) [best, distance] = [seat, away];
       }
@@ -84,7 +83,7 @@ export class Desks {
 
   /** Makes a free desk this person's, letting go of any other they had. False when it isn't a desk, or is someone else's. */
   claim(seat: number, userId: string, name: string, now: number): boolean {
-    if (!isDesk(seat, this.floor)) return false;
+    if (!isDesk(seat)) return false;
     const owner = this.ownerOf(seat);
     if (owner === userId) return true;
     if (owner) return false;

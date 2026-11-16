@@ -51,7 +51,7 @@ async function loadLayouts(wanted) {
   $("#layout-id").replaceChildren(...ids.map((id) => new Option(id, id)));
   const id = wanted ?? new URLSearchParams(location.search).get("id") ?? ids[0];
   if (id) await openLayout(id);
-  else newLayout("startup");
+  else newLayout("campus");
 }
 
 async function openLayout(id) {

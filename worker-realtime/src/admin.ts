@@ -34,10 +34,6 @@ export class RealtimeAdmin extends WorkerEntrypoint<Env> implements RealtimeAdmi
     return Object.fromEntries(officeIds.map((id, index) => [id, people[index]]));
   }
 
-  async floorMoved(officeId: string): Promise<void> {
-    await this.env.ROOM.getByName(officeId).disconnectAll(true);
-  }
-
   async forgetOffice(officeId: string): Promise<void> {
     await Promise.all([this.env.ROOM.getByName(officeId).forget(), this.env.CHAT.getByName(officeId).forget()]);
   }

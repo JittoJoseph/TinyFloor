@@ -1,8 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { Calendar, Chats, CreditCard, Floor as FloorIcon, MoreHorizontal, Office as OfficeIcon, Pencil, Trash2, X } from "web-shared/components/ui/icons";
-import { NEW_FLOOR } from "shared-protocol/map";
+import { Calendar, Chats, CreditCard, MoreHorizontal, Office as OfficeIcon, Pencil, Trash2, X } from "web-shared/components/ui/icons";
 import { IconButton } from "@/components/ui/IconButton";
 import { Face } from "web-shared/components/ui/Face";
 import { Dialog } from "@/components/ui/Dialog";
@@ -107,7 +106,6 @@ export function Offices({ summary, picked, pick, open, recount }: ViewProps) {
               title={
                 <>
                   <span className="truncate">{office.name}</span>
-                  {office.floor === NEW_FLOOR && <Badge small>New floor</Badge>}
                 </>
               }
               sub={<Flagged country={office.ownerCountry}>{office.ownerEmail ?? "No owner"}</Flagged>}
@@ -160,9 +158,6 @@ function OfficeMark({ id, members }: { id: string; members: number }) {
     </span>
   );
 }
-
-/** The floor offices began on, which older ones are still on until they're moved (shared-protocol map.ts FLOORS). */
-const OLD_FLOOR = "startup";
 
 /** Quick picks for lengthening a trial; any number of days can be typed. */
 const TRIAL_PICKS = [7, 14, 30];
@@ -260,16 +255,6 @@ function Office({
               <Figure label="Last active" value={office.here > 0 ? "Now" : office.lastActiveAt ? <When at={office.lastActiveAt} /> : "Never"} />
             </Figures>
 
-            <Section title="Floor">
-              <FloorStatus
-                office={office}
-                onMoved={() => {
-                  setRound((n) => n + 1);
-                  onChanged();
-                }}
-              />
-            </Section>
-
             <Section title="Plan">
               <Properties>
                 <Property icon={<CreditCard />} label="Plan">
@@ -332,73 +317,6 @@ function Office({
       </div>
       {chatting && <OfficeChat key={office.id} office={office} ticket={detail.ticket} onHide={() => setChatting(false)} />}
     </div>
-  );
-}
-
-/**
- * Which floor the office is on, while the new one reaches offices one at a
- * time: on the old floor, with converting it to the new as the action, or on
- * the new, with going back. Either way it asks first: everyone on it
- * reconnects to the other floor, and each claimed desk moves to the nearest
- * free desk there.
- */
-function FloorStatus({ office, onMoved }: { office: AdminOffice; onMoved: () => void }) {
-  const [asking, setAsking] = useState(false);
-  const { busy, error, run, clear } = useRun();
-  const converted = office.floor === NEW_FLOOR;
-  const to = converted ? OLD_FLOOR : NEW_FLOOR;
-  return (
-    <>
-      <div className="flex flex-wrap items-center gap-x-3 gap-y-2.5 rounded-xl border border-border px-3.5 py-3">
-        <FloorIcon className="size-4 shrink-0 text-faint" />
-        <span className="min-w-0 flex-1">
-          <span className="block text-[13.5px] font-medium">{converted ? "New floor" : "Old floor"}</span>
-          <span className="block text-[12.5px] text-muted-foreground">{converted ? "Campus, with the new layout and camera" : "Startup, the original office"}</span>
-        </span>
-        <button
-          type="button"
-          onClick={() => {
-            clear();
-            setAsking(true);
-          }}
-          className={cn(
-            "h-8 shrink-0 cursor-pointer rounded-full px-3.5 text-[12.5px] font-medium transition-colors",
-            converted ? "border border-border-strong text-foreground hover:bg-muted" : "bg-foreground text-background hover:opacity-90",
-          )}
-        >
-          {converted ? "Revert to old floor" : "Convert to new floor"}
-        </button>
-      </div>
-      <Dialog
-        open={asking}
-        onClose={() => setAsking(false)}
-        title={converted ? `Revert ${office.name} to the old floor?` : `Convert ${office.name} to the new floor?`}
-        description={
-          converted
-            ? "Everyone there reconnects to the old floor, and each claimed desk moves to the nearest free desk on it. You can convert it again later."
-            : "Everyone there reconnects to the new floor, and each claimed desk moves to the nearest free desk on it. You can revert it later."
-        }
-        closeLabel="Close"
-        footer={
-          <>
-            <DialogButton onClick={() => setAsking(false)}>Cancel</DialogButton>
-            <DialogButton
-              solid
-              disabled={busy}
-              onClick={async () => {
-                if (!(await run(() => api.adminUpdateOffice(office.id, { floor: to })))) return;
-                setAsking(false);
-                onMoved();
-              }}
-            >
-              {converted ? "Revert" : "Convert"}
-            </DialogButton>
-          </>
-        }
-      >
-        {error && <p className="text-[12.5px] text-destructive">{error}</p>}
-      </Dialog>
-    </>
   );
 }
 

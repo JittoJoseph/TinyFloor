@@ -1,9 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { FLOORS, deskOfSeat, fitsIn, spotKey, type PieceChange, type ServerMessage } from "shared-protocol";
+import { FLOOR, deskOfSeat, fitsIn, spotKey, type PieceChange, type ServerMessage } from "shared-protocol";
 import { Client, settle, uniqueRoom } from "./client";
 
-/** The floor a room is on until a ticket says otherwise (a page that has never drawn one starts on another). */
-const FLOOR = FLOORS.startup;
 
 /** The next message of a kind, taken off the list, so the one after it is next. */
 async function take<T extends ServerMessage["t"]>(client: Client, type: T) {

@@ -31,6 +31,7 @@
       "code_required": "Digite o código de 6 dígitos do e-mail."
     },
     "continueWithEmail": "Continuar com e-mail",
+    "emailUnavailable": "Desculpe, o login por e-mail não está disponível agora. Continue com o Google.",
     "continue": "Continuar",
     "sendingCode": "Enviando código…",
     "codeTitle": "Confira seu e-mail",
@@ -573,7 +574,8 @@
       "wrong_code": "Esse código não está certo. Confira o e-mail e tente de novo.",
       "code_expired": "Este código expirou. Peça um novo.",
       "too_many_codes": "Códigos demais para este endereço. Tente de novo em uma hora ou continue com o Google.",
-      "email_failed": "Não conseguimos enviar o e-mail. Tente de novo ou continue com o Google."
+      "email_failed": "Não conseguimos enviar o e-mail. Tente de novo ou continue com o Google.",
+      "email_unavailable": "Desculpe, não conseguimos enviar e-mails agora. Tente de novo amanhã."
     },
     "people": {
       "title": "Pessoas",

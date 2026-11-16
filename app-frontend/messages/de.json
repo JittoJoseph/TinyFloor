@@ -31,6 +31,7 @@
       "code_required": "Gib den 6-stelligen Code aus der E-Mail ein."
     },
     "continueWithEmail": "Weiter mit E-Mail",
+    "emailUnavailable": "Die Anmeldung per E-Mail ist gerade leider nicht verfügbar. Bitte fahre mit Google fort.",
     "continue": "Weiter",
     "sendingCode": "Code wird gesendet …",
     "codeTitle": "Sieh in deinen E-Mails nach",
@@ -573,7 +574,8 @@
       "wrong_code": "Der Code stimmt nicht. Sieh in der E-Mail nach und versuch es noch einmal.",
       "code_expired": "Dieser Code ist abgelaufen. Lass dir einen neuen schicken.",
       "too_many_codes": "Zu viele Codes für diese Adresse. Versuch es in einer Stunde noch einmal oder melde dich mit Google an.",
-      "email_failed": "Wir konnten die E-Mail nicht senden. Versuch es noch einmal oder melde dich mit Google an."
+      "email_failed": "Wir konnten die E-Mail nicht senden. Versuch es noch einmal oder melde dich mit Google an.",
+      "email_unavailable": "Wir können gerade leider keine E-Mails senden. Versuch es morgen noch einmal."
     },
     "people": {
       "title": "Leute",

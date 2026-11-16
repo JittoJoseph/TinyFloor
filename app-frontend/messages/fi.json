@@ -31,6 +31,7 @@
       "code_required": "Kirjoita sähköpostin 6-numeroinen koodi."
     },
     "continueWithEmail": "Jatka sähköpostilla",
+    "emailUnavailable": "Valitettavasti sähköpostilla kirjautuminen ei ole nyt käytettävissä. Jatka Googlella.",
     "continue": "Jatka",
     "sendingCode": "Lähetetään koodia…",
     "codeTitle": "Tarkista sähköpostisi",
@@ -573,7 +574,8 @@
       "wrong_code": "Koodi ei ole oikein. Tarkista sähköposti ja yritä uudelleen.",
       "code_expired": "Koodi on vanhentunut. Pyydä uusi.",
       "too_many_codes": "Liian monta koodia tähän osoitteeseen. Yritä tunnin päästä tai jatka Googlella.",
-      "email_failed": "Sähköpostin lähettäminen epäonnistui. Yritä uudelleen tai jatka Googlella."
+      "email_failed": "Sähköpostin lähettäminen epäonnistui. Yritä uudelleen tai jatka Googlella.",
+      "email_unavailable": "Valitettavasti emme voi lähettää sähköposteja juuri nyt. Yritä huomenna uudelleen."
     },
     "people": {
       "title": "Ihmiset",

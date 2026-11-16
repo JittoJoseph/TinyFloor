@@ -31,6 +31,7 @@
       "code_required": "Escribe el código de 6 dígitos del correo."
     },
     "continueWithEmail": "Continuar con el correo",
+    "emailUnavailable": "Lo sentimos, ahora mismo no se puede iniciar sesión con correo. Continúa con Google.",
     "continue": "Continuar",
     "sendingCode": "Enviando código…",
     "codeTitle": "Revisa tu correo",
@@ -573,7 +574,8 @@
       "wrong_code": "Ese código no es correcto. Revisa el correo e inténtalo de nuevo.",
       "code_expired": "Este código caducó. Pide uno nuevo.",
       "too_many_codes": "Demasiados códigos para esta dirección. Inténtalo en una hora o continúa con Google.",
-      "email_failed": "No pudimos enviar el correo. Inténtalo de nuevo o continúa con Google."
+      "email_failed": "No pudimos enviar el correo. Inténtalo de nuevo o continúa con Google.",
+      "email_unavailable": "Lo sentimos, ahora mismo no podemos enviar correos. Inténtalo de nuevo mañana."
     },
     "people": {
       "title": "Personas",

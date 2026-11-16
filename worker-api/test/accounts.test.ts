@@ -214,3 +214,47 @@ describe("per-address limit", () => {
     expect((await post("/v1/auth/code/verify", { email, code: "123456" })).status).toBe(400);
   }, 30_000);
 });
+
+describe("when email runs out", () => {
+  afterEach(async () => {
+    await env.DB.prepare("DELETE FROM service_pauses").run();
+  });
+
+  it("stops email until the next day once Resend says the day's allowance is used up", async () => {
+    const { sendEmail, emailPausedUntil } = await import("../src/email");
+    vi.spyOn(globalThis, "fetch").mockImplementation(async () =>
+      Response.json({ statusCode: 429, name: "daily_quota_exceeded", message: "You have reached your daily email sending quota." }, { status: 429 }),
+    );
+    const withKey = { ...env, RESEND_API_KEY: "re_test" } as Env;
+    expect(await sendEmail(withKey, { to: "a@example.com", subject: "Hi", html: "<p>Hi</p>", text: "Hi", kind: "code" })).toBe(false);
+    const until = await emailPausedUntil(env);
+    const tomorrow = new Date();
+    expect(until).toBe(Date.UTC(tomorrow.getUTCFullYear(), tomorrow.getUTCMonth(), tomorrow.getUTCDate() + 1));
+  });
+
+  it("isn't paused by Resend asking to slow down, only by the allowance", async () => {
+    const { sendEmail, emailPausedUntil } = await import("../src/email");
+    vi.spyOn(globalThis, "fetch").mockImplementation(async () =>
+      Response.json({ statusCode: 429, name: "rate_limit_exceeded", message: "Too many requests." }, { status: 429 }),
+    );
+    expect(await sendEmail({ ...env, RESEND_API_KEY: "re_test" } as Env, { to: "a@example.com", subject: "Hi", html: "", text: "Hi", kind: "code" })).toBe(false);
+    expect(await emailPausedUntil(env)).toBeNull();
+  });
+
+  it("offers Google alone and sends no codes while email is paused, and email again once it's back", async () => {
+    const methods = async () => (await (await exports.default.fetch(`${API}/v1/auth/methods`, { headers: { Origin: SITE } })).json()) as { email: boolean };
+    expect(await methods()).toEqual({ email: true });
+
+    await env.DB.prepare("INSERT INTO service_pauses (service, until, reason) VALUES ('email', ?, 'daily_quota')").bind(Date.now() + 60_000).run();
+    expect(await methods()).toEqual({ email: false });
+    const email = uniqueEmail();
+    const asked = await askForCode(email);
+    expect(asked.status).toBe(503);
+    expect(asked.body.error).toMatchObject({ code: "email_unavailable" });
+    expect(lastCode(email)).toBeUndefined();
+
+    await env.DB.prepare("UPDATE service_pauses SET until = ?").bind(Date.now() - 1).run();
+    expect(await methods()).toEqual({ email: true });
+    expect((await askForCode(email)).status).toBe(200);
+  });
+});

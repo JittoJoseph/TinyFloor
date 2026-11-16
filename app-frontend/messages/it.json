@@ -31,6 +31,7 @@
       "code_required": "Inserisci il codice di 6 cifre dell'email."
     },
     "continueWithEmail": "Continua con l'email",
+    "emailUnavailable": "Spiacenti, l'accesso via email non è disponibile al momento. Continua con Google.",
     "continue": "Continua",
     "sendingCode": "Invio del codice…",
     "codeTitle": "Controlla la tua email",
@@ -573,7 +574,8 @@
       "wrong_code": "Il codice non è corretto. Controlla l'email e riprova.",
       "code_expired": "Questo codice è scaduto. Richiedine uno nuovo.",
       "too_many_codes": "Troppi codici per questo indirizzo. Riprova tra un'ora o continua con Google.",
-      "email_failed": "Non siamo riusciti a inviare l'email. Riprova o continua con Google."
+      "email_failed": "Non siamo riusciti a inviare l'email. Riprova o continua con Google.",
+      "email_unavailable": "Spiacenti, al momento non possiamo inviare email. Riprova domani."
     },
     "people": {
       "title": "Persone",

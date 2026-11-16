@@ -4,8 +4,6 @@ import { Check, Plus, License, SourceCode, Zap } from "web-shared/components/ui/
 import { SiteLink as Link } from "@/lib/i18n/SiteLink";
 import { FloorScene } from "web-shared/components/floor/FloorScene";
 import { HALL, MEETING } from "@/components/floor/scenes";
-import { Face } from "web-shared/components/ui/Face";
-import { Logo } from "web-shared/components/app/Logo";
 import { cn } from "web-shared/lib/utils";
 import { SOCIALS } from "web-shared/lib/site";
 import { HomeNav } from "./HomeNav";
@@ -153,22 +151,16 @@ export function Hero({
  * there rather than run off the edge. A glare runs across the demo office's
  * now and then, as on the doors' buttons (shared.css).
  */
-export function Joined({ placement, onColor = false, className, style }: { placement: string; onColor?: boolean; className?: string; style?: CSSProperties }) {
+export function Joined({ placement, className, style }: { placement: string; className?: string; style?: CSSProperties }) {
   const t = useTranslations("homepage.hero");
   const half =
     "inline-flex min-h-12 items-center justify-center gap-2 rounded-full px-5 py-3 text-center text-[14px] font-medium leading-tight transition-colors min-[400px]:px-6 min-[400px]:text-[15px] sm:whitespace-nowrap";
   return (
     <div data-cta={placement} style={style} className={cn("flex w-full max-w-[22rem] flex-col-reverse gap-2 sm:w-auto sm:max-w-none sm:flex-row sm:gap-0", className)}>
-      <Link
-        href="/create"
-        className={cn(half, onColor ? "bg-[#2a2f9e] text-white hover:bg-[#252a8c]" : "bg-foreground/[0.09] text-foreground hover:bg-foreground/[0.14]", "sm:rounded-e-none")}
-      >
+      <Link href="/create" className={cn(half, "bg-foreground/[0.09] text-foreground hover:bg-foreground/[0.14]", "sm:rounded-e-none")}>
         {t("cta")}
       </Link>
-      <Link
-        href="/lobby"
-        className={cn(half, "shine", onColor ? "bg-white text-[#16172e] hover:bg-white/90" : "bg-foreground text-background hover:bg-foreground/85", "sm:rounded-s-none")}
-      >
+      <Link href="/lobby" className={cn(half, "shine", "bg-foreground text-background hover:bg-foreground/85", "sm:rounded-s-none")}>
         {t("lobby")}
       </Link>
     </div>
@@ -493,50 +485,56 @@ export function Questions({ items, title }: { items: Array<{ q: string; a: strin
   );
 }
 
-/** The marks over the last ask: offices, drawn the way the app draws them, beside our own. */
-const MARKS: Array<{ seed?: string; turn: number; lift: number; size: number }> = [
-  { seed: "office-kiln", turn: -8, lift: 10, size: 60 },
-  { seed: "office-northwind", turn: 6, lift: 0, size: 68 },
-  { turn: -4, lift: -6, size: 76 },
-  { seed: "office-ember", turn: 8, lift: 2, size: 66 },
-  { seed: "office-harbour", turn: -6, lift: 12, size: 58 },
-];
-
 /**
- * The last ask, set like the panels above it: a block of the site's blurple
- * in the page's grey panel, and in it offices' marks and our own, one
- * statement in the regular weight, and the same joined control as the hero.
- * It carries the nav's #invites anchor.
+ * The last ask, on one of the sections' colour stages, in clay like the
+ * blog's covers: the logo's rounded tiles, gathered at either end like pieces
+ * of one floor coming together, a few with something from a desk on them, and
+ * the middle left clear for one statement in the regular weight and the two
+ * ways in. The picture has no background of its own and no tile in the
+ * stage's colour (public/home/closing.webp is drawn for blurple). It carries
+ * the nav's #invites anchor.
  */
+/** The last ask's colour: one of the sections' stages (ColorStage). */
+const CLOSING_TONE = "blurple";
+
 export function Closing() {
   const t = useTranslations("homepage.closing");
+  const tHero = useTranslations("homepage.hero");
   return (
     <section id="invites" className={cn(COLUMN, ANCHOR, "pb-12 pt-20 sm:pb-16 sm:pt-28")}>
-      <div className="rounded-[44px] bg-muted p-3">
-        <div style={lit("blurple")} className="flex flex-col items-center rounded-[34px] px-6 pb-14 pt-14 text-center text-white sm:pb-20 sm:pt-20">
-          <div aria-hidden className="flex origin-top scale-[0.74] items-start justify-center gap-3 min-[400px]:scale-[0.85] sm:scale-100 sm:gap-5">
-            {MARKS.map((one, i) => (
-              // The mark keeps its own tilt; the span around it is what arrives.
-              <span key={i} data-reveal className="block" style={rise(40 * i, { y: 20, scale: 0.9 })}>
-                <span className="block drop-shadow-[0_14px_20px_rgb(20_24_90/0.35)]" style={{ transform: `translateY(${one.lift}px) rotate(${one.turn}deg)` }}>
-                  {one.seed ? <Face seed={one.seed} square size={one.size} /> : <Logo size={one.size} />}
-                </span>
-              </span>
-            ))}
-          </div>
+      <div className="relative isolate flex flex-col overflow-hidden rounded-[32px] sm:rounded-[44px]" style={lit(CLOSING_TONE)}>
+        {/* Wide screens set the words between its two ends, along the bottom; narrower ones show it whole under them. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/home/closing.webp"
+          alt=""
+          width={2172}
+          height={724}
+          loading="lazy"
+          decoding="async"
+          className="order-last h-auto w-full lg:absolute lg:inset-x-0 lg:bottom-0 lg:-z-10"
+        />
+        <div className="flex flex-col items-center px-6 pt-14 text-center text-white sm:px-10 sm:pt-20 lg:py-28">
           <h2
             data-reveal-words
-            style={rise(60)}
-            className={cn("mt-10 text-balance text-[38px] font-normal leading-[1.04] tracking-[-0.045em] min-[400px]:text-[44px] sm:mt-14 sm:text-[64px] lg:text-[76px]", CJK_HEADLINE)}
+            style={rise(0)}
+            className={cn("max-w-[14ch] text-balance text-[38px] font-normal leading-[1.04] tracking-[-0.045em] min-[400px]:text-[44px] sm:text-[60px] lg:text-[72px]", CJK_HEADLINE)}
           >
             <Split text={t("title")} />
-            <span className="block text-[#dfe2ff]">
+            <span className="block text-white/75">
               <Split text={t("muted")} from={countWords(t("title"))} />
             </span>
           </h2>
-          <div data-reveal style={rise(160, { y: 10 })} className="mt-10 flex w-full flex-col items-center sm:mt-12">
-            <Joined placement="closing" onColor />
-            <p className="mt-6 text-[13px] text-white/90">{t("note")}</p>
+          <div data-reveal style={rise(120, { y: 10 })} className="mt-9 flex w-full flex-col items-center sm:mt-10">
+            <div data-cta="closing" className="flex w-full max-w-[22rem] flex-col gap-2 sm:w-auto sm:max-w-none sm:flex-row">
+              <Link href="/lobby" className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-6 text-[15px] font-medium text-[#16172e] transition-colors hover:bg-white/90">
+                {tHero("lobby")}
+              </Link>
+              <Link href="/create" className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#16172e]/25 px-6 text-[15px] font-medium text-white transition-colors hover:bg-[#16172e]/35">
+                {tHero("cta")}
+              </Link>
+            </div>
+            <p className="mt-5 text-balance text-[14px] font-medium text-white">{t("note")}</p>
           </div>
         </div>
       </div>

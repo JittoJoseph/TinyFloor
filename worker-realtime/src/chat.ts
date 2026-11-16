@@ -50,6 +50,8 @@ interface Attachment {
   /** Sends in this window, to keep a runaway client from filling the office. */
   sends: number;
   window: number;
+  /** Every message in this window, kept in memory only: a flood is over long before the object sleeps. */
+  messages?: number;
   /** When they last said they were typing, so a chatty browser is heard every few seconds at most. */
   typedAt?: number;
   /** How many days back they can read and search (their office's plan); none is all of it. */
@@ -86,8 +88,14 @@ const NONCE = /^[A-Za-z0-9_-]{8,64}$/;
 /** Lobby direct messages passed along lately, by sender and id, so one sent again isn't passed twice. */
 const PASSED_KEPT = 200;
 
-/** A runaway client is stopped at ten messages a second; a person never gets near it. */
+/** Writes (messages, edits, deletions, reactions, new conversations): a runaway client is stopped at ten a second; a person never gets near it. */
 const SENDS_PER_TEN_SECONDS = 100;
+/** The lobby is open to anyone, so a script gets far less: a person writes a few lines in ten seconds. */
+const LOBBY_SENDS_PER_TEN_SECONDS = 15;
+/** Everything a socket says, reads and searches included: past this it's closed, as the floor closes one. */
+const MESSAGES_PER_TEN_SECONDS = 300;
+/** What changes the chat for everyone, counted against the sends. */
+const WRITES = new Set(["chat_send", "chat_edit", "chat_delete", "chat_react", "chat_channel", "chat_dm"]);
 /** Messages between trims. Cheap, and it keeps the object's storage bounded. */
 const TRIM_EVERY = 500;
 const TEN_SECONDS = 10_000;
@@ -254,7 +262,10 @@ export class Chat extends DurableObject<Env> {
     if (now - me.window > TEN_SECONDS) {
       me.window = now;
       me.sends = 0;
+      me.messages = 0;
     }
+    me.messages = (me.messages ?? 0) + 1;
+    if (me.messages > MESSAGES_PER_TEN_SECONDS) return socket.close(CloseCode.TooManyMessages, "too_many_messages");
 
     let message: ChatClientMessage;
     try {
@@ -263,11 +274,18 @@ export class Chat extends DurableObject<Env> {
       return;
     }
 
+    if (WRITES.has(message.t)) {
+      me.sends++;
+      this.remember(socket, me);
+      if (me.sends > (this.lobby ? LOBBY_SENDS_PER_TEN_SECONDS : SENDS_PER_TEN_SECONDS)) {
+        // A message says why it didn't go; the rest are dropped.
+        if (message.t === "chat_send") this.send(socket, { t: "chat_error", code: "slow_down", ...nonceOf(message.nonce) });
+        return;
+      }
+    }
+
     switch (message.t) {
       case "chat_send":
-        me.sends++;
-        this.remember(socket, me);
-        if (me.sends > SENDS_PER_TEN_SECONDS) return this.send(socket, { t: "chat_error", code: "slow_down", ...nonceOf(message.nonce) });
         return this.post(socket, me, message.channel, message.body, message.files, message.mentions, message.replyTo, now, message.nonce);
       case "chat_history":
         return this.page(socket, me, message.channel, message.before, message.to);

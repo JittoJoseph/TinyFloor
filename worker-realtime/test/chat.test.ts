@@ -3,6 +3,7 @@ import { runDurableObjectAlarm, runInDurableObject } from "cloudflare:test";
 import { describe, expect, it } from "vitest";
 import { ChatClient, officeId } from "./chat-client";
 import {
+  CloseCode,
   GENERAL_CHANNEL,
   LOBBY_CHANNELS,
   LOBBY_CHAT,
@@ -194,6 +195,22 @@ describe("lobby chat", () => {
     const seen = await other.next("chat_new");
     expect(seen.message).toMatchObject({ channel: "feedback", authorName: "Mara", body: text });
   });
+
+  it("slows down a script posting to the lobby, sooner than in an office", async () => {
+    const ada = await ChatClient.open(LOBBY_CHAT, { id: `lobby-flood-${sequence++}`, name: "Ada" }, "guest");
+    await ada.next("chat_ready");
+    for (let i = 0; i < 16; i++) ada.send({ t: "chat_send", channel: "general", body: `line ${i}`, nonce: `flood-nonce-${i}` });
+    expect(await ada.next("chat_error")).toMatchObject({ code: "slow_down", nonce: "flood-nonce-15" });
+  });
+
+  it("closes a socket that floods the chat with anything", async () => {
+    const ada = await ChatClient.open(LOBBY_CHAT, { id: `lobby-spam-${sequence++}`, name: "Ada" }, "guest");
+    await ada.next("chat_ready");
+    const closed = new Promise<number>((resolve) => ada.socket.addEventListener("close", (event) => resolve(event.code)));
+    // Anything counts, even what the chat ignores.
+    for (let i = 0; i < 301; i++) ada.socket.send(JSON.stringify({ t: "nothing" }));
+    expect(await closed).toBe(CloseCode.TooManyMessages);
+  }, 15_000);
 
   it("keeps what an office adds for offices: no channels, no files, no other channel names", async () => {
     const ada = await ChatClient.open(LOBBY_CHAT, { id: `lobby-ada-${sequence++}`, name: "Ada" });

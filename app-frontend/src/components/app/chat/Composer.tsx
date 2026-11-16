@@ -100,6 +100,7 @@ export function Composer({
   onTyping,
   typing,
   onVoiceBlocked,
+  onAttachBlocked,
 }: {
   placeholder: string;
   onSend: (text: string, files: ChatFile[]) => void;
@@ -129,6 +130,8 @@ export function Composer({
   typing?: string | null;
   /** Where voice messages can't go (the lobby): the view says why. */
   onVoiceBlocked?: () => void;
+  /** Where pictures and files can't go (the lobby): the buttons say why rather than opening a picker. */
+  onAttachBlocked?: () => void;
 }) {
   const t = useTranslations("chat");
   const locale = useLocale();
@@ -653,12 +656,12 @@ export function Composer({
                 )}
               </span>
               <Tooltip content={t("photo")}>
-                <button type="button" aria-label={t("photo")} onClick={() => photoPicker.current?.click()} className={tool}>
+                <button type="button" aria-label={t("photo")} onClick={() => (onAttachBlocked ? onAttachBlocked() : photoPicker.current?.click())} className={tool}>
                   <ImagePlus className="size-[18px]" />
                 </button>
               </Tooltip>
               <Tooltip content={t("file")}>
-                <button type="button" aria-label={t("file")} onClick={() => picker.current?.click()} className={tool}>
+                <button type="button" aria-label={t("file")} onClick={() => (onAttachBlocked ? onAttachBlocked() : picker.current?.click())} className={tool}>
                   <Paperclip className="size-[18px]" />
                 </button>
               </Tooltip>

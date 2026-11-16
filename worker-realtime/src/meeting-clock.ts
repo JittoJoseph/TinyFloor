@@ -1,7 +1,7 @@
 import type { MeetingUsage } from "shared-protocol";
 
 /** A lobby copy's video allowance: nobody pays for the lobby (docs/pricing.md). */
-export const LOBBY_MEETING_HOURS_A_DAY = 2;
+export const LOBBY_MEETING_HOURS_A_DAY = 8;
 /** While meetings are counting, the room wakes at least this often to settle up and tell everyone. */
 const TICK_MS = 10 * 60_000;
 

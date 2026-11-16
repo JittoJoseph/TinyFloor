@@ -327,6 +327,8 @@ export class Room extends DurableObject<Env> {
     const office = lobbyCopyNumber(room) === null;
     const desk = office && !attachment.guest ? this.desks.of(ticket.sub) : null;
     const arriving = arrive && office && !attachment.guest;
+    // Walking into the demo office is told too, so the people there can wave, as in an office.
+    const announced = arriving || (arrive && !office);
     const near = arriving ? this.arrivalNear(desk) : null;
     if (near) Object.assign(attachment, near);
     const renamed = desk !== null && this.desks.rename(ticket.sub, ticket.name);
@@ -352,7 +354,7 @@ export class Room extends DurableObject<Env> {
       desks: office ? this.desks.list() : [],
       pieces: office ? this.pieces.all() : {},
     });
-    this.broadcast({ t: "player_joined", player: playerState(attachment), ...(arriving ? { arrived: true } : {}) }, server);
+    this.broadcast({ t: "player_joined", player: playerState(attachment), ...(announced ? { arrived: true } : {}) }, server);
     if (renamed) this.broadcastDesks(server);
     this.reportToDiscord(room, attachment.name, attachment.character, request.headers.get(WHERE_HEADER));
     this.ctx.waitUntil(this.noteActive(room, ticket.sub, now));

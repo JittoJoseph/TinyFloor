@@ -20,10 +20,11 @@ const VARY = "rsc, next-router-state-tree, next-router-prefetch, next-router-seg
 /**
  * The worker: `next` is OpenNext's, `manifest` the built pages
  * (.open-next/static-pages.json). `sharedPages` maps addresses onto a page
- * built once for many ([pattern, replacement] on `/de/...`), and `noindex`
- * says which built pages search engines are told to skip.
+ * built once for many ([pattern, replacement] on `/de/...`), `noindex`
+ * says which built pages search engines are told to skip, and `headers` go
+ * on every response, built or Next's (the site's security headers).
  */
-export function withStaticPages(next, manifest, { sharedPages = [], noindex = () => false } = {}) {
+export function withStaticPages(next, manifest, { sharedPages = [], noindex = () => false, headers: always = {} } = {}) {
   /** Each built page by address (`/de/about`): its HTML's ETag, Next's headers for it, and its segments. */
   const PAGES = new Map(Object.entries(manifest.pages));
   const LOCALES = new Set(manifest.locales);
@@ -31,8 +32,8 @@ export function withStaticPages(next, manifest, { sharedPages = [], noindex = ()
   return {
     async fetch(request, env, ctx) {
       const wanted = builtFile(request);
-      const response = wanted && (await serve(wanted, request, env));
-      return response ?? next.fetch(request, env, ctx);
+      const response = (wanted && (await serve(wanted, request, env))) ?? (await next.fetch(request, env, ctx));
+      return withHeaders(response, always);
     },
   };
 
@@ -105,6 +106,22 @@ export function withStaticPages(next, manifest, { sharedPages = [], noindex = ()
     return null;
   }
 }
+
+/** The response with `headers` added where it doesn't say otherwise already. */
+function withHeaders(response, headers) {
+  const missing = Object.entries(headers).filter(([name]) => !response.headers.has(name));
+  if (!missing.length || response.status === 101) return response;
+  const copy = new Response(response.body, response);
+  for (const [name, value] of missing) copy.headers.set(name, value);
+  return copy;
+}
+
+/** What every page of both sites says: HTTPS only, files are what they claim to be, and a short referrer to other sites. */
+export const SECURITY_HEADERS = {
+  "strict-transport-security": "max-age=31536000",
+  "x-content-type-options": "nosniff",
+  "referrer-policy": "strict-origin-when-cross-origin",
+};
 
 function cookie(request, name) {
   const match = (request.headers.get("cookie") ?? "").match(new RegExp(`(?:^|;\\s*)${name}=([^;]*)`));

@@ -458,29 +458,22 @@ the only way art reaches the floor:
 
 ## The offices
 
-Each office is on one floor, `offices.floor`, and the demo office on
-`LOBBY_FLOOR`. The room ticket says which: the room keeps its desks to it
-(a move settles each claim on the nearest desk of the new floor's size), and
-the page draws it, remembering it in the browser so the next load draws it
-straight away; a browser that has never been on a floor draws Campus, where
-most first visits now land. A page that drew the wrong one loads once more.
-The team moves an office from its admin page, and everyone on it reconnects
-to the new floor.
+Every office and the demo office are on one floor, **Campus** (`FLOOR`):
+82×52 tiles, a building of rooms round an open hall on grass with trees, a
+plaza at the front door and two patios. Twelve single desks, two teams of six
+on sage carpets, on the hall's grey squares; a meeting room, a café, a booth,
+a lounge, a library, a quiet room and a studio. Built from a plan, so it's
+what the builder will start every office from.
 
-**Startup**, where every office began: the hand-made map's rooms and walls
-(48×32), four two-sided banks of maple desks (16), a meeting room with its
-whiteboard, a break room with its kitchen. Drawn tile by tile, with no plan.
-
-**Campus**, the new one: since 3 November every new office and the demo
-office start on it, and older offices move to it one at a time. 82×52 tiles, a
-building of rooms round an open hall on grass with trees, a plaza at the
-front door and two patios. Twelve single desks, two teams of six on sage
-carpets, on the hall's grey squares; a meeting room, a café, a booth, a
-lounge, a library, a quiet room and a studio. Built from a plan, so it's what
-the builder will start every office from.
-
-Once every office is on Campus, Startup, the floor column and the switch go,
-and FLOOR is the one floor again.
+Offices began on **Startup** (48×32, four two-sided banks of maple desks, 16
+in all), drawn tile by tile. Campus reached new offices and the demo office
+on 3 November, and older ones were moved from the admin page one at a time.
+On 16 November Startup was taken out: an office still on it converts the
+first time its room starts, each desk claim settling on the free Campus desk
+nearest where it was, earliest claim first (with 12 desks, a 13th claim and
+later are let go), and what was made of its old desks cleared, since none of
+their keys exist on Campus. The `offices.floor` column is no longer read or
+written.
 
 ## Next
 

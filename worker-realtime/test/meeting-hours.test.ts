@@ -84,9 +84,9 @@ describe("meeting hours", () => {
     expect(await ben.next("sfu")).toMatchObject({ op: "offer", tracks: [{ userId: avaId, kind: "mic" }] });
   });
 
-  it("gives each lobby copy two video hours a day", async () => {
+  it("gives each lobby copy eight video hours a day", async () => {
     const lobby = await Client.open(`lobby-${1000 + Math.floor(Math.random() * 9000)}`, { name: "Visitor", role: "guest" });
     const { usage } = await lobby.next("welcome");
-    expect(usage).toMatchObject({ allowance: 2 * 3600, period: "day", paused: false });
+    expect(usage).toMatchObject({ allowance: 8 * 3600, period: "day", paused: false });
   });
 });

@@ -1,60 +1,11 @@
-import startup from "./catalog/floors/startup.json";
 import campus from "./catalog/floors/campus.json";
 
 /**
- * Every floor there is, by id, worked out by the lab (lab/build.mjs) into
- * everything the floor draws and the room checks. Each office is on one
- * (offices.floor, changed from the admin view), the demo office on
- * LOBBY_FLOOR; the room is told which by its ticket, and keeps desks to it.
- * Startup is where every office began; Campus, an office in grounds, is the
- * new one: new offices and the demo office start there, and older offices
- * move to it one at a time.
+ * The floor every office and the demo office are on, Campus (an office in
+ * grounds), worked out by the lab (lab/build.mjs) into everything the floor
+ * draws and the room checks.
  */
-export const FLOORS: Record<string, Floor> = { startup: startup as unknown as Floor, campus: campus as unknown as Floor };
-
-/** The floor a new office starts on, and the demo office's. */
-export const NEW_FLOOR = "campus";
-
-/** The floor an id names; Startup for one that isn't. */
-export const floorOf = (id: string | null | undefined): Floor => FLOORS[id ?? ""] ?? FLOORS.startup;
-
-const DRAWN = "tinyfloor:floor";
-
-/** What a page has of a browser's, typed here because the room (a worker) has no window. */
-type PageGlobals = { localStorage?: { getItem(key: string): string | null; setItem(key: string, value: string): void } };
-
-/**
- * The floor this page draws: the one its last room ticket said (drawFloor),
- * kept in this browser, so the page loads already drawing it; in a browser
- * that hasn't been on a floor yet, the one new offices and the demo office
- * are on. A page's whole floor, its walls, solids and desks, is this one; the
- * room's is its own.
- */
-export const FLOOR: Floor = (() => {
-  try {
-    const drawn = (globalThis as PageGlobals).localStorage?.getItem(DRAWN);
-    return drawn ? floorOf(drawn) : FLOORS[NEW_FLOOR];
-  } catch {
-    return FLOORS[NEW_FLOOR];
-  }
-})();
-
-/**
- * A room ticket says which floor its room is on. True when it isn't the one
- * this page drew: it's remembered, and the page has to load again to draw it
- * (PhaserGame does). Only while offices move to a new floor; once they all
- * have, nothing changes here.
- */
-export function drawFloor(id: string | undefined): boolean {
-  if (!id || floorOf(id).id === FLOOR.id) return false;
-  try {
-    (globalThis as PageGlobals).localStorage?.setItem(DRAWN, floorOf(id).id);
-  } catch {
-    // Without storage the page draws the first floor again; nothing to loop on.
-    return false;
-  }
-  return true;
-}
+export const FLOOR: Floor = campus as unknown as Floor;
 
 export const MAP_WIDTH_TILES = FLOOR.shell.size[0];
 export const MAP_HEIGHT_TILES = FLOOR.shell.size[1];
@@ -156,10 +107,7 @@ export function seatTile(seat: number, floor: Floor = FLOOR): { x: number; y: nu
   return { x: seat % width, y: Math.floor(seat / width) };
 }
 
-/** The largest floor's size: the room keeps people within it, whichever floor their page draws. */
-const BOUNDS = Object.values(FLOORS).reduce(([w, h], floor) => [Math.max(w, floor.shell.size[0]), Math.max(h, floor.shell.size[1])], [0, 0]);
-
 /** Inside the office walls. Walkability is the client's job; the server only keeps people on the map. */
 export function isInsideMap(x: number, y: number): boolean {
-  return Number.isInteger(x) && Number.isInteger(y) && x >= 1 && x < BOUNDS[0] - 1 && y >= 1 && y < BOUNDS[1] - 1;
+  return Number.isInteger(x) && Number.isInteger(y) && x >= 1 && x < MAP_WIDTH_TILES - 1 && y >= 1 && y < MAP_HEIGHT_TILES - 1;
 }

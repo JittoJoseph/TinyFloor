@@ -2,7 +2,7 @@
 // built pages served as files first (../web-shared/scripts/static-worker.mjs).
 import manifest from "./.open-next/static-pages.json";
 import next from "./.open-next/worker.js";
-import { withStaticPages } from "../web-shared/scripts/static-worker.mjs";
+import { SECURITY_HEADERS, withStaticPages } from "../web-shared/scripts/static-worker.mjs";
 
 export { BucketCachePurge, DOQueueHandler, DOShardedTagCache } from "./.open-next/worker.js";
 
@@ -18,4 +18,6 @@ export default withStaticPages(next, manifest, {
   ],
   // As the middleware says it: only the lobby is for search engines.
   noindex: (route) => !/^\/[a-z]{2}\/lobby$/.test(route),
+  // The app is never shown inside another site's frame, so nobody can be tricked into clicking in it.
+  headers: { ...SECURITY_HEADERS, "x-frame-options": "DENY", "content-security-policy": "frame-ancestors 'none'" },
 });

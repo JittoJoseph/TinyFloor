@@ -1,21 +1,23 @@
 import { runInDurableObject } from "cloudflare:test";
 import { env, exports } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
-import { FLOORS, deskArrival, deskSeats, seatTile } from "shared-protocol";
+import { FLOOR, deskArrival, deskSeats, seatTile } from "shared-protocol";
 import { Desks } from "../src/desks";
 import { Client, settle, uniqueRoom } from "./client";
 
-/** The floor a room is on until a ticket says otherwise (a page that has never drawn one starts on another). */
-const FLOOR = FLOORS.startup;
-
-/** The desks of the floor a room is on unless told otherwise (Startup). */
-const DESK_SEATS = deskSeats(FLOOR);
+const DESK_SEATS = deskSeats();
 const DESK = DESK_SEATS[0];
 const OTHER_DESK = DESK_SEATS[1];
 const MEETING_CHAIR = FLOOR.seats.find((seat) => seat.zone === "meeting")!.id;
-/** The desks of the hand-made map the Startup template replaced (October 2026), as claims on them were stored. */
-const OLD_DESKS = [404, 410, 548, 554, 658, 664, 802, 808, 981, 987, 1125, 1131, 1159, 1235, 1241, 1253, 1257, 1379, 1385];
-const tilesApart = (a: number, b: number) => Math.hypot(seatTile(a, FLOOR).x - seatTile(b, FLOOR).x, seatTile(a, FLOOR).y - seatTile(b, FLOOR).y);
+/** The old floor's desks (48 tiles wide, before Campus), as claims on them were stored. */
+const OLD_WIDTH = 48;
+const OLD_DESKS = [358, 364, 501, 508, 611, 618, 755, 761, 934, 940, 1079, 1085, 1189, 1194, 1332, 1338];
+/** Where an old claim was, as a place on Campus: the same part of the office. */
+const onCampus = (old: number) => ({
+  x: ((old % OLD_WIDTH) / OLD_WIDTH) * FLOOR.shell.size[0],
+  y: (Math.floor(old / OLD_WIDTH) / 32) * FLOOR.shell.size[1],
+});
+const away = (seat: number, at: { x: number; y: number }) => Math.hypot(seatTile(seat).x - at.x, seatTile(seat).y - at.y);
 
 describe("desks", () => {
   it("lets a member make a desk theirs, and tells everyone", async () => {
@@ -104,34 +106,53 @@ describe("desks", () => {
     expect((await ben.next("desks")).desks).toEqual([]);
   });
 
-  it("moves claims on desks the floor doesn't have to the nearest free ones, earliest first", async () => {
+  it("moves an office's claims from the old floor onto Campus's desks, earliest first, once", async () => {
     const room = uniqueRoom();
     const ava = await Client.open(room, { sub: "ava" });
     await ava.next("welcome");
     await runInDurableObject(env.ROOM.getByName(room), (_room, state) => {
       const sql = state.storage.sql;
-      // An office as it was on the hand-made map: every old desk claimed, the first ones first.
+      // An office as it was on the old floor: every desk claimed, the first ones first.
+      sql.exec("DELETE FROM desks");
       OLD_DESKS.forEach((seat, n) => sql.exec("INSERT INTO desks (seat, user_id, name, claimed_at) VALUES (?, ?, ?, ?)", seat, `user-${n}`, `Person ${n}`, 1000 + n));
-      const moved = new Desks(sql, FLOOR).list();
+      const moved = new Desks(sql, true).list();
 
-      // Everyone who can have a desk keeps one, each on a desk of the new floor, no two on one.
+      // Everyone who can have a desk keeps one, each on a Campus desk, no two on one.
       expect(moved).toHaveLength(Math.min(OLD_DESKS.length, DESK_SEATS.length));
       expect(new Set(moved.map((desk) => desk.seat)).size).toBe(moved.length);
       for (const desk of moved) expect(DESK_SEATS).toContain(desk.seat);
-      // The earliest claim got the desk nearest its old one; the latest, when there weren't enough, were let go.
-      const nearest = [...DESK_SEATS].sort((a, b) => tilesApart(a, OLD_DESKS[0]) - tilesApart(b, OLD_DESKS[0]))[0];
+      // The earliest claim got the desk nearest where it was; the latest, when there weren't enough, were let go.
+      const nearest = [...DESK_SEATS].sort((a, b) => away(a, onCampus(OLD_DESKS[0])) - away(b, onCampus(OLD_DESKS[0])))[0];
       expect(moved.find((desk) => desk.userId === "user-0")?.seat).toBe(nearest);
       expect(moved.some((desk) => desk.userId === `user-${OLD_DESKS.length - 1}`)).toBe(OLD_DESKS.length <= DESK_SEATS.length);
 
-      // With every claim on a desk, the room starting again leaves them where they are.
-      expect(new Desks(sql, FLOOR).list()).toEqual(moved);
-      // A claim on a desk it has stays put while one beside it moves round it.
-      sql.exec("DELETE FROM desks");
-      sql.exec("INSERT INTO desks (seat, user_id, name, claimed_at) VALUES (?, 'stays', 'Stays', 2), (?, 'moves', 'Moves', 1)", nearest, OLD_DESKS[0]);
-      const after = new Desks(sql, FLOOR).list();
-      expect(after.find((desk) => desk.userId === "stays")?.seat).toBe(nearest);
-      expect(after.find((desk) => desk.userId === "moves")?.seat).not.toBe(nearest);
-      expect(DESK_SEATS).toContain(after.find((desk) => desk.userId === "moves")?.seat);
+      // On Campus, the room starting again leaves them where they are.
+      expect(new Desks(sql).list()).toEqual(moved);
+    });
+  });
+
+  it("converts an office still on the old floor as its room starts, and only then", async () => {
+    const room = uniqueRoom();
+    const ava = await Client.open(room, { sub: "ava" });
+    await ava.next("welcome");
+    const stub = env.ROOM.getByName(room);
+    await runInDurableObject(stub, (_room, state) => {
+      const sql = state.storage.sql;
+      // As an office looked before Campus: its floor unsaid, a claim on an old desk, and a decorated old desk.
+      sql.exec("DELETE FROM room_state WHERE key IN ('floor', 'floor_since')");
+      sql.exec("INSERT INTO desks (seat, user_id, name, claimed_at) VALUES (?, 'old', 'Old', 1)", OLD_DESKS[0]);
+      sql.exec("INSERT INTO pieces (key, desk, change, user_id, changed_at) VALUES ('lpadec/back-0:a', 'lpadec/back-0', '{}', 'old', 1)");
+    });
+    await runInDurableObject(stub, async (instance) => {
+      // A room starts by reading its tables again.
+      (instance as unknown as { createTables(): void }).createTables();
+    });
+    await runInDurableObject(stub, (_room, state) => {
+      const sql = state.storage.sql;
+      const seat = sql.exec<{ seat: number }>("SELECT seat FROM desks WHERE user_id = 'old'").toArray()[0]?.seat;
+      expect(DESK_SEATS).toContain(seat);
+      expect(sql.exec("SELECT key FROM pieces").toArray()).toEqual([]);
+      expect(sql.exec<{ value: string }>("SELECT value FROM room_state WHERE key = 'floor'").toArray()[0]?.value).toBe(FLOOR.id);
     });
   });
 

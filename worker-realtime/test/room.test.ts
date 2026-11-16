@@ -172,11 +172,12 @@ describe("room messages", () => {
     const ben = await Client.open(room);
     await ben.next("welcome");
 
-    for (let i = 0; i < 150; i++) ava.send({ t: "status", status: "away" });
+    // Far past the limit in any one second, however the test machine spreads them out.
+    for (let i = 0; i < 400; i++) ava.send({ t: "status", status: "away" });
 
-    expect(await ava.closed()).toBe(CloseCode.TooManyMessages);
-    expect((await ben.next("player_left")).id).toBeDefined();
-  });
+    expect(await ava.closed(8000)).toBe(CloseCode.TooManyMessages);
+    expect((await ben.next("player_left", 8000)).id).toBeDefined();
+  }, 15_000);
 
   it("answers the plain-text heartbeat without a JSON reply", async () => {
     const room = uniqueRoom();

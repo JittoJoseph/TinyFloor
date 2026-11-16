@@ -2,7 +2,7 @@ import { FLOOR, type DeskSpot, type Floor } from "./map";
 import { wallSolids, type ShellMap } from "./shell";
 
 /**
- * An office is its floor (the Startup template, map.ts) and the changes made
+ * An office is its floor (Campus, map.ts) and the changes made
  * to it, each kept against one piece's key (docs/customization.md). For now
  * the changes are to desks, by whoever has the desk: what stands in each of
  * its spots, its chair and its wood. One set of rules, here, for the floor that draws a change and the

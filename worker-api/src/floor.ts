@@ -1,7 +1,6 @@
 import {
   LOBBY_CHAT,
   LOBBY_COPY_CAPACITY,
-  LOBBY_FLOOR,
   LOBBY_ROOM,
   liveNote,
   signTicket,
@@ -26,7 +25,7 @@ export function floorRoutes(router: Router): void {
       const user = await requireUser(env, request, ctx);
       const office = await requireOffice(env, params.id, user.id);
       noteCountry(env, request, ctx, user);
-      return json(await ticketFor(env, user, office.id, office.floor, office.role, floorCap(office), meetingHoursOf(office.plan)));
+      return json(await ticketFor(env, user, office.id, office.role, floorCap(office), meetingHoursOf(office.plan)));
     })
 
     // The office's chat is its own object, so it gets its own ticket.
@@ -98,21 +97,19 @@ export function floorRoutes(router: Router): void {
 }
 
 /** A ticket to a copy of the lobby's floor, as whoever you are there. */
-export function lobbyTicket(env: Env, user: User): Promise<{ ticket: string; url: string; floor: string }> {
-  return ticketFor(env, user, LOBBY_ROOM, LOBBY_FLOOR, user.isGuest ? "guest" : "member", LOBBY_COPY_CAPACITY);
+export function lobbyTicket(env: Env, user: User): Promise<{ ticket: string; url: string }> {
+  return ticketFor(env, user, LOBBY_ROOM, user.isGuest ? "guest" : "member", LOBBY_COPY_CAPACITY);
 }
 
 async function ticketFor(
   env: Env,
   user: User,
   room: string,
-  /** The floor the room is on: the room keeps desks to it, and the page draws it. */
-  floor: string,
   role: RoomRole,
   cap: number,
   /** An office's meeting hours a month, from its plan; lobby copies keep their own. */
   hours?: number,
-): Promise<{ ticket: string; url: string; floor: string }> {
+): Promise<{ ticket: string; url: string }> {
   // Walking in with your status note, so the floor shows it from the first frame.
   const note = user.isGuest ? null : liveNote(user.status);
   const claims: RoomTicket = {
@@ -123,11 +120,10 @@ async function ticketFor(
     character: user.character,
     role,
     cap,
-    floor,
     ...(hours === undefined ? {} : { hours }),
     ...(note ? { note } : {}),
     exp: Date.now() + TICKET_LIFETIME_MS,
   };
   const path = room === LOBBY_ROOM ? LOBBY_ROOM : `rooms/${room}`;
-  return { ticket: await signTicket(claims, env.TICKET_SECRET), url: `${env.REALTIME_URL}/${path}`, floor };
+  return { ticket: await signTicket(claims, env.TICKET_SECRET), url: `${env.REALTIME_URL}/${path}` };
 }

@@ -1,4 +1,4 @@
-import { cleanDisplayName, FLOORS } from "shared-protocol";
+import { cleanDisplayName } from "shared-protocol";
 import { cleanName, realtime } from "./access";
 import { extendTrial, givePlan, HOLDS_PLAN, liveSubscription, MOST_TRIAL_DAYS, thisMonth } from "./billing";
 import { HttpError, json, readJson } from "./http";
@@ -90,7 +90,7 @@ const PERSON = `u.id, u.display_name AS displayName, u.email, u.character, u.cou
   u.created_at AS createdAt, u.last_active_at AS lastActiveAt, u.google_sub IS NOT NULL AS google, u.is_guest AS guest`;
 
 /** An office as the admin view lists it, with its owner's address and country; this month's usage joined as `um` (bound as ?period). */
-const OFFICE = `o.id, o.name, o.plan, o.seats, o.floor, o.created_at AS createdAt,
+const OFFICE = `o.id, o.name, o.plan, o.seats, o.created_at AS createdAt,
   ${STANDING} AS standing, o.trial_ends_at AS trialEndsAt, ow.email AS ownerEmail, ow.country AS ownerCountry,
   (SELECT COUNT(*) FROM memberships m WHERE m.office_id = o.id) AS members,
   o.active_at AS lastActiveAt,
@@ -314,7 +314,7 @@ export function adminRoutes(router: Router): void {
       return json({ trialEndsAt: await extendTrial(env, params.id, days) });
     })
 
-    // An office renamed, given a plan without payment, or moved to another floor.
+    // An office renamed, or given a plan without payment.
     .add("PATCH", "/v1/admin/offices/:id", async ({ request, env, ctx, params }) => {
       await requireAdmin(env, request, ctx);
       const body = await readJson(request);
@@ -326,14 +326,6 @@ export function adminRoutes(router: Router): void {
         await env.DB.prepare("UPDATE offices SET name = ? WHERE id = ?").bind(name, params.id).run();
       }
       if (body.plan !== undefined) await givePlan(env, params.id, String(body.plan));
-      if (body.floor !== undefined) {
-        if (typeof body.floor !== "string" || !(body.floor in FLOORS)) throw new HttpError(400, "no_floor", "No such floor");
-        await env.DB.prepare("UPDATE offices SET floor = ? WHERE id = ?").bind(body.floor, params.id).run();
-        // Everyone on it reconnects: their next ticket says the new floor, the room moves its desks to it, and the page draws it.
-        await realtime(env)
-          .floorMoved(params.id)
-          .catch(() => undefined);
-      }
       return json({ ok: true });
     })
 

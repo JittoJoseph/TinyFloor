@@ -4,7 +4,6 @@ import { useEffect, useEffectEvent, useRef } from "react";
 import { useTranslations } from "next-intl";
 import * as Phaser from "phaser";
 import GameScene from "../scenes/GameScene";
-import { drawFloor } from "shared-protocol/map";
 import type { RoomTicket } from "web-shared/lib/api";
 import { setSceneText } from "@/lib/sceneText";
 import { prefs } from "@/lib/prefs";
@@ -31,15 +30,7 @@ const PhaserGame: React.FC<PhaserGameProps> = ({
   ticketFor,
 }) => {
   // The scene keeps the first function it was given; this always calls the current one.
-  // A ticket to a room on another floor than this page drew (its office moved) loads the page again, to draw it.
-  const nextTicket = useEffectEvent(async () => {
-    const ticket = await ticketFor();
-    if (drawFloor(ticket.floor)) {
-      window.location.reload();
-      await new Promise(() => {});
-    }
-    return ticket;
-  });
+  const nextTicket = useEffectEvent(() => ticketFor());
   // Who you are when the floor starts. A new name or look later is told to the
   // scene that's running (floor.ts: rename, look), never a reason to build it
   // again: that would leave the room and walk back in.

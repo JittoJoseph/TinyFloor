@@ -642,6 +642,7 @@ export function ChatView({ channel }: { channel?: string }) {
           typing={typingLine}
           onFiles={onFiles}
           onVoiceBlocked={lobby ? () => place.officesOnly?.("voice") : undefined}
+          onAttachBlocked={lobby ? () => place.officesOnly?.("attachments") : undefined}
           upload={lobby ? undefined : (file, progress, signal) => upload(place.id, file, progress, signal)}
           discard={lobby ? undefined : discard}
           people={mentionable}

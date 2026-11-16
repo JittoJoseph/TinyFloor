@@ -125,8 +125,10 @@ ask Creem first.
   seconds a meeting has two or more people in it, per office per calendar
   month (UTC), and wakes by alarm when the hours would run out
   (`worker-realtime/src/meeting-clock.ts`). Floor calls are counted but never
-  limited. Each copy of the public lobby gets 2 meeting hours a day, since
-  nobody pays for it.
+  limited. Each copy of the public lobby gets 8 meeting hours a day, since
+  nobody pays for it (2 until 16 November, raised so a busy launch day's
+  visitors can still try a meeting; even all on camera, a copy's day is a
+  few dollars of media).
 - **Monthly only.** One price, cancel any time, full refund within 14 days.
 - **A founding price, said with a real date (21 October).** $29 a month for
   offices that subscribe before 1 March 2027, kept for as long as they stay

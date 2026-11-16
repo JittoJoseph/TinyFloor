@@ -24,13 +24,16 @@ export function allowedOrigin(request: Request, env: Env): string | null {
   return origin && env.SITE_ORIGINS.split(",").includes(origin) ? origin : null;
 }
 
-/** CORS for the site's own origins only, with cookies. */
+/** CORS for the site's own origins only, with cookies; and HTTPS only, with nothing read as a type it doesn't say. */
 export function withCors(response: Response, origin: string | null): Response {
-  if (!origin) return response;
   const headers = new Headers(response.headers);
-  headers.set("Access-Control-Allow-Origin", origin);
-  headers.set("Access-Control-Allow-Credentials", "true");
-  headers.append("Vary", "Origin");
+  headers.set("Strict-Transport-Security", "max-age=31536000");
+  headers.set("X-Content-Type-Options", "nosniff");
+  if (origin) {
+    headers.set("Access-Control-Allow-Origin", origin);
+    headers.set("Access-Control-Allow-Credentials", "true");
+    headers.append("Vary", "Origin");
+  }
   return new Response(response.body, { status: response.status, statusText: response.statusText, headers });
 }
 

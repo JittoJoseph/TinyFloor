@@ -19,6 +19,17 @@ describe("waves", () => {
     expect((await ava.next("player_joined")).arrived).toBeUndefined();
   });
 
+  it("says when a guest walks into the demo office, so the people there can wave", async () => {
+    const ava = await Client.open("lobby", { room: "lobby", role: "guest" });
+    await ava.next("welcome");
+
+    const ben = await Client.open("lobby", { room: "lobby", sub: `ben-${Date.now()}`, role: "guest" }, "&x=10&y=10&arrive=1");
+    const self = (await ben.next("welcome")).self.id;
+    await settle();
+    const joined = ava.messages.find((message) => message.t === "player_joined" && message.player.id === self);
+    expect(joined?.t === "player_joined" && joined.arrived).toBe(true);
+  });
+
   it("shows a wave to everyone, only to someone who is here, and never to yourself", async () => {
     const room = uniqueRoom();
     const ava = await Client.open(room, { sub: "ava" });

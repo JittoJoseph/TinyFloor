@@ -4,9 +4,8 @@ import { RailIcons } from "@/components/app/railIcons";
 import { useEffect, useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { DoorOpen, Hash, ImagePlus, LogOut, MessagesSquare, Mic, Plus, Users } from "web-shared/components/ui/icons";
+import { Hash, ImagePlus, LogOut, MessagesSquare, Mic, Plus, Users } from "web-shared/components/ui/icons";
 import { useRouter } from "@/lib/i18n/navigation";
-import { useAuth } from "@/contexts/AuthContext";
 import { api, type RoomTicket, type SessionUser } from "web-shared/lib/api";
 import {
   goTo,
@@ -16,7 +15,6 @@ import {
   lobbyPath,
   lobbyPeoplePath,
   lobbySettingsPath,
-  homePath,
   useSitePage,
 } from "@/lib/links";
 import { chat } from "@/lib/ChatSocket";
@@ -25,7 +23,7 @@ import { useHelp } from "@/lib/help";
 import { clearFloor, useFloor } from "@/lib/floor";
 import { clearMeetings, usePeopleInMeetings } from "@/lib/meetings";
 import { RoomView } from "@/components/room/RoomView";
-import { Menu, MenuHeader, MenuItem, MenuSeparator } from "@/components/ui/Menu";
+import { Menu, MenuItem, MenuSeparator } from "@/components/ui/Menu";
 import { Dialog } from "@/components/ui/Dialog";
 import { ActionLink } from "@/components/ui/Action";
 import { OPEN_CONVERSATION_EVENT } from "@/components/ProximityActions";
@@ -115,7 +113,8 @@ export default function LobbyInside({
     officesOnly: setAsked,
   };
 
-  const leave = { href: user.guest ? home : "/", label: ts("leaveLobby") };
+  // Out of the demo office is the site's home page, for guests and accounts alike: most come from it, and the rest should see it.
+  const leave = { href: home, label: ts("leaveLobby") };
 
   return (
     <PlaceProvider value={place}>
@@ -222,8 +221,6 @@ function LobbyMark() {
   const home = useSitePage();
   const wide = useWide();
   const frame = useShellFrame();
-  const { user } = useAuth();
-  const guest = !user || user.guest;
   return (
     <Menu
       align="start"
@@ -235,21 +232,22 @@ function LobbyMark() {
         </button>
       }
     >
-      <MenuHeader>
-        <div className="flex items-center gap-3">
-          <Logo size={36} />
-          <div className="min-w-0">
-            <p className="truncate text-[14px] font-medium text-foreground">{t("title")}</p>
-            <p className="truncate text-[12px] text-muted-foreground">{t("eyebrow")}</p>
-          </div>
+      <a
+        href={home}
+        className="flex cursor-pointer items-center gap-3 rounded-[10px] px-2.5 py-1.5 outline-none transition-colors hover:bg-muted focus-visible:bg-muted"
+      >
+        <Logo size={36} />
+        <div className="min-w-0">
+          <p className="truncate text-[14px] font-medium text-foreground">TinyFloor</p>
+          <p className="truncate text-[12px] text-muted-foreground">tinyfloor.com</p>
         </div>
-      </MenuHeader>
+      </a>
       <MenuSeparator />
       <MenuItem icon={<Plus />} onSelect={() => router.push(lobbyOfficePath)}>
         {ts("yourOffice")}
       </MenuItem>
       <MenuSeparator />
-      <MenuItem icon={guest ? <LogOut className="rtl:rotate-180" /> : <DoorOpen />} onSelect={() => goTo(router, guest ? home : homePath)}>
+      <MenuItem icon={<LogOut className="rtl:rotate-180" />} onSelect={() => goTo(router, home)}>
         {ts("leaveLobby")}
       </MenuItem>
     </Menu>

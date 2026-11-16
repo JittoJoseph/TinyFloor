@@ -190,8 +190,6 @@ export interface OfficeOverview {
 export interface RoomTicket {
   ticket: string;
   url: string;
-  /** A room's: the floor it's on, which the page draws (map.ts drawFloor). */
-  floor?: string;
 }
 
 export interface IceServers {
@@ -247,8 +245,6 @@ export interface AdminOffice {
   name: string;
   plan: string;
   seats: number;
-  /** The floor it's on (map.ts FLOORS). */
-  floor: string;
   createdAt: number;
   standing: AdminStanding;
   /** When its trial ends (or ended, until it's swept to Free); 0 or null without one. */
@@ -533,7 +529,7 @@ export const api = {
   adminDeleteLobbyMessage: (seq: number) => del<{ ok: true }>(`/admin/lobby-chat/${seq}`),
   adminRenamePerson: (userId: string, displayName: string) => patch<{ ok: true }>(`/admin/users/${id(userId)}`, { displayName }),
   adminDeletePerson: (userId: string) => del<{ ok: true; handedOver: string[]; closed: string[] }>(`/admin/users/${id(userId)}`),
-  adminUpdateOffice: (officeId: string, changes: { name?: string; plan?: PlanId; floor?: string }) => patch<{ ok: true }>(`/admin/offices/${id(officeId)}`, changes),
+  adminUpdateOffice: (officeId: string, changes: { name?: string; plan?: PlanId }) => patch<{ ok: true }>(`/admin/offices/${id(officeId)}`, changes),
   adminExtendTrial: (officeId: string, days: number) => post<{ trialEndsAt: number }>(`/admin/offices/${id(officeId)}/trial`, { days }),
   adminDeleteOffice: (officeId: string) => del<{ ok: true }>(`/admin/offices/${id(officeId)}`),
   adminHelp: (params: { status: "open" | "closed"; page?: number }) =>

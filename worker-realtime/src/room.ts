@@ -18,6 +18,8 @@ import {
   isInsideMap,
   deskSeats,
   FLOOR,
+  LOBBY_PIECE_MS,
+  lobbyDeskOpen,
   canChange,
   deskArrival,
   deskOfKey,
@@ -331,8 +333,8 @@ export class Room extends DurableObject<Env> {
       music: { track: 0, playing: false, startedAt: 0, offset: 0 },
       meetings: this.meetingsOf(room),
       usage: this.clock()!.usage(now),
-      desks: office ? this.desks.list() : [],
-      pieces: office ? this.pieces.all() : {},
+      desks: this.desks.list(!office),
+      pieces: this.pieces.all(),
     });
     this.broadcast({ t: "player_joined", player: playerState(attachment), ...(announced ? { arrived: true } : {}) }, server);
     if (renamed) this.broadcastDesks(server);
@@ -442,7 +444,7 @@ export class Room extends DurableObject<Env> {
         break;
       case "desk_reset": {
         const mine = this.desks.of(me.userId);
-        if (this.takeAction(me) && !me.guest && mine !== null) this.resetDesk(mine);
+        if (this.takeAction(me) && (!me.guest || lobbyCopyNumber(me.room) !== null) && mine !== null) this.resetDesk(mine);
         break;
       }
       case "sfu":
@@ -508,7 +510,7 @@ export class Room extends DurableObject<Env> {
       return them.userId !== me.userId && them.seat === seat;
     });
     const owner = this.desks.ownerOf(seat);
-    if (taken || (owner !== null && owner !== me.userId)) {
+    if (taken || (owner !== null && owner !== me.userId && !this.openToClaim(seat, me, Date.now()))) {
       send(socket, { t: "sit_rejected", seat });
       return;
     }
@@ -530,13 +532,32 @@ export class Room extends DurableObject<Env> {
   }
 
   /** Someone makes a desk theirs: members of an office only, not guests, not in the lobby. */
+  /**
+   * Claiming a desk: a member's, in an office; anyone's in the demo office,
+   * where someone else's can be claimed from its chair once it's open to it
+   * (lobby.ts: every desk taken, and this one held long enough).
+   */
   private claimDesk(me: Attachment, seat: unknown, now: number): void {
-    if (!this.takeAction(me) || me.guest || lobbyCopyNumber(me.room) !== null || !Number.isInteger(seat)) return;
+    if (!this.takeAction(me) || !Number.isInteger(seat)) return;
+    const lobby = lobbyCopyNumber(me.room) !== null;
+    if (me.guest && !lobby) return;
+    const owner = this.desks.ownerOf(seat as number);
+    const takeOver = owner !== null && owner !== me.userId;
+    if (takeOver && (me.seat !== seat || !this.openToClaim(seat as number, me, now))) return;
     const before = this.desks.of(me.userId);
-    if (!this.desks.claim(seat as number, me.userId, me.name, now) || before === seat) return;
+    if (!this.desks.claim(seat as number, me.userId, me.name, now, takeOver) || before === seat) return;
     this.broadcastDesks();
-    // The desk given up goes back to the floor's own: the next person gets a clean one.
-    if (before !== null) this.resetDesk(before);
+    // In an office the desk given up goes back to the floor's own: the next person gets a clean one.
+    // The demo office's changes go back one at a time instead, each in its own time.
+    if (before !== null && !lobby) this.resetDesk(before);
+  }
+
+  /** Someone else's desk in the demo office that this person may sit at and claim (lobby.ts); never in an office. */
+  private openToClaim(seat: number, me: Attachment, now: number): boolean {
+    if (lobbyCopyNumber(me.room) === null) return false;
+    const desks = this.desks.list(true);
+    const desk = desks.find((one) => one.seat === seat);
+    return !!desk && desk.userId !== me.userId && lobbyDeskOpen(desk, desks, now);
   }
 
   /**
@@ -545,7 +566,9 @@ export class Room extends DurableObject<Env> {
    * doesn't fit, gets the office's pieces back, so their floor shows what's so.
    */
   private changePiece(socket: WebSocket, me: Attachment, key: unknown, change: unknown, now: number): void {
-    if (!this.takeAction(me) || me.guest || lobbyCopyNumber(me.room) !== null || typeof key !== "string" || key.length > 80) return;
+    if (!this.takeAction(me) || typeof key !== "string" || key.length > 80) return;
+    const lobby = lobbyCopyNumber(me.room) !== null;
+    if (me.guest && !lobby) return;
     const mine = this.desks.of(me.userId);
     const desk = mine === null ? null : deskOfSeat(mine);
     const next = (change ?? null) as PieceChange | null;
@@ -556,6 +579,8 @@ export class Room extends DurableObject<Env> {
     }
     this.pieces.set(key, deskOfKey(key)!, next, me.userId, now);
     this.broadcast({ t: "piece", key, change: next, by: me.userId });
+    // In the demo office it goes back by itself (lobby.ts): the room wakes for it.
+    if (lobby) this.rearm(now);
   }
 
   /** A desk's pieces back to the floor's own, and everyone told. */
@@ -573,7 +598,8 @@ export class Room extends DurableObject<Env> {
 
   /** Everyone hears the desks again; a newcomer already had them in its welcome. */
   private broadcastDesks(except?: WebSocket): void {
-    const desks = this.desks.list();
+    const room = this.roomName();
+    const desks = this.desks.list(!!room && lobbyCopyNumber(room) !== null);
     this.broadcast({ t: "desks", desks }, except);
   }
 
@@ -1173,6 +1199,8 @@ export class Room extends DurableObject<Env> {
   private depart(attachment: Attachment): void {
     this.leaveMeeting(attachment);
     this.broadcast({ t: "player_left", id: attachment.userId }, undefined, attachment.userId);
+    // A desk in the demo office is yours while you're on its floor; what you made of it goes back in its own time.
+    if (lobbyCopyNumber(attachment.room) !== null && this.desks.release(attachment.userId)) this.broadcastDesks();
   }
 
   private nameRoom(room: string): void {
@@ -1239,8 +1267,7 @@ export class Room extends DurableObject<Env> {
       if (usage.paused) this.pauseVideo();
     }
     this.broadcast({ t: "meeting_usage", usage });
-    const wake = clock.nextWake(now);
-    if (wake !== null) this.ctx.waitUntil(this.ctx.storage.setAlarm(wake));
+    this.rearm(now);
     if (usage.period === "month") this.ctx.waitUntil(this.writeClock(room, now));
   }
 
@@ -1281,11 +1308,25 @@ export class Room extends DurableObject<Env> {
   /** Woken by the clock: settle up, and pause video if the allowance just ran out. */
   async alarm(): Promise<void> {
     const room = this.roomName();
-    const clock = this.clock();
-    if (!room || !clock) return;
+    if (!room) return;
     const now = Date.now();
-    clock.settle(now);
-    this.clockChanged(room, now);
+    // The demo office's desks: each change made long enough ago goes back, as if its owner put it back.
+    if (lobbyCopyNumber(room) !== null) {
+      for (const key of this.pieces.expire(now - LOBBY_PIECE_MS)) this.broadcast({ t: "piece", key, change: null, by: "" });
+    }
+    const clock = this.clock();
+    if (clock) {
+      clock.settle(now);
+      this.clockChanged(room, now);
+    } else this.rearm(now);
+  }
+
+  /** The room's one alarm, for whatever comes first: the meeting clock's next turn, or a demo office change going back. */
+  private rearm(now: number): void {
+    const room = this.roomName();
+    const oldest = room && lobbyCopyNumber(room) !== null ? this.pieces.oldest() : null;
+    const wakes = [this.clock()?.nextWake(now) ?? null, oldest === null ? null : oldest + LOBBY_PIECE_MS].filter((at): at is number => at !== null);
+    if (wakes.length) this.ctx.waitUntil(this.ctx.storage.setAlarm(Math.max(Math.min(...wakes), now + 1000)));
   }
 
   /** The office's plan changed (from the API): its hours take effect straight away. */

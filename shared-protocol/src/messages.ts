@@ -159,6 +159,8 @@ export interface Desk {
   seat: number;
   userId: string;
   name: string;
+  /** When it was claimed: in the demo office, a desk held long enough can change hands (lobby.ts). */
+  since?: number;
 }
 
 export interface MeetingMember {

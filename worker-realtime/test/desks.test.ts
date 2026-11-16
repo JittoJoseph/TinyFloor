@@ -1,7 +1,7 @@
-import { runInDurableObject } from "cloudflare:test";
+import { runDurableObjectAlarm, runInDurableObject } from "cloudflare:test";
 import { env, exports } from "cloudflare:workers";
 import { describe, expect, it } from "vitest";
-import { FLOOR, deskArrival, deskSeats, seatTile } from "shared-protocol";
+import { FLOOR, LOBBY_DESK_HOLD_MS, LOBBY_PIECE_MS, deskArrival, deskOfSeat, deskSeats, fitsIn, seatTile, spotKey, type ServerMessage } from "shared-protocol";
 import { Desks } from "../src/desks";
 import { Client, settle, uniqueRoom } from "./client";
 
@@ -17,6 +17,10 @@ const onCampus = (old: number) => ({
   x: ((old % OLD_WIDTH) / OLD_WIDTH) * FLOOR.shell.size[0],
   y: (Math.floor(old / OLD_WIDTH) / 32) * FLOOR.shell.size[1],
 });
+/** A copy of the demo office of its own, so tests don't share one. */
+const demoCopy = () => `lobby-${1000 + Math.floor(Math.random() * 9000)}`;
+/** The room takes a few actions a second from anyone; these come one at a time. */
+const pace = () => new Promise((resolve) => setTimeout(resolve, 260));
 const away = (seat: number, at: { x: number; y: number }) => Math.hypot(seatTile(seat).x - at.x, seatTile(seat).y - at.y);
 
 describe("desks", () => {
@@ -156,11 +160,99 @@ describe("desks", () => {
     });
   });
 
-  it("keeps the lobby free of desks", async () => {
-    const ava = await Client.open("lobby", { sub: "ava" });
-    expect((await ava.next("welcome")).desks).toEqual([]);
-    ava.send({ t: "desk_claim", seat: DESK });
-    await settle();
-    expect(ava.messages.some((message) => message.t === "desks")).toBe(false);
+  it("lets anyone in the demo office claim a free desk, and lets it go when they leave", async () => {
+    const room = demoCopy();
+    const gus = await Client.open(room, { sub: "gus", name: "Gus", role: "guest" });
+    await gus.next("welcome");
+    const ida = await Client.open(room, { sub: "ida", role: "guest" });
+    await ida.next("welcome");
+
+    gus.send({ t: "desk_claim", seat: DESK });
+    const [claim] = (await ida.next("desks")).desks;
+    expect(claim).toMatchObject({ seat: DESK, userId: "gus", name: "Gus" });
+    expect(claim.since).toBeGreaterThan(Date.now() - 60_000);
+
+    ida.messages.length = 0;
+    gus.socket.close(1000, "left");
+    expect((await ida.next("desks")).desks).toEqual([]);
   });
+
+  it("opens a desk in the demo office to whoever sits at it once every desk is taken and it's been held long enough", async () => {
+    const room = demoCopy();
+    const ida = await Client.open(room, { sub: "ida", name: "Ida", role: "guest" });
+    await ida.next("welcome");
+    const now = Date.now();
+    // Every desk taken: the first long enough ago, the rest just now.
+    await runInDurableObject(env.ROOM.getByName(room), (_room, state) => {
+      DESK_SEATS.forEach((seat, n) =>
+        state.storage.sql.exec("INSERT INTO desks (seat, user_id, name, claimed_at) VALUES (?, ?, ?, ?)", seat, `held-${n}`, `Held ${n}`, n === 0 ? now - LOBBY_DESK_HOLD_MS - 1000 : now),
+      );
+    });
+
+    // A desk held only a moment: nobody else sits there, or claims it.
+    const fresh = seatTile(OTHER_DESK);
+    ida.send({ t: "sit", seat: OTHER_DESK, x: fresh.x, y: fresh.y });
+    expect((await ida.next("sit_rejected")).seat).toBe(OTHER_DESK);
+    await pace();
+    ida.send({ t: "desk_claim", seat: OTHER_DESK });
+    // Held long enough, with none free: claimed from its chair, and its holder lets go.
+    await pace();
+    const old = seatTile(DESK);
+    ida.send({ t: "sit", seat: DESK, x: old.x, y: old.y });
+    await pace();
+    ida.send({ t: "desk_claim", seat: DESK });
+    const { desks } = await ida.next("desks");
+    expect(desks.find((desk) => desk.seat === DESK)?.userId).toBe("ida");
+    expect(desks.find((desk) => desk.seat === OTHER_DESK)?.userId).toBe("held-1");
+    expect(desks.some((desk) => desk.userId === "held-0")).toBe(false);
+  });
+
+  it("keeps offices' desks their owners', however long they've had them", async () => {
+    const room = uniqueRoom();
+    const ava = await Client.open(room, { sub: "ava" });
+    await ava.next("welcome");
+    await runInDurableObject(env.ROOM.getByName(room), (_room, state) => {
+      DESK_SEATS.forEach((seat, n) => state.storage.sql.exec("INSERT INTO desks (seat, user_id, name, claimed_at) VALUES (?, ?, ?, 1)", seat, `held-${n}`, `Held ${n}`));
+    });
+    const { x, y } = seatTile(DESK);
+    ava.send({ t: "sit", seat: DESK, x, y });
+    expect((await ava.next("sit_rejected")).seat).toBe(DESK);
+  });
+
+  it("puts each change to a demo office desk back by itself, one at a time, for everyone watching", async () => {
+    const room = demoCopy();
+    const gus = await Client.open(room, { sub: "gus", role: "guest" });
+    await gus.next("welcome");
+    const ida = await Client.open(room, { sub: "ida", role: "guest" });
+    await ida.next("welcome");
+    gus.send({ t: "desk_claim", seat: DESK });
+    await ida.next("desks");
+
+    // Two changes to Gus's desk, the first made long enough ago.
+    const desk = deskOfSeat(DESK)!;
+    const spots = FLOOR.desks[desk].spots;
+    const item = (spot: (typeof spots)[number]) => Object.keys(FLOOR.things).find((one) => fitsIn(desk, spot, one))!;
+    const [first, second] = spots.map((spot) => ({ key: spotKey(desk, spot.id), change: { item: item(spot) } }));
+    for (const one of [first, second]) {
+      await pace();
+      gus.send({ t: "piece", ...one });
+      await ida.next("piece");
+      ida.messages.length = 0;
+    }
+    const stub = env.ROOM.getByName(room);
+    await runInDurableObject(stub, (_room, state) => {
+      state.storage.sql.exec("UPDATE pieces SET changed_at = ? WHERE key = ?", Date.now() - LOBBY_PIECE_MS - 1000, first.key);
+    });
+
+    // Gus leaving doesn't put them back; time does, one change at a time, and Ida sees it go.
+    gus.socket.close(1000, "left");
+    await ida.next("desks");
+    expect(await runDurableObjectAlarm(stub)).toBe(true);
+    const back = await ida.next("piece");
+    expect(back).toMatchObject({ key: first.key, change: null });
+    expect(ida.messages.filter((message): message is Extract<ServerMessage, { t: "piece" }> => message.t === "piece").map((one) => one.key)).toEqual([first.key]);
+    const later = await Client.open(room, { sub: "kai", role: "guest" });
+    expect((await later.next("welcome")).pieces).toEqual({ [second.key]: second.change });
+  });
+
 });

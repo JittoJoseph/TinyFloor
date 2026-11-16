@@ -65,11 +65,12 @@ export class Desks {
     }
   }
 
-  list(): Desk[] {
+  /** Every claim; `since` says when each was made (the demo office's desks can change hands, lobby.ts). */
+  list(since = false): Desk[] {
     return this.sql
-      .exec<{ seat: number; user_id: string; name: string }>("SELECT seat, user_id, name FROM desks ORDER BY seat")
+      .exec<{ seat: number; user_id: string; name: string; claimed_at: number }>("SELECT seat, user_id, name, claimed_at FROM desks ORDER BY seat")
       .toArray()
-      .map((row) => ({ seat: row.seat, userId: row.user_id, name: row.name }));
+      .map((row) => ({ seat: row.seat, userId: row.user_id, name: row.name, ...(since ? { since: row.claimed_at } : {}) }));
   }
 
   /** This person's desk here, if they have one. */
@@ -81,12 +82,17 @@ export class Desks {
     return this.sql.exec<{ user_id: string }>("SELECT user_id FROM desks WHERE seat = ?", seat).toArray()[0]?.user_id ?? null;
   }
 
-  /** Makes a free desk this person's, letting go of any other they had. False when it isn't a desk, or is someone else's. */
-  claim(seat: number, userId: string, name: string, now: number): boolean {
+  /**
+   * Makes a free desk this person's, letting go of any other they had. False
+   * when it isn't a desk, or is someone else's, unless `takeOver` (the demo
+   * office's rule, lobby.ts): then theirs is let go.
+   */
+  claim(seat: number, userId: string, name: string, now: number, takeOver = false): boolean {
     if (!isDesk(seat)) return false;
     const owner = this.ownerOf(seat);
     if (owner === userId) return true;
-    if (owner) return false;
+    if (owner && !takeOver) return false;
+    if (owner) this.sql.exec("DELETE FROM desks WHERE seat = ?", seat);
     this.sql.exec("DELETE FROM desks WHERE user_id = ?", userId);
     this.sql.exec("INSERT INTO desks (seat, user_id, name, claimed_at) VALUES (?, ?, ?, ?)", seat, userId, name, now);
     return true;

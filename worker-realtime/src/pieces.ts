@@ -37,6 +37,19 @@ export class Pieces {
       );
   }
 
+  /** When the oldest change was made, or null with none: the demo office's go back one at a time (lobby.ts). */
+  oldest(): number | null {
+    return this.sql.exec<{ at: number | null }>("SELECT MIN(changed_at) AS at FROM pieces").toArray()[0]?.at ?? null;
+  }
+
+  /** Changes made before `before` go back to the floor's own; their keys, oldest first. */
+  expire(before: number): string[] {
+    return this.sql
+      .exec<{ key: string }>("DELETE FROM pieces WHERE changed_at <= ? RETURNING key, changed_at", before)
+      .toArray()
+      .map((row) => row.key);
+  }
+
   /** A desk let go goes back to the floor's own. True when it had changes. */
   clearDesk(desk: string): boolean {
     return this.sql.exec("DELETE FROM pieces WHERE desk = ?", desk).rowsWritten > 0;

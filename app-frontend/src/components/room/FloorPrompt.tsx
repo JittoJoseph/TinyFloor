@@ -36,8 +36,8 @@ export function FloorPrompt() {
   const [offering, setOffering] = useState(false);
   const [reminding, setReminding] = useState(false);
 
-  // A desk is a member's, in an office: not a guest's, and not in the lobby.
-  const canClaim = place.kind === "office" && place.role !== "guest" && !!user;
+  // A desk is a member's, in an office (not a guest's); in the demo office, anyone's while they're there.
+  const canClaim = !!user && (place.kind === "lobby" || (place.kind === "office" && place.role !== "guest"));
   useEffect(() => {
     setCanClaim(canClaim);
     return () => {

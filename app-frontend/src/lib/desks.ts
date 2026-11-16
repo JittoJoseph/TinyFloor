@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from "react";
 import type { ClientMessage, Desk } from "shared-protocol/messages";
+import { lobbyDeskOpen } from "shared-protocol/lobby";
 import { track } from "web-shared/lib/analytics";
 
 /**
@@ -13,7 +14,7 @@ interface DeskState {
   seat: number | null;
   /** The room has said, since this floor opened. */
   ready: boolean;
-  /** You can claim a desk here: a member of an office, not a guest, not in the lobby. */
+  /** You can claim a desk here: a member of an office (not a guest), or anyone in the demo office. */
   canClaim: boolean;
   /** A desk you asked to claim while you have another, waiting for you to say yes. */
   asking: number | null;
@@ -49,6 +50,16 @@ export const setMySeat = (seat: number | null) => state.seat !== seat && set({ s
 
 /** Whose desk this chair is, if anyone's. */
 export const deskAt = (desks: Desk[], seat: number) => desks.find((desk) => desk.seat === seat);
+
+/**
+ * Someone else's desk you could sit at and claim: only in the demo office,
+ * once every desk is taken and this one has been held long enough (lobby.ts).
+ * An office's desks carry no claim time, so they never are.
+ */
+export const openToClaim = (desks: Desk[], seat: number, me: string): boolean => {
+  const desk = deskAt(desks, seat);
+  return !!desk && desk.userId !== me && lobbyDeskOpen(desk, desks, Date.now());
+};
 
 /** This person's desk, if they have one. */
 export const deskOf = (desks: Desk[], userId: string) => desks.find((desk) => desk.userId === userId);

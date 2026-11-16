@@ -10,7 +10,7 @@ import { SceneLabel } from "./SceneLabel";
 import { sceneText } from "./sceneText";
 import { pixelToTile } from "web-shared/lib/types";
 import { isDesk } from "shared-protocol/map";
-import { cancelClaim, confirmClaim, deskAt, deskOf, deskState, requestClaim, setGoHome, setMySeat, subscribeDesks } from "./desks";
+import { cancelClaim, confirmClaim, deskAt, deskOf, deskState, openToClaim, requestClaim, setGoHome, setMySeat, subscribeDesks } from "./desks";
 import { floorStatusOf, subscribeFloor } from "./floor";
 import { DeskPlate } from "./DeskPlate";
 import { decorateState, subscribeDecorate } from "./decorate";
@@ -239,10 +239,14 @@ export class SeatManager {
     this.walkTo(seat);
   }
 
-  /** Someone else's desk: nobody but its owner sits there. */
+  /** The desk offering itself to you last frame, so a change is shown once. */
+  private lastOffered: number | null = null;
+
+  /** Someone else's desk: nobody but its owner sits there, unless the demo office has opened it to claim (desks.ts openToClaim). */
   private reserved(seat: Seat): boolean {
-    const desk = deskAt(deskState().desks, seat.id);
-    return !!desk && desk.userId !== this.selfId;
+    const { desks } = deskState();
+    const desk = deskAt(desks, seat.id);
+    return !!desk && desk.userId !== this.selfId && !openToClaim(desks, seat.id, this.selfId);
   }
 
   /** Each desk's plate: whose it is while they're away from it, "Your desk" for yours, "Claim desk" on a free one you sit at. */
@@ -251,8 +255,9 @@ export class SeatManager {
     const decorating = decorateState().desk !== null;
     this.plates.forEach((plate, id) => {
       if (decorating) return plate.show(null, false);
-      const desk = deskAt(desks, id);
       const seat = this.byId.get(id);
+      // Someone else's desk you're sitting at, open to claim: it offers itself as a free one would.
+      const desk = seat?.occupant === SELF && openToClaim(desks, id, this.selfId) ? undefined : deskAt(desks, id);
       const mine = desk?.userId === this.selfId;
       const there = !!seat && (seat.occupant === desk?.userId || (mine && seat.occupant === SELF));
       plate.show(
@@ -361,8 +366,13 @@ export class SeatManager {
     // A free desk offers itself while you sit at it, and only then; getting up takes its question with you.
     const { desks, canClaim, asking } = deskState();
     const at = this.seated;
-    const offered = canClaim && at && isDesk(at.id) && !deskAt(desks, at.id) ? at.id : null;
+    const offered = canClaim && at && isDesk(at.id) && (!deskAt(desks, at.id) || openToClaim(desks, at.id, this.selfId)) ? at.id : null;
     if (asking !== null && asking !== at?.id) cancelClaim();
+    // A demo office desk can open to claim while you sit at it (time does it, not a message): its plate says so then.
+    if (offered !== this.lastOffered) {
+      this.lastOffered = offered;
+      this.showPlates();
+    }
     this.plates.forEach((plate, id) => {
       const seat = this.byId.get(id)!;
       // At the chair itself its outline says it; an owner's plate folds back rather than cover your name.

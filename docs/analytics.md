@@ -188,3 +188,24 @@ as directions, not rates.
   p90; first visits 2.8 s / 7.7 s; the Philippines' p90 is 10 s. It covers
   the engine, the map and the room's first message, with no split between
   them yet.
+
+## Who comes back (16 November, test accounts left out)
+
+- **The demo office is a one-visit place.** In the last 30 days 88 people
+  reached its floor; 82 of them on one day only, 6 on two or more. 10 of the
+  88 (11%) made an office. What they do there: join the meeting, mostly alone
+  (26 people), change how they look, rarely chat (8). Nothing in it was theirs
+  to come back to, which is why its desks became claimable that day
+  (`product.md`).
+- **Offices: 61 made in 45 days, 11 ever had three or more people on the
+  floor the same day.** Most of the rest are one person who never brought
+  anyone.
+- **One team uses it as its office.** Three people, on the floor 25 of the
+  last 30 days, two or more together on 22 of them. What they do is talk:
+  114 messages, 58 meeting joins, 50 calls, 50 status notes. Desks barely
+  (3 claims). So what keeps a team is the talking and the being seen, not the
+  furniture.
+- **The biggest team left after five days.** 15 people came in by invitation
+  within a day, 12 claimed desks, 7 joined a meeting; after the fifth day
+  nobody came back, a week before its trial would have ended. Nothing in the
+  numbers says why: that's a question for them.

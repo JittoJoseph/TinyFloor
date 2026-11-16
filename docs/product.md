@@ -289,8 +289,7 @@ missing features on the map.
   went muddy over Campus's grass and furniture, and lighter dark greys still
   read as a block. In the light theme's colours it reads as part of the
   floor. Its outline is the frame's black, and its last few pixels fade
-  into the frame, so it still grows out of it. Nobody has a desk in the demo
-  office, so there it has no desk key.
+  into the frame, so it still grows out of it.
 - **Pressed things answer before anything else happens** (2 November): a
   chair you can sit on hops, one that's taken (someone's in it, or it's
   someone's desk) shakes, and it hops again as you sit. A press on the dock
@@ -441,6 +440,29 @@ missing features on the map.
   100 people); sign-in stays verified either way. Asked of other calendar apps and not
   here yet: Outlook, more than the primary calendar, RSVP from here, a daily
   agenda message, status from event titles ("lunch" sets away).
+
+## Desks in the demo office (16 November)
+
+Claiming a desk and making it yours is most of what an office does that the
+demo office didn't, so the demo office has desks too, under rules for people
+who come and go and mostly don't come back (shared-protocol `lobby.ts`):
+
+- **Anyone there can claim a free desk**, guests included, the same way: sit
+  at it and press Claim desk. It's yours while you're on that floor; leaving
+  lets it go. An office's desks stay their members' as before.
+- **Twelve desks, twenty people a copy.** Once every desk is taken, a desk
+  held 5 minutes or more can be claimed by whoever sits at it, and its holder
+  lets go of it. A desk held less than that stays theirs, and nobody else sits
+  there. So a busy demo office always has a desk to try, and nobody loses one
+  they just made theirs.
+- **Each change to a desk goes back by itself 5 minutes after it was made**,
+  one change at a time, with the same animation everyone sees when a thing is
+  put down or taken away. Leaving or losing the desk doesn't undo them all at
+  once; the next person finds the last one's desk slowly going back to the
+  floor's own. The room wakes for each one by its alarm, which it shares with
+  the meeting hours.
+- Every change to a desk, in an office or the demo office, reaches everyone on
+  the floor as it's made, and every floor animates it the same way.
 
 ## Small decisions worth remembering
 

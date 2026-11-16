@@ -472,8 +472,8 @@ On 16 November Startup was taken out: an office still on it converts the
 first time its room starts, each desk claim settling on the free Campus desk
 nearest where it was, earliest claim first (with 12 desks, a 13th claim and
 later are let go), and what was made of its old desks cleared, since none of
-their keys exist on Campus. The `offices.floor` column is no longer read or
-written.
+their keys exist on Campus. The `offices.floor` column was dropped the same
+day (migration 0034).
 
 ## Next
 

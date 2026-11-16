@@ -31,6 +31,7 @@
       "code_required": "Ange den sexsiffriga koden från mejlet."
     },
     "continueWithEmail": "Fortsätt med e-post",
+    "emailUnavailable": "Tyvärr går det inte att logga in med e-post just nu. Fortsätt med Google.",
     "continue": "Fortsätt",
     "sendingCode": "Skickar kod…",
     "codeTitle": "Kolla din e-post",
@@ -573,7 +574,8 @@
       "wrong_code": "Koden stämmer inte. Kolla mejlet och försök igen.",
       "code_expired": "Koden har gått ut. Be om en ny.",
       "too_many_codes": "För många koder till den här adressen. Försök igen om en timme, eller fortsätt med Google.",
-      "email_failed": "Vi kunde inte skicka mejlet. Försök igen, eller fortsätt med Google."
+      "email_failed": "Vi kunde inte skicka mejlet. Försök igen, eller fortsätt med Google.",
+      "email_unavailable": "Tyvärr kan vi inte skicka e-post just nu. Försök igen i morgon."
     },
     "people": {
       "title": "Personer",

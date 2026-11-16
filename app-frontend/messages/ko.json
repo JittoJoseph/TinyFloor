@@ -31,6 +31,7 @@
       "code_required": "이메일에 있는 6자리 코드를 입력하세요."
     },
     "continueWithEmail": "이메일로 계속하기",
+    "emailUnavailable": "죄송합니다. 지금은 이메일로 로그인할 수 없어요. Google로 계속해 주세요.",
     "continue": "계속",
     "sendingCode": "코드를 보내는 중…",
     "codeTitle": "이메일을 확인하세요",
@@ -573,7 +574,8 @@
       "wrong_code": "코드가 올바르지 않습니다. 이메일을 확인하고 다시 시도하세요.",
       "code_expired": "이 코드는 만료되었습니다. 새 코드를 받으세요.",
       "too_many_codes": "이 주소로 요청한 코드가 너무 많습니다. 1시간 후에 다시 시도하거나 Google로 계속하세요.",
-      "email_failed": "이메일을 보내지 못했습니다. 다시 시도하거나 Google로 계속하세요."
+      "email_failed": "이메일을 보내지 못했습니다. 다시 시도하거나 Google로 계속하세요.",
+      "email_unavailable": "죄송합니다. 지금은 이메일을 보낼 수 없어요. 내일 다시 시도해 주세요."
     },
     "people": {
       "title": "사람들",

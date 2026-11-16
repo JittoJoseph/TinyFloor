@@ -50,6 +50,8 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
   const [now, setNow] = useState(() => Date.now());
   // Google is the way in we'd like most people to take (docs/product.md): the email form waits behind a button.
   const [withEmail, setWithEmail] = useState(!googleAvailable);
+  // Email can't go out today (the sending allowance is used up): the page offers Google alone, and says so.
+  const [emailOff, setEmailOff] = useState(false);
   const turnstile = useTurnstileToken();
   const codeRef = useRef<HTMLInputElement>(null);
 
@@ -60,6 +62,17 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
   useEffect(() => {
     if (!isLoading && hasAccount) router.replace(redirect);
   }, [isLoading, hasAccount, redirect, router]);
+
+  useEffect(() => {
+    let live = true;
+    api
+      .authMethods()
+      .then((methods) => live && !methods.email && setEmailOff(true))
+      .catch(() => {});
+    return () => {
+      live = false;
+    };
+  }, []);
 
   // The countdown to sending another code, while there is one.
   useEffect(() => {
@@ -86,6 +99,14 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
 
   const explain = (error: unknown) => {
     const code = error instanceof ApiError ? error.code : "generic";
+    // Email ran out while they were using it: back to the start, where Google is the way in.
+    if (code === "email_unavailable") {
+      setEmailOff(true);
+      setStep("email");
+      setFormError(null);
+      setNotice("");
+      return;
+    }
     const messages: Record<string, string> = {
       wrong_code: t("errors.wrong_code"),
       code_expired: t("errors.code_expired"),
@@ -221,16 +242,24 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
         <h1 className="text-[26px] font-semibold leading-tight tracking-[-0.02em] text-foreground">
           {onCode ? t("codeTitle") : signingUp ? t("signUpTitle") : t("signInTitle")}
         </h1>
-        <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">
-          {onCode
-            ? t.rich("codeSubtitle", { email: email.trim(), strong: (chunks) => <span className="font-medium text-foreground">{chunks}</span> })
-            : signingUp
-              ? t("signUpSubtitle")
-              : t("signInSubtitle")}
-        </p>
+        {/* "Google is quickest, or use your email" says nothing true while email is off. */}
+        {!(signingUp && emailOff && !onCode) && (
+          <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">
+            {onCode
+              ? t.rich("codeSubtitle", { email: email.trim(), strong: (chunks) => <span className="font-medium text-foreground">{chunks}</span> })
+              : signingUp
+                ? t("signUpSubtitle")
+                : t("signInSubtitle")}
+          </p>
+        )}
       </div>
 
       <div className="mt-8">
+        {emailOff && !onCode && (
+          <p role="status" className="mb-4 rounded-xl bg-muted px-4 py-3 text-center text-[13px] leading-relaxed text-muted-foreground">
+            {t("emailUnavailable")}
+          </p>
+        )}
         {googleAvailable && !onCode && (
           <>
             <GoogleButton
@@ -239,10 +268,12 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
               onCode={withGoogle}
               onError={() => setFormError(t("errors.google_failed"))}
             />
-            <p className="my-6 flex items-center gap-3 text-[12px] text-muted-foreground before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
-              {t("or")}
-            </p>
-            {!withEmail && (
+            {!emailOff && (
+              <p className="my-6 flex items-center gap-3 text-[12px] text-muted-foreground before:h-px before:flex-1 before:bg-border after:h-px after:flex-1 after:bg-border">
+                {t("or")}
+              </p>
+            )}
+            {!withEmail && !emailOff && (
               <ActionButton tone="secondary" icon={null} onClick={() => setWithEmail(true)}>
                 {t("continueWithEmail")}
               </ActionButton>
@@ -250,7 +281,14 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
           </>
         )}
 
-        {withEmail && !onCode && (
+        {/* With the email form gone, what went wrong with Google still shows. */}
+        {emailOff && formError && !onCode && (
+          <div className="mt-4">
+            <ErrorNote>{formError}</ErrorNote>
+          </div>
+        )}
+
+        {withEmail && !emailOff && !onCode && (
           <form onSubmit={submitEmail} noValidate className="space-y-4">
             <Field label={t("email")} htmlFor={`${ids}-email`}>
               <input
@@ -341,9 +379,9 @@ export function AuthScreen({ initialMode, redirect }: { initialMode: AuthMode; r
         )}
 
         {/* Kept across both steps: sending another code needs a token too. */}
-        {withEmail && <Turnstile controller={turnstile} action="code" className="mt-4 flex justify-center" />}
+        {withEmail && !emailOff && <Turnstile controller={turnstile} action="code" className="mt-4 flex justify-center" />}
 
-        {!onCode && <Agree className="mt-4 text-center" />}
+        {!onCode && <Agree className={emailOff ? "mt-6 text-center" : "mt-4 text-center"} />}
       </div>
 
       {!onCode && (

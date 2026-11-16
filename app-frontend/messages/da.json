@@ -31,6 +31,7 @@
       "code_required": "Skriv den 6-cifrede kode fra e-mailen."
     },
     "continueWithEmail": "Fortsæt med e-mail",
+    "emailUnavailable": "Beklager, login med e-mail er ikke tilgængeligt lige nu. Fortsæt med Google.",
     "continue": "Fortsæt",
     "sendingCode": "Sender kode…",
     "codeTitle": "Tjek din e-mail",
@@ -573,7 +574,8 @@
       "wrong_code": "Koden er forkert. Tjek e-mailen, og prøv igen.",
       "code_expired": "Koden er udløbet. Få en ny.",
       "too_many_codes": "For mange koder til denne adresse. Prøv igen om en time, eller fortsæt med Google.",
-      "email_failed": "Vi kunne ikke sende e-mailen. Prøv igen, eller fortsæt med Google."
+      "email_failed": "Vi kunne ikke sende e-mailen. Prøv igen, eller fortsæt med Google.",
+      "email_unavailable": "Beklager, vi kan ikke sende e-mails lige nu. Prøv igen i morgen."
     },
     "people": {
       "title": "Folk",

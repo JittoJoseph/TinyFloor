@@ -1,6 +1,6 @@
 import { DEFAULT_CHARACTER } from "shared-protocol";
 import { hashToken } from "./crypto";
-import { letter, sendEmail } from "./email";
+import { emailPausedUntil, letter, sendEmail } from "./email";
 import { HttpError, json, readJson } from "./http";
 import { limitAuth } from "./limits";
 import type { Router } from "./router";
@@ -26,6 +26,12 @@ const ATTEMPTS = 5;
  */
 export function emailCodeRoutes(router: Router): void {
   router
+    // Which ways in work right now: email is off while Resend's allowance is used up (email.ts), so the page offers Google alone.
+    .add("GET", "/v1/auth/methods", async ({ env }) => {
+      const paused = await emailPausedUntil(env);
+      return json({ email: paused === null }, { headers: { "Cache-Control": "public, max-age=60" } });
+    })
+
     // A code for an address. The answer is the same whether or not it has an account.
     .add("POST", "/v1/auth/code", async ({ request, env }) => {
       await limitAuth(env, request);
@@ -98,6 +104,7 @@ export function emailCodeRoutes(router: Router): void {
 /** Sends a new code, unless one went in the last minute: that one still works, and the email may be on its way. */
 async function sendCode(env: Env, email: string): Promise<void> {
   const now = Date.now();
+  if (await emailPausedUntil(env, now)) throw emailUnavailable();
   const row = await env.DB.prepare("SELECT created_at, sends, window_start FROM email_codes WHERE email = ?")
     .bind(email)
     .first<{ created_at: number; sends: number; window_start: number }>();
@@ -127,9 +134,13 @@ async function sendCode(env: Env, email: string): Promise<void> {
   // Without a key (locally) the code is in the log instead; with one, a failed send leaves nothing waiting for it.
   if (!sent && env.RESEND_API_KEY) {
     await env.DB.prepare("DELETE FROM email_codes WHERE email = ? AND created_at = ?").bind(email, now).run();
+    // The allowance ran out with this one: said as that, so the page offers Google instead.
+    if (await emailPausedUntil(env)) throw emailUnavailable();
     throw new HttpError(503, "email_failed", "We couldn't send the email. Try again, or continue with Google");
   }
 }
+
+const emailUnavailable = () => new HttpError(503, "email_unavailable", "Email sign-in isn't available right now. Continue with Google");
 
 /** Uses up the code if it's the live one for the address; otherwise counts the try against it. */
 async function redeem(env: Env, email: string, code: string): Promise<void> {

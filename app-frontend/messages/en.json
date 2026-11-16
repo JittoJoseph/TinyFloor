@@ -31,6 +31,7 @@
       "code_required": "Enter the 6-digit code from the email."
     },
     "continueWithEmail": "Continue with email",
+    "emailUnavailable": "Sorry, email sign-in isn't available right now. Please continue with Google.",
     "continue": "Continue",
     "sendingCode": "Sending code…",
     "codeTitle": "Check your email",
@@ -573,7 +574,8 @@
       "wrong_code": "That code isn't right. Check the email and try again.",
       "code_expired": "This code has expired. Send a new one.",
       "too_many_codes": "Too many codes for this address. Try again in an hour, or continue with Google.",
-      "email_failed": "We couldn't send the email. Try again, or continue with Google."
+      "email_failed": "We couldn't send the email. Try again, or continue with Google.",
+      "email_unavailable": "Sorry, we can't send emails right now. Try again tomorrow."
     },
     "people": {
       "title": "People",

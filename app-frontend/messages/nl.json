@@ -31,6 +31,7 @@
       "code_required": "Vul de code van 6 cijfers uit de e-mail in."
     },
     "continueWithEmail": "Doorgaan met e-mail",
+    "emailUnavailable": "Sorry, inloggen met e-mail is nu niet beschikbaar. Ga verder met Google.",
     "continue": "Doorgaan",
     "sendingCode": "Code versturen…",
     "codeTitle": "Kijk in je e-mail",
@@ -573,7 +574,8 @@
       "wrong_code": "Die code klopt niet. Kijk in de e-mail en probeer het opnieuw.",
       "code_expired": "Deze code is verlopen. Vraag een nieuwe aan.",
       "too_many_codes": "Te veel codes voor dit adres. Probeer het over een uur opnieuw, of ga verder met Google.",
-      "email_failed": "We konden de e-mail niet versturen. Probeer het opnieuw, of ga verder met Google."
+      "email_failed": "We konden de e-mail niet versturen. Probeer het opnieuw, of ga verder met Google.",
+      "email_unavailable": "Sorry, we kunnen nu geen e-mails versturen. Probeer het morgen opnieuw."
     },
     "people": {
       "title": "Mensen",

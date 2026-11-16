@@ -54,10 +54,37 @@ export async function sendEmail(env: Env, email: Email): Promise<boolean> {
     }),
   });
   if (!response.ok) {
-    console.warn("email not sent", { kind: email.kind, status: response.status, body: (await response.text()).slice(0, 300) });
+    const body = (await response.text()).slice(0, 300);
+    console.warn("email not sent", { kind: email.kind, status: response.status, body });
+    // Resend's allowance ran out (100 a day on its free plan): no email goes until it's back, so stop asking and say so.
+    const quota = response.status === 429 ? /"(daily|monthly)_quota_exceeded"/.exec(body)?.[1] : undefined;
+    if (quota) await pauseEmail(env, quota === "daily" ? "daily_quota" : "monthly_quota");
     return false;
   }
   return true;
+}
+
+/**
+ * Until when email can't go out, or null while it can. Set when Resend says
+ * its allowance is used up: until the next day (UTC) for the daily one, the
+ * next month for the monthly. Tried again after that, and set again if it
+ * still isn't back.
+ */
+export async function emailPausedUntil(env: Env, now = Date.now()): Promise<number | null> {
+  const row = await env.DB.prepare("SELECT until FROM service_pauses WHERE service = 'email'").first<{ until: number }>();
+  return row && row.until > now ? row.until : null;
+}
+
+async function pauseEmail(env: Env, reason: "daily_quota" | "monthly_quota", now = new Date()): Promise<void> {
+  const until =
+    reason === "daily_quota"
+      ? Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + 1)
+      : Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 1);
+  await env.DB.prepare(
+    "INSERT INTO service_pauses (service, until, reason) VALUES ('email', ?, ?) ON CONFLICT (service) DO UPDATE SET until = excluded.until, reason = excluded.reason",
+  )
+    .bind(until, reason)
+    .run();
 }
 
 /** What one email says: a heading, a few short paragraphs, at most one button, and a quiet line under it. */

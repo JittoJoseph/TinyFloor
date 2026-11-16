@@ -470,6 +470,8 @@ export const api = {
   // Signing in
   session: () => get<{ user: SessionUser | null }>("/session"),
   /** Emails a sign-in code to the address; the answer is the same whether or not it has an account. */
+  /** Which ways in work right now: email is off while the day's sending allowance is used up. */
+  authMethods: () => get<{ email: boolean }>("/auth/methods"),
   sendCode: (body: { email: string; turnstileToken: string }) => post<{ ok: true }>("/auth/code", body),
   /** Signs in with the code, making the account the first time. */
   verifyCode: (body: { email: string; code: string }) => post<{ user: SessionUser; created: boolean }>("/auth/code/verify", body),

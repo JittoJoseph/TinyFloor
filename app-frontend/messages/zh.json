@@ -31,6 +31,7 @@
       "code_required": "请输入邮件中的 6 位验证码。"
     },
     "continueWithEmail": "使用邮箱继续",
+    "emailUnavailable": "抱歉，目前无法使用邮箱登录。请使用 Google 继续。",
     "continue": "继续",
     "sendingCode": "正在发送验证码…",
     "codeTitle": "请查收邮件",
@@ -573,7 +574,8 @@
       "wrong_code": "验证码不正确。请检查邮件后重试。",
       "code_expired": "验证码已过期，请获取新的验证码。",
       "too_many_codes": "此邮箱的验证码请求过多。请一小时后重试，或使用 Google 继续。",
-      "email_failed": "邮件发送失败。请重试，或使用 Google 继续。"
+      "email_failed": "邮件发送失败。请重试，或使用 Google 继续。",
+      "email_unavailable": "抱歉，目前无法发送邮件。请明天再试。"
     },
     "people": {
       "title": "成员",

@@ -26,6 +26,7 @@ export function useErrorMessage() {
         code_expired: t("code_expired"),
         too_many_codes: t("too_many_codes"),
         email_failed: t("email_failed"),
+        email_unavailable: t("email_unavailable"),
         too_many_attempts: t("too_many_attempts"),
         slow_down: t("too_many_attempts"),
         not_found: t("not_found"),

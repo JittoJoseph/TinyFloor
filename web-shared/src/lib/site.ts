@@ -35,8 +35,9 @@ export const SOCIALS = {
   github: "https://github.com/JittoJoseph/TinyFloor",
 } as const;
 
-/** TinyFloor's listings and blog elsewhere: not in the footer, only told to search engines as the same company. */
+/** TinyFloor's listings and blog elsewhere, Wikidata's item first: not in the footer, only told to search engines as the same company. */
 export const LISTINGS = [
+  "https://www.wikidata.org/wiki/Q142181160",
   "https://www.crunchbase.com/organization/tinyfloor",
   "https://www.g2.com/products/tinyfloor/reviews",
   "https://alternativeto.net/software/tinyfloor/about/",

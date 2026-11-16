@@ -36,7 +36,7 @@ const SHOTS = {
   "dressing-room": {
     url: "/lobby",
     steps: [["click", 666, 858], ["text", "Change how you look"], ["tab", "Extras"], ["click", 830, 474], ["move", 60, 880]],
-    element: "[role=dialog]",
+    element: "[role=dialog]:has([role=tab])",
     tone: "coral",
     radius: 64,
   },
@@ -159,6 +159,12 @@ async function compose(input, name, { tone, radius = 40, crop }) {
   const r = Math.round((radius || 40) * scale);
   const mask = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${pw}" height="${ph}"><rect width="${pw}" height="${ph}" rx="${r}" fill="#fff"/></svg>`);
   const panel = await sharp(source).resize(pw, ph, { kernel: "lanczos3" }).composite([{ input: mask, blend: "dest-in" }]).png().toBuffer();
+  // PANELS=<folder> also keeps each panel alone, full size and corners masked, for setting elsewhere (launch galleries).
+  if (process.env.PANELS) {
+    const fr = Math.round(radius || 40);
+    const fullMask = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${meta.width}" height="${meta.height}"><rect width="${meta.width}" height="${meta.height}" rx="${radius === 0 ? 0 : fr}" fill="#fff"/></svg>`);
+    await sharp(source).composite([{ input: fullMask, blend: "dest-in" }]).png().toFile(`${process.env.PANELS}/${name}.png`);
+  }
   const shadow = await sharp(Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${pw + 160}" height="${ph + 160}"><rect x="80" y="104" width="${pw}" height="${ph}" rx="${r}" fill="rgba(10,12,40,0.30)"/></svg>`))
     .blur(28)
     .png()

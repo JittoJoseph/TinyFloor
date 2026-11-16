@@ -5,6 +5,10 @@ import { localePath, socialImage } from "./seo";
 export type Schema = Record<string, unknown>;
 
 const NAME = "TinyFloor";
+/** What TinyFloor is, in one line, for the company node. */
+const DESCRIPTION = "TinyFloor makes a virtual office for remote teams: an office floor in the browser where people see who's in, walk over to talk, and meet without scheduling.";
+/** The product's pictures from the app (marketing-frontend/public/screens), for the app node. */
+const SCREENSHOTS = ["campus", "calls", "chat-search", "dressing-room", "whiteboard"];
 export const ORG_ID = `${SITE_URL}/#organization`;
 const WEBSITE_ID = `${SITE_URL}/#website`;
 /** The founder, who also writes the guides: the same Person node as founder and as author. */
@@ -34,6 +38,9 @@ export function siteGraph(): Schema {
         "@type": "Organization",
         "@id": ORG_ID,
         name: NAME,
+        // Searches read the name as "tiny floor"; the spaced form is the same company.
+        alternateName: "Tiny Floor",
+        description: DESCRIPTION,
         url: SITE_URL,
         logo: `${SITE_URL}/icon-512.png`,
         sameAs: [...Object.values(SOCIALS), ...LISTINGS],
@@ -131,7 +138,10 @@ export function appNode(
     operatingSystem: "Any",
     browserRequirements: "Requires a modern browser with WebRTC",
     image: socialImage(locale, "/"),
-    screenshot: socialImage(locale, "/"),
+    // Pictures of the app itself (public/screens), not drawings of it.
+    screenshot: SCREENSHOTS.map((name) => `${SITE_URL}/screens/${name}.webp`),
+    // The same product elsewhere: its Wikidata item, its listings and its code.
+    sameAs: [LISTINGS[0], ...LISTINGS.filter((url) => /g2\.com|alternativeto\.net/.test(url)), SOCIALS.github],
     isAccessibleForFree: true,
     featureList: features,
     // Free for 3, Pro $29 for the whole team (docs/pricing.md).

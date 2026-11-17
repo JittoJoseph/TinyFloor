@@ -9,6 +9,7 @@ import { depthForY } from "./MapManager";
 import { pixelToTile, MOVEMENT_SPEED, TILE_SIZE, tileToPixel } from "web-shared/lib/types";
 import { isValidTile } from "shared-protocol/map";
 import { wasDrag } from "./CameraRig";
+import { TileHover } from "./TileHover";
 
 const ARRIVE_RANGE = 3;
 /**
@@ -35,6 +36,8 @@ export class MovementManager {
   /** Where the others have us, walked forward the same way they do. */
   private shown = { x: 0, y: 0, heading: null as number | null, sent: false };
   private inputEnabled = true;
+  /** The tile under the mouse, marked where a click would walk you. */
+  private tileHover: TileHover;
   private frozen = false;
   private movingBefore = false;
 
@@ -73,6 +76,7 @@ export class MovementManager {
     ) as Record<string, Phaser.Input.Keyboard.Key>;
 
     scene.input.on("pointerup", this.onPointerUp, this);
+    this.tileHover = new TileHover(scene, nav, () => this.inputEnabled);
   }
 
   private setOff?: () => void;
@@ -286,6 +290,7 @@ export class MovementManager {
 
   setInputEnabled(enabled: boolean) {
     this.inputEnabled = enabled;
+    if (!enabled) this.tileHover.hide();
   }
 
   /**
@@ -302,5 +307,6 @@ export class MovementManager {
 
   destroy() {
     this.scene.input.off("pointerup", this.onPointerUp, this);
+    this.tileHover.destroy();
   }
 }

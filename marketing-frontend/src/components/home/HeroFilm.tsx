@@ -10,7 +10,7 @@ const POSTER = "/hero/poster.webp";
  * someone for a call. Recorded from the real app (/video-demo?cut=readme) in
  * its dark theme, which sits well on either page. The first frame is the
  * poster, preloaded on every page that shows it, so the page paints before a
- * byte of video arrives. The video (about half a megabyte) is only attached
+ * byte of video arrives. The video (about a megabyte) is only attached
  * once the page has loaded, so on a slow phone it never competes with the
  * page itself; it is paused while off screen, and held on the poster for
  * anyone who asks for less motion.

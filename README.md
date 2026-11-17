@@ -53,7 +53,7 @@ It's a hosted service at **[tinyfloor.com](https://www.tinyfloor.com)**: make an
   <tr>
     <td width="33%"><img src=".github/readme/walk-up.webp" alt="Walking over to a teammate's desk in the virtual office and calling them"></td>
     <td width="33%"><img src=".github/readme/chat.webp" alt="Team chat with channels, messages and reactions"></td>
-    <td width="33%"><img src=".github/readme/people.webp" alt="Team presence: who is on the floor, busy or in a call"></td>
+    <td width="33%"><img src=".github/readme/people.webp" alt="Team presence on the floor: who is free, away or in a meeting"></td>
   </tr>
   <tr>
     <td><b>Walk over, then talk</b><br>Walk to a teammate's desk and call them in one click.</td>

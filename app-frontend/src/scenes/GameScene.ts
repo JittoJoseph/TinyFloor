@@ -458,10 +458,15 @@ class GameScene extends Phaser.Scene {
     this.offerNearestAction();
   }
 
-  /** The nearest thing you could do where you stand, for E and its hint; nothing while the board is open. */
+  /**
+   * The nearest thing you could do where you stand, for E and its hint. Only
+   * once you've stopped: going past a chair isn't standing at it, and a hint
+   * that came and went as you passed would only catch the eye. Nothing while
+   * the board is open.
+   */
   private offerNearestAction() {
     let best: ActionAt | null = null;
-    if (!whiteboard.getSnapshot().open) {
+    if (!whiteboard.getSnapshot().open && !this.movementManager.isMoving()) {
       for (const one of [this.seatManager?.action(), this.whiteboardObject?.action()]) {
         if (one && (!best || one.distance < best.distance)) best = one;
       }

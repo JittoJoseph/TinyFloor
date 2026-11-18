@@ -2,13 +2,12 @@
 
 import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
-import { Mic, MicOff, PhoneOff, PictureInPicture, Video, VideoOff } from "web-shared/components/ui/icons";
+import { Mic, MicOff, PhoneOff, Video, VideoOff } from "web-shared/components/ui/icons";
 import { FaceStack } from "web-shared/components/ui/Face";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
 import { useSpeaking } from "@/lib/useSpeaking";
 import { usePrefs } from "@/lib/prefs";
-import { pip } from "@/lib/pip";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePlace } from "@/components/app/place";
 import { useRouter } from "@/lib/i18n/navigation";
@@ -111,12 +110,7 @@ export function CallWindow({ variant }: { variant: "floor" | "window" }) {
           </p>
           {showing.since !== null && <p className="mt-0.5 text-[11.5px] tabular-nums text-muted-foreground">{clock(elapsed)}</p>}
         </div>
-        {floor ? (
-          // On the floor the bar below has the mic, camera and the way out: the card only shows, and pops out.
-          pip.supported && (
-            <IconButton size="sm" label={t("popOut")} tone="ghost" onClick={() => void pip.open()} icon={<PictureInPicture />} className="[&_svg]:size-4" />
-          )
-        ) : (
+        {floor ? null : (
           <div className="flex shrink-0 items-center gap-1">
             <IconButton
               bare

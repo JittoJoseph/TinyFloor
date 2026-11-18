@@ -1,39 +1,29 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { useTranslations } from "next-intl";
-import { Kbd } from "@/components/ui/IconButton";
 import { usePlace } from "@/components/app/place";
 import { useAuth } from "@/contexts/AuthContext";
-import { doAction, useActionHint } from "@/lib/actions";
 import { clearClaimed, setCanClaim, useDesks } from "@/lib/desks";
-import { useDecorate } from "@/lib/decorate";
-import { EASE_OUT } from "@/lib/ease";
-import { touchFirst } from "@/lib/touch";
 import { ChristmasOffer } from "./ChristmasOffer";
 import { MeetingReminder } from "./MeetingReminder";
 
 /** How long a claim is remembered as just made, for the desk's "Claimed" (DeskPlate). */
 const CLAIMED_MS = 2200;
+/** Whether the Christmas offer is showing doesn't matter here any more. */
+const ignore = () => {};
 
 /**
- * The one prompt above the dock (docs/product.md): what you can do where you
- * stand (sit, stand, open the whiteboard), until you've done it once. Desks
- * are claimed on the desks themselves (DeskPlate), never down here; this only
- * tells the floor whether you can claim one in this place.
+ * The one prompt above the dock (docs/product.md): a meeting about to start,
+ * or at Christmas the presents' offer. What you can do where you stand is at
+ * the top right instead (FloorHint). Desks are claimed on the desks themselves
+ * (DeskPlate), never down here; this only tells the floor whether you can
+ * claim one in this place.
  */
 export function FloorPrompt() {
-  const t = useTranslations("actions");
-  const reduce = useReducedMotion();
-  const action = useActionHint();
   const place = usePlace();
   const { user } = useAuth();
   const { claimed } = useDesks();
-  // Decorating a desk, the floor is the desk's: nothing to do here meanwhile.
-  const { desk: decorating } = useDecorate();
-  // At Christmas, the presents' offer takes this place while it's showing; a meeting about to start takes it from both.
-  const [offering, setOffering] = useState(false);
+  // A meeting about to start takes the place from the Christmas offer.
   const [reminding, setReminding] = useState(false);
 
   // A desk is a member's, in an office (not a guest's); in the demo office, anyone's while they're there.
@@ -53,25 +43,8 @@ export function FloorPrompt() {
 
   return (
     <>
-    <MeetingReminder onShown={setReminding} />
-    {!reminding && <ChristmasOffer onShown={setOffering} />}
-    <AnimatePresence mode="wait">
-      {action && !decorating && !offering && !reminding && (
-        <motion.button
-          key={action}
-          type="button"
-          onClick={doAction}
-          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={reduce ? { opacity: 0 } : { opacity: 0, y: 6, scale: 0.98 }}
-          transition={{ duration: 0.2, ease: EASE_OUT }}
-          className="pointer-events-auto flex min-h-10 cursor-pointer items-center gap-2 rounded-full border border-border bg-card/95 ps-2 pe-3.5 text-[13px] font-medium text-foreground shadow-float backdrop-blur-md hover:bg-card"
-        >
-          {!touchFirst() && <Kbd>E</Kbd>}
-          {t(action)}
-        </motion.button>
-      )}
-    </AnimatePresence>
+      <MeetingReminder onShown={setReminding} />
+      {!reminding && <ChristmasOffer onShown={ignore} />}
     </>
   );
 }

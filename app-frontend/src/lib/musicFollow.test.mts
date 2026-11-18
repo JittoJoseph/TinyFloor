@@ -66,3 +66,83 @@ test("the player's first report, before a length is known, isn't a move", () => 
   ]);
   assert.deepEqual(moves, []);
 });
+
+function runMeasured(updates: Heard[], lengths: number[]) {
+  let state = startFollowing();
+  const moves: number[] = [];
+  for (const update of updates) {
+    const next = follow(state, update, songs, lengths);
+    if (next.moved) moves.push(next.state.index);
+    state = next.state;
+  }
+  return { state, moves };
+}
+
+test("signed in, a song the player can't play is skipped: the song is told by its length", () => {
+  // The second song isn't playable here, so the player goes from the first straight to the third.
+  const { state, moves } = runMeasured(
+    [
+      { playingURI: LIST, duration: 214000, position: 1000 },
+      { playingURI: LIST, duration: 214000, position: 213800 },
+      { playingURI: LIST, duration: 187000, position: 200 },
+    ],
+    [214000, 251000, 187000],
+  );
+  assert.deepEqual(moves, [2]);
+  assert.equal(state.index, 2);
+});
+
+test("signed in, a list that starts on another song is named by that song's length", () => {
+  const { state, moves } = runMeasured([{ playingURI: LIST, duration: 251400, position: 500 }], [214000, 251000, 187000]);
+  assert.deepEqual(moves, [1]);
+  assert.equal(state.index, 1);
+});
+
+test("signed in, a length none of the list's songs has is a song it can't name", () => {
+  const { state, moves } = runMeasured(
+    [
+      { playingURI: LIST, duration: 214000, position: 1000 },
+      { playingURI: LIST, duration: 333000, position: 300 },
+    ],
+    [214000, 251000, 187000],
+  );
+  assert.deepEqual(moves, [-1]);
+  assert.equal(state.index, -1);
+});
+
+test("signed in, lengths within a second and a half are the same song", () => {
+  const { moves } = runMeasured(
+    [
+      { playingURI: LIST, duration: 213200, position: 1000 },
+      { playingURI: LIST, duration: 187900, position: 300 },
+    ],
+    [214000, 187000, 251000],
+  );
+  assert.deepEqual(moves, [1]);
+});
+
+test("signed in, the length wavering by a few milliseconds is the same song", () => {
+  // As Spotify's player reports it: 341054, 341102, 341055 for one song, then 309640, 309687 for the next.
+  const { state, moves } = runMeasured(
+    [
+      { playingURI: LIST, duration: 341054, position: 500 },
+      { playingURI: LIST, duration: 341102, position: 800 },
+      { playingURI: LIST, duration: 341055, position: 1100 },
+      { playingURI: LIST, duration: 309640, position: 300 },
+      { playingURI: LIST, duration: 309687, position: 600 },
+      { playingURI: LIST, duration: 309640, position: 900 },
+    ],
+    [341054, 309640, 309100],
+  );
+  assert.deepEqual(moves, [1]);
+  assert.equal(state.index, 1);
+});
+
+test("without lengths, a wavering length isn't the next song either", () => {
+  const { moves } = run([
+    { playingURI: LIST, duration: 341054, position: 500 },
+    { playingURI: LIST, duration: 341102, position: 800 },
+    { playingURI: LIST, duration: 341055, position: 1100 },
+  ]);
+  assert.deepEqual(moves, []);
+});

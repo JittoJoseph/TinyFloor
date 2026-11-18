@@ -155,6 +155,8 @@ const QUIET_REST_MS = 10 * 60_000;
  * and goes on meanwhile.
  */
 const RETURN_GRACE_MS = 12_000;
+/** The longest a crossed call shows as calling while it connects, before the call shows anyway. */
+const CROSSED_SHOW_MS = 6000;
 /** How often a call with a camera on listens for talk. */
 const LISTEN_EVERY_MS = 20_000;
 /** Sound energy over one listen that counts as talk: about a second of speech, well above a quiet room. */
@@ -332,6 +334,15 @@ class CallManager {
    * answering to hearing each other, while the call already showed.
    */
   private ringPeer: PeerEntry | null = null;
+  /**
+   * Two people who called each other at once (crossedCall): the call that's
+   * going ahead, still shown as calling until it can be heard, so it goes
+   * straight from "Calling" to talking. Cleared when it's live, ends, or after
+   * CROSSED_SHOW_MS whatever happens.
+   */
+  private joining: { id: string; name: string; timer: ReturnType<typeof setTimeout> } | null = null;
+  /** Someone whose call crossed ours, and ours went ahead (crossedCall): their answer joins us as above. */
+  private crossed: string | null = null;
   private micEnabled = MIC_ON;
   private cameraEnabled = false;
   /** The camera, chosen before joining (the Meetings page, as Meet asks): on for the next meeting you go into. */
@@ -556,7 +567,10 @@ class CallManager {
   }
 
   cancel() {
+    // A crossed call still showing as calling: it's already connecting, so it ends.
+    if (!this.outgoing && this.joining) return this.hangUp(this.joining.id);
     if (!this.outgoing) return;
+    this.crossed = null;
     this.clearRing();
     stopSound("ring");
     this.send("end", this.outgoing.id);
@@ -1225,6 +1239,7 @@ class CallManager {
   }
 
   private onInvite(id: string, name: string) {
+    if (this.outgoing?.id === id) return this.crossedCall(id, name || this.outgoing.name);
     if (this.busy() || this.peers.size) {
       this.send("decline", id, { reason: "busy" });
       return;
@@ -1240,12 +1255,57 @@ class CallManager {
     this.emit();
   }
 
+  /**
+   * You and they called each other at the same moment. Both ends decide the
+   * same way, from your ids alone: the lower id's call goes ahead and the
+   * other end answers it, rather than each telling the other it's busy.
+   * Going ahead, nothing changes here: their call is let go (its offer too,
+   * in onSignal), and our ring carries on until they answer. Answering, our
+   * own call is dropped without telling them (it would end theirs) and theirs
+   * is answered at once, on a connection of our own. Either way the call
+   * shows as calling until it can be heard (joining).
+   */
+  private crossedCall(id: string, name: string) {
+    if (!this.selfId || this.selfId < id) {
+      this.crossed = id;
+      return;
+    }
+    this.clearRing();
+    this.outgoing = null;
+    this.incoming = { id, name };
+    this.dropRing(id);
+    this.ringPeer = this.buildPeer(id, name, false);
+    this.incoming = null;
+    this.startJoining(id, name);
+    this.answered(id, name, false);
+    this.send("accept", id, { early: true });
+    this.emit();
+    void this.startCall(id);
+  }
+
+  /** Shows the call as still calling until it's live (updateLive), at most CROSSED_SHOW_MS. */
+  private startJoining(id: string, name: string) {
+    this.endJoining();
+    this.joining = { id, name, timer: setTimeout(() => this.endJoining(true), CROSSED_SHOW_MS) };
+  }
+
+  private endJoining(show = false) {
+    if (!this.joining) return;
+    clearTimeout(this.joining.timer);
+    this.joining = null;
+    stopSound("ring");
+    if (show) this.emit();
+  }
+
   private async onAccept(id: string, early: boolean) {
     const call = this.outgoing;
     if (!call || call.id !== id) return;
 
     this.clearRing();
-    stopSound("ring");
+    const crossed = this.crossed === id;
+    this.crossed = null;
+    if (crossed) this.startJoining(id, call.name);
+    else stopSound("ring");
     this.outgoing = null;
 
     this.answered(id, call.name, true, early);
@@ -1257,6 +1317,7 @@ class CallManager {
   private cancelOutgoing() {
     this.clearRing();
     stopSound("ring");
+    this.crossed = null;
     const id = this.outgoing?.id;
     this.outgoing = null;
     this.dropRing(id);
@@ -1389,6 +1450,7 @@ class CallManager {
       }, 6000);
     }
     const live = !!peer.linked && !!peer.heard && answered;
+    if (live && this.joining?.id === peer.id) this.endJoining();
     if (live && !peer.connected) {
       clearTimeout(peer.heardTimer);
       playSound("connect");
@@ -1423,6 +1485,8 @@ class CallManager {
       } else if (signal.candidate) {
         await pc.addIceCandidate(signal.candidate).catch(() => {});
       } else if (signal.sdp) {
+        // Only the end that answers takes offers: one reaching the offerer is from a call that crossed ours and was let go (crossedCall).
+        if (signal.sdp.type === "offer" && peer.offerer) return;
         await pc.setRemoteDescription(signal.sdp);
         if (signal.sdp.type === "offer") {
           this.preferCodecs(pc);
@@ -1460,6 +1524,7 @@ class CallManager {
     peer.pc?.close();
     peer.stream.getTracks().forEach((track) => track.stop());
     this.peers.delete(id);
+    if (this.joining?.id === id) this.endJoining();
     playSound("end");
 
     if (!this.peers.size && !this.meeting && !this.ready) this.releaseMedia();
@@ -1805,12 +1870,15 @@ class CallManager {
   private emit() {
     this.reportCall();
     this.watchQuiet();
-    const peers = [...this.peers.values()].map((peer) => ({ ...peer, pc: undefined }));
+    // A crossed call connecting (joining) still shows as calling, and not yet as a call.
+    const joining = this.joining;
+    const peers = [...this.peers.values()].filter((peer) => peer.id !== joining?.id).map((peer) => ({ ...peer, pc: undefined }));
+    const calling = this.outgoing ?? joining;
     this.snap = {
       incoming: this.incoming,
-      outgoing: this.outgoing && {
-        id: this.outgoing.id,
-        name: this.outgoing.name,
+      outgoing: calling && {
+        id: calling.id,
+        name: calling.name,
       },
       peers,
       meetingPeers: this.sfu?.peerList ?? [],

@@ -4,9 +4,9 @@ import { useSyncExternalStore } from "react";
 
 /**
  * What you can do where you stand on the floor: sit on the chair beside you,
- * stand up, open the whiteboard. The scene offers the nearest (GameScene), E
- * or a press on its hint does it (ActionHint), and the hint shows until you've
- * done that once, in this browser.
+ * stand up, open the whiteboard. The scene offers the nearest once you've
+ * stopped (GameScene), and E or a press on its hint does it (FloorHint). The
+ * hint shows every time, however often you've done it.
  */
 export type FloorAction = "sit" | "stand" | "draw";
 
@@ -17,10 +17,7 @@ export interface ActionAt {
   run: () => void;
 }
 
-const LEARNED_KEY = "tinyfloorLearned";
-
 let current: ActionAt | null = null;
-let learnt: ReadonlySet<FloorAction> | null = null;
 const listeners = new Set<() => void>();
 const subscribe = (listener: () => void) => {
   listeners.add(listener);
@@ -40,32 +37,11 @@ export function doAction() {
   current?.run();
 }
 
-function known(): ReadonlySet<FloorAction> {
-  if (!learnt) {
-    try {
-      learnt = new Set(JSON.parse(localStorage.getItem(LEARNED_KEY) ?? "[]") as FloorAction[]);
-    } catch {
-      learnt = new Set();
-    }
-  }
-  return learnt;
-}
-
-/** Done once, by any way (E, the hint, a click on the chair), so its hint is no longer needed. */
-export function learned(action: FloorAction) {
-  if (known().has(action)) return;
-  learnt = new Set([...known(), action]);
-  try {
-    localStorage.setItem(LEARNED_KEY, JSON.stringify([...learnt]));
-  } catch {}
-  changed();
-}
-
-/** The action at hand while it still needs saying; null once you know it. */
+/** The action at hand, or null when there's nothing to do where you stand. */
 export function useActionHint(): FloorAction | null {
   return useSyncExternalStore(
     subscribe,
-    () => (current && !known().has(current.action) ? current.action : null),
+    () => current?.action ?? null,
     () => null,
   );
 }

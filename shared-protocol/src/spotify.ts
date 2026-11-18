@@ -15,6 +15,8 @@ export interface SpotifyShare {
   image: string | null;
   /** Who made it, for a song, album or episode ("Pitbull"), or null. */
   subtitle: string | null;
+  /** How long a song is, in milliseconds, when it's one of a list's songs (to tell which is playing). */
+  duration?: number;
   /** When it clears itself, in milliseconds. */
   until: number;
 }

@@ -11,7 +11,6 @@ import {
   MonitorUp,
   MonitorX,
   PhoneOff,
-  PictureInPicture,
   UserPlus,
   Users,
   Video,
@@ -19,7 +18,6 @@ import {
 } from "web-shared/components/ui/icons";
 import type { MeetingInfo, MeetingPerson } from "shared-protocol/messages";
 import { callManager } from "@/lib/CallManager";
-import { pip } from "@/lib/pip";
 import { useCall } from "@/lib/useCall";
 import { useAuth } from "@/contexts/AuthContext";
 import { usePrefs } from "@/lib/prefs";
@@ -372,17 +370,6 @@ export function MeetingStage({ meeting, office }: { meeting: MeetingInfo; office
             onClick={() => callManager.setSpeaker(!speakerEnabled)}
             icon={speakerEnabled ? <Headphones /> : <HeadphoneOff />}
           />
-          {/* The meeting in a small window on top of other apps (lib/pip), where the browser has one. */}
-          {pip.supported && (
-            <IconButton
-              label={tControls("popOut")}
-              tone="soft"
-              size="lg"
-              onClick={() => void pip.open()}
-              icon={<PictureInPicture />}
-              className="max-sm:hidden"
-            />
-          )}
           {/* On a phone, the people sit in the bar; on a computer, at its end. */}
           <IconButton
             label={alone ? t("invite") : t("inMeeting")}

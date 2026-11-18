@@ -23,6 +23,7 @@ import type { ShareResult } from "@/lib/share";
 import { useInvite } from "@/components/app/Invite";
 import { useOfficeMaybe } from "@/components/app/OfficeShell";
 import { FloorPrompt } from "./FloorPrompt";
+import { FloorHint } from "./FloorHint";
 import { DeskPanel } from "./DecoratePanel";
 import { FLOOR_ARRIVED_EVENT, floorRequested, sinceFloorRequested } from "@/lib/floor";
 import { track } from "web-shared/lib/analytics";
@@ -169,9 +170,13 @@ export function RoomView({ user, ticketFor, onInvite, inviteChip = false, leaveH
         )}
       </AnimatePresence>
 
-      {/* Above the dock, one at a time: the desk you sat at, or what you can do where you stand. A little over the dock's own height above it. */}
+      {/* Above the dock: a meeting about to start, or a seasonal offer. A little over the dock's own height above it. */}
       <div className="pointer-events-none absolute inset-x-0 bottom-[4.25rem] z-40 flex justify-center px-3">
         <FloorPrompt />
+      </div>
+      {/* What you can do where you stand, in the top right corner, out of the way of everything along the top's middle. */}
+      <div className="pointer-events-none absolute end-3 top-14 z-40 flex justify-end sm:top-3">
+        <FloorHint />
       </div>
       <Joystick />
       <ProximityOverlay />

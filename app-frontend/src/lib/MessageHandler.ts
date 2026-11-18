@@ -70,11 +70,11 @@ export class MessageHandler {
         break;
       case "moved":
         if (message.id !== this.playerId) {
-          this.playerManager.updatePlayerPosition(message.id, message.x, message.y, message.d);
+          this.playerManager.updatePlayerPosition(message.id, message.x, message.y, message.d, message.r === 1);
         }
         break;
       case "walking":
-        if (message.id !== this.playerId) this.playerManager.walkPlayerTo(message.id, message.x, message.y);
+        if (message.id !== this.playerId) this.playerManager.walkPlayerTo(message.id, message.x, message.y, message.r === 1);
         break;
       case "move_rejected":
         this.snapLocalPlayer(message.x, message.y);

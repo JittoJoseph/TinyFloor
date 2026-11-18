@@ -211,15 +211,18 @@ floor's card.
 A call or a meeting can sit in a small window that stays on top of other
 apps (Chrome's Document Picture-in-Picture): the person talking, or a
 shared screen, your camera in the corner while it's on, the time, and mic,
-camera and hang up. It opens from the call's bar or the meeting's, and by
-itself when you leave the tab during a call where Chrome allows it (its
-automatic picture-in-picture for pages using the camera or microphone),
-closing again when you come back; hanging up closes it. Firefox and Safari
-have no such window, and nothing offers it there.
+camera and hang up. It opens by itself when you leave the tab during a call
+or a meeting, where Chrome allows it (its automatic picture-in-picture for
+pages using the camera or microphone), and closes again when you come back;
+hanging up closes it. There is no button for it (since 18 November): it's
+there when you've gone, and only then. Chrome decides when a page may open
+it: in a fresh profile driven by automation (Playwright, or Chrome's
+DevTools socket with a real tab switch) it didn't open for Google's own
+sample either, so it can only be checked by hand. Firefox and Safari have no
+such window.
 
 The meeting's card on the floor is the same small dark card: who's talking,
-the meeting and its time, pressed to go back to it, with a button to pop it
-out. The mic, camera and leave are in the bar right below it, so the card
+the meeting and its time, pressed to go back to it. The mic, camera and leave are in the bar right below it, so the card
 doesn't repeat them.
 
 ## Simulcast layers named in order

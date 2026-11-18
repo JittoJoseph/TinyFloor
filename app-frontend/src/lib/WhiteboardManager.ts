@@ -2,7 +2,6 @@
 
 import type { ServerMessage } from "shared-protocol/messages";
 import type { RoomSocket } from "./RoomSocket";
-import { learned } from "./actions";
 
 /**
  * The board's shape, width to height, wherever it's drawn on or shown: points
@@ -128,8 +127,7 @@ class WhiteboardManager {
 
   setOpen(open: boolean) {
     if (this.open === open) return;
-    if (open) learned("draw");
-    else this.flush();
+    if (!open) this.flush();
     this.open = open;
     this.bump();
   }

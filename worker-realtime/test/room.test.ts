@@ -109,6 +109,14 @@ describe("room messages", () => {
     ben.messages.length = 0;
     ava.send({ t: "move", x: 13, y: 10, d: 9 });
     expect(await ben.next("moved")).toEqual({ t: "moved", id: avaId, x: 13, y: 10 });
+
+    // Running (Shift held) is passed on with a heading, and means nothing without one.
+    ben.messages.length = 0;
+    ava.send({ t: "move", x: 14, y: 10, d: 2, r: 1 });
+    expect(await ben.next("moved")).toEqual({ t: "moved", id: avaId, x: 14, y: 10, d: 2, r: 1 });
+    ben.messages.length = 0;
+    ava.send({ t: "move", x: 15, y: 10, r: 1 });
+    expect(await ben.next("moved")).toEqual({ t: "moved", id: avaId, x: 15, y: 10 });
   });
 
   it("rejects a move off the map, but not a long step after a click-to-walk", async () => {
@@ -139,6 +147,11 @@ describe("room messages", () => {
 
     ava.send({ t: "walk_to", x: 30, y: 20 });
     expect(await ben.next("walking")).toEqual({ t: "walking", id: avaId, x: 30, y: 20 });
+
+    // A long walk is run, and the others are told so.
+    ben.messages.length = 0;
+    ava.send({ t: "walk_to", x: 40, y: 20, r: 1 });
+    expect(await ben.next("walking")).toEqual({ t: "walking", id: avaId, x: 40, y: 20, r: 1 });
 
     ava.send({ t: "status", status: "busy" });
     expect(await ben.next("status")).toEqual({ t: "status", id: avaId, status: "busy" });

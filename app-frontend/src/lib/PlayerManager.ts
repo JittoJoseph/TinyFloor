@@ -6,7 +6,7 @@ import { depthForY } from "./MapManager";
 import type { SeatPose } from "./SeatManager";
 import { SceneLabel } from "./SceneLabel";
 import { cssZoom } from "./plates";
-import { TILE_SIZE, MOVEMENT_SPEED, pixelToTile, tileToPixel } from "web-shared/lib/types";
+import { TILE_SIZE, MOVEMENT_SPEED, RUN_SPEED, RUN_STRIDE, pixelToTile, tileToPixel } from "web-shared/lib/types";
 import { statusColorValue } from "web-shared/lib/status";
 import { liveBusy, liveNote, type CalendarBusy, type StatusNote } from "shared-protocol/messages";
 import { sceneText } from "./sceneText";
@@ -18,6 +18,8 @@ interface RemotePlayerState {
   heading: number | null;
   /** Whether the path is only to where they said they are, not a walk of theirs: they slide along it without turning. */
   correcting: boolean;
+  /** Running (a long walk of theirs, or Shift held), at the running speed, as they do on their own screen. */
+  run: boolean;
   status: PlayerStatus;
   guest: boolean;
   seat?: SeatPose;
@@ -150,6 +152,7 @@ export class PlayerManager {
       path: [],
       heading: null,
       correcting: false,
+      run: false,
       status,
       guest,
     });
@@ -335,7 +338,7 @@ export class PlayerManager {
    * walking that way, so a straight walk arrives as one message. A correction
    * they have already walked past is ignored rather than stumbled back to.
    */
-  updatePlayerPosition(id: string, tileX: number, tileY: number, heading?: number) {
+  updatePlayerPosition(id: string, tileX: number, tileY: number, heading?: number, run = false) {
     const state = this.playerStates.get(id);
     const container = this.players.get(id);
     if (!state || !container || state.seat) return;
@@ -344,6 +347,7 @@ export class PlayerManager {
     const away = Phaser.Math.Distance.Between(container.x, container.y, point.x, point.y);
     const sameWay = heading !== undefined && heading === state.heading;
     state.heading = heading ?? null;
+    state.run = heading !== undefined && run;
     state.path.length = 0;
     state.correcting = true;
 
@@ -360,13 +364,14 @@ export class PlayerManager {
     state.path.push(point);
   }
 
-  walkPlayerTo(id: string, tileX: number, tileY: number) {
+  walkPlayerTo(id: string, tileX: number, tileY: number, run = false) {
     const state = this.playerStates.get(id);
     const container = this.players.get(id);
     if (!state || !container || state.seat) return;
 
     state.heading = null;
     state.correcting = false;
+    state.run = run;
     state.path = this.nav.buildPath(container.x, container.y, tileX, tileY);
     if (!state.path.length) {
       const point = tileToPixel(tileX, tileY);
@@ -481,15 +486,16 @@ export class PlayerManager {
       pos.x = container.x;
       pos.y = container.y;
 
+      const speed = state.run ? RUN_SPEED : MOVEMENT_SPEED;
       if (state.path.length) {
         // Behind where they said they are, they walk a little faster to catch up.
         const target = state.path[0];
         const remaining = Phaser.Math.Distance.Between(container.x, container.y, target.x, target.y);
         const catchup = state.heading === null ? 1 : Phaser.Math.Clamp(remaining / TILE_SIZE, 1, MAX_CATCHUP);
-        advanceAlongPath(pos, state.path, (MOVEMENT_SPEED * catchup * delta) / 1000);
+        advanceAlongPath(pos, state.path, (speed * catchup * delta) / 1000);
       } else if (state.heading !== null) {
         // Walking on the way they were last heading, until they say otherwise (or a wall stops them).
-        advanceHeading(pos, state.heading, (MOVEMENT_SPEED * delta) / 1000, this.nav);
+        advanceHeading(pos, state.heading, (speed * delta) / 1000, this.nav);
       } else if (state.seat) {
         return;
       }
@@ -508,7 +514,9 @@ export class PlayerManager {
         const way = headingVector(state.heading);
         faces = facing(way.x, way.y, faces);
       } else if (!state.correcting) faces = facing(dx, dy, faces);
-      this.animationManager.play(sprite, dx || dy || state.path.length ? "run" : "idle", faces);
+      const moving = !!(dx || dy || state.path.length);
+      this.animationManager.play(sprite, moving ? "run" : "idle", faces);
+      sprite.anims.timeScale = moving && state.run ? RUN_STRIDE : 1;
 
       if (!state.path.length && state.onArrive) {
         const arrive = state.onArrive;

@@ -374,10 +374,10 @@ export class Room extends DurableObject<Env> {
 
     switch (message.t) {
       case "move":
-        this.move(socket, me, message.x, message.y, message.d);
+        this.move(socket, me, message.x, message.y, message.d, message.r);
         break;
       case "walk_to":
-        this.walkTo(socket, me, message.x, message.y);
+        this.walkTo(socket, me, message.x, message.y, message.r);
         break;
       case "sit":
         this.sit(socket, me, message);
@@ -478,7 +478,7 @@ export class Room extends DurableObject<Env> {
    * legitimately "jumps" back from it. Over the rate limit, moves are dropped
    * quietly; the client sends its final tile when it stops, which catches up.
    */
-  private move(socket: WebSocket, me: Attachment, x: number, y: number, d: unknown): void {
+  private move(socket: WebSocket, me: Attachment, x: number, y: number, d: unknown, r: unknown): void {
     if (!isInsideMap(x, y)) {
       send(socket, { t: "move_rejected", x: me.x, y: me.y });
       return;
@@ -489,15 +489,17 @@ export class Room extends DurableObject<Env> {
     me.x = x;
     me.y = y;
     const heading = Number.isInteger(d) && (d as number) >= 0 && (d as number) < 8 ? { d: d as number } : {};
-    this.broadcast({ t: "moved", id: me.userId, x, y, ...heading }, socket);
+    // Running only means something while walking a heading.
+    const running = "d" in heading && r === 1 ? { r: 1 as const } : {};
+    this.broadcast({ t: "moved", id: me.userId, x, y, ...heading, ...running }, socket);
   }
 
-  private walkTo(socket: WebSocket, me: Attachment, x: number, y: number): void {
+  private walkTo(socket: WebSocket, me: Attachment, x: number, y: number, r: unknown): void {
     if (!this.takeAction(me) || !isInsideMap(x, y)) return;
     this.leaveSeat(me);
     me.x = x;
     me.y = y;
-    this.broadcast({ t: "walking", id: me.userId, x, y }, socket);
+    this.broadcast({ t: "walking", id: me.userId, x, y, ...(r === 1 ? { r: 1 as const } : {}) }, socket);
   }
 
   private sit(socket: WebSocket, me: Attachment, message: Extract<ClientMessage, { t: "sit" }>): void {

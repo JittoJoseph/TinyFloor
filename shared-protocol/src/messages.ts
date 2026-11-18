@@ -293,10 +293,12 @@ export type ClientMessage =
    * The tile you're on and, while walking, your heading (0 to 7, clockwise from
    * east in 45 degree steps). Others keep you walking that way until the next
    * move, so it's sent when the heading changes, when you drift a tile from
-   * where they'd have you, and once when you stop (no heading).
+   * where they'd have you, and once when you stop (no heading). `r`: running
+   * (Shift held), so they walk you at the running speed.
    */
-  | { t: "move"; x: number; y: number; d?: number }
-  | { t: "walk_to"; x: number; y: number }
+  | { t: "move"; x: number; y: number; d?: number; r?: 1 }
+  /** Walking a path to a tile; `r`: run it (a long walk), as you do. */
+  | { t: "walk_to"; x: number; y: number; r?: 1 }
   | { t: "sit"; seat: number; x: number; y: number }
   | { t: "stand"; x: number; y: number }
   | { t: "status"; status: PresenceStatus }
@@ -370,8 +372,8 @@ export type ServerMessage =
   /** Someone waved at someone: everyone sees the hand go up, the one waved at is told. */
   | { t: "waved"; from: string; to: string }
   | { t: "player_left"; id: string }
-  | { t: "moved"; id: string; x: number; y: number; d?: number }
-  | { t: "walking"; id: string; x: number; y: number }
+  | { t: "moved"; id: string; x: number; y: number; d?: number; r?: 1 }
+  | { t: "walking"; id: string; x: number; y: number; r?: 1 }
   | { t: "move_rejected"; x: number; y: number }
   | { t: "sat"; id: string; seat: number; x: number; y: number }
   | { t: "stood"; id: string }

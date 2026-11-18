@@ -144,9 +144,9 @@ describe("sharing what you're playing", () => {
       "GET",
       `/v1/spotify/songs?url=${encodeURIComponent("https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M")}`,
     );
-    // Songs only: an episode in a playlist isn't one.
+    // Songs only: an episode in a playlist isn't one. Each with its length, which tells a signed-in player's song.
     expect(listed.body.tracks).toEqual([
-      { url: "https://open.spotify.com/track/1111111111aaaaaaaaaaaa", kind: "track", title: "One", image: null, subtitle: "Ann" },
+      { url: "https://open.spotify.com/track/1111111111aaaaaaaaaaaa", kind: "track", title: "One", image: null, subtitle: "Ann", duration: 180000 },
     ]);
     expect(
       (await call(ada, "GET", `/v1/spotify/songs?url=${encodeURIComponent("https://open.spotify.com/track/1111111111aaaaaaaaaaaa")}`))

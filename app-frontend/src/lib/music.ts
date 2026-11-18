@@ -173,7 +173,12 @@ function heard(update: PlaybackUpdate) {
   }
   let moved = false;
   if (list) {
-    const next = follow(following, update, list.order.map((song) => spotifyUri(song) ?? ""));
+    const next = follow(
+      following,
+      update,
+      list.order.map((song) => spotifyUri(song) ?? ""),
+      list.order.map((song) => song.duration ?? 0),
+    );
     following = next.state;
     moved = next.moved;
     if (moved) showListSong(next.state.index, update.playingURI);
@@ -223,7 +228,7 @@ const SEEDS = 5;
  * song's end in a background tab: Spotify's player won't start anything newly
  * loaded while its tab is hidden, but goes on through a list it has.
  */
-let list: { url: string; order: MusicItem[]; songs: Map<string, MusicItem>; cover: string | null } | null = null;
+let list: { item: MusicItem; url: string; order: MusicItem[]; songs: Map<string, MusicItem>; cover: string | null } | null = null;
 
 /** The songs still to play, after the one playing (what plays on after a list). */
 let queue: MusicItem[] = [];
@@ -268,6 +273,7 @@ export async function playMusic(item: MusicItem, source: "pick" | "recent" | "li
   if (pick !== picks) return;
   // The whole list into Spotify's player, which plays it on from song to song; named song by song as it does.
   list = {
+    item,
     url: item.url,
     order: songs,
     songs: new Map(songs.flatMap((song) => {
@@ -290,7 +296,8 @@ function showListSong(index: number, named?: string) {
   if (!list) return;
   const url = named?.startsWith("spotify:track:") ? spotifyLink(named)?.url : undefined;
   const known = (named && list.songs.get(named)) || (url ? undefined : list.order[index]);
-  if (!known && !url) return;
+  // A song that can't be told (none of the list's is that long): the list it's playing, never the wrong song.
+  if (!known && !url) return setNow({ item: list.item, from: list.url });
   const song: MusicItem = known ?? { url: url!, kind: "track", title: null, subtitle: null, image: null };
   heardSongs = [song.url, ...heardSongs.filter((one) => one !== song.url)].slice(0, HEARD_MAX);
   setNow({ item: { ...song, image: song.image ?? list.cover }, from: list.url });
@@ -495,5 +502,5 @@ export function useMusicTime(): MusicTime {
 }
 
 if (typeof window !== "undefined" && process.env.NODE_ENV === "development") {
-  (window as unknown as Record<string, unknown>).__music = { play: (item: MusicItem) => playMusic(item, "pick"), next: nextMusic, now: () => now, time: () => time };
+  (window as unknown as Record<string, unknown>).__music = { play: (item: MusicItem) => playMusic(item, "pick"), next: nextMusic, seek: seekMusic, now: () => now, time: () => time };
 }

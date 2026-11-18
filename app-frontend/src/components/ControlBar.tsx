@@ -3,8 +3,7 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode, type RefObject } from "react";
 import { AnimatePresence, motion, useReducedMotion, type Transition } from "motion/react";
 import { useTranslations } from "next-intl";
-import { Check, Desk, Mic, MicOff, MonitorUp, MonitorX, Office, PhoneOff, PictureInPicture, UserPlus, Video, Volume2, VolumeX } from "web-shared/components/ui/icons";
-import { pip } from "@/lib/pip";
+import { Check, Desk, Mic, MicOff, MonitorUp, MonitorX, Office, PhoneOff, UserPlus, Video, Volume2, VolumeX } from "web-shared/components/ui/icons";
 import { IconButton } from "@/components/ui/IconButton";
 import { callManager } from "@/lib/CallManager";
 import { useCall } from "@/lib/useCall";
@@ -211,12 +210,6 @@ export default function ControlBar({
         icon={speakerEnabled ? <Volume2 /> : <VolumeX />}
       />,
     ]);
-    // The call in a small window that stays on top of other apps (lib/pip), where the browser has one.
-    if (pip.supported)
-      items.push([
-        "popout",
-        <IconButton key="popout" label={t("popOut")} tone="ghost" className={KEY} onClick={() => void pip.open()} icon={<PictureInPicture />} />,
-      ]);
     items.push(["divider-call", <Divider key="divider-call" />]);
     items.push([
       "hangup",

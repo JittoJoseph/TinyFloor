@@ -6,7 +6,7 @@ import type { RoomSocket } from "./RoomSocket";
 import { joystick } from "./joystick";
 import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingOf, headingVector } from "./Navigation";
 import { depthForY } from "./MapManager";
-import { pixelToTile, MOVEMENT_SPEED, TILE_SIZE, tileToPixel } from "web-shared/lib/types";
+import { pixelToTile, MOVEMENT_SPEED, RUN_FROM_TILES, RUN_SPEED, RUN_STRIDE, TILE_SIZE, tileToPixel } from "web-shared/lib/types";
 import { isValidTile } from "shared-protocol/map";
 import { wasDrag } from "./CameraRig";
 import { TileHover } from "./TileHover";
@@ -34,7 +34,9 @@ export class MovementManager {
   private arrive?: () => void;
   private release?: () => void;
   /** Where the others have us, walked forward the same way they do. */
-  private shown = { x: 0, y: 0, heading: null as number | null, sent: false };
+  private shown = { x: 0, y: 0, heading: null as number | null, run: false, sent: false };
+  /** The path is a long one, so it's run (follow). */
+  private pathRun = false;
   private inputEnabled = true;
   /** The tile under the mouse, marked where a click would walk you. */
   private tileHover: TileHover;
@@ -71,6 +73,7 @@ export class MovementManager {
         LEFT: KeyCodes.LEFT,
         D: KeyCodes.D,
         RIGHT: KeyCodes.RIGHT,
+        SHIFT: KeyCodes.SHIFT,
       },
       false,
     ) as Record<string, Phaser.Input.Keyboard.Key>;
@@ -86,10 +89,13 @@ export class MovementManager {
   }
 
   update(delta: number) {
-    const input = this.inputEnabled && !typingElsewhere() ? this.readInput() : { x: 0, y: 0 };
+    const input = this.inputEnabled && !typingElsewhere() ? this.readInput() : { x: 0, y: 0, run: false };
     if (this.frozen && (!(input.x || input.y) || !this.unfreeze())) return;
 
-    const step = (MOVEMENT_SPEED * delta) / 1000;
+    // Keys walk, and run with Shift; a path runs when it's a long one (follow).
+    const steering = !!(input.x || input.y);
+    const running = steering ? input.run : this.path.length > 0 && this.pathRun;
+    const step = ((running ? RUN_SPEED : MOVEMENT_SPEED) * delta) / 1000;
     let manualMoved = false;
     let moving = false;
     let dx = input.x;
@@ -121,9 +127,10 @@ export class MovementManager {
       faces = facing(way.x, way.y, faces);
     } else if (moving) faces = facing(dx, dy, faces);
     this.animationManager.play(this.player, moving ? "run" : "idle", faces);
+    this.player.anims.timeScale = moving && running ? RUN_STRIDE : 1;
 
     this.movingBefore = manualMoved;
-    this.syncManualMovement(manualMoved ? { x: dx, y: dy } : null, delta);
+    this.syncManualMovement(manualMoved ? { x: dx, y: dy } : null, delta, manualMoved && running);
     // standing players sort by where their feet are; sitting sets its own depth.
     // Only on a change: setting it at all re-sorts everything on the floor.
     const depth = depthForY(this.player.y);
@@ -136,15 +143,17 @@ export class MovementManager {
     }
   }
 
-  private readInput(): Vec {
+  /** Which way the keys (or the joystick) steer, and whether Shift is held to run. */
+  private readInput(): Vec & { run: boolean } {
     const stick = joystick();
-    if (stick.x || stick.y) return { x: stick.x, y: stick.y };
+    if (stick.x || stick.y) return { x: stick.x, y: stick.y, run: false };
     const keys = this.keys;
-    if (!keys) return { x: 0, y: 0 };
+    if (!keys) return { x: 0, y: 0, run: false };
     const held = (...names: string[]) => (names.some((n) => keys[n].isDown) ? 1 : 0);
     return {
       x: held("D", "RIGHT") - held("A", "Q", "LEFT"),
       y: held("S", "DOWN") - held("W", "Z", "UP"),
+      run: keys.SHIFT.isDown,
     };
   }
 
@@ -186,14 +195,18 @@ export class MovementManager {
     return !this.frozen;
   }
 
-  /** Every walk goes through here so everyone else sees it too. */
+  /**
+   * Every walk goes through here so everyone else sees it too. A long one is
+   * run, a few steps walked, and the others are told which so they match.
+   */
   private follow(path: Vec[], tileX: number, tileY: number) {
     this.path = path;
+    this.pathRun = pathLength({ x: this.player.x, y: this.player.y }, path) > RUN_FROM_TILES * TILE_SIZE;
     this.setOff?.();
     // The others walk the path themselves, so our heading is theirs to forget.
     this.shown.sent = false;
     this.arrive = undefined;
-    this.wsManager.send({ t: "walk_to", x: tileX, y: tileY });
+    this.wsManager.send({ t: "walk_to", x: tileX, y: tileY, ...(this.pathRun ? { r: 1 as const } : {}) });
   }
 
   /**
@@ -264,28 +277,34 @@ export class MovementManager {
    * walk, their copy follows our last heading; we only speak up when the
    * heading changes, when their copy has drifted, and once when we stop.
    */
-  private syncManualMovement(moved: Vec | null, delta: number) {
+  private syncManualMovement(moved: Vec | null, delta: number, run: boolean) {
     const heading = moved ? headingOf(moved.x, moved.y) : null;
 
     if (heading === null) {
       // Only a walk of our own needs a full stop; a click-to-walk path ends by itself.
-      if (this.shown.sent && this.shown.heading !== null) this.sendPosition(null);
+      if (this.shown.sent && this.shown.heading !== null) this.sendPosition(null, false);
       return;
     }
 
-    if (heading !== this.shown.heading || !this.shown.sent) return this.sendPosition(heading);
+    // A new heading, or Shift pressed or let go: they need telling.
+    if (heading !== this.shown.heading || run !== this.shown.run || !this.shown.sent) return this.sendPosition(heading, run);
 
-    advanceHeading(this.shown, heading, (MOVEMENT_SPEED * delta) / 1000, this.nav);
+    advanceHeading(this.shown, heading, ((run ? RUN_SPEED : MOVEMENT_SPEED) * delta) / 1000, this.nav);
     const drift = Math.hypot(this.shown.x - this.player.x, this.shown.y - this.player.y);
-    if (drift > DRIFT_LIMIT) this.sendPosition(heading);
+    if (drift > DRIFT_LIMIT) this.sendPosition(heading, run);
   }
 
-  /** Our tile, with a heading while we are walking. Resets what the others see. */
-  private sendPosition(heading: number | null) {
+  /** Our tile, with a heading (and whether we run) while we are walking. Resets what the others see. */
+  private sendPosition(heading: number | null, run: boolean) {
     const tile = pixelToTile(this.player.x, this.player.y);
     const centre = tileToPixel(tile.tileX, tile.tileY);
-    this.shown = { ...centre, heading, sent: true };
-    this.wsManager.send({ t: "move", x: tile.tileX, y: tile.tileY, ...(heading === null ? {} : { d: heading }) });
+    this.shown = { ...centre, heading, run: heading !== null && run, sent: true };
+    this.wsManager.send({
+      t: "move",
+      x: tile.tileX,
+      y: tile.tileY,
+      ...(heading === null ? {} : { d: heading, ...(run ? { r: 1 as const } : {}) }),
+    });
   }
 
   setInputEnabled(enabled: boolean) {
@@ -303,10 +322,22 @@ export class MovementManager {
     this.release = release;
     this.path.length = 0;
     this.arrive = undefined;
+    this.player.anims.timeScale = 1;
   }
 
   destroy() {
     this.scene.input.off("pointerup", this.onPointerUp, this);
     this.tileHover.destroy();
   }
+}
+
+/** How far a path goes, from where you stand through each of its points. */
+function pathLength(from: Vec, path: Vec[]): number {
+  let length = 0;
+  let at = from;
+  for (const point of path) {
+    length += Math.hypot(point.x - at.x, point.y - at.y);
+    at = point;
+  }
+  return length;
 }

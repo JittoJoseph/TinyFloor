@@ -225,8 +225,13 @@ missing features on the map.
   player has no shuffle for it). Signed out, the player names each song as it
   comes; signed in, it reports only what it was given, never the song inside,
   so the song is followed by the list its embed page shows (`__NEXT_DATA__`,
-  up to 100) in order, a new song told by its length changing or its place
-  going back to the start (`lib/musicFollow`). The menu, the dock and your
+  up to 100), a new song told by its length changing or its place going back
+  to the start, and which song it is by its length (the embed gives each
+  song's), the next one that long, or from the top when the player skipped
+  some or started elsewhere (`lib/musicFollow`). The length it reports wavers
+  by a few milliseconds for one song (341054, 341102, 341055): until 18
+  November any change counted as the next song, so the name ran ahead of the
+  music. A length no song has shows the list's own name, never a wrong song. The menu, the dock and your
   card name the song, and Listen on someone's card plays that song. Next
   skips to the end of the song, and the player goes on to the following one.
 - **A song's end is its full length, not a pause.** Spotify's last word on a
@@ -299,17 +304,20 @@ missing features on the map.
 
 ## What's at hand on the floor, and the whiteboard (21 October)
 
-- **One prompt for what you can do where you stand**: sit, stand up, open the
-  whiteboard. Never desks: those are claimed on the desk itself. The nearest wins, E does it, and the prompt is a pill above the
-  dock, a button for a finger. It used to be a label drawn on the map, in the
-  same dark pill as name tags, stacked under your own and moving with the way
-  a chair faced.
-- **Never more than one thing above the dock.** The desk offer, its
-  confirmation and the action prompt share one place, and the plan lives in a
-  bar at the top of the office: a stack of floating notices read as clutter.
-- **Said once.** Each prompt shows until you've done that thing once, by any
-  way (E, the pill, clicking the chair), in this browser. Being sat at your
-  desk on arrival doesn't count.
+- **One hint for what you can do where you stand**: sit, stand up, open the
+  whiteboard. Never desks: those are claimed on the desk itself. The nearest
+  wins, E does it, and the hint is a small pill at the floor's top right (its
+  key and a word or two), a button for a finger. It was a pill above the dock
+  until 18 November, and before that a label drawn on the map, in the same
+  dark pill as name tags, stacked under your own and moving with the way a
+  chair faced.
+- **Never more than one thing above the dock.** A meeting about to start and
+  a seasonal offer share one place (the hint for what's at hand is apart, top
+  right), and the plan lives in a bar at the top of the office: a stack of
+  floating notices read as clutter.
+- **Every time.** The hint shows whenever something is at hand, however often
+  you've done it (since 18 November; it used to show only until you had done
+  that thing once, in that browser).
 - **The whiteboard has one shape everywhere (2:1).** Points are fractions of
   the board, and the drawing view used to fill the screen, so a circle drawn
   on a laptop was an oval on a phone and on the wall. The view now keeps the
@@ -463,6 +471,20 @@ who come and go and mostly don't come back (shared-protocol `lobby.ts`):
   the meeting hours.
 - Every change to a desk, in an office or the demo office, reaches everyone on
   the floor as it's made, and every floor animates it the same way.
+
+## Walking, running, and calls that cross (18 November)
+
+- **A long walk is run.** A click (or an errand: your desk, a teammate, the
+  meeting room) more than 5 tiles away is run at 320 px/s, a nearer one walked
+  at 120. The keys walk, and run with Shift held. The others are told (`r` on
+  `walk_to` and on a heading `move`), so they see the same speed and agree on
+  where you stopped within a few pixels.
+- **Two people calling each other at the same moment talk.** Each used to
+  answer the other's ring with busy. Now both ends decide alike from their ids:
+  the lower id's call goes ahead and the other answers it at once, and both
+  keep showing Calling until the call can be heard, then go straight to it.
+- **The call's small window has no button.** It opens by itself when you
+  leave the tab during a call or meeting, and closes when you're back.
 
 ## Small decisions worth remembering
 

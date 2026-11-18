@@ -24,7 +24,7 @@ export function PipHost() {
     try {
       navigator.mediaSession.setActionHandler(action, () => void pip.open(true));
     } catch {
-      // This browser doesn't open it by itself: the button still does.
+      // This browser can't open it by itself, and there's nothing else that opens it.
       return;
     }
     return () => {

@@ -68,7 +68,7 @@ async function madeBy(url: string): Promise<string | null> {
 }
 
 interface Embedded {
-  trackList?: Array<{ uri?: unknown; title?: unknown; subtitle?: unknown }>;
+  trackList?: Array<{ uri?: unknown; title?: unknown; subtitle?: unknown; duration?: unknown }>;
   artists?: Array<{ uri?: unknown }>;
 }
 
@@ -102,7 +102,9 @@ async function songsOf(url: string): Promise<Found[]> {
     const link = spotifyLink(song?.uri);
     if (link?.kind !== "track" || typeof song.title !== "string") return [];
     const subtitle = typeof song.subtitle === "string" ? song.subtitle.trim().slice(0, 120) || null : null;
-    return [{ url: link.url, kind: "track" as const, title: song.title.trim().slice(0, 200), image: null, subtitle }];
+    // Its length tells which song a signed-in player is on, which names only the list (musicFollow).
+    const duration = typeof song.duration === "number" && song.duration > 0 ? { duration: Math.round(song.duration) } : {};
+    return [{ url: link.url, kind: "track" as const, title: song.title.trim().slice(0, 200), image: null, subtitle, ...duration }];
   });
 }
 

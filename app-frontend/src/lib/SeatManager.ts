@@ -4,7 +4,7 @@ import type { CardinalDirection } from "./facing";
 import { ChairSpec, MapAnchor, depthForY } from "./MapManager";
 import type { RoomSocket } from "./RoomSocket";
 import type { GoTo } from "./MovementManager";
-import { learned, type ActionAt } from "./actions";
+import type { ActionAt } from "./actions";
 import { meetingsState, peopleInMeetings, subscribeMeetings } from "./meetings";
 import { SceneLabel } from "./SceneLabel";
 import { sceneText } from "./sceneText";
@@ -286,7 +286,7 @@ export class SeatManager {
 
   /** The server gave the chair to whoever asked first. */
   rejected() {
-    this.stand(false);
+    this.stand();
   }
 
   private changed() {
@@ -322,7 +322,6 @@ export class SeatManager {
 
   /** Sits down here, and tells the room; `byYou` unless the floor sat you (arriving at your desk, a reconnect). */
   private sit(seat: Seat, byYou = true) {
-    if (byYou) learned("sit");
     const pose = this.poseFor(seat);
     this.seated = seat;
     seat.occupant = SELF;
@@ -342,11 +341,10 @@ export class SeatManager {
     this.ring.clear();
   }
 
-  /** Gets up and tells the room; `byYou` unless the room gave the chair to someone else. */
-  private stand(byYou = true) {
+  /** Gets up and tells the room: by you, or because the room gave the chair to someone else. */
+  private stand() {
     const seat = this.seated;
     if (!seat) return;
-    if (byYou) learned("stand");
     this.seated = undefined;
     if (seat.occupant === SELF) seat.occupant = undefined;
 

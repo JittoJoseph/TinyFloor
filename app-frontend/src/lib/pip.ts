@@ -4,10 +4,11 @@
  * The call in a small window of its own that stays on top of everything
  * (Chrome's Document Picture-in-Picture), the way Meet keeps a meeting with
  * you while you work in another tab or app. It opens by itself when you leave
- * the tab during a call (the media session's "enterpictureinpicture", which
- * Chrome offers to pages using the camera or microphone), or from a button,
- * and closes when the call ends. Elsewhere (Firefox, Safari) there is none,
- * and nothing offers it.
+ * the tab during a call or a meeting (the media session's
+ * "enterpictureinpicture", which Chrome offers to pages using the camera or
+ * microphone), closes when you come back, and when the call ends. There's no
+ * button for it: it's there when you've gone, and only then. Elsewhere
+ * (Firefox, Safari) there is none.
  */
 
 interface DocumentPip {
@@ -52,8 +53,8 @@ class Pip {
   getSnapshot = () => this.host;
   getServerSnapshot = () => null;
 
-  /** Opens the window (from a press, or when you leave the tab); `byItself` closes it again when you come back. */
-  async open(byItself = false): Promise<boolean> {
+  /** Opens the window as you leave the tab; `byItself` closes it again when you come back. */
+  async open(byItself = true): Promise<boolean> {
     if (!this.supported) return false;
     if (this.win) return true;
     let win: Window;

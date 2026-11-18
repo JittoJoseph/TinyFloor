@@ -42,6 +42,8 @@ export class MovementManager {
   private tileHover: TileHover;
   private frozen = false;
   private movingBefore = false;
+  /** Walking or running this frame, by keys or along a path. */
+  private moving = false;
 
   constructor(
     scene: Phaser.Scene,
@@ -129,6 +131,7 @@ export class MovementManager {
     this.animationManager.play(this.player, moving ? "run" : "idle", faces);
     this.player.anims.timeScale = moving && running ? RUN_STRIDE : 1;
 
+    this.moving = moving;
     this.movingBefore = manualMoved;
     this.syncManualMovement(manualMoved ? { x: dx, y: dy } : null, delta, manualMoved && running);
     // standing players sort by where their feet are; sitting sets its own depth.
@@ -307,6 +310,11 @@ export class MovementManager {
     });
   }
 
+  /** Whether you're on the move: what's at hand only counts once you've stopped. */
+  isMoving(): boolean {
+    return this.moving;
+  }
+
   setInputEnabled(enabled: boolean) {
     this.inputEnabled = enabled;
     if (!enabled) this.tileHover.hide();
@@ -318,6 +326,7 @@ export class MovementManager {
    */
   setFrozen(frozen: boolean, release?: () => void) {
     this.frozen = frozen;
+    this.moving = false;
     this.shown.sent = false;
     this.release = release;
     this.path.length = 0;

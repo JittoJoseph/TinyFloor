@@ -315,9 +315,11 @@ missing features on the map.
   a seasonal offer share one place (the hint for what's at hand is apart, top
   right), and the plan lives in a bar at the top of the office: a stack of
   floating notices read as clutter.
-- **Every time.** The hint shows whenever something is at hand, however often
-  you've done it (since 18 November; it used to show only until you had done
-  that thing once, in that browser).
+- **Every time, once you've stopped.** The hint shows whenever you stand at
+  something, however often you've done it (since 18 November; it used to show
+  only until you had done that thing once, in that browser). Going past a
+  chair shows nothing: only standing still counts, so running by a row of
+  chairs doesn't flash the hint on and off.
 - **The whiteboard has one shape everywhere (2:1).** Points are fractions of
   the board, and the drawing view used to fill the screen, so a circle drawn
   on a laptop was an oval on a phone and on the wall. The view now keeps the

@@ -10,8 +10,9 @@ import { touchFirst } from "@/lib/touch";
 
 /**
  * What you can do where you stand (sit, stand up, open the whiteboard), at the
- * top right of the floor whenever something is at hand: its key and a word or
- * two, gone as you walk away. A press does it too, which is how a finger does.
+ * top right of the floor when you've stopped beside something: its key and a
+ * word or two, gone as you walk on. Passing by shows nothing (GameScene offers
+ * actions only while you're still). A press does it too, which is how a finger does.
  */
 export function FloorHint() {
   const t = useTranslations("actions");

@@ -4,9 +4,9 @@ import { useSyncExternalStore } from "react";
 
 /**
  * What you can do where you stand on the floor: sit on the chair beside you,
- * stand up, open the whiteboard. The scene offers the nearest (GameScene), and
- * E or a press on its hint does it (FloorHint). The hint shows whenever
- * there's something at hand, however often you've done it.
+ * stand up, open the whiteboard. The scene offers the nearest once you've
+ * stopped (GameScene), and E or a press on its hint does it (FloorHint). The
+ * hint shows every time, however often you've done it.
  */
 export type FloorAction = "sit" | "stand" | "draw";
 

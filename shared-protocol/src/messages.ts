@@ -342,6 +342,8 @@ export type ClientMessage =
   | { t: "desk_reset" }
   /** A wave to someone on the floor, as they come in or back to one (docs/product.md). */
   | { t: "wave"; to: string }
+  /** A poke at someone you're standing by: a nudge to look up, seen by the whole floor, told to them. */
+  | { t: "poke"; to: string }
   | ({ t: "sfu" } & SfuClientMessage);
 
 export type ServerMessage =
@@ -371,6 +373,8 @@ export type ServerMessage =
   | { t: "player_joined"; player: PlayerState; arrived?: boolean }
   /** Someone waved at someone: everyone sees the hand go up, the one waved at is told. */
   | { t: "waved"; from: string; to: string }
+  /** Someone poked someone: everyone sees the jab and the jolt, the one poked is told. */
+  | { t: "poked"; from: string; to: string }
   | { t: "player_left"; id: string }
   | { t: "moved"; id: string; x: number; y: number; d?: number; r?: 1 }
   | { t: "walking"; id: string; x: number; y: number; r?: 1 }

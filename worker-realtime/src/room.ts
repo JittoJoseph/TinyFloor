@@ -436,6 +436,9 @@ export class Room extends DurableObject<Env> {
       case "wave":
         this.wave(me, message.to);
         break;
+      case "poke":
+        this.poke(me, message.to);
+        break;
       case "desk_claim":
         this.claimDesk(me, message.seat, now);
         break;
@@ -596,6 +599,13 @@ export class Room extends DurableObject<Env> {
     if (!this.takeAction(me) || typeof to !== "string" || to === me.userId) return;
     if (!this.present().some((socket) => this.attachmentOf(socket).userId === to)) return;
     this.broadcast({ t: "waved", from: me.userId, to });
+  }
+
+  /** A poke at someone who is here: like a wave, the whole floor sees it and they're told. */
+  private poke(me: Attachment, to: unknown): void {
+    if (!this.takeAction(me) || typeof to !== "string" || to === me.userId) return;
+    if (!this.present().some((socket) => this.attachmentOf(socket).userId === to)) return;
+    this.broadcast({ t: "poked", from: me.userId, to });
   }
 
   /** Everyone hears the desks again; a newcomer already had them in its welcome. */

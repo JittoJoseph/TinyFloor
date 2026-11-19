@@ -99,13 +99,13 @@
     "walkTo": "Gå hen til {name}"
   },
   "call": {
-    "incoming": "Ringer til dig",
+    "incoming": "vil gerne snakke",
     "onCall": "I opkaldet",
     "connecting": "Forbinder...",
-    "decline": "Afvis",
-    "accept": "Accepter",
-    "calling": "Ringer op...",
-    "cancel": "Annuller opkald",
+    "decline": "Ikke nu",
+    "accept": "Snak",
+    "calling": "Spørger om at snakke",
+    "cancel": "Annuller",
     "micOff": "Mikrofon slået fra",
     "yourScreen": "Din skærm",
     "screenOf": "Skærm fra {name}",
@@ -118,10 +118,10 @@
       "camera": "Kameraet er ikke tilgængeligt"
     },
     "outcome": {
-      "declined": "Afvist",
+      "declined": "Ikke nu",
       "busy": "Optaget lige nu",
       "unanswered": "Intet svar",
-      "missed": "Ubesvaret opkald"
+      "missed": "Ville gerne snakke"
     },
     "dismiss": "Luk"
   },
@@ -272,7 +272,9 @@
     "meetingStartedAt": "Startet {time}"
   },
   "proximity": {
-    "call": "Ring op",
+    "talk": "Snak",
+    "wave": "Vink",
+    "poke": "Prik",
     "onCall": "I opkald med dig"
   },
   "whiteboard": {

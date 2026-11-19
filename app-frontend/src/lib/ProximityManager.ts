@@ -3,6 +3,7 @@ import { PlayerManager } from "./PlayerManager";
 import { toCss } from "./plates";
 import { TILE_SIZE } from "web-shared/lib/types";
 import type { StatusNote } from "shared-protocol/messages";
+import { placeCard } from "./proximity";
 
 const PROXIMITY_RADIUS = 2.5 * TILE_SIZE;
 const DWELL_TIME = 1000;
@@ -63,9 +64,9 @@ export class ProximityManager {
       this.proximityStartTimes.set(id, since);
       if (now - since < DWELL_TIME) return;
 
-      const at = toCss(this.scene, container.x, container.y - BODY_OFFSET);
-      const x = Math.round(at.x);
-      const y = Math.round(at.y);
+      const { x, y } = toCss(this.scene, container.x, container.y - BODY_OFFSET);
+      // Where they are on screen goes straight onto their card, every frame (lib/proximity).
+      placeCard(id, x, y);
       const status = this.playerManager.getPlayerStatus(id) || "available";
       const note = this.playerManager.getPlayerNote(id);
 
@@ -78,7 +79,8 @@ export class ProximityManager {
         guest: this.playerManager.isGuest(id),
         note,
       });
-      signature += id + x + "," + y + status + (note ? note.icon + note.text : "") + "|";
+      // Who's near and how they are: what the cards show, which React renders. Not where, which moves every frame.
+      signature += id + status + this.playerManager.getPlayerName(id) + (note ? note.icon + note.text : "") + "|";
     });
 
     if (signature === this.lastSignature) return;

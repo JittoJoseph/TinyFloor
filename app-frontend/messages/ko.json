@@ -99,13 +99,13 @@
     "walkTo": "{name}에게 가기"
   },
   "call": {
-    "incoming": "전화가 왔어요",
+    "incoming": "대화하고 싶어 해요",
     "onCall": "통화 중",
     "connecting": "연결 중...",
-    "decline": "거절",
-    "accept": "수락",
-    "calling": "전화 거는 중...",
-    "cancel": "통화 취소",
+    "decline": "나중에",
+    "accept": "대화",
+    "calling": "대화를 요청하는 중",
+    "cancel": "취소",
     "micOff": "마이크 꺼짐",
     "yourScreen": "내 화면",
     "screenOf": "{name}님의 화면",
@@ -118,10 +118,10 @@
       "camera": "카메라를 사용할 수 없어요"
     },
     "outcome": {
-      "declined": "거절됨",
+      "declined": "나중에",
       "busy": "지금은 바빠요",
       "unanswered": "응답 없음",
-      "missed": "부재중 통화"
+      "missed": "대화하고 싶어 했어요"
     },
     "dismiss": "닫기"
   },
@@ -272,7 +272,9 @@
     "meetingStartedAt": "{time} 시작됨"
   },
   "proximity": {
-    "call": "통화",
+    "talk": "대화",
+    "wave": "손 흔들기",
+    "poke": "콕 찌르기",
     "onCall": "나와 통화 중"
   },
   "whiteboard": {

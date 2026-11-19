@@ -99,13 +99,13 @@
     "walkTo": "Gå fram till {name}"
   },
   "call": {
-    "incoming": "Ringer dig",
+    "incoming": "vill prata",
     "onCall": "I samtalet",
     "connecting": "Ansluter...",
-    "decline": "Avvisa",
-    "accept": "Svara",
-    "calling": "Ringer...",
-    "cancel": "Avbryt samtal",
+    "decline": "Inte nu",
+    "accept": "Prata",
+    "calling": "Frågar om att prata",
+    "cancel": "Avbryt",
     "micOff": "Mikrofon av",
     "yourScreen": "Din skärm",
     "screenOf": "Skärm från {name}",
@@ -118,10 +118,10 @@
       "camera": "Kameran är inte tillgänglig"
     },
     "outcome": {
-      "declined": "Avvisat",
+      "declined": "Inte nu",
       "busy": "Upptagen just nu",
       "unanswered": "Inget svar",
-      "missed": "Missat samtal"
+      "missed": "Ville prata"
     },
     "dismiss": "Stäng"
   },
@@ -272,7 +272,9 @@
     "meetingStartedAt": "Startade {time}"
   },
   "proximity": {
-    "call": "Ring",
+    "talk": "Prata",
+    "wave": "Vinka",
+    "poke": "Peta",
     "onCall": "I samtal med dig"
   },
   "whiteboard": {

@@ -538,6 +538,19 @@
 }
 
 /* A hand waving: a wave on the floor's nudges (FloorNudges). */
+/* A finger jabbing twice, for a poke's note. */
+@keyframes jab {
+  0%,
+  45%,
+  100% {
+    transform: translateX(0);
+  }
+  12%,
+  32% {
+    transform: translateX(4px);
+  }
+}
+
 @keyframes wave {
   0%,
   60%,

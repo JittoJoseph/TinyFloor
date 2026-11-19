@@ -1,8 +1,10 @@
 "use client";
 
-import { memo } from "react";
+import { memo, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { MessageSquare, Phone, Users } from "web-shared/components/ui/icons";
+import { motion, useReducedMotion } from "motion/react";
+import { AudioLines, Hand, MessageSquare, Poke, Users } from "web-shared/components/ui/icons";
+import { pokeAt, waveAt } from "@/lib/floor";
 import { useRouter } from "@/lib/i18n/navigation";
 import { usePlace } from "@/components/app/place";
 import { RoomIconButton, surface } from "./room/ui";
@@ -36,11 +38,12 @@ const STATUSES = new Set(["available", "busy", "away", "in_call"]);
 
 /**
  * The card beside someone you have walked up to: who they are and how they
- * are, a message, and the call. A call starts with voice, like stopping by a
- * desk; the camera is in the dock once you're talking. A call is two people:
- * already on one, walking up to a third offers a meeting for the three of
- * you instead. Touch gets the bigger sizes, since a fingertip needs more room
- * than a cursor.
+ * are, then what you can do with them, from the lightest to the most: a
+ * message, a wave, a poke, and talking. Talking starts with voice, like
+ * stopping by a desk; the camera is in the dock once you're talking. Talking
+ * is two people: already talking to someone, walking up to a third offers a
+ * meeting for the three of you instead. Touch gets the bigger sizes, since a
+ * fingertip needs more room than a cursor.
  */
 export const ProximityActions = memo(function ProximityActions({
   player,
@@ -105,6 +108,8 @@ export const ProximityActions = memo(function ProximityActions({
         title={tShell("message")}
         icon={<MessageSquare className={touch ? "size-[17px]" : "size-[14px]"} />}
       />
+      <Gesture touch={touch} title={t("wave")} onSend={() => waveAt(player.id)} icon={<Hand className={touch ? "size-[17px]" : "size-[14px]"} />} />
+      <Gesture touch={touch} title={t("poke")} onSend={() => pokeAt(player.id)} icon={<Poke className={touch ? "size-[17px]" : "size-[14px]"} />} />
 
       {asMeeting ? (
         <button
@@ -141,8 +146,8 @@ export const ProximityActions = memo(function ProximityActions({
             touch ? "h-10 px-4 text-[14px]" : "h-8 px-3.5 text-[12.5px]",
           )}
         >
-          <Phone className={touch ? "size-4" : "size-3.5"} strokeWidth={2.25} />
-          {t("call")}
+          <AudioLines className={touch ? "size-4" : "size-3.5"} strokeWidth={2.25} />
+          {t("talk")}
         </button>
       )}
     </div>
@@ -157,3 +162,43 @@ export const ProximityActions = memo(function ProximityActions({
   before.player.status === after.player.status &&
   before.player.guest === after.player.guest,
 );
+
+/** How long a wave or a poke takes to be ready again: a poke is a nudge, not a drum roll. */
+const GESTURE_REST_MS = 1500;
+
+/**
+ * A wave or a poke: the floor shows it to everyone (the hand over you, the
+ * finger and the jolt on them); here the icon springs once as it goes, then
+ * rests a moment before it can go again.
+ */
+function Gesture({ touch, title, icon, onSend }: { touch: boolean; title: string; icon: ReactNode; onSend: () => void }) {
+  const reduce = useReducedMotion();
+  const [sent, setSent] = useState(0);
+  const [resting, setResting] = useState(false);
+  return (
+    <RoomIconButton
+      size={touch ? "md" : "sm"}
+      title={title}
+      aria-disabled={resting}
+      className={resting ? "cursor-default" : undefined}
+      onClick={() => {
+        if (resting) return;
+        onSend();
+        setSent((n) => n + 1);
+        setResting(true);
+        window.setTimeout(() => setResting(false), GESTURE_REST_MS);
+      }}
+      icon={
+        <motion.span
+          key={sent}
+          className="flex"
+          initial={sent && !reduce ? { scale: 0.55, rotate: -18 } : false}
+          animate={{ scale: 1, rotate: 0, opacity: resting ? 0.45 : 1 }}
+          transition={{ type: "spring", stiffness: 520, damping: 14 }}
+        >
+          {icon}
+        </motion.span>
+      }
+    />
+  );
+}

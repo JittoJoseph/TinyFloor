@@ -1,16 +1,20 @@
 import * as Phaser from "phaser";
+import { wasDrag } from "./CameraRig";
 import { AnimationManager } from "./AnimationManager";
 import { type CardinalDirection, facing } from "./facing";
-import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingVector } from "./Navigation";
+import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingVector, keyRunSpeed, pathLength, runSpeed, strideAt } from "./Navigation";
 import { depthForY } from "./MapManager";
 import type { SeatPose } from "./SeatManager";
 import { SceneLabel } from "./SceneLabel";
 import { cssZoom } from "./plates";
-import { TILE_SIZE, MOVEMENT_SPEED, RUN_SPEED, RUN_STRIDE, pixelToTile, tileToPixel } from "web-shared/lib/types";
+import { TILE_SIZE, MOVEMENT_SPEED, pixelToTile, tileToPixel } from "web-shared/lib/types";
 import { statusColorValue } from "web-shared/lib/status";
 import { liveBusy, liveNote, type CalendarBusy, type StatusNote } from "shared-protocol/messages";
 import { sceneText } from "./sceneText";
 import type { PlayerStatus } from "web-shared/lib/types";
+
+/** Emoji drawn on the floor (a wave, a poke), in each system's own colour emoji. */
+const EMOJI_FONT = "'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif";
 
 interface RemotePlayerState {
   path: Vec[];
@@ -18,8 +22,11 @@ interface RemotePlayerState {
   heading: number | null;
   /** Whether the path is only to where they said they are, not a walk of theirs: they slide along it without turning. */
   correcting: boolean;
-  /** Running (a long walk of theirs, or Shift held), at the running speed, as they do on their own screen. */
+  /** Running (a long walk of theirs, or Shift held), eased the same way as on their own screen. */
   run: boolean;
+  /** How far along their walk they are, and how long they've been running on keys, for that easing. */
+  walked: number;
+  runFor: number;
   status: PlayerStatus;
   guest: boolean;
   seat?: SeatPose;
@@ -81,6 +88,10 @@ export class PlayerManager {
   private noteTimers: Map<string, Phaser.Time.TimerEvent> = new Map();
   private localPlayer?: Phaser.GameObjects.Sprite;
   private scratch: Vec = { x: 0, y: 0 };
+  /** Everyone's last status, to tell a change from the first word on it. */
+  private statuses = new Map<string, PlayerStatus>();
+  /** A reaction under way on a sprite, stopped if another comes (react). */
+  private reacting = new Map<Phaser.GameObjects.Sprite, Phaser.Tweens.TweenChain>();
   /** Name tags grow a little when the camera pulls back, so they stay readable. */
   private tagScale = 1;
   private declutterAt = 0;
@@ -116,6 +127,7 @@ export class PlayerManager {
     tag.container.setDepth(TAG_DEPTH).setScale(this.tagScale).setVisible(false);
 
     this.localPlayer = player;
+    this.clickable(player, id);
     this.nameTags.set(id, tag);
     this.looks.set(id, character);
     this.updatePlayerStatus(id, "available");
@@ -139,6 +151,7 @@ export class PlayerManager {
     const sprite = this.animationManager.sprite(0, 0, spriteKey);
     this.animationManager.play(sprite, "idle", "down");
     container.add(sprite);
+    this.clickable(sprite, id);
     container.setDepth(depthForY(pos.y));
 
     const tag = new SceneLabel(this.scene, 0, TAG_OFFSET_Y, name, { person: true });
@@ -153,6 +166,8 @@ export class PlayerManager {
       heading: null,
       correcting: false,
       run: false,
+      walked: 0,
+      runFor: 0,
       status,
       guest,
     });
@@ -175,7 +190,7 @@ export class PlayerManager {
     const local = id === this.playerId ? this.localPlayer : undefined;
     if (!container && !local) return;
     const hand = this.scene.add
-      .text(0, 0, "👋", { fontSize: "22px", fontFamily: "'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif" })
+      .text(0, 0, "👋", { fontSize: "22px", fontFamily: EMOJI_FONT })
       .setOrigin(0.5, 1)
       .setScale(this.tagScale);
     // Just over the name tag, so it reads as theirs.
@@ -269,11 +284,134 @@ export class PlayerManager {
     const tag = this.nameTags.get(id);
     if (!tag) return;
 
+    // A change (not the first word on it): they bob, so the eye goes to whoever's now free, busy or away.
+    const before = this.statuses.get(id);
+    this.statuses.set(id, status);
+    if (before && before !== status) this.react(id, "bob");
+
     const state = this.playerStates.get(id);
     if (state) state.status = status;
 
     // The colour says it; the dot holds still, in a call like any other status.
     tag.setDot(statusColorValue(status));
+  }
+
+  /**
+   * A small physical answer from someone, you included, the way a chair takes
+   * your weight: a bob (a squash and a spring back, for a click, a wave, a new
+   * status), a jolt (a startled tilt, for a poke) or a shake (a small "not
+   * now", clicked while they're in a meeting). From the feet, in scale and
+   * angle only, so it never fights where they're walking.
+   */
+  react(id: string, how: "bob" | "jolt" | "shake") {
+    const sprite = this.spriteFor(id);
+    if (!sprite || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    this.reacting.get(sprite)?.stop();
+    sprite.setScale(1).setAngle(0);
+    const steps = {
+      bob: [
+        { scaleX: 1.1, scaleY: 0.86, duration: 80, ease: "Quad.easeOut" },
+        { scaleX: 0.95, scaleY: 1.08, duration: 110, ease: "Quad.easeInOut" },
+        { scaleX: 1, scaleY: 1, duration: 170, ease: "Back.easeOut" },
+      ],
+      jolt: [
+        { angle: -9, scaleX: 1.06, scaleY: 0.92, duration: 60, ease: "Quad.easeOut" },
+        { angle: 7, duration: 70, ease: "Sine.easeInOut" },
+        { angle: -4, duration: 70, ease: "Sine.easeInOut" },
+        { angle: 0, scaleX: 1, scaleY: 1, duration: 140, ease: "Back.easeOut" },
+      ],
+      shake: [
+        { angle: -4, duration: 50, ease: "Sine.easeOut" },
+        { angle: 4, duration: 70, ease: "Sine.easeInOut" },
+        { angle: -3, duration: 70, ease: "Sine.easeInOut" },
+        { angle: 0, duration: 60, ease: "Sine.easeIn" },
+      ],
+    }[how];
+    const chain = this.scene.tweens.chain({
+      targets: sprite,
+      tweens: steps,
+      onComplete: () => this.reacting.delete(sprite),
+      onStop: () => this.reacting.delete(sprite),
+    });
+    this.reacting.set(sprite, chain);
+  }
+
+  /**
+   * A poke: a finger jabs at them twice from the poker's side, and they jolt.
+   * Everyone sees it; it rides with them if they walk off.
+   */
+  poke(from: string, to: string) {
+    const target = this.whereIs(to);
+    if (!target) return;
+    const source = this.whereIs(from);
+    const side = source && source.x > target.x ? 1 : -1;
+    const container = this.players.get(to);
+    const finger = this.scene.add
+      .text(0, 0, side > 0 ? "👈" : "👉", { fontSize: "20px", fontFamily: EMOJI_FONT })
+      .setOrigin(0.5, 0.5)
+      .setScale(this.tagScale)
+      .setAlpha(0);
+    // Beside them at shoulder height, on the side the poke came from.
+    const x = side * 22;
+    const y = -30;
+    if (container) {
+      finger.setPosition(x, y);
+      container.add(finger);
+    } else {
+      finger.setPosition(target.x + x, target.y + y).setDepth(TAG_DEPTH + 1);
+    }
+    const restX = finger.x;
+    this.scene.tweens.add({ targets: finger, alpha: 1, duration: 90 });
+    this.scene.tweens.chain({
+      targets: finger,
+      tweens: [
+        { x: restX - side * 7, duration: 90, ease: "Quad.easeIn", onComplete: () => this.react(to, "jolt") },
+        { x: restX, duration: 120, ease: "Quad.easeOut" },
+        { x: restX - side * 7, duration: 90, ease: "Quad.easeIn" },
+        { x: restX + side * 2, duration: 140, ease: "Quad.easeOut" },
+        { alpha: 0, delay: 350, duration: 220 },
+      ],
+      onComplete: () => finger.destroy(),
+    });
+  }
+
+  private clicked?: (id: string) => void;
+  /** What a click on someone does (GameScene): they answer it, and the floor under them doesn't. */
+  onPersonClick(then: (id: string) => void) {
+    this.clicked = then;
+  }
+
+  /**
+   * Someone, you included, as something on the floor that answers a click,
+   * the way a chair does: a hand cursor over them, no tile marked under them,
+   * and in front of a chair they stand before (Phaser hands a click to the top
+   * one). Only the character, not the empty margin of its frame.
+   */
+  private clickable(sprite: Phaser.GameObjects.Sprite, id: string) {
+    sprite.setInteractive({
+      hitArea: {},
+      hitAreaCallback: (_: unknown, x: number, y: number) => {
+        const { width, height } = sprite;
+        return x > width * 0.28 && x < width * 0.72 && y > height * 0.3 && y <= height;
+      },
+      useHandCursor: true,
+    });
+    sprite.on(Phaser.Input.Events.GAMEOBJECT_POINTER_UP, (pointer: Phaser.Input.Pointer) => {
+      if (pointer.button !== 0 || wasDrag(this.scene, pointer)) return;
+      this.clicked?.(id);
+    });
+  }
+
+  /** Where someone stands, you included. */
+  private whereIs(id: string): { x: number; y: number } | null {
+    if (id === this.playerId) return this.localPlayer ? { x: this.localPlayer.x, y: this.localPlayer.y } : null;
+    return this.positionOf(id);
+  }
+
+  private spriteFor(id: string): Phaser.GameObjects.Sprite | undefined {
+    if (id === this.playerId) return this.localPlayer;
+    const container = this.players.get(id);
+    return container && this.spriteOf(container);
   }
 
   /** How someone looks now, you included: they change over where they stand or sit. */
@@ -346,8 +484,11 @@ export class PlayerManager {
     const point = tileToPixel(tileX, tileY);
     const away = Phaser.Math.Distance.Between(container.x, container.y, point.x, point.y);
     const sameWay = heading !== undefined && heading === state.heading;
+    // Still running after a turn: they carry on at the pace they'd reached.
+    const running = heading !== undefined && run;
+    state.runFor = state.run && running && state.heading !== null ? state.runFor : 0;
     state.heading = heading ?? null;
-    state.run = heading !== undefined && run;
+    state.run = running;
     state.path.length = 0;
     state.correcting = true;
 
@@ -372,6 +513,7 @@ export class PlayerManager {
     state.heading = null;
     state.correcting = false;
     state.run = run;
+    state.walked = 0;
     state.path = this.nav.buildPath(container.x, container.y, tileX, tileY);
     if (!state.path.length) {
       const point = tileToPixel(tileX, tileY);
@@ -486,13 +628,21 @@ export class PlayerManager {
       pos.x = container.x;
       pos.y = container.y;
 
-      const speed = state.run ? RUN_SPEED : MOVEMENT_SPEED;
+      // A walk of theirs runs eased along its length; keys run eased in time, as on their screen.
+      if (state.run && state.heading !== null) state.runFor += delta / 1000;
+      const walkingPath = state.path.length > 0 && state.heading === null && !state.correcting;
+      const speed = !state.run
+        ? MOVEMENT_SPEED
+        : walkingPath
+          ? runSpeed(state.walked, pathLength(pos, state.path))
+          : keyRunSpeed(state.runFor);
       if (state.path.length) {
         // Behind where they said they are, they walk a little faster to catch up.
         const target = state.path[0];
         const remaining = Phaser.Math.Distance.Between(container.x, container.y, target.x, target.y);
         const catchup = state.heading === null ? 1 : Phaser.Math.Clamp(remaining / TILE_SIZE, 1, MAX_CATCHUP);
         advanceAlongPath(pos, state.path, (speed * catchup * delta) / 1000);
+        if (walkingPath) state.walked += Math.hypot(pos.x - container.x, pos.y - container.y);
       } else if (state.heading !== null) {
         // Walking on the way they were last heading, until they say otherwise (or a wall stops them).
         advanceHeading(pos, state.heading, (speed * delta) / 1000, this.nav);
@@ -516,7 +666,7 @@ export class PlayerManager {
       } else if (!state.correcting) faces = facing(dx, dy, faces);
       const moving = !!(dx || dy || state.path.length);
       this.animationManager.play(sprite, moving ? "run" : "idle", faces);
-      sprite.anims.timeScale = moving && state.run ? RUN_STRIDE : 1;
+      sprite.anims.timeScale = moving ? strideAt(speed) : 1;
 
       if (!state.path.length && state.onArrive) {
         const arrive = state.onArrive;

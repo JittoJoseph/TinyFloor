@@ -9,7 +9,7 @@ import { useCall } from "@/lib/useCall";
 import { notify, setBadge, useNotifyPermission } from "@/lib/notify";
 import { onOpenFromPush, startPush, stopPush } from "@/lib/push";
 import { usePrefs } from "@/lib/prefs";
-import { WAVED_AT_YOU_EVENT } from "@/lib/floor";
+import { POKED_YOU_EVENT, WAVED_AT_YOU_EVENT } from "@/lib/floor";
 import { help, SUPPORT_CHANNEL } from "@/lib/help";
 
 /**
@@ -68,8 +68,16 @@ export function DesktopAlerts({ chatPath, waiting }: { chatPath: (channel: strin
       const { id, name } = (event as CustomEvent<{ id: string; name: string }>).detail;
       notify({ title: tShell("waved", { name }), tag: `wave:${id}` });
     };
+    const poked = (event: Event) => {
+      const { id, name } = (event as CustomEvent<{ id: string; name: string }>).detail;
+      notify({ title: tShell("poked", { name }), tag: `poke:${id}` });
+    };
     window.addEventListener(WAVED_AT_YOU_EVENT, waved);
-    return () => window.removeEventListener(WAVED_AT_YOU_EVENT, waved);
+    window.addEventListener(POKED_YOU_EVENT, poked);
+    return () => {
+      window.removeEventListener(WAVED_AT_YOU_EVENT, waved);
+      window.removeEventListener(POKED_YOU_EVENT, poked);
+    };
   }, [tShell]);
 
   // While closed, the chat pushes instead (lib/push.ts): this browser is

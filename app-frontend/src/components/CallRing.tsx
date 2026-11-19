@@ -4,7 +4,7 @@ import { useEffect, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { LogOut, MessageSquare, Phone, PhoneMissed, PhoneOff, Video, X } from "web-shared/components/ui/icons";
+import { AudioLines, LogOut, MessageSquare, Video, X } from "web-shared/components/ui/icons";
 import { callManager, type CallOutcome, type MeetingInvite, type MeetingNotice } from "@/lib/CallManager";
 import { useRouter } from "@/lib/i18n/navigation";
 import { usePlace } from "@/components/app/place";
@@ -16,11 +16,12 @@ import { OPEN_CONVERSATION_EVENT } from "./ProximityActions";
 import { cn } from "web-shared/lib/utils";
 
 /**
- * The ring, on both ends, in the doors' bezel: whoever is calling you, with
- * the answer set into it; the call you are making, as a pill where its strip
- * will be once they pick up; and, for a moment, how a ring ended without a
- * call. Laid over every view, so a call finds you in chat or settings too,
- * and never covers what you were doing.
+ * Someone asking to talk, on both ends, in the doors' bezel: whoever wants to
+ * talk to you, with the answer set into it; you asking, as a pill where the
+ * talk's strip will be once they say yes; and, for a moment, how an ask ended
+ * without a talk. Talking, not calling: it's a word across the room, like
+ * stopping by a desk. Laid over every view, so it finds you in chat or
+ * settings too, and never covers what you were doing.
  */
 export function CallRing() {
   const { incoming, outgoing, outcome, invite, notice } = useCall();
@@ -82,10 +83,11 @@ function useRise() {
   };
 }
 
-/** Someone calling you: who, on the bezel, and the answer in the panel. */
+/** Someone who wants to talk to you: who, their face pulsing like a voice, and the answer in the panel. */
 function Incoming({ id, name }: { id: string; name: string }) {
   const t = useTranslations("call");
   const rise = useRise();
+  const reduce = useReducedMotion();
   return (
     <motion.div
       {...rise}
@@ -96,15 +98,27 @@ function Incoming({ id, name }: { id: string; name: string }) {
     >
       <div className={cn(onBezel, "flex items-center gap-3.5 px-3 pb-3.5 pt-2.5")}>
         <span className="relative flex size-12 shrink-0">
+          {/* Rings going out from their face, as a voice carries. */}
+          {!reduce &&
+            [0, 0.7].map((delay) => (
+              <motion.span
+                key={delay}
+                aria-hidden
+                className="absolute inset-0 rounded-full border-2 border-ok"
+                initial={{ scale: 1, opacity: 0.55 }}
+                animate={{ scale: 1.55, opacity: 0 }}
+                transition={{ duration: 1.4, delay, repeat: Infinity, ease: "easeOut" }}
+              />
+            ))}
           <Face seed={id} size={48} />
         </span>
         <div className="min-w-0 flex-1">
-          <p id="ring-what" className="flex items-center gap-1.5 text-[12.5px] font-medium text-ok">
-            <Phone className="size-3.5" strokeWidth={2.25} />
-            {t("incoming")}
-          </p>
           <p id="ring-name" className="truncate text-[20px] font-bold leading-tight tracking-[-0.02em]">
             {name}
+          </p>
+          <p id="ring-what" className="mt-0.5 flex items-center gap-1.5 text-[12.5px] font-medium text-ok">
+            <AudioLines className="size-3.5" strokeWidth={2.25} />
+            {t("incoming")}
           </p>
         </div>
       </div>
@@ -114,7 +128,6 @@ function Incoming({ id, name }: { id: string; name: string }) {
           onClick={() => callManager.decline()}
           className="inline-flex h-11 flex-1 cursor-pointer items-center justify-center gap-2 rounded-full bg-rail text-[14px] font-semibold text-foreground outline-none transition-[background-color,transform] hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring/60 active:scale-[0.98]"
         >
-          <PhoneOff className="size-4" />
           {t("decline")}
         </button>
         <button
@@ -123,7 +136,7 @@ function Incoming({ id, name }: { id: string; name: string }) {
           onClick={() => void callManager.accept()}
           className="inline-flex h-11 flex-1 cursor-pointer items-center justify-center gap-2 rounded-full bg-ok text-[14px] font-semibold text-white outline-none transition-[background-color,transform] hover:bg-ok/90 focus-visible:ring-2 focus-visible:ring-ok/50 active:scale-[0.98]"
         >
-          <Phone className="size-4" strokeWidth={2.25} />
+          <AudioLines className="size-4" strokeWidth={2.25} />
           {t("accept")}
         </button>
       </div>
@@ -131,7 +144,7 @@ function Incoming({ id, name }: { id: string; name: string }) {
   );
 }
 
-/** The call you are making, where its strip will be once they pick up. */
+/** You asking to talk, where the talk's strip will be once they say yes. */
 function Calling({ id, name }: { id: string; name: string }) {
   const t = useTranslations("call");
   const rise = useRise();
@@ -149,15 +162,15 @@ function Calling({ id, name }: { id: string; name: string }) {
         onClick={() => callManager.cancel()}
         title={t("cancel")}
         aria-label={t("cancel")}
-        className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-destructive text-white outline-none transition-[opacity,transform] hover:opacity-90 focus-visible:ring-2 focus-visible:ring-destructive/50 active:scale-95"
+        className="flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-full bg-foreground/10 text-foreground outline-none transition-[background-color,transform] hover:bg-foreground/15 focus-visible:ring-2 focus-visible:ring-ring/60 active:scale-95"
       >
-        <PhoneOff className="size-4" />
+        <X className="size-4" />
       </button>
     </motion.div>
   );
 }
 
-/** How a ring ended without a call; a missed one offers a message instead. */
+/** How an ask ended without a talk; a missed one offers a message instead. */
 function Outcome({ outcome }: { outcome: CallOutcome }) {
   const t = useTranslations("call");
   const tShell = useTranslations("shell");
@@ -167,10 +180,7 @@ function Outcome({ outcome }: { outcome: CallOutcome }) {
     <motion.div {...rise} role="status" className={cn(bezel, onBezel, "pointer-events-auto flex items-center gap-3 rounded-full p-1.5")}>
       <Face seed={outcome.id} size={36} />
       <div className="min-w-0 pe-1 leading-tight">
-        <p className={cn("flex items-center gap-1 text-[11.5px]", missed ? "text-destructive" : "text-muted-foreground")}>
-          {missed && <PhoneMissed className="size-3" />}
-          {t(`outcome.${outcome.kind}`)}
-        </p>
+        <p className={cn("text-[11.5px]", missed ? "text-destructive" : "text-muted-foreground")}>{t(`outcome.${outcome.kind}`)}</p>
         <p className="max-w-[11rem] truncate text-[14px] font-semibold">{outcome.name}</p>
       </div>
       {missed && (

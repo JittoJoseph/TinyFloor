@@ -99,13 +99,13 @@
     "walkTo": "Kävele luokse: {name}"
   },
   "call": {
-    "incoming": "Soittaa sinulle",
+    "incoming": "haluaa puhua",
     "onCall": "Puhelussa",
     "connecting": "Yhdistetään...",
-    "decline": "Hylkää",
-    "accept": "Vastaa",
-    "calling": "Soitetaan...",
-    "cancel": "Peru puhelu",
+    "decline": "Ei nyt",
+    "accept": "Puhu",
+    "calling": "Pyytää puhumaan",
+    "cancel": "Peru",
     "micOff": "Mikrofoni pois",
     "yourScreen": "Sinun näyttösi",
     "screenOf": "Näyttö: {name}",
@@ -118,10 +118,10 @@
       "camera": "Kamera ei ole käytettävissä"
     },
     "outcome": {
-      "declined": "Hylätty",
+      "declined": "Ei nyt",
       "busy": "Varattu juuri nyt",
       "unanswered": "Ei vastausta",
-      "missed": "Vastaamaton puhelu"
+      "missed": "Halusi puhua"
     },
     "dismiss": "Sulje"
   },
@@ -272,7 +272,9 @@
     "meetingStartedAt": "Alkoi {time}"
   },
   "proximity": {
-    "call": "Soita",
+    "talk": "Puhu",
+    "wave": "Vilkuta",
+    "poke": "Tökkää",
     "onCall": "Puhelussa kanssasi"
   },
   "whiteboard": {

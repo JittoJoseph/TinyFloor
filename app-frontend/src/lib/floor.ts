@@ -72,6 +72,16 @@ export function waveAt(id: string) {
   track("wave_sent");
 }
 
+/** Someone on the floor poked you. */
+export const POKED_YOU_EVENT = "pokedYou";
+/** Asks the floor to poke someone (see GameScene). */
+export const POKE_EVENT = "pokeAt";
+
+export function pokeAt(id: string) {
+  window.dispatchEvent(new CustomEvent(POKE_EVENT, { detail: { id } }));
+  track("poke_sent");
+}
+
 /** Asks the floor to walk you over to someone (see GameScene). */
 export const WALK_TO_PERSON_EVENT = "walkToPerson";
 

@@ -99,13 +99,13 @@
     "walkTo": "Naar {name} lopen"
   },
   "call": {
-    "incoming": "Belt je",
+    "incoming": "wil even praten",
     "onCall": "In gesprek",
     "connecting": "Verbinden...",
-    "decline": "Weigeren",
-    "accept": "Accepteren",
-    "calling": "Bellen...",
-    "cancel": "Gesprek annuleren",
+    "decline": "Nu niet",
+    "accept": "Praten",
+    "calling": "Vraagt om te praten",
+    "cancel": "Annuleren",
     "micOff": "Microfoon uit",
     "yourScreen": "Jouw scherm",
     "screenOf": "Scherm van {name}",
@@ -118,10 +118,10 @@
       "camera": "Camera niet beschikbaar"
     },
     "outcome": {
-      "declined": "Geweigerd",
+      "declined": "Nu niet",
       "busy": "Nu even bezet",
       "unanswered": "Geen antwoord",
-      "missed": "Gemist gesprek"
+      "missed": "Wilde praten"
     },
     "dismiss": "Sluiten"
   },
@@ -272,7 +272,9 @@
     "meetingStartedAt": "Gestart om {time}"
   },
   "proximity": {
-    "call": "Bellen",
+    "talk": "Praten",
+    "wave": "Zwaaien",
+    "poke": "Porren",
     "onCall": "In gesprek met jou"
   },
   "whiteboard": {

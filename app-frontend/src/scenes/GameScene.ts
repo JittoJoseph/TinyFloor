@@ -1,4 +1,4 @@
-import { floorStep, onFloorLook, onFloorRename, onFloorShown, WALK_TO_PERSON_EVENT, WAVE_EVENT } from "../lib/floor";
+import { floorStep, onFloorLook, onFloorRename, onFloorShown, POKE_EVENT, WALK_TO_PERSON_EVENT, WAVE_EVENT } from "../lib/floor";
 import type { CalendarBusy, StatusNote } from "shared-protocol/messages";
 import { CALENDAR_BUSY_EVENT } from "../lib/calendar";
 import * as Phaser from "phaser";
@@ -213,6 +213,11 @@ class GameScene extends Phaser.Scene {
       this.player,
       (id) => !callManager.currentMeeting() && !meetingOf(id) && !callManager.isPeer(id),
     );
+    // After the camera has moved for this frame (it follows you as it renders), so the cards beside people
+    // are placed where they're drawn, not where they were a frame ago.
+    const placeCards = () => this.proximityManager.update();
+    this.events.on(Phaser.Scenes.Events.RENDER, placeCards);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.events.off(Phaser.Scenes.Events.RENDER, placeCards));
 
     this.messageHandler = new MessageHandler(
       this,
@@ -231,6 +236,14 @@ class GameScene extends Phaser.Scene {
     this.cameraRig = new CameraRig(this, this.player, CAMERA_LERP, () => !this.deskDecorator?.active());
     // Setting off yourself (a key, a click, an errand) brings the view back from looking round.
     this.movementManager.onSetOff(() => this.cameraRig?.comeBack());
+    // Someone clicked on the floor answers it with a bob, and you go over to them; you, clicked, bob too.
+    // Clicking someone: they bob and you go over, or, while they're in a meeting, they give a small shake and you stay.
+    this.playerManager.onPersonClick((id) => {
+      const meeting = meetingOf(id);
+      const away = id !== this.playerId && !!meeting && meeting.id !== callManager.currentMeeting();
+      this.playerManager.react(id, away ? "shake" : "bob");
+      if (id !== this.playerId && !away) this.walkOver(id);
+    });
     this.walkOverlay = new WalkOverlay(this, () => this.mapManager.getNavGrid(), () => this.mapManager.getSolids(), this.player);
     if (isChristmas()) {
       this.presents = new ChristmasPresents(this, this.mapManager, this.player, approach);
@@ -279,6 +292,7 @@ class GameScene extends Phaser.Scene {
       this.playerManager.updatePlayerListening(this.playerId, event.detail.on);
     });
     this.listen(WAVE_EVENT, (event: CustomEvent<{ id: string }>) => this.wsManager.send({ t: "wave", to: event.detail.id }));
+    this.listen(POKE_EVENT, (event: CustomEvent<{ id: string }>) => this.wsManager.send({ t: "poke", to: event.detail.id }));
     this.listen("chatFocused", () => this.movementManager.setInputEnabled(false));
     this.listen("chatBlurred", () => this.movementManager.setInputEnabled(!this.deskDecorator?.active()));
 
@@ -449,7 +463,6 @@ class GameScene extends Phaser.Scene {
     this.playerManager.update(delta);
     this.playerManager.updateLocalPlayerNameTag(this.player.x, this.player.y, this.seatManager?.seatedDirection());
     this.playerManager.declutterTags(time);
-    this.proximityManager.update();
     if (this.meetingZone) this.watchMeetingRoom();
     this.whiteboardObject?.update(time);
     this.presents?.update();

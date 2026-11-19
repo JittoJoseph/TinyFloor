@@ -481,12 +481,39 @@ who come and go and mostly don't come back (shared-protocol `lobby.ts`):
   at 120. The keys walk, and run with Shift held. The others are told (`r` on
   `walk_to` and on a heading `move`), so they see the same speed and agree on
   where you stopped within a few pixels.
+  (19 November) A run eases in and out: it starts at walking speed, reaches
+  full speed over the first tile and a half, and slows over the last tile and
+  a quarter. The speed comes from how far you've gone and how far is left, not
+  from time, so every screen draws the same run. Shift with the keys ramps up
+  over a quarter of a second. The stride lengthens with the speed.
 - **Two people calling each other at the same moment talk.** Each used to
   answer the other's ring with busy. Now both ends decide alike from their ids:
   the lower id's call goes ahead and the other answers it at once, and both
   keep showing Calling until the call can be heard, then go straight to it.
 - **The call's small window has no button.** It opens by itself when you
   leave the tab during a call or meeting, and closes when you're back.
+
+## Talk, poke, and people who answer (19 November)
+
+- **"Talk", not "Call".** The button beside someone says Talk. Asking shows
+  them "Ana wants to talk", with Not now and Talk; the asker sees "Asking to
+  talk", and a no comes back as "Not now", not "declined". Walking up to
+  someone and talking is what the office is for; "call" sounded like a phone.
+- **Wave and Poke beside Talk.** A wave puts a hand up over you; a poke jabs
+  a finger at them twice and they jolt, on every screen. The one poked gets a
+  note with Poke back, and a system notification if the tab is hidden. Each
+  button rests for a second and a half after a press, and the room limits
+  them like waves, so neither can be used to flood someone.
+- **People answer.** A character bobs when clicked (you included), waved at,
+  or when their status changes; jolts when poked; and gives a small shake,
+  without you walking over, when clicked while in a meeting you're not in.
+  It's scale and tilt from the feet only, so it never fights walking, and it
+  is skipped with reduced motion. Clicking someone else walks you over.
+- **The card beside someone moves with them on the screen**, written onto the
+  page every frame after the camera has moved, not through React (which only
+  hears who is near and how they are). It used to re-render 15 times a second
+  and trail the camera by a frame (up to 6 px); now it holds within a pixel,
+  and stays still (no style writes at all) while the camera rests.
 
 ## Small decisions worth remembering
 

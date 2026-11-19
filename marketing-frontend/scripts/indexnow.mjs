@@ -74,8 +74,12 @@ async function checkKey() {
   if (!response.ok || body !== KEY) throw new Error(`${SITE}/${KEY}.txt answers ${response.status} without the key`);
 }
 
-async function sitemap() {
-  const response = await fetch(`${SITE}/sitemap.xml`, { cache: "no-store" });
-  if (!response.ok) throw new Error(`the sitemap answers ${response.status}`);
-  return [...(await response.text()).matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+/** Every page in the sitemap: /sitemap.xml is an index, so the pages are in the sitemaps it lists. */
+async function sitemap(url = `${SITE}/sitemap.xml`) {
+  const response = await fetch(url, { cache: "no-store" });
+  if (!response.ok) throw new Error(`${url} answers ${response.status}`);
+  const text = await response.text();
+  const locs = [...text.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+  if (!text.includes("<sitemapindex")) return locs;
+  return (await Promise.all(locs.map((child) => sitemap(child)))).flat();
 }

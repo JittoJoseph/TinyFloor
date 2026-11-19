@@ -24,7 +24,6 @@ import {
   ArrowUp02Icon,
   ArrowUpRight01Icon,
   AudioWave01Icon,
-  HandPointingRight01Icon,
   BookOpen01Icon,
   BubbleChatIcon,
   Building03Icon,
@@ -207,7 +206,6 @@ export const Footprints = icon(FootprintsIcon, "Footprints");
 export const Gear = icon(Settings01Icon, "Gear");
 export const Globe = icon(Globe02Icon, "Globe");
 export const Hand = icon(WavingHand01Icon, "Hand");
-export const Poke = icon(HandPointingRight01Icon, "Poke");
 export const Hash = icon(HashtagIcon, "Hash");
 export const HeadphoneOff = icon(HeadphoneMuteIcon, "HeadphoneOff");
 export const Headphones = icon(HeadphonesIcon, "Headphones");

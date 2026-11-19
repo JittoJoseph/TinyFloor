@@ -509,11 +509,25 @@ who come and go and mostly don't come back (shared-protocol `lobby.ts`):
   without you walking over, when clicked while in a meeting you're not in.
   It's scale and tilt from the feet only, so it never fights walking, and it
   is skipped with reduced motion. Clicking someone else walks you over.
-- **The card beside someone moves with them on the screen**, written onto the
-  page every frame after the camera has moved, not through React (which only
-  hears who is near and how they are). It used to re-render 15 times a second
-  and trail the camera by a frame (up to 6 px); now it holds within a pixel,
-  and stays still (no style writes at all) while the camera rests.
+- **What you can do with someone grows out of their name tag** (later the
+  same day). It was a bar beside them repeating their face and name, with
+  line icons nobody could read as a wave or a poke. Eight layouts were tried
+  on the floor: a bubble over the head, the same with words, a ring of
+  buttons, only "Talk", a menu on click, the floor's corner, and the tag
+  itself growing. The tag won: nothing new floats over the floor, the name
+  stays where it was, and it reads as theirs.
+  - Only the nearest person, and only once you've stood still a moment;
+    moving shrinks it back into the tag, so passing people shows nothing.
+  - Their dot and name, then 👋 and 👉 (the very hand and finger they'll
+    see, named on hover), a message, and Talk. On a call with others: "In a
+    call" and a message only.
+  - The tags it would cover step aside, yours included (it joins the tags'
+    declutter as the first, widest box). A wave that would land behind it is
+    lifted over it: the page draws over the floor.
+  - It is placed every frame after the camera moves, not through React, so
+    it holds within a pixel of the tag and writes nothing while still.
+- **No pulse on the incoming ask.** The face has a steady green ring; the
+  panel already asks for attention.
 
 ## Small decisions worth remembering
 

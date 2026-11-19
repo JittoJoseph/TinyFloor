@@ -51,6 +51,8 @@ const BEHIND_TAG_OFFSET_Y = 58;
 const TAG_HEIGHT = 18;
 const TAG_DEPTH = 100000;
 type Box = { left: number; right: number; top: number; bottom: number };
+/** How tall the actions that take a tag's place are, in CSS pixels (ProximityActions). */
+const HELD_HEIGHT = 36;
 /** How often crowded tags are sorted out, in milliseconds. */
 const DECLUTTER_EVERY = 150;
 /** Room kept between two tags before the farther one steps away, in screen pixels. */
@@ -95,6 +97,8 @@ export class PlayerManager {
   /** Name tags grow a little when the camera pulls back, so they stay readable. */
   private tagScale = 1;
   private declutterAt = 0;
+  /** The person whose tag has grown into what you can do with them (ProximityOverlay), and how wide that is on screen. */
+  private held: { id: string; width: number } | null = null;
 
   constructor(
     scene: Phaser.Scene,
@@ -193,8 +197,9 @@ export class PlayerManager {
       .text(0, 0, "👋", { fontSize: "22px", fontFamily: EMOJI_FONT })
       .setOrigin(0.5, 1)
       .setScale(this.tagScale);
-    // Just over the name tag, so it reads as theirs.
-    const top = TAG_OFFSET_Y - (TAG_HEIGHT + 2) * this.tagScale;
+    // Just over the name tag, so it reads as theirs; over the actions instead where they'd hide it.
+    const body = (container ?? local)!;
+    const top = this.overHeld(body.x, body.y + TAG_OFFSET_Y - (TAG_HEIGHT + 2) * this.tagScale, 30 * this.tagScale) - body.y;
     if (container) {
       hand.setPosition(0, top);
       container.add(hand);
@@ -255,6 +260,7 @@ export class PlayerManager {
       const x = container ? container.x + tag.container.x : tag.container.x;
       const y = container ? container.y + tag.container.y : tag.container.y;
       const distance = id === this.playerId ? -1 : Math.hypot(x - me.x, y - me.y);
+      if (this.held?.id === id) return void tag.setCrowded(true);
       // Pointed at: the character under the pointer, from its feet to its hair.
       const body = container ?? me;
       const pointed = Math.abs(at.x - body.x) < 18 && at.y > body.y - 52 && at.y < body.y + 8;
@@ -267,6 +273,13 @@ export class PlayerManager {
     const height = TAG_HEIGHT * this.tagScale;
     const gap = TAG_GAP / zoom;
     const placed: Box[] = [];
+    // A held tag is the actions in its place, wider and taller than it: they go first, and whatever they'd cover steps away, yours too.
+    const held = this.held && this.tagCenter(this.held.id);
+    if (held && this.held) {
+      const half = this.held.width / zoom / 2;
+      const halfHeight = HELD_HEIGHT / zoom / 2;
+      placed.push({ left: held.x - half - gap, right: held.x + half + gap, top: held.y - halfHeight - gap, bottom: held.y + halfHeight + gap });
+    }
     for (const { tag, x, y } of tags) {
       const boxOf = (width: number) => {
         const half = (width * this.tagScale) / 2;
@@ -711,6 +724,43 @@ export class PlayerManager {
   }
 
   /** Where someone is standing, in world pixels, if they are on this floor. */
+  /**
+   * A point on the floor for something drawn over someone (a wave), moved up
+   * clear of the actions held in a tag's place if it would fall behind them:
+   * the page draws over the floor, so they'd hide it.
+   */
+  private overHeld(x: number, y: number, height: number): number {
+    const held = this.held && this.tagCenter(this.held.id);
+    if (!held || !this.held) return y;
+    const zoom = cssZoom(this.scene);
+    const half = this.held.width / zoom / 2 + 12;
+    const top = held.y - HELD_HEIGHT / zoom / 2 - 2;
+    const bottom = held.y + HELD_HEIGHT / zoom / 2;
+    // `y` is its bottom edge: behind them if it reaches into them at all.
+    return Math.abs(x - held.x) < half && y > top && y - height < bottom ? top : y;
+  }
+
+  /** The middle of someone's name tag, on the floor: where what you can do with them takes its place. */
+  tagCenter(id: string): { x: number; y: number } | null {
+    const container = this.players.get(id);
+    const tag = this.nameTags.get(id);
+    if (!container || !tag) return null;
+    return { x: container.x + tag.container.x, y: container.y + tag.container.y - (TAG_HEIGHT * this.tagScale) / 2 };
+  }
+
+  /**
+   * Someone's tag gives way to the actions beside them (`width` CSS pixels
+   * across), or comes back with null. Sorted out at once, so it and the tags
+   * around it make room as the actions grow.
+   */
+  holdTag(id: string | null, width = 0) {
+    if (this.held?.id === id && (!id || Math.abs(this.held.width - width) < 1)) return;
+    const before = this.held?.id;
+    this.held = id ? { id, width } : null;
+    if (before && before !== id) this.nameTags.get(before)?.setCrowded(false);
+    this.declutterAt = 0;
+  }
+
   positionOf(id: string): { x: number; y: number } | null {
     const container = this.players.get(id);
     return container ? { x: container.x, y: container.y } : null;

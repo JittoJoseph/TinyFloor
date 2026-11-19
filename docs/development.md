@@ -44,7 +44,7 @@ When a page or guide is translated:
 - **Sitemap dates are kept by hand.** When a page's words change, bump its
   date in the same commit: a guide's `updated`, a tool's `*_UPDATED`,
   `LANDINGS_UPDATED` (or one page's `updated`) for the pages written for a
-  search, `PAGES_UPDATED` in `sitemap.ts` for home, pricing, the indexes and
+  search, `PAGES_UPDATED` in `lib/sitemap.ts` for home, pricing, the indexes and
   about. Google trusts a lastmod only while it matches real changes.
 
 ## Search Console and Bing

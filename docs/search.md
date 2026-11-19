@@ -82,6 +82,18 @@ what the README says first.
 - Say only what TinyFloor does today (the guides name free browser games;
   TinyFloor has none built in).
 
+## Sitemap
+
+`/sitemap.xml` is an index of five sitemaps, one a part of the site: pages,
+guides, tools, blog and changelog (`lib/sitemap.ts`). Each URL has its loc,
+its lastmod and its pictures, in the protocol's order. There's no changefreq
+or priority, which Google ignores, and no hreflang alternates, which every
+page already declares in its head. Chromium has dropped XSLT (Brave 158 has
+none), so a stylesheet can't dress a sitemap up, and it shows XML as a
+readable tree only when nothing in it is in the XHTML namespace: the old
+single sitemap's `xhtml:link` alternates turned it into a white page of
+run-together text.
+
 ## IndexNow and Bing
 
 Once a deploy that changed or added pages is live, run

@@ -4,9 +4,9 @@ import { AnimationManager } from "./AnimationManager";
 import { facing } from "./facing";
 import type { RoomSocket } from "./RoomSocket";
 import { joystick } from "./joystick";
-import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingOf, headingVector } from "./Navigation";
+import { NavGrid, Vec, advanceAlongPath, advanceHeading, headingOf, headingVector, keyRunSpeed, pathLength, runSpeed, strideAt } from "./Navigation";
 import { depthForY } from "./MapManager";
-import { pixelToTile, MOVEMENT_SPEED, RUN_FROM_TILES, RUN_SPEED, RUN_STRIDE, TILE_SIZE, tileToPixel } from "web-shared/lib/types";
+import { pixelToTile, MOVEMENT_SPEED, RUN_FROM_TILES, TILE_SIZE, tileToPixel } from "web-shared/lib/types";
 import { isValidTile } from "shared-protocol/map";
 import { wasDrag } from "./CameraRig";
 import { TileHover } from "./TileHover";
@@ -34,9 +34,12 @@ export class MovementManager {
   private arrive?: () => void;
   private release?: () => void;
   /** Where the others have us, walked forward the same way they do. */
-  private shown = { x: 0, y: 0, heading: null as number | null, run: false, sent: false };
-  /** The path is a long one, so it's run (follow). */
+  private shown = { x: 0, y: 0, heading: null as number | null, run: false, runFor: 0, sent: false };
+  /** The path is a long one, so it's run (follow), and how far along it we are, for its easing (runSpeed). */
   private pathRun = false;
+  private walked = 0;
+  /** How long Shift has been held while steering, for the keys' easing into a run (keyRunSpeed). */
+  private keyRunFor = 0;
   private inputEnabled = true;
   /** The tile under the mouse, marked where a click would walk you. */
   private tileHover: TileHover;
@@ -85,6 +88,7 @@ export class MovementManager {
   }
 
   private setOff?: () => void;
+
   /** Calls `then` whenever we set off ourselves: a key, a click on the floor, an errand. */
   onSetOff(then: () => void) {
     this.setOff = then;
@@ -94,10 +98,16 @@ export class MovementManager {
     const input = this.inputEnabled && !typingElsewhere() ? this.readInput() : { x: 0, y: 0, run: false };
     if (this.frozen && (!(input.x || input.y) || !this.unfreeze())) return;
 
-    // Keys walk, and run with Shift; a path runs when it's a long one (follow).
+    // Keys walk, and run with Shift; a path runs when it's a long one (follow). Both ease into it and a path out of it.
     const steering = !!(input.x || input.y);
     const running = steering ? input.run : this.path.length > 0 && this.pathRun;
-    const step = ((running ? RUN_SPEED : MOVEMENT_SPEED) * delta) / 1000;
+    this.keyRunFor = steering && input.run ? this.keyRunFor + delta / 1000 : 0;
+    const speed = !running
+      ? MOVEMENT_SPEED
+      : steering
+        ? keyRunSpeed(this.keyRunFor)
+        : runSpeed(this.walked, pathLength({ x: this.player.x, y: this.player.y }, this.path));
+    const step = (speed * delta) / 1000;
     let manualMoved = false;
     let moving = false;
     let dx = input.x;
@@ -120,6 +130,7 @@ export class MovementManager {
       dy = pos.y - this.player.y;
       moving = dx !== 0 || dy !== 0;
       if (moving) this.player.setPosition(pos.x, pos.y);
+      this.walked += Math.hypot(dx, dy);
     }
 
     // Steering, facing the heading the others are sent (syncManualMovement), so they turn the same way; on a path, along it.
@@ -129,7 +140,7 @@ export class MovementManager {
       faces = facing(way.x, way.y, faces);
     } else if (moving) faces = facing(dx, dy, faces);
     this.animationManager.play(this.player, moving ? "run" : "idle", faces);
-    this.player.anims.timeScale = moving && running ? RUN_STRIDE : 1;
+    this.player.anims.timeScale = moving ? strideAt(speed) : 1;
 
     this.moving = moving;
     this.movingBefore = manualMoved;
@@ -205,6 +216,7 @@ export class MovementManager {
   private follow(path: Vec[], tileX: number, tileY: number) {
     this.path = path;
     this.pathRun = pathLength({ x: this.player.x, y: this.player.y }, path) > RUN_FROM_TILES * TILE_SIZE;
+    this.walked = 0;
     this.setOff?.();
     // The others walk the path themselves, so our heading is theirs to forget.
     this.shown.sent = false;
@@ -292,7 +304,9 @@ export class MovementManager {
     // A new heading, or Shift pressed or let go: they need telling.
     if (heading !== this.shown.heading || run !== this.shown.run || !this.shown.sent) return this.sendPosition(heading, run);
 
-    advanceHeading(this.shown, heading, ((run ? RUN_SPEED : MOVEMENT_SPEED) * delta) / 1000, this.nav);
+    // Walked forward as the others walk it: running, easing in from when they were told.
+    if (run) this.shown.runFor += delta / 1000;
+    advanceHeading(this.shown, heading, ((run ? keyRunSpeed(this.shown.runFor) : MOVEMENT_SPEED) * delta) / 1000, this.nav);
     const drift = Math.hypot(this.shown.x - this.player.x, this.shown.y - this.player.y);
     if (drift > DRIFT_LIMIT) this.sendPosition(heading, run);
   }
@@ -301,7 +315,9 @@ export class MovementManager {
   private sendPosition(heading: number | null, run: boolean) {
     const tile = pixelToTile(this.player.x, this.player.y);
     const centre = tileToPixel(tile.tileX, tile.tileY);
-    this.shown = { ...centre, heading, run: heading !== null && run, sent: true };
+    // Still running after a turn: the others carry on at the pace they'd reached, as we do.
+    const runFor = this.shown.run && run && this.shown.heading !== null && heading !== null ? this.shown.runFor : 0;
+    this.shown = { ...centre, heading, run: heading !== null && run, runFor, sent: true };
     this.wsManager.send({
       t: "move",
       x: tile.tileX,
@@ -338,15 +354,4 @@ export class MovementManager {
     this.scene.input.off("pointerup", this.onPointerUp, this);
     this.tileHover.destroy();
   }
-}
-
-/** How far a path goes, from where you stand through each of its points. */
-function pathLength(from: Vec, path: Vec[]): number {
-  let length = 0;
-  let at = from;
-  for (const point of path) {
-    length += Math.hypot(point.x - at.x, point.y - at.y);
-    at = point;
-  }
-  return length;
 }

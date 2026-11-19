@@ -1,5 +1,5 @@
 import { MAP_WIDTH_TILES, MAP_HEIGHT_TILES, isValidTile } from "shared-protocol/map";
-import { pixelToTile, tileToPixel, TILE_SIZE } from "web-shared/lib/types";
+import { pixelToTile, tileToPixel, TILE_SIZE, MOVEMENT_SPEED, RUN_SPEED, RUN_STRIDE } from "web-shared/lib/types";
 
 export interface Vec {
   x: number;
@@ -300,4 +300,46 @@ export function advanceAlongPath(pos: Vec, path: Vec[], step: number) {
       remaining = 0;
     }
   }
+}
+
+/** How far a run goes before it's at full speed, and how far from its end it's back to a walk. */
+const RUN_UP = TILE_SIZE * 1.5;
+const RUN_DOWN = TILE_SIZE * 1.25;
+/** Holding Shift, how long the keys take to reach a full run. */
+const KEY_RUN_UP_S = 0.25;
+
+/** 0 to 1, quick at first and settling: going from the start, it's already moving. */
+const easeOut = (t: number) => 1 - (1 - t) * (1 - t);
+
+/**
+ * The speed along a run that has gone `travelled` and has `remaining` to go:
+ * a walk as it sets off, up to a run within a tile and a half (quickest at
+ * first, so it never feels held back), and a walk again as it arrives. By
+ * distance, not time, so everyone walking the same path moves it the same.
+ */
+export function runSpeed(travelled: number, remaining: number): number {
+  const up = easeOut(Math.min(1, travelled / RUN_UP));
+  const down = easeOut(Math.min(1, remaining / RUN_DOWN));
+  return MOVEMENT_SPEED + (RUN_SPEED - MOVEMENT_SPEED) * Math.min(up, down);
+}
+
+/** The keys' speed, Shift held for `runFor` seconds: from a walk to a run in a quarter of a second. */
+export function keyRunSpeed(runFor: number): number {
+  return MOVEMENT_SPEED + (RUN_SPEED - MOVEMENT_SPEED) * easeOut(Math.min(1, runFor / KEY_RUN_UP_S));
+}
+
+/** How quick the legs go at a speed: walking pace at a walk, RUN_STRIDE at a full run. */
+export function strideAt(speed: number): number {
+  return 1 + (RUN_STRIDE - 1) * Math.max(0, (speed - MOVEMENT_SPEED) / (RUN_SPEED - MOVEMENT_SPEED));
+}
+
+/** How far a path goes, from a point through each of its points. */
+export function pathLength(from: Vec, path: Vec[]): number {
+  let length = 0;
+  let at = from;
+  for (const point of path) {
+    length += Math.hypot(point.x - at.x, point.y - at.y);
+    at = point;
+  }
+  return length;
 }

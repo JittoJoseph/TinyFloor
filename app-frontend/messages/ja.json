@@ -99,13 +99,13 @@
     "walkTo": "{name} のところへ行く"
   },
   "call": {
-    "incoming": "着信中",
+    "incoming": "話したがっています",
     "onCall": "通話中",
     "connecting": "接続中...",
-    "decline": "拒否",
-    "accept": "応答",
-    "calling": "発信中...",
-    "cancel": "通話をキャンセル",
+    "decline": "今はやめておく",
+    "accept": "話す",
+    "calling": "話しかけています",
+    "cancel": "キャンセル",
     "micOff": "マイクオフ",
     "yourScreen": "あなたの画面",
     "screenOf": "{name} の画面",
@@ -118,10 +118,10 @@
       "camera": "カメラを使用できません"
     },
     "outcome": {
-      "declined": "拒否されました",
+      "declined": "今はやめておく",
       "busy": "今は取り込み中です",
       "unanswered": "応答がありません",
-      "missed": "不在着信"
+      "missed": "話したがっていました"
     },
     "dismiss": "閉じる"
   },
@@ -272,7 +272,9 @@
     "meetingStartedAt": "{time}に開始"
   },
   "proximity": {
-    "call": "通話",
+    "talk": "話す",
+    "wave": "手を振る",
+    "poke": "つつく",
     "onCall": "あなたと通話中"
   },
   "whiteboard": {

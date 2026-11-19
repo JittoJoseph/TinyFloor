@@ -99,13 +99,13 @@
     "walkTo": "走到 {name} 身边"
   },
   "call": {
-    "incoming": "正在呼叫你",
+    "incoming": "想和你说话",
     "onCall": "通话中",
     "connecting": "连接中...",
-    "decline": "拒绝",
-    "accept": "接听",
-    "calling": "呼叫中...",
-    "cancel": "取消通话",
+    "decline": "现在不行",
+    "accept": "说话",
+    "calling": "正在请求说话",
+    "cancel": "取消",
     "micOff": "麦克风已关闭",
     "yourScreen": "你的屏幕",
     "screenOf": "{name} 的屏幕",
@@ -118,10 +118,10 @@
       "camera": "摄像头不可用"
     },
     "outcome": {
-      "declined": "已拒绝",
+      "declined": "现在不行",
       "busy": "对方正忙",
       "unanswered": "无人接听",
-      "missed": "未接来电"
+      "missed": "想和你说话"
     },
     "dismiss": "关闭"
   },
@@ -272,7 +272,9 @@
     "meetingStartedAt": "开始于 {time}"
   },
   "proximity": {
-    "call": "通话",
+    "talk": "说话",
+    "wave": "挥手",
+    "poke": "戳一下",
     "onCall": "正在与你通话"
   },
   "whiteboard": {

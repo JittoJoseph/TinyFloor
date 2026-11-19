@@ -99,13 +99,13 @@
     "walkTo": "الذهاب إلى {name}"
   },
   "call": {
-    "incoming": "يتصل بك",
+    "incoming": "يريد التحدث",
     "onCall": "في المكالمة",
     "connecting": "جارٍ الاتصال...",
-    "decline": "رفض",
-    "accept": "قبول",
-    "calling": "جارٍ الاتصال...",
-    "cancel": "إلغاء المكالمة",
+    "decline": "ليس الآن",
+    "accept": "تحدّث",
+    "calling": "تطلب التحدث",
+    "cancel": "إلغاء",
     "micOff": "الميكروفون مغلق",
     "yourScreen": "شاشتك",
     "screenOf": "شاشة {name}",
@@ -118,10 +118,10 @@
       "camera": "الكاميرا غير متاحة"
     },
     "outcome": {
-      "declined": "مرفوضة",
+      "declined": "ليس الآن",
       "busy": "مشغول الآن",
       "unanswered": "لا رد",
-      "missed": "مكالمة فائتة"
+      "missed": "أراد التحدث"
     },
     "dismiss": "إغلاق"
   },
@@ -272,7 +272,9 @@
     "meetingStartedAt": "بدأ {time}"
   },
   "proximity": {
-    "call": "اتصال",
+    "talk": "تحدّث",
+    "wave": "لوّح",
+    "poke": "انكز",
     "onCall": "في مكالمة معك"
   },
   "whiteboard": {

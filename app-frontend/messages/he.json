@@ -99,13 +99,13 @@
     "walkTo": "ללכת אל {name}"
   },
   "call": {
-    "incoming": "מתקשר/ת אליך",
+    "incoming": "רוצה לדבר",
     "onCall": "בשיחה",
     "connecting": "מתחבר...",
-    "decline": "דחייה",
-    "accept": "מענה",
-    "calling": "מתקשר...",
-    "cancel": "ביטול השיחה",
+    "decline": "לא עכשיו",
+    "accept": "לדבר",
+    "calling": "בקשה לדבר",
+    "cancel": "ביטול",
     "micOff": "המיקרופון כבוי",
     "yourScreen": "המסך שלך",
     "screenOf": "המסך של {name}",
@@ -118,10 +118,10 @@
       "camera": "המצלמה לא זמינה"
     },
     "outcome": {
-      "declined": "נדחתה",
+      "declined": "לא עכשיו",
       "busy": "עסוק כרגע",
       "unanswered": "אין מענה",
-      "missed": "שיחה שלא נענתה"
+      "missed": "רצה לדבר"
     },
     "dismiss": "סגירה"
   },
@@ -272,7 +272,9 @@
     "meetingStartedAt": "התחיל ב-{time}"
   },
   "proximity": {
-    "call": "התקשרות",
+    "talk": "לדבר",
+    "wave": "נופף",
+    "poke": "נדנוד",
     "onCall": "בשיחה איתך"
   },
   "whiteboard": {

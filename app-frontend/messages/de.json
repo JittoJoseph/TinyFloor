@@ -99,13 +99,13 @@
     "walkTo": "Zu {name} gehen"
   },
   "call": {
-    "incoming": "Ruft dich an",
+    "incoming": "möchte sprechen",
     "onCall": "Im Gespräch",
     "connecting": "Verbinde...",
-    "decline": "Ablehnen",
-    "accept": "Annehmen",
-    "calling": "Anruf läuft...",
-    "cancel": "Anruf abbrechen",
+    "decline": "Nicht jetzt",
+    "accept": "Sprechen",
+    "calling": "Fragt nach einem Gespräch",
+    "cancel": "Abbrechen",
     "micOff": "Mikrofon aus",
     "yourScreen": "Dein Bildschirm",
     "screenOf": "Bildschirm von {name}",
@@ -118,10 +118,10 @@
       "camera": "Kamera nicht verfügbar"
     },
     "outcome": {
-      "declined": "Abgelehnt",
+      "declined": "Nicht jetzt",
       "busy": "Gerade beschäftigt",
       "unanswered": "Keine Antwort",
-      "missed": "Verpasster Anruf"
+      "missed": "Wollte sprechen"
     },
     "dismiss": "Schließen"
   },
@@ -272,7 +272,9 @@
     "meetingStartedAt": "Gestartet um {time}"
   },
   "proximity": {
-    "call": "Anrufen",
+    "talk": "Sprechen",
+    "wave": "Winken",
+    "poke": "Anstupsen",
     "onCall": "Im Gespräch mit dir"
   },
   "whiteboard": {

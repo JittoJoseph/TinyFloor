@@ -10,7 +10,7 @@ import { tileToPixel } from "web-shared/lib/types";
 import { setMeetings, setMeetingUsage } from "./meetings";
 import { deskOf, deskState, setDesks } from "./desks";
 import { applyPieceChange, setPieceChanges } from "./pieces";
-import { FLOOR_ARRIVED_EVENT, floorSteps, myStatus, myStatusNote, sinceFloorRequested, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
+import { FLOOR_ARRIVED_EVENT, floorSteps, myStatus, myStatusNote, sinceFloorRequested, POKED_YOU_EVENT, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
 import { isListening } from "./music";
 import { myCalendarBusy } from "./calendar";
 import { track } from "web-shared/lib/analytics";
@@ -63,7 +63,12 @@ export class MessageHandler {
         break;
       case "waved":
         this.playerManager.wave(message.from);
+        this.playerManager.react(message.to, "bob");
         if (message.to === this.playerId) this.tell(WAVED_AT_YOU_EVENT, message.from);
+        break;
+      case "poked":
+        this.playerManager.poke(message.from, message.to);
+        if (message.to === this.playerId) this.tell(POKED_YOU_EVENT, message.from);
         break;
       case "player_left":
         this.handleUserLeft(message.id);

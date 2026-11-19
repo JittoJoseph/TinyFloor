@@ -10,7 +10,7 @@ import { Face } from "web-shared/components/ui/Face";
 import { ArrowUp, Check, Mic, Paperclip, X } from "web-shared/components/ui/icons";
 import { usePrefs } from "@/lib/prefs";
 import { SPRING_LAYOUT, SPRING_SWAP } from "@/lib/ease";
-import { TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT, waveAt } from "@/lib/floor";
+import { POKED_YOU_EVENT, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT, pokeAt, waveAt } from "@/lib/floor";
 import { cn } from "web-shared/lib/utils";
 
 /*
@@ -24,7 +24,7 @@ import { cn } from "web-shared/lib/utils";
  * in one place is one card that keeps up with them. One setting turns it off.
  */
 
-type Hello = { kind: "wave" | "arrived"; id: string; person: string; name: string; done?: boolean };
+type Hello = { kind: "wave" | "poke" | "arrived"; id: string; person: string; name: string; done?: boolean };
 type Note = {
   kind: "message";
   id: string;
@@ -40,7 +40,7 @@ type Note = {
 type Nudge = Hello | Note;
 
 /** How long each stays on its own, and how many show at once. */
-const SHOW_MS = { message: 7000, wave: 6000, arrived: 5000 } as const;
+const SHOW_MS = { message: 7000, wave: 6000, poke: 6000, arrived: 5000 } as const;
 const MAX = 3;
 
 let seed = 0;
@@ -151,7 +151,7 @@ export function FloorNudges({ chatPath }: { chatPath: (channel: string) => strin
     });
   }, [enabled, time]);
 
-  // A teammate walked in, or waved at you: one nudge a person, their wave replacing their arrival.
+  // A teammate walked in, waved or poked you: one nudge a person, the latest replacing what came before.
   useEffect(() => {
     if (!enabled) return;
     const hello = (kind: Hello["kind"]) => (event: Event) => {
@@ -162,11 +162,14 @@ export function FloorNudges({ chatPath }: { chatPath: (channel: string) => strin
     };
     const arrived = hello("arrived");
     const waved = hello("wave");
+    const poked = hello("poke");
     window.addEventListener(TEAMMATE_ARRIVED_EVENT, arrived);
     window.addEventListener(WAVED_AT_YOU_EVENT, waved);
+    window.addEventListener(POKED_YOU_EVENT, poked);
     return () => {
       window.removeEventListener(TEAMMATE_ARRIVED_EVENT, arrived);
       window.removeEventListener(WAVED_AT_YOU_EVENT, waved);
+      window.removeEventListener(POKED_YOU_EVENT, poked);
     };
   }, [enabled, add, time]);
 
@@ -188,9 +191,10 @@ export function FloorNudges({ chatPath }: { chatPath: (channel: string) => strin
     router.push(chatPath(channel));
   };
 
-  // Waving shows it was done, then goes on its own, even while the stack is held.
-  const waveBack = (nudge: Hello) => {
-    waveAt(nudge.person);
+  // Waving or poking back shows it was done, then goes on its own, even while the stack is held.
+  const answer = (nudge: Hello) => {
+    if (nudge.kind === "poke") pokeAt(nudge.person);
+    else waveAt(nudge.person);
     setNudges((all) => all.map((one) => (one.id === nudge.id ? { ...nudge, done: true } : one)));
     const clock = clocks.current.get(nudge.id);
     if (clock?.timer) window.clearTimeout(clock.timer);
@@ -238,9 +242,13 @@ export function FloorNudges({ chatPath }: { chatPath: (channel: string) => strin
               ) : (
                 <Greeting
                   hello={nudge}
-                  title={nudge.kind === "wave" ? t("waved", { name: nudge.name }) : t("arrived", { name: nudge.name })}
-                  action={nudge.done ? t("wavedDone") : nudge.kind === "wave" ? t("waveBackShort") : t("waveShort")}
-                  onAction={() => waveBack(nudge)}
+                  title={t(nudge.kind === "wave" ? "waved" : nudge.kind === "poke" ? "poked" : "arrived", { name: nudge.name })}
+                  action={
+                    nudge.kind === "poke"
+                      ? t(nudge.done ? "pokedDone" : "pokeBackShort")
+                      : t(nudge.done ? "wavedDone" : nudge.kind === "wave" ? "waveBackShort" : "waveShort")
+                  }
+                  onAction={() => answer(nudge)}
                 />
               )}
             </Island>
@@ -331,6 +339,11 @@ function Greeting({ hello, title, action, onAction }: { hello: Hello; title: str
         {hello.kind === "wave" && (
           <span aria-hidden className="ms-1.5 inline-block origin-[70%_80%] motion-safe:animate-[wave_1.6s_ease-in-out_2]">
             👋
+          </span>
+        )}
+        {hello.kind === "poke" && (
+          <span aria-hidden className="ms-1.5 inline-block motion-safe:animate-[jab_1.4s_ease-in-out_2]">
+            👉
           </span>
         )}
       </p>

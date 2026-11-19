@@ -99,13 +99,13 @@
     "walkTo": "Walk over to {name}"
   },
   "call": {
-    "incoming": "Calling you",
+    "incoming": "wants to talk",
     "onCall": "On the call",
     "connecting": "Connecting...",
-    "decline": "Decline",
-    "accept": "Answer",
-    "calling": "Calling...",
-    "cancel": "Cancel call",
+    "decline": "Not now",
+    "accept": "Talk",
+    "calling": "Asking to talk",
+    "cancel": "Cancel",
     "micOff": "Microphone off",
     "yourScreen": "Your screen",
     "screenOf": "{name}'s screen",
@@ -118,10 +118,10 @@
       "camera": "Camera unavailable"
     },
     "outcome": {
-      "declined": "Declined",
+      "declined": "Not now",
       "busy": "Busy right now",
       "unanswered": "No answer",
-      "missed": "Missed call"
+      "missed": "Wanted to talk"
     },
     "dismiss": "Dismiss"
   },
@@ -272,7 +272,9 @@
     "meetingStartedAt": "Started {time}"
   },
   "proximity": {
-    "call": "Call",
+    "talk": "Talk",
+    "wave": "Wave",
+    "poke": "Poke",
     "onCall": "On your call"
   },
   "whiteboard": {

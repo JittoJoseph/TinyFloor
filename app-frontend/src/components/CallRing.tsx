@@ -83,11 +83,10 @@ function useRise() {
   };
 }
 
-/** Someone who wants to talk to you: who, their face pulsing like a voice, and the answer in the panel. */
+/** Someone who wants to talk to you: who, their face ringed in the colour of talking, and the answer in the panel. */
 function Incoming({ id, name }: { id: string; name: string }) {
   const t = useTranslations("call");
   const rise = useRise();
-  const reduce = useReducedMotion();
   return (
     <motion.div
       {...rise}
@@ -97,19 +96,8 @@ function Incoming({ id, name }: { id: string; name: string }) {
       className={cn(bezel, "pointer-events-auto w-full max-w-[22rem] rounded-[28px] p-1.5")}
     >
       <div className={cn(onBezel, "flex items-center gap-3.5 px-3 pb-3.5 pt-2.5")}>
-        <span className="relative flex size-12 shrink-0">
-          {/* Rings going out from their face, as a voice carries. */}
-          {!reduce &&
-            [0, 0.7].map((delay) => (
-              <motion.span
-                key={delay}
-                aria-hidden
-                className="absolute inset-0 rounded-full border-2 border-ok"
-                initial={{ scale: 1, opacity: 0.55 }}
-                animate={{ scale: 1.55, opacity: 0 }}
-                transition={{ duration: 1.4, delay, repeat: Infinity, ease: "easeOut" }}
-              />
-            ))}
+        {/* A steady ring in the colour of talking: no pulse, the panel already asks for attention. */}
+        <span className="flex size-12 shrink-0 rounded-full ring-2 ring-ok ring-offset-2 ring-offset-transparent">
           <Face seed={id} size={48} />
         </span>
         <div className="min-w-0 flex-1">

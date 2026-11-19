@@ -212,6 +212,7 @@ class GameScene extends Phaser.Scene {
       this.playerManager,
       this.player,
       (id) => !callManager.currentMeeting() && !meetingOf(id) && !callManager.isPeer(id),
+      () => !this.movementManager.isMoving(),
     );
     // After the camera has moved for this frame (it follows you as it renders), so the cards beside people
     // are placed where they're drawn, not where they were a frame ago.

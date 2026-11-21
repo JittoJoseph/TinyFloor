@@ -19,6 +19,7 @@ type OAuth2 = {
   initCodeClient: (config: {
     client_id: string;
     scope: string;
+    include_granted_scopes?: boolean;
     ux_mode: "popup";
     callback: (response: { code?: string; error?: string }) => void;
     error_callback?: (error: { type: string }) => void;
@@ -102,6 +103,11 @@ export function useGoogleCode({
         client.current = oauth2.initCodeClient({
           client_id: clientId,
           scope,
+          // Only what this asks for, never what the person once granted this client besides: a sensitive
+          // scope granted to sign-in's client in the past (calendar, 14 November) would otherwise come
+          // along on every sign-in and turn it into Google's "unverified app" screen. Sign-in and the
+          // calendar each ask for their own, through their own clients.
+          include_granted_scopes: false,
           ux_mode: "popup",
           callback: (response) => (response.code ? handlers.current.onCode(response.code) : handlers.current.onError()),
           error_callback: (error) => {

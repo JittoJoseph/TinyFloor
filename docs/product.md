@@ -445,6 +445,12 @@ missing features on the map.
   calendar at all: no rail item, no Settings section, nothing read. Calendars
   connected through the old client are dropped on their next read and
   connect again.
+  (21 November) Anyone who granted the calendar to sign-in's client in that
+  window still got the "unverified" screen on every sign-in: Google's popup
+  asks again for every scope a person ever granted a client unless told not
+  to. Sign-in and calendar now ask with `include_granted_scopes: false`, so
+  each gets only its own scopes. Google verified the calendar's access by 21
+  November.
 - **Open to everyone once Google verifies the scope.** Until then the
   calendar project's own consent screen says "unverified" (and is capped at
   100 people); sign-in stays verified either way. Asked of other calendar apps and not

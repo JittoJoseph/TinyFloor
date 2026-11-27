@@ -12,7 +12,7 @@ import { MovementManager } from "../lib/MovementManager";
 import { MapManager } from "../lib/MapManager";
 import { SeatManager } from "../lib/SeatManager";
 import { attachDesks } from "../lib/desks";
-import { attachDecorate } from "../lib/decorate";
+import { attachDecorate, walkedOff } from "../lib/decorate";
 import { DeskDecorator } from "../lib/DeskDecorator";
 import { MessageHandler } from "../lib/MessageHandler";
 import { WhiteboardObject } from "../lib/WhiteboardObject";
@@ -267,7 +267,11 @@ class GameScene extends Phaser.Scene {
     setFloorSpot(this.walkSpot);
     this.listen(SETTLE_CHEER_EVENT, () => this.playerManager.react(this.playerId, "bob"));
     // Walking you did yourself (a click, the keys), not the floor walking you to your desk on arriving: walking needs no more showing.
-    this.listen("playerMoved", () => did("move"));
+    // Setting off yourself: walking is learnt, and whatever the dock was taking you to do on the way is let go.
+    this.listen("playerMoved", () => {
+      did("move");
+      walkedOff();
+    });
     if (isChristmas()) {
       this.presents = new ChristmasPresents(this, this.mapManager, this.player, approach);
       this.presents.create();

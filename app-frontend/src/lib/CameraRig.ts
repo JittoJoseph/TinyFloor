@@ -48,7 +48,8 @@ export function offFloor(scene: Phaser.Scene, pointer: Phaser.Input.Pointer): bo
 export class CameraRig {
   private following = true;
   private returning = false;
-  private press: { x: number; y: number; button: number } | null = null;
+  /** The press under way, and which pointer it is: a second finger (or a tap passed through the joystick) is no part of it. */
+  private press: { x: number; y: number; button: number; id: number } | null = null;
   private drag: { x: number; y: number; scrollX: number; scrollY: number; moves: Array<{ t: number; x: number; y: number }> } | null = null;
   private fling: Point | null = null;
   /** Where a drag, or the coast after one, is taking the view: the camera eases there a frame at a time. */
@@ -111,11 +112,14 @@ export class CameraRig {
   }
 
   private down(pointer: Phaser.Input.Pointer) {
+    // Another pointer's press under way (and that pointer still down): this one is no part of it.
+    const owner = this.press?.id;
+    if (owner !== undefined && owner !== pointer.id && this.scene.input.manager.pointers.some((one) => one.id === owner && one.isDown)) return;
     // A press stops a coast where it is.
     this.fling = null;
     this.goal = null;
     if (!this.canDrag()) return;
-    this.press = { x: pointer.x, y: pointer.y, button: pointer.button };
+    this.press = { x: pointer.x, y: pointer.y, button: pointer.button, id: pointer.id };
     // A right or middle press is only ever a drag.
     if (pointer.button !== 0) this.startDrag(pointer);
   }
@@ -124,7 +128,7 @@ export class CameraRig {
 
   private move(pointer: Phaser.Input.Pointer) {
     this.lastPointer = { x: pointer.x, y: pointer.y };
-    if (!this.press || !pointer.isDown) return;
+    if (!this.press || !pointer.isDown || pointer.id !== this.press.id) return;
     if (!this.drag) {
       if (Math.hypot(pointer.x - this.press.x, pointer.y - this.press.y) <= DRAG_START * this.density) return;
       this.startDrag(pointer);
@@ -141,7 +145,8 @@ export class CameraRig {
     while (drag.moves.length > 2 && now - drag.moves[0].t > FLING_WINDOW) drag.moves.shift();
   }
 
-  private up() {
+  private up(pointer?: Phaser.Input.Pointer) {
+    if (this.press && pointer && pointer.id !== this.press.id) return;
     this.press = null;
     const drag = this.drag;
     if (!drag) return;

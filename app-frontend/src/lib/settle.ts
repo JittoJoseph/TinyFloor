@@ -43,13 +43,30 @@ function load(id: string): Kept {
   }
 }
 
+/** Two records of the same person as one: everything either did or waved away, settling in started at the earlier. */
+function merged(a: Kept, b: Kept): Kept {
+  const started = a.started && b.started ? Math.min(a.started, b.started) : a.started || b.started;
+  return { started, done: [...new Set([...a.done, ...b.done])], skipped: [...new Set([...a.skipped, ...b.skipped])] };
+}
+
 function save() {
   if (!who) return;
   try {
+    // Another tab of yours may have saved since: what it did stays done.
+    kept = merged(load(who), kept);
     localStorage.setItem(storageKey(who), JSON.stringify(kept));
   } catch {
     // Private browsing: kept for this visit only.
   }
+}
+
+// Another tab saving: what it did shows as done here too.
+if (typeof window !== "undefined") {
+  window.addEventListener("storage", (event) => {
+    if (!who || event.key !== storageKey(who)) return;
+    kept = merged(load(who), kept);
+    changed();
+  });
 }
 
 function changed() {
@@ -60,9 +77,12 @@ function changed() {
 /** Who's settling in, and where: a person's office, or the demo office ("demo"). */
 export function settleAs(userId: string | null, where: string) {
   if (userId === who && where === place) return;
+  const samePerson = userId === who;
   who = userId;
   place = where;
-  kept = userId ? load(userId) : { started: 0, done: [], skipped: [] };
+  // Someone else (or nobody): their own record. The same person somewhere else: theirs already, and where storage
+  // fails, reading it again would lose this visit's.
+  if (!samePerson) kept = userId ? load(userId) : { started: 0, done: [], skipped: [] };
   changed();
 }
 

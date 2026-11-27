@@ -10,6 +10,7 @@ import { tileToPixel } from "web-shared/lib/types";
 import { setMeetings, setMeetingUsage } from "./meetings";
 import { deskOf, deskState, setDesks } from "./desks";
 import { applyPieceChange, setPieceChanges } from "./pieces";
+import { heardPiece, heardPieces } from "./decorate";
 import { FLOOR_ARRIVED_EVENT, floorSteps, myStatus, myStatusNote, sinceFloorRequested, POKED_YOU_EVENT, TEAMMATE_ARRIVED_EVENT, WAVED_AT_YOU_EVENT } from "./floor";
 import { isListening } from "./music";
 import { myCalendarBusy } from "./calendar";
@@ -45,9 +46,11 @@ export class MessageHandler {
         setDesks(message.desks);
         break;
       case "piece":
-        applyPieceChange(message.key, message.change);
+        // Our own change coming back after a newer one of ours to the same piece: already showing the newer one.
+        if (heardPiece(message.key, message.by)) applyPieceChange(message.key, message.change);
         break;
       case "pieces":
+        heardPieces();
         setPieceChanges(message.pieces);
         break;
       case "player_joined":

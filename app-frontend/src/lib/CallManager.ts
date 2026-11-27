@@ -205,6 +205,9 @@ const READY_LINGER_MS = 5000;
 const RING_TIMEOUT = 30000;
 /** How long a meeting invitation waits for an answer. */
 const INVITE_TIMEOUT = 30000;
+/** How long an ask waits, for the card that shows it running down (CallRing). */
+export const RING_TIMEOUT_MS = RING_TIMEOUT;
+export const INVITE_TIMEOUT_MS = INVITE_TIMEOUT;
 /**
  * What the browser does to your voice, as your settings ask (lib/prefs.ts).
  * With noise removal on, the system's voice isolation is asked for too where

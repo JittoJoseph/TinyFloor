@@ -14,6 +14,7 @@ import { did } from "@/lib/settle";
 import { EASE_OUT, SPRING_LAYOUT } from "@/lib/ease";
 import { useErrorMessage } from "@/lib/useErrorMessage";
 import { cn } from "web-shared/lib/utils";
+import { CREATOR_HEIGHT } from "./creatorOpen";
 import {
   CHARACTER_CATALOG,
   PRESETS,
@@ -32,6 +33,16 @@ const EXTRAS = ["face", "glasses", "hat", "gloves", "bag"] as const;
 type Extra = (typeof EXTRAS)[number];
 type StyledPart = "hair" | "outfit" | Extra;
 /**
+ * How a part's choices show you: head and shoulders for what's worn on the
+ * head (as your face in the dock), so the hat and face are what you see and
+ * not the same body over again; side on for a bag, which is on your back;
+ * the whole of you for what covers the rest.
+ */
+type View = "head" | "side" | "whole";
+const VIEW: Record<StyledPart, View> = { hair: "head", face: "head", glasses: "head", hat: "head", bag: "side", outfit: "whole", gloves: "whole" };
+/** The row of the 64-row frame a head-and-shoulders tile centres on (the dock's own): a tall hat above, the shoulders below. */
+const HEAD_CENTER = 30;
+/**
  * Parts whose colours mean the same in every style: a hair colour is a hair
  * colour, so every hairstyle is shown in yours. An outfit's or a hat's colours
  * are its own, so each is shown in its first, and only yours in yours.
@@ -39,9 +50,9 @@ type StyledPart = "hair" | "outfit" | Extra;
 const SHARED_COLOURS = new Set<StyledPart>(["hair"]);
 /** Turning round, as the arrows do: facing us, then to their right, away, to their left. */
 const TURN: AvatarDirection[] = ["down", "left", "up", "right"];
-/** Whole pixels only: the art at twice its size on a choice, four times on the stage. */
+/** Whole pixels only: the art at twice its size on a choice; on the stage four times, five beside the choices. */
 const TILE_WIDTH = 64;
-const STAGE_WIDTH = 128;
+const STAGE_WIDTH = "var(--stage-width)";
 /** How many changes Undo goes back through. */
 const HISTORY = 30;
 
@@ -133,13 +144,13 @@ export function Creator({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <div className="flex h-[min(88dvh,46rem)] flex-col sm:h-[min(40rem,calc(100dvh-3rem))] sm:flex-row">
+    <div className={cn("flex flex-col sm:flex-row", CREATOR_HEIGHT)}>
       {/* The stage: you in a corner of a room, and what you do to yourself there. */}
-      <div className="relative shrink-0 overflow-hidden max-sm:h-[40%] sm:w-[44%]">
+      <div className="relative shrink-0 overflow-hidden [--stage-width:128px] max-sm:h-[40%] sm:w-[44%] sm:[--stage-width:160px]">
         <Room />
         <span
           aria-hidden
-          className="absolute bottom-[22%] left-1/2 h-4 w-20 -translate-x-1/2 translate-y-1/2 rounded-[100%] bg-black/25 blur-[3px]"
+          className="absolute bottom-[22%] left-1/2 h-4 w-20 -translate-x-1/2 translate-y-1/2 rounded-[100%] bg-black/25 blur-[3px] sm:w-24"
         />
         <PixelAvatar
           character={onStage}
@@ -189,7 +200,7 @@ export function Creator({ onClose }: { onClose: () => void }) {
 
       {/* The choices. */}
       <div className="flex min-h-0 flex-1 flex-col border-border sm:border-s">
-        <div className="flex h-14 shrink-0 items-center gap-3 border-b border-border ps-2 pe-3 sm:ps-3">
+        <div className="flex h-14 shrink-0 items-center gap-2 border-b border-border ps-2 pe-3 sm:gap-3 sm:ps-3">
           <nav role="tablist" aria-label={t("title")} className="flex min-w-0 flex-1 gap-0.5 overflow-x-auto [scrollbar-width:none]">
             {CATEGORIES.map((key) => (
               <Tab key={key} active={category === key} onClick={() => setCategory(key)} reduce={reduce}>
@@ -197,7 +208,7 @@ export function Creator({ onClose }: { onClose: () => void }) {
               </Tab>
             ))}
           </nav>
-          <Button type="button" size="sm" disabled={busy} onClick={save} className="h-9 shrink-0 px-4 text-[13px]">
+          <Button type="button" size="sm" disabled={busy} onClick={save} className="h-9 shrink-0 px-3.5 text-[13px] sm:px-4">
             {t("save")}
           </Button>
         </div>
@@ -340,7 +351,7 @@ function Tab({ active, onClick, reduce, children }: { active: boolean; onClick: 
       aria-selected={active}
       onClick={onClick}
       className={cn(
-        "relative h-14 shrink-0 px-2.5 text-[13.5px] font-medium outline-none transition-colors focus-visible:text-foreground",
+        "relative h-14 shrink-0 px-2 text-[13.5px] font-medium sm:px-2.5 outline-none transition-colors focus-visible:text-foreground",
         active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
       )}
     >
@@ -349,7 +360,7 @@ function Tab({ active, onClick, reduce, children }: { active: boolean; onClick: 
         <motion.span
           layoutId="creator-tab"
           transition={reduce ? { duration: 0 } : SPRING_LAYOUT}
-          className="absolute inset-x-2.5 bottom-0 h-[2px] rounded-full bg-foreground"
+          className="absolute inset-x-2 bottom-0 h-[2px] rounded-full bg-foreground sm:inset-x-2.5"
         />
       )}
     </button>
@@ -387,17 +398,25 @@ function Grid({ children }: { children: ReactNode }) {
   return <div className="grid grid-cols-[repeat(auto-fill,minmax(5rem,1fr))] gap-2">{children}</div>;
 }
 
-/** A character standing on a choice, twice the art's size, still. */
-function Sprite({ character }: { character: string }) {
-  return <PixelAvatar character={character} still width={TILE_WIDTH} style={{ left: "50%", top: "calc(100% - 8px)" }} />;
+/** A character on a choice, twice the art's size, still: standing (facing us, or side on), or head and shoulders. */
+function Sprite({ character, view = "whole" }: { character: string; view?: View }) {
+  if (view === "head")
+    return <PixelAvatar character={character} still width={TILE_WIDTH} style={{ left: "50%", top: `calc(50% + ${(64 - HEAD_CENTER) * 2}px)` }} />;
+  return <PixelAvatar character={character} still direction={view === "side" ? "left" : "down"} width={TILE_WIDTH} style={{ left: "50%", top: "calc(100% - 6px)" }} />;
 }
 
-/** A choice: a whole character standing on its tile, its name under it if it has one. */
+/**
+ * A choice: a whole character standing on its tile (tall), or a head and
+ * shoulders (square); its name under it if it has one, or on it (None), so
+ * the rows stay even.
+ */
 function Tile({
   label,
   caption,
   selected,
   onClick,
+  head = false,
+  tag,
   children,
   ...hover
 }: {
@@ -405,18 +424,28 @@ function Tile({
   caption?: string;
   selected: boolean;
   onClick: () => void;
+  head?: boolean;
+  tag?: string;
   children: ReactNode;
 } & Partial<Hover>) {
   return (
     <button type="button" aria-label={label} aria-pressed={selected} title={label} onClick={onClick} {...hover} className="group flex flex-col items-stretch gap-1.5 outline-none">
       <span
         className={cn(
-          "relative block h-[6.5rem] overflow-hidden rounded-2xl transition-[background-color,box-shadow,transform] duration-150 group-active:scale-[0.97] group-focus-visible:ring-2 group-focus-visible:ring-ring",
-          selected ? "bg-foreground/[0.08] shadow-[inset_0_0_0_2px_var(--ui-foreground)]" : "bg-foreground/[0.04] group-hover:-translate-y-0.5 group-hover:bg-foreground/[0.08]",
+          "relative block overflow-hidden rounded-[14px] transition-[background-color,box-shadow,transform] duration-150 group-active:scale-[0.97] group-focus-visible:ring-2 group-focus-visible:ring-ring",
+          head ? "aspect-[10/11]" : "h-[7.5rem]",
+          selected
+            ? "bg-card shadow-[inset_0_0_0_1.5px_var(--ui-foreground),0_1px_2px_rgb(0_0_0/0.08)]"
+            : "bg-foreground/[0.04] group-hover:bg-foreground/[0.08]",
         )}
       >
-        <span className="absolute bottom-2 left-1/2 h-2 w-9 -translate-x-1/2 translate-y-1/2 rounded-[100%] bg-black/20 blur-[2px]" />
+        {!head && <span className="absolute bottom-1.5 left-1/2 h-2 w-9 -translate-x-1/2 translate-y-1/2 rounded-[100%] bg-black/15 blur-[2px]" />}
         {children}
+        {tag && (
+          <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 rounded-[6px] bg-card/95 px-1.5 py-0.5 text-[11px] font-medium text-foreground shadow-[0_0_0_1px_var(--ui-border)]">
+            {tag}
+          </span>
+        )}
       </span>
       {caption && (
         <span className={cn("truncate text-center text-[11.5px] transition-colors", selected ? "font-medium text-foreground" : "text-muted-foreground group-hover:text-foreground")}>
@@ -456,10 +485,11 @@ function Swatch({ colour, selected, onClick, ...hover }: { colour: string; selec
 }
 
 /**
- * A part's styles, each drawn on you as you are: in your colour where colours
- * carry across styles (hair), otherwise in its own first, so the choices stay
- * put whatever you're wearing. The chosen style's colours sit above. Parts
- * you can go without start with None.
+ * A part's styles, each drawn on you as you are (head and shoulders, side on
+ * or whole, as suits the part). In your colour where colours carry across
+ * styles (hair), otherwise in its own first, so the choices stay put whatever
+ * you're wearing. The chosen style's colours sit above. Parts you can go
+ * without start with None, named on its tile.
  */
 function Styles({ part, look, onPick, tryOn }: { part: StyledPart; look: ReturnType<typeof lookFrom>; onPick: (id: string | undefined) => void; tryOn: (candidate: string) => Hover }) {
   const t = useTranslations("look");
@@ -468,6 +498,9 @@ function Styles({ part, look, onPick, tryOn }: { part: StyledPart; look: ReturnT
   const [style, colour] = current?.split("-") ?? [];
   const colours = style ? styles.get(style) : undefined;
   const wearing = (id: string | undefined) => lookString({ ...look, [part]: id });
+  // A hairstyle is shown without your hat, which would hide it; trying one on keeps the hat.
+  const pictured = (id: string | undefined) => (part === "hair" ? lookString({ ...look, hair: id, hat: undefined }) : wearing(id));
+  const view = VIEW[part];
 
   return (
     <>
@@ -483,8 +516,8 @@ function Styles({ part, look, onPick, tryOn }: { part: StyledPart; look: ReturnT
       <Section title={t("style")}>
         <Grid>
           {!CHARACTER_CATALOG.parts[part].required && (
-            <Tile label={t("none")} caption={t("none")} selected={!current} onClick={() => onPick(undefined)} {...tryOn(wearing(undefined))}>
-              <Sprite character={wearing(undefined)} />
+            <Tile label={t("none")} tag={t("none")} head={view === "head"} selected={!current} onClick={() => onPick(undefined)} {...tryOn(wearing(undefined))}>
+              <Sprite character={pictured(undefined)} view={view} />
             </Tile>
           )}
           {[...styles].map(([name, options]) => {
@@ -495,8 +528,8 @@ function Styles({ part, look, onPick, tryOn }: { part: StyledPart; look: ReturnT
                   ? (options.find((option) => option.id === `${name}-${colour}`)?.id ?? options[0].id)
                   : options[0].id;
             return (
-              <Tile key={name} label={t(`parts.${part}`)} selected={style === name} onClick={() => onPick(id)} {...tryOn(wearing(id))}>
-                <Sprite character={wearing(id)} />
+              <Tile key={name} label={t(`parts.${part}`)} head={view === "head"} selected={style === name} onClick={() => onPick(id)} {...tryOn(wearing(id))}>
+                <Sprite character={pictured(id)} view={view} />
               </Tile>
             );
           })}

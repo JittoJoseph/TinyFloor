@@ -383,10 +383,18 @@ a desk (you're walked to the nearest free one and sat down; claiming it
 opens it for customizing). The dock's desk key does the same without a
 desk. Customizing opens the desk's panel, a card at the floor's right (a
 sheet over its foot on a phone), and the floor brings the desk close: it
-zooms until the desk and its chair fill about two fifths of the floor left
+zooms until the desk and its chair fill about a third of the floor left
 showing (no further than 5 screen pixels to a floor pixel, past which pixel
-art looks blown up), and Done zooms back to where you were. Nothing is
-dimmed: the floor stays the floor.
+art looks blown up), and Done zooms back to where you were. Around it, the
+rest of the floor goes soft: dimmed and out of focus, the desk in a clear
+oval (a bare close-up showed the neighbours' desks as sharply as yours, and
+the eye didn't know where to land). The blur is one picture of the floor
+taken once the camera settles, blurred, dimmed and cut once into its pixels:
+a live blur over the floor, or even a blur or mask over a still picture, is
+worked out again every frame and cost a third of the frame rate, and
+Phaser's own snapshot left the floor drawing slower for good after one; the
+canvas copied straight after a frame costs nothing. While the camera glides
+in, only the dimming shows.
 
 **A desk is three spots, its chair and its wood**, changed one part at a
 time, so nothing ever stands over anything else.

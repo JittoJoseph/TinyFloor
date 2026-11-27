@@ -24,7 +24,7 @@ const wrap = (value: number, span: number) => ((value % span) + span) % span;
 
 /**
  * Snow drifting down over the floor (lib/christmas). It's drawn on the screen,
- * not on the floor: a thin canvas over the floor's own, under the name tags,
+ * not on the floor: a thin canvas over the floor and everything laid on it,
  * so a flake is the same size and the fall as light at any zoom (on the floor
  * it grew with the camera, close up to a blizzard of big squares, and zooming
  * stranded flakes along the view's edges in lines). It still belongs to the
@@ -45,9 +45,9 @@ export class Snowfall {
     this.canvas = document.createElement("canvas");
     this.canvas.className = "snowfall";
     this.canvas.setAttribute("aria-hidden", "true");
-    Object.assign(this.canvas.style, { position: "absolute", inset: "0", width: "100%", height: "100%", pointerEvents: "none" });
+    // Over everything on the floor, the focus around a desk being decorated too (DeskDecorator): snow falls on all of it.
+    Object.assign(this.canvas.style, { position: "absolute", inset: "0", width: "100%", height: "100%", pointerEvents: "none", zIndex: "2" });
     const game = scene.game.canvas;
-    // Just over the floor's canvas, under the name tags laid over it (lib/plates).
     game.insertAdjacentElement("afterend", this.canvas);
     this.context = this.canvas.getContext("2d");
     this.fit();
